@@ -1,5 +1,3 @@
-// NEW SCREEN (Master Plan §6, Tài khoản): chọn hồ sơ trẻ ("Ai đang chơi?"). Khu phụ huynh ở parent-area-screen.tsx.
-// Chưa có mock riêng; theo visual language M1–M3, hướng A (đảo mây kẹo hồng).
 import { useCallback, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { z } from 'zod';
@@ -10,6 +8,8 @@ import { isFreshCharacter } from '../creator/fresh-character';
 import { Icon, MiuArt } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { SkyScene } from '../kit/sky-scene';
+import { bindLangProfile, t } from '../i18n/i18n';
+import { T } from '../i18n/use-t';
 import { useAccount } from './account-context';
 import { SignOutButton } from './parent-gate';
 
@@ -53,6 +53,8 @@ export function ProfilePickerScreen() {
 
   async function choose(id: string) {
     try {
+      const chosen = profiles?.find((p) => p.id === id);
+      bindLangProfile(id, chosen?.language);
       await api('POST', `/children/${id}/select`, z.object({ activeChildId: z.uuid() }));
       const character = await api('GET', '/character', CharacterDto);
       await refresh();
@@ -67,10 +69,10 @@ export function ProfilePickerScreen() {
       <main className="scene-content" data-id="profiles">
         <div className="page-title">
           <Icon name="glowingStar" size={52} />
-          <h1>Ai đang chơi?</h1>
+          <h1><T k="profiles.whoIsPlaying" /></h1>
           <Icon name="glowingStar" size={52} />
         </div>
-        <p className="hint">Chọn hồ sơ của bé để vào game</p>
+        <p className="hint"><T k="profiles.chooseHint" /></p>
         {error || selectError ? <p role="alert" className="error">{error ?? selectError}</p> : null}
         <ul className="profile-grid">
           {profiles?.map((p, i) => (
@@ -89,16 +91,16 @@ export function ProfilePickerScreen() {
                 <span className="profile-tile profile-tile--add" aria-hidden="true">
                   +
                 </span>
-                Thêm hồ sơ
+                <T k="profiles.addProfile" />
               </Link>
             </li>
           ) : null}
         </ul>
-        {profiles && profiles.length === 0 ? <p>Chưa có hồ sơ nào. Phụ huynh hãy tạo hồ sơ cho bé.</p> : null}
-        <nav className="nav-row" aria-label="Tài khoản">
+        {profiles && profiles.length === 0 ? <p><T k="profiles.emptyNotice" /></p> : null}
+        <nav className="nav-row" aria-label={t('profiles.navAria')}>
           <Link to="/parent" className={buttonClass('ghost')} data-id="profiles-parent-link">
             <Icon name="locked" size={28} />
-            Khu phụ huynh
+            <T k="profiles.parentAreaLink" />
           </Link>
           <SignOutButton />
         </nav>

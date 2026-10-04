@@ -9,6 +9,7 @@
 import type { WalkGoal } from '../../game-bridge/game-store';
 import { buttonClass } from '../../ui/kit/button';
 import { UI_ICONS, assetUrl } from '../../ui/kit/ui-art';
+import { t } from '../../ui/i18n/i18n';
 import { drawMarker, drawPlayer } from './map-draw';
 import { blendView, clampView, fitLabels, hitTest, overview, panBy, pinch, scaleLimits, toScreen, zoomAt, type Inset, type MapRect, type Point, type ScaleLimits, type SheetView, type Viewport } from './map-view';
 import { MARKER_COLOURS, legendGroups, type MinimapMarker, type PlaceKind } from './minimap-model';
@@ -87,7 +88,7 @@ export function createMapSheet(input: MapSheetInput): MapSheet {
   root.hidden = true;
   root.setAttribute('role', 'dialog');
   root.setAttribute('aria-modal', 'true');
-  root.setAttribute('aria-label', `Bản đồ ${input.title}`.trim());
+  root.setAttribute('aria-label', input.title ? t('map.label', { name: input.title }) : t('map.title'));
   // Focusable, so keys pressed after a tap on the map still reach the sheet (not the game or its pause menu).
   root.tabIndex = -1;
   // `minimap-sheet-canvas`: the class tests and tools use to tell the map's canvases from the game's.
@@ -96,18 +97,18 @@ export function createMapSheet(input: MapSheetInput): MapSheet {
 
   const top = el('div', 'map-sheet-top');
   const title = el('h2', 'map-sheet-title');
-  title.textContent = input.title || 'Bản đồ';
-  const close = button('map-sheet-close', 'game-minimap-close', 'Đóng bản đồ', '✕');
+  title.textContent = input.title || t('map.title');
+  const close = button('map-sheet-close', 'game-minimap-close', t('map.close'), '✕');
   top.append(title, close);
 
   const bottom = el('div', 'map-sheet-bottom');
   const tools = el('div', 'map-sheet-tools');
-  const recenter = button('map-sheet-recenter', 'game-map-recenter', 'Về chỗ bạn');
+  const recenter = button('map-sheet-recenter', 'game-map-recenter', t('map.recenter'));
   const you = el('span', 'map-sheet-you');
   you.setAttribute('aria-hidden', 'true');
   recenter.prepend(you);
-  const zoomOut = button('map-sheet-zoom', 'game-map-zoom-out', 'Thu nhỏ bản đồ', '−');
-  const zoomIn = button('map-sheet-zoom', 'game-map-zoom-in', 'Phóng to bản đồ', '+');
+  const zoomOut = button('map-sheet-zoom', 'game-map-zoom-out', t('map.zoomOut'), '−');
+  const zoomIn = button('map-sheet-zoom', 'game-map-zoom-in', t('map.zoomIn'), '+');
   const zoom = el('div', 'map-sheet-zoom-group');
   zoom.append(zoomOut, zoomIn);
   tools.append(recenter, zoom);
@@ -118,7 +119,7 @@ export function createMapSheet(input: MapSheetInput): MapSheet {
   const cardHead = el('div', 'map-sheet-card-head');
   const cardSwatch = el('span', 'map-sheet-swatch');
   const cardTitle = el('p', 'map-sheet-card-title');
-  const cardClose = button('map-sheet-card-close', 'game-map-card-close', 'Bỏ chọn', '✕');
+  const cardClose = button('map-sheet-card-close', 'game-map-card-close', t('map.deselect'), '✕');
   cardHead.append(cardSwatch, cardTitle, cardClose);
   const cardDetail = el('p', 'map-sheet-card-detail');
   const go = el('button', `${buttonClass('primary', { block: true })} map-sheet-go`, 'game-map-go');
@@ -127,7 +128,7 @@ export function createMapSheet(input: MapSheetInput): MapSheet {
   shoe.src = assetUrl(UI_ICONS.runningShoe);
   shoe.alt = '';
   shoe.draggable = false;
-  go.append(shoe, document.createTextNode('Đi tới đây'));
+  go.append(shoe, document.createTextNode(t('map.goTo')));
   card.append(cardHead, cardDetail, go);
 
   const list = el('div', 'map-sheet-list', 'game-map-list');
@@ -135,7 +136,7 @@ export function createMapSheet(input: MapSheetInput): MapSheet {
   // "Danh sách" always in view at the start of the row; the chips after it scroll sideways when they do not fit.
   const legend = el('div', 'map-sheet-legend', 'game-map-legend');
   legend.setAttribute('role', 'toolbar');
-  legend.setAttribute('aria-label', 'Chú giải bản đồ');
+  legend.setAttribute('aria-label', t('map.legend'));
   const chips = el('div', 'map-sheet-chips');
   bottom.append(tools, card, list, legend);
   root.append(canvas, top, bottom);
@@ -313,7 +314,7 @@ export function createMapSheet(input: MapSheetInput): MapSheet {
     s.setAttribute('aria-hidden', 'true');
     return s;
   };
-  const listToggle = button('map-sheet-chip map-sheet-chip--list', 'game-map-list-toggle', 'Danh sách địa điểm', 'Danh sách');
+  const listToggle = button('map-sheet-chip map-sheet-chip--list', 'game-map-list-toggle', t('map.listToggle'), t('map.listTitle'));
   listToggle.setAttribute('aria-expanded', 'false');
   legend.append(listToggle, chips);
   const fillList = (): void => {
@@ -347,7 +348,7 @@ export function createMapSheet(input: MapSheetInput): MapSheet {
           }),
       ]),
     );
-    if (!markers.length) list.append(Object.assign(el('p', 'map-sheet-list-head'), { textContent: 'Chưa có địa điểm nào' }));
+    if (!markers.length) list.append(Object.assign(el('p', 'map-sheet-list-head'), { textContent: t('map.noPlaces') }));
   };
   const setList = (open: boolean): void => {
     list.hidden = !open;
@@ -368,7 +369,8 @@ export function createMapSheet(input: MapSheetInput): MapSheet {
         const chip = el('button', 'map-sheet-chip', `game-map-chip-${g.kind}`);
         chip.type = 'button';
         chip.setAttribute('aria-pressed', String(!hiddenKinds.has(g.kind)));
-        chip.setAttribute('aria-label', `${hiddenKinds.has(g.kind) ? 'Hiện' : 'Ẩn'} ${g.label.toLocaleLowerCase('vi')} trên bản đồ`);
+        const chipLabel = g.label.toLocaleLowerCase();
+        chip.setAttribute('aria-label', hiddenKinds.has(g.kind) ? t('map.chipToggleShow', { label: chipLabel }) : t('map.chipToggleHide', { label: chipLabel }));
         const count = el('span', 'map-sheet-chip-count');
         count.textContent = String(g.count);
         chip.append(swatch(g.kind, g.colour), document.createTextNode(g.label), count);

@@ -29,6 +29,6 @@ describe('account schema', () => {
     };
     expect(ParentDto.parse(row)).toEqual({ id: row.id, email: row.email });
     const child = ChildProfileDto.parse({ id: row.id, displayName: 'Mèo Mây', species: 'cat', parentId: 'x' });
-    expect(child).toEqual({ id: row.id, displayName: 'Mèo Mây', species: 'cat' });
+    expect(child).toEqual({ id: row.id, displayName: 'Mèo Mây', species: 'cat', language: 'vi' });
   });
 });

@@ -36,12 +36,23 @@ export type ParentDto = z.infer<typeof ParentDto>;
 
 export const ConsentRequest = z.object({ policyVersion: z.string().min(1).max(32) });
 
+export const ChildLanguage = z.enum(['vi', 'en', 'both']);
+export type ChildLanguage = z.infer<typeof ChildLanguage>;
+
 /** `species`: the child's character, so the picker shows the right animal. */
-export const ChildProfileDto = z.object({ id: Id, displayName: z.string(), species: z.string() });
+export const ChildProfileDto = z.object({
+  id: Id,
+  displayName: z.string(),
+  species: z.string(),
+  language: ChildLanguage.default('vi'),
+});
 export type ChildProfileDto = z.infer<typeof ChildProfileDto>;
 
 // NFC so a decomposed "Mèo" (some mobile keyboards) matches the list entry.
-export const ChildProfileInput = z.object({ displayName: z.string().min(1).max(40).transform((s) => s.normalize('NFC')) });
+export const ChildProfileInput = z.object({
+  displayName: z.string().min(1).max(40).transform((s) => s.normalize('NFC')),
+  language: ChildLanguage.optional(),
+});
 
 export const MeResponse = z.object({
   parent: ParentDto,
@@ -68,6 +79,7 @@ export const AccountExport = z.object({
   children: z.array(
     z.object({
       displayName: z.string(),
+      language: ChildLanguage.default('vi'),
       createdAt: Instant,
       character: z.object({ species: z.string(), name: z.string(), equipped: z.array(z.string()), pet: z.string().nullable() }).nullable(),
       quests: z.array(

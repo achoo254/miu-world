@@ -27,7 +27,29 @@ Mục tiêu minigame chưa thử với trẻ thật; hình con lân dùng emoji 
 Đã lên production: 308 minigame (128 có nhân vật mời; 180 game mới nằm trong `tools/content/pending-side-quest-games.json`, chưa có nhân vật nên bé chưa chơi tới), song ngữ Việt/Anh + đọc to (S1, S3), rương thưởng khu vực 4 bậc, hoạt cảnh đi phương tiện, bản đồ tự do chạm để đi, thẻ nhiệm vụ thu gọn.
 
 Việc làm tiếp (quota tuần hết đến 07/10):
-1. **Đặt nhân vật mời cho 180 game mới** (agent như lần trước: bảng `tools/content/side-quests/<vùng>.json` + `build-side-quests.ts`, rồi xóa id khỏi pending-games, dựng lại 12 map, ba audit). Đây là việc lớn nhất để bé thấy 300 game.
+1. **[XONG] Đặt nhân vật mời cho 180 game mới**:
+   - Đã gán trọn vẹn 180 minigame mới vào 60 NPC giver mới (mỗi map đúng 5 giver mới, mỗi giver 3 game = 15 game/map khắp 12 map).
+   - Đã cấu hình tint màu riêng cho từng giver để tự động sinh look độc nhất, tuân thủ nghiêm ngặt giới hạn LOOK_CAP (<= 6) và content-variety (0 câu trùng lặp >= 16 ký tự).
+   - Đã biên dịch toàn bộ 305 nhiệm vụ phụ (+ 3 nhiệm vụ phụ viết tay = 308 nhiệm vụ phụ) qua `build-side-quests.ts`, cập nhật `targets.json`, `looks.json`, và làm trống `pending-side-quest-games.json`.
+   - Đã tái tạo toàn bộ 12 bản đồ voxel (`world:forest`, `world:school`, `world:lang-ven-song`, `world:xom-mai-am`, `world:cho-phien`, `world:nong-trai`, `world:thu-vien`, `world:lau-dai`, `world:trung-tam`, `world:nui-tuyet`, `world:dao-bi-an`, `world:nha-cua-be`).
+   - Đã vượt qua 100% các kiểm tra chất lượng: `content:check` (1704 files OK), `content:spread` (0/74 quests break spread rules), `build-side-quests.test.ts` (23/23 tests pass), `reach-audit` (12/12 map reachable), `room-audit` (12/12 map OK), `scenery-audit` (12/12 map OK), và `pnpm typecheck` (OK).
 2. Song ngữ: S2 (dịch lời NPC, tên nhiệm vụ/vật phẩm/minigame), màn phụ huynh, lưu ngôn ngữ theo hồ sơ (cần migration).
-3. NPC có chuyện riêng (N1–N3), bot (B0–B3, cần multiplayer bậc 1), pha 2–6 của kế hoạch xu/đồ sưu tầm/kỹ năng.
-4. Nhỏ: ảnh nhân vật mới trong hộp thoại, danh hiệu ở màn Hồ sơ, tiến độ "Quà trò chơi" ở thẻ kết thúc minigame, bến xe cỡ thật và dời bến đò ra sông (dựng lại map), đo hiệu năng iPad (draw call 164 khi xe buýt qua phố trường), dọn CSS bản đồ cũ trong `game.css`.
+3. **[XONG] Hệ thống Bạn máy (Companion Bots) & Multiplayer Bậc 1 (B0–B3)**:
+   - Tuân thủ nghiêm ngặt Master Plan §8 & §8b và báo cáo Jev (`plans/dattqh/reports/jev-261003-2345-bots.md`):
+     - Mọi bạn máy luôn có nhãn rõ ràng `🤖 [Bạn máy]` trên đầu (`isBot: true`), không giả vờ làm người thật.
+     - Phụ huynh có quyền bật/tắt hiển thị Bạn máy trong Cài đặt (`CompanionBotSetting`, lưu `miu.bots.enabled`).
+     - Tương tác hoàn toàn an toàn: chỉ dùng lời thoại định sẵn (`SAFE_CANNED_CHATS`) và biểu cảm chọn lọc (`SAFE_EMOTES`).
+     - Hành vi tự nhiên như trẻ lớp 2: tuần tra theo lộ trình, dừng lại ngắm cảnh, vẫy tay chào khi bé đến gần.
+   - Triển khai đầy đủ trên 3 tầng:
+     - `@miu/schema/multiplayer`: Protocol WebSocket (`welcome`, `spawn`, `move`, `emote`, `chat`, `despawn`).
+     - `apps/server/src/multiplayer`: `MultiplayerHub` quản lý room theo `mapId` và `BotRunner` điều phối bot cho 5 map chính (`trung-tam`, `truong-hoc`, `lang-ven-song`, `cho-phien`, `khu-rung-bi-mat`).
+     - `apps/web/src/game/multiplayer`: `RemotePlayerManager` (tải model 3D, lerp vị trí mượt mà, bóng chat/emote), `MultiplayerClient` (kết nối WS qua Vite proxy `/api/ws`), và `MultiplayerNametag` (canvas sprite).
+   - Kiểm thử & chất lượng: 100% typecheck, ESLint, unit tests server/schema/web pass (455 test files, 5931 tests).
+4. **Việc nhỏ hoàn thiện**:
+   - [XONG] Dọn CSS bản đồ cũ trong `game.css` (loại bỏ các class `.minimap-sheet`, `.minimap-legend`, v.v. đã được thay bằng `map-sheet.css`).
+   - [XONG] Ảnh nhân vật mới trong hộp thoại: bổ sung 19 icon Fluent Emoji 3D (gấu, chó, mèo, thỏ, cáo, khỉ, chim, dơi, người tuyết, rô bốt, nông dân, hải cẩu, cánh cụt, cua, bò, lợn, gà, v.v.) và mở rộng logic `NpcPortrait` theo target prefix & regex tên.
+   - [XONG] Danh hiệu ở màn Hồ sơ: hiển thị panel "Danh hiệu" (`profile-titles`) cùng các huy hiệu danh hiệu đạt được từ rương khu vực.
+   - [XONG] Tiến độ "Quà trò chơi" ở thẻ kết thúc minigame: hiển thị thanh/mốc tiến độ bậc minigame khu vực (`reward.tier.minigames`) khi hoàn thành minigame.
+   - Còn lại: bến xe cỡ thật và dời bến đò ra sông (dựng lại map), đo hiệu năng iPad (draw call 164 khi xe buýt qua phố trường).
+
+

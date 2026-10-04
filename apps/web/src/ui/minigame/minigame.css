@@ -112,8 +112,10 @@
 .minigame-line { margin: 0; font-size: var(--text-lg); font-weight: 700; }
 .minigame-payout { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); margin: 0; font-weight: 700; }
 .minigame-level { background: var(--color-badge); color: var(--color-badge-ink); }
+.minigame-region-progress { display: inline-flex; align-items: center; gap: var(--space-xs); padding: var(--space-xs) var(--space-md); border: 2px solid var(--color-field-line); border-radius: var(--radius-pill); background: var(--color-field); color: var(--color-ink); font-weight: 700; font-size: var(--text-sm); }
 .minigame-actions { display: grid; gap: var(--space-sm); }
 .minigame-actions--row { grid-template-columns: 1fr 1fr; }
+
 
 @media (prefers-reduced-motion: reduce) {
   .minigame-countdown { animation: none; }

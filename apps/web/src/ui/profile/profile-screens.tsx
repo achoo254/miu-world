@@ -10,6 +10,7 @@ import { buttonClass } from '../kit/button';
 import { SkyScene } from '../kit/sky-scene';
 import { PlayerBadge } from '../player/player-badge';
 import { say, usePlayer, type PlayerData } from '../player/player-data';
+import { useRegionRewardList } from '../region/region-rewards';
 import '../region/region.css';
 import '../rewards/rewards.css';
 
@@ -66,6 +67,8 @@ export function BackpackScreen() {
 
 export function ProfileScreen() {
   const { data, error } = usePlayer();
+  const rewards = useRegionRewardList();
+  const titles = rewards?.titles ?? [];
   const { t } = useT();
   return (
     <Page data={data} error={error}>
@@ -96,6 +99,22 @@ export function ProfileScreen() {
                 </section>
               ))}
             </section>
+            {titles.length > 0 ? (
+              <section className="panel" aria-labelledby="titles-title" data-id="profile-titles">
+                <h2 id="titles-title" className="panel-title">
+                  <Icon name="trophy" size={36} />
+                  <T k="profile.titles" />
+                </h2>
+                <ul className="profile-title-list">
+                  {titles.map((title) => (
+                    <li key={title} className="profile-title-chip" data-id={`profile-title-${title}`}>
+                      <Icon name="glowingStar" size={24} />
+                      <span>{title}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
             <section className="panel" aria-labelledby="collection-title" data-id="profile-collection">
               <h2 id="collection-title" className="panel-title">
                 <Icon name="glowingStar" size={36} />

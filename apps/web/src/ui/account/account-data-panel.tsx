@@ -1,4 +1,3 @@
-// Khu phụ huynh: quyền với dữ liệu (tải về, xóa tài khoản). Theo visual language M1–M3, hướng A.
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { z } from 'zod';
@@ -6,6 +5,7 @@ import { AccountExport } from '@miu/schema/account';
 import { api } from '../api-client';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
+import { T } from '../i18n/use-t';
 import { useAccount } from './account-context';
 import { useSubmit } from './use-submit';
 
@@ -36,29 +36,29 @@ export function AccountDataPanel() {
     <section className="panel" data-id="parent-data" aria-labelledby="parent-data-title">
       <div className="panel-title">
         <Icon name="heart" size={40} />
-        <h2 id="parent-data-title">Dữ liệu của bạn</h2>
+        <h2 id="parent-data-title"><T k="parentData.title" /></h2>
       </div>
       <p className="hint">
-        Xem chúng tôi lưu gì ở trang <Link to="/privacy">Quyền riêng tư</Link>.
+        Xem chúng tôi lưu gì ở trang <Link to="/privacy"><T k="auth.privacyLink" /></Link>.
       </p>
       <div className="row">
         <button type="button" className={buttonClass('secondary')} data-id="parent-data-export" disabled={download.busy} onClick={() => void download.onSubmit()}>
-          Tải dữ liệu của tôi
+          <T k="parentData.exportButton" />
         </button>
         {confirming ? null : (
           <button type="button" className={buttonClass('danger')} data-id="parent-data-delete" onClick={() => setConfirming(true)}>
-            Xóa tài khoản
+            <T k="parentData.deleteAccountButton" />
           </button>
         )}
       </div>
       {confirming ? (
         <div className="row" role="group" aria-label="Xác nhận xóa tài khoản">
-          <p>Xóa hẳn tài khoản, mọi hồ sơ và toàn bộ tiến độ của bé? Không khôi phục được.</p>
+          <p><T k="parentData.deleteConfirmQuestion" /></p>
           <button type="button" className={buttonClass('danger')} data-id="parent-data-delete-confirm" disabled={remove.busy} onClick={() => void remove.onSubmit()}>
-            Xóa hẳn tài khoản
+            <T k="parentData.deleteConfirmButton" />
           </button>
           <button type="button" className={buttonClass('ghost')} onClick={() => setConfirming(false)}>
-            Không
+            <T k="parent.noButton" />
           </button>
         </div>
       ) : null}

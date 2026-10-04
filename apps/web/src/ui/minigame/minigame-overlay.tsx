@@ -20,6 +20,7 @@ import { StarRating } from '../kit/star-rating';
 import { assetUrl } from '../kit/ui-art';
 import { BoosterChoice, boosterHelps, ownedBoosters, type OwnedBooster } from '../shop/booster-choice';
 import { loadShop, requestId, shopErrorMessage, spendBooster } from '../shop/shop-api';
+import { useRegionRewards } from '../region/region-rewards';
 import { playCue } from '../sound/sfx';
 import type { MinigameModule } from './define-minigame';
 import { MinigameStage, type StageHud } from './minigame-stage';
@@ -421,6 +422,7 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
               <Bi vi={result.line.vi} en={result.line.en} />
             </p>
             {result.won ? <Payout payout={payout} onRetry={() => void send(result.score)} /> : null}
+            {region ? <RegionMinigameProgress region={region} /> : null}
           </div>
           <div className="minigame-actions minigame-actions--row">
             <button type="button" className={buttonClass('secondary', { block: true })} data-id="minigame-again" onClick={again} disabled={payout.state === 'sending'}>
@@ -433,6 +435,20 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
         </Modal>
       ) : null}
     </div>
+  );
+}
+
+function RegionMinigameProgress({ region }: { region: string }) {
+  const rewards = useRegionRewards(region);
+  const mgTier = rewards?.tiers.find((t) => t.tier === 'minigames');
+  if (!mgTier || mgTier.claimed) return null;
+  return (
+    <p className="minigame-region-progress" data-id="minigame-region-progress">
+      <Icon name="gift" size={20} />
+      <span>
+        <T k="reward.tier.minigames" />: {Math.min(mgTier.progress, mgTier.goal)}/{mgTier.goal}
+      </span>
+    </p>
   );
 }
 

@@ -60,6 +60,8 @@ import { createWorldEvents } from './scene/world-events';
 import { HORIZON_REACH } from './world/horizon-mesh';
 import { loadWorldData } from './world/world-data';
 import { createWorldRenderer } from './world/world-renderer';
+import { MultiplayerClient } from './multiplayer/multiplayer-client';
+import { RemotePlayerManager } from './multiplayer/remote-player-manager';
 import './game.css';
 
 
@@ -425,8 +427,40 @@ export class Game {
     if (heldMood === 'dusk' || heldMood === 'night' || heldMood === 'cave') events.holdMood(heldMood);
     props.setViewDistance(quality.viewDistance);
     props.buildAround(start[0] ?? 0, start[2] ?? 0);
-    this.cleanups.push(() => props.dispose());
     scene.add(character.root, props.group, life.group, confetti.mesh, ...targets.map((t) => t.root));
+
+    const remotePlayers = new RemotePlayerManager(loader, ground);
+    scene.add(remotePlayers.group);
+    this.cleanups.push(() => remotePlayers.dispose());
+
+    const multiplayer = new MultiplayerClient(
+      mapId,
+      {
+        displayName: this.options.playerName ?? 'bạn',
+        isBot: false,
+        species: this.options.species ?? DEFAULT_SPECIES,
+        outfit,
+        pet: this.options.pet ?? null,
+        x: start[0] ?? 0,
+        y: start[1] ?? 0,
+        z: start[2] ?? 0,
+        yaw: entities.spawn.yaw,
+        speed: 0,
+        action: 'idle',
+        bubble: null,
+      },
+      {
+        onWelcome: (players) => {
+          for (const p of players) void remotePlayers.spawn(p);
+        },
+        onSpawn: (p) => void remotePlayers.spawn(p),
+        onMove: (update) => remotePlayers.updateMove(update),
+        onEmote: (id, emote) => remotePlayers.playEmote(id, emote),
+        onChat: (id, text) => remotePlayers.sayChat(id, text),
+        onDespawn: (id) => remotePlayers.despawn(id),
+      },
+    );
+    this.cleanups.push(() => multiplayer.dispose());
     // The minimap (top right, under the menu): the map from above, its gates, the child's home on her map.
     const playerName = this.options.playerName ?? 'bạn';
     const regionName = (id: string): string | undefined => {
@@ -783,6 +817,15 @@ export class Game {
       const nearAmbient = nearest ? null : life.nearest(controller.position);
       // A still review shot gathers the nearest people and animals round what it looks at, not round the child.
       life.update(dt, reviewShot && !reviewShot.live ? reviewShot.target : controller.position, nearest !== null, { calls: renderer.info.render.calls, triangles: renderer.info.render.triangles });
+      remotePlayers.update(dt);
+      multiplayer.sendUpdate(
+        controller.position.x,
+        controller.position.y,
+        controller.position.z,
+        controller.facing,
+        ride.riding ? 0 : controller.speed,
+        ride.riding ? 'sit' : controller.speed > 0.1 ? 'walk' : 'idle',
+      );
       if (nearest !== promptTarget || nearAmbient !== promptAmbient) {
         promptTarget = nearest;
         promptAmbient = nearAmbient;
@@ -829,6 +872,7 @@ export class Game {
         celebrateRequested = false;
         life.celebrate(controller.position);
         pet?.celebrate();
+        multiplayer.sendEmote('cheer');
         if (!reducedMotion) confetti.burst(controller.position);
       }
       confetti.update(dt);

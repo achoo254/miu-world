@@ -71,6 +71,7 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
       const character = characterRows.find((c) => c.childId === p.id);
       return {
         displayName: p.displayName,
+        language: (p.language ?? 'vi') as 'vi' | 'en' | 'both',
         createdAt: iso(p.createdAt),
         character: character ? { species: character.species, name: character.name, equipped: character.equipped, pet: character.pet } : null,
         quests: (quests.get(p.id) ?? []).map((q) => ({

@@ -7,6 +7,7 @@ import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
 import { T } from '../i18n/use-t';
+import { CompanionBotSetting } from './bot-setting';
 import { LanguageSetting, VoiceSpeedSetting } from './language-setting';
 import { SoundToggle } from './sound-toggle';
 
@@ -21,6 +22,7 @@ export function PauseScreen({ onResume, onRescue, homePath }: { onResume: () => 
         <SoundToggle dataId="pause-sound" />
         <LanguageSetting dataId="pause-language" />
         <VoiceSpeedSetting dataId="pause-voice" />
+        <CompanionBotSetting dataId="pause-bots" />
         <button type="button" className={buttonClass('secondary', { block: true })} data-id="pause-rescue" onClick={onRescue}>
           <Icon name="ringBuoy" size={32} />
           <T k="pause.rescue" />

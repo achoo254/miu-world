@@ -2,7 +2,7 @@ import { randomUUID } from 'node:crypto';
 import { and, asc, count, eq } from 'drizzle-orm';
 import { Router } from 'express';
 import { z } from 'zod';
-import { ChildProfileDto, ChildProfileInput, Id } from '@miu/schema/account';
+import { ChildLanguage, ChildProfileDto, ChildProfileInput, Id } from '@miu/schema/account';
 import { hasCurrentConsent } from '../auth/consent-store';
 import { auth, requireParent, requireParentGate } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
@@ -14,6 +14,12 @@ export const MAX_CHILD_PROFILES = 3;
 export const DEFAULT_CHARACTER_NAME = 'Miu';
 /** Same as the `characters.species` column default. */
 const DEFAULT_SPECIES = 'cat';
+
+const ChildLanguageUpdate = z.object({ language: ChildLanguage });
+const ChildProfilePatchInput = z.object({
+  displayName: z.string().min(1).max(40).transform((s) => s.normalize('NFC')).optional(),
+  language: ChildLanguage.optional(),
+});
 
 export interface ChildProfileRouteDeps {
   db: Db;
@@ -34,11 +40,6 @@ export function childProfileRoutes({ db, content, clock }: ChildProfileRouteDeps
   const router = Router();
   const gate = requireParentGate(clock);
 
-  function displayName(input: unknown): string {
-    const { displayName: name } = parseInput(ChildProfileInput, input);
-    if (!content.childDisplayNames.has(name)) throw new HttpError(400, 'invalid-display-name');
-    return name;
-  }
 
   /** Every lookup is scoped by parent: another family's profile is indistinguishable from a missing one. */
   async function ownedProfile(parentId: string, id: string) {
@@ -68,7 +69,8 @@ export function childProfileRoutes({ db, content, clock }: ChildProfileRouteDeps
 
   router.post('/children', requireParent, gate, async (req, res) => {
     const { parent } = auth(res);
-    const name = displayName(req.body);
+    const input = parseInput(ChildProfileInput, req.body);
+    if (!content.childDisplayNames.has(input.displayName)) throw new HttpError(400, 'invalid-display-name');
     if (!(await hasCurrentConsent(db, parent.id, content.consent.version))) throw new HttpError(403, 'consent-required');
     const created = await db.transaction(async (tx) => {
       // Lock the parent row so two concurrent creates cannot both pass the profile limit.
@@ -77,7 +79,7 @@ export function childProfileRoutes({ db, content, clock }: ChildProfileRouteDeps
       if ((existing?.n ?? 0) >= MAX_CHILD_PROFILES) throw new HttpError(409, 'profile-limit');
       const [row] = await tx
         .insert(childProfiles)
-        .values({ id: randomUUID(), parentId: parent.id, displayName: name, createdAt: clock() })
+        .values({ id: randomUUID(), parentId: parent.id, displayName: input.displayName, language: input.language ?? 'vi', createdAt: clock() })
         .returning();
       if (!row) throw new Error('profile insert returned no row');
       const [character] = await tx.insert(characters).values({ childId: row.id, name: DEFAULT_CHARACTER_NAME }).returning({ species: characters.species });
@@ -90,10 +92,31 @@ export function childProfileRoutes({ db, content, clock }: ChildProfileRouteDeps
   router.patch('/children/:id', requireParent, gate, async (req, res) => {
     const { parent } = auth(res);
     const id = profileId(req.params.id);
-    const name = displayName(req.body);
+    const patch = parseInput(ChildProfilePatchInput, req.body);
+    if (patch.displayName !== undefined && !content.childDisplayNames.has(patch.displayName)) {
+      throw new HttpError(400, 'invalid-display-name');
+    }
+    const updateValues: Partial<typeof childProfiles.$inferInsert> = {};
+    if (patch.displayName !== undefined) updateValues.displayName = patch.displayName;
+    if (patch.language !== undefined) updateValues.language = patch.language;
+    if (Object.keys(updateValues).length === 0) throw new HttpError(400, 'empty-patch');
     const [row] = await db
       .update(childProfiles)
-      .set({ displayName: name })
+      .set(updateValues)
+      .where(and(eq(childProfiles.id, id), eq(childProfiles.parentId, parent.id)))
+      .returning();
+    if (!row) throw new HttpError(404, 'not-found');
+    res.json(toDto(row, await speciesOf(row.id)));
+  });
+
+  /** Changing language is child-friendly: no parent gate required, only parent authentication and ownership. */
+  router.patch('/children/:id/language', requireParent, async (req, res) => {
+    const { parent } = auth(res);
+    const id = profileId(req.params.id);
+    const { language } = parseInput(ChildLanguageUpdate, req.body);
+    const [row] = await db
+      .update(childProfiles)
+      .set({ language })
       .where(and(eq(childProfiles.id, id), eq(childProfiles.parentId, parent.id)))
       .returning();
     if (!row) throw new HttpError(404, 'not-found');

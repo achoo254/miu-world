@@ -1,5 +1,3 @@
-// NEW SCREEN (Master Plan §6): cổng phụ huynh bằng mã PIN. Chưa có mock riêng; theo visual language
-// M1–M3, hướng A (đảo mây kẹo hồng), bàn phím số lớn cho iPad.
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { z } from 'zod';
@@ -8,6 +6,7 @@ import { api } from '../api-client';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { PinPad } from '../kit/pin-pad';
+import { T } from '../i18n/use-t';
 import { useAccount } from './account-context';
 import { GOOGLE_SIGN_IN } from './sign-in-screens';
 import { useSubmit } from './use-submit';
@@ -17,12 +16,12 @@ function PinLockedRelogin() {
   return (
     <section className="panel gate-panel" data-id="parent-gate-locked">
       <Icon name="locked" size={56} />
-      <h2>Khu phụ huynh</h2>
+      <h2><T k="gate.title" /></h2>
       <p role="alert" className="error">
-        Mã PIN bị khóa do nhập sai nhiều lần. Đăng nhập lại bằng Google để mở lại.
+        <T k="gate.pinLockedMessage" />
       </p>
       <a className={buttonClass('primary', { block: true })} href={`${GOOGLE_SIGN_IN}?intent=reauth`} data-id="parent-gate-relogin-google">
-        Đăng nhập lại bằng Google
+        <T k="gate.reloginGoogle" />
       </a>
     </section>
   );
@@ -41,9 +40,9 @@ export function ParentGate() {
   return (
     <form className="panel gate-panel" data-id="parent-gate" onSubmit={(e) => void form.onSubmit(e)}>
       <Icon name="key" size={56} />
-      <h2>Khu phụ huynh</h2>
+      <h2><T k="gate.title" /></h2>
       <label className="field-label">
-        Nhập mã PIN phụ huynh
+        <T k="gate.enterPinPrompt" />
         <input
           className="pin-input"
           data-id="parent-gate-pin"
@@ -58,7 +57,7 @@ export function ParentGate() {
       <PinPad value={pin} onChange={setPin} />
       {form.error ? <p role="alert" className="error">{form.error}</p> : null}
       <button className={buttonClass('primary', { block: true })} data-id="parent-gate-submit" type="submit" disabled={form.busy}>
-        Mở khóa
+        <T k="gate.unlock" />
       </button>
     </form>
   );
@@ -74,7 +73,7 @@ export function SignOutButton() {
   });
   return (
     <button type="button" className={buttonClass('ghost')} data-id="sign-out" disabled={form.busy} onClick={() => void form.onSubmit()}>
-      Đăng xuất
+      <T k="gate.signOut" />
     </button>
   );
 }

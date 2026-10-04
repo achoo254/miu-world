@@ -24,13 +24,14 @@ describe('child profiles', () => {
     await agent.post('/api/children').send({ displayName: 'Nguyễn Văn A' }).expect(400, { error: 'invalid-display-name' });
     await agent.post('/api/children').send({ displayName: 'Mèo Mây', age: 7, school: 'x' }).expect(201);
     const [row] = await app.db.select().from(t.childProfiles).orderBy(sql`created_at desc`).limit(1);
-    expect(Object.keys(row ?? {}).sort()).toEqual(['createdAt', 'displayName', 'id', 'parentId']);
+    expect(Object.keys(row ?? {}).sort()).toEqual(['createdAt', 'displayName', 'id', 'language', 'parentId']);
   });
 
   it('accepts a decomposed (NFD) spelling of a listed name', async () => {
     const { agent } = await parentWithChild(app, false);
     const res = await agent.post('/api/children').send({ displayName: 'Mèo Mây'.normalize('NFD') }).expect(201);
     expect(res.body.displayName).toBe('Mèo Mây'.normalize('NFC'));
+    expect(res.body.language).toBe('vi');
   });
 
   it('caps profiles at 3, also under concurrent requests', async () => {
@@ -63,6 +64,15 @@ describe('child profiles', () => {
     await agent.get('/api/children').expect(200);
   });
 
+  it('allows child to update language without parent gate', async () => {
+    const { agent, childId } = await parentWithChild(app);
+    await agent.post('/api/parent-gate/lock').expect(200);
+    const res = await agent.patch(`/api/children/${childId}/language`).send({ language: 'both' }).expect(200);
+    expect(res.body.language).toBe('both');
+    const [row] = await app.db.select().from(t.childProfiles).where(eq(t.childProfiles.id, childId));
+    expect(row?.language).toBe('both');
+  });
+
   it('closes the parent area when a profile is picked for play', async () => {
     const { agent, childId } = await parentWithChild(app);
     expect((await agent.get('/api/auth/me').expect(200)).body.parentGateOpen).toBe(true);
@@ -79,9 +89,9 @@ describe('child profiles', () => {
     await agent.post(`/api/children/${childId}/select`).expect(403, { error: 'consent-required' });
   });
 
-  it('renames within the list', async () => {
+  it('renames within the list and updates language under parent gate', async () => {
     const { agent, childId } = await parentWithChild(app);
-    await agent.patch(`/api/children/${childId}`).send({ displayName: 'Sao Nhỏ' }).expect(200, { id: childId, displayName: 'Sao Nhỏ', species: 'cat' });
+    await agent.patch(`/api/children/${childId}`).send({ displayName: 'Sao Nhỏ', language: 'en' }).expect(200, { id: childId, displayName: 'Sao Nhỏ', species: 'cat', language: 'en' });
     await agent.patch(`/api/children/${childId}`).send({ displayName: 'Bé Na' }).expect(400);
   });
 

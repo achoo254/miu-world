@@ -140,4 +140,25 @@ describe('backpack and profile', () => {
     expect(document.querySelector('[data-id="collection-la-than"]')?.getAttribute('data-owned')).toBe('true');
     expect(screen.getAllByText('Sắp có')).toHaveLength(2);
   });
+
+  it('shows earned region chest titles in a dedicated panel', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url: string) => {
+        if (url === '/api/character') return new Response(JSON.stringify(CHARACTER), { status: 200 });
+        if (url === '/api/progress') return new Response(JSON.stringify(DATA.progress), { status: 200 });
+        if (url === '/api/region-rewards') return new Response(JSON.stringify({ regions: [], titles: ['Nhà thám hiểm rừng xanh', 'Bạn thân của dòng sông'] }), { status: 200 });
+        return new Response(JSON.stringify({ quests: DATA.quests }), { status: 200 });
+      }),
+    );
+    render(
+      <MemoryRouter>
+        <ProfileScreen />
+      </MemoryRouter>,
+    );
+    expect(await screen.findByText('Danh hiệu')).toBeTruthy();
+    expect(screen.getByText('Nhà thám hiểm rừng xanh')).toBeTruthy();
+    expect(screen.getByText('Bạn thân của dòng sông')).toBeTruthy();
+  });
 });
+

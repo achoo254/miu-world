@@ -33,9 +33,13 @@ export const childProfiles = pgTable(
       .notNull()
       .references(() => parents.id, { onDelete: 'cascade' }),
     displayName: text('display_name').notNull(),
+    language: text('language').notNull().default('vi'),
     createdAt: createdAt(),
   },
-  (t) => [index('child_profiles_parent_idx').on(t.parentId)],
+  (t) => [
+    index('child_profiles_parent_idx').on(t.parentId),
+    check('child_profiles_language_valid', sql`${t.language} in ('vi', 'en', 'both')`),
+  ],
 );
 
 export const sessions = pgTable(

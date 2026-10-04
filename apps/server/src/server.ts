@@ -6,6 +6,8 @@ import { loadConfig } from './config';
 import { loadContentCatalog } from './content/content-catalog';
 import { DEV_PGLITE_DIR, openPglite, openPostgres, type Db } from './db/client';
 import { childProfiles, parents } from './db/schema';
+import { BotRunner } from './multiplayer/bot-runner';
+import { MultiplayerHub } from './multiplayer/multiplayer-hub';
 
 const config = loadConfig();
 const pgliteDir = config.pgliteDir === null ? undefined : (config.pgliteDir ?? DEV_PGLITE_DIR);
@@ -27,6 +29,11 @@ async function describeDatabase(database: Db): Promise<string> {
 
 console.log(await describeDatabase(db));
 // Loopback only: the web dev/preview server proxies /api, so the API is never exposed on the LAN directly.
-app.listen(config.port, '127.0.0.1', () => {
+const server = app.listen(config.port, '127.0.0.1', () => {
   console.log(`miu server listening on :${config.port} (${config.nodeEnv})`);
 });
+
+const hub = new MultiplayerHub(server);
+const botRunner = new BotRunner(hub);
+botRunner.start();
+console.log('multiplayer hub and companion bot runner active');

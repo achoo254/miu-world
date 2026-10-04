@@ -1,27 +1,36 @@
 // NEW SCREEN (Master Plan §6, Tài khoản): đăng nhập / tạo tài khoản phụ huynh bằng Google, đặt PIN lần đầu.
 // Chưa có mock riêng; theo visual language M1–M3, hướng A (đảo mây kẹo hồng).
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router';
 import { MeResponse, ParentPin } from '@miu/schema/account';
 import { api } from '../api-client';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { SkyScene } from '../kit/sky-scene';
+import { T } from '../i18n/use-t';
+import { t, type TextKey } from '../i18n/i18n';
 import { useAccount } from './account-context';
 import { useSubmit } from './use-submit';
 
 /** Server-side OAuth: the browser just navigates; no Google script is loaded (CSP stays same-origin). */
 export const GOOGLE_SIGN_IN = '/api/auth/google/start';
 
-const CALLBACK_ERRORS: Record<string, string> = {
-  google: 'Đăng nhập Google chưa thành công. Thử lại nhé.',
-  'google-unavailable': 'Đăng nhập Google chưa được cấu hình trên máy chủ này.',
-  'google-conflict': 'Email này đang gắn với một tài khoản Google khác.',
-  'rate-limited': 'Thử quá nhiều lần. Đợi một lúc rồi thử lại nhé.',
-  'google-reauth': 'Cần nhập lại mật khẩu Google để mở khóa PIN. Thử lại nhé.',
+const callbackErrorKey = (code: string): TextKey => {
+  switch (code) {
+    case 'google-unavailable':
+      return 'auth.callback.unavailable';
+    case 'google-conflict':
+      return 'auth.callback.conflict';
+    case 'rate-limited':
+      return 'auth.callback.rateLimited';
+    case 'google-reauth':
+      return 'auth.callback.reauth';
+    default:
+      return 'auth.callback.google';
+  }
 };
 
-function GoogleSignIn({ title, hint, dataId, switchTo }: { title: string; hint: string; dataId: string; switchTo: { text: string; label: string; to: string } }) {
+function GoogleSignIn({ title, hint, dataId, switchTo }: { title: ReactNode; hint: ReactNode; dataId: string; switchTo: { text: ReactNode; label: ReactNode; to: string } }) {
   const [params] = useSearchParams();
   const error = params.get('error');
   return (
@@ -31,16 +40,16 @@ function GoogleSignIn({ title, hint, dataId, switchTo }: { title: string; hint: 
         <p className="hint">{hint}</p>
         {error ? (
           <p role="alert" className="error">
-            {CALLBACK_ERRORS[error] ?? CALLBACK_ERRORS.google}
+            <T k={callbackErrorKey(error)} />
           </p>
         ) : null}
         <a className={buttonClass('primary', { block: true })} href={GOOGLE_SIGN_IN} data-id={`${dataId}-google`}>
-          Đăng nhập bằng Google
+          <T k="auth.googleSignIn" />
         </a>
         <p className="note">
           <Icon name="heart" size={28} />
           <span>
-            Chúng tôi chỉ nhận email đã xác minh của tài khoản Google, không nhận tên, ảnh hay danh bạ. <Link to="/privacy">Quyền riêng tư</Link>
+            <T k="auth.privacyNote" /> <Link to="/privacy"><T k="auth.privacyLink" /></Link>
           </span>
         </p>
         <p className="hint">
@@ -55,9 +64,9 @@ export function LoginScreen() {
   return (
     <GoogleSignIn
       dataId="login"
-      title="Đăng nhập phụ huynh"
-      hint="Phụ huynh là chủ tài khoản; bé chơi bằng hồ sơ do phụ huynh tạo."
-      switchTo={{ text: 'Lần đầu dùng Miu World?', label: 'Tạo tài khoản phụ huynh', to: '/register' }}
+      title={<T k="auth.loginTitle" />}
+      hint={<T k="auth.loginHint" />}
+      switchTo={{ text: <T k="auth.firstTimePrompt" />, label: <T k="auth.createParentAccount" />, to: '/register' }}
     />
   );
 }
@@ -66,9 +75,9 @@ export function RegisterScreen() {
   return (
     <GoogleSignIn
       dataId="register"
-      title="Tạo tài khoản phụ huynh"
-      hint="Dùng tài khoản Google của phụ huynh. Lần đầu đăng nhập, bạn đặt mã PIN để khóa khu phụ huynh."
-      switchTo={{ text: 'Đã có tài khoản?', label: 'Đăng nhập', to: '/login' }}
+      title={<T k="auth.registerTitle" />}
+      hint={<T k="auth.registerHint" />}
+      switchTo={{ text: <T k="auth.haveAccountPrompt" />, label: <T k="auth.loginLink" />, to: '/login' }}
     />
   );
 }
@@ -84,15 +93,15 @@ export function SetPinScreen() {
     setMe(await api('POST', '/auth/pin', MeResponse, { pin }));
     navigate('/');
   });
-  const clientError = !ParentPin.safeParse(pin).success ? 'Mã PIN gồm 4 đến 6 chữ số.' : pin !== pinAgain ? 'Hai lần nhập mã PIN chưa khớp.' : null;
+  const clientError = !ParentPin.safeParse(pin).success ? 'Mã PIN gồm 4 đến 6 chữ số.' : pin !== pinAgain ? t('auth.pinMismatch') : null;
   return (
     <SkyScene hero>
       <main className="panel" data-id="set-pin">
         <div className="panel-title">
           <Icon name="key" size={44} />
-          <h1>Đặt mã PIN phụ huynh</h1>
+          <h1><T k="auth.setPinTitle" /></h1>
         </div>
-        <p className="hint">Mã PIN khóa khu phụ huynh (tạo, đổi tên, xóa hồ sơ của bé). Bé chơi không cần mã này.</p>
+        <p className="hint"><T k="auth.setPinHint" /></p>
         <form
           className="form"
           onSubmit={(e) => {
@@ -105,22 +114,22 @@ export function SetPinScreen() {
           }}
         >
           <label className="field-label">
-            Mã PIN (4–6 số)
+            <T k="auth.pinFieldLabel" />
             <input className="pin-input" data-id="set-pin-pin" type="password" inputMode="numeric" autoComplete="off" value={pin} onChange={(e) => setPin(e.target.value)} />
           </label>
           <label className="field-label">
-            Nhập lại mã PIN
+            <T k="auth.pinConfirmLabel" />
             <input className="pin-input" data-id="set-pin-again" type="password" inputMode="numeric" autoComplete="off" value={pinAgain} onChange={(e) => setPinAgain(e.target.value)} />
           </label>
           {touched && clientError ? <p role="alert" className="error">{clientError}</p> : null}
           {form.error ? <p role="alert" className="error">{form.error}</p> : null}
           <button className={buttonClass('primary', { block: true })} data-id="set-pin-submit" type="submit" disabled={form.busy}>
-            Lưu mã PIN
+            <T k="auth.savePin" />
           </button>
           <p className="hint">
             Mã PIN chỉ đặt được trong 15 phút sau khi đăng nhập. Quá thời gian?{' '}
             <a href={GOOGLE_SIGN_IN} data-id="set-pin-relogin">
-              Đăng nhập lại bằng Google
+              <T k="auth.googleSignIn" />
             </a>
           </p>
         </form>

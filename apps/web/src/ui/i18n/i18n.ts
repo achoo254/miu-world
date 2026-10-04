@@ -125,16 +125,42 @@ export function getLangMode(): LangMode {
   return current;
 }
 
-export function setLangMode(mode: LangMode): void {
+function syncLanguageToServer(childId: string, mode: LangMode): void {
+  if (typeof fetch === 'undefined') return;
+  void fetch(`/api/children/${childId}/language`, {
+    method: 'PATCH',
+    credentials: 'same-origin',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ language: mode }),
+  }).catch(() => {
+    // Best-effort server sync; local storage is the instant offline cache.
+  });
+}
+
+export function setLangMode(mode: LangMode, sync = true): void {
   writeKey(STORAGE_KEY, mode);
-  if (profile) writeKey(profileKey(profile), mode);
+  if (profile) {
+    writeKey(profileKey(profile), mode);
+    if (sync) syncLanguageToServer(profile, mode);
+  }
   apply(mode);
 }
 
 /** The selected child profile changed: her own choice applies (the device's until she makes one). */
-export function bindLangProfile(childId: string | null): void {
-  if (childId === profile) return;
+export function bindLangProfile(childId: string | null, serverLanguage?: LangMode | null): void {
+  if (childId === profile) {
+    if (childId && serverLanguage && isLangMode(serverLanguage) && !readKey(profileKey(childId))) {
+      writeKey(profileKey(childId), serverLanguage);
+      if (serverLanguage !== current) apply(serverLanguage);
+    }
+    return;
+  }
   profile = childId;
+  if (childId && serverLanguage && isLangMode(serverLanguage) && !readKey(profileKey(childId))) {
+    writeKey(profileKey(childId), serverLanguage);
+    if (serverLanguage !== current) apply(serverLanguage);
+    return;
+  }
   const mode = readStored();
   if (mode !== current) apply(mode);
 }

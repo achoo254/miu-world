@@ -10,6 +10,7 @@ import { REGION_CHEST_ICON, regionBackdropPath } from '../../../../../packages/s
 import { UI_ASSET_VERSIONS, versioned } from '../../asset-versions';
 
 const FLUENT = 'packs/fluent-emoji/1ffb34c752ec/icons';
+const FLUENT_MINI = 'packs/fluent-emoji/1ffb34c752ec/minigame';
 
 /** Fluent Emoji 3D (MIT), the icon set chosen in docs/design-guidelines.md. */
 export const UI_ICONS = {
@@ -17,13 +18,23 @@ export const UI_ICONS = {
   /** The HUD's ride toggle: from the emoji props (the same Fluent set). */
   automobile: 'packs/fluent-emoji/1ffb34c752ec/props/automobile.png',
   backpack: `${FLUENT}/backpack.png`,
+  bat: `${FLUENT_MINI}/bat.png`,
+  bear: `${FLUENT_MINI}/bear.png`,
   beaver: `${FLUENT}/beaver.png`,
+  bird: `${FLUENT_MINI}/bird.png`,
   books: `${FLUENT}/books.png`,
   candy: `${FLUENT}/candy.png`,
   catFace: `${FLUENT}/cat-face.png`,
   checkMark: `${FLUENT}/check-mark.png`,
+  chicken: `${FLUENT_MINI}/chicken.png`,
   clover: `${FLUENT}/clover.png`,
   coin: `${FLUENT}/coin.png`,
+  cow: `${FLUENT_MINI}/cow.png`,
+  crab: `${FLUENT_MINI}/crab.png`,
+  crown: `${FLUENT}/crown.png`,
+  dog: `${FLUENT_MINI}/dog.png`,
+  farmer: `${FLUENT_MINI}/farmer.png`,
+  fox: `${FLUENT_MINI}/fox.png`,
   gear: `${FLUENT}/gear.png`,
   gift: `${FLUENT}/gift.png`,
   glowingStar: `${FLUENT}/glowing-star.png`,
@@ -34,22 +45,32 @@ export const UI_ICONS = {
   leaf: `${FLUENT}/leaf.png`,
   locked: `${FLUENT}/locked.png`,
   map: `${FLUENT}/map.png`,
+  monkey: `${FLUENT_MINI}/monkey.png`,
+  panda: `${FLUENT_MINI}/panda.png`,
   parrot: `${FLUENT}/parrot.png`,
   package: `${FLUENT}/package.png`,
   pause: `${FLUENT}/pause.png`,
+  penguin: `${FLUENT_MINI}/penguin.png`,
+  pig: `${FLUENT_MINI}/pig.png`,
+  rabbit: `${FLUENT_MINI}/rabbit.png`,
   redApple: `${FLUENT}/red-apple.png`,
+  robot: `${FLUENT_MINI}/robot.png`,
   rock: `${FLUENT}/rock.png`,
   ringBuoy: `${FLUENT}/ring-buoy.png`,
   runningShoe: `${FLUENT}/running-shoe.png`,
   basket: `${FLUENT}/basket.png`,
   scroll: `${FLUENT}/scroll.png`,
+  seal: `${FLUENT_MINI}/seal.png`,
+  snowman: `${FLUENT_MINI}/snowman.png`,
   sparkles: `${FLUENT}/sparkles.png`,
   speaker: `${FLUENT}/speaker.png`,
   speakerMuted: `${FLUENT}/speaker-muted.png`,
   star: `${FLUENT}/star.png`,
   tree: `${FLUENT}/tree.png`,
+  trophy: `${FLUENT}/trophy.png`,
   unlocked: `${FLUENT}/unlocked.png`,
 } as const;
+
 
 /** Poses rendered for every character (tools/assets/render-preview.ts `UI_CLIPS`). */
 const POSES = ['wave', 'cheer', 'idle'] as const;

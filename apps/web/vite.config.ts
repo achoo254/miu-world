@@ -57,7 +57,10 @@ function assetVersionDefines(): Record<string, string> {
 }
 
 // xfwd: the server trusts X-Forwarded-For from loopback so rate limits see the real client IP.
-const apiProxy = { '/api': { target: API_TARGET, changeOrigin: false, xfwd: true } };
+const apiProxy = {
+  '/api/ws': { target: API_TARGET, ws: true, changeOrigin: false },
+  '/api': { target: API_TARGET, changeOrigin: false, xfwd: true },
+};
 /**
  * Extra Host names the dev/preview server accepts (e.g. a review tunnel), comma-separated in
  * MIU_PUBLIC_HOSTS. Vite rejects unknown hosts by default (DNS-rebinding protection); keep that.

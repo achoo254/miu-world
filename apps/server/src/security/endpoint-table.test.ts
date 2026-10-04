@@ -76,7 +76,7 @@ describe('endpoint table', () => {
     for (const route of childRoutes) {
       const [method = 'GET', path = ''] = route.split(' ');
       const call = b.agent[method.toLowerCase() as 'get' | 'post' | 'patch' | 'delete'](fill(path, a.childId));
-      const res = method === 'PATCH' ? await call.send({ displayName: 'Thỏ Bông' }) : await call;
+      const res = method === 'PATCH' ? await call.send({ displayName: 'Thỏ Bông', language: 'en' }) : await call;
       if (res.status !== 404) reached.push(`${route} → ${res.status}`);
     }
     expect(reached).toEqual([]);

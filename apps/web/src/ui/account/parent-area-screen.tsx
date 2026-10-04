@@ -1,16 +1,15 @@
-// NEW SCREEN (Master Plan §6, Tài khoản): khu phụ huynh — tạo, đổi tên, xóa hồ sơ trẻ, rồi khóa lại và đưa máy cho bé.
-// Chưa có mock riêng; theo visual language M1–M3, hướng A (đảo mây kẹo hồng). Việc chính xếp thành 2 bước đánh số;
-// phiếu viết và dữ liệu tài khoản là phần phụ, nằm dưới.
 import { useEffect, useRef, useState, type Ref } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { z } from 'zod';
-import { ChildProfileDto, MeResponse } from '@miu/schema/account';
+import { ChildLanguage, ChildProfileDto, MeResponse } from '@miu/schema/account';
 import { NameList } from '@miu/schema/content';
 import displayNamesJson from '../../../../../content/names/child-display-names.json';
 import { api } from '../api-client';
 import { Icon, MiuArt } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { MiuOnIsland, SkyScene } from '../kit/sky-scene';
+import { bindLangProfile, type TextKey } from '../i18n/i18n';
+import { T, useT } from '../i18n/use-t';
 import { AccountDataPanel } from './account-data-panel';
 import { useAccount } from './account-context';
 import { ParentGate } from './parent-gate';
@@ -20,6 +19,12 @@ import { useSubmit } from './use-submit';
 /** Same list the server validates against; the child never types a name (Master Plan §9). */
 export const DISPLAY_NAMES = NameList.parse(displayNamesJson).names;
 
+const LANG_LABELS: Record<ChildLanguage, TextKey> = {
+  vi: 'parent.languageVi',
+  en: 'parent.languageEn',
+  both: 'parent.languageBoth',
+};
+
 /** First name no profile uses yet, so a new profile does not default to a sibling's name. */
 function firstFreeName(profiles: ChildProfileDto[]): string {
   const taken = new Set(profiles.map((p) => p.displayName));
@@ -27,8 +32,9 @@ function firstFreeName(profiles: ChildProfileDto[]): string {
 }
 
 function NamePicker({ value, onChange, id, ref }: { value: string; onChange(name: string): void; id: string; ref?: Ref<HTMLSelectElement> }) {
+  const { t } = useT();
   return (
-    <select ref={ref} data-id={id} value={value} onChange={(e) => onChange(e.target.value)} aria-label="Tên hiển thị">
+    <select ref={ref} data-id={id} value={value} onChange={(e) => onChange(e.target.value)} aria-label={t('parent.displayNameLabel')}>
       {DISPLAY_NAMES.map((n) => (
         <option key={n} value={n}>
           {n}
@@ -38,8 +44,19 @@ function NamePicker({ value, onChange, id, ref }: { value: string; onChange(name
   );
 }
 
+function LanguagePicker({ value, onChange, id }: { value: ChildLanguage; onChange(lang: ChildLanguage): void; id: string }) {
+  const { t } = useT();
+  return (
+    <select data-id={id} value={value} onChange={(e) => onChange(e.target.value as ChildLanguage)} aria-label={t('parent.languageLabel')}>
+      <option value="vi">{t('parent.languageVi')}</option>
+      <option value="en">{t('parent.languageEn')}</option>
+      <option value="both">{t('parent.languageBoth')}</option>
+    </select>
+  );
+}
+
 /** Numbered step heading; the number turns into a tick once the step is done. */
-function StepTitle({ n, done, id, children }: { n: number; done: boolean; id: string; children: string }) {
+function StepTitle({ n, done, id, children }: { n: number; done: boolean; id: string; children: React.ReactNode }) {
   return (
     <div className="panel-title">
       <span className={done ? 'step-num step-num--done' : 'step-num'} aria-hidden="true">
@@ -56,9 +73,12 @@ function StepTitle({ n, done, id, children }: { n: number; done: boolean; id: st
 function ProfileRow({ profile, index, onChanged }: { profile: ChildProfileDto; index: number; onChanged(): Promise<void> }) {
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(profile.displayName);
+  const [lang, setLang] = useState<ChildLanguage>(profile.language ?? 'vi');
   const [confirming, setConfirming] = useState(false);
   const rename = useSubmit(async () => {
-    await api('PATCH', `/children/${profile.id}`, ChildProfileDto, { displayName: name });
+    const body = lang !== (profile.language ?? 'vi') ? { displayName: name, language: lang } : { displayName: name };
+    await api('PATCH', `/children/${profile.id}`, ChildProfileDto, body);
+    bindLangProfile(profile.id, lang);
     await onChanged();
     setEditing(false);
   });
@@ -77,6 +97,7 @@ function ProfileRow({ profile, index, onChanged }: { profile: ChildProfileDto; i
   }, [editing]);
   const startEditing = () => {
     setName(profile.displayName);
+    setLang(profile.language ?? 'vi');
     setConfirming(false);
     setEditing(true);
   };
@@ -89,33 +110,35 @@ function ProfileRow({ profile, index, onChanged }: { profile: ChildProfileDto; i
         {editing ? (
           <form className="row" aria-label={`Đổi tên ${profile.displayName}`} onSubmit={(e) => void rename.onSubmit(e)}>
             <NamePicker ref={pickerRef} id={`parent-profile-name-${profile.id}`} value={name} onChange={setName} />
-            <button type="submit" className={buttonClass('primary', { small: true })} data-id={`parent-profile-rename-save-${profile.id}`} disabled={rename.busy || name === profile.displayName}>
-              Lưu tên
+            <LanguagePicker id={`parent-profile-lang-${profile.id}`} value={lang} onChange={setLang} />
+            <button type="submit" className={buttonClass('primary', { small: true })} data-id={`parent-profile-rename-save-${profile.id}`} disabled={rename.busy || (name === profile.displayName && lang === (profile.language ?? 'vi'))}>
+              <T k="parent.saveNameButton" />
             </button>
             <button type="button" className={buttonClass('ghost', { small: true })} onClick={() => setEditing(false)}>
-              Hủy
+              <T k="parent.cancelButton" />
             </button>
           </form>
         ) : (
           <>
             <p className="profile-row-name">{profile.displayName}</p>
+            <p className="profile-row-lang"><T k={LANG_LABELS[profile.language ?? 'vi'] ?? 'parent.languageVi'} /></p>
             <div className="row">
               <button ref={renameRef} type="button" className={buttonClass('secondary', { small: true })} data-id={`parent-profile-rename-${profile.id}`} onClick={startEditing}>
-                Đổi tên
+                <T k="parent.renameButton" />
               </button>
               {confirming ? (
                 <>
-                  <span>Xóa hẳn hồ sơ và toàn bộ tiến độ?</span>
+                  <span><T k="parent.deleteConfirmQuestion" /></span>
                   <button type="button" className={buttonClass('danger', { small: true })} data-id={`parent-profile-delete-confirm-${profile.id}`} disabled={remove.busy} onClick={() => void remove.onSubmit()}>
-                    Xóa hẳn
+                    <T k="parent.deleteConfirmButton" />
                   </button>
                   <button type="button" className={buttonClass('ghost', { small: true })} onClick={() => setConfirming(false)}>
-                    Không
+                    <T k="parent.noButton" />
                   </button>
                 </>
               ) : (
                 <button type="button" className={buttonClass('danger', { small: true })} data-id={`parent-profile-delete-${profile.id}`} onClick={() => setConfirming(true)}>
-                  Xóa
+                  <T k="parent.deleteButton" />
                 </button>
               )}
             </div>
@@ -134,11 +157,15 @@ export function ParentAreaScreen() {
   const { profiles, error, reload } = useProfiles();
   // null = not picked yet: follow the first free name, which moves on after each new profile.
   const [picked, setPicked] = useState<string | null>(null);
+  const [newLang, setNewLang] = useState<ChildLanguage>('vi');
   const newName = picked ?? firstFreeName(profiles ?? []);
   const create = useSubmit(async () => {
-    await api('POST', '/children', ChildProfileDto, { displayName: newName });
+    const body = newLang !== 'vi' ? { displayName: newName, language: newLang } : { displayName: newName };
+    const created = await api('POST', '/children', ChildProfileDto, body);
+    bindLangProfile(created.id, created.language);
     await reload();
     setPicked(null);
+    setNewLang('vi');
   });
   const leave = useSubmit(async () => {
     setMe(await api('POST', '/parent-gate/lock', MeResponse));
@@ -151,7 +178,7 @@ export function ParentAreaScreen() {
       <SkyScene>
         <main className="panel consent-panel">
           <p>
-            Phụ huynh cần <Link to="/consent">đồng ý</Link> trước khi tạo hồ sơ.
+            Phụ huynh cần <Link to="/consent"><T k="parent.consentLink" /></Link> trước khi tạo hồ sơ.
           </p>
         </main>
       </SkyScene>
@@ -161,12 +188,12 @@ export function ParentAreaScreen() {
     return (
       <SkyScene>
         <main className="gate-layout" data-id="parent-area">
-          <h1 className="visually-hidden">Khu phụ huynh</h1>
+          <h1 className="visually-hidden"><T k="gate.title" /></h1>
           <div className="gate-mascot">
-            <p className="speech">Bé chơi không cần mã này nhé! Nhờ bố mẹ mở khóa giúp.</p>
+            <p className="speech"><T k="gate.childMascotSpeech" /></p>
             <MiuOnIsland pose="cheer" size="13rem" />
             <Link to="/profiles" className={buttonClass('ghost')}>
-              Về chọn hồ sơ
+              <T k="gate.backToProfiles" />
             </Link>
           </div>
           <ParentGate />
@@ -181,32 +208,36 @@ export function ParentAreaScreen() {
       <main className="scene-content parent-area" data-id="parent-area">
         <header className="page-header">
           <Icon name="key" size={48} />
-          <h1>Khu phụ huynh</h1>
+          <h1><T k="gate.title" /></h1>
         </header>
-        <p className="hint parent-intro">Hai bước để bé vào chơi: tạo hồ sơ cho bé, rồi khóa khu này lại và đưa máy cho bé.</p>
+        <p className="hint parent-intro"><T k="parent.intro" /></p>
         {error ? (
           <div className="row">
             <p role="alert" className="error">
               {error}
             </p>
             <button type="button" className={buttonClass('ghost', { small: true })} onClick={() => void reload()}>
-              Thử lại
+              <T k="parent.tryAgain" />
             </button>
           </div>
         ) : null}
 
         <section className="panel" data-id="parent-profiles" aria-labelledby="parent-step-profiles">
           <StepTitle n={1} done={hasProfile} id="parent-step-profiles">
-            Tạo hồ sơ cho bé
+            <T k="parent.step1" />
           </StepTitle>
-          {profiles ? <span className="badge">{profiles.length}/{MAX_PROFILES} hồ sơ</span> : null}
+          {profiles ? (
+            <span className="badge">
+              <T k="parent.profileCountBadge" params={{ count: profiles.length, max: MAX_PROFILES }} />
+            </span>
+          ) : null}
           {profiles && profiles.length > 0 ? (
             <ul className="profile-rows">{profiles.map((p, i) => <ProfileRow key={p.id} profile={p} index={i} onChanged={reload} />)}</ul>
           ) : null}
           {profiles && profiles.length < MAX_PROFILES ? (
             <form className="parent-create" data-id="parent-create" onSubmit={(e) => void create.onSubmit(e)}>
               <label className="parent-create-label" htmlFor="parent-create-name">
-                {hasProfile ? 'Thêm hồ sơ cho bé khác — chọn tên:' : 'Chọn tên hiển thị cho bé:'}
+                <T k={hasProfile ? 'parent.step1LabelHas' : 'parent.step1LabelNew'} />
               </label>
               <div className="row">
                 <select id="parent-create-name" data-id="parent-create-name" value={newName} onChange={(e) => setPicked(e.target.value)}>
@@ -216,43 +247,42 @@ export function ParentAreaScreen() {
                     </option>
                   ))}
                 </select>
+                <LanguagePicker id="parent-create-lang" value={newLang} onChange={setNewLang} />
                 <button className={buttonClass(hasProfile ? 'secondary' : 'primary')} data-id="parent-create-submit" type="submit" disabled={create.busy}>
-                  Tạo hồ sơ
+                  <T k="parent.createButton" />
                 </button>
               </div>
-              <p className="hint">Tên chọn trong danh sách, không cần tên thật, tuổi hay trường.</p>
+              <p className="hint"><T k="parent.namePrivacyHint" /></p>
               {create.error ? <p role="alert" className="error">{create.error}</p> : null}
             </form>
           ) : profiles ? (
-            <p className="hint">Đã đủ {MAX_PROFILES} hồ sơ.</p>
+            <p className="hint"><T k="parent.profilesLimitReached" params={{ count: MAX_PROFILES }} /></p>
           ) : null}
         </section>
 
         <section className="panel" data-id="parent-handover" aria-labelledby="parent-step-handover">
           <StepTitle n={2} done={false} id="parent-step-handover">
-            Khóa lại và đưa máy cho bé
+            <T k="parent.step2" />
           </StepTitle>
           <p className="hint">
-            {hasProfile
-              ? 'Bé sẽ thấy màn hình «Ai đang chơi?» và chạm vào hồ sơ của mình. Muốn quay lại đây cần mã PIN.'
-              : 'Tạo ít nhất một hồ sơ ở bước 1 trước nhé.'}
+            <T k={hasProfile ? 'parent.step2HintHas' : 'parent.step2HintEmpty'} />
           </p>
           {leave.error ? <p role="alert" className="error">{leave.error}</p> : null}
           <button type="button" className={buttonClass('primary', { block: true })} data-id="parent-leave" disabled={leave.busy} onClick={() => void leave.onSubmit()}>
-            Xong, khóa khu phụ huynh
+            <T k="parent.step2DoneButton" />
           </button>
         </section>
 
-        <p className="parent-more-title">Thêm cho phụ huynh</p>
+        <p className="parent-more-title"><T k="parent.moreTitle" /></p>
         <div className="parent-columns">
           <section className="panel" aria-labelledby="parent-worksheets-title">
             <div className="panel-title">
               <Icon name="scroll" size={40} />
-              <h2 id="parent-worksheets-title">Phiếu viết theo SGK</h2>
+              <h2 id="parent-worksheets-title"><T k="parent.worksheetsTitle" /></h2>
             </div>
-            <p className="hint">Phiếu in cho phần viết tay và việc làm cùng bố mẹ ở nhà của từng bài Tiếng Việt 2 và Toán 2.</p>
+            <p className="hint"><T k="parent.worksheetsHint" /></p>
             <Link to="/parent/worksheets" className={buttonClass('secondary', { block: true })} data-id="parent-worksheets">
-              Xem phiếu viết
+              <T k="parent.worksheetsButton" />
             </Link>
           </section>
           <AccountDataPanel />
