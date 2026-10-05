@@ -105,6 +105,7 @@ describe('side quests on the map', () => {
         if (url.includes('category=side')) return json({ quests: [{ quest: SIDE, state: 'open', progress: progress([], 1) }] });
         // The how-to card looks up the child's boosters (the shop): a read, not a result sent.
         if (url.includes('/shop')) return json({ items: [], coins: 0, level: 1, owned: {} });
+        if (url.includes('skill-check')) return json({ hasSkillCheck: false, passed: true, targetId: '', targetName: '' });
         posts.push(url);
         return json({});
       }),
@@ -120,7 +121,7 @@ describe('side quests on the map', () => {
       </MemoryRouter>,
     );
     const touch = (targetId: string, name: string) =>
-      act(() => {
+      act(async () => {
         store.emit({ type: 'interaction-prompt', prompt: { targetId, kind: 'npc', name, label: 'Nói chuyện' } });
         store.emit({ type: 'interaction', targetId });
       });
@@ -131,7 +132,7 @@ describe('side quests on the map', () => {
     const { posts, commands, overlay, touch } = setup();
     await vi.waitFor(() => expect(vi.mocked(fetch)).toHaveBeenCalledWith('/api/quests?category=side&region=khu-rung-bi-mat', expect.anything()));
     await act(async () => undefined);
-    touch('animal-beaver', 'Hải ly');
+    await touch('animal-beaver', 'Hải ly');
     expect(screen.getByText('Hứng giúp tớ nhé Mochi!')).toBeTruthy();
     expect(overlay).toHaveBeenLastCalledWith(true);
     fireEvent.click(screen.getByRole('button', { name: 'Tiếp tục' }));
@@ -144,7 +145,7 @@ describe('side quests on the map', () => {
   it('leaves the lesson its own character: the lesson step comes first', async () => {
     const { touch } = setup();
     await act(async () => undefined);
-    touch('parrot-guide', 'Vẹt');
+    await touch('parrot-guide', 'Vẹt');
     expect(screen.getByText('Chào Mochi!')).toBeTruthy();
   });
 });

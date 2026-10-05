@@ -96,7 +96,14 @@ describe('quest controller', () => {
 
   function setup(fetchImpl: (url: string, init?: RequestInit) => Promise<Response>, sideQuests: unknown[] = []) {
     // The map's minigame side quests are listed on their own; the tests below watch the lesson's calls.
-    vi.stubGlobal('fetch', vi.fn(async (url: string, init?: RequestInit) => (url.includes('category=side') ? json({ quests: sideQuests }) : fetchImpl(url, init))));
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url: string, init?: RequestInit) => {
+        if (url.includes('category=side')) return json({ quests: sideQuests });
+        if (url.includes('skill-check')) return json({ hasSkillCheck: false, passed: true, targetId: '', targetName: '' });
+        return fetchImpl(url, init);
+      }),
+    );
     const store = createGameStore();
     const commands: GameCommand[] = [];
     store.onCommand((c) => commands.push(c));
@@ -113,7 +120,7 @@ describe('quest controller', () => {
     );
     const view = render(layer());
     const touch = (targetId: string, name: string, kind: 'npc' | 'object') =>
-      act(() => {
+      act(async () => {
         store.emit({ type: 'interaction-prompt', prompt: { targetId, kind, name, label: 'x' } });
         store.emit({ type: 'interaction', targetId });
       });
@@ -130,11 +137,11 @@ describe('quest controller', () => {
     act(() => store.emit({ type: 'ready' }));
     expect(commands).toContainEqual({ type: 'set-target-hint', targetId: 'parrot-guide' });
 
-    touch('clue-box', 'Chiếc hộp', 'object'); // not yet: the parrot comes first
+    await touch('clue-box', 'Chiếc hộp', 'object'); // not yet: the parrot comes first
     expect(screen.getByRole('status').textContent).toMatch(/Chiếc hộp|Mochi/);
     expect(posts).toEqual([]);
 
-    touch('parrot-guide', 'Vẹt', 'npc');
+    await touch('parrot-guide', 'Vẹt', 'npc');
     expect(screen.getByText('Chào Mochi!')).toBeTruthy();
     expect(overlay).toHaveBeenLastCalledWith(true);
     fireEvent.click(screen.getByRole('button', { name: 'Tiếp tục' }));
@@ -143,7 +150,7 @@ describe('quest controller', () => {
     expect(posts[0]).toEqual({ url: '/api/quests/forest-ch1/steps/meet-parrot/complete', body: { run: 1 } });
     expect(commands).toContainEqual({ type: 'set-target-hint', targetId: 'clue-box' });
 
-    touch('clue-box', 'Chiếc hộp', 'object');
+    await touch('clue-box', 'Chiếc hộp', 'object');
     await vi.waitFor(() => expect(posts).toHaveLength(2));
     expect(posts[1]).toEqual({ url: '/api/quests/forest-ch1/steps/find-clues/complete', body: { target: 'clue-box', run: 1 } });
     await vi.waitFor(() => expect(commands).toContainEqual({ type: 'set-world-state', state: { 'clue-box': 'found' } }));
