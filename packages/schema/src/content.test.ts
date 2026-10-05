@@ -441,12 +441,14 @@ describe('shipped account content', () => {
   it('ships a final consent that states what is kept and how to delete it', () => {
     const doc = ConsentDocument.parse(load('legal/consent-vi.json'));
     expect(doc.requiresLegalReview).toBe(false);
-    expect(doc.version).toBe('v2');
+    expect(doc.version).toBe('v3');
     const text = doc.paragraphs.join(' ');
     expect(text).toMatch(/thời khóa biểu/);
     expect(text).toMatch(/không lưu nội dung câu trả lời/);
     expect(text).toMatch(/xóa hẳn tài khoản/);
     expect(text).toMatch(/14 ngày/);
+    expect(text).toMatch(/mọi lứa tuổi/);
+    expect(text).toMatch(/bạn là người chịu trách nhiệm/);
   });
 
   it('ships a privacy page for the same consent version', () => {

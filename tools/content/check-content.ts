@@ -431,7 +431,7 @@ export function checkPrivacy(raw: unknown, consentVersion: string): string[] {
   const parsed = PrivacyDocument.safeParse(raw);
   if (!parsed.success) return [`content/${PRIVACY_FILE}: ${parsed.error.message}`];
   if (parsed.data.consentVersion !== consentVersion) {
-    return [`content/${PRIVACY_FILE} describes consent ${parsed.data.consentVersion}, but parents are asked to accept ${consentVersion}: update the page with the consent`];
+    return [`content/${PRIVACY_FILE} describes consent ${parsed.data.consentVersion}, but accounts are asked to accept ${consentVersion}: update the page with the consent`];
   }
   return [];
 }
