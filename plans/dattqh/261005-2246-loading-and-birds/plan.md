@@ -11,7 +11,7 @@ created: 2026-10-05
 
 # Màn tải nhanh, đúng nhân vật, mẹo mới; chim vỗ cánh
 
-**Trạng thái:** đã lập (05/10/2026); làm ngay sau plan co-op (`261004-1617-coop-quests`) vì dùng chung `play-screen.tsx`, `game.ts`, file bản dịch; xong thì deploy production (người sở hữu đã cho phép, 05/10/2026) · **Tier:** M
+**Trạng thái:** đã thi công đủ 4 việc (06/10/2026, report `plans/dattqh/reports/loading-and-birds-261006.md`: quay lại Trung tâm 8,6 s → 1,8 s khi giả lập CPU 4× và mạng 20 Mbps; gate 5 lệnh, build web, `security:dist`, E2E smoke + `play` + `forest-life` xanh); chờ deploy production (người sở hữu đã cho phép, 05/10/2026) · **Tier:** M
 
 ## Chẩn đoán (đọc code, 05/10/2026)
 
