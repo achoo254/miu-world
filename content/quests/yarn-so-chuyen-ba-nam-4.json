@@ -1,0 +1,336 @@
+{
+  "id": "yarn-so-chuyen-ba-nam-4",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Chuyện của Bà Năm Kể Chuyện, chương 4: Trăng muốn về đâu",
+  "status": "active",
+  "category": "story",
+  "summary": "Cả ngõ viết đoạn kết cho chuyện chiếc thuyền lá rồi giấu quanh vườn. {name} hỏi Ông Mực Nằm Hiên, tìm những mẩu giấy, đọc và chọn đoạn kết, nối chữ thành câu cuối, rồi kể lại trọn câu chuyện cho chính Bà Năm nghe.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bà Năm Kể Chuyện, Ông Mực Nằm Hiên",
+    "where": "Xóm Mái Ấm: ngõ nhà Mẩy, hiên nhà Mẩy, khóm cúc, ghế mây bên ngõ",
+    "goal": "Tìm đoạn kết cho chuyện chiếc thuyền lá và kể lại trọn câu chuyện cho Bà Năm",
+    "play": "Hỏi Ông Mực, tìm ba mẩu giấy theo lời tả, đọc các đoạn kết, chọn đoạn kết, chơi nối từ, xếp lại cả câu chuyện",
+    "learn": "Đọc hiểu, nối từ, kể lại câu chuyện theo trình tự",
+    "reward": "75 XP, 22 Xu, Skill XP Đọc hiểu, Kể chuyện, vật phẩm Khung tranh gỗ",
+    "next": "Bà Năm mở đêm kể chuyện mỗi tuần, nơi bọn trẻ kể cho bà nghe"
+  },
+  "phases": {
+    "hook": "sang-tim-doan-ket",
+    "explore": "ong-muc-goi-y",
+    "learn": "tim-manh-giay",
+    "challenge": "doc-ba-doan-ket",
+    "decision": "chon-doan-ket",
+    "finale": "noi-chu-cau-cuoi",
+    "reward": "chep-bang-muc",
+    "next": "dem-ke-moi-tuan"
+  },
+  "places": {
+    "ba-nam-ke-chuyen": "Ngõ nhà Mẩy",
+    "st-so-chuyen-ba-nam-ong-muc": "Hiên nhà Mẩy",
+    "tim-manh-giay": "Khóm cúc",
+    "st-so-chuyen-ba-nam-ghe-may": "Ghế mây bên ngõ"
+  },
+  "steps": [
+    {
+      "id": "sang-tim-doan-ket",
+      "title": "Một vườn đầy đoạn kết",
+      "goTo": "Sáng sớm tới ngõ nhà Mẩy, Bà Năm cầm sẵn lọ mực mới",
+      "kind": "dialogue",
+      "target": "ba-nam-ke-chuyen",
+      "lines": [
+        { "speaker": "Bà Năm Kể Chuyện", "text": "Đêm qua cả ngõ viết đoạn kết, gấp lại rồi giấu quanh vườn, bảo để cháu đi tìm cho vui." },
+        { "speaker": "Bà Năm Kể Chuyện", "text": "Bà mua cả lọ mực mới rồi đây. Sáu mươi năm viết bút chì, hôm nay bà muốn viết một thứ không bao giờ tẩy đi." }
+      ],
+      "choices": [
+        { "text": "Cháu đi tìm ngay, bà mở nắp lọ mực chờ nhé!", "reply": "Mở rồi đây, ngòi bút cũng đang nóng lòng như bà." },
+        { "text": "Bà còn sợ quên chuyện nữa không ạ?", "reply": "Còn một chút. Nhưng cả ngõ nhớ giùm bà rồi, giờ quên cũng chẳng mất." }
+      ],
+      "en": {
+        "title": "A garden full of endings",
+        "goTo": "Early in the morning, go to Mẩy's lane, where Bà Năm is holding a new pot of ink",
+        "lines": [
+          "Last night the whole lane wrote endings, folded them up and hid them round the garden, so you could have fun finding them.",
+          "I've even bought a new pot of ink. Sixty years in pencil; today I want to write something that can never be rubbed out."
+        ],
+        "choices": [
+          { "text": "I'm off to look; open the ink and wait for me!", "reply": "It's open, and the nib is as impatient as I am." },
+          { "text": "Are you still scared of forgetting?", "reply": "A little. But the whole lane remembers for me now, so even if I forget, nothing is lost." }
+        ]
+      }
+    },
+    {
+      "id": "ong-muc-goi-y",
+      "title": "Ông Mực đánh hơi",
+      "goTo": "Lên hiên nhà Mẩy hỏi Ông Mực Nằm Hiên, mũi ông thính nhất ngõ",
+      "kind": "dialogue",
+      "target": "st-so-chuyen-ba-nam-ong-muc",
+      "lines": [
+        { "speaker": "Ông Mực Nằm Hiên", "text": "Gâu! Ông ngửi thấy mùi giấy mới quanh khóm cúc bên hàng rào, ba mẩu, không hơn không kém." },
+        { "speaker": "Ông Mực Nằm Hiên", "text": "Ông cũng có một đoạn kết, chỉ là chó không cầm bút được. Ông đoán trăng muốn về nơi có người đang chờ nghe chuyện." }
+      ],
+      "choices": [
+        { "text": "Đoạn kết của ông hay quá!", "reply": "Hay thì cháu nhớ giùm ông, mai ông quên mất thì cháu nhắc." },
+        { "text": "Cảm ơn ông, cháu ra khóm cúc đây!", "reply": "Đi nhẹ chân thôi, mấy con ong đang ngủ trưa sớm." }
+      ],
+      "en": {
+        "title": "Ông Mực sniffs it out",
+        "goTo": "Go up to the porch of Mẩy's house and ask Ông Mực Nằm Hiên; his nose is the keenest in the lane",
+        "lines": [
+          "Woof! I can smell fresh paper round the chrysanthemums by the fence: three pieces, no more, no less.",
+          "I've an ending too, only dogs can't hold pencils. I reckon the moon wants to go wherever someone is waiting to hear a story."
+        ],
+        "choices": [
+          { "text": "What a lovely ending!", "reply": "Then remember it for me; if I forget tomorrow, you remind me." },
+          { "text": "Thanks, I'm off to the chrysanthemums!", "reply": "Tread softly; the bees are taking an early nap."}
+        ]
+      }
+    },
+    {
+      "id": "tim-manh-giay",
+      "title": "Ba mẩu giấy gấp",
+      "goTo": "Ra khóm cúc sát hàng rào tìm ba mẩu giấy cả ngõ giấu",
+      "kind": "find-object",
+      "prompt": "Mỗi nhà gấp đoạn kết của mình theo một kiểu riêng. Đọc lời tả và tìm đủ ba mẩu giấy:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "giay-thuyen",
+          "name": "Mẩu giấy gấp hình thuyền",
+          "clue": "Gấp thành chiếc thuyền con có mũi nhọn, nằm chênh vênh trên một chiếc lá cúc như sắp ra khơi.",
+          "target": "st-so-chuyen-ba-nam-giay-thuyen"
+        },
+        {
+          "id": "giay-chi-do",
+          "name": "Mẩu giấy buộc chỉ đỏ",
+          "clue": "Cuộn tròn như ống sáo, thắt một nút chỉ đỏ ở giữa, mắc trên nan hàng rào.",
+          "target": "st-so-chuyen-ba-nam-giay-chi-do"
+        },
+        {
+          "id": "giay-la-tre",
+          "name": "Mẩu giấy kẹp lá tre",
+          "clue": "Gấp làm tư, kẹp giữa hai chiếc lá tre xanh, nằm dưới gốc khóm cúc như người đang ngủ.",
+          "target": "st-so-chuyen-ba-nam-giay-la-tre"
+        }
+      ],
+      "en": {
+        "title": "Three folded notes",
+        "goTo": "Go to the chrysanthemums by the fence (Khóm cúc) and find the three notes the lane hid",
+        "prompt": "Each house folded its ending its own way. Read the descriptions and find all three notes:",
+        "items": [
+          { "name": "Note folded into a boat", "clue": "Folded into a little pointed boat, perched on a chrysanthemum leaf as if about to set sail." },
+          { "name": "Note tied with red thread", "clue": "Rolled up like a flute with a red thread knotted round the middle, caught on a fence slat." },
+          { "name": "Note between bamboo leaves", "clue": "Folded in four and tucked between two green bamboo leaves, lying under the chrysanthemums like someone asleep." }
+        ]
+      }
+    },
+    {
+      "id": "doc-ba-doan-ket",
+      "title": "Ba đoạn kết của ngõ",
+      "goTo": "Mang ba mẩu giấy về ghế mây bên ngõ, đọc to cho bà nghe",
+      "kind": "read",
+      "target": "st-so-chuyen-ba-nam-ghe-may",
+      "skill": "doc-hieu",
+      "text": "Mẩu giấy gấp hình thuyền: «Trăng muốn về bầu trời. Sen tháo sợi chỉ vàng, thuyền lá nhẹ bổng bay lên, đưa trăng về chỗ cũ.»\nMẩu giấy buộc chỉ đỏ: «Trăng muốn về nhà Sen. Đêm ấy trăng nằm bên cửa sổ, soi chiếc giường nhỏ tới sáng.»\nMẩu giấy kẹp lá tre: «Trăng muốn về ngõ nhỏ, nơi có một bà cụ kể chuyện. Từ đó đêm rằm nào trăng cũng ghé ngồi nghe.»",
+      "question": "Theo mẩu giấy buộc chỉ đỏ, trăng muốn về đâu?",
+      "choices": [
+        { "id": "a", "text": "Về lại bầu trời" },
+        { "id": "b", "text": "Về nhà của Sen" },
+        { "id": "c", "text": "Về ngõ có bà cụ kể chuyện" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Ba mẩu giấy viết ba đoạn kết khác nhau.", "Tìm dòng mở đầu bằng «Mẩu giấy buộc chỉ đỏ».", "Đọc câu đầu tiên trong dấu ngoặc của dòng ấy."],
+        "hint": "Đoạn kết ấy có chiếc giường nhỏ và ô cửa sổ.",
+        "answer": {
+          "text": "Trăng về nhà Sen",
+          "explanation": "Mẩu giấy buộc chỉ đỏ viết: trăng muốn về nhà Sen, nằm bên cửa sổ soi chiếc giường nhỏ tới sáng."
+        },
+        "en": {
+          "guide": ["The three notes have three different endings.", "Find the line starting «Note tied with red thread».", "Read the first sentence inside its quotation marks."],
+          "hint": "That ending has a little bed and a window in it.",
+          "answer": {
+            "text": "The moon goes to Sen's home",
+            "explanation": "The red-thread note says: the moon wants to go to Sen's home, and lies by the window lighting her little bed until morning."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bà Năm mỉm cười: đoạn ấy là của nhà có đứa bé hay sợ tối.",
+          "{name} đọc đúng mẩu giấy, không lẫn với hai mẩu kia.",
+          "Chuẩn rồi, trăng nằm bên cửa sổ, ấm áp quá."
+        ],
+        "wrong": [
+          "Đó là đoạn kết của mẩu giấy khác rồi, tìm dòng có chữ «chỉ đỏ» nhé.",
+          "Bầu trời là đoạn kết của chiếc thuyền giấy cơ.",
+          "Đọc kỹ dòng thứ hai trong trang, cháu sẽ thấy ngay."
+        ],
+        "en": {
+          "right": [
+            "Bà Năm smiles: that ending came from the house with the child who's scared of the dark.",
+            "You read the right note, {name}, without mixing it up with the others.",
+            "Exactly, the moon lying by the window, so cosy."
+          ],
+          "wrong": [
+            "That's another note's ending; find the line about the red thread.",
+            "The sky is the paper boat's ending.",
+            "Read the second line carefully and you'll see it at once."
+          ]
+        }
+      },
+      "en": {
+        "title": "The lane's three endings",
+        "goTo": "Bring the three notes to the rattan chair by the lane (Ghế mây bên ngõ) and read them aloud to her",
+        "text": "Note folded into a boat: «The moon wants to go back to the sky. Sen unties the golden thread, and the leaf boat floats up, carrying the moon home.»\nNote tied with red thread: «The moon wants to go to Sen's home. That night it lies by the window, lighting her little bed until morning.»\nNote between bamboo leaves: «The moon wants to go to a little lane where an old lady tells stories. Ever since, it drops by every full moon to listen.»",
+        "question": "According to the note tied with red thread, where does the moon want to go?",
+        "choices": ["Back to the sky", "To Sen's home", "To the lane with the old storyteller"]
+      }
+    },
+    {
+      "id": "chon-doan-ket",
+      "title": "Bà viết đoạn kết nào?",
+      "kind": "decision",
+      "target": "st-so-chuyen-ba-nam-ghe-may",
+      "speaker": "Bà Năm Kể Chuyện",
+      "prompt": "Bà Năm chấm ngòi bút vào lọ mực, tay hơi run: «Ba đoạn đều hay cả. Bà viết đoạn nào đây, cháu?»",
+      "choices": [
+        {
+          "id": "ghep-ca-ba",
+          "text": "Ghép cả ba: trăng ghé nhà Sen, ghé ngõ mình, rồi mới về trời",
+          "consequence": "Bà reo lên: «Phải rồi, trăng đi một vòng thăm hết mọi người!» Ngòi bút chạy liền một mạch."
+        },
+        {
+          "id": "ngo-minh",
+          "text": "Chọn đoạn trăng về ngõ có bà kể chuyện",
+          "consequence": "Bà đỏ mặt cười: «Ai lại cho bà vào chuyện thế này.» Nhưng bà vẫn viết, nét mực đậm và tròn."
+        },
+        {
+          "id": "ong-muc",
+          "text": "Viết đoạn kết của Ông Mực: trăng về nơi có người chờ nghe chuyện",
+          "consequence": "Ông Mực trên hiên vẫy đuôi đập lộp độp. Bà bảo đây là lần đầu một chú chó được ghi tên vào sổ chuyện."
+        }
+      ],
+      "en": {
+        "title": "Which ending will she write?",
+        "prompt": "Bà Năm dips her pen in the ink, her hand trembling slightly: «All three are lovely. Which shall I write, dear?»",
+        "choices": [
+          { "text": "Join all three: the moon visits Sen's home, then our lane, then goes back to the sky", "consequence": "She cries out: «Of course, the moon makes the rounds and visits everyone!» The pen runs on without stopping." },
+          { "text": "Choose the one where the moon comes to the lane with the storyteller", "consequence": "She blushes and laughs: «Fancy putting me in the story.» But she writes it anyway, in thick round strokes." },
+          { "text": "Write Ông Mực's ending: the moon goes wherever someone waits for a story", "consequence": "On the porch Ông Mực's tail thumps away. She says it's the first time a dog's name has gone into the notebook." }
+        ]
+      }
+    },
+    {
+      "id": "noi-chu-cau-cuoi",
+      "title": "Nối chữ thành câu cuối",
+      "goTo": "Về ngõ nhà Mẩy, cả ngõ ngồi chờ nghe câu cuối",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "ba-nam-ke-chuyen",
+      "prompt": "Câu cuối của chuyện, bà muốn cả ngõ cùng nối chữ mà thành. Nối đúng sáu từ liền nhau nhé!",
+      "game": "word-chain",
+      "goal": 6,
+      "en": {
+        "title": "Chain the words into a last line",
+        "goTo": "Go back to Mẩy's lane, where everyone is waiting for the last line",
+        "prompt": "She wants the whole lane to build the story's last line by chaining words. Link six words in a row!"
+      }
+    },
+    {
+      "id": "ke-lai-tron-chuyen",
+      "title": "Cháu kể, bà nghe",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "ba-nam-ke-chuyen",
+      "skill": "ke-chuyen",
+      "prompt": "Bà Năm ngồi xuống ghế khán giả, lần đầu tiên trong đời: «Giờ cháu kể bà nghe.» Xếp cả câu chuyện chiếc thuyền lá theo đúng thứ tự:",
+      "items": [
+        { "id": "nhay-mat", "label": "Trăng trong thuyền nháy mắt với Sen" },
+        { "id": "tha-la", "label": "Sen thả chiếc lá bàng, bóng trăng rơi vào lòng lá" },
+        { "id": "ghe-tham", "label": "Trăng về đúng nơi trăng muốn về" },
+        { "id": "buoc-chi", "label": "Gió nổi, Sen buộc thuyền bằng chỉ vàng" },
+        { "id": "cheo-bo", "label": "Sen chèo theo bờ ao, vừa chèo vừa hát" }
+      ],
+      "answer": { "order": ["tha-la", "buoc-chi", "cheo-bo", "nhay-mat", "ghe-tham"] },
+      "support": {
+        "guide": ["Chuyện bắt đầu khi chiếc lá thành con thuyền.", "Có gió thì phải giữ thuyền trước, rồi mới chèo tiếp.", "Đoạn kết là phần cả ngõ vừa viết."],
+        "hint": "Trăng nháy mắt khi thuyền đã tới gốc sung.",
+        "answer": {
+          "text": "Thả lá, buộc chỉ, chèo, nháy mắt, trăng về",
+          "explanation": "Sen thả lá, gió nổi thì buộc chỉ vàng, chèo theo bờ ao, tới gốc sung trăng nháy mắt, cuối cùng trăng về đúng nơi mình muốn, như đoạn kết cả ngõ vừa viết."
+        },
+        "en": {
+          "guide": ["The story begins when the leaf becomes a boat.", "When the wind comes, keep the boat safe first, then paddle on.", "The ending is the part the lane just wrote."],
+          "hint": "The moon winks once the boat reaches the fig tree.",
+          "answer": {
+            "text": "Leaf, thread, paddle, wink, home",
+            "explanation": "Sen sets the leaf down, ties it with golden thread when the wind gets up, paddles along the bank, the moon winks at the fig tree, and finally the moon reaches where it wanted to go, as the lane's ending says."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bà Năm nghe hết, rồi ôm chầm lấy {name}: «Ước mơ của bà đấy, cháu ạ.»",
+          "Cả ngõ vỗ tay rào rào, có người còn đòi nghe lại từ đầu.",
+          "{name} kể trơn tru như đã ngồi ở ngõ này sáu mươi năm."
+        ],
+        "wrong": [
+          "Bà cười hiền: «Trăng chưa nháy mắt nói chuyện thì sao đã về tới nơi được, cháu?»",
+          "Gió chưa nổi thì Sen buộc thuyền làm gì nhỉ? Xếp lại nhé.",
+          "Bắt đầu từ chiếc lá bàng trên mặt ao xem nào."
+        ],
+        "en": {
+          "right": [
+            "Bà Năm listens to the end, then hugs {name} tight: «That was my dream, dear.»",
+            "The whole lane bursts into applause; someone even asks to hear it again.",
+            "You told it as smoothly as if you'd sat in this lane for sixty years, {name}."
+          ],
+          "wrong": [
+            "She smiles kindly: «How can the moon arrive anywhere before it has even winked and spoken?»",
+            "Why would Sen tie the boat before the wind gets up? Try again.",
+            "Start from the almond leaf on the pond."
+          ]
+        }
+      },
+      "en": {
+        "title": "You tell, she listens",
+        "prompt": "For the first time in her life, Bà Năm sits in the audience: «Now you tell it to me.» Put the whole leaf-boat story in order:",
+        "items": ["The moon in the boat winks at Sen", "Sen sets down the almond leaf and the moon falls into it", "The moon reaches the place it wanted to go", "The wind gets up and Sen ties the boat with golden thread", "Sen paddles along the bank, singing as she goes"]
+      }
+    },
+    {
+      "id": "chep-bang-muc",
+      "title": "Đoạn kết viết bằng mực",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Trang mười sáu không còn trắng nữa: đoạn kết nằm đó bằng nét mực đậm, kèm tên cả ngõ ký bên dưới. Bà Năm tặng {name} khung tranh gỗ, bảo để đóng khung trang đầu tiên cháu tự viết sau này.",
+      "en": {
+        "title": "An ending written in ink",
+        "text": "Page sixteen isn't blank any more: the ending sits there in bold ink, with everyone in the lane signed underneath. Bà Năm gives {name} a wooden picture frame, for framing the first page {name} writes one day."
+      }
+    },
+    {
+      "id": "dem-ke-moi-tuan",
+      "title": "Đêm kể chuyện mỗi tuần",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Từ nay tối thứ Bảy nào ngõ nhà Mẩy cũng có đêm kể chuyện, nhưng người kể là bọn trẻ, còn Bà Năm ngồi nghe. Bà bảo chuyện đầu tiên tuần sau, bà muốn nghe {name} kể.",
+      "en": {
+        "title": "A story night every week",
+        "text": "From now on, every Saturday evening Mẩy's lane holds a story night, but the children do the telling and Bà Năm listens. The first story next week, she says, she wants to hear from {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 75,
+    "coin": 22,
+    "skillXp": { "doc-hieu": 1, "ke-chuyen": 1 },
+    "items": { "khung-tranh-go": 1 }
+  },
+  "en": {
+    "title": "Bà Năm Kể Chuyện's story, chapter 4: Where the moon wants to go",
+    "summary": "The whole lane has written endings for the leaf-boat story and hidden them round the garden. {name} asks Ông Mực Nằm Hiên, finds the notes, reads and chooses an ending, chains words into the last line, then tells the whole story back to Bà Năm herself."
+  }
+}

@@ -1,0 +1,724 @@
+{
+  "version": 1,
+  "region": "xom-mai-am",
+  "climate": "mild",
+  "npcs": [
+    {
+      "id": "ba-nam-ke-chuyen",
+      "name": "Bà Năm Kể Chuyện",
+      "role": {
+        "vi": "Người kể chuyện của xóm, ngày nào cũng ngồi trước ngõ nhà Mẩy ra câu đố và kể chuyện cho cả xóm nghe.",
+        "en": "The lane's storyteller, who sits every day at the mouth of Mẩy's lane telling riddles and tales to anyone who stops."
+      },
+      "personality": {
+        "vi": "Hóm hỉnh, nhớ dai, chuyện nào cũng ngắt đúng đoạn hay nhất để «mai kể tiếp»; thương trẻ con mà chẳng bao giờ chiều hư.",
+        "en": "Witty and sharp-memoried, she always stops a story at the best bit to «carry on tomorrow»; she adores children but never spoils them."
+      },
+      "voice": {
+        "vi": "Mở đầu bằng «Ngày xửa ngày xưa… mà cũng chẳng xưa lắm», hay nói vần, gọi ai cũng «cháu ơi».",
+        "en": "Starts with «Once upon a time… not so long ago, mind», loves a rhyme, and calls everyone «dear»."
+      },
+      "fear": {
+        "vi": "Sợ một ngày quên mất chuyện của mình, như cái giếng cạn dần từng gàu một.",
+        "en": "That one day she will forget her own stories, like a well emptying one bucket at a time."
+      },
+      "dream": {
+        "vi": "Được nghe một đứa trẻ kể lại chuyện của bà cho chính bà nghe, trôi chảy như bà vẫn kể.",
+        "en": "To hear a child tell one of her stories back to her, as smoothly as she tells it herself."
+      },
+      "secret": {
+        "vi": "Chuyện «Chiếc thuyền lá chở trăng» bà kể sáu mươi năm chưa từng có đoạn kết: bà ngoại bà ngủ quên trước khi kể xong, và bà chưa dám nói với ai.",
+        "en": "«The Leaf Boat That Carried the Moon», which she has told for sixty years, never had an ending: her grandmother fell asleep before finishing it, and she has never dared admit it."
+      },
+      "habit": {
+        "vi": "Bà chép mọi câu chuyện vào cuốn sổ bìa xanh, viết bằng bút chì để mai còn sửa.",
+        "en": "She writes every story in a blue-covered notebook, in pencil, so she can change it tomorrow."
+      },
+      "likes": ["banh-quy-me-nuong", "guong-tron-cua-ba", "banh-com-xanh"],
+      "lines": [
+        {
+          "vi": "Ngày xửa ngày xưa… mà cũng chẳng xưa lắm, mới sáng nay thôi, có một đứa cháu tên {name} ghé thăm bà. Chuyện thế là hay rồi.",
+          "en": "Once upon a time… not so long ago, mind, just this morning, a child called {name} came to visit me. Now that's a good start to a story.",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa nắng, bà kể chuyện ma cho bọn trẻ đỡ buồn ngủ. Chuyện ma ban ngày thì chỉ đáng sợ bằng nửa thôi, cháu ạ.",
+          "en": "At noon I tell ghost stories to keep the little ones awake. Ghost stories in daylight are only half as scary, dear.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều xuống là giờ đẹp nhất để kể chuyện: nồi cơm vừa chín, khói bếp bay ngang ngõ như ai đang vẽ chữ.",
+          "en": "Dusk is the best time for stories: the rice is just cooked and kitchen smoke drifts across the lane like someone writing in the air.",
+          "when": "evening"
+        },
+        {
+          "vi": "Khuya rồi mà cháu còn thức à? Bà kể một chuyện ngắn thôi nhé, ngắn như cái ngáp của con mèo.",
+          "en": "Still awake this late, dear? I'll tell you a short one, as short as a cat's yawn.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa rơi trên mái ngói lộp bộp như người gõ cửa xin nghe chuyện. Vào đây, mưa ơi, ngồi cạnh cháu {name} này.",
+          "en": "Rain patters on the tiles like someone knocking to hear a story. Come in, rain, sit next to {name}.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời đẹp thế này, chuyện nào kể ra cũng có nắng. Hôm nay bà chỉ kể chuyện vui thôi.",
+          "en": "On a day this fine, every story comes out sunny. Only happy tales from me today.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Đố cháu: cái gì càng cho đi càng còn nhiều? Là câu chuyện đấy. Bà kể cho cháu rồi, bà vẫn còn nguyên.",
+          "en": "Riddle me this: what grows the more you give it away? A story. I've told you mine, and I still have all of it."
+        },
+        {
+          "vi": "Bà có ba mươi sáu chuyện trong sổ, mà chuyện nào kể lại cũng dài thêm một chút. Chuyện cũng biết lớn như người, cháu ạ.",
+          "en": "There are thirty-six stories in my notebook, and each grows a little longer every time I tell it. Stories grow up, just like people."
+        },
+        {
+          "vi": "Cô bánh mì Hạnh ở Chợ phiên hồi bé hay ngồi đúng chỗ cháu đang ngồi đấy. Giờ phiên chợ nào cô ấy cũng gửi bà một gói bánh cốm.",
+          "en": "When Cô bánh mì Hạnh from the Fair Market was little, she sat exactly where you're sitting. Now every market day she sends me a parcel of green rice cakes.",
+          "about": "co-banh-mi-hanh"
+        },
+        {
+          "vi": "Bà Gấu Nâu bảo chuyện ma của bà chẳng ma bằng chuyện bộ lông của bà ấy giữa mùa hè. Bà chịu thua câu ấy.",
+          "en": "Bà Gấu Nâu says my ghost stories aren't half as frightful as her fur coat in midsummer. I had to give her that one.",
+          "about": "ba-gau-nau"
+        },
+        {
+          "vi": "Ông Bảy Cờ Gánh là em út của bà đấy. Hồi bé, bà kể chuyện tới đâu là ông ngủ gật tới đó, giờ thì đánh cờ chẳng ngủ chút nào.",
+          "en": "Ông Bảy Cờ Gánh is my baby brother. As a boy he dozed off wherever my stories got to; now he plays chess without blinking.",
+          "about": "ong-bay-co-ganh"
+        },
+        {
+          "vi": "Bà nói nhỏ cháu nghe: có hôm bà quên mất tên nhân vật, thế là bà gọi nó là «cái đứa ấy». Chẳng ai nhận ra cả.",
+          "en": "Just between us: some days I forget a character's name, so I call them «that one». Nobody has ever noticed.",
+          "hearts": 2
+        },
+        {
+          "vi": "Cháu {name} ngồi nghe chăm thế, bà kể chuyện cũng thấy mình trẻ ra mười tuổi. Mai lại ghé nhé, bà để phần đoạn hay nhất.",
+          "en": "With you listening so closely, {name}, I feel ten years younger. Come again tomorrow; I'll save the best part for you.",
+          "hearts": 3
+        },
+        {
+          "vi": "Bà thú thật: bà sợ một ngày mở sổ ra mà không nhớ nổi chuyện nào. Nhưng có cháu nhớ giùm thì bà yên tâm hơn.",
+          "en": "I'll be honest: I'm afraid that one day I'll open my notebook and remember none of it. But with you remembering too, I worry less.",
+          "hearts": 4
+        },
+        {
+          "vi": "Ước mơ của bà ấy à? Là một ngày cháu ngồi chỗ bà, kể chuyện của bà cho một đứa trẻ khác nghe.",
+          "en": "My dream? That one day you'll sit in my place and tell my stories to another child.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "anh-tho-sua-mai",
+      "name": "Anh Thợ Sửa Mái",
+      "role": {
+        "vi": "Thợ sửa mái của xóm, lợp ngói, vá mái tranh cho mọi nhà và cả chuồng bò đầu đồng.",
+        "en": "The lane's roofer, who lays tiles and patches thatch for every house, and the cowshed at the edge of the fields too."
+      },
+      "personality": {
+        "vi": "Nhanh nhẹn, xởi lởi, leo mái như đi đất bằng; cười to và huýt sáo cả ngày không biết mệt.",
+        "en": "Quick and friendly, he walks on roofs as if they were flat ground, laughs loudly and whistles all day without tiring."
+      },
+      "voice": {
+        "vi": "Nói như hát, hay đếm «một, hai, ba, lên!» và gọi mưa là «ông khách không mời».",
+        "en": "Talks as if singing, counts «one, two, three, up!» and calls the rain «the uninvited guest»."
+      },
+      "fear": {
+        "vi": "Sợ sấm: anh chẳng sợ độ cao, nhưng mỗi tiếng sấm là anh giật bắn như bị ai gọi tên giữa đêm.",
+        "en": "Thunder: heights don't bother him, but every thunderclap makes him jump as if someone shouted his name at midnight."
+      },
+      "dream": {
+        "vi": "Dựng một mái nhà chung ở đầu đồng, để ai bị mưa đuổi cũng có chỗ trú và ngồi cùng nhau.",
+        "en": "To build a shared roof at the edge of the fields, so anyone caught in the rain has shelter and company."
+      },
+      "secret": {
+        "vi": "Anh chưa từng có nhà riêng: anh ngủ trên gác rơm chuồng bò đỏ, và gọi mọi mái nhà mình sửa là «nhà mình».",
+        "en": "He has never had a home of his own: he sleeps in the hayloft of the red cowshed and calls every roof he mends «home»."
+      },
+      "habit": {
+        "vi": "Trước khi lợp viên ngói nào, anh cũng lấy than viết một điều ước bé xíu lên mặt dưới của nó.",
+        "en": "Before laying each tile, he writes a tiny wish in charcoal on its underside."
+      },
+      "likes": ["banh-mi-sua", "chiec-sao-truc", "chuong-gio-truc"],
+      "lines": [
+        {
+          "vi": "Một, hai, ba, lên! Sáng sớm trên mái nhà là chỗ đầu tiên trong xóm được nắng chào, {name} lên thử không?",
+          "en": "One, two, three, up! Early morning, a rooftop is the first spot in the lane the sun says hello to. Want to try, {name}?",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa nắng ngói nóng như chảo rang, anh lợp tới đâu là chân nhảy tưng tưng tới đó.",
+          "en": "At noon the tiles are hot as a frying pan, so wherever I'm working my feet are hopping.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều nào anh cũng ngồi trên nóc chuồng bò đếm mái nhà trong xóm. Hai mươi ba mái, mái nào anh cũng từng leo lên.",
+          "en": "Every evening I sit on the cowshed roof counting the roofs in the lane. Twenty-three, and I've climbed every one.",
+          "when": "evening"
+        },
+        {
+          "vi": "Đêm khuya nằm trên gác rơm, anh nghe gió đi qua từng mái ngói. Mái nào kêu lạ là mai anh ghé.",
+          "en": "Late at night in the hayloft I listen to the wind walking over the tiles. Any roof that sounds odd, I visit next day.",
+          "when": "night"
+        },
+        {
+          "vi": "Ông khách không mời tới rồi! Mưa thế này anh phải chạy một vòng xem mái nhà nào đang khóc.",
+          "en": "The uninvited guest is here! In rain like this I run round the lane to see which roof is crying.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời nắng ráo thế này là ngày vàng của thợ mái. Ngói khô, tay khô, chỉ có miệng anh là ướt vì huýt sáo.",
+          "en": "Dry sunny days are a roofer's golden days. Dry tiles, dry hands; only my lips are wet from whistling.",
+          "weather": "fine"
+        },
+        {
+          "vi": "{name} biết vì sao ngói phải lợp chồng mép lên nhau không? Để nước mưa trượt từ viên này xuống viên kia như cầu tuột.",
+          "en": "Know why roof tiles overlap, {name}? So the rain slides from one to the next like a slide in a playground."
+        },
+        {
+          "vi": "Anh đánh rơi búa ba lần một tuần. Lần nào cũng trúng đống rơm, chắc cái búa thích nằm đó hơn ở tay anh.",
+          "en": "I drop my hammer three times a week. Every time it lands in the haystack; I think it likes it there better than in my hand."
+        },
+        {
+          "vi": "Mèo Trà Đá hay leo thang mang trà lên tận mái cho anh. Trà đá trên mái nhà ngon gấp đôi, chẳng hiểu sao.",
+          "en": "Mèo Trà Đá often climbs the ladder to bring me iced tea up on the roof. Tea on a rooftop tastes twice as good, no idea why.",
+          "about": "meo-tra-da"
+        },
+        {
+          "vi": "Bà Gấu Nâu đan cho anh đôi tất len để trèo mái mùa đông. Anh đi vào là chân ấm, mà ngói cũng bớt lạnh.",
+          "en": "Bà Gấu Nâu knitted me wool socks for winter roofing. With them on my feet stay warm, and somehow the tiles feel less icy.",
+          "about": "ba-gau-nau"
+        },
+        {
+          "vi": "Chiếc chuông gió tre ở Làng Ven Sông treo dưới hiên kêu nghe vui lắm. Ai cho anh một chiếc, anh treo ở mái nhà đầu tiên anh lợp.",
+          "en": "Those bamboo wind chimes from Làng Ven Sông sound so cheerful under the eaves. Give me one and I'll hang it on the first roof I ever laid."
+        },
+        {
+          "vi": "Anh kể {name} nghe: mỗi lần sấm nổ, anh giật mình suýt rơi khỏi thang. Thợ mái mà sợ sấm, nghe buồn cười không?",
+          "en": "I'll tell you something, {name}: every thunderclap nearly knocks me off my ladder. A roofer scared of thunder, funny, isn't it?",
+          "hearts": 2
+        },
+        {
+          "vi": "Mặt dưới mỗi viên ngói anh lợp đều có một điều ước viết bằng than. Có một viên anh viết tên {name} đấy.",
+          "en": "Under every tile I've laid there's a wish written in charcoal. One of them has your name on it, {name}.",
+          "hearts": 3
+        },
+        {
+          "vi": "Anh chưa từng có nhà riêng, ngủ trên gác rơm chuồng bò thôi. Nhưng mái nào anh sửa, anh cũng thấy như nhà mình.",
+          "en": "I've never had a house of my own; I sleep in the cowshed loft. But every roof I mend feels like mine.",
+          "hearts": 4
+        },
+        {
+          "vi": "Nếu một ngày anh có mái nhà riêng, viên ngói đầu tiên anh muốn {name} đặt lên.",
+          "en": "If I ever get a roof of my own, I want you to lay the very first tile, {name}.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "ba-gau-nau",
+      "name": "Bà Gấu Nâu",
+      "role": {
+        "vi": "Người dẫn đường của xóm, bà của mọi đứa trẻ quanh ngõ và tay đan len khéo nhất vùng.",
+        "en": "The lane's guide, grandmother to every child around, and the finest knitter for miles."
+      },
+      "personality": {
+        "vi": "Hiền hậu, chậm rãi, nhớ chuyện ngày xưa như in, hay than nóng vì bộ lông dày.",
+        "en": "Kind and unhurried, remembers the old days as if they were yesterday, and often grumbles about her thick fur in the heat."
+      },
+      "voice": {
+        "vi": "Gọi ai cũng «cháu ơi», hay bắt đầu bằng «ngày xưa ấy mà…», thỉnh thoảng thở phì phò vì nóng.",
+        "en": "Calls everyone «dear child», often begins with «back in the day…», and puffs a little when it's hot."
+      },
+      "fear": {
+        "vi": "Sợ những đứa cháu trong xóm lớn lên rồi quên đường về ngõ cũ.",
+        "en": "That the children of the lane will grow up and forget the way back home."
+      },
+      "dream": {
+        "vi": "Đan một tấm chăn thật dài, mỗi ô một màu cho một người trong xóm, đủ đắp cho cả xóm ngồi chung một tối đông.",
+        "en": "To knit one enormous blanket, a different coloured square for everyone in the lane, big enough to cover them all on a winter evening."
+      },
+      "secret": {
+        "vi": "Mắt bà kém, chẳng đọc nổi chữ nhỏ nữa, nên thư của Bác Thợ Khóa Thành bà nhờ Mèo Trà Đá đọc giùm, rồi giả vờ như tự đọc.",
+        "en": "Her eyes are too weak for small writing now, so Mèo Trà Đá reads Bác Thợ Khóa Thành's letters to her, and she pretends she read them herself."
+      },
+      "habit": {
+        "vi": "Túi tạp dề lúc nào cũng có một cuộn len, ngồi đâu là đan đấy.",
+        "en": "There's always a ball of wool in her apron pocket, and wherever she sits, she knits."
+      },
+      "likes": ["cuon-len-hong", "khan-len-dan", "chia-khoa-thanh-co"],
+      "lines": [
+        {
+          "vi": "Cháu ơi, sáng nay bà đan được ba hàng len trước khi gà gáy. Bộ lông này dậy sớm hơn cả bà.",
+          "en": "Dear child, I knitted three rows before the rooster crowed this morning. This fur of mine wakes up even earlier than I do.",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa nóng quá, bà ngồi dưới gốc sung quạt phành phạch. Gấu mà mùa hè thì khổ lắm cháu ạ.",
+          "en": "Noon is so hot that I sit fanning myself under the fig tree. Being a bear in summer is hard work, dear.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều tối, bà đi một vòng ngõ đếm đủ bọn trẻ về nhà ăn cơm thì mới yên tâm ngồi đan tiếp.",
+          "en": "In the evening I walk round the lane and count every child home for dinner before I settle down to knit again.",
+          "when": "evening"
+        },
+        {
+          "vi": "Khuya rồi, cháu về ngủ đi kẻo mai dậy muộn. Bà để đèn hiên sáng, cháu đi đường nào cũng thấy.",
+          "en": "It's late, dear, off to bed or you'll oversleep. I'll leave the porch light on so you can see your way.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa rồi, mát quá! Bà đứng dưới hiên cho gió lùa vào lông, sướng như vừa ăn kem.",
+          "en": "Rain at last, how cool! I stand on the porch and let the breeze run through my fur; it's as good as ice cream.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Nắng đẹp thế này phơi len là nhất, chiều cuộn lại thơm mùi nắng, đan khăn cho cháu thì ấm cả mùa.",
+          "en": "Sunshine like this is perfect for airing wool; by evening it smells of sun, and a scarf knitted from it stays warm all season.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Ngày xưa ấy mà, cả xóm chỉ có một cái đài, tối nào cũng kéo nhau sang nhà bà nghe. Giờ thì nghe Bà Năm kể chuyện cũng vui chẳng kém.",
+          "en": "Back in the day the whole lane had one radio, and every evening we crowded into my house to listen. Now Bà Năm's stories are every bit as fun."
+        },
+        {
+          "vi": "Cháu có biết một chiếc khăn len cần bao nhiêu mũi đan không? Bà đếm rồi: hai nghìn mũi, với một chút thương.",
+          "en": "Do you know how many stitches go into a wool scarf, dear? I counted: two thousand stitches and a little bit of love."
+        },
+        {
+          "vi": "Bác Thợ Khóa Thành ở Lâu đài vừa gửi bà một ổ khóa bé tí cho hộp bánh quy. Giờ bà phải nhớ chìa để ở đâu, khó hơn giữ bánh nhiều.",
+          "en": "Bác Thợ Khóa Thành up at the Castle sent me a tiny lock for my biscuit tin. Now I have to remember where the key is, which is harder than guarding biscuits.",
+          "about": "bac-tho-khoa-thanh"
+        },
+        {
+          "vi": "Chiếc chìa đồng cổ ở Lâu đài là món bà thích ngắm nhất. Nó làm bà nhớ ông thợ khóa già mỗi mùa đông đều nhận găng của bà.",
+          "en": "An old brass key from the Castle is my favourite thing to look at. It reminds me of the old locksmith who gets my gloves every winter."
+        },
+        {
+          "vi": "Anh Thợ Sửa Mái leo mái nhanh như sóc, mà nghe sấm thì nhảy dựng như mèo. Bà đan cho cậu ấy đôi tất, mong đỡ giật mình.",
+          "en": "Anh Thợ Sửa Mái scurries over roofs like a squirrel, yet jumps like a cat at thunder. I knitted him socks, hoping they'd calm him.",
+          "about": "anh-tho-sua-mai"
+        },
+        {
+          "vi": "Bà kể cháu nghe: hồi trẻ bà đan nhầm chiếc khăn dài tới mức quấn được ba người. Thế là ba đứa bạn thân phải đi chung suốt mùa đông.",
+          "en": "Here's one for you: when I was young I knitted a scarf so long it wrapped round three people, so three best friends had to walk everywhere together all winter.",
+          "hearts": 2
+        },
+        {
+          "vi": "Mỗi lần {name} về ngõ, bà lại thấy bớt lo cái chuyện bọn trẻ lớn lên rồi quên đường về.",
+          "en": "Every time you come back to the lane, {name}, I worry a little less that children grow up and forget the way home.",
+          "hearts": 3
+        },
+        {
+          "vi": "Nói nhỏ thôi: mắt bà kém lắm rồi, thư của bác thợ khóa toàn nhờ Mèo Trà Đá đọc giùm. Cháu đừng kể với bác ấy nhé.",
+          "en": "Quietly now: my eyes are very weak, so Mèo Trà Đá reads the locksmith's letters to me. Don't tell him, will you?",
+          "hearts": 4
+        },
+        {
+          "vi": "Tấm chăn len của cả xóm bà đã đan được mười một ô. Ô thứ mười hai màu gì, bà để {name} chọn.",
+          "en": "I've knitted eleven squares of the whole lane's blanket. The twelfth one's colour, I'm leaving for you to choose, {name}.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "meo-tra-da",
+      "name": "Mèo Trà Đá",
+      "role": {
+        "vi": "Chủ quán trà đá bên giếng xóm, nơi cả xóm ghé ngồi nghỉ chân và buôn chuyện.",
+        "en": "Owner of the iced-tea stall by the lane's well, where everyone stops to rest their legs and swap news."
+      },
+      "personality": {
+        "vi": "Lém lỉnh, biết tin nhanh nhất xóm, rót trà cho ai cũng kèm một câu chuyện phiếm.",
+        "en": "Cheeky and always first with the news; every glass of tea comes with a bit of gossip."
+      },
+      "voice": {
+        "vi": "Nói nhanh, cười thì chêm «meo», gọi khách là «quý khách» trịnh trọng như ở nhà hàng lớn.",
+        "en": "Talks fast, slips a «meow» into every laugh, and calls customers «honoured guests» as if running a grand restaurant."
+      },
+      "fear": {
+        "vi": "Sợ té xuống giếng, nên lúc múc nước lúc nào cũng quấn dây gàu ba vòng quanh tay.",
+        "en": "Falling into the well, so whenever drawing water the bucket rope gets wound three times round a paw."
+      },
+      "dream": {
+        "vi": "Mở quán trà ở khắp mọi miền, mỗi nơi một vị trà riêng mà ai uống cũng nhớ.",
+        "en": "To open tea stalls everywhere, each with its own flavour that nobody who tastes it ever forgets."
+      },
+      "secret": {
+        "vi": "Mèo Trà Đá chưa từng uống nổi trà nóng vì sợ bỏng lưỡi; quán trà đá ra đời chính từ nỗi sợ ấy.",
+        "en": "Mèo Trà Đá has never managed a hot tea, for fear of burning a tongue; the iced-tea stall was born from that very fear."
+      },
+      "habit": {
+        "vi": "Sáng nào cũng đếm đúng một trăm viên đá bỏ vào thùng, thiếu một viên là đếm lại từ đầu.",
+        "en": "Every morning counts exactly one hundred ice cubes into the cooler, and starts over if one goes missing."
+      },
+      "likes": ["dong-ho-qua-lac", "banh-mi-sua", "hoa-chuong-tim"],
+      "lines": [
+        {
+          "vi": "Chào quý khách {name}! Sáng nay mèo đếm đủ một trăm viên đá, à không, chín mươi chín, có viên vừa trượt vào miệng mèo.",
+          "en": "Good morning, honoured guest {name}! I counted a hundred ice cubes, well, ninety-nine; one just slid into my mouth.",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa nắng là giờ cao điểm, meo! Ly trà đá nào cũng kêu lanh canh như chuông gió.",
+          "en": "Noon is rush hour, meow! Every glass of iced tea tinkles like a wind chime.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều tối mèo dọn quán, kể lại cho giếng nghe hôm nay ai nói gì. Giếng giữ bí mật giỏi nhất xóm.",
+          "en": "In the evening I pack up the stall and tell the well what everyone said today. The well keeps secrets better than anyone in the lane.",
+          "when": "evening"
+        },
+        {
+          "vi": "Khuya rồi quán đóng cửa, nhưng nếu {name} khát thì mèo vẫn còn một ly để dành dưới gầm bàn.",
+          "en": "The stall's shut this late, but if you're thirsty, {name}, I've still got one glass hidden under the table.",
+          "when": "night"
+        },
+        {
+          "vi": "Trời mưa thì chẳng ai uống trà đá, mèo chuyển sang bán… chỗ ngồi trú mưa. Miễn phí, kèm chuyện phiếm.",
+          "en": "Nobody wants iced tea in the rain, so I sell… shelter instead. Free of charge, gossip included.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Nắng to thế này, quý khách nào ghé quán cũng thở ra một tiếng «ahh» y hệt nhau. Mèo sưu tầm được hai mươi kiểu «ahh» rồi.",
+          "en": "In sunshine like this every guest who sits down lets out the same «ahh». I've collected twenty different kinds of «ahh» so far.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Tin nóng hổi, à không, tin mát lạnh: hôm qua Ông Bảy thua một ván cờ. Cả xóm bàn tán tới tận tối.",
+          "en": "Hot news, sorry, ice-cold news: yesterday Ông Bảy lost a game of chess. The whole lane talked about it till dark.",
+          "about": "ong-bay-co-ganh"
+        },
+        {
+          "vi": "Nai Đom Đóm ở Khu rừng bí mật hay viết thư kể đêm nào đom đóm bay nhiều nhất. Mèo hứa mùa hè này mang trà vào rừng mời đom đóm.",
+          "en": "Nai Đom Đóm in the Secret Forest writes to tell me which nights the fireflies are thickest. I've promised to bring tea to the woods for them this summer.",
+          "about": "nai-dom-dom"
+        },
+        {
+          "vi": "Hoa chuông tím trong rừng mà thả một bông vào ly trà đá thì thơm lắm, Nai Đom Đóm mách mèo đấy. Ai có thì cho mèo xin nhé.",
+          "en": "Drop a purple bellflower from the forest into iced tea and it smells divine; Nai Đom Đóm told me. If you have one, I'd love it."
+        },
+        {
+          "vi": "{name} có biết vì sao ly trà đá đổ mồ hôi không? Vì hơi nước trong không khí gặp ly lạnh thì hóa thành giọt. Mèo đọc trong sách đấy, meo.",
+          "en": "Do you know why an iced-tea glass sweats, {name}? Water in the air meets the cold glass and turns into drops. I read it in a book, meow."
+        },
+        {
+          "vi": "Quán mèo có ba cái ghế đẩu, mà lúc nào cũng có năm vị khách. Hai vị kia ngồi trên thành giếng, mèo lo sốt vó.",
+          "en": "My stall has three stools, yet there are always five guests. The other two sit on the well's rim, and it drives me frantic."
+        },
+        {
+          "vi": "Mèo kể quý khách nghe nhé: mèo mà sợ nước lắm. Không phải nước trà đâu, mà là cái giếng sâu hun hút kia.",
+          "en": "Let me tell you, honoured guest: I'm terribly scared of water. Not tea, of course, but that bottomless well.",
+          "hearts": 2
+        },
+        {
+          "vi": "Từ hôm quen {name}, mèo pha thêm một loại trà mới, đặt tên là «Trà Bạn Thân». Chỉ bạn thân mới được gọi món này.",
+          "en": "Since I met you, {name}, I've invented a new tea called «Best Friend Tea». Only best friends may order it.",
+          "hearts": 3
+        },
+        {
+          "vi": "Bí mật lớn nhất của quán trà: chủ quán chưa bao giờ uống nổi trà nóng. Mèo sợ bỏng lưỡi, nên mới bán trà đá đấy.",
+          "en": "The tea stall's biggest secret: the owner has never managed hot tea. I'm scared of burning my tongue, which is why I sell it iced.",
+          "hearts": 4
+        },
+        {
+          "vi": "Ngày mèo mở quán trà ở mọi miền, quán nào cũng sẽ có một chiếc ghế khắc chữ: «Chỗ của {name}».",
+          "en": "When I open tea stalls all over the land, every one will have a stool carved with: «{name}'s seat».",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "ong-bay-co-ganh",
+      "name": "Ông Bảy Cờ Gánh",
+      "role": {
+        "vi": "Cao thủ cờ gánh của xóm, ngồi dưới giàn mướp cuối vườn chờ người tới đọ cờ.",
+        "en": "The lane's master of cờ gánh, the old capture-and-convert board game, waiting under the gourd trellis for someone to play."
+      },
+      "personality": {
+        "vi": "Điềm đạm, hay trầm ngâm; thua thì cười khà khà, thắng thì khiêm tốn bảo «may thôi».",
+        "en": "Calm and thoughtful; when he loses he chuckles, and when he wins he modestly says «just luck»."
+      },
+      "voice": {
+        "vi": "Nói chậm từng chữ, hay kể «hồi ông bằng tuổi cháu…», mỗi nước cờ gõ quân xuống bàn cộc một tiếng.",
+        "en": "Speaks slowly, word by word, often begins «when I was your age…», and every move lands on the board with a firm tock."
+      },
+      "fear": {
+        "vi": "Sợ ngồi một mình cả buổi dưới giàn mướp mà chẳng ai ghé đánh cờ.",
+        "en": "Sitting alone under the gourd trellis all day with nobody coming to play."
+      },
+      "dream": {
+        "vi": "Mở một giải cờ gánh cho cả xóm, cuối giải người thắng kẻ thua cùng ngồi ăn chè.",
+        "en": "To hold a cờ gánh tournament for the whole lane, ending with winners and losers sharing sweet soup together."
+      },
+      "secret": {
+        "vi": "Ông chưa thắng nổi chị gái mình là Bà Năm một ván cờ gánh nào, nên ông chỉ rủ người khác chơi.",
+        "en": "He has never once beaten his big sister Bà Năm at cờ gánh, which is why he only ever invites other people to play."
+      },
+      "habit": {
+        "vi": "Tối nào ông cũng lau từng quân cờ bằng lá mướp rồi xếp vào hộp đúng từng hàng.",
+        "en": "Every evening he polishes each piece with a gourd leaf and packs them back into their box in neat rows."
+      },
+      "likes": ["khung-tranh-go", "den-dau-co"],
+      "lines": [
+        {
+          "vi": "Sáng sớm giàn mướp còn đọng sương, quân cờ mát tay lắm. Cháu ngồi xuống, ông nhường cháu đi trước.",
+          "en": "Early on the gourd trellis is still dewy and the pieces feel cool in your hand. Sit down, I'll let you go first.",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa nắng thì giàn mướp là cái ô to nhất xóm. Ông ngồi đây từ lúc mướp còn bé bằng ngón tay.",
+          "en": "At noon the gourd trellis is the biggest umbrella in the lane. I've sat here since the gourds were the size of a finger.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều rồi, ông lau quân cờ bằng lá mướp. Quân nào thắng nhiều thì ông lau kỹ hơn một chút, đừng kể với quân thua nhé.",
+          "en": "Evening: time to polish the pieces with gourd leaves. The ones that win most get a little extra rub; don't tell the losers.",
+          "when": "evening"
+        },
+        {
+          "vi": "Khuya rồi mà cháu còn ghé à? Ông đang thắp đèn dầu đánh cờ với cái bóng của mình, nó đánh dở lắm.",
+          "en": "Visiting this late? I've lit the oil lamp and I'm playing chess against my own shadow. It's a dreadful player.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa thì ông khiêng bàn cờ vào hiên. Tiếng mưa trên lá mướp nghe như cả xóm đang vỗ tay cổ vũ.",
+          "en": "When it rains I carry the board onto the porch. Rain on the gourd leaves sounds like the whole lane clapping.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời đẹp thế này mà không đánh một ván thì phí lắm. Hồi ông bằng tuổi cháu, nắng lên là chạy đi tìm bạn đánh cờ.",
+          "en": "A day this lovely is wasted without a game. When I was your age, the moment the sun came out I ran to find someone to play.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Cờ gánh có mười sáu quân, mà ván nào cũng khác ván nào. Ông chơi sáu mươi năm rồi vẫn chưa gặp hai ván giống nhau.",
+          "en": "Cờ gánh has sixteen pieces, yet no two games are alike. Sixty years I've played and never seen the same game twice."
+        },
+        {
+          "vi": "Đi cờ cũng như đi đường, cháu ạ: đừng nhìn chân mình, hãy nhìn ba bước phía trước.",
+          "en": "Playing chess is like walking a road, child: don't look at your feet, look three steps ahead."
+        },
+        {
+          "vi": "Bà Năm Kể Chuyện là chị cả của ông. Hồi bé bà kể chuyện, ông nghe tới đoạn hay thì ngủ gật mất. Giờ nghĩ lại vẫn tiếc.",
+          "en": "Bà Năm Kể Chuyện is my eldest sister. As a boy I always nodded off at the best part of her stories. I still regret it.",
+          "about": "ba-nam-ke-chuyen"
+        },
+        {
+          "vi": "Mèo Trà Đá đi ngang là ông được một ly trà. Đổi lại, ông dạy mèo một nước cờ, mèo học xong lại đi kể cho cả xóm.",
+          "en": "Whenever Mèo Trà Đá passes by, I get a glass of tea. In return I teach a chess move, which the cat then tells the whole lane about.",
+          "about": "meo-tra-da"
+        },
+        {
+          "vi": "Cún Đốm Dọn Nhà ở Nhà của bé hay ghé chơi cờ với ông, đánh xong còn quét sạch lá mướp rụng quanh bàn.",
+          "en": "Cún Đốm Dọn Nhà from the Home map often drops in to play, and afterwards sweeps up every gourd leaf round the table.",
+          "about": "cun-dom-don-nha"
+        },
+        {
+          "vi": "Ông kể cháu nghe: hôm nào chẳng ai ghé, ông bày cờ rồi ngồi chờ tới tối. Có cháu ghé là ông vui cả tuần.",
+          "en": "I'll tell you: on days nobody comes, I set out the pieces and wait till dark. When you drop by, it brightens my whole week.",
+          "hearts": 2
+        },
+        {
+          "vi": "Ông để dành cho {name} một quân cờ khắc dấu riêng. Ván nào có cháu, quân ấy mới được ra trận.",
+          "en": "I've set aside a specially marked piece for you, {name}. It only comes out to play when you're here.",
+          "hearts": 3
+        },
+        {
+          "vi": "Đừng nói với ai: ông chưa thắng chị Năm ván cờ gánh nào. Nên ông chẳng bao giờ rủ bà ấy chơi nữa.",
+          "en": "Don't tell a soul: I've never beaten my sister Năm at cờ gánh. So I simply never ask her to play.",
+          "hearts": 4
+        },
+        {
+          "vi": "Giải cờ gánh của xóm, ông muốn {name} là người bốc thăm mở màn. Thắng thua gì cũng ăn chè cả.",
+          "en": "For the lane's cờ gánh tournament, I want you to draw the first lot, {name}. Win or lose, everyone gets sweet soup.",
+          "hearts": 5
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "a": "ba-nam-ke-chuyen",
+      "b": "co-banh-mi-hanh",
+      "kind": "friend",
+      "note": {
+        "vi": "Hồi bé Hạnh ngồi trước ngõ nhà Mẩy nghe Bà Năm kể chuyện; giờ phiên chợ nào cô cũng gửi bà gói bánh cốm, bà gửi lại một câu đố mới.",
+        "en": "As a little girl, Hạnh sat at the mouth of Mẩy's lane listening to Bà Năm; now every market day she sends green rice cakes, and Bà Năm sends back a new riddle."
+      }
+    },
+    {
+      "a": "meo-tra-da",
+      "b": "nai-dom-dom",
+      "kind": "pen-pal",
+      "note": {
+        "vi": "Hai bạn viết thư cho nhau: Nai Đom Đóm kể đêm nào đom đóm bay nhiều, Mèo Trà Đá kể tin vui của xóm.",
+        "en": "The two write to each other: Nai Đom Đóm reports which nights the fireflies are thickest, and Mèo Trà Đá sends the lane's good news."
+      }
+    },
+    {
+      "a": "ba-nam-ke-chuyen",
+      "b": "ong-bay-co-ganh",
+      "kind": "family",
+      "note": {
+        "vi": "Hai chị em ruột: Bà Năm là chị cả, Ông Bảy là em út hay ngủ gật lúc chị kể chuyện.",
+        "en": "Sister and brother: Bà Năm is the eldest, Ông Bảy the youngest, who always dozed off during her stories."
+      }
+    },
+    {
+      "a": "ba-nam-ke-chuyen",
+      "b": "ba-gau-nau",
+      "kind": "friend",
+      "note": {
+        "vi": "Hai bà ngồi cạnh nhau mỗi tối, một người kể chuyện, một người đan len, thỉnh thoảng thi xem chuyện ma của ai đáng sợ hơn.",
+        "en": "The two grannies sit side by side every evening, one telling stories, one knitting, now and then competing over whose ghost story is scarier."
+      }
+    },
+    {
+      "a": "meo-tra-da",
+      "b": "ong-bay-co-ganh",
+      "kind": "neighbour",
+      "note": {
+        "vi": "Quán trà đá cạnh giếng chỉ cách giàn mướp vài bước, ly trà đổi lấy một nước cờ.",
+        "en": "The iced-tea stall by the well is a few steps from the gourd trellis; a glass of tea is traded for a chess move."
+      }
+    },
+    {
+      "a": "anh-tho-sua-mai",
+      "b": "ba-gau-nau",
+      "kind": "neighbour",
+      "note": {
+        "vi": "Anh lợp lại mái nhà cho Bà Gấu Nâu mỗi mùa mưa, bà đan cho anh tất len để trèo mái mùa đông.",
+        "en": "He re-tiles Bà Gấu Nâu's roof every rainy season, and she knits him wool socks for winter roofing."
+      }
+    },
+    {
+      "a": "anh-tho-sua-mai",
+      "b": "meo-tra-da",
+      "kind": "friend",
+      "note": {
+        "vi": "Mèo Trà Đá hay leo thang mang trà đá lên tận mái cho anh, đổi lấy những chuyện anh nhìn thấy từ trên cao.",
+        "en": "Mèo Trà Đá climbs ladders to bring him iced tea on the roof, in exchange for whatever news he's spotted from up there."
+      }
+    }
+  ],
+  "arcs": [
+    {
+      "id": "so-chuyen-ba-nam",
+      "npc": "ba-nam-ke-chuyen",
+      "title": { "vi": "Cuốn sổ chuyện bìa xanh", "en": "The blue notebook of stories" },
+      "teaser": {
+        "vi": "Cuốn sổ bìa xanh của bà có ba mươi sáu câu chuyện, mà chuyện bà thương nhất lại thiếu đoạn kết. Cháu ngồi xuống đây, bà kể từ đầu nhé.",
+        "en": "My blue notebook holds thirty-six stories, yet the one I love most has no ending. Sit down here, dear, and I'll start from the beginning."
+      },
+      "chapters": [
+        {
+          "quest": "yarn-so-chuyen-ba-nam-1",
+          "hearts": 0,
+          "letter": {
+            "from": "ba-nam-ke-chuyen",
+            "title": { "vi": "Sổ chuyện về đủ trang", "en": "Every page back home" },
+            "body": {
+              "vi": "Cháu {name} ơi, tối nay bà kẹp lại từng trang sổ bằng một sợi chỉ đỏ, chặt như buộc diều. Trang bị Bê Con nhai mất một góc, bà để nguyên làm kỷ niệm. Mai cháu ghé, bà kể cháu nghe chuyện chiếc thuyền lá.",
+              "en": "Dear {name}, tonight I tied every page back into my notebook with red thread, tight as a kite string. The page the calf nibbled I've left as it is, a souvenir. Come by tomorrow and I'll tell you about the leaf boat."
+            },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-so-chuyen-ba-nam-2",
+          "hearts": 1,
+          "letter": {
+            "from": "co-banh-mi-hanh",
+            "title": { "vi": "Thư kèm gói bánh cốm", "en": "A letter with green rice cakes" },
+            "body": {
+              "vi": "Chào {name}, cô là Hạnh bán bánh mì ở Chợ phiên. Hồi bé cô ngồi ngõ nhà Mẩy nghe Bà Năm kể chuyện chiếc thuyền lá không biết bao nhiêu lần. Nghe tin cháu giúp bà tìm lại những chữ bị nhòe, cô mừng lắm, gửi cháu gói bánh cốm cho vui.",
+              "en": "Hello {name}, I'm Hạnh, the baker at the Fair Market. As a girl I sat in Mẩy's lane hearing Bà Năm tell the leaf-boat story more times than I can count. I was so glad to hear you helped her recover the smudged words. Here are some green rice cakes, just because."
+            },
+            "reward": { "coins": 20, "xp": 15, "items": { "banh-com-xanh": 1 } }
+          }
+        },
+        {
+          "quest": "yarn-so-chuyen-ba-nam-3",
+          "hearts": 2,
+          "letter": {
+            "from": "ba-nam-ke-chuyen",
+            "title": { "vi": "Điều bà giấu sáu mươi năm", "en": "What I kept quiet for sixty years" },
+            "body": {
+              "vi": "{name} thân mến, đêm qua bà đã nói ra điều bà giấu cả đời: chuyện chiếc thuyền lá chưa bao giờ có đoạn kết. Cả ngõ không ai cười bà, chỉ có bọn trẻ nhao nhao đòi nghĩ đoạn kết. Bà ngủ một giấc ngon nhất từ năm mười tuổi.",
+              "en": "Dear {name}, last night I said what I'd hidden all my life: the leaf-boat story never had an ending. Nobody in the lane laughed; the children just clamoured to invent one. I slept better than I have since I was ten."
+            },
+            "reward": { "coins": 20, "xp": 20, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-so-chuyen-ba-nam-4",
+          "hearts": 3,
+          "letter": {
+            "from": "ba-nam-ke-chuyen",
+            "title": { "vi": "Đoạn kết của cả ngõ", "en": "The whole lane's ending" },
+            "body": {
+              "vi": "Cháu ơi, bà đã chép đoạn kết vào sổ bằng mực, lần đầu tiên bà không dùng bút chì. Nghe cháu kể lại chuyện của bà, bà biết chuyện sẽ không bao giờ mất. Bà gửi cháu chiếc gương nhỏ, soi vào là thấy một người kể chuyện.",
+              "en": "Dear child, I've written the ending in my notebook in ink, the first time I haven't used pencil. Hearing you tell my story back, I know it will never be lost. Here's a little mirror; look in it and you'll see a storyteller."
+            },
+            "reward": { "coins": 25, "xp": 25, "items": { "guong-tron-cua-ba": 1 } }
+          }
+        }
+      ]
+    },
+    {
+      "id": "mai-nha-chung",
+      "npc": "anh-tho-sua-mai",
+      "title": { "vi": "Mái nhà chung đầu đồng", "en": "A shared roof at the field's edge" },
+      "teaser": {
+        "vi": "Thấy ai ngoài đồng bị mưa đuổi là anh thương lắm. Anh có một bản vẽ mái nhà cho cả xóm, {name} muốn xem không?",
+        "en": "It breaks my heart to see people out in the fields chased by rain. I've drawn a roof for the whole lane; want to see, {name}?"
+      },
+      "chapters": [
+        {
+          "quest": "yarn-mai-nha-chung-1",
+          "hearts": 0,
+          "letter": {
+            "from": "anh-tho-sua-mai",
+            "title": { "vi": "Chuồng bò hết dột rồi", "en": "No more drips in the cowshed" },
+            "body": {
+              "vi": "{name} ơi, đêm qua mưa to mà chuồng bò khô cong, đàn bò nằm nhai rơm tỉnh bơ. Anh nằm trên gác nghe mưa, nghĩ mãi tới những người còn đứng ngoài đồng. Anh có một ý này, mai kể cho nghe.",
+              "en": "{name}, it poured last night but the cowshed stayed bone dry, and the cows lay chewing hay without a care. Lying in the loft listening to the rain, I kept thinking of people still out in the fields. I've got an idea; I'll tell you tomorrow."
+            },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-mai-nha-chung-2",
+          "hearts": 1,
+          "letter": {
+            "from": "bac-tho-khoa-thanh",
+            "title": { "vi": "Thư từ cầu đá Lâu đài", "en": "A letter from the Castle's stone bridge" },
+            "body": {
+              "vi": "Chào {name}, Bà Gấu Nâu kể bác nghe chuyện anh thợ mái muốn dựng mái nhà chung. Bác gửi xuống một cái then cửa bằng đồng không có ổ khóa, vì mái nhà chung thì ai cũng được vào. Cháu đưa giùm anh ấy nhé.",
+              "en": "Hello {name}, Bà Gấu Nâu told me about the roofer who wants to build a shared roof. I'm sending down a brass door bolt with no lock at all, since a shared roof should welcome everyone. Please pass it on to him."
+            },
+            "reward": { "coins": 20, "xp": 20, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-mai-nha-chung-3",
+          "hearts": 2,
+          "letter": {
+            "from": "anh-tho-sua-mai",
+            "title": { "vi": "Viên ngói cuối cùng", "en": "The last tile" },
+            "body": {
+              "vi": "{name} thân mến, tối nay anh không ngủ trên gác rơm nữa mà ngồi dưới mái nhà chung, có cả xóm ngồi cùng. Viên ngói cuối cùng mang điều ước của cháu, anh chẳng đọc đâu, chỉ biết nó làm mái nhà ấm hơn hẳn.",
+              "en": "Dear {name}, tonight I'm not sleeping in the hayloft; I'm sitting under the shared roof with half the lane beside me. The last tile carries your wish. I won't read it; I only know it makes the roof feel much warmer."
+            },
+            "reward": { "coins": 25, "xp": 20, "items": { "den-dau-co": 1 } }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,250 @@
+{
+  "id": "yarn-mai-nha-chung-1",
+  "region": "xom-mai-am",
+  "chapter": 4,
+  "title": "Chuyện của Anh Thợ Sửa Mái, chương 1: Mái chuồng bò trước cơn giông",
+  "status": "active",
+  "category": "story",
+  "summary": "Mây đen kéo tới mà mái chuồng bò đỏ thủng hai lỗ. {name} gom đồ nghề cho Anh Thợ Sửa Mái, tính số ngói còn thiếu, tìm ngói quanh chuồng gà, lợp mái kịp trước mưa và ở bên anh khi tiếng sấm đầu tiên nổ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Anh Thợ Sửa Mái",
+    "where": "Xóm Mái Ấm: ruộng lúa mì, vườn rau, chuồng bò đỏ, quanh chuồng gà",
+    "goal": "Vá mái chuồng bò đỏ trước khi cơn giông đổ xuống",
+    "play": "Tìm đồ nghề theo lời tả, giải câu đố số ngói, tìm ba viên ngói, chơi lợp ngói, chọn cách giúp anh khi sấm nổ",
+    "learn": "Đọc hiểu lời tả, cộng rồi trừ trong phạm vi 10",
+    "reward": "60 XP, 15 Xu, Skill XP Đọc hiểu, Phép trừ",
+    "next": "Nằm nghe mưa trên gác rơm, anh nghĩ tới những người còn đứng ngoài đồng"
+  },
+  "phases": {
+    "hook": "may-den-keo-toi",
+    "explore": "gom-do-nghe",
+    "learn": "tinh-ngoi-thieu",
+    "challenge": "tim-ngoi",
+    "decision": "lop-ngoi",
+    "finale": "tieng-sam-dau-tien",
+    "reward": "chuong-kho-cong",
+    "next": "nguoi-ngoai-dong"
+  },
+  "places": {
+    "anh-tho-sua-mai": "Ruộng lúa mì",
+    "gom-do-nghe": "Vườn rau",
+    "st-mai-nha-chung-mai-thung": "Chuồng bò đỏ",
+    "tim-ngoi": "Quanh chuồng gà",
+    "st-mai-nha-chung-thang-tre": "Chuồng bò đỏ"
+  },
+  "steps": [
+    {
+      "id": "may-den-keo-toi",
+      "title": "Mây đen phía chân trời",
+      "goTo": "Ra đầu đường cạnh ruộng lúa mì, Anh Thợ Sửa Mái đang ngửa cổ nhìn trời",
+      "kind": "dialogue",
+      "target": "anh-tho-sua-mai",
+      "lines": [
+        { "speaker": "Anh Thợ Sửa Mái", "text": "Một, hai, ba, nhìn kìa {name}! Mây đen đang kéo về như đàn trâu khổng lồ. Ông khách không mời sắp tới rồi." },
+        { "speaker": "Anh Thợ Sửa Mái", "text": "Mái chuồng bò đỏ thủng hai chỗ, mưa xuống là đàn bò ướt như chuột lột. Anh cần đồ nghề, đinh, lạt, mà để quên cả ngoài vườn rau." }
+      ],
+      "choices": [
+        { "text": "Anh trèo lên trước, em mang đồ tới ngay!", "reply": "Nhanh chân nhé, mây chạy còn nhanh hơn em đấy." },
+        { "text": "Anh có sợ mưa không?", "reply": "Mưa thì không, anh chỉ… hơi ngại cái ông sấm đi kèm thôi. Đi lấy đồ nào!" }
+      ],
+      "en": {
+        "title": "Dark clouds on the horizon",
+        "goTo": "Go to the path by the wheat field (Ruộng lúa mì), where Anh Thợ Sửa Mái is craning up at the sky",
+        "lines": [
+          "One, two, three, look, {name}! Dark clouds rolling in like a herd of giant buffalo. The uninvited guest is on its way.",
+          "The red cowshed roof has two holes, and when the rain comes the cows will be soaked to the skin. I need my tools, nails and ties, and I left them all in the vegetable garden."
+        ],
+        "choices": [
+          { "text": "You climb up, I'll bring the tools right away!", "reply": "Be quick, those clouds run faster than you do." },
+          { "text": "Are you scared of rain?", "reply": "Rain, no. I'm just… not keen on the thunder that comes with it. Let's get those tools!" }
+        ]
+      }
+    },
+    {
+      "id": "gom-do-nghe",
+      "title": "Đồ nghề bỏ quên",
+      "goTo": "Chạy ra vườn rau gom đồ nghề anh để quên",
+      "kind": "find-object",
+      "prompt": "Đồ nghề của anh nằm lẫn giữa mấy luống rau. Đọc lời tả rồi tìm đủ ba món:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "hop-dinh",
+          "name": "Hộp đinh tre",
+          "clue": "Hộp gỗ nhỏ, lắc lên kêu lạo xạo, bên trong là những chiếc đinh vót từ tre già, đầu nhọn hoắt.",
+          "target": "st-mai-nha-chung-hop-dinh"
+        },
+        {
+          "id": "bua-go",
+          "name": "Búa gỗ",
+          "clue": "Cán dài bằng cánh tay em, đầu búa tròn bằng gỗ, gõ vào ngói thì kêu cộc mà ngói chẳng vỡ.",
+          "target": "st-mai-nha-chung-bua-go"
+        },
+        {
+          "id": "lat-tre",
+          "name": "Cuộn lạt tre",
+          "clue": "Những sợi tre chẻ mỏng, cuộn tròn như bó mì vàng, dùng buộc ngói vào mè cho chặt.",
+          "target": "st-mai-nha-chung-lat-tre"
+        }
+      ],
+      "en": {
+        "title": "Forgotten tools",
+        "goTo": "Run to the vegetable garden (Vườn rau) and gather the tools he left behind",
+        "prompt": "His tools are tangled up among the vegetable beds. Read the descriptions and find all three:",
+        "items": [
+          { "name": "Box of bamboo nails", "clue": "A small wooden box that rattles when shaken, full of nails whittled from old bamboo, needle-sharp at the tip." },
+          { "name": "Wooden mallet", "clue": "A handle as long as your arm and a round wooden head; it goes «tock» on a tile without breaking it." },
+          { "name": "Coil of bamboo ties", "clue": "Thinly split bamboo strips coiled up like a bundle of golden noodles, used to tie tiles tight to the battens." }
+        ]
+      }
+    },
+    {
+      "id": "tinh-ngoi-thieu",
+      "title": "Thiếu bao nhiêu viên ngói?",
+      "goTo": "Mang đồ nghề tới chuồng bò đỏ, anh đang đứng đếm lỗ thủng",
+      "kind": "riddle",
+      "target": "st-mai-nha-chung-mai-thung",
+      "skill": "phep-tru",
+      "question": "Mái chuồng bò thủng hai hàng, mỗi hàng thiếu 5 viên ngói. Trong gùi của anh còn 7 viên. Phải tìm thêm mấy viên ngói nữa mới đủ vá mái?",
+      "answer": { "value": 3 },
+      "support": {
+        "guide": ["Trước hết tính cả hai hàng thiếu bao nhiêu viên: 5 + 5.", "Rồi bớt đi số ngói anh đã có trong gùi.", "Phần còn lại là số ngói phải đi tìm."],
+        "hint": "5 + 5 = 10, rồi 10 − 7 = ?",
+        "answer": {
+          "text": "Tìm thêm đúng 3 viên",
+          "explanation": "Hai hàng thiếu 5 + 5 = 10 viên; anh đã có 7 viên, 10 − 7 = 3, nên phải tìm thêm 3 viên."
+        },
+        "en": {
+          "guide": ["First work out how many both rows are missing: 5 + 5.", "Then take away the tiles he already has in his basket.", "What's left is how many tiles to find."],
+          "hint": "5 + 5 = 10, then 10 − 7 = ?",
+          "answer": {
+            "text": "Find exactly 3 more",
+            "explanation": "The two rows are missing 5 + 5 = 10 tiles; he has 7, and 10 − 7 = 3, so 3 more must be found."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba viên! Anh huýt sáo một hồi dài: «Tính nhanh hơn mây chạy!»",
+          "{name} cộng rồi trừ gọn gàng như lợp ngói thẳng hàng.",
+          "Đúng rồi, ba viên nữa là mái kín như bưng."
+        ],
+        "wrong": [
+          "Mái còn hở một lỗ, tính lại số ngói thiếu nhé.",
+          "Nhớ tính cả hai hàng, đừng quên hàng thứ hai.",
+          "Anh có sẵn bảy viên rồi, nhớ trừ đi số đó."
+        ],
+        "en": {
+          "right": [
+            "Three! He gives a long whistle: «You're quicker than the clouds!»",
+            "You added then subtracted, neat as a straight row of tiles, {name}.",
+            "Right, three more and the roof will be snug and sealed."
+          ],
+          "wrong": [
+            "There's still a gap in the roof; work out the missing tiles again.",
+            "Remember both rows, don't forget the second one.",
+            "He already has seven, so remember to take those away."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many tiles short?",
+        "goTo": "Take the tools to the red cowshed (Chuồng bò đỏ), where he's counting the holes",
+        "question": "The cowshed roof has two holed rows, each missing 5 tiles. His basket still holds 7 tiles. How many more tiles must be found to mend the roof?"
+      }
+    },
+    {
+      "id": "tim-ngoi",
+      "title": "Ba viên ngói lạc",
+      "goTo": "Đi quanh chuồng gà tìm ba viên ngói cũ",
+      "kind": "search",
+      "targets": ["st-mai-nha-chung-ngoi-rom", "st-mai-nha-chung-ngoi-mang", "st-mai-nha-chung-ngoi-cui"],
+      "en": {
+        "title": "Three stray tiles",
+        "goTo": "Walk round the hen house (Quanh chuồng gà) and find three old tiles"
+      }
+    },
+    {
+      "id": "lop-ngoi",
+      "title": "Lợp ngói chạy mưa",
+      "goTo": "Mang ngói về chuồng bò đỏ, chiếc thang tre đã dựng sẵn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-mai-nha-chung-thang-tre",
+      "prompt": "Mưa sắp tới rồi! Lợp ngói thật nhanh và khít, ghi đủ mười tám điểm trước khi giọt mưa đầu tiên rơi nhé!",
+      "game": "roof-tiles",
+      "goal": 18,
+      "en": {
+        "title": "Racing the rain",
+        "goTo": "Bring the tiles back to the red cowshed, where the bamboo ladder is already up",
+        "prompt": "The rain's nearly here! Lay the tiles fast and snug, and score eighteen points before the first drop falls!"
+      }
+    },
+    {
+      "id": "tieng-sam-dau-tien",
+      "title": "Tiếng sấm đầu tiên",
+      "kind": "decision",
+      "target": "st-mai-nha-chung-thang-tre",
+      "speaker": "Anh Thợ Sửa Mái",
+      "prompt": "Viên ngói cuối vừa đặt xong thì «Đùng!», sấm nổ. Anh Thợ Sửa Mái ôm chặt thang, mặt trắng bệch. {name} làm gì?",
+      "choices": [
+        {
+          "id": "dem-cung",
+          "text": "Đếm cùng anh: một, hai, ba, xuống!",
+          "consequence": "Anh đếm theo, từng bậc một, tới «ba» thì chân đã chạm đất. Anh thở phào cười: «Hóa ra đếm xuống cũng hay như đếm lên.»"
+        },
+        {
+          "id": "huyt-sao",
+          "text": "Huýt sáo bài anh hay huýt cho át tiếng sấm",
+          "consequence": "Tiếng sáo của hai người vang hơn cả tiếng sấm thứ hai. Anh tụt xuống thang, vừa huýt vừa cười."
+        },
+        {
+          "id": "giu-thang",
+          "text": "Giữ chặt chân thang, bảo anh nhìn vào mắt em mà xuống",
+          "consequence": "Anh nhìn {name}, bước xuống chậm mà chắc. Chạm đất rồi, anh lật một viên ngói thừa cho em xem: mặt dưới có dòng chữ bằng than."
+        }
+      ],
+      "en": {
+        "title": "The first thunderclap",
+        "prompt": "The last tile is barely in place when «BOOM!», thunder cracks. Anh Thợ Sửa Mái clings to the ladder, white as a sheet. What does {name} do?",
+        "choices": [
+          { "text": "Count with him: one, two, three, down!", "consequence": "He counts along, one rung at a time, and by «three» his feet are on the ground. He laughs with relief: «Counting down works as well as counting up.»" },
+          { "text": "Whistle his favourite tune to drown out the thunder", "consequence": "Your two whistles ring louder than the second thunderclap. He slides down the ladder, whistling and laughing." },
+          { "text": "Hold the ladder steady and tell him to look at you as he climbs down", "consequence": "He looks at {name} and climbs down slow and sure. On the ground, he turns over a spare tile to show you: on its underside is a line written in charcoal." }
+        ]
+      }
+    },
+    {
+      "id": "chuong-kho-cong",
+      "title": "Chuồng bò khô cong",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mưa trút xuống ào ào mà trong chuồng bò khô cong, đàn bò nằm nhai rơm tỉnh bơ. Anh Thợ Sửa Mái kể nhỏ với {name}: viên ngói nào anh lợp cũng mang một điều ước viết bằng than.",
+      "en": {
+        "title": "A bone-dry cowshed",
+        "text": "Rain pours down, but inside the cowshed it's bone dry and the cows lie chewing hay without a care. Anh Thợ Sửa Mái whispers to {name}: every tile he lays carries a wish written in charcoal."
+      }
+    },
+    {
+      "id": "nguoi-ngoai-dong",
+      "title": "Những người còn ngoài đồng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đêm đó nằm trên gác rơm nghe mưa, anh cứ nghĩ tới những người bị mưa đuổi ngoài đồng mà chẳng có chỗ trú. Sáng mai anh muốn cho {name} xem một bản vẽ anh giấu từ lâu.",
+      "en": {
+        "title": "Those still out in the fields",
+        "text": "That night, lying in the hayloft listening to the rain, he keeps thinking of people caught in the fields with nowhere to shelter. Tomorrow morning he wants to show {name} a drawing he's kept hidden for a long time."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": { "doc-hieu": 1, "phep-tru": 1 }
+  },
+  "en": {
+    "title": "Anh Thợ Sửa Mái's story, chapter 1: The cowshed roof before the storm",
+    "summary": "Storm clouds are coming and the red cowshed roof has two holes. {name} gathers tools for Anh Thợ Sửa Mái, works out how many tiles are short, finds tiles around the hen house, beats the rain on the roof and stays by him when the first thunder cracks."
+  }
+}

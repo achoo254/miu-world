@@ -1,0 +1,284 @@
+{
+  "id": "yarn-so-chuyen-ba-nam-1",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Chuyện của Bà Năm Kể Chuyện, chương 1: Gió thổi bay sổ chuyện",
+  "status": "active",
+  "category": "story",
+  "summary": "Một cơn gió giật thổi tung cuốn sổ chuyện bìa xanh của Bà Năm. {name} nhặt trang sổ khắp ngõ, xếp lại một câu chuyện, đòi trang cuối từ chú bê ham ăn giấy rồi đọc đoạn chuyện bà thương nhất.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bà Năm Kể Chuyện, Bê Con Nhai Giấy",
+    "where": "Xóm Mái Ấm: ngõ nhà Mẩy, gốc sung, luống cải góc vườn, ghế mây bên ngõ",
+    "goal": "Gom đủ trang sổ chuyện của Bà Năm",
+    "play": "Tìm ba trang sổ bay khắp ngõ, xếp lại một câu chuyện, chọn cách xin trang giấy từ Bê Con, chơi câu đố dân gian, đọc trang sổ bị nhai",
+    "learn": "Sắp xếp trình tự câu chuyện, đọc hiểu",
+    "reward": "55 XP, 14 Xu, Skill XP Kể chuyện, Đọc hiểu",
+    "next": "Trang tiếp theo của chuyện chiếc thuyền lá bị mưa làm nhòe chữ"
+  },
+  "phases": {
+    "hook": "gap-ba-nam",
+    "explore": "nhat-trang-so",
+    "learn": "xep-trang-meo",
+    "challenge": "xin-trang-cuoi",
+    "decision": "xin-trang-cuoi",
+    "finale": "do-be-con",
+    "reward": "so-ve-du-trang",
+    "next": "chu-bi-nhoe"
+  },
+  "places": {
+    "ba-nam-ke-chuyen": "Ngõ nhà Mẩy",
+    "nhat-trang-so": "Gốc sung",
+    "st-so-chuyen-ba-nam-be-con": "Luống cải",
+    "st-so-chuyen-ba-nam-trang-nhai": "Ghế mây bên ngõ"
+  },
+  "steps": [
+    {
+      "id": "gap-ba-nam",
+      "title": "Trang sổ bay như bướm",
+      "goTo": "Tới ngõ nhà Mẩy, Bà Năm Kể Chuyện đang ngồi nhìn theo gió",
+      "kind": "dialogue",
+      "target": "ba-nam-ke-chuyen",
+      "lines": [
+        { "speaker": "Bà Năm Kể Chuyện", "text": "Ngày xửa ngày xưa… mà cũng chẳng xưa lắm, mới sáng nay thôi, một cơn gió giật giằng mất cuốn sổ chuyện của bà." },
+        { "speaker": "Bà Năm Kể Chuyện", "text": "Trang sổ bay tứ tung như bướm, đậu khắp ngõ. Bà chân yếu, đuổi theo chỉ được ba bước là thở dốc." },
+        { "speaker": "Bà Năm Kể Chuyện", "text": "Cháu nhặt giúp bà nhé. Trong sổ có ba mươi sáu chuyện, thiếu trang nào là chuyện ấy cụt lủn." }
+      ],
+      "choices": [
+        { "text": "Cháu đi nhặt ngay, bà ngồi nghỉ đi ạ!", "reply": "Ngoan quá. Gió thổi về phía gốc sung, cháu ra đó trước nhé." },
+        { "text": "Bà kể cho cháu một chuyện trong sổ đi!", "reply": "Tham thế! Nhặt đủ trang đã, bà kể cho cháu chuyện hay nhất, hứa." }
+      ],
+      "en": {
+        "title": "Pages flying like butterflies",
+        "goTo": "Go to Mẩy's lane (Ngõ nhà Mẩy), where Bà Năm Kể Chuyện sits watching the wind",
+        "lines": [
+          "Once upon a time… not so long ago, mind, just this morning, a gust of wind snatched my storybook away.",
+          "The pages flew off like butterflies and landed all over the lane. My legs are weak; three steps of chasing and I'm out of breath.",
+          "Would you gather them for me, dear? There are thirty-six stories in that book, and every missing page leaves one cut short."
+        ],
+        "choices": [
+          { "text": "I'll go now, you have a rest!", "reply": "What a good child. The wind blew towards the fig tree, so start there." },
+          { "text": "Tell me one of the stories first!", "reply": "Greedy! Pages first, then I'll tell you the very best one, I promise." }
+        ]
+      }
+    },
+    {
+      "id": "nhat-trang-so",
+      "title": "Ba trang sổ lạc",
+      "goTo": "Chạy ra gốc sung đầu xóm, nhặt những trang sổ gió thổi bay",
+      "kind": "search",
+      "targets": ["st-so-chuyen-ba-nam-trang-sung", "st-so-chuyen-ba-nam-trang-cuc", "st-so-chuyen-ba-nam-trang-tre"],
+      "en": {
+        "title": "Three stray pages",
+        "goTo": "Run to the fig tree (Gốc sung) and pick up the pages the wind blew away"
+      }
+    },
+    {
+      "id": "xep-trang-meo",
+      "title": "Chuyện con mèo mướp",
+      "goTo": "Mang trang sổ về ngõ nhà Mẩy cho bà xếp lại",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "ba-nam-ke-chuyen",
+      "skill": "ke-chuyen",
+      "prompt": "Ba trang vừa nhặt kể chuyện «Con mèo mướp đi vớt trăng», nhưng đã lộn thứ tự. Xếp các đoạn theo đúng diễn biến câu chuyện:",
+      "items": [
+        { "id": "keo-gau", "label": "Mèo kéo gàu lên, chỉ thấy nước trong veo" },
+        { "id": "thay-trang", "label": "Mèo mướp thấy trăng rơi xuống đáy giếng" },
+        { "id": "ngang-len", "label": "Mèo ngẩng đầu, thấy trăng vẫn sáng trên trời" },
+        { "id": "tha-gau", "label": "Mèo thả gàu xuống giếng để vớt trăng" }
+      ],
+      "answer": { "order": ["thay-trang", "tha-gau", "keo-gau", "ngang-len"] },
+      "support": {
+        "guide": ["Chuyện bắt đầu khi mèo thấy một điều lạ.", "Thấy rồi mèo mới làm gì đó, rồi mới có kết quả.", "Đoạn cuối là lúc mèo hiểu ra sự thật."],
+        "hint": "Muốn kéo gàu lên thì phải thả gàu xuống trước đã.",
+        "answer": {
+          "text": "Thấy trăng, thả gàu, kéo lên, ngẩng nhìn",
+          "explanation": "Mèo thấy bóng trăng dưới giếng, thả gàu xuống vớt, kéo lên chỉ có nước, rồi ngẩng lên thấy trăng vẫn ở trên trời."
+        },
+        "en": {
+          "guide": ["The story starts when the cat notices something odd.", "Then the cat does something, and only then comes the result.", "The ending is when the cat realises the truth."],
+          "hint": "You have to lower the bucket before you can pull it up.",
+          "answer": {
+            "text": "See moon, lower bucket, pull up, look up",
+            "explanation": "The cat sees the moon in the well, lowers the bucket to fish it out, pulls up nothing but water, then looks up and sees the moon still in the sky."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bà vỗ đùi cười: chuyện mèo mướp lại liền một mạch như xưa!",
+          "{name} xếp chuyện khéo như người kể chuyện lâu năm.",
+          "Đúng rồi, trăng vẫn ở trên trời, chỉ có mèo là ướt râu."
+        ],
+        "wrong": [
+          "Mèo chưa thả gàu thì lấy gì mà kéo lên, cháu ơi?",
+          "Chuyện phải bắt đầu từ lúc mèo nhìn thấy trăng dưới giếng chứ.",
+          "Đoạn mèo ngẩng lên là đoạn kết, để nó xuống cuối cùng nhé."
+        ],
+        "en": {
+          "right": [
+            "She slaps her knee laughing: the tabby cat story flows just like it used to!",
+            "You order a story like a seasoned storyteller, {name}.",
+            "That's it, the moon stayed in the sky; only the cat got wet whiskers."
+          ],
+          "wrong": [
+            "The cat can't pull the bucket up before lowering it, dear.",
+            "The story should begin when the cat sees the moon in the well.",
+            "The cat looking up is the ending; put it last."
+          ]
+        }
+      },
+      "en": {
+        "title": "The tabby cat's tale",
+        "goTo": "Bring the pages back to Mẩy's lane so she can put them in order",
+        "prompt": "The three pages tell «The Tabby Cat Who Fished for the Moon», but they're jumbled. Put the parts in story order:",
+        "items": ["The cat pulls up the bucket: nothing but clear water", "The tabby cat sees the moon at the bottom of the well", "The cat looks up and sees the moon still shining in the sky", "The cat lowers a bucket into the well to fish out the moon"]
+      }
+    },
+    {
+      "id": "xin-trang-cuoi",
+      "title": "Chú bê ham chữ",
+      "goTo": "Lần theo tiếng nhai sồn sột ở luống cải góc vườn",
+      "kind": "decision",
+      "target": "st-so-chuyen-ba-nam-be-con",
+      "speaker": "Bê Con Nhai Giấy",
+      "prompt": "Trang cuối của sổ đang nằm trong miệng một chú bê, đuôi ngoe nguẩy: «Giấy này thơm mùi bút chì, ngon hơn cỏ!» {name} xin lại trang sổ bằng cách nào?",
+      "choices": [
+        {
+          "id": "doi-cai",
+          "text": "Đổi cho Bê một bó cải non mơn mởn",
+          "consequence": "Bê ngó bó cải, ngó trang giấy, rồi bảo: «Cải thì ngon, nhưng đố vui còn ngon hơn. Đố tớ đi đã!»"
+        },
+        {
+          "id": "ke-chuyen",
+          "text": "Kể cho Bê nghe một chuyện vui để Bê há miệng cười",
+          "consequence": "Bê cười khanh khách, trang giấy suýt rơi ra. «Hay quá! Giờ đố tớ vài câu, đúng thì tớ trả hẳn.»"
+        },
+        {
+          "id": "do-be",
+          "text": "Rủ Bê thi đố vui, thua thì trả trang sổ",
+          "consequence": "Bê dựng tai lên: «Thi thì thi! Tớ ăn giấy nhiều nên bụng toàn chữ đấy nhé.»"
+        }
+      ],
+      "en": {
+        "title": "A calf with a taste for words",
+        "goTo": "Follow the munching sound to the cabbage patch at the corner of the garden (Luống cải)",
+        "prompt": "The notebook's last page is in a calf's mouth, its tail swishing: «This paper smells of pencil, tastier than grass!» How will {name} get the page back?",
+        "choices": [
+          { "text": "Swap it for a bunch of tender cabbage", "consequence": "The calf eyes the cabbage, then the page: «Cabbage is tasty, but riddles are tastier. Riddle me first!»" },
+          { "text": "Tell a funny story so the calf laughs and opens its mouth", "consequence": "The calf guffaws and the page nearly drops. «Brilliant! Now riddle me a few; get them right and it's yours.»" },
+          { "text": "Challenge the calf to a riddle contest for the page", "consequence": "The calf pricks up its ears: «You're on! I've eaten so much paper my tummy's full of words.»" }
+        ]
+      }
+    },
+    {
+      "id": "do-be-con",
+      "title": "Đố vui với Bê Con",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-so-chuyen-ba-nam-be-con",
+      "prompt": "Bê Con mê đố vui lắm. Trả lời đúng bốn câu đố dân gian, Bê sẽ nhả trang sổ ra nhé!",
+      "game": "folk-riddle",
+      "goal": 4,
+      "en": {
+        "title": "Riddles with the calf",
+        "prompt": "The calf adores riddles. Answer four folk riddles correctly and it'll give back the page!"
+      }
+    },
+    {
+      "id": "doc-trang-nhai",
+      "title": "Trang sổ bị nhai dở",
+      "goTo": "Mang trang sổ bị nhai dở về ghế mây bên ngõ đọc cùng bà",
+      "kind": "read",
+      "target": "st-so-chuyen-ba-nam-trang-nhai",
+      "skill": "doc-hieu",
+      "text": "Chiếc thuyền lá chở trăng\nĐêm rằm, cô bé Sen thả một chiếc lá bàng xuống ao. Bóng trăng tròn rơi đúng vào lòng lá, thế là chiếc lá thành con thuyền chở trăng. Thuyền trôi qua cầu tre, qua bụi súng, qua… (góc giấy bị Bê Con nhai mất).",
+      "question": "Trong trang sổ, chiếc lá bàng biến thành gì?",
+      "choices": [
+        { "id": "a", "text": "Con thuyền chở trăng" },
+        { "id": "b", "text": "Chiếc ô che mưa cho Sen" },
+        { "id": "c", "text": "Cái tổ cho chim sẻ" }
+      ],
+      "answer": { "choice": "a" },
+      "support": {
+        "guide": ["Tìm câu có chữ «chiếc lá thành».", "Đọc xem lá bàng thành ra cái gì khi bóng trăng rơi vào."],
+        "hint": "Lá nổi trên mặt ao và chở một thứ tròn tròn, sáng sáng.",
+        "answer": {
+          "text": "Lá hóa thuyền, chở bóng trăng",
+          "explanation": "Trang sổ viết: bóng trăng rơi vào lòng lá, thế là chiếc lá thành con thuyền chở trăng."
+        },
+        "en": {
+          "guide": ["Find the sentence with «the leaf became».", "Read what the leaf turns into when the moon's reflection falls in."],
+          "hint": "The leaf floats on the pond, carrying something round and shining.",
+          "answer": {
+            "text": "The leaf turned into a moon boat",
+            "explanation": "The page says: the moon's reflection fell into the leaf, and so the leaf became a boat carrying the moon."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bà Năm gật gù: «Đúng chuyện bà thương nhất đấy cháu ạ.»",
+          "{name} đọc trang sổ mà như thấy cả ánh trăng trên ao.",
+          "Chuẩn rồi, chiếc lá nhỏ chở cả một vầng trăng!"
+        ],
+        "wrong": [
+          "Đêm rằm thì làm gì có mưa mà cần ô, đọc lại nhé.",
+          "Chim sẻ chưa xuất hiện trong trang này đâu cháu.",
+          "Tìm chữ «thuyền» trong trang sổ xem nào."
+        ],
+        "en": {
+          "right": [
+            "Bà Năm nods: «That's the story I love most of all, dear.»",
+            "Reading that page, you can almost see moonlight on the pond, {name}.",
+            "Exactly, a tiny leaf carrying a whole moon!"
+          ],
+          "wrong": [
+            "There's no rain on a full-moon night, so no need for an umbrella; read again.",
+            "No sparrow has turned up on this page yet, dear.",
+            "Look for the word «boat» on the page."
+          ]
+        }
+      },
+      "en": {
+        "title": "The nibbled page",
+        "goTo": "Take the nibbled page to the rattan chair by the lane (Ghế mây bên ngõ) and read it with her",
+        "text": "The Leaf Boat That Carried the Moon\nOn the night of the full moon, a girl called Sen set a tropical almond leaf on the pond. The round moon's reflection fell right into the leaf, and so the leaf became a boat carrying the moon. The boat drifted under the bamboo bridge, past the water lilies, past… (the calf nibbled this corner away).",
+        "question": "On the page, what does the almond leaf turn into?",
+        "choices": ["A boat carrying the moon", "An umbrella for Sen", "A nest for sparrows"]
+      }
+    },
+    {
+      "id": "so-ve-du-trang",
+      "title": "Sổ chuyện về đủ trang",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cuốn sổ bìa xanh lại dày dặn như cũ. Bà Năm Kể Chuyện xoa đầu {name}, bảo từ nay trong sổ có thêm một nhân vật mới: «đứa cháu đuổi kịp gió».",
+      "en": {
+        "title": "Every page back home",
+        "text": "The blue notebook is plump and whole again. Bà Năm Kể Chuyện pats {name} on the head and says the book has a new character now: «the child who outran the wind»."
+      }
+    },
+    {
+      "id": "chu-bi-nhoe",
+      "title": "Những dòng chữ nhòe",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Lật sang trang sau của chuyện chiếc thuyền lá, bà sững lại: mưa đêm qua làm nhòe mất mấy dòng. «Bà nhớ mang máng thôi…», bà thì thầm. Mai {name} ghé giúp bà nhớ lại nhé.",
+      "en": {
+        "title": "Smudged lines",
+        "text": "Turning to the next page of the leaf-boat story, she freezes: last night's rain has blurred several lines. «I only half remember…» she whispers. Come back tomorrow and help her remember, {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": { "ke-chuyen": 1, "doc-hieu": 1 }
+  },
+  "en": {
+    "title": "Bà Năm Kể Chuyện's story, chapter 1: The wind steals a storybook",
+    "summary": "A gust of wind scatters Bà Năm's blue notebook of stories. {name} gathers the pages from all over the lane, puts a story back in order, wins the last page back from a paper-loving calf and reads the tale Bà Năm loves most."
+  }
+}

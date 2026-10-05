@@ -4398,6 +4398,253 @@
    "kind": "object",
    "label": "Xem",
    "tint": "#c0a0a0"
+  },
+  "st-so-chuyen-ba-nam-trang-sung": {
+   "model": "generated/props/page-curl.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#e8dcc0"
+  },
+  "st-so-chuyen-ba-nam-trang-cuc": {
+   "model": "generated/props/page-blue.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c8d8f0"
+  },
+  "st-so-chuyen-ba-nam-trang-tre": {
+   "model": "generated/props/page-pink.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#f0c8d0"
+  },
+  "st-so-chuyen-ba-nam-be-con": {
+   "model": "packs/kenney-cube-pets/2.0/animal-cow.glb",
+   "height": 0.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#e8d8b8"
+  },
+  "st-so-chuyen-ba-nam-trang-nhai": {
+   "model": "generated/props/memo.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc",
+   "tint": "#e0d0a0"
+  },
+  "st-so-chuyen-ba-nam-la-bang": {
+   "model": "generated/props/fallen-leaf.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#c06030"
+  },
+  "st-so-chuyen-ba-nam-guong-tron": {
+   "model": "generated/props/mirror.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#d0d8e0"
+  },
+  "st-so-chuyen-ba-nam-chi-vang": {
+   "model": "generated/props/knot.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#e0c040"
+  },
+  "st-so-chuyen-ba-nam-ong-muc": {
+   "model": "packs/kenney-cube-pets/2.0/animal-dog.glb",
+   "height": 1.0,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#3a3a3a"
+  },
+  "st-so-chuyen-ba-nam-bang-go": {
+   "model": "packs/kenney-nature-kit/2.1/sign.glb",
+   "height": 1.4,
+   "kind": "object",
+   "label": "Đọc bảng",
+   "tint": "#8a6a4a"
+  },
+  "st-so-chuyen-ba-nam-ghe-dau": {
+   "model": "packs/kenney-nature-kit/2.1/stump_round.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#a08060"
+  },
+  "st-so-chuyen-ba-nam-cua-nha": {
+   "model": "generated/props/door.glb",
+   "height": 2.0,
+   "kind": "object",
+   "label": "Gõ cửa",
+   "tint": "#9a6040"
+  },
+  "st-so-chuyen-ba-nam-den-xanh": {
+   "model": "generated/props/balloon-blue.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#80b0e0"
+  },
+  "st-so-chuyen-ba-nam-den-do": {
+   "model": "generated/props/balloon.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#e05048"
+  },
+  "st-so-chuyen-ba-nam-den-vang": {
+   "model": "generated/props/balloon-yellow.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#f0d060"
+  },
+  "st-so-chuyen-ba-nam-giay-thuyen": {
+   "model": "generated/props/airplane-blue.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#a0c0e0"
+  },
+  "st-so-chuyen-ba-nam-giay-chi-do": {
+   "model": "generated/props/memo.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc",
+   "tint": "#e08080"
+  },
+  "st-so-chuyen-ba-nam-giay-la-tre": {
+   "model": "generated/props/page-curl.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#a0c890"
+  },
+  "st-so-chuyen-ba-nam-ghe-may": {
+   "model": "generated/props/basket.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#b08850"
+  },
+  "st-mai-nha-chung-hop-dinh": {
+   "model": "packs/kenney-survival-kit/2.0/box.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Mở hộp",
+   "tint": "#a08050"
+  },
+  "st-mai-nha-chung-bua-go": {
+   "model": "packs/kenney-survival-kit/2.0/tool-hammer.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#8a6040"
+  },
+  "st-mai-nha-chung-lat-tre": {
+   "model": "generated/props/knot.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#c8b070"
+  },
+  "st-mai-nha-chung-mai-thung": {
+   "model": "packs/kenney-survival-kit/2.0/resource-planks.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#b04838"
+  },
+  "st-mai-nha-chung-ngoi-rom": {
+   "model": "packs/kenney-survival-kit/2.0/rock-flat.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#b05030"
+  },
+  "st-mai-nha-chung-ngoi-mang": {
+   "model": "packs/kenney-survival-kit/2.0/rock-flat.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#c06848"
+  },
+  "st-mai-nha-chung-ngoi-cui": {
+   "model": "packs/kenney-survival-kit/2.0/rock-flat.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#984020"
+  },
+  "st-mai-nha-chung-thang-tre": {
+   "model": "packs/kenney-nature-kit/2.1/crops_bambooStageA.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c0a060"
+  },
+  "st-mai-nha-chung-coc-moc": {
+   "model": "packs/kenney-nature-kit/2.1/stump_oldTall.glb",
+   "height": 1,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#7a5a3a"
+  },
+  "st-mai-nha-chung-ban-ve": {
+   "model": "generated/props/scroll.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#e8e0c8"
+  },
+  "st-mai-nha-chung-bo-tre": {
+   "model": "packs/kenney-nature-kit/2.1/crops_bambooStageB.glb",
+   "height": 1.8,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#a0a050"
+  },
+  "st-mai-nha-chung-la-co": {
+   "model": "generated/props/leafy-green.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#507030"
+  },
+  "st-mai-nha-chung-day-may": {
+   "model": "generated/props/knot.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#a07848"
+  },
+  "st-mai-nha-chung-dong-tre": {
+   "model": "packs/kenney-nature-kit/2.1/log_stack.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#b0a060"
+  },
+  "st-mai-nha-chung-gau-gieng": {
+   "model": "packs/kenney-survival-kit/2.0/bucket.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#607080"
+  },
+  "st-mai-nha-chung-khung-mai": {
+   "model": "packs/kenney-survival-kit/2.0/resource-planks.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#8a5a30"
   }
  }
 }

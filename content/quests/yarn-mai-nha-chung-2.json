@@ -1,0 +1,302 @@
+{
+  "id": "yarn-mai-nha-chung-2",
+  "region": "xom-mai-am",
+  "chapter": 4,
+  "title": "Chuyện của Anh Thợ Sửa Mái, chương 2: Bản vẽ mái nhà chung",
+  "status": "active",
+  "category": "story",
+  "summary": "Anh Thợ Sửa Mái cho {name} xem bản vẽ một mái nhà chung ở đầu đồng, nơi ai bị mưa đuổi cũng có chỗ trú. {name} tính số cột, xếp các bước dựng chòi, gom tre, lá cọ và dây mây, rồi cùng anh chọn dòng chữ khắc lên cột cái.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Anh Thợ Sửa Mái",
+    "where": "Xóm Mái Ấm: ruộng lúa mì, gốc cây dẻ, ruộng ngô, bãi thả bò",
+    "goal": "Chuẩn bị đủ cột, vật liệu và kế hoạch cho mái nhà chung",
+    "play": "Suy luận số cột của chòi, xếp các bước dựng chòi, tìm vật liệu theo lời tả, chọn dòng chữ cho cột cái",
+    "learn": "Suy luận, sắp xếp trình tự công việc, đọc hiểu lời tả",
+    "reward": "60 XP, 16 Xu, Skill XP Logic, Kể chuyện, Đọc hiểu",
+    "next": "Ngày dựng mái, trời lại kéo mây giông"
+  },
+  "phases": {
+    "hook": "ban-ve-giau-kin",
+    "explore": "dem-cot-choi",
+    "learn": "xep-buoc-dung",
+    "challenge": "gom-vat-lieu",
+    "decision": "chu-tren-cot",
+    "finale": "chu-tren-cot",
+    "reward": "san-sang-dung-mai",
+    "next": "mua-giong-quay-lai"
+  },
+  "places": {
+    "anh-tho-sua-mai": "Ruộng lúa mì",
+    "st-mai-nha-chung-coc-moc": "Gốc cây dẻ",
+    "st-mai-nha-chung-ban-ve": "Ruộng ngô",
+    "gom-vat-lieu": "Bãi thả bò"
+  },
+  "steps": [
+    {
+      "id": "ban-ve-giau-kin",
+      "title": "Bản vẽ giấu trong mũ",
+      "goTo": "Ra ruộng lúa mì, Anh Thợ Sửa Mái đang lấy một tờ giấy ra khỏi mũ",
+      "kind": "dialogue",
+      "target": "anh-tho-sua-mai",
+      "lines": [
+        { "speaker": "Anh Thợ Sửa Mái", "text": "Anh giấu bản vẽ này trong mũ ba năm rồi, chưa cho ai xem. Em là người đầu tiên đấy, {name}." },
+        { "speaker": "Anh Thợ Sửa Mái", "text": "Một mái nhà chung ở đầu đồng: không cửa, không khóa, ai bị mưa đuổi cũng chạy vào trú được, ngồi cạnh nhau mà nghe mưa." },
+        { "speaker": "Anh Thợ Sửa Mái", "text": "Anh đã cắm cọc mốc dưới gốc cây dẻ rồi. Giờ chỉ cần tính toán cho kỹ, rồi đi gom vật liệu." }
+      ],
+      "choices": [
+        { "text": "Mái nhà ấy đẹp quá, mình làm ngay đi anh!", "reply": "Một, hai, ba, làm! Ra gốc cây dẻ đếm cột với anh nào." },
+        { "text": "Sao anh giấu lâu thế ạ?", "reply": "Anh sợ người ta cười, bảo thợ mái mà mơ to. Nhưng em không cười, thế là đủ rồi." }
+      ],
+      "en": {
+        "title": "A drawing hidden in a hat",
+        "goTo": "Go to the wheat field, where Anh Thợ Sửa Mái is taking a sheet of paper out of his hat",
+        "lines": [
+          "I've hidden this drawing in my hat for three years and never shown anyone. You're the first, {name}.",
+          "A shared roof at the edge of the fields: no door, no lock, anyone caught in the rain can run in, sit side by side and listen to it fall.",
+          "I've already put marker stakes under the chestnut tree. Now we just need careful sums, then we gather materials."
+        ],
+        "choices": [
+          { "text": "What a lovely roof, let's start right now!", "reply": "One, two, three, go! Come and count the posts with me under the chestnut tree." },
+          { "text": "Why did you hide it so long?", "reply": "I was scared people would laugh: a roofer with big dreams. But you didn't laugh, and that's enough." }
+        ]
+      }
+    },
+    {
+      "id": "dem-cot-choi",
+      "title": "Chòi cần mấy cây cột?",
+      "goTo": "Ra gốc cây dẻ, nơi anh đã cắm cọc mốc",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-mai-nha-chung-coc-moc",
+      "skill": "logic",
+      "prompt": "Mái nhà chung hình chữ nhật, có 4 góc và 2 cạnh dài. Mỗi góc chôn 1 cột. Cạnh dài quá nên chính giữa mỗi cạnh dài phải chôn thêm 1 cột đỡ. Cần tất cả bao nhiêu cột?",
+      "elements": [
+        { "id": "goc", "label": "4 góc, mỗi góc 1 cột" },
+        { "id": "canh-dai", "label": "2 cạnh dài, giữa mỗi cạnh thêm 1 cột" }
+      ],
+      "choices": [
+        { "id": "a", "text": "4 cột" },
+        { "id": "b", "text": "6 cột" },
+        { "id": "c", "text": "8 cột" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Đếm cột ở các góc trước: 4 góc là 4 cột.", "Mỗi cạnh dài thêm 1 cột ở giữa, có 2 cạnh dài.", "Cộng hai số lại."],
+        "hint": "4 + 2 = ?",
+        "answer": {
+          "text": "Sáu cây cột",
+          "explanation": "4 cột ở 4 góc, thêm 1 cột giữa mỗi cạnh dài là 2 cột; 4 + 2 = 6 cột."
+        },
+        "en": {
+          "guide": ["Count the corner posts first: 4 corners, 4 posts.", "Each long side gets 1 extra post in the middle, and there are 2 long sides.", "Add the two numbers."],
+          "hint": "4 + 2 = ?",
+          "answer": {
+            "text": "Six posts",
+            "explanation": "4 posts at the 4 corners, plus 1 in the middle of each long side makes 2 more; 4 + 2 = 6 posts."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sáu cột! Anh cắm thêm hai cọc mốc, gật gù: «Đứng vững như kiềng sáu chân.»",
+          "{name} đếm cột chuẩn như thợ cả đi đo đất.",
+          "Đúng rồi, thiếu cột giữa thì mái võng xuống như cái võng mất."
+        ],
+        "wrong": [
+          "Chỉ cột ở góc thôi thì cạnh dài võng xuống mất, đếm thêm nhé.",
+          "Cạnh ngắn không cần cột giữa đâu, đọc lại đề xem.",
+          "Đếm góc trước, rồi mới tính cột giữa hai cạnh dài."
+        ],
+        "en": {
+          "right": [
+            "Six posts! He drives in two more stakes and nods: «Steady as a six-legged stool.»",
+            "You count posts like a master builder measuring ground, {name}.",
+            "Right; without the middle posts the roof would sag like a hammock."
+          ],
+          "wrong": [
+            "Corner posts alone and the long sides would sag; count some more.",
+            "The short sides don't need middle posts; read the puzzle again.",
+            "Count the corners first, then the middle posts on the long sides."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many posts?",
+        "goTo": "Go to the chestnut tree (Gốc cây dẻ), where he has set the marker stakes",
+        "prompt": "The shared roof is a rectangle with 4 corners and 2 long sides. Each corner gets 1 post. The long sides are so long that the middle of each one needs 1 extra post. How many posts in all?",
+        "elements": ["4 corners, 1 post each", "2 long sides, 1 extra post in the middle of each"],
+        "choices": ["4 posts", "6 posts", "8 posts"]
+      }
+    },
+    {
+      "id": "xep-buoc-dung",
+      "title": "Dựng chòi từ đâu?",
+      "goTo": "Sang ruộng ngô, anh ghim bản vẽ lên một cây cọc",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-mai-nha-chung-ban-ve",
+      "skill": "ke-chuyen",
+      "prompt": "Mặt sau bản vẽ ghi các việc dựng mái nhà chung, nhưng anh viết lộn xộn quá. Xếp lại theo đúng thứ tự:",
+      "items": [
+        { "id": "gac-keo", "label": "Gác kèo tre lên đầu cột" },
+        { "id": "lop-la", "label": "Lợp lá cọ lên mái" },
+        { "id": "dao-ho", "label": "Đào hố ở chỗ cắm cọc mốc" },
+        { "id": "dung-cot", "label": "Dựng cột xuống hố, nện đất cho chặt" }
+      ],
+      "answer": { "order": ["dao-ho", "dung-cot", "gac-keo", "lop-la"] },
+      "support": {
+        "guide": ["Muốn dựng cột thì phải có hố trước.", "Cột đứng vững rồi mới gác được kèo lên.", "Mái lợp sau cùng, khi khung đã xong."],
+        "hint": "Xây từ dưới đất lên trên trời.",
+        "answer": {
+          "text": "Đào hố, dựng cột, gác kèo, lợp lá",
+          "explanation": "Đào hố trước, dựng cột vào hố, gác kèo lên đầu cột, cuối cùng lợp lá cọ lên khung mái."
+        },
+        "en": {
+          "guide": ["You need holes before you can stand posts.", "Only once the posts are firm can the rafters go on top.", "The roof covering comes last, when the frame is done."],
+          "hint": "Build from the ground up to the sky.",
+          "answer": {
+            "text": "Dig, raise posts, rafters, thatch",
+            "explanation": "Dig holes first, stand the posts in them, lay rafters across the tops, and finally thatch the frame with palm leaves."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Anh vỗ tay đánh đét: «Em xếp việc còn gọn hơn anh xếp ngói!»",
+          "Từ đất lên trời, {name} không đảo một bước nào.",
+          "Đúng thứ tự rồi, mái nhà chung coi như đã dựng xong một nửa trong đầu."
+        ],
+        "wrong": [
+          "Chưa có cột thì kèo gác lên đâu được hả em?",
+          "Lợp lá trước thì lá bay theo gió mất thôi.",
+          "Bắt đầu từ việc làm dưới mặt đất xem nào."
+        ],
+        "en": {
+          "right": [
+            "He claps loudly: «You order jobs neater than I lay tiles!»",
+            "From the ground to the sky, {name}, not one step out of place.",
+            "That's the order; the shared roof is half built already, in our heads."
+          ],
+          "wrong": [
+            "With no posts yet, where would the rafters sit?",
+            "Thatch first and the leaves would blow away in the wind.",
+            "Start with the job that happens down in the ground."
+          ]
+        }
+      },
+      "en": {
+        "title": "Where does building start?",
+        "goTo": "Go over to the maize field (Ruộng ngô), where he has pinned the drawing to a stake",
+        "prompt": "The back of the drawing lists the building jobs, but he wrote them all jumbled. Put them in the right order:",
+        "items": ["Lay bamboo rafters across the post tops", "Thatch the roof with palm leaves", "Dig holes where the marker stakes are", "Stand the posts in the holes and stamp the earth firm"]
+      }
+    },
+    {
+      "id": "gom-vat-lieu",
+      "title": "Tre, lá cọ và dây mây",
+      "goTo": "Ra bãi thả bò gom vật liệu cả xóm góp",
+      "kind": "find-object",
+      "prompt": "Mỗi nhà trong xóm góp một ít, để sẵn ở bãi thả bò. Đọc lời tả và tìm đủ ba thứ:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "bo-tre",
+          "name": "Bó tre già",
+          "clue": "Những cây tre thẳng tắp, vàng như mật, gõ vào kêu boong boong, bó chặt bằng một sợi dây chuối.",
+          "target": "st-mai-nha-chung-bo-tre"
+        },
+        {
+          "id": "la-co",
+          "name": "Tấm lá cọ",
+          "clue": "Xòe ra như bàn tay khổng lồ, xanh sẫm, che được cả một chú bê con khi trời đổ mưa.",
+          "target": "st-mai-nha-chung-la-co"
+        },
+        {
+          "id": "day-may",
+          "name": "Cuộn dây mây",
+          "clue": "Sợi nâu bóng, dẻo mà dai, uốn cong cỡ nào cũng không gãy, dùng buộc kèo vào cột.",
+          "target": "st-mai-nha-chung-day-may"
+        }
+      ],
+      "en": {
+        "title": "Bamboo, palm leaves and rattan",
+        "goTo": "Go to the cattle pasture (Bãi thả bò) and gather the materials the lane has given",
+        "prompt": "Every house in the lane gave a little and left it at the pasture. Read the descriptions and find all three:",
+        "items": [
+          { "name": "Bundle of old bamboo", "clue": "Poles dead straight and golden as honey, ringing «boong» when tapped, tied tight with banana-fibre string." },
+          { "name": "Palm leaf", "clue": "Spread wide like a giant's hand, deep green, big enough to keep a calf dry in a downpour." },
+          { "name": "Coil of rattan", "clue": "Glossy brown strands, supple and tough, that bend any way without snapping; used to bind rafters to posts." }
+        ]
+      }
+    },
+    {
+      "id": "chu-tren-cot",
+      "title": "Dòng chữ trên cột cái",
+      "goTo": "Mang vật liệu về ruộng lúa mì, anh đang vót một cây cột thật đẹp",
+      "kind": "decision",
+      "target": "anh-tho-sua-mai",
+      "speaker": "Anh Thợ Sửa Mái",
+      "prompt": "Anh vót xong cây cột cái, để chừa một chỗ nhẵn: «Anh muốn khắc một dòng chữ lên đây. Em nghĩ nên khắc gì?»",
+      "choices": [
+        {
+          "id": "nha-moi-nguoi",
+          "text": "«Mái nhà của mọi người»",
+          "consequence": "Anh khắc từng nét thật sâu, rồi đứng ngắm mãi: «Nhà của mọi người, tức là cũng có một chút nhà của anh.»"
+        },
+        {
+          "id": "ai-mua-cung-vao",
+          "text": "«Ai bị mưa đuổi, cứ vào đây»",
+          "consequence": "Anh bật cười: «Nghe như mái nhà đang vẫy tay gọi người ta vậy.» Nét khắc nghiêng nghiêng như đang chạy."
+        },
+        {
+          "id": "ngoi-canh-nhau",
+          "text": "«Ngồi cạnh nhau, nghe mưa hát»",
+          "consequence": "Anh lặng đi một lúc rồi khắc, miệng huýt sáo khe khẽ: «Thế thì mưa cũng thành khách mời, chứ đâu còn là khách không mời.»"
+        }
+      ],
+      "en": {
+        "title": "Words on the main post",
+        "goTo": "Bring the materials back to the wheat field, where he's whittling a handsome main post",
+        "prompt": "He finishes whittling the main post and leaves one smooth patch: «I want to carve a line here. What should it say?»",
+        "choices": [
+          { "text": "«Everyone's roof»", "consequence": "He carves each letter deep, then stands admiring it: «Everyone's roof means a little bit of it is mine too.»" },
+          { "text": "«Caught in the rain? Come on in»", "consequence": "He laughs: «Sounds like the roof is waving people over.» The letters lean forward as if running." },
+          { "text": "«Sit together and hear the rain sing»", "consequence": "He goes quiet a moment, then carves, whistling softly: «Then the rain becomes an invited guest, not the uninvited one.»" }
+        ]
+      }
+    },
+    {
+      "id": "san-sang-dung-mai",
+      "title": "Mọi thứ đã sẵn sàng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Sáu cây cột, một bó tre, một chồng lá cọ và một cây cột cái có khắc chữ nằm xếp hàng dưới gốc cây dẻ. Anh Thợ Sửa Mái bảo đó là lần đầu anh thấy giấc mơ của mình chạm được tay.",
+      "en": {
+        "title": "Everything is ready",
+        "text": "Six posts, a bundle of bamboo, a stack of palm leaves and a carved main post lie in a row under the chestnut tree. Anh Thợ Sửa Mái says it's the first time his dream has felt solid enough to touch."
+      }
+    },
+    {
+      "id": "mua-giong-quay-lai",
+      "title": "Mây giông lại kéo về",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ngày dựng mái đã định, nhưng đài báo chiều ấy có giông. Anh Thợ Sửa Mái nuốt nước bọt, rồi bảo {name}: «Lần này anh không chạy. Em tới với anh nhé.»",
+      "en": {
+        "title": "Storm clouds again",
+        "text": "Building day is set, but the radio says a storm is due that afternoon. Anh Thợ Sửa Mái swallows hard, then tells {name}: «This time I won't run. Will you come with me?»"
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 16,
+    "skillXp": { "logic": 1, "ke-chuyen": 1, "doc-hieu": 1 }
+  },
+  "en": {
+    "title": "Anh Thợ Sửa Mái's story, chapter 2: Drawing a shared roof",
+    "summary": "Anh Thợ Sửa Mái shows {name} his drawing of a shared roof at the edge of the fields, where anyone caught in the rain can shelter. {name} works out the posts, orders the building jobs, gathers bamboo, palm leaves and rattan, then helps choose the words carved on the main post."
+  }
+}

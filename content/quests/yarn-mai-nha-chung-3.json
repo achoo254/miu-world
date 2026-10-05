@@ -1,0 +1,327 @@
+{
+  "id": "yarn-mai-nha-chung-3",
+  "region": "xom-mai-am",
+  "chapter": 4,
+  "title": "Chuyện của Anh Thợ Sửa Mái, chương 3: Mái nhà dưới cơn giông",
+  "status": "active",
+  "category": "story",
+  "summary": "Ngày dựng mái nhà chung, mây giông lại kéo về. {name} chọn những bó tre đủ mười cây, đong nước trộn vữa chôn cột, đứng cạnh Anh Thợ Sửa Mái khi sấm nổ, lợp lá cọ theo quy luật rồi đếm người kéo vào trú dưới mái nhà mới.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Anh Thợ Sửa Mái",
+    "where": "Xóm Mái Ấm: ruộng lúa mì, trong chuồng bò, giếng đầu đồng, gốc cây dẻ",
+    "goal": "Dựng xong mái nhà chung trước cơn giông và giúp anh vượt nỗi sợ sấm",
+    "play": "Chọn các bó tre đủ mười cây, chơi đong nước, chọn cách giúp anh khi sấm nổ, tìm quy luật lợp lá, giải câu đố đếm người",
+    "learn": "Các cặp số cộng lại bằng 10, tìm quy luật, bài toán có lời văn",
+    "reward": "70 XP, 20 Xu, Skill XP Phép cộng, Logic, Bài toán có lời văn",
+    "next": "Anh Thợ Sửa Mái có một mái nhà để gọi là nhà, mở cửa cho cả xóm"
+  },
+  "phases": {
+    "hook": "ngay-dung-mai",
+    "explore": "chon-bo-tre",
+    "learn": "dong-nuoc-tron-vua",
+    "challenge": "sam-no-giua-chung",
+    "decision": "sam-no-giua-chung",
+    "finale": "lop-la-co",
+    "reward": "mai-nha-dau-tien",
+    "next": "nha-cua-moi-nguoi"
+  },
+  "places": {
+    "anh-tho-sua-mai": "Ruộng lúa mì",
+    "st-mai-nha-chung-dong-tre": "Trong chuồng bò",
+    "st-mai-nha-chung-gau-gieng": "Giếng đầu đồng",
+    "st-mai-nha-chung-khung-mai": "Gốc cây dẻ"
+  },
+  "steps": [
+    {
+      "id": "ngay-dung-mai",
+      "title": "Ngày dựng mái",
+      "goTo": "Tới ruộng lúa mì từ sớm, Anh Thợ Sửa Mái đã đội mũ chờ sẵn",
+      "kind": "dialogue",
+      "target": "anh-tho-sua-mai",
+      "lines": [
+        { "speaker": "Anh Thợ Sửa Mái", "text": "Một, hai, ba, dựng! Hôm nay là ngày anh chờ ba năm, mà trời lại hầm hập như sắp giông." },
+        { "speaker": "Anh Thợ Sửa Mái", "text": "Tre cả xóm góp anh để trong chuồng bò, có bó đủ có bó thiếu. Em chọn giúp anh những bó đủ mười cây nhé." }
+      ],
+      "choices": [
+        { "text": "Giông thì mình dựng nhanh hơn giông!", "reply": "Nói hay lắm! Anh huýt sáo lấy tinh thần đây." },
+        { "text": "Lỡ sấm nổ thì anh tính sao?", "reply": "Anh đã hứa không chạy. Có em ở đây, anh đứng vững hơn một cây cột." }
+      ],
+      "en": {
+        "title": "Building day",
+        "goTo": "Get to the wheat field early, where Anh Thợ Sửa Mái is already waiting in his hat",
+        "lines": [
+          "One, two, three, build! Today's the day I've waited three years for, and of course it's muggy as if a storm's coming.",
+          "The lane's bamboo is in the cowshed: some bundles full, some short. Pick out the bundles with ten poles for me, will you?"
+        ],
+        "choices": [
+          { "text": "Then let's build faster than the storm!", "reply": "Well said! I'll whistle to keep our spirits up." },
+          { "text": "What if the thunder comes?", "reply": "I promised not to run. With you here, I'm steadier than a post." }
+        ]
+      }
+    },
+    {
+      "id": "chon-bo-tre",
+      "title": "Bó nào đủ mười cây?",
+      "goTo": "Vào trong chuồng bò, các bó tre dựng dọc vách",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-mai-nha-chung-dong-tre",
+      "skill": "phep-cong",
+      "prompt": "Mỗi bó tre buộc hai nắm nhỏ, trên lạt ghi số cây của từng nắm. Chọn mọi bó có đủ đúng 10 cây:",
+      "choices": [
+        { "id": "a", "text": "6 + 4" },
+        { "id": "b", "text": "5 + 5" },
+        { "id": "c", "text": "7 + 2" },
+        { "id": "d", "text": "3 + 7" },
+        { "id": "e", "text": "8 + 1" }
+      ],
+      "answer": { "choices": ["a", "b", "d"] },
+      "support": {
+        "guide": ["Tính từng phép cộng ghi trên lạt.", "Bó nào ra đúng 10 thì chọn, ra 9 thì bỏ qua."],
+        "hint": "Có ba bó đủ mười cây.",
+        "answer": {
+          "text": "Ba bó: 6 + 4, 5 + 5 và 3 + 7",
+          "explanation": "6 + 4 = 10, 5 + 5 = 10, 3 + 7 = 10; còn 7 + 2 và 8 + 1 chỉ bằng 9."
+        },
+        "en": {
+          "guide": ["Work out each sum written on the ties.", "Pick the bundles that make exactly 10, and skip any that make 9."],
+          "hint": "Three bundles have ten poles.",
+          "answer": {
+            "text": "Three bundles: 6+4, 5+5, 3+7",
+            "explanation": "6 + 4 = 10, 5 + 5 = 10 and 3 + 7 = 10; 7 + 2 and 8 + 1 only make 9."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba bó tre tròn mười, anh vác lên vai nhẹ tênh như vác lông gà.",
+          "{name} nhìn phép cộng mà biết ngay bó nào đủ, giỏi quá.",
+          "Đủ cả, chẳng bó nào hụt một cây."
+        ],
+        "wrong": [
+          "Bó này chỉ có chín cây thôi, dựng lên là mái lệch mất.",
+          "Còn sót một bó đủ mười cây nằm ở góc kia đấy.",
+          "Cộng lại từng nắm thật chậm xem nào."
+        ],
+        "en": {
+          "right": [
+            "Three bundles of exactly ten; he swings them onto his shoulder light as feathers.",
+            "You see the sum and know which bundle is full straight away, {name}.",
+            "All complete; not one bundle short of a pole."
+          ],
+          "wrong": [
+            "That bundle only has nine; build with it and the roof would tilt.",
+            "There's still a ten-pole bundle left over in the corner.",
+            "Add each pair slowly, one at a time."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which bundles have ten?",
+        "goTo": "Go into the cowshed (Trong chuồng bò), where the bamboo bundles lean against the wall",
+        "prompt": "Each bundle ties together two smaller bunches, and the tie shows how many poles are in each. Pick every bundle with exactly 10 poles:",
+        "choices": ["6 + 4", "5 + 5", "7 + 2", "3 + 7", "8 + 1"]
+      }
+    },
+    {
+      "id": "dong-nuoc-tron-vua",
+      "title": "Nước trộn vữa chôn cột",
+      "goTo": "Ra giếng đầu đồng đong nước trộn vữa chôn chân cột",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-mai-nha-chung-gau-gieng",
+      "prompt": "Vữa chôn chân cột phải đủ nước mới chắc. Đong đúng số lít nước trong hai lượt nhé!",
+      "game": "water-jugs",
+      "goal": 2,
+      "en": {
+        "title": "Water for the mortar",
+        "goTo": "Go to the well at the field's edge (Giếng đầu đồng) and measure water for the post mortar",
+        "prompt": "The mortar round the posts needs just the right water to set firm. Measure the right number of litres in two rounds!"
+      }
+    },
+    {
+      "id": "sam-no-giua-chung",
+      "title": "Sấm nổ giữa chừng",
+      "goTo": "Mang vữa ra gốc cây dẻ, khung mái đã dựng xong một nửa",
+      "kind": "decision",
+      "target": "st-mai-nha-chung-khung-mai",
+      "speaker": "Anh Thợ Sửa Mái",
+      "prompt": "Anh đang đứng trên khung mái thì «Đùng! Đoàng!», sấm nổ liền hai tiếng. Anh run lên, nhưng không bỏ chạy: «Em ơi… nói gì với anh đi.» {name} nói gì?",
+      "choices": [
+        {
+          "id": "nho-loi-hua",
+          "text": "Anh đã hứa không chạy, và anh đang làm được đấy!",
+          "consequence": "Anh hít một hơi thật sâu, buộc nốt sợi mây vào kèo. «Ừ… anh đang làm được thật», anh nói, giọng run mà mắt sáng."
+        },
+        {
+          "id": "dem-sam",
+          "text": "Mình đếm khoảng cách giữa chớp và sấm đi anh",
+          "consequence": "Hai anh em đếm «một, hai, ba…» sau mỗi tia chớp. Đếm mãi, anh quên cả sợ, chỉ còn nhớ phải đếm cho đúng."
+        },
+        {
+          "id": "nghi-toi-ca-xom",
+          "text": "Nghĩ tới cả xóm sẽ ngồi dưới mái này tối nay",
+          "consequence": "Anh nhìn về phía xóm, thấy bọn trẻ đang chạy ra đồng. «Phải xong trước khi các em tới!», anh nói, rồi làm nhanh gấp đôi."
+        }
+      ],
+      "en": {
+        "title": "Thunder halfway through",
+        "goTo": "Carry the mortar to the chestnut tree (Gốc cây dẻ); the roof frame is half up",
+        "prompt": "He's standing on the frame when «BOOM! CRACK!», two thunderclaps in a row. He shakes, but he doesn't run: «Say something to me…» What does {name} say?",
+        "choices": [
+          { "text": "You promised not to run, and you're doing it!", "consequence": "He takes a deep breath and ties the last strand of rattan to the rafter. «Yes… I really am,» he says, voice shaky but eyes bright." },
+          { "text": "Let's count between the lightning and the thunder", "consequence": "The two of you count «one, two, three…» after every flash. Counting and counting, he forgets to be afraid and only remembers to count right." },
+          { "text": "Think of the whole lane sitting under this roof tonight", "consequence": "He looks towards the lane and sees children running out into the fields. «Must finish before they get here!» he says, and works twice as fast." }
+        ]
+      }
+    },
+    {
+      "id": "lop-la-co",
+      "title": "Lợp lá theo hàng",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "st-mai-nha-chung-khung-mai",
+      "skill": "logic",
+      "prompt": "Anh lợp lá cọ thành hàng, lá già màu xanh đậm, lá non màu xanh nhạt: đậm, đậm, nhạt, đậm, đậm, nhạt, đậm, đậm, … Tấm lá tiếp theo phải là tấm nào?",
+      "choices": [
+        { "id": "a", "text": "Một tấm xanh đậm" },
+        { "id": "b", "text": "Một tấm xanh nhạt" },
+        { "id": "c", "text": "Hai tấm xanh nhạt" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm nhóm lá cứ lặp đi lặp lại.", "Mỗi nhóm có hai tấm đậm rồi một tấm nhạt.", "Nhóm cuối đã có hai tấm đậm rồi."],
+        "hint": "Đậm, đậm, nhạt là một nhóm.",
+        "answer": {
+          "text": "Tấm lá non xanh nhạt",
+          "explanation": "Hàng lá lặp lại nhóm đậm, đậm, nhạt; nhóm cuối đã có hai tấm đậm nên tấm tiếp theo là xanh nhạt."
+        },
+        "en": {
+          "guide": ["Find the group of leaves that keeps repeating.", "Each group is two dark leaves then one light one.", "The last group already has its two dark leaves."],
+          "hint": "Dark, dark, light is one group.",
+          "answer": {
+            "text": "A young light-green leaf",
+            "explanation": "The row repeats dark, dark, light; the last group already has two dark leaves, so the next is light green."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mái lá đều tăm tắp như vảy cá, mưa có rơi cũng trượt đi êm ru.",
+          "{name} nhìn ra quy luật nhanh hơn cả anh thợ mái.",
+          "Tấm lá cuối vừa đặt xong thì giọt mưa đầu tiên rơi trúng mái, vừa kịp!"
+        ],
+        "wrong": [
+          "Ba tấm đậm liền nhau là lệch hàng mất rồi.",
+          "Đếm lại từng nhóm ba tấm xem nhóm cuối còn thiếu gì.",
+          "Hai tấm nhạt liền nhau thì quy luật gãy mất, thử lại nhé."
+        ],
+        "en": {
+          "right": [
+            "The thatch lies as even as fish scales, so the rain slides off smooth.",
+            "You spotted the pattern faster than the roofer himself, {name}.",
+            "The last leaf goes on just as the first raindrop hits the roof. Right on time!"
+          ],
+          "wrong": [
+            "Three dark leaves in a row would throw the pattern off.",
+            "Count the groups of three again and see what the last one is missing.",
+            "Two light leaves together breaks the pattern; try again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Thatching in rows",
+        "prompt": "He lays palm leaves in a row, old ones dark green and young ones light green: dark, dark, light, dark, dark, light, dark, dark, … Which leaf comes next?",
+        "choices": ["One dark-green leaf", "One light-green leaf", "Two light-green leaves"]
+      }
+    },
+    {
+      "id": "dem-nguoi-tru-mua",
+      "title": "Dưới mái có bao nhiêu người?",
+      "goTo": "Ra đầu ruộng lúa mì, nhìn về phía mái nhà chung đang đông vui",
+      "kind": "riddle",
+      "target": "anh-tho-sua-mai",
+      "skill": "bai-toan-loi-van",
+      "question": "Mưa xuống, 9 người chạy vào trú dưới mái nhà chung. Tạnh mưa, 3 người về nhà, rồi 5 bạn nhỏ chạy tới ngồi nghe anh kể chuyện dựng mái. Giờ dưới mái có bao nhiêu người?",
+      "answer": { "value": 11 },
+      "support": {
+        "guide": ["Lúc đầu có 9 người.", "3 người về nhà: bớt đi 3.", "5 bạn nhỏ chạy tới: thêm 5."],
+        "hint": "9 − 3 = 6, rồi 6 + 5 = ?",
+        "answer": {
+          "text": "Mười một người",
+          "explanation": "9 − 3 = 6 người ở lại, thêm 5 bạn nhỏ: 6 + 5 = 11 người."
+        },
+        "en": {
+          "guide": ["There were 9 people to begin with.", "3 people went home: take away 3.", "5 children ran over: add 5."],
+          "hint": "9 − 3 = 6, then 6 + 5 = ?",
+          "answer": {
+            "text": "Eleven people",
+            "explanation": "9 − 3 = 6 stayed, plus 5 children: 6 + 5 = 11 people."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười một người, cộng thêm anh với {name} là chật kín mà ấm áp.",
+          "Đúng rồi! Anh đếm lại bằng mắt, mắt anh còn rưng rưng nữa.",
+          "{name} trừ rồi cộng chẳng sai một người nào."
+        ],
+        "wrong": [
+          "Nhớ bớt đi ba người đã về nhà trước nhé.",
+          "Còn năm bạn nhỏ vừa chạy tới, đừng quên các bạn ấy.",
+          "Làm từng bước một: trừ trước, cộng sau."
+        ],
+        "en": {
+          "right": [
+            "Eleven, plus him and {name}: packed full and lovely and warm.",
+            "Right! He counts again by eye, and his eyes are a little misty.",
+            "You subtracted then added without losing a single person, {name}."
+          ],
+          "wrong": [
+            "Remember to take away the three who went home first.",
+            "There are five children who just ran over; don't forget them.",
+            "One step at a time: subtract first, then add."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many under the roof?",
+        "goTo": "Go to the edge of the wheat field and look over at the busy shared roof",
+        "question": "When the rain came, 9 people ran under the shared roof. When it stopped, 3 went home, then 5 children ran over to hear him tell how the roof was built. How many people are under the roof now?"
+      }
+    },
+    {
+      "id": "mai-nha-dau-tien",
+      "title": "Mái nhà đầu tiên của anh",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mái nhà chung đứng vững dưới cơn giông, tiếng mưa trên lá cọ nghe như vỗ tay. Anh Thợ Sửa Mái đưa {name} viên ngói cuối cùng, mặt dưới còn trống: «Điều ước này của em, viết đi.»",
+      "en": {
+        "title": "His first roof",
+        "text": "The shared roof stands firm through the storm, the rain on the palm leaves sounding like applause. Anh Thợ Sửa Mái hands {name} the last tile, its underside still blank: «This wish is yours. Write it.»"
+      }
+    },
+    {
+      "id": "nha-cua-moi-nguoi",
+      "title": "Nhà của mọi người",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Từ hôm ấy, anh không ngủ trên gác rơm nữa mà ngủ dưới mái nhà chung, sáng sáng quét lá, tối tối kể chuyện cho người trú mưa. Anh bảo mái tiếp theo anh muốn dựng là một mái che cho giếng xóm, và người đặt viên ngói đầu tiên sẽ là {name}.",
+      "en": {
+        "title": "Everyone's home",
+        "text": "From that day he no longer sleeps in the hayloft but under the shared roof, sweeping leaves each morning and telling stories to rain-caught travellers each evening. Next, he says, he wants to roof over the lane's well, and {name} will lay the first tile."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 20,
+    "skillXp": { "phep-cong": 1, "logic": 1, "bai-toan-loi-van": 1 }
+  },
+  "en": {
+    "title": "Anh Thợ Sửa Mái's story, chapter 3: A roof in the storm",
+    "summary": "On building day, storm clouds roll in again. {name} picks out the ten-pole bundles of bamboo, measures water for the post mortar, stands by Anh Thợ Sửa Mái when the thunder cracks, thatches the roof in a pattern and counts everyone crowding in under the new roof."
+  }
+}

@@ -1,0 +1,283 @@
+{
+  "id": "yarn-so-chuyen-ba-nam-3",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Chuyện của Bà Năm Kể Chuyện, chương 3: Đêm kể chuyện trong ngõ",
+  "status": "active",
+  "category": "story",
+  "summary": "Cả ngõ kéo ghế ra nghe Bà Năm kể chuyện chiếc thuyền lá. {name} tính đủ ghế cho khách, gọi bọn trẻ trốn trong nhà ra, treo đèn lồng dọc ngõ rồi ngồi nghe tới đoạn bà dừng lại và nói ra điều giấu kín sáu mươi năm.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bà Năm Kể Chuyện",
+    "where": "Xóm Mái Ấm: ngõ nhà Mẩy, sân trước nhà Mẩy, trong nhà Mẩy, bụi tre đầu ngõ",
+    "goal": "Chuẩn bị đêm kể chuyện cho cả ngõ và ở bên Bà Năm khi bà nói ra bí mật",
+    "play": "Giải bài toán số ghế, chơi đếm bạn trốn trong nhà, treo ba chiếc đèn lồng, nghe và trả lời về câu chuyện, chọn cách cùng bà làm đoạn kết",
+    "learn": "Bài toán có lời văn, đọc hiểu câu chuyện",
+    "reward": "65 XP, 18 Xu, Skill XP Bài toán có lời văn, Đọc hiểu",
+    "next": "Cả ngõ góp đoạn kết cho chuyện chiếc thuyền lá"
+  },
+  "phases": {
+    "hook": "chuan-bi-dem-ke",
+    "explore": "tinh-so-ghe",
+    "learn": "goi-tre-ra-san",
+    "challenge": "treo-den-long",
+    "decision": "nghe-ba-ke",
+    "finale": "dieu-ba-giau",
+    "reward": "ca-ngo-lang-nghe",
+    "next": "doan-ket-cua-ngo"
+  },
+  "places": {
+    "ba-nam-ke-chuyen": "Ngõ nhà Mẩy",
+    "st-so-chuyen-ba-nam-ghe-dau": "Sân trước nhà Mẩy",
+    "st-so-chuyen-ba-nam-cua-nha": "Trong nhà Mẩy",
+    "treo-den-long": "Bụi tre đầu ngõ"
+  },
+  "steps": [
+    {
+      "id": "chuan-bi-dem-ke",
+      "title": "Chiều nay có đêm kể chuyện",
+      "goTo": "Tới ngõ nhà Mẩy sớm, Bà Năm đang chải lại mái tóc bạc",
+      "kind": "dialogue",
+      "target": "ba-nam-ke-chuyen",
+      "lines": [
+        { "speaker": "Bà Năm Kể Chuyện", "text": "Cháu đến sớm thật. Bà hồi hộp từ trưa, ăn cơm mà cứ tưởng mình đang nhai chữ." },
+        { "speaker": "Bà Năm Kể Chuyện", "text": "Cháu xếp ghế, gọi bọn trẻ, treo đèn giúp bà nhé. Ngõ phải sáng thì chuyện mới ấm." }
+      ],
+      "choices": [
+        { "text": "Cháu lo hết, bà cứ ngồi nhẩm chuyện đi ạ!", "reply": "Nhẩm sáu mươi năm rồi, nhẩm thêm một buổi chiều cũng chẳng thừa." },
+        { "text": "Bà hồi hộp vì điều gì thế ạ?", "reply": "Rồi cháu sẽ biết. Tối nay bà định nói một chuyện… không có trong sổ." }
+      ],
+      "en": {
+        "title": "Story night this evening",
+        "goTo": "Arrive early at Mẩy's lane, where Bà Năm is combing her silver hair",
+        "lines": [
+          "You're nice and early. I've been nervous since noon; at lunch I felt like I was chewing words.",
+          "Set out the chairs, call the children and hang the lanterns for me, won't you? The lane must be bright for the story to feel warm."
+        ],
+        "choices": [
+          { "text": "I'll handle it all; you go over your story!", "reply": "Sixty years of going over it; one more afternoon won't hurt." },
+          { "text": "What are you nervous about?", "reply": "You'll see. Tonight I mean to tell something… that isn't in the notebook." }
+        ]
+      }
+    },
+    {
+      "id": "tinh-so-ghe",
+      "title": "Đủ ghế cho cả ngõ",
+      "goTo": "Ra sân trước nhà Mẩy xếp ghế đẩu cho khách",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-so-chuyen-ba-nam-ghe-dau",
+      "skill": "bai-toan-loi-van",
+      "prompt": "Sân xếp được 3 hàng ghế, mỗi hàng 4 chiếc ghế đẩu. Tối nay có 14 người tới nghe chuyện. Phải mượn thêm mấy chiếc ghế để ai cũng có chỗ ngồi?",
+      "choices": [
+        { "id": "a", "text": "1 chiếc" },
+        { "id": "b", "text": "2 chiếc" },
+        { "id": "c", "text": "3 chiếc" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Đếm số ghế đã có: 3 hàng, mỗi hàng 4 chiếc.", "4 + 4 + 4 bằng bao nhiêu?", "Lấy số người trừ đi số ghế đã có."],
+        "hint": "Sân có sẵn 12 chiếc ghế.",
+        "answer": {
+          "text": "Mượn thêm 2 ghế",
+          "explanation": "4 + 4 + 4 = 12 chiếc ghế; 14 − 12 = 2, nên phải mượn thêm 2 chiếc."
+        },
+        "en": {
+          "guide": ["Count the chairs already there: 3 rows of 4.", "What's 4 + 4 + 4?", "Take the chairs away from the number of people."],
+          "hint": "The yard already has 12 stools.",
+          "answer": {
+            "text": "Borrow two more stools",
+            "explanation": "4 + 4 + 4 = 12 stools; 14 − 12 = 2, so two more must be borrowed."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai chiếc ghế mượn từ nhà Ông Bảy, thế là chẳng ai phải đứng.",
+          "{name} tính ghế nhanh như bà bày chén nước mời khách.",
+          "Đúng rồi, mười bốn người ngồi vừa khít, không ai lẻ loi."
+        ],
+        "wrong": [
+          "Thế thì còn người phải đứng nghe mỏi chân mất, tính lại nhé.",
+          "Đếm số ghế đã có trước đã: ba hàng, mỗi hàng bốn chiếc.",
+          "Thừa ghế thì xếp chật sân, bà chỉ cần vừa đủ thôi."
+        ],
+        "en": {
+          "right": [
+            "Two stools borrowed from Ông Bảy's house, and nobody has to stand.",
+            "You work out chairs as quickly as she lays out cups for guests, {name}.",
+            "Right, fourteen people seated snugly, nobody left out."
+          ],
+          "wrong": [
+            "Then someone would be standing with aching legs; try again.",
+            "Count the chairs you already have first: three rows of four.",
+            "Too many chairs would crowd the yard; she only needs just enough."
+          ]
+        }
+      },
+      "en": {
+        "title": "Seats for the whole lane",
+        "goTo": "Go to the yard in front of Mẩy's house (Sân trước nhà Mẩy) and set out stools for the guests",
+        "prompt": "The yard fits 3 rows of stools, 4 in each row. Tonight 14 people are coming to listen. How many more stools must be borrowed so everyone has a seat?",
+        "choices": ["1 stool", "2 stools", "3 stools"]
+      }
+    },
+    {
+      "id": "goi-tre-ra-san",
+      "title": "Bọn trẻ trốn đâu cả rồi?",
+      "goTo": "Vào trong nhà Mẩy, bọn trẻ đang trốn tìm chưa chịu ra",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-so-chuyen-ba-nam-cua-nha",
+      "prompt": "Bọn trẻ trốn khắp nhà, chưa ai chịu ra sân nghe chuyện. Đếm cho đúng số bạn đang trốn trong bốn lượt nhé!",
+      "game": "head-count",
+      "goal": 4,
+      "en": {
+        "title": "Where are the children hiding?",
+        "goTo": "Go inside Mẩy's house (Trong nhà Mẩy), where the children are still playing hide-and-seek",
+        "prompt": "The children are hiding all over the house and won't come out for the story. Count the hiders correctly in four rounds!"
+      }
+    },
+    {
+      "id": "treo-den-long",
+      "title": "Ba chiếc đèn lồng",
+      "goTo": "Ra bụi tre đầu ngõ lấy ba chiếc đèn lồng treo dọc lối",
+      "kind": "search",
+      "targets": ["st-so-chuyen-ba-nam-den-xanh", "st-so-chuyen-ba-nam-den-do", "st-so-chuyen-ba-nam-den-vang"],
+      "en": {
+        "title": "Three lanterns",
+        "goTo": "Go to the bamboo clump at the end of the lane (Bụi tre đầu ngõ) and fetch three lanterns to hang along the path"
+      }
+    },
+    {
+      "id": "nghe-ba-ke",
+      "title": "Bà kể chuyện chiếc thuyền lá",
+      "goTo": "Về ngõ nhà Mẩy, ngồi vào ghế nghe Bà Năm kể",
+      "kind": "read",
+      "target": "ba-nam-ke-chuyen",
+      "skill": "doc-hieu",
+      "audio": true,
+      "text": "Chiếc thuyền lá chở trăng\nĐêm rằm, Sen thả chiếc lá bàng xuống ao, bóng trăng rơi vào lòng lá. Thuyền trôi tới giữa ao thì gió nổi. Sen buộc thuyền bằng sợi chỉ vàng rồi chèo theo bờ, vừa chèo vừa hát. Tới gốc sung, Sen cúi nhìn mặt nước phẳng như gương, thấy vầng trăng trong thuyền nháy mắt với mình. Trăng khẽ nói: «Sen ơi, đưa ta về tới…»",
+      "question": "Khi gió nổi giữa ao, Sen làm gì để giữ chiếc thuyền lá?",
+      "choices": [
+        { "id": "a", "text": "Buộc thuyền bằng sợi chỉ vàng" },
+        { "id": "b", "text": "Thổi phù cho gió bay đi" },
+        { "id": "c", "text": "Nhấc thuyền lên bờ cất đi" }
+      ],
+      "answer": { "choice": "a" },
+      "support": {
+        "guide": ["Tìm câu có chữ «gió nổi».", "Đọc câu đứng ngay sau nó xem Sen làm gì."],
+        "hint": "Ông Mực đã kể đoạn này hôm trước rồi đấy.",
+        "answer": {
+          "text": "Sen dùng chỉ vàng buộc giữ thuyền",
+          "explanation": "Câu chuyện kể: thuyền trôi tới giữa ao thì gió nổi, Sen buộc thuyền bằng sợi chỉ vàng."
+        },
+        "en": {
+          "guide": ["Find the sentence with «the wind got up».", "Read the next sentence to see what Sen does."],
+          "hint": "Ông Mực told this bit the other day.",
+          "answer": {
+            "text": "Sen tied it with the golden thread",
+            "explanation": "The story says: the boat drifted to the middle of the pond, the wind got up, and Sen tied the boat with the golden thread."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cả ngõ gật gù theo, có đứa còn khẽ ngân nga bài Sen hát.",
+          "{name} nghe chuyện chăm như Ông Mực nằm hiên vậy.",
+          "Đúng rồi, sợi chỉ mảnh mà giữ được cả một vầng trăng."
+        ],
+        "wrong": [
+          "Gió đâu có nghe lời Sen mà bay đi, nghe lại đoạn ấy nhé.",
+          "Thuyền vẫn trôi tiếp tới gốc sung cơ mà, đâu có lên bờ.",
+          "Nhớ lại ba thứ cháu tìm hôm trước: thứ nào dùng để buộc?"
+        ],
+        "en": {
+          "right": [
+            "The whole lane nods along; one child even hums Sen's song.",
+            "You listen as closely as Ông Mực on his porch, {name}.",
+            "Right, such a thin thread, yet it held a whole moon."
+          ],
+          "wrong": [
+            "The wind doesn't take orders from Sen; listen to that part again.",
+            "The boat keeps drifting to the fig tree, so it never leaves the water.",
+            "Think of the three things you found the other day: which one ties?"
+          ]
+        }
+      },
+      "en": {
+        "title": "The leaf-boat story, told aloud",
+        "goTo": "Back in Mẩy's lane, take a seat and listen to Bà Năm",
+        "text": "The Leaf Boat That Carried the Moon\nOn the night of the full moon, Sen set an almond leaf on the pond, and the moon's reflection fell into it. When the boat drifted to the middle of the pond, the wind got up. Sen tied the boat with a golden thread and paddled along the bank, singing as she went. At the fig tree, Sen looked down at water smooth as a mirror and saw the moon in the boat wink at her. The moon whispered: «Sen, carry me home to…»",
+        "question": "When the wind gets up in the middle of the pond, what does Sen do to keep the leaf boat?",
+        "choices": ["Ties it with the golden thread", "Blows the wind away", "Lifts it onto the bank"]
+      }
+    },
+    {
+      "id": "dieu-ba-giau",
+      "title": "Điều bà giấu sáu mươi năm",
+      "kind": "decision",
+      "target": "ba-nam-ke-chuyen",
+      "speaker": "Bà Năm Kể Chuyện",
+      "prompt": "Bà dừng ở chữ «tới…» rồi lặng đi. «Bà xin lỗi cả ngõ. Năm bà mười tuổi, bà ngoại kể tới đây thì ngủ quên. Sáu mươi năm nay bà chưa từng biết đoạn kết.» Cả ngõ im phăng phắc. {name} nói gì?",
+      "choices": [
+        {
+          "id": "ca-ngo-nghi",
+          "text": "Vậy cả ngõ mình cùng nghĩ đoạn kết đi bà!",
+          "consequence": "Bọn trẻ nhao nhao giơ tay. Bà Năm bật cười, mắt rưng rưng: «Ôi, sao bà không hỏi các cháu sớm hơn.»"
+        },
+        {
+          "id": "ba-tu-nghi",
+          "text": "Bà tự nghĩ đoạn kết đi, cháu sẽ ngồi nghe đầu tiên",
+          "consequence": "Bà nắm tay {name}: «Bà sợ nghĩ ra rồi không hay bằng chuyện của bà ngoại… nhưng có cháu nghe thì bà thử.»"
+        },
+        {
+          "id": "hop-loi-ket",
+          "text": "Mỗi nhà viết một đoạn kết, bỏ vào giỏ cho bà chọn",
+          "consequence": "Ông Bảy chạy về lấy giấy bút ngay. Bà cười: «Thế thì mai bà có cả một giỏ đoạn kết để đọc.»"
+        }
+      ],
+      "en": {
+        "title": "What she hid for sixty years",
+        "prompt": "She stops at the word «to…» and falls silent. «Forgive me, everyone. When I was ten, my grandmother fell asleep right here in the story. For sixty years I've never known the ending.» The lane goes completely quiet. What does {name} say?",
+        "choices": [
+          { "text": "Then let's all think of an ending together!", "consequence": "The children's hands shoot up. Bà Năm laughs with tears in her eyes: «Oh, why didn't I ask you all sooner.»" },
+          { "text": "You make up the ending, and I'll be first to listen", "consequence": "She takes {name}'s hand: «I'm afraid mine won't be as good as Grandmother's… but with you listening, I'll try.»" },
+          { "text": "Every house writes an ending and puts it in a basket for you", "consequence": "Ông Bảy hurries off for paper and pencils. She laughs: «Then tomorrow I'll have a whole basket of endings to read.»" }
+        ]
+      }
+    },
+    {
+      "id": "ca-ngo-lang-nghe",
+      "title": "Không ai cười bà cả",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Không ai cười Bà Năm cả. Đèn lồng đung đưa, bọn trẻ thi nhau đoán xem trăng muốn về đâu. Bà Năm thở ra một hơi thật nhẹ, như vừa đặt xuống một gánh nặng mang suốt sáu mươi năm.",
+      "en": {
+        "title": "Nobody laughed",
+        "text": "Nobody laughs at Bà Năm. The lanterns sway and the children compete to guess where the moon wants to go. Bà Năm lets out a long, light breath, like someone setting down a load carried for sixty years."
+      }
+    },
+    {
+      "id": "doan-ket-cua-ngo",
+      "title": "Đoạn kết của cả ngõ",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sáng mai, những đoạn kết cả ngõ viết sẽ được giấu quanh vườn cho {name} đi tìm. Bà Năm bảo lần này bà sẽ viết đoạn kết bằng mực, chứ không phải bút chì nữa.",
+      "en": {
+        "title": "The whole lane's ending",
+        "text": "Tomorrow morning the endings the lane has written will be hidden around the garden for {name} to find. Bà Năm says this time she'll write the ending in ink, not pencil."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 18,
+    "skillXp": { "bai-toan-loi-van": 1, "doc-hieu": 1 }
+  },
+  "en": {
+    "title": "Bà Năm Kể Chuyện's story, chapter 3: Story night in the lane",
+    "summary": "The whole lane brings out chairs to hear Bà Năm tell the leaf-boat story. {name} works out enough seats, coaxes the hiding children out, hangs lanterns along the lane, then listens until she stops and reveals a secret kept for sixty years."
+  }
+}

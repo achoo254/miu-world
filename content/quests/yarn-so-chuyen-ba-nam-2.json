@@ -1,0 +1,316 @@
+{
+  "id": "yarn-so-chuyen-ba-nam-2",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Chuyện của Bà Năm Kể Chuyện, chương 2: Những dòng chữ nhòe mưa",
+  "status": "active",
+  "category": "story",
+  "summary": "Mưa đêm làm nhòe mấy dòng của chuyện chiếc thuyền lá, và Bà Năm chỉ nhớ mang máng. {name} tìm những đồ vật trong chuyện để gợi trí nhớ, hỏi Ông Mực Nằm Hiên, tìm từ chỉ hoạt động cho dòng chữ mất rồi tính trang cuối của câu chuyện.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bà Năm Kể Chuyện, Ông Mực Nằm Hiên",
+    "where": "Xóm Mái Ấm: ngõ nhà Mẩy, bụi hoa tỉ muội, hiên nhà Mẩy, cổng vườn hoa",
+    "goal": "Giúp Bà Năm nhớ lại những dòng chữ bị mưa làm nhòe",
+    "play": "Tìm ba đồ vật trong chuyện theo lời tả, nghe Ông Mực kể, chọn các từ chỉ hoạt động, tính số trang, chọn cách kể chuyện cho cả xóm",
+    "learn": "Từ chỉ hoạt động, đếm tiếp các số liền nhau, đọc hiểu lời tả",
+    "reward": "60 XP, 16 Xu, Skill XP Từ ngữ, Số đến 100, Đọc hiểu",
+    "next": "Tối mai cả ngõ ngồi nghe chuyện, và bà có một điều chưa từng nói"
+  },
+  "phases": {
+    "hook": "ba-nho-mang-mang",
+    "explore": "do-vat-trong-chuyen",
+    "learn": "ong-muc-nho",
+    "challenge": "tu-chi-hoat-dong",
+    "decision": "dem-trang-cuoi",
+    "finale": "ke-cho-ca-ngo",
+    "reward": "chu-sang-lai",
+    "next": "dem-ke-chuyen"
+  },
+  "places": {
+    "ba-nam-ke-chuyen": "Ngõ nhà Mẩy",
+    "do-vat-trong-chuyen": "Bụi hoa tỉ muội",
+    "st-so-chuyen-ba-nam-ong-muc": "Hiên nhà Mẩy",
+    "st-so-chuyen-ba-nam-bang-go": "Cổng vườn hoa"
+  },
+  "steps": [
+    {
+      "id": "ba-nho-mang-mang",
+      "title": "Bà chỉ nhớ mang máng",
+      "goTo": "Ghé ngõ nhà Mẩy, Bà Năm đang hơ trang sổ ướt dưới nắng",
+      "kind": "dialogue",
+      "target": "ba-nam-ke-chuyen",
+      "lines": [
+        { "speaker": "Bà Năm Kể Chuyện", "text": "Cháu xem này, mưa đêm qua làm nhòe hết đoạn giữa chuyện chiếc thuyền lá. Mực loang ra như mây." },
+        { "speaker": "Bà Năm Kể Chuyện", "text": "Bà nhớ trong đoạn ấy có một chiếc lá, một mảnh gương và một sợi chỉ. Nhưng nhớ mang máng thôi, như nhìn qua kính mờ." },
+        { "speaker": "Bà Năm Kể Chuyện", "text": "Cháu tìm giúp bà mấy thứ ấy nhé. Cầm trên tay, có khi chữ lại hiện về." }
+      ],
+      "choices": [
+        { "text": "Bà đừng lo, mình tìm lại từng chữ!", "reply": "Ừ, chữ lạc thì tìm, chứ chuyện thì không được để lạc." },
+        { "text": "Bà có sợ quên chuyện không ạ?", "reply": "Sợ chứ cháu. Nhưng có người hỏi han thế này thì bà bớt sợ một nửa." }
+      ],
+      "en": {
+        "title": "She only half remembers",
+        "goTo": "Drop by Mẩy's lane, where Bà Năm is drying a wet page in the sun",
+        "lines": [
+          "Look at this, dear. Last night's rain smudged the whole middle of the leaf-boat story. The ink has spread like clouds.",
+          "I remember there was a leaf in it, a piece of mirror and a thread. But only dimly, like looking through frosted glass.",
+          "Will you find those things for me? Holding them in my hands, the words might come back."
+        ],
+        "choices": [
+          { "text": "Don't worry, we'll find every word!", "reply": "Yes. Lost words can be found; a story must never be lost." },
+          { "text": "Are you scared of forgetting your stories?", "reply": "I am, dear. But with someone asking after me like this, I'm only half as scared." }
+        ]
+      }
+    },
+    {
+      "id": "do-vat-trong-chuyen",
+      "title": "Ba thứ trong câu chuyện",
+      "goTo": "Ra bụi hoa tỉ muội tìm ba đồ vật trong chuyện chiếc thuyền lá",
+      "kind": "find-object",
+      "prompt": "Bà tả lại từng thứ trong chuyện. Đọc lời tả và tìm đủ ba món:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "la-bang",
+          "name": "Chiếc lá bàng to",
+          "clue": "To bằng bàn tay người lớn, đỏ au như má ai vừa chạy, mép hơi cong lên thành mạn thuyền.",
+          "target": "st-so-chuyen-ba-nam-la-bang"
+        },
+        {
+          "id": "guong-tron",
+          "name": "Mảnh gương tròn",
+          "clue": "Tròn như mặt trăng rằm, nhìn vào thấy cả mây trôi, ai cúi xuống cũng thấy mình đang cười.",
+          "target": "st-so-chuyen-ba-nam-guong-tron"
+        },
+        {
+          "id": "chi-vang",
+          "name": "Sợi chỉ vàng",
+          "clue": "Mảnh như sợi nắng, vàng óng, quấn quanh một mẩu que nhỏ, kéo ra dài tít mà chẳng đứt.",
+          "target": "st-so-chuyen-ba-nam-chi-vang"
+        }
+      ],
+      "en": {
+        "title": "Three things from the story",
+        "goTo": "Go to the sister-flower bush (Bụi hoa tỉ muội) and find three things from the leaf-boat story",
+        "prompt": "She describes each thing in the story. Read the descriptions and find all three:",
+        "items": [
+          { "name": "Big almond leaf", "clue": "As big as a grown-up's hand, red as cheeks after a run, its edges curling up like the sides of a boat." },
+          { "name": "Round piece of mirror", "clue": "Round as the full moon; look in and you see clouds drifting, and whoever bends over sees themselves smiling." },
+          { "name": "Golden thread", "clue": "Fine as a sunbeam, shining gold, wound round a little stick; pull it and it stretches on and on without breaking." }
+        ]
+      }
+    },
+    {
+      "id": "ong-muc-nho",
+      "title": "Trí nhớ của Ông Mực",
+      "goTo": "Mang ba món lên hiên nhà Mẩy hỏi Ông Mực Nằm Hiên",
+      "kind": "dialogue",
+      "target": "st-so-chuyen-ba-nam-ong-muc",
+      "lines": [
+        { "speaker": "Ông Mực Nằm Hiên", "text": "Gâu… khẽ thôi, ông đang nằm nghe nắng. Chuyện chiếc thuyền lá à? Ông nghe Bà Năm kể mười lăm năm nay, thuộc hơn thuộc đường về nhà." },
+        { "speaker": "Ông Mực Nằm Hiên", "text": "Đoạn giữa thế này: thuyền trôi tới giữa ao thì gió nổi. Sen buộc thuyền bằng sợi chỉ vàng, rồi chèo theo bờ, vừa chèo vừa hát." },
+        { "speaker": "Ông Mực Nằm Hiên", "text": "Còn mảnh gương thì ông quên rồi. Chó già mà, nhớ được hai phần ba là giỏi lắm." }
+      ],
+      "choices": [
+        { "text": "Ông nhớ giỏi hơn cả cháu đấy ạ!", "reply": "Nằm hiên mười lăm năm, chẳng làm gì ngoài nghe với ngủ, không nhớ mới lạ." }
+      ],
+      "en": {
+        "title": "Ông Mực's memory",
+        "goTo": "Take the three things up to the porch of Mẩy's house (Hiên nhà Mẩy) and ask Ông Mực Nằm Hiên",
+        "lines": [
+          "Woof… gently now, I'm lying here listening to the sunshine. The leaf-boat story? I've heard Bà Năm tell it for fifteen years; I know it better than my way home.",
+          "The middle goes like this: the boat drifts to the middle of the pond and the wind gets up. Sen ties the boat with the golden thread, then paddles along the bank, singing as she goes.",
+          "The mirror bit I've forgotten. I'm an old dog; remembering two thirds is doing well."
+        ],
+        "choices": [
+          { "text": "You remember better than I do!", "reply": "Fifteen years lying on a porch doing nothing but listening and napping; it'd be odd if I didn't." }
+        ]
+      }
+    },
+    {
+      "id": "tu-chi-hoat-dong",
+      "title": "Những chữ chỉ việc làm",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-so-chuyen-ba-nam-ong-muc",
+      "skill": "tu-ngu",
+      "prompt": "Bà chép lại đoạn Ông Mực vừa kể, mà chữ còn đọc được với chữ nhòe lẫn lộn cả. Chọn mọi từ chỉ hoạt động để bà điền vào chỗ trống:",
+      "choices": [
+        { "id": "troi", "text": "trôi" },
+        { "id": "chiec-la", "text": "chiếc lá" },
+        { "id": "buoc", "text": "buộc" },
+        { "id": "bo-ao", "text": "bờ ao" },
+        { "id": "cheo", "text": "chèo" },
+        { "id": "hat", "text": "hát" }
+      ],
+      "answer": { "choices": ["troi", "buoc", "cheo", "hat"] },
+      "support": {
+        "guide": ["Từ chỉ hoạt động là từ nói về việc làm, cử động.", "Thử đặt «đang» trước từ đó: «đang trôi» nghe được, «đang chiếc lá» thì không."],
+        "hint": "Có bốn từ chỉ hoạt động trong sáu từ.",
+        "answer": {
+          "text": "Trôi, buộc, chèo và hát",
+          "explanation": "Trôi, buộc, chèo, hát là việc làm hay cử động; chiếc lá và bờ ao là từ chỉ sự vật."
+        },
+        "en": {
+          "guide": ["An action word tells what someone or something does.", "Try putting «is» before it: «is drifting» works, «is leaf» doesn't."],
+          "hint": "Four of the six words are action words.",
+          "answer": {
+            "text": "Drift, tie, paddle and sing",
+            "explanation": "Drift, tie, paddle and sing are things you do; leaf and pond bank are names of things."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bà điền xong dòng chữ, đọc to lên nghe trôi chảy như nước ao.",
+          "Bốn việc làm, không sót không thừa, {name} tinh mắt thật.",
+          "Ông Mực vẫy đuôi đập lộp độp xuống hiên: đúng y như ông kể!"
+        ],
+        "wrong": [
+          "Có một từ chỉ đồ vật lọt vào rồi, thử đặt chữ «đang» trước nó xem.",
+          "Hình như còn sót một việc Sen làm trong đoạn chuyện đấy.",
+          "Chiếc lá với bờ ao thì không biết làm gì đâu cháu."
+        ],
+        "en": {
+          "right": [
+            "She fills in the line and reads it aloud, smooth as pond water.",
+            "Four actions, none missing, none extra; sharp eyes, {name}.",
+            "Ông Mực thumps his tail on the porch: exactly as he told it!"
+          ],
+          "wrong": [
+            "A thing-word slipped in; try putting «is» in front of it.",
+            "Looks like one of the things Sen does is still missing.",
+            "A leaf and a pond bank can't do anything, dear."
+          ]
+        }
+      },
+      "en": {
+        "title": "Words for doing",
+        "prompt": "She's copying out what Ông Mực just told, but readable and smudged words are all jumbled up. Pick every action word for her to fill into the gaps:",
+        "choices": ["drift", "leaf", "tie", "pond bank", "paddle", "sing"]
+      }
+    },
+    {
+      "id": "dem-trang-cuoi",
+      "title": "Chuyện dài mấy trang?",
+      "goTo": "Ra cổng vườn hoa, bà ghim mục lục sổ chuyện trên tấm bảng gỗ",
+      "kind": "riddle",
+      "target": "st-so-chuyen-ba-nam-bang-go",
+      "skill": "so-den-100",
+      "question": "Mục lục ghi: chuyện chiếc thuyền lá bắt đầu ở trang 12 và dài đúng 5 trang, trang nào cũng kể tiếp trang trước. Trang cuối của câu chuyện là trang số mấy?",
+      "answer": { "value": 16 },
+      "support": {
+        "guide": ["Trang đầu tiên là trang 12, đó đã là trang thứ nhất.", "Đếm tiếp từng trang: 12, 13, 14…", "Đếm đủ 5 trang thì dừng."],
+        "hint": "Đừng quên tính cả trang 12 nhé.",
+        "answer": {
+          "text": "Trang số 16",
+          "explanation": "Năm trang liền nhau là 12, 13, 14, 15, 16, nên trang cuối là trang 16."
+        },
+        "en": {
+          "guide": ["The first page is page 12, and that counts as page one.", "Count on page by page: 12, 13, 14…", "Stop when you've counted 5 pages."],
+          "hint": "Don't forget to count page 12 itself.",
+          "answer": {
+            "text": "It ends on page 16",
+            "explanation": "Five pages in a row are 12, 13, 14, 15 and 16, so the last page is 16."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Trang mười sáu! Bà lật tới đó, thấy trang trắng tinh.",
+          "{name} đếm trang chẳng sai một tờ nào.",
+          "Đúng rồi, mà lạ thật: trang cuối ấy chưa có chữ nào cả."
+        ],
+        "wrong": [
+          "Cháu quên tính trang mười hai rồi, đếm lại từ đầu nhé.",
+          "Đếm tay cho chắc: mười hai là ngón thứ nhất đấy.",
+          "Năm trang thôi cháu ạ, đừng đếm lố sang chuyện khác."
+        ],
+        "en": {
+          "right": [
+            "Page sixteen! She turns to it and finds it completely blank.",
+            "You counted the pages without missing a single sheet, {name}.",
+            "Right, though how strange: that last page has no words at all."
+          ],
+          "wrong": [
+            "You forgot to count page twelve; start again from the top.",
+            "Count on your fingers: twelve is the first finger.",
+            "Only five pages, dear; don't wander into the next story."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many pages long?",
+        "goTo": "Go to the flower-garden gate (Cổng vườn hoa), where she has pinned the notebook's contents on a wooden board",
+        "question": "The contents say: the leaf-boat story starts on page 12 and is exactly 5 pages long, each page carrying on from the last. What number is the story's last page?"
+      }
+    },
+    {
+      "id": "ke-cho-ca-ngo",
+      "title": "Trang cuối trắng tinh",
+      "goTo": "Về ngõ nhà Mẩy, bà ngồi lặng nhìn trang giấy trắng",
+      "kind": "decision",
+      "target": "ba-nam-ke-chuyen",
+      "speaker": "Bà Năm Kể Chuyện",
+      "prompt": "Bà Năm vuốt trang mười sáu trắng tinh, giọng nhỏ hẳn: «Tối mai cả ngõ muốn nghe chuyện này…» {name} khuyên bà thế nào?",
+      "choices": [
+        {
+          "id": "doc-phan-co",
+          "text": "Kể phần đã có, để mọi người cùng đoán tiếp",
+          "consequence": "Bà gật gù: «Chuyện bỏ ngỏ thì người nghe về nhà còn nghĩ mãi. Cũng hay.»"
+        },
+        {
+          "id": "ke-ca-ong-muc",
+          "text": "Mời Ông Mực kể đoạn giữa cùng bà",
+          "consequence": "Ông Mực vẫy đuôi đồng ý ngay. Bà cười: «Hai người già kể một chuyện, chắc dài gấp đôi.»"
+        },
+        {
+          "id": "hoi-thang",
+          "text": "Hỏi bà vì sao trang cuối lại trắng",
+          "consequence": "Bà im lặng rất lâu rồi bảo: «Tối mai, ngồi trước cả ngõ, bà sẽ nói.»"
+        }
+      ],
+      "en": {
+        "title": "A blank last page",
+        "goTo": "Back at Mẩy's lane, she sits staring at the blank page",
+        "prompt": "Bà Năm smooths the empty page sixteen, her voice suddenly small: «Tomorrow evening the whole lane wants to hear this story…» What does {name} suggest?",
+        "choices": [
+          { "text": "Tell what you have, and let everyone guess the rest", "consequence": "She nods slowly: «An open story keeps people thinking all the way home. Not bad at all.»" },
+          { "text": "Ask Ông Mực to tell the middle with you", "consequence": "Ông Mực wags his tail yes at once. She laughs: «Two old folk telling one story; it'll be twice as long.»" },
+          { "text": "Ask her why the last page is blank", "consequence": "She is silent a long while, then says: «Tomorrow evening, in front of the whole lane, I'll tell you.»" }
+        ]
+      }
+    },
+    {
+      "id": "chu-sang-lai",
+      "title": "Chữ sáng lại trên trang",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Đoạn giữa của chuyện chiếc thuyền lá đã được chép lại bằng nét bút chì mới tinh. Bà Năm cài sợi chỉ vàng làm dấu trang, tặng {name} một góc bánh cốm Cô bánh mì Hạnh gửi lên.",
+      "en": {
+        "title": "Words shining again",
+        "text": "The middle of the leaf-boat story is copied out again in fresh pencil. Bà Năm tucks the golden thread in as a bookmark and gives {name} a piece of the green rice cake Cô bánh mì Hạnh sent her."
+      }
+    },
+    {
+      "id": "dem-ke-chuyen",
+      "title": "Tối mai, đêm kể chuyện",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối mai cả ngõ sẽ kéo ghế ra nghe chuyện chiếc thuyền lá. Bà dặn {name} tới sớm phụ bà, và bảo có một điều bà giữ trong lòng sáu mươi năm, đã đến lúc nói ra.",
+      "en": {
+        "title": "Tomorrow, story night",
+        "text": "Tomorrow evening the whole lane will bring out their chairs to hear the leaf-boat story. She asks {name} to come early and help, and says there's something she's kept in her heart for sixty years that it's time to say aloud."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 16,
+    "skillXp": { "tu-ngu": 1, "so-den-100": 1, "doc-hieu": 1 }
+  },
+  "en": {
+    "title": "Bà Năm Kể Chuyện's story, chapter 2: Lines smudged by rain",
+    "summary": "Night rain has smudged lines of the leaf-boat story, and Bà Năm only half remembers them. {name} finds things from the story to jog her memory, asks Ông Mực Nằm Hiên, picks out the action words for the lost line and works out the story's last page."
+  }
+}
