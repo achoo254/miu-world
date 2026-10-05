@@ -8,6 +8,7 @@ import { DEV_PGLITE_DIR, openPglite, openPostgres, type Db } from './db/client';
 import { childProfiles, parents } from './db/schema';
 import { CharacterEvents } from './character/character-events';
 import { PlayerEvents } from './player/player-events';
+import { dbFriendStore, type OnlineLookup } from './friend/friend-store';
 import { BotRunner } from './multiplayer/bot-runner';
 import { MultiplayerHub } from './multiplayer/multiplayer-hub';
 import { dbMultiplayerStore, sessionAuthenticator } from './multiplayer/multiplayer-store';
@@ -20,7 +21,13 @@ const { db } = config.databaseUrl ? await openPostgres(config.databaseUrl) : awa
 const content = loadContentCatalog({ extraQuestDir: config.extraQuestDir ?? undefined });
 const characterEvents = new CharacterEvents();
 const playerEvents = new PlayerEvents();
-const app = createApp({ config, db, content, characterEvents, playerEvents });
+/** The hub, once the server listens: the friends lists ask it who is online. */
+let hub: MultiplayerHub | null = null;
+const online: OnlineLookup = {
+  player: (childId) => hub?.whereIsPlayer(childId) ?? null,
+  bot: (botId) => hub?.whereIsBot(botId) ?? null,
+};
+const app = createApp({ config, db, content, characterEvents, playerEvents, online });
 
 /** Which database this run uses, so a dev who suddenly sees no accounts knows whether it is a new one. */
 async function describeDatabase(database: Db): Promise<string> {
@@ -38,13 +45,15 @@ const server = app.listen(config.port, '127.0.0.1', () => {
   console.log(`miu server listening on :${config.port} (${config.nodeEnv})`);
 });
 
-const hub = new MultiplayerHub(server, {
+const multiplayer = new MultiplayerHub(server, {
   store: dbMultiplayerStore(db),
+  friends: dbFriendStore(db),
   authenticate: sessionAuthenticator(db, config, content.consent.version, () => new Date()),
   allowedOrigins: config.allowedOrigins,
 });
-characterEvents.on((childId, character) => hub.characterSaved(childId, character));
-playerEvents.on((event) => hub.playerEvent(event));
-const botRunner = new BotRunner(hub);
+hub = multiplayer;
+characterEvents.on((childId, character) => multiplayer.characterSaved(childId, character));
+playerEvents.on((event) => multiplayer.playerEvent(event));
+const botRunner = new BotRunner(multiplayer);
 botRunner.start();
 console.log('multiplayer hub and companion bot runner active');

@@ -168,8 +168,42 @@ export const BOT_MAP_CONFIGS: Record<string, BotProfile[]> = {
   ],
 };
 
+/** Every companion bot by id, with the map it lives on. */
+const BOTS_BY_ID: ReadonlyMap<string, { profile: BotProfile; mapId: string }> = new Map(
+  Object.entries(BOT_MAP_CONFIGS).flatMap(([mapId, profiles]) => profiles.map((profile) => [profile.id, { profile, mapId }] as const)),
+);
+
+/** A companion bot by id (null: no such bot), for the friends lists. */
+export function findBot(id: string): { profile: BotProfile; mapId: string } | null {
+  return BOTS_BY_ID.get(id) ?? null;
+}
+
 /** How long a companion bot takes to answer a party invite. */
 export const BOT_REPLY_MS = 1_500;
+/** A companion bot thinks over a friend request this long (and up to twice as long), as a player would. */
+export const BOT_FRIEND_REPLY_MS = 2_000;
+/** Most friend requests a companion bot accepts; now and then it is "busy" and says not now. */
+export const BOT_FRIEND_ACCEPT = 0.85;
+/** Meeting the same player this many times, a companion bot may ask her to be friends (once per server run). */
+const BOT_ASKS_AFTER_GREETS = 2;
+const BOT_ASK_CHANCE = 0.5;
+const MAX_GREET_PAIRS = 10_000;
+/** A bot goes to visit a friend standing at most this far from it, and stops this far from her. */
+const VISIT_RANGE = 20;
+const VISIT_STOP = 2.5;
+const VISIT_CHANCE = 0.6;
+
+/** What a bot asks of its runner: the hub's messages, meeting a player, and its friends in the room. */
+interface BotHooks {
+  onMessage(message: ServerWsMessage): void;
+  /** It greeted a player (by public id). */
+  onGreet(playerId: string): void;
+  /** Public ids of the players in its room who are friends with it. */
+  friendsHere(): readonly string[];
+  random(): number;
+}
+
+const NO_HOOKS: BotHooks = { onMessage: () => {}, onGreet: () => {}, friendsHere: () => [], random: Math.random };
 
 class CompanionBotInstance {
   readonly profile: BotProfile;
@@ -179,14 +213,14 @@ class CompanionBotInstance {
   private state: 'walk' | 'idle' | 'greet' = 'walk';
   private stateTimer = 0;
   private lastGreetTime = 0;
+  /** A friend it walks over to, before going on along its way. */
+  private detour: Waypoint | null = null;
+  private readonly hooks: BotHooks;
 
-  /** What the hub sends the bot (a party invite); the runner decides what the bot does. */
-  private readonly onMessage: (message: ServerWsMessage) => void;
-
-  constructor(profile: BotProfile, room: MultiplayerRoom, onMessage: (message: ServerWsMessage) => void = () => {}) {
+  constructor(profile: BotProfile, room: MultiplayerRoom, hooks: Partial<BotHooks> = {}) {
     this.profile = profile;
     this.room = room;
-    this.onMessage = onMessage;
+    this.hooks = { ...NO_HOOKS, ...hooks };
     const startWp = profile.waypoints[0] ?? { x: 0, y: 0, z: 0 };
 
     this.presence = {
@@ -211,9 +245,29 @@ class CompanionBotInstance {
     this.room.join({
       id: this.profile.id,
       presence: this.presence,
-      send: (message) => this.onMessage(message),
+      send: (message) => this.hooks.onMessage(message),
       isBot: true,
     });
+  }
+
+  leave(): void {
+    this.room.leave(this.profile.id);
+  }
+
+  /** Sometimes, after a pause, it walks over to a friend in its room (friends meet it more often). */
+  private visitFriend(): void {
+    if (this.hooks.random() >= VISIT_CHANCE) return;
+    for (const id of this.hooks.friendsHere()) {
+      const friend = this.room.members.get(id)?.presence;
+      if (!friend) continue;
+      const dx = friend.x - this.presence.x;
+      const dz = friend.z - this.presence.z;
+      const dist = Math.hypot(dx, dz);
+      if (dist > VISIT_RANGE || dist <= VISIT_STOP) continue;
+      const k = (dist - VISIT_STOP) / dist;
+      this.detour = { x: this.presence.x + dx * k, y: friend.y, z: this.presence.z + dz * k };
+      return;
+    }
   }
 
   tick(dt: number): void {
@@ -243,8 +297,9 @@ class CompanionBotInstance {
               action: 'wave',
             });
             this.room.broadcastEmote(this.presence.id, 'wave');
-            const chatChoice = SAFE_CANNED_CHATS[Math.floor(Math.random() * SAFE_CANNED_CHATS.length)] ?? 'Xin chào bạn!';
+            const chatChoice = SAFE_CANNED_CHATS[Math.floor(this.hooks.random() * SAFE_CANNED_CHATS.length)] ?? 'Xin chào bạn!';
             this.room.broadcastChat(this.presence.id, chatChoice);
+            this.hooks.onGreet(member.id);
             return;
           }
         }
@@ -263,12 +318,13 @@ class CompanionBotInstance {
       if (this.stateTimer <= 0) {
         this.state = 'walk';
         this.currentWaypointIdx = (this.currentWaypointIdx + 1) % this.profile.waypoints.length;
+        this.visitFriend();
       }
       return;
     }
 
-    // Walking towards current waypoint
-    const targetWp = this.profile.waypoints[this.currentWaypointIdx];
+    // Walking towards a friend it visits, or its current waypoint
+    const targetWp = this.detour ?? this.profile.waypoints[this.currentWaypointIdx];
     if (!targetWp) return;
 
     const dx = targetWp.x - this.presence.x;
@@ -277,8 +333,9 @@ class CompanionBotInstance {
 
     if (dist < 0.6) {
       // Reached waypoint: switch to idle
+      this.detour = null;
       this.state = 'idle';
-      this.stateTimer = 2.5 + Math.random() * 3.5; // 2.5 - 6s pause
+      this.stateTimer = 2.5 + this.hooks.random() * 3.5; // 2.5 - 6s pause
       this.presence.speed = 0;
       this.presence.action = 'idle';
       this.room.updatePresence(this.presence.id, {
@@ -315,23 +372,43 @@ class CompanionBotInstance {
   }
 }
 
+export interface BotRunnerOptions {
+  /** Injectable for tests (whether a bot accepts, asks, visits). */
+  random?: () => number;
+}
+
 export class BotRunner {
   private readonly hub: MultiplayerHub;
+  private readonly random: () => number;
   private readonly bots = new Map<string, CompanionBotInstance[]>();
   private timer: NodeJS.Timeout | null = null;
   private lastTick = Date.now();
   /** Answers on their way (a bot takes a moment, as a player would). */
   private readonly replies = new Set<NodeJS.Timeout>();
+  /** Greetings per bot and player, and the pairs a bot already asked to be friends. */
+  private readonly greets = new Map<string, number>();
+  private readonly asked = new Set<string>();
 
-  constructor(hub: MultiplayerHub) {
+  constructor(hub: MultiplayerHub, options: BotRunnerOptions = {}) {
     this.hub = hub;
+    this.random = options.random ?? Math.random;
+  }
+
+  /** A bot of `profile` in `room`, wired to this runner. */
+  private instance(profile: BotProfile, room: MultiplayerRoom): CompanionBotInstance {
+    return new CompanionBotInstance(profile, room, {
+      onMessage: (message) => this.heard(profile.id, message),
+      onGreet: (playerId) => this.greeted(profile.id, playerId),
+      friendsHere: () => this.hub.friendsOfBot(profile.id).filter((id) => room.members.has(id)),
+      random: this.random,
+    });
   }
 
   start(): void {
     // Populate companion bots for configured maps
     for (const [mapId, profiles] of Object.entries(BOT_MAP_CONFIGS)) {
       const room = this.hub.getOrCreateRoom(mapId);
-      const instances = profiles.map((p) => new CompanionBotInstance(p, room, (message) => this.heard(p.id, message)));
+      const instances = profiles.map((p) => this.instance(p, room));
       for (const inst of instances) {
         inst.join();
       }
@@ -340,17 +417,19 @@ export class BotRunner {
 
     // Run tick loop at 10Hz (100ms)
     this.lastTick = Date.now();
-    this.timer = setInterval(() => {
-      const now = Date.now();
-      const dt = Math.min((now - this.lastTick) / 1000, 0.2);
-      this.lastTick = now;
+    this.timer = setInterval(() => this.tick(), 100);
+  }
 
-      for (const list of this.bots.values()) {
-        for (const bot of list) {
-          bot.tick(dt);
-        }
+  /** Moves every bot on by the time since the last tick (at most a fifth of a second, after a stall). */
+  tick(): void {
+    const now = Date.now();
+    const dt = Math.min((now - this.lastTick) / 1000, 0.2);
+    this.lastTick = now;
+    for (const list of this.bots.values()) {
+      for (const bot of list) {
+        bot.tick(dt);
       }
-    }, 100);
+    }
   }
 
   stop(): void {
@@ -362,16 +441,40 @@ export class BotRunner {
     this.replies.clear();
   }
 
-  /**
-   * A companion bot is a full party member: invited, it joins after a moment. Leaving and choosing by character
-   * are the bots' own behaviour, built on this.
-   */
-  private heard(botId: string, message: ServerWsMessage): void {
-    if (message.type !== 'party-invite') return;
+  private later(ms: number, run: () => void): void {
     const reply = setTimeout(() => {
       this.replies.delete(reply);
-      this.hub.answerPartyInvite(botId, message.from.id, true);
-    }, BOT_REPLY_MS);
+      run();
+    }, ms);
     this.replies.add(reply);
+  }
+
+  /**
+   * A companion bot is a full party member: invited, it joins after a moment. Asked to be friends, it thinks it
+   * over and mostly says yes. Leaving and choosing by character are the bots' own behaviour, built on this.
+   */
+  private heard(botId: string, message: ServerWsMessage): void {
+    if (message.type === 'party-invite') {
+      this.later(BOT_REPLY_MS, () => this.hub.answerPartyInvite(botId, message.from.id, true));
+      return;
+    }
+    if (message.type === 'friend-request') {
+      const accept = this.random() < BOT_FRIEND_ACCEPT;
+      this.later(BOT_FRIEND_REPLY_MS * (1 + this.random()), () => void this.hub.answerBotFriendRequest(botId, message.request.id, accept));
+    }
+  }
+
+  /** Meeting a player again and again, a bot may ask her to be friends (once). */
+  private greeted(botId: string, playerId: string): void {
+    const pair = `${botId}>${playerId}`;
+    if (this.asked.has(pair)) return;
+    const count = (this.greets.get(pair) ?? 0) + 1;
+    // Only a memory of who met whom: a crowded server forgets it rather than growing without end.
+    if (this.greets.size >= MAX_GREET_PAIRS) this.greets.clear();
+    this.greets.set(pair, count);
+    if (count < BOT_ASKS_AFTER_GREETS || this.random() >= BOT_ASK_CHANCE) return;
+    this.asked.add(pair);
+    this.greets.delete(pair);
+    void this.hub.botFriendRequest(botId, playerId);
   }
 }

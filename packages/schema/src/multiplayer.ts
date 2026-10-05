@@ -6,6 +6,7 @@
 // joins, never taken from the client, so nobody can show up as someone else or in someone else's clothes.
 import { z } from 'zod';
 import { ContentId } from './content';
+import { FriendPerson } from './friends';
 
 export const SAFE_CANNED_CHATS = [
   'Xin chào bạn!',
@@ -57,6 +58,14 @@ export const MP_NOTICES = [
   'rate-limited',
   /** The server could not save the request (block, report): try again later. */
   'failed',
+  'friend-sent',
+  'already-friends',
+  /** A friend request to this player is already waiting for her answer. */
+  'friend-pending',
+  /** She, or the one asked, has as many friends as a player can have. */
+  'friends-full',
+  /** She has as many requests waiting as a player can have. */
+  'friend-limit',
 ] as const;
 export const MpNotice = z.enum(MP_NOTICES);
 export type MpNotice = z.infer<typeof MpNotice>;
@@ -122,6 +131,8 @@ export const ClientWsMessage = z.discriminatedUnion('type', [
   z.strictObject({ type: z.literal('block'), id: PlayerId }),
   z.strictObject({ type: z.literal('report'), id: PlayerId, reason: ReportReason }),
   z.strictObject({ type: z.literal('party-invite'), to: PlayerId }),
+  /** Asks a player (or a companion bot) in her room to be friends; the one asked answers. */
+  z.strictObject({ type: z.literal('friend-request'), to: PlayerId }),
   z.strictObject({ type: z.literal('party-reply'), from: PlayerId, accept: z.boolean() }),
   z.strictObject({ type: z.literal('party-leave') }),
   z.strictObject({ type: z.literal('party-kick'), id: PlayerId }),
@@ -151,6 +162,13 @@ export const ServerWsMessage = z.discriminatedUnion('type', [
     from: z.strictObject({ id: PlayerId, displayName: z.string().min(1).max(32), isBot: z.boolean() }),
     expiresInMs: z.number().int().positive(),
   }),
+  /** Someone asks her to be friends: answered through the API (`POST /friends/requests/:id`), here or later. */
+  z.strictObject({
+    type: z.literal('friend-request'),
+    request: z.strictObject({ id: z.uuid(), from: FriendPerson }),
+  }),
+  /** A friend request of hers was answered (or two players asked each other: friends at once). */
+  z.strictObject({ type: z.literal('friend-news'), kind: z.enum(['added', 'declined']), who: FriendPerson }),
   /** Her party as it is now (null: in none), after every change and when she joins a map. */
   z.strictObject({ type: z.literal('party-state'), party: PartyView.nullable() }),
   z.strictObject({ type: z.literal('party-chat'), from: PlayerId, displayName: z.string().min(1).max(32), text: CannedChat }),

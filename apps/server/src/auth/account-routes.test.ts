@@ -115,6 +115,13 @@ describe('account deletion', () => {
     // Online: one player of the family blocked and reported the other (the rows go with either of them).
     await app.db.insert(t.playerBlocks).values({ childId, blockedChildId: second.id });
     await app.db.insert(t.playerReports).values({ id: randomUUID(), childId, reportedChildId: second.id, reason: 'spam', mapId: 'trung-tam' });
+    // Friends: with each other and with a companion bot, a request waiting, and the weekly play time.
+    await app.db.insert(t.friendships).values([
+      { id: randomUUID(), childId, friendChildId: second.id },
+      { id: randomUUID(), childId, botId: 'bot-tt-1' },
+    ]);
+    await app.db.insert(t.friendRequests).values({ id: randomUUID(), childId: second.id, fromChildId: childId });
+    await app.db.insert(t.playTime).values({ childId, weekStart: '2026-09-28', seconds: 600 });
     const before = await rowsOf(parentId, [childId, second.id]);
     // Every table holds something of this family, so a table the delete misses fails below.
     expect(Object.entries(before).filter(([, n]) => n === 0)).toEqual([]);

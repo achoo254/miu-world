@@ -6,8 +6,11 @@ import type { PlayerSettings } from '@miu/schema/account';
 export type PlayerEvent =
   /** Her switches changed: off-line takes her out of every room, bots appear or vanish around her. */
   | { type: 'settings'; childId: string; settings: PlayerSettings }
-  /** `childId` answered a friend request from `fromChildId` (a player, or a companion bot by `fromBotId`). */
-  | { type: 'friend-answered'; childId: string; fromChildId: string | null; fromBotId: string | null; accepted: boolean }
+  /**
+   * `childId` (her character `who`) answered a friend request from `fromChildId` (a player, or a companion bot by
+   * `fromBotId`).
+   */
+  | { type: 'friend-answered'; childId: string; who: { displayName: string; species: string }; fromChildId: string | null; fromBotId: string | null; accepted: boolean }
   /** A friendship ended (removed by either side, or by the account owner). */
   | { type: 'unfriended'; childId: string; otherChildId: string | null; botId: string | null }
   /** `childId` lifted her block of `otherChildId`. */

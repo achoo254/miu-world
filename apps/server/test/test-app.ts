@@ -35,7 +35,7 @@ export async function createTestApp(
   overrides: Partial<ServerConfig> = {},
   fetchImpl?: typeof fetch,
   content: typeof FIXTURE_CONTENT = FIXTURE_CONTENT,
-  deps: Pick<AppDeps, 'characterEvents' | 'playerEvents'> = {},
+  deps: Pick<AppDeps, 'characterEvents' | 'playerEvents' | 'online'> = {},
 ): Promise<TestApp> {
   const handle = await createTestDb();
   // Every test agent shares one loopback IP, so the per-IP register cap is lifted; its own test lowers it.

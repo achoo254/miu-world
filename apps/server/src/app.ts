@@ -14,6 +14,8 @@ import { playerRoutes } from './player/player-routes';
 import { progressRoutes } from './player/progress-routes';
 import type { PlayerEvents } from './player/player-events';
 import { playerSettingsRoutes } from './player/player-settings-routes';
+import { friendRoutes } from './friend/friend-routes';
+import type { OnlineLookup } from './friend/friend-store';
 import type { ServerConfig } from './config';
 import { loadContentCatalog, type ContentCatalog } from './content/content-catalog';
 import type { Db } from './db/client';
@@ -52,6 +54,8 @@ export interface AppDeps {
   characterEvents?: CharacterEvents;
   /** Told when a player's switches, friends or blocks change (the multiplayer hub applies them at once). */
   playerEvents?: PlayerEvents;
+  /** Who is in a room now, for the friends lists (the multiplayer hub). */
+  online?: OnlineLookup;
 }
 
 /** Body-parser errors carry an HTTP status and a `type`; everything else is an internal error. */
@@ -79,7 +83,7 @@ const errorHandler: ErrorRequestHandler = (err: unknown, _req, res, _next) => {
 };
 
 /** Builds the Express app without listening, so tests can drive it through supertest. */
-export function createApp({ config, db, content = loadContentCatalog(), worksheets = loadWorksheets(), clock = () => new Date(), fetchImpl, characterEvents, playerEvents }: AppDeps): express.Express {
+export function createApp({ config, db, content = loadContentCatalog(), worksheets = loadWorksheets(), clock = () => new Date(), fetchImpl, characterEvents, playerEvents, online }: AppDeps): express.Express {
   const app = express();
   app.disable('x-powered-by');
   // The API listens on loopback only and is reached through the web dev/preview proxy (or a reverse
@@ -101,6 +105,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(playerRoutes({ db, content, clock }));
   api.use(progressRoutes({ db, content, clock }));
   api.use(playerSettingsRoutes({ db, content, clock, events: playerEvents }));
+  api.use(friendRoutes({ db, content, clock, events: playerEvents, online }));
   api.use(characterRoutes({ db, content, events: characterEvents }));
   api.use(playerPositionRoutes({ db, content, clock }));
   api.use(questRoutes({ db, content, clock }));

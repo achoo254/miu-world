@@ -24,10 +24,13 @@ import {
   type ServerWsMessage,
 } from '@miu/schema/multiplayer';
 import type { PlayerSettings } from '@miu/schema/account';
+import type { FriendPerson } from '@miu/schema/friends';
 import type { PlayerEvent } from '../player/player-events';
 import type { CharacterDto } from '@miu/schema/game';
 import type { Authenticate, MultiplayerStore } from './multiplayer-store';
 import { PartyService, type PartyError } from './party-service';
+import { FriendRequestLimiter } from '../friend/friend-limiter';
+import type { FriendStore, RequestOutcome } from '../friend/friend-store';
 
 export interface RoomMember {
   id: string;
@@ -123,6 +126,9 @@ export interface HubOptions {
   /** A member who drops out (a new map loads, a short network loss) keeps her party place this long. */
   partyGraceMs?: number;
   parties?: PartyService;
+  /** Friends in the database; without it, friend requests answer `failed`. */
+  friends?: FriendStore;
+  friendLimiter?: FriendRequestLimiter;
 }
 
 interface OnlinePlayer {
@@ -133,6 +139,8 @@ interface OnlinePlayer {
   room: MultiplayerRoom | null;
   /** Her companion bot switch: off, no bot shows up around her. */
   bots: boolean;
+  /** The companion bots she is friends with (they come by more often). */
+  botFriends: Set<string>;
   /** Flood limit: messages left in the bucket, refilled over time. */
   tokens: number;
   refilledAt: number;
@@ -147,6 +155,8 @@ const REPORT_COOLDOWN_MS = 10 * 60_000;
 /** How often open connections re-check their session (sign-out, expiry, a deleted player, a new policy). */
 const RECHECK_MS = 2 * 60_000;
 const MAX_PAYLOAD_BYTES = 4096;
+/** A friend request to a companion bot is forgotten after this long (its runner answers within seconds). */
+const BOT_ASK_TTL_MS = 60_000;
 
 const PARTY_NOTICE: Record<PartyError, MpNotice> = {
   self: 'not-here',
@@ -188,6 +198,10 @@ export class MultiplayerHub {
   private attemptSeq = 0;
   private readonly recheck: NodeJS.Timeout;
   private readonly partyTimers = new Map<string, NodeJS.Timeout>();
+  /** Friend requests on their way to a companion bot: request id → who asked which bot. */
+  private readonly botAsks = new Map<string, { publicId: string; botId: string; at: number }>();
+  private readonly friends: FriendStore | null;
+  private readonly friendLimiter: FriendRequestLimiter;
   private readonly store: MultiplayerStore | null;
   private readonly authenticate: Authenticate | null;
   private readonly allowedOrigins: ReadonlySet<string>;
@@ -204,6 +218,8 @@ export class MultiplayerHub {
     this.now = options.now ?? Date.now;
     this.partyGraceMs = options.partyGraceMs ?? 30_000;
     this.parties = options.parties ?? new PartyService({ now: this.now, isPlayer: (id) => this.childIds.has(id) });
+    this.friends = options.friends ?? null;
+    this.friendLimiter = options.friendLimiter ?? new FriendRequestLimiter({ now: this.now });
     this.wss = new WebSocketServer({ noServer: true, maxPayload: MAX_PAYLOAD_BYTES });
     server?.on('upgrade', (req: IncomingMessage, socket: Duplex, head: Buffer) => this.upgrade(req, socket, head));
     this.recheck = setInterval(() => void this.recheckSessions(), RECHECK_MS);
@@ -228,10 +244,11 @@ export class MultiplayerHub {
     if (!this.store) return null;
     const attempt = ++this.attemptSeq;
     this.attempts.set(childId, attempt);
-    const [appearance, blocked, settings] = await Promise.all([
+    const [appearance, blocked, settings, botFriends] = await Promise.all([
       this.store.appearance(childId),
       this.store.blockedWith(childId),
       this.store.settings?.(childId) ?? { onlineEnabled: true, botsEnabled: true },
+      this.friends?.botFriends(childId) ?? new Set<string>(),
     ]);
     const latest = this.attempts.get(childId) === attempt;
     if (latest) this.attempts.delete(childId);
@@ -259,7 +276,7 @@ export class MultiplayerHub {
     const timer = this.partyTimers.get(publicId);
     if (timer) clearTimeout(timer);
     this.partyTimers.delete(publicId);
-    const player: OnlinePlayer = { publicId, childId, transport, appearance, room: null, bots: settings.botsEnabled, tokens: BUCKET_SIZE, refilledAt: this.now() };
+    const player: OnlinePlayer = { publicId, childId, transport, appearance, room: null, bots: settings.botsEnabled, botFriends, tokens: BUCKET_SIZE, refilledAt: this.now() };
     this.players.set(publicId, player);
     return {
       publicId,
@@ -290,8 +307,55 @@ export class MultiplayerHub {
     switch (event.type) {
       case 'settings':
         return this.settingsChanged(event.childId, event.settings);
-      default:
+      case 'friend-answered':
+        return this.friendAnswered(event);
+      case 'unfriended': {
+        if (event.botId) this.onlinePlayer(event.childId)?.botFriends.delete(event.botId);
         return;
+      }
+      case 'unblocked':
+        void this.unblocked(event.childId, event.otherChildId);
+        return;
+    }
+  }
+
+  private onlinePlayer(childId: string): OnlinePlayer | undefined {
+    const publicId = this.publicIds.get(childId);
+    return publicId ? this.players.get(publicId) : undefined;
+  }
+
+  /** She answered a request: a bot she accepted comes by more often; a player who asked hears the answer. */
+  private friendAnswered(event: Extract<PlayerEvent, { type: 'friend-answered' }>): void {
+    if (event.accepted && event.fromBotId) this.onlinePlayer(event.childId)?.botFriends.add(event.fromBotId);
+    const sender = event.fromChildId ? this.onlinePlayer(event.fromChildId) : undefined;
+    sender?.transport.send({ type: 'friend-news', kind: event.accepted ? 'added' : 'declined', who: { ...event.who, isBot: false } });
+  }
+
+  /**
+   * A block was lifted: what each of the two may see is read again (another block may remain), and if they now see
+   * each other in one room they appear to each other at once.
+   */
+  private async unblocked(childId: string, otherChildId: string): Promise<void> {
+    if (!this.store) return;
+    const ids = [childId, otherChildId].flatMap((id) => {
+      const publicId = this.publicIds.get(id);
+      return publicId && this.hidden.has(publicId) ? [{ id, publicId }] : [];
+    });
+    try {
+      for (const { id, publicId } of ids) this.hidden.set(publicId, new Set([...(await this.store.blockedWith(id))].map((other) => this.publicIdOf(other))));
+    } catch (err) {
+      console.error('unblock refresh failed', err instanceof Error ? err.name : typeof err);
+      return;
+    }
+    const a = this.onlinePlayer(childId);
+    const b = this.onlinePlayer(otherChildId);
+    if (!a?.room || a.room !== b?.room || !this.sees(a.publicId, b.publicId)) return;
+    for (const [viewer, other] of [
+      [a, b],
+      [b, a],
+    ] as const) {
+      const member = other.room?.members.get(other.publicId);
+      if (member) viewer.transport.send({ type: 'spawn', player: member.presence });
     }
   }
 
@@ -473,6 +537,9 @@ export class MultiplayerHub {
         return;
       case 'party-invite':
         return this.invite(player, message.to);
+      case 'friend-request':
+        void this.befriend(player, message.to);
+        return;
       case 'party-reply':
         return this.answerPartyInvite(self, message.from, message.accept);
       case 'party-leave':
@@ -490,7 +557,8 @@ export class MultiplayerHub {
         return;
       }
       case 'party-goto':
-        return this.goto(player, message.id);
+        void this.goto(player, message.id);
+        return;
       case 'party-travel': {
         const party = this.parties.partyOf(self);
         if (party?.leader !== self) return;
@@ -612,13 +680,138 @@ export class MultiplayerHub {
     this.notice(self, 'invite-sent', to);
   }
 
-  private goto(player: OnlinePlayer, id: string): void {
+  /** Where a party member or a friend is now, for her to go there (walk on this map, or the gate to hers). */
+  private async goto(player: OnlinePlayer, id: string): Promise<void> {
     const self = player.publicId;
-    if (!this.parties.partyOf(self)?.members.includes(id) || id === self) return this.notice(self, 'not-here', id);
+    if (id === self || !(await this.mayGoTo(player, id))) return this.notice(self, 'not-here', id);
     const where = this.locate(id);
-    if (!where) return this.notice(self, 'not-here', id);
+    if (!where || !this.sees(self, id)) return this.notice(self, 'not-here', id);
     const { x, y, z } = where.member.presence;
     player.transport.send({ type: 'party-goto', id, mapId: where.room.mapId, x, y, z });
+  }
+
+  /** Party members and friends (players or bots) can be gone to. */
+  private async mayGoTo(player: OnlinePlayer, id: string): Promise<boolean> {
+    if (this.parties.partyOf(player.publicId)?.members.includes(id)) return true;
+    if (this.isBot(id)) return player.botFriends.has(id);
+    const other = this.childIds.get(id);
+    if (!other || !this.friends) return false;
+    try {
+      return await this.friends.areFriends(player.childId, other);
+    } catch (err) {
+      console.error('friend check failed', err instanceof Error ? err.name : typeof err);
+      return false;
+    }
+  }
+
+  /**
+   * She asks someone in her room to be friends. A player gets the request (saved: she can answer it later from her
+   * friends list); a companion bot answers by itself after a moment, as its runner decides.
+   */
+  private async befriend(player: OnlinePlayer, to: string): Promise<void> {
+    const self = player.publicId;
+    const target = player.room?.members.get(to);
+    if (!target || to === self || !this.roomSees(self, to)) return this.notice(self, 'not-here', to);
+    if (!this.friends) return this.notice(self, 'failed', to);
+    if (target.isBot && player.botFriends.has(to)) return this.notice(self, 'already-friends', to);
+    if (!this.friendLimiter.allow(self, to)) return this.notice(self, 'rate-limited', to);
+    const from: FriendPerson = { displayName: player.appearance.displayName, species: player.appearance.species, isBot: false };
+    if (target.isBot) {
+      const id = randomUUID();
+      const now = this.now();
+      for (const [key, ask] of this.botAsks) if (now - ask.at > BOT_ASK_TTL_MS) this.botAsks.delete(key);
+      this.botAsks.set(id, { publicId: self, botId: to, at: now });
+      target.send({ type: 'friend-request', request: { id, from } });
+      return this.notice(self, 'friend-sent', to);
+    }
+    const toChild = this.childIds.get(to);
+    if (!toChild) return this.notice(self, 'not-here', to);
+    let outcome: RequestOutcome;
+    try {
+      outcome = await this.friends.request(player.childId, toChild);
+    } catch (err) {
+      console.error('friend request failed', err instanceof Error ? err.name : typeof err);
+      return this.notice(self, 'failed', to);
+    }
+    switch (outcome.kind) {
+      case 'sent':
+        this.deliver(to, { type: 'friend-request', request: { id: outcome.requestId, from } });
+        return this.notice(self, 'friend-sent', to);
+      case 'befriended': {
+        this.deliver(to, { type: 'friend-news', kind: 'added', who: from });
+        const look = this.lookOf(to);
+        if (look) player.transport.send({ type: 'friend-news', kind: 'added', who: { ...look, isBot: false } });
+        return;
+      }
+      case 'already-friends':
+      case 'friends-full':
+      case 'friend-limit':
+        return this.notice(self, outcome.kind, to);
+      case 'already-sent':
+        return this.notice(self, 'friend-pending', to);
+      case 'blocked':
+        return this.notice(self, 'not-here', to);
+    }
+  }
+
+  /** A companion bot answers a friend request (its runner decides, as a player would). */
+  async answerBotFriendRequest(botId: string, requestId: string, accept: boolean): Promise<void> {
+    const ask = this.botAsks.get(requestId);
+    if (!ask || ask.botId !== botId) return;
+    this.botAsks.delete(requestId);
+    const player = this.players.get(ask.publicId);
+    const look = this.lookOf(botId);
+    if (!player || !look || !this.friends) return;
+    const who: FriendPerson = { ...look, isBot: true };
+    if (!accept) return player.transport.send({ type: 'friend-news', kind: 'declined', who });
+    try {
+      const result = await this.friends.addBot(player.childId, botId);
+      if (result === 'friends-full') return this.notice(player.publicId, 'friends-full', botId);
+      player.botFriends.add(botId);
+      player.transport.send({ type: 'friend-news', kind: 'added', who });
+    } catch (err) {
+      console.error('bot friend failed', err instanceof Error ? err.name : typeof err);
+      this.notice(player.publicId, 'failed', botId);
+    }
+  }
+
+  /** A companion bot asks a player it keeps meeting to be friends (saved, answered from her friends list). */
+  async botFriendRequest(botId: string, publicId: string): Promise<void> {
+    const player = this.players.get(publicId);
+    const room = player?.room;
+    const bot = room?.members.get(botId);
+    if (!player || !room || !bot?.isBot || !this.friends || player.botFriends.has(botId) || !this.roomSees(publicId, botId)) return;
+    try {
+      const outcome = await this.friends.botRequest(botId, player.childId);
+      if (outcome.kind !== 'sent') return;
+      player.transport.send({ type: 'friend-request', request: { id: outcome.requestId, from: { displayName: bot.presence.displayName, species: bot.presence.species, isBot: true } } });
+    } catch (err) {
+      console.error('bot friend request failed', err instanceof Error ? err.name : typeof err);
+    }
+  }
+
+  /** The players online who are friends with a companion bot. */
+  friendsOfBot(botId: string): string[] {
+    return [...this.players.values()].filter((p) => p.botFriends.has(botId) && p.bots).map((p) => p.publicId);
+  }
+
+  /** Where a player is now (her public id and map), null while she is not in a room. */
+  whereIsPlayer(childId: string): { publicId: string; mapId: string } | null {
+    const publicId = this.publicIds.get(childId);
+    const room = publicId ? this.players.get(publicId)?.room : null;
+    return publicId && room ? { publicId, mapId: room.mapId } : null;
+  }
+
+  /** The map a companion bot walks now, null when it is in no room. */
+  whereIsBot(botId: string): { mapId: string } | null {
+    const where = this.isBot(botId) ? this.locate(botId) : null;
+    return where ? { mapId: where.room.mapId } : null;
+  }
+
+  /** Name and species of a player or bot the hub knows now. */
+  private lookOf(id: string): { displayName: string; species: string } | null {
+    const look = this.appearances.get(id) ?? this.locate(id)?.member.presence;
+    return look ? { displayName: look.displayName, species: look.species } : null;
   }
 
   private async block(player: OnlinePlayer, id: string): Promise<void> {

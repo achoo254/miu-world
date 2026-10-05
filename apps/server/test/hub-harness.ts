@@ -1,4 +1,4 @@
-// A multiplayer hub over an in-memory database, with players connected through fake transports and companion
+// A multiplayer hub over an in-memory database (characters, switches, blocks, friends), with players connected through fake transports and companion
 // bots joined straight into rooms, for the hub's tests. Timers are the test's (vi.useFakeTimers).
 import { vi } from 'vitest';
 import type { PlayerSettings } from '@miu/schema/account';
@@ -6,6 +6,8 @@ import type { PlayerAppearance, PlayerPresence, ServerWsMessage } from '@miu/sch
 import { MultiplayerHub, type Connection, type HubOptions, type MultiplayerRoom } from '../src/multiplayer/multiplayer-hub';
 import type { MultiplayerStore } from '../src/multiplayer/multiplayer-store';
 import { PartyService } from '../src/multiplayer/party-service';
+import { FriendRequestLimiter } from '../src/friend/friend-limiter';
+import type { FriendStore } from '../src/friend/friend-store';
 
 /** The database as the hub sees it: characters, switches, blocks and reports in memory. */
 export function memoryStore() {
@@ -25,6 +27,46 @@ export function memoryStore() {
     settings: async (id) => settings.get(id) ?? { onlineEnabled: true, botsEnabled: true },
   };
   return { store, characters, settings, blocks, reports };
+}
+
+/** Friends as the hub sees them, in memory: pairs of players, players' bots, waiting requests. */
+export function memoryFriends() {
+  const pairs = new Set<string>();
+  const bots = new Map<string, Set<string>>();
+  const requests: Array<{ id: string; to: string; from: string }> = [];
+  let seq = 0;
+  const key = (a: string, b: string): string => [a, b].sort().join('|');
+  const store: FriendStore = {
+    async request(from, to) {
+      if (pairs.has(key(from, to))) return { kind: 'already-friends' };
+      const back = requests.findIndex((r) => r.to === from && r.from === to);
+      if (back >= 0) {
+        requests.splice(back, 1);
+        pairs.add(key(from, to));
+        return { kind: 'befriended' };
+      }
+      if (requests.some((r) => r.to === to && r.from === from)) return { kind: 'already-sent' };
+      seq += 1;
+      const id = `00000000-0000-4000-8000-${String(seq).padStart(12, '0')}`;
+      requests.push({ id, to, from });
+      return { kind: 'sent', requestId: id };
+    },
+    async botRequest(botId, childId) {
+      if (bots.get(childId)?.has(botId)) return { kind: 'already-friends' };
+      seq += 1;
+      return { kind: 'sent', requestId: `00000000-0000-4000-9000-${String(seq).padStart(12, '0')}` };
+    },
+    async addBot(childId, botId) {
+      const set = bots.get(childId) ?? new Set<string>();
+      if (set.has(botId)) return 'already-friends';
+      set.add(botId);
+      bots.set(childId, set);
+      return 'added';
+    },
+    areFriends: async (a, b) => pairs.has(key(a, b)),
+    botFriends: async (childId) => new Set(bots.get(childId) ?? []),
+  };
+  return { store, pairs, bots, requests, befriend: (a: string, b: string) => pairs.add(key(a, b)) };
 }
 
 export interface Client {
@@ -47,12 +89,15 @@ export const settle = (): Promise<unknown> => vi.advanceTimersByTimeAsync(0);
 
 export function hubHarness(options: Omit<HubOptions, 'store'> = {}) {
   const db = memoryStore();
+  const friends = memoryFriends();
   const clock = { now: 1_000_000 };
   const hub = new MultiplayerHub(undefined, {
     store: db.store,
     now: () => clock.now,
     partyGraceMs: 30_000,
     parties: new PartyService({ now: () => clock.now, inviteGapMs: 0, isPlayer: (id) => id.startsWith('p-') }),
+    friends: friends.store,
+    friendLimiter: new FriendRequestLimiter({ now: () => clock.now }),
     ...options,
   });
 
@@ -111,5 +156,5 @@ export function hubHarness(options: Omit<HubOptions, 'store'> = {}) {
     return { id, inbox };
   }
 
-  return { hub, db, clock, tryConnect, connect, joined, bot };
+  return { hub, db, friends, clock, tryConnect, connect, joined, bot };
 }

@@ -348,6 +348,7 @@ describe('parties', () => {
     a.send({ type: 'party-chat', text: 'tự gõ' });
     expect(b.all('party-chat')).toHaveLength(1);
     a.send({ type: 'party-goto', id: b.id });
+    await settle();
     expect(a.last('party-goto')).toEqual({ type: 'party-goto', id: b.id, mapId: 'cho-phien', x: 7, y: 6, z: 8 });
     b.send({ type: 'party-travel', region: 'lang-ven-song' });
     expect(a.last('party-travel')).toBeUndefined();

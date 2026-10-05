@@ -275,6 +275,8 @@ export const mail = pgTable(
 export const playerBlocks = pgTable(
   'player_blocks',
   {
+    /** How the blocker names this block to lift it, without learning the other player's profile id. */
+    id: uuid('id').notNull().defaultRandom().unique(),
     /** The player who blocked. */
     childId: childRef(),
     blockedChildId: uuid('blocked_child_id')
@@ -310,5 +312,48 @@ export const playerReports = pgTable(
     index('player_reports_reported_idx').on(t.reportedChildId),
     index('player_reports_child_idx').on(t.childId),
     check('player_reports_reason_valid', sql`${t.reason} in ('harassment', 'spam', 'name', 'other')`),
+  ],
+);
+
+/**
+ * A friendship as one player sees it: with another player (a row each way, made when the other accepted) or with a
+ * companion bot (one row). Only ids and when: no message, no note.
+ */
+export const friendships = pgTable(
+  'friendships',
+  {
+    /** How the player names this friendship (to remove it), without learning the other player's profile id. */
+    id: uuid('id').primaryKey(),
+    childId: childRef(),
+    friendChildId: uuid('friend_child_id').references(() => childProfiles.id, { onDelete: 'cascade' }),
+    botId: text('bot_id'),
+    createdAt: createdAt(),
+  },
+  (t) => [
+    uniqueIndex('friendships_child_friend').on(t.childId, t.friendChildId),
+    uniqueIndex('friendships_child_bot').on(t.childId, t.botId),
+    index('friendships_friend_idx').on(t.friendChildId),
+    check('friendships_one_friend', sql`(${t.friendChildId} is null) <> (${t.botId} is null)`),
+    check('friendships_not_self', sql`${t.childId} <> ${t.friendChildId}`),
+  ],
+);
+
+/** A friend request waiting for the player it is for (`child_id`): from another player, or from a companion bot. */
+export const friendRequests = pgTable(
+  'friend_requests',
+  {
+    id: uuid('id').primaryKey(),
+    /** The player who is asked. */
+    childId: childRef(),
+    fromChildId: uuid('from_child_id').references(() => childProfiles.id, { onDelete: 'cascade' }),
+    fromBotId: text('from_bot_id'),
+    createdAt: createdAt(),
+  },
+  (t) => [
+    uniqueIndex('friend_requests_child_from').on(t.childId, t.fromChildId),
+    uniqueIndex('friend_requests_child_bot').on(t.childId, t.fromBotId),
+    index('friend_requests_from_idx').on(t.fromChildId),
+    check('friend_requests_one_sender', sql`(${t.fromChildId} is null) <> (${t.fromBotId} is null)`),
+    check('friend_requests_not_self', sql`${t.childId} <> ${t.fromChildId}`),
   ],
 );

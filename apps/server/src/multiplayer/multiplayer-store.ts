@@ -12,6 +12,7 @@ import { findSession } from '../auth/session-store';
 import type { ServerConfig } from '../config';
 import type { Db } from '../db/client';
 import { characters, childProfiles, playerBlocks, playerReports } from '../db/schema';
+import { dropTies } from '../friend/friend-store';
 
 export interface MultiplayerStore {
   /** Her saved character as the others see it; null when she has none. */
@@ -44,7 +45,9 @@ export function dbMultiplayerStore(db: Db): MultiplayerStore {
       return new Set(rows.map((r) => (r.childId === childId ? r.blockedChildId : r.childId)));
     },
     async block(childId, blockedChildId) {
-      await db.insert(playerBlocks).values({ childId, blockedChildId }).onConflictDoNothing();
+      await db.insert(playerBlocks).values({ id: randomUUID(), childId, blockedChildId }).onConflictDoNothing();
+      // Blocked, they are no longer friends and their requests to each other are gone.
+      await dropTies(db, childId, blockedChildId);
     },
     async report(childId, reportedChildId, reason, mapId) {
       await db.insert(playerReports).values({ id: randomUUID(), childId, reportedChildId, reason, mapId });
