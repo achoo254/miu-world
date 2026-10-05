@@ -109,6 +109,14 @@ const MVP_STEPS: Record<string, string> = {
   '11-level-up': 'Lên cấp Lv.1 → Lv.2 (NEW SCREEN)',
   '12-backpack': 'Ba lô có Lá thần (M3.5)',
 };
+const BOSS_SHOTS: Record<string, string> = {
+  '0-trum-canh-khu-tren-map': 'Trùm canh khu Cánh Cụt Đưa Thư đứng cạnh phố làng, nút Thách đấu (chất lượng cao)',
+  '1-ban-do-cac-trum': 'Bản đồ lớn: nhóm Trùm (vương miện), trùm lớn và bốn trùm canh khu trong danh sách',
+  '2-gap-trum-canh-khu': 'Nói chuyện với trùm canh khu: trận đấu của nó bắt đầu ngay',
+  '3-dau-tri': 'Đấu trí: HP của trùm, lời mở đầu, câu hỏi theo kỹ năng của khu',
+  '4-sau-mot-don': 'Sau một đòn trúng: HP giảm, trùm nói câu mới',
+  '5-chep-vao-vo': 'Thắng: mọi câu của trận để chép vào vở, rồi phần thưởng do server tính',
+};
 const PET_SCENES: Record<string, string> = {
   board: 'Bảng chăm sóc: hình và tên thú, cấp thân thiết, lời của thú, ba chỉ số, bốn tab',
   'care-feed': 'Cho ăn: bát hiện ra, thú cúi ăn, vụn bay',
@@ -187,6 +195,7 @@ function renderGallery(generated: string[]): void {
   for (const p of reviewPaths.filter((x) => x.includes('/review/ui/')).sort()) byId('account-flow').append(figure(p, UI_STEPS[name(p)] ?? name(p)));
   for (const p of reviewPaths.filter((x) => x.includes('/review/mvp/')).sort()) byId('mvp-flow').append(figure(p, MVP_STEPS[name(p)] ?? name(p)));
   const sceneOrder = Object.keys(PET_SCENES);
+  for (const p of reviewPaths.filter((x) => x.includes('/review/bosses/')).sort()) byId('boss-shots').append(figure(p, BOSS_SHOTS[name(p)] ?? name(p)));
   for (const p of reviewPaths.filter((x) => x.includes('/review/pet-scenes/')).sort((a, b) => sceneOrder.indexOf(name(a)) - sceneOrder.indexOf(name(b)))) byId('pet-scenes').append(figure(p, PET_SCENES[name(p)] ?? name(p)));
   for (const p of reviewPaths.filter((x) => x.includes('/review/pets/')).sort()) {
     const [pet = '', ...gear] = name(p).split('--');

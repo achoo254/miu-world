@@ -122,6 +122,22 @@
     "license": "CC0-1.0"
   },
   {
+    "glob": "generated/review/bosses/*.png",
+    "generator": "apps/web/e2e/bosses.spec.ts",
+    "derivedFrom": [
+      "kenney-blocky-characters",
+      "kenney-cube-pets",
+      "kenney-voxel-pack",
+      "kenney-nature-kit",
+      "kenney-survival-kit",
+      "kenney-food-kit",
+      "kenney-castle-kit",
+      "kenney-furniture-kit",
+      "fluent-emoji"
+    ],
+    "license": "CC0-1.0"
+  },
+  {
     "glob": "generated/review/pet-scenes/*.png",
     "generator": "apps/web/e2e/pets.spec.ts",
     "derivedFrom": [

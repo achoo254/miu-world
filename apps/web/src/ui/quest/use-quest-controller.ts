@@ -211,16 +211,19 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
             cover('finished', true);
           }, celebrationMs());
         }
-        // A wrong answer's line shows inside the step screen; only a right one becomes a toast.
-        if (response.feedback && response.correct) setToast(mapBoth(twin(response.feedback, response.feedbackEn), (line) => say(line, latest.current.data.character)));
+        // A wrong answer's line shows inside the step screen; only a right one becomes a toast. A boss says its line in
+        // its own bubble while the fight goes on; only the blow that wins it is a toast too.
+        const bossGoesOn = step.kind === 'boss' && !response.quest.completedSteps.includes(step.id);
+        if (response.feedback && response.correct && !bossGoesOn) setToast(mapBoth(twin(response.feedback, response.feedbackEn), (line) => say(line, latest.current.data.character)));
         // A right answer to a learning step gets a burst of stars over the world as its screen closes.
         if (response.correct && (step.kind === 'read' || step.kind === 'riddle' || step.kind === 'challenge')) setCheers((n) => n + 1);
         if (response.correct) {
-          if (latest.current.overlay?.step.id === step.id) setOverlay(null);
+          // A boss's screen stays open until it is beaten: the next blow follows (after the vở card) without a new tap.
+          if (latest.current.overlay?.step.id === step.id && !bossGoesOn) setOverlay(null);
           // Done: what was kept of the step is no longer needed.
           if (latest.current.draftOwner) clearDraft(latest.current.draftOwner, active.quest.id);
           // The next step may start by itself (read the letter, open the gate after the chest).
-          const next = autoStep(active.quest, response.quest);
+          const next = bossGoesOn ? null : autoStep(active.quest, response.quest);
           if (next) window.setTimeout(() => startRef.current(next), 0);
         }
         return response;

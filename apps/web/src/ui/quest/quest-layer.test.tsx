@@ -243,4 +243,58 @@ describe('quest controller', () => {
     expect(onPlayQuest).toHaveBeenCalledWith('ward-khu-rung-suoi', 'rai-ca-canh-suoi');
     expect(screen.queryByRole('status')).toBeNull();
   });
+
+  it("keeps a boss's screen open between blows, its line in its bubble, and closes it on the blow that wins", async () => {
+    const boss = QuestStepPublic.parse({
+      id: 'dau',
+      title: 'Đấu trí',
+      kind: 'boss',
+      trigger: 'auto',
+      target: 'rai-ca',
+      bossId: 'rai-ca',
+      bossName: 'Rái Cá',
+      introDialogue: 'Đấu nào!',
+      winDialogue: 'Ta thua rồi!',
+      maxHp: 200,
+      damagePerTurn: 100,
+      turns: [
+        { id: 't1', prompt: 'Một cộng một?', skill: 'phep-cong', damage: 100, choices: [{ id: 'a', text: '2' }, { id: 'b', text: '3' }] },
+        { id: 't2', prompt: 'Hai cộng hai?', skill: 'phep-cong', damage: 100, choices: [{ id: 'a', text: '4' }, { id: 'b', text: '5' }] },
+      ],
+    });
+    const [lesson] = questList(0).quests;
+    if (!lesson || lesson.quest.status !== 'active') throw new Error('fixture');
+    const fight = { ...lesson, quest: { ...lesson.quest, id: 'ward-thu', category: 'guardian' as const, steps: [boss] }, progress: { ...lesson.progress, questId: 'ward-thu' } };
+    let blows = 0;
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url: string) => {
+        if (url.startsWith('/api/npcs')) return json({ npcs: [] });
+        if (!url.includes('/steps/dau/complete')) return json({ quests: [] });
+        blows += 1;
+        const won = blows === 2;
+        const progress = { questId: 'ward-thu', completedSteps: won ? ['dau'] : [], completed: won, found: { dau: won ? ['t1', 't2'] : ['t1'] }, stars: null };
+        return json({ ...response([]), quest: progress, feedback: won ? 'Ta thua rồi!' : 'Úi, trúng rồi!', feedbackEn: null, copy: null });
+      }),
+    );
+    const store = createGameStore();
+    render(
+      <MemoryRouter>
+        <QuestLayer store={store} data={{ character: CHARACTER, progress: PROGRESS, quests: [fight] }} questId="ward-thu" region="khu-rung-bi-mat" onResponse={() => undefined} onOverlayChange={() => undefined} />
+      </MemoryRouter>,
+    );
+    act(() => store.emit({ type: 'ready' }));
+    await screen.findByText('Một cộng một?');
+    fireEvent.click(screen.getByRole('radio', { name: '2' }));
+    fireEvent.click(screen.getByRole('button', { name: /Giải đố/ }));
+    // Still in the fight: the line is in the boss's bubble, not a toast over the question.
+    expect(await screen.findByText('Úi, trúng rồi!')).toBeTruthy();
+    expect(screen.queryByRole('status')).toBeNull();
+    expect(document.querySelector('[data-id="boss-battle"]')).not.toBeNull();
+    fireEvent.click(screen.getByRole('radio', { name: '2' }));
+    fireEvent.click(screen.getByRole('button', { name: /Giải đố/ }));
+    // The winning blow: the fight closes and its win line is said over the world.
+    await vi.waitFor(() => expect(document.querySelector('[data-id="boss-battle"]')).toBeNull());
+    expect(screen.getByRole('status').textContent).toContain('Ta thua rồi!');
+  });
 });
