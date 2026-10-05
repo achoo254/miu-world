@@ -54,16 +54,25 @@ export function nextStep(summary: QuestSummary): QuestStepPublic | null {
   return summary.quest.steps.find((s) => !done.has(s.id)) ?? null;
 }
 
-/** "Nhiệm vụ hôm nay": the quest in progress, else the first playable one not finished yet. */
+/** A chapter of a character's story (listed after the lessons; never picked before a lesson). */
+const isStoryChapter = (q: QuestSummary): boolean => q.quest.status === 'active' && q.quest.category === 'story';
+
+/** The quest under way, else the first one not finished yet, among `playable`. */
+const nextOf = (playable: readonly QuestSummary[]): QuestSummary | null => playable.find((q) => q.state === 'in-progress') ?? playable.find((q) => q.state === 'open') ?? null;
+
+/**
+ * "Nhiệm vụ hôm nay": the lesson in progress, else the first lesson not finished yet; a story chapter only once no
+ * lesson is left (a story never takes a lesson's place: its character offers it when talked to).
+ */
 export function currentQuest(quests: readonly QuestSummary[]): QuestSummary | null {
   const playable = quests.filter((q) => q.quest.status === 'active');
-  return playable.find((q) => q.state === 'in-progress') ?? playable.find((q) => q.state === 'open') ?? null;
+  return nextOf(playable.filter((q) => !isStoryChapter(q))) ?? nextOf(playable.filter(isStoryChapter));
 }
 
 /** The lesson a gate into `region` leads to: the one under way there, else its first not finished, else its first. */
 export function questForRegion(quests: readonly QuestSummary[], region: string): QuestSummary | null {
   const here = quests.filter((q) => q.quest.status === 'active' && q.quest.region === region);
-  return currentQuest(here) ?? here[0] ?? null;
+  return currentQuest(here) ?? here.find((q) => !isStoryChapter(q)) ?? here[0] ?? null;
 }
 
 /**

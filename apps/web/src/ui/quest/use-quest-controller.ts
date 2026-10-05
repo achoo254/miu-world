@@ -7,7 +7,7 @@ import type { QuestStepPublic } from '@miu/schema/content';
 import { SkillCheckResult, StepCompleteResponse, type QuestCompletion, type StepCompleteRequest } from '@miu/schema/game';
 import type { GameStore, InteractableKind } from '../../game-bridge/game-store';
 import { ApiError, api, errorMessage } from '../api-client';
-import { mapBoth, type Bilingual } from '../i18n/i18n';
+import { mapBoth, pairOf, type Bilingual } from '../i18n/i18n';
 import { twin } from './content-text';
 import { say, type PlayerData } from '../player/player-data';
 import { TIMETABLE_TARGETS } from '../timetable/timetable-targets';
@@ -54,6 +54,11 @@ export interface QuestController {
   /** Gates the last step opened (their treasure, paid by the server), for the banner over the game. */
   gatesOpened: { seq: number; gates: NonNullable<StepCompleteResponse['gates']> } | null;
   clearGatesOpened: () => void;
+  /**
+   * Goes on with the quest under way from its character's card (the chapter it offers is the one being played): its
+   * step at that character opens, else the arrow points at the step's place and a line says so.
+   */
+  resumeAt: (targetId: string) => void;
 }
 
 interface Options {
@@ -355,5 +360,19 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
     }, [closeSkillCheck]),
     gatesOpened,
     clearGatesOpened: useCallback(() => setGatesOpened(null), []),
+    resumeAt: useCallback(
+      (targetId: string) => {
+        const active = activeQuest();
+        if (!active) return;
+        const step = currentStep(active.quest, active.progress);
+        if (step && step.kind !== 'search' && step.kind !== 'find-object' && 'target' in step && step.target === targetId) {
+          startStep(step);
+          return;
+        }
+        syncWorld(active.quest, active.progress);
+        setToast(pairOf('npc.storyUnderWay'));
+      },
+      [activeQuest, startStep, syncWorld],
+    ),
   };
 }

@@ -6,7 +6,7 @@ import { QuestListResponse, StepCompleteResponse } from '@miu/schema/game';
 import { createTestApp, parentWithChild, STORY_CONTENT, type Agent, type TestApp } from '../../test/test-app';
 import { solution } from '../../test/quest-solution';
 import { inventoryItems, mail, npcFriendships, rewardLedger } from '../db/schema';
-import { giftSource } from './npc-routes';
+import { giftSource } from './npc-friendship';
 
 let app: TestApp;
 beforeAll(async () => {
@@ -62,7 +62,8 @@ describe('npc routes', () => {
     // A stranger is told neither the fear nor the secret.
     expect(hoaMi.fear).toBeNull();
     expect(hoaMi.secret).toBeNull();
-    expect(hoaMi.lines.length).toBeGreaterThanOrEqual(12);
+    // A stranger hears the everyday lines, not the three kept for close friends.
+    expect(hoaMi.lines.length).toBe(10);
     expect(hoaMi.relations.map((r) => r.npc).sort()).toEqual(['cun-lua', 'doi-hang-sau']);
     expect(hoaMi.arcs[0]?.chapters.map((c) => [c.questId, c.hearts, c.state])).toEqual([
       ['yarn-fixture-song-1', 0, 'open'],
@@ -190,7 +191,23 @@ describe('npc routes', () => {
     expect(hint).toEqual({ layer: 'hint', text: 'Bắt đầu từ hai', textEn: 'Start from two' });
   });
 
-  it('records a gift under its day in the ledger', () => {
-    expect(giftSource('hoa-mi-rung', '2026-10-05')).toBe('npc-gift:hoa-mi-rung:2026-10-05');
+  it('leaves the gift of the day open when there was nothing to spare, and takes it once there is', async () => {
+    const { agent, childId } = await player();
+    await give(childId, 'la-phong-do', 1);
+    await agent.post('/api/npcs/hoa-mi-rung/gift').send({ itemId: 'la-phong-do' }).expect(409, { error: 'no-spare-item' });
+    const ledger = async () => (await app.db.select().from(rewardLedger).where(eq(rewardLedger.childId, childId))).map((r) => r.source);
+    expect(await ledger()).toEqual([]);
+    await give(childId, 'la-phong-do', 2);
+    await agent.post('/api/npcs/hoa-mi-rung/gift').send({ itemId: 'la-phong-do' }).expect(200);
+    const [today] = (await ledger()).filter((s) => s.startsWith('npc-gift:'));
+    expect(today).toBe(giftSource('hoa-mi-rung', today?.slice(-10) ?? ''));
+    expect(today).toMatch(/^npc-gift:hoa-mi-rung:\d{4}-\d{2}-\d{2}$/);
+  });
+
+  it("keeps a close friend's lines for a close friend", async () => {
+    const { agent } = await player();
+    const stranger = await npc(agent, 'hoa-mi-rung');
+    expect(stranger.lines.every((l) => (l.hearts ?? 0) === 0)).toBe(true);
+    expect(stranger.lines.length).toBeLessThan((STORY_CONTENT.npcs.npcs.get('hoa-mi-rung')?.profile.lines.length ?? 0));
   });
 });

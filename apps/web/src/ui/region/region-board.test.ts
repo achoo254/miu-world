@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { QuestSummary } from '@miu/schema/game';
+import { currentQuest, questForRegion } from '../player/player-data';
 import { questList } from '../player/test-fixtures';
 import { boardTitle } from './region-detail';
 import { boardStories, recommendedQuest, regionBooks, regionProgress } from './region-board';
@@ -58,5 +59,22 @@ describe('region board', () => {
     const [group] = boardStories(list, ch1.quest.region);
     expect(group?.npcName).toBe('Họa Mi');
     expect(group?.chapters.map((q) => q.quest.id)).toEqual(['yarn-bai-ca-1', 'yarn-bai-ca-2']);
+  });
+
+  it('never puts a story chapter before a lesson as the quest to play next', () => {
+    const story = (id: string, state: QuestSummary['state']): QuestSummary => {
+      const base = as(ch1, id, state);
+      if (base.quest.status !== 'active') throw new Error('fixture');
+      return { ...base, quest: { ...base.quest, category: 'story' } };
+    };
+    const lesson = as(ch1, 'bai-1', 'open');
+    const chapter = story('yarn-bai-ca-1', 'in-progress');
+    expect(recommendedQuest([lesson, chapter])?.quest.id).toBe('bai-1');
+    expect(currentQuest([lesson, chapter])?.quest.id).toBe('bai-1');
+    expect(questForRegion([chapter, lesson], ch1.quest.region)?.quest.id).toBe('bai-1');
+    // Every lesson finished: the story's chapter is next.
+    const done = as(ch1, 'bai-1', 'completed');
+    expect(recommendedQuest([done, chapter])?.quest.id).toBe('yarn-bai-ca-1');
+    expect(currentQuest([done, chapter])?.quest.id).toBe('yarn-bai-ca-1');
   });
 });

@@ -19,9 +19,10 @@ export function regionProgress(quests: readonly QuestSummary[]): { done: number;
  * the first playable one (to play a finished region again); null when nothing can be played.
  */
 export function recommendedQuest(quests: readonly QuestSummary[]): QuestSummary | null {
-  const playable = quests.filter(isPlayable);
+  // The lessons first; a story chapter only once every lesson is finished (its character offers it in the game).
+  const playable = [...quests.filter((q) => isPlayable(q) && !isStory(q)), ...quests.filter(isStory)];
   return (
-    playable.find((q) => q.state === 'in-progress') ??
+    playable.find((q) => q.state === 'in-progress' && !isStory(q)) ??
     playable.find((q) => q.state !== 'completed') ??
     playable[0] ??
     null

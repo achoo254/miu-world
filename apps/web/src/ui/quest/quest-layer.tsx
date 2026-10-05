@@ -56,7 +56,16 @@ export function QuestLayer({
   const [copy, setCopy] = useState<NotebookLine | null>(null);
   const side = useSideQuests({ region, data, onResponse });
   const raining = useSyncExternalStore(store.subscribe, () => store.getSnapshot().raining);
-  const npcs = useNpcs({ region, data, raining, hasGames: side.offers, onGames: (target) => void side.claim(target), onStory: (questId, target) => onPlayQuest?.(questId, target) });
+  // The chapter being played is offered again by its character: go on with it here rather than switch to it.
+  const resume = useRef<(target: string) => void>(() => undefined);
+  const npcs = useNpcs({
+    region,
+    data,
+    raining,
+    hasGames: side.offers,
+    onGames: (target) => void side.claim(target),
+    onStory: (id, target) => (id === questId ? resume.current(target) : onPlayQuest?.(id, target)),
+  });
   const sideOpen = side.open || npcs.open;
   const reportCover = useCallback(
     (open: boolean) => {
@@ -78,6 +87,9 @@ export function QuestLayer({
   // The lesson comes first; a character with nothing for it shows its card (a profiled one) or offers its games.
   const claimTarget = useCallback((target: string) => npcs.claim(target) || side.claim(target), [npcs, side]);
   const quest = useQuestController({ store, data, questId, onResponse: answered, onOverlayChange: reportCover, draftOwner, onSideTarget: claimTarget, openAt });
+  useEffect(() => {
+    resume.current = quest.resumeAt;
+  }, [quest.resumeAt]);
   const navigate = useNavigate();
   const summary = data.quests.find((q) => q.quest.id === questId);
   const step = quest.overlay?.step ?? null;

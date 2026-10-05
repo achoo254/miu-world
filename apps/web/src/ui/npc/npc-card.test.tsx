@@ -43,17 +43,20 @@ afterEach(() => {
 
 function setup(onPlayQuest = vi.fn()) {
   const posts: string[] = [];
+  /** The server's count: a gift adds a heart, and the next read of the characters says so. */
+  let friendship = HOA_MI.friendship;
   vi.stubGlobal(
     'fetch',
     vi.fn(async (url: string, init?: RequestInit) => {
-      if (url.startsWith('/api/npcs?')) return json({ npcs: [HOA_MI] });
+      if (url.startsWith('/api/npcs?')) return json({ npcs: [{ ...HOA_MI, friendship }] });
       if (url.endsWith('/talk')) {
         posts.push(url);
         return json({ friendship: { ...HOA_MI.friendship, points: 1, talkedToday: true }, raised: true, offer: HOA_MI.offer });
       }
       if (url.endsWith('/gift')) {
         posts.push(`${url} ${String(init?.body)}`);
-        return json({ friendship: { ...HOA_MI.friendship, points: 4, hearts: 1, giftedToday: true }, itemId: 'hat-de-rung', left: 1, offer: HOA_MI.offer });
+        friendship = { ...HOA_MI.friendship, points: 4, hearts: 1, nextHeartAt: 6, giftedToday: true };
+        return json({ friendship, itemId: 'hat-de-rung', left: 1, offer: HOA_MI.offer });
       }
       if (url.includes('category=side')) return json({ quests: [] });
       if (url.includes('skill-check')) return json({ hasSkillCheck: false, passed: true, targetId: '', targetName: '' });

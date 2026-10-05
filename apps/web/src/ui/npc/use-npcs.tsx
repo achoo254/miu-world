@@ -46,9 +46,9 @@ export function useNpcs({
 }): Npcs {
   const [npcs, setNpcs] = useState<NpcDto[]>([]);
   const [open, setOpen] = useState<Open | null>(null);
-  /** What is left of the items given away on this visit (the backpack's counts come with the next read). */
-  const [given, setGiven] = useState<Readonly<Record<string, number>>>({});
-  const owned = useMemo(() => ({ ...data.progress.items, ...given }), [data.progress.items, given]);
+  /** What is left of the items given away, over the backpack's counts it was given from (a newer read replaces it). */
+  const [given, setGiven] = useState<{ from: PlayerData['progress']['items']; left: Readonly<Record<string, number>> }>({ from: data.progress.items, left: {} });
+  const owned = useMemo(() => (given.from === data.progress.items ? { ...data.progress.items, ...given.left } : data.progress.items), [data.progress.items, given]);
   const [reads, setReads] = useState(0);
 
   useEffect(() => {
@@ -69,7 +69,21 @@ export function useNpcs({
     latest.current = { byTarget, open, raining };
   });
 
-  const update = useCallback((next: NpcDto) => setNpcs((list) => list.map((n) => (n.id === next.id ? next : n))), []);
+  /**
+   * The server's friendship and offer for a character, merged into its latest entry; a new heart opens lines (and
+   * maybe its fear or secret) the server only sends a close friend, so the characters are read again.
+   */
+  const update = useCallback((id: string, friendship: NpcDto['friendship'], offer: NpcDto['offer']) => {
+    let closer = false;
+    setNpcs((list) =>
+      list.map((n) => {
+        if (n.id !== id) return n;
+        closer = friendship.hearts > n.friendship.hearts;
+        return { ...n, friendship, offer };
+      }),
+    );
+    if (closer) setReads((r) => r + 1);
+  }, []);
 
   const claim = useCallback(
     (targetId: string): boolean => {
@@ -81,7 +95,7 @@ export function useNpcs({
       setOpen({ npcId: npc.id, targetId, line, raised: false });
       talkTo(npc.id).then(
         (response) => {
-          update({ ...npc, friendship: response.friendship, offer: response.offer });
+          update(npc.id, response.friendship, response.offer);
           if (response.raised) setOpen((o) => (o && o.npcId === npc.id ? { ...o, raised: true } : o));
         },
         // Offline: the chat still shows, the day's point is counted next time.
@@ -117,8 +131,8 @@ export function useNpcs({
             onGames(open.targetId);
           }}
           onGift={(next, itemId, left) => {
-            update(next);
-            setGiven((o) => ({ ...o, [itemId]: left }));
+            update(next.id, next.friendship, next.offer);
+            setGiven((g) => ({ from: data.progress.items, left: { ...(g.from === data.progress.items ? g.left : {}), [itemId]: left } }));
           }}
           onClose={close}
         />

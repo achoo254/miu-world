@@ -28,7 +28,7 @@ export function ReadStepScreen({
   const ref = step.textRef ? texts[step.textRef] : undefined;
   // A passage of the step's own (a letter in a story) may have its English twin; a textbook reading has none.
   const own = step.text !== undefined ? context.say(step.text, step.en?.text) : null;
-  const passage = own ? own.vi : context.fill(ref?.body ?? '');
+  const passage = own ? (mode === 'en' ? own.en : own.vi) : context.fill(ref?.body ?? '');
   return (
     <ChallengeFrame context={context} prompt={context.say(step.question, step.en?.question)} onCheck={() => choice && onAnswer({ choice })} canCheck={choice !== null}>
       <article className="read-passage" data-id="read-passage">
@@ -36,7 +36,7 @@ export function ReadStepScreen({
         {passage.split('\n').map((line, i) => (
           <p key={i}>{line}</p>
         ))}
-        {own && own.en !== own.vi && mode !== 'vi'
+        {own && own.en !== own.vi && mode === 'both'
           ? own.en.split('\n').map((line, i) => (
               <p key={`en-${i}`} className="bi-en" lang="en">
                 {line}
@@ -54,7 +54,7 @@ export function ReadStepScreen({
             ))}
           </dl>
         ) : null}
-        <ListenButton text={own && own.en !== own.vi ? own : { vi: passage }} dataId="read-listen" label="speech.listenAgain" />
+        <ListenButton text={own && own.en !== own.vi ? own : { vi: own?.vi ?? passage }} dataId="read-listen" label="speech.listenAgain" />
       </article>
       <ChoiceList choices={step.choices} en={step.en?.choices} selected={choice} onSelect={setChoice} fill={context.fill} label={t('challenge.pickAnswer')} />
     </ChallengeFrame>

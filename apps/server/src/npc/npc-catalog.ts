@@ -189,8 +189,15 @@ export function npcCatalogIssues(files: readonly NpcMapFile[], ctx: NpcCheckCont
       });
     }
   }
+  // A found thing leaves the world: a character met in the world for its card and its stories is never one to find.
+  const profiled = new Set([...known.keys(), ...[...ctx.targets].filter(([, t]) => t.character !== undefined && known.has(t.character)).map(([id]) => id)]);
   for (const quest of ctx.quests) {
-    if (quest.status !== 'stub' && quest.category === 'story' && !inArc.has(quest.id)) issues.push(`story chapter ${quest.id} is in no story of content/npcs`);
+    if (quest.status === 'stub') continue;
+    if (quest.category === 'story' && !inArc.has(quest.id)) issues.push(`story chapter ${quest.id} is in no story of content/npcs`);
+    for (const step of quest.steps) {
+      const found = step.kind === 'search' ? step.targets : step.kind === 'find-object' ? step.items.map((i) => i.target) : [];
+      for (const id of found) if (profiled.has(id)) issues.push(`quest ${quest.id} step ${step.id}: ${id} is a profiled character, never a thing to find (found things leave the world)`);
+    }
   }
   issues.push(...storyOrderIssues(ctx.quests));
   return issues;

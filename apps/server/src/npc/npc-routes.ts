@@ -14,8 +14,6 @@ import {
   NpcListResponse,
   NpcTalkResponse,
   SECRET_HEARTS,
-  heartsFor,
-  nextHeartAt,
   vietnamDay,
   type NpcDto,
   type NpcFriendshipDto,
@@ -25,51 +23,18 @@ import { storyOffer } from '@miu/quest/friendship';
 import { activePlayerId, optionalAuth, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
-import { inventoryItems, npcFriendships, questProgress, rewardLedger } from '../db/schema';
+import { inventoryItems, npcFriendships, rewardLedger } from '../db/schema';
 import { HttpError } from '../http-error';
 import { ipKey, limiter } from '../rate-limit';
-import type { Tx } from '../reward/reward-ledger';
 import { questState } from '../quest/quest-access';
 import type { NpcEntry } from './npc-catalog';
+import { bondsOf, finishedOf, friendshipDto, giftSource, progressOf, type ProgressRow } from './npc-friendship';
 
 export interface NpcRouteDeps {
   db: Db;
   content: ContentCatalog;
   clock: () => Date;
 }
-
-type BondRow = typeof npcFriendships.$inferSelect;
-type ProgressRow = typeof questProgress.$inferSelect;
-
-/** The ledger source of a day's gift to a character: one a day (the ledger's unique key keeps it so). */
-export const giftSource = (npcId: string, day: string): string => `npc-gift:${npcId}:${day}`;
-
-/** Story chapters of a character the player has finished at least once. */
-function finishedChapters(content: ContentCatalog, npcId: string, finished: ReadonlySet<string>): number {
-  return (content.npcs.arcsOf.get(npcId) ?? []).reduce((n, arc) => n + arc.chapters.filter((c) => finished.has(c.quest)).length, 0);
-}
-
-/** Friendship points: the chats and gifts kept for her, and every chapter finished. */
-export function friendshipPoints(content: ContentCatalog, npcId: string, bond: Pick<BondRow, 'talkPoints' | 'giftPoints'> | undefined, finished: ReadonlySet<string>): number {
-  return (bond?.talkPoints ?? 0) + (bond?.giftPoints ?? 0) + FRIENDSHIP_POINTS.chapter * finishedChapters(content, npcId, finished);
-}
-
-function friendshipDto(content: ContentCatalog, npcId: string, bond: BondRow | undefined, finished: ReadonlySet<string>, today: string): NpcFriendshipDto {
-  const points = friendshipPoints(content, npcId, bond, finished);
-  return { npc: npcId, points, hearts: heartsFor(points), nextHeartAt: nextHeartAt(points), talkedToday: bond?.lastTalkOn === today, giftedToday: bond?.lastGiftOn === today };
-}
-
-async function bondsOf(db: Db | Tx, childId: string): Promise<Map<string, BondRow>> {
-  const rows = await db.select().from(npcFriendships).where(eq(npcFriendships.childId, childId));
-  return new Map(rows.map((r) => [r.npcId, r]));
-}
-
-async function progressOf(db: Db | Tx, childId: string): Promise<Map<string, ProgressRow>> {
-  const rows = await db.select().from(questProgress).where(eq(questProgress.childId, childId));
-  return new Map(rows.map((r) => [r.questId, r]));
-}
-
-const finishedOf = (progress: ReadonlyMap<string, ProgressRow>): Set<string> => new Set([...progress.values()].filter((r) => r.completedAt !== null).map((r) => r.questId));
 
 /** A character the catalogue profiles, by the id in the path (404 for anything else). */
 function npcOf(content: ContentCatalog, raw: unknown): NpcEntry & { id: string } {
@@ -97,7 +62,8 @@ function npcDto(content: ContentCatalog, id: string, entry: NpcEntry, friendship
     secret: friendship.hearts >= SECRET_HEARTS ? profile.secret : null,
     likes: profile.likes,
     climate: entry.climate,
-    lines: profile.lines,
+    // A close friend's lines (and the secrets they may tell) only once the friendship is that close.
+    lines: profile.lines.filter((line) => (line.hearts ?? 0) <= friendship.hearts),
     relations: content.npcs.relations.flatMap((rel) => {
       const other = rel.a === id ? rel.b : rel.b === id ? rel.a : null;
       const known = other ? content.npcs.npcs.get(other) : undefined;
@@ -122,7 +88,9 @@ const MINUTE = 60 * 1000;
 /** Anti-spam per player and character (a chat or a gift counts once a day anyway). */
 const perNpc = (req: Request): string => {
   const session = req.res ? optionalAuth(req.res)?.session : undefined;
-  return `${session?.activeChildId || ipKey(req)}|${String(req.params.npcId)}`;
+  // A malformed id is refused anyway: it shares one bucket instead of opening a new one.
+  const npc = ContentId.safeParse(req.params.npcId);
+  return `${session?.activeChildId || ipKey(req)}|${npc.success ? npc.data : '?'}`;
 };
 
 export function npcRoutes({ db, content, clock }: NpcRouteDeps): Router {
@@ -205,16 +173,4 @@ export function npcRoutes({ db, content, clock }: NpcRouteDeps): Router {
   });
 
   return router;
-}
-
-/**
- * The storyteller's hearts around a chapter just finished, in the caller's transaction (the chapter's progress row
- * already finished): `first` when this is its first finish, whose points the hearts before it leave out.
- */
-export async function chapterHearts(tx: Tx, content: ContentCatalog, childId: string, npcId: string, first: boolean): Promise<{ before: number; after: number }> {
-  const [bond] = await tx.select().from(npcFriendships).where(and(eq(npcFriendships.childId, childId), eq(npcFriendships.npcId, npcId)));
-  const finished = finishedOf(await progressOf(tx, childId));
-  const after = friendshipPoints(content, npcId, bond, finished);
-  const before = first ? after - FRIENDSHIP_POINTS.chapter : after;
-  return { before: heartsFor(before), after: heartsFor(after) };
 }

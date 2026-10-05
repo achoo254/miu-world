@@ -743,7 +743,8 @@ export function englishIssues(q: { steps: QuestStep[]; en?: QuestEn | undefined 
     if ((en.goTo === undefined) !== (step.goTo === undefined)) issues.push(`${at}: en.goTo is there exactly when goTo is`);
     switch (step.kind) {
       case 'dialogue': {
-        const twin = en as z.infer<typeof DialogueEn>;
+        const twin = step.en;
+        if (!twin) break;
         if (twin.lines.length !== step.lines.length) issues.push(`${at}: en has ${twin.lines.length} lines, the step ${step.lines.length}`);
         if (twin.choices.length !== step.choices.length) issues.push(`${at}: en has ${twin.choices.length} choices, the step ${step.choices.length}`);
         step.choices.forEach((c, i) => {
@@ -753,19 +754,20 @@ export function englishIssues(q: { steps: QuestStep[]; en?: QuestEn | undefined 
       }
       case 'decision':
       case 'find-object': {
-        const twin = en as { choices?: unknown[]; items?: unknown[] };
-        const [vi, mine] = step.kind === 'decision' ? [step.choices, twin.choices] : [step.items, twin.items];
+        const [vi, mine] = step.kind === 'decision' ? [step.choices, step.en?.choices] : [step.items, step.en?.items];
         if (!sameLength(mine, vi)) issues.push(`${at}: en lists ${mine?.length ?? 0} ${step.kind === 'decision' ? 'choices' : 'items'}, the step ${vi.length}`);
         break;
       }
       case 'read': {
-        const twin = en as z.infer<typeof ReadEn>;
+        const twin = step.en;
+        if (!twin) break;
         if (twin.choices.length !== step.choices.length) issues.push(`${at}: en has ${twin.choices.length} choices, the step ${step.choices.length}`);
         if ((twin.text === undefined) !== (step.text === undefined)) issues.push(`${at}: en.text is there exactly when the step has its own text`);
         break;
       }
       case 'challenge': {
-        const twin = en as z.infer<typeof ChallengeEn>;
+        const twin = step.en;
+        if (!twin) break;
         const own = step as { choices?: unknown[]; items?: unknown[]; elements?: unknown[] };
         for (const key of ['choices', 'items', 'elements'] as const) {
           // A logic step's elements default to none: an empty list needs no twin.

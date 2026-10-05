@@ -10,7 +10,7 @@ import { questScore } from '@miu/quest/quest-score';
 import type { ContentCatalog } from '../content/content-catalog';
 import { inventoryItems, mail, questProgress, skillProgress } from '../db/schema';
 import { letterTemplateId } from '../npc/npc-catalog';
-import { chapterHearts } from '../npc/npc-routes';
+import { chapterHearts } from '../npc/npc-friendship';
 import { grantSkillGifts } from '../progression/skill-gifts';
 import { grantReward, questSource, totalXp, type Tx } from '../reward/reward-ledger';
 import { clearAttempts, questEffort } from './step-attempts';
