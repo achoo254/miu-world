@@ -1,0 +1,272 @@
+{
+  "id": "vuot-ai-cho-phien",
+  "region": "cho-phien",
+  "chapter": 2,
+  "title": "Trùm vui: Heo Đất Khổng Lồ",
+  "status": "active",
+  "summary": "Cuối phiên, Heo Đất Khổng Lồ của dãy hàng cân đong bỗng tỉnh dậy, đứng chắn lối không cho sạp nào dọn hàng. {name} gom đồ đong đếm, đọc nội quy, giải câu đố quả cân rồi tính nhẩm bảy câu để chợ được nghỉ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cua Đồng Gánh Hàng, Thỏ Nâu Giữ Cân, Heo Đất Khổng Lồ",
+    "where": "Chợ phiên, dãy hàng cân đong: đầu dãy hàng cân, sạp tạp hóa nhỏ, cột nội quy chợ, dãy sạp có cân, bến hàng bên kênh",
+    "goal": "Thắng Heo Đất Khổng Lồ để các sạp được dọn hàng cuối phiên",
+    "play": "Tìm chai dầu, túi gạo, ca đong theo lời tả, đọc nội quy, giải câu đố so khối lượng, chọn cách làm quen Heo Đất, đấu trùm bảy câu",
+    "learn": "Cộng, trừ qua 10 trong phạm vi 20, bài toán thêm bớt, ki-lô-gam, lít",
+    "reward": "100 XP, 25 Xu, Skill XP Phép cộng, Phép trừ, Khối lượng, Dung tích",
+    "next": "Chợ dọn hàng, Chim Cánh Cụt Pin rủ {name} phiên sau quay lại"
+  },
+  "phases": {
+    "hook": "gap-cua-dong",
+    "explore": "gom-do-dong-dem",
+    "learn": "doc-noi-quy",
+    "challenge": "cau-do-qua-can",
+    "decision": "lam-quen-heo-dat",
+    "finale": "tran-trum",
+    "reward": "heo-dat-tang-qua",
+    "next": "cho-don-hang"
+  },
+  "places": {
+    "trum-cp-cua-dong": "Đầu dãy hàng cân",
+    "gom-do-dong-dem": "Sạp tạp hóa nhỏ",
+    "trum-cp-noi-quy": "Cột nội quy chợ",
+    "trum-cp-tho-nau": "Sạp cân đĩa",
+    "trum-cp-heo-dat": "Bến kênh"
+  },
+  "steps": [
+    {
+      "id": "gap-cua-dong",
+      "title": "Cua Đồng kêu cứu",
+      "goTo": "Tới đầu dãy hàng cân, Cua Đồng Gánh Hàng đang đứng ngóng",
+      "kind": "dialogue",
+      "target": "trum-cp-cua-dong",
+      "lines": [
+        { "speaker": "Cua Đồng Gánh Hàng", "text": "{name} ơi, Heo Đất Khổng Lồ ở bến hàng tỉnh dậy rồi! Bạn ấy đứng chắn lối, chẳng sạp nào dọn hàng về được." },
+        { "speaker": "Cua Đồng Gánh Hàng", "text": "Heo Đất bảo ai tính nhẩm giỏi hơn mới chịu tránh đường. Mà muốn đấu thì phải có đủ đồ đong đếm của chợ." }
+      ],
+      "choices": [
+        { "text": "Đồ đong đếm để ở đâu hả Cua?", "reply": "Sạp tạp hóa nhỏ đằng kia vừa đổ cả ra đất, cậu nhặt giúp nhé." }
+      ]
+    },
+    {
+      "id": "gom-do-dong-dem",
+      "title": "Gom đồ đong đếm",
+      "goTo": "Sang sạp tạp hóa nhỏ nhặt đồ đong đếm",
+      "kind": "find-object",
+      "prompt": "Ba món đồ đong đếm bị rơi. Đọc lời tả và nhặt cho đủ:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "chai-dau",
+          "name": "Chai dầu ăn 1 lít",
+          "clue": "Chai nhựa trong, đựng thứ nước vàng sóng sánh dùng để chiên rán, nhãn ghi 1 lít.",
+          "target": "trum-cp-chai-dau"
+        },
+        {
+          "id": "tui-gao",
+          "name": "Túi gạo 1 ki-lô-gam",
+          "clue": "Túi vải buộc miệng, bên trong là những hạt trắng nhỏ, đặt lên cân vừa đúng 1 ki-lô-gam.",
+          "target": "trum-cp-tui-gao"
+        },
+        {
+          "id": "ca-dong",
+          "name": "Chiếc ca đong",
+          "clue": "Có quai cầm, thành ca vạch những nấc nhỏ để đong nước cho chuẩn.",
+          "target": "trum-cp-ca-dong"
+        }
+      ]
+    },
+    {
+      "id": "doc-noi-quy",
+      "title": "Nội quy dãy hàng cân đong",
+      "goTo": "Ghé cột nội quy chợ đọc luật của dãy hàng",
+      "kind": "read",
+      "target": "trum-cp-noi-quy",
+      "skill": "doc-hieu",
+      "text": "NỘI QUY DÃY HÀNG CÂN ĐONG\nGạo, đường, hoa quả cân bằng ki-lô-gam.\nNước mắm, dầu ăn đong bằng lít.\nCân xong nhớ trả quả cân về đúng chỗ.\nMuốn dọn hàng khi Heo Đất còn thức, phải trả lời đúng bảy câu đố của Heo Đất.",
+      "question": "Theo nội quy, dầu ăn được đong bằng đơn vị nào?",
+      "choices": [
+        { "id": "a", "text": "Ki-lô-gam" },
+        { "id": "b", "text": "Lít" },
+        { "id": "c", "text": "Xăng-ti-mét" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm dòng có chữ «dầu ăn».", "Đọc chữ đứng sau chữ «bằng» ở dòng đó."],
+        "hint": "Dầu ăn là chất lỏng, đổ vào chai, vào ca.",
+        "answer": {
+          "text": "Dầu ăn đong bằng lít",
+          "explanation": "Nội quy ghi: nước mắm, dầu ăn đong bằng lít."
+        }
+      },
+      "feedback": {
+        "right": ["Chất lỏng thì đong bằng lít, {name} nhớ chuẩn quá!", "Đúng dòng thứ hai của nội quy rồi.", "Cua Đồng giơ càng khen: đọc nhanh mà kĩ!"],
+        "wrong": ["Ki-lô-gam dùng để cân gạo, đường cơ, đọc lại nhé.", "Tìm dòng nhắc tới dầu ăn nha {name}.", "Xăng-ti-mét để đo độ dài, đâu phải để đong."]
+      }
+    },
+    {
+      "id": "cau-do-qua-can",
+      "title": "Câu đố quả cân",
+      "goTo": "Tới sạp cân đĩa, Thỏ Nâu Giữ Cân đang đặt hoa quả lên đĩa cân",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "trum-cp-tho-nau",
+      "skill": "khoi-luong",
+      "prompt": "Thỏ Nâu thử cân: một quả dưa nặng bằng 3 quả cam, một quả cam nặng bằng 2 quả chanh. Vậy một quả dưa nặng bằng mấy quả chanh?",
+      "choices": [
+        { "id": "a", "text": "5 quả chanh" },
+        { "id": "b", "text": "6 quả chanh" },
+        { "id": "c", "text": "3 quả chanh" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Thay mỗi quả cam bằng 2 quả chanh.", "Quả dưa nặng bằng 3 quả cam, tức là 3 lần 2 quả chanh.", "Cộng: 2 + 2 + 2."],
+        "hint": "Đổi từng quả cam ra chanh rồi đếm tất cả.",
+        "answer": {
+          "text": "Một quả dưa bằng 6 quả chanh",
+          "explanation": "Mỗi quả cam bằng 2 quả chanh, ba quả cam là 2 + 2 + 2 = 6 quả chanh, nên quả dưa nặng bằng 6 quả chanh."
+        }
+      },
+      "feedback": {
+        "right": ["Đĩa cân thăng bằng tăm tắp, Thỏ Nâu vỗ tay!", "{name} đổi cam ra chanh khéo như người bán hàng lâu năm.", "Sáu quả chanh, cân không lệch chút nào!"],
+        "wrong": ["Mỗi quả cam bằng mấy quả chanh nhỉ? Đổi từng quả nhé.", "Đừng cộng 3 với 2, hãy đếm 2 quả chanh ba lần {name} ạ.", "Quả dưa nặng hơn 3 quả chanh nhiều đấy, thử lại nha."]
+      }
+    },
+    {
+      "id": "lam-quen-heo-dat",
+      "title": "Làm quen Heo Đất",
+      "kind": "decision",
+      "target": "trum-cp-tho-nau",
+      "speaker": "Thỏ Nâu Giữ Cân",
+      "prompt": "Heo Đất to bằng cả gian hàng, đang đứng ở bến hàng bên kênh. {name} làm quen bằng cách nào?",
+      "choices": [
+        {
+          "id": "bo-xu",
+          "text": "Bỏ một đồng xu vào lưng Heo Đất",
+          "consequence": "Keng! Heo Đất cười khanh khách vì nhột, đôi mắt sứ sáng long lanh."
+        },
+        {
+          "id": "hoi-chuyen",
+          "text": "Hỏi Heo Đất vì sao chắn lối",
+          "consequence": "Heo Đất thú thật: cả ngày đứng im, chẳng ai trò chuyện nên buồn quá."
+        },
+        {
+          "id": "moi-rau",
+          "text": "Mời Heo Đất một rổ rau tươi",
+          "consequence": "Heo Đất hít hà rổ rau, khen dãy hàng cân đong có rau ngon nhất chợ."
+        }
+      ]
+    },
+    {
+      "id": "tran-trum",
+      "title": "Tính nhẩm với Heo Đất",
+      "goTo": "Ra bến kênh, Heo Đất Khổng Lồ đang chờ",
+      "kind": "boss",
+      "target": "trum-cp-heo-dat",
+      "bossId": "heo-dat-khong-lo",
+      "bossName": "Heo Đất Khổng Lồ",
+      "introDialogue": "Ụt ịt! Bảy câu tính nhẩm của phiên chợ đây. Mỗi câu đúng, ta nhích sang một bên cho một sạp dọn hàng!",
+      "winDialogue": "Ụt ịt, phục rồi! {name} tính nhanh hơn cả bàn tính của chợ, ta xin tránh đường cho cả dãy hàng.",
+      "maxHp": 500,
+      "damagePerTurn": 80,
+      "turns": [
+        {
+          "id": "chin-cong-nam",
+          "skill": "phep-cong",
+          "prompt": "Heo Đất hỏi nhanh: 9 + 5 bằng bao nhiêu?",
+          "choices": [
+            { "id": "a", "text": "13" },
+            { "id": "b", "text": "14" },
+            { "id": "c", "text": "15" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "muoi-bay-tru-chin",
+          "skill": "phep-tru",
+          "prompt": "Còn câu này thì sao: 17 − 9 bằng bao nhiêu?",
+          "choices": [
+            { "id": "a", "text": "7" },
+            { "id": "b", "text": "8" },
+            { "id": "c", "text": "9" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "them-buoi",
+          "skill": "bai-toan-loi-van",
+          "prompt": "Sạp có 8 quả bưởi, bác bán hàng mang thêm 6 quả nữa. Sạp có tất cả bao nhiêu quả bưởi?",
+          "choices": [
+            { "id": "a", "text": "2 quả" },
+            { "id": "b", "text": "13 quả" },
+            { "id": "c", "text": "14 quả" }
+          ],
+          "answer": { "choice": "c" }
+        },
+        {
+          "id": "bot-trung",
+          "skill": "bai-toan-loi-van",
+          "prompt": "Rổ có 16 quả trứng, cô bán hàng đã bán 9 quả. Rổ còn lại mấy quả trứng?",
+          "choices": [
+            { "id": "a", "text": "7 quả" },
+            { "id": "b", "text": "8 quả" },
+            { "id": "c", "text": "25 quả" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "gao-va-duong",
+          "skill": "khoi-luong",
+          "prompt": "Túi gạo nặng 5 kg, túi đường nặng 2 kg. Cả hai túi nặng bao nhiêu ki-lô-gam?",
+          "choices": [
+            { "id": "a", "text": "3 kg" },
+            { "id": "b", "text": "7 kg" },
+            { "id": "c", "text": "10 kg" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "can-nuoc-mam",
+          "skill": "dung-tich",
+          "prompt": "Can nước mắm có 10 lít, bác rót ra 4 lít để bán. Can còn lại bao nhiêu lít?",
+          "choices": [
+            { "id": "a", "text": "6 lít" },
+            { "id": "b", "text": "14 lít" },
+            { "id": "c", "text": "4 lít" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "dua-va-bi",
+          "skill": "khoi-luong",
+          "prompt": "Quả dưa hấu nặng 3 kg, quả bí ngô nặng 5 kg. Quả nào nặng hơn?",
+          "choices": [
+            { "id": "a", "text": "Quả dưa hấu" },
+            { "id": "b", "text": "Quả bí ngô" },
+            { "id": "c", "text": "Hai quả nặng bằng nhau" }
+          ],
+          "answer": { "choice": "b" }
+        }
+      ]
+    },
+    {
+      "id": "heo-dat-tang-qua",
+      "title": "Quà của Heo Đất",
+      "kind": "reward",
+      "target": "trum-cp-heo-dat",
+      "text": "Heo Đất lắc mình một cái, những đồng xu trong bụng kêu leng keng rồi rơi ra một túi quà cho {name}: XP, xu và điểm kỹ năng."
+    },
+    {
+      "id": "cho-don-hang",
+      "title": "Chợ dọn hàng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Các sạp lần lượt dọn hàng, Heo Đất xin được đứng canh chợ phiên sau. Chim Cánh Cụt Pin vẫy cánh rủ {name} phiên tới quay lại đi chợ cùng."
+    }
+  ],
+  "reward": {
+    "xp": 100,
+    "coin": 25,
+    "skillXp": { "phep-cong": 1, "phep-tru": 1, "khoi-luong": 1, "dung-tich": 1 }
+  }
+}

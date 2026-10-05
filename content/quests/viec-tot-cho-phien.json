@@ -1,0 +1,235 @@
+{
+  "id": "viec-tot-cho-phien",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Việc tốt: Bé Mi lạc mẹ giữa chợ",
+  "status": "active",
+  "summary": "Chợ phiên đông nghịt, Bé Gấu Mi mải ngắm bóng bay nên lạc mẹ. {name} nhặt đồ Mi đánh rơi, đọc biển chỉ dẫn, đoán chuỗi bóng bay theo quy luật, chọn cách tìm mẹ rồi giúp mẹ Mi cắm bình hoa cảm ơn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bé Gấu Mi, Chú Bảo Vệ Chợ, Cô Bán Hoa Ly, Mẹ Gấu Hoa",
+    "where": "Chợ phiên, chợ rau hoa: bậc thềm đài phun, lối giữa các sạp, biển chỉ dẫn của chợ, chốt bảo vệ chợ, sạp hoa ly, nhà lồng chợ",
+    "goal": "Giúp Bé Gấu Mi tìm lại mẹ giữa phiên chợ đông",
+    "play": "Tìm bóng bay, giày, kẹo bông theo lời tả, đọc biển chỉ dẫn, tìm quy luật chuỗi bóng bay, chọn cách tìm mẹ, kéo bó hoa cho đủ số bông",
+    "learn": "Đọc hiểu biển chỉ dẫn, quy luật lặp lại có tăng dần, cộng qua 10 trong phạm vi 20",
+    "reward": "70 XP, 18 Xu, Skill XP Đọc hiểu, Logic, Phép cộng",
+    "next": "Mẹ con Mi rủ {name} ghé gian hàng đồ ăn ăn bánh rán"
+  },
+  "phases": {
+    "hook": "gap-be-mi",
+    "explore": "nhat-do-cua-mi",
+    "learn": "doc-bien-chi-dan",
+    "challenge": "chuoi-bong-bay",
+    "decision": "cach-tim-me",
+    "finale": "cam-hoa-cam-on",
+    "reward": "me-con-doan-tu",
+    "next": "banh-ran-cuoi-phien"
+  },
+  "places": {
+    "vt-cp-be-mi": "Bậc thềm đài phun",
+    "nhat-do-cua-mi": "Lối giữa các sạp",
+    "vt-cp-bien-chi-dan": "Biển chỉ dẫn của chợ",
+    "vt-cp-bao-ve": "Chốt bảo vệ chợ",
+    "vt-cp-co-ban-hoa": "Sạp hoa ly",
+    "vt-cp-me-gau": "Nhà lồng chợ"
+  },
+  "steps": [
+    {
+      "id": "gap-be-mi",
+      "title": "Bé Mi khóc nhè",
+      "goTo": "Có bạn nhỏ đang thút thít ở bậc thềm đài phun",
+      "kind": "dialogue",
+      "target": "vt-cp-be-mi",
+      "lines": [
+        { "speaker": "Bé Gấu Mi", "text": "Hu hu… Mi mải nhìn chùm bóng bay, quay lại đã chẳng thấy mẹ đâu. Đồ của Mi cũng rơi mất trên đường chạy rồi." }
+      ],
+      "choices": [
+        { "text": "Nín đi Mi, mình cùng tìm mẹ nhé!", "reply": "Thật hả? Đồ của Mi rơi ở lối giữa các sạp ấy." },
+        { "text": "Mi còn nhớ mẹ mặc áo gì không?", "reply": "Mẹ mặc áo hoa, tay xách giỏ cá. Nhưng nhặt đồ của Mi trước đã nhé." }
+      ]
+    },
+    {
+      "id": "nhat-do-cua-mi",
+      "title": "Nhặt đồ của Bé Mi",
+      "goTo": "Tìm dọc lối giữa các sạp những món Mi đánh rơi",
+      "kind": "find-object",
+      "prompt": "Mi đánh rơi ba món. Đọc lời Mi tả rồi nhặt giúp bạn:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "bong-bay",
+          "name": "Quả bóng bay vàng",
+          "clue": "Căng tròn, màu vàng như nắng, buộc một sợi dây dài, cứ chực bay lên trời.",
+          "target": "vt-cp-bong-bay"
+        },
+        {
+          "id": "giay-xanh",
+          "name": "Chiếc giày xanh",
+          "clue": "Một chiếc giày nhỏ màu xanh lá có quai dán, tuột khỏi chân lúc Mi chạy.",
+          "target": "vt-cp-giay"
+        },
+        {
+          "id": "keo-bong",
+          "name": "Que kẹo mút",
+          "clue": "Tròn xoe, xoắn nhiều màu, cắm trên một chiếc que, ngọt lịm.",
+          "target": "vt-cp-keo"
+        }
+      ]
+    },
+    {
+      "id": "doc-bien-chi-dan",
+      "title": "Đọc biển chỉ dẫn",
+      "goTo": "Dắt Mi tới biển chỉ dẫn của chợ",
+      "kind": "read",
+      "target": "vt-cp-bien-chi-dan",
+      "skill": "doc-hieu",
+      "text": "LẠC NGƯỜI THÂN?\nĐừng chạy lung tung. Hãy tới chốt bảo vệ chợ. Chú bảo vệ sẽ đọc loa tìm người thân cho bạn. Người lớn đi tìm con thì tới nhà lồng chợ chờ.",
+      "question": "Bạn nhỏ bị lạc nên tới đâu?",
+      "choices": [
+        { "id": "a", "text": "Chạy khắp các sạp tìm" },
+        { "id": "b", "text": "Tới chốt bảo vệ chợ" },
+        { "id": "c", "text": "Ra cổng chợ đứng khóc" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm câu bắt đầu bằng chữ «Hãy».", "Câu đó chỉ nơi bạn nhỏ cần tới."],
+        "hint": "Biển dặn đừng chạy lung tung.",
+        "answer": {
+          "text": "Đi tới chốt bảo vệ chợ",
+          "explanation": "Biển viết: hãy tới chốt bảo vệ chợ, chú bảo vệ sẽ đọc loa tìm người thân cho bạn."
+        }
+      },
+      "feedback": {
+        "right": ["Đúng rồi, chú bảo vệ sẽ giúp Mi ngay!", "{name} đọc biển chỉ dẫn bình tĩnh ghê.", "Mi nín khóc, nắm tay {name} đi tới chốt bảo vệ."],
+        "wrong": ["Biển dặn đừng chạy lung tung đấy, đọc lại nhé.", "Tìm câu có chữ «Hãy» nha {name}.", "Đứng khóc thì mẹ khó tìm lắm, chọn lại nào."]
+      }
+    },
+    {
+      "id": "chuoi-bong-bay",
+      "title": "Chuỗi bóng bay trên chốt bảo vệ",
+      "goTo": "Tới chốt bảo vệ chợ, Chú Bảo Vệ Chợ đang treo chuỗi bóng bay",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "vt-cp-bao-ve",
+      "skill": "logic",
+      "prompt": "Chú bảo vệ treo bóng bay thành chuỗi có quy luật để Mi dễ nhìn thấy. Quả tiếp theo màu gì?",
+      "elements": [
+        { "id": "b1", "label": "Đỏ" },
+        { "id": "b2", "label": "Xanh" },
+        { "id": "b3", "label": "Đỏ" },
+        { "id": "b4", "label": "Xanh" },
+        { "id": "b5", "label": "Xanh" },
+        { "id": "b6", "label": "Đỏ" },
+        { "id": "b7", "label": "Xanh" },
+        { "id": "b8", "label": "Xanh" },
+        { "id": "b9", "label": "Xanh" }
+      ],
+      "choices": [
+        { "id": "do", "text": "Đỏ" },
+        { "id": "xanh", "text": "Xanh" },
+        { "id": "tim", "text": "Tím" }
+      ],
+      "answer": { "choice": "do" },
+      "support": {
+        "guide": ["Mỗi quả đỏ mở đầu một nhóm.", "Đếm số quả xanh sau mỗi quả đỏ: 1, rồi 2, rồi 3.", "Nhóm có 3 quả xanh đã đủ, nhóm mới bắt đầu thế nào?"],
+        "hint": "Số quả xanh sau mỗi quả đỏ tăng dần thêm một.",
+        "answer": {
+          "text": "Một quả màu đỏ",
+          "explanation": "Chuỗi là đỏ – 1 xanh, đỏ – 2 xanh, đỏ – 3 xanh. Nhóm thứ ba đã đủ 3 quả xanh nên tiếp theo là quả đỏ mở nhóm mới."
+        }
+      },
+      "feedback": {
+        "right": ["Chuỗi bóng bay dài thêm, nhìn từ xa cũng thấy!", "{name} nhìn ra quy luật tăng dần, giỏi thật đấy.", "Chú bảo vệ giơ ngón cái: đúng quả đỏ rồi!"],
+        "wrong": ["Đếm số quả xanh sau mỗi quả đỏ xem nào.", "Trong chuỗi chẳng có quả tím nào đâu {name}.", "Nhóm cuối đã có ba quả xanh rồi, tiếp theo là gì nhỉ?"]
+      }
+    },
+    {
+      "id": "cach-tim-me",
+      "title": "Tìm mẹ cho Mi",
+      "kind": "decision",
+      "target": "vt-cp-bao-ve",
+      "speaker": "Chú Bảo Vệ Chợ",
+      "prompt": "Chợ đông lắm. {name} muốn tìm mẹ Mi bằng cách nào?",
+      "choices": [
+        {
+          "id": "doc-loa",
+          "text": "Nhờ chú bảo vệ đọc loa",
+          "consequence": "Loa vang khắp chợ: «Mẹ của bé Gấu Mi xin mời tới nhà lồng chợ!» Mi nín hẳn.",
+          "nextStepId": "cam-hoa-cam-on"
+        },
+        {
+          "id": "dung-cho",
+          "text": "Đứng yên ở chỗ dễ nhìn thấy",
+          "consequence": "{name} bế Mi lên vai, chiếc bóng bay vàng phấp phới như ngọn cờ giữa chợ.",
+          "nextStepId": "cam-hoa-cam-on"
+        },
+        {
+          "id": "hoi-co-hoa",
+          "text": "Hỏi cô bán hoa đã thấy mẹ chưa",
+          "consequence": "Chú bảo vệ gật đầu: cô bán hoa ly ngồi đây cả ngày, chắc biết đấy. Sang hỏi cô nhé!"
+        }
+      ]
+    },
+    {
+      "id": "hoi-co-ban-hoa",
+      "title": "Hỏi cô bán hoa",
+      "goTo": "Sang sạp hoa ly hỏi Cô Bán Hoa Ly",
+      "kind": "dialogue",
+      "target": "vt-cp-co-ban-hoa",
+      "lines": [
+        { "speaker": "Cô Bán Hoa Ly", "text": "Mẹ bé Mi mặc áo hoa phải không? Cô thấy chị ấy vừa đi vội về phía nhà lồng chợ, vừa đi vừa gọi tên con." }
+      ],
+      "choices": [{ "text": "Cảm ơn cô, cháu đưa Mi qua đó ngay!" }]
+    },
+    {
+      "id": "cam-hoa-cam-on",
+      "title": "Bình hoa cảm ơn",
+      "goTo": "Đưa Mi tới nhà lồng chợ, mẹ Mi đang đứng chờ",
+      "kind": "challenge",
+      "mechanic": "drag-drop",
+      "target": "vt-cp-me-gau",
+      "skill": "phep-cong",
+      "prompt": "Mẹ Gấu Hoa muốn cắm một bình đúng 13 bông hoa tặng {name}. Kéo các bó hoa vào bình cho vừa đủ 13 bông:",
+      "container": "Bình hoa cảm ơn",
+      "pieces": [
+        { "id": "bo-tam", "label": "Bó 8 bông", "value": 8 },
+        { "id": "bo-bon", "label": "Bó 4 bông", "value": 4 },
+        { "id": "bo-nam", "label": "Bó 5 bông", "value": 5 },
+        { "id": "bo-bay", "label": "Bó 7 bông", "value": 7 }
+      ],
+      "answer": { "total": 13 },
+      "support": {
+        "guide": ["Thử ghép bó lớn nhất với một bó khác.", "Tính nhẩm xem tổng có đúng 13 không.", "Nhớ cách cộng qua 10: 8 + 2 = 10, rồi thêm phần còn lại."],
+        "hint": "8 cộng mấy thì bằng 13?",
+        "answer": {
+          "text": "Bó 8 bông và bó 5 bông",
+          "explanation": "8 + 5 = 13: tách 5 thành 2 và 3, 8 + 2 = 10, 10 + 3 = 13."
+        }
+      },
+      "feedback": {
+        "right": ["Mười ba bông vừa khít bình, đẹp rực rỡ!", "{name} cộng qua mười nhanh như người bán hoa.", "Mẹ Gấu Hoa cảm động, ôm cả Mi lẫn {name}."],
+        "wrong": ["Bình đang thừa hoặc thiếu bông rồi, đếm lại nhé.", "Thử bó 8 bông với một bó khác xem tổng bao nhiêu {name}.", "Tổng phải đúng mười ba, không hơn không kém."]
+      }
+    },
+    {
+      "id": "me-con-doan-tu",
+      "title": "Mẹ con đoàn tụ",
+      "kind": "reward",
+      "target": "vt-cp-me-gau",
+      "text": "Mi sà vào lòng mẹ cười tít mắt. Mẹ Gấu Hoa cảm ơn {name} mãi, cả chợ vỗ tay khen bạn nhỏ tốt bụng."
+    },
+    {
+      "id": "banh-ran-cuoi-phien",
+      "title": "Bánh rán cuối phiên",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mẹ con Mi rủ {name} ghé gian hàng đồ ăn ăn bánh rán nóng giòn, còn hẹn phiên sau đi chợ cùng nhau."
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": { "doc-hieu": 1, "logic": 1, "phep-cong": 1 }
+  }
+}
