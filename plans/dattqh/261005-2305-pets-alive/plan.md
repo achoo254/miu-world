@@ -1,7 +1,7 @@
 ---
 title: "Thú cưng sống động: chăm sóc trong thế giới, phản ứng, trò, phụ kiện"
 description: "Làm giàu thú cưng theo góp ý người sở hữu 05/10/2026: cảnh chăm sóc 3D, thú phản ứng với bé, bảng chăm sóc theo mock, cấp và trò, phụ kiện, ổ ở nhà, đánh hơi giúp tìm đồ."
-status: pending
+status: completed
 priority: P1
 tier: L
 branch: main
