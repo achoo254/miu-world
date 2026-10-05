@@ -1,6 +1,6 @@
 # Co-op: 2–4 bạn cùng giải một thử thách hoặc đánh một trùm
 
-**Trạng thái:** đã thi công đủ pha 1–6 và hai mục mở rộng (06/10/2026), chờ người duyệt và deploy (report `plans/dattqh/reports/coop-quests-261005.md`); đã duyệt (04/10/2026), sửa theo định hướng mọi lứa tuổi, luôn online (05/10/2026); mọi tổ đội chơi co-op được (Jev 05/10/2026), kiểm duyệt làm trước khi có ghép đội ngẫu nhiên với người lạ · **Tier:** L · **Nhánh:** `main` · **Ngày:** 04/10/2026
+**Trạng thái:** đã thi công đủ pha 1–6 và hai mục mở rộng (06/10/2026), đã deploy production bản `48f86ff9` ngày 06/10/2026 (report `plans/dattqh/reports/coop-quests-261005.md`); đã duyệt (04/10/2026), sửa theo định hướng mọi lứa tuổi, luôn online (05/10/2026); mọi tổ đội chơi co-op được (Jev 05/10/2026), kiểm duyệt làm trước khi có ghép đội ngẫu nhiên với người lạ · **Tier:** L · **Nhánh:** `main` · **Ngày:** 04/10/2026
 **Nguồn:** Master Plan §8 (Bậc 2: "Co-op quest: 2 đến 4 bạn cùng giải một puzzle hoặc đánh một boss, dùng lại cơ chế M3.10"; điều kiện mở: có kiểm duyệt và quy trình xử lý báo cáo), §8b (bot lập tổ đội), §6 ("phòng chờ co-op").
 
 ## Kết quả mong muốn
