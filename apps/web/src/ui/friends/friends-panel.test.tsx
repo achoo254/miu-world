@@ -52,7 +52,8 @@ describe('friends list', () => {
     const onGo = vi.fn();
     render(<FriendsPanel source={fakeSource().source} social={social} onGo={onGo} />);
     expect(await screen.findByText('Tôm')).toBeTruthy();
-    expect(screen.getByText('🤖 [Bạn máy] Bé Bông')).toBeTruthy();
+    expect(screen.getByText('Bé Bông')).toBeTruthy();
+    expect(screen.getByRole('img', { name: 'Bạn máy' })).toBeTruthy();
     expect(screen.getByText('Không online')).toBeTruthy();
     fireEvent.click(document.querySelector(`[data-id="friend-goto-${id(1)}"]`) as HTMLElement);
     expect(sent).toEqual([{ type: 'goto', id: 'p-tom' }]);
@@ -106,6 +107,31 @@ describe('friends list', () => {
     expect(document.querySelector('[data-id="friends-room-add-p-tom"]')).toBeNull();
     fireEvent.click(document.querySelector('[data-id="friends-room-add-p-new"]') as HTMLElement);
     expect(sent).toEqual([{ type: 'befriend', to: 'p-new' }]);
+  });
+});
+
+describe('the kept friends list', () => {
+  it('shows a skeleton on the first read, then the kept list at once the next time while reading again', async () => {
+    let reads = 0;
+    let release: (view: SocialView) => void = () => undefined;
+    const source: SocialSource = {
+      load: () => {
+        reads += 1;
+        return reads === 1 ? Promise.resolve(VIEW) : new Promise<SocialView>((resolve) => (release = resolve));
+      },
+      removeFriend: async () => undefined,
+      unblock: async () => undefined,
+    };
+    const first = render(<FriendsPanel source={source} cacheKey="own:test-kept" />);
+    expect(screen.getByRole('status', { name: 'Đang tải…' })).toBeTruthy();
+    await screen.findByText('Tôm');
+    first.unmount();
+    // Opened again: the list is there before the new read ends, and the new read replaces it.
+    render(<FriendsPanel source={source} cacheKey="own:test-kept" />);
+    expect(screen.getByText('Tôm')).toBeTruthy();
+    expect(reads).toBe(2);
+    release({ ...VIEW, friends: [] });
+    await screen.findByText(/^Chưa có bạn nào/);
   });
 });
 

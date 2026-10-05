@@ -35,7 +35,7 @@ import { TimetablePanel } from '../timetable/timetable-panel';
 import { TIMETABLE_TARGETS, type TimetableFocus } from '../timetable/timetable-targets';
 import { PartyFrame, SocialLayer } from '../online/social-layer';
 import { usePlayTime } from './play-time';
-import { FriendsButton, FriendsDialog } from '../friends/friends-screens';
+import { FriendsButton, FriendsDialog, useFriendsPrefetch } from '../friends/friends-screens';
 import { useSocial } from '../online/use-social';
 import { createPositionSaver, loadPlayerPositions } from './player-position';
 
@@ -300,6 +300,8 @@ export function PlayScreen() {
   const savedSpot = positions?.find((p) => p.map === regionMap(region)) ?? null;
   const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null || decorOpen || shopOpen || petCareOpen || cookingOpen || friendsOpen || onlineMenu;
   const atHome = data !== null && regionMap(region) === regionMap(HOME_REGION);
+  // The friends list is read in the background once the game is up, so it opens at once.
+  useFriendsPrefetch(social, draftOwner, status === 'ready');
   // Weekly play time for the progress views: counted while the game runs, not while paused.
   usePlayTime(data !== null && status === 'ready' && !paused);
   // What she left switched on at home, read with her picks and saved as she switches things.
@@ -402,7 +404,8 @@ export function PlayScreen() {
         {data && status !== 'error' ? (
           <Hud data={data} quest={quest} covered={covered} onMenu={() => setPaused(true)} onQuests={() => setQuestsOpen(true)} onBackpack={() => setBackpackOpen(true)}>
             <FriendsButton social={social} onOpen={() => setFriendsOpen(true)} />
-            <PartyFrame social={social} fill={(text) => say(text, data.character)} />
+            {/* Out of the way while a screen (the friends list…) covers the game: the two never overlap. */}
+            {covered ? null : <PartyFrame social={social} fill={(text) => say(text, data.character)} />}
           </Hud>
         ) : null}
         {data ? <SocialLayer social={social} covered={covered && !onlineMenu} fill={(text) => say(text, data.character)} /> : null}
@@ -425,7 +428,7 @@ export function PlayScreen() {
             </button>
           </Modal>
         ) : null}
-        {data && friendsOpen ? <FriendsDialog social={social} fill={(text) => say(text, data.character)} onClose={() => setFriendsOpen(false)} /> : null}
+        {data && friendsOpen ? <FriendsDialog social={social} fill={(text) => say(text, data.character)} player={draftOwner} onClose={() => setFriendsOpen(false)} /> : null}
         {timetable ? <TimetablePanel focus={timetable} onClose={() => setTimetable(null)} /> : null}
         {decorOpen ? <HomeDecorPanel onClose={() => setDecorOpen(false)} onSaved={decorated} /> : null}
         {shopOpen ? (

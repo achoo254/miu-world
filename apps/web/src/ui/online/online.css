@@ -32,8 +32,41 @@
 .online-menu-reason input { width: 1.4rem; height: 1.4rem; accent-color: var(--color-danger); }
 
 /* Party frame: in the HUD column under the quest card. */
-.online-party { display: grid; gap: var(--space-xs); width: min(17rem, 44vw); padding: var(--space-sm); border-color: var(--color-leaf); }
-.online-party-title { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: var(--text-sm); color: var(--color-leaf); }
+.online-party { display: grid; gap: var(--space-xs); width: min(17rem, calc(100vw - 2 * var(--space-sm))); padding: var(--space-sm); border-color: var(--color-leaf); }
+.online-party-head { display: flex; align-items: center; gap: var(--space-xs); }
+.online-party-title { flex: 1; margin: 0; font-family: var(--font-display); font-weight: 800; font-size: var(--text-sm); color: var(--color-leaf); }
+/* "Thu gọn" in the frame's corner, like the quest card's; folded, the frame is one row of faces that opens it. */
+.online-party-fold {
+  display: grid; place-items: center; width: 3rem; height: 3rem; flex-shrink: 0;
+  border: 0; border-radius: 50%; background: var(--color-surface); color: var(--color-ink);
+  font-size: var(--text-body); font-weight: 800; cursor: pointer; box-shadow: var(--shadow-tile);
+}
+.online-party--folded { width: auto; max-width: calc(100vw - 2 * var(--space-sm)); padding: var(--space-xs); }
+.online-party-pill {
+  display: flex; align-items: center; gap: var(--space-xs); min-height: 3rem; padding: 0 var(--space-xs);
+  border: 0; border-radius: var(--radius-pill); background: transparent; color: var(--color-ink);
+  font-family: var(--font-display); font-weight: 800; font-size: var(--text-sm); cursor: pointer;
+}
+.online-party-fold:focus-visible, .online-party-pill:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+.online-party-faces { display: flex; }
+.online-party-face {
+  position: relative; flex-shrink: 0; width: 2.5rem; height: 2.5rem; border-radius: 50%;
+  border: 2px solid var(--color-grass); background: var(--color-sky-mid);
+}
+.online-party-face + .online-party-face { margin-left: calc(-1 * var(--space-xs)); }
+.online-party-face-art { display: block; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; }
+.online-party-face[data-self='true'] { border-color: var(--color-leaf); }
+.online-party-face-crown, .online-party-face-bot { position: absolute; font-size: var(--text-sm); line-height: 1; }
+.online-party-face-crown { top: calc(-1 * var(--space-xs)); left: 50%; transform: translateX(-50%); }
+.online-party-face-bot { right: calc(-1 * var(--space-xs)); bottom: calc(-1 * var(--space-xs)); }
+.online-party-count { color: var(--color-leaf); }
+.online-party-chevron { color: var(--color-ink-soft); }
+/* A companion bot's mark beside its name: the name keeps the room, the mark never wraps away. */
+.online-bot-badge {
+  display: inline-grid; place-items: center; flex-shrink: 0; margin-left: var(--space-xs);
+  width: 1.5rem; height: 1.5rem; border-radius: var(--radius-pill);
+  background: var(--color-sky-mid); font-size: var(--text-sm); line-height: 1;
+}
 .online-party-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-xs); }
 .online-party-row {
   display: flex; align-items: center; gap: var(--space-xs); width: 100%; min-height: 3rem; padding: var(--space-xs);
@@ -43,7 +76,8 @@
 .online-party-member[data-here='true'] .online-party-row { box-shadow: inset 4px 0 0 var(--color-grass); }
 .online-party-portrait { flex-shrink: 0; width: 2.5rem; height: 2.5rem; border-radius: 50%; overflow: hidden; border: 2px solid var(--color-grass); background: var(--color-sky-mid); }
 .online-party-who { display: grid; min-width: 0; flex: 1; }
-.online-party-name { font-weight: 800; font-size: var(--text-sm); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.online-party-name { display: flex; align-items: center; min-width: 0; font-weight: 800; font-size: var(--text-sm); }
+.online-party-name-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .online-party-crown { margin-left: var(--space-xs); }
 .online-party-place { font-size: var(--text-sm); color: var(--color-ink-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .online-party-pet { flex-shrink: 0; }

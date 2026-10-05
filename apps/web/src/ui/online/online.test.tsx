@@ -4,7 +4,11 @@ import type { PartyView } from '@miu/schema/multiplayer';
 import { createSocialStore, type SocialCommand } from '../../game-bridge/social-store';
 import { PartyFrame, SocialLayer, toastText } from './social-layer';
 
-afterEach(cleanup);
+afterEach(() => {
+  cleanup();
+  window.localStorage.clear();
+  vi.unstubAllGlobals();
+});
 
 function setup() {
   const social = createSocialStore();
@@ -86,7 +90,10 @@ describe('the party frame', () => {
     const frame = screen.getByRole('region', { name: /Đội của bạn \(3\/4\)/ });
     expect(within(frame).getByText('Bạn')).toBeTruthy();
     expect(within(frame).getAllByLabelText('Trưởng đội')).toHaveLength(1);
-    expect(within(frame).getByText(/\[Bạn máy\] Bé Bông/)).toBeTruthy();
+    // A bot is its short name and a mark, never a long prefix that pushes the name out.
+    expect(within(frame).getByText('Bé Bông')).toBeTruthy();
+    expect(within(frame).getByRole('img', { name: 'Bạn máy' })).toBeTruthy();
+    expect(within(frame).queryByText(/\[Bạn máy\]/)).toBeNull();
     expect(within(frame).getByText('Đang chuyển bản đồ')).toBeTruthy();
 
     fireEvent.click(within(frame).getByRole('button', { name: /Việc với Bông/ }));
@@ -111,6 +118,33 @@ describe('the party frame', () => {
     fireEvent.click(screen.getByRole('button', { name: /Việc với Bông/ }));
     expect(screen.queryByRole('button', { name: /Mời ra khỏi đội/ })).toBeNull();
     expect(screen.getByRole('button', { name: /Đến chỗ bạn/ })).toBeTruthy();
+  });
+
+  it('folds to a row of faces and back, and keeps the choice on the device', () => {
+    const { social } = setup();
+    social.update({ party, selfId: 'p-me', mapId: 'trung-tam' });
+    const first = render(<PartyFrame social={social} fill={fill} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Thu gọn đội' }));
+    const folded = screen.getByRole('button', { name: 'Mở đội (3/4)' });
+    expect(document.querySelectorAll('.online-party-face')).toHaveLength(3);
+    expect(document.querySelectorAll('.online-party-face-crown')).toHaveLength(1);
+    expect(document.querySelectorAll('.online-party-face-bot')).toHaveLength(1);
+    expect(screen.queryByRole('button', { name: /Rời đội/ })).toBeNull();
+    // The next game (the next map) starts folded too.
+    first.unmount();
+    render(<PartyFrame social={social} fill={fill} />);
+    expect(screen.getByRole('button', { name: 'Mở đội (3/4)' })).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Mở đội (3/4)' }));
+    expect(screen.getByRole('button', { name: /Rời đội/ })).toBeTruthy();
+    expect(folded.isConnected).toBe(false);
+  });
+
+  it('starts folded on a phone when nothing was chosen yet', () => {
+    vi.stubGlobal('matchMedia', (query: string) => ({ matches: query.includes('max-width'), media: query }));
+    const { social } = setup();
+    social.update({ party, selfId: 'p-me', mapId: 'trung-tam' });
+    render(<PartyFrame social={social} fill={fill} />);
+    expect(screen.getByRole('button', { name: 'Mở đội (3/4)' })).toBeTruthy();
   });
 
   it('shows nothing outside a party', () => {

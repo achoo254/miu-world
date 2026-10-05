@@ -3,7 +3,7 @@
 // the invite card, the leader's "come along" card and friend requests (frame 8) at the top, short notices as toasts, and the interaction
 // menu on another player. Every line comes from a fixed list; companion bots are always labelled.
 import { useEffect, useState } from 'react';
-import { HOME_MAP_ID, type MpNotice, type PartyMember } from '@miu/schema/multiplayer';
+import { HOME_MAP_ID, type MpNotice, type PartyMember, type PartyView } from '@miu/schema/multiplayer';
 import type { OnlineToast, SocialStore } from '../../game-bridge/social-store';
 import { cannedPair } from '../../game/multiplayer/canned-lines';
 import { pairOf, same, t, type Bilingual, type TextKey } from '../i18n/i18n';
@@ -80,7 +80,7 @@ function MemberRow({ social, member, self, leader, here, place, canLead, open, o
 }) {
   const { t } = useT();
   const pet = PETS.find((p) => p.id === member.pet);
-  const name = self ? t('online.party.you') : member.isBot ? `🤖 [${t('online.botLabel')}] ${member.displayName}` : member.displayName;
+  const name = self ? t('online.party.you') : member.displayName;
   const who = same(member.displayName);
   return (
     <li className="online-party-member" data-id={`online-party-member-${member.id}`} data-here={here} data-self={self}>
@@ -90,7 +90,8 @@ function MemberRow({ social, member, self, leader, here, place, canLead, open, o
         </span>
         <span className="online-party-who">
           <span className="online-party-name">
-            {name}
+            <span className="online-party-name-text">{name}</span>
+            {member.isBot ? <BotBadge /> : null}
             {leader ? (
               <span className="online-party-crown" title={t('online.party.leader')} aria-label={t('online.party.leader')}>
                 👑
@@ -137,7 +138,82 @@ function MemberRow({ social, member, self, leader, here, place, canLead, open, o
   );
 }
 
-/** The party frame (mock frame 5): who is in her party, where they are, and what she can do with them. */
+/** Where the party frame remembers being folded, on this device. */
+const PARTY_FOLD_KEY = 'miu.party.folded';
+/** A phone (portrait, or landscape with little height) starts with the party folded to a row of faces. */
+const NARROW_SCREEN = '(max-width: 640px), (max-height: 500px)';
+
+/** Folded or open, as last chosen on this device; never chosen: folded on a phone, open on a tablet or computer. */
+export function initialPartyFolded(): boolean {
+  try {
+    const kept = window.localStorage.getItem(PARTY_FOLD_KEY);
+    if (kept === '1' || kept === '0') return kept === '1';
+  } catch {
+    // Storage blocked (private mode): fall back to the screen size.
+  }
+  return typeof window.matchMedia === 'function' && window.matchMedia(NARROW_SCREEN).matches;
+}
+
+function keepPartyFolded(folded: boolean): void {
+  try {
+    window.localStorage.setItem(PARTY_FOLD_KEY, folded ? '1' : '0');
+  } catch {
+    // Not kept: the next visit starts from the screen size again.
+  }
+}
+
+/** A companion bot's mark beside its name (instead of a long "[Bạn máy]" prefix that pushes the name out). */
+export function BotBadge() {
+  const { t } = useT();
+  const label = t('online.botLabel');
+  return (
+    <span className="online-bot-badge" role="img" aria-label={label} title={label}>
+      🤖
+    </span>
+  );
+}
+
+/** The party folded: one tap target with every member's face, the leader's crown and the bots' mark. */
+function FoldedParty({ party, selfId, onOpen }: { party: PartyView; selfId: string | null; onOpen: () => void }) {
+  const { t } = useT();
+  const count = party.members.length;
+  return (
+    <section className="online-party online-party--folded parchment" data-id="online-party" data-folded="true" aria-label={t('online.party.title', { count })}>
+      <button type="button" className="online-party-pill" data-id="online-party-expand" aria-expanded={false} aria-label={t('online.party.expand', { count })} onClick={onOpen}>
+        <span className="online-party-faces">
+          {party.members.map((member) => (
+            <span key={member.id} className="online-party-face" data-id={`online-party-face-${member.id}`} data-self={member.id === selfId}>
+              <span className="online-party-face-art">
+                <MiuArt pose="idle" species={member.species} />
+              </span>
+              {member.id === party.leader ? (
+                <span className="online-party-face-crown" aria-hidden="true">
+                  👑
+                </span>
+              ) : null}
+              {member.isBot ? (
+                <span className="online-party-face-bot" aria-hidden="true">
+                  🤖
+                </span>
+              ) : null}
+            </span>
+          ))}
+        </span>
+        <span className="online-party-count">
+          <T k="online.party.count" params={{ count }} />
+        </span>
+        <span className="online-party-chevron" aria-hidden="true">
+          ▾
+        </span>
+      </button>
+    </section>
+  );
+}
+
+/**
+ * The party frame (mock frame 5): who is in her party, where they are, and what she can do with them. It folds to a
+ * row of faces (the choice is kept on the device; a phone starts folded) so it never crowds a small screen.
+ */
 export function PartyFrame({ social, fill }: { social: SocialStore; fill: Fill }) {
   const { t } = useT();
   const party = useSocial(social, (s) => s.party);
@@ -145,13 +221,26 @@ export function PartyFrame({ social, fill }: { social: SocialStore; fill: Fill }
   const mapId = useSocial(social, (s) => s.mapId);
   const [open, setOpen] = useState<string | null>(null);
   const [saying, setSaying] = useState(false);
+  const [folded, setFolded] = useState(initialPartyFolded);
+  const fold = (next: boolean): void => {
+    keepPartyFolded(next);
+    setFolded(next);
+    setOpen(null);
+    setSaying(false);
+  };
   if (!party) return null;
+  if (folded) return <FoldedParty party={party} selfId={selfId} onOpen={() => fold(false)} />;
   const count = party.members.length;
   return (
-    <section className="online-party parchment" data-id="online-party" aria-label={t('online.party.title', { count })}>
-      <p className="online-party-title">
-        <T k="online.party.title" params={{ count }} />
-      </p>
+    <section className="online-party parchment" data-id="online-party" data-folded="false" aria-label={t('online.party.title', { count })}>
+      <div className="online-party-head">
+        <p className="online-party-title">
+          <T k="online.party.title" params={{ count }} />
+        </p>
+        <button type="button" className="online-party-fold" data-id="online-party-fold" aria-expanded={true} aria-label={t('online.party.fold')} onClick={() => fold(true)}>
+          ▴
+        </button>
+      </div>
       <ul className="online-party-list">
         {party.members.map((member) => (
           <MemberRow

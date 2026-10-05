@@ -1,6 +1,7 @@
 // NEW SCREEN, after mock `designs/multiplayer.png` frame 1 (the "Bạn bè" button in the HUD's left rail) and frames
 // 2/9 (the list): the friends list in the game, as a themed scene over the paused game, and as its own page
 // (from Hồ sơ) outside the game.
+import { useEffect } from 'react';
 import { Link } from 'react-router';
 import type { SocialStore } from '../../game-bridge/social-store';
 import { T, useT } from '../i18n/use-t';
@@ -10,6 +11,7 @@ import { Modal } from '../kit/modal';
 import { SkyScene } from '../kit/sky-scene';
 import { useSocial } from '../online/use-social';
 import { OWN_SOCIAL } from './friends-api';
+import { ownFriendsKey, refreshFriends } from './friends-cache';
 import { FriendsPanel } from './friends-panel';
 import './friends.css';
 
@@ -32,15 +34,34 @@ export function FriendsButton({ social, onOpen }: { social: SocialStore; onOpen:
   );
 }
 
+/**
+ * Keeps the playing player's friends list fresh while she plays, so opening it shows the list at once: read when the
+ * game is up, and again when friend news comes (a request, an answer).
+ */
+export function useFriendsPrefetch(social: SocialStore, player: string | null, ready: boolean): void {
+  useEffect(() => {
+    if (!player || !ready) return;
+    const key = ownFriendsKey(player);
+    void refreshFriends(key, OWN_SOCIAL.load);
+    let seen = social.getSnapshot();
+    return social.subscribe(() => {
+      const now = social.getSnapshot();
+      const news = (now.toast !== seen.toast && now.toast?.kind === 'friend') || now.friendAsks !== seen.friendAsks;
+      seen = now;
+      if (news) void refreshFriends(key, OWN_SOCIAL.load, true);
+    });
+  }, [social, player, ready]);
+}
+
 /** The friends list over the paused game: going to a friend closes it. */
-export function FriendsDialog({ social, fill, onClose }: { social: SocialStore; fill: (text: string) => string; onClose: () => void }) {
+export function FriendsDialog({ social, fill, player, onClose }: { social: SocialStore; fill: (text: string) => string; player: string | null; onClose: () => void }) {
   const { t } = useT();
   return (
     <Modal title={<T k="friends.title" />} onClose={onClose} dataId="play-friends" variant="scene" size="wide">
       <button type="button" className="scene-close" data-id="play-friends-close" aria-label={t('common.close')} onClick={onClose}>
         ✕
       </button>
-      <FriendsPanel source={OWN_SOCIAL} social={social} fill={fill} onGo={onClose} />
+      <FriendsPanel source={OWN_SOCIAL} social={social} fill={fill} onGo={onClose} cacheKey={player ? ownFriendsKey(player) : undefined} />
     </Modal>
   );
 }

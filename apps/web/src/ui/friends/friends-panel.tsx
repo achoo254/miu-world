@@ -3,7 +3,7 @@
 // decline; sent: take back), who else is in the room (add as a friend; only while playing) and the players she
 // blocked (unblock). No chat: friends meet in the game. Companion bots are always labelled. The account owner sees
 // the same lists for a player, without answering for her.
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import type { FriendDto } from '@miu/schema/friends';
 import type { SocialStore } from '../../game-bridge/social-store';
 import { errorMessage } from '../api-client';
@@ -12,10 +12,10 @@ import { T, useT } from '../i18n/use-t';
 import { MiuArt } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Tabs, type TabItem } from '../kit/tabs';
-import { placeOfMap } from '../online/social-layer';
+import { BotBadge, placeOfMap } from '../online/social-layer';
 import { useSocial } from '../online/use-social';
-import { useLoaded } from '../progression/progression-api';
 import type { SocialSource } from './friends-api';
+import { useFriendsList } from './friends-cache';
 import './friends.css';
 
 type FriendsTab = 'friends' | 'requests' | 'room' | 'blocks';
@@ -23,19 +23,17 @@ type FriendsTab = 'friends' | 'requests' | 'room' | 'blocks';
 /** Fills the player's name into content text (region names like "Nhà của {name}"). */
 type Fill = (text: string) => string;
 
-function useBotName(): (name: string, isBot: boolean) => string {
-  const { t } = useT();
-  return (name, isBot) => (isBot ? `🤖 [${t('online.botLabel')}] ${name}` : name);
-}
-
-function Person({ species, name, line, children, dataId }: { species: string; name: string; line?: React.ReactNode; children?: React.ReactNode; dataId: string }) {
+function Person({ species, name, isBot = false, line, children, dataId }: { species: string; name: string; isBot?: boolean; line?: React.ReactNode; children?: React.ReactNode; dataId: string }) {
   return (
     <li className="friend-row" data-id={dataId}>
       <span className="friend-portrait">
         <MiuArt pose="idle" species={species} />
       </span>
       <span className="friend-who">
-        <span className="friend-name">{name}</span>
+        <span className="friend-name">
+          <span className="friend-name-text">{name}</span>
+          {isBot ? <BotBadge /> : null}
+        </span>
         {line ? <span className="friend-line">{line}</span> : null}
       </span>
       <span className="friend-actions">{children}</span>
@@ -44,13 +42,12 @@ function Person({ species, name, line, children, dataId }: { species: string; na
 }
 
 function FriendRow({ friend, social, fill, onRemove, onGo }: { friend: FriendDto; social: SocialStore | null; fill: Fill; onRemove(): Promise<void>; onGo?: () => void }) {
-  const named = useBotName();
   const [confirming, setConfirming] = useState(false);
-  const name = named(friend.displayName, friend.isBot);
+  const name = friend.displayName;
   const line = friend.online ? <T k="friends.online" params={{ place: same(friend.mapId ? placeOfMap(friend.mapId, fill) : '') }} /> : <T k="friends.offline" />;
   const go = social && friend.online && friend.publicId ? friend.publicId : null;
   return (
-    <Person species={friend.species} name={name} line={line} dataId={`friend-${friend.id}`}>
+    <Person species={friend.species} name={name} isBot={friend.isBot} line={line} dataId={`friend-${friend.id}`}>
       {confirming ? (
         <>
           <span className="hint">
@@ -89,7 +86,6 @@ function FriendRow({ friend, social, fill, onRemove, onGo }: { friend: FriendDto
 
 /** Who else is in her room: add as a friend (already friends say so). */
 function RoomList({ social, friends }: { social: SocialStore; friends: readonly FriendDto[] }) {
-  const named = useBotName();
   const room = useSocial(social, (s) => s.room);
   const known = new Set(friends.flatMap((f) => (f.publicId ? [f.publicId] : [])));
   if (room.length === 0) {
@@ -102,7 +98,7 @@ function RoomList({ social, friends }: { social: SocialStore; friends: readonly 
   return (
     <ul className="friend-list" data-id="friends-room">
       {room.map((p) => (
-        <Person key={p.id} species={p.species} name={named(p.name, p.isBot)} dataId={`friends-room-${p.id}`}>
+        <Person key={p.id} species={p.species} name={p.name} isBot={p.isBot} dataId={`friends-room-${p.id}`}>
           {known.has(p.id) ? (
             <span className="badge">
               <T k="friends.isFriend" />
@@ -118,12 +114,33 @@ function RoomList({ social, friends }: { social: SocialStore; friends: readonly 
   );
 }
 
+/** Rows shaped like the list while it is read for the first time (later openings show the kept list at once). */
+function FriendsSkeleton({ dataId }: { dataId: string }) {
+  const { t } = useT();
+  return (
+    <div className="friends-panel parchment" data-id={dataId}>
+      <ul className="friend-list friend-list--skeleton" role="status" aria-busy="true" aria-label={t('common.loading')} data-id={`${dataId}-loading`}>
+        {[0, 1, 2].map((i) => (
+          <li key={i} className="friend-row" aria-hidden="true">
+            <span className="friend-portrait skeleton-block" />
+            <span className="friend-who">
+              <span className="skeleton-line" />
+              <span className="skeleton-line skeleton-line--short" />
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export function FriendsPanel({
   source,
   social = null,
   fill = (text) => text,
   onGo,
   dataId = 'friends',
+  cacheKey,
 }: {
   source: SocialSource;
   /** The game's online session (in the game only): "Cùng phòng" and going to a friend. */
@@ -132,10 +149,15 @@ export function FriendsPanel({
   /** She set off to a friend: the panel's dialog closes. */
   onGo?: () => void;
   dataId?: string;
+  /**
+   * Where the list is kept between openings (`ownFriendsKey`): shown at once, read again in the background. Without
+   * one the list is this panel's own.
+   */
+  cacheKey?: string;
 }) {
   const { t } = useT();
-  const named = useBotName();
-  const { data: view, failed, retry } = useLoaded(source.load);
+  const own = useId();
+  const { view, failed, retry } = useFriendsList(cacheKey ?? `panel:${own}`, source.load);
   const [error, setError] = useState<string | null>(null);
   const [tab, setTab] = useState<FriendsTab>('friends');
   // A friend made or a request answered while the list is open: read it again.
@@ -171,9 +193,7 @@ export function FriendsPanel({
         </button>
       </div>
     ) : (
-      <p role="status">
-        <T k="common.loading" />
-      </p>
+      <FriendsSkeleton dataId={dataId} />
     );
   }
   const requests = view.incoming.length + view.outgoing.length;
@@ -213,7 +233,7 @@ export function FriendsPanel({
             {view.incoming.length > 0 ? (
               <ul className="friend-list" data-id={`${dataId}-incoming`}>
                 {view.incoming.map((r) => (
-                  <Person key={r.id} species={r.species} name={named(r.displayName, r.isBot)} dataId={`friend-request-${r.id}`}>
+                  <Person key={r.id} species={r.species} name={r.displayName} isBot={r.isBot} dataId={`friend-request-${r.id}`}>
                     {answer ? (
                       <>
                         <button type="button" className={buttonClass('primary', { small: true })} data-id={`friend-accept-${r.id}`} onClick={() => void act(() => answered(r.id, () => answer(r.id, true)))}>
