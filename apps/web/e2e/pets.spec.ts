@@ -124,3 +124,17 @@ test('sniffs a few steps toward a clue still to find, then waits before the next
   await expect(sniff).toBeDisabled();
   await expect(sniff).toContainText('Chờ');
 });
+
+test('a care scene at the high quality stays in the draw-call budget', async ({ page, baseURL }) => {
+  await withPet(page, baseURL ?? '', `${HOME}&quality=high`);
+  // Settled at the spawn after its greeting: the frame without a scene.
+  await expect.poll(async () => (await readStats(page)).petScene, { timeout: 10_000 }).toBeNull();
+  const idle = (await readStats(page)).calls;
+  await openBoard(page);
+  await page.locator('[data-id="pet-action-bath"]').click();
+  await expect.poll(async () => (await readStats(page)).petScene).toBe('care:bath');
+  await page.waitForTimeout(2_000);
+  const scene = (await readStats(page)).calls;
+  console.log(`pet draw calls at high: ${idle} without a scene, ${scene} during the bath`);
+  expectDrawCalls(scene, DRAW_CALL_BUDGET, 'draw calls during a care scene');
+});
