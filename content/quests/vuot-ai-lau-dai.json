@@ -1,0 +1,272 @@
+{
+  "id": "vuot-ai-lau-dai",
+  "region": "lau-dai",
+  "chapter": 3,
+  "title": "Trùm vui: Hiệp Sĩ Đá Gác Cầu",
+  "status": "active",
+  "summary": "Ngày khánh thành cầu treo, Hiệp Sĩ Đá Gác Cầu bỗng cựa mình tỉnh giấc và nhất quyết không hạ cầu. {name} tìm ba viên ngọc cho chiếc khiên, đọc lệnh bài của nhà vua, đo đường gấp khúc rồi đấu bảy câu về hình và số.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Thỏ Lính Kèn Hoàng Gia, Hổ Thợ Xây Thành, Hiệp Sĩ Đá Gác Cầu",
+    "where": "Lâu đài, cầu treo trước cổng thành: bến thuyền hào nước, bãi cỏ chân thành, cột lệnh bài, lán thợ xây, đầu cầu treo",
+    "goal": "Thắng Hiệp Sĩ Đá để cầu treo được hạ xuống cho lễ khánh thành",
+    "play": "Tìm ba viên ngọc theo lời tả, đọc lệnh bài, tính độ dài đường gấp khúc, chọn cách chào Hiệp Sĩ, đấu trùm bảy câu",
+    "learn": "Hình tứ giác, đường thẳng, đường cong, đường gấp khúc, ba điểm thẳng hàng, số đến 100, cộng trừ có nhớ",
+    "reward": "100 XP, 25 Xu, Skill XP Hình phẳng, Số đến 100, Phép cộng, Phép trừ",
+    "next": "Cầu treo hạ xuống, Hươu Cao mời {name} vào đại sảnh dự tiệc khánh thành"
+  },
+  "phases": {
+    "hook": "gap-tho-linh-ken",
+    "explore": "tim-ngoc-cho-khien",
+    "learn": "doc-lenh-bai",
+    "challenge": "do-duong-gap-khuc",
+    "decision": "chao-hiep-si",
+    "finale": "tran-trum",
+    "reward": "cau-treo-ha-xuong",
+    "next": "tiec-khanh-thanh"
+  },
+  "places": {
+    "trum-ld-tho-linh-ken": "Bến thuyền hào nước",
+    "tim-ngoc-cho-khien": "Bãi cỏ chân thành",
+    "trum-ld-lenh-bai": "Cột lệnh bài",
+    "trum-ld-ho-tho-xay": "Lán thợ xây",
+    "trum-ld-hiep-si-da": "Đầu cầu treo"
+  },
+  "steps": [
+    {
+      "id": "gap-tho-linh-ken",
+      "title": "Thỏ Lính Kèn báo tin",
+      "goTo": "Tới bến thuyền hào nước, Thỏ Lính Kèn Hoàng Gia đang thổi kèn gọi",
+      "kind": "dialogue",
+      "target": "trum-ld-tho-linh-ken",
+      "lines": [
+        { "speaker": "Thỏ Lính Kèn Hoàng Gia", "text": "Tò te tí te! {name} ơi, Hiệp Sĩ Đá Gác Cầu vừa tỉnh giấc, bác ấy giữ chặt dây cầu treo, không cho hạ xuống khánh thành!" },
+        { "speaker": "Thỏ Lính Kèn Hoàng Gia", "text": "Ba viên ngọc trên chiếc khiên của bác rơi đâu mất, nên bác buồn lắm. Tìm lại ngọc rồi hãy tới nói chuyện với bác nhé." }
+      ],
+      "choices": [
+        { "text": "Ngọc rơi ở đâu hả Thỏ?", "reply": "Hình như lăn xuống bãi cỏ chân thành ấy, cậu ra xem thử." }
+      ]
+    },
+    {
+      "id": "tim-ngoc-cho-khien",
+      "title": "Tìm ngọc cho chiếc khiên",
+      "goTo": "Ra bãi cỏ chân thành tìm ba viên ngọc",
+      "kind": "find-object",
+      "prompt": "Mỗi viên ngọc có một lời tả riêng. Đọc kĩ rồi tìm đủ ba viên:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "ngoc-do",
+          "name": "Viên ngọc đỏ thắm",
+          "clue": "Đỏ thắm như quả hồng chín, lấp lánh khi có nắng chiếu vào.",
+          "target": "trum-ld-ngoc-do"
+        },
+        {
+          "id": "ngoc-xanh",
+          "name": "Viên ngọc xanh biển",
+          "clue": "Xanh trong như nước hồ mùa thu, nhìn vào thấy cả bóng mây.",
+          "target": "trum-ld-ngoc-xanh"
+        },
+        {
+          "id": "ngoc-tim",
+          "name": "Viên ngọc tím biếc",
+          "clue": "Tím biếc như cánh hoa sim, viên nhỏ nhất nhưng sáng nhất.",
+          "target": "trum-ld-ngoc-tim"
+        }
+      ]
+    },
+    {
+      "id": "doc-lenh-bai",
+      "title": "Lệnh bài của nhà vua",
+      "goTo": "Ghé cột lệnh bài đọc lệnh của nhà vua",
+      "kind": "read",
+      "target": "trum-ld-lenh-bai",
+      "skill": "doc-hieu",
+      "text": "LỆNH CỦA NHÀ VUA\nHiệp Sĩ Đá chỉ hạ cầu treo cho người gắn đủ ba viên ngọc lên khiên và trả lời đúng bảy câu về hình và số. Cầu hạ xong, cả thành mở tiệc khánh thành trong đại sảnh.",
+      "question": "Muốn Hiệp Sĩ Đá hạ cầu treo, cần làm gì?",
+      "choices": [
+        { "id": "a", "text": "Thổi kèn thật to trước cổng thành" },
+        { "id": "b", "text": "Gắn đủ ba viên ngọc và trả lời đúng bảy câu" },
+        { "id": "c", "text": "Bơi qua hào nước vào đại sảnh" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Đọc câu đầu tiên của lệnh bài.", "Tìm hai việc được nối với nhau bằng chữ «và»."],
+        "hint": "Lệnh bài nhắc tới viên ngọc và con số bảy.",
+        "answer": {
+          "text": "Gắn ngọc lên khiên rồi thắng bảy câu đố",
+          "explanation": "Lệnh bài viết: hạ cầu cho người gắn đủ ba viên ngọc lên khiên và trả lời đúng bảy câu về hình và số."
+        }
+      },
+      "feedback": {
+        "right": ["Chuẩn lệnh vua rồi, {name} đã có đủ ngọc trong tay!", "Đọc lệnh bài kĩ như một quan cận thần.", "Đúng hai việc ấy, giờ đi gặp Hiệp Sĩ thôi!"],
+        "wrong": ["Lệnh bài không bảo thổi kèn đâu, đọc lại nhé.", "Bơi qua hào nguy hiểm lắm {name} ơi, chọn lại nào.", "Tìm chữ «và» trong câu đầu tiên của lệnh bài nha."]
+      }
+    },
+    {
+      "id": "do-duong-gap-khuc",
+      "title": "Đo đường gấp khúc",
+      "goTo": "Ghé lán thợ xây, Hổ Thợ Xây Thành đang căng dây đo",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "trum-ld-ho-tho-xay",
+      "skill": "hinh-phang",
+      "prompt": "Hổ căng một sợi dây thành đường gấp khúc hai đoạn: đoạn đầu dài 5 cm, đoạn sau dài hơn đoạn đầu 3 cm. Cả đường gấp khúc dài bao nhiêu xăng-ti-mét?",
+      "choices": [
+        { "id": "a", "text": "8 cm" },
+        { "id": "b", "text": "13 cm" },
+        { "id": "c", "text": "11 cm" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm độ dài đoạn sau trước: 5 cm cộng thêm 3 cm.", "Độ dài đường gấp khúc là tổng độ dài các đoạn.", "Cộng đoạn đầu với đoạn sau."],
+        "hint": "Đoạn sau dài 8 cm, đừng quên cộng cả đoạn đầu.",
+        "answer": {
+          "text": "Đường gấp khúc dài 13 cm",
+          "explanation": "Đoạn sau dài 5 + 3 = 8 cm; cả đường gấp khúc dài 5 + 8 = 13 cm."
+        }
+      },
+      "feedback": {
+        "right": ["Hổ gầm một tiếng vui vẻ: đo chuẩn từng xăng-ti-mét!", "{name} không quên đoạn nào, giỏi lắm.", "Mười ba xăng-ti-mét, dây căng vừa khít!"],
+        "wrong": ["Mới tính đoạn sau thôi, còn đoạn đầu nữa nhé.", "Đoạn sau dài hơn đoạn đầu 3 cm, vậy là bao nhiêu {name}?", "Cộng độ dài của cả hai đoạn lại xem nào."]
+      }
+    },
+    {
+      "id": "chao-hiep-si",
+      "title": "Chào Hiệp Sĩ Đá",
+      "kind": "decision",
+      "target": "trum-ld-ho-tho-xay",
+      "speaker": "Hổ Thợ Xây Thành",
+      "prompt": "Hiệp Sĩ Đá đứng sừng sững ở đầu cầu, áo giáp phủ rêu xanh. {name} chào bác thế nào?",
+      "choices": [
+        {
+          "id": "gan-ngoc",
+          "text": "Gắn ngay ba viên ngọc lên khiên",
+          "consequence": "Chiếc khiên sáng rực ba màu, Hiệp Sĩ Đá cúi đầu cảm ơn, giọng ầm ầm như đá lăn."
+        },
+        {
+          "id": "chao-kieu-hiep-si",
+          "text": "Đặt tay lên ngực cúi chào kiểu hiệp sĩ",
+          "consequence": "Hiệp Sĩ Đá giơ kiếm gỗ chào lại: lâu lắm rồi mới gặp người biết lễ nghĩa thế này."
+        },
+        {
+          "id": "phui-reu",
+          "text": "Phủi rêu trên áo giáp giúp bác",
+          "consequence": "Áo giáp sạch bóng, Hiệp Sĩ Đá cười khà: nhẹ cả người, ra đề thôi!"
+        }
+      ]
+    },
+    {
+      "id": "tran-trum",
+      "title": "Đấu trí với Hiệp Sĩ Đá",
+      "goTo": "Tới đầu cầu treo, Hiệp Sĩ Đá đang chờ",
+      "kind": "boss",
+      "target": "trum-ld-hiep-si-da",
+      "bossId": "hiep-si-da-gac-cau",
+      "bossName": "Hiệp Sĩ Đá Gác Cầu",
+      "introDialogue": "Kẻ nào tới cầu treo? À, một bạn nhỏ! Ta có bảy câu về hình và số, mỗi câu đúng ta nới dây cầu thêm một nấc.",
+      "winDialogue": "Ầm ầm… cầu hạ đây! {name} giỏi hình, giỏi số, xứng đáng được phong hiệp sĩ danh dự của lâu đài.",
+      "maxHp": 500,
+      "damagePerTurn": 80,
+      "turns": [
+        {
+          "id": "tu-giac",
+          "skill": "hinh-phang",
+          "prompt": "Hình có 4 cạnh và 4 đỉnh gọi là hình gì?",
+          "choices": [
+            { "id": "a", "text": "Hình tam giác" },
+            { "id": "b", "text": "Hình tứ giác" },
+            { "id": "c", "text": "Hình tròn" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "duong-cong",
+          "skill": "hinh-phang",
+          "prompt": "Chiếc cầu vồng uốn trên bầu trời gợi cho em hình ảnh đường gì?",
+          "choices": [
+            { "id": "a", "text": "Đường cong" },
+            { "id": "b", "text": "Đường thẳng" },
+            { "id": "c", "text": "Đoạn thẳng" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "gap-khuc-abcd",
+          "skill": "hinh-phang",
+          "prompt": "Đường gấp khúc ABCD gồm mấy đoạn thẳng?",
+          "choices": [
+            { "id": "a", "text": "2 đoạn" },
+            { "id": "b", "text": "3 đoạn" },
+            { "id": "c", "text": "4 đoạn" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "bay-chuc-bon",
+          "skill": "so-den-100",
+          "prompt": "Số gồm 7 chục và 4 đơn vị là số nào?",
+          "choices": [
+            { "id": "a", "text": "47" },
+            { "id": "b", "text": "74" },
+            { "id": "c", "text": "704" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "co-khanh-thanh",
+          "skill": "phep-cong",
+          "prompt": "Lễ khánh thành treo 48 lá cờ đỏ và 36 lá cờ vàng. Có tất cả bao nhiêu lá cờ?",
+          "choices": [
+            { "id": "a", "text": "74 lá" },
+            { "id": "b", "text": "84 lá" },
+            { "id": "c", "text": "12 lá" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "tram-tru",
+          "skill": "phep-tru",
+          "prompt": "Hiệp Sĩ có 100 viên đá xây cầu, đã dùng 35 viên. Còn lại bao nhiêu viên đá?",
+          "choices": [
+            { "id": "a", "text": "65 viên" },
+            { "id": "b", "text": "75 viên" },
+            { "id": "c", "text": "135 viên" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "thang-hang",
+          "skill": "hinh-phang",
+          "prompt": "Ba điểm thẳng hàng là ba điểm như thế nào?",
+          "choices": [
+            { "id": "a", "text": "Cùng nằm trên một đường thẳng" },
+            { "id": "b", "text": "Tạo thành ba đỉnh của một hình tam giác" },
+            { "id": "c", "text": "Nằm ở ba góc của tờ giấy" }
+          ],
+          "answer": { "choice": "a" }
+        }
+      ]
+    },
+    {
+      "id": "cau-treo-ha-xuong",
+      "title": "Cầu treo hạ xuống",
+      "kind": "reward",
+      "target": "trum-ld-hiep-si-da",
+      "text": "Kẽo kẹt, cầu treo từ từ hạ xuống bắc qua hào nước. Hiệp Sĩ Đá phong {name} làm hiệp sĩ danh dự, kèm XP, xu và điểm kỹ năng."
+    },
+    {
+      "id": "tiec-khanh-thanh",
+      "title": "Tiệc khánh thành",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đoàn người vui vẻ qua cầu vào thành, kèn trống rộn ràng. Hươu Cao mời {name} vào đại sảnh dự tiệc khánh thành cùng nhà vua."
+    }
+  ],
+  "reward": {
+    "xp": 100,
+    "coin": 25,
+    "skillXp": { "hinh-phang": 1, "so-den-100": 1, "phep-cong": 1, "phep-tru": 1 }
+  }
+}

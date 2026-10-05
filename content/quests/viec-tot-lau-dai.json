@@ -1,0 +1,227 @@
+{
+  "id": "viec-tot-lau-dai",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Việc tốt: Lính Gỗ lạc đoàn diễu hành",
+  "status": "active",
+  "summary": "Đoàn đồ chơi diễu hành quanh sân hình khối, nhưng Lính Gỗ đi đầu lại bị bỏ lại vì đánh rơi đồ. {name} tìm đồ cho Lính Gỗ, đọc thứ tự đoàn diễu hành, đoán số bạn nhập đoàn, chọn cách đuổi kịp rồi vẽ lại đường diễu hành.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Lính Gỗ Lạc Đoàn, Gấu Bông Nhạc Trưởng, Rô-bốt Thiếc Tí Hon",
+    "where": "Lâu đài, sân hình khối: góc sân khối gỗ, bậc thang khối, cổng sân hình khối, bục gấu bông, kệ đồ chơi thiếc",
+    "goal": "Giúp Lính Gỗ tìm lại đồ và trở về dẫn đầu đoàn diễu hành",
+    "play": "Tìm lông mũ, dùi trống, huy hiệu theo lời tả, đọc thứ tự diễu hành, tìm quy luật gấp đôi, chọn cách đuổi kịp đoàn, nối đường gấp khúc",
+    "learn": "Đọc hiểu thứ tự, dãy số gấp đôi, đường gấp khúc qua các điểm",
+    "reward": "70 XP, 18 Xu, Skill XP Đọc hiểu, Logic, Hình phẳng",
+    "next": "Lính Gỗ dẫn đoàn về đại sảnh, mời {name} xem múa rối buổi tối"
+  },
+  "phases": {
+    "hook": "gap-linh-go",
+    "explore": "tim-do-linh-go",
+    "learn": "doc-thu-tu-dieu-hanh",
+    "challenge": "ban-nhap-doan",
+    "decision": "duoi-kip-doan",
+    "finale": "ve-duong",
+    "reward": "linh-go-dan-dau",
+    "next": "mua-roi-buoi-toi"
+  },
+  "places": {
+    "vt-ld-linh-go": "Góc sân khối gỗ",
+    "tim-do-linh-go": "Bậc thang khối",
+    "vt-ld-thu-tu": "Cổng sân hình khối",
+    "vt-ld-gau-bong": "Bục gấu bông",
+    "vt-ld-ro-bot": "Kệ đồ chơi thiếc"
+  },
+  "steps": [
+    {
+      "id": "gap-linh-go",
+      "title": "Lính Gỗ bị bỏ lại",
+      "goTo": "Ở góc sân khối gỗ có một chú lính đồ chơi đứng thẫn thờ",
+      "kind": "dialogue",
+      "target": "vt-ld-linh-go",
+      "lines": [
+        { "speaker": "Lính Gỗ Lạc Đoàn", "text": "Một, hai! Một, hai… Ôi, tớ đánh rơi đồ nên tụt lại, cả đoàn diễu hành đi mất rồi. Không có tớ đánh trống, đoàn sẽ bước lộn xộn mất!" }
+      ],
+      "choices": [
+        { "text": "Tớ giúp cậu tìm đồ rồi đuổi theo!", "reply": "Tuyệt! Lúc nãy tớ vấp ở bậc thang khối, chắc đồ rơi quanh đó." }
+      ]
+    },
+    {
+      "id": "tim-do-linh-go",
+      "title": "Tìm đồ cho Lính Gỗ",
+      "goTo": "Tới bậc thang khối tìm ba món đồ của Lính Gỗ",
+      "kind": "find-object",
+      "prompt": "Lính Gỗ đánh rơi ba món. Đọc lời tả và tìm giúp:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "long-mu",
+          "name": "Chiếc lông đỏ cắm mũ",
+          "clue": "Dài, mềm, đỏ rực, mỗi khi bước đều lại rung rinh trên đỉnh mũ lính.",
+          "target": "vt-ld-long-mu"
+        },
+        {
+          "id": "dui-trong",
+          "name": "Đôi dùi trống",
+          "clue": "Hai que gỗ dài bằng nhau, gõ vào mặt trống là vang lên tùng tùng.",
+          "target": "vt-ld-dui-trong"
+        },
+        {
+          "id": "huy-hieu",
+          "name": "Chiếc huy hiệu vàng",
+          "clue": "Tròn, vàng óng, đeo trên ngực áo, khắc hình ngọn tháp lâu đài.",
+          "target": "vt-ld-huy-hieu"
+        }
+      ]
+    },
+    {
+      "id": "doc-thu-tu-dieu-hanh",
+      "title": "Thứ tự đoàn diễu hành",
+      "goTo": "Ra cổng sân hình khối đọc tấm bảng thứ tự diễu hành",
+      "kind": "read",
+      "target": "vt-ld-thu-tu",
+      "skill": "doc-hieu",
+      "text": "ĐƯỜNG DIỄU HÀNH CỦA ĐOÀN ĐỒ CHƠI\nĐoàn lần lượt đi qua bốn cột cờ: cột M bên khối lập phương, cột N bên khối trụ, cột P bên khối chóp, rồi cột Q bên khối cầu. Lính Gỗ đánh trống đi đầu, Gấu Bông Nhạc Trưởng đi ngay sau.",
+      "question": "Đi qua cột N xong, đoàn diễu hành tới cột nào?",
+      "choices": [
+        { "id": "a", "text": "Cột M" },
+        { "id": "b", "text": "Cột P" },
+        { "id": "c", "text": "Cột Q" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Liệt kê bốn cột theo thứ tự trong bảng.", "Tìm cột N rồi xem cột đứng ngay sau nó."],
+        "hint": "Thứ tự các cột là M, N, rồi tới…",
+        "answer": {
+          "text": "Sau cột N là cột P",
+          "explanation": "Bảng ghi thứ tự: cột M, cột N, cột P, rồi cột Q."
+        }
+      },
+      "feedback": {
+        "right": ["Cột P bên khối chóp, {name} đọc chuẩn rồi!", "Lính Gỗ gật gù: đúng đường đoàn vừa đi.", "Thứ tự rõ ràng, mình đuổi theo được rồi!"],
+        "wrong": ["Cột ấy đoàn đi qua trước rồi, đọc lại nhé.", "Cột Q là cột cuối cùng cơ {name}.", "Tìm chữ «cột N» rồi đọc tiếp cột đứng sau."]
+      }
+    },
+    {
+      "id": "ban-nhap-doan",
+      "title": "Các bạn nhập đoàn",
+      "goTo": "Ghé bục gấu bông, Gấu Bông Nhạc Trưởng đang đếm các bạn nhập đoàn",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "vt-ld-gau-bong",
+      "skill": "logic",
+      "prompt": "Qua mỗi cột cờ, số đồ chơi nhập đoàn lại gấp đôi lần trước. Lần tiếp theo có bao nhiêu bạn nhập đoàn?",
+      "elements": [
+        { "id": "l1", "label": "1 bạn" },
+        { "id": "l2", "label": "2 bạn" },
+        { "id": "l3", "label": "4 bạn" },
+        { "id": "l4", "label": "8 bạn" }
+      ],
+      "choices": [
+        { "id": "a", "text": "10 bạn" },
+        { "id": "b", "text": "12 bạn" },
+        { "id": "c", "text": "16 bạn" }
+      ],
+      "answer": { "choice": "c" },
+      "support": {
+        "guide": ["Gấp đôi nghĩa là cộng số đó với chính nó.", "1 + 1 = 2, 2 + 2 = 4, 4 + 4 = 8.", "Lần tiếp theo là 8 + 8."],
+        "hint": "Gấp đôi 8 là bao nhiêu?",
+        "answer": {
+          "text": "Lần tới có 16 bạn nhập đoàn",
+          "explanation": "Mỗi lần gấp đôi: 1, 2, 4, 8, rồi 8 + 8 = 16."
+        }
+      },
+      "feedback": {
+        "right": ["Đoàn diễu hành đông vui hẳn lên, mười sáu bạn mới!", "{name} nhìn ra quy luật gấp đôi nhanh ghê.", "Gấu Bông vung gậy chỉ huy khen ngợi!"],
+        "wrong": ["Gấp đôi không phải thêm 2 đâu, thử 8 + 8 xem nhé.", "Nhìn lại: 4 lên 8 là thêm chính nó đấy {name}.", "Mỗi lần số bạn tăng nhiều hơn lần trước, xem lại nha."]
+      }
+    },
+    {
+      "id": "duoi-kip-doan",
+      "title": "Đuổi kịp đoàn diễu hành",
+      "kind": "decision",
+      "target": "vt-ld-gau-bong",
+      "speaker": "Gấu Bông Nhạc Trưởng",
+      "prompt": "Đoàn diễu hành đã đi xa rồi. {name} giúp Lính Gỗ đuổi kịp bằng cách nào?",
+      "choices": [
+        {
+          "id": "xe-day",
+          "text": "Tìm gỗ ghép một chiếc xe đẩy",
+          "consequence": "Bốn khối trụ làm bánh, một tấm ván làm sàn, Lính Gỗ ngồi lên xe vun vút.",
+          "nextStepId": "ve-duong"
+        },
+        {
+          "id": "duong-tat",
+          "text": "Đi vòng đường tắt qua sân khối",
+          "consequence": "Lối tắt men theo bậc thang khối, chẳng mấy chốc đã nghe thấy tiếng nhạc của đoàn.",
+          "nextStepId": "ve-duong"
+        },
+        {
+          "id": "nho-ro-bot",
+          "text": "Nhờ Rô-bốt Thiếc Tí Hon giúp",
+          "consequence": "Gấu Bông chỉ tay: Rô-bốt Thiếc đang đứng ở kệ đồ chơi thiếc, bạn ấy chạy nhanh lắm!"
+        }
+      ]
+    },
+    {
+      "id": "nho-ro-bot",
+      "title": "Nhờ Rô-bốt Thiếc",
+      "goTo": "Sang kệ đồ chơi thiếc nhờ Rô-bốt Thiếc Tí Hon",
+      "kind": "dialogue",
+      "target": "vt-ld-ro-bot",
+      "lines": [
+        { "speaker": "Rô-bốt Thiếc Tí Hon", "text": "Bíp bíp! Đã nhận lệnh. Lính Gỗ đứng lên vai tớ, tớ bật bánh xe chạy theo đoàn ngay." }
+      ],
+      "choices": [{ "text": "Cảm ơn Rô-bốt, mình đi thôi!" }]
+    },
+    {
+      "id": "ve-duong",
+      "title": "Vẽ đường diễu hành",
+      "goTo": "Quay về góc sân khối gỗ vẽ đường diễu hành cho Lính Gỗ",
+      "kind": "challenge",
+      "mechanic": "connect",
+      "target": "vt-ld-linh-go",
+      "skill": "hinh-phang",
+      "prompt": "Vẽ đường diễu hành là một đường gấp khúc đi qua bốn cột cờ theo đúng thứ tự trong bảng: M, N, P, Q.",
+      "points": [
+        { "id": "m", "x": 0, "y": 3, "label": "M" },
+        { "id": "n", "x": 3, "y": 0, "label": "N" },
+        { "id": "p", "x": 6, "y": 3, "label": "P" },
+        { "id": "q", "x": 9, "y": 0, "label": "Q" }
+      ],
+      "answer": { "edges": [["m", "n"], ["n", "p"], ["p", "q"]] },
+      "support": {
+        "guide": ["Bắt đầu từ cột M.", "Nối M với N, rồi N với P, rồi P với Q.", "Không nối thẳng từ M tới Q."],
+        "hint": "Đường gấp khúc MNPQ có ba đoạn thẳng.",
+        "answer": {
+          "text": "Ba đoạn MN, NP và PQ",
+          "explanation": "Đường gấp khúc đi qua các điểm theo thứ tự M, N, P, Q nên gồm ba đoạn thẳng MN, NP, PQ."
+        }
+      },
+      "feedback": {
+        "right": ["Đường diễu hành ngoằn ngoèo hiện ra, đúng như bảng ghi!", "{name} vẽ đường gấp khúc thẳng tắp từng đoạn.", "Lính Gỗ cầm bản đồ, sẵn sàng dẫn đầu đoàn!"],
+        "wrong": ["Có một đoạn nối sai thứ tự rồi, xem lại nhé.", "Đoàn đi qua từng cột một, không nhảy cóc đâu {name}.", "Nhớ thứ tự M, N, P, Q rồi nối lại nha."]
+      }
+    },
+    {
+      "id": "linh-go-dan-dau",
+      "title": "Lính Gỗ dẫn đầu",
+      "kind": "reward",
+      "target": "vt-ld-linh-go",
+      "text": "Tùng tùng tùng! Lính Gỗ lại đi đầu đoàn diễu hành, cả sân hình khối vỗ tay theo nhịp. Lính Gỗ tặng {name} một chiếc huy hiệu nhỏ làm kỉ niệm."
+    },
+    {
+      "id": "mua-roi-buoi-toi",
+      "title": "Múa rối buổi tối",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đoàn diễu hành vòng về đại sảnh lâu đài. Lính Gỗ mời {name} tối nay ở lại xem múa rối bên bục múa rối."
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": { "doc-hieu": 1, "logic": 1, "hinh-phang": 1 }
+  }
+}
