@@ -256,6 +256,7 @@ export function PartyFrame({ social, fill, voice = null }: { social: SocialStore
         <p className="online-party-title">
           <T k="online.party.title" params={{ count }} />
         </p>
+        {voice ? <PartyVoiceControls voice={voice} /> : null}
         <button type="button" className="online-party-fold" data-id="online-party-fold" aria-expanded={true} aria-label={t('online.party.fold')} onClick={() => fold(true)}>
           ▴
         </button>
@@ -285,7 +286,6 @@ export function PartyFrame({ social, fill, voice = null }: { social: SocialStore
           <T k="online.party.leave" />
         </button>
       </div>
-      {voice ? <PartyVoiceControls voice={voice} /> : null}
       {saying ? (
         <CannedLines
           dataId="online-party-lines"

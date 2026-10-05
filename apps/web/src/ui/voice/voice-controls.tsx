@@ -21,10 +21,10 @@ export function useSpeaking(social: SocialStore, id: string): boolean {
   return useSocial(social, (s) => s.speaking.includes(id));
 }
 
-/** Push-to-talk: heard while the button is held (mouse, touch or pen; a lost pointer lets go). */
+/** Push-to-talk: heard while the button is held (mouse, touch or pen; letting go anywhere ends it). */
 function HoldToTalk({ voice }: { voice: VoiceManager }) {
+  const { t } = useT();
   const holding = useVoice(voice, (s) => s.holding);
-  // Letting go anywhere (or the tab hiding) ends talking.
   useEffect(() => {
     if (!holding) return;
     const up = (): void => voice.hold(false);
@@ -40,9 +40,11 @@ function HoldToTalk({ voice }: { voice: VoiceManager }) {
   return (
     <button
       type="button"
-      className={buttonClass(holding ? 'primary' : 'secondary', { small: true })}
+      className={`voice-icon ${buttonClass(holding ? 'primary' : 'secondary', { small: true })}`}
       data-id="voice-hold"
       aria-pressed={holding}
+      aria-label={t('voice.hold')}
+      title={t('voice.hold')}
       onPointerDown={(e) => {
         e.preventDefault();
         voice.hold(true);
@@ -53,68 +55,71 @@ function HoldToTalk({ voice }: { voice: VoiceManager }) {
       onKeyUp={() => voice.hold(false)}
       onContextMenu={(e) => e.preventDefault()}
     >
-      🎙️ <T k="voice.hold" />
+      🎙️
     </button>
   );
 }
 
-/** Microphone on/off, hold to talk, leave: what she does in a voice she is in. */
+/**
+ * What she does in a voice she is in, as icon buttons that fit beside a title: her microphone on/off (with
+ * push-to-talk: hold to talk), and leave.
+ */
 function InVoiceButtons({ voice, leaveKey }: { voice: VoiceManager; leaveKey: 'voice.leave' | 'voice.hangUp' }) {
   const { t } = useT();
   const mic = useVoice(voice, (s) => s.mic);
   const ptt = useVoice(voice, (s) => s.settings.pushToTalk);
   return (
     <>
-      <button
-        type="button"
-        className={`voice-mic ${buttonClass(mic ? 'primary' : 'ghost', { small: true })}`}
-        data-id="voice-mic"
-        data-on={mic}
-        aria-pressed={mic}
-        aria-label={t(mic ? 'voice.micOn' : 'voice.micOff')}
-        title={t(mic ? 'voice.micOn' : 'voice.micOff')}
-        onClick={() => void voice.toggleMic()}
-      >
-        {mic ? '🎙️' : '🔇'}
-      </button>
-      {mic && ptt ? <HoldToTalk voice={voice} /> : null}
-      <button type="button" className={buttonClass('ghost', { small: true })} data-id="voice-leave" onClick={() => voice.leave()}>
-        📴 <T k={leaveKey} />
+      {mic && ptt ? (
+        <HoldToTalk voice={voice} />
+      ) : (
+        <button
+          type="button"
+          className={`voice-icon ${buttonClass(mic ? 'primary' : 'ghost', { small: true })}`}
+          data-id="voice-mic"
+          data-on={mic}
+          aria-pressed={mic}
+          aria-label={t(mic ? 'voice.micOn' : 'voice.micOff')}
+          title={t(mic ? 'voice.micOn' : 'voice.micOff')}
+          onClick={() => void voice.toggleMic()}
+        >
+          {mic ? '🎙️' : '🔇'}
+        </button>
+      )}
+      <button type="button" className={`voice-icon ${buttonClass('ghost', { small: true })}`} data-id="voice-leave" aria-label={t(leaveKey)} title={t(leaveKey)} onClick={() => voice.leave()}>
+        📴
       </button>
     </>
   );
 }
 
-/** The voice part of the party frame: join it (microphone on), or the controls while in it. */
+/**
+ * The voice part of the party frame, in its head beside the title (the frame does not grow): one microphone button to
+ * join (microphone on), then the controls while in it.
+ */
 export function PartyVoiceControls({ voice }: { voice: VoiceManager }) {
   const { t } = useT();
   const enabled = useVoice(voice, (s) => s.settings.enabled);
   const joined = useVoice(voice, (s) => s.joined);
   const inCall = useVoice(voice, (s) => s.channel?.kind === 'call');
-  const micError = useVoice(voice, (s) => s.micError);
-  if (!enabled || inCall) return null;
-  if (!voice.supported) {
-    return (
-      <p className="hint voice-note" data-id="voice-unsupported">
-        <T k="voice.unsupported" />
-      </p>
-    );
-  }
+  if (!enabled || inCall || !voice.supported) return null;
   return (
-    <div className="voice-bar" data-id="voice-party" data-joined={joined}>
+    <span className="voice-head" data-id="voice-party" data-joined={joined}>
       {joined ? (
         <InVoiceButtons voice={voice} leaveKey="voice.leave" />
       ) : (
-        <button type="button" className={buttonClass('secondary', { small: true })} data-id="voice-join" aria-label={t('voice.joinLabel')} onClick={() => void voice.join()}>
-          🎙️ <T k="voice.join" />
+        <button
+          type="button"
+          className={`voice-icon ${buttonClass('secondary', { small: true })}`}
+          data-id="voice-join"
+          aria-label={t('voice.joinLabel')}
+          title={t('voice.join')}
+          onClick={() => void voice.join()}
+        >
+          🎙️
         </button>
       )}
-      {joined && micError ? (
-        <p className="hint voice-note" role="status" data-id="voice-mic-error">
-          <T k="voice.micDenied" />
-        </p>
-      ) : null}
-    </div>
+    </span>
   );
 }
 
@@ -180,13 +185,13 @@ export function CallBar({ voice, social }: { voice: VoiceManager; social: Social
   if (other) {
     return (
       <section className="voice-call parchment" data-id="voice-call" aria-live="polite">
-        <p className="voice-call-who">
-          <span className="voice-face" data-speaking={speaking} aria-hidden="true">
-            📞
-          </span>
-          <T k="voice.inCall" params={{ who: same(other.displayName) }} />
-        </p>
-        <div className="voice-bar">
+        <div className="voice-call-head">
+          <p className="voice-call-who">
+            <span className="voice-face" data-speaking={speaking} aria-hidden="true">
+              📞
+            </span>
+            <T k="voice.inCall" params={{ who: same(other.displayName) }} />
+          </p>
           <InVoiceButtons voice={voice} leaveKey="voice.hangUp" />
         </div>
         <PersonVolume voice={voice} id={other.id} name={other.displayName} />
