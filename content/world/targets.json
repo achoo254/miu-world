@@ -288,7 +288,32 @@
     "dba-ruong-vui-cat": {
       "name": "Rương vùi trong cát",
       "look": "chest",
-      "label": "Mở rương"
+      "label": "Mở rương",
+      "skillCheck": {
+        "skill": "so-sanh-so",
+        "level": 1,
+        "hintQuest": "kho-bau-dao-ch1"
+      }
+    },
+    "ruong-do-choi-nha-be": {
+      "name": "Rương đồ chơi của bé",
+      "look": "chest",
+      "label": "Mở rương đồ chơi",
+      "skillCheck": {
+        "skill": "logic",
+        "level": 1,
+        "hintQuest": "nha-cua-be-ch1"
+      }
+    },
+    "ruong-go-bi-mat": {
+      "name": "Rương gỗ bí mật rừng già",
+      "look": "chest",
+      "label": "Mở rương bí mật",
+      "skillCheck": {
+        "skill": "phep-cong",
+        "level": 2,
+        "hintQuest": "forest-ch1"
+      }
     },
     "dba-so-nhat-ki": {
       "name": "Nhật kí thuyền trưởng",
