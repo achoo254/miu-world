@@ -145,10 +145,12 @@ describe('accessory catalogue', () => {
     ['a variant of an unknown accessory', [{ id: 'x', name: 'Màu thử', variantOf: 'ghost', variant: 'blue' }], /not a full accessory/],
     ['an unknown colour', [hat, { id: 'x', name: 'Màu thử', variantOf: 'hat-a', variant: 'green' }], /no variant "green"/],
     ['a variant of a variant', [hat, { id: 'x', name: 'Màu thử', variantOf: 'hat-a', variant: 'blue' }, { id: 'y', name: 'Màu thử', variantOf: 'x', variant: 'blue' }], /not a full accessory/],
-    ['an empty unlock', [base({ unlock: {} })], /a level, a quest, the shop or a region/],
+    ['an empty unlock', [base({ unlock: {} })], /a level, a quest, the shop, a region or an award/],
     ['a shop item with a level too', [base({ unlock: { shop: true, level: 3 } })], /opened by buying it only/],
     ['a region item sold in the shop too', [base({ unlock: { shop: true, region: 'nui-tuyet' } })], /opened by buying it only/],
     ['a region item with a level too', [base({ unlock: { region: 'nui-tuyet', level: 3 } })], /opened by its chest only/],
+    ['an award sold in the shop too', [base({ unlock: { shop: true, award: true } })], /opened by buying it only/],
+    ['an award with a quest too', [base({ unlock: { award: true, quest: 'forest-ch1' } })], /opened by its gift only/],
     ['a variant with both a variant and a palette', [hat, { id: 'x', name: 'Màu thử', variantOf: 'hat-a', variant: 'blue', palette: { a: '#123456' } }], /not both/],
     ['a palette of colours the base does not have', [hat, { id: 'x', name: 'Màu thử', variantOf: 'hat-a', palette: { z: '#123456' } }], /no colour z/],
   ])('refuses %s', (_, files, message) => {
@@ -172,5 +174,10 @@ describe('accessory catalogue', () => {
   it("opens a region's chest item only once claimed, whatever the level", () => {
     expect(isAccessoryOpen({ region: 'nui-tuyet' }, 50, new Set())).toBe(false);
     expect(isAccessoryOpen({ region: 'nui-tuyet' }, 1, new Set(), true)).toBe(true);
+  });
+
+  it('opens an award (a skill gift or an achievement item) only once received, whatever the level', () => {
+    expect(isAccessoryOpen({ award: true }, 50, new Set())).toBe(false);
+    expect(isAccessoryOpen({ award: true }, 1, new Set(), true)).toBe(true);
   });
 });
