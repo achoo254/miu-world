@@ -1,18 +1,18 @@
 // Two players on one map, each in her own browser context (two accounts): each sees the other as she saved
-// herself (clothes, pet), new clothes show without a reload, an invite makes a party both see, and a block hides
-// them from each other.
+// herself (clothes, pet), new clothes show without a reload, an invite makes a party both see, a friend request
+// accepted puts each in the other's friends list, and a block hides them from each other.
 import { expect, test, type Browser, type Page } from '@playwright/test';
 import { freshChild } from './quest-api';
 import { readStats, waitReady } from './stats';
 
 async function player(browser: Browser, baseURL: string, name: string, look: { equipped: string[]; pet?: string }): Promise<Page> {
   const context = await browser.newContext({ baseURL });
-  // Companion bots stay out of these screens: only the two players are near the spawn.
-  await context.addInitScript(() => window.localStorage.setItem('miu.bots.enabled', 'false'));
   const page = await context.newPage();
   await freshChild(page, baseURL, name);
   const headers = { Origin: new URL(baseURL).origin };
   expect((await page.context().request.put('/api/character', { headers, data: { name, ...look } })).status()).toBe(200);
+  // Companion bots stay out of these screens (her own setting): only the two players are near the spawn.
+  expect((await page.context().request.put('/api/player-settings', { headers, data: { botsEnabled: false } })).status()).toBe(200);
   return page;
 }
 
@@ -21,7 +21,7 @@ async function seen(page: Page, name: string) {
   return (await readStats(page)).remotePlayers.find((p) => p.name === name);
 }
 
-test('two players see each other as saved, live; party up; a block hides them from each other', async ({ browser, baseURL }) => {
+test('two players see each other as saved, live; party up; become friends; a block hides them from each other', async ({ browser, baseURL }) => {
   // Two game loads in two contexts, then the round trips between them: a few seconds on a GPU, far longer on
   // CI's software GL.
   test.setTimeout(90_000);
@@ -51,6 +51,19 @@ test('two players see each other as saved, live; party up; a block hides them fr
   await a.locator('[data-id="online-invite-accept"]').click({ timeout: 10_000 });
   for (const page of [a, b]) await expect(page.locator('[data-id="online-party"]')).toContainText('(2/4)', { timeout: 10_000 });
   await expect.poll(async () => (await seen(b, 'Mochi'))?.partyMate).toBe(true);
+
+  // B asks A to be friends; A accepts on the card; both lists show the other.
+  await label.click();
+  await b.locator('[data-id="online-menu-befriend"]').click();
+  await a.locator('[data-id="friend-ask-accept"]').click({ timeout: 10_000 });
+  for (const [page, other] of [
+    [a, 'Bông'],
+    [b, 'Mochi'],
+  ] as const) {
+    await page.locator('[data-id="hud-friends"]').click();
+    await expect(page.locator('[data-id="play-friends"]')).toContainText(other, { timeout: 10_000 });
+    await page.locator('[data-id="play-friends-close"]').click();
+  }
 
   // B blocks A: the party ends for B and neither sees the other any more.
   await label.click();
