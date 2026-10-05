@@ -6,7 +6,7 @@
 // and every character (an NPC look) plays in at most MAX_QUESTS_PER_CHARACTER quests, in any role, except
 // one guide per map and a story's teller in its own chapters, and lives on one map only (as a target or a speaker). Things (boards, boxes, trees)
 // are not characters and are not capped. Minigame side quests are played on the spot where their character
-// stands: they follow the one-map rule but neither the moving rules nor the cap.
+// stands: they follow the one-map rule but neither the moving rules nor the cap; so do co-op challenges and zone guardians.
 // content:check reports the same issues; this script also prints where each quest stands.
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -80,8 +80,9 @@ export function questSpread(quests: Iterable<QuestDefinition>, targetsRaw: unkno
     report.issues.push(`character ${name} is met on ${list.length} maps (${list.join(', ')}): a character lives on one map, give the others a new character`);
   }
   for (const quest of all) {
-    // A minigame side quest and a co-op challenge play where their character stands (the team gathers at its host).
-    if (!('steps' in quest) || quest.status !== 'active' || HAND_BUILT.has(quest.id) || quest.category === 'side' || quest.category === 'coop') continue;
+    // A minigame side quest, a co-op challenge and a zone guardian's fight play where their character stands (the team
+    // gathers at its host, the guardian is fought where it guards).
+    if (!('steps' in quest) || quest.status !== 'active' || HAND_BUILT.has(quest.id) || quest.category === 'side' || quest.category === 'coop' || quest.category === 'guardian') continue;
     const named = 'places' in quest ? (quest.places ?? {}) : {};
     const opening = quest.steps[0];
     const storyteller = opening && 'target' in opening ? opening.target : undefined;

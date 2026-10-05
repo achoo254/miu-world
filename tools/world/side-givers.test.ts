@@ -65,6 +65,7 @@ describe('side quest givers', () => {
       givers: [{ id: 'cho-thu', name: 'Chó Thử', look: 'animal-dog', where: 'Bên đường làng', at: [40, 12], company: [{ routine: 'pupil', name: 'Bạn nhỏ xem', model: 'person-a' }], games: [] }],
       residents: [{ routine: 'dog', name: 'Chó Ao Làng', model: 'animal-dog', place: 'Ao làng' }],
       hosts: [],
+      guardians: [],
     };
     const folk = sideFolk({
       table,

@@ -51,13 +51,15 @@ const STEP_ERRORS: Record<
 
 /**
  * The step's line for this attempt: the n-th wrong answer hears the n-th wrong line, a right answer after
- * n mistakes hears the n-th right line, cycling, so two tries in a row never get the same line.
+ * n mistakes hears the n-th right line, cycling, so two tries in a row never get the same line. A boss with its own
+ * lines rotates them over its blows too (`landed`: blows landed so far) and says its win line on the last one.
  */
 function feedbackLine(
   step: QuestStep | undefined,
   kind: "right" | "wrong",
   attempt: number,
   choice?: string,
+  boss?: { landed: number; won: boolean },
 ): { vi: string; en: string | null } | null {
   if (step?.kind === "decision" && choice) {
     const index = step.choices.findIndex((c) => c.id === choice);
@@ -69,7 +71,14 @@ function feedbackLine(
       };
   }
   if (step?.kind === "boss") {
-    if (kind === "right") return { vi: step.winDialogue, en: null };
+    if (step.feedback) {
+      if (kind === "right" && boss?.won) return { vi: step.winDialogue, en: step.en?.winDialogue ?? null };
+      const lines = step.feedback[kind];
+      const at = (attempt + (kind === "right" ? Math.max(0, (boss?.landed ?? 1) - 1) : 0)) % lines.length;
+      return { vi: lines[at] ?? "", en: step.feedback.en?.[kind][at] ?? null };
+    }
+    // A boss without lines of its own says only its win line, on the blow that wins.
+    if (kind === "right") return boss?.won ? { vi: step.winDialogue, en: step.en?.winDialogue ?? null } : null;
     return { vi: "Suýt đúng rồi! Bé thử suy nghĩ lại một chút nhé!", en: null };
   }
   const feedback = step && isAnswerable(step) ? step.feedback : undefined;
@@ -184,6 +193,12 @@ export async function recordStep(
       "right",
       await wrongAnswers(tx, { childId, questId, stepId }),
       choice,
+      stepDef?.kind === "boss"
+        ? {
+            landed: (result.progress.found[stepId] ?? []).length,
+            won: result.progress.completedSteps.includes(stepId),
+          }
+        : undefined,
     );
     // The step's knowledge gates pay their treasure once per run: a search pays for the target just found, any
     // other step for its own target; a target the client names outside the step opens nothing.

@@ -1,7 +1,7 @@
 // Everything the quest puts over the forest: NPC dialogue, learning-step screens, short toasts and the
 // offline retry for a pending step. Rendered by /play once the player data is loaded.
 import type { QuestStepPublic } from '@miu/schema/content';
-import type { NotebookLine, StepCompleteResponse } from '@miu/schema/game';
+import type { NotebookLine, QuestSummary, StepCompleteResponse } from '@miu/schema/game';
 import type { GameStore } from '../../game-bridge/game-store';
 import { AnswerBurst } from '../challenge/answer-burst';
 import { LearningStep, hasLearningScreen } from '../challenge/learning-step';
@@ -24,6 +24,17 @@ import { useSideQuests } from './side-quests';
 import { GateOpenedBanner, SkillCheckModal } from './skill-check-modal';
 import { StepDraftScope } from './step-draft';
 import { useQuestController, type PartyPlay } from './use-quest-controller';
+
+/** The zone guardian's fight that opens at a target (its first step's character), if that target is a guardian. */
+export function guardianFightAt(quests: readonly QuestSummary[], target: string): QuestSummary | null {
+  return (
+    quests.find((q) => {
+      if (q.quest.status !== 'active' || q.quest.category !== 'guardian') return false;
+      const first = q.quest.steps[0];
+      return first !== undefined && 'target' in first && first.target === target;
+    }) ?? null
+  );
+}
 
 export function QuestLayer({
   store,
@@ -90,8 +101,18 @@ export function QuestLayer({
     },
     [onResponse, refreshNpcs],
   );
+  // A zone guardian touched while another quest is played: its fight is played here (the guardian's lines open at once).
+  const claimGuardian = useCallback(
+    (target: string): boolean => {
+      const fight = guardianFightAt(data.quests, target);
+      if (!fight || fight.quest.id === questId) return false;
+      onPlayQuest?.(fight.quest.id, target);
+      return onPlayQuest !== undefined;
+    },
+    [data.quests, questId, onPlayQuest],
+  );
   // The lesson comes first; a character with nothing for it shows its card (a profiled one) or offers its games.
-  const claimTarget = useCallback((target: string) => (claimCoop?.(target) ?? false) || npcs.claim(target) || side.claim(target), [npcs, side, claimCoop]);
+  const claimTarget = useCallback((target: string) => (claimCoop?.(target) ?? false) || claimGuardian(target) || npcs.claim(target) || side.claim(target), [npcs, side, claimCoop, claimGuardian]);
   const quest = useQuestController({ store, data, questId, onResponse: answered, onOverlayChange: reportCover, draftOwner, onSideTarget: claimTarget, openAt, party });
   useEffect(() => {
     resume.current = quest.resumeAt;

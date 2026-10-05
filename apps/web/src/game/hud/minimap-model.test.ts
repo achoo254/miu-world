@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { PORTAL_COLOURS } from '@miu/voxel/portal-colours';
 import type { WorldEntities } from '@miu/voxel/world-entities';
-import { GATE_COLOUR, MARKER_COLOURS, commonHeight, headingAngle, legendGroups, minimapMarkers, minimapPixels, onDisc, questMarker, rideOf, sideGiverMarkers, stationMarkers, toMinimap } from './minimap-model';
+import { GATE_COLOUR, MARKER_COLOURS, bossMarkers, commonHeight, headingAngle, legendGroups, minimapMarkers, minimapPixels, onDisc, questMarker, rideOf, sideGiverMarkers, stationMarkers, toMinimap } from './minimap-model';
 import { sideGiversOf } from './side-givers';
 import type { QuestListResponse } from '@miu/schema/game';
 
@@ -161,6 +161,27 @@ describe('minimap view', () => {
     expect(headingAngle(0)).toBeCloseTo(Math.PI / 2);
     expect(headingAngle(Math.PI / 2)).toBeCloseTo(0);
     expect(Math.abs(headingAngle(Math.PI))).toBeCloseTo(Math.PI / 2);
+  });
+});
+
+describe('boss markers', () => {
+  const npc = (id: string, x: number, z: number): Target => ({ id, kind: 'npc', name: id, label: 'Thách đấu', position: [x, 13, z], yaw: 0, radius: 3 });
+  const interactables = [npc('than-rung', 300, 400), npc('canh-suoi', 120, 80)];
+
+  it('marks every boss of the map where it stands: a guardian walks to it and greets it, the big boss asks for its quest', () => {
+    const markers = bossMarkers(interactables, [
+      { questId: 'vuot-ai-khu-rung', targetId: 'than-rung', name: 'Thần Rừng', title: 'Trùm vui: Thần Rừng', big: true },
+      { questId: 'ward-khu-rung-suoi', targetId: 'canh-suoi', name: 'Rái Cá Canh Suối', title: 'Trùm canh khu: Suối', big: false },
+    ]);
+    expect(markers).toEqual([
+      { id: 'boss-vuot-ai-khu-rung', kind: 'boss', x: 300, z: 400, colour: MARKER_COLOURS.boss, label: 'Thần Rừng', detail: 'Trùm lớn · Trùm vui: Thần Rừng', goal: { quest: 'vuot-ai-khu-rung' }, big: true },
+      { id: 'boss-ward-khu-rung-suoi', kind: 'boss', x: 120, z: 80, colour: MARKER_COLOURS.boss, label: 'Rái Cá Canh Suối', detail: 'Trùm canh khu · Trùm canh khu: Suối', goal: { targetId: 'canh-suoi' } },
+    ]);
+    expect(legendGroups(markers)).toEqual([{ kind: 'boss', label: 'Trùm', colour: MARKER_COLOURS.boss, count: 2 }]);
+  });
+
+  it('leaves out a boss that does not stand on this map', () => {
+    expect(bossMarkers(interactables, [{ questId: 'ward-xa', targetId: 'o-noi-khac', name: 'Xa', title: 'Xa', big: false }])).toEqual([]);
   });
 });
 

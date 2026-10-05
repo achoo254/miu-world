@@ -102,6 +102,11 @@ export type SideResident = z.infer<typeof Resident>;
  * giver, always in the world, where the team gathers. Its name and look are in content/world/targets.json.
  */
 const CoopHost = z.strictObject({ id: Id, ...anchor }).refine(oneAnchor, ONE_ANCHOR);
+/**
+ * A zone guardian (`content/quests/ward-*.json`, its first step's target): it stands by the ways in the zone it guards,
+ * always in the world, where the child (or her party) fights it. Its name and look are in content/world/targets.json.
+ */
+const Guardian = z.strictObject({ id: Id, ...anchor }).refine(oneAnchor, ONE_ANCHOR);
 
 export const SideQuestTable = z.strictObject({
   region: Id,
@@ -109,12 +114,13 @@ export const SideQuestTable = z.strictObject({
   /** More everyday folk, at places the givers leave empty, so the whole map has someone to meet. */
   residents: z.array(Resident).default([]),
   hosts: z.array(CoopHost).default([]),
+  guardians: z.array(Guardian).default([]),
 });
 export type SideQuestTable = z.infer<typeof SideQuestTable>;
 
-/** Where each character that stands by the ways belongs: the givers and the co-op hosts, by target id. */
+/** Where each character that stands by the ways belongs: the givers, the co-op hosts and the zone guardians, by target id. */
 export function standingAnchors(table: SideQuestTable): Map<string, { at: readonly [number, number] } | { place: string }> {
-  return new Map([...table.givers, ...table.hosts].map((g) => [g.id, g.at ? { at: g.at } : { place: g.place ?? '' }] as const));
+  return new Map([...table.givers, ...table.hosts, ...table.guardians].map((g) => [g.id, g.at ? { at: g.at } : { place: g.place ?? '' }] as const));
 }
 
 /** Every region's table, parsed (a broken table is an error naming its file). */
@@ -132,5 +138,5 @@ export function readSideQuestTables(dir: string = SIDE_TABLE_DIR): SideQuestTabl
 
 /** The table of one region (empty when the region has none). */
 export function sideQuestTableOf(region: string, dir: string = SIDE_TABLE_DIR): SideQuestTable {
-  return readSideQuestTables(dir).find((t) => t.region === region) ?? { region, givers: [], residents: [], hosts: [] };
+  return readSideQuestTables(dir).find((t) => t.region === region) ?? { region, givers: [], residents: [], hosts: [], guardians: [] };
 }

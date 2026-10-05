@@ -42,6 +42,7 @@ import { FriendsButton, FriendsDialog, useFriendsPrefetch } from '../friends/fri
 import { useSocial } from '../online/use-social';
 import { createPositionSaver, loadPlayerPositions } from './player-position';
 import { CoopLayer } from '../coop/coop-layer';
+import type { MapBoss } from '../../game/hud/minimap-model';
 import { PartyQuestCard } from '../coop/party-quest-card';
 import { useCoopChallenges } from '../coop/use-coop';
 
@@ -59,6 +60,21 @@ export function withProgress(summary: QuestSummary, progress: QuestSummary['prog
   if (older || (progress.run ?? 1) < (kept.run ?? 1)) return summary;
   return { ...summary, progress, state: progress.completed ? 'completed' : 'in-progress' };
 }
+/**
+ * The bosses of a region's map for the minimap: each quest's boss (a lesson's big boss, a zone guardian), named in
+ * Vietnamese like the map's other markers, `{name}` filled.
+ */
+export function mapBossesOf(quests: readonly QuestSummary[], region: string, fill: (text: string) => string): MapBoss[] {
+  return quests.flatMap(({ quest }): MapBoss[] => {
+    if (quest.status !== 'active' || quest.region !== region) return [];
+    const category = quest.category ?? 'main';
+    if (category !== 'main' && category !== 'guardian') return [];
+    const boss = quest.steps.find((s) => s.kind === 'boss');
+    if (!boss || boss.kind !== 'boss' || !boss.target) return [];
+    return [{ questId: quest.id, targetId: boss.target, name: fill(boss.bossName), title: fill(quest.title), big: category === 'main' }];
+  });
+}
+
 /** How often the child's spot is saved while playing; hiding or leaving the page saves it at once. */
 const SAVE_SPOT_MS = 10_000;
 
@@ -135,6 +151,7 @@ function GameView({
   objectStates,
   paused,
   onSpotReader,
+  bosses,
 }: {
   store: GameStore;
   /** The online UI's store; it outlives each game (the party frame stays while the next map loads). */
@@ -159,6 +176,8 @@ function GameView({
   paused: boolean;
   /** Hands over a reader of where the child stands in the running game (null once it is gone), so a quest switch on the same map keeps the spot. */
   onSpotReader: (read: (() => PlayerPosition | null) | null) => void;
+  /** The map's bosses for the minimap; read when the game is (re)built, never rebuilding it. */
+  bosses: readonly MapBoss[];
 }) {
   const host = useRef<HTMLDivElement>(null);
   const game = useRef<Game | null>(null);
@@ -174,10 +193,14 @@ function GameView({
   useEffect(() => {
     petGearRef.current = petGear;
   }, [petGear]);
+  const bossesRef = useRef(bosses);
+  useEffect(() => {
+    bossesRef.current = bosses;
+  }, [bosses]);
   useEffect(() => {
     if (!host.current) return;
     const picks = decorKey ? (JSON.parse(decorKey) as Record<string, string>) : undefined;
-    const instance = new Game(host.current, { store, social, search: window.location.search, playerName, species, pet, petGear: petGearRef.current, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region, quest, savedSpot, decor: picks, objectStates: objectsRef.current });
+    const instance = new Game(host.current, { store, social, search: window.location.search, playerName, species, pet, petGear: petGearRef.current, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region, quest, savedSpot, decor: picks, objectStates: objectsRef.current, bosses: bossesRef.current });
     game.current = instance;
     onSpotReader(() => instance.currentSpot());
     void instance.start();
@@ -423,6 +446,29 @@ export function PlayScreen() {
         if (next) switchQuest(next, true);
       }),
   );
+  // A big boss picked on the full map while another quest is played: its quest is taken up here (the map is built again
+  // for it), then she walks to its next place as soon as the game can, like a tap on the quest card.
+  const picked = useRef(store.getSnapshot().questPick?.count ?? 0);
+  const walkWhenReady = useRef(false);
+  useEffect(
+    () =>
+      store.subscribe(() => {
+        const snapshot = store.getSnapshot();
+        const pick = snapshot.questPick;
+        if (pick && pick.count !== picked.current && data) {
+          picked.current = pick.count;
+          const next = data.quests.find((q) => q.quest.id === pick.questId);
+          if (next && next.quest.id !== questId) {
+            walkWhenReady.current = true;
+            switchQuest(next);
+          }
+        }
+        if (walkWhenReady.current && snapshot.status === 'ready' && snapshot.autowalkAvailable) {
+          walkWhenReady.current = false;
+          store.send({ type: 'autowalk-start' });
+        }
+      }),
+  );
   // Touching the timetable on the wall or the uniform calendar opens the board (the quest leaves them alone).
   const interacted = useRef(store.getSnapshot().lastInteraction?.count ?? 0);
   useEffect(
@@ -453,13 +499,15 @@ export function PlayScreen() {
   }, [draftOwner, species, look]);
   const boardRegion = findRegion(region);
   const regionTitle = findRegion(quest?.quest.region ?? '')?.name ?? t('play.defaultRegion');
+  // The map's bosses for the minimap (read once by each game built: a new list never rebuilds it).
+  const bosses = data ? mapBossesOf(data.quests, region, (text) => say(text, data.character)) : [];
   const regionName = data ? say(regionTitle, data.character) : regionTitle;
 
   return (
     <GameStoreContext.Provider value={store}>
       <main data-id="play">
         {data && positions && (!atHome || (decor !== null && homeObjects !== null)) ? (
-          <GameView store={store} social={social} playerName={data.character.name} species={data.character.species} pet={data.character.pet} petGear={data.character.petGear ?? NO_GEAR} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={region} quest={quest?.quest.id} savedSpot={savedSpot} decor={atHome ? (decor ?? undefined) : undefined} objectStates={atHome ? (homeObjects ?? undefined) : undefined} paused={covered} onSpotReader={onSpotReader} />
+          <GameView store={store} social={social} playerName={data.character.name} species={data.character.species} pet={data.character.pet} petGear={data.character.petGear ?? NO_GEAR} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={region} quest={quest?.quest.id} savedSpot={savedSpot} decor={atHome ? (decor ?? undefined) : undefined} objectStates={atHome ? (homeObjects ?? undefined) : undefined} paused={covered} onSpotReader={onSpotReader} bosses={bosses} />
         ) : null}
         {loadError ? (
           <div className="play-message" role="alert">

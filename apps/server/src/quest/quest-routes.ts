@@ -123,16 +123,17 @@ export function questRoutes(deps: QuestRouteDeps): Router {
     res.json(InventoryResponse.parse({ items: rows }));
   });
 
-  // The quest list by default: the lessons, then the story chapters (their ids sort after every lesson, so the first
-  // lesson stays the one to play next). `?category=side` lists the minigame side quests instead, so a side quest never
-  // shows up where the lessons are counted, listed or picked; `?category=main` or `story` one kind only.
+  // The quest list by default: the lessons, then the story chapters and the zone guardians (their ids sort after every
+  // lesson, so the first lesson stays the one to play next). `?category=side` lists the minigame side quests instead, so
+  // a side quest never shows up where the lessons are counted, listed or picked; `?category=main`, `story` or `guardian`
+  // one kind only.
   router.get('/quests', requireParent, async (req, res) => {
     const childId = await activePlayerId(db, res, content.consent.version);
     const region = req.query.region === undefined ? undefined : ContentId.safeParse(req.query.region);
     if (region && !region.success) throw new HttpError(400, 'invalid-region');
     const category = req.query.category === undefined ? undefined : QuestCategory.safeParse(req.query.category);
     if (category && !category.success) throw new HttpError(400, 'invalid-category');
-    const listed = new Set<string>(category ? [category.data] : ['main', 'story']);
+    const listed = new Set<string>(category ? [category.data] : ['main', 'story', 'guardian']);
     const quests = [...(await summaries(childId)).values()].filter(
       (s) => (!region || s.quest.region === region.data) && listed.has(s.quest.status === 'active' ? (s.quest.category ?? 'main') : 'main'),
     );

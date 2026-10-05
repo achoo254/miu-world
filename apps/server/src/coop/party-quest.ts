@@ -119,8 +119,9 @@ export class PartyQuestService implements PartyQuestHooks {
 
   private playable(questId: string): ActiveQuest | null {
     const quest = this.content.quests.get(questId);
-    // Lessons and story chapters; a minigame side quest and a co-op challenge have their own ways of playing.
-    return quest?.status === 'active' && (quest.category === 'main' || quest.category === 'story') ? quest : null;
+    // Lessons, story chapters and zone guardians (a team boss); a minigame side quest and a co-op challenge have their
+    // own ways of playing.
+    return quest?.status === 'active' && (quest.category === 'main' || quest.category === 'story' || quest.category === 'guardian') ? quest : null;
   }
 
   private start(id: string, questId: string): void {

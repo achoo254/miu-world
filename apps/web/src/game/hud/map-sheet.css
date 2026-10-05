@@ -167,6 +167,7 @@
 .map-sheet-swatch--quest, .map-sheet-swatch--home { border: 0; border-radius: 0; box-shadow: none; }
 .map-sheet-swatch--quest { clip-path: polygon(50% 0, 63% 35%, 100% 38%, 71% 61%, 81% 100%, 50% 78%, 19% 100%, 29% 61%, 0 38%, 37% 35%); }
 .map-sheet-swatch--home { clip-path: polygon(50% 0, 100% 45%, 86% 45%, 86% 100%, 14% 100%, 14% 45%, 0 45%); }
+.map-sheet-swatch--boss { clip-path: polygon(0 100%, 0 25%, 25% 60%, 50% 5%, 75% 60%, 100% 25%, 100% 100%); border: 0; border-radius: 0; box-shadow: none; }
 .map-sheet-swatch--gate { background: radial-gradient(circle, var(--color-surface) 0 32%, var(--swatch) 34%); }
 
 .map-sheet-list {

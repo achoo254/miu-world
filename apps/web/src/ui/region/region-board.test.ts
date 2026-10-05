@@ -77,4 +77,22 @@ describe('region board', () => {
     expect(recommendedQuest([done, chapter])?.quest.id).toBe('yarn-bai-ca-1');
     expect(currentQuest([done, chapter])?.quest.id).toBe('yarn-bai-ca-1');
   });
+
+  it('never counts, recommends or picks a zone guardian as a lesson', () => {
+    const guardian = (id: string, state: QuestSummary['state']): QuestSummary => {
+      const base = as(ch1, id, state);
+      if (base.quest.status !== 'active') throw new Error('fixture');
+      return { ...base, quest: { ...base.quest, category: 'guardian' } };
+    };
+    const lesson = as(ch1, 'bai-1', 'open');
+    const fight = guardian('ward-thu', 'in-progress');
+    expect(regionProgress([lesson, fight, guardian('ward-hai', 'completed')])).toEqual({ done: 0, total: 1 });
+    expect(recommendedQuest([fight, lesson])?.quest.id).toBe('bai-1');
+    expect(currentQuest([fight, lesson])?.quest.id).toBe('bai-1');
+    expect(questForRegion([fight, lesson], ch1.quest.region)?.quest.id).toBe('bai-1');
+    // Every lesson done: still never the quest to play next (the child meets it in its zone).
+    const done = as(ch1, 'bai-1', 'completed');
+    expect(currentQuest([done, fight])).toBeNull();
+    expect(recommendedQuest([done, fight])?.quest.id).toBe('bai-1');
+  });
 });

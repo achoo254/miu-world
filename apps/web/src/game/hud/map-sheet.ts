@@ -29,9 +29,11 @@ const WHEEL_ZOOM = 0.0018;
 const FOCUS_SCALE = 3;
 const GLIDE_MS = 260;
 /** From this zoom (px per block) each kind's names show on the map. */
-const LABEL_FROM: Readonly<Record<PlaceKind, number>> = { quest: 0, home: 0, story: 0.8, side: 0.8, gate: 0.8, stop: 1.6, place: 2.4 };
+const LABEL_FROM: Readonly<Record<PlaceKind, number>> = { quest: 0, home: 0, boss: 0.8, story: 0.8, side: 0.8, gate: 0.8, stop: 1.6, place: 2.4 };
 /** Drawing order, bottom first; labels are fitted the other way round, so the most important keep theirs. */
-const DRAW_ORDER: readonly PlaceKind[] = ['place', 'stop', 'gate', 'side', 'story', 'home', 'quest'];
+const DRAW_ORDER: readonly PlaceKind[] = ['place', 'stop', 'gate', 'side', 'story', 'boss', 'home', 'quest'];
+/** A big boss's badge is this much larger than the others. */
+const BIG_MARKER = 1.3;
 
 export function el<K extends keyof HTMLElementTagNameMap>(tag: K, className: string, dataId?: string): HTMLElementTagNameMap[K] {
   const node = document.createElement(tag);
@@ -191,7 +193,7 @@ export function createMapSheet(input: MapSheetInput): MapSheet {
       for (const m of markers) {
         if (m.kind !== kind) continue;
         const [px, py] = toScreen(v, vp, m.x, m.z);
-        if (onScreen(px, py)) drawMarker(ctx, kind, px, py, MARKER_R, m.colour, input.colours.outline);
+        if (onScreen(px, py)) drawMarker(ctx, kind, px, py, m.big ? MARKER_R * BIG_MARKER : MARKER_R, m.colour, input.colours.outline);
       }
     }
     // The picked place: a ring round it.

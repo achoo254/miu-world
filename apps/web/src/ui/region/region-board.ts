@@ -8,9 +8,12 @@ export const isPlayable = (summary: QuestSummary): boolean => summary.quest.stat
 /** A chapter of a character's story (listed after the lessons, never counted as one). */
 export const isStory = (summary: QuestSummary): boolean => summary.quest.status === 'active' && summary.quest.category === 'story';
 
-/** Finished lessons out of the region's real ones ("Hoàn thành: 4/12"); stubs and story chapters are not counted. */
+/** A zone guardian's fight (listed after the lessons under the zone guardians, never counted as a lesson). */
+export const isGuardian = (summary: QuestSummary): boolean => summary.quest.status === 'active' && summary.quest.category === 'guardian';
+
+/** Finished lessons out of the region's real ones ("Hoàn thành: 4/12"); stubs, story chapters and guardians are not counted. */
 export function regionProgress(quests: readonly QuestSummary[]): { done: number; total: number } {
-  const real = quests.filter((q) => q.quest.status !== 'stub' && !isStory(q));
+  const real = quests.filter((q) => q.quest.status !== 'stub' && !isStory(q) && !isGuardian(q));
   return { done: real.filter((q) => q.state === 'completed').length, total: real.length };
 }
 
@@ -19,8 +22,9 @@ export function regionProgress(quests: readonly QuestSummary[]): { done: number;
  * the first playable one (to play a finished region again); null when nothing can be played.
  */
 export function recommendedQuest(quests: readonly QuestSummary[]): QuestSummary | null {
-  // The lessons first; a story chapter only once every lesson is finished (its character offers it in the game).
-  const playable = [...quests.filter((q) => isPlayable(q) && !isStory(q)), ...quests.filter(isStory)];
+  // The lessons first; a story chapter only once every lesson is finished (its character offers it in the game). A
+  // zone guardian is never recommended: the child meets it in its zone, or picks it on the board.
+  const playable = [...quests.filter((q) => isPlayable(q) && !isStory(q) && !isGuardian(q)), ...quests.filter(isStory)];
   return (
     playable.find((q) => q.state === 'in-progress' && !isStory(q)) ??
     playable.find((q) => q.state !== 'completed') ??

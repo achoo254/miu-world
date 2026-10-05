@@ -1,6 +1,6 @@
 // The minimap on /play (owner's mock, panel 14): a round map in the top right corner under the menu, north up,
 // the child's arrow in its middle, the gates in their portal colours, her home, the characters who offer a
-// minigame, the quest's place. A tap opens the whole map (map-sheet.ts), where a tap on a place walks her
+// minigame, the bosses, the quest's place. A tap opens the whole map (map-sheet.ts), where a tap on a place walks her
 // there. The disc is drawn on a 2D canvas a few times a second (half as often on the low quality), never per
 // frame; the game writes it, React never does.
 import type { Atlas } from '@miu/voxel/block-table';
@@ -15,7 +15,9 @@ const DISC_REACH = 36;
 /** Seconds between two drawings of the disc (low quality: twice as long). */
 const REDRAW_S = 0.25;
 /** What the small disc shows: the places worth heading for, not every stop and named place. */
-const ON_DISC: ReadonlySet<PlaceKind> = new Set(['gate', 'home', 'story', 'side', 'quest']);
+const ON_DISC: ReadonlySet<PlaceKind> = new Set(['gate', 'home', 'story', 'side', 'boss', 'quest']);
+/** A big boss's badge is this much larger than the others. */
+const BIG_MARKER = 1.3;
 
 export interface MinimapInput {
   atlas: Atlas;
@@ -148,7 +150,7 @@ export function createMinimap(host: HTMLElement, input: MinimapInput): Minimap {
     for (const m of markers) {
       if (!ON_DISC.has(m.kind) || !onDisc(view, m.x, m.z, dot)) continue;
       const [px, py] = toMinimap(view, m.x, m.z);
-      drawMarker(ctx, m.kind, px, py, dot, m.colour, outline);
+      drawMarker(ctx, m.kind, px, py, m.big ? dot * BIG_MARKER : dot, m.colour, outline);
     }
     const [px, py] = toMinimap(view, at.x, at.z);
     drawPlayer(ctx, px, py, Math.max(7, size * 0.05), at.facing, MARKER_COLOURS.player, outline);

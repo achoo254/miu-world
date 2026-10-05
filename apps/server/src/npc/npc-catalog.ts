@@ -4,7 +4,7 @@
 // every lesson of their map (the quest list follows file order: a story never takes the place of the first lesson).
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
-import { COOP_QUEST_PREFIX, STORY_QUEST_PREFIX, type QuestDefinition } from '@miu/schema/content';
+import { COOP_QUEST_PREFIX, GUARDIAN_QUEST_PREFIX, STORY_QUEST_PREFIX, type QuestDefinition } from '@miu/schema/content';
 import type { MailTemplate } from '@miu/schema/mail';
 import {
   MIN_ARCS_PER_MAP,
@@ -203,14 +203,15 @@ export function npcCatalogIssues(files: readonly NpcMapFile[], ctx: NpcCheckCont
 }
 
 /**
- * The quest list follows file order: every story chapter and every co-op challenge of a map sorts after every lesson
- * of that map, so neither ever takes the place of the map's first lesson (or any lesson) as the one to play next.
+ * The quest list follows file order: every story chapter, co-op challenge and zone guardian of a map sorts after every
+ * lesson of that map, so none ever takes the place of the map's first lesson (or any lesson) as the one to play next.
  */
 export function storyOrderIssues(quests: readonly QuestDefinition[]): string[] {
   const issues: string[] = [];
-  const kinds: Array<{ category: 'story' | 'coop'; prefix: string; name: string }> = [
+  const kinds: Array<{ category: 'story' | 'coop' | 'guardian'; prefix: string; name: string }> = [
     { category: 'story', prefix: STORY_QUEST_PREFIX, name: 'story chapter' },
     { category: 'coop', prefix: COOP_QUEST_PREFIX, name: 'co-op challenge' },
+    { category: 'guardian', prefix: GUARDIAN_QUEST_PREFIX, name: 'zone guardian' },
   ];
   const isLesson = (q: QuestDefinition): boolean => q.status === 'stub' || (q.category ?? 'main') === 'main';
   const lastLesson = new Map<string, string>();

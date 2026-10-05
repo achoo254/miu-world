@@ -1,6 +1,7 @@
 // How each marker looks on the round minimap and on the full map (2D canvas): a ring for a gate (its portal's
 // colour), a house for home, a gold star for the quest's place, a badge with a game pad for a character with
-// minigames, a badge with a bus for a ride station, a small dot for a named place, and the child's arrow.
+// minigames, a badge with a crown for a boss (a friendly one: no horns or swords), a badge with a bus for a ride
+// station, a small dot for a named place, and the child's arrow.
 import { headingAngle, type PlaceKind } from './minimap-model';
 
 /** A rounded rectangle on the current path (drawn with arcs: `roundRect` is missing on older iPads). */
@@ -77,6 +78,23 @@ export function drawMarker(ctx: CanvasRenderingContext2D, kind: PlaceKind, px: n
     ctx.moveTo(px, py + r * 0.5);
     ctx.bezierCurveTo(px - r * 0.85, py - r * 0.05, px - r * 0.35, py - r * 0.75, px, py - r * 0.25);
     ctx.bezierCurveTo(px + r * 0.35, py - r * 0.75, px + r * 0.85, py - r * 0.05, px, py + r * 0.5);
+    ctx.fill();
+  } else if (kind === 'boss') {
+    // A small crown: three points on a band, a dot on each point.
+    ctx.moveTo(px - r * 0.6, py + r * 0.42);
+    ctx.lineTo(px - r * 0.6, py - r * 0.3);
+    ctx.lineTo(px - r * 0.3, py + r * 0.02);
+    ctx.lineTo(px, py - r * 0.48);
+    ctx.lineTo(px + r * 0.3, py + r * 0.02);
+    ctx.lineTo(px + r * 0.6, py - r * 0.3);
+    ctx.lineTo(px + r * 0.6, py + r * 0.42);
+    ctx.closePath();
+    ctx.fill();
+    ctx.beginPath();
+    for (const [dx, dy] of [[-0.6, -0.38], [0, -0.56], [0.6, -0.38]] as const) {
+      ctx.moveTo(px + r * dx + r * 0.1, py + r * dy);
+      ctx.arc(px + r * dx, py + r * dy, r * 0.1, 0, Math.PI * 2);
+    }
     ctx.fill();
   } else if (kind === 'stop') {
     // A bus from the side: its body, a row of windows, two wheels.

@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { ChallengeContext } from '../challenge-frame';
 import { BossScreen } from './boss-screen';
+import { setLangMode } from '../../i18n/i18n';
 
 const bossStep: Extract<QuestStepPublic, { kind: 'boss' }> = {
   id: 'boss-forest',
@@ -92,5 +93,32 @@ describe('BossScreen', () => {
     expect(screen.getByText('0 / 240 HP')).not.toBeNull();
     expect(screen.getByText('Đã vượt qua thử thách trùm vui!')).not.toBeNull();
     expect(screen.getAllByText('Bé thông minh quá, khu rừng mở lối cho bé!').length).toBeGreaterThan(0);
+  });
+
+  it("says the server's line after a blow or a miss, and the HP left when it has none", () => {
+    const state = { hp: 160, answered: ['turn-1'] };
+    const { rerender } = render(<BossScreen step={bossStep} context={context} bossState={state} line={{ vi: 'Úi, trúng rồi!', en: 'Ouch, a hit!' }} onAnswer={() => undefined} onClose={() => undefined} />);
+    expect(screen.getByText('Úi, trúng rồi!')).not.toBeNull();
+    rerender(<BossScreen step={bossStep} context={context} bossState={state} onAnswer={() => undefined} onClose={() => undefined} />);
+    expect(screen.getByText('Cố lên nào! Ta vẫn còn 160 HP đấy!')).not.toBeNull();
+  });
+
+  it('speaks English when the boss has its twins: its name, its lines, the question and the choices', () => {
+    setLangMode('en', false);
+    try {
+      const step = {
+        ...bossStep,
+        en: { title: 'Forest fight', bossName: 'Old Tree Golem', introDialogue: 'Solve my riddles!', winDialogue: 'Clever you!' },
+        turns: bossStep.turns.map((t, i) => (i === 0 ? { ...t, en: { prompt: 'What does a cat say?', choices: ['Meow', 'Woof'] } } : t)),
+      };
+      render(<BossScreen step={step} context={context} onAnswer={() => undefined} onClose={() => undefined} />);
+      expect(screen.getByText('Old Tree Golem')).not.toBeNull();
+      expect(screen.getByText('Solve my riddles!')).not.toBeNull();
+      expect(screen.getByText('What does a cat say?')).not.toBeNull();
+      expect(screen.getByRole('radio', { name: 'Meow' })).not.toBeNull();
+      expect(screen.getByRole('button', { name: /Answer \(-80 HP\)/ })).not.toBeNull();
+    } finally {
+      setLangMode('vi', false);
+    }
   });
 });

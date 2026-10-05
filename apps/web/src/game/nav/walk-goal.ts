@@ -22,8 +22,12 @@ export interface GoalTarget {
   readonly available: boolean;
 }
 
-/** The walk to a goal, or null when there is nothing to walk to (a target not on this map or hidden now, a bad spot). */
+/**
+ * The walk to a goal, or null when there is nothing to walk to (a target not on this map or hidden now, a bad spot).
+ * A quest goal is the game's own to resolve (the quest's next place, or the play screen taking the quest up): none here.
+ */
 export function planWalk(goal: WalkGoal, targetOf: (id: string) => GoalTarget | undefined): PlannedWalk | null {
+  if ('quest' in goal) return null;
   if ('targetId' in goal) {
     const target = targetOf(goal.targetId);
     if (!target?.available) return null;

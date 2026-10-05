@@ -8,6 +8,12 @@ afterEach(cleanup);
 const parrot = { targetId: 'parrot-guide', kind: 'npc', name: 'Vẹt', label: 'Nói chuyện' } as const;
 
 describe('game store', () => {
+  it('counts each quest asked for from the full map, the same one twice included', () => {
+    const once = reduce(INITIAL_SNAPSHOT, { type: 'quest-pick', questId: 'vuot-ai-khu-rung' });
+    expect(once.questPick).toEqual({ questId: 'vuot-ai-khu-rung', count: 1 });
+    expect(reduce(once, { type: 'quest-pick', questId: 'vuot-ai-khu-rung' }).questPick).toEqual({ questId: 'vuot-ai-khu-rung', count: 2 });
+  });
+
   it('notifies subscribers on change and stops after unsubscribe', () => {
     const store = createGameStore();
     const listener = vi.fn();

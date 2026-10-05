@@ -49,6 +49,10 @@ const RiddleEn = z.strictObject({ ...enBase, question: Text });
 const ChallengeEn = z.strictObject({ ...enBase, prompt: Text, choices: z.array(Text).optional(), items: z.array(Text).optional(), elements: z.array(Text).optional() });
 /** A reward or a closing beat. */
 const BeatEn = z.strictObject({ ...enBase, text: Text });
+/** A boss: its name and what it says when the fight opens and when it is won. */
+const BossEn = z.strictObject({ ...enBase, bossName: Text, introDialogue: Text, winDialogue: Text });
+/** A boss's question: its prompt and the labels of its choices. */
+const BossTurnEn = z.strictObject({ prompt: Text, choices: z.array(Text).min(2) });
 /** A quest's own title and summary in English. */
 export const QuestEn = z.strictObject({ title: Text, summary: Text });
 export type QuestEn = z.infer<typeof QuestEn>;
@@ -267,6 +271,7 @@ export const BossTurn = z.object({
   choices: z.array(Choice).min(2),
   damage: z.number().int().positive().default(80),
   illustration: IllustrationRef.optional(),
+  en: BossTurnEn.optional(),
 });
 export type BossTurn = z.infer<typeof BossTurn>;
 
@@ -277,6 +282,7 @@ export const BossTurnWithSecret = z.strictObject({
   choices: z.array(Choice).min(2),
   damage: z.number().int().positive().default(80),
   illustration: IllustrationRef.optional(),
+  en: BossTurnEn.optional(),
   answer: ChoiceAnswer,
 });
 export type BossTurnWithSecret = z.infer<typeof BossTurnWithSecret>;
@@ -293,6 +299,7 @@ const bossShape = {
   maxHp: z.number().int().positive().default(500),
   damagePerTurn: z.number().int().positive().default(80),
   turns: z.array(BossTurn).min(2),
+  en: BossEn.optional(),
 };
 
 const rewardShape = { ...stepBase, kind: z.literal('reward'), text: Text, en: BeatEn.optional() };
@@ -474,6 +481,11 @@ export const QuestStep = z.discriminatedUnion('kind', [
     ...bossShape,
     ...curriculumRef,
     turns: z.array(BossTurnWithSecret).min(2),
+    /**
+     * What the boss says after a blow lands (`right`) and after a miss (`wrong`), rotated so no line comes twice in a
+     * row; the blow that wins the fight hears `winDialogue`. Server-only, like every step's feedback.
+     */
+    feedback: StepFeedback.optional(),
   }),
   z.discriminatedUnion('mode', [z.strictObject(coopPiecesShape), z.strictObject(coopTogetherShape), z.strictObject(coopBossShape)]),
 ]);
@@ -489,6 +501,11 @@ export function coopTasks(step: CoopStep): CoopTask[] {
 
 /** HP a boss blow takes when the step does not say. */
 export const COOP_DEFAULT_DAMAGE = 100;
+
+/** HP every turn of a boss takes together (a turn without its own damage takes the step's `damagePerTurn`). */
+export function bossDamage(step: { turns: ReadonlyArray<{ damage?: number }>; damagePerTurn: number }): number {
+  return step.turns.reduce((sum, t) => sum + (t.damage ?? step.damagePerTurn), 0);
+}
 
 function coopIssues(step: CoopStep): string[] {
   const issues: string[] = [];
@@ -668,7 +685,10 @@ function stepIssues(step: QuestStep, texts: Readonly<Record<string, unknown>>, a
       if ('answer' in turn && !turn.choices.some((c) => c.id === turn.answer.choice)) {
         issues.push(`turn ${turn.id}: answer choice is not one of the choices`);
       }
+      if (turn.en && turn.en.choices.length !== turn.choices.length) issues.push(`turn ${turn.id}: en has ${turn.en.choices.length} choices, the turn ${turn.choices.length}`);
     }
+    // Every turn answered right must beat the boss, or the fight could never be won.
+    if (bossDamage(step) < step.maxHp) issues.push(`the turns take ${bossDamage(step)} HP in all, less than the boss's ${step.maxHp}`);
   }
   if (step.kind === 'challenge') issues.push(...challengeIssues(step));
   if (step.kind === 'coop') issues.push(...coopIssues(step));
@@ -709,10 +729,17 @@ export const STORY_QUEST_PREFIX = 'yarn-';
  */
 export const COOP_QUEST_PREFIX = 'with-';
 /**
- * What a quest is: a lesson (`main`), a minigame played for fun (`side`), a chapter of a character's story, or a
- * co-op challenge played by a team (`coop`).
+ * Ids of zone guardians (`content/quests/ward-*.json`: each guards a zone of a map) start with this, so, like story
+ * chapters and co-op challenges, they sort after every lesson of their map (`pnpm content:check` enforces the order).
  */
-export const QUEST_CATEGORIES = ['main', 'side', 'story', 'coop'] as const;
+export const GUARDIAN_QUEST_PREFIX = 'ward-';
+/** A zone guardian's fight is short: this many questions at least, and at most. */
+export const GUARDIAN_TURNS = { min: 4, max: 5 } as const;
+/**
+ * What a quest is: a lesson (`main`), a minigame played for fun (`side`), a chapter of a character's story, a co-op
+ * challenge played by a team (`coop`), or a zone guardian's short boss fight (`guardian`).
+ */
+export const QUEST_CATEGORIES = ['main', 'side', 'story', 'coop', 'guardian'] as const;
 export type QuestCategoryId = (typeof QUEST_CATEGORIES)[number];
 
 const questFields = {
@@ -726,6 +753,8 @@ const questFields = {
    * never stands for a lesson: the quest list, the HUD tracker and the arrow follow lessons (`main`) only.
    * `story`: a chapter of a character's own story (content/npcs, `story` arcs): listed after the lessons, under the
    * character's name; offered by the character when the child talks to it; never counted as a lesson.
+   * `guardian`: a zone guardian's short boss fight (its questions from the skills of that zone's lessons), started by
+   * talking to the guardian, always open and never counted as a lesson; nothing waits for it.
    */
   category: z.enum(QUEST_CATEGORIES).default('main'),
   /** Learning content is drafted by AI and must be approved by a teacher before it reaches children. */
@@ -857,6 +886,36 @@ function coopQuestIssues(q: { id: string; lesson?: string | undefined; steps: Qu
   return issues;
 }
 
+/**
+ * A zone guardian's fight opens at the guardian (a dialogue there: the child talks to it to start), goes straight into
+ * its boss (4–5 questions, every one needed to win, a line after each blow and each miss), then runs its closing
+ * beats by itself. It ships in both languages.
+ */
+function guardianQuestIssues(q: { id: string; lesson?: string | undefined; steps: QuestStep[] }): string[] {
+  const issues: string[] = [];
+  if (!q.id.startsWith(GUARDIAN_QUEST_PREFIX)) issues.push(`a zone guardian id starts with "${GUARDIAN_QUEST_PREFIX}"`);
+  if (isTextbookQuest(q.id) || q.lesson) issues.push('a zone guardian plays no textbook lesson');
+  const [first] = q.steps;
+  const guardian = first?.kind === 'dialogue' && first.trigger === 'interact' ? first.target : undefined;
+  if (!guardian) issues.push('a zone guardian starts with a dialogue at the guardian, who opens the fight');
+  const bosses = q.steps.filter((s) => s.kind === 'boss');
+  if (bosses.length !== 1) issues.push('a zone guardian holds exactly one boss step');
+  for (const boss of bosses) {
+    if (boss.kind !== 'boss') continue;
+    if (guardian && boss.target !== guardian) issues.push(`step ${boss.id}: the guardian (${guardian}) is the boss`);
+    if (boss.turns.length < GUARDIAN_TURNS.min || boss.turns.length > GUARDIAN_TURNS.max) issues.push(`step ${boss.id}: a zone guardian asks ${GUARDIAN_TURNS.min}–${GUARDIAN_TURNS.max} questions, not ${boss.turns.length}`);
+    const least = Math.min(...boss.turns.map((t) => t.damage ?? boss.damagePerTurn));
+    if (bossDamage(boss) - least >= boss.maxHp) issues.push(`step ${boss.id}: the guardian falls before its last question (lower the damage or raise maxHp)`);
+    if (!boss.feedback) issues.push(`step ${boss.id}: the guardian answers every blow and every miss (feedback lines)`);
+  }
+  for (const step of q.steps.slice(1)) {
+    const allowed = step.kind === 'dialogue' || step.kind === 'boss' || step.kind === 'reward' || step.kind === 'next';
+    if (!allowed) issues.push(`step ${step.id}: a zone guardian has only dialogue, its boss, reward and next steps`);
+    else if (step.trigger !== 'auto') issues.push(`step ${step.id}: after the guardian's dialogue, the fight and its closing beats run by themselves (trigger "auto")`);
+  }
+  return issues;
+}
+
 /** Whether the English list has as many lines as the Vietnamese one (both absent counts as matching). */
 const sameLength = (en: readonly unknown[] | undefined, vi: readonly unknown[] | undefined): boolean => (en?.length ?? -1) === (vi?.length ?? -1);
 
@@ -917,6 +976,11 @@ export function englishIssues(q: { steps: QuestStep[]; en?: QuestEn | undefined 
         }
         break;
       }
+      case 'boss': {
+        if (!complete) break;
+        for (const turn of step.turns) if (!turn.en) issues.push(`${at}: turn ${turn.id} needs its English twin ("en")`);
+        break;
+      }
       case 'coop': {
         const twin = step.en;
         if (twin && twin.guide.length !== step.guide.length) issues.push(`${at}: en has ${twin.guide.length} guide lines, the step ${step.guide.length}`);
@@ -971,6 +1035,10 @@ function questIssues(q: {
     issues.push(...coopQuestIssues(q));
   } else if (q.id.startsWith(COOP_QUEST_PREFIX)) {
     issues.push(`a quest whose id starts with "${COOP_QUEST_PREFIX}" is a co-op challenge ("category": "coop")`);
+  } else if (q.category === 'guardian') {
+    issues.push(...guardianQuestIssues(q));
+  } else if (q.id.startsWith(GUARDIAN_QUEST_PREFIX)) {
+    issues.push(`a quest whose id starts with "${GUARDIAN_QUEST_PREFIX}" is a zone guardian ("category": "guardian")`);
   } else if (q.id.startsWith(STORY_QUEST_PREFIX) && q.category !== 'story') {
     issues.push(`a quest whose id starts with "${STORY_QUEST_PREFIX}" is a story chapter ("category": "story")`);
   } else if (q.category === 'story') {

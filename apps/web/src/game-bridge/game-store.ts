@@ -36,7 +36,7 @@ export type AutowalkState = 'idle' | 'finding' | 'walking' | 'arrived' | 'failed
  * A place to walk to, picked on the full map: a target of this map by id (a gate, a ride stop, a character, the
  * quest's place), or a spot on the ground (a named place).
  */
-export type WalkGoal = { targetId: string } | { position: readonly [number, number, number] };
+export type WalkGoal = { targetId: string } | { position: readonly [number, number, number] } | { quest: string };
 
 /** Server-backed state of region targets, pushed by React after each quest response. */
 export type TargetState = 'found' | 'open' | 'hidden';
@@ -59,6 +59,8 @@ export type GameEvent =
   | { type: 'interaction'; targetId: string }
   /** The child went through a gate to another map (its region). */
   | { type: 'travel'; region: string }
+  /** A boss picked on the full map whose quest is not the one played: the play screen takes that quest up. */
+  | { type: 'quest-pick'; questId: string }
   /** Miu cannot get out on her own (stuck in water, or the stick gets her nowhere). */
   | { type: 'stuck'; stuck: boolean }
   /** Whether the quest's target stands on this map, so the quest card can walk her there. */
@@ -86,6 +88,8 @@ export interface GameSnapshot {
   stuck: boolean;
   /** Last gate gone through: the region it leads to, and how many gates so far (the play screen moves maps). */
   travel: { region: string; count: number } | null;
+  /** Last quest asked for from the full map (a big boss's), and how many asks so far (the play screen switches to it). */
+  questPick: { questId: string; count: number } | null;
   /** The quest card offers to walk her to the target while this is true. */
   autowalkAvailable: boolean;
   autowalk: AutowalkState;
@@ -156,6 +160,7 @@ export const INITIAL_SNAPSHOT: GameSnapshot = {
   lastInteraction: null,
   stuck: false,
   travel: null,
+  questPick: null,
   autowalkAvailable: false,
   autowalk: 'idle',
   vehicle: null,
@@ -198,6 +203,8 @@ export function reduce(state: GameSnapshot, event: GameEvent): GameSnapshot {
       return state.stuck === event.stuck ? state : { ...state, stuck: event.stuck };
     case 'travel':
       return { ...state, travel: { region: event.region, count: (state.travel?.count ?? 0) + 1 } };
+    case 'quest-pick':
+      return { ...state, questPick: { questId: event.questId, count: (state.questPick?.count ?? 0) + 1 } };
     case 'autowalk-available':
       return state.autowalkAvailable === event.available ? state : { ...state, autowalkAvailable: event.available };
     case 'autowalk':

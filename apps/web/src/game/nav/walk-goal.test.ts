@@ -34,4 +34,8 @@ describe('planWalk', () => {
     expect(planWalk({ targetId: 'hidden' }, targetOf)).toBeNull();
     expect(planWalk({ position: [Number.NaN, 13, 2] }, targetOf)).toBeNull();
   });
+
+  it('leaves a walk to a quest to the game (its next place, or the play screen taking the quest up)', () => {
+    expect(planWalk({ quest: 'vuot-ai-khu-rung' }, targetOf)).toBeNull();
+  });
 });

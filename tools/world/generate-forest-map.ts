@@ -807,7 +807,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     canStand: (x, z) => canStand(x, z) && clearOfLife(x, z),
   });
   const giverAnchor = new Map(sideTable.givers.map((g) => [g.id, g.at ? { at: g.at } : { place: g.place ?? '' }] as const));
-  // The givers and the co-op hosts stand by the ways; only the givers have company round them.
+  // The givers, the co-op hosts and the zone guardians stand by the ways; only the givers have company round them.
   const standAnchor = standingAnchors(sideTable);
   const gladeCells = new Map(DISTRICTS.map((d) => [d.chapter, cellsIn(d.x - d.hx, d.z - d.hz, d.x + d.hx, d.z + d.hz)]));
   const allGlades = [...gladeCells.values()].flat();
@@ -825,7 +825,7 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
       keepClear: [...columnsOf(interactables.filter((t) => t.chapter === undefined)), ...villagerSpots, [spawn.x, spawn.z], ...gladeStart.values()],
       sideSpot: (giver, taken) => {
         const anchor = standAnchor.get(giver);
-        if (!anchor) throw new Error(`${MAP_ID}: ${giver} offers side quests or hosts a co-op challenge but is not a giver or host in tools/content/side-quests/khu-rung-bi-mat.json`);
+        if (!anchor) throw new Error(`${MAP_ID}: ${giver} offers side quests, hosts a co-op challenge or guards a zone but is not a giver, host or guardian in tools/content/side-quests/khu-rung-bi-mat.json`);
         return spots(anchor, [...taken, [spawn.x, spawn.z], ...gladeStart.values()]);
       },
     },

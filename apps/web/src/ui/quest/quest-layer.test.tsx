@@ -9,7 +9,7 @@ import { DialogueScreen } from '../dialogue/dialogue-screen';
 import { bestVoice, linesToRead } from '../dialogue/speech';
 import type { PlayerData } from '../player/player-data';
 import { PROGRESS, questList } from '../player/test-fixtures';
-import { QuestLayer } from './quest-layer';
+import { QuestLayer, guardianFightAt } from './quest-layer';
 
 const CHARACTER: CharacterDto = { species: 'cat', name: 'Mochi', equipped: [], pet: null };
 
@@ -209,5 +209,38 @@ describe('quest controller', () => {
     await vi.waitFor(() => expect(screen.queryByRole('dialog', { name: 'Mất kết nối mạng' })).toBeNull());
     expect(posts).toEqual(['/api/quests/forest-ch1/steps/meet-parrot/complete', '/api/quests/forest-ch1/steps/meet-parrot/complete']);
     expect(screen.getByRole('status').textContent).toBe('Cảm ơn Mochi nhiều nhé!');
+  });
+
+  it("takes up a zone guardian's fight when the child talks to the guardian during a lesson (no \"not now\" line)", async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url: string) => (url.startsWith('/api/npcs') ? json({ npcs: [] }) : json({ quests: [] }))),
+    );
+    const [lesson] = questList(0).quests;
+    if (!lesson || lesson.quest.status !== 'active') throw new Error('fixture');
+    const fight = {
+      ...lesson,
+      quest: {
+        ...lesson.quest,
+        id: 'ward-khu-rung-suoi',
+        category: 'guardian' as const,
+        steps: [QuestStepPublic.parse({ id: 'gap', title: 'Gặp', kind: 'dialogue', target: 'rai-ca-canh-suoi', lines: [{ speaker: 'Rái Cá', text: 'Đấu không?' }] })],
+      },
+    };
+    expect(guardianFightAt([lesson, fight], 'rai-ca-canh-suoi')?.quest.id).toBe('ward-khu-rung-suoi');
+    expect(guardianFightAt([lesson, fight], 'parrot-guide')).toBeNull();
+    const store = createGameStore();
+    const onPlayQuest = vi.fn();
+    render(
+      <MemoryRouter>
+        <QuestLayer store={store} data={{ character: CHARACTER, progress: PROGRESS, quests: [lesson, fight] }} questId="forest-ch1" region="khu-rung-bi-mat" onResponse={() => undefined} onOverlayChange={() => undefined} onPlayQuest={onPlayQuest} />
+      </MemoryRouter>,
+    );
+    await act(async () => {
+      store.emit({ type: 'interaction-prompt', prompt: { targetId: 'rai-ca-canh-suoi', kind: 'npc', name: 'Rái Cá', label: 'Thách đấu' } });
+      store.emit({ type: 'interaction', targetId: 'rai-ca-canh-suoi' });
+    });
+    expect(onPlayQuest).toHaveBeenCalledWith('ward-khu-rung-suoi', 'rai-ca-canh-suoi');
+    expect(screen.queryByRole('status')).toBeNull();
   });
 });

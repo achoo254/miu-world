@@ -6,7 +6,9 @@ import { emptyTimetable } from '@miu/schema/timetable';
 import type { GameStore } from '../../game-bridge/game-store';
 import { AccountProvider } from '../account/account-context';
 import { PROGRESS, questList } from '../player/test-fixtures';
-import { PlayScreen } from './play-screen';
+import { QuestStepPublic } from '@miu/schema/content';
+import type { QuestSummary } from '@miu/schema/game';
+import { PlayScreen, mapBossesOf } from './play-screen';
 
 const SCHOOL_SPOT = { map: 'truong-hoc', position: [60, 9, 70], facing: 0.5 };
 const FOREST_SPOT = { map: 'forest-ch1', position: [40, 12, 88], facing: -1 };
@@ -246,5 +248,27 @@ describe('PlayScreen under React StrictMode', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Thử kết nối lại' }));
     await vi.waitFor(() => expect(games.started).toBeGreaterThan(started));
     expect(screen.queryByRole('dialog', { name: 'Mất kết nối mạng' })).toBeNull();
+  });
+});
+
+describe('the bosses on the minimap', () => {
+  it("lists the region's big boss and zone guardians where they stand, named for the player, and nothing else", () => {
+    const [lesson] = questList(0).quests;
+    if (!lesson || lesson.quest.status !== 'active') throw new Error('fixture');
+    const base = lesson.quest;
+    const boss = (target: string, name: string) =>
+      QuestStepPublic.parse({ id: 'dau', title: 'Đấu', kind: 'boss', trigger: 'auto', target, bossId: target, bossName: name, introDialogue: 'Nào!', winDialogue: 'Thua!', turns: [{ id: 'a', prompt: '?', skill: 'logic', choices: [{ id: 'x', text: 'X' }, { id: 'y', text: 'Y' }] }, { id: 'b', prompt: '?', skill: 'logic', choices: [{ id: 'x', text: 'X' }, { id: 'y', text: 'Y' }] }] });
+    const quest = (id: string, category: 'main' | 'guardian' | 'story', steps: QuestStepPublic[], region = base.region): QuestSummary => ({ ...lesson, quest: { ...base, id, region, category, title: `Bài ${id}`, steps } });
+    const quests = [
+      lesson,
+      quest('vuot-ai-thu', 'main', [boss('than-rung', 'Thần Rừng của {name}')]),
+      quest('ward-thu', 'guardian', [boss('rai-ca', 'Rái Cá')]),
+      quest('yarn-thu', 'story', [boss('khac', 'Khác')]),
+      quest('ward-noi-khac', 'guardian', [boss('xa', 'Xa')], 'cho-phien'),
+    ];
+    expect(mapBossesOf(quests, lesson.quest.region, (t) => t.replace('{name}', 'Mochi'))).toEqual([
+      { questId: 'vuot-ai-thu', targetId: 'than-rung', name: 'Thần Rừng của Mochi', title: 'Bài vuot-ai-thu', big: true },
+      { questId: 'ward-thu', targetId: 'rai-ca', name: 'Rái Cá', title: 'Bài ward-thu', big: false },
+    ]);
   });
 });

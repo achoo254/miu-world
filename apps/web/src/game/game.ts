@@ -42,7 +42,7 @@ import { StatsOverlay } from './debug/stats-overlay';
 import { loadInteractables, namedForPlayer, pickNearest, type InteractableObject } from './entities/interactables';
 import { createTargetArrow } from './entities/target-arrow';
 import { createMinimap } from './hud/minimap';
-import { minimapMarkers, sideGiverMarkers } from './hud/minimap-model';
+import { bossMarkers, minimapMarkers, sideGiverMarkers, type MapBoss } from './hud/minimap-model';
 import { fetchSideGivers } from './hud/side-givers';
 import { fetchStoryTellers } from './hud/story-tellers';
 import { fillPlayerName } from '@miu/quest/player-name';
@@ -150,6 +150,8 @@ export interface GameOptions {
   objectStates?: Readonly<Record<string, boolean>>;
   /** The play screen's online UI (interaction menu on other players, party frame); none leaves it out. */
   social?: SocialStore;
+  /** The bosses of this map (its big boss and zone guardians, from the quest list): always marked on the minimap. */
+  bosses?: readonly MapBoss[];
 }
 
 /** Bytes downloaded so far (compressed transfer size, falling back to body size for cache hits). */
@@ -612,7 +614,11 @@ export class Game {
       atlasImage: (data.atlasTexture.image as CanvasImageSource | null) ?? null,
       horizon: data.horizon,
       size: [data.entities.size[0], data.entities.size[2]],
-      markers: minimapMarkers(entities, { regionName, homeName: mapId === mapForRegion(REGION_CATALOG, HOME_REGION) ? regionName(HOME_REGION) : undefined, homeRegion: HOME_REGION, fill: fillName, size: [data.entities.size[0], data.entities.size[2]] }),
+      markers: [
+        ...minimapMarkers(entities, { regionName, homeName: mapId === mapForRegion(REGION_CATALOG, HOME_REGION) ? regionName(HOME_REGION) : undefined, homeRegion: HOME_REGION, fill: fillName, size: [data.entities.size[0], data.entities.size[2]] }),
+        // Every boss, wherever it stands (the big boss too while another quest is played).
+        ...bossMarkers(data.entities.interactables, this.options.bosses ?? []),
+      ],
       title: regionName(this.options.region ?? '') ?? '',
       lite: quality.level === 'low',
       // "Đi tới đây" on the full map: the quest card's walk, to that place.
@@ -870,8 +876,16 @@ export class Game {
         if (command.type === 'pet-sniff') petLife?.sniff(sniffPlaces());
         if (command.type === 'autowalk-start' && hint?.available) walkTo({ target: hint.def, interactOnArrival: true });
         if (command.type === 'autowalk-to') {
-          const plan = planWalk(command.to, (id) => byId.get(id));
-          if (plan) walkTo(plan);
+          const goal = command.to;
+          // A big boss picked on the full map: the quest played here walks to its next place (the card's walk);
+          // another quest is the play screen's to take up (the map is built again for it).
+          if ('quest' in goal) {
+            if (goal.quest !== this.options.quest) store.emit({ type: 'quest-pick', questId: goal.quest });
+            else if (hint?.available) walkTo({ target: hint.def, interactOnArrival: true });
+          } else {
+            const plan = planWalk(goal, (id) => byId.get(id));
+            if (plan) walkTo(plan);
+          }
         }
         if (command.type === 'autowalk-stop') walker.stop();
         if (command.type === 'set-target-hint') {

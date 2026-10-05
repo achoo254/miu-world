@@ -11,9 +11,9 @@ import { Say, summaryOf, titleOf } from '../quest/content-text';
 
 const MAX_ROWS = 3;
 
-/** Playable quests, the one in progress first (same order as `currentQuest`), then catalogue order. */
+/** Playable quests, the one in progress first (same order as `currentQuest`), then catalogue order; a zone guardian is met in its zone. */
 export function todayQuests(quests: readonly QuestSummary[]): QuestSummary[] {
-  const playable = quests.filter((q) => q.quest.status === 'active' && (q.state === 'in-progress' || q.state === 'open'));
+  const playable = quests.filter((q) => q.quest.status === 'active' && q.quest.category !== 'guardian' && (q.state === 'in-progress' || q.state === 'open'));
   return [...playable.filter((q) => q.state === 'in-progress'), ...playable.filter((q) => q.state === 'open')].slice(0, MAX_ROWS);
 }
 

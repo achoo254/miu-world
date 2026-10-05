@@ -525,7 +525,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
         })
       : undefined;
   const giverAnchor = new Map(sideTable.givers.map((g) => [g.id, g.at ? { at: g.at } : { place: g.place ?? '' }] as const));
-  // The givers and the co-op hosts stand by the ways; only the givers have company round them.
+  // The givers, the co-op hosts and the zone guardians stand by the ways; only the givers have company round them.
   const standAnchor = standingAnchors(sideTable);
   const placed: Interactable[] = await placeRegionTargets({
     mapId: spec.mapId,
@@ -540,7 +540,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
         ? {
             sideSpot: (id: string, taken: ReadonlyArray<readonly [number, number]>) => {
               const anchor = standAnchor.get(id);
-              if (!anchor) throw new Error(`${spec.mapId}: ${id} offers side quests or hosts a co-op challenge but is not a giver or host in tools/content/side-quests/${spec.region}.json`);
+              if (!anchor) throw new Error(`${spec.mapId}: ${id} offers side quests, hosts a co-op challenge or guards a zone but is not a giver, host or guardian in tools/content/side-quests/${spec.region}.json`);
               return spots(anchor, [...taken, [spec.spawn.x, spec.spawn.z], ...chapterStart.values()]);
             },
           }

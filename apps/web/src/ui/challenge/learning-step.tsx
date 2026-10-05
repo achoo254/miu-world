@@ -64,6 +64,8 @@ export function LearningStep({
   onRight?: (copy: NotebookLine) => void;
 }): ReactElement | null {
   const [tryAgain, setTryAgain] = useState<Bilingual | null>(null);
+  /** What a boss said after the last answer, a blow's or a miss's (the server's line, else none). */
+  const [bossLine, setBossLine] = useState<Bilingual | null>(null);
   /** Wrong answers on this screen: the hint opens after the first, the answer after the second. */
   const [wrongTries, setWrongTries] = useDraftState('wrong-tries', 0, isCount);
   const fallback = useRef(freshPicker(TRY_AGAIN_LINES));
@@ -74,6 +76,7 @@ export function LearningStep({
     if (!response) return;
     playCue(response.correct ? 'right' : 'wrong');
     if (response.correct && response.copy) onRight?.(response.copy);
+    if (step.kind === 'boss') setBossLine(response.feedback ? twin(response.feedback, response.feedbackEn) : null);
     if (!response.correct) {
       setTryAgain(response.feedback ? mapBoth(twin(response.feedback, response.feedbackEn), fill) : mapBoth(fallback.current.next(), fill));
       setWrongTries((n) => n + 1);
@@ -101,7 +104,7 @@ export function LearningStep({
   if (step.kind === 'boss') {
     const questProgress = data.progress.quests.find((q) => q.questId === quest.id);
     const bossState = questProgress?.bossState?.[step.id];
-    return <BossScreen step={step} context={context} bossState={bossState} onAnswer={answer} onClose={onClose} />;
+    return <BossScreen step={step} context={context} bossState={bossState} line={bossLine} onAnswer={answer} onClose={onClose} />;
   }
   if (step.kind === 'read') return <ReadStepScreen step={step} context={context} texts={quest.texts} onAnswer={answer} />;
   if (step.kind === 'riddle') return <RiddleStepScreen step={step} context={context} onAnswer={answer} />;

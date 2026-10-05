@@ -2,13 +2,14 @@
 // phụ và muốn click trên bản đồ sẽ di chuyển đến địa điểm"), worked out once per map from its data so the
 // drawing stays a few canvas calls: the map from above (the top block of each horizon cell, shaded by height),
 // the gates in their portal colours named by where they lead, the child's home, the ride stops, the named
-// places, the characters who offer a minigame, the quest's place; each marker knows where a walk to it goes.
+// places, the characters who offer a minigame, every boss (the map's big boss and its zone guardians, always: owner,
+// 05/10/2026), the quest's place; each marker knows where a walk to it goes.
 // Pure: no DOM, no three.js.
 import { PORTAL_COLOURS, portalColourOf } from '@miu/voxel/portal-colours';
 import type { Interactable, WorldEntities } from '@miu/voxel/world-entities';
 import type { WalkGoal } from '../../game-bridge/game-store';
 
-export type MarkerKind = 'player' | 'quest' | 'home' | 'gate' | 'story' | 'side' | 'stop' | 'place';
+export type MarkerKind = 'player' | 'quest' | 'boss' | 'home' | 'gate' | 'story' | 'side' | 'stop' | 'place';
 /** What a marked place is (the child herself is drawn apart). */
 export type PlaceKind = Exclude<MarkerKind, 'player'>;
 
@@ -26,12 +27,15 @@ export interface MinimapMarker {
   detail?: string;
   /** Where "Đi tới đây" walks her. */
   goal: WalkGoal;
+  /** Drawn larger than the others of its kind (the map's big boss). */
+  big?: boolean;
 }
 
 /** Colours of the markers that are not a portal's. */
 export const MARKER_COLOURS: Readonly<Record<Exclude<MarkerKind, 'gate'>, string>> = {
   home: '#f45d4c',
   quest: '#ffc93c',
+  boss: '#7048e8',
   player: '#2f6ff0',
   side: '#d6336c',
   story: '#e8590c',
@@ -53,6 +57,7 @@ export const MAP_MARGIN = 24;
 /** The legend's groups, in the order the chips show them; each can be hidden from the map. */
 export const MARKER_GROUPS: ReadonlyArray<{ kind: PlaceKind; label: string }> = [
   { kind: 'quest', label: 'Nhiệm vụ' },
+  { kind: 'boss', label: 'Trùm' },
   { kind: 'story', label: 'Chuyện' },
   { kind: 'side', label: 'Trò chơi' },
   { kind: 'home', label: 'Nhà' },
@@ -176,6 +181,43 @@ export function sideGiverMarkers(interactables: readonly Interactable[], givers:
     return [{ id: target.id, kind: 'side', ...at(target), colour: MARKER_COLOURS.side, label: target.name, detail: `Trò chơi: ${giver.games.join(' · ')}`, goal: { targetId: target.id } }];
   });
   return [...story, ...side];
+}
+
+/** A boss of this map: the big boss (a lesson's last fight) or a zone guardian, from the player's quest list. */
+export interface MapBoss {
+  questId: string;
+  /** The boss step's target: where the boss stands. */
+  targetId: string;
+  /** The boss's name, the player's name filled in. */
+  name: string;
+  /** The quest's title, filled in. */
+  title: string;
+  /** The map's big boss (its fight ends a lesson); otherwise a zone guardian. */
+  big: boolean;
+}
+
+/**
+ * Every boss of the map, wherever it stands (`interactables`: the map's whole list, a big boss's included while
+ * another quest is played): a zone guardian is always in the world, so the walk goes to it and greets it (its fight
+ * opens); the big boss's walk asks for its quest (the game walks to its next place, or the play screen takes it up).
+ */
+export function bossMarkers(interactables: readonly Interactable[], bosses: readonly MapBoss[]): MinimapMarker[] {
+  return bosses.flatMap((boss): MinimapMarker[] => {
+    const target = interactables.find((t) => t.id === boss.targetId);
+    if (!target) return [];
+    return [
+      {
+        id: `boss-${boss.questId}`,
+        kind: 'boss',
+        ...at(target),
+        colour: MARKER_COLOURS.boss,
+        label: boss.name,
+        detail: `${boss.big ? 'Trùm lớn' : 'Trùm canh khu'} · ${boss.title}`,
+        goal: boss.big ? { quest: boss.questId } : { targetId: boss.targetId },
+        ...(boss.big ? { big: true } : {}),
+      },
+    ];
+  });
 }
 
 /** The quest's place now (the target the quest card points at). */
