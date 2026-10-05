@@ -38,7 +38,22 @@
           "prompt": "Ngày đầu vào lớp Hai, bạn nhỏ gặp cô giáo ở cổng. Lời chào nào lễ phép?",
           "choices": ["Em chào cô ạ!", "Chào nhé!", "Ê cô ơi!"],
           "answer": 0,
-          "en": { "prompt": "On the first day of Year 2 a pupil meets the teacher at the gate. Which greeting is polite?", "choices": ["Em chào cô ạ! (polite hello)", "Chào nhé! (casual hi)", "Ê cô ơi! (hey, you)"] }
+          "guide": [
+            "Nghĩ xem bạn nhỏ đang chào ai: cô giáo là người lớn tuổi hơn mình.",
+            "Tìm lời chào có đủ người chào, người được chào và tiếng thưa ở cuối."
+          ],
+          "hint": "Chào người lớn thì xưng «em» và kết thúc bằng một tiếng «ạ» lễ phép.",
+          "explain": "«Em chào cô ạ!» có xưng em, gọi cô và có «ạ» nên lễ phép; «Chào nhé!» là chào bạn bè, «Ê cô ơi!» thiếu lễ độ.",
+          "en": {
+            "prompt": "On the first day of Year 2 a pupil meets the teacher at the gate. Which greeting is polite?",
+            "choices": ["Em chào cô ạ! (polite hello)", "Chào nhé! (casual hi)", "Ê cô ơi! (hey, you)"],
+            "guide": [
+              "Think about who is being greeted: the teacher is older than the pupil.",
+              "Look for the greeting that names the speaker and the teacher and ends with a polite word."
+            ],
+            "hint": "Greeting an adult, a pupil calls themself «em» and ends with the polite little word «ạ».",
+            "explain": "«Em chào cô ạ!» uses «em», addresses the teacher and ends with «ạ», so it is polite; «Chào nhé!» is for friends and «Ê cô ơi!» is rude."
+          }
         },
         {
           "id": "truoc-chu-d",
@@ -46,7 +61,22 @@
           "prompt": "Trong bảng chữ cái, chữ nào đứng ngay trước chữ D?",
           "choices": ["Đ", "C", "E"],
           "answer": 1,
-          "en": { "prompt": "In the Vietnamese alphabet, which letter comes just before D?", "choices": ["Đ", "C", "E"] }
+          "guide": [
+            "Đọc bảng chữ cái từ chữ A cho tới khi gặp chữ D.",
+            "Chữ cần tìm là chữ bạn vừa đọc ngay trước khi tới D."
+          ],
+          "hint": "Đ đứng sau D chứ không đứng trước; chữ cần tìm là chữ cái thứ năm trong bảng.",
+          "explain": "Thứ tự là …b, c, d, đ, e…, nên ngay trước D là C; Đ đứng sau D, còn E đứng sau Đ.",
+          "en": {
+            "prompt": "In the Vietnamese alphabet, which letter comes just before D?",
+            "choices": ["Đ", "C", "E"],
+            "guide": [
+              "Say the alphabet from A until you reach D.",
+              "The letter you want is the one you said just before D."
+            ],
+            "hint": "Đ comes after D, not before it; the letter you need is the fifth in the alphabet.",
+            "explain": "The order is …b, c, d, đ, e…, so C comes right before D; Đ follows D and E follows Đ."
+          }
         },
         {
           "id": "su-vat-lop",
@@ -54,7 +84,22 @@
           "prompt": "Từ nào gọi tên một đồ vật trong lớp học của Cò?",
           "choices": ["cái bảng", "đọc bài", "chăm chỉ"],
           "answer": 0,
-          "en": { "prompt": "Which word names a thing in Cò's classroom?", "choices": ["cái bảng (the board)", "đọc bài (read aloud)", "chăm chỉ (hard-working)"] }
+          "guide": [
+            "Nhìn ba từ và hỏi: từ nào là một vật nhìn thấy, chạm được trong lớp?",
+            "Gạt bỏ từ chỉ việc làm và từ chỉ tính nết của học sinh."
+          ],
+          "hint": "Đồ vật trong lớp là thứ thầy cô và học sinh dùng hằng ngày, như phấn, bàn, ghế.",
+          "explain": "«Cái bảng» là đồ vật treo trên tường lớp; «đọc bài» là hoạt động, «chăm chỉ» là đặc điểm của người.",
+          "en": {
+            "prompt": "Which word names a thing in Cò's classroom?",
+            "choices": ["cái bảng (the board)", "đọc bài (read aloud)", "chăm chỉ (hard-working)"],
+            "guide": [
+              "Look at the three words and ask: which is a thing you can see or touch in the classroom?",
+              "Cross out the word for an activity and the word for a pupil's quality."
+            ],
+            "hint": "Classroom things are what teachers and pupils use every day, like chalk, desks and chairs.",
+            "explain": "«cái bảng» (the board) is a thing on the classroom wall; «đọc bài» is an activity and «chăm chỉ» describes a person."
+          }
         },
         {
           "id": "cau-gioi-thieu",
@@ -62,7 +107,22 @@
           "prompt": "Câu nào là câu giới thiệu về bản thân?",
           "choices": ["Tớ là Cò, tớ giữ giếng làng.", "Giếng làng sâu ghê!", "Cậu uống nước chưa?"],
           "answer": 0,
-          "en": { "prompt": "Which sentence introduces the speaker?", "choices": ["Tớ là Cò, tớ giữ giếng làng. (I'm Cò, I keep the well.)", "Giếng làng sâu ghê! (The well is so deep!)", "Cậu uống nước chưa? (Have you had a drink?)"] }
+          "guide": [
+            "Nhớ lại: câu giới thiệu cho người nghe biết người nói là ai, làm gì.",
+            "Đọc lần lượt ba câu, loại câu khen giếng và câu hỏi bạn."
+          ],
+          "hint": "Câu giới thiệu thường có mẫu «Tớ là…» hay «Em là…» kèm việc mình làm.",
+          "explain": "«Tớ là Cò, tớ giữ giếng làng.» nói tên và việc của Cò nên là câu giới thiệu; hai câu kia là câu khen và câu hỏi.",
+          "en": {
+            "prompt": "Which sentence introduces the speaker?",
+            "choices": ["Tớ là Cò, tớ giữ giếng làng. (I'm Cò, I keep the well.)", "Giếng làng sâu ghê! (The well is so deep!)", "Cậu uống nước chưa? (Have you had a drink?)"],
+            "guide": [
+              "Remember: an introduction tells the listener who the speaker is and what they do.",
+              "Read the three sentences in turn and rule out the one praising the well and the question."
+            ],
+            "hint": "Introductions often use the pattern «Tớ là…» or «Em là…» (I am…) plus what you do.",
+            "explain": "«Tớ là Cò, tớ giữ giếng làng.» gives Cò's name and job, so it introduces; the others praise the well and ask a question."
+          }
         }
       ],
       "en": {
@@ -125,7 +185,22 @@
           "prompt": "Thỏ Ngọc hỏi: trong ba từ sau, từ nào chỉ người?",
           "choices": ["bác nông dân", "cánh diều", "bãi cỏ"],
           "answer": 0,
-          "en": { "prompt": "Thỏ Ngọc asks: which of these words names a person?", "choices": ["bác nông dân (the farmer)", "cánh diều (the kite)", "bãi cỏ (the meadow)"] }
+          "guide": [
+            "Đọc ba từ và hỏi: từ nào gọi tên một người, không phải đồ vật hay nơi chốn?",
+            "Loại từ chỉ món đồ chơi bay trên trời và từ chỉ một khoảng đất."
+          ],
+          "hint": "Từ chỉ người thường gọi theo nghề hay cách xưng hô, như cô giáo, chú bộ đội.",
+          "explain": "«Bác nông dân» là người làm ruộng; «cánh diều» là đồ vật, «bãi cỏ» là nơi chốn.",
+          "en": {
+            "prompt": "Thỏ Ngọc asks: which of these words names a person?",
+            "choices": ["bác nông dân (the farmer)", "cánh diều (the kite)", "bãi cỏ (the meadow)"],
+            "guide": [
+              "Read the three words and ask: which names a person, not a thing or a place?",
+              "Rule out the toy that flies in the sky and the stretch of ground."
+            ],
+            "hint": "Words for people often name a job or how we address someone, like a teacher or a soldier.",
+            "explain": "«bác nông dân» (the farmer) is a person who works the fields; «cánh diều» is a thing and «bãi cỏ» a place."
+          }
         },
         {
           "id": "ngac-nhien",
@@ -133,7 +208,22 @@
           "prompt": "Sau cơn mưa trên bãi cỏ, câu nào thể hiện sự ngạc nhiên?",
           "choices": ["Ôi, cầu vồng đẹp quá!", "Cầu vồng có bảy màu.", "Cầu vồng ở phía nào?"],
           "answer": 0,
-          "en": { "prompt": "After the rain on the meadow, which sentence shows surprise?", "choices": ["Ôi, cầu vồng đẹp quá! (Oh, what a lovely rainbow!)", "Cầu vồng có bảy màu. (A rainbow has seven colours.)", "Cầu vồng ở phía nào? (Where is the rainbow?)"] }
+          "guide": [
+            "Đọc to từng câu bằng giọng tự nhiên như khi vừa nhìn thấy cầu vồng.",
+            "Câu nào cho thấy người nói bất ngờ, thích thú chứ không chỉ kể hay hỏi?"
+          ],
+          "hint": "Câu bày tỏ ngạc nhiên hay mở đầu bằng «Ôi», «A», «Ồ» và kết thúc bằng dấu chấm than.",
+          "explain": "«Ôi, cầu vồng đẹp quá!» có tiếng «Ôi» và dấu chấm than nên thể hiện ngạc nhiên; hai câu kia là câu kể và câu hỏi.",
+          "en": {
+            "prompt": "After the rain on the meadow, which sentence shows surprise?",
+            "choices": ["Ôi, cầu vồng đẹp quá! (Oh, what a lovely rainbow!)", "Cầu vồng có bảy màu. (A rainbow has seven colours.)", "Cầu vồng ở phía nào? (Where is the rainbow?)"],
+            "guide": [
+              "Read each sentence aloud the way you would on spotting a rainbow.",
+              "Which one shows the speaker is surprised and delighted, not just telling or asking?"
+            ],
+            "hint": "Sentences of surprise often start with «Ôi», «A» or «Ồ» and end with an exclamation mark.",
+            "explain": "«Ôi, cầu vồng đẹp quá!» has «Ôi» and an exclamation mark, so it shows surprise; the others tell and ask."
+          }
         },
         {
           "id": "sau-chu-l",
@@ -141,7 +231,22 @@
           "prompt": "Trong bảng chữ cái, chữ nào đứng ngay sau chữ L?",
           "choices": ["M", "N", "K"],
           "answer": 0,
-          "en": { "prompt": "In the Vietnamese alphabet, which letter comes right after L?", "choices": ["M", "N", "K"] }
+          "guide": [
+            "Đọc bảng chữ cái bắt đầu từ chữ K: k, l, rồi đọc tiếp.",
+            "Chữ cần tìm là chữ bạn đọc ngay sau L."
+          ],
+          "hint": "K đứng trước L, còn chữ cần tìm đứng sát ngay trước N.",
+          "explain": "Thứ tự là …k, l, m, n…, nên ngay sau L là M; N còn cách L một chữ, K thì đứng trước L.",
+          "en": {
+            "prompt": "In the Vietnamese alphabet, which letter comes right after L?",
+            "choices": ["M", "N", "K"],
+            "guide": [
+              "Say the alphabet starting from K: k, l, then keep going.",
+              "The letter you want is the one you say straight after L."
+            ],
+            "hint": "K comes before L, and the letter you want sits right before N.",
+            "explain": "The order runs …k, l, m, n…, so M follows L; N is one letter further on and K comes before L."
+          }
         },
         {
           "id": "cau-hoat-dong",
@@ -149,7 +254,22 @@
           "prompt": "Câu nào nêu một hoạt động diễn ra trên bãi cỏ?",
           "choices": ["Đàn vịt lạch bạch xuống sông.", "Đàn vịt trắng muốt.", "Đàn vịt của bà."],
           "answer": 0,
-          "en": { "prompt": "Which sentence tells about something happening on the meadow (an action)?", "choices": ["Đàn vịt lạch bạch xuống sông. (The ducks waddle into the river.)", "Đàn vịt trắng muốt. (The ducks are snow-white.)", "Đàn vịt của bà. (Grandma's ducks.)"] }
+          "guide": [
+            "Đọc ba câu về đàn vịt và tìm câu có một việc đàn vịt đang làm.",
+            "Gạt câu chỉ tả màu lông và câu chỉ nói đàn vịt là của ai."
+          ],
+          "hint": "Câu nêu hoạt động trả lời được câu hỏi «Đàn vịt đang làm gì?».",
+          "explain": "«Đàn vịt lạch bạch xuống sông.» kể việc đàn vịt đi xuống sông; «trắng muốt» tả màu lông, «của bà» chỉ người chủ.",
+          "en": {
+            "prompt": "Which sentence tells about something happening on the meadow (an action)?",
+            "choices": ["Đàn vịt lạch bạch xuống sông. (The ducks waddle into the river.)", "Đàn vịt trắng muốt. (The ducks are snow-white.)", "Đàn vịt của bà. (Grandma's ducks.)"],
+            "guide": [
+              "Read the three sentences about the ducks and find one where they are doing something.",
+              "Set aside the sentence about their colour and the one saying whose ducks they are."
+            ],
+            "hint": "A sentence about an action answers «what are the ducks doing?»",
+            "explain": "«Đàn vịt lạch bạch xuống sông.» tells of the ducks waddling into the river; «trắng muốt» is their colour and «của bà» says whose they are."
+          }
         }
       ],
       "en": {
@@ -212,7 +332,22 @@
           "prompt": "Từ nào chỉ hoạt động của con đò trên sông?",
           "choices": ["trôi", "xanh", "mái chèo"],
           "answer": 0,
-          "en": { "prompt": "Which word is something the ferry boat does on the river (an action)?", "choices": ["trôi (drift)", "xanh (green)", "mái chèo (oar)"] }
+          "guide": [
+            "Hình dung con đò giữa dòng sông và hỏi: con đò đang làm gì?",
+            "Gạt từ chỉ màu sắc và từ chỉ đồ vật đi cùng con đò."
+          ],
+          "hint": "Từ chỉ hoạt động là việc con đò làm khi nước sông chảy, không phải màu hay đồ vật.",
+          "explain": "«Trôi» là việc con đò làm khi theo dòng nước; «xanh» là màu, «mái chèo» là đồ vật.",
+          "en": {
+            "prompt": "Which word is something the ferry boat does on the river (an action)?",
+            "choices": ["trôi (drift)", "xanh (green)", "mái chèo (oar)"],
+            "guide": [
+              "Picture the ferry boat on the river and ask: what is it doing?",
+              "Set aside the colour word and the object that goes with the boat."
+            ],
+            "hint": "The action word is what the boat does as the river flows, not a colour or an object.",
+            "explain": "«trôi» (drift) is what the boat does on the current; «xanh» is a colour and «mái chèo» (oar) an object."
+          }
         },
         {
           "id": "sau-chu-u",
@@ -220,7 +355,22 @@
           "prompt": "Trong bảng chữ cái tiếng Việt, chữ nào đứng ngay sau chữ U?",
           "choices": ["Ư", "V", "T"],
           "answer": 0,
-          "en": { "prompt": "In the Vietnamese alphabet, which letter comes right after U?", "choices": ["Ư", "V", "T"] }
+          "guide": [
+            "Đọc phần cuối bảng chữ cái: …r, s, t, u, rồi đọc thêm một chữ.",
+            "Để ý các chữ có dấu phụ: mỗi chữ đứng ngay sau chữ gốc của nó, như Ă sau A."
+          ],
+          "hint": "T đứng trước U; giữa U và V còn chen một chữ có râu.",
+          "explain": "Thứ tự là …t, u, ư, v…, nên ngay sau U là Ư; V đứng sau Ư, còn T đứng trước U.",
+          "en": {
+            "prompt": "In the Vietnamese alphabet, which letter comes right after U?",
+            "choices": ["Ư", "V", "T"],
+            "guide": [
+              "Say the end of the alphabet: …r, s, t, u, then one more letter.",
+              "Watch the letters with extra marks: each comes right after its plain letter, like Ă after A."
+            ],
+            "hint": "T comes before U, and between U and V there is a letter with a little hook (râu).",
+            "explain": "The order is …t, u, ư, v…, so Ư comes right after U; V follows Ư and T comes before U."
+          }
         },
         {
           "id": "dap-loi-khen",
@@ -228,7 +378,22 @@
           "prompt": "Bạn khen: «Cậu vẽ con cua đẹp quá!». Đáp lại thế nào cho lịch sự?",
           "choices": ["Tớ cảm ơn cậu nhé!", "Tất nhiên rồi!", "Kệ tớ!"],
           "answer": 0,
-          "en": { "prompt": "A friend says: «You drew that crab so well!». Which reply is polite?", "choices": ["Tớ cảm ơn cậu nhé! (Thank you!)", "Tất nhiên rồi! (Of course!)", "Kệ tớ! (Leave me alone!)"] }
+          "guide": [
+            "Nghĩ xem khi được bạn khen, mình đáp thế nào để bạn cũng thấy vui.",
+            "Loại câu tự khen mình và câu gạt bạn đi."
+          ],
+          "hint": "Lời đáp lịch sự với lời khen thường gửi lời cảm ơn tới người đã khen.",
+          "explain": "«Tớ cảm ơn cậu nhé!» đáp lời khen bằng lời cảm ơn nên lịch sự; «Tất nhiên rồi!» nghe tự cao, «Kệ tớ!» thì thô.",
+          "en": {
+            "prompt": "A friend says: «You drew that crab so well!». Which reply is polite?",
+            "choices": ["Tớ cảm ơn cậu nhé! (Thank you!)", "Tất nhiên rồi! (Of course!)", "Kệ tớ! (Leave me alone!)"],
+            "guide": [
+              "Think about how to reply to a compliment so your friend feels good too.",
+              "Rule out the reply that boasts and the one that pushes the friend away."
+            ],
+            "hint": "A polite answer to praise usually thanks the person who gave it.",
+            "explain": "«Tớ cảm ơn cậu nhé!» (Thank you!) answers praise with thanks, so it is polite; «Tất nhiên rồi!» boasts and «Kệ tớ!» is rude."
+          }
         },
         {
           "id": "xep-cau-ben",
@@ -236,7 +401,22 @@
           "prompt": "Xếp các từ «em, ra, bến sông, chơi» thành câu. Câu nào đúng?",
           "choices": ["Em ra bến sông chơi.", "Bến sông em ra chơi.", "Chơi em ra bến sông."],
           "answer": 0,
-          "en": { "prompt": "Put «em, ra, bến sông, chơi» in order to make a sentence. Which is right?", "choices": ["Em ra bến sông chơi. (I go to the river landing to play.)", "Bến sông em ra chơi. (muddled)", "Chơi em ra bến sông. (muddled)"] }
+          "guide": [
+            "Tìm người làm việc trong câu và đặt người đó lên đầu.",
+            "Sau người làm là việc làm và nơi tới; đọc lại từng cách xếp xem cách nào xuôi tai."
+          ],
+          "hint": "Câu kể thường theo thứ tự ai, làm gì, ở đâu; câu mở đầu bằng «Chơi» hay «Bến sông» nghe ngược.",
+          "explain": "«Em ra bến sông chơi.» đi đúng thứ tự ai (em) rồi làm gì (ra bến sông chơi); hai cách kia đảo lộn nên khó hiểu.",
+          "en": {
+            "prompt": "Put «em, ra, bến sông, chơi» in order to make a sentence. Which is right?",
+            "choices": ["Em ra bến sông chơi. (I go to the river landing to play.)", "Bến sông em ra chơi. (muddled)", "Chơi em ra bến sông. (muddled)"],
+            "guide": [
+              "Find who does something in the sentence and put them first.",
+              "After the doer come the action and the place; read each order aloud to hear which flows."
+            ],
+            "hint": "Telling sentences usually go who, does what, where; starting with «Chơi» or «Bến sông» sounds back to front.",
+            "explain": "«Em ra bến sông chơi.» follows who (em) then what (go to the landing to play); the other two are jumbled."
+          }
         }
       ],
       "en": {
@@ -299,7 +479,22 @@
           "prompt": "Từ nào chỉ đặc điểm của bông sen trong đầm?",
           "choices": ["thơm ngát", "hái sen", "đầm nước"],
           "answer": 0,
-          "en": { "prompt": "Which word describes what the lotus flowers in the pond are like?", "choices": ["thơm ngát (sweet-smelling)", "hái sen (pick lotus)", "đầm nước (the pond)"] }
+          "guide": [
+            "Hình dung bông sen giữa đầm: nó trông ra sao, ngửi thấy thế nào?",
+            "Loại từ chỉ việc người ta làm với sen và từ chỉ nơi sen mọc."
+          ],
+          "hint": "Từ chỉ đặc điểm tả màu, mùi, hình dáng của sự vật, như «trắng muốt», «to tròn».",
+          "explain": "«Thơm ngát» tả mùi hương của bông sen nên là đặc điểm; «hái sen» là hoạt động, «đầm nước» là nơi chốn.",
+          "en": {
+            "prompt": "Which word describes what the lotus flowers in the pond are like?",
+            "choices": ["thơm ngát (sweet-smelling)", "hái sen (pick lotus)", "đầm nước (the pond)"],
+            "guide": [
+              "Picture a lotus in the middle of the pond: what does it look and smell like?",
+              "Rule out the word for what people do with lotuses and the word for where they grow."
+            ],
+            "hint": "Describing words tell colour, smell or shape, like «trắng muốt» (snow-white) or «to tròn» (big and round).",
+            "explain": "«thơm ngát» (sweet-smelling) describes the lotus's scent, so it is a feature; «hái sen» is an action and «đầm nước» a place."
+          }
         },
         {
           "id": "viet-hoa-ten",
@@ -307,7 +502,22 @@
           "prompt": "Sư Tử Thủ Môn ghi tên cầu thủ lên bảng. Tên nào được viết hoa đúng?",
           "choices": ["Lê Văn Hùng", "lê văn hùng", "Lê văn hùng"],
           "answer": 0,
-          "en": { "prompt": "Sư Tử Thủ Môn writes a player's name on the board. Which name has the right capital letters?", "choices": ["Lê Văn Hùng", "lê văn hùng", "Lê văn hùng"] }
+          "guide": [
+            "Đếm xem tên cầu thủ có mấy tiếng: họ, tên đệm và tên.",
+            "Nhớ quy tắc: tên riêng của người viết hoa chữ cái đầu của mọi tiếng."
+          ],
+          "hint": "Kiểm tra lần lượt từng tiếng; chỉ một tiếng viết thường là tên đó chưa đúng.",
+          "explain": "Tên người viết hoa chữ đầu của cả ba tiếng họ, đệm, tên, nên «Lê Văn Hùng» đúng; hai cách kia còn tiếng viết thường.",
+          "en": {
+            "prompt": "Sư Tử Thủ Môn writes a player's name on the board. Which name has the right capital letters?",
+            "choices": ["Lê Văn Hùng", "lê văn hùng", "Lê văn hùng"],
+            "guide": [
+              "Count the parts of the player's name: family name, middle name and given name.",
+              "Recall the rule: in a person's name, every part starts with a capital letter."
+            ],
+            "hint": "Check each part in turn; a single part in lower case makes the name wrong.",
+            "explain": "Every part of a person's name takes a capital, so «Lê Văn Hùng» is right; the other two leave parts in lower case."
+          }
         },
         {
           "id": "xep-ten",
@@ -315,7 +525,22 @@
           "prompt": "Xếp ba bạn Hà, Bình, Đức theo thứ tự bảng chữ cái. Bạn nào đứng đầu?",
           "choices": ["Bình", "Đức", "Hà"],
           "answer": 0,
-          "en": { "prompt": "Put Hà, Bình and Đức in alphabetical order. Who comes first?", "choices": ["Bình", "Đức", "Hà"] }
+          "guide": [
+            "Nhìn chữ cái đầu của mỗi tên: H, B, Đ.",
+            "Tìm xem trong bảng chữ cái, chữ nào trong ba chữ ấy xuất hiện sớm nhất."
+          ],
+          "hint": "Bảng chữ cái đi a, ă, â, b, c, d, đ… rồi mãi sau mới tới h; chữ đến trước đứng đầu.",
+          "explain": "B đứng trước Đ, Đ đứng trước H, nên thứ tự là Bình, Đức, Hà và Bình đứng đầu.",
+          "en": {
+            "prompt": "Put Hà, Bình and Đức in alphabetical order. Who comes first?",
+            "choices": ["Bình", "Đức", "Hà"],
+            "guide": [
+              "Look at the first letter of each name: H, B, Đ.",
+              "Find which of those three letters comes earliest in the alphabet."
+            ],
+            "hint": "The alphabet goes a, ă, â, b, c, d, đ… and only much later h; the earliest letter leads.",
+            "explain": "B comes before Đ and Đ before H, so the order is Bình, Đức, Hà, with Bình first."
+          }
         },
         {
           "id": "chuc-mung",
@@ -323,7 +548,22 @@
           "prompt": "Đội bạn vừa ghi bàn đẹp. Lời chúc mừng nào phù hợp?",
           "choices": ["Chúc mừng các cậu nhé!", "Bàn đó không tính!", "Thôi về nhà đi!"],
           "answer": 0,
-          "en": { "prompt": "The other team has just scored a lovely goal. Which words congratulate them?", "choices": ["Chúc mừng các cậu nhé! (Well done, you lot!)", "Bàn đó không tính! (That doesn't count!)", "Thôi về nhà đi! (Just go home!)"] }
+          "guide": [
+            "Nghĩ xem khi đội bạn ghi bàn đẹp, nói gì để cho thấy mình vui cùng họ.",
+            "Loại câu chê bai bàn thắng và câu xua đuổi đội bạn."
+          ],
+          "hint": "Thi đấu đẹp là biết vui cho đội bạn khi họ chơi hay, kể cả khi lưới nhà vừa rung.",
+          "explain": "«Chúc mừng các cậu nhé!» vui cho đội bạn vừa ghi bàn; hai câu kia chê bai và xua đuổi nên không phải lời chúc mừng.",
+          "en": {
+            "prompt": "The other team has just scored a lovely goal. Which words congratulate them?",
+            "choices": ["Chúc mừng các cậu nhé! (Well done, you lot!)", "Bàn đó không tính! (That doesn't count!)", "Thôi về nhà đi! (Just go home!)"],
+            "guide": [
+              "Think about what to say to show you are happy for the team that scored.",
+              "Rule out the reply that sneers at the goal and the one sending them away."
+            ],
+            "hint": "Good sport means being glad for the other team when they play well, even if they just scored on you.",
+            "explain": "«Chúc mừng các cậu nhé!» (Well done, you lot!) is glad for the scorers; the other two sneer and send them off."
+          }
         },
         {
           "id": "du-bi",
@@ -331,7 +571,22 @@
           "prompt": "Bạn Nam ngồi ghế dự bị nhưng vẫn hò reo cổ vũ cả đội suốt trận. Nam là người thế nào?",
           "choices": ["biết cổ vũ đồng đội", "lười tập luyện", "hay giận dỗi"],
           "answer": 0,
-          "en": { "prompt": "Nam sits on the bench but cheers for the team all match. What is Nam like?", "choices": ["biết cổ vũ đồng đội (supports the team)", "lười tập luyện (lazy at training)", "hay giận dỗi (often sulks)"] }
+          "guide": [
+            "Đọc lại việc Nam làm: ngồi ghế dự bị nhưng vẫn hò reo suốt trận.",
+            "Hỏi: việc làm ấy cho thấy Nam đối với cả đội thế nào?"
+          ],
+          "hint": "Nam không được vào sân mà vẫn reo hò cho đội, vậy Nam không lười cũng không giận dỗi.",
+          "explain": "Ngồi ngoài mà vẫn hò reo cho cả đội nên Nam biết cổ vũ đồng đội; không chi tiết nào nói Nam lười hay giận.",
+          "en": {
+            "prompt": "Nam sits on the bench but cheers for the team all match. What is Nam like?",
+            "choices": ["biết cổ vũ đồng đội (supports the team)", "lười tập luyện (lazy at training)", "hay giận dỗi (often sulks)"],
+            "guide": [
+              "Reread what Nam does: he sits on the bench yet cheers all match.",
+              "Ask: what does that show about how Nam treats the team?"
+            ],
+            "hint": "Nam is not on the pitch but still cheers, so he is neither lazy nor sulking.",
+            "explain": "Cheering for the team from the bench shows Nam «biết cổ vũ đồng đội» (supports the team); nothing says he is lazy or sulks."
+          }
         }
       ],
       "en": {

@@ -47,13 +47,25 @@
             "hình tròn"
           ],
           "answer": 0,
+          "guide": [
+            "Đếm số cạnh của hình Hổ Xanh vẽ rồi so với từng hình trong ba lựa chọn.",
+            "Nhớ lại: hình tam giác có mấy cạnh, hình tròn có cạnh thẳng nào không?"
+          ],
+          "hint": "Tên hình gọi theo số cạnh: «tam» là ba, còn bốn trong tiếng Hán Việt là «tứ».",
+          "explain": "Hình có 4 cạnh và 4 đỉnh là hình tứ giác; hình tam giác chỉ có 3 cạnh, hình tròn không có cạnh thẳng nào.",
           "en": {
             "prompt": "Hổ Xanh draws a shape with 4 sides and 4 corners. What shape is it?",
             "choices": [
               "hình tứ giác (quadrilateral)",
               "hình tam giác (triangle)",
               "hình tròn (circle)"
-            ]
+            ],
+            "guide": [
+              "Count the sides of Hổ Xanh's shape and compare with each of the three choices.",
+              "Remember: how many sides does a triangle have, and does a circle have any straight sides?"
+            ],
+            "hint": "Shapes are named by their sides: «tam» means three, and the Sino-Vietnamese word for four is «tứ».",
+            "explain": "A shape with 4 sides and 4 corners is a quadrilateral («hình tứ giác»); a triangle has only 3 sides and a circle has none."
           }
         },
         {
@@ -66,13 +78,25 @@
             "24 cm"
           ],
           "answer": 0,
+          "guide": [
+            "Độ dài đường gấp khúc bằng tổng độ dài các đoạn thẳng tạo nên nó.",
+            "Cộng lần lượt: 2 cm với 3 cm trước, rồi cộng tiếp 4 cm."
+          ],
+          "hint": "2 + 3 = 5; lấy 5 cộng thêm 4 cm của đoạn cuối.",
+          "explain": "2 + 3 + 4 = 9 nên đường gấp khúc dài 9 cm; 7 cm là quên một đoạn, còn 24 cm là nhân chứ không phải cộng.",
           "en": {
             "prompt": "A zigzag line has three parts, 2 cm, 3 cm and 4 cm long. How long is the whole line?",
             "choices": [
               "9 cm",
               "7 cm",
               "24 cm"
-            ]
+            ],
+            "guide": [
+              "A zigzag line is as long as all its straight parts added together.",
+              "Add in turn: 2 cm and 3 cm first, then add the 4 cm."
+            ],
+            "hint": "2 + 3 = 5; now add the last part's 4 cm to the 5.",
+            "explain": "2 + 3 + 4 = 9, so the zigzag line is 9 cm long; 7 cm leaves out a part, and 24 cm multiplies instead of adding."
           }
         },
         {
@@ -85,13 +109,25 @@
             "một đường cong"
           ],
           "answer": 0,
+          "guide": [
+            "Lấy thước kẻ đặt qua ba điểm và xem cả ba có cùng nằm sát mép thước không.",
+            "Nhớ tên gọi trong bài học cho ba điểm như vậy, khác với đoạn thẳng hay đường cong."
+          ],
+          "hint": "Hãy nghĩ tới các bạn xếp hàng thẳng tắp khi tập thể dục: ba điểm này cũng thế.",
+          "explain": "Ba điểm cùng nằm trên một đường thẳng gọi là ba điểm thẳng hàng; đoạn thẳng là một nét nối hai điểm, đường cong thì không thẳng.",
           "en": {
             "prompt": "What do we call three points that lie on one straight line?",
             "choices": [
               "ba điểm thẳng hàng (three points in a line)",
               "ba đoạn thẳng (three segments)",
               "một đường cong (a curve)"
-            ]
+            ],
+            "guide": [
+              "Lay a ruler across the three points and see whether all of them touch its edge.",
+              "Recall the lesson's name for points like that, which differs from segments or curves."
+            ],
+            "hint": "Think of children standing in a perfectly straight row for exercises: these points are lined up the same way.",
+            "explain": "Three points on one straight line are «ba điểm thẳng hàng» (points in a line); a segment joins just two points and a curve isn't straight."
           }
         },
         {
@@ -104,13 +140,25 @@
             "cạnh bàn"
           ],
           "answer": 0,
+          "guide": [
+            "Hình dung lướt ngón tay theo mép thước, theo vành đĩa và theo cạnh bàn.",
+            "Vật nào làm ngón tay phải uốn theo một vòng mà không có chỗ nào thẳng?"
+          ],
+          "hint": "Đồ vật hình tròn có viền uốn lượn; còn thước kẻ được làm thẳng để kẻ dòng.",
+          "explain": "Vành chiếc đĩa uốn tròn nên là đường cong; mép thước kẻ và cạnh bàn là những đường thẳng.",
           "en": {
             "prompt": "Of a ruler's edge, a plate's rim and a table's edge, which is a curved line?",
             "choices": [
               "vành chiếc đĩa (the plate's rim)",
               "mép thước kẻ (the ruler's edge)",
               "cạnh bàn (the table's edge)"
-            ]
+            ],
+            "guide": [
+              "Picture running a finger along the ruler's edge, the plate's rim and the table's edge.",
+              "Which one makes your finger bend round without any straight bit?"
+            ],
+            "hint": "Round things have a bending rim, while a ruler is made straight so you can rule lines.",
+            "explain": "A plate's rim bends round, so it is a curved line («đường cong»); the ruler's edge and the table's edge are straight lines."
           }
         }
       ],
@@ -182,13 +230,25 @@
             "11"
           ],
           "answer": 0,
+          "guide": [
+            "Đặt tính 38 + 27 cho thẳng cột: hàng đơn vị dưới hàng đơn vị, hàng chục dưới hàng chục.",
+            "Cộng hàng đơn vị trước, nhớ 1 sang hàng chục nếu tổng từ 10 trở lên."
+          ],
+          "hint": "8 + 7 = 15, viết 5 nhớ 1; hàng chục là 3 + 2 rồi thêm 1 đã nhớ.",
+          "explain": "38 + 27 = 65: 8 + 7 = 15 viết 5 nhớ 1, 3 + 2 + 1 = 6; 55 là quên số nhớ, còn 11 là phép trừ.",
           "en": {
             "prompt": "The hall has 38 chairs set out, and 27 more are added. How many chairs in all?",
             "choices": [
               "65",
               "55",
               "11"
-            ]
+            ],
+            "guide": [
+              "Write 38 + 27 in columns: ones under ones, tens under tens.",
+              "Add the ones first, carrying 1 to the tens if they make 10 or more."
+            ],
+            "hint": "8 + 7 = 15, write 5 and carry 1; the tens are 3 + 2 plus the 1 you carried.",
+            "explain": "38 + 27 = 65: 8 + 7 = 15, write 5 carry 1, then 3 + 2 + 1 = 6; 55 forgets the carry and 11 is a subtraction."
           }
         },
         {
@@ -201,13 +261,25 @@
             "117"
           ],
           "answer": 0,
+          "guide": [
+            "Số nến chưa thắp bằng tổng số nến bớt đi số nến đã thắp: đặt tính 72 − 45.",
+            "Hàng đơn vị 2 không trừ được 5, nên mượn 1 chục để có 12 rồi trừ."
+          ],
+          "hint": "12 − 5 = 7, viết 7 nhớ 1; hàng chục là 7 − (4 + 1).",
+          "explain": "72 − 45 = 27: 12 − 5 = 7 viết 7 nhớ 1, 4 + 1 = 5, 7 − 5 = 2; 37 là quên số nhớ, còn 117 là cộng nhầm.",
           "en": {
             "prompt": "There are 72 candles and Mèo has lit 45. How many are still unlit?",
             "choices": [
               "27",
               "37",
               "117"
-            ]
+            ],
+            "guide": [
+              "Unlit candles are all the candles take away the lit ones: write 72 − 45 in columns.",
+              "In the ones, 2 can't take 5, so borrow a ten to make 12 and then subtract."
+            ],
+            "hint": "12 − 5 = 7, write 7 and carry 1; the tens are 7 − (4 + 1).",
+            "explain": "72 − 45 = 27: 12 − 5 = 7, carry 1, 4 + 1 = 5 and 7 − 5 = 2; 37 forgets the carry and 117 adds by mistake."
           }
         },
         {
@@ -220,13 +292,25 @@
             "7 kg"
           ],
           "answer": 0,
+          "guide": [
+            "Hai bao nặng tất cả là phép cộng: 25 kg + 18 kg.",
+            "Cộng hàng đơn vị 5 + 8 trước, nhớ 1 sang hàng chục rồi cộng 2 + 1."
+          ],
+          "hint": "5 + 8 = 13, viết 3 nhớ 1; 2 + 1 thêm 1 nhớ là bao nhiêu chục?",
+          "explain": "25 + 18 = 43 nên hai bao nặng 43 kg; 33 kg là quên nhớ 1, còn 7 kg là lấy 25 − 18.",
           "en": {
             "prompt": "A sack of rice weighs 25 kg and a sack of beans 18 kg. How much do they weigh together?",
             "choices": [
               "43 kg",
               "33 kg",
               "7 kg"
-            ]
+            ],
+            "guide": [
+              "The weight of both sacks together is an addition: 25 kg + 18 kg.",
+              "Add the ones 5 + 8 first, carry 1 to the tens, then add 2 + 1."
+            ],
+            "hint": "5 + 8 = 13, write 3 carry 1; how many tens do 2 + 1 plus the carried 1 make?",
+            "explain": "25 + 18 = 43, so the two sacks weigh 43 kg; 33 kg forgets the carry and 7 kg works out 25 − 18."
           }
         },
         {
@@ -239,13 +323,25 @@
             "6 l"
           ],
           "answer": 0,
+          "guide": [
+            "Rót bớt nước ra thì lượng nước trong bình giảm đi: đây là phép trừ 12 − 5.",
+            "Tách 5 thành 2 và 3: lấy 12 trừ 2 trước cho tròn chục, rồi trừ tiếp 3."
+          ],
+          "hint": "12 − 2 = 10, rồi 10 − 3 = ?",
+          "explain": "12 − 5 = 7 (12 − 2 = 10, 10 − 3 = 7) nên bình còn 7 l; 17 l là cộng nhầm, 6 l là trừ thừa một lít.",
           "en": {
             "prompt": "The big jug holds 12 l of water and Mèo pours out 5 l for the flowers. How many litres are left?",
             "choices": [
               "7 l",
               "17 l",
               "6 l"
-            ]
+            ],
+            "guide": [
+              "Pouring water out makes less in the jug, so this is the subtraction 12 − 5.",
+              "Split 5 into 2 and 3: take 2 from 12 to reach ten, then take the other 3."
+            ],
+            "hint": "12 − 2 = 10, and then 10 − 3 = ?",
+            "explain": "12 − 5 = 7 (12 − 2 = 10, 10 − 3 = 7), so 7 l are left; 17 l adds by mistake and 6 l takes one litre too many."
           }
         }
       ],
@@ -315,13 +411,25 @@
             "chạy nhảy"
           ],
           "answer": 0,
+          "guide": [
+            "Xét từng từ trong ngoặc: từ nào gọi tên một người, một vật, hay một hoạt động?",
+            "Thử đặt «một người…» hoặc «một cái…» trước từng từ xem từ nào hợp."
+          ],
+          "hint": "Cây cầu là đồ vật, chạy nhảy là việc làm; từ còn lại là người cưỡi ngựa, mặc áo giáp.",
+          "explain": "Hiệp sĩ là người; cây cầu là từ chỉ vật, còn chạy nhảy là từ chỉ hoạt động.",
           "en": {
             "prompt": "Of «hiệp sĩ, cây cầu, chạy nhảy», which word names a person?",
             "choices": [
               "hiệp sĩ (knight)",
               "cây cầu (bridge)",
               "chạy nhảy (run and jump)"
-            ]
+            ],
+            "guide": [
+              "Take each word in the brackets: does it name a person, a thing or an action?",
+              "Try putting «một người…» (a person…) or «một cái…» (a thing…) before each word."
+            ],
+            "hint": "«Cây cầu» is a thing and «chạy nhảy» an action; the last one rides a horse and wears armour.",
+            "explain": "«Hiệp sĩ» (knight) is a person; «cây cầu» names a thing and «chạy nhảy» an action."
           }
         },
         {
@@ -333,12 +441,24 @@
             "yên"
           ],
           "answer": 1,
+          "guide": [
+            "Đọc to cả câu và nghe tiếng cần điền: nó có phụ âm đầu đứng trước vần hay không?",
+            "Nhớ luật: vần này có âm đầu thì viết một kiểu (tiên, miền), đứng một mình thì viết kiểu khác."
+          ],
+          "hint": "So với «yêu», «yếm», «yến»: khi không có âm đầu, vần này mở đầu bằng chữ gì?",
+          "explain": "Tiếng «yên» không có âm đầu nên viết bằng y; iên chỉ dùng khi có âm đầu đứng trước, như «tiên», «miền».",
           "en": {
             "prompt": "iên or yên: «cả đoàn ngồi … nghe kể chuyện» (everyone sits still to listen to the story)?",
             "choices": [
               "iên",
               "yên"
-            ]
+            ],
+            "guide": [
+              "Read the sentence aloud and listen to the missing word: does it have a consonant before the vowel?",
+              "Recall the rule: with a starting consonant it's spelt one way (tiên, miền), standing alone another way."
+            ],
+            "hint": "Compare «yêu», «yếm», «yến»: with no starting consonant, which letter opens this rhyme?",
+            "explain": "«Yên» (still) has no starting consonant, so it is spelt with y; iên is only used after a consonant, as in «tiên» or «miền»."
           }
         },
         {
@@ -351,13 +471,25 @@
             "dấu phẩy"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc câu với giọng của người vừa thấy cây cầu: đó là câu hỏi, câu kể hay câu bộc lộ cảm xúc?",
+            "Chú ý từ «Ôi» ở đầu và từ «quá» ở cuối câu."
+          ],
+          "hint": "Câu này không hỏi gì cả; câu reo lên vì vui, vì thích thì kết thúc bằng dấu nào?",
+          "explain": "«Ôi, cây cầu treo đẹp quá» bộc lộ cảm xúc thán phục nên kết thúc bằng dấu chấm than; câu không hỏi gì nên không dùng dấu chấm hỏi.",
           "en": {
             "prompt": "Which mark should end «Ôi, cây cầu treo đẹp quá» (Oh, the rope bridge is so beautiful)?",
             "choices": [
               "exclamation mark",
               "question mark",
               "comma"
-            ]
+            ],
+            "guide": [
+              "Read the sentence like someone who has just seen the bridge: is it a question, a statement or a burst of feeling?",
+              "Notice «Ôi» (Oh) at the start and «quá» (so) at the end."
+            ],
+            "hint": "Nothing is being asked; a sentence that cries out with delight ends with which mark?",
+            "explain": "«Ôi, cây cầu treo đẹp quá» shows wonder, so it ends with an exclamation mark; it asks nothing, so no question mark."
           }
         },
         {
@@ -370,13 +502,25 @@
             "dũng cảm"
           ],
           "answer": 0,
+          "guide": [
+            "Xếp ba từ vào ba nhóm: từ chỉ hoạt động, từ chỉ đồ vật, từ chỉ đặc điểm.",
+            "Hỏi: người lính đứng bên cổng thành đang làm gì? Từ trả lời câu hỏi đó là từ chỉ hoạt động."
+          ],
+          "hint": "Áo giáp là thứ người lính mặc, dũng cảm là tính nết của họ; còn việc họ làm suốt đêm là gì?",
+          "explain": "Canh gác là việc người lính làm nên là từ chỉ hoạt động; áo giáp chỉ đồ vật, dũng cảm chỉ đặc điểm.",
           "en": {
             "prompt": "Which word tells what the guard by the castle gate does (an action)?",
             "choices": [
               "canh gác (keep watch)",
               "áo giáp (armour)",
               "dũng cảm (brave)"
-            ]
+            ],
+            "guide": [
+              "Sort the three words into an action, a thing and a quality.",
+              "Ask: what is the soldier by the castle gate doing? The word that answers is the action."
+            ],
+            "hint": "«Áo giáp» is what the soldier wears and «dũng cảm» is how brave they are; what do they do all night?",
+            "explain": "«Canh gác» (keep watch) is what the guard does, so it is the action word; «áo giáp» is a thing and «dũng cảm» a quality."
           }
         },
         {
@@ -389,13 +533,25 @@
             "cơn gió"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc lại câu chuyện và tìm phần kể việc buộc lại từng sợi dây.",
+            "Xem ai đứng ngay trước từ «buộc lại»: đó là người đã sửa cầu."
+          ],
+          "hint": "Cơn gió làm cầu lung lay chứ không sửa cầu, còn người lính gác không hề có trong câu chuyện.",
+          "explain": "Câu chuyện kể «bác thợ cùng dân làng buộc lại từng sợi dây», nên họ là người sửa cầu; cơn gió chỉ làm cầu lung lay.",
           "en": {
             "prompt": "Listen: «The wind shook the rope bridge, so the builder and the villagers tied every rope again.» Who fixed the bridge?",
             "choices": [
               "the builder and the villagers",
               "the guard",
               "the wind"
-            ]
+            ],
+            "guide": [
+              "Read the story again and find the part about tying every rope again.",
+              "See who comes right before «tied every rope again»: they are the ones who fixed the bridge."
+            ],
+            "hint": "The wind shook the bridge rather than mending it, and no guard appears in the story at all.",
+            "explain": "The story says the builder and the villagers tied every rope again, so they fixed it; the wind only shook the bridge."
           }
         }
       ],

@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Chó Vàng ăn mất 6 khúc nên số xương bớt đi: làm phép trừ 14 − 6.",
+              "Trừ làm hai bước: 14 bớt 4 về 10, rồi bớt tiếp phần còn lại của 6."
+            ],
+            "hint": "14 − 4 = 10, mà 6 khúc còn thiếu 2 khúc chưa trừ; lấy 10 bớt 2.",
+            "answer": {
+              "text": "8",
+              "explanation": "14 − 6 = 8 vì 14 − 4 = 10, bớt thêm 2 còn 8; 20 là cộng nhầm 14 với 6."
+            },
+            "en": {
+              "guide": [
+                "Chó Vàng eats 6 bones, so there are fewer: subtract 14 − 6.",
+                "Do it in two steps: take 4 from 14 to reach 10, then take the rest of the 6."
+              ],
+              "hint": "14 − 4 = 10, and 2 of the 6 bones still need taking away from that 10.",
+              "answer": {
+                "text": "8",
+                "explanation": "14 − 6 = 8 because 14 − 4 = 10 and 2 fewer is 8; 20 comes from adding 14 and 6 by mistake."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Đã bán 5 chú nên số cá ít đi: viết phép trừ 13 − 5.",
+              "Bớt 3 trước để về 10, rồi bớt nốt số cá còn lại trong 5 chú đã bán."
+            ],
+            "hint": "13 − 3 = 10; trong 5 chú đã bán còn 2 chú phải trừ tiếp.",
+            "answer": {
+              "text": "8",
+              "explanation": "13 − 5 = 8 vì 13 − 3 = 10, bớt tiếp 2 còn 8; 7 là trừ thừa một chú, 18 là cộng nhầm."
+            },
+            "en": {
+              "guide": [
+                "5 have been sold, so there are fewer fish: write 13 − 5.",
+                "Take 3 first to get down to 10, then take away the rest of the 5 sold."
+              ],
+              "hint": "13 − 3 = 10, and 2 more of the 5 sold goldfish still need taking away.",
+              "answer": {
+                "text": "8",
+                "explanation": "13 − 5 = 8 because 13 − 3 = 10 and 2 fewer is 8; 7 takes away one too many, and 18 adds by mistake."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Mèo có «nhiều hơn» thỏ 3 củ, nên lấy số cà rốt của thỏ cộng thêm 3.",
+              "Viết phép tính 9 + 3 rồi đếm thêm ba bước từ 9."
+            ],
+            "hint": "Từ 9 đếm tiếp ba số liền sau; số cuối cùng là số củ cà rốt của mèo.",
+            "answer": {
+              "text": "12",
+              "explanation": "Mèo có 9 + 3 = 12 củ; 6 là trừ nhầm 9 − 3, còn 3 chỉ là phần mèo nhiều hơn thỏ."
+            },
+            "en": {
+              "guide": [
+                "Cat has «3 more» than Rabbit, so add 3 to Rabbit's carrots.",
+                "Write 9 + 3, then count on three steps from 9."
+              ],
+              "hint": "Count on the three numbers that come after 9; the last one is Cat's total.",
+              "answer": {
+                "text": "12",
+                "explanation": "Cat has 9 + 3 = 12 carrots; 6 is the mistake 9 − 3, and 3 is only how many more."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "4 chú chim bay ra khỏi lồng nên số chim giảm: làm phép trừ 11 − 4.",
+              "Bớt 1 để về 10, rồi bớt tiếp 3 chú còn lại."
+            ],
+            "hint": "11 − 1 = 10, rồi lấy 10 bớt đi 3 chú chim nữa.",
+            "answer": {
+              "text": "7",
+              "explanation": "11 − 4 = 7 vì 11 − 1 = 10, bớt thêm 3 còn 7; 15 là cộng nhầm, 6 là bớt thừa một chú."
+            },
+            "en": {
+              "guide": [
+                "4 birds fly out of the cage, so there are fewer: subtract 11 − 4.",
+                "Take 1 away to reach 10, then take away the other 3."
+              ],
+              "hint": "11 − 1 = 10, then take 3 more birds away from 10.",
+              "answer": {
+                "text": "7",
+                "explanation": "11 − 4 = 7 because 11 − 1 = 10 and 3 fewer is 7; 15 adds by mistake and 6 takes one too many."
+              }
+            }
           }
         }
       ],

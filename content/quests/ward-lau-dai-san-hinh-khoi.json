@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Đếm số cạnh của hình Hổ Xanh vẽ rồi so với từng hình trong ba lựa chọn.",
+              "Nhớ lại: hình tam giác có mấy cạnh, hình tròn có cạnh thẳng nào không?"
+            ],
+            "hint": "Tên hình gọi theo số cạnh: «tam» là ba, còn bốn trong tiếng Hán Việt là «tứ».",
+            "answer": {
+              "text": "hình tứ giác",
+              "explanation": "Hình có 4 cạnh và 4 đỉnh là hình tứ giác; hình tam giác chỉ có 3 cạnh, hình tròn không có cạnh thẳng nào."
+            },
+            "en": {
+              "guide": [
+                "Count the sides of Hổ Xanh's shape and compare with each of the three choices.",
+                "Remember: how many sides does a triangle have, and does a circle have any straight sides?"
+              ],
+              "hint": "Shapes are named by their sides: «tam» means three, and the Sino-Vietnamese word for four is «tứ».",
+              "answer": {
+                "text": "hình tứ giác (quadrilateral)",
+                "explanation": "A shape with 4 sides and 4 corners is a quadrilateral («hình tứ giác»); a triangle has only 3 sides and a circle has none."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Độ dài đường gấp khúc bằng tổng độ dài các đoạn thẳng tạo nên nó.",
+              "Cộng lần lượt: 2 cm với 3 cm trước, rồi cộng tiếp 4 cm."
+            ],
+            "hint": "2 + 3 = 5; lấy 5 cộng thêm 4 cm của đoạn cuối.",
+            "answer": {
+              "text": "9 cm",
+              "explanation": "2 + 3 + 4 = 9 nên đường gấp khúc dài 9 cm; 7 cm là quên một đoạn, còn 24 cm là nhân chứ không phải cộng."
+            },
+            "en": {
+              "guide": [
+                "A zigzag line is as long as all its straight parts added together.",
+                "Add in turn: 2 cm and 3 cm first, then add the 4 cm."
+              ],
+              "hint": "2 + 3 = 5; now add the last part's 4 cm to the 5.",
+              "answer": {
+                "text": "9 cm",
+                "explanation": "2 + 3 + 4 = 9, so the zigzag line is 9 cm long; 7 cm leaves out a part, and 24 cm multiplies instead of adding."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Lấy thước kẻ đặt qua ba điểm và xem cả ba có cùng nằm sát mép thước không.",
+              "Nhớ tên gọi trong bài học cho ba điểm như vậy, khác với đoạn thẳng hay đường cong."
+            ],
+            "hint": "Hãy nghĩ tới các bạn xếp hàng thẳng tắp khi tập thể dục: ba điểm này cũng thế.",
+            "answer": {
+              "text": "ba điểm thẳng hàng",
+              "explanation": "Ba điểm cùng nằm trên một đường thẳng gọi là ba điểm thẳng hàng; đoạn thẳng là một nét nối hai điểm, đường cong thì không thẳng."
+            },
+            "en": {
+              "guide": [
+                "Lay a ruler across the three points and see whether all of them touch its edge.",
+                "Recall the lesson's name for points like that, which differs from segments or curves."
+              ],
+              "hint": "Think of children standing in a perfectly straight row for exercises: these points are lined up the same way.",
+              "answer": {
+                "text": "ba điểm thẳng hàng (three points in a line)",
+                "explanation": "Three points on one straight line are «ba điểm thẳng hàng» (points in a line); a segment joins just two points and a curve isn't straight."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Hình dung lướt ngón tay theo mép thước, theo vành đĩa và theo cạnh bàn.",
+              "Vật nào làm ngón tay phải uốn theo một vòng mà không có chỗ nào thẳng?"
+            ],
+            "hint": "Đồ vật hình tròn có viền uốn lượn; còn thước kẻ được làm thẳng để kẻ dòng.",
+            "answer": {
+              "text": "vành chiếc đĩa",
+              "explanation": "Vành chiếc đĩa uốn tròn nên là đường cong; mép thước kẻ và cạnh bàn là những đường thẳng."
+            },
+            "en": {
+              "guide": [
+                "Picture running a finger along the ruler's edge, the plate's rim and the table's edge.",
+                "Which one makes your finger bend round without any straight bit?"
+              ],
+              "hint": "Round things have a bending rim, while a ruler is made straight so you can rule lines.",
+              "answer": {
+                "text": "vành chiếc đĩa (the plate's rim)",
+                "explanation": "A plate's rim bends round, so it is a curved line («đường cong»); the ruler's edge and the table's edge are straight lines."
+              }
+            }
           }
         }
       ],

@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Đọc to «…ể chuyện» rồi nhìn nguyên âm đứng ngay sau chỗ trống.",
+              "Nhớ luật chính tả: âm «cờ» đứng trước e, ê, i được viết bằng chữ nào?"
+            ],
+            "hint": "Sau chỗ trống là ê, mà e, ê, i luôn đi với một chữ «cờ» riêng của chúng.",
+            "answer": {
+              "text": "k",
+              "explanation": "Âm «cờ» trước e, ê, i viết là k nên ta có «kể chuyện»; c đi với a, o, u, còn q luôn đi cùng u."
+            },
+            "en": {
+              "guide": [
+                "Say «…ể chuyện» aloud and look at the vowel right after the gap.",
+                "Recall the spelling rule: which letter writes the «k» sound before e, ê and i?"
+              ],
+              "hint": "The gap comes before ê, and e, ê, i always take one particular «k»-sound letter.",
+              "answer": {
+                "text": "k",
+                "explanation": "Before e, ê and i the «k» sound is written k, so it is «kể chuyện»; c goes before a, o, u, and q always comes with u."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Đọc chậm từng tên con vật và tách riêng phần vần của tiếng thứ hai.",
+              "Tìm tiếng có phần vần gồm đủ ba chữ ư, ơ, u đứng liền nhau."
+            ],
+            "hint": "Vần «ươu» mở đầu bằng ươ rồi mới tới u, giống trong «cái bướu» hay «chim khướu».",
+            "answer": {
+              "text": "con hươu",
+              "explanation": "Con vật có gạc nhiều nhánh là «con hươu», viết vần ươu; «hiêu» là vần iêu, còn «hưu» thiếu chữ ơ."
+            },
+            "en": {
+              "guide": [
+                "Read each animal name slowly and pick out the rhyme of its second word.",
+                "Look for the word whose rhyme has all three letters ư, ơ, u in a row."
+              ],
+              "hint": "The «ươu» rhyme starts with ươ and ends in u, as in «chim khướu» (a songbird).",
+              "answer": {
+                "text": "con hươu",
+                "explanation": "The antlered animal is «con hươu» (deer), spelt with ươu; «hiêu» uses iêu and «hưu» is missing the ơ."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Chia câu về đàn bò thành ba phần: con vật nào, đang làm gì, ở chỗ nào.",
+              "Hỏi: đàn bò đang làm gì bên suối? Cụm trả lời câu hỏi ấy chỉ hoạt động."
+            ],
+            "hint": "Từ chỉ hoạt động là việc con vật đang làm, không phải tên con vật hay nơi chốn.",
+            "answer": {
+              "text": "gặm cỏ",
+              "explanation": "«Gặm cỏ» là việc đàn bò đang làm nên chỉ hoạt động; «đàn bò» là tên con vật, «bên suối» chỉ nơi chốn."
+            },
+            "en": {
+              "guide": [
+                "Split the sentence about the cows into three parts: which animal, doing what, and where.",
+                "Ask: what are the cows doing by the stream? The words that answer that name the action."
+              ],
+              "hint": "An action word tells what the animals are doing, not who they are or where they are.",
+              "answer": {
+                "text": "gặm cỏ (graze)",
+                "explanation": "«gặm cỏ» (graze) is what the cows are doing, so it is the action; «đàn bò» names the animals and «bên suối» says where."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Đọc to «Mai cậu có ghé trảng cỏ chơi không» và nghe giọng mình ở cuối câu.",
+              "Tự hỏi: câu này kể một việc, hay đang rủ bạn và chờ bạn trả lời?"
+            ],
+            "hint": "Câu có cặp «có… không» là câu dùng để hỏi, và câu hỏi cần một dấu riêng.",
+            "answer": {
+              "text": "Dấu chấm hỏi",
+              "explanation": "Câu rủ bạn ghé chơi và chờ bạn đáp («có… không»), nên cuối câu đặt dấu chấm hỏi, không phải dấu chấm."
+            },
+            "en": {
+              "guide": [
+                "Read «Mai cậu có ghé trảng cỏ chơi không» aloud and listen to how your voice ends.",
+                "Ask yourself: does this sentence tell something, or invite the friend and wait for a reply?"
+              ],
+              "hint": "The pair «có… không» turns a sentence into a question, and questions need their own mark.",
+              "answer": {
+                "text": "Question mark",
+                "explanation": "With «có… không» the sentence invites the friend and waits for a reply, so it ends with a question mark, not a full stop."
+              }
+            }
           }
         }
       ],

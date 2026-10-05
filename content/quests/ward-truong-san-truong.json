@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "7 chục lá cờ là bảy mươi lá; viết chữ số 7 ở hàng chục.",
+              "4 lá cờ lẻ là 4 đơn vị; viết chữ số 4 ở hàng đơn vị rồi đọc cả số."
+            ],
+            "hint": "Số chục đứng trước, số đơn vị đứng sau; đừng đem 7 cộng với 4.",
+            "answer": {
+              "text": "74",
+              "explanation": "7 chục và 4 đơn vị viết là 74; 47 là 4 chục 7 đơn vị, còn 11 là lấy 7 + 4."
+            },
+            "en": {
+              "guide": [
+                "7 tens of flags makes seventy; write the digit 7 in the tens place.",
+                "The 4 single flags are 4 ones; put the digit 4 in the ones place, then read the whole number."
+              ],
+              "hint": "Tens come first and ones come after; don't add 7 and 4 together.",
+              "answer": {
+                "text": "74",
+                "explanation": "7 tens and 4 ones is written 74; 47 would be 4 tens and 7 ones, and 11 is just 7 + 4."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Số liền sau là số lớn hơn số đã cho đúng 1 đơn vị.",
+              "Lấy 59 cộng thêm 1; 9 đơn vị thêm 1 thành 1 chục, nhớ sang hàng chục."
+            ],
+            "hint": "Đếm tiếp sau 59 trên tia số dọc hàng rào, bước thêm đúng một vạch.",
+            "answer": {
+              "text": "60",
+              "explanation": "59 + 1 = 60: 9 đơn vị thêm 1 thành đủ chục, 5 chục thành 6 chục; 58 là số liền trước."
+            },
+            "en": {
+              "guide": [
+                "The number right after is exactly 1 more than the given number.",
+                "Add 1 to 59; 9 ones plus 1 makes a full ten, carried to the tens."
+              ],
+              "hint": "Count on from 59 along the fence number line, one mark only.",
+              "answer": {
+                "text": "60",
+                "explanation": "59 + 1 = 60: nine ones plus one make a ten, so 5 tens become 6 tens; 58 comes just before."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Nhìn dấu giữa 35 và 12: đây là phép cộng hay phép trừ?",
+              "Trong phép cộng, các số đem cộng có một tên, kết quả sau dấu = có tên khác."
+            ],
+            "hint": "35 và 12 là hai số hạng; số đứng sau dấu bằng thì gọi bằng tên còn lại.",
+            "answer": {
+              "text": "tổng",
+              "explanation": "35 + 12 = 47 là phép cộng; 35 và 12 là số hạng, 47 là tổng; «hiệu» chỉ dùng cho phép trừ."
+            },
+            "en": {
+              "guide": [
+                "Look at the sign between 35 and 12: is it adding or taking away?",
+                "In an addition the numbers being added share one name, and the result after = has another."
+              ],
+              "hint": "35 and 12 are the two addends; the number after the equals sign takes the other name.",
+              "answer": {
+                "text": "tổng (the sum)",
+                "explanation": "35 + 12 = 47 is an addition: 35 and 12 are «số hạng» (addends) and 47 is «tổng» (the sum); «hiệu» belongs to subtraction."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Muốn biết lớp 2A nhiều hơn bao nhiêu, lấy số lớn trừ số bé: 32 − 28.",
+              "Hàng đơn vị 2 không trừ được 8, nên mượn 1 chục từ hàng chục."
+            ],
+            "hint": "Thử đếm thêm từ 28 lên tới 32, xem phải đếm mấy bước.",
+            "answer": {
+              "text": "4 bạn",
+              "explanation": "32 − 28 = 4 (đếm 29, 30, 31, 32 là 4 bước); 60 là đem cộng hai lớp, không phải so sánh."
+            },
+            "en": {
+              "guide": [
+                "To find how many more pupils 2A has, take the smaller number from the bigger: 32 − 28.",
+                "You can't take 8 from 2 in the ones, so borrow a ten."
+              ],
+              "hint": "Try counting on from 28 up to 32 and see how many steps it takes.",
+              "answer": {
+                "text": "4",
+                "explanation": "32 − 28 = 4 (29, 30, 31, 32 is four steps); 60 adds both classes instead of comparing them."
+              }
+            }
           }
         }
       ],

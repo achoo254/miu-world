@@ -15,15 +15,39 @@ const MIN_LINE_LENGTH = 16;
  */
 const NOT_TEXT = new Set(['speaker', 'bossName', 'id', 'kind', 'mechanic', 'trigger', 'target', 'targets', 'skill', 'status', 'region', 'review', 'textRef', 'lessonId', 'curriculumRef', 'phases', 'type', 'mode', 'display', 'sevenQuestions', 'category', 'game', 'params']);
 
+const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value);
+const labelsOf = (choices: unknown): string[] =>
+  Array.isArray(choices) ? choices.flatMap((c) => (typeof c === 'string' ? [c] : isRecord(c) && typeof c.text === 'string' ? [c.text] : [])) : [];
+
+/**
+ * A boss question's support with its answer layer's text left out where that text is one of the question's own
+ * choices (in its language): the answer layer names the right choice as it reads, a label shown again, not a new line.
+ */
+function withoutChoiceAnswers(turn: Record<string, unknown>): Record<string, unknown> {
+  const support = turn.support;
+  if (!isRecord(support) || !isRecord(support.answer)) return turn;
+  const vi = labelsOf(turn.choices);
+  const en = isRecord(turn.en) ? labelsOf(turn.en.choices) : [];
+  const answer = { ...support.answer };
+  if (typeof answer.text === 'string' && vi.includes(answer.text)) delete answer.text;
+  let english = support.en;
+  if (isRecord(english) && isRecord(english.answer) && typeof english.answer.text === 'string' && en.includes(english.answer.text)) {
+    const { text: _text, ...rest } = english.answer;
+    english = { ...english, answer: rest };
+  }
+  return { ...turn, support: { ...support, answer, en: english } };
+}
+
 function playerLines(quest: QuestDefinition): Array<{ where: string; text: string }> {
   const lines: Array<{ where: string; text: string }> = [];
   const visit = (value: unknown, where: string): void => {
     if (typeof value === 'string') lines.push({ where, text: value });
     else if (Array.isArray(value)) value.forEach((v, i) => visit(v, `${where}[${i}]`));
-    else if (typeof value === 'object' && value !== null) {
+    else if (isRecord(value)) {
       // A step's `answer` is graded data; the support layer's `answer` is text the child reads.
       const isStep = 'kind' in value;
-      for (const [k, v] of Object.entries(value)) {
+      const entries = Object.entries(!isStep && 'support' in value && 'choices' in value ? withoutChoiceAnswers(value) : value);
+      for (const [k, v] of entries) {
         if (!NOT_TEXT.has(k) && !(isStep && k === 'answer')) visit(v, where ? `${where}.${k}` : k);
       }
     }

@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Cộng 5 quả trứng hôm qua với 9 quả hôm nay.",
+              "Đổi chỗ cho dễ tính: 9 + 5, rồi lấy 1 quả từ 5 cho 9 tròn chục."
+            ],
+            "hint": "9 thêm 1 là 10, 5 quả bớt 1 còn 4 quả chưa cộng.",
+            "answer": {
+              "text": "14",
+              "explanation": "5 + 9 = 14 vì 9 + 1 = 10, thêm 4 là 14; 13 thiếu một quả, còn 4 là lấy 9 trừ 5."
+            },
+            "en": {
+              "guide": [
+                "Add yesterday's 5 eggs and today's 9.",
+                "Swap them to make it easy: 9 + 5, then move 1 egg from the 5 to make 10."
+              ],
+              "hint": "9 plus 1 is 10, and the 5 eggs minus 1 leave 4 still to add.",
+              "answer": {
+                "text": "14",
+                "explanation": "5 + 9 = 14 because 9 + 1 = 10 and 4 more makes 14; 13 is an egg short and 4 is 9 take away 5."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Xem hàng chục của ba ổ rơm 48, 84 và 80.",
+              "Nếu có hai số cùng hàng chục, so tiếp đến hàng đơn vị."
+            ],
+            "hint": "48 chỉ có 4 chục; hai số kia cùng 8 chục, số nào có đơn vị nhiều hơn?",
+            "answer": {
+              "text": "84",
+              "explanation": "84 và 80 cùng 8 chục nhưng 84 có 4 đơn vị, 80 không có, nên 84 lớn nhất; 48 chỉ có 4 chục."
+            },
+            "en": {
+              "guide": [
+                "Look at the tens of the three straw nests: 48, 84 and 80.",
+                "If two numbers share the same tens, go on to compare the ones."
+              ],
+              "hint": "48 has only 4 tens; the other two both have 8 tens, so which has more ones?",
+              "answer": {
+                "text": "84",
+                "explanation": "84 and 80 both have 8 tens, but 84 has 4 ones and 80 has none, so 84 is the biggest; 48 has only 4 tens."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Đọc ba từ và tìm từ gọi tên một con vật biết đi, biết kêu.",
+              "Gạt ra từ chỉ đồ vật và từ chỉ tiếng kêu."
+            ],
+            "hint": "«Cái ổ» là chỗ nằm, «cục tác» là tiếng kêu; chỉ một từ là tên con vật.",
+            "answer": {
+              "text": "con gà",
+              "explanation": "«Con gà» là tên con vật nuôi trong nhà; «cái ổ» là đồ vật, «cục tác» là tiếng gà kêu."
+            },
+            "en": {
+              "guide": [
+                "Read the three words and find the one naming a living creature that walks and calls.",
+                "Set aside the word for an object and the word for a sound."
+              ],
+              "hint": "«Cái ổ» is a place to lie in and «cục tác» is a sound; only one word names an animal.",
+              "answer": {
+                "text": "con gà (a hen)",
+                "explanation": "«Con gà» (a hen) names an animal kept at home; «cái ổ» is an object and «cục tác» is the hen's cluck."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Đọc lời Bà dặn, tìm việc đi liền sau chữ «xong».",
+              "Chọn việc giữ cho đàn gà an toàn sau khi đã nhặt trứng."
+            ],
+            "hint": "Bà dặn làm một việc với cái cửa, để gà khỏi chạy mất.",
+            "answer": {
+              "text": "đóng cửa chuồng",
+              "explanation": "Bà dặn «Nhặt trứng xong nhớ đóng cửa chuồng», nên sau đó phải đóng cửa chuồng; mở toang cửa thì gà chạy mất."
+            },
+            "en": {
+              "guide": [
+                "Read Grandma's words and find the job that comes after collecting the eggs.",
+                "Pick the action that keeps the hens safe once the eggs are in."
+              ],
+              "hint": "Grandma asks for something to be done with the coop door so the hens don't run off.",
+              "answer": {
+                "text": "shut the coop",
+                "explanation": "Grandma says to shut the coop after collecting the eggs; leaving it wide open would let the hens out."
+              }
+            }
           }
         },
         {
@@ -226,6 +314,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Lấy 12 hạt thóc đang có, cộng 7 hạt bà cho thêm.",
+              "Giữ nguyên 1 chục của 12, chỉ cộng hàng đơn vị 2 + 7."
+            ],
+            "hint": "2 + 7 = 9 đơn vị, ghép với 1 chục đã có sẵn.",
+            "answer": {
+              "text": "19",
+              "explanation": "12 + 7 = 19 vì 2 + 7 = 9 đơn vị, giữ nguyên 1 chục; 18 thiếu một hạt, còn 5 là lấy 12 trừ 7."
+            },
+            "en": {
+              "guide": [
+                "Take the 12 grains and add the 7 more that Grandma gives.",
+                "Keep the 1 ten of 12 and add only the ones, 2 + 7."
+              ],
+              "hint": "2 + 7 = 9 ones, joined to the ten you already have.",
+              "answer": {
+                "text": "19",
+                "explanation": "12 + 7 = 19 because 2 + 7 = 9 ones and the ten stays; 18 is a grain short and 5 is 12 take away 7."
+              }
+            }
           }
         }
       ],

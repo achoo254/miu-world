@@ -262,7 +262,9 @@ export type QuestListResponse = z.infer<typeof QuestListResponse>;
 
 export const SupportLayer = z.enum(['guide', 'hint', 'answer']);
 export type SupportLayer = z.infer<typeof SupportLayer>;
-export const SupportRequest = z.object({ layer: SupportLayer });
+/** A layer of the step's support; at a boss, of one of its questions (`turn`, its id). */
+export const SupportRequest = z.object({ layer: SupportLayer, turn: ContentId.optional() });
+export type SupportRequest = z.infer<typeof SupportRequest>;
 
 /** One support layer, handed out only on request so the server can count it. */
 export const SupportResponse = z.discriminatedUnion('layer', [

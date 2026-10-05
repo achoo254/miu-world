@@ -38,7 +38,22 @@
           "prompt": "Nai Gác Đồng Cỏ hỏi: chữ nào điền vào chỗ trống trong «…ể chuyện» cho đúng?",
           "choices": ["c", "k", "q"],
           "answer": 1,
-          "en": { "prompt": "Which letter fills the gap in «…ể chuyện» (to tell a story)?", "choices": ["c", "k", "q"] }
+          "guide": [
+            "Đọc to «…ể chuyện» rồi nhìn nguyên âm đứng ngay sau chỗ trống.",
+            "Nhớ luật chính tả: âm «cờ» đứng trước e, ê, i được viết bằng chữ nào?"
+          ],
+          "hint": "Sau chỗ trống là ê, mà e, ê, i luôn đi với một chữ «cờ» riêng của chúng.",
+          "explain": "Âm «cờ» trước e, ê, i viết là k nên ta có «kể chuyện»; c đi với a, o, u, còn q luôn đi cùng u.",
+          "en": {
+            "prompt": "Which letter fills the gap in «…ể chuyện» (to tell a story)?",
+            "choices": ["c", "k", "q"],
+            "guide": [
+              "Say «…ể chuyện» aloud and look at the vowel right after the gap.",
+              "Recall the spelling rule: which letter writes the «k» sound before e, ê and i?"
+            ],
+            "hint": "The gap comes before ê, and e, ê, i always take one particular «k»-sound letter.",
+            "explain": "Before e, ê and i the «k» sound is written k, so it is «kể chuyện»; c goes before a, o, u, and q always comes with u."
+          }
         },
         {
           "id": "van-uou",
@@ -46,7 +61,22 @@
           "prompt": "Tên con vật nào trên trảng cỏ được viết đúng vần ươu?",
           "choices": ["con hươu", "con hiêu", "con hưu"],
           "answer": 0,
-          "en": { "prompt": "Which meadow animal's name is spelt with the right «ươu» rhyme?", "choices": ["con hươu", "con hiêu", "con hưu"] }
+          "guide": [
+            "Đọc chậm từng tên con vật và tách riêng phần vần của tiếng thứ hai.",
+            "Tìm tiếng có phần vần gồm đủ ba chữ ư, ơ, u đứng liền nhau."
+          ],
+          "hint": "Vần «ươu» mở đầu bằng ươ rồi mới tới u, giống trong «cái bướu» hay «chim khướu».",
+          "explain": "Con vật có gạc nhiều nhánh là «con hươu», viết vần ươu; «hiêu» là vần iêu, còn «hưu» thiếu chữ ơ.",
+          "en": {
+            "prompt": "Which meadow animal's name is spelt with the right «ươu» rhyme?",
+            "choices": ["con hươu", "con hiêu", "con hưu"],
+            "guide": [
+              "Read each animal name slowly and pick out the rhyme of its second word.",
+              "Look for the word whose rhyme has all three letters ư, ơ, u in a row."
+            ],
+            "hint": "The «ươu» rhyme starts with ươ and ends in u, as in «chim khướu» (a songbird).",
+            "explain": "The antlered animal is «con hươu» (deer), spelt with ươu; «hiêu» uses iêu and «hưu» is missing the ơ."
+          }
         },
         {
           "id": "tu-hoat-dong",
@@ -54,7 +84,22 @@
           "prompt": "Trong câu «Đàn bò thong thả gặm cỏ bên suối», từ nào chỉ hoạt động?",
           "choices": ["đàn bò", "gặm cỏ", "bên suối"],
           "answer": 1,
-          "en": { "prompt": "In «Đàn bò thong thả gặm cỏ bên suối» (the cows graze by the stream), which words name an action?", "choices": ["đàn bò (the cows)", "gặm cỏ (graze)", "bên suối (by the stream)"] }
+          "guide": [
+            "Chia câu về đàn bò thành ba phần: con vật nào, đang làm gì, ở chỗ nào.",
+            "Hỏi: đàn bò đang làm gì bên suối? Cụm trả lời câu hỏi ấy chỉ hoạt động."
+          ],
+          "hint": "Từ chỉ hoạt động là việc con vật đang làm, không phải tên con vật hay nơi chốn.",
+          "explain": "«Gặm cỏ» là việc đàn bò đang làm nên chỉ hoạt động; «đàn bò» là tên con vật, «bên suối» chỉ nơi chốn.",
+          "en": {
+            "prompt": "In «Đàn bò thong thả gặm cỏ bên suối» (the cows graze by the stream), which words name an action?",
+            "choices": ["đàn bò (the cows)", "gặm cỏ (graze)", "bên suối (by the stream)"],
+            "guide": [
+              "Split the sentence about the cows into three parts: which animal, doing what, and where.",
+              "Ask: what are the cows doing by the stream? The words that answer that name the action."
+            ],
+            "hint": "An action word tells what the animals are doing, not who they are or where they are.",
+            "explain": "«gặm cỏ» (graze) is what the cows are doing, so it is the action; «đàn bò» names the animals and «bên suối» says where."
+          }
         },
         {
           "id": "dau-hoi",
@@ -62,7 +107,22 @@
           "prompt": "Câu «Mai cậu có ghé trảng cỏ chơi không» cần đặt dấu gì ở cuối?",
           "choices": ["Dấu chấm", "Dấu chấm hỏi", "Dấu phẩy"],
           "answer": 1,
-          "en": { "prompt": "Which mark ends «Mai cậu có ghé trảng cỏ chơi không» (will you visit the meadow tomorrow)?", "choices": ["Full stop", "Question mark", "Comma"] }
+          "guide": [
+            "Đọc to «Mai cậu có ghé trảng cỏ chơi không» và nghe giọng mình ở cuối câu.",
+            "Tự hỏi: câu này kể một việc, hay đang rủ bạn và chờ bạn trả lời?"
+          ],
+          "hint": "Câu có cặp «có… không» là câu dùng để hỏi, và câu hỏi cần một dấu riêng.",
+          "explain": "Câu rủ bạn ghé chơi và chờ bạn đáp («có… không»), nên cuối câu đặt dấu chấm hỏi, không phải dấu chấm.",
+          "en": {
+            "prompt": "Which mark ends «Mai cậu có ghé trảng cỏ chơi không» (will you visit the meadow tomorrow)?",
+            "choices": ["Full stop", "Question mark", "Comma"],
+            "guide": [
+              "Read «Mai cậu có ghé trảng cỏ chơi không» aloud and listen to how your voice ends.",
+              "Ask yourself: does this sentence tell something, or invite the friend and wait for a reply?"
+            ],
+            "hint": "The pair «có… không» turns a sentence into a question, and questions need their own mark.",
+            "explain": "With «có… không» the sentence invites the friend and waits for a reply, so it ends with a question mark, not a full stop."
+          }
         }
       ],
       "en": {
@@ -125,7 +185,22 @@
           "prompt": "Trong bảng chữ cái tiếng Việt, chữ nào đứng ngay sau chữ G?",
           "choices": ["H", "I", "K"],
           "answer": 0,
-          "en": { "prompt": "In the Vietnamese alphabet, which letter comes right after G?", "choices": ["H", "I", "K"] }
+          "guide": [
+            "Đọc thầm bảng chữ cái từ đầu: a, ă, â, b, c, d, đ, e, ê, g…",
+            "Dừng lại ở chữ G rồi đọc tiếp đúng một chữ nữa."
+          ],
+          "hint": "Chữ cần tìm đứng trước cả I và K; nó là chữ cái thứ mười một trong bảng.",
+          "explain": "Bảng chữ cái đi theo thứ tự …e, ê, g, h, i, k…, nên ngay sau G là H; I và K còn đứng sau H.",
+          "en": {
+            "prompt": "In the Vietnamese alphabet, which letter comes right after G?",
+            "choices": ["H", "I", "K"],
+            "guide": [
+              "Say the Vietnamese alphabet quietly from the start: a, ă, â, b, c, d, đ, e, ê, g…",
+              "Stop at G and then say just one more letter."
+            ],
+            "hint": "The letter you want sits before both I and K; it is the eleventh letter of the alphabet.",
+            "explain": "The order runs …e, ê, g, h, i, k…, so H comes straight after G; I and K come later."
+          }
         },
         {
           "id": "cam-xuc-nhim",
@@ -133,7 +208,22 @@
           "prompt": "Nhím con được bạn tặng quà sinh nhật. Từ nào chỉ cảm xúc của nhím lúc ấy?",
           "choices": ["vui sướng", "gai nhọn", "chạy nhảy"],
           "answer": 0,
-          "en": { "prompt": "A little hedgehog gets a birthday present from a friend. Which word tells how it feels?", "choices": ["vui sướng (overjoyed)", "gai nhọn (sharp spines)", "chạy nhảy (running about)"] }
+          "guide": [
+            "Hình dung nhím con đang mở gói quà sinh nhật bạn tặng.",
+            "Loại từ chỉ bộ phận của nhím và từ chỉ việc làm, giữ lại từ nói về lòng nhím."
+          ],
+          "hint": "Từ chỉ cảm xúc nói nhím thấy trong lòng thế nào, như buồn, lo hay mừng.",
+          "explain": "«Vui sướng» nói nhím rất vui khi được tặng quà; «gai nhọn» là bộ phận của nhím, «chạy nhảy» là hoạt động.",
+          "en": {
+            "prompt": "A little hedgehog gets a birthday present from a friend. Which word tells how it feels?",
+            "choices": ["vui sướng (overjoyed)", "gai nhọn (sharp spines)", "chạy nhảy (running about)"],
+            "guide": [
+              "Picture the little hedgehog opening the birthday present from its friend.",
+              "Cross out the word for a body part and the word for an action; keep the one about its feelings."
+            ],
+            "hint": "A feeling word says how the hedgehog feels inside, like sad, worried or glad.",
+            "explain": "«vui sướng» (overjoyed) is how the hedgehog feels with its present; «gai nhọn» is part of its body and «chạy nhảy» an action."
+          }
         },
         {
           "id": "g-gh",
@@ -141,7 +231,22 @@
           "prompt": "Chồn Đuôi Bông viết tên một đồ vật theo ba cách. Cách nào đúng chính tả g/gh?",
           "choices": ["cái ghế", "cái gế", "cái ghiế"],
           "answer": 0,
-          "en": { "prompt": "Chồn Đuôi Bông writes «chair» three ways. Which uses g/gh correctly?", "choices": ["cái ghế", "cái gế", "cái ghiế"] }
+          "guide": [
+            "Nhìn nguyên âm đứng ngay sau g hoặc gh trong từng cách viết.",
+            "Nhớ luật: trước e, ê, i thì âm «gờ» viết bằng gh; vần «ê» không cần thêm chữ i."
+          ],
+          "hint": "Sau âm «gờ» là ê nên phải dùng gh; rồi kiểm tra xem cách viết nào thừa chữ.",
+          "explain": "Trước ê viết gh nên «cái gế» sai; «cái ghiế» lại thừa chữ i, chỉ «cái ghế» viết đúng.",
+          "en": {
+            "prompt": "Chồn Đuôi Bông writes «chair» three ways. Which uses g/gh correctly?",
+            "choices": ["cái ghế", "cái gế", "cái ghiế"],
+            "guide": [
+              "Look at the vowel right after g or gh in each spelling.",
+              "Recall the rule: before e, ê and i the «g» sound is written gh; the «ê» sound needs no extra i."
+            ],
+            "hint": "After the «g» sound comes ê, so gh is needed; then check for a letter that should not be there.",
+            "explain": "Before ê we write gh, so «cái gế» is wrong; «cái ghiế» has an extra i, leaving «cái ghế» as the right one."
+          }
         },
         {
           "id": "iu-uu",
@@ -149,7 +254,22 @@
           "prompt": "Vần nào điền vào chỗ trống trong «quả l…» để thành tên một loại quả đỏ mọng?",
           "choices": ["iu", "ưu"],
           "answer": 1,
-          "en": { "prompt": "Which rhyme completes «quả l…», the name of a juicy red fruit (pomegranate)?", "choices": ["iu", "ưu"] }
+          "guide": [
+            "Ghép thử từng vần vào «quả l…» rồi đọc to cả hai tiếng.",
+            "Nghĩ tới loại quả vỏ đỏ, bên trong chứa đầy hạt mọng như những viên đá quý."
+          ],
+          "hint": "Đọc thử «quả lịu» rồi so với tên loại quả bạn vẫn nghe người lớn gọi ngoài chợ.",
+          "explain": "Quả đỏ nhiều hạt mọng là «quả lựu», viết vần ưu với dấu nặng; «lịu» không phải tên loại quả nào.",
+          "en": {
+            "prompt": "Which rhyme completes «quả l…», the name of a juicy red fruit (pomegranate)?",
+            "choices": ["iu", "ưu"],
+            "guide": [
+              "Try each rhyme in «quả l…» and say both words aloud.",
+              "Think of a fruit with red skin, packed inside with juicy seeds like little jewels."
+            ],
+            "hint": "Say «quả lịu» aloud and compare it with the fruit name you hear at the market.",
+            "explain": "The red fruit full of juicy seeds is «quả lựu» (pomegranate), spelt ưu with a dot-below tone; «lịu» is not a fruit."
+          }
         }
       ],
       "en": {
@@ -212,7 +332,22 @@
           "prompt": "Từ nào chỉ âm thanh của cánh diều no gió trên trời?",
           "choices": ["vi vu", "xanh biếc", "bay lượn"],
           "answer": 0,
-          "en": { "prompt": "Which word is the sound a kite full of wind makes in the sky?", "choices": ["vi vu (whoosh)", "xanh biếc (deep blue)", "bay lượn (glide)"] }
+          "guide": [
+            "Tưởng tượng đứng dưới cánh diều căng gió và lắng tai nghe.",
+            "Bỏ từ chỉ màu sắc và từ chỉ cách bay, giữ lại từ bắt chước tiếng kêu."
+          ],
+          "hint": "Từ chỉ âm thanh bắt chước tiếng phát ra, như «ù ù» của gió hay «róc rách» của suối.",
+          "explain": "«Vi vu» bắt chước tiếng sáo diều reo trong gió; «xanh biếc» chỉ màu, «bay lượn» chỉ hoạt động.",
+          "en": {
+            "prompt": "Which word is the sound a kite full of wind makes in the sky?",
+            "choices": ["vi vu (whoosh)", "xanh biếc (deep blue)", "bay lượn (glide)"],
+            "guide": [
+              "Imagine standing under a kite full of wind and listening.",
+              "Drop the colour word and the flying word; keep the word that copies a sound."
+            ],
+            "hint": "Sound words imitate a noise, like «ù ù» for wind or «róc rách» for a stream.",
+            "explain": "«vi vu» (whoosh) imitates the kite flute humming in the wind; «xanh biếc» is a colour and «bay lượn» an action."
+          }
         },
         {
           "id": "dac-diem-gach",
@@ -220,7 +355,22 @@
           "prompt": "Từ nào chỉ đặc điểm của những viên gạch đồ chơi trong hộp?",
           "choices": ["nhiều màu", "xếp hình", "cái hộp"],
           "answer": 0,
-          "en": { "prompt": "Which words describe what the toy bricks in the box are like?", "choices": ["nhiều màu (colourful)", "xếp hình (build)", "cái hộp (a box)"] }
+          "guide": [
+            "Nhìn từng từ và hỏi: từ này có kể những viên gạch trông ra sao không?",
+            "Gạt ra từ chỉ việc làm với gạch và từ gọi tên đồ đựng gạch."
+          ],
+          "hint": "Từ chỉ đặc điểm kể về hình dáng, màu sắc hay kích cỡ của đồ vật.",
+          "explain": "«Nhiều màu» tả vẻ ngoài của những viên gạch nên là đặc điểm; «xếp hình» là hoạt động, «cái hộp» là sự vật.",
+          "en": {
+            "prompt": "Which words describe what the toy bricks in the box are like?",
+            "choices": ["nhiều màu (colourful)", "xếp hình (build)", "cái hộp (a box)"],
+            "guide": [
+              "Look at each word and ask: does it tell what the bricks look like?",
+              "Set aside the word for something you do with bricks and the word naming their container."
+            ],
+            "hint": "Describing words tell about an object's shape, colour or size.",
+            "explain": "«nhiều màu» (colourful) describes how the bricks look, so it is the feature; «xếp hình» is an action and «cái hộp» a thing."
+          }
         },
         {
           "id": "ng-ngh",
@@ -228,7 +378,22 @@
           "prompt": "Gấu Túi viết tên một món đồ chơi. Cách viết nào đúng?",
           "choices": ["con nghựa gỗ", "con ngựa gỗ", "con ngưạ gỗ"],
           "answer": 1,
-          "en": { "prompt": "Gấu Túi writes the name of a toy, a wooden horse. Which spelling is right?", "choices": ["con nghựa gỗ", "con ngựa gỗ", "con ngưạ gỗ"] }
+          "guide": [
+            "So sánh ba cách viết: chữ đầu là ng hay ngh, dấu nặng nằm dưới chữ nào.",
+            "Nhớ luật: ngh chỉ đứng trước e, ê, i; vần ưa đặt dấu thanh ở chữ ư."
+          ],
+          "hint": "Sau âm «ngờ» là ư chứ không phải e, ê, i; dấu nặng nằm dưới nguyên âm đầu của vần.",
+          "explain": "Trước ư viết ng nên «nghựa» sai; vần ưa đặt dấu nặng dưới ư nên «con ngựa gỗ» đúng, còn «ngưạ» đặt sai dấu.",
+          "en": {
+            "prompt": "Gấu Túi writes the name of a toy, a wooden horse. Which spelling is right?",
+            "choices": ["con nghựa gỗ", "con ngựa gỗ", "con ngưạ gỗ"],
+            "guide": [
+              "Compare the three spellings: ng or ngh at the start, and where the dot-below tone sits.",
+              "Recall: ngh only comes before e, ê and i; the tone mark of «ưa» goes on the ư."
+            ],
+            "hint": "After the «ng» sound comes ư, not e, ê or i, and the dot-below goes under the first vowel.",
+            "explain": "Before ư we write ng, so «nghựa» is wrong; in «ưa» the dot goes under ư, so «con ngựa gỗ» is right and «ngưạ» misplaces it."
+          }
         },
         {
           "id": "ch-tr",
@@ -236,7 +401,22 @@
           "prompt": "Điền ch hay tr vào chỗ trống: «…ong chóng quay tít trong gió»?",
           "choices": ["ch", "tr"],
           "answer": 0,
-          "en": { "prompt": "ch or tr: «…ong chóng quay tít trong gió» (the pinwheel spins in the wind)?", "choices": ["ch", "tr"] }
+          "guide": [
+            "Đọc to «…ong chóng» và nghĩ tới món đồ chơi có cánh quay tít khi gió thổi.",
+            "Tên món đồ chơi này là từ láy: hai tiếng thường lặp lại cùng một phụ âm đầu."
+          ],
+          "hint": "Nhìn sang tiếng đứng ngay sau chỗ trống xem nó mở đầu bằng chữ gì.",
+          "explain": "«Chong chóng» là từ láy lặp phụ âm đầu ch, nên điền ch; «trong» ở cuối câu là một từ khác.",
+          "en": {
+            "prompt": "ch or tr: «…ong chóng quay tít trong gió» (the pinwheel spins in the wind)?",
+            "choices": ["ch", "tr"],
+            "guide": [
+              "Say «…ong chóng» aloud and think of the toy whose blades spin when the wind blows.",
+              "The toy's name is a reduplicated word: both parts usually share the same first sound."
+            ],
+            "hint": "Look at the word right after the gap and see which letters it starts with.",
+            "explain": "«chong chóng» (pinwheel) repeats the first sound ch in both parts, so ch fills the gap."
+          }
         }
       ],
       "en": {
@@ -299,7 +479,22 @@
           "prompt": "Chọn vế hợp để nói tiếp câu: «Nếu trời mưa thì…»",
           "choices": ["chúng mình chơi trong nhà", "cái ô màu đỏ", "trời rất xanh"],
           "answer": 0,
-          "en": { "prompt": "Pick the best ending for «Nếu trời mưa thì…» (If it rains, then…)", "choices": ["chúng mình chơi trong nhà (we play indoors)", "cái ô màu đỏ (the red umbrella)", "trời rất xanh (the sky is very blue)"] }
+          "guide": [
+            "Đọc vế «Nếu trời mưa» rồi tự hỏi: khi trời mưa thì mọi người sẽ làm gì?",
+            "Ghép thử từng vế vào sau chữ «thì» và đọc cả câu xem có hợp lí không."
+          ],
+          "hint": "Vế sau «thì» phải là việc xảy ra vì trời mưa, không chỉ là tên một đồ vật.",
+          "explain": "Trời mưa nên ta ở trong nhà: «Nếu trời mưa thì chúng mình chơi trong nhà»; «trời rất xanh» lại trái với trời mưa.",
+          "en": {
+            "prompt": "Pick the best ending for «Nếu trời mưa thì…» (If it rains, then…)",
+            "choices": ["chúng mình chơi trong nhà (we play indoors)", "cái ô màu đỏ (the red umbrella)", "trời rất xanh (the sky is very blue)"],
+            "guide": [
+              "Read «Nếu trời mưa» (if it rains) and ask: what would people do when it rains?",
+              "Put each ending after «thì» and read the whole sentence to see if it makes sense."
+            ],
+            "hint": "The part after «thì» must be what happens because it rains, not just the name of a thing.",
+            "explain": "Rain keeps us inside, so «Nếu trời mưa thì chúng mình chơi trong nhà» fits; «trời rất xanh» contradicts the rain."
+          }
         },
         {
           "id": "s-x",
@@ -307,7 +502,22 @@
           "prompt": "Điền s hay x vào chỗ trống: «bà nhờ cháu …âu kim»?",
           "choices": ["s", "x"],
           "answer": 1,
-          "en": { "prompt": "s or x: «bà nhờ cháu …âu kim» (Grandma asks me to thread the needle)?", "choices": ["s", "x"] }
+          "guide": [
+            "Hiểu nghĩa câu: bà nhờ cháu luồn sợi chỉ qua lỗ kim.",
+            "Nhớ cặp dễ lẫn: «sâu» là con sâu hoặc chỗ sâu, còn việc luồn chỉ viết khác."
+          ],
+          "hint": "Luồn chỉ qua lỗ kim cũng là việc ta làm khi «…âu chuỗi hạt», chẳng dính gì tới con sâu.",
+          "explain": "Luồn chỉ qua lỗ kim là «xâu kim», viết x; «sâu» viết s là con sâu hay chỗ nước sâu.",
+          "en": {
+            "prompt": "s or x: «bà nhờ cháu …âu kim» (Grandma asks me to thread the needle)?",
+            "choices": ["s", "x"],
+            "guide": [
+              "Understand the sentence: Grandma asks the child to pass the thread through the needle's eye.",
+              "Remember the tricky pair: «sâu» means a caterpillar or deep, and threading is spelt differently."
+            ],
+            "hint": "Threading a needle uses the same word as threading beads, «…âu chuỗi hạt», nothing to do with caterpillars.",
+            "explain": "Threading a needle is «xâu kim», with x; «sâu» with s means a caterpillar or deep water."
+          }
         },
         {
           "id": "da-gia",
@@ -315,7 +525,22 @@
           "prompt": "Tiếng nào ghép với «đình» thành từ chỉ những người thân sống chung một nhà?",
           "choices": ["da", "gia"],
           "answer": 1,
-          "en": { "prompt": "Which goes with «đình» to make the word for the people who live together at home (family)?", "choices": ["da", "gia"] }
+          "guide": [
+            "Ghép thử từng tiếng với «đình» rồi đọc to: từ nào chỉ ông bà, bố mẹ, anh chị em?",
+            "Nhớ «da» là lớp ngoài của cơ thể, như trong «làn da», «da dẻ»."
+          ],
+          "hint": "Tiếng cần tìm mở đầu bằng hai chữ cái, cùng âm đầu với «giữ gìn» và «giúp đỡ».",
+          "explain": "Những người thân sống chung một nhà là «gia đình»; «da» là làn da, ghép với «đình» không thành từ.",
+          "en": {
+            "prompt": "Which goes with «đình» to make the word for the people who live together at home (family)?",
+            "choices": ["da", "gia"],
+            "guide": [
+              "Join each syllable with «đình» and say it: which one means grandparents, parents and siblings?",
+              "Remember «da» means skin, as in «làn da»."
+            ],
+            "hint": "The syllable you need starts with two letters, the same sound as in «giữ gìn» (to keep).",
+            "explain": "The people living together at home are a «gia đình» (family); «da» means skin and makes no word with «đình»."
+          }
         },
         {
           "id": "uon-uong",
@@ -323,7 +548,22 @@
           "prompt": "Vần nào điền vào «con đ…» để thành lối đi quanh co qua rừng?",
           "choices": ["ươn", "ương"],
           "answer": 1,
-          "en": { "prompt": "Which rhyme completes «con đ…», the winding way through the forest (the road)?", "choices": ["ươn", "ương"] }
+          "guide": [
+            "Đặt từng vần vào «con đ…» rồi đọc to cả hai tiếng.",
+            "Nghĩ tới lối đi mà người và xe vẫn qua lại hằng ngày."
+          ],
+          "hint": "Nghe kĩ âm cuối: tên lối đi kết thúc bằng tiếng vang «ng» hay tiếng gọn «n»?",
+          "explain": "Lối đi quanh co qua rừng là «con đường», vần ương có âm cuối ng; «đươn» không có nghĩa.",
+          "en": {
+            "prompt": "Which rhyme completes «con đ…», the winding way through the forest (the road)?",
+            "choices": ["ươn", "ương"],
+            "guide": [
+              "Put each rhyme into «con đ…» and say both words aloud.",
+              "Think of the way that people and carts travel along every day."
+            ],
+            "hint": "Listen to the last sound: does the way's name end in a ringing «ng» or a short «n»?",
+            "explain": "The winding way is «con đường» (road), with the ương rhyme ending in ng; «đươn» means nothing."
+          }
         },
         {
           "id": "tu-hao",
@@ -331,7 +571,22 @@
           "prompt": "Bé nặn xong chú voi bằng đất rồi chạy khoe mẹ. Từ nào chỉ cảm xúc của bé?",
           "choices": ["tự hào", "đất sét", "nặn tượng"],
           "answer": 0,
-          "en": { "prompt": "A child finishes a clay elephant and runs to show mum. Which word tells how the child feels?", "choices": ["tự hào (proud)", "đất sét (clay)", "nặn tượng (sculpt)"] }
+          "guide": [
+            "Hình dung bạn nhỏ vừa nặn xong chú voi đất và chạy đi khoe mẹ.",
+            "Gạt ra từ chỉ chất liệu và từ chỉ việc làm, giữ lại từ nói về cảm xúc."
+          ],
+          "hint": "Khi làm được điều mình cố gắng và muốn khoe với người thân, ta thấy thế nào?",
+          "explain": "«Tự hào» là cảm xúc khi mình làm được việc đáng khoe; «đất sét» là vật liệu, «nặn tượng» là hoạt động.",
+          "en": {
+            "prompt": "A child finishes a clay elephant and runs to show mum. Which word tells how the child feels?",
+            "choices": ["tự hào (proud)", "đất sét (clay)", "nặn tượng (sculpt)"],
+            "guide": [
+              "Picture the child finishing the clay elephant and running to show mum.",
+              "Set aside the material word and the action word; keep the word for a feeling."
+            ],
+            "hint": "How do you feel when you manage something you worked hard on and want to show your family?",
+            "explain": "«tự hào» (proud) is the feeling of having made something worth showing; «đất sét» is a material and «nặn tượng» an action."
+          }
         }
       ],
       "en": {

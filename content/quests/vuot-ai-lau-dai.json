@@ -211,7 +211,17 @@
             { "id": "b", "text": "Hình tứ giác" },
             { "id": "c", "text": "Hình tròn" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": ["Vẽ thử ra giấy một hình có 4 cạnh, đánh dấu 4 đỉnh ở chỗ các cạnh gặp nhau.", "So hình vừa vẽ với hình tam giác (3 cạnh) và hình tròn (không có đỉnh)."],
+            "hint": "Viên gạch lát nền hay tờ giấy hình chữ nhật cũng có 4 cạnh; tên chung của chúng có chữ «tứ» nghĩa là bốn.",
+            "answer": { "text": "Hình tứ giác", "explanation": "4 cạnh, 4 đỉnh là hình tứ giác (hình vuông, hình chữ nhật đều thuộc loại này); tam giác có 3 cạnh, hình tròn không có đỉnh." },
+            "en": {
+              "guide": ["Draw a shape with 4 sides on paper and mark the 4 corners where the sides meet.", "Compare your drawing with a triangle (3 sides) and a circle (no corners)."],
+              "hint": "A floor tile or a sheet of paper also has 4 sides; their shared name has «tứ», which means four.",
+              "answer": { "text": "Quadrilateral (hình tứ giác)", "explanation": "4 sides and 4 corners make a quadrilateral, squares and rectangles included; a triangle has 3 sides and a circle no corners." }
+            }
+          }
         },
         {
           "id": "duong-cong",
@@ -222,7 +232,17 @@
             { "id": "b", "text": "Đường thẳng" },
             { "id": "c", "text": "Đoạn thẳng" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": ["Nhớ lại cầu vồng sau mưa: nó vươn từ chân trời bên này sang bên kia như thế nào?", "So dáng cầu vồng với một sợi chỉ căng thẳng: hai dáng đó giống hay khác nhau?"],
+            "hint": "Cầu vồng uốn thành hình vòng cung, không có chỗ nào thẳng như mép thước.",
+            "answer": { "text": "Đường cong", "explanation": "Cầu vồng uốn thành vòng cung nên gợi đường cong; đường thẳng và đoạn thẳng đều thẳng như mép thước." },
+            "en": {
+              "guide": ["Recall a rainbow after rain: how does it stretch from one side of the sky to the other?", "Compare the rainbow's shape with a thread pulled tight: are the two shapes alike or different?"],
+              "hint": "A rainbow bends into an arc, with no part as straight as a ruler's edge.",
+              "answer": { "text": "A curved line (đường cong)", "explanation": "A rainbow bends into an arc, so it suggests a curved line; straight lines and segments are as straight as a ruler." }
+            }
+          }
         },
         {
           "id": "gap-khuc-abcd",
@@ -233,7 +253,17 @@
             { "id": "b", "text": "3 đoạn" },
             { "id": "c", "text": "4 đoạn" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": ["Đọc tên đường gấp khúc ABCD và kể ra từng đoạn thẳng: đoạn đầu nối A với B.", "Mỗi đoạn nối hai chữ cái đứng liền nhau; đếm xem có bao nhiêu cặp như thế."],
+            "hint": "Có 4 điểm A, B, C, D; số đoạn thẳng luôn ít hơn số điểm một.",
+            "answer": { "text": "3 đoạn", "explanation": "ABCD gồm ba đoạn thẳng AB, BC và CD; 4 là số điểm chứ không phải số đoạn." },
+            "en": {
+              "guide": ["Read the name ABCD and list its straight parts one by one: the first joins A to B.", "Each part joins two letters standing next to each other; count how many such pairs there are."],
+              "hint": "There are 4 points A, B, C, D, and there is always one part fewer than there are points.",
+              "answer": { "text": "3 parts (3 đoạn)", "explanation": "ABCD is made of three segments, AB, BC and CD; 4 is the number of points, not of parts." }
+            }
+          }
         },
         {
           "id": "bay-chuc-bon",
@@ -244,7 +274,17 @@
             { "id": "b", "text": "74" },
             { "id": "c", "text": "704" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": ["Viết chữ số hàng chục trước, rồi viết chữ số hàng đơn vị ngay bên phải.", "Ở đây 7 là số chục và 4 là số đơn vị."],
+            "hint": "Số có hai chữ số đọc bắt đầu từ hàng chục, như 5 chục 2 đơn vị là 52.",
+            "answer": { "text": "74", "explanation": "7 chục và 4 đơn vị viết là 74 (bảy mươi tư); 47 là 4 chục 7 đơn vị, còn 704 là số có ba chữ số." },
+            "en": {
+              "guide": ["Write the tens digit first, then the ones digit just to its right.", "Here 7 is the number of tens and 4 the number of ones."],
+              "hint": "A two-digit number starts with the tens, just as 5 tens and 2 ones make 52.",
+              "answer": { "text": "74", "explanation": "7 tens and 4 ones is written 74 (seventy-four); 47 is 4 tens and 7 ones, and 704 has three digits." }
+            }
+          }
         },
         {
           "id": "co-khanh-thanh",
@@ -255,7 +295,17 @@
             { "id": "b", "text": "84 lá" },
             { "id": "c", "text": "12 lá" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": ["Gộp cờ đỏ và cờ vàng là phép cộng: đặt tính 48 + 36 thẳng cột.", "Cộng hàng đơn vị 8 + 6 trước, nhớ 1 sang hàng chục."],
+            "hint": "8 + 6 = 14, viết 4 nhớ 1; 4 + 3 = 7, thêm 1 nhớ nữa.",
+            "answer": { "text": "84 lá", "explanation": "48 + 36 = 84: 8 + 6 = 14 viết 4 nhớ 1, 4 + 3 + 1 = 8; 74 lá là quên nhớ, 12 lá là lấy 48 − 36." },
+            "en": {
+              "guide": ["Putting red and yellow flags together is addition: write 48 + 36 in columns.", "Add the ones 8 + 6 first and carry 1 to the tens."],
+              "hint": "8 + 6 = 14, write 4 carry 1; 4 + 3 = 7, plus the carried 1.",
+              "answer": { "text": "84 flags (84 lá)", "explanation": "48 + 36 = 84: 8 + 6 = 14, write 4 carry 1, 4 + 3 + 1 = 8; 74 forgets the carry and 12 is 48 − 36." }
+            }
+          }
         },
         {
           "id": "tram-tru",
@@ -266,7 +316,17 @@
             { "id": "b", "text": "75 viên" },
             { "id": "c", "text": "135 viên" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": ["Số đá còn lại là 100 viên bớt đi 35 viên đã dùng: phép trừ 100 − 35.", "Tách cho dễ: lấy 100 − 30 trước, rồi trừ tiếp 5."],
+            "hint": "100 − 30 = 70, và 70 − 5 = ?",
+            "answer": { "text": "65 viên", "explanation": "100 − 35 = 65 (100 − 30 = 70, 70 − 5 = 65); 75 viên là chỉ bớt 25, còn 135 viên là cộng nhầm." },
+            "en": {
+              "guide": ["The stones left are 100 take away the 35 used: the subtraction 100 − 35.", "Make it easy: do 100 − 30 first, then take away 5 more."],
+              "hint": "100 − 30 = 70, and 70 − 5 = ?",
+              "answer": { "text": "65 stones (65 viên)", "explanation": "100 − 35 = 65 (100 − 30 = 70, 70 − 5 = 65); 75 only takes away 25, and 135 adds by mistake." }
+            }
+          }
         },
         {
           "id": "thang-hang",
@@ -277,7 +337,17 @@
             { "id": "b", "text": "Tạo thành ba đỉnh của một hình tam giác" },
             { "id": "c", "text": "Nằm ở ba góc của tờ giấy" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": ["Chấm ba điểm lên giấy theo vài cách khác nhau, mỗi lần thử đặt mép thước qua cả ba.", "Để ý cách chấm nào khiến chỉ cần một nét kẻ là nối được hết ba điểm."],
+            "hint": "Nhớ tới hàng cây trồng thẳng tắp bên đường: nhìn dọc theo hàng chỉ thấy một lối thẳng.",
+            "answer": { "text": "Cùng nằm trên một đường thẳng", "explanation": "Ba điểm thẳng hàng là ba điểm cùng nằm trên một đường thẳng; ba đỉnh tam giác hay ba góc tờ giấy thì không như thế." },
+            "en": {
+              "guide": ["Dot three points on paper in a few different ways, each time laying a ruler across all three.", "Notice which way of dotting lets a single ruled line join all three points."],
+              "hint": "Think of trees planted in a dead straight row by the road: looking along it you see one straight line.",
+              "answer": { "text": "They lie on one straight line (cùng nằm trên một đường thẳng)", "explanation": "Points in a line («thẳng hàng») all lie on one straight line; a triangle's three corners or a sheet's three corners never do." }
+            }
+          }
         }
       ]
     },

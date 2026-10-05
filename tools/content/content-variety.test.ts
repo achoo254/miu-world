@@ -42,6 +42,44 @@ describe('varietyIssues', () => {
     ]);
   });
 
+  it("lets a boss question's answer layer name its right choice, but not reuse another line", () => {
+    const label = (n: number) => `Các bạn nhỏ chơi rồng rắn lên mây ${n}`;
+    const bossOf = (tag: string, explanation: string) => ({
+      id: 'trum',
+      title: 'Đấu trí',
+      kind: 'boss',
+      trigger: 'auto',
+      bossId: 'than-rung',
+      bossName: 'Thần Rừng',
+      introDialogue: `Ta thách đố ${tag} đây`,
+      winDialogue: `Ta chịu thua ${tag} rồi`,
+      maxHp: 160,
+      damagePerTurn: 80,
+      turns: [1, 2].map((n) => ({
+        id: `q${n}`,
+        prompt: `Câu đố thứ ${n} của ${tag}`,
+        skill: 'cau',
+        choices: [{ id: 'a', text: label(n) }, { id: 'b', text: `Khu rừng ${tag} rất yên tĩnh ${n}` }],
+        answer: { choice: 'a' },
+        support: {
+          guide: [`Đọc từng câu của ${tag}, lượt ${n}`],
+          hint: `Tìm câu có việc đang làm, ${tag} ${n}`,
+          answer: { text: label(n), explanation: n === 1 ? explanation : `Giải thích lượt hai của ${tag}` },
+          en: { guide: [`Read each sentence of ${tag}, turn ${n}`], hint: `Look for something being done, ${tag} ${n}`, answer: { text: `Children play a game ${tag} ${n}`, explanation: `Explained for ${tag}, turn ${n}` } },
+        },
+      })),
+    });
+    const withBoss = (id: string, tag: string, explanation: string) => {
+      const q = quest(id, tag);
+      if (q.status !== 'active') throw new Error('active');
+      return QuestDefinition.parse({ ...q, steps: [...q.steps, bossOf(tag, explanation)] });
+    };
+    expect(varietyIssues([withBoss('a', 'buổi sáng', 'Giải thích lượt một của buổi sáng')], [])).toEqual([]);
+    expect(varietyIssues([withBoss('a', 'buổi sáng', 'Giải thích riêng của buổi sáng')], [])).toEqual([
+      'quest a steps[3].turns[0].support.answer.explanation repeats "Giải thích riêng của buổi sáng" (already used by quest a steps[2].support.answer.explanation): write a new line',
+    ]);
+  });
+
   it('ignores short labels and graded answers', () => {
     const a = quest('a', 'buổi sáng', { title: 'Đọc bài' });
     const b = quest('b', 'buổi chiều', { title: 'Đọc bài' });

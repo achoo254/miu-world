@@ -46,13 +46,25 @@
             "42"
           ],
           "answer": 0,
+          "guide": [
+            "Phép tính cần làm là 36 + 7, vì hái thêm thì số bắp tăng lên.",
+            "Tách 7 thành 4 và 3: 36 cộng 4 tròn 40, rồi cộng tiếp phần còn lại."
+          ],
+          "hint": "6 + 7 vượt quá 10 nên nhớ 1 sang hàng chục: 3 chục thành 4 chục.",
+          "explain": "36 + 7 = 43 vì 36 + 4 = 40, thêm 3 nữa là 43; chọn 33 là quên nhớ 1 sang hàng chục.",
           "en": {
             "prompt": "36 corn cobs are picked, then 7 more. How many cobs in all?",
             "choices": [
               "43",
               "33",
               "42"
-            ]
+            ],
+            "guide": [
+              "The sum is 36 + 7, because picking more makes the number of cobs go up.",
+              "Split 7 into 4 and 3: 36 plus 4 makes 40, then add what is left."
+            ],
+            "hint": "6 + 7 is more than 10, so carry 1 to the tens: 3 tens become 4 tens.",
+            "explain": "36 + 7 = 43 because 36 + 4 = 40 and 3 more makes 43; 33 forgets to carry the one."
           }
         },
         {
@@ -65,13 +77,25 @@
             "23"
           ],
           "answer": 0,
+          "guide": [
+            "Cộng số cà chua hai buổi: đặt 48 và 25 thẳng cột đơn vị, cột chục.",
+            "Cộng hàng đơn vị trước, 8 + 5, rồi mới cộng hàng chục."
+          ],
+          "hint": "8 + 5 = 13, viết 3 nhớ 1; hàng chục là 4 + 2 rồi cộng thêm 1 đã nhớ.",
+          "explain": "48 + 25 = 73: 8 + 5 = 13 viết 3 nhớ 1, 4 + 2 = 6 thêm 1 là 7; 63 là kết quả khi quên nhớ.",
           "en": {
             "prompt": "The farmer picks 48 tomatoes in the morning and 25 in the afternoon. How many in the whole day?",
             "choices": [
               "73",
               "63",
               "23"
-            ]
+            ],
+            "guide": [
+              "Add the two harvests: line up 48 and 25 with ones under ones and tens under tens.",
+              "Add the ones first, 8 + 5, and only then the tens."
+            ],
+            "hint": "8 + 5 = 13, write 3 and carry 1; for the tens do 4 + 2 and add the 1 you carried.",
+            "explain": "48 + 25 = 73: 8 + 5 = 13, write 3 carry 1, then 4 + 2 = 6 plus 1 is 7; 63 is what you get without carrying."
           }
         },
         {
@@ -84,13 +108,25 @@
             "515"
           ],
           "answer": 0,
+          "guide": [
+            "59 chỉ thiếu 1 là tròn 60, nên lấy 1 từ số 6 bù vào 59.",
+            "Sau khi bù, cộng phần còn lại của số 6 vào 60."
+          ],
+          "hint": "6 = 1 + 5: 59 + 1 = 60, còn 5 cộng nốt vào 60.",
+          "explain": "59 + 6 = 65 vì 59 + 1 = 60, thêm 5 là 65; 515 là ghép các chữ số chứ không phải cộng.",
           "en": {
             "prompt": "Lợn Rừng works out 59 + 6 in his head. What is the right answer?",
             "choices": [
               "65",
               "55",
               "515"
-            ]
+            ],
+            "guide": [
+              "59 is just 1 short of 60, so take 1 from the 6 to fill up 59.",
+              "After that, add the rest of the 6 to 60."
+            ],
+            "hint": "6 = 1 + 5: 59 + 1 = 60, then add the remaining 5 to 60.",
+            "explain": "59 + 6 = 65 because 59 + 1 = 60 and 5 more is 65; 515 just sticks the digits together instead of adding."
           }
         },
         {
@@ -103,13 +139,25 @@
             "8"
           ],
           "answer": 0,
+          "guide": [
+            "«Chở về thêm» nghĩa là số bao tăng, nên làm phép cộng 27 + 35.",
+            "Cộng 7 + 5 ở hàng đơn vị, nhớ sang hàng chục nếu tổng từ 10 trở lên."
+          ],
+          "hint": "7 + 5 = 12, viết 2 nhớ 1; 2 chục cộng 3 chục rồi thêm 1 chục nhớ.",
+          "explain": "27 + 35 = 62: 7 + 5 = 12 viết 2 nhớ 1, 2 + 3 = 5 thêm 1 là 6; 8 là lấy hiệu chứ không phải tổng.",
           "en": {
             "prompt": "The barn has 27 sacks of rice, and a cart brings 35 more. How many sacks in all?",
             "choices": [
               "62",
               "52",
               "8"
-            ]
+            ],
+            "guide": [
+              "«Brings more» means the sacks go up, so the sum is 27 + 35.",
+              "Add 7 + 5 in the ones, and carry to the tens if it makes 10 or more."
+            ],
+            "hint": "7 + 5 = 12, write 2 carry 1; 2 tens plus 3 tens, then add the carried ten.",
+            "explain": "27 + 35 = 62: 7 + 5 = 12, write 2 carry 1, then 2 + 3 = 5 plus 1 is 6; 8 is the difference, not the total."
           }
         }
       ],
@@ -180,13 +228,25 @@
             "50"
           ],
           "answer": 0,
+          "guide": [
+            "Gà chạy ra sân thì trong chuồng ít đi, nên tính 42 − 8.",
+            "Hàng đơn vị 2 không trừ được 8, hãy mượn 1 chục từ 4 chục."
+          ],
+          "hint": "Mượn 1 chục: 12 − 8 = 4, còn lại 3 chục ở hàng chục.",
+          "explain": "42 − 8 = 34 vì 12 − 8 = 4 và 4 chục bớt 1 còn 3 chục; 44 là quên mượn, 50 là cộng nhầm.",
           "en": {
             "prompt": "There are 42 hens in the coop and 8 run out into the yard. How many are still in the coop?",
             "choices": [
               "34",
               "44",
               "50"
-            ]
+            ],
+            "guide": [
+              "Hens running out leave fewer in the coop, so work out 42 − 8.",
+              "2 ones can't take away 8, so borrow 1 ten from the 4 tens."
+            ],
+            "hint": "Borrow a ten: 12 − 8 = 4, and 3 tens are left in the tens place.",
+            "explain": "42 − 8 = 34 because 12 − 8 = 4 and 4 tens less 1 is 3 tens; 44 forgets the borrowing, 50 adds by mistake."
           }
         },
         {
@@ -199,13 +259,25 @@
             "107"
           ],
           "answer": 0,
+          "guide": [
+            "Số vịt trên bờ là 71 con bớt đi 36 con đã xuống ao.",
+            "Đặt tính 71 − 36: 1 không trừ được 6 nên mượn 1 chục."
+          ],
+          "hint": "11 − 6 = 5 ở hàng đơn vị; hàng chục còn 6 chục, trừ tiếp 3 chục.",
+          "explain": "71 − 36 = 35: 11 − 6 = 5, rồi 7 bớt 1 là 6, 6 − 3 = 3; thử lại 35 + 36 = 71 là đúng.",
           "en": {
             "prompt": "A flock of 71 ducks: 36 go swimming in the pond. How many ducks are left on the bank?",
             "choices": [
               "35",
               "45",
               "107"
-            ]
+            ],
+            "guide": [
+              "The ducks on the bank are 71 take away the 36 in the pond.",
+              "Set out 71 − 36: 1 can't take away 6, so borrow a ten."
+            ],
+            "hint": "11 − 6 = 5 in the ones; 6 tens remain, then take away 3 tens.",
+            "explain": "71 − 36 = 35: 11 − 6 = 5, then 7 minus 1 is 6 and 6 − 3 = 3; check: 35 + 36 = 71."
           }
         },
         {
@@ -218,13 +290,25 @@
             "="
           ],
           "answer": 1,
+          "guide": [
+            "Tính hiệu 63 − 9 trước, rồi mới đặt kết quả cạnh số 50.",
+            "So sánh hàng chục của hai số trước; hàng chục bằng nhau mới xét hàng đơn vị."
+          ],
+          "hint": "63 − 9 = 54, mà 54 và 50 cùng 5 chục, nên nhìn hàng đơn vị: 4 và 0.",
+          "explain": "63 − 9 = 54 và 54 lớn hơn 50 vì 4 đơn vị nhiều hơn 0, nên điền dấu >.",
           "en": {
             "prompt": "Heo compares 63 − 9 with 50. Which sign goes in 63 − 9 … 50?",
             "choices": [
               "<",
               ">",
               "="
-            ]
+            ],
+            "guide": [
+              "Work out 63 − 9 first, then set the result beside 50.",
+              "Compare the tens first; only if they match, look at the ones."
+            ],
+            "hint": "63 − 9 = 54, and 54 and 50 both have 5 tens, so look at the ones: 4 and 0.",
+            "explain": "63 − 9 = 54, and 54 is greater than 50 since 4 ones beat 0, so the sign is >."
           }
         },
         {
@@ -237,13 +321,25 @@
             "38"
           ],
           "answer": 0,
+          "guide": [
+            "Số cần tìm là phần bị bớt đi: lấy 80 trừ đi kết quả 52.",
+            "Tính 80 − 52, rồi thử lại bằng cách điền số vừa tìm vào chỗ trống."
+          ],
+          "hint": "0 không trừ được 2 nên mượn 1 chục: 10 − 2 = 8, rồi 7 chục bớt 5 chục.",
+          "explain": "80 − 52 = 28, và thử lại 80 − 28 = 52 là đúng; 32 là kết quả khi quên mượn chục.",
           "en": {
             "prompt": "Which number goes in the gap: 80 − … = 52?",
             "choices": [
               "28",
               "32",
               "38"
-            ]
+            ],
+            "guide": [
+              "The missing number is the part taken away: take 52 from 80.",
+              "Work out 80 − 52, then check by putting it back in the gap."
+            ],
+            "hint": "0 can't take away 2, so borrow a ten: 10 − 2 = 8, then 7 tens less 5 tens.",
+            "explain": "80 − 52 = 28, and the check 80 − 28 = 52 works; 32 comes from forgetting to borrow."
           }
         }
       ],
@@ -314,13 +410,25 @@
             "37"
           ],
           "answer": 0,
+          "guide": [
+            "«Ít hơn 18 quả» nghĩa là số quả bưởi bằng số quả cam bớt đi 18.",
+            "Tính 45 − 18; hàng đơn vị 5 không trừ được 8 nên phải mượn."
+          ],
+          "hint": "15 − 8 = 7; hàng chục 4 cho mượn mất 1 còn 3, trừ tiếp 1 chục.",
+          "explain": "45 − 18 = 27 vì 15 − 8 = 7 và 3 − 1 = 2; chọn 63 là cộng thay vì trừ.",
           "en": {
             "prompt": "The orange tree has 45 fruits and the pomelo tree has 18 fewer. How many fruits on the pomelo tree?",
             "choices": [
               "27",
               "63",
               "37"
-            ]
+            ],
+            "guide": [
+              "«18 fewer» means the pomelo tree has the orange tree's 45 take away 18.",
+              "Work out 45 − 18; 5 ones can't take away 8, so you must borrow."
+            ],
+            "hint": "15 − 8 = 7; the 4 tens lend 1 and become 3, then take away 1 ten.",
+            "explain": "45 − 18 = 27 because 15 − 8 = 7 and 3 − 1 = 2; 63 adds instead of taking away."
           }
         },
         {
@@ -333,13 +441,25 @@
             "59"
           ],
           "answer": 0,
+          "guide": [
+            "Khỉ hái hai lần, mỗi lần 29 quả, nên cộng 29 + 29.",
+            "Mẹo: 29 gần 30, cộng 30 + 30 rồi bớt phần đã thêm vào."
+          ],
+          "hint": "30 + 30 = 60, nhưng mỗi số 29 đã được thêm 1, nên trả lại 2.",
+          "explain": "29 + 29 = 58 vì 30 + 30 = 60, bớt 2 là 58; hoặc 9 + 9 = 18 viết 8 nhớ 1, 2 + 2 + 1 = 5.",
           "en": {
             "prompt": "Khỉ picks 29 oranges and then 29 more. How many oranges in all?",
             "choices": [
               "58",
               "48",
               "59"
-            ]
+            ],
+            "guide": [
+              "Khỉ picks twice, 29 oranges each time, so add 29 + 29.",
+              "Trick: 29 is close to 30, so add 30 + 30 and then remove what you added."
+            ],
+            "hint": "30 + 30 = 60, but each 29 got 1 extra, so give back 2.",
+            "explain": "29 + 29 = 58 since 30 + 30 = 60 minus 2 is 58; or 9 + 9 = 18, write 8 carry 1, and 2 + 2 + 1 = 5."
           }
         },
         {
@@ -352,13 +472,25 @@
             "8"
           ],
           "answer": 0,
+          "guide": [
+            "Mỗi con gà có 2 chân; đếm 2 chân cho từng con trong ba con.",
+            "Đếm thêm 2 mỗi lần: con thứ nhất, con thứ hai, rồi con thứ ba."
+          ],
+          "hint": "Cộng 2 + 2 + 2, ba lần số 2 vì có ba con gà.",
+          "explain": "Ba con gà có 2 + 2 + 2 = 6 chân; 8 chân là của bốn con gà, và 5 là số lẻ nên không thể là tổng chân gà.",
           "en": {
             "prompt": "Each hen has 2 legs. How many legs do three hens under the orange tree have?",
             "choices": [
               "6",
               "5",
               "8"
-            ]
+            ],
+            "guide": [
+              "Each hen has 2 legs; count 2 legs for each of the three hens.",
+              "Count on in twos: the first hen, the second hen, then the third."
+            ],
+            "hint": "Add 2 + 2 + 2: three twos, because there are three hens.",
+            "explain": "Three hens have 2 + 2 + 2 = 6 legs; 8 legs would be four hens, and 5 is odd so it can't be hens' legs."
           }
         },
         {
@@ -371,13 +503,25 @@
             "137"
           ],
           "answer": 0,
+          "guide": [
+            "Trứng đã bán thì rổ vơi đi, nên tính 90 − 47.",
+            "Hàng đơn vị 0 không trừ được 7, mượn 1 chục từ 9 chục."
+          ],
+          "hint": "10 − 7 = 3; 9 chục còn 8 chục, trừ 4 chục nữa.",
+          "explain": "90 − 47 = 43 vì 10 − 7 = 3 và 8 − 4 = 4; thử lại 43 + 47 = 90; 137 là cộng nhầm.",
           "en": {
             "prompt": "A basket holds 90 eggs and 47 are sold. How many eggs are left?",
             "choices": [
               "43",
               "53",
               "137"
-            ]
+            ],
+            "guide": [
+              "Selling eggs empties the basket, so work out 90 − 47.",
+              "0 ones can't take away 7, so borrow 1 ten from the 9 tens."
+            ],
+            "hint": "10 − 7 = 3; the 9 tens drop to 8 tens, then take away 4 tens.",
+            "explain": "90 − 47 = 43 because 10 − 7 = 3 and 8 − 4 = 4; check 43 + 47 = 90; 137 adds by mistake."
           }
         },
         {
@@ -390,13 +534,25 @@
             "62"
           ],
           "answer": 0,
+          "guide": [
+            "Xem mỗi hàng cây hơn hàng trước bao nhiêu: 12 lên 22, 22 lên 32.",
+            "Áp đúng bước nhảy đó vào số cuối là 42."
+          ],
+          "hint": "Mỗi hàng tăng đúng 1 chục, chữ số hàng đơn vị luôn là 2.",
+          "explain": "Dãy tăng 10 mỗi lần nên sau 42 là 42 + 10 = 52; 43 chỉ thêm 1, còn 62 thì nhảy 20.",
           "en": {
             "prompt": "The tree rows are numbered 12, 22, 32, 42, … What number is the next row?",
             "choices": [
               "52",
               "43",
               "62"
-            ]
+            ],
+            "guide": [
+              "See how much each row goes up from the last: 12 to 22, 22 to 32.",
+              "Apply the same jump to the last number, 42."
+            ],
+            "hint": "Each row goes up by exactly one ten, and the ones digit is always 2.",
+            "explain": "The rows go up by 10, so after 42 comes 42 + 10 = 52; 43 adds only 1 and 62 jumps 20."
           }
         }
       ],

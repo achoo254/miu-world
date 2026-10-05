@@ -44,13 +44,25 @@
             "thứ Hai"
           ],
           "answer": 0,
+          "guide": [
+            "Tìm trong bảng tin chữ chỉ ngày, đứng ngay sau chữ «sáng».",
+            "Bỏ qua giờ mở cửa và nơi tổ chức, chỉ giữ lại tên ngày."
+          ],
+          "hint": "Bảng tin không nhắc tới Chủ nhật hay thứ Hai; đọc kĩ phần sau «8 giờ sáng».",
+          "explain": "Bảng tin ghi «8 giờ sáng thứ Bảy», nên hội chợ mở vào thứ Bảy; Chủ nhật, thứ Hai không có trong tin.",
           "en": {
             "prompt": "The notice board says: «The fair opens at 8 a.m. on Saturday in the square». Which day does the fair open?",
             "choices": [
               "thứ Bảy (Saturday)",
               "Chủ nhật (Sunday)",
               "thứ Hai (Monday)"
-            ]
+            ],
+            "guide": [
+              "Find the word naming a day on the notice, right after «a.m.».",
+              "Skip the opening time and the place, keep only the day."
+            ],
+            "hint": "The notice never mentions Sunday or Monday; read what comes after «8 a.m.» carefully.",
+            "explain": "The notice says «8 a.m. on Saturday», so the fair opens on Saturday (thứ Bảy); Sunday and Monday aren't mentioned."
           }
         },
         {
@@ -63,13 +75,25 @@
             "68"
           ],
           "answer": 0,
+          "guide": [
+            "So chữ số hàng chục của 68, 86 và 79 trước tiên.",
+            "Lá thư có chữ số hàng chục lớn nhất mang số lớn nhất."
+          ],
+          "hint": "68 và 86 dùng cùng hai chữ số, nhưng đứng ở hàng khác nhau.",
+          "explain": "86 có 8 chục, hơn 7 chục của 79 và 6 chục của 68, nên 86 lớn nhất.",
           "en": {
             "prompt": "Sẻ Nâu carries three letters numbered 68, 86 and 79. Which number is the biggest?",
             "choices": [
               "86",
               "79",
               "68"
-            ]
+            ],
+            "guide": [
+              "First compare the tens digits of 68, 86 and 79.",
+              "The letter whose number has the biggest tens digit carries the biggest number."
+            ],
+            "hint": "68 and 86 use the same two digits, but in different places.",
+            "explain": "86 has 8 tens, more than the 7 tens of 79 and the 6 tens of 68, so 86 is biggest."
           }
         },
         {
@@ -82,13 +106,25 @@
             "58"
           ],
           "answer": 0,
+          "guide": [
+            "«Bay tới thêm» nghĩa là gộp lại, nên làm phép cộng 45 + 23.",
+            "Cộng 5 + 3 ở hàng đơn vị, rồi 4 + 2 ở hàng chục."
+          ],
+          "hint": "Số chim sẻ lúc sau phải nhiều hơn 45, nên loại ngay số bé hơn 45.",
+          "explain": "45 + 23 = 68 vì 5 + 3 = 8 và 4 + 2 = 6; 22 là lấy 45 − 23, 58 là cộng nhầm hàng chục.",
           "en": {
             "prompt": "There are 45 sparrows in the square and 23 more fly in. How many sparrows are there in all?",
             "choices": [
               "68",
               "22",
               "58"
-            ]
+            ],
+            "guide": [
+              "«Fly in» means putting together, so add 45 + 23.",
+              "Add 5 + 3 in the ones, then 4 + 2 in the tens."
+            ],
+            "hint": "There must be more than 45 sparrows now, so rule out anything smaller.",
+            "explain": "45 + 23 = 68 since 5 + 3 = 8 and 4 + 2 = 6; 22 is 45 − 23, and 58 slips in the tens."
           }
         },
         {
@@ -101,13 +137,25 @@
             "33"
           ],
           "answer": 0,
+          "guide": [
+            "Cờ bị gió thổi bay mất nên số cờ bớt đi: làm phép trừ 57 − 14.",
+            "Trừ 7 − 4 ở hàng đơn vị, rồi 5 − 1 ở hàng chục."
+          ],
+          "hint": "Số cờ còn lại ít hơn 57; một đáp án lớn hơn 57 là do cộng nhầm.",
+          "explain": "57 − 14 = 43 vì 7 − 4 = 3 và 5 − 1 = 4; 71 là cộng 57 + 14, 33 là trừ nhầm hàng chục.",
           "en": {
             "prompt": "There are 57 flags round the square and the wind blows 14 away. How many flags are left?",
             "choices": [
               "43",
               "71",
               "33"
-            ]
+            ],
+            "guide": [
+              "The wind takes flags away, so subtract: 57 − 14.",
+              "Do 7 − 4 in the ones, then 5 − 1 in the tens."
+            ],
+            "hint": "The flags left are fewer than 57; an answer bigger than 57 comes from adding by mistake.",
+            "explain": "57 − 14 = 43 since 7 − 4 = 3 and 5 − 1 = 4; 71 is 57 + 14, and 33 slips in the tens."
           }
         }
       ],
@@ -178,13 +226,25 @@
             "88"
           ],
           "answer": 0,
+          "guide": [
+            "Gộp số kẹo bán buổi sáng và buổi chiều: 36 + 42.",
+            "Cộng 6 + 2 ở hàng đơn vị, rồi 3 + 4 ở hàng chục."
+          ],
+          "hint": "Cả ba đáp án đều tận cùng là 8, nên hãy kiểm tra kĩ hàng chục.",
+          "explain": "36 + 42 = 78 vì 6 + 2 = 8 và 3 + 4 = 7; 68 và 88 sai ở hàng chục.",
           "en": {
             "prompt": "Heo sells 36 sweets in the morning and 42 in the afternoon. How many sweets in the whole day?",
             "choices": [
               "78",
               "68",
               "88"
-            ]
+            ],
+            "guide": [
+              "Put the morning and afternoon sweets together: 36 + 42.",
+              "Add 6 + 2 in the ones, then 3 + 4 in the tens."
+            ],
+            "hint": "All three answers end in 8, so check the tens carefully.",
+            "explain": "36 + 42 = 78 since 6 + 2 = 8 and 3 + 4 = 7; 68 and 88 get the tens wrong."
           }
         },
         {
@@ -197,13 +257,25 @@
             "124"
           ],
           "answer": 0,
+          "guide": [
+            "Đã bán thì số bóng bớt đi, nên làm phép trừ 89 − 35.",
+            "Trừ hàng đơn vị 9 − 5, rồi hàng chục 8 − 3."
+          ],
+          "hint": "Số bóng còn lại phải ít hơn 89; 124 là kết quả của phép cộng.",
+          "explain": "89 − 35 = 54 vì 9 − 5 = 4 và 8 − 3 = 5; 64 sai hàng chục, 124 là cộng 89 + 35.",
           "en": {
             "prompt": "The shop has 89 balloons and has sold 35. How many balloons are left?",
             "choices": [
               "54",
               "64",
               "124"
-            ]
+            ],
+            "guide": [
+              "Selling takes balloons away, so subtract: 89 − 35.",
+              "Subtract the ones, 9 − 5, then the tens, 8 − 3."
+            ],
+            "hint": "Fewer than 89 balloons must be left; 124 is what adding gives.",
+            "explain": "89 − 35 = 54 since 9 − 5 = 4 and 8 − 3 = 5; 64 slips in the tens, and 124 is 89 + 35."
           }
         },
         {
@@ -216,13 +288,25 @@
             "="
           ],
           "answer": 0,
+          "guide": [
+            "So hàng chục của hai giá trước: 47 có 4 chục, 74 có 7 chục.",
+            "Nhớ: miệng của dấu so sánh luôn mở về phía số lớn hơn."
+          ],
+          "hint": "Hai giá khác nhau nên không thể dùng dấu bằng; số bên trái lớn hay bé hơn?",
+          "explain": "47 có 4 chục, ít hơn 7 chục của 74, nên 47 < 74; dấu > là ngược chiều, dấu = chỉ dùng khi hai số bằng nhau.",
           "en": {
             "prompt": "Heo puts two prices on the shelf, 47 and 74. Which sign goes in 47 … 74?",
             "choices": [
               "<",
               ">",
               "="
-            ]
+            ],
+            "guide": [
+              "Compare the tens of the two prices first: 47 has 4 tens, 74 has 7.",
+              "Remember: the open side of the sign always faces the bigger number."
+            ],
+            "hint": "The two prices differ, so it can't be equals; is the left one bigger or smaller?",
+            "explain": "47 has 4 tens, fewer than the 7 tens of 74, so 47 < 74; > is the wrong way round and = needs equal numbers."
           }
         },
         {
@@ -235,13 +319,25 @@
             "quả cam"
           ],
           "answer": 0,
+          "guide": [
+            "«apple» là một từ tiếng Anh chỉ một loại quả; nhớ lại tranh trong bài từ vựng về hoa quả.",
+            "Quả này tròn, vỏ đỏ hoặc xanh, ăn giòn."
+          ],
+          "hint": "Chuối là «banana», cam là «orange»; vị khách không hỏi hai loại đó.",
+          "explain": "«apple» nghĩa là quả táo; quả chuối là «banana», quả cam là «orange».",
           "en": {
             "prompt": "A customer asks for an «apple». Which fruit is that in Vietnamese?",
             "choices": [
               "quả táo",
               "quả chuối",
               "quả cam"
-            ]
+            ],
+            "guide": [
+              "«apple» is an English fruit word; picture it and find its Vietnamese name.",
+              "This fruit is round, red or green, and crunchy."
+            ],
+            "hint": "«quả chuối» is a banana and «quả cam» an orange, so it is neither of those.",
+            "explain": "An «apple» is «quả táo» in Vietnamese; «quả chuối» is a banana and «quả cam» an orange."
           }
         }
       ],
@@ -311,13 +407,25 @@
             "12 giờ 15 phút"
           ],
           "answer": 0,
+          "guide": [
+            "Kim ngắn chỉ giờ, kim dài chỉ phút; xem kim ngắn đang chỉ số mấy.",
+            "Kim dài chỉ đúng số 12 nghĩa là giờ đúng, không có phút lẻ."
+          ],
+          "hint": "Đừng đọc số 12 của kim dài thành giờ; giờ lấy từ kim ngắn.",
+          "explain": "Kim ngắn chỉ 3, kim dài chỉ 12 nên đồng hồ chỉ đúng 3 giờ; 12 giờ thì kim ngắn phải chỉ số 12.",
           "en": {
             "prompt": "On the festival clock the short hand points to 3 and the long hand to 12. What time is it?",
             "choices": [
               "3 o'clock",
               "12 o'clock",
               "12:15"
-            ]
+            ],
+            "guide": [
+              "The short hand gives the hour and the long hand the minutes; which number is the short hand on?",
+              "A long hand exactly on 12 means a whole hour, no extra minutes."
+            ],
+            "hint": "Don't read the long hand's 12 as the hour; the hour comes from the short hand.",
+            "explain": "The short hand is on 3 and the long hand on 12, so it's exactly 3 o'clock; at 12 o'clock the short hand points to 12."
           }
         },
         {
@@ -330,13 +438,25 @@
             "xanh"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc dãy màu và tìm nhóm lặp lại: hai màu nối nhau rồi quay về màu đầu.",
+            "Chiếc cuối cùng đang là màu đỏ; trong nhóm lặp, sau đỏ là màu nào?"
+          ],
+          "hint": "Xanh chưa từng xuất hiện trong dây đèn, còn đỏ thì vừa có ở chiếc trước.",
+          "explain": "Dãy lặp đỏ, vàng, đỏ, vàng; chiếc thứ năm là đỏ nên chiếc thứ sáu là vàng; xanh không có trong quy luật.",
           "en": {
             "prompt": "The lanterns go red, yellow, red, yellow, red, … What colour is the next one?",
             "choices": [
               "vàng (yellow)",
               "đỏ (red)",
               "xanh (blue)"
-            ]
+            ],
+            "guide": [
+              "Read the colours and find the repeating group: two colours, then back to the first.",
+              "The last lantern is red; in the repeating group, what comes after red?"
+            ],
+            "hint": "Blue never appears on the string, and red was the lantern just before.",
+            "explain": "The pattern repeats red, yellow; the fifth lantern is red, so the sixth is yellow (vàng); blue isn't in it."
           }
         },
         {
@@ -349,13 +469,25 @@
             "màu vàng"
           ],
           "answer": 0,
+          "guide": [
+            "«red» là từ tiếng Anh chỉ một màu; «lantern» là chiếc đèn lồng.",
+            "Nghĩ tới màu của lá cờ Tổ quốc hay quả ớt chín."
+          ],
+          "hint": "Màu xanh là «blue» hoặc «green», màu vàng là «yellow»; «red» không phải hai màu ấy.",
+          "explain": "«red» nghĩa là màu đỏ, nên «red lantern» là đèn lồng đỏ; «yellow» mới là màu vàng.",
           "en": {
             "prompt": "Gấu Trúc says «red lantern». What colour is the lantern in Vietnamese?",
             "choices": [
               "màu đỏ",
               "màu xanh",
               "màu vàng"
-            ]
+            ],
+            "guide": [
+              "«red» is a colour word and «lantern» is «đèn lồng».",
+              "Think of the colour of a ripe chilli or a fire engine."
+            ],
+            "hint": "«màu xanh» is blue or green and «màu vàng» is yellow, so it is neither.",
+            "explain": "«red» is «màu đỏ» in Vietnamese, so a «red lantern» is «đèn lồng đỏ»; «màu vàng» is yellow."
           }
         },
         {
@@ -368,13 +500,25 @@
             "30"
           ],
           "answer": 0,
+          "guide": [
+            "Tìm mỗi vé hơn vé trước bao nhiêu: 10 − 5, 15 − 10…",
+            "Lấy số cuối là 20 cộng thêm đúng khoảng cách ấy."
+          ],
+          "hint": "Dãy vé này đếm thêm 5; 21 chỉ thêm 1, còn 30 thì thêm tới 10.",
+          "explain": "Mỗi vé hơn vé trước 5 đơn vị, nên sau 20 là 20 + 5 = 25.",
           "en": {
             "prompt": "The event tickets are numbered 5, 10, 15, 20, … What number is the next ticket?",
             "choices": [
               "25",
               "21",
               "30"
-            ]
+            ],
+            "guide": [
+              "Work out how much each ticket goes up by: 10 − 5, 15 − 10…",
+              "Add that same jump to the last number, 20."
+            ],
+            "hint": "The tickets count in fives; 21 adds only 1 and 30 adds 10.",
+            "explain": "Each ticket is 5 more than the one before, so after 20 comes 20 + 5 = 25."
           }
         }
       ],
@@ -445,13 +589,25 @@
             "22"
           ],
           "answer": 0,
+          "guide": [
+            "Đem cho bạn thì số chuối bớt đi, nên làm phép trừ 15 − 7.",
+            "Tách 7 thành 5 và 2: lấy 15 − 5 = 10, rồi trừ tiếp 2."
+          ],
+          "hint": "Thử lại bằng phép cộng: số nào cộng với 7 thì được 15?",
+          "explain": "15 − 7 = 8 vì 15 − 5 = 10, 10 − 2 = 8 (thử lại 8 + 7 = 15); 22 là cộng 15 + 7.",
           "en": {
             "prompt": "Voi has 15 bananas and gives 7 to a friend. How many bananas are left?",
             "choices": [
               "8",
               "9",
               "22"
-            ]
+            ],
+            "guide": [
+              "Giving bananas away means fewer, so subtract: 15 − 7.",
+              "Split 7 into 5 and 2: 15 − 5 = 10, then take away 2 more."
+            ],
+            "hint": "Check with addition: what number plus 7 makes 15?",
+            "explain": "15 − 7 = 8 since 15 − 5 = 10 and 10 − 2 = 8 (check: 8 + 7 = 15); 22 is 15 + 7."
           }
         },
         {
@@ -464,13 +620,25 @@
             "8 giờ rưỡi"
           ],
           "answer": 0,
+          "guide": [
+            "30 phút là một nửa của một giờ; tiếng Việt có một từ riêng cho «nửa giờ».",
+            "Giữ nguyên số giờ là 7, chỉ thay phần 30 phút bằng từ ấy."
+          ],
+          "hint": "«Kém» dùng khi chưa tới giờ đúng, còn ở đây đã quá 7 giờ nửa tiếng.",
+          "explain": "7 giờ 30 phút là 7 giờ rưỡi vì 30 phút là nửa giờ; 8 giờ rưỡi thì muộn hơn một tiếng.",
           "en": {
             "prompt": "The forecourt clock says 7:30. What else do we call that time?",
             "choices": [
               "half past seven",
               "nearly seven",
               "half past eight"
-            ]
+            ],
+            "guide": [
+              "30 minutes is half an hour; Vietnamese has its own word for that half.",
+              "Keep the hour as 7 and just swap the 30 minutes for that word."
+            ],
+            "hint": "«nearly» means not yet on the hour, but here it's already half an hour after 7.",
+            "explain": "7:30 is half past seven because 30 minutes is half an hour («rưỡi»); half past eight is an hour later."
           }
         },
         {
@@ -483,13 +651,25 @@
             "51"
           ],
           "answer": 0,
+          "guide": [
+            "So chữ số hàng chục của 51, 15 và 50.",
+            "Bậc đá có chữ số hàng chục bé nhất mang số bé nhất."
+          ],
+          "hint": "51 và 15 dùng cùng hai chữ số; để ý chữ số nào đứng ở hàng chục.",
+          "explain": "15 chỉ có 1 chục, còn 50 và 51 có 5 chục, nên 15 bé nhất.",
           "en": {
             "prompt": "Three stone steps are numbered 51, 15 and 50. Which is the smallest number?",
             "choices": [
               "15",
               "50",
               "51"
-            ]
+            ],
+            "guide": [
+              "Compare the tens digits of 51, 15 and 50.",
+              "The step whose number has the smallest tens digit carries the smallest number."
+            ],
+            "hint": "51 and 15 use the same two digits; notice which one is in the tens place.",
+            "explain": "15 has only 1 ten, while 50 and 51 have 5 tens, so 15 is the smallest."
           }
         },
         {
@@ -502,13 +682,25 @@
             "con thuyền"
           ],
           "answer": 0,
+          "guide": [
+            "Nhìn theo tay Voi chỉ: «castle» là tên công trình có những tòa tháp cao.",
+            "Nghĩ tới nơi vua và hoàng hậu ở trong truyện cổ tích."
+          ],
+          "hint": "Cây cầu là «bridge», con thuyền là «boat»; «castle» là một tòa nhà lớn.",
+          "explain": "«castle» nghĩa là lâu đài, như nơi có tháp cao Voi đang chỉ; cầu là «bridge», thuyền là «boat».",
           "en": {
             "prompt": "Voi points at the towers and says «castle». What is «castle» in Vietnamese?",
             "choices": [
               "lâu đài",
               "cây cầu",
               "con thuyền"
-            ]
+            ],
+            "guide": [
+              "Follow Voi's finger: a «castle» is the building with tall towers.",
+              "Think of where the king and queen live in fairy tales."
+            ],
+            "hint": "«cây cầu» is a bridge and «con thuyền» a boat; a castle is a big building.",
+            "explain": "A «castle» is «lâu đài» in Vietnamese, like the towers Voi points at; «cây cầu» is a bridge, «con thuyền» a boat."
           }
         },
         {
@@ -521,13 +713,25 @@
             "mới mở"
           ],
           "answer": 0,
+          "guide": [
+            "Tìm trên biển giờ cổng bắt đầu mở và giờ cổng thôi mở.",
+            "So 6 giờ chiều với 5 giờ chiều: sớm hơn hay muộn hơn?"
+          ],
+          "hint": "Cổng chỉ mở tới 5 giờ chiều, mà 6 giờ chiều thì đã qua giờ đó một tiếng.",
+          "explain": "Cổng mở đến 5 giờ chiều; 6 giờ chiều đã muộn hơn nên cổng đã đóng, không còn mở.",
           "en": {
             "prompt": "The sign says: «Gate open from 7 a.m. to 5 p.m.». What about the gate at 6 p.m.?",
             "choices": [
               "already closed",
               "open",
               "just opened"
-            ]
+            ],
+            "guide": [
+              "Find on the sign when the gate opens and when it stops being open.",
+              "Compare 6 p.m. with 5 p.m.: earlier or later?"
+            ],
+            "hint": "The gate is open only until 5 p.m., and 6 p.m. is an hour past that.",
+            "explain": "The gate is open until 5 p.m.; 6 p.m. is later, so by then it's already closed."
           }
         }
       ],

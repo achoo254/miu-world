@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Đọc từng câu và tự hỏi: câu này tả cô hay nói lên cảm xúc của bạn nhỏ?",
+              "Tìm câu có từ chỉ tình cảm như thương, quý, mến."
+            ],
+            "hint": "Câu về áo dài và câu về bảy giờ chỉ kể việc, không nói lên lòng mình.",
+            "answer": {
+              "text": "Em yêu cô giáo lắm!",
+              "explanation": "«Em yêu cô giáo lắm!» có từ «yêu» và dấu chấm than nên bày tỏ tình cảm; hai câu kia chỉ kể về cô."
+            },
+            "en": {
+              "guide": [
+                "Read each sentence and ask: does it describe the teacher, or say how the pupil feels?",
+                "Look for a sentence with a feeling word such as love or fond of."
+              ],
+              "hint": "The sentences about the áo dài and seven o'clock only report facts, not feelings.",
+              "answer": {
+                "text": "Em yêu cô giáo lắm! (I love my teacher so much!)",
+                "explanation": "«Em yêu cô giáo lắm!» uses «yêu» (love) and an exclamation mark, so it shows feeling; the other two just tell about her."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Đọc phần sau dấu hai chấm trong dòng «Thứ Hai».",
+              "Mỗi tên môn cách nhau một dấu phẩy; chỉ vào từng tên và đếm."
+            ],
+            "hint": "Tiếng Việt là một môn dù có hai tiếng, đừng đếm thành hai.",
+            "answer": {
+              "text": "3 môn",
+              "explanation": "Thứ Hai có Tiếng Việt, Toán, Mĩ thuật: ba tên môn, hai dấu phẩy, nên là 3 môn."
+            },
+            "en": {
+              "guide": [
+                "Read the part after the colon on the «Monday» line.",
+                "The subjects are separated by commas; point at each one and count."
+              ],
+              "hint": "Vietnamese is one subject, even though «Tiếng Việt» has two words.",
+              "answer": {
+                "text": "3",
+                "explanation": "Monday has Vietnamese, Maths and Art: three names with two commas between them, so 3 subjects."
+              }
+            }
           }
         },
         {
@@ -159,6 +203,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Đọc to «quyển …ở ô li» và nghĩ tới đồ dùng để ghi bài.",
+              "Nhớ cách viết tên đồ dùng ấy trên nhãn của nó: chữ đầu là v hay d?"
+            ],
+            "hint": "Từ «dở» (chưa xong) viết bằng d, còn đồ dùng để ghi bài thì viết khác hẳn.",
+            "answer": {
+              "text": "v",
+              "explanation": "Quyển để ghi bài là «vở», viết bằng v; «dở» với d lại có nghĩa là chưa xong hoặc không hay."
+            },
+            "en": {
+              "guide": [
+                "Say «quyển …ở ô li» aloud and think of the thing you write lessons in.",
+                "Recall how that school item is spelt on its label: does it start with v or d?"
+              ],
+              "hint": "«dở» (unfinished) is spelt with d, but the exercise book is spelt differently.",
+              "answer": {
+                "text": "v",
+                "explanation": "The exercise book is «vở», spelt with v; «dở» with d means unfinished or not good."
+              }
+            }
           }
         },
         {
@@ -190,6 +256,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Từ chỉ hoạt động là từ nói việc ai đó đang làm.",
+              "Thử đặt từng từ sau «Trong giờ học, bạn nhỏ…» xem từ nào nghe hợp."
+            ],
+            "hint": "Thước và bàn ghế là đồ vật để cầm hoặc ngồi, còn hoạt động thì phải làm được.",
+            "answer": {
+              "text": "viết bài",
+              "explanation": "«viết bài» là việc bạn nhỏ làm trong giờ học; «cái thước», «bàn ghế» là tên đồ vật."
+            },
+            "en": {
+              "guide": [
+                "An action word says what someone is doing.",
+                "Try each answer after «In class, the pupil…» and see which one fits."
+              ],
+              "hint": "A ruler and desks are things you hold or sit at; an action is something you do.",
+              "answer": {
+                "text": "viết bài (write)",
+                "explanation": "«viết bài» (write) is what the pupil does in class; «cái thước» and «bàn ghế» name objects."
+              }
+            }
           }
         }
       ],

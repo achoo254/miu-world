@@ -6,6 +6,14 @@ import { hubHarness, type Client } from '../../test/hub-harness';
 import { questProgress, rewardLedger } from '../db/schema';
 import { PartyQuestService, type PartyQuestHooks } from './party-quest';
 
+/** A boss question's three support layers, its answer layer naming the right choice. */
+const support = (answer: string) => ({
+  guide: ['Đọc câu hỏi.'],
+  hint: 'Đếm lại.',
+  answer: { text: answer, explanation: `Đáp án là ${answer}.` },
+  en: { guide: ['Read the question.'], hint: 'Count again.', answer: { text: answer, explanation: `The answer is ${answer}.` } },
+});
+
 /** A lesson with every kind of step a party meets: a shared talk, a question each answers, another talk, a boss, the end. */
 const QUEST = QuestDefinition.parse({
   id: 'party-test',
@@ -42,8 +50,8 @@ const QUEST = QuestDefinition.parse({
       maxHp: 200,
       damagePerTurn: 100,
       turns: [
-        { id: 't1', prompt: 'Một?', skill: 'phep-cong', damage: 100, choices: [{ id: 'a', text: '1' }, { id: 'b', text: '2' }], answer: { choice: 'a' } },
-        { id: 't2', prompt: 'Hai?', skill: 'phep-cong', damage: 100, choices: [{ id: 'a', text: '1' }, { id: 'b', text: '2' }], answer: { choice: 'b' } },
+        { id: 't1', prompt: 'Một?', skill: 'phep-cong', damage: 100, choices: [{ id: 'a', text: '1' }, { id: 'b', text: '2' }], answer: { choice: 'a' }, support: support('1') },
+        { id: 't2', prompt: 'Hai?', skill: 'phep-cong', damage: 100, choices: [{ id: 'a', text: '1' }, { id: 'b', text: '2' }], answer: { choice: 'b' }, support: support('2') },
       ],
     },
     { id: 'thuong', title: 'Thưởng', kind: 'reward', trigger: 'auto', text: 'Thưởng.' },

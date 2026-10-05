@@ -44,13 +44,25 @@
             "ô che mưa"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc lại lá thư, tìm chỗ thư dặn «nhớ mang» món gì.",
+            "Món cần mang phải hợp với trời có tuyết ngày mai."
+          ],
+          "hint": "Lời dặn nằm ngay sau chữ «mang» trong thư; đó là đồ đeo vào hai bàn tay.",
+          "explain": "Thư dặn «nhớ mang găng tay» vì tuyết rơi rất rét; kem chống nắng và ô che mưa không được nhắc tới.",
           "en": {
             "prompt": "The letter says: «It will snow tomorrow, remember your gloves». What do the friends need tomorrow?",
             "choices": [
               "găng tay (gloves)",
               "kem chống nắng (sun cream)",
               "ô che mưa (an umbrella)"
-            ]
+            ],
+            "guide": [
+              "Read the letter again and find what it says to «remember».",
+              "The thing to bring must suit a snowy day tomorrow."
+            ],
+            "hint": "The reminder comes right after «remember» in the letter: something you wear on your hands.",
+            "explain": "The letter says «remember your gloves» because snow is freezing; sun cream and an umbrella are never mentioned."
           }
         },
         {
@@ -63,13 +75,25 @@
             "trượt tuyết"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc từng từ và hỏi: từ nào là tên một đồ vật cầm, đeo hay quàng được?",
+            "Loại từ chỉ cảm giác thời tiết và từ chỉ một hoạt động trên dốc."
+          ],
+          "hint": "«Lạnh buốt» tả cảm giác, «trượt tuyết» là việc làm; chỉ còn một từ gọi tên đồ vật.",
+          "explain": "«Khăn len» là đồ vật quàng quanh cổ cho ấm; «lạnh buốt» chỉ cảm giác, «trượt tuyết» chỉ hoạt động.",
           "en": {
             "prompt": "Which word names something that keeps you warm in the snowy mountains?",
             "choices": [
               "khăn len (a woolly scarf)",
               "lạnh buốt (freezing)",
               "trượt tuyết (ski)"
-            ]
+            ],
+            "guide": [
+              "Read each word and ask: which one names a thing you can hold, wear or wrap?",
+              "Rule out the word for a feeling and the word for an activity on the slope."
+            ],
+            "hint": "«Lạnh buốt» describes a feeling and «trượt tuyết» is something you do; only one word names an object.",
+            "explain": "«Khăn len» is a woolly scarf you wrap round your neck; «lạnh buốt» is a feeling and «trượt tuyết» an activity."
           }
         },
         {
@@ -82,13 +106,25 @@
             "2"
           ],
           "answer": 0,
+          "guide": [
+            "Nhận thêm thư thì số thư tăng, nên tính 8 + 6.",
+            "Tách 6 thành 2 và 4 để 8 cộng 2 cho tròn 10 trước."
+          ],
+          "hint": "8 + 2 = 10, còn lại 4 lá thư cộng nốt vào 10.",
+          "explain": "8 + 6 = 14 vì 8 + 2 = 10, thêm 4 là 14; 2 là hiệu 8 − 6, không phải tổng.",
           "en": {
             "prompt": "Cánh Cụt has 8 letters and gets 6 more. How many letters in all?",
             "choices": [
               "14",
               "13",
               "2"
-            ]
+            ],
+            "guide": [
+              "Getting more letters makes the pile bigger, so work out 8 + 6.",
+              "Split 6 into 2 and 4 so that 8 plus 2 makes a round 10 first."
+            ],
+            "hint": "8 + 2 = 10, then add the other 4 letters to 10.",
+            "explain": "8 + 6 = 14 because 8 + 2 = 10 and 4 more is 14; 2 is 8 − 6, the difference, not the total."
           }
         },
         {
@@ -101,13 +137,25 @@
             "bằng nhau"
           ],
           "answer": 0,
+          "guide": [
+            "Hai số 47 và 74 có cùng chữ số nhưng đổi chỗ, nên xem kỹ hàng chục.",
+            "Số nào có chữ số hàng chục lớn hơn thì số đó lớn hơn."
+          ],
+          "hint": "47 có 4 chục, 74 có 7 chục; 7 chục so với 4 chục thì thế nào?",
+          "explain": "74 có 7 chục, 47 chỉ có 4 chục, nên nhà số 74 mang số lớn hơn; hai số không bằng nhau dù cùng chữ số.",
           "en": {
             "prompt": "Houses number 47 and 74 are waiting for post. Which house number is bigger?",
             "choices": [
               "house 74",
               "house 47",
               "they are equal"
-            ]
+            ],
+            "guide": [
+              "47 and 74 use the same digits swapped round, so look closely at the tens.",
+              "The number with the bigger tens digit is the bigger number."
+            ],
+            "hint": "47 has 4 tens and 74 has 7 tens; how do 7 tens compare with 4 tens?",
+            "explain": "74 has 7 tens while 47 has only 4, so house 74 has the bigger number; same digits doesn't make them equal."
           }
         }
       ],
@@ -177,13 +225,25 @@
             "12"
           ],
           "answer": 0,
+          "guide": [
+            "Gộp số vòng trượt của hai buổi: cộng 26 + 38.",
+            "Cộng 6 + 8 ở hàng đơn vị trước; quá 10 thì nhớ sang hàng chục."
+          ],
+          "hint": "6 + 8 = 14, viết 4 nhớ 1; 2 chục cộng 3 chục rồi thêm 1.",
+          "explain": "26 + 38 = 64: 6 + 8 = 14 viết 4 nhớ 1, 2 + 3 + 1 = 6; 54 là quên nhớ, 12 là lấy hiệu.",
           "en": {
             "prompt": "Gấu skis 26 laps in the morning and 38 in the afternoon. How many laps in all?",
             "choices": [
               "64",
               "54",
               "12"
-            ]
+            ],
+            "guide": [
+              "Put the two sessions together: add 26 + 38.",
+              "Add 6 + 8 in the ones first; past 10, carry to the tens."
+            ],
+            "hint": "6 + 8 = 14, write 4 carry 1; 2 tens plus 3 tens, then add 1.",
+            "explain": "26 + 38 = 64: 6 + 8 = 14, write 4 carry 1, then 2 + 3 + 1 = 6; 54 forgets the carry, 12 is the difference."
           }
         },
         {
@@ -196,13 +256,25 @@
             "67"
           ],
           "answer": 0,
+          "guide": [
+            "Cờ bị đổ thì số cờ còn đứng giảm đi, nên tính 50 − 17.",
+            "0 không trừ được 7 nên mượn 1 chục từ 5 chục."
+          ],
+          "hint": "10 − 7 = 3; 5 chục còn 4 chục, trừ đi 1 chục.",
+          "explain": "50 − 17 = 33 vì 10 − 7 = 3 và 4 − 1 = 3; thử lại 33 + 17 = 50; 67 là cộng nhầm.",
           "en": {
             "prompt": "50 flags mark the slope and the wind knocks 17 over. How many are still standing?",
             "choices": [
               "33",
               "43",
               "67"
-            ]
+            ],
+            "guide": [
+              "Knocked-over flags mean fewer standing, so work out 50 − 17.",
+              "0 can't take away 7, so borrow a ten from the 5 tens."
+            ],
+            "hint": "10 − 7 = 3; 5 tens become 4 tens, then take away 1 ten.",
+            "explain": "50 − 17 = 33 because 10 − 7 = 3 and 4 − 1 = 3; check 33 + 17 = 50; 67 adds by mistake."
           }
         },
         {
@@ -215,13 +287,25 @@
             "26"
           ],
           "answer": 0,
+          "guide": [
+            "Xem mỗi cột mốc kém cột trước bao nhiêu: 40 xuống 35, 35 xuống 30.",
+            "Bớt đúng khoảng cách đó khỏi số cuối là 25."
+          ],
+          "hint": "Mỗi lần dãy giảm 5; 25 bớt 5 còn bao nhiêu?",
+          "explain": "Dãy giảm 5 mỗi cột nên sau 25 là 25 − 5 = 20; 15 là bớt 10, còn 26 lại tăng lên.",
           "en": {
             "prompt": "The markers down the slope count down: 40, 35, 30, 25, … What is on the next marker?",
             "choices": [
               "20",
               "15",
               "26"
-            ]
+            ],
+            "guide": [
+              "See how much each marker drops from the one before: 40 to 35, 35 to 30.",
+              "Take that same step off the last number, 25."
+            ],
+            "hint": "The count goes down by 5 each time; what is 25 take away 5?",
+            "explain": "The markers drop by 5, so after 25 comes 25 − 5 = 20; 15 drops 10 and 26 goes up instead."
           }
         },
         {
@@ -234,13 +318,25 @@
             "gió"
           ],
           "answer": 0,
+          "guide": [
+            "Nhìn quanh dốc trượt: Gấu Bạc reo lên khi thấy thứ gì đang phủ trắng mặt đất?",
+            "Loại từ chỉ những giọt nước rơi và từ chỉ không khí thổi qua."
+          ],
+          "hint": "«Snow» là thứ trắng xốp, rơi thành từng bông mềm vào mùa đông.",
+          "explain": "«Snow» là tuyết, thứ phủ trắng dốc trượt; mưa là «rain», gió là «wind».",
           "en": {
             "prompt": "Gấu Bạc shouts «Snow!». What is «snow» in Vietnamese?",
             "choices": [
               "tuyết",
               "mưa",
               "gió"
-            ]
+            ],
+            "guide": [
+              "Look around the ski slope: what white thing is Gấu Bạc cheering at on the ground?",
+              "Rule out the word for falling drops of water and the word for moving air."
+            ],
+            "hint": "«Snow» is white and cold and falls in soft flakes in winter.",
+            "explain": "«Snow» is «tuyết», the white blanket on the slope; «mưa» is rain and «gió» is wind."
           }
         }
       ],
@@ -311,13 +407,25 @@
             "ấm"
           ],
           "answer": 0,
+          "guide": [
+            "Nghĩ xem khi gió thổi qua hồ băng thì người ta thấy thế nào.",
+            "Loại hai từ chỉ cảm giác khi đứng giữa nắng hay ngồi bên bếp lửa."
+          ],
+          "hint": "Cáo nói «It's cold!» khi gió buốt thổi qua, ngược hẳn với «hot».",
+          "explain": "«Cold» nghĩa là lạnh, đúng cảm giác khi gió hồ thổi qua; «hot» mới là nóng, «warm» là ấm.",
           "en": {
             "prompt": "The lake wind blows and Cáo says «It's cold!». What is «cold» in Vietnamese?",
             "choices": [
               "lạnh",
               "nóng",
               "ấm"
-            ]
+            ],
+            "guide": [
+              "Think how people feel when the wind blows across the frozen lake.",
+              "Rule out the two words for how you feel in sunshine or next to a fire."
+            ],
+            "hint": "Cáo says «It's cold!» as the biting wind blows; it is the opposite of «hot».",
+            "explain": "«Cold» means «lạnh», just how the lake wind feels; «nóng» is hot and «ấm» is warm."
           }
         },
         {
@@ -330,13 +438,25 @@
             "92"
           ],
           "answer": 0,
+          "guide": [
+            "So chữ số hàng chục của ba số 92, 29 và 90 trước.",
+            "Số có hàng chục nhỏ nhất là số bé nhất, chưa cần xét hàng đơn vị."
+          ],
+          "hint": "Hai trong ba số có 9 chục, chỉ một số có 2 chục.",
+          "explain": "29 chỉ có 2 chục còn 90 và 92 có 9 chục, nên 29 là số bé nhất; 90 bé hơn 92 nhưng vẫn lớn hơn 29.",
           "en": {
             "prompt": "Three sledges are numbered 92, 29 and 90. Which is the smallest number?",
             "choices": [
               "29",
               "90",
               "92"
-            ]
+            ],
+            "guide": [
+              "Compare the tens digits of 92, 29 and 90 first.",
+              "The number with the smallest tens is the smallest; no need to look at the ones."
+            ],
+            "hint": "Two of the numbers have 9 tens, and only one has 2 tens.",
+            "explain": "29 has only 2 tens while 90 and 92 have 9, so 29 is smallest; 90 is less than 92 but still more than 29."
           }
         },
         {
@@ -349,13 +469,25 @@
             "25"
           ],
           "answer": 0,
+          "guide": [
+            "Cá bơi xuống đáy thì gần mặt nước ít đi, nên tính 16 − 9.",
+            "Bớt 9 làm hai bước: bớt 6 để về 10, rồi bớt tiếp phần còn lại."
+          ],
+          "hint": "16 − 6 = 10, còn phải bớt thêm 3 nữa.",
+          "explain": "16 − 9 = 7 vì 16 − 6 = 10, rồi 10 − 3 = 7; 25 là cộng 16 + 9 thay vì trừ.",
           "en": {
             "prompt": "There are 16 fish under the ice hole and 9 swim to the bottom. How many stay near the top?",
             "choices": [
               "7",
               "8",
               "25"
-            ]
+            ],
+            "guide": [
+              "Fish swimming down leave fewer near the top, so work out 16 − 9.",
+              "Take away 9 in two steps: take 6 to reach 10, then the rest."
+            ],
+            "hint": "16 − 6 = 10, and there are still 3 more to take away.",
+            "explain": "16 − 9 = 7 because 16 − 6 = 10 and 10 − 3 = 7; 25 adds 16 + 9 instead of taking away."
           }
         },
         {
@@ -368,13 +500,25 @@
             "hồ rất ấm"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc biển báo theo hai phần: phần nói về băng và phần dặn mọi người làm gì.",
+            "Chữ «không» ở đầu lời dặn cho biết đó là việc bị cấm hay được làm?"
+          ],
+          "hint": "Băng mỏng dễ vỡ, nên biển muốn mọi người tránh xa chỗ băng yếu nhất.",
+          "explain": "Biển ghi «không đi ra giữa hồ» vì băng mỏng dễ vỡ; «hãy ra giữa hồ» nói ngược lại, còn biển không nói hồ ấm.",
           "en": {
             "prompt": "The sign says: «Thin ice, do not walk to the middle of the lake». What does it tell people?",
             "choices": [
               "don't go to the middle",
               "go to the middle",
               "the lake is warm"
-            ]
+            ],
+            "guide": [
+              "Read the sign in two parts: what it says about the ice and what it tells people to do.",
+              "The words «do not» start the instruction: is it something banned or allowed?"
+            ],
+            "hint": "Thin ice breaks easily, so the sign wants people to keep away from the weakest ice.",
+            "explain": "The sign says «do not walk to the middle of the lake» because thin ice can crack; it never says go there or that the lake is warm."
           }
         }
       ],
@@ -445,13 +589,25 @@
             "19"
           ],
           "answer": 0,
+          "guide": [
+            "Người đến sau nhập vào đoàn, nên cộng 37 + 18.",
+            "Cộng hàng đơn vị 7 + 8; được từ 10 trở lên thì nhớ 1 sang hàng chục."
+          ],
+          "hint": "7 + 8 = 15, viết 5 nhớ 1; 3 chục cộng 1 chục rồi thêm 1 chục nhớ.",
+          "explain": "37 + 18 = 55: 7 + 8 = 15 viết 5 nhớ 1, 3 + 1 + 1 = 5; 45 là quên nhớ, 19 là lấy hiệu.",
           "en": {
             "prompt": "The expedition has 37 people and 18 more join later. How many people in all?",
             "choices": [
               "55",
               "45",
               "19"
-            ]
+            ],
+            "guide": [
+              "The latecomers join the team, so add 37 + 18.",
+              "Add the ones, 7 + 8; if it reaches 10 or more, carry 1 to the tens."
+            ],
+            "hint": "7 + 8 = 15, write 5 carry 1; 3 tens plus 1 ten, then the carried ten.",
+            "explain": "37 + 18 = 55: 7 + 8 = 15, write 5 carry 1, then 3 + 1 + 1 = 5; 45 forgets the carry, 19 is the difference."
           }
         },
         {
@@ -464,13 +620,25 @@
             "92"
           ],
           "answer": 0,
+          "guide": [
+            "Phát đèn đi thì kho còn ít hơn, nên tính 64 − 28.",
+            "4 không trừ được 8 nên mượn 1 chục từ 6 chục."
+          ],
+          "hint": "14 − 8 = 6; 6 chục cho mượn 1 còn 5 chục, trừ tiếp 2 chục.",
+          "explain": "64 − 28 = 36 vì 14 − 8 = 6 và 5 − 2 = 3; thử lại 36 + 28 = 64; 46 là quên mượn chục.",
           "en": {
             "prompt": "The store has 64 torches and 28 are handed to the team. How many are left?",
             "choices": [
               "36",
               "46",
               "92"
-            ]
+            ],
+            "guide": [
+              "Handing torches out leaves fewer in the store, so work out 64 − 28.",
+              "4 can't take away 8, so borrow a ten from the 6 tens."
+            ],
+            "hint": "14 − 8 = 6; the 6 tens lend 1 and leave 5, then take away 2 tens.",
+            "explain": "64 − 28 = 36 because 14 − 8 = 6 and 5 − 2 = 3; check 36 + 28 = 64; 46 forgets the borrowing."
           }
         },
         {
@@ -483,13 +651,25 @@
             "đá cuội"
           ],
           "answer": 0,
+          "guide": [
+            "Nghĩ xem vách hang trên núi lạnh giá thường phủ lớp gì trong suốt, sờ vào buốt tay.",
+            "Loại thứ nóng rực cháy sáng và loại viên đá tròn nhẵn dưới suối."
+          ],
+          "hint": "«Ice» là nước đã đông cứng lại vì trời quá rét.",
+          "explain": "«Ice» là băng, nước đông cứng phủ vách hang; lửa là «fire», còn đá cuội là «pebble».",
           "en": {
             "prompt": "Tuần Lộc points at the cave wall and says «ice». What is «ice» in Vietnamese?",
             "choices": [
               "băng",
               "lửa",
               "đá cuội"
-            ]
+            ],
+            "guide": [
+              "Think what clear, freezing-cold layer covers cave walls high in the snowy mountains.",
+              "Rule out the hot, glowing thing and the smooth round stones from a stream."
+            ],
+            "hint": "«Ice» is water that has frozen hard because it is so cold.",
+            "explain": "«Ice» is «băng», frozen water coating the cave wall; «lửa» is fire and «đá cuội» is a pebble."
           }
         },
         {
@@ -502,13 +682,25 @@
             "71"
           ],
           "answer": 0,
+          "guide": [
+            "Tìm khoảng cách giữa hai bậc liền nhau: 90 xuống 80, 80 xuống 70.",
+            "Bớt đúng khoảng ấy khỏi số của bậc cuối là 70."
+          ],
+          "hint": "Mỗi bậc kém bậc trên 1 chục; 7 chục bớt 1 chục còn mấy chục?",
+          "explain": "Dãy giảm 10 mỗi bậc nên sau 70 là 70 − 10 = 60; 50 là bớt tới 20, còn 71 lại tăng lên.",
           "en": {
             "prompt": "The steps into the cave are numbered 90, 80, 70, … What number is on the next step?",
             "choices": [
               "60",
               "50",
               "71"
-            ]
+            ],
+            "guide": [
+              "Find the gap between two steps in a row: 90 down to 80, 80 down to 70.",
+              "Take that same gap off the last step's number, 70."
+            ],
+            "hint": "Each step is one ten less than the one above; 7 tens less 1 ten is how many tens?",
+            "explain": "The steps drop by 10, so after 70 comes 70 − 10 = 60; 50 drops 20 and 71 goes up instead."
           }
         },
         {
@@ -521,13 +713,25 @@
             "vì trời mưa"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc câu trong sổ, rồi nghĩ xem bên trong hang khác ngoài trời ở điểm nào.",
+            "Chiếc đèn trên mũ dùng để làm gì? Hãy chọn lý do hợp với công dụng đó."
+          ],
+          "hint": "Đèn giúp nhìn thấy đường; nơi nào thiếu ánh sáng mặt trời mới cần đèn.",
+          "explain": "Trong hang không có ánh nắng nên rất tối, đèn trên mũ soi đường; trời nóng hay mưa không liên quan tới đèn.",
           "en": {
             "prompt": "The explorers' book says: «Wear a helmet with a lamp in the cave». Why?",
             "choices": [
               "because the cave is dark",
               "because it is hot",
               "because it is raining"
-            ]
+            ],
+            "guide": [
+              "Read the line in the book, then think how inside a cave differs from outdoors.",
+              "What is the lamp on the helmet for? Pick the reason that matches that job."
+            ],
+            "hint": "A lamp helps you see the way; you only need one where sunlight cannot reach.",
+            "explain": "No sunlight gets into a cave, so it is very dark and the helmet lamp lights the way; heat or rain have nothing to do with a lamp."
           }
         }
       ],

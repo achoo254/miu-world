@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Cầm một cuốn sách thật, nhìn lần lượt từng dòng chữ in trên bìa trước.",
+              "Tự hỏi: dòng nào là tên cuốn sách, dòng nào là tên người đã viết ra nó?"
+            ],
+            "hint": "Người viết ra cuốn sách được gọi là tác giả; tên của người ấy thường in ở đầu hoặc cuối bìa.",
+            "answer": {
+              "text": "tên tác giả",
+              "explanation": "Tên tác giả cho biết ai viết sách; tên sách là tên của cuốn sách, còn nhà xuất bản là nơi in và phát hành sách."
+            },
+            "en": {
+              "guide": [
+                "Pick up a real book and look at each line printed on its front cover.",
+                "Ask yourself: which line is the book's name, and which is the name of the person who wrote it?"
+              ],
+              "hint": "The person who writes a book is its author, and that person's name is usually printed at the top or bottom of the cover.",
+              "answer": {
+                "text": "tên tác giả (the author)",
+                "explanation": "«Tên tác giả» (the author's name) tells who wrote the book; «tên sách» is the book's own name and «nhà xuất bản» is the company that prints it."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Nghĩ xem phần nào của sách liệt kê tên các bài kèm số trang bên cạnh.",
+              "Tìm tên bài cần đọc trong danh sách ấy, rồi lật tới đúng số trang ghi cạnh nó."
+            ],
+            "hint": "Phần này thường nằm ở đầu hoặc cuối sách, trông như một bảng kê tên bài và số trang.",
+            "answer": {
+              "text": "mục lục",
+              "explanation": "Mục lục ghi tên từng bài cùng số trang; bìa sau và tranh vẽ không cho biết bài nằm ở trang nào."
+            },
+            "en": {
+              "guide": [
+                "Think which part of a book lists the readings with a page number beside each.",
+                "Find the reading's name in that list, then turn to the page number written next to it."
+              ],
+              "hint": "This part sits at the front or back of the book and looks like a list of readings and page numbers.",
+              "answer": {
+                "text": "mục lục (contents)",
+                "explanation": "«Mục lục» (the contents) lists every reading with its page; the back cover and the pictures don't tell you any page."
+              }
+            }
           }
         },
         {
@@ -159,6 +203,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Đọc cả câu «Cú …ật từng trang sách thật nhẹ» và hình dung việc Cú đang làm với trang sách.",
+              "Ghép lần lượt l và n với «-ật», đọc to rồi giữ tiếng có nghĩa hợp với việc giở trang."
+            ],
+            "hint": "Tiếng cần điền cũng mở đầu hai từ quen thuộc «… ngược» và «… đật»: hai từ ấy bắt đầu bằng chữ gì?",
+            "answer": {
+              "text": "l",
+              "explanation": "Viết «lật» với l: lật trang là giở trang sang mặt kia, như trong «lật ngược»; «nật» không có nghĩa trong câu này."
+            },
+            "en": {
+              "guide": [
+                "Read «Cú …ật từng trang sách thật nhẹ» and picture what Cú is doing with the page.",
+                "Join l and n in turn to «-ật», say each aloud and keep the one that fits turning pages."
+              ],
+              "hint": "The missing word also begins «… ngược» (upside down) and «… đật» (toddling): which letter starts those familiar words?",
+              "answer": {
+                "text": "l",
+                "explanation": "It is «lật» with l: «lật trang» means to turn a page, as in «lật ngược»; «nật» makes no sense in this sentence."
+              }
+            }
           }
         },
         {
@@ -190,6 +256,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Xét từng từ: từ nào là một người, từ nào là đồ vật, từ nào là việc làm?",
+              "Giữ lại từ chỉ người, rồi kiểm tra người đó có trông coi sách hay không."
+            ],
+            "hint": "Ở thư viện có một cô hay chú cho mượn sách và xếp sách lên giá; từ nào gọi tên người ấy?",
+            "answer": {
+              "text": "thủ thư",
+              "explanation": "Thủ thư là người trông coi, cho mượn sách; giá sách là đồ vật để xếp sách, còn đọc sách là một hoạt động."
+            },
+            "en": {
+              "guide": [
+                "Sort the words: which is a person, which is a thing, which is an action?",
+                "Keep the word for a person, then check that this person looks after books."
+              ],
+              "hint": "In a library someone lends books and puts them back on the shelves: which word names that person?",
+              "answer": {
+                "text": "thủ thư (librarian)",
+                "explanation": "«Thủ thư» is the librarian who looks after and lends the books; «giá sách» is a shelf and «đọc sách» is an action."
+              }
+            }
           }
         }
       ],

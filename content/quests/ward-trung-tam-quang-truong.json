@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Tìm trong bảng tin chữ chỉ ngày, đứng ngay sau chữ «sáng».",
+              "Bỏ qua giờ mở cửa và nơi tổ chức, chỉ giữ lại tên ngày."
+            ],
+            "hint": "Bảng tin không nhắc tới Chủ nhật hay thứ Hai; đọc kĩ phần sau «8 giờ sáng».",
+            "answer": {
+              "text": "thứ Bảy",
+              "explanation": "Bảng tin ghi «8 giờ sáng thứ Bảy», nên hội chợ mở vào thứ Bảy; Chủ nhật, thứ Hai không có trong tin."
+            },
+            "en": {
+              "guide": [
+                "Find the word naming a day on the notice, right after «a.m.».",
+                "Skip the opening time and the place, keep only the day."
+              ],
+              "hint": "The notice never mentions Sunday or Monday; read what comes after «8 a.m.» carefully.",
+              "answer": {
+                "text": "thứ Bảy (Saturday)",
+                "explanation": "The notice says «8 a.m. on Saturday», so the fair opens on Saturday (thứ Bảy); Sunday and Monday aren't mentioned."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "So chữ số hàng chục của 68, 86 và 79 trước tiên.",
+              "Lá thư có chữ số hàng chục lớn nhất mang số lớn nhất."
+            ],
+            "hint": "68 và 86 dùng cùng hai chữ số, nhưng đứng ở hàng khác nhau.",
+            "answer": {
+              "text": "86",
+              "explanation": "86 có 8 chục, hơn 7 chục của 79 và 6 chục của 68, nên 86 lớn nhất."
+            },
+            "en": {
+              "guide": [
+                "First compare the tens digits of 68, 86 and 79.",
+                "The letter whose number has the biggest tens digit carries the biggest number."
+              ],
+              "hint": "68 and 86 use the same two digits, but in different places.",
+              "answer": {
+                "text": "86",
+                "explanation": "86 has 8 tens, more than the 7 tens of 79 and the 6 tens of 68, so 86 is biggest."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "«Bay tới thêm» nghĩa là gộp lại, nên làm phép cộng 45 + 23.",
+              "Cộng 5 + 3 ở hàng đơn vị, rồi 4 + 2 ở hàng chục."
+            ],
+            "hint": "Số chim sẻ lúc sau phải nhiều hơn 45, nên loại ngay số bé hơn 45.",
+            "answer": {
+              "text": "68",
+              "explanation": "45 + 23 = 68 vì 5 + 3 = 8 và 4 + 2 = 6; 22 là lấy 45 − 23, 58 là cộng nhầm hàng chục."
+            },
+            "en": {
+              "guide": [
+                "«Fly in» means putting together, so add 45 + 23.",
+                "Add 5 + 3 in the ones, then 4 + 2 in the tens."
+              ],
+              "hint": "There must be more than 45 sparrows now, so rule out anything smaller.",
+              "answer": {
+                "text": "68",
+                "explanation": "45 + 23 = 68 since 5 + 3 = 8 and 4 + 2 = 6; 22 is 45 − 23, and 58 slips in the tens."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Cờ bị gió thổi bay mất nên số cờ bớt đi: làm phép trừ 57 − 14.",
+              "Trừ 7 − 4 ở hàng đơn vị, rồi 5 − 1 ở hàng chục."
+            ],
+            "hint": "Số cờ còn lại ít hơn 57; một đáp án lớn hơn 57 là do cộng nhầm.",
+            "answer": {
+              "text": "43",
+              "explanation": "57 − 14 = 43 vì 7 − 4 = 3 và 5 − 1 = 4; 71 là cộng 57 + 14, 33 là trừ nhầm hàng chục."
+            },
+            "en": {
+              "guide": [
+                "The wind takes flags away, so subtract: 57 − 14.",
+                "Do 7 − 4 in the ones, then 5 − 1 in the tens."
+              ],
+              "hint": "The flags left are fewer than 57; an answer bigger than 57 comes from adding by mistake.",
+              "answer": {
+                "text": "43",
+                "explanation": "57 − 14 = 43 since 7 − 4 = 3 and 5 − 1 = 4; 71 is 57 + 14, and 33 slips in the tens."
+              }
+            }
           }
         }
       ],

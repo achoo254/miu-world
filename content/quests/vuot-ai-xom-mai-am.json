@@ -223,7 +223,29 @@
             { "id": "b", "text": "Bà nội" },
             { "id": "c", "text": "Cô" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Xác định người được hỏi là mẹ của bố, tức là người bên họ của bố.",
+              "Nhớ ông bà bên bố và ông bà bên mẹ được gọi khác nhau thế nào."
+            ],
+            "hint": "Bố của bố em là ông nội; vợ của ông, em gọi theo cùng một họ ấy.",
+            "answer": {
+              "text": "Bà nội",
+              "explanation": "Mẹ của bố thuộc họ nội nên gọi là «bà nội»; «bà ngoại» là mẹ của mẹ, «cô» là em gái của bố."
+            },
+            "en": {
+              "guide": [
+                "Work out who is meant: your dad's mother, someone on your dad's side.",
+                "Recall how grandparents on dad's side and on mum's side are called differently."
+              ],
+              "hint": "Your dad's father is «ông nội»; his wife is called with the same side's word.",
+              "answer": {
+                "text": "Bà nội (dad's mum)",
+                "explanation": "Dad's mother is on the «họ nội» side, so she is «bà nội»; «bà ngoại» is mum's mother and «cô» is dad's younger sister."
+              }
+            }
+          }
         },
         {
           "id": "tinh-cam-gia-dinh",
@@ -234,7 +256,29 @@
             { "id": "b", "text": "nhanh nhẹn" },
             { "id": "c", "text": "tròn xoe" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Đọc ba từ và hỏi: từ nào nói lên tấm lòng người trong nhà dành cho nhau?",
+              "Gạt ra từ tả động tác nhanh và từ tả hình dáng tròn của đồ vật."
+            ],
+            "hint": "Tình cảm là điều ta thấy trong lòng, như khi ông bà, bố mẹ quý mến con cháu.",
+            "answer": {
+              "text": "yêu thương",
+              "explanation": "«Yêu thương» chỉ tình cảm gắn bó trong gia đình; «nhanh nhẹn» tả tính nết, «tròn xoe» tả hình dáng."
+            },
+            "en": {
+              "guide": [
+                "Read the three words and ask: which one is about how family members feel for each other?",
+                "Set aside the word for quick movement and the word for a round shape."
+              ],
+              "hint": "A feeling is something in your heart, like how grandparents and parents cherish the children.",
+              "answer": {
+                "text": "yêu thương (love)",
+                "explanation": "«Yêu thương» names the warm feeling in a family; «nhanh nhẹn» describes being quick and «tròn xoe» a round shape."
+              }
+            }
+          }
         },
         {
           "id": "cau-dac-diem",
@@ -245,7 +289,29 @@
             { "id": "b", "text": "Bà đang kể chuyện cổ tích." },
             { "id": "c", "text": "Bà ơi, bà kể chuyện đi!" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Đọc từng câu và hỏi: câu nào cho biết bà trông như thế nào?",
+              "Phân biệt câu kể việc bà đang làm, câu nhờ bà làm gì và câu tả một nét của bà."
+            ],
+            "hint": "Câu nêu đặc điểm có từ tả màu sắc hay hình dáng, chẳng hạn tả tóc, da, dáng người.",
+            "answer": {
+              "text": "Mái tóc của bà đã bạc trắng.",
+              "explanation": "Câu «Mái tóc của bà đã bạc trắng.» tả màu tóc, là đặc điểm; câu thứ hai kể hoạt động, câu cuối là lời đề nghị."
+            },
+            "en": {
+              "guide": [
+                "Read each sentence and ask: which one tells what Grandma looks like?",
+                "Tell them apart: one says what she is doing, one asks her to do something, one describes her."
+              ],
+              "hint": "A sentence about a feature uses a word for colour or shape, describing hair, skin or build.",
+              "answer": {
+                "text": "Mái tóc của bà đã bạc trắng. (Grandma's hair has turned white.)",
+                "explanation": "«Mái tóc của bà đã bạc trắng.» describes the colour of her hair, a feature; the second tells an action and the last is a request."
+              }
+            }
+          }
         },
         {
           "id": "dau-phay",
@@ -256,7 +322,29 @@
             { "id": "b", "text": "Em yêu ông bà, bố mẹ." },
             { "id": "c", "text": "Em yêu, ông bà bố mẹ." }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Tìm trong câu những từ cùng loại đứng liền nhau: đó là những người em yêu.",
+              "Dấu phẩy ngăn cách các bộ phận giống nhau ấy, không chen vào giữa «Em» và «yêu»."
+            ],
+            "hint": "Hai nhóm người được em kể ra liền nhau; dấu phẩy chỉ đứng giữa hai nhóm đó.",
+            "answer": {
+              "text": "Em yêu ông bà, bố mẹ.",
+              "explanation": "Dấu phẩy ngăn cách hai bộ phận cùng loại «ông bà» và «bố mẹ»; đặt sau «Em» hay sau «yêu» là cắt câu sai chỗ."
+            },
+            "en": {
+              "guide": [
+                "Find the words of the same kind side by side: the people you love.",
+                "A comma separates those matching parts; it never splits «Em» from «yêu»."
+              ],
+              "hint": "Two groups of people are listed one after the other; the comma belongs between them.",
+              "answer": {
+                "text": "Em yêu ông bà, bố mẹ. (I love my grandparents, my parents.)",
+                "explanation": "The comma separates the two listed groups «ông bà» and «bố mẹ»; after «Em» or «yêu» it breaks the sentence in the wrong place."
+              }
+            }
+          }
         },
         {
           "id": "lam-gi",
@@ -267,7 +355,29 @@
             { "id": "b", "text": "tưới cây ngoài vườn" },
             { "id": "c", "text": "ngoài vườn" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Tách câu đã cho thành hai phần: phần chỉ người và phần kể việc người đó làm.",
+              "Hỏi «Ông làm gì?» và lấy cả cụm trả lời, không chỉ một mẩu nhỏ."
+            ],
+            "hint": "Bộ phận «Làm gì?» bắt đầu bằng từ chỉ hoạt động đứng ngay sau «Ông».",
+            "answer": {
+              "text": "tưới cây ngoài vườn",
+              "explanation": "«Tưới cây ngoài vườn» kể việc ông làm nên trả lời «Làm gì?»; «Ông» trả lời «Ai?», còn «ngoài vườn» chỉ nơi chốn."
+            },
+            "en": {
+              "guide": [
+                "Split the given sentence in two: the part naming who, and the part telling what he does.",
+                "Ask «Ông làm gì?» (What does Grandpa do?) and take the whole phrase that answers, not a piece."
+              ],
+              "hint": "The «Làm gì?» part starts with the action word right after «Ông».",
+              "answer": {
+                "text": "tưới cây ngoài vườn (waters the plants in the garden)",
+                "explanation": "«Tưới cây ngoài vườn» tells what Grandpa does, so it answers «Làm gì?»; «Ông» answers «Ai?» and «ngoài vườn» is only the place."
+              }
+            }
+          }
         },
         {
           "id": "ai-doc-truyen",
@@ -278,7 +388,29 @@
             { "id": "b", "text": "Ông" },
             { "id": "c", "text": "Bố" }
           ],
-          "answer": { "choice": "c" }
+          "answer": { "choice": "c" },
+          "support": {
+            "guide": [
+              "Đọc chậm câu đã cho và tìm từ chỉ người đứng ngay trước việc «đọc truyện».",
+              "Chỉ dựa vào câu vừa đọc, không đoán theo chuyện ở nhà mình."
+            ],
+            "hint": "Người làm việc ấy được nhắc ngay sau hai chữ «Tối nào» ở đầu câu.",
+            "answer": {
+              "text": "Bố",
+              "explanation": "Câu viết «Tối nào bố cũng đọc truyện…» nên người đọc truyện là bố; mẹ và ông không được nhắc tới."
+            },
+            "en": {
+              "guide": [
+                "Read the sentence slowly and find the person named just before «đọc truyện» (reads a story).",
+                "Go only by the sentence, not by what happens in your own home."
+              ],
+              "hint": "Whoever does it is named right after «Tối nào» (every night) at the start.",
+              "answer": {
+                "text": "Bố (Dad)",
+                "explanation": "The sentence says «Tối nào bố cũng đọc truyện…», so Dad reads the story; Mum and Grandpa are not mentioned."
+              }
+            }
+          }
         },
         {
           "id": "lam-chong-chong",
@@ -289,7 +421,29 @@
             { "id": "b", "text": "Cắt bốn đường chéo" },
             { "id": "c", "text": "Gắn chong chóng vào que" }
           ],
-          "answer": { "choice": "c" }
+          "answer": { "choice": "c" },
+          "support": {
+            "guide": [
+              "Đọc lại ba bước theo đúng thứ tự trong đề: bước nào trước, bước nào sau.",
+              "Nghĩ xem việc nào chỉ làm được khi cánh chong chóng đã cắt xong."
+            ],
+            "hint": "Đề kể bằng chữ «rồi» ngay trước bước cuối; việc sau chữ ấy là việc làm sau cùng.",
+            "answer": {
+              "text": "Gắn chong chóng vào que",
+              "explanation": "Gấp giấy, cắt bốn đường chéo, rồi mới gắn chong chóng vào que để cầm chơi, nên việc gắn vào que làm sau cùng."
+            },
+            "en": {
+              "guide": [
+                "Reread the three steps in the order given: which comes first, which comes next.",
+                "Think about which job can only happen once the pinwheel's blades are cut."
+              ],
+              "hint": "The last step is introduced by «rồi» (then); whatever follows that word comes last.",
+              "answer": {
+                "text": "Gắn chong chóng vào que (Fix the pinwheel to the stick)",
+                "explanation": "You fold the paper, cut the four diagonals, and only then fix the pinwheel to a stick to play with, so that step comes last."
+              }
+            }
+          }
         }
       ]
     },

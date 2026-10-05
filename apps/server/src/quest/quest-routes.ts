@@ -225,13 +225,23 @@ export function questRoutes(deps: QuestRouteDeps): Router {
     const index = quest.steps.findIndex((s) => s.id === stepId);
     const step = quest.steps[index];
     if (!step) throw new HttpError(404, 'step-not-found');
-    if (!isAnswerable(step)) throw new HttpError(404, 'support-not-found');
-    const { layer } = body.data;
+    const { layer, turn: turnId } = body.data;
+    // A boss holds the support of each of its questions; every other answerable step one for itself.
+    let support: LearningSupport;
+    if (step.kind === 'boss') {
+      if (turnId === undefined) throw new HttpError(400, 'turn-required');
+      const turn = step.turns.find((t) => t.id === turnId);
+      if (!turn) throw new HttpError(404, 'support-not-found');
+      support = turn.support;
+    } else {
+      if (!isAnswerable(step)) throw new HttpError(404, 'support-not-found');
+      support = step.support;
+    }
     await db.transaction(async (tx) => {
       // Same row lock as step completion, so a view cannot be counted after the quest was scored.
       await tx.insert(questProgress).values({ childId, questId }).onConflictDoNothing();
       const [row] = await tx
-        .select({ completedSteps: questProgress.completedSteps, completedAt: questProgress.completedAt })
+        .select({ completedSteps: questProgress.completedSteps, completedAt: questProgress.completedAt, found: questProgress.found })
         .from(questProgress)
         .where(and(eq(questProgress.childId, childId), eq(questProgress.questId, questId)))
         .for('update');
@@ -240,12 +250,14 @@ export function questRoutes(deps: QuestRouteDeps): Router {
       // Help is for the step the child is on (or has done), not for steps further ahead.
       if (index > current) throw new HttpError(409, 'out-of-order');
       // Only the answer layer on the unsolved step costs anything; reviewing a solved step is free. Between two
-      // runs of a finished quest, the unsolved step is the first one of the next run.
-      if (layer === 'answer' && index === (between ? 0 : current)) {
+      // runs of a finished quest, the unsolved step is the first one of the next run. At a boss, the answer of a
+      // question whose blow already landed in this run is a solved one too.
+      const unsolved = index === (between ? 0 : current) && !(turnId !== undefined && !between && (row?.found[stepId] ?? []).includes(turnId));
+      if (layer === 'answer' && unsolved) {
         await countAttempt(tx, { childId, questId, stepId }, 'answerViews');
       }
     });
-    res.json(SupportResponse.parse(supportPayload(step.support, layer)));
+    res.json(SupportResponse.parse(supportPayload(support, layer)));
   });
 
   return router;

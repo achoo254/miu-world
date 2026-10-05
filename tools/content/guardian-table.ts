@@ -1,5 +1,6 @@
 // The zone guardians of each map, one table per region (tools/content/guardians/<region>.json): who guards which zone,
-// the lessons its questions come from, every line it says and its four or five questions, in both languages.
+// the lessons its questions come from, every line it says and its four or five questions with their support layers
+// (Hướng dẫn, Gợi ý, Đáp án kèm giải thích), in both languages.
 // `build-guardian-quests.ts` writes the quest files (`content/quests/ward-*.json`) and the guardians' catalogue
 // entries from it. Where each guardian stands is the region's side-quest table (`guardians`, tools/content/side-quests),
 // read by the map generators with the givers and the co-op hosts.
@@ -26,10 +27,17 @@ const Turn = z
     choices: z.array(Label).min(2).max(4),
     /** Index of the right choice. */
     answer: z.number().int().min(0),
-    en: z.strictObject({ prompt: Line, choices: z.array(Label).min(2).max(4) }),
+    /** "Hướng dẫn": how to work the question out, step by step (never naming the answer). */
+    guide: z.array(Line).min(1).max(3),
+    /** "Gợi ý": a nudge towards the answer (never naming it). */
+    hint: Line,
+    /** "Đáp án" explained: why the right choice is right (the answer itself is that choice's label). */
+    explain: Line,
+    en: z.strictObject({ prompt: Line, choices: z.array(Label).min(2).max(4), guide: z.array(Line).min(1).max(3), hint: Line, explain: Line }),
   })
   .refine((t) => t.answer < t.choices.length, { message: 'the answer is one of the choices' })
-  .refine((t) => t.en.choices.length === t.choices.length, { message: 'the English choices are as many as the choices' });
+  .refine((t) => t.en.choices.length === t.choices.length, { message: 'the English choices are as many as the choices' })
+  .refine((t) => t.en.guide.length === t.guide.length, { message: 'the English guide has as many lines as the guide' });
 export type GuardianTurn = z.infer<typeof Turn>;
 
 const Guardian = z.strictObject({

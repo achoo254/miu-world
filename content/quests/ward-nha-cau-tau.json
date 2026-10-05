@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Cộng 9 con vịt trong ao với 8 con vừa bơi tới.",
+              "Lấy 1 con trong 8 con vịt mới tới thêm vào 9 cho tròn 10."
+            ],
+            "hint": "9 + 1 = 10, phần còn lại của 8 con vịt là 7 con.",
+            "answer": {
+              "text": "17",
+              "explanation": "9 + 8 = 17 vì 9 + 1 = 10, thêm 7 nữa là 17; 16 là thiếu một con, còn 1 là lấy 9 trừ 8."
+            },
+            "en": {
+              "guide": [
+                "Add the 9 ducks on the pond and the 8 that swim over.",
+                "Move 1 of the 8 new ducks over to the 9 to make 10."
+              ],
+              "hint": "9 + 1 = 10, and what is left of the 8 ducks is 7.",
+              "answer": {
+                "text": "17",
+                "explanation": "9 + 8 = 17 because 9 + 1 = 10 and 7 more makes 17; 16 is a duck short and 1 is 9 take away 8."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "So 39 ở bên trái với 93 ở bên phải, bắt đầu từ hàng chục.",
+              "Đầu nhọn của dấu luôn chỉ về phía số bé hơn."
+            ],
+            "hint": "39 chỉ có 3 chục còn 93 có tới 9 chục; số bên trái bé hơn hay lớn hơn?",
+            "answer": {
+              "text": "<",
+              "explanation": "39 có 3 chục, ít hơn 9 chục của 93, nên 39 < 93; dấu > hay dấu = đều sai."
+            },
+            "en": {
+              "guide": [
+                "Compare 39 on the left with 93 on the right, starting with the tens.",
+                "The pointed end of the sign always points at the smaller number."
+              ],
+              "hint": "39 has just 3 tens while 93 has 9 tens; is the left number smaller or bigger?",
+              "answer": {
+                "text": "<",
+                "explanation": "39 has 3 tens, fewer than the 9 tens of 93, so 39 < 93; the signs > and = are both wrong."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Đọc ba từ, tìm từ gọi tên một vật cầm được, mang theo được.",
+              "Gạt ra từ chỉ hoạt động và từ chỉ cảm giác."
+            ],
+            "hint": "Một từ là việc ta làm dưới nước, một từ tả cảm giác mát; từ còn lại là đồ dùng để bắt cá.",
+            "answer": {
+              "text": "cần câu",
+              "explanation": "«Cần câu» là đồ vật dùng để câu cá, mang ra cầu tàu được; «bơi lội» là hoạt động, «mát rượi» là cảm giác."
+            },
+            "en": {
+              "guide": [
+                "Read the three words and find the one naming something you can hold and carry.",
+                "Set aside the word for an activity and the word for a feeling."
+              ],
+              "hint": "One word is something you do in water, one describes feeling cool; the last is a tool for catching fish.",
+              "answer": {
+                "text": "cần câu (fishing rod)",
+                "explanation": "«Cần câu» (fishing rod) is an object you carry to the jetty; «bơi lội» is an activity and «mát rượi» a feeling."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Đọc tấm biển rồi nghĩ: cầu tàu nằm ở đâu, bên dưới có gì?",
+              "Chạy nhảy trên chỗ hẹp, sát mặt nước thì dễ xảy ra chuyện gì?"
+            ],
+            "hint": "Lời biển nhắc để giữ an toàn cho người đi trên cầu, không phải vì cá hay vì nước sơn.",
+            "answer": {
+              "text": "để không ngã xuống ao",
+              "explanation": "Cầu tàu hẹp và nằm ngay trên mặt ao, chạy nhảy dễ trượt chân, nên nhớ lời biển để không ngã xuống ao."
+            },
+            "en": {
+              "guide": [
+                "Read the sign, then think: where is the jetty and what lies beneath it?",
+                "What could happen if you run and jump on a narrow spot right over the water?"
+              ],
+              "hint": "The sign is about keeping people on the jetty safe, not about fish or fresh paint.",
+              "answer": {
+                "text": "so you don't fall in the pond",
+                "explanation": "The jetty is narrow and right over the pond, so running or jumping can make you slip and fall into the water."
+              }
+            }
           }
         }
       ],

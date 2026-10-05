@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "«Ít hơn 18 quả» nghĩa là số quả bưởi bằng số quả cam bớt đi 18.",
+              "Tính 45 − 18; hàng đơn vị 5 không trừ được 8 nên phải mượn."
+            ],
+            "hint": "15 − 8 = 7; hàng chục 4 cho mượn mất 1 còn 3, trừ tiếp 1 chục.",
+            "answer": {
+              "text": "27",
+              "explanation": "45 − 18 = 27 vì 15 − 8 = 7 và 3 − 1 = 2; chọn 63 là cộng thay vì trừ."
+            },
+            "en": {
+              "guide": [
+                "«18 fewer» means the pomelo tree has the orange tree's 45 take away 18.",
+                "Work out 45 − 18; 5 ones can't take away 8, so you must borrow."
+              ],
+              "hint": "15 − 8 = 7; the 4 tens lend 1 and become 3, then take away 1 ten.",
+              "answer": {
+                "text": "27",
+                "explanation": "45 − 18 = 27 because 15 − 8 = 7 and 3 − 1 = 2; 63 adds instead of taking away."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Khỉ hái hai lần, mỗi lần 29 quả, nên cộng 29 + 29.",
+              "Mẹo: 29 gần 30, cộng 30 + 30 rồi bớt phần đã thêm vào."
+            ],
+            "hint": "30 + 30 = 60, nhưng mỗi số 29 đã được thêm 1, nên trả lại 2.",
+            "answer": {
+              "text": "58",
+              "explanation": "29 + 29 = 58 vì 30 + 30 = 60, bớt 2 là 58; hoặc 9 + 9 = 18 viết 8 nhớ 1, 2 + 2 + 1 = 5."
+            },
+            "en": {
+              "guide": [
+                "Khỉ picks twice, 29 oranges each time, so add 29 + 29.",
+                "Trick: 29 is close to 30, so add 30 + 30 and then remove what you added."
+              ],
+              "hint": "30 + 30 = 60, but each 29 got 1 extra, so give back 2.",
+              "answer": {
+                "text": "58",
+                "explanation": "29 + 29 = 58 since 30 + 30 = 60 minus 2 is 58; or 9 + 9 = 18, write 8 carry 1, and 2 + 2 + 1 = 5."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Mỗi con gà có 2 chân; đếm 2 chân cho từng con trong ba con.",
+              "Đếm thêm 2 mỗi lần: con thứ nhất, con thứ hai, rồi con thứ ba."
+            ],
+            "hint": "Cộng 2 + 2 + 2, ba lần số 2 vì có ba con gà.",
+            "answer": {
+              "text": "6",
+              "explanation": "Ba con gà có 2 + 2 + 2 = 6 chân; 8 chân là của bốn con gà, và 5 là số lẻ nên không thể là tổng chân gà."
+            },
+            "en": {
+              "guide": [
+                "Each hen has 2 legs; count 2 legs for each of the three hens.",
+                "Count on in twos: the first hen, the second hen, then the third."
+              ],
+              "hint": "Add 2 + 2 + 2: three twos, because there are three hens.",
+              "answer": {
+                "text": "6",
+                "explanation": "Three hens have 2 + 2 + 2 = 6 legs; 8 legs would be four hens, and 5 is odd so it can't be hens' legs."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Trứng đã bán thì rổ vơi đi, nên tính 90 − 47.",
+              "Hàng đơn vị 0 không trừ được 7, mượn 1 chục từ 9 chục."
+            ],
+            "hint": "10 − 7 = 3; 9 chục còn 8 chục, trừ 4 chục nữa.",
+            "answer": {
+              "text": "43",
+              "explanation": "90 − 47 = 43 vì 10 − 7 = 3 và 8 − 4 = 4; thử lại 43 + 47 = 90; 137 là cộng nhầm."
+            },
+            "en": {
+              "guide": [
+                "Selling eggs empties the basket, so work out 90 − 47.",
+                "0 ones can't take away 7, so borrow 1 ten from the 9 tens."
+              ],
+              "hint": "10 − 7 = 3; the 9 tens drop to 8 tens, then take away 4 tens.",
+              "answer": {
+                "text": "43",
+                "explanation": "90 − 47 = 43 because 10 − 7 = 3 and 8 − 4 = 4; check 43 + 47 = 90; 137 adds by mistake."
+              }
+            }
           }
         },
         {
@@ -226,6 +314,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Xem mỗi hàng cây hơn hàng trước bao nhiêu: 12 lên 22, 22 lên 32.",
+              "Áp đúng bước nhảy đó vào số cuối là 42."
+            ],
+            "hint": "Mỗi hàng tăng đúng 1 chục, chữ số hàng đơn vị luôn là 2.",
+            "answer": {
+              "text": "52",
+              "explanation": "Dãy tăng 10 mỗi lần nên sau 42 là 42 + 10 = 52; 43 chỉ thêm 1, còn 62 thì nhảy 20."
+            },
+            "en": {
+              "guide": [
+                "See how much each row goes up from the last: 12 to 22, 22 to 32.",
+                "Apply the same jump to the last number, 42."
+              ],
+              "hint": "Each row goes up by exactly one ten, and the ones digit is always 2.",
+              "answer": {
+                "text": "52",
+                "explanation": "The rows go up by 10, so after 42 comes 42 + 10 = 52; 43 adds only 1 and 62 jumps 20."
+              }
+            }
           }
         }
       ],

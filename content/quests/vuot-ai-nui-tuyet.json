@@ -211,7 +211,29 @@
             { "id": "b", "text": "Cáo" },
             { "id": "c", "text": "Hai bạn bằng nhau" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "So hai quãng đường 58 m và 85 m; ai có số mét lớn hơn thì trượt xa hơn.",
+              "Nhìn chữ số hàng chục của hai số trước."
+            ],
+            "hint": "58 có 5 chục, 85 có 8 chục; hàng chục lớn hơn thì số lớn hơn.",
+            "answer": {
+              "text": "Cáo",
+              "explanation": "85 m có 8 chục, nhiều hơn 5 chục của 58 m, nên Cáo trượt xa hơn Thỏ; hai số chỉ đổi chỗ chữ số nên không bằng nhau."
+            },
+            "en": {
+              "guide": [
+                "Compare the two distances, 58 m and 85 m; the bigger number of metres went further.",
+                "Look at the tens digit of each number first."
+              ],
+              "hint": "58 has 5 tens and 85 has 8 tens; the bigger tens make the bigger number.",
+              "answer": {
+                "text": "The fox (Cáo)",
+                "explanation": "85 m has 8 tens, more than the 5 tens of 58 m, so the fox (Cáo) went further than the rabbit (Thỏ); swapped digits are not equal."
+              }
+            }
+          }
         },
         {
           "id": "hai-luot",
@@ -222,7 +244,29 @@
             { "id": "b", "text": "45 điểm" },
             { "id": "c", "text": "9 điểm" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Điểm của cả hai lượt là tổng: cộng 27 + 18.",
+              "Cộng 7 + 8 ở hàng đơn vị, rồi hàng chục, giữ lại số nhớ."
+            ],
+            "hint": "Hàng đơn vị: 7 + 8 = 15 nên viết 5, nhớ 1 vào hàng chục 2 + 1.",
+            "answer": {
+              "text": "45 điểm",
+              "explanation": "27 + 18 = 45 vì 7 + 8 = 15 viết 5 nhớ 1, 2 + 1 + 1 = 4; 35 điểm là quên nhớ, 9 điểm là lấy hiệu."
+            },
+            "en": {
+              "guide": [
+                "The score for both runs is a total: add 27 + 18.",
+                "Add 7 + 8 in the ones, then the tens, keeping the carried digit."
+              ],
+              "hint": "Ones: 7 + 8 = 15, so write 5 and carry 1 into the tens, 2 + 1.",
+              "answer": {
+                "text": "45 points (45 điểm)",
+                "explanation": "27 + 18 = 45 because 7 + 8 = 15, write 5 carry 1, and 2 + 1 + 1 = 4; 35 forgets the carry and 9 is the difference."
+              }
+            }
+          }
         },
         {
           "id": "con-lai-doc",
@@ -233,7 +277,29 @@
             { "id": "b", "text": "65 m" },
             { "id": "c", "text": "125 m" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Phần dốc còn lại là cả con dốc bớt đi đoạn đã trượt: 90 − 35.",
+              "0 không trừ được 5, nên mượn 1 chục từ 9 chục rồi mới trừ."
+            ],
+            "hint": "10 − 5 = 5 ở hàng đơn vị; hàng chục còn 8 chục, bớt đi 3 chục.",
+            "answer": {
+              "text": "55 m",
+              "explanation": "90 − 35 = 55 vì 10 − 5 = 5 và 8 − 3 = 5; thử lại 55 + 35 = 90; 125 m là cộng hai số."
+            },
+            "en": {
+              "guide": [
+                "The rest of the slope is the whole slope minus the part already done: 90 − 35.",
+                "0 can't take away 5, so borrow a ten from the 9 tens, then subtract."
+              ],
+              "hint": "10 − 5 = 5 in the ones; 8 tens remain in the tens, take away 3 tens.",
+              "answer": {
+                "text": "55 m",
+                "explanation": "90 − 35 = 55 because 10 − 5 = 5 and 8 − 3 = 5; check 55 + 35 = 90; 125 m adds the two numbers."
+              }
+            }
+          }
         },
         {
           "id": "tu-snow",
@@ -244,7 +310,29 @@
             { "id": "b", "text": "sun" },
             { "id": "c", "text": "snow" }
           ],
-          "answer": { "choice": "c" }
+          "answer": { "choice": "c" },
+          "support": {
+            "guide": [
+              "Đọc ba từ tiếng Anh và nhớ nghĩa từng từ: từ nào chỉ mưa, từ nào chỉ mặt trời?",
+              "Loại hai từ đó đi, từ còn lại là thứ rơi thành bông trắng."
+            ],
+            "hint": "«Rain» là mưa, «sun» là mặt trời; cả hai đều không phủ trắng mái nhà.",
+            "answer": {
+              "text": "snow",
+              "explanation": "«Snow» là tuyết, bông trắng rơi vào mùa đông; «rain» là mưa, «sun» là mặt trời."
+            },
+            "en": {
+              "guide": [
+                "Read the three English words and recall each one: which means rain, which means the sun?",
+                "Cross those two out; the word left is the one that falls in white flakes."
+              ],
+              "hint": "«Rain» is water drops and «sun» is the bright light in the sky; neither is white and fluffy.",
+              "answer": {
+                "text": "snow",
+                "explanation": "A white snowflake (bông tuyết) is «snow» in English; «rain» is water falling and «sun» shines in the sky."
+              }
+            }
+          }
         },
         {
           "id": "tu-cold",
@@ -255,7 +343,29 @@
             { "id": "b", "text": "nóng" },
             { "id": "c", "text": "vui" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Để ý Hoàng Đế đang run run khi nói: người ta run lên khi thấy thế nào?",
+              "Loại từ chỉ cảm giác oi bức và từ chỉ tâm trạng mừng rỡ."
+            ],
+            "hint": "Ở vương quốc băng giá, «cold» tả cái rét khiến ta phải mặc áo ấm.",
+            "answer": {
+              "text": "lạnh",
+              "explanation": "«Cold» là lạnh, nên Hoàng Đế mới run; «nóng» là «hot», còn «vui» là «happy»."
+            },
+            "en": {
+              "guide": [
+                "Notice the Emperor is shivering as he speaks: when do people shiver?",
+                "Rule out the word for a stuffy heat and the word for a happy mood."
+              ],
+              "hint": "In the frozen kingdom, «cold» is the chill that makes you put on a warm coat.",
+              "answer": {
+                "text": "lạnh (cold)",
+                "explanation": "«Cold» is «lạnh», which is why the Emperor shivers; «nóng» means hot and «vui» means happy."
+              }
+            }
+          }
         },
         {
           "id": "cot-cap-treo",
@@ -266,7 +376,29 @@
             { "id": "b", "text": "55" },
             { "id": "c", "text": "70" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Tính xem mỗi cột cáp treo kém cột trước bao nhiêu: 90 rồi 80, 80 rồi 70.",
+              "Lấy số của cột cuối là 60 bớt đi đúng khoảng ấy."
+            ],
+            "hint": "Cột sau luôn ít hơn cột trước 10; 60 bớt 10 là mấy?",
+            "answer": {
+              "text": "50",
+              "explanation": "Dãy giảm 10 mỗi cột: sau 60 là 60 − 10 = 50; 55 chỉ bớt 5, còn 70 là cột đã đi qua."
+            },
+            "en": {
+              "guide": [
+                "Work out how much each cable-car pylon drops from the last: 90 then 80, 80 then 70.",
+                "Take that same amount off the last pylon's number, 60."
+              ],
+              "hint": "Each pylon is always 10 less than the one before; what is 60 take away 10?",
+              "answer": {
+                "text": "50",
+                "explanation": "The pylons drop by 10 each time: after 60 comes 60 − 10 = 50; 55 drops only 5 and 70 is a pylon already passed."
+              }
+            }
+          }
         },
         {
           "id": "ret-cam-cam",
@@ -277,7 +409,29 @@
             { "id": "b", "text": "Rất lạnh, có tuyết rơi" },
             { "id": "c", "text": "Mưa rào và có gió" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Đọc câu và gạch chân các từ tả thời tiết: «rét căm căm», «bông tuyết rơi trắng xóa».",
+              "Chọn câu trả lời nói đúng cả hai ý ấy."
+            ],
+            "hint": "«Rét căm căm» là rét buốt tận xương, mà nắng to hay mưa rào thì không có bông tuyết.",
+            "answer": {
+              "text": "Rất lạnh, có tuyết rơi",
+              "explanation": "«Rét căm căm» nghĩa là rất lạnh và «bông tuyết rơi trắng xóa» cho biết có tuyết; câu không nhắc nắng hay mưa rào."
+            },
+            "en": {
+              "guide": [
+                "Read the sentence and pick out the weather words: «rét căm căm» and «bông tuyết rơi trắng xóa».",
+                "Choose the answer that matches both of those ideas."
+              ],
+              "hint": "«Rét căm căm» means bitterly cold, and sunshine or showers never bring snowflakes.",
+              "answer": {
+                "text": "Very cold, with snow falling",
+                "explanation": "«Rét căm căm» means very cold and «bông tuyết rơi trắng xóa» means snow is falling; nothing about sun or showers."
+              }
+            }
+          }
         }
       ]
     },

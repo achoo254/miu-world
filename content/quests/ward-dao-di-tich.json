@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "So hàng chục của ba số 71, 17 và 70 trước.",
+              "Hai số có cùng hàng chục thì so tiếp hàng đơn vị."
+            ],
+            "hint": "17 chỉ có 1 chục nên bị loại; hai số còn lại cùng 7 chục, xem số nào có đơn vị lớn hơn.",
+            "answer": {
+              "text": "71",
+              "explanation": "71 và 70 cùng 7 chục nhưng 71 có 1 đơn vị, 70 có 0 đơn vị, nên 71 lớn nhất; 17 chỉ có 1 chục."
+            },
+            "en": {
+              "guide": [
+                "Compare the tens of 71, 17 and 70 first.",
+                "When two numbers share the same tens, compare their ones."
+              ],
+              "hint": "17 has only 1 ten, so drop it; the other two both have 7 tens, so check which has more ones.",
+              "answer": {
+                "text": "71",
+                "explanation": "71 and 70 both have 7 tens, but 71 has 1 one and 70 has none, so 71 is the biggest; 17 has just 1 ten."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Đặt 52 bậc dưới lên trên 36 bậc trên, hàng đơn vị thẳng hàng đơn vị.",
+              "Cộng 2 + 6 ở hàng đơn vị, rồi 5 + 3 ở hàng chục."
+            ],
+            "hint": "Không hàng nào phải nhớ; hàng chục của tổng lấy từ 5 + 3.",
+            "answer": {
+              "text": "88",
+              "explanation": "52 + 36 = 88 vì 2 + 6 = 8 đơn vị và 5 + 3 = 8 chục; 78 thiếu một chục, còn 16 là cộng dồn cả bốn chữ số."
+            },
+            "en": {
+              "guide": [
+                "Write the 52 lower steps above the 36 upper ones, ones under ones.",
+                "Add 2 + 6 in the ones, then 5 + 3 in the tens."
+              ],
+              "hint": "No column needs carrying; the tens of the total come from 5 + 3.",
+              "answer": {
+                "text": "88",
+                "explanation": "52 + 36 = 88 because 2 + 6 = 8 ones and 5 + 3 = 8 tens; 78 is a ten short and 16 adds all four digits together."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Đọc lời khắc trên bia đá và tìm việc mà «bạn của ngôi đền» làm.",
+              "Loại những việc làm hỏng đền hay lấy mất đồ của đền."
+            ],
+            "hint": "Lời khắc khen những người biết bảo vệ, chăm sóc nơi cổ kính này.",
+            "answer": {
+              "text": "giữ gìn di tích",
+              "explanation": "Bia ghi «Ai giữ gìn di tích là bạn của ngôi đền», nên lời khắc khuyên giữ gìn di tích; vẽ bậy hay mang đá về đều làm hỏng đền."
+            },
+            "en": {
+              "guide": [
+                "Read the tablet and find what a «friend of the temple» does.",
+                "Rule out anything that damages the temple or takes things away from it."
+              ],
+              "hint": "The carving praises people who protect and care for this ancient place.",
+              "answer": {
+                "text": "look after the ruins",
+                "explanation": "The tablet calls whoever looks after the ruins a friend of the temple; drawing on walls or taking stones both harm it."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Cộng 6 viên ngọc đỏ với 8 viên ngọc xanh.",
+              "Bắt đầu từ số lớn hơn là 8, tách 6 thành 2 và 4 để làm tròn chục."
+            ],
+            "hint": "8 viên ngọc xanh thêm 2 viên ngọc đỏ là tròn 10, vẫn còn 4 viên đỏ.",
+            "answer": {
+              "text": "14",
+              "explanation": "6 + 8 = 14 vì 8 + 2 = 10, thêm 4 nữa là 14; 13 là đếm thiếu một viên, còn 2 là lấy 8 trừ 6."
+            },
+            "en": {
+              "guide": [
+                "Add the 6 red gems and the 8 blue gems.",
+                "Start from the bigger number, 8, and split 6 into 2 and 4 to make a ten."
+              ],
+              "hint": "8 blue gems plus 2 red ones make 10, with 4 red gems still to go.",
+              "answer": {
+                "text": "14",
+                "explanation": "6 + 8 = 14 because 8 + 2 = 10 and 4 more makes 14; 13 misses a gem and 2 is 8 take away 6."
+              }
+            }
           }
         },
         {
@@ -226,6 +314,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Số liền sau là số đứng ngay sau, lớn hơn đúng 1 đơn vị.",
+              "Lấy 89 cộng thêm 1; để ý 9 đơn vị thêm 1 thành đủ một chục mới."
+            ],
+            "hint": "Sau 9 đơn vị là tròn chục, nên hàng chục của 89 tăng thêm 1 và hàng đơn vị về 0.",
+            "answer": {
+              "text": "90",
+              "explanation": "89 + 1 = 90 vì 9 đơn vị thêm 1 thành 1 chục, 8 chục thành 9 chục; 88 là số liền trước, còn 99 lớn hơn 89 tới 10."
+            },
+            "en": {
+              "guide": [
+                "The number that comes right after is exactly 1 more.",
+                "Add 1 to 89; note that 9 ones plus 1 make a whole new ten."
+              ],
+              "hint": "After 9 ones comes a full ten, so the tens of 89 go up by 1 and the ones go back to 0.",
+              "answer": {
+                "text": "90",
+                "explanation": "89 + 1 = 90 because 9 ones plus 1 make a ten and 8 tens become 9; 88 comes just before and 99 is 10 more than 89."
+              }
+            }
           }
         }
       ],

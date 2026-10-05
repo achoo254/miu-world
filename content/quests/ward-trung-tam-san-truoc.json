@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Đem cho bạn thì số chuối bớt đi, nên làm phép trừ 15 − 7.",
+              "Tách 7 thành 5 và 2: lấy 15 − 5 = 10, rồi trừ tiếp 2."
+            ],
+            "hint": "Thử lại bằng phép cộng: số nào cộng với 7 thì được 15?",
+            "answer": {
+              "text": "8",
+              "explanation": "15 − 7 = 8 vì 15 − 5 = 10, 10 − 2 = 8 (thử lại 8 + 7 = 15); 22 là cộng 15 + 7."
+            },
+            "en": {
+              "guide": [
+                "Giving bananas away means fewer, so subtract: 15 − 7.",
+                "Split 7 into 5 and 2: 15 − 5 = 10, then take away 2 more."
+              ],
+              "hint": "Check with addition: what number plus 7 makes 15?",
+              "answer": {
+                "text": "8",
+                "explanation": "15 − 7 = 8 since 15 − 5 = 10 and 10 − 2 = 8 (check: 8 + 7 = 15); 22 is 15 + 7."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "30 phút là một nửa của một giờ; tiếng Việt có một từ riêng cho «nửa giờ».",
+              "Giữ nguyên số giờ là 7, chỉ thay phần 30 phút bằng từ ấy."
+            ],
+            "hint": "«Kém» dùng khi chưa tới giờ đúng, còn ở đây đã quá 7 giờ nửa tiếng.",
+            "answer": {
+              "text": "7 giờ rưỡi",
+              "explanation": "7 giờ 30 phút là 7 giờ rưỡi vì 30 phút là nửa giờ; 8 giờ rưỡi thì muộn hơn một tiếng."
+            },
+            "en": {
+              "guide": [
+                "30 minutes is half an hour; Vietnamese has its own word for that half.",
+                "Keep the hour as 7 and just swap the 30 minutes for that word."
+              ],
+              "hint": "«nearly» means not yet on the hour, but here it's already half an hour after 7.",
+              "answer": {
+                "text": "half past seven",
+                "explanation": "7:30 is half past seven because 30 minutes is half an hour («rưỡi»); half past eight is an hour later."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "So chữ số hàng chục của 51, 15 và 50.",
+              "Bậc đá có chữ số hàng chục bé nhất mang số bé nhất."
+            ],
+            "hint": "51 và 15 dùng cùng hai chữ số; để ý chữ số nào đứng ở hàng chục.",
+            "answer": {
+              "text": "15",
+              "explanation": "15 chỉ có 1 chục, còn 50 và 51 có 5 chục, nên 15 bé nhất."
+            },
+            "en": {
+              "guide": [
+                "Compare the tens digits of 51, 15 and 50.",
+                "The step whose number has the smallest tens digit carries the smallest number."
+              ],
+              "hint": "51 and 15 use the same two digits; notice which one is in the tens place.",
+              "answer": {
+                "text": "15",
+                "explanation": "15 has only 1 ten, while 50 and 51 have 5 tens, so 15 is the smallest."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Nhìn theo tay Voi chỉ: «castle» là tên công trình có những tòa tháp cao.",
+              "Nghĩ tới nơi vua và hoàng hậu ở trong truyện cổ tích."
+            ],
+            "hint": "Cây cầu là «bridge», con thuyền là «boat»; «castle» là một tòa nhà lớn.",
+            "answer": {
+              "text": "lâu đài",
+              "explanation": "«castle» nghĩa là lâu đài, như nơi có tháp cao Voi đang chỉ; cầu là «bridge», thuyền là «boat»."
+            },
+            "en": {
+              "guide": [
+                "Follow Voi's finger: a «castle» is the building with tall towers.",
+                "Think of where the king and queen live in fairy tales."
+              ],
+              "hint": "«cây cầu» is a bridge and «con thuyền» a boat; a castle is a big building.",
+              "answer": {
+                "text": "lâu đài",
+                "explanation": "A «castle» is «lâu đài» in Vietnamese, like the towers Voi points at; «cây cầu» is a bridge, «con thuyền» a boat."
+              }
+            }
           }
         },
         {
@@ -226,6 +314,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Tìm trên biển giờ cổng bắt đầu mở và giờ cổng thôi mở.",
+              "So 6 giờ chiều với 5 giờ chiều: sớm hơn hay muộn hơn?"
+            ],
+            "hint": "Cổng chỉ mở tới 5 giờ chiều, mà 6 giờ chiều thì đã qua giờ đó một tiếng.",
+            "answer": {
+              "text": "đã đóng",
+              "explanation": "Cổng mở đến 5 giờ chiều; 6 giờ chiều đã muộn hơn nên cổng đã đóng, không còn mở."
+            },
+            "en": {
+              "guide": [
+                "Find on the sign when the gate opens and when it stops being open.",
+                "Compare 6 p.m. with 5 p.m.: earlier or later?"
+              ],
+              "hint": "The gate is open only until 5 p.m., and 6 p.m. is an hour past that.",
+              "answer": {
+                "text": "already closed",
+                "explanation": "The gate is open until 5 p.m.; 6 p.m. is later, so by then it's already closed."
+              }
+            }
           }
         }
       ],

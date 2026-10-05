@@ -218,7 +218,23 @@
             { "id": "b", "text": "k" },
             { "id": "c", "text": "q" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Đọc to «…on kiến» và nhìn nguyên âm đứng ngay sau chỗ trống.",
+              "Nhớ: âm «cờ» đứng trước o được viết khác với khi đứng trước e, ê, i."
+            ],
+            "hint": "Sau chỗ trống là chữ o; trước a, o, u ta không dùng k, còn q phải đi với u.",
+            "answer": { "text": "c", "explanation": "Trước o, âm «cờ» viết là c nên có «con kiến»; k chỉ đứng trước e, ê, i (như «kiến»), q luôn đi với u." },
+            "en": {
+              "guide": [
+                "Say «…on kiến» (the ant) aloud and look at the vowel straight after the gap.",
+                "Remember: the «k» sound before o is spelt differently from before e, ê and i."
+              ],
+              "hint": "The gap comes before o; k is never used before a, o, u, and q must go with u.",
+              "answer": { "text": "c", "explanation": "Before o the «k» sound is written c, giving «con kiến»; k only goes before e, ê, i (as in «kiến») and q always pairs with u." }
+            }
+          }
         },
         {
           "id": "g-hay-gh",
@@ -229,7 +245,23 @@
             { "id": "b", "text": "ghồ gề" },
             { "id": "c", "text": "gồ gề" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Tách từ thành hai tiếng và nhìn nguyên âm đứng sau âm «gờ» của mỗi tiếng.",
+              "Áp luật: trước e, ê, i viết gh; trước o, ô, a, u và các nguyên âm khác viết g."
+            ],
+            "hint": "Tiếng đầu có ô, tiếng sau có ê, nên mỗi tiếng dùng một cách viết «gờ» riêng.",
+            "answer": { "text": "gồ ghề", "explanation": "«Gồ» có ô nên viết g, «ghề» có ê nên viết gh, vậy «gồ ghề» đúng; «ghồ» và «gề» viết sai luật." },
+            "en": {
+              "guide": [
+                "Split the word into two syllables and check the vowel after the «g» sound in each.",
+                "Apply the rule: before e, ê, i write gh; before o, ô, a, u and the rest write g."
+              ],
+              "hint": "The first syllable has ô and the second has ê, so each takes its own spelling of «g».",
+              "answer": { "text": "gồ ghề", "explanation": "«gồ» has ô so it takes g, «ghề» has ê so it takes gh, making «gồ ghề» (bumpy) right; «ghồ» and «gề» break the rule." }
+            }
+          }
         },
         {
           "id": "thu-tu-ten",
@@ -240,7 +272,23 @@
             { "id": "b", "text": "Bình" },
             { "id": "c", "text": "Lan" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Viết ra chữ cái đầu của ba tên: H, B, L.",
+              "So vị trí của ba chữ ấy trong bảng chữ cái; chữ nào đứng trước thì tên đó lên đầu."
+            ],
+            "hint": "Trong ba chữ H, B, L, chữ nào bạn gặp sớm nhất khi đọc bảng chữ cái từ a?",
+            "answer": { "text": "Bình", "explanation": "B đứng trước H, H đứng trước L, nên thứ tự là Bình, Hoa, Lan và Bình đứng đầu." },
+            "en": {
+              "guide": [
+                "Write down the first letter of the three names: H, B, L.",
+                "Compare where those letters sit in the alphabet; the earliest letter puts its name first."
+              ],
+              "hint": "Of H, B and L, which do you reach first when saying the alphabet from a?",
+              "answer": { "text": "Bình", "explanation": "B comes before H and H before L, so the order is Bình, Hoa, Lan, with Bình first." }
+            }
+          }
         },
         {
           "id": "tu-hoat-dong",
@@ -251,7 +299,23 @@
             { "id": "b", "text": "xanh mướt" },
             { "id": "c", "text": "cày ruộng" }
           ],
-          "answer": { "choice": "c" }
+          "answer": { "choice": "c" },
+          "support": {
+            "guide": [
+              "Đọc ba từ và hỏi: từ nào là một việc làm, không phải tên con vật hay màu sắc?",
+              "Thử đặt từng từ sau «Con trâu đang…» xem từ nào nghe hợp."
+            ],
+            "hint": "Từ chỉ hoạt động là việc làm, như việc trâu vẫn giúp bác nông dân ngoài đồng.",
+            "answer": { "text": "cày ruộng", "explanation": "«Cày ruộng» là việc trâu làm ngoài đồng nên chỉ hoạt động; «con trâu» là con vật, «xanh mướt» là đặc điểm." },
+            "en": {
+              "guide": [
+                "Read the three words and ask: which is something done, not an animal or a colour?",
+                "Try each word after «Con trâu đang…» (the buffalo is…) and see which fits."
+              ],
+              "hint": "An action word is something done, like the work a buffalo helps farmers with in the fields.",
+              "answer": { "text": "cày ruộng (plough the field)", "explanation": "«cày ruộng» (plough the field) is the work the buffalo does, so it is an action; «con trâu» is an animal and «xanh mướt» a feature." }
+            }
+          }
         },
         {
           "id": "cau-gioi-thieu",
@@ -262,7 +326,23 @@
             { "id": "b", "text": "Trâu Đen đang gặm cỏ bên bờ đầm." },
             { "id": "c", "text": "Hoa sen nở thơm ngát cả một vùng." }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Câu giới thiệu là câu người nói tự cho biết tên mình và vài điều về mình.",
+              "Đọc ba câu, loại câu kể việc đang làm và câu tả hoa sen."
+            ],
+            "hint": "Trong câu giới thiệu, chính người nói xưng «tôi», «tớ» hay «em» rồi nói tên mình.",
+            "answer": { "text": "Tôi là Trâu Đen, nhà ở đầm sen.", "explanation": "«Tôi là Trâu Đen, nhà ở đầm sen.» nói tên và chỗ ở của Trâu Đen nên là câu giới thiệu; hai câu kia kể việc và tả hoa." },
+            "en": {
+              "guide": [
+                "An introduction is when the speaker tells their own name and something about themselves.",
+                "Read the three sentences and rule out the one about grazing and the one about lotus flowers."
+              ],
+              "hint": "In an introduction the speaker says «tôi», «tớ» or «em» (I) and then gives their name.",
+              "answer": { "text": "Tôi là Trâu Đen, nhà ở đầm sen. (I'm Trâu Đen, I live by the lotus pond.)", "explanation": "«Tôi là Trâu Đen, nhà ở đầm sen.» gives Trâu Đen's name and home, so it introduces; the others tell an action and describe flowers." }
+            }
+          }
         },
         {
           "id": "dau-cham",
@@ -273,7 +353,23 @@
             { "id": "b", "text": "Dấu chấm" },
             { "id": "c", "text": "Dấu phẩy" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Đọc «Đầm sen làng em nở hoa thơm ngát» và hỏi: câu này kể một điều hay hỏi một điều?",
+              "Nhớ: câu kể kết thúc bằng một dấu khác với câu hỏi và câu cảm."
+            ],
+            "hint": "Câu này chỉ kể lại một điều có thật, không hỏi ai và không cần ai trả lời.",
+            "answer": { "text": "Dấu chấm", "explanation": "Câu kể về đầm sen, không hỏi gì, nên cuối câu đặt dấu chấm; dấu chấm hỏi dành cho câu hỏi, dấu phẩy để ngắt giữa câu." },
+            "en": {
+              "guide": [
+                "Read «Đầm sen làng em nở hoa thơm ngát» and ask: does it tell something or ask something?",
+                "Remember: a telling sentence ends with a different mark from a question or an exclamation."
+              ],
+              "hint": "This sentence just reports something true; it asks nobody and needs no reply.",
+              "answer": { "text": "Full stop", "explanation": "It tells about the lotus pond and asks nothing, so it ends with a full stop; question marks end questions and commas split sentences." }
+            }
+          }
         },
         {
           "id": "vit-boi",
@@ -284,7 +380,23 @@
             { "id": "b", "text": "Dưới chân cầu đá" },
             { "id": "c", "text": "Ngoài bến đò" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Đọc lại câu về Vịt Con và tìm phần nói về nơi chốn.",
+              "Câu hỏi «ở đâu» hỏi về chỗ, nên tìm cụm từ đứng ngay sau từ «bơi»."
+            ],
+            "hint": "Câu không hề nhắc tới cầu đá hay bến đò; chỉ chọn nơi có trong chính câu đã đọc.",
+            "answer": { "text": "Quanh đầm sen", "explanation": "Câu viết «Vịt Con bơi quanh đầm sen», nên Vịt Con bơi quanh đầm sen; cầu đá và bến đò không có trong câu." },
+            "en": {
+              "guide": [
+                "Reread the sentence about Vịt Con (the duckling) and find the part that names a place.",
+                "A «where» question asks about a place, so look at the words straight after «bơi» (swims)."
+              ],
+              "hint": "The sentence never mentions a stone bridge or a ferry landing; pick only a place that is in it.",
+              "answer": { "text": "Around the lotus pond (Quanh đầm sen)", "explanation": "The sentence says «Vịt Con bơi quanh đầm sen», so the duckling swims around the lotus pond; the bridge and landing are not in it." }
+            }
+          }
         }
       ]
     },

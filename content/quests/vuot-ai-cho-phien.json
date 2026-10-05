@@ -211,7 +211,29 @@
             { "id": "b", "text": "14" },
             { "id": "c", "text": "15" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Cộng 9 với 5 bằng cách làm tròn 9 thành 10 trước.",
+              "Tách 5 thành 1 và 4, lấy 1 bù cho 9, rồi cộng số còn lại."
+            ],
+            "hint": "9 + 1 = 10, trong 5 còn lại 4; mười cộng bốn là bao nhiêu?",
+            "answer": {
+              "text": "14",
+              "explanation": "9 + 5 = 14 vì 9 + 1 = 10, thêm 4 nữa là 14; 13 thiếu một, 15 thừa một."
+            },
+            "en": {
+              "guide": [
+                "Add 9 and 5 by first rounding 9 up to 10.",
+                "Split 5 into 1 and 4, give the 1 to the 9, then add the rest."
+              ],
+              "hint": "9 + 1 = 10 and 4 of the 5 are left; what is ten plus four?",
+              "answer": {
+                "text": "14",
+                "explanation": "9 + 5 = 14 because 9 + 1 = 10 and 4 more makes 14; 13 is one short and 15 one too many."
+              }
+            }
+          }
         },
         {
           "id": "muoi-bay-tru-chin",
@@ -222,7 +244,29 @@
             { "id": "b", "text": "8" },
             { "id": "c", "text": "9" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Trừ 9 khỏi 17 bằng hai bước, đi qua số 10.",
+              "Bớt 7 trước để 17 về 10, rồi bớt tiếp phần còn lại của 9."
+            ],
+            "hint": "17 − 7 = 10, và 9 còn 2 chưa trừ; lấy 10 bớt 2.",
+            "answer": {
+              "text": "8",
+              "explanation": "17 − 9 = 8 vì 17 − 7 = 10, bớt thêm 2 còn 8; thử lại: 8 + 9 = 17."
+            },
+            "en": {
+              "guide": [
+                "Take 9 from 17 in two steps, passing through 10.",
+                "First take 7 to bring 17 down to 10, then take the rest of the 9."
+              ],
+              "hint": "17 − 7 = 10, and 2 of the 9 are still to subtract; take 2 from 10.",
+              "answer": {
+                "text": "8",
+                "explanation": "17 − 9 = 8 because 17 − 7 = 10 and 2 fewer is 8; check: 8 + 9 = 17."
+              }
+            }
+          }
         },
         {
           "id": "them-buoi",
@@ -233,7 +277,29 @@
             { "id": "b", "text": "13 quả" },
             { "id": "c", "text": "14 quả" }
           ],
-          "answer": { "choice": "c" }
+          "answer": { "choice": "c" },
+          "support": {
+            "guide": [
+              "«Mang thêm» nghĩa là số bưởi nhiều lên, nên làm phép cộng 8 + 6.",
+              "Lấy 2 từ 6 quả bù cho 8 thành 10, cộng phần còn lại rồi ghi chữ «quả»."
+            ],
+            "hint": "8 + 2 = 10, trong 6 quả mới mang tới còn 4 quả chưa cộng.",
+            "answer": {
+              "text": "14 quả",
+              "explanation": "8 + 6 = 14 vì 8 + 2 = 10, thêm 4 là 14 quả; 13 quả là cộng thiếu, 2 quả là lấy 8 trừ 6."
+            },
+            "en": {
+              "guide": [
+                "«Brought more» means there are more pomelos, so add 8 + 6.",
+                "Take 2 of the 6 to make 8 into 10, add the rest, and answer in pomelos."
+              ],
+              "hint": "8 + 2 = 10, and 4 of the 6 new pomelos are still to add.",
+              "answer": {
+                "text": "14 pomelos",
+                "explanation": "8 + 6 = 14 because 8 + 2 = 10 and 4 more makes 14 pomelos; 13 is one short and 2 is 8 minus 6."
+              }
+            }
+          }
         },
         {
           "id": "bot-trung",
@@ -244,7 +310,29 @@
             { "id": "b", "text": "8 quả" },
             { "id": "c", "text": "25 quả" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Đã bán 9 quả nên trứng trong rổ ít đi: làm phép trừ 16 − 9.",
+              "Bớt 6 trước cho 16 về 10, rồi bớt nốt phần còn lại của 9."
+            ],
+            "hint": "16 − 6 = 10, và còn 3 quả nữa phải bớt khỏi 10.",
+            "answer": {
+              "text": "7 quả",
+              "explanation": "16 − 9 = 7 vì 16 − 6 = 10, bớt thêm 3 còn 7 quả; 25 quả là cộng nhầm, 8 quả là trừ thiếu một."
+            },
+            "en": {
+              "guide": [
+                "9 eggs have been sold, so there are fewer: subtract 16 − 9.",
+                "First take 6 so 16 drops to 10, then take the rest of the 9."
+              ],
+              "hint": "16 − 6 = 10, and 3 more eggs still have to come off the 10.",
+              "answer": {
+                "text": "7 eggs",
+                "explanation": "16 − 9 = 7 because 16 − 6 = 10 and 3 fewer leaves 7 eggs; 25 adds by mistake and 8 is one short."
+              }
+            }
+          }
         },
         {
           "id": "gao-va-duong",
@@ -255,7 +343,29 @@
             { "id": "b", "text": "7 kg" },
             { "id": "c", "text": "10 kg" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Muốn biết cả túi gạo lẫn túi đường nặng bao nhiêu, ta cộng 5 kg với 2 kg.",
+              "Đếm tiếp hai số sau 5, rồi viết kg phía sau số vừa tìm được."
+            ],
+            "hint": "Năm cộng hai: giơ năm ngón một bàn tay, thêm hai ngón bàn kia rồi đếm cả.",
+            "answer": {
+              "text": "7 kg",
+              "explanation": "5 kg + 2 kg = 7 kg; 3 kg là lấy 5 trừ 2, còn 10 kg là gấp đôi 5 kg chứ không phải cộng 2 kg."
+            },
+            "en": {
+              "guide": [
+                "To know what the rice and sugar weigh together, add 5 kg and 2 kg.",
+                "Count on two numbers after 5, then write kg after the number you found."
+              ],
+              "hint": "Five plus two: hold up five fingers on one hand, two on the other, and count them all.",
+              "answer": {
+                "text": "7 kg",
+                "explanation": "5 kg + 2 kg = 7 kg; 3 kg is 5 minus 2, and 10 kg doubles the 5 kg instead of adding 2 kg."
+              }
+            }
+          }
         },
         {
           "id": "can-nuoc-mam",
@@ -266,7 +376,29 @@
             { "id": "b", "text": "14 lít" },
             { "id": "c", "text": "4 lít" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Bác rót ra 4 lít để bán nên nước mắm trong can bớt đi: tính 10 − 4.",
+              "Nghĩ phép cộng ngược lại: 4 cộng mấy thì được 10, rồi ghi chữ «lít»."
+            ],
+            "hint": "Mười lít bớt đi bốn lít: nhớ lại cặp số có số 4 cộng lại bằng 10.",
+            "answer": {
+              "text": "6 lít",
+              "explanation": "10 lít − 4 lít = 6 lít vì 6 + 4 = 10; 14 lít là cộng nhầm, còn 4 lít chỉ là phần đã rót ra."
+            },
+            "en": {
+              "guide": [
+                "Four litres are poured out to sell, so the fish sauce goes down: work out 10 − 4.",
+                "Think of the addition the other way: 4 plus what makes 10, then write «lít» (litres)."
+              ],
+              "hint": "Ten litres minus four: recall the pair of numbers with 4 that adds up to 10.",
+              "answer": {
+                "text": "6 litres",
+                "explanation": "10 litres − 4 litres = 6 litres because 6 + 4 = 10; 14 litres adds by mistake, and 4 litres is just what was poured out."
+              }
+            }
+          }
         },
         {
           "id": "dua-va-bi",
@@ -277,7 +409,29 @@
             { "id": "b", "text": "Quả bí ngô" },
             { "id": "c", "text": "Hai quả nặng bằng nhau" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "So sánh hai số cân: 3 kg của dưa hấu và 5 kg của bí ngô.",
+              "Số ki-lô-gam lớn hơn thì quả đó nặng hơn."
+            ],
+            "hint": "5 lớn hơn 3, vậy hãy tìm quả mà đề nói nặng 5 kg.",
+            "answer": {
+              "text": "Quả bí ngô",
+              "explanation": "Bí ngô nặng 5 kg, dưa hấu nặng 3 kg, mà 5 > 3 nên quả bí ngô nặng hơn; hai quả không nặng bằng nhau."
+            },
+            "en": {
+              "guide": [
+                "Compare the two weights: the watermelon's 3 kg and the pumpkin's 5 kg.",
+                "The fruit with more kilograms is the heavier one."
+              ],
+              "hint": "5 is greater than 3, so look for the fruit the question says weighs 5 kg.",
+              "answer": {
+                "text": "The pumpkin (quả bí ngô)",
+                "explanation": "The pumpkin weighs 5 kg and the watermelon 3 kg; since 5 > 3 the pumpkin is heavier, so they are not equal."
+              }
+            }
+          }
         }
       ]
     },

@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Nghĩ xem khi gió thổi qua hồ băng thì người ta thấy thế nào.",
+              "Loại hai từ chỉ cảm giác khi đứng giữa nắng hay ngồi bên bếp lửa."
+            ],
+            "hint": "Cáo nói «It's cold!» khi gió buốt thổi qua, ngược hẳn với «hot».",
+            "answer": {
+              "text": "lạnh",
+              "explanation": "«Cold» nghĩa là lạnh, đúng cảm giác khi gió hồ thổi qua; «hot» mới là nóng, «warm» là ấm."
+            },
+            "en": {
+              "guide": [
+                "Think how people feel when the wind blows across the frozen lake.",
+                "Rule out the two words for how you feel in sunshine or next to a fire."
+              ],
+              "hint": "Cáo says «It's cold!» as the biting wind blows; it is the opposite of «hot».",
+              "answer": {
+                "text": "lạnh",
+                "explanation": "«Cold» means «lạnh», just how the lake wind feels; «nóng» is hot and «ấm» is warm."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "So chữ số hàng chục của ba số 92, 29 và 90 trước.",
+              "Số có hàng chục nhỏ nhất là số bé nhất, chưa cần xét hàng đơn vị."
+            ],
+            "hint": "Hai trong ba số có 9 chục, chỉ một số có 2 chục.",
+            "answer": {
+              "text": "29",
+              "explanation": "29 chỉ có 2 chục còn 90 và 92 có 9 chục, nên 29 là số bé nhất; 90 bé hơn 92 nhưng vẫn lớn hơn 29."
+            },
+            "en": {
+              "guide": [
+                "Compare the tens digits of 92, 29 and 90 first.",
+                "The number with the smallest tens is the smallest; no need to look at the ones."
+              ],
+              "hint": "Two of the numbers have 9 tens, and only one has 2 tens.",
+              "answer": {
+                "text": "29",
+                "explanation": "29 has only 2 tens while 90 and 92 have 9, so 29 is smallest; 90 is less than 92 but still more than 29."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Cá bơi xuống đáy thì gần mặt nước ít đi, nên tính 16 − 9.",
+              "Bớt 9 làm hai bước: bớt 6 để về 10, rồi bớt tiếp phần còn lại."
+            ],
+            "hint": "16 − 6 = 10, còn phải bớt thêm 3 nữa.",
+            "answer": {
+              "text": "7",
+              "explanation": "16 − 9 = 7 vì 16 − 6 = 10, rồi 10 − 3 = 7; 25 là cộng 16 + 9 thay vì trừ."
+            },
+            "en": {
+              "guide": [
+                "Fish swimming down leave fewer near the top, so work out 16 − 9.",
+                "Take away 9 in two steps: take 6 to reach 10, then the rest."
+              ],
+              "hint": "16 − 6 = 10, and there are still 3 more to take away.",
+              "answer": {
+                "text": "7",
+                "explanation": "16 − 9 = 7 because 16 − 6 = 10 and 10 − 3 = 7; 25 adds 16 + 9 instead of taking away."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Đọc biển báo theo hai phần: phần nói về băng và phần dặn mọi người làm gì.",
+              "Chữ «không» ở đầu lời dặn cho biết đó là việc bị cấm hay được làm?"
+            ],
+            "hint": "Băng mỏng dễ vỡ, nên biển muốn mọi người tránh xa chỗ băng yếu nhất.",
+            "answer": {
+              "text": "không ra giữa hồ",
+              "explanation": "Biển ghi «không đi ra giữa hồ» vì băng mỏng dễ vỡ; «hãy ra giữa hồ» nói ngược lại, còn biển không nói hồ ấm."
+            },
+            "en": {
+              "guide": [
+                "Read the sign in two parts: what it says about the ice and what it tells people to do.",
+                "The words «do not» start the instruction: is it something banned or allowed?"
+              ],
+              "hint": "Thin ice breaks easily, so the sign wants people to keep away from the weakest ice.",
+              "answer": {
+                "text": "don't go to the middle",
+                "explanation": "The sign says «do not walk to the middle of the lake» because thin ice can crack; it never says go there or that the lake is warm."
+              }
+            }
           }
         }
       ],

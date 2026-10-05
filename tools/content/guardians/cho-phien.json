@@ -46,13 +46,25 @@
             "3"
           ],
           "answer": 0,
+          "guide": [
+            "Gà Mái có 8 quả và đẻ thêm 5 quả: «thêm» nghĩa là làm phép cộng 8 + 5.",
+            "Tách 5 thành 2 và 3 để 8 cộng 2 tròn 10 trước, rồi cộng phần còn lại."
+          ],
+          "hint": "8 cần thêm 2 nữa mới đủ 10; sau đó trong 5 quả vẫn còn lại 3 quả.",
+          "explain": "8 + 5 = 13 vì 8 + 2 = 10, thêm 3 nữa là 13; 12 là cộng thiếu một, còn 3 là lấy 8 trừ 5.",
           "en": {
             "prompt": "Gà Mái has 8 eggs and lays 5 more. How many eggs in all?",
             "choices": [
               "13",
               "12",
               "3"
-            ]
+            ],
+            "guide": [
+              "Gà Mái has 8 eggs and lays 5 more: «more» means adding, 8 + 5.",
+              "Split 5 into 2 and 3, make 8 + 2 = 10 first, then add what is left."
+            ],
+            "hint": "8 needs 2 more to reach 10, and of the 5 new eggs there are still 3 to add.",
+            "explain": "8 + 5 = 13 because 8 + 2 = 10 and 3 more makes 13; 12 is one short, and 3 is 8 minus 5."
           }
         },
         {
@@ -65,13 +77,25 @@
             "16"
           ],
           "answer": 0,
+          "guide": [
+            "Gộp 9 bông hồng với 6 bông cúc, ta làm phép cộng 9 + 6.",
+            "Lấy 1 từ số 6 bù cho 9 thành 10, rồi cộng nốt số bông còn lại."
+          ],
+          "hint": "9 + 1 = 10, và 6 bông cúc bớt đi 1 thì còn 5 bông để cộng tiếp.",
+          "explain": "9 + 6 = 15 vì 9 + 1 = 10, thêm 5 nữa là 15; 14 và 16 đều lệch đi một bông.",
           "en": {
             "prompt": "The flower stall has 9 roses and 6 daisies. How many flowers in all?",
             "choices": [
               "15",
               "14",
               "16"
-            ]
+            ],
+            "guide": [
+              "Putting 9 roses and 6 daisies together means adding: 9 + 6.",
+              "Take 1 from the 6 to turn 9 into 10, then add the flowers that remain."
+            ],
+            "hint": "9 + 1 = 10, and 6 daisies minus that 1 leaves 5 more to add.",
+            "explain": "9 + 6 = 15 because 9 + 1 = 10 and 5 more makes 15; 14 and 16 are each one flower off."
           }
         },
         {
@@ -84,13 +108,25 @@
             "19"
           ],
           "answer": 0,
+          "guide": [
+            "Tìm số cộng với 7 để được 12: có thể đếm thêm từ 7 lên tới 12.",
+            "Hoặc lấy tổng trừ đi số đã biết: 12 − 7."
+          ],
+          "hint": "Từ 7 lên 10 cần 3, từ 10 lên 12 cần thêm 2; cộng hai bước nhảy lại.",
+          "explain": "7 + 5 = 12 vì 12 − 7 = 5; điền 4 chỉ được 11, còn 19 là lấy 7 cộng 12.",
           "en": {
             "prompt": "Which number goes in the gap: 7 + … = 12?",
             "choices": [
               "5",
               "4",
               "19"
-            ]
+            ],
+            "guide": [
+              "Find the number that makes 12 with 7: you can count on from 7 up to 12.",
+              "Or take the known number away from the total: 12 − 7."
+            ],
+            "hint": "From 7 to 10 is 3, from 10 to 12 is 2 more; add the two jumps together.",
+            "explain": "7 + 5 = 12 since 12 − 7 = 5; 4 only gives 11, and 19 comes from adding 7 and 12."
           }
         },
         {
@@ -103,13 +139,25 @@
             "="
           ],
           "answer": 1,
+          "guide": [
+            "Tính vế trái trước: 8 + 7 bằng bao nhiêu?",
+            "So kết quả vừa tính với 14 rồi chọn dấu lớn hơn, bé hơn hay bằng."
+          ],
+          "hint": "8 + 2 = 10, cộng nốt 5 được tổng; xem tổng ấy nhiều hay ít hơn 14.",
+          "explain": "8 + 7 = 15 và 15 lớn hơn 14 nên điền «>»; dấu «<» và dấu «=» đều sai.",
           "en": {
             "prompt": "Gà Mái compares two baskets: 8 + 7 and 14. Which sign goes in 8 + 7 … 14?",
             "choices": [
               "<",
               ">",
               "="
-            ]
+            ],
+            "guide": [
+              "Work out the left side first: what is 8 + 7?",
+              "Compare that result with 14, then choose greater than, less than or equal."
+            ],
+            "hint": "8 + 2 = 10, add the other 5 for the total, then see if it is more or less than 14.",
+            "explain": "8 + 7 = 15, and 15 is greater than 14, so the sign is «>»; «<» and «=» are both wrong."
           }
         }
       ],
@@ -183,13 +231,25 @@
             "20"
           ],
           "answer": 0,
+          "guide": [
+            "Chó Vàng ăn mất 6 khúc nên số xương bớt đi: làm phép trừ 14 − 6.",
+            "Trừ làm hai bước: 14 bớt 4 về 10, rồi bớt tiếp phần còn lại của 6."
+          ],
+          "hint": "14 − 4 = 10, mà 6 khúc còn thiếu 2 khúc chưa trừ; lấy 10 bớt 2.",
+          "explain": "14 − 6 = 8 vì 14 − 4 = 10, bớt thêm 2 còn 8; 20 là cộng nhầm 14 với 6.",
           "en": {
             "prompt": "Chó Vàng has 14 bones and eats 6. How many bones are left?",
             "choices": [
               "8",
               "9",
               "20"
-            ]
+            ],
+            "guide": [
+              "Chó Vàng eats 6 bones, so there are fewer: subtract 14 − 6.",
+              "Do it in two steps: take 4 from 14 to reach 10, then take the rest of the 6."
+            ],
+            "hint": "14 − 4 = 10, and 2 of the 6 bones still need taking away from that 10.",
+            "explain": "14 − 6 = 8 because 14 − 4 = 10 and 2 fewer is 8; 20 comes from adding 14 and 6 by mistake."
           }
         },
         {
@@ -202,13 +262,25 @@
             "18"
           ],
           "answer": 0,
+          "guide": [
+            "Đã bán 5 chú nên số cá ít đi: viết phép trừ 13 − 5.",
+            "Bớt 3 trước để về 10, rồi bớt nốt số cá còn lại trong 5 chú đã bán."
+          ],
+          "hint": "13 − 3 = 10; trong 5 chú đã bán còn 2 chú phải trừ tiếp.",
+          "explain": "13 − 5 = 8 vì 13 − 3 = 10, bớt tiếp 2 còn 8; 7 là trừ thừa một chú, 18 là cộng nhầm.",
           "en": {
             "prompt": "The stall has 13 goldfish and has sold 5. How many goldfish are left?",
             "choices": [
               "8",
               "7",
               "18"
-            ]
+            ],
+            "guide": [
+              "5 have been sold, so there are fewer fish: write 13 − 5.",
+              "Take 3 first to get down to 10, then take away the rest of the 5 sold."
+            ],
+            "hint": "13 − 3 = 10, and 2 more of the 5 sold goldfish still need taking away.",
+            "explain": "13 − 5 = 8 because 13 − 3 = 10 and 2 fewer is 8; 7 takes away one too many, and 18 adds by mistake."
           }
         },
         {
@@ -221,13 +293,25 @@
             "3"
           ],
           "answer": 0,
+          "guide": [
+            "Mèo có «nhiều hơn» thỏ 3 củ, nên lấy số cà rốt của thỏ cộng thêm 3.",
+            "Viết phép tính 9 + 3 rồi đếm thêm ba bước từ 9."
+          ],
+          "hint": "Từ 9 đếm tiếp ba số liền sau; số cuối cùng là số củ cà rốt của mèo.",
+          "explain": "Mèo có 9 + 3 = 12 củ; 6 là trừ nhầm 9 − 3, còn 3 chỉ là phần mèo nhiều hơn thỏ.",
           "en": {
             "prompt": "Rabbit has 9 carrots and Cat has 3 more than Rabbit. How many carrots does Cat have?",
             "choices": [
               "12",
               "6",
               "3"
-            ]
+            ],
+            "guide": [
+              "Cat has «3 more» than Rabbit, so add 3 to Rabbit's carrots.",
+              "Write 9 + 3, then count on three steps from 9."
+            ],
+            "hint": "Count on the three numbers that come after 9; the last one is Cat's total.",
+            "explain": "Cat has 9 + 3 = 12 carrots; 6 is the mistake 9 − 3, and 3 is only how many more."
           }
         },
         {
@@ -240,13 +324,25 @@
             "6"
           ],
           "answer": 0,
+          "guide": [
+            "4 chú chim bay ra khỏi lồng nên số chim giảm: làm phép trừ 11 − 4.",
+            "Bớt 1 để về 10, rồi bớt tiếp 3 chú còn lại."
+          ],
+          "hint": "11 − 1 = 10, rồi lấy 10 bớt đi 3 chú chim nữa.",
+          "explain": "11 − 4 = 7 vì 11 − 1 = 10, bớt thêm 3 còn 7; 15 là cộng nhầm, 6 là bớt thừa một chú.",
           "en": {
             "prompt": "There are 11 birds in the cage and 4 fly out. How many birds are still in the cage?",
             "choices": [
               "7",
               "15",
               "6"
-            ]
+            ],
+            "guide": [
+              "4 birds fly out of the cage, so there are fewer: subtract 11 − 4.",
+              "Take 1 away to reach 10, then take away the other 3."
+            ],
+            "hint": "11 − 1 = 10, then take 3 more birds away from 10.",
+            "explain": "11 − 4 = 7 because 11 − 1 = 10 and 3 fewer is 7; 15 adds by mistake and 6 takes one too many."
           }
         }
       ],
@@ -319,13 +415,25 @@
             "hai đĩa bằng nhau"
           ],
           "answer": 0,
+          "guide": [
+            "Nhớ cách cân đĩa hoạt động: vật nặng hơn kéo đĩa của nó xuống thấp.",
+            "Đọc lại đề xem quả nào nặng hơn, rồi tìm đĩa đặt quả đó."
+          ],
+          "hint": "Đề đã nói dưa hấu nặng hơn cam, nên hai đĩa không thể cân bằng.",
+          "explain": "Dưa hấu nặng hơn nên đĩa có dưa hấu thấp xuống, còn đĩa có quả cam nhẹ hơn thì nâng lên.",
           "en": {
             "prompt": "A watermelon is heavier than an orange. On the balance scales, which pan goes down?",
             "choices": [
               "the watermelon's pan",
               "the orange's pan",
               "they stay level"
-            ]
+            ],
+            "guide": [
+              "Recall how balance scales work: the heavier object pulls its pan down.",
+              "Reread which fruit is heavier, then find the pan holding that fruit."
+            ],
+            "hint": "The question says the watermelon outweighs the orange, so the pans cannot stay level.",
+            "explain": "The watermelon is heavier, so its pan sinks while the lighter orange's pan rises."
           }
         },
         {
@@ -338,13 +446,25 @@
             "53 kg"
           ],
           "answer": 0,
+          "guide": [
+            "Tìm cân nặng cả hai bao: cộng 5 kg với 3 kg.",
+            "Cộng các số như thường rồi nhớ viết đơn vị kg sau kết quả."
+          ],
+          "hint": "Đếm thêm ba bước từ 5 rồi ghi kg phía sau kết quả.",
+          "explain": "5 kg + 3 kg = 8 kg; 2 kg là lấy 5 trừ 3, còn 53 kg là viết ghép hai số cạnh nhau.",
           "en": {
             "prompt": "A bag of sugar weighs 5 kg and a bag of salt 3 kg. How much do both weigh?",
             "choices": [
               "8 kg",
               "2 kg",
               "53 kg"
-            ]
+            ],
+            "guide": [
+              "To find what both bags weigh, add 5 kg and 3 kg.",
+              "Add the numbers as usual, then remember to write kg after the answer."
+            ],
+            "hint": "Count on three steps from 5, then write kg after the result.",
+            "explain": "5 kg + 3 kg = 8 kg; 2 kg is 5 minus 3, and 53 kg just puts the two numbers side by side."
           }
         },
         {
@@ -357,13 +477,25 @@
             "5 l"
           ],
           "answer": 0,
+          "guide": [
+            "Rót ra 4 l nghĩa là dầu trong can ít đi: làm phép trừ 10 − 4.",
+            "Tính xong nhớ ghi đơn vị lít, viết tắt là l, sau số vừa tìm."
+          ],
+          "hint": "Đếm lùi từ 10 bốn bước, mỗi bước là một lít dầu được rót ra.",
+          "explain": "10 l − 4 l = 6 l vì 4 + 6 = 10; 14 l là cộng nhầm, còn 5 l là bớt thừa một lít.",
           "en": {
             "prompt": "The oil can holds 10 l and Voi pours out 4 l. How many litres are left?",
             "choices": [
               "6 l",
               "14 l",
               "5 l"
-            ]
+            ],
+            "guide": [
+              "Pouring out 4 l leaves less oil in the can: subtract 10 − 4.",
+              "When you have the number, write the unit for litres, l, after it."
+            ],
+            "hint": "Count back four steps from 10, one litre of oil poured out per step.",
+            "explain": "10 l − 4 l = 6 l because 4 + 6 = 10; 14 l adds by mistake and 5 l takes away one litre too many."
           }
         },
         {
@@ -376,13 +508,25 @@
             "xăng-ti-mét"
           ],
           "answer": 0,
+          "guide": [
+            "Nghĩ xem ta đang đo gì: nước trong xô là chất lỏng, ta muốn biết nhiều hay ít.",
+            "Nhớ mỗi đơn vị đo một thứ: độ dài, cân nặng, hay lượng chất lỏng."
+          ],
+          "hint": "Ki-lô-gam để cân nặng nhẹ, xăng-ti-mét để đo dài ngắn; đơn vị còn lại đo chất lỏng.",
+          "explain": "Lượng nước đo bằng lít; ki-lô-gam đo cân nặng, xăng-ti-mét đo độ dài.",
           "en": {
             "prompt": "To say how much water is in a bucket, which unit do we use?",
             "choices": [
               "lít (litre)",
               "ki-lô-gam (kilogram)",
               "xăng-ti-mét (centimetre)"
-            ]
+            ],
+            "guide": [
+              "Think about what is measured: water in a bucket is a liquid, and we want to know how much.",
+              "Remember each unit measures one thing: length, weight, or amount of liquid."
+            ],
+            "hint": "Kilograms are for weight and centimetres for length; the remaining unit is for liquids.",
+            "explain": "Amounts of water are measured in litres; kilograms measure weight and centimetres measure length."
           }
         },
         {
@@ -395,13 +539,25 @@
             "4 kg"
           ],
           "answer": 0,
+          "guide": [
+            "Túi đậu «nhẹ hơn» túi gạo 4 kg, nên lấy cân nặng túi gạo trừ đi 4.",
+            "Viết phép trừ 12 − 4 rồi ghi đơn vị kg sau kết quả."
+          ],
+          "hint": "12 bớt 2 còn 10, rồi bớt tiếp 2 nữa cho đủ 4 kg.",
+          "explain": "Túi đậu nặng 12 kg − 4 kg = 8 kg; 16 kg là cộng nhầm vì «nhẹ hơn» phải trừ, 4 kg chỉ là phần chênh lệch.",
           "en": {
             "prompt": "A bag of rice weighs 12 kg and a bag of beans is 4 kg lighter. How much does the bag of beans weigh?",
             "choices": [
               "8 kg",
               "16 kg",
               "4 kg"
-            ]
+            ],
+            "guide": [
+              "The beans are «4 kg lighter» than the rice, so take 4 away from the rice's weight.",
+              "Write 12 − 4, then put kg after the answer."
+            ],
+            "hint": "12 take away 2 is 10, then take another 2 to make up the 4 kg.",
+            "explain": "The beans weigh 12 kg − 4 kg = 8 kg; 16 kg adds by mistake, and 4 kg is only the difference."
           }
         }
       ],

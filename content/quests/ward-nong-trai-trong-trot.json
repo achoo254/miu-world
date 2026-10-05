@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Phép tính cần làm là 36 + 7, vì hái thêm thì số bắp tăng lên.",
+              "Tách 7 thành 4 và 3: 36 cộng 4 tròn 40, rồi cộng tiếp phần còn lại."
+            ],
+            "hint": "6 + 7 vượt quá 10 nên nhớ 1 sang hàng chục: 3 chục thành 4 chục.",
+            "answer": {
+              "text": "43",
+              "explanation": "36 + 7 = 43 vì 36 + 4 = 40, thêm 3 nữa là 43; chọn 33 là quên nhớ 1 sang hàng chục."
+            },
+            "en": {
+              "guide": [
+                "The sum is 36 + 7, because picking more makes the number of cobs go up.",
+                "Split 7 into 4 and 3: 36 plus 4 makes 40, then add what is left."
+              ],
+              "hint": "6 + 7 is more than 10, so carry 1 to the tens: 3 tens become 4 tens.",
+              "answer": {
+                "text": "43",
+                "explanation": "36 + 7 = 43 because 36 + 4 = 40 and 3 more makes 43; 33 forgets to carry the one."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Cộng số cà chua hai buổi: đặt 48 và 25 thẳng cột đơn vị, cột chục.",
+              "Cộng hàng đơn vị trước, 8 + 5, rồi mới cộng hàng chục."
+            ],
+            "hint": "8 + 5 = 13, viết 3 nhớ 1; hàng chục là 4 + 2 rồi cộng thêm 1 đã nhớ.",
+            "answer": {
+              "text": "73",
+              "explanation": "48 + 25 = 73: 8 + 5 = 13 viết 3 nhớ 1, 4 + 2 = 6 thêm 1 là 7; 63 là kết quả khi quên nhớ."
+            },
+            "en": {
+              "guide": [
+                "Add the two harvests: line up 48 and 25 with ones under ones and tens under tens.",
+                "Add the ones first, 8 + 5, and only then the tens."
+              ],
+              "hint": "8 + 5 = 13, write 3 and carry 1; for the tens do 4 + 2 and add the 1 you carried.",
+              "answer": {
+                "text": "73",
+                "explanation": "48 + 25 = 73: 8 + 5 = 13, write 3 carry 1, then 4 + 2 = 6 plus 1 is 7; 63 is what you get without carrying."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "59 chỉ thiếu 1 là tròn 60, nên lấy 1 từ số 6 bù vào 59.",
+              "Sau khi bù, cộng phần còn lại của số 6 vào 60."
+            ],
+            "hint": "6 = 1 + 5: 59 + 1 = 60, còn 5 cộng nốt vào 60.",
+            "answer": {
+              "text": "65",
+              "explanation": "59 + 6 = 65 vì 59 + 1 = 60, thêm 5 là 65; 515 là ghép các chữ số chứ không phải cộng."
+            },
+            "en": {
+              "guide": [
+                "59 is just 1 short of 60, so take 1 from the 6 to fill up 59.",
+                "After that, add the rest of the 6 to 60."
+              ],
+              "hint": "6 = 1 + 5: 59 + 1 = 60, then add the remaining 5 to 60.",
+              "answer": {
+                "text": "65",
+                "explanation": "59 + 6 = 65 because 59 + 1 = 60 and 5 more is 65; 515 just sticks the digits together instead of adding."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "«Chở về thêm» nghĩa là số bao tăng, nên làm phép cộng 27 + 35.",
+              "Cộng 7 + 5 ở hàng đơn vị, nhớ sang hàng chục nếu tổng từ 10 trở lên."
+            ],
+            "hint": "7 + 5 = 12, viết 2 nhớ 1; 2 chục cộng 3 chục rồi thêm 1 chục nhớ.",
+            "answer": {
+              "text": "62",
+              "explanation": "27 + 35 = 62: 7 + 5 = 12 viết 2 nhớ 1, 2 + 3 = 5 thêm 1 là 6; 8 là lấy hiệu chứ không phải tổng."
+            },
+            "en": {
+              "guide": [
+                "«Brings more» means the sacks go up, so the sum is 27 + 35.",
+                "Add 7 + 5 in the ones, and carry to the tens if it makes 10 or more."
+              ],
+              "hint": "7 + 5 = 12, write 2 carry 1; 2 tens plus 3 tens, then add the carried ten.",
+              "answer": {
+                "text": "62",
+                "explanation": "27 + 35 = 62: 7 + 5 = 12, write 2 carry 1, then 2 + 3 = 5 plus 1 is 6; 8 is the difference, not the total."
+              }
+            }
           }
         }
       ],

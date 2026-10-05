@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Đặt tính 38 + 27 cho thẳng cột: hàng đơn vị dưới hàng đơn vị, hàng chục dưới hàng chục.",
+              "Cộng hàng đơn vị trước, nhớ 1 sang hàng chục nếu tổng từ 10 trở lên."
+            ],
+            "hint": "8 + 7 = 15, viết 5 nhớ 1; hàng chục là 3 + 2 rồi thêm 1 đã nhớ.",
+            "answer": {
+              "text": "65",
+              "explanation": "38 + 27 = 65: 8 + 7 = 15 viết 5 nhớ 1, 3 + 2 + 1 = 6; 55 là quên số nhớ, còn 11 là phép trừ."
+            },
+            "en": {
+              "guide": [
+                "Write 38 + 27 in columns: ones under ones, tens under tens.",
+                "Add the ones first, carrying 1 to the tens if they make 10 or more."
+              ],
+              "hint": "8 + 7 = 15, write 5 and carry 1; the tens are 3 + 2 plus the 1 you carried.",
+              "answer": {
+                "text": "65",
+                "explanation": "38 + 27 = 65: 8 + 7 = 15, write 5 carry 1, then 3 + 2 + 1 = 6; 55 forgets the carry and 11 is a subtraction."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Số nến chưa thắp bằng tổng số nến bớt đi số nến đã thắp: đặt tính 72 − 45.",
+              "Hàng đơn vị 2 không trừ được 5, nên mượn 1 chục để có 12 rồi trừ."
+            ],
+            "hint": "12 − 5 = 7, viết 7 nhớ 1; hàng chục là 7 − (4 + 1).",
+            "answer": {
+              "text": "27",
+              "explanation": "72 − 45 = 27: 12 − 5 = 7 viết 7 nhớ 1, 4 + 1 = 5, 7 − 5 = 2; 37 là quên số nhớ, còn 117 là cộng nhầm."
+            },
+            "en": {
+              "guide": [
+                "Unlit candles are all the candles take away the lit ones: write 72 − 45 in columns.",
+                "In the ones, 2 can't take 5, so borrow a ten to make 12 and then subtract."
+              ],
+              "hint": "12 − 5 = 7, write 7 and carry 1; the tens are 7 − (4 + 1).",
+              "answer": {
+                "text": "27",
+                "explanation": "72 − 45 = 27: 12 − 5 = 7, carry 1, 4 + 1 = 5 and 7 − 5 = 2; 37 forgets the carry and 117 adds by mistake."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Hai bao nặng tất cả là phép cộng: 25 kg + 18 kg.",
+              "Cộng hàng đơn vị 5 + 8 trước, nhớ 1 sang hàng chục rồi cộng 2 + 1."
+            ],
+            "hint": "5 + 8 = 13, viết 3 nhớ 1; 2 + 1 thêm 1 nhớ là bao nhiêu chục?",
+            "answer": {
+              "text": "43 kg",
+              "explanation": "25 + 18 = 43 nên hai bao nặng 43 kg; 33 kg là quên nhớ 1, còn 7 kg là lấy 25 − 18."
+            },
+            "en": {
+              "guide": [
+                "The weight of both sacks together is an addition: 25 kg + 18 kg.",
+                "Add the ones 5 + 8 first, carry 1 to the tens, then add 2 + 1."
+              ],
+              "hint": "5 + 8 = 13, write 3 carry 1; how many tens do 2 + 1 plus the carried 1 make?",
+              "answer": {
+                "text": "43 kg",
+                "explanation": "25 + 18 = 43, so the two sacks weigh 43 kg; 33 kg forgets the carry and 7 kg works out 25 − 18."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Rót bớt nước ra thì lượng nước trong bình giảm đi: đây là phép trừ 12 − 5.",
+              "Tách 5 thành 2 và 3: lấy 12 trừ 2 trước cho tròn chục, rồi trừ tiếp 3."
+            ],
+            "hint": "12 − 2 = 10, rồi 10 − 3 = ?",
+            "answer": {
+              "text": "7 l",
+              "explanation": "12 − 5 = 7 (12 − 2 = 10, 10 − 3 = 7) nên bình còn 7 l; 17 l là cộng nhầm, 6 l là trừ thừa một lít."
+            },
+            "en": {
+              "guide": [
+                "Pouring water out makes less in the jug, so this is the subtraction 12 − 5.",
+                "Split 5 into 2 and 3: take 2 from 12 to reach ten, then take the other 3."
+              ],
+              "hint": "12 − 2 = 10, and then 10 − 3 = ?",
+              "answer": {
+                "text": "7 l",
+                "explanation": "12 − 5 = 7 (12 − 2 = 10, 10 − 3 = 7), so 7 l are left; 17 l adds by mistake and 6 l takes one litre too many."
+              }
+            }
           }
         }
       ],

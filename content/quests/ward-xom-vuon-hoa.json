@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Đọc ba lựa chọn và tự hỏi: từ nào nói em bé trông như thế nào?",
+              "Gạt ra từ chỉ việc làm và từ chỉ đồ vật, giữ lại từ tả dáng vẻ của em."
+            ],
+            "hint": "Từ tả em bé giúp ta hình dung em béo hay gầy, xinh xắn ra sao, chứ không gọi tên đồ dùng của em.",
+            "answer": {
+              "text": "bụ bẫm",
+              "explanation": "«Bụ bẫm» tả em bé béo tròn, mũm mĩm; «bế em» là việc làm, còn «cái nôi» là đồ vật."
+            },
+            "en": {
+              "guide": [
+                "Read the three choices and ask: which word says what the baby looks like?",
+                "Set aside the action word and the object word, and keep the word describing the baby."
+              ],
+              "hint": "A word that describes the baby helps you picture it, plump or thin, rather than naming its things.",
+              "answer": {
+                "text": "bụ bẫm (chubby)",
+                "explanation": "«Bụ bẫm» means chubby and describes the baby; «bế em» is an action and «cái nôi» is an object."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Xác định người được hỏi: bố của mẹ, tức là người bên họ của mẹ.",
+              "Nhớ cách gọi: họ bên bố là họ nội, còn họ bên mẹ thì gọi là gì?"
+            ],
+            "hint": "Bố của bố là ông nội; người được hỏi lại ở bên họ của mẹ em.",
+            "answer": {
+              "text": "ông ngoại",
+              "explanation": "Bố của mẹ thuộc họ ngoại nên gọi là «ông ngoại»; «ông nội» là bố của bố, còn «chú» là em trai của bố."
+            },
+            "en": {
+              "guide": [
+                "Work out who is meant: your mum's father, so someone on your mum's side.",
+                "Recall the names: dad's side is «họ nội», so what is mum's side called?"
+              ],
+              "hint": "Dad's father is «ông nội»; this grandfather belongs to your mum's side instead.",
+              "answer": {
+                "text": "ông ngoại (mum's dad)",
+                "explanation": "Mum's father is on the «họ ngoại» side, so he is «ông ngoại»; «ông nội» is dad's father and «chú» is dad's younger brother."
+              }
+            }
           }
         },
         {
@@ -159,6 +203,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Đọc to cả cụm «vườn hoa nở …ực rỡ» và nghe kĩ phụ âm đầu của tiếng còn thiếu.",
+              "Nhìn sang tiếng đứng cạnh trong cùng từ: từ láy thường lặp lại phụ âm đầu."
+            ],
+            "hint": "Đây là một từ láy, hai tiếng của nó mở đầu giống hệt nhau; hãy nhìn tiếng «rỡ».",
+            "answer": {
+              "text": "r",
+              "explanation": "Từ láy «rực rỡ» lặp phụ âm r ở cả hai tiếng, nghĩa là sáng tươi, nhiều màu; không viết «dực rỡ»."
+            },
+            "en": {
+              "guide": [
+                "Say «vườn hoa nở …ực rỡ» aloud and listen to the first sound of the missing syllable.",
+                "Look at the other syllable of the same word: reduplicated words often repeat their first consonant."
+              ],
+              "hint": "It is a reduplicated word whose two syllables start the same way; look at «rỡ».",
+              "answer": {
+                "text": "r",
+                "explanation": "«Rực rỡ» (bright, colourful) repeats r in both syllables, so it is never written «dực rỡ»."
+              }
+            }
           }
         },
         {
@@ -190,6 +256,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Nói to tên chiếc ghe đi trên sông, rồi tách riêng phần vần đứng sau âm «th».",
+              "Ghép lần lượt từng vần vào «con th…», đọc lên và chọn cách viết khớp với tiếng nói."
+            ],
+            "hint": "Đọc tên chiếc ghe, bạn thấy môi tròn lại ngay sau «th»: vần cần tìm có âm đệm u.",
+            "answer": {
+              "text": "uyên",
+              "explanation": "Ghép th với vần uyên và dấu huyền được «thuyền»; «thiền» là từ khác, còn yên không đứng ngay sau phụ âm."
+            },
+            "en": {
+              "guide": [
+                "Say the name of the river boat aloud, then split off the rhyme that comes after «th».",
+                "Try each rhyme in «con th…», read it out, and keep the spelling that matches what you hear."
+              ],
+              "hint": "As you say the boat's name your lips round just after «th», so the rhyme needs a glide u.",
+              "answer": {
+                "text": "uyên",
+                "explanation": "th + uyên with a falling tone makes «thuyền» (boat); «thiền» is another word, and yên never comes straight after a consonant."
+              }
+            }
           }
         }
       ],

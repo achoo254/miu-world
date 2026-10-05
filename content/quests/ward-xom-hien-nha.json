@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Hình dung mẹ ngồi bên em trong đêm hè nóng và tự hỏi mẹ đang làm gì.",
+              "Từ chỉ hoạt động trả lời câu hỏi «làm gì?», nên bỏ từ chỉ đồ vật và từ chỉ tính nết."
+            ],
+            "hint": "Thử đặt từng lựa chọn sau chữ «Mẹ…»: chỉ một lựa chọn thành việc mẹ làm bằng đôi tay.",
+            "answer": {
+              "text": "quạt mát",
+              "explanation": "«Quạt mát» là việc mẹ làm cho em ngủ ngon; «ngọn đèn» chỉ đồ vật, «dịu dàng» tả tính nết của mẹ."
+            },
+            "en": {
+              "guide": [
+                "Picture mum beside you on a hot summer night and ask what she is doing.",
+                "Action words answer «làm gì?» (doing what?), so drop the object word and the word about character."
+              ],
+              "hint": "Put each choice after «Mẹ…»: only one turns into something mum does with her hands.",
+              "answer": {
+                "text": "quạt mát (fans you cool)",
+                "explanation": "«Quạt mát» (fanning you cool) is what mum does; «ngọn đèn» is a thing and «dịu dàng» describes how gentle she is."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Đọc từng câu và hỏi: câu nào cho bà thấy em vui và trân trọng món quà?",
+              "Gạt bỏ câu đang hỏi chuyện khác và câu làm bà buồn lòng."
+            ],
+            "hint": "Lời biết ơn với người lớn có từ «cảm ơn» và tiếng «ạ» lễ phép ở cuối câu.",
+            "answer": {
+              "text": "Cháu cảm ơn bà ạ!",
+              "explanation": "«Cháu cảm ơn bà ạ!» vừa cảm ơn vừa lễ phép; «Quà này của ai?» là câu hỏi, «Cháu không thích.» làm bà buồn."
+            },
+            "en": {
+              "guide": [
+                "Read each sentence and ask: which one shows Grandma you are happy and grateful?",
+                "Rule out the sentence asking about something else and the one that would hurt her feelings."
+              ],
+              "hint": "Thanking an older person uses «cảm ơn» and ends with the polite «ạ».",
+              "answer": {
+                "text": "Cháu cảm ơn bà ạ! (Thank you, Grandma!)",
+                "explanation": "«Cháu cảm ơn bà ạ!» thanks Grandma politely; «Quà này của ai?» is a question and «Cháu không thích.» would upset her."
+              }
+            }
           }
         },
         {
@@ -159,6 +203,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Đọc «…ồi cơm mẹ nấu thơm phức» và nghĩ tới đồ dùng bằng nhôm để nấu cơm.",
+              "Nói chậm tên đồ dùng ấy, chú ý phụ âm đầu rồi chọn chữ ghi đúng âm đó."
+            ],
+            "hint": "Đồ dùng này có cùng phụ âm đầu với tiếng «nấu» đứng sau nó trong câu.",
+            "answer": {
+              "text": "n",
+              "explanation": "Viết «nồi cơm» với n, giống như «nấu»; «lồi» nghĩa là nhô ra, không phải đồ nấu cơm."
+            },
+            "en": {
+              "guide": [
+                "Read «…ồi cơm mẹ nấu thơm phức» and think of the kitchen pot that cooks rice.",
+                "Say that word slowly, listen to its first consonant, then choose the letter for it."
+              ],
+              "hint": "This pot starts with the same consonant as «nấu» (to cook), which comes later in the sentence.",
+              "answer": {
+                "text": "n",
+                "explanation": "It is «nồi cơm» (rice pot) with n, like «nấu»; «lồi» means bulging, not a cooking pot."
+              }
+            }
           }
         },
         {
@@ -185,6 +251,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Nghĩ tới đồ dùng bố cầm để gọt vỏ quả, rồi đọc to tên của nó.",
+              "Ghép d với từng vần, đọc «d…» lên và giữ cách đọc thành tiếng có nghĩa."
+            ],
+            "hint": "Đồ gọt quả này cùng vần với tiếng «cao» và tiếng «sao».",
+            "answer": {
+              "text": "ao",
+              "explanation": "Bố gọt quả bằng «con dao», vần ao; «dau» không thành tiếng có nghĩa trong tiếng Việt."
+            },
+            "en": {
+              "guide": [
+                "Think of what dad holds to peel fruit, then say its name aloud.",
+                "Join d to each rhyme, read «d…» out, and keep the one that makes a real word."
+              ],
+              "hint": "The peeling tool rhymes with «cao» (tall) and «sao» (star).",
+              "answer": {
+                "text": "ao",
+                "explanation": "Dad peels fruit with «con dao» (a knife), rhyme ao; «dau» is not a Vietnamese word."
+              }
+            }
           }
         }
       ],

@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Đọc chậm từng chữ trong mẩu giấy lấy ra từ chai thủy tinh.",
+              "Tìm trong lời ghi từ chỉ chỗ (ở, dưới, trên, trong) và vật đi liền sau nó."
+            ],
+            "hint": "Mẩu giấy nhắc tới một loài cây ven biển và một số thứ tự; hai chỗ kia không hề có trong giấy.",
+            "answer": {
+              "text": "dưới cây dừa thứ ba",
+              "explanation": "Giấy ghi rõ «Quà ở dưới cây dừa thứ ba», nên quà nằm dưới cây dừa thứ ba; đỉnh núi và hang đá không được nhắc tới."
+            },
+            "en": {
+              "guide": [
+                "Read the note from the glass bottle slowly, word by word.",
+                "Find the place word in it (under, on, in) and the thing that follows it."
+              ],
+              "hint": "The note names a seaside tree and an order number; the other two places never appear in it.",
+              "answer": {
+                "text": "under the third coconut tree",
+                "explanation": "The note plainly says «The gift is under the third coconut tree»; the mountain top and the cave are not mentioned."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "So hai số 58 và 85, bắt đầu từ chữ số hàng chục.",
+              "Số nào có chữ số hàng chục nhỏ hơn thì số đó bé hơn."
+            ],
+            "hint": "Một số có hàng chục là 5, số kia có hàng chục là 8; 5 chục ít hơn 8 chục.",
+            "answer": {
+              "text": "thuyền số 58",
+              "explanation": "58 có 5 chục, 85 có 8 chục, nên 58 < 85: thuyền số 58 mang số bé hơn; hai số chỉ đổi chỗ chữ số nên không bằng nhau."
+            },
+            "en": {
+              "guide": [
+                "Compare 58 and 85, starting with the tens digit.",
+                "The number with the smaller tens digit is the smaller number."
+              ],
+              "hint": "One number has 5 tens and the other has 8 tens; 5 tens are fewer than 8 tens.",
+              "answer": {
+                "text": "boat 58",
+                "explanation": "58 has 5 tens and 85 has 8 tens, so 58 < 85 and boat 58 has the smaller number; swapping digits does not make them equal."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Đặt tính 34 + 25 cho thẳng cột: đơn vị thẳng đơn vị, chục thẳng chục.",
+              "Cộng hàng đơn vị 4 + 5 trước, rồi cộng hàng chục 3 + 2."
+            ],
+            "hint": "Hàng đơn vị được 9, hàng chục được 5 chục; ghép lại thành một số có hai chữ số.",
+            "answer": {
+              "text": "59",
+              "explanation": "34 + 25 = 59 vì 4 + 5 = 9 đơn vị và 3 + 2 = 5 chục; 49 là quên mất một chục, còn 9 chỉ là hàng đơn vị."
+            },
+            "en": {
+              "guide": [
+                "Line up 34 + 25 in columns: ones under ones, tens under tens.",
+                "Add the ones, 4 + 5, first, then the tens, 3 + 2."
+              ],
+              "hint": "The ones come to 9 and the tens to 5 tens; put them together as a two-digit number.",
+              "answer": {
+                "text": "59",
+                "explanation": "34 + 25 = 59 because 4 + 5 = 9 ones and 3 + 2 = 5 tens; 49 drops a ten and 9 is only the ones digit."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Bắt đầu từ 8 con thuyền buổi sáng, tách 7 thành 2 và 5.",
+              "Cộng 8 với 2 cho đủ 10 rồi thêm phần thuyền còn lại."
+            ],
+            "hint": "8 con thuyền cần thêm 2 nữa mới tròn chục; sau đó còn 5 con thuyền chưa đếm.",
+            "answer": {
+              "text": "15",
+              "explanation": "8 + 7 = 15 vì 8 + 2 = 10, thêm 5 nữa là 15; 14 là đếm thiếu một thuyền, còn 1 là lấy 8 trừ 7 chứ không phải cộng."
+            },
+            "en": {
+              "guide": [
+                "Start from the 8 morning boats and split 7 into 2 and 5.",
+                "Add 2 to 8 to make 10, then add the boats that are left."
+              ],
+              "hint": "8 boats need 2 more to make a ten; after that 5 boats are still left to count.",
+              "answer": {
+                "text": "15",
+                "explanation": "8 + 7 = 15 because 8 + 2 = 10 and 5 more makes 15; 14 misses a boat and 1 comes from taking 7 away from 8."
+              }
+            }
           }
         }
       ],

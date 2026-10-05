@@ -44,13 +44,25 @@
             "trong hang đá"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc chậm từng chữ trong mẩu giấy lấy ra từ chai thủy tinh.",
+            "Tìm trong lời ghi từ chỉ chỗ (ở, dưới, trên, trong) và vật đi liền sau nó."
+          ],
+          "hint": "Mẩu giấy nhắc tới một loài cây ven biển và một số thứ tự; hai chỗ kia không hề có trong giấy.",
+          "explain": "Giấy ghi rõ «Quà ở dưới cây dừa thứ ba», nên quà nằm dưới cây dừa thứ ba; đỉnh núi và hang đá không được nhắc tới.",
           "en": {
             "prompt": "The note in the bottle says: «The gift is under the third coconut tree». Where is the gift?",
             "choices": [
               "under the third coconut tree",
               "on the mountain top",
               "in the rock cave"
-            ]
+            ],
+            "guide": [
+              "Read the note from the glass bottle slowly, word by word.",
+              "Find the place word in it (under, on, in) and the thing that follows it."
+            ],
+            "hint": "The note names a seaside tree and an order number; the other two places never appear in it.",
+            "explain": "The note plainly says «The gift is under the third coconut tree»; the mountain top and the cave are not mentioned."
           }
         },
         {
@@ -63,13 +75,25 @@
             "bằng nhau"
           ],
           "answer": 0,
+          "guide": [
+            "So hai số 58 và 85, bắt đầu từ chữ số hàng chục.",
+            "Số nào có chữ số hàng chục nhỏ hơn thì số đó bé hơn."
+          ],
+          "hint": "Một số có hàng chục là 5, số kia có hàng chục là 8; 5 chục ít hơn 8 chục.",
+          "explain": "58 có 5 chục, 85 có 8 chục, nên 58 < 85: thuyền số 58 mang số bé hơn; hai số chỉ đổi chỗ chữ số nên không bằng nhau.",
           "en": {
             "prompt": "Boats number 58 and 85 come in to the pier. Which boat has the smaller number?",
             "choices": [
               "boat 58",
               "boat 85",
               "they are equal"
-            ]
+            ],
+            "guide": [
+              "Compare 58 and 85, starting with the tens digit.",
+              "The number with the smaller tens digit is the smaller number."
+            ],
+            "hint": "One number has 5 tens and the other has 8 tens; 5 tens are fewer than 8 tens.",
+            "explain": "58 has 5 tens and 85 has 8 tens, so 58 < 85 and boat 58 has the smaller number; swapping digits does not make them equal."
           }
         },
         {
@@ -82,13 +106,25 @@
             "9"
           ],
           "answer": 0,
+          "guide": [
+            "Đặt tính 34 + 25 cho thẳng cột: đơn vị thẳng đơn vị, chục thẳng chục.",
+            "Cộng hàng đơn vị 4 + 5 trước, rồi cộng hàng chục 3 + 2."
+          ],
+          "hint": "Hàng đơn vị được 9, hàng chục được 5 chục; ghép lại thành một số có hai chữ số.",
+          "explain": "34 + 25 = 59 vì 4 + 5 = 9 đơn vị và 3 + 2 = 5 chục; 49 là quên mất một chục, còn 9 chỉ là hàng đơn vị.",
           "en": {
             "prompt": "Hồng Hạc picks up 34 shells and then 25 more. How many shells in all?",
             "choices": [
               "59",
               "49",
               "9"
-            ]
+            ],
+            "guide": [
+              "Line up 34 + 25 in columns: ones under ones, tens under tens.",
+              "Add the ones, 4 + 5, first, then the tens, 3 + 2."
+            ],
+            "hint": "The ones come to 9 and the tens to 5 tens; put them together as a two-digit number.",
+            "explain": "34 + 25 = 59 because 4 + 5 = 9 ones and 3 + 2 = 5 tens; 49 drops a ten and 9 is only the ones digit."
           }
         },
         {
@@ -101,13 +137,25 @@
             "1"
           ],
           "answer": 0,
+          "guide": [
+            "Bắt đầu từ 8 con thuyền buổi sáng, tách 7 thành 2 và 5.",
+            "Cộng 8 với 2 cho đủ 10 rồi thêm phần thuyền còn lại."
+          ],
+          "hint": "8 con thuyền cần thêm 2 nữa mới tròn chục; sau đó còn 5 con thuyền chưa đếm.",
+          "explain": "8 + 7 = 15 vì 8 + 2 = 10, thêm 5 nữa là 15; 14 là đếm thiếu một thuyền, còn 1 là lấy 8 trừ 7 chứ không phải cộng.",
           "en": {
             "prompt": "8 boats come in in the morning and 7 more in the afternoon. How many boats in all?",
             "choices": [
               "15",
               "14",
               "1"
-            ]
+            ],
+            "guide": [
+              "Start from the 8 morning boats and split 7 into 2 and 5.",
+              "Add 2 to 8 to make 10, then add the boats that are left."
+            ],
+            "hint": "8 boats need 2 more to make a ten; after that 5 boats are still left to count.",
+            "explain": "8 + 7 = 15 because 8 + 2 = 10 and 5 more makes 15; 14 misses a boat and 1 comes from taking 7 away from 8."
           }
         }
       ],
@@ -177,13 +225,25 @@
             "14"
           ],
           "answer": 0,
+          "guide": [
+            "Viết 46 và 32 thẳng cột rồi cộng từ hàng đơn vị.",
+            "Hàng đơn vị lấy 6 + 2, hàng chục lấy 4 + 3."
+          ],
+          "hint": "Kiểm tra: tổng phải lớn hơn 70, vì riêng 40 + 30 đã là 70 rồi.",
+          "explain": "46 + 32 = 78 vì 6 + 2 = 8 đơn vị và 4 + 3 = 7 chục; 68 thiếu mất một chục, còn 14 quá nhỏ so với hai số đã cho.",
           "en": {
             "prompt": "Báo counts 46 coconut trees and 32 banana trees. How many trees in all?",
             "choices": [
               "78",
               "68",
               "14"
-            ]
+            ],
+            "guide": [
+              "Write 46 and 32 in columns and add from the ones.",
+              "For the ones take 6 + 2, for the tens take 4 + 3."
+            ],
+            "hint": "Check: the total must be more than 70, since 40 + 30 is already 70.",
+            "explain": "46 + 32 = 78 because 6 + 2 = 8 ones and 4 + 3 = 7 tens; 68 is missing a ten and 14 is far too small."
           }
         },
         {
@@ -196,13 +256,25 @@
             "="
           ],
           "answer": 1,
+          "guide": [
+            "Xem số 63 bên trái và số 36 bên phải, so hàng chục trước.",
+            "Phía miệng mở của dấu quay về số lớn hơn, đầu nhọn chỉ vào số bé hơn."
+          ],
+          "hint": "63 có 6 chục, 36 chỉ có 3 chục; số bên trái lớn hơn hay bé hơn?",
+          "explain": "63 có 6 chục, nhiều hơn 3 chục của 36, nên 63 > 36; dấu = sai vì hai số chỉ đổi chỗ chữ số cho nhau.",
           "en": {
             "prompt": "Two rocks by the falls say 63 and 36. Which sign goes in 63 … 36?",
             "choices": [
               "<",
               ">",
               "="
-            ]
+            ],
+            "guide": [
+              "Look at 63 on the left and 36 on the right, and compare the tens first.",
+              "The open side of the sign faces the bigger number; the point faces the smaller one."
+            ],
+            "hint": "63 has 6 tens and 36 has only 3; is the left number bigger or smaller?",
+            "explain": "63 has 6 tens, more than the 3 tens of 36, so 63 > 36; = is wrong because the digits are only swapped."
           }
         },
         {
@@ -215,13 +287,25 @@
             "không ai được qua"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc tấm bảng gỗ: mỗi lần được bao nhiêu người lên cầu treo?",
+            "Ba bạn nhiều hơn số người cho phép, vậy phải chia thành mấy lượt qua cầu?"
+          ],
+          "hint": "Cách đúng vừa đưa được cả ba sang bờ bên kia, vừa không lượt nào quá hai người trên cầu.",
+          "explain": "Bảng chỉ cho hai người mỗi lần, nên hai bạn qua trước rồi một bạn qua sau; ba người cùng lúc là quá số, còn bảng không cấm ai qua.",
           "en": {
             "prompt": "The wooden sign says: «Only two people on the rope bridge at a time». How can three friends cross?",
             "choices": [
               "two go first, then one",
               "all three at once",
               "nobody may cross"
-            ]
+            ],
+            "guide": [
+              "Read the wooden sign: how many people may be on the rope bridge at once?",
+              "Three friends is more than allowed, so how many trips across do they need?"
+            ],
+            "hint": "The right plan gets all three across and never has more than two people on the bridge.",
+            "explain": "The sign allows two at a time, so two cross first and the third follows; three at once breaks the rule, and nobody is banned."
           }
         },
         {
@@ -234,13 +318,25 @@
             "81"
           ],
           "answer": 0,
+          "guide": [
+            "Đếm đá ở hai nơi: 9 tảng trên đỉnh thác, 9 tảng dưới chân thác.",
+            "Viết phép cộng 9 + 9, rồi làm tròn chục: 9 cộng 1 được 10."
+          ],
+          "hint": "Sau khi lấy 1 tảng để làm tròn 10, phía dưới còn 8 tảng chưa cộng.",
+          "explain": "9 + 9 = 18 vì 9 + 1 = 10, thêm 8 nữa là 18; 19 là cộng dư một tảng, còn 81 viết ngược hai chữ số của kết quả.",
           "en": {
             "prompt": "The waterfall has 9 rocks at the top and 9 at the bottom. How many rocks in all?",
             "choices": [
               "18",
               "19",
               "81"
-            ]
+            ],
+            "guide": [
+              "Count the rocks in both places: 9 at the top of the falls, 9 at the bottom.",
+              "Write 9 + 9, then make a ten: 9 plus 1 is 10."
+            ],
+            "hint": "After taking 1 rock to make 10, the bottom group still has 8 rocks to add.",
+            "explain": "9 + 9 = 18 because 9 + 1 = 10 and 8 more makes 18; 19 counts one rock too many and 81 has the digits flipped."
           }
         }
       ],
@@ -310,13 +406,25 @@
             "17"
           ],
           "answer": 0,
+          "guide": [
+            "So hàng chục của ba số 71, 17 và 70 trước.",
+            "Hai số có cùng hàng chục thì so tiếp hàng đơn vị."
+          ],
+          "hint": "17 chỉ có 1 chục nên bị loại; hai số còn lại cùng 7 chục, xem số nào có đơn vị lớn hơn.",
+          "explain": "71 và 70 cùng 7 chục nhưng 71 có 1 đơn vị, 70 có 0 đơn vị, nên 71 lớn nhất; 17 chỉ có 1 chục.",
           "en": {
             "prompt": "Three stone pillars say 71, 17 and 70. Which is the biggest number?",
             "choices": [
               "71",
               "70",
               "17"
-            ]
+            ],
+            "guide": [
+              "Compare the tens of 71, 17 and 70 first.",
+              "When two numbers share the same tens, compare their ones."
+            ],
+            "hint": "17 has only 1 ten, so drop it; the other two both have 7 tens, so check which has more ones.",
+            "explain": "71 and 70 both have 7 tens, but 71 has 1 one and 70 has none, so 71 is the biggest; 17 has just 1 ten."
           }
         },
         {
@@ -329,13 +437,25 @@
             "16"
           ],
           "answer": 0,
+          "guide": [
+            "Đặt 52 bậc dưới lên trên 36 bậc trên, hàng đơn vị thẳng hàng đơn vị.",
+            "Cộng 2 + 6 ở hàng đơn vị, rồi 5 + 3 ở hàng chục."
+          ],
+          "hint": "Không hàng nào phải nhớ; hàng chục của tổng lấy từ 5 + 3.",
+          "explain": "52 + 36 = 88 vì 2 + 6 = 8 đơn vị và 5 + 3 = 8 chục; 78 thiếu một chục, còn 16 là cộng dồn cả bốn chữ số.",
           "en": {
             "prompt": "The temple has 52 stone steps below and 36 above. How many steps in all?",
             "choices": [
               "88",
               "78",
               "16"
-            ]
+            ],
+            "guide": [
+              "Write the 52 lower steps above the 36 upper ones, ones under ones.",
+              "Add 2 + 6 in the ones, then 5 + 3 in the tens."
+            ],
+            "hint": "No column needs carrying; the tens of the total come from 5 + 3.",
+            "explain": "52 + 36 = 88 because 2 + 6 = 8 ones and 5 + 3 = 8 tens; 78 is a ten short and 16 adds all four digits together."
           }
         },
         {
@@ -348,13 +468,25 @@
             "mang đá về nhà"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc lời khắc trên bia đá và tìm việc mà «bạn của ngôi đền» làm.",
+            "Loại những việc làm hỏng đền hay lấy mất đồ của đền."
+          ],
+          "hint": "Lời khắc khen những người biết bảo vệ, chăm sóc nơi cổ kính này.",
+          "explain": "Bia ghi «Ai giữ gìn di tích là bạn của ngôi đền», nên lời khắc khuyên giữ gìn di tích; vẽ bậy hay mang đá về đều làm hỏng đền.",
           "en": {
             "prompt": "The stone tablet says: «Whoever looks after the ruins is a friend of the temple». What does it ask us to do?",
             "choices": [
               "look after the ruins",
               "draw on the temple walls",
               "take stones home"
-            ]
+            ],
+            "guide": [
+              "Read the tablet and find what a «friend of the temple» does.",
+              "Rule out anything that damages the temple or takes things away from it."
+            ],
+            "hint": "The carving praises people who protect and care for this ancient place.",
+            "explain": "The tablet calls whoever looks after the ruins a friend of the temple; drawing on walls or taking stones both harm it."
           }
         },
         {
@@ -367,13 +499,25 @@
             "2"
           ],
           "answer": 0,
+          "guide": [
+            "Cộng 6 viên ngọc đỏ với 8 viên ngọc xanh.",
+            "Bắt đầu từ số lớn hơn là 8, tách 6 thành 2 và 4 để làm tròn chục."
+          ],
+          "hint": "8 viên ngọc xanh thêm 2 viên ngọc đỏ là tròn 10, vẫn còn 4 viên đỏ.",
+          "explain": "6 + 8 = 14 vì 8 + 2 = 10, thêm 4 nữa là 14; 13 là đếm thiếu một viên, còn 2 là lấy 8 trừ 6.",
           "en": {
             "prompt": "Voi Đá lines up 6 red gems and 8 blue gems. How many gems in all?",
             "choices": [
               "14",
               "13",
               "2"
-            ]
+            ],
+            "guide": [
+              "Add the 6 red gems and the 8 blue gems.",
+              "Start from the bigger number, 8, and split 6 into 2 and 4 to make a ten."
+            ],
+            "hint": "8 blue gems plus 2 red ones make 10, with 4 red gems still to go.",
+            "explain": "6 + 8 = 14 because 8 + 2 = 10 and 4 more makes 14; 13 misses a gem and 2 is 8 take away 6."
           }
         },
         {
@@ -386,13 +530,25 @@
             "99"
           ],
           "answer": 0,
+          "guide": [
+            "Số liền sau là số đứng ngay sau, lớn hơn đúng 1 đơn vị.",
+            "Lấy 89 cộng thêm 1; để ý 9 đơn vị thêm 1 thành đủ một chục mới."
+          ],
+          "hint": "Sau 9 đơn vị là tròn chục, nên hàng chục của 89 tăng thêm 1 và hàng đơn vị về 0.",
+          "explain": "89 + 1 = 90 vì 9 đơn vị thêm 1 thành 1 chục, 8 chục thành 9 chục; 88 là số liền trước, còn 99 lớn hơn 89 tới 10.",
           "en": {
             "prompt": "The last pillar asks: which number comes right after 89?",
             "choices": [
               "90",
               "88",
               "99"
-            ]
+            ],
+            "guide": [
+              "The number that comes right after is exactly 1 more.",
+              "Add 1 to 89; note that 9 ones plus 1 make a whole new ten."
+            ],
+            "hint": "After 9 ones comes a full ten, so the tens of 89 go up by 1 and the ones go back to 0.",
+            "explain": "89 + 1 = 90 because 9 ones plus 1 make a ten and 8 tens become 9; 88 comes just before and 99 is 10 more than 89."
           }
         }
       ],

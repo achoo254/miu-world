@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Kim ngắn chỉ giờ, kim dài chỉ phút; xem kim ngắn đang chỉ số mấy.",
+              "Kim dài chỉ đúng số 12 nghĩa là giờ đúng, không có phút lẻ."
+            ],
+            "hint": "Đừng đọc số 12 của kim dài thành giờ; giờ lấy từ kim ngắn.",
+            "answer": {
+              "text": "3 giờ",
+              "explanation": "Kim ngắn chỉ 3, kim dài chỉ 12 nên đồng hồ chỉ đúng 3 giờ; 12 giờ thì kim ngắn phải chỉ số 12."
+            },
+            "en": {
+              "guide": [
+                "The short hand gives the hour and the long hand the minutes; which number is the short hand on?",
+                "A long hand exactly on 12 means a whole hour, no extra minutes."
+              ],
+              "hint": "Don't read the long hand's 12 as the hour; the hour comes from the short hand.",
+              "answer": {
+                "text": "3 o'clock",
+                "explanation": "The short hand is on 3 and the long hand on 12, so it's exactly 3 o'clock; at 12 o'clock the short hand points to 12."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Đọc dãy màu và tìm nhóm lặp lại: hai màu nối nhau rồi quay về màu đầu.",
+              "Chiếc cuối cùng đang là màu đỏ; trong nhóm lặp, sau đỏ là màu nào?"
+            ],
+            "hint": "Xanh chưa từng xuất hiện trong dây đèn, còn đỏ thì vừa có ở chiếc trước.",
+            "answer": {
+              "text": "vàng",
+              "explanation": "Dãy lặp đỏ, vàng, đỏ, vàng; chiếc thứ năm là đỏ nên chiếc thứ sáu là vàng; xanh không có trong quy luật."
+            },
+            "en": {
+              "guide": [
+                "Read the colours and find the repeating group: two colours, then back to the first.",
+                "The last lantern is red; in the repeating group, what comes after red?"
+              ],
+              "hint": "Blue never appears on the string, and red was the lantern just before.",
+              "answer": {
+                "text": "vàng (yellow)",
+                "explanation": "The pattern repeats red, yellow; the fifth lantern is red, so the sixth is yellow (vàng); blue isn't in it."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "«red» là từ tiếng Anh chỉ một màu; «lantern» là chiếc đèn lồng.",
+              "Nghĩ tới màu của lá cờ Tổ quốc hay quả ớt chín."
+            ],
+            "hint": "Màu xanh là «blue» hoặc «green», màu vàng là «yellow»; «red» không phải hai màu ấy.",
+            "answer": {
+              "text": "màu đỏ",
+              "explanation": "«red» nghĩa là màu đỏ, nên «red lantern» là đèn lồng đỏ; «yellow» mới là màu vàng."
+            },
+            "en": {
+              "guide": [
+                "«red» is a colour word and «lantern» is «đèn lồng».",
+                "Think of the colour of a ripe chilli or a fire engine."
+              ],
+              "hint": "«màu xanh» is blue or green and «màu vàng» is yellow, so it is neither.",
+              "answer": {
+                "text": "màu đỏ",
+                "explanation": "«red» is «màu đỏ» in Vietnamese, so a «red lantern» is «đèn lồng đỏ»; «màu vàng» is yellow."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Tìm mỗi vé hơn vé trước bao nhiêu: 10 − 5, 15 − 10…",
+              "Lấy số cuối là 20 cộng thêm đúng khoảng cách ấy."
+            ],
+            "hint": "Dãy vé này đếm thêm 5; 21 chỉ thêm 1, còn 30 thì thêm tới 10.",
+            "answer": {
+              "text": "25",
+              "explanation": "Mỗi vé hơn vé trước 5 đơn vị, nên sau 20 là 20 + 5 = 25."
+            },
+            "en": {
+              "guide": [
+                "Work out how much each ticket goes up by: 10 − 5, 15 − 10…",
+                "Add that same jump to the last number, 20."
+              ],
+              "hint": "The tickets count in fives; 21 adds only 1 and 30 adds 10.",
+              "answer": {
+                "text": "25",
+                "explanation": "Each ticket is 5 more than the one before, so after 20 comes 20 + 5 = 25."
+              }
+            }
           }
         }
       ],

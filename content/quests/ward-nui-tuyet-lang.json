@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Đọc lại lá thư, tìm chỗ thư dặn «nhớ mang» món gì.",
+              "Món cần mang phải hợp với trời có tuyết ngày mai."
+            ],
+            "hint": "Lời dặn nằm ngay sau chữ «mang» trong thư; đó là đồ đeo vào hai bàn tay.",
+            "answer": {
+              "text": "găng tay",
+              "explanation": "Thư dặn «nhớ mang găng tay» vì tuyết rơi rất rét; kem chống nắng và ô che mưa không được nhắc tới."
+            },
+            "en": {
+              "guide": [
+                "Read the letter again and find what it says to «remember».",
+                "The thing to bring must suit a snowy day tomorrow."
+              ],
+              "hint": "The reminder comes right after «remember» in the letter: something you wear on your hands.",
+              "answer": {
+                "text": "găng tay (gloves)",
+                "explanation": "The letter says «remember your gloves» because snow is freezing; sun cream and an umbrella are never mentioned."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Đọc từng từ và hỏi: từ nào là tên một đồ vật cầm, đeo hay quàng được?",
+              "Loại từ chỉ cảm giác thời tiết và từ chỉ một hoạt động trên dốc."
+            ],
+            "hint": "«Lạnh buốt» tả cảm giác, «trượt tuyết» là việc làm; chỉ còn một từ gọi tên đồ vật.",
+            "answer": {
+              "text": "khăn len",
+              "explanation": "«Khăn len» là đồ vật quàng quanh cổ cho ấm; «lạnh buốt» chỉ cảm giác, «trượt tuyết» chỉ hoạt động."
+            },
+            "en": {
+              "guide": [
+                "Read each word and ask: which one names a thing you can hold, wear or wrap?",
+                "Rule out the word for a feeling and the word for an activity on the slope."
+              ],
+              "hint": "«Lạnh buốt» describes a feeling and «trượt tuyết» is something you do; only one word names an object.",
+              "answer": {
+                "text": "khăn len (a woolly scarf)",
+                "explanation": "«Khăn len» is a woolly scarf you wrap round your neck; «lạnh buốt» is a feeling and «trượt tuyết» an activity."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Nhận thêm thư thì số thư tăng, nên tính 8 + 6.",
+              "Tách 6 thành 2 và 4 để 8 cộng 2 cho tròn 10 trước."
+            ],
+            "hint": "8 + 2 = 10, còn lại 4 lá thư cộng nốt vào 10.",
+            "answer": {
+              "text": "14",
+              "explanation": "8 + 6 = 14 vì 8 + 2 = 10, thêm 4 là 14; 2 là hiệu 8 − 6, không phải tổng."
+            },
+            "en": {
+              "guide": [
+                "Getting more letters makes the pile bigger, so work out 8 + 6.",
+                "Split 6 into 2 and 4 so that 8 plus 2 makes a round 10 first."
+              ],
+              "hint": "8 + 2 = 10, then add the other 4 letters to 10.",
+              "answer": {
+                "text": "14",
+                "explanation": "8 + 6 = 14 because 8 + 2 = 10 and 4 more is 14; 2 is 8 − 6, the difference, not the total."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Hai số 47 và 74 có cùng chữ số nhưng đổi chỗ, nên xem kỹ hàng chục.",
+              "Số nào có chữ số hàng chục lớn hơn thì số đó lớn hơn."
+            ],
+            "hint": "47 có 4 chục, 74 có 7 chục; 7 chục so với 4 chục thì thế nào?",
+            "answer": {
+              "text": "nhà số 74",
+              "explanation": "74 có 7 chục, 47 chỉ có 4 chục, nên nhà số 74 mang số lớn hơn; hai số không bằng nhau dù cùng chữ số."
+            },
+            "en": {
+              "guide": [
+                "47 and 74 use the same digits swapped round, so look closely at the tens.",
+                "The number with the bigger tens digit is the bigger number."
+              ],
+              "hint": "47 has 4 tens and 74 has 7 tens; how do 7 tens compare with 4 tens?",
+              "answer": {
+                "text": "house 74",
+                "explanation": "74 has 7 tens while 47 has only 4, so house 74 has the bigger number; same digits doesn't make them equal."
+              }
+            }
           }
         }
       ],

@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Đọc ba từ và hỏi: từ nào gọi tên một người, không phải đồ vật hay nơi chốn?",
+              "Loại từ chỉ món đồ chơi bay trên trời và từ chỉ một khoảng đất."
+            ],
+            "hint": "Từ chỉ người thường gọi theo nghề hay cách xưng hô, như cô giáo, chú bộ đội.",
+            "answer": {
+              "text": "bác nông dân",
+              "explanation": "«Bác nông dân» là người làm ruộng; «cánh diều» là đồ vật, «bãi cỏ» là nơi chốn."
+            },
+            "en": {
+              "guide": [
+                "Read the three words and ask: which names a person, not a thing or a place?",
+                "Rule out the toy that flies in the sky and the stretch of ground."
+              ],
+              "hint": "Words for people often name a job or how we address someone, like a teacher or a soldier.",
+              "answer": {
+                "text": "bác nông dân (the farmer)",
+                "explanation": "«bác nông dân» (the farmer) is a person who works the fields; «cánh diều» is a thing and «bãi cỏ» a place."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Đọc to từng câu bằng giọng tự nhiên như khi vừa nhìn thấy cầu vồng.",
+              "Câu nào cho thấy người nói bất ngờ, thích thú chứ không chỉ kể hay hỏi?"
+            ],
+            "hint": "Câu bày tỏ ngạc nhiên hay mở đầu bằng «Ôi», «A», «Ồ» và kết thúc bằng dấu chấm than.",
+            "answer": {
+              "text": "Ôi, cầu vồng đẹp quá!",
+              "explanation": "«Ôi, cầu vồng đẹp quá!» có tiếng «Ôi» và dấu chấm than nên thể hiện ngạc nhiên; hai câu kia là câu kể và câu hỏi."
+            },
+            "en": {
+              "guide": [
+                "Read each sentence aloud the way you would on spotting a rainbow.",
+                "Which one shows the speaker is surprised and delighted, not just telling or asking?"
+              ],
+              "hint": "Sentences of surprise often start with «Ôi», «A» or «Ồ» and end with an exclamation mark.",
+              "answer": {
+                "text": "Ôi, cầu vồng đẹp quá! (Oh, what a lovely rainbow!)",
+                "explanation": "«Ôi, cầu vồng đẹp quá!» has «Ôi» and an exclamation mark, so it shows surprise; the others tell and ask."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Đọc bảng chữ cái bắt đầu từ chữ K: k, l, rồi đọc tiếp.",
+              "Chữ cần tìm là chữ bạn đọc ngay sau L."
+            ],
+            "hint": "K đứng trước L, còn chữ cần tìm đứng sát ngay trước N.",
+            "answer": {
+              "text": "M",
+              "explanation": "Thứ tự là …k, l, m, n…, nên ngay sau L là M; N còn cách L một chữ, K thì đứng trước L."
+            },
+            "en": {
+              "guide": [
+                "Say the alphabet starting from K: k, l, then keep going.",
+                "The letter you want is the one you say straight after L."
+              ],
+              "hint": "K comes before L, and the letter you want sits right before N.",
+              "answer": {
+                "text": "M",
+                "explanation": "The order runs …k, l, m, n…, so M follows L; N is one letter further on and K comes before L."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Đọc ba câu về đàn vịt và tìm câu có một việc đàn vịt đang làm.",
+              "Gạt câu chỉ tả màu lông và câu chỉ nói đàn vịt là của ai."
+            ],
+            "hint": "Câu nêu hoạt động trả lời được câu hỏi «Đàn vịt đang làm gì?».",
+            "answer": {
+              "text": "Đàn vịt lạch bạch xuống sông.",
+              "explanation": "«Đàn vịt lạch bạch xuống sông.» kể việc đàn vịt đi xuống sông; «trắng muốt» tả màu lông, «của bà» chỉ người chủ."
+            },
+            "en": {
+              "guide": [
+                "Read the three sentences about the ducks and find one where they are doing something.",
+                "Set aside the sentence about their colour and the one saying whose ducks they are."
+              ],
+              "hint": "A sentence about an action answers «what are the ducks doing?»",
+              "answer": {
+                "text": "Đàn vịt lạch bạch xuống sông. (The ducks waddle into the river.)",
+                "explanation": "«Đàn vịt lạch bạch xuống sông.» tells of the ducks waddling into the river; «trắng muốt» is their colour and «của bà» says whose they are."
+              }
+            }
           }
         }
       ],

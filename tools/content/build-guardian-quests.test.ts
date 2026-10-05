@@ -91,6 +91,29 @@ describe('zone guardians', () => {
     expect(choiceOrder('x', 3)).toEqual(choiceOrder('x', 3));
   });
 
+  it("gives every question the table's Hướng dẫn, Gợi ý and explained Đáp án in both languages, the answer naming the right choice", () => {
+    const { quests } = buildGuardianQuests(tables, ctx);
+    let questions = 0;
+    for (const table of tables) {
+      for (const g of table.guardians) {
+        const boss = quests.find((q) => q.id === g.quest && q.status === 'active');
+        const step = boss?.status === 'active' ? boss.steps.find((s) => s.kind === 'boss') : undefined;
+        if (step?.kind !== 'boss') throw new Error(`${g.quest}: no boss`);
+        for (const turn of g.turns) {
+          const built = step.turns.find((t) => t.id === turn.id);
+          expect(built?.support, `${g.quest} ${turn.id}`).toEqual({
+            guide: turn.guide,
+            hint: turn.hint,
+            answer: { text: turn.choices[turn.answer], explanation: turn.explain },
+            en: { guide: turn.en.guide, hint: turn.en.hint, answer: { text: turn.en.choices[turn.answer], explanation: turn.en.explain } },
+          });
+          questions += 1;
+        }
+      }
+    }
+    expect(questions).toBeGreaterThanOrEqual(36 * GUARDIAN_TURNS.min);
+  });
+
   it('draws each guardian from lessons of its own map, and asks about the skills those lessons train', () => {
     for (const table of tables) {
       for (const g of table.guardians) {

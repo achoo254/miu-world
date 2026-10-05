@@ -44,13 +44,25 @@
             "xanh mướt"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc ba từ và hỏi: từ nào là tên một thứ cây hái về nấu ăn được?",
+            "Loại từ chỉ hoạt động (việc làm) và từ chỉ màu sắc, dáng vẻ."
+          ],
+          "hint": "Một từ là việc ta làm cho vườn rau, một từ tả màu lá; từ còn lại mới là tên sự vật.",
+          "explain": "«Bắp cải» là tên một loại rau, tức từ chỉ sự vật; «tưới nước» chỉ hoạt động, «xanh mướt» chỉ đặc điểm.",
           "en": {
             "prompt": "Which word names a vegetable growing in the home garden?",
             "choices": [
               "bắp cải (cabbage)",
               "tưới nước (water)",
               "xanh mướt (lush green)"
-            ]
+            ],
+            "guide": [
+              "Read the three words and ask which one names a plant you could pick and cook.",
+              "Rule out the word for an action and the word describing colour or look."
+            ],
+            "hint": "One word is something you do for the garden, one describes the leaves; the last one is a thing.",
+            "explain": "«Bắp cải» (cabbage) names a vegetable, a thing word; «tưới nước» is an action and «xanh mướt» a description."
           }
         },
         {
@@ -63,13 +75,25 @@
             "1"
           ],
           "answer": 0,
+          "guide": [
+            "Lấy 7 cây cải đang có, cộng thêm 6 cây Thỏ trồng mới.",
+            "Tách 6 thành 3 và 3 để 7 cộng 3 tròn một chục."
+          ],
+          "hint": "7 + 3 = 10, rồi còn 3 cây cải nữa phải cộng vào.",
+          "explain": "7 + 6 = 13 vì 7 + 3 = 10, thêm 3 nữa là 13; 12 là đếm thiếu một cây, còn 1 là lấy 7 trừ 6.",
           "en": {
             "prompt": "The bed has 7 mustard plants and Thỏ plants 6 more. How many plants in all?",
             "choices": [
               "13",
               "12",
               "1"
-            ]
+            ],
+            "guide": [
+              "Take the 7 mustard plants and add the 6 that Thỏ plants.",
+              "Split 6 into 3 and 3 so that 7 plus 3 makes a ten."
+            ],
+            "hint": "7 + 3 = 10, and there are still 3 more mustard plants to add.",
+            "explain": "7 + 6 = 13 because 7 + 3 = 10 and 3 more makes 13; 12 is one plant short and 1 is 7 take away 6."
           }
         },
         {
@@ -82,13 +106,25 @@
             "hai rổ bằng nhau"
           ],
           "answer": 0,
+          "guide": [
+            "Ghi số của từng rổ: cà chua 25 quả, cà rốt 52 củ.",
+            "So hàng chục của hai số để biết số nào lớn hơn."
+          ],
+          "hint": "25 có 2 chục, 52 có 5 chục; rổ nào ứng với số có 5 chục?",
+          "explain": "52 > 25 vì 5 chục nhiều hơn 2 chục, nên rổ cà rốt nhiều hơn; hai số dùng cùng chữ số nhưng không bằng nhau.",
           "en": {
             "prompt": "The tomato basket has 25 and the carrot basket has 52. Which basket has more?",
             "choices": [
               "the carrots",
               "the tomatoes",
               "they are the same"
-            ]
+            ],
+            "guide": [
+              "Write down each basket's count: 25 tomatoes, 52 carrots.",
+              "Compare the tens of the two numbers to see which is bigger."
+            ],
+            "hint": "25 has 2 tens and 52 has 5 tens; which basket goes with 5 tens?",
+            "explain": "52 > 25 because 5 tens beat 2 tens, so the carrot basket has more; using the same digits does not make them equal."
           }
         },
         {
@@ -101,13 +137,25 @@
             "tưới rau lúc nửa đêm"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc lời Mẹ dặn và tìm hai ý: việc cần làm và lúc phải làm.",
+            "Chọn đáp án khớp cả việc lẫn thời gian Mẹ nói."
+          ],
+          "hint": "Mẹ không bảo nhổ rau, và Mẹ nhắc việc ấy phải xong trước lúc trời sập tối.",
+          "explain": "Mẹ dặn tưới rau trước khi trời tối, nên chọn tưới rau trước khi tối; nửa đêm là quá muộn, còn nhổ rau thì Mẹ không dặn.",
           "en": {
             "prompt": "Mum says: «Water the vegetables before it gets dark this afternoon». What should the child do?",
             "choices": [
               "water them before dark",
               "pull up all the vegetables",
               "water them at midnight"
-            ]
+            ],
+            "guide": [
+              "Read Mum's words and find two parts: the job and when to do it.",
+              "Pick the answer that matches both the job and the time Mum gives."
+            ],
+            "hint": "Mum never asks to pull anything up, and the job must be done before nightfall.",
+            "explain": "Mum says to water the vegetables before it gets dark; midnight is far too late and pulling them up was never asked."
           }
         }
       ],
@@ -177,13 +225,25 @@
             "1"
           ],
           "answer": 0,
+          "guide": [
+            "Cộng 9 con vịt trong ao với 8 con vừa bơi tới.",
+            "Lấy 1 con trong 8 con vịt mới tới thêm vào 9 cho tròn 10."
+          ],
+          "hint": "9 + 1 = 10, phần còn lại của 8 con vịt là 7 con.",
+          "explain": "9 + 8 = 17 vì 9 + 1 = 10, thêm 7 nữa là 17; 16 là thiếu một con, còn 1 là lấy 9 trừ 8.",
           "en": {
             "prompt": "There are 9 ducks on the pond and 8 more swim over. How many ducks in all?",
             "choices": [
               "17",
               "16",
               "1"
-            ]
+            ],
+            "guide": [
+              "Add the 9 ducks on the pond and the 8 that swim over.",
+              "Move 1 of the 8 new ducks over to the 9 to make 10."
+            ],
+            "hint": "9 + 1 = 10, and what is left of the 8 ducks is 7.",
+            "explain": "9 + 8 = 17 because 9 + 1 = 10 and 7 more makes 17; 16 is a duck short and 1 is 9 take away 8."
           }
         },
         {
@@ -196,13 +256,25 @@
             "="
           ],
           "answer": 0,
+          "guide": [
+            "So 39 ở bên trái với 93 ở bên phải, bắt đầu từ hàng chục.",
+            "Đầu nhọn của dấu luôn chỉ về phía số bé hơn."
+          ],
+          "hint": "39 chỉ có 3 chục còn 93 có tới 9 chục; số bên trái bé hơn hay lớn hơn?",
+          "explain": "39 có 3 chục, ít hơn 9 chục của 93, nên 39 < 93; dấu > hay dấu = đều sai.",
           "en": {
             "prompt": "Two floats are numbered 39 and 93. Which sign goes in 39 … 93?",
             "choices": [
               "<",
               ">",
               "="
-            ]
+            ],
+            "guide": [
+              "Compare 39 on the left with 93 on the right, starting with the tens.",
+              "The pointed end of the sign always points at the smaller number."
+            ],
+            "hint": "39 has just 3 tens while 93 has 9 tens; is the left number smaller or bigger?",
+            "explain": "39 has 3 tens, fewer than the 9 tens of 93, so 39 < 93; the signs > and = are both wrong."
           }
         },
         {
@@ -215,13 +287,25 @@
             "mát rượi"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc ba từ, tìm từ gọi tên một vật cầm được, mang theo được.",
+            "Gạt ra từ chỉ hoạt động và từ chỉ cảm giác."
+          ],
+          "hint": "Một từ là việc ta làm dưới nước, một từ tả cảm giác mát; từ còn lại là đồ dùng để bắt cá.",
+          "explain": "«Cần câu» là đồ vật dùng để câu cá, mang ra cầu tàu được; «bơi lội» là hoạt động, «mát rượi» là cảm giác.",
           "en": {
             "prompt": "Which word names a thing people bring to the jetty?",
             "choices": [
               "cần câu (fishing rod)",
               "bơi lội (swim)",
               "mát rượi (refreshingly cool)"
-            ]
+            ],
+            "guide": [
+              "Read the three words and find the one naming something you can hold and carry.",
+              "Set aside the word for an activity and the word for a feeling."
+            ],
+            "hint": "One word is something you do in water, one describes feeling cool; the last is a tool for catching fish.",
+            "explain": "«Cần câu» (fishing rod) is an object you carry to the jetty; «bơi lội» is an activity and «mát rượi» a feeling."
           }
         },
         {
@@ -234,13 +318,25 @@
             "vì cầu vừa sơn"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc tấm biển rồi nghĩ: cầu tàu nằm ở đâu, bên dưới có gì?",
+            "Chạy nhảy trên chỗ hẹp, sát mặt nước thì dễ xảy ra chuyện gì?"
+          ],
+          "hint": "Lời biển nhắc để giữ an toàn cho người đi trên cầu, không phải vì cá hay vì nước sơn.",
+          "explain": "Cầu tàu hẹp và nằm ngay trên mặt ao, chạy nhảy dễ trượt chân, nên nhớ lời biển để không ngã xuống ao.",
           "en": {
             "prompt": "The sign on the jetty says: «No running or jumping on the jetty». Why remember it?",
             "choices": [
               "so you don't fall in the pond",
               "so the fish can sleep",
               "because it was just painted"
-            ]
+            ],
+            "guide": [
+              "Read the sign, then think: where is the jetty and what lies beneath it?",
+              "What could happen if you run and jump on a narrow spot right over the water?"
+            ],
+            "hint": "The sign is about keeping people on the jetty safe, not about fish or fresh paint.",
+            "explain": "The jetty is narrow and right over the pond, so running or jumping can make you slip and fall into the water."
           }
         }
       ],
@@ -310,13 +406,25 @@
             "4"
           ],
           "answer": 0,
+          "guide": [
+            "Cộng 5 quả trứng hôm qua với 9 quả hôm nay.",
+            "Đổi chỗ cho dễ tính: 9 + 5, rồi lấy 1 quả từ 5 cho 9 tròn chục."
+          ],
+          "hint": "9 thêm 1 là 10, 5 quả bớt 1 còn 4 quả chưa cộng.",
+          "explain": "5 + 9 = 14 vì 9 + 1 = 10, thêm 4 là 14; 13 thiếu một quả, còn 4 là lấy 9 trừ 5.",
           "en": {
             "prompt": "Gà Mơ laid 5 eggs yesterday and 9 today. How many eggs in all?",
             "choices": [
               "14",
               "13",
               "4"
-            ]
+            ],
+            "guide": [
+              "Add yesterday's 5 eggs and today's 9.",
+              "Swap them to make it easy: 9 + 5, then move 1 egg from the 5 to make 10."
+            ],
+            "hint": "9 plus 1 is 10, and the 5 eggs minus 1 leave 4 still to add.",
+            "explain": "5 + 9 = 14 because 9 + 1 = 10 and 4 more makes 14; 13 is an egg short and 4 is 9 take away 5."
           }
         },
         {
@@ -329,13 +437,25 @@
             "48"
           ],
           "answer": 0,
+          "guide": [
+            "Xem hàng chục của ba ổ rơm 48, 84 và 80.",
+            "Nếu có hai số cùng hàng chục, so tiếp đến hàng đơn vị."
+          ],
+          "hint": "48 chỉ có 4 chục; hai số kia cùng 8 chục, số nào có đơn vị nhiều hơn?",
+          "explain": "84 và 80 cùng 8 chục nhưng 84 có 4 đơn vị, 80 không có, nên 84 lớn nhất; 48 chỉ có 4 chục.",
           "en": {
             "prompt": "Three straw nests are numbered 48, 84 and 80. Which is the biggest number?",
             "choices": [
               "84",
               "80",
               "48"
-            ]
+            ],
+            "guide": [
+              "Look at the tens of the three straw nests: 48, 84 and 80.",
+              "If two numbers share the same tens, go on to compare the ones."
+            ],
+            "hint": "48 has only 4 tens; the other two both have 8 tens, so which has more ones?",
+            "explain": "84 and 80 both have 8 tens, but 84 has 4 ones and 80 has none, so 84 is the biggest; 48 has only 4 tens."
           }
         },
         {
@@ -348,13 +468,25 @@
             "cục tác"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc ba từ và tìm từ gọi tên một con vật biết đi, biết kêu.",
+            "Gạt ra từ chỉ đồ vật và từ chỉ tiếng kêu."
+          ],
+          "hint": "«Cái ổ» là chỗ nằm, «cục tác» là tiếng kêu; chỉ một từ là tên con vật.",
+          "explain": "«Con gà» là tên con vật nuôi trong nhà; «cái ổ» là đồ vật, «cục tác» là tiếng gà kêu.",
           "en": {
             "prompt": "Which word names an animal kept at home?",
             "choices": [
               "con gà (a hen)",
               "cái ổ (a nest)",
               "cục tác (cluck)"
-            ]
+            ],
+            "guide": [
+              "Read the three words and find the one naming a living creature that walks and calls.",
+              "Set aside the word for an object and the word for a sound."
+            ],
+            "hint": "«Cái ổ» is a place to lie in and «cục tác» is a sound; only one word names an animal.",
+            "explain": "«Con gà» (a hen) names an animal kept at home; «cái ổ» is an object and «cục tác» is the hen's cluck."
           }
         },
         {
@@ -367,13 +499,25 @@
             "đi ngủ ngay"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc lời Bà dặn, tìm việc đi liền sau chữ «xong».",
+            "Chọn việc giữ cho đàn gà an toàn sau khi đã nhặt trứng."
+          ],
+          "hint": "Bà dặn làm một việc với cái cửa, để gà khỏi chạy mất.",
+          "explain": "Bà dặn «Nhặt trứng xong nhớ đóng cửa chuồng», nên sau đó phải đóng cửa chuồng; mở toang cửa thì gà chạy mất.",
           "en": {
             "prompt": "Grandma says: «After collecting the eggs, remember to shut the coop». What does the child do after collecting the eggs?",
             "choices": [
               "shut the coop",
               "open the coop wide",
               "go straight to bed"
-            ]
+            ],
+            "guide": [
+              "Read Grandma's words and find the job that comes after collecting the eggs.",
+              "Pick the action that keeps the hens safe once the eggs are in."
+            ],
+            "hint": "Grandma asks for something to be done with the coop door so the hens don't run off.",
+            "explain": "Grandma says to shut the coop after collecting the eggs; leaving it wide open would let the hens out."
           }
         },
         {
@@ -386,13 +530,25 @@
             "5"
           ],
           "answer": 0,
+          "guide": [
+            "Lấy 12 hạt thóc đang có, cộng 7 hạt bà cho thêm.",
+            "Giữ nguyên 1 chục của 12, chỉ cộng hàng đơn vị 2 + 7."
+          ],
+          "hint": "2 + 7 = 9 đơn vị, ghép với 1 chục đã có sẵn.",
+          "explain": "12 + 7 = 19 vì 2 + 7 = 9 đơn vị, giữ nguyên 1 chục; 18 thiếu một hạt, còn 5 là lấy 12 trừ 7.",
           "en": {
             "prompt": "The child has 12 grains of rice and Grandma gives 7 more for the hens. How many grains now?",
             "choices": [
               "19",
               "18",
               "5"
-            ]
+            ],
+            "guide": [
+              "Take the 12 grains and add the 7 more that Grandma gives.",
+              "Keep the 1 ten of 12 and add only the ones, 2 + 7."
+            ],
+            "hint": "2 + 7 = 9 ones, joined to the ten you already have.",
+            "explain": "12 + 7 = 19 because 2 + 7 = 9 ones and the ten stays; 18 is a grain short and 5 is 12 take away 7."
           }
         }
       ],

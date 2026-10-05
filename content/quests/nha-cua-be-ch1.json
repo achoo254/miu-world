@@ -270,7 +270,29 @@
             { "id": "b", "text": "16 quả" },
             { "id": "c", "text": "17 quả" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Cộng 9 quả trứng gà trong bếp với 7 quả Mẹ nhặt thêm.",
+              "Lấy 1 quả từ 7 quả bù cho 9 thành 10 quả."
+            ],
+            "hint": "Sau khi tròn 10, trong 7 quả Mẹ nhặt còn lại 6 quả chưa cộng.",
+            "answer": {
+              "text": "16 quả",
+              "explanation": "9 + 7 = 16 vì 9 + 1 = 10, thêm 6 nữa là 16; 15 và 17 đều lệch đi một quả trứng."
+            },
+            "en": {
+              "guide": [
+                "Add the 9 eggs in the kitchen to the 7 that Mum brings in.",
+                "Take 1 egg from the 7 to turn the 9 into 10."
+              ],
+              "hint": "Once you have 10, there are 6 of Mum's 7 eggs left to add.",
+              "answer": {
+                "text": "16 eggs",
+                "explanation": "9 + 7 = 16 because 9 + 1 = 10 and 6 more makes 16; 15 and 17 are each one egg off."
+              }
+            }
+          }
         },
         {
           "id": "b2",
@@ -282,7 +304,29 @@
             { "id": "b", "text": "12 con" },
             { "id": "c", "text": "13 con" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Từ 18 con cá rô trong xô, bớt đi 6 con Mẹ mang đi nấu canh.",
+              "Giữ nguyên 1 chục, chỉ trừ hàng đơn vị 8 - 6."
+            ],
+            "hint": "8 - 6 = 2 đơn vị, còn chục của 18 vẫn nguyên trong xô.",
+            "answer": {
+              "text": "12 con",
+              "explanation": "18 - 6 = 12 vì 8 - 6 = 2, giữ 1 chục là 12; thử lại 12 + 6 = 18 là đúng."
+            },
+            "en": {
+              "guide": [
+                "From the 18 climbing perch in the bucket, take away the 6 Mum cooks in soup.",
+                "Keep the 1 ten and subtract only the ones: 8 - 6."
+              ],
+              "hint": "8 - 6 = 2 ones, and the ten of 18 is still in the bucket.",
+              "answer": {
+                "text": "12 fish",
+                "explanation": "18 - 6 = 12 because 8 - 6 = 2 and the ten stays; check it: 12 + 6 = 18."
+              }
+            }
+          }
         },
         {
           "id": "b3",
@@ -294,7 +338,29 @@
             { "id": "b", "text": "Giỏ B nhiều hơn" },
             { "id": "c", "text": "Hai giỏ bằng nhau" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Ghi số dâu của hai giỏ: giỏ A 65 quả, giỏ B 56 quả.",
+              "Hai số dùng cùng chữ số 5 và 6, nên hãy so hàng chục trước."
+            ],
+            "hint": "65 có 6 chục, 56 chỉ có 5 chục; chục nhiều hơn thì số lớn hơn.",
+            "answer": {
+              "text": "Giỏ A nhiều hơn",
+              "explanation": "65 > 56 vì 6 chục nhiều hơn 5 chục, nên giỏ A nhiều dâu hơn; cùng chữ số không có nghĩa là bằng nhau."
+            },
+            "en": {
+              "guide": [
+                "Note the strawberries in each basket: 65 in A, 56 in B.",
+                "Both numbers use the digits 5 and 6, so compare the tens first."
+              ],
+              "hint": "65 has 6 tens and 56 has only 5; more tens means a bigger number.",
+              "answer": {
+                "text": "Basket A has more (65 strawberries)",
+                "explanation": "65 > 56 because 6 tens beat 5 tens, so basket A has more strawberries; sharing digits does not make them equal."
+              }
+            }
+          }
         },
         {
           "id": "b4",
@@ -306,7 +372,29 @@
             { "id": "b", "text": "12" },
             { "id": "c", "text": "13" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Xem mỗi bước dãy số giảm đi bao nhiêu: 20 xuống 18, 18 xuống 16.",
+              "Lấy số cuối là 14 trừ đi đúng khoảng ấy."
+            ],
+            "hint": "Dãy lùi 2 mỗi bước, giống đếm lùi qua các số chẵn.",
+            "answer": {
+              "text": "12",
+              "explanation": "Mỗi bước bớt 2 nên 14 - 2 = 12; 13 chỉ bớt 1, còn 11 là bớt tới 3."
+            },
+            "en": {
+              "guide": [
+                "See how much the pattern drops each step: 20 to 18, 18 to 16.",
+                "Take that same amount away from the last number, 14."
+              ],
+              "hint": "The pattern goes down by 2 each time, like counting back in even numbers.",
+              "answer": {
+                "text": "12",
+                "explanation": "Each step takes away 2, so 14 - 2 = 12; 13 takes away only 1 and 11 takes away 3."
+              }
+            }
+          }
         },
         {
           "id": "b5",
@@ -318,7 +406,29 @@
             { "id": "b", "text": "Bữa tiệc nửa đêm" },
             { "id": "c", "text": "Bữa điểm tâm sáng sớm" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Nhớ lại lời Mèo Bánh Bao kể lúc đầu: chiều nay cả nhà nấu gì để đón {name}?",
+              "Để ý chữ «chiều nay» trong câu hỏi rồi loại các bữa diễn ra vào giờ khác."
+            ],
+            "hint": "Mẹ nhặt trứng, Bố xếp đồ, cả nhà đếm cá: tất cả để nấu một bữa ăn vào buổi chiều.",
+            "answer": {
+              "text": "Bữa cơm chiều gia đình",
+              "explanation": "Cả nhà nấu bữa cơm chiều để đón {name}, khớp với chữ «chiều nay»; tiệc nửa đêm và điểm tâm sáng sớm đều sai giờ."
+            },
+            "en": {
+              "guide": [
+                "Recall what Mèo Bánh Bao said at the start: what is the family cooking this afternoon?",
+                "Notice «this afternoon» in the question and rule out meals at other times."
+              ],
+              "hint": "Mum gathers eggs, Dad sorts the shed, everyone counts fish: all for one meal later today.",
+              "answer": {
+                "text": "The family dinner (bữa cơm chiều gia đình)",
+                "explanation": "The whole family cooks an afternoon meal to welcome {name}; a midnight party and an early breakfast are at the wrong time."
+              }
+            }
+          }
         }
       ]
     },

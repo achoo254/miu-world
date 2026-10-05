@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Nhớ cách cân đĩa hoạt động: vật nặng hơn kéo đĩa của nó xuống thấp.",
+              "Đọc lại đề xem quả nào nặng hơn, rồi tìm đĩa đặt quả đó."
+            ],
+            "hint": "Đề đã nói dưa hấu nặng hơn cam, nên hai đĩa không thể cân bằng.",
+            "answer": {
+              "text": "đĩa có dưa hấu",
+              "explanation": "Dưa hấu nặng hơn nên đĩa có dưa hấu thấp xuống, còn đĩa có quả cam nhẹ hơn thì nâng lên."
+            },
+            "en": {
+              "guide": [
+                "Recall how balance scales work: the heavier object pulls its pan down.",
+                "Reread which fruit is heavier, then find the pan holding that fruit."
+              ],
+              "hint": "The question says the watermelon outweighs the orange, so the pans cannot stay level.",
+              "answer": {
+                "text": "the watermelon's pan",
+                "explanation": "The watermelon is heavier, so its pan sinks while the lighter orange's pan rises."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Tìm cân nặng cả hai bao: cộng 5 kg với 3 kg.",
+              "Cộng các số như thường rồi nhớ viết đơn vị kg sau kết quả."
+            ],
+            "hint": "Đếm thêm ba bước từ 5 rồi ghi kg phía sau kết quả.",
+            "answer": {
+              "text": "8 kg",
+              "explanation": "5 kg + 3 kg = 8 kg; 2 kg là lấy 5 trừ 3, còn 53 kg là viết ghép hai số cạnh nhau."
+            },
+            "en": {
+              "guide": [
+                "To find what both bags weigh, add 5 kg and 3 kg.",
+                "Add the numbers as usual, then remember to write kg after the answer."
+              ],
+              "hint": "Count on three steps from 5, then write kg after the result.",
+              "answer": {
+                "text": "8 kg",
+                "explanation": "5 kg + 3 kg = 8 kg; 2 kg is 5 minus 3, and 53 kg just puts the two numbers side by side."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Rót ra 4 l nghĩa là dầu trong can ít đi: làm phép trừ 10 − 4.",
+              "Tính xong nhớ ghi đơn vị lít, viết tắt là l, sau số vừa tìm."
+            ],
+            "hint": "Đếm lùi từ 10 bốn bước, mỗi bước là một lít dầu được rót ra.",
+            "answer": {
+              "text": "6 l",
+              "explanation": "10 l − 4 l = 6 l vì 4 + 6 = 10; 14 l là cộng nhầm, còn 5 l là bớt thừa một lít."
+            },
+            "en": {
+              "guide": [
+                "Pouring out 4 l leaves less oil in the can: subtract 10 − 4.",
+                "When you have the number, write the unit for litres, l, after it."
+              ],
+              "hint": "Count back four steps from 10, one litre of oil poured out per step.",
+              "answer": {
+                "text": "6 l",
+                "explanation": "10 l − 4 l = 6 l because 4 + 6 = 10; 14 l adds by mistake and 5 l takes away one litre too many."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Nghĩ xem ta đang đo gì: nước trong xô là chất lỏng, ta muốn biết nhiều hay ít.",
+              "Nhớ mỗi đơn vị đo một thứ: độ dài, cân nặng, hay lượng chất lỏng."
+            ],
+            "hint": "Ki-lô-gam để cân nặng nhẹ, xăng-ti-mét để đo dài ngắn; đơn vị còn lại đo chất lỏng.",
+            "answer": {
+              "text": "lít",
+              "explanation": "Lượng nước đo bằng lít; ki-lô-gam đo cân nặng, xăng-ti-mét đo độ dài."
+            },
+            "en": {
+              "guide": [
+                "Think about what is measured: water in a bucket is a liquid, and we want to know how much.",
+                "Remember each unit measures one thing: length, weight, or amount of liquid."
+              ],
+              "hint": "Kilograms are for weight and centimetres for length; the remaining unit is for liquids.",
+              "answer": {
+                "text": "lít (litre)",
+                "explanation": "Amounts of water are measured in litres; kilograms measure weight and centimetres measure length."
+              }
+            }
           }
         },
         {
@@ -226,6 +314,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Túi đậu «nhẹ hơn» túi gạo 4 kg, nên lấy cân nặng túi gạo trừ đi 4.",
+              "Viết phép trừ 12 − 4 rồi ghi đơn vị kg sau kết quả."
+            ],
+            "hint": "12 bớt 2 còn 10, rồi bớt tiếp 2 nữa cho đủ 4 kg.",
+            "answer": {
+              "text": "8 kg",
+              "explanation": "Túi đậu nặng 12 kg − 4 kg = 8 kg; 16 kg là cộng nhầm vì «nhẹ hơn» phải trừ, 4 kg chỉ là phần chênh lệch."
+            },
+            "en": {
+              "guide": [
+                "The beans are «4 kg lighter» than the rice, so take 4 away from the rice's weight.",
+                "Write 12 − 4, then put kg after the answer."
+              ],
+              "hint": "12 take away 2 is 10, then take another 2 to make up the 4 kg.",
+              "answer": {
+                "text": "8 kg",
+                "explanation": "The beans weigh 12 kg − 4 kg = 8 kg; 16 kg adds by mistake, and 4 kg is only the difference."
+              }
+            }
           }
         }
       ],

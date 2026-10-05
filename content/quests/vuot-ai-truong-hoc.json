@@ -217,7 +217,29 @@
             { "id": "b", "text": "8 chục và 5 đơn vị" },
             { "id": "c", "text": "58 chục" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Chữ số bên trái của 58 ở hàng chục, chữ số bên phải ở hàng đơn vị.",
+              "Đọc từng chữ số theo hàng của nó rồi ghép thành câu trả lời."
+            ],
+            "hint": "Số 58 đọc là năm mươi tám: «năm mươi» cho biết số chục.",
+            "answer": {
+              "text": "5 chục và 8 đơn vị",
+              "explanation": "58 = 50 + 8, tức 5 chục và 8 đơn vị; «8 chục và 5 đơn vị» là số 85."
+            },
+            "en": {
+              "guide": [
+                "In 58 the left digit is in the tens place and the right digit in the ones place.",
+                "Read each digit by its place and put the two together."
+              ],
+              "hint": "58 is read «năm mươi tám» (fifty-eight): the «fifty» tells you the tens.",
+              "answer": {
+                "text": "5 tens and 8 ones (5 chục và 8 đơn vị)",
+                "explanation": "58 = 50 + 8, so 5 tens and 8 ones; 8 tens and 5 ones would be 85."
+              }
+            }
+          }
         },
         {
           "id": "lien-sau",
@@ -228,7 +250,29 @@
             { "id": "b", "text": "70" },
             { "id": "c", "text": "79" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Muốn tìm số liền sau, nhảy thêm đúng một vạch về bên phải từ 69 trên tia số.",
+              "Khi hàng đơn vị là 9, thêm 1 sẽ tròn chục và hàng chục tăng lên một."
+            ],
+            "hint": "Đếm tiếp: sáu mươi bảy, sáu mươi tám, sáu mươi chín, rồi tới số tròn chục nào?",
+            "answer": {
+              "text": "70",
+              "explanation": "69 + 1 = 70 vì 9 đơn vị thêm 1 thành một chục, 6 chục thành 7 chục; 68 là số liền trước, 79 hơn 69 tới 10."
+            },
+            "en": {
+              "guide": [
+                "To find the next number, hop exactly one mark to the right of 69 on the number line.",
+                "When the ones digit is 9, adding 1 makes a round ten and the tens go up by one."
+              ],
+              "hint": "Count on: sixty-seven, sixty-eight, sixty-nine, then which round ten?",
+              "answer": {
+                "text": "70",
+                "explanation": "69 + 1 = 70: nine ones plus one make a ten, so 6 tens become 7; 68 comes before, and 79 is 10 more."
+              }
+            }
+          }
         },
         {
           "id": "ten-tong",
@@ -239,7 +283,29 @@
             { "id": "b", "text": "Tổng" },
             { "id": "c", "text": "Hiệu" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Dấu + giữa 32 và 15 cho biết đây là một phép cộng.",
+              "Hai số được cộng là số hạng; nhớ tên của kết quả đứng sau dấu =."
+            ],
+            "hint": "Tên «hiệu» chỉ dành cho kết quả của phép trừ, nên loại nó ra trước.",
+            "answer": {
+              "text": "Tổng",
+              "explanation": "Trong 32 + 15 = 47, 32 và 15 là số hạng, còn 47 là tổng; hiệu là kết quả của phép trừ."
+            },
+            "en": {
+              "guide": [
+                "The + sign between 32 and 15 shows this is an addition.",
+                "The two numbers added are addends; recall the name for the result after =."
+              ],
+              "hint": "«Hiệu» only names the result of a subtraction, so rule it out first.",
+              "answer": {
+                "text": "Tổng (the sum)",
+                "explanation": "In 32 + 15 = 47, 32 and 15 are «số hạng» (addends) and 47 is «tổng» (the sum); «hiệu» is a difference."
+              }
+            }
+          }
         },
         {
           "id": "tim-hieu",
@@ -250,7 +316,29 @@
             { "id": "b", "text": "42" },
             { "id": "c", "text": "120" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Hiệu của hai số là kết quả khi lấy số lớn trừ số bé: 86 − 34.",
+              "Trừ hàng đơn vị trước (6 − 4), rồi trừ hàng chục (8 − 3)."
+            ],
+            "hint": "Đây là phép trừ không nhớ, nên kết quả chắc chắn bé hơn 86.",
+            "answer": {
+              "text": "52",
+              "explanation": "86 − 34 = 52 vì 6 − 4 = 2 và 8 − 3 = 5; 120 là đem cộng hai số, 42 là trừ nhầm hàng chục."
+            },
+            "en": {
+              "guide": [
+                "The difference of two numbers is the bigger minus the smaller: 86 − 34.",
+                "Subtract the ones first (6 − 4), then the tens (8 − 3)."
+              ],
+              "hint": "There's no borrowing here, and the answer must be smaller than 86.",
+              "answer": {
+                "text": "52",
+                "explanation": "86 − 34 = 52 because 6 − 4 = 2 and 8 − 3 = 5; 120 adds them, and 42 slips in the tens."
+              }
+            }
+          }
         },
         {
           "id": "nhieu-hon",
@@ -261,7 +349,29 @@
             { "id": "b", "text": "5 điểm" },
             { "id": "c", "text": "50 điểm" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "So xem đội Thỏ hơn đội Sóc bao nhiêu thì lấy 27 trừ 23.",
+              "Hai số cùng có 2 chục nên chỉ cần trừ hàng đơn vị: 7 − 3."
+            ],
+            "hint": "Đếm tiếp từ 23 lên tới 27: hai mươi tư, hai mươi lăm… được mấy bước?",
+            "answer": {
+              "text": "4 điểm",
+              "explanation": "27 − 23 = 4 nên Thỏ hơn Sóc 4 điểm; 50 là cộng điểm hai đội, không phải so sánh."
+            },
+            "en": {
+              "guide": [
+                "To see how many more points Thỏ scored than Sóc, work out 27 − 23.",
+                "Both numbers have 2 tens, so just subtract the ones: 7 − 3."
+              ],
+              "hint": "Count on from 23 to 27: twenty-four, twenty-five… how many steps?",
+              "answer": {
+                "text": "4 points",
+                "explanation": "27 − 23 = 4, so Thỏ's team is 4 points ahead; 50 adds both teams' points."
+              }
+            }
+          }
         },
         {
           "id": "lon-nhat",
@@ -272,7 +382,29 @@
             { "id": "b", "text": "Áo số 76" },
             { "id": "c", "text": "Áo số 69" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "So hàng chục của ba số áo trước: 6, 7 và 6.",
+              "Số nào có hàng chục lớn hơn thì lớn hơn, không cần xét hàng đơn vị nữa."
+            ],
+            "hint": "67 và 69 cùng 6 chục; chiếc áo còn lại có nhiều chục hơn cả hai.",
+            "answer": {
+              "text": "Áo số 76",
+              "explanation": "76 có 7 chục, nhiều hơn 6 chục của 67 và 69, nên áo số 76 lớn nhất; 69 chỉ lớn hơn 67."
+            },
+            "en": {
+              "guide": [
+                "Compare the tens of the three shirt numbers first: 6, 7 and 6.",
+                "The number with more tens is bigger; no need to look at the ones."
+              ],
+              "hint": "67 and 69 both have 6 tens; the other shirt has more tens than either.",
+              "answer": {
+                "text": "Shirt number 76 (Áo số 76)",
+                "explanation": "76 has 7 tens, more than the 6 tens of 67 and 69, so shirt 76 is biggest; 69 only beats 67."
+              }
+            }
+          }
         },
         {
           "id": "cong-nham",
@@ -283,7 +415,29 @@
             { "id": "b", "text": "77" },
             { "id": "c", "text": "78" }
           ],
-          "answer": { "choice": "c" }
+          "answer": { "choice": "c" },
+          "support": {
+            "guide": [
+              "Cộng hàng đơn vị trước: 1 + 7.",
+              "Rồi cộng hàng chục: 4 chục + 3 chục, ghép hai kết quả lại."
+            ],
+            "hint": "Phép cộng này không có nhớ; kiểm tra lại kết quả hàng chục của bạn: 4 + 3.",
+            "answer": {
+              "text": "78",
+              "explanation": "41 + 37 = 78 vì 1 + 7 = 8 và 4 + 3 = 7; 68 là cộng nhầm hàng chục, 77 là cộng nhầm hàng đơn vị."
+            },
+            "en": {
+              "guide": [
+                "Add the ones first: 1 + 7.",
+                "Then add the tens: 4 tens + 3 tens, and put the two results together."
+              ],
+              "hint": "No carrying here; double-check your tens: 4 + 3.",
+              "answer": {
+                "text": "78",
+                "explanation": "41 + 37 = 78 since 1 + 7 = 8 and 4 + 3 = 7; 68 gets the tens wrong, 77 the ones."
+              }
+            }
+          }
         }
       ]
     },

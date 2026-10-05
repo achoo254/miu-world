@@ -23,6 +23,18 @@ describe('dist answer scan', () => {
     expect(questSecrets([quest])).toEqual(['8 − 3 = 5. Tặng đi 3 viên thì còn 5 viên.', 'Bạn Hải ly ở bên suối nhé', 'Lá thư viết Hải ly sẽ chỉ đường.']);
   });
 
+  it("collects a boss question's explanation, and its answer unless that is only one of its choices", () => {
+    const turn = (answer: string) => ({
+      id: 't',
+      choices: [{ id: 'a', text: 'Các bạn nhỏ chơi rồng rắn lên mây' }, { id: 'b', text: 'Khu rừng yên tĩnh' }],
+      support: { guide: ['x'], hint: 'y', answer: { text: answer, explanation: 'Câu kể một hoạt động đang diễn ra.' } },
+    });
+    const boss = { id: 'q', steps: [{ id: 'trum', kind: 'boss', turns: [turn('Các bạn nhỏ chơi rồng rắn lên mây')] }] };
+    expect(questSecrets([boss])).toEqual(['Câu kể một hoạt động đang diễn ra.']);
+    const own = { id: 'q', steps: [{ id: 'trum', kind: 'boss', turns: [turn('Chơi rồng rắn là một hoạt động')] }] };
+    expect(questSecrets([own])).toEqual(['Chơi rồng rắn là một hoạt động', 'Câu kể một hoạt động đang diễn ra.']);
+  });
+
   it('flags a bundle carrying answer text or a raw quest with support layers', () => {
     const secrets = questSecrets([quest]);
     expect(leaksIn('const a="Bạn Hải ly ở bên suối nhé"', secrets)).toHaveLength(1);

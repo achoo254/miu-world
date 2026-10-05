@@ -100,6 +100,13 @@ export function guardianQuestOf(table: GuardianTable, g: Guardian): QuestDefinit
             damage: GUARDIAN_DAMAGE,
             en: { prompt: t.en.prompt, choices: order.map((from) => t.en.choices[from] ?? '') },
             answer: { choice: idAt(order.indexOf(t.answer)) },
+            // The answer layer names the right choice as it reads; the explanation says why.
+            support: {
+              guide: [...t.guide],
+              hint: t.hint,
+              answer: { text: t.choices[t.answer] ?? '', explanation: t.explain },
+              en: { guide: [...t.en.guide], hint: t.en.hint, answer: { text: t.en.choices[t.answer] ?? '', explanation: t.en.explain } },
+            },
           };
         }),
         feedback: { right: [...g.right], wrong: [...g.wrong], en: { right: [...en.right], wrong: [...en.wrong] } },

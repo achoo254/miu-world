@@ -34,6 +34,14 @@ afterAll(async () => {
 });
 
 const step = (agent: Agent, id: string, body: object = {}) => agent.post(`/api/quests/${GUARDIAN.id}/steps/${id}/complete`).send(body);
+const support = (agent: Agent, body: object) => agent.post(`/api/quests/${GUARDIAN.id}/steps/${boss.id}/support`).send(body);
+/** Plays the closing beats after the fight; the last one's response carries the score. */
+const closing = async (agent: Agent): Promise<{ stars: number; xpAwarded: number }> => {
+  let completion: { stars: number; xpAwarded: number } | undefined;
+  for (const s of GUARDIAN.steps.slice(2)) completion = (await step(agent, s.id).expect(200)).body.completion ?? completion;
+  if (!completion) throw new Error('the fight was not scored');
+  return completion;
+};
 const paidRuns = async (childId: string): Promise<string[]> =>
   (await app.db.select().from(rewardLedger).where(and(eq(rewardLedger.childId, childId), like(rewardLedger.source, `quest:${GUARDIAN.id}%`)))).map((r) => r.source).sort();
 
@@ -87,6 +95,40 @@ describe('a zone guardian', () => {
     expect(await paidRuns(childId)).toEqual([`quest:${GUARDIAN.id}`, `quest:${GUARDIAN.id}#2`]);
   });
 
+  it("hands out each question's Hướng dẫn, Gợi ý and Đáp án in both languages, and seeing the answer never stops the fight", async () => {
+    const { agent } = await parentWithChild(app);
+    await step(agent, opening?.id ?? '').expect(200);
+    const [first, second] = boss.turns;
+    if (!first?.support.en || !second) throw new Error('the guardian fixture has no question with its English support');
+    // A boss's support belongs to one of its questions.
+    await support(agent, { layer: 'hint' }).expect(400, { error: 'turn-required' });
+    await support(agent, { layer: 'hint', turn: 'no-such-question' }).expect(404, { error: 'support-not-found' });
+    const layers = first.support;
+    const en = first.support.en;
+    expect((await support(agent, { layer: 'guide', turn: first.id }).expect(200)).body).toEqual({ layer: 'guide', steps: layers.guide, stepsEn: en.guide });
+    expect((await support(agent, { layer: 'hint', turn: first.id }).expect(200)).body).toEqual({ layer: 'hint', text: layers.hint, textEn: en.hint });
+    // The answer layer names the right choice and says why.
+    const right = first.choices.find((c) => c.id === first.answer.choice)?.text;
+    const answer = (await support(agent, { layer: 'answer', turn: first.id }).expect(200)).body;
+    expect(answer).toEqual({ layer: 'answer', text: right, explanation: layers.answer.explanation, textEn: en.answer.text, explanationEn: en.answer.explanation });
+    // The blow still lands, and the fight is won as always: the answer seen costs a star and a tenth of the XP.
+    const landed = (await step(agent, boss.id, blow(first)).expect(200)).body;
+    expect(landed.correct).toBe(true);
+    for (const turn of boss.turns.slice(1)) await step(agent, boss.id, blow(turn)).expect(200);
+    expect(await closing(agent)).toMatchObject({ stars: 2, xpAwarded: Math.floor(GUARDIAN.reward.xp * 0.9) });
+  });
+
+  it("lets a fighter read a question's answer for free once its blow has landed", async () => {
+    const { agent } = await parentWithChild(app);
+    await step(agent, opening?.id ?? '').expect(200);
+    const [first, ...rest] = boss.turns;
+    if (!first) throw new Error('no turns');
+    await step(agent, boss.id, blow(first)).expect(200);
+    await support(agent, { layer: 'answer', turn: first.id }).expect(200);
+    for (const turn of rest) await step(agent, boss.id, blow(turn)).expect(200);
+    expect(await closing(agent)).toMatchObject({ stars: 3, xpAwarded: GUARDIAN.reward.xp });
+  });
+
   it('is a team boss for a party: one HP, blows in turn, each member paid once', async () => {
     const h = hubHarness();
     service = new PartyQuestService({ db: app.db, content: CONTENT, host: h.hub.coopHost() });
@@ -115,6 +157,8 @@ describe('a zone guardian', () => {
       const other = agents[(i + 1) % 2] as Agent;
       const ownerId = i % 2 === 0 ? a.id : b.id;
       await vi.waitFor(() => expect(a.last('party-quest')?.quest?.turn).toBe(ownerId));
+      // Each member has the question's support on her own screen, whoever's blow it is.
+      for (const agent of agents) expect((await support(agent, { layer: 'guide', turn: turn.id }).expect(200)).body).toMatchObject({ layer: 'guide', steps: turn.support.guide });
       expect((await step(other, boss.id, blow(turn)).expect(409)).body).toEqual({ error: 'not-your-turn' });
       await step(mine, boss.id, blow(turn)).expect(200);
     }

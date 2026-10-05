@@ -217,7 +217,29 @@
             { "id": "b", "text": "Con chó" },
             { "id": "c", "text": "Con cá" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Tấm thẻ ghi «cat», một từ tiếng Anh gọi tên con vật.",
+              "Nhớ lại các từ chỉ con vật đã học và loại những từ không khớp."
+            ],
+            "hint": "«dog» là con chó, «fish» là con cá; «cat» là con vật nuôi còn lại.",
+            "answer": {
+              "text": "Con mèo",
+              "explanation": "«cat» nghĩa là con mèo; con chó là «dog», con cá là «fish»."
+            },
+            "en": {
+              "guide": [
+                "The card says «cat», an English word naming an animal.",
+                "Recall the animal words you've learnt and rule out those that don't match."
+              ],
+              "hint": "«dog» is «con chó» and «fish» is «con cá»; «cat» is the other pet.",
+              "answer": {
+                "text": "The cat (Con mèo)",
+                "explanation": "«cat» means «con mèo»; «con chó» is a dog and «con cá» is a fish."
+              }
+            }
+          }
         },
         {
           "id": "qua-tao",
@@ -228,7 +250,29 @@
             { "id": "b", "text": "apple" },
             { "id": "c", "text": "orange" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Cáo biến ra quả táo đỏ; tìm từ tiếng Anh đúng tên quả này.",
+              "Loại từ chỉ quả chuối và từ chỉ quả cam ra trước."
+            ],
+            "hint": "«banana» là quả chuối, «orange» là quả cam; từ còn lại mở đầu bằng chữ a.",
+            "answer": {
+              "text": "apple",
+              "explanation": "Quả táo tiếng Anh là «apple»; «banana» là quả chuối, «orange» là quả cam."
+            },
+            "en": {
+              "guide": [
+                "Cáo conjures a red «quả táo»; find the English word for this fruit.",
+                "Rule out the word for a banana and the word for an orange first."
+              ],
+              "hint": "A banana and an orange are different fruits; the word you need starts with a.",
+              "answer": {
+                "text": "apple",
+                "explanation": "«quả táo» in English is «apple»; «banana» is «quả chuối» and «orange» is «quả cam»."
+              }
+            }
+          }
         },
         {
           "id": "dong-ho-bon-gio",
@@ -239,7 +283,29 @@
             { "id": "b", "text": "4 giờ 30 phút" },
             { "id": "c", "text": "4 giờ" }
           ],
-          "answer": { "choice": "c" }
+          "answer": { "choice": "c" },
+          "support": {
+            "guide": [
+              "Kim ngắn trên đồng hồ của Cáo cho biết giờ; nhìn xem nó chỉ số nào.",
+              "Kim dài nằm ngay số 12 là lúc giờ đúng, chưa có thêm phút nào."
+            ],
+            "hint": "Có 30 phút thì kim dài phải chỉ số 6, chứ không phải số 12.",
+            "answer": {
+              "text": "4 giờ",
+              "explanation": "Kim ngắn chỉ 4, kim dài chỉ 12 nên là 4 giờ đúng; 4 giờ 30 phút thì kim dài chỉ số 6."
+            },
+            "en": {
+              "guide": [
+                "The short hand on Cáo's clock tells the hour; see which number it points to.",
+                "A long hand sitting right on 12 means an exact hour, with no minutes added."
+              ],
+              "hint": "For half past, the long hand would point to 6, not 12.",
+              "answer": {
+                "text": "4 o'clock",
+                "explanation": "The short hand is on 4 and the long hand on 12, so it's 4 o'clock; at 4:30 the long hand points to 6."
+              }
+            }
+          }
         },
         {
           "id": "day-so-mu",
@@ -250,7 +316,29 @@
             { "id": "b", "text": "15" },
             { "id": "c", "text": "16" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Xem mỗi số bay ra lớn hơn số trước bao nhiêu: 6 − 3, 9 − 6…",
+              "Cộng khoảng cách ấy vào số cuối cùng là 12."
+            ],
+            "hint": "Dãy này đếm thêm 3; 13 chỉ thêm 1, còn 16 thì thêm tới 4.",
+            "answer": {
+              "text": "15",
+              "explanation": "Mỗi số hơn số trước 3 đơn vị, nên sau 12 là 12 + 3 = 15."
+            },
+            "en": {
+              "guide": [
+                "See how much bigger each number from the hat is: 6 − 3, 9 − 6…",
+                "Add that jump to the last number, 12."
+              ],
+              "hint": "This counts in threes; 13 adds only 1 and 16 adds 4.",
+              "answer": {
+                "text": "15",
+                "explanation": "Each number is 3 more than the one before, so after 12 comes 12 + 3 = 15."
+              }
+            }
+          }
         },
         {
           "id": "hai-tui-xu",
@@ -261,7 +349,29 @@
             { "id": "b", "text": "Túi bên phải" },
             { "id": "c", "text": "Hai túi bằng nhau" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Đặt hai số xu cạnh nhau: 45 và 54, rồi so hàng chục trước.",
+              "Túi nào có nhiều chục xu hơn thì túi đó nhiều xu hơn."
+            ],
+            "hint": "45 và 54 dùng cùng hai chữ số nên không bằng nhau; xem số nào có 5 chục.",
+            "answer": {
+              "text": "Túi bên phải",
+              "explanation": "54 có 5 chục, nhiều hơn 4 chục của 45, nên túi bên phải (54 xu) nhiều hơn; hai túi không bằng nhau."
+            },
+            "en": {
+              "guide": [
+                "Put the two amounts side by side, 45 and 54, and compare the tens first.",
+                "The bag with more tens of coins has more coins."
+              ],
+              "hint": "45 and 54 use the same digits, so they aren't equal; which has 5 tens?",
+              "answer": {
+                "text": "The right-hand bag (Túi bên phải)",
+                "explanation": "54 has 5 tens, more than the 4 tens of 45, so the right-hand bag (54 coins) has more; they aren't equal."
+              }
+            }
+          }
         },
         {
           "id": "con-vat-dua-thu",
@@ -272,7 +382,29 @@
             { "id": "b", "text": "Chú cáo ảo thuật" },
             { "id": "c", "text": "Bạn koala bán hàng" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Đọc câu và tìm tên con vật đứng ngay đầu câu.",
+              "Để ý việc con vật ấy làm: ngậm lá thư rồi bay qua quảng trường."
+            ],
+            "hint": "Cáo hay koala đều không bay được; câu kể về một chú chim màu trắng.",
+            "answer": {
+              "text": "Chim bồ câu đưa thư",
+              "explanation": "Chú chim trắng ngậm lá thư bay qua quảng trường chính là chim bồ câu đưa thư; cáo và koala không biết bay."
+            },
+            "en": {
+              "guide": [
+                "Read the sentence and find the animal named at its start.",
+                "Notice what that animal does: carries a letter and flies over the square."
+              ],
+              "hint": "Neither a fox nor a koala can fly; the sentence is about a white bird.",
+              "answer": {
+                "text": "The carrier pigeon (Chim bồ câu đưa thư)",
+                "explanation": "A white bird carrying a letter across the square is the carrier pigeon; foxes and koalas can't fly."
+              }
+            }
+          }
         },
         {
           "id": "bong-bay",
@@ -283,7 +415,29 @@
             { "id": "b", "text": "9 quả" },
             { "id": "c", "text": "27 quả" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Tặng bớt bóng đi thì làm phép trừ: 18 − 9.",
+              "Tách 9 thành 8 và 1: lấy 18 − 8 = 10, rồi bớt thêm 1."
+            ],
+            "hint": "Thử lại: số nào cộng với chính nó thì được 18?",
+            "answer": {
+              "text": "9 quả",
+              "explanation": "18 − 9 = 9 vì 18 − 8 = 10, 10 − 1 = 9 (thử lại 9 + 9 = 18); 27 là cộng 18 + 9."
+            },
+            "en": {
+              "guide": [
+                "Giving balloons away means subtracting: 18 − 9.",
+                "Split 9 into 8 and 1: 18 − 8 = 10, then take away 1 more."
+              ],
+              "hint": "Check: which number added to itself makes 18?",
+              "answer": {
+                "text": "9 balloons",
+                "explanation": "18 − 9 = 9 since 18 − 8 = 10 and 10 − 1 = 9 (check: 9 + 9 = 18); 27 is 18 + 9."
+              }
+            }
+          }
         }
       ]
     },

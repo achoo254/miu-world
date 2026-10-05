@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Người đến sau nhập vào đoàn, nên cộng 37 + 18.",
+              "Cộng hàng đơn vị 7 + 8; được từ 10 trở lên thì nhớ 1 sang hàng chục."
+            ],
+            "hint": "7 + 8 = 15, viết 5 nhớ 1; 3 chục cộng 1 chục rồi thêm 1 chục nhớ.",
+            "answer": {
+              "text": "55",
+              "explanation": "37 + 18 = 55: 7 + 8 = 15 viết 5 nhớ 1, 3 + 1 + 1 = 5; 45 là quên nhớ, 19 là lấy hiệu."
+            },
+            "en": {
+              "guide": [
+                "The latecomers join the team, so add 37 + 18.",
+                "Add the ones, 7 + 8; if it reaches 10 or more, carry 1 to the tens."
+              ],
+              "hint": "7 + 8 = 15, write 5 carry 1; 3 tens plus 1 ten, then the carried ten.",
+              "answer": {
+                "text": "55",
+                "explanation": "37 + 18 = 55: 7 + 8 = 15, write 5 carry 1, then 3 + 1 + 1 = 5; 45 forgets the carry, 19 is the difference."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Phát đèn đi thì kho còn ít hơn, nên tính 64 − 28.",
+              "4 không trừ được 8 nên mượn 1 chục từ 6 chục."
+            ],
+            "hint": "14 − 8 = 6; 6 chục cho mượn 1 còn 5 chục, trừ tiếp 2 chục.",
+            "answer": {
+              "text": "36",
+              "explanation": "64 − 28 = 36 vì 14 − 8 = 6 và 5 − 2 = 3; thử lại 36 + 28 = 64; 46 là quên mượn chục."
+            },
+            "en": {
+              "guide": [
+                "Handing torches out leaves fewer in the store, so work out 64 − 28.",
+                "4 can't take away 8, so borrow a ten from the 6 tens."
+              ],
+              "hint": "14 − 8 = 6; the 6 tens lend 1 and leave 5, then take away 2 tens.",
+              "answer": {
+                "text": "36",
+                "explanation": "64 − 28 = 36 because 14 − 8 = 6 and 5 − 2 = 3; check 36 + 28 = 64; 46 forgets the borrowing."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Nghĩ xem vách hang trên núi lạnh giá thường phủ lớp gì trong suốt, sờ vào buốt tay.",
+              "Loại thứ nóng rực cháy sáng và loại viên đá tròn nhẵn dưới suối."
+            ],
+            "hint": "«Ice» là nước đã đông cứng lại vì trời quá rét.",
+            "answer": {
+              "text": "băng",
+              "explanation": "«Ice» là băng, nước đông cứng phủ vách hang; lửa là «fire», còn đá cuội là «pebble»."
+            },
+            "en": {
+              "guide": [
+                "Think what clear, freezing-cold layer covers cave walls high in the snowy mountains.",
+                "Rule out the hot, glowing thing and the smooth round stones from a stream."
+              ],
+              "hint": "«Ice» is water that has frozen hard because it is so cold.",
+              "answer": {
+                "text": "băng",
+                "explanation": "«Ice» is «băng», frozen water coating the cave wall; «lửa» is fire and «đá cuội» is a pebble."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Tìm khoảng cách giữa hai bậc liền nhau: 90 xuống 80, 80 xuống 70.",
+              "Bớt đúng khoảng ấy khỏi số của bậc cuối là 70."
+            ],
+            "hint": "Mỗi bậc kém bậc trên 1 chục; 7 chục bớt 1 chục còn mấy chục?",
+            "answer": {
+              "text": "60",
+              "explanation": "Dãy giảm 10 mỗi bậc nên sau 70 là 70 − 10 = 60; 50 là bớt tới 20, còn 71 lại tăng lên."
+            },
+            "en": {
+              "guide": [
+                "Find the gap between two steps in a row: 90 down to 80, 80 down to 70.",
+                "Take that same gap off the last step's number, 70."
+              ],
+              "hint": "Each step is one ten less than the one above; 7 tens less 1 ten is how many tens?",
+              "answer": {
+                "text": "60",
+                "explanation": "The steps drop by 10, so after 70 comes 70 − 10 = 60; 50 drops 20 and 71 goes up instead."
+              }
+            }
           }
         },
         {
@@ -226,6 +314,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Đọc câu trong sổ, rồi nghĩ xem bên trong hang khác ngoài trời ở điểm nào.",
+              "Chiếc đèn trên mũ dùng để làm gì? Hãy chọn lý do hợp với công dụng đó."
+            ],
+            "hint": "Đèn giúp nhìn thấy đường; nơi nào thiếu ánh sáng mặt trời mới cần đèn.",
+            "answer": {
+              "text": "vì trong hang tối",
+              "explanation": "Trong hang không có ánh nắng nên rất tối, đèn trên mũ soi đường; trời nóng hay mưa không liên quan tới đèn."
+            },
+            "en": {
+              "guide": [
+                "Read the line in the book, then think how inside a cave differs from outdoors.",
+                "What is the lamp on the helmet for? Pick the reason that matches that job."
+              ],
+              "hint": "A lamp helps you see the way; you only need one where sunlight cannot reach.",
+              "answer": {
+                "text": "because the cave is dark",
+                "explanation": "No sunlight gets into a cave, so it is very dark and the helmet lamp lights the way; heat or rain have nothing to do with a lamp."
+              }
+            }
           }
         }
       ],

@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Nghĩ xem bạn nhỏ đang chào ai: cô giáo là người lớn tuổi hơn mình.",
+              "Tìm lời chào có đủ người chào, người được chào và tiếng thưa ở cuối."
+            ],
+            "hint": "Chào người lớn thì xưng «em» và kết thúc bằng một tiếng «ạ» lễ phép.",
+            "answer": {
+              "text": "Em chào cô ạ!",
+              "explanation": "«Em chào cô ạ!» có xưng em, gọi cô và có «ạ» nên lễ phép; «Chào nhé!» là chào bạn bè, «Ê cô ơi!» thiếu lễ độ."
+            },
+            "en": {
+              "guide": [
+                "Think about who is being greeted: the teacher is older than the pupil.",
+                "Look for the greeting that names the speaker and the teacher and ends with a polite word."
+              ],
+              "hint": "Greeting an adult, a pupil calls themself «em» and ends with the polite little word «ạ».",
+              "answer": {
+                "text": "Em chào cô ạ! (polite hello)",
+                "explanation": "«Em chào cô ạ!» uses «em», addresses the teacher and ends with «ạ», so it is polite; «Chào nhé!» is for friends and «Ê cô ơi!» is rude."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Đọc bảng chữ cái từ chữ A cho tới khi gặp chữ D.",
+              "Chữ cần tìm là chữ bạn vừa đọc ngay trước khi tới D."
+            ],
+            "hint": "Đ đứng sau D chứ không đứng trước; chữ cần tìm là chữ cái thứ năm trong bảng.",
+            "answer": {
+              "text": "C",
+              "explanation": "Thứ tự là …b, c, d, đ, e…, nên ngay trước D là C; Đ đứng sau D, còn E đứng sau Đ."
+            },
+            "en": {
+              "guide": [
+                "Say the alphabet from A until you reach D.",
+                "The letter you want is the one you said just before D."
+              ],
+              "hint": "Đ comes after D, not before it; the letter you need is the fifth in the alphabet.",
+              "answer": {
+                "text": "C",
+                "explanation": "The order is …b, c, d, đ, e…, so C comes right before D; Đ follows D and E follows Đ."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Nhìn ba từ và hỏi: từ nào là một vật nhìn thấy, chạm được trong lớp?",
+              "Gạt bỏ từ chỉ việc làm và từ chỉ tính nết của học sinh."
+            ],
+            "hint": "Đồ vật trong lớp là thứ thầy cô và học sinh dùng hằng ngày, như phấn, bàn, ghế.",
+            "answer": {
+              "text": "cái bảng",
+              "explanation": "«Cái bảng» là đồ vật treo trên tường lớp; «đọc bài» là hoạt động, «chăm chỉ» là đặc điểm của người."
+            },
+            "en": {
+              "guide": [
+                "Look at the three words and ask: which is a thing you can see or touch in the classroom?",
+                "Cross out the word for an activity and the word for a pupil's quality."
+              ],
+              "hint": "Classroom things are what teachers and pupils use every day, like chalk, desks and chairs.",
+              "answer": {
+                "text": "cái bảng (the board)",
+                "explanation": "«cái bảng» (the board) is a thing on the classroom wall; «đọc bài» is an activity and «chăm chỉ» describes a person."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Nhớ lại: câu giới thiệu cho người nghe biết người nói là ai, làm gì.",
+              "Đọc lần lượt ba câu, loại câu khen giếng và câu hỏi bạn."
+            ],
+            "hint": "Câu giới thiệu thường có mẫu «Tớ là…» hay «Em là…» kèm việc mình làm.",
+            "answer": {
+              "text": "Tớ là Cò, tớ giữ giếng làng.",
+              "explanation": "«Tớ là Cò, tớ giữ giếng làng.» nói tên và việc của Cò nên là câu giới thiệu; hai câu kia là câu khen và câu hỏi."
+            },
+            "en": {
+              "guide": [
+                "Remember: an introduction tells the listener who the speaker is and what they do.",
+                "Read the three sentences in turn and rule out the one praising the well and the question."
+              ],
+              "hint": "Introductions often use the pattern «Tớ là…» or «Em là…» (I am…) plus what you do.",
+              "answer": {
+                "text": "Tớ là Cò, tớ giữ giếng làng. (I'm Cò, I keep the well.)",
+                "explanation": "«Tớ là Cò, tớ giữ giếng làng.» gives Cò's name and job, so it introduces; the others praise the well and ask a question."
+              }
+            }
           }
         }
       ],

@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Đọc ba từ và hỏi: từ nào là tên một thứ cây hái về nấu ăn được?",
+              "Loại từ chỉ hoạt động (việc làm) và từ chỉ màu sắc, dáng vẻ."
+            ],
+            "hint": "Một từ là việc ta làm cho vườn rau, một từ tả màu lá; từ còn lại mới là tên sự vật.",
+            "answer": {
+              "text": "bắp cải",
+              "explanation": "«Bắp cải» là tên một loại rau, tức từ chỉ sự vật; «tưới nước» chỉ hoạt động, «xanh mướt» chỉ đặc điểm."
+            },
+            "en": {
+              "guide": [
+                "Read the three words and ask which one names a plant you could pick and cook.",
+                "Rule out the word for an action and the word describing colour or look."
+              ],
+              "hint": "One word is something you do for the garden, one describes the leaves; the last one is a thing.",
+              "answer": {
+                "text": "bắp cải (cabbage)",
+                "explanation": "«Bắp cải» (cabbage) names a vegetable, a thing word; «tưới nước» is an action and «xanh mướt» a description."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Lấy 7 cây cải đang có, cộng thêm 6 cây Thỏ trồng mới.",
+              "Tách 6 thành 3 và 3 để 7 cộng 3 tròn một chục."
+            ],
+            "hint": "7 + 3 = 10, rồi còn 3 cây cải nữa phải cộng vào.",
+            "answer": {
+              "text": "13",
+              "explanation": "7 + 6 = 13 vì 7 + 3 = 10, thêm 3 nữa là 13; 12 là đếm thiếu một cây, còn 1 là lấy 7 trừ 6."
+            },
+            "en": {
+              "guide": [
+                "Take the 7 mustard plants and add the 6 that Thỏ plants.",
+                "Split 6 into 3 and 3 so that 7 plus 3 makes a ten."
+              ],
+              "hint": "7 + 3 = 10, and there are still 3 more mustard plants to add.",
+              "answer": {
+                "text": "13",
+                "explanation": "7 + 6 = 13 because 7 + 3 = 10 and 3 more makes 13; 12 is one plant short and 1 is 7 take away 6."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Ghi số của từng rổ: cà chua 25 quả, cà rốt 52 củ.",
+              "So hàng chục của hai số để biết số nào lớn hơn."
+            ],
+            "hint": "25 có 2 chục, 52 có 5 chục; rổ nào ứng với số có 5 chục?",
+            "answer": {
+              "text": "rổ cà rốt",
+              "explanation": "52 > 25 vì 5 chục nhiều hơn 2 chục, nên rổ cà rốt nhiều hơn; hai số dùng cùng chữ số nhưng không bằng nhau."
+            },
+            "en": {
+              "guide": [
+                "Write down each basket's count: 25 tomatoes, 52 carrots.",
+                "Compare the tens of the two numbers to see which is bigger."
+              ],
+              "hint": "25 has 2 tens and 52 has 5 tens; which basket goes with 5 tens?",
+              "answer": {
+                "text": "the carrots",
+                "explanation": "52 > 25 because 5 tens beat 2 tens, so the carrot basket has more; using the same digits does not make them equal."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Đọc lời Mẹ dặn và tìm hai ý: việc cần làm và lúc phải làm.",
+              "Chọn đáp án khớp cả việc lẫn thời gian Mẹ nói."
+            ],
+            "hint": "Mẹ không bảo nhổ rau, và Mẹ nhắc việc ấy phải xong trước lúc trời sập tối.",
+            "answer": {
+              "text": "tưới rau trước khi tối",
+              "explanation": "Mẹ dặn tưới rau trước khi trời tối, nên chọn tưới rau trước khi tối; nửa đêm là quá muộn, còn nhổ rau thì Mẹ không dặn."
+            },
+            "en": {
+              "guide": [
+                "Read Mum's words and find two parts: the job and when to do it.",
+                "Pick the answer that matches both the job and the time Mum gives."
+              ],
+              "hint": "Mum never asks to pull anything up, and the job must be done before nightfall.",
+              "answer": {
+                "text": "water them before dark",
+                "explanation": "Mum says to water the vegetables before it gets dark; midnight is far too late and pulling them up was never asked."
+              }
+            }
           }
         }
       ],

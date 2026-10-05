@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Gà Mái có 8 quả và đẻ thêm 5 quả: «thêm» nghĩa là làm phép cộng 8 + 5.",
+              "Tách 5 thành 2 và 3 để 8 cộng 2 tròn 10 trước, rồi cộng phần còn lại."
+            ],
+            "hint": "8 cần thêm 2 nữa mới đủ 10; sau đó trong 5 quả vẫn còn lại 3 quả.",
+            "answer": {
+              "text": "13",
+              "explanation": "8 + 5 = 13 vì 8 + 2 = 10, thêm 3 nữa là 13; 12 là cộng thiếu một, còn 3 là lấy 8 trừ 5."
+            },
+            "en": {
+              "guide": [
+                "Gà Mái has 8 eggs and lays 5 more: «more» means adding, 8 + 5.",
+                "Split 5 into 2 and 3, make 8 + 2 = 10 first, then add what is left."
+              ],
+              "hint": "8 needs 2 more to reach 10, and of the 5 new eggs there are still 3 to add.",
+              "answer": {
+                "text": "13",
+                "explanation": "8 + 5 = 13 because 8 + 2 = 10 and 3 more makes 13; 12 is one short, and 3 is 8 minus 5."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Gộp 9 bông hồng với 6 bông cúc, ta làm phép cộng 9 + 6.",
+              "Lấy 1 từ số 6 bù cho 9 thành 10, rồi cộng nốt số bông còn lại."
+            ],
+            "hint": "9 + 1 = 10, và 6 bông cúc bớt đi 1 thì còn 5 bông để cộng tiếp.",
+            "answer": {
+              "text": "15",
+              "explanation": "9 + 6 = 15 vì 9 + 1 = 10, thêm 5 nữa là 15; 14 và 16 đều lệch đi một bông."
+            },
+            "en": {
+              "guide": [
+                "Putting 9 roses and 6 daisies together means adding: 9 + 6.",
+                "Take 1 from the 6 to turn 9 into 10, then add the flowers that remain."
+              ],
+              "hint": "9 + 1 = 10, and 6 daisies minus that 1 leaves 5 more to add.",
+              "answer": {
+                "text": "15",
+                "explanation": "9 + 6 = 15 because 9 + 1 = 10 and 5 more makes 15; 14 and 16 are each one flower off."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Tìm số cộng với 7 để được 12: có thể đếm thêm từ 7 lên tới 12.",
+              "Hoặc lấy tổng trừ đi số đã biết: 12 − 7."
+            ],
+            "hint": "Từ 7 lên 10 cần 3, từ 10 lên 12 cần thêm 2; cộng hai bước nhảy lại.",
+            "answer": {
+              "text": "5",
+              "explanation": "7 + 5 = 12 vì 12 − 7 = 5; điền 4 chỉ được 11, còn 19 là lấy 7 cộng 12."
+            },
+            "en": {
+              "guide": [
+                "Find the number that makes 12 with 7: you can count on from 7 up to 12.",
+                "Or take the known number away from the total: 12 − 7."
+              ],
+              "hint": "From 7 to 10 is 3, from 10 to 12 is 2 more; add the two jumps together.",
+              "answer": {
+                "text": "5",
+                "explanation": "7 + 5 = 12 since 12 − 7 = 5; 4 only gives 11, and 19 comes from adding 7 and 12."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Tính vế trái trước: 8 + 7 bằng bao nhiêu?",
+              "So kết quả vừa tính với 14 rồi chọn dấu lớn hơn, bé hơn hay bằng."
+            ],
+            "hint": "8 + 2 = 10, cộng nốt 5 được tổng; xem tổng ấy nhiều hay ít hơn 14.",
+            "answer": {
+              "text": ">",
+              "explanation": "8 + 7 = 15 và 15 lớn hơn 14 nên điền «>»; dấu «<» và dấu «=» đều sai."
+            },
+            "en": {
+              "guide": [
+                "Work out the left side first: what is 8 + 7?",
+                "Compare that result with 14, then choose greater than, less than or equal."
+              ],
+              "hint": "8 + 2 = 10, add the other 5 for the total, then see if it is more or less than 14.",
+              "answer": {
+                "text": ">",
+                "explanation": "8 + 7 = 15, and 15 is greater than 14, so the sign is «>»; «<» and «=» are both wrong."
+              }
+            }
           }
         }
       ],

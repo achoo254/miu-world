@@ -45,13 +45,25 @@
             "nhà xuất bản"
           ],
           "answer": 0,
+          "guide": [
+            "Cầm một cuốn sách thật, nhìn lần lượt từng dòng chữ in trên bìa trước.",
+            "Tự hỏi: dòng nào là tên cuốn sách, dòng nào là tên người đã viết ra nó?"
+          ],
+          "hint": "Người viết ra cuốn sách được gọi là tác giả; tên của người ấy thường in ở đầu hoặc cuối bìa.",
+          "explain": "Tên tác giả cho biết ai viết sách; tên sách là tên của cuốn sách, còn nhà xuất bản là nơi in và phát hành sách.",
           "en": {
             "prompt": "On a book cover, which part tells you who wrote the book?",
             "choices": [
               "tên tác giả (the author)",
               "tên sách (the title)",
               "nhà xuất bản (the publisher)"
-            ]
+            ],
+            "guide": [
+              "Pick up a real book and look at each line printed on its front cover.",
+              "Ask yourself: which line is the book's name, and which is the name of the person who wrote it?"
+            ],
+            "hint": "The person who writes a book is its author, and that person's name is usually printed at the top or bottom of the cover.",
+            "explain": "«Tên tác giả» (the author's name) tells who wrote the book; «tên sách» is the book's own name and «nhà xuất bản» is the company that prints it."
           }
         },
         {
@@ -64,13 +76,25 @@
             "tranh vẽ"
           ],
           "answer": 0,
+          "guide": [
+            "Nghĩ xem phần nào của sách liệt kê tên các bài kèm số trang bên cạnh.",
+            "Tìm tên bài cần đọc trong danh sách ấy, rồi lật tới đúng số trang ghi cạnh nó."
+          ],
+          "hint": "Phần này thường nằm ở đầu hoặc cuối sách, trông như một bảng kê tên bài và số trang.",
+          "explain": "Mục lục ghi tên từng bài cùng số trang; bìa sau và tranh vẽ không cho biết bài nằm ở trang nào.",
           "en": {
             "prompt": "To find which page a reading is on, which part of the book do you look at?",
             "choices": [
               "mục lục (contents)",
               "bìa sau (back cover)",
               "tranh vẽ (pictures)"
-            ]
+            ],
+            "guide": [
+              "Think which part of a book lists the readings with a page number beside each.",
+              "Find the reading's name in that list, then turn to the page number written next to it."
+            ],
+            "hint": "This part sits at the front or back of the book and looks like a list of readings and page numbers.",
+            "explain": "«Mục lục» (the contents) lists every reading with its page; the back cover and the pictures don't tell you any page."
           }
         },
         {
@@ -82,12 +106,24 @@
             "n"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc cả câu «Cú …ật từng trang sách thật nhẹ» và hình dung việc Cú đang làm với trang sách.",
+            "Ghép lần lượt l và n với «-ật», đọc to rồi giữ tiếng có nghĩa hợp với việc giở trang."
+          ],
+          "hint": "Tiếng cần điền cũng mở đầu hai từ quen thuộc «… ngược» và «… đật»: hai từ ấy bắt đầu bằng chữ gì?",
+          "explain": "Viết «lật» với l: lật trang là giở trang sang mặt kia, như trong «lật ngược»; «nật» không có nghĩa trong câu này.",
           "en": {
             "prompt": "l or n: «Cú …ật từng trang sách thật nhẹ» (Cú turns each page gently)?",
             "choices": [
               "l",
               "n"
-            ]
+            ],
+            "guide": [
+              "Read «Cú …ật từng trang sách thật nhẹ» and picture what Cú is doing with the page.",
+              "Join l and n in turn to «-ật», say each aloud and keep the one that fits turning pages."
+            ],
+            "hint": "The missing word also begins «… ngược» (upside down) and «… đật» (toddling): which letter starts those familiar words?",
+            "explain": "It is «lật» with l: «lật trang» means to turn a page, as in «lật ngược»; «nật» makes no sense in this sentence."
           }
         },
         {
@@ -100,13 +136,25 @@
             "đọc sách"
           ],
           "answer": 0,
+          "guide": [
+            "Xét từng từ: từ nào là một người, từ nào là đồ vật, từ nào là việc làm?",
+            "Giữ lại từ chỉ người, rồi kiểm tra người đó có trông coi sách hay không."
+          ],
+          "hint": "Ở thư viện có một cô hay chú cho mượn sách và xếp sách lên giá; từ nào gọi tên người ấy?",
+          "explain": "Thủ thư là người trông coi, cho mượn sách; giá sách là đồ vật để xếp sách, còn đọc sách là một hoạt động.",
           "en": {
             "prompt": "Which word names the person who looks after the books?",
             "choices": [
               "thủ thư (librarian)",
               "giá sách (bookshelf)",
               "đọc sách (read)"
-            ]
+            ],
+            "guide": [
+              "Sort the words: which is a person, which is a thing, which is an action?",
+              "Keep the word for a person, then check that this person looks after books."
+            ],
+            "hint": "In a library someone lends books and puts them back on the shelves: which word names that person?",
+            "explain": "«Thủ thư» is the librarian who looks after and lends the books; «giá sách» is a shelf and «đọc sách» is an action."
           }
         }
       ],
@@ -177,13 +225,25 @@
             "cái cốc"
           ],
           "answer": 0,
+          "guide": [
+            "Hình dung việc Cáo cần làm: gom những chiếc lá rơi trên sân lại thành đống.",
+            "Nghĩ công dụng của từng đồ vật, rồi chọn đồ vật dùng được cho việc quét."
+          ],
+          "hint": "Kéo dùng để cắt, cốc dùng để uống; đồ vật cần tìm có cán dài và nhiều sợi cứng.",
+          "explain": "Cái chổi dùng để quét, gom lá thành đống; cái kéo để cắt giấy, vải, còn cái cốc để đựng nước uống.",
           "en": {
             "prompt": "Cáo needs something to sweep the leaves into a pile. Which thing is it?",
             "choices": [
               "cái chổi (a broom)",
               "cái kéo (scissors)",
               "cái cốc (a cup)"
-            ]
+            ],
+            "guide": [
+              "Picture what Cáo has to do: gather the fallen leaves on the yard into a pile.",
+              "Think what each thing is used for, then choose the one you can sweep with."
+            ],
+            "hint": "Scissors cut and a cup holds a drink; the right thing has a long handle and lots of stiff bristles.",
+            "explain": "«Cái chổi» (a broom) sweeps the leaves into a pile; «cái kéo» cuts paper or cloth and «cái cốc» holds a drink."
           }
         },
         {
@@ -196,13 +256,25 @@
             "Em nhặt lá thu."
           ],
           "answer": 0,
+          "guide": [
+            "Đọc từng câu và tìm từ đứng sau «Lá thu» hoặc sau «Em».",
+            "Câu nêu đặc điểm cho biết lá trông thế nào (màu sắc, hình dáng), không kể lá hay người làm gì."
+          ],
+          "hint": "«rơi xuống» và «nhặt» là việc làm; hãy tìm câu có một từ chỉ màu sắc của lá.",
+          "explain": "«Lá thu vàng óng.» tả màu của lá nên là câu nêu đặc điểm; hai câu kia kể hoạt động: lá rơi, em nhặt lá.",
           "en": {
             "prompt": "Which sentence describes what an autumn leaf is like?",
             "choices": [
               "Lá thu vàng óng. (Autumn leaves are golden.)",
               "Lá thu rơi xuống. (The leaves fall.)",
               "Em nhặt lá thu. (I pick up a leaf.)"
-            ]
+            ],
+            "guide": [
+              "Read each sentence and find the word that comes after «Lá thu» or after «Em».",
+              "A describing sentence tells what the leaf looks like (colour, shape), not what the leaf or a person does."
+            ],
+            "hint": "«rơi xuống» (fall) and «nhặt» (pick up) are actions; look for the sentence with a colour word for the leaf.",
+            "explain": "«Lá thu vàng óng.» describes the leaf's colour, so it states a feature; the other two tell actions: leaves falling, me picking one up."
           }
         },
         {
@@ -215,13 +287,25 @@
             "M"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc thầm bảng chữ cái từ đầu và để ý lúc gặp từng chữ H, K, M.",
+            "Xếp ba thẻ theo đúng thứ tự gặp ấy, rồi nhìn thẻ đứng ở vị trí thứ hai."
+          ],
+          "hint": "H đến trước cả hai chữ kia; còn giữa K và M, chữ nào đến sớm hơn trong bảng chữ cái?",
+          "explain": "Theo bảng chữ cái, thứ tự là H, K, M nên thẻ K đứng giữa, H đứng đầu và M đứng cuối.",
           "en": {
             "prompt": "Put the letter cards M, H and K in alphabetical order. Which card is in the middle?",
             "choices": [
               "K",
               "H",
               "M"
-            ]
+            ],
+            "guide": [
+              "Say the alphabet quietly from the start and notice when you reach H, K and M.",
+              "Line the three cards up in that order, then look at the card in second place."
+            ],
+            "hint": "H comes before both the others; between K and M, which letter do you reach sooner in the alphabet?",
+            "explain": "In alphabetical order the cards go H, K, M, so K is in the middle, with H first and M last."
           }
         },
         {
@@ -234,13 +318,25 @@
             "12"
           ],
           "answer": 0,
+          "guide": [
+            "Tính xem từ mỗi chiếc lá sang chiếc lá kế bên, số tăng thêm bao nhiêu.",
+            "Lấy số trên chiếc lá cuối cùng cộng với khoảng tăng ấy."
+          ],
+          "hint": "Dãy 2, 4, 6, 8 là các số chẵn đếm cách 2; sau 8 còn một bước như thế.",
+          "explain": "Mỗi lá hơn lá trước 2 đơn vị, nên lá tiếp theo là 8 + 2 = 10; 9 là số lẻ, 12 thì bỏ qua mất số 10.",
           "en": {
             "prompt": "The leaves are numbered 2, 4, 6, 8, … What number is on the next leaf?",
             "choices": [
               "10",
               "9",
               "12"
-            ]
+            ],
+            "guide": [
+              "Work out how much the number grows from each leaf to the next one.",
+              "Add that step to the number on the last leaf."
+            ],
+            "hint": "2, 4, 6, 8 are even numbers counted in twos; take one more step of two after 8.",
+            "explain": "Each leaf is 2 more than the one before, so the next is 8 + 2 = 10; 9 is odd and 12 skips over 10."
           }
         }
       ],
@@ -313,13 +409,25 @@
             "60 giờ"
           ],
           "answer": 0,
+          "guide": [
+            "Một ngày có hai lượt kim ngắn chạy trọn mặt đồng hồ: nửa đêm tới trưa, rồi trưa tới nửa đêm.",
+            "Mặt đồng hồ có 12 số; cộng số giờ của hai lượt ấy lại."
+          ],
+          "hint": "Mỗi lượt kim ngắn đi hết 12 giờ, mà một ngày có hai lượt: 12 + 12 = ?",
+          "explain": "Một ngày có 24 giờ vì 12 + 12 = 24; 12 giờ mới là nửa ngày, còn 60 là số phút của một giờ.",
           "en": {
             "prompt": "Gà Vàng Báo Giờ asks: how many hours are there in a whole day?",
             "choices": [
               "24 hours",
               "12 hours",
               "60 hours"
-            ]
+            ],
+            "guide": [
+              "A day is two full trips of the hour hand round the clock: midnight to noon, then noon to midnight.",
+              "The clock face has 12 numbers; add the hours of those two trips together."
+            ],
+            "hint": "Each trip of the hour hand takes 12 hours and a day has two trips: 12 + 12 = ?",
+            "explain": "A day has 24 hours because 12 + 12 = 24; 12 hours is only half a day, and 60 is the minutes in an hour."
           }
         },
         {
@@ -332,13 +440,25 @@
             "30 phút"
           ],
           "answer": 0,
+          "guide": [
+            "Nhìn mặt đồng hồ: kim dài đi hết một vòng thì kim ngắn mới nhích sang số kế tiếp.",
+            "Một vòng kim dài có 12 khoảng, mỗi khoảng 5 phút; đếm thêm 5 cho đủ 12 lần."
+          ],
+          "hint": "Đếm thêm 5 theo các số trên mặt đồng hồ: 5, 10, 15, … đến số 12 thì dừng.",
+          "explain": "1 giờ bằng 60 phút: kim dài đi trọn 12 khoảng, đếm thêm 5 mười hai lần là 5, 10, …, 60.",
           "en": {
             "prompt": "Gà reminds the children: one hour is how many minutes?",
             "choices": [
               "60 minutes",
               "100 minutes",
               "30 minutes"
-            ]
+            ],
+            "guide": [
+              "Look at a clock: the long hand goes all the way round before the short hand moves on one number.",
+              "One trip of the long hand has 12 gaps of 5 minutes each; count on in fives 12 times."
+            ],
+            "hint": "Count in fives along the clock numbers: 5, 10, 15, … and stop when you reach the 12.",
+            "explain": "One hour is 60 minutes: the long hand passes 12 gaps, and counting in fives twelve times goes 5, 10, …, 60."
           }
         },
         {
@@ -351,13 +471,25 @@
             "1 giờ chiều"
           ],
           "answer": 0,
+          "guide": [
+            "Giờ buổi chiều được đếm tiếp sau 12 giờ trưa: 13 giờ, 14 giờ, 15 giờ…",
+            "Lấy 15 trừ đi 12 để ra số giờ chiều trên đồng hồ kim."
+          ],
+          "hint": "13 giờ là 1 giờ chiều, 14 giờ là 2 giờ chiều; đếm tiếp thêm một giờ nữa.",
+          "explain": "15 giờ là 3 giờ chiều vì 15 − 12 = 3; 5 giờ chiều là 17 giờ, còn 1 giờ chiều là 13 giờ.",
           "en": {
             "prompt": "The tower bell strikes 15:00. What is 15:00 in the afternoon?",
             "choices": [
               "3 p.m.",
               "5 p.m.",
               "1 p.m."
-            ]
+            ],
+            "guide": [
+              "Afternoon hours carry on counting after 12 noon: 13:00, 14:00, 15:00…",
+              "Take 12 away from 15 to get the afternoon hour on a clock with hands."
+            ],
+            "hint": "13:00 is 1 p.m. and 14:00 is 2 p.m.; count on one more hour.",
+            "explain": "15:00 is 3 p.m. because 15 − 12 = 3; 5 p.m. is 17:00 and 1 p.m. is 13:00."
           }
         },
         {
@@ -370,13 +502,25 @@
             "thứ Sáu"
           ],
           "answer": 0,
+          "guide": [
+            "Ngày 11 đứng ngay sau ngày 10, tức là ngày mai của hôm nay.",
+            "Đọc thứ tự các ngày trong tuần bắt đầu từ thứ Tư rồi lấy ngày liền sau."
+          ],
+          "hint": "Thứ tự trong tuần là thứ Hai, thứ Ba, thứ Tư, rồi tiếp đến ngày nào?",
+          "explain": "Ngày 11 là ngày liền sau thứ Tư ngày 10, nên là thứ Năm; thứ Ba là ngày 9, còn thứ Sáu là ngày 12.",
           "en": {
             "prompt": "Today's calendar page says Wednesday the 10th. What day is the 11th?",
             "choices": [
               "thứ Năm (Thursday)",
               "thứ Ba (Tuesday)",
               "thứ Sáu (Friday)"
-            ]
+            ],
+            "guide": [
+              "The 11th comes straight after the 10th, so it is tomorrow.",
+              "Say the days of the week starting from Wednesday and take the very next one."
+            ],
+            "hint": "The week goes Monday, Tuesday, Wednesday, and then which day?",
+            "explain": "The 11th is the day after Wednesday the 10th, so it is Thursday («thứ Năm»); Tuesday was the 9th and Friday is the 12th."
           }
         },
         {
@@ -389,13 +533,25 @@
             "1"
           ],
           "answer": 0,
+          "guide": [
+            "Một tháng bắt đầu từ ngày 1 và kết thúc ở ngày có số lớn nhất.",
+            "Đọc lại đề xem tháng Mười có tất cả bao nhiêu ngày."
+          ],
+          "hint": "Nếu tháng có 30 ngày thì ngày cuối là ngày 30; tháng Mười dài hơn thế một ngày.",
+          "explain": "Tháng Mười có 31 ngày nên ngày cuối tháng là ngày 31; ngày 30 còn một ngày nữa mới hết tháng, ngày 1 là đầu tháng.",
           "en": {
             "prompt": "October has 31 days. What date is the last day of October?",
             "choices": [
               "31",
               "30",
               "1"
-            ]
+            ],
+            "guide": [
+              "A month starts on the 1st and ends on the date with the biggest number.",
+              "Read the question again to see how many days October has in all."
+            ],
+            "hint": "If a month had 30 days its last day would be the 30th; October is one day longer than that.",
+            "explain": "October has 31 days, so its last day is the 31st; on the 30th there is still a day to go, and the 1st is the start."
           }
         }
       ],

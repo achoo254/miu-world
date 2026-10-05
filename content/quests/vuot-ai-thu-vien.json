@@ -211,7 +211,17 @@
             { "id": "b", "text": "6 giờ 45 phút" },
             { "id": "c", "text": "9 giờ đúng" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": ["Đọc kim ngắn trước: nó đã qua số 9 nhưng chưa tới số 10, nên giờ vẫn tính là 9.", "Đọc kim dài sau: mỗi số trên mặt đồng hồ ứng với 5 phút, đếm thêm 5 tới số 6."],
+            "hint": "Kim dài chỉ số 6 nghĩa là kim đã đi được nửa vòng, tức nửa giờ.",
+            "answer": { "text": "9 giờ 30 phút", "explanation": "Kim ngắn qua số 9 là hơn 9 giờ; kim dài ở số 6, đếm 5, 10, …, 30 là 30 phút, nên đồng hồ chỉ 9 giờ 30 phút; 9 giờ đúng thì kim dài chỉ số 12." },
+            "en": {
+              "guide": ["Read the short hand first: it has passed the 9 but not reached the 10, so the hour is still 9.", "Then read the long hand: each number on the face is 5 minutes, so count on in fives up to the 6."],
+              "hint": "The long hand on the 6 has gone half way round, which is half an hour.",
+              "answer": { "text": "9:30 (9 giờ 30 phút)", "explanation": "The short hand just past 9 means after nine o'clock, and the long hand on 6 is 5, 10, …, 30 minutes, so it's 9:30; at nine sharp it would point to 12." }
+            }
+          }
         },
         {
           "id": "mot-ngay",
@@ -222,7 +232,17 @@
             { "id": "b", "text": "24 giờ" },
             { "id": "c", "text": "60 giờ" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": ["Hình dung kim ngắn chạy từ nửa đêm hôm nay đến trưa, rồi từ trưa đến nửa đêm hôm sau.", "Mỗi chặng ấy kim ngắn đi đủ 12 số; cộng số giờ của hai chặng."],
+            "hint": "Nửa ngày đầu có 12 giờ, nửa ngày sau cũng 12 giờ như thế.",
+            "answer": { "text": "24 giờ", "explanation": "Từ nửa đêm đến nửa đêm hôm sau kim ngắn quay hai vòng, 12 + 12 = 24 nên một ngày có 24 giờ; 12 giờ chỉ là nửa ngày." },
+            "en": {
+              "guide": ["Picture the hour hand going from tonight's midnight to noon, then from noon to the next midnight.", "On each leg the hour hand passes all 12 numbers; add the hours of both legs."],
+              "hint": "The first half of the day is 12 hours, and the second half is 12 hours too.",
+              "answer": { "text": "24 hours (24 giờ)", "explanation": "From one midnight to the next the hour hand goes round twice, 12 + 12 = 24, so a day has 24 hours; 12 hours is just half a day." }
+            }
+          }
         },
         {
           "id": "mot-gio",
@@ -233,7 +253,17 @@
             { "id": "b", "text": "100 phút" },
             { "id": "c", "text": "60 phút" }
           ],
-          "answer": { "choice": "c" }
+          "answer": { "choice": "c" },
+          "support": {
+            "guide": ["Theo dõi kim dài: nó quay trọn một vòng thì vừa đúng một giờ trôi qua.", "Mỗi khoảng giữa hai số liền nhau trên mặt đồng hồ là 5 phút; đếm thêm 5 qua cả 12 khoảng."],
+            "hint": "Nửa vòng kim dài, từ số 12 đến số 6, đã là 30 phút; cả vòng gấp đôi thế.",
+            "answer": { "text": "60 phút", "explanation": "Một giờ bằng 60 phút vì kim dài đi trọn vòng là hai lần nửa giờ: 30 + 30 = 60; 100 phút thì đã hơn một giờ rồi." },
+            "en": {
+              "guide": ["Watch the long hand: when it goes once all the way round, exactly one hour has passed.", "Each gap between two numbers on the clock face is 5 minutes; count on in fives across all 12 gaps."],
+              "hint": "Half a turn of the long hand, from 12 to 6, is already 30 minutes; a full turn is twice that.",
+              "answer": { "text": "60 minutes (60 phút)", "explanation": "An hour is 60 minutes because a full turn of the long hand is two half hours: 30 + 30 = 60; 100 minutes is more than an hour." }
+            }
+          }
         },
         {
           "id": "thang-muoi",
@@ -244,7 +274,17 @@
             { "id": "b", "text": "31 ngày" },
             { "id": "c", "text": "28 ngày" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": ["Nắm tay lại, đếm các tháng lần lượt trên gò khớp ngón tay và chỗ lõm giữa chúng.", "Tháng nằm trên gò khớp là tháng dài, tháng nằm ở chỗ lõm thì ngắn hơn; xem tháng 10 nằm ở đâu."],
+            "hint": "Đếm trên nắm tay, tháng 10 rơi vào một gò khớp, giống tháng 1, tháng 8 và tháng 12.",
+            "answer": { "text": "31 ngày", "explanation": "Tháng 10 có 31 ngày (rơi vào gò khớp tay); 30 ngày là tháng 9 hay tháng 11, còn 28 ngày là tháng 2 năm thường." },
+            "en": {
+              "guide": ["Make a fist and count the months in turn on your knuckles and the dips between them.", "A month on a knuckle is a long one and a month in a dip is shorter; see where month 10 lands."],
+              "hint": "Counting on your fist, month 10 (October) lands on a knuckle, just like months 1, 8 and 12.",
+              "answer": { "text": "31 days (31 ngày)", "explanation": "October has 31 days (it lands on a knuckle); 30 days is for September or November, and 28 days is February in an ordinary year." }
+            }
+          }
         },
         {
           "id": "ngay-mai",
@@ -255,7 +295,17 @@
             { "id": "b", "text": "Thứ Tư" },
             { "id": "c", "text": "Thứ Năm" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": ["Ngày 16 đến ngay sau ngày 15, nên chỉ cần tìm ngày liền sau thứ Ba trong tuần.", "Đọc thứ tự trong tuần: thứ Hai, thứ Ba, … và dừng ở ngày đứng ngay sau thứ Ba."],
+            "hint": "Ngày cần tìm nằm giữa thứ Ba và thứ Năm trong tuần.",
+            "answer": { "text": "Thứ Tư", "explanation": "Ngày 16 tháng 10 liền sau thứ Ba ngày 15, nên là thứ Tư; thứ Hai là ngày 14, thứ Năm là ngày 17." },
+            "en": {
+              "guide": ["The 16th comes right after the 15th, so you only need the day after Tuesday.", "Say the week in order, Monday, Tuesday, … and stop at the day straight after Tuesday."],
+              "hint": "The day you want sits between Tuesday and Thursday.",
+              "answer": { "text": "Wednesday (thứ Tư)", "explanation": "16 October is the day after Tuesday the 15th, so it is Wednesday; Monday was the 14th and Thursday is the 17th." }
+            }
+          }
         },
         {
           "id": "muoi-lam-gio",
@@ -266,7 +316,17 @@
             { "id": "b", "text": "5 giờ chiều" },
             { "id": "c", "text": "1 giờ chiều" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": ["Đồng hồ điện tử đếm giờ chiều tiếp sau 12: 12:00 là trưa, rồi 13:00, 14:00, 15:00.", "Để đổi sang cách gọi buổi chiều, bớt 12 khỏi số giờ hiện trên màn hình."],
+            "hint": "15 − 12 = ? Số đó chính là giờ chiều bạn cần đọc.",
+            "answer": { "text": "3 giờ chiều", "explanation": "Màn hình hiện 15:00 nghĩa là 3 giờ chiều, vì 15 − 12 = 3; 5 giờ chiều sẽ hiện 17:00, còn 1 giờ chiều hiện 13:00." },
+            "en": {
+              "guide": ["A digital clock keeps counting after 12 in the afternoon: 12:00 is noon, then 13:00, 14:00, 15:00.", "To say it the afternoon way, take 12 off the hour shown on the screen."],
+              "hint": "15 − 12 = ? That number is the afternoon hour you need.",
+              "answer": { "text": "3 in the afternoon (3 giờ chiều)", "explanation": "A screen showing 15:00 means 3 in the afternoon since 15 − 12 = 3; 5 p.m. would show 17:00 and 1 p.m. would show 13:00." }
+            }
+          }
         },
         {
           "id": "sach-ban-hien",
@@ -277,7 +337,17 @@
             { "id": "b", "text": "Một chiếc đồng hồ" },
             { "id": "c", "text": "Một tờ lịch" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": ["Tìm sự vật được nói tới ở đầu câu, rồi tìm từ «là» nối nó với sự vật khác.", "Phần đứng sau từ «là» cho biết cuốn sách được ví với ai hay cái gì."],
+            "hint": "Câu chỉ nói về sách; đồng hồ và tờ lịch không hề xuất hiện trong câu Sâu đọc.",
+            "answer": { "text": "Một người bạn hiền", "explanation": "Câu «Mỗi cuốn sách là một người bạn hiền.» dùng từ «là» để ví sách như người bạn hiền; đồng hồ, tờ lịch không có trong câu." },
+            "en": {
+              "guide": ["Find the thing named at the start of the sentence, then the word «là» (is) that links it to something else.", "What comes after «là» tells you who or what the book is compared to."],
+              "hint": "The sentence talks only about books; no clock or calendar page appears in what the worm reads.",
+              "answer": { "text": "A kind friend (một người bạn hiền)", "explanation": "«Mỗi cuốn sách là một người bạn hiền.» uses «là» to liken every book to a kind friend; no clock or calendar page is in the sentence." }
+            }
+          }
         }
       ]
     },

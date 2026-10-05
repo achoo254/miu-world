@@ -284,6 +284,11 @@ export const BossTurnWithSecret = z.strictObject({
   illustration: IllustrationRef.optional(),
   en: BossTurnEn.optional(),
   answer: ChoiceAnswer,
+  /**
+   * The three support layers of this question, like every challenge's (Hướng dẫn, Gợi ý, Đáp án kèm giải thích), in
+   * both languages; the answer layer names the right choice. Server-only: handed out one layer at a time on request.
+   */
+  support: LearningSupport,
 });
 export type BossTurnWithSecret = z.infer<typeof BossTurnWithSecret>;
 
@@ -656,6 +661,26 @@ function challengeIssues(step: ChallengeStep): string[] {
   return issues;
 }
 
+/**
+ * A boss question carries the three support layers every challenge has, in both languages (a boss of any quest kind:
+ * players of every age fight it), and its answer layer names the question's right choice as the choice reads.
+ */
+export function bossTurnSupportIssues(turn: BossTurnWithSecret): string[] {
+  const issues: string[] = [];
+  const { support } = turn;
+  const right = turn.choices.findIndex((c) => c.id === turn.answer.choice);
+  const label = turn.choices[right]?.text;
+  if (label !== undefined && support.answer.text !== label) issues.push(`the answer layer reads "${support.answer.text}", the right choice "${label}"`);
+  if (!support.en) {
+    issues.push('needs its support layers in English (support.en)');
+    return issues;
+  }
+  if (support.en.guide.length !== support.guide.length) issues.push(`support.en has ${support.en.guide.length} guide lines, the turn ${support.guide.length}`);
+  const enLabel = turn.en?.choices[right];
+  if (enLabel !== undefined && support.en.answer.text !== enLabel) issues.push(`the English answer layer reads "${support.en.answer.text}", the right choice "${enLabel}"`);
+  return issues;
+}
+
 function stepIssues(step: QuestStep, texts: Readonly<Record<string, unknown>>, allStepIds?: readonly string[]): string[] {
   const issues: string[] = [];
   if (step.kind !== 'search' && step.kind !== 'find-object' && step.trigger !== 'auto' && !step.target) issues.push('needs a target unless its trigger is auto');
@@ -686,6 +711,7 @@ function stepIssues(step: QuestStep, texts: Readonly<Record<string, unknown>>, a
         issues.push(`turn ${turn.id}: answer choice is not one of the choices`);
       }
       if (turn.en && turn.en.choices.length !== turn.choices.length) issues.push(`turn ${turn.id}: en has ${turn.en.choices.length} choices, the turn ${turn.choices.length}`);
+      if ('support' in turn) issues.push(...bossTurnSupportIssues(turn).map((m) => `turn ${turn.id}: ${m}`));
     }
     // Every turn answered right must beat the boss, or the fight could never be won.
     if (bossDamage(step) < step.maxHp) issues.push(`the turns take ${bossDamage(step)} HP in all, less than the boss's ${step.maxHp}`);

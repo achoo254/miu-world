@@ -23,15 +23,28 @@ function files(dir: string): string[] {
   });
 }
 
-/** Text only the support endpoint may hand out: the answer layer's answer and explanation, per step. */
+type WithSupport = { support?: { answer?: { text?: unknown; explanation?: unknown } } };
+
+/**
+ * Text only the support endpoint may hand out: the answer layer's explanation and (unless it is only a choice's label,
+ * which the question itself shows) its answer, per step and per boss question.
+ */
 export function questSecrets(quests: readonly unknown[]): string[] {
   const secrets = new Set<string>();
+  const add = (value: unknown) => {
+    if (typeof value === 'string' && value.length >= MIN_SECRET_LENGTH) secrets.add(value);
+  };
   for (const quest of quests) {
     const steps = (quest as { steps?: unknown[] }).steps ?? [];
     for (const step of steps) {
-      const answer = (step as { support?: { answer?: { text?: unknown; explanation?: unknown } } }).support?.answer;
-      for (const value of [answer?.text, answer?.explanation]) {
-        if (typeof value === 'string' && value.length >= MIN_SECRET_LENGTH) secrets.add(value);
+      const answer = (step as WithSupport).support?.answer;
+      add(answer?.text);
+      add(answer?.explanation);
+      for (const turn of (step as { turns?: unknown[] }).turns ?? []) {
+        const layer = (turn as WithSupport).support?.answer;
+        const labels = ((turn as { choices?: Array<{ text?: unknown }> }).choices ?? []).map((c) => c.text);
+        if (!labels.includes(layer?.text)) add(layer?.text);
+        add(layer?.explanation);
       }
     }
   }

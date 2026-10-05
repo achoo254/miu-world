@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Một ngày có hai lượt kim ngắn chạy trọn mặt đồng hồ: nửa đêm tới trưa, rồi trưa tới nửa đêm.",
+              "Mặt đồng hồ có 12 số; cộng số giờ của hai lượt ấy lại."
+            ],
+            "hint": "Mỗi lượt kim ngắn đi hết 12 giờ, mà một ngày có hai lượt: 12 + 12 = ?",
+            "answer": {
+              "text": "24 giờ",
+              "explanation": "Một ngày có 24 giờ vì 12 + 12 = 24; 12 giờ mới là nửa ngày, còn 60 là số phút của một giờ."
+            },
+            "en": {
+              "guide": [
+                "A day is two full trips of the hour hand round the clock: midnight to noon, then noon to midnight.",
+                "The clock face has 12 numbers; add the hours of those two trips together."
+              ],
+              "hint": "Each trip of the hour hand takes 12 hours and a day has two trips: 12 + 12 = ?",
+              "answer": {
+                "text": "24 hours",
+                "explanation": "A day has 24 hours because 12 + 12 = 24; 12 hours is only half a day, and 60 is the minutes in an hour."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Nhìn mặt đồng hồ: kim dài đi hết một vòng thì kim ngắn mới nhích sang số kế tiếp.",
+              "Một vòng kim dài có 12 khoảng, mỗi khoảng 5 phút; đếm thêm 5 cho đủ 12 lần."
+            ],
+            "hint": "Đếm thêm 5 theo các số trên mặt đồng hồ: 5, 10, 15, … đến số 12 thì dừng.",
+            "answer": {
+              "text": "60 phút",
+              "explanation": "1 giờ bằng 60 phút: kim dài đi trọn 12 khoảng, đếm thêm 5 mười hai lần là 5, 10, …, 60."
+            },
+            "en": {
+              "guide": [
+                "Look at a clock: the long hand goes all the way round before the short hand moves on one number.",
+                "One trip of the long hand has 12 gaps of 5 minutes each; count on in fives 12 times."
+              ],
+              "hint": "Count in fives along the clock numbers: 5, 10, 15, … and stop when you reach the 12.",
+              "answer": {
+                "text": "60 minutes",
+                "explanation": "One hour is 60 minutes: the long hand passes 12 gaps, and counting in fives twelve times goes 5, 10, …, 60."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Giờ buổi chiều được đếm tiếp sau 12 giờ trưa: 13 giờ, 14 giờ, 15 giờ…",
+              "Lấy 15 trừ đi 12 để ra số giờ chiều trên đồng hồ kim."
+            ],
+            "hint": "13 giờ là 1 giờ chiều, 14 giờ là 2 giờ chiều; đếm tiếp thêm một giờ nữa.",
+            "answer": {
+              "text": "3 giờ chiều",
+              "explanation": "15 giờ là 3 giờ chiều vì 15 − 12 = 3; 5 giờ chiều là 17 giờ, còn 1 giờ chiều là 13 giờ."
+            },
+            "en": {
+              "guide": [
+                "Afternoon hours carry on counting after 12 noon: 13:00, 14:00, 15:00…",
+                "Take 12 away from 15 to get the afternoon hour on a clock with hands."
+              ],
+              "hint": "13:00 is 1 p.m. and 14:00 is 2 p.m.; count on one more hour.",
+              "answer": {
+                "text": "3 p.m.",
+                "explanation": "15:00 is 3 p.m. because 15 − 12 = 3; 5 p.m. is 17:00 and 1 p.m. is 13:00."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Ngày 11 đứng ngay sau ngày 10, tức là ngày mai của hôm nay.",
+              "Đọc thứ tự các ngày trong tuần bắt đầu từ thứ Tư rồi lấy ngày liền sau."
+            ],
+            "hint": "Thứ tự trong tuần là thứ Hai, thứ Ba, thứ Tư, rồi tiếp đến ngày nào?",
+            "answer": {
+              "text": "thứ Năm",
+              "explanation": "Ngày 11 là ngày liền sau thứ Tư ngày 10, nên là thứ Năm; thứ Ba là ngày 9, còn thứ Sáu là ngày 12."
+            },
+            "en": {
+              "guide": [
+                "The 11th comes straight after the 10th, so it is tomorrow.",
+                "Say the days of the week starting from Wednesday and take the very next one."
+              ],
+              "hint": "The week goes Monday, Tuesday, Wednesday, and then which day?",
+              "answer": {
+                "text": "thứ Năm (Thursday)",
+                "explanation": "The 11th is the day after Wednesday the 10th, so it is Thursday («thứ Năm»); Tuesday was the 9th and Friday is the 12th."
+              }
+            }
           }
         },
         {
@@ -226,6 +314,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Một tháng bắt đầu từ ngày 1 và kết thúc ở ngày có số lớn nhất.",
+              "Đọc lại đề xem tháng Mười có tất cả bao nhiêu ngày."
+            ],
+            "hint": "Nếu tháng có 30 ngày thì ngày cuối là ngày 30; tháng Mười dài hơn thế một ngày.",
+            "answer": {
+              "text": "31",
+              "explanation": "Tháng Mười có 31 ngày nên ngày cuối tháng là ngày 31; ngày 30 còn một ngày nữa mới hết tháng, ngày 1 là đầu tháng."
+            },
+            "en": {
+              "guide": [
+                "A month starts on the 1st and ends on the date with the biggest number.",
+                "Read the question again to see how many days October has in all."
+              ],
+              "hint": "If a month had 30 days its last day would be the 30th; October is one day longer than that.",
+              "answer": {
+                "text": "31",
+                "explanation": "October has 31 days, so its last day is the 31st; on the 30th there is still a day to go, and the 1st is the start."
+              }
+            }
           }
         }
       ],

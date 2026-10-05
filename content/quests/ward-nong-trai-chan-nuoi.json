@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Gà chạy ra sân thì trong chuồng ít đi, nên tính 42 − 8.",
+              "Hàng đơn vị 2 không trừ được 8, hãy mượn 1 chục từ 4 chục."
+            ],
+            "hint": "Mượn 1 chục: 12 − 8 = 4, còn lại 3 chục ở hàng chục.",
+            "answer": {
+              "text": "34",
+              "explanation": "42 − 8 = 34 vì 12 − 8 = 4 và 4 chục bớt 1 còn 3 chục; 44 là quên mượn, 50 là cộng nhầm."
+            },
+            "en": {
+              "guide": [
+                "Hens running out leave fewer in the coop, so work out 42 − 8.",
+                "2 ones can't take away 8, so borrow 1 ten from the 4 tens."
+              ],
+              "hint": "Borrow a ten: 12 − 8 = 4, and 3 tens are left in the tens place.",
+              "answer": {
+                "text": "34",
+                "explanation": "42 − 8 = 34 because 12 − 8 = 4 and 4 tens less 1 is 3 tens; 44 forgets the borrowing, 50 adds by mistake."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Số vịt trên bờ là 71 con bớt đi 36 con đã xuống ao.",
+              "Đặt tính 71 − 36: 1 không trừ được 6 nên mượn 1 chục."
+            ],
+            "hint": "11 − 6 = 5 ở hàng đơn vị; hàng chục còn 6 chục, trừ tiếp 3 chục.",
+            "answer": {
+              "text": "35",
+              "explanation": "71 − 36 = 35: 11 − 6 = 5, rồi 7 bớt 1 là 6, 6 − 3 = 3; thử lại 35 + 36 = 71 là đúng."
+            },
+            "en": {
+              "guide": [
+                "The ducks on the bank are 71 take away the 36 in the pond.",
+                "Set out 71 − 36: 1 can't take away 6, so borrow a ten."
+              ],
+              "hint": "11 − 6 = 5 in the ones; 6 tens remain, then take away 3 tens.",
+              "answer": {
+                "text": "35",
+                "explanation": "71 − 36 = 35: 11 − 6 = 5, then 7 minus 1 is 6 and 6 − 3 = 3; check: 35 + 36 = 71."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Tính hiệu 63 − 9 trước, rồi mới đặt kết quả cạnh số 50.",
+              "So sánh hàng chục của hai số trước; hàng chục bằng nhau mới xét hàng đơn vị."
+            ],
+            "hint": "63 − 9 = 54, mà 54 và 50 cùng 5 chục, nên nhìn hàng đơn vị: 4 và 0.",
+            "answer": {
+              "text": ">",
+              "explanation": "63 − 9 = 54 và 54 lớn hơn 50 vì 4 đơn vị nhiều hơn 0, nên điền dấu >."
+            },
+            "en": {
+              "guide": [
+                "Work out 63 − 9 first, then set the result beside 50.",
+                "Compare the tens first; only if they match, look at the ones."
+              ],
+              "hint": "63 − 9 = 54, and 54 and 50 both have 5 tens, so look at the ones: 4 and 0.",
+              "answer": {
+                "text": ">",
+                "explanation": "63 − 9 = 54, and 54 is greater than 50 since 4 ones beat 0, so the sign is >."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Số cần tìm là phần bị bớt đi: lấy 80 trừ đi kết quả 52.",
+              "Tính 80 − 52, rồi thử lại bằng cách điền số vừa tìm vào chỗ trống."
+            ],
+            "hint": "0 không trừ được 2 nên mượn 1 chục: 10 − 2 = 8, rồi 7 chục bớt 5 chục.",
+            "answer": {
+              "text": "28",
+              "explanation": "80 − 52 = 28, và thử lại 80 − 28 = 52 là đúng; 32 là kết quả khi quên mượn chục."
+            },
+            "en": {
+              "guide": [
+                "The missing number is the part taken away: take 52 from 80.",
+                "Work out 80 − 52, then check by putting it back in the gap."
+              ],
+              "hint": "0 can't take away 2, so borrow a ten: 10 − 2 = 8, then 7 tens less 5 tens.",
+              "answer": {
+                "text": "28",
+                "explanation": "80 − 52 = 28, and the check 80 − 28 = 52 works; 32 comes from forgetting to borrow."
+              }
+            }
           }
         }
       ],

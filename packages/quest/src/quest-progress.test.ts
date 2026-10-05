@@ -268,6 +268,12 @@ describe('a boss battle step', () => {
             ],
             damage: 80,
             answer: { choice: 'c1' },
+            support: {
+              guide: ['Đếm từng quả.'],
+              hint: 'Cộng hai số lại.',
+              answer: { text: '2', explanation: '1 + 1 = 2.' },
+              en: { guide: ['Count each one.'], hint: 'Add the two numbers.', answer: { text: '2', explanation: '1 + 1 = 2.' } },
+            },
           },
           {
             id: 'turn-2',
@@ -279,6 +285,12 @@ describe('a boss battle step', () => {
             ],
             damage: 80,
             answer: { choice: 'c3' },
+            support: {
+              guide: ['Đếm từng quả.'],
+              hint: 'Cộng hai số lại.',
+              answer: { text: '4', explanation: '2 + 2 = 4.' },
+              en: { guide: ['Count each one.'], hint: 'Add the two numbers.', answer: { text: '4', explanation: '2 + 2 = 4.' } },
+            },
           },
         ],
       },

@@ -271,7 +271,29 @@
             { "id": "b", "text": "Xô B nhiều hơn" },
             { "id": "c", "text": "Hai xô bằng nhau" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Ghi ra hai số sò: 28 con ở xô A, 35 con ở xô B.",
+              "So chữ số hàng chục của hai số trước, số nào nhiều chục hơn thì lớn hơn."
+            ],
+            "hint": "28 có 2 chục, 35 có 3 chục; xô nào có số chục nhiều hơn?",
+            "answer": {
+              "text": "Xô B nhiều hơn",
+              "explanation": "35 > 28 vì 3 chục nhiều hơn 2 chục, nên xô B nhiều sò hơn; 8 đơn vị của 28 không bù được một chục còn thiếu."
+            },
+            "en": {
+              "guide": [
+                "Note the two shell counts: 28 in bucket A, 35 in bucket B.",
+                "Compare the tens digits first; more tens means the bigger number."
+              ],
+              "hint": "28 has 2 tens and 35 has 3 tens; which bucket has more tens?",
+              "answer": {
+                "text": "Bucket B has more (35 shells)",
+                "explanation": "35 > 28 because 3 tens beat 2 tens, so bucket B holds more shells; the 8 ones in 28 cannot make up a missing ten."
+              }
+            }
+          }
         },
         {
           "id": "c2",
@@ -283,7 +305,29 @@
             { "id": "b", "text": "18 chú" },
             { "id": "c", "text": "19 chú" }
           ],
-          "answer": { "choice": "c" }
+          "answer": { "choice": "c" },
+          "support": {
+            "guide": [
+              "Bắt đầu từ 14 chú còng gió đang có trên bãi cát.",
+              "Đếm thêm 5 bước: 15, 16, 17… cho đủ 5 chú chạy lại."
+            ],
+            "hint": "Chỉ cộng hàng đơn vị 4 + 5, còn 1 chục của 14 giữ nguyên.",
+            "answer": {
+              "text": "19 chú",
+              "explanation": "14 + 5 = 19 vì 4 + 5 = 9 đơn vị, giữ nguyên 1 chục; 17 và 18 là đếm thêm chưa đủ 5 chú."
+            },
+            "en": {
+              "guide": [
+                "Start from the 14 ghost crabs already on the sand.",
+                "Count on 5 steps: 15, 16, 17… for the 5 crabs that run over."
+              ],
+              "hint": "Only the ones change, 4 + 5, while the 1 ten of 14 stays put.",
+              "answer": {
+                "text": "19 crabs",
+                "explanation": "14 + 5 = 19 because 4 + 5 = 9 ones and the ten stays; 17 and 18 stop counting on before all 5 crabs arrive."
+              }
+            }
+          }
         },
         {
           "id": "c3",
@@ -295,7 +339,29 @@
             { "id": "b", "text": "13 quả" },
             { "id": "c", "text": "14 quả" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Từ 20 quả dừa trên cây, bớt đi 8 quả bị gió làm rụng.",
+              "Tách 20 thành 10 và 10, lấy một chục trừ 8 trước."
+            ],
+            "hint": "10 - 8 = 2; cộng 2 quả đó với chục quả dừa còn nguyên.",
+            "answer": {
+              "text": "12 quả",
+              "explanation": "20 - 8 = 12 vì 10 - 8 = 2, cộng với 10 còn lại là 12; thử lại 12 + 8 = 20 là đúng."
+            },
+            "en": {
+              "guide": [
+                "From the 20 coconuts on the tree, take away the 8 the wind knocked down.",
+                "Split 20 into 10 and 10, and take 8 from one of the tens first."
+              ],
+              "hint": "10 - 8 = 2; add those 2 coconuts to the ten left untouched.",
+              "answer": {
+                "text": "12 coconuts",
+                "explanation": "20 - 8 = 12 because 10 - 8 = 2 and the other 10 makes 12; check it: 12 + 8 = 20."
+              }
+            }
+          }
         },
         {
           "id": "c4",
@@ -307,7 +373,29 @@
             { "id": "b", "text": "50" },
             { "id": "c", "text": "60" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Xem hai số liền nhau trong dãy số sóng biển cách nhau bao nhiêu.",
+              "Lấy số cuối cùng là 40 cộng thêm đúng khoảng cách đó."
+            ],
+            "hint": "Mỗi con sóng tăng thêm 10, giống như đếm theo chục.",
+            "answer": {
+              "text": "50",
+              "explanation": "Dãy đếm thêm 10 mỗi bước nên 40 + 10 = 50; 45 chỉ thêm 5, còn 60 là nhảy qua mất một bước."
+            },
+            "en": {
+              "guide": [
+                "See how far apart two neighbouring numbers in the wave pattern are.",
+                "Add that same gap to the last number, 40."
+              ],
+              "hint": "Each wave goes up by 10, just like counting in tens.",
+              "answer": {
+                "text": "50",
+                "explanation": "The wave pattern adds 10 each time, so 40 + 10 = 50; 45 adds only 5 and 60 skips a step."
+              }
+            }
+          }
         },
         {
           "id": "c5",
@@ -319,7 +407,29 @@
             { "id": "b", "text": "Bạn Rùa Biển" },
             { "id": "c", "text": "Cá Heo Con" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Nhớ lại lúc tàu vừa cập bến Đảo bí ẩn: ai ra chào {name} đầu tiên?",
+              "Nghĩ xem ai đã kể chuyện tấm bản đồ kho báu bị gió cuốn bay."
+            ],
+            "hint": "Nhân vật ấy là chủ tấm bản đồ kho báu và gọi {name} là «thủy thủ».",
+            "answer": {
+              "text": "Khỉ Thuyền Trưởng",
+              "explanation": "Khỉ Thuyền Trưởng đón {name} ở bến tàu và nhờ nhặt lại bản đồ kho báu; Rùa Biển và Cá Heo Con không lái con tàu này."
+            },
+            "en": {
+              "guide": [
+                "Think back to when the ship reached Đảo bí ẩn: who greeted {name} first at the pier?",
+                "Recall who told the story of the treasure map blown away by the wind."
+              ],
+              "hint": "That character owns the treasure map and calls {name} «sailor».",
+              "answer": {
+                "text": "Khỉ Thuyền Trưởng (the Monkey Captain)",
+                "explanation": "The Monkey Captain met {name} at the pier and asked for help with the map; neither the sea turtle nor the baby dolphin sails that ship."
+              }
+            }
+          }
         }
       ]
     },

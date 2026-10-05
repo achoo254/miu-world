@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Gộp số kẹo bán buổi sáng và buổi chiều: 36 + 42.",
+              "Cộng 6 + 2 ở hàng đơn vị, rồi 3 + 4 ở hàng chục."
+            ],
+            "hint": "Cả ba đáp án đều tận cùng là 8, nên hãy kiểm tra kĩ hàng chục.",
+            "answer": {
+              "text": "78",
+              "explanation": "36 + 42 = 78 vì 6 + 2 = 8 và 3 + 4 = 7; 68 và 88 sai ở hàng chục."
+            },
+            "en": {
+              "guide": [
+                "Put the morning and afternoon sweets together: 36 + 42.",
+                "Add 6 + 2 in the ones, then 3 + 4 in the tens."
+              ],
+              "hint": "All three answers end in 8, so check the tens carefully.",
+              "answer": {
+                "text": "78",
+                "explanation": "36 + 42 = 78 since 6 + 2 = 8 and 3 + 4 = 7; 68 and 88 get the tens wrong."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Đã bán thì số bóng bớt đi, nên làm phép trừ 89 − 35.",
+              "Trừ hàng đơn vị 9 − 5, rồi hàng chục 8 − 3."
+            ],
+            "hint": "Số bóng còn lại phải ít hơn 89; 124 là kết quả của phép cộng.",
+            "answer": {
+              "text": "54",
+              "explanation": "89 − 35 = 54 vì 9 − 5 = 4 và 8 − 3 = 5; 64 sai hàng chục, 124 là cộng 89 + 35."
+            },
+            "en": {
+              "guide": [
+                "Selling takes balloons away, so subtract: 89 − 35.",
+                "Subtract the ones, 9 − 5, then the tens, 8 − 3."
+              ],
+              "hint": "Fewer than 89 balloons must be left; 124 is what adding gives.",
+              "answer": {
+                "text": "54",
+                "explanation": "89 − 35 = 54 since 9 − 5 = 4 and 8 − 3 = 5; 64 slips in the tens, and 124 is 89 + 35."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "So hàng chục của hai giá trước: 47 có 4 chục, 74 có 7 chục.",
+              "Nhớ: miệng của dấu so sánh luôn mở về phía số lớn hơn."
+            ],
+            "hint": "Hai giá khác nhau nên không thể dùng dấu bằng; số bên trái lớn hay bé hơn?",
+            "answer": {
+              "text": "<",
+              "explanation": "47 có 4 chục, ít hơn 7 chục của 74, nên 47 < 74; dấu > là ngược chiều, dấu = chỉ dùng khi hai số bằng nhau."
+            },
+            "en": {
+              "guide": [
+                "Compare the tens of the two prices first: 47 has 4 tens, 74 has 7.",
+                "Remember: the open side of the sign always faces the bigger number."
+              ],
+              "hint": "The two prices differ, so it can't be equals; is the left one bigger or smaller?",
+              "answer": {
+                "text": "<",
+                "explanation": "47 has 4 tens, fewer than the 7 tens of 74, so 47 < 74; > is the wrong way round and = needs equal numbers."
+              }
+            }
           }
         },
         {
@@ -195,6 +261,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "«apple» là một từ tiếng Anh chỉ một loại quả; nhớ lại tranh trong bài từ vựng về hoa quả.",
+              "Quả này tròn, vỏ đỏ hoặc xanh, ăn giòn."
+            ],
+            "hint": "Chuối là «banana», cam là «orange»; vị khách không hỏi hai loại đó.",
+            "answer": {
+              "text": "quả táo",
+              "explanation": "«apple» nghĩa là quả táo; quả chuối là «banana», quả cam là «orange»."
+            },
+            "en": {
+              "guide": [
+                "«apple» is an English fruit word; picture it and find its Vietnamese name.",
+                "This fruit is round, red or green, and crunchy."
+              ],
+              "hint": "«quả chuối» is a banana and «quả cam» an orange, so it is neither of those.",
+              "answer": {
+                "text": "quả táo",
+                "explanation": "An «apple» is «quả táo» in Vietnamese; «quả chuối» is a banana and «quả cam» an orange."
+              }
+            }
           }
         }
       ],

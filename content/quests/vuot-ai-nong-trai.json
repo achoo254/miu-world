@@ -218,7 +218,29 @@
             { "id": "b", "text": "63" },
             { "id": "c", "text": "513" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Đặt 38 và 25 thẳng cột, cộng hàng đơn vị 8 + 5 trước.",
+              "Tổng hàng đơn vị từ 10 trở lên thì viết chữ số cuối và nhớ 1 sang hàng chục."
+            ],
+            "hint": "8 + 5 = 13: viết 3, nhớ 1; hàng chục 3 + 2 rồi cộng thêm 1.",
+            "answer": {
+              "text": "63",
+              "explanation": "38 + 25 = 63: 8 + 5 = 13 viết 3 nhớ 1, 3 + 2 = 5 thêm 1 là 6; 53 là quên nhớ, 513 là viết cả 13."
+            },
+            "en": {
+              "guide": [
+                "Line up 38 and 25 in columns and add the ones first: 8 + 5.",
+                "If the ones make 10 or more, write the last digit and carry 1 to the tens."
+              ],
+              "hint": "8 + 5 = 13: write 3, carry 1; in the tens do 3 + 2 and add the 1.",
+              "answer": {
+                "text": "63",
+                "explanation": "38 + 25 = 63: 8 + 5 = 13, write 3 carry 1, 3 + 2 = 5 plus 1 is 6; 53 forgets to carry, 513 writes the whole 13."
+              }
+            }
+          }
         },
         {
           "id": "bay-hai-tru-muoi-tam",
@@ -229,7 +251,29 @@
             { "id": "b", "text": "64" },
             { "id": "c", "text": "66" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Nhẩm 72 − 18 bằng cách bớt 18 làm hai lần: bớt 10 trước, rồi bớt 8.",
+              "72 bớt 10 còn 62; tiếp tục bớt 8, đi qua mốc 60 cho dễ."
+            ],
+            "hint": "62 − 2 = 60, rồi bớt nốt 6 từ 60.",
+            "answer": {
+              "text": "54",
+              "explanation": "72 − 18 = 54 vì 72 − 10 = 62 rồi 62 − 8 = 54; 64 là mới bớt 8 mà quên bớt 1 chục."
+            },
+            "en": {
+              "guide": [
+                "Do 72 − 18 in your head in two bites: take away 10 first, then 8.",
+                "72 less 10 is 62; then take away 8, passing through 60 to make it easy."
+              ],
+              "hint": "62 − 2 = 60, then take the remaining 6 from 60.",
+              "answer": {
+                "text": "54",
+                "explanation": "72 − 18 = 54 because 72 − 10 = 62 and 62 − 8 = 54; 64 only takes away the 8 and forgets the ten."
+              }
+            }
+          }
         },
         {
           "id": "dat-tinh-cong",
@@ -240,7 +284,29 @@
             { "id": "b", "text": "713" },
             { "id": "c", "text": "83" }
           ],
-          "answer": { "choice": "c" }
+          "answer": { "choice": "c" },
+          "support": {
+            "guide": [
+              "Viết 37 dưới 46 sao cho 7 thẳng dưới 6, 3 thẳng dưới 4.",
+              "Cộng từ phải sang trái: hàng đơn vị trước, hàng chục sau, đừng bỏ quên số nhớ."
+            ],
+            "hint": "6 + 7 = 13 nên viết 3 nhớ 1; hàng chục 4 + 3 = 7, thêm 1 nhớ.",
+            "answer": {
+              "text": "83",
+              "explanation": "46 + 37 = 83: 6 + 7 = 13 viết 3 nhớ 1, 4 + 3 + 1 = 8; 73 là quên nhớ, 713 là viết cả 13 xuống."
+            },
+            "en": {
+              "guide": [
+                "Write 37 under 46 so the 7 sits under the 6 and the 3 under the 4.",
+                "Add right to left: ones first, then tens, and don't drop the carried digit."
+              ],
+              "hint": "6 + 7 = 13, so write 3 carry 1; tens: 4 + 3 = 7, plus the carried 1.",
+              "answer": {
+                "text": "83",
+                "explanation": "46 + 37 = 83: 6 + 7 = 13, write 3 carry 1, then 4 + 3 + 1 = 8; 73 forgets the carry, 713 writes all of 13."
+              }
+            }
+          }
         },
         {
           "id": "chin-muoi-tru",
@@ -251,7 +317,29 @@
             { "id": "b", "text": "55" },
             { "id": "c", "text": "65" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Đặt 45 dưới 90 thẳng cột rồi trừ từ hàng đơn vị.",
+              "0 không trừ được 5, nên mượn 1 chục của 9 chục để có 10 − 5."
+            ],
+            "hint": "10 − 5 = 5; 9 chục cho mượn 1 còn 8 chục, trừ đi 4 chục.",
+            "answer": {
+              "text": "45",
+              "explanation": "90 − 45 = 45 vì 10 − 5 = 5 và 8 − 4 = 4; thử lại 45 + 45 = 90; 55 là quên trả chục đã mượn."
+            },
+            "en": {
+              "guide": [
+                "Put 45 under 90 in columns and start taking away from the ones.",
+                "0 can't take away 5, so borrow 1 of the 9 tens to get 10 − 5."
+              ],
+              "hint": "10 − 5 = 5; the 9 tens lend 1 and become 8, then take away 4 tens.",
+              "answer": {
+                "text": "45",
+                "explanation": "90 − 45 = 45 because 10 − 5 = 5 and 8 − 4 = 4; check 45 + 45 = 90; 55 forgets the borrowed ten."
+              }
+            }
+          }
         },
         {
           "id": "chuong-ga",
@@ -262,7 +350,29 @@
             { "id": "b", "text": "62 con" },
             { "id": "c", "text": "8 con" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Gộp gà mái và gà trống lại thì ra cả chuồng, nên làm tính cộng 35 + 27.",
+              "Cộng 5 + 7 ở hàng đơn vị, rồi cộng hàng chục kèm số nhớ."
+            ],
+            "hint": "5 + 7 = 12, viết 2 nhớ 1; 3 chục và 2 chục thêm 1 chục nhớ.",
+            "answer": {
+              "text": "62 con",
+              "explanation": "35 + 27 = 62 vì 5 + 7 = 12 viết 2 nhớ 1, 3 + 2 + 1 = 6; 8 con là hiệu, không phải cả chuồng."
+            },
+            "en": {
+              "guide": [
+                "Hens and roosters together make the whole coop, so add 35 + 27.",
+                "Add 5 + 7 in the ones, then the tens together with the carry."
+              ],
+              "hint": "5 + 7 = 12, write 2 carry 1; 3 tens and 2 tens plus the carried ten.",
+              "answer": {
+                "text": "62 chickens (62 con)",
+                "explanation": "35 + 27 = 62 since 5 + 7 = 12, write 2 carry 1, and 3 + 2 + 1 = 6; 8 is the difference, not the whole coop."
+              }
+            }
+          }
         },
         {
           "id": "ban-trung",
@@ -273,7 +383,29 @@
             { "id": "b", "text": "45 quả" },
             { "id": "c", "text": "93 quả" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Đã bán thì số trứng giảm, nên tính 64 − 29.",
+              "Mẹo: bớt 30 cho tròn rồi trả lại 1, vì 29 chỉ kém 30 một đơn vị."
+            ],
+            "hint": "64 − 30 = 34, nhưng bớt thừa 1 quả nên cộng trả lại 1.",
+            "answer": {
+              "text": "35 quả",
+              "explanation": "64 − 29 = 35 vì 64 − 30 = 34, trả lại 1 là 35; thử lại 35 + 29 = 64; 93 quả là cộng nhầm."
+            },
+            "en": {
+              "guide": [
+                "Selling eggs means fewer are left, so work out 64 − 29.",
+                "Trick: take away a round 30 and give 1 back, since 29 is just 1 less than 30."
+              ],
+              "hint": "64 − 30 = 34, but that took 1 egg too many, so add 1 back.",
+              "answer": {
+                "text": "35 eggs (35 quả)",
+                "explanation": "64 − 29 = 35 since 64 − 30 = 34 and giving 1 back makes 35; check 35 + 29 = 64; 93 adds by mistake."
+              }
+            }
+          }
         },
         {
           "id": "so-sanh-tong",
@@ -284,7 +416,29 @@
             { "id": "b", "text": "47 + 8 bằng 56" },
             { "id": "c", "text": "47 + 8 bé hơn 56" }
           ],
-          "answer": { "choice": "c" }
+          "answer": { "choice": "c" },
+          "support": {
+            "guide": [
+              "Tính tổng 47 + 8 trước, rồi đặt kết quả cạnh 56 để so.",
+              "Hai số cùng 5 chục thì so tiếp chữ số hàng đơn vị."
+            ],
+            "hint": "47 + 8 = 55; giữa 55 và 56, số nào đứng trước khi đếm?",
+            "answer": {
+              "text": "47 + 8 bé hơn 56",
+              "explanation": "47 + 8 = 55 (7 + 8 = 15 viết 5 nhớ 1), mà 55 bé hơn 56 vì 5 đơn vị ít hơn 6."
+            },
+            "en": {
+              "guide": [
+                "Work out 47 + 8 first, then put the result next to 56 to compare.",
+                "Both numbers have 5 tens, so compare the ones digits next."
+              ],
+              "hint": "47 + 8 = 55; between 55 and 56, which comes first when you count?",
+              "answer": {
+                "text": "47 + 8 is less than 56",
+                "explanation": "47 + 8 = 55 (7 + 8 = 15, write 5 carry 1), and 55 is less than 56 because 5 ones are fewer than 6."
+              }
+            }
+          }
         }
       ]
     },

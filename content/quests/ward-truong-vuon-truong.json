@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Tìm trong câu từ chỉ một việc mà thường chỉ người hoặc con vật mới làm.",
+              "Chiếc trống là đồ vật; xem từ nào khiến nó giống như đang sống."
+            ],
+            "hint": "Mùa hè là thời gian, chiếc trống là tên đồ vật; còn lại một việc làm.",
+            "answer": {
+              "text": "ngủ say",
+              "explanation": "«ngủ say» là việc của người, gắn cho chiếc trống nên trống được tả như người; hai từ kia chỉ vật và thời gian."
+            },
+            "en": {
+              "guide": [
+                "Find the words naming something only people or animals usually do.",
+                "The drum is an object; see which words make it seem alive."
+              ],
+              "hint": "Summer is a time and the drum is a thing; what is left is an action.",
+              "answer": {
+                "text": "ngủ say (sleeps soundly)",
+                "explanation": "«ngủ say» (sleeps soundly) is something people do, so giving it to the drum makes it seem human."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Nhìn chữ cái đầu của từng tên: A, C, B.",
+              "Đọc bảng chữ cái từ đầu: a, ă, â, b, c… chữ nào xuất hiện sớm nhất?"
+            ],
+            "hint": "Tên bắt đầu bằng chữ cái đứng trước nhất trong bảng sẽ đứng đầu danh sách lớp.",
+            "answer": {
+              "text": "An",
+              "explanation": "A đứng trước B và C trong bảng chữ cái, nên An đứng đầu, rồi tới Bảo, cuối cùng là Chi."
+            },
+            "en": {
+              "guide": [
+                "Look at each name's first letter: A, C, B.",
+                "Say the alphabet from the start: a, ă, â, b, c… which letter comes earliest?"
+              ],
+              "hint": "The name whose first letter is earliest in the alphabet heads the class list.",
+              "answer": {
+                "text": "An",
+                "explanation": "A comes before B and C, so An is first, then Bảo, and Chi comes last."
+              }
+            }
           }
         },
         {
@@ -159,6 +203,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Hai cách viết chỉ khác dấu thanh trên chữ i: dấu hỏi hay dấu ngã.",
+              "Nghĩ nghĩa: «kì … hè» là thời gian không phải đi học, khác với việc suy nghĩ."
+            ],
+            "hint": "Dấu ngã đi với «suy nghĩ»; còn ngơi việc, không phải học thì mang dấu khác.",
+            "answer": {
+              "text": "nghỉ hè",
+              "explanation": "«nghỉ» dấu hỏi là ngơi việc, nên viết «kì nghỉ hè»; «nghĩ» dấu ngã là suy nghĩ, không hợp nghĩa."
+            },
+            "en": {
+              "guide": [
+                "The two spellings differ only in the tone mark on i: hỏi (hook) or ngã (tilde).",
+                "Think of the meaning: the summer «kì … hè» is time off school, not thinking."
+              ],
+              "hint": "The tilde goes with «suy nghĩ» (to think); resting from work takes the other mark.",
+              "answer": {
+                "text": "nghỉ hè",
+                "explanation": "«nghỉ» with the hook means to rest, so «kì nghỉ hè»; «nghĩ» with the tilde means to think."
+              }
+            }
           }
         },
         {
@@ -185,6 +251,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Đọc to «quả …oài chín vàng» và nghĩ tới loại quả ngọt, vỏ vàng khi chín.",
+              "Nhớ tên quả ấy viết trong sách: chữ đầu là s hay x?"
+            ],
+            "hint": "Chữ s có trong «sân trường» ở cuối câu; tên quả chín vàng thì dùng chữ còn lại.",
+            "answer": {
+              "text": "x",
+              "explanation": "Quả chín vàng ngọt lịm là «xoài», viết bằng x; chữ s dùng cho những từ như «sân», «sao»."
+            },
+            "en": {
+              "guide": [
+                "Say «quả …oài chín vàng» aloud and think of a sweet fruit that turns yellow.",
+                "Recall how that fruit's name is spelt in your book: does it start with s or x?"
+              ],
+              "hint": "s is used in «sân trường» at the end of the line; the ripe fruit takes the other letter.",
+              "answer": {
+                "text": "x",
+                "explanation": "The ripe yellow fruit is «xoài» (mango), spelt with x; s belongs to words like «sân» and «sao»."
+              }
+            }
           }
         }
       ],

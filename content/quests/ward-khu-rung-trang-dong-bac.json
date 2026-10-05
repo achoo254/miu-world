@@ -102,6 +102,28 @@
           },
           "answer": {
             "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Đọc thầm bảng chữ cái từ đầu: a, ă, â, b, c, d, đ, e, ê, g…",
+              "Dừng lại ở chữ G rồi đọc tiếp đúng một chữ nữa."
+            ],
+            "hint": "Chữ cần tìm đứng trước cả I và K; nó là chữ cái thứ mười một trong bảng.",
+            "answer": {
+              "text": "H",
+              "explanation": "Bảng chữ cái đi theo thứ tự …e, ê, g, h, i, k…, nên ngay sau G là H; I và K còn đứng sau H."
+            },
+            "en": {
+              "guide": [
+                "Say the Vietnamese alphabet quietly from the start: a, ă, â, b, c, d, đ, e, ê, g…",
+                "Stop at G and then say just one more letter."
+              ],
+              "hint": "The letter you want sits before both I and K; it is the eleventh letter of the alphabet.",
+              "answer": {
+                "text": "H",
+                "explanation": "The order runs …e, ê, g, h, i, k…, so H comes straight after G; I and K come later."
+              }
+            }
           }
         },
         {
@@ -133,6 +155,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Hình dung nhím con đang mở gói quà sinh nhật bạn tặng.",
+              "Loại từ chỉ bộ phận của nhím và từ chỉ việc làm, giữ lại từ nói về lòng nhím."
+            ],
+            "hint": "Từ chỉ cảm xúc nói nhím thấy trong lòng thế nào, như buồn, lo hay mừng.",
+            "answer": {
+              "text": "vui sướng",
+              "explanation": "«Vui sướng» nói nhím rất vui khi được tặng quà; «gai nhọn» là bộ phận của nhím, «chạy nhảy» là hoạt động."
+            },
+            "en": {
+              "guide": [
+                "Picture the little hedgehog opening the birthday present from its friend.",
+                "Cross out the word for a body part and the word for an action; keep the one about its feelings."
+              ],
+              "hint": "A feeling word says how the hedgehog feels inside, like sad, worried or glad.",
+              "answer": {
+                "text": "vui sướng (overjoyed)",
+                "explanation": "«vui sướng» (overjoyed) is how the hedgehog feels with its present; «gai nhọn» is part of its body and «chạy nhảy» an action."
+              }
+            }
           }
         },
         {
@@ -164,6 +208,28 @@
           },
           "answer": {
             "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Nhìn nguyên âm đứng ngay sau g hoặc gh trong từng cách viết.",
+              "Nhớ luật: trước e, ê, i thì âm «gờ» viết bằng gh; vần «ê» không cần thêm chữ i."
+            ],
+            "hint": "Sau âm «gờ» là ê nên phải dùng gh; rồi kiểm tra xem cách viết nào thừa chữ.",
+            "answer": {
+              "text": "cái ghế",
+              "explanation": "Trước ê viết gh nên «cái gế» sai; «cái ghiế» lại thừa chữ i, chỉ «cái ghế» viết đúng."
+            },
+            "en": {
+              "guide": [
+                "Look at the vowel right after g or gh in each spelling.",
+                "Recall the rule: before e, ê and i the «g» sound is written gh; the «ê» sound needs no extra i."
+              ],
+              "hint": "After the «g» sound comes ê, so gh is needed; then check for a letter that should not be there.",
+              "answer": {
+                "text": "cái ghế",
+                "explanation": "Before ê we write gh, so «cái gế» is wrong; «cái ghiế» has an extra i, leaving «cái ghế» as the right one."
+              }
+            }
           }
         },
         {
@@ -190,6 +256,28 @@
           },
           "answer": {
             "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Ghép thử từng vần vào «quả l…» rồi đọc to cả hai tiếng.",
+              "Nghĩ tới loại quả vỏ đỏ, bên trong chứa đầy hạt mọng như những viên đá quý."
+            ],
+            "hint": "Đọc thử «quả lịu» rồi so với tên loại quả bạn vẫn nghe người lớn gọi ngoài chợ.",
+            "answer": {
+              "text": "ưu",
+              "explanation": "Quả đỏ nhiều hạt mọng là «quả lựu», viết vần ưu với dấu nặng; «lịu» không phải tên loại quả nào."
+            },
+            "en": {
+              "guide": [
+                "Try each rhyme in «quả l…» and say both words aloud.",
+                "Think of a fruit with red skin, packed inside with juicy seeds like little jewels."
+              ],
+              "hint": "Say «quả lịu» aloud and compare it with the fruit name you hear at the market.",
+              "answer": {
+                "text": "ưu",
+                "explanation": "The red fruit full of juicy seeds is «quả lựu» (pomegranate), spelt ưu with a dot-below tone; «lịu» is not a fruit."
+              }
+            }
           }
         }
       ],

@@ -251,7 +251,23 @@
             { "id": "b", "text": "B" },
             { "id": "c", "text": "Â" }
           ],
-          "answer": { "choice": "a" }
+          "answer": { "choice": "a" },
+          "support": {
+            "guide": [
+              "Đọc thật chậm ba chữ đầu tiên của bảng chữ cái tiếng Việt.",
+              "Nhớ rằng có hai chữ cái mang dấu phụ đi liền ngay sau A."
+            ],
+            "hint": "Ngay sau A là hai chữ có dấu phụ; chữ đội «vầng trăng» đứng trước chữ đội «mũ».",
+            "answer": { "text": "Ă", "explanation": "Bảng chữ cái mở đầu bằng a, ă, â, b…, nên ngay sau A là Ă; Â đứng thứ ba, B đứng thứ tư." },
+            "en": {
+              "guide": [
+                "Say the first three letters of the Vietnamese alphabet very slowly.",
+                "Remember that two letters with extra marks follow A straight away."
+              ],
+              "hint": "Right after A come two marked letters; the one with the moon-shaped mark goes before the one with the hat.",
+              "answer": { "text": "Ă", "explanation": "The alphabet opens a, ă, â, b…, so Ă comes right after A; Â is third and B is fourth." }
+            }
+          }
         },
         {
           "id": "do-choi",
@@ -262,7 +278,23 @@
             { "id": "b", "text": "con diều" },
             { "id": "c", "text": "chạy nhảy" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Đọc từng từ và hỏi: đây có phải thứ các bạn nhỏ cầm lên để chơi không?",
+              "Gạt từ chỉ cảnh vật trong rừng và từ chỉ hoạt động."
+            ],
+            "hint": "Đồ chơi là vật dùng để chơi, nhất là khi trời lộng gió trên một bãi trống.",
+            "answer": { "text": "con diều", "explanation": "«Con diều» là đồ chơi thả bay nhờ gió; «dòng suối» là cảnh vật, «chạy nhảy» là hoạt động." },
+            "en": {
+              "guide": [
+                "Read each word and ask: is this something children pick up and play with?",
+                "Set aside the word for part of the forest scenery and the word for an activity."
+              ],
+              "hint": "A toy is an object for playing with, especially on a windy open field.",
+              "answer": { "text": "The kite (con diều)", "explanation": "«con diều» (the kite) is a toy flown on the wind; «dòng suối» (the stream) is scenery and «chạy nhảy» (running about) an activity." }
+            }
+          }
         },
         {
           "id": "ng-ngh",
@@ -273,7 +305,23 @@
             { "id": "b", "text": "nghỉ nghơi" },
             { "id": "c", "text": "nghỉ ngơi" }
           ],
-          "answer": { "choice": "c" }
+          "answer": { "choice": "c" },
+          "support": {
+            "guide": [
+              "Tách từ thành hai tiếng rồi nhìn nguyên âm đứng sau âm «ngờ» ở mỗi tiếng.",
+              "Áp luật: trước i, e, ê viết ngh; trước các nguyên âm khác viết ng."
+            ],
+            "hint": "Tiếng đầu đi với i, tiếng sau đi với ơ, nên hai tiếng dùng hai cách viết «ngờ» khác nhau.",
+            "answer": { "text": "nghỉ ngơi", "explanation": "«Nghỉ» có i nên viết ngh, «ngơi» có ơ nên viết ng, vậy «nghỉ ngơi» đúng; «ngỉ» và «nghơi» đều sai luật." },
+            "en": {
+              "guide": [
+                "Split the word into its two syllables and look at the vowel after the «ng» sound in each.",
+                "Apply the rule: before i, e and ê write ngh; before any other vowel write ng."
+              ],
+              "hint": "The first syllable takes i and the second takes ơ, so they need different spellings of «ng».",
+              "answer": { "text": "nghỉ ngơi", "explanation": "«nghỉ» has i so it takes ngh, «ngơi» has ơ so it takes ng, making «nghỉ ngơi» (to rest) right; «ngỉ» and «nghơi» break the rule." }
+            }
+          }
         },
         {
           "id": "dau-hoi",
@@ -284,7 +332,23 @@
             { "id": "b", "text": "Dấu chấm hỏi" },
             { "id": "c", "text": "Dấu phẩy" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Đọc to «Bạn có muốn cùng tớ thả diều không» và để ý người nói đang chờ điều gì.",
+              "Câu dùng để rủ và hỏi ý bạn cần một dấu khác với câu kể."
+            ],
+            "hint": "Thấy cặp «có muốn… không» là biết người nói đang chờ bạn đáp «có» hay «không».",
+            "answer": { "text": "Dấu chấm hỏi", "explanation": "Câu hỏi xem bạn có muốn thả diều không, nên cuối câu là dấu chấm hỏi; dấu chấm dành cho câu kể, dấu phẩy để ngắt giữa câu." },
+            "en": {
+              "guide": [
+                "Read «Bạn có muốn cùng tớ thả diều không» aloud and notice what the speaker is waiting for.",
+                "A sentence that invites a friend and asks their wish needs a different mark from a telling sentence."
+              ],
+              "hint": "The pair «có muốn… không» shows the speaker expects a «yes» or a «no» back.",
+              "answer": { "text": "Question mark", "explanation": "The sentence asks whether the friend wants to fly a kite, so it ends with a question mark; full stops end telling sentences and commas split them." }
+            }
+          }
         },
         {
           "id": "cau-hoat-dong",
@@ -295,7 +359,23 @@
             { "id": "b", "text": "Các bạn nhỏ chơi rồng rắn lên mây." },
             { "id": "c", "text": "Khu rừng chiều nay rất yên tĩnh." }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Đọc ba câu, tìm câu có người hay con vật đang làm một việc gì đó.",
+              "Loại câu chỉ tả bộ lông và câu chỉ tả khu rừng yên tĩnh."
+            ],
+            "hint": "Câu kể hoạt động trả lời câu hỏi «Ai đang làm gì?» và có một từ chỉ việc làm như chạy, hát.",
+            "answer": { "text": "Các bạn nhỏ chơi rồng rắn lên mây.", "explanation": "Câu về các bạn nhỏ có từ «chơi» chỉ việc đang làm nên kể hoạt động; câu về nhím và về khu rừng chỉ tả đặc điểm." },
+            "en": {
+              "guide": [
+                "Read the three sentences and find one where someone is busy doing something.",
+                "Rule out the sentence about the hedgehog's coat and the one about the quiet forest."
+              ],
+              "hint": "An action sentence answers «who is doing what?» and has a doing word such as run or sing.",
+              "answer": { "text": "Các bạn nhỏ chơi rồng rắn lên mây. (The children play dragon-and-snake.)", "explanation": "The sentence about the children has «chơi» (play), a doing word, so it tells an action; the hedgehog and forest sentences only describe." }
+            }
+          }
         },
         {
           "id": "tinh-ban",
@@ -306,7 +386,23 @@
             { "id": "b", "text": "thân thiết" },
             { "id": "c", "text": "cao vút" }
           ],
-          "answer": { "choice": "b" }
+          "answer": { "choice": "b" },
+          "support": {
+            "guide": [
+              "Đọc ba từ và hỏi: từ nào nói hai người bạn đối với nhau thế nào?",
+              "Loại từ tả ánh sáng và từ tả chiều cao của sự vật."
+            ],
+            "hint": "Từ chỉ tình cảm bạn bè đặt vừa vào câu «Hai bạn rất … với nhau».",
+            "answer": { "text": "thân thiết", "explanation": "«Thân thiết» nói hai người bạn gần gũi, quý mến nhau; «lấp lánh» tả ánh sáng, «cao vút» tả độ cao." },
+            "en": {
+              "guide": [
+                "Read the three words and ask: which says how two friends feel about each other?",
+                "Rule out the word describing light and the one describing height."
+              ],
+              "hint": "A friendship word fits the sentence «Hai bạn rất … với nhau» (the two are very … with each other).",
+              "answer": { "text": "thân thiết (close)", "explanation": "«thân thiết» (close) means the friends are near and dear to each other; «lấp lánh» describes sparkle and «cao vút» great height." }
+            }
+          }
         },
         {
           "id": "do-dieu",
@@ -317,7 +413,23 @@
             { "id": "b", "text": "Quả bóng bay" },
             { "id": "c", "text": "Con diều" }
           ],
-          "answer": { "choice": "c" }
+          "answer": { "choice": "c" },
+          "support": {
+            "guide": [
+              "Đọc lần lượt từng gợi ý: thân mỏng nhẹ, đuôi dài, bay nhờ gió, có sợi dây.",
+              "Thử từng lựa chọn với cả bốn gợi ý; vật nào khớp đủ cả bốn mới đúng."
+            ],
+            "hint": "Lá khô không có dây, bóng bay không có đuôi dài phấp phới; còn vật cuối cùng thì sao?",
+            "answer": { "text": "Con diều", "explanation": "Con diều thân mỏng nhẹ, có đuôi dài, bay lên nhờ gió và được giữ bằng sợi dây, khớp đủ mọi gợi ý." },
+            "en": {
+              "guide": [
+                "Go through the clues one by one: thin and light, long tail, flies on the wind, held by a string.",
+                "Test each choice against all four clues; only one fits every clue."
+              ],
+              "hint": "A dry leaf has no string and a balloon has no fluttering tail, so what about the last one?",
+              "answer": { "text": "A kite (Con diều)", "explanation": "A kite is thin and light, has a long tail, rises on the wind and is held by a string, matching every clue." }
+            }
+          }
         }
       ]
     },

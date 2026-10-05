@@ -12,6 +12,12 @@ const turn = (id: string, damage = 100) => ({
   answer: { choice: 'a' },
   damage,
   en: { prompt: `Riddle ${id}?`, choices: ['Right', 'Wrong'] },
+  support: {
+    guide: [`Đọc lại câu ${id}.`],
+    hint: `Nghĩ về câu ${id}.`,
+    answer: { text: 'Đúng', explanation: `Câu ${id} đúng vì thế.` },
+    en: { guide: [`Read riddle ${id} again.`], hint: `Think about ${id}.`, answer: { text: 'Right', explanation: `Riddle ${id} is right because.` } },
+  },
 });
 
 const feedback = { right: ['Trúng rồi!', 'Hay lắm!', 'Giỏi ghê!'], wrong: ['Hụt rồi!', 'Thử lại!', 'Gần đúng!'], en: { right: ['A hit!', 'Nice!', 'Great!'], wrong: ['Missed!', 'Again!', 'So close!'] } };
@@ -69,6 +75,26 @@ describe('zone guardians as content', () => {
     expect(view.kind === 'boss' && view.turns[0]?.en).toEqual({ prompt: 'Riddle t1?', choices: ['Right', 'Wrong'] });
     expect(JSON.stringify(view)).not.toContain('"answer"');
     expect(JSON.stringify(view)).not.toContain('Hụt rồi!');
+  });
+
+  it('hides every question\'s support layers from the client', () => {
+    const view = QuestStepPublic.parse(bossStep);
+    expect(JSON.stringify(view)).not.toContain('"support"');
+    expect(JSON.stringify(view)).not.toContain('Nghĩ về câu t1.');
+  });
+
+  it('gives every boss question the three support layers in both languages, its answer layer naming the right choice', () => {
+    const { support: _support, ...bare } = turn('t1');
+    const missing = QuestDefinition.safeParse(quest({}, { ...bossStep, turns: [bare, turn('t2'), turn('t3'), turn('t4')] }));
+    expect(missing.success ? [] : missing.error.issues.map((i) => i.path.join('.'))).toContain('steps.1.turns.0.support');
+    const withSupport = (support: Record<string, unknown>) => ({ ...bossStep, turns: [{ ...turn('t1'), support: { ...turn('t1').support, ...support } }, turn('t2'), turn('t3'), turn('t4')] });
+    expect(issues(quest({}, withSupport({ hint: undefined }))).length).toBeGreaterThan(0);
+    expect(issues(quest({}, withSupport({ answer: { text: 'Đúng' } }))).length).toBeGreaterThan(0);
+    expect(issues(quest({}, withSupport({ en: undefined })))).toContain('step dau-trum: turn t1: needs its support layers in English (support.en)');
+    expect(issues(quest({}, withSupport({ answer: { text: 'Sai', explanation: 'Sai mà.' } })))).toContain('step dau-trum: turn t1: the answer layer reads "Sai", the right choice "Đúng"');
+    const en = turn('t1').support.en;
+    expect(issues(quest({}, withSupport({ en: { ...en, guide: ['One.', 'Two.'] } })))).toContain('step dau-trum: turn t1: support.en has 2 guide lines, the turn 1');
+    expect(issues(quest({}, withSupport({ en: { ...en, answer: { text: 'Wrong', explanation: 'No.' } } })))).toContain('step dau-trum: turn t1: the English answer layer reads "Wrong", the right choice "Right"');
   });
 
   it('keeps its prefix and its category together', () => {

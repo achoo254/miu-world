@@ -47,13 +47,25 @@
             "11"
           ],
           "answer": 0,
+          "guide": [
+            "7 chục lá cờ là bảy mươi lá; viết chữ số 7 ở hàng chục.",
+            "4 lá cờ lẻ là 4 đơn vị; viết chữ số 4 ở hàng đơn vị rồi đọc cả số."
+          ],
+          "hint": "Số chục đứng trước, số đơn vị đứng sau; đừng đem 7 cộng với 4.",
+          "explain": "7 chục và 4 đơn vị viết là 74; 47 là 4 chục 7 đơn vị, còn 11 là lấy 7 + 4.",
           "en": {
             "prompt": "Hươu Đếm Cờ has 7 tens of flags and 4 more single flags. How many flags in all?",
             "choices": [
               "74",
               "47",
               "11"
-            ]
+            ],
+            "guide": [
+              "7 tens of flags makes seventy; write the digit 7 in the tens place.",
+              "The 4 single flags are 4 ones; put the digit 4 in the ones place, then read the whole number."
+            ],
+            "hint": "Tens come first and ones come after; don't add 7 and 4 together.",
+            "explain": "7 tens and 4 ones is written 74; 47 would be 4 tens and 7 ones, and 11 is just 7 + 4."
           }
         },
         {
@@ -66,13 +78,25 @@
             "69"
           ],
           "answer": 1,
+          "guide": [
+            "Số liền sau là số lớn hơn số đã cho đúng 1 đơn vị.",
+            "Lấy 59 cộng thêm 1; 9 đơn vị thêm 1 thành 1 chục, nhớ sang hàng chục."
+          ],
+          "hint": "Đếm tiếp sau 59 trên tia số dọc hàng rào, bước thêm đúng một vạch.",
+          "explain": "59 + 1 = 60: 9 đơn vị thêm 1 thành đủ chục, 5 chục thành 6 chục; 58 là số liền trước.",
           "en": {
             "prompt": "On the number line along the school fence, which number comes right after 59?",
             "choices": [
               "58",
               "60",
               "69"
-            ]
+            ],
+            "guide": [
+              "The number right after is exactly 1 more than the given number.",
+              "Add 1 to 59; 9 ones plus 1 makes a full ten, carried to the tens."
+            ],
+            "hint": "Count on from 59 along the fence number line, one mark only.",
+            "explain": "59 + 1 = 60: nine ones plus one make a ten, so 5 tens become 6 tens; 58 comes just before."
           }
         },
         {
@@ -85,13 +109,25 @@
             "hiệu"
           ],
           "answer": 0,
+          "guide": [
+            "Nhìn dấu giữa 35 và 12: đây là phép cộng hay phép trừ?",
+            "Trong phép cộng, các số đem cộng có một tên, kết quả sau dấu = có tên khác."
+          ],
+          "hint": "35 và 12 là hai số hạng; số đứng sau dấu bằng thì gọi bằng tên còn lại.",
+          "explain": "35 + 12 = 47 là phép cộng; 35 và 12 là số hạng, 47 là tổng; «hiệu» chỉ dùng cho phép trừ.",
           "en": {
             "prompt": "Hươu writes 35 + 12 = 47 on the board. What is 47 called in this sum?",
             "choices": [
               "tổng (the sum)",
               "số hạng (an addend)",
               "hiệu (the difference)"
-            ]
+            ],
+            "guide": [
+              "Look at the sign between 35 and 12: is it adding or taking away?",
+              "In an addition the numbers being added share one name, and the result after = has another."
+            ],
+            "hint": "35 and 12 are the two addends; the number after the equals sign takes the other name.",
+            "explain": "35 + 12 = 47 is an addition: 35 and 12 are «số hạng» (addends) and 47 is «tổng» (the sum); «hiệu» belongs to subtraction."
           }
         },
         {
@@ -104,13 +140,25 @@
             "60 bạn"
           ],
           "answer": 0,
+          "guide": [
+            "Muốn biết lớp 2A nhiều hơn bao nhiêu, lấy số lớn trừ số bé: 32 − 28.",
+            "Hàng đơn vị 2 không trừ được 8, nên mượn 1 chục từ hàng chục."
+          ],
+          "hint": "Thử đếm thêm từ 28 lên tới 32, xem phải đếm mấy bước.",
+          "explain": "32 − 28 = 4 (đếm 29, 30, 31, 32 là 4 bước); 60 là đem cộng hai lớp, không phải so sánh.",
           "en": {
             "prompt": "Class 2A has 32 pupils and class 2B has 28. How many more pupils does 2A have?",
             "choices": [
               "4",
               "5",
               "60"
-            ]
+            ],
+            "guide": [
+              "To find how many more pupils 2A has, take the smaller number from the bigger: 32 − 28.",
+              "You can't take 8 from 2 in the ones, so borrow a ten."
+            ],
+            "hint": "Try counting on from 28 up to 32 and see how many steps it takes.",
+            "explain": "32 − 28 = 4 (29, 30, 31, 32 is four steps); 60 adds both classes instead of comparing them."
           }
         }
       ],
@@ -181,13 +229,25 @@
             "Cô đến lớp lúc bảy giờ."
           ],
           "answer": 0,
+          "guide": [
+            "Đọc từng câu và tự hỏi: câu này tả cô hay nói lên cảm xúc của bạn nhỏ?",
+            "Tìm câu có từ chỉ tình cảm như thương, quý, mến."
+          ],
+          "hint": "Câu về áo dài và câu về bảy giờ chỉ kể việc, không nói lên lòng mình.",
+          "explain": "«Em yêu cô giáo lắm!» có từ «yêu» và dấu chấm than nên bày tỏ tình cảm; hai câu kia chỉ kể về cô.",
           "en": {
             "prompt": "Which sentence shows how the pupil feels about the teacher?",
             "choices": [
               "Em yêu cô giáo lắm! (I love my teacher so much!)",
               "Cô giáo mặc áo dài. (The teacher wears an áo dài.)",
               "Cô đến lớp lúc bảy giờ. (She arrives at seven.)"
-            ]
+            ],
+            "guide": [
+              "Read each sentence and ask: does it describe the teacher, or say how the pupil feels?",
+              "Look for a sentence with a feeling word such as love or fond of."
+            ],
+            "hint": "The sentences about the áo dài and seven o'clock only report facts, not feelings.",
+            "explain": "«Em yêu cô giáo lắm!» uses «yêu» (love) and an exclamation mark, so it shows feeling; the other two just tell about her."
           }
         },
         {
@@ -200,13 +260,25 @@
             "4 môn"
           ],
           "answer": 1,
+          "guide": [
+            "Đọc phần sau dấu hai chấm trong dòng «Thứ Hai».",
+            "Mỗi tên môn cách nhau một dấu phẩy; chỉ vào từng tên và đếm."
+          ],
+          "hint": "Tiếng Việt là một môn dù có hai tiếng, đừng đếm thành hai.",
+          "explain": "Thứ Hai có Tiếng Việt, Toán, Mĩ thuật: ba tên môn, hai dấu phẩy, nên là 3 môn.",
           "en": {
             "prompt": "Mèo reads the timetable: «Monday: Vietnamese, Maths, Art». How many subjects are there on Monday?",
             "choices": [
               "2",
               "3",
               "4"
-            ]
+            ],
+            "guide": [
+              "Read the part after the colon on the «Monday» line.",
+              "The subjects are separated by commas; point at each one and count."
+            ],
+            "hint": "Vietnamese is one subject, even though «Tiếng Việt» has two words.",
+            "explain": "Monday has Vietnamese, Maths and Art: three names with two commas between them, so 3 subjects."
           }
         },
         {
@@ -218,12 +290,24 @@
             "d"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc to «quyển …ở ô li» và nghĩ tới đồ dùng để ghi bài.",
+            "Nhớ cách viết tên đồ dùng ấy trên nhãn của nó: chữ đầu là v hay d?"
+          ],
+          "hint": "Từ «dở» (chưa xong) viết bằng d, còn đồ dùng để ghi bài thì viết khác hẳn.",
+          "explain": "Quyển để ghi bài là «vở», viết bằng v; «dở» với d lại có nghĩa là chưa xong hoặc không hay.",
           "en": {
             "prompt": "v or d: «em ghi bài vào quyển …ở ô li» (I write the lesson in my squared exercise book)?",
             "choices": [
               "v",
               "d"
-            ]
+            ],
+            "guide": [
+              "Say «quyển …ở ô li» aloud and think of the thing you write lessons in.",
+              "Recall how that school item is spelt on its label: does it start with v or d?"
+            ],
+            "hint": "«dở» (unfinished) is spelt with d, but the exercise book is spelt differently.",
+            "explain": "The exercise book is «vở», spelt with v; «dở» with d means unfinished or not good."
           }
         },
         {
@@ -236,13 +320,25 @@
             "bàn ghế"
           ],
           "answer": 0,
+          "guide": [
+            "Từ chỉ hoạt động là từ nói việc ai đó đang làm.",
+            "Thử đặt từng từ sau «Trong giờ học, bạn nhỏ…» xem từ nào nghe hợp."
+          ],
+          "hint": "Thước và bàn ghế là đồ vật để cầm hoặc ngồi, còn hoạt động thì phải làm được.",
+          "explain": "«viết bài» là việc bạn nhỏ làm trong giờ học; «cái thước», «bàn ghế» là tên đồ vật.",
           "en": {
             "prompt": "Which words tell what a pupil does in a lesson (an action)?",
             "choices": [
               "viết bài (write)",
               "cái thước (the ruler)",
               "bàn ghế (desks and chairs)"
-            ]
+            ],
+            "guide": [
+              "An action word says what someone is doing.",
+              "Try each answer after «In class, the pupil…» and see which one fits."
+            ],
+            "hint": "A ruler and desks are things you hold or sit at; an action is something you do.",
+            "explain": "«viết bài» (write) is what the pupil does in class; «cái thước» and «bàn ghế» name objects."
           }
         }
       ],
@@ -313,13 +409,25 @@
             "mùa hè"
           ],
           "answer": 0,
+          "guide": [
+            "Tìm trong câu từ chỉ một việc mà thường chỉ người hoặc con vật mới làm.",
+            "Chiếc trống là đồ vật; xem từ nào khiến nó giống như đang sống."
+          ],
+          "hint": "Mùa hè là thời gian, chiếc trống là tên đồ vật; còn lại một việc làm.",
+          "explain": "«ngủ say» là việc của người, gắn cho chiếc trống nên trống được tả như người; hai từ kia chỉ vật và thời gian.",
           "en": {
             "prompt": "«Chiếc trống nằm ngủ say suốt mùa hè» (the drum sleeps soundly all summer) talks about a thing as if it were a person. Which words show it?",
             "choices": [
               "ngủ say (sleeps soundly)",
               "chiếc trống (the drum)",
               "mùa hè (summer)"
-            ]
+            ],
+            "guide": [
+              "Find the words naming something only people or animals usually do.",
+              "The drum is an object; see which words make it seem alive."
+            ],
+            "hint": "Summer is a time and the drum is a thing; what is left is an action.",
+            "explain": "«ngủ say» (sleeps soundly) is something people do, so giving it to the drum makes it seem human."
           }
         },
         {
@@ -332,13 +440,25 @@
             "Chi"
           ],
           "answer": 0,
+          "guide": [
+            "Nhìn chữ cái đầu của từng tên: A, C, B.",
+            "Đọc bảng chữ cái từ đầu: a, ă, â, b, c… chữ nào xuất hiện sớm nhất?"
+          ],
+          "hint": "Tên bắt đầu bằng chữ cái đứng trước nhất trong bảng sẽ đứng đầu danh sách lớp.",
+          "explain": "A đứng trước B và C trong bảng chữ cái, nên An đứng đầu, rồi tới Bảo, cuối cùng là Chi.",
           "en": {
             "prompt": "The class list goes in alphabetical order. Of An, Chi and Bảo, who comes first?",
             "choices": [
               "An",
               "Bảo",
               "Chi"
-            ]
+            ],
+            "guide": [
+              "Look at each name's first letter: A, C, B.",
+              "Say the alphabet from the start: a, ă, â, b, c… which letter comes earliest?"
+            ],
+            "hint": "The name whose first letter is earliest in the alphabet heads the class list.",
+            "explain": "A comes before B and C, so An is first, then Bảo, and Chi comes last."
           }
         },
         {
@@ -350,12 +470,24 @@
             "nghĩ hè"
           ],
           "answer": 0,
+          "guide": [
+            "Hai cách viết chỉ khác dấu thanh trên chữ i: dấu hỏi hay dấu ngã.",
+            "Nghĩ nghĩa: «kì … hè» là thời gian không phải đi học, khác với việc suy nghĩ."
+          ],
+          "hint": "Dấu ngã đi với «suy nghĩ»; còn ngơi việc, không phải học thì mang dấu khác.",
+          "explain": "«nghỉ» dấu hỏi là ngơi việc, nên viết «kì nghỉ hè»; «nghĩ» dấu ngã là suy nghĩ, không hợp nghĩa.",
           "en": {
             "prompt": "Gà Trống wants to write «summer holiday». Which has the right tone mark?",
             "choices": [
               "nghỉ hè",
               "nghĩ hè"
-            ]
+            ],
+            "guide": [
+              "The two spellings differ only in the tone mark on i: hỏi (hook) or ngã (tilde).",
+              "Think of the meaning: the summer «kì … hè» is time off school, not thinking."
+            ],
+            "hint": "The tilde goes with «suy nghĩ» (to think); resting from work takes the other mark.",
+            "explain": "«nghỉ» with the hook means to rest, so «kì nghỉ hè»; «nghĩ» with the tilde means to think."
           }
         },
         {
@@ -367,12 +499,24 @@
             "x"
           ],
           "answer": 1,
+          "guide": [
+            "Đọc to «quả …oài chín vàng» và nghĩ tới loại quả ngọt, vỏ vàng khi chín.",
+            "Nhớ tên quả ấy viết trong sách: chữ đầu là s hay x?"
+          ],
+          "hint": "Chữ s có trong «sân trường» ở cuối câu; tên quả chín vàng thì dùng chữ còn lại.",
+          "explain": "Quả chín vàng ngọt lịm là «xoài», viết bằng x; chữ s dùng cho những từ như «sân», «sao».",
           "en": {
             "prompt": "s or x: «quả …oài chín vàng trong vườn trường» (a ripe yellow mango in the school garden)?",
             "choices": [
               "s",
               "x"
-            ]
+            ],
+            "guide": [
+              "Say «quả …oài chín vàng» aloud and think of a sweet fruit that turns yellow.",
+              "Recall how that fruit's name is spelt in your book: does it start with s or x?"
+            ],
+            "hint": "s is used in «sân trường» at the end of the line; the ripe fruit takes the other letter.",
+            "explain": "The ripe yellow fruit is «xoài» (mango), spelt with x; s belongs to words like «sân» and «sao»."
           }
         }
       ],
@@ -443,13 +587,25 @@
             "sân chơi"
           ],
           "answer": 0,
+          "guide": [
+            "Từ chỉ tình cảm nói lên lòng mình với ai đó hoặc nơi nào đó.",
+            "Bảng đen, sân chơi là thứ nhìn thấy được; tìm từ không phải tên đồ vật hay nơi chốn."
+          ],
+          "hint": "Thử ghép «Em … ngôi trường của mình» xem từ nào nói được cảm xúc.",
+          "explain": "«yêu quý» nói lên tình cảm với mái trường; «bảng đen» là đồ vật, «sân chơi» là nơi chốn.",
           "en": {
             "prompt": "Which word shows how a pupil feels about the school?",
             "choices": [
               "yêu quý (love dearly)",
               "bảng đen (blackboard)",
               "sân chơi (playground)"
-            ]
+            ],
+            "guide": [
+              "A feeling word tells how you feel about someone or somewhere.",
+              "A blackboard and a playground can be seen; find the word that isn't a thing or a place."
+            ],
+            "hint": "Try «Em … ngôi trường của mình» (I … my school) and see which word expresses a feeling.",
+            "explain": "«yêu quý» (love dearly) expresses feeling for the school; «bảng đen» is an object and «sân chơi» a place."
           }
         },
         {
@@ -462,13 +618,25 @@
             "Sân chơi ở đâu?"
           ],
           "answer": 0,
+          "guide": [
+            "Câu nêu đặc điểm cho biết sự vật trông ra sao: to, nhỏ, đẹp, sạch…",
+            "Loại câu hỏi (có dấu chấm hỏi) và câu kể việc làm của các bạn."
+          ],
+          "hint": "Tìm câu có từ chỉ kích thước hoặc vẻ ngoài của chính sân chơi.",
+          "explain": "«Sân chơi rộng và sạch.» dùng «rộng», «sạch» để tả sân; một câu kể hoạt động, câu cuối là câu hỏi.",
           "en": {
             "prompt": "Which sentence describes what the playground is like?",
             "choices": [
               "Sân chơi rộng và sạch. (It is wide and clean.)",
               "Chúng em chơi ở sân. (We play there.)",
               "Sân chơi ở đâu? (Where is it?)"
-            ]
+            ],
+            "guide": [
+              "A describing sentence tells what something is like: big, small, pretty, clean…",
+              "Rule out the question (it has a question mark) and the sentence about what the children do."
+            ],
+            "hint": "Look for the sentence with words about the playground's size or look.",
+            "explain": "«Sân chơi rộng và sạch.» uses «rộng» (wide) and «sạch» (clean) to describe it; one tells an activity, one asks."
           }
         },
         {
@@ -481,13 +649,25 @@
             "lá – lê"
           ],
           "answer": 0,
+          "guide": [
+            "Tách mỗi tiếng thành âm đầu và vần, ví dụ «mây» là m + ây.",
+            "Bỏ âm đầu đi, so phần vần của hai tiếng trong từng cặp."
+          ],
+          "hint": "Cặp «lá – lê» có a và ê khác nhau; cặp đúng có phần vần giống hệt.",
+          "explain": "«sao» và «cao» cùng vần ao (s + ao, c + ao); «mây – mưa» là ây và ưa, «lá – lê» là a và ê.",
           "en": {
             "prompt": "Which pair of words rhymes (has the same rhyme part)?",
             "choices": [
               "sao – cao",
               "mây – mưa",
               "lá – lê"
-            ]
+            ],
+            "guide": [
+              "Split each word into its first sound and its rhyme, e.g. «mây» is m + ây.",
+              "Drop the first sound and compare the rhyme part of the two words in each pair."
+            ],
+            "hint": "In «lá – lê» the rhymes a and ê differ; the right pair has an identical rhyme.",
+            "explain": "«sao» and «cao» share the rhyme ao (s + ao, c + ao); «mây – mưa» has ây and ưa, «lá – lê» a and ê."
           }
         },
         {
@@ -499,12 +679,24 @@
             "ngh"
           ],
           "answer": 0,
+          "guide": [
+            "Nhìn nguyên âm đứng ngay sau chỗ trống trong «…ồi vẽ tranh».",
+            "Nhớ luật: ngh chỉ đứng trước e, ê, i; trước các nguyên âm khác thì viết sao?"
+          ],
+          "hint": "Sau chỗ trống là ô, không phải e, ê hay i.",
+          "explain": "Trước ô ta viết ng, thành «ngồi»; ngh chỉ đi với e, ê, i như «nghe», «nghỉ».",
           "en": {
             "prompt": "ng or ngh: «bé …ồi vẽ tranh dưới gốc cây» (the child sits drawing under a tree)?",
             "choices": [
               "ng",
               "ngh"
-            ]
+            ],
+            "guide": [
+              "Look at the vowel right after the gap in «…ồi vẽ tranh».",
+              "Remember the rule: ngh only goes before e, ê, i; what do you write before other vowels?"
+            ],
+            "hint": "The gap is followed by ô, which is not e, ê or i.",
+            "explain": "Before ô we write ng, giving «ngồi» (to sit); ngh only goes with e, ê, i, as in «nghe» and «nghỉ»."
           }
         },
         {
@@ -517,13 +709,25 @@
             "rực rỡ"
           ],
           "answer": 0,
+          "guide": [
+            "Từ gọi tên đồ vật là thứ cầm được, cất vào hộp bút được.",
+            "Loại từ chỉ việc làm và từ tả màu sắc ra ngoài."
+          ],
+          "hint": "«tô màu» là việc làm, «rực rỡ» là vẻ đẹp; tìm thứ cầm trên tay khi vẽ.",
+          "explain": "«bút màu» là đồ vật dùng để vẽ; «tô màu» chỉ hoạt động, «rực rỡ» chỉ đặc điểm của màu.",
           "en": {
             "prompt": "Which word names a thing you use to draw pictures?",
             "choices": [
               "bút màu (crayons)",
               "tô màu (colour in)",
               "rực rỡ (bright)"
-            ]
+            ],
+            "guide": [
+              "A word naming a thing is something you can hold or keep in a pencil case.",
+              "Rule out the word for an action and the word describing colours."
+            ],
+            "hint": "«tô màu» is an action and «rực rỡ» describes; find what you hold when drawing.",
+            "explain": "«bút màu» (crayons) is a thing used to draw; «tô màu» is an action and «rực rỡ» describes colour."
           }
         }
       ],

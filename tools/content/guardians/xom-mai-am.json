@@ -45,13 +45,25 @@
             "cái nôi"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc ba lựa chọn và tự hỏi: từ nào nói em bé trông như thế nào?",
+            "Gạt ra từ chỉ việc làm và từ chỉ đồ vật, giữ lại từ tả dáng vẻ của em."
+          ],
+          "hint": "Từ tả em bé giúp ta hình dung em béo hay gầy, xinh xắn ra sao, chứ không gọi tên đồ dùng của em.",
+          "explain": "«Bụ bẫm» tả em bé béo tròn, mũm mĩm; «bế em» là việc làm, còn «cái nôi» là đồ vật.",
           "en": {
             "prompt": "Ong Chúa visits the baby next door. Which word describes the baby?",
             "choices": [
               "bụ bẫm (chubby)",
               "bế em (hold the baby)",
               "cái nôi (the cradle)"
-            ]
+            ],
+            "guide": [
+              "Read the three choices and ask: which word says what the baby looks like?",
+              "Set aside the action word and the object word, and keep the word describing the baby."
+            ],
+            "hint": "A word that describes the baby helps you picture it, plump or thin, rather than naming its things.",
+            "explain": "«Bụ bẫm» means chubby and describes the baby; «bế em» is an action and «cái nôi» is an object."
           }
         },
         {
@@ -64,13 +76,25 @@
             "chú"
           ],
           "answer": 0,
+          "guide": [
+            "Xác định người được hỏi: bố của mẹ, tức là người bên họ của mẹ.",
+            "Nhớ cách gọi: họ bên bố là họ nội, còn họ bên mẹ thì gọi là gì?"
+          ],
+          "hint": "Bố của bố là ông nội; người được hỏi lại ở bên họ của mẹ em.",
+          "explain": "Bố của mẹ thuộc họ ngoại nên gọi là «ông ngoại»; «ông nội» là bố của bố, còn «chú» là em trai của bố.",
           "en": {
             "prompt": "What do you call your mum's father?",
             "choices": [
               "ông ngoại (mum's dad)",
               "ông nội (dad's dad)",
               "chú (uncle)"
-            ]
+            ],
+            "guide": [
+              "Work out who is meant: your mum's father, so someone on your mum's side.",
+              "Recall the names: dad's side is «họ nội», so what is mum's side called?"
+            ],
+            "hint": "Dad's father is «ông nội»; this grandfather belongs to your mum's side instead.",
+            "explain": "Mum's father is on the «họ ngoại» side, so he is «ông ngoại»; «ông nội» is dad's father and «chú» is dad's younger brother."
           }
         },
         {
@@ -82,12 +106,24 @@
             "r"
           ],
           "answer": 1,
+          "guide": [
+            "Đọc to cả cụm «vườn hoa nở …ực rỡ» và nghe kĩ phụ âm đầu của tiếng còn thiếu.",
+            "Nhìn sang tiếng đứng cạnh trong cùng từ: từ láy thường lặp lại phụ âm đầu."
+          ],
+          "hint": "Đây là một từ láy, hai tiếng của nó mở đầu giống hệt nhau; hãy nhìn tiếng «rỡ».",
+          "explain": "Từ láy «rực rỡ» lặp phụ âm r ở cả hai tiếng, nghĩa là sáng tươi, nhiều màu; không viết «dực rỡ».",
           "en": {
             "prompt": "d or r: «vườn hoa nở …ực rỡ» (the garden blooms brightly)?",
             "choices": [
               "d",
               "r"
-            ]
+            ],
+            "guide": [
+              "Say «vườn hoa nở …ực rỡ» aloud and listen to the first sound of the missing syllable.",
+              "Look at the other syllable of the same word: reduplicated words often repeat their first consonant."
+            ],
+            "hint": "It is a reduplicated word whose two syllables start the same way; look at «rỡ».",
+            "explain": "«Rực rỡ» (bright, colourful) repeats r in both syllables, so it is never written «dực rỡ»."
           }
         },
         {
@@ -100,13 +136,25 @@
             "yên"
           ],
           "answer": 0,
+          "guide": [
+            "Nói to tên chiếc ghe đi trên sông, rồi tách riêng phần vần đứng sau âm «th».",
+            "Ghép lần lượt từng vần vào «con th…», đọc lên và chọn cách viết khớp với tiếng nói."
+          ],
+          "hint": "Đọc tên chiếc ghe, bạn thấy môi tròn lại ngay sau «th»: vần cần tìm có âm đệm u.",
+          "explain": "Ghép th với vần uyên và dấu huyền được «thuyền»; «thiền» là từ khác, còn yên không đứng ngay sau phụ âm.",
           "en": {
             "prompt": "Which rhyme completes «con th…», the little boat on the river (con thuyền)?",
             "choices": [
               "uyên",
               "iên",
               "yên"
-            ]
+            ],
+            "guide": [
+              "Say the name of the river boat aloud, then split off the rhyme that comes after «th».",
+              "Try each rhyme in «con th…», read it out, and keep the spelling that matches what you hear."
+            ],
+            "hint": "As you say the boat's name your lips round just after «th», so the rhyme needs a glide u.",
+            "explain": "th + uyên with a falling tone makes «thuyền» (boat); «thiền» is another word, and yên never comes straight after a consonant."
           }
         }
       ],
@@ -177,13 +225,25 @@
             "dịu dàng"
           ],
           "answer": 0,
+          "guide": [
+            "Hình dung mẹ ngồi bên em trong đêm hè nóng và tự hỏi mẹ đang làm gì.",
+            "Từ chỉ hoạt động trả lời câu hỏi «làm gì?», nên bỏ từ chỉ đồ vật và từ chỉ tính nết."
+          ],
+          "hint": "Thử đặt từng lựa chọn sau chữ «Mẹ…»: chỉ một lựa chọn thành việc mẹ làm bằng đôi tay.",
+          "explain": "«Quạt mát» là việc mẹ làm cho em ngủ ngon; «ngọn đèn» chỉ đồ vật, «dịu dàng» tả tính nết của mẹ.",
           "en": {
             "prompt": "On a hot summer night mum stays up while you sleep. Which words tell what mum does (an action)?",
             "choices": [
               "quạt mát (fans you cool)",
               "ngọn đèn (the lamp)",
               "dịu dàng (gentle)"
-            ]
+            ],
+            "guide": [
+              "Picture mum beside you on a hot summer night and ask what she is doing.",
+              "Action words answer «làm gì?» (doing what?), so drop the object word and the word about character."
+            ],
+            "hint": "Put each choice after «Mẹ…»: only one turns into something mum does with her hands.",
+            "explain": "«Quạt mát» (fanning you cool) is what mum does; «ngọn đèn» is a thing and «dịu dàng» describes how gentle she is."
           }
         },
         {
@@ -196,13 +256,25 @@
             "Cháu không thích."
           ],
           "answer": 0,
+          "guide": [
+            "Đọc từng câu và hỏi: câu nào cho bà thấy em vui và trân trọng món quà?",
+            "Gạt bỏ câu đang hỏi chuyện khác và câu làm bà buồn lòng."
+          ],
+          "hint": "Lời biết ơn với người lớn có từ «cảm ơn» và tiếng «ạ» lễ phép ở cuối câu.",
+          "explain": "«Cháu cảm ơn bà ạ!» vừa cảm ơn vừa lễ phép; «Quà này của ai?» là câu hỏi, «Cháu không thích.» làm bà buồn.",
           "en": {
             "prompt": "Grandma gives you a present. Which sentence says thank you?",
             "choices": [
               "Cháu cảm ơn bà ạ! (Thank you, Grandma!)",
               "Quà này của ai? (Whose present is this?)",
               "Cháu không thích. (I don't like it.)"
-            ]
+            ],
+            "guide": [
+              "Read each sentence and ask: which one shows Grandma you are happy and grateful?",
+              "Rule out the sentence asking about something else and the one that would hurt her feelings."
+            ],
+            "hint": "Thanking an older person uses «cảm ơn» and ends with the polite «ạ».",
+            "explain": "«Cháu cảm ơn bà ạ!» thanks Grandma politely; «Quà này của ai?» is a question and «Cháu không thích.» would upset her."
           }
         },
         {
@@ -214,12 +286,24 @@
             "n"
           ],
           "answer": 1,
+          "guide": [
+            "Đọc «…ồi cơm mẹ nấu thơm phức» và nghĩ tới đồ dùng bằng nhôm để nấu cơm.",
+            "Nói chậm tên đồ dùng ấy, chú ý phụ âm đầu rồi chọn chữ ghi đúng âm đó."
+          ],
+          "hint": "Đồ dùng này có cùng phụ âm đầu với tiếng «nấu» đứng sau nó trong câu.",
+          "explain": "Viết «nồi cơm» với n, giống như «nấu»; «lồi» nghĩa là nhô ra, không phải đồ nấu cơm.",
           "en": {
             "prompt": "l or n: «…ồi cơm mẹ nấu thơm phức» (the pot of rice mum cooks smells lovely)?",
             "choices": [
               "l",
               "n"
-            ]
+            ],
+            "guide": [
+              "Read «…ồi cơm mẹ nấu thơm phức» and think of the kitchen pot that cooks rice.",
+              "Say that word slowly, listen to its first consonant, then choose the letter for it."
+            ],
+            "hint": "This pot starts with the same consonant as «nấu» (to cook), which comes later in the sentence.",
+            "explain": "It is «nồi cơm» (rice pot) with n, like «nấu»; «lồi» means bulging, not a cooking pot."
           }
         },
         {
@@ -231,12 +315,24 @@
             "au"
           ],
           "answer": 0,
+          "guide": [
+            "Nghĩ tới đồ dùng bố cầm để gọt vỏ quả, rồi đọc to tên của nó.",
+            "Ghép d với từng vần, đọc «d…» lên và giữ cách đọc thành tiếng có nghĩa."
+          ],
+          "hint": "Đồ gọt quả này cùng vần với tiếng «cao» và tiếng «sao».",
+          "explain": "Bố gọt quả bằng «con dao», vần ao; «dau» không thành tiếng có nghĩa trong tiếng Việt.",
           "en": {
             "prompt": "ao or au: «bố dùng con d… gọt quả cho em» (dad peels fruit with a knife)?",
             "choices": [
               "ao",
               "au"
-            ]
+            ],
+            "guide": [
+              "Think of what dad holds to peel fruit, then say its name aloud.",
+              "Join d to each rhyme, read «d…» out, and keep the one that makes a real word."
+            ],
+            "hint": "The peeling tool rhymes with «cao» (tall) and «sao» (star).",
+            "explain": "Dad peels fruit with «con dao» (a knife), rhyme ao; «dau» is not a Vietnamese word."
           }
         }
       ],
@@ -307,13 +403,25 @@
             "con dốc"
           ],
           "answer": 0,
+          "guide": [
+            "Hình dung ông chống gậy bước lên con dốc và để ý ông đi như thế nào.",
+            "Từ tả dáng vẻ cho biết ông trông ra sao, không phải tên đồ vật hay nơi chốn."
+          ],
+          "hint": "Bỏ hai từ gọi tên thứ ông cầm và chỗ ông leo; từ còn lại tả bước đi của ông.",
+          "explain": "«Chậm rãi» tả ông bước từ tốn, thong thả; «cái gậy» là đồ vật, «con dốc» là nơi ông leo.",
           "en": {
             "prompt": "Which word describes how Grandpa looks as he climbs the slope with his stick?",
             "choices": [
               "chậm rãi (slow and steady)",
               "cái gậy (the stick)",
               "con dốc (the slope)"
-            ]
+            ],
+            "guide": [
+              "Picture Grandpa leaning on his stick up the slope, and notice how he walks.",
+              "A describing word tells how he looks or moves, not the name of a thing or a place."
+            ],
+            "hint": "Drop the words naming what he holds and where he climbs; the one left describes his steps.",
+            "explain": "«Chậm rãi» (slow and steady) describes his careful steps; «cái gậy» is an object and «con dốc» is a place."
           }
         },
         {
@@ -325,12 +433,24 @@
             "tr"
           ],
           "answer": 1,
+          "guide": [
+            "Đọc «bụi …e trước ngõ nhà ông» và nghĩ tới loài cây mọc thành bụi, thân có đốt.",
+            "Nói chậm tên loài cây ấy rồi chọn chữ ghi đúng phụ âm đầu của nó."
+          ],
+          "hint": "Cây này cùng họ với cây «trúc» và viết cùng phụ âm đầu như «trúc».",
+          "explain": "«Bụi tre» viết tr; «che» là từ chỉ hoạt động (che mưa, che nắng) chứ không phải tên cây.",
           "en": {
             "prompt": "ch or tr: «bụi …e trước ngõ nhà ông» (the bamboo clump in front of Grandpa's lane)?",
             "choices": [
               "ch",
               "tr"
-            ]
+            ],
+            "guide": [
+              "Read «bụi …e trước ngõ nhà ông» and think of the plant that grows in clumps with jointed stems.",
+              "Say the plant's name slowly and choose the letters that spell its first sound."
+            ],
+            "hint": "This plant is a cousin of «trúc» and its name starts with the same letters.",
+            "explain": "«Bụi tre» (bamboo clump) is spelled with tr; «che» is a verb meaning to cover or shade."
           }
         },
         {
@@ -342,12 +462,24 @@
             "at"
           ],
           "answer": 1,
+          "guide": [
+            "Đọc «bãi c… vàng ven hồ» và nghĩ tới thứ hạt nhỏ, mịn phủ kín bờ hồ.",
+            "Ghép c với từng vần và dấu sắc, đọc lên rồi xem tiếng nào là thứ trải vàng ven hồ."
+          ],
+          "hint": "Tên thứ hạt vàng này cùng vần với «hát» và «mát».",
+          "explain": "«Bãi cát» viết vần at; «các» là từ chỉ số nhiều (các bạn), không phải thứ phủ trên bờ hồ.",
           "en": {
             "prompt": "ac or at: «bãi c… vàng ven hồ» (the yellow sand by the lake)?",
             "choices": [
               "ac",
               "at"
-            ]
+            ],
+            "guide": [
+              "Read «bãi c… vàng ven hồ» and think of the fine yellow grains that cover the shore.",
+              "Join c to each rhyme with a rising tone, read both, and see which one names those grains."
+            ],
+            "hint": "The yellow grains rhyme with «hát» (to sing) and «mát» (cool).",
+            "explain": "«Bãi cát» (sandy shore) takes the rhyme at; «các» is a plural word, as in «các bạn»."
           }
         },
         {
@@ -360,13 +492,25 @@
             "hiền hậu"
           ],
           "answer": 0,
+          "guide": [
+            "Hình dung bà chạy ra cổng lúc cháu tới: bà làm gì đầu tiên?",
+            "Đặt câu hỏi «Bà làm gì?» cho từng lựa chọn và giữ lại từ trả lời được."
+          ],
+          "hint": "Bà dang rộng hai tay ở cổng đón cháu; tìm từ kể đúng việc làm ấy.",
+          "explain": "«Ôm cháu» là việc bà làm; «cánh cửa» là đồ vật, còn «hiền hậu» tả tính nết của bà.",
           "en": {
             "prompt": "You come to visit and Grandma runs to the gate. Which words tell what Grandma does?",
             "choices": [
               "ôm cháu (hugs you)",
               "cánh cửa (the door)",
               "hiền hậu (kind)"
-            ]
+            ],
+            "guide": [
+              "Picture Grandma running to the gate as you arrive: what does she do first?",
+              "Ask «Bà làm gì?» (What does Grandma do?) of each choice and keep the one that answers."
+            ],
+            "hint": "Grandma opens her arms wide at the gate; find the words for that very action.",
+            "explain": "«Ôm cháu» (hugs you) is Grandma's action; «cánh cửa» is an object and «hiền hậu» describes her kindness."
           }
         }
       ],
@@ -437,13 +581,25 @@
             "cầm tay"
           ],
           "answer": 0,
+          "guide": [
+            "Hình dung chiếc chong chóng giấy và hỏi: nó trông như thế nào?",
+            "Từ tả đồ vật nói về màu sắc, hình dáng; những từ chỉ việc làm thì gạt ra."
+          ],
+          "hint": "Hai lựa chọn là việc bé làm với chong chóng; từ tả nó thì trả lời câu «trông ra sao?».",
+          "explain": "«Nhiều màu» tả vẻ ngoài của chong chóng; «thổi gió» và «cầm tay» là việc bé làm với nó.",
           "en": {
             "prompt": "Which word describes the child's paper pinwheel?",
             "choices": [
               "nhiều màu (many-coloured)",
               "thổi gió (blow)",
               "cầm tay (hold)"
-            ]
+            ],
+            "guide": [
+              "Picture the paper pinwheel and ask: what does it look like?",
+              "Words describing a thing tell its colour or shape; set aside the action words."
+            ],
+            "hint": "Two choices are things the child does with the pinwheel; the describing word answers «what is it like?».",
+            "explain": "«Nhiều màu» (many-coloured) describes the pinwheel; «thổi gió» and «cầm tay» are things the child does."
           }
         },
         {
@@ -455,12 +611,24 @@
             "ưu"
           ],
           "answer": 0,
+          "guide": [
+            "Nghĩ tới đồ dùng có lưỡi sắc, cán gỗ, dùng để chặt củi, rồi nói tên nó.",
+            "Ghép r với từng vần và dấu huyền, đọc lên rồi chọn tiếng đúng tên đồ dùng."
+          ],
+          "hint": "Tên đồ chặt củi này cùng vần với «xíu» và «níu».",
+          "explain": "«Cái rìu» viết vần iu; «rừu» không thành tiếng nào, còn vần ưu có trong «cứu», «bưu».",
           "en": {
             "prompt": "Which rhyme completes «cái r…», the tool for chopping firewood (an axe)?",
             "choices": [
               "iu",
               "ưu"
-            ]
+            ],
+            "guide": [
+              "Think of the tool with a sharp blade and a wooden handle for chopping wood, and say its name.",
+              "Join r to each rhyme with a falling tone, read them, and pick the one that names the tool."
+            ],
+            "hint": "The wood-chopping tool rhymes with «xíu» (tiny) and «níu» (to hold on).",
+            "explain": "«Cái rìu» (axe) uses the rhyme iu; «rừu» is not a word, while ưu appears in «cứu» and «bưu»."
           }
         },
         {
@@ -472,12 +640,24 @@
             "ăc"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc «chú bò mở to đôi m… tròn xoe» và nghĩ tới bộ phận dùng để nhìn.",
+            "Ghép m với từng vần và dấu sắc, đọc to rồi chọn tiếng đúng tên bộ phận ấy."
+          ],
+          "hint": "Tên bộ phận để nhìn cùng vần với «bắt» và «cắt».",
+          "explain": "Đôi «mắt» viết vần ăt; «mắc» là từ khác, nghĩa là vướng vào hay treo lên (mắc áo).",
           "en": {
             "prompt": "Pick the right rhyme: «chú bò mở to đôi m… tròn xoe» (the cow opens its round eyes wide)?",
             "choices": [
               "ăt",
               "ăc"
-            ]
+            ],
+            "guide": [
+              "Read «chú bò mở to đôi m… tròn xoe» and think of the part of the body we see with.",
+              "Join m to each rhyme with a rising tone, read them aloud, and keep the one naming that part."
+            ],
+            "hint": "The word for what we see with rhymes with «bắt» (to catch) and «cắt» (to cut).",
+            "explain": "«Đôi mắt» (eyes) takes the rhyme ăt; «mắc» is a different word meaning to get caught or to hang up."
           }
         },
         {
@@ -490,13 +670,25 @@
             "cãi nhau"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc ba từ và nghĩ xem anh chị em cư xử thế nào thì cả nhà vui.",
+            "Loại những từ chỉ việc làm khiến anh chị em giận nhau."
+          ],
+          "hint": "Tìm từ nói về việc biết để phần hơn cho anh, chị hay em của mình.",
+          "explain": "«Nhường nhịn» là biết chia sẻ, để phần cho nhau; «giành giật» và «cãi nhau» làm anh chị em buồn lòng.",
           "en": {
             "prompt": "Which word is about kindness between brothers and sisters?",
             "choices": [
               "nhường nhịn (give way to each other)",
               "giành giật (snatch)",
               "cãi nhau (quarrel)"
-            ]
+            ],
+            "guide": [
+              "Read the three words and think how brothers and sisters behave when the whole family is happy.",
+              "Rule out the words for things that make siblings cross with each other."
+            ],
+            "hint": "Look for the word about letting your brother or sister have the bigger share.",
+            "explain": "«Nhường nhịn» means giving way and sharing; «giành giật» and «cãi nhau» only make siblings upset."
           }
         },
         {
@@ -509,13 +701,25 @@
             "dấu hai chấm"
           ],
           "answer": 0,
+          "guide": [
+            "Đọc «Mẹ ơi, con thương mẹ lắm» bằng giọng thật tình cảm.",
+            "Tự hỏi câu này đang hỏi, đang kể hay đang bộc lộ một cảm xúc mạnh."
+          ],
+          "hint": "Câu này không hỏi điều gì mà nói lên tình cảm dạt dào, có chữ «lắm» để nhấn mạnh.",
+          "explain": "Câu bộc lộ cảm xúc kết thúc bằng dấu chấm than; dấu chấm hỏi dùng cho câu hỏi, dấu hai chấm báo phần giải thích.",
           "en": {
             "prompt": "Which mark should end «Mẹ ơi, con thương mẹ lắm» (Mum, I love you so much)?",
             "choices": [
               "an exclamation mark",
               "a question mark",
               "a colon"
-            ]
+            ],
+            "guide": [
+              "Read «Mẹ ơi, con thương mẹ lắm» with real warmth in your voice.",
+              "Ask yourself: is this sentence asking, telling, or showing a strong feeling?"
+            ],
+            "hint": "It asks nothing; it pours out love, and «lắm» (so much) makes the feeling stronger.",
+            "explain": "A sentence showing strong feeling ends with an exclamation mark; a question mark is for questions and a colon introduces an explanation."
           }
         }
       ],
