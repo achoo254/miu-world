@@ -2,9 +2,9 @@
 // region (a path of islands, done ones ticked, each opening its region screen) and the timeline of what she did,
 // newest first, with tabs Tất cả / Nhiệm vụ / Nhận đồ / Phát triển. Built by the server from what it already keeps
 // (`GET /api/journey`); nothing is computed here but the display.
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Link } from 'react-router';
-import { JOURNEY_TABS, type JourneyEvent, type JourneyEventKind, type JourneyRegion, type JourneyTab } from '@miu/schema/journey';
+import type { JourneyEvent, JourneyEventKind, JourneyRegion, JourneyTab } from '@miu/schema/journey';
 import { ITEMS, itemIcon } from '../backpack/items';
 import { mapBoth, pairOf, same, type Bilingual, type TextKey } from '../i18n/i18n';
 import { Bi, T, useT } from '../i18n/use-t';
@@ -127,8 +127,10 @@ function RegionCard({ region, player }: { region: JourneyRegion; player: PlayerD
 
 function JourneyBody({ player }: { player: PlayerData }) {
   const { t } = useT();
-  const journey = useLoaded(loadJourney);
   const [tab, setTab] = useState<Tab>('all');
+  // Each tab asks the server for its own newest events (a long replay history never hides a tab's).
+  const load = useCallback(() => loadJourney(tab === 'all' ? undefined : tab), [tab]);
+  const journey = useLoaded(load);
   if (journey.failed) {
     return (
       <p role="alert" className="error">
@@ -149,8 +151,7 @@ function JourneyBody({ player }: { player: PlayerData }) {
   // The regions in the world's order (content/world/regions.json).
   const order = new Map(REGIONS.map((r, i) => [r.id, i]));
   const regions = [...journey.data.regions].sort((a, b) => (order.get(a.region) ?? 99) - (order.get(b.region) ?? 99));
-  const kinds: readonly JourneyEventKind[] | null = tab === 'all' ? null : JOURNEY_TABS[tab];
-  const events = journey.data.events.filter((e) => !kinds || kinds.includes(e.kind));
+  const events = journey.data.events;
   return (
     <>
       <section className="panel" aria-labelledby="journey-regions-title" data-id="journey-regions">

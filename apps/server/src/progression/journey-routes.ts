@@ -1,13 +1,14 @@
 import { Router } from 'express';
 import { achievementOfSource } from '@miu/schema/achievement';
 import { collectionOfSource } from '@miu/schema/collectible';
-import { JOURNEY_EVENT_LIMIT, type JourneyEvent, type JourneyRegion, type JourneyResponse } from '@miu/schema/journey';
+import { JOURNEY_EVENT_LIMIT, JOURNEY_TABS, JourneyTab, type JourneyEvent, type JourneyEventKind, type JourneyRegion, type JourneyResponse } from '@miu/schema/journey';
 import { skillGiftOfSource } from '@miu/schema/progression';
 import { regionRewardOfSource } from '@miu/schema/region-reward';
 import { levelFromXp } from '@miu/quest/level';
 import { activePlayerId, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
+import { HttpError } from '../http-error';
 import { gateOfSource } from '../quest/knowledge-gate';
 import { questOfSource } from '../reward/reward-ledger';
 import { loadPlayerRecord, playerFacts, regionQuests, type LedgerRow, type PlayerRecord } from './player-facts';
@@ -55,9 +56,15 @@ function skillName(content: ContentCatalog, skillId: string): string | null {
 
 /**
  * The timeline from the ledger, newest first: each paid row as what it was, and the level-ups and skill-ups its
- * XP reached (replayed from the running totals, so no extra record is needed). At most `JOURNEY_EVENT_LIMIT`.
+ * XP reached (replayed from the running totals, so no extra record is needed). At most `JOURNEY_EVENT_LIMIT`, of
+ * the `kinds` asked for (a tab of the screen) when given.
  */
-export function journeyEvents(content: ContentCatalog, ledger: readonly LedgerRow[], shopNames: ReadonlyMap<string, string> = new Map()): JourneyEvent[] {
+export function journeyEvents(
+  content: ContentCatalog,
+  ledger: readonly LedgerRow[],
+  shopNames: ReadonlyMap<string, string> = new Map(),
+  kinds?: readonly JourneyEventKind[],
+): JourneyEvent[] {
   const events: JourneyEvent[] = [];
   const nameOf = (itemId: string | null): string | null => (itemId ? (content.accessories.get(itemId)?.name ?? shopNames.get(itemId) ?? null) : null);
   let xp = 0;
@@ -78,7 +85,10 @@ export function journeyEvents(content: ContentCatalog, ledger: readonly LedgerRo
       if (to > from) events.push({ ...none, kind: 'skill-up', at, ref: skill, label: skillName(content, skill), level: to, xp: 0, coin: 0 });
     }
   }
-  return events.reverse().slice(0, JOURNEY_EVENT_LIMIT);
+  return events
+    .reverse()
+    .filter((event) => !kinds || kinds.includes(event.kind))
+    .slice(0, JOURNEY_EVENT_LIMIT);
 }
 
 /** Every region with lessons or minigames: lessons done, three-star lessons, minigame runs, reward tiers claimed. */
@@ -104,13 +114,15 @@ export function journeyRegions(content: ContentCatalog, record: PlayerRecord): J
   });
 }
 
-/** The journey of the selected player (mock "Hành trình"): `GET /journey`, read only. */
+/** The journey of the selected player (mock "Hành trình"): `GET /journey[?tab=quests|items|growth]`, read only. */
 export function journeyRoutes({ db, content, shopNames }: JourneyRouteDeps): Router {
   const router = Router();
-  router.get('/journey', requireParent, async (_req, res) => {
+  router.get('/journey', requireParent, async (req, res) => {
     const childId = await activePlayerId(db, res, content.consent.version);
+    const tab = req.query.tab === undefined ? null : JourneyTab.safeParse(req.query.tab);
+    if (tab && !tab.success) throw new HttpError(400, 'invalid-tab');
     const record = await loadPlayerRecord(db, childId);
-    const body: JourneyResponse = { regions: journeyRegions(content, record), events: journeyEvents(content, record.ledger, shopNames) };
+    const body: JourneyResponse = { regions: journeyRegions(content, record), events: journeyEvents(content, record.ledger, shopNames, tab ? JOURNEY_TABS[tab.data] : undefined) };
     res.json(body);
   });
   return router;

@@ -2,7 +2,7 @@
 // always the server's answer; claiming names the achievement only.
 import { useCallback, useEffect, useState } from 'react';
 import { AchievementClaimResponse, AchievementListResponse } from '@miu/schema/achievement';
-import { JourneyResponse } from '@miu/schema/journey';
+import { JourneyResponse, type JourneyTab } from '@miu/schema/journey';
 import { SkillTreeResponse } from '@miu/schema/progression';
 import { api } from '../api-client';
 
@@ -10,8 +10,9 @@ export function loadSkillTree(): Promise<SkillTreeResponse> {
   return api('GET', '/skill-tree', SkillTreeResponse);
 }
 
-export function loadJourney(): Promise<JourneyResponse> {
-  return api('GET', '/journey', JourneyResponse);
+/** The journey; `tab` asks for that tab's newest events only. */
+export function loadJourney(tab?: JourneyTab): Promise<JourneyResponse> {
+  return api('GET', tab ? `/journey?tab=${tab}` : '/journey', JourneyResponse);
 }
 
 export function loadAchievements(): Promise<AchievementListResponse> {
@@ -31,7 +32,7 @@ export interface Loaded<T> {
   set: (data: T) => void;
 }
 
-/** `load` must keep its identity across renders (a module function), or it is called again on every render. */
+/** `load` must keep its identity across renders (a module function or a memoised one); a new one loads again. */
 export function useLoaded<T>(load: () => Promise<T>): Loaded<T> {
   const [data, setData] = useState<T | null>(null);
   const [failed, setFailed] = useState(false);

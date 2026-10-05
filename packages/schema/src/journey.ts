@@ -27,7 +27,8 @@ export const JOURNEY_TABS = {
   items: ['item', 'chest', 'collection', 'gift', 'achievement', 'gate', 'mail'],
   growth: ['level-up', 'skill-up'],
 } as const satisfies Record<string, readonly JourneyEventKind[]>;
-export type JourneyTab = keyof typeof JOURNEY_TABS;
+export const JourneyTab = z.enum(['quests', 'items', 'growth']);
+export type JourneyTab = z.infer<typeof JourneyTab>;
 
 export const JourneyEvent = z.object({
   at: z.string(),

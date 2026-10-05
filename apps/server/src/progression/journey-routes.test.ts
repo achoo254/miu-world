@@ -51,6 +51,15 @@ describe('journey', () => {
     for (const event of body.events) expect(Number.isNaN(Date.parse(event.at))).toBe(false);
   });
 
+  it('gives each tab its own newest events, and refuses an unknown tab', async () => {
+    const { agent } = await playingChild();
+    await play(agent, 'quest-b');
+    const growth = JourneyResponse.parse((await agent.get('/api/journey?tab=growth').expect(200)).body);
+    expect(new Set(growth.events.map((e) => e.kind))).toEqual(new Set(['level-up', 'skill-up']));
+    expect(JourneyResponse.parse((await agent.get('/api/journey?tab=quests').expect(200)).body).events.map((e) => e.kind)).toEqual(['quest']);
+    expect((await agent.get('/api/journey?tab=all').expect(400)).body).toEqual({ error: 'invalid-tab' });
+  });
+
   it("keeps each player's journey apart and needs a selected player", async () => {
     const a = await playingChild();
     const b = await playingChild();
