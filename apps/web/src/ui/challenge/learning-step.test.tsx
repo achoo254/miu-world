@@ -201,6 +201,31 @@ describe('scene feedback', () => {
 });
 
 describe('support panel', () => {
+  it("at a boss, a miss on a question opens that question's hint", async () => {
+    const boss = QuestStepPublic.parse({
+      id: 'trum',
+      title: 'Đấu trí',
+      kind: 'boss',
+      trigger: 'auto',
+      bossId: 'than-rung',
+      bossName: 'Thần Rừng',
+      introDialogue: 'Đố {name} nhé!',
+      winDialogue: 'Ta chịu thua!',
+      maxHp: 160,
+      damagePerTurn: 80,
+      turns: [
+        { id: 'q1', prompt: '2 + 2 = ?', skill: 'phep-cong', choices: [{ id: 'a', text: '4' }, { id: 'b', text: '5' }] },
+        { id: 'q2', prompt: '3 + 3 = ?', skill: 'phep-cong', choices: [{ id: 'a', text: '6' }, { id: 'b', text: '7' }] },
+      ],
+    });
+    const submit = renderStep(boss, vi.fn(async () => answerResponse(false, null)));
+    expect(screen.getAllByRole('tab').map((t) => t.textContent)).toEqual(['Hướng dẫn']);
+    fireEvent.click(screen.getByRole('radio', { name: '5' }));
+    await act(async () => fireEvent.click(screen.getByRole('button', { name: /Giải đố/ })));
+    expect(sentAnswer(submit)).toEqual({ turnId: 'q1', choice: 'b' });
+    expect(screen.getAllByRole('tab').map((t) => t.textContent)).toEqual(['Hướng dẫn', 'Gợi ý']);
+  });
+
   it('asks the server for each layer once, and the answer layer still lets the child finish', async () => {
     const calls: string[] = [];
     vi.stubGlobal(

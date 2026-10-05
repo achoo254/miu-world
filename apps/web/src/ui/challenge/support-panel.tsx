@@ -3,9 +3,10 @@
 // guide is always there, the hint after one wrong try, the answer after two. Seeing the answer never
 // blocks the step: the child can still finish it, for a little less XP (validation decision
 // `support_answer_penalty`), said kindly. The open layer floats over the play area and closes with its
-// "Đóng" button or a second tap on its tab (owner, 03/10/2026: once open it could not be closed).
+// "Đóng" button or a second tap on its tab (owner, 03/10/2026: once open it could not be closed). A boss's
+// questions each have their own three layers, asked for by question.
 import { useEffect, useState } from 'react';
-import { SupportResponse, type SupportLayer } from '@miu/schema/game';
+import { SupportResponse, type SupportLayer, type SupportRequest } from '@miu/schema/game';
 import { api, errorMessage } from '../api-client';
 import { mapBoth, pairOf, type TextKey } from '../i18n/i18n';
 import { Bi, T, useT } from '../i18n/use-t';
@@ -22,9 +23,23 @@ const LAYERS: ReadonlyArray<{ key: SupportLayer; label: TextKey }> = [
 /** Wrong tries before each layer is offered. */
 const OPENS_AFTER: Record<SupportLayer, number> = { guide: 0, hint: 1, answer: 2 };
 
-export function SupportPanel({ questId, stepId, fill, wrongTries }: { questId: string; stepId: string; fill: (text: string) => string; wrongTries: number }) {
-  // The layer open is kept with the step's draft; after a reload it is asked for again.
-  const [active, setActive] = useDraftState<SupportLayer | null>('support', null, (v): v is SupportLayer | null => v === null || LAYERS.some((l) => l.key === v));
+export function SupportPanel({
+  questId,
+  stepId,
+  turnId,
+  fill,
+  wrongTries,
+}: {
+  questId: string;
+  stepId: string;
+  /** At a boss, the question on screen: its own layers (a boss has a set for each question). */
+  turnId?: string;
+  fill: (text: string) => string;
+  /** Wrong tries on this step (at a boss, on this question). */
+  wrongTries: number;
+}) {
+  // The layer open is kept with the step's draft (at a boss, per question); after a reload it is asked for again.
+  const [active, setActive] = useDraftState<SupportLayer | null>(turnId ? `support:${turnId}` : 'support', null, (v): v is SupportLayer | null => v === null || LAYERS.some((l) => l.key === v));
   const [loaded, setLoaded] = useState<Partial<Record<SupportLayer, SupportResponse>>>({});
   const [error, setError] = useState<string | null>(null);
   const { t } = useT();
@@ -42,7 +57,8 @@ export function SupportPanel({ questId, stepId, fill, wrongTries }: { questId: s
   async function fetchLayer(layer: SupportLayer) {
     if (loaded[layer]) return;
     try {
-      const response = await api('POST', `/quests/${questId}/steps/${stepId}/support`, SupportResponse, { layer });
+      const body: SupportRequest = turnId ? { layer, turn: turnId } : { layer };
+      const response = await api('POST', `/quests/${questId}/steps/${stepId}/support`, SupportResponse, body);
       setLoaded((prev) => ({ ...prev, [layer]: response }));
       setError(null);
     } catch (err) {

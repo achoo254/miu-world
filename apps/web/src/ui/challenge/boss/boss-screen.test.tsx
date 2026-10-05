@@ -55,7 +55,10 @@ const context: ChallengeContext = {
   onClose: () => undefined,
 };
 
-afterEach(cleanup);
+afterEach(() => {
+  cleanup();
+  vi.unstubAllGlobals();
+});
 
 describe('BossScreen', () => {
   it('renders boss health bar, intro dialogue, and turn 1 question', () => {
@@ -120,5 +123,48 @@ describe('BossScreen', () => {
     } finally {
       setLangMode('vi', false);
     }
+  });
+  it("gives each question its own Hướng dẫn · Gợi ý · Đáp án from the server, opening step by step on that question's misses", async () => {
+    const asked: Array<{ url: string; body: unknown }> = [];
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url: string, init?: RequestInit) => {
+        const body = JSON.parse(String(init?.body)) as { layer: string; turn: string };
+        asked.push({ url, body });
+        const reply =
+          body.layer === 'guide'
+            ? { layer: 'guide', steps: [`Đọc kĩ câu ${body.turn}.`] }
+            : body.layer === 'hint'
+              ? { layer: 'hint', text: `Gợi ý cho ${body.turn}.` }
+              : { layer: 'answer', text: 'Meo meo', explanation: 'Mèo kêu meo meo.' };
+        return new Response(JSON.stringify(reply), { status: 200 });
+      }),
+    );
+    const tabs = () => screen.getAllByRole('tab').map((t) => t.textContent);
+    const { rerender } = render(<BossScreen step={bossStep} context={context} onAnswer={() => undefined} onClose={() => undefined} />);
+    // The guide is always there; the hint after a miss on this question, the answer after two.
+    expect(tabs()).toEqual(['Hướng dẫn']);
+    rerender(<BossScreen step={bossStep} context={context} turnTries={{ 'turn-1': 1 }} onAnswer={() => undefined} onClose={() => undefined} />);
+    expect(tabs()).toEqual(['Hướng dẫn', 'Gợi ý']);
+    rerender(<BossScreen step={bossStep} context={context} turnTries={{ 'turn-1': 2 }} onAnswer={() => undefined} onClose={() => undefined} />);
+    expect(tabs()).toEqual(['Hướng dẫn', 'Gợi ý', 'Đáp án']);
+    fireEvent.click(screen.getByRole('tab', { name: 'Hướng dẫn' }));
+    expect(await screen.findByText('Đọc kĩ câu turn-1.')).not.toBeNull();
+    fireEvent.click(screen.getByRole('tab', { name: 'Đáp án' }));
+    expect(await screen.findByText('Mèo kêu meo meo.')).not.toBeNull();
+    // Seeing the answer never stops the fight: the blow can still be struck.
+    fireEvent.click(screen.getByRole('radio', { name: 'Meo meo' }));
+    expect((screen.getByRole('button', { name: /Giải đố/ }) as HTMLButtonElement).disabled).toBe(false);
+    expect(asked).toEqual([
+      { url: '/api/quests/quest-forest/steps/boss-forest/support', body: { layer: 'guide', turn: 'turn-1' } },
+      { url: '/api/quests/quest-forest/steps/boss-forest/support', body: { layer: 'answer', turn: 'turn-1' } },
+    ]);
+    // The next question starts with its own layers closed, and only the guide until it is missed.
+    rerender(<BossScreen step={bossStep} context={context} bossState={{ hp: 160, answered: ['turn-1'] }} turnTries={{ 'turn-1': 2 }} onAnswer={() => undefined} onClose={() => undefined} />);
+    expect(tabs()).toEqual(['Hướng dẫn']);
+    expect(screen.queryByText('Mèo kêu meo meo.')).toBeNull();
+    fireEvent.click(screen.getByRole('tab', { name: 'Hướng dẫn' }));
+    expect(await screen.findByText('Đọc kĩ câu turn-2.')).not.toBeNull();
+    expect(asked.at(-1)?.body).toEqual({ layer: 'guide', turn: 'turn-2' });
   });
 });

@@ -33,6 +33,9 @@ import { BossScreen } from './boss/boss-screen';
 import { isCount, useDraftState } from '../quest/step-draft';
 import { MinigameOverlay } from '../minigame/minigame-overlay';
 
+/** Wrong tries per boss question, as the step's draft keeps them. */
+const isCountRecord = (v: unknown): v is Record<string, number> => typeof v === 'object' && v !== null && !Array.isArray(v) && Object.values(v).every(isCount);
+
 /** A stored line in both languages, or none (the boss's last line in the step's draft). */
 const isBilingualOrNull = (v: unknown): v is Bilingual | null =>
   v === null || (typeof v === 'object' && typeof (v as { vi?: unknown }).vi === 'string' && typeof (v as { en?: unknown }).en === 'string');
@@ -75,6 +78,8 @@ export function LearningStep({
   const [bossLine, setBossLine] = useDraftState('boss-line', null, isBilingualOrNull);
   /** Wrong answers on this screen: the hint opens after the first, the answer after the second. */
   const [wrongTries, setWrongTries] = useDraftState('wrong-tries', 0, isCount);
+  /** At a boss, the wrong answers on each question: each question opens its own support layers step by step. */
+  const [turnTries, setTurnTries] = useDraftState<Record<string, number>>('turn-tries', {}, isCountRecord);
   const fallback = useRef(freshPicker(TRY_AGAIN_LINES));
   const fill = (text: string): string => say(text, data.character);
 
@@ -87,6 +92,10 @@ export function LearningStep({
     if (!response.correct) {
       setTryAgain(response.feedback ? mapBoth(twin(response.feedback, response.feedbackEn), fill) : mapBoth(fallback.current.next(), fill));
       setWrongTries((n) => n + 1);
+      if ('turnId' in answer) {
+        const turn = answer.turnId;
+        setTurnTries((tries) => ({ ...tries, [turn]: (tries[turn] ?? 0) + 1 }));
+      }
     }
   }
 
@@ -111,7 +120,7 @@ export function LearningStep({
   if (step.kind === 'boss') {
     const questProgress = data.progress.quests.find((q) => q.questId === quest.id);
     const bossState = questProgress?.bossState?.[step.id];
-    return <BossScreen step={step} context={context} bossState={bossState} line={bossLine} onAnswer={answer} onClose={onClose} />;
+    return <BossScreen step={step} context={context} bossState={bossState} line={bossLine} turnTries={turnTries} onAnswer={answer} onClose={onClose} />;
   }
   if (step.kind === 'read') return <ReadStepScreen step={step} context={context} texts={quest.texts} onAnswer={answer} />;
   if (step.kind === 'riddle') return <RiddleStepScreen step={step} context={context} onAnswer={answer} />;

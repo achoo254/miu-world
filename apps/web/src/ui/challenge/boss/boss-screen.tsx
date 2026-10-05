@@ -1,6 +1,8 @@
 // M3.10 Friendly Boss Battle Screen: turn-based educational challenge.
 // Boss HP decreases with each right answer without violent elements. The boss speaks in both languages: its name,
 // its opening and winning lines, and (a zone guardian) a fresh line after each blow and each miss, from the server.
+// Each question has the three support layers every challenge has (Hướng dẫn, Gợi ý, Đáp án kèm giải thích), asked
+// for from the server by question; seeing the answer never stops the fight.
 import { useState, type ReactElement } from 'react';
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
@@ -13,6 +15,8 @@ import { twin } from '../../quest/content-text';
 import { ChoiceList } from '../choice-list';
 import { Illustration } from '../illustrations/illustration';
 import type { ChallengeContext } from '../challenge-frame';
+import { SupportPanel } from '../support-panel';
+import '../challenge.css';
 import './boss-screen.css';
 
 type BossStep = Extract<QuestStepPublic, { kind: 'boss' }>;
@@ -22,6 +26,7 @@ export function BossScreen({
   context,
   bossState,
   line = null,
+  turnTries = {},
   onAnswer,
   onClose,
 }: {
@@ -30,6 +35,8 @@ export function BossScreen({
   bossState?: { hp: number; answered: string[] };
   /** What the boss said after the last answer (the server's line, a blow's or a miss's), if anything. */
   line?: Bilingual | null;
+  /** Wrong tries on each question so far: its support layers open step by step, like every challenge's. */
+  turnTries?: Readonly<Record<string, number>>;
   onAnswer: (answer: StepAnswer) => void;
   onClose: () => void;
 }): ReactElement {
@@ -156,19 +163,31 @@ export function BossScreen({
               label={t('challenge.pickAnswer')}
             />
 
-            <div className="challenge-actions" style={{ marginTop: 'var(--space-md)' }}>
-              <button
-                type="button"
-                className={buttonClass('primary', { block: true })}
-                onClick={handleCheck}
-                disabled={!selectedChoice || context.busy}
-                data-id="boss-attack-btn"
-              >
-                <Icon name="sparkles" size={24} />
-                <span>
-                  <T k="boss.attack" params={{ damage: currentTurn.damage }} />
-                </span>
-              </button>
+            {/* Help on the left (its own Hướng dẫn · Gợi ý · Đáp án for each question, closed again on a new one), the blow on
+                the right, as on every challenge's bar. */}
+            <div className="parchment scene-bar" data-id="boss-bar">
+              <SupportPanel
+                key={currentTurn.id}
+                questId={context.questId}
+                stepId={step.id}
+                turnId={currentTurn.id}
+                fill={context.fill}
+                wrongTries={turnTries[currentTurn.id] ?? 0}
+              />
+              <div className="challenge-actions">
+                <button
+                  type="button"
+                  className={buttonClass('primary')}
+                  onClick={handleCheck}
+                  disabled={!selectedChoice || context.busy}
+                  data-id="boss-attack-btn"
+                >
+                  <Icon name="sparkles" size={24} />
+                  <span>
+                    <T k="boss.attack" params={{ damage: currentTurn.damage }} />
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         ) : null}
