@@ -1,0 +1,30 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 741,
+    "output_tokens": 92
+  },
+  "results": {
+    "learning_steps_in_coop": {
+      "stakes": "medium",
+      "choice": "each_answers_own",
+      "confidence": 0.97,
+      "probabilities": {
+        "anyone_answers": 0.01,
+        "take_turns": 0.01,
+        "each_answers_own": 0.98
+      },
+      "decision": "auto"
+    },
+    "progress_ownership": {
+      "stakes": "medium",
+      "choice": "each_own_progress",
+      "confidence": 0.99,
+      "probabilities": {
+        "each_own_progress": 0.99,
+        "leader_only": 0.01
+      },
+      "decision": "auto"
+    }
+  }
+}

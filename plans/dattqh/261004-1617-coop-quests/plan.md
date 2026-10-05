@@ -7,6 +7,14 @@
 
 Một đội 2–4 (người hoặc bạn máy) cùng vào một thử thách chung: mỗi bé thấy phần việc của mình, kết quả chung phụ thuộc cả đội, thưởng tính riêng cho từng bé ở server như quest thường; không ai bị bỏ rơi hay bị chê (không bảng điểm cá nhân so sánh trong thử thách).
 
+## Mở rộng (người sở hữu, 05/10/2026): mọi nhiệm vụ chơi co-op được, kể cả boss canh khu
+
+Quyết định (Jev, `reports/jev-261005-2320-coop-all-{input,output}.json`):
+
+- Bước khám phá làm chung (ai nhặt đồ, nói chuyện, đọc thì cả đội đi tiếp); mọi câu hỏi/thử thách/câu đố thì mỗi thành viên tự trả lời trên màn hình mình, cả đội đi tiếp khi mọi người đã trả lời; bạn bè cổ vũ và gửi biểu tượng gợi ý, không bao giờ gửi đáp án; trùm (lớn và canh khu) là trùm đội, HP chung, mỗi người tự trả lời lượt của mình (0.97).
+- Tiến độ của từng thành viên trên quest đó đều tăng; đội trưởng chọn quest; ai đã xong quest đó thì chơi một lượt chơi lại (0.99).
+- Thử thách co-op riêng (mỗi người một mảnh, cùng giữ nhịp) vẫn là nội dung thêm của pha 3 và 6.
+
 ## Không làm (ghi rõ)
 
 - Không chat tự do; chỉ câu có sẵn và emote (Master Plan §9).

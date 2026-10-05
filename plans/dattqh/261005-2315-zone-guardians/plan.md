@@ -23,7 +23,7 @@ created: 2026-10-05
 
 1. Mọi boss (lớn và canh khu) có biểu tượng riêng, thân thiện, luôn hiện trên bản đồ nhỏ và bản đồ lớn; chạm vào để tự đi tới như quest.
 2. Mỗi map có 3–4 boss canh khu, mỗi khu chính một: nhân vật riêng, câu hỏi theo kỹ năng các bài của khu đó, trận ngắn 4–5 câu, lời thoại không lặp, thưởng mỗi lần chơi lại (server tính); tổng khoảng 36–48 boss canh.
-3. Boss lớn của map chơi được theo tổ đội trong co-op (dùng chế độ trùm đội của plan `261004-1617-coop-quests`).
+3. Mọi boss (lớn và canh khu) chơi được theo tổ đội trong co-op như mọi nhiệm vụ (người sở hữu 05/10/2026; trùm đội HP chung, mỗi người tự trả lời lượt mình; plan `261004-1617-coop-quests`).
 4. Không khóa gì: boss không chặn bài học, không cần đánh boss canh để gặp boss lớn.
 
 ## Pha
@@ -32,7 +32,7 @@ created: 2026-10-05
 | --- | --- | --- |
 | 1 | S | Biểu tượng boss trên bản đồ nhỏ và bản đồ lớn, đi tới bằng chạm |
 | 2 | L | Nội dung boss canh khu cho 12 map (nhân vật, câu theo kỹ năng của khu, lời thắng/thua), id sắp sau bài học (luật `content:check`); sinh lại từng map một, 3 audit, `assets:manifest` |
-| 3 | S | Boss lớn chơi theo tổ đội (nối chế độ trùm đội của co-op) |
+| 3 | S | Mọi boss chơi theo tổ đội (nối chế độ co-op cho mọi nhiệm vụ) |
 | 4 | S | Kiểm tra: test bản đồ có boss, `content:check` đếm boss mỗi map, E2E đánh một boss canh; tài liệu |
 
 ## Tiêu chí xong

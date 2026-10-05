@@ -1,0 +1,28 @@
+{
+  "state": {
+    "project": "Miu World: a 3D voxel learn-while-playing online game for all ages; lessons follow the real grade-2 textbooks (the game is the child's homework; textbook text verbatim). Parties of 2-4 (players or labelled bots) exist; a co-op mode with shared challenges and team bosses is being built.",
+    "today": "2026-10-05",
+    "owner_request": "Every quest should be playable in co-op, including the zone guardian bosses.",
+    "quest_step_kinds": "dialogue, search/find-object (find things on the map), read, speak, worksheet, decision, logic and other challenges, riddle, boss (multi-turn questions with HP), reward, next.",
+    "rules": "Rewards are server-computed per player, once per run, replays pay; nothing is locked; every quest stays playable solo; no competitive individual scores."
+  },
+  "questions": {
+    "learning_steps_in_coop": {
+      "stakes": "medium",
+      "instructions": "When a party plays any quest together, how are learning steps (questions, challenges, riddles) handled?",
+      "criteria": {
+        "each_answers_own": "Exploration steps are shared (anyone finding an item, talking or reading moves the party on); every question/challenge step is answered by each member on her own screen, and the party moves on when all have answered (friends can cheer and send hint emotes, never the answer); bosses are team bosses with shared HP where each member answers her own turns.",
+        "take_turns": "Members take turns: each question goes to one member, the others watch and cheer; everyone gets the step.",
+        "anyone_answers": "Whoever answers first completes the step for everyone."
+      }
+    },
+    "progress_ownership": {
+      "stakes": "medium",
+      "instructions": "Whose quest progress moves in co-op?",
+      "criteria": {
+        "each_own_progress": "Each member's own progress on that quest moves (the leader picks the quest; a member who already finished it plays a replay run).",
+        "leader_only": "Only the leader's progress moves; others just help."
+      }
+    }
+  }
+}
