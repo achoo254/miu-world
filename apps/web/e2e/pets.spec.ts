@@ -6,7 +6,7 @@ import { mkdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { expect, test, type Page } from '@playwright/test';
-import { freshChild } from './quest-api';
+import { freshChild, playAt, playUntil } from './quest-api';
 import { expectDrawCalls, readStats, waitReady } from './stats';
 
 test.use({ storageState: { cookies: [], origins: [] }, viewport: { width: 1180, height: 820 } });
@@ -105,4 +105,22 @@ test('naps in its own bed at home', async ({ page, baseURL }) => {
   await expect.poll(async () => (await readStats(page)).petMotion).toBe('nap');
   await shot(page, 'care-nap-bed');
   await expect(page.locator('[data-id="play-pet-care"]')).toBeVisible({ timeout: 15_000 });
+});
+
+test('sniffs a few steps toward a clue still to find, then waits before the next', async ({ page, baseURL }) => {
+  const base = baseURL ?? '';
+  await freshChild(page, base);
+  const headers = { Origin: new URL(base).origin };
+  expect((await page.context().request.put('/api/character', { headers, data: { name: 'Mochi', equipped: [], pet: 'cun-con' } })).status()).toBe(200);
+  // On the forest's search for clues: the HUD offers "Đánh hơi".
+  await playUntil(page, base, 'find-clues');
+  await page.goto(playAt('spawn'));
+  await waitReady(page);
+  const sniff = page.locator('[data-id="hud-pet-sniff"]');
+  await expect(sniff).toBeVisible();
+  await sniff.click();
+  await expect.poll(async () => (await readStats(page)).petScenes).toContain('sniff');
+  // A nudge, not the way: the button waits before the pet may sniff again.
+  await expect(sniff).toBeDisabled();
+  await expect(sniff).toContainText('Chờ');
 });
