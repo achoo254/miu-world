@@ -29,4 +29,29 @@ describe('notebook lines', () => {
       { step: 'f', question: 'Điền dấu >, <, =\n47 … 38', answer: '47 > 38' },
     ]);
   });
+
+  it("gives a boss's questions with their right choice: the blow just landed, and every one at the end", () => {
+    const boss = {
+      id: 'dau',
+      title: 'Đấu',
+      kind: 'boss',
+      target: 'trum',
+      bossId: 'trum',
+      bossName: 'Trùm',
+      introDialogue: 'Tới đây!',
+      winDialogue: 'Thua rồi!',
+      maxHp: 200,
+      damagePerTurn: 100,
+      turns: [
+        { id: 't1', prompt: '7 + 5 = ?', skill: 's', damage: 100, choices: [{ id: 'a', text: '12' }, { id: 'b', text: '11' }], answer: { choice: 'a' } },
+        { id: 't2', prompt: 'Chữ nào sau chữ G?', skill: 's', damage: 100, choices: [{ id: 'a', text: 'I' }, { id: 'b', text: 'H' }], answer: { choice: 'b' } },
+      ],
+    } as unknown as QuestStep;
+    expect(notebookLine(boss, 't2')).toEqual({ step: 't2', question: 'Chữ nào sau chữ G?', answer: 'H' });
+    expect(notebookLine(boss)).toBeNull();
+    expect(notebookLines([boss])).toEqual([
+      { step: 't1', question: '7 + 5 = ?', answer: '12' },
+      { step: 't2', question: 'Chữ nào sau chữ G?', answer: 'H' },
+    ]);
+  });
 });

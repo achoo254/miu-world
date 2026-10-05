@@ -207,8 +207,8 @@ export function questRoutes(deps: QuestRouteDeps): Router {
         reward: outcome.reward,
         repeated: outcome.repeated,
         completion: outcome.completion,
-        // A right answer: its question and answer to copy into the vở now.
-        copy: outcome.correct && !outcome.repeated && stepDef ? notebookLine(stepDef) : null,
+        // A right answer (a boss blow that landed): its question and answer to copy into the vở now.
+        copy: outcome.correct && !outcome.repeated && stepDef ? notebookLine(stepDef, input.data.answer && 'turnId' in input.data.answer ? input.data.answer.turnId : undefined) : null,
         gates: outcome.gates,
         progress: await progressSummary(db, childId, content),
       }),

@@ -31,6 +31,10 @@ import { WorksheetStepScreen } from './mechanics/worksheet-step';
 import { DecisionScreen } from './decision-screen';
 import { BossScreen } from './boss/boss-screen';
 import { isCount, useDraftState } from '../quest/step-draft';
+
+/** A stored line in both languages, or none (the boss's last line in the step's draft). */
+const isBilingualOrNull = (v: unknown): v is Bilingual | null =>
+  v === null || (typeof v === 'object' && typeof (v as { vi?: unknown }).vi === 'string' && typeof (v as { en?: unknown }).en === 'string');
 import { MinigameOverlay } from '../minigame/minigame-overlay';
 
 export function hasLearningScreen(step: QuestStepPublic): boolean {
@@ -64,8 +68,11 @@ export function LearningStep({
   onRight?: (copy: NotebookLine) => void;
 }): ReactElement | null {
   const [tryAgain, setTryAgain] = useState<Bilingual | null>(null);
-  /** What a boss said after the last answer, a blow's or a miss's (the server's line, else none). */
-  const [bossLine, setBossLine] = useState<Bilingual | null>(null);
+  /**
+   * What a boss said after the last answer, a blow's or a miss's (the server's line, else none). Kept with the step's
+   * draft: a blow's "copy into the vở" card covers the fight for a moment, and the line is still there after it.
+   */
+  const [bossLine, setBossLine] = useDraftState('boss-line', null, isBilingualOrNull);
   /** Wrong answers on this screen: the hint opens after the first, the answer after the second. */
   const [wrongTries, setWrongTries] = useDraftState('wrong-tries', 0, isCount);
   const fallback = useRef(freshPicker(TRY_AGAIN_LINES));

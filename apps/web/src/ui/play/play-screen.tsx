@@ -449,7 +449,8 @@ export function PlayScreen() {
   // A big boss picked on the full map while another quest is played: its quest is taken up here (the map is built again
   // for it), then she walks to its next place as soon as the game can, like a tap on the quest card.
   const picked = useRef(store.getSnapshot().questPick?.count ?? 0);
-  const walkWhenReady = useRef(false);
+  /** The walk after a picked quest: waits for the new map to start loading, then for it to be ready to walk. */
+  const walkAfterPick = useRef<'none' | 'loading' | 'ready'>('none');
   useEffect(
     () =>
       store.subscribe(() => {
@@ -459,12 +460,15 @@ export function PlayScreen() {
           picked.current = pick.count;
           const next = data.quests.find((q) => q.quest.id === pick.questId);
           if (next && next.quest.id !== questId) {
-            walkWhenReady.current = true;
+            walkAfterPick.current = 'loading';
             switchQuest(next);
+            return;
           }
         }
-        if (walkWhenReady.current && snapshot.status === 'ready' && snapshot.autowalkAvailable) {
-          walkWhenReady.current = false;
+        // The old game is still up when the quest switches: only the new one, once it loads, walks her.
+        if (walkAfterPick.current === 'loading' && snapshot.status === 'loading') walkAfterPick.current = 'ready';
+        if (walkAfterPick.current === 'ready' && snapshot.status === 'ready' && snapshot.autowalkAvailable) {
+          walkAfterPick.current = 'none';
           store.send({ type: 'autowalk-start' });
         }
       }),
