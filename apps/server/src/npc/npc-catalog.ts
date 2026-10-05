@@ -90,7 +90,6 @@ export function npcCatalogIssues(files: readonly NpcMapFile[], ctx: NpcCheckCont
   const issues: string[] = [];
   const known = new Map<string, string>();
   for (const file of files) {
-    if (!ctx.openRegions.has(file.region)) issues.push(`npcs/${file.region}.json: ${file.region} is not an open region`);
     for (const npc of file.npcs) {
       if (known.has(npc.id)) issues.push(`character ${npc.id} has a profile in npcs/${known.get(npc.id)}.json and npcs/${file.region}.json`);
       known.set(npc.id, file.region);
