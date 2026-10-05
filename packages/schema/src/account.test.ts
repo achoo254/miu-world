@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ChildProfileDto, Email, ParentDto, ParentPin, PasswordField } from './account';
+import { PlayerDto, Email, ParentDto, ParentPin, PasswordField } from './account';
 
 describe('account schema', () => {
   it('normalises email to lower case', () => {
@@ -28,7 +28,7 @@ describe('account schema', () => {
       pinHash: 'hash-b',
     };
     expect(ParentDto.parse(row)).toEqual({ id: row.id, email: row.email });
-    const child = ChildProfileDto.parse({ id: row.id, displayName: 'Mèo Mây', species: 'cat', parentId: 'x' });
-    expect(child).toEqual({ id: row.id, displayName: 'Mèo Mây', species: 'cat', language: 'vi' });
+    const player = PlayerDto.parse({ id: row.id, displayName: 'Mèo Mây', species: 'cat', primary: true, parentId: 'x' });
+    expect(player).toEqual({ id: row.id, displayName: 'Mèo Mây', species: 'cat', language: 'vi', primary: true });
   });
 });

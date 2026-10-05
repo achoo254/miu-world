@@ -32,11 +32,11 @@ test.afterAll(() => {
   if (REVIEW_SHOTS) execFileSync('pnpm', ['-s', 'assets:manifest'], { cwd: REPO_ROOT, stdio: 'inherit', shell: true });
 });
 
-test('Google sign-in → consent → create profile → pick profile → create character → Home → map → forest → play → meet the parrot', async ({ page }) => {
+test('Google sign-in → consent → create character → Home → map → forest → play → parrot → extra player and optional PIN → data and deletion', async ({ page }) => {
   const consoleErrors: string[] = [];
   page.on('pageerror', (err) => consoleErrors.push(err.message));
 
-  // The privacy page is public: a parent can read it before signing in.
+  // The privacy page is public: anyone can read it before signing in.
   await page.goto('/privacy');
   await expect(page.getByRole('heading', { name: 'Quyền riêng tư của Miu World' })).toBeVisible();
   await page.goto('/');
@@ -45,24 +45,15 @@ test('Google sign-in → consent → create profile → pick profile → create 
   await shot(page, '01-login');
   await page.getByRole('link', { name: 'Đăng nhập bằng Google' }).click();
 
-  // Fake Google signs in a new account and redirects back; no PIN is asked: the parent area is open.
+  // Fake Google signs in a new account and redirects back; no PIN is asked.
   await expect(page.locator('[data-id="consent-text"]')).toBeVisible();
   await expect(page.locator('[data-id="consent-draft"]')).toHaveCount(0); // the shipped consent is final
   await expect(page.locator('[data-id="consent-privacy"]')).toBeVisible();
   await shot(page, '03-consent');
   await page.getByRole('button', { name: 'Tôi đồng ý' }).click();
 
-  await expect(page.getByRole('heading', { name: 'Tạo hồ sơ người chơi' })).toBeVisible();
-  await page.locator('[data-id="parent-create-name"]').selectOption('Thỏ Bông');
-  await page.getByRole('button', { name: 'Tạo hồ sơ' }).click();
-  await expect(page.locator('[data-id^="parent-profile-"] .profile-row-name')).toHaveText(['Thỏ Bông']);
-  await shot(page, '04-parent-area');
-  await page.getByRole('button', { name: 'Xong, vào chơi' }).click();
-
-  await expect(page.getByRole('heading', { name: 'Ai đang chơi?' })).toBeVisible();
-  await shot(page, '05-profiles');
-  await page.getByRole('button', { name: 'Thỏ Bông' }).click();
-  // A new profile creates its character before playing (details in creator.spec.ts).
+  // The one who signed in is the account's own player: no profile set-up, no picker; the character
+  // comes first (details in creator.spec.ts).
   await expect(page).toHaveURL(/\/create$/);
   await page.getByRole('button', { name: /Mèo/ }).click();
   await page.getByLabel('Tên nhân vật').selectOption('Bông');
@@ -99,22 +90,39 @@ test('Google sign-in → consent → create profile → pick profile → create 
   await expect(page.locator('.npc-label[data-target="parrot-guide"]')).toBeVisible();
   await shot(page, '10-play-parrot');
 
-  // The child cannot reach the parent area without the PIN.
+  // Without a PIN the account area opens straight away: add an extra player for a shared device (a child),
+  // then lock the area with the optional PIN before handing the device over.
+  await page.goto('/parent');
+  await expect(page.locator('[data-id^="parent-profile-primary-"]')).toHaveCount(1);
+  await page.locator('[data-id="parent-create-name"]').selectOption('Thỏ Bông');
+  await page.getByRole('button', { name: 'Thêm người chơi' }).click();
+  await expect(page.locator('[data-id^="parent-profile-"] .profile-row-name')).toHaveText(['Mèo Mây', 'Thỏ Bông']);
+  await shot(page, '04-parent-area');
+  await page.getByRole('link', { name: 'Đặt mã PIN' }).click();
+  await page.locator('[data-id="set-pin-pin"]').fill('2468');
+  await page.locator('[data-id="set-pin-again"]').fill('2468');
+  await page.getByRole('button', { name: 'Lưu mã PIN' }).click();
+  // Two players now: handing the device over goes to the picker, not into the owner's game.
+  await page.getByRole('button', { name: 'Xong, khóa mục này' }).click();
+  await expect(page.getByRole('heading', { name: 'Ai đang chơi?' })).toBeVisible();
+  await shot(page, '05-profiles');
+
+  // Locked now: the area asks for the PIN.
   await page.goto('/parent');
   await expect(page.getByLabel('Nhập mã PIN tài khoản')).toBeVisible();
   await shot(page, '11-parent-gate');
-  await expect(page.getByRole('heading', { name: 'Tạo hồ sơ người chơi' })).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: /Người chơi của tài khoản/ })).toHaveCount(0);
 
-  // The parent downloads what the server keeps, then deletes the account.
+  // The owner downloads what the server keeps, then deletes the account.
   await page.getByLabel('Nhập mã PIN tài khoản').fill('2468');
   await page.getByRole('button', { name: 'Mở khóa' }).click();
   const download = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Tải dữ liệu của tôi' }).click();
   const file = await download;
   expect(file.suggestedFilename()).toMatch(/^miu-world-du-lieu-\d{4}-\d{2}-\d{2}\.json$/);
-  const exported = JSON.parse(readFileSync(await file.path(), 'utf8')) as { parent: { signIn: string }; children: Array<{ displayName: string; character: { name: string } }> };
+  const exported = JSON.parse(readFileSync(await file.path(), 'utf8')) as { parent: { signIn: string }; players: Array<{ displayName: string; primary: boolean; character: { name: string } }> };
   expect(exported.parent.signIn).toBe('google');
-  expect(exported.children.map((c) => [c.displayName, c.character.name])).toEqual([['Thỏ Bông', 'Bông']]);
+  expect(exported.players.map((p) => [p.displayName, p.primary, p.character.name])).toEqual([['Mèo Mây', true, 'Bông'], ['Thỏ Bông', false, 'Miu']]);
   await page.getByRole('button', { name: 'Xóa tài khoản' }).click();
   await page.getByRole('button', { name: 'Xóa hẳn tài khoản' }).scrollIntoViewIfNeeded();
   await shot(page, '12-delete-account');

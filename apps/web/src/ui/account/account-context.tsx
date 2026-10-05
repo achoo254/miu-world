@@ -54,6 +54,11 @@ export function AccountProvider({ children }: { children: ReactNode }) {
   return <AccountContext.Provider value={value}>{children}</AccountContext.Provider>;
 }
 
+/** The account when rendered inside the provider; null in isolated component renders. */
+export function useOptionalAccount(): AccountApi | null {
+  return useContext(AccountContext);
+}
+
 export function useAccount(): AccountApi {
   const ctx = useContext(AccountContext);
   if (!ctx) throw new Error('useAccount outside AccountProvider');

@@ -1,4 +1,4 @@
-// E2E helpers: a fresh parent with one child, and chapter 1 steps played through the API to reach a
+// E2E helpers: a fresh account with its primary player, and chapter 1 steps played through the API to reach a
 // later step quickly. Answers are the chapter 1 content's; tests that check a screen play it in the UI.
 import { expect, type Page } from '@playwright/test';
 
@@ -9,9 +9,7 @@ export async function freshChild(page: Page, baseURL: string, name = 'Mochi'): P
   expect((await request.post('/api/auth/register', { headers, data: { email, ['password']: 'test-password-e2e', pin: '2468' } })).status()).toBe(201);
   const { version } = (await (await request.get('/api/consents/policy')).json()) as { version: string };
   expect((await request.post('/api/consents', { headers, data: { policyVersion: version } })).status()).toBe(201);
-  const child = await request.post('/api/children', { headers, data: { displayName: 'Cáo Nhỏ' } });
-  const { id } = (await child.json()) as { id: string };
-  expect((await request.post(`/api/children/${id}/select`, { headers })).status()).toBe(200);
+  // Accepting the policy made the primary player and selected it.
   expect((await request.put('/api/character', { headers, data: { name, equipped: [] } })).status()).toBe(200);
 }
 

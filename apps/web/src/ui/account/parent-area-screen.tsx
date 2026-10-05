@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type Ref } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { z } from 'zod';
-import { ChildLanguage, ChildProfileDto, MeResponse } from '@miu/schema/account';
+import { PlayerLanguage, PlayerDto, MeResponse } from '@miu/schema/account';
 import { NameList } from '@miu/schema/content';
 import displayNamesJson from '../../../../../content/names/child-display-names.json';
 import { api } from '../api-client';
@@ -19,14 +19,14 @@ import { useSubmit } from './use-submit';
 /** Same list the server validates against; the child never types a name (Master Plan §9). */
 export const DISPLAY_NAMES = NameList.parse(displayNamesJson).names;
 
-const LANG_LABELS: Record<ChildLanguage, TextKey> = {
+const LANG_LABELS: Record<PlayerLanguage, TextKey> = {
   vi: 'parent.languageVi',
   en: 'parent.languageEn',
   both: 'parent.languageBoth',
 };
 
 /** First name no profile uses yet, so a new profile does not default to a sibling's name. */
-function firstFreeName(profiles: ChildProfileDto[]): string {
+function firstFreeName(profiles: PlayerDto[]): string {
   const taken = new Set(profiles.map((p) => p.displayName));
   return DISPLAY_NAMES.find((n) => !taken.has(n)) ?? DISPLAY_NAMES[0] ?? '';
 }
@@ -44,10 +44,10 @@ function NamePicker({ value, onChange, id, ref }: { value: string; onChange(name
   );
 }
 
-function LanguagePicker({ value, onChange, id }: { value: ChildLanguage; onChange(lang: ChildLanguage): void; id: string }) {
+function LanguagePicker({ value, onChange, id }: { value: PlayerLanguage; onChange(lang: PlayerLanguage): void; id: string }) {
   const { t } = useT();
   return (
-    <select data-id={id} value={value} onChange={(e) => onChange(e.target.value as ChildLanguage)} aria-label={t('parent.languageLabel')}>
+    <select data-id={id} value={value} onChange={(e) => onChange(e.target.value as PlayerLanguage)} aria-label={t('parent.languageLabel')}>
       <option value="vi">{t('parent.languageVi')}</option>
       <option value="en">{t('parent.languageEn')}</option>
       <option value="both">{t('parent.languageBoth')}</option>
@@ -70,20 +70,20 @@ function StepTitle({ n, done, id, children }: { n: number; done: boolean; id: st
 }
 
 /** One profile: its name as text; the name list only opens after "Đổi tên". */
-function ProfileRow({ profile, index, onChanged }: { profile: ChildProfileDto; index: number; onChanged(): Promise<void> }) {
+function ProfileRow({ profile, index, onChanged }: { profile: PlayerDto; index: number; onChanged(): Promise<void> }) {
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(profile.displayName);
-  const [lang, setLang] = useState<ChildLanguage>(profile.language ?? 'vi');
+  const [lang, setLang] = useState<PlayerLanguage>(profile.language ?? 'vi');
   const [confirming, setConfirming] = useState(false);
   const rename = useSubmit(async () => {
     const body = lang !== (profile.language ?? 'vi') ? { displayName: name, language: lang } : { displayName: name };
-    await api('PATCH', `/children/${profile.id}`, ChildProfileDto, body);
+    await api('PATCH', `/players/${profile.id}`, PlayerDto, body);
     bindLangProfile(profile.id, lang);
     await onChanged();
     setEditing(false);
   });
   const remove = useSubmit(async () => {
-    await api('DELETE', `/children/${profile.id}`, z.undefined());
+    await api('DELETE', `/players/${profile.id}`, z.undefined());
     await onChanged();
   });
   // Keyboard and VoiceOver users keep their place: focus the name list on open, back to "Đổi tên" on close.
@@ -121,12 +121,16 @@ function ProfileRow({ profile, index, onChanged }: { profile: ChildProfileDto; i
         ) : (
           <>
             <p className="profile-row-name">{profile.displayName}</p>
+            {profile.primary ? (
+              <p className="badge" data-id={`parent-profile-primary-${profile.id}`}><T k="parent.primaryBadge" /></p>
+            ) : null}
             <p className="profile-row-lang"><T k={LANG_LABELS[profile.language ?? 'vi'] ?? 'parent.languageVi'} /></p>
             <div className="row">
               <button ref={renameRef} type="button" className={buttonClass('secondary', { small: true })} data-id={`parent-profile-rename-${profile.id}`} onClick={startEditing}>
                 <T k="parent.renameButton" />
               </button>
-              {confirming ? (
+              {/* The account's own player goes only with the whole account (Xóa tài khoản below). */}
+              {profile.primary ? null : confirming ? (
                 <>
                   <span><T k="parent.deleteConfirmQuestion" /></span>
                   <button type="button" className={buttonClass('danger', { small: true })} data-id={`parent-profile-delete-confirm-${profile.id}`} disabled={remove.busy} onClick={() => void remove.onSubmit()}>
@@ -152,25 +156,27 @@ function ProfileRow({ profile, index, onChanged }: { profile: ChildProfileDto; i
 }
 
 export function ParentAreaScreen() {
-  const { state, setMe } = useAccount();
+  const { state, setMe, refresh } = useAccount();
   const navigate = useNavigate();
   const { profiles, error, reload } = useProfiles();
   // null = not picked yet: follow the first free name, which moves on after each new profile.
   const [picked, setPicked] = useState<string | null>(null);
-  const [newLang, setNewLang] = useState<ChildLanguage>('vi');
+  const [newLang, setNewLang] = useState<PlayerLanguage>('vi');
   const newName = picked ?? firstFreeName(profiles ?? []);
   const create = useSubmit(async () => {
     const body = newLang !== 'vi' ? { displayName: newName, language: newLang } : { displayName: newName };
-    const created = await api('POST', '/children', ChildProfileDto, body);
+    const created = await api('POST', '/players', PlayerDto, body);
     bindLangProfile(created.id, created.language);
     await reload();
     setPicked(null);
     setNewLang('vi');
   });
-  // Without a PIN there is nothing to lock: "done" just goes to the profile picker.
+  // Without a PIN there is nothing to lock. With extra players the device goes to the picker, so the
+  // person it is handed to picks themselves; a lone owner goes straight back to play.
   const leave = useSubmit(async () => {
     if (state.status === 'signed-in' && state.me.pinSet) setMe(await api('POST', '/parent-gate/lock', MeResponse));
-    navigate('/profiles');
+    else await refresh();
+    navigate((profiles?.length ?? 0) >= 2 ? '/profiles' : '/');
   });
   const removePin = useSubmit(async () => {
     setMe(await api('DELETE', '/auth/pin', MeResponse));
@@ -182,7 +188,7 @@ export function ParentAreaScreen() {
       <SkyScene>
         <main className="panel consent-panel">
           <p>
-            Phụ huynh cần <Link to="/consent"><T k="parent.consentLink" /></Link> trước khi tạo hồ sơ.
+            Cần <Link to="/consent"><T k="parent.consentLink" /></Link> chính sách trước khi thêm người chơi.
           </p>
         </main>
       </SkyScene>
@@ -207,6 +213,7 @@ export function ParentAreaScreen() {
   }
 
   const hasProfile = (profiles?.length ?? 0) > 0;
+  const hasExtraPlayers = (profiles?.length ?? 0) >= 2;
   const { pinSet } = state.me;
   return (
     <SkyScene>
@@ -270,7 +277,7 @@ export function ParentAreaScreen() {
             <T k={pinSet ? 'parent.step2' : 'parent.step2NoPin'} />
           </StepTitle>
           <p className="hint">
-            <T k={!hasProfile ? 'parent.step2HintEmpty' : pinSet ? 'parent.step2HintHas' : 'parent.step2HintHasNoPin'} />
+            <T k={!hasProfile ? 'parent.step2HintEmpty' : !hasExtraPlayers ? 'parent.step2HintSolo' : pinSet ? 'parent.step2HintHas' : 'parent.step2HintHasNoPin'} />
           </p>
           {leave.error ? <p role="alert" className="error">{leave.error}</p> : null}
           <button type="button" className={buttonClass('primary', { block: true })} data-id="parent-leave" disabled={leave.busy} onClick={() => void leave.onSubmit()}>

@@ -2,7 +2,7 @@ import path from 'node:path';
 import { eq } from 'drizzle-orm';
 import { Router } from 'express';
 import { HomeDecor, HomeDecorCatalog, decorIssues, resolveDecor } from '@miu/schema/home-decor';
-import { activeChildId, requireParent } from '../auth/auth-context';
+import { activePlayerId, requireParent } from '../auth/auth-context';
 import { CONTENT_DIR } from '../content/content-dir';
 import { readContentJson, type ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
@@ -36,7 +36,7 @@ export function homeDecorRoutes({ db, content, clock, catalog = loadDecorCatalog
   const router = Router();
 
   router.get('/home-decor', requireParent, async (_req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const [row] = await db.select().from(homeDecor).where(eq(homeDecor.childId, childId));
     const body: HomeDecor = { choices: resolveDecor(catalog, row?.choices) };
     res.json(body);
@@ -44,7 +44,7 @@ export function homeDecorRoutes({ db, content, clock, catalog = loadDecorCatalog
 
   /** Takes the picks for any slots (the others keep what was saved); answers with every slot as stored. */
   router.put('/home-decor', requireParent, async (req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const { choices } = parseInput(HomeDecor, req.body);
     if (decorIssues(catalog, choices).length > 0) throw new HttpError(400, 'invalid-input');
     const [row] = await db.select().from(homeDecor).where(eq(homeDecor.childId, childId));

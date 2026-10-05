@@ -16,7 +16,7 @@ import {
 } from '@miu/schema/game';
 import { notebookLine } from '@miu/quest/notebook';
 import { completeStep, isAnswerable, type StepError } from '@miu/quest/quest-progress';
-import { activeChildId, optionalAuth, requireParent } from '../auth/auth-context';
+import { activePlayerId, optionalAuth, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { inventoryItems, questProgress } from '../db/schema';
@@ -113,11 +113,11 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
   }
 
   router.get('/progress', requireParent, async (_req, res) => {
-    res.json(await progressSummary(db, await activeChildId(db, res, content.consent.version), content));
+    res.json(await progressSummary(db, await activePlayerId(db, res, content.consent.version), content));
   });
 
   router.get('/inventory', requireParent, async (_req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const rows = await db
       .select({ itemId: inventoryItems.itemId, qty: inventoryItems.qty })
       .from(inventoryItems)
@@ -129,7 +129,7 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
   // The lessons by default; `?category=side` lists the minigame side quests instead, so a side quest never
   // shows up where the lessons are counted, listed or picked as the one to play next.
   router.get('/quests', requireParent, async (req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const region = req.query.region === undefined ? undefined : ContentId.safeParse(req.query.region);
     if (region && !region.success) throw new HttpError(400, 'invalid-region');
     const category = QuestCategory.safeParse(req.query.category ?? 'main');
@@ -141,14 +141,14 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
   });
 
   router.get('/quests/:questId', requireParent, async (req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const summary = (await summaries(childId)).get(contentId(req.params.questId, 'quest-not-found'));
     if (!summary) throw new HttpError(404, 'quest-not-found');
     res.json(QuestSummary.parse(summary));
   });
 
   router.get('/skill-check/:targetId', requireParent, async (req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const targetId = contentId(req.params.targetId, 'target-not-found');
     const target = content.targets?.get(targetId);
     if (!target) throw new HttpError(404, 'target-not-found');
@@ -186,7 +186,7 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
   });
 
   router.post('/quests/:questId/steps/:stepId/complete', requireParent, completeLimit, async (req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const questId = contentId(req.params.questId, 'quest-not-found');
     const stepId = contentId(req.params.stepId, 'step-not-found');
     const input = StepCompleteRequest.safeParse(req.body ?? {});
@@ -261,7 +261,7 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
   });
 
   router.post('/quests/:questId/steps/:stepId/support', requireParent, supportLimit, async (req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const questId = contentId(req.params.questId, 'quest-not-found');
     const stepId = contentId(req.params.stepId, 'step-not-found');
     const body = SupportRequest.safeParse(req.body ?? {});

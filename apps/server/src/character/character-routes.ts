@@ -4,7 +4,7 @@ import { levelFromXp } from '@miu/quest/level';
 import { CharacterDto, CharacterUpdate } from '@miu/schema/game';
 import { isPetOpen } from '@miu/schema/pet';
 import { isAccessoryOpen } from '@miu/voxel/accessory-schema';
-import { activeChildId, requireParent } from '../auth/auth-context';
+import { activePlayerId, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { characters } from '../db/schema';
@@ -28,7 +28,7 @@ export function characterRoutes({ db, content }: CharacterRouteDeps): Router {
   }
 
   router.get('/character', requireParent, async (_req, res) => {
-    res.json(await load(await activeChildId(db, res, content.consent.version)));
+    res.json(await load(await activePlayerId(db, res, content.consent.version)));
   });
 
   /**
@@ -39,7 +39,7 @@ export function characterRoutes({ db, content }: CharacterRouteDeps): Router {
    * unlocked (the pet she already has stays hers); left out, each stays as it was.
    */
   router.put('/character', requireParent, async (req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const input = parseInput(CharacterUpdate, req.body);
     if (!content.characterNames.has(input.name)) throw new HttpError(400, 'invalid-character-name');
     if (input.species !== undefined && !content.species.has(input.species)) throw new HttpError(400, 'invalid-species');

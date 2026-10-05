@@ -1,7 +1,7 @@
 import { createHash, randomBytes } from 'node:crypto';
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
 import type { Db } from '../db/client';
-import { sessions } from '../db/schema';
+import { childProfiles, sessions } from '../db/schema';
 
 export const SESSION_ABSOLUTE_MS = 30 * 24 * 60 * 60 * 1000;
 export const SESSION_IDLE_MS = 7 * 24 * 60 * 60 * 1000;
@@ -23,11 +23,17 @@ export async function createSession(
   options: { openParentGate: boolean },
 ): Promise<{ token: string; session: SessionRow }> {
   const token = randomBytes(32).toString('base64url');
+  // A new session plays as the account's own (primary) player; extra players pick themselves later.
+  const [primary] = await db
+    .select({ id: childProfiles.id })
+    .from(childProfiles)
+    .where(and(eq(childProfiles.parentId, parentId), eq(childProfiles.isPrimary, true)));
   const [session] = await db
     .insert(sessions)
     .values({
       id: hashToken(token),
       parentId,
+      activeChildId: primary?.id ?? null,
       createdAt: now,
       lastSeenAt: now,
       expiresAt: new Date(now.getTime() + SESSION_ABSOLUTE_MS),

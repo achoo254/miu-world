@@ -4,7 +4,7 @@ import { ProgressResponse, StepCompleteResponse } from '@miu/schema/game';
 import { pickCollectible } from '@miu/quest/collectible-drop';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { solution } from '../../test/quest-solution';
-import { TEST_PIN, createTestApp, parentWithChild, type Agent, type TestApp } from '../../test/test-app';
+import { TEST_PIN, createTestApp, parentWithChild, type Agent, type TestApp, signedInWithoutPlayer } from '../../test/test-app';
 import { childProfiles, inventoryItems, rewardLedger } from '../db/schema';
 
 // Fixture quests of the forest (khu-rung-bi-mat): side-egg is its minigame side quest, quest-c a lesson.
@@ -24,7 +24,7 @@ afterAll(async () => {
 
 async function playingChild(): Promise<{ agent: Agent; childId: string }> {
   const { agent, childId } = await parentWithChild(app);
-  await agent.post(`/api/children/${childId}/select`).expect(200);
+  await agent.post(`/api/players/${childId}/select`).expect(200);
   return { agent, childId };
 }
 
@@ -142,13 +142,13 @@ describe('the collection', () => {
     await own(a.childId, allOfForest());
     expect(forestOf(await collection(b.agent))).toMatchObject({ owned: {}, found: 0 });
     expect((await claim(b.agent).expect(409)).body).toEqual({ error: 'set-not-complete' });
-    await b.agent.post(`/api/children/${a.childId}/select`).expect(404);
+    await b.agent.post(`/api/players/${a.childId}/select`).expect(404);
     expect(forestOf(await collection(a.agent))).toMatchObject({ found: 10, claimed: false });
   });
 
   it('needs a signed-in parent with a selected child, and an allowed origin to claim', async () => {
     await app.agent().get('/api/collection').expect(401);
-    const { agent } = await parentWithChild(app);
+    const agent = await signedInWithoutPlayer(app);
     expect((await agent.get('/api/collection').expect(401)).body).toEqual({ error: 'no-active-child' });
     const { agent: playing } = await playingChild();
     await claim(playing.set('Origin', 'https://evil.example')).expect(403);
@@ -163,11 +163,12 @@ describe("the child's data", () => {
     await own(childId, allOfForest().filter((id) => id !== itemId));
     await claim(agent).expect(200);
     await agent.post('/api/parent-gate/unlock').send({ pin: TEST_PIN }).expect(200);
-    const exported = (await agent.get('/api/account/export').expect(200)).body as { children: Array<{ inventory: Array<{ itemId: string }>; rewards: Array<{ source: string }> }> };
-    const child = exported.children[0];
+    const exported = (await agent.get('/api/account/export').expect(200)).body as { players: Array<{ inventory: Array<{ itemId: string }>; rewards: Array<{ source: string }> }> };
+    const child = exported.players[0];
     expect(child?.inventory.map((i) => i.itemId).sort()).toEqual(allOfForest().sort());
     expect(child?.rewards.map((r) => r.source)).toEqual(expect.arrayContaining(['drop:quest:side-egg', `collection:${FOREST}`]));
-    await agent.delete(`/api/children/${childId}`).expect(204);
+    // The primary player goes only with the account.
+    await agent.delete('/api/account').expect(204);
     expect(await app.db.select().from(childProfiles).where(eq(childProfiles.id, childId))).toEqual([]);
     expect(await app.db.select().from(inventoryItems).where(eq(inventoryItems.childId, childId))).toEqual([]);
     expect(await app.db.select().from(rewardLedger).where(eq(rewardLedger.childId, childId))).toEqual([]);

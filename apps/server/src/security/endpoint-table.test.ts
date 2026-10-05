@@ -81,7 +81,7 @@ describe('endpoint table', () => {
     }
     expect(reached).toEqual([]);
     // A's child is untouched and still A's.
-    const mine = await a.agent.get('/api/children').expect(200);
+    const mine = await a.agent.get('/api/players').expect(200);
     expect((mine.body as Array<{ id: string; displayName: string }>).map((c) => c.id)).toEqual([a.childId]);
     expect((mine.body as Array<{ displayName: string }>)[0]?.displayName).toBe('Mèo Mây');
   });

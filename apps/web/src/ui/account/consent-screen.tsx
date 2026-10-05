@@ -23,7 +23,7 @@ export function ConsentScreen() {
   const form = useSubmit(async () => {
     if (!policy) return;
     setMe(await api('POST', '/consents', MeResponse, { policyVersion: policy.version }));
-    navigate('/parent');
+    navigate('/');
   });
 
   if (state.status !== 'signed-in') return null;

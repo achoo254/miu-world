@@ -7,7 +7,7 @@ import { hasCurrentConsent } from '../auth/consent-store';
 import { auth, requireParent, requireParentGate } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
-import { characters, childProfiles, parents, sessions } from '../db/schema';
+import { characters, childProfiles, consents, parents, sessions } from '../db/schema';
 import { HttpError, parseInput } from '../http-error';
 
 /** The primary player plus up to two extra players on a shared device. */
@@ -54,36 +54,36 @@ async function insertPlayer(tx: Tx, values: { parentId: string; displayName: str
 }
 
 /**
- * The person who signs in is the account's primary player. Made once, right after the policy is
- * accepted (never before: no player data exists without consent), with the first list name no other
- * player of the account uses; the name can be changed later like any player's.
+ * The person who signs in is the account's primary player. Made once, in the same transaction that
+ * records the policy acceptance (never before: no player data exists without consent), with the first
+ * list name no other player of the account uses; the name can be changed later like any player's. An
+ * account that somehow has players but no primary gets its oldest player promoted. The caller holds the
+ * account lock.
  */
-export async function ensurePrimaryPlayer(db: Db, content: ContentCatalog, parentId: string, now: Date): Promise<string> {
-  return db.transaction(async (tx) => {
-    await lockAccount(tx, parentId);
-    const players = await tx.select().from(childProfiles).where(eq(childProfiles.parentId, parentId)).orderBy(asc(childProfiles.createdAt), asc(childProfiles.id));
-    const primary = players.find((p) => p.isPrimary);
-    if (primary) return primary.id;
-    const oldest = players[0];
-    if (oldest) {
-      await tx.update(childProfiles).set({ isPrimary: true }).where(eq(childProfiles.id, oldest.id));
-      return oldest.id;
-    }
-    const taken = new Set(players.map((p) => p.displayName));
-    const displayName = [...content.childDisplayNames].find((n) => !taken.has(n));
-    if (!displayName) throw new Error('display name list is empty');
-    const { row } = await insertPlayer(tx, { parentId, displayName, language: 'vi', isPrimary: true, createdAt: now });
-    console.info('primary player created', row.id);
-    return row.id;
-  });
+async function ensurePrimaryIn(tx: Tx, content: ContentCatalog, parentId: string, now: Date): Promise<string> {
+  const players = await tx.select().from(childProfiles).where(eq(childProfiles.parentId, parentId)).orderBy(asc(childProfiles.createdAt), asc(childProfiles.id));
+  const primary = players.find((p) => p.isPrimary);
+  if (primary) return primary.id;
+  const oldest = players[0];
+  if (oldest) {
+    await tx.update(childProfiles).set({ isPrimary: true }).where(eq(childProfiles.id, oldest.id));
+    return oldest.id;
+  }
+  const taken = new Set(players.map((p) => p.displayName));
+  const displayName = [...content.childDisplayNames].find((n) => !taken.has(n));
+  if (!displayName) throw new Error('display name list is empty');
+  const { row } = await insertPlayer(tx, { parentId, displayName, language: 'vi', isPrimary: true, createdAt: now });
+  console.info('primary player created', row.id);
+  return row.id;
 }
 
-export async function primaryPlayerId(db: Db, parentId: string): Promise<string | null> {
-  const [row] = await db
-    .select({ id: childProfiles.id })
-    .from(childProfiles)
-    .where(and(eq(childProfiles.parentId, parentId), eq(childProfiles.isPrimary, true)));
-  return row?.id ?? null;
+/** Records the accepted policy version and makes sure the primary player exists, atomically. */
+export async function acceptPolicy(db: Db, content: ContentCatalog, parentId: string, now: Date): Promise<string> {
+  return db.transaction(async (tx) => {
+    await lockAccount(tx, parentId);
+    await tx.insert(consents).values({ id: randomUUID(), parentId, policyVersion: content.consent.version, acceptedAt: now }).onConflictDoNothing();
+    return ensurePrimaryIn(tx, content, parentId, now);
+  });
 }
 
 export function playerRoutes({ db, content, clock }: PlayerRouteDeps): Router {
@@ -124,6 +124,8 @@ export function playerRoutes({ db, content, clock }: PlayerRouteDeps): Router {
     if (!(await hasCurrentConsent(db, parent.id, content.consent.version))) throw new HttpError(403, 'consent-required');
     const created = await db.transaction(async (tx) => {
       await lockAccount(tx, parent.id);
+      // Self-heal: an extra player is only ever added next to the primary one.
+      await ensurePrimaryIn(tx, content, parent.id, clock());
       const [existing] = await tx.select({ n: count() }).from(childProfiles).where(eq(childProfiles.parentId, parent.id));
       if ((existing?.n ?? 0) >= MAX_PLAYERS) throw new HttpError(409, 'profile-limit');
       return insertPlayer(tx, { parentId: parent.id, displayName: input.displayName, language: input.language ?? 'vi', isPrimary: false, createdAt: clock() });

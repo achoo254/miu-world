@@ -15,7 +15,7 @@ export const Email = z
 /** Account secret length bounds (10–128). */
 export const PasswordField = z.string().min(10).max(128);
 
-/** Parent-gate PIN: 4–6 digits. */
+/** Optional account PIN: 4–6 digits. */
 export const ParentPin = z.string().regex(/^\d{4,6}$/);
 
 // Computed keys: the workspace secret scanner treats `password: <identifier>` as a literal credential.
@@ -27,7 +27,7 @@ export type LoginRequest = z.infer<typeof LoginRequest>;
 
 export const ParentGateUnlockRequest = z.object({ pin: ParentPin });
 
-/** First PIN after the first Google sign-in. */
+/** Sets or changes the optional account PIN. */
 export const SetPinRequest = z.object({ pin: ParentPin });
 
 /** Public view of a parent. Parsing a DB row through it strips hashes (Zod drops unknown keys). */
@@ -36,31 +36,42 @@ export type ParentDto = z.infer<typeof ParentDto>;
 
 export const ConsentRequest = z.object({ policyVersion: z.string().min(1).max(32) });
 
-export const ChildLanguage = z.enum(['vi', 'en', 'both']);
-export type ChildLanguage = z.infer<typeof ChildLanguage>;
+export const PlayerLanguage = z.enum(['vi', 'en', 'both']);
+export type PlayerLanguage = z.infer<typeof PlayerLanguage>;
 
-/** `species`: the child's character, so the picker shows the right animal. */
-export const ChildProfileDto = z.object({
+/**
+ * A player of the account. `primary`: the account owner's own player (made on consent, deleted only
+ * with the account); the others are extra players on a shared device. `species`: the player's
+ * character, so the picker shows the right animal.
+ */
+export const PlayerDto = z.object({
   id: Id,
   displayName: z.string(),
   species: z.string(),
-  language: ChildLanguage.default('vi'),
+  language: PlayerLanguage.default('vi'),
+  primary: z.boolean(),
 });
-export type ChildProfileDto = z.infer<typeof ChildProfileDto>;
+export type PlayerDto = z.infer<typeof PlayerDto>;
 
 // NFC so a decomposed "Mèo" (some mobile keyboards) matches the list entry.
-export const ChildProfileInput = z.object({
+export const PlayerInput = z.object({
   displayName: z.string().min(1).max(40).transform((s) => s.normalize('NFC')),
-  language: ChildLanguage.optional(),
+  language: PlayerLanguage.optional(),
 });
+
+/** Who can play on this account, as `/auth/me` lists them: enough to skip the picker for one player. */
+export const PlayerSummary = z.object({ id: Id, displayName: z.string(), primary: z.boolean() });
+export type PlayerSummary = z.infer<typeof PlayerSummary>;
 
 export const MeResponse = z.object({
   parent: ParentDto,
   consentAccepted: z.boolean(),
-  activeChildId: Id.nullable(),
+  activePlayerId: Id.nullable(),
+  /** Primary first, then extra players by creation. Empty for a new account until it accepts the policy. */
+  players: z.array(PlayerSummary),
   parentGateOpen: z.boolean(),
   pinLocked: z.boolean(),
-  /** False right after the first Google sign-in, until the parent sets the PIN. */
+  /** Whether the owner set the optional PIN that locks the account area. */
   pinSet: z.boolean(),
 });
 export type MeResponse = z.infer<typeof MeResponse>;
@@ -76,10 +87,11 @@ export const AccountExport = z.object({
   parent: z.object({ email: z.string(), signIn: z.enum(['google', 'password']), createdAt: Instant }),
   consents: z.array(z.object({ policyVersion: z.string(), acceptedAt: Instant })),
   sessions: z.array(z.object({ createdAt: Instant, lastSeenAt: Instant, expiresAt: Instant })),
-  children: z.array(
+  players: z.array(
     z.object({
       displayName: z.string(),
-      language: ChildLanguage.default('vi'),
+      primary: z.boolean(),
+      language: PlayerLanguage.default('vi'),
       createdAt: Instant,
       character: z.object({ species: z.string(), name: z.string(), equipped: z.array(z.string()), pet: z.string().nullable() }).nullable(),
       quests: z.array(

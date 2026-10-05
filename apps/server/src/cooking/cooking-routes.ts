@@ -3,7 +3,7 @@ import { Router } from 'express';
 import { z } from 'zod';
 import { ContentId } from '@miu/schema/content';
 import { type Recipe } from '@miu/schema/cooking';
-import { activeChildId, requireParent } from '../auth/auth-context';
+import { activePlayerId, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { inventoryItems, shopInventory } from '../db/schema';
@@ -36,7 +36,7 @@ export function cookingRoutes({ db, content }: CookingRouteDeps): Router {
 
   /** List all cooking recipes and child's available ingredients */
   router.get('/cooking/recipes', requireParent, async (_req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const inv = await db.select().from(inventoryItems).where(eq(inventoryItems.childId, childId));
     const shopInv = await db.select().from(shopInventory).where(eq(shopInventory.childId, childId));
 
@@ -52,7 +52,7 @@ export function cookingRoutes({ db, content }: CookingRouteDeps): Router {
 
   /** Cook a delicious dish using ingredients from inventory */
   router.post('/cooking/cook', requireParent, async (req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const { recipeId } = parseInput(CookRequest, req.body);
     const recipe = content.recipes.get(recipeId);
     if (!recipe) throw new HttpError(404, 'recipe-not-found');

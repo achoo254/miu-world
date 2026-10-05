@@ -1,4 +1,6 @@
 import { randomUUID } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { eq, getTableColumns, sql } from 'drizzle-orm';
 import { emptyTimetable } from '@miu/schema/timetable';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
@@ -48,6 +50,30 @@ async function countFor(childId: string): Promise<number[]> {
 describe('database schema', () => {
   beforeEach(async () => {
     await db.delete(t.parents);
+  });
+
+  it('backfills one primary player per account (oldest, ties by id) and refuses a second primary', async () => {
+    const migration = readFileSync(fileURLToPath(new URL('../../drizzle/0010_primary-player.sql', import.meta.url)), 'utf8');
+    const backfill = migration.split('--> statement-breakpoint').map((part) => part.trim()).find((part) => part.startsWith('UPDATE'));
+    if (!backfill) throw new Error('the primary-player migration has no backfill statement');
+    const a = randomUUID();
+    const b = randomUUID();
+    for (const id of [a, b]) await db.insert(t.parents).values({ id, email: `${id}@example.vn`, passwordHash: 'h' });
+    const at = new Date('2026-10-01T00:00:00Z');
+    const later = new Date('2026-10-02T00:00:00Z');
+    const [aOld, aNew] = [randomUUID(), randomUUID()];
+    const [bLow, bHigh] = ['00000000-0000-4000-8000-000000000001', '00000000-0000-4000-8000-000000000002'];
+    await db.insert(t.childProfiles).values([
+      { id: aNew, parentId: a, displayName: 'Thỏ Bông', createdAt: later },
+      { id: aOld, parentId: a, displayName: 'Mèo Mây', createdAt: at },
+      { id: bHigh, parentId: b, displayName: 'Cáo Nhỏ', createdAt: at },
+      { id: bLow, parentId: b, displayName: 'Gấu Mật', createdAt: at },
+    ]);
+    await db.execute(sql.raw(backfill));
+    await db.execute(sql.raw(backfill)); // idempotent: a second run changes nothing
+    const primaries = await db.select({ id: t.childProfiles.id }).from(t.childProfiles).where(eq(t.childProfiles.isPrimary, true));
+    expect(primaries.map((r) => r.id).sort()).toEqual([aOld, bLow].sort());
+    await expect(db.update(t.childProfiles).set({ isPrimary: true }).where(eq(t.childProfiles.id, aNew))).rejects.toThrow();
   });
 
   it('rejects a duplicate parent email', async () => {

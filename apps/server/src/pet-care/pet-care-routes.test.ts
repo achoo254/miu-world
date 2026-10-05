@@ -12,7 +12,7 @@ afterAll(async () => {
 
 async function childWithPet(pet: string | null = 'meo-xam'): Promise<{ agent: Agent; childId: string }> {
   const { agent, childId } = await parentWithChild(app);
-  await agent.post(`/api/children/${childId}/select`).expect(200);
+  await agent.post(`/api/players/${childId}/select`).expect(200);
   if (pet) {
     await agent.put('/api/character').send({ name: 'Miu', equipped: [], pet }).expect(200);
   }

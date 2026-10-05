@@ -9,7 +9,7 @@ import type { QuestTarget } from '@miu/schema/world-target';
 import { createApp } from '../app';
 import { loadContentCatalog } from '../content/content-catalog';
 import { solution } from '../../test/quest-solution';
-import { FIXTURE_CONTENT, ORIGIN, createTestApp, parentWithChild, type Agent, type TestApp } from '../../test/test-app';
+import { FIXTURE_CONTENT, ORIGIN, createTestApp, parentWithChild, type Agent, type TestApp, signedInWithoutPlayer } from '../../test/test-app';
 import * as t from '../db/schema';
 
 let app: TestApp;
@@ -22,7 +22,7 @@ afterAll(async () => {
 
 async function playingChild(): Promise<{ agent: Agent; childId: string }> {
   const { agent, childId } = await parentWithChild(app);
-  await agent.post(`/api/children/${childId}/select`).expect(200);
+  await agent.post(`/api/players/${childId}/select`).expect(200);
   return { agent, childId };
 }
 
@@ -199,7 +199,7 @@ describe('quest progress and rewards (server is the source of truth)', () => {
 
   it('never pays a finished quest twice, even when its content later gains a step', async () => {
     const { agent, parent, childId } = await parentWithChild(app);
-    await agent.post(`/api/children/${childId}/select`).expect(200);
+    await agent.post(`/api/players/${childId}/select`).expect(200);
     await finish(agent, 'quest-c');
     // Same database, new content release where quest-c has one more step.
     const questC = FIXTURE_CONTENT.quests.get('quest-c');
@@ -209,7 +209,7 @@ describe('quest progress and rewards (server is the source of truth)', () => {
     quests.set('quest-c', { ...questC, steps: [...questC.steps, waveBack] });
     const v2 = request.agent(createApp({ config: app.config, db: app.db, content: { ...FIXTURE_CONTENT, quests } })).set('Origin', ORIGIN);
     await v2.post('/api/auth/login').send(parent).expect(200);
-    await v2.post(`/api/children/${childId}/select`).expect(200);
+    await v2.post(`/api/players/${childId}/select`).expect(200);
     const res = await step(v2, 'quest-c', 'wave-back').expect(200);
     expect(res.body.repeated).toBe(true);
     const rows = await app.db.select().from(t.rewardLedger).where(eq(t.rewardLedger.childId, childId));
@@ -224,7 +224,7 @@ describe('quest progress and rewards (server is the source of truth)', () => {
     const { parent, childId } = await parentWithChild(app);
     const agent = request.agent(createApp({ config: app.config, db: app.db, content })).set('Origin', ORIGIN);
     await agent.post('/api/auth/login').send(parent).expect(200);
-    await agent.post(`/api/children/${childId}/select`).expect(200);
+    await agent.post(`/api/players/${childId}/select`).expect(200);
     let last: request.Response | undefined;
     for (const [stepId, body] of PLAY['quest-c'] ?? []) last = await step(agent, 'lake-walk', stepId, body).expect(200);
     expect(last?.body).toMatchObject({ reward: { xp: 7, coin: 3 }, quest: { completed: true } });
@@ -620,7 +620,7 @@ describe('the shipped forest chapter 1', () => {
     const { parent, childId } = await parentWithChild(app);
     const agent = request.agent(createApp({ config: app.config, db: app.db, content: real })).set('Origin', ORIGIN);
     await agent.post('/api/auth/login').send(parent).expect(200);
-    await agent.post(`/api/children/${childId}/select`).expect(200);
+    await agent.post(`/api/players/${childId}/select`).expect(200);
     return agent;
   }
 
@@ -669,13 +669,13 @@ describe('character', () => {
     const { agent } = await playingChild();
     expect((await agent.put('/api/character').send({ name: 'Bo', equipped: [], species: 'fox' }).expect(200)).body.species).toBe('fox');
     expect((await agent.put('/api/character').send({ name: 'Bo', equipped: [] }).expect(200)).body.species).toBe('fox');
-    expect((await agent.get('/api/children').expect(200)).body.map((p: { species: string }) => p.species)).toEqual(['fox']);
+    expect((await agent.get('/api/players').expect(200)).body.map((p: { species: string }) => p.species)).toEqual(['fox']);
   });
 });
 
 describe('IDOR and session rules for game routes', () => {
-  it('needs a selected profile (401) and a parent session (401)', async () => {
-    const { agent } = await parentWithChild(app);
+  it('needs a selected player (401) and a session (401)', async () => {
+    const agent = await signedInWithoutPlayer(app);
     for (const res of [
       await agent.get('/api/character'),
       await agent.put('/api/character').send({ name: 'Miu', equipped: [] }),
@@ -701,7 +701,7 @@ describe('IDOR and session rules for game routes', () => {
     await a.agent.put('/api/character').send({ name: 'Mochi', equipped: [] }).expect(200);
 
     // B's session can only ever point at B's child; forging the pointer to A's child is refused.
-    await b.agent.post(`/api/children/${a.childId}/select`).expect(404);
+    await b.agent.post(`/api/players/${a.childId}/select`).expect(404);
     const [bSession] = await app.db.select().from(t.sessions).where(eq(t.sessions.activeChildId, b.childId));
     if (!bSession) throw new Error('missing session');
     await app.db.update(t.sessions).set({ activeChildId: a.childId }).where(eq(t.sessions.id, bSession.id));

@@ -9,7 +9,7 @@ import { googleAuthRoutes } from './auth/google-auth-routes';
 import { requireAllowedOrigin } from './auth/origin-check';
 import { HashQueueFullError } from './auth/secret-hashing';
 import { characterRoutes } from './character/character-routes';
-import { childProfileRoutes } from './child-profile/child-profile-routes';
+import { playerRoutes } from './player/player-routes';
 import type { ServerConfig } from './config';
 import { loadContentCatalog, type ContentCatalog } from './content/content-catalog';
 import type { Db } from './db/client';
@@ -87,7 +87,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(authRoutes({ db, config, content, clock }));
   api.use(googleAuthRoutes({ db, config, clock, fetchImpl }));
   api.use(accountRoutes({ db, config, clock }));
-  api.use(childProfileRoutes({ db, content, clock }));
+  api.use(playerRoutes({ db, content, clock }));
   api.use(characterRoutes({ db, content }));
   api.use(playerPositionRoutes({ db, content, clock }));
   api.use(questRoutes({ db, content, clock }));

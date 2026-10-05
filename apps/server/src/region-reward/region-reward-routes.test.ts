@@ -9,7 +9,7 @@ import { ShopState } from '@miu/schema/shop';
 import { RegionRewardClaimResponse, RegionRewardsDto, RegionRewardsList, type RegionRewardEntry, type RegionRewardTier } from '@miu/schema/region-reward';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { solution } from '../../test/quest-solution';
-import { TEST_PIN, createTestApp, parentWithChild, type Agent, type TestApp } from '../../test/test-app';
+import { TEST_PIN, createTestApp, parentWithChild, type Agent, type TestApp, signedInWithoutPlayer } from '../../test/test-app';
 import { CONTENT_DIR } from '../content/content-dir';
 import { childProfiles, questProgress, rewardLedger, shopInventory } from '../db/schema';
 import { loadRegionRewards, type RegionRewards } from './region-reward-catalog';
@@ -35,7 +35,7 @@ afterAll(async () => {
 
 async function playingChild(): Promise<{ agent: Agent; childId: string }> {
   const { agent, childId } = await parentWithChild(app);
-  await agent.post(`/api/children/${childId}/select`).expect(200);
+  await agent.post(`/api/players/${childId}/select`).expect(200);
   return { agent, childId };
 }
 
@@ -170,7 +170,7 @@ describe('region rewards', () => {
     await finish(a.childId, LESSONS);
     expect(await state(b.agent)).toMatchObject({ lessonsDone: 0 });
     expect((await claim(b.agent, 'full').expect(409)).body).toEqual({ error: 'tier-not-reached' });
-    await b.agent.post(`/api/children/${a.childId}/select`).expect(404);
+    await b.agent.post(`/api/players/${a.childId}/select`).expect(404);
     expect(tier(await state(a.agent), 'full')).toMatchObject({ reached: true, claimed: false });
     await claim(a.agent, 'full').expect(200);
     expect(RegionRewardsList.parse((await b.agent.get('/api/region-rewards').expect(200)).body).titles).toEqual([]);
@@ -181,7 +181,7 @@ describe('region rewards', () => {
     await app.agent().get('/api/region-rewards').expect(401);
     await app.agent().get(`/api/regions/${FOREST}/rewards`).expect(401);
     await claim(app.agent(), 'half').expect(401);
-    const { agent } = await parentWithChild(app);
+    const agent = await signedInWithoutPlayer(app);
     expect((await agent.get(`/api/regions/${FOREST}/rewards`).expect(401)).body).toEqual({ error: 'no-active-child' });
     const { agent: playing } = await playingChild();
     await claim(playing.set('Origin', 'https://evil.example'), 'half').expect(403);
@@ -194,10 +194,11 @@ describe("the child's chests in her data", () => {
     await finish(childId, LESSONS);
     await claim(agent, 'full').expect(200);
     await agent.post('/api/parent-gate/unlock').send({ pin: TEST_PIN }).expect(200);
-    const exported = (await agent.get('/api/account/export').expect(200)).body as { children: Array<{ shop: unknown; rewards: Array<{ source: string }> }> };
-    expect(exported.children[0]?.shop).toEqual([{ itemId: forest.full.item, qty: 1 }]);
-    expect(exported.children[0]?.rewards.map((r) => r.source)).toContain(`region:${FOREST}:full`);
-    await agent.delete(`/api/children/${childId}`).expect(204);
+    const exported = (await agent.get('/api/account/export').expect(200)).body as { players: Array<{ shop: unknown; rewards: Array<{ source: string }> }> };
+    expect(exported.players[0]?.shop).toEqual([{ itemId: forest.full.item, qty: 1 }]);
+    expect(exported.players[0]?.rewards.map((r) => r.source)).toContain(`region:${FOREST}:full`);
+    // The primary player goes only with the account.
+    await agent.delete('/api/account').expect(204);
     expect(await app.db.select().from(childProfiles).where(eq(childProfiles.id, childId))).toEqual([]);
     expect(await app.db.select().from(shopInventory).where(eq(shopInventory.childId, childId))).toEqual([]);
     expect(await app.db.select().from(rewardLedger).where(eq(rewardLedger.childId, childId))).toEqual([]);

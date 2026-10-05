@@ -10,7 +10,7 @@ import {
   type CollectionResponse,
   type CollectionSetDto,
 } from '@miu/schema/collectible';
-import { activeChildId, requireParent } from '../auth/auth-context';
+import { activePlayerId, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { inventoryItems, rewardLedger } from '../db/schema';
@@ -70,7 +70,7 @@ export function collectionRoutes({ db, content, clock }: CollectionRouteDeps): R
   }
 
   router.get('/collection', requireParent, async (_req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const record = await childCollection(db, childId);
     const body: CollectionResponse = { sets: [...content.collectibles.values()].map((set) => setDto(set, record)), titles: titles(record) };
     res.json(body);
@@ -82,7 +82,7 @@ export function collectionRoutes({ db, content, clock }: CollectionRouteDeps): R
    * complete yet (409 `set-not-complete`).
    */
   router.post('/collection/claim', requireParent, async (req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const { mapId } = parseInput(CollectionClaimRequest, req.body);
     const set = content.collectibles.get(mapId);
     if (!set) throw new HttpError(404, 'collection-not-found');

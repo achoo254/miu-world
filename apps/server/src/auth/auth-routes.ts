@@ -5,7 +5,7 @@ import { ConsentRequest, LoginRequest, ParentGateUnlockRequest, RegisterRequest,
 import type { ServerConfig } from '../config';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
-import { consents, parents, sessions } from '../db/schema';
+import { parents, sessions } from '../db/schema';
 import { HttpError, parseInput } from '../http-error';
 import { ipKey, limiter } from '../rate-limit';
 import { accountSummary } from './account-summary';
@@ -14,6 +14,7 @@ import { decoyHash, hashSecret, verifySecret } from './secret-hashing';
 import { clearSessionCookie, setSessionCookie } from './session-cookie';
 import { PARENT_GATE_MS, createSession, deleteSession } from './session-store';
 import { createSignIn } from './sign-in';
+import { acceptPolicy } from '../player/player-routes';
 
 export interface AuthRouteDeps {
   db: Db;
@@ -118,8 +119,14 @@ export function authRoutes({ db, config, content, clock }: AuthRouteDeps): Route
     const { policyVersion: accepted } = parseInput(ConsentRequest, req.body);
     if (accepted !== policyVersion) throw new HttpError(400, 'policy-version-mismatch');
     const ctx = auth(res);
-    await db.insert(consents).values({ id: randomUUID(), parentId: ctx.parent.id, policyVersion, acceptedAt: clock() }).onConflictDoNothing();
-    res.status(201).json(await summary(ctx));
+    // Accepting the policy makes the owner's own player (once) and plays as it unless someone is chosen.
+    const primaryId = await acceptPolicy(db, content, ctx.parent.id, clock());
+    let session = ctx.session;
+    if (!session.activeChildId) {
+      const [updated] = await db.update(sessions).set({ activeChildId: primaryId }).where(eq(sessions.id, session.id)).returning();
+      session = updated ?? session;
+    }
+    res.status(201).json(await summary({ parent: ctx.parent, session }));
   });
 
   /**

@@ -67,10 +67,11 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
     parent: { email: parent.email, signIn: parent.googleSub ? 'google' : 'password', createdAt: iso(parent.createdAt) },
     consents: consentRows.map((c) => ({ policyVersion: c.policyVersion, acceptedAt: iso(c.acceptedAt) })),
     sessions: sessionRows.map((s) => ({ createdAt: iso(s.createdAt), lastSeenAt: iso(s.lastSeenAt), expiresAt: iso(s.expiresAt) })),
-    children: profiles.map((p) => {
+    players: profiles.map((p) => {
       const character = characterRows.find((c) => c.childId === p.id);
       return {
         displayName: p.displayName,
+        primary: p.isPrimary,
         language: (p.language ?? 'vi') as 'vi' | 'en' | 'both',
         createdAt: iso(p.createdAt),
         character: character ? { species: character.species, name: character.name, equipped: character.equipped, pet: character.pet } : null,

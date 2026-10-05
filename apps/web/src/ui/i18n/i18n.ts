@@ -127,7 +127,7 @@ export function getLangMode(): LangMode {
 
 function syncLanguageToServer(childId: string, mode: LangMode): void {
   if (typeof fetch === 'undefined') return;
-  void fetch(`/api/children/${childId}/language`, {
+  void fetch(`/api/players/${childId}/language`, {
     method: 'PATCH',
     credentials: 'same-origin',
     headers: { 'Content-Type': 'application/json' },

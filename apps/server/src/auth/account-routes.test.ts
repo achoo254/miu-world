@@ -4,7 +4,7 @@ import { getTableConfig, type PgTable } from 'drizzle-orm/pg-core';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { AccountExport } from '@miu/schema/account';
 import { emptyTimetable } from '@miu/schema/timetable';
-import { TEST_PIN, createTestApp, parentWithChild, type TestApp } from '../../test/test-app';
+import { TEST_PIN, createTestApp, parentWithChild, type TestApp, signedInWithoutPlayer } from '../../test/test-app';
 import * as schema from '../db/schema';
 
 const t = schema;
@@ -69,10 +69,11 @@ describe('account export', () => {
     expect(data.parent).toMatchObject({ email: parent.email, signIn: 'password' });
     expect(data.consents).toEqual([{ policyVersion: app.content.consent.version, acceptedAt: expect.any(String) }]);
     expect(data.sessions).toHaveLength(1);
-    expect(data.children).toHaveLength(1);
-    const [child] = data.children;
+    expect(data.players).toHaveLength(1);
+    const [child] = data.players;
     expect(child).toMatchObject({
       displayName: 'Mèo Mây',
+      primary: true,
       character: { species: 'cat', name: 'Miu', equipped: [], pet: null },
       stepCounters: [{ questId: 'q-open', stepId: 'b', wrongCount: 2, answerViews: 1 }],
       inventory: [{ itemId: 'la-than', qty: 1 }],
@@ -89,16 +90,18 @@ describe('account export', () => {
     expect(raw).not.toContain(childId);
   });
 
-  it('returns an empty list of children for a parent with none', async () => {
-    const { agent } = await parentWithChild(app, false);
-    expect(AccountExport.parse((await agent.get('/api/account/export').expect(200)).body).children).toEqual([]);
+  it('returns no players before the policy is accepted', async () => {
+    const agent = await signedInWithoutPlayer(app);
+    expect(AccountExport.parse((await agent.get('/api/account/export').expect(200)).body).players).toEqual([]);
   });
 
   it('needs the PIN, and never includes another family', async () => {
     const a = await playedFamily();
     const b = await parentWithChild(app, false);
     const exported = AccountExport.parse((await b.agent.get('/api/account/export').expect(200)).body);
-    expect(exported.children).toEqual([]);
+    // Only B's own primary player, fresh: nothing of A's.
+    expect(exported.players).toHaveLength(1);
+    expect(exported.players[0]).toMatchObject({ primary: true, quests: [], rewards: [] });
     expect(JSON.stringify(exported)).not.toContain(a.parent.email);
     await a.agent.post('/api/parent-gate/lock').expect(200);
     await a.agent.get('/api/account/export').expect(403, { error: 'parent-gate-closed' });
@@ -108,7 +111,7 @@ describe('account export', () => {
 describe('account deletion', () => {
   it('hard-deletes the parent and every row of every table, then signs out', async () => {
     const { agent, childId, parentId } = await playedFamily();
-    const second = (await agent.post('/api/children').send({ displayName: 'Thỏ Bông' }).expect(201)).body as { id: string };
+    const second = (await agent.post('/api/players').send({ displayName: 'Thỏ Bông' }).expect(201)).body as { id: string };
     const before = await rowsOf(parentId, [childId, second.id]);
     // Every table holds something of this family, so a table the delete misses fails below.
     expect(Object.entries(before).filter(([, n]) => n === 0)).toEqual([]);
@@ -130,7 +133,7 @@ describe('account deletion', () => {
     await a.agent.post('/api/parent-gate/unlock').send({ pin: TEST_PIN }).expect(200);
     await a.agent.delete('/api/account').expect(204);
     expect(await rowsOf(b.parentId, [b.childId])).toMatchObject({ parents: 1, child_profiles: 1, quest_progress: 2, reward_ledger: 1 });
-    await b.agent.get('/api/children').expect(200);
+    await b.agent.get('/api/players').expect(200);
   });
 
   it('ends every session of the account, not only the one that asked', async () => {

@@ -8,7 +8,8 @@ import { AppRoutes } from '../../app-shell';
 const me = (parentGateOpen: boolean) => ({
   parent: { id: '1b0e8e0c-6f1a-4b8e-9a53-1f1c2a3b4c5d', email: 'p@example.vn' },
   consentAccepted: true,
-  activeChildId: null,
+  activePlayerId: null,
+  players: [],
   parentGateOpen,
   pinLocked: false,
   pinSet: true,

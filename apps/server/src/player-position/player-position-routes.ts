@@ -1,7 +1,7 @@
 import { eq } from 'drizzle-orm';
 import { Router } from 'express';
 import { PlayerPosition, type PlayerPositionList } from '@miu/schema/player-position';
-import { activeChildId, requireParent } from '../auth/auth-context';
+import { activePlayerId, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { playerPositions } from '../db/schema';
@@ -18,7 +18,7 @@ export function playerPositionRoutes({ db, content, clock }: PlayerPositionRoute
   const router = Router();
 
   router.get('/player-positions', requireParent, async (_req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const rows = await db.select().from(playerPositions).where(eq(playerPositions.childId, childId));
     const body: PlayerPositionList = {
       positions: rows.map((r) => ({ map: r.mapId, position: [r.x, r.y, r.z], facing: r.facing })),
@@ -27,7 +27,7 @@ export function playerPositionRoutes({ db, content, clock }: PlayerPositionRoute
   });
 
   router.put('/player-positions', requireParent, async (req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const input = parseInput(PlayerPosition, req.body);
     if (!content.maps.has(input.map)) throw new HttpError(400, 'invalid-map');
     const [x, y, z] = input.position;

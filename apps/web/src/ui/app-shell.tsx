@@ -8,7 +8,7 @@ import { BackToGame } from './system/back-to-game';
 import { bindLangProfile } from './i18n/i18n';
 import { T } from './i18n/use-t';
 import { ParentAreaScreen } from './account/parent-area-screen';
-import { ProfilePickerScreen } from './account/profile-screens';
+import { PlayStartScreen, ProfilePickerScreen } from './account/profile-screens';
 import { LoginScreen, RegisterScreen, SetPinScreen } from './account/sign-in-screens';
 import { PrivacyScreen } from './legal/privacy-screen';
 import { Logo, MiuOnIsland, SkyScene } from './kit/sky-scene';
@@ -39,10 +39,10 @@ function ChildScreen({ children, music }: { children: ReactNode; music?: MusicMo
   useMusicMood(music);
   return (
     <RequireParent>
-      <RequireActiveChild>
+      <RequireActivePlayer>
         <Suspense fallback={<Loading />}>{children}</Suspense>
         <BackToGame />
-      </RequireActiveChild>
+      </RequireActivePlayer>
     </RequireParent>
   );
 }
@@ -91,10 +91,10 @@ function SignedOutOnly({ children }: { children: ReactNode }) {
   return children;
 }
 
-/** Play needs a selected child profile; otherwise the child picks one first. */
-function RequireActiveChild({ children }: { children: ReactNode }) {
+/** Play needs a selected player; otherwise the start picks one (or shows the picker on a shared device). */
+function RequireActivePlayer({ children }: { children: ReactNode }) {
   const { state } = useAccount();
-  if (state.status === 'signed-in' && !state.me.activeChildId) return <Navigate to="/profiles" replace />;
+  if (state.status === 'signed-in' && !state.me.activePlayerId) return <Navigate to="/" replace />;
   return children;
 }
 
@@ -104,7 +104,7 @@ function RequireActiveChild({ children }: { children: ReactNode }) {
  */
 function LanguageAndSpeech() {
   const { state } = useAccount();
-  const childId = state.status === 'signed-in' ? state.me.activeChildId : null;
+  const childId = state.status === 'signed-in' ? state.me.activePlayerId : null;
   const { pathname } = useLocation();
   useEffect(() => bindLangProfile(childId), [childId]);
   useEffect(() => stopSpeaking, [pathname]);
@@ -116,7 +116,7 @@ export function AppRoutes() {
     <>
       <LanguageAndSpeech />
       <Routes>
-        <Route path="/" element={<RequireParent>{<Navigate to="/profiles" replace />}</RequireParent>} />
+        <Route path="/" element={<WithMusic mood="home"><RequireParent><PlayStartScreen /></RequireParent></WithMusic>} />
         <Route path="/login" element={<WithMusic mood="home"><SignedOutOnly><LoginScreen /></SignedOutOnly></WithMusic>} />
         <Route path="/register" element={<WithMusic mood="home"><SignedOutOnly><RegisterScreen /></SignedOutOnly></WithMusic>} />
         <Route path="/privacy" element={<PrivacyScreen />} />

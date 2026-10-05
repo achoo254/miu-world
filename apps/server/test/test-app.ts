@@ -71,7 +71,14 @@ export async function parentWithChild(t: TestApp, withChild = true): Promise<{ a
   const parent = fakeParent();
   await agent.post('/api/auth/register').send(parent).expect(201);
   await agent.post('/api/consents').send({ policyVersion: FIXTURE_CONTENT.consent.version }).expect(201);
-  if (!withChild) return { agent, parent, childId: '' };
-  const res = await agent.post('/api/children').send({ displayName: 'Mèo Mây' }).expect(201);
-  return { agent, parent, childId: (res.body as { id: string }).id };
+  // Accepting the policy made the account's own (primary) player and selected it.
+  const me = (await agent.get('/api/auth/me').expect(200)).body as { activePlayerId: string };
+  return { agent, parent, childId: withChild ? me.activePlayerId : '' };
+}
+
+/** Signed in but without a player yet (policy not accepted), for "no active player" checks. */
+export async function signedInWithoutPlayer(t: TestApp): Promise<Agent> {
+  const agent = t.agent();
+  await agent.post('/api/auth/register').send(fakeParent()).expect(201);
+  return agent;
 }

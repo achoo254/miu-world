@@ -47,6 +47,23 @@ describe('players', () => {
     expect(listed.map((p) => p.primary)).toEqual([true]);
   });
 
+  it('makes exactly one primary player under concurrent consents', async () => {
+    const agent = app.agent();
+    await agent.post('/api/auth/register').send(fakeParent()).expect(201);
+    const policyVersion = app.content.consent.version;
+    await Promise.all([1, 2, 3].map(() => agent.post('/api/consents').send({ policyVersion }).expect(201)));
+    expect((await agent.get('/api/players').expect(200)).body).toHaveLength(1);
+  });
+
+  it('adds an extra player only next to a primary one', async () => {
+    const { agent, childId } = await parentWithChild(app);
+    // An account left without a primary (e.g. an interrupted older write) is healed on the next add.
+    await app.db.update(t.childProfiles).set({ isPrimary: false }).where(eq(t.childProfiles.id, childId));
+    await agent.post('/api/players').send({ displayName: 'Thỏ Bông' }).expect(201);
+    const listed = (await agent.get('/api/players').expect(200)).body as Array<{ id: string; primary: boolean }>;
+    expect(listed.filter((p) => p.primary).map((p) => p.id)).toEqual([childId]);
+  });
+
   it('starts every new session as the primary player', async () => {
     const { agent, parent, childId } = await parentWithChild(app);
     const extra = (await agent.post('/api/players').send({ displayName: 'Thỏ Bông' }).expect(201)).body as { id: string; primary: boolean };

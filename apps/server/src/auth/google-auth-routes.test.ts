@@ -150,7 +150,7 @@ describe('Google sign-in', () => {
     const { agent, user } = await lockedParent();
     await signInWithGoogle(agent, { ...user, auth_time: nowS() - 3600 });
     expect((await agent.get('/api/auth/me').expect(200)).body).toMatchObject({ pinSet: true, pinLocked: true, parentGateOpen: false });
-    await agent.post('/api/children').send({ displayName: 'Mèo Mây' }).expect(403);
+    await agent.post('/api/players').send({ displayName: 'Mèo Mây' }).expect(403);
   });
 
   it('reopens a locked PIN only after a fresh Google re-authentication', async () => {

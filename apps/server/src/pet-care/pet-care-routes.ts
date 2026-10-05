@@ -1,7 +1,7 @@
 import { eq } from 'drizzle-orm';
 import { Router } from 'express';
 import { PetCareRequest, PetCareResponse, PetCareStats, PetCareStatusResponse } from '@miu/schema/pet-care';
-import { activeChildId, requireParent } from '../auth/auth-context';
+import { activePlayerId, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { characters, shopInventory } from '../db/schema';
@@ -48,7 +48,7 @@ export function petCareRoutes({ db, content }: PetCareRouteDeps): Router {
 
   /** Get pet care status for the active child's current pet */
   router.get('/character/pet/care', requireParent, async (_req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const [row] = await db.select().from(characters).where(eq(characters.childId, childId));
     if (!row || !row.pet) {
       const empty: PetCareStatusResponse = {
@@ -76,7 +76,7 @@ export function petCareRoutes({ db, content }: PetCareRouteDeps): Router {
 
   /** Perform a pet care action (feed, pet, bath, play) */
   router.post('/character/pet/care', requireParent, async (req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const [row] = await db.select().from(characters).where(eq(characters.childId, childId));
     if (!row || !row.pet) throw new HttpError(400, 'no-pet-equipped');
 

@@ -5,7 +5,7 @@ import path from 'node:path';
 import { and, eq, like } from 'drizzle-orm';
 import { ShopResponse, ShopState, type ShopItemDto } from '@miu/schema/shop';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { TEST_PIN, createTestApp, parentWithChild, type Agent, type TestApp } from '../../test/test-app';
+import { TEST_PIN, createTestApp, parentWithChild, type Agent, type TestApp, signedInWithoutPlayer } from '../../test/test-app';
 import { childProfiles, rewardLedger, shopInventory } from '../db/schema';
 import { loadDecorCatalog } from '../home/home-decor-routes';
 import { loadShopCatalog } from './shop-catalog';
@@ -32,7 +32,7 @@ const clock = (): ShopItemDto => pick((i) => i.kind === 'booster' && i.effect !=
 
 async function playingChild(): Promise<{ agent: Agent; childId: string }> {
   const { agent, childId } = await parentWithChild(app);
-  await agent.post(`/api/children/${childId}/select`).expect(200);
+  await agent.post(`/api/players/${childId}/select`).expect(200);
   return { agent, childId };
 }
 
@@ -141,13 +141,13 @@ describe('shop', () => {
     await buy(a.agent, item.id).expect(200);
     expect((await b.agent.get('/api/shop').expect(200)).body).toMatchObject({ coins: 0, owned: {} });
     expect((await buy(b.agent, item.id).expect(409)).body).toEqual({ error: 'not-enough-coins' });
-    await b.agent.post(`/api/children/${a.childId}/select`).expect(404);
+    await b.agent.post(`/api/players/${a.childId}/select`).expect(404);
     expect((await a.agent.get('/api/shop').expect(200)).body).toMatchObject({ coins: 0, owned: { [item.id]: 1 } });
   });
 
   it('needs a signed-in parent with a selected child, and an allowed origin to buy', async () => {
     await app.agent().get('/api/shop').expect(401);
-    const { agent } = await parentWithChild(app);
+    const agent = await signedInWithoutPlayer(app);
     expect((await agent.get('/api/shop').expect(401)).body).toEqual({ error: 'no-active-child' });
     const { agent: playing } = await playingChild();
     await buy(playing.set('Origin', 'https://evil.example'), wearable().id).expect(403);
@@ -205,10 +205,11 @@ describe("the child's data", () => {
     await earn(childId, item.price);
     await buy(agent, item.id).expect(200);
     await agent.post('/api/parent-gate/unlock').send({ pin: TEST_PIN }).expect(200);
-    const exported = (await agent.get('/api/account/export').expect(200)).body as { children: Array<{ shop: unknown; rewards: Array<{ source: string; coins: number }> }> };
-    expect(exported.children[0]?.shop).toEqual([{ itemId: item.id, qty: 1 }]);
-    expect(exported.children[0]?.rewards).toEqual(expect.arrayContaining([expect.objectContaining({ coins: -item.price, source: expect.stringMatching(/^shop:/) as unknown })]));
-    await agent.delete(`/api/children/${childId}`).expect(204);
+    const exported = (await agent.get('/api/account/export').expect(200)).body as { players: Array<{ shop: unknown; rewards: Array<{ source: string; coins: number }> }> };
+    expect(exported.players[0]?.shop).toEqual([{ itemId: item.id, qty: 1 }]);
+    expect(exported.players[0]?.rewards).toEqual(expect.arrayContaining([expect.objectContaining({ coins: -item.price, source: expect.stringMatching(/^shop:/) as unknown })]));
+    // The primary player goes only with the account.
+    await agent.delete('/api/account').expect(204);
     expect(await app.db.select().from(childProfiles).where(eq(childProfiles.id, childId))).toEqual([]);
     expect(await app.db.select().from(shopInventory).where(eq(shopInventory.childId, childId))).toEqual([]);
     expect(await app.db.select().from(rewardLedger).where(eq(rewardLedger.childId, childId))).toEqual([]);

@@ -112,9 +112,9 @@ const MVP_STEPS: Record<string, string> = {
 const UI_STEPS: Record<string, string> = {
   '01-login': 'Đăng nhập: chỉ nút Google',
   '03-consent': 'Đồng ý chính sách (kèm dòng phụ huynh chịu trách nhiệm)',
-  '04-parent-area': 'Quản lý tài khoản: tạo hồ sơ người chơi từ danh sách tên',
-  '05-profiles': 'Đưa máy cho bé: bé chọn hồ sơ',
-  '06-creator': 'Hồ sơ mới: tạo nhân vật (loài, tên) trước khi chơi',
+  '04-parent-area': 'Quản lý tài khoản: người chơi chính, thêm người chơi phụ, PIN tùy chọn',
+  '05-profiles': 'Đổi người chơi trên máy dùng chung',
+  '06-creator': 'Đồng ý xong: người chơi chính tạo nhân vật (loài, tên) trước khi chơi',
   '07-home': 'Home: đảo nổi mỗi vùng một đảo, nhiệm vụ hôm nay (M1.1)',
   '08-world-map': 'Bản đồ thế giới: chọn khu vực (M1.4)',
   '09-region': 'Khu rừng bí mật: biển gỗ, tiến độ, bảng nhiệm vụ trên nền chính map của khu (M2.1)',

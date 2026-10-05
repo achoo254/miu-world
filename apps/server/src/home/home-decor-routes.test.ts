@@ -4,7 +4,7 @@ import path from 'node:path';
 import { eq } from 'drizzle-orm';
 import { resolveDecor } from '@miu/schema/home-decor';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { createTestApp, parentWithChild, type Agent, type TestApp } from '../../test/test-app';
+import { createTestApp, parentWithChild, type Agent, type TestApp, signedInWithoutPlayer } from '../../test/test-app';
 import { homeDecor } from '../db/schema';
 import { loadDecorCatalog } from './home-decor-routes';
 
@@ -29,7 +29,7 @@ afterAll(async () => {
 
 async function playingChild(): Promise<{ agent: Agent; childId: string }> {
   const { agent, childId } = await parentWithChild(app);
-  await agent.post(`/api/children/${childId}/select`).expect(200);
+  await agent.post(`/api/players/${childId}/select`).expect(200);
   return { agent, childId };
 }
 
@@ -48,10 +48,10 @@ describe('home decor', () => {
 
   it('belongs to the selected child: a sibling keeps the house as built until she picks', async () => {
     const { agent, childId } = await parentWithChild(app);
-    const sibling = await agent.post('/api/children').send({ displayName: 'Thỏ Bông' }).expect(201);
-    await agent.post(`/api/children/${childId}/select`).expect(200);
+    const sibling = await agent.post('/api/players').send({ displayName: 'Thỏ Bông' }).expect(201);
+    await agent.post(`/api/players/${childId}/select`).expect(200);
     await agent.put('/api/home-decor').send({ choices: { fence: other('fence') } }).expect(200);
-    await agent.post(`/api/children/${(sibling.body as { id: string }).id}/select`).expect(200);
+    await agent.post(`/api/players/${(sibling.body as { id: string }).id}/select`).expect(200);
     expect((await agent.get('/api/home-decor').expect(200)).body).toEqual({ choices: DEFAULTS });
   });
 
@@ -62,7 +62,7 @@ describe('home decor', () => {
     expect((await b.agent.get('/api/home-decor').expect(200)).body).toEqual({ choices: DEFAULTS });
     await b.agent.put('/api/home-decor').send({ choices: { lamp: other('lamp', 1) } }).expect(200);
     // B selecting A's child is refused as if it did not exist, so B can never reach A's row.
-    await b.agent.post(`/api/children/${a.childId}/select`).expect(404);
+    await b.agent.post(`/api/players/${a.childId}/select`).expect(404);
     expect((await a.agent.get('/api/home-decor').expect(200)).body).toEqual({ choices: { ...DEFAULTS, lamp: other('lamp') } });
   });
 
@@ -93,7 +93,7 @@ describe('home decor', () => {
 
   it('needs a signed-in parent with a selected child, and an allowed origin to save', async () => {
     await app.agent().get('/api/home-decor').expect(401);
-    const { agent } = await parentWithChild(app);
+    const agent = await signedInWithoutPlayer(app);
     expect((await agent.put('/api/home-decor').send({ choices: {} }).expect(401)).body).toEqual({ error: 'no-active-child' });
     const { agent: playing } = await playingChild();
     await playing.put('/api/home-decor').set('Origin', 'https://evil.example').send({ choices: { bed: other('bed') } }).expect(403);

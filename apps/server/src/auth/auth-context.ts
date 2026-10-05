@@ -68,11 +68,11 @@ export function requireParentGate(clock: () => Date): RequestHandler {
 }
 
 /**
- * Game routes act on the selected child profile. The profile is re-checked against the parent so a
- * stale or forged session pointer can never reach another family's data, and play stops as soon as
- * the consent policy version changes (not only at the next profile pick).
+ * Game routes act on the selected player. The player is re-checked against the account so a stale or
+ * forged session pointer can never reach another account's data, and play stops as soon as the
+ * consent policy version changes (not only at the next player pick).
  */
-export async function activeChildId(db: Db, res: Response, policyVersion: string): Promise<string> {
+export async function activePlayerId(db: Db, res: Response, policyVersion: string): Promise<string> {
   const { session, parent } = auth(res);
   if (!session.activeChildId) throw new HttpError(401, 'no-active-child');
   const [child] = await db

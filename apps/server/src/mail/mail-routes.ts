@@ -2,7 +2,7 @@ import { randomUUID } from 'node:crypto';
 import { and, desc, eq, sql } from 'drizzle-orm';
 import { Router } from 'express';
 import type { MailDto, MailTemplate } from '@miu/schema/mail';
-import { activeChildId, requireParent } from '../auth/auth-context';
+import { activePlayerId, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { characters, childProfiles, mail, rewardLedger } from '../db/schema';
@@ -54,7 +54,7 @@ export function mailRoutes({
 
   // GET /api/mail - List mail and unread count
   router.get('/mail', requireParent, async (_req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
 
     // Get child profile to resolve name and language
     const [profile] = await db
@@ -112,7 +112,7 @@ export function mailRoutes({
 
   // POST /api/mail/:id/read - Mark mail as read
   router.post('/mail/:id/read', requireParent, async (req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const id = String(req.params.id);
 
     const [row] = await db
@@ -136,7 +136,7 @@ export function mailRoutes({
 
   // POST /api/mail/:id/claim - Claim reward from mail (idempotent)
   router.post('/mail/:id/claim', requireParent, async (req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const id = String(req.params.id);
 
     const [row] = await db

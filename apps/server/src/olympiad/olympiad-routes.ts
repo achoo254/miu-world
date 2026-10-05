@@ -11,7 +11,7 @@ import {
   type OlympiadAwardTier,
   type OlympiadTopicId,
 } from '@miu/schema/olympiad';
-import { activeChildId, optionalAuth, requireParent } from '../auth/auth-context';
+import { activePlayerId, optionalAuth, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { rewardLedger } from '../db/schema';
@@ -77,7 +77,7 @@ export function olympiadRoutes({ db, content, catalog = loadOlympiadCatalog(), c
 
   /** Overview status of Olympic Math Challenge */
   router.get('/olympiad/status', requireParent, async (_req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const userBest = await getUserBest(childId);
 
     const practiceCountByTopic: Record<OlympiadTopicId, number> = {
@@ -131,7 +131,7 @@ export function olympiadRoutes({ db, content, catalog = loadOlympiadCatalog(), c
 
   /** Submit answers for mock exam, grade on server, award XP and coins */
   router.post('/olympiad/submit', requireParent, submitLimit, async (req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const { answers, elapsedSeconds } = parseInput(ExamSubmitRequest, req.body);
 
     const graded = gradeExam(catalog, answers);

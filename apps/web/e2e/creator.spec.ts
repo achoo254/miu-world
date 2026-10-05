@@ -21,15 +21,14 @@ async function freshParentWithNewProfile(page: Page, baseURL: string): Promise<v
   expect(register.status()).toBe(201);
   const { version } = (await (await request.get('/api/consents/policy')).json()) as { version: string };
   expect((await request.post('/api/consents', { headers, data: { policyVersion: version } })).status()).toBe(201);
-  expect((await request.post('/api/children', { headers, data: { displayName: 'Thỏ Bông' } })).status()).toBe(201);
 }
 
 const previewOutfit = (page: Page) => page.evaluate(() => window.__miuPreview?.outfit ?? null);
 
 test('a new profile creates its character first, sees outfit changes live, then plays wearing them', async ({ page, baseURL }) => {
   await freshParentWithNewProfile(page, baseURL ?? '');
-  await page.goto('/profiles');
-  await page.getByRole('button', { name: 'Thỏ Bông' }).click();
+  // The new account's own player has a default character: the start sends it to the creator first.
+  await page.goto('/');
   await expect(page).toHaveURL(/\/create$/);
 
   // Every species is open; this child picks the fox, so the whole path runs with a species other than Miu's.
@@ -104,8 +103,8 @@ test('a new profile creates its character first, sees outfit changes live, then 
 
   // Back on the picker, the profile shows its fox and now goes straight Home.
   await page.goto('/profiles');
-  await expect(page.getByRole('button', { name: 'Thỏ Bông' }).locator('.miu-art')).toHaveAttribute('src', /\/fox-anim-idle\.png(\?v=[0-9a-f]+)?$/);
-  await page.getByRole('button', { name: 'Thỏ Bông' }).click();
+  await expect(page.getByRole('button', { name: 'Mèo Mây' }).locator('.miu-art')).toHaveAttribute('src', /\/fox-anim-idle\.png(\?v=[0-9a-f]+)?$/);
+  await page.getByRole('button', { name: 'Mèo Mây' }).click();
   await expect(page).toHaveURL(/\/home$/);
 });
 

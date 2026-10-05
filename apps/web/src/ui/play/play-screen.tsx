@@ -168,7 +168,7 @@ function GameView({
 
 export function PlayScreen() {
   const { refresh, state: account } = useAccount();
-  const draftOwner = account.status === 'signed-in' ? account.me.activeChildId : null;
+  const draftOwner = account.status === 'signed-in' ? account.me.activePlayerId : null;
   const [store] = useState(createGameStore);
   const [params] = useSearchParams();
   const here = useLocation();

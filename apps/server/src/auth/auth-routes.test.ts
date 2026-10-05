@@ -33,7 +33,7 @@ describe('register / login / logout', () => {
     expect(cookie).toMatch(/Path=\//);
     expect(cookie).not.toMatch(/Secure/);
     expect(res.body.parent.email).toBe(parent.email);
-    expect(res.body).toMatchObject({ consentAccepted: false, activeChildId: null, parentGateOpen: true, pinLocked: false });
+    expect(res.body).toMatchObject({ consentAccepted: false, activePlayerId: null, parentGateOpen: true, pinLocked: false });
     const token = cookie.split(';')[0]?.split('=')[1] ?? '';
     for (const body of [res.text, (await agent.get('/api/auth/me').expect(200)).text]) {
       expect(body).not.toContain('scrypt$');
@@ -134,12 +134,12 @@ describe('parent gate (PIN)', () => {
   it('guards the parent area and reopens for 15 minutes with the right PIN', async () => {
     const { agent } = await parentWithChild(t, false);
     await agent.post('/api/parent-gate/lock').expect(200);
-    await agent.post('/api/children').send({ displayName: 'Thỏ Bông' }).expect(403, { error: 'parent-gate-closed' });
+    await agent.post('/api/players').send({ displayName: 'Thỏ Bông' }).expect(403, { error: 'parent-gate-closed' });
     const unlocked = await agent.post('/api/parent-gate/unlock').send({ pin: TEST_PIN }).expect(200);
     expect(unlocked.body.parentGateOpen).toBe(true);
-    await agent.post('/api/children').send({ displayName: 'Thỏ Bông' }).expect(201);
+    await agent.post('/api/players').send({ displayName: 'Thỏ Bông' }).expect(201);
     t.advance(16 * 60 * 1000);
-    await agent.post('/api/children').send({ displayName: 'Cáo Nhỏ' }).expect(403, { error: 'parent-gate-closed' });
+    await agent.post('/api/players').send({ displayName: 'Cáo Nhỏ' }).expect(403, { error: 'parent-gate-closed' });
   });
 
   it('locks the PIN after 5 wrong tries until a password login', async () => {
@@ -152,7 +152,7 @@ describe('parent gate (PIN)', () => {
     await agent.post('/api/parent-gate/unlock').send({ pin: TEST_PIN }).expect(423, { error: 'pin-locked' });
     const me = await agent.get('/api/auth/me').expect(200);
     expect(me.body).toMatchObject({ pinLocked: true, parentGateOpen: false });
-    await agent.post('/api/children').send({ displayName: 'Cáo Nhỏ' }).expect(403);
+    await agent.post('/api/players').send({ displayName: 'Cáo Nhỏ' }).expect(403);
 
     const relogged = await agent.post('/api/auth/login').send(parent).expect(200);
     expect(relogged.body).toMatchObject({ pinLocked: false, parentGateOpen: true });

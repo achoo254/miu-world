@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { createTestApp, parentWithChild, type Agent, type TestApp } from '../../test/test-app';
+import { createTestApp, parentWithChild, type Agent, type TestApp, signedInWithoutPlayer } from '../../test/test-app';
 
 let app: TestApp;
 beforeAll(async () => {
@@ -11,7 +11,7 @@ afterAll(async () => {
 
 async function playingChild(): Promise<{ agent: Agent; childId: string }> {
   const { agent, childId } = await parentWithChild(app);
-  await agent.post(`/api/children/${childId}/select`).expect(200);
+  await agent.post(`/api/players/${childId}/select`).expect(200);
   return { agent, childId };
 }
 
@@ -33,10 +33,10 @@ describe('player positions', () => {
 
   it('belongs to the selected child: a sibling starts from nothing', async () => {
     const { agent, childId } = await parentWithChild(app);
-    const sibling = await agent.post('/api/children').send({ displayName: 'Thỏ Bông' }).expect(201);
-    await agent.post(`/api/children/${childId}/select`).expect(200);
+    const sibling = await agent.post('/api/players').send({ displayName: 'Thỏ Bông' }).expect(201);
+    await agent.post(`/api/players/${childId}/select`).expect(200);
     await agent.put('/api/player-positions').send(forest).expect(204);
-    await agent.post(`/api/children/${(sibling.body as { id: string }).id}/select`).expect(200);
+    await agent.post(`/api/players/${(sibling.body as { id: string }).id}/select`).expect(200);
     expect((await agent.get('/api/player-positions').expect(200)).body).toEqual({ positions: [] });
   });
 
@@ -57,7 +57,7 @@ describe('player positions', () => {
 
   it('needs a signed-in parent with a selected child', async () => {
     await app.agent().get('/api/player-positions').expect(401);
-    const { agent } = await parentWithChild(app);
+    const agent = await signedInWithoutPlayer(app);
     expect((await agent.put('/api/player-positions').send(forest).expect(401)).body).toEqual({ error: 'no-active-child' });
   });
 });

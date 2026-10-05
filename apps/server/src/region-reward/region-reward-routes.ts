@@ -14,7 +14,7 @@ import {
   type RegionRewardsDto,
   type RegionRewardsList,
 } from '@miu/schema/region-reward';
-import { activeChildId, requireParent } from '../auth/auth-context';
+import { activePlayerId, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { questProgress, rewardLedger, shopInventory } from '../db/schema';
@@ -104,7 +104,7 @@ export function regionRewardRoutes({ db, content, clock, rewards }: RegionReward
   }
 
   router.get('/region-rewards', requireParent, async (_req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const record = await childRecord(db, childId);
     const body: RegionRewardsList = {
       regions: [...rewards.entries.values()].map((entry) => regionDto(entry, record)),
@@ -114,7 +114,7 @@ export function regionRewardRoutes({ db, content, clock, rewards }: RegionReward
   });
 
   router.get('/regions/:regionId/rewards', requireParent, async (req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const entry = entryOf(req.params.regionId);
     res.json(regionDto(entry, await childRecord(db, childId)));
   });
@@ -126,7 +126,7 @@ export function regionRewardRoutes({ db, content, clock, rewards }: RegionReward
    * (404), a tier not reached yet (409 `tier-not-reached`).
    */
   router.post('/regions/:regionId/rewards/claim', requireParent, async (req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const entry = entryOf(req.params.regionId);
     const { tier } = parseInput(RegionRewardClaimRequest, req.body);
     const outcome = await db.transaction(async (tx) => {

@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { emptyPeriodRow, emptyTimetable, type Timetable } from '@miu/schema/timetable';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { createTestApp, parentWithChild, type Agent, type TestApp } from '../../test/test-app';
+import { createTestApp, parentWithChild, type Agent, type TestApp, signedInWithoutPlayer } from '../../test/test-app';
 import { loadDefaultTimetable } from './timetable-routes';
 
 let app: TestApp;
@@ -16,7 +16,7 @@ afterAll(async () => {
 
 async function playingChild(): Promise<{ agent: Agent; childId: string }> {
   const { agent, childId } = await parentWithChild(app);
-  await agent.post(`/api/children/${childId}/select`).expect(200);
+  await agent.post(`/api/players/${childId}/select`).expect(200);
   return { agent, childId };
 }
 
@@ -46,10 +46,10 @@ describe('timetable', () => {
 
   it('belongs to the selected child: a sibling has her own, blank until she fills it', async () => {
     const { agent, childId } = await parentWithChild(app);
-    const sibling = await agent.post('/api/children').send({ displayName: 'Thỏ Bông' }).expect(201);
-    await agent.post(`/api/children/${childId}/select`).expect(200);
+    const sibling = await agent.post('/api/players').send({ displayName: 'Thỏ Bông' }).expect(201);
+    await agent.post(`/api/players/${childId}/select`).expect(200);
     await agent.put('/api/timetable').send(sample()).expect(200);
-    await agent.post(`/api/children/${(sibling.body as { id: string }).id}/select`).expect(200);
+    await agent.post(`/api/players/${(sibling.body as { id: string }).id}/select`).expect(200);
     expect((await agent.get('/api/timetable').expect(200)).body).toEqual(emptyTimetable());
   });
 
@@ -59,7 +59,7 @@ describe('timetable', () => {
     const b = await playingChild();
     expect((await b.agent.get('/api/timetable').expect(200)).body).toEqual(emptyTimetable());
     // B selecting A's child is refused, so B can never reach A's row.
-    await b.agent.post(`/api/children/${a.childId}/select`).expect(404);
+    await b.agent.post(`/api/players/${a.childId}/select`).expect(404);
   });
 
   it('refuses a malformed timetable without storing any of it', async () => {
@@ -80,7 +80,7 @@ describe('timetable', () => {
 
   it('needs a signed-in parent with a selected child, and an allowed origin to save', async () => {
     await app.agent().get('/api/timetable').expect(401);
-    const { agent } = await parentWithChild(app);
+    const agent = await signedInWithoutPlayer(app);
     expect((await agent.put('/api/timetable').send(sample()).expect(401)).body).toEqual({ error: 'no-active-child' });
     const { agent: playing } = await playingChild();
     await playing.put('/api/timetable').set('Origin', 'https://evil.example').send(sample()).expect(403);
@@ -99,7 +99,7 @@ describe('default timetable', () => {
     const withDefault = await createTestApp({ NODE_ENV: 'test', TIMETABLE_DEFAULT_FILE: file('default.json', JSON.stringify(sample())) });
     try {
       const { agent, childId } = await parentWithChild(withDefault);
-      await agent.post(`/api/children/${childId}/select`).expect(200);
+      await agent.post(`/api/players/${childId}/select`).expect(200);
       expect((await agent.get('/api/timetable').expect(200)).body).toEqual(sample());
       const own = { ...sample(), uniform: { ...sample().uniform, tue: 'Tự do' } };
       await agent.put('/api/timetable').send(own).expect(200);

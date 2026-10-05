@@ -3,7 +3,7 @@
 // default — the server's default name and nothing worn — sends the child to /create first.
 import type { CharacterDto } from '@miu/schema/game';
 
-/** Must match `DEFAULT_CHARACTER_NAME` in apps/server/src/child-profile/child-profile-routes.ts (a server test checks it). */
+/** Must match `DEFAULT_CHARACTER_NAME` in apps/server/src/player/player-routes.ts (a server test checks it). */
 export const DEFAULT_CHARACTER_NAME = 'Miu';
 
 export function isFreshCharacter(character: CharacterDto): boolean {

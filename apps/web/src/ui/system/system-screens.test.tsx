@@ -125,7 +125,7 @@ describe('SettingsDialog', () => {
     expect(screen.getByRole('button', { name: /Âm thanh: Bật/ })).toBeTruthy();
     expect(screen.getByRole('button', { name: /Nhạc nền: Bật/ })).toBeTruthy();
     expect(screen.getByRole('link', { name: /Đổi nhân vật/ }).getAttribute('href')).toBe('/create');
-    expect(screen.getByRole('link', { name: /Đổi hồ sơ/ }).getAttribute('href')).toBe('/profiles');
+    expect(screen.getByRole('link', { name: /Đổi người chơi/ }).getAttribute('href')).toBe('/profiles');
 
     fireEvent.click(screen.getByRole('button', { name: /Xong/ }));
     expect(onClose).toHaveBeenCalledTimes(1);

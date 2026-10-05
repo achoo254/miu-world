@@ -3,7 +3,7 @@ import { and, eq, sql } from 'drizzle-orm';
 import { Router } from 'express';
 import { levelFromXp } from '@miu/quest/level';
 import { BoosterUseRequest, MAX_BOOSTERS, ShopBuyRequest, keptForever, type ShopBuyResponse, type ShopResponse, type ShopState } from '@miu/schema/shop';
-import { activeChildId, requireParent } from '../auth/auth-context';
+import { activePlayerId, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { childProfiles, rewardLedger, shopInventory } from '../db/schema';
@@ -66,7 +66,7 @@ export function shopRoutes({ db, content, clock, shop }: ShopRouteDeps): Router 
   const router = Router();
 
   router.get('/shop', requireParent, async (_req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const body: ShopResponse = { ...(await shopState(db, childId, content)), items: [...shop.items] };
     res.json(body);
   });
@@ -77,7 +77,7 @@ export function shopRoutes({ db, content, clock, shop }: ShopRouteDeps): Router 
    * purchase id already used for something else (409). The same purchase id again answers as the first time.
    */
   router.post('/shop/buy', requireParent, async (req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const { itemId, purchaseId } = parseInput(ShopBuyRequest, req.body);
     const listing = shop.listings.get(itemId);
     if (!listing) throw new HttpError(400, 'invalid-item');
@@ -119,7 +119,7 @@ export function shopRoutes({ db, content, clock, shop }: ShopRouteDeps): Router 
    * more; a booster she does not have is refused (409 `not-owned`).
    */
   router.post('/shop/use', requireParent, async (req, res) => {
-    const childId = await activeChildId(db, res, content.consent.version);
+    const childId = await activePlayerId(db, res, content.consent.version);
     const { itemId, useId } = parseInput(BoosterUseRequest, req.body);
     if (shop.listings.get(itemId)?.kind !== 'booster') throw new HttpError(400, 'invalid-item');
     const state = await db.transaction(async (tx) => {

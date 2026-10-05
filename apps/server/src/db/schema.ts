@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm';
-import { check, doublePrecision, index, integer, jsonb, pgTable, primaryKey, smallint, text, timestamp, unique, uuid } from 'drizzle-orm/pg-core';
+import { boolean, check, doublePrecision, index, integer, jsonb, pgTable, primaryKey, smallint, text, timestamp, unique, uniqueIndex, uuid } from 'drizzle-orm/pg-core';
 import type { DecorChoices } from '@miu/schema/home-decor';
 import type { Timetable } from '@miu/schema/timetable';
 
@@ -8,7 +8,10 @@ import type { Timetable } from '@miu/schema/timetable';
 
 const createdAt = () => timestamp('created_at', { withTimezone: true }).notNull().defaultNow();
 
-/** Account owner. Children never log in; they are profiles under a parent (Master Plan §9). */
+/**
+ * Account owner: the person who signs in with Google and plays as the account's primary player. The
+ * table keeps its historical name (`parents`) so no foreign key has to move.
+ */
 export const parents = pgTable('parents', {
   id: uuid('id').primaryKey(),
   /** Always stored lower-case (normalised by the request schema). */
@@ -17,14 +20,18 @@ export const parents = pgTable('parents', {
   googleSub: text('google_sub').unique(),
   /** Dev/test sign-in only (disabled in production); Google accounts have none. */
   passwordHash: text('password_hash'),
-  /** Parent-gate PIN; null until the parent sets it right after the first Google sign-in. */
+  /** Optional PIN that locks the account area; null when the owner has not set one. */
   pinHash: text('pin_hash'),
   /** Consecutive wrong PINs; at the limit the PIN is locked until the next password login. */
   pinFailedCount: integer('pin_failed_count').notNull().default(0),
   createdAt: createdAt(),
 });
 
-/** Only the display name, picked from a fixed list: no real name, age, grade or school. */
+/**
+ * Players of an account: the primary player (the owner) and optional extra players on a shared device.
+ * Only the display name, picked from a fixed list: no real name, age, grade or school. The table keeps its
+ * historical name (`child_profiles`, `child_id` in game tables) so no foreign key has to move.
+ */
 export const childProfiles = pgTable(
   'child_profiles',
   {
@@ -34,10 +41,13 @@ export const childProfiles = pgTable(
       .references(() => parents.id, { onDelete: 'cascade' }),
     displayName: text('display_name').notNull(),
     language: text('language').notNull().default('vi'),
+    /** Exactly one per account once the policy is accepted; it cannot be deleted on its own. */
+    isPrimary: boolean('is_primary').notNull().default(false),
     createdAt: createdAt(),
   },
   (t) => [
     index('child_profiles_parent_idx').on(t.parentId),
+    uniqueIndex('child_profiles_one_primary').on(t.parentId).where(sql`${t.isPrimary}`),
     check('child_profiles_language_valid', sql`${t.language} in ('vi', 'en', 'both')`),
   ],
 );

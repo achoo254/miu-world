@@ -48,6 +48,7 @@ const MESSAGES: Readonly<Record<string, TextKey>> = {
   'invalid-pin': 'errors.invalidPin',
   'pin-locked': 'errors.pinLocked',
   'parent-gate-closed': 'errors.parentGateClosed',
+  'primary-player': 'errors.primaryPlayer',
   'consent-required': 'errors.consentRequired',
   'profile-limit': 'errors.profileLimit',
   'invalid-display-name': 'errors.invalidDisplayName',

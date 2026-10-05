@@ -3,7 +3,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { buildAccessoryCatalog, isAccessoryOpen } from '@miu/voxel/accessory-schema';
 import { FIXTURE_CONTENT, createTestApp, parentWithChild, type Agent, type TestApp } from '../../test/test-app';
 import { DEFAULT_CHARACTER_NAME as WEB_DEFAULT_NAME } from '../../../web/src/ui/creator/fresh-character';
-import { DEFAULT_CHARACTER_NAME } from '../child-profile/child-profile-routes';
+import { DEFAULT_CHARACTER_NAME } from '../player/player-routes';
 import * as t from '../db/schema';
 
 // Real accessories plus two locked test items keyed to the fixture quests (quest-a: 60 XP, then quest-b: 100 XP → Lv.2).
@@ -37,7 +37,7 @@ afterAll(async () => {
 
 async function playingChild(): Promise<{ agent: Agent; childId: string }> {
   const { agent, childId } = await parentWithChild(app);
-  await agent.post(`/api/children/${childId}/select`).expect(200);
+  await agent.post(`/api/players/${childId}/select`).expect(200);
   return { agent, childId };
 }
 
