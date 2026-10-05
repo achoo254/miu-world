@@ -108,7 +108,6 @@ describe('Google sign-in', () => {
     // No PIN yet: the parent area is open, so consent works straight after sign-in.
     const withPin = await agent.post('/api/auth/pin').send({ pin: TEST_PIN }).expect(200);
     expect(withPin.body).toMatchObject({ pinSet: true, parentGateOpen: true });
-    await agent.post('/api/auth/pin').send({ pin: '9999' }).expect(409, { error: 'pin-already-set' });
     await agent.post('/api/consents').send({ policyVersion: app.content.consent.version }).expect(201);
   });
 
@@ -173,6 +172,23 @@ describe('Google sign-in', () => {
     await agent.post('/api/auth/pin').send({ pin: TEST_PIN }).expect(200);
     app.advance(16 * 60 * 1000);
     expect((await agent.get('/api/auth/me').expect(200)).body).toMatchObject({ pinSet: true, parentGateOpen: false });
+    // Locked: nobody can change or remove the PIN without it.
+    await agent.post('/api/auth/pin').send({ pin: '9999' }).expect(403, { error: 'parent-gate-closed' });
+    await agent.delete('/api/auth/pin').expect(403, { error: 'parent-gate-closed' });
+  });
+
+  it('changes and removes the PIN while the parent area is unlocked', async () => {
+    const agent = app.agent();
+    await signInWithGoogle(agent, googleUser());
+    await agent.post('/api/auth/pin').send({ pin: TEST_PIN }).expect(200);
+    await agent.post('/api/auth/pin').send({ pin: '9999' }).expect(200);
+    await agent.post('/api/parent-gate/lock').expect(200);
+    await agent.post('/api/parent-gate/unlock').send({ pin: TEST_PIN }).expect(401, { error: 'invalid-pin' });
+    await agent.post('/api/parent-gate/unlock').send({ pin: '9999' }).expect(200);
+    const removed = await agent.delete('/api/auth/pin').expect(200);
+    expect(removed.body).toMatchObject({ pinSet: false, parentGateOpen: true });
+    app.advance(16 * 60 * 1000);
+    expect((await agent.get('/api/auth/me').expect(200)).body).toMatchObject({ pinSet: false, parentGateOpen: true });
   });
 
   it.each([

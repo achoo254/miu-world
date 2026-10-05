@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { and, eq, isNull, lt, sql } from 'drizzle-orm';
+import { and, eq, lt, sql } from 'drizzle-orm';
 import { Router, type Request, type RequestHandler } from 'express';
 import { ConsentRequest, LoginRequest, ParentGateUnlockRequest, RegisterRequest, SetPinRequest } from '@miu/schema/account';
 import type { ServerConfig } from '../config';
@@ -122,25 +122,28 @@ export function authRoutes({ db, config, content, clock }: AuthRouteDeps): Route
     res.status(201).json(await summary(ctx));
   });
 
-  /** Optional PIN for the parent area, set from there; with no PIN the gate stays open. */
-  router.post('/auth/pin', requireParent, pinLimit, async (req, res) => {
+  /**
+   * Optional PIN for the parent area: set, change or remove it from there. Without a PIN the gate is
+   * open; with one, changing or removing it needs the area unlocked first, so only who knows it can.
+   */
+  router.post('/auth/pin', requireParent, requireParentGate(clock), pinLimit, async (req, res) => {
     const { pin } = parseInput(SetPinRequest, req.body);
     const ctx = auth(res);
     const pinHash = await hashSecret(pin, config.scrypt);
-    // Only when no PIN exists: changing a PIN is a parent-area action for later, never a silent reset.
-    const [parent] = await db
-      .update(parents)
-      .set({ pinHash, pinFailedCount: 0 })
-      .where(and(eq(parents.id, ctx.parent.id), isNull(parents.pinHash)))
-      .returning();
-    if (!parent) throw new HttpError(409, 'pin-already-set');
+    const [parent] = await db.update(parents).set({ pinHash, pinFailedCount: 0 }).where(eq(parents.id, ctx.parent.id)).returning();
     // The one who just chose the PIN knows it: keep the parent area open for this session's window.
     const [session] = await db
       .update(sessions)
       .set({ parentGateUntil: new Date(clock().getTime() + PARENT_GATE_MS) })
       .where(eq(sessions.id, ctx.session.id))
       .returning();
-    res.json(await summary({ parent, session: session ?? ctx.session }));
+    res.json(await summary({ parent: parent ?? ctx.parent, session: session ?? ctx.session }));
+  });
+
+  router.delete('/auth/pin', requireParent, requireParentGate(clock), async (_req, res) => {
+    const ctx = auth(res);
+    const [parent] = await db.update(parents).set({ pinHash: null, pinFailedCount: 0 }).where(eq(parents.id, ctx.parent.id)).returning();
+    res.json(await summary({ parent: parent ?? ctx.parent, session: ctx.session }));
   });
 
   router.post('/parent-gate/unlock', requireParent, pinLimit, async (req, res) => {
