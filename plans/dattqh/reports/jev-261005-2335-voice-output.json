@@ -1,0 +1,63 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1204,
+    "output_tokens": 272
+  },
+  "results": {
+    "who_can_talk": {
+      "stakes": "medium",
+      "choice": "party_and_friends",
+      "confidence": 0.99,
+      "probabilities": {
+        "party_only": 0.0,
+        "party_and_friends": 1.0,
+        "proximity_everyone": 0.0
+      },
+      "decision": "auto"
+    },
+    "mic_mode": {
+      "stakes": "medium",
+      "choice": "off_by_default_open_or_ptt",
+      "confidence": 0.99,
+      "probabilities": {
+        "always_open": 0.0,
+        "push_to_talk_only": 0.0,
+        "off_by_default_open_or_ptt": 1.0
+      },
+      "decision": "auto"
+    },
+    "bot_voice": {
+      "stakes": "medium",
+      "choice": "tts_persona_react",
+      "confidence": 0.97,
+      "probabilities": {
+        "tts_persona_react": 0.98,
+        "tts_plus_speech_recognition": 0.01,
+        "text_only": 0.01
+      },
+      "decision": "auto"
+    },
+    "transport": {
+      "stakes": "high",
+      "choice": "webrtc_mesh_cloudflare_turn",
+      "confidence": 0.99,
+      "probabilities": {
+        "server_relay_over_websocket": 0.01,
+        "webrtc_mesh_selfhosted_turn": 0.0,
+        "webrtc_mesh_cloudflare_turn": 0.99
+      },
+      "decision": "escalate"
+    },
+    "privacy_text": {
+      "stakes": "low",
+      "choice": "privacy_line_keep_consent_v3",
+      "confidence": 0.71,
+      "probabilities": {
+        "new_consent_v4": 0.15,
+        "privacy_line_keep_consent_v3": 0.85
+      },
+      "decision": "auto"
+    }
+  }
+}

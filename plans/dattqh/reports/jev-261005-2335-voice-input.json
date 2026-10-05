@@ -1,0 +1,59 @@
+{
+  "state": {
+    "project": "Miu World: 3D voxel learn-while-playing online game for all ages (kids and adults), web now, mobile app later; online always on; friends by request+accept; parties of 2-4; companion bots (labelled) with their own personas; only the owner and one child play today, outsiders later.",
+    "today": "2026-10-05",
+    "owner_request": "When players are friends or in a party they can talk to each other by voice. Bots can voice too.",
+    "facts": [
+      "Today: canned chat lines and emotes only; block and report exist; the game reads text aloud with on-device speech synthesis only (no remote voices).",
+      "A speaking-step recorder already uses the microphone and never sends or stores audio.",
+      "Production web/API sits behind Cloudflare on a shared host; the origin IP is hidden; only HTTPS/WebSocket is open.",
+      "WebRTC peer-to-peer audio works for most home networks with STUN; some mobile/school networks need a TURN relay."
+    ]
+  },
+  "questions": {
+    "who_can_talk": {
+      "stakes": "medium",
+      "instructions": "Who can hear whom?",
+      "criteria": {
+        "party_and_friends": "Party members share one party voice channel; outside a party, a player can start a voice call with a friend from the friends list (friend accepts). Never with strangers or nearby non-friends.",
+        "party_only": "Only within a party.",
+        "proximity_everyone": "Everyone nearby in the world hears each other."
+      }
+    },
+    "mic_mode": {
+      "stakes": "medium",
+      "instructions": "How does the microphone work?",
+      "criteria": {
+        "off_by_default_open_or_ptt": "Mic off until the player taps the mic button; then open mic with voice detection, push-to-talk available in settings; speaking ring on avatar and party frame; per-person mute and volume; blocking someone cuts voice both ways; no recording ever, audio never stored.",
+        "always_open": "Mic opens automatically when joining a party.",
+        "push_to_talk_only": "Only hold-to-talk."
+      }
+    },
+    "bot_voice": {
+      "stakes": "medium",
+      "instructions": "How do bots use voice?",
+      "criteria": {
+        "tts_persona_react": "Bots speak their lines aloud with on-device synthesized voices, each bot its own pitch/speed from its persona; they react to a player speaking (turn-taking, short fitting voiced replies, emotes) without transcribing the player's speech.",
+        "tts_plus_speech_recognition": "Bots also transcribe players' speech (browser speech recognition, which may send audio to a vendor) to answer what was said.",
+        "text_only": "Bots stay text-only."
+      }
+    },
+    "transport": {
+      "stakes": "high",
+      "instructions": "How is audio carried?",
+      "criteria": {
+        "webrtc_mesh_cloudflare_turn": "WebRTC peer-to-peer mesh (max 4) with signalling over the existing game WebSocket; Cloudflare's free STUN; Cloudflare's managed TURN relay as fallback (free tier far above expected use; needs the owner to create a TURN key); origin IP stays hidden, no new ports.",
+        "webrtc_mesh_selfhosted_turn": "Same, but run a TURN server on the shared production host (open UDP/TCP ports, exposes the origin IP).",
+        "server_relay_over_websocket": "Encode audio in the browser and relay it through the game server over the existing WebSocket (no WebRTC; higher latency; needs an Opus encoder library)."
+      }
+    },
+    "privacy_text": {
+      "stakes": "low",
+      "instructions": "Consent/privacy wording?",
+      "criteria": {
+        "privacy_line_keep_consent_v3": "Keep consent v3; add privacy-page lines: voice goes directly between players (or via the relay), is never recorded or stored by the game.",
+        "new_consent_v4": "Bump consent to v4 and ask everyone again."
+      }
+    }
+  }
+}
