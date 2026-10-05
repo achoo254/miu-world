@@ -14,6 +14,8 @@ import { TIMETABLE_TARGETS } from '../timetable/timetable-targets';
 import { DONE_LINES, FOUND_LINES, NOT_NOW_LINES, fillLine } from './loop-lines';
 import { autoStep, currentStep, hintTarget, runFor, stepForTarget, worldState, type ActiveQuestView } from './quest-flow';
 import { clearDraft, readDraft, updateDraft } from './step-draft';
+/** Interactions the game sends for the pet and the kitchen: each opens its own screen. */
+const OWN_SCREEN_TARGETS: ReadonlySet<string> = new Set(['pet-care', 'cooking']);
 
 /** How long the world cheers a finished quest before the reward screens (shorter under reduced motion: no confetti, no hops). */
 export const CELEBRATION_MS = 2600;
@@ -249,8 +251,9 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
 
   const onInteraction = useCallback(
     (targetId: string, who: string, kind: InteractableKind): void => {
-      // The timetable board in the child's home opens its own screen (play screen), never a quest line.
-      if (TIMETABLE_TARGETS.has(targetId)) return;
+      // The timetable board in the child's home, the pet and the kitchen open their own screens (play screen),
+      // never a quest line.
+      if (TIMETABLE_TARGETS.has(targetId) || OWN_SCREEN_TARGETS.has(targetId)) return;
       const { overlay: open, busy: waiting, data: player } = latest.current;
       // One call at a time: a pending offline retry is the only thing sent until it goes through.
       if (open || waiting || covers.current.retry || covers.current.skillCheck) return;

@@ -181,6 +181,18 @@ describe('quest controller', () => {
     expect(posts).toEqual([]);
   });
 
+  it('leaves the pet and the kitchen to their own screens: no "nothing here" line, no call', async () => {
+    const posts: string[] = [];
+    const { touch } = setup(async (url) => {
+      posts.push(url);
+      return json(response([]));
+    });
+    await touch('pet-care', 'Thú cưng', 'object');
+    await touch('cooking', 'Bếp', 'object');
+    expect(screen.queryByRole('status')).toBeNull();
+    expect(posts).toEqual([]);
+  });
+
   it('shows the server\'s feedback line, and on a lost network blocks with a retry that re-sends the same call', async () => {
     let online = false;
     const posts: string[] = [];
