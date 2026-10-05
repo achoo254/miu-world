@@ -16,7 +16,7 @@ Tầng: **L** (server + schema + client + UI, đổi giao thức WebSocket). N�
 
 - Gõ chữ tự do, giọng nói: chỉ câu có sẵn và emote (Master Plan §8).
 - Thưởng, XP, mở khóa chung theo đội và co-op quest: Bậc 2 của Master Plan, plan riêng. Phần thưởng vẫn tính theo từng hồ sơ ở server.
-- Kết bạn lâu dài, danh sách bạn: phụ huynh duyệt, plan riêng.
+- Kết bạn lâu dài, danh sách bạn: plan `261004-1617-parent-area-friends` (kết bạn trong game, người nhận đồng ý, kết bạn được với bạn máy). Menu tương tác ở P2 chừa chỗ cho mục "Kết bạn".
 
 ## Điều đã quét được (bằng chứng)
 
@@ -41,7 +41,7 @@ Tầng: **L** (server + schema + client + UI, đổi giao thức WebSocket). N�
 - Schema: `emote` và `chat` thêm `to` tùy chọn; `interact-request` (mời vẫy, mời đội). Server kiểm cùng room và khoảng cách ≤ ~6 khối.
 - Client: người chơi khác vào hệ nhắc "gần nhất" của `object-interaction-manager` (nút tương tác sẵn có), mở menu chủ đề: Vẫy tay, Câu có sẵn, Mời vào đội, Chặn, Báo cáo. Giao diện theo mock cảnh (không cửa sổ trắng).
 - Chặn/báo cáo: bảng `player_blocks`, `player_reports`; người bị chặn không còn thấy hay bị thấy trong room; báo cáo vào hàng đợi (chưa có màn kiểm duyệt: ghi rõ ở trang review).
-- Công tắc của phụ huynh tắt online cho hồ sơ bé (cột trên `child_profiles`, mặc định bật theo quyết định hiện tại của người sở hữu — xem câu hỏi mở).
+- Công tắc online là cài đặt của chính người chơi, mặc định bật (plan `261004-1617-parent-area-friends` pha 2 làm phần lưu ở server và màn Cài đặt; ở đây hub chỉ cần tôn trọng cờ đó nếu đã có).
 
 ### P3 — Tổ đội (L)
 
@@ -66,5 +66,5 @@ Tầng: **L** (server + schema + client + UI, đổi giao thức WebSocket). N�
 
 ## Câu hỏi mở
 
-1. Mặc định online với hồ sơ mới: bật hay tắt cho tới khi phụ huynh bật (Master Plan §8 đặt điều kiện "phụ huynh bật được")? Đề xuất: **tắt mặc định** khi ra mắt thật, bật sẵn ở môi trường dev/review.
+1. ~~Mặc định online~~ **Đã chốt (người sở hữu, 05/10/2026, định hướng mọi lứa tuổi): bật mặc định, người chơi tự tắt trong Cài đặt; không cần phụ huynh bật.**
 2. Người chơi thật thấy tên bé thật hay biệt danh trong danh sách chọn (`characterNames`)? Hiện đã dùng tên chọn từ danh sách, giữ nguyên.
