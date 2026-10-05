@@ -1,0 +1,40 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 936,
+    "output_tokens": 137
+  },
+  "results": {
+    "first_batch": {
+      "stakes": "medium",
+      "choice": "scenes_reactions_tricks",
+      "confidence": 0.57,
+      "probabilities": {
+        "scenes_and_reactions_only": 0.28,
+        "scenes_reactions_tricks": 0.72,
+        "everything_incl_quests": 0.0
+      },
+      "decision": "escalate"
+    },
+    "pet_helps": {
+      "stakes": "low",
+      "choice": "sniff_hint",
+      "confidence": 0.47,
+      "probabilities": {
+        "sniff_hint": 0.74,
+        "no_help": 0.26
+      },
+      "decision": "escalate"
+    },
+    "needs_over_time": {
+      "stakes": "low",
+      "choice": "slow_drop_never_sad",
+      "confidence": 0.96,
+      "probabilities": {
+        "never_drop": 0.02,
+        "slow_drop_never_sad": 0.98
+      },
+      "decision": "auto"
+    }
+  }
+}
