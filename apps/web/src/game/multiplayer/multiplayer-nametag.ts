@@ -77,3 +77,48 @@ export function createNametag(name: string, isBot: boolean, partyMate = false): 
 
   return sprite;
 }
+
+/** One mark for everyone talking in the child's voice (shared: drawn once, shown or hidden per player). */
+let speakingMaterial: SpriteMaterial | null = null;
+const MARK_SIZE = 128;
+const MARK_WORLD = 0.7;
+
+/**
+ * The "talking now" mark beside a player's or bot's name: a glowing ring in the party colour around a speaker sign.
+ * Hidden until she talks. Place it at the name's height.
+ */
+export function createSpeakingMark(): Sprite {
+  if (!speakingMaterial) {
+    const canvas = document.createElement('canvas');
+    canvas.width = MARK_SIZE;
+    canvas.height = MARK_SIZE;
+    const ctx = canvas.getContext('2d');
+    if (ctx) {
+      const c = MARK_SIZE / 2;
+      // The party colour, as on the party frame (--color-grass of the UI tokens; a canvas cannot read CSS).
+      ctx.fillStyle = 'rgba(126, 211, 107, 0.35)';
+      ctx.beginPath();
+      ctx.arc(c, c, c - 4, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.lineWidth = 10;
+      ctx.strokeStyle = '#7ed36b';
+      ctx.beginPath();
+      ctx.arc(c, c, c - 12, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.font = '64px "Noto Color Emoji", "Apple Color Emoji", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('🔊', c, c + 4);
+    }
+    const texture = new CanvasTexture(canvas);
+    texture.colorSpace = SRGBColorSpace;
+    speakingMaterial = new SpriteMaterial({ map: texture, transparent: true, depthWrite: false, depthTest: false });
+  }
+  const sprite = new Sprite(speakingMaterial);
+  // Beside the name, on screen: its right edge where the widest name card ends (whichever way she faces).
+  sprite.center.set(1 + WORLD_WIDTH / 2 / MARK_WORLD, 0);
+  sprite.scale.set(MARK_WORLD, MARK_WORLD, 1);
+  sprite.renderOrder = 13;
+  sprite.visible = false;
+  return sprite;
+}

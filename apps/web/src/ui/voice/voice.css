@@ -1,0 +1,23 @@
+/*
+ * Voice in the game (party frame, call bar, invite card): values from tokens.css only; touch targets ≥ 48px.
+ * Whoever talks gets a ring in the party colour; with reduced motion it stays still.
+ */
+.voice-bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs); }
+.voice-bar > button { min-height: 3rem; }
+.voice-mic { min-width: 3rem; font-size: var(--text-body); }
+.voice-note { margin: 0; font-size: var(--text-sm); }
+.voice-person { display: flex; align-items: center; gap: var(--space-xs); }
+.voice-person > button { min-width: 3rem; min-height: 3rem; }
+.voice-volume { flex: 1; min-width: 6rem; min-height: 3rem; accent-color: var(--color-leaf); }
+.voice-mark { font-size: var(--text-sm); line-height: 1; }
+.voice-mark[data-mic='false'] { opacity: 0.7; }
+
+/* The call bar sits in the HUD column like the party frame. */
+.voice-call { display: grid; gap: var(--space-xs); width: min(17rem, calc(100vw - 2 * var(--space-sm))); padding: var(--space-sm); border-color: var(--color-leaf); }
+.voice-call-who { display: flex; align-items: center; gap: var(--space-xs); margin: 0; font-family: var(--font-display); font-weight: 800; font-size: var(--text-sm); color: var(--color-leaf); }
+.voice-face { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; flex-shrink: 0; border-radius: 50%; background: var(--color-sky-mid); }
+
+/* Talking now: a glowing ring on the portrait (party frame, folded faces, call bar). */
+.voice-face[data-speaking='true'], .online-party-portrait[data-speaking='true'], .online-party-face[data-speaking='true'] { box-shadow: 0 0 0 3px var(--color-grass), 0 0 12px 4px var(--color-grass); animation: voice-talking 0.9s ease-in-out infinite alternate; }
+@keyframes voice-talking { from { box-shadow: 0 0 0 3px var(--color-grass), 0 0 6px 2px var(--color-grass); } to { box-shadow: 0 0 0 3px var(--color-grass), 0 0 14px 6px var(--color-grass); } }
+@media (prefers-reduced-motion: reduce) { .voice-face[data-speaking='true'], .online-party-portrait[data-speaking='true'], .online-party-face[data-speaking='true'] { animation: none; } }

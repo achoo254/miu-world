@@ -4,6 +4,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router';
 import type { SocialStore } from '../../game-bridge/social-store';
+import type { VoiceManager } from '../voice/voice-manager';
 import { T, useT } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
@@ -54,14 +55,14 @@ export function useFriendsPrefetch(social: SocialStore, player: string | null, r
 }
 
 /** The friends list over the paused game: going to a friend closes it. */
-export function FriendsDialog({ social, fill, player, onClose }: { social: SocialStore; fill: (text: string) => string; player: string | null; onClose: () => void }) {
+export function FriendsDialog({ social, voice = null, fill, player, onClose }: { social: SocialStore; voice?: VoiceManager | null; fill: (text: string) => string; player: string | null; onClose: () => void }) {
   const { t } = useT();
   return (
     <Modal title={<T k="friends.title" />} onClose={onClose} dataId="play-friends" variant="scene" size="wide">
       <button type="button" className="scene-close" data-id="play-friends-close" aria-label={t('common.close')} onClick={onClose}>
         ✕
       </button>
-      <FriendsPanel source={OWN_SOCIAL} social={social} fill={fill} onGo={onClose} cacheKey={player ? ownFriendsKey(player) : undefined} />
+      <FriendsPanel source={OWN_SOCIAL} social={social} voice={voice} fill={fill} onGo={onClose} cacheKey={player ? ownFriendsKey(player) : undefined} />
     </Modal>
   );
 }

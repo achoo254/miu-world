@@ -307,3 +307,20 @@ describe('arrows to party members', () => {
     expect(Math.abs(arrowTurn(forward, at, { x: 0, z: 5 }))).toBeCloseTo(180);
   });
 });
+
+describe('voice through the online session', () => {
+  it('passes the voice messages on both ways, and none once another tab plays as her', () => {
+    const { ws, social, online } = session();
+    const heard: string[] = [];
+    social.onVoiceIn((m) => heard.push(m.type));
+    ws.receive({ type: 'voice-state', channel: null });
+    ws.receive({ type: 'voice-signal', from: 'p-b', signal: { kind: 'offer', sdp: 'v=0' } });
+    ws.receive({ type: 'voice-speaking', id: 'p-b', on: true });
+    expect(heard).toEqual(['voice-state', 'voice-signal', 'voice-speaking']);
+    social.send({ type: 'voice', message: { type: 'voice-signal', to: 'p-b', signal: { kind: 'answer', sdp: 'v=0' } } });
+    expect(ws.sent.at(-1)).toEqual({ type: 'voice-signal', to: 'p-b', signal: { kind: 'answer', sdp: 'v=0' } });
+    ws.onclose?.({ code: 4001 });
+    expect(heard.at(-1)).toBe('voice-state');
+    online.dispose();
+  });
+});

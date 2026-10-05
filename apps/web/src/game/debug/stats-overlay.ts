@@ -90,6 +90,8 @@ export interface RemoteSummary {
   outfit: string[];
   pet: string | null;
   partyMate: boolean;
+  /** Talking in the child's voice now (the mark beside the name shows). */
+  speaking: boolean;
 }
 
 declare global {

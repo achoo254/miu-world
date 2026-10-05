@@ -1,11 +1,14 @@
 // Comprehensive grouped settings (Master Plan §6, system-screens-v1).
-// Groups: Sound & Music, Voice speed, Language, Online play & companion bots, Display (reduced motion & font size).
+// Groups: Sound & Music, Voice speed, Language, Online play & companion bots, Voice chat, Display (reduced motion &
+// font size).
 import { T } from '../i18n/use-t';
 import { FontSizeSetting, ReduceMotionSetting } from './display-controls';
 import { LanguageSetting, VoiceSpeedSetting } from './language-setting';
 import { MusicToggle } from './music-toggle';
 import { BotSettings } from './bots-setting';
 import { SoundToggle } from './sound-toggle';
+import { VoiceChatSettings } from '../voice/voice-chat-settings';
+import '../voice/voice.css';
 import './settings.css';
 
 export function FullSettingsGroups({ prefix = 'settings' }: { prefix?: string }) {
@@ -46,7 +49,15 @@ export function FullSettingsGroups({ prefix = 'settings' }: { prefix?: string })
         <BotSettings dataId={`${prefix}`} />
       </section>
 
-      {/* 5. Hiển thị & Trợ năng */}
+      {/* 5. Nói chuyện bằng giọng: on this device; the microphone stays off until she taps it */}
+      <section className="settings-section" aria-labelledby={`${prefix}-voicechat-title`}>
+        <h3 className="settings-section-header" id={`${prefix}-voicechat-title`}>
+          <T k="settings.groupVoiceChat" />
+        </h3>
+        <VoiceChatSettings dataId={`${prefix}-voicechat`} />
+      </section>
+
+      {/* 6. Hiển thị & Trợ năng */}
       <section className="settings-section" aria-labelledby={`${prefix}-display-title`}>
         <h3 className="settings-section-header" id={`${prefix}-display-title`}>
           <T k="settings.groupDisplay" />

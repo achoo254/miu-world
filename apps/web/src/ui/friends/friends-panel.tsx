@@ -1,8 +1,8 @@
 // NEW SCREEN, after mock `designs/multiplayer.png` frames 2 and 9 ("Danh sách bạn bè"): the friends list on
 // parchment, with tabs — friends (who is online and where; go to them, remove), requests (received: accept or
 // decline; sent: take back), who else is in the room (add as a friend; only while playing) and the players she
-// blocked (unblock). No chat: friends meet in the game. Companion bots are always labelled. The account owner sees
-// the same lists for a player, without answering for her.
+// blocked (unblock). No text chat: friends meet in the game, or call each other by voice while both play ("Gọi").
+// Companion bots are always labelled. The account owner sees the same lists for a player, without answering for her.
 import { useEffect, useId, useState } from 'react';
 import type { FriendDto } from '@miu/schema/friends';
 import type { SocialStore } from '../../game-bridge/social-store';
@@ -16,6 +16,8 @@ import { BotBadge, placeOfMap } from '../online/social-layer';
 import { useSocial } from '../online/use-social';
 import type { SocialSource } from './friends-api';
 import { useFriendsList } from './friends-cache';
+import { FriendCallButton } from '../voice/voice-controls';
+import type { VoiceManager } from '../voice/voice-manager';
 import './friends.css';
 
 type FriendsTab = 'friends' | 'requests' | 'room' | 'blocks';
@@ -41,7 +43,7 @@ function Person({ species, name, isBot = false, line, children, dataId }: { spec
   );
 }
 
-function FriendRow({ friend, social, fill, onRemove, onGo }: { friend: FriendDto; social: SocialStore | null; fill: Fill; onRemove(): Promise<void>; onGo?: () => void }) {
+function FriendRow({ friend, social, voice, fill, onRemove, onGo }: { friend: FriendDto; social: SocialStore | null; voice: VoiceManager | null; fill: Fill; onRemove(): Promise<void>; onGo?: () => void }) {
   const [confirming, setConfirming] = useState(false);
   const name = friend.displayName;
   const line = friend.online ? <T k="friends.online" params={{ place: same(friend.mapId ? placeOfMap(friend.mapId, fill) : '') }} /> : <T k="friends.offline" />;
@@ -75,6 +77,8 @@ function FriendRow({ friend, social, fill, onRemove, onGo }: { friend: FriendDto
               <T k="friends.goto" />
             </button>
           ) : null}
+          {/* A friend playing now can be called (players only: bots speak in the party's voice). */}
+          {go && voice && !friend.isBot ? <FriendCallButton voice={voice} id={go} name={name} dataId={`friend-call-${friend.id}`} onCall={onGo} /> : null}
           <button type="button" className={buttonClass('ghost', { small: true })} data-id={`friend-remove-${friend.id}`} onClick={() => setConfirming(true)}>
             <T k="friends.remove" />
           </button>
@@ -137,6 +141,7 @@ function FriendsSkeleton({ dataId }: { dataId: string }) {
 export function FriendsPanel({
   source,
   social = null,
+  voice = null,
   fill = (text) => text,
   onGo,
   dataId = 'friends',
@@ -145,6 +150,8 @@ export function FriendsPanel({
   source: SocialSource;
   /** The game's online session (in the game only): "Cùng phòng" and going to a friend. */
   social?: SocialStore | null;
+  /** Voice in the game (in the game only): calling a friend who plays now. */
+  voice?: VoiceManager | null;
   fill?: Fill;
   /** She set off to a friend: the panel's dialog closes. */
   onGo?: () => void;
@@ -216,7 +223,7 @@ export function FriendsPanel({
           view.friends.length > 0 ? (
             <ul className="friend-list" data-id={`${dataId}-list`}>
               {view.friends.map((friend) => (
-                <FriendRow key={friend.id} friend={friend} social={social} fill={fill} onGo={onGo} onRemove={() => act(() => source.removeFriend(friend.id))} />
+                <FriendRow key={friend.id} friend={friend} social={social} voice={voice} fill={fill} onGo={onGo} onRemove={() => act(() => source.removeFriend(friend.id))} />
               ))}
             </ul>
           ) : (

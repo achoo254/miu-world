@@ -16,6 +16,8 @@ import { REGIONS, findRegion } from '../region/regions';
 import { FriendAskCard } from '../friends/friend-ask-card';
 import { CannedLines, PlayerMenu } from './player-menu';
 import { useSocial } from './use-social';
+import { CallInviteCard, PartyVoiceControls, PersonVolume, VoiceMark, memberInVoice, useSpeaking, useVoice } from '../voice/voice-controls';
+import type { VoiceManager } from '../voice/voice-manager';
 import './online.css';
 
 /** Fills the child's name into content text (region names like "Nhà của {name}"). */
@@ -66,11 +68,22 @@ export function toastText(toast: OnlineToast): Bilingual {
       return pairOf('online.partyChat', { who: same(toast.name), line: cannedPair(toast.text) });
     case 'friend':
       return pairOf(toast.added ? 'online.friendAdded' : 'online.friendDeclined', { who: same(toast.isBot ? `🤖 ${toast.name}` : toast.name) });
+    case 'call':
+      return pairOf(`voice.end.${toast.reason}`, { who: toast.name === null ? pairOf('online.someone') : same(toast.name) });
+    case 'mic':
+      return pairOf('voice.micDenied');
   }
 }
 
-function MemberRow({ social, member, self, leader, here, place, canLead, open, onToggle }: {
+/** Her mute and volume in the voice, under her row's actions (only while both are in it). */
+function MemberVoiceActions({ voice, member }: { voice: VoiceManager; member: PartyMember }) {
+  const inVoice = useVoice(voice, (s) => s.joined && memberInVoice(s, member.id) !== null);
+  return inVoice ? <PersonVolume voice={voice} id={member.id} name={member.displayName} /> : null;
+}
+
+function MemberRow({ social, voice, member, self, leader, here, place, canLead, open, onToggle }: {
   social: SocialStore;
+  voice: VoiceManager | null;
   member: PartyMember;
   self: boolean;
   leader: boolean;
@@ -84,16 +97,18 @@ function MemberRow({ social, member, self, leader, here, place, canLead, open, o
   const pet = PETS.find((p) => p.id === member.pet);
   const name = self ? t('online.party.you') : member.displayName;
   const who = same(member.displayName);
+  const speaking = useSpeaking(social, member.id);
   return (
     <li className="online-party-member" data-id={`online-party-member-${member.id}`} data-here={here} data-self={self}>
       <button type="button" className="online-party-row" disabled={self} aria-expanded={self ? undefined : open} aria-label={self ? undefined : t('online.party.member', { who })} onClick={onToggle}>
-        <span className="online-party-portrait">
+        <span className="online-party-portrait" data-speaking={speaking} aria-label={speaking ? t('voice.speaking', { who }) : undefined}>
           <MiuArt pose="idle" species={member.species} />
         </span>
         <span className="online-party-who">
           <span className="online-party-name">
             <span className="online-party-name-text">{name}</span>
             {member.isBot ? <BotBadge /> : null}
+            {voice ? <VoiceMark voice={voice} id={member.id} /> : null}
             {leader ? (
               <span className="online-party-crown" title={t('online.party.leader')} aria-label={t('online.party.leader')}>
                 👑
@@ -134,6 +149,7 @@ function MemberRow({ social, member, self, leader, here, place, canLead, open, o
               </button>
             </>
           ) : null}
+          {voice ? <MemberVoiceActions voice={voice} member={member} /> : null}
         </div>
       ) : null}
     </li>
@@ -176,7 +192,7 @@ export function BotBadge() {
 }
 
 /** The party folded: one tap target with every member's face, the leader's crown and the bots' mark. */
-function FoldedParty({ party, selfId, onOpen }: { party: PartyView; selfId: string | null; onOpen: () => void }) {
+function FoldedParty({ party, selfId, speaking, onOpen }: { party: PartyView; selfId: string | null; speaking: readonly string[]; onOpen: () => void }) {
   const { t } = useT();
   const count = party.members.length;
   return (
@@ -184,7 +200,7 @@ function FoldedParty({ party, selfId, onOpen }: { party: PartyView; selfId: stri
       <button type="button" className="online-party-pill" data-id="online-party-expand" aria-expanded={false} aria-label={t('online.party.expand', { count })} onClick={onOpen}>
         <span className="online-party-faces">
           {party.members.map((member) => (
-            <span key={member.id} className="online-party-face" data-id={`online-party-face-${member.id}`} data-self={member.id === selfId}>
+            <span key={member.id} className="online-party-face" data-id={`online-party-face-${member.id}`} data-self={member.id === selfId} data-speaking={speaking.includes(member.id)}>
               <span className="online-party-face-art">
                 <MiuArt pose="idle" species={member.species} />
               </span>
@@ -216,11 +232,12 @@ function FoldedParty({ party, selfId, onOpen }: { party: PartyView; selfId: stri
  * The party frame (mock frame 5): who is in her party, where they are, and what she can do with them. It folds to a
  * row of faces (the choice is kept on the device; a phone starts folded) so it never crowds a small screen.
  */
-export function PartyFrame({ social, fill }: { social: SocialStore; fill: Fill }) {
+export function PartyFrame({ social, fill, voice = null }: { social: SocialStore; fill: Fill; voice?: VoiceManager | null }) {
   const { t } = useT();
   const party = useSocial(social, (s) => s.party);
   const selfId = useSocial(social, (s) => s.selfId);
   const mapId = useSocial(social, (s) => s.mapId);
+  const speaking = useSocial(social, (s) => s.speaking);
   const [open, setOpen] = useState<string | null>(null);
   const [saying, setSaying] = useState(false);
   const [folded, setFolded] = useState(initialPartyFolded);
@@ -231,7 +248,7 @@ export function PartyFrame({ social, fill }: { social: SocialStore; fill: Fill }
     setSaying(false);
   };
   if (!party) return null;
-  if (folded) return <FoldedParty party={party} selfId={selfId} onOpen={() => fold(false)} />;
+  if (folded) return <FoldedParty party={party} selfId={selfId} speaking={speaking} onOpen={() => fold(false)} />;
   const count = party.members.length;
   return (
     <section className="online-party parchment" data-id="online-party" data-folded="false" aria-label={t('online.party.title', { count })}>
@@ -248,6 +265,7 @@ export function PartyFrame({ social, fill }: { social: SocialStore; fill: Fill }
           <MemberRow
             key={member.id}
             social={social}
+            voice={voice}
             member={member}
             self={member.id === selfId}
             leader={member.id === party.leader}
@@ -267,6 +285,7 @@ export function PartyFrame({ social, fill }: { social: SocialStore; fill: Fill }
           <T k="online.party.leave" />
         </button>
       </div>
+      {voice ? <PartyVoiceControls voice={voice} /> : null}
       {saying ? (
         <CannedLines
           dataId="online-party-lines"
@@ -342,7 +361,7 @@ function OnlineToastLine({ social }: { social: SocialStore }) {
  * Everything online over the game. `covered`: another screen covers the game (only the menu itself, when open,
  * and the toasts show then).
  */
-export function SocialLayer({ social, covered, fill }: { social: SocialStore; covered: boolean; fill: Fill }) {
+export function SocialLayer({ social, covered, fill, voice = null }: { social: SocialStore; covered: boolean; fill: Fill; voice?: VoiceManager | null }) {
   const menu = useSocial(social, (s) => s.menu);
   return (
     <>
@@ -352,6 +371,7 @@ export function SocialLayer({ social, covered, fill }: { social: SocialStore; co
           <InviteCard social={social} />
           <TravelCard social={social} fill={fill} />
           <FriendAskCard social={social} />
+          {voice ? <CallInviteCard voice={voice} /> : null}
         </div>
       )}
       <OnlineToastLine social={social} />

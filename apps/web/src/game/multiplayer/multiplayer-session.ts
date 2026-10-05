@@ -49,6 +49,7 @@ export class MultiplayerSession {
   private readonly options: MultiplayerSessionOptions;
   private readonly social: SocialStore | null;
   private readonly stopCommands: () => void;
+  private readonly stopVoiceView: () => void;
   private selfId: string | null = null;
   private party: PartyView | null;
   /** Whose home she is in, on the home map (null: her own, or another map). */
@@ -70,6 +71,7 @@ export class MultiplayerSession {
     this.remote = new RemotePlayerManager(options.loader, options.ground, options.shadows, options.onRemotes);
     this.social?.update({ mapId: options.start.mapId, menu: null });
     this.stopCommands = this.social?.onCommand((command) => this.command(command)) ?? (() => {});
+    this.stopVoiceView = this.watchVoice();
     this.client = new MultiplayerClient(visit ? { ...options.start, host: visit } : options.start, {
       onMessage: (message) => this.handle(message),
       onStatus: (_connected, final) => {
@@ -78,6 +80,8 @@ export class MultiplayerSession {
         this.remote.dispose();
         this.roster.clear();
         this.social?.update({ party: null, invites: [], travel: null, room: [], coopLobby: null, coopState: null, coopHelp: null, partyQuest: null });
+        // No voice either: the other tab has it now.
+        this.social?.voiceIn({ type: 'voice-state', channel: null });
       },
     });
   }
@@ -120,8 +124,29 @@ export class MultiplayerSession {
     }
   }
 
+  /** Who talks in her voice (their mark beside the name) and a bot's line over it, as the voice says. */
+  private watchVoice(): () => void {
+    const social = this.social;
+    if (!social) return () => {};
+    let speaking = social.getSnapshot().speaking;
+    let line = social.getSnapshot().voiceLine?.seq ?? 0;
+    this.remote.setSpeaking(new Set(speaking));
+    return social.subscribe(() => {
+      const now = social.getSnapshot();
+      if (now.speaking !== speaking) {
+        speaking = now.speaking;
+        this.remote.setSpeaking(new Set(speaking));
+      }
+      if (now.voiceLine && now.voiceLine.seq !== line) {
+        line = now.voiceLine.seq;
+        this.remote.sayChat(now.voiceLine.id, now.voiceLine.text);
+      }
+    });
+  }
+
   dispose(): void {
     this.stopCommands();
+    this.stopVoiceView();
     this.client.dispose();
     this.remote.dispose();
     this.social?.update({ menu: null, room: [] });
@@ -247,6 +272,15 @@ export class MultiplayerSession {
         social?.update({ coopHelp: help });
         return;
       }
+      case 'voice-state':
+      case 'voice-signal':
+      case 'voice-speaking':
+      case 'voice-call-invite':
+      case 'voice-call-ringing':
+      case 'voice-call-end':
+      case 'voice-bot-say':
+        social?.voiceIn(message);
+        return;
     }
   }
 
@@ -303,6 +337,7 @@ export class MultiplayerSession {
         return;
       case 'coop':
       case 'party-quest':
+      case 'voice':
         client.send(command.message);
         return;
       case 'travel-answer': {

@@ -85,6 +85,34 @@ export function speakLines(lines: readonly SpokenLine[]): boolean {
 export const speak = (text: string, lang: Lang): boolean => speakLines([{ text, lang }]);
 
 /**
+ * A companion bot's line in a voice channel, in its own voice (pitch and rate) at `volume`, with an on-device voice
+ * only. It never cuts off a reading under way: while something is read, the line is skipped (false), as it is with
+ * the sound off or no voice for `lang`. `ended` is called once it is over (or cut short).
+ */
+export function speakVoiceLine(text: string, lang: Lang, voice: { pitch: number; rate: number }, volume: number, ended: () => void): boolean {
+  const speech = synthesis();
+  if (!speech || !readSoundOn() || volume <= 0 || text.trim() === '' || speech.speaking || speech.pending) return false;
+  const local = bestVoice(speech.getVoices(), lang);
+  if (!local) return false;
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.voice = local;
+  utterance.lang = local.lang;
+  utterance.pitch = voice.pitch;
+  utterance.rate = voice.rate;
+  utterance.volume = Math.min(1, volume);
+  let done = false;
+  const end = (): void => {
+    if (done) return;
+    done = true;
+    ended();
+  };
+  utterance.onend = end;
+  utterance.onerror = end;
+  speech.speak(utterance);
+  return true;
+}
+
+/**
  * What a "Nghe" tap reads in `mode`: the line shown. In Song ngữ the Vietnamese, then the English when there is
  * one; untranslated text (textbook wording: `en` equal to `vi`, or no `en`) is read in Vietnamese in every mode.
  */

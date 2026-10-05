@@ -5,7 +5,8 @@
 import type { CoopEndReason, CoopHelpLayer, CoopLobbyView, CoopResult, CoopStateView } from '@miu/schema/coop';
 import type { QuestProgressDto } from '@miu/schema/game';
 import type { PartyQuestView } from '@miu/schema/party-quest';
-import type { ClientWsMessage, MpNotice, PartyView, ReportReason, SafeCannedChat } from '@miu/schema/multiplayer';
+import type { ClientWsMessage, MpNotice, PartyView, ReportReason, SafeCannedChat, ServerWsMessage } from '@miu/schema/multiplayer';
+import type { VoiceCallEnd } from '@miu/schema/voice';
 
 /** Another player as the menus show her. */
 export interface OnlinePlayer {
@@ -22,7 +23,11 @@ export type OnlineToast =
   | { kind: 'said'; name: string; text: SafeCannedChat; seq: number }
   | { kind: 'party-chat'; name: string; text: SafeCannedChat; seq: number }
   /** A friend request of hers was answered (or both asked: friends at once). */
-  | { kind: 'friend'; added: boolean; name: string; isBot: boolean; seq: number };
+  | { kind: 'friend'; added: boolean; name: string; isBot: boolean; seq: number }
+  /** A voice call with a friend ended or never started. */
+  | { kind: 'call'; reason: VoiceCallEnd; name: string | null; seq: number }
+  /** The microphone could not be opened (she still hears the others). */
+  | { kind: 'mic'; seq: number };
 
 /** Someone asks her to be friends (answered through the API, here or later in her friends list). */
 export interface FriendAsk {
@@ -64,7 +69,16 @@ export interface SocialSnapshot {
   partyQuest: PartyQuestView | null;
   /** Her own progress on the party's quest, moved by a step a party member did for everyone (newest first seen). */
   partyProgress: { progress: QuestProgressDto; seq: number } | null;
+  /** Who talks in her voice now (players and bots, her too): rings on their avatars and in the party frame. */
+  speaking: readonly string[];
+  /** A companion bot's line in her voice, shown over it as it speaks. */
+  voiceLine: { id: string; text: string; seq: number } | null;
 }
+
+/** Voice messages from the server, for the voice (it outlives a map's online session). */
+export type VoiceIn = Extract<ServerWsMessage, { type: `voice-${string}` }>;
+/** Voice messages to the server. */
+export type VoiceOut = Extract<ClientWsMessage, { type: `voice-${string}` }>;
 
 /** A co-op message from the UI to the server (the lobby, a move, help). */
 export type CoopMessage = Extract<ClientWsMessage, { type: `coop-${string}` }>;
@@ -88,7 +102,8 @@ export type SocialCommand =
   | { type: 'goto'; id: string }
   | { type: 'travel-answer'; accept: boolean }
   | { type: 'coop'; message: CoopMessage }
-  | { type: 'party-quest'; message: PartyQuestMessage };
+  | { type: 'party-quest'; message: PartyQuestMessage }
+  | { type: 'voice'; message: VoiceOut };
 
 export interface SocialStore {
   subscribe(listener: () => void): () => void;
@@ -102,6 +117,9 @@ export interface SocialStore {
   /** React registers (or clears) the arrow of a party member; the game turns it toward her each frame. */
   setArrow(id: string, el: HTMLElement | null): void;
   arrows(): ReadonlyMap<string, HTMLElement>;
+  /** The game's online session passes voice messages from the server on to the voice. */
+  voiceIn(message: VoiceIn): void;
+  onVoiceIn(handler: (message: VoiceIn) => void): () => void;
 }
 
 type DistributiveOmit<T, K extends PropertyKey> = T extends unknown ? Omit<T, K> : never;
@@ -123,6 +141,8 @@ export const INITIAL_SOCIAL: SocialSnapshot = {
   coopHelp: null,
   partyQuest: null,
   partyProgress: null,
+  speaking: [],
+  voiceLine: null,
 };
 
 export function createSocialStore(): SocialStore {
@@ -131,6 +151,7 @@ export function createSocialStore(): SocialStore {
   const listeners = new Set<() => void>();
   const handlers = new Set<(command: SocialCommand) => void>();
   const arrows = new Map<string, HTMLElement>();
+  const voiceHandlers = new Set<(message: VoiceIn) => void>();
   const store: SocialStore = {
     subscribe(listener) {
       listeners.add(listener);
@@ -159,6 +180,13 @@ export function createSocialStore(): SocialStore {
       else arrows.delete(id);
     },
     arrows: () => arrows,
+    voiceIn(message) {
+      for (const handler of [...voiceHandlers]) handler(message);
+    },
+    onVoiceIn(handler) {
+      voiceHandlers.add(handler);
+      return () => voiceHandlers.delete(handler);
+    },
   };
   return store;
 }

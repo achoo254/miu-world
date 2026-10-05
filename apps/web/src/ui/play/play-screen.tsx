@@ -40,6 +40,8 @@ import { PartyFrame, SocialLayer } from '../online/social-layer';
 import { usePlayTime } from './play-time';
 import { FriendsButton, FriendsDialog, useFriendsPrefetch } from '../friends/friends-screens';
 import { useSocial } from '../online/use-social';
+import { CallBar } from '../voice/voice-controls';
+import { useVoiceManager } from '../voice/use-voice-manager';
 import { createPositionSaver, loadPlayerPositions } from './player-position';
 import { CoopLayer } from '../coop/coop-layer';
 import type { MapBoss } from '../../game/hud/minimap-model';
@@ -239,6 +241,8 @@ export function PlayScreen() {
   const draftOwner = account.status === 'signed-in' ? account.me.activePlayerId : null;
   const [store] = useState(createGameStore);
   const [social] = useState(createSocialStore);
+  /** Voice with her party or a friend: outlives the maps she goes through. */
+  const voice = useVoiceManager(social);
   /** The online menu on another player is open (it covers the game like the other screens). */
   const onlineMenu = useSocial(social, (s) => s.menu !== null);
   /** A co-op lobby, challenge or its end is on screen (it covers the game). */
@@ -559,7 +563,8 @@ export function PlayScreen() {
               <PetHud petId={data.character.pet} renamed={petRenamed} hidden={hudCovered} onOpen={() => setPetCareOpen(true)} />
             </div>
             {/* Out of the way while a screen (the friends list…) covers the game: the two never overlap. */}
-            {covered ? null : <PartyFrame social={social} fill={(text) => say(text, data.character)} />}
+            {covered ? null : <PartyFrame social={social} voice={voice} fill={(text) => say(text, data.character)} />}
+            {covered ? null : <CallBar voice={voice} social={social} />}
             {covered ? null : (
               <PartyQuestCard
                 social={social}
@@ -573,7 +578,7 @@ export function PlayScreen() {
             )}
           </Hud>
         ) : null}
-        {data ? <SocialLayer social={social} covered={covered && !onlineMenu} fill={(text) => say(text, data.character)} /> : null}
+        {data ? <SocialLayer social={social} voice={voice} covered={covered && !onlineMenu} fill={(text) => say(text, data.character)} /> : null}
         {data && backpackOpen ? (
           <Modal title={<T k="common.backpack" />} onClose={() => setBackpackOpen(false)} dataId="play-backpack" size="wide">
             <BackpackPanel data={data} region={region} />
@@ -593,7 +598,7 @@ export function PlayScreen() {
             </button>
           </Modal>
         ) : null}
-        {data && friendsOpen ? <FriendsDialog social={social} fill={(text) => say(text, data.character)} player={draftOwner} onClose={() => setFriendsOpen(false)} /> : null}
+        {data && friendsOpen ? <FriendsDialog social={social} voice={voice} fill={(text) => say(text, data.character)} player={draftOwner} onClose={() => setFriendsOpen(false)} /> : null}
         {timetable ? <TimetablePanel focus={timetable} onClose={() => setTimetable(null)} /> : null}
         {decorOpen ? <HomeDecorPanel onClose={() => setDecorOpen(false)} onSaved={decorated} /> : null}
         {shopOpen ? (

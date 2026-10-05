@@ -13,7 +13,7 @@ import { loadPlayerCharacter, type PlayerCharacter } from '../entities/player-ch
 import { createVehicleMesh, equippedVehicle, rideLift, seatedPose, type EquippedVehicle } from '../player/vehicle-ride';
 import { createSpeechBubble, type SpeechBubble } from '../ambient/speech-bubble';
 import { cannedLine } from './canned-lines';
-import { createNametag } from './multiplayer-nametag';
+import { createNametag, createSpeakingMark } from './multiplayer-nametag';
 
 /** Her feet this far over the ground count as a jump (a step or a slope stays on the ground). */
 const AIRBORNE_ABOVE = 0.3;
@@ -40,6 +40,8 @@ interface RemoteEntity {
   bubble: SpeechBubble;
   nametag: Sprite;
   partyMate: boolean;
+  /** Shown while she talks in the child's voice. */
+  speakingMark: Sprite;
   targetPos: Vector3;
   targetYaw: number;
   currentSpeed: number;
@@ -79,6 +81,8 @@ export class RemotePlayerManager {
   /** Presences that arrived while their spawn was loading (new clothes, a move): applied once it is up. */
   private readonly latest = new Map<string, PlayerPresence>();
   private partyIds: ReadonlySet<string> = new Set();
+  /** Who talks in the child's voice now. */
+  private speakingIds: ReadonlySet<string> = new Set();
   private readonly shadows: boolean;
   private readonly changed: (players: RemoteSummary[]) => void;
 
@@ -93,7 +97,7 @@ export class RemotePlayerManager {
 
   private report(): void {
     this.changed(
-      [...this.entities].map(([id, e]) => ({ id, name: e.presence.displayName, isBot: e.presence.isBot, species: e.presence.species, outfit: e.character.outfit, pet: e.pet ? e.presence.pet : null, partyMate: e.partyMate })),
+      [...this.entities].map(([id, e]) => ({ id, name: e.presence.displayName, isBot: e.presence.isBot, species: e.presence.species, outfit: e.character.outfit, pet: e.pet ? e.presence.pet : null, partyMate: e.partyMate, speaking: e.speakingMark.visible })),
     );
   }
 
@@ -163,6 +167,10 @@ export class RemotePlayerManager {
       const nametag = createNametag(presence.displayName, now.isBot, partyMate);
       nametag.position.y = NAMETAG_HEIGHT;
       root.add(nametag);
+      const speakingMark = createSpeakingMark();
+      speakingMark.position.y = NAMETAG_HEIGHT;
+      speakingMark.visible = this.speakingIds.has(now.id);
+      root.add(speakingMark);
 
       const bubble = createSpeechBubble();
       bubble.sprite.position.y = BUBBLE_HEIGHT;
@@ -178,6 +186,7 @@ export class RemotePlayerManager {
         bubble,
         nametag,
         partyMate,
+        speakingMark,
         targetPos: new Vector3(now.x, y, now.z),
         targetYaw: now.yaw,
         currentSpeed: now.speed,
@@ -272,6 +281,19 @@ export class RemotePlayerManager {
     this.report();
   }
 
+  /** Who talks in the child's voice now: their mark shows beside their name. */
+  setSpeaking(ids: ReadonlySet<string>): void {
+    this.speakingIds = ids;
+    let changed = false;
+    for (const [id, entity] of this.entities) {
+      const on = ids.has(id);
+      if (entity.speakingMark.visible === on) continue;
+      entity.speakingMark.visible = on;
+      changed = true;
+    }
+    if (changed) this.report();
+  }
+
   updateMove(update: { id: string; x: number; y: number; z: number; yaw: number; speed: number; riding?: boolean; action?: PlayerPresence['action'] }): void {
     const pending = this.latest.get(update.id);
     if (pending) {
@@ -352,6 +374,8 @@ export class RemotePlayerManager {
     }
     this.dropVehicleMesh(entity);
     disposeSprite(entity.nametag);
+    // Its material is shared by every mark: only the sprite goes.
+    entity.speakingMark.removeFromParent();
     entity.bubble.hide();
   }
 
