@@ -25,8 +25,8 @@ function lineIssues(key: string, vi: unknown, en: unknown): string[] {
     const pool: string[] = [];
     const minimum = POOL_MINIMUMS[key] ?? 0;
     if (vi.length < minimum) pool.push(`${key}: pool needs at least ${minimum} lines (has ${vi.length})`);
-    for (const [lang, lines] of [['vi', vi], ['en', en]] as const) {
-      const repeated = lines.filter((line: unknown, i) => lines.indexOf(line) !== i);
+    for (const [lang, lines] of [['vi', vi as readonly unknown[]], ['en', en as readonly unknown[]]] as const) {
+      const repeated = lines.filter((line, i) => lines.indexOf(line) !== i);
       if (repeated.length > 0) pool.push(`${key}: ${lang} pool repeats ${JSON.stringify(repeated[0])}`);
     }
     return [...pool, ...vi.flatMap((line: string, i) => lineIssues(`${key}[${i}]`, line, en[i]))];
