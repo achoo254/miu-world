@@ -1,11 +1,10 @@
 import { expect, test, type Page } from '@playwright/test';
 import { freshChild } from './quest-api';
-import { readStats, waitReady } from './stats';
+import { expectDrawCalls, readStats, waitReady } from './stats';
 
 const DRAW_CALL_BUDGET = 150;
 const TRIANGLE_BUDGET = 150_000;
 
-// Not @smoke: the draw-call count depends on the GPU (a Mac draws more than CI's software GL), so it runs on CI only.
 test('loads /play cleanly within the desktop budget and only talks to its own origin', async ({ page, baseURL }) => {
   const consoleErrors: string[] = [];
   const foreign: string[] = [];
@@ -26,7 +25,7 @@ test('loads /play cleanly within the desktop budget and only talks to its own or
 
   expect(consoleErrors).toEqual([]);
   expect(foreign).toEqual([]);
-  expect(stats.calls).toBeLessThanOrEqual(DRAW_CALL_BUDGET);
+  expectDrawCalls(stats.calls, DRAW_CALL_BUDGET);
   expect(stats.triangles).toBeLessThanOrEqual(TRIANGLE_BUDGET);
   expect(stats.worker).toBe(true);
   // Equipment comes from GET /api/character (set in the setup project).

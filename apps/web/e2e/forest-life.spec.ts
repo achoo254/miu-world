@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { expect, test } from '@playwright/test';
 import type { WorldEntities } from '@miu/voxel/world-entities';
 import { freshChild } from './quest-api';
-import { readStats, waitReady } from './stats';
+import { expectDrawCalls, readStats, waitReady } from './stats';
 
 const SHOTS = fileURLToPath(new URL('../../../.data/life/review-shots/', import.meta.url));
 mkdirSync(SHOTS, { recursive: true });
@@ -56,7 +56,7 @@ test('the camp, the woods, the garden, the stream and the meadow are alive, with
     expect(stats.ambientVisible, place).toBeGreaterThan(0);
     // Mid quality draws up to sixteen at once (ambient-life.ts AMBIENT_LIMIT).
     expect(stats.ambientVisible, place).toBeLessThanOrEqual(16);
-    expect(stats.calls, place).toBeLessThanOrEqual(DRAW_CALL_BUDGET);
+    expectDrawCalls(stats.calls, DRAW_CALL_BUDGET, place);
     await page.screenshot({ path: `${SHOTS}life-${place}.png` });
   }
 });
@@ -75,11 +75,11 @@ test('villagers and animals add only a few draw calls each (one skinned mesh per
   const withLife = await calls(play(at));
   // High quality (shadows, the whole map in view) leaves little room: the cast shrinks to fit.
   const high = await calls(play(at, 'high'));
-  expect(high.calls, `${high.visible} characters drawn on high quality`).toBeLessThanOrEqual(DRAW_CALL_BUDGET);
+  expectDrawCalls(high.calls, DRAW_CALL_BUDGET, `${high.visible} characters drawn on high quality`);
   expect(withLife.visible).toBeGreaterThan(0);
   // A character is one draw call, one more for its shadow on high quality, plus what it holds.
   expect(withLife.calls - without.calls).toBeLessThanOrEqual(withLife.visible * 3);
-  expect(withLife.calls, `${without.calls} calls without life, ${withLife.visible} characters drawn`).toBeLessThanOrEqual(DRAW_CALL_BUDGET);
+  expectDrawCalls(withLife.calls, DRAW_CALL_BUDGET, `${without.calls} calls without life, ${withLife.visible} characters drawn`);
 });
 
 test('low quality draws at most eight of them, within the draw-call budget', async ({ page, baseURL }) => {
@@ -161,7 +161,7 @@ for (const [kind, near, quality] of [
     await expect.poll(async () => (await readStats(page)).worldEvent).toBe(kind);
     await page.waitForTimeout(settle(kind === 'rain-rainbow' ? 6_000 : 4_000, 1_500));
     const stats = await readStats(page);
-    expect(stats.calls).toBeLessThanOrEqual(DRAW_CALL_BUDGET);
+    expectDrawCalls(stats.calls, DRAW_CALL_BUDGET);
     // The animal runs over and says hello: wait for its line rather than a fixed time.
     if (kind === 'animal-visit') await expect.poll(async () => (await readStats(page)).ambientLine ?? '', { timeout: 10_000 }).toMatch(/./);
     await page.screenshot({ path: `${SHOTS}event-${kind}.png` });
