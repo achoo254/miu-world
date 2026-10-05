@@ -1,20 +1,21 @@
 {
   "title": "Quyền riêng tư của Miu World",
-  "updatedOn": "2026-10-03",
+  "updatedOn": "2026-10-05",
   "consentVersion": "v2",
   "contactEmail": "quocdat254@gmail.com",
   "sections": [
     {
       "heading": "Nói ngắn gọn",
       "paragraphs": [
-        "Miu World là trò chơi học tập miễn phí cho trẻ em. Chúng tôi chỉ lưu những gì cần để bé chơi và giữ tiến độ: email đăng nhập của phụ huynh, tên hiển thị bé chọn sẵn, và tiến độ chơi. Không quảng cáo, không bán dữ liệu, không theo dõi.",
-        "Phụ huynh tự tải và tự xóa được toàn bộ dữ liệu trong khu phụ huynh, bất cứ lúc nào."
+        "Miu World là trò chơi vừa chơi vừa học, miễn phí, cho mọi lứa tuổi: trẻ em chơi được, người lớn cũng chơi được. Chúng tôi chỉ lưu những gì cần để chơi và giữ tiến độ: email đăng nhập của chủ tài khoản, tên hiển thị chọn sẵn của từng hồ sơ, và tiến độ chơi. Không quảng cáo, không bán dữ liệu, không theo dõi.",
+        "Trò chơi không yêu cầu phụ huynh giám sát. Nếu bạn cho trẻ em chơi bằng tài khoản của mình, bạn là người chịu trách nhiệm việc trẻ chơi.",
+        "Chủ tài khoản tự tải và tự xóa được toàn bộ dữ liệu trong mục Quản lý tài khoản, bất cứ lúc nào."
       ]
     },
     {
       "heading": "Chúng tôi lưu gì",
       "paragraphs": [
-        "Về phụ huynh: email đã xác minh và mã định danh tài khoản Google (không có tên, ảnh hay danh bạ); mã PIN khu phụ huynh ở dạng đã mã hóa (chúng tôi không đọc được mã PIN); phiên bản chính sách bạn đã đồng ý và thời điểm đồng ý; các phiên đăng nhập (lúc tạo, lần dùng gần nhất, lúc hết hạn).",
+        "Về chủ tài khoản: email đã xác minh và mã định danh tài khoản Google (không có tên, ảnh hay danh bạ); mã PIN của mục Quản lý tài khoản, chỉ khi bạn tự đặt, ở dạng đã mã hóa (chúng tôi không đọc được mã PIN); phiên bản chính sách bạn đã đồng ý và thời điểm đồng ý; các phiên đăng nhập (lúc tạo, lần dùng gần nhất, lúc hết hạn).",
         "Về mỗi hồ sơ của bé (tối đa 3 hồ sơ): tên hiển thị chọn từ danh sách có sẵn; tên và trang phục của nhân vật; nhiệm vụ đã xong cùng số sao, điểm kinh nghiệm và thời điểm hoàn thành; phần thưởng, đồ vật và điểm kỹ năng đã nhận; chỗ nhân vật đứng lần cuối trên mỗi bản đồ, để lần sau bé chơi tiếp từ đó.",
         "Thời khóa biểu và lịch mặc đồng phục (trong nhà của bé, nếu bạn hoặc bé nhập): các môn từng tiết, đồng phục từng ngày, và những dòng tiêu đề bạn muốn ghi như tên trường, lớp, năm học, giáo viên chủ nhiệm. Chỉ hồ sơ đó xem được; không chia sẻ cho ai; mặc định để trống.",
         "Cách trang trí nhà của bé (kiểu giường, bàn ghế, rèm, đèn, màu mái, hàng rào… chọn từ danh sách có sẵn): chỉ là mã của kiểu đã chọn, không có chữ tự gõ.",
@@ -32,7 +33,7 @@
     {
       "heading": "Ai khác tham gia",
       "paragraphs": [
-        "Google: chỉ lúc phụ huynh đăng nhập. Google cho chúng tôi biết email đã xác minh và mã tài khoản; chúng tôi không gửi gì về bé cho Google.",
+        "Google: chỉ lúc chủ tài khoản đăng nhập. Google cho chúng tôi biết email đã xác minh và mã tài khoản; chúng tôi không gửi gì về bé cho Google.",
         "Cloudflare: chuyển tiếp và bảo vệ kết nối giữa trình duyệt và máy chủ của chúng tôi, nên thấy địa chỉ IP và trang được mở, như với mọi trang web dùng dịch vụ này.",
         "Ngoài hai dịch vụ trên, chúng tôi không chia sẻ dữ liệu cho ai."
       ]
@@ -47,9 +48,9 @@
     {
       "heading": "Quyền của bạn",
       "paragraphs": [
-        "Xem và tải dữ liệu: trong khu phụ huynh, bấm \"Tải dữ liệu của tôi\" để nhận một tệp JSON chứa toàn bộ những gì chúng tôi lưu về tài khoản và các hồ sơ (trừ mã PIN đã mã hóa).",
-        "Sửa: đổi tên hiển thị của hồ sơ trong khu phụ huynh; đổi tên và trang phục nhân vật, sửa hoặc xóa thời khóa biểu, lịch mặc đồng phục và cách trang trí nhà trong trò chơi.",
-        "Xóa: xóa từng hồ sơ, hoặc bấm \"Xóa tài khoản\" để xóa tất cả. Cả hai đều cần mã PIN phụ huynh.",
+        "Xem và tải dữ liệu: trong mục Quản lý tài khoản, bấm \"Tải dữ liệu của tôi\" để nhận một tệp JSON chứa toàn bộ những gì chúng tôi lưu về tài khoản và các hồ sơ (trừ mã PIN đã mã hóa).",
+        "Sửa: đổi tên hiển thị của hồ sơ trong mục Quản lý tài khoản; đổi tên và trang phục nhân vật, sửa hoặc xóa thời khóa biểu, lịch mặc đồng phục và cách trang trí nhà trong trò chơi.",
+        "Xóa: xóa từng hồ sơ, hoặc bấm \"Xóa tài khoản\" để xóa tất cả. Nếu tài khoản có đặt mã PIN thì cần nhập mã trước.",
         "Rút lại đồng ý: xóa tài khoản là cách rút lại đồng ý; chúng tôi không giữ lại gì để tiếp tục dùng."
       ]
     },
