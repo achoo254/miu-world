@@ -33,6 +33,7 @@ async function playedFamily() {
   await app.db.insert(t.playerPositions).values({ childId, mapId: 'forest-ch1', x: 40.5, y: 12, z: 88, facing: 1.5 });
   await app.db.insert(t.timetables).values({ childId, timetable: { ...emptyTimetable(), uniform: { ...emptyTimetable().uniform, mon: 'Bộ sơ mi trắng' } } });
   await app.db.insert(t.homeDecor).values({ childId, choices: { bed: 'bed-blue', house: 'house-green' } });
+  await app.db.insert(t.homeObjects).values({ childId, states: { 'lamp-toggle@lamp#0': true } });
   await app.db.insert(t.shopInventory).values({ childId, itemId: 'them-mot-tim', qty: 2 });
   await app.db.insert(t.mail).values({ id: randomUUID(), childId, templateId: 'welcome-gift', category: 'system' });
   const me = (await family.agent.get('/api/auth/me').expect(200)).body as { parent: { id: string } };
@@ -81,6 +82,7 @@ describe('account export', () => {
       positions: [{ map: 'forest-ch1', position: [40.5, 12, 88], facing: 1.5, updatedAt: expect.any(String) }],
       timetable: { uniform: { mon: 'Bộ sơ mi trắng' } },
       homeDecor: { bed: 'bed-blue', house: 'house-green' },
+      homeObjects: { 'lamp-toggle@lamp#0': true },
       shop: [{ itemId: 'them-mot-tim', qty: 2 }],
     });
     expect(child?.quests.map((q) => q.questId).sort()).toEqual(['q-done', 'q-open']);

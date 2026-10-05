@@ -1,6 +1,7 @@
 import { sql } from 'drizzle-orm';
 import { boolean, check, date, doublePrecision, index, integer, jsonb, pgTable, primaryKey, smallint, text, timestamp, unique, uniqueIndex, uuid } from 'drizzle-orm/pg-core';
 import type { DecorChoices } from '@miu/schema/home-decor';
+import type { HomeObjectStates } from '@miu/schema/home-objects';
 import type { Timetable } from '@miu/schema/timetable';
 
 // Ids are generated in the app (crypto.randomUUID) so the schema needs no Postgres extension and
@@ -229,6 +230,17 @@ export const timetables = pgTable('timetables', {
 export const homeDecor = pgTable('home_decor', {
   childId: childRef().primaryKey(),
   choices: jsonb('choices').$type<DecorChoices>().notNull(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+});
+
+/**
+ * What the child left switched on in her own home (a lamp lit, the television on, a wardrobe open:
+ * packages/schema home-objects.ts), put back when she comes home. One row per child, none until she first
+ * switches something; gone with the profile.
+ */
+export const homeObjects = pgTable('home_objects', {
+  childId: childRef().primaryKey(),
+  states: jsonb('states').$type<HomeObjectStates>().notNull(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
 });
 

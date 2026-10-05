@@ -20,6 +20,7 @@ import type { ServerConfig } from './config';
 import { loadContentCatalog, type ContentCatalog } from './content/content-catalog';
 import type { Db } from './db/client';
 import { homeDecorRoutes, loadDecorCatalog } from './home/home-decor-routes';
+import { homeObjectRoutes } from './home/home-object-routes';
 import { HttpError } from './http-error';
 import { playerPositionRoutes } from './player-position/player-position-routes';
 import { questRoutes } from './quest/quest-routes';
@@ -113,6 +114,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   const decor = loadDecorCatalog();
   const shop = loadShopCatalog(content.accessories, decor);
   api.use(homeDecorRoutes({ db, content, clock, catalog: decor, shop }));
+  api.use(homeObjectRoutes({ db, content, clock }));
   api.use(shopRoutes({ db, content, clock, shop }));
   api.use(regionRewardRoutes({ db, content, clock, rewards: loadRegionRewards(content.accessories) }));
   api.use(collectionRoutes({ db, content, clock }));

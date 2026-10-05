@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { DecorChoices } from './home-decor';
+import { HomeObjectStates } from './home-objects';
 import { Timetable } from './timetable';
 
 export const Id = z.uuid();
@@ -142,6 +143,8 @@ export const AccountExport = z.object({
       timetable: Timetable.nullable(),
       /** The styles the child picked for her home (slot → option); null until her first pick. */
       homeDecor: DecorChoices.nullable(),
+      /** What she left switched on in her home (a lamp, the television); null until she first switches one. */
+      homeObjects: HomeObjectStates.nullable(),
       /** Her online and companion bot switches. */
       settings: PlayerSettings,
       /** Seconds played per week (Monday, Vietnam time), for the progress views; `updatedAt`: the last report. */
