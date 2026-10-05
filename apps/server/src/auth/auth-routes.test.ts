@@ -1,5 +1,5 @@
 import { eq } from 'drizzle-orm';
-import request from 'supertest';
+import type request from 'supertest';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { consents } from '../db/schema';
 import { ORIGIN, TEST_PIN, createTestApp, fakeParent, parentWithChild, type TestApp } from '../../test/test-app';
@@ -66,11 +66,11 @@ describe('register / login / logout', () => {
     const first = sessionCookie(await agent.post('/api/auth/register').send(parent).expect(201));
     const second = sessionCookie(await agent.post('/api/auth/login').send(parent).expect(200));
     expect(second.split(';')[0]).not.toBe(first.split(';')[0]);
-    await request(t.app).get('/api/auth/me').set('Cookie', first.split(';')[0] ?? '').expect(401);
+    await t.request().get('/api/auth/me').set('Cookie', first.split(';')[0] ?? '').expect(401);
     await agent.get('/api/auth/me').expect(200);
     await agent.post('/api/auth/logout').expect(204);
     await agent.get('/api/auth/me').expect(401);
-    await request(t.app).get('/api/auth/me').set('Cookie', second.split(';')[0] ?? '').expect(401);
+    await t.request().get('/api/auth/me').set('Cookie', second.split(';')[0] ?? '').expect(401);
   });
 
   it('expires sessions after 7 idle days and 30 days absolute', async () => {
@@ -93,13 +93,14 @@ describe('register / login / logout', () => {
 
 describe('CSRF origin check', () => {
   it('rejects state-changing requests with a missing or foreign Origin', async () => {
-    await request(t.app).post('/api/auth/register').send(fakeParent()).expect(403, { error: 'forbidden-origin' });
-    await request(t.app)
+    await t.request().post('/api/auth/register').send(fakeParent()).expect(403, { error: 'forbidden-origin' });
+    await t
+      .request()
       .post('/api/auth/register')
       .set('Origin', 'https://evil.example')
       .send(fakeParent())
       .expect(403, { error: 'forbidden-origin' });
-    await request(t.app).get('/api/health').expect(200);
+    await t.request().get('/api/health').expect(200);
   });
 });
 

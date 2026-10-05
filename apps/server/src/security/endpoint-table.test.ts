@@ -2,8 +2,7 @@
 // below (with its reason) or refuse a caller without a session. A route added later is covered
 // automatically; one that should be public must be added here on purpose.
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import request from 'supertest';
-import { ORIGIN, createTestApp, parentWithChild, type TestApp } from '../../test/test-app';
+import { createTestApp, parentWithChild, type TestApp } from '../../test/test-app';
 
 /** Routes open without a session, and why. */
 const PUBLIC: Record<string, string> = {
@@ -55,7 +54,7 @@ describe('endpoint table', () => {
   });
 
   it('refuses every non-public route without a session (401), whatever the body', async () => {
-    const anon = request.agent(t.app).set('Origin', ORIGIN);
+    const anon = t.agent();
     const open: string[] = [];
     for (const route of routes(t)) {
       if (route in PUBLIC) continue;

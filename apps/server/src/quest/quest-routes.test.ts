@@ -3,13 +3,13 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { eq, sql } from 'drizzle-orm';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import request from 'supertest';
+import type request from 'supertest';
 import { QuestStep } from '@miu/schema/content';
 import type { QuestTarget } from '@miu/schema/world-target';
 import { createApp } from '../app';
 import { loadContentCatalog } from '../content/content-catalog';
 import { solution } from '../../test/quest-solution';
-import { FIXTURE_CONTENT, ORIGIN, createTestApp, parentWithChild, type Agent, type TestApp, signedInWithoutPlayer } from '../../test/test-app';
+import { FIXTURE_CONTENT, createTestApp, parentWithChild, type Agent, type TestApp, signedInWithoutPlayer } from '../../test/test-app';
 import * as t from '../db/schema';
 
 let app: TestApp;
@@ -207,7 +207,7 @@ describe('quest progress and rewards (server is the source of truth)', () => {
     const quests = new Map(FIXTURE_CONTENT.quests);
     const waveBack = QuestStep.parse({ id: 'wave-back', title: 'Vẫy tay', kind: 'dialogue', target: 'animal-beaver', lines: [{ speaker: 'Hải ly', text: 'Tạm biệt!' }] });
     quests.set('quest-c', { ...questC, steps: [...questC.steps, waveBack] });
-    const v2 = request.agent(createApp({ config: app.config, db: app.db, content: { ...FIXTURE_CONTENT, quests } })).set('Origin', ORIGIN);
+    const v2 = await app.agentFor(createApp({ config: app.config, db: app.db, content: { ...FIXTURE_CONTENT, quests } }));
     await v2.post('/api/auth/login').send(parent).expect(200);
     await v2.post(`/api/players/${childId}/select`).expect(200);
     const res = await step(v2, 'quest-c', 'wave-back').expect(200);
@@ -222,7 +222,7 @@ describe('quest progress and rewards (server is the source of truth)', () => {
     writeFileSync(path.join(dir, 'lake.json'), JSON.stringify({ ...fixture, id: 'lake-walk', title: 'Dạo hồ', reward: { xp: 7, coin: 3 } }));
     const content = loadContentCatalog({ questDir: dir });
     const { parent, childId } = await parentWithChild(app);
-    const agent = request.agent(createApp({ config: app.config, db: app.db, content })).set('Origin', ORIGIN);
+    const agent = await app.agentFor(createApp({ config: app.config, db: app.db, content }));
     await agent.post('/api/auth/login').send(parent).expect(200);
     await agent.post(`/api/players/${childId}/select`).expect(200);
     let last: request.Response | undefined;
@@ -621,7 +621,7 @@ describe('the shipped forest chapter 1', () => {
 
   async function realChild(): Promise<Agent> {
     const { parent, childId } = await parentWithChild(app);
-    const agent = request.agent(createApp({ config: app.config, db: app.db, content: real })).set('Origin', ORIGIN);
+    const agent = await app.agentFor(createApp({ config: app.config, db: app.db, content: real }));
     await agent.post('/api/auth/login').send(parent).expect(200);
     await agent.post(`/api/players/${childId}/select`).expect(200);
     return agent;

@@ -77,6 +77,26 @@ export default tseslint.config(
     },
   },
   {
+    // Given a bare app, supertest binds the IPv6 wildcard and connects to 127.0.0.1, where on macOS another
+    // program on the same port can answer instead. Server tests reach the app through test/test-app.ts.
+    files: ['apps/server/**/*.ts'],
+    ignores: ['apps/server/test/test-app.ts'],
+    rules: {
+      '@typescript-eslint/no-restricted-imports': [
+        'error',
+        {
+          paths: [
+            {
+              name: 'supertest',
+              allowTypeImports: true,
+              message: 'Use agent(), request() or agentFor() from test/test-app.ts: they serve the app on 127.0.0.1.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
     files: ['apps/web/**/*.{ts,tsx}'],
     plugins: { 'react-hooks': reactHooks },
     rules: reactHooks.configs.recommended.rules,

@@ -1,36 +1,31 @@
-import request from 'supertest';
-import type { Express } from 'express';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { createApp } from './app';
-import { loadConfig } from './config';
-import { createTestDb, type DbHandle } from './db/client';
+import { createTestApp, type TestApp } from '../test/test-app';
 
-let handle: DbHandle;
-let app: Express;
+let t: TestApp;
 
 beforeAll(async () => {
-  handle = await createTestDb();
-  app = createApp({ config: loadConfig({ NODE_ENV: 'test' }), db: handle.db });
+  t = await createTestApp();
 });
 afterAll(async () => {
-  await handle.close();
+  await t.handle.close();
 });
 
 describe('server app', () => {
   it('answers the health check', async () => {
-    const res = await request(app).get('/api/health');
+    const res = await t.request().get('/api/health');
     expect(res.status).toBe(200);
     expect(res.body).toEqual({ status: 'ok' });
   });
 
   it('returns JSON 404 for unknown routes', async () => {
-    const res = await request(app).get('/api/nope');
+    const res = await t.request().get('/api/nope');
     expect(res.status).toBe(404);
     expect(res.body).toEqual({ error: 'not-found' });
   });
 
   it('rejects bodies over 32 KB with 413', async () => {
-    const res = await request(app)
+    const res = await t
+      .request()
       .post('/api/health')
       .set('Content-Type', 'application/json')
       .send(JSON.stringify({ blob: 'x'.repeat(33 * 1024) }));
@@ -39,14 +34,14 @@ describe('server app', () => {
   });
 
   it('rejects malformed JSON with 400 and no stack trace', async () => {
-    const res = await request(app).post('/api/health').set('Content-Type', 'application/json').send('{bad');
+    const res = await t.request().post('/api/health').set('Content-Type', 'application/json').send('{bad');
     expect(res.status).toBe(400);
     expect(res.body).toEqual({ error: 'bad-request' });
     expect(res.text).not.toContain('at ');
   });
 
   it('sets security headers', async () => {
-    const res = await request(app).get('/api/health');
+    const res = await t.request().get('/api/health');
     expect(res.headers['x-content-type-options']).toBe('nosniff');
     expect(res.headers['x-powered-by']).toBeUndefined();
   });

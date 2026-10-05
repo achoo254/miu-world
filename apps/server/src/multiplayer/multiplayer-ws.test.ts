@@ -3,7 +3,6 @@
 import { createServer, type Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { and, eq } from 'drizzle-orm';
-import request from 'supertest';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { WebSocket } from 'ws';
 import type { ServerWsMessage } from '@miu/schema/multiplayer';
@@ -42,16 +41,16 @@ afterAll(async () => {
 
 /** A signed-up account with the policy accepted (its primary player selected); returns its cookie and player id. */
 async function player(consent = true): Promise<{ cookie: string; childId: string }> {
-  const res = await request(t.app).post('/api/auth/register').set('Origin', ORIGIN).send(fakeParent()).expect(201);
+  const res = await t.request().post('/api/auth/register').set('Origin', ORIGIN).send(fakeParent()).expect(201);
   const setCookie = res.headers['set-cookie'] as unknown as string[] | undefined;
   const cookie = (setCookie?.[0] ?? '').split(';')[0] ?? '';
   if (!consent) return { cookie, childId: '' };
-  await request(t.app).post('/api/consents').set('Origin', ORIGIN).set('Cookie', cookie).send({ policyVersion: FIXTURE_CONTENT.consent.version }).expect(201);
-  const me = await request(t.app).get('/api/auth/me').set('Cookie', cookie).expect(200);
+  await t.request().post('/api/consents').set('Origin', ORIGIN).set('Cookie', cookie).send({ policyVersion: FIXTURE_CONTENT.consent.version }).expect(201);
+  const me = await t.request().get('/api/auth/me').set('Cookie', cookie).expect(200);
   return { cookie, childId: (me.body as { activePlayerId: string }).activePlayerId };
 }
 
-const dress = (cookie: string, body: object) => request(t.app).put('/api/character').set('Origin', ORIGIN).set('Cookie', cookie).send(body).expect(200);
+const dress = (cookie: string, body: object) => t.request().put('/api/character').set('Origin', ORIGIN).set('Cookie', cookie).send(body).expect(200);
 
 /** Opens a socket; resolves with it once open, or with the HTTP status the upgrade was refused with. */
 function open(headers: Record<string, string>): Promise<{ ws: WebSocket; inbox: ServerWsMessage[] } | { status: number }> {
