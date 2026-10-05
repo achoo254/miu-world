@@ -19,9 +19,9 @@
     "hook": "gap-khi-thuyen-truong",
     "explore": "nhat-manh-ban-do",
     "learn": "doc-nhat-ki",
-    "challenge": "chon-vo-oc",
+    "challenge": "quy-luat-vo-oc",
     "decision": "gap-cua-do",
-    "finale": "khoa-so-ruong",
+    "finale": "boss-cua-bien",
     "reward": "mo-ruong-cat",
     "next": "vao-rung"
   },
@@ -69,11 +69,28 @@
       "id": "nhat-manh-ban-do",
       "title": "Nhặt 3 mảnh bản đồ",
       "goTo": "Tìm trên bãi biển cát trắng: ba mảnh bản đồ",
-      "kind": "search",
-      "targets": [
-        "dba-manh-ban-do-cuon",
-        "dba-manh-ban-do-goc",
-        "dba-manh-ban-do-xanh"
+      "kind": "find-object",
+      "prompt": "Nhìn kỹ trên bãi cát trắng để tìm 3 mảnh bản đồ:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "item-cuon",
+          "name": "Mảnh bản đồ cuộn",
+          "clue": "Mảnh giấy da cuộn tròn nằm gần mép nước",
+          "target": "dba-manh-ban-do-cuon"
+        },
+        {
+          "id": "item-goc",
+          "name": "Mảnh bản đồ góc",
+          "clue": "Góc bản đồ gấp nếp nép mình cạnh tảng đá",
+          "target": "dba-manh-ban-do-goc"
+        },
+        {
+          "id": "item-xanh",
+          "name": "Mảnh bản đồ xanh",
+          "clue": "Mảnh bản đồ mang sắc xanh của biển khơi",
+          "target": "dba-manh-ban-do-xanh"
+        }
       ]
     },
     {
@@ -104,218 +121,174 @@
       },
       "support": {
         "guide": [
-          "Đọc dòng có chữ \"vỏ ốc\".",
-          "Xem vỏ ốc cần có số thế nào.",
-          "Chọn câu đúng như nhật kí."
+          "Đọc lại dòng thứ ba của nhật kí.",
+          "Tìm xem nhật kí nhắc tới số nào.",
+          "Số đó lớn hơn hay bé hơn 50?"
         ],
-        "hint": "Dòng thứ ba nói về những vỏ ốc.",
+        "hint": "Dòng 3 có chữ \"lớn hơn 50\".",
         "answer": {
-          "text": "Đi theo vỏ ốc lớn hơn 50",
-          "explanation": "Nhật kí viết: \"đi theo những vỏ ốc có số lớn hơn 50\"."
+          "text": "Cần đi theo vỏ ốc mang số lớn hơn 50",
+          "explanation": "Nhật kí viết rõ: \"đi theo những vỏ ốc có số lớn hơn 50\"."
         }
       },
       "feedback": {
         "right": [
-          "Chuẩn rồi, thủy thủ! Theo vỏ ốc số lớn hơn năm mươi.",
-          "{name} đọc nhật kí còn nhanh hơn thuyền trưởng!",
-          "Đúng! Giờ ra cây dừa nghiêng tìm vỏ ốc nào."
+          "Chính xác! Giờ mình đi tìm những vỏ ốc lớn hơn năm mươi thôi.",
+          "{name} đọc nhật kí cẩn thận lắm, không sót chi tiết nào!",
+          "Đúng rồi, vỏ ốc lớn hơn năm mươi sẽ dẫn đường."
         ],
         "wrong": [
-          "Khỉ Thuyền Trưởng chỉ vào dòng có chữ \"vỏ ốc\" đó.",
-          "Nhật kí nói lớn hơn hay bé hơn nhỉ, {name}?",
-          "Đọc lại dòng thứ ba của nhật kí thử xem."
+          "Đọc lại dòng thứ ba của nhật kí nhé {name}.",
+          "Nhật kí dặn đi theo số lớn hơn hay bé hơn?",
+          "Thử dò từng dòng xem số năm mươi đi với chữ nào."
         ]
       }
     },
     {
-      "id": "chon-vo-oc",
-      "title": "Chọn vỏ ốc dẫn đường",
-      "goTo": "Ra cây dừa nghiêng, bà ngư dân Mực đang nhặt vỏ ốc",
+      "id": "quy-luat-vo-oc",
+      "title": "Quy luật vỏ ốc biển",
+      "goTo": "Tới cây dừa nghiêng, Bà ngư dân Mực đang đan lưới",
       "kind": "challenge",
-      "mechanic": "multi-select",
+      "mechanic": "logic",
       "target": "dba-ba-gau-ngu-dan",
-      "skill": "so-sanh-so",
-      "prompt": "Chọn tất cả vỏ ốc có số lớn hơn 50 để đi theo.",
+      "skill": "logic",
+      "logicType": "pattern",
+      "prompt": "Quy luật vỏ ốc theo triều dâng: 4, 8, 12, 16, ... Vỏ ốc tiếp theo mang số mấy?",
+      "elements": [
+        { "id": "e1", "label": "4" },
+        { "id": "e2", "label": "8" },
+        { "id": "e3", "label": "12" },
+        { "id": "e4", "label": "16" },
+        { "id": "e5", "label": "?" }
+      ],
       "choices": [
-        {
-          "id": "oc-23",
-          "text": "23"
-        },
-        {
-          "id": "oc-67",
-          "text": "67"
-        },
-        {
-          "id": "oc-51",
-          "text": "51"
-        },
-        {
-          "id": "oc-48",
-          "text": "48"
-        },
-        {
-          "id": "oc-90",
-          "text": "90"
-        }
+        { "id": "c1", "text": "18" },
+        { "id": "c2", "text": "20" },
+        { "id": "c3", "text": "22" },
+        { "id": "c4", "text": "24" }
       ],
       "answer": {
-        "choices": [
-          "oc-67",
-          "oc-51",
-          "oc-90"
-        ]
+        "choice": "c2"
       },
       "support": {
         "guide": [
-          "So từng số với 50.",
-          "Số có hàng chục lớn hơn 5 thì lớn hơn 50.",
-          "Số có 5 chục thì so tiếp hàng đơn vị."
+          "Mỗi vỏ ốc tăng thêm 4 số.",
+          "16 + 4 = 20.",
+          "Chọn đáp án 20 trên màn hình."
         ],
-        "hint": "51 có 5 chục 1 đơn vị, lớn hơn 50 một chút.",
+        "hint": "16 cộng thêm 4 là bao nhiêu?",
         "answer": {
-          "text": "67, 51, 90",
-          "explanation": "67 > 50, 51 > 50, 90 > 50; còn 23 < 50 và 48 < 50."
+          "text": "20",
+          "explanation": "Dãy số đếm thêm 4: 4, 8, 12, 16, 20."
         }
       },
       "feedback": {
         "right": [
-          "Ba vỏ ốc xếp thành lối nhỏ dẫn ra bãi cát!",
-          "Bà Mực khen {name} tinh mắt như chim hải âu.",
-          "Đúng hết, không sót vỏ ốc nào!"
+          "Tuyệt vời! Vỏ ốc số 20 ánh lên màu ngọc bích!",
+          "{name} giải quy luật cộng bốn quá chuẩn xác!",
+          "Sóng biển vỗ tay khen ngợi bé tinh anh!"
         ],
         "wrong": [
-          "Bà Mực nhắc: so từng số với năm mươi nha cháu.",
-          "Có vỏ ốc bé hơn năm mươi lọt vào rồi, soát lại nhé.",
-          "Còn sót một vỏ ốc lớn hơn năm mươi đó."
-        ]
-      }
-    },
-    {
-      "id": "xep-dong-vang",
-      "title": "Xếp đồng vàng vào rương",
-      "goTo": "Theo vỏ ốc tới rương vùi trong cát",
-      "kind": "challenge",
-      "mechanic": "drag-drop",
-      "target": "dba-ruong-vui-cat",
-      "skill": "phep-cong",
-      "prompt": "Nắp rương khắc: \"Đặt vào đúng 30 đồng vàng thì nắp sẽ hé\". Kéo các túi vàng vào rương cho đủ 30 đồng.",
-      "container": "Chiếc rương vùi trong cát",
-      "pieces": [
-        {
-          "id": "tui-10-a",
-          "label": "Túi 10 đồng",
-          "value": 10
-        },
-        {
-          "id": "tui-10-b",
-          "label": "Túi 10 đồng",
-          "value": 10
-        },
-        {
-          "id": "tui-5-a",
-          "label": "Túi 5 đồng",
-          "value": 5
-        },
-        {
-          "id": "tui-5-b",
-          "label": "Túi 5 đồng",
-          "value": 5
-        },
-        {
-          "id": "tui-20-a",
-          "label": "Túi 20 đồng",
-          "value": 20
-        }
-      ],
-      "answer": {
-        "total": 30
-      },
-      "support": {
-        "guide": [
-          "Chọn một túi lớn trước.",
-          "Cộng dồn số đồng vàng sau mỗi túi.",
-          "Dừng khi rương vừa đủ 30 đồng."
-        ],
-        "hint": "20 + 10 = 30.",
-        "answer": {
-          "text": "Đủ 30 đồng, ví dụ 20 + 10",
-          "explanation": "20 + 10 = 30. Cũng có thể 10 + 10 + 5 + 5 = 30."
-        }
-      },
-      "feedback": {
-        "right": [
-          "Ba mươi đồng vàng leng keng, nắp rương khẽ hé!",
-          "Cộng dồn giỏi lắm, thủy thủ {name}!",
-          "Rương rung rinh, có tiếng tách nhỏ bên trong!"
-        ],
-        "wrong": [
-          "Nắp rương vẫn im, {name} đếm lại tổng số đồng nhé.",
-          "Thừa hay thiếu rồi, cộng dồn từng túi xem.",
-          "Thử một túi hai mươi đồng trước xem sao."
+          "Thử lấy 16 cộng thêm 4 nhé {name}.",
+          "Đếm thêm 4 từ số 16 xem nào.",
+          "Quan sát kỹ bước nhảy của các vỏ ốc nha."
         ]
       }
     },
     {
       "id": "gap-cua-do",
       "title": "Gặp Cua Đỏ Kìm Kẹp",
-      "kind": "dialogue",
+      "kind": "decision",
       "target": "dba-cua-do-kim-kep",
-      "lines": [
-        {
-          "speaker": "Cua Đỏ",
-          "text": "Cạch cạch! Tớ giữ mật mã khóa số của chiếc rương trong cát đấy."
-        },
-        {
-          "speaker": "Cua Đỏ",
-          "text": "Giải đúng câu đố của tớ thì rương mới mở hẳn. Cậu dám thử không?"
-        }
-      ],
+      "speaker": "Cua Đỏ",
+      "prompt": "Cua Đỏ canh giữ chiếc rương trong cát, {name} chọn cách nào để tiếp cận?",
       "choices": [
         {
-          "text": "Thử thì thử!",
-          "reply": "Can đảm lắm, nghe câu đố nhé!"
+          "id": "opt-wave",
+          "text": "Vẫy tay chào thân thiện và giơ vỏ sò óng ánh",
+          "consequence": "Cua Đỏ khoái chí gõ hai càng vào nhau tạo thành điệu nhạc vui nhộn!"
         },
         {
-          "text": "Cậu có kẹp tớ không?",
-          "reply": "Không đâu, càng của tớ chỉ để vẫy chào thôi!"
+          "id": "opt-treat",
+          "text": "Mời Cua ăn quả dừa mát ngọt vừa rụng",
+          "consequence": "Cua Đỏ hào hứng nhận lấy và vui vẻ mở lời thách đố!"
         }
       ],
       "goTo": "Cua Đỏ đang gõ càng ở vũng nước triều gần đó"
     },
     {
-      "id": "khoa-so-ruong",
-      "title": "Mở khóa số",
-      "kind": "riddle",
+      "id": "boss-cua-bien",
+      "title": "Đại chiến Đố vui Cua Biển",
+      "kind": "boss",
       "target": "dba-cua-do-kim-kep",
-      "skill": "phep-cong",
-      "question": "Sáng nay tớ đếm được 9 con sò, chiều đếm thêm 6 con nữa. Tớ đếm được tất cả bao nhiêu con sò? (9 + 6 = ?)",
-      "answer": {
-        "value": 15
-      },
-      "support": {
-        "guide": [
-          "Bắt đầu từ 9.",
-          "Lấy 1 từ số 6 để 9 thành 10.",
-          "Cộng phần còn lại."
-        ],
-        "hint": "9 + 1 = 10, còn 5 nữa.",
-        "answer": {
-          "text": "15",
-          "explanation": "9 + 6 = 15. Tách 6 thành 1 và 5: 9 + 1 = 10, 10 + 5 = 15."
+      "bossId": "boss-cua-bien",
+      "bossName": "Cua Biển Khổng Lồ",
+      "introDialogue": "Cạch cạch! Ta có 5 câu hỏi biển đảo, mỗi câu đúng trừ 100 HP của ta!",
+      "winDialogue": "Bái phục thủy thủ {name}! Cậu thông minh và dũng cảm nhất đảo này!",
+      "maxHp": 500,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "c1",
+          "skill": "so-sanh-so",
+          "prompt": "So sánh hai xô sò biển: Xô A có 28 con sò, xô B có 35 con sò. Xô nào nhiều hơn?",
+          "damage": 100,
+          "choices": [
+            { "id": "a", "text": "Xô A nhiều hơn" },
+            { "id": "b", "text": "Xô B nhiều hơn" },
+            { "id": "c", "text": "Hai xô bằng nhau" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "c2",
+          "skill": "phep-cong",
+          "prompt": "Trên bãi cát có 14 chú còng gió, 5 chú nữa chạy lại. Có tất cả bao nhiêu chú? (14 + 5 = ?)",
+          "damage": 100,
+          "choices": [
+            { "id": "a", "text": "17 chú" },
+            { "id": "b", "text": "18 chú" },
+            { "id": "c", "text": "19 chú" }
+          ],
+          "answer": { "choice": "c" }
+        },
+        {
+          "id": "c3",
+          "skill": "phep-tru",
+          "prompt": "Có 20 quả dừa trên cây, gió làm rụng 8 quả. Còn lại bao nhiêu quả dừa? (20 - 8 = ?)",
+          "damage": 100,
+          "choices": [
+            { "id": "a", "text": "12 quả" },
+            { "id": "b", "text": "13 quả" },
+            { "id": "c", "text": "14 quả" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "c4",
+          "skill": "logic",
+          "prompt": "Dãy số sóng biển: 10, 20, 30, 40, ... Con số tiếp theo là số mấy?",
+          "damage": 100,
+          "choices": [
+            { "id": "a", "text": "45" },
+            { "id": "b", "text": "50" },
+            { "id": "c", "text": "60" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "c5",
+          "skill": "doc-hieu",
+          "prompt": "Ai là thuyền trưởng dũng cảm của con tàu thám hiểm Đảo bí ẩn?",
+          "damage": 100,
+          "choices": [
+            { "id": "a", "text": "Khỉ Thuyền Trưởng" },
+            { "id": "b", "text": "Bạn Rùa Biển" },
+            { "id": "c", "text": "Cá Heo Con" }
+          ],
+          "answer": { "choice": "a" }
         }
-      },
-      "feedback": {
-        "right": [
-          "Mười lăm! Khóa số kêu tách một cái, rương bật mở!",
-          "Chín cộng sáu là mười lăm, Cua Đỏ vẫy càng chúc mừng!",
-          "{name} tính nhẩm siêu nhanh, kho báu đầu tiên đây rồi!"
-        ],
-        "wrong": [
-          "Cua Đỏ lắc càng: thử gộp cho tròn chục trước nhé.",
-          "Chưa đúng rồi, đếm thêm sáu từ số chín xem.",
-          "Tách sáu thành một và năm cho dễ tính nè."
-        ]
-      }
+      ]
     },
     {
       "id": "mo-ruong-cat",
@@ -330,6 +303,7 @@
       "title": "Bản đồ chỉ đường vào rừng",
       "kind": "next",
       "trigger": "auto",
+      "target": "dba-ruong-vui-cat",
       "text": "Tấm bản đồ ghép xong vẽ một lối nhỏ băng qua rừng nhiệt đới tới thác nước. Thuyền nhỏ ở bến sẵn sàng đưa {name} đi tiếp!"
     }
   ],

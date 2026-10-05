@@ -19,9 +19,9 @@
     "hook": "gap-meo-banh-bao",
     "explore": "nhat-do-ngoai-san",
     "learn": "doc-bien-ten",
-    "challenge": "xep-do-nha-kho",
+    "challenge": "quy-luat-hien-nha",
     "decision": "chon-mon-an-toi",
-    "finale": "dem-ca-cau-tau",
+    "finale": "boss-banh-bao",
     "reward": "bua-com-chieu",
     "next": "xem-thoi-khoa-bieu"
   },
@@ -68,11 +68,28 @@
       "id": "nhat-do-ngoai-san",
       "title": "Nhặt 3 món ngoài sân",
       "goTo": "Tìm quanh sân trước nhà: lá thư, bông cúc vàng, chậu cây con",
-      "kind": "search",
-      "targets": [
-        "nha-la-thu",
-        "nha-hoa-cuc",
-        "nha-chau-cay"
+      "kind": "find-object",
+      "prompt": "Nhìn kỹ xung quanh sân vườn để nhặt 3 món đồ:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "item-thu",
+          "name": "Lá thư gia đình",
+          "clue": "Lá thư nhỏ màu vàng rơi trên thảm cỏ trước sân",
+          "target": "nha-la-thu"
+        },
+        {
+          "id": "item-hoa",
+          "name": "Bông cúc vàng",
+          "clue": "Bông hoa cúc vàng rực rỡ bên bồn hoa cạnh lối đi",
+          "target": "nha-hoa-cuc"
+        },
+        {
+          "id": "item-chau",
+          "name": "Chậu cây con",
+          "clue": "Chậu cây đất nung xinh xắn đặt gần góc sân vườn",
+          "target": "nha-chau-cay"
+        }
       ]
     },
     {
@@ -109,7 +126,7 @@
         ],
         "hint": "Buổi sáng tưới rau, còn buổi chiều thì khác.",
         "answer": {
-          "text": "Buổi chiều cả nhà hái rau nấu cơm và đóng cửa chuồng gà.",
+          "text": "Buổi chiều hái rau nấu cơm và đóng chuồng gà",
           "explanation": "Biển viết: \"Buổi chiều: hái rau nấu cơm, đóng cửa chuồng gà.\""
         }
       },
@@ -120,213 +137,157 @@
           "Chính xác, việc buổi chiều nằm ở dòng thứ ba."
         ],
         "wrong": [
-          "Mèo Bánh Bao vẫy đuôi: tìm dòng có chữ \"Buổi chiều\" nha.",
-          "Việc ấy làm vào buổi sáng cơ, {name} đọc lại xem.",
-          "Thử dò từng dòng trên tấm biển gỗ một lần nữa."
+          "Đọc lại dòng thứ ba của biển tên nhé {name}.",
+          "Buổi sáng mới tưới rau, buổi chiều làm việc khác.",
+          "Dò lại chữ \"Buổi chiều\" xem cả nhà làm gì nha."
         ]
       }
     },
     {
-      "id": "xep-do-nha-kho",
-      "title": "Xếp đồ trong nhà kho nhỏ",
-      "goTo": "Vào vườn rau tới nhà kho nhỏ, Bố đang dọn kệ",
+      "id": "quy-luat-hien-nha",
+      "title": "Quy luật bậc thang",
+      "goTo": "Đi tới hiên nhà, Bố đang sửa bậc thềm",
       "kind": "challenge",
-      "mechanic": "classify",
+      "mechanic": "logic",
       "target": "nha-bo",
-      "skill": "tu-ngu",
-      "prompt": "Bố nhờ {name} xếp đồ lên hai kệ: đồ để làm vườn một kệ, đồ để nấu ăn một kệ.",
-      "groups": [
-        {
-          "id": "lam-vuon",
-          "label": "Đồ làm vườn"
-        },
-        {
-          "id": "nau-an",
-          "label": "Đồ nấu ăn"
-        }
+      "skill": "logic",
+      "logicType": "pattern",
+      "prompt": "Quy luật bậc thang trước hiên nhà: 5, 10, 15, 20, ... Bậc tiếp theo mang số mấy?",
+      "elements": [
+        { "id": "e1", "label": "5" },
+        { "id": "e2", "label": "10" },
+        { "id": "e3", "label": "15" },
+        { "id": "e4", "label": "20" },
+        { "id": "e5", "label": "?" }
       ],
-      "items": [
-        {
-          "id": "xeng",
-          "label": "cái xẻng"
-        },
-        {
-          "id": "cao-co",
-          "label": "cái cào cỏ"
-        },
-        {
-          "id": "binh-tuoi",
-          "label": "bình tưới"
-        },
-        {
-          "id": "noi-com",
-          "label": "nồi cơm"
-        },
-        {
-          "id": "chao-ran",
-          "label": "chảo rán"
-        },
-        {
-          "id": "muoi-canh",
-          "label": "muôi múc canh"
-        }
+      "choices": [
+        { "id": "c1", "text": "21" },
+        { "id": "c2", "text": "22" },
+        { "id": "c3", "text": "25" },
+        { "id": "c4", "text": "30" }
       ],
       "answer": {
-        "assignment": {
-          "xeng": "lam-vuon",
-          "cao-co": "lam-vuon",
-          "binh-tuoi": "lam-vuon",
-          "noi-com": "nau-an",
-          "chao-ran": "nau-an",
-          "muoi-canh": "nau-an"
-        }
+        "choice": "c3"
       },
       "support": {
         "guide": [
-          "Đọc tên từng đồ vật.",
-          "Đồ dùng ngoài vườn để đào, cào, tưới thì là đồ làm vườn.",
-          "Đồ dùng trong bếp để nấu, rán, múc thì là đồ nấu ăn."
+          "Mỗi bậc số tăng thêm 5 đơn vị.",
+          "20 + 5 = 25.",
+          "Chọn số 25 trên màn hình."
         ],
-        "hint": "Bình tưới dùng cho rau, còn chảo rán dùng trong bếp.",
+        "hint": "Đếm thêm 5 từ 20 nhé.",
         "answer": {
-          "text": "Đồ làm vườn: cái xẻng, cái cào cỏ, bình tưới. Đồ nấu ăn: nồi cơm, chảo rán, muôi múc canh.",
-          "explanation": "Xẻng, cào cỏ, bình tưới dùng để chăm vườn; nồi cơm, chảo rán, muôi múc canh dùng để nấu ăn."
+          "text": "25",
+          "explanation": "Dãy số đếm thêm 5: 5, 10, 15, 20, 25."
         }
       },
       "feedback": {
         "right": [
-          "Hai kệ ngăn nắp rồi, Bố giơ ngón cái khen {name}!",
-          "Đồ vườn một bên, đồ bếp một bên, gọn như nhà kho mới.",
-          "{name} xếp đồ nhanh hơn cả Bố đấy."
+          "Chính xác! Bậc số 25 sáng bừng đón chân bé bước lên!",
+          "{name} đếm cách năm quá điêu luyện!",
+          "Bố vỗ tay khen ngợi bé yêu thật tinh mắt!"
         ],
         "wrong": [
-          "Bố gãi đầu: món này dùng ngoài vườn hay trong bếp nhỉ?",
-          "Có một món đứng nhầm kệ rồi, {name} nhìn lại nha.",
-          "Nghĩ xem món ấy dùng để đào đất hay để nấu cơm."
+          "Thử lấy 20 cộng thêm 5 nhé {name}.",
+          "20 cộng 5 bằng bao nhiêu nào?",
+          "Nhìn kỹ bước đếm cách 5 của các bậc thang nhé."
         ]
       }
-    },
-    {
-      "id": "so-trung-ga",
-      "title": "So số trứng gà",
-      "kind": "challenge",
-      "mechanic": "fill-blank",
-      "target": "nha-me",
-      "skill": "so-sanh-so",
-      "prompt": "Mẹ đang nhặt trứng cho bữa tối: gà mái nâu đẻ 16 quả trứng, gà mái trắng đẻ 13 quả trứng. Điền dấu thích hợp.",
-      "template": "16 {{dau}} 13",
-      "blanks": [
-        {
-          "id": "dau",
-          "options": [
-            {
-              "id": "lon",
-              "text": ">"
-            },
-            {
-              "id": "be",
-              "text": "<"
-            },
-            {
-              "id": "bang",
-              "text": "="
-            }
-          ]
-        }
-      ],
-      "answer": {
-        "fills": {
-          "dau": "lon"
-        }
-      },
-      "support": {
-        "guide": [
-          "Hai số đều có 1 chục.",
-          "So tiếp chữ số hàng đơn vị: 6 và 3.",
-          "Số có hàng đơn vị lớn hơn thì lớn hơn."
-        ],
-        "hint": "Hàng chục bằng nhau thì nhìn sang hàng đơn vị.",
-        "answer": {
-          "text": "16 > 13",
-          "explanation": "Cùng 1 chục, 6 đơn vị nhiều hơn 3 đơn vị nên 16 > 13: gà mái nâu đẻ nhiều trứng hơn."
-        }
-      },
-      "feedback": {
-        "right": [
-          "Mười sáu lớn hơn mười ba, gà mái nâu thắng rồi!",
-          "Mẹ xoa đầu {name}: con so số giỏi quá.",
-          "Đúng rồi, ổ rơm nhiều trứng hơn chuồng nhỏ."
-        ],
-        "wrong": [
-          "Mẹ cười hiền: hai số cùng một chục, con nhìn hàng đơn vị nhé.",
-          "Sáu quả với ba quả, bên nào nhiều hơn nhỉ?",
-          "Đếm lại hàng đơn vị của từng số rồi chọn dấu nha."
-        ]
-      },
-      "goTo": "Ra chuồng gà sau nhà, Mẹ đang nhặt trứng"
     },
     {
       "id": "chon-mon-an-toi",
       "title": "Chọn món cho bữa tối",
       "goTo": "Nói chuyện với Mẹ ở chuồng gà",
-      "kind": "dialogue",
+      "kind": "decision",
       "target": "nha-me",
-      "lines": [
-        {
-          "speaker": "Mẹ",
-          "text": "Cảm ơn {name}, nhờ con mà mẹ biết ổ rơm của gà mái nâu nhiều trứng hơn."
-        },
-        {
-          "speaker": "Mẹ",
-          "text": "Tối nay con muốn mẹ làm trứng chiên rau cải hay trứng hấp thịt? Bố đang câu cá ngoài cầu tàu nữa đấy."
-        }
-      ],
+      "speaker": "Mẹ",
+      "prompt": "Tối nay {name} muốn mẹ nấu món gì cho cả nhà cùng thưởng thức?",
       "choices": [
         {
-          "text": "Con thích trứng chiên rau cải ạ!",
-          "reply": "Được, con ra cầu tàu xem Bố câu được bao nhiêu cá nhé."
+          "id": "opt-fried",
+          "text": "Trứng chiên rau cải giòn thơm",
+          "consequence": "Mẹ cười tươi hứa sẽ chiên đĩa trứng vàng ruộm thơm phức!"
         },
         {
-          "text": "Con muốn trứng hấp thịt ạ!",
-          "reply": "Mẹ hấp cho con một bát thật to. Giờ con ra cầu tàu đếm cá với Bố nhé."
+          "id": "opt-steam",
+          "text": "Trứng hấp thịt bùi béo",
+          "consequence": "Mẹ hào hứng chuẩn bị xửng hấp nóng hổi cho cả gia đình!"
         }
       ]
     },
     {
-      "id": "dem-ca-cau-tau",
-      "title": "Đếm cá ở cầu tàu",
-      "goTo": "Ra cầu tàu bên ao, chiếc xô cá của Bố để ở đó",
-      "kind": "riddle",
-      "target": "nha-xo-ca",
-      "skill": "phep-cong",
-      "question": "Sáng nay Bố câu được 8 con cá rô, chiều câu thêm 5 con nữa. Trong xô có tất cả bao nhiêu con cá? (8 + 5 = ?)",
-      "answer": {
-        "value": 13
-      },
-      "support": {
-        "guide": [
-          "Lấy 8 con cá buổi sáng.",
-          "Tách 5 thành 2 và 3: 8 + 2 = 10.",
-          "Cộng tiếp 3 con còn lại."
-        ],
-        "hint": "8 + 2 = 10, rồi 10 + 3.",
-        "answer": {
-          "text": "13",
-          "explanation": "8 + 5 = 13. Trong xô có tất cả 13 con cá."
+      "id": "boss-banh-bao",
+      "title": "Đại chiến Đố vui Mèo Bánh Bao",
+      "kind": "boss",
+      "target": "meo-banh-bao",
+      "bossId": "boss-banh-bao",
+      "bossName": "Mèo Đại Vương Bánh Bao",
+      "introDialogue": "Meo meo! Ta có 5 câu đố vui gia đình, mỗi câu đúng trừ 100 HP của ta!",
+      "winDialogue": "Tuyệt vời ông mặt trời! Bé đã chinh phục hoàn toàn 500 HP của ta!",
+      "maxHp": 500,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "b1",
+          "skill": "phep-cong",
+          "prompt": "Trong bếp có 9 quả trứng gà, Mẹ nhặt thêm 7 quả nữa. Có tất cả bao nhiêu quả trứng? (9 + 7 = ?)",
+          "damage": 100,
+          "choices": [
+            { "id": "a", "text": "15 quả" },
+            { "id": "b", "text": "16 quả" },
+            { "id": "c", "text": "17 quả" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "b2",
+          "skill": "phep-tru",
+          "prompt": "Trong xô có 18 con cá rô, Mẹ mang 6 con đi nấu canh. Còn lại bao nhiêu con cá? (18 - 6 = ?)",
+          "damage": 100,
+          "choices": [
+            { "id": "a", "text": "11 con" },
+            { "id": "b", "text": "12 con" },
+            { "id": "c", "text": "13 con" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "b3",
+          "skill": "so-sanh-so",
+          "prompt": "So sánh hai giỏ hoa quả: Giỏ A có 65 quả dâu, giỏ B có 56 quả dâu. Giỏ nào nhiều hơn?",
+          "damage": 100,
+          "choices": [
+            { "id": "a", "text": "Giỏ A nhiều hơn" },
+            { "id": "b", "text": "Giỏ B nhiều hơn" },
+            { "id": "c", "text": "Hai giỏ bằng nhau" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "b4",
+          "skill": "logic",
+          "prompt": "Dãy số lùi đếm bước: 20, 18, 16, 14, ... Số tiếp theo là số mấy?",
+          "damage": 100,
+          "choices": [
+            { "id": "a", "text": "11" },
+            { "id": "b", "text": "12" },
+            { "id": "c", "text": "13" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "b5",
+          "skill": "doc-hieu",
+          "prompt": "Chiều nay cả nhà cùng quây quần bên nhau chuẩn bị bữa gì?",
+          "damage": 100,
+          "choices": [
+            { "id": "a", "text": "Bữa cơm chiều gia đình" },
+            { "id": "b", "text": "Bữa tiệc nửa đêm" },
+            { "id": "c", "text": "Bữa điểm tâm sáng sớm" }
+          ],
+          "answer": { "choice": "a" }
         }
-      },
-      "feedback": {
-        "right": [
-          "Mười ba con cá rô, đủ nấu một nồi canh chua!",
-          "{name} cộng qua mười khéo như người câu cá lâu năm.",
-          "Đúng rồi, xô cá đầy ắp nhé."
-        ],
-        "wrong": [
-          "Cá quẫy nước: thử làm cho tròn chục trước nha {name}.",
-          "Lấy 2 con bù cho đủ 10 rồi đếm tiếp xem.",
-          "Đếm lại từ 8, mỗi lần thêm một con cá."
-        ]
-      }
+      ]
     },
     {
       "id": "bua-com-chieu",
@@ -341,6 +302,7 @@
       "title": "Chuẩn bị cho ngày mai",
       "kind": "next",
       "trigger": "auto",
+      "target": "nha-me",
       "text": "Ăn xong, {name} lên cầu thang tới góc học tập: tấm bảng trên bàn học là thời khóa biểu, còn tấm lịch cạnh tủ quần áo nói ngày mai mặc đồng phục nào."
     }
   ],
