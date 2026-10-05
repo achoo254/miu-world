@@ -1,6 +1,6 @@
 {
   "title": "Quyền riêng tư của Miu World",
-  "updatedOn": "2026-10-05",
+  "updatedOn": "2026-10-06",
   "consentVersion": "v3",
   "contactEmail": "quocdat254@gmail.com",
   "sections": [
@@ -32,6 +32,7 @@
       "paragraphs": [
         "Tên thật, tuổi, ảnh, giọng nói hay vị trí của người chơi. Tên người chơi và tên nhân vật được chọn từ danh sách. Chữ tự gõ chỉ có ở thời khóa biểu và lịch mặc đồng phục; trường và lớp chỉ được lưu nếu bạn tự ghi vào đó, và bạn có thể xóa bất cứ lúc nào.",
         "Ở bài tập nói, người chơi có thể bấm \"Ghi âm giọng con\" để thu giọng mình và nghe lại. Trình duyệt sẽ hỏi quyền dùng micro. Bản ghi chỉ nằm trong trình duyệt trên máy, không gửi lên máy chủ hay cho ai, không nhận dạng giọng nói, và bị xóa ngay khi đóng bài hoặc ghi lại.",
+        "Nói chuyện bằng giọng: trò chơi không ghi âm, không lưu giọng nói ở đâu cả, và không chuyển lời nói thành chữ.",
         "Không có quảng cáo, không có công cụ phân tích hay theo dõi của bên thứ ba. Trang chỉ dùng một cookie đăng nhập, cần để giữ bạn đăng nhập; không có cookie quảng cáo."
       ]
     },
@@ -39,7 +40,8 @@
       "heading": "Khi chơi online",
       "paragraphs": [
         "Người chơi khác cùng bản đồ thấy: tên nhân vật, loài, trang phục, thú cưng, chỗ đứng và động tác trong phòng, cùng lời vẫy tay và câu có sẵn bạn chọn. Họ không thấy tên hiển thị của người chơi, email hay mã tài khoản: mỗi người chơi chỉ có một mã công khai, đổi mới mỗi lần máy chủ khởi động lại.",
-        "Không có ô chat tự gõ hay giọng nói: chỉ có câu chọn sẵn, và các câu đó không được lưu lại. Chỗ đứng trong phòng được gửi cho người cùng phòng lúc đang chơi, và cho bạn bè hay bạn cùng tổ đội khi họ chọn \"Đến chỗ bạn\"; không lưu lại (chỗ đứng lần cuối trên mỗi bản đồ ở mục trên là để chính bạn chơi tiếp). Tổ đội chỉ nằm trong bộ nhớ máy chủ, mất khi máy chủ khởi động lại.",
+        "Không có ô chat tự gõ: chỉ có câu chọn sẵn, và các câu đó không được lưu lại. Chỗ đứng trong phòng được gửi cho người cùng phòng lúc đang chơi, và cho bạn bè hay bạn cùng tổ đội khi họ chọn \"Đến chỗ bạn\"; không lưu lại (chỗ đứng lần cuối trên mỗi bản đồ ở mục trên là để chính bạn chơi tiếp). Tổ đội chỉ nằm trong bộ nhớ máy chủ, mất khi máy chủ khởi động lại.",
+        "Nói chuyện bằng giọng: trong tổ đội, ai bấm nút micro thì vào cuộc trò chuyện của đội; ngoài tổ đội chỉ gọi được một người trong danh sách bạn bè đang chơi, và người đó phải bấm nghe. Không bao giờ nói chuyện với người lạ hay người đứng gần mà không phải bạn; người đã chặn nhau không nghe được nhau. Micro chỉ bật khi người chơi bấm nút, và tự tắt khi rời đội, ẩn trang hay kết thúc cuộc gọi. Giọng nói đi thẳng giữa trình duyệt của những người đang trò chuyện, đã mã hóa; khi hai máy không nối thẳng được thì đi qua trạm chuyển tiếp của Cloudflare, vẫn mã hóa nên trạm không nghe được. Khi nối thẳng, trình duyệt của những người đang trò chuyện biết địa chỉ IP của nhau, như mọi cuộc gọi trên web. Máy chủ của chúng tôi chỉ chuyển các tin thiết lập kết nối và tín hiệu \"đang nói\" (để hiện vòng sáng), không nhận giọng nói. Bạn máy trong đội nói bằng giọng đọc tổng hợp ngay trên máy của bạn. Tắt \"Nói chuyện bằng giọng\" trong Cài đặt thì không có nút micro và cuộc gọi tới được từ chối.",
         "Kết bạn: chạm vào một người chơi cùng phòng (hoặc chọn trong danh sách người cùng phòng) rồi chọn \"Kết bạn\"; người được mời tự đồng ý hay từ chối, ngay hoặc sau trong danh sách bạn bè. Bạn bè thấy nhau đang online hay không, đang ở bản đồ nào, và có thể đi tới chỗ nhau. Mỗi người chơi có tối đa 50 bạn; gửi quá nhiều lời mời thì phải chờ một lúc.",
         "Nhà của mỗi người chơi là phòng riêng: chỉ chủ nhà, bạn cùng tổ đội và bạn bè vào được. Người đã chặn nhau không thấy nhau ở bất cứ đâu, không kết bạn hay vào nhà nhau được; chặn một người bạn thì hai người không còn là bạn.",
         "Bạn máy là nhân vật do trò chơi điều khiển, luôn gắn nhãn \"Bạn máy\", kể cả trong danh sách bạn. Bạn máy có thể nhận lời kết bạn, tự gửi lời mời, và hay ghé chỗ bạn của nó hơn.",
@@ -51,7 +53,7 @@
       "heading": "Ai khác tham gia",
       "paragraphs": [
         "Google: chỉ lúc chủ tài khoản đăng nhập. Google cho chúng tôi biết email đã xác minh và mã tài khoản; chúng tôi không gửi gì về người chơi cho Google.",
-        "Cloudflare: chuyển tiếp và bảo vệ kết nối giữa trình duyệt và máy chủ của chúng tôi, nên thấy địa chỉ IP và trang được mở, như với mọi trang web dùng dịch vụ này.",
+        "Cloudflare: chuyển tiếp và bảo vệ kết nối giữa trình duyệt và máy chủ của chúng tôi, nên thấy địa chỉ IP và trang được mở, như với mọi trang web dùng dịch vụ này. Khi nói chuyện bằng giọng, máy chủ STUN của Cloudflare giúp hai trình duyệt tìm đường nối với nhau (thấy địa chỉ IP), và trạm chuyển tiếp TURN của Cloudflare chuyển giọng nói đã mã hóa khi hai máy không nối thẳng được; Cloudflare không nghe được và không lưu giọng nói.",
         "Ngoài hai dịch vụ trên, chúng tôi không chia sẻ dữ liệu cho ai, trừ những gì người chơi khác thấy khi bạn chơi online (mục Khi chơi online)."
       ]
     },
@@ -66,7 +68,7 @@
       "heading": "Quyền của bạn",
       "paragraphs": [
         "Xem và tải dữ liệu: trong mục Quản lý tài khoản, bấm \"Tải dữ liệu của tôi\" để nhận một tệp JSON chứa toàn bộ những gì chúng tôi lưu về tài khoản và các người chơi (trừ mã PIN đã mã hóa), kể cả thời gian chơi theo tuần, thư, cài đặt bạn máy, bạn bè, lời mời kết bạn, người đã chặn và báo cáo đã gửi. Người chơi khác trong tệp chỉ hiện bằng tên nhân vật. Chủ tài khoản cũng xem được tiến bộ học của từng người chơi ngay trong mục này.",
-        "Sửa: đổi tên hiển thị của người chơi trong mục Quản lý tài khoản; đổi tên và trang phục nhân vật, sửa hoặc xóa thời khóa biểu, lịch mặc đồng phục, cách trang trí nhà và đồ vật bật trong nhà ngay trong trò chơi; bật hay tắt bạn máy trong Cài đặt; xóa bạn, hủy lời mời và bỏ chặn trong danh sách bạn bè.",
+        "Sửa: đổi tên hiển thị của người chơi trong mục Quản lý tài khoản; đổi tên và trang phục nhân vật, sửa hoặc xóa thời khóa biểu, lịch mặc đồng phục, cách trang trí nhà và đồ vật bật trong nhà ngay trong trò chơi; bật hay tắt bạn máy và nói chuyện bằng giọng trong Cài đặt; xóa bạn, hủy lời mời và bỏ chặn trong danh sách bạn bè.",
         "Xóa: xóa từng người chơi phụ, hoặc bấm \"Xóa tài khoản\" để xóa tất cả. Nếu tài khoản có đặt mã PIN thì cần nhập mã trước.",
         "Rút lại đồng ý: xóa tài khoản là cách rút lại đồng ý; chúng tôi không giữ lại gì để tiếp tục dùng."
       ]
@@ -75,7 +77,7 @@
       "heading": "Về chính sách này",
       "paragraphs": [
         "Miu World là dự án miễn phí, mã nguồn mở tại github.com/achoo254/miu-world: ai cũng xem được phần mềm thực sự làm gì với dữ liệu. Dự án không có bộ phận pháp chế. Chính sách này do chúng tôi tự soạn, viết đúng những gì phần mềm đang làm, và chưa được luật sư xem. Nếu thấy điều gì chưa đúng hoặc chưa rõ, hãy báo cho chúng tôi.",
-        "Khi chúng tôi thay đổi cách thu thập dữ liệu, trang này được cập nhật trước. Thay đổi lớn còn được đưa vào lời đồng ý, và chủ tài khoản được hỏi đồng ý lại trước khi chơi tiếp. Bạn bè, chặn, báo cáo và thời gian chơi theo tuần (thêm tháng 10/2026) đã ghi ở trang này và sẽ được đưa vào lời đồng ý ở lần cập nhật tới."
+        "Khi chúng tôi thay đổi cách thu thập dữ liệu, trang này được cập nhật trước. Thay đổi lớn còn được đưa vào lời đồng ý, và chủ tài khoản được hỏi đồng ý lại trước khi chơi tiếp. Bạn bè, chặn, báo cáo, thời gian chơi theo tuần và nói chuyện bằng giọng (thêm tháng 10/2026) đã ghi ở trang này và sẽ được đưa vào lời đồng ý ở lần cập nhật tới."
       ]
     }
   ]
