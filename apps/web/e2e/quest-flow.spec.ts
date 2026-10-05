@@ -119,7 +119,10 @@ test('finishing chapter 1 without seeing an answer: 100 XP, Level Up to 2, the L
   await expect(page.locator('[data-id="reward-item-la-than"]')).toContainText('Lá thần');
   await page.locator('[data-id="completion-next"]').click();
   await expect(page.getByRole('dialog', { name: 'Lên cấp!' })).toContainText('Lv.1 → Lv.2');
-  // Chapter 1 opens no other quest (every textbook lesson is open from the start): Level Up is the last screen.
+  // Then the skills that went up a level; chapter 1 opens no other quest (every textbook lesson is open from
+  // the start), so that is the last screen.
+  await page.locator('[data-id="completion-next"]').click();
+  await expect(page.locator('[data-id="skill-up"]')).toBeVisible();
   await expect(page.locator('[data-id="completion-next"]')).toHaveCount(0);
   await expect(page.locator('body')).not.toContainText('Kim cương');
   await page.locator('[data-id="completion-map"]').click();

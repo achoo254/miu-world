@@ -157,6 +157,8 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the LÃ
   await tap(page, '[data-id="challenge-check"]');
   await expect(page.locator('[data-id="challenge"]')).toHaveCount(0);
   await copied(page);
+  // Back beside the beaver: the fruit trees by the stream are interactable too, so Interact must name him.
+  await goTo(page, 'animal-beaver');
   await tap(page, '[data-id="hud-interact"]');
   await tap(page, '[data-id="choice-b"]');
   await shot(page, '07-quiz');
@@ -202,6 +204,9 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the LÃ
   await tap(page, '[data-id="completion-next"]');
   await expect(page.locator('[data-id="level-up"]')).toContainText('Lv.1 â†’ Lv.2');
   await shot(page, '11-level-up');
+  // Then the skills that went up a level, the last screen.
+  await tap(page, '[data-id="completion-next"]');
+  await expect(page.locator('[data-id="skill-up"]')).toBeVisible();
   // Level Up is the last screen: chapter 1 opens no other quest (the textbook lessons are open from the start).
   await tap(page, '[data-id="completion-map"]');
   await expect(page.locator('[data-id="region-quest-forest-ch1"]')).toHaveAttribute('data-state', 'completed');
