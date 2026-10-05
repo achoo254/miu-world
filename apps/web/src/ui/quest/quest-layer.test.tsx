@@ -157,24 +157,24 @@ describe('quest controller', () => {
     expect(screen.getByRole('status').textContent).toContain('Chiếc hộp');
   });
 
-  it('never says the same "not now" line twice in a row', () => {
+  it('never says the same "not now" line twice in a row', async () => {
     const { touch } = setup(async () => json(response([])));
     const said: string[] = [];
     for (let i = 0; i < 8; i += 1) {
-      touch('clue-box', 'Chiếc hộp', 'object');
+      await touch('clue-box', 'Chiếc hộp', 'object');
       said.push(screen.getByRole('status').textContent ?? '');
     }
     for (let i = 1; i < said.length; i += 1) expect(said[i]).not.toBe(said[i - 1]);
   });
 
-  it('leaves the timetable board and the uniform calendar at home to their own screen: no quest line, no call', () => {
+  it('leaves the timetable board and the uniform calendar at home to their own screen: no quest line, no call', async () => {
     const posts: string[] = [];
     const { touch } = setup(async (url) => {
       posts.push(url);
       return json(response([]));
     });
-    touch('nha-thoi-khoa-bieu', 'Thời khóa biểu', 'object');
-    touch('nha-lich-dong-phuc', 'Lịch đồng phục', 'object');
+    await touch('nha-thoi-khoa-bieu', 'Thời khóa biểu', 'object');
+    await touch('nha-lich-dong-phuc', 'Lịch đồng phục', 'object');
     expect(screen.queryByRole('status')).toBeNull();
     expect(posts).toEqual([]);
   });
@@ -187,7 +187,7 @@ describe('quest controller', () => {
       if (!online) throw new TypeError('Failed to fetch');
       return json(response(['meet-parrot'], {}, 'Cảm ơn {name} nhiều nhé!'));
     });
-    touch('parrot-guide', 'Vẹt', 'npc');
+    await touch('parrot-guide', 'Vẹt', 'npc');
     fireEvent.click(screen.getByRole('button', { name: 'Tiếp tục' }));
     expect(await screen.findByRole('dialog', { name: 'Mất kết nối mạng' })).toBeTruthy();
     online = true;

@@ -90,9 +90,9 @@ describe('Home', () => {
     expect(screen.getByRole('button', { name: /Đảo bí ẩn/ }).textContent).toBe('Đảo bí ẩnKhám phá');
     expect(screen.getByRole('button', { name: /Nhà của Mochi/ }).textContent).toBe('Nhà của MochiNhà · Lịch học');
     expect(document.querySelector('.world-marker--locked')).toBeNull();
-    // The rail of the mock, without the MVP's missing pieces (events, diamonds, streak).
+    // The rail of the mock, without the pieces not built yet (diamonds, streak); the olympiad practice event is.
     for (const name of ['Về nhà', 'Nhiệm vụ', 'Bản đồ', 'Ba lô']) expect(screen.getByRole('link', { name })).toBeTruthy();
-    expect(document.body.textContent).not.toMatch(/Kim cương|chuỗi ngày|Sự kiện|TIMO/i);
+    expect(document.body.textContent).not.toMatch(/Kim cương|chuỗi ngày/i);
   });
 
   it('"Về nhà" goes straight into the home\'s lesson, else to the home region\'s screen', async () => {
