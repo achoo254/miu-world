@@ -1,9 +1,9 @@
-import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { AchievementDto } from '@miu/schema/achievement';
 import type { CharacterDto } from '@miu/schema/game';
-import type { JourneyResponse } from '@miu/schema/journey';
+import { JOURNEY_TABS, type JourneyResponse } from '@miu/schema/journey';
 import { PROGRESS, questList } from '../player/test-fixtures';
 import { AchievementsScreen } from './achievements-screen';
 import { JourneyScreen } from './journey-screen';
@@ -35,6 +35,13 @@ const JOURNEY: JourneyResponse = {
     event({ kind: 'quest', ref: 'forest-ch1', label: 'Lá thần của {name}', xp: 80, coin: 20 }),
   ],
 };
+
+/** The server's answer for a tab: that tab's events only. */
+function journeyFor(url: string): JourneyResponse {
+  const tab = new URL(url, 'http://localhost').searchParams.get('tab');
+  const kinds: readonly string[] | null = tab === 'quests' || tab === 'items' || tab === 'growth' ? JOURNEY_TABS[tab] : null;
+  return { ...JOURNEY, events: JOURNEY.events.filter((e) => !kinds || kinds.includes(e.kind)) };
+}
 
 const achievement = (over: Partial<AchievementDto>): AchievementDto => ({
   id: 'bai-hoc-dau-tien',
@@ -70,8 +77,8 @@ function stubServer(extra: (url: string, init?: RequestInit) => unknown = () => 
           ? PROGRESS
           : url === '/api/quests'
             ? questList(1)
-            : url === '/api/journey'
-              ? JOURNEY
+            : url.startsWith('/api/journey')
+              ? journeyFor(url)
               : url === '/api/achievements'
                 ? { achievements: ACHIEVEMENTS }
                 : null);
@@ -107,10 +114,11 @@ describe('journey screen', () => {
   it('filters the timeline by tab', async () => {
     stubServer();
     renderAt(<JourneyScreen />);
+    const rows = () => [...document.querySelectorAll('.journey-event')].map((el) => el.getAttribute('data-id'));
     fireEvent.click(await screen.findByRole('tab', { name: 'Phát triển' }));
-    expect([...document.querySelectorAll('.journey-event')].map((el) => el.getAttribute('data-id'))).toEqual(['journey-event-skill-up', 'journey-event-level-up']);
+    await waitFor(() => expect(rows()).toEqual(['journey-event-skill-up', 'journey-event-level-up']));
     fireEvent.click(screen.getByRole('tab', { name: 'Nhiệm vụ' }));
-    expect([...document.querySelectorAll('.journey-event')].map((el) => el.getAttribute('data-id'))).toEqual(['journey-event-quest']);
+    await waitFor(() => expect(rows()).toEqual(['journey-event-quest']));
   });
 
   it('says what to do when nothing has happened yet, and offers a retry when the server fails', async () => {
@@ -141,23 +149,29 @@ describe('achievements screen', () => {
   });
 
   it('claims with the id only and celebrates with what the server paid', async () => {
-    const fetchMock = stubServer((url, init) =>
-      url === '/api/achievements/bai-hoc-dau-tien/claim' && init?.method === 'POST'
-        ? { achievement: achievement({ claimed: true }), granted: true, levelBefore: 1, levelAfter: 2, progress: { ...PROGRESS, coins: 120 } }
-        : undefined,
-    );
+    let claimed = false;
+    const fetchMock = stubServer((url, init) => {
+      if (url === '/api/achievements/bai-hoc-dau-tien/claim' && init?.method === 'POST') {
+        claimed = true;
+        return { achievement: achievement({ claimed: true }), granted: true, levelBefore: 1, levelAfter: 2, progress: { ...PROGRESS, coins: 120 } };
+      }
+      if (url === '/api/achievements' && claimed) return { achievements: ACHIEVEMENTS.map((a) => (a.id === 'bai-hoc-dau-tien' ? { ...a, claimed: true } : a)) };
+      return undefined;
+    });
     renderAt(<AchievementsScreen />);
     await screen.findByText('1 thành tích chờ nhận thưởng');
     const claimButton = document.querySelector('[data-id="achievement-claim"]');
     if (!claimButton) throw new Error('the ready achievement offers its claim');
     fireEvent.click(claimButton);
     const card = await screen.findByRole('dialog', { name: 'Chúc mừng!' });
-    expect(within(card).getByText('Mochi đã hoàn thành thành tích')).toBeTruthy();
+    expect(within(card).getByText(/Mochi/)).toBeTruthy();
     expect(within(card).getByText('Lên cấp Lv.2!')).toBeTruthy();
     const claim = fetchMock.mock.calls.find(([url]) => url === '/api/achievements/bai-hoc-dau-tien/claim');
     expect(claim?.[1]?.body).toBeUndefined();
     fireEvent.click(within(card).getByRole('button', { name: 'Tuyệt quá!' }));
     expect(screen.queryByRole('dialog')).toBeNull();
     expect(document.querySelector('[data-id="achievement-bai-hoc-dau-tien"]')?.getAttribute('data-state')).toBe('claimed');
+    // The claim's pay may reach other achievements: the list is read again.
+    await waitFor(() => expect(fetchMock.mock.calls.filter(([url]) => url === '/api/achievements')).toHaveLength(2));
   });
 });

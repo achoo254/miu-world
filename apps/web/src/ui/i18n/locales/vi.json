@@ -630,7 +630,6 @@
   "knowledgeGate.needs": "Muốn mở {target}, {name} cần kỹ năng:",
   "knowledgeGate.now": "Hiện tại: Lv.{level}",
   "knowledgeGate.treasure": "Kho báu bên trong",
-  "knowledgeGate.short": "{name} luyện thêm {skill} một chút là mở được cổng này. Nhiệm vụ vẫn đi tiếp được, kho báu chờ {name} quay lại!",
   "knowledgeGate.practice": "Đến luyện tập {skill}",
   "knowledgeGate.goOn": "Đi tiếp, để sau mở",
   "journey.title": "Hành trình của {name}",
@@ -673,7 +672,6 @@
   "achievements.tab.su-kien": "Sự kiện",
   "achievements.rewards": "Phần thưởng",
   "achievements.notYet": "Chưa hoàn thành",
-  "achievements.done": "{name} đã hoàn thành thành tích",
   "achievements.ready": "{count} thành tích chờ nhận thưởng",
   "achievements.choose": "Chọn một thành tích để xem chi tiết.",
   "achievements.claimFailed": "Chưa nhận được thưởng, thử lại nhé.",
@@ -686,5 +684,17 @@
     "Kỹ năng của {name} đủ mạnh rồi: kho báu lấp lánh +{coin} Xu, +{xp} XP!",
     "Cạch! Ngăn bí mật bật mở, trong đó có +{coin} Xu và +{xp} XP cho {name}.",
     "Tri thức là chìa khóa! {name} mở cổng và nhận +{coin} Xu, +{xp} XP."
+  ],
+  "achievements.doneLines": [
+    "{name} đã hoàn thành thành tích",
+    "Tuyệt vời! {name} vừa chinh phục thành tích",
+    "Một huy chương mới cho {name}: thành tích",
+    "{name} làm được rồi! Thành tích"
+  ],
+  "knowledgeGate.shortLines": [
+    "{name} luyện thêm {skill} một chút là mở được cổng này. Nhiệm vụ vẫn đi tiếp; lần chơi lại sau, kho báu chờ {name}!",
+    "Cổng còn đóng: {skill} của {name} cần thêm một bậc. Cứ đi tiếp nhé, lượt chơi sau quay lại mở kho báu!",
+    "Chỉ thiếu chút {skill} thôi! {name} đi tiếp bài học, luyện thêm rồi chơi lại để mở cổng.",
+    "Kho báu sau cổng này dành cho người giỏi {skill}. {name} luyện thêm, lần chơi lại sẽ mở được!"
   ]
 }

@@ -51,7 +51,7 @@ export interface QuestController {
   /** Closes the gate's panel without going on (she leaves to practise). */
   closeSkillCheck: () => void;
   /** Gates the last step opened (their treasure, paid by the server), for the banner over the game. */
-  gatesOpened: NonNullable<StepCompleteResponse['gates']> | null;
+  gatesOpened: { seq: number; gates: NonNullable<StepCompleteResponse['gates']> } | null;
   clearGatesOpened: () => void;
 }
 
@@ -82,7 +82,8 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   const [retry, setRetry] = useState<(() => Promise<void>) | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [skillCheck, setSkillCheck] = useState<SkillCheckResult | null>(null);
-  const [gatesOpened, setGatesOpened] = useState<NonNullable<StepCompleteResponse['gates']> | null>(null);
+  // `seq` tells two responses apart: a gate opened while the banner shows joins it and the banner starts again.
+  const [gatesOpened, setGatesOpened] = useState<{ seq: number; gates: NonNullable<StepCompleteResponse['gates']> } | null>(null);
   // What the gate's panel goes on with, and the gates already shown this visit (not asked again each tap).
   const afterSkillCheck = useRef<(() => void) | null>(null);
   const gatesShown = useRef(new Set<string>());
@@ -170,7 +171,8 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
         cover('retry', false);
         latest.current.onResponse(response);
         syncWorld(active.quest, response.quest);
-        if (response.gates && response.gates.length > 0) setGatesOpened(response.gates);
+        const opened = response.gates ?? [];
+        if (opened.length > 0) setGatesOpened((was) => ({ seq: (was?.seq ?? 0) + 1, gates: [...(was?.gates ?? []), ...opened] }));
         // Only the call that finished the quest carries a completion; a repeat grants nothing new.
         if (response.completion && response.reward && !response.repeated) {
           const done: FinishedQuest = { completion: response.completion, reward: response.reward };

@@ -5,7 +5,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { ACHIEVEMENT_CATEGORIES, type AchievementCategory, type AchievementClaimResponse, type AchievementDto } from '@miu/schema/achievement';
-import { mapBoth, same, type TextKey } from '../i18n/i18n';
+import { freshPicker, type FreshPicker } from '@miu/quest/pick-fresh';
+import { format, linesOf, mapBoth, same, type Bilingual, type TextKey } from '../i18n/i18n';
 import { Bi, T, useT } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
@@ -97,9 +98,17 @@ function AchievementCard({ achievement, player, busy, onClaim }: { achievement: 
   );
 }
 
+let doneLines: FreshPicker<Bilingual> | null = null;
+
 /** "Chúc mừng!": the medal, what the achievement gave, a level-up if any. */
 export function AchievementCelebration({ claim, player, onClose }: { claim: AchievementClaimResponse; player: PlayerData; onClose: () => void }) {
   const { achievement } = claim;
+  // Picked once when the card opens; the next achievement is announced with another line.
+  const [doneLine] = useState(() => {
+    doneLines ??= freshPicker(linesOf('achievements.doneLines'));
+    const line = doneLines.next();
+    return { vi: format(line.vi, { name: player.character.name }, 'vi'), en: format(line.en, { name: player.character.name }, 'en') };
+  });
   useEffect(() => {
     playCue('complete');
   }, []);
@@ -110,7 +119,7 @@ export function AchievementCelebration({ claim, player, onClose }: { claim: Achi
           <Icon name={iconOf(achievement)} size={80} />
         </span>
         <p>
-          <T k="achievements.done" params={{ name: player.character.name }} />
+          <Bi {...doneLine} />
         </p>
         <strong className="reward-level achievement-celebration-name">
           {achievement.name}
@@ -187,6 +196,8 @@ function AchievementsBody({ player, onCoins }: { player: PlayerData; onCoins: (c
     try {
       const res = await claimAchievement(achievement.id);
       list.set({ achievements: all.map((a) => (a.id === res.achievement.id ? res.achievement : a)) });
+      // What a claim pays (XP, coins, a wearable) can reach other achievements: read them all again.
+      if (res.granted) void loadAchievements().then(list.set, () => undefined);
       onCoins(res.progress.coins);
       if (res.granted) setClaimed(res);
     } catch {

@@ -29,7 +29,10 @@ describe('knowledge gate panel', () => {
     expect(screen.getByText('Lv.2')).toBeDefined();
     expect(screen.getByText('Hiện tại: Lv.1')).toBeDefined();
     expect(document.querySelector('[data-id="skill-check-treasure"]')?.textContent).toContain('+30');
-    expect(screen.getByText(/Bông luyện thêm So sánh số/)).toBeDefined();
+    // A line from the pool, in her name and the skill's.
+    const encouragement = document.querySelector('.gate-short')?.textContent ?? '';
+    expect(encouragement).toContain('Bông');
+    expect(encouragement).toContain('So sánh số');
   });
 
   it('leads to the practice quest, or goes on with the step', () => {
@@ -40,6 +43,16 @@ describe('knowledge gate panel', () => {
     expect(practice).toHaveBeenCalledWith('toan2-cd1-b01');
     fireEvent.click(screen.getByRole('button', { name: 'Đi tiếp, để sau mở' }));
     expect(goOn).toHaveBeenCalledTimes(1);
+  });
+
+  it('never says the same encouragement on two gates in a row', () => {
+    const lines: string[] = [];
+    for (let i = 0; i < 5; i += 1) {
+      render(<SkillCheckModal check={short} name="Bông" onPractice={vi.fn()} onGoOn={vi.fn()} />);
+      lines.push(document.querySelector('.gate-short')?.textContent ?? '');
+      cleanup();
+    }
+    for (let i = 1; i < lines.length; i += 1) expect(lines[i]).not.toBe(lines[i - 1]);
   });
 
   it('offers no practice button without a practice quest', () => {

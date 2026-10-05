@@ -127,7 +127,7 @@ export function QuestLayer({
           onGoOn={quest.goOnFromSkillCheck}
         />
       ) : null}
-      {quest.gatesOpened ? <GateOpenedBanner gates={quest.gatesOpened} name={data.character.name} onDone={quest.clearGatesOpened} /> : null}
+      {quest.gatesOpened ? <GateOpenedBanner key={quest.gatesOpened.seq} gates={quest.gatesOpened.gates} name={data.character.name} onDone={quest.clearGatesOpened} /> : null}
       {quest.retry ? <OfflineBanner onRetry={quest.retry} /> : null}
       {quest.toast ? <Toast message={quest.toast} onDone={quest.clearToast} /> : null}
       {quest.cheers > burstShown ? <AnswerBurst key={quest.cheers} onDone={endBurst} /> : null}

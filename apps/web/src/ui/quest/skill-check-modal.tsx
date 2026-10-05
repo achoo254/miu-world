@@ -24,12 +24,21 @@ export interface SkillCheckModalProps {
   onGoOn: () => void;
 }
 
+let shortLines: FreshPicker<Bilingual> | null = null;
+
 export function SkillCheckModal({ check, name, onPractice, onGoOn }: SkillCheckModalProps) {
   const { t } = useT();
   const skill = same(check.skillName ?? check.skill ?? '');
   const required = check.requiredLevel ?? 1;
   const current = check.currentLevel ?? 1;
   const hint = check.hintQuestId;
+  // Picked when the panel opens: a re-render keeps the line, the next gate says another.
+  const [shortLine] = useState(() => {
+    shortLines ??= freshPicker(linesOf('knowledgeGate.shortLines'));
+    const line = shortLines.next();
+    const params = { name, skill };
+    return { vi: format(line.vi, params, 'vi'), en: format(line.en, params, 'en') };
+  });
   return (
     <Modal title={<T k="knowledgeGate.title" />} onClose={onGoOn} dataId="skill-check-modal" variant="scene">
       <div className="gate-panel parchment">
@@ -59,7 +68,7 @@ export function SkillCheckModal({ check, name, onPractice, onGoOn }: SkillCheckM
           </p>
         ) : null}
         <p className="gate-short">
-          <T k="knowledgeGate.short" params={{ name, skill }} />
+          <Bi {...shortLine} />
         </p>
       </div>
       <div className="modal-actions">

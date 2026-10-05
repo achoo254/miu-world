@@ -630,7 +630,6 @@
   "knowledgeGate.needs": "To open {target}, {name} needs:",
   "knowledgeGate.now": "Now: Lv.{level}",
   "knowledgeGate.treasure": "Treasure inside",
-  "knowledgeGate.short": "A little more {skill} practice and {name} can open this gate. The quest goes on; the treasure waits for {name}!",
   "knowledgeGate.practice": "Practise {skill}",
   "knowledgeGate.goOn": "Go on, open it later",
   "journey.title": "{name}'s journey",
@@ -673,7 +672,6 @@
   "achievements.tab.su-kien": "Events",
   "achievements.rewards": "Rewards",
   "achievements.notYet": "Not done yet",
-  "achievements.done": "{name} completed the achievement",
   "achievements.ready": "{count} achievements ready to claim",
   "achievements.choose": "Pick an achievement to see more.",
   "achievements.claimFailed": "Couldn't claim the reward, please try again.",
@@ -686,5 +684,17 @@
     "{name}'s skill is strong enough: a sparkling treasure of +{coin} coins, +{xp} XP!",
     "Click! The secret drawer pops open with +{coin} coins and +{xp} XP for {name}.",
     "Knowledge is the key! {name} opens the gate and gets +{coin} coins, +{xp} XP."
+  ],
+  "achievements.doneLines": [
+    "{name} completed the achievement",
+    "Wonderful! {name} just conquered",
+    "A new medal for {name}:",
+    "{name} did it! Achievement"
+  ],
+  "knowledgeGate.shortLines": [
+    "A little more {skill} practice and {name} can open this gate. The quest goes on; on the next replay the treasure waits for {name}!",
+    "The gate stays shut: {name}'s {skill} needs one more level. Go on for now and open the treasure on a later replay!",
+    "Just a bit more {skill}! {name} goes on with the lesson, practises, then plays again to open the gate.",
+    "The treasure behind this gate is for {skill} experts. {name} practises and opens it on the next replay!"
   ]
 }
