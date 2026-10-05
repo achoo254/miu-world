@@ -109,6 +109,27 @@ const MVP_STEPS: Record<string, string> = {
   '11-level-up': 'Lên cấp Lv.1 → Lv.2 (NEW SCREEN)',
   '12-backpack': 'Ba lô có Lá thần (M3.5)',
 };
+const PET_SCENES: Record<string, string> = {
+  board: 'Bảng chăm sóc: hình và tên thú, cấp thân thiết, lời của thú, ba chỉ số, bốn tab',
+  'care-feed': 'Cho ăn: bát hiện ra, thú cúi ăn, vụn bay',
+  'care-pet': 'Vuốt ve: thú dụi vào tay, tim bay lên',
+  'care-bath': 'Tắm: chậu nước, bong bóng, rồi lắc khô',
+  'care-play': 'Ném bóng: thú chạy nhặt bóng ngậm về',
+  'care-nap': 'Ngủ trưa: đệm mang ra, Zzz',
+  'care-nap-bed': 'Ở nhà: ngủ trong ổ của nó cạnh giường bé',
+};
+const PET_NAMES: Record<string, string> = { 'meo-xam': 'Mèo xám', 'cun-con': 'Cún con', 'tho-nau': 'Thỏ nâu', 'gau-truc': 'Gấu trúc', 'ga-con': 'Gà con', 'huou-cao-co': 'Hươu cao cổ', 'voi-con': 'Voi con', 'ho-con': 'Hổ con' };
+const GEAR_NAMES: Record<string, string> = {
+  'pet-party-hat': 'mũ sinh nhật',
+  'pet-sun-hat': 'mũ rộng vành',
+  'pet-crown': 'vương miện',
+  'pet-bow-pink': 'nơ hồng',
+  'pet-bow-blue': 'nơ xanh',
+  'pet-flower': 'hoa cài',
+  'pet-collar-bell': 'vòng cổ chuông',
+  'pet-collar-medal': 'vòng cổ huy chương',
+  'pet-scarf': 'khăn quàng',
+};
 const UI_STEPS: Record<string, string> = {
   '01-login': 'Đăng nhập: chỉ nút Google',
   '03-consent': 'Đồng ý chính sách (kèm dòng phụ huynh chịu trách nhiệm)',
@@ -165,6 +186,12 @@ function renderGallery(generated: string[]): void {
   }
   for (const p of reviewPaths.filter((x) => x.includes('/review/ui/')).sort()) byId('account-flow').append(figure(p, UI_STEPS[name(p)] ?? name(p)));
   for (const p of reviewPaths.filter((x) => x.includes('/review/mvp/')).sort()) byId('mvp-flow').append(figure(p, MVP_STEPS[name(p)] ?? name(p)));
+  const sceneOrder = Object.keys(PET_SCENES);
+  for (const p of reviewPaths.filter((x) => x.includes('/review/pet-scenes/')).sort((a, b) => sceneOrder.indexOf(name(a)) - sceneOrder.indexOf(name(b)))) byId('pet-scenes').append(figure(p, PET_SCENES[name(p)] ?? name(p)));
+  for (const p of reviewPaths.filter((x) => x.includes('/review/pets/')).sort()) {
+    const [pet = '', ...gear] = name(p).split('--');
+    byId('pet-gear').append(figure(p, `${PET_NAMES[pet] ?? pet}: ${gear.map((g) => GEAR_NAMES[g] ?? g).join(', ')}`));
+  }
   const accessoryCaption = (key: string): string => {
     if (key.startsWith('miu-outfit-turn-')) return `Trọn bộ · góc ${key.split('-').pop() ?? ''}°`;
     if (key.startsWith('miu-variant-')) return `Biến thể màu: ${key.replace('miu-variant-', '').replace('-', ' + ')}`;
