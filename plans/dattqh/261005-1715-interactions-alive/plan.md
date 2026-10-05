@@ -1,7 +1,7 @@
 ---
 title: "Mọi tương tác đều có hoạt cảnh, đúng chỗ và đồ vật phản hồi"
 description: "Sửa hàng loạt tương tác với đồ vật và bối cảnh: không đơ, không đứng im, ngồi/nằm đúng chỗ, đồ vật đổi trạng thái, cửa nhà đúng chỗ, xích đu đung đưa."
-status: pending
+status: completed
 priority: P1
 tier: L
 branch: main
