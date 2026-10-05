@@ -118,7 +118,7 @@ describe('account export', () => {
     expect(child?.friendRequests.sent).toEqual([{ displayName: 'Cáo Cam', sentAt: expect.any(String) }]);
     expect(child?.blocks).toEqual([{ displayName: 'Cáo Cam', since: expect.any(String) }]);
     expect(child?.reports).toEqual([{ displayName: 'Cáo Cam', reason: 'name', map: 'trung-tam', createdAt: expect.any(String) }]);
-    expect(child?.playTime).toEqual([{ weekStart: '2026-09-28', seconds: 900 }]);
+    expect(child?.playTime).toEqual([{ weekStart: '2026-09-28', seconds: 900, updatedAt: expect.any(String) }]);
     expect(JSON.stringify(res.body)).not.toContain(other.childId);
     expect(JSON.stringify(res.body)).not.toContain(other.parent.email);
   });

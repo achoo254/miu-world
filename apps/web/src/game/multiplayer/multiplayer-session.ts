@@ -28,6 +28,9 @@ export interface MultiplayerSessionOptions {
   onRemotes?: (players: RemoteSummary[]) => void;
 }
 
+/** A planned home visit is dropped when the home map does not load within this long (ms). */
+const VISIT_TTL_MS = 60_000;
+
 /** How often the arrows to party members turn (seconds). */
 const ARROW_EVERY = 0.1;
 
@@ -62,7 +65,8 @@ export class MultiplayerSession {
     this.social = options.social;
     this.party = this.social?.getSnapshot().party ?? null;
     // On her way to someone's home (a friend's, her party's): this map joins that home.
-    const visit = options.start.mapId === HOME_MAP_ID ? (this.social?.getSnapshot().visit ?? null) : null;
+    const planned = options.start.mapId === HOME_MAP_ID ? (this.social?.getSnapshot().visit ?? null) : null;
+    const visit = planned && Date.now() - planned.at < VISIT_TTL_MS ? planned.host : null;
     this.host = visit;
     this.social?.update({ visit: null });
     this.remote = new RemotePlayerManager(options.loader, options.ground, options.shadows, options.onRemotes);
@@ -217,7 +221,7 @@ export class MultiplayerSession {
         } else {
           const region = this.options.regionOfMap(message.mapId);
           if (region) {
-            if (message.mapId === HOME_MAP_ID) social?.update({ visit: host });
+            if (message.mapId === HOME_MAP_ID) social?.update({ visit: host ? { host, at: Date.now() } : null });
             this.options.store.emit({ type: 'travel', region });
           } else social?.toast({ kind: 'notice', code: 'not-here', name: this.nameOf(message.id) });
         }
@@ -285,7 +289,7 @@ export class MultiplayerSession {
         social?.update({ travel: null });
         if (!command.accept || !travel) return;
         // The leader went home: her party comes along into the leader's home.
-        if (travel.region === this.options.regionOfMap(HOME_MAP_ID)) social?.update({ visit: travel.from.id });
+        if (travel.region === this.options.regionOfMap(HOME_MAP_ID)) social?.update({ visit: { host: travel.from.id, at: Date.now() } });
         this.options.store.emit({ type: 'travel', region: travel.region });
         return;
       }

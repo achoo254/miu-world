@@ -209,7 +209,7 @@ describe('homes', () => {
     const first = session();
     first.ws.receive({ type: 'party-goto', id: 'p-b', mapId: 'nha-cua-be', x: 75, y: 13, z: 25, host: 'p-b' });
     expect(first.travelledTo()).toBe('nha-cua-be');
-    expect(first.social.getSnapshot().visit).toBe('p-b');
+    expect(first.social.getSnapshot().visit?.host).toBe('p-b');
     first.online.dispose();
     const next = session('nha-cua-be', first.social);
     expect(next.ws.sent[0]).toMatchObject({ type: 'join', mapId: 'nha-cua-be', host: 'p-b' });
@@ -231,7 +231,7 @@ describe('homes', () => {
     ws.receive({ type: 'party-travel', from: 'p-lead', displayName: 'Tôm', region: 'nha-cua-be' });
     social.send({ type: 'travel-answer', accept: true });
     expect(travelledTo()).toBe('nha-cua-be');
-    expect(social.getSnapshot().visit).toBe('p-lead');
+    expect(social.getSnapshot().visit?.host).toBe('p-lead');
     online.dispose();
   });
 });

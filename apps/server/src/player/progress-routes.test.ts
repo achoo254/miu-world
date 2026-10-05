@@ -128,6 +128,18 @@ describe('POST /play-time', () => {
     expect(week?.minutes).toBe(1);
   });
 
+  it('never adds more than the time since the last report', async () => {
+    const { agent, childId } = await parentWithChild(app);
+    await agent.post('/api/play-time').send({ seconds: 60 }).expect(204);
+    // Reports every 40 s claiming a minute each count 40 s each.
+    app.advance(40_000);
+    await agent.post('/api/play-time').send({ seconds: 60 }).expect(204);
+    app.advance(40_000);
+    await agent.post('/api/play-time').send({ seconds: 60 }).expect(204);
+    const [row] = await app.db.select({ seconds: t.playTime.seconds }).from(t.playTime).where(eq(t.playTime.childId, childId));
+    expect(row?.seconds).toBe(140);
+  });
+
   it('counts a burst of first reports once', async () => {
     const { agent, childId } = await parentWithChild(app);
     await Promise.all([1, 2, 3].map(() => agent.post('/api/play-time').send({ seconds: 60 }).expect(204)));

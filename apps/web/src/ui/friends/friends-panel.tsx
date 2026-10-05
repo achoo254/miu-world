@@ -184,6 +184,11 @@ export function FriendsPanel({
     { key: 'blocks', label: <T k="friends.tab.blocks" /> },
   ];
   const { answer, cancel } = source;
+  /** Answered here: the same request's card over the game goes too. */
+  const answered = async (id: string, run: () => Promise<unknown>): Promise<void> => {
+    await run();
+    social?.update((s) => ({ friendAsks: s.friendAsks.filter((a) => a.id !== id) }));
+  };
   return (
     <div className="friends-panel parchment" data-id={dataId}>
       <Tabs label={t('friends.tabsLabel')} items={tabs} active={tab} onChange={setTab} dataId={`${dataId}-tabs`}>
@@ -211,10 +216,10 @@ export function FriendsPanel({
                   <Person key={r.id} species={r.species} name={named(r.displayName, r.isBot)} dataId={`friend-request-${r.id}`}>
                     {answer ? (
                       <>
-                        <button type="button" className={buttonClass('primary', { small: true })} data-id={`friend-accept-${r.id}`} onClick={() => void act(() => answer(r.id, true))}>
+                        <button type="button" className={buttonClass('primary', { small: true })} data-id={`friend-accept-${r.id}`} onClick={() => void act(() => answered(r.id, () => answer(r.id, true)))}>
                           <T k="friends.ask.accept" />
                         </button>
-                        <button type="button" className={buttonClass('ghost', { small: true })} data-id={`friend-decline-${r.id}`} onClick={() => void act(() => answer(r.id, false))}>
+                        <button type="button" className={buttonClass('ghost', { small: true })} data-id={`friend-decline-${r.id}`} onClick={() => void act(() => answered(r.id, () => answer(r.id, false)))}>
                           <T k="friends.ask.decline" />
                         </button>
                       </>

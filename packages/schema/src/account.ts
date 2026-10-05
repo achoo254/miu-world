@@ -144,8 +144,8 @@ export const AccountExport = z.object({
       homeDecor: DecorChoices.nullable(),
       /** Her online and companion bot switches. */
       settings: PlayerSettings,
-      /** Seconds played per week (Monday, Vietnam time), for the progress views. */
-      playTime: z.array(z.object({ weekStart: z.string(), seconds: z.number() })),
+      /** Seconds played per week (Monday, Vietnam time), for the progress views; `updatedAt`: the last report. */
+      playTime: z.array(z.object({ weekStart: z.string(), seconds: z.number(), updatedAt: Instant })),
       /** In-game letters: which one, whether read and its gift claimed. */
       mail: z.array(z.object({ templateId: z.string(), category: z.string(), read: z.boolean(), claimed: z.boolean(), claimedAt: Instant.nullable(), createdAt: Instant })),
       /** Her friends (other players by character name, companion bots labelled). */

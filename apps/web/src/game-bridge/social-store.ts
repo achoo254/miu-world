@@ -44,8 +44,11 @@ export interface SocialSnapshot {
   friendAsks: readonly FriendAsk[];
   /** Everyone else in her room now (the friends list's "Cùng phòng"). */
   room: ReadonlyArray<OnlinePlayer & { species: string }>;
-  /** Going to the home of this player (a friend, a party member): the next home map joins hers. */
-  visit: string | null;
+  /**
+   * Going to the home of this player (a friend, a party member): the home map loaded next joins hers, if it loads
+   * soon (`at`, ms); a trip that never happened does not send a later visit home there.
+   */
+  visit: { host: string; at: number } | null;
 }
 
 /** Commands from React to the game's online session. Dropped while no game runs (between maps). */

@@ -154,6 +154,36 @@ describe('friends', () => {
   });
 });
 
+describe('another account', () => {
+  it('cannot answer, take back, remove or unblock what is not its player’s (404)', async () => {
+    const a = await player('Cáo Cam');
+    const b = await player('Thỏ Bông');
+    const stranger = await player('Gấu Con');
+    await store().request(a.childId, b.childId);
+    const request = (await social(b.agent)).incoming[0]?.id ?? '';
+    await stranger.agent.post(`/api/friends/requests/${request}`).send({ accept: true }).expect(404);
+    await stranger.agent.delete(`/api/friends/requests/${request}`).expect(404);
+    await b.agent.post(`/api/friends/requests/${request}`).send({ accept: true }).expect(200);
+    const friendship = (await social(a.agent)).friends[0]?.id ?? '';
+    await stranger.agent.delete(`/api/friends/${friendship}`).expect(404);
+    await dbMultiplayerStore(app.db).block(a.childId, stranger.childId);
+    const block = (await social(a.agent)).blocks[0]?.id ?? '';
+    await stranger.agent.delete(`/api/blocks/${block}`).expect(404);
+    expect((await social(a.agent)).friends).toHaveLength(1);
+    expect((await social(a.agent)).blocks).toHaveLength(1);
+  });
+
+  it('shows nobody online to a player who plays offline', async () => {
+    const a = await player('Cáo Cam');
+    const b = await player('Thỏ Bông');
+    await store().request(a.childId, b.childId);
+    await store().request(b.childId, a.childId);
+    onlineNow.set(b.childId, { publicId: 'p-off', mapId: 'trung-tam' });
+    await a.agent.put('/api/player-settings').send({ onlineEnabled: false }).expect(200);
+    expect((await social(a.agent)).friends[0]).toMatchObject({ online: false, publicId: null, mapId: null });
+  });
+});
+
 describe('blocks', () => {
   it('lists whom she blocked, by character, and lifts a block', async () => {
     const a = await player('Cáo Cam');

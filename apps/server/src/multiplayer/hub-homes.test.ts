@@ -2,6 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { HOME_MAP_ID } from '@miu/schema/multiplayer';
 import { hubHarness, settle, type Client } from '../../test/hub-harness';
 import { BOT_MAP_CONFIGS, BotRunner } from './bot-runner';
+import { homeBotId } from './multiplayer-hub';
 
 let h: ReturnType<typeof hubHarness>;
 
@@ -72,6 +73,32 @@ describe('a home of her own', () => {
     expect(seen(b)).toEqual([]);
   });
 
+  it('sends a visitor back to her own home once she is no longer a friend or in the party', async () => {
+    const a = await h.connect('child-a');
+    const b = await h.connect('child-b');
+    await home(a);
+    h.friends.befriend('child-a', 'child-b');
+    await home(b, a.id);
+    expect(seen(b)).toEqual([a.id]);
+    h.friends.pairs.clear();
+    h.hub.playerEvent({ type: 'unfriended', childId: 'child-a', otherChildId: 'child-b', botId: null });
+    await settle();
+    expect(a.last('despawn')).toEqual({ type: 'despawn', id: b.id });
+    expect(b.last('notice')).toEqual({ type: 'notice', code: 'not-here', id: a.id });
+    expect(seen(b)).toEqual([]);
+    // Out of the party: the same.
+    const c = await h.joined('child-c');
+    const d = await h.joined('child-d');
+    d.send({ type: 'party-invite', to: c.id });
+    c.send({ type: 'party-reply', from: d.id, accept: true });
+    await home(d);
+    await home(c, d.id);
+    expect(seen(c)).toEqual([d.id]);
+    d.send({ type: 'party-kick', id: c.id });
+    await settle();
+    expect(seen(c)).toEqual([]);
+  });
+
   it('tells a friend going to her that she is at home, whose home it is', async () => {
     const a = await h.connect('child-a');
     const b = await h.joined('child-b');
@@ -92,11 +119,28 @@ describe('the bots of a home', () => {
     h.friends.bots.set('child-a', new Set(['bot-tt-3']));
     const a2 = await h.connect('child-a');
     await home(a2);
-    const neighbours = (BOT_MAP_CONFIGS[HOME_MAP_ID] ?? []).map((b) => b.id);
-    expect(seen(a2).sort()).toEqual([...neighbours, 'bot-tt-3'].sort());
+    // Each bot is its own instance in her home: never mistaken for the same bot elsewhere.
+    const neighbours = (BOT_MAP_CONFIGS[HOME_MAP_ID] ?? []).map((b) => homeBotId(b.id, a2.id));
+    expect(seen(a2).sort()).toEqual([...neighbours, homeBotId('bot-tt-3', a2.id)].sort());
+    expect(h.hub.whereIsBot('bot-tt-3')).toEqual({ mapId: 'trung-tam' });
     expect(a.closed).not.toBeNull();
+    const neighbour = neighbours[0] ?? '';
+    expect(h.hub.whereIsBot(neighbour)).toEqual({ mapId: HOME_MAP_ID });
     a2.conn.close();
-    expect(h.hub.whereIsBot('bot-ncb-1')).toBeNull();
+    expect(h.hub.whereIsBot(neighbour)).toBeNull();
+    runner.stop();
+  });
+
+  it('a bot met in a home is the same bot to befriend', async () => {
+    const runner = new BotRunner(h.hub, { random: () => 0 });
+    runner.start();
+    const a = await h.connect('child-a');
+    await home(a);
+    const neighbour = homeBotId('bot-ncb-1', a.id);
+    a.send({ type: 'friend-request', to: neighbour });
+    await vi.advanceTimersByTimeAsync(5_000);
+    expect(a.last('friend-news')?.kind).toBe('added');
+    expect(h.friends.bots.get('child-a')).toEqual(new Set(['bot-ncb-1']));
     runner.stop();
   });
 });

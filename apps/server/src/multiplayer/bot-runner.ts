@@ -8,7 +8,7 @@ import {
   type PlayerPresence,
   type ServerWsMessage,
 } from '@miu/schema/multiplayer';
-import type { MultiplayerHub, MultiplayerRoom } from './multiplayer-hub';
+import { botProfileId, homeBotId, type MultiplayerHub, type MultiplayerRoom } from './multiplayer-hub';
 
 export interface Waypoint {
   x: number;
@@ -402,7 +402,7 @@ export class BotRunner {
     return new CompanionBotInstance(profile, room, {
       onMessage: (message) => this.heard(profile.id, message),
       onGreet: (playerId) => this.greeted(profile.id, playerId),
-      friendsHere: () => this.hub.friendsOfBot(profile.id).filter((id) => room.members.has(id)),
+      friendsHere: () => this.hub.friendsOfBot(botProfileId(profile.id)).filter((id) => room.members.has(id)),
       random: this.random,
     });
   }
@@ -414,7 +414,7 @@ export class BotRunner {
       this.fill(this.hub.getOrCreateRoom(mapId), profiles);
     }
     this.hub.setHomeRoomHooks({
-      opened: (room) => this.fill(room, this.homeBots(room)),
+      opened: (room) => this.fill(room, this.homeBots(room), room.host),
       closed: (room) => {
         for (const bot of this.bots.get(room.key) ?? []) bot.leave();
         this.bots.delete(room.key);
@@ -426,8 +426,9 @@ export class BotRunner {
     this.timer = setInterval(() => this.tick(), 100);
   }
 
-  private fill(room: MultiplayerRoom, profiles: readonly BotProfile[]): void {
-    const instances = profiles.map((p) => this.instance(p, room));
+  /** Bots of `profiles` into `room`; in a home (`host`), each as its own instance there. */
+  private fill(room: MultiplayerRoom, profiles: readonly BotProfile[], host: string | null = null): void {
+    const instances = profiles.map((p) => this.instance(host ? { ...p, id: homeBotId(p.id, host) } : p, room));
     for (const inst of instances) inst.join();
     this.bots.set(room.key, instances);
   }
@@ -502,6 +503,8 @@ export class BotRunner {
     if (this.greets.size >= MAX_GREET_PAIRS) this.greets.clear();
     this.greets.set(pair, count);
     if (count < BOT_ASKS_AFTER_GREETS || this.random() >= BOT_ASK_CHANCE) return;
+    // A record of asks, not a log: a crowded server forgets it (at worst a bot asks again).
+    if (this.asked.size >= MAX_GREET_PAIRS) this.asked.clear();
     this.asked.add(pair);
     this.greets.delete(pair);
     void this.hub.botFriendRequest(botId, playerId);

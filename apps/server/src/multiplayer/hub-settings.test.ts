@@ -42,6 +42,19 @@ describe('the online switch', () => {
   });
 });
 
+describe('switching offline while connecting', () => {
+  it('a switch-off that comes while her connection is being set up still keeps her out', async () => {
+    h.db.characters.set('child-a', { displayName: 'Mèo Mây', species: 'cat', outfit: [], pet: null });
+    const closed: number[] = [];
+    const pending = h.hub.connect('child-a', { send: () => {}, close: (code) => closed.push(code) });
+    h.hub.playerEvent({ type: 'settings', childId: 'child-a', settings: { onlineEnabled: false, botsEnabled: true } });
+    expect(await pending).toBeNull();
+    expect(closed).toEqual([WS_CLOSE.offline]);
+    h.hub.playerEvent({ type: 'settings', childId: 'child-a', settings: { onlineEnabled: true, botsEnabled: true } });
+    expect(await h.tryConnect('child-a')).not.toBeNull();
+  });
+});
+
 describe('the companion bot switch', () => {
   it('hides the bots of the room from a player who switched them off, and only from her', async () => {
     h.db.settings.set('child-a', { onlineEnabled: true, botsEnabled: false });

@@ -20,7 +20,7 @@
         "Thời khóa biểu và lịch mặc đồng phục (trong nhà của người chơi, nếu người chơi nhập): các môn từng tiết, đồng phục từng ngày, và những dòng tiêu đề bạn muốn ghi như tên trường, lớp, năm học, giáo viên chủ nhiệm. Chỉ người chơi đó xem được; không chia sẻ cho ai; mặc định để trống.",
         "Cách trang trí nhà (kiểu giường, bàn ghế, rèm, đèn, màu mái, hàng rào… chọn từ danh sách có sẵn): chỉ là mã của kiểu đã chọn, không có chữ tự gõ.",
         "Trong lúc làm dở một nhiệm vụ, chúng tôi đếm số lần trả lời sai và số lần xem Đáp án ở từng bước, để tính sao. Chỉ là con số: không lưu đã trả lời gì, không ghi thời điểm từng lần. Các số đếm này bị xóa ngay khi nhiệm vụ xong.",
-        "Thời gian chơi: tổng số giây chơi của mỗi tuần (tính từ thứ Hai, giờ Việt Nam), để người chơi và chủ tài khoản xem thời gian chơi theo tuần. Chỉ là một con số cho mỗi tuần: không ghi chơi lúc nào, chơi gì. Tuần cũ hơn 8 tuần được xóa khi người chơi chơi tiếp.",
+        "Thời gian chơi: tổng số giây chơi của mỗi tuần (tính từ thứ Hai, giờ Việt Nam), để người chơi và chủ tài khoản xem thời gian chơi theo tuần, kèm thời điểm lần cộng gần nhất (để không cộng trùng). Không có danh sách các lần chơi, không ghi chơi gì. Tuần cũ hơn 8 tuần được xóa khi người chơi chơi tiếp.",
         "Thư trong trò chơi: thư nào người chơi đã nhận, đã đọc chưa, đã nhận quà kèm theo chưa.",
         "Cài đặt online của mỗi người chơi: có chơi cùng người khác không, có bạn máy không (mặc định đều bật).",
         "Bạn bè: danh sách bạn của từng người chơi (người chơi khác, hoặc bạn máy) và các lời mời kết bạn đang chờ trả lời, kèm thời điểm kết bạn hay gửi lời mời. Không có lời nhắn kèm theo.",
@@ -39,11 +39,11 @@
       "heading": "Khi chơi online",
       "paragraphs": [
         "Khi bật \"Chơi cùng người khác\", người chơi khác cùng bản đồ thấy: tên nhân vật, loài, trang phục, thú cưng, chỗ đứng và động tác trong phòng, cùng lời vẫy tay và câu có sẵn bạn chọn. Họ không thấy tên hiển thị của người chơi, email hay mã tài khoản: mỗi người chơi chỉ có một mã công khai, đổi mới mỗi lần máy chủ khởi động lại.",
-        "Không có ô chat tự gõ hay giọng nói: chỉ có câu chọn sẵn, và các câu đó không được lưu lại. Chỗ đứng trong phòng chỉ gửi thẳng cho người cùng phòng lúc đang chơi, không lưu (chỗ đứng lần cuối trên mỗi bản đồ ở mục trên là để chính bạn chơi tiếp). Tổ đội chỉ nằm trong bộ nhớ máy chủ, mất khi máy chủ khởi động lại.",
+        "Không có ô chat tự gõ hay giọng nói: chỉ có câu chọn sẵn, và các câu đó không được lưu lại. Chỗ đứng trong phòng được gửi cho người cùng phòng lúc đang chơi, và cho bạn bè hay bạn cùng tổ đội khi họ chọn \"Đến chỗ bạn\"; không lưu lại (chỗ đứng lần cuối trên mỗi bản đồ ở mục trên là để chính bạn chơi tiếp). Tổ đội chỉ nằm trong bộ nhớ máy chủ, mất khi máy chủ khởi động lại.",
         "Kết bạn: chạm vào một người chơi cùng phòng (hoặc chọn trong danh sách người cùng phòng) rồi chọn \"Kết bạn\"; người được mời tự đồng ý hay từ chối, ngay hoặc sau trong danh sách bạn bè. Bạn bè thấy nhau đang online hay không, đang ở bản đồ nào, và có thể đi tới chỗ nhau. Mỗi người chơi có tối đa 50 bạn; gửi quá nhiều lời mời thì phải chờ một lúc.",
         "Nhà của mỗi người chơi là phòng riêng: chỉ chủ nhà, bạn cùng tổ đội và bạn bè vào được. Người đã chặn nhau không thấy nhau ở bất cứ đâu, không kết bạn hay vào nhà nhau được; chặn một người bạn thì hai người không còn là bạn.",
         "Bạn máy là nhân vật do trò chơi điều khiển, luôn gắn nhãn \"Bạn máy\", kể cả trong danh sách bạn. Bạn máy có thể nhận lời kết bạn, tự gửi lời mời, và hay ghé chỗ bạn của nó hơn.",
-        "Tắt \"Chơi cùng người khác\" trong Cài đặt thì không ai thấy bạn và bạn không thấy ai, có hiệu lực ngay cả khi đang ở trong phòng; tắt \"Bạn máy\" thì không còn thấy bạn máy. Chủ tài khoản đổi được hai cài đặt này, xem và xóa bạn, bỏ chặn cho từng người chơi trong mục Quản lý tài khoản; lời mời kết bạn thì chỉ chính người chơi trả lời."
+        "Tắt \"Chơi cùng người khác\" trong Cài đặt thì không ai thấy bạn và bạn không thấy ai, kể cả bạn bè đang online ở đâu; có hiệu lực ngay cả khi đang ở trong phòng. Tắt \"Bạn máy\" thì không còn thấy bạn máy. Chủ tài khoản đổi được hai cài đặt này, xem và xóa bạn, bỏ chặn cho từng người chơi trong mục Quản lý tài khoản; người chơi vẫn tự đổi lại được cài đặt của mình, và lời mời kết bạn thì chỉ chính người chơi trả lời."
       ]
     },
     {

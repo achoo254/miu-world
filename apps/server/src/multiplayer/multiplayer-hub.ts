@@ -45,6 +45,13 @@ type MoveUpdate = Pick<PlayerPresence, 'x' | 'y' | 'z' | 'yaw' | 'speed'> & { ac
 /** Whether `viewer` may see `other` (false for a blocked pair, either way). */
 type Sees = (viewer: string, other: string) => boolean;
 
+/**
+ * A companion bot in someone's home is its own instance there (`<bot>@<home owner>`), so one bot standing in several
+ * homes and on its map is never mistaken for another; friendships and requests name the bot itself.
+ */
+export const homeBotId = (botId: string, host: string): string => `${botId}@${host}`;
+export const botProfileId = (id: string): string => id.split('@')[0] ?? id;
+
 /** One room per map, and on the home map one per player (`host`, her public id): her home. */
 export const roomKey = (mapId: string, host: string | null): string => (host ? `${mapId}#${host}` : mapId);
 
@@ -220,6 +227,8 @@ export class MultiplayerHub {
   private readonly friends: FriendStore | null;
   private readonly friendLimiter: FriendRequestLimiter;
   private homeHooks: HomeRoomHooks | null = null;
+  /** Players switched offline by the API, so a connection still being set up does not let her in. */
+  private readonly offline = new Set<string>();
   private readonly store: MultiplayerStore | null;
   private readonly authenticate: Authenticate | null;
   private readonly allowedOrigins: ReadonlySet<string>;
@@ -285,7 +294,7 @@ export class MultiplayerHub {
     const latest = this.attempts.get(childId) === attempt;
     if (latest) this.attempts.delete(childId);
     if (!appearance) return null;
-    if (!settings.onlineEnabled) {
+    if (!settings.onlineEnabled || this.offline.has(childId)) {
       transport.close(WS_CLOSE.offline, 'offline');
       return null;
     }
@@ -343,6 +352,8 @@ export class MultiplayerHub {
         return this.friendAnswered(event);
       case 'unfriended': {
         if (event.botId) this.onlinePlayer(event.childId)?.botFriends.delete(event.botId);
+        const ids = [event.childId, event.otherChildId].flatMap((id) => (id ? (this.publicIds.get(id) ?? []) : []));
+        this.recheckHomes(ids);
         return;
       }
       case 'unblocked':
@@ -396,6 +407,8 @@ export class MultiplayerHub {
    * come back; companion bots vanish or appear around her as her bot switch says.
    */
   settingsChanged(childId: string, settings: PlayerSettings): void {
+    if (settings.onlineEnabled) this.offline.delete(childId);
+    else this.offline.add(childId);
     const publicId = this.publicIds.get(childId);
     const player = publicId ? this.players.get(publicId) : undefined;
     if (!publicId || !player) return;
@@ -574,13 +587,18 @@ export class MultiplayerHub {
         return;
       case 'party-reply':
         return this.answerPartyInvite(self, message.from, message.accept);
-      case 'party-leave':
-        return this.pushParty(this.parties.leave(self));
+      case 'party-leave': {
+        const left = this.parties.leave(self);
+        this.pushParty(left);
+        return this.recheckHomes([self, ...left]);
+      }
       case 'party-kick':
       case 'party-promote': {
         const result = message.type === 'party-kick' ? this.parties.kick(self, message.id) : this.parties.promote(self, message.id);
         if (!result.ok) return this.notice(self, PARTY_NOTICE[result.error], message.id);
-        return this.pushParty(result.value);
+        this.pushParty(result.value);
+        if (message.type === 'party-kick') this.recheckHomes([self, message.id, ...result.value]);
+        return;
       }
       case 'party-chat': {
         const party = this.parties.partyOf(self);
@@ -626,6 +644,35 @@ export class MultiplayerHub {
     if (player.joins !== seq || this.players.get(self) !== player) return;
     if (asked && !allowed) this.notice(self, 'not-here', asked);
     this.enter(player, HOME_MAP_ID, allowed ? asked : self, message);
+  }
+
+  /**
+   * Visitors of these players' homes who may no longer be there (no longer friends, out of the party, blocked) go
+   * back to their own homes where they stand, and are told.
+   */
+  private recheckHomes(hosts: readonly string[]): void {
+    for (const host of new Set(hosts)) {
+      const room = this.rooms.get(roomKey(HOME_MAP_ID, host));
+      if (!room) continue;
+      for (const member of [...room.members.values()]) {
+        const visitor = member.isBot || member.id === host ? undefined : this.players.get(member.id);
+        if (visitor) void this.recheckVisitor(visitor, room);
+      }
+    }
+  }
+
+  private async recheckVisitor(visitor: OnlinePlayer, room: MultiplayerRoom): Promise<void> {
+    const host = room.host;
+    if (!host) return;
+    const seq = visitor.joins;
+    const stays = this.sees(visitor.publicId, host) && (await this.mayGoTo(visitor, host));
+    // Moved on meanwhile (another join, gone): nothing to do.
+    if (stays || visitor.room !== room || visitor.joins !== seq || this.players.get(visitor.publicId) !== visitor) return;
+    const at = room.members.get(visitor.publicId)?.presence;
+    if (!at) return;
+    visitor.joins += 1;
+    this.notice(visitor.publicId, 'not-here', host);
+    this.enter(visitor, HOME_MAP_ID, visitor.publicId, { type: 'join', mapId: HOME_MAP_ID, x: at.x, y: at.y, z: at.z, yaw: at.yaw, riding: at.riding });
   }
 
   /** Into the room of `mapId` (and `host`, at a home), where the join says she stands. */
@@ -755,7 +802,7 @@ export class MultiplayerHub {
   /** Party members and friends (players or bots) can be gone to. */
   private async mayGoTo(player: OnlinePlayer, id: string): Promise<boolean> {
     if (this.parties.partyOf(player.publicId)?.members.includes(id)) return true;
-    if (this.isBot(id)) return player.botFriends.has(id);
+    if (this.isBot(id)) return player.botFriends.has(botProfileId(id));
     const other = this.childIds.get(id);
     if (!other || !this.friends) return false;
     try {
@@ -775,7 +822,7 @@ export class MultiplayerHub {
     const target = player.room?.members.get(to);
     if (!target || to === self || !this.roomSees(self, to)) return this.notice(self, 'not-here', to);
     if (!this.friends) return this.notice(self, 'failed', to);
-    if (target.isBot && player.botFriends.has(to)) return this.notice(self, 'already-friends', to);
+    if (target.isBot && player.botFriends.has(botProfileId(to))) return this.notice(self, 'already-friends', to);
     if (!this.friendLimiter.allow(self, to)) return this.notice(self, 'rate-limited', to);
     const from: FriendPerson = { displayName: player.appearance.displayName, species: player.appearance.species, isBot: false };
     if (target.isBot) {
@@ -827,9 +874,9 @@ export class MultiplayerHub {
     const who: FriendPerson = { ...look, isBot: true };
     if (!accept) return player.transport.send({ type: 'friend-news', kind: 'declined', who });
     try {
-      const result = await this.friends.addBot(player.childId, botId);
+      const result = await this.friends.addBot(player.childId, botProfileId(botId));
       if (result === 'friends-full') return this.notice(player.publicId, 'friends-full', botId);
-      player.botFriends.add(botId);
+      player.botFriends.add(botProfileId(botId));
       player.transport.send({ type: 'friend-news', kind: 'added', who });
     } catch (err) {
       console.error('bot friend failed', err instanceof Error ? err.name : typeof err);
@@ -842,9 +889,9 @@ export class MultiplayerHub {
     const player = this.players.get(publicId);
     const room = player?.room;
     const bot = room?.members.get(botId);
-    if (!player || !room || !bot?.isBot || !this.friends || player.botFriends.has(botId) || !this.roomSees(publicId, botId)) return;
+    if (!player || !room || !bot?.isBot || !this.friends || player.botFriends.has(botProfileId(botId)) || !this.roomSees(publicId, botId)) return;
     try {
-      const outcome = await this.friends.botRequest(botId, player.childId);
+      const outcome = await this.friends.botRequest(botProfileId(botId), player.childId);
       if (outcome.kind !== 'sent') return;
       player.transport.send({ type: 'friend-request', request: { id: outcome.requestId, from: { displayName: bot.presence.displayName, species: bot.presence.species, isBot: true } } });
     } catch (err) {
@@ -900,6 +947,7 @@ export class MultiplayerHub {
     this.parties.dropInvites(self, id);
     if (this.parties.partyOf(self)?.members.includes(id)) this.pushParty(this.parties.leave(self));
     this.notice(self, 'blocked', id);
+    this.recheckHomes([self, id]);
   }
 
   private async report(player: OnlinePlayer, id: string, reason: ReportReason): Promise<void> {

@@ -21,13 +21,20 @@ export function savePlayerSettings(patch: PlayerSettingsPatch): Promise<PlayerSe
 }
 
 /** A bot switch turned off on this device before it moved to the server. */
-function takeOldBotSwitch(): boolean | null {
+function oldBotSwitch(): boolean | null {
   try {
-    const old = window.localStorage.getItem(OLD_BOT_KEY);
-    window.localStorage.removeItem(OLD_BOT_KEY);
-    return old === 'false' ? false : null;
+    return window.localStorage.getItem(OLD_BOT_KEY) === 'false' ? false : null;
   } catch {
     return null;
+  }
+}
+
+/** The old switch is on the server now: dropped from the device. */
+function dropOldBotSwitch(): void {
+  try {
+    window.localStorage.removeItem(OLD_BOT_KEY);
+  } catch {
+    // Storage unavailable: nothing was kept there.
   }
 }
 
@@ -61,8 +68,8 @@ export function OnlineSettings({ dataId }: { dataId: string }) {
     let live = true;
     (async () => {
       let read = await loadPlayerSettings();
-      const oldBots = takeOldBotSwitch();
-      if (oldBots === false && read.botsEnabled) read = await savePlayerSettings({ botsEnabled: false });
+      if (oldBotSwitch() === false && read.botsEnabled) read = await savePlayerSettings({ botsEnabled: false });
+      dropOldBotSwitch();
       if (!live) return;
       playerSettings.set(read);
       setSettings(read);

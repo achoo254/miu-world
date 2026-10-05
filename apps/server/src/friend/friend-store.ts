@@ -162,7 +162,17 @@ const lookOf = (looks: Map<string, { displayName: string; species: string }>, id
   (id ? looks.get(id) : undefined) ?? { displayName: DEFAULT_CHARACTER_NAME, species: 'cat' };
 
 /** A player's friends, the requests for her and from her, and the players she blocked. */
-export async function socialView(db: Db, childId: string, online: OnlineLookup): Promise<SocialView> {
+export async function socialView(db: Db, childId: string, lookup: OnlineLookup): Promise<SocialView> {
+  const [[viewer], blockedWith] = await Promise.all([
+    db.select({ onlineEnabled: childProfiles.onlineEnabled }).from(childProfiles).where(eq(childProfiles.id, childId)),
+    db
+      .select({ a: playerBlocks.childId, b: playerBlocks.blockedChildId })
+      .from(playerBlocks)
+      .where(or(eq(playerBlocks.childId, childId), eq(playerBlocks.blockedChildId, childId))),
+  ]);
+  // Playing offline, she sees nobody online; and never someone blocked either way.
+  const hidden = new Set(blockedWith.map((r) => (r.a === childId ? r.b : r.a)));
+  const online: OnlineLookup = viewer?.onlineEnabled ? { player: (id) => (hidden.has(id) ? null : lookup.player(id)), bot: lookup.bot } : NOBODY_ONLINE;
   const [friendRows, incomingRows, outgoingRows, blockRows] = await Promise.all([
     db.select().from(friendships).where(eq(friendships.childId, childId)).orderBy(asc(friendships.createdAt)),
     db.select().from(friendRequests).where(eq(friendRequests.childId, childId)).orderBy(asc(friendRequests.createdAt)),
@@ -213,10 +223,14 @@ export type AnswerOutcome =
  */
 export function answerRequest(db: Db, childId: string, requestId: string, accept: boolean): Promise<AnswerOutcome> {
   return db.transaction(async (tx): Promise<AnswerOutcome> => {
-    const [request] = await tx.select().from(friendRequests).where(and(eq(friendRequests.id, requestId), eq(friendRequests.childId, childId)));
+    const [seen] = await tx.select().from(friendRequests).where(and(eq(friendRequests.id, requestId), eq(friendRequests.childId, childId)));
+    if (!seen) return { kind: 'not-found' };
+    // The same locks as a block and a request take, then the request read again: a block, a take-back or another
+    // answer that came first wins.
+    await lockPlayers(tx, seen.fromChildId ? [childId, seen.fromChildId] : [childId]);
+    const [request] = await tx.select().from(friendRequests).where(and(eq(friendRequests.id, requestId), eq(friendRequests.childId, childId))).for('update');
     if (!request) return { kind: 'not-found' };
     const { fromChildId, fromBotId } = request;
-    await lockPlayers(tx, fromChildId ? [childId, fromChildId] : [childId]);
     if (fromChildId && (await blockedEitherWay(tx, childId, fromChildId))) {
       await tx.delete(friendRequests).where(eq(friendRequests.id, requestId));
       return { kind: 'not-found' };
@@ -233,12 +247,17 @@ export function answerRequest(db: Db, childId: string, requestId: string, accept
 }
 
 /** She takes back a request of hers; the player it was for, or null when there is no such request of hers. */
-export async function cancelRequest(db: Db, childId: string, requestId: string): Promise<string | null> {
-  const [row] = await db
-    .delete(friendRequests)
-    .where(and(eq(friendRequests.id, requestId), eq(friendRequests.fromChildId, childId)))
-    .returning({ childId: friendRequests.childId });
-  return row?.childId ?? null;
+export function cancelRequest(db: Db, childId: string, requestId: string): Promise<string | null> {
+  return db.transaction(async (tx) => {
+    const [seen] = await tx.select({ to: friendRequests.childId }).from(friendRequests).where(and(eq(friendRequests.id, requestId), eq(friendRequests.fromChildId, childId)));
+    if (!seen) return null;
+    await lockPlayers(tx, [childId, seen.to]);
+    const [row] = await tx
+      .delete(friendRequests)
+      .where(and(eq(friendRequests.id, requestId), eq(friendRequests.fromChildId, childId)))
+      .returning({ childId: friendRequests.childId });
+    return row?.childId ?? null;
+  });
 }
 
 /** Ends one of her friendships (both ways with a player); who it was with, or null when it is not hers. */
@@ -263,9 +282,15 @@ export async function unblock(db: Db, childId: string, blockId: string): Promise
   return row?.blockedChildId ?? null;
 }
 
-/** A block ends any friendship and request between the two (called with the block, in the hub's store). */
-export async function dropTies(db: Db, a: string, b: string): Promise<void> {
-  await db.transaction(async (tx) => {
+/**
+ * `childId` blocks `blockedChildId`: the block, and the end of any friendship and request between the two, in one
+ * transaction under the same locks a request and an answer take, so no answer can make them friends meanwhile.
+ */
+export function blockPlayer(db: Db, childId: string, blockedChildId: string): Promise<void> {
+  return db.transaction(async (tx) => {
+    await lockPlayers(tx, [childId, blockedChildId]);
+    await tx.insert(playerBlocks).values({ id: randomUUID(), childId, blockedChildId }).onConflictDoNothing();
+    const [a, b] = [childId, blockedChildId];
     await tx.delete(friendships).where(or(and(eq(friendships.childId, a), eq(friendships.friendChildId, b)), and(eq(friendships.childId, b), eq(friendships.friendChildId, a))));
     await tx.delete(friendRequests).where(or(and(eq(friendRequests.childId, a), eq(friendRequests.fromChildId, b)), and(eq(friendRequests.childId, b), eq(friendRequests.fromChildId, a))));
   });

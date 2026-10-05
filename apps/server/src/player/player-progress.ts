@@ -121,8 +121,9 @@ export async function loadProgress(db: Db, content: ContentCatalog, childId: str
 }
 
 /**
- * Adds a report of play time to this week's total. A report within half a beat of the last one adds nothing,
- * so a page that reports too often (or twice at once) cannot inflate the total. Weeks past keeping are dropped.
+ * Adds a report of play time to this week's total: at most a beat, and never more than the time since the last
+ * report (one within half a beat adds nothing), so a page that reports too often, or twice at once, cannot
+ * inflate the total. Weeks past keeping are dropped.
  */
 export async function addPlayTime(db: Db, childId: string, seconds: number, now: Date): Promise<void> {
   const week = weekStartOf(now);
@@ -140,9 +141,10 @@ export async function addPlayTime(db: Db, childId: string, seconds: number, now:
         // Two first reports at once: the second finds the row and counts nothing.
         .onConflictDoNothing();
     } else if (now.getTime() - row.updatedAt.getTime() >= MIN_BEAT_GAP_MS) {
+      const since = Math.floor((now.getTime() - row.updatedAt.getTime()) / 1000);
       await tx
         .update(playTime)
-        .set({ seconds: sql`${playTime.seconds} + ${added}`, updatedAt: now })
+        .set({ seconds: sql`${playTime.seconds} + ${Math.min(added, since)}`, updatedAt: now })
         .where(and(eq(playTime.childId, childId), eq(playTime.weekStart, week)));
     }
     const oldest = recentWeeks(now, PLAY_TIME_KEEP_WEEKS)[0] ?? week;
