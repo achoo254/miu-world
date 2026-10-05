@@ -105,6 +105,11 @@ export function npcCatalogIssues(files: readonly NpcMapFile[], ctx: NpcCheckCont
     }
   }
   const questsById = new Map(ctx.quests.map((q) => [q.id, q]));
+  /**
+   * A character of another map may be named before its map's file is written (maps are written one at a time): the
+   * server boots on that, content:check (`requireEveryMap`) asks for every name to be a profile.
+   */
+  const knownOrLater = (id: string): boolean => known.has(id) || !ctx.requireEveryMap;
   const seenLines = new Map<string, string>();
   const arcIds = new Set<string>();
   const inArc = new Map<string, string>();
@@ -127,7 +132,7 @@ export function npcCatalogIssues(files: readonly NpcMapFile[], ctx: NpcCheckCont
       for (const line of npc.lines) {
         if (line.weather === 'snow' && file.climate !== 'snowy') issues.push(`${at}: "${line.vi}" is about snow on a map without snow`);
         if (line.weather === 'rain' && file.climate === 'snowy') issues.push(`${at}: "${line.vi}" is about rain on a snowy map`);
-        if (line.about !== undefined && (line.about === npc.id || !known.has(line.about))) issues.push(`${at}: a line is about ${line.about}, which is not another profiled character`);
+        if (line.about !== undefined && (line.about === npc.id || !knownOrLater(line.about))) issues.push(`${at}: a line is about ${line.about}, which is not another profiled character`);
         for (const text of [line.vi, line.en]) {
           const key = lower(text);
           const first = seenLines.get(key);
@@ -143,7 +148,7 @@ export function npcCatalogIssues(files: readonly NpcMapFile[], ctx: NpcCheckCont
       const key = [rel.a, rel.b].sort().join('|');
       if (rel.a === rel.b) issues.push(`npcs/${file.region}.json: ${rel.a} is related to itself`);
       if (!here.has(rel.a) && !here.has(rel.b)) issues.push(`npcs/${file.region}.json: the relation ${rel.a}–${rel.b} has neither character on this map`);
-      for (const id of [rel.a, rel.b]) if (!known.has(id)) issues.push(`npcs/${file.region}.json: ${id} in a relation has no profile`);
+      for (const id of [rel.a, rel.b]) if (!knownOrLater(id)) issues.push(`npcs/${file.region}.json: ${id} in a relation has no profile`);
       if (pairs.has(key)) issues.push(`npcs/${file.region}.json: ${rel.a} and ${rel.b} are related twice`);
       pairs.add(key);
       if (here.has(rel.a) && here.has(rel.b)) within++;
@@ -169,7 +174,7 @@ export function npcCatalogIssues(files: readonly NpcMapFile[], ctx: NpcCheckCont
         const other = inArc.get(chapter.quest);
         if (other) issues.push(`${where}: quest ${chapter.quest} is already a chapter of ${other}`);
         inArc.set(chapter.quest, arc.id);
-        if (!known.has(chapter.letter.from)) issues.push(`${where}: its letter comes from ${chapter.letter.from}, who has no profile`);
+        if (!knownOrLater(chapter.letter.from)) issues.push(`${where}: its letter comes from ${chapter.letter.from}, who has no profile`);
         for (const item of Object.keys(chapter.letter.reward.items)) if (!ctx.items.has(item)) issues.push(`${where}: its letter gives ${item}, which content/items does not describe`);
         const quest = questsById.get(chapter.quest);
         if (!quest) {
