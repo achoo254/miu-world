@@ -1,6 +1,6 @@
 # Online: thấy phụ kiện, tương tác và tổ đội
 
-**Trạng thái:** chưa thi công (rà lại 05/10/2026: hub WebSocket và bạn máy đã có từ plan `261003-2330`; P1 diện mạo, P2 tương tác, P3 tổ đội chưa có code)
+**Trạng thái:** P1–P3 xong phần tự động (05/10/2026), chờ người duyệt; report `plans/dattqh/reports/online-appearance-party-261005.md`. Chưa làm: màn kiểm duyệt báo cáo (plan `261004-1617-moderation-safety`), danh sách chặn/bỏ chặn và mục "Kết bạn" (plan `261004-1617-parent-area-friends`), hành vi rời đội theo tính cách của bạn máy (B2 của plan bot).
 
 Người sở hữu (04/10/2026): "các nhân vật online thấy nhau ko nhìn được phụ kiện của người khác được và chưa tương tác với nhau được, chưa lập tổ đội được. tính năng tổ đội cũng chưa có."
 
@@ -27,7 +27,7 @@ Tầng: **L** (server + schema + client + UI, đổi giao thức WebSocket). N�
 
 ## Phase
 
-### P1 — Danh tính và diện mạo do server cấp (M)
+### P1 — Danh tính và diện mạo do server cấp (M) — xong 05/10/2026
 
 - WS đọc cookie phiên (dùng `readSessionToken` + `findSession`), lấy hồ sơ bé đang chọn; không có phiên thì từ chối (bot đi đường nội bộ, không qua WS). Kiểm `Origin` như `origin-check.ts`.
 - `join` không còn mang `displayName/species/outfit/pet`: server đọc từ bảng `characters`. Chống giả mạo trang phục và tên.
@@ -36,20 +36,27 @@ Tầng: **L** (server + schema + client + UI, đổi giao thức WebSocket). N�
 - Sửa 2 mã đồ sai của bot.
 - Kiểm: test hub (cookie sai bị từ chối, tên/đồ lấy từ DB), test `appearance`, tái hiện hai tab ở `/play` thấy đồ của nhau.
 
-### P2 — Tương tác giữa người chơi (M)
+### P2 — Tương tác giữa người chơi (M) — xong 05/10/2026
 
 - Schema: `emote` và `chat` thêm `to` tùy chọn; `interact-request` (mời vẫy, mời đội). Server kiểm cùng room và khoảng cách ≤ ~6 khối.
 - Client: người chơi khác vào hệ nhắc "gần nhất" của `object-interaction-manager` (nút tương tác sẵn có), mở menu chủ đề: Vẫy tay, Câu có sẵn, Mời vào đội, Chặn, Báo cáo. Giao diện theo mock cảnh (không cửa sổ trắng).
 - Chặn/báo cáo: bảng `player_blocks`, `player_reports`; người bị chặn không còn thấy hay bị thấy trong room; báo cáo vào hàng đợi (chưa có màn kiểm duyệt: ghi rõ ở trang review).
 - Công tắc online là cài đặt của chính người chơi, mặc định bật (plan `261004-1617-parent-area-friends` pha 2 làm phần lưu ở server và màn Cài đặt; ở đây hub chỉ cần tôn trọng cờ đó nếu đã có).
 
-### P3 — Tổ đội (L)
+### P3 — Tổ đội (L) — xong 05/10/2026
 
 - Server: `PartyService` trong bộ nhớ (id đội, trưởng, thành viên 2–4, lời mời có hạn 60 giây, giới hạn tần suất mời). Đội độc lập với room nên đi qua map vẫn giữ.
 - Giao thức: `party-invite`, `party-reply`, `party-leave`, `party-kick`, `party-promote`, `party-state` (danh sách + map + thú cưng), `party-chat` (câu có sẵn), `party-goto` (đến chỗ bạn — cùng map hoặc cổng tới map đó), `party-travel` (trưởng qua cổng, đội được hỏi).
 - Bot là thành viên hợp lệ (hub xử lý như người, gắn nhãn "[Bạn máy]"); bot chấp nhận/rời đội theo tính cách — phần hành vi nằm ở B2 của plan bot, ở đây chỉ mở cửa giao thức.
 - Client: khung đội ở mép màn hình (tên, chấm màu cùng map, thú cưng), nhắc mời, nhắn đội bằng câu có sẵn, vòng tròn màu/biểu tượng trên đầu bạn cùng đội, chỉ hướng tới bạn đội.
 - Kiểm: test `PartyService` (vào/ra/đuổi/nhường/hết hạn/đủ 4), test giao thức; hai tab E2E một ca (chỉ chạy khi được yêu cầu theo quy tắc test của repo).
+
+## Kết quả thi công (05/10/2026)
+
+- P1: WS kiểm cookie phiên + người chơi đang chọn (`findActivePlayer`, chung với route game) và `Origin`; `join` chỉ còn chỗ đứng, server đọc tên/loài/đồ/thú cưng từ `characters`; `appearance` phát khi `PUT /api/character` lưu; người khác thấy mã công khai `p-…`. Thú cưng và xe của người khác đã được vẽ từ trước (bằng chứng trong plan đã cũ), giờ thay đồ, xe, thú cưng tại chỗ (`PlayerCharacter.wear`). Không thêm trường `vehicle`: xe đã nằm trong trang phục do server cấp, cộng cờ `riding`. Hai mã đồ sai của bot đã được sửa trước đó; sửa thêm: bỏ khối bot `khu-rung-bi-mat` (không phải map, trùng mã với `forest-ch1`).
+- P2: vẫy tay và câu có sẵn nhắm một người (`to`, cùng room, ≤ 6 khối); không thêm `interact-request` riêng vì mời đội đi bằng `party-invite`. Menu tương tác theo khung 7 của mock, chừa chỗ một dòng cho "Kết bạn". `player_blocks`, `player_reports` (migration `0011`). Cờ online của người chơi chưa có ở server nên hub chưa đọc.
+- P3: `PartyService` trong bộ nhớ, giao thức `party-*`, khung đội trong cột HUD trái (chân dung, vương miện trưởng đội, map, thú cưng, mũi tên chỉ hướng bạn cùng map), thẻ mời và thẻ "cùng đi", huy hiệu sao trên tên bạn cùng đội. Bạn máy nhận lời mời sau 1,5 giây.
+- Kiểm: test `PartyService`, hub (giả DB), WebSocket thật với PGlite, phiên client với socket giả, UI; E2E `online` hai trình duyệt (thấy đồ, đổi đồ thấy ngay, lập đội, chặn).
 
 ## Phụ thuộc và file dùng chung
 
