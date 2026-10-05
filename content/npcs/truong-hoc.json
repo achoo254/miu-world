@@ -1,0 +1,798 @@
+{
+  "version": 1,
+  "region": "truong-hoc",
+  "climate": "mild",
+  "npcs": [
+    {
+      "id": "voi-trong-hoi",
+      "name": "Voi Trống Hội",
+      "role": {
+        "vi": "Tay trống cái của đội trống trường, lúc nào cũng đứng bên sân khấu sự kiện",
+        "en": "Big-drum player of the school drum team, always found beside the event stage"
+      },
+      "personality": {
+        "vi": "Ồn ào, tốt bụng, đếm mọi thứ theo nhịp; vui thì vỗ vòi vào bụng thùng thùng, buồn thì lặng như cái trống chưa ai gõ.",
+        "en": "Loud and kind-hearted, he counts everything in beats; happy, he drums his trunk on his tummy, sad, he goes as quiet as a drum nobody has struck."
+      },
+      "voice": {
+        "vi": "Nói theo nhịp bốn, hay chen «tùng!» vào cuối câu, lúc đùa thì thêm một tiếng «cắc».",
+        "en": "Talks in fours, tucks a «boom!» on the end of his sentences, and slips in a «clack» when he is joking."
+      },
+      "fear": {
+        "vi": "Sợ đứng trước cả trường mà vòi run lẩy bẩy, gõ trật một nhịp là cả bài đổ.",
+        "en": "Afraid of standing before the whole school with his trunk shaking, so that one missed beat brings the whole piece down."
+      },
+      "dream": {
+        "vi": "Được gõ chiếc trống trường cũ dưới hiên trong ngày khai giảng, đủ ba hồi chín tiếng.",
+        "en": "To beat the old school drum under the eaves on the first day of school: three full rolls of nine strokes."
+      },
+      "secret": {
+        "vi": "Chiếc trống đầu tiên của cậu ấy là cái nồi cơm sứt của bà; một mảnh sành của nó vẫn được dán kín trong lòng trống cái.",
+        "en": "His first drum was his grandma's chipped rice pot; a shard of it is still stuck inside his big drum."
+      },
+      "habit": {
+        "vi": "Sáng nào cũng gõ nhẹ lên từng gốc cây trong sân để chào buổi sáng, cây nào kêu đục là cậu ấy bảo cây đang ốm.",
+        "en": "Every morning he taps each tree in the yard to say good morning, and if one sounds dull he says it is feeling poorly."
+      },
+      "likes": [
+        "trong-truong-nho",
+        "chuong-truong-dong",
+        "chuong-gio-truc"
+      ],
+      "lines": [
+        {
+          "vi": "Tùng! Chào buổi sáng {name}. Tớ vừa gõ chào hết mười hai gốc cây, cây bàng hôm nay kêu trong lắm.",
+          "en": "Boom! Morning, {name}. I've just tapped hello on all twelve trees, and the almond tree sounds lovely and clear today.",
+          "when": "morning"
+        },
+        {
+          "vi": "Giờ nghỉ trưa thì tớ gõ bằng ngón chân thôi, kẻo cả trường dậy hết. Cậu nghe được không? Tùng… khẽ thôi.",
+          "en": "At nap time I only drum with my toes, or the whole school would wake. Can you hear it? Boom… very softly.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều tà là lúc tớ thích nhất: ve kêu, chổi quét sân, xe đạp về. Cả sân trường như một dàn nhạc tan ca.",
+          "en": "Late afternoon is my favourite: cicadas, brooms sweeping, bikes heading home. The whole yard sounds like an orchestra knocking off work.",
+          "when": "evening"
+        },
+        {
+          "vi": "Khuya rồi mà {name} còn đi dạo à? Tớ đang tập trống câm, chỉ vẫy dùi trong không khí cho khỏi phiền ai.",
+          "en": "Still out walking this late, {name}? I'm practising silent drumming, just waving my sticks in the air so I don't bother anyone.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa gõ lên mái tôn nghe kìa, lộp độp lộp độp! Trời đang tập trống với tớ đấy, nhưng trời toàn gõ lệch nhịp.",
+          "en": "Hear the rain on the tin roof, pitter-patter! The sky's drumming with me, but it's always off the beat.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Nắng ráo thế này da trống căng như mới, gõ một cái vang tận cổng. Thử không, {name}?",
+          "en": "On a dry sunny day the drumhead's tight as new, and one strike rings all the way to the gate. Want a go, {name}?",
+          "weather": "fine"
+        },
+        {
+          "vi": "Cậu biết không, hồi bé tớ nói lắp. Từ hồi có cái trống, tớ thấy chẳng cần nói nhiều nữa, tớ gõ là đủ.",
+          "en": "You know, I used to stammer as a calf. Once I had a drum, I didn't need many words any more. Drumming said enough.",
+          "hearts": 2
+        },
+        {
+          "vi": "Trước mỗi buổi diễn tớ đều ra sau sân khấu đếm đến bốn mươi. Tới hai mươi là hết run, tới bốn mươi là muốn gõ ngay.",
+          "en": "Before every show I go behind the stage and count to forty. By twenty the shaking stops, and by forty I can't wait to play.",
+          "hearts": 3
+        },
+        {
+          "vi": "Bà tớ chưa xem tớ diễn lần nào vì chân yếu. Năm nay tớ định gõ thật to, để tiếng trống bay về tận nhà bà.",
+          "en": "Grandma's never seen me play because her legs are weak. This year I'll drum extra loud, so the sound flies all the way to her house.",
+          "hearts": 4
+        },
+        {
+          "vi": "{name} là người duy nhất tớ cho chạm vào mảnh sành trong lòng trống. Thế là bạn thân rồi đấy, tùng tùng!",
+          "en": "{name}, you're the only one I've let touch the shard inside my drum. That makes us best friends. Boom boom!",
+          "hearts": 5
+        },
+        {
+          "vi": "Bác Gấu Trúc Tròn bên Thư viện hay nhờ tớ gõ nhịp cho bác đọc thơ. Bác đọc chậm lắm, tớ gõ một tiếng, đi uống nước về vẫn kịp.",
+          "en": "Gấu Trúc Tròn over at the Library often asks me to keep time while he reads poems. He reads so slowly I can strike once, fetch a drink and still be on time.",
+          "about": "gau-truc"
+        },
+        {
+          "vi": "Thầy Sư Tử Vàng gầm một tiếng là cả sân im phăng phắc. Tớ gõ ba hồi trống còn chưa im được như thế.",
+          "en": "Head teacher Sư Tử Vàng roars once and the whole yard goes silent. Three drum rolls from me can't do that.",
+          "about": "su-tu-vang"
+        },
+        {
+          "vi": "Chuông gió ống tre ở Làng Ven Sông kêu thanh lắm, ai tặng tớ một cái là tớ treo ngay cạnh trống.",
+          "en": "The bamboo wind chimes from Riverside Village ring so clear. Give me one and I'll hang it right next to my drum."
+        },
+        {
+          "vi": "Đố {name}: trống gì không có da mà vẫn kêu? Trống ngực, lúc cậu chạy một vòng sân đấy, thình thịch thình thịch!",
+          "en": "Riddle, {name}: what drum has no skin yet still beats? Your heart, after a lap of the yard! Thump-thump, thump-thump!"
+        },
+        {
+          "vi": "Tai voi to để làm gì á? Để nghe được cả tiếng con kiến đi lạc nhịp, cắc!",
+          "en": "Why are elephant ears so big? So I can hear even an ant walking out of step. Clack!"
+        }
+      ]
+    },
+    {
+      "id": "meo-hoa-si",
+      "name": "Mèo Vẽ Màu",
+      "role": {
+        "vi": "Họa sĩ nhỏ của trường, giữ cửa phòng mĩ thuật",
+        "en": "The school's young painter, keeper of the art room door"
+      },
+      "personality": {
+        "vi": "Mơ mộng, kỹ tính tới từng nét, nhìn đâu cũng thấy màu; thấy bức tường trống là ngứa đuôi.",
+        "en": "Dreamy and fussy down to the last stroke, he sees colours everywhere; a blank wall makes his tail itch."
+      },
+      "voice": {
+        "vi": "Gọi màu bằng tên tự đặt như «vàng bơ», «xanh lá non mới nhú», phấn khích thì mở đầu bằng một tiếng meo dài.",
+        "en": "Gives colours his own names like «butter yellow» and «new-shoot green», and opens with a long meow when he is excited."
+      },
+      "fear": {
+        "vi": "Sợ nước rơi lên người dù là họa sĩ màu nước; trời vừa lắc rắc là cậu ấy bung ngay cái ô bé tí.",
+        "en": "Scared of water landing on him, even though he paints in watercolour; at the first sprinkle he pops open his tiny umbrella."
+      },
+      "dream": {
+        "vi": "Vẽ kín bức tường dài sau dãy lớp để cả trường ngày nào đi qua cũng mỉm cười.",
+        "en": "To paint the whole long wall behind the classrooms, so the school smiles every time it walks by."
+      },
+      "secret": {
+        "vi": "Bức tranh đầu tiên được treo trong phòng thầy hiệu trưởng thật ra bị treo ngược, mà ai cũng khen nên cậu ấy chẳng dám nói.",
+        "en": "His first picture hanging in the head teacher's office is actually upside down, but everyone praised it, so he never dared say."
+      },
+      "habit": {
+        "vi": "Lau cọ vào chóp đuôi, nên chóp đuôi lúc nào cũng loang đủ bảy màu.",
+        "en": "Wipes his brushes on the tip of his tail, so it is always streaked with every colour of the rainbow."
+      },
+      "likes": [
+        "hop-sap-mau",
+        "but-muc-tim",
+        "bang-pha-mau"
+      ],
+      "lines": [
+        {
+          "vi": "Meo… sáng sớm sương còn đọng trên lá, màu nào cũng nhạt như vừa ngủ dậy. Tớ đợi nắng lên rồi mới dám chấm cọ.",
+          "en": "Meow… early in the morning, with dew still on the leaves, every colour looks half asleep. I wait for the sun before I dip my brush.",
+          "when": "morning"
+        },
+        {
+          "vi": "Giữa trưa nắng gắt, bóng cây đen kịt như mực. Tớ đang thử vẽ bóng bằng màu tím xem sao.",
+          "en": "At midday the sun's so harsh the shadows look like ink. I'm trying to paint shadows in purple to see what happens.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Hoàng hôn hôm nay màu cam đào chín, mai chắc là cam quýt. {name} đoán xem ngày kia màu gì?",
+          "en": "Today's sunset is ripe-peach orange, tomorrow's will probably be tangerine. Guess what colour the day after will be, {name}?",
+          "when": "evening"
+        },
+        {
+          "vi": "Ban đêm chẳng có màu gì cả, nên tớ nằm nhớ lại màu ban ngày. Đếm màu dễ ngủ hơn đếm cừu đấy.",
+          "en": "There are no colours at night, so I lie there remembering the day's. Counting colours sends you to sleep faster than counting sheep.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa! Mưa! Đừng lại gần tớ, {name}, cậu đang ướt đấy. Tớ nấp dưới ô đến khi trời khô cong mới thôi.",
+          "en": "Rain! Rain! Don't come near me, {name}, you're dripping. I'm staying under my umbrella till the sky is bone dry.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời xanh thế này tớ đặt tên là «xanh áo đồng phục mới giặt». Đẹp không, {name}?",
+          "en": "A sky this blue I call «freshly washed uniform blue». Pretty, isn't it, {name}?",
+          "weather": "fine"
+        },
+        {
+          "vi": "Tớ hay lấy đuôi lau cọ nên mẹ tớ bảo tớ là con mèo duy nhất có đuôi cầu vồng. Tớ coi đó là lời khen.",
+          "en": "I wipe my brushes on my tail, so my mum says I'm the only cat with a rainbow tail. I take it as a compliment.",
+          "hearts": 2
+        },
+        {
+          "vi": "Có hôm tớ vẽ cả buổi rồi xé đi chỉ vì một nét lệch. Cậu đừng bắt chước nhé, nét lệch nhiều khi lại đáng yêu nhất.",
+          "en": "Some days I paint all morning and tear it up over one wobbly line. Don't copy me, though: sometimes the wobbly line is the loveliest one.",
+          "hearts": 3
+        },
+        {
+          "vi": "Ước gì có ngày tớ vẽ được tiếng trống của Voi Trống Hội. Tiếng ấy màu gì nhỉ? Tớ đoán là đỏ gạch.",
+          "en": "I wish I could paint Voi Trống Hội's drumbeat one day. What colour is that sound? I'd guess brick red.",
+          "hearts": 4,
+          "about": "voi-trong-hoi"
+        },
+        {
+          "vi": "{name} biết không, cậu là người đầu tiên tớ cho mượn cây cọ quý nhất. Lông cọ ấy là lông đuôi tớ rụng đấy, đừng kể ai.",
+          "en": "You know, {name}, you're the first one I've ever lent my most precious brush. Its bristles came from my own tail. Don't tell anyone.",
+          "hearts": 5
+        },
+        {
+          "vi": "Cáo Tuyết Điêu Khắc trên Núi tuyết gửi tớ ảnh tượng băng, trắng toát mà vẫn đẹp mê. Hóa ra không cần màu vẫn làm người ta sững sờ.",
+          "en": "Cáo Tuyết Điêu Khắc up on Snowy Mountain sent me a photo of an ice statue: pure white and still stunning. Turns out you can amaze people without any colour at all.",
+          "about": "cao-tuyet-dieu-khac"
+        },
+        {
+          "vi": "Bảng pha màu bán ở Trung tâm có ô trộn tự xoay, tớ mê lắm. Ai tặng tớ một cái, tớ vẽ người đó đang cưỡi rồng.",
+          "en": "The colour palettes sold in the Town Centre have a spinning mixing well, and I adore them. Whoever gives me one, I'll paint them riding a dragon."
+        },
+        {
+          "vi": "Vàng với xanh dương trộn thành xanh lá, nghe như ảo thuật. Tớ thử trộn sữa với cà phê thì chỉ ra màu nâu, chán ghê.",
+          "en": "Yellow and blue make green, like a magic trick. I tried mixing milk and coffee and only got brown. Boring."
+        },
+        {
+          "vi": "Áo {name} hôm nay màu gì thế? Đứng yên, tớ phác cậu ba nét thôi: một nét mũi, hai nét cười.",
+          "en": "What colour's your top today, {name}? Hold still, I'll sketch you in three lines: one for the nose, two for the smile."
+        },
+        {
+          "vi": "Ai cũng hỏi sao tớ không vẽ mèo. Tớ đã là mèo rồi, tớ muốn vẽ những thứ tớ không phải.",
+          "en": "Everyone asks why I never paint cats. I'm already a cat; I want to paint the things I'm not."
+        }
+      ]
+    },
+    {
+      "id": "su-tu-vang",
+      "name": "Sư Tử Vàng",
+      "role": {
+        "vi": "Thầy hiệu trưởng, sáng nào cũng đứng bên cột cờ giữa sân trường",
+        "en": "The head teacher, standing by the flagpole in the middle of the schoolyard every morning"
+      },
+      "personality": {
+        "vi": "Uy nghiêm bên ngoài, mềm như bông bên trong; nhớ tên từng học trò, nhớ cả tên con mèo nhà học trò.",
+        "en": "Stern on the outside, soft as cotton inside; he remembers every pupil's name, and their cats' names too."
+      },
+      "voice": {
+        "vi": "Giọng trầm, hay mở đầu bằng «Hừm, hừm», khen ai thì kết câu bằng một tiếng gầm nhỏ.",
+        "en": "A deep voice that starts with «Hmm, hmm», and ends with a small roar when he is praising someone."
+      },
+      "fear": {
+        "vi": "Sợ cái lược: bờm rối cỡ nào thầy cũng chỉ dám vuốt bằng tay.",
+        "en": "Afraid of combs: however tangled his mane gets, he only dares smooth it with his paws."
+      },
+      "dream": {
+        "vi": "Một ngày tổ chức buổi học ngoài trời cho cả trường dưới bầu trời sao, không bảng, không phấn.",
+        "en": "To hold one outdoor lesson for the whole school under the stars, with no board and no chalk."
+      },
+      "secret": {
+        "vi": "Thầy từng phải học lại lớp Hai vì mải ngắm bướm; vì thế thầy chẳng bao giờ mắng ai mơ mộng.",
+        "en": "He once had to repeat second grade because he was busy watching butterflies; that's why he never scolds anyone for daydreaming."
+      },
+      "habit": {
+        "vi": "Sáng nào cũng đứng ở cổng đếm đủ học trò vào lớp, thiếu một em là gầm khẽ gọi tên.",
+        "en": "Every morning he counts the pupils in at the gate, and if one is missing he calls their name with a gentle roar."
+      },
+      "likes": [
+        "khan-quang-do",
+        "chuong-truong-dong",
+        "ve-xe-buyt-sao"
+      ],
+      "lines": [
+        {
+          "vi": "Hừm, hừm. Chào {name}! Hôm nay sân trường có hai trăm mười bốn bạn, cộng cậu là hai trăm mười lăm. Thầy đếm rồi.",
+          "en": "Hmm, hmm. Morning, {name}! Two hundred and fourteen pupils in the yard today, plus you makes two hundred and fifteen. I've counted.",
+          "when": "morning"
+        },
+        {
+          "vi": "Buổi chiều thầy đi một vòng các lớp nghe giảng. Lớp nào cười nhiều là lớp đó học vào nhất.",
+          "en": "In the afternoon I walk round the classrooms listening in. The class that laughs most is the class that learns most.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Tan học rồi, sân trường rộng ra gấp đôi. Thầy thích nhặt những chiếc lá bàng đỏ để ép vào sổ điểm danh.",
+          "en": "School is out and the yard feels twice as big. I like to collect red almond leaves and press them in the register.",
+          "when": "evening"
+        },
+        {
+          "vi": "Khuya rồi đấy {name}. Đến sư tử cũng phải ngủ đủ giấc mới gầm được to, huống chi học trò.",
+          "en": "It's late, {name}. Even a lion needs a full night's sleep to roar properly, let alone a pupil.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa thế này các lớp được đọc truyện thay giờ thể dục. Thầy biết có bạn còn mong mưa hơn mong nghỉ hè.",
+          "en": "Rain like this means story time instead of PE. I know some pupils wish for rain more than for the holidays.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Nắng đẹp quá, thầy định cho chào cờ lâu thêm một chút để cả trường được tắm nắng. Bờm thầy cũng cần phơi.",
+          "en": "Such lovely sunshine, I might make assembly a little longer so the whole school can soak it up. My mane needs an airing too.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Thầy kể {name} nghe nhé: tuần trước thầy đánh rơi kính trong bồn hoa, Thỏ Măng Non tìm được rồi trả lại mà không kể với ai.",
+          "en": "Let me tell you something, {name}: last week I dropped my glasses in a flower bed, and Thỏ Măng Non found them and gave them back without telling a soul.",
+          "hearts": 2,
+          "about": "tho-mang-non"
+        },
+        {
+          "vi": "Làm hiệu trưởng thì phải nghiêm, nhưng thầy giữ một ngăn kéo toàn kẹo gừng. Ai buồn thì được một viên.",
+          "en": "A head teacher has to be strict, but I keep a whole drawer of ginger sweets. Anyone who is sad gets one.",
+          "hearts": 3
+        },
+        {
+          "vi": "Hồi nhỏ thầy sợ đi học lắm, ngày nào cũng nấp sau gốc phượng. Nên thầy hiểu những bạn mới vào trường.",
+          "en": "When I was small I was scared of school and hid behind the flame tree every day. So I understand new pupils.",
+          "hearts": 4
+        },
+        {
+          "vi": "{name}, nếu một ngày thầy tổ chức học dưới trời sao, cậu sẽ là người đầu tiên thầy mời. Hừm, gầm nhẹ một tiếng là hứa rồi đấy.",
+          "en": "{name}, if I ever hold a lesson under the stars, you'll be the first one I invite. Hmm, one small roar means it's a promise.",
+          "hearts": 5
+        },
+        {
+          "vi": "Bác Lái Xe Hải ở Trung tâm chở thầy đi họp mỗi tháng. Bác lái êm tới mức thầy ngủ quên, bờm dính cả vào cửa kính.",
+          "en": "Bác Lái Xe Hải from the Town Centre drives me to meetings every month. He drives so smoothly I nod off with my mane stuck to the window.",
+          "about": "bac-lai-xe-hai"
+        },
+        {
+          "vi": "Sân trường mình có ba cây bàng, hai cây phượng và một cây xà cừ già hơn cả thầy. Cậu đã chào cây nào chưa?",
+          "en": "Our schoolyard has three almond trees, two flame trees and one mahogany older than me. Have you said hello to any of them?"
+        },
+        {
+          "vi": "Thầy rất thích tiếng chuông trường bằng đồng, chỉ ước nó đừng reo đúng lúc thầy đang kể tới đoạn hay.",
+          "en": "I love the bronze school bell. I just wish it wouldn't ring right when I reach the good part of a story."
+        },
+        {
+          "vi": "Ai bảo sư tử chỉ biết gầm? Thầy còn biết thổi sáo, có điều bờm cứ vướng vào lỗ sáo.",
+          "en": "Who says lions can only roar? I can play the flute too; it's just that my mane keeps getting caught in the holes."
+        },
+        {
+          "vi": "Hừm, {name} có biết vì sao cột cờ đứng giữa sân không? Để ai đứng đâu cũng nhìn thấy lá cờ, như nhìn thấy nhà.",
+          "en": "Hmm, {name}, do you know why the flagpole stands in the middle of the yard? So wherever you stand you can see the flag, like seeing home."
+        }
+      ]
+    },
+    {
+      "id": "ho-coi-vang",
+      "name": "Hổ Còi Vàng",
+      "role": {
+        "vi": "Trọng tài kiêm huấn luyện viên đội bóng trường, đứng ở mép sân bóng",
+        "en": "Referee and coach of the school football team, found at the edge of the pitch"
+      },
+      "personality": {
+        "vi": "Nhanh nhảu, công bằng tới từng tiếng còi, thua thì cười to hơn cả lúc thắng.",
+        "en": "Quick on his feet and fair to the last whistle; he laughs louder when he loses than when he wins."
+      },
+      "voice": {
+        "vi": "Câu nào cũng ngắn như hiệu lệnh, mở đầu bằng «Tuýt!», hay hô «Một, hai, chạy!».",
+        "en": "Every sentence is short as a command; he opens with «Pheep!» and loves shouting «One, two, run!»."
+      },
+      "fear": {
+        "vi": "Sợ mất cái còi vàng: không có còi, cổ họng hổ chỉ phát ra tiếng gừ gừ chẳng ai hiểu.",
+        "en": "Afraid of losing his golden whistle: without it, his tiger throat only makes growls nobody understands."
+      },
+      "dream": {
+        "vi": "Đưa đội bóng trường đi đá giao hữu khắp các vùng đất, mỗi nơi một trận.",
+        "en": "To take the school team on a friendly tour of every land, one match in each."
+      },
+      "secret": {
+        "vi": "Cậu ấy không biết bơi; hôm nào đội đi tắm biển là xin làm người trông dép.",
+        "en": "He cannot swim; whenever the team goes to the seaside, he volunteers to mind the sandals."
+      },
+      "habit": {
+        "vi": "Chạy quanh sân trước khi trời sáng, chạy vòng nào là kẻ một vạch phấn cho vòng đó.",
+        "en": "Runs laps of the pitch before dawn, chalking a line for every lap."
+      },
+      "likes": [
+        "qua-bong-ro-mini",
+        "khan-quang-do",
+        "trung-ga-ta"
+      ],
+      "lines": [
+        {
+          "vi": "Tuýt! Năm giờ sáng tớ đã chạy mười vòng. {name} chạy với tớ một vòng không? Một, hai, chạy!",
+          "en": "Pheep! I'd done ten laps by five this morning. Run one with me, {name}? One, two, run!",
+          "when": "morning"
+        },
+        {
+          "vi": "Trận chiều nay đội Lá Bàng gặp đội Hoa Phượng. Tớ làm trọng tài nên cấm cổ vũ, chỉ được nhảy cẫng trong bụng.",
+          "en": "This afternoon it's Team Almond Leaf against Team Flame Tree. I'm refereeing, so no cheering. I can only jump up and down inside.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều tối là giờ tớ giặt lưới khung thành. Lưới sạch thì bóng vào nghe «xoạt» sướng tai hơn.",
+          "en": "Evenings are when I wash the goal nets. A clean net makes a much more satisfying «swish» when the ball goes in.",
+          "when": "evening"
+        },
+        {
+          "vi": "Tuýt nhỏ thôi… Đêm rồi. Tớ đang bày sơ đồ chiến thuật bằng sỏi, đừng giẫm vào hậu vệ của tớ nhé.",
+          "en": "Quiet pheep… It's night. I'm laying out tactics with pebbles, so don't tread on my defenders.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa thì sân trơn, cấm xoạc bóng! Ai ngã là tớ thổi còi ngay, kể cả tớ.",
+          "en": "Rain makes the pitch slippery, so no sliding tackles! Whoever falls gets the whistle, me included.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời đẹp thế này mà không đá bóng thì phí. Tuýt! Ra sân thôi, {name}!",
+          "en": "Weather this good is wasted without football. Pheep! Out on the pitch, {name}!",
+          "weather": "fine"
+        },
+        {
+          "vi": "Tớ thổi còi to vì hồi nhỏ nói nhỏ quá, chẳng ai nghe. Cái còi này là quà sinh nhật đầu tiên của tớ.",
+          "en": "I blow my whistle loud because as a cub I spoke so softly nobody heard me. This whistle was my very first birthday present.",
+          "hearts": 2
+        },
+        {
+          "vi": "Kể nhỏ cậu nghe: tớ không biết bơi. Đội đi biển là tớ ngồi trông dép, trông kỹ tới mức chưa mất chiếc nào.",
+          "en": "Just between us: I can't swim. When the team goes to the beach I mind the sandals, so carefully we've never lost one.",
+          "hearts": 3
+        },
+        {
+          "vi": "Thắng thì vui một ngày, còn bạn bè thì vui cả năm. Câu đó tớ viết ở mặt sau tấm bảng tỉ số đấy.",
+          "en": "Winning makes you happy for a day; friends make you happy all year. I wrote that on the back of the scoreboard.",
+          "hearts": 4
+        },
+        {
+          "vi": "{name}, nếu một ngày tớ đánh rơi còi, cậu hô «Một, hai, chạy!» thay tớ nhé. Cả đội quen giọng cậu rồi.",
+          "en": "{name}, if I ever drop my whistle, shout «One, two, run!» for me. The whole team knows your voice by now.",
+          "hearts": 5
+        },
+        {
+          "vi": "Bé Chăn Gà Con ở Nông trại gửi tớ một rổ trứng gà ta, dặn ăn cho chân khỏe. Tớ gửi lại cái còi cũ để bé gọi đàn gà.",
+          "en": "Bé Chăn Gà Con at the Farm sent me a basket of free-range eggs for strong legs. I sent her my old whistle to call her chicks.",
+          "about": "be-chan-ga-con"
+        },
+        {
+          "vi": "Thẻ vàng là nhắc nhở, thẻ đỏ là mời ra ngoài. Còn thẻ xanh của tớ là để khen ai chơi đẹp.",
+          "en": "A yellow card is a warning, a red card sends you off. My green card is for praising fair play."
+        },
+        {
+          "vi": "Hôm qua quả bóng bay qua rào rơi xuống ruộng lúa sau trường. Mèo Lớp Trưởng nhặt về, còn dính cả một con cào cào.",
+          "en": "Yesterday the ball flew over the fence into the rice field behind school. Mèo Lớp Trưởng fetched it back with a grasshopper still clinging on."
+        },
+        {
+          "vi": "{name} sút chân trái hay chân phải? Tớ đoán chân phải, nhưng tớ đoán sai suốt nên cứ thử xem.",
+          "en": "Left foot or right foot, {name}? I'd guess right, but I guess wrong all the time, so let's see."
+        },
+        {
+          "vi": "Sọc vằn của tớ chẳng phải để ngụy trang đâu. Là vạch kẻ sân đấy, đi đâu tớ cũng mang theo sân bóng trên lưng.",
+          "en": "My stripes aren't camouflage, you know. They're pitch markings: I carry a football field around on my back."
+        }
+      ]
+    },
+    {
+      "id": "tho-mang-non",
+      "name": "Thỏ Măng Non",
+      "role": {
+        "vi": "Đội viên nhanh nhảu nhất trường, hay đứng ở hành lang trước hội trường",
+        "en": "The school's liveliest young pioneer, usually found in the corridor outside the assembly hall"
+      },
+      "personality": {
+        "vi": "Nhanh như sóc, nói trước nghĩ sau, nhưng lời hứa thì giữ chặt hơn ai hết.",
+        "en": "Quick as a squirrel, speaks first and thinks later, yet keeps her promises tighter than anyone."
+      },
+      "voice": {
+        "vi": "Nói liến thoắng, mê đố mẹo, làm gì cũng đếm ngược «ba, hai, một!» trước đã.",
+        "en": "Chatters at top speed, loves trick questions, and counts down «three, two, one!» before everything."
+      },
+      "fear": {
+        "vi": "Sợ bị bỏ lại một mình khi cả lớp đã chạy đi chơi trò khác.",
+        "en": "Afraid of being left behind when the class has run off to play something else."
+      },
+      "dream": {
+        "vi": "Được chọn làm chỉ huy đội nghi thức, đi đầu hàng trống trong lễ khai giảng.",
+        "en": "To be chosen to lead the honour guard, marching at the head of the drums on the first day of school."
+      },
+      "secret": {
+        "vi": "Cô bé tập nhảy sạp một mình mỗi tối bằng hai cây chổi, vì từng vấp ngã trước cả lớp.",
+        "en": "She practises bamboo dancing alone every evening with two brooms, because she once tripped in front of the whole class."
+      },
+      "habit": {
+        "vi": "Đeo khăn quàng đỏ ngay từ lúc ngủ dậy, thắt lại ba lần cho thật phẳng mới chịu ra khỏi nhà.",
+        "en": "Puts on her red scarf the moment she wakes up and reties it three times until it is perfectly flat."
+      },
+      "likes": [
+        "khan-quang-do",
+        "tau-bay-giay",
+        "qua-dua-xiem"
+      ],
+      "lines": [
+        {
+          "vi": "Ba, hai, một… chào buổi sáng {name}! Tớ thắt khăn quàng ba lần rồi, hôm nay phẳng như mặt bàn.",
+          "en": "Three, two, one… good morning, {name}! I've tied my scarf three times and today it's flat as a table.",
+          "when": "morning"
+        },
+        {
+          "vi": "Chiều nay lớp tớ tập nhảy sạp. Cạch cạch tùng, cạch cạch tùng! Cậu nhẩm theo đi, nhịp này dính tai lắm.",
+          "en": "My class practises bamboo dancing this afternoon. Clack clack boom, clack clack boom! Hum along, it's catchy.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Tối về tớ phải gấp mười cái tàu bay giấy. Một cái cho tớ, chín cái phóng thử xem cái nào bay xa nhất.",
+          "en": "Tonight I've got ten paper planes to fold. One for me, nine to test-fly and see which goes farthest.",
+          "when": "evening"
+        },
+        {
+          "vi": "Suỵt, đêm rồi! Oẳn tù tì không được hét to đâu nhé. Thì thầm thôi: oẳn… tù… tì… cậu ra gì?",
+          "en": "Shh, it's night! No shouting rock-paper-scissors. Whisper it: rock… paper… scissors… what did you pick?",
+          "when": "night"
+        },
+        {
+          "vi": "Trời mưa thì đội nghi thức tập trong hội trường. Tiếng trống dội bốn bức tường, nghe oai như có cả trăm cái trống.",
+          "en": "When it rains the honour guard practises in the hall. The drums bounce off all four walls and sound like a hundred.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Nắng to! Ai ra sân trước tớ thì tớ chỉ cách gấp tàu bay giấy hai tầng cánh. Ba, hai, một, chạy!",
+          "en": "Bright sunshine! Whoever beats me outside gets to learn my double-winged paper plane. Three, two, one, go!",
+          "weather": "fine"
+        },
+        {
+          "vi": "Lần nào oẳn tù tì, ván đầu tớ cũng ra búa. Cậu biết rồi thì đừng kể với ai nha.",
+          "en": "When we play rock-paper-scissors, I always throw rock first. Now you know, so don't tell anyone.",
+          "hearts": 2
+        },
+        {
+          "vi": "Năm ngoái tớ vấp sào trước cả lớp, đầu gối tím cả tuần. Từ đó tối nào tớ cũng tập nhảy sạp một mình bằng hai cây chổi.",
+          "en": "Last year I tripped on the poles in front of the class, and my knee was purple for a week. Since then I practise alone every evening with two brooms.",
+          "hearts": 3
+        },
+        {
+          "vi": "Tớ hơi sợ lúc cả lớp chạy đi chơi mà quên gọi tớ. Có {name} ở đây thì tớ chẳng sợ nữa.",
+          "en": "I get a bit scared when the class runs off to play and forgets to call me. With you here, {name}, I'm not scared any more.",
+          "hearts": 4
+        },
+        {
+          "vi": "Khai giảng mà tớ được đi đầu đội nghi thức, cậu phải đứng hàng đầu vẫy tớ đấy. Móc ngoéo đi!",
+          "en": "If I lead the honour guard on the first day of school, you have to stand in the front row and wave. Pinky promise!",
+          "hearts": 5
+        },
+        {
+          "vi": "Khỉ Hái Dừa ở Đảo bí ẩn hứa gửi tớ một quả dừa xiêm. Tớ sẽ chia nước dừa cho cả đội nghi thức, mỗi bạn một ngụm.",
+          "en": "Khỉ Hái Dừa on Mystery Island promised to send me a green coconut. I'll share the coconut water with the whole honour guard, one sip each.",
+          "about": "khi-hai-dua"
+        },
+        {
+          "vi": "Anh Hổ Còi Vàng khen tớ chạy nhanh nhất lớp. Bí quyết là tớ chạy trước khi anh ấy kịp thổi còi, suỵt!",
+          "en": "Hổ Còi Vàng says I'm the fastest in my class. The secret is I start running before he blows the whistle. Shh!",
+          "about": "ho-coi-vang"
+        },
+        {
+          "vi": "Đố {name}: cái gì càng gấp kỹ càng bay xa? Tàu bay giấy chứ còn gì! Gấp vội là rơi ngay, gấp khéo mới bay.",
+          "en": "Riddle, {name}: what flies farther the more carefully you fold it? A paper plane! Fold it in a rush and it drops; fold it with care and it soars."
+        },
+        {
+          "vi": "Tớ đếm rồi: từ hành lang tới cột cờ là bốn mươi hai bước thỏ, hay hai mươi mốt bước người lớn.",
+          "en": "I've counted: from the corridor to the flagpole is forty-two rabbit hops, or twenty-one grown-up steps."
+        },
+        {
+          "vi": "Hội trường hôm nay mới lau sàn bóng loáng. Tớ lỡ trượt một vòng, vui hơn cả cầu trượt.",
+          "en": "They polished the hall floor today. I accidentally slid a whole lap, more fun than a slide."
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "a": "voi-trong-hoi",
+      "b": "meo-hoa-si",
+      "kind": "friend",
+      "note": {
+        "vi": "Mèo Vẽ Màu vẽ áp phích cho mọi buổi diễn của Voi Trống Hội; Voi gõ trống khai mạc mọi buổi triển lãm của Mèo.",
+        "en": "Mèo Vẽ Màu paints the poster for every show Voi Trống Hội plays, and Voi drums at the opening of every exhibition Mèo holds."
+      }
+    },
+    {
+      "a": "su-tu-vang",
+      "b": "voi-trong-hoi",
+      "kind": "mentor",
+      "note": {
+        "vi": "Thầy Sư Tử Vàng là người đầu tiên nghe Voi gõ trên chiếc nồi cơm sứt và cho cậu ấy vào đội trống trường.",
+        "en": "Head teacher Sư Tử Vàng was the first to hear Voi drumming on a chipped rice pot, and let him join the school drum team."
+      }
+    },
+    {
+      "a": "su-tu-vang",
+      "b": "ho-coi-vang",
+      "kind": "mentor",
+      "note": {
+        "vi": "Thầy Sư Tử Vàng dạy Hổ Còi Vàng luật bóng đá từ hồi Hổ còn là cậu học trò hay quên giờ ra sân.",
+        "en": "Head teacher Sư Tử Vàng taught Hổ Còi Vàng the rules of football back when Hổ was a pupil who always forgot practice times."
+      }
+    },
+    {
+      "a": "ho-coi-vang",
+      "b": "tho-mang-non",
+      "kind": "friend",
+      "note": {
+        "vi": "Hổ Còi Vàng bấm giờ cho Thỏ Măng Non tập chạy; Thỏ thổi còi hộ khi Hổ khản giọng.",
+        "en": "Hổ Còi Vàng times Thỏ Măng Non's running practice, and Thỏ blows the whistle for him when he loses his voice."
+      }
+    },
+    {
+      "a": "tho-mang-non",
+      "b": "meo-hoa-si",
+      "kind": "neighbour",
+      "note": {
+        "vi": "Lớp của Thỏ Măng Non ở ngay cạnh phòng mĩ thuật; giờ ra chơi Thỏ hay ghé xem Mèo vẽ qua khe cửa.",
+        "en": "Thỏ Măng Non's classroom is right next to the art room, and at break she often peeks through the door to watch Mèo paint."
+      }
+    },
+    {
+      "a": "voi-trong-hoi",
+      "b": "gau-truc",
+      "kind": "pen-pal",
+      "note": {
+        "vi": "Voi Trống Hội gõ nhịp cho bác Gấu Trúc Tròn đọc thơ mỗi mùa hội sách; ngày thường hai bên viết thư cho nhau, một người gửi nhịp, một người gửi vần.",
+        "en": "Voi Trống Hội keeps the beat while Gấu Trúc Tròn reads poems at every book fair; the rest of the year they write letters, one sending rhythms, the other rhymes."
+      }
+    },
+    {
+      "a": "ho-coi-vang",
+      "b": "be-chan-ga-con",
+      "kind": "friend",
+      "note": {
+        "vi": "Hai bạn quen nhau ở hội thao; Bé Chăn Gà Con gửi trứng gà ta, Hổ Còi Vàng gửi lại cái còi cũ để bé gọi đàn gà.",
+        "en": "They met at a sports day; Bé Chăn Gà Con sends free-range eggs, and Hổ Còi Vàng sent back his old whistle so she can call her chicks."
+      }
+    }
+  ],
+  "arcs": [
+    {
+      "id": "trong-hoi-lac-nhip",
+      "npc": "voi-trong-hoi",
+      "title": {
+        "vi": "Tiếng trống lạc nhịp",
+        "en": "The drum that lost its beat"
+      },
+      "teaser": {
+        "vi": "Ba hôm nữa là hội diễn mà trống của tớ cứ kêu bục bục như gõ vào gối. {name} có rảnh không, tùng?",
+        "en": "The show's in three days and my drum keeps going thud like a pillow. Are you free, {name}? Boom?"
+      },
+      "chapters": [
+        {
+          "quest": "yarn-trong-hoi-lac-nhip-1",
+          "hearts": 0,
+          "letter": {
+            "from": "voi-trong-hoi",
+            "title": {
+              "vi": "Trống đã kêu tùng",
+              "en": "The drum says boom again"
+            },
+            "body": {
+              "vi": "{name} ơi, tối nay tớ ôm trống ngủ vì sợ nó lại chùng. Cảm ơn cậu đã cùng tớ căng từng sợi dây. Gửi cậu ít xu mua kẹo gừng, ngậm cho ấm cổ mà hò reo hôm hội diễn nhé.",
+              "en": "Dear {name}, tonight I am sleeping with my arms round my drum in case it goes slack again. Thank you for tightening every cord with me. Here are a few coins for ginger sweets, so your throat is warm for cheering at the show."
+            },
+            "reward": {
+              "coins": 15,
+              "xp": 15,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-trong-hoi-lac-nhip-2",
+          "hearts": 1,
+          "letter": {
+            "from": "gau-truc",
+            "title": {
+              "vi": "Tiếng trống vọng sang tận đây",
+              "en": "The drum carries all the way here"
+            },
+            "body": {
+              "vi": "Cháu {name} thân mến, chiều qua bác đang đọc thơ thì nghe tiếng trống từ bên trường vọng sang, đều như nhịp lục bát. Voi Trống Hội viết thư kể cháu đã tìm lại mảnh sành của cậu ấy. Bác gửi cháu chiếc kẹp sách, cháu kẹp vào trang mình thích nhất nhé.",
+              "en": "Dear {name}, yesterday afternoon I was reading poems when a drumbeat drifted over from the school, as steady as a lullaby verse. Voi Trống Hội wrote to tell me you found his shard. I am sending you a bookmark: tuck it into your favourite page."
+            },
+            "reward": {
+              "coins": 10,
+              "xp": 20,
+              "items": {
+                "kep-sach-ruy-bang": 1
+              }
+            }
+          }
+        },
+        {
+          "quest": "yarn-trong-hoi-lac-nhip-3",
+          "hearts": 2,
+          "letter": {
+            "from": "voi-trong-hoi",
+            "title": {
+              "vi": "Tờ nhịp đầu tiên tớ đọc được",
+              "en": "The first rhythm sheet I ever read"
+            },
+            "body": {
+              "vi": "{name} à, tối qua tớ đọc tờ nhịp cho mẹ nghe, sai có đúng một chấm thôi! Hóa ra chấm tròn chẳng đáng sợ, đáng sợ là không có ai ngồi đọc cùng. Mai cậu nhớ ngồi chỗ tớ nhìn thấy nhé.",
+              "en": "{name}, last night I read a rhythm sheet aloud to my mum and only got one dot wrong! Turns out dots are not scary; what is scary is having no one to read with. Tomorrow, sit where I can see you, okay?"
+            },
+            "reward": {
+              "coins": 20,
+              "xp": 20,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-trong-hoi-lac-nhip-4",
+          "hearts": 3,
+          "letter": {
+            "from": "voi-trong-hoi",
+            "title": {
+              "vi": "Gửi người ngồi hàng ghế đầu",
+              "en": "To my friend in the front row"
+            },
+            "body": {
+              "vi": "{name} ơi, giờ sáng nào Gà Con Mõ Tre cũng gõ mõ gọi cả đội ra tập, đúng giờ hơn cả chuông trường. Tớ đã viết thư xin thầy hiệu trưởng cho gõ trống khai giảng. Bà tớ mà biết chắc cười tít mắt.",
+              "en": "{name}, Gà Con Mõ Tre now knocks her slit drum every morning to call the team to practice, more punctual than the school bell. I have written to the head teacher asking to beat the drum on the first day of school. If Grandma knew, she would be grinning from ear to ear."
+            },
+            "reward": {
+              "coins": 25,
+              "xp": 30,
+              "items": {}
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "meo-ve-buc-tuong",
+      "npc": "meo-hoa-si",
+      "title": {
+        "vi": "Bức tường bảy màu",
+        "en": "The rainbow wall"
+      },
+      "teaser": {
+        "vi": "Meo… {name} có thấy bức tường xám sau dãy lớp không? Ngày nào tớ cũng nhìn nó, và nó cũng nhìn lại tớ, buồn thiu.",
+        "en": "Meow… {name}, have you seen the grey wall behind the classrooms? I look at it every day, and it looks back at me, glum as anything."
+      },
+      "chapters": [
+        {
+          "quest": "yarn-meo-ve-buc-tuong-1",
+          "hearts": 0,
+          "letter": {
+            "from": "meo-hoa-si",
+            "title": {
+              "vi": "Năm ô vuông trên giấy",
+              "en": "Five squares on paper"
+            },
+            "body": {
+              "vi": "{name} ơi, tối nay tớ ngủ không được vì cứ mơ thấy bức tường đổi màu. Năm ô cậu đo tớ đã vẽ lên giấy, ô nào cũng còn trắng tinh chờ màu. Cảm ơn cậu đã tin là tớ làm được.",
+              "en": "{name}, I cannot sleep tonight because I keep dreaming the wall is changing colour. I have drawn your five panels on paper, each one still white and waiting for paint. Thank you for believing I can do it."
+            },
+            "reward": {
+              "coins": 12,
+              "xp": 15,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-meo-ve-buc-tuong-2",
+          "hearts": 1,
+          "letter": {
+            "from": "cao-tuyet-dieu-khac",
+            "title": {
+              "vi": "Thư từ xứ chỉ có một màu",
+              "en": "A letter from a land of one colour"
+            },
+            "body": {
+              "vi": "Chào {name}, tớ là Cáo Tuyết Điêu Khắc trên Núi tuyết, bạn viết thư của Mèo Vẽ Màu. Mèo kể cậu đã giúp bạn ấy trong cơn mưa. Ở đây tớ tạc tượng bằng tuyết trắng, chẳng cần phân biệt màu, chỉ cần nhìn hình. Nhắn Mèo giúp tớ: hình cũng đẹp chẳng kém màu đâu.",
+              "en": "Hello {name}, I am Cáo Tuyết Điêu Khắc on Snowy Mountain, Mèo Vẽ Màu's pen friend. Mèo told me how you helped him in the rain. Up here I carve statues from white snow, so colours never matter, only shapes. Tell Mèo for me: shapes are every bit as lovely as colours."
+            },
+            "reward": {
+              "coins": 15,
+              "xp": 20,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-meo-ve-buc-tuong-3",
+          "hearts": 2,
+          "letter": {
+            "from": "meo-hoa-si",
+            "title": {
+              "vi": "Ông mặt trời xanh lá",
+              "en": "The green sun"
+            },
+            "body": {
+              "vi": "{name} thân mến, sáng nay một bạn lớp Một chỉ vào ông mặt trời xanh lá hỏi sao lạ thế. Tớ kể hết, bạn ấy bảo: «Thế thì mặt trời của anh đặc biệt nhất trường.» Tớ vui tới mức quẹt đuôi vào cả lọ hồ dán.",
+              "en": "Dear {name}, this morning a first-grader pointed at the green sun and asked why it was so odd. I told her everything, and she said: «Then your sun is the most special one in the school.» I was so happy I dipped my tail in the glue pot."
+            },
+            "reward": {
+              "coins": 20,
+              "xp": 25,
+              "items": {}
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

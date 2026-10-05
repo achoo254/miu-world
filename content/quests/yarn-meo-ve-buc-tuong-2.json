@@ -1,0 +1,368 @@
+{
+  "id": "yarn-meo-ve-buc-tuong-2",
+  "region": "truong-hoc",
+  "chapter": 2,
+  "title": "Chuyện của Mèo Vẽ Màu, chương 2: Cơn mưa rửa nhãn",
+  "status": "active",
+  "category": "story",
+  "summary": "Bức tường mới vẽ được một nửa thì mưa rào kéo tới, mà Mèo Vẽ Màu sợ nước nhất trên đời. {name} tìm đồ che tranh, đoán ra lọ màu bị mưa rửa trôi nhãn, quyết định giữ hay lau những vệt mưa, rồi được Mèo kể một bí mật về đôi mắt của cậu ấy.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Vẽ Màu",
+    "where": "Trường học: phòng mĩ thuật, nhà đa năng, hiên dãy lớp, sân sau dãy lớp",
+    "goal": "Cứu bức tranh tường dở dang khỏi cơn mưa rào",
+    "play": "Tìm bạt, sào tre, rổ kẹp theo lời tả, cân ba lọ màu để tìm lọ xanh lá, quyết định với những vệt mưa trên tường, nghe Mèo tâm sự",
+    "learn": "Đọc hiểu lời tả, so sánh nặng nhẹ để suy luận",
+    "reward": "60 XP, 15 Xu, Hộp sáp màu, Skill XP Đọc hiểu, Khối lượng",
+    "next": "Mèo Vẽ Màu nghĩ ra cách đánh dấu màu mà mưa không rửa trôi được"
+  },
+  "phases": {
+    "hook": "meo-nup-mua",
+    "explore": "tim-do-che-tranh",
+    "learn": "lo-mau-troi-nhan",
+    "challenge": "lo-mau-troi-nhan",
+    "decision": "vet-mua-tren-tuong",
+    "finale": "bi-mat-doi-mat",
+    "reward": "nhan-moi-to-gap-doi",
+    "next": "ma-mau-bang-hinh"
+  },
+  "places": {
+    "meo-hoa-si": "Phòng mĩ thuật",
+    "tim-do-che-tranh": "Nhà đa năng",
+    "st-meo-ve-buc-tuong-ba-lo-mau": "Hiên dãy lớp",
+    "st-meo-ve-buc-tuong-tuong-ve-do": "Sân sau dãy lớp"
+  },
+  "steps": [
+    {
+      "id": "meo-nup-mua",
+      "title": "Mèo Vẽ Màu trốn mưa",
+      "goTo": "Chạy tới phòng mĩ thuật, Mèo Vẽ Màu đang nấp sau cánh cửa",
+      "kind": "dialogue",
+      "target": "meo-hoa-si",
+      "lines": [
+        {
+          "speaker": "Mèo Vẽ Màu",
+          "text": "Meo meo meo! Mây đen kéo tới rồi {name}! Bức tường mới vẽ được nửa, mưa xuống là màu chảy như kem tan."
+        },
+        {
+          "speaker": "Mèo Vẽ Màu",
+          "text": "Tớ mà dính một giọt nước là lông dựng hết lên như chổi lông gà. Cậu che tranh giúp tớ được không?"
+        },
+        {
+          "speaker": "Mèo Vẽ Màu",
+          "text": "Trong nhà đa năng có bạt với sào tre đấy, nhanh lên kẻo không kịp!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cậu cứ đứng trong này, để tớ lo!",
+          "reply": "Cậu là người hùng không sợ nước của tớ. Tớ sẽ vẽ cậu khoác áo choàng."
+        },
+        {
+          "text": "Họa sĩ màu nước mà lại sợ nước à?",
+          "reply": "Tớ biết, tớ biết! Nước trong lọ màu thì được, nước trên trời thì không. Đừng hỏi tớ vì sao."
+        }
+      ],
+      "en": {
+        "title": "Mèo Vẽ Màu hides from the rain",
+        "goTo": "Run to the art room, where Mèo Vẽ Màu is hiding behind the door",
+        "lines": [
+          "Meow meow meow! Dark clouds, {name}! The wall is only half done, and if it rains the paint will run like melting ice cream.",
+          "One drop of water on me and my fur stands up like a feather duster. Could you cover the picture for me?",
+          "There's a tarp and bamboo poles in the sports hall. Hurry, before it's too late!"
+        ],
+        "choices": [
+          {
+            "text": "Stay inside, I've got this!",
+            "reply": "You're my waterproof hero. I'll paint you wearing a cape."
+          },
+          {
+            "text": "A watercolour painter who's scared of water?",
+            "reply": "I know, I know! Water in the paint pot is fine, water from the sky is not. Don't ask me why."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-do-che-tranh",
+      "title": "Đồ che tranh",
+      "goTo": "Vào nhà đa năng tìm đồ che bức tranh",
+      "kind": "find-object",
+      "prompt": "Che được bức tranh cần ba thứ. Đọc lời tả rồi tìm cho nhanh:",
+      "items": [
+        {
+          "id": "bat",
+          "name": "Tấm bạt xanh",
+          "clue": "Gấp vuông vức, sờ vào trơn tuột, nước rơi lên là lăn đi như hạt đậu.",
+          "target": "st-meo-ve-buc-tuong-tam-bat-xanh"
+        },
+        {
+          "id": "sao",
+          "name": "Hai cây sào tre",
+          "clue": "Dài gấp ba cậu, thẳng tắp, có đốt như những khớp ngón tay.",
+          "target": "st-meo-ve-buc-tuong-sao-tre"
+        },
+        {
+          "id": "kep",
+          "name": "Rổ kẹp phơi đồ",
+          "clue": "Một rổ những chiếc mỏ gỗ bé xíu, bóp vào là há miệng, thả ra là ngậm chặt.",
+          "target": "st-meo-ve-buc-tuong-ro-kep-phoi"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Things to cover the picture",
+        "goTo": "Dash into the sports hall and find things to cover the picture",
+        "prompt": "Covering the picture takes three things. Read the descriptions and find them, quick:",
+        "items": [
+          {
+            "name": "Blue tarp",
+            "clue": "Folded into a neat square and slippery to touch; raindrops roll off it like beans."
+          },
+          {
+            "name": "Two bamboo poles",
+            "clue": "Three times as tall as you, dead straight, with joints like knuckles."
+          },
+          {
+            "name": "Basket of clothes pegs",
+            "clue": "A basket of tiny wooden beaks: squeeze and they open, let go and they bite tight."
+          }
+        ]
+      }
+    },
+    {
+      "id": "lo-mau-troi-nhan",
+      "title": "Ba lọ màu trôi nhãn",
+      "goTo": "Ra hiên dãy lớp, mưa đã kịp rửa trôi nhãn ba lọ màu",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-meo-ve-buc-tuong-ba-lo-mau",
+      "skill": "khoi-luong",
+      "prompt": "Ba lọ màu đóng nắp, nhãn trôi sạch. Mèo Vẽ Màu nhớ: lọ đỏ đầy nhất nên nặng nhất; lọ xanh lá nhẹ hơn lọ vàng. Đặt lên cân thì thấy như dưới đây. Lọ nào là lọ xanh lá?",
+      "elements": [
+        {
+          "id": "lo-a",
+          "label": "Lọ A: nặng bằng 3 quả cân"
+        },
+        {
+          "id": "lo-b",
+          "label": "Lọ B: nặng bằng 5 quả cân"
+        },
+        {
+          "id": "lo-c",
+          "label": "Lọ C: nặng bằng 2 quả cân"
+        }
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "Lọ A"
+        },
+        {
+          "id": "b",
+          "text": "Lọ B"
+        },
+        {
+          "id": "c",
+          "text": "Lọ C"
+        }
+      ],
+      "answer": {
+        "choice": "c"
+      },
+      "support": {
+        "guide": [
+          "Tìm lọ nặng nhất trước: đó là lọ đỏ.",
+          "Còn hai lọ, lọ nhẹ hơn là lọ xanh lá."
+        ],
+        "hint": "Lọ B nặng nhất nên là lọ đỏ; giờ so lọ A với lọ C.",
+        "answer": {
+          "text": "Lọ C",
+          "explanation": "Lọ B nặng bằng 5 quả cân, nặng nhất, nên là lọ đỏ. Lọ C nặng bằng 2 quả cân, nhẹ hơn lọ A nặng bằng 3 quả cân, nên lọ C là xanh lá, lọ A là vàng."
+        },
+        "en": {
+          "guide": [
+            "Find the heaviest jar first: that's the red one.",
+            "Of the two left, the lighter one is green."
+          ],
+          "hint": "Jar B is heaviest, so it's red; now compare jar A and jar C.",
+          "answer": {
+            "text": "Jar C",
+            "explanation": "Jar B balances 5 weights, the heaviest, so it is red. Jar C balances 2, lighter than jar A with 3, so jar C is green and jar A is yellow."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Lọ C! Mèo Vẽ Màu dán ngay nhãn mới, viết chữ to gấp đôi.",
+          "{name} chẳng cần mở nắp mà vẫn biết màu, tài thật.",
+          "Nặng nhất là đỏ, nhẹ nhất là xanh lá, gọn gàng."
+        ],
+        "wrong": [
+          "Lọ ấy nặng hơn một lọ khác, nên chưa phải lọ xanh lá đâu.",
+          "Nhớ tìm lọ đỏ trước, rồi so hai lọ còn lại.",
+          "Thử xếp ba lọ từ nhẹ tới nặng xem lọ nào đứng đầu."
+        ],
+        "en": {
+          "right": [
+            "Jar C! Mèo Vẽ Màu sticks on a new label straight away, letters twice as big.",
+            "{name} knows the colour without even opening the lid. Brilliant.",
+            "Heaviest is red, lightest is green. Neat."
+          ],
+          "wrong": [
+            "That jar is heavier than another one, so it can't be the green one.",
+            "Find the red jar first, then compare the other two.",
+            "Try lining the jars up from lightest to heaviest and see which comes first."
+          ]
+        }
+      },
+      "en": {
+        "title": "Three jars without labels",
+        "goTo": "Go to the classroom porch, where the rain has already washed the labels off three paint jars",
+        "elements": [
+          "Jar A: balances 3 weights",
+          "Jar B: balances 5 weights",
+          "Jar C: balances 2 weights"
+        ],
+        "prompt": "Three closed jars, labels washed clean off. Mèo Vẽ Màu remembers: the red jar is fullest, so it is heaviest; the green jar is lighter than the yellow one. On the scales they weigh as shown. Which jar is green?",
+        "choices": [
+          "Jar A",
+          "Jar B",
+          "Jar C"
+        ]
+      }
+    },
+    {
+      "id": "vet-mua-tren-tuong",
+      "title": "Những vệt mưa trên tường",
+      "goTo": "Ra sân sau dãy lớp xem bức tường sau cơn mưa",
+      "kind": "decision",
+      "target": "st-meo-ve-buc-tuong-tuong-ve-do",
+      "prompt": "Mưa tạnh. Nửa bức tranh có những vệt màu chảy dài xuống như rèm mưa. {name} làm gì với chúng?",
+      "choices": [
+        {
+          "id": "lau-di",
+          "text": "Lau sạch các vệt chảy cho tranh như cũ",
+          "consequence": "Vệt màu nhạt đi, tranh lại gọn gàng. Chỉ còn thoang thoáng mấy sợi mưa, như ai thì thầm sau tường."
+        },
+        {
+          "id": "giu-lai",
+          "text": "Giữ lại, đó là cơn mưa tự vẽ vào tranh",
+          "consequence": "Những vệt chảy lấp lánh như mưa thật. Hóa ra trời cũng muốn góp một nét."
+        },
+        {
+          "id": "hoi-meo",
+          "text": "Để nguyên rồi chạy đi hỏi Mèo Vẽ Màu",
+          "consequence": "Cậu chạy đi, đầu còn ướt lấm tấm. Mèo phải nhìn tận mắt mới quyết được."
+        }
+      ],
+      "en": {
+        "title": "Rain streaks on the wall",
+        "goTo": "Go out behind the classrooms to see the wall after the rain",
+        "prompt": "The rain stops. Half the picture has long streaks of paint running down like a curtain of rain. What will {name} do with them?",
+        "choices": [
+          {
+            "text": "Wipe the streaks so the picture looks like before",
+            "consequence": "The streaks fade and the picture is tidy again. Only a few faint threads of rain are left, like someone whispering behind the wall."
+          },
+          {
+            "text": "Keep them: the rain painted itself into the picture",
+            "consequence": "The streaks shimmer like real rain. It seems the sky wanted to add a brushstroke too."
+          },
+          {
+            "text": "Leave them and run to ask Mèo Vẽ Màu",
+            "consequence": "Off you run, hair still speckled with rain. Mèo will have to see it with his own eyes to decide."
+          }
+        ]
+      }
+    },
+    {
+      "id": "bi-mat-doi-mat",
+      "title": "Bí mật về đôi mắt",
+      "goTo": "Quay về phòng mĩ thuật kể cho Mèo Vẽ Màu nghe",
+      "kind": "dialogue",
+      "target": "meo-hoa-si",
+      "lines": [
+        {
+          "speaker": "Mèo Vẽ Màu",
+          "text": "Cậu tìm ra lọ xanh lá mà không cần mở nắp à? {name} ơi, tớ kể cậu nghe chuyện này, đừng cười nhé."
+        },
+        {
+          "speaker": "Mèo Vẽ Màu",
+          "text": "Đỏ với xanh lá, trong mắt tớ giống hệt nhau, như hai anh em sinh đôi mặc áo giống nhau. Xưa nay tớ toàn đọc nhãn mà vẽ."
+        },
+        {
+          "speaker": "Mèo Vẽ Màu",
+          "text": "Hồi bé tớ từng vẽ một ông mặt trời xanh lá. Cả lớp cười ồ, từ đó tớ dán nhãn thật to lên mọi thứ."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mặt trời xanh lá nghe ngầu đấy chứ!",
+          "reply": "Thật à? Ừ nhỉ… biết đâu ở đâu đó có mặt trời xanh lá thật."
+        },
+        {
+          "text": "Tớ sẽ giữ bí mật, nhưng cậu chẳng có gì phải giấu.",
+          "reply": "Cảm ơn {name}. Nói ra rồi, tớ thấy nhẹ như vừa bóc được cái nhãn dán sau lưng."
+        }
+      ],
+      "en": {
+        "title": "A secret about his eyes",
+        "goTo": "Go back to the art room and tell Mèo Vẽ Màu everything",
+        "lines": [
+          "You found the green jar without even opening it? {name}, I want to tell you something. Promise not to laugh.",
+          "Red and green look exactly the same to me, like twins in matching clothes. I've always painted by reading the labels.",
+          "When I was little I painted a green sun. The whole class laughed, and ever since I've stuck big labels on everything."
+        ],
+        "choices": [
+          {
+            "text": "A green sun sounds pretty cool!",
+            "reply": "Really? Hmm… maybe somewhere there really is a green sun."
+          },
+          {
+            "text": "I'll keep your secret, but you've nothing to hide.",
+            "reply": "Thanks, {name}. Now I've said it, I feel as light as if I'd peeled a label off my back."
+          }
+        ]
+      }
+    },
+    {
+      "id": "nhan-moi-to-gap-doi",
+      "title": "Nhãn mới to gấp đôi",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Vẽ Màu ôm ba lọ màu đã dán nhãn mới, rồi rút trong túi ra hộp sáp màu tặng {name}: «Màu nào cũng có tên, cậu đọc là thấy.»",
+      "en": {
+        "title": "Labels twice as big",
+        "text": "Mèo Vẽ Màu hugs the three newly labelled jars, then pulls a box of crayons from his pocket for {name}: «Every colour has its name on it, so you can read it.»"
+      }
+    },
+    {
+      "id": "ma-mau-bang-hinh",
+      "title": "Một ý tưởng lúc nửa đêm",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối đó Mèo Vẽ Màu ngồi nghĩ mãi: nhãn chữ thì mưa rửa trôi, lỡ bạn nào chưa biết đọc thì sao? Sáng mai cậu ấy có một ý tưởng muốn khoe {name} đầu tiên.",
+      "en": {
+        "title": "A midnight idea",
+        "text": "That night Mèo Vẽ Màu sits thinking for ages: rain washes word labels away, and what about friends who can't read yet? By morning he has an idea he wants to show {name} first."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 1,
+      "khoi-luong": 1
+    },
+    "items": {
+      "hop-sap-mau": 1
+    }
+  },
+  "en": {
+    "title": "Mèo Vẽ Màu's story, chapter 2: The rain that washed the labels",
+    "summary": "The wall is half painted when a shower blows in, and Mèo Vẽ Màu fears water more than anything. {name} finds things to shield the picture, works out which jar is which after the rain washed the labels off, decides what to do with the rain streaks, and hears Mèo's secret about his eyes."
+  }
+}

@@ -1,0 +1,358 @@
+{
+  "id": "yarn-meo-ve-buc-tuong-1",
+  "region": "truong-hoc",
+  "chapter": 2,
+  "title": "Chuyện của Mèo Vẽ Màu, chương 1: Bức tường xám",
+  "status": "active",
+  "category": "story",
+  "summary": "Thầy hiệu trưởng cho Mèo Vẽ Màu vẽ kín bức tường dài sau dãy lớp. {name} đo tường, tìm ý tưởng trong vườn trường, xếp các bản phác thảo theo một ngày dài, chọn cảnh ở giữa rồi pha những màu đầu tiên.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Vẽ Màu",
+    "where": "Trường học: phòng mĩ thuật, sân sau dãy lớp, vườn trường, lớp 2A",
+    "goal": "Lên kế hoạch cho bức tranh tường đầu tiên của Mèo Vẽ Màu",
+    "play": "Giải bài toán đo tường, tìm ba thứ đáng vẽ trong vườn, xếp năm bản phác thảo theo giờ trong ngày, chọn cảnh giữa trưa, pha màu",
+    "learn": "Giải bài toán có lời văn hai bước, sắp xếp trình tự thời gian trong ngày",
+    "reward": "55 XP, 14 Xu, Skill XP Bài toán có lời văn, Kể chuyện",
+    "next": "Mây xám kéo tới khi các lọ màu còn xếp dưới chân tường"
+  },
+  "phases": {
+    "hook": "meo-khoe-tin",
+    "explore": "do-buc-tuong",
+    "learn": "do-buc-tuong",
+    "challenge": "xep-ban-phac-thao",
+    "decision": "chon-canh-giua",
+    "finale": "pha-mau-dau-tien",
+    "reward": "buc-tuong-co-ke-hoach",
+    "next": "may-den-keo-toi"
+  },
+  "places": {
+    "meo-hoa-si": "Phòng mĩ thuật",
+    "st-meo-ve-buc-tuong-tuong-xam": "Sân sau dãy lớp",
+    "tim-y-tuong": "Vườn trường",
+    "st-meo-ve-buc-tuong-ban-phac-thao": "Lớp 2A"
+  },
+  "steps": [
+    {
+      "id": "meo-khoe-tin",
+      "title": "Tin vui của Mèo Vẽ Màu",
+      "goTo": "Tới phòng mĩ thuật, Mèo Vẽ Màu đang nhảy cẫng ở cửa",
+      "kind": "dialogue",
+      "target": "meo-hoa-si",
+      "lines": [
+        {
+          "speaker": "Mèo Vẽ Màu",
+          "text": "Meo! {name} ơi, thầy hiệu trưởng đồng ý rồi! Bức tường xám xịt sau dãy lớp sẽ là của tớ, từ đầu này tới đầu kia!"
+        },
+        {
+          "speaker": "Mèo Vẽ Màu",
+          "text": "Tớ mơ chuyện này từ hồi còn là mèo con. Ngày nào đi ngang bức tường ấy tớ cũng thấy nó buồn như cái bánh mì chưa phết bơ."
+        },
+        {
+          "speaker": "Mèo Vẽ Màu",
+          "text": "Nhưng tường dài quá, tớ chưa biết vẽ gì. Cậu ra đo giúp tớ trước nhé?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đi thôi, tớ mang thước ra liền!",
+          "reply": "Mang cả mắt tinh nữa nhé, tường xám hay giấu vết nứt lắm."
+        },
+        {
+          "text": "Bánh mì chưa phết bơ thì buồn thật.",
+          "reply": "Đúng không! Tường cũng thế, phải phết màu vào mới vui."
+        }
+      ],
+      "en": {
+        "title": "Mèo Vẽ Màu's good news",
+        "goTo": "Go to the art room, where Mèo Vẽ Màu is bouncing in the doorway",
+        "lines": [
+          "Meow! {name}, the head teacher said yes! The dull grey wall behind the classrooms is mine, from one end to the other!",
+          "I've dreamed of this since I was a kitten. Every time I passed that wall it looked as sad as bread with no butter.",
+          "But the wall is so long, I don't know what to paint. Will you measure it for me first?"
+        ],
+        "choices": [
+          {
+            "text": "Let's go, I'll grab a ruler!",
+            "reply": "Bring your sharp eyes too: grey walls love hiding cracks."
+          },
+          {
+            "text": "Unbuttered bread really is sad.",
+            "reply": "Right? Walls too. They need a spread of colour to cheer up."
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-buc-tuong",
+      "title": "Đo bức tường",
+      "goTo": "Ra sân sau dãy lớp đo bức tường xám",
+      "kind": "riddle",
+      "target": "st-meo-ve-buc-tuong-tuong-xam",
+      "skill": "bai-toan-loi-van",
+      "question": "Bức tường có 12 ô gạch lớn, nhưng 2 ô bị ô cửa sổ chiếm mất. Mỗi cảnh tranh cần đúng 2 ô. Mèo Vẽ Màu vẽ được mấy cảnh?",
+      "answer": {
+        "value": 5
+      },
+      "support": {
+        "guide": [
+          "Trước hết tìm số ô còn trống: 12 bớt đi 2.",
+          "Rồi chia số ô còn lại thành từng cặp hai ô."
+        ],
+        "hint": "Còn 10 ô; đếm hai, bốn, sáu… xem được mấy lần.",
+        "answer": {
+          "text": "5 cảnh",
+          "explanation": "12 − 2 = 10 ô còn trống. Đếm theo hai: 2, 4, 6, 8, 10 là năm lần, nên vẽ được 5 cảnh."
+        },
+        "en": {
+          "guide": [
+            "First find how many panels are free: 12 take away 2.",
+            "Then split the free panels into pairs."
+          ],
+          "hint": "There are 10 left; count in twos and see how many times.",
+          "answer": {
+            "text": "5 scenes",
+            "explanation": "12 − 2 = 10 free panels. Counting in twos, 2, 4, 6, 8, 10, is five times, so there is room for 5 scenes."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Năm cảnh! Mèo Vẽ Màu vẽ ngay năm ô vuông lên đất bằng đuôi.",
+          "{name} nhớ trừ cả ô cửa sổ, tinh mắt ghê.",
+          "Mười ô chia thành từng đôi, vừa khít năm cảnh."
+        ],
+        "wrong": [
+          "Đừng quên hai ô của cửa sổ, chỗ đó không vẽ được.",
+          "Mỗi cảnh lấy hai ô cơ, đếm theo hai thử xem.",
+          "Vẽ mười ô ra giấy rồi khoanh từng cặp, đếm số vòng khoanh."
+        ],
+        "en": {
+          "right": [
+            "Five scenes! Mèo Vẽ Màu sketches five squares in the dirt with his tail.",
+            "{name} remembered to take away the window. Sharp eyes!",
+            "Ten panels in pairs fits five scenes exactly."
+          ],
+          "wrong": [
+            "Don't forget the window's two panels; you can't paint there.",
+            "Each scene takes two panels. Try counting in twos.",
+            "Draw ten panels on paper, circle them in pairs and count the circles."
+          ]
+        }
+      },
+      "en": {
+        "title": "Measuring the wall",
+        "goTo": "Go out to the yard behind the classrooms and measure the grey wall",
+        "question": "The wall has 12 big brick panels, but a window takes up 2 of them. Each scene needs exactly 2 panels. How many scenes can Mèo Vẽ Màu paint?"
+      }
+    },
+    {
+      "id": "tim-y-tuong",
+      "title": "Săn ý tưởng",
+      "goTo": "Dạo vườn trường tìm ba thứ đáng vẽ nhất",
+      "kind": "search",
+      "targets": [
+        "st-meo-ve-buc-tuong-la-bang-do",
+        "st-meo-ve-buc-tuong-hoa-muoi-gio",
+        "st-meo-ve-buc-tuong-oc-sen"
+      ],
+      "en": {
+        "title": "Idea hunt",
+        "goTo": "Wander the school garden and find the three things most worth painting"
+      }
+    },
+    {
+      "id": "xep-ban-phac-thao",
+      "title": "Một ngày trên tường",
+      "goTo": "Mang ý tưởng vào lớp 2A, ghim các bản phác thảo lên bảng",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-meo-ve-buc-tuong-ban-phac-thao",
+      "skill": "ke-chuyen",
+      "prompt": "Mèo Vẽ Màu muốn bức tường kể một ngày ở trường, từ sáng sớm tới tối mịt. Xếp năm bản phác thảo theo đúng trình tự:",
+      "items": [
+        {
+          "id": "trua",
+          "label": "Giữa trưa: ốc sên nấp dưới lá bàng tránh nắng"
+        },
+        {
+          "id": "dem",
+          "label": "Đêm: trăng lên, sân trường vắng tênh"
+        },
+        {
+          "id": "binh-minh",
+          "label": "Gà gáy, mặt trời nhô lên sau rặng tre"
+        },
+        {
+          "id": "hoang-hon",
+          "label": "Hoàng hôn: mây đỏ ối trên mái trường"
+        },
+        {
+          "id": "muoi-gio",
+          "label": "Mười giờ: hoa mười giờ nở, cả lớp ra chơi"
+        }
+      ],
+      "answer": {
+        "order": [
+          "binh-minh",
+          "muoi-gio",
+          "trua",
+          "hoang-hon",
+          "dem"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Tìm cảnh có gà gáy: đó là sáng sớm nhất.",
+          "Mười giờ đến trước giữa trưa, hoàng hôn đến trước đêm."
+        ],
+        "hint": "Cảnh có trăng luôn đứng cuối cùng.",
+        "answer": {
+          "text": "Gà gáy, mười giờ, giữa trưa, hoàng hôn, đêm",
+          "explanation": "Một ngày bắt đầu khi gà gáy, mười giờ hoa nở và ra chơi, giữa trưa nắng gắt, chiều tà có hoàng hôn, rồi trăng lên là đêm."
+        },
+        "en": {
+          "guide": [
+            "Find the scene with the rooster: that's the earliest.",
+            "Ten o'clock comes before midday, and sunset comes before night."
+          ],
+          "hint": "The moon scene always goes last.",
+          "answer": {
+            "text": "Rooster, ten o'clock, midday, sunset, night",
+            "explanation": "A day starts when the rooster crows, flowers open and break time comes at ten, the sun blazes at midday, sunset follows in the evening, then the moon rises for the night."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cả một ngày nằm gọn trên bảng, Mèo Vẽ Màu kêu meo một tiếng dài sung sướng.",
+          "{name} xếp giờ giấc chuẩn như chuông trường.",
+          "Từ gà gáy tới trăng lên, không cảnh nào lạc giờ."
+        ],
+        "wrong": [
+          "Hình như mặt trăng lên sớm quá rồi, xem lại nhé.",
+          "Hoa mười giờ nở trước bữa trưa đấy {name}.",
+          "Đọc từ cảnh có tiếng gà gáy rồi đi dần tới cảnh tối nhất."
+        ],
+        "en": {
+          "right": [
+            "A whole day sits neatly on the board, and Mèo Vẽ Màu lets out a long, happy meow.",
+            "{name} keeps time as well as the school bell.",
+            "From rooster to moonrise, not one scene is out of time."
+          ],
+          "wrong": [
+            "The moon seems to be rising too early. Have another look.",
+            "The ten-o'clock flowers open before lunch, {name}.",
+            "Start from the rooster scene and walk towards the darkest one."
+          ]
+        }
+      },
+      "en": {
+        "title": "A day on the wall",
+        "goTo": "Take your ideas into Class 2A and pin the sketches on the board",
+        "prompt": "Mèo Vẽ Màu wants the wall to tell one day at school, from early morning to late at night. Put the five sketches in the right order:",
+        "items": [
+          "Midday: a snail hides from the sun under an almond leaf",
+          "Night: the moon rises over an empty schoolyard",
+          "Roosters crow, the sun peeps over the bamboo",
+          "Sunset: red clouds over the school roof",
+          "Ten o'clock: the ten-o'clock flowers open and everyone goes out to play"
+        ]
+      }
+    },
+    {
+      "id": "chon-canh-giua",
+      "title": "Cảnh giữa trưa",
+      "goTo": "Quay về phòng mĩ thuật bàn với Mèo Vẽ Màu",
+      "kind": "decision",
+      "target": "meo-hoa-si",
+      "speaker": "Mèo Vẽ Màu",
+      "prompt": "Cảnh giữa trưa vẫn còn trống trải. {name} muốn vẽ thêm gì vào đó?",
+      "choices": [
+        {
+          "id": "an-trua",
+          "text": "Vẽ cả lớp đang ngồi ăn trưa bán trú",
+          "consequence": "Mèo Vẽ Màu phác ngay những bát canh bốc khói. Nhìn thôi đã thấy đói bụng."
+        },
+        {
+          "id": "thay-ngu-gat",
+          "text": "Vẽ thầy hiệu trưởng ngủ gật dưới gốc bàng",
+          "consequence": "Mèo Vẽ Màu cười rung râu: «Vẽ bờm thầy thật bồng bềnh, chắc thầy không giận đâu.»"
+        },
+        {
+          "id": "cho-trong",
+          "text": "Chừa một ô trống cho ai đi qua cũng vẽ thêm",
+          "consequence": "Mèo Vẽ Màu ngẩn ra một lúc: «Một bức tranh của cả trường à? Tớ chưa nghĩ tới bao giờ.»"
+        }
+      ],
+      "en": {
+        "title": "The midday scene",
+        "goTo": "Go back to the art room to talk it over with Mèo Vẽ Màu",
+        "prompt": "The midday scene still feels empty. What should go in it, {name}?",
+        "choices": [
+          {
+            "text": "The class eating lunch together",
+            "consequence": "Mèo Vẽ Màu sketches steaming bowls of soup at once. Just looking makes you hungry."
+          },
+          {
+            "text": "The head teacher dozing under the almond tree",
+            "consequence": "Mèo Vẽ Màu laughs till his whiskers shake: «I'll make his mane extra fluffy, then he won't mind.»"
+          },
+          {
+            "text": "Leave a blank panel for anyone passing to add something",
+            "consequence": "Mèo Vẽ Màu stops short: «A picture by the whole school? I'd never thought of that.»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pha-mau-dau-tien",
+      "title": "Pha màu đầu tiên",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "prompt": "Pha cùng Mèo Vẽ Màu tám màu đầu tiên cho bức tường nhé!",
+      "game": "color-mix",
+      "goal": 8,
+      "trigger": "auto",
+      "en": {
+        "title": "The first colours",
+        "prompt": "Mix the wall's first eight colours with Mèo Vẽ Màu!"
+      }
+    },
+    {
+      "id": "buc-tuong-co-ke-hoach",
+      "title": "Bức tường đã có kế hoạch",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bản phác thảo dán kín bảng lớp 2A. Mèo Vẽ Màu quẹt chóp đuôi vào lọ màu, vẽ tặng {name} một ngôi sao nhỏ lên mu bàn tay.",
+      "en": {
+        "title": "The wall has a plan",
+        "text": "Sketches cover the whole board in Class 2A. Mèo Vẽ Màu dips the tip of his tail in a paint jar and draws a little star on the back of {name}'s hand."
+      }
+    },
+    {
+      "id": "may-den-keo-toi",
+      "title": "Mây xám kéo tới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mèo Vẽ Màu xếp các lọ màu thẳng hàng dưới chân tường, nhãn nào cũng ghi tên thật to. Cậu ấy liếc lên trời: một đám mây xám đang trôi lại gần, mà Mèo thì ghét nước nhất trên đời.",
+      "en": {
+        "title": "A grey cloud rolls in",
+        "text": "Mèo Vẽ Màu lines the paint jars up at the foot of the wall, every label written in big letters. He glances at the sky: a grey cloud is drifting closer, and Mèo hates water more than anything."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": {
+      "bai-toan-loi-van": 1,
+      "ke-chuyen": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Mèo Vẽ Màu's story, chapter 1: The grey wall",
+    "summary": "The head teacher has let Mèo Vẽ Màu paint the whole long wall behind the classrooms. {name} measures the wall, hunts for ideas in the school garden, puts the sketches in order through one long day, picks the middle scene and mixes the first colours."
+  }
+}

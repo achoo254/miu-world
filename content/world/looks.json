@@ -5091,6 +5091,213 @@
    "kind": "object",
    "label": "Xem",
    "tint": "#e04030"
+  },
+  "st-trong-hoi-lac-nhip-to-chuong-trinh": {
+   "model": "generated/props/placard.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-trong-hoi-lac-nhip-day-gai": {
+   "model": "generated/props/knot.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#b08850"
+  },
+  "st-trong-hoi-lac-nhip-nem-go": {
+   "model": "packs/kenney-survival-kit/2.0/resource-planks.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-trong-hoi-lac-nhip-sap-ong": {
+   "model": "packs/kenney-food-kit/2.0/honey.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-trong-hoi-lac-nhip-heo-chum-choe": {
+   "model": "packs/kenney-cube-pets/2.0/animal-pig.glb",
+   "height": 1.0,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#f0c8a8"
+  },
+  "st-trong-hoi-lac-nhip-long-ac-la": {
+   "model": "generated/props/feather.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#3c3c48"
+  },
+  "st-trong-hoi-lac-nhip-vo-keo-lap-lanh": {
+   "model": "packs/kenney-food-kit/2.0/lollypop.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-trong-hoi-lac-nhip-dau-chan-chim": {
+   "model": "generated/props/paw-prints.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#6a5848"
+  },
+  "st-trong-hoi-lac-nhip-vet-phach-tre": {
+   "model": "packs/kenney-cube-pets/2.0/animal-parrot.glb",
+   "height": 0.8,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#70c878"
+  },
+  "st-trong-hoi-lac-nhip-to-ac-la": {
+   "model": "generated/props/basket.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#8a6440"
+  },
+  "st-trong-hoi-lac-nhip-gia-nhac": {
+   "model": "packs/kenney-nature-kit/2.1/sign.glb",
+   "height": 1.4,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-trong-hoi-lac-nhip-dui-go-mit": {
+   "model": "generated/props/chopsticks.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#e0b040"
+  },
+  "st-trong-hoi-lac-nhip-mo-tre": {
+   "model": "packs/kenney-nature-kit/2.1/log.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c8a060"
+  },
+  "st-trong-hoi-lac-nhip-ruy-bang-do": {
+   "model": "generated/props/ribbon.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-trong-hoi-lac-nhip-chong-the-ghe": {
+   "model": "generated/props/card-index.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-trong-hoi-lac-nhip-ga-con-mo-tre": {
+   "model": "packs/kenney-cube-pets/2.0/animal-chick.glb",
+   "height": 0.7,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#f8e070"
+  },
+  "st-meo-ve-buc-tuong-tuong-xam": {
+   "model": "packs/kenney-nature-kit/2.1/stone_tallA.glb",
+   "height": 1.8,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "st-meo-ve-buc-tuong-la-bang-do": {
+   "model": "generated/props/fallen-leaf.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-meo-ve-buc-tuong-hoa-muoi-gio": {
+   "model": "packs/kenney-nature-kit/2.1/flower_purpleA.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-meo-ve-buc-tuong-oc-sen": {
+   "model": "generated/props/spiral-shell.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-meo-ve-buc-tuong-ban-phac-thao": {
+   "model": "generated/props/notebook.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-meo-ve-buc-tuong-tam-bat-xanh": {
+   "model": "packs/kenney-survival-kit/2.0/bedroll-packed.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#3a6ea8"
+  },
+  "st-meo-ve-buc-tuong-sao-tre": {
+   "model": "packs/kenney-nature-kit/2.1/crops_bambooStageA.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-meo-ve-buc-tuong-ro-kep-phoi": {
+   "model": "generated/props/basket.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-meo-ve-buc-tuong-ba-lo-mau": {
+   "model": "packs/kenney-nature-kit/2.1/pot_small.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c8c0d8"
+  },
+  "st-meo-ve-buc-tuong-tuong-ve-do": {
+   "model": "packs/kenney-nature-kit/2.1/rock_tallA.glb",
+   "height": 1.8,
+   "kind": "object",
+   "label": "Xem tranh"
+  },
+  "st-meo-ve-buc-tuong-bang-ma-mau": {
+   "model": "generated/props/placard-blue.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-meo-ve-buc-tuong-khay-nap-lo": {
+   "model": "generated/props/artist-palette.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-meo-ve-buc-tuong-co-ban-to": {
+   "model": "generated/props/paintbrush.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-meo-ve-buc-tuong-co-dau-nhon": {
+   "model": "generated/props/paintbrush.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#d06030"
+  },
+  "st-meo-ve-buc-tuong-co-quat": {
+   "model": "generated/props/hand-fan.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-meo-ve-buc-tuong-tuong-sap-xong": {
+   "model": "generated/props/framed-picture-yellow.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem tranh"
   }
  }
 }

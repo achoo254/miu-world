@@ -1,0 +1,438 @@
+{
+  "id": "yarn-trong-hoi-lac-nhip-3",
+  "region": "truong-hoc",
+  "chapter": 3,
+  "title": "Chuyện của Voi Trống Hội, chương 3: Bản nhịp bằng chấm",
+  "status": "active",
+  "category": "story",
+  "summary": "Bài mở màn mới được viết bằng chấm đặc chấm rỗng, mà Voi Trống Hội chỉ quen gõ bằng tai. {name} đọc tờ chú thích, đoán nhịp tiếp theo, xếp lại bốn khúc nhạc, tập cùng cả đội rồi nghe Voi kể nỗi sợ lớn nhất của cậu ấy.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Voi Trống Hội, Vẹt Phách Tre, Heo Chũm Chọe",
+    "where": "Trường học: bên sân khấu, gốc bàng già, chòi chờ tổ đội, hàng ghế khán giả",
+    "goal": "Giúp Voi Trống Hội đọc được bản nhịp mới trước buổi tập cuối",
+    "play": "Đọc tờ chú thích, đoán chấm tiếp theo của dãy nhịp, xếp bốn khúc theo số chấm, chọn cách giúp Voi hết run, nhại nhịp cùng cả đội",
+    "learn": "Đọc ký hiệu, tìm quy luật dãy, đếm và so sánh số",
+    "reward": "70 XP, 18 Xu, Skill XP Đọc hiểu, Logic, So sánh số",
+    "next": "Buổi hội diễn sáng thứ bảy và một bạn nhỏ nấp sau phông màn"
+  },
+  "phases": {
+    "hook": "voi-thu-that",
+    "explore": "doc-chu-thich",
+    "learn": "doc-chu-thich",
+    "challenge": "doan-nhip-tiep",
+    "decision": "cach-do-run",
+    "finale": "tap-ca-doi",
+    "reward": "doi-trong-san-sang",
+    "next": "ban-nho-sau-phong-man"
+  },
+  "places": {
+    "voi-trong-hoi": "Bên sân khấu",
+    "st-trong-hoi-lac-nhip-vet-phach-tre": "Gốc bàng già",
+    "st-trong-hoi-lac-nhip-heo-chum-choe": "Chòi chờ tổ đội",
+    "st-trong-hoi-lac-nhip-gia-nhac": "Hàng ghế khán giả"
+  },
+  "steps": [
+    {
+      "id": "voi-thu-that",
+      "title": "Voi Trống Hội thú thật",
+      "goTo": "Tới bên sân khấu, Voi Trống Hội đang cầm ngược tờ nhịp chấm",
+      "kind": "dialogue",
+      "target": "voi-trong-hoi",
+      "lines": [
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "Tớ nói nhỏ thôi nhé {name}: tớ chưa bao giờ đọc được nhạc. Xưa nay tớ toàn nghe bằng tai rồi gõ theo bụng."
+        },
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "Tờ này toàn chấm đặc với chấm rỗng, nhìn như tổ kiến gặp mưa. Vẹt Phách Tre giữ tờ chú thích đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình cùng học, chấm tròn có gì mà sợ!",
+          "reply": "Có cậu đi cùng thì chấm nào tớ cũng thấy tròn trịa dễ thương hẳn."
+        },
+        {
+          "text": "Gõ bằng bụng là gõ thế nào?",
+          "reply": "Là lúc vui thì tay tự nhanh, lúc buồn thì tay tự chậm. Nhưng thầy cần đúng từng chấm cơ."
+        }
+      ],
+      "en": {
+        "title": "Voi Trống Hội owns up",
+        "goTo": "Go beside the stage, where Voi Trống Hội is holding the dotted sheet upside down",
+        "lines": [
+          "Keep this between us, {name}: I've never been able to read music. I've always listened with my ears and drummed with my tummy.",
+          "This sheet is all filled dots and hollow dots, like an anthill after rain. Vẹt Phách Tre has the key that explains them."
+        ],
+        "choices": [
+          {
+            "text": "We'll learn it together, dots aren't scary!",
+            "reply": "With you along, every dot suddenly looks round and friendly."
+          },
+          {
+            "text": "How do you drum with your tummy?",
+            "reply": "When I'm happy my hands speed up, when I'm sad they slow down. But the head teacher wants every dot exactly right."
+          }
+        ]
+      }
+    },
+    {
+      "id": "doc-chu-thich",
+      "title": "Tờ chú thích",
+      "goTo": "Tìm Vẹt Phách Tre dưới gốc bàng già xin tờ chú thích",
+      "kind": "read",
+      "target": "st-trong-hoi-lac-nhip-vet-phach-tre",
+      "skill": "doc-hieu",
+      "text": "CÁCH ĐỌC TỜ NHỊP\n● chấm đặc: gõ giữa mặt trống, kêu «tùng».\n○ chấm rỗng: gõ vào vành trống, kêu «cắc».\n– gạch ngang: nghỉ một nhịp, không gõ gì.",
+      "question": "Dòng ● ● ○ – ● có mấy tiếng «tùng»?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "2 tiếng"
+        },
+        {
+          "id": "b",
+          "text": "3 tiếng"
+        },
+        {
+          "id": "c",
+          "text": "4 tiếng"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Tiếng «tùng» là chấm đặc.",
+          "Đếm các chấm đặc trong dòng, bỏ qua chấm rỗng và gạch ngang."
+        ],
+        "hint": "Có hai chấm đặc đứng liền nhau ở đầu dòng, và một chấm nữa ở cuối.",
+        "answer": {
+          "text": "3 tiếng",
+          "explanation": "Dòng có ba chấm đặc: hai chấm ở đầu và một chấm ở cuối. Chấm rỗng là «cắc», gạch ngang là nghỉ."
+        },
+        "en": {
+          "guide": [
+            "A «boom» is a filled dot.",
+            "Count the filled dots in the line; skip the hollow dot and the dash."
+          ],
+          "hint": "Two filled dots sit side by side at the start, and there's one more at the end.",
+          "answer": {
+            "text": "3 booms",
+            "explanation": "The line has three filled dots: two at the start and one at the end. A hollow dot is a «clack» and the dash is a rest."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba tiếng tùng! Vẹt Phách Tre gật gù như thầy giáo nhạc.",
+          "{name} đọc tờ nhịp còn nhanh hơn tớ đọc thực đơn.",
+          "Chuẩn rồi, chấm rỗng với gạch ngang không tính."
+        ],
+        "wrong": [
+          "Cậu đếm lẫn cả chấm rỗng rồi, chấm rỗng là tiếng cắc đấy.",
+          "Gạch ngang là nghỉ, không phải tiếng tùng đâu.",
+          "Lấy ngón tay chỉ từng chấm đặc rồi đếm thành tiếng nhé."
+        ],
+        "en": {
+          "right": [
+            "Three booms! Vẹt Phách Tre nods like a music teacher.",
+            "{name} reads rhythm sheets faster than I read a menu.",
+            "Right, hollow dots and dashes don't count."
+          ],
+          "wrong": [
+            "You counted a hollow dot too. That one's a clack.",
+            "The dash is a rest, not a boom.",
+            "Point at each filled dot with your finger and count out loud."
+          ]
+        }
+      },
+      "en": {
+        "title": "The key",
+        "goTo": "Find Vẹt Phách Tre under the old almond tree and ask for the key",
+        "text": "HOW TO READ THE RHYTHM SHEET\n● filled dot: strike the middle of the drum, «boom».\n○ hollow dot: strike the rim, «clack».\n– dash: rest for one beat, play nothing.",
+        "question": "How many «booms» are in the line ● ● ○ – ●?",
+        "choices": [
+          "2 booms",
+          "3 booms",
+          "4 booms"
+        ]
+      }
+    },
+    {
+      "id": "doan-nhip-tiep",
+      "title": "Chấm tiếp theo",
+      "goTo": "Sang chòi chờ tổ đội, Heo Chũm Chọe đang chép nhịp lên mặt chũm chọe",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "st-trong-hoi-lac-nhip-heo-chum-choe",
+      "skill": "logic",
+      "prompt": "Dòng nhịp mở màn viết: ● ○ ● ● ○ ● ● ● ○ … Chấm tiếp theo là gì?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "●"
+        },
+        {
+          "id": "b",
+          "text": "○"
+        },
+        {
+          "id": "c",
+          "text": "–"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Chia dòng thành từng nhóm, mỗi nhóm kết thúc bằng một chấm rỗng.",
+          "Đếm số chấm đặc trong mỗi nhóm: một, hai, ba…"
+        ],
+        "hint": "Nhóm sau luôn nhiều hơn nhóm trước một tiếng tùng.",
+        "answer": {
+          "text": "● (chấm đặc)",
+          "explanation": "Các nhóm là ●○, ●●○, ●●●○: số tiếng tùng tăng dần 1, 2, 3. Nhóm tiếp theo có bốn tiếng tùng, nên chấm tiếp theo là chấm đặc."
+        },
+        "en": {
+          "guide": [
+            "Split the line into groups, each ending with a hollow dot.",
+            "Count the filled dots in each group: one, two, three…"
+          ],
+          "hint": "Each group has one more boom than the one before.",
+          "answer": {
+            "text": "● (a filled dot)",
+            "explanation": "The groups are ●○, ●●○, ●●●○: the booms grow 1, 2, 3. The next group has four booms, so the next dot is a filled one."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Xoảng xoảng! Heo Chũm Chọe đập mừng hai cái liền.",
+          "Nhịp cứ dài dần như bậc thang, {name} nhìn ra ngay.",
+          "Chấm đặc đấy, nhóm thứ tư sẽ có bốn tiếng tùng."
+        ],
+        "wrong": [
+          "Nhóm thứ tư mới bắt đầu thôi, chưa tới lúc cắc đâu.",
+          "Bài này không có chỗ nghỉ ở đó, đếm lại các nhóm nha.",
+          "Thử khoanh từng nhóm bằng tay xem nhóm sau dài hơn nhóm trước bao nhiêu."
+        ],
+        "en": {
+          "right": [
+            "Clash clash! Heo Chũm Chọe crashes his cymbals twice for joy.",
+            "The rhythm grows like a staircase, and {name} saw it straight away.",
+            "A filled dot: the fourth group gets four booms."
+          ],
+          "wrong": [
+            "The fourth group has only just started; it's not time to clack yet.",
+            "There's no rest at that spot. Count the groups again.",
+            "Try circling each group with your finger and see how much longer each one gets."
+          ]
+        }
+      },
+      "en": {
+        "title": "The next dot",
+        "goTo": "Go to the team shelter, where Heo Chũm Chọe is copying the rhythm onto his cymbal",
+        "prompt": "The opening line goes: ● ○ ● ● ○ ● ● ● ○ … What comes next?",
+        "choices": [
+          "●",
+          "○",
+          "–"
+        ]
+      }
+    },
+    {
+      "id": "xep-bon-khuc",
+      "title": "Bốn khúc nhạc bay tung",
+      "goTo": "Ra hàng ghế khán giả, gió vừa thổi tung bốn khúc nhạc trên giá",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-trong-hoi-lac-nhip-gia-nhac",
+      "skill": "so-sanh-so",
+      "prompt": "Thầy hiệu trưởng dặn: khúc nào ít chấm nhất thì gõ trước, nhiều chấm nhất gõ sau cùng. Xếp bốn khúc theo thứ tự gõ:",
+      "items": [
+        {
+          "id": "may",
+          "label": "Khúc Mây: ● ○ ● ○ ●"
+        },
+        {
+          "id": "sam",
+          "label": "Khúc Sấm: ● ○ ● ○ ● ○ ● ○"
+        },
+        {
+          "id": "gio",
+          "label": "Khúc Gió: ● ●"
+        },
+        {
+          "id": "mua",
+          "label": "Khúc Mưa: ○ ● ○"
+        }
+      ],
+      "answer": {
+        "order": [
+          "gio",
+          "mua",
+          "may",
+          "sam"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Đếm tất cả các chấm trong mỗi khúc, cả chấm đặc lẫn chấm rỗng.",
+          "Khúc ít chấm nhất đứng đầu."
+        ],
+        "hint": "Khúc Gió có 2 chấm, Khúc Sấm có tới 8 chấm.",
+        "answer": {
+          "text": "Gió, Mưa, Mây, Sấm",
+          "explanation": "Gió 2 chấm, Mưa 3 chấm, Mây 5 chấm, Sấm 8 chấm. Xếp từ ít tới nhiều thành một cơn giông: gió nổi, mưa rơi, mây kéo, sấm rền."
+        },
+        "en": {
+          "guide": [
+            "Count every dot in each part, filled and hollow.",
+            "The part with the fewest dots goes first."
+          ],
+          "hint": "The Wind part has 2 dots, the Thunder part has 8.",
+          "answer": {
+            "text": "Wind, Rain, Cloud, Thunder",
+            "explanation": "Wind has 2 dots, Rain 3, Cloud 5, Thunder 8. From fewest to most they make a storm: wind rises, rain falls, clouds roll in, thunder rumbles."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Gió, mưa, mây, sấm: cả cơn giông xếp hàng ngay ngắn!",
+          "{name} đếm chấm không sót cái nào, tờ nhạc lại liền mạch.",
+          "Ít trước nhiều sau, bài mở màn sẽ to dần như sấm thật."
+        ],
+        "wrong": [
+          "Khúc đứng đầu chưa phải khúc ít chấm nhất đâu, đếm lại nhé.",
+          "Nhớ đếm cả chấm rỗng, chấm nào cũng là một tiếng gõ.",
+          "Thử viết số chấm cạnh từng khúc rồi xếp các số từ bé đến lớn."
+        ],
+        "en": {
+          "right": [
+            "Wind, rain, cloud, thunder: the whole storm is lined up neatly!",
+            "{name} counted every dot, and the music runs smoothly again.",
+            "Fewest first, most last: the opening will swell like real thunder."
+          ],
+          "wrong": [
+            "The first part isn't the one with the fewest dots yet. Count again.",
+            "Remember the hollow dots too: every dot is a beat.",
+            "Write the number of dots beside each part, then order the numbers from smallest to biggest."
+          ]
+        }
+      },
+      "en": {
+        "title": "Four parts blown about",
+        "goTo": "Go to the audience benches, where the wind has just blown the four parts off the music stand",
+        "prompt": "The head teacher said: play the part with the fewest dots first and the one with the most dots last. Put the four parts in playing order:",
+        "items": [
+          "Cloud part: ● ○ ● ○ ●",
+          "Thunder part: ● ○ ● ○ ● ○ ● ○",
+          "Wind part: ● ●",
+          "Rain part: ○ ● ○"
+        ]
+      }
+    },
+    {
+      "id": "cach-do-run",
+      "title": "Cách cho vòi hết run",
+      "goTo": "Mang tờ nhạc đã xếp về bên sân khấu cho Voi Trống Hội",
+      "kind": "decision",
+      "target": "voi-trong-hoi",
+      "speaker": "Voi Trống Hội",
+      "prompt": "Voi Trống Hội thì thầm: «Tớ sợ nhất là đứng trước cả trường mà vòi run lẩy bẩy, gõ trật một nhịp là cả bài đổ.» {name} bày cho bạn cách nào?",
+      "choices": [
+        {
+          "id": "nhin-ban",
+          "text": "Lúc run thì nhìn xuống chỗ tớ ngồi",
+          "consequence": "Voi Trống Hội thở phào: «Thấy cậu là tớ nhớ ra mình không gõ một mình.»"
+        },
+        {
+          "id": "dem-nham",
+          "text": "Đếm nhẩm một hai ba bốn theo nhịp chân",
+          "consequence": "Voi dậm chân thình thịch, đếm khe khẽ. Đếm được thì tay cũng hết run."
+        },
+        {
+          "id": "tho-sau",
+          "text": "Hít một hơi thật dài bằng vòi rồi thở ra thật chậm",
+          "consequence": "Phù… Voi thở ra một hơi dài tới mức tờ nhạc bay phấp phới. Cả hai cùng phá lên cười."
+        }
+      ],
+      "en": {
+        "title": "How to stop a shaky trunk",
+        "goTo": "Take the sorted music back to Voi Trống Hội beside the stage",
+        "prompt": "Voi Trống Hội whispers: «What scares me most is standing before the whole school with my trunk shaking. One wrong beat and the whole piece falls apart.» What do you suggest, {name}?",
+        "choices": [
+          {
+            "text": "When you shake, look down at where I'm sitting",
+            "consequence": "Voi Trống Hội breathes out: «Seeing you, I'll remember I'm not drumming alone.»"
+          },
+          {
+            "text": "Count one two three four in time with your feet",
+            "consequence": "Voi stamps his feet, thump thump, counting softly. Once he is counting, his hands stop shaking."
+          },
+          {
+            "text": "Take a long breath in through your trunk and let it out slowly",
+            "consequence": "Phew… Voi breathes out so long that the music sheet flutters away. You both burst out laughing."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tap-ca-doi",
+      "title": "Tập cùng cả đội",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "prompt": "Cả đội nhại nhịp vỗ tay, theo kịp sáu vòng là tập xong!",
+      "game": "call-response",
+      "goal": 6,
+      "trigger": "auto",
+      "en": {
+        "title": "Practise with the team",
+        "prompt": "The team copies the clapping rhythm. Keep up for six rounds and practice is done!"
+      }
+    },
+    {
+      "id": "doi-trong-san-sang",
+      "title": "Đội trống sẵn sàng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Lần đầu tiên Voi Trống Hội gõ trọn bài theo tờ nhạc. Cậu ấy chép tay một tờ nhịp nhỏ, ký tên to tướng rồi tặng {name}.",
+      "en": {
+        "title": "The drum team is ready",
+        "text": "For the first time ever, Voi Trống Hội plays a whole piece from the sheet. He copies out a little rhythm card, signs it in huge letters and gives it to {name}."
+      }
+    },
+    {
+      "id": "ban-nho-sau-phong-man",
+      "title": "Bạn nhỏ sau phông màn",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Lúc cả đội ra về, Voi Trống Hội chỉ về phía phông màn: «Có một bạn gà con cứ nấp đó xem tập mãi. Mai diễn, tớ định rủ bạn ấy một việc…» Việc gì thì mai {name} sẽ biết.",
+      "en": {
+        "title": "The little one behind the curtain",
+        "text": "As the team heads home, Voi Trống Hội points at the curtain: «A little chick keeps hiding there to watch us practise. Tomorrow at the show, I want to ask her something…» What it is, {name} will find out tomorrow."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "doc-hieu": 1,
+      "logic": 1,
+      "so-sanh-so": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Voi Trống Hội's story, chapter 3: The rhythm in dots",
+    "summary": "The new opening piece is written in filled and hollow dots, and Voi Trống Hội has only ever drummed by ear. {name} reads the key, guesses the next beat, puts four parts back in order, rehearses with the team and hears what Voi fears most."
+  }
+}

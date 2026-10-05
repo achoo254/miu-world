@@ -1,0 +1,390 @@
+{
+  "id": "yarn-trong-hoi-lac-nhip-4",
+  "region": "truong-hoc",
+  "chapter": 3,
+  "title": "Chuyện của Voi Trống Hội, chương 4: Tiếng trống mở màn",
+  "status": "active",
+  "category": "story",
+  "summary": "Sáng hội diễn, sân khấu còn bừa bộn mà bạn Gà Con Mõ Tre nhút nhát vẫn nấp sau phông màn. {name} tìm đủ đạo cụ, xếp thẻ cho hàng ghế khách mời, giải câu đố của Gà Con rồi giúp Voi Trống Hội trao tiếng trống đầu tiên cho một bạn nhỏ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Voi Trống Hội, Gà Con Mõ Tre",
+    "where": "Trường học: bên sân khấu, sân khấu sự kiện, lối vào khán đài, sau phông màn",
+    "goal": "Mở màn hội diễn thật vang và rủ được bạn nhỏ nhút nhát cùng diễn",
+    "play": "Tìm ba món đạo cụ theo lời tả, chọn các thẻ có tổng bằng 10, giải câu đố cộng số của Gà Con, chọn ai gõ tiếng đầu tiên, gõ bài mở màn",
+    "learn": "Đọc hiểu lời tả, cộng trong phạm vi 20, tìm các cặp số có tổng bằng 10",
+    "reward": "80 XP, 25 Xu, Trống trường nhỏ, Skill XP Đọc hiểu, Phép cộng",
+    "next": "Voi Trống Hội ước được gõ trống ngày khai giảng"
+  },
+  "phases": {
+    "hook": "sang-hoi-dien",
+    "explore": "bay-dao-cu",
+    "learn": "the-ghe-hang-dau",
+    "challenge": "do-cua-ga-con",
+    "decision": "tieng-trong-dau-tien",
+    "finale": "bai-mo-man",
+    "reward": "ca-truong-vo-tay",
+    "next": "uoc-mo-trong-truong"
+  },
+  "places": {
+    "voi-trong-hoi": "Bên sân khấu",
+    "bay-dao-cu": "Sân khấu sự kiện",
+    "st-trong-hoi-lac-nhip-chong-the-ghe": "Lối vào khán đài",
+    "st-trong-hoi-lac-nhip-ga-con-mo-tre": "Sau phông màn"
+  },
+  "steps": [
+    {
+      "id": "sang-hoi-dien",
+      "title": "Sáng hội diễn",
+      "goTo": "Sáng hội diễn rồi! Chạy ra bên sân khấu gặp Voi Trống Hội",
+      "kind": "dialogue",
+      "target": "voi-trong-hoi",
+      "lines": [
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "Tùng tùng tùng! {name} tới rồi! Tớ dậy từ lúc gà chưa gáy, tập thở bằng vòi ba mươi lần."
+        },
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "Sân khấu còn bừa bộn, đạo cụ mỗi thứ một nơi. Còn bạn gà con hôm qua thì vẫn nấp sau phông màn."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình dọn sân khấu trước, rồi đi rủ bạn ấy.",
+          "reply": "Đúng kế hoạch của tớ! À không, kế hoạch của cậu, nhưng tớ thích lắm."
+        },
+        {
+          "text": "Cậu có run không?",
+          "reply": "Run chứ. Nhưng hôm nay là run kiểu háo hức, không phải kiểu muốn chui xuống gầm sân khấu."
+        }
+      ],
+      "en": {
+        "title": "Show morning",
+        "goTo": "It's show morning! Run over beside the stage to meet Voi Trống Hội",
+        "lines": [
+          "Boom boom boom! {name}'s here! I've been up since before the roosters, practising trunk-breathing thirty times.",
+          "The stage is still a mess, props all over the place. And the little chick from yesterday is still hiding behind the curtain."
+        ],
+        "choices": [
+          {
+            "text": "Let's sort the stage first, then go and ask her.",
+            "reply": "Just my plan! Well, your plan, but I love it."
+          },
+          {
+            "text": "Are you nervous?",
+            "reply": "Of course. But today it's the excited kind, not the hide-under-the-stage kind."
+          }
+        ]
+      }
+    },
+    {
+      "id": "bay-dao-cu",
+      "title": "Đạo cụ còn thiếu",
+      "goTo": "Lên sân khấu sự kiện tìm đạo cụ còn thiếu",
+      "kind": "find-object",
+      "prompt": "Bài mở màn cần ba món. Đọc lời tả rồi tìm cho đủ:",
+      "items": [
+        {
+          "id": "dui-go",
+          "name": "Đôi dùi gỗ mít",
+          "clue": "Hai que vàng ươm dài bằng nhau, đầu tròn, cầm vào thấy ấm tay.",
+          "target": "st-trong-hoi-lac-nhip-dui-go-mit"
+        },
+        {
+          "id": "mo-tre",
+          "name": "Chiếc mõ tre",
+          "clue": "Rỗng ruột, có một khe hở, gõ vào kêu cốc cốc như chim gõ kiến.",
+          "target": "st-trong-hoi-lac-nhip-mo-tre"
+        },
+        {
+          "id": "ruy-bang",
+          "name": "Dải ruy băng đỏ",
+          "clue": "Mềm như lụa, đỏ như hoa phượng, để thắt nơ lên thân trống.",
+          "target": "st-trong-hoi-lac-nhip-ruy-bang-do"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "The missing props",
+        "goTo": "Climb onto the event stage and find the missing props",
+        "prompt": "The opening piece needs three things. Read the descriptions and find them all:",
+        "items": [
+          {
+            "name": "Pair of jackfruit-wood sticks",
+            "clue": "Two golden sticks of equal length with round tips, warm in your hand."
+          },
+          {
+            "name": "Bamboo slit drum",
+            "clue": "Hollow inside with one slit; knock it and it goes tock-tock like a woodpecker."
+          },
+          {
+            "name": "Red ribbon",
+            "clue": "Soft as silk, red as a flame-tree flower, for tying a bow on the drum."
+          }
+        ]
+      }
+    },
+    {
+      "id": "the-ghe-hang-dau",
+      "title": "Thẻ cho hàng ghế đầu",
+      "goTo": "Ra lối vào khán đài xếp thẻ cho hàng ghế đầu",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-trong-hoi-lac-nhip-chong-the-ghe",
+      "skill": "phep-cong",
+      "prompt": "Hàng ghế đầu dành cho khách mời, mỗi ghế dán một thẻ có phép tính bằng 10. Chọn tất cả các thẻ dán được lên hàng đầu:",
+      "choices": [
+        {
+          "id": "a",
+          "text": "6 + 4"
+        },
+        {
+          "id": "b",
+          "text": "3 + 5"
+        },
+        {
+          "id": "c",
+          "text": "7 + 3"
+        },
+        {
+          "id": "d",
+          "text": "9 + 2"
+        },
+        {
+          "id": "e",
+          "text": "8 + 2"
+        },
+        {
+          "id": "f",
+          "text": "5 + 4"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "a",
+          "c",
+          "e"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Tính từng thẻ một.",
+          "Chỉ giữ lại những thẻ có kết quả đúng bằng 10."
+        ],
+        "hint": "Có đúng ba thẻ bằng 10; thẻ 9 + 2 thì lố mất một.",
+        "answer": {
+          "text": "6 + 4, 7 + 3 và 8 + 2",
+          "explanation": "6 + 4 = 10, 7 + 3 = 10, 8 + 2 = 10. Còn 3 + 5 = 8, 9 + 2 = 11, 5 + 4 = 9 nên không dán lên hàng đầu."
+        },
+        "en": {
+          "guide": [
+            "Work out each card one at a time.",
+            "Keep only the cards that make exactly 10."
+          ],
+          "hint": "Exactly three cards make 10; 9 + 2 goes one too far.",
+          "answer": {
+            "text": "6 + 4, 7 + 3 and 8 + 2",
+            "explanation": "6 + 4 = 10, 7 + 3 = 10, 8 + 2 = 10. But 3 + 5 = 8, 9 + 2 = 11 and 5 + 4 = 9, so those stay off the front row."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba thẻ tròn mười, hàng ghế đầu sẵn sàng đón khách!",
+          "{name} cộng nhẩm nhanh như tiếng trống dồn.",
+          "Không sót thẻ nào, không thừa thẻ nào, gọn gàng quá."
+        ],
+        "wrong": [
+          "Có một thẻ chưa đủ mười hoặc lố mất rồi, tính lại nhé.",
+          "Còn một thẻ bằng mười đang nằm lẫn trong chồng đấy.",
+          "Tính từng thẻ ra nháp rồi so với số mười xem."
+        ],
+        "en": {
+          "right": [
+            "Three cards that make ten: the front row is ready for guests!",
+            "{name} adds up as fast as a drum roll.",
+            "Not one card missing, not one too many. Very tidy."
+          ],
+          "wrong": [
+            "One card falls short of ten or goes over. Check again.",
+            "There's still a ten-card hiding in the pile.",
+            "Work each card out on scrap paper and compare it with ten."
+          ]
+        }
+      },
+      "en": {
+        "title": "Cards for the front row",
+        "goTo": "Go to the audience entrance and sort the cards for the front row",
+        "prompt": "The front row is for guests, and each seat gets a card whose sum is 10. Pick every card that can go on the front row:",
+        "choices": [
+          "6 + 4",
+          "3 + 5",
+          "7 + 3",
+          "9 + 2",
+          "8 + 2",
+          "5 + 4"
+        ]
+      }
+    },
+    {
+      "id": "do-cua-ga-con",
+      "title": "Câu đố sau phông màn",
+      "goTo": "Vén phông màn, Gà Con Mõ Tre đang nấp sau phông màn",
+      "kind": "riddle",
+      "target": "st-trong-hoi-lac-nhip-ga-con-mo-tre",
+      "skill": "phep-cong",
+      "question": "Gà Con Mõ Tre nói lí nhí: «Tớ chỉ ra nếu cậu giải được câu này. Mõ của tớ có 1 khe, trống của Voi có 2 mặt, chũm chọe của Heo có 2 chiếc, phách của Vẹt có 2 thanh. Cộng tất cả lại là mấy?»",
+      "answer": {
+        "value": 7
+      },
+      "support": {
+        "guide": [
+          "Viết từng số ra: mõ 1, trống 2, chũm chọe 2, phách 2.",
+          "Cộng dần từng số một, từ trái sang phải nhé."
+        ],
+        "hint": "1 + 2 = 3, rồi cộng tiếp hai số 2 nữa.",
+        "answer": {
+          "text": "7",
+          "explanation": "1 + 2 + 2 + 2 = 7: một khe mõ, hai mặt trống, hai chiếc chũm chọe và hai thanh phách."
+        },
+        "en": {
+          "guide": [
+            "Write each number down: slit drum 1, drum 2, cymbals 2, clappers 2.",
+            "Add them one by one from left to right."
+          ],
+          "hint": "1 + 2 = 3, then add the other two 2s.",
+          "answer": {
+            "text": "7",
+            "explanation": "1 + 2 + 2 + 2 = 7: one slit, two drum faces, two cymbals and two clapper sticks."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảy! Gà Con thò đầu ra, mắt tròn xoe.",
+          "Câu đố của bạn nhút nhát nhất trường mà {name} giải gọn ơ.",
+          "Cốc cốc! Gà Con gõ mõ hai tiếng khen cậu."
+        ],
+        "wrong": [
+          "Gà Con rụt đầu vào: hình như cậu quên một món nhạc cụ.",
+          "Đếm lại xem đủ bốn món chưa: mõ, trống, chũm chọe, phách.",
+          "Mõ chỉ có một khe thôi, còn ba món kia mỗi món là hai."
+        ],
+        "en": {
+          "right": [
+            "Seven! Gà Con pokes her head out, eyes wide.",
+            "The shyest pupil in school set a riddle, and {name} cracked it neatly.",
+            "Tock tock! Gà Con knocks her slit drum twice to say well done."
+          ],
+          "wrong": [
+            "Gà Con ducks back in: you seem to have forgotten an instrument.",
+            "Count again: are all four there? Slit drum, drum, cymbals, clappers.",
+            "The slit drum has only one slit; the other three come in twos."
+          ]
+        }
+      },
+      "en": {
+        "title": "The riddle behind the curtain",
+        "goTo": "Lift the curtain: Gà Con Mõ Tre is hiding behind the curtain",
+        "question": "Gà Con Mõ Tre whispers: «I'll only come out if you solve this. My slit drum has 1 slit, Voi's drum has 2 faces, Heo's cymbals come as 2, and Vẹt's clappers are 2 sticks. What do they all add up to?»"
+      }
+    },
+    {
+      "id": "tieng-trong-dau-tien",
+      "title": "Tiếng gõ đầu tiên",
+      "goTo": "Dắt Gà Con về bên sân khấu gặp Voi Trống Hội",
+      "kind": "decision",
+      "target": "voi-trong-hoi",
+      "speaker": "Voi Trống Hội",
+      "prompt": "Voi Trống Hội cúi xuống thật thấp: «Hồi bé tớ cũng nấp như cậu đấy.» Rồi cậu ấy quay sang {name}: tiếng đầu tiên của buổi diễn, để ai gõ?",
+      "choices": [
+        {
+          "id": "ga-go-mo",
+          "text": "Để Gà Con gõ mõ mở màn",
+          "consequence": "Cốc! Tiếng mõ nhỏ xíu mà cả sân im phăng phắc lắng nghe. Gà Con đỏ mặt nhưng không trốn nữa."
+        },
+        {
+          "id": "cung-go",
+          "text": "Voi và Gà Con cùng gõ một tiếng thật to",
+          "consequence": "Tùng! Cốc! Hai tiếng hòa làm một, to như sấm mà tròn như tiếng cười."
+        },
+        {
+          "id": "voi-go-truoc",
+          "text": "Voi gõ trước, Gà Con gõ đáp lại",
+          "consequence": "Tùng… cốc. Tùng… cốc. Như hai bạn trò chuyện, cả trường vỗ tay theo nhịp."
+        }
+      ],
+      "en": {
+        "title": "The very first beat",
+        "goTo": "Bring Gà Con over beside the stage to meet Voi Trống Hội",
+        "prompt": "Voi Trống Hội bends down low: «I used to hide just like you.» Then he turns to {name}: who plays the very first beat of the show?",
+        "choices": [
+          {
+            "text": "Let Gà Con open with her slit drum",
+            "consequence": "Tock! Such a tiny sound, yet the whole yard falls silent to listen. Gà Con blushes, but she doesn't hide any more."
+          },
+          {
+            "text": "Voi and Gà Con strike one big beat together",
+            "consequence": "Boom! Tock! The two sounds become one, loud as thunder and round as a laugh."
+          },
+          {
+            "text": "Voi plays first and Gà Con answers",
+            "consequence": "Boom… tock. Boom… tock. Like two friends chatting, and the whole school claps along."
+          }
+        ]
+      }
+    },
+    {
+      "id": "bai-mo-man",
+      "title": "Bài mở màn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "prompt": "Bài mở màn bắt đầu! Gõ trống được ba mươi điểm cho cả trường nghe nào!",
+      "game": "drum-beat",
+      "goal": 30,
+      "trigger": "auto",
+      "en": {
+        "title": "The opening piece",
+        "prompt": "The opening piece begins! Score thirty points so the whole school can hear!"
+      }
+    },
+    {
+      "id": "ca-truong-vo-tay",
+      "title": "Cả trường vỗ tay",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cả trường vỗ tay rần rần. Voi Trống Hội gỡ mảnh sành trong lòng trống, buộc vào chiếc mõ của Gà Con bằng dải ruy băng đỏ: «Giờ đến lượt cậu giữ may mắn nhé.» Rồi cậu ấy tặng {name} một chiếc trống trường nhỏ xinh.",
+      "en": {
+        "title": "The whole school claps",
+        "text": "The whole school bursts into applause. Voi Trống Hội takes the shard from inside his drum and ties it to Gà Con's slit drum with the red ribbon: «Your turn to keep the luck.» Then he gives {name} a tiny school drum."
+      }
+    },
+    {
+      "id": "uoc-mo-trong-truong",
+      "title": "Trống ngày khai giảng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tan buổi, Voi Trống Hội đứng ngắm chiếc trống trường cũ dưới hiên: «Năm học tới, tớ sẽ xin thầy hiệu trưởng cho gõ trống khai giảng. Không run nữa đâu, mà có run thì tớ nhìn xuống chỗ cậu.»",
+      "en": {
+        "title": "The first-day drum",
+        "text": "After the show, Voi Trống Hội gazes at the old school drum under the eaves: «Next school year, I'll ask the head teacher if I can beat the drum on the first day. No more shaking. And if I do shake, I'll look for you.»"
+      }
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 25,
+    "skillXp": {
+      "doc-hieu": 1,
+      "phep-cong": 1
+    },
+    "items": {
+      "trong-truong-nho": 1
+    }
+  },
+  "en": {
+    "title": "Voi Trống Hội's story, chapter 4: The opening beat",
+    "summary": "On show morning the stage is still a mess, and shy Gà Con Mõ Tre is still hiding behind the curtain. {name} finds the props, sorts the cards for the guest row, solves Gà Con's riddle and helps Voi Trống Hội hand the very first beat to a little friend."
+  }
+}

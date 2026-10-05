@@ -1,0 +1,401 @@
+{
+  "id": "yarn-trong-hoi-lac-nhip-2",
+  "region": "truong-hoc",
+  "chapter": 3,
+  "title": "Chuyện của Voi Trống Hội, chương 2: Mảnh sành may mắn",
+  "status": "active",
+  "category": "story",
+  "summary": "Mảnh sành nhỏ Voi Trống Hội vẫn giấu trong lòng trống đã biến mất. {name} lần theo dấu vết quanh cổng dịch chuyển, giải câu đố của Vẹt Phách Tre, chọn đúng mảnh sành trong tổ ác là, rồi được nghe chuyện chiếc nồi cơm của bà.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Voi Trống Hội, Vẹt Phách Tre, một chú ác là mê đồ lấp lánh",
+    "where": "Trường học: bên sân khấu, cổng dịch chuyển, gốc bàng già, mái hiên cửa hàng",
+    "goal": "Tìm lại mảnh sành may mắn của Voi Trống Hội",
+    "play": "Lần theo ba dấu vết, giải câu đố đếm đồ trên mái, so số vòng hoa văn để chọn mảnh sành, quyết định làm gì cho chú ác là",
+    "learn": "Cộng nhiều số hạng bằng nhau, so sánh số để loại trừ",
+    "reward": "65 XP, 15 Xu, Tem bé ngoan, Skill XP Phép cộng, So sánh số",
+    "next": "Giúp Voi Trống Hội đọc bản nhịp mới viết bằng chấm tròn"
+  },
+  "phases": {
+    "hook": "voi-thu-tham",
+    "explore": "lan-dau-vet",
+    "learn": "do-cua-vet",
+    "challenge": "chon-manh-sanh",
+    "decision": "qua-cho-ac-la",
+    "finale": "chuyen-noi-com",
+    "reward": "manh-sanh-ve-trong",
+    "next": "ban-nhip-moi"
+  },
+  "places": {
+    "voi-trong-hoi": "Bên sân khấu",
+    "lan-dau-vet": "Cổng dịch chuyển",
+    "st-trong-hoi-lac-nhip-vet-phach-tre": "Gốc bàng già",
+    "st-trong-hoi-lac-nhip-to-ac-la": "Cửa hàng"
+  },
+  "steps": [
+    {
+      "id": "voi-thu-tham",
+      "title": "Voi Trống Hội tìm đồ",
+      "goTo": "Quay lại bên sân khấu, Voi Trống Hội đang lật tung đống phông màn",
+      "kind": "dialogue",
+      "target": "voi-trong-hoi",
+      "lines": [
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "Tớ lục khắp lòng trống rồi, {name} ạ. Mảnh sành nâu bằng bàn tay em bé, tớ vẫn dán bên trong cho may mắn."
+        },
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "Nghe thì vớ vẩn lắm, nhưng thiếu nó tớ cứ thấy tay mình sắp gõ hụt."
+        },
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "Sáng nay có con chim đen trắng sà xuống sân khấu, rồi bay về phía cổng dịch chuyển."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Chẳng vớ vẩn đâu, mình đi tìm ngay!",
+          "reply": "Cậu tốt quá. Tai tớ sẽ dỏng lên nghe ngóng giúp cậu."
+        },
+        {
+          "text": "Chim đen trắng là chim gì nhỉ?",
+          "reply": "Ác là đấy! Nó mê đồ lấp lánh như tớ mê tiếng trống."
+        }
+      ],
+      "en": {
+        "title": "Voi Trống Hội searches",
+        "goTo": "Go back beside the stage, where Voi Trống Hội is turning the curtains upside down",
+        "lines": [
+          "I've searched the whole drum, {name}. A brown shard the size of a baby's hand. I always keep it stuck inside for luck.",
+          "It sounds silly, but without it my hands feel like they're about to miss the beat.",
+          "This morning a black-and-white bird swooped onto the stage, then flew off towards the portal gate."
+        ],
+        "choices": [
+          {
+            "text": "It's not silly, let's go and find it!",
+            "reply": "You're so kind. I'll prick up my ears and listen out for you."
+          },
+          {
+            "text": "What bird is black and white?",
+            "reply": "A magpie! It loves shiny things the way I love a drumbeat."
+          }
+        ]
+      }
+    },
+    {
+      "id": "lan-dau-vet",
+      "title": "Dấu vết quanh cổng",
+      "goTo": "Lần theo dấu vết con chim quanh cổng dịch chuyển",
+      "kind": "search",
+      "targets": [
+        "st-trong-hoi-lac-nhip-long-ac-la",
+        "st-trong-hoi-lac-nhip-vo-keo-lap-lanh",
+        "st-trong-hoi-lac-nhip-dau-chan-chim"
+      ],
+      "en": {
+        "title": "Clues round the gate",
+        "goTo": "Follow the bird's trail round the portal gate"
+      }
+    },
+    {
+      "id": "do-cua-vet",
+      "title": "Câu đố của Vẹt Phách Tre",
+      "goTo": "Hỏi Vẹt Phách Tre đang tập phách dưới gốc bàng già",
+      "kind": "riddle",
+      "target": "st-trong-hoi-lac-nhip-vet-phach-tre",
+      "skill": "phep-cong",
+      "question": "Vẹt Phách Tre gõ cạch cạch: «Ác là giấu đồ trên mái cửa hàng. Mái có bốn ô ngói, mỗi ô nó nhét hai món lấp lánh, riêng ô cuối nhét thêm một mảnh sành. Đố cậu: trên mái có tất cả mấy món?»",
+      "answer": {
+        "value": 9
+      },
+      "support": {
+        "guide": [
+          "Bốn ô, mỗi ô hai món: cộng 2 + 2 + 2 + 2.",
+          "Đừng quên món giấu thêm ở ô cuối."
+        ],
+        "hint": "Bốn ô được 8 món, còn mảnh sành nữa.",
+        "answer": {
+          "text": "9 món",
+          "explanation": "2 + 2 + 2 + 2 = 8 món lấp lánh, thêm một mảnh sành là 8 + 1 = 9 món."
+        },
+        "en": {
+          "guide": [
+            "Four squares, two things each: add 2 + 2 + 2 + 2.",
+            "Don't forget the extra thing in the last square."
+          ],
+          "hint": "Four squares make 8 things, then there's the shard.",
+          "answer": {
+            "text": "9 things",
+            "explanation": "2 + 2 + 2 + 2 = 8 shiny things, plus one shard makes 8 + 1 = 9."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cạch cạch cạch! Chín món, Vẹt Phách Tre gõ phách khen ba lần.",
+          "Đếm khéo lắm, giờ mình leo lên xem mái cửa hàng.",
+          "{name} nhớ cả món giấu thêm, ác là chẳng lừa được cậu."
+        ],
+        "wrong": [
+          "Gần đúng rồi, nhưng còn mảnh sành ở ô cuối thì sao?",
+          "Đếm lại từng ô, mỗi ô hai món nhé.",
+          "Thử vẽ bốn ô ngói ra đất rồi chấm hai chấm vào mỗi ô xem."
+        ],
+        "en": {
+          "right": [
+            "Clack clack clack! Nine things. Vẹt Phách Tre claps his clappers three times.",
+            "Nicely counted. Now let's check the shop roof.",
+            "{name} remembered the extra one. That magpie can't fool you."
+          ],
+          "wrong": [
+            "Nearly! But what about the shard in the last square?",
+            "Count square by square again, two things in each.",
+            "Try drawing four tiles in the dirt and putting two dots in each."
+          ]
+        }
+      },
+      "en": {
+        "title": "Vẹt Phách Tre's riddle",
+        "goTo": "Ask Vẹt Phách Tre, who is practising his clappers under the old almond tree",
+        "question": "Vẹt Phách Tre clacks his clappers: «The magpie hides things on the shop roof. The roof has four tile squares; it stuffs two shiny things in each, and one extra shard in the last square. Riddle me this: how many things are on the roof altogether?»"
+      }
+    },
+    {
+      "id": "chon-manh-sanh",
+      "title": "Mảnh nào của Voi?",
+      "goTo": "Tới cửa hàng, tổ ác là nằm ngay trên mái hiên",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-trong-hoi-lac-nhip-to-ac-la",
+      "skill": "so-sanh-so",
+      "prompt": "Trong tổ có bốn mảnh sành. Voi Trống Hội nhớ: mảnh của cậu ấy có nhiều vòng hoa văn hơn mảnh xanh, nhưng ít vòng hơn mảnh có vết nứt. Mảnh nào là của Voi?",
+      "elements": [
+        {
+          "id": "xanh",
+          "label": "Mảnh xanh: 2 vòng"
+        },
+        {
+          "id": "nau",
+          "label": "Mảnh nâu: 4 vòng"
+        },
+        {
+          "id": "nut",
+          "label": "Mảnh có vết nứt: 5 vòng"
+        },
+        {
+          "id": "trang",
+          "label": "Mảnh trắng: 7 vòng"
+        }
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "Mảnh xanh"
+        },
+        {
+          "id": "b",
+          "text": "Mảnh nâu"
+        },
+        {
+          "id": "c",
+          "text": "Mảnh có vết nứt"
+        },
+        {
+          "id": "d",
+          "text": "Mảnh trắng"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Mảnh của Voi nhiều hơn 2 vòng.",
+          "Nhưng phải ít hơn 5 vòng.",
+          "Tìm số nằm giữa 2 và 5."
+        ],
+        "hint": "Chỉ có một mảnh có số vòng lớn hơn 2 mà nhỏ hơn 5.",
+        "answer": {
+          "text": "Mảnh nâu",
+          "explanation": "Mảnh nâu có 4 vòng: 4 lớn hơn 2 và 4 nhỏ hơn 5. Mảnh trắng 7 vòng thì còn nhiều hơn cả mảnh nứt."
+        },
+        "en": {
+          "guide": [
+            "Voi's shard has more than 2 rings.",
+            "But it must have fewer than 5.",
+            "Look for the number between 2 and 5."
+          ],
+          "hint": "Only one shard has more than 2 rings and fewer than 5.",
+          "answer": {
+            "text": "Brown shard",
+            "explanation": "The brown shard has 4 rings: 4 is more than 2 and less than 5. The white one's 7 rings are even more than the cracked one's."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mảnh nâu đây rồi! Còn thoảng mùi cơm cháy nữa cơ.",
+          "So số vòng giỏi ghê, {name} tìm đúng mảnh ngay lần này.",
+          "Nhiều hơn hai, ít hơn năm: chỉ có thể là bốn vòng thôi."
+        ],
+        "wrong": [
+          "Mảnh này không lọt vào giữa hai điều Voi nhớ, xem lại số vòng nha.",
+          "Nhớ cả hai điều: hơn mảnh xanh và kém mảnh nứt.",
+          "Thử xếp số vòng từ ít tới nhiều rồi tìm chỗ đứng giữa."
+        ],
+        "en": {
+          "right": [
+            "The brown shard! It still smells faintly of crispy rice.",
+            "Great ring-counting, {name} picked the right shard first go.",
+            "More than two, fewer than five: it can only be four rings."
+          ],
+          "wrong": [
+            "That one doesn't fit between the two things Voi remembers. Check the rings again.",
+            "Keep both clues in mind: more than the green, fewer than the cracked one.",
+            "Line the ring counts up from fewest to most and find the one in between."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which shard is Voi's?",
+        "goTo": "Go to the shop, where the magpie nest sits right on the porch roof",
+        "elements": [
+          "Green shard: 2 rings",
+          "Brown shard: 4 rings",
+          "Cracked shard: 5 rings",
+          "White shard: 7 rings"
+        ],
+        "prompt": "There are four shards in the nest. Voi Trống Hội remembers: his has more pattern rings than the green shard, but fewer than the cracked one. Which shard is Voi's?",
+        "choices": [
+          "Green shard",
+          "Brown shard",
+          "Cracked shard",
+          "White shard"
+        ]
+      }
+    },
+    {
+      "id": "qua-cho-ac-la",
+      "title": "Món quà cho ác là",
+      "kind": "decision",
+      "target": "st-trong-hoi-lac-nhip-to-ac-la",
+      "prompt": "Lấy lại mảnh sành rồi, nhưng tổ ác là trống huơ trống hoác. {name} làm gì cho chú chim?",
+      "choices": [
+        {
+          "id": "tra-cho-hang",
+          "text": "Mang chiếc thìa bạc ác là tha về trả cửa hàng",
+          "consequence": "Bác chủ cửa hàng mừng rỡ vì tìm được chiếc thìa, còn dúi cho {name} một viên kẹo gừng."
+        },
+        {
+          "id": "de-lai-cuc",
+          "text": "Để lại trong tổ một chiếc cúc áo bóng loáng",
+          "consequence": "Ác là sà xuống, nghiêng đầu ngắm chiếc cúc rồi kêu khách khách như cảm ơn."
+        },
+        {
+          "id": "treo-nap-chai",
+          "text": "Treo một chuỗi nắp chai leng keng cạnh tổ",
+          "consequence": "Gió thổi qua, chuỗi nắp chai kêu leng keng. Ác là có đồ chơi mới, chắc chẳng thèm tha mảnh sành nữa."
+        }
+      ],
+      "en": {
+        "title": "A gift for the magpie",
+        "prompt": "The shard's back, but now the magpie's nest is bare. What will {name} do for the bird?",
+        "choices": [
+          {
+            "text": "Take the silver spoon the magpie pinched back to the shop",
+            "consequence": "The shopkeeper is thrilled to have the spoon back and slips {name} a ginger sweet."
+          },
+          {
+            "text": "Leave a shiny button in the nest",
+            "consequence": "The magpie swoops down, tilts its head at the button and chatters as if to say thanks."
+          },
+          {
+            "text": "Hang a jingly string of bottle caps by the nest",
+            "consequence": "The breeze sets the caps jingling. With a new toy, the magpie won't bother with shards any more."
+          }
+        ]
+      }
+    },
+    {
+      "id": "chuyen-noi-com",
+      "title": "Chiếc nồi cơm của bà",
+      "goTo": "Mang mảnh sành về bên sân khấu trả Voi Trống Hội",
+      "kind": "dialogue",
+      "target": "voi-trong-hoi",
+      "lines": [
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "Ôi, đúng nó rồi! {name} biết không, đây là mảnh nồi cơm của bà tớ."
+        },
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "Hồi bé tớ nhút nhát, chẳng dám nói với ai. Bà úp cái nồi sứt xuống, đưa tớ đôi đũa cả và bảo: nói không được thì gõ."
+        },
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "Cái nồi vỡ lâu rồi, tớ chỉ giữ lại mảnh này. Hôm nào thiếu nó, tớ lại thấy mình bé tí."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Giờ cậu gõ hay nhất trường rồi còn gì.",
+          "reply": "Hì, nhưng bên trong vẫn là chú voi con nấp sau nồi cơm đấy."
+        }
+      ],
+      "en": {
+        "title": "Grandma's rice pot",
+        "goTo": "Bring the shard back to Voi Trống Hội beside the stage",
+        "lines": [
+          "Oh, that's it! You know what, {name}? This is a piece of my grandma's rice pot.",
+          "When I was little I was too shy to talk to anyone. Grandma turned her chipped pot upside down, handed me her big rice paddles and said: if you can't say it, drum it.",
+          "The pot broke long ago. I only kept this piece. Whenever it goes missing, I feel tiny again."
+        ],
+        "choices": [
+          {
+            "text": "And now you're the best drummer in school!",
+            "reply": "Heh, but inside I'm still the little calf hiding behind a rice pot."
+          }
+        ]
+      }
+    },
+    {
+      "id": "manh-sanh-ve-trong",
+      "title": "Mảnh sành về lại trống",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Voi Trống Hội dán mảnh sành vào lòng trống, gõ một tràng tùng tùng cảm ơn rồi tặng {name} một chiếc tem bé ngoan.",
+      "en": {
+        "title": "The shard goes home",
+        "text": "Voi Trống Hội sticks the shard back inside his drum, plays a rolling thank-you and gives {name} a good-pupil stamp."
+      }
+    },
+    {
+      "id": "ban-nhip-moi",
+      "title": "Bản nhịp mới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Vừa lúc ấy Vẹt Phách Tre chạy tới, tay cầm tờ giấy kín những chấm tròn: «Thầy hiệu trưởng đổi bài mở màn rồi, nhịp mới viết bằng chấm!» Voi Trống Hội nhìn tờ giấy, vòi cứng đơ.",
+      "en": {
+        "title": "A new rhythm",
+        "text": "Just then Vẹt Phách Tre rushes over with a sheet covered in dots: «The head teacher changed the opening piece, and the new rhythm is written in dots!» Voi Trống Hội stares at the sheet and his trunk goes stiff."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 15,
+    "skillXp": {
+      "phep-cong": 1,
+      "so-sanh-so": 1
+    },
+    "items": {
+      "tem-be-ngoan": 1
+    }
+  },
+  "en": {
+    "title": "Voi Trống Hội's story, chapter 2: The lucky shard",
+    "summary": "The little shard Voi Trống Hội keeps inside his drum has vanished. {name} follows the trail round the portal gate, solves Vẹt Phách Tre's riddle, picks the right shard out of a magpie's nest, then hears the story of Grandma's rice pot."
+  }
+}

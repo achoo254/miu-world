@@ -1,0 +1,375 @@
+{
+  "id": "yarn-meo-ve-buc-tuong-3",
+  "region": "truong-hoc",
+  "chapter": 2,
+  "title": "Chuyện của Mèo Vẽ Màu, chương 3: Bức tranh của cả trường",
+  "status": "active",
+  "category": "story",
+  "summary": "Mèo Vẽ Màu nghĩ ra cách đánh dấu màu bằng hình để ai cũng vẽ được. {name} đọc bảng mã màu, chọn nắp lọ cho cảnh cây táo, gom cọ cho các bạn, chọn cách ký tên và tô những mảng cuối cùng của bức tường Mèo mơ từ thuở mèo con.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Vẽ Màu và các bạn trong trường",
+    "where": "Trường học: phòng mĩ thuật, chân cầu thang, bàn cô giáo, gốc bàng sân chơi, sân sau dãy lớp",
+    "goal": "Cùng cả trường vẽ xong bức tường dài",
+    "play": "Đọc bảng mã màu bằng hình, chọn đủ các nắp lọ cần mở, tìm ba cây cọ để quên, chọn cách ký tên bức tranh, ném màu tô mảng cuối",
+    "learn": "Đọc hiểu bảng ký hiệu, nhận biết hình tròn, tam giác, vuông",
+    "reward": "70 XP, 20 Xu, Bút mực tím, Skill XP Đọc hiểu, Hình phẳng",
+    "next": "Mỗi năm học bức tường sẽ có thêm một cảnh mới"
+  },
+  "phases": {
+    "hook": "y-tuong-buoi-sang",
+    "explore": "doc-bang-ma-mau",
+    "learn": "doc-bang-ma-mau",
+    "challenge": "chon-nap-cay-tao",
+    "decision": "ky-ten-buc-tranh",
+    "finale": "net-ve-cuoi-cung",
+    "reward": "buc-tuong-bay-mau",
+    "next": "tuong-con-cho-trong"
+  },
+  "places": {
+    "meo-hoa-si": "Phòng mĩ thuật",
+    "st-meo-ve-buc-tuong-bang-ma-mau": "Cầu thang",
+    "st-meo-ve-buc-tuong-khay-nap-lo": "Bàn cô giáo",
+    "gom-co-ve": "Gốc bàng sân chơi",
+    "st-meo-ve-buc-tuong-tuong-sap-xong": "Sân sau dãy lớp"
+  },
+  "steps": [
+    {
+      "id": "y-tuong-buoi-sang",
+      "title": "Ý tưởng buổi sáng",
+      "goTo": "Tới phòng mĩ thuật, Mèo Vẽ Màu vẫy cậu bằng cái đuôi bảy màu",
+      "kind": "dialogue",
+      "target": "meo-hoa-si",
+      "lines": [
+        {
+          "speaker": "Mèo Vẽ Màu",
+          "text": "{name}! Tớ thức trắng nghĩ ra rồi: mỗi màu một hình. Tròn là đỏ, tam giác là xanh lá. Mắt tớ lẫn màu chứ đâu có lẫn hình!"
+        },
+        {
+          "speaker": "Mèo Vẽ Màu",
+          "text": "Vẽ hình lên nắp lọ thì mưa chẳng rửa trôi, bạn nào chưa biết chữ cũng đọc được. Cả trường cùng vẽ bức tường luôn!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Hay quá, mình dán bảng mã ở đâu?",
+          "reply": "Ở chân cầu thang, chỗ ai lên lớp cũng phải đi qua."
+        },
+        {
+          "text": "Vậy là cậu không giấu nữa à?",
+          "reply": "Không giấu nữa. Tớ còn định vẽ một ông mặt trời xanh lá thật to, ai hỏi thì tớ kể."
+        }
+      ],
+      "en": {
+        "title": "The morning idea",
+        "goTo": "Go to the art room, where Mèo Vẽ Màu waves at you with his rainbow tail",
+        "lines": [
+          "{name}! I stayed up all night and worked it out: one shape for each colour. Circle is red, triangle is green. My eyes mix up colours, but never shapes!",
+          "Shapes painted on the lids won't wash off in the rain, and friends who can't read yet can still follow them. The whole school can paint the wall together!"
+        ],
+        "choices": [
+          {
+            "text": "Brilliant! Where do we put up the code board?",
+            "reply": "At the foot of the stairs, where everyone passes on the way to class."
+          },
+          {
+            "text": "So you're not hiding it any more?",
+            "reply": "Not any more. I'm even going to paint a big green sun, and anyone who asks gets the story."
+          }
+        ]
+      }
+    },
+    {
+      "id": "doc-bang-ma-mau",
+      "title": "Bảng mã màu",
+      "goTo": "Ra chân cầu thang đọc bảng mã màu vừa dán",
+      "kind": "read",
+      "target": "st-meo-ve-buc-tuong-bang-ma-mau",
+      "skill": "doc-hieu",
+      "text": "BẢNG MÃ MÀU CỦA MÈO VẼ MÀU\nHình tròn: màu đỏ, như quả cà chua chín.\nHình tam giác: màu xanh lá, như ngọn cây.\nHình vuông: màu vàng, như viên gạch phơi nắng.\nHình ngôi sao: màu xanh lam, như bầu trời đêm.\nAi muốn vẽ, cứ nhìn hình trên nắp lọ!",
+      "question": "Bạn Gà muốn tô lá cây. Bạn ấy nên mở lọ có hình gì trên nắp?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Hình tròn"
+        },
+        {
+          "id": "b",
+          "text": "Hình tam giác"
+        },
+        {
+          "id": "c",
+          "text": "Hình vuông"
+        },
+        {
+          "id": "d",
+          "text": "Hình ngôi sao"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Lá cây có màu gì?",
+          "Tìm dòng của màu đó trên bảng mã."
+        ],
+        "hint": "Bảng mã ví màu này với ngọn cây.",
+        "answer": {
+          "text": "Hình tam giác",
+          "explanation": "Lá cây màu xanh lá, và bảng mã ghi: hình tam giác là màu xanh lá, như ngọn cây."
+        },
+        "en": {
+          "guide": [
+            "What colour are leaves?",
+            "Find that colour's line on the code board."
+          ],
+          "hint": "The board compares this colour to a treetop.",
+          "answer": {
+            "text": "Triangle",
+            "explanation": "Leaves are green, and the board says: triangle means green, like a treetop."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tam giác đấy! Ngọn cây nhọn nhọn, dễ nhớ ghê.",
+          "{name} đọc bảng mã một lần là thuộc.",
+          "Đúng rồi, lá xanh thì mở nắp tam giác."
+        ],
+        "wrong": [
+          "Hình đó là màu khác rồi, tìm dòng có chữ «xanh lá» nhé.",
+          "Lá cây đâu phải màu trời đêm, đọc lại nha.",
+          "Nghĩ xem lá cây màu gì, rồi dò bảng từ trên xuống."
+        ],
+        "en": {
+          "right": [
+            "Triangle! Treetops are pointy, so it's easy to remember.",
+            "{name} learned the code board in one read.",
+            "Right: green leaves mean the triangle lid."
+          ],
+          "wrong": [
+            "That shape is a different colour. Look for the line that says «green».",
+            "Leaves aren't the colour of the night sky. Read it again.",
+            "Think what colour leaves are, then run down the board from the top."
+          ]
+        }
+      },
+      "en": {
+        "title": "The colour code",
+        "goTo": "Go to the foot of the stairs and read the new colour code",
+        "text": "MÈO VẼ MÀU'S COLOUR CODE\nCircle: red, like a ripe tomato.\nTriangle: green, like a treetop.\nSquare: yellow, like a brick in the sun.\nStar: blue, like the night sky.\nWant to paint? Just look at the shape on the lid!",
+        "question": "A chick wants to paint leaves. Which shape should be on the lid she opens?",
+        "choices": [
+          "Circle",
+          "Triangle",
+          "Square",
+          "Star"
+        ]
+      }
+    },
+    {
+      "id": "chon-nap-cay-tao",
+      "title": "Nắp lọ cho cây táo",
+      "goTo": "Tới bàn cô giáo, khay nắp lọ màu đang chờ",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-meo-ve-buc-tuong-khay-nap-lo",
+      "skill": "hinh-phang",
+      "prompt": "Mèo Vẽ Màu sắp vẽ cây táo: quả đỏ, lá xanh lá, dưới bầu trời xanh lam. Chọn tất cả các nắp cần mở:",
+      "choices": [
+        {
+          "id": "tron",
+          "text": "Nắp hình tròn"
+        },
+        {
+          "id": "tam-giac",
+          "text": "Nắp hình tam giác"
+        },
+        {
+          "id": "vuong",
+          "text": "Nắp hình vuông"
+        },
+        {
+          "id": "sao",
+          "text": "Nắp hình ngôi sao"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "tron",
+          "tam-giac",
+          "sao"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Bức tranh cần ba màu: đỏ, xanh lá, xanh lam.",
+          "Dò bảng mã xem mỗi màu ứng với hình nào."
+        ],
+        "hint": "Không có gì màu vàng trong cảnh này.",
+        "answer": {
+          "text": "Tròn, tam giác, ngôi sao",
+          "explanation": "Quả đỏ là hình tròn, lá xanh lá là hình tam giác, trời xanh lam là ngôi sao. Hình vuông là màu vàng, cảnh này không cần."
+        },
+        "en": {
+          "guide": [
+            "The picture needs three colours: red, green and blue.",
+            "Check the code to see which shape goes with each colour."
+          ],
+          "hint": "Nothing in this scene is yellow.",
+          "answer": {
+            "text": "Circle, triangle, star",
+            "explanation": "Red apples mean the circle, green leaves the triangle, the blue sky the star. The square is yellow, which this scene doesn't need."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba nắp mở toang, cây táo sắp chín đỏ trên tường rồi!",
+          "{name} chọn đủ màu mà không thừa nắp nào.",
+          "Tròn, tam giác, ngôi sao: Mèo Vẽ Màu reo lên như vừa câu được cá."
+        ],
+        "wrong": [
+          "Cảnh này chẳng có gì màu vàng đâu, bỏ bớt một nắp nhé.",
+          "Còn thiếu màu của bầu trời đấy {name}.",
+          "Dò lại bảng mã: mỗi thứ trong tranh một màu, mỗi màu một hình."
+        ],
+        "en": {
+          "right": [
+            "Three lids open, and the apple tree is about to ripen on the wall!",
+            "{name} picked every colour without one extra lid.",
+            "Circle, triangle, star: Mèo Vẽ Màu cheers like he's just caught a fish."
+          ],
+          "wrong": [
+            "Nothing in this scene is yellow, so drop one lid.",
+            "You're still missing the sky's colour, {name}.",
+            "Check the code again: each thing in the picture has a colour, and each colour a shape."
+          ]
+        }
+      },
+      "en": {
+        "title": "Lids for the apple tree",
+        "goTo": "Go to the teacher's desk, where the tray of paint lids is waiting",
+        "prompt": "Mèo Vẽ Màu is about to paint an apple tree: red apples and green leaves under a blue sky. Pick every lid he needs to open:",
+        "choices": [
+          "Circle lid",
+          "Triangle lid",
+          "Square lid",
+          "Star lid"
+        ]
+      }
+    },
+    {
+      "id": "gom-co-ve",
+      "title": "Gom cọ cho cả trường",
+      "goTo": "Gom cọ vẽ các bạn bỏ quên quanh gốc bàng sân chơi",
+      "kind": "search",
+      "targets": [
+        "st-meo-ve-buc-tuong-co-ban-to",
+        "st-meo-ve-buc-tuong-co-dau-nhon",
+        "st-meo-ve-buc-tuong-co-quat"
+      ],
+      "en": {
+        "title": "Brushes for everyone",
+        "goTo": "Gather the brushes friends left round the almond tree in the playground"
+      }
+    },
+    {
+      "id": "ky-ten-buc-tranh",
+      "title": "Ký tên bức tranh",
+      "goTo": "Mang cọ ra sân sau dãy lớp, bức tường chỉ còn thiếu chữ ký",
+      "kind": "decision",
+      "target": "st-meo-ve-buc-tuong-tuong-sap-xong",
+      "speaker": "Mèo Vẽ Màu",
+      "prompt": "Cả trường đã góp tay, bức tường gần xong. Mèo Vẽ Màu hỏi {name}: ký tên bức tranh thế nào đây?",
+      "choices": [
+        {
+          "id": "meo-ky",
+          "text": "Mèo Vẽ Màu ký thật to ở góc tường",
+          "consequence": "Mèo ký một chữ M uốn lượn như đuôi mèo. Ai đi qua cũng biết ai đã mơ ra bức tường này."
+        },
+        {
+          "id": "in-dau-tay",
+          "text": "Mỗi bạn in một dấu tay quanh mép tường",
+          "consequence": "Hàng trăm dấu tay, dấu chân, cả dấu vòi voi, xếp thành đường viền bảy màu quanh bức tranh."
+        },
+        {
+          "id": "mat-troi-xanh",
+          "text": "Vẽ một ông mặt trời xanh lá làm chữ ký",
+          "consequence": "Mèo Vẽ Màu bật cười, tự tay vẽ ông mặt trời xanh lá tròn xoe. Từ nay đó là dấu hiệu riêng của cậu ấy."
+        }
+      ],
+      "en": {
+        "title": "Signing the picture",
+        "goTo": "Take the brushes out behind the classrooms, where the wall only needs a signature",
+        "prompt": "The whole school has lent a hand and the wall is nearly done. Mèo Vẽ Màu asks {name}: how shall we sign the picture?",
+        "choices": [
+          {
+            "text": "Mèo Vẽ Màu signs big in the corner",
+            "consequence": "Mèo signs an M that curls like a cat's tail. Everyone who passes will know who dreamed up this wall."
+          },
+          {
+            "text": "Everyone presses a handprint round the edge",
+            "consequence": "Hundreds of handprints, paw prints, even an elephant's trunk print, make a rainbow border round the picture."
+          },
+          {
+            "text": "Paint a green sun as the signature",
+            "consequence": "Mèo Vẽ Màu laughs and paints a round green sun himself. From now on it's his very own mark."
+          }
+        ]
+      }
+    },
+    {
+      "id": "net-ve-cuoi-cung",
+      "title": "Những mảng màu cuối",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "prompt": "Ném màu tô những mảng cuối cùng, được mười sáu điểm là bức tường hoàn thành!",
+      "game": "paint-splat",
+      "goal": 16,
+      "trigger": "auto",
+      "en": {
+        "title": "The last patches",
+        "prompt": "Splash colour on the last patches. Sixteen points and the wall is finished!"
+      }
+    },
+    {
+      "id": "buc-tuong-bay-mau",
+      "title": "Bức tường bảy màu",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bức tường xám ngày nào giờ rực rỡ từ đầu này tới đầu kia, có cả những vệt mưa lấp lánh. Mèo Vẽ Màu dúi vào tay {name} cây bút mực tím cậu ấy vẫn dùng vẽ nét mảnh nhất.",
+      "en": {
+        "title": "The rainbow wall",
+        "text": "The once-grey wall now blazes from end to end, shimmering rain streaks and all. Mèo Vẽ Màu presses into {name}'s hand the purple ink pen he uses for his finest lines."
+      }
+    },
+    {
+      "id": "tuong-con-cho-trong",
+      "title": "Còn chỗ cho bạn mới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mèo Vẽ Màu chừa lại một ô nhỏ cuối tường, viết dòng chữ «Còn chỗ cho bạn mới». Cậu ấy bảo từ giờ mỗi năm học sẽ vẽ thêm một cảnh, và lần nào cũng mời {name} cầm cọ đầu tiên.",
+      "en": {
+        "title": "Room for a new friend",
+        "text": "Mèo Vẽ Màu leaves one small panel free at the end of the wall with the words «Room for a new friend». From now on, he says, he will paint one more scene every school year, and {name} always gets the first brush."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 20,
+    "skillXp": {
+      "doc-hieu": 1,
+      "hinh-phang": 1
+    },
+    "items": {
+      "but-muc-tim": 1
+    }
+  },
+  "en": {
+    "title": "Mèo Vẽ Màu's story, chapter 3: A picture by the whole school",
+    "summary": "Mèo Vẽ Màu thinks of marking colours with shapes so anyone can paint. {name} reads the colour code, picks the lids for the apple-tree scene, gathers brushes for everyone, chooses how to sign it and paints the last patches of the wall Mèo has dreamed of since he was a kitten."
+  }
+}

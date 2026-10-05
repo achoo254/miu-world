@@ -1,0 +1,396 @@
+{
+  "id": "yarn-trong-hoi-lac-nhip-1",
+  "region": "truong-hoc",
+  "chapter": 3,
+  "title": "Chuyện của Voi Trống Hội, chương 1: Mặt trống chùng",
+  "status": "active",
+  "category": "story",
+  "summary": "Ba hôm nữa là hội diễn mà trống cái của Voi Trống Hội chỉ kêu bục bục. {name} đọc chương trình hội diễn, gom đồ trong kho đạo cụ, căng lại dây trống theo đúng thứ tự rồi gõ thử cho cả sân nghe.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Voi Trống Hội, Heo Chũm Chọe",
+    "where": "Trường học: bên sân khấu, bảng nhiệm vụ, kho đạo cụ, chòi chờ tổ đội",
+    "goal": "Căng lại mặt trống cái cho kịp buổi hội diễn",
+    "play": "Đọc chương trình hội diễn, tìm đồ căng trống trong kho, tính lỗ đối diện để kéo dây, chọn cách gõ thử, gõ trống theo nhịp",
+    "learn": "Đọc hiểu một tờ thông báo, nhận ra quy luật đối xứng trên vòng tròn",
+    "reward": "60 XP, 15 Xu, Skill XP Đọc hiểu, Logic",
+    "next": "Tìm mảnh sành may mắn Voi Trống Hội vẫn giấu trong lòng trống"
+  },
+  "phases": {
+    "hook": "voi-goi",
+    "explore": "doc-chuong-trinh",
+    "learn": "doc-chuong-trinh",
+    "challenge": "cach-cang-day",
+    "decision": "chon-cach-thu-trong",
+    "finale": "go-thu-trong",
+    "reward": "trong-vang-lai",
+    "next": "manh-sanh-bien-mat"
+  },
+  "places": {
+    "voi-trong-hoi": "Bên sân khấu",
+    "st-trong-hoi-lac-nhip-to-chuong-trinh": "Bảng nhiệm vụ",
+    "gom-do-cang-trong": "Kho đạo cụ",
+    "st-trong-hoi-lac-nhip-heo-chum-choe": "Chòi chờ tổ đội"
+  },
+  "steps": [
+    {
+      "id": "voi-goi",
+      "title": "Trống cái bị ốm",
+      "goTo": "Tới bên sân khấu, Voi Trống Hội đang gãi đầu cạnh cái trống",
+      "kind": "dialogue",
+      "target": "voi-trong-hoi",
+      "lines": [
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "Tùng… bục. Tùng… bục. {name} nghe thấy không? Trống cái của tớ ốm rồi, kêu như gõ vào gối bông."
+        },
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "Ba hôm nữa là hội diễn, đội trống mở màn. Mặt trống chùng thế này thì cả sân ngủ gật mất, tùng!"
+        },
+        {
+          "speaker": "Voi Trống Hội",
+          "text": "Cậu xem giúp tớ chương trình dán ở bảng nhiệm vụ đã, tớ đi tìm dùi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ xem bảng ngay!",
+          "reply": "Cảm ơn nhé! Tai voi to nhưng mắt voi đọc chữ nhỏ là hoa cả lên."
+        },
+        {
+          "text": "Trống mà cũng ốm được à?",
+          "reply": "Ốm chứ! Trời nồm là da trống ngấm hơi nước, chùng như dây phơi võng."
+        }
+      ],
+      "en": {
+        "title": "The poorly big drum",
+        "goTo": "Go over by the stage, where Voi Trống Hội is scratching his head beside his drum",
+        "lines": [
+          "Boom… thud. Boom… thud. Hear that, {name}? My big drum's poorly. It sounds like hitting a pillow.",
+          "The school show is in three days and the drum team opens it. With a slack drumhead like this the whole yard will nod off. Boom!",
+          "Could you check the programme pinned on the quest board first? I'll go and find my sticks."
+        ],
+        "choices": [
+          {
+            "text": "Leave it to me, I'll check the board!",
+            "reply": "Thanks! Elephant ears are big, but elephant eyes go fuzzy on small print."
+          },
+          {
+            "text": "Can a drum really get poorly?",
+            "reply": "Oh yes! On muggy days the skin soaks up damp and sags like a hammock line."
+          }
+        ]
+      }
+    },
+    {
+      "id": "doc-chuong-trinh",
+      "title": "Chương trình hội diễn",
+      "goTo": "Ra bảng nhiệm vụ đọc tờ chương trình hội diễn",
+      "kind": "read",
+      "target": "st-trong-hoi-lac-nhip-to-chuong-trinh",
+      "skill": "doc-hieu",
+      "text": "CHƯƠNG TRÌNH HỘI DIỄN SÁNG THỨ BẢY\nTám giờ: đội trống mở màn.\nTám giờ mười lăm: lớp 2A múa quạt.\nTám giờ rưỡi: thầy hiệu trưởng phát thưởng.\nLưu ý: đội trống tập lần cuối vào chiều thứ sáu, nhớ mang dùi!",
+      "question": "Đội trống phải tập lần cuối vào lúc nào?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Sáng thứ bảy"
+        },
+        {
+          "id": "b",
+          "text": "Chiều thứ sáu"
+        },
+        {
+          "id": "c",
+          "text": "Tám giờ rưỡi"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Tìm dòng bắt đầu bằng chữ «Lưu ý».",
+          "Xem dòng ấy nhắc đội trống làm gì, vào lúc nào."
+        ],
+        "hint": "Buổi tập diễn ra trước ngày hội diễn một ngày.",
+        "answer": {
+          "text": "Chiều thứ sáu",
+          "explanation": "Dòng lưu ý viết: đội trống tập lần cuối vào chiều thứ sáu. Sáng thứ bảy mới là lúc diễn thật."
+        },
+        "en": {
+          "guide": [
+            "Find the line that starts with «Note».",
+            "See what it tells the drum team to do, and when."
+          ],
+          "hint": "The practice is one day before the show.",
+          "answer": {
+            "text": "On Friday afternoon",
+            "explanation": "The note says the drum team's last practice is on Friday afternoon. Saturday morning is the real show."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chiều thứ sáu! Còn kịp chán, mình đi lấy đồ căng trống nào.",
+          "{name} đọc trúng dòng lưu ý nhỏ xíu cuối bảng rồi.",
+          "Đúng thế, tập chiều thứ sáu, diễn sáng thứ bảy."
+        ],
+        "wrong": [
+          "Sáng thứ bảy là lúc diễn thật rồi, còn buổi tập thì sao nhỉ?",
+          "Tám giờ rưỡi là lúc phát thưởng đấy, đọc lại dòng cuối nha.",
+          "Dòng có chữ «Lưu ý» giấu câu trả lời đấy {name}."
+        ],
+        "en": {
+          "right": [
+            "Friday afternoon! Plenty of time, let's fetch the drum tools.",
+            "{name} spotted the tiny note at the bottom of the board.",
+            "That's it: practise on Friday afternoon, perform on Saturday morning."
+          ],
+          "wrong": [
+            "Saturday morning is the real show. What about the practice?",
+            "Half past eight is prize time. Read the last line again.",
+            "The line that starts with «Note» hides the answer, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "The show programme",
+        "goTo": "Go to the quest board and read the show programme",
+        "text": "SATURDAY MORNING SHOW PROGRAMME\nEight o'clock: the drum team opens.\nQuarter past eight: Class 2A's fan dance.\nHalf past eight: the head teacher gives out prizes.\nNote: the drum team's last practice is on Friday afternoon, bring your sticks!",
+        "question": "When is the drum team's last practice?",
+        "choices": [
+          "On Saturday morning",
+          "Friday afternoon",
+          "Half past eight"
+        ]
+      }
+    },
+    {
+      "id": "gom-do-cang-trong",
+      "title": "Đồ căng trống",
+      "goTo": "Vào kho đạo cụ sau sân khấu gom đồ căng trống",
+      "kind": "find-object",
+      "prompt": "Căng một mặt trống cần ba thứ. Đọc lời tả rồi tìm cho đủ:",
+      "items": [
+        {
+          "id": "day-gai",
+          "name": "Cuộn dây gai",
+          "clue": "Dài, ráp tay, cuộn tròn như con ốc, kéo căng mấy cũng không đứt.",
+          "target": "st-trong-hoi-lac-nhip-day-gai"
+        },
+        {
+          "id": "nem-go",
+          "name": "Chiếc nêm gỗ",
+          "clue": "Một đầu dày một đầu mỏng như miếng pho mát, chèn dưới dây cho dây căng thêm.",
+          "target": "st-trong-hoi-lac-nhip-nem-go"
+        },
+        {
+          "id": "sap-ong",
+          "name": "Thỏi sáp ong",
+          "clue": "Vàng óng, thơm mùi mật, xoa vào dây cho dây trơn mà không tuột.",
+          "target": "st-trong-hoi-lac-nhip-sap-ong"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Drum-mending tools",
+        "goTo": "Go into the prop store behind the stage and gather the drum tools",
+        "prompt": "Tightening a drumhead takes three things. Read the descriptions and find them all:",
+        "items": [
+          {
+            "name": "Coil of hemp cord",
+            "clue": "Long, rough on your hands, coiled like a snail, and it never snaps however hard you pull."
+          },
+          {
+            "name": "Wooden wedge",
+            "clue": "Thick at one end and thin at the other like a slice of cheese. It slips under the cord to make it tighter."
+          },
+          {
+            "name": "Stick of beeswax",
+            "clue": "Golden and smelling of honey. Rub it on the cord so it slides but never slips."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cach-cang-day",
+      "title": "Kéo dây theo cặp",
+      "goTo": "Mang đồ sang chòi chờ tổ đội, Heo Chũm Chọe biết mẹo căng dây",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-trong-hoi-lac-nhip-heo-chum-choe",
+      "skill": "logic",
+      "prompt": "Heo Chũm Chọe chỉ: mặt trống có tám lỗ xỏ dây, đánh số 1 tới 8 vòng quanh như mặt đồng hồ. Kéo một lỗ xong thì kéo ngay lỗ nằm đối diện cho trống khỏi lệch. Đã kéo 1 rồi 5, 3 rồi 7, giờ kéo 2 rồi tới lỗ nào?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Lỗ 4"
+        },
+        {
+          "id": "b",
+          "text": "Lỗ 6"
+        },
+        {
+          "id": "c",
+          "text": "Lỗ 8"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Tám lỗ xếp tròn, lỗ đối diện cách đúng bốn lỗ.",
+          "1 đối với 5, 3 đối với 7: cứ cộng thêm 4."
+        ],
+        "hint": "Lấy 2 cộng thêm 4 xem được lỗ số mấy.",
+        "answer": {
+          "text": "Lỗ 6",
+          "explanation": "Tám lỗ chia đôi vòng tròn thì mỗi nửa có bốn lỗ, nên lỗ đối diện lỗ 2 là 2 + 4 = 6."
+        },
+        "en": {
+          "guide": [
+            "Eight holes sit in a circle; the one opposite is exactly four holes away.",
+            "1 faces 5, 3 faces 7: just add 4."
+          ],
+          "hint": "Add 4 to 2 and see which hole you reach.",
+          "answer": {
+            "text": "Hole 6",
+            "explanation": "Half of eight holes is four, so the hole opposite hole 2 is 2 + 4 = 6."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Xoảng! Heo Chũm Chọe đập chũm chọe mừng: lỗ 6 chuẩn rồi!",
+          "Kéo đối xứng thế này mặt trống phẳng như mặt hồ.",
+          "{name} tính lỗ đối diện nhanh hơn cả tớ đấy."
+        ],
+        "wrong": [
+          "Lỗ ấy chưa nằm đối diện lỗ 2, kéo vào là trống lệch mất.",
+          "Thử đếm thêm bốn lỗ từ lỗ 2 xem dừng ở đâu.",
+          "Vẽ tám lỗ quanh một vòng tròn rồi nhìn thẳng sang bên kia lỗ 2 nha."
+        ],
+        "en": {
+          "right": [
+            "Crash! Heo Chũm Chọe clangs his cymbals: hole 6 is spot on!",
+            "Pull in opposite pairs and the drumhead lies flat as a pond.",
+            "{name} found the opposite hole faster than I could."
+          ],
+          "wrong": [
+            "That hole isn't across from hole 2. Pull it and the drum goes lopsided.",
+            "Count four more holes on from hole 2 and see where you stop.",
+            "Draw eight holes round a circle and look straight across from hole 2."
+          ]
+        }
+      },
+      "en": {
+        "title": "Pulling the cord in pairs",
+        "goTo": "Take the tools to the team shelter, where Heo Chũm Chọe knows a lacing trick",
+        "prompt": "Heo Chũm Chọe explains: the drum has eight lacing holes, numbered 1 to 8 round the rim like a clock face. After pulling one hole, pull the hole straight across so the drum stays even. We did 1 then 5, 3 then 7; now 2, then which hole?",
+        "choices": [
+          "Hole 4",
+          "Hole 6",
+          "Hole 8"
+        ]
+      }
+    },
+    {
+      "id": "chon-cach-thu-trong",
+      "title": "Gõ thử thế nào?",
+      "goTo": "Mang dây đã căng về bên sân khấu cho Voi Trống Hội",
+      "kind": "decision",
+      "target": "voi-trong-hoi",
+      "speaker": "Voi Trống Hội",
+      "prompt": "Dây căng xong rồi! Gõ thử thế nào đây {name}?",
+      "choices": [
+        {
+          "id": "go-nhe",
+          "text": "Gõ nhẹ một tiếng nghe thử",
+          "consequence": "Tùng! Tiếng trống tròn và ấm. Voi Trống Hội vẫy vòi: nhẹ tay mà nghe rõ từng nhịp."
+        },
+        {
+          "id": "phoi-nang",
+          "text": "Để trống phơi nắng một lúc cho dây khô",
+          "consequence": "Nắng hanh hong khô sợi gai, dây se lại thêm một chút. Lúc gõ, trống vang tận cổng trường."
+        },
+        {
+          "id": "go-manh",
+          "text": "Gõ thật mạnh cho cả sân giật mình",
+          "consequence": "TÙNG! Mấy chú chim sẻ trên mái bay vù. Voi Trống Hội cười khà: to thật, nhưng hội diễn cần cả tiếng nhỏ nữa."
+        }
+      ],
+      "en": {
+        "title": "How shall we test it?",
+        "goTo": "Take the laced drum back to Voi Trống Hội beside the stage",
+        "prompt": "The cord's tight! How shall we test it, {name}?",
+        "choices": [
+          {
+            "text": "Tap it gently once and listen",
+            "consequence": "Boom! A round, warm sound. Voi Trống Hội waves his trunk: a light hand and every beat rings clear."
+          },
+          {
+            "text": "Let the drum sit in the sun so the cord dries",
+            "consequence": "The dry sunshine shrinks the hemp a little tighter. When you strike it, the drum rings all the way to the school gate."
+          },
+          {
+            "text": "Hit it as hard as you can and make the whole yard jump",
+            "consequence": "BOOM! The sparrows on the roof scatter. Voi Trống Hội chuckles: that's loud, but a show needs soft beats too."
+          }
+        ]
+      }
+    },
+    {
+      "id": "go-thu-trong",
+      "title": "Gõ thử trống cái",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "prompt": "Gõ cùng Voi Trống Hội cho được hai mươi bốn điểm nhé!",
+      "game": "drum-beat",
+      "goal": 24,
+      "trigger": "auto",
+      "en": {
+        "title": "Test the big drum",
+        "prompt": "Drum along with Voi Trống Hội and score twenty-four points!"
+      }
+    },
+    {
+      "id": "trong-vang-lai",
+      "title": "Trống vang trở lại",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tiếng trống vang lại khắp sân. Voi Trống Hội đập vòi vào ngực ba cái tùng tùng tùng: «Bạn của tớ đấy, cả sân nghe thấy chưa!»",
+      "en": {
+        "title": "The drum is back",
+        "text": "The drum booms across the yard again. Voi Trống Hội thumps his chest with his trunk three times, boom boom boom: «That's my friend, did everyone hear?»"
+      }
+    },
+    {
+      "id": "manh-sanh-bien-mat",
+      "title": "Mảnh sành biến mất",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Lúc cất dùi, Voi Trống Hội thò vòi vào lòng trống rồi đứng sững: «Mảnh sành của tớ đâu rồi?» Cậu ấy chưa kịp kể đó là gì thì mặt đã buồn thiu.",
+      "en": {
+        "title": "The missing shard",
+        "text": "As he puts his sticks away, Voi Trống Hội reaches his trunk inside the drum and freezes: «Where's my little shard?» Before he can say what it is, his face falls."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 1,
+      "logic": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Voi Trống Hội's story, chapter 1: The slack drumhead",
+    "summary": "The school show is three days away, and Voi Trống Hội's big drum only goes thud-thud. {name} reads the show programme, gathers tools from the prop store, laces the drum tight in the right order and plays it for the whole yard."
+  }
+}
