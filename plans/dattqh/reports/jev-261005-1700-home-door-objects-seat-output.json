@@ -1,0 +1,50 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1138,
+    "output_tokens": 175
+  },
+  "results": {
+    "front_door": {
+      "stakes": "low",
+      "choice": "real_door_and_small_hatch",
+      "confidence": 0.93,
+      "probabilities": {
+        "remove_heart_door": 0.04,
+        "move_heart_door": 0.01,
+        "real_door_and_small_hatch": 0.95
+      },
+      "decision": "auto"
+    },
+    "object_effects": {
+      "stakes": "medium",
+      "choice": "data_driven_effects",
+      "confidence": 1.0,
+      "probabilities": {
+        "data_driven_effects": 1.0,
+        "tv_and_lamps_only": 0.0
+      },
+      "decision": "auto"
+    },
+    "effect_persistence": {
+      "stakes": "low",
+      "choice": "home_saved_world_session",
+      "confidence": 0.87,
+      "probabilities": {
+        "home_saved_world_session": 0.93,
+        "session_only": 0.07
+      },
+      "decision": "auto"
+    },
+    "seat_height": {
+      "stakes": "low",
+      "choice": "seat_metadata",
+      "confidence": 1.0,
+      "probabilities": {
+        "seat_metadata": 1.0,
+        "default_ratio": 0.0
+      },
+      "decision": "auto"
+    }
+  }
+}

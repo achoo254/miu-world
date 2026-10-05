@@ -1,0 +1,47 @@
+{
+  "state": {
+    "project": "Miu World: a 3D voxel learn-while-playing online game for all ages, like Minecraft (three.js, web now, mobile later). Budget per scene: ~150 draw calls, 30 FPS on an iPad 10. Built 100% by AI.",
+    "today": "2026-10-05",
+    "owner_report": "In the home: the main door shows in the wrong place, stuck on the staircase. Using objects like the TV, lamp or anything shows no change: turning the TV on should switch it on, the lamp should light, etc. Sitting on a chair puts the character inside the chair instead of on top of it.",
+    "diagnosis": [
+      "Door: the real entrance is an open arched doorway with its two door leaves folded flat on the outside wall, so the house has no visible door in its doorway. A door-sized wooden door with a pink heart (meant as the small cupboard under the stairs) stands on the plaster wall under the staircase, so it reads as the house's main door attached to the stairs.",
+      "Objects: the interaction catalogue (about 100 kinds) only defines a pose, speech lines and a sound; there is no notion of an object's state, so nothing on the object ever changes.",
+      "Seat: sitting moves the player to the chair's base position at floor height; the catalogue has an unused offset field and the model catalogue only knows each model's total height, not its seat height. The TV interaction also uses the sitting pose, so the player is moved into the TV itself."
+    ]
+  },
+  "questions": {
+    "front_door": {
+      "stakes": "low",
+      "instructions": "How to fix the home's door?",
+      "criteria": {
+        "real_door_and_small_hatch": "Put a real double door in the entrance arch that swings open when the player comes near or taps it and closes behind; replace the heart door under the stairs with a small half-height cupboard hatch so it no longer looks like a door to walk through.",
+        "move_heart_door": "Only move the heart door into the entrance arch.",
+        "remove_heart_door": "Only remove the heart door; keep the open arch."
+      }
+    },
+    "object_effects": {
+      "stakes": "medium",
+      "instructions": "How should object interactions change the object?",
+      "criteria": {
+        "data_driven_effects": "Add a data-driven effect per interaction kind (on/off glow, an animated screen for TVs and computers, one shared warm light near the player for lamps, doors and lids that open, running water, cooking steam), toggled by tapping, applied to every map's objects; keep within the draw-call budget (emissive materials, at most one or two real lights).",
+        "tv_and_lamps_only": "Only make TVs show a screen and lamps glow; leave the rest for later."
+      }
+    },
+    "effect_persistence": {
+      "stakes": "low",
+      "instructions": "Should a toggled object keep its state?",
+      "criteria": {
+        "home_saved_world_session": "In the player's own home, saved on the server with the home decoration (the lamp stays on next visit); on shared maps it lasts for the current visit only and only the player sees it.",
+        "session_only": "Never saved: everything resets on reload."
+      }
+    },
+    "seat_height": {
+      "stakes": "low",
+      "instructions": "How to seat the character correctly?",
+      "criteria": {
+        "seat_metadata": "Add a seat height (and lying height for beds) to each sittable model in the model catalogue, place the hips on the seat facing the model's front, with a sensible default from the model's height; the TV and similar objects use a standing or floor-sitting spot in front of the object instead of moving the player into it.",
+        "default_ratio": "Use a fixed fraction of each model's height as the seat height, no new data."
+      }
+    }
+  }
+}
