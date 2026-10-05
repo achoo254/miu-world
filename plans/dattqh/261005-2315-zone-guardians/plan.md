@@ -11,7 +11,7 @@ created: 2026-10-05
 
 # Boss canh khu và boss trên bản đồ
 
-**Trạng thái:** đã lập (05/10/2026); làm sau `261005-2305-pets-alive`; xong thì deploy production (người sở hữu cho phép, 05/10/2026) · **Tier:** L
+**Trạng thái:** xong phần tự động cả 4 pha (06/10/2026), kèm cho thú cưng ăn món đã nấu; chưa deploy (không có migration; người sở hữu đã cho phép deploy plan này 05/10/2026, vẫn hỏi lại trước lần deploy); report `plans/dattqh/reports/zone-guardians-261006.md` · **Tier:** L
 **Nguồn:** người sở hữu (05/10/2026): "boss nên hiển thị trên minimap ko. 1 map chỉ 1 boss ít quá so với kích cỡ map ko" → chọn phương án B. Jev (`reports/jev-261005-2310-bosses-{input,output}.json`) chọn hiện boss trên bản đồ (0.19) và giữ 1 boss (0.77); người sở hữu chọn thêm boss canh khu, quyết định của người sở hữu được dùng.
 
 ## Hiện trạng (05/10/2026)
