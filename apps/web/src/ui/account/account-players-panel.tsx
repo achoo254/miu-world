@@ -60,7 +60,7 @@ function PlayerOnlineSwitches({ player }: { player: PlayerDto }) {
   return (
     <div className="player-care-switches">
       <p className="hint">
-        <T k="playerCare.onlineHint" />
+        <T k="playerCare.settingsHint" />
       </p>
       {choice('botsEnabled', 'settings.bots')}
       {save.error ? (
