@@ -22,7 +22,20 @@ Plan: `plans/dattqh/261004-1540-online-appearance-interact-party/plan.md` (P1–
 - Test mới: `party-service.test.ts` (11), `multiplayer-hub.test.ts` (18: danh tính, chữ có sẵn, tab thay thế, đổi đồ, chặn, báo cáo, đội 4 người, trưởng rời, qua map, hết grace), `multiplayer-ws.test.ts` (socket thật + PGlite: 401/403, tên/đồ từ DB, `appearance` sau `PUT`, chặn ghi DB), `multiplayer-session.test.ts`, `online.test.tsx`. Test xóa tài khoản đếm thêm hai bảng mới.
 - E2E `online` (một lượt, 1 worker, dự án `setup` + `online`): hai tài khoản trong hai context thấy đồ và thú cưng của nhau, đổi đồ thấy ngay, mời → vào đội → cả hai thấy khung đội, chặn → hai bên không thấy nhau. 2 test qua trong 13,7 s.
 
+## Review độc lập
+
+Agent `code-reviewer` trên toàn bộ diff: không có Critical; xác nhận xác thực WS, kiểm `Origin`, không lộ mã hồ sơ, chặn ẩn hai chiều ở mọi room. Đã sửa (commit `fix(multiplayer): …`, có test):
+
+- High: đội chỉ còn bạn máy không giải tán (bạn máy bị giữ tới khi server khởi động lại) → đội không còn người chơi thì giải tán. High: trưởng đội có thể rơi vào bạn máy → luôn trao cho người chơi vào sớm nhất; không nhường cho bạn máy được.
+- Medium: thời gian chờ báo cáo mất khi nối lại → giữ ở hub theo cặp người chơi. Phiên bị thu hồi mà WS vẫn mở → kiểm lại phiên mỗi 2 phút, đóng `4401`. Bộ nhớ hub không dọn → bỏ dữ liệu chặn/diện mạo khi người chơi rời hẳn. Client nối lại mãi khi bị từ chối → giãn dần tới 1 phút.
+- Low: hai tab chồng nhau thì tab mới nhất vào, tab đóng giữa chừng không đá ai; xóa người chơi khác khỏi cảnh khi tab khác vào thay; lời vẫy/câu nhắm một người không tới người đã chặn người đó; tên trong thông báo không lấy nhầm từ menu; nhãn tương tác cập nhật khi đổi tên; số liệu dev `outfit` cập nhật sau "Mặc".
+- Không sửa (ghi lại): theo "Cùng đi" hay "Đến chỗ bạn" sang khu không có bài đang mở thì không có gì xảy ra (màn chơi chọn bài theo khu); câu hỏi sản phẩm bên dưới về Nhà của bé.
+
+E2E `online` chạy một lần trước các sửa này (giới hạn một lượt Playwright của đợt); các sửa sau có test đơn vị, `pnpm test` chạy lại xanh (6178 qua, 1 skip). Hai lần chạy đầy đủ dưới tải có một test không liên quan đỏ thoáng qua (`region-reward-routes` "opens the chest…", `account-routes` "needs the PIN…"), chạy riêng và chạy lại đều xanh.
+
 ## Việc của người / còn mở
+
+- **Nhà của bé dùng chung room:** map `nha-cua-be` là một room cho mọi người, nên người lạ có thể xuất hiện trong nhà của bé (có từ trước, nay có thêm vẫy tay và mời). Đề xuất: mỗi người chơi một room nhà riêng, chỉ bạn cùng đội vào được; cần người quyết vì là phạm vi sản phẩm.
 
 - Báo cáo vào hàng đợi nhưng **chưa có màn kiểm duyệt** (ghi ở trang review); trước khi có người ngoài gia đình chơi cần plan `261004-1617-moderation-safety`.
 - `player_blocks`, `player_reports` là dữ liệu mới về người chơi (chỉ mã, lý do chọn sẵn, map). Luật repo nói đổi cách thu dữ liệu trẻ thì sửa lời đồng ý/chính sách; plan đã duyệt hai bảng này nhưng lời đồng ý chưa nhắc. Cần người quyết có nâng phiên bản lời đồng ý hay không.
