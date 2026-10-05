@@ -11,6 +11,9 @@ const originList = z
   .transform((raw) => raw.split(',').map((o) => o.trim()).filter(Boolean))
   .pipe(z.array(z.url()).min(1));
 
+/** An env line with nothing after `=` counts as not set. */
+const emptyIsUnset = (value: unknown): unknown => (value === '' ? undefined : value);
+
 const Env = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   PORT: z.coerce.number().int().min(1).max(65535).default(8787),
@@ -42,8 +45,8 @@ const Env = z.object({
    * Cloudflare TURN key (voice relay when two players find no direct path; see the deployment guide). Unset: voice
    * uses the public STUN server only.
    */
-  CF_TURN_KEY_ID: z.string().regex(/^[A-Za-z0-9]{8,64}$/).optional(),
-  CF_TURN_API_TOKEN: z.string().min(16).max(256).optional(),
+  CF_TURN_KEY_ID: z.preprocess(emptyIsUnset, z.string().regex(/^[A-Za-z0-9]{8,64}$/).optional()),
+  CF_TURN_API_TOKEN: z.preprocess(emptyIsUnset, z.string().min(16).max(256).optional()),
 });
 
 export interface GoogleConfig {

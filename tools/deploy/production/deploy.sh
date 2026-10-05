@@ -4,6 +4,7 @@
 #                                               journal namespace, nginx block, DB role, env file
 #   tools/deploy/production/deploy.sh fonts     upload the worksheet handwriting font (kept out of git)
 #   tools/deploy/production/deploy.sh timetable upload the default class timetable (kept out of git); restart to apply
+#   tools/deploy/production/deploy.sh turn      write the voice relay (Cloudflare TURN) key into the env file; restart to apply
 #   tools/deploy/production/deploy.sh release   build, back up the DB, upload, switch, health-check
 # Production holds real children's data and .65 is shared: ask the owner before EVERY run
 # (docs/deployment-guide.md §1). Credentials come from $ALL_IN_ONE_STAGING_DEV (the .65 entry
@@ -56,8 +57,32 @@ setup() {
     echo "GOOGLE_REDIRECT_URI=https://$DOMAIN/api/auth/google/callback"
     echo "HANDWRITING_FONT_DIR=/opt/miu/fonts"
     echo "TIMETABLE_DEFAULT_FILE=/opt/miu/config/timetable-default.json"
+    turn_env
   } | prod 'install -m 640 -o root -g miu /dev/stdin /etc/miu/production.env'
   echo "setup done"
+}
+
+# The voice relay key: the server asks Cloudflare for short-lived TURN credentials with it (docs/deployment-guide.md).
+TURN_ENTRY='.tokens[] | select(.service == "rtc.live.cloudflare.com (TURN)") | .token'
+turn_env() {
+  local id tok
+  # Both or nothing: an empty value would stop the server at start.
+  id="$(secret "$TURN_ENTRY.key_id")" && tok="$(secret "$TURN_ENTRY.api_token")" \
+    || { echo "no TURN entry in access-tokens.json (docs/deployment-guide.md)" >&2; return 1; }
+  printf 'CF_TURN_KEY_ID=%s\nCF_TURN_API_TOKEN=%s\n' "$id" "$tok"
+}
+
+# Puts (or replaces) just the two TURN lines in /etc/miu/production.env, leaving every other line as it is. Safe to
+# run again; the next release (or a restart) picks them up.
+turn() {
+  local lines
+  lines="$(turn_env)"
+  printf '%s\n' "$lines" | prod 'set -e
+    f=/etc/miu/production.env; t=$(mktemp)
+    grep -Ev "^CF_TURN_(KEY_ID|API_TOKEN)=" "$f" > "$t" || true
+    cat >> "$t"
+    install -m 640 -o root -g miu "$t" "$f"; rm -f "$t"
+    grep -c "^CF_TURN_" "$f" | xargs echo TURN lines in env file:'
 }
 
 # Worksheet handwriting font (no open license: kept out of git). Uploads the .woff2 files from
@@ -129,6 +154,7 @@ case "${1:-}" in
   setup) setup ;;
   fonts) fonts ;;
   timetable) timetable ;;
+  turn) turn ;;
   release) release ;;
-  *) echo "usage: $0 setup|fonts|timetable|release" >&2; exit 2 ;;
+  *) echo "usage: $0 setup|fonts|timetable|turn|release" >&2; exit 2 ;;
 esac

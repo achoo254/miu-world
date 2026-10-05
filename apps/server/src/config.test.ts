@@ -33,6 +33,7 @@ describe('loadConfig', () => {
 
   it('takes the TURN key only as a pair, and never echoes its values', () => {
     expect(loadConfig({}).turn).toBeNull();
+    expect(loadConfig({ CF_TURN_KEY_ID: '', CF_TURN_API_TOKEN: '' }).turn).toBeNull();
     const keyId = 'a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6';
     const apiToken = 'test-turn-token-0123456789abcdef';
     expect(loadConfig({ CF_TURN_KEY_ID: keyId, CF_TURN_API_TOKEN: apiToken }).turn).toEqual({ keyId, apiToken });
