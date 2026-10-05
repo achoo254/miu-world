@@ -82,7 +82,7 @@ export function RegisterScreen() {
   );
 }
 
-/** Optional PIN that locks the parent area; reached from there, skipping keeps the area open. */
+/** Sets or changes the optional PIN that locks the parent area; reached from there. Changing needs the area unlocked. */
 export function SetPinScreen() {
   const { state, setMe } = useAccount();
   const navigate = useNavigate();
@@ -94,13 +94,14 @@ export function SetPinScreen() {
     navigate('/parent');
   });
   const clientError = !ParentPin.safeParse(pin).success ? 'Mã PIN gồm 4 đến 6 chữ số.' : pin !== pinAgain ? t('auth.pinMismatch') : null;
-  if (state.status === 'signed-in' && state.me.pinSet) return <Navigate to="/parent" replace />;
+  const changing = state.status === 'signed-in' && state.me.pinSet;
+  if (changing && !state.me.parentGateOpen) return <Navigate to="/parent" replace />;
   return (
     <SkyScene hero>
       <main className="panel" data-id="set-pin">
         <div className="panel-title">
           <Icon name="key" size={44} />
-          <h1><T k="auth.setPinTitle" /></h1>
+          <h1><T k={changing ? 'auth.changePinTitle' : 'auth.setPinTitle'} /></h1>
         </div>
         <p className="hint"><T k="auth.setPinHint" /></p>
         <form
@@ -128,7 +129,7 @@ export function SetPinScreen() {
             <T k="auth.savePin" />
           </button>
           <Link to="/parent" className={buttonClass('ghost', { block: true })} data-id="set-pin-skip">
-            <T k="auth.skipPin" />
+            <T k={changing ? 'common.cancel' : 'auth.skipPin'} />
           </Link>
         </form>
       </main>

@@ -32,8 +32,8 @@ test('the parent unlocks the gate, lists the sheets by book and prints one of ea
   await freshChild(page, baseURL ?? '');
 
   await page.goto('/parent/worksheets');
-  await page.getByLabel('Nhập mã PIN phụ huynh').fill('2468');
-  await page.getByLabel('Nhập mã PIN phụ huynh').press('Enter');
+  await page.getByLabel('Nhập mã PIN tài khoản').fill('2468');
+  await page.getByLabel('Nhập mã PIN tài khoản').press('Enter');
   await expect(page.getByRole('heading', { name: 'Tiếng Việt 2, tập một' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Toán 2, tập một' })).toBeVisible();
   await page.screenshot({ path: `${SHOTS}worksheets-list.png`, fullPage: true, animations: 'disabled' });

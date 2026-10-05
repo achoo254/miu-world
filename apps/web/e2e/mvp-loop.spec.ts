@@ -101,10 +101,10 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the L�
   await page.goto('/');
   await checkCsp();
   await page.getByRole('link', { name: 'Đăng nhập bằng Google' }).tap();
-  await page.getByRole('button', { name: 'Tôi là phụ huynh và đồng ý' }).tap();
+  await page.getByRole('button', { name: 'Tôi đồng ý' }).tap();
   await page.locator('[data-id="parent-create-name"]').selectOption('Gấu Mật');
   await page.getByRole('button', { name: 'Tạo hồ sơ' }).tap();
-  await page.getByRole('button', { name: 'Xong, khóa khu phụ huynh' }).tap();
+  await page.getByRole('button', { name: 'Xong, vào chơi' }).tap();
   await page.getByRole('button', { name: 'Gấu Mật' }).tap();
 
   // Character Creator: the cat, a new hat seen on the voxel preview, a name.

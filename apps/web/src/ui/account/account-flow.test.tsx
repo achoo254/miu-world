@@ -76,7 +76,7 @@ describe('account flow', () => {
   it('sends a signed-out visitor to the login screen', async () => {
     stubApi({ 'GET /api/auth/me': () => ({ status: 401, body: { error: 'unauthenticated' } }) });
     renderAt('/profiles');
-    expect(await screen.findByRole('heading', { name: 'Đăng nhập phụ huynh' })).toBeTruthy();
+    expect(await screen.findByRole('heading', { name: 'Đăng nhập' })).toBeTruthy();
   });
 
   it('offers only Google sign-in, through a same-origin server redirect', async () => {
@@ -95,7 +95,7 @@ describe('account flow', () => {
       'GET /api/consents/policy': () => ({ status: 200, body: { version: 'draft-2', requiresLegalReview: true, title: 'Đồng ý', paragraphs: ['x'] } }),
     });
     renderAt('/profiles');
-    expect(await screen.findByRole('button', { name: 'Tôi là phụ huynh và đồng ý' })).toBeTruthy();
+    expect(await screen.findByRole('button', { name: 'Tôi đồng ý' })).toBeTruthy();
     expect(screen.queryByLabelText('Mã PIN (4–6 số)')).toBeNull();
     expect(calls.some((c) => c.key === 'POST /api/auth/pin')).toBe(false);
   });
@@ -114,7 +114,7 @@ describe('account flow', () => {
     expect((await screen.findByRole('alert')).textContent).toContain('chưa khớp');
     fireEvent.change(screen.getByLabelText('Nhập lại mã PIN'), { target: { value: '2468' } });
     fireEvent.click(screen.getByRole('button', { name: 'Lưu mã PIN' }));
-    expect(await screen.findByRole('heading', { name: /Tạo hồ sơ cho bé/ })).toBeTruthy();
+    expect(await screen.findByRole('heading', { name: /Tạo hồ sơ người chơi/ })).toBeTruthy();
     expect(calls.find((c) => c.key === 'POST /api/auth/pin')?.body).toEqual({ pin: '2468' });
   });
 
@@ -130,8 +130,8 @@ describe('account flow', () => {
     });
     renderAt('/profiles');
     expect(await screen.findByText('Bản nháp — chờ pháp chế duyệt')).toBeTruthy();
-    fireEvent.click(screen.getByRole('button', { name: 'Tôi là phụ huynh và đồng ý' }));
-    expect(await screen.findByRole('heading', { name: /Tạo hồ sơ cho bé/ })).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Tôi đồng ý' }));
+    expect(await screen.findByRole('heading', { name: /Tạo hồ sơ người chơi/ })).toBeTruthy();
     expect(calls.find((c) => c.key === 'POST /api/consents')?.body).toEqual({ policyVersion: 'draft-1' });
   });
 
@@ -142,8 +142,8 @@ describe('account flow', () => {
       'POST /api/parent-gate/unlock': () => ({ status: 401, body: { error: 'invalid-pin' } }),
     });
     renderAt('/parent');
-    const pin = (await screen.findByLabelText('Nhập mã PIN phụ huynh')) as HTMLInputElement;
-    expect(screen.queryByRole('heading', { name: /Tạo hồ sơ cho bé/ })).toBeNull();
+    const pin = (await screen.findByLabelText('Nhập mã PIN tài khoản')) as HTMLInputElement;
+    expect(screen.queryByRole('heading', { name: /Tạo hồ sơ người chơi/ })).toBeNull();
     fireEvent.change(pin, { target: { value: '0000' } });
     fireEvent.click(screen.getByRole('button', { name: 'Mở khóa' }));
     expect((await screen.findByRole('alert')).textContent).toBe('Mã PIN chưa đúng.');
@@ -180,7 +180,7 @@ describe('account flow', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Không' }));
     fireEvent.click(screen.getByRole('button', { name: 'Xóa tài khoản' }));
     fireEvent.click(screen.getByRole('button', { name: 'Xóa hẳn tài khoản' }));
-    expect(await screen.findByRole('heading', { name: 'Đăng nhập phụ huynh' })).toBeTruthy();
+    expect(await screen.findByRole('heading', { name: 'Đăng nhập' })).toBeTruthy();
     expect(calls.filter((c) => c.key === 'DELETE /api/account')).toHaveLength(1);
   });
 
@@ -221,16 +221,43 @@ describe('account flow', () => {
     renderAt('/parent');
     // Wait for the list to load (the create form only shows then) before judging step 2.
     const create = await screen.findByRole('button', { name: 'Tạo hồ sơ' });
-    expect(screen.getByRole('heading', { name: 'Bước 1: Tạo hồ sơ cho bé' })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Bước 1: Tạo hồ sơ người chơi' })).toBeTruthy();
     expect(screen.getByText('Tạo ít nhất một hồ sơ ở bước 1 trước nhé.')).toBeTruthy();
     // Locking never waits on a profile: an open parent area must always be closable.
-    expect((screen.getByRole('button', { name: 'Xong, khóa khu phụ huynh' }) as HTMLButtonElement).disabled).toBe(false);
+    expect((screen.getByRole('button', { name: 'Xong, khóa mục này' }) as HTMLButtonElement).disabled).toBe(false);
     fireEvent.click(create);
     expect(await screen.findByText('Mèo Mây', { selector: '.profile-row-name' })).toBeTruthy();
     expect(calls.find((c) => c.key === 'POST /api/children')?.body).toEqual({ displayName: 'Mèo Mây' });
-    expect(screen.getByRole('heading', { name: 'Bước 1, đã xong: Tạo hồ sơ cho bé' })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Bước 1, đã xong: Tạo hồ sơ người chơi' })).toBeTruthy();
     // The next profile defaults to the first name no sibling uses.
-    expect((screen.getByLabelText(/Thêm hồ sơ cho bé khác/) as HTMLSelectElement).value).toBe('Thỏ Bông');
+    expect((screen.getByLabelText(/Thêm hồ sơ người chơi khác/) as HTMLSelectElement).value).toBe('Thỏ Bông');
+  });
+
+  it('without a PIN: says "play" instead of "lock", locks nothing, and offers to set a PIN', async () => {
+    const calls = stubApi({
+      'GET /api/auth/me': () => ({ status: 200, body: me({ pinSet: false, parentGateOpen: true }) }),
+      'GET /api/children': () => ({ status: 200, body: [{ id: CHILD, displayName: 'Mèo Mây', species: 'cat' }] }),
+    });
+    renderAt('/parent');
+    const done = await screen.findByRole('button', { name: 'Xong, vào chơi' });
+    expect(screen.getByRole('link', { name: 'Đặt mã PIN' }).getAttribute('href')).toBe('/set-pin');
+    expect(screen.queryByRole('button', { name: 'Gỡ mã PIN' })).toBeNull();
+    fireEvent.click(done);
+    expect(await screen.findByRole('heading', { name: 'Ai đang chơi?' })).toBeTruthy();
+    expect(calls.some((c) => c.key === 'POST /api/parent-gate/lock')).toBe(false);
+  });
+
+  it('with a PIN: offers to change or remove it while the area is open', async () => {
+    const calls = stubApi({
+      'GET /api/auth/me': () => ({ status: 200, body: me({ parentGateOpen: true }) }),
+      'GET /api/children': () => ({ status: 200, body: [] }),
+      'DELETE /api/auth/pin': () => ({ status: 200, body: me({ pinSet: false, parentGateOpen: true }) }),
+    });
+    renderAt('/parent');
+    expect((await screen.findByRole('link', { name: 'Đổi mã PIN' })).getAttribute('href')).toBe('/set-pin');
+    fireEvent.click(screen.getByRole('button', { name: 'Gỡ mã PIN' }));
+    expect(await screen.findByRole('link', { name: 'Đặt mã PIN' })).toBeTruthy();
+    expect(calls.some((c) => c.key === 'DELETE /api/auth/pin')).toBe(true);
   });
 
   it('shows a profile name as text and opens the name list only after "Đổi tên"', async () => {
@@ -268,7 +295,7 @@ describe('account flow', () => {
     });
     renderAt('/parent');
     fireEvent.click(await screen.findByRole('button', { name: 'Tạo hồ sơ' }));
-    expect(await screen.findByLabelText('Nhập mã PIN phụ huynh')).toBeTruthy();
+    expect(await screen.findByLabelText('Nhập mã PIN tài khoản')).toBeTruthy();
   });
 
   it('lets the child pick a profile, land on Home and enter play from today\'s quest', async () => {

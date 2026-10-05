@@ -167,9 +167,13 @@ export function ParentAreaScreen() {
     setPicked(null);
     setNewLang('vi');
   });
+  // Without a PIN there is nothing to lock: "done" just goes to the profile picker.
   const leave = useSubmit(async () => {
-    setMe(await api('POST', '/parent-gate/lock', MeResponse));
+    if (state.status === 'signed-in' && state.me.pinSet) setMe(await api('POST', '/parent-gate/lock', MeResponse));
     navigate('/profiles');
+  });
+  const removePin = useSubmit(async () => {
+    setMe(await api('DELETE', '/auth/pin', MeResponse));
   });
 
   if (state.status !== 'signed-in') return null;
@@ -203,6 +207,7 @@ export function ParentAreaScreen() {
   }
 
   const hasProfile = (profiles?.length ?? 0) > 0;
+  const { pinSet } = state.me;
   return (
     <SkyScene>
       <main className="scene-content parent-area" data-id="parent-area">
@@ -262,29 +267,35 @@ export function ParentAreaScreen() {
 
         <section className="panel" data-id="parent-handover" aria-labelledby="parent-step-handover">
           <StepTitle n={2} done={false} id="parent-step-handover">
-            <T k="parent.step2" />
+            <T k={pinSet ? 'parent.step2' : 'parent.step2NoPin'} />
           </StepTitle>
           <p className="hint">
-            <T k={hasProfile ? 'parent.step2HintHas' : 'parent.step2HintEmpty'} />
+            <T k={!hasProfile ? 'parent.step2HintEmpty' : pinSet ? 'parent.step2HintHas' : 'parent.step2HintHasNoPin'} />
           </p>
           {leave.error ? <p role="alert" className="error">{leave.error}</p> : null}
           <button type="button" className={buttonClass('primary', { block: true })} data-id="parent-leave" disabled={leave.busy} onClick={() => void leave.onSubmit()}>
-            <T k="parent.step2DoneButton" />
+            <T k={pinSet ? 'parent.step2DoneButton' : 'parent.step2DoneButtonNoPin'} />
           </button>
         </section>
 
-        {state.me.pinSet ? null : (
-          <section className="panel" data-id="parent-pin-optional" aria-labelledby="parent-pin-title">
-            <div className="panel-title">
-              <Icon name="key" size={40} />
-              <h2 id="parent-pin-title"><T k="parent.pinOptionalTitle" /></h2>
-            </div>
-            <p className="hint"><T k="parent.pinOptionalHint" /></p>
-            <Link to="/set-pin" className={buttonClass('secondary', { block: true })} data-id="parent-pin-set">
-              <T k="parent.pinOptionalButton" />
+        <section className="panel" data-id="parent-pin" aria-labelledby="parent-pin-title">
+          <div className="panel-title">
+            <Icon name="key" size={40} />
+            <h2 id="parent-pin-title"><T k={pinSet ? 'parent.pinManageTitle' : 'parent.pinOptionalTitle'} /></h2>
+          </div>
+          <p className="hint"><T k={pinSet ? 'parent.pinManageHint' : 'parent.pinOptionalHint'} /></p>
+          {removePin.error ? <p role="alert" className="error">{removePin.error}</p> : null}
+          <div className="row">
+            <Link to="/set-pin" className={buttonClass('secondary')} data-id="parent-pin-set">
+              <T k={pinSet ? 'parent.pinChangeButton' : 'parent.pinOptionalButton'} />
             </Link>
-          </section>
-        )}
+            {pinSet ? (
+              <button type="button" className={buttonClass('ghost')} data-id="parent-pin-remove" disabled={removePin.busy} onClick={() => void removePin.onSubmit()}>
+                <T k="parent.pinRemoveButton" />
+              </button>
+            ) : null}
+          </div>
+        </section>
 
         <p className="parent-more-title"><T k="parent.moreTitle" /></p>
         <div className="parent-columns">

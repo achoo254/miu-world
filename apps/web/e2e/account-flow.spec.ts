@@ -40,7 +40,7 @@ test('Google sign-in → consent → create profile → pick profile → create 
   await page.goto('/privacy');
   await expect(page.getByRole('heading', { name: 'Quyền riêng tư của Miu World' })).toBeVisible();
   await page.goto('/');
-  await expect(page.getByRole('heading', { name: 'Đăng nhập phụ huynh' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Đăng nhập' })).toBeVisible();
   await expect(page.locator('input[type="password"]')).toHaveCount(0); // no password sign-in in the UI
   await shot(page, '01-login');
   await page.getByRole('link', { name: 'Đăng nhập bằng Google' }).click();
@@ -50,14 +50,14 @@ test('Google sign-in → consent → create profile → pick profile → create 
   await expect(page.locator('[data-id="consent-draft"]')).toHaveCount(0); // the shipped consent is final
   await expect(page.locator('[data-id="consent-privacy"]')).toBeVisible();
   await shot(page, '03-consent');
-  await page.getByRole('button', { name: 'Tôi là phụ huynh và đồng ý' }).click();
+  await page.getByRole('button', { name: 'Tôi đồng ý' }).click();
 
-  await expect(page.getByRole('heading', { name: 'Tạo hồ sơ cho bé' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Tạo hồ sơ người chơi' })).toBeVisible();
   await page.locator('[data-id="parent-create-name"]').selectOption('Thỏ Bông');
   await page.getByRole('button', { name: 'Tạo hồ sơ' }).click();
   await expect(page.locator('[data-id^="parent-profile-"] .profile-row-name')).toHaveText(['Thỏ Bông']);
   await shot(page, '04-parent-area');
-  await page.getByRole('button', { name: 'Xong, khóa khu phụ huynh' }).click();
+  await page.getByRole('button', { name: 'Xong, vào chơi' }).click();
 
   await expect(page.getByRole('heading', { name: 'Ai đang chơi?' })).toBeVisible();
   await shot(page, '05-profiles');
@@ -101,12 +101,12 @@ test('Google sign-in → consent → create profile → pick profile → create 
 
   // The child cannot reach the parent area without the PIN.
   await page.goto('/parent');
-  await expect(page.getByLabel('Nhập mã PIN phụ huynh')).toBeVisible();
+  await expect(page.getByLabel('Nhập mã PIN tài khoản')).toBeVisible();
   await shot(page, '11-parent-gate');
-  await expect(page.getByRole('heading', { name: 'Tạo hồ sơ cho bé' })).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: 'Tạo hồ sơ người chơi' })).toHaveCount(0);
 
   // The parent downloads what the server keeps, then deletes the account.
-  await page.getByLabel('Nhập mã PIN phụ huynh').fill('2468');
+  await page.getByLabel('Nhập mã PIN tài khoản').fill('2468');
   await page.getByRole('button', { name: 'Mở khóa' }).click();
   const download = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Tải dữ liệu của tôi' }).click();
@@ -119,7 +119,7 @@ test('Google sign-in → consent → create profile → pick profile → create 
   await page.getByRole('button', { name: 'Xóa hẳn tài khoản' }).scrollIntoViewIfNeeded();
   await shot(page, '12-delete-account');
   await page.getByRole('button', { name: 'Xóa hẳn tài khoản' }).click();
-  await expect(page.getByRole('heading', { name: 'Đăng nhập phụ huynh' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Đăng nhập' })).toBeVisible();
   expect((await page.request.get('/api/auth/me')).status()).toBe(401);
 
   expect(consoleErrors).toEqual([]);

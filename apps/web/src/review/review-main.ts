@@ -110,9 +110,9 @@ const MVP_STEPS: Record<string, string> = {
   '12-backpack': 'Ba lô có Lá thần (M3.5)',
 };
 const UI_STEPS: Record<string, string> = {
-  '01-login': 'Đăng nhập phụ huynh: chỉ nút Google',
-  '03-consent': 'Đồng ý của phụ huynh',
-  '04-parent-area': 'Khu phụ huynh: tạo hồ sơ từ danh sách tên',
+  '01-login': 'Đăng nhập: chỉ nút Google',
+  '03-consent': 'Đồng ý chính sách (kèm dòng phụ huynh chịu trách nhiệm)',
+  '04-parent-area': 'Quản lý tài khoản: tạo hồ sơ người chơi từ danh sách tên',
   '05-profiles': 'Đưa máy cho bé: bé chọn hồ sơ',
   '06-creator': 'Hồ sơ mới: tạo nhân vật (loài, tên) trước khi chơi',
   '07-home': 'Home: đảo nổi mỗi vùng một đảo, nhiệm vụ hôm nay (M1.1)',

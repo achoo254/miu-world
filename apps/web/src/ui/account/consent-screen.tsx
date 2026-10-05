@@ -42,6 +42,7 @@ export function ConsentScreen() {
             {policy.paragraphs.map((p) => (
               <p key={p}>{p}</p>
             ))}
+            <p data-id="consent-responsibility"><T k="consent.responsibility" /></p>
             <p>
               <Link to="/privacy" data-id="consent-privacy">
                 <T k="consent.readPrivacy" />
