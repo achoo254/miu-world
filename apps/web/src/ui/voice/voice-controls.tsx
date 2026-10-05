@@ -86,7 +86,14 @@ function InVoiceButtons({ voice, leaveKey }: { voice: VoiceManager; leaveKey: 'v
           {mic ? '🎙️' : '🔇'}
         </button>
       )}
-      <button type="button" className={`voice-icon ${buttonClass('ghost', { small: true })}`} data-id="voice-leave" aria-label={t(leaveKey)} title={t(leaveKey)} onClick={() => voice.leave()}>
+      <button
+        type="button"
+        className={`voice-icon ${buttonClass('ghost', { small: true })}`}
+        data-id="voice-leave"
+        aria-label={t(leaveKey)}
+        title={t(leaveKey)}
+        onClick={() => (leaveKey === 'voice.hangUp' ? voice.hangUp() : voice.leave())}
+      >
         📴
       </button>
     </>
@@ -205,7 +212,7 @@ export function CallBar({ voice, social }: { voice: VoiceManager; social: Social
         📞 <T k="voice.calling" params={{ who: same(outgoing.name) }} />
       </p>
       <span className="online-card-timer" style={{ animationDuration: `${outgoing.ttlMs}ms` }} />
-      <button type="button" className={buttonClass('ghost', { small: true })} data-id="voice-cancel" onClick={() => voice.leave()}>
+      <button type="button" className={buttonClass('ghost', { small: true })} data-id="voice-cancel" onClick={() => voice.hangUp()}>
         <T k="voice.cancelCall" />
       </button>
     </section>

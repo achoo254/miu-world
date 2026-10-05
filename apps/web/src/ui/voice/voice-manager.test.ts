@@ -183,6 +183,59 @@ describe('her microphone', () => {
   });
 });
 
+describe('the microphone while the browser asks for it', () => {
+  /** A permission prompt left open until the test answers it. */
+  function prompt() {
+    const mic = fakeStream();
+    let grant: () => void = () => {};
+    const getUserMedia = vi.fn(
+      () =>
+        new Promise<MediaStream>((resolve) => {
+          grant = () => resolve(mic.stream);
+        }),
+    );
+    return { mic, getUserMedia, grant: () => grant() };
+  }
+
+  it('opens once for a double tap', async () => {
+    const p = prompt();
+    const { voice, sent } = setup({ getUserMedia: p.getUserMedia });
+    const first = voice.join();
+    const second = voice.join();
+    p.grant();
+    await Promise.all([first, second]);
+    expect(p.getUserMedia).toHaveBeenCalledTimes(1);
+    expect(sent.filter((m) => m.type === 'voice-join')).toHaveLength(1);
+  });
+
+  it('is given back when she leaves (or the screen closes) before the browser answers', async () => {
+    const p = prompt();
+    const { voice, sent } = setup({ getUserMedia: p.getUserMedia });
+    const joining = voice.join();
+    voice.stop();
+    p.grant();
+    await joining;
+    expect(p.mic.track.stopped).toBe(true);
+    expect(sent.some((m) => m.type === 'voice-join')).toBe(false);
+    expect(voice.getSnapshot().joined).toBe(false);
+  });
+
+  it('is given back when a call she is answering ends before the browser answers', async () => {
+    const p = prompt();
+    const { voice, server, sent } = setup({ getUserMedia: p.getUserMedia });
+    server({ type: 'voice-call-invite', from: { id: 'p-c', displayName: 'Bông', species: 'rabbit' }, expiresInMs: 30_000 });
+    const answering = voice.answer(true);
+    server({ type: 'voice-call-end', id: 'p-c', reason: 'ended' });
+    p.grant();
+    await answering;
+    expect(p.mic.track.stopped).toBe(true);
+    expect(sent).toEqual([]);
+    // A voice the server still counts her in is not taken for this call.
+    server({ type: 'voice-state', channel: { kind: 'call', joined: true, members: [member('p-b'), member('p-c')] } });
+    expect(voice.getSnapshot().joined).toBe(false);
+  });
+});
+
 describe('the connections', () => {
   it('offers to a member with a larger id and answers one with a smaller id', async () => {
     const { voice, server, sent } = setup();
@@ -243,6 +296,38 @@ describe('calls with a friend', () => {
     expect(sent).toEqual([{ type: 'voice-call-reply', from: 'p-c', accept: true }]);
     server({ type: 'voice-state', channel: { kind: 'call', joined: true, members: [member('p-b'), member('p-c')] } });
     expect(voice.getSnapshot()).toMatchObject({ joined: true, mic: true, incoming: null });
+  });
+
+  it('calling off a ringing call keeps her party voice', async () => {
+    const { voice, server, sent, mic } = setup();
+    await voice.join();
+    server({ type: 'voice-state', channel: party(true, member('p-b'), member('p-c')) });
+    await voice.call('p-d', 'Cáo');
+    voice.hangUp();
+    expect(sent.at(-1)).toEqual({ type: 'voice-hangup' });
+    expect(voice.getSnapshot()).toMatchObject({ joined: true, outgoing: null });
+    expect(mic.track.stopped).toBe(false);
+  });
+
+  it('stops ringing by itself when the server never answers, and gives the microphone back', async () => {
+    vi.useFakeTimers();
+    const { voice, mic, toasts } = setup();
+    await voice.call('p-c', 'Bông');
+    await vi.advanceTimersByTimeAsync(36_000);
+    expect(voice.getSnapshot().outgoing).toBeNull();
+    expect(mic.track.stopped).toBe(true);
+    expect(toasts.some((t) => t.startsWith('call:'))).toBe(true);
+  });
+
+  it('accepted while her tab is hidden, the call starts with her microphone off', async () => {
+    const { voice, server, sent, mic } = setup();
+    await voice.call('p-c', 'Bông');
+    Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'hidden' });
+    server({ type: 'voice-state', channel: { kind: 'call', joined: true, members: [member('p-b'), member('p-c')] } });
+    Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'visible' });
+    expect(voice.getSnapshot()).toMatchObject({ joined: true, mic: false });
+    expect(mic.track.enabled).toBe(false);
+    expect(sent.at(-1)).toEqual({ type: 'voice-mic', on: false });
   });
 
   it('declines for her when voice is off on this device', () => {

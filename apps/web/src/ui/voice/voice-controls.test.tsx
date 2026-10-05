@@ -131,7 +131,8 @@ describe('calls', () => {
     );
     expect(screen.getByText(/Đang nói chuyện với Cáo/)).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: /Kết thúc/ }));
-    expect(sent.at(-1)).toEqual({ type: 'voice-leave' });
+    expect(sent.at(-1)).toEqual({ type: 'voice-hangup' });
+    expect(voice.getSnapshot().joined).toBe(false);
   });
 
   it('calls a friend from the friends list and tells why a call did not start', async () => {

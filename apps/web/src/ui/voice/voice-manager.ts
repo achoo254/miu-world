@@ -25,6 +25,8 @@ const STUN_FALLBACK: RTCIceServer[] = [{ urls: 'stun:stun.cloudflare.com:3478' }
 const LEVEL_EVERY_MS = 50;
 /** A bot line with no voice on the device still shows its ring this long. */
 const SILENT_LINE_MS = 1_600;
+/** Her ringing call is given up this long after it should have lapsed on the server. */
+const OUTGOING_MARGIN_MS = 5_000;
 
 export type MicError = 'denied' | 'unsupported';
 
@@ -99,6 +101,18 @@ export class VoiceManager {
   private ctx: AudioContext | null = null;
   private stream: MediaStream | null = null;
   private analyser: AnalyserNode | null = null;
+  /** Her microphone's loudness graph (released with the microphone). */
+  private levelNodes: AudioNode[] = [];
+  /** The microphone being opened (one request at a time). */
+  private opening: Promise<boolean> | null = null;
+  /**
+   * Bumped whenever the microphone is released: a tap still waiting for the browser (its permission prompt) finds
+   * the voice gone and gives back what it got.
+   */
+  private generation = 0;
+  /** A join, call or answer waits for the browser: another tap does nothing meanwhile. */
+  private busy = false;
+  private outgoingTimer: ReturnType<typeof setTimeout> | null = null;
   private levelTimer: ReturnType<typeof setInterval> | null = null;
   private readonly gate = new VoiceActivityGate();
   private ice: { servers: RTCIceServer[]; until: number } | null = null;
@@ -126,7 +140,11 @@ export class VoiceManager {
           signal: (to, signal) => this.send({ type: 'voice-signal', to, signal }),
           track: (id, stream) => this.play(id, stream),
           closed: (id) => this.stopPlaying(id),
-          state: (id, state) => this.patch({ peers: { ...this.snapshot.peers, [id]: state } }),
+          state: (id, state) => {
+            this.patch({ peers: { ...this.snapshot.peers, [id]: state } });
+            // Set up again with fresh relay credentials when the ones in use ran out.
+            if (state === 'reconnecting') void this.loadIce();
+          },
         })
       : null;
     this.snapshot = { settings: readVoiceSettings(), channel: null, joined: false, mic: false, holding: false, micError: null, muted: {}, volumes: {}, peers: {}, incoming: null, outgoing: null };
@@ -140,12 +158,20 @@ export class VoiceManager {
     this.offs.push(onVoiceSettingsChange(() => this.settingsChanged()));
     this.offs.push(onSoundSettingChange(() => this.applyVolumes()));
     if (typeof document !== 'undefined') {
-      const hidden = (): void => {
-        // The microphone is never left open in the background.
-        if (document.visibilityState === 'hidden' && this.snapshot.mic) this.setMic(false);
+      const visibility = (): void => {
+        // The microphone is never left open in the background; back in front, the sound goes on.
+        if (document.visibilityState === 'hidden') {
+          if (this.snapshot.mic) this.setMic(false);
+        } else this.resumeAudio();
       };
-      document.addEventListener('visibilitychange', hidden);
-      this.offs.push(() => document.removeEventListener('visibilitychange', hidden));
+      // iPad Safari stops the audio output after the tab hid, Siri or a phone call: any tap starts it again.
+      const tap = (): void => this.resumeAudio();
+      document.addEventListener('visibilitychange', visibility);
+      document.addEventListener('pointerdown', tap, { capture: true });
+      this.offs.push(() => {
+        document.removeEventListener('visibilitychange', visibility);
+        document.removeEventListener('pointerdown', tap, { capture: true });
+      });
     }
   }
 
@@ -163,9 +189,15 @@ export class VoiceManager {
 
   /** Into her party's voice, with her microphone on (a tap: the browser may ask for the microphone). */
   async join(): Promise<void> {
-    if (!this.snapshot.settings.enabled || this.snapshot.joined || !this.supported) return;
+    if (!this.snapshot.settings.enabled || this.snapshot.joined || !this.supported || this.busy) return;
     this.wakeAudio();
-    const [mic] = await Promise.all([this.openMic(), this.loadIce()]);
+    const generation = this.generation;
+    this.busy = true;
+    const [mic] = await Promise.all([this.openMic(), this.loadIce()]).finally(() => {
+      this.busy = false;
+    });
+    // Left (or the screen closed) while the browser asked: nothing to join.
+    if (generation !== this.generation) return;
     this.pendingJoin = true;
     this.patch({ joined: true, mic });
     this.applyTrack();
@@ -176,7 +208,17 @@ export class VoiceManager {
   leave(): void {
     if (this.snapshot.joined || this.snapshot.outgoing) this.send({ type: 'voice-leave' });
     this.teardown();
-    this.patch({ outgoing: null });
+    this.setOutgoing(null);
+  }
+
+  /** Ends her call (ringing or under way); her party's voice, if she is in it, goes on. */
+  hangUp(): void {
+    const inCall = this.snapshot.joined && this.snapshot.channel?.kind === 'call';
+    if (!this.snapshot.outgoing && !inCall) return;
+    this.send({ type: 'voice-hangup' });
+    this.setOutgoing(null);
+    if (inCall) this.teardown();
+    else if (!this.snapshot.joined) this.releaseMic();
   }
 
   /** Her microphone on or off (in the voice; out of it, a tap joins with it on). */
@@ -184,7 +226,9 @@ export class VoiceManager {
     if (!this.snapshot.joined) return this.join();
     if (this.snapshot.mic) return this.setMic(false);
     this.wakeAudio();
+    const generation = this.generation;
     if (!this.stream && !(await this.openMic())) return;
+    if (generation !== this.generation || !this.snapshot.joined) return;
     this.setMic(true);
   }
 
@@ -207,11 +251,16 @@ export class VoiceManager {
 
   /** Calls a friend who is online (by her id in the rooms); her microphone opens now, so the call starts at once. */
   async call(id: string, name: string): Promise<void> {
-    if (!this.snapshot.settings.enabled || !this.supported || this.snapshot.outgoing) return;
+    if (!this.snapshot.settings.enabled || !this.supported || this.snapshot.outgoing || this.busy) return;
     this.wakeAudio();
-    await Promise.all([this.openMic(), this.loadIce()]);
+    const generation = this.generation;
+    this.busy = true;
+    await Promise.all([this.openMic(), this.loadIce()]).finally(() => {
+      this.busy = false;
+    });
+    if (generation !== this.generation) return;
     this.pendingJoin = true;
-    this.patch({ outgoing: { id, name, expiresAt: Date.now() + VOICE_CALL_RING_MS, ttlMs: VOICE_CALL_RING_MS } });
+    this.setOutgoing({ id, name, expiresAt: Date.now() + VOICE_CALL_RING_MS, ttlMs: VOICE_CALL_RING_MS });
     this.send({ type: 'voice-call', to: id });
   }
 
@@ -225,7 +274,13 @@ export class VoiceManager {
       return;
     }
     this.wakeAudio();
-    await Promise.all([this.openMic(), this.loadIce()]);
+    const generation = this.generation;
+    this.busy = true;
+    await Promise.all([this.openMic(), this.loadIce()]).finally(() => {
+      this.busy = false;
+    });
+    // The call ended (or the screen closed) while the browser asked: the microphone was given back already.
+    if (generation !== this.generation) return;
     this.pendingJoin = true;
     this.send({ type: 'voice-call-reply', from: invite.id, accept: true });
   }
@@ -240,7 +295,8 @@ export class VoiceManager {
     if (this.snapshot.joined || this.snapshot.outgoing) this.send({ type: 'voice-leave' });
     this.teardown();
     this.clearIncoming();
-    this.patch({ channel: null, outgoing: null });
+    this.setOutgoing(null);
+    this.patch({ channel: null });
     for (const off of this.offs.splice(0)) off();
     void this.ctx?.close().catch(() => {});
     this.ctx = null;
@@ -270,15 +326,17 @@ export class VoiceManager {
         return;
       }
       case 'voice-call-ringing':
-        this.patch({ outgoing: { id: message.to, name: message.displayName, expiresAt: Date.now() + message.expiresInMs, ttlMs: message.expiresInMs } });
+        this.setOutgoing({ id: message.to, name: message.displayName, expiresAt: Date.now() + message.expiresInMs, ttlMs: message.expiresInMs });
         return;
       case 'voice-call-end': {
         const name = this.snapshot.outgoing?.id === message.id ? this.snapshot.outgoing.name : this.snapshot.incoming?.id === message.id ? this.snapshot.incoming.name : (this.memberName(message.id) ?? null);
         if (this.snapshot.incoming?.id === message.id) this.clearIncoming();
-        if (this.snapshot.outgoing?.id === message.id) this.patch({ outgoing: null });
-        this.pendingJoin = false;
-        // A call that never started gives the microphone back at once.
-        if (!this.snapshot.joined) this.releaseMic();
+        if (this.snapshot.outgoing?.id === message.id) this.setOutgoing(null);
+        // A call that never started gives the microphone back at once (also one still being opened for it).
+        if (!this.snapshot.joined) {
+          this.pendingJoin = false;
+          this.releaseMic();
+        }
         this.social.toast({ kind: 'call', reason: message.reason, name });
         return;
       }
@@ -304,11 +362,14 @@ export class VoiceManager {
         this.patch({ channel: null });
         return;
       }
-      // In a call she accepted (or made): her microphone as it opened.
+      // In a call she accepted (or made): her microphone as it opened, never live in a hidden tab. The server is told
+      // how it really is.
       this.pendingJoin = false;
-      this.patch({ joined: true, mic: this.stream !== null, outgoing: null });
+      const mic = this.stream !== null && document.visibilityState !== 'hidden';
+      this.setOutgoing(null);
+      this.patch({ joined: true, mic });
       this.applyTrack();
-      if (!this.stream) this.send({ type: 'voice-mic', on: false });
+      this.send({ type: 'voice-mic', on: mic });
     }
     const members = new Set((channel?.members ?? []).map((m) => m.id));
     for (const id of [...this.talking]) if (!members.has(id) && id !== this.selfId()) this.talking.delete(id);
@@ -349,24 +410,48 @@ export class VoiceManager {
 
   /** The audio output needs a tap to start on iPad Safari and in Chrome: woken from the tap itself. */
   private wakeAudio(): void {
-    this.ctx ??= this.createAudioContext();
-    if (this.ctx?.state === 'suspended') void this.ctx.resume().catch(() => {});
+    if (!this.ctx) {
+      this.ctx = this.createAudioContext();
+      if (this.ctx) this.ctx.onstatechange = () => this.applyVolumes();
+    }
+    this.resumeAudio();
   }
 
-  private async openMic(): Promise<boolean> {
-    if (this.stream) return true;
+  /** The audio output stopped (a hidden tab, an interruption on iPad): started again from a tap or on return. */
+  private resumeAudio(): void {
+    if (this.ctx && this.ctx.state !== 'running' && this.ctx.state !== 'closed') void this.ctx.resume().catch(() => {});
+  }
+
+  /** Her microphone, opened once however many taps ask for it meanwhile. */
+  private openMic(): Promise<boolean> {
+    if (this.stream) return Promise.resolve(true);
+    this.opening ??= this.acquireMic().finally(() => {
+      this.opening = null;
+    });
+    return this.opening;
+  }
+
+  private async acquireMic(): Promise<boolean> {
     if (!this.getUserMedia) {
       this.patch({ micError: 'unsupported' });
       return false;
     }
+    const generation = this.generation;
+    let stream: MediaStream;
     try {
-      this.stream = await this.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true }, video: false });
+      stream = await this.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true }, video: false });
     } catch {
       // She still hears the others; the button tries again.
       this.patch({ micError: 'denied' });
       this.social.toast({ kind: 'mic' });
       return false;
     }
+    // Released meanwhile (left, the call ended, the screen closed): given back at once.
+    if (generation !== this.generation) {
+      for (const t of stream.getTracks()) t.stop();
+      return false;
+    }
+    this.stream = stream;
     this.patch({ micError: null });
     const track = this.stream.getAudioTracks()[0] ?? null;
     if (track) track.enabled = false;
@@ -384,8 +469,10 @@ export class VoiceManager {
       // Pulled through a silent output: some browsers only run a graph that reaches the speakers.
       const silent = this.ctx.createGain();
       silent.gain.value = 0;
-      this.ctx.createMediaStreamSource(this.stream).connect(analyser).connect(silent).connect(this.ctx.destination);
+      const source = this.ctx.createMediaStreamSource(this.stream);
+      source.connect(analyser).connect(silent).connect(this.ctx.destination);
       this.analyser = analyser;
+      this.levelNodes = [source, analyser, silent];
     } catch {
       return;
     }
@@ -409,9 +496,10 @@ export class VoiceManager {
   }
 
   private releaseMic(): void {
+    this.generation += 1;
     if (this.levelTimer) clearInterval(this.levelTimer);
     this.levelTimer = null;
-    this.analyser?.disconnect();
+    for (const node of this.levelNodes.splice(0)) node.disconnect();
     this.analyser = null;
     this.gate.reset();
     for (const track of this.stream?.getTracks() ?? []) track.stop();
@@ -475,12 +563,40 @@ export class VoiceManager {
     return (this.snapshot.volumes[id] ?? 1) * this.snapshot.settings.volume;
   }
 
+  /**
+   * Each one at her volume: through the audio output while it runs, else (stopped on iPad until a tap) through the
+   * page's audio element, so she is still heard.
+   */
   private applyVolumes(): void {
+    const running = this.ctx?.state === 'running';
     for (const [id, out] of this.outputs) {
       const volume = this.volumeOf(id);
-      if (out.gain) out.gain.gain.value = volume;
-      else out.audio.volume = volume;
+      if (out.gain && running) {
+        out.gain.gain.value = volume;
+        out.audio.muted = true;
+      } else {
+        if (out.gain) out.gain.gain.value = 0;
+        out.audio.muted = volume === 0;
+        out.audio.volume = Math.min(1, volume);
+      }
     }
+  }
+
+  private setOutgoing(outgoing: VoiceSnapshot['outgoing']): void {
+    if (this.outgoingTimer) clearTimeout(this.outgoingTimer);
+    this.outgoingTimer = null;
+    if (outgoing) {
+      // No answer from the server in time (a message lost while a map loaded): the ringing stops here too.
+      this.outgoingTimer = setTimeout(() => {
+        this.outgoingTimer = null;
+        if (this.snapshot.outgoing?.id !== outgoing.id) return;
+        this.patch({ outgoing: null });
+        this.pendingJoin = false;
+        if (!this.snapshot.joined) this.releaseMic();
+        this.social.toast({ kind: 'call', reason: 'timeout', name: outgoing.name });
+      }, Math.max(0, outgoing.expiresAt - Date.now()) + OUTGOING_MARGIN_MS);
+    }
+    if (this.snapshot.outgoing !== outgoing) this.patch({ outgoing });
   }
 
   private botSays(id: string, key: VoiceBotLineKey, variant: number): void {

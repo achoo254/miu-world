@@ -93,10 +93,10 @@ export class PeerMesh {
   /** A setup message from another player in her voice. */
   async receive(from: string, signal: VoiceSignal): Promise<void> {
     if (!this.targets.has(from)) return;
+    if (signal.kind === 'offer') return this.answer(from, signal.sdp);
+    const peer = this.peers.get(from);
+    if (!peer) return;
     try {
-      if (signal.kind === 'offer') return await this.answer(from, signal.sdp);
-      const peer = this.peers.get(from);
-      if (!peer) return;
       if (signal.kind === 'answer') {
         if (!peer.offerer || peer.pc.signalingState !== 'have-local-offer') return;
         await peer.pc.setRemoteDescription({ type: 'answer', sdp: signal.sdp });
@@ -110,7 +110,8 @@ export class PeerMesh {
       else peer.queue.push(candidate);
     } catch (err) {
       console.warn('voice setup failed', err instanceof Error ? err.name : typeof err);
-      this.failed(from);
+      // Only the connection it was for (a newer one may have replaced it meanwhile).
+      if (this.peers.get(from) === peer) this.failed(from);
     }
   }
 
@@ -197,7 +198,7 @@ export class PeerMesh {
       this.events.signal(id, { kind: 'offer', sdp });
     } catch (err) {
       console.warn('voice offer failed', err instanceof Error ? err.name : typeof err);
-      this.failed(id);
+      if (this.peers.get(id) === peer) this.failed(id);
     }
   }
 
@@ -205,17 +206,22 @@ export class PeerMesh {
   private async answer(id: string, sdp: string): Promise<void> {
     this.drop(id, false);
     const peer = this.open(id, false);
-    await peer.pc.setRemoteDescription({ type: 'offer', sdp });
-    const transceiver = peer.pc.getTransceivers()[0];
-    if (transceiver) {
-      transceiver.direction = 'sendrecv';
-      if (this.track) await transceiver.sender.replaceTrack(this.track);
+    try {
+      await peer.pc.setRemoteDescription({ type: 'offer', sdp });
+      const transceiver = peer.pc.getTransceivers()[0];
+      if (transceiver) {
+        transceiver.direction = 'sendrecv';
+        if (this.track) await transceiver.sender.replaceTrack(this.track);
+      }
+      await peer.pc.setLocalDescription(await peer.pc.createAnswer());
+      const answer = peer.pc.localDescription?.sdp;
+      if (this.peers.get(id) !== peer || !answer) return;
+      this.events.signal(id, { kind: 'answer', sdp: answer });
+      await this.flush(peer);
+    } catch (err) {
+      console.warn('voice answer failed', err instanceof Error ? err.name : typeof err);
+      if (this.peers.get(id) === peer) this.failed(id);
     }
-    await peer.pc.setLocalDescription(await peer.pc.createAnswer());
-    const answer = peer.pc.localDescription?.sdp;
-    if (this.peers.get(id) !== peer || !answer) return;
-    this.events.signal(id, { kind: 'answer', sdp: answer });
-    await this.flush(peer);
   }
 
   private async flush(peer: Peer): Promise<void> {
