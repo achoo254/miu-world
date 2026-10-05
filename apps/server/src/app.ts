@@ -41,6 +41,8 @@ import { npcRoutes } from './npc/npc-routes';
 import { achievementRoutes } from './progression/achievement-routes';
 import { journeyRoutes } from './progression/journey-routes';
 import { skillTreeRoutes } from './progression/skill-tree-routes';
+import { IceServerSource } from './voice/ice-servers';
+import { voiceRoutes } from './voice/voice-routes';
 
 export interface AppDeps {
   config: ServerConfig;
@@ -53,6 +55,8 @@ export interface AppDeps {
   clock?: () => Date;
   /** Google token endpoint call; tests inject a fake so Google is never contacted. */
   fetchImpl?: typeof fetch;
+  /** Voice relay credentials (Cloudflare TURN); tests inject a fake so Cloudflare is never contacted. */
+  turnFetch?: typeof fetch;
   /** Told when a player saves her character (the multiplayer hub redresses her for the others). */
   characterEvents?: CharacterEvents;
   /** Told when a player's switches, friends or blocks change (the multiplayer hub applies them at once). */
@@ -88,7 +92,7 @@ const errorHandler: ErrorRequestHandler = (err: unknown, _req, res, _next) => {
 };
 
 /** Builds the Express app without listening, so tests can drive it through supertest. */
-export function createApp({ config, db, content = loadContentCatalog(), worksheets = loadWorksheets(), clock = () => new Date(), fetchImpl, characterEvents, playerEvents, online, partyQuests }: AppDeps): express.Express {
+export function createApp({ config, db, content = loadContentCatalog(), worksheets = loadWorksheets(), clock = () => new Date(), fetchImpl, turnFetch, characterEvents, playerEvents, online, partyQuests }: AppDeps): express.Express {
   const app = express();
   app.disable('x-powered-by');
   // The API listens on loopback only and is reached through the web dev/preview proxy (or a reverse
@@ -131,6 +135,8 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(journeyRoutes({ db, content, shopNames: new Map(shop.items.map((item) => [item.id, item.name])) }));
   api.use(achievementRoutes({ db, content, clock }));
   api.use(worksheetRoutes({ worksheets, clock, fontDir: config.handwritingFontDir }));
+  const now = (): number => clock().getTime();
+  api.use(voiceRoutes({ db, content, ice: new IceServerSource({ turn: config.turn, fetchImpl: turnFetch, now }), now }));
   app.use('/api', api);
 
   app.use((_req, res) => {

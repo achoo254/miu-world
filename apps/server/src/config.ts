@@ -38,6 +38,12 @@ const Env = z.object({
   TIMETABLE_DEFAULT_FILE: z.string().min(1).optional(),
   /** Test-only cap on password sign-ups per IP per hour (E2E creates a parent per spec); refused in production. */
   REGISTER_LIMIT_PER_HOUR: z.coerce.number().int().min(1).optional(),
+  /**
+   * Cloudflare TURN key (voice relay when two players find no direct path; see the deployment guide). Unset: voice
+   * uses the public STUN server only.
+   */
+  CF_TURN_KEY_ID: z.string().regex(/^[A-Za-z0-9]{8,64}$/).optional(),
+  CF_TURN_API_TOKEN: z.string().min(16).max(256).optional(),
 });
 
 export interface GoogleConfig {
@@ -46,6 +52,12 @@ export interface GoogleConfig {
   redirectUri: string;
   authUrl: string;
   tokenUrl: string;
+}
+
+/** The TURN key the server asks short-lived voice relay credentials with. */
+export interface TurnConfig {
+  keyId: string;
+  apiToken: string;
 }
 
 export interface ServerConfig {
@@ -72,6 +84,8 @@ export interface ServerConfig {
   /** Override for where the handwriting font files live; null uses `.data/fonts` in the repo. */
   handwritingFontDir: string | null;
   timetableDefaultFile: string | null;
+  /** Voice relay credentials come from this key; null: STUN only. */
+  turn: TurnConfig | null;
 }
 
 /** Validates env once at startup; throws with the offending key so the process fails fast. */
@@ -110,6 +124,9 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
   if (googleParts.some(Boolean) && !googleParts.every(Boolean)) {
     throw new Error('Invalid server env: GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET and GOOGLE_REDIRECT_URI go together');
   }
+  if (Boolean(e.CF_TURN_KEY_ID) !== Boolean(e.CF_TURN_API_TOKEN)) {
+    throw new Error('Invalid server env: CF_TURN_KEY_ID and CF_TURN_API_TOKEN go together');
+  }
   return {
     nodeEnv: e.NODE_ENV,
     port: e.PORT,
@@ -134,5 +151,6 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
     extraQuestDir: production ? null : (e.EXTRA_QUEST_DIR ?? null),
     handwritingFontDir: e.HANDWRITING_FONT_DIR ?? null,
     timetableDefaultFile: e.TIMETABLE_DEFAULT_FILE ?? null,
+    turn: e.CF_TURN_KEY_ID && e.CF_TURN_API_TOKEN ? { keyId: e.CF_TURN_KEY_ID, apiToken: e.CF_TURN_API_TOKEN } : null,
   };
 }

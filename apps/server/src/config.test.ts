@@ -31,6 +31,22 @@ describe('loadConfig', () => {
     expect(() => loadConfig({ ...production, REGISTER_LIMIT_PER_HOUR: '1000' })).toThrow(/REGISTER_LIMIT_PER_HOUR is test-only/);
   });
 
+  it('takes the TURN key only as a pair, and never echoes its values', () => {
+    expect(loadConfig({}).turn).toBeNull();
+    const keyId = 'a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6';
+    const apiToken = 'test-turn-token-0123456789abcdef';
+    expect(loadConfig({ CF_TURN_KEY_ID: keyId, CF_TURN_API_TOKEN: apiToken }).turn).toEqual({ keyId, apiToken });
+    expect(() => loadConfig({ CF_TURN_KEY_ID: keyId })).toThrow(/go together/);
+    let message = '';
+    try {
+      loadConfig({ CF_TURN_KEY_ID: 'not a key/../', CF_TURN_API_TOKEN: apiToken });
+    } catch (err) {
+      message = err instanceof Error ? err.message : '';
+    }
+    expect(message).toMatch(/CF_TURN_KEY_ID/);
+    expect(message).not.toContain(apiToken);
+  });
+
   it('requires a real database in production', () => {
     expect(() => loadConfig({ NODE_ENV: 'production', ALLOWED_ORIGINS: 'https://miu.example' })).toThrow(/DATABASE_URL/);
   });
