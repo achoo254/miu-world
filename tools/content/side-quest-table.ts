@@ -97,13 +97,25 @@ export type SideGiver = z.infer<typeof SideGiver>;
 const Resident = z.strictObject({ ...folk, ...anchor }).refine(oneAnchor, ONE_ANCHOR);
 export type SideResident = z.infer<typeof Resident>;
 
+/**
+ * The host of a co-op challenge (`content/quests/with-*.json`, its first step's target): it stands by the ways like a
+ * giver, always in the world, where the team gathers. Its name and look are in content/world/targets.json.
+ */
+const CoopHost = z.strictObject({ id: Id, ...anchor }).refine(oneAnchor, ONE_ANCHOR);
+
 export const SideQuestTable = z.strictObject({
   region: Id,
   givers: z.array(SideGiver).min(1),
   /** More everyday folk, at places the givers leave empty, so the whole map has someone to meet. */
   residents: z.array(Resident).default([]),
+  hosts: z.array(CoopHost).default([]),
 });
 export type SideQuestTable = z.infer<typeof SideQuestTable>;
+
+/** Where each character that stands by the ways belongs: the givers and the co-op hosts, by target id. */
+export function standingAnchors(table: SideQuestTable): Map<string, { at: readonly [number, number] } | { place: string }> {
+  return new Map([...table.givers, ...table.hosts].map((g) => [g.id, g.at ? { at: g.at } : { place: g.place ?? '' }] as const));
+}
 
 /** Every region's table, parsed (a broken table is an error naming its file). */
 export function readSideQuestTables(dir: string = SIDE_TABLE_DIR): SideQuestTable[] {
@@ -120,5 +132,5 @@ export function readSideQuestTables(dir: string = SIDE_TABLE_DIR): SideQuestTabl
 
 /** The table of one region (empty when the region has none). */
 export function sideQuestTableOf(region: string, dir: string = SIDE_TABLE_DIR): SideQuestTable {
-  return readSideQuestTables(dir).find((t) => t.region === region) ?? { region, givers: [], residents: [] };
+  return readSideQuestTables(dir).find((t) => t.region === region) ?? { region, givers: [], residents: [], hosts: [] };
 }

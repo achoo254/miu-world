@@ -12,7 +12,8 @@
 //   chapter may reuse the same ground: only one of them is in the world at a time.
 // - A character only side quests name (a minigame's giver) is always in the world, untagged, where the map's
 //   `sideSpot` puts it (beside the ways, at its place: tools/world/side-givers.ts), clear of everything else. So
-//   is the character a story chapter opens at (its storyteller, content/npcs): the child talks to it any time.
+//   is the character a story chapter opens at (its storyteller, content/npcs), and the host of a co-op challenge:
+//   the child talks to it any time.
 // Deterministic for a given seed and input.
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -37,20 +38,21 @@ export interface TargetUse {
 /**
  * Every target the quests of `region` name, with each quest that uses it (any status: drafts get their
  * places too). Lessons of `ownChapter` (the story the map was built for, its targets placed by hand and
- * always in the world) are left to the map; side quests never are.
+ * always in the world) are left to the map; side quests and co-op challenges never are.
  */
 const isSide = (quest: QuestDefinition): boolean => 'category' in quest && quest.category === 'side';
 const isStory = (quest: QuestDefinition): boolean => 'category' in quest && quest.category === 'story';
-/** The character a side quest or a story chapter opens at (the target of its first step): always in the world. */
+const isCoop = (quest: QuestDefinition): boolean => 'category' in quest && quest.category === 'coop';
+/** The character a side quest, a story chapter or a co-op challenge opens at (its first step's target): always in the world. */
 const giverOf = (quest: QuestDefinition): string | undefined => {
-  if (!isSide(quest) && !isStory(quest)) return undefined;
+  if (!isSide(quest) && !isStory(quest) && !isCoop(quest)) return undefined;
   const first = 'steps' in quest ? quest.steps[0] : undefined;
   return first && 'target' in first ? first.target : undefined;
 };
 
 export function targetUses(quests: readonly QuestDefinition[], region: string, ownChapter?: number): Map<string, TargetUse[]> {
   const uses = new Map<string, TargetUse[]>();
-  for (const quest of quests.filter((q) => q.region === region && (isSide(q) || q.chapter !== ownChapter))) {
+  for (const quest of quests.filter((q) => q.region === region && (isSide(q) || isCoop(q) || q.chapter !== ownChapter))) {
     const places = 'places' in quest ? (quest.places ?? {}) : {};
     const steps = 'steps' in quest ? quest.steps : [];
     for (const step of steps) {

@@ -16,7 +16,7 @@ import { outlandSpecOf } from './outland-spec';
 import { columnsOf, fillColumn, heightField, loadBlocks, mapModels, PACK, placeRegionTargets, rollingHeight, scatterTrees, smoothstep, standHeight, WIDE_MAP_SIDE } from './map-kit';
 import { WAY_BLOCKS, wayChecks } from './scenery-audit';
 import { placeVillageLife, type Resident } from './village-life';
-import { sideQuestTableOf } from '../content/side-quest-table';
+import { sideQuestTableOf, standingAnchors } from '../content/side-quest-table';
 import { NETWORK_BLOCK_NAMES, sideFolk, sideSpots } from './side-givers';
 import { createRng, hashSeed } from './noise';
 import { columnsAlong, distanceToPath, nearestOnPath, pathColumns, type Point } from './structures/path';
@@ -525,6 +525,8 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
         })
       : undefined;
   const giverAnchor = new Map(sideTable.givers.map((g) => [g.id, g.at ? { at: g.at } : { place: g.place ?? '' }] as const));
+  // The givers and the co-op hosts stand by the ways; only the givers have company round them.
+  const standAnchor = standingAnchors(sideTable);
   const placed: Interactable[] = await placeRegionTargets({
     mapId: spec.mapId,
     region: spec.region,
@@ -537,8 +539,8 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
       ...(spots
         ? {
             sideSpot: (id: string, taken: ReadonlyArray<readonly [number, number]>) => {
-              const anchor = giverAnchor.get(id);
-              if (!anchor) throw new Error(`${spec.mapId}: ${id} offers side quests but is not a giver in tools/content/side-quests/${spec.region}.json`);
+              const anchor = standAnchor.get(id);
+              if (!anchor) throw new Error(`${spec.mapId}: ${id} offers side quests or hosts a co-op challenge but is not a giver or host in tools/content/side-quests/${spec.region}.json`);
               return spots(anchor, [...taken, [spec.spawn.x, spec.spawn.z], ...chapterStart.values()]);
             },
           }

@@ -137,9 +137,9 @@ export function checkQuestTargets(
         if (!everywhere.has(target)) issues.push(`quest ${quest.id} step ${step.id} targets ${target}, which map ${mapId} does not place`);
         else if (!onMap.has(target)) issues.push(`quest ${quest.id} step ${step.id} targets ${target}, which map ${mapId} hides in chapter ${quest.chapter}`);
       }
-      // A side quest's giver offers its game, a storyteller its next chapter, whatever lesson is played: it is in
-      // the world in every chapter.
-      const opens = quest.category === 'side' || quest.category === 'story';
+      // A side quest's giver offers its game, a storyteller its next chapter, a co-op host its team's lobby, whatever
+      // lesson is played: it is in the world in every chapter.
+      const opens = quest.category === 'side' || quest.category === 'story' || quest.category === 'coop';
       const giver = opens && step === quest.steps[0] && step.kind === 'dialogue' ? onMap.get(step.target ?? '') : undefined;
       if (giver && (giver.chapter !== undefined || giver.chapters !== undefined || giver.quest !== undefined)) {
         issues.push(`quest ${quest.id}: its giver ${giver.id} is only on map ${mapId} in some chapters or quests; the character a side quest or a story opens at is always in the world`);

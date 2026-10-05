@@ -22,7 +22,7 @@ import { cellsIn } from './chapters/place-quest-targets';
 import { placeAncientTree } from './structures/tree';
 import { type Facing, turnCell } from './structures/world-writer';
 import { crowd, person, placeVillageLife, type Resident } from './village-life';
-import { sideQuestTableOf } from '../content/side-quest-table';
+import { sideQuestTableOf, standingAnchors } from '../content/side-quest-table';
 import { NETWORK_BLOCK_NAMES, sideFolk, sideSpots } from './side-givers';
 import { outlandSpecOf } from './outland-spec';
 import { HUB_REGION } from './zone-map';
@@ -807,6 +807,8 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
     canStand: (x, z) => canStand(x, z) && clearOfLife(x, z),
   });
   const giverAnchor = new Map(sideTable.givers.map((g) => [g.id, g.at ? { at: g.at } : { place: g.place ?? '' }] as const));
+  // The givers and the co-op hosts stand by the ways; only the givers have company round them.
+  const standAnchor = standingAnchors(sideTable);
   const gladeCells = new Map(DISTRICTS.map((d) => [d.chapter, cellsIn(d.x - d.hx, d.z - d.hz, d.x + d.hx, d.z + d.hz)]));
   const allGlades = [...gladeCells.values()].flat();
   const allInteractables = await placeRegionTargets({
@@ -822,8 +824,8 @@ export async function generateForest(): Promise<{ world: VoxelWorld; entities: W
       clearance: QUEST_CLEARANCE,
       keepClear: [...columnsOf(interactables.filter((t) => t.chapter === undefined)), ...villagerSpots, [spawn.x, spawn.z], ...gladeStart.values()],
       sideSpot: (giver, taken) => {
-        const anchor = giverAnchor.get(giver);
-        if (!anchor) throw new Error(`${MAP_ID}: ${giver} offers side quests but is not a giver in tools/content/side-quests/khu-rung-bi-mat.json`);
+        const anchor = standAnchor.get(giver);
+        if (!anchor) throw new Error(`${MAP_ID}: ${giver} offers side quests or hosts a co-op challenge but is not a giver or host in tools/content/side-quests/khu-rung-bi-mat.json`);
         return spots(anchor, [...taken, [spawn.x, spawn.z], ...gladeStart.values()]);
       },
     },
