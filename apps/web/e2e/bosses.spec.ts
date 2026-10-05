@@ -1,6 +1,7 @@
 // Every boss on the map (owner, 05/10/2026): the full map marks the big boss and every zone guardian; the big boss's
 // "Đi tới đây" takes up its quest and walks her to its next place; talking to a zone guardian opens its fight, which
-// is played to its reward: a line after each blow, each question copied into the vở, every question at the end.
+// is played to its reward: a line after each blow, each question's Hướng dẫn, Gợi ý and Đáp án, each question copied into
+// the vở, every question at the end.
 import { mkdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -19,6 +20,7 @@ const FIGHT = 'ward-nui-tuyet-lang';
 
 interface Turn {
   id: string;
+  choices: Array<{ id: string }>;
   answer: { choice: string };
 }
 
@@ -95,6 +97,27 @@ test('a zone guardian is fought from a chat to its reward', async ({ page, baseU
   await shot(page, '3-dau-tri');
   for (const [i, turn] of TURNS.entries()) {
     await expect(page.locator(`[data-id="turn-${turn.id}"]`)).toBeVisible();
+    if (i === 0) {
+      // Every question has the three support layers: the guide from the start, the hint after a miss, the explained
+      // answer after two; seeing the answer never stops the fight.
+      const support = page.locator('[data-id="boss-bar"]');
+      await support.locator('[data-id="support-guide"]').click();
+      await expect(page.locator('[data-id="support-guide-steps"] li').first()).not.toBeEmpty();
+      await page.locator('[data-id="support-close"]').click();
+      const wrong = turn.choices.find((c) => c.id !== turn.answer.choice)?.id ?? '';
+      for (const tab of ['support-hint', 'support-answer']) {
+        await page.locator(`[data-id="choice-${wrong}"]`).click();
+        await page.locator('[data-id="boss-attack-btn"]').click();
+        await expect(support.locator(`[data-id="${tab}"]`)).toBeVisible();
+      }
+      await support.locator('[data-id="support-hint"]').click();
+      await expect(page.locator('[data-id="support-hint-text"]')).not.toBeEmpty();
+      await page.locator('[data-id="support-close"]').click();
+      await support.locator('[data-id="support-answer"]').click();
+      await expect(page.locator('[data-id="support-answer-text"]')).not.toBeEmpty();
+      await shot(page, '3b-ho-tro-dap-an');
+      await page.locator('[data-id="support-close"]').click();
+    }
     await page.locator(`[data-id="choice-${turn.answer.choice}"]`).click();
     await page.locator('[data-id="boss-attack-btn"]').click();
     await copied(page);

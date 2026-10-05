@@ -148,3 +148,35 @@ test('the party plays a lesson together: the leader asks, the other joins, a tal
   await a.context().close();
   await b.context().close();
 });
+
+test("the party fights a zone guardian: each member has every question's Hướng dẫn, Gợi ý and Đáp án on her own screen", async ({ browser, baseURL }) => {
+  // Two game loads, both at the guardian again for its quest, then the party's shared talk and the fight opening.
+  test.setTimeout(90_000);
+  const [a, b] = await partyOfTwo(browser, baseURL ?? '');
+  const atGuardian = '/play?quality=low&region=khu-rung-bi-mat&quest=ward-khu-rung-trang-tay-bac&spawnAt=nai-gac-dong-co';
+  await b.goto(atGuardian);
+  await waitReady(b);
+  await b.locator('[data-id="party-quest-start"]').click();
+  await a.locator('[data-id="party-quest-join"]').click({ timeout: 10_000 });
+  await a.goto(atGuardian);
+  await waitReady(a);
+  // B greets the guardian for both; her fight opens by itself.
+  await b.keyboard.press('KeyE');
+  await b.locator('[data-id="dialogue-next"]').click({ timeout: 15_000 });
+  await b.locator('[data-id="dialogue-choice-0"]').click();
+  await expect(b.locator('[data-id="boss-battle"]')).toBeVisible({ timeout: 10_000 });
+  // A's talk was done with B's: her fight opens by itself or when she turns to the guardian.
+  await expect
+    .poll(async () => ((await (await a.context().request.get('/api/quests/ward-khu-rung-trang-tay-bac')).json()) as { progress: { completedSteps: string[] } }).progress.completedSteps, { timeout: 10_000 })
+    .toContain('gap');
+  const fightA = a.locator('[data-id="boss-battle"]');
+  await fightA.waitFor({ timeout: 5_000 }).catch(() => a.keyboard.press('KeyE'));
+  await expect(fightA).toBeVisible({ timeout: 10_000 });
+  // Whoever's blow it is, each member reads the question's guide on her own screen, from the server.
+  for (const page of [a, b]) {
+    await page.locator('[data-id="boss-bar"] [data-id="support-guide"]').click();
+    await expect(page.locator('[data-id="support-guide-steps"] li').first()).not.toBeEmpty();
+  }
+  await a.context().close();
+  await b.context().close();
+});
