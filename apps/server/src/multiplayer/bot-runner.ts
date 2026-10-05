@@ -9,6 +9,7 @@ import {
   type ServerWsMessage,
 } from '@miu/schema/multiplayer';
 import { COOP_BOT_LINE_VARIANTS, type CoopAction, type CoopBotLine, type CoopBotLineKey, type CoopStateView, type CoopTaskView } from '@miu/schema/coop';
+import { VOICE_BOT_LINE_VARIANTS, type VoiceBotLineKey, type VoiceChannel } from '@miu/schema/voice';
 import { freshPicker, type FreshPicker } from '@miu/quest/pick-fresh';
 import type { CoopBotDriver, CoopBotMoves } from '../coop/coop-service';
 import { botAnswerXp, botSkillLevel, fatigueAfter, moodAt, personaOf, rightChance, thinkMs, VOICES, type Bounds } from './bot-persona';
@@ -208,6 +209,15 @@ const HOME_VISITORS = 2;
 const VISIT_RANGE = 20;
 const VISIT_STOP = 2.5;
 const VISIT_CHANCE = 0.6;
+/** In a party's voice a bot answers this long after a player stops talking (and up to twice as long)… */
+export const BOT_VOICE_REPLY_MS = 700;
+/** …greets a player who comes into the voice after this long… */
+export const BOT_VOICE_HELLO_MS = 1_200;
+/** …and no bot says another line sooner than this after the last one (the players talk more than the bots). */
+export const BOT_VOICE_GAP_MS = 4_000;
+/** A player's turn shorter than this gets a quick "yes"; longer than the next a "tell me more". */
+const SHORT_TURN_MS = 1_500;
+const LONG_TURN_MS = 4_500;
 
 /** What a bot asks of its runner: the hub's messages, meeting a player, and its friends in the room. */
 interface BotHooks {
@@ -421,6 +431,17 @@ interface CoopTurn {
   lines: Map<CoopBotLineKey, FreshPicker<number>>;
 }
 
+/** A party's voice as its bots follow it: who is in it, who talks now (since when), and whose turn a line is. */
+interface VoiceTalk {
+  players: Set<string>;
+  speaking: Map<string, number>;
+  /** The line a bot is about to say (cancelled when a player starts talking). */
+  timer: NodeJS.Timeout | null;
+  lastLineAt: number;
+  /** When each bot last spoke: the turn goes to the one who spoke least lately. */
+  spoke: Map<string, number>;
+}
+
 export class BotRunner {
   private readonly hub: MultiplayerHub;
   private readonly random: () => number;
@@ -440,6 +461,10 @@ export class BotRunner {
   private readonly clock: () => Date;
   /** Each bot's skill XP, read once from the store and kept up to date as it plays. */
   private readonly skills = new Map<string, Promise<Record<string, number>>>();
+  /** Parties' voices with bots in them, by party id. */
+  private readonly talks = new Map<string, VoiceTalk>();
+  /** Each bot's voice lines per kind, from its own voice, never the same twice in a row. */
+  private readonly voiceLines = new Map<string, FreshPicker<number>>();
 
   constructor(hub: MultiplayerHub, options: BotRunnerOptions = {}) {
     this.hub = hub;
@@ -688,6 +713,8 @@ export class BotRunner {
     this.replies.clear();
     for (const turn of this.coop.values()) if (turn.timer) clearTimeout(turn.timer);
     this.coop.clear();
+    for (const talk of this.talks.values()) if (talk.timer) clearTimeout(talk.timer);
+    this.talks.clear();
   }
 
   private later(ms: number, run: () => void): void {
@@ -710,7 +737,103 @@ export class BotRunner {
     if (message.type === 'friend-request') {
       const accept = this.random() < BOT_FRIEND_ACCEPT;
       this.later(BOT_FRIEND_REPLY_MS * (1 + this.random()), () => void this.hub.answerBotFriendRequest(botId, message.request.id, accept));
+      return;
     }
+    if (message.type === 'voice-state') return this.voiceState(botId, message.channel);
+    if (message.type === 'voice-speaking') return this.voiceSpeaking(botId, message.id, message.on);
+  }
+
+  /**
+   * Its party's voice changed. Every bot of the party hears it; the first one to hear a change acts for them all (the
+   * others find nothing new): a player who came in is greeted by one bot.
+   */
+  private voiceState(botId: string, channel: VoiceChannel | null): void {
+    const partyId = this.hub.parties.partyOf(botId)?.id;
+    if (!partyId) return;
+    const players = new Set((channel?.members ?? []).filter((m) => !m.isBot).map((m) => m.id));
+    let talk = this.talks.get(partyId);
+    if (players.size === 0) {
+      if (talk?.timer) clearTimeout(talk.timer);
+      this.talks.delete(partyId);
+      return;
+    }
+    if (!talk) {
+      // Only voices with players in them are followed: a crowded server forgets the oldest rather than growing.
+      if (this.talks.size >= MAX_GREET_PAIRS) this.talks.clear();
+      talk = { players: new Set(), speaking: new Map(), timer: null, lastLineAt: Number.NEGATIVE_INFINITY, spoke: new Map() };
+      this.talks.set(partyId, talk);
+    }
+    const newcomer = [...players].some((p) => !talk.players.has(p));
+    talk.players = players;
+    for (const id of talk.speaking.keys()) if (!players.has(id)) talk.speaking.delete(id);
+    if (newcomer && !talk.timer) this.voiceTurn(partyId, talk, 'hello', BOT_VOICE_HELLO_MS);
+  }
+
+  /**
+   * A player in its party's voice started or stopped talking. The bots never talk over her: a line about to be said
+   * waits; when she stops, one bot answers after a moment with a line fitting how long she talked (never what she
+   * said: the sound never reaches the server).
+   */
+  private voiceSpeaking(botId: string, playerId: string, on: boolean): void {
+    const partyId = this.hub.parties.partyOf(botId)?.id;
+    const talk = partyId ? this.talks.get(partyId) : undefined;
+    if (!partyId || !talk) return;
+    const now = Date.now();
+    if (on) {
+      talk.speaking.set(playerId, now);
+      if (talk.timer) clearTimeout(talk.timer);
+      talk.timer = null;
+      return;
+    }
+    const started = talk.speaking.get(playerId);
+    if (started === undefined) return;
+    talk.speaking.delete(playerId);
+    if (talk.timer) return;
+    const ms = now - started;
+    const key: VoiceBotLineKey = ms < SHORT_TURN_MS ? 'yes' : ms < LONG_TURN_MS ? 'wow' : 'more';
+    this.voiceTurn(partyId, talk, key, BOT_VOICE_REPLY_MS * (1 + this.random()));
+  }
+
+  private voiceTurn(partyId: string, talk: VoiceTalk, key: VoiceBotLineKey, ms: number): void {
+    talk.timer = setTimeout(() => {
+      talk.timer = null;
+      this.voiceLine(partyId, talk, key);
+    }, ms);
+  }
+
+  /** One bot of the party says its line: the one who spoke least lately, as often as its persona talks. */
+  private voiceLine(partyId: string, talk: VoiceTalk, key: VoiceBotLineKey): void {
+    const anyone = [...talk.players][0];
+    const party = anyone ? this.hub.parties.partyOf(anyone) : null;
+    if (party?.id !== partyId) {
+      this.talks.delete(partyId);
+      return;
+    }
+    const now = Date.now();
+    // Someone talks again, or a bot just spoke: the players' turn.
+    if (talk.speaking.size > 0 || now - talk.lastLineAt < BOT_VOICE_GAP_MS) return;
+    const bots = party.members.filter((m) => m.startsWith('bot-')).sort((a, b) => (talk.spoke.get(a) ?? 0) - (talk.spoke.get(b) ?? 0));
+    const bot = bots[0];
+    if (!bot) return;
+    if (key !== 'hello' && this.random() >= 0.35 + 0.6 * personaOf(bot).chat) return;
+    talk.lastLineAt = now;
+    talk.spoke.set(bot, now);
+    this.hub.voiceBotSay(bot, { key, variant: this.voiceVariant(bot, key) });
+  }
+
+  /** A line of its own voice (every `VOICES`-th variant from its offset), never the one it said last. */
+  private voiceVariant(botId: string, key: VoiceBotLineKey): number {
+    const id = `${botProfileId(botId)}:${key}`;
+    let picker = this.voiceLines.get(id);
+    if (!picker) {
+      const voice = personaOf(botId).voice;
+      picker = freshPicker(
+        Array.from({ length: VOICE_BOT_LINE_VARIANTS }, (_, i) => i).filter((i) => i % VOICES === voice),
+        this.random,
+      );
+      this.voiceLines.set(id, picker);
+    }
+    return picker.next();
   }
 
   /** Meeting a player again and again, a bot may ask her to be friends (once). */

@@ -117,3 +117,42 @@ export function thinkMs(persona: BotPersona, info: QuestionInfo, fatigue: number
   const ms = info.medianMs * persona.speed * (0.75 + 0.5 * persona.care) * (1 + fatigue) * (0.8 + 0.4 * chance);
   return Math.round(Math.min(15_000, Math.max(1_200, ms)));
 }
+
+/** The pitch band of each of the bots' voices (`BotPersona.voice`): two bots of one team never share one. */
+const VOICE_PITCH = [0.8, 1.15, 1.5] as const;
+
+/**
+ * The synthesized voice a bot speaks with in a voice channel: its pitch from its voice (a little of its own within
+ * the band), its rate from its speed (a quick bot talks a little faster).
+ */
+export function botVoice(botId: string): { pitch: number; rate: number } {
+  const persona = personaOf(botId);
+  const jitter = seeded(hashOf(`voice:${botProfileId(botId)}`))() - 0.5;
+  return {
+    pitch: round2((VOICE_PITCH[persona.voice] ?? 1) + 0.12 * jitter),
+    rate: round2(Math.min(1.25, Math.max(0.85, 1.25 - 0.35 * (persona.speed - 0.6)))),
+  };
+}
+
+/** Voices close enough to sound alike. */
+const ALIKE_PITCH = 0.2;
+
+/**
+ * The voices of the bots in one channel, in order, none sounding like another: a bot whose pitch comes close to
+ * one already given is moved to the free band farthest from the others.
+ */
+export function distinctVoices(botIds: readonly string[]): Map<string, { pitch: number; rate: number }> {
+  const out = new Map<string, { pitch: number; rate: number }>();
+  for (const id of botIds) {
+    const voice = botVoice(id);
+    const taken = [...out.values()].map((v) => v.pitch);
+    const nearest = (pitch: number): number => Math.min(...taken.map((p) => Math.abs(p - pitch)));
+    if (taken.length > 0 && nearest(voice.pitch) < ALIKE_PITCH) {
+      let far = voice.pitch;
+      for (const band of [...VOICE_PITCH, 0.6, 1.8]) if (nearest(band) > nearest(far)) far = band;
+      voice.pitch = far;
+    }
+    out.set(id, voice);
+  }
+  return out;
+}
