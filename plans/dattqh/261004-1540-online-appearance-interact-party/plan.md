@@ -1,6 +1,6 @@
 # Online: thấy phụ kiện, tương tác và tổ đội
 
-**Trạng thái:** P1–P3 xong phần tự động (05/10/2026), chờ người duyệt; report `plans/dattqh/reports/online-appearance-party-261005.md`. Chưa làm: màn kiểm duyệt báo cáo (plan `261004-1617-moderation-safety`), danh sách chặn/bỏ chặn và mục "Kết bạn" (plan `261004-1617-parent-area-friends`), hành vi rời đội theo tính cách của bạn máy (B2 của plan bot).
+**Trạng thái:** P1–P3 xong phần tự động (05/10/2026), chờ người duyệt; report `plans/dattqh/reports/online-appearance-party-261005.md`. Chưa làm: màn kiểm duyệt báo cáo (plan `261004-1617-moderation-safety`), danh sách chặn/bỏ chặn và mục "Kết bạn" (đã làm ở plan `261004-1617-parent-area-friends`, 05/10/2026), hành vi rời đội theo tính cách của bạn máy (B2 của plan bot).
 
 Người sở hữu (04/10/2026): "các nhân vật online thấy nhau ko nhìn được phụ kiện của người khác được và chưa tương tác với nhau được, chưa lập tổ đội được. tính năng tổ đội cũng chưa có."
 

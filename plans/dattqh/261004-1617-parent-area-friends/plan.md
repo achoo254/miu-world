@@ -1,6 +1,6 @@
 # Tiến bộ học, kết bạn trong game, công tắc online của người chơi
 
-**Trạng thái:** thiết kế lại theo định hướng mọi lứa tuổi (05/10/2026), chưa thi công · **Tier:** L · **Nhánh:** `main` · **Ngày:** 04/10/2026, sửa 05/10/2026
+**Trạng thái:** pha 1–6 xong phần tự động (05/10/2026), chờ người duyệt và deploy (migration `0012`–`0014`); report `plans/dattqh/reports/friends-online-progress-261005.md` · **Tier:** L · **Nhánh:** `main` · **Ngày:** 04/10/2026, sửa 05/10/2026
 **Nguồn:** Master Plan §6, §9; định hướng mới của người sở hữu (05/10/2026, `.claude/rules/product-audience.md`): game cho mọi lứa tuổi, không cần phụ huynh giám sát, không đặt tính năng sau phê duyệt của phụ huynh. Quyết định thiết kế lại: Jev (`reports/jev-261005-1330-friends-rescope-{input,output}.json`). Bản 04/10 (phụ huynh bật online, hai phụ huynh duyệt bạn) không còn dùng.
 
 ## Kết quả mong muốn
@@ -33,6 +33,19 @@
 | 4 | M | Danh sách chặn của người chơi, bỏ chặn, xóa bạn; chủ tài khoản quản lý bạn và chặn của người chơi phụ | `apps/web/src/ui/friends/**`, `apps/server/src/multiplayer` |
 | 5 | S | Văn bản và quyền dữ liệu: trang quyền riêng tư mô tả bạn bè, chặn, báo cáo và dữ liệu chia sẻ khi online (tên nhân vật, trang phục, thú cưng, vị trí trong phòng); không nâng lời đồng ý lúc này, gộp vào lần nâng sau (Jev 0.89, `reports/jev-261005-1630-online-privacy-home-*.json`); file "Tải dữ liệu của tôi" có thêm bạn bè, lời mời, chặn, báo cáo của từng người chơi | `content/legal/privacy-vi.json`, `apps/server/src/auth/account-routes.ts`, `packages/schema/src/account.ts` |
 | 6 | M | Nhà riêng: map Nhà của bé là phòng riêng của từng người chơi, chỉ chủ nhà, người cùng tổ đội và bạn bè vào được (Jev 0.99); hub chia phòng theo chủ nhà; "Đến chỗ bạn"/"Cùng đi" vào nhà bạn theo cùng luật | `apps/server/src/multiplayer/**`, `apps/web/src/game/multiplayer/**` |
+
+## Kết quả thi công (05/10/2026)
+
+| Pha | Trạng thái | Commit |
+| --- | --- | --- |
+| 1 Tiến bộ học | Xong: `GET /api/learning-progress`, `GET /api/players/:id/learning-progress`, `POST /api/play-time` (bảng `play_time`, migration `0012`); panel trong Hồ sơ và thẻ từng người chơi ở Quản lý tài khoản | `feat(progress): …`, `fix(progress): serve learning progress at its own path` |
+| 2 Công tắc online, bạn máy | Xong: cột `online_enabled`, `bots_enabled` (migration `0013`), `GET`/`PUT /api/player-settings`, `PATCH /api/players/:id/settings`; hub đóng `4403` và ẩn/hiện bạn máy ngay; bỏ `miu.bots.enabled` (chuyển lên server một lần) | `feat(multiplayer): online and companion bot switches …` |
+| 3 Bạn bè | Xong: `friend_requests`, `friendships` (migration `0014`), WS `friend-request`, `friend-news`; bạn máy trả lời, tự mời, hay ghé bạn; giới hạn tần suất; nút "Bạn bè" trên HUD, thẻ lời mời, trang `/friends` | `feat(friends): …` (server, web) |
+| 4 Chặn, xóa bạn, chủ tài khoản | Xong: danh sách chặn và bỏ chặn (`player_blocks.id`), xóa bạn, hủy lời mời; chủ tài khoản xem/xóa bạn, bỏ chặn của từng người chơi | cùng commit pha 3 |
+| 5 Quyền riêng tư, xuất dữ liệu | Xong: trang quyền riêng tư có mục "Khi chơi online"; file xuất thêm công tắc, thời gian chơi, thư, bạn bè, lời mời, chặn, báo cáo; lời đồng ý giữ v3 | `feat(account): …` |
+| 6 Nhà riêng | Xong: room `nha-cua-be#<chủ nhà>`, vào nhà người khác khi là bạn hoặc cùng đội; "Đến chỗ bạn"/"Cùng đi" vào nhà theo cùng luật; bạn máy hàng xóm và bạn máy là bạn vào theo nhà | `feat(multiplayer): a private home room for every player` |
+
+Lệch so với plan (có lý do): thời gian chơi là dữ liệu mới (một tổng mỗi tuần) vì chưa có nguồn nào đo được, đã ghi ở trang quyền riêng tư; khách vào nhà bạn thấy nhà theo cách trang trí của chính mình (map dựng ở client theo hồ sơ người chơi), chỉ room là của chủ nhà.
 
 ## Phụ thuộc và file dùng chung
 
