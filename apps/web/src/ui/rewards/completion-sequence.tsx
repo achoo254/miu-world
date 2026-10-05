@@ -7,6 +7,7 @@
 // everything shows at once.
 import { useEffect, useState, type CSSProperties } from 'react';
 import type { NotebookLine, QuestCompletion, StepCompleteResponse } from '@miu/schema/game';
+import type { SkillGiftDto } from '@miu/schema/progression';
 import { ITEMS, itemIcon } from '../backpack/items';
 import { CollectibleDropNote } from '../collection/collectible-drop';
 import { lastSpeakerOf, NpcPortrait } from '../dialogue/npc-portrait';
@@ -20,7 +21,7 @@ import { assetUrl, REGION_CHEST } from '../kit/ui-art';
 import { say, type PlayerData } from '../player/player-data';
 import { NotebookLines } from '../quest/notebook-card';
 import type { ActiveQuestView } from '../quest/quest-flow';
-import { regionGoalLine, useRegionRewards } from '../region/region-rewards';
+import { regionGoalLine, rewardItemArt, useRegionRewards } from '../region/region-rewards';
 import { findRegion } from '../region/regions';
 import { playCue } from '../sound/sfx';
 import './rewards.css';
@@ -43,7 +44,8 @@ function skillNameOf(data: PlayerData, id: string): string {
  */
 export function completionScreens(completion: QuestCompletion, notebook = 0): Screen[] {
   const hasLevelUp = completion.levelAfter > completion.levelBefore;
-  const hasSkillUp = completion.skillLevels.some((s) => s.levelAfter > s.levelBefore);
+  // A gift can come without a level-up in this run: a level reached before gifts existed is paid now.
+  const hasSkillUp = completion.skillLevels.some((s) => s.levelAfter > s.levelBefore) || (completion.skillGifts?.length ?? 0) > 0;
   return [
     ...(notebook > 0 ? (['notebook'] as const) : []),
     'reward',
@@ -190,6 +192,38 @@ function RewardScreen({ completion, reward, quest, data }: { completion: QuestCo
   );
 }
 
+/** The skill level gifts the run paid (server): coins for each level and, on some levels, a themed wearable. */
+function SkillGifts({ gifts, data }: { gifts: readonly SkillGiftDto[]; data: PlayerData }) {
+  if (gifts.length === 0) return null;
+  return (
+    <ul className="reward-skill-gifts" data-id="skill-up-gifts">
+      {gifts.map((gift) => (
+        <li key={`${gift.skillId}-${gift.level}`} className="reward-skill-gift" data-id={`skill-gift-${gift.skillId}-${gift.level}`}>
+          <Icon name="gift" size={32} />
+          <span>
+            {skillNameOf(data, gift.skillId)} · <T k="completion.skillGift" params={{ level: gift.level }} />
+          </span>
+          <span className="reward-skill-gift-coin">
+            <Icon name="coin" size={24} />+{gift.coin}
+          </span>
+          {gift.item ? (
+            <span className="reward-skill-gift-item" data-id={`skill-gift-item-${gift.item.id}`}>
+              <img src={rewardItemArt(gift.item.id)} alt="" width={48} height={48} />
+              <span className="badge">
+                <T k="reward.exclusive" />
+              </span>
+              <strong>{gift.item.name}</strong>
+              <span className="hint">
+                <T k="reward.inWardrobe" />
+              </span>
+            </span>
+          ) : null}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export function CompletionSequence({
   completion,
   reward,
@@ -258,6 +292,7 @@ export function CompletionSequence({
                 </p>
               </div>
             ))}
+          <SkillGifts gifts={completion.skillGifts ?? []} data={data} />
           <p>
             <T k="completion.skillBody" params={{ name: data.character.name }} />
           </p>

@@ -91,6 +91,21 @@ describe('completion screens', () => {
     expect(onMap).toHaveBeenCalledTimes(1);
   });
 
+  it('shows the skill level gifts on the Skill Up screen, even without a level-up in this run', () => {
+    const gifts = [
+      { skillId: 'phep-cong', level: 2, coin: 10, item: null },
+      { skillId: 'phep-cong', level: 3, coin: 15, item: { id: 'glasses-ky-nang-doc-sach', name: 'Kính đọc sách', slot: 'glasses' } },
+    ];
+    const done = completion({ levelAfter: 1, skillLevels: [{ skillId: 'phep-cong', levelBefore: 3, levelAfter: 3 }], skillGifts: gifts });
+    expect(completionScreens(done)).toEqual(['reward', 'skill']);
+    render(<CompletionSequence completion={done} reward={REWARD} quest={QUEST} data={DATA} onMap={() => undefined} onExplore={() => undefined} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Tiếp' }));
+    expect(document.querySelector('[data-id="skill-gift-phep-cong-2"]')?.textContent).toContain('+10');
+    const third = document.querySelector('[data-id="skill-gift-phep-cong-3"]');
+    expect(third?.textContent).toContain('Quà Lv.3');
+    expect(third?.querySelector('[data-id="skill-gift-item-glasses-ky-nang-doc-sach"]')?.textContent).toContain('Kính đọc sách');
+  });
+
   it('shows the server\'s numbers, then Level Up, each skippable with one tap', () => {
     const onMap = vi.fn();
     render(<CompletionSequence completion={completion({ stars: 2 })} reward={REWARD} quest={QUEST} data={DATA} onMap={onMap} onExplore={() => undefined} />);
@@ -166,11 +181,19 @@ describe('backpack and profile', () => {
     expect(screen.getByRole('button', { name: /Lá thần/ })).toBeTruthy();
   });
 
-  it('shows skills by subject and the collection, owned items lit', async () => {
+  it('shows the skill tree by subject, the collection with owned items lit, and the way to the journey and achievements', async () => {
+    const gifts = (skillId: string) =>
+      Array.from({ length: 9 }, (_, i) => ({ skillId, level: i + 2, coin: 10, item: i === 1 ? { id: 'glasses-ky-nang-doc-sach', name: 'Kính đọc sách', slot: 'glasses' } : null, received: i === 0 }));
+    const tree = {
+      subjects: [
+        { subjectId: 'toan', name: 'Toán', xp: 3, level: 2, skills: [{ skillId: 'phep-cong', name: 'Phép cộng', xp: 3, level: 2, maxLevel: 10, xpIntoLevel: 1, xpForNextLevel: 3, gifts: gifts('phep-cong') }] },
+        { subjectId: 'tieng-viet', name: 'Tiếng Việt', xp: 0, level: 1, skills: [{ skillId: 'doc-hieu', name: 'Đọc hiểu', xp: 0, level: 1, maxLevel: 10, xpIntoLevel: 0, xpForNextLevel: 2, gifts: gifts('doc-hieu') }] },
+      ],
+    };
     vi.stubGlobal(
       'fetch',
       vi.fn(async (url: string) => {
-        const body = url === '/api/character' ? CHARACTER : url === '/api/progress' ? DATA.progress : { quests: DATA.quests };
+        const body = url === '/api/character' ? CHARACTER : url === '/api/progress' ? DATA.progress : url === '/api/skill-tree' ? tree : { quests: DATA.quests };
         return new Response(JSON.stringify(body), { status: 200 });
       }),
     );
@@ -179,10 +202,19 @@ describe('backpack and profile', () => {
         <ProfileScreen />
       </MemoryRouter>,
     );
-    expect(await screen.findByText('Kỹ năng của Mochi')).toBeTruthy();
-    expect(screen.getByText('Toán · Lv.1')).toBeTruthy();
+    expect(await screen.findByText('Cây kỹ năng của Mochi')).toBeTruthy();
+    expect(await screen.findByRole('tab', { name: 'Toán · Lv.2' })).toBeTruthy();
+    const row = document.querySelector('[data-id="skill-tree-phep-cong"]');
+    expect(row?.getAttribute('data-level')).toBe('2');
+    expect(screen.getByRole('img', { name: '2 trên 10 lá đã sáng' })).toBeTruthy();
+    expect(row?.textContent).toContain('Còn 2 điểm kỹ năng tới Lv.3');
+    expect(document.querySelector('[data-id="skill-tree-gift-phep-cong"]')?.querySelector('img[alt="Kính đọc sách"]')).toBeTruthy();
+    expect(document.querySelector('[data-id="skill-tree-received-phep-cong"]')?.textContent).toBe('Đã nhận 1 món quà');
+    fireEvent.click(screen.getByRole('tab', { name: 'Tiếng Việt · Lv.1' }));
+    expect(document.querySelector('[data-id="skill-tree-doc-hieu"]')).toBeTruthy();
     expect(document.querySelector('[data-id="collection-la-than"]')?.getAttribute('data-owned')).toBe('true');
-    expect(screen.getAllByText('Sắp có')).toHaveLength(2);
+    expect(document.querySelector('[data-id="profile-journey"]')?.getAttribute('href')).toBe('/journey');
+    expect(document.querySelector('[data-id="profile-achievements"]')?.getAttribute('href')).toBe('/achievements');
   });
 
   it('shows earned region chest titles in a dedicated panel', async () => {

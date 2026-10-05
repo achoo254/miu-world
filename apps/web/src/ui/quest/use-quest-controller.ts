@@ -44,9 +44,15 @@ export interface QuestController {
   /** Finishes the step on screen (dialogue end, learning step answer) on the server. */
   submit: (step: QuestStepPublic, body?: StepCompleteRequest) => Promise<StepCompleteResponse | null>;
   close: () => void;
-  /** Active skill check blocking target interaction until requirements are met. */
+  /** A knowledge gate the player is short of, shown before the step goes on. */
   skillCheck: SkillCheckResult | null;
+  /** Closes the gate's panel and goes on with the step (the treasure left shut). */
+  goOnFromSkillCheck: () => void;
+  /** Closes the gate's panel without going on (she leaves to practise). */
   closeSkillCheck: () => void;
+  /** Gates the last step opened (their treasure, paid by the server), for the banner over the game. */
+  gatesOpened: NonNullable<StepCompleteResponse['gates']> | null;
+  clearGatesOpened: () => void;
 }
 
 interface Options {
@@ -76,6 +82,10 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   const [retry, setRetry] = useState<(() => Promise<void>) | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [skillCheck, setSkillCheck] = useState<SkillCheckResult | null>(null);
+  const [gatesOpened, setGatesOpened] = useState<NonNullable<StepCompleteResponse['gates']> | null>(null);
+  // What the gate's panel goes on with, and the gates already shown this visit (not asked again each tap).
+  const afterSkillCheck = useRef<(() => void) | null>(null);
+  const gatesShown = useRef(new Set<string>());
 
   // Latest values for store callbacks, which outlive a render.
   const latest = useRef({ data, questId, overlay, busy, onResponse, onOverlayChange, draftOwner, onSideTarget });
@@ -97,10 +107,14 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
     const c = covers.current;
     latest.current.onOverlayChange?.(c.overlay || c.retry || c.finished || c.skillCheck);
   }, []);
-  const closeSkillCheck = useCallback(() => {
+  const closeSkillCheck = useCallback((): (() => void) | null => {
     setSkillCheck(null);
     cover('skillCheck', false);
+    const next = afterSkillCheck.current;
+    afterSkillCheck.current = null;
+    return next;
   }, [cover]);
+  const goOnFromSkillCheck = useCallback(() => closeSkillCheck()?.(), [closeSkillCheck]);
   const setOverlay = useCallback(
     (next: QuestOverlay): void => {
       // The draft remembers whether the step's screen is open, so a reload opens it again.
@@ -156,6 +170,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
         cover('retry', false);
         latest.current.onResponse(response);
         syncWorld(active.quest, response.quest);
+        if (response.gates && response.gates.length > 0) setGatesOpened(response.gates);
         // Only the call that finished the quest carries a completion; a repeat grants nothing new.
         if (response.completion && response.reward && !response.repeated) {
           const done: FinishedQuest = { completion: response.completion, reward: response.reward };
@@ -246,9 +261,15 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
         startStep(step);
       };
 
+      if (gatesShown.current.has(targetId)) {
+        proceed();
+        return;
+      }
       void api('GET', `/skill-check/${targetId}`, SkillCheckResult)
         .then((check) => {
           if (check.hasSkillCheck && !check.passed) {
+            gatesShown.current.add(targetId);
+            afterSkillCheck.current = proceed;
             setSkillCheck(check);
             cover('skillCheck', true);
             return;
@@ -312,6 +333,11 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
     submit,
     close: useCallback(() => setOverlay(null), [setOverlay]),
     skillCheck,
-    closeSkillCheck,
+    goOnFromSkillCheck,
+    closeSkillCheck: useCallback(() => {
+      closeSkillCheck();
+    }, [closeSkillCheck]),
+    gatesOpened,
+    clearGatesOpened: useCallback(() => setGatesOpened(null), []),
   };
 }

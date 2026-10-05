@@ -1,6 +1,6 @@
-// M1.7 (part): Hồ sơ — skills by subject with their levels (`/api/progress`), the Collection (every
-// catalogue item, owned ones lit, the others locked), and the Backpack page. Journey and Achievements
-// are V1 ("Sắp có"). Numbers are the server's.
+// M1.7 (part): Hồ sơ — the skill tree (`skill-tree.tsx`: skills by subject, a leaf per level, the gift of each
+// level), titles, the Collection (every catalogue item, owned ones lit, the others locked), and the way to the
+// Backpack, the Journey and the Achievements. Numbers are the server's.
 import { Link } from 'react-router';
 import { BackpackPanel } from '../backpack/backpack-panel';
 import { ITEMS, itemIcon } from '../backpack/items';
@@ -11,6 +11,7 @@ import { SkyScene } from '../kit/sky-scene';
 import { PlayerBadge } from '../player/player-badge';
 import { say, usePlayer, type PlayerData } from '../player/player-data';
 import { useRegionRewardList } from '../region/region-rewards';
+import { SkillTreePanel } from './skill-tree';
 import '../region/region.css';
 import '../rewards/rewards.css';
 
@@ -76,29 +77,7 @@ export function ProfileScreen() {
         const owned = player.progress.items;
         return (
           <>
-            <section className="panel" aria-labelledby="skills-title" data-id="profile-skills">
-              <h1 id="skills-title" className="panel-title">
-                <Icon name="books" size={44} />
-                <T k="profile.skillsOf" params={{ name: player.character.name }} />
-              </h1>
-              {player.progress.subjects.map((subject) => (
-                <section key={subject.subjectId} aria-label={subject.name}>
-                  <h2>
-                    {subject.name} · Lv.{subject.level}
-                  </h2>
-                  <ul className="skill-list">
-                    {subject.skills.map((skill) => (
-                      <li key={skill.skillId} data-id={`profile-skill-${skill.skillId}`}>
-                        <span>{skill.name}</span>
-                        <span>
-                          Lv.{skill.level} · {skill.xp} XP
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              ))}
-            </section>
+            <SkillTreePanel name={player.character.name} />
             {titles.length > 0 ? (
               <section className="panel" aria-labelledby="titles-title" data-id="profile-titles">
                 <h2 id="titles-title" className="panel-title">
@@ -139,16 +118,14 @@ export function ProfileScreen() {
                 <Icon name="backpack" size={28} />
                 <T k="common.backpack" />
               </Link>
-              <p>
-                <T k="profile.journey" />{' '}
-                <span className="badge">
-                  <T k="common.comingSoon" />
-                </span>{' '}
-                · <T k="profile.achievements" />{' '}
-                <span className="badge">
-                  <T k="common.comingSoon" />
-                </span>
-              </p>
+              <Link to="/journey" className={buttonClass('secondary')} data-id="profile-journey">
+                <Icon name="map" size={28} />
+                <T k="profile.journey" />
+              </Link>
+              <Link to="/achievements" className={buttonClass('secondary')} data-id="profile-achievements">
+                <Icon name="trophy" size={28} />
+                <T k="profile.achievements" />
+              </Link>
             </section>
           </>
         );

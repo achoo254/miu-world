@@ -1,0 +1,41 @@
+/* Skill tree (Hồ sơ): values from tokens.css only; touch targets ≥ 48px. */
+.skill-tree .tabs-tab { min-height: 3rem; }
+.skill-subject-level { margin: 0; font-family: var(--font-display); font-weight: 800; color: var(--color-wood-edge); }
+.skill-rows { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: var(--space-sm); }
+.skill-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  border: 3px solid var(--color-parchment-edge);
+  border-radius: var(--radius-field);
+  background: linear-gradient(180deg, var(--color-parchment), var(--color-parchment-deep));
+  box-shadow: var(--shadow-material);
+  color: var(--color-parchment-ink);
+}
+.skill-row-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-sm); }
+.skill-row-name { font-size: var(--text-lg); }
+.skill-row-level { font-family: var(--font-display); font-weight: 800; color: var(--color-wood-edge); }
+.skill-row-next { margin: 0; }
+.skill-row .progress-fill { background: linear-gradient(180deg, var(--color-grass) 0%, var(--color-leaf) 100%); }
+/* One leaf per level: lit up to the level reached, the others waiting in grey. */
+.skill-leaves { display: flex; flex-wrap: wrap; gap: calc(var(--space-xs) / 2); }
+.skill-leaf { display: inline-flex; filter: grayscale(1); opacity: 0.35; }
+.skill-leaf--lit { filter: none; opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .skill-leaf--newest { animation: skill-leaf-glow var(--duration-twinkle) ease-in-out infinite alternate; }
+}
+@keyframes skill-leaf-glow { from { transform: scale(1); } to { transform: scale(1.15) rotate(-8deg); } }
+.skill-row-gifts { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs) var(--space-sm); }
+.skill-gift-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0 var(--space-sm);
+  min-height: 2.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-glass);
+  color: var(--color-ink);
+  font-weight: 700;
+  font-size: var(--text-sm);
+}
