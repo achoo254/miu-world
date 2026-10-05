@@ -113,6 +113,35 @@ function regionDistance(rx: number, rz: number, x: number, z: number): number {
   return Math.hypot(dx, dz);
 }
 
+/** Maps whose outer land is kept planned (the one played and the one before: going back, the hub and a map). */
+const PLANS_KEPT = 2;
+interface PlannedOutland {
+  outland: OutlandPlan;
+  extra: ReturnType<typeof outlandEntities>;
+}
+const plans = new Map<string, PlannedOutland>();
+
+/**
+ * The outer land's layout and its villages, rides and life: the same for a map every time (its seed), and the
+ * longest part of reading a map, so a map played again takes them from the last time.
+ */
+function plannedOutland(mapId: string, spec: NonNullable<WorldEntities['outland']>, size: [number, number, number], waterLevel: number): PlannedOutland {
+  const kept = plans.get(mapId);
+  if (kept) {
+    plans.delete(mapId);
+    plans.set(mapId, kept); // most recently used last
+    return kept;
+  }
+  const outland = planOutland(spec, size, waterLevel);
+  const planned = { outland, extra: outlandEntities(outland) };
+  plans.set(mapId, planned);
+  for (const oldest of plans.keys()) {
+    if (plans.size <= PLANS_KEPT) break;
+    plans.delete(oldest);
+  }
+  return planned;
+}
+
 /**
  * `withOutland` false: only the core is loaded, even on a map with outer land (still pictures of the whole
  * core, which have no child walking away from it). `decor`: the child's picks for her home (home-decor.ts),
@@ -120,6 +149,10 @@ function regionDistance(rx: number, rz: number, x: number, z: number): number {
  */
 export async function loadWorldData(registry: AssetRegistry, mapId: string, options: { withOutland?: boolean; decor?: DecorPicks } = {}): Promise<WorldData> {
   const base = `generated/world/${mapId}`;
+  // The atlas picture comes in alongside the map's files.
+  const atlasPicture = new TextureLoader(registry.createLoadingManager()).loadAsync(registry.url('generated/atlas/atlas.png'));
+  // Should a map file fail first, the picture's own failure is not left unhandled (it is awaited below otherwise).
+  atlasPicture.catch(() => undefined);
   const [entitiesRes, horizonRes, atlasRes] = await Promise.all([
     fetchChecked(registry, `${base}/entities.json`),
     fetchChecked(registry, `${base}/horizon.bin`),
@@ -130,8 +163,7 @@ export async function loadWorldData(registry: AssetRegistry, mapId: string, opti
   const atlasText = await atlasRes.text();
   const atlas = atlasSchema.parse(JSON.parse(atlasText));
   const { entities: parsed, recolours } = decorated(worldEntitiesSchema.parse(JSON.parse(entitiesText)), options.decor ?? {});
-  const loader = new TextureLoader(registry.createLoadingManager());
-  const atlasTexture = await loader.loadAsync(registry.url('generated/atlas/atlas.png'));
+  const atlasTexture = await atlasPicture;
   atlasTexture.colorSpace = SRGBColorSpace;
   atlasTexture.flipY = false;
   atlasTexture.magFilter = NearestFilter;
@@ -145,10 +177,11 @@ export async function loadWorldData(registry: AssetRegistry, mapId: string, opti
   const init: RegionBuilderInit = { size: [sx, sy, sz], waterLevel: parsed.waterLevel, outland: spec, blocks: atlas.blocks };
   // The layout (cheap) on the main thread too: the outer land's villages, rides and life are entities, and
   // its ground shapes the horizon; the blocks themselves are built in the worker.
-  const outland = spec ? planOutland(spec, [sx, sy, sz], parsed.waterLevel) : null;
-  const entities: WorldEntities = outland
+  const planned = spec ? plannedOutland(mapId, spec, [sx, sy, sz], parsed.waterLevel) : null;
+  const outland = planned?.outland ?? null;
+  const entities: WorldEntities = planned
     ? (() => {
-        const extra = outlandEntities(outland);
+        const { extra } = planned;
         return {
           ...parsed,
           props: [...parsed.props, ...extra.props],

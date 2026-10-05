@@ -164,6 +164,24 @@ async function buildVisual(loader: GuardedGltfLoader, def: Ambient, shadows: boo
   return { root, mixer, clips, parts, held, labelHeight };
 }
 
+/**
+ * Starts fetching the models of the villagers and animals built before the first frame (round `start`), and what
+ * they hold, so their files download while the land is still being built; `loadAmbientLife` then finds them parsed.
+ */
+export function preloadAmbientModels(loader: GuardedGltfLoader, ambients: readonly Ambient[], start: readonly [number, number]): void {
+  const [sx, sz] = start;
+  const near = ambients.filter((def) => Math.hypot(def.position[0] - sx, def.position[2] - sz) <= PRELOAD_RADIUS);
+  const models = new Set(near.flatMap((def) => [def.model, ...(def.held ?? []).filter((item) => item !== BUILT_ROD)]));
+  // A failure (a model missing from the manifest throws at once) shows, and is reported, when it is built for real.
+  for (const model of models) {
+    try {
+      loader.load(model).catch(() => undefined);
+    } catch {
+      // see above
+    }
+  }
+}
+
 export async function loadAmbientLife(loader: GuardedGltfLoader, ambients: readonly Ambient[], options: AmbientOptions): Promise<AmbientLife> {
   const group = new Group();
   group.name = 'ambient-life';

@@ -33,8 +33,12 @@ export interface WorldRenderer {
   setViewDistance(distance: number): void;
   /** `see`: the child to keep in view by fading what stands in front of her (world-renderer SeeLine); none in review shots. */
   update(camera: Camera, see?: SeeLine): void;
-  /** Resolves once every region and patch within the view distance of (x, z) is in (the whole map when infinite). */
-  settle(x: number, z: number): Promise<void>;
+  /**
+   * Resolves once every region and patch within the view distance of (x, z) is in (the whole map when infinite).
+   * With `reach`, only the patches whose middle lies within that many blocks (and the regions under them): the
+   * land further out comes in over the next frames, as it does while she walks.
+   */
+  settle(x: number, z: number, reach?: number): Promise<void>;
   /**
    * Keeps the land round (x, z) drawn and every region held until the returned release is called: a ride's far
    * end stays ready while the camera travels with the child (settle draws it, this keeps it).
@@ -214,8 +218,7 @@ export async function createWorldRenderer(data: WorldData, options: { sky: Color
     [[x, z], ...(cameraAt ? [cameraAt] : []), ...holds].some(([kx = 0, kz = 0]) => Math.hypot(cx - kx, cz - kz) <= viewDistance + DROP_MARGIN);
 
   /** Asks for the nearest wanted patches and drops the far ones; returns whether everything round (x, z) is in. */
-  const step = (x: number, z: number): boolean => {
-    const reach = viewDistance + KEEP_MARGIN;
+  const step = (x: number, z: number, reach = viewDistance + KEEP_MARGIN): boolean => {
     const wanted: Array<{ px: number; pz: number; d: number }> = [];
     let complete = true;
     const r = Number.isFinite(reach) ? Math.ceil(reach / PATCH_BLOCKS) + 1 : 0;
@@ -294,15 +297,17 @@ export async function createWorldRenderer(data: WorldData, options: { sky: Color
       step(camPos.x, camPos.z);
       horizon?.update(camPos);
     },
-    async settle(x, z) {
+    async settle(x, z, reach) {
       const hold: [number, number] = [x, z];
       holds.push(hold);
+      const near = reach !== undefined && reach < viewDistance ? reach : null;
       try {
-        await data.regions.loadAround(x, z, Number.isFinite(viewDistance) ? viewDistance + PREFETCH : Infinity);
+        // A patch's corners stand up to KEEP_MARGIN from its middle: the regions under them come first.
+        await data.regions.loadAround(x, z, near !== null ? near + KEEP_MARGIN : Number.isFinite(viewDistance) ? viewDistance + PREFETCH : Infinity);
         // Meshing runs a few patches at a time: pump until everything in view is drawn.
         await new Promise<void>((resolve) => {
           const tick = (): void => {
-            if (step(x, z)) resolve();
+            if (near !== null ? step(x, z, near) : step(x, z)) resolve();
             else setTimeout(tick, 16);
           };
           tick();

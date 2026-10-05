@@ -99,8 +99,12 @@ export async function loadProps(loader: GuardedGltfLoader, entities: WorldEntiti
   /** Each model's scene (a live prop's copy) and its moving part nodes. */
   const scenes = new Map<string, Object3D>();
   const movingParts = new Map<string, Object3D[]>();
-  for (const model of new Set(entities.props.map((p) => p.model))) {
-    const gltf = await loader.load(model);
+  // Every model fetched and parsed at once (one after another, each waited a round trip), then read in order.
+  const names = [...new Set(entities.props.map((p) => p.model))];
+  const loaded = await Promise.all(names.map((model) => loader.load(model)));
+  for (const [i, model] of names.entries()) {
+    const gltf = loaded[i];
+    if (!gltf) continue;
     gltf.scene.updateMatrixWorld(true);
     scenes.set(model, gltf.scene);
     const box = new Box3().setFromObject(gltf.scene);

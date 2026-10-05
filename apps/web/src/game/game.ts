@@ -22,7 +22,7 @@ import { castHidden, entitiesForChapter } from '@miu/voxel/world-entities';
 import { onLangModeChange, t as translate, writeText, type TextKey } from '../ui/i18n/i18n';
 import { PETS, UI_ICONS, assetUrl } from '../ui/kit/ui-art';
 import type { GameStore } from '../game-bridge/game-store';
-import { loadAmbientLife, type AmbientTarget } from './ambient/ambient-life';
+import { loadAmbientLife, preloadAmbientModels, type AmbientTarget } from './ambient/ambient-life';
 import { createConfetti } from './scene/confetti';
 import { createSpeechBubble } from './ambient/speech-bubble';
 import { ObjectInteractionManager } from './interact/object-interaction-manager';
@@ -35,7 +35,7 @@ import { createPortalSparks } from './scene/portal-sparks';
 import type { PlayerPosition } from '@miu/schema/player-position';
 import { RegionCatalog, WorldEventKind, mapForRegion } from '@miu/schema/region';
 import regionsJson from '../../../../content/world/regions.json';
-import { AssetRegistry, GuardedGltfLoader } from './asset-loader';
+import { AssetRegistry, GAME_MODELS, GuardedGltfLoader } from './asset-loader';
 import { createReviewShot, parseViewShot } from './debug/review-shots';
 import { StatsOverlay } from './debug/stats-overlay';
 import { loadInteractables, namedForPlayer, pickNearest, type InteractableObject } from './entities/interactables';
@@ -96,8 +96,21 @@ import './game.css';
 
 
 
-/** Boot steps reported as `loading-progress`: renderer, asset registry, map data, world mesh, models. */
-const LOADING_STEPS = 5;
+/**
+ * The loading bar (percent), from the measured share of each part of the boot (throttled CPU and network, first
+ * entry and going back): the map's files, then two parts side by side, the land round the child (`LAND_SHARE`,
+ * half of it once the world renderer is made) and the models (`MODEL_SHARE`, as each arrives), then the rest of
+ * the set-up. It never fills before the first frame, which takes the loading screen away.
+ */
+const BOOT_PROGRESS = { renderer: 2, registry: 6, worldData: 18, setup: 95 } as const;
+const LAND_SHARE = 22;
+const MODEL_SHARE = 50;
+type BootMilestone = keyof typeof BOOT_PROGRESS;
+/**
+ * Before the first frame only the land this near the child is drawn (the regions under it fetched); the rest of
+ * the view and the regions ahead come in over the next frames. Review shots still wait for the whole view.
+ */
+const FIRST_FRAME_REACH = 48;
 /** After the child drags the view, the camera keeps her angle this long before settling behind her again. */
 const LOOK_HOLD_S = 1;
 /**
@@ -283,18 +296,32 @@ export class Game {
 
   private async boot(): Promise<void> {
     const { store, search } = this.options;
-    let loadingDone = 0;
-    const stepLoaded = (): void => store.emit({ type: 'loading-progress', done: ++loadingDone, total: LOADING_STEPS });
+    let shown = 0;
+    const progress = (percent: number): void => {
+      const next = Math.round(Math.max(shown, percent));
+      if (next === shown) return;
+      shown = next;
+      store.emit({ type: 'loading-progress', done: next, total: 100 });
+    };
     store.emit({ type: 'loading' });
-    store.emit({ type: 'loading-progress', done: 0, total: LOADING_STEPS });
+    store.emit({ type: 'loading-progress', done: 0, total: 100 });
     const params = new URLSearchParams(search);
     const quality = readQuality(search);
+    // The manifest is read while the renderer is made (once a page: a later game has it at once).
+    const registryPending = AssetRegistry.shared();
+    // A new game: the parsed models the game before last used are let go, this one's and the last one's kept.
+    GAME_MODELS.nextRound();
     const dom = buildDom(this.host);
     this.cleanups.push(() => {
       dom.stopLabels();
       dom.root.remove();
     });
     const overlay = new StatsOverlay(dom.stats, quality.level);
+    const bootStart = performance.now();
+    const lap = (milestone: string): void => {
+      overlay.stats.boot[milestone] = Math.round(performance.now() - bootStart);
+      if (milestone in BOOT_PROGRESS) progress(BOOT_PROGRESS[milestone as BootMilestone]);
+    };
     // The FPS / draw-call panel is for developers; children see the HUD in its place.
     dom.stats.hidden = !params.has('stats');
     this.cleanups.push(() => overlay.detach());
@@ -319,7 +346,7 @@ export class Game {
     };
     renderer.domElement.addEventListener('webglcontextlost', onContextLost);
     this.cleanups.push(() => renderer.domElement.removeEventListener('webglcontextlost', onContextLost));
-    stepLoaded();
+    lap('renderer');
 
     const scene = new Scene();
     this.scene = scene;
@@ -337,18 +364,65 @@ export class Game {
     Object.assign(sun.shadow.camera, { left: -24, right: 24, top: 24, bottom: -24, near: 1, far: 90 });
     scene.add(sun, sun.target);
 
-    const registry = await AssetRegistry.load();
-    stepLoaded();
-    const loader = new GuardedGltfLoader(registry);
+    const registry = await registryPending;
+    if (this.disposed) return;
+    lap('registry');
+    const loader = new GuardedGltfLoader(registry, GAME_MODELS);
     const mapId = mapForRegion(REGION_CATALOG, this.options.region ?? '');
     // A still picture of the whole core (a review shot without `view=`) needs no outer land round it.
     const wholeCoreShot = params.has('shot') && !(Number(params.get('view')) > 0);
     const data = await loadWorldData(registry, mapId, { withOutland: !wholeCoreShot, decor: this.options.decor ?? decorFromSearch(params) });
     this.cleanups.push(() => data.regions.dispose());
     if (this.disposed) return;
-    stepLoaded();
+    lap('worldData');
+    const chapterEntities = entitiesForChapter(data.entities, this.options.chapter ?? 1, this.options.quest);
+    const entities = { ...chapterEntities, interactables: namedForPlayer(chapterEntities.interactables, this.options.playerName ?? 'bạn') };
+    // Where the child starts (a URL spot, next to a target, where she left off, else the spawn): its
+    // regions and the patches in view are loaded and drawn before the first frame.
+    const spawnAtParam = params.get('spawnAt');
+    const start =
+      spawnAtParam?.split(',').map(Number).filter(Number.isFinite).length === 3
+        ? spawnAtParam.split(',').map(Number)
+        : (entities.interactables.find((t) => (spawnAtParam === 'npc' ? t.kind === 'npc' : t.id === spawnAtParam))?.position ??
+          (spawnAtParam === null ? this.options.savedSpot?.position : undefined) ??
+          entities.spawn.position);
+    const outfitParam = params.get('outfit');
+    const outfit = outfitParam === 'none' ? [] : outfitParam ? outfitParam.split(',') : this.options.outfit;
+    // The models need only the map's entities: they load (and their files download) while the land is built.
+    let landDone = 0;
+    let modelsDone = 0;
+    const partsProgress = (): void => progress(BOOT_PROGRESS.worldData + LAND_SHARE * landDone + MODEL_SHARE * modelsDone);
+    loader.onProgress((finished, asked) => {
+      modelsDone = finished / Math.max(asked, 1);
+      partsProgress();
+    });
+    const timed = <T>(milestone: string, pending: Promise<T>): Promise<T> =>
+      pending.then((value) => {
+        lap(milestone);
+        return value;
+      });
+    const petSpec = PETS.find((p) => p.id === this.options.pet);
+    /** Awaited after the land is in; a failure meanwhile is not reported as unhandled (the await rethrows it). */
+    const early = <T>(pending: Promise<T>): Promise<T> => {
+      pending.catch(() => undefined);
+      return pending;
+    };
+    const characterPending = early(timed('character', loadPlayerCharacter(loader, this.options.species ?? DEFAULT_SPECIES, outfit)));
+    const targetsPending = early(timed('interactables', loadInteractables(loader, entities, quality.shadows)));
+    // Nothing fades for standing between the camera and the child (owner, 02/10/2026): the camera comes in
+    // front of walls and roofs instead (camera-rig.ts), plants simply show.
+    // Props whose interaction turns them whole (a globe) are drawn on their own; moving parts always are.
+    const propsPending = early(timed('props', loadProps(loader, entities, quality.shadows, undefined, spinningProps(entities.props))));
+    const petPending = petSpec ? early(timed('pet', loadPetCompanion(loader, petSpec, quality.shadows))) : null;
+    const lifeOn = params.get('life') !== '0';
+    const shotAt = parseViewShot(params.get('shot') ?? '')?.target;
+    const lifeStart: [number, number] = shotAt ? [shotAt.x, shotAt.z] : [start[0] ?? 0, start[2] ?? 0];
+    if (lifeOn) preloadAmbientModels(loader, entities.ambients ?? [], lifeStart);
     const world = await createWorldRenderer(data, { sky: SKY_HORIZON, horizon: quality.horizon });
     if (this.disposed) return;
+    lap('worldRenderer');
+    landDone = 0.5;
+    partsProgress();
     world.setViewDistance(quality.viewDistance);
     world.group.userData.receiveShadow = quality.shadows;
     scene.add(world.group);
@@ -379,22 +453,11 @@ export class Game {
       return (block !== undefined && blockTraversal(block) === 'blocking') || propCells.get(cellKey(x, y, z)) === 'blocking';
     };
 
-    const chapterEntities = entitiesForChapter(data.entities, this.options.chapter ?? 1, this.options.quest);
-    const entities = { ...chapterEntities, interactables: namedForPlayer(chapterEntities.interactables, this.options.playerName ?? 'bạn') };
-    // Where the child starts (a URL spot, next to a target, where she left off, else the spawn): its
-    // regions and the patches in view are loaded and drawn before the first frame.
-    const spawnAtParam = params.get('spawnAt');
-    const start =
-      spawnAtParam?.split(',').map(Number).filter(Number.isFinite).length === 3
-        ? spawnAtParam.split(',').map(Number)
-        : (entities.interactables.find((t) => (spawnAtParam === 'npc' ? t.kind === 'npc' : t.id === spawnAtParam))?.position ??
-          (spawnAtParam === null ? this.options.savedSpot?.position : undefined) ??
-          entities.spawn.position);
-    await world.settle(start[0] ?? 0, start[2] ?? 0);
+    await world.settle(start[0] ?? 0, start[2] ?? 0, params.has('shot') ? undefined : FIRST_FRAME_REACH);
     if (this.disposed) return;
-    stepLoaded();
-    const outfitParam = params.get('outfit');
-    const outfit = outfitParam === 'none' ? [] : outfitParam ? outfitParam.split(',') : this.options.outfit;
+    lap('settle');
+    landDone = 1;
+    partsProgress();
     /** Where a walker stands over a column: the first open cell with ground under it, searched near its height. */
     const ground = (x: number, z: number, nearY: number): number => {
       const bx = Math.floor(x);
@@ -405,17 +468,14 @@ export class Game {
       return nearY;
     };
     const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
-    const shotView = parseViewShot(params.get('shot') ?? '');
-    const lifeStart: [number, number] = shotView ? [shotView.target.x, shotView.target.z] : [start[0] ?? 0, start[2] ?? 0];
-    const [character, targets, props, life] = await Promise.all([
-      loadPlayerCharacter(loader, this.options.species ?? DEFAULT_SPECIES, outfit),
-      loadInteractables(loader, entities, quality.shadows),
-      // Nothing fades for standing between the camera and the child (owner, 02/10/2026): the camera comes in
-      // front of walls and roofs instead (camera-rig.ts), plants simply show.
-      // Props whose interaction turns them whole (a globe) are drawn on their own; moving parts always are.
-      loadProps(loader, entities, quality.shadows, undefined, spinningProps(entities.props)),
+    const [character, targets, props, pet, life] = await Promise.all([
+      characterPending,
+      targetsPending,
+      propsPending,
+      petPending,
+      // The villagers and animals round the start stand on its ground: built once the land there is in.
       // `?life=0` (dev/perf switch): the map without its villagers and animals.
-      loadAmbientLife(loader, params.get('life') === '0' ? [] : (entities.ambients ?? []), {
+      timed('life', loadAmbientLife(loader, lifeOn ? (entities.ambients ?? []) : [], {
         quality: quality.level,
         shadows: quality.shadows,
         reduced: reducedMotion,
@@ -424,11 +484,12 @@ export class Game {
         // A review shot of a far view (the mock frames) gets the people round what it looks at ready
         // before its first frame, as the child's start does in play.
         start: lifeStart,
-      }),
+      })),
     ]);
+    loader.onProgress(null);
     if (this.disposed) return;
+    lap('models');
     propCells = props.blocked;
-    stepLoaded();
     const confetti = createConfetti();
     // The portals' sparks swirl and drift out (fewer on the low quality, still for less motion).
     const portalSparks = createPortalSparks(entities.props, { perPortal: quality.level === 'low' ? 12 : 28, still: reducedMotion });
@@ -436,9 +497,6 @@ export class Game {
     this.cleanups.push(() => portalSparks.dispose());
     overlay.stats.portals = portalSparks.portals;
     const lookAhead = new Vector3();
-    const petSpec = PETS.find((p) => p.id === this.options.pet);
-    const pet = petSpec ? await loadPetCompanion(loader, petSpec, quality.shadows) : null;
-    if (this.disposed) return;
     if (pet) scene.add(pet.root);
     overlay.stats.pet = petSpec?.id ?? null;
     // Surprises this region plays now and then (none in review shots, which must be the same every run).
@@ -758,6 +816,7 @@ export class Game {
       return [x + offset, y + 0.5, z + offset];
     };
 
+    lap('setup');
     overlay.stats.meshMs = Math.round(world.meshMs());
     overlay.stats.worker = world.usedWorker;
     const timer = new Timer();
@@ -1106,6 +1165,7 @@ export class Game {
       if (firstFrame) {
         firstFrame = false;
         overlay.stats.loadMs = Math.round(performance.now());
+        lap('ready');
         overlay.stats.firstAreaBytes = downloadedBytes();
         overlay.stats.ready = true;
         store.emit({ type: 'ready' });

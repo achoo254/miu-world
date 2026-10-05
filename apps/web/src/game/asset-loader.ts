@@ -27,6 +27,19 @@ export class AssetRegistry {
     private readonly versions: ReadonlyMap<string, string> = new Map(),
   ) {}
 
+  private static kept: Promise<AssetRegistry> | null = null;
+
+  /** The registry read once per page: every game after the first starts without fetching the manifest again. */
+  static shared(): Promise<AssetRegistry> {
+    if (!AssetRegistry.kept) {
+      AssetRegistry.kept = AssetRegistry.load().catch((err: unknown) => {
+        AssetRegistry.kept = null; // a failed read is tried again by the next game
+        throw err;
+      });
+    }
+    return AssetRegistry.kept;
+  }
+
   static async load(): Promise<AssetRegistry> {
     const res = await fetch(versioned(`${ASSET_PREFIX}manifest.json`, MANIFEST_VERSION));
     if (!res.ok) throw new Error(`manifest fetch failed: ${res.status}`);
@@ -79,29 +92,90 @@ export function normalizeKenneyMaterials(root: Object3D): void {
   });
 }
 
+/**
+ * Parsed models kept from one game to the next (going back to a map, a quest switched on the same map, the hub
+ * and back): the next game clones them instead of fetching and parsing every file again. Each game starts a
+ * round; a model neither this game nor the one before it asked for is let go, so the cache holds about two
+ * maps' worth. Every user clones the shared scene (or only reads it), and a disposed game frees only the GPU
+ * side of what it drew: the next renderer uploads the same geometry and textures again.
+ */
+export class ModelCache {
+  private readonly entries = new Map<string, { pending: Promise<GLTF>; round: number }>();
+  private round = 0;
+
+  /** A new game begins: models last asked for two games ago or earlier are dropped. */
+  nextRound(): void {
+    this.round += 1;
+    for (const [url, entry] of this.entries) if (entry.round < this.round - 1) this.entries.delete(url);
+  }
+
+  get(url: string): Promise<GLTF> | undefined {
+    const entry = this.entries.get(url);
+    if (entry) entry.round = this.round;
+    return entry?.pending;
+  }
+
+  set(url: string, pending: Promise<GLTF>): void {
+    this.entries.set(url, { pending, round: this.round });
+  }
+
+  delete(url: string): void {
+    this.entries.delete(url);
+  }
+
+  get size(): number {
+    return this.entries.size;
+  }
+}
+
+/** The models the play screen's games share (the creator's preview keeps its own). */
+export const GAME_MODELS = new ModelCache();
+
 export class GuardedGltfLoader {
   private readonly loader: GLTFLoader;
-  private readonly cache = new Map<string, Promise<GLTF>>();
+  private asked = 0;
+  private finished = 0;
+  private listener: ((finished: number, asked: number) => void) | null = null;
 
-  constructor(private readonly registry: AssetRegistry) {
+  constructor(
+    private readonly registry: AssetRegistry,
+    private readonly cache: ModelCache = new ModelCache(),
+  ) {
     this.loader = new GLTFLoader(registry.createLoadingManager());
+  }
+
+  /** Hears each load asked of this loader as it finishes (a model already parsed too): loads finished and asked so far. None: stop. */
+  onProgress(listener: ((finished: number, asked: number) => void) | null): void {
+    this.listener = listener;
   }
 
   /** Loads once per path; callers share the returned scene, so each model may be placed only once. */
   load(assetPath: string): Promise<GLTF> {
-    let pending = this.cache.get(assetPath);
+    const pending = this.parsed(assetPath);
+    this.asked += 1;
+    const tick = (): void => {
+      this.finished += 1;
+      this.listener?.(this.finished, this.asked);
+    };
+    void pending.then(tick, tick);
+    return pending;
+  }
+
+  private parsed(assetPath: string): Promise<GLTF> {
+    const url = this.registry.url(assetPath);
+    let pending = this.cache.get(url);
     if (!pending) {
-      pending = this.loader.loadAsync(this.registry.url(assetPath)).then(
+      pending = this.loader.loadAsync(url).then(
         (gltf) => {
           normalizeKenneyMaterials(gltf.scene);
           return gltf;
         },
         (err: unknown) => {
-          this.cache.delete(assetPath); // let a later call retry instead of caching the failure
+          this.cache.delete(url); // let a later call retry instead of caching the failure
           throw err;
         },
       );
-      this.cache.set(assetPath, pending);
+      this.cache.set(url, pending);
     }
     return pending;
   }

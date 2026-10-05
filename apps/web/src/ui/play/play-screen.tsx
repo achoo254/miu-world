@@ -9,6 +9,7 @@ import { createGameStore, type GameSnapshot, type GameStore } from '../../game-b
 import { createSocialStore, type SocialStore } from '../../game-bridge/social-store';
 import { GameStoreContext, useGameState, useGameStore } from '../../game-bridge/use-game-state';
 import { Game } from '../../game/game';
+import { AssetRegistry } from '../../game/asset-loader';
 import { ApiError, errorMessage } from '../api-client';
 import { useAccount } from '../account/account-context';
 import { Hud } from '../hud/hud';
@@ -273,6 +274,8 @@ export function PlayScreen() {
 
   useEffect(() => {
     let live = true;
+    // The game's asset list is read while the player's data is: the game starts with it at hand.
+    AssetRegistry.shared().catch(() => undefined);
     loadPlayer().then(
       (next) => live && loaded(next),
       (err: unknown) => live && onLoadError(err),
