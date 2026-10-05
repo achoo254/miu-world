@@ -1,7 +1,7 @@
 ---
 title: "Màn tải nhanh, đúng nhân vật, mẹo mới; chim vỗ cánh"
 description: "Sửa bốn lỗi người sở hữu báo 05/10/2026: tải lâu ở 80–100%, màn tải hiện nhân vật mặc định, mẹo không đổi, chim bay không vỗ cánh."
-status: pending
+status: completed
 priority: P1
 tier: M
 branch: main
@@ -11,7 +11,7 @@ created: 2026-10-05
 
 # Màn tải nhanh, đúng nhân vật, mẹo mới; chim vỗ cánh
 
-**Trạng thái:** đã thi công đủ 4 việc (06/10/2026, report `plans/dattqh/reports/loading-and-birds-261006.md`: quay lại Trung tâm 8,6 s → 1,8 s khi giả lập CPU 4× và mạng 20 Mbps; gate 5 lệnh, build web, `security:dist`, E2E smoke + `play` + `forest-life` xanh); chờ deploy production (người sở hữu đã cho phép, 05/10/2026) · **Tier:** M
+**Trạng thái:** đã thi công đủ 4 việc (06/10/2026, report `plans/dattqh/reports/loading-and-birds-261006.md`: quay lại Trung tâm 8,6 s → 1,8 s khi giả lập CPU 4× và mạng 20 Mbps; gate 5 lệnh, build web, `security:dist`, E2E smoke + `play` + `forest-life` xanh); đã deploy production bản `ce101349` ngày 06/10/2026 (người sở hữu đã cho phép, 05/10/2026) · **Tier:** M
 
 ## Chẩn đoán (đọc code, 05/10/2026)
 
