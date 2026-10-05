@@ -13,7 +13,7 @@ created: 2026-10-05
 
 # Mỗi tài khoản một người chơi
 
-**Trạng thái:** xong 05/10/2026 (không hỏi tuổi: người sở hữu chốt); E2E đã sửa nhưng chưa chạy · **Tier:** L · **Nhánh:** `main` · **Ngày:** 05/10/2026
+**Trạng thái:** xong và đưa lên production 05/10/2026 (không hỏi tuổi: người sở hữu chốt) · **Tier:** L · **Nhánh:** `main` · **Ngày:** 05/10/2026
 **Nguồn:** yêu cầu người sở hữu 05/10/2026 (`.claude/rules/product-audience.md`): game cho mọi lứa tuổi, online kiểu Minecraft, sau này có mobile app, không cần phụ huynh giám sát, phụ huynh tự chịu trách nhiệm. Quyết định của Jev `account_model = plan_single_player` (0.84, rủi ro cao, áp theo quy ước; `plans/dattqh/reports/jev-261005-0949-all-ages-account.md`).
 
 ## Kết quả mong muốn
@@ -94,7 +94,8 @@ Câu hỏi tuổi: Jev gần như phân vân (0.42), rủi ro cao (pháp lý, d�
 
 - Migration `0010_primary-player.sql` (cột `is_primary`, chỉ mục duy nhất từng phần, backfill idempotent) chạy thử đúng trên bản sao database dev của worktree `miu-world-sgk`; test backfill ở `apps/server/src/db/schema.test.ts`.
 - Review độc lập: 0 lỗi nghiêm trọng; đã sửa 4 điểm trung bình (transaction đồng ý + người chơi chính, web dùng `players`, nút giao máy, test migration) và phần chữ còn "hồ sơ".
-- Chưa chạy E2E (`account-flow`, `mvp-loop`, `creator`, `parent-session.setup`, `quest-api` đã sửa theo luồng mới).
+- E2E trên máy dev (1 worker), 05/10/2026: lượt đầy đủ `e2e:ci` 86 test, các test hỏng còn lại không thuộc luồng tài khoản và đã sửa riêng (lọc đáp án trùm, màn kỹ năng lên cấp, chỗ đứng cạnh mục tiêu); sau đó `account`, `creator`, `mvp-loop`, `play`, `quest-flow`, `challenges`, `sgk-content`, `maps` qua 47/47 (1 bỏ qua: quay video duyệt).
+- Production: release 05/10/2026 (backup trước release, migration tự chạy khi server khởi động); mọi tài khoản đồng ý lại lời đồng ý v3 một lần.
 
 ## Câu hỏi mở
 
