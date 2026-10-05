@@ -31,6 +31,10 @@ Giai đoạn hiện tại: Vertical slice MVP đã xong 10 phase; nội dung SGK
 - Không đưa secret hay dữ liệu thật của trẻ vào prompt, code, fixture hoặc commit.
 - **Repo công khai** trên GitHub (`github.com/achoo254/miu-world`, MIT, từ 30/09/2026): mọi commit và push ai cũng đọc được, và lịch sử không rút lại được. Không commit, push hay dán vào issue/PR bất kỳ credential, token, API key, mật khẩu, private key, tệp env thật, bản dump database, dữ liệu cá nhân, cũng như IP public, cổng SSH hay user của máy chủ, **trừ khi người dùng cho phép rõ ràng cho đúng lần đó**. Giá trị cần dùng thì đọc lúc chạy từ tệp credential ngoài repo (`docs/STAG-DEV-README.md` §3). Trước mỗi lần push, quét phần sắp push (`git log -p origin/main..HEAD`) tìm secret; thấy thì dừng và báo người.
 
+## Đối tượng
+
+Game dành cho mọi lứa tuổi (trẻ em và người lớn), online kiểu Minecraft, sau này có mobile app; không đòi hỏi phụ huynh giám sát, phụ huynh tự chịu trách nhiệm. Chi tiết: `.claude/rules/product-audience.md`.
+
 ## Hỏi người trước khi làm
 
 Gom lại, hỏi một lần: thay đổi cách thu thập/chia sẻ dữ liệu trẻ em; chi phí; pháp lý; phạm vi sản phẩm; việc tốn công con người; quyết định còn mở ở Master Plan v3 §15. Quyết định thường ngày thì tự quyết (có thể dùng `tools/decisions/jev-decide.py` theo ngưỡng rủi ro, xem `docs/code-standards.md`).

@@ -4,7 +4,7 @@ Chi tiết đầy đủ: Master Plan v3 (gốc repo) §1–§6, §13, §16. File
 
 ## Ý định
 
-Miu World là game phiêu lưu 3D voxel chạy trên web cho trẻ em, nơi kiến thức là công cụ để tiến lên, không phải LMS có thêm avatar. Vòng lặp: thế giới → khám phá → quest → dùng kỹ năng học → thử thách → phần thưởng → nhân vật mạnh lên → mở khu vực mới.
+Miu World là game phiêu lưu 3D voxel online kiểu Minecraft, chạy trên web (sau này có mobile app), dành cho mọi lứa tuổi: trẻ em chơi được, người lớn cũng chơi được, vừa chơi vừa học. Game không đòi hỏi phụ huynh giám sát; phụ huynh tự chịu trách nhiệm việc trẻ chơi (người sở hữu, 05/10/2026). Kiến thức là công cụ để tiến lên, không phải LMS có thêm avatar. Vòng lặp: thế giới → khám phá → quest → dùng kỹ năng học → thử thách → phần thưởng → nhân vật mạnh lên → mở khu vực mới.
 
 Cách làm: single-player vertical slice trước (Home Base + Khu rừng bí mật chương 1), multiplayer là giai đoạn riêng sau MVP nhưng server làm nguồn sự thật ngay từ MVP để không phải viết lại.
 
@@ -22,7 +22,7 @@ Cách làm: single-player vertical slice trước (Home Base + Khu rừng bí m�
 ## Ràng buộc không suy ra được từ code
 
 - **Asset:** chỉ CC0 (model, texture, âm thanh), MIT (icon Fluent Emoji), OFL (font) hoặc sinh bằng code. Không CC-BY/SA/NC, không tự vẽ, không AI trả phí, không voxel artist. Hệ quả chấp nhận: hình ảnh kém chi tiết hơn mock.
-- **An toàn trẻ em:** phụ huynh là chủ tài khoản, trẻ là hồ sơ con; không thu tên thật, email, trường của trẻ; cần đồng ý của phụ huynh. Yêu cầu pháp lý (Nghị định 13/2023/NĐ-CP và luật dữ liệu cá nhân mới) phải được pháp chế xác nhận — tài liệu này không phải tư vấn pháp lý.
+- **An toàn trẻ em (thiết kế ban đầu, chưa đổi mô hình tài khoản):** phụ huynh là chủ tài khoản, trẻ là hồ sơ con; không thu tên thật, email, trường của trẻ; cần đồng ý của phụ huynh. Yêu cầu pháp lý (Nghị định 13/2023/NĐ-CP và luật dữ liệu cá nhân mới) phải được pháp chế xác nhận — tài liệu này không phải tư vấn pháp lý.
 - **Chống gian lận:** mọi thưởng, kết quả thử thách, mở khóa do server tính; client chỉ hiển thị.
 - **Mô hình vận hành:** AI làm 100% phần kỹ thuật; con người duyệt cuối trên trang review và làm việc máy không thay được (nội dung giáo dục, chơi thử với trẻ, kiểm duyệt cộng đồng, đo máy thật trước nghiệm thu MVP).
 
