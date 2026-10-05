@@ -25,6 +25,7 @@ import { REGION_BACKDROPS, assetUrl, type UiIcon } from '../kit/ui-art';
 import { playCue } from '../sound/sfx';
 import { buyItem, loadShop, requestId, shopErrorMessage } from './shop-api';
 import { ShopPicture } from './shop-picture';
+import { Say, twin } from '../quest/content-text';
 import './shop.css';
 
 /** The shopkeeper at the first counter of the shop in Trung tâm (tools/world/generate-trung-tam-map.ts). */
@@ -102,7 +103,9 @@ function ItemCard({ item, state, onOpen }: { item: ShopItemDto; state: ShopState
         <span className="shop-card-art">
           <ShopPicture item={item} />
         </span>
-        <span className="shop-card-name">{item.name}</span>
+        <span className="shop-card-name">
+          <Bi {...twin(item.name, item.nameEn)} />
+        </span>
         <CardStatus item={item} state={state} />
       </button>
     </li>
@@ -153,8 +156,14 @@ function ItemDetail({ item, items, state, character, busy, notice, fill, onBuy, 
         )}
       </div>
       <section className="shop-detail-card parchment" aria-labelledby="shop-detail-name">
-        <h3 id="shop-detail-name">{item.name}</h3>
-        {item.description ? <p>{fill(item.description)}</p> : null}
+        <h3 id="shop-detail-name">
+          <Bi {...twin(item.name, item.nameEn)} />
+        </h3>
+        {item.description ? (
+          <p>
+            <Say text={twin(item.description, item.descriptionEn)} fill={fill} />
+          </p>
+        ) : null}
         <p className="shop-tags">
           <span className="scene-chip">
             <T k={TAB_LABELS[item.category]} />

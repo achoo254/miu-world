@@ -1,7 +1,8 @@
 // The boosters a child owns, offered on a minigame's how-to card (NEW SCREEN part, mock "Cửa hàng" Tiêu hao):
 // one big chip per booster with how many are left; tapping picks it for the round, tapping again lets it go.
 import type { BoosterEffect, ShopItemDto } from '@miu/schema/shop';
-import { T, useT } from '../i18n/use-t';
+import { Bi, T, useT } from '../i18n/use-t';
+import { twin } from '../quest/content-text';
 import { ShopPicture } from './shop-picture';
 import './booster-choice.css';
 
@@ -38,7 +39,7 @@ export function BoosterChoice({ boosters, chosen, disabled, error, onChoose }: {
             onClick={() => onChoose(chosen === item.id ? null : item.id)}
           >
             <ShopPicture item={item} size={36} />
-            {item.name}
+            <Bi {...twin(item.name, item.nameEn)} />
             <small>
               <T k="booster.left" params={{ qty }} />
             </small>
