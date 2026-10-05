@@ -6,6 +6,7 @@
 // joins, never taken from the client, so nobody can show up as someone else or in someone else's clothes.
 import { z } from 'zod';
 import { ContentId } from './content';
+import { CoopClientMessages, CoopServerMessages } from './coop';
 import { FriendPerson } from './friends';
 
 export const SAFE_CANNED_CHATS = [
@@ -72,6 +73,10 @@ export const MP_NOTICES = [
   'friends-full',
   /** She has as many requests waiting as a player can have. */
   'friend-limit',
+  /** Her team already plays a co-op challenge (or she plays one with another team). */
+  'coop-busy',
+  /** No such co-op challenge is open to play. */
+  'coop-unknown',
 ] as const;
 export const MpNotice = z.enum(MP_NOTICES);
 export type MpNotice = z.infer<typeof MpNotice>;
@@ -152,6 +157,7 @@ export const ClientWsMessage = z.discriminatedUnion('type', [
   /** The leader went through a gate: the others are asked whether to come along. */
   z.strictObject({ type: z.literal('party-travel'), region: ContentId }),
   z.strictObject({ type: z.literal('leave') }),
+  ...CoopClientMessages,
 ]);
 export type ClientWsMessage = z.infer<typeof ClientWsMessage>;
 
@@ -184,5 +190,6 @@ export const ServerWsMessage = z.discriminatedUnion('type', [
   /** Where a party member or friend is; `host`: on the home map, whose home it is. */
   z.strictObject({ type: z.literal('party-goto'), id: PlayerId, mapId: ContentId, x: Coordinate, y: Coordinate, z: Coordinate, host: PlayerId.optional() }),
   z.strictObject({ type: z.literal('party-travel'), from: PlayerId, displayName: z.string().min(1).max(32), region: ContentId }),
+  ...CoopServerMessages,
 ]);
 export type ServerWsMessage = z.infer<typeof ServerWsMessage>;

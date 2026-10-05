@@ -2,6 +2,7 @@ import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import type { QuestDefinition } from '@miu/schema/content';
 import { STORY_CONTENT } from '../../test/test-app';
+import { coopQuest } from '../../test/coop-fixture';
 import { npcCatalogIssues, readNpcFiles, storyOrderIssues } from './npc-catalog';
 
 const files = readNpcFiles(fileURLToPath(new URL('../../test/fixtures/npcs', import.meta.url)));
@@ -46,5 +47,9 @@ describe('characters catalogue', () => {
     if (!story) throw new Error('fixture');
     expect(storyOrderIssues([lesson('vuot-ai-khu-rung'), story])).toEqual([]);
     expect(storyOrderIssues([lesson('zz-bai-cuoi'), story])).toEqual(['story chapter yarn-fixture-song-1 sorts before the lesson zz-bai-cuoi of khu-rung-bi-mat: the quest list would offer it first']);
+    // Co-op challenges follow the same rule.
+    const coop = coopQuest('pieces');
+    expect(storyOrderIssues([lesson('vuot-ai-khu-rung'), coop])).toEqual([]);
+    expect(storyOrderIssues([lesson('zz-bai-cuoi'), coop])).toEqual(['co-op challenge with-test-pieces sorts before the lesson zz-bai-cuoi of khu-rung-bi-mat: the quest list would offer it first']);
   });
 });

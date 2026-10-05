@@ -8,6 +8,9 @@ import {
   type PlayerPresence,
   type ServerWsMessage,
 } from '@miu/schema/multiplayer';
+import type { CoopAction, CoopStateView, CoopTaskView } from '@miu/schema/coop';
+import type { CoopBotDriver } from '../coop/coop-service';
+import type { CoopPerson } from '../coop/coop-session';
 import { botProfileId, homeBotId, type MultiplayerHub, type MultiplayerRoom } from './multiplayer-hub';
 
 export interface Waypoint {
@@ -189,6 +192,12 @@ export const BOT_FRIEND_ACCEPT = 0.85;
 const BOT_ASKS_AFTER_GREETS = 2;
 const BOT_ASK_CHANCE = 0.5;
 const MAX_GREET_PAIRS = 10_000;
+/** A companion bot answers a co-op question right this often by default (the runner's `coopAccuracy` changes it). */
+export const BOT_COOP_ACCURACY = 0.8;
+/** It thinks this long before a co-op move (and up to twice as long), as a player would. */
+export const BOT_COOP_THINK_MS = 1_800;
+/** In a `together` round it pulls its rope again this long before letting go. */
+const BOT_REHOLD_MS = 3_000;
 /** Bot friends of a home's owner who come to visit it. */
 const HOME_VISITORS = 2;
 /** A bot goes to visit a friend standing at most this far from it, and stops this far from her. */
@@ -376,8 +385,20 @@ class CompanionBotInstance {
 }
 
 export interface BotRunnerOptions {
-  /** Injectable for tests (whether a bot accepts, asks, visits). */
+  /** Injectable for tests (whether a bot accepts, asks, visits, answers right). */
   random?: () => number;
+  /** How often a bot answers a co-op question right (0–1). */
+  coopAccuracy?: number;
+  /** How long a bot thinks before a co-op move (ms; up to twice as long). */
+  coopThinkMs?: number;
+}
+
+interface CoopTurn {
+  state: CoopStateView;
+  moves: Parameters<CoopBotDriver['play']>[2];
+  timer: NodeJS.Timeout | null;
+  /** When the pending move is due (ms). */
+  dueAt: number;
 }
 
 export class BotRunner {
@@ -391,10 +412,107 @@ export class BotRunner {
   /** Greetings per bot and player, and the pairs a bot already asked to be friends. */
   private readonly greets = new Map<string, number>();
   private readonly asked = new Set<string>();
+  /** Bots playing a co-op challenge: what each sees and the move it is thinking over. */
+  private readonly coop = new Map<string, CoopTurn>();
+  private readonly coopAccuracy: number;
+  private readonly coopThinkMs: number;
 
   constructor(hub: MultiplayerHub, options: BotRunnerOptions = {}) {
     this.hub = hub;
     this.random = options.random ?? Math.random;
+    this.coopAccuracy = Math.min(1, Math.max(0, options.coopAccuracy ?? BOT_COOP_ACCURACY));
+    this.coopThinkMs = options.coopThinkMs ?? BOT_COOP_THINK_MS;
+  }
+
+  /**
+   * Companion bots in co-op challenges: the bots of the map fill a lone player's free places (always labelled), and
+   * each plays its part like a player: shares its clues, answers its questions (right most of the time, never all),
+   * pulls its rope and pulls again before letting go.
+   */
+  coopDriver(): CoopBotDriver {
+    return {
+      pick: (mapId, count, exclude) => {
+        const local = mapId ? (BOT_MAP_CONFIGS[mapId] ?? []) : [];
+        const all = Object.values(BOT_MAP_CONFIGS).flat();
+        const seen = new Set<string>();
+        const pool = [...this.shuffled(local), ...this.shuffled(all)].filter((p) => {
+          if (seen.has(p.id) || exclude.has(p.id)) return false;
+          seen.add(p.id);
+          return true;
+        });
+        return pool.slice(0, count).map((p): CoopPerson => ({ id: p.id, displayName: p.displayName, species: p.species, isBot: true }));
+      },
+      play: (botId, state, moves) => {
+        const turn = this.coop.get(botId);
+        if (turn) {
+          turn.state = state;
+          turn.moves = moves;
+          // A far wake-up (waiting to pull again) gives way to news: it thinks again now. A move it is already
+          // thinking over stays, so a busy team never keeps it from answering.
+          if (turn.timer && turn.dueAt - Date.now() > 2 * this.coopThinkMs) {
+            clearTimeout(turn.timer);
+            turn.timer = null;
+          }
+        } else this.coop.set(botId, { state, moves, timer: null, dueAt: 0 });
+        this.coopThink(botId);
+      },
+      forget: (ids) => {
+        for (const id of ids) {
+          const turn = this.coop.get(id);
+          if (turn?.timer) clearTimeout(turn.timer);
+          this.coop.delete(id);
+        }
+      },
+    };
+  }
+
+  private shuffled<T>(list: readonly T[]): T[] {
+    const out = [...list];
+    for (let i = out.length - 1; i > 0; i--) {
+      const j = Math.floor(this.random() * (i + 1));
+      [out[i], out[j]] = [out[j] as T, out[i] as T];
+    }
+    return out;
+  }
+
+  /** Thinks over its next move a moment, unless it already is. */
+  private coopThink(botId: string, ms = this.coopThinkMs * (1 + this.random())): void {
+    const turn = this.coop.get(botId);
+    if (!turn || turn.timer) return;
+    turn.dueAt = Date.now() + ms;
+    turn.timer = setTimeout(() => {
+      turn.timer = null;
+      this.coopMove(botId);
+    }, ms);
+  }
+
+  /** Its answer: the right one most of the time, else another choice. */
+  private coopAnswer(task: CoopTaskView, turn: CoopTurn): CoopAction {
+    const right = turn.moves.answerOf(task.id);
+    const others = task.choices.filter((c) => c.id !== right);
+    const wrong = others[Math.floor(this.random() * others.length)];
+    const choice = right && (this.random() < this.coopAccuracy || !wrong) ? right : (wrong?.id ?? task.choices[0]?.id ?? '');
+    return { kind: 'answer', task: task.id, choice };
+  }
+
+  private coopMove(botId: string): void {
+    const turn = this.coop.get(botId);
+    if (!turn || turn.state.status !== 'playing') return;
+    const { state } = turn;
+    const self = state.self;
+    // Its own clue not shown yet: share it.
+    const clue = state.pieces.find((p) => p.text !== null && !p.shared);
+    if (clue) return turn.moves.act({ kind: 'share', piece: clue.index });
+    if (state.task && state.turn === self && state.pieces.every((p) => p.shared)) return turn.moves.act(this.coopAnswer(state.task, turn));
+    const own = state.tasks.find((t) => t.task !== null)?.task;
+    if (own) return turn.moves.act(this.coopAnswer(own, turn));
+    if (state.mode !== 'together') return;
+    const places = state.seats.filter((s) => s.id === self || s.standIn?.id === self).map((s) => s.id);
+    const holds = state.holds.filter((h) => places.includes(h.seat));
+    if (holds.length === 0) return;
+    if (holds.some((h) => h.msLeft < BOT_REHOLD_MS)) return turn.moves.act({ kind: 'hold' });
+    // Held: it pulls again just before letting go, while the others answer.
+    this.coopThink(botId, Math.min(...holds.map((h) => h.msLeft)) - BOT_REHOLD_MS + 100);
   }
 
   /** A bot of `profile` in `room`, wired to this runner. */
@@ -469,6 +587,8 @@ export class BotRunner {
     }
     for (const reply of this.replies) clearTimeout(reply);
     this.replies.clear();
+    for (const turn of this.coop.values()) if (turn.timer) clearTimeout(turn.timer);
+    this.coop.clear();
   }
 
   private later(ms: number, run: () => void): void {

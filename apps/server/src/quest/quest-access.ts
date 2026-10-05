@@ -66,5 +66,7 @@ export function playableQuest(content: ContentCatalog, questId: string): ActiveQ
   const quest = content.quests.get(questId);
   if (!quest) throw new HttpError(404, 'quest-not-found');
   if (quest.status !== 'active') throw new HttpError(409, 'quest-coming-soon');
+  // A co-op challenge is played by its team over the multiplayer hub, never step by step here (nor paid here).
+  if (quest.category === 'coop') throw new HttpError(404, 'quest-not-found');
   return quest;
 }

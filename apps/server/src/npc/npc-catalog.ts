@@ -4,7 +4,7 @@
 // every lesson of their map (the quest list follows file order: a story never takes the place of the first lesson).
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
-import { STORY_QUEST_PREFIX, type QuestDefinition } from '@miu/schema/content';
+import { COOP_QUEST_PREFIX, STORY_QUEST_PREFIX, type QuestDefinition } from '@miu/schema/content';
 import type { MailTemplate } from '@miu/schema/mail';
 import {
   MIN_ARCS_PER_MAP,
@@ -203,12 +203,15 @@ export function npcCatalogIssues(files: readonly NpcMapFile[], ctx: NpcCheckCont
 }
 
 /**
- * The quest list follows file order: every story chapter of a map sorts after every lesson of that map, so a story
- * never takes the place of the map's first lesson (or any lesson) as the one to play next.
+ * The quest list follows file order: every story chapter and every co-op challenge of a map sorts after every lesson
+ * of that map, so neither ever takes the place of the map's first lesson (or any lesson) as the one to play next.
  */
 export function storyOrderIssues(quests: readonly QuestDefinition[]): string[] {
   const issues: string[] = [];
-  const isStory = (q: QuestDefinition): boolean => q.status !== 'stub' && q.category === 'story';
+  const kinds: Array<{ category: 'story' | 'coop'; prefix: string; name: string }> = [
+    { category: 'story', prefix: STORY_QUEST_PREFIX, name: 'story chapter' },
+    { category: 'coop', prefix: COOP_QUEST_PREFIX, name: 'co-op challenge' },
+  ];
   const isLesson = (q: QuestDefinition): boolean => q.status === 'stub' || (q.category ?? 'main') === 'main';
   const lastLesson = new Map<string, string>();
   for (const quest of quests) {
@@ -216,10 +219,12 @@ export function storyOrderIssues(quests: readonly QuestDefinition[]): string[] {
     const last = lastLesson.get(quest.region);
     if (last === undefined || `${quest.id}.json` > `${last}.json`) lastLesson.set(quest.region, quest.id);
   }
-  for (const quest of quests.filter(isStory)) {
-    if (!quest.id.startsWith(STORY_QUEST_PREFIX)) continue; // the schema reports the prefix
-    const last = lastLesson.get(quest.region);
-    if (last !== undefined && `${quest.id}.json` < `${last}.json`) issues.push(`story chapter ${quest.id} sorts before the lesson ${last} of ${quest.region}: the quest list would offer it first`);
+  for (const { category, prefix, name } of kinds) {
+    for (const quest of quests) {
+      if (quest.status === 'stub' || quest.category !== category || !quest.id.startsWith(prefix)) continue; // the schema reports the prefix
+      const last = lastLesson.get(quest.region);
+      if (last !== undefined && `${quest.id}.json` < `${last}.json`) issues.push(`${name} ${quest.id} sorts before the lesson ${last} of ${quest.region}: the quest list would offer it first`);
+    }
   }
   return issues;
 }

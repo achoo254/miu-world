@@ -24,7 +24,7 @@ const context: AchievementContext = {
   ]),
   giftItems: new Set(['glasses-ky-nang']),
   icons: new Set(['books', 'trophy']),
-  reach: { lessons: new Map([['khu-rung-bi-mat', 3]]), minigames: new Map([['khu-rung-bi-mat', 2]]), bosses: 1, collectibles: 10, collectionSets: 1, gates: 2, skillLevels: 10, playerLevels: 15 },
+  reach: { lessons: new Map([['khu-rung-bi-mat', 3]]), minigames: new Map([['khu-rung-bi-mat', 2]]), bosses: 1, coop: 2, collectibles: 10, collectionSets: 1, gates: 2, skillLevels: 10, playerLevels: 15 },
 };
 
 describe('achievement catalogue', () => {

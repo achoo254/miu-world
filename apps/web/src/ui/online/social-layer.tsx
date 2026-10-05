@@ -49,6 +49,8 @@ const NOTICE_KEY: Record<MpNotice, TextKey> = {
   'friend-pending': 'online.notice.friend-pending',
   'friends-full': 'online.notice.friends-full',
   'friend-limit': 'online.notice.friend-limit',
+  'coop-busy': 'online.notice.coop-busy',
+  'coop-unknown': 'online.notice.coop-unknown',
 };
 
 /** What a toast says, in both languages. */

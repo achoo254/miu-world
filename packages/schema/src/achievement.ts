@@ -23,7 +23,8 @@ export type AchievementCategory = z.infer<typeof AchievementCategory>;
  * `collectibles`: different collectibles owned; `collection-sets`: full sets claimed; `region-chests`: region
  * chests opened; `region-tiers`: region rewards of any tier claimed; `wearables-owned`: wearables bought or
  * received; `shop-purchases`; `olympiad-runs`; `olympiad-awards`: olympiad runs with an award; `mail-gifts`:
- * mail gifts claimed; `gates-opened`: knowledge gates opened; `skill-gifts`: skill level gifts received.
+ * mail gifts claimed; `gates-opened`: knowledge gates opened; `skill-gifts`: skill level gifts received;
+ * `coop-runs`: co-op challenge runs paid (replays included); `coop-challenges`: different co-op challenges won.
  */
 export const AchievementMetric = z.discriminatedUnion('kind', [
   z.strictObject({ kind: z.literal('lessons'), region: ContentId.optional() }),
@@ -50,6 +51,8 @@ export const AchievementMetric = z.discriminatedUnion('kind', [
   z.strictObject({ kind: z.literal('mail-gifts') }),
   z.strictObject({ kind: z.literal('gates-opened') }),
   z.strictObject({ kind: z.literal('skill-gifts') }),
+  z.strictObject({ kind: z.literal('coop-runs') }),
+  z.strictObject({ kind: z.literal('coop-challenges') }),
 ]);
 export type AchievementMetric = z.infer<typeof AchievementMetric>;
 export type AchievementMetricKind = AchievementMetric['kind'];
@@ -109,6 +112,8 @@ export interface AchievementContext {
     /** Minigame side quests by region. */
     minigames: ReadonlyMap<string, number>;
     bosses: number;
+    /** Co-op challenges. */
+    coop: number;
     collectibles: number;
     collectionSets: number;
     gates: number;
@@ -150,6 +155,8 @@ function maxGoal(metric: AchievementMetric, context: AchievementContext): number
       return reach.collectionSets;
     case 'gates-opened':
       return reach.gates;
+    case 'coop-challenges':
+      return reach.coop;
     default:
       return null;
   }

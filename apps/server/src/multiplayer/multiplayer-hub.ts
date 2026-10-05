@@ -31,6 +31,7 @@ import type { CharacterDto } from '@miu/schema/game';
 import type { Authenticate, MultiplayerStore } from './multiplayer-store';
 import { PartyService, type PartyError } from './party-service';
 import { FriendRequestLimiter } from '../friend/friend-limiter';
+import type { CoopHost, CoopService } from '../coop/coop-service';
 import type { FriendStore, RequestOutcome } from '../friend/friend-store';
 
 export interface RoomMember {
@@ -227,6 +228,8 @@ export class MultiplayerHub {
   private readonly friends: FriendStore | null;
   private readonly friendLimiter: FriendRequestLimiter;
   private homeHooks: HomeRoomHooks | null = null;
+  /** Co-op challenges of parties and lone players (set once the server runs them). */
+  private coop: CoopService | null = null;
   private readonly store: MultiplayerStore | null;
   private readonly authenticate: Authenticate | null;
   private readonly allowedOrigins: ReadonlySet<string>;
@@ -266,6 +269,31 @@ export class MultiplayerHub {
   /** The bot runner fills each home with its bots while players are in it. */
   setHomeRoomHooks(hooks: HomeRoomHooks): void {
     this.homeHooks = hooks;
+  }
+
+  /** Co-op challenges run over this hub: their lobby and play messages go there, and it hears of parties and drops. */
+  setCoop(coop: CoopService): void {
+    this.coop = coop;
+  }
+
+  /** What the co-op service reads of the hub: delivering, parties, who someone is, switches, where she stands. */
+  coopHost(): CoopHost {
+    return {
+      send: (id, message) => this.deliver(id, message),
+      notice: (id, code) => this.notice(id, code),
+      party: (id) => {
+        const party = this.parties.partyOf(id);
+        return party ? { id: party.id, leader: party.leader, members: [...party.members] } : null;
+      },
+      person: (id) => {
+        const look = this.lookOf(id);
+        return look ? { id, displayName: look.displayName, species: look.species, isBot: this.isBot(id) } : null;
+      },
+      childIdOf: (id) => this.childIds.get(id) ?? null,
+      botsOn: (id) => this.players.get(id)?.bots ?? false,
+      online: (id) => this.players.has(id),
+      mapOf: (id) => this.locate(id)?.room.mapId ?? null,
+    };
   }
 
   /** The companion bots a player is friends with (none while she has bots switched off). */
@@ -434,6 +462,7 @@ export class MultiplayerHub {
 
   close(): Promise<void> {
     clearInterval(this.recheck);
+    this.coop?.close();
     for (const timer of this.partyTimers.values()) clearTimeout(timer);
     this.partyTimers.clear();
     return new Promise((resolve) => {
@@ -570,6 +599,7 @@ export class MultiplayerHub {
       case 'party-reply':
         return this.answerPartyInvite(self, message.from, message.accept);
       case 'party-leave': {
+        this.coop?.leftParty(self);
         const left = this.parties.leave(self);
         this.pushParty(left);
         return this.recheckHomes([self, ...left]);
@@ -578,6 +608,7 @@ export class MultiplayerHub {
       case 'party-promote': {
         const result = message.type === 'party-kick' ? this.parties.kick(self, message.id) : this.parties.promote(self, message.id);
         if (!result.ok) return this.notice(self, PARTY_NOTICE[result.error], message.id);
+        if (message.type === 'party-kick') this.coop?.leftParty(message.id);
         this.pushParty(result.value);
         if (message.type === 'party-kick') this.recheckHomes([self, message.id, ...result.value]);
         return;
@@ -601,6 +632,14 @@ export class MultiplayerHub {
       }
       case 'leave':
         this.leaveRoom(player);
+        return;
+      case 'coop-open':
+      case 'coop-ready':
+      case 'coop-start':
+      case 'coop-leave':
+      case 'coop-act':
+      case 'coop-help':
+        this.coop?.message(self, message);
         return;
     }
   }
@@ -685,6 +724,8 @@ export class MultiplayerHub {
     const party = this.parties.partyOf(player.publicId);
     if (party) this.pushParty(party.members);
     else player.transport.send({ type: 'party-state', party: null });
+    // Back in a room: her co-op challenge (or her team's lobby) carries on where it was.
+    this.coop?.back(player.publicId);
   }
 
   private leaveRoom(player: OnlinePlayer): void {
@@ -705,6 +746,7 @@ export class MultiplayerHub {
     this.leaveRoom(player);
     this.players.delete(player.publicId);
     const id = player.publicId;
+    this.coop?.dropped(id);
     const party = this.parties.partyOf(id);
     if (!party) {
       this.forget(id);
@@ -927,7 +969,10 @@ export class MultiplayerHub {
       if (viewer?.room?.members.has(b)) viewer.transport.send({ type: 'despawn', id: b });
     }
     this.parties.dropInvites(self, id);
-    if (this.parties.partyOf(self)?.members.includes(id)) this.pushParty(this.parties.leave(self));
+    if (this.parties.partyOf(self)?.members.includes(id)) {
+      this.coop?.leftParty(self);
+      this.pushParty(this.parties.leave(self));
+    }
     this.notice(self, 'blocked', id);
     this.recheckHomes([self, id]);
   }
@@ -1001,5 +1046,6 @@ export class MultiplayerHub {
       }
       this.deliver(id, { type: 'party-state', party: view });
     }
+    this.coop?.partyChanged(ids);
   }
 }

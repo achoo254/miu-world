@@ -324,6 +324,83 @@ export const StepFeedback = z.strictObject({
 });
 export type StepFeedback = z.infer<typeof StepFeedback>;
 
+/**
+ * Co-op challenges (Master Plan §8: two to four players solve one puzzle or beat one boss together). A co-op step is
+ * played by a team through the server, never through the step route: every right answer moves the team on, a wrong
+ * one only hears a line (nothing is ever lost by one player), and each player is paid the quest's reward by the
+ * server. Three kinds of play, all data:
+ * - `pieces` ("mỗi người một mảnh"): each round deals its clues among the players; only together do they know the
+ *   answer, which the players give in turn.
+ * - `together` ("cùng giữ nhịp"): each round deals its questions among the players; a player who answered hers
+ *   holds her rope, and the round is won while every player holds at once.
+ * - `team-boss` ("trùm đội"): a boss with one shared HP; the players answer its blows in turn.
+ */
+export const COOP_MODES = ['pieces', 'together', 'team-boss'] as const;
+export const CoopMode = z.enum(COOP_MODES);
+export type CoopMode = z.infer<typeof CoopMode>;
+/** A co-op team has two to four places; a lone player's free places go to companion bots (her bot switch on). */
+export const COOP_MIN_SEATS = 2;
+export const COOP_MAX_SEATS = 4;
+
+/** One question of a co-op challenge, answered by one player; its hint and explained answer are the support layers. */
+export const CoopTask = z.strictObject({
+  id: ContentId,
+  prompt: Text,
+  skill: ContentId,
+  choices: z.array(Choice).min(2),
+  answer: ChoiceAnswer,
+  /** "Gợi ý" for this question. */
+  hint: Text,
+  /** "Đáp án" with its explanation (the answer itself is the right choice's text). */
+  explain: Text,
+  /** A boss blow takes this much HP when answered right. */
+  damage: z.number().int().positive().optional(),
+  en: z.strictObject({ prompt: Text, choices: z.array(Text).min(2), hint: Text, explain: Text }).optional(),
+});
+export type CoopTask = z.infer<typeof CoopTask>;
+
+const CoopPiecesRound = z.strictObject({
+  id: ContentId,
+  /** The clues, dealt among the players (two to four). */
+  pieces: z.array(Text).min(2).max(COOP_MAX_SEATS),
+  task: CoopTask,
+  en: z.strictObject({ pieces: z.array(Text).min(2) }).optional(),
+});
+const CoopTogetherRound = z.strictObject({
+  id: ContentId,
+  /** What the team pulls or holds this round ("Kéo nhịp cầu thứ nhất"). */
+  title: Text,
+  tasks: z.array(CoopTask).min(1).max(COOP_MAX_SEATS),
+  en: z.strictObject({ title: Text }).optional(),
+});
+export type CoopPiecesRound = z.infer<typeof CoopPiecesRound>;
+export type CoopTogetherRound = z.infer<typeof CoopTogetherRound>;
+const CoopBoss = z.strictObject({
+  name: Text,
+  maxHp: z.number().int().positive(),
+  intro: Text,
+  win: Text,
+  en: z.strictObject({ name: Text, intro: Text, win: Text }).optional(),
+});
+
+const coopBase = {
+  ...stepBase,
+  kind: z.literal('coop'),
+  /** How the team plays, said in the lobby and over the challenge. */
+  prompt: Text,
+  /** "Hướng dẫn": how to play together, step by step. */
+  guide: z.array(Text).min(1),
+  /** Places of the team: a lone player's free ones go to companion bots. */
+  seats: z.number().int().min(COOP_MIN_SEATS).max(COOP_MAX_SEATS).default(3),
+  feedback: StepFeedback,
+  en: z.strictObject({ ...enBase, prompt: Text, guide: z.array(Text).min(1) }).optional(),
+};
+const coopPiecesShape = { ...coopBase, mode: z.literal('pieces'), rounds: z.array(CoopPiecesRound).min(1) };
+const coopTogetherShape = { ...coopBase, mode: z.literal('together'), rounds: z.array(CoopTogetherRound).min(1) };
+const coopBossShape = { ...coopBase, mode: z.literal('team-boss'), boss: CoopBoss, turns: z.array(CoopTask).min(2) };
+/** A co-op step as the client sees it: how it is played, never its questions (the server deals them). */
+const coopPublicShape = { ...stepBase, kind: z.literal('coop'), mode: CoopMode, prompt: Text, guide: z.array(Text).min(1), seats: coopBase.seats, en: coopBase.en };
+
 const secret = <A extends z.ZodType>(answer: A) => ({ answer, support: LearningSupport, feedback: StepFeedback.optional() });
 
 /** Step as the client sees it: parsing drops the answer and the support layers. */
@@ -352,6 +429,7 @@ export const QuestStepPublic = z.discriminatedUnion('kind', [
   z.object(speakShape),
   z.object(worksheetShape),
   z.object(bossShape),
+  z.object(coopPublicShape),
 ]);
 export type QuestStepPublic = z.infer<typeof QuestStepPublic>;
 
@@ -397,8 +475,41 @@ export const QuestStep = z.discriminatedUnion('kind', [
     ...curriculumRef,
     turns: z.array(BossTurnWithSecret).min(2),
   }),
+  z.discriminatedUnion('mode', [z.strictObject(coopPiecesShape), z.strictObject(coopTogetherShape), z.strictObject(coopBossShape)]),
 ]);
 export type QuestStep = z.infer<typeof QuestStep>;
+export type CoopStep = Extract<QuestStep, { kind: 'coop' }>;
+
+/** Every question of a co-op step, in play order. */
+export function coopTasks(step: CoopStep): CoopTask[] {
+  if (step.mode === 'team-boss') return step.turns;
+  if (step.mode === 'pieces') return step.rounds.map((r) => r.task);
+  return step.rounds.flatMap((r) => r.tasks);
+}
+
+/** HP a boss blow takes when the step does not say. */
+export const COOP_DEFAULT_DAMAGE = 100;
+
+function coopIssues(step: CoopStep): string[] {
+  const issues: string[] = [];
+  const tasks = coopTasks(step);
+  if (step.mode !== 'team-boss' && !uniqueIds(step.rounds.map((r) => r.id))) issues.push('duplicate round id');
+  if (!uniqueIds(tasks.map((t) => t.id))) issues.push('duplicate question id');
+  for (const task of tasks) {
+    if (!uniqueIds(task.choices.map((c) => c.id))) issues.push(`question ${task.id}: duplicate choice id`);
+    if (!task.choices.some((c) => c.id === task.answer.choice)) issues.push(`question ${task.id}: answer is not one of the choices`);
+    if (task.en && task.en.choices.length !== task.choices.length) issues.push(`question ${task.id}: en has ${task.en.choices.length} choices, the question ${task.choices.length}`);
+    if (step.mode !== 'team-boss' && task.damage !== undefined) issues.push(`question ${task.id}: only a boss blow has damage`);
+  }
+  if (step.mode === 'pieces') {
+    for (const round of step.rounds) if (round.en && round.en.pieces.length !== round.pieces.length) issues.push(`round ${round.id}: en has ${round.en.pieces.length} pieces, the round ${round.pieces.length}`);
+  }
+  if (step.mode === 'team-boss') {
+    const total = step.turns.reduce((sum, t) => sum + (t.damage ?? COOP_DEFAULT_DAMAGE), 0);
+    if (total < step.boss.maxHp) issues.push(`the blows take ${total} HP in all, less than the boss's ${step.boss.maxHp}`);
+  }
+  return issues;
+}
 /** Steps the child answers; each carries an answer and the three support layers. */
 export type AnswerableStep = Extract<QuestStep, { support: LearningSupport }>;
 export type ChallengeStep = Extract<QuestStep, { kind: 'challenge' }>;
@@ -560,6 +671,7 @@ function stepIssues(step: QuestStep, texts: Readonly<Record<string, unknown>>, a
     }
   }
   if (step.kind === 'challenge') issues.push(...challengeIssues(step));
+  if (step.kind === 'coop') issues.push(...coopIssues(step));
   return issues;
 }
 
@@ -591,8 +703,16 @@ export const SIDE_QUEST_PREFIX = 'side-';
  * story never takes the place of a map's first lesson. `pnpm content:check` enforces the order.
  */
 export const STORY_QUEST_PREFIX = 'yarn-';
-/** What a quest is: a lesson (`main`), a minigame played for fun (`side`), or a chapter of a character's story. */
-export const QUEST_CATEGORIES = ['main', 'side', 'story'] as const;
+/**
+ * Ids of co-op challenges (`content/quests/with-*.json`: played with others) start with this, so, like story
+ * chapters, they sort after every lesson of their map (`pnpm content:check` enforces the order).
+ */
+export const COOP_QUEST_PREFIX = 'with-';
+/**
+ * What a quest is: a lesson (`main`), a minigame played for fun (`side`), a chapter of a character's story, or a
+ * co-op challenge played by a team (`coop`).
+ */
+export const QUEST_CATEGORIES = ['main', 'side', 'story', 'coop'] as const;
 export type QuestCategoryId = (typeof QUEST_CATEGORIES)[number];
 
 const questFields = {
@@ -718,6 +838,25 @@ function storyQuestIssues(q: { id: string; lesson?: string | undefined; steps: Q
   return issues;
 }
 
+/**
+ * A co-op challenge opens at its host (a dialogue there: the child talks to it to open the team's lobby), plays one
+ * co-op step, then runs its closing beats by itself. It ships in both languages.
+ */
+function coopQuestIssues(q: { id: string; lesson?: string | undefined; steps: QuestStep[] }): string[] {
+  const issues: string[] = [];
+  if (!q.id.startsWith(COOP_QUEST_PREFIX)) issues.push(`a co-op challenge id starts with "${COOP_QUEST_PREFIX}"`);
+  if (isTextbookQuest(q.id) || q.lesson) issues.push('a co-op challenge plays no textbook lesson');
+  const [first] = q.steps;
+  if (first?.kind !== 'dialogue' || first.trigger !== 'interact' || !first.target) issues.push('a co-op challenge starts with a dialogue at its host, who opens the lobby');
+  if (q.steps.filter((s) => s.kind === 'coop').length !== 1) issues.push('a co-op challenge holds exactly one co-op step');
+  for (const step of q.steps.slice(1)) {
+    const allowed = step.kind === 'dialogue' || step.kind === 'coop' || step.kind === 'reward' || step.kind === 'next';
+    if (!allowed) issues.push(`step ${step.id}: a co-op challenge has only dialogue, its co-op step, reward and next steps`);
+    else if (step.trigger !== 'auto') issues.push(`step ${step.id}: after the host's dialogue, co-op challenge steps run by themselves (trigger "auto")`);
+  }
+  return issues;
+}
+
 /** Whether the English list has as many lines as the Vietnamese one (both absent counts as matching). */
 const sameLength = (en: readonly unknown[] | undefined, vi: readonly unknown[] | undefined): boolean => (en?.length ?? -1) === (vi?.length ?? -1);
 
@@ -778,6 +917,15 @@ export function englishIssues(q: { steps: QuestStep[]; en?: QuestEn | undefined 
         }
         break;
       }
+      case 'coop': {
+        const twin = step.en;
+        if (twin && twin.guide.length !== step.guide.length) issues.push(`${at}: en has ${twin.guide.length} guide lines, the step ${step.guide.length}`);
+        if (!complete) break;
+        for (const task of coopTasks(step)) if (!task.en) issues.push(`${at}: question ${task.id} needs its English twin ("en")`);
+        if (step.mode === 'team-boss' && !step.boss.en) issues.push(`${at}: the boss needs its English twin ("boss.en")`);
+        if (step.mode !== 'team-boss') for (const round of step.rounds) if (!round.en) issues.push(`${at}: round ${round.id} needs its English twin ("en")`);
+        break;
+      }
       default:
         break;
     }
@@ -819,6 +967,10 @@ function questIssues(q: {
     issues.push(...sideQuestIssues(q));
   } else if (q.id.startsWith(SIDE_QUEST_PREFIX)) {
     issues.push(`a quest whose id starts with "${SIDE_QUEST_PREFIX}" is a side quest ("category": "side")`);
+  } else if (q.category === 'coop') {
+    issues.push(...coopQuestIssues(q));
+  } else if (q.id.startsWith(COOP_QUEST_PREFIX)) {
+    issues.push(`a quest whose id starts with "${COOP_QUEST_PREFIX}" is a co-op challenge ("category": "coop")`);
   } else if (q.id.startsWith(STORY_QUEST_PREFIX) && q.category !== 'story') {
     issues.push(`a quest whose id starts with "${STORY_QUEST_PREFIX}" is a story chapter ("category": "story")`);
   } else if (q.category === 'story') {

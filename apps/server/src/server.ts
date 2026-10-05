@@ -12,6 +12,8 @@ import { dbFriendStore, type OnlineLookup } from './friend/friend-store';
 import { BotRunner } from './multiplayer/bot-runner';
 import { MultiplayerHub } from './multiplayer/multiplayer-hub';
 import { dbMultiplayerStore, sessionAuthenticator } from './multiplayer/multiplayer-store';
+import { CoopService } from './coop/coop-service';
+import { dbCoopRewards } from './reward/coop-reward';
 
 const config = loadConfig();
 const pgliteDir = config.pgliteDir === null ? undefined : (config.pgliteDir ?? DEV_PGLITE_DIR);
@@ -56,4 +58,15 @@ characterEvents.on((childId, character) => multiplayer.characterSaved(childId, c
 playerEvents.on((event) => multiplayer.playerEvent(event));
 const botRunner = new BotRunner(multiplayer);
 botRunner.start();
+// Co-op challenges: parties (or a player with companion bots) play them over the hub; the server pays each player.
+const coop = new CoopService({
+  host: multiplayer.coopHost(),
+  quest: (id) => {
+    const quest = content.quests.get(id);
+    return quest?.status === 'active' && quest.category === 'coop' ? quest : null;
+  },
+  rewards: dbCoopRewards(db, content),
+  bots: botRunner.coopDriver(),
+});
+multiplayer.setCoop(coop);
 console.log('multiplayer hub and companion bot runner active');

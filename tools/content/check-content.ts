@@ -470,6 +470,7 @@ export function checkProgression(
       lessons,
       minigames,
       bosses: active.filter((q) => q.steps.some((step) => step.kind === 'boss')).length,
+      coop: active.filter((q) => q.category === 'coop').length,
       collectibles: [...catalog.collectibles.values()].reduce((sum, set) => sum + set.items.length, 0),
       collectionSets: catalog.collectibles.size,
       gates: Object.entries(targets).filter(([id, t]) => t.skillCheck !== undefined && reached.has(id)).length,

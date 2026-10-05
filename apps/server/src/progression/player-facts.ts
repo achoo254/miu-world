@@ -51,12 +51,12 @@ export async function loadPlayerRecord(db: Db | Tx, childId: string): Promise<Pl
   };
 }
 
-/** The active lessons and minigame side quests of each region, in catalogue order (story chapters are neither). */
+/** The active lessons and minigame side quests of each region, in catalogue order (story chapters and co-op challenges are neither). */
 export function regionQuests(content: ContentCatalog): { lessons: Map<string, string[]>; minigames: Map<string, string[]> } {
   const lessons = new Map<string, string[]>();
   const minigames = new Map<string, string[]>();
   for (const quest of content.quests.values()) {
-    if (quest.status !== 'active' || quest.category === 'story') continue;
+    if (quest.status !== 'active' || quest.category === 'story' || quest.category === 'coop') continue;
     const into = quest.category === 'side' ? minigames : lessons;
     into.set(quest.region, [...(into.get(quest.region) ?? []), quest.id]);
   }
@@ -90,6 +90,8 @@ export interface PlayerFacts {
   mailGifts: number;
   gatesOpened: number;
   skillGifts: number;
+  coopRuns: number;
+  coopChallenges: number;
 }
 
 const count = <T>(list: readonly T[], keep: (item: T) => boolean): number => list.filter(keep).length;
@@ -150,6 +152,8 @@ export function playerFacts(content: ContentCatalog, record: PlayerRecord): Play
     mailGifts: count(sources, (source) => source.startsWith('mail:claim:')),
     gatesOpened: new Set(sources.flatMap((source) => gateOfSource(source) ?? [])).size,
     skillGifts: count(sources, (source) => skillGiftOfSource(source) !== null),
+    coopRuns: count(runs, (id) => categoryOf(id) === 'coop'),
+    coopChallenges: new Set(runs.filter((id) => categoryOf(id) === 'coop')).size,
   };
 }
 
@@ -204,5 +208,9 @@ export function metricValue(metric: AchievementMetric, facts: PlayerFacts): numb
       return facts.gatesOpened;
     case 'skill-gifts':
       return facts.skillGifts;
+    case 'coop-runs':
+      return facts.coopRuns;
+    case 'coop-challenges':
+      return facts.coopChallenges;
   }
 }
