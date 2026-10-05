@@ -1,6 +1,6 @@
 # Trùm vui, Skill Check và các cơ chế chơi còn thiếu
 
-**Trạng thái:** đã duyệt (04/10/2026), chưa thi công · **Tier:** L · **Nhánh:** `main` · **Ngày:** 04/10/2026
+**Trạng thái:** pha 1–3 xong; pha 4 xong ở server (còn nối giao diện cổng); pha 5 đang làm (trùm ở 3 quest: Đảo bí ẩn, Nhà của bé, Thần Rừng bản nháp); pha 6 chưa làm (rà lại 05/10/2026) · **Tier:** L · **Nhánh:** `main` · **Ngày:** 04/10/2026
 **Nguồn:** Master Plan §5 (bảng "Cơ chế tương tác": Lựa chọn hành động, Skill Check, Boss), §6 (V1: Lựa chọn hành động M2.7/M3.8, Skill Check M3.9, Boss M3.10, English Challenge, Logic puzzle, Tìm đồ vật).
 
 ## Kết quả mong muốn

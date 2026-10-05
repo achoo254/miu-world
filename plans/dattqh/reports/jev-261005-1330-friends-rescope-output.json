@@ -1,0 +1,50 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1025,
+    "output_tokens": 154
+  },
+  "results": {
+    "friend_approval": {
+      "stakes": "medium",
+      "choice": "players_accept",
+      "confidence": 0.86,
+      "probabilities": {
+        "both_parents_approve": 0.0,
+        "extra_players_need_owner": 0.09,
+        "players_accept": 0.91
+      },
+      "decision": "auto"
+    },
+    "online_switch": {
+      "stakes": "low",
+      "choice": "player_setting",
+      "confidence": 0.64,
+      "probabilities": {
+        "account_area_only": 0.18,
+        "player_setting": 0.82
+      },
+      "decision": "auto"
+    },
+    "progress_view": {
+      "stakes": "low",
+      "choice": "player_and_owner",
+      "confidence": 0.43,
+      "probabilities": {
+        "owner_only": 0.28,
+        "player_and_owner": 0.72
+      },
+      "decision": "escalate"
+    },
+    "friends_default": {
+      "stakes": "high",
+      "choice": "on_by_code",
+      "confidence": 0.27,
+      "probabilities": {
+        "off_until_moderation": 0.37,
+        "on_by_code": 0.63
+      },
+      "decision": "escalate"
+    }
+  }
+}

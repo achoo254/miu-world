@@ -1,6 +1,6 @@
 # Thêm map, chia lại 71 bài SGK cho khỏi dồn vào 2 map
 
-**Trạng thái:** xong phần tự động (02/10/2026): 9 phase và 7b–7e; gate 5 lệnh, web build, `e2e:ci` xanh; chờ người sở hữu duyệt ảnh và bản production · **Tier:** XL · **Nhánh:** `main` · Quyết định: người sở hữu (01/10/2026, ba câu ở mục Quyết định)
+**Trạng thái:** xong phần tự động (02/10/2026): 9 phase và 7b–7e; gate 5 lệnh, web build, `e2e:ci` xanh; đã lên production (05/10/2026, bản `6b0bde86`); duyệt ảnh của người sở hữu chưa ghi nhận · **Tier:** XL · **Nhánh:** `main` · Quyết định: người sở hữu (01/10/2026, ba câu ở mục Quyết định)
 
 ## Kết quả mong muốn
 

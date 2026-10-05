@@ -1,6 +1,6 @@
 # Map theo mock chi tiết từng khu
 
-Trạng thái: pha 1–5 xong, pha 6 phần lớn xong (02/10/2026, commit `a3a9e9f`, đủ gate) · Tier tổng: XL · Nhánh: `main`
+Trạng thái: pha 1–5 xong, pha 6 phần lớn xong (02/10/2026, commit `a3a9e9f`, đủ gate); còn chụp lại ảnh duyệt 8 map sau các lần sửa nước, sàn, cầu (rà lại 05/10/2026) · Tier tổng: XL · Nhánh: `main`
 
 Người sở hữu (02/10/2026) gửi chín tấm mock chi tiết; quyết định: `plans/dattqh/reports/jev-261002-0802-detail-mocks.md`. Khung đã cắt ở `designs/<map>/{c,d}-*.png`.
 

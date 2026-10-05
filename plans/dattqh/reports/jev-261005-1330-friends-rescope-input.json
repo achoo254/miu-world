@@ -1,0 +1,50 @@
+{
+  "state": {
+    "project": "Miu World: a 3D voxel learn-while-playing online game for all ages (children and adults), web now and a mobile app later. Built 100% by AI. Today only the owner and one child play; no outside players yet.",
+    "today": "2026-10-05",
+    "owner_requirement": "Game for every age, online like Minecraft; it does not require parental supervision; parents who let a child play are responsible. Never gate a new feature behind parent approval; parent controls are optional conveniences.",
+    "account_model": "One Google account = one primary player (the person who signs in); up to two extra players on a shared device (e.g. the owner's child). The account area has an optional PIN. No free-text names (chosen from a list), no free chat.",
+    "old_plan": "Parent area & friends plan (approved 2026-10-04, before the new direction): parent sees learning progress; parent switches online and companion bots per child profile; friends by a 6-character code where BOTH parents must approve; parent sees block/report log; consent update.",
+    "facts": [
+      "Moderation and abuse reporting are parked until people outside the family play.",
+      "Friend codes are shared privately (no public player search); a code exchange already requires knowing each other.",
+      "Companion bots are currently switched on/off in a local browser setting; online rooms exist on the hub.",
+      "The skill progress data (skills, levels, quests done) already exists on the server per player."
+    ]
+  },
+  "questions": {
+    "friend_approval": {
+      "stakes": "medium",
+      "instructions": "How should two players become friends under the new all-ages model?",
+      "criteria": {
+        "players_accept": "Each player accepts the other's code request themselves; no parent approval. The account owner can see and remove friends of the extra players on the account.",
+        "extra_players_need_owner": "Primary players accept themselves; a request involving an extra player also needs that account owner's approval.",
+        "both_parents_approve": "Keep the old rule: both account owners approve every friendship."
+      }
+    },
+    "online_switch": {
+      "stakes": "low",
+      "instructions": "Who controls going online and the companion bots?",
+      "criteria": {
+        "player_setting": "Each player's own setting in Settings (stored on the server per player); the account owner may switch them for extra players from the account area.",
+        "account_area_only": "Only the account owner switches them, from the account area."
+      }
+    },
+    "progress_view": {
+      "stakes": "low",
+      "instructions": "Where is the learning progress (skills strong/weak, suggested next quests, weekly play time) shown?",
+      "criteria": {
+        "player_and_owner": "Each player sees their own progress in their Profile; the account owner also sees every player of the account in the account area.",
+        "owner_only": "Only in the account area."
+      }
+    },
+    "friends_default": {
+      "stakes": "high",
+      "instructions": "Before moderation exists, should friends by code be available by default?",
+      "criteria": {
+        "on_by_code": "On by default: friends only through privately shared codes, no public search, no chat; revisit moderation before any public discovery.",
+        "off_until_moderation": "Off by default in production until moderation is built."
+      }
+    }
+  }
+}

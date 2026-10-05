@@ -1,6 +1,6 @@
 # Mở rộng Đời sống: Đồ sưu tầm 12 Map, Sổ sưu tập, Chăm sóc Thú cưng & Bếp nấu ăn
 
-Trạng thái: Đang thi công · Nhánh: `main` · Ngày: 04/10/2026
+Trạng thái: xong (sổ sưu tập, chăm thú cưng, nấu ăn; 04/10/2026), đã lên production 05/10/2026 · Nhánh: `main` · Ngày: 04/10/2026
 Tham chiếu: Master Plan v3 §5 (phần thưởng, kinh tế, tương tác) và plan `261003-1602-coins-items-skills-uses/plan.md` (Pha 2, 3, 4).
 
 ## Mục tiêu

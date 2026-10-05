@@ -1,6 +1,6 @@
 # Màn hình hệ thống V1: Hộp thư, Skill Up, Cài đặt hoàn chỉnh, chuỗi ngày
 
-**Trạng thái:** đã duyệt (04/10/2026), chưa thi công · **Tier:** M · **Nhánh:** `main` · **Ngày:** 04/10/2026
+**Trạng thái:** pha 1–3 xong (Cài đặt, Hộp thư, Kỹ năng lên cấp; 04/10/2026), pha 4 Chuỗi ngày bỏ theo Jev, pha 5 có report `reports/system-screens-v1-261004.md`, còn cập nhật `docs/`; đã lên production 05/10/2026 · **Tier:** M · **Nhánh:** `main` · **Ngày:** 04/10/2026
 **Nguồn:** Master Plan §1 (tiền tệ hiển thị gồm "chuỗi ngày (streak)"), §6 (NEW SCREEN: Level Up/Skill Up; Pause, Cài đặt, **Hộp thư**), §5 ("Skill XP: 'Kỹ năng đọc +1'").
 
 ## Kết quả mong muốn

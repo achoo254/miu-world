@@ -1,6 +1,6 @@
 # Song ngữ, NPC có chuyện riêng, bạn máy (bot)
 
-Trạng thái: đã duyệt hướng (Jev cho bot), thi công theo pha · Tier tổng: XL × 3 · Ngày: 03/10/2026
+Trạng thái: S1 (song ngữ giao diện), S3 (đọc to), B1 (bạn máy) xong; S2, N1–N3 (chuyện riêng NPC), B0, B2, B3 chưa làm (rà lại 05/10/2026) · Tier tổng: XL × 3 · Ngày: 03/10/2026
 Thiết kế chi tiết: Master Plan §8b (cư dân và bot), §8c (song ngữ).
 
 Người sở hữu (03/10/2026): "thêm song ngữ hiển thị tiếng anh và tiếng việt. bao gồm cài đặt và audio, speak. các nội dung nói chuyện của npc … ít … cá nhân hóa theo tính cách npc, npc có câu chuyện riêng trong mỗi map … liên kết với nhau, biết nhau ở map khác. … khoảng 100 npc … bot auto … lập tổ đội, chat … chơi giống 90% người thật."

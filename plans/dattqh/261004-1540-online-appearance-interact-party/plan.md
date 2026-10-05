@@ -1,5 +1,7 @@
 # Online: thấy phụ kiện, tương tác và tổ đội
 
+**Trạng thái:** chưa thi công (rà lại 05/10/2026: hub WebSocket và bạn máy đã có từ plan `261003-2330`; P1 diện mạo, P2 tương tác, P3 tổ đội chưa có code)
+
 Người sở hữu (04/10/2026): "các nhân vật online thấy nhau ko nhìn được phụ kiện của người khác được và chưa tương tác với nhau được, chưa lập tổ đội được. tính năng tổ đội cũng chưa có."
 
 Tầng: **L** (server + schema + client + UI, đổi giao thức WebSocket). Nối tiếp B2 của `261003-2330-bilingual-npc-stories-bots` (tổ đội 2–4, báo cáo/chặn, công tắc tắt khẩn cấp) và Master Plan v3 §8.

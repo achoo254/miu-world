@@ -1,6 +1,6 @@
 # Xu, đồ thưởng và điểm kỹ năng có chỗ dùng
 
-Trạng thái: đã duyệt (người sở hữu "ok", 03/10/2026), bắt đầu sau khung minigame · Tier tổng: XL · Nhánh: `main` · Ngày: 03/10/2026
+Trạng thái: pha 1–4 xong (cửa hàng, đồ sưu tầm, thú cưng, bếp); pha 5 mới có phần lõi (Kỹ năng lên cấp, Skill Check ở server), còn màn cây kỹ năng và Cổng tri thức; pha 6 (Hành trình, Thành tích) chưa làm (rà lại 05/10/2026) · Tier tổng: XL · Nhánh: `main` · Ngày: 03/10/2026
 
 Người sở hữu (03/10/2026): "hiện tại xp dùng lên cấp để chọn thêm đồ mặc còn xu với đồ thưởng chưa có dụng j, lên plan để có thể sử dụng"; "điểm kỹ năng nữa".
 

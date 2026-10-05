@@ -1,6 +1,6 @@
 # Map gấp 50: lõi giữ nguyên, vùng ngoài sinh lúc chạy
 
-**Trạng thái:** xong phần tự động (02/10/2026), đã gửi lên production cho người sở hữu duyệt; danh mục model xong · **Tier:** XL · **Nhánh:** `main` · Quyết định: Jev (`plans/dattqh/reports/jev-261002-0606-maps-x50.md`)
+**Trạng thái:** xong phần tự động (02/10/2026), đã lên production (05/10/2026, bản `6b0bde86`); danh mục model xong · **Tier:** XL · **Nhánh:** `main` · Quyết định: Jev (`plans/dattqh/reports/jev-261002-0606-maps-x50.md`)
 
 ## Kết quả mong muốn
 

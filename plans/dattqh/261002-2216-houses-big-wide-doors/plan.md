@@ -1,6 +1,6 @@
 # Nhà to, cửa rộng, trong nhà đủ chỗ đi lại
 
-Trạng thái: xong phần tự động (03/10/2026), chờ người sở hữu duyệt và cho deploy · Tier tổng: XL · Nhánh: `main` · Ngày: 02/10/2026
+Trạng thái: xong phần tự động (03/10/2026), đã lên production (05/10/2026, bản `6b0bde86`); duyệt của người sở hữu chưa ghi nhận · Tier tổng: XL · Nhánh: `main` · Ngày: 02/10/2026
 
 Người sở hữu (02/10/2026): "soát lại các nhà đã render phải thật rộng lối vào và không gian bên trong đủ cho nhân vật di chuyển"; "các căn nhà trong game tôi cảm giác hơi bé, ko phù hợp kích thước với nhân vật, đúng ra 1 căn nhà bình thường thì phải to gấp mấy chục lần nhân vật rồi".
 
