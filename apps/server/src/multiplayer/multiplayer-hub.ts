@@ -34,6 +34,8 @@ import { FriendRequestLimiter } from '../friend/friend-limiter';
 import type { CoopService } from '../coop/coop-service';
 import type { PartyQuestHost, PartyQuestService } from '../coop/party-quest';
 import type { FriendStore, RequestOutcome } from '../friend/friend-store';
+import { VOICE_SIGNAL_MAX_BYTES, type VoiceBotLine } from '@miu/schema/voice';
+import { VoiceService, type VoiceHost } from './voice-service';
 
 export interface RoomMember {
   id: string;
@@ -204,6 +206,8 @@ function refuse(socket: Duplex, status: number, text: string): void {
 
 export class MultiplayerHub {
   readonly parties: PartyService;
+  /** Voice in parties and calls between friends: who may talk to whom, and their setup messages. */
+  readonly voice: VoiceService;
   private readonly wss: WebSocketServer;
   private readonly rooms = new Map<string, MultiplayerRoom>();
   private readonly players = new Map<string, OnlinePlayer>();
@@ -251,7 +255,9 @@ export class MultiplayerHub {
     this.parties = options.parties ?? new PartyService({ now: this.now, isPlayer: (id) => this.childIds.has(id) });
     this.friends = options.friends ?? null;
     this.friendLimiter = options.friendLimiter ?? new FriendRequestLimiter({ now: this.now });
-    this.wss = new WebSocketServer({ noServer: true, maxPayload: MAX_PAYLOAD_BYTES });
+    this.voice = new VoiceService({ host: this.voiceHost(), now: this.now, graceMs: this.partyGraceMs });
+    // Voice setup messages may be a little longer than the rest (checked again in `receive`).
+    this.wss = new WebSocketServer({ noServer: true, maxPayload: VOICE_SIGNAL_MAX_BYTES });
     server?.on('upgrade', (req: IncomingMessage, socket: Duplex, head: Buffer) => this.upgrade(req, socket, head));
     this.recheck = setInterval(() => void this.recheckSessions(), RECHECK_MS);
     this.recheck.unref();
@@ -303,6 +309,33 @@ export class MultiplayerHub {
       online: (id) => this.players.has(id),
       mapOf: (id) => this.locate(id)?.room.mapId ?? null,
     };
+  }
+
+  /** What the voice reads of the hub: delivering, parties, who someone is, blocks, friends, switches. */
+  private voiceHost(): VoiceHost {
+    return {
+      send: (id, message) => this.deliver(id, message),
+      party: (id) => {
+        const party = this.parties.partyOf(id);
+        return party ? { id: party.id, members: [...party.members] } : null;
+      },
+      look: (id) => this.lookOf(id),
+      isPlayer: (id) => !this.isBot(id),
+      online: (id) => this.players.has(id),
+      sees: (a, b) => this.sees(a, b),
+      botsOn: (id) => this.players.get(id)?.bots ?? true,
+      areFriends: async (a, b) => {
+        const childA = this.childIds.get(a);
+        const childB = this.childIds.get(b);
+        return Boolean(childA && childB && this.friends && (await this.friends.areFriends(childA, childB)));
+      },
+      emote: (id, emote) => this.locate(id)?.room.broadcastEmote(id, emote),
+    };
+  }
+
+  /** A companion bot in a party's voice says a line (its runner decides when). */
+  voiceBotSay(botId: string, line: VoiceBotLine): void {
+    this.voice.botSay(botId, line);
   }
 
   /** The companion bots a player is friends with (none while she has bots switched off). */
@@ -385,6 +418,8 @@ export class MultiplayerHub {
       case 'unfriended': {
         if (event.botId) this.onlinePlayer(event.childId)?.botFriends.delete(event.botId);
         const ids = [event.childId, event.otherChildId].flatMap((id) => (id ? (this.publicIds.get(id) ?? []) : []));
+        const [a, b] = ids;
+        if (a && b) this.voice.unfriended(a, b);
         this.recheckHomes(ids);
         return;
       }
@@ -473,6 +508,7 @@ export class MultiplayerHub {
   close(): Promise<void> {
     clearInterval(this.recheck);
     this.coop?.close();
+    this.voice.close();
     for (const timer of this.partyTimers.values()) clearTimeout(timer);
     this.partyTimers.clear();
     return new Promise((resolve) => {
@@ -570,13 +606,17 @@ export class MultiplayerHub {
   }
 
   private receive(player: OnlinePlayer, raw: string): void {
-    if (this.players.get(player.publicId) !== player || !this.allow(player)) return;
+    if (this.players.get(player.publicId) !== player) return;
     let data: unknown;
     try {
       data = JSON.parse(raw);
     } catch {
       return;
     }
+    // Voice setup messages come in bursts (network candidates) and run against their own limits in the voice;
+    // everything else goes through the flood bucket and the usual size.
+    const signal = typeof data === 'object' && data !== null && 'type' in data && data.type === 'voice-signal';
+    if (!signal && (Buffer.byteLength(raw) > MAX_PAYLOAD_BYTES || !this.allow(player))) return;
     const parsed = ClientWsMessage.safeParse(data);
     if (!parsed.success) return;
     const message = parsed.data;
@@ -655,6 +695,17 @@ export class MultiplayerHub {
       case 'party-quest-join':
       case 'party-quest-leave':
         this.partyQuests?.message(self, message);
+        return;
+      case 'voice-join':
+      case 'voice-leave':
+      case 'voice-mic':
+      case 'voice-speaking':
+      case 'voice-signal':
+      case 'voice-call':
+      case 'voice-call-reply':
+        void this.voice.message(self, message).catch((err: unknown) => {
+          console.error('voice message failed', err instanceof Error ? err.name : typeof err);
+        });
         return;
     }
   }
@@ -742,6 +793,7 @@ export class MultiplayerHub {
     // Back in a room: her co-op challenge (or her team's lobby) carries on where it was.
     this.coop?.back(player.publicId);
     this.partyQuests?.back(player.publicId);
+    this.voice.back(player.publicId);
   }
 
   private leaveRoom(player: OnlinePlayer): void {
@@ -763,6 +815,7 @@ export class MultiplayerHub {
     this.players.delete(player.publicId);
     const id = player.publicId;
     this.coop?.dropped(id);
+    this.voice.dropped(id);
     const party = this.parties.partyOf(id);
     if (!party) {
       this.forget(id);
@@ -990,6 +1043,7 @@ export class MultiplayerHub {
       this.pushParty(this.parties.leave(self));
     }
     this.coop?.blocked(self, id);
+    this.voice.blocked(self, id);
     this.notice(self, 'blocked', id);
     this.recheckHomes([self, id]);
   }
@@ -1071,5 +1125,6 @@ export class MultiplayerHub {
     }
     this.coop?.partyChanged(ids);
     this.partyQuests?.partyChanged(ids);
+    this.voice.partyChanged(ids);
   }
 }

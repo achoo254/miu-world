@@ -1,6 +1,7 @@
 // Multiplayer wire format (Master Plan §8 & §8b): realtime presence, movement, emotes and canned lines between
 // players and companion bots, targeted interactions (wave, a canned line, block, report) and parties of 2–4
-// that live across maps. Every word on the wire comes from a fixed list: no free text, no voice.
+// that live across maps. Every word on the wire comes from a fixed list: no free text. Voice between party members
+// and friends in a call goes straight between browsers; only its setup passes through here (`voice.ts`).
 //
 // Identity is the server's: a player's name, species, outfit and pet are read from her saved character when she
 // joins, never taken from the client, so nobody can show up as someone else or in someone else's clothes.
@@ -9,6 +10,7 @@ import { ContentId } from './content';
 import { CoopClientMessages, CoopServerMessages } from './coop';
 import { FriendPerson } from './friends';
 import { PartyQuestClientMessages, PartyQuestServerMessages } from './party-quest';
+import { VoiceClientMessages, VoiceServerMessages } from './voice';
 
 export const SAFE_CANNED_CHATS = [
   'Xin chào bạn!',
@@ -166,6 +168,7 @@ export const ClientWsMessage = z.discriminatedUnion('type', [
   z.strictObject({ type: z.literal('leave') }),
   ...CoopClientMessages,
   ...PartyQuestClientMessages,
+  ...VoiceClientMessages,
 ]);
 export type ClientWsMessage = z.infer<typeof ClientWsMessage>;
 
@@ -200,5 +203,6 @@ export const ServerWsMessage = z.discriminatedUnion('type', [
   z.strictObject({ type: z.literal('party-travel'), from: PlayerId, displayName: z.string().min(1).max(32), region: ContentId }),
   ...CoopServerMessages,
   ...PartyQuestServerMessages,
+  ...VoiceServerMessages,
 ]);
 export type ServerWsMessage = z.infer<typeof ServerWsMessage>;
