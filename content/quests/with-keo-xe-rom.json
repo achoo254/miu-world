@@ -1,0 +1,428 @@
+{
+  "id": "with-keo-xe-rom",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Cùng kéo xe rơm về kho",
+  "summary": "Trời sắp mưa mà xe rơm còn ngoài đồng: mỗi bạn làm phần mình rồi cả đội cùng kéo một lúc.",
+  "category": "coop",
+  "status": "active",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Đội giúp Chú Đánh Xe Rơm",
+    "where": "Sân nông trại",
+    "goal": "Đưa xe rơm vào kho trước cơn mưa",
+    "play": "Mỗi bạn giải câu của mình, cả đội cùng kéo",
+    "learn": "Cộng trừ, ki-lô-gam, lít, xem giờ, từ chỉ sự vật",
+    "reward": "Xu, kinh nghiệm cho mỗi bạn",
+    "next": "Chơi lại cùng đội khác"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "gap",
+    "challenge": "cung-choi",
+    "decision": "cung-choi",
+    "finale": "ket",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Chú Đánh Xe Rơm",
+      "kind": "dialogue",
+      "target": "chu-xe-bo-rom",
+      "trigger": "interact",
+      "lines": [
+        {
+          "speaker": "Chú Đánh Xe Rơm",
+          "text": "{name} ơi, mây đen kéo tới rồi mà xe rơm còn nằm giữa đồng!"
+        },
+        {
+          "speaker": "Chú Đánh Xe Rơm",
+          "text": "Chú cần cả đội: mỗi bạn lo một việc, rồi cùng nắm dây kéo thật đều tay."
+        }
+      ],
+      "en": {
+        "title": "Meet Chú Đánh Xe Rơm",
+        "lines": [
+          "{name}, dark clouds are coming and the straw cart is still in the field!",
+          "I need the team: one job each, then everyone grips the rope and pulls together."
+        ]
+      }
+    },
+    {
+      "id": "cung-choi",
+      "title": "Kéo xe rơm",
+      "kind": "coop",
+      "trigger": "auto",
+      "mode": "together",
+      "prompt": "Mỗi vòng: giải câu của mình rồi bấm \"Giữ chặt\". Khi cả đội cùng giữ một lúc, xe rơm lăn thêm một đoạn.",
+      "guide": [
+        "Làm câu của mình trước khi nắm dây.",
+        "Bấm Giữ chặt, rồi chờ các bạn cùng giữ.",
+        "Đủ cả đội cùng giữ thì xe lăn bánh."
+      ],
+      "seats": 3,
+      "feedback": {
+        "right": [
+          "Dô ta! Bánh xe nhích thêm một đoạn.",
+          "Khỏe quá, cả đội kéo đều tay ghê!",
+          "Đúng rồi, xe rơm lăn bon bon."
+        ],
+        "wrong": [
+          "Bánh xe kẹt bùn rồi, thử lại nhé.",
+          "Chưa đúng, lau mồ hôi rồi nghĩ tiếp.",
+          "Từ từ thôi, đọc lại câu một lần nữa."
+        ],
+        "en": {
+          "right": [
+            "Heave-ho! The wheels inch forward.",
+            "So strong, the team pulls in step!",
+            "Right, the straw cart rolls along."
+          ],
+          "wrong": [
+            "A wheel is stuck in the mud; try again.",
+            "Not yet; wipe your brow and think on.",
+            "Slowly now: read the question once more."
+          ]
+        }
+      },
+      "en": {
+        "title": "Heave the cart",
+        "prompt": "Each round: solve your question, then tap \"Hold tight\". When everyone holds at once, the cart rolls a stretch further.",
+        "guide": [
+          "Do your question before gripping the rope.",
+          "Tap Hold tight and wait for the others to hold too.",
+          "When the whole team holds, the cart rolls."
+        ]
+      },
+      "rounds": [
+        {
+          "id": "doan-mot",
+          "title": "Chất rơm lên xe",
+          "tasks": [
+            {
+              "id": "bo-rom",
+              "prompt": "Xe chở được 50 bó rơm, đã chất 35 bó. Chất thêm mấy bó thì xe đầy?",
+              "skill": "phep-tru",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "15"
+                },
+                {
+                  "id": "b",
+                  "text": "85"
+                },
+                {
+                  "id": "c",
+                  "text": "25"
+                }
+              ],
+              "answer": {
+                "choice": "a"
+              },
+              "hint": "Lấy số bó xe chở được trừ số bó đã chất.",
+              "explain": "Lấy 50 − 35 = 15, chất thêm 15 bó thì đầy xe.",
+              "en": {
+                "prompt": "The cart holds 50 bundles and 35 are loaded. How many more fill it?",
+                "choices": [
+                  "15",
+                  "85",
+                  "25"
+                ],
+                "hint": "Subtract the loaded bundles from what the cart holds.",
+                "explain": "50 − 35 = 15: fifteen more bundles fill the cart."
+              }
+            },
+            {
+              "id": "nang-nhe",
+              "prompt": "Con bò và con gà, con nào nặng hơn?",
+              "skill": "khoi-luong",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "Con bò"
+                },
+                {
+                  "id": "b",
+                  "text": "Con gà"
+                },
+                {
+                  "id": "c",
+                  "text": "Nặng bằng nhau"
+                }
+              ],
+              "answer": {
+                "choice": "a"
+              },
+              "hint": "Nghĩ xem con nào to lớn hơn nhiều.",
+              "explain": "Con bò to lớn hơn con gà rất nhiều nên nặng hơn.",
+              "en": {
+                "prompt": "The cow or the hen: which is heavier?",
+                "choices": [
+                  "The cow",
+                  "The hen",
+                  "Same weight"
+                ],
+                "hint": "Think which animal is much bigger.",
+                "explain": "The cow is far bigger than the hen, so it is heavier."
+              }
+            }
+          ],
+          "en": {
+            "title": "Load the straw onto the cart"
+          }
+        },
+        {
+          "id": "doan-hai",
+          "title": "Kéo xe qua con dốc đất",
+          "tasks": [
+            {
+              "id": "bao-thoc",
+              "prompt": "Bao thóc nặng 25 kg, bao ngô nặng 18 kg. Hai bao nặng tất cả bao nhiêu ki-lô-gam?",
+              "skill": "khoi-luong",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "7 kg"
+                },
+                {
+                  "id": "b",
+                  "text": "33 kg"
+                },
+                {
+                  "id": "c",
+                  "text": "43 kg"
+                }
+              ],
+              "answer": {
+                "choice": "c"
+              },
+              "hint": "Cộng cân nặng của hai bao, nhớ cộng số nhớ.",
+              "explain": "Lấy 25 kg + 18 kg = 43 kg.",
+              "en": {
+                "prompt": "A sack of rice weighs 25 kg and a sack of corn 18 kg. How much do they weigh together?",
+                "choices": [
+                  "7 kg",
+                  "33 kg",
+                  "43 kg"
+                ],
+                "hint": "Add the two weights; remember to carry.",
+                "explain": "25 kg + 18 kg = 43 kg."
+              }
+            },
+            {
+              "id": "su-vat",
+              "prompt": "Trong các từ \"kéo\", \"xe rơm\", \"nặng\", từ nào chỉ sự vật?",
+              "skill": "tu-ngu",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "nặng"
+                },
+                {
+                  "id": "b",
+                  "text": "xe rơm"
+                },
+                {
+                  "id": "c",
+                  "text": "kéo"
+                }
+              ],
+              "answer": {
+                "choice": "b"
+              },
+              "hint": "Từ chỉ sự vật là tên gọi của đồ vật, con vật, cây cối.",
+              "explain": "\"Xe rơm\" là tên một đồ vật nên là từ chỉ sự vật.",
+              "en": {
+                "prompt": "Among \"to pull\", \"straw cart\" and \"heavy\", which word names a thing?",
+                "choices": [
+                  "heavy",
+                  "straw cart",
+                  "to pull"
+                ],
+                "hint": "A thing word is the name of an object, an animal or a plant.",
+                "explain": "\"Straw cart\" is the name of an object, so it names a thing."
+              }
+            },
+            {
+              "id": "thung-nuoc",
+              "prompt": "Thùng có 10 lít nước, bò uống hết 4 lít. Thùng còn mấy lít nước?",
+              "skill": "dung-tich",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "6 lít"
+                },
+                {
+                  "id": "b",
+                  "text": "14 lít"
+                },
+                {
+                  "id": "c",
+                  "text": "5 lít"
+                }
+              ],
+              "answer": {
+                "choice": "a"
+              },
+              "hint": "Lấy số lít lúc đầu trừ số lít bò đã uống.",
+              "explain": "Lấy 10 lít − 4 lít = 6 lít.",
+              "en": {
+                "prompt": "A tub holds 10 litres and the cow drinks 4. How many litres are left?",
+                "choices": [
+                  "6 litres",
+                  "14 litres",
+                  "5 litres"
+                ],
+                "hint": "Subtract what the cow drank from what there was.",
+                "explain": "10 litres − 4 litres = 6 litres."
+              }
+            }
+          ],
+          "en": {
+            "title": "Pull the cart over the dirt slope"
+          }
+        },
+        {
+          "id": "doan-ba",
+          "title": "Đẩy xe vào kho trước cơn mưa",
+          "tasks": [
+            {
+              "id": "kim-dai",
+              "prompt": "Kho mở cửa lúc 4 giờ rưỡi chiều. Lúc đó kim dài của đồng hồ chỉ số mấy?",
+              "skill": "xem-dong-ho",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "Số 4"
+                },
+                {
+                  "id": "b",
+                  "text": "Số 6"
+                },
+                {
+                  "id": "c",
+                  "text": "Số 12"
+                }
+              ],
+              "answer": {
+                "choice": "b"
+              },
+              "hint": "Giờ rưỡi là thêm nửa vòng: kim dài chỉ xuống dưới.",
+              "explain": "Lúc 4 giờ rưỡi, kim ngắn ở giữa số 4 và 5, kim dài chỉ số 6.",
+              "en": {
+                "prompt": "The barn opens at half past four. Which number does the minute hand point to then?",
+                "choices": [
+                  "The 4",
+                  "The 6",
+                  "The 12"
+                ],
+                "hint": "Half past means half a turn: the long hand points down.",
+                "explain": "At half past four the short hand is between 4 and 5, and the long hand points to 6."
+              }
+            },
+            {
+              "id": "dem-chuc",
+              "prompt": "Đếm thêm: 60, 70, 80, … số tiếp theo là số nào?",
+              "skill": "so-den-100",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "90"
+                },
+                {
+                  "id": "b",
+                  "text": "81"
+                },
+                {
+                  "id": "c",
+                  "text": "100"
+                }
+              ],
+              "answer": {
+                "choice": "a"
+              },
+              "hint": "Mỗi lần đếm thêm một chục.",
+              "explain": "Sau 80 thêm một chục là 90.",
+              "en": {
+                "prompt": "Count on: 60, 70, 80, … what comes next?",
+                "choices": [
+                  "90",
+                  "81",
+                  "100"
+                ],
+                "hint": "Each step adds one ten.",
+                "explain": "One more ten after 80 is 90."
+              }
+            }
+          ],
+          "en": {
+            "title": "Push the cart into the barn before the rain"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ket",
+      "title": "Rơm vào kho",
+      "kind": "dialogue",
+      "trigger": "auto",
+      "lines": [
+        {
+          "speaker": "Chú Đánh Xe Rơm",
+          "text": "Xe rơm vào kho vừa kịp lúc mưa rào đổ xuống!"
+        },
+        {
+          "speaker": "Chú Đánh Xe Rơm",
+          "text": "Đàn bò có rơm khô ăn cả mùa mưa, chú cảm ơn cả đội nhiều."
+        }
+      ],
+      "en": {
+        "title": "Straw stored",
+        "lines": [
+          "The straw cart rolls into the barn just as the shower starts!",
+          "The cows will have dry straw all rainy season; many thanks, team."
+        ]
+      }
+    },
+    {
+      "id": "thuong",
+      "title": "Quà nông trại",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Đánh Xe tặng mỗi bạn phần thưởng của nông trại.",
+      "en": {
+        "title": "Farm gifts",
+        "text": "The carter gives each friend a farm gift."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Hẹn mùa gặt",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mùa gặt tới còn nhiều xe rơm, nhớ quay lại cùng đội nhé.",
+      "en": {
+        "title": "Harvest time",
+        "text": "Harvest brings more straw carts: come back with your team."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 25,
+    "skillXp": {
+      "phep-tru": 10,
+      "khoi-luong": 10,
+      "tu-ngu": 10
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Hauling the straw cart home",
+    "summary": "Rain is coming and the straw cart is still in the field: each friend does a part, then everyone pulls at once."
+  }
+}

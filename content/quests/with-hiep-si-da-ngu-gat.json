@@ -1,0 +1,384 @@
+{
+  "id": "with-hiep-si-da-ngu-gat",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Đánh thức Hiệp Sĩ Đá ngủ gật",
+  "summary": "Hiệp Sĩ Đá ngủ quên chắn cổng thành: cả đội thay phiên trả lời câu đố cho tới khi hiệp sĩ tỉnh hẳn.",
+  "category": "coop",
+  "status": "active",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Đội giúp Đội Trưởng Vệ Binh",
+    "where": "Bãi cỏ trước cổng thành",
+    "goal": "Đánh thức Hiệp Sĩ Đá, mở cổng thành",
+    "play": "Thay phiên trả lời, cùng làm giảm thanh buồn ngủ",
+    "learn": "Hình phẳng, cộng trừ, số liền sau, kiểu câu Ai làm gì?",
+    "reward": "Xu, kinh nghiệm cho mỗi bạn",
+    "next": "Chơi lại cùng đội khác"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "gap",
+    "challenge": "cung-choi",
+    "decision": "cung-choi",
+    "finale": "ket",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Đội Trưởng Vệ Binh",
+      "kind": "dialogue",
+      "target": "doi-truong-ve-binh",
+      "trigger": "interact",
+      "lines": [
+        {
+          "speaker": "Đội Trưởng Vệ Binh",
+          "text": "Chào {name}! Hiệp Sĩ Đá gác cổng lại ngủ gật, chắn hết lối vào thành rồi."
+        },
+        {
+          "speaker": "Đội Trưởng Vệ Binh",
+          "text": "Muốn đánh thức ông ấy phải trả lời đúng thật nhiều câu đố. Cả đội thay nhau nhé!"
+        }
+      ],
+      "en": {
+        "title": "Meet Đội Trưởng Vệ Binh",
+        "lines": [
+          "Hello {name}! The Stone Knight on guard has dozed off again, blocking the way in.",
+          "To wake him we must answer many riddles right. Take turns, team!"
+        ]
+      }
+    },
+    {
+      "id": "cung-choi",
+      "title": "Gọi Hiệp Sĩ",
+      "kind": "coop",
+      "trigger": "auto",
+      "mode": "team-boss",
+      "prompt": "Cả đội chung một thanh \"buồn ngủ\" của Hiệp Sĩ: mỗi câu đúng làm hiệp sĩ tỉnh thêm một chút.",
+      "guide": [
+        "Đến lượt mình thì trả lời một câu.",
+        "Câu đúng làm thanh buồn ngủ giảm xuống.",
+        "Câu sai thì cả đội cùng nghĩ lại, chẳng ai thua."
+      ],
+      "seats": 3,
+      "feedback": {
+        "right": [
+          "Hiệp sĩ hé một mắt rồi, tiếp đi!",
+          "Hay lắm, áo giáp kêu lách cách kìa!",
+          "Đúng rồi, hiệp sĩ sắp tỉnh hẳn đấy."
+        ],
+        "wrong": [
+          "Khò khò… chưa đúng, hiệp sĩ ngủ tiếp mất.",
+          "Ta nghĩ lại cùng nhau một lần nữa nhé.",
+          "Đội trưởng tin cả đội, thử câu khác cách nghĩ."
+        ],
+        "en": {
+          "right": [
+            "The knight opens one eye; keep going!",
+            "Great, his armour is clanking!",
+            "Right, the knight is nearly awake."
+          ],
+          "wrong": [
+            "Zzz… not right, the knight snores on.",
+            "Let us think it through together once more.",
+            "The captain believes in you; try thinking another way."
+          ]
+        }
+      },
+      "en": {
+        "title": "Wake the knight",
+        "prompt": "The team shares the Knight's sleepiness bar: each right answer wakes him a little more.",
+        "guide": [
+          "On your turn, answer one question.",
+          "A right answer lowers the sleepiness bar.",
+          "A wrong one means thinking again together; nobody loses."
+        ]
+      },
+      "boss": {
+        "name": "Hiệp Sĩ Đá Ngủ Gật",
+        "maxHp": 500,
+        "intro": "Khò… khò… Ai muốn vào thành thì trả lời ta đã… khò…",
+        "win": "Ơ, ta tỉnh hẳn rồi! Cảm ơn các bạn, cổng thành mở cho mọi người nhé.",
+        "en": {
+          "name": "Dozing Stone Knight",
+          "intro": "Zzz… zzz… Whoever wants in must answer me first… zzz…",
+          "win": "Oh, I am wide awake! Thank you, friends, the gate is open for everyone."
+        }
+      },
+      "turns": [
+        {
+          "id": "ba-canh",
+          "prompt": "Hình nào có 3 cạnh?",
+          "skill": "hinh-phang",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Hình tròn"
+            },
+            {
+              "id": "b",
+              "text": "Hình tam giác"
+            },
+            {
+              "id": "c",
+              "text": "Hình vuông"
+            }
+          ],
+          "answer": {
+            "choice": "b"
+          },
+          "hint": "Đếm số đoạn thẳng bao quanh mỗi hình.",
+          "explain": "Hình tam giác có 3 cạnh; hình vuông có 4 cạnh; hình tròn không có cạnh nào.",
+          "damage": 100,
+          "en": {
+            "prompt": "Which shape has 3 sides?",
+            "choices": [
+              "A circle",
+              "A triangle",
+              "A square"
+            ],
+            "hint": "Count the straight lines round each shape.",
+            "explain": "A triangle has 3 sides; a square has 4; a circle has none."
+          }
+        },
+        {
+          "id": "bac-thap",
+          "prompt": "Tháp canh cao 56 bậc, cả đội đã leo 30 bậc. Còn bao nhiêu bậc nữa?",
+          "skill": "phep-tru",
+          "choices": [
+            {
+              "id": "a",
+              "text": "26"
+            },
+            {
+              "id": "b",
+              "text": "86"
+            },
+            {
+              "id": "c",
+              "text": "36"
+            }
+          ],
+          "answer": {
+            "choice": "a"
+          },
+          "hint": "Lấy tổng số bậc trừ số bậc đã leo.",
+          "explain": "Lấy 56 − 30 = 26 bậc.",
+          "damage": 100,
+          "en": {
+            "prompt": "The watchtower has 56 steps and the team has climbed 30. How many are left?",
+            "choices": [
+              "26",
+              "86",
+              "36"
+            ],
+            "hint": "Subtract the steps climbed from all the steps.",
+            "explain": "56 − 30 = 26 steps."
+          }
+        },
+        {
+          "id": "lien-sau",
+          "prompt": "Số liền sau của 79 là số nào?",
+          "skill": "so-den-100",
+          "choices": [
+            {
+              "id": "a",
+              "text": "80"
+            },
+            {
+              "id": "b",
+              "text": "78"
+            },
+            {
+              "id": "c",
+              "text": "89"
+            }
+          ],
+          "answer": {
+            "choice": "a"
+          },
+          "hint": "Số liền sau là thêm 1 vào số đó.",
+          "explain": "Lấy 79 + 1 = 80.",
+          "damage": 100,
+          "en": {
+            "prompt": "What number comes right after 79?",
+            "choices": [
+              "80",
+              "78",
+              "89"
+            ],
+            "hint": "The next number is one more.",
+            "explain": "79 + 1 = 80."
+          }
+        },
+        {
+          "id": "goc-vuong",
+          "prompt": "Một ô cửa sổ hình vuông có mấy góc vuông?",
+          "skill": "hinh-phang",
+          "choices": [
+            {
+              "id": "a",
+              "text": "2"
+            },
+            {
+              "id": "b",
+              "text": "4"
+            },
+            {
+              "id": "c",
+              "text": "3"
+            }
+          ],
+          "answer": {
+            "choice": "b"
+          },
+          "hint": "Chạm vào từng góc của hình vuông và đếm.",
+          "explain": "Hình vuông có 4 góc, góc nào cũng là góc vuông.",
+          "damage": 100,
+          "en": {
+            "prompt": "A square window has how many right angles?",
+            "choices": [
+              "2",
+              "4",
+              "3"
+            ],
+            "hint": "Touch each corner of the square and count.",
+            "explain": "A square has 4 corners and every one is a right angle."
+          }
+        },
+        {
+          "id": "kieu-cau",
+          "prompt": "Câu \"Hiệp sĩ đánh bóng tấm khiên.\" thuộc kiểu câu nào?",
+          "skill": "cau",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Ai thế nào?"
+            },
+            {
+              "id": "b",
+              "text": "Ai làm gì?"
+            },
+            {
+              "id": "c",
+              "text": "Ai là gì?"
+            }
+          ],
+          "answer": {
+            "choice": "b"
+          },
+          "hint": "Tìm xem câu kể ai đang làm việc gì.",
+          "explain": "Câu cho biết hiệp sĩ đang làm việc đánh bóng khiên: kiểu câu Ai làm gì?",
+          "damage": 100,
+          "en": {
+            "prompt": "Which kind of sentence is \"The knight polishes his shield.\"?",
+            "choices": [
+              "Who is like what?",
+              "Who does what?",
+              "Who is what?"
+            ],
+            "hint": "Look for who is doing which action.",
+            "explain": "It tells what the knight is doing (polishing his shield): a \"Who does what?\" sentence."
+          }
+        },
+        {
+          "id": "linh-gac",
+          "prompt": "Cổng có 9 lính gác, thêm 6 lính nữa đến đổi ca. Có tất cả bao nhiêu lính gác?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "15"
+            },
+            {
+              "id": "b",
+              "text": "3"
+            },
+            {
+              "id": "c",
+              "text": "14"
+            }
+          ],
+          "answer": {
+            "choice": "a"
+          },
+          "hint": "Tách 6 thành 1 và 5 để 9 tròn chục.",
+          "explain": "Lấy 9 + 6 = 15 lính gác.",
+          "damage": 100,
+          "en": {
+            "prompt": "The gate has 9 guards and 6 more arrive for the next watch. How many guards in all?",
+            "choices": [
+              "15",
+              "3",
+              "14"
+            ],
+            "hint": "Split 6 into 1 and 5 to make 9 a ten.",
+            "explain": "9 + 6 = 15 guards."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ket",
+      "title": "Cổng thành mở",
+      "kind": "dialogue",
+      "trigger": "auto",
+      "lines": [
+        {
+          "speaker": "Đội Trưởng Vệ Binh",
+          "text": "Hiệp Sĩ Đá vươn vai đứng dậy, cổng thành mở toang rồi!"
+        },
+        {
+          "speaker": "Đội Trưởng Vệ Binh",
+          "text": "Từ nay ông ấy hứa gác cổng mà không ngủ gật nữa."
+        }
+      ],
+      "en": {
+        "title": "Gate open",
+        "lines": [
+          "The Stone Knight stretches and stands; the castle gate swings open!",
+          "From now on he promises to keep watch without dozing."
+        ]
+      }
+    },
+    {
+      "id": "thuong",
+      "title": "Quà lâu đài",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Đội Trưởng Vệ Binh tặng mỗi bạn phần thưởng của lâu đài.",
+      "en": {
+        "title": "Castle gifts",
+        "text": "The guard captain gives each friend a castle gift."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Hẹn buổi chiều",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chiều nào hiệp sĩ lại buồn ngủ, đội nhớ ghé đánh thức nhé.",
+      "en": {
+        "title": "Another afternoon",
+        "text": "Whenever the knight grows sleepy again, the team should drop by to wake him."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 25,
+    "skillXp": {
+      "hinh-phang": 10,
+      "phep-tru": 10,
+      "cau": 10
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Waking the dozing Stone Knight",
+    "summary": "The Stone Knight fell asleep across the gate: the team takes turns answering until the knight is wide awake."
+  }
+}

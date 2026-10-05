@@ -1,0 +1,428 @@
+{
+  "id": "with-lop-mai-nha-ba-sau",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Cùng lợp lại mái nhà bà Sáu",
+  "summary": "Gió bão làm bay ngói nhà bà Sáu: cả đội chuyền ngói, giữ bạt và đóng hàng ngói cuối cùng.",
+  "category": "coop",
+  "status": "active",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Đội giúp Bác Thợ Ngói Tâm",
+    "where": "Sân phơi Xóm mái ấm",
+    "goal": "Lợp lại mái nhà bà Sáu",
+    "play": "Mỗi bạn giải câu của mình, cả đội cùng giữ",
+    "learn": "Cộng trừ, từ chỉ đặc điểm, chính tả ng/ngh, dấu câu",
+    "reward": "Xu, kinh nghiệm cho mỗi bạn",
+    "next": "Chơi lại cùng đội khác"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "gap",
+    "challenge": "cung-choi",
+    "decision": "cung-choi",
+    "finale": "ket",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Bác Thợ Ngói Tâm",
+      "kind": "dialogue",
+      "target": "bac-tho-ngoi-tam",
+      "trigger": "interact",
+      "lines": [
+        {
+          "speaker": "Bác Thợ Ngói Tâm",
+          "text": "Chào {name}! Đêm qua gió to làm mái nhà bà Sáu hở mấy chỗ."
+        },
+        {
+          "speaker": "Bác Thợ Ngói Tâm",
+          "text": "Bác cần cả đội: mỗi bạn một việc, rồi cùng giữ chặt cho ngói khỏi trượt."
+        }
+      ],
+      "en": {
+        "title": "Meet Bác Thợ Ngói Tâm",
+        "lines": [
+          "Hello {name}! Last night's wind opened gaps in Grandma Sáu's roof.",
+          "I need the team: one job each, then everyone holds tight so no tile slips."
+        ]
+      }
+    },
+    {
+      "id": "cung-choi",
+      "title": "Lợp từng hàng",
+      "kind": "coop",
+      "trigger": "auto",
+      "mode": "together",
+      "prompt": "Mỗi vòng: trả lời câu của mình, rồi bấm \"Giữ chặt\". Cả đội cùng giữ một lúc thì hàng ngói được lợp xong.",
+      "guide": [
+        "Giải câu của mình trước, các bạn khác chờ một chút.",
+        "Bấm Giữ chặt khi đã xong phần mình.",
+        "Ai lỡ buông tay thì bấm giữ lại, không sao cả."
+      ],
+      "seats": 3,
+      "feedback": {
+        "right": [
+          "Ngói vào chỗ rồi, mái kín dần lên!",
+          "Tay cháu khéo như thợ thật đấy!",
+          "Đúng rồi, bà Sáu chắc vui lắm đây."
+        ],
+        "wrong": [
+          "Viên ngói này lệch rồi, thử lại nhé.",
+          "Chưa đúng, nghỉ tay một chút rồi nghĩ tiếp.",
+          "Cẩn thận như thợ ngói, đọc lại nào."
+        ],
+        "en": {
+          "right": [
+            "The tile is in place; the roof is closing up!",
+            "Your hands are as skilled as a real roofer!",
+            "Right, Grandma Sáu will be so happy."
+          ],
+          "wrong": [
+            "This tile is crooked; try again.",
+            "Not yet; rest a moment, then think on.",
+            "Careful like a roofer: read it again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Row by row",
+        "prompt": "Each round: answer your question, then tap \"Hold tight\". When everyone holds at once, a row of tiles is done.",
+        "guide": [
+          "Solve your own question first; the others wait a moment.",
+          "Tap Hold tight once your part is done.",
+          "If someone lets go, just hold again; it is fine."
+        ]
+      },
+      "rounds": [
+        {
+          "id": "hang-mot",
+          "title": "Chuyền ngói lên thang",
+          "tasks": [
+            {
+              "id": "chuyen-ngoi",
+              "prompt": "Mỗi lượt chuyền được 5 viên ngói. Ba lượt chuyền được bao nhiêu viên?",
+              "skill": "phep-cong",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "8"
+                },
+                {
+                  "id": "b",
+                  "text": "53"
+                },
+                {
+                  "id": "c",
+                  "text": "15"
+                }
+              ],
+              "answer": {
+                "choice": "c"
+              },
+              "hint": "Ba lượt là 5 + 5 + 5.",
+              "explain": "Lấy 5 + 5 + 5 = 15 viên ngói.",
+              "en": {
+                "prompt": "Each pass carries 5 tiles. How many tiles do three passes carry?",
+                "choices": [
+                  "8",
+                  "53",
+                  "15"
+                ],
+                "hint": "Three passes are 5 + 5 + 5.",
+                "explain": "5 + 5 + 5 = 15 tiles."
+              }
+            },
+            {
+              "id": "ngoi-cu",
+              "prompt": "Mái có 30 viên ngói cũ, bác đã thay 12 viên. Còn mấy viên ngói cũ?",
+              "skill": "phep-tru",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "18"
+                },
+                {
+                  "id": "b",
+                  "text": "42"
+                },
+                {
+                  "id": "c",
+                  "text": "22"
+                }
+              ],
+              "answer": {
+                "choice": "a"
+              },
+              "hint": "Lấy số ngói cũ trừ đi số ngói đã thay.",
+              "explain": "Lấy 30 − 12 = 18 viên ngói cũ.",
+              "en": {
+                "prompt": "The roof had 30 old tiles and 12 were replaced. How many old tiles are left?",
+                "choices": [
+                  "18",
+                  "42",
+                  "22"
+                ],
+                "hint": "Subtract the replaced tiles from the old ones.",
+                "explain": "30 − 12 = 18 old tiles."
+              }
+            }
+          ],
+          "en": {
+            "title": "Pass the tiles up the ladder"
+          }
+        },
+        {
+          "id": "hang-hai",
+          "title": "Giữ chặt tấm bạt khi gió nổi",
+          "tasks": [
+            {
+              "id": "dac-diem",
+              "prompt": "Trong các từ \"chắc chắn\", \"lợp ngói\", \"mái nhà\", từ nào chỉ đặc điểm?",
+              "skill": "tu-ngu",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "chắc chắn"
+                },
+                {
+                  "id": "b",
+                  "text": "lợp ngói"
+                },
+                {
+                  "id": "c",
+                  "text": "mái nhà"
+                }
+              ],
+              "answer": {
+                "choice": "a"
+              },
+              "hint": "Từ chỉ đặc điểm cho biết sự vật như thế nào.",
+              "explain": "\"Chắc chắn\" cho biết mái nhà như thế nào nên là từ chỉ đặc điểm.",
+              "en": {
+                "prompt": "Among \"sturdy\", \"to tile\" and \"roof\", which word names a quality?",
+                "choices": [
+                  "sturdy",
+                  "to tile",
+                  "roof"
+                ],
+                "hint": "A quality word tells what something is like.",
+                "explain": "\"Sturdy\" tells what the roof is like, so it is a quality word."
+              }
+            },
+            {
+              "id": "gio-chieu",
+              "prompt": "Gió nổi lúc 3 giờ chiều. Hai giờ sau là mấy giờ?",
+              "skill": "xem-dong-ho",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "4 giờ chiều"
+                },
+                {
+                  "id": "b",
+                  "text": "5 giờ chiều"
+                },
+                {
+                  "id": "c",
+                  "text": "1 giờ chiều"
+                }
+              ],
+              "answer": {
+                "choice": "b"
+              },
+              "hint": "Đếm tiếp hai giờ kể từ 3 giờ chiều.",
+              "explain": "Từ 3 giờ chiều thêm 2 giờ là 5 giờ chiều.",
+              "en": {
+                "prompt": "The wind rose at 3 pm. What time is it two hours later?",
+                "choices": [
+                  "4 pm",
+                  "5 pm",
+                  "1 pm"
+                ],
+                "hint": "Count on two hours from 3 pm.",
+                "explain": "3 pm plus 2 hours is 5 pm."
+              }
+            },
+            {
+              "id": "ngoi-do",
+              "prompt": "Bác Tâm lợp mái bằng gì? Chọn từ viết đúng.",
+              "skill": "chinh-ta",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "nghói đỏ"
+                },
+                {
+                  "id": "b",
+                  "text": "ngoí đỏ"
+                },
+                {
+                  "id": "c",
+                  "text": "ngói đỏ"
+                }
+              ],
+              "answer": {
+                "choice": "c"
+              },
+              "hint": "\"ngh\" chỉ đứng trước i, e, ê; \"ói\" thì viết \"ng\".",
+              "explain": "Trước vần \"ói\" ta viết \"ng\": ngói đỏ.",
+              "en": {
+                "prompt": "What does Mr Tâm cover the roof with? Pick the right spelling.",
+                "choices": [
+                  "nghói đỏ",
+                  "ngoí đỏ",
+                  "ngói đỏ (red tile)"
+                ],
+                "hint": "\"ngh\" only goes before i, e, ê; before \"ói\" write \"ng\".",
+                "explain": "Before \"ói\" we write \"ng\": ngói đỏ."
+              }
+            }
+          ],
+          "en": {
+            "title": "Hold the tarp down in the gusts"
+          }
+        },
+        {
+          "id": "hang-ba",
+          "title": "Đóng hàng ngói cuối cùng",
+          "tasks": [
+            {
+              "id": "dong-ngoi",
+              "prompt": "Hàng ngói có 46 viên, bác đã đóng 40 viên. Còn mấy viên chưa đóng?",
+              "skill": "phep-tru",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "86"
+                },
+                {
+                  "id": "b",
+                  "text": "16"
+                },
+                {
+                  "id": "c",
+                  "text": "6"
+                }
+              ],
+              "answer": {
+                "choice": "c"
+              },
+              "hint": "Lấy số viên cả hàng trừ số viên đã đóng.",
+              "explain": "Lấy 46 − 40 = 6 viên.",
+              "en": {
+                "prompt": "The row has 46 tiles and 40 are fixed. How many are not fixed yet?",
+                "choices": [
+                  "86",
+                  "16",
+                  "6"
+                ],
+                "hint": "Subtract the fixed tiles from the whole row.",
+                "explain": "46 − 40 = 6 tiles."
+              }
+            },
+            {
+              "id": "dau-cam",
+              "prompt": "Chọn dấu câu hợp với câu: \"Mái nhà đẹp quá…\"",
+              "skill": "dau-cau",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "?"
+                },
+                {
+                  "id": "b",
+                  "text": ","
+                },
+                {
+                  "id": "c",
+                  "text": "!"
+                }
+              ],
+              "answer": {
+                "choice": "c"
+              },
+              "hint": "Câu khen, câu reo vui thường dùng dấu chấm than.",
+              "explain": "\"Mái nhà đẹp quá!\" là câu bộc lộ cảm xúc nên dùng dấu chấm than.",
+              "en": {
+                "prompt": "Which punctuation suits: \"The roof looks so lovely…\"",
+                "choices": [
+                  "?",
+                  ",",
+                  "!"
+                ],
+                "hint": "Cheering and praising sentences usually take an exclamation mark.",
+                "explain": "\"The roof looks so lovely!\" shows a feeling, so it takes an exclamation mark."
+              }
+            }
+          ],
+          "en": {
+            "title": "Fix the very last row of tiles"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ket",
+      "title": "Mái lành rồi",
+      "kind": "dialogue",
+      "trigger": "auto",
+      "lines": [
+        {
+          "speaker": "Bác Thợ Ngói Tâm",
+          "text": "Mái nhà bà Sáu lành lặn rồi, mưa có to cũng chẳng dột."
+        },
+        {
+          "speaker": "Bác Thợ Ngói Tâm",
+          "text": "Bà Sáu mời cả đội ở lại ăn chè đỗ đen cho mát."
+        }
+      ],
+      "en": {
+        "title": "Roof mended",
+        "lines": [
+          "Grandma Sáu's roof is whole again; no rain will get in.",
+          "Grandma Sáu invites the team to stay for sweet black-bean soup."
+        ]
+      }
+    },
+    {
+      "id": "thuong",
+      "title": "Quà của xóm",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác Tâm tặng mỗi bạn phần thưởng của xóm.",
+      "en": {
+        "title": "Street gifts",
+        "text": "Mr Tâm gives each friend a neighbourhood gift."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Hẹn mái khác",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Xóm còn nhiều mái nhà cần sửa, đội quay lại khi nào cũng được.",
+      "en": {
+        "title": "More roofs later",
+        "text": "Many roofs here still need mending: the team may come back any time."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 25,
+    "skillXp": {
+      "phep-tru": 10,
+      "tu-ngu": 10,
+      "chinh-ta": 10
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Re-tiling Grandma Sáu's roof",
+    "summary": "A storm blew tiles off Grandma Sáu's roof: the team passes tiles, holds the tarp and fixes the last row."
+  }
+}

@@ -1,0 +1,384 @@
+{
+  "id": "with-bong-muc-thu-vien",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Đuổi Bóng Mực khỏi kệ sách",
+  "summary": "Bóng Mực làm nhòe chữ trong sách: cả đội thay phiên trả lời, mỗi câu đúng làm chữ sáng lại.",
+  "category": "coop",
+  "status": "active",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Đội giúp Ông Gác Sách Đêm",
+    "where": "Thư viện",
+    "goal": "Đuổi Bóng Mực, làm chữ sáng lại",
+    "play": "Thay phiên trả lời, cùng trừ máu Bóng Mực",
+    "learn": "Chính tả, bảng chữ cái, dấu câu, từ trái nghĩa, cộng có nhớ, xem lịch",
+    "reward": "Xu, kinh nghiệm cho mỗi bạn",
+    "next": "Chơi lại cùng đội khác"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "gap",
+    "challenge": "cung-choi",
+    "decision": "cung-choi",
+    "finale": "ket",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Ông Gác Sách Đêm",
+      "kind": "dialogue",
+      "target": "ong-gac-sach-dem",
+      "trigger": "interact",
+      "lines": [
+        {
+          "speaker": "Ông Gác Sách Đêm",
+          "text": "Suỵt… {name} ơi, có một Bóng Mực đang làm nhòe chữ trong sách của thư viện."
+        },
+        {
+          "speaker": "Ông Gác Sách Đêm",
+          "text": "Cả đội thay nhau trả lời đúng thì chữ sẽ sáng lại và Bóng Mực phải đi chỗ khác."
+        }
+      ],
+      "en": {
+        "title": "Meet Ông Gác Sách Đêm",
+        "lines": [
+          "Shh… {name}, an Ink Shadow is smudging the words in the library's books.",
+          "If the team takes turns answering right, the words shine again and the Shadow has to leave."
+        ]
+      }
+    },
+    {
+      "id": "cung-choi",
+      "title": "Đấu Bóng Mực",
+      "kind": "coop",
+      "trigger": "auto",
+      "mode": "team-boss",
+      "prompt": "Cả đội chung một thanh máu của Bóng Mực: đến lượt ai người ấy trả lời, đúng là chữ sáng lại.",
+      "guide": [
+        "Đến lượt mình thì chọn đáp án cho cả đội.",
+        "Mỗi câu đúng làm Bóng Mực yếu đi.",
+        "Cần thì xem Gợi ý: không ai bị chê cả."
+      ],
+      "seats": 3,
+      "feedback": {
+        "right": [
+          "Chữ sáng lấp lánh rồi, Bóng Mực co rúm lại!",
+          "Một trang sách sạch tinh, giỏi lắm cả đội!",
+          "Đúng rồi, Bóng Mực nhạt dần đi kìa."
+        ],
+        "wrong": [
+          "Bóng Mực che mất chữ, bạn thử lại nhé.",
+          "Chưa đúng, đọc chậm lại từng chữ nào.",
+          "Suỵt, bình tĩnh nghĩ thêm, ông chờ được."
+        ],
+        "en": {
+          "right": [
+            "The words sparkle and the Ink Shadow shrinks!",
+            "A spotless page, well done team!",
+            "Right, the Ink Shadow is fading away."
+          ],
+          "wrong": [
+            "The Shadow is covering the words; try again.",
+            "Not yet; read each word slowly.",
+            "Shh, stay calm and think a little more; I can wait."
+          ]
+        }
+      },
+      "en": {
+        "title": "Ink duel",
+        "prompt": "The team shares the Ink Shadow's health bar: whoever's turn it is answers; a right answer brings the words back.",
+        "guide": [
+          "On your turn, pick the answer for the team.",
+          "Each right answer weakens the Ink Shadow.",
+          "Look at the Hint if needed: nobody is ever teased."
+        ]
+      },
+      "boss": {
+        "name": "Bóng Mực Nghịch Ngợm",
+        "maxHp": 500,
+        "intro": "Hí hí! Ta đã làm nhòe hết chữ trên các trang sách rồi!",
+        "win": "Chữ sáng rõ lại rồi! Bóng Mực xin lỗi và hứa giữ sách thật sạch.",
+        "en": {
+          "name": "Naughty Ink Shadow",
+          "intro": "Hee hee! I have smudged every word on every page!",
+          "win": "The words are bright again! The Ink Shadow says sorry and promises to keep books clean."
+        }
+      },
+      "turns": [
+        {
+          "id": "van-ach",
+          "prompt": "Chữ bị nhòe: \"quyển s…ch\". Vần nào điền đúng?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ạch"
+            },
+            {
+              "id": "b",
+              "text": "ếch"
+            },
+            {
+              "id": "c",
+              "text": "ách"
+            }
+          ],
+          "answer": {
+            "choice": "c"
+          },
+          "hint": "Đọc to \"quyển sách\" rồi nghe vần.",
+          "explain": "Ta viết \"quyển sách\", vần \"ách\" mang thanh sắc.",
+          "damage": 100,
+          "en": {
+            "prompt": "A smudged word: \"quyển s…ch\" (book). Which rhyme fills it?",
+            "choices": [
+              "ạch",
+              "ếch",
+              "ách"
+            ],
+            "hint": "Say \"quyển sách\" aloud and listen to the rhyme.",
+            "explain": "We write \"quyển sách\": the rhyme is \"ách\" with the rising tone."
+          }
+        },
+        {
+          "id": "chu-dau",
+          "prompt": "Trong ba chữ cái d, b, g, chữ nào đứng đầu trong bảng chữ cái?",
+          "skill": "bang-chu-cai",
+          "choices": [
+            {
+              "id": "a",
+              "text": "d"
+            },
+            {
+              "id": "b",
+              "text": "g"
+            },
+            {
+              "id": "c",
+              "text": "b"
+            }
+          ],
+          "answer": {
+            "choice": "c"
+          },
+          "hint": "Đọc bảng chữ cái từ đầu: a, ă, â, b…",
+          "explain": "Bảng chữ cái có b trước d và g, nên b đứng đầu.",
+          "damage": 100,
+          "en": {
+            "prompt": "Of the letters d, b and g, which comes first in the alphabet?",
+            "choices": [
+              "d",
+              "g",
+              "b"
+            ],
+            "hint": "Say the alphabet from the start: a, ă, â, b…",
+            "explain": "b comes before d and g, so b is first."
+          }
+        },
+        {
+          "id": "ke-truyen",
+          "prompt": "Kệ có 34 quyển truyện và 28 quyển thơ. Kệ có tất cả bao nhiêu quyển?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "6"
+            },
+            {
+              "id": "b",
+              "text": "62"
+            },
+            {
+              "id": "c",
+              "text": "52"
+            }
+          ],
+          "answer": {
+            "choice": "b"
+          },
+          "hint": "Cộng hai số, hàng đơn vị 4 + 8 phải nhớ 1.",
+          "explain": "Lấy 34 + 28 = 62 quyển sách.",
+          "damage": 100,
+          "en": {
+            "prompt": "A shelf holds 34 storybooks and 28 poetry books. How many books in all?",
+            "choices": [
+              "6",
+              "62",
+              "52"
+            ],
+            "hint": "Add the two numbers; 4 + 8 in the ones means carrying 1.",
+            "explain": "34 + 28 = 62 books."
+          }
+        },
+        {
+          "id": "dau-hoi",
+          "prompt": "Câu nào dùng đúng dấu chấm hỏi?",
+          "skill": "dau-cau",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Bạn đọc xong truyện chưa."
+            },
+            {
+              "id": "b",
+              "text": "Bạn đọc xong? truyện chưa"
+            },
+            {
+              "id": "c",
+              "text": "Bạn đọc xong truyện chưa?"
+            }
+          ],
+          "answer": {
+            "choice": "c"
+          },
+          "hint": "Dấu chấm hỏi đặt ở cuối câu hỏi.",
+          "explain": "\"Bạn đọc xong truyện chưa?\" là câu hỏi nên kết thúc bằng dấu chấm hỏi.",
+          "damage": 100,
+          "en": {
+            "prompt": "Which sentence uses the question mark correctly?",
+            "choices": [
+              "Have you finished the story.",
+              "Have you? finished the story",
+              "Have you finished the story?"
+            ],
+            "hint": "The question mark goes at the end of a question.",
+            "explain": "\"Have you finished the story?\" is a question, so it ends with a question mark."
+          }
+        },
+        {
+          "id": "trai-nghia",
+          "prompt": "Từ nào trái nghĩa với \"sạch sẽ\"?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "bẩn thỉu"
+            },
+            {
+              "id": "b",
+              "text": "gọn gàng"
+            },
+            {
+              "id": "c",
+              "text": "thơm tho"
+            }
+          ],
+          "answer": {
+            "choice": "a"
+          },
+          "hint": "Trái nghĩa là có nghĩa ngược hẳn lại.",
+          "explain": "\"Bẩn thỉu\" ngược nghĩa với \"sạch sẽ\".",
+          "damage": 100,
+          "en": {
+            "prompt": "Which word is the opposite of \"clean\"?",
+            "choices": [
+              "grimy",
+              "tidy",
+              "sweet-smelling"
+            ],
+            "hint": "An opposite means the very reverse.",
+            "explain": "\"Grimy\" is the reverse of \"clean\"."
+          }
+        },
+        {
+          "id": "tra-sach",
+          "prompt": "Bạn mượn sách vào ngày 5 và trả sau 7 ngày. Bạn trả sách vào ngày nào?",
+          "skill": "xem-lich",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Ngày 2"
+            },
+            {
+              "id": "b",
+              "text": "Ngày 11"
+            },
+            {
+              "id": "c",
+              "text": "Ngày 12"
+            }
+          ],
+          "answer": {
+            "choice": "c"
+          },
+          "hint": "Đếm thêm 7 ngày kể từ ngày 5.",
+          "explain": "Lấy 5 + 7 = 12, bạn trả sách vào ngày 12.",
+          "damage": 100,
+          "en": {
+            "prompt": "You borrow a book on the 5th and return it 7 days later. On which day do you return it?",
+            "choices": [
+              "The 2nd",
+              "The 11th",
+              "The 12th"
+            ],
+            "hint": "Count on 7 days from the 5th.",
+            "explain": "5 + 7 = 12: you return it on the 12th."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ket",
+      "title": "Chữ sáng lại",
+      "kind": "dialogue",
+      "trigger": "auto",
+      "lines": [
+        {
+          "speaker": "Ông Gác Sách Đêm",
+          "text": "Thư viện sạch bong rồi, chữ nào cũng rõ ràng!"
+        },
+        {
+          "speaker": "Ông Gác Sách Đêm",
+          "text": "Bóng Mực xin được ở lại làm mực cho các bạn tập viết đấy."
+        }
+      ],
+      "en": {
+        "title": "Words shine",
+        "lines": [
+          "The library is spotless again, every word clear!",
+          "The Ink Shadow asks to stay on as ink for the children's handwriting."
+        ]
+      }
+    },
+    {
+      "id": "thuong",
+      "title": "Quà thư viện",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ông Gác Sách tặng mỗi bạn phần thưởng của thư viện.",
+      "en": {
+        "title": "Library gifts",
+        "text": "The night librarian gives each friend a library gift."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Hẹn đêm sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đêm nào Bóng Mực quay lại, ông sẽ gọi cả đội.",
+      "en": {
+        "title": "Another night",
+        "text": "If the Ink Shadow ever returns, I will call the team."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 25,
+    "skillXp": {
+      "chinh-ta": 10,
+      "dau-cau": 10,
+      "tu-ngu": 10
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Chasing the Ink Shadow off the shelves",
+    "summary": "The Ink Shadow smudged the words in the books: the team takes turns, each right answer makes the words shine again."
+  }
+}

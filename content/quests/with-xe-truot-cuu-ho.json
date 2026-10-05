@@ -1,0 +1,428 @@
+{
+  "id": "with-xe-truot-cuu-ho",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Cùng kéo xe trượt cứu hộ",
+  "summary": "Bạn nai nhỏ bị kẹt trên dốc tuyết: mỗi bạn lo một việc, rồi cả đội cùng giữ dây kéo xe trượt.",
+  "category": "coop",
+  "status": "active",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Đội giúp Chú Cứu Hộ Núi",
+    "where": "Trạm thám hiểm Núi tuyết",
+    "goal": "Kéo xe trượt cứu bạn nai nhỏ",
+    "play": "Mỗi bạn giải câu của mình, cả đội cùng giữ dây",
+    "learn": "Cộng trừ có nhớ, từ trái nghĩa, chính tả tr/ch, xem giờ, so sánh số",
+    "reward": "Xu, kinh nghiệm cho mỗi bạn",
+    "next": "Chơi lại cùng đội khác"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "gap",
+    "challenge": "cung-choi",
+    "decision": "cung-choi",
+    "finale": "ket",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Chú Cứu Hộ Núi",
+      "kind": "dialogue",
+      "target": "chu-cuu-ho-nui",
+      "trigger": "interact",
+      "lines": [
+        {
+          "speaker": "Chú Cứu Hộ Núi",
+          "text": "Khẩn cấp, {name}! Bạn nai nhỏ bị kẹt trên dốc tuyết phía bắc."
+        },
+        {
+          "speaker": "Chú Cứu Hộ Núi",
+          "text": "Một mình chú không kéo nổi xe trượt, cả đội cùng giữ dây giúp chú nhé."
+        }
+      ],
+      "en": {
+        "title": "Meet Chú Cứu Hộ Núi",
+        "lines": [
+          "Emergency, {name}! A little deer is stuck on the north snow slope.",
+          "I cannot pull the sled alone; hold the rope with me, team."
+        ]
+      }
+    },
+    {
+      "id": "cung-choi",
+      "title": "Kéo xe trượt",
+      "kind": "coop",
+      "trigger": "auto",
+      "mode": "together",
+      "prompt": "Mỗi vòng: trả lời câu của mình rồi bấm \"Giữ chặt\". Cả đội cùng giữ một lúc thì xe trượt tiến lên.",
+      "guide": [
+        "Trả lời câu của mình trước tiên.",
+        "Bấm Giữ chặt rồi chờ đồng đội cùng giữ.",
+        "Dây tuột thì giữ lại, xe trượt không bao giờ lăn ngược."
+      ],
+      "seats": 3,
+      "feedback": {
+        "right": [
+          "Xe trượt nhích lên, bạn nai vẫy tai mừng rỡ!",
+          "Giỏi lắm, cả đội như một đội cứu hộ thật!",
+          "Đúng rồi, gió tuyết cũng phải chịu thua."
+        ],
+        "wrong": [
+          "Tuyết trơn quá, mình thử lại nhé.",
+          "Chưa đúng, hà hơi cho ấm tay rồi nghĩ tiếp.",
+          "Cẩn thận như cứu hộ viên, đọc lại nào."
+        ],
+        "en": {
+          "right": [
+            "The sled inches up and the deer flicks its ears happily!",
+            "Great, the team is a real rescue crew!",
+            "Right, even the blizzard gives in."
+          ],
+          "wrong": [
+            "The snow is so slippery; try again.",
+            "Not yet; blow on your hands to warm them, then think on.",
+            "Careful like a rescuer: read it again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Pull the sled",
+        "prompt": "Each round: answer your question, then tap \"Hold tight\". When everyone holds at once, the sled moves up.",
+        "guide": [
+          "Before the rope, answer your own question.",
+          "Tap Hold tight, then wait for your teammates.",
+          "If the rope slips, hold again: the sled never rolls back."
+        ]
+      },
+      "rounds": [
+        {
+          "id": "chang-mot",
+          "title": "Buộc dây vào xe trượt",
+          "tasks": [
+            {
+              "id": "noi-day",
+              "prompt": "Đội có hai sợi dây dài 8 m và 6 m. Nối lại được sợi dài bao nhiêu mét?",
+              "skill": "phep-cong",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "12 m"
+                },
+                {
+                  "id": "b",
+                  "text": "14 m"
+                },
+                {
+                  "id": "c",
+                  "text": "2 m"
+                }
+              ],
+              "answer": {
+                "choice": "b"
+              },
+              "hint": "Nối hai sợi là cộng hai độ dài.",
+              "explain": "Lấy 8 m + 6 m = 14 m.",
+              "en": {
+                "prompt": "The team has two ropes, 8 m and 6 m long. How long are they tied together?",
+                "choices": [
+                  "12 m",
+                  "14 m",
+                  "2 m"
+                ],
+                "hint": "Tying two ropes means adding their lengths.",
+                "explain": "8 m + 6 m = 14 m."
+              }
+            },
+            {
+              "id": "lanh-nong",
+              "prompt": "Từ nào trái nghĩa với \"lạnh\"?",
+              "skill": "tu-ngu",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "rét"
+                },
+                {
+                  "id": "b",
+                  "text": "buốt"
+                },
+                {
+                  "id": "c",
+                  "text": "nóng"
+                }
+              ],
+              "answer": {
+                "choice": "c"
+              },
+              "hint": "Tìm từ có nghĩa ngược với lạnh.",
+              "explain": "\"Nóng\" ngược nghĩa với \"lạnh\"; \"rét\" và \"buốt\" lại gần nghĩa với lạnh.",
+              "en": {
+                "prompt": "Which word is the opposite of \"cold\"?",
+                "choices": [
+                  "chilly",
+                  "biting",
+                  "hot"
+                ],
+                "hint": "Find the word meaning the reverse of cold.",
+                "explain": "\"Hot\" is the reverse of \"cold\"; \"chilly\" and \"biting\" mean nearly the same as cold."
+              }
+            }
+          ],
+          "en": {
+            "title": "Tie the rope to the sled"
+          }
+        },
+        {
+          "id": "chang-hai",
+          "title": "Kéo xe qua dốc tuyết",
+          "tasks": [
+            {
+              "id": "doc-dai",
+              "prompt": "Dốc tuyết dài 70 m, đã kéo được 45 m. Còn bao nhiêu mét nữa?",
+              "skill": "phep-tru",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "25 m"
+                },
+                {
+                  "id": "b",
+                  "text": "35 m"
+                },
+                {
+                  "id": "c",
+                  "text": "115 m"
+                }
+              ],
+              "answer": {
+                "choice": "a"
+              },
+              "hint": "Lấy chiều dài con dốc trừ quãng đã kéo.",
+              "explain": "Lấy 70 m − 45 m = 25 m.",
+              "en": {
+                "prompt": "The snow slope is 70 m long and 45 m are done. How many metres are left?",
+                "choices": [
+                  "25 m",
+                  "35 m",
+                  "115 m"
+                ],
+                "hint": "Subtract the part already pulled from the slope.",
+                "explain": "70 m − 45 m = 25 m."
+              }
+            },
+            {
+              "id": "truot-tuyet",
+              "prompt": "Trò chơi trên dốc tuyết viết thế nào cho đúng?",
+              "skill": "chinh-ta",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "trược tuyết"
+                },
+                {
+                  "id": "b",
+                  "text": "trượt tuyết"
+                },
+                {
+                  "id": "c",
+                  "text": "chượt tuyết"
+                }
+              ],
+              "answer": {
+                "choice": "b"
+              },
+              "hint": "\"Trượt\" viết bằng \"tr\", vần \"ươt\" thanh nặng.",
+              "explain": "Ta viết \"trượt tuyết\": âm đầu tr, vần ươt.",
+              "en": {
+                "prompt": "How is the snow-slope game spelt correctly?",
+                "choices": [
+                  "trược tuyết",
+                  "trượt tuyết (skiing)",
+                  "chượt tuyết"
+                ],
+                "hint": "\"Trượt\" is spelt with \"tr\" and the rhyme \"ươt\" with the falling-heavy tone.",
+                "explain": "We write \"trượt tuyết\": tr at the start, the rhyme ươt."
+              }
+            },
+            {
+              "id": "hang-cut",
+              "prompt": "Năm bạn xếp hàng, chim cánh cụt đứng thứ 3. Có mấy bạn đứng sau cánh cụt?",
+              "skill": "logic",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "5"
+                },
+                {
+                  "id": "b",
+                  "text": "2"
+                },
+                {
+                  "id": "c",
+                  "text": "3"
+                }
+              ],
+              "answer": {
+                "choice": "b"
+              },
+              "hint": "Vẽ 5 chấm, tô chấm thứ ba rồi đếm các chấm phía sau.",
+              "explain": "Đứng thứ 3 trong 5 bạn thì phía sau còn 5 − 3 = 2 bạn.",
+              "en": {
+                "prompt": "Five friends stand in a line and the penguin is third. How many stand behind it?",
+                "choices": [
+                  "5",
+                  "2",
+                  "3"
+                ],
+                "hint": "Draw 5 dots, colour the third, then count the dots after it.",
+                "explain": "Third of five leaves 5 − 3 = 2 friends behind."
+              }
+            }
+          ],
+          "en": {
+            "title": "Haul the sled up the snow slope"
+          }
+        },
+        {
+          "id": "chang-ba",
+          "title": "Đưa bạn nai về trạm",
+          "tasks": [
+            {
+              "id": "sau-gio",
+              "prompt": "Kim ngắn chỉ số 6, kim dài chỉ số 12. Đồng hồ chỉ mấy giờ?",
+              "skill": "xem-dong-ho",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "6 giờ"
+                },
+                {
+                  "id": "b",
+                  "text": "12 giờ"
+                },
+                {
+                  "id": "c",
+                  "text": "12 giờ rưỡi"
+                }
+              ],
+              "answer": {
+                "choice": "a"
+              },
+              "hint": "Kim ngắn chỉ giờ, kim dài ở số 12 là giờ đúng.",
+              "explain": "Kim ngắn ở số 6, kim dài ở số 12 nên đồng hồ chỉ 6 giờ đúng.",
+              "en": {
+                "prompt": "The short hand points to 6 and the long hand to 12. What time is it?",
+                "choices": [
+                  "6 o'clock",
+                  "12 o'clock",
+                  "Half past twelve"
+                ],
+                "hint": "The short hand shows the hour; the long hand on 12 means exactly on the hour.",
+                "explain": "The short hand on 6 and the long hand on 12 make 6 o'clock exactly."
+              }
+            },
+            {
+              "id": "so-sanh",
+              "prompt": "Chọn dấu đúng: 48 … 84",
+              "skill": "so-sanh-so",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": ">"
+                },
+                {
+                  "id": "b",
+                  "text": "="
+                },
+                {
+                  "id": "c",
+                  "text": "<"
+                }
+              ],
+              "answer": {
+                "choice": "c"
+              },
+              "hint": "So sánh chữ số hàng chục: 4 chục và 8 chục.",
+              "explain": "48 có 4 chục, 84 có 8 chục nên 48 < 84.",
+              "en": {
+                "prompt": "Pick the right sign: 48 … 84",
+                "choices": [
+                  ">",
+                  "=",
+                  "<"
+                ],
+                "hint": "Compare the tens: 4 tens and 8 tens.",
+                "explain": "48 has 4 tens and 84 has 8 tens, so 48 < 84."
+              }
+            }
+          ],
+          "en": {
+            "title": "Bring the little deer back to the station"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ket",
+      "title": "Nai về trạm",
+      "kind": "dialogue",
+      "trigger": "auto",
+      "lines": [
+        {
+          "speaker": "Chú Cứu Hộ Núi",
+          "text": "Bạn nai nhỏ đã về trạm, quấn chăn ấm rồi!"
+        },
+        {
+          "speaker": "Chú Cứu Hộ Núi",
+          "text": "Chú cứu hộ nói cả đội xứng đáng được gắn huy hiệu cứu hộ đấy."
+        }
+      ],
+      "en": {
+        "title": "Deer is safe",
+        "lines": [
+          "The little deer is back at the station, wrapped in a warm blanket!",
+          "The rescuer says the team deserves a rescue badge."
+        ]
+      }
+    },
+    {
+      "id": "thuong",
+      "title": "Quà núi tuyết",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Cứu Hộ tặng mỗi bạn phần thưởng của núi tuyết.",
+      "en": {
+        "title": "Mountain gifts",
+        "text": "The rescuer gives each friend a gift from the snowy mountain."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Hẹn mùa đông",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mùa đông còn dài, trạm cứu hộ luôn cần thêm đội.",
+      "en": {
+        "title": "Winter again",
+        "text": "Winter is long: the rescue station always needs more teams."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 25,
+    "skillXp": {
+      "phep-cong": 10,
+      "phep-tru": 10,
+      "tu-ngu": 10
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Pulling the rescue sled together",
+    "summary": "A little deer is stuck on a snowy slope: each friend takes a job, then the team holds the sled rope together."
+  }
+}

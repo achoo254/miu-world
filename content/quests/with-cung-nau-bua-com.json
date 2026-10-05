@@ -1,0 +1,428 @@
+{
+  "id": "with-cung-nau-bua-com",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Cả nhà cùng nấu bữa cơm",
+  "summary": "Bữa cơm trưa cần nhiều đôi tay: mỗi bạn lo một món rồi cả đội cùng bưng mâm ra sân.",
+  "category": "coop",
+  "status": "active",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Đội giúp Bà Nội Bếp Nhà",
+    "where": "Sân trước Nhà của bé",
+    "goal": "Nấu xong bữa cơm trưa cho cả nhà",
+    "play": "Mỗi bạn giải câu của mình, cả đội cùng giữ mâm",
+    "learn": "Cộng trừ, lít, chính tả c/k, xem giờ, câu kể việc làm",
+    "reward": "Xu, kinh nghiệm cho mỗi bạn",
+    "next": "Chơi lại cùng đội khác"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "gap",
+    "challenge": "cung-choi",
+    "decision": "cung-choi",
+    "finale": "ket",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Bà Nội Bếp Nhà",
+      "kind": "dialogue",
+      "target": "ba-noi-bep-nha",
+      "trigger": "interact",
+      "lines": [
+        {
+          "speaker": "Bà Nội Bếp Nhà",
+          "text": "{name} ơi, trưa nay cả nhà có khách, bà nấu một mình không kịp mất."
+        },
+        {
+          "speaker": "Bà Nội Bếp Nhà",
+          "text": "Rủ các bạn cùng vào bếp nhé: mỗi đứa một việc, rồi cùng bưng mâm cho khéo."
+        }
+      ],
+      "en": {
+        "title": "Meet Bà Nội Bếp Nhà",
+        "lines": [
+          "{name}, we have guests for lunch today and I cannot cook it all alone.",
+          "Bring your friends into the kitchen: one job each, then carry the tray out together, gently."
+        ]
+      }
+    },
+    {
+      "id": "cung-choi",
+      "title": "Nấu từng món",
+      "kind": "coop",
+      "trigger": "auto",
+      "mode": "together",
+      "prompt": "Mỗi vòng: trả lời câu của mình rồi bấm \"Giữ chặt\". Cả đội cùng giữ một lúc thì món ăn xong.",
+      "guide": [
+        "Làm câu của mình trước, như nhặt rau trước khi nấu.",
+        "Bấm Giữ chặt rồi chờ cả đội cùng giữ.",
+        "Ai cũng có phần việc, không ai phải đứng ngoài."
+      ],
+      "seats": 3,
+      "feedback": {
+        "right": [
+          "Thơm phức! Món này xong rồi đấy.",
+          "Cháu bà khéo tay ghê, bếp vui hẳn lên!",
+          "Đúng rồi, mâm cơm sắp đủ món rồi."
+        ],
+        "wrong": [
+          "Hình như nêm chưa vừa, thử lại nhé.",
+          "Chưa đúng, bà chờ, cháu nghĩ thong thả.",
+          "Rửa tay rồi nghĩ lại một lần nữa nào."
+        ],
+        "en": {
+          "right": [
+            "Smells lovely! This dish is done.",
+            "So handy in the kitchen, it is livelier already!",
+            "Right, the tray is almost full."
+          ],
+          "wrong": [
+            "The seasoning is not quite right; try again.",
+            "Not yet; take your time, Grandma will wait.",
+            "Wash your hands and think it over once more."
+          ]
+        }
+      },
+      "en": {
+        "title": "Dish by dish",
+        "prompt": "Each round: answer your question, then tap \"Hold tight\". When everyone holds at once, the dish is ready.",
+        "guide": [
+          "Do your question first, like washing the greens before cooking.",
+          "Tap Hold tight and wait for the whole team to hold.",
+          "Everyone has a job; nobody is left out."
+        ]
+      },
+      "rounds": [
+        {
+          "id": "mon-mot",
+          "title": "Nhặt rau và vo gạo",
+          "tasks": [
+            {
+              "id": "ca-chua",
+              "prompt": "Mẹ mua 12 quả cà chua, đã dùng 5 quả. Còn mấy quả cà chua?",
+              "skill": "phep-tru",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "17"
+                },
+                {
+                  "id": "b",
+                  "text": "6"
+                },
+                {
+                  "id": "c",
+                  "text": "7"
+                }
+              ],
+              "answer": {
+                "choice": "c"
+              },
+              "hint": "Lấy số quả mẹ mua trừ số quả đã dùng.",
+              "explain": "Lấy 12 − 5 = 7 quả cà chua.",
+              "en": {
+                "prompt": "Mum bought 12 tomatoes and used 5. How many tomatoes are left?",
+                "choices": [
+                  "17",
+                  "6",
+                  "7"
+                ],
+                "hint": "Subtract the tomatoes used from those bought.",
+                "explain": "12 − 5 = 7 tomatoes."
+              }
+            },
+            {
+              "id": "nuoc-com",
+              "prompt": "Nồi cơm cần 2 lít nước, bà đã đổ 1 lít. Cần đổ thêm mấy lít?",
+              "skill": "dung-tich",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "1 lít"
+                },
+                {
+                  "id": "b",
+                  "text": "3 lít"
+                },
+                {
+                  "id": "c",
+                  "text": "2 lít"
+                }
+              ],
+              "answer": {
+                "choice": "a"
+              },
+              "hint": "Lấy số lít cần trừ số lít đã đổ.",
+              "explain": "Lấy 2 lít − 1 lít = 1 lít.",
+              "en": {
+                "prompt": "The rice pot needs 2 litres of water and Grandma poured 1. How much more is needed?",
+                "choices": [
+                  "1 litre",
+                  "3 litres",
+                  "2 litres"
+                ],
+                "hint": "Subtract what was poured from what is needed.",
+                "explain": "2 litres − 1 litre = 1 litre."
+              }
+            }
+          ],
+          "en": {
+            "title": "Wash the greens and rinse the rice"
+          }
+        },
+        {
+          "id": "mon-hai",
+          "title": "Cùng khuấy nồi canh",
+          "tasks": [
+            {
+              "id": "khuay-canh",
+              "prompt": "Trong các từ \"nồi\", \"khuấy\", \"thơm\", từ nào chỉ hoạt động?",
+              "skill": "tu-ngu",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "thơm"
+                },
+                {
+                  "id": "b",
+                  "text": "khuấy"
+                },
+                {
+                  "id": "c",
+                  "text": "nồi"
+                }
+              ],
+              "answer": {
+                "choice": "b"
+              },
+              "hint": "Từ chỉ hoạt động là việc mình làm trong bếp.",
+              "explain": "\"Khuấy\" là việc làm nên là từ chỉ hoạt động.",
+              "en": {
+                "prompt": "Among \"pot\", \"to stir\" and \"fragrant\", which word names an action?",
+                "choices": [
+                  "fragrant",
+                  "to stir",
+                  "pot"
+                ],
+                "hint": "An action word is something you do in the kitchen.",
+                "explain": "\"To stir\" is something you do, so it names an action."
+              }
+            },
+            {
+              "id": "bat-com",
+              "prompt": "Bữa cơm có 4 người, mỗi người dùng 2 cái bát. Cần tất cả bao nhiêu cái bát?",
+              "skill": "phep-cong",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "8"
+                },
+                {
+                  "id": "b",
+                  "text": "6"
+                },
+                {
+                  "id": "c",
+                  "text": "42"
+                }
+              ],
+              "answer": {
+                "choice": "a"
+              },
+              "hint": "Bốn người là 2 + 2 + 2 + 2.",
+              "explain": "Lấy 2 + 2 + 2 + 2 = 8 cái bát.",
+              "en": {
+                "prompt": "Four people eat and each uses 2 bowls. How many bowls are needed?",
+                "choices": [
+                  "8",
+                  "6",
+                  "42"
+                ],
+                "hint": "Four people make 2 + 2 + 2 + 2.",
+                "explain": "2 + 2 + 2 + 2 = 8 bowls."
+              }
+            },
+            {
+              "id": "noi-canh",
+              "prompt": "Bà nấu món gì trong nồi? Chọn từ viết đúng.",
+              "skill": "chinh-ta",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "nồi kanh"
+                },
+                {
+                  "id": "b",
+                  "text": "nồi qanh"
+                },
+                {
+                  "id": "c",
+                  "text": "nồi canh"
+                }
+              ],
+              "answer": {
+                "choice": "c"
+              },
+              "hint": "\"k\" chỉ đứng trước i, e, ê; trước \"a\" ta viết \"c\".",
+              "explain": "Trước vần \"anh\" ta viết chữ c: nồi canh.",
+              "en": {
+                "prompt": "What is cooking in Grandma's pot? Pick the right spelling.",
+                "choices": [
+                  "nồi kanh",
+                  "nồi qanh",
+                  "nồi canh (soup pot)"
+                ],
+                "hint": "\"k\" only goes before i, e, ê; before \"a\" we write \"c\".",
+                "explain": "Before the rhyme \"anh\" we write c: nồi canh."
+              }
+            }
+          ],
+          "en": {
+            "title": "Stir the soup pot together"
+          }
+        },
+        {
+          "id": "mon-ba",
+          "title": "Bưng mâm cơm ra sân",
+          "tasks": [
+            {
+              "id": "an-trua",
+              "prompt": "Cơm chín lúc 11 giờ, nửa giờ sau cả nhà ăn trưa. Cả nhà ăn lúc mấy giờ?",
+              "skill": "xem-dong-ho",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "11 giờ rưỡi"
+                },
+                {
+                  "id": "b",
+                  "text": "12 giờ"
+                },
+                {
+                  "id": "c",
+                  "text": "10 giờ rưỡi"
+                }
+              ],
+              "answer": {
+                "choice": "a"
+              },
+              "hint": "Nửa giờ sau 11 giờ là giờ rưỡi.",
+              "explain": "Từ 11 giờ thêm nửa giờ là 11 giờ rưỡi.",
+              "en": {
+                "prompt": "The rice is cooked at 11 and the family eats half an hour later. When do they eat?",
+                "choices": [
+                  "Half past eleven",
+                  "12 o'clock",
+                  "Half past ten"
+                ],
+                "hint": "Half an hour after 11 is half past.",
+                "explain": "11 o'clock plus half an hour is half past eleven."
+              }
+            },
+            {
+              "id": "viec-be",
+              "prompt": "Câu nào kể về việc làm của bé?",
+              "skill": "cau",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "Mâm cơm thật đầy đủ."
+                },
+                {
+                  "id": "b",
+                  "text": "Bát đĩa màu trắng tinh."
+                },
+                {
+                  "id": "c",
+                  "text": "Bé bày bát đĩa ra mâm."
+                }
+              ],
+              "answer": {
+                "choice": "c"
+              },
+              "hint": "Tìm câu nói bé đang làm gì.",
+              "explain": "\"Bé bày bát đĩa ra mâm.\" cho biết bé đang làm việc bày bát đĩa.",
+              "en": {
+                "prompt": "Which sentence tells what the child is doing?",
+                "choices": [
+                  "The tray is full of food.",
+                  "The dishes are snow white.",
+                  "The child sets the bowls on the tray."
+                ],
+                "hint": "Find the sentence that says what the child does.",
+                "explain": "\"The child sets the bowls on the tray.\" tells what the child is doing."
+              }
+            }
+          ],
+          "en": {
+            "title": "Carry the tray out to the yard"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ket",
+      "title": "Mâm cơm đủ đầy",
+      "kind": "dialogue",
+      "trigger": "auto",
+      "lines": [
+        {
+          "speaker": "Bà Nội Bếp Nhà",
+          "text": "Mâm cơm bày ra sân rồi, khách khen ngon nức nở!"
+        },
+        {
+          "speaker": "Bà Nội Bếp Nhà",
+          "text": "Bà bảo bữa cơm ngon nhất là bữa có cả nhà cùng nấu."
+        }
+      ],
+      "en": {
+        "title": "Meal served",
+        "lines": [
+          "The meal is laid out in the yard and the guests rave about it!",
+          "Grandma says the tastiest meal is the one everyone cooks together."
+        ]
+      }
+    },
+    {
+      "id": "thuong",
+      "title": "Quà bếp nhà",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bà Nội tặng mỗi bạn phần thưởng của bếp nhà.",
+      "en": {
+        "title": "Kitchen treats",
+        "text": "Grandma gives each friend a kitchen treat."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Hẹn bữa sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bữa sau bà lại chờ cả đội vào bếp.",
+      "en": {
+        "title": "Next meal",
+        "text": "Grandma will wait for the team in the kitchen next time."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 25,
+    "skillXp": {
+      "phep-tru": 10,
+      "tu-ngu": 10,
+      "dung-tich": 10
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Cooking the family meal together",
+    "summary": "Lunch needs many hands: each friend handles a dish, then the team carries the tray out together."
+  }
+}

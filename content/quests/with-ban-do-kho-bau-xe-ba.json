@@ -1,0 +1,308 @@
+{
+  "id": "with-ban-do-kho-bau-xe-ba",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Ghép tấm bản đồ kho báu xé ba",
+  "summary": "Tấm bản đồ kho báu bị xé làm nhiều mảnh: mỗi bạn giữ một mảnh, cả đội ghép lại tìm rương.",
+  "category": "coop",
+  "status": "active",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Đội giúp Bà Thuyền Trưởng Gió",
+    "where": "Trại thám hiểm trên Đảo bí ẩn",
+    "goal": "Ghép bản đồ, tìm rương kho báu",
+    "play": "Mỗi bạn giữ mảnh bản đồ, cùng ghép và trả lời",
+    "learn": "Cộng trừ trong phạm vi 100, suy luận loại trừ",
+    "reward": "Xu, kinh nghiệm cho mỗi bạn",
+    "next": "Chơi lại cùng đội khác"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "gap",
+    "challenge": "cung-choi",
+    "decision": "cung-choi",
+    "finale": "ket",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Bà Thuyền Trưởng Gió",
+      "kind": "dialogue",
+      "target": "ba-thuyen-truong-gio",
+      "trigger": "interact",
+      "lines": [
+        {
+          "speaker": "Bà Thuyền Trưởng Gió",
+          "text": "Ha ha, {name}! Bà tìm được tấm bản đồ kho báu, nhưng nó bị xé làm mấy mảnh."
+        },
+        {
+          "speaker": "Bà Thuyền Trưởng Gió",
+          "text": "Mỗi bạn cầm một mảnh. Ghép đủ mảnh thì cả đội sẽ biết rương ở đâu!"
+        }
+      ],
+      "en": {
+        "title": "Meet Bà Thuyền Trưởng Gió",
+        "lines": [
+          "Ha ha, {name}! I found a treasure map, but it is torn into pieces.",
+          "Each friend holds a piece. Put them all together and the team will know where the chest is!"
+        ]
+      }
+    },
+    {
+      "id": "cung-choi",
+      "title": "Ghép bản đồ",
+      "kind": "coop",
+      "trigger": "auto",
+      "mode": "pieces",
+      "prompt": "Mỗi bạn giữ vài mảnh bản đồ. Cho cả đội xem mảnh của mình, rồi bạn đến lượt trả lời.",
+      "guide": [
+        "Bấm \"Cho cả đội xem\" để mở mảnh bản đồ của mình.",
+        "Đủ mảnh rồi, bạn đến lượt chọn đáp án.",
+        "Sai thì gió biển thổi qua, cả đội thử lại thôi."
+      ],
+      "seats": 3,
+      "feedback": {
+        "right": [
+          "Ha ha, mảnh bản đồ khớp rồi, giương buồm nào!",
+          "Cả đội đọc bản đồ giỏi như thủy thủ già!",
+          "Chuẩn rồi, kho báu gần lắm đây."
+        ],
+        "wrong": [
+          "Sóng đánh lệch mảnh rồi, ghép lại nhé.",
+          "Chưa đúng, nheo mắt đọc lại bản đồ đi.",
+          "Bà thuyền trưởng chờ, cả đội bàn thêm nào."
+        ],
+        "en": {
+          "right": [
+            "Ha ha, the piece fits; hoist the sails!",
+            "The team reads maps like old sailors!",
+            "Spot on, the treasure is close now."
+          ],
+          "wrong": [
+            "A wave knocked the piece askew; fit it again.",
+            "Not yet; squint and read the map again.",
+            "The captain will wait; talk it over, team."
+          ]
+        }
+      },
+      "en": {
+        "title": "Map by map",
+        "prompt": "Each friend holds some map pieces. Show yours to the team, then the friend whose turn it is answers.",
+        "guide": [
+          "Tap \"Show the team\" to open your map pieces.",
+          "Once all are open, the friend whose turn it is picks the answer.",
+          "A wrong answer is just a sea breeze: the team tries again."
+        ]
+      },
+      "rounds": [
+        {
+          "id": "manh-mot",
+          "pieces": [
+            "Mảnh bản đồ 1: từ cây dừa nghiêng đi 20 bước về phía biển.",
+            "Mảnh bản đồ 2: rồi đi thêm 15 bước dọc theo bờ cát."
+          ],
+          "task": {
+            "id": "buoc-chan",
+            "prompt": "Từ cây dừa nghiêng, cả đội đi tất cả bao nhiêu bước?",
+            "skill": "phep-cong",
+            "choices": [
+              {
+                "id": "a",
+                "text": "5"
+              },
+              {
+                "id": "b",
+                "text": "25"
+              },
+              {
+                "id": "c",
+                "text": "35"
+              }
+            ],
+            "answer": {
+              "choice": "c"
+            },
+            "hint": "Cộng số bước của hai mảnh bản đồ.",
+            "explain": "Lấy 20 + 15 = 35 bước.",
+            "en": {
+              "prompt": "From the leaning palm, how many steps does the team walk in all?",
+              "choices": [
+                "5",
+                "25",
+                "35"
+              ],
+              "hint": "Add the steps from both map pieces.",
+              "explain": "20 + 15 = 35 steps."
+            }
+          },
+          "en": {
+            "pieces": [
+              "Map piece 1: from the leaning palm walk 20 steps towards the sea.",
+              "Map piece 2: then walk 15 more steps along the sand."
+            ]
+          }
+        },
+        {
+          "id": "manh-hai",
+          "pieces": [
+            "Mảnh bản đồ 3: chiếc rương cũ đựng 60 đồng vàng.",
+            "Mảnh bản đồ 4: lũ hải tặc đã lấy trộm 24 đồng.",
+            "Mảnh bản đồ 5: số vàng còn lại được tặng cho bảo tàng của đảo."
+          ],
+          "task": {
+            "id": "dong-vang",
+            "prompt": "Bảo tàng của đảo nhận được bao nhiêu đồng vàng?",
+            "skill": "phep-tru",
+            "choices": [
+              {
+                "id": "a",
+                "text": "36"
+              },
+              {
+                "id": "b",
+                "text": "84"
+              },
+              {
+                "id": "c",
+                "text": "44"
+              }
+            ],
+            "answer": {
+              "choice": "a"
+            },
+            "hint": "Lấy số vàng trong rương trừ số vàng bị lấy trộm.",
+            "explain": "Lấy 60 − 24 = 36 đồng vàng.",
+            "en": {
+              "prompt": "How many gold coins does the island museum receive?",
+              "choices": [
+                "36",
+                "84",
+                "44"
+              ],
+              "hint": "Subtract the stolen coins from those in the chest.",
+              "explain": "60 − 24 = 36 gold coins."
+            }
+          },
+          "en": {
+            "pieces": [
+              "Map piece 3: the old chest held 60 gold coins.",
+              "Map piece 4: the pirates stole 24 of them.",
+              "Map piece 5: the coins left go to the island museum."
+            ]
+          }
+        },
+        {
+          "id": "manh-ba",
+          "pieces": [
+            "Mảnh bản đồ 6: kho báu không giấu trong hang.",
+            "Mảnh bản đồ 7: kho báu giấu ở sát mép nước.",
+            "Mảnh bản đồ 8: trên đảo chỉ có hang đá, bến tàu và đỉnh đồi."
+          ],
+          "task": {
+            "id": "cho-giau",
+            "prompt": "Kho báu được giấu ở đâu?",
+            "skill": "logic",
+            "choices": [
+              {
+                "id": "a",
+                "text": "Hang đá"
+              },
+              {
+                "id": "b",
+                "text": "Đỉnh đồi"
+              },
+              {
+                "id": "c",
+                "text": "Bến tàu"
+              }
+            ],
+            "answer": {
+              "choice": "c"
+            },
+            "hint": "Gạch bỏ chỗ nào không thể, chỗ còn lại phải sát nước.",
+            "explain": "Không ở hang, đỉnh đồi thì xa nước, chỉ bến tàu sát mép nước.",
+            "en": {
+              "prompt": "Where is the treasure hidden?",
+              "choices": [
+                "The rock cave",
+                "The hilltop",
+                "The jetty"
+              ],
+              "hint": "Cross out the places it cannot be; the one left must be by the water.",
+              "explain": "Not the cave, and the hilltop is far from the water: only the jetty is by the water."
+            }
+          },
+          "en": {
+            "pieces": [
+              "Map piece 6: the treasure is not hidden in the cave.",
+              "Map piece 7: the treasure is hidden right by the water.",
+              "Map piece 8: the island only has a rock cave, a jetty and a hilltop."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ket",
+      "title": "Tìm ra rương",
+      "kind": "dialogue",
+      "trigger": "auto",
+      "lines": [
+        {
+          "speaker": "Bà Thuyền Trưởng Gió",
+          "text": "Rương kho báu nằm ngay dưới bến tàu! Bảo tàng sẽ vui lắm đây."
+        },
+        {
+          "speaker": "Bà Thuyền Trưởng Gió",
+          "text": "Không ai một mình đọc được cả bản đồ, cả đội mới làm được."
+        }
+      ],
+      "en": {
+        "title": "Chest found",
+        "lines": [
+          "The treasure chest is right under the jetty! The museum will be delighted.",
+          "Nobody could read the whole map alone; only the team could."
+        ]
+      }
+    },
+    {
+      "id": "thuong",
+      "title": "Quà của đảo",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bà Thuyền Trưởng tặng mỗi bạn phần thưởng của đảo.",
+      "en": {
+        "title": "Island gifts",
+        "text": "The captain gives each friend an island gift."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Hẹn ra khơi",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Biển còn nhiều bản đồ rách, bà chờ đội quay lại.",
+      "en": {
+        "title": "Set sail later",
+        "text": "The sea holds many more torn maps; the captain waits for the team."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 25,
+    "skillXp": {
+      "phep-cong": 10,
+      "phep-tru": 10,
+      "logic": 10
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "The treasure map torn in three",
+    "summary": "The treasure map is torn into pieces: each friend holds one and the team puts them together to find the chest."
+  }
+}

@@ -969,6 +969,52 @@
         "xp": 80,
         "coin": 80
       }
+    },
+    {
+      "id": "dong-doi-dau-tien",
+      "category": "kham-pha",
+      "name": "Đồng đội đầu tiên",
+      "description": "Cùng các bạn thắng một thử thách co-op, mỗi bạn góp một phần.",
+      "icon": "sparkles",
+      "metric": {
+        "kind": "coop-runs"
+      },
+      "goal": 1,
+      "reward": {
+        "xp": 30,
+        "coin": 30
+      }
+    },
+    {
+      "id": "doi-ban-than",
+      "category": "kham-pha",
+      "name": "Đội bạn thân",
+      "description": "{name} thắng mười lượt thử thách co-op cùng đồng đội.",
+      "icon": "trophy",
+      "metric": {
+        "kind": "coop-runs"
+      },
+      "goal": 10,
+      "reward": {
+        "xp": 80,
+        "coin": 60,
+        "item": "scarf-dong-doi"
+      }
+    },
+    {
+      "id": "khap-noi-cung-ban",
+      "category": "kham-pha",
+      "name": "Khắp nơi cùng bạn",
+      "description": "Thắng cả mười hai thử thách co-op ở mười hai vùng đất.",
+      "icon": "firstMedal",
+      "metric": {
+        "kind": "coop-challenges"
+      },
+      "goal": 12,
+      "reward": {
+        "xp": 150,
+        "coin": 120
+      }
     }
   ]
 }

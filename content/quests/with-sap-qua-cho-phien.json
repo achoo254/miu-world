@@ -1,0 +1,308 @@
+{
+  "id": "with-sap-qua-cho-phien",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Tính tiền giúp sạp quà chợ phiên",
+  "summary": "Bà chủ sạp quà đánh rơi kính: mỗi bạn giữ một tờ phiếu giá, cả đội cùng tính tiền cho khách.",
+  "category": "coop",
+  "status": "active",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Đội giúp Bà Chủ Sạp Quà",
+    "where": "Quảng trường chợ phiên",
+    "goal": "Tính đúng tiền cho khách",
+    "play": "Mỗi bạn giữ phiếu giá, cùng ghép và trả lời",
+    "learn": "Cộng trừ với tiền Việt Nam, so sánh nhiều ít",
+    "reward": "Xu, kinh nghiệm cho mỗi bạn",
+    "next": "Chơi lại cùng đội khác"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "gap",
+    "challenge": "cung-choi",
+    "decision": "cung-choi",
+    "finale": "ket",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Bà Chủ Sạp Quà",
+      "kind": "dialogue",
+      "target": "ba-chu-sap-qua",
+      "trigger": "interact",
+      "lines": [
+        {
+          "speaker": "Bà Chủ Sạp Quà",
+          "text": "Ối giời, bà làm rơi kính rồi, chẳng đọc được phiếu giá nào cả, {name} ạ."
+        },
+        {
+          "speaker": "Bà Chủ Sạp Quà",
+          "text": "Bà chia phiếu cho cả đội: mỗi đứa đọc phiếu của mình rồi cùng tính giúp bà nhé."
+        }
+      ],
+      "en": {
+        "title": "Meet Bà Chủ Sạp Quà",
+        "lines": [
+          "Oh dear, I dropped my glasses and cannot read a single price slip, {name}.",
+          "I am sharing the slips with the team: read yours aloud and help me do the sums."
+        ]
+      }
+    },
+    {
+      "id": "cung-choi",
+      "title": "Tính tiền",
+      "kind": "coop",
+      "trigger": "auto",
+      "mode": "pieces",
+      "prompt": "Mỗi bạn giữ vài tờ phiếu. Cho cả đội xem phiếu của mình, rồi bạn đến lượt tính tiền.",
+      "guide": [
+        "Mở phiếu của mình để mọi bạn cùng đọc.",
+        "Đủ phiếu rồi thì bạn đến lượt chọn số tiền.",
+        "Sai thì bà cười xòa, cả đội tính lại thôi."
+      ],
+      "seats": 3,
+      "feedback": {
+        "right": [
+          "Chuẩn từng đồng! Bà đưa quà cho khách đây.",
+          "Ôi giỏi thế, tính nhanh hơn cả máy!",
+          "Đúng rồi, khách cười tươi cảm ơn cả đội."
+        ],
+        "wrong": [
+          "Hình như chưa đúng tiền, tính lại nhé.",
+          "Bà đếm thử thấy lệch, cả đội xem lại nào.",
+          "Chưa đúng đâu, đọc lại phiếu giá đi con."
+        ],
+        "en": {
+          "right": [
+            "Exact to the đồng! Here is the gift for the customer.",
+            "So clever, quicker than a till!",
+            "Right, the customer smiles and thanks the team."
+          ],
+          "wrong": [
+            "That does not seem the right money; try again.",
+            "I counted and it is off; check again, team.",
+            "Not yet; read the price slips again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Doing sums",
+        "prompt": "Each friend holds some slips. Show yours to the team, then the friend whose turn it is does the sum.",
+        "guide": [
+          "Open your slips so everyone reads them.",
+          "With every slip open, the friend whose turn it is picks the amount.",
+          "Wrong? Grandma just laughs and the team works it out again."
+        ]
+      },
+      "rounds": [
+        {
+          "id": "phieu-mot",
+          "pieces": [
+            "Phiếu 1: một con diều giấy giá 35 nghìn đồng.",
+            "Phiếu 2: một chiếc chong chóng giá 20 nghìn đồng."
+          ],
+          "task": {
+            "id": "dieu-chong",
+            "prompt": "Khách mua một con diều và một chiếc chong chóng. Khách trả tất cả bao nhiêu nghìn đồng?",
+            "skill": "phep-cong",
+            "choices": [
+              {
+                "id": "a",
+                "text": "45"
+              },
+              {
+                "id": "b",
+                "text": "55"
+              },
+              {
+                "id": "c",
+                "text": "15"
+              }
+            ],
+            "answer": {
+              "choice": "b"
+            },
+            "hint": "Cộng giá con diều với giá chiếc chong chóng.",
+            "explain": "Lấy 35 + 20 = 55, khách trả 55 nghìn đồng.",
+            "en": {
+              "prompt": "A customer buys a kite and a pinwheel. How many thousand đồng in all?",
+              "choices": [
+                "45",
+                "55",
+                "15"
+              ],
+              "hint": "Add the price of the kite and of the pinwheel.",
+              "explain": "35 + 20 = 55: the customer pays 55 thousand đồng."
+            }
+          },
+          "en": {
+            "pieces": [
+              "Slip 1: a paper kite costs 35 thousand đồng.",
+              "Slip 2: a pinwheel costs 20 thousand đồng."
+            ]
+          }
+        },
+        {
+          "id": "phieu-hai",
+          "pieces": [
+            "Phiếu 3: khách đưa cho bà tờ 100 nghìn đồng.",
+            "Phiếu 4: món quà khách chọn giá 60 nghìn đồng.",
+            "Phiếu 5: bà cần trả lại tiền thừa cho khách."
+          ],
+          "task": {
+            "id": "tien-thua",
+            "prompt": "Bà cần trả lại khách bao nhiêu nghìn đồng?",
+            "skill": "phep-tru",
+            "choices": [
+              {
+                "id": "a",
+                "text": "50"
+              },
+              {
+                "id": "b",
+                "text": "40"
+              },
+              {
+                "id": "c",
+                "text": "160"
+              }
+            ],
+            "answer": {
+              "choice": "b"
+            },
+            "hint": "Lấy số tiền khách đưa trừ giá món quà.",
+            "explain": "Lấy 100 − 60 = 40, bà trả lại 40 nghìn đồng.",
+            "en": {
+              "prompt": "How many thousand đồng of change does Grandma give back?",
+              "choices": [
+                "50",
+                "40",
+                "160"
+              ],
+              "hint": "Subtract the price of the gift from the money handed over.",
+              "explain": "100 − 60 = 40: she gives back 40 thousand đồng."
+            }
+          },
+          "en": {
+            "pieces": [
+              "Slip 3: the customer hands over a 100 thousand đồng note.",
+              "Slip 4: the gift chosen costs 60 thousand đồng.",
+              "Slip 5: Grandma must give back the change."
+            ]
+          }
+        },
+        {
+          "id": "phieu-ba",
+          "pieces": [
+            "Phiếu 6: sạp có bóng bay ba màu đỏ, vàng, xanh.",
+            "Phiếu 7: bóng đỏ nhiều hơn bóng vàng.",
+            "Phiếu 8: bóng xanh ít hơn bóng vàng."
+          ],
+          "task": {
+            "id": "bong-nhieu",
+            "prompt": "Bóng bay màu nào nhiều nhất?",
+            "skill": "logic",
+            "choices": [
+              {
+                "id": "a",
+                "text": "Bóng xanh"
+              },
+              {
+                "id": "b",
+                "text": "Bóng đỏ"
+              },
+              {
+                "id": "c",
+                "text": "Bóng vàng"
+              }
+            ],
+            "answer": {
+              "choice": "b"
+            },
+            "hint": "Xếp ba màu theo nhiều ít: đỏ so với vàng, vàng so với xanh.",
+            "explain": "Đỏ nhiều hơn vàng, vàng lại nhiều hơn xanh, nên bóng đỏ nhiều nhất.",
+            "en": {
+              "prompt": "Which colour of balloon is there the most of?",
+              "choices": [
+                "Blue",
+                "Red",
+                "Yellow"
+              ],
+              "hint": "Order the colours: red against yellow, yellow against blue.",
+              "explain": "Red beats yellow and yellow beats blue, so red is the most."
+            }
+          },
+          "en": {
+            "pieces": [
+              "Slip 6: the stall has red, yellow and blue balloons.",
+              "Slip 7: there are more red balloons than yellow ones.",
+              "Slip 8: there are fewer blue balloons than yellow ones."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ket",
+      "title": "Sạp đông khách",
+      "kind": "dialogue",
+      "trigger": "auto",
+      "lines": [
+        {
+          "speaker": "Bà Chủ Sạp Quà",
+          "text": "Sạp quà đông khách mà không sai một đồng nào, nhờ cả đội đấy."
+        },
+        {
+          "speaker": "Bà Chủ Sạp Quà",
+          "text": "Bà tìm được kính rồi, nhưng bà vẫn thích cả đội tính giúp lắm."
+        }
+      ],
+      "en": {
+        "title": "Busy stall",
+        "lines": [
+          "A busy stall and not one đồng wrong, all thanks to the team.",
+          "Grandma found her glasses, but she loved the team doing the sums."
+        ]
+      }
+    },
+    {
+      "id": "thuong",
+      "title": "Quà chợ phiên",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bà Chủ Sạp tặng mỗi bạn phần quà của chợ phiên.",
+      "en": {
+        "title": "Market gifts",
+        "text": "The stall keeper gives each friend a market gift."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Hẹn phiên sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Phiên chợ sau đông hơn, bà lại chờ cả đội.",
+      "en": {
+        "title": "Next market day",
+        "text": "The next market day will be busier; Grandma will wait for the team."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 25,
+    "skillXp": {
+      "phep-cong": 10,
+      "phep-tru": 10,
+      "logic": 10
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Doing the sums at the market gift stall",
+    "summary": "The gift-stall keeper dropped her glasses: each friend holds a price slip and the team does the sums."
+  }
+}

@@ -17662,6 +17662,14 @@
       "bytes": 1431
     },
     {
+      "path": "generated/accessories/scarf-dong-doi.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-accessory-art.ts",
+      "derivedFrom": [],
+      "sha256": "e210657d8f24d6d614738234ed3370c8d6f2c2fed70a910c67448fc9918bf6c0",
+      "bytes": 2057
+    },
+    {
       "path": "generated/accessories/scarf-gems-diamond.png",
       "license": "CC0-1.0",
       "generator": "tools/assets/render-accessory-art.ts",
@@ -39394,8 +39402,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-cho-phien-map.ts",
       "derivedFrom": [],
-      "sha256": "96be67d08cd342aa1aacd8827c018709f5de6d42d5b44ccb4af6cda5d8de7613",
-      "bytes": 1994878
+      "sha256": "9d9f754755e8bddd4fc4ceea290c77c6a745f4acebb89515b672776fc2aa8353",
+      "bytes": 1995147
     },
     {
       "path": "generated/world/cho-phien/horizon.bin",
@@ -39802,8 +39810,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-dao-bi-an-map.ts",
       "derivedFrom": [],
-      "sha256": "d8c26723b1dba016d80e2e13fb3cf1ff301f713af0b3895a648e1ae0e5c1e636",
-      "bytes": 501784
+      "sha256": "2bd1c43b33121babbeafb6e92736dd3935033cf5bf94baa7b909fcd8e3c921a3",
+      "bytes": 502065
     },
     {
       "path": "generated/world/dao-bi-an/horizon.bin",
@@ -40210,8 +40218,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-forest-map.ts",
       "derivedFrom": [],
-      "sha256": "35b39564e4f3504e0acd1bf0be8638c451ea104d5eb0d80c698e990e51014061",
-      "bytes": 530919
+      "sha256": "90393052f2d6ad7f536b87bbe55f4f3df31c87a0617e6e320c65d7f256dafa16",
+      "bytes": 531183
     },
     {
       "path": "generated/world/forest-ch1/horizon.bin",
@@ -40618,8 +40626,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lang-ven-song-map.ts",
       "derivedFrom": [],
-      "sha256": "17eaee516a77f81f553eda162475cf4b6100fec3a499de756ecfa05f152bb0b5",
-      "bytes": 1517355
+      "sha256": "5ff58ae528ba745d1eafc110ffac03573e25ab3777238517a66679c46aecdd78",
+      "bytes": 1517635
     },
     {
       "path": "generated/world/lang-ven-song/horizon.bin",
@@ -41026,8 +41034,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-lau-dai-map.ts",
       "derivedFrom": [],
-      "sha256": "6973a0e528f673c07d56c918be933f1ca04a71b2e2abd79f6e5a6eb1daebe793",
-      "bytes": 1265354
+      "sha256": "d48d4128c198e4984145bdc3c46883e1852cd089107a25a42aeda4f2c407f8a8",
+      "bytes": 1265633
     },
     {
       "path": "generated/world/lau-dai/horizon.bin",
@@ -41434,8 +41442,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nha-cua-be-map.ts",
       "derivedFrom": [],
-      "sha256": "4566e2c6881cf15f4bfc83f31966094848a5cff741ba4f853a392554e0391748",
-      "bytes": 211927
+      "sha256": "2e3e3c131dd3e1cb62751e093ecd712725792239253fdefc324c57e51b000858",
+      "bytes": 212194
     },
     {
       "path": "generated/world/nha-cua-be/horizon.bin",
@@ -41482,8 +41490,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nong-trai-map.ts",
       "derivedFrom": [],
-      "sha256": "0598767448ca0269b32399f0f22069c8ed9454b21501de2db36ead3269214deb",
-      "bytes": 1805849
+      "sha256": "bc491010b4c93fac030964b53b83cd444ad144c794e19984f693bbe7f3667eaa",
+      "bytes": 1806116
     },
     {
       "path": "generated/world/nong-trai/horizon.bin",
@@ -41890,8 +41898,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nui-tuyet-map.ts",
       "derivedFrom": [],
-      "sha256": "7aa8fb0707e8f90422252a7121ac9fe4ec83b9a64d7eef0ad336989896fecd6a",
-      "bytes": 258336
+      "sha256": "90620614bd9d3e8a2ccbaf248c32325d6fd7a73acf5fd1d201964c07d302ef2a",
+      "bytes": 258605
     },
     {
       "path": "generated/world/nui-tuyet/horizon.bin",
@@ -42330,8 +42338,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-thu-vien-map.ts",
       "derivedFrom": [],
-      "sha256": "639cf5315359debfed14305472f8069731e8605ffe87e7bb0608667d6da3866f",
-      "bytes": 1314135
+      "sha256": "3d542f4691ee449ea0b3514597aa9489c2e05341d5ec921cd4c751d93bef1da8",
+      "bytes": 1314406
     },
     {
       "path": "generated/world/thu-vien/horizon.bin",
@@ -42738,8 +42746,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-trung-tam-map.ts",
       "derivedFrom": [],
-      "sha256": "66ffba9e0ca6c23d75527c7ed906a9c4a6d00bbac044e3303dce93d37c3fc946",
-      "bytes": 524776
+      "sha256": "0215ed9b11e73482e2516ebc86d012d6ca9c7b6fb52aa50e7b0182f967a4da6e",
+      "bytes": 525060
     },
     {
       "path": "generated/world/trung-tam/horizon.bin",
@@ -43146,8 +43154,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-school-map.ts",
       "derivedFrom": [],
-      "sha256": "869baad7fb3ba73f52a9572411a5d8cc6a049fa242b08425df65af0d4dbfa43d",
-      "bytes": 913231
+      "sha256": "bf042713bebb8ed7f834405594af0282cbf94a413d5af7176f686db135bf1c09",
+      "bytes": 913514
     },
     {
       "path": "generated/world/truong-hoc/horizon.bin",
@@ -43554,8 +43562,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-xom-mai-am-map.ts",
       "derivedFrom": [],
-      "sha256": "e017b6cf5e2870619e198001b0657a96d93923f028e62dcde60ab2d7f4999d76",
-      "bytes": 1866534
+      "sha256": "a699b0c15515fa33e8507cab4e23dc9f499501b7647345c3ea8b9aaff105f9c9",
+      "bytes": 1866806
     },
     {
       "path": "generated/world/xom-mai-am/horizon.bin",

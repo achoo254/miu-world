@@ -1,0 +1,308 @@
+{
+  "id": "with-ban-do-la-rung",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Bản đồ lá dẫn về tổ chim",
+  "summary": "Cơn gió xé bản đồ lá thành nhiều mảnh: mỗi bạn giữ một mảnh, ghép lại mới tìm được tổ chim.",
+  "category": "coop",
+  "status": "active",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Đội giúp Cú Mèo Gác Rừng",
+    "where": "Lối mòn giữa Khu rừng bí mật",
+    "goal": "Ghép bản đồ lá tìm tổ chim",
+    "play": "Mỗi bạn giữ mảnh lá, cùng ghép và trả lời",
+    "learn": "Cộng, trừ trong phạm vi 20 và suy luận đường đi",
+    "reward": "Xu, kinh nghiệm cho mỗi bạn",
+    "next": "Chơi lại cùng đội khác"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "gap",
+    "challenge": "cung-choi",
+    "decision": "cung-choi",
+    "finale": "ket",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Cú Mèo Gác Rừng",
+      "kind": "dialogue",
+      "target": "cu-meo-gac-rung",
+      "trigger": "interact",
+      "lines": [
+        {
+          "speaker": "Cú Mèo Gác Rừng",
+          "text": "Hu hu… cơn gió đêm qua xé bản đồ lá của ta thành từng mảnh rồi, {name} ơi!"
+        },
+        {
+          "speaker": "Cú Mèo Gác Rừng",
+          "text": "Mỗi bạn giữ một mảnh lá. Cho cả đội xem mảnh của mình rồi cùng tìm đường về tổ chim nhé."
+        }
+      ],
+      "en": {
+        "title": "Meet Cú Mèo Gác Rừng",
+        "lines": [
+          "Hoo hoo… last night's wind tore my leaf map into pieces, {name}!",
+          "Each friend holds a leaf. Show the team your piece, then find the way to the nest together."
+        ]
+      }
+    },
+    {
+      "id": "cung-choi",
+      "title": "Ghép lá",
+      "kind": "coop",
+      "trigger": "auto",
+      "mode": "pieces",
+      "prompt": "Mỗi bạn giữ vài mảnh lá. Cho cả đội xem mảnh của mình, rồi lần lượt từng bạn trả lời.",
+      "guide": [
+        "Bấm \"Cho cả đội xem\" để mọi bạn đọc được mảnh lá của mình.",
+        "Khi mọi mảnh đã mở, bạn đến lượt chọn đáp án cho cả đội.",
+        "Trả lời chưa đúng cũng không sao: cả đội cùng nghĩ lại."
+      ],
+      "seats": 3,
+      "feedback": {
+        "right": [
+          "Hu hu, đúng rồi! Lá bay về đúng chỗ.",
+          "Cả đội ghép lá khéo quá đi thôi!",
+          "Chuẩn! Chim con sắp được về tổ rồi."
+        ],
+        "wrong": [
+          "Hu… lá này chưa khớp, ghép lại nhé.",
+          "Đọc lại từng mảnh lá thật chậm nào.",
+          "Chưa đúng đâu, cả đội bàn thêm chút."
+        ],
+        "en": {
+          "right": [
+            "Hoo, right! The leaf flies back into place.",
+            "What clever leaf-matching, team!",
+            "Exactly! The chicks are almost home."
+          ],
+          "wrong": [
+            "Hoo… this leaf doesn't fit yet, try again.",
+            "Read each leaf again, slowly.",
+            "Not yet; talk it over a little more."
+          ]
+        }
+      },
+      "en": {
+        "title": "Leaf by leaf",
+        "prompt": "Each friend holds some leaf pieces. Show the team yours, then answer one after another.",
+        "guide": [
+          "Tap \"Show the team\" so everyone can read your leaf.",
+          "Once every piece is open, the friend whose turn it is picks the answer for the team.",
+          "A wrong answer is fine: the team thinks again together."
+        ]
+      },
+      "rounds": [
+        {
+          "id": "la-mot",
+          "pieces": [
+            "Mảnh lá của Cú: tổ cũ ở cây sồi số 8 bên suối.",
+            "Mảnh lá thứ hai: chim mẹ dời tổ thêm 5 cây về phía đồi."
+          ],
+          "task": {
+            "id": "to-moi",
+            "prompt": "Ghép hai mảnh lá lại: tổ mới ở cây sồi số mấy?",
+            "skill": "phep-cong",
+            "choices": [
+              {
+                "id": "a",
+                "text": "13"
+              },
+              {
+                "id": "b",
+                "text": "3"
+              },
+              {
+                "id": "c",
+                "text": "85"
+              }
+            ],
+            "answer": {
+              "choice": "a"
+            },
+            "hint": "Tổ cũ ở cây số 8, chim mẹ dời thêm 5 cây: hãy cộng hai số.",
+            "explain": "Lấy 8 + 5 = 13, nên tổ mới ở cây sồi số 13.",
+            "en": {
+              "prompt": "Put the two leaves together: which oak is the new nest in?",
+              "choices": [
+                "13",
+                "3",
+                "85"
+              ],
+              "hint": "The old nest is at tree 8 and moved 5 trees on: add the two numbers.",
+              "explain": "8 + 5 = 13, so the new nest is in oak number 13."
+            }
+          },
+          "en": {
+            "pieces": [
+              "Owl's leaf: the old nest is in oak number 8 by the stream.",
+              "Second leaf: mother bird moved the nest 5 trees towards the hill."
+            ]
+          }
+        },
+        {
+          "id": "la-hai",
+          "pieces": [
+            "Mảnh lá thứ ba: hốc cây có 16 hạt dẻ dành cho chim con.",
+            "Mảnh lá thứ tư: một bạn sóc tham ăn đã mang đi 9 hạt.",
+            "Mảnh lá thứ năm: chim con cần biết hốc cây còn mấy hạt."
+          ],
+          "task": {
+            "id": "hat-de",
+            "prompt": "Trong hốc cây còn lại bao nhiêu hạt dẻ?",
+            "skill": "phep-tru",
+            "choices": [
+              {
+                "id": "a",
+                "text": "6"
+              },
+              {
+                "id": "b",
+                "text": "7"
+              },
+              {
+                "id": "c",
+                "text": "25"
+              }
+            ],
+            "answer": {
+              "choice": "b"
+            },
+            "hint": "Lấy số hạt lúc đầu trừ đi số hạt bạn sóc mang đi.",
+            "explain": "Lấy 16 − 9 = 7, hốc cây còn 7 hạt dẻ.",
+            "en": {
+              "prompt": "How many chestnuts are left in the hollow?",
+              "choices": [
+                "6",
+                "7",
+                "25"
+              ],
+              "hint": "Take the chestnuts there were and subtract those the squirrel took.",
+              "explain": "16 − 9 = 7: seven chestnuts are left."
+            }
+          },
+          "en": {
+            "pieces": [
+              "Third leaf: the hollow keeps 16 chestnuts for the chicks.",
+              "Fourth leaf: a greedy squirrel carried off 9 of them.",
+              "Fifth leaf: the chicks need to know how many are left."
+            ]
+          }
+        },
+        {
+          "id": "la-ba",
+          "pieces": [
+            "Mảnh lá thứ sáu: đường về tổ phải đi qua cây cầu gỗ.",
+            "Mảnh lá thứ bảy: cây cầu gỗ nằm giữa con suối và đồi thông.",
+            "Mảnh lá cuối: tổ chim ở ngay trên đồi thông."
+          ],
+          "task": {
+            "id": "duong-ve",
+            "prompt": "Đi từ suối về tổ, cả đội gặp cầu gỗ trước hay đồi thông trước?",
+            "skill": "logic",
+            "choices": [
+              {
+                "id": "a",
+                "text": "Đồi thông trước"
+              },
+              {
+                "id": "b",
+                "text": "Không gặp gì cả"
+              },
+              {
+                "id": "c",
+                "text": "Cầu gỗ trước"
+              }
+            ],
+            "answer": {
+              "choice": "c"
+            },
+            "hint": "Cây cầu nằm giữa suối và đồi: từ suối đi lên thì gặp cái nào trước?",
+            "explain": "Cầu gỗ ở giữa suối và đồi thông, nên rời suối là tới cầu trước rồi mới lên đồi.",
+            "en": {
+              "prompt": "Going from the stream to the nest, does the team reach the bridge or the pine hill first?",
+              "choices": [
+                "The hill first",
+                "Nothing on the way",
+                "The bridge first"
+              ],
+              "hint": "The bridge lies between the stream and the hill: which comes first from the stream?",
+              "explain": "The bridge is between the stream and the hill, so from the stream you reach the bridge first, then climb the hill."
+            }
+          },
+          "en": {
+            "pieces": [
+              "Sixth leaf: the way to the nest crosses the wooden bridge.",
+              "Seventh leaf: the wooden bridge lies between the stream and the pine hill.",
+              "Last leaf: the nest is right on the pine hill."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ket",
+      "title": "Về tới tổ chim",
+      "kind": "dialogue",
+      "trigger": "auto",
+      "lines": [
+        {
+          "speaker": "Cú Mèo Gác Rừng",
+          "text": "Tổ chim đây rồi! Chim con ríu rít cảm ơn cả đội."
+        },
+        {
+          "speaker": "Cú Mèo Gác Rừng",
+          "text": "Một mình ta không ghép nổi, nhưng cả đội thì làm được."
+        }
+      ],
+      "en": {
+        "title": "Home to the nest",
+        "lines": [
+          "Here is the nest! The chicks chirp their thanks to the team.",
+          "I could not mend it alone, but the team could."
+        ]
+      }
+    },
+    {
+      "id": "thuong",
+      "title": "Quà rừng già",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cú Mèo tặng mỗi bạn phần thưởng của rừng già.",
+      "en": {
+        "title": "Old forest gifts",
+        "text": "The owl gives each friend a gift from the old forest."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Hẹn rừng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Rủ thêm bạn rồi quay lại khi nào cũng được, bản đồ lá luôn chờ đội mới.",
+      "en": {
+        "title": "Back to the woods",
+        "text": "Bring more friends any time: the leaf map always waits for a new team."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 25,
+    "skillXp": {
+      "phep-cong": 10,
+      "phep-tru": 10,
+      "logic": 10
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "The leaf map back to the nest",
+    "summary": "The wind tore the leaf map apart: each friend holds a piece, and only together do they find the nest."
+  }
+}

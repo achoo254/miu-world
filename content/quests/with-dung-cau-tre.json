@@ -1,0 +1,428 @@
+{
+  "id": "with-dung-cau-tre",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Cùng dựng cầu tre qua sông",
+  "summary": "Làng cần một cây cầu tre mới: mỗi bạn giải câu của mình rồi cả đội cùng giữ chặt dây một lúc.",
+  "category": "coop",
+  "status": "active",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Đội giúp Ông Trưởng Thôn Cầu",
+    "where": "Bến đò Làng ven sông",
+    "goal": "Dựng lại cây cầu tre qua sông",
+    "play": "Mỗi bạn giải câu của mình, cả đội cùng giữ dây",
+    "learn": "Cộng trừ có nhớ, chính tả d/gi, câu hỏi",
+    "reward": "Xu, kinh nghiệm cho mỗi bạn",
+    "next": "Chơi lại cùng đội khác"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "gap",
+    "challenge": "cung-choi",
+    "decision": "cung-choi",
+    "finale": "ket",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Ông Trưởng Thôn Cầu",
+      "kind": "dialogue",
+      "target": "ong-truong-thon-cau",
+      "trigger": "interact",
+      "lines": [
+        {
+          "speaker": "Ông Trưởng Thôn Cầu",
+          "text": "Nước lũ cuốn mất cây cầu tre cũ rồi, {name} à."
+        },
+        {
+          "speaker": "Ông Trưởng Thôn Cầu",
+          "text": "Ông cần cả đội: mỗi bạn làm phần việc của mình, rồi cùng giữ dây cho thật chắc."
+        }
+      ],
+      "en": {
+        "title": "Meet Ông Trưởng Thôn Cầu",
+        "lines": [
+          "The flood washed away the old bamboo bridge, {name}.",
+          "I need the whole team: each friend does a part, then everyone holds the rope tight."
+        ]
+      }
+    },
+    {
+      "id": "cung-choi",
+      "title": "Dựng nhịp cầu",
+      "kind": "coop",
+      "trigger": "auto",
+      "mode": "together",
+      "prompt": "Mỗi vòng: trả lời câu của mình rồi bấm \"Giữ chặt\". Khi cả đội cùng giữ một lúc, nhịp cầu được dựng xong.",
+      "guide": [
+        "Trả lời câu hỏi của riêng mình trước.",
+        "Xong rồi thì bấm Giữ chặt: dây chỉ giữ được một lúc.",
+        "Cả đội cùng giữ một lúc thì nhịp cầu dựng xong."
+      ],
+      "seats": 3,
+      "feedback": {
+        "right": [
+          "Chắc tay lắm! Thêm một đoạn tre vào cầu.",
+          "Ông nghe tiếng dây kêu căng rồi, đúng đấy!",
+          "Hay lắm cháu, nhịp cầu vững hơn rồi."
+        ],
+        "wrong": [
+          "Sợi dây hơi lỏng, cháu nghĩ lại nhé.",
+          "Chưa đúng, nước sông còn chờ được.",
+          "Bình tĩnh nào, đọc lại câu hỏi xem."
+        ],
+        "en": {
+          "right": [
+            "Steady hands! One more bamboo piece on the bridge.",
+            "I hear the rope pull tight: that is right!",
+            "Well done, the span is stronger now."
+          ],
+          "wrong": [
+            "The rope is a little loose; think again.",
+            "Not yet; the river can wait.",
+            "Stay calm and read the question again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Span by span",
+        "prompt": "Each round: answer your question, then tap \"Hold tight\". When the whole team holds at once, a span of the bridge is built.",
+        "guide": [
+          "Answer your own question first.",
+          "Then tap Hold tight: the rope only stays held for a while.",
+          "When everyone holds at once, the span is built."
+        ]
+      },
+      "rounds": [
+        {
+          "id": "nhip-mot",
+          "title": "Kéo bó tre đầu tiên ra bờ",
+          "tasks": [
+            {
+              "id": "can-tre",
+              "prompt": "Cầu cần 9 cây tre, làng đã có 4 cây. Cần thêm mấy cây tre?",
+              "skill": "phep-tru",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "13"
+                },
+                {
+                  "id": "b",
+                  "text": "6"
+                },
+                {
+                  "id": "c",
+                  "text": "5"
+                }
+              ],
+              "answer": {
+                "choice": "c"
+              },
+              "hint": "Lấy số tre cần trừ đi số tre đã có.",
+              "explain": "Lấy 9 − 4 = 5, cần thêm 5 cây tre.",
+              "en": {
+                "prompt": "The bridge needs 9 bamboo poles and the village has 4. How many more are needed?",
+                "choices": [
+                  "13",
+                  "6",
+                  "5"
+                ],
+                "hint": "Subtract the poles the village has from those needed.",
+                "explain": "9 − 4 = 5: five more poles are needed."
+              }
+            },
+            {
+              "id": "noi-tre",
+              "prompt": "Một đoạn tre dài 3 m, nối thêm đoạn dài 4 m. Cả hai đoạn dài bao nhiêu mét?",
+              "skill": "phep-cong",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "7 m"
+                },
+                {
+                  "id": "b",
+                  "text": "1 m"
+                },
+                {
+                  "id": "c",
+                  "text": "12 m"
+                }
+              ],
+              "answer": {
+                "choice": "a"
+              },
+              "hint": "Nối hai đoạn là cộng hai độ dài lại.",
+              "explain": "Lấy 3 m + 4 m = 7 m.",
+              "en": {
+                "prompt": "A 3 m piece of bamboo is joined to a 4 m piece. How long are they together?",
+                "choices": [
+                  "7 m",
+                  "1 m",
+                  "12 m"
+                ],
+                "hint": "Joining two pieces means adding their lengths.",
+                "explain": "3 m + 4 m = 7 m."
+              }
+            }
+          ],
+          "en": {
+            "title": "Pull the first bundle of bamboo to the bank"
+          }
+        },
+        {
+          "id": "nhip-hai",
+          "title": "Buộc dây cho nhịp cầu giữa sông",
+          "tasks": [
+            {
+              "id": "soi-day",
+              "prompt": "Bác buộc cầu bằng gì? Chọn từ viết đúng.",
+              "skill": "chinh-ta",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "sợi giây"
+                },
+                {
+                  "id": "b",
+                  "text": "sợi rây"
+                },
+                {
+                  "id": "c",
+                  "text": "sợi dây"
+                }
+              ],
+              "answer": {
+                "choice": "c"
+              },
+              "hint": "Dây để buộc viết bằng chữ \"d\".",
+              "explain": "\"Sợi dây\" dùng để buộc, viết bằng chữ d.",
+              "en": {
+                "prompt": "What does the elder tie the bridge with? Pick the right spelling.",
+                "choices": [
+                  "sợi giây",
+                  "sợi rây",
+                  "sợi dây (rope)"
+                ],
+                "hint": "A rope for tying is spelt with \"d\".",
+                "explain": "\"Sợi dây\" is a rope for tying, spelt with d."
+              }
+            },
+            {
+              "id": "lai-do",
+              "prompt": "Bác lái đò chở 28 người qua sông, lượt sau chở thêm 15 người. Cả hai lượt chở bao nhiêu người?",
+              "skill": "phep-cong",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "33"
+                },
+                {
+                  "id": "b",
+                  "text": "43"
+                },
+                {
+                  "id": "c",
+                  "text": "13"
+                }
+              ],
+              "answer": {
+                "choice": "b"
+              },
+              "hint": "Cộng số người của hai lượt đò, nhớ cộng cả số nhớ.",
+              "explain": "Lấy 28 + 15 = 43 người.",
+              "en": {
+                "prompt": "The ferryman carried 28 people across, then 15 more. How many people in both trips?",
+                "choices": [
+                  "33",
+                  "43",
+                  "13"
+                ],
+                "hint": "Add the people of both trips; remember to carry.",
+                "explain": "28 + 15 = 43 people."
+              }
+            },
+            {
+              "id": "cau-hoi",
+              "prompt": "Trong ba câu bàn về cây cầu, câu nào là câu hỏi?",
+              "skill": "dau-cau",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "Cầu tre đã xong chưa?"
+                },
+                {
+                  "id": "b",
+                  "text": "Cầu tre thật chắc chắn."
+                },
+                {
+                  "id": "c",
+                  "text": "Cả làng cùng dựng cầu."
+                }
+              ],
+              "answer": {
+                "choice": "a"
+              },
+              "hint": "Câu hỏi thường kết thúc bằng dấu chấm hỏi.",
+              "explain": "\"Cầu tre đã xong chưa?\" là câu hỏi, cuối câu có dấu chấm hỏi.",
+              "en": {
+                "prompt": "Of three sentences about the bridge, which one is a question?",
+                "choices": [
+                  "Is the bridge finished yet?",
+                  "The bridge is really strong.",
+                  "The whole village builds the bridge."
+                ],
+                "hint": "A question usually ends with a question mark.",
+                "explain": "\"Is the bridge finished yet?\" is the question; it ends with a question mark."
+              }
+            }
+          ],
+          "en": {
+            "title": "Tie the ropes of the middle span"
+          }
+        },
+        {
+          "id": "nhip-ba",
+          "title": "Cả đội kéo cầu lên thật thẳng",
+          "tasks": [
+            {
+              "id": "song-rong",
+              "prompt": "Sông rộng 20 m, cầu đã dựng được 12 m. Còn bao nhiêu mét nữa?",
+              "skill": "phep-tru",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "32 m"
+                },
+                {
+                  "id": "b",
+                  "text": "18 m"
+                },
+                {
+                  "id": "c",
+                  "text": "8 m"
+                }
+              ],
+              "answer": {
+                "choice": "c"
+              },
+              "hint": "Lấy bề rộng con sông trừ phần cầu đã dựng.",
+              "explain": "Lấy 20 m − 12 m = 8 m.",
+              "en": {
+                "prompt": "The river is 20 m wide and 12 m of bridge is built. How many metres are left?",
+                "choices": [
+                  "32 m",
+                  "18 m",
+                  "8 m"
+                ],
+                "hint": "Subtract the built part from the river width.",
+                "explain": "20 m − 12 m = 8 m."
+              }
+            },
+            {
+              "id": "so-be",
+              "prompt": "Trong các số 52, 25, 50, số nào bé nhất?",
+              "skill": "so-sanh-so",
+              "choices": [
+                {
+                  "id": "a",
+                  "text": "52"
+                },
+                {
+                  "id": "b",
+                  "text": "25"
+                },
+                {
+                  "id": "c",
+                  "text": "50"
+                }
+              ],
+              "answer": {
+                "choice": "b"
+              },
+              "hint": "Xem chữ số hàng chục: số nào có ít chục nhất?",
+              "explain": "25 chỉ có 2 chục, ít hơn 5 chục của 50 và 52, nên 25 bé nhất.",
+              "en": {
+                "prompt": "Among 52, 25 and 50, which is the smallest?",
+                "choices": [
+                  "52",
+                  "25",
+                  "50"
+                ],
+                "hint": "Look at the tens: which has the fewest tens?",
+                "explain": "25 has only 2 tens, fewer than the 5 tens of 50 and 52, so it is the smallest."
+              }
+            }
+          ],
+          "en": {
+            "title": "The team pulls the bridge up straight"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ket",
+      "title": "Cầu tre xong",
+      "kind": "dialogue",
+      "trigger": "auto",
+      "lines": [
+        {
+          "speaker": "Ông Trưởng Thôn Cầu",
+          "text": "Cầu tre dựng xong rồi! Trẻ con trong làng lại được qua sông đến trường."
+        },
+        {
+          "speaker": "Ông Trưởng Thôn Cầu",
+          "text": "Ông cảm ơn cả đội: đúng là đông tay thì vỗ nên kêu."
+        }
+      ],
+      "en": {
+        "title": "Bridge built",
+        "lines": [
+          "The bamboo bridge is built! The village children can cross to school again.",
+          "Thank you, team: many hands make light work."
+        ]
+      }
+    },
+    {
+      "id": "thuong",
+      "title": "Quà của làng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ông Trưởng Thôn tặng mỗi bạn phần thưởng của làng.",
+      "en": {
+        "title": "Village thanks",
+        "text": "The village elder gives each friend the village's thanks."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Hẹn mùa nước",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mùa nước sau cầu lại cần sửa, nhớ rủ đội quay lại nhé.",
+      "en": {
+        "title": "Next flood season",
+        "text": "Next flood season the bridge will need mending again: bring your team back."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 25,
+    "skillXp": {
+      "phep-cong": 10,
+      "phep-tru": 10,
+      "chinh-ta": 10
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Building the bamboo bridge together",
+    "summary": "The village needs a new bamboo bridge: each friend solves a question, then the whole team holds the rope at once."
+  }
+}

@@ -1,0 +1,306 @@
+{
+  "id": "with-thoi-khoa-bieu-lop",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Ghép lại thời khóa biểu lớp Hai",
+  "summary": "Tờ thời khóa biểu bị cắt thành mảnh giấy nhỏ: mỗi bạn giữ một mảnh, cả đội ghép lại cho lớp.",
+  "category": "coop",
+  "status": "active",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Đội giúp Cô Tổng Phụ Trách Lan",
+    "where": "Sân trường",
+    "goal": "Ghép lại thời khóa biểu lớp Hai",
+    "play": "Mỗi bạn giữ mảnh giấy, cùng ghép và trả lời",
+    "learn": "Xem giờ, cộng trong phạm vi 100, suy luận thứ tự",
+    "reward": "Xu, kinh nghiệm cho mỗi bạn",
+    "next": "Chơi lại cùng đội khác"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "gap",
+    "challenge": "cung-choi",
+    "decision": "cung-choi",
+    "finale": "ket",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Cô Tổng Phụ Trách Lan",
+      "kind": "dialogue",
+      "target": "co-tong-phu-trach-lan",
+      "trigger": "interact",
+      "lines": [
+        {
+          "speaker": "Cô Tổng Phụ Trách Lan",
+          "text": "Ôi, {name} ơi! Bạn mèo con nghịch kéo cắt vụn tờ thời khóa biểu của lớp Hai rồi."
+        },
+        {
+          "speaker": "Cô Tổng Phụ Trách Lan",
+          "text": "Cô phát cho mỗi bạn vài mảnh giấy. Cả đội cùng ghép lại giúp cô nhé!"
+        }
+      ],
+      "en": {
+        "title": "Meet Cô Tổng Phụ Trách Lan",
+        "lines": [
+          "Oh, {name}! A playful kitten snipped Class Two's timetable into bits.",
+          "I am handing each friend some slips. Help me put it back together as a team!"
+        ]
+      }
+    },
+    {
+      "id": "cung-choi",
+      "title": "Ghép giấy",
+      "kind": "coop",
+      "trigger": "auto",
+      "mode": "pieces",
+      "prompt": "Mỗi bạn giữ vài mảnh giấy. Cho cả đội xem rồi lần lượt trả lời từng câu.",
+      "guide": [
+        "Mở mảnh giấy của mình cho cả đội cùng đọc.",
+        "Bạn đến lượt chọn đáp án; các bạn khác cùng nhắc nhỏ.",
+        "Cần thì bấm Gợi ý hoặc Đáp án, không ai bị trừ gì."
+      ],
+      "seats": 3,
+      "feedback": {
+        "right": [
+          "Giỏi quá, mảnh giấy khớp vào ô rồi!",
+          "Cô thấy cả đội đọc rất kĩ đấy.",
+          "Đúng rồi, lớp Hai sắp có thời khóa biểu mới!"
+        ],
+        "wrong": [
+          "Chưa khớp, các con đọc lại mảnh giấy nhé.",
+          "Gần đúng rồi, cùng nhẩm lại một lần.",
+          "Không sao đâu, cô chờ cả đội nghĩ thêm."
+        ],
+        "en": {
+          "right": [
+            "Well done, the slip fits its box!",
+            "The team reads so carefully.",
+            "Right, Class Two will soon have its timetable back!"
+          ],
+          "wrong": [
+            "It does not fit yet; read the slip again.",
+            "Almost; work it out once more together.",
+            "No problem, I will wait while the team thinks."
+          ]
+        }
+      },
+      "en": {
+        "title": "Slip by slip",
+        "prompt": "Each friend holds some paper slips. Show them to the team, then answer in turn.",
+        "guide": [
+          "Open your slips so the whole team can read them.",
+          "The friend whose turn it is picks the answer; the others whisper help.",
+          "Tap Hint or Answer when needed: nobody loses anything."
+        ]
+      },
+      "rounds": [
+        {
+          "id": "giay-mot",
+          "pieces": [
+            "Mảnh giấy 1: sáng thứ Hai có tiết Toán ngay sau giờ chào cờ.",
+            "Mảnh giấy 2: giờ chào cờ bắt đầu lúc 7 giờ và kéo dài 30 phút."
+          ],
+          "task": {
+            "id": "tiet-toan",
+            "prompt": "Tiết Toán sáng thứ Hai bắt đầu lúc mấy giờ?",
+            "skill": "xem-dong-ho",
+            "choices": [
+              {
+                "id": "a",
+                "text": "6 giờ rưỡi"
+              },
+              {
+                "id": "b",
+                "text": "7 giờ rưỡi"
+              },
+              {
+                "id": "c",
+                "text": "8 giờ"
+              }
+            ],
+            "answer": {
+              "choice": "b"
+            },
+            "hint": "Chào cờ bắt đầu lúc 7 giờ, thêm 30 phút nữa là nửa giờ.",
+            "explain": "Từ 7 giờ thêm 30 phút là 7 giờ 30 phút, tức là 7 giờ rưỡi.",
+            "en": {
+              "prompt": "What time does Monday's Maths lesson start?",
+              "choices": [
+                "Half past six",
+                "Half past seven",
+                "Eight o'clock"
+              ],
+              "hint": "The ceremony starts at 7 and lasts 30 minutes: that is half an hour.",
+              "explain": "7 o'clock plus 30 minutes is 7:30, half past seven."
+            }
+          },
+          "en": {
+            "pieces": [
+              "Slip 1: on Monday morning, Maths comes right after the flag ceremony.",
+              "Slip 2: the flag ceremony starts at 7 o'clock and lasts 30 minutes."
+            ]
+          }
+        },
+        {
+          "id": "giay-hai",
+          "pieces": [
+            "Mảnh giấy 3: chiều thứ Ba, lớp có 18 bạn học vẽ.",
+            "Mảnh giấy 4: thêm 7 bạn lớp bên sang học vẽ cùng."
+          ],
+          "task": {
+            "id": "phong-ve",
+            "prompt": "Chiều thứ Ba, phòng vẽ có tất cả bao nhiêu bạn?",
+            "skill": "phep-cong",
+            "choices": [
+              {
+                "id": "a",
+                "text": "25"
+              },
+              {
+                "id": "b",
+                "text": "11"
+              },
+              {
+                "id": "c",
+                "text": "24"
+              }
+            ],
+            "answer": {
+              "choice": "a"
+            },
+            "hint": "Gộp số bạn của lớp với số bạn lớp bên sang học.",
+            "explain": "Lấy 18 + 7 = 25, phòng vẽ có 25 bạn.",
+            "en": {
+              "prompt": "How many pupils are in the art room on Tuesday afternoon?",
+              "choices": [
+                "25",
+                "11",
+                "24"
+              ],
+              "hint": "Put together the class and the pupils who joined.",
+              "explain": "18 + 7 = 25: there are 25 pupils."
+            }
+          },
+          "en": {
+            "pieces": [
+              "Slip 3: on Tuesday afternoon, 18 pupils have an art lesson.",
+              "Slip 4: 7 pupils from the class next door join them."
+            ]
+          }
+        },
+        {
+          "id": "giay-ba",
+          "pieces": [
+            "Mảnh giấy 5: thứ Tư có tiết Tiếng Việt và tiết Âm nhạc.",
+            "Mảnh giấy 6: tiết Âm nhạc học sau tiết Tiếng Việt.",
+            "Mảnh giấy 7: thứ Tư chỉ có hai tiết đầu là hai tiết ấy."
+          ],
+          "task": {
+            "id": "tiet-dau",
+            "prompt": "Tiết học đầu tiên của sáng thứ Tư là tiết gì?",
+            "skill": "logic",
+            "choices": [
+              {
+                "id": "a",
+                "text": "Thể dục"
+              },
+              {
+                "id": "b",
+                "text": "Tiếng Việt"
+              },
+              {
+                "id": "c",
+                "text": "Âm nhạc"
+              }
+            ],
+            "answer": {
+              "choice": "b"
+            },
+            "hint": "Âm nhạc đứng sau Tiếng Việt: vậy tiết nào đứng trước?",
+            "explain": "Hai tiết đầu là Tiếng Việt và Âm nhạc, Âm nhạc học sau nên tiết đầu là Tiếng Việt.",
+            "en": {
+              "prompt": "What is the first lesson on Wednesday morning?",
+              "choices": [
+                "PE",
+                "Vietnamese",
+                "Music"
+              ],
+              "hint": "Music comes after Vietnamese: so which one comes first?",
+              "explain": "The first two lessons are Vietnamese and Music; Music is second, so Vietnamese is first."
+            }
+          },
+          "en": {
+            "pieces": [
+              "Slip 5: Wednesday has a Vietnamese lesson and a Music lesson.",
+              "Slip 6: Music comes after Vietnamese.",
+              "Slip 7: those two are Wednesday's first two lessons."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ket",
+      "title": "Dán lên bảng tin",
+      "kind": "dialogue",
+      "trigger": "auto",
+      "lines": [
+        {
+          "speaker": "Cô Tổng Phụ Trách Lan",
+          "text": "Thời khóa biểu lành lặn rồi! Cô sẽ dán lên bảng tin của lớp."
+        },
+        {
+          "speaker": "Cô Tổng Phụ Trách Lan",
+          "text": "Cảm ơn cả đội: mỗi bạn một mảnh mà thành một tờ trọn vẹn."
+        }
+      ],
+      "en": {
+        "title": "Pinned on the board",
+        "lines": [
+          "The timetable is whole again! I will pin it on the class board.",
+          "Thank you, team: one slip each made one whole sheet."
+        ]
+      }
+    },
+    {
+      "id": "thuong",
+      "title": "Quà của trường",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cô Lan tặng mỗi bạn phần thưởng của trường.",
+      "en": {
+        "title": "School prizes",
+        "text": "Miss Lan gives each friend a school prize."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Hẹn sân trường",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hôm khác cô lại cần đội giúp: quay lại sân trường nhé.",
+      "en": {
+        "title": "Schoolyard later",
+        "text": "I will need a team again another day: come back to the schoolyard."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 25,
+    "skillXp": {
+      "xem-dong-ho": 10,
+      "phep-cong": 10,
+      "logic": 10
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Piecing together Class Two's timetable",
+    "summary": "The timetable was cut into slips: each friend holds a slip and the team puts it back together for the class."
+  }
+}

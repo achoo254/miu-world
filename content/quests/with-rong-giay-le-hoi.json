@@ -1,0 +1,384 @@
+{
+  "id": "with-rong-giay-le-hoi",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Rồng Giấy nghịch gió ngày hội",
+  "summary": "Rồng Giấy thổi bay đèn lồng lễ hội: cả đội thay nhau trả lời, mỗi câu đúng là một đòn vui.",
+  "category": "coop",
+  "status": "active",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "Đội giúp Chú Điều Hành Lễ Hội",
+    "where": "Quảng trường trung tâm",
+    "goal": "Thắng Rồng Giấy, lấy lại đèn lồng",
+    "play": "Thay phiên trả lời, cùng trừ máu Rồng",
+    "learn": "Cộng trừ, so sánh số, từ chỉ hoạt động, xem giờ",
+    "reward": "Xu, kinh nghiệm cho mỗi bạn",
+    "next": "Chơi lại cùng đội khác"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "gap",
+    "challenge": "cung-choi",
+    "decision": "cung-choi",
+    "finale": "ket",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Chú Điều Hành Lễ Hội",
+      "kind": "dialogue",
+      "target": "chu-dieu-hanh-le-hoi",
+      "trigger": "interact",
+      "lines": [
+        {
+          "speaker": "Chú Điều Hành Lễ Hội",
+          "text": "{name} ơi, cứu với! Rồng Giấy tinh nghịch đang thổi bay hết đèn lồng của lễ hội."
+        },
+        {
+          "speaker": "Chú Điều Hành Lễ Hội",
+          "text": "Một mình thì khó lắm, nhưng cả đội thay phiên nhau trả lời thì Rồng sẽ chịu thua!"
+        }
+      ],
+      "en": {
+        "title": "Meet Chú Điều Hành Lễ Hội",
+        "lines": [
+          "{name}, help! The cheeky Paper Dragon is blowing all the festival lanterns away.",
+          "It is hard alone, but if the team takes turns answering, the Dragon will give up!"
+        ]
+      }
+    },
+    {
+      "id": "cung-choi",
+      "title": "Đấu Rồng",
+      "kind": "coop",
+      "trigger": "auto",
+      "mode": "team-boss",
+      "prompt": "Cả đội chung một thanh máu của Rồng: mỗi bạn đến lượt trả lời một câu, đúng là trừ máu Rồng.",
+      "guide": [
+        "Lượt của ai thì người đó chọn đáp án.",
+        "Đúng thì máu Rồng giảm và tới lượt bạn kế tiếp.",
+        "Sai thì cùng nghĩ lại, Rồng không làm ai thua cả."
+      ],
+      "seats": 3,
+      "feedback": {
+        "right": [
+          "Trúng rồi! Rồng Giấy lảo đảo trong gió.",
+          "Một đèn lồng sáng trở lại, hoan hô cả đội!",
+          "Đòn hay quá, Rồng sắp chịu thua rồi!"
+        ],
+        "wrong": [
+          "Vù! Rồng né được, bạn thử lại nhé.",
+          "Chưa trúng, cả đội cùng nhẩm lại nào.",
+          "Rồng cười hí hí, nghĩ thêm chút là được."
+        ],
+        "en": {
+          "right": [
+            "A hit! The Paper Dragon wobbles in the wind.",
+            "One lantern lights up again, hooray team!",
+            "Great blow, the Dragon is about to give up!"
+          ],
+          "wrong": [
+            "Whoosh! The Dragon dodged; try again.",
+            "Missed; work it out together again.",
+            "The Dragon giggles; a little more thinking will do."
+          ]
+        }
+      },
+      "en": {
+        "title": "Dragon duel",
+        "prompt": "The whole team shares the Dragon's health bar: on your turn answer one question; a right answer takes its health.",
+        "guide": [
+          "Whoever's turn it is picks the answer.",
+          "A right answer lowers the Dragon's health and passes the turn on.",
+          "A wrong one means thinking again together; the Dragon never makes anyone lose."
+        ]
+      },
+      "boss": {
+        "name": "Rồng Giấy Nghịch Gió",
+        "maxHp": 500,
+        "intro": "Vù vù! Đèn lồng lễ hội giờ là của Rồng Giấy hết nhé!",
+        "win": "Ôi, các bạn giỏi quá! Rồng Giấy trả lại đèn lồng và múa cùng cả đội.",
+        "en": {
+          "name": "Windy Paper Dragon",
+          "intro": "Whoosh! The festival lanterns all belong to the Paper Dragon now!",
+          "win": "Oh, you are so clever! The Paper Dragon gives back the lanterns and dances with the team."
+        }
+      },
+      "turns": [
+        {
+          "id": "den-bay",
+          "prompt": "Rồng thổi bay 45 chiếc đèn lồng, cả đội nhặt lại được 30 chiếc. Còn mấy chiếc đang bay?",
+          "skill": "phep-tru",
+          "choices": [
+            {
+              "id": "a",
+              "text": "15"
+            },
+            {
+              "id": "b",
+              "text": "75"
+            },
+            {
+              "id": "c",
+              "text": "25"
+            }
+          ],
+          "answer": {
+            "choice": "a"
+          },
+          "hint": "Lấy số đèn bị thổi bay trừ số đèn đã nhặt lại.",
+          "explain": "Lấy 45 − 30 = 15, còn 15 chiếc đèn đang bay.",
+          "damage": 100,
+          "en": {
+            "prompt": "The Dragon blew away 45 lanterns and the team caught 30. How many are still flying?",
+            "choices": [
+              "15",
+              "75",
+              "25"
+            ],
+            "hint": "Subtract the lanterns caught from those blown away.",
+            "explain": "45 − 30 = 15: fifteen lanterns are still flying."
+          }
+        },
+        {
+          "id": "so-lon",
+          "prompt": "Rồng hỏi: số nào lớn hơn, 67 hay 76?",
+          "skill": "so-sanh-so",
+          "choices": [
+            {
+              "id": "a",
+              "text": "76"
+            },
+            {
+              "id": "b",
+              "text": "67"
+            },
+            {
+              "id": "c",
+              "text": "Hai số bằng nhau"
+            }
+          ],
+          "answer": {
+            "choice": "a"
+          },
+          "hint": "So sánh chữ số hàng chục trước: 6 chục hay 7 chục nhiều hơn?",
+          "explain": "76 có 7 chục, 67 chỉ có 6 chục, nên 76 lớn hơn.",
+          "damage": 100,
+          "en": {
+            "prompt": "The Dragon asks: which is greater, 67 or 76?",
+            "choices": [
+              "76",
+              "67",
+              "They are equal"
+            ],
+            "hint": "Compare the tens first: is 6 tens or 7 tens more?",
+            "explain": "76 has 7 tens and 67 only 6, so 76 is greater."
+          }
+        },
+        {
+          "id": "chum-den",
+          "prompt": "Mỗi chùm có 10 đèn lồng. Bốn chùm có tất cả bao nhiêu đèn?",
+          "skill": "so-den-100",
+          "choices": [
+            {
+              "id": "a",
+              "text": "44"
+            },
+            {
+              "id": "b",
+              "text": "40"
+            },
+            {
+              "id": "c",
+              "text": "14"
+            }
+          ],
+          "answer": {
+            "choice": "b"
+          },
+          "hint": "Đếm theo chục: mười, hai mươi, ba mươi…",
+          "explain": "Bốn chục đèn là 40 chiếc đèn lồng.",
+          "damage": 100,
+          "en": {
+            "prompt": "Each bunch holds 10 lanterns. How many lanterns are in four bunches?",
+            "choices": [
+              "44",
+              "40",
+              "14"
+            ],
+            "hint": "Count in tens: ten, twenty, thirty…",
+            "explain": "Four tens make 40 lanterns."
+          }
+        },
+        {
+          "id": "tu-mua",
+          "prompt": "Trong các từ \"múa\", \"đèn lồng\", \"đỏ thắm\", từ nào chỉ hoạt động?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "đèn lồng"
+            },
+            {
+              "id": "b",
+              "text": "đỏ thắm"
+            },
+            {
+              "id": "c",
+              "text": "múa"
+            }
+          ],
+          "answer": {
+            "choice": "c"
+          },
+          "hint": "Từ chỉ hoạt động là việc mình làm được bằng tay chân.",
+          "explain": "\"Múa\" là việc làm nên là từ chỉ hoạt động; \"đèn lồng\" chỉ sự vật, \"đỏ thắm\" chỉ đặc điểm.",
+          "damage": 100,
+          "en": {
+            "prompt": "Among \"dance\", \"lantern\" and \"deep red\", which word names an action?",
+            "choices": [
+              "lantern",
+              "deep red",
+              "dance"
+            ],
+            "hint": "An action word is something you can do with your hands and feet.",
+            "explain": "\"Dance\" is something you do, so it names an action; \"lantern\" is a thing and \"deep red\" a quality."
+          }
+        },
+        {
+          "id": "gio-hoi",
+          "prompt": "Lễ hội bắt đầu lúc 7 giờ tối và kéo dài 2 giờ. Lễ hội kết thúc lúc mấy giờ?",
+          "skill": "xem-dong-ho",
+          "choices": [
+            {
+              "id": "a",
+              "text": "9 giờ tối"
+            },
+            {
+              "id": "b",
+              "text": "5 giờ chiều"
+            },
+            {
+              "id": "c",
+              "text": "8 giờ tối"
+            }
+          ],
+          "answer": {
+            "choice": "a"
+          },
+          "hint": "Đếm thêm 2 giờ kể từ 7 giờ tối.",
+          "explain": "Từ 7 giờ tối thêm 2 giờ là 9 giờ tối.",
+          "damage": 100,
+          "en": {
+            "prompt": "The festival starts at 7 pm and lasts 2 hours. When does it end?",
+            "choices": [
+              "9 pm",
+              "5 pm",
+              "8 pm"
+            ],
+            "hint": "Count on 2 hours from 7 pm.",
+            "explain": "7 pm plus 2 hours is 9 pm."
+          }
+        },
+        {
+          "id": "dau-bang",
+          "prompt": "Chọn dấu đúng cho chỗ trống: 38 + 7 … 45",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "<"
+            },
+            {
+              "id": "b",
+              "text": "="
+            },
+            {
+              "id": "c",
+              "text": ">"
+            }
+          ],
+          "answer": {
+            "choice": "b"
+          },
+          "hint": "Tính 38 + 7 trước rồi so với 45.",
+          "explain": "38 + 7 = 45, nên hai bên bằng nhau, điền dấu =.",
+          "damage": 100,
+          "en": {
+            "prompt": "Pick the right sign for the gap: 38 + 7 … 45",
+            "choices": [
+              "<",
+              "=",
+              ">"
+            ],
+            "hint": "Work out 38 + 7 first, then compare it with 45.",
+            "explain": "38 + 7 = 45, so both sides are equal: the sign is =."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ket",
+      "title": "Đèn lồng sáng lại",
+      "kind": "dialogue",
+      "trigger": "auto",
+      "lines": [
+        {
+          "speaker": "Chú Điều Hành Lễ Hội",
+          "text": "Đèn lồng sáng rực khắp quảng trường rồi! Lễ hội tiếp tục nào."
+        },
+        {
+          "speaker": "Chú Điều Hành Lễ Hội",
+          "text": "Rồng Giấy giờ là bạn của cả đội, nó còn xin múa cùng nữa đấy."
+        }
+      ],
+      "en": {
+        "title": "Lanterns aglow",
+        "lines": [
+          "Lanterns glow all over the square! On with the festival.",
+          "The Paper Dragon is the team's friend now and even asks to dance along."
+        ]
+      }
+    },
+    {
+      "id": "thuong",
+      "title": "Quà ngày hội",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Điều Hành tặng mỗi bạn phần quà ngày hội.",
+      "en": {
+        "title": "Festival gifts",
+        "text": "The festival manager gives each friend a festival gift."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Hẹn quảng trường",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Rồng Giấy hẹn đội lần sau chơi tiếp ở quảng trường.",
+      "en": {
+        "title": "Square later",
+        "text": "The Paper Dragon will meet the team again on the square."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 25,
+    "skillXp": {
+      "phep-tru": 10,
+      "so-sanh-so": 10,
+      "tu-ngu": 10
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "The mischievous Paper Dragon",
+    "summary": "The Paper Dragon blew the festival lanterns away: the team takes turns, every right answer is a cheerful blow."
+  }
+}
