@@ -1,7 +1,7 @@
 ---
 title: "Mỗi tài khoản một người chơi"
 description: "Chuyển mô hình tài khoản phụ huynh + hồ sơ con sang một người chơi chính mỗi tài khoản, hồ sơ phụ tùy chọn, kèm lời đồng ý v3."
-status: pending
+status: completed
 priority: P2
 tier: L
 branch: main
@@ -13,7 +13,7 @@ created: 2026-10-05
 
 # Mỗi tài khoản một người chơi
 
-**Trạng thái:** chờ duyệt, chưa thi công · **Tier:** L · **Nhánh:** `main` · **Ngày:** 05/10/2026
+**Trạng thái:** xong 05/10/2026 (không hỏi tuổi: người sở hữu chốt); E2E đã sửa nhưng chưa chạy · **Tier:** L · **Nhánh:** `main` · **Ngày:** 05/10/2026
 **Nguồn:** yêu cầu người sở hữu 05/10/2026 (`.claude/rules/product-audience.md`): game cho mọi lứa tuổi, online kiểu Minecraft, sau này có mobile app, không cần phụ huynh giám sát, phụ huynh tự chịu trách nhiệm. Quyết định của Jev `account_model = plan_single_player` (0.84, rủi ro cao, áp theo quy ước; `plans/dattqh/reports/jev-261005-0949-all-ages-account.md`).
 
 ## Kết quả mong muốn
@@ -42,7 +42,9 @@ created: 2026-10-05
 ## Thiết kế
 
 - Thêm cột `child_profiles.is_primary boolean not null default false` + chỉ mục duy nhất từng phần `(parent_id) where is_primary`. Migration backfill: hồ sơ có `created_at` nhỏ nhất của mỗi tài khoản thành `is_primary = true`.
-- Đăng nhập (`sign-in.ts`): tài khoản chưa có người chơi chính thì **chưa tạo** (chờ đồng ý chính sách); sau khi đồng ý v3, server tạo người chơi chính (tên mặc định là tên đầu tiên còn trống trong danh sách, đổi ở bước tạo nhân vật) và đặt `sessions.active_child_id` vào người chơi chính. Phiên mới luôn chọn sẵn người chơi chính.
+- Đồng ý chính sách và tạo người chơi chính chạy trong **một transaction** (khóa dòng tài khoản; `acceptPolicy` trong `apps/server/src/player/player-routes.ts`): tên mặc định là tên đầu tiên còn trống trong danh sách (đổi trong Quản lý tài khoản), phiên đang mở chọn luôn người chơi đó. Phiên mới (`createSession`) luôn chọn sẵn người chơi chính. Thêm người chơi phụ cũng tự chữa nếu tài khoản thiếu người chơi chính.
+- Web: không có người chơi nào được chọn thì tài khoản một người chơi tự chọn người đó; chỉ khi có ≥ 2 người chơi mới hiện màn chọn, và mục "Đổi người chơi" trong Cài đặt chỉ hiện khi đó. Nút giao máy ở Quản lý tài khoản dẫn tới màn chọn khi có người chơi phụ.
+- Mã lỗi `no-active-child` giữ nguyên (web ánh xạ theo mã).
 - Người chơi chính không xóa riêng được (xóa = xóa tài khoản); người chơi phụ xóa như hồ sơ hiện nay. Tổng số người chơi giữ tối đa 3.
 - `/auth/me` trả thêm `players: [{ id, displayName, primary }]` để web biết có cần màn chọn người chơi không.
 - API: route `/children` đổi thành `/players` (web là client duy nhất, đổi cùng lúc, không giữ đường cũ); DTO `ChildProfileDto` → `PlayerDto` trong `packages/schema`.
@@ -88,6 +90,12 @@ Input/output: `plans/dattqh/reports/jev-261005-0949-single-player-open-{input,ou
 
 Câu hỏi tuổi: Jev gần như phân vân (0.42), rủi ro cao (pháp lý, dữ liệu trẻ em). Áp theo quy ước, nhưng người sở hữu nên xác nhận trước pha 4.
 
+## Kết quả thi công (05/10/2026)
+
+- Migration `0010_primary-player.sql` (cột `is_primary`, chỉ mục duy nhất từng phần, backfill idempotent) chạy thử đúng trên bản sao database dev của worktree `miu-world-sgk`; test backfill ở `apps/server/src/db/schema.test.ts`.
+- Review độc lập: 0 lỗi nghiêm trọng; đã sửa 4 điểm trung bình (transaction đồng ý + người chơi chính, web dùng `players`, nút giao máy, test migration) và phần chữ còn "hồ sơ".
+- Chưa chạy E2E (`account-flow`, `mvp-loop`, `creator`, `parent-session.setup`, `quest-api` đã sửa theo luồng mới).
+
 ## Câu hỏi mở
 
-- Người sở hữu xác nhận không hỏi tuổi ở đồng ý v3 (quyết định của Jev với độ tin thấp).
+- Không còn (người sở hữu chốt không hỏi tuổi, 05/10/2026).

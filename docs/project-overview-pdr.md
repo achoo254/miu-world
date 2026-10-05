@@ -22,7 +22,7 @@ Cách làm: single-player vertical slice trước (Home Base + Khu rừng bí m�
 ## Ràng buộc không suy ra được từ code
 
 - **Asset:** chỉ CC0 (model, texture, âm thanh), MIT (icon Fluent Emoji), OFL (font) hoặc sinh bằng code. Không CC-BY/SA/NC, không tự vẽ, không AI trả phí, không voxel artist. Hệ quả chấp nhận: hình ảnh kém chi tiết hơn mock.
-- **An toàn trẻ em (thiết kế ban đầu, chưa đổi mô hình tài khoản):** phụ huynh là chủ tài khoản, trẻ là hồ sơ con; không thu tên thật, email, trường của trẻ; cần đồng ý của phụ huynh. Yêu cầu pháp lý (Nghị định 13/2023/NĐ-CP và luật dữ liệu cá nhân mới) phải được pháp chế xác nhận — tài liệu này không phải tư vấn pháp lý.
+- **Dữ liệu người chơi và trẻ em:** người đăng nhập là người chơi chính và tự đồng ý chính sách; trẻ chơi bằng người chơi phụ trong tài khoản người lớn, người lớn đó chịu trách nhiệm; không thu tên thật, tuổi, trường của người chơi (tên chọn từ danh sách). Yêu cầu pháp lý (Nghị định 13/2023/NĐ-CP và luật dữ liệu cá nhân mới) phải được pháp chế xác nhận — tài liệu này không phải tư vấn pháp lý.
 - **Chống gian lận:** mọi thưởng, kết quả thử thách, mở khóa do server tính; client chỉ hiển thị.
 - **Mô hình vận hành:** AI làm 100% phần kỹ thuật; con người duyệt cuối trên trang review và làm việc máy không thay được (nội dung giáo dục, chơi thử với trẻ, kiểm duyệt cộng đồng, đo máy thật trước nghiệm thu MVP).
 
@@ -46,7 +46,7 @@ Cách làm: single-player vertical slice trước (Home Base + Khu rừng bí m�
 
 ## Luồng tài khoản (§9, §11)
 
-Chủ tài khoản (người lớn hoặc phụ huynh) đăng nhập Google → đồng ý chính sách dữ liệu trước khi tạo hồ sơ → tạo tối đa 3 hồ sơ trẻ (chỉ tên hiển thị chọn từ danh sách; không tên thật, email, trường, tuổi, lớp) → chọn hồ sơ để chơi → mỗi hồ sơ có một nhân vật; mọi dữ liệu game (tiến độ quest, thưởng, túi đồ, kỹ năng) gắn với hồ sơ, không gắn với phụ huynh. Mục Quản lý tài khoản (tạo, sửa, xóa hồ sơ; trước đây gọi là Khu phụ huynh) mở thẳng; PIN là tùy chọn, đặt, đổi hoặc gỡ từ chính mục đó (05/10/2026). Xóa hồ sơ là xóa hẳn mọi dữ liệu của hồ sơ đó.
+Đăng nhập Google → đồng ý chính sách (v3) → server tạo **người chơi chính** của tài khoản (tên đầu tiên còn trống trong danh sách) và chọn sẵn nó → tạo nhân vật → Home. Mỗi phiên mới chơi bằng người chơi chính; không có màn "Ai đang chơi?" trừ khi chủ tài khoản thêm **người chơi phụ** cho máy dùng chung (tối đa 3 người chơi; tên chọn từ danh sách; không tên thật, tuổi, trường, lớp). Mọi dữ liệu game (tiến độ quest, thưởng, túi đồ, kỹ năng) gắn với từng người chơi. Mục Quản lý tài khoản (thêm, sửa, xóa người chơi phụ; tải dữ liệu; xóa tài khoản) mở thẳng; PIN là tùy chọn, đặt, đổi hoặc gỡ từ chính mục đó. Người chơi chính chỉ xóa cùng tài khoản; xóa người chơi phụ là xóa hẳn mọi dữ liệu của người chơi đó (05/10/2026).
 
 ## Quyết định còn mở
 

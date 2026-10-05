@@ -39,7 +39,7 @@ Chỉ để định hướng: bắt đầu đọc từ đâu, ai làm chủ vi�
 | Server | `apps/server/src/app.ts`, `apps/server/src/config.ts` | Express app (tách khỏi `listen` để test), config env validate bằng Zod |
 | Schema dùng chung | `packages/schema/src/` | Zod cho DTO API (`account`, `game`) và nội dung (`content`) |
 | Logic quest | `packages/quest/src/quest-progress.ts`, `check-answer.ts`, `quest-catalog.ts`, `quest-score.ts`, `level.ts` | Tiến trình bước tuyến tính (bước `search` tìm đủ target theo thứ tự tùy ý), chấm đáp án theo loại bước, kiểm chéo catalog quest, sao và XP khi xong quest, level từ XP (curve riêng cho Skill); dùng chung web + server |
-| Auth, hồ sơ trẻ | `apps/server/src/auth/`, `apps/server/src/child-profile/` | Session cookie, CSRF Origin, PIN phụ huynh (tùy chọn), rate limit, IDOR |
+| Auth, người chơi | `apps/server/src/auth/`, `apps/server/src/player/` | Session cookie, CSRF Origin, PIN tài khoản (tùy chọn), người chơi chính tạo khi đồng ý, rate limit, IDOR |
 | Nhân vật, tiến độ, thưởng | `apps/server/src/character/`, `apps/server/src/quest/`, `apps/server/src/reward/reward-ledger.ts` | API quest (danh sách, chi tiết, hoàn thành bước, hỗ trợ học); server chấm, đếm theo bước, tính sao/XP/Level Up/mở khóa (`quest-completion.ts`), ghi ledger + bảng tổng hợp trong một transaction |
 | Database | `apps/server/src/db/schema.ts`, `apps/server/drizzle/` | Bảng Drizzle, migration SQL, PGlite/Postgres |
 | Nội dung server nạp | `apps/server/src/content/content-catalog.ts` | Validate tên, đồng ý, phụ kiện, level curve, kỹ năng, quest lúc khởi động |
