@@ -45,6 +45,13 @@
       "why": "Tiếng Việt 2 tập 2 textbook (owner, 02/10/2026); tools/sgk/split-pages.py splits it into pages for reading."
     },
     {
+      "from": "sgk/ta2-global-success-mau.pdf",
+      "to": ".data/sgk/src/ta2-global-success-mau.pdf",
+      "bytes": 46246856,
+      "sha256": "dccdba1a0ad5e14376626d227d4e48f2dbbd1fff41cc070480b708fa4c5f0f60",
+      "why": "Tiếng Anh 2 Global Success, 40-page sample (owner, 05/10/2026): the source for the English subject; tools/sgk/split-pages.py splits it into pages for reading."
+    },
+    {
       "from": "timetable/timetable-default.json",
       "to": ".data/private/timetable-default.json",
       "bytes": 1606,

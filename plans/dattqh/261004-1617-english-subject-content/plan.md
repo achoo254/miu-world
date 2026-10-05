@@ -1,6 +1,6 @@
 # Môn English: kỹ năng, quest và trò chơi cho lớp 2
 
-**Trạng thái:** đã duyệt (04/10/2026), cần người sở hữu chọn nguồn nội dung trước khi thi công · **Tier:** XL · **Nhánh:** `main` · **Ngày:** 04/10/2026
+**Trạng thái:** đã duyệt (04/10/2026); nguồn đã chốt (người sở hữu, 05/10/2026: Tiếng Anh 2 Global Success), sẵn sàng thi công · **Tier:** XL · **Nhánh:** `main` · **Ngày:** 04/10/2026
 **Nguồn:** Master Plan §5 (Subject: Toán, Tiếng Việt, **English**; kỹ năng "English Challenge" ở §6), §8c (song ngữ).
 
 ## Kết quả mong muốn
@@ -9,9 +9,9 @@ Bé chọn một quest tiếng Anh như chọn quest Toán hay Tiếng Việt: h
 
 ## Không làm (ghi rõ)
 
-- Không chép nguyên văn sách có bản quyền vào repo công khai khi chưa chắc quyền; xem câu hỏi mở 1.
+- Không commit PDF hay ảnh trang sách (PDF ở iCloud, `pnpm private:sync` chép vào `.data/sgk/src/`).
 - Không thu giọng của bé lên server (giữ chính sách hiện nay: bản ghi chỉ nằm trong trình duyệt).
-- Không đổi chữ Việt của SGK (quyết định "verbatim" chỉ áp cho sách Việt).
+- Chữ của sách đưa vào game nguyên văn, như Toán 2 và Tiếng Việt 2: từ vựng, mẫu câu, bài nghe/đọc, câu lệnh; chỉ thêm lời dẫn của nhân vật quanh bài tập.
 
 ## Hiện trạng đo được (04/10/2026)
 
@@ -45,5 +45,5 @@ Bé chọn một quest tiếng Anh như chọn quest Toán hay Tiếng Việt: h
 
 ## Câu hỏi mở (cần người sở hữu)
 
-1. ~~Nguồn nội dung~~ **Đã chốt (Jev 04/10/2026 (`reports/jev-261004-1648-open-questions.md`)): tự viết theo khung chương trình, đối chiếu chủ đề với sách ở trường, không chép chữ.** Cân nhắc ban đầu: dùng sách nào? Tùy chọn: (a) bộ SGK tiếng Anh lớp 2 đang dùng ở trường của bé (sát chương trình nhưng có bản quyền, chỉ dùng kiểm kê chủ đề và tự viết lời mới, không chép nguyên văn); (b) tự soạn theo khung chương trình Bộ GD&ĐT, không phụ thuộc sách (an toàn bản quyền, cần giáo viên duyệt). **Đề xuất (b)**, đối chiếu chủ đề với sách (a) để bé học khớp bài ở lớp.
+1. ~~Nguồn nội dung~~ **Đã chốt lại (người sở hữu, 05/10/2026): sách Tiếng Anh 2 Global Success.** Bản người sở hữu có hiện là bản mẫu 40 trang (`sgk/ta2-global-success-mau.pdf` trong iCloud, kê ở `tools/private/private-files.json`, sha256 kiểm bằng `pnpm private:sync`); kiểm kê và quest làm theo phần có trong bản mẫu, phần còn lại chờ bản đủ. Thay quyết định cũ của Jev (04/10/2026, `reports/jev-261004-1648-open-questions.md`: tự viết theo khung chương trình, không chép chữ). Cân nhắc ban đầu: dùng sách nào? Tùy chọn: (a) bộ SGK tiếng Anh lớp 2 đang dùng ở trường của bé (sát chương trình nhưng có bản quyền, chỉ dùng kiểm kê chủ đề và tự viết lời mới, không chép nguyên văn); (b) tự soạn theo khung chương trình Bộ GD&ĐT, không phụ thuộc sách (an toàn bản quyền, cần giáo viên duyệt). **Đề xuất (b)**, đối chiếu chủ đề với sách (a) để bé học khớp bài ở lớp.
 2. ~~Giọng người thật~~ **Đã chốt (Jev 04/10/2026 (`reports/jev-261004-1648-open-questions.md`)): giữ giọng trình duyệt.** Cân nhắc ban đầu: có cần phát âm giọng người thật (thu âm) thay giọng trình duyệt không? Tốn công người và chi phí; đề xuất giữ giọng trình duyệt ở đợt này.

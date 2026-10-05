@@ -24,8 +24,8 @@ Mọi hạng mục của Master Plan v3 (§5, §6, §8, §8b, §8c, §9, §13, �
 | §8 Bậc 1: diện mạo, tương tác, tổ đội | `261004-1540-online-appearance-interact-party` | Chưa thi công |
 | Nội dung SGK tập 2 | `261002-1139-sgk-lop2-tap2-content` | Đã lập plan, `pending` |
 | **§5, §6 Trùm, Skill Check, cơ chế còn thiếu (lựa chọn hành động, logic, tìm đồ vật, ghép câu)** | `261004-1617-boss-skill-check-new-mechanics` | Cơ chế xong; nội dung (pha 5) và tài liệu còn |
-| **§5 Môn English (mới có 1 kỹ năng, 0 quest)** | `261004-1617-english-subject-content` | **Mới** |
-| **§6, §9 Tiến bộ học, bạn bè bằng mã, bật/tắt online** (thiết kế lại 05/10/2026: không cần phụ huynh duyệt) | `261004-1617-parent-area-friends` | Chưa thi công |
+| **§5 Môn English (mới có 1 kỹ năng, 0 quest)** | `261004-1617-english-subject-content` | Nguồn đã chốt (Tiếng Anh 2 Global Success, bản mẫu), chưa thi công |
+| **§6, §9 Tiến bộ học, kết bạn trong game (cả với bạn máy), bật/tắt online** (thiết kế lại 05/10/2026: người nhận đồng ý, không mã, không cần phụ huynh duyệt) | `261004-1617-parent-area-friends` | Chưa thi công |
 | **§9 (MP) Kiểm duyệt, token ngắn hạn, tắt khẩn cấp, đo tải (không chống cheat)** | `261004-1617-moderation-safety` | **Mới** |
 | **§8 Bậc 2: co-op quest 2–4 bạn** | `261004-1617-coop-quests` | **Mới** |
 | **§8 Bậc 3, §6 Live: sự kiện có thời hạn (Cổng TIMO), bảng xếp hạng nhóm** | `261004-1617-live-world-events` | **Mới** |
