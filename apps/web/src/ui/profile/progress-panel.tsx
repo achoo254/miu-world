@@ -1,7 +1,7 @@
 // NEW SCREEN (Master Plan §6, progress view), styled like the skill tree's parchment rows (M1.7): a player's
 // learning progress in Hồ sơ, and the same panel for each player in Quản lý tài khoản. Subjects with their
 // lessons, the strongest and weakest skills, three lessons to play next, play time per week and a few counts.
-// Every number is the server's (`GET /api/progress`, `GET /api/players/:id/progress`).
+// Every number is the server's (`GET /api/learning-progress`, `GET /api/players/:id/learning-progress`).
 import { useCallback } from 'react';
 import { Link } from 'react-router';
 import { PlayerProgressDto, type ProgressSkill } from '@miu/schema/progress';
@@ -14,11 +14,11 @@ import { useLoaded } from '../progression/progression-api';
 import './progress.css';
 
 export function loadOwnProgress(): Promise<PlayerProgressDto> {
-  return api('GET', '/progress', PlayerProgressDto);
+  return api('GET', '/learning-progress', PlayerProgressDto);
 }
 
 export function loadPlayerProgress(playerId: string): Promise<PlayerProgressDto> {
-  return api('GET', `/players/${encodeURIComponent(playerId)}/progress`, PlayerProgressDto);
+  return api('GET', `/players/${encodeURIComponent(playerId)}/learning-progress`, PlayerProgressDto);
 }
 
 const playLink = (region: string, quest: string): string => `/play?${new URLSearchParams({ region, quest }).toString()}`;

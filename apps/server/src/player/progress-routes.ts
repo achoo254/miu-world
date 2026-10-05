@@ -14,21 +14,21 @@ export interface ProgressRouteDeps {
 }
 
 /**
- * Learning progress: the selected player's own (`GET /progress`, Hồ sơ), any player of the account for its owner
- * (`GET /players/:id/progress`, behind the account area's optional PIN), and the play screen's weekly play time
- * report (`POST /play-time`).
+ * Learning progress: the selected player's own (`GET /learning-progress`, Hồ sơ), any player of the account for its
+ * owner (`GET /players/:id/learning-progress`, behind the account area's optional PIN), and the play screen's weekly
+ * play time report (`POST /play-time`).
  */
 export function progressRoutes({ db, content, clock }: ProgressRouteDeps): Router {
   const router = Router();
   const version = content.consent.version;
 
-  router.get('/progress', requireParent, async (_req, res) => {
+  router.get('/learning-progress', requireParent, async (_req, res) => {
     const childId = await activePlayerId(db, res, version);
     const body: PlayerProgressDto = await loadProgress(db, content, childId, clock());
     res.json(body);
   });
 
-  router.get('/players/:id/progress', requireParent, requireParentGate(clock), async (req, res) => {
+  router.get('/players/:id/learning-progress', requireParent, requireParentGate(clock), async (req, res) => {
     const player = await ownedPlayer(db, auth(res).parent.id, idParam(req.params.id));
     const body: PlayerProgressDto = await loadProgress(db, content, player.id, clock());
     res.json(body);

@@ -69,42 +69,42 @@ describe('progress rules', () => {
   });
 });
 
-describe('GET /progress', () => {
+describe('GET /learning-progress', () => {
   it('shows the selected player her own progress', async () => {
     const { agent, childId } = await parentWithChild(app);
     await app.db.insert(t.skillProgress).values({ childId, skillId: 'phep-cong', xp: 40 });
-    const body = PlayerProgressDto.parse((await agent.get('/api/progress').expect(200)).body);
+    const body = PlayerProgressDto.parse((await agent.get('/api/learning-progress').expect(200)).body);
     expect(body.strong.map((s) => s.skillId)).toEqual(['phep-cong']);
   });
 
   it('needs a signed-in player', async () => {
-    await app.agent().get('/api/progress').expect(401);
+    await app.agent().get('/api/learning-progress').expect(401);
   });
 });
 
-describe('GET /players/:id/progress', () => {
+describe('GET /players/:id/learning-progress', () => {
   it('shows the account owner any player of the account', async () => {
     const { agent } = await parentWithChild(app);
     const extra = ((await agent.post('/api/players').send({ displayName: 'Thỏ Bông' }).expect(201)).body as { id: string }).id;
     await app.db.insert(t.skillProgress).values({ childId: extra, skillId: 'doc-hieu', xp: 25 });
-    const body = PlayerProgressDto.parse((await agent.get(`/api/players/${extra}/progress`).expect(200)).body);
+    const body = PlayerProgressDto.parse((await agent.get(`/api/players/${extra}/learning-progress`).expect(200)).body);
     expect(body.strong.map((s) => s.skillId)).toEqual(['doc-hieu']);
   });
 
   it('never shows another account’s player, nor a malformed id (404)', async () => {
     const a = await parentWithChild(app);
     const b = await parentWithChild(app);
-    await b.agent.get(`/api/players/${a.childId}/progress`).expect(404);
-    await b.agent.get('/api/players/not-a-uuid/progress').expect(404);
+    await b.agent.get(`/api/players/${a.childId}/learning-progress`).expect(404);
+    await b.agent.get('/api/players/not-a-uuid/learning-progress').expect(404);
   });
 
   it('stays behind the account PIN once the area is locked', async () => {
     const { agent, childId } = await parentWithChild(app);
     // Choosing who plays closes the account area.
     await agent.post(`/api/players/${childId}/select`).expect(200);
-    await agent.get(`/api/players/${childId}/progress`).expect(403, { error: 'parent-gate-closed' });
+    await agent.get(`/api/players/${childId}/learning-progress`).expect(403, { error: 'parent-gate-closed' });
     await agent.post('/api/parent-gate/unlock').send({ pin: TEST_PIN }).expect(200);
-    await agent.get(`/api/players/${childId}/progress`).expect(200);
+    await agent.get(`/api/players/${childId}/learning-progress`).expect(200);
   });
 });
 
@@ -124,7 +124,7 @@ describe('POST /play-time', () => {
     // Too soon after the last one: counted once.
     await agent.post('/api/play-time').send({ seconds: 60 }).expect(204);
     expect((await secondsOf(childId)) - before).toBe(60);
-    const week = PlayerProgressDto.parse((await agent.get('/api/progress').expect(200)).body).weeks.at(-1);
+    const week = PlayerProgressDto.parse((await agent.get('/api/learning-progress').expect(200)).body).weeks.at(-1);
     expect(week?.minutes).toBe(1);
   });
 

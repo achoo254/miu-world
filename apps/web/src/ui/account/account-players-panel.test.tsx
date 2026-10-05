@@ -50,18 +50,18 @@ afterEach(() => {
 
 describe('the account owner’s card per player', () => {
   it('opens on the player’s learning progress, read for that player', async () => {
-    const calls = stubApi({ [`GET /api/players/${EXTRA.id}/progress`]: () => ({ status: 200, body: PROGRESS }) });
+    const calls = stubApi({ [`GET /api/players/${EXTRA.id}/learning-progress`]: () => ({ status: 200, body: PROGRESS }) });
     renderPanel();
     fireEvent.click(document.querySelector(`[data-id="player-care-toggle-${EXTRA.id}"]`) as HTMLElement);
     expect(await screen.findByText('Bài đã học: 4/70')).toBeTruthy();
-    expect(calls.map((c) => c.key)).toContain(`GET /api/players/${EXTRA.id}/progress`);
+    expect(calls.map((c) => c.key)).toContain(`GET /api/players/${EXTRA.id}/learning-progress`);
     // The owner's view does not jump into the game as that player.
     expect(document.querySelector('[data-id^="player-progress-"][data-id*="-play-"]')).toBeNull();
   });
 
   it('switches the player’s online play off for her', async () => {
     const calls = stubApi({
-      [`GET /api/players/${EXTRA.id}/progress`]: () => ({ status: 200, body: PROGRESS }),
+      [`GET /api/players/${EXTRA.id}/learning-progress`]: () => ({ status: 200, body: PROGRESS }),
       [`PATCH /api/players/${EXTRA.id}/settings`]: (body) => ({ status: 200, body: { onlineEnabled: true, botsEnabled: true, ...(body as object) } }),
     });
     renderPanel();
