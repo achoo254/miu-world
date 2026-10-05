@@ -12,6 +12,7 @@ created: 2026-10-05
 # Boss canh khu và boss trên bản đồ
 
 **Trạng thái:** xong phần tự động cả 4 pha (06/10/2026), kèm cho thú cưng ăn món đã nấu; đã deploy production bản `0757380d` ngày 06/10/2026 (không có migration); report `plans/dattqh/reports/zone-guardians-261006.md` · **Tier:** L
+**Việc tiếp theo đã xong (06/10/2026):** mọi câu của trùm lớn và trùm canh khu (260 câu) có ba lớp hỗ trợ Hướng dẫn, Gợi ý, Đáp án kèm giải thích, song ngữ, solo và theo tổ đội, content:check giữ luật; report `plans/dattqh/reports/boss-support-layers-261006.md` (chưa deploy).
 **Nguồn:** người sở hữu (05/10/2026): "boss nên hiển thị trên minimap ko. 1 map chỉ 1 boss ít quá so với kích cỡ map ko" → chọn phương án B. Jev (`reports/jev-261005-2310-bosses-{input,output}.json`) chọn hiện boss trên bản đồ (0.19) và giữ 1 boss (0.77); người sở hữu chọn thêm boss canh khu, quyết định của người sở hữu được dùng.
 
 ## Hiện trạng (05/10/2026)
