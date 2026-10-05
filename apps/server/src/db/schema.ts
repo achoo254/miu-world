@@ -43,6 +43,10 @@ export const childProfiles = pgTable(
     language: text('language').notNull().default('vi'),
     /** Exactly one per account once the policy is accepted; it cannot be deleted on its own. */
     isPrimary: boolean('is_primary').notNull().default(false),
+    /** Her own setting: plays online (sees and meets other players). The account owner can change it for extra players. */
+    onlineEnabled: boolean('online_enabled').notNull().default(true),
+    /** Her own setting: companion bots show up around her. */
+    botsEnabled: boolean('bots_enabled').notNull().default(true),
     createdAt: createdAt(),
   },
   (t) => [

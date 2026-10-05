@@ -23,6 +23,8 @@ import {
   type SafeEmote,
   type ServerWsMessage,
 } from '@miu/schema/multiplayer';
+import type { PlayerSettings } from '@miu/schema/account';
+import type { PlayerEvent } from '../player/player-events';
 import type { CharacterDto } from '@miu/schema/game';
 import type { Authenticate, MultiplayerStore } from './multiplayer-store';
 import { PartyService, type PartyError } from './party-service';
@@ -129,13 +131,15 @@ interface OnlinePlayer {
   transport: Transport;
   appearance: PlayerAppearance;
   room: MultiplayerRoom | null;
+  /** Her companion bot switch: off, no bot shows up around her. */
+  bots: boolean;
   /** Flood limit: messages left in the bucket, refilled over time. */
   tokens: number;
   refilledAt: number;
 }
 
 /** Codes a WebSocket is closed with, so the client knows not to reconnect. */
-export const WS_CLOSE = { replaced: 4001, noPlayer: 4401 } as const;
+export const WS_CLOSE = { replaced: 4001, offline: 4403, noPlayer: 4401 } as const;
 
 const BUCKET_SIZE = 40;
 const BUCKET_REFILL_PER_S = 20;
@@ -190,6 +194,8 @@ export class MultiplayerHub {
   private readonly now: () => number;
   private readonly partyGraceMs: number;
   private readonly sees: Sees = (viewer, other) => !this.hidden.get(viewer)?.has(other) && !this.hidden.get(other)?.has(viewer);
+  /** What a room shows: the pairs who see each other, and no companion bot to a player who switched bots off. */
+  private readonly roomSees: Sees = (viewer, other) => this.sees(viewer, other) && !(this.isBot(other) && this.players.get(viewer)?.bots === false);
 
   constructor(server?: HttpServer, options: HubOptions = {}) {
     this.store = options.store ?? null;
@@ -207,24 +213,33 @@ export class MultiplayerHub {
   getOrCreateRoom(mapId: string): MultiplayerRoom {
     let room = this.rooms.get(mapId);
     if (!room) {
-      room = new MultiplayerRoom(mapId, this.sees);
+      room = new MultiplayerRoom(mapId, this.roomSees);
       this.rooms.set(mapId, room);
     }
     return room;
   }
 
   /**
-   * Opens a player's connection: her look and her blocks from the database. A second connection of the same
-   * player (another tab) takes over and the first is closed. Null when she has no character.
+   * Opens a player's connection: her look, her switches and her blocks from the database. A second connection of
+   * the same player (another tab) takes over and the first is closed. Null when she has no character, or plays
+   * offline (closed with `offline`, so her page does not try again).
    */
   async connect(childId: string, transport: Transport): Promise<Connection | null> {
     if (!this.store) return null;
     const attempt = ++this.attemptSeq;
     this.attempts.set(childId, attempt);
-    const [appearance, blocked] = await Promise.all([this.store.appearance(childId), this.store.blockedWith(childId)]);
+    const [appearance, blocked, settings] = await Promise.all([
+      this.store.appearance(childId),
+      this.store.blockedWith(childId),
+      this.store.settings?.(childId) ?? { onlineEnabled: true, botsEnabled: true },
+    ]);
     const latest = this.attempts.get(childId) === attempt;
     if (latest) this.attempts.delete(childId);
     if (!appearance) return null;
+    if (!settings.onlineEnabled) {
+      transport.close(WS_CLOSE.offline, 'offline');
+      return null;
+    }
     // A newer tab is on its way in, or this one already left: it takes no one's place.
     if (!latest || transport.alive?.() === false) {
       transport.close(WS_CLOSE.replaced, 'replaced');
@@ -244,7 +259,7 @@ export class MultiplayerHub {
     const timer = this.partyTimers.get(publicId);
     if (timer) clearTimeout(timer);
     this.partyTimers.delete(publicId);
-    const player: OnlinePlayer = { publicId, childId, transport, appearance, room: null, tokens: BUCKET_SIZE, refilledAt: this.now() };
+    const player: OnlinePlayer = { publicId, childId, transport, appearance, room: null, bots: settings.botsEnabled, tokens: BUCKET_SIZE, refilledAt: this.now() };
     this.players.set(publicId, player);
     return {
       publicId,
@@ -268,6 +283,39 @@ export class MultiplayerHub {
       player.room.broadcast({ type: 'appearance', id: publicId, appearance }, publicId);
     }
     this.pushParty(this.parties.partyOf(publicId)?.members ?? []);
+  }
+
+  /** News from the API about a player (her switches, friends, blocks), applied at once. */
+  playerEvent(event: PlayerEvent): void {
+    switch (event.type) {
+      case 'settings':
+        return this.settingsChanged(event.childId, event.settings);
+      default:
+        return;
+    }
+  }
+
+  /**
+   * Her switches changed: switched off-line, she leaves her party and her room at once and her page is told not to
+   * come back; companion bots vanish or appear around her as her bot switch says.
+   */
+  settingsChanged(childId: string, settings: PlayerSettings): void {
+    const publicId = this.publicIds.get(childId);
+    const player = publicId ? this.players.get(publicId) : undefined;
+    if (!publicId || !player) return;
+    if (!settings.onlineEnabled) {
+      this.parties.dropInvites(publicId);
+      this.pushParty(this.parties.leave(publicId));
+      this.disconnect(player);
+      player.transport.close(WS_CLOSE.offline, 'offline');
+      return;
+    }
+    if (player.bots === settings.botsEnabled) return;
+    player.bots = settings.botsEnabled;
+    for (const member of player.room?.members.values() ?? []) {
+      if (!member.isBot || !this.sees(publicId, member.id)) continue;
+      player.transport.send(settings.botsEnabled ? { type: 'spawn', player: member.presence } : { type: 'despawn', id: member.id });
+    }
   }
 
   /** A member answers a party invite: a player through her connection, a companion bot through its runner. */
@@ -364,6 +412,11 @@ export class MultiplayerHub {
       return;
     }
     for (const text of early.splice(0)) connection.receive(text);
+  }
+
+  /** Companion bots have no profile: every id the hub did not give a player is a bot's. */
+  private isBot(id: string): boolean {
+    return !this.childIds.has(id);
   }
 
   private publicIdOf(childId: string): string {
@@ -544,7 +597,7 @@ export class MultiplayerHub {
     const room = player.room;
     const self = room?.members.get(player.publicId);
     const other = room?.members.get(id);
-    if (!self || !other || id === player.publicId || !this.sees(player.publicId, id)) return null;
+    if (!self || !other || id === player.publicId || !this.roomSees(player.publicId, id)) return null;
     return near(self.presence, other.presence) ? other : null;
   }
 

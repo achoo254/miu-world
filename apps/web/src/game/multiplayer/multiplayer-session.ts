@@ -4,6 +4,7 @@
 import { Vector3, type Camera, type Group } from 'three';
 import type { PartyView, ServerWsMessage } from '@miu/schema/multiplayer';
 import type { GameStore } from '../../game-bridge/game-store';
+import { playerSettings } from '../../game-bridge/player-settings';
 import type { SocialCommand, SocialStore } from '../../game-bridge/social-store';
 import type { GuardedGltfLoader } from '../asset-loader';
 import type { RemoteSummary } from '../debug/stats-overlay';
@@ -46,6 +47,7 @@ export class MultiplayerSession {
   private readonly options: MultiplayerSessionOptions;
   private readonly social: SocialStore | null;
   private readonly stopCommands: () => void;
+  private readonly stopSettings: () => void;
   private selfId: string | null = null;
   private party: PartyView | null;
   private arrowClock = 0;
@@ -58,6 +60,10 @@ export class MultiplayerSession {
     this.remote = new RemotePlayerManager(options.loader, options.ground, options.shadows, options.onRemotes);
     this.social?.update({ mapId: options.start.mapId, menu: null });
     this.stopCommands = this.social?.onCommand((command) => this.command(command)) ?? (() => {});
+    // Switched back on while she plays: in again at once (switched off, the server takes her out itself).
+    this.stopSettings = playerSettings.subscribe((settings) => {
+      if (settings.onlineEnabled) this.client.reconnect();
+    });
     this.client = new MultiplayerClient(options.start, {
       onMessage: (message) => this.handle(message),
       onStatus: (_connected, final) => {
@@ -104,6 +110,7 @@ export class MultiplayerSession {
 
   dispose(): void {
     this.stopCommands();
+    this.stopSettings();
     this.client.dispose();
     this.remote.dispose();
     this.social?.update({ menu: null });
@@ -118,6 +125,8 @@ export class MultiplayerSession {
     const { remote, social } = this;
     switch (message.type) {
       case 'welcome':
+        // A new room (or the same one after a reconnect): whoever was drawn before comes again from the list.
+        remote.dispose();
         this.selfId = message.selfId;
         social?.update({ selfId: message.selfId });
         for (const p of message.players) void remote.spawn(p);

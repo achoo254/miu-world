@@ -50,8 +50,25 @@ export const PlayerDto = z.object({
   species: z.string(),
   language: PlayerLanguage.default('vi'),
   primary: z.boolean(),
+  /** Her online and companion bot switches (see `PlayerSettings`). */
+  onlineEnabled: z.boolean().default(true),
+  botsEnabled: z.boolean().default(true),
 });
 export type PlayerDto = z.infer<typeof PlayerDto>;
+
+/**
+ * A player's own switches, on by default: `onlineEnabled` (she sees and meets other players; off, she plays alone
+ * and is taken out of any room at once) and `botsEnabled` (companion bots show up around her). She changes them in
+ * Cài đặt; the account owner can change them for any player of the account.
+ */
+export const PlayerSettings = z.object({ onlineEnabled: z.boolean(), botsEnabled: z.boolean() });
+export type PlayerSettings = z.infer<typeof PlayerSettings>;
+
+/** A change of one or both switches. */
+export const PlayerSettingsPatch = z
+  .strictObject({ onlineEnabled: z.boolean().optional(), botsEnabled: z.boolean().optional() })
+  .refine((p) => p.onlineEnabled !== undefined || p.botsEnabled !== undefined, { message: 'empty patch' });
+export type PlayerSettingsPatch = z.infer<typeof PlayerSettingsPatch>;
 
 // NFC so a decomposed "Mèo" (some mobile keyboards) matches the list entry.
 export const PlayerInput = z.object({

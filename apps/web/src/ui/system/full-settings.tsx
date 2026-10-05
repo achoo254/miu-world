@@ -1,10 +1,10 @@
 // Comprehensive grouped settings (Master Plan §6, system-screens-v1).
-// Groups: Sound & Music, Voice speed, Language, Companion bots, Display (reduced motion & font size).
+// Groups: Sound & Music, Voice speed, Language, Online play & companion bots, Display (reduced motion & font size).
 import { T } from '../i18n/use-t';
-import { CompanionBotSetting } from './bot-setting';
 import { FontSizeSetting, ReduceMotionSetting } from './display-controls';
 import { LanguageSetting, VoiceSpeedSetting } from './language-setting';
 import { MusicToggle } from './music-toggle';
+import { OnlineSettings } from './online-setting';
 import { SoundToggle } from './sound-toggle';
 import './settings.css';
 
@@ -38,12 +38,12 @@ export function FullSettingsGroups({ prefix = 'settings' }: { prefix?: string })
         <LanguageSetting dataId={`${prefix}-language`} />
       </section>
 
-      {/* 4. Bạn máy */}
-      <section className="settings-section" aria-labelledby={`${prefix}-bots-title`}>
-        <h3 className="settings-section-header" id={`${prefix}-bots-title`}>
-          <T k="settings.groupBots" />
+      {/* 4. Chơi online và bạn máy (the player's own, kept on the server) */}
+      <section className="settings-section" aria-labelledby={`${prefix}-online-title`}>
+        <h3 className="settings-section-header" id={`${prefix}-online-title`}>
+          <T k="settings.groupOnline" />
         </h3>
-        <CompanionBotSetting dataId={`${prefix}-bots`} />
+        <OnlineSettings dataId={`${prefix}`} />
       </section>
 
       {/* 5. Hiển thị & Trợ năng */}

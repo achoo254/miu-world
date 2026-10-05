@@ -24,7 +24,7 @@ describe('players', () => {
     await agent.post('/api/players').send({ displayName: 'Nguyễn Văn A' }).expect(400, { error: 'invalid-display-name' });
     await agent.post('/api/players').send({ displayName: 'Mèo Mây', age: 7, school: 'x' }).expect(201);
     const [row] = await app.db.select().from(t.childProfiles).orderBy(sql`created_at desc`).limit(1);
-    expect(Object.keys(row ?? {}).sort()).toEqual(['createdAt', 'displayName', 'id', 'isPrimary', 'language', 'parentId']);
+    expect(Object.keys(row ?? {}).sort()).toEqual(['botsEnabled', 'createdAt', 'displayName', 'id', 'isPrimary', 'language', 'onlineEnabled', 'parentId']);
   });
 
   it('accepts a decomposed (NFD) spelling of a listed name', async () => {
@@ -137,7 +137,7 @@ describe('players', () => {
 
   it('renames within the list and updates language under parent gate', async () => {
     const { agent, childId } = await parentWithChild(app);
-    await agent.patch(`/api/players/${childId}`).send({ displayName: 'Sao Nhỏ', language: 'en' }).expect(200, { id: childId, displayName: 'Sao Nhỏ', species: 'cat', language: 'en', primary: true });
+    await agent.patch(`/api/players/${childId}`).send({ displayName: 'Sao Nhỏ', language: 'en' }).expect(200, { id: childId, displayName: 'Sao Nhỏ', species: 'cat', language: 'en', primary: true, onlineEnabled: true, botsEnabled: true });
     await agent.patch(`/api/players/${childId}`).send({ displayName: 'Bé Na' }).expect(400);
   });
 

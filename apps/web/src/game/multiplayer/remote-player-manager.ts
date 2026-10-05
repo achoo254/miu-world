@@ -14,25 +14,6 @@ import { createSpeechBubble, type SpeechBubble } from '../ambient/speech-bubble'
 import { cannedLine } from './canned-lines';
 import { createNametag } from './multiplayer-nametag';
 
-export const BOT_SETTING_KEY = 'miu.bots.enabled';
-
-export function isBotsEnabled(): boolean {
-  try {
-    const val = window.localStorage.getItem(BOT_SETTING_KEY);
-    return val !== 'false'; // Default to true
-  } catch {
-    return true;
-  }
-}
-
-export function setBotsEnabled(enabled: boolean): void {
-  try {
-    window.localStorage.setItem(BOT_SETTING_KEY, String(enabled));
-  } catch {
-    // Ignore
-  }
-}
-
 /** Her feet this far over the ground count as a jump (a step or a slope stays on the ground). */
 const AIRBORNE_ABOVE = 0.3;
 export function isAirborne(y: number, ground: number): boolean {
@@ -154,7 +135,6 @@ export class RemotePlayerManager {
 
   async spawn(presence: PlayerPresence): Promise<void> {
     if (this.entities.has(presence.id) || this.pendingSpawns.has(presence.id)) return;
-    if (presence.isBot && !isBotsEnabled()) return;
 
     this.pendingSpawns.add(presence.id);
     this.latest.set(presence.id, presence);
@@ -369,10 +349,12 @@ export class RemotePlayerManager {
     }
   }
 
+  /** Takes everyone out of the scene (the manager stays usable: a new room fills it again). */
   dispose(): void {
     for (const entity of this.entities.values()) this.release(entity);
     this.entities.clear();
     this.pendingSpawns.clear();
     this.latest.clear();
+    this.report();
   }
 }

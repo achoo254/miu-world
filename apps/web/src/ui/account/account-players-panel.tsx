@@ -1,23 +1,80 @@
 // NEW SCREEN (Master Plan §6, account area): the account owner looks after every player of the account. One card
-// per player, opened to her learning progress. Everything is read from the server for that player
+// per player, opened to her learning progress or her online switches. Everything is read from the server for that player
 // (`/api/players/:id/…`), behind the account area's optional PIN.
-import { useState } from 'react';
-import type { PlayerDto } from '@miu/schema/account';
+import { useRef, useState } from 'react';
+import { PlayerSettings, type PlayerDto, type PlayerSettingsPatch } from '@miu/schema/account';
+import { api } from '../api-client';
+import type { TextKey } from '../i18n/i18n';
 import { T, useT } from '../i18n/use-t';
 import { Icon, MiuArt } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Tabs, type TabItem } from '../kit/tabs';
 import { PlayerProgress } from '../profile/progress-panel';
 import { tileClass } from './profile-screens';
+import { useSubmit } from './use-submit';
+import '../system/settings.css';
 import './account-players.css';
 
-type CareTab = 'progress';
+type CareTab = 'progress' | 'online';
+
+/** The account owner switches online play and companion bots for a player (applied at once, even in a room). */
+function PlayerOnlineSwitches({ player }: { player: PlayerDto }) {
+  const [settings, setSettings] = useState<PlayerSettings>({ onlineEnabled: player.onlineEnabled, botsEnabled: player.botsEnabled });
+  /** The change being saved (the submit wrapper takes no arguments). */
+  const pending = useRef<PlayerSettingsPatch>({});
+  const save = useSubmit(async () => {
+    setSettings(await api('PATCH', `/players/${player.id}/settings`, PlayerSettings, pending.current));
+  });
+  const choice = (key: keyof PlayerSettings, title: TextKey) => (
+    <div className="setting-group" role="radiogroup" aria-labelledby={`player-care-${key}-${player.id}`} data-id={`player-care-${key}-${player.id}`}>
+      <p className="setting-title" id={`player-care-${key}-${player.id}`}>
+        <T k={title} />
+      </p>
+      <div className="setting-choices">
+        {[true, false].map((on) => (
+          <button
+            key={String(on)}
+            type="button"
+            role="radio"
+            aria-checked={settings[key] === on}
+            className="setting-choice"
+            data-id={`player-care-${key}-${player.id}-${on ? 'on' : 'off'}`}
+            disabled={save.busy}
+            onClick={() => {
+              pending.current = { [key]: on };
+              void save.onSubmit();
+            }}
+          >
+            <T k={on ? 'settings.switchOn' : 'settings.switchOff'} />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+  return (
+    <div className="player-care-switches">
+      <p className="hint">
+        <T k="playerCare.onlineHint" />
+      </p>
+      {choice('onlineEnabled', 'settings.online')}
+      {choice('botsEnabled', 'settings.bots')}
+      {save.error ? (
+        <p role="alert" className="error">
+          {save.error}
+        </p>
+      ) : null}
+    </div>
+  );
+}
 
 function PlayerCareCard({ player, index }: { player: PlayerDto; index: number }) {
   const { t } = useT();
   const [open, setOpen] = useState(false);
   const [tab, setTab] = useState<CareTab>('progress');
-  const tabs: TabItem<CareTab>[] = [{ key: 'progress', label: <T k="progress.title" /> }];
+  const tabs: TabItem<CareTab>[] = [
+    { key: 'progress', label: <T k="progress.title" /> },
+    { key: 'online', label: <T k="settings.groupOnline" /> },
+  ];
   return (
     <li className="player-care" data-id={`player-care-${player.id}`}>
       <div className="player-care-head">
@@ -38,6 +95,7 @@ function PlayerCareCard({ player, index }: { player: PlayerDto; index: number })
       {open ? (
         <Tabs label={t('playerCare.tabsLabel', { who: { vi: player.displayName, en: player.displayName } })} items={tabs} active={tab} onChange={setTab} dataId={`player-care-tabs-${player.id}`}>
           {tab === 'progress' ? <PlayerProgress playerId={player.id} /> : null}
+          {tab === 'online' ? <PlayerOnlineSwitches player={player} /> : null}
         </Tabs>
       ) : null}
     </li>

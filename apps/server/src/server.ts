@@ -7,6 +7,7 @@ import { loadContentCatalog } from './content/content-catalog';
 import { DEV_PGLITE_DIR, openPglite, openPostgres, type Db } from './db/client';
 import { childProfiles, parents } from './db/schema';
 import { CharacterEvents } from './character/character-events';
+import { PlayerEvents } from './player/player-events';
 import { BotRunner } from './multiplayer/bot-runner';
 import { MultiplayerHub } from './multiplayer/multiplayer-hub';
 import { dbMultiplayerStore, sessionAuthenticator } from './multiplayer/multiplayer-store';
@@ -18,7 +19,8 @@ const freshPglite = !config.databaseUrl && pgliteDir !== undefined && !existsSyn
 const { db } = config.databaseUrl ? await openPostgres(config.databaseUrl) : await openPglite(pgliteDir);
 const content = loadContentCatalog({ extraQuestDir: config.extraQuestDir ?? undefined });
 const characterEvents = new CharacterEvents();
-const app = createApp({ config, db, content, characterEvents });
+const playerEvents = new PlayerEvents();
+const app = createApp({ config, db, content, characterEvents, playerEvents });
 
 /** Which database this run uses, so a dev who suddenly sees no accounts knows whether it is a new one. */
 async function describeDatabase(database: Db): Promise<string> {
@@ -42,6 +44,7 @@ const hub = new MultiplayerHub(server, {
   allowedOrigins: config.allowedOrigins,
 });
 characterEvents.on((childId, character) => hub.characterSaved(childId, character));
+playerEvents.on((event) => hub.playerEvent(event));
 const botRunner = new BotRunner(hub);
 botRunner.start();
 console.log('multiplayer hub and companion bot runner active');
