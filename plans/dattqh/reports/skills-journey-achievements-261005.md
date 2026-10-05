@@ -32,7 +32,22 @@ Plan: `plans/dattqh/261003-1602-coins-items-skills-uses/` (pha 5 và 6). Không 
 
 ## Gate
 
-`pnpm assets:check` OK (4596 file) → `pnpm content:check` OK (1868 file) → `pnpm test` 482 file, 6109 test qua, 1 skip → `pnpm typecheck` sạch → `pnpm lint` sạch; `pnpm --filter @miu/web build` qua (cảnh báo chunk > 500 kB và font phiếu viết có từ trước), `pnpm security:dist` OK. Một lượt `pnpm test` trước đó có 5 test đỏ (giới hạn tốc độ đăng nhập/bước quest, hàng chờ băm mật khẩu) khi máy bận; chạy riêng hai file đó và chạy lại cả bộ đều xanh: test nhạy thời gian, không liên quan thay đổi này. Không chạy E2E (theo yêu cầu).
+`pnpm assets:check` OK (4596 file) → `pnpm content:check` OK (1868 file) → `pnpm test` 482 file, 6112 test qua, 1 skip → `pnpm typecheck` 0 lỗi → `pnpm lint` sạch; `pnpm --filter @miu/web build` qua (cảnh báo chunk > 500 kB và font phiếu viết có từ trước), `pnpm security:dist` OK. Không chạy E2E (theo yêu cầu).
+
+Test chập chờn khi máy bận (load average ~7 do các phiên khác): hai lượt `pnpm test` có vài test đỏ ở file không đổi (`auth-routes` giới hạn đăng nhập, `quest-routes` giới hạn bước, `collection-routes` trả 404/403/503 ở bước dựng tài khoản). Chạy lại cả bộ và chạy riêng mỗi file 8 lần lúc máy rảnh đều xanh; mã gốc `97b43096` cũng xanh khi máy rảnh. Chưa tìm ra nguyên nhân gốc của nhóm test `collection-routes` dưới tải; nên theo dõi trên CI.
+
+## Review độc lập
+
+Agent `code-reviewer` không thấy lỗi nghiêm trọng: mọi đường thưởng (kho báu cổng, quà kỹ năng, thành tích) do server tính, trả một lần nhờ khóa duy nhất `(child_id, source)`, thứ tự khóa không tạo vòng, `target` giả không mở được cổng. Đã sửa:
+
+- Danh sách thành tích đọc lại sau khi nhận (phần thưởng có thể đạt thành tích khác).
+- Banner kho báu: cổng thứ hai mở trong lúc banner đang hiện được ghép vào và banner chạy lại (trước đó bị mất).
+- Hai câu một dòng thành pool không lặp liền: lời cổ vũ ở bảng cổng (4 câu, nói rõ kho báu mở ở lần chơi lại) và câu "đã hoàn thành thành tích" (4 câu).
+- Trùm chỉ mở cổng khi thắng, không phải ở lượt đúng đầu tiên.
+- Mỗi tab Hành trình hỏi server 60 sự kiện mới nhất của tab đó (`?tab=quests|items|growth`), để người chơi lại nhiều không thấy tab trống.
+- Gộp "một dòng ledger + món vào tủ đồ" (rương khu vực, quà kỹ năng, thành tích) thành `grantAward`.
+
+Ghi nhận, chưa sửa: Thành tích và Hành trình đọc cả `reward_ledger` của người chơi mỗi lần (ổn ở quy mô hiện tại; khi ledger lớn thì cần endpoint đếm riêng cho huy hiệu Trang chủ); XP của kho báu cổng ở bước cuối không hiện lên màn Lên cấp; phần thưởng thành tích được tính vào các thành tích khác (cấp, Xu, đồ mặc), như mọi nguồn XP khác; test "nhận đồng thời" chạy trên PGlite một kết nối nên chỉ kiểm logic, độ an toàn đồng thời trên Postgres dựa vào khóa duy nhất và khóa hàng người chơi.
 
 ## Không làm và lý do
 
