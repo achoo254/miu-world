@@ -759,7 +759,10 @@ export class BotRunner {
     }
     if (!talk) {
       // Only voices with players in them are followed: a crowded server forgets the oldest rather than growing.
-      if (this.talks.size >= MAX_GREET_PAIRS) this.talks.clear();
+      if (this.talks.size >= MAX_GREET_PAIRS) {
+        for (const old of this.talks.values()) if (old.timer) clearTimeout(old.timer);
+        this.talks.clear();
+      }
       talk = { players: new Set(), speaking: new Map(), timer: null, lastLineAt: Number.NEGATIVE_INFINITY, spoke: new Map() };
       this.talks.set(partyId, talk);
     }

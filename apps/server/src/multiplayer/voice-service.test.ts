@@ -335,13 +335,51 @@ describe('calling a friend', () => {
     expect(signalsFrom(b, a.id)).toEqual([]);
   });
 
-  it('holds back a player who calls again and again', async () => {
+  it('holds back a player who calls again and again, and tells her the call did not go', async () => {
     const [a, b] = await friends();
     a.send({ type: 'voice-call', to: b.id });
-    a.send({ type: 'voice-leave' });
+    await settle();
+    a.send({ type: 'voice-hangup' });
     a.send({ type: 'voice-call', to: b.id });
     await settle();
     expect(b.all('voice-call-invite')).toHaveLength(1);
+    expect(a.last('voice-call-end')).toEqual({ type: 'voice-call-end', id: b.id, reason: 'failed' });
+  });
+
+  it('calling off a call keeps her party voice; leaving takes her out of both', async () => {
+    const [a, b] = await friends();
+    const mate = await h.joined('child-m');
+    await party(a, mate);
+    for (const x of [a, mate]) x.send({ type: 'voice-join', mic: true });
+    await settle();
+    a.send({ type: 'voice-call', to: b.id });
+    await settle();
+    a.send({ type: 'voice-hangup' });
+    await settle();
+    expect(b.last('voice-call-end')?.reason).toBe('ended');
+    expect(voiceOf(a)).toMatchObject({ kind: 'party', joined: true });
+    h.clock.now += 5_000;
+    a.send({ type: 'voice-call', to: b.id });
+    await settle();
+    a.send({ type: 'voice-leave' });
+    await settle();
+    expect(b.last('voice-call-end')?.reason).toBe('ended');
+    expect(voiceOf(a)).toMatchObject({ kind: 'party', joined: false });
+    expect(voiceOf(mate)?.members.map((m) => m.id)).toEqual([mate.id]);
+    mate.send({ type: 'voice-signal', to: a.id, signal: OFFER });
+    await settle();
+    expect(signalsFrom(a, mate.id)).toEqual([]);
+  });
+
+  it('does not start a call with someone who stopped being a friend while it rang', async () => {
+    const [a, b] = await friends();
+    a.send({ type: 'voice-call', to: b.id });
+    await settle();
+    h.friends.pairs.clear();
+    b.send({ type: 'voice-call-reply', from: a.id, accept: true });
+    await settle();
+    expect(a.last('voice-call-end')?.reason).toBe('not-here');
+    expect(voiceOf(a)).toBeNull();
   });
 
   it('keeps a call through a map change, and ends it when she does not come back', async () => {

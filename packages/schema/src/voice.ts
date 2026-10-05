@@ -97,8 +97,10 @@ export type VoiceIceServers = z.infer<typeof VoiceIceServers>;
 export const VoiceClientMessages = [
   /** Into her party's voice (with her microphone on or off). */
   z.strictObject({ type: z.literal('voice-join'), mic: z.boolean() }),
-  /** Out of the voice she is in: her party's, or her call (a ringing one is called off). */
+  /** Out of every voice she is in: her party's and her call (a ringing one is called off). */
   z.strictObject({ type: z.literal('voice-leave') }),
+  /** Ends her call only (ringing or under way, either side); her party's voice is left as it is. */
+  z.strictObject({ type: z.literal('voice-hangup') }),
   z.strictObject({ type: z.literal('voice-mic'), on: z.boolean() }),
   /** Her voice activity (started or stopped talking): rings for the others and bots' turns, never the sound. */
   z.strictObject({ type: z.literal('voice-speaking'), on: z.boolean() }),

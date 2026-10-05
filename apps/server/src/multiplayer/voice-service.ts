@@ -67,7 +67,6 @@ interface Bucket {
   at: number;
 }
 
-const SIGNAL_BUCKET = { size: 80, perSecond: 20 };
 const SPEAKING_BUCKET = { size: 8, perSecond: 4 };
 /** Calls a player may start: one every few seconds, and only so many in ten minutes. */
 const CALL_GAP_MS = 3_000;
@@ -87,7 +86,6 @@ export class VoiceService {
   /** The call each player is in or rings (one at a time). */
   private readonly callOf = new Map<string, string>();
   private readonly graceTimers = new Map<string, NodeJS.Timeout>();
-  private readonly signalBuckets = new Map<string, Bucket>();
   private readonly speakingBuckets = new Map<string, Bucket>();
   private readonly callStarts = new Map<string, number[]>();
   /** The state each player (or bot) was last sent, so an unchanged one is not sent again. */
@@ -109,6 +107,8 @@ export class VoiceService {
         return this.join(id, message.mic);
       case 'voice-leave':
         return this.leave(id);
+      case 'voice-hangup':
+        return this.hangUp(id);
       case 'voice-mic':
         return this.mic(id, message.on);
       case 'voice-speaking':
@@ -118,7 +118,7 @@ export class VoiceService {
       case 'voice-call':
         return this.call(id, message.to);
       case 'voice-call-reply':
-        return this.reply(id, message.from, message.accept);
+        return await this.reply(id, message.from, message.accept);
     }
   }
 
@@ -151,7 +151,6 @@ export class VoiceService {
   /** Gone for good (out of the game): out of every voice. */
   forget(id: string): void {
     this.leave(id);
-    this.signalBuckets.delete(id);
     this.speakingBuckets.delete(id);
     this.callStarts.delete(id);
     this.sent.delete(id);
@@ -217,15 +216,21 @@ export class VoiceService {
     this.pushParties([id]);
   }
 
+  /** Out of every voice: her call (ringing or under way) ends, and she leaves her party's voice. */
   private leave(id: string): void {
-    const callId = this.callOf.get(id);
-    const call = callId ? this.calls.get(callId) : undefined;
-    if (call) return this.endCall(call, 'ended');
+    this.hangUp(id);
     const speaker = this.speakers.get(id);
     if (!speaker) return;
     const others = speaker.place.kind === 'party' ? this.joinedOf(speaker.place.partyId) : [];
     this.drop(id);
     this.pushParties([id, ...others]);
+  }
+
+  /** Her call ends (ringing or under way, whichever side she is on). */
+  private hangUp(id: string): void {
+    const callId = this.callOf.get(id);
+    const call = callId ? this.calls.get(callId) : undefined;
+    if (call) this.endCall(call, 'ended');
   }
 
   /** Out of her voice (whoever hears her is told she stopped talking). */
@@ -276,9 +281,9 @@ export class VoiceService {
     return [...players, ...bots].filter((other) => this.host.sees(id, other));
   }
 
+  /** A setup message (its flood limit is the hub's, before the message is even read). */
   private signal(id: string, to: string, signal: VoiceSignal): void {
-    if (to === id || !this.take(this.signalBuckets, id, SIGNAL_BUCKET)) return;
-    if (!this.together(id, to)) return;
+    if (to === id || !this.together(id, to)) return;
     this.host.send(to, { type: 'voice-signal', from: id, signal });
   }
 
@@ -297,7 +302,7 @@ export class VoiceService {
 
   private async call(id: string, to: string): Promise<void> {
     if (to === id || !this.host.isPlayer(to) || !this.host.online(to) || !this.host.sees(id, to)) return this.callEnded(id, to, 'not-here');
-    if (!this.mayCall(id)) return;
+    if (!this.mayCall(id)) return this.callEnded(id, to, 'failed');
     let friends: boolean;
     try {
       friends = await this.host.areFriends(id, to);
@@ -336,12 +341,21 @@ export class VoiceService {
     return true;
   }
 
-  private reply(id: string, from: string, accept: boolean): void {
+  private async reply(id: string, from: string, accept: boolean): Promise<void> {
     const callId = this.callOf.get(id);
     const call = callId ? this.calls.get(callId) : undefined;
     if (!call || call.active || call.callee !== id || call.caller !== from) return;
     if (!accept) return this.endCall(call, 'declined');
-    if (!this.host.online(from) || !this.host.sees(id, from)) return this.endCall(call, 'not-here');
+    // Still friends (no longer being friends while it rang may have been missed by the ringing call).
+    let friends: boolean;
+    try {
+      friends = await this.host.areFriends(id, from);
+    } catch (err) {
+      console.error('voice friend check failed', err instanceof Error ? err.name : typeof err);
+      return this.endCall(call, 'failed');
+    }
+    if (this.calls.get(call.id) !== call || call.active) return;
+    if (!friends || !this.host.online(from) || !this.host.sees(id, from)) return this.endCall(call, 'not-here');
     if (call.timer) clearTimeout(call.timer);
     call.timer = null;
     call.active = true;
@@ -353,7 +367,8 @@ export class VoiceService {
         this.drop(member);
         this.pushParties(others);
       }
-      // Both start with the microphone on (one asked for the call, the other accepted it); either turns it off.
+      // Both start with the microphone on (one asked for the call, the other accepted it); each client says at once
+      // how it really is.
       this.speakers.set(member, { place: { kind: 'call', callId: call.id }, mic: true, speaking: false });
     }
     this.push([call.caller, call.callee]);

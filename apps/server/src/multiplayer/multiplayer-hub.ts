@@ -172,6 +172,9 @@ interface OnlinePlayer {
   /** Flood limit: messages left in the bucket, refilled over time. */
   tokens: number;
   refilledAt: number;
+  /** Voice setup messages have their own bucket (network candidates come in bursts). */
+  signalTokens: number;
+  signalRefilledAt: number;
 }
 
 /** Codes a WebSocket is closed with, so the client knows not to reconnect. */
@@ -179,6 +182,10 @@ export const WS_CLOSE = { replaced: 4001, noPlayer: 4401 } as const;
 
 const BUCKET_SIZE = 40;
 const BUCKET_REFILL_PER_S = 20;
+const SIGNAL_BUCKET_SIZE = 80;
+const SIGNAL_REFILL_PER_S = 20;
+/** How a voice setup message starts on the wire (the client sends `type` first); anything else is an ordinary one. */
+const SIGNAL_PREFIX = '{"type":"voice-signal"';
 const REPORT_COOLDOWN_MS = 10 * 60_000;
 /** How often open connections re-check their session (sign-out, expiry, a deleted player, a new policy). */
 const RECHECK_MS = 2 * 60_000;
@@ -382,7 +389,7 @@ export class MultiplayerHub {
     const timer = this.partyTimers.get(publicId);
     if (timer) clearTimeout(timer);
     this.partyTimers.delete(publicId);
-    const player: OnlinePlayer = { publicId, childId, transport, appearance, room: null, bots: settings.botsEnabled, botFriends, joins: 0, tokens: BUCKET_SIZE, refilledAt: this.now() };
+    const player: OnlinePlayer = { publicId, childId, transport, appearance, room: null, bots: settings.botsEnabled, botFriends, joins: 0, tokens: BUCKET_SIZE, refilledAt: this.now(), signalTokens: SIGNAL_BUCKET_SIZE, signalRefilledAt: this.now() };
     this.players.set(publicId, player);
     return {
       publicId,
@@ -605,20 +612,31 @@ export class MultiplayerHub {
     return true;
   }
 
+  /** The same for voice setup messages, in their own, larger bucket. */
+  private allowSignal(player: OnlinePlayer): boolean {
+    const now = this.now();
+    player.signalTokens = Math.min(SIGNAL_BUCKET_SIZE, player.signalTokens + ((now - player.signalRefilledAt) / 1000) * SIGNAL_REFILL_PER_S);
+    player.signalRefilledAt = now;
+    if (player.signalTokens < 1) return false;
+    player.signalTokens -= 1;
+    return true;
+  }
+
   private receive(player: OnlinePlayer, raw: string): void {
     if (this.players.get(player.publicId) !== player) return;
+    // Limits first, before anything is read: voice setup messages (bursts of network candidates, up to 16 KB) in their
+    // own bucket, everything else in the flood bucket and the usual 4 KB.
+    const signal = raw.startsWith(SIGNAL_PREFIX);
+    if (signal ? !this.allowSignal(player) : Buffer.byteLength(raw) > MAX_PAYLOAD_BYTES || !this.allow(player)) return;
     let data: unknown;
     try {
       data = JSON.parse(raw);
     } catch {
       return;
     }
-    // Voice setup messages come in bursts (network candidates) and run against their own limits in the voice;
-    // everything else goes through the flood bucket and the usual size.
-    const signal = typeof data === 'object' && data !== null && 'type' in data && data.type === 'voice-signal';
-    if (!signal && (Buffer.byteLength(raw) > MAX_PAYLOAD_BYTES || !this.allow(player))) return;
     const parsed = ClientWsMessage.safeParse(data);
-    if (!parsed.success) return;
+    // A message that looked like a setup message is one, or nothing (the big bucket is for those only).
+    if (!parsed.success || signal !== (parsed.data.type === 'voice-signal')) return;
     const message = parsed.data;
     const self = player.publicId;
     switch (message.type) {
@@ -698,6 +716,7 @@ export class MultiplayerHub {
         return;
       case 'voice-join':
       case 'voice-leave':
+      case 'voice-hangup':
       case 'voice-mic':
       case 'voice-speaking':
       case 'voice-signal':

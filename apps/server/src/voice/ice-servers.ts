@@ -10,8 +10,8 @@ import type { TurnConfig } from '../config';
 export const CLOUDFLARE_TURN_API = 'https://rtc.live.cloudflare.com/v1/turn/keys';
 export const STUN_ONLY: VoiceIceServers = { iceServers: [{ urls: 'stun:stun.cloudflare.com:3478' }], ttlSeconds: 600 };
 
-/** How long asked-for credentials last (seconds). */
-export const TURN_TTL_S = 4 * 3_600;
+/** How long asked-for credentials last (seconds): short, as every player gets the same ones for a few minutes. */
+export const TURN_TTL_S = 2 * 3_600;
 /** Credentials are handed out this long after they were asked for, then asked for again. */
 export const TURN_CACHE_MS = 10 * 60_000;
 /** After a failure, STUN only for this long before asking Cloudflare again. */

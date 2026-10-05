@@ -47,6 +47,8 @@ setup() {
 
   echo "== env file"
   local google='.tokens[] | select(.service == "accounts.google.com" and .used_by == "miu-world") | .token'
+  # Read before anything is written: a missing TURN entry stops here, with the env file as it was.
+  local turn; turn="$(turn_env)"
   {
     echo "NODE_ENV=production"
     echo "PORT=$PORT"
@@ -57,7 +59,7 @@ setup() {
     echo "GOOGLE_REDIRECT_URI=https://$DOMAIN/api/auth/google/callback"
     echo "HANDWRITING_FONT_DIR=/opt/miu/fonts"
     echo "TIMETABLE_DEFAULT_FILE=/opt/miu/config/timetable-default.json"
-    turn_env
+    printf '%s\n' "$turn"
   } | prod 'install -m 640 -o root -g miu /dev/stdin /etc/miu/production.env'
   echo "setup done"
 }
@@ -67,7 +69,7 @@ TURN_ENTRY='.tokens[] | select(.service == "rtc.live.cloudflare.com (TURN)") | .
 turn_env() {
   local id tok
   # Both or nothing: an empty value would stop the server at start.
-  id="$(secret "$TURN_ENTRY.key_id")" && tok="$(secret "$TURN_ENTRY.api_token")" \
+  id="$(secret "$TURN_ENTRY.key_id")" && tok="$(secret "$TURN_ENTRY.api_token")" && [ -n "$id" ] && [ -n "$tok" ] \
     || { echo "no TURN entry in access-tokens.json (docs/deployment-guide.md)" >&2; return 1; }
   printf 'CF_TURN_KEY_ID=%s\nCF_TURN_API_TOKEN=%s\n' "$id" "$tok"
 }
@@ -78,10 +80,13 @@ turn() {
   local lines
   lines="$(turn_env)"
   printf '%s\n' "$lines" | prod 'set -e
-    f=/etc/miu/production.env; t=$(mktemp)
-    grep -Ev "^CF_TURN_(KEY_ID|API_TOKEN)=" "$f" > "$t" || true
+    f=/etc/miu/production.env
+    [ -s "$f" ] || { echo "no $f: run setup first" >&2; exit 1; }
+    t=$(mktemp); trap "rm -f $t" EXIT
+    # grep: 0 lines kept, 1 none kept (only TURN lines), anything else an error that must not empty the file.
+    grep -Ev "^CF_TURN_(KEY_ID|API_TOKEN)=" "$f" > "$t" || [ $? -eq 1 ]
     cat >> "$t"
-    install -m 640 -o root -g miu "$t" "$f"; rm -f "$t"
+    install -m 640 -o root -g miu "$t" "$f"
     grep -c "^CF_TURN_" "$f" | xargs echo TURN lines in env file:'
 }
 
