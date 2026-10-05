@@ -59,6 +59,15 @@ export interface MiuStats {
   /** The pet following the character, and what it is doing (idle, walk, run, dance). */
   pet: string | null;
   petClip: string | null;
+  /** The pet's scene (a care scene, a trick, a sniff), its own doings round her, its code-made motion and what it wears. */
+  petScene: string | null;
+  petMood: string | null;
+  petMotion: string | null;
+  petGear: string[];
+  /** Where the pet stands (feet). */
+  petAt: [number, number, number] | null;
+  /** Care scenes played since the game started, by name (for the tests: each button plays its scene). */
+  petScenes: string[];
   ambientLine: string | null;
   /** Other players and companion bots drawn now, as they are dressed (online). */
   remotePlayers: RemoteSummary[];
@@ -97,7 +106,7 @@ export class StatsOverlay {
   readonly stats: MiuStats;
 
   constructor(private readonly el: HTMLElement, quality: string) {
-    this.stats = { quality, fpsAvg: 0, fpsP5: 0, calls: 0, triangles: 0, frames: 0, loadMs: 0, boot: {}, meshMs: 0, worker: true, firstAreaBytes: 0, ready: false, player: [0, 0, 0], onGround: false, speed: 0, riding: false, journey: null, patches: 0, portals: 0, nearTarget: null, lastInteraction: null, hintTarget: null, autowalk: 'idle', castHidden: [], cameraInsideBlock: false, cameraYaw: 0, outfit: [], ambientVisible: 0, ambientReactions: 0, ambientCelebrations: 0, confetti: false, worldEvent: null, worldEvents: 0, pet: null, petClip: null, ambientLine: null, remotePlayers: [], lastObject: null, nearObject: null, objects: null, pose: null, embedded: false };
+    this.stats = { quality, fpsAvg: 0, fpsP5: 0, calls: 0, triangles: 0, frames: 0, loadMs: 0, boot: {}, meshMs: 0, worker: true, firstAreaBytes: 0, ready: false, player: [0, 0, 0], onGround: false, speed: 0, riding: false, journey: null, patches: 0, portals: 0, nearTarget: null, lastInteraction: null, hintTarget: null, autowalk: 'idle', castHidden: [], cameraInsideBlock: false, cameraYaw: 0, outfit: [], ambientVisible: 0, ambientReactions: 0, ambientCelebrations: 0, confetti: false, worldEvent: null, worldEvents: 0, pet: null, petClip: null, petScene: null, petMood: null, petMotion: null, petGear: [], petAt: null, petScenes: [], ambientLine: null, remotePlayers: [], lastObject: null, nearObject: null, objects: null, pose: null, embedded: false };
     window.__miuStats = this.stats;
   }
 

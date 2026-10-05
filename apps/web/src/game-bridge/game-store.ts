@@ -5,6 +5,7 @@
 // Every event and command the vertical slice needs is declared here up front, so screens built in
 // parallel only add handlers and never reshape these unions.
 
+import type { PetCareAction, PetTrick } from '@miu/schema/pet-care';
 import type { InteractableKind } from '@miu/voxel/world-entities';
 
 export type { InteractableKind };
@@ -68,7 +69,11 @@ export type GameEvent =
   /** What is switched on in her home changed (a lamp, the television): every kept key that is on now. */
   | { type: 'object-states'; states: Readonly<Record<string, true>> }
   /** A shower started or stopped over the child (the map's rain surprise): the characters talk about it. */
-  | { type: 'weather'; raining: boolean };
+  | { type: 'weather'; raining: boolean }
+  /** The pet's scene playing now (`care:feed`, `trick:spin`, `sniff`…), or none: the care screen folds away meanwhile. */
+  | { type: 'pet-scene'; scene: string | null }
+  /** Whether the pet can sniff toward a clue of this step (a pet along, clues left on this map), and the seconds before it may again. */
+  | { type: 'pet-sniff'; available: boolean; wait: number };
 
 export interface GameSnapshot {
   status: 'loading' | 'ready' | 'error';
@@ -90,6 +95,10 @@ export interface GameSnapshot {
   objectStates: Readonly<Record<string, true>> | null;
   /** Rain is falling where she plays now. */
   raining: boolean;
+  /** The pet's scene playing now, if any. */
+  petScene: string | null;
+  /** The HUD's "Đánh hơi": shown while available, waiting `wait` seconds after each sniff. */
+  petSniff: { available: boolean; wait: number };
 }
 
 /** Commands from React to the game. The game ignores commands it does not handle yet. */
@@ -114,7 +123,19 @@ export type GameCommand =
   /** Walk Miu to a place picked on the full map, along the ways (the same walk, its line on the quest card). */
   | { type: 'autowalk-to'; to: WalkGoal }
   /** Get on the equipped vehicle, or off it (the HUD's "Lái xe" / "Xuống xe"). */
-  | { type: 'ride'; on: boolean };
+  | { type: 'ride'; on: boolean }
+  /** A care button: the pet's scene in the world (the server already counted it, or is counting it). */
+  | { type: 'pet-care'; action: PetCareAction }
+  /** A trick from the care screen's menu (one the server says is open). */
+  | { type: 'pet-trick'; trick: PetTrick }
+  /** What the pet wears now (content/pet-gear.json ids). */
+  | { type: 'pet-gear'; gear: readonly string[] }
+  /** The name she picked for her pet (null: its kind's name), shown over it. */
+  | { type: 'pet-name'; name: string | null }
+  /** The clues of the step under way still to find (search and find-object steps); empty: none. */
+  | { type: 'pet-sniff-targets'; targets: readonly string[] }
+  /** "Đánh hơi": the pet runs a few steps toward the nearest of them. */
+  | { type: 'pet-sniff' };
 
 export interface GameStore {
   subscribe(listener: () => void): () => void;
@@ -140,6 +161,8 @@ export const INITIAL_SNAPSHOT: GameSnapshot = {
   vehicle: null,
   objectStates: null,
   raining: false,
+  petScene: null,
+  petSniff: { available: false, wait: 0 },
 };
 
 function samePrompt(a: InteractionPrompt | null, b: InteractionPrompt | null): boolean {
@@ -154,7 +177,7 @@ export function reduce(state: GameSnapshot, event: GameEvent): GameSnapshot {
     case 'loading':
       // A new map loads: the loading screen shows again, and "ready" will be news to every listener (the quest
       // sends its target to the new game then, so the card can walk her there).
-      return { ...state, status: 'loading', error: null, loading: { done: 0, total: state.loading.total }, prompt: null, stuck: false, autowalkAvailable: false, autowalk: 'idle', vehicle: null, objectStates: null, raining: false };
+      return { ...state, status: 'loading', error: null, loading: { done: 0, total: state.loading.total }, prompt: null, stuck: false, autowalkAvailable: false, autowalk: 'idle', vehicle: null, objectStates: null, raining: false, petScene: null, petSniff: { available: false, wait: 0 } };
     case 'ready':
       return state.status === 'ready' ? state : { ...state, status: 'ready', error: null };
     case 'error':
@@ -187,6 +210,10 @@ export function reduce(state: GameSnapshot, event: GameEvent): GameSnapshot {
       return { ...state, objectStates: event.states };
     case 'weather':
       return state.raining === event.raining ? state : { ...state, raining: event.raining };
+    case 'pet-scene':
+      return state.petScene === event.scene ? state : { ...state, petScene: event.scene };
+    case 'pet-sniff':
+      return state.petSniff.available === event.available && state.petSniff.wait === event.wait ? state : { ...state, petSniff: { available: event.available, wait: event.wait } };
   }
 }
 

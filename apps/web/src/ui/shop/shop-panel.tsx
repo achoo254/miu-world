@@ -24,6 +24,8 @@ import { Tabs } from '../kit/tabs';
 import { REGION_BACKDROPS, assetUrl, type UiIcon } from '../kit/ui-art';
 import { playCue } from '../sound/sfx';
 import { buyItem, loadShop, requestId, shopErrorMessage } from './shop-api';
+import { dressPet } from '../pet-care/pet-care-api';
+import { gearSlotOf } from '../../game/pet/pet-gear-catalog';
 import { ShopPicture } from './shop-picture';
 import { Say, twin } from '../quest/content-text';
 import './shop.css';
@@ -37,6 +39,7 @@ const TAB_LABELS: Readonly<Record<Tab, TextKey>> = {
   'noi-bat': 'shop.tab.featured',
   'trang-phuc': 'shop.tab.clothes',
   'phu-kien': 'shop.tab.accessories',
+  'thu-cung': 'shop.tab.pet',
   'nha-cua': 'shop.tab.home',
   'tieu-hao': 'shop.tab.consumables',
   'goi-dac-biet': 'shop.tab.bundles',
@@ -46,6 +49,7 @@ const TAB_ICONS: Readonly<Record<Tab, UiIcon | { art: string }>> = {
   'noi-bat': 'glowingStar',
   'trang-phuc': { art: accessoryArtPath('clothes-tshirt') },
   'phu-kien': 'backpack',
+  'thu-cung': 'pawPrints',
   'nha-cua': 'house',
   'tieu-hao': 'heart',
   'goi-dac-biet': 'gift',
@@ -124,12 +128,14 @@ interface DetailProps {
   fill: (text: string) => string;
   onBuy: () => void;
   onWear: (() => void) | null;
+  /** Pet gear she owns: put it on her pet (null: none to put on, or no pet along). */
+  onPetWear: (() => void) | null;
   onPick: (id: string) => void;
   onBack: () => void;
 }
 
 /** The close-up of one thing (mock panel 9). */
-function ItemDetail({ item, items, state, character, busy, notice, fill, onBuy, onWear, onPick, onBack }: DetailProps) {
+function ItemDetail({ item, items, state, character, busy, notice, fill, onBuy, onWear, onPetWear, onPick, onBack }: DetailProps) {
   const [store] = useState(createGameStore);
   const { t } = useT();
   const owned = keptForever(item.kind) && (state.owned[item.id] ?? 0) > 0;
@@ -168,7 +174,11 @@ function ItemDetail({ item, items, state, character, busy, notice, fill, onBuy, 
           <span className="scene-chip">
             <T k={TAB_LABELS[item.category]} />
           </span>
-          {slot && SLOT_LABELS.has(slot) ? (
+          {item.kind === 'pet-gear' && (item.slot === 'head' || item.slot === 'neck') ? (
+            <span className="scene-chip">
+              <T k={`petCare.gearSlot.${item.slot}`} />
+            </span>
+          ) : slot && SLOT_LABELS.has(slot) ? (
             <span className="scene-chip">
               <Bi {...(SLOT_LABELS.get(slot) ?? { vi: slot, en: slot })} />
             </span>
@@ -214,6 +224,23 @@ function ItemDetail({ item, items, state, character, busy, notice, fill, onBuy, 
             <T k="shop.wear" />
           </button>
         ) : null}
+        {owned && item.kind === 'pet-gear' ? (
+          character?.pet ? (
+            character.petGear?.includes(item.id) ? (
+              <p className="shop-owned" data-id="shop-pet-wearing">
+                <Icon name="pawPrints" size={24} /> <T k="shop.petWearing" />
+              </p>
+            ) : onPetWear ? (
+              <button type="button" className={buttonClass('secondary', { block: true })} data-id="shop-pet-wear" disabled={busy} onClick={onPetWear}>
+                <Icon name="pawPrints" size={24} /> <T k="shop.petWear" />
+              </button>
+            ) : null
+          ) : (
+            <p className="hint">
+              <T k="shop.noPet" />
+            </p>
+          )
+        ) : null}
         {notice ? (
           <p className={`shop-notice shop-notice--${notice.kind}`} role={notice.kind === 'error' ? 'alert' : 'status'} data-id="shop-notice">
             <Bi {...notice.text} />
@@ -244,9 +271,11 @@ export interface ShopPanelProps {
   onCoins?: (coins: number) => void;
   /** A wearable just put on from the shop: her outfit as saved. */
   onWear?: (equipped: string[]) => void;
+  /** Gear just put on her pet from the shop: what it wears as saved. */
+  onPetGear?: (gear: string[]) => void;
 }
 
-export function ShopPanel({ onClose, onCoins, onWear }: ShopPanelProps) {
+export function ShopPanel({ onClose, onCoins, onWear, onPetGear }: ShopPanelProps) {
   const [shop, setShop] = useState<ShopResponse | null>(null);
   const [character, setCharacter] = useState<CharacterDto | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -303,7 +332,7 @@ export function ShopPanel({ onClose, onCoins, onWear }: ShopPanelProps) {
       setShop((now) => (now ? { ...now, coins: state.coins, level: state.level, owned: state.owned } : now));
       onCoins?.(state.coins);
       playCue('complete');
-      setNotice({ kind: 'ok', text: say(item.kind === 'booster' || item.kind === 'bundle' ? 'shop.boughtBooster' : item.kind === 'decor' ? 'shop.boughtDecor' : 'shop.bought') });
+      setNotice({ kind: 'ok', text: say(item.kind === 'booster' || item.kind === 'bundle' ? 'shop.boughtBooster' : item.kind === 'decor' ? 'shop.boughtDecor' : item.kind === 'pet-gear' ? 'shop.boughtPetGear' : 'shop.bought') });
       if (item.kind === 'wearable') setJustBought(item.id);
     } catch (err) {
       // A refusal is final (a new tap is a new purchase); a lost answer keeps the id so a retry buys once.
@@ -324,6 +353,23 @@ export function ShopPanel({ onClose, onCoins, onWear }: ShopPanelProps) {
       onWear?.(saved.equipped);
       setJustBought(null);
       setNotice({ kind: 'ok', text: say('shop.wearing') });
+    } catch (err) {
+      setNotice({ kind: 'error', text: same(errorMessage(err)) });
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  /** Puts pet gear she owns on her pet (replacing what it wore in the same place). */
+  async function petWear(): Promise<void> {
+    if (!character || !item || item.kind !== 'pet-gear') return;
+    setBusy(true);
+    try {
+      const gear = [...(character.petGear ?? []).filter((id) => gearSlotOf(id) !== gearSlotOf(item.id)), item.id];
+      const answer = await dressPet(gear);
+      setCharacter({ ...character, petGear: answer.bond.gear });
+      onPetGear?.(answer.bond.gear);
+      setNotice({ kind: 'ok', text: say('shop.petWorn') });
     } catch (err) {
       setNotice({ kind: 'error', text: same(errorMessage(err)) });
     } finally {
@@ -367,6 +413,7 @@ export function ShopPanel({ onClose, onCoins, onWear }: ShopPanelProps) {
         fill={fill}
         onBuy={() => void buy()}
         onWear={justBought === item.id && character ? () => void wear() : null}
+        onPetWear={character?.pet ? () => void petWear() : null}
         onPick={open}
         onBack={() => setPicked(null)}
       />

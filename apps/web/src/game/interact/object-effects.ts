@@ -16,7 +16,7 @@ import {
 import type { CatalogModel } from '@miu/voxel/model-catalog';
 import type { LiveProp, ModelInfo } from '../entities/props';
 import type { QualityLevel } from '../quality';
-import { createEffectLayers, type Halo, type ParticleShape } from './effect-particles';
+import { createEffectLayers, type Halo, type ParticleShape, type ParticleSpawn } from './effect-particles';
 import { toWorld, worldFacing, type Point } from './interaction-geometry';
 import type { EffectsChannel } from './object-interaction-manager';
 import { matchInteraction } from './object-interaction-registry';
@@ -49,6 +49,8 @@ export interface ObjectEffectsStats {
 }
 
 export interface ObjectEffects extends EffectsChannel {
+  /** One more little shape in the shared layer (the pet's hearts, crumbs, bubbles: no draw call of their own). */
+  spawn(particle: ParticleSpawn): void;
   /** Each frame, with where she stands and how many pixels a block one unit away covers. */
   update(dt: number, player: { x: number; y: number; z: number }, pixelScale: number): void;
   stats(): ObjectEffectsStats;
@@ -258,6 +260,9 @@ export function createObjectEffects(options: ObjectEffectsOptions): ObjectEffect
   };
 
   return {
+    spawn(particle) {
+      layers.particles.spawn(particle);
+    },
     play(o, seconds) {
       playing.set(o.id, { object: o, remaining: seconds, emit: 1 });
       if (effectOf(o)?.kind === 'glow') rebuildHalos();

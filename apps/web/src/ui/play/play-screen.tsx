@@ -31,6 +31,8 @@ import { useHomeObjects } from './use-home-objects';
 import { HomeDecorPanel } from '../home-decor/home-decor-panel';
 import { SHOP_TARGET, ShopPanel } from '../shop/shop-panel';
 import { PetCarePanel } from '../pet-care/pet-care-panel';
+import { PetHud } from '../pet-care/pet-hud';
+import { reportPetWalk } from '../pet-care/pet-care-api';
 import { CookingPanel } from '../cooking/cooking-panel';
 import { TimetablePanel } from '../timetable/timetable-panel';
 import { TIMETABLE_TARGETS, type TimetableFocus } from '../timetable/timetable-targets';
@@ -44,6 +46,8 @@ import { PartyQuestCard } from '../coop/party-quest-card';
 import { useCoopChallenges } from '../coop/use-coop';
 
 const HOME_PATH = '/home';
+/** A pet wearing nothing (a stable value: the game is not rebuilt for it). */
+const NO_GEAR: readonly string[] = [];
 
 /**
  * A quest's progress from the server: the step route's response and the party's pushes may arrive out of order, so
@@ -121,6 +125,7 @@ function GameView({
   playerName,
   species,
   pet,
+  petGear,
   outfit,
   chapter,
   region,
@@ -138,6 +143,8 @@ function GameView({
   species: string;
   /** Pet that follows the character (`content/pets.json`), or none. */
   pet: string | null;
+  /** What the pet wears; read when the game is (re)built (changes reach the running game as a command). */
+  petGear: readonly string[];
   outfit: string[];
   chapter: number;
   region: string;
@@ -163,10 +170,14 @@ function GameView({
   useEffect(() => {
     objectsRef.current = objectStates;
   }, [objectStates]);
+  const petGearRef = useRef(petGear);
+  useEffect(() => {
+    petGearRef.current = petGear;
+  }, [petGear]);
   useEffect(() => {
     if (!host.current) return;
     const picks = decorKey ? (JSON.parse(decorKey) as Record<string, string>) : undefined;
-    const instance = new Game(host.current, { store, social, search: window.location.search, playerName, species, pet, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region, quest, savedSpot, decor: picks, objectStates: objectsRef.current });
+    const instance = new Game(host.current, { store, social, search: window.location.search, playerName, species, pet, petGear: petGearRef.current, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region, quest, savedSpot, decor: picks, objectStates: objectsRef.current });
     game.current = instance;
     onSpotReader(() => instance.currentSpot());
     void instance.start();
@@ -336,12 +347,22 @@ export function PlayScreen() {
   const region = quest?.quest.region ?? DEFAULT_REGION;
   // An element of `positions` (set once), so the same object on every render: the game is not rebuilt.
   const savedSpot = positions?.find((p) => p.map === regionMap(region)) ?? null;
-  const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null || decorOpen || shopOpen || petCareOpen || cookingOpen || friendsOpen || onlineMenu || coopOpen;
+  const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null || decorOpen || shopOpen || cookingOpen || friendsOpen || onlineMenu || coopOpen;
+  // The pet's care board leaves the game running (its scenes play in the world), only the HUD steps aside.
+  const hudCovered = covered || petCareOpen;
+  /** Bumped when the care board closes: the HUD's pet button reads its (maybe new) name again. */
+  const [petCareCloses, setPetCareCloses] = useState(0);
+  const closePetCare = useCallback((): void => {
+    setPetCareOpen(false);
+    setPetCareCloses((n) => n + 1);
+  }, []);
   const atHome = data !== null && regionMap(region) === regionMap(HOME_REGION);
   // The friends list is read in the background once the game is up, so it opens at once.
   useFriendsPrefetch(social, draftOwner, status === 'ready');
   // Weekly play time for the progress views: counted while the game runs, not while paused.
   usePlayTime(data !== null && status === 'ready' && !paused);
+  // Time walking together with her pet: the server counts it (by its own clock) into the pet's bond.
+  usePlayTime(data?.character.pet != null && status === 'ready' && !covered, reportPetWalk);
   // What she left switched on at home, read with her picks and saved as she switches things.
   const homeObjects = useHomeObjects(atHome, store);
   // Her home is built in her picks: they are read first (a failed read builds the house as it comes).
@@ -433,7 +454,7 @@ export function PlayScreen() {
     <GameStoreContext.Provider value={store}>
       <main data-id="play">
         {data && positions && (!atHome || (decor !== null && homeObjects !== null)) ? (
-          <GameView store={store} social={social} playerName={data.character.name} species={data.character.species} pet={data.character.pet} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={region} quest={quest?.quest.id} savedSpot={savedSpot} decor={atHome ? (decor ?? undefined) : undefined} objectStates={atHome ? (homeObjects ?? undefined) : undefined} paused={covered} onSpotReader={onSpotReader} />
+          <GameView store={store} social={social} playerName={data.character.name} species={data.character.species} pet={data.character.pet} petGear={data.character.petGear ?? NO_GEAR} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={region} quest={quest?.quest.id} savedSpot={savedSpot} decor={atHome ? (decor ?? undefined) : undefined} objectStates={atHome ? (homeObjects ?? undefined) : undefined} paused={covered} onSpotReader={onSpotReader} />
         ) : null}
         {loadError ? (
           <div className="play-message" role="alert">
@@ -448,11 +469,14 @@ export function PlayScreen() {
         {loadError || offline ? null : <LoadingOverlay region={regionName} viaPortal={viaPortal} look={look} />}
         {offline ? <OfflineBanner onRetry={retryOffline} /> : null}
         {/* The in-world label and Interact would show through a screen's backdrop: only while playing. */}
-        {covered ? null : <InteractionLabel />}
+        {hudCovered ? null : <InteractionLabel />}
         <GameStatus />
         {data && status !== 'error' ? (
-          <Hud data={data} quest={quest} covered={covered} onMenu={() => setPaused(true)} onQuests={() => setQuestsOpen(true)} onBackpack={() => setBackpackOpen(true)}>
-            <FriendsButton social={social} onOpen={() => setFriendsOpen(true)} />
+          <Hud data={data} quest={quest} covered={hudCovered} onMenu={() => setPaused(true)} onQuests={() => setQuestsOpen(true)} onBackpack={() => setBackpackOpen(true)}>
+            <div className="hud-row">
+              <FriendsButton social={social} onOpen={() => setFriendsOpen(true)} />
+              {hudCovered ? null : <PetHud key={petCareCloses} petId={data.character.pet} onOpen={() => setPetCareOpen(true)} />}
+            </div>
             {/* Out of the way while a screen (the friends list…) covers the game: the two never overlap. */}
             {covered ? null : <PartyFrame social={social} fill={(text) => say(text, data.character)} />}
             {covered ? null : (
@@ -497,21 +521,13 @@ export function PlayScreen() {
             onCoins={(coins) => setData((prev) => prev && { ...prev, progress: { ...prev.progress, coins } })}
             // Worn at once in the game, without rebuilding the map (the next visit starts in it from the server).
             onWear={(equipped) => store.send({ type: 'set-outfit', equipped })}
+            onPetGear={(gear) => {
+              store.send({ type: 'pet-gear', gear });
+              setData((prev) => prev && { ...prev, character: { ...prev.character, petGear: gear } });
+            }}
           />
         ) : null}
-        {petCareOpen ? (
-          <Modal title="Chăm sóc Thú cưng 🐾" onClose={() => setPetCareOpen(false)} dataId="play-pet-care" size="normal">
-            <PetCarePanel
-              onClose={() => setPetCareOpen(false)}
-              onActionFeedback={(_action, _msg, emote) => {
-                if (emote === 'dance') store.send({ type: 'celebrate' });
-              }}
-            />
-            <button type="button" className="scene-close" data-id="play-pet-care-close" aria-label="Đóng" onClick={() => setPetCareOpen(false)}>
-              ✕
-            </button>
-          </Modal>
-        ) : null}
+        {petCareOpen && !covered ? <PetCarePanel onClose={closePetCare} /> : null}
         {cookingOpen ? (
           <Modal title="Bếp Nhà Nấu Ăn 🍳" onClose={() => setCookingOpen(false)} dataId="play-cooking" size="wide">
             <CookingPanel onClose={() => setCookingOpen(false)} />

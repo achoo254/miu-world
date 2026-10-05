@@ -194,7 +194,7 @@ describe('friends in the online session', () => {
 
   it('keeps the list of who else is in the room', () => {
     const { ws, social, online } = session();
-    const presence = { displayName: 'Tôm', isBot: false, species: 'fox', outfit: [], pet: null, x: 1, y: 1, z: 1, yaw: 0, speed: 0, action: 'idle' as const, riding: false, bubble: null };
+    const presence = { displayName: 'Tôm', isBot: false, species: 'fox', outfit: [], pet: null, petGear: [], x: 1, y: 1, z: 1, yaw: 0, speed: 0, action: 'idle' as const, riding: false, bubble: null };
     ws.receive({ type: 'spawn', player: { id: 'p-b', ...presence } });
     expect(social.getSnapshot().room).toEqual([{ id: 'p-b', name: 'Tôm', isBot: false, species: 'fox' }]);
     ws.receive({ type: 'despawn', id: 'p-b' });

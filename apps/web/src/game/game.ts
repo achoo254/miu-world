@@ -50,13 +50,8 @@ import { HOME_REGION } from '../ui/region/regions';
 import { DEFAULT_SPECIES } from './content/characters';
 import { loadPlayerCharacter, type ExtraPlayerAction } from './entities/player-character';
 import { loadPetCompanion } from './entities/pet-companion';
-
-const PET_LINES = [
-  '❤️ Bé vuốt ve bạn cưng thật dịu dàng! 🐾✨',
-  'Ngoan ngoãn nhé, chúng mình cùng nhau khám phá thế giới nào! 🐶💖',
-  'Thú cưng thích thú dụi đầu vào tay bé, vui sướng kêu meo meo! 🥰',
-  'Bé thương bạn cưng nhất trên đời! 🌟🐾',
-];
+import { createPetLife, type PetLife } from './pet/pet-life';
+import { gearLooks } from './pet/pet-gear-catalog';
 
 const ANIMAL_PET_LINES = [
   '❤️ Ngoan nào, bé thương bé vuốt ve nhé! 🐾',
@@ -122,6 +117,10 @@ const FOLLOW_STRENGTH_RUN = 0.9;
 const FOLLOW_STRENGTH_WALK = 0.2;
 /** Turning the stick further than this (radians) takes a new walking direction from the view as it is now. */
 const STICK_TURN = 0.45;
+/** Back from a screen open this long, her pet runs up to greet her (ms). */
+const GREET_AFTER_PAUSE_MS = 20_000;
+/** How firmly the camera turns to frame her pet's scene (her and the pet both in view). */
+const PET_SCENE_FOLLOW = 0.6;
 
 export interface GameOptions {
   store: GameStore;
@@ -141,6 +140,8 @@ export interface GameOptions {
   playerName?: string;
   /** Pet id (`content/pets.json`) that trots after the character, or none. */
   pet?: string | null;
+  /** What the pet wears (`content/pet-gear.json`), from her saved character. */
+  petGear?: readonly string[];
   /** Where the child last stood on this map (`GET /api/player-positions`); the spawn point when absent or no longer open ground. */
   savedSpot?: Pick<PlayerPosition, 'position' | 'facing'> | null;
   /** The child's picks for her home (`GET /api/home-decor`): the map's restyled pieces as she chose them. */
@@ -235,6 +236,9 @@ export class Game {
   private timer: Timer | null = null;
   private input: PlayerInput | null = null;
   private spotNow: (() => PlayerPosition | null) | null = null;
+  /** When the last pause began (ms), and whether the pet should greet her as the game comes back after a long one. */
+  private pausedAt = 0;
+  private backAfterPause = false;
 
   constructor(
     private readonly host: HTMLElement,
@@ -256,6 +260,7 @@ export class Game {
 
   /** Pauses rendering while a full-screen screen (Pause, Backpack, challenge) covers the game (Master Plan §12). */
   stop(): void {
+    if (!this.paused) this.pausedAt = performance.now();
     this.paused = true;
     this.renderer?.setAnimationLoop(null);
     this.input?.clear();
@@ -263,6 +268,7 @@ export class Game {
 
   /** Restarts rendering after `stop()`. No-op before the first frame is ready, after dispose, or once the context is lost. */
   resume(): void {
+    if (this.paused && performance.now() - this.pausedAt > GREET_AFTER_PAUSE_MS) this.backAfterPause = true;
     this.paused = false;
     this.runLoop();
   }
@@ -414,7 +420,17 @@ export class Game {
     // front of walls and roofs instead (camera-rig.ts), plants simply show.
     // Props whose interaction turns them whole (a globe) are drawn on their own; moving parts always are.
     const propsPending = early(timed('props', loadProps(loader, entities, quality.shadows, undefined, spinningProps(entities.props))));
-    const petPending = petSpec ? early(timed('pet', loadPetCompanion(loader, petSpec, quality.shadows))) : null;
+    const petPending = petSpec
+      ? early(
+          timed(
+            'pet',
+            loadPetCompanion(loader, petSpec, quality.shadows).then((pet) => {
+              pet.wear(gearLooks(this.options.petGear ?? []));
+              return pet;
+            }),
+          ),
+        )
+      : null;
     const lifeOn = params.get('life') !== '0';
     const shotAt = parseViewShot(params.get('shot') ?? '')?.target;
     const lifeStart: [number, number] = shotAt ? [shotAt.x, shotAt.z] : [start[0] ?? 0, start[2] ?? 0];
@@ -733,6 +749,55 @@ export class Game {
     let rescueRequested = false;
     let celebrateRequested = false;
     const byId = new Map(targets.map((t) => [t.def.id, t]));
+    // Her pet's life round her: care scenes, tricks, sniffing toward clues, and its own reactions (pet/pet-life.ts).
+    const petBubble = createSpeechBubble();
+    scene.add(petBubble.sprite);
+    this.cleanups.push(() => {
+      scene.remove(petBubble.sprite);
+      petBubble.sprite.material.dispose();
+    });
+    /** Whether a pet may stand in this column at about `y`: on ground, two cells of room, not in water. */
+    const standable = (x: number, z: number, y: number): boolean => {
+      const bx = Math.floor(x);
+      const bz = Math.floor(z);
+      const by = Math.floor(y);
+      return solid(bx, by - 1, bz) && !solid(bx, by, bz) && !solid(bx, by + 1, bz) && !liquid(bx, by, bz);
+    };
+    const bedAnchor = entities.decorAnchors?.find((a) => a.slot === 'pet-bed');
+    const petLife: PetLife | null = pet
+      ? createPetLife({
+          pet,
+          scene,
+          spawn: (particle) => objectEffects.spawn(particle),
+          ground,
+          standable,
+          bed: bedAnchor ? { x: bedAnchor.position[0], y: bedAnchor.position[1], z: bedAnchor.position[2] } : null,
+          say: (text, sub) => petBubble.show(text, sub),
+          playerAction: (action, seconds) => {
+            currentAmbientAction = action;
+            ambientActionTimer = seconds;
+          },
+          onScene: (name) => {
+            store.emit({ type: 'pet-scene', scene: name });
+            overlay.stats.petScene = name;
+            if (name) overlay.stats.petScenes = [...overlay.stats.petScenes, name];
+          },
+          gentle: reducedMotion,
+          lite: quality.level === 'low',
+          shadows: quality.shadows,
+        })
+      : null;
+    if (petLife) this.cleanups.push(() => petLife.dispose());
+    this.cleanups.push(() => store.emit({ type: 'pet-scene', scene: null }));
+    this.cleanups.push(() => store.emit({ type: 'pet-sniff', available: false, wait: 0 }));
+    overlay.stats.petGear = [...(pet?.gear ?? [])];
+    /** The clues of the step under way still to find; the pet sniffs toward the nearest one on this map. */
+    let sniffTargets: readonly string[] = [];
+    let petName = petSpec?.name ?? '';
+    const sniffPlaces = (): Array<readonly [number, number, number]> => sniffTargets.flatMap((id) => {
+      const target = byId.get(id);
+      return target?.available ? [target.def.position] : [];
+    });
     const arrow = createTargetArrow();
     scene.add(arrow.root);
     let hint: InteractableObject | null = null;
@@ -787,6 +852,15 @@ export class Game {
         }
         if (command.type === 'rescue') rescueRequested = true;
         if (command.type === 'celebrate') celebrateRequested = true;
+        if (command.type === 'pet-care') petLife?.care(command.action);
+        if (command.type === 'pet-trick') petLife?.trick(command.trick);
+        if (command.type === 'pet-gear' && pet) {
+          pet.wear(gearLooks(command.gear));
+          overlay.stats.petGear = [...pet.gear];
+        }
+        if (command.type === 'pet-name') petName = command.name ?? petSpec?.name ?? '';
+        if (command.type === 'pet-sniff-targets') sniffTargets = command.targets;
+        if (command.type === 'pet-sniff') petLife?.sniff(sniffPlaces());
         if (command.type === 'autowalk-start' && hint?.available) walkTo({ target: hint.def, interactOnArrival: true });
         if (command.type === 'autowalk-to') {
           const plan = planWalk(command.to, (id) => byId.get(id));
@@ -902,6 +976,8 @@ export class Game {
         controller.facing = journeyFrame.facing;
         rig.yaw = journeyFrame.cameraYaw;
         rescue.reset();
+        // Off the ride at the far stop: her pet comes running.
+        petLife?.greet();
       }
       if (carried) controller.position.copy(carried.feet);
       else {
@@ -915,6 +991,7 @@ export class Game {
           walker.stop();
           controller.teleport(rescue.spot() ?? rescueFallback());
           rescue.reset();
+          petLife?.greet();
         }
       }
       const stuck = !carried && rescue.update(dt, {
@@ -977,12 +1054,36 @@ export class Game {
       dom.root.classList.toggle('swimming', controller.inWater && !carried);
       // With the camera inside Miu (nowhere left to back off to), hide her rather than show her insides.
       if (!reviewShot?.backdrop) character.root.visible = (carried !== null || rig.viewDistance > 0.9) && !reviewShot?.hidesPlayer;
-      if (pet) {
+      if (pet && petLife) {
         const p = controller.position;
-        pet.update(dt, { x: p.x, y: p.y, z: p.z, facing: controller.facing }, ground);
+        // Back from a long pause (a lesson, a screen): her pet greets her.
+        if (this.backAfterPause) {
+          this.backAfterPause = false;
+          petLife.greet();
+        }
+        const body = objectState.body;
+        const lying = objectState.action === 'sleep' || objectState.action === 'lay';
+        petLife.update(dt, {
+          x: p.x,
+          y: p.y,
+          z: p.z,
+          facing: controller.facing,
+          speed: controller.speed,
+          seated: body ? { x: body.position[0], z: body.position[2], lying } : null,
+          riding: carried !== null || ride.riding,
+        });
         // The pet waits out a ride and catches up with her at the far stop.
         pet.root.visible = !carried && !reviewShot?.backdrop && !reviewShot?.hidesPlayer;
+        petBubble.update(dt);
+        petBubble.sprite.position.set(pet.root.position.x, pet.root.position.y + pet.anchors.height * pet.scale + 0.35, pet.root.position.z);
+        // Her pet's scene in view: the camera turns to frame them both (unless she just dragged the view).
+        if (petLife.viewYaw !== null && sinceLook > LOOK_HOLD_S && !carried) rig.follow(petLife.viewYaw, dt, PET_SCENE_FOLLOW);
         overlay.stats.petClip = pet.clip;
+        overlay.stats.petMood = petLife.mood;
+        overlay.stats.petMotion = pet.motion;
+        overlay.stats.petAt = [pet.root.position.x, pet.root.position.y, pet.root.position.z];
+        const sniffable = sniffPlaces().length > 0 && !carried;
+        store.emit({ type: 'pet-sniff', available: sniffable, wait: Math.ceil(petLife.sniffCooldown) });
       }
       reviewShot?.apply(camera);
       sky.position.copy(camera.position);
@@ -1014,7 +1115,7 @@ export class Game {
       overlay.stats.nearObject = nearObject?.id ?? null;
       // Check pet companion proximity when child is near her faithful companion
       const petDist = pet && !carried ? Math.hypot(controller.position.x - pet.root.position.x, controller.position.z - pet.root.position.z) : Infinity;
-      const nearPet = !nearest && !nearAmbient && !nearObject && !nearPlayer && petDist < 2.2;
+      const nearPet = !nearest && !nearAmbient && !nearObject && !nearPlayer && petDist < 2.2 && petLife?.scene === null;
       // A still review shot gathers the nearest people and animals round what it looks at, not round the child.
       life.update(dt, reviewShot && !reviewShot.live ? reviewShot.target : controller.position, nearest !== null, { calls: renderer.info.render.calls, triangles: renderer.info.render.triangles });
       online.update(dt, controller.position, camera);
@@ -1049,7 +1150,7 @@ export class Game {
             : nearObject
               ? objectInteractions.toPrompt(nearObject)
               : nearPet
-                ? { targetId: 'pet-companion', kind: 'ambient' as const, name: petSpec?.name ?? 'Bé cưng', label: 'Vuốt ve' }
+                ? { targetId: 'pet-companion', kind: 'ambient' as const, name: petName, label: translate('pet.prompt') }
                 : null;
         store.emit({ type: 'interaction-prompt', prompt });
       }
@@ -1102,13 +1203,11 @@ export class Game {
         const lines = isAnimal ? ANIMAL_PET_LINES : GREET_LINES;
         playerBubble.show(lines[Math.floor(Math.random() * lines.length)] ?? lines[0] ?? '');
         if (multiplayer) multiplayer.sendEmote('cheer');
-      } else if (interact && promptPet && pet) {
-        pet.celebrate();
-        ambientActionTimer = 2.4;
+      } else if (interact && promptPet && petLife) {
+        // Its care screen opens; it wriggles under her hand meanwhile.
+        petLife.touched();
+        ambientActionTimer = 1.6;
         currentAmbientAction = 'pet';
-        const lines = PET_LINES;
-        playerBubble.show(lines[Math.floor(Math.random() * lines.length)] ?? lines[0] ?? '');
-        if (multiplayer) multiplayer.sendEmote('cheer');
         store.emit({ type: 'interaction', targetId: 'pet-care' });
       } else if (interact && promptObject) {
         objectInteractions.interact(promptObject, controller, multiplayer);
@@ -1121,7 +1220,7 @@ export class Game {
       if (celebrateRequested) {
         celebrateRequested = false;
         life.celebrate(controller.position);
-        pet?.celebrate();
+        petLife?.celebrate();
         multiplayer.sendEmote('cheer');
         if (!reducedMotion) confetti.burst(controller.position);
       }
@@ -1166,6 +1265,8 @@ export class Game {
       reviewShot?.frameDone();
       if (firstFrame) {
         firstFrame = false;
+        // She arrives on the map: her pet comes running to greet her (not in review shots, which stay still).
+        if (!reviewShot) petLife?.greet();
         overlay.stats.loadMs = Math.round(performance.now());
         lap('ready');
         overlay.stats.firstAreaBytes = downloadedBytes();

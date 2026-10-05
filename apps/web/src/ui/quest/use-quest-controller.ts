@@ -12,7 +12,7 @@ import { twin } from './content-text';
 import { say, type PlayerData } from '../player/player-data';
 import { TIMETABLE_TARGETS } from '../timetable/timetable-targets';
 import { DONE_LINES, FOUND_LINES, NOT_NOW_LINES, fillLine } from './loop-lines';
-import { autoStep, currentStep, hintTarget, runFor, stepForTarget, worldState, type ActiveQuestView } from './quest-flow';
+import { autoStep, currentStep, hintTarget, runFor, sniffTargets, stepForTarget, worldState, type ActiveQuestView } from './quest-flow';
 import { clearDraft, readDraft, updateDraft } from './step-draft';
 /** Interactions the game sends for the pet and the kitchen: each opens its own screen. */
 const OWN_SCREEN_TARGETS: ReadonlySet<string> = new Set(['pet-care', 'cooking']);
@@ -178,6 +178,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
     (quest: ActiveQuestView, progress: PlayerData['quests'][number]['progress']): void => {
       store.send({ type: 'set-world-state', state: worldState(quest, progress) });
       store.send({ type: 'set-target-hint', targetId: hintTarget(quest, progress) });
+      store.send({ type: 'pet-sniff-targets', targets: sniffTargets(quest, progress) });
     },
     [store],
   );

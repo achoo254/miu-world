@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { QuestStepPublic } from '@miu/schema/content';
 import type { QuestProgressDto } from '@miu/schema/game';
-import { autoStep, currentStep, hintTarget, runFor, searchCount, stepForTarget, worldState, type ActiveQuestView } from './quest-flow';
+import { autoStep, currentStep, hintTarget, runFor, searchCount, sniffTargets, stepForTarget, worldState, type ActiveQuestView } from './quest-flow';
 
 const steps = [
   { id: 'meet-parrot', title: 'Gặp Vẹt', kind: 'dialogue', target: 'parrot-guide', lines: [{ speaker: 'Vẹt', text: 'Chào {name}!' }] },
@@ -62,6 +62,14 @@ describe('quest flow', () => {
     expect(hintTarget(quest, progress(['meet-parrot'], { 'find-clues': ['clue-box'] }))).toBe('clue-letter');
     expect(hintTarget(quest, progress(['meet-parrot', 'find-clues']))).toBeNull();
     expect(hintTarget(quest, progress(['meet-parrot', 'find-clues', 'read-letter']))).toBe('chest');
+  });
+
+  it('lets the pet sniff only toward the clues of a search still to find, never on a question', () => {
+    expect(sniffTargets(quest, progress([]))).toEqual([]); // talking to the parrot
+    expect(sniffTargets(quest, progress(['meet-parrot']))).toEqual(['clue-box', 'clue-letter']);
+    expect(sniffTargets(quest, progress(['meet-parrot'], { 'find-clues': ['clue-box'] }))).toEqual(['clue-letter']);
+    expect(sniffTargets(quest, progress(['meet-parrot', 'find-clues']))).toEqual([]); // the reading question
+    expect(sniffTargets(quest, progress(steps.map((s) => s.id)))).toEqual([]);
   });
 
   it('turns progress into the world look, and counts clues from the server list', () => {

@@ -60,6 +60,19 @@ export function hintTarget(quest: ActiveQuestView, progress: QuestProgressDto): 
   return stepTrigger(step) === 'auto' ? null : (stepTarget(step) ?? null);
 }
 
+/**
+ * What the pet may sniff toward: the things of the search or find-object step under way still to find (never
+ * anything of a question: only places, and the pet runs only part of the way). Empty on any other step.
+ */
+export function sniffTargets(quest: ActiveQuestView, progress: QuestProgressDto): string[] {
+  const step = currentStep(quest, progress);
+  if (!step) return [];
+  const found = new Set(progress.found[step.id] ?? []);
+  if (step.kind === 'search') return step.targets.filter((t) => !found.has(t));
+  if (step.kind === 'find-object') return step.items.map((i) => i.target).filter((t) => !found.has(t));
+  return [];
+}
+
 /** Found clues show as found; the chest and gate open once their step is done. */
 export function worldState(quest: ActiveQuestView, progress: QuestProgressDto): WorldState {
   const state: Record<string, 'found' | 'open' | 'hidden'> = {};

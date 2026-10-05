@@ -1,214 +1,312 @@
-.pet-care-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 12px;
-  color: #333;
-}
+/*
+ * The pet's care board (mock "quest screens" materials): the banner, the pet's picture in a wooden frame speaking on
+ * parchment, its needs on parchment, wooden tabs and river-stone buttons that bounce when pressed. Values from
+ * tokens.css only; touch targets of 48px and more. Every animation stops with less motion (styles.css).
+ */
+.pet-care-modal { width: min(100%, 42rem); }
 
-.pet-care-header {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
-  padding: 14px 18px;
-  border-radius: 16px;
-  border: 2px solid #ffb74d;
-}
+.pet-care-note { display: grid; justify-items: center; gap: var(--space-sm); padding: var(--space-md) var(--space-lg); text-align: center; font-weight: 700; }
+.pet-care-empty-title { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 800; }
 
-.pet-care-avatar {
-  font-size: 32px;
-  background: white;
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-}
-
-.pet-care-title-box {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.pet-care-name {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 800;
-  color: #d84315;
-}
-
-.pet-care-badge {
-  font-size: 13px;
-  font-weight: 700;
-  color: #e65100;
-  background: rgba(255, 255, 255, 0.85);
-  padding: 3px 10px;
-  border-radius: 12px;
-  display: inline-block;
-  width: fit-content;
-}
-
-.pet-care-message {
-  background: #e8f5e9;
-  border: 1.5px solid #81c784;
-  color: #2e7d32;
-  font-weight: 600;
-  padding: 10px 14px;
-  border-radius: 12px;
-  text-align: center;
-  animation: fadeIn 0.3s ease;
-}
-
-.pet-care-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background: #fafafa;
-  padding: 14px 16px;
-  border-radius: 14px;
-  border: 1px solid #e0e0e0;
-}
-
-.pet-stat-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.pet-stat-label {
-  width: 90px;
-  font-weight: 700;
-  font-size: 14px;
-}
-
-.pet-stat-bar-bg {
-  flex: 1;
-  height: 14px;
-  background: #e0e0e0;
-  border-radius: 8px;
-  overflow: hidden;
+/* The pet speaking: its picture in a round wooden frame, its gear as little badges. */
+.pet-care-say { align-items: center; }
+.pet-care-portrait {
   position: relative;
-}
-
-.pet-stat-bar {
-  height: 100%;
-  border-radius: 8px;
-  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.pet-stat-happy {
-  background: linear-gradient(90deg, #ff8a80, #ff5252);
-}
-
-.pet-stat-full {
-  background: linear-gradient(90deg, #ffd180, #ff9100);
-}
-
-.pet-stat-clean {
-  background: linear-gradient(90deg, #80d8ff, #00b0ff);
-}
-
-.pet-stat-val {
-  width: 40px;
-  text-align: right;
-  font-size: 13px;
-  font-weight: 800;
-  color: #555;
-}
-
-.pet-care-actions {
+  flex-shrink: 0;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-top: 4px;
+  place-items: center;
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  border: 4px solid var(--color-wood-edge);
+  background: radial-gradient(circle at 50% 35%, var(--color-sky-mid), var(--color-sky-top));
+  box-shadow: var(--shadow-material);
 }
-
-.pet-care-btn {
-  display: flex;
-  flex-direction: column;
+.pet-care-portrait > img:first-child { width: 88%; height: auto; pointer-events: none; }
+.pet-care-gear-badge {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.15rem;
+  border-radius: 50%;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-tile);
+}
+.pet-care-gear-badge--head { top: -0.4rem; right: -0.2rem; }
+.pet-care-gear-badge--neck { bottom: -0.3rem; right: -0.2rem; }
+.pet-care-bubble { display: grid; gap: var(--space-xs); }
+.pet-care-level {
+  justify-self: start;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 14px 10px;
-  border-radius: 16px;
-  border: 2px solid transparent;
-  font-family: inherit;
+  gap: var(--space-xs);
+  padding: 0 var(--space-sm);
+  border-radius: var(--radius-pill);
+  background: var(--color-wood);
+  color: var(--color-wood-ink);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-sm);
+}
+.pet-care-line { font-weight: 700; }
+
+.pet-care-bond { display: flex; align-items: center; gap: var(--space-sm); font-size: var(--text-sm); font-weight: 800; color: var(--color-ink-soft); }
+.pet-care-bond-label { display: inline-flex; align-items: center; gap: var(--space-xs); white-space: nowrap; }
+.pet-care-bond-track,
+.pet-care-stat-track {
+  position: relative;
+  flex: 1;
+  height: 0.9rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-faint);
+  box-shadow: inset 0 2px 0 var(--color-block-shade);
+  overflow: hidden;
+}
+.pet-care-bond-fill,
+.pet-care-stat-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--fill);
+  border-radius: inherit;
+  background: linear-gradient(180deg, var(--color-primary-top), var(--color-primary));
+  transition: width var(--duration-enter) ease-out;
+}
+.pet-care-stat-fill--fullness { background: linear-gradient(180deg, var(--color-star), var(--color-dirt)); }
+.pet-care-stat-fill--cleanliness { background: linear-gradient(180deg, var(--color-water-light), var(--color-water)); }
+.pet-care-bond-count { font-variant-numeric: tabular-nums; }
+
+.pet-care-news { display: grid; gap: var(--space-xs); margin: 0; padding: 0; list-style: none; }
+.pet-care-news li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  justify-self: center;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-pill);
+  background: var(--color-badge);
+  color: var(--color-badge-ink);
+  font-weight: 800;
+  box-shadow: var(--shadow-tile);
+  animation: pet-news-in var(--duration-enter) ease-out both;
+}
+.pet-care-news li + li { animation-delay: 160ms; }
+.pet-care-error { margin: 0; padding: var(--space-xs) var(--space-md); border-radius: var(--radius-field); background: var(--color-danger-soft); color: var(--color-danger); font-weight: 700; text-align: center; }
+
+.pet-care-stats { display: grid; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); }
+.pet-care-stat { display: flex; align-items: center; gap: var(--space-sm); }
+.pet-care-stat-label { width: 6.5rem; font-weight: 800; }
+.pet-care-stat-value { width: 3rem; text-align: right; font-weight: 800; font-variant-numeric: tabular-nums; }
+
+/* Wooden tabs. */
+.pet-care-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-xs); }
+.pet-care-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: 3rem;
+  padding: 0 var(--space-md);
+  border: 3px solid var(--color-wood-edge);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(180deg, var(--color-parchment), var(--color-parchment-deep));
+  color: var(--color-parchment-ink);
+  font: 800 var(--text-body) var(--font-display);
   cursor: pointer;
-  transition: all 0.18s ease;
-  user-select: none;
+}
+.pet-care-tab--on { background: linear-gradient(180deg, var(--color-wood-top), var(--color-wood)); color: var(--color-wood-ink); }
+.pet-care-tab:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+
+.pet-care-panel { display: grid; gap: var(--space-sm); padding: var(--space-md); border-radius: var(--radius-panel); background: var(--color-surface-glass); }
+.pet-care-hint { margin: 0; text-align: center; font-weight: 700; color: var(--color-ink-soft); }
+
+/* River-stone buttons: each care and each trick. */
+.pet-care-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr)); gap: var(--space-sm); }
+.pet-care-stone {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: var(--space-xs);
+  min-height: 6.5rem;
+  padding: var(--space-sm);
+  border: 0;
+  border-radius: 42% 46% 40% 44% / 46% 40% 48% 42%;
+  background: radial-gradient(ellipse at 40% 30%, var(--color-stone-top), var(--color-stone) 70%);
+  box-shadow: var(--shadow-stone);
+  color: var(--color-stone-ink);
+  font: 800 var(--text-body) var(--font-display);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform var(--duration-press) ease-out;
+}
+.pet-care-stone:active:not(:disabled) { transform: scale(0.94); }
+.pet-care-stone:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+.pet-care-stone:disabled { cursor: default; opacity: 0.6; }
+.pet-care-stone[data-locked] { opacity: 0.55; }
+.pet-care-stone[data-pulse='0'] { animation: pet-stone-pop-a 520ms ease-out; }
+.pet-care-stone[data-pulse='1'] { animation: pet-stone-pop-b 520ms ease-out; }
+.pet-care-lock { font: 700 var(--text-sm) var(--font-body); }
+
+.pet-care-names { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-xs); max-height: 14rem; overflow-y: auto; overscroll-behavior: contain; }
+.pet-care-name-chip {
+  min-height: 3rem;
+  padding: 0 var(--space-md);
+  border: 3px solid var(--color-parchment-edge);
+  border-radius: var(--radius-pill);
+  background: var(--color-parchment);
+  color: var(--color-parchment-ink);
+  font: 800 var(--text-body) var(--font-display);
+  cursor: pointer;
+}
+.pet-care-name-chip--on { border-color: var(--color-primary); background: var(--color-badge); color: var(--color-badge-ink); }
+.pet-care-name-chip:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+
+.pet-care-gear-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm); }
+.pet-care-gear-slot { width: 100%; font-weight: 800; color: var(--color-ink-soft); }
+.pet-care-gear {
+  display: grid;
+  justify-items: center;
+  gap: 0.1rem;
+  min-width: 7rem;
+  min-height: 6rem;
+  padding: var(--space-sm);
+  border: 3px solid var(--color-parchment-edge);
+  border-radius: var(--radius-tile);
+  background: linear-gradient(180deg, var(--color-parchment), var(--color-parchment-deep));
+  color: var(--color-parchment-ink);
+  font: 800 var(--text-sm) var(--font-display);
+  cursor: pointer;
+}
+.pet-care-gear--on { border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-badge); }
+.pet-care-gear:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+
+/* While a scene plays: the board folds into a caption at the bottom, the world shows. */
+.pet-scene-caption {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--space-lg) + env(safe-area-inset-bottom, 0px));
+  z-index: var(--z-overlay);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  transform: translateX(-50%);
+  pointer-events: none;
+  animation: pet-caption-in var(--duration-enter) ease-out both;
+}
+.pet-scene-caption-art {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  border: 3px solid var(--color-wood-edge);
+  background: var(--color-parchment);
+  box-shadow: var(--shadow-material);
+  animation: pet-act-play 900ms ease-in-out infinite;
+}
+.pet-scene-caption-text { font-size: var(--text-lg); white-space: nowrap; }
+
+/* The HUD: her pet's button by "Bạn bè", and "Đánh hơi" while there is something to find. */
+.hud-row { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+.pet-hud-button { gap: var(--space-xs); }
+.pet-hud-art { width: 2rem; height: 2rem; pointer-events: none; }
+.pet-hud-sniff:not(:disabled) { animation: pet-sniff-nudge 2.4s ease-in-out infinite; }
+
+/* The picture of the pet answers each button. */
+.pet-care-portrait[data-act='feed'] > img:first-child { animation: pet-act-feed 900ms ease-in-out; }
+.pet-care-portrait[data-act='pet'] > img:first-child,
+.pet-care-portrait[data-act='dance'] > img:first-child { animation: pet-act-wiggle 900ms ease-in-out; }
+.pet-care-portrait[data-act='bath'] > img:first-child { animation: pet-act-shake 800ms ease-in-out; }
+.pet-care-portrait[data-act='bath']::after {
+  content: '';
+  position: absolute;
+  inset: 10% 15% 20%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 20% 70%, var(--color-water-light) 0 8%, transparent 9%),
+    radial-gradient(circle at 60% 40%, var(--color-water-light) 0 6%, transparent 7%),
+    radial-gradient(circle at 80% 75%, var(--color-water-light) 0 7%, transparent 8%);
+  animation: pet-bubbles-up 1s ease-out both;
+  pointer-events: none;
+}
+.pet-care-portrait[data-act='play'] > img:first-child,
+.pet-care-portrait[data-act='jump'] > img:first-child { animation: pet-act-play 800ms ease-in-out; }
+.pet-care-portrait[data-act='nap'] > img:first-child,
+.pet-care-portrait[data-act='sit'] > img:first-child { animation: pet-act-nap 1.2s ease-in-out; }
+.pet-care-portrait[data-act='spin'] > img:first-child { animation: pet-act-spin 900ms ease-in-out; }
+.pet-care-portrait[data-act='roll'] > img:first-child { animation: pet-act-roll 1s ease-in-out; }
+.pet-care-portrait[data-act='high-five'] > img:first-child { animation: pet-act-five 900ms ease-in-out; }
+
+@keyframes pet-stone-pop-a {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.12) rotate(-4deg); }
+  60% { transform: scale(0.96) rotate(3deg); }
+  100% { transform: scale(1); }
+}
+@keyframes pet-stone-pop-b {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.12) rotate(4deg); }
+  60% { transform: scale(0.96) rotate(-3deg); }
+  100% { transform: scale(1); }
+}
+@keyframes pet-act-feed {
+  0%, 100% { transform: scale(1); }
+  20%, 60% { transform: scale(1.08, 0.9) translateY(4px); }
+  40%, 80% { transform: scale(0.96, 1.05); }
+}
+@keyframes pet-act-wiggle {
+  0%, 100% { transform: rotate(0); }
+  20%, 60% { transform: rotate(-9deg); }
+  40%, 80% { transform: rotate(9deg); }
+}
+@keyframes pet-act-shake {
+  0%, 100% { transform: translateX(0); }
+  15%, 45%, 75% { transform: translateX(-6px); }
+  30%, 60%, 90% { transform: translateX(6px); }
+}
+@keyframes pet-act-play {
+  0%, 50%, 100% { transform: translateY(0); }
+  25%, 75% { transform: translateY(-14px); }
+}
+@keyframes pet-act-nap {
+  0%, 100% { transform: rotate(0); opacity: 1; }
+  50% { transform: rotate(-14deg) translateY(6px); opacity: 0.8; }
+}
+@keyframes pet-act-spin {
+  from { transform: rotateY(0); }
+  to { transform: rotateY(360deg); }
+}
+@keyframes pet-act-roll {
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
+}
+@keyframes pet-act-five {
+  0%, 100% { transform: rotate(0); }
+  40%, 70% { transform: rotate(-16deg) translateY(-8px); }
+}
+@keyframes pet-bubbles-up {
+  from { transform: translateY(10px); opacity: 0; }
+  40% { opacity: 1; }
+  to { transform: translateY(-24px); opacity: 0; }
+}
+@keyframes pet-news-in {
+  from { transform: translateY(8px) scale(0.96); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes pet-caption-in {
+  from { transform: translate(-50%, 12px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+@keyframes pet-sniff-nudge {
+  0%, 80%, 100% { transform: rotate(0); }
+  85% { transform: rotate(-5deg); }
+  90% { transform: rotate(5deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pet-care-stone, .pet-care-portrait > img, .pet-care-portrait::after, .pet-care-news li, .pet-scene-caption, .pet-scene-caption-art, .pet-hud-sniff { animation: none !important; }
 }
 
-.pet-care-btn:active {
-  transform: scale(0.96);
-}
-
-.pet-btn-icon {
-  font-size: 26px;
-}
-
-.pet-btn-text {
-  font-size: 15px;
-  font-weight: 800;
-}
-
-.pet-btn-feed {
-  background: #fff3e0;
-  border-color: #ffb74d;
-  color: #e65100;
-}
-
-.pet-btn-pet {
-  background: #fce4ec;
-  border-color: #f48fb1;
-  color: #c2185b;
-}
-
-.pet-btn-bath {
-  background: #e1f5fe;
-  border-color: #81d4fa;
-  color: #0277bd;
-}
-
-.pet-btn-play {
-  background: #f3e5f5;
-  border-color: #ce93d8;
-  color: #7b1fa2;
-}
-
-.pet-care-empty {
-  text-align: center;
-  padding: 24px 16px;
-}
-
-.pet-care-empty-icon {
-  font-size: 48px;
-  margin: 0 0 10px;
-}
-
-.pet-care-empty-text {
-  font-size: 17px;
-  font-weight: 800;
-  color: #333;
-  margin: 0 0 6px;
-}
-
-.pet-care-empty-hint {
-  font-size: 14px;
-  color: #666;
-  margin: 0 0 18px;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Phones: a smaller picture, two stones a row. */
+@media (max-width: 40rem) {
+  .pet-care-portrait { width: 5rem; height: 5rem; }
+  .pet-care-actions { grid-template-columns: repeat(auto-fit, minmax(5.5rem, 1fr)); }
+  .pet-care-stone { min-height: 5.5rem; font-size: var(--text-sm); }
+  .pet-care-stat-label { width: auto; }
 }

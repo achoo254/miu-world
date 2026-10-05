@@ -8,6 +8,7 @@ import type { RemoteSummary } from '../debug/stats-overlay';
 import { t, type TextKey } from '../../ui/i18n/i18n';
 import { PETS } from '../../ui/kit/ui-art';
 import { loadPetCompanion, type PetCompanion } from '../entities/pet-companion';
+import { gearLooks } from '../pet/pet-gear-catalog';
 import { loadPlayerCharacter, type PlayerCharacter } from '../entities/player-character';
 import { createVehicleMesh, equippedVehicle, rideLift, seatedPose, type EquippedVehicle } from '../player/vehicle-ride';
 import { createSpeechBubble, type SpeechBubble } from '../ambient/speech-bubble';
@@ -96,12 +97,14 @@ export class RemotePlayerManager {
     );
   }
 
-  /** Her pet, from the pet she chose; a pet that cannot load leaves her without one, never without herself. */
-  private async loadPet(id: string | null): Promise<PetCompanion | null> {
+  /** Her pet, from the pet she chose, in what she dressed it in; a pet that cannot load leaves her without one, never without herself. */
+  private async loadPet(id: string | null, gear: readonly string[]): Promise<PetCompanion | null> {
     const spec = PETS.find((p) => p.id === id);
     if (!spec) return null;
     try {
-      return await loadPetCompanion(this.loader, spec, this.shadows);
+      const pet = await loadPetCompanion(this.loader, spec, this.shadows);
+      pet.wear(gearLooks(gear));
+      return pet;
     } catch (err) {
       console.warn(`failed to load pet ${id} of a remote player`, err);
       return null;
@@ -142,7 +145,7 @@ export class RemotePlayerManager {
     this.latest.set(presence.id, presence);
     try {
       const character = await loadPlayerCharacter(this.loader, presence.species, presence.outfit);
-      const pet = await this.loadPet(presence.pet);
+      const pet = await this.loadPet(presence.pet, presence.petGear);
       if (!this.pendingSpawns.delete(presence.id)) {
         // Gone (despawned, blocked) while she loaded.
         pet?.root.removeFromParent();
@@ -170,7 +173,7 @@ export class RemotePlayerManager {
 
       const entity: RemoteEntity = {
         // Dressed as loaded; a newer look that came meanwhile is applied below.
-        presence: { ...now, displayName: presence.displayName, species: presence.species, outfit: presence.outfit, pet: presence.pet },
+        presence: { ...now, displayName: presence.displayName, species: presence.species, outfit: presence.outfit, pet: presence.pet, petGear: presence.petGear },
         character,
         bubble,
         nametag,
@@ -192,8 +195,10 @@ export class RemotePlayerManager {
       pet?.place(now.x, y, now.z, now.yaw);
       this.entities.set(now.id, entity);
       // New clothes saved while she loaded: worn now.
-      const { displayName, species, outfit, pet: petId } = now;
-      if (displayName !== presence.displayName || species !== presence.species || outfit.join() !== presence.outfit.join() || petId !== presence.pet) this.applyAppearance(now.id, { displayName, species, outfit, pet: petId });
+      const { displayName, species, outfit, pet: petId, petGear } = now;
+      if (displayName !== presence.displayName || species !== presence.species || outfit.join() !== presence.outfit.join() || petId !== presence.pet || petGear.join() !== presence.petGear.join()) {
+        this.applyAppearance(now.id, { displayName, species, outfit, pet: petId, petGear });
+      }
       this.report();
       if (now.bubble) bubble.show(cannedLine(now.bubble.text));
     } catch (err) {
@@ -231,10 +236,12 @@ export class RemotePlayerManager {
       this.setRiding(entity, entity.riding);
     }
     if (appearance.displayName !== before.displayName) this.setNametag(entity);
-    if (appearance.pet !== before.pet) {
+    if (appearance.pet === before.pet) entity.pet?.wear(gearLooks(appearance.petGear));
+    else {
+      entity.pet?.dispose();
       entity.pet?.root.removeFromParent();
       entity.pet = null;
-      void this.loadPet(appearance.pet).then((pet) => {
+      void this.loadPet(appearance.pet, appearance.petGear).then((pet) => {
         // Still her, still that pet (no newer change, not gone meanwhile).
         if (!pet || this.entities.get(id) !== entity || entity.presence.pet !== appearance.pet) return;
         entity.pet = pet;
@@ -333,7 +340,10 @@ export class RemotePlayerManager {
 
   private release(entity: RemoteEntity): void {
     this.group.remove(entity.character.root);
-    if (entity.pet) this.group.remove(entity.pet.root);
+    if (entity.pet) {
+      this.group.remove(entity.pet.root);
+      entity.pet.dispose();
+    }
     this.dropVehicleMesh(entity);
     disposeSprite(entity.nametag);
     entity.bubble.hide();

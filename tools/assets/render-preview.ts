@@ -327,7 +327,23 @@ async function outlandShots(): Promise<Shot[]> {
   return shots;
 }
 
+/** Pets wearing what the shop sells them (content/pet-gear.json): every piece once, on pets of different shapes. */
+async function petGearShots(): Promise<Shot[]> {
+  const looks: ReadonlyArray<[string, string]> = [
+    ['meo-xam', 'pet-party-hat,pet-collar-bell'],
+    ['cun-con', 'pet-bow-pink,pet-scarf'],
+    ['tho-nau', 'pet-crown,pet-collar-medal'],
+    ['gau-truc', 'pet-sun-hat'],
+    ['ga-con', 'pet-flower,pet-collar-bell'],
+    ['huou-cao-co', 'pet-bow-blue,pet-scarf'],
+    ['voi-con', 'pet-party-hat,pet-collar-medal'],
+    ['ho-con', 'pet-crown,pet-scarf'],
+  ];
+  return looks.map(([pet, petGear]) => ({ file: `${pet}--${petGear.replaceAll(',', '--')}.png`, query: { pet, petGear, anim: 'idle', t: 0, yaw: 35, pitch: 14, size: 320 } }));
+}
+
 export const SHOT_GROUPS: Record<string, () => Promise<Shot[]>> = {
+  pets: petGearShots,
   outland: outlandShots,
   character: characterShots,
   accessories: accessoryShots,

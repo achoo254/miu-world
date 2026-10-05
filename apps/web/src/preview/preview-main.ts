@@ -4,6 +4,7 @@
 //        &acc=<id[:variant],id[:variant]>&accScale=<node:scale,...>&bg=<css colour | transparent>
 //        (a vehicle among `acc` stands under her, as she rides it)
 //        &pet=<pet id> instead of `model`: that pet's model in its colour variant (content/pets.json)
+//        &petGear=<id,id> with `pet`: wearing that gear (content/pet-gear.json)
 // Item shots: ?item=<accessory id>&yaw=…&pitch=…&size=…&bg=… renders one wearable item alone (a pair side by side;
 //        clothes as the default character wears them, without her body).
 // Sets document.body.dataset.ready = '1' once the frame is drawn (or data-error on failure).
@@ -30,6 +31,8 @@ import { wornPose } from '../game/character/worn-pose';
 import { resolveOutfitEntry } from '../game/content/accessories';
 import { characterForSpecies, DEFAULT_SPECIES } from '../game/content/characters';
 import { recolorModel } from '../game/entities/pet-recolor';
+import { gearLooks } from '../game/pet/pet-gear-catalog';
+import { attachGear, petAnchors } from '../game/pet/pet-shapes';
 import { Game } from '../game/game';
 import { createVehicleMesh, equippedVehicle, rideLift } from '../game/player/vehicle-ride';
 import { PETS } from '../ui/kit/ui-art';
@@ -49,6 +52,7 @@ async function posedCharacter(loader: GuardedGltfLoader): Promise<Object3D> {
   const gltf = await loader.load(modelPath);
   const model: Object3D = gltf.scene;
   if (pet?.recolor) recolorModel(model, pet.recolor);
+  if (pet) attachGear(model, petAnchors(model), gearLooks((params.get('petGear') ?? '').split(',').filter(Boolean)), false);
   const accScale = new Map(
     (params.get('accScale') ?? '')
       .split(',')
