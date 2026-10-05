@@ -1,8 +1,8 @@
 // Mock "quest screens" style (the themed scene UI: wooden banner, parchment, stones over the live game) for the
 // pet's care board — NEW SCREEN element on M3.2. Her pet's own picture and name on the banner, its bond level, a
 // line from the pet about how it feels, its needs on parchment, and four tabs: Chăm sóc (five care buttons, each
-// a scene in the world), Làm trò (the tricks its level opens), Phụ kiện (what she bought it in the shop) and Đặt
-// tên (a name from the list). While a scene plays the board folds into a caption so the world shows; it opens
+// a scene in the world; "Cho ăn" asks which food when she has dishes she cooked), Làm trò (the tricks its level
+// opens), Phụ kiện (what she bought it in the shop) and Đặt tên (a name from the list). While a scene plays the board folds into a caption so the world shows; it opens
 // again with what the care brought (bond XP, a new level, a new trick). The numbers are the server's.
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
 import { freshPicker, type FreshPicker } from '@miu/quest/pick-fresh';
@@ -18,7 +18,7 @@ import { Modal } from '../kit/modal';
 import { PETS, UI_ICONS, assetUrl, type UiIcon } from '../kit/ui-art';
 import { playCue } from '../sound/sfx';
 import { loadShop } from '../shop/shop-api';
-import { askTrick, careForPet, dressPet, loadPetCare, namePet } from './pet-care-api';
+import { askTrick, careForPet, dressPet, loadCookedDishes, loadPetCare, namePet, type CookedDish } from './pet-care-api';
 import './pet-care.css';
 
 const NAMES: readonly string[] = (petNames as { names: string[] }).names;
@@ -90,6 +90,10 @@ export function PetCarePanel({ onClose, onPetGear, onRename }: PetCarePanelProps
   const [error, setError] = useState<string | null>(null);
   const [line, setLine] = useState<Bilingual | null>(null);
   const [ownedGear, setOwnedGear] = useState<string[] | null>(null);
+  /** The dishes she cooked and still has (null until read): "Cho ăn" then asks which food. */
+  const [dishes, setDishes] = useState<CookedDish[] | null>(null);
+  /** The feeding choice is open (the pet's own food, or one of her dishes). */
+  const [feedPick, setFeedPick] = useState(false);
   const pickers = useRef(new Map<LinesKey, FreshPicker<Bilingual>>());
   const pet = PETS.find((p) => p.id === petId);
   const name = bond?.name ?? pet?.name ?? '';
@@ -117,6 +121,7 @@ export function PetCarePanel({ onClose, onPetGear, onRename }: PetCarePanelProps
       },
       () => live && setState('failed'),
     );
+    void loadCookedDishes().then((list) => live && setDishes(list));
     return () => {
       live = false;
     };
@@ -159,21 +164,35 @@ export function PetCarePanel({ onClose, onPetGear, onRename }: PetCarePanelProps
     if (change.levelUp) playCue('complete');
   };
 
-  async function care(action: PetCareAction): Promise<void> {
+  async function care(action: PetCareAction, dish?: CookedDish): Promise<void> {
     if (phase !== 'idle') return;
+    setFeedPick(false);
     press(action);
     setCaption(`petCare.scene.${action}`);
     expected.current = `care:${action}`;
     go('waiting');
     store.send({ type: 'pet-care', action });
     try {
-      const change = await careForPet(action);
+      const change = await careForPet(action, dish?.itemId);
       setBond(change.bond);
       speak(change.bond);
       tell(change);
+      // One of the dish is eaten: the server used it up, the list follows.
+      if (dish) setDishes((list) => (list ?? []).flatMap((d) => (d.itemId !== dish.itemId ? [d] : d.qty > 1 ? [{ ...d, qty: d.qty - 1 }] : [])));
     } catch (err) {
       setError(errorMessage(err));
+      // Eaten elsewhere meanwhile (another tab): read what is left.
+      if (dish) void loadCookedDishes().then(setDishes);
     }
+  }
+
+  /** "Cho ăn": with dishes she cooked, ask which food first; with none, the pet's own food at once. */
+  function feed(): void {
+    if (phase !== 'idle') return;
+    if (dishes && dishes.length > 0) {
+      setFeedPick((open) => !open);
+      playCue('tap');
+    } else void care('feed');
   }
 
   async function trick(id: PetTrick): Promise<void> {
@@ -356,7 +375,8 @@ export function PetCarePanel({ onClose, onPetGear, onRename }: PetCarePanelProps
                     data-act={action}
                     data-pulse={pressed?.what === action ? pressed.seq % 2 : undefined}
                     disabled={phase !== 'idle'}
-                    onClick={() => void care(action)}
+                    aria-expanded={action === 'feed' && dishes && dishes.length > 0 ? feedPick : undefined}
+                    onClick={() => (action === 'feed' ? feed() : void care(action))}
                   >
                     <Icon name={ACTION_ICON[action]} size={44} />
                     <span>
@@ -365,6 +385,9 @@ export function PetCarePanel({ onClose, onPetGear, onRename }: PetCarePanelProps
                   </button>
                 ))}
               </div>
+            ) : null}
+            {tab === 'care' && feedPick && dishes && dishes.length > 0 ? (
+              <FeedPick pet={name} dishes={dishes} disabled={phase !== 'idle'} onUsual={() => void care('feed')} onDish={(dish) => void care('feed', dish)} onCancel={() => setFeedPick(false)} />
             ) : null}
             {tab === 'tricks' ? (
               <>
@@ -425,6 +448,40 @@ export function PetCarePanel({ onClose, onPetGear, onRename }: PetCarePanelProps
         </>
       ) : null}
     </Modal>
+  );
+}
+
+/** "Cho ăn" with dishes she cooked: the pet's own food, or one of her dishes (how many she has of each). */
+function FeedPick({ pet, dishes, disabled, onUsual, onDish, onCancel }: { pet: string; dishes: readonly CookedDish[]; disabled: boolean; onUsual: () => void; onDish: (dish: CookedDish) => void; onCancel: () => void }) {
+  const { t } = useT();
+  return (
+    <div className="parchment pet-care-feed" data-id="pet-care-feed" role="group" aria-label={t('petCare.feedPick', { pet })}>
+      <p className="pet-care-hint">
+        <T k="petCare.feedPick" params={{ pet }} />
+      </p>
+      <div className="pet-care-feed-list">
+        <button type="button" className="pet-care-gear" data-id="pet-feed-usual" disabled={disabled} onClick={onUsual}>
+          <Icon name="bowlWithSpoon" size={32} />
+          <span>
+            <T k="petCare.feedUsual" params={{ pet }} />
+          </span>
+        </button>
+        {dishes.map((dish) => (
+          <button key={dish.itemId} type="button" className="pet-care-gear" data-id={`pet-feed-${dish.itemId}`} disabled={disabled} onClick={() => onDish(dish)}>
+            <Icon name="sparkles" size={32} />
+            <span>
+              <Bi {...dish.name} />
+            </span>
+            <small>
+              <T k="petCare.feedDishCount" params={{ qty: dish.qty }} />
+            </small>
+          </button>
+        ))}
+      </div>
+      <button type="button" className="pet-care-name-chip" data-id="pet-feed-cancel" onClick={onCancel}>
+        <T k="petCare.feedCancel" />
+      </button>
+    </div>
   );
 }
 

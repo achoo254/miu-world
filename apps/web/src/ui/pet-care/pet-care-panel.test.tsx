@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { PetBond, PetBondChange, PetCareStatusResponse } from '@miu/schema/pet-care';
 import { createGameStore, type GameCommand, type GameStore } from '../../game-bridge/game-store';
 import { GameStoreContext } from '../../game-bridge/use-game-state';
+import { setLangMode } from '../i18n/i18n';
 import { PetCarePanel } from './pet-care-panel';
 
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status });
@@ -22,7 +23,13 @@ interface Calls {
   posts: Array<{ url: string; body: unknown }>;
 }
 
-function mockApi(status: PetCareStatusResponse, answers: Record<string, unknown> = {}, owned: Record<string, number> = {}): Calls {
+/** The kitchen: two recipes; `held` is what she has of each dish (and of anything else). */
+const KITCHEN = [
+  { id: 'banh-mi-trung-op-la', name: 'Bánh mì trứng ốp la', en: { name: 'Fried egg bánh mì' }, resultItemId: 'banh-mi-trung-op-la' },
+  { id: 'che-sen-ngot-mat', name: 'Chè sen ngọt mát', en: { name: 'Cool lotus seed chè' }, resultItemId: 'che-sen-ngot-mat' },
+];
+
+function mockApi(status: PetCareStatusResponse, answers: Record<string, unknown> = {}, owned: Record<string, number> = {}, held: Record<string, number> = {}): Calls {
   const calls: Calls = { posts: [] };
   vi.stubGlobal(
     'fetch',
@@ -31,6 +38,7 @@ function mockApi(status: PetCareStatusResponse, answers: Record<string, unknown>
       const method = init?.method ?? 'GET';
       if (method === 'GET' && url.endsWith('/api/character/pet/care')) return json(status);
       if (method === 'GET' && url.endsWith('/api/shop')) return json({ coins: 0, level: 1, owned, items: [] });
+      if (method === 'GET' && url.endsWith('/api/cooking/recipes')) return json({ recipes: KITCHEN, ingredients: held });
       const body: unknown = init?.body ? JSON.parse(String(init.body)) : undefined;
       calls.posts.push({ url: `${method} ${url}`, body });
       const answer = answers[`${method} ${url.replace(/^.*\/api/, '')}`];
@@ -166,5 +174,64 @@ describe('pet care board', () => {
     renderPanel();
     fireEvent.click(await screen.findByRole('tab', { name: /Phụ kiện/ }));
     expect(await screen.findByText(/Ghé cửa hàng ở Trung tâm/)).toBeTruthy();
+  });
+
+  it('feeds the pet its own food at once when she has cooked nothing', async () => {
+    const calls = mockApi({ hasPet: true, petId: 'meo-xam', bond: BOND }, { 'POST /character/pet/care': { bond: BOND, xpGained: 0, levelUp: false, unlocked: [] } }, {}, { 'bong-lua-vang': 3 });
+    const { sent } = renderPanel();
+    fireEvent.click(await screen.findByRole('button', { name: /^Cho ăn$/ }));
+    expect(screen.queryByText('Cho Mèo xám ăn gì nhỉ?')).toBeNull();
+    expect(sent).toContainEqual({ type: 'pet-care', action: 'feed' });
+    await vi.waitFor(() => expect(calls.posts).toEqual([{ url: 'POST /api/character/pet/care', body: { action: 'feed' } }]));
+  });
+
+  it('asks which food when she has dishes she cooked, and feeds the one she picks', async () => {
+    const fed: PetBondChange = { bond: { ...BOND, stats: { ...BOND.stats, fullness: 100 } }, xpGained: 10, levelUp: false, unlocked: [] };
+    const calls = mockApi({ hasPet: true, petId: 'meo-xam', bond: BOND }, { 'POST /character/pet/care': fed }, {}, { 'banh-mi-trung-op-la': 2, 'che-sen-ngot-mat': 0 });
+    const { store, sent } = renderPanel();
+    const feed = await screen.findByRole('button', { name: /^Cho ăn$/ });
+    await vi.waitFor(() => expect(feed.getAttribute('aria-expanded')).toBe('false'));
+    fireEvent.click(feed);
+    const pick = await screen.findByRole('group', { name: 'Cho Mèo xám ăn gì nhỉ?' });
+    // Only the dishes she still has, with how many.
+    expect(within(pick).getByText('Bánh mì trứng ốp la')).toBeTruthy();
+    expect(within(pick).getByText('Còn 2 phần')).toBeTruthy();
+    expect(within(pick).queryByText('Chè sen ngọt mát')).toBeNull();
+    expect(sent).not.toContainEqual({ type: 'pet-care', action: 'feed' });
+    fireEvent.click(within(pick).getByRole('button', { name: /Bánh mì trứng ốp la/ }));
+    expect(sent).toContainEqual({ type: 'pet-care', action: 'feed' });
+    await vi.waitFor(() => expect(calls.posts).toEqual([{ url: 'POST /api/character/pet/care', body: { action: 'feed', itemId: 'banh-mi-trung-op-la' } }]));
+    act(() => store.emit({ type: 'pet-scene', scene: 'care:feed' }));
+    act(() => store.emit({ type: 'pet-scene', scene: null }));
+    expect(await screen.findByText('+10 thân thiết')).toBeTruthy();
+    // One eaten: one left.
+    fireEvent.click(screen.getByRole('button', { name: /^Cho ăn$/ }));
+    expect(await screen.findByText('Còn 1 phần')).toBeTruthy();
+  });
+
+  it("feeds the pet's own food from the choice too, and the choice closes", async () => {
+    const calls = mockApi({ hasPet: true, petId: 'meo-xam', bond: BOND }, { 'POST /character/pet/care': { bond: BOND, xpGained: 0, levelUp: false, unlocked: [] } }, {}, { 'che-sen-ngot-mat': 1 });
+    renderPanel();
+    const feed = await screen.findByRole('button', { name: /^Cho ăn$/ });
+    await vi.waitFor(() => expect(feed.getAttribute('aria-expanded')).toBe('false'));
+    fireEvent.click(feed);
+    fireEvent.click(await screen.findByRole('button', { name: /Thức ăn của Mèo xám/ }));
+    await vi.waitFor(() => expect(calls.posts).toEqual([{ url: 'POST /api/character/pet/care', body: { action: 'feed' } }]));
+    expect(screen.queryByRole('group', { name: 'Cho Mèo xám ăn gì nhỉ?' })).toBeNull();
+  });
+
+  it('shows the dish names in English for an English reader', async () => {
+    setLangMode('en', false);
+    try {
+      mockApi({ hasPet: true, petId: 'meo-xam', bond: BOND }, {}, {}, { 'che-sen-ngot-mat': 1 });
+      renderPanel();
+      const feed = await screen.findByRole('button', { name: /^Feed$/ });
+      await vi.waitFor(() => expect(feed.getAttribute('aria-expanded')).toBe('false'));
+      fireEvent.click(feed);
+      expect(await screen.findByText('Cool lotus seed chè')).toBeTruthy();
+      expect(screen.getByText('1 left')).toBeTruthy();
+    } finally {
+      setLangMode('vi', false);
+    }
   });
 });

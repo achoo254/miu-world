@@ -179,6 +179,11 @@
 .pet-care-gear--on { border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-badge); }
 .pet-care-gear:focus-visible { box-shadow: var(--focus-ring); outline: none; }
 
+/* "Cho ăn" with dishes she cooked: the pet's own food or one of her dishes. */
+.pet-care-feed { display: grid; gap: var(--space-sm); justify-items: center; margin-top: var(--space-sm); padding: var(--space-sm) var(--space-md); }
+.pet-care-feed-list { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); }
+.pet-care-gear:disabled { cursor: default; opacity: 0.6; }
+
 /* While a scene plays: the board folds into a caption at the bottom, the world shows. */
 .pet-scene-caption {
   position: fixed;
