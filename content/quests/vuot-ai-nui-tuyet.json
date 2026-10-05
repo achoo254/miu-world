@@ -1,0 +1,272 @@
+{
+  "id": "vuot-ai-nui-tuyet",
+  "region": "nui-tuyet",
+  "chapter": 2,
+  "title": "Trùm vui: Cánh Cụt Hoàng Đế",
+  "status": "active",
+  "summary": "Cánh Cụt Hoàng Đế ôm chiếc cúp trượt tuyết đứng ở chân dốc lớn, thách ai thắng được bảy câu đố băng giá. {name} chuẩn bị đồ trượt, đọc luật dốc trượt, giải câu đố mũ và khăn rồi bước vào trận đấu trí giữa trời tuyết.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Thỏ Tuyết Mũ Len, Cáo Tuyết Huấn Luyện, Cánh Cụt Hoàng Đế",
+    "where": "Núi tuyết, khu trượt tuyết: lều thuê ván trượt, bãi tuyết phẳng, cột luật dốc trượt, sân tập trượt, chân dốc lớn",
+    "goal": "Thắng Cánh Cụt Hoàng Đế để giành cúp trượt tuyết về cho làng núi",
+    "play": "Tìm khăn, kính, cốc ca cao theo lời tả, đọc luật dốc trượt, đếm cách chọn mũ và khăn, chọn cách chào Hoàng Đế, đấu trùm bảy câu",
+    "learn": "So sánh số, cộng trừ có nhớ, từ vựng tiếng Anh về mùa đông, dãy số giảm dần, đọc hiểu",
+    "reward": "100 XP, 25 Xu, Skill XP So sánh số, Phép cộng, Từ vựng, Logic",
+    "next": "Cúp trượt tuyết về làng, Gấu Băng Tuyết mời {name} đi cáp treo lên đỉnh núi"
+  },
+  "phases": {
+    "hook": "gap-tho-tuyet",
+    "explore": "do-truot-tuyet",
+    "learn": "doc-luat-doc-truot",
+    "challenge": "mu-va-khan",
+    "decision": "chao-hoang-de",
+    "finale": "tran-trum",
+    "reward": "cup-truot-tuyet",
+    "next": "cap-treo-len-dinh"
+  },
+  "places": {
+    "trum-nt-tho-tuyet": "Lều thuê ván trượt",
+    "do-truot-tuyet": "Bãi tuyết phẳng",
+    "trum-nt-luat-doc": "Cột luật dốc trượt",
+    "trum-nt-cao-tuyet": "Sân tập trượt",
+    "trum-nt-canh-cut": "Chân dốc lớn"
+  },
+  "steps": [
+    {
+      "id": "gap-tho-tuyet",
+      "title": "Thỏ Tuyết rủ đi thi",
+      "goTo": "Tới lều thuê ván trượt, Thỏ Tuyết Mũ Len đang vẫy tay",
+      "kind": "dialogue",
+      "target": "trum-nt-tho-tuyet",
+      "lines": [
+        { "speaker": "Thỏ Tuyết Mũ Len", "text": "Brừ brừ, lạnh quá! {name} ơi, Cánh Cụt Hoàng Đế đang giữ chiếc cúp trượt tuyết ở chân dốc lớn, ai thắng bảy câu đố băng giá thì được mang cúp về làng." },
+        { "speaker": "Thỏ Tuyết Mũ Len", "text": "Nhưng ra dốc mà quên đồ ấm là rét cóng ngay. Đồ của tớ bị gió thổi bay ra bãi tuyết phẳng rồi." }
+      ],
+      "choices": [
+        { "text": "Tớ đi gom đồ ấm cho cả hai!", "reply": "Cảm ơn cậu! Nhớ tìm cả cốc ca cao nóng nữa nhé." }
+      ]
+    },
+    {
+      "id": "do-truot-tuyet",
+      "title": "Gom đồ trượt tuyết",
+      "goTo": "Ra bãi tuyết phẳng tìm ba món đồ trượt tuyết",
+      "kind": "find-object",
+      "prompt": "Gió tuyết thổi bay ba món đồ. Đọc lời tả rồi tìm đủ:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "khan-soc",
+          "name": "Chiếc khăn quàng sọc",
+          "clue": "Dài và ấm, đan sọc ngang nhiều màu, quấn quanh cổ là hết rét.",
+          "target": "trum-nt-khan-soc"
+        },
+        {
+          "id": "kinh-truot",
+          "name": "Cặp kính trượt tuyết",
+          "clue": "Hai mắt kính to che kín mắt, để tuyết trắng không làm chói lóa khi lao xuống dốc.",
+          "target": "trum-nt-kinh-truot"
+        },
+        {
+          "id": "ca-cao",
+          "name": "Cốc ca cao nóng",
+          "clue": "Có quai cầm, khói bốc nghi ngút, uống một ngụm là ấm từ bụng ra tay.",
+          "target": "trum-nt-ca-cao"
+        }
+      ]
+    },
+    {
+      "id": "doc-luat-doc-truot",
+      "title": "Luật dốc trượt",
+      "goTo": "Ghé cột luật dốc trượt đọc luật trước khi lên dốc",
+      "kind": "read",
+      "target": "trum-nt-luat-doc",
+      "skill": "doc-hieu",
+      "text": "LUẬT DỐC TRƯỢT\n1. Đội mũ và đeo kính trước khi trượt.\n2. Trượt lần lượt, cách người phía trước ít nhất năm bước.\n3. Lỡ ngã thì đứng dậy, nép vào mép dốc cho người sau đi qua.\n4. Muốn thi với Cánh Cụt Hoàng Đế, hãy tới chân dốc lớn sau giờ trưa.",
+      "question": "Lỡ bị ngã trên dốc, em cần làm gì?",
+      "choices": [
+        { "id": "a", "text": "Nằm yên giữa dốc chờ người tới đỡ" },
+        { "id": "b", "text": "Đứng dậy, nép vào mép dốc" },
+        { "id": "c", "text": "Trượt tiếp thật nhanh xuống chân dốc" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm luật có chữ «ngã».", "Đọc hết luật số 3."],
+        "hint": "Người phía sau cần có lối đi qua.",
+        "answer": {
+          "text": "Đứng dậy rồi nép sát mép dốc",
+          "explanation": "Luật số 3 viết: lỡ ngã thì đứng dậy, nép vào mép dốc cho người sau đi qua."
+        }
+      },
+      "feedback": {
+        "right": ["An toàn là trên hết, {name} nhớ luật rồi!", "Đúng luật số 3, nép vào mép cho bạn sau đi qua.", "Thỏ Tuyết gật gù: trượt kiểu này thì chẳng ai va vào ai."],
+        "wrong": ["Nằm giữa dốc dễ bị va vào lắm, đọc lại luật số 3 nhé.", "Tìm chữ «ngã» trong bảng luật nha {name}.", "Lao tiếp xuống dốc khi vừa ngã nguy hiểm lắm đấy."]
+      }
+    },
+    {
+      "id": "mu-va-khan",
+      "title": "Mũ và khăn của Cáo Tuyết",
+      "goTo": "Tới sân tập trượt, Cáo Tuyết Huấn Luyện đang chọn đồ cho các bạn",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "trum-nt-cao-tuyet",
+      "skill": "logic",
+      "prompt": "Cáo Tuyết có 3 chiếc mũ len (đỏ, vàng, xanh) và 2 chiếc khăn (trắng, đen). Mỗi bạn đội một mũ và quàng một khăn. Có bao nhiêu cách chọn khác nhau?",
+      "choices": [
+        { "id": "a", "text": "5 cách" },
+        { "id": "b", "text": "6 cách" },
+        { "id": "c", "text": "3 cách" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Chọn mũ đỏ trước: đi với khăn trắng, rồi khăn đen. Được 2 cách.", "Làm tương tự với mũ vàng và mũ xanh.", "Cộng tất cả các cách lại."],
+        "hint": "Mỗi chiếc mũ ghép được với 2 chiếc khăn.",
+        "answer": {
+          "text": "Có 6 cách chọn",
+          "explanation": "Mỗi mũ có 2 cách chọn khăn; 3 chiếc mũ nên có 2 + 2 + 2 = 6 cách."
+        }
+      },
+      "feedback": {
+        "right": ["Sáu cách, bạn nào cũng có bộ đồ riêng!", "{name} liệt kê không sót cặp nào, giỏi quá.", "Cáo Tuyết vỗ tay: tính kiểu này là chuẩn huấn luyện viên!"],
+        "wrong": ["Đừng cộng 3 với 2 nhé, ghép từng mũ với từng khăn xem.", "Mũ đỏ đi với mấy chiếc khăn nhỉ {name}?", "Viết ra từng cặp mũ – khăn rồi đếm lại nha."]
+      }
+    },
+    {
+      "id": "chao-hoang-de",
+      "title": "Chào Cánh Cụt Hoàng Đế",
+      "kind": "decision",
+      "target": "trum-nt-cao-tuyet",
+      "speaker": "Cáo Tuyết Huấn Luyện",
+      "prompt": "Cánh Cụt Hoàng Đế đứng oai vệ ở chân dốc lớn. {name} chào ngài thế nào?",
+      "choices": [
+        {
+          "id": "truot-toi",
+          "text": "Trượt một đường thật đẹp tới chào",
+          "consequence": "{name} trượt một vòng cung mềm mại, Hoàng Đế vỗ đôi cánh ngắn khen đẹp."
+        },
+        {
+          "id": "moi-ca-cao",
+          "text": "Mời ngài một cốc ca cao nóng",
+          "consequence": "Hoàng Đế nhấp một ngụm, đôi má ửng hồng: ấm quá, ta sẵn sàng đố rồi!"
+        },
+        {
+          "id": "cui-chao",
+          "text": "Cúi chào lễ phép kiểu chim cánh cụt",
+          "consequence": "Hoàng Đế bật cười, cúi chào lại rồi lắc lư đúng kiểu chim cánh cụt."
+        }
+      ]
+    },
+    {
+      "id": "tran-trum",
+      "title": "Đấu trí với Cánh Cụt Hoàng Đế",
+      "goTo": "Ra chân dốc lớn, Cánh Cụt Hoàng Đế đang chờ",
+      "kind": "boss",
+      "target": "trum-nt-canh-cut",
+      "bossId": "canh-cut-hoang-de",
+      "bossName": "Cánh Cụt Hoàng Đế",
+      "introDialogue": "Chào mừng tới vương quốc băng giá! Bảy câu đố lạnh buốt đây, mỗi câu đúng làm tảng băng dưới chân ta tan bớt một lớp.",
+      "winDialogue": "Băng tan hết rồi! {name} nóng lòng chiến thắng thật đấy, chiếc cúp trượt tuyết xin trao cho nhà vô địch.",
+      "maxHp": 500,
+      "damagePerTurn": 80,
+      "turns": [
+        {
+          "id": "truot-xa",
+          "skill": "so-sanh-so",
+          "prompt": "Thỏ trượt được 58 m, Cáo trượt được 85 m. Ai trượt xa hơn?",
+          "choices": [
+            { "id": "a", "text": "Thỏ" },
+            { "id": "b", "text": "Cáo" },
+            { "id": "c", "text": "Hai bạn bằng nhau" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "hai-luot",
+          "skill": "phep-cong",
+          "prompt": "Lượt trượt đầu được 27 điểm, lượt sau được 18 điểm. Cả hai lượt được bao nhiêu điểm?",
+          "choices": [
+            { "id": "a", "text": "35 điểm" },
+            { "id": "b", "text": "45 điểm" },
+            { "id": "c", "text": "9 điểm" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "con-lai-doc",
+          "skill": "phep-tru",
+          "prompt": "Con dốc dài 90 m, em đã trượt được 35 m. Còn lại bao nhiêu mét nữa?",
+          "choices": [
+            { "id": "a", "text": "55 m" },
+            { "id": "b", "text": "65 m" },
+            { "id": "c", "text": "125 m" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "tu-snow",
+          "skill": "tu-vung",
+          "prompt": "Bông tuyết trắng trong tiếng Anh gọi là gì?",
+          "choices": [
+            { "id": "a", "text": "rain" },
+            { "id": "b", "text": "sun" },
+            { "id": "c", "text": "snow" }
+          ],
+          "answer": { "choice": "c" }
+        },
+        {
+          "id": "tu-cold",
+          "skill": "tu-vung",
+          "prompt": "Hoàng Đế run run nói «It is cold!». Từ «cold» nghĩa là gì?",
+          "choices": [
+            { "id": "a", "text": "lạnh" },
+            { "id": "b", "text": "nóng" },
+            { "id": "c", "text": "vui" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "cot-cap-treo",
+          "skill": "logic",
+          "prompt": "Các cột cáp treo đánh số giảm dần: 90, 80, 70, 60, … Cột tiếp theo mang số mấy?",
+          "choices": [
+            { "id": "a", "text": "50" },
+            { "id": "b", "text": "55" },
+            { "id": "c", "text": "70" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "ret-cam-cam",
+          "skill": "doc-hieu",
+          "prompt": "Đọc câu: «Trời rét căm căm, bông tuyết rơi trắng xóa mái nhà.» Câu này cho biết thời tiết thế nào?",
+          "choices": [
+            { "id": "a", "text": "Nắng to và oi bức" },
+            { "id": "b", "text": "Rất lạnh, có tuyết rơi" },
+            { "id": "c", "text": "Mưa rào và có gió" }
+          ],
+          "answer": { "choice": "b" }
+        }
+      ]
+    },
+    {
+      "id": "cup-truot-tuyet",
+      "title": "Cúp trượt tuyết",
+      "kind": "reward",
+      "target": "trum-nt-canh-cut",
+      "text": "Cánh Cụt Hoàng Đế trao chiếc cúp trượt tuyết lấp lánh cho {name}. Cả làng núi tuyết hò reo, cúp còn đựng đầy XP, xu và điểm kỹ năng."
+    },
+    {
+      "id": "cap-treo-len-dinh",
+      "title": "Cáp treo lên đỉnh",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cánh Cụt Hoàng Đế hẹn mùa đông năm sau sẽ thi tiếp. Gấu Băng Tuyết mời {name} đi cáp treo lên đỉnh núi ngắm hoàng hôn trên tuyết."
+    }
+  ],
+  "reward": {
+    "xp": 100,
+    "coin": 25,
+    "skillXp": { "so-sanh-so": 1, "phep-cong": 1, "tu-vung": 1, "logic": 1 }
+  }
+}
