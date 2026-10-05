@@ -52,6 +52,8 @@ interface RemoteEntity {
   riding: boolean;
   /** How far the vehicle lifts her feet above the ground, world units (0 on foot). */
   lift: number;
+  /** Seated on something (a chair, a swing): her body is drawn where she says, in the seated pose. */
+  seated: boolean;
 }
 
 /** A remote player near the child, for the interaction prompt. */
@@ -182,6 +184,7 @@ export class RemotePlayerManager {
         vehicleMesh: null,
         riding: false,
         lift: 0,
+        seated: now.action === 'sit' && !now.riding,
       };
       this.setRiding(entity, now.riding);
       root.position.y = y + entity.lift;
@@ -256,20 +259,22 @@ export class RemotePlayerManager {
     this.report();
   }
 
-  updateMove(update: { id: string; x: number; y: number; z: number; yaw: number; speed: number; riding?: boolean }): void {
+  updateMove(update: { id: string; x: number; y: number; z: number; yaw: number; speed: number; riding?: boolean; action?: PlayerPresence['action'] }): void {
     const pending = this.latest.get(update.id);
     if (pending) {
-      this.latest.set(update.id, { ...pending, x: update.x, y: update.y, z: update.z, yaw: update.yaw, speed: update.speed, riding: update.riding ?? pending.riding });
+      this.latest.set(update.id, { ...pending, x: update.x, y: update.y, z: update.z, yaw: update.yaw, speed: update.speed, riding: update.riding ?? pending.riding, action: update.action ?? pending.action });
       return;
     }
     const entity = this.entities.get(update.id);
     if (!entity) return;
     if (update.riding !== undefined && update.riding !== entity.riding) this.setRiding(entity, update.riding);
 
+    // On a seat or a swing she is where she says (above the floor, not jumping), in the seated pose.
+    entity.seated = update.action === 'sit' && !entity.riding;
     const ground = this.ground(update.x, update.z, update.y);
     // A jump: the sender's height above the ground here (the updates come ten times a second).
-    entity.airborne = isAirborne(update.y, ground);
-    entity.targetPos.set(update.x, (entity.airborne ? update.y : ground) + entity.lift, update.z);
+    entity.airborne = !entity.seated && isAirborne(update.y, ground);
+    entity.targetPos.set(update.x, (entity.airborne || entity.seated ? update.y : ground) + entity.lift, update.z);
     entity.targetYaw = update.yaw;
     entity.currentSpeed = update.speed;
   }
@@ -343,7 +348,8 @@ export class RemotePlayerManager {
       root.rotation.y = MathUtils.lerp(root.rotation.y, entity.targetYaw, Math.min(1, dt * 10));
 
       // On her vehicle she holds its seated pose (a board: her idle), as the child herself does.
-      entity.character.update(dt, entity.currentSpeed, !entity.airborne, entity.riding && entity.vehicle ? seatedPose(entity.vehicle.ride) : null);
+      const seated = entity.riding && entity.vehicle ? seatedPose(entity.vehicle.ride) : entity.seated ? 'sit' : null;
+      entity.character.update(dt, entity.seated ? 0 : entity.currentSpeed, !entity.airborne, seated);
       entity.pet?.update(dt, { x: root.position.x, y: root.position.y - entity.lift, z: root.position.z, facing: root.rotation.y }, this.ground);
       entity.bubble.update(dt);
     }

@@ -64,7 +64,9 @@ export type GameEvent =
   | { type: 'autowalk-available'; available: boolean }
   | { type: 'autowalk'; state: AutowalkState }
   /** The equipped vehicle and whether she is on it (null: no vehicle equipped). */
-  | { type: 'vehicle'; vehicle: VehicleState | null };
+  | { type: 'vehicle'; vehicle: VehicleState | null }
+  /** What is switched on in her home changed (a lamp, the television): every kept key that is on now. */
+  | { type: 'object-states'; states: Readonly<Record<string, true>> };
 
 export interface GameSnapshot {
   status: 'loading' | 'ready' | 'error';
@@ -82,6 +84,8 @@ export interface GameSnapshot {
   autowalk: AutowalkState;
   /** The equipped vehicle, while the game is up. */
   vehicle: VehicleState | null;
+  /** What she switched on in her home, as last reported by the game (null until it reports): the play screen saves it. */
+  objectStates: Readonly<Record<string, true>> | null;
 }
 
 /** Commands from React to the game. The game ignores commands it does not handle yet. */
@@ -130,6 +134,7 @@ export const INITIAL_SNAPSHOT: GameSnapshot = {
   autowalkAvailable: false,
   autowalk: 'idle',
   vehicle: null,
+  objectStates: null,
 };
 
 function samePrompt(a: InteractionPrompt | null, b: InteractionPrompt | null): boolean {
@@ -144,7 +149,7 @@ export function reduce(state: GameSnapshot, event: GameEvent): GameSnapshot {
     case 'loading':
       // A new map loads: the loading screen shows again, and "ready" will be news to every listener (the quest
       // sends its target to the new game then, so the card can walk her there).
-      return { ...state, status: 'loading', error: null, loading: { done: 0, total: state.loading.total }, prompt: null, stuck: false, autowalkAvailable: false, autowalk: 'idle', vehicle: null };
+      return { ...state, status: 'loading', error: null, loading: { done: 0, total: state.loading.total }, prompt: null, stuck: false, autowalkAvailable: false, autowalk: 'idle', vehicle: null, objectStates: null };
     case 'ready':
       return state.status === 'ready' ? state : { ...state, status: 'ready', error: null };
     case 'error':
@@ -173,6 +178,8 @@ export function reduce(state: GameSnapshot, event: GameEvent): GameSnapshot {
       const same = state.vehicle?.name === event.vehicle?.name && state.vehicle?.riding === event.vehicle?.riding;
       return same ? state : { ...state, vehicle: event.vehicle };
     }
+    case 'object-states':
+      return { ...state, objectStates: event.states };
   }
 }
 

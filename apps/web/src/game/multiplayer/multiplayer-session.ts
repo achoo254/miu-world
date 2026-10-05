@@ -82,6 +82,11 @@ export class MultiplayerSession {
     });
   }
 
+  /** The player whose home she is in on the home map (null: her own, or not on the home map). */
+  get visitingHost(): string | null {
+    return this.host;
+  }
+
   get group(): Group {
     return this.remote.group;
   }

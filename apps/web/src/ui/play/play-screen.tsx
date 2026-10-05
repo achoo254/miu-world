@@ -26,6 +26,7 @@ import { OfflineBanner } from '../system/offline-banner';
 import { PauseScreen } from '../system/pause-screen';
 import { DECOR_TARGET } from '../home-decor/decor-catalog';
 import { loadHomeDecor } from '../home-decor/home-decor-api';
+import { useHomeObjects } from './use-home-objects';
 import { HomeDecorPanel } from '../home-decor/home-decor-panel';
 import { SHOP_TARGET, ShopPanel } from '../shop/shop-panel';
 import { PetCarePanel } from '../pet-care/pet-care-panel';
@@ -111,6 +112,7 @@ function GameView({
   quest,
   savedSpot,
   decor,
+  objectStates,
   paused,
   onSpotReader,
 }: {
@@ -130,6 +132,8 @@ function GameView({
   savedSpot: PlayerPosition | null;
   /** The child's picks for her home (its map only): the house is built in them. */
   decor?: Readonly<Record<string, string>>;
+  /** What she left switched on in her home (its map only); read when the game is (re)built, never rebuilding it. */
+  objectStates?: Readonly<Record<string, true>>;
   paused: boolean;
   /** Hands over a reader of where the child stands in the running game (null once it is gone), so a quest switch on the same map keeps the spot. */
   onSpotReader: (read: (() => PlayerPosition | null) | null) => void;
@@ -139,10 +143,15 @@ function GameView({
   const outfitKey = outfit.join(',');
   // New picks rebuild the house: the game is rebuilt where the child stands (the caller keeps her spot).
   const decorKey = decor ? JSON.stringify(decor) : '';
+  // The latest switched-on objects, read when the game is (re)built: their changes never rebuild it.
+  const objectsRef = useRef(objectStates);
+  useEffect(() => {
+    objectsRef.current = objectStates;
+  }, [objectStates]);
   useEffect(() => {
     if (!host.current) return;
     const picks = decorKey ? (JSON.parse(decorKey) as Record<string, string>) : undefined;
-    const instance = new Game(host.current, { store, social, search: window.location.search, playerName, species, pet, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region, quest, savedSpot, decor: picks });
+    const instance = new Game(host.current, { store, social, search: window.location.search, playerName, species, pet, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region, quest, savedSpot, decor: picks, objectStates: objectsRef.current });
     game.current = instance;
     onSpotReader(() => instance.currentSpot());
     void instance.start();
@@ -291,6 +300,8 @@ export function PlayScreen() {
   const atHome = data !== null && regionMap(region) === regionMap(HOME_REGION);
   // Weekly play time for the progress views: counted while the game runs, not while paused.
   usePlayTime(data !== null && status === 'ready' && !paused);
+  // What she left switched on at home, read with her picks and saved as she switches things.
+  const homeObjects = useHomeObjects(atHome, store);
   // Her home is built in her picks: they are read first (a failed read builds the house as it comes).
   useEffect(() => {
     if (!atHome || decor !== null) return;
@@ -367,8 +378,8 @@ export function PlayScreen() {
   return (
     <GameStoreContext.Provider value={store}>
       <main data-id="play">
-        {data && positions && (!atHome || decor !== null) ? (
-          <GameView store={store} social={social} playerName={data.character.name} species={data.character.species} pet={data.character.pet} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={region} quest={quest?.quest.id} savedSpot={savedSpot} decor={atHome ? (decor ?? undefined) : undefined} paused={covered} onSpotReader={onSpotReader} />
+        {data && positions && (!atHome || (decor !== null && homeObjects !== null)) ? (
+          <GameView store={store} social={social} playerName={data.character.name} species={data.character.species} pet={data.character.pet} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={region} quest={quest?.quest.id} savedSpot={savedSpot} decor={atHome ? (decor ?? undefined) : undefined} objectStates={atHome ? (homeObjects ?? undefined) : undefined} paused={covered} onSpotReader={onSpotReader} />
         ) : null}
         {loadError ? (
           <div className="play-message" role="alert">

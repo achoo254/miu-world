@@ -17,7 +17,7 @@ const FLOAT_HZ = 0.6;
  * In the rig's `sit` and `drive` clips (Kenney character-a, every species) the root drops 0.2 and the seat
  * of her trousers rests this far above the feet origin (model units), legs straight out in front.
  */
-const SEAT_ABOVE_FEET = 0.1;
+export const SEAT_ABOVE_FEET = 0.1;
 
 /** How far her feet origin stands above the ground on this vehicle (model units): on the deck, or seated on the seat. */
 export function rideLift(ride: VehicleRideSpec): number {

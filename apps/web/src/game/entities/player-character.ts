@@ -1,11 +1,12 @@
 // The child's character (the model of its species) + accessories, blending idle/walk/sprint by speed.
-import { AnimationMixer, MathUtils, SkinnedMesh, type AnimationAction, type Object3D } from 'three';
+import { AnimationMixer, MathUtils, Quaternion, SkinnedMesh, type AnimationAction, type Object3D } from 'three';
 import { clone as cloneModel } from 'three/examples/jsm/utils/SkeletonUtils.js';
 import type { GuardedGltfLoader } from '../asset-loader';
 import { dressCharacter, undressCharacter } from '../character/character-accessories';
 import { wornPose } from '../character/worn-pose';
 import { withOwnClothes } from '../character/character-clothes';
 import { characterForSpecies, type CharacterModel } from '../content/characters';
+import { poseAction, type ActionRig, type PlayerAction } from '../interact/player-actions';
 import { RUN_SPEED, WALK_SPEED } from '../player/player-controller';
 
 /** Accessory size per attach node for a character's body proportions (content/characters.json). */
@@ -26,7 +27,17 @@ type Locomotion = (typeof LOCOMOTION)[number] | SeatedPose;
  */
 export const PLAYER_SCALE = 0.68;
 
-export type ExtraPlayerAction = 'lay' | 'eat' | 'drink' | 'fish' | 'pet' | 'wave' | 'water' | 'sweep' | 'cheer' | null;
+/** The everyday gesture she makes over her clip (interact/player-actions.ts), or none. */
+export type ExtraPlayerAction = PlayerAction | null;
+
+/** A few of her bones' angles and her body's tilt this frame: what the gesture checks compare with her idle. */
+export interface PoseSample {
+  armRight: number;
+  armLeft: number;
+  head: number;
+  legRight: number;
+  pitch: number;
+}
 
 export interface PlayerCharacter {
   root: Object3D;
@@ -37,7 +48,7 @@ export interface PlayerCharacter {
   /**
    * `seated`: hold that pose (riding) instead of idle / walk / sprint.
    * `inWater`: tilt the model forward and add a bob, giving a swimming feel (no extra clip needed).
-   * `action`: procedural gesture for everyday actions (lay down, eat, drink, fish).
+   * `action`: procedural gesture for everyday actions (interact/player-actions.ts).
    */
   update(
     dt: number,
@@ -47,6 +58,8 @@ export interface PlayerCharacter {
     inWater?: boolean,
     action?: ExtraPlayerAction,
   ): void;
+  /** Her bones and tilt as last posed. */
+  poseSample(): PoseSample;
 }
 
 export async function loadPlayerCharacter(loader: GuardedGltfLoader, species: string, outfit: string[]): Promise<PlayerCharacter> {
@@ -87,29 +100,18 @@ export async function loadPlayerCharacter(loader: GuardedGltfLoader, species: st
   const BOB_FREQ = 2.0; // cycles per second
   let swimTilt = 0;
   let swimTime = 0;
-  /**
-   * Procedural everyday actions:
-   * - lay: lean back onto bed ~82° with peaceful breathing rhythm
-   * - eat: cheerful chewing head-bob
-   * - drink: lean back ~16° tipping drink
-   * - fish: lean forward ~10° watching water with periodic line tug
-   * - pet: lean forward ~18°, head down, right arm petting gently
-   * - wave: right arm raised waving side to side cheerfully
-   * - water: lean forward ~15°, both arms pouring watering can
-   * - sweep: both arms sweeping side to side
-   * - cheer: both arms raised celebrating
-   */
-  const LAY_TILT = MathUtils.degToRad(-82);
-  const DRINK_TILT = MathUtils.degToRad(-16);
-  const FISH_TILT = MathUtils.degToRad(10);
-  const PET_TILT = MathUtils.degToRad(18);
-  const WATER_TILT = MathUtils.degToRad(15);
+  // Gestures turn these bones after the clip each frame; they are put back to rest first, so a bone the clip does
+  // not animate (the head while idle) never keeps a gesture's angle after it ends.
+  const bone = (name: string): Object3D | null => root.getObjectByName(name) ?? null;
+  const rig: ActionRig = { armRight: bone('arm-right'), armLeft: bone('arm-left'), head: bone('head'), legRight: bone('leg-right'), legLeft: bone('leg-left') };
+  const rest = Object.values(rig).flatMap((b: Object3D | null) => (b ? [{ bone: b, at: b.quaternion.clone() }] : []));
+  const sample: PoseSample = { armRight: 0, armLeft: 0, head: 0, legRight: 0, pitch: 0 };
   let actionTime = 0;
-  let currentActionTilt = 0;
-
-  const armRight = root.getObjectByName('arm-right');
-  const armLeft = root.getObjectByName('arm-left');
-  const head = root.getObjectByName('head');
+  let lastAction: ExtraPlayerAction = null;
+  let actionPitch = 0;
+  // Yaw first, then the tilt about her own side-to-side axis: she leans forward, back or lies down facing her way.
+  root.rotation.order = 'YXZ';
+  const restQuaternion = new Quaternion();
 
   return {
     root,
@@ -143,64 +145,19 @@ export async function loadPlayerCharacter(loader: GuardedGltfLoader, species: st
       if (animAction && (current === 'walk' || current === 'sprint')) {
         animAction.timeScale = Math.max(0.6, speed / (current === 'sprint' ? RUN_SPEED : WALK_SPEED));
       }
+      for (const { bone: b, at } of rest) b.quaternion.copy(at);
       mixer.update(dt);
 
       const armFree = seated === null && !action;
       pose.apply(armFree);
 
-      if (action) {
-        actionTime += dt;
-      } else {
-        actionTime = 0;
-      }
-
-      // Compute action pitch and limb positions
-      let actionPitch = 0;
-      if (action === 'lay') {
-        const breathing = Math.sin(actionTime * 1.8) * 0.02;
-        actionPitch = LAY_TILT + breathing;
-      } else if (action === 'eat') {
-        actionPitch = Math.sin(actionTime * 8) * 0.045;
-      } else if (action === 'drink') {
-        actionPitch = DRINK_TILT;
-      } else if (action === 'fish') {
-        const tension = Math.sin(actionTime * 2.5) > 0.85 ? 0.04 : 0;
-        actionPitch = FISH_TILT + tension;
-      } else if (action === 'pet') {
-        actionPitch = PET_TILT;
-        if (armRight) {
-          armRight.rotation.x = MathUtils.degToRad(-60) + Math.sin(actionTime * 6) * 0.15;
-          armRight.rotation.z = Math.sin(actionTime * 6) * 0.1;
-        }
-        if (head) head.rotation.x = MathUtils.degToRad(18);
-      } else if (action === 'wave') {
-        if (armRight) {
-          armRight.rotation.x = MathUtils.degToRad(-130);
-          armRight.rotation.z = MathUtils.degToRad(20) + Math.sin(actionTime * 10) * 0.35;
-        }
-        if (head) head.rotation.z = Math.sin(actionTime * 5) * 0.08;
-      } else if (action === 'water') {
-        actionPitch = WATER_TILT;
-        if (armRight) armRight.rotation.x = MathUtils.degToRad(-50) + Math.sin(actionTime * 4) * 0.1;
-        if (armLeft) armLeft.rotation.x = MathUtils.degToRad(-50);
-      } else if (action === 'sweep') {
-        const sweepAngle = Math.sin(actionTime * 5) * 0.35;
-        if (armRight) {
-          armRight.rotation.x = MathUtils.degToRad(-45);
-          armRight.rotation.y = sweepAngle;
-        }
-        if (armLeft) {
-          armLeft.rotation.x = MathUtils.degToRad(-45);
-          armLeft.rotation.y = sweepAngle;
-        }
-      } else if (action === 'cheer') {
-        if (armRight) armRight.rotation.x = MathUtils.degToRad(-150);
-        if (armLeft) armLeft.rotation.x = MathUtils.degToRad(-150);
-        actionPitch = Math.sin(actionTime * 8) * 0.05;
-      }
-
-      // Ease the action tilt smoothly
-      currentActionTilt += (actionPitch - currentActionTilt) * Math.min(1, 10 * dt);
+      actionTime = action && action === lastAction ? actionTime + dt : 0;
+      lastAction = action;
+      const gesture = action ? poseAction(rig, action, actionTime) : { pitch: 0, roll: 0, lift: 0 };
+      // Ease the tilt in and out (lying down, leaning to a flower); a body roll and lift follow the gesture as is.
+      actionPitch += (gesture.pitch - actionPitch) * Math.min(1, 10 * dt);
+      root.rotation.z = gesture.roll;
+      root.position.y += gesture.lift * root.scale.y;
 
       // Swimming tilt: ease toward target when in water, back to 0 when out.
       const tiltTarget = inWater ? SWIM_TILT : 0;
@@ -209,7 +166,13 @@ export async function loadPlayerCharacter(loader: GuardedGltfLoader, species: st
       const progress = Math.abs(swimTilt) / SWIM_TILT; // 0 → 1 as tilt builds up
       const bob = inWater ? Math.sin(swimTime * BOB_FREQ * Math.PI * 2) * BOB_AMP * progress : 0;
 
-      root.rotation.x = inWater ? (swimTilt + bob) : currentActionTilt;
+      root.rotation.x = inWater ? swimTilt + bob : actionPitch;
+      sample.armRight = rig.armRight?.rotation.x ?? 0;
+      sample.armLeft = rig.armLeft?.rotation.x ?? 0;
+      sample.head = rig.head ? restQuaternion.copy(rig.head.quaternion).angleTo(rest.find((r) => r.bone === rig.head)?.at ?? restQuaternion) : 0;
+      sample.legRight = rig.legRight?.rotation.x ?? 0;
+      sample.pitch = root.rotation.x;
     },
+    poseSample: () => ({ ...sample }),
   };
 }

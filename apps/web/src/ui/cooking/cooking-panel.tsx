@@ -141,7 +141,7 @@ export function CookingPanel({ onClose, onCooked }: CookingPanelProps) {
       </div>
 
       {onClose && (
-        <button type="button" className={buttonClass('secondary', { block: true })} onClick={onClose}>
+        <button type="button" className={buttonClass('secondary', { block: true })} data-id="cooking-close" onClick={onClose}>
           Đóng gian bếp
         </button>
       )}

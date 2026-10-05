@@ -2,6 +2,8 @@
 // FPS (the slow frames players feel), for humans on-device and for the Playwright perf run.
 import type { WebGLRenderer } from 'three';
 import type { AutowalkState } from '../../game-bridge/game-store';
+import type { PoseSample } from '../entities/player-character';
+import type { ObjectsStats } from '../interact/object-tour';
 
 export interface MiuStats {
   quality: string;
@@ -58,6 +60,15 @@ export interface MiuStats {
   ambientLine: string | null;
   /** Other players and companion bots drawn now, as they are dressed (online). */
   remotePlayers: RemoteSummary[];
+  /** The interaction with furniture or a prop last started (its id), and the one whose prompt shows. */
+  lastObject: string | null;
+  nearObject: string | null;
+  /** The interactions now: what she is doing, where her body is, what is switched on and showing. */
+  objects: ObjectsStats | null;
+  /** Her arms, head and tilt as last posed (the gesture over her clip). */
+  pose: PoseSample | null;
+  /** Her body overlaps a solid block where she stands (never meant to happen, seated or not). */
+  embedded: boolean;
 }
 
 export interface RemoteSummary {
@@ -84,7 +95,7 @@ export class StatsOverlay {
   readonly stats: MiuStats;
 
   constructor(private readonly el: HTMLElement, quality: string) {
-    this.stats = { quality, fpsAvg: 0, fpsP5: 0, calls: 0, triangles: 0, frames: 0, loadMs: 0, meshMs: 0, worker: true, firstAreaBytes: 0, ready: false, player: [0, 0, 0], onGround: false, speed: 0, riding: false, journey: null, patches: 0, portals: 0, nearTarget: null, lastInteraction: null, hintTarget: null, autowalk: 'idle', castHidden: [], cameraInsideBlock: false, cameraYaw: 0, outfit: [], ambientVisible: 0, ambientReactions: 0, ambientCelebrations: 0, confetti: false, worldEvent: null, worldEvents: 0, pet: null, petClip: null, ambientLine: null, remotePlayers: [] };
+    this.stats = { quality, fpsAvg: 0, fpsP5: 0, calls: 0, triangles: 0, frames: 0, loadMs: 0, meshMs: 0, worker: true, firstAreaBytes: 0, ready: false, player: [0, 0, 0], onGround: false, speed: 0, riding: false, journey: null, patches: 0, portals: 0, nearTarget: null, lastInteraction: null, hintTarget: null, autowalk: 'idle', castHidden: [], cameraInsideBlock: false, cameraYaw: 0, outfit: [], ambientVisible: 0, ambientReactions: 0, ambientCelebrations: 0, confetti: false, worldEvent: null, worldEvents: 0, pet: null, petClip: null, ambientLine: null, remotePlayers: [], lastObject: null, nearObject: null, objects: null, pose: null, embedded: false };
     window.__miuStats = this.stats;
   }
 

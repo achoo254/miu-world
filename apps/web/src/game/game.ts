@@ -11,6 +11,7 @@ import {
   Scene,
   SRGBColorSpace,
   Timer,
+  Vector2,
   Vector3,
   WebGLRenderer,
 } from 'three';
@@ -26,6 +27,10 @@ import { createConfetti } from './scene/confetti';
 import { createSpeechBubble } from './ambient/speech-bubble';
 import { ObjectInteractionManager } from './interact/object-interaction-manager';
 import type { CandidateObject } from './interact/object-interaction-types';
+import { createObjectEffects, spinningProps } from './interact/object-effects';
+import { ObjectStates } from './interact/object-states';
+import { installObjectTour, objectsStats } from './interact/object-tour';
+import { wallBetween } from './interact/interaction-geometry';
 import { createPortalSparks } from './scene/portal-sparks';
 import type { PlayerPosition } from '@miu/schema/player-position';
 import { RegionCatalog, WorldEventKind, mapForRegion } from '@miu/schema/region';
@@ -62,7 +67,7 @@ const GREET_LINES = [
   'Bé vẫy tay chào người bạn mới quen! 😊🌟',
   'Rất vui được gặp bạn ở ngôi làng xinh đẹp này! 🏡',
 ];
-import { loadProps } from './entities/props';
+import { catalogEntry, loadProps } from './entities/props';
 import { cellKey } from '@miu/voxel/prop-collision';
 import { createRouteFinder, type RouteFinder } from './nav/route-finder';
 import { RouteWalker } from './nav/route-walker';
@@ -105,7 +110,7 @@ const STICK_TURN = 0.45;
 
 export interface GameOptions {
   store: GameStore;
-  /** Query string with dev/review switches: quality, stats, autopilot, spawnAt (`npc`, a target id, `x,y,z`, or `spawn` for the map's spawn point), face (camera yaw in degrees), shot, outfit, life (`0`: no villagers or animals), decor (`slot:option,…`: the home in other styles), minimap (`1`: kept in review shots). */
+  /** Query string with dev/review switches: quality, stats, autopilot, spawnAt (`npc`, a target id, `x,y,z`, or `spawn` for the map's spawn point), face (camera yaw in degrees), shot, outfit, life (`0`: no villagers or animals), decor (`slot:option,…`: the home in other styles), minimap (`1`: kept in review shots), objects (`1`: `window.__miuObjects` lists the map's interactable objects and puts her beside one, for tests). */
   search: string;
   /** Equipped accessory ids (`id` or `id:variant`), normally from `GET /api/character`. */
   outfit: string[];
@@ -125,6 +130,8 @@ export interface GameOptions {
   savedSpot?: Pick<PlayerPosition, 'position' | 'facing'> | null;
   /** The child's picks for her home (`GET /api/home-decor`): the map's restyled pieces as she chose them. */
   decor?: Readonly<Record<string, string>>;
+  /** What she left switched on in her home (`GET /api/home-objects`); with it the game reports changes (`object-states`). */
+  objectStates?: Readonly<Record<string, boolean>>;
   /** The play screen's online UI (interaction menu on other players, party frame); none leaves it out. */
   social?: SocialStore;
 }
@@ -364,6 +371,7 @@ export class Game {
       if (!data.regions.loadedAt(x, z)) return true;
       return (blocks(data.world.get(x, y, z))?.solid ?? false) || propCells.has(cellKey(x, y, z));
     };
+    const liquid = (x: number, y: number, z: number): boolean => blocks(data.world.get(x, y, z))?.liquid ?? false;
     /** Solid cells never stepped or climbed onto by walking: fences, doors, railings, panes. */
     const blocking: SolidAt = (x, y, z) => {
       const block = blocks(data.world.get(x, y, z));
@@ -403,7 +411,8 @@ export class Game {
       loadInteractables(loader, entities, quality.shadows),
       // Nothing fades for standing between the camera and the child (owner, 02/10/2026): the camera comes in
       // front of walls and roofs instead (camera-rig.ts), plants simply show.
-      loadProps(loader, entities, quality.shadows),
+      // Props whose interaction turns them whole (a globe) are drawn on their own; moving parts always are.
+      loadProps(loader, entities, quality.shadows, undefined, spinningProps(entities.props)),
       // `?life=0` (dev/perf switch): the map without its villagers and animals.
       loadAmbientLife(loader, params.get('life') === '0' ? [] : (entities.ambients ?? []), {
         quality: quality.level,
@@ -461,7 +470,41 @@ export class Game {
       scene.remove(playerBubble.sprite);
       playerBubble.sprite.material.dispose();
     });
-    const objectInteractions = new ObjectInteractionManager(entities, playerBubble);
+    // Furniture and props she can use; how they answer is drawn by the object effects (her home's switches kept).
+    const objectStates = new ObjectStates(this.options.objectStates);
+    const objectInteractions = new ObjectInteractionManager(entities, playerBubble, {
+      catalog: catalogEntry,
+      bounds: (model) => props.modelInfo(model)?.bounds,
+      standSpot: (at) => nearestUsableSpot(at, solid, liquid, data.bounds, data.world.height, 3),
+      wallBetween: (from, to) => wallBetween(from, to, (x, y, z) => blocks(data.world.get(x, y, z))?.solid ?? false),
+      states: objectStates,
+      reduced: reducedMotion,
+    });
+    const objectEffects = createObjectEffects({
+      scene,
+      objects: objectInteractions.objects,
+      states: objectStates,
+      props,
+      catalog: catalogEntry,
+      quality: quality.level,
+      reduced: reducedMotion,
+    });
+    objectInteractions.attachEffects(objectEffects);
+    this.cleanups.push(() => objectEffects.dispose());
+    const keepsHome = this.options.objectStates !== undefined;
+    if (keepsHome) {
+      // Her home: every change to what is kept switched on goes to the play screen to save (only keys of objects
+      // this map has: one the map lost since is dropped). Visiting another's home, nothing she switches is kept.
+      const known = new Set(objectInteractions.objects.map((o) => o.stateKey));
+      let last = JSON.stringify(objectStates.saved(known));
+      objectStates.onChange(() => {
+        const saved = objectStates.saved(known);
+        const key = JSON.stringify(saved);
+        if (key === last) return;
+        last = key;
+        store.emit({ type: 'object-states', states: saved });
+      });
+    }
 
     // Other players and companion bots; who the child is to them the server reads from her saved character.
     const online = new MultiplayerSession({
@@ -499,7 +542,6 @@ export class Game {
     this.cleanups.push(() => minimap.dispose());
     overlay.stats.outfit = character.outfit;
 
-    const liquid = (x: number, y: number, z: number): boolean => blocks(data.world.get(x, y, z))?.liquid ?? false;
     const controller = new PlayerController(solid, entities.spawn.position, entities.spawn.yaw, liquid, blocking);
     const rescue = new RescueWatch();
     // The equipped vehicle: the HUD's "Lái xe" puts her on it.
@@ -540,7 +582,22 @@ export class Game {
         controller.facing = this.options.savedSpot.facing;
       }
     }
+    const drawingBuffer = new Vector2();
+    /** She was on a seat, a bed or before a screen last frame. */
+    let wasHeld = false;
+    const objectStatsOn = params.get('objects') === '1' || params.has('stats');
     const rig = new CameraRig(camera, solid, controller.facing + Math.PI);
+    // Dev/E2E switch `objects=1`: the map's objects listed, and a way to stand beside one (interact/object-tour.ts).
+    if (params.get('objects') === '1') {
+      this.cleanups.push(
+        installObjectTour({
+          manager: objectInteractions,
+          controller,
+          standSpot: (at) => nearestUsableSpot(at, solid, liquid, data.bounds, data.world.height, 3),
+          face: (facing) => (rig.yaw = facing + Math.PI),
+        }),
+      );
+    }
     // Dev/review switch: `face=<degrees>` turns the camera to look that way at the start (a `play` shot).
     const face = Number(params.get('face') ?? Number.NaN);
     if (Number.isFinite(face)) rig.yaw = (face * Math.PI) / 180;
@@ -553,7 +610,7 @@ export class Game {
       this.spotNow = () => {
         const p = controller.position;
         // On a ride she is kept at the last spot she stood on (the stop) until she gets off; seated, where she stood before.
-        const here = objectInteractions.standSpot ?? (!journey.active && controller.onGround && !controller.inWater ? ([p.x, p.y, p.z] as const) : rescue.spot());
+        const here = !journey.active && controller.onGround && !controller.inWater ? ([p.x, p.y, p.z] as const) : rescue.spot();
         // The heading winds up past ±π as the child turns; saved folded back into one turn.
         const facing = Math.atan2(Math.sin(controller.facing), Math.cos(controller.facing));
         return here ? { map: mapId, position: [here[0], here[1], here[2]], facing } : null;
@@ -603,6 +660,7 @@ export class Game {
     let promptAmbient: AmbientTarget | null = null;
     /** An interactive furniture or prop object in reach (bed, chair, toilet, sink, stove, etc.). */
     let promptObject: CandidateObject | null = null;
+    let promptObjectLabel: string | null = null;
     let promptPet = false;
     /** Another player in reach: the interaction button opens the online menu on her. */
     let promptPlayer: NearPlayer | null = null;
@@ -774,6 +832,7 @@ export class Game {
       const journeyFrame = journey.update(dt);
       const carried = journeyFrame && !('done' in journeyFrame) ? journeyFrame : null;
       if (journeyFrame && 'done' in journeyFrame) {
+        objectInteractions.cancel();
         controller.teleport(journeyFrame.done);
         controller.facing = journeyFrame.facing;
         rig.yaw = journeyFrame.cameraYaw;
@@ -786,6 +845,7 @@ export class Game {
       }
       if (rescueRequested) {
         rescueRequested = false;
+        objectInteractions.cancel();
         if (!carried) {
           walker.stop();
           controller.teleport(rescue.spot() ?? rescueFallback());
@@ -826,16 +886,26 @@ export class Game {
           if (ambientActionTimer <= 0) currentAmbientAction = null;
         }
         const effectiveAction = objectState.action ?? currentAmbientAction;
-        character.root.position.copy(controller.position);
+        // On a seat, a bed or the floor before a screen her body is drawn there; her controller waits beside it.
+        const body = objectState.body;
+        if (body) character.root.position.set(body.position[0], body.position[1], body.position[2]);
+        else character.root.position.copy(controller.position);
         character.root.position.y += ride.liftWorld;
-        if (effectiveAction === 'lay') {
-          character.root.position.y -= 0.32;
-        }
-        character.root.rotation.y = controller.facing;
+        character.root.rotation.y = body ? body.facing : controller.facing;
         // On a vehicle she stands calm (idle) or holds her seated pose while it carries her.
         const currentPose = ride.pose ?? objectState.poseOverride;
         const isBusy = ride.riding || objectState.poseOverride !== null || effectiveAction !== null;
-        character.update(dt, isBusy ? 0 : controller.speed, controller.onGround, currentPose, controller.inWater, effectiveAction);
+        character.update(dt, isBusy ? 0 : controller.speed, body !== null || controller.onGround, currentPose, controller.inWater, effectiveAction);
+        // Swinging, she tips with the seat.
+        if (body) character.root.rotation.x += body.pitch;
+        // Sitting down (or lying), the view turns to face her from the open ground she will stand up on: the
+        // camera stays out of the chair, the bed, the swing's frame, and she is in view on them.
+        if (body && !wasHeld) {
+          const dx = controller.position.x - body.position[0];
+          const dz = controller.position.z - body.position[2];
+          if (Math.hypot(dx, dz) > 0.3) rig.yaw = Math.atan2(dx, dz);
+        }
+        wasHeld = body !== null;
         rig.update(dt, controller.position);
       }
       // Underwater overlay: toggle CSS class for the blue tint + bubble effect.
@@ -864,33 +934,44 @@ export class Game {
       minimap.update(dt, { x: controller.position.x, z: controller.position.z, facing: controller.facing }, questPlace ? { id: questPlace.id, label: questPlace.name, x: questPlace.position[0], z: questPlace.position[2] } : null);
       store.emit({ type: 'autowalk-available', available: hint?.available === true });
       overlay.stats.hintTarget = arrow.showing ? (hint?.def.id ?? null) : null;
-      const nearest = carried ? null : pickNearest(targets, controller.position);
+      // While she is on a seat, a bed or before a screen, the only prompt is to get up.
+      const held = objectInteractions.holding;
+      const nearest = carried || held ? null : pickNearest(targets, controller.position);
       // Another player near (quest targets still win): the online menu.
-      const nearPlayer = nearest || carried ? null : online.nearest(controller.position);
+      const nearPlayer = nearest || carried || held ? null : online.nearest(controller.position);
       // Quest targets always win the prompt; ambient life goes quiet next to them (and next to another player).
-      const nearAmbient = nearest || nearPlayer ? null : life.nearest(controller.position);
+      const nearAmbient = nearest || nearPlayer || held ? null : life.nearest(controller.position);
       // Object interactions (furniture/props) activate when no quest target or ambient life is near
-      const nearObject = nearest || nearAmbient || nearPlayer ? null : objectInteractions.nearest(controller.position);
+      // On a seat, a bed or before a screen, her prompt is that object's ("Đứng dậy"), whatever stands nearer.
+      const nearObject = held ?? (nearest || nearAmbient || nearPlayer ? null : objectInteractions.nearest(controller.position));
+      // A switch flipped or getting on and off changes the object's label: the prompt is sent again.
+      const objectLabel = nearObject ? objectInteractions.toPrompt(nearObject).label : null;
+      overlay.stats.nearObject = nearObject?.id ?? null;
       // Check pet companion proximity when child is near her faithful companion
       const petDist = pet && !carried ? Math.hypot(controller.position.x - pet.root.position.x, controller.position.z - pet.root.position.z) : Infinity;
       const nearPet = !nearest && !nearAmbient && !nearObject && !nearPlayer && petDist < 2.2;
       // A still review shot gathers the nearest people and animals round what it looks at, not round the child.
       life.update(dt, reviewShot && !reviewShot.live ? reviewShot.target : controller.position, nearest !== null, { calls: renderer.info.render.calls, triangles: renderer.info.render.triangles });
       online.update(dt, controller.position, camera);
-      const currentAction = ride.riding || objectState.poseOverride || currentAmbientAction ? 'sit' : controller.speed > 0.1 ? 'walk' : 'idle';
+      if (keepsHome) objectStates.setKeeping(online.visitingHost === null);
+      // The others see her seated while she is on a seat, a bed or a swing (the protocol's poses: idle, walk, sit).
+      const currentAction = ride.riding || objectState.body ? 'sit' : controller.speed > 0.1 && !currentAmbientAction ? 'walk' : 'idle';
+      // Seated on something, the others see her where her body is (on the seat, swinging with it).
+      const shown = objectState.body?.position ?? [controller.position.x, controller.position.y, controller.position.z];
       multiplayer.sendUpdate(
-        controller.position.x,
-        controller.position.y,
-        controller.position.z,
-        controller.facing,
-        ride.riding || objectState.poseOverride || currentAmbientAction ? 0 : controller.speed,
+        shown[0],
+        shown[1],
+        shown[2],
+        objectState.body?.facing ?? controller.facing,
+        ride.riding || objectState.body || currentAmbientAction ? 0 : controller.speed,
         currentAction,
         ride.riding,
       );
-      if (nearest !== promptTarget || nearAmbient !== promptAmbient || nearObject !== promptObject || nearPet !== promptPet || nearPlayer?.id !== promptPlayer?.id || nearPlayer?.name !== promptPlayer?.name) {
+      if (nearest !== promptTarget || nearAmbient !== promptAmbient || nearObject !== promptObject || objectLabel !== promptObjectLabel || nearPet !== promptPet || nearPlayer?.id !== promptPlayer?.id || nearPlayer?.name !== promptPlayer?.name) {
         promptTarget = nearest;
         promptAmbient = nearAmbient;
         promptObject = nearObject;
+        promptObjectLabel = objectLabel;
         promptPet = nearPet;
         promptPlayer = nearPlayer;
         const def = nearest?.def;
@@ -932,12 +1013,14 @@ export class Game {
         // A ride across the map: the journey to the far stop (ride/ride-journey.ts), one at a time. A walk to the
         // quest's place ends here, and she gets off her own vehicle to board.
         if (journey.start(promptTarget, controller.position, controller.facing)) {
+          objectInteractions.cancel();
           walker.stop();
           ride.dismount();
           ride.update(0);
         }
         overlay.stats.lastInteraction = promptTarget.def.id;
       } else if (interact && promptTarget?.def.travel) {
+        objectInteractions.cancel();
         online.travelled(promptTarget.def.travel);
         store.emit({ type: 'travel', region: promptTarget.def.travel });
         overlay.stats.lastInteraction = promptTarget.def.id;
@@ -963,7 +1046,8 @@ export class Game {
         if (multiplayer) multiplayer.sendEmote('cheer');
         store.emit({ type: 'interaction', targetId: 'pet-care' });
       } else if (interact && promptObject) {
-        objectInteractions.interact(promptObject, controller, character, multiplayer);
+        objectInteractions.interact(promptObject, controller, multiplayer);
+        overlay.stats.lastObject = promptObject.def.id;
         if (promptObject.def.id.includes('stove') || promptObject.def.id.includes('kitchen') || promptObject.def.id.includes('bep')) {
           store.emit({ type: 'interaction', targetId: 'cooking' });
         }
@@ -978,6 +1062,13 @@ export class Game {
       }
       confetti.update(dt);
       portalSparks.update(dt);
+      objectEffects.update(dt, controller.position, renderer.getDrawingBufferSize(drawingBuffer).y / (2 * Math.tan((camera.fov * Math.PI) / 360)));
+      // The interactions' own figures, for the tests and the developer overlay only.
+      if (objectStatsOn) {
+        overlay.stats.objects = objectsStats(objectInteractions, objectEffects.stats(), objectState.body);
+        overlay.stats.pose = character.poseSample();
+        overlay.stats.embedded = isEmbedded([controller.position.x, controller.position.y, controller.position.z], solid);
+      }
       // `?event=` (review/E2E switch): that surprise right away, once.
       if (surprise.success && events.played === 0 && !events.active) events.start(surprise.data, controller.position);
       events.update(dt, controller.position, nearest !== null);

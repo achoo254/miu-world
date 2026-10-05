@@ -1,7 +1,7 @@
-// Registry of object interactions for Miu World.
-// Provides 50+ rich everyday childhood interactions with furniture and world props,
-// fully extensible so that adding 100+ more interactions in the future requires only
-// appending to this list or calling registerInteraction().
+// The everyday interactions with furniture and props on every map: what each one matches, the pose the child
+// holds (interaction-poses.ts) and how the object answers (`effect`, drawn by object-effects.ts) or why it
+// does not change (`noEffect`). A new one is an entry here (or registerInteraction()); the catalogue tests
+// check every entry has a gesture, an answer, and seat data for every seat model the maps place.
 
 import type { ObjectInteractionDef } from './object-interaction-types';
 
@@ -18,11 +18,11 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbEn: 'Sleep',
     match: {
       slots: ['bed'],
-      modelRegex: /bed(bunk|double|single|pink|blue|mint|yellow|lilac|red|rainbow)?/i,
-      keywords: ['bed', 'giuong'],
+      modelRegex: /^(ncb-bed-[a-z]+|ld-bed|xma-bed|bed(bunk|double|single)?)$/i,
     },
-    pose: 'lay',
+    pose: 'sleep',
     duration: 0, // Continues until player walks
+    effect: { kind: 'symbols', glyph: 'zzz' },
     emoji: '💤',
     dialoguesVi: [
       'Khò khò... Giường êm ấm áp quá! 💤',
@@ -44,11 +44,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Nhún nhảy',
     verbEn: 'Bounce',
     match: {
-      modelRegex: /bed.*cushion/i,
+      modelRegex: /^bed.*cushion$/i,
       keywords: ['bouncy-bed'],
     },
     pose: 'cheer',
     duration: 3,
+    effect: { kind: 'symbols', glyph: 'star' },
     emoji: '🤸',
     dialoguesVi: [
       'Nhún nhảy lên cao vui thật là vui! 🤸',
@@ -68,11 +69,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Ngồi nghỉ',
     verbEn: 'Relax',
     match: {
-      modelRegex: /lounge(sofa|designsofa|sofalong|sofacorner|sofaottoman)/i,
+      modelRegex: /^(ncb-sofa|tv-poufs|tv-window-seat|lounge(design)?sofa(long|corner|ottoman)?)$/i,
       keywords: ['sofa', 'couch'],
     },
     pose: 'sit',
     duration: 0,
+    noEffect: 'a seat: it holds her as she sits and stays as it is',
     emoji: '🛋️',
     dialoguesVi: [
       'Ngồi tựa lưng sofa êm ái thích ghê! 🛋️',
@@ -92,11 +94,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbEn: 'Sit down',
     match: {
       slots: ['chair'],
-      modelRegex: /chair(cushion|rounded|moderncushion|modernframecushion|desk)?/i,
-      keywords: ['chair', 'ghe'],
+      modelRegex: /^(chair(cushion|rounded|moderncushion|modernframecushion|desk)?|ld-chair|tv-chair|th-chair|ntu-armchair)$/i,
+      keywords: ['chair', 'armchair'],
     },
     pose: 'sit',
     duration: 0,
+    noEffect: 'a seat: it holds her as she sits and stays as it is',
     emoji: '🪑',
     dialoguesVi: [
       'Bé ngồi ghế ngay ngắn, lưng thẳng tắp! 🪑',
@@ -115,11 +118,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Ngả lưng',
     verbEn: 'Recline',
     match: {
-      modelRegex: /loungechair(relax|designchair)?/i,
+      modelRegex: /^lounge(chair(relax)?|designchair)$/i,
       keywords: ['lounge-chair'],
     },
     pose: 'sit',
     duration: 0,
+    noEffect: 'a seat: it holds her as she sits and stays as it is',
     emoji: '🏖️',
     dialoguesVi: [
       'Ngả lưng thư giãn đón gió mát rượi! 🏖️',
@@ -138,11 +142,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Ngồi ghế đá',
     verbEn: 'Sit on bench',
     match: {
-      modelRegex: /bench(cushion|cushionlow)?/i,
-      keywords: ['bench', 'ghe-da'],
+      modelRegex: /^(park-bench|kr-log-bench|ld-bench-long|xma-bench|th-piano-bench|bench(cushion(low)?)?)$/i,
+      keywords: ['bench'],
     },
     pose: 'sit',
     duration: 0,
+    noEffect: 'a seat: it holds her as she sits and stays as it is',
     emoji: '🌳',
     dialoguesVi: [
       'Ngồi ngắm trời mây hoa lá xung quanh! 🌳',
@@ -162,11 +167,14 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbEn: 'Open wardrobe',
     match: {
       slots: ['wardrobe'],
-      modelRegex: /wardrobe|cabinetbeddrawer/i,
-      keywords: ['wardrobe', 'tu-quan-ao'],
+      modelRegex: /^(ncb-wardrobe(-[a-z]+)?|wardrobe)$/i,
+      keywords: ['wardrobe'],
     },
-    pose: 'wash',
+    pose: 'open',
     duration: 2.5,
+    effect: { kind: 'open', toggle: true },
+    offVi: 'Đóng tủ',
+    offEn: 'Close wardrobe',
     emoji: '👗',
     dialoguesVi: [
       'Mở tủ chọn một bộ trang phục thật đẹp! 👗',
@@ -185,11 +193,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Vỗ gối',
     verbEn: 'Fluff pillow',
     match: {
-      modelRegex: /pillow(blue|long|bluelong)?/i,
-      keywords: ['pillow', 'goi'],
+      modelRegex: /^pillow(blue|long|bluelong)?$/i,
+      keywords: ['pillow'],
     },
-    pose: 'wash',
+    pose: 'tap',
     duration: 2.0,
+    effect: { kind: 'symbols', glyph: 'sparkle' },
     emoji: '☁️',
     dialoguesVi: [
       'Vỗ gối bông bồng bềnh như đám mây! ☁️',
@@ -209,11 +218,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbEn: 'Draw curtains',
     match: {
       slots: ['curtain'],
-      modelRegex: /curtain|wallwindow/i,
-      keywords: ['curtain', 'rem-cua'],
+      modelRegex: /^(ncb-curtains-[a-z]+|xma-curtains|curtains?)$/i,
+      keywords: ['curtain', 'curtains'],
     },
-    pose: 'stretch',
+    pose: 'open',
     duration: 2.2,
+    effect: { kind: 'symbols', glyph: 'sparkle', color: '#ffe08a' },
     emoji: '☀️',
     dialoguesVi: [
       'Kéo rèm đón tia nắng ấm ban mai! ☀️',
@@ -232,11 +242,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Tắt chuông',
     verbEn: 'Stop alarm',
     match: {
-      modelRegex: /alarm-clock|clock/i,
-      keywords: ['alarm', 'dong-ho'],
+      modelRegex: /clock/i,
+      keywords: ['alarm', 'clock'],
     },
-    pose: 'wash',
+    pose: 'tap',
     duration: 1.8,
+    effect: { kind: 'symbols', glyph: 'note' },
     emoji: '⏰',
     dialoguesVi: [
       'Reng reng! Đã đến giờ thức dậy học bài rồi! ⏰',
@@ -259,11 +270,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Đi vệ sinh',
     verbEn: 'Use toilet',
     match: {
-      modelRegex: /toilet(square)?/i,
-      keywords: ['toilet', 'bon-cau'],
+      modelRegex: /^toilet(square)?$/i,
+      keywords: ['toilet'],
     },
     pose: 'sit',
     duration: 3.5,
+    effect: { kind: 'symbols', glyph: 'bubble' },
     emoji: '🚽',
     dialoguesVi: [
       'Xả nước sạch bong kin kít! 🚽✨',
@@ -285,11 +297,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Rửa tay',
     verbEn: 'Wash hands',
     match: {
-      modelRegex: /bathroomsink(square)?/i,
-      keywords: ['sink', 'bon-rua'],
+      modelRegex: /^bathroomsink(square)?$/i,
+      keywords: ['sink'],
     },
     pose: 'wash',
     duration: 3.0,
+    effect: { kind: 'water' },
     emoji: '🧼',
     dialoguesVi: [
       'Rửa tay 6 bước đúng chuẩn, vi khuẩn biến mất! 🧼',
@@ -311,11 +324,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Soi gương',
     verbEn: 'Look in mirror',
     match: {
-      modelRegex: /bathroommirror|mirror/i,
-      keywords: ['mirror', 'guong'],
+      modelRegex: /mirror/i,
+      keywords: ['mirror'],
     },
-    pose: 'stretch',
+    pose: 'wave',
     duration: 2.5,
+    effect: { kind: 'symbols', glyph: 'sparkle' },
     emoji: '🪞',
     dialoguesVi: [
       'Soi gương chải tóc gọn gàng, mỉm cười thật tươi! 🪞',
@@ -334,11 +348,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Tắm bọt',
     verbEn: 'Bubble bath',
     match: {
-      modelRegex: /bathtub/i,
-      keywords: ['bathtub', 'bon-tam'],
+      modelRegex: /^bathtub$/i,
+      keywords: ['bathtub'],
     },
     pose: 'sit',
     duration: 4.0,
+    effect: { kind: 'symbols', glyph: 'bubble' },
     emoji: '🛁',
     dialoguesVi: [
       'Ngâm mình trong bồn tắm bọt xà phòng bồng bềnh! 🛁',
@@ -360,11 +375,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Tắm vòi sen',
     verbEn: 'Take shower',
     match: {
-      modelRegex: /shower(round)?/i,
-      keywords: ['shower', 'voi-sen'],
+      modelRegex: /^shower(round)?$/i,
+      keywords: ['shower'],
     },
     pose: 'wash',
     duration: 3.5,
+    effect: { kind: 'water' },
     emoji: '🚿',
     dialoguesVi: [
       'Tắm vòi hoa sen mát rượi sảng khoái! 🚿',
@@ -384,11 +400,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Giặt đồ',
     verbEn: 'Wash clothes',
     match: {
-      modelRegex: /washer(dryerstacked)?/i,
-      keywords: ['washer', 'may-giat'],
+      modelRegex: /^washer(dryerstacked)?$/i,
+      keywords: ['washer'],
     },
-    pose: 'wash',
+    pose: 'tap',
     duration: 2.8,
+    effect: { kind: 'symbols', glyph: 'bubble' },
     emoji: '🧺',
     dialoguesVi: [
       'Bấm nút máy giặt quay vù vù sạch bong! 🧺',
@@ -407,11 +424,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Sấy quần áo',
     verbEn: 'Dry clothes',
     match: {
-      modelRegex: /dryer/i,
-      keywords: ['dryer', 'may-say'],
+      modelRegex: /^dryer$/i,
+      keywords: ['dryer'],
     },
-    pose: 'wash',
+    pose: 'tap',
     duration: 2.5,
+    effect: { kind: 'symbols', glyph: 'sparkle' },
     emoji: '💨',
     dialoguesVi: [
       'Quần áo sấy khô thơm ngát mùi nắng mới! 💨',
@@ -428,11 +446,14 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Sắp xếp đồ',
     verbEn: 'Tidy cabinet',
     match: {
-      modelRegex: /bathroomcabinet(drawer)?/i,
+      modelRegex: /^bathroomcabinet(drawer)?$/i,
       keywords: ['bathroom-cabinet'],
     },
-    pose: 'wash',
+    pose: 'open',
     duration: 2.0,
+    effect: { kind: 'open', toggle: true },
+    offVi: 'Đóng tủ',
+    offEn: 'Close cabinet',
     emoji: '🪥',
     dialoguesVi: [
       'Xếp gọn bàn chải, kem đánh răng vào cốc! 🪥',
@@ -453,11 +474,14 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Mở tủ lạnh',
     verbEn: 'Open fridge',
     match: {
-      modelRegex: /kitchenfridge(builtin|large|small)?/i,
-      keywords: ['fridge', 'tu-lanh'],
+      modelRegex: /^(ncb-fridge|kitchenfridge(builtin|large|small)?)$/i,
+      keywords: ['fridge'],
     },
-    pose: 'cook',
+    pose: 'open',
     duration: 2.5,
+    effect: { kind: 'open', toggle: true },
+    offVi: 'Đóng tủ lạnh',
+    offEn: 'Close fridge',
     emoji: '🍎',
     dialoguesVi: [
       'Mở tủ lạnh lấy một quả táo giòn ngọt! 🍎',
@@ -478,11 +502,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Nấu món ngon',
     verbEn: 'Cook',
     match: {
-      modelRegex: /kitchenstove(electric)?/i,
-      keywords: ['stove', 'bep-nau'],
+      modelRegex: /^(kitchenstove(electric)?|xma-stove)$/i,
+      keywords: ['stove'],
     },
     pose: 'cook',
     duration: 3.5,
+    effect: { kind: 'steam' },
     emoji: '🍲',
     dialoguesVi: [
       'Xèo xèo... Nồi canh rau củ thơm nức mũi! 🍲',
@@ -504,11 +529,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Hâm nóng thức ăn',
     verbEn: 'Heat food',
     match: {
-      modelRegex: /kitchenmicrowave/i,
-      keywords: ['microwave', 'lo-vi-song'],
+      modelRegex: /^kitchenmicrowave$/i,
+      keywords: ['microwave'],
     },
-    pose: 'cook',
+    pose: 'tap',
     duration: 2.5,
+    effect: { kind: 'glow', color: '#ffd27a' },
     emoji: '🥛',
     dialoguesVi: [
       'Ting! Cốc sữa ấm bổ dưỡng đã sẵn sàng! 🥛',
@@ -528,11 +554,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Nướng bánh',
     verbEn: 'Toast bread',
     match: {
-      modelRegex: /toaster/i,
-      keywords: ['toaster', 'may-nuong-banh'],
+      modelRegex: /^toaster$/i,
+      keywords: ['toaster'],
     },
-    pose: 'cook',
+    pose: 'tap',
     duration: 2.2,
+    effect: { kind: 'steam' },
     emoji: '🍞',
     dialoguesVi: [
       'Tách! Hai lát bánh mì vàng giòn rụm bật lên! 🍞',
@@ -552,11 +579,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Xay sinh tố',
     verbEn: 'Blend smoothie',
     match: {
-      modelRegex: /kitchenblender/i,
-      keywords: ['blender', 'may-xay'],
+      modelRegex: /^kitchenblender$/i,
+      keywords: ['blender'],
     },
-    pose: 'cook',
+    pose: 'tap',
     duration: 2.5,
+    effect: { kind: 'symbols', glyph: 'sparkle', color: '#ff9ec7' },
     emoji: '🥤',
     dialoguesVi: [
       'Rù rù... Ly sinh tố bơ xoài đặc sánh ngọt ngào! 🥭',
@@ -573,11 +601,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Pha ca cao',
     verbEn: 'Make cocoa',
     match: {
-      modelRegex: /kitchencoffeemachine/i,
+      modelRegex: /^kitchencoffeemachine$/i,
       keywords: ['coffee-machine'],
     },
-    pose: 'cook',
+    pose: 'tap',
     duration: 2.5,
+    effect: { kind: 'steam' },
     emoji: '☕',
     dialoguesVi: [
       'Một cốc cacao nóng ấm thơm lừng trong ngày se lạnh! ☕',
@@ -594,11 +623,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Rửa bát đĩa',
     verbEn: 'Wash dishes',
     match: {
-      modelRegex: /kitchensink/i,
+      modelRegex: /^kitchensink$/i,
       keywords: ['kitchen-sink'],
     },
     pose: 'wash',
     duration: 3.0,
+    effect: { kind: 'water' },
     emoji: '🍽️',
     dialoguesVi: [
       'Giúp mẹ rửa bát đĩa sạch bong kin kít! 🍽️✨',
@@ -616,13 +646,14 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     nameVi: 'Bàn ăn gia đình',
     nameEn: 'Dining Table',
     verbVi: 'Mời cơm',
-    verbEn: 'Sit at table',
+    verbEn: 'Have a meal',
     match: {
-      modelRegex: /table(round|cross|cloth|crosscloth)/i,
-      keywords: ['dining-table', 'ban-an'],
+      modelRegex: /^(table(round|cross|cloth|crosscloth)|xma-dining-table)$/i,
+      keywords: ['dining-table'],
     },
-    pose: 'sit',
-    duration: 0,
+    pose: 'eat',
+    duration: 4,
+    effect: { kind: 'steam' },
     emoji: '🍚',
     dialoguesVi: [
       'Cháu mời cả nhà cùng xơi cơm ạ! 🍚',
@@ -641,11 +672,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Ngồi ghế cao',
     verbEn: 'Sit on stool',
     match: {
-      modelRegex: /stoolbar(square)?/i,
-      keywords: ['stool', 'ghe-cao'],
+      modelRegex: /^(stoolbar(square)?|cp-stool)$/i,
+      keywords: ['stool'],
     },
     pose: 'sit',
     duration: 0,
+    noEffect: 'a seat: it holds her as she sits and stays as it is',
     emoji: '🍹',
     dialoguesVi: [
       'Ngồi trên ghế cao đung đưa chân thật thích! 🍹',
@@ -662,11 +694,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Bỏ rác vào thùng',
     verbEn: 'Throw trash',
     match: {
-      modelRegex: /trashcan/i,
-      keywords: ['trashcan', 'thung-rac'],
+      modelRegex: /^trashcan$/i,
+      keywords: ['trashcan'],
     },
-    pose: 'wash',
+    pose: 'tap',
     duration: 2.0,
+    effect: { kind: 'symbols', glyph: 'sparkle' },
     emoji: '🗑️',
     dialoguesVi: [
       'Bỏ rác đúng nơi quy định, môi trường thêm xanh! 🗑️🌱',
@@ -690,11 +723,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbEn: 'Study',
     match: {
       slots: ['desk'],
-      modelRegex: /desk(oak|white|pink|blue|mint|yellow|corner)?/i,
-      keywords: ['desk', 'ban-hoc'],
+      modelRegex: /^(ncb-desk-[a-z]+|desk(corner)?|th-desk|tv-desk-long)$/i,
+      keywords: ['desk'],
     },
     pose: 'study',
     duration: 0,
+    effect: { kind: 'symbols', glyph: 'star' },
     emoji: '✏️',
     dialoguesVi: [
       'Bé chăm chỉ làm bài tập, viết chữ nắn nót! ✏️',
@@ -715,11 +749,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Chọn sách',
     verbEn: 'Pick book',
     match: {
-      modelRegex: /bookcase(closed|closeddoors|closedwide|open|openlow)?|books/i,
-      keywords: ['bookcase', 'tu-sach', 'gia-sach'],
+      modelRegex: /^(bookcase(closed|closeddoors|closedwide|open|openlow)?|ncb-bookcase-tall|th-bookcase|ld-bookshelf|books)$/i,
+      keywords: ['bookcase', 'bookshelf'],
     },
     pose: 'study',
     duration: 3.0,
+    effect: { kind: 'symbols', glyph: 'star' },
     emoji: '📚',
     dialoguesVi: [
       'Tìm thấy một cuốn truyện cổ tích tuyệt hay! 📚',
@@ -740,11 +775,14 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Gõ máy tính',
     verbEn: 'Use computer',
     match: {
-      modelRegex: /computerscreen|laptop|computerkeyboard/i,
-      keywords: ['computer', 'laptop', 'may-tinh'],
+      modelRegex: /^(computerscreen|laptop|computerkeyboard|tv-computer)$/i,
+      keywords: ['computer', 'laptop'],
     },
     pose: 'study',
     duration: 3.0,
+    effect: { kind: 'screen', toggle: true },
+    offVi: 'Tắt máy tính',
+    offEn: 'Turn off computer',
     emoji: '💻',
     dialoguesVi: [
       'Gõ phím lách cách tìm hiểu thế giới loài vật! 💻',
@@ -763,11 +801,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Xoay địa cầu',
     verbEn: 'Spin globe',
     match: {
-      modelRegex: /globe/i,
-      keywords: ['globe', 'dia-cau'],
+      modelRegex: /^(tv-)?globe$/i,
+      keywords: ['globe'],
     },
-    pose: 'wash',
+    pose: 'tap',
     duration: 2.5,
+    effect: { kind: 'spin', toggle: false },
     emoji: '🌍',
     dialoguesVi: [
       'Xoay xoay... Việt Nam hình chữ S xinh tươi bên bờ Biển Đông! 🌍',
@@ -786,11 +825,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Lau bảng',
     verbEn: 'Clean board',
     match: {
-      modelRegex: /blackboard|board/i,
-      keywords: ['board', 'bang-den'],
+      modelRegex: /^(blackboard|whiteboard|cp-chalkboard-[a-z]+|tv-whiteboard)$/i,
+      keywords: ['board', 'blackboard', 'chalkboard', 'whiteboard'],
     },
     pose: 'sweep',
     duration: 2.5,
+    effect: { kind: 'symbols', glyph: 'sparkle' },
     emoji: '🏫',
     dialoguesVi: [
       'Lau bảng sạch bóng chuẩn bị cho tiết học mới! 🏫',
@@ -809,11 +849,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Xem lịch',
     verbEn: 'Check calendar',
     match: {
-      modelRegex: /calendar/i,
-      keywords: ['calendar', 'lich'],
+      modelRegex: /^(calendar|ncb-uniform-calendar)$/i,
+      keywords: ['calendar'],
     },
     pose: 'study',
     duration: 2.0,
+    effect: { kind: 'symbols', glyph: 'star' },
     emoji: '📅',
     dialoguesVi: [
       'Hôm nay là một ngày tuyệt vời để khám phá điều mới! 📅',
@@ -834,11 +875,14 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Bật tivi',
     verbEn: 'Watch TV',
     match: {
-      modelRegex: /television(modern|vintage|antenna)?/i,
-      keywords: ['television', 'tivi'],
+      modelRegex: /^television(modern|vintage|antenna)?$/i,
+      keywords: ['tivi'],
     },
-    pose: 'sit',
+    pose: 'watch',
     duration: 3.5,
+    effect: { kind: 'screen', toggle: true },
+    offVi: 'Tắt tivi',
+    offEn: 'Turn off TV',
     emoji: '📺',
     dialoguesVi: [
       'Bật tivi xem hoạt hình Chú Mèo Máy vui nhộn! 📺',
@@ -859,11 +903,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Bật đài nghe nhạc',
     verbEn: 'Listen to radio',
     match: {
-      modelRegex: /radio/i,
-      keywords: ['radio', 'dai-phat-thanh'],
+      modelRegex: /^radio$/i,
+      keywords: ['radio'],
     },
-    pose: 'cheer',
+    pose: 'dance',
     duration: 3.0,
+    effect: { kind: 'symbols', glyph: 'note' },
     emoji: '📻',
     dialoguesVi: [
       'Giai điệu ca khúc thiếu nhi rộn ràng cất lên! 📻🎶',
@@ -883,11 +928,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Bật loa nhảy múa',
     verbEn: 'Play music',
     match: {
-      modelRegex: /speaker(small)?/i,
-      keywords: ['speaker', 'loa'],
+      modelRegex: /^speaker(small)?$/i,
+      keywords: ['speaker'],
     },
-    pose: 'cheer',
+    pose: 'dance',
     duration: 3.0,
+    effect: { kind: 'symbols', glyph: 'note' },
     emoji: '🎵',
     dialoguesVi: [
       'Âm nhạc sôi động, cùng nhún nhảy theo nhịp điệu! 🎵🕺',
@@ -907,11 +953,14 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Bật quạt',
     verbEn: 'Turn on fan',
     match: {
-      modelRegex: /ceilingfan|fan/i,
-      keywords: ['fan', 'quat'],
+      modelRegex: /^(ceilingfan|fan)$/i,
+      keywords: ['fan'],
     },
-    pose: 'stretch',
+    pose: 'tap',
     duration: 2.2,
+    effect: { kind: 'spin', toggle: true },
+    offVi: 'Tắt quạt',
+    offEn: 'Turn off fan',
     emoji: '🌀',
     dialoguesVi: [
       'Quạt quay vù vù thổi luồng gió mát rượi! 🌀💨',
@@ -928,12 +977,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Ôm gấu bông',
     verbEn: 'Hug teddy',
     match: {
-      slots: ['ornament'],
-      modelRegex: /bear|teddy-bear/i,
-      keywords: ['teddy', 'gau-bong'],
+      modelRegex: /^teddy-bear$/i,
+      keywords: ['teddy'],
     },
-    pose: 'wash',
+    pose: 'hug',
     duration: 2.5,
+    effect: { kind: 'symbols', glyph: 'heart' },
     emoji: '🧸',
     dialoguesVi: [
       'Ôm bạn gấu bông mềm mại ấm áp vào lòng! 🧸❤️',
@@ -952,11 +1001,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Chơi búp bê',
     verbEn: 'Open dolls',
     match: {
-      modelRegex: /nesting-dolls/i,
-      keywords: ['nesting-dolls', 'bup-be'],
+      modelRegex: /^nesting-dolls$/i,
+      keywords: ['nesting-dolls'],
     },
-    pose: 'wash',
+    pose: 'open',
     duration: 2.8,
+    effect: { kind: 'symbols', glyph: 'sparkle' },
     emoji: '🪆',
     dialoguesVi: [
       'Mở búp bê lớn ra búp bê nhỏ xíu bên trong! 🪆',
@@ -976,11 +1026,14 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbEn: 'Turn on lamp',
     match: {
       slots: ['lamp', 'lights'],
-      modelRegex: /lamp(roundfloor|squarefloor|roundtable|squaretable|squareceiling|wall)?/i,
-      keywords: ['lamp', 'den'],
+      modelRegex: /^(lamp(roundfloor|squarefloor|roundtable|squaretable|squareceiling|wall)|ncb-lamp-[a-z]+|ncb-garden-lamp-[a-z]+|tv-reading-lamp|tv-wall-lantern|street-lantern|kr-lantern-pole)$/i,
+      keywords: ['lamp'],
     },
-    pose: 'stretch',
+    pose: 'tap',
     duration: 2.0,
+    effect: { kind: 'light', toggle: true },
+    offVi: 'Tắt đèn',
+    offEn: 'Turn off lamp',
     emoji: '💡',
     dialoguesVi: [
       'Tách! Ánh sáng dịu dàng soi sáng khắp phòng! 💡✨',
@@ -1001,11 +1054,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbEn: 'Sit on rug',
     match: {
       slots: ['rug'],
-      modelRegex: /rug(round|rounded|rectangle|square|doormat|cat|rainbow|heart|star|flower|leaf|checks)?/i,
-      keywords: ['rug', 'tham'],
+      modelRegex: /^(rug(round|rounded|rectangle|square|doormat)?|ncb-rug-[a-z]+|ncb-cat-rug|xma-rug)$/i,
+      keywords: ['rug'],
     },
     pose: 'sit',
     duration: 0,
+    noEffect: 'a rug: she sits on it and it stays as it is',
     emoji: '🧶',
     dialoguesVi: [
       'Ngồi chơi xếp hình trên thảm ấm áp! 🧶',
@@ -1028,11 +1082,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Tưới nước',
     verbEn: 'Water plant',
     match: {
-      modelRegex: /pottedplant|plantsmall[123]|seedling/i,
-      keywords: ['plant', 'chau-cay'],
+      modelRegex: /^(pottedplant|potted-plant|plantsmall[123]|seedling|cp-planter|th-planter)$/i,
+      keywords: ['plant'],
     },
     pose: 'water',
     duration: 2.8,
+    effect: { kind: 'water' },
     emoji: '🪴',
     dialoguesVi: [
       'Tưới từng giọt nước mát cho mầm cây xanh tốt! 🪴💧',
@@ -1054,11 +1109,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Ngửi hoa',
     verbEn: 'Smell flowers',
     match: {
-      modelRegex: /flower_.*|lotus/i,
-      keywords: ['flower', 'hoa'],
+      modelRegex: /^(flower_[a-z]+|lotus|nt-sunflower|nt-flower-pot|xma-flower-pot|ncb-flower-box|cp-flowers-(warm|cool))$/i,
+      keywords: ['flower', 'flowers', 'sunflower'],
     },
-    pose: 'stretch',
+    pose: 'smell',
     duration: 2.2,
+    effect: { kind: 'symbols', glyph: 'sparkle', color: '#ff9ec7' },
     emoji: '🌸',
     dialoguesVi: [
       'Hít hà... Hương hoa thơm dịu dàng ngát hương! 🌸',
@@ -1077,11 +1133,14 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Kiểm tra thư',
     verbEn: 'Check mail',
     match: {
-      modelRegex: /mailbox|envelope/i,
-      keywords: ['mailbox', 'hom-thu'],
+      modelRegex: /^(mailbox|ncb-cat-mailbox|nt-mailbox)$/i,
+      keywords: ['mailbox'],
     },
-    pose: 'wash',
+    pose: 'open',
     duration: 2.5,
+    effect: { kind: 'open', toggle: true },
+    offVi: 'Đóng hòm thư',
+    offEn: 'Close mailbox',
     emoji: '📬',
     dialoguesVi: [
       'Két! Có bức thư chúc mừng gửi từ người bạn phương xa! 📬',
@@ -1100,11 +1159,11 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Bấm chuông',
     verbEn: 'Ring bell',
     match: {
-      modelRegex: /doorwayfront|doorwayopen|door/i,
-      keywords: ['door', 'cua'],
+      modelRegex: /^(door|doorway(front|open)?)$/i,
     },
-    pose: 'wave',
+    pose: 'tap',
     duration: 2.0,
+    effect: { kind: 'symbols', glyph: 'note' },
     emoji: '🔔',
     dialoguesVi: [
       'Kính coong! Bé gõ cửa lịch sự trước khi bước vào! 🔔',
@@ -1115,6 +1174,201 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     sound: 'chime',
   },
   {
+    id: 'front-door',
+    category: 'outdoor',
+    nameVi: 'Cửa chính',
+    nameEn: 'Front Door',
+    verbVi: 'Mở cửa',
+    verbEn: 'Open door',
+    offVi: 'Đóng cửa',
+    offEn: 'Close door',
+    match: {
+      modelRegex: /^ncb-door-(left|right)$/i,
+    },
+    radius: 2.6,
+    pose: 'open',
+    duration: 1.0,
+    effect: { kind: 'door', toggle: true },
+    emoji: '🚪',
+    dialoguesVi: [
+      'Cửa nhà mở rộng chào đón bé về! 🚪',
+      'Kẹt kẹt... cánh cửa gỗ mở ra rồi! 🏡',
+    ],
+    dialoguesEn: [
+      'The front door swings open to welcome me home! 🚪',
+      'Creak... the wooden door opens! 🏡',
+    ],
+  },
+  {
+    id: 'stair-cupboard-open',
+    category: 'chores',
+    nameVi: 'Tủ gầm cầu thang',
+    nameEn: 'Cupboard Under the Stairs',
+    verbVi: 'Mở tủ',
+    verbEn: 'Open cupboard',
+    offVi: 'Đóng tủ',
+    offEn: 'Close cupboard',
+    match: {
+      modelRegex: /^ncb-under-stair-door$/i,
+    },
+    pose: 'open',
+    duration: 1.4,
+    effect: { kind: 'open', toggle: true },
+    emoji: '🧹',
+    dialoguesVi: [
+      'Tủ nhỏ gầm cầu thang cất chổi và hộp đồ chơi! 🧹',
+      'Ngó vào tủ nhỏ xem có gì bí mật nào! 🔦',
+    ],
+    dialoguesEn: [
+      'The little cupboard keeps the broom and the toy box! 🧹',
+      'Peeking into the little cupboard for secrets! 🔦',
+    ],
+  },
+  {
+    id: 'gift-open',
+    category: 'entertainment',
+    nameVi: 'Hộp quà',
+    nameEn: 'Gift Box',
+    verbVi: 'Mở quà',
+    verbEn: 'Open gift',
+    match: {
+      modelRegex: /^gift-[a-z]+$/i,
+      keywords: ['gift'],
+    },
+    pose: 'open',
+    duration: 2.2,
+    effect: { kind: 'symbols', glyph: 'star' },
+    emoji: '🎁',
+    dialoguesVi: [
+      'Mở hộp quà ra xem bên trong có gì nào! 🎁',
+      'Ồ, một bất ngờ thật dễ thương! ✨',
+    ],
+    dialoguesEn: [
+      'Opening the gift box to see what is inside! 🎁',
+      'Oh, what a lovely surprise! ✨',
+    ],
+  },
+  {
+    id: 'puzzle-play',
+    category: 'entertainment',
+    nameVi: 'Bộ xếp hình',
+    nameEn: 'Jigsaw Puzzle',
+    verbVi: 'Ghép hình',
+    verbEn: 'Do the puzzle',
+    match: {
+      modelRegex: /^puzzle-[a-z]+$/i,
+      keywords: ['puzzle'],
+    },
+    pose: 'study',
+    duration: 3,
+    effect: { kind: 'symbols', glyph: 'star' },
+    emoji: '🧩',
+    dialoguesVi: [
+      'Mảnh này ghép vào đây là vừa khít! 🧩',
+      'Ghép xong rồi, bức tranh đẹp quá! ⭐',
+    ],
+    dialoguesEn: [
+      'This piece fits right here! 🧩',
+      'Done! What a pretty picture! ⭐',
+    ],
+  },
+  {
+    id: 'shell-listen',
+    category: 'entertainment',
+    nameVi: 'Vỏ ốc biển',
+    nameEn: 'Sea Shell',
+    verbVi: 'Nghe vỏ ốc',
+    verbEn: 'Listen to shell',
+    match: {
+      modelRegex: /^spiral-shell$/i,
+      keywords: ['shell'],
+    },
+    pose: 'tap',
+    duration: 2.5,
+    effect: { kind: 'symbols', glyph: 'note', color: '#7fd3e6' },
+    emoji: '🐚',
+    dialoguesVi: [
+      'Áp vỏ ốc vào tai nghe tiếng sóng biển rì rào! 🐚',
+      'Biển đang hát trong vỏ ốc nhỏ xinh! 🌊',
+    ],
+    dialoguesEn: [
+      'Holding the shell to my ear to hear the waves! 🐚',
+      'The sea is singing inside the little shell! 🌊',
+    ],
+  },
+  {
+    id: 'letter-read',
+    category: 'study',
+    nameVi: 'Lá thư',
+    nameEn: 'Letter',
+    verbVi: 'Đọc thư',
+    verbEn: 'Read letter',
+    match: {
+      modelRegex: /^envelope$/i,
+      keywords: ['letter'],
+    },
+    pose: 'study',
+    duration: 2.6,
+    effect: { kind: 'symbols', glyph: 'heart' },
+    emoji: '💌',
+    dialoguesVi: [
+      'Một lá thư dễ thương gửi cho mình nè! 💌',
+      'Đọc thư thấy vui cả ngày luôn! ✨',
+    ],
+    dialoguesEn: [
+      'A lovely letter just for me! 💌',
+      'Reading it makes the whole day happy! ✨',
+    ],
+  },
+  {
+    id: 'piano-play',
+    category: 'entertainment',
+    nameVi: 'Đàn piano',
+    nameEn: 'Piano',
+    verbVi: 'Chơi đàn',
+    verbEn: 'Play piano',
+    match: {
+      modelRegex: /^(th-piano|piano)$/i,
+      keywords: ['piano'],
+    },
+    pose: 'tap',
+    duration: 3,
+    effect: { kind: 'symbols', glyph: 'note' },
+    emoji: '🎹',
+    dialoguesVi: [
+      'Đô rê mi pha son... tiếng đàn vang lên trong veo! 🎹',
+      'Bé đánh một bản nhạc vui cho cả lớp nghe! 🎶',
+    ],
+    dialoguesEn: [
+      'Do re mi fa so... the piano rings out clear! 🎹',
+      'Playing a happy tune for the whole class! 🎶',
+    ],
+  },
+  {
+    id: 'slide-play',
+    category: 'outdoor',
+    nameVi: 'Cầu trượt',
+    nameEn: 'Slide',
+    verbVi: 'Chơi cầu trượt',
+    verbEn: 'Play on slide',
+    match: {
+      modelRegex: /^(playground-slide|slide)$/i,
+      keywords: ['slide'],
+    },
+    pose: 'cheer',
+    duration: 2.5,
+    effect: { kind: 'symbols', glyph: 'star' },
+    emoji: '🛝',
+    dialoguesVi: [
+      'Vèo... trượt xuống nhanh ơi là nhanh! 🛝',
+      'Leo lên rồi trượt xuống thêm lần nữa nào! ✨',
+    ],
+    dialoguesEn: [
+      'Whee... sliding down so fast! 🛝',
+      'Climb up and slide down once more! ✨',
+    ],
+  },
+  {
     id: 'well-bucket',
     category: 'outdoor',
     nameVi: 'Giếng nước làng quê',
@@ -1122,11 +1376,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Múc nước giếng',
     verbEn: 'Draw water',
     match: {
-      modelRegex: /well|bucket/i,
-      keywords: ['well', 'gieng-nuoc'],
+      modelRegex: /^(well|bucket|xma-hanging-bucket)$/i,
+      keywords: ['well'],
     },
-    pose: 'wash',
+    pose: 'water',
     duration: 3.0,
+    effect: { kind: 'water' },
     emoji: '💧',
     dialoguesVi: [
       'Kéo gầu nước giếng trong vắt mát rượi tận đáy! 💧',
@@ -1146,11 +1401,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Sưởi ấm',
     verbEn: 'Warm hands',
     match: {
-      modelRegex: /campfire|fire/i,
-      keywords: ['campfire', 'lua-trai'],
+      modelRegex: /^(campfire(-pit|-stand)?|nt-fire|ntu-hearth-fire)$/i,
+      keywords: ['campfire'],
     },
-    pose: 'stretch',
+    pose: 'wash',
     duration: 3.0,
+    effect: { kind: 'symbols', glyph: 'sparkle', color: '#ffa53a' },
     emoji: '🔥',
     dialoguesVi: [
       'Hơ tay bên ánh lửa bập bùng ấm áp! 🔥',
@@ -1169,11 +1425,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Hái quả chín',
     verbEn: 'Pick fruit',
     match: {
-      modelRegex: /apple|cherries|banana|orange/i,
-      keywords: ['fruit', 'trai-cay'],
+      modelRegex: /^(apple|cherries|banana|orange|nt-apple|nt-orange|nt-apple-crate|cp-crate-(apple|orange)|ncb-fruit-bowl)$/i,
+      keywords: ['fruit'],
     },
     pose: 'stretch',
     duration: 2.5,
+    effect: { kind: 'symbols', glyph: 'sparkle' },
     emoji: '🍊',
     dialoguesVi: [
       'Hái một quả chín mọng ngọt lịm từ trên cành! 🍊',
@@ -1192,11 +1449,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Thử trượt ván',
     verbEn: 'Try skateboard',
     match: {
-      modelRegex: /skateboard/i,
-      keywords: ['skateboard', 'van-truot'],
+      modelRegex: /^skateboard$/i,
+      keywords: ['skateboard'],
     },
     pose: 'cheer',
     duration: 2.8,
+    effect: { kind: 'symbols', glyph: 'star' },
     emoji: '🛹',
     dialoguesVi: [
       'Lướt ván trượt bon bon đón gió lồng lộng! 🛹💨',
@@ -1213,11 +1471,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Ném bóng rổ',
     verbEn: 'Shoot hoop',
     match: {
-      modelRegex: /basketball/i,
-      keywords: ['basketball', 'bong-ro'],
+      modelRegex: /^(basketball|basketball-hoop)$/i,
+      keywords: ['basketball'],
     },
     pose: 'cheer',
     duration: 2.5,
+    effect: { kind: 'symbols', glyph: 'star' },
     emoji: '🏀',
     dialoguesVi: [
       'Ném bóng vào rổ trúng đích xuất sắc! 🏀🎯',
@@ -1234,11 +1493,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Sút bóng',
     verbEn: 'Kick soccer ball',
     match: {
-      modelRegex: /soccer-ball/i,
-      keywords: ['soccer', 'bong-da'],
+      modelRegex: /^soccer-ball$/i,
+      keywords: ['soccer'],
     },
-    pose: 'cheer',
+    pose: 'kick',
     duration: 2.5,
+    effect: { kind: 'symbols', glyph: 'star' },
     emoji: '⚽',
     dialoguesVi: [
       'Vào rồi! Cú sút tung lưới ghi bàn tuyệt đẹp! ⚽🎉',
@@ -1259,11 +1519,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Cho thú cưng ăn',
     verbEn: 'Feed pet',
     match: {
-      modelRegex: /bowl(soup|broth|cereal)?/i,
-      keywords: ['pet-bowl', 'bat-an'],
+      modelRegex: /^(pet-bowl|bowl)$/i,
+      keywords: ['pet-bowl'],
     },
     pose: 'pet',
     duration: 2.5,
+    effect: { kind: 'symbols', glyph: 'heart' },
     emoji: '🐾',
     dialoguesVi: [
       'Đổ hạt thơm ngon cho cún cưng và mèo con! 🐾🥣',
@@ -1282,11 +1543,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Chải lông thú',
     verbEn: 'Brush pet',
     match: {
-      modelRegex: /paintbrush/i,
-      keywords: ['brush', 'luoc'],
+      modelRegex: /^paintbrush$/i,
+      keywords: ['pet-brush'],
     },
     pose: 'pet',
     duration: 2.5,
+    effect: { kind: 'symbols', glyph: 'heart' },
     emoji: '🐱',
     dialoguesVi: [
       'Chải bộ lông mượt mà cho mèo cưng kêu meo meo! 🐱✨',
@@ -1307,11 +1569,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Thưởng thức bánh',
     verbEn: 'Eat cake',
     match: {
-      modelRegex: /cake|cupcake|pie/i,
-      keywords: ['cake', 'cupcake', 'pie', 'banh-ngot'],
+      modelRegex: /^(cake|cupcake|pie|birthday-cake)$/i,
+      keywords: ['cake', 'cupcake'],
     },
     pose: 'eat',
     duration: 3.0,
+    effect: { kind: 'symbols', glyph: 'heart' },
     emoji: '🍰',
     dialoguesVi: [
       'Chom chom... Bánh kem xốp mềm ngọt ngào tan trong miệng! 🍰✨',
@@ -1333,11 +1596,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Ăn bánh mì',
     verbEn: 'Eat bread',
     match: {
-      modelRegex: /bread|croissant/i,
-      keywords: ['bread', 'croissant', 'banh-mi'],
+      modelRegex: /^(bread|croissant|cp-tray-bread|nt-bread-table)$/i,
+      keywords: ['bread', 'croissant'],
     },
     pose: 'eat',
     duration: 2.8,
+    effect: { kind: 'symbols', glyph: 'sparkle' },
     emoji: '🥐',
     dialoguesVi: [
       'Rộp rộp... Bánh sừng bò bơ thơm giòn rụm! 🥐',
@@ -1356,11 +1620,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Húp súp ngon',
     verbEn: 'Eat soup',
     match: {
-      modelRegex: /bowl-soup|pot-stew/i,
-      keywords: ['soup', 'pot-stew', 'bat-sup'],
+      modelRegex: /^(bowl-soup|pot-stew)$/i,
+      keywords: ['soup', 'pot-stew'],
     },
     pose: 'eat',
     duration: 3.2,
+    effect: { kind: 'steam' },
     emoji: '🍲',
     dialoguesVi: [
       'Xì xụp... Bát súp hầm rau củ ngọt thanh ấm bụng! 🍲😋',
@@ -1379,11 +1644,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Ăn hoa quả',
     verbEn: 'Eat fruit',
     match: {
-      modelRegex: /watermelon|pineapple|grapes|pear/i,
-      keywords: ['watermelon', 'dua-hau', 'fruit-plate'],
+      modelRegex: /^(watermelon|pineapple|grapes|pear)$/i,
+      keywords: ['watermelon', 'fruit-plate'],
     },
     pose: 'eat',
     duration: 2.8,
+    effect: { kind: 'symbols', glyph: 'sparkle' },
     emoji: '🍉',
     dialoguesVi: [
       'Cắn một miếng dưa hấu đỏ au ngọt mát lịm! 🍉💦',
@@ -1402,11 +1668,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Uống nước mát',
     verbEn: 'Drink soda',
     match: {
-      modelRegex: /soda-bottle/i,
-      keywords: ['soda', 'nuoc-ngot', 'chai-nuoc'],
+      modelRegex: /^soda-bottle$/i,
+      keywords: ['soda'],
     },
     pose: 'drink',
     duration: 2.6,
+    effect: { kind: 'symbols', glyph: 'bubble' },
     emoji: '🥤',
     dialoguesVi: [
       'Ực ực... Nước mát sủi bọt lăn tăn sảng khoái tuyệt vời! 🥤✨',
@@ -1429,11 +1696,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Thả cần câu',
     verbEn: 'Go fishing',
     match: {
-      modelRegex: /dba-dock-lantern|dock|pier/i,
-      keywords: ['dock', 'pier', 'cau-tau', 'ben-thuyen'],
+      modelRegex: /^(dba-dock-lantern|dock|pier)$/i,
+      keywords: ['dock', 'pier'],
     },
     pose: 'fish',
     duration: 4.5,
+    effect: { kind: 'symbols', glyph: 'bubble' },
     emoji: '🎣',
     dialoguesVi: [
       'Vút... Buông cần câu xuống mặt nước trong veo, kiên nhẫn đợi cá cắn câu! 🎣🐟',
@@ -1455,11 +1723,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Lên thuyền câu cá',
     verbEn: 'Fish from boat',
     match: {
-      modelRegex: /dba-rowboat|rowboat|sailboat/i,
-      keywords: ['rowboat', 'boat', 'thuyen-cau', 'thuyen-nan'],
+      modelRegex: /^(dba-rowboat|rowboat|sailboat|boat)$/i,
+      keywords: ['rowboat'],
     },
     pose: 'fish',
     duration: 4.5,
+    effect: { kind: 'symbols', glyph: 'bubble' },
     emoji: '🛶',
     dialoguesVi: [
       'Thuyền bồng bềnh dập dềnh trên sóng nước, cùng thả câu nào! 🛶🎣',
@@ -1479,11 +1748,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Câu cá trên băng',
     verbEn: 'Ice fishing',
     match: {
-      modelRegex: /cp-fish-ice|cp-fish-line/i,
-      keywords: ['ice-fishing', 'cau-ca-bang', 'fish-line'],
+      modelRegex: /^(cp-fish-ice|cp-fish-line)$/i,
+      keywords: ['ice-fishing'],
     },
     pose: 'fish',
     duration: 4.0,
+    effect: { kind: 'symbols', glyph: 'bubble' },
     emoji: '❄️',
     dialoguesVi: [
       'Thả dây câu qua lỗ băng tuyết... Chú cá tuyết lấp lánh đang đến gần! ❄️🐟',
@@ -1507,11 +1777,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Nằm túi ngủ',
     verbEn: 'Rest in bedroll',
     match: {
-      modelRegex: /bedroll/i,
-      keywords: ['bedroll', 'tui-ngu'],
+      modelRegex: /^bedroll$/i,
+      keywords: ['bedroll'],
     },
-    pose: 'lay',
+    pose: 'sleep',
     duration: 0,
+    effect: { kind: 'symbols', glyph: 'zzz' },
     emoji: '⛺',
     dialoguesVi: [
       'Chui vào túi ngủ ấm áp ngắm bầu trời đêm đầy sao lấp lánh! ⛺✨',
@@ -1531,11 +1802,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Đu xích đu',
     verbEn: 'Swing',
     match: {
-      modelRegex: /swing-set|swing/i,
-      keywords: ['swing-set', 'swing', 'xich-du'],
+      modelRegex: /^swing-set$/i,
+      keywords: ['swing-set'],
     },
-    pose: 'sit',
+    pose: 'swing',
     duration: 0,
+    effect: { kind: 'sway' },
     emoji: '🪁',
     dialoguesVi: [
       'Đung đưa bay lên cao... gió thổi mát rượi tóc bay bay! 🪁🍃',
@@ -1554,11 +1826,12 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     verbVi: 'Nghỉ dã ngoại',
     verbEn: 'Picnic rest',
     match: {
-      modelRegex: /nt-picnic-table|picnic/i,
-      keywords: ['picnic-table', 'ban-da-ngoai', 'picnic'],
+      modelRegex: /^(nt-picnic-table|picnic-table)$/i,
+      keywords: ['picnic-table'],
     },
     pose: 'sit',
     duration: 0,
+    noEffect: 'a seat: it holds her as she sits and stays as it is',
     emoji: '🧺',
     dialoguesVi: [
       'Cùng quây quần bên bàn dã ngoại chia sẻ bánh ngon hoa quả! 🧺🍉',
@@ -1579,6 +1852,7 @@ const registry: ObjectInteractionDef[] = [...BUILTIN_OBJECT_INTERACTIONS];
  * Enables adding 100+ future interactions easily without modifying core engine code.
  */
 export function registerInteraction(def: ObjectInteractionDef): void {
+  matched.clear();
   const existingIndex = registry.findIndex((item) => item.id === def.id);
   if (existingIndex >= 0) {
     registry[existingIndex] = def;
@@ -1601,48 +1875,55 @@ export function getAllInteractions(): readonly ObjectInteractionDef[] {
   return registry;
 }
 
+/** A model path's file name without its folder and `.glb` (`packs/kenney-furniture-kit/2.0/chairDesk.glb` → `chairDesk`). */
+export function modelBaseName(model: string): string {
+  return (model.split('/').pop() ?? '').replace(/\.glb$/i, '');
+}
+
+/** The words of a name, lower case, joined by `-` (`kitchenFridgeLarge` → `kitchen-fridge-large`, `flower_redA` → `flower-red-a`). */
+export function nameWords(name: string): string {
+  return name
+    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter(Boolean)
+    .join('-');
+}
+
+const hasWords = (words: string, keyword: string): boolean => words !== '' && `-${words}-`.includes(`-${nameWords(keyword)}-`);
+
 /**
- * Find the most suitable interaction definition for a given prop or model.
+ * The interaction for a placed model (with its home slot, or a name): a slot named by an interaction first, then
+ * an exact model name, then a model pattern, then whole keywords of the file name, slot or name; each step over
+ * every interaction before the next, so a loose keyword of one never takes a model another names exactly.
  */
-export function matchInteraction(
-  model: string,
-  slot?: string,
-  name?: string,
-): ObjectInteractionDef | null {
-  const normalizedModel = model.toLowerCase();
-  const normalizedName = (name ?? '').toLowerCase();
+export function matchInteraction(model: string, slot?: string, name?: string): ObjectInteractionDef | null {
+  // A map places the same few hundred models thousands of times: each model, slot and name is matched once.
+  const key = `${model}|${slot ?? ''}|${name ?? ''}`;
+  const known = matched.get(key);
+  if (known !== undefined) return known;
+  const found = matchUncached(model, slot, name);
+  matched.set(key, found);
+  return found;
+}
+
+/** Matches already worked out (cleared when an interaction is registered). */
+const matched = new Map<string, ObjectInteractionDef | null>();
+
+function matchUncached(model: string, slot?: string, name?: string): ObjectInteractionDef | null {
+  const base = modelBaseName(model);
   const normalizedSlot = (slot ?? '').toLowerCase();
-
-  for (const def of registry) {
-    const { match } = def;
-
-    // 1. Match by slot if present
-    if (normalizedSlot && match.slots?.includes(normalizedSlot)) {
-      return def;
-    }
-
-    // 2. Match by exact model names
-    if (match.modelNames?.some((m) => normalizedModel.includes(m.toLowerCase()))) {
-      return def;
-    }
-
-    // 3. Match by regex
-    if (match.modelRegex && match.modelRegex.test(normalizedModel)) {
-      return def;
-    }
-
-    // 4. Match by keywords in model, slot or name
-    if (
-      match.keywords?.some(
-        (kw) =>
-          normalizedModel.includes(kw) ||
-          normalizedName.includes(kw) ||
-          normalizedSlot.includes(kw),
-      )
-    ) {
-      return def;
-    }
+  if (normalizedSlot) {
+    const bySlot = registry.find((def) => def.match.slots?.includes(normalizedSlot));
+    if (bySlot) return bySlot;
   }
-
-  return null;
+  if (base) {
+    const lower = base.toLowerCase();
+    const byName = registry.find((def) => def.match.modelNames?.some((m) => m.toLowerCase() === lower));
+    if (byName) return byName;
+    const byPattern = registry.find((def) => def.match.modelRegex?.test(base));
+    if (byPattern) return byPattern;
+  }
+  const words = [nameWords(base), nameWords(normalizedSlot), nameWords(name ?? '')];
+  return registry.find((def) => def.match.keywords?.some((kw) => words.some((w) => hasWords(w, kw)))) ?? null;
 }
