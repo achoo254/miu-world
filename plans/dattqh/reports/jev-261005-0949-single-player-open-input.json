@@ -1,0 +1,40 @@
+{
+  "state": {
+    "project": "Miu World: a 3D voxel learn-while-playing game for all ages (children and adults), online like Minecraft, web now and a mobile app later. Parents are responsible when they let a child play; no parental supervision is required. Built 100% by AI; today only the owner and one child play.",
+    "today": "2026-10-05",
+    "plan": "Move to one player per Google account: the signed-in person is the main player; optional extra players on a shared device (e.g. a parent's child). Consent v3 is shown once to every account.",
+    "facts": [
+      "Player and profile names today are picked from a fixed list; no free text anywhere players can see each other.",
+      "Free-text names would need a word filter and a way to rename offensive names before online play; there is no moderation console (parked until outsiders play).",
+      "Google accounts already have a minimum age set by Google (13 in most countries; younger children can only have Family Link accounts). Children under that age would play as an extra player inside an adult's account.",
+      "Asking an age question on the consent screen adds a step and collects an age-related answer; Vietnamese personal data law treats children's data specially, and the consent text is self-written, not reviewed by a lawyer.",
+      "Accounts allow at most 3 profiles today; extra players share the account owner's Google sign-in."
+    ]
+  },
+  "questions": {
+    "player_names": {
+      "stakes": "medium",
+      "instructions": "In this plan, how should players get their display name?",
+      "criteria": {
+        "list_only": "Keep choosing from the fixed list for everyone for now; revisit free text with the moderation work before outsiders play.",
+        "free_text_adults": "Let the main player type a name with a word filter now."
+      }
+    },
+    "age_question": {
+      "stakes": "high",
+      "instructions": "Should consent v3 ask the main player to confirm they are at least 13 years old?",
+      "criteria": {
+        "checkbox_13": "Add one checkbox 'I am 13 or older; younger children play as an extra player in a parent's account', storing only that it was ticked with the consent.",
+        "rely_on_google": "Ask nothing; rely on Google's account age limit and state in the consent text that children play under a parent's account."
+      }
+    },
+    "max_players": {
+      "stakes": "low",
+      "instructions": "How many players (main plus extra) should one account allow?",
+      "criteria": {
+        "keep_3": "Keep 3 in total.",
+        "raise_5": "Raise to 5 in total for larger families."
+      }
+    }
+  }
+}

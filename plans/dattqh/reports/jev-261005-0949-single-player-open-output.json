@@ -1,0 +1,39 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 867,
+    "output_tokens": 110
+  },
+  "results": {
+    "player_names": {
+      "stakes": "medium",
+      "choice": "list_only",
+      "confidence": 1.0,
+      "probabilities": {
+        "free_text_adults": 0.0,
+        "list_only": 1.0
+      },
+      "decision": "auto"
+    },
+    "age_question": {
+      "stakes": "high",
+      "choice": "rely_on_google",
+      "confidence": 0.42,
+      "probabilities": {
+        "checkbox_13": 0.29,
+        "rely_on_google": 0.71
+      },
+      "decision": "escalate"
+    },
+    "max_players": {
+      "stakes": "low",
+      "choice": "keep_3",
+      "confidence": 0.96,
+      "probabilities": {
+        "keep_3": 0.98,
+        "raise_5": 0.02
+      },
+      "decision": "auto"
+    }
+  }
+}
