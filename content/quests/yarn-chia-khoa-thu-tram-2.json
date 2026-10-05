@@ -1,0 +1,354 @@
+{
+  "id": "yarn-chia-khoa-thu-tram-2",
+  "region": "lau-dai",
+  "chapter": 3,
+  "title": "Chuyện của Bác Thợ Khóa Thành, chương 2: Cánh cửa nhỏ dưới gầm cầu",
+  "status": "active",
+  "category": "story",
+  "summary": "Dưới gầm cầu đá có một cánh cửa sắt khóa bằng ổ số. {name} tìm ba vạch khắc trên các nhịp cầu, xếp số, cộng mật mã, giúp Bác Thợ Khóa Thành vượt nỗi sợ nước rồi đọc lá thư người thầy để lại.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bác Thợ Khóa Thành",
+    "where": "Lâu đài: cầu đá qua hào, các nhịp cầu, gầm cầu, cầu treo",
+    "goal": "Mở cánh cửa sắt dưới gầm cầu và tìm lời nhắn của Cụ Đồng",
+    "play": "Tìm ba vạch khắc, xếp số từ bé đến lớn, giải câu đố cộng, chọn cách vào cửa an toàn, đọc thư",
+    "learn": "So sánh số, cộng ba số, đọc hiểu lá thư",
+    "reward": "65 XP, 18 Xu, Skill XP So sánh số, Phép cộng, Đọc hiểu",
+    "next": "Mảnh chìa đầu tiên nằm ở bến thuyền, nơi bác chưa từng dám xuống"
+  },
+  "phases": {
+    "hook": "bac-nghe-tieng",
+    "explore": "tim-vach-khac",
+    "learn": "xep-ma-so",
+    "challenge": "tong-ma-so",
+    "decision": "vao-cua-the-nao",
+    "finale": "doc-thu-cu-dong",
+    "reward": "cua-mo-gam-cau",
+    "next": "noi-thuyen-doi"
+  },
+  "places": {
+    "bac-tho-khoa-thanh": "Cầu đá qua hào",
+    "tim-vach-khac": "Các nhịp cầu",
+    "st-chia-khoa-thu-tram-cua-sat": "Gầm cầu",
+    "tim-day-phao": "Cầu treo",
+    "st-chia-khoa-thu-tram-hop-sat": "Gầm cầu"
+  },
+  "steps": [
+    {
+      "id": "bac-nghe-tieng",
+      "title": "Bác thức nghe tiếng lạ",
+      "goTo": "Ghé cầu đá qua hào, bác đã cầm đèn chờ sẵn",
+      "kind": "dialogue",
+      "target": "bac-tho-khoa-thanh",
+      "lines": [
+        { "speaker": "Bác Thợ Khóa Thành", "text": "Đêm qua bác áp tai xuống mặt cầu, nghe lách cách đúng ba tiếng một, y như tấm biển của thầy dặn." },
+        { "speaker": "Bác Thợ Khóa Thành", "text": "Sáng ra bác thấy một cánh cửa sắt nhỏ dưới gầm cầu, khóa bằng ổ số. Thầy bác hay khắc mật mã lên đá, chắc là ở các nhịp cầu." }
+      ],
+      "choices": [
+        { "text": "Cháu đi tìm vạch khắc ngay!", "reply": "Nhớ đếm cho kỹ, thầy bác ghét nhất là đứa nào đếm ẩu." },
+        { "text": "Bác có sợ mở cửa ra không?", "reply": "Sợ chứ. Nhưng sợ mà vẫn mở thì mới đáng mặt thợ khóa." }
+      ],
+      "en": {
+        "title": "A sleepless night of strange sounds",
+        "goTo": "Stop by the stone bridge over the moat, where he's waiting with a lamp",
+        "lines": [
+          "Last night I pressed my ear to the bridge and heard clicking in threes, exactly as my teacher's plate said.",
+          "This morning I found a little iron door under the bridge with a number lock. My teacher loved carving codes into stone, so they must be on the spans."
+        ],
+        "choices": [
+          { "text": "I'll go and find the carvings!", "reply": "Count carefully; my teacher hated nothing more than sloppy counting." },
+          { "text": "Are you scared to open it?", "reply": "Of course. But being scared and opening it anyway is what makes a real locksmith." }
+        ]
+      }
+    },
+    {
+      "id": "tim-vach-khac",
+      "title": "Ba vạch khắc trên đá",
+      "goTo": "Đi dọc các nhịp cầu tìm ba vạch khắc của Cụ Đồng",
+      "kind": "search",
+      "targets": ["st-chia-khoa-thu-tram-vach-bay", "st-chia-khoa-thu-tram-vach-hai", "st-chia-khoa-thu-tram-vach-nam"],
+      "en": {
+        "title": "Three carvings in the stone",
+        "goTo": "Walk along the bridge spans (Các nhịp cầu) and find Cụ Đồng's three carvings"
+      }
+    },
+    {
+      "id": "xep-ma-so",
+      "title": "Xoay số từ bé đến lớn",
+      "goTo": "Xuống gầm cầu, tới cánh cửa sắt có ổ khóa số",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-chia-khoa-thu-tram-cua-sat",
+      "skill": "so-sanh-so",
+      "prompt": "Trên cửa khắc dòng chữ: «Xoay số từ bé đến lớn». Xếp ba vạch khắc theo đúng thứ tự xoay:",
+      "items": [
+        { "id": "bay", "label": "Bảy chiếc chìa" },
+        { "id": "hai", "label": "Hai chiếc chìa" },
+        { "id": "nam", "label": "Năm chiếc chìa" }
+      ],
+      "answer": { "order": ["hai", "nam", "bay"] },
+      "support": {
+        "guide": ["Tìm số bé nhất trong ba số 7, 2 và 5.", "Tiếp theo là số đứng giữa, cuối cùng là số lớn nhất."],
+        "hint": "Số 2 bé nhất, nên vạch hai chiếc chìa xoay trước.",
+        "answer": {
+          "text": "Hai, năm rồi bảy",
+          "explanation": "So sánh: 2 < 5 < 7, nên xoay vạch hai chiếc chìa, rồi năm, rồi bảy."
+        },
+        "en": {
+          "guide": ["Find the smallest of the three numbers 7, 2 and 5.", "Then the middle one, and the biggest goes last."],
+          "hint": "2 is the smallest, so the two-key carving turns first.",
+          "answer": {
+            "text": "Two, five, then seven",
+            "explanation": "Comparing: 2 < 5 < 7, so turn the two-key carving, then five, then seven."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ổ số kêu tách, tách, tách, khớp đủ ba nấc!",
+          "Từ bé đến lớn, {name} xếp chẳng lệch một nấc nào.",
+          "Cụ Đồng mà thấy chắc cũng phải vỗ tay khen."
+        ],
+        "wrong": [
+          "Ổ số kẹt cứng, chắc có số lớn chen lên trước số bé rồi.",
+          "Thử tìm con số nhỏ nhất đặt lên đầu hàng xem nào.",
+          "Bảy chiếc chìa là nhiều nhất, nó nên đứng chỗ nào nhỉ?"
+        ],
+        "en": {
+          "right": [
+            "The dial goes tick, tick, tick, all three notches line up!",
+            "Smallest to biggest, and you didn't miss a single notch, {name}.",
+            "If Cụ Đồng could see this, he'd be clapping."
+          ],
+          "wrong": [
+            "The dial's stuck; a big number must have pushed ahead of a small one.",
+            "Try putting the very smallest number at the front.",
+            "Seven keys is the most; where should it go?"
+          ]
+        }
+      },
+      "en": {
+        "title": "Turn the dial, small to large",
+        "goTo": "Climb down under the bridge (Gầm cầu) to the iron door with the number lock",
+        "prompt": "Carved on the door: «Turn the numbers from smallest to biggest». Put the three carvings in turning order:",
+        "items": ["Seven keys", "Two keys", "Five keys"]
+      }
+    },
+    {
+      "id": "tong-ma-so",
+      "title": "Gõ cửa bao nhiêu cái?",
+      "kind": "riddle",
+      "target": "st-chia-khoa-thu-tram-cua-sat",
+      "skill": "phep-cong",
+      "question": "Xoay xong ba số, ổ khóa hiện thêm một dòng: «Cộng cả ba số lại, được bao nhiêu thì gõ cửa bấy nhiêu cái». {name} phải gõ cửa mấy cái?",
+      "answer": { "value": 14 },
+      "support": {
+        "guide": ["Ba số là 2, 5 và 7.", "Cộng hai số đầu trước: 2 + 5.", "Lấy kết quả đó cộng tiếp với 7."],
+        "hint": "2 + 5 = 7, rồi 7 + 7 = ?",
+        "answer": {
+          "text": "Gõ đủ 14 cái",
+          "explanation": "2 + 5 = 7, rồi 7 + 7 = 14, nên phải gõ cửa 14 cái."
+        },
+        "en": {
+          "guide": ["The three numbers are 2, 5 and 7.", "Add the first two: 2 + 5.", "Then add 7 to that."],
+          "hint": "2 + 5 = 7, then 7 + 7 = ?",
+          "answer": {
+            "text": "Knock 14 times",
+            "explanation": "2 + 5 = 7, then 7 + 7 = 14, so knock on the door 14 times."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cộc cộc… đủ mười bốn cái, cánh cửa hé ra rồi!",
+          "Bác reo lên: cháu cộng còn nhanh hơn bác tra chìa!",
+          "Mười bốn, chẳng thừa chẳng thiếu một cái gõ nào!"
+        ],
+        "wrong": [
+          "Cửa vẫn im thin thít, hình như gõ chưa đúng số rồi.",
+          "Cộng từng bước một nhé: hai cộng năm trước đã.",
+          "Gần lắm rồi, kiểm tra lại phép cộng cuối cùng xem."
+        ],
+        "en": {
+          "right": [
+            "Knock knock… fourteen times, and the door creaks open!",
+            "He cheers: you add faster than I can turn a key!",
+            "Fourteen, not one knock too many or too few!"
+          ],
+          "wrong": [
+            "The door hasn't budged; that can't be the right number of knocks.",
+            "One step at a time: add two and five first.",
+            "So close! Check that last addition again."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many knocks?",
+        "question": "Once the three numbers are set, another line appears on the lock: «Add all three numbers and knock that many times». How many times must {name} knock?"
+      }
+    },
+    {
+      "id": "vao-cua-the-nao",
+      "title": "Lối đi sát mặt nước",
+      "goTo": "Leo lên cầu đá qua hào báo tin cho bác",
+      "kind": "decision",
+      "target": "bac-tho-khoa-thanh",
+      "speaker": "Bác Thợ Khóa Thành",
+      "prompt": "Sau cánh cửa là một gờ đá hẹp sát mặt nước tối om. Bác đứng trên cầu, mặt tái đi: bác chưa biết bơi. {name} tính sao?",
+      "choices": [
+        {
+          "id": "cung-di",
+          "text": "Cháu đi trước, bác vịn vai cháu mà bước",
+          "consequence": "Bác hít một hơi thật dài rồi đặt tay lên vai {name}. Hai bác cháu men theo gờ đá, chậm mà chắc.",
+          "nextStepId": "doc-thu-cu-dong"
+        },
+        {
+          "id": "lay-day",
+          "text": "Lấy dây thừng và phao buộc cho chắc đã",
+          "consequence": "Bác thở phào: «Phải đấy, thợ khóa nào cũng thích có chốt an toàn.» Dây với phao cất ngay ở cầu treo."
+        },
+        {
+          "id": "bac-soi-den",
+          "text": "Bác đứng soi đèn, cháu vào một mình",
+          "consequence": "Bác giơ đèn thật cao, miệng đếm từng bước của {name}. Tiếng đếm vang dưới vòm cầu, nghe ấm cả lòng.",
+          "nextStepId": "doc-thu-cu-dong"
+        }
+      ],
+      "en": {
+        "title": "A path just above the water",
+        "goTo": "Climb back up to the stone bridge over the moat to tell him",
+        "prompt": "Behind the door is a narrow stone ledge just above dark water. He stands on the bridge, gone pale: he can't swim. What will {name} do?",
+        "choices": [
+          { "text": "I'll go first, and you hold my shoulder", "consequence": "He takes a long breath and rests his hand on {name}'s shoulder. Together they edge along the ledge, slow but sure." },
+          { "text": "Let's fetch a rope and a float first", "consequence": "He sighs with relief: «Quite right, every locksmith loves a safety catch.» The rope and float are kept by the drawbridge." },
+          { "text": "You hold the lamp and I'll go in alone", "consequence": "He lifts the lamp high and counts each of {name}'s steps aloud. His counting echoes under the arch, warm as a hug." }
+        ]
+      }
+    },
+    {
+      "id": "tim-day-phao",
+      "title": "Dây thừng và phao bần",
+      "goTo": "Chạy ra cầu treo lấy dây thừng và phao bần",
+      "kind": "find-object",
+      "prompt": "Đồ an toàn của bác cất ở cầu treo. Đọc lời tả và tìm đủ hai món:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "day-thung",
+          "name": "Cuộn dây thừng",
+          "clue": "Cuộn tròn như con rắn ngủ, sợi thô ráp, kéo căng thì giữ được cả một chú bò.",
+          "target": "st-chia-khoa-thu-tram-day-thung"
+        },
+        {
+          "id": "phao-ban",
+          "name": "Phao bần cam",
+          "clue": "Tròn như bánh xe, cam chói lóa, thả xuống nước là nổi lềnh bềnh chẳng chịu chìm.",
+          "target": "st-chia-khoa-thu-tram-phao-ban"
+        }
+      ],
+      "en": {
+        "title": "Rope and cork float",
+        "goTo": "Run to the drawbridge (Cầu treo) for the rope and cork float",
+        "prompt": "His safety gear is kept by the drawbridge. Read the descriptions and find both things:",
+        "items": [
+          { "name": "Coil of rope", "clue": "Curled up like a sleeping snake, rough to touch, and strong enough to hold a cow." },
+          { "name": "Orange cork float", "clue": "Round as a wheel, dazzling orange, and it bobs on the water refusing to sink." }
+        ]
+      }
+    },
+    {
+      "id": "doc-thu-cu-dong",
+      "title": "Lá thư trong hộp sắt",
+      "goTo": "Vào trong cánh cửa dưới gầm cầu, mở hộp sắt của Cụ Đồng",
+      "kind": "read",
+      "target": "st-chia-khoa-thu-tram-hop-sat",
+      "skill": "doc-hieu",
+      "text": "Trò Khóa thân mến,\nNếu con đọc được thư này, nghĩa là con đã biết đếm, biết cộng và biết sợ mà vẫn bước. Chìa thứ một trăm có ba mảnh. Mảnh thứ nhất chờ ở nơi thuyền đợi khách. Mảnh thứ hai ngủ trong cổng thành. Mảnh thứ ba thì không ai giấu cả: con phải tự làm ra.\nThầy của con, Cụ Đồng.",
+      "question": "Theo lá thư, mảnh thứ ba của chiếc chìa ở đâu?",
+      "choices": [
+        { "id": "a", "text": "Ở nơi thuyền đợi khách" },
+        { "id": "b", "text": "Ngủ trong cổng thành" },
+        { "id": "c", "text": "Bác phải tự làm ra" }
+      ],
+      "answer": { "choice": "c" },
+      "support": {
+        "guide": ["Thư kể ba mảnh, mỗi mảnh một câu.", "Tìm câu bắt đầu bằng «Mảnh thứ ba»."],
+        "hint": "Câu ấy nói không ai giấu mảnh này cả.",
+        "answer": {
+          "text": "Không ai giấu, bác tự làm lấy",
+          "explanation": "Thư viết: mảnh thứ ba thì không ai giấu cả, con phải tự làm ra."
+        },
+        "en": {
+          "guide": ["The letter names three pieces, one sentence each.", "Find the sentence that starts «The third piece»."],
+          "hint": "That sentence says nobody hid this one.",
+          "answer": {
+            "text": "Nobody hid it; he must make it",
+            "explanation": "The letter says: nobody hid the third piece; you must make it yourself."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bác đọc lại câu ấy ba lần, rồi bật cười giữa gầm cầu.",
+          "Đúng thế, mảnh thứ ba phải tự tay làm, {name} đọc tinh lắm.",
+          "Một câu đố trong một câu đố, mà {name} vẫn gỡ ra được!"
+        ],
+        "wrong": [
+          "Đó là chỗ của mảnh thứ nhất, đọc tiếp xuống dưới nhé.",
+          "Cổng thành giữ mảnh thứ hai cơ, còn mảnh thứ ba thì sao?",
+          "Tìm câu có chữ «không ai giấu» xem nào."
+        ],
+        "en": {
+          "right": [
+            "He reads that sentence three times, then laughs out loud under the bridge.",
+            "That's it, the third piece is handmade. Sharp reading, {name}.",
+            "A riddle inside a riddle, and you still untangled it!"
+          ],
+          "wrong": [
+            "That's where the first piece is; keep reading further down.",
+            "The gate holds the second piece; what about the third?",
+            "Look for the words «nobody hid»."
+          ]
+        }
+      },
+      "en": {
+        "title": "The letter in the iron box",
+        "goTo": "Go through the door under the bridge (Gầm cầu) and open Cụ Đồng's iron box",
+        "text": "Dear Khóa, my pupil,\nIf you are reading this, you have learnt to count, to add, and to be afraid yet keep walking. The hundredth key has three pieces. The first waits where boats wait for passengers. The second sleeps inside the castle gate. The third piece nobody hid: you must make it yourself.\nYour teacher, Cụ Đồng.",
+        "question": "According to the letter, where is the third piece of the key?",
+        "choices": ["Where boats wait for passengers", "Asleep inside the castle gate", "He has to make it himself"]
+      }
+    },
+    {
+      "id": "cua-mo-gam-cau",
+      "title": "Cánh cửa của nỗi sợ",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác Thợ Khóa Thành ôm lá thư vào ngực, mắt đỏ hoe mà miệng vẫn cười. Bác bảo hôm nay hai bác cháu đã mở được một cánh cửa khó nhất: cánh cửa của nỗi sợ.",
+      "en": {
+        "title": "The door of fear",
+        "text": "Bác Thợ Khóa Thành hugs the letter to his chest, eyes red but smiling. He says today the two of you opened the hardest door of all: the door of fear."
+      }
+    },
+    {
+      "id": "noi-thuyen-doi",
+      "title": "Nơi thuyền đợi khách",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Nơi thuyền đợi khách là bến trước cổng thành, mà bác thì chưa bao giờ dám bước xuống thuyền. Bác hẹn {name} sáng mai ở bến, «nhớ đến sớm, kẻo bác đổi ý».",
+      "en": {
+        "title": "Where boats wait",
+        "text": "Where boats wait for passengers means the landing in front of the castle gate, and he has never dared step into a boat. He asks {name} to meet him there tomorrow morning: «come early, before I change my mind»."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 18,
+    "skillXp": { "so-sanh-so": 1, "phep-cong": 1, "doc-hieu": 1 }
+  },
+  "en": {
+    "title": "Bác Thợ Khóa Thành's story, chapter 2: The little door under the bridge",
+    "summary": "Under the stone bridge is an iron door with a number lock. {name} finds three carvings on the bridge spans, orders the numbers, adds up the code, helps Bác Thợ Khóa Thành past his fear of water and reads the letter his teacher left."
+  }
+}

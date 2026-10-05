@@ -1,0 +1,252 @@
+{
+  "id": "yarn-den-ham-khong-tat-1",
+  "region": "lau-dai",
+  "chapter": 2,
+  "title": "Chuyện của Gấu Gác Hầm, chương 1: Ngọn nến cứ tắt phụt",
+  "status": "active",
+  "category": "story",
+  "summary": "Nến trong hầm ngục cứ tắt phụt dù chẳng có gió. {name} lấy nến và đèn cho Gấu Gác Hầm, tính số nến cho cả đêm, lần theo luồng gió lạ và gặp một vị khách bé xíu đang treo ngược trong góc tối.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Gấu Gác Hầm, Dơi Nhí Lộn Ngược",
+    "where": "Lâu đài: hầm ngục, nhà người hầu, lối xuống hầm, góc hầm tối",
+    "goal": "Tìm ra vì sao nến trong hầm cứ tắt và giúp gấu gác đêm yên lòng",
+    "play": "Tìm nến và đèn theo lời tả, tính số nến cho tám giờ, lần theo luồng gió, chọn cách sống chung với bạn dơi, chơi tìm đồ trong hầm",
+    "learn": "Đọc hiểu lời tả, cộng nhiều lần một số",
+    "reward": "55 XP, 15 Xu, Skill XP Đọc hiểu, Phép cộng, vật phẩm Rồng con sứ",
+    "next": "Chị Giặt Áo ở cổng tây mất bảy tấm khăn, và gấu bỗng đỏ mặt"
+  },
+  "phases": {
+    "hook": "gau-thi-tham",
+    "explore": "lay-nen-den",
+    "learn": "dem-nen-dem",
+    "challenge": "tim-gio-la",
+    "decision": "gap-doi-nhi",
+    "finale": "nhat-do-trong-toi",
+    "reward": "goc-sang-goc-toi",
+    "next": "khan-trai-bien-mat"
+  },
+  "places": {
+    "gau-gac-ham": "Hầm ngục",
+    "lay-nen-den": "Nhà người hầu",
+    "tim-gio-la": "Lối xuống hầm",
+    "st-den-ham-khong-tat-doi-nhi": "Góc hầm tối"
+  },
+  "steps": [
+    {
+      "id": "gau-thi-tham",
+      "title": "Ba cây nến tắt trong đêm",
+      "goTo": "Xuống hầm ngục, Gấu Gác Hầm đang thì thầm gọi",
+      "kind": "dialogue",
+      "target": "gau-gac-ham",
+      "lines": [
+        { "speaker": "Gấu Gác Hầm", "text": "Suỵt! {name}, lại đây. Đêm qua ba cây nến trong hầm tắt phụt một lúc, mà dưới này làm gì có gió." },
+        { "speaker": "Gấu Gác Hầm", "text": "Gấu không sợ đâu nhé. Gấu chỉ… muốn có thêm nến, thêm đèn, thêm chụp đèn, và thêm một người bạn đứng cạnh." }
+      ],
+      "choices": [
+        { "text": "Tớ đi lấy nến cho gấu ngay!", "reply": "Nhà người hầu có kho nến đấy. Lấy cả chụp đèn nhé, gió chẳng lách qua được thủy tinh đâu." },
+        { "text": "Có khi nào là… ma không?", "reply": "Suỵt suỵt! Đừng nói chữ đó trong hầm. Cứ gọi là «một người bạn chưa quen» thôi." }
+      ],
+      "en": {
+        "title": "Three candles out in the night",
+        "goTo": "Go down into the dungeon, where Gấu Gác Hầm is whispering for you",
+        "lines": [
+          "Shh! {name}, come here. Last night three candles in the cellar went out all at once, and there's no wind down here at all.",
+          "I'm not scared, mind you. I just… want more candles, more lamps, more lamp glasses, and one more friend standing beside me."
+        ],
+        "choices": [
+          { "text": "I'll fetch you candles right now!", "reply": "There's a candle store at the servants' house. Bring a lamp glass too; no draught gets through glass." },
+          { "text": "Could it be… a ghost?", "reply": "Shh shh! Don't say that word in the cellar. Let's call it «a friend we haven't met yet»." }
+        ]
+      }
+    },
+    {
+      "id": "lay-nen-den",
+      "title": "Kho nến nhà người hầu",
+      "goTo": "Sang nhà người hầu lấy nến và đèn cho Gấu Gác Hầm",
+      "kind": "find-object",
+      "prompt": "Kho của nhà người hầu bừa bộn lắm. Đọc lời tả rồi tìm ba món gấu cần:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "hop-nen",
+          "name": "Hộp nến sáp ong",
+          "clue": "Hộp gỗ nhỏ thơm mùi mật, bên trong xếp hàng những cây nến vàng to bằng ngón tay gấu con.",
+          "target": "st-den-ham-khong-tat-hop-nen"
+        },
+        {
+          "id": "chup-den",
+          "name": "Chụp đèn thủy tinh",
+          "clue": "Trong suốt như một giọt nước to, úp lên ngọn nến thì gió thổi cỡ nào lửa cũng đứng yên.",
+          "target": "st-den-ham-khong-tat-chup-den"
+        },
+        {
+          "id": "den-long",
+          "name": "Đèn lồng giấy đỏ",
+          "clue": "Gấp lại thì dẹt như cái bánh đa, mở ra thì phình tròn đỏ rực như quả bóng.",
+          "target": "st-den-ham-khong-tat-den-long"
+        }
+      ],
+      "en": {
+        "title": "The servants' candle store",
+        "goTo": "Go over to the servants' house (Nhà người hầu) for candles and lamps for Gấu Gác Hầm",
+        "prompt": "The servants' store room is a terrible mess. Read the descriptions and find the three things the bear needs:",
+        "items": [
+          { "name": "Box of beeswax candles", "clue": "A small wooden box smelling of honey, with yellow candles lined up inside, each as thick as a bear cub's finger." },
+          { "name": "Glass lamp cover", "clue": "Clear as a giant drop of water; put it over a flame and the flame stands still however hard the wind blows." },
+          { "name": "Red paper lantern", "clue": "Folded, it's flat as a rice cracker; opened, it puffs up round and bright red like a balloon." }
+        ]
+      }
+    },
+    {
+      "id": "dem-nen-dem",
+      "title": "Bao nhiêu nến cho một đêm?",
+      "goTo": "Mang đồ về hầm ngục, gấu muốn tính số nến cho cả đêm",
+      "kind": "riddle",
+      "target": "gau-gac-ham",
+      "skill": "phep-cong",
+      "question": "Mỗi cây nến sáp ong cháy được 2 giờ. Gấu gác từ 8 giờ tối tới 4 giờ sáng, tức là 8 giờ liền, thắp hết cây này mới thắp cây kia. Gấu cần ít nhất mấy cây nến để không lúc nào tối?",
+      "answer": { "value": 4 },
+      "support": {
+        "guide": ["Mỗi cây nến sáng được 2 giờ.", "Cứ cộng thêm 2 giờ cho mỗi cây, tới khi đủ 8 giờ.", "Đếm xem đã cộng mấy lần số 2."],
+        "hint": "Bốn lần số 2: 2 + 2 + 2 + 2 = 8.",
+        "answer": {
+          "text": "Cần đủ 4 cây nến",
+          "explanation": "2 + 2 + 2 + 2 = 8 giờ: cộng bốn lần số 2, mỗi lần một cây, nên cần 4 cây nến."
+        },
+        "en": {
+          "guide": ["Each candle lights for 2 hours.", "Keep adding 2 hours, one candle at a time, until you reach 8 hours.", "Count how many times you added 2."],
+          "hint": "Four twos: 2 + 2 + 2 + 2 = 8.",
+          "answer": {
+            "text": "4 candles are needed",
+            "explanation": "2 + 2 + 2 + 2 = 8 hours: four lots of 2, one per candle, so 4 candles."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn cây! Gấu xếp chúng thành hàng, đẹp như bốn người lính gác.",
+          "Đêm nay chẳng phút nào tối, {name} tính chuẩn quá.",
+          "Gấu đếm lại hai lượt cho chắc, lượt nào cũng ra bốn."
+        ],
+        "wrong": [
+          "Ối, thế thì giữa đêm hầm tối om mất, tính lại giùm gấu nhé.",
+          "Thử cộng hai giờ một, tới tám giờ thì dừng lại xem.",
+          "Thừa nến cũng tốt, nhưng gấu hỏi «ít nhất» cơ mà."
+        ],
+        "en": {
+          "right": [
+            "Four! The bear lines them up like four little sentries.",
+            "Not a single dark minute tonight; perfect sums, {name}.",
+            "The bear counts twice to be sure, and gets four both times."
+          ],
+          "wrong": [
+            "Oh dear, the cellar would go dark halfway through the night. Try again for me?",
+            "Add two hours at a time and stop when you reach eight.",
+            "Spare candles are nice, but the bear asked for «the fewest»."
+          ]
+        }
+      },
+      "en": {
+        "title": "Candles for one night",
+        "goTo": "Bring everything back to the dungeon (Hầm ngục); the bear wants to work out the night's candles",
+        "question": "Each beeswax candle burns for 2 hours. The bear keeps watch from 8 in the evening to 4 in the morning, that's 8 hours straight, lighting one candle when the last burns out. What is the fewest candles he needs so it's never dark?"
+      }
+    },
+    {
+      "id": "tim-gio-la",
+      "title": "Luồng gió từ đâu tới?",
+      "goTo": "Lần theo luồng gió lạ ở lối xuống hầm",
+      "kind": "search",
+      "targets": ["st-den-ham-khong-tat-khe-cua", "st-den-ham-khong-tat-ong-khoi", "st-den-ham-khong-tat-vet-chan"],
+      "en": {
+        "title": "Where's the draught from?",
+        "goTo": "Follow the strange draught along the cellar stairs (Lối xuống hầm)"
+      }
+    },
+    {
+      "id": "gap-doi-nhi",
+      "title": "Vị khách treo ngược",
+      "goTo": "Theo dấu chân bé xíu vào góc hầm tối",
+      "kind": "decision",
+      "target": "st-den-ham-khong-tat-doi-nhi",
+      "speaker": "Dơi Nhí Lộn Ngược",
+      "prompt": "Một bạn dơi bé tí treo ngược trên xà, lấy cánh che mắt: «Đèn chói quá, tớ đập cánh là nến tắt. Tớ không cố ý đâu!» {name} tính sao?",
+      "choices": [
+        {
+          "id": "chia-goc",
+          "text": "Chia hầm làm hai: góc tối cho Dơi, góc sáng cho gấu",
+          "consequence": "Gấu dời hết nến sang góc bên kia. Dơi Nhí hạ cánh khỏi mắt, cười lộ hai cái răng bé như hạt gạo."
+        },
+        {
+          "id": "up-chup",
+          "text": "Úp chụp thủy tinh lên nến, cánh dơi có đập cũng không tắt",
+          "consequence": "Ngọn nến sau lớp thủy tinh đứng im phăng phắc. Dơi Nhí đập cánh thật mạnh để thử, nến vẫn sáng, cả hai phì cười."
+        },
+        {
+          "id": "ket-ban",
+          "text": "Giới thiệu Dơi với gấu, để hai bạn tự bàn nhau",
+          "consequence": "Gấu lí nhí chào, Dơi lí nhí chào lại. Hóa ra hai bạn sợ nhau còn hơn sợ bóng tối."
+        }
+      ],
+      "en": {
+        "title": "The upside-down visitor",
+        "goTo": "Follow the tiny footprints into the dark corner of the cellar (Góc hầm tối)",
+        "prompt": "A tiny bat hangs upside down from a beam, wings over its eyes: «The light's so bright! When I flap, the candles go out. I don't mean to!» What will {name} do?",
+        "choices": [
+          { "text": "Split the cellar: a dark corner for the bat, a bright one for the bear", "consequence": "The bear moves every candle to the far corner. Dơi Nhí lowers its wings and grins, showing two teeth as small as grains of rice." },
+          { "text": "Put the glass covers over the candles so flapping can't blow them out", "consequence": "Behind the glass the flame stands perfectly still. Dơi Nhí flaps as hard as it can to test it; the candle stays lit and both of them burst out laughing." },
+          { "text": "Introduce the bat to the bear and let them work it out", "consequence": "The bear mumbles hello, the bat mumbles hello back. It turns out they were more scared of each other than of the dark." }
+        ]
+      }
+    },
+    {
+      "id": "nhat-do-trong-toi",
+      "title": "Đồ rơi trong bóng tối",
+      "goTo": "Về hầm ngục nhặt lại đồ thất lạc Dơi Nhí làm rơi",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "gau-gac-ham",
+      "prompt": "Lúc bay loạn xạ, Dơi Nhí làm đồ thất lạc của gấu rơi khắp hầm. Soi đèn tìm giúp bốn món nhé!",
+      "game": "hidden-objects",
+      "goal": 4,
+      "en": {
+        "title": "Things dropped in the dark",
+        "goTo": "Back in the dungeon (Hầm ngục), pick up the lost property Dơi Nhí knocked over",
+        "prompt": "Flapping about, Dơi Nhí scattered the bear's lost property all over the cellar. Shine a lamp and find four things!"
+      }
+    },
+    {
+      "id": "goc-sang-goc-toi",
+      "title": "Một góc sáng, một góc tối",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hầm giờ có một góc sáng và một góc tối, ai cũng có chỗ của mình. Gấu Gác Hầm đếm nến hai lượt, lượt nào cũng đủ, rồi lục kho tặng {name} một chú rồng con bằng sứ.",
+      "en": {
+        "title": "A bright corner and a dark one",
+        "text": "Now the cellar has a bright corner and a dark one, and everyone has a place. Gấu Gác Hầm counts the candles twice, all present both times, then digs out a little china dragon from the store for {name}."
+      }
+    },
+    {
+      "id": "khan-trai-bien-mat",
+      "title": "Bảy tấm khăn biến mất",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sáng hôm sau, Chị Giặt Áo ở cổng tây hớt hải đi tìm gấu: bảy tấm khăn trải giường phơi ngoài dây đã biến mất. Gấu bỗng… đỏ mặt. {name} quay lại hầm hỏi chuyện nhé.",
+      "en": {
+        "title": "Seven sheets gone missing",
+        "text": "Next morning the laundress from the west gate comes hurrying to find the bear: seven bed sheets have vanished from her line. The bear suddenly… blushes. Come back to the cellar and ask him about it, {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 15,
+    "skillXp": { "doc-hieu": 1, "phep-cong": 1 },
+    "items": { "rong-con-su": 1 }
+  },
+  "en": {
+    "title": "Gấu Gác Hầm's story, chapter 1: The candles that keep going out",
+    "summary": "The candles in the dungeon keep going out although there is no wind. {name} fetches candles and lamps for Gấu Gác Hầm, works out how many the night needs, follows a strange draught and meets a tiny visitor hanging upside down in the dark corner."
+  }
+}

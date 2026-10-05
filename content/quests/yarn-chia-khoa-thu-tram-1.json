@@ -1,0 +1,320 @@
+{
+  "id": "yarn-chia-khoa-thu-tram-1",
+  "region": "lau-dai",
+  "chapter": 3,
+  "title": "Chuyện của Bác Thợ Khóa Thành, chương 1: Tiếng kẽo kẹt của cầu đá",
+  "status": "active",
+  "category": "story",
+  "summary": "Cỗ máy nâng cầu đá bỗng kêu kẽo kẹt ba tiếng một. {name} nhặt đồ nghề cho Bác Thợ Khóa Thành, đọc tấm biển đồng của người thầy cũ, tính vòng quay bánh răng rồi lắp lại máy cho cầu êm ru.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bác Thợ Khóa Thành",
+    "where": "Lâu đài: cầu đá qua hào, bãi cỏ ven hào, nhịp cầu đầu, đầu cầu",
+    "goal": "Sửa cỗ máy nâng cầu đá và tìm hiểu tiếng kêu lạ thầy của bác để lại",
+    "play": "Tìm ba món đồ nghề theo lời tả, đọc tấm biển đồng, tính vòng quay bánh răng, chọn cách giữ tấm biển, chơi lắp bánh răng",
+    "learn": "Đọc hiểu lời dặn, suy luận vòng quay bánh răng bằng phép cộng",
+    "reward": "60 XP, 15 Xu, Skill XP Đọc hiểu, Logic",
+    "next": "Dưới gầm cầu có tiếng lách cách như ai thử khóa, bác hẹn {name} xuống xem"
+  },
+  "phases": {
+    "hook": "gap-bac-tho-khoa",
+    "explore": "nhat-do-nghe",
+    "learn": "doc-tam-bien",
+    "challenge": "dem-rang-banh",
+    "decision": "giu-tam-bien",
+    "finale": "sua-may-cau",
+    "reward": "cau-ha-em",
+    "next": "tieng-lach-cach"
+  },
+  "places": {
+    "bac-tho-khoa-thanh": "Cầu đá qua hào",
+    "nhat-do-nghe": "Bãi cỏ ven hào",
+    "st-chia-khoa-thu-tram-tam-bien": "Nhịp cầu đầu",
+    "st-chia-khoa-thu-tram-hop-may": "Nhịp cầu đầu",
+    "st-chia-khoa-thu-tram-may-nang-cau": "Đầu cầu"
+  },
+  "steps": [
+    {
+      "id": "gap-bac-tho-khoa",
+      "title": "Cầu đá kêu lạ",
+      "goTo": "Ra cầu đá qua hào, Bác Thợ Khóa Thành đang gõ chào từng ổ khóa",
+      "kind": "dialogue",
+      "target": "bac-tho-khoa-thanh",
+      "lines": [
+        { "speaker": "Bác Thợ Khóa Thành", "text": "Cạch! Chào {name}. Sáng nay cỗ máy nâng cầu kêu kẽo kẹt ba tiếng một, nghe như có ai gõ cửa từ bên trong." },
+        { "speaker": "Bác Thợ Khóa Thành", "text": "Bác cần dầu, giẻ và một bánh răng dự phòng, mà gió đêm qua thổi đồ nghề của bác văng ra tận bãi cỏ ven hào." },
+        { "speaker": "Bác Thợ Khóa Thành", "text": "Mà này, chùm chìa của bác có một trăm cái móc, chỉ treo chín mươi chín chìa. Cái móc trống ấy… thôi, sửa cầu xong bác kể." }
+      ],
+      "choices": [
+        { "text": "Để cháu đi nhặt đồ nghề cho bác!", "reply": "Tốt quá. Hũ dầu có nắp vàng, đừng nhầm với hũ mật của nhà bếp nhé." },
+        { "text": "Cái móc trống ấy là sao hả bác?", "reply": "Tò mò y hệt thầy bác hồi xưa. Nhặt đồ về đã, rồi bác kể dần cho nghe." }
+      ],
+      "en": {
+        "title": "The bridge makes a strange noise",
+        "goTo": "Go to the stone bridge over the moat, where Bác Thợ Khóa Thành is tapping hello on every lock",
+        "lines": [
+          "Click! Hello, {name}. This morning the bridge machine started creaking in threes, like someone knocking from inside.",
+          "I need oil, a rag and a spare cog, but last night's wind blew my tools all the way to the grassy bank of the moat.",
+          "Oh, and my key ring has a hundred hooks but only ninety-nine keys. That empty hook… never mind, I'll tell you once the bridge is fixed."
+        ],
+        "choices": [
+          { "text": "I'll go and fetch your tools!", "reply": "Splendid. The oil pot has a yellow lid; don't mix it up with the kitchen's honey pot." },
+          { "text": "What's the story with the empty hook?", "reply": "Nosy, just like my old teacher. Bring the tools first, and I'll tell you bit by bit." }
+        ]
+      }
+    },
+    {
+      "id": "nhat-do-nghe",
+      "title": "Nhặt đồ nghề của bác",
+      "goTo": "Ra bãi cỏ ven hào nhặt đồ nghề gió thổi văng",
+      "kind": "find-object",
+      "prompt": "Gió đêm thổi đồ nghề của bác văng khắp bãi cỏ. Đọc lời tả rồi tìm từng món:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "hu-dau",
+          "name": "Hũ dầu tra khóa",
+          "clue": "Hũ nhỏ có nắp vàng, mở ra thơm mùi vừng rang; nhỏ một giọt là ổ khóa thôi kêu ca.",
+          "target": "st-chia-khoa-thu-tram-hu-dau"
+        },
+        {
+          "id": "banh-rang",
+          "name": "Bánh răng dự phòng",
+          "clue": "Tròn như đồng xu to, viền kín răng cưa bé xíu, nằm im mà trông như sắp quay.",
+          "target": "st-chia-khoa-thu-tram-banh-rang"
+        },
+        {
+          "id": "gie-lau",
+          "name": "Giẻ lau sợi gai",
+          "clue": "Mềm, xám, lấm tấm vết dầu, sáng nào sương xuống cũng được đem ra lau xích cầu.",
+          "target": "st-chia-khoa-thu-tram-gie-lau"
+        }
+      ],
+      "en": {
+        "title": "Gather the locksmith's tools",
+        "goTo": "Head to the grassy bank of the moat (Bãi cỏ ven hào) for the scattered tools",
+        "prompt": "The night wind scattered the tools all over the grass. Read each description and find them:",
+        "items": [
+          { "name": "Pot of lock oil", "clue": "A small pot with a yellow lid that smells of toasted sesame; one drop and a lock stops complaining." },
+          { "name": "Spare cog", "clue": "Round as a big coin, edged with tiny teeth, and even lying still it looks ready to spin." },
+          { "name": "Hemp rag", "clue": "Soft, grey and spotted with oil; every dewy morning it wipes down the bridge chain." }
+        ]
+      }
+    },
+    {
+      "id": "doc-tam-bien",
+      "title": "Tấm biển đồng trong hộp máy",
+      "goTo": "Mở nắp hộp máy ở nhịp cầu đầu, bên trong gắn một tấm biển đồng",
+      "kind": "read",
+      "target": "st-chia-khoa-thu-tram-tam-bien",
+      "skill": "doc-hieu",
+      "text": "Hộp máy cầu đá. Cụ Đồng làm năm tuyết rơi dày nhất.\nBánh răng lớn: 12 răng. Bánh răng nhỏ: 6 răng.\nTra dầu mỗi tuần một lần, đừng tra mỗi ngày kẻo dầu đọng lại thành keo.\nMáy kêu ba tiếng một là lúc móc thứ một trăm chờ chìa. Chìa ấy không rèn bằng lửa.",
+      "question": "Theo tấm biển, bao lâu thì tra dầu cho hộp máy một lần?",
+      "choices": [
+        { "id": "a", "text": "Mỗi ngày một lần" },
+        { "id": "b", "text": "Mỗi tuần một lần" },
+        { "id": "c", "text": "Mỗi năm một lần" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm dòng có chữ «tra dầu».", "Đọc cả lời dặn đứng sau dấu phẩy của dòng ấy."],
+        "hint": "Tấm biển còn dặn đừng tra mỗi ngày đấy.",
+        "answer": {
+          "text": "Mỗi tuần tra dầu một lần",
+          "explanation": "Tấm biển ghi: tra dầu mỗi tuần một lần, đừng tra mỗi ngày kẻo dầu đọng lại thành keo."
+        },
+        "en": {
+          "guide": ["Find the line with the words «oil it».", "Read the warning after the comma on that line too."],
+          "hint": "The plate even warns against oiling it every day.",
+          "answer": {
+            "text": "Oil it once every week",
+            "explanation": "The plate says: oil it once a week, not every day, or the oil sets into glue."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi, mỗi tuần một lần, bác ghi ngay vào lòng bàn tay đây.",
+          "{name} đọc biển đồng còn nhanh hơn bác đọc ổ khóa!",
+          "Chuẩn! Tra nhiều quá thì ổ khóa dính như kẹo mạch nha."
+        ],
+        "wrong": [
+          "Mỗi ngày thì dầu đọng thành keo mất, đọc lại lời dặn nhé.",
+          "Mỗi năm thì cầu kêu như vịt bầu mất, tìm dòng có chữ «tra dầu» xem.",
+          "Gần rồi, nhìn kỹ chữ đứng ngay sau «mỗi» trên tấm biển nha."
+        ],
+        "en": {
+          "right": [
+            "Right, once a week. I'm writing it on my palm right now.",
+            "You read brass plates faster than I read locks, {name}!",
+            "Exactly! Too much oil and a lock gets sticky as toffee."
+          ],
+          "wrong": [
+            "Every day and the oil turns to glue; read the warning again.",
+            "Once a year and the bridge would quack like a duck. Look for the line about oiling.",
+            "Close! Look carefully at the word right after «once» on the plate."
+          ]
+        }
+      },
+      "en": {
+        "title": "The brass plate in the gear box",
+        "goTo": "Open the gear box at the first span of the bridge (Nhịp cầu đầu); a brass plate is fixed inside",
+        "text": "Bridge gear box. Made by Cụ Đồng in the year of the deepest snow.\nBig cog: 12 teeth. Small cog: 6 teeth.\nOil it once a week, not every day, or the oil sets into glue.\nWhen the machine creaks in threes, the hundredth hook is waiting for its key. That key is not forged in fire.",
+        "question": "According to the plate, how often should the gear box be oiled?",
+        "choices": ["Once a day", "Once a week", "Once a year"]
+      }
+    },
+    {
+      "id": "dem-rang-banh",
+      "title": "Bánh lớn, bánh nhỏ",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-chia-khoa-thu-tram-hop-may",
+      "skill": "logic",
+      "prompt": "Bánh răng lớn có 12 răng ăn khớp với bánh răng nhỏ có 6 răng. Bánh lớn quay đủ một vòng thì bánh nhỏ quay mấy vòng?",
+      "choices": [
+        { "id": "a", "text": "1 vòng" },
+        { "id": "b", "text": "2 vòng" },
+        { "id": "c", "text": "6 vòng" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": [
+          "Mỗi răng của bánh lớn đẩy đúng một răng của bánh nhỏ.",
+          "Bánh lớn quay một vòng thì đẩy đi 12 răng.",
+          "Bánh nhỏ cứ đi hết 6 răng là xong một vòng."
+        ],
+        "hint": "6 + 6 = 12.",
+        "answer": {
+          "text": "2 vòng",
+          "explanation": "Bánh lớn đẩy đi 12 răng; bánh nhỏ cứ 6 răng là một vòng, 6 + 6 = 12 nên nó quay đúng 2 vòng."
+        },
+        "en": {
+          "guide": [
+            "Each tooth of the big cog pushes exactly one tooth of the small cog.",
+            "One turn of the big cog pushes 12 teeth along.",
+            "The small cog finishes a turn every time 6 teeth go by."
+          ],
+          "hint": "6 + 6 = 12.",
+          "answer": {
+            "text": "2 turns",
+            "explanation": "The big cog pushes 12 teeth; the small cog turns once per 6 teeth, and 6 + 6 = 12, so it turns exactly twice."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai vòng! Bánh nhỏ chạy lon ton nhanh gấp đôi bánh lớn.",
+          "Thợ già cũng phải gật gù: {name} tính răng giỏi thật.",
+          "Chính xác, vì thế bánh nhỏ mòn nhanh, bác mới cần cái dự phòng."
+        ],
+        "wrong": [
+          "Bánh nhỏ ít răng hơn thì phải quay nhiều vòng hơn chứ nhỉ?",
+          "Thử đếm nào: 6 răng một vòng, cần thêm mấy răng nữa cho đủ 12?",
+          "Sáu vòng thì bánh nhỏ chóng mặt mất, đếm lại cùng bác nhé."
+        ],
+        "en": {
+          "right": [
+            "Two turns! The little cog scurries round twice as fast as the big one.",
+            "Even this old craftsman is impressed: you count cog teeth brilliantly, {name}.",
+            "Exactly, and that's why small cogs wear out fast and I keep a spare."
+          ],
+          "wrong": [
+            "Fewer teeth means the small cog must turn more, wouldn't you say?",
+            "Let's count: 6 teeth make one turn; how many more teeth reach 12?",
+            "Six turns would make the little cog dizzy. Let's count again together."
+          ]
+        }
+      },
+      "en": {
+        "title": "Big cog, little cog",
+        "prompt": "A big cog with 12 teeth meshes with a small cog with 6 teeth. When the big cog turns once, how many times does the small cog turn?",
+        "choices": ["1 turn", "2 turns", "6 turns"]
+      }
+    },
+    {
+      "id": "giu-tam-bien",
+      "title": "Tấm biển của thầy",
+      "goTo": "Mang tấm biển về cầu đá qua hào cho Bác Thợ Khóa Thành xem",
+      "kind": "decision",
+      "target": "bac-tho-khoa-thanh",
+      "speaker": "Bác Thợ Khóa Thành",
+      "prompt": "Bác đọc dòng cuối tấm biển, tay run run: «Chìa ấy không rèn bằng lửa…». Bác hỏi {name} nên làm gì với tấm biển này?",
+      "choices": [
+        {
+          "id": "treo-xuong",
+          "text": "Treo lên vách xưởng cho bác ngày nào cũng thấy",
+          "consequence": "Bác gật đầu: «Ừ, để nó nhắc bác rằng thầy vẫn đang đố bác.» Tấm biển sáng loáng trên vách xưởng."
+        },
+        {
+          "id": "giu-kin",
+          "text": "Giữ bí mật, chỉ hai bác cháu biết thôi",
+          "consequence": "Bác nháy mắt, nhét tấm biển vào túi áo trong: «Bí mật có hai người giữ thì chắc như khóa hai lớp.»"
+        },
+        {
+          "id": "ke-ca-thanh",
+          "text": "Kể cho cả thành, biết đâu có người hiểu câu đố",
+          "consequence": "Bác ngập ngừng rồi bật cười: «Cũng được, nhưng sửa cầu xong đã, kẻo cả thành kẹt bên kia hào.»"
+        }
+      ],
+      "en": {
+        "title": "My teacher's plate",
+        "goTo": "Take the plate back to the stone bridge over the moat (Cầu đá qua hào) to show Bác Thợ Khóa Thành",
+        "prompt": "He reads the last line with trembling hands: «That key is not forged in fire…». He asks {name} what to do with the plate.",
+        "choices": [
+          { "text": "Hang it in the workshop so you see it every day", "consequence": "He nods: «Yes, let it remind me my teacher is still setting me riddles.» The plate gleams on the workshop wall." },
+          { "text": "Keep it secret, just between the two of us", "consequence": "He winks and tucks the plate into his inside pocket: «A secret kept by two is as safe as a double lock.»" },
+          { "text": "Tell the whole castle; someone may solve the riddle", "consequence": "He hesitates, then laughs: «Fair enough, but let's fix the bridge first, or the whole castle gets stuck across the moat.»" }
+        ]
+      }
+    },
+    {
+      "id": "sua-may-cau",
+      "title": "Lắp lại máy nâng cầu",
+      "goTo": "Tới máy nâng cầu ở đầu cầu, lắp lại bánh răng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-chia-khoa-thu-tram-may-nang-cau",
+      "prompt": "Nối bánh răng từ tay quay tới trục kéo xích, cho cầu đá nâng lên êm ru nhé!",
+      "game": "gear-train",
+      "goal": 3,
+      "en": {
+        "title": "Rebuild the bridge machine",
+        "goTo": "Go to the lifting machine at the bridgehead (Đầu cầu) and fit the cogs back in",
+        "prompt": "Link the cogs from the crank to the chain drum so the stone bridge lifts without a sound!"
+      }
+    },
+    {
+      "id": "cau-ha-em",
+      "title": "Cầu êm như ru",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cầu đá nâng lên hạ xuống êm như ru, không còn một tiếng kẽo kẹt. Bác Thợ Khóa Thành gõ ba cái lên cỗ máy, rồi gõ ba cái lên vai {name}.",
+      "en": {
+        "title": "Smooth as a lullaby",
+        "text": "The stone bridge rises and falls as smooth as a lullaby, without a single creak. Bác Thợ Khóa Thành taps the machine three times, then taps {name}'s shoulder three times too."
+      }
+    },
+    {
+      "id": "tieng-lach-cach",
+      "title": "Tiếng lách cách dưới gầm cầu",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối đó bác nhắn: dưới gầm cầu vừa có tiếng lách cách như ai đang thử khóa. Mai {name} xuống gầm cầu với bác nhé, nhớ mang theo đèn.",
+      "en": {
+        "title": "A clicking under the bridge",
+        "text": "That evening he sends word: something under the bridge is clicking, as if someone were trying a lock. Come down under the bridge with him tomorrow, {name}, and bring a lamp."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": { "doc-hieu": 1, "logic": 1 }
+  },
+  "en": {
+    "title": "Bác Thợ Khóa Thành's story, chapter 1: The creaking stone bridge",
+    "summary": "The machine that lifts the stone bridge has started creaking in threes. {name} gathers tools for Bác Thợ Khóa Thành, reads his old teacher's brass plate, works out how the cogs turn and rebuilds the machine so the bridge runs smooth."
+  }
+}

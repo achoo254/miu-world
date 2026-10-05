@@ -1,0 +1,324 @@
+{
+  "id": "yarn-chia-khoa-thu-tram-3",
+  "region": "lau-dai",
+  "chapter": 3,
+  "title": "Chuyện của Bác Thợ Khóa Thành, chương 3: Hai mảnh chìa và một con thuyền",
+  "status": "active",
+  "category": "story",
+  "summary": "Mảnh chìa đầu tiên buộc ở mũi một con thuyền nan, mà Bác Thợ Khóa Thành chưa biết bơi. {name} cùng bác ra bến, chọn răng chìa thật, tìm mảnh thứ hai trong cổng thành rồi ghép chìa trên bàn thợ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bác Thợ Khóa Thành",
+    "where": "Lâu đài: cầu đá qua hào, bến thuyền trước cổng thành, cổng thành, đầu cầu",
+    "goal": "Lấy hai mảnh của chiếc chìa thứ một trăm và ghép chúng lại",
+    "play": "Trò chuyện bên thuyền, chọn các răng chìa mang số tròn chục, tìm cán chìa và chuông nhỏ, chọn cách giúp bác làm quen với nước, tính chiều cao răng chìa",
+    "learn": "Nhận ra số tròn chục, đọc hiểu lời tả, tìm số còn thiếu để đủ 5",
+    "reward": "65 XP, 18 Xu, Skill XP Số đến 100, Đọc hiểu, Logic",
+    "next": "Mảnh thứ ba bác phải tự làm, và chiếc chuông nhỏ cứ kêu về phía gốc liễu"
+  },
+  "phases": {
+    "hook": "bac-mac-ao-phao",
+    "explore": "ben-thuyen",
+    "learn": "chon-rang-chia",
+    "challenge": "tim-trong-cong",
+    "decision": "lam-quen-voi-nuoc",
+    "finale": "ghep-chia",
+    "reward": "hai-manh-chia",
+    "next": "manh-thu-ba"
+  },
+  "places": {
+    "bac-tho-khoa-thanh": "Cầu đá qua hào",
+    "st-chia-khoa-thu-tram-thuyen": "Bến thuyền",
+    "st-chia-khoa-thu-tram-hom-uot": "Bến thuyền",
+    "tim-trong-cong": "Cổng thành",
+    "st-chia-khoa-thu-tram-ban-tho": "Đầu cầu"
+  },
+  "steps": [
+    {
+      "id": "bac-mac-ao-phao",
+      "title": "Chiếc áo phao mặc ngược",
+      "goTo": "Gặp Bác Thợ Khóa Thành ở cầu đá qua hào, bác đang loay hoay với áo phao",
+      "kind": "dialogue",
+      "target": "bac-tho-khoa-thanh",
+      "lines": [
+        { "speaker": "Bác Thợ Khóa Thành", "text": "Bác dậy từ lúc gà gáy, mặc áo phao vào rồi lại cởi ra, đúng ba lần." },
+        { "speaker": "Bác Thợ Khóa Thành", "text": "Thú thật với {name}, bác sống cạnh hào cả đời mà chưa biết bơi. Nghĩ tới bến thuyền là đầu gối bác kêu lạch cạch như ổ khóa thiếu dầu." },
+        { "speaker": "Bác Thợ Khóa Thành", "text": "Nhưng mảnh chìa đang ở đó, thầy bác đợi lâu lắm rồi." }
+      ],
+      "choices": [
+        { "text": "Có cháu đi cùng, bác đừng lo!", "reply": "Ừ… có người đi cạnh thì nước hào như cạn bớt một gang tay." },
+        { "text": "Bác ơi, áo phao mặc ngược rồi kìa!", "reply": "Ơ hay, thảo nào bác thấy cổ áo nằm dưới bụng. Cảm ơn cháu!" }
+      ],
+      "en": {
+        "title": "The life jacket on back to front",
+        "goTo": "Meet Bác Thợ Khóa Thành at the stone bridge over the moat, fumbling with a life jacket",
+        "lines": [
+          "I've been up since the rooster crowed, putting this life jacket on and taking it off. Three times exactly.",
+          "To be honest, {name}, I've lived beside the moat all my life and never learnt to swim. Thinking of the landing makes my knees rattle like a lock without oil.",
+          "But the key piece is down there, and my teacher has waited long enough."
+        ],
+        "choices": [
+          { "text": "I'm coming with you, don't worry!", "reply": "Yes… with someone beside me the moat feels a hand's width shallower." },
+          { "text": "Your life jacket is on back to front!", "reply": "Well I never, no wonder the collar was round my tummy. Thank you!" }
+        ]
+      }
+    },
+    {
+      "id": "ben-thuyen",
+      "title": "Chiếc hòm ở mũi thuyền",
+      "goTo": "Xuống bến thuyền trước cổng thành, chiếc hòm buộc ở mũi một con thuyền nan",
+      "kind": "dialogue",
+      "target": "st-chia-khoa-thu-tram-thuyen",
+      "lines": [
+        { "speaker": "Bác Thợ Khóa Thành", "text": "Kia rồi, cái hòm gỗ buộc ở mũi thuyền, cách bờ đúng ba sải tay. Sóng vỗ nhẹ thôi mà bác cứ thấy như nó đang gọi bác." },
+        { "speaker": "Bác Thợ Khóa Thành", "text": "Bác sẽ bước xuống. Cháu nắm tay bác, thuyền có chòng chành thì cứ đếm to lên giúp bác." }
+      ],
+      "choices": [
+        { "text": "Một, hai, ba… bước!", "reply": "Thuyền lắc một cái rồi đứng yên. Ôi, bác đang ngồi trên thuyền thật này! Kéo hòm lên bờ thôi." },
+        { "text": "Bác cứ nhìn vào chiếc hòm, đừng nhìn xuống nước", "reply": "Mẹo hay! Mắt bác dán vào hòm, chân bước lúc nào chẳng biết. Kéo nó lên bờ nào." }
+      ],
+      "en": {
+        "title": "The chest on the bow",
+        "goTo": "Go down to the boat landing (Bến thuyền) in front of the castle gate; a chest is tied to the bow of a little boat",
+        "lines": [
+          "There it is, the wooden chest tied to the bow, exactly three arm-spans from the bank. The waves are gentle, yet it feels as if it's calling me.",
+          "I'm going to step in. Hold my hand, and if the boat wobbles, count out loud for me."
+        ],
+        "choices": [
+          { "text": "One, two, three… step!", "reply": "The boat rocks once, then settles. Goodness, I'm actually sitting in a boat! Let's pull the chest ashore." },
+          { "text": "Keep your eyes on the chest, not the water", "reply": "Clever trick! With my eyes on the chest, my feet stepped in before I noticed. Let's haul it ashore." }
+        ]
+      }
+    },
+    {
+      "id": "chon-rang-chia",
+      "title": "Răng chìa thật, răng chìa giả",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-chia-khoa-thu-tram-hom-uot",
+      "skill": "so-den-100",
+      "prompt": "Trong hòm có năm chiếc răng chìa bằng đồng, chiếc nào cũng khắc một số. Lời dặn trên nắp hòm: «Răng thật mang số tròn chục». Chọn mọi răng thật:",
+      "choices": [
+        { "id": "a", "text": "25" },
+        { "id": "b", "text": "70" },
+        { "id": "c", "text": "90" },
+        { "id": "d", "text": "47" },
+        { "id": "e", "text": "20" }
+      ],
+      "answer": { "choices": ["b", "c", "e"] },
+      "support": {
+        "guide": ["Răng thật khắc số có hàng đơn vị bằng 0, như 30 hay 50.", "Nhìn chữ số đứng cuối của từng số."],
+        "hint": "10, 20, 30… đều là số tròn chục.",
+        "answer": {
+          "text": "Ba răng 20, 70 và 90",
+          "explanation": "20, 70 và 90 có hàng đơn vị là 0 nên là số tròn chục; 25 và 47 thì không."
+        },
+        "en": {
+          "guide": ["A round ten has 0 in the ones place.", "Look at the last digit of each number."],
+          "hint": "10, 20, 30… are all round tens.",
+          "answer": {
+            "text": "The teeth marked 20, 70 and 90",
+            "explanation": "20, 70 and 90 end in 0, so they're round tens; 25 and 47 don't."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba răng thật nằm gọn trong lòng tay, sáng lấp lánh!",
+          "{name} nhặt răng chìa tinh như mắt cú mèo.",
+          "Đúng hết, chẳng lọt một chiếc răng giả nào."
+        ],
+        "wrong": [
+          "Có chiếc răng giả lọt vào rồi, nhìn chữ số cuối xem.",
+          "Hình như còn sót một răng thật trong hòm đấy.",
+          "Số tròn chục kết thúc bằng số 0, soát lại từng chiếc nhé."
+        ],
+        "en": {
+          "right": [
+            "Three real teeth sitting in your palm, all a-glitter!",
+            "You picked those teeth out like an owl spotting mice, {name}.",
+            "All correct, and not one fake tooth slipped through."
+          ],
+          "wrong": [
+            "A fake tooth snuck in; check the last digits.",
+            "Looks like a real tooth is still left in the chest.",
+            "Round tens end in 0; check each one again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Real teeth, fake teeth",
+        "prompt": "The chest holds five brass key teeth, each engraved with a number. The note on the lid says: «The real teeth carry round tens». Pick every real tooth:",
+        "choices": ["25", "70", "90", "47", "20"]
+      }
+    },
+    {
+      "id": "tim-trong-cong",
+      "title": "Mảnh chìa ngủ trong cổng",
+      "goTo": "Vào cổng thành tìm mảnh chìa thứ hai đang «ngủ»",
+      "kind": "find-object",
+      "prompt": "Cụ Đồng giấu đồ trong cổng thành khéo lắm. Đọc lời tả và tìm hai thứ:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "can-chia",
+          "name": "Cán chìa đồng",
+          "clue": "Dài bằng ngón tay, một đầu tròn xòe như bông sen, nằm ngủ trong khe đá cạnh then cổng.",
+          "target": "st-chia-khoa-thu-tram-can-chia"
+        },
+        {
+          "id": "chuong-nho",
+          "name": "Chiếc chuông đồng nhỏ",
+          "clue": "Treo khuất dưới vòm cổng, gió lùa qua thì kêu «đinh» một tiếng rồi im như chưa từng kêu.",
+          "target": "st-chia-khoa-thu-tram-chuong-nho"
+        }
+      ],
+      "en": {
+        "title": "The piece asleep in the gate",
+        "goTo": "Go into the castle gate (Cổng thành) to find the second piece «sleeping» there",
+        "prompt": "Cụ Đồng hid things in the gate very cleverly. Read the descriptions and find two things:",
+        "items": [
+          { "name": "Brass key shaft", "clue": "As long as a finger, one end round and open like a lotus, asleep in a crack beside the gate bolt." },
+          { "name": "Little brass bell", "clue": "Hidden under the gate arch; when the wind slips through it goes «ding» once, then hushes as if it never did." }
+        ]
+      }
+    },
+    {
+      "id": "lam-quen-voi-nuoc",
+      "title": "Làm quen với nước hào",
+      "goTo": "Quay về cầu đá qua hào, bác ngồi nhìn xuống nước rất lâu",
+      "kind": "decision",
+      "target": "bac-tho-khoa-thanh",
+      "speaker": "Bác Thợ Khóa Thành",
+      "prompt": "Bác ngồi trên cầu, nhìn mặt hào lấp lánh: «Hôm nay bác ngồi thuyền được rồi. Hay là… bác thử làm quen với nước luôn?» {name} khuyên bác thế nào?",
+      "choices": [
+        {
+          "id": "nuoc-nong",
+          "text": "Tập thả nổi ở chỗ nước nông dưới gốc liễu",
+          "consequence": "Bác gật đầu: «Chỗ ấy nước chỉ tới đầu gối. Mai bác dậy sớm, chẳng ai thấy bác ngụp lóp ngóp.»"
+        },
+        {
+          "id": "om-phao",
+          "text": "Ôm phao bần, đứng ở bậc thấp nhất của bến trước",
+          "consequence": "Bác cười: «Phao bần với bác giờ thân nhau lắm rồi. Mỗi ngày xuống thêm một bậc, chậm như ổ khóa gỉ mà chắc.»"
+        },
+        {
+          "id": "chua-voi",
+          "text": "Chưa cần đâu, đi thuyền có cháu là đủ rồi",
+          "consequence": "Bác thở phào nhưng mắt vẫn nhìn mặt nước mãi. «Ừ, chưa vội. Nhưng bác sẽ nghĩ thêm», bác nói khẽ."
+        }
+      ],
+      "en": {
+        "title": "Getting to know the moat",
+        "goTo": "Go back to the stone bridge over the moat, where he sits gazing at the water",
+        "prompt": "He sits on the bridge watching the moat sparkle: «Today I managed a boat. Perhaps… I could get to know the water too?» What does {name} suggest?",
+        "choices": [
+          { "text": "Practise floating in the shallows under the willow", "consequence": "He nods: «The water there only reaches your knees. I'll go early tomorrow, so nobody sees me splashing about.»" },
+          { "text": "Hug the cork float and stand on the landing's lowest step first", "consequence": "He laughs: «That float and I are good friends now. One step lower each day, slow as a rusty lock but sure.»" },
+          { "text": "No need yet; boat rides with me are enough", "consequence": "He sighs with relief, but keeps looking at the water. «All right, no hurry. But I'll think about it,» he says softly." }
+        ]
+      }
+    },
+    {
+      "id": "ghep-chia",
+      "title": "Ghép răng vào chìa",
+      "goTo": "Mang hết về bàn thợ ở đầu cầu ghép chìa",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-chia-khoa-thu-tram-ban-tho",
+      "skill": "logic",
+      "prompt": "Ổ khóa cũ của Cụ Đồng có ba chốt cao 3, 1 và 4 nấc. Thầy dặn: mỗi chốt cộng với răng chìa nằm ngay dưới nó phải đủ 5 nấc. Ba răng chìa phải cao bao nhiêu?",
+      "elements": [
+        { "id": "chot-1", "label": "Chốt 1: 3 nấc" },
+        { "id": "chot-2", "label": "Chốt 2: 1 nấc" },
+        { "id": "chot-3", "label": "Chốt 3: 4 nấc" }
+      ],
+      "choices": [
+        { "id": "a", "text": "2 – 4 – 1" },
+        { "id": "b", "text": "3 – 1 – 4" },
+        { "id": "c", "text": "2 – 3 – 1" }
+      ],
+      "answer": { "choice": "a" },
+      "support": {
+        "guide": ["Lấy từng chốt một: chốt cao 3 nấc cần thêm mấy nấc để đủ 5?", "Làm tiếp với chốt cao 1 nấc và chốt cao 4 nấc."],
+        "hint": "3 + 2 = 5.",
+        "answer": {
+          "text": "Răng cao 2, 4 rồi 1 nấc",
+          "explanation": "3 + 2 = 5, 1 + 4 = 5, 4 + 1 = 5, nên ba răng cao lần lượt 2, 4 và 1 nấc."
+        },
+        "en": {
+          "guide": ["Take one pin at a time: a pin 3 notches high needs how many more to make 5?", "Do the same for the 1-notch pin and the 4-notch pin."],
+          "hint": "3 + 2 = 5.",
+          "answer": {
+            "text": "Teeth of 2, 4 and then 1 notch",
+            "explanation": "3 + 2 = 5, 1 + 4 = 5, 4 + 1 = 5, so the teeth are 2, 4 and 1 notches high."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cạch! Răng chìa khít vào cán như được đúc liền một khối.",
+          "Mỗi chốt đều đủ năm nấc, {name} tính khéo hơn thợ cả.",
+          "Bác ngắm chiếc chìa mới, cười tủm tỉm mãi không thôi."
+        ],
+        "wrong": [
+          "Có một chốt chưa đủ năm nấc, cộng lại thử xem.",
+          "Răng chìa giống hệt chốt thì ổ khóa đứng ì ra mất.",
+          "Bắt đầu từ chốt đầu tiên: ba thêm mấy thì thành năm?"
+        ],
+        "en": {
+          "right": [
+            "Click! The teeth fit the shaft as if they were cast in one piece.",
+            "Every pin makes five notches; you're handier than a master smith, {name}.",
+            "He gazes at the new key with a grin that won't go away."
+          ],
+          "wrong": [
+            "One pin doesn't make five notches yet; add them up again.",
+            "Teeth that copy the pins would just leave the lock stuck.",
+            "Start with the first pin: three plus what makes five?"
+          ]
+        }
+      },
+      "en": {
+        "title": "Fit the teeth to the key",
+        "goTo": "Take everything to the workbench at the bridgehead (Đầu cầu) and assemble the key",
+        "prompt": "Cụ Đồng's old lock has three pins, 3, 1 and 4 notches high. His rule: each pin plus the key tooth under it must make 5 notches. How high must the three teeth be?",
+        "elements": ["Pin 1: 3 notches", "Pin 2: 1 notch", "Pin 3: 4 notches"],
+        "choices": ["2 – 4 – 1", "3 – 1 – 4", "2 – 3 – 1"]
+      }
+    },
+    {
+      "id": "hai-manh-chia",
+      "title": "Chiếc chìa còn thiếu vòng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hai mảnh đã thành một chiếc chìa đồng sáng bóng, chỉ còn thiếu cái vòng để treo. Bác Thợ Khóa Thành tặng {name} một chiếc huy hiệu nhỏ: «Cho người đầu tiên dắt bác xuống thuyền».",
+      "en": {
+        "title": "A key without its ring",
+        "text": "The two pieces have become one shiny brass key; only the ring to hang it by is missing. Bác Thợ Khóa Thành gives {name} a little badge: «For the first person who got me into a boat»."
+      }
+    },
+    {
+      "id": "manh-thu-ba",
+      "title": "Tiếng chuông về phía gốc liễu",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đêm đó, chiếc chuông đồng nhỏ tự kêu «đinh» mỗi khi gió thổi từ phía gốc liễu. Mảnh thứ ba bác phải tự làm, nhưng làm từ gì? Bác hẹn {name} ngày mai nghĩ cùng.",
+      "en": {
+        "title": "A bell ringing towards the willow",
+        "text": "That night the little brass bell rings «ding» whenever the wind blows from the willow. The third piece he must make himself, but from what? He asks {name} to come and think it through tomorrow."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 18,
+    "skillXp": { "so-den-100": 1, "doc-hieu": 1, "logic": 1 },
+    "items": { "huy-hieu-hiep-si": 1 }
+  },
+  "en": {
+    "title": "Bác Thợ Khóa Thành's story, chapter 3: Two key pieces and a boat",
+    "summary": "The first key piece is tied to the bow of a little boat, and Bác Thợ Khóa Thành can't swim. {name} goes down to the landing with him, picks out the real key teeth, finds the second piece in the castle gate and fits the key together on the workbench."
+  }
+}

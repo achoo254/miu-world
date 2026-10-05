@@ -1,0 +1,301 @@
+{
+  "id": "yarn-den-ham-khong-tat-2",
+  "region": "lau-dai",
+  "chapter": 2,
+  "title": "Chuyện của Gấu Gác Hầm, chương 2: Những bóng ma vải",
+  "status": "active",
+  "category": "story",
+  "summary": "Bảy tấm khăn của Chị Giặt Áo biến mất, và Gấu Gác Hầm thú thật đã treo chúng làm «bóng ma» cho hầm đỡ trống. {name} tính số khăn còn thiếu, đuổi bóng ma vải, gỡ khăn trả lại rồi cùng gấu làm con rối đầu tiên của hầm.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Gấu Gác Hầm, Chị Giặt Áo Cổng Tây",
+    "where": "Lâu đài: hầm ngục, cổng tây, các ngóc hầm, bục múa rối",
+    "goal": "Trả khăn cho Chị Giặt Áo và tìm cho hầm một người bạn thật",
+    "play": "Hỏi chuyện ở cổng tây, giải câu đố trừ, chơi né bóng ma, gỡ ba bóng ma vải, chọn cách làm hầm vui hơn, xếp các bước làm rối tay",
+    "learn": "Phép trừ trong phạm vi 10, sắp xếp trình tự công việc",
+    "reward": "60 XP, 16 Xu, Skill XP Phép trừ, Kể chuyện",
+    "next": "Con rối hỏi gấu ước mơ là gì, và gấu nói: được ngắm mặt trời mọc"
+  },
+  "phases": {
+    "hook": "gau-do-mat",
+    "explore": "hoi-chi-giat-ao",
+    "learn": "con-may-tam",
+    "challenge": "duoi-bong-ma",
+    "decision": "lam-ban-cho-ham",
+    "finale": "lam-con-roi",
+    "reward": "roi-dau-tien",
+    "next": "uoc-mo-binh-minh"
+  },
+  "places": {
+    "gau-gac-ham": "Hầm ngục",
+    "st-den-ham-khong-tat-chi-giat-ao": "Cổng tây",
+    "go-bong-ma": "Các ngóc hầm",
+    "st-den-ham-khong-tat-san-khau-roi": "Bục múa rối"
+  },
+  "steps": [
+    {
+      "id": "gau-do-mat",
+      "title": "Gấu thú thật",
+      "goTo": "Xuống hầm ngục hỏi Gấu Gác Hầm chuyện bảy tấm khăn",
+      "kind": "dialogue",
+      "target": "gau-gac-ham",
+      "lines": [
+        { "speaker": "Gấu Gác Hầm", "text": "Suỵt… {name} đừng nhìn gấu bằng ánh mắt đó. Gấu đã nói gì đâu." },
+        { "speaker": "Gấu Gác Hầm", "text": "Thôi được. Mấy cái bóng ma vải dưới hầm là gấu treo đấy. Hầm rộng quá, có thêm «ai đó» đứng thì đỡ trống trải." },
+        { "speaker": "Gấu Gác Hầm", "text": "Có điều gấu chẳng nhớ đã mượn bao nhiêu tấm. Cậu ra cổng tây hỏi Chị Giặt Áo giùm gấu nhé?" }
+      ],
+      "choices": [
+        { "text": "Được, tớ sẽ nói khéo cho gấu.", "reply": "Khéo thật khéo nhé. Gấu sẽ nấu một nồi chè đậu đỏ đền chị ấy." },
+        { "text": "Gấu treo bóng ma cho đỡ sợ à?", "reply": "Không phải sợ… là cho đỡ… thôi được, cho đỡ sợ." }
+      ],
+      "en": {
+        "title": "The bear owns up",
+        "goTo": "Go down into the dungeon and ask Gấu Gác Hầm about the seven sheets",
+        "lines": [
+          "Shh… don't look at me like that, {name}. I haven't said anything.",
+          "Oh, all right. The cloth ghosts down here, I hung them up. The cellar's so big; with «someone» else standing about it feels less empty.",
+          "Only I can't remember how many sheets I borrowed. Would you go to the west gate and ask the laundress for me?"
+        ],
+        "choices": [
+          { "text": "Sure, I'll put it nicely for you.", "reply": "Very nicely, please. I'll cook her a whole pot of red bean pudding to say sorry." },
+          { "text": "Did you hang ghosts so you'd feel less scared?", "reply": "Not scared… just less… oh, fine. Less scared." }
+        ]
+      }
+    },
+    {
+      "id": "hoi-chi-giat-ao",
+      "title": "Dây phơi trống trơn",
+      "goTo": "Ra cổng tây gặp Chị Giặt Áo đang phơi đồ",
+      "kind": "dialogue",
+      "target": "st-den-ham-khong-tat-chi-giat-ao",
+      "lines": [
+        { "speaker": "Chị Giặt Áo Cổng Tây", "text": "Bảy tấm khăn trắng chị phơi ở cổng tây, sáng nay ra đếm thì chỉ còn sợi dây phơi trống trơn!" },
+        { "speaker": "Chị Giặt Áo Cổng Tây", "text": "Chị tự tìm lại được bốn tấm vắt trên bụi hồng rồi. Còn bao nhiêu tấm nữa thì chị chịu." }
+      ],
+      "choices": [
+        { "text": "Em biết mấy tấm còn lại ở đâu ạ.", "reply": "Thật à? Thế thì chị bớt lo được một nửa sợi dây phơi rồi." }
+      ],
+      "en": {
+        "title": "An empty washing line",
+        "goTo": "Go to the west gate (Cổng tây) to meet the laundress hanging out her washing",
+        "lines": [
+          "I hung seven white sheets at the west gate, and this morning there was nothing but an empty line!",
+          "I've found four myself, draped over the rose bushes. How many are still missing, I couldn't tell you."
+        ],
+        "choices": [
+          { "text": "I know where the rest are.", "reply": "Really? Then that's half a washing line of worry off my mind." }
+        ]
+      }
+    },
+    {
+      "id": "con-may-tam",
+      "title": "Còn mấy tấm khăn?",
+      "kind": "riddle",
+      "target": "st-den-ham-khong-tat-chi-giat-ao",
+      "skill": "phep-tru",
+      "question": "Chị Giặt Áo mất 7 tấm khăn, đã tự tìm lại được 4 tấm. Dưới hầm còn mấy tấm khăn đang làm bóng ma?",
+      "answer": { "value": 3 },
+      "support": {
+        "guide": ["Lúc đầu chị mất 7 tấm.", "Đã tìm lại 4 tấm, tức là bớt đi 4.", "Làm phép trừ: 7 − 4."],
+        "hint": "Đếm lùi bốn bước từ 7: 6, 5, 4, …",
+        "answer": {
+          "text": "Còn 3 tấm dưới hầm",
+          "explanation": "7 − 4 = 3, nên dưới hầm còn 3 tấm khăn đang làm bóng ma."
+        },
+        "en": {
+          "guide": ["She lost 7 sheets to begin with.", "She found 4, so take away 4.", "Work out 7 − 4."],
+          "hint": "Count back four steps from 7: 6, 5, 4, …",
+          "answer": {
+            "text": "3 sheets are in the cellar",
+            "explanation": "7 − 4 = 3, so 3 sheets are down in the cellar being ghosts."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba tấm! Chị Giặt Áo thở phào, cất ngay chiếc kẹp phơi vào túi.",
+          "{name} trừ nhẩm còn nhanh hơn chị gấp một tấm khăn.",
+          "Đúng rồi, ba bóng ma vải đang chờ được về nhà."
+        ],
+        "wrong": [
+          "Chị chỉ mất bảy tấm thôi mà, trừ lại thử xem.",
+          "Đếm lùi chậm thôi: bảy, rồi sáu, rồi năm…",
+          "Bốn tấm đã nằm trên bụi hồng rồi, còn lại mấy tấm nhỉ?"
+        ],
+        "en": {
+          "right": [
+            "Three! The laundress sighs with relief and pockets her clothes peg.",
+            "You subtract faster than she can fold a sheet, {name}.",
+            "Right, three cloth ghosts are waiting to go home."
+          ],
+          "wrong": [
+            "She only lost seven, so try that subtraction again.",
+            "Count back slowly: seven, then six, then five…",
+            "Four are already on the roses; how many are left?"
+          ]
+        }
+      },
+      "en": {
+        "title": "How many sheets are left?",
+        "question": "The laundress lost 7 sheets and has found 4 of them herself. How many sheets are still down in the cellar being ghosts?"
+      }
+    },
+    {
+      "id": "duoi-bong-ma",
+      "title": "Né bóng ma, nhặt hạt đậu",
+      "goTo": "Quay lại hầm ngục, mấy bóng ma vải đang đung đưa khắp lối",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "gau-gac-ham",
+      "prompt": "Gió lùa làm bóng ma vải bay khắp hầm, còn túi đậu đỏ nấu chè của gấu thì đổ tung tóe. Nhặt hạt đậu, né bóng ma, ghi đủ ba mươi điểm nhé!",
+      "game": "pac-maze",
+      "goal": 30,
+      "en": {
+        "title": "Dodge the ghosts, grab the beans",
+        "goTo": "Back in the dungeon (Hầm ngục), the cloth ghosts are swaying in every passage",
+        "prompt": "A draught has the cloth ghosts drifting all over the cellar, and the bear's bag of red beans has spilled everywhere. Collect beans, dodge ghosts, and score thirty points!"
+      }
+    },
+    {
+      "id": "go-bong-ma",
+      "title": "Gỡ ba bóng ma vải",
+      "goTo": "Đi khắp các ngóc hầm gỡ ba bóng ma vải xuống",
+      "kind": "search",
+      "targets": ["st-den-ham-khong-tat-ma-mat-tron", "st-den-ham-khong-tat-ma-doi-noi", "st-den-ham-khong-tat-ma-deo-no"],
+      "en": {
+        "title": "Take down three cloth ghosts",
+        "goTo": "Go round every nook of the cellar (Các ngóc hầm) and take down the three cloth ghosts"
+      }
+    },
+    {
+      "id": "lam-ban-cho-ham",
+      "title": "Hầm lại trống huơ",
+      "goTo": "Ôm ba tấm khăn về hầm ngục, gấu đang ngồi buồn thiu",
+      "kind": "decision",
+      "target": "gau-gac-ham",
+      "speaker": "Gấu Gác Hầm",
+      "prompt": "Gỡ hết bóng ma, hầm lại trống huơ trống hoác. Gấu thở dài: «Giờ hầm chỉ còn gấu với một bạn dơi ngủ say.» {name} gợi ý gì?",
+      "choices": [
+        {
+          "id": "lam-roi",
+          "text": "Xin vải vụn làm rối tay, dựng sân khấu rối ngay trong hầm",
+          "consequence": "Mắt gấu sáng rực như vừa thắp mười cây nến: «Rối thì biết nói, biết múa, lại chẳng ai mất khăn!»"
+        },
+        {
+          "id": "moi-tra",
+          "text": "Mời Chị Giặt Áo xuống hầm uống trà mỗi chiều",
+          "consequence": "Gấu đỏ mặt nhưng gật đầu. Chị Giặt Áo nhận lời, còn hứa mang theo bánh gai. Trong lúc chờ, hai bạn làm thử một con rối."
+        },
+        {
+          "id": "treo-tranh",
+          "text": "Treo tranh vẽ mọi người trong lâu đài lên tường hầm",
+          "consequence": "Gấu bảo sẽ nhờ Hươu Cao vẽ giúp, nhưng trước mắt cứ làm một con rối để có người trò chuyện đã."
+        }
+      ],
+      "en": {
+        "title": "An empty cellar again",
+        "goTo": "Carry the three sheets back to the dungeon, where the bear sits looking glum",
+        "prompt": "With the ghosts gone, the cellar is bare and echoing. The bear sighs: «Now it's just me and a sleepy little bat.» What does {name} suggest?",
+        "choices": [
+          { "text": "Ask for scraps of cloth and build a puppet stage right here", "consequence": "The bear's eyes light up like ten candles at once: «Puppets talk and dance, and nobody loses a sheet!»" },
+          { "text": "Invite the laundress down for tea every afternoon", "consequence": "The bear blushes but nods. The laundress says yes and promises to bring sticky rice cakes. Meanwhile, the two of you try making a puppet." },
+          { "text": "Hang pictures of everyone in the castle on the cellar walls", "consequence": "The bear says he'll ask Hươu Cao to paint them, but for now a puppet to chat with comes first." }
+        ]
+      }
+    },
+    {
+      "id": "lam-con-roi",
+      "title": "Con rối đầu tiên",
+      "goTo": "Mang vải vụn tới bục múa rối làm con rối đầu tiên",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-den-ham-khong-tat-san-khau-roi",
+      "skill": "ke-chuyen",
+      "prompt": "Làm một con rối tay từ vải vụn. Xếp các việc theo đúng thứ tự:",
+      "items": [
+        { "id": "lon-tay", "label": "Lồng tay vào, cho rối cúi chào" },
+        { "id": "cat-vai", "label": "Cắt vải theo hình con rối" },
+        { "id": "chon-vai", "label": "Chọn một mảnh vải sạch" },
+        { "id": "khau-vien", "label": "Khâu kín viền, chừa chỗ lồng tay" }
+      ],
+      "answer": { "order": ["chon-vai", "cat-vai", "khau-vien", "lon-tay"] },
+      "support": {
+        "guide": ["Muốn cắt thì phải có vải trước đã.", "Cắt xong mới khâu được viền.", "Rối khâu xong mới lồng tay vào cho nó cử động."],
+        "hint": "Việc cuối cùng là lúc con rối cất tiếng chào.",
+        "answer": {
+          "text": "Chọn, cắt, khâu rồi lồng tay",
+          "explanation": "Chọn vải sạch, cắt theo hình con rối, khâu kín viền chừa chỗ lồng tay, cuối cùng lồng tay vào cho rối cúi chào."
+        },
+        "en": {
+          "guide": ["You need cloth before you can cut.", "Only after cutting can you sew the edge.", "Once it's sewn, slip your hand in to make it move."],
+          "hint": "The last step is when the puppet says hello.",
+          "answer": {
+            "text": "Choose, cut, sew, then hand in",
+            "explanation": "Choose clean cloth, cut out the puppet shape, sew the edge leaving room for a hand, and finally slip your hand in so it can bow."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Con rối cúi chào một cái, gấu vỗ tay to tới mức nến rung rinh.",
+          "{name} làm rối khéo như nghệ nhân, chẳng sót bước nào.",
+          "Hầm có thêm một giọng nói mới rồi, giọng ồm y hệt gấu!"
+        ],
+        "wrong": [
+          "Chưa có vải thì kéo cắt vào không khí mất thôi.",
+          "Lồng tay vào khi rối chưa khâu thì rối tuột ra ngay.",
+          "Bắt đầu từ việc chọn mảnh vải nào sạch sẽ nhất xem."
+        ],
+        "en": {
+          "right": [
+            "The puppet bows, and the bear claps so hard the candles wobble.",
+            "You make puppets like a master craftsman, {name}, not one step missed.",
+            "The cellar has a new voice, and it's just as deep as the bear's!"
+          ],
+          "wrong": [
+            "With no cloth yet, the scissors would only cut thin air.",
+            "Put your hand in before it's sewn and the puppet slips right off.",
+            "Start by choosing the cleanest scrap of cloth."
+          ]
+        }
+      },
+      "en": {
+        "title": "The very first puppet",
+        "goTo": "Take the cloth scraps to the puppet stage (Bục múa rối) and make the first puppet",
+        "prompt": "Make a hand puppet from cloth scraps. Put the steps in order:",
+        "items": ["Slip your hand in and make it bow", "Cut the cloth into a puppet shape", "Choose a clean piece of cloth", "Sew the edge, leaving room for a hand"]
+      }
+    },
+    {
+      "id": "roi-dau-tien",
+      "title": "Hầm có bạn mới",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Con rối đầu tiên của hầm ra đời: tròn ủng, mắt cúc, giọng ồm y hệt gấu. Chị Giặt Áo lấy lại đủ khăn, còn Gấu Gác Hầm có thêm một người bạn biết cúi chào.",
+      "en": {
+        "title": "A new friend in the cellar",
+        "text": "The cellar's first puppet is born: plump, button-eyed, with a voice as deep as the bear's. The laundress has all her sheets back, and Gấu Gác Hầm has a new friend who knows how to bow."
+      }
+    },
+    {
+      "id": "uoc-mo-binh-minh",
+      "title": "Câu hỏi của con rối",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối đó con rối hỏi gấu: «Ước mơ của bạn là gì?» Gấu buột miệng: «Được ngắm mặt trời mọc.» Rồi gấu im lặng rất lâu. {name} ghé lại nghe tiếp nhé.",
+      "en": {
+        "title": "The puppet's question",
+        "text": "That evening the puppet asks the bear: «What's your dream?» Without thinking, the bear says: «To watch the sun rise.» Then he goes quiet for a long, long time. Come back and hear the rest, {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 16,
+    "skillXp": { "phep-tru": 1, "ke-chuyen": 1 }
+  },
+  "en": {
+    "title": "Gấu Gác Hầm's story, chapter 2: The cloth ghosts",
+    "summary": "Seven of the laundress's sheets have vanished, and Gấu Gác Hầm admits he hung them up as «ghosts» so the cellar would feel less empty. {name} works out how many are missing, dodges the cloth ghosts, takes the sheets down and makes the cellar's first puppet with the bear."
+  }
+}

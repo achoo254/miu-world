@@ -1,0 +1,731 @@
+{
+  "version": 1,
+  "region": "lau-dai",
+  "climate": "mild",
+  "npcs": [
+    {
+      "id": "bac-tho-khoa-thanh",
+      "name": "Bác Thợ Khóa Thành",
+      "role": {
+        "vi": "Thợ khóa của lâu đài, trông cỗ máy nâng cầu đá qua hào và giữ chùm chín mươi chín chiếc chìa.",
+        "en": "The castle's locksmith, who minds the machine that lifts the stone bridge over the moat and keeps a ring of ninety-nine keys."
+      },
+      "personality": {
+        "vi": "Tỉ mỉ tới từng chiếc lò xo bé xíu, kiên nhẫn như nước nhỏ giọt; hay pha trò về ổ khóa, nhưng hễ nhắc tới thầy cũ là giọng chùng xuống.",
+        "en": "Fussy about every tiny spring and patient as a dripping tap; he cracks lock jokes, yet his voice softens whenever his old teacher comes up."
+      },
+      "voice": {
+        "vi": "Nói chậm, hay mở đầu bằng một tiếng «cạch!» bắt chước khóa bật, và ví chuyện gì cũng với chìa với ổ.",
+        "en": "Speaks slowly, often opens with a «click!» like a lock springing, and compares everything to keys and locks."
+      },
+      "fear": {
+        "vi": "Bác sợ nước sâu: sống cạnh hào cả đời mà chưa từng biết bơi, qua cầu treo là tay bám chặt lan can.",
+        "en": "Deep water: he has lived beside the moat all his life without learning to swim, and he grips the rail on the drawbridge."
+      },
+      "dream": {
+        "vi": "Làm ra một ổ khóa không cần chìa, chỉ bật mở khi có người cười thật to bên cạnh.",
+        "en": "To build a lock with no key at all, one that pops open only when someone laughs out loud beside it."
+      },
+      "secret": {
+        "vi": "Hồi mới học nghề, bác từng tự khóa mình trong xưởng suốt một đêm, thầy Cụ Đồng phải trèo cửa sổ vào cứu. Chuyện ấy bác chưa kể với ai.",
+        "en": "As a young apprentice he once locked himself inside the workshop all night, and his teacher Cụ Đồng had to climb in through the window. He has never told a soul."
+      },
+      "habit": {
+        "vi": "Đi ngang ổ khóa nào bác cũng gõ nhẹ ba cái để «chào buổi sáng» nó, kể cả lúc chiều tối.",
+        "en": "He taps every lock he passes three times to «say good morning» to it, even in the evening."
+      },
+      "likes": ["chia-khoa-thanh-co", "chuong-bac-thap-canh", "khan-len-dan"],
+      "lines": [
+        {
+          "vi": "Cạch! Sáng nay bác đã chào đủ chín mươi chín ổ khóa, {name} là người đầu tiên bác chào mà không phải gõ.",
+          "en": "Click! I've greeted all ninety-nine locks this morning, and you're the first I've greeted without tapping, {name}.",
+          "when": "morning"
+        },
+        {
+          "vi": "Sương đọng trên xích cầu thế này là bác phải lau khô ngay, không thì gỉ ăn vào như mối ăn gỗ.",
+          "en": "With dew on the bridge chain like this I have to dry it at once, or rust creeps in like termites in timber.",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa nắng, sắt nở ra một chút nên ổ khóa nào cũng khó tính. Y như người ta lúc đói bụng vậy.",
+          "en": "In the midday sun iron swells a little, so every lock turns grumpy. Just like people when they're hungry.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều tà là giờ bác hạ cầu cho người đi chợ về. Nghe xích lăn lạch cạch là biết một ngày sắp xong.",
+          "en": "Dusk is when I lower the bridge for folk coming home from market. When the chain rattles, the day is nearly done.",
+          "when": "evening"
+        },
+        {
+          "vi": "Khuya rồi mà {name} còn đi dạo à? Bác vừa khóa cổng thành, nhưng với bạn của bác thì luôn chừa một khe cửa.",
+          "en": "Still wandering this late, {name}? I've just locked the castle gate, but there's always a crack left open for a friend of mine.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa rơi xuống hào lộp độp, bác đếm tới giọt thứ bốn mươi thì quên mất mình đang tra dầu cái gì.",
+          "en": "Rain plinks into the moat. I counted to the fortieth drop and forgot what I was oiling.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời trong thế này, đứng trên cầu đá soi xuống hào thấy cả bóng mấy ngọn tháp đang rung rinh.",
+          "en": "On a clear day like this you can stand on the stone bridge and watch the towers wobble in the moat.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Ổ khóa nào cũng có tính nết riêng. Cái ở hầm rượu thì nhõng nhẽo, cái ở tháp canh thì cứng đầu y như ông lính gác.",
+          "en": "Every lock has a temper. The wine-cellar one sulks, and the watchtower one is as stubborn as its guard."
+        },
+        {
+          "vi": "{name} có biết vì sao chìa khóa có răng không? Để nó cắn chặt lấy bí mật, không cho chạy mất.",
+          "en": "Do you know why keys have teeth, {name}? So they can bite down on a secret and never let it run off."
+        },
+        {
+          "vi": "Bà Gấu Nâu ở Xóm Mái Ấm vừa gửi lên đôi găng len mới. Tay bác ấm rồi, chỉ có cái kìm là ghen tị.",
+          "en": "Bà Gấu Nâu down in Xóm Mái Ấm sent me new wool gloves. My hands are warm now; only my pliers are jealous.",
+          "about": "ba-gau-nau"
+        },
+        {
+          "vi": "Tể Tướng Cờ Vua lại làm mất chìa hộp cờ, lần thứ mười hai năm nay. Bác sắp làm cho ngài một chiếc chìa có gắn chuông.",
+          "en": "Tể Tướng Cờ Vua has lost his chess-box key again, the twelfth time this year. I'm about to make him one with a bell on it.",
+          "about": "te-tuong-co-the"
+        },
+        {
+          "vi": "Hươu Cao bảo nhìn từ trên cao, cây cầu đá giống chiếc chìa nằm ngang. Đúng thật, chỉ thiếu cái ổ to cỡ ngọn đồi.",
+          "en": "Hươu Cao says that from up high the stone bridge looks like a key lying flat. True enough; it only needs a lock the size of a hill.",
+          "about": "huou-cao"
+        },
+        {
+          "vi": "Bác kể {name} nghe nhé: chiếc móc thứ một trăm trên chùm chìa của bác vẫn bỏ trống từ ngày thầy bác đi xa.",
+          "en": "Let me tell you something, {name}: the hundredth hook on my key ring has stayed empty since my teacher went away.",
+          "hearts": 2
+        },
+        {
+          "vi": "Mỗi lần {name} ghé, bác lại muốn gõ ba cái lên vai cháu như chào ổ khóa. Thế là quý lắm đấy, đừng cười bác.",
+          "en": "Every time you drop by, {name}, I want to tap your shoulder three times like a lock I'm greeting. That's high praise, so don't laugh.",
+          "hearts": 3
+        },
+        {
+          "vi": "Bác vẫn lén tập bơi lúc trời chưa sáng, ở chỗ nước nông dưới gốc liễu. Đã nổi được ba hơi rồi, cháu giữ kín giùm bác.",
+          "en": "I practise swimming in secret before dawn, in the shallows under the willow. I can float for three breaths now. Keep it quiet for me.",
+          "hearts": 4
+        },
+        {
+          "vi": "Ngày nào bác làm xong ổ khóa mở bằng tiếng cười, người đầu tiên bác mời cười thử sẽ là {name}.",
+          "en": "The day I finish the lock that opens with a laugh, the first person I'll invite to laugh at it is you, {name}.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "gau-gac-ham",
+      "name": "Gấu Gác Hầm",
+      "role": {
+        "vi": "Người gác hầm ngục cũ của lâu đài, nay là kho cất đồ thất lạc của cả thành.",
+        "en": "Keeper of the castle's old dungeon, which is now the store room for everything the castle loses."
+      },
+      "personality": {
+        "vi": "To xác, giọng ồm, trông dữ dằn mà hiền như bánh mì mới nướng; hay lo xa và thích mọi thứ được đếm cho đủ.",
+        "en": "Huge, gruff-voiced and fierce-looking, yet soft as fresh bread; a worrier who likes everything counted and accounted for."
+      },
+      "voice": {
+        "vi": "Hay thì thầm «Suỵt!» trước khi nói, rồi tuôn một tràng thật nhanh như sợ bóng tối nghe lén.",
+        "en": "Says «Shh!» before he speaks, then talks in a quick rush, as if the dark might be eavesdropping."
+      },
+      "fear": {
+        "vi": "Gấu sợ bóng tối, dù đã gác hầm mười năm. Cây nến nào tắt là tim gấu đập thình thịch như trống hội.",
+        "en": "He is afraid of the dark, though he has guarded the cellar for ten years. When a candle goes out his heart thumps like a festival drum."
+      },
+      "dream": {
+        "vi": "Một lần được đứng ở chỗ thật thoáng ngắm mặt trời mọc, thay vì chỉ nghe Hươu Cao kể lại qua ô cửa thông hơi.",
+        "en": "To stand somewhere wide open and watch the sun rise just once, instead of hearing Hươu Cao describe it through the air vent."
+      },
+      "secret": {
+        "vi": "Đêm nào gấu cũng ôm một con kỳ lân bông trong kho đồ thất lạc mà ngủ, và đặt tên nó là Bánh Bao.",
+        "en": "Every night he sleeps hugging a plush unicorn from the lost-property store, and he has named it Bánh Bao."
+      },
+      "habit": {
+        "vi": "Cứ nghe chuông thành điểm là gấu đếm lại số nến trong hầm, đếm hai lượt cho chắc.",
+        "en": "Whenever the castle bell strikes, he recounts the candles in the cellar, twice, to be sure."
+      },
+      "likes": ["ky-lan-bong", "rong-con-su", "den-dau-co"],
+      "lines": [
+        {
+          "vi": "Suỵt… sáng rồi à? Trong hầm không có cửa sổ, gấu chỉ biết trời sáng khi nghe gà nhà người hầu gáy.",
+          "en": "Shh… is it morning? There are no windows down here; I only know it's day when the servants' rooster crows.",
+          "when": "morning"
+        },
+        {
+          "vi": "Buổi trưa người ta xuống hỏi đồ thất lạc đông nhất. Hôm qua có chú lính tìm một chiếc ủng, mà chân kia vẫn đang đi ủng.",
+          "en": "Afternoons are busiest for lost things. Yesterday a soldier came hunting for one boot while still wearing the other.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều tối gấu thắp nến từ cửa hầm vào trong, cây nọ cách cây kia đúng mười bước. Không thừa, không thiếu.",
+          "en": "At dusk I light the candles from the door inwards, each exactly ten steps from the last. Not one more, not one less.",
+          "when": "evening"
+        },
+        {
+          "vi": "Khuya rồi, {name} đứng gần gấu chút nhé. Không phải gấu sợ đâu, gấu chỉ… muốn cậu được ấm thôi.",
+          "en": "It's late, {name}, stand a bit closer. Not that I'm scared, I just… want you to keep warm.",
+          "when": "night"
+        },
+        {
+          "vi": "Trời mưa là hầm nhỏ giọt tí tách. Gấu bày mười hai cái bát hứng nước, nghe như một dàn trống tí hon.",
+          "en": "When it rains the cellar drips. I set out twelve bowls to catch it, and they sound like a tiny drum band.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Hôm nay nắng đẹp lắm phải không? Gấu ngửi thấy mùi cỏ khô bay xuống tận bậc thang thứ ba mươi.",
+          "en": "Lovely sunshine today, isn't it? I can smell dry grass all the way down on the thirtieth step.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Kho đồ thất lạc của gấu có bốn trăm lẻ hai món. Lạ nhất là bộ răng giả biết… à không, nó chẳng biết gì cả.",
+          "en": "My lost-property store holds four hundred and two things. The oddest is a set of false teeth that can… no, it can't do anything."
+        },
+        {
+          "vi": "Ai bảo gấu thì phải ngủ đông? Gấu gác hầm thức quanh năm, ngủ bù bằng những giấc trưa dài như cầu treo.",
+          "en": "Who says bears must hibernate? Cellar bears stay up all year and catch up with naps as long as the drawbridge."
+        },
+        {
+          "vi": "Sáng nào Hươu Cao cũng cúi xuống ô thông hơi kể mặt trời hôm nay màu gì. Hôm qua bảo màu bánh trứng, gấu thèm cả ngày.",
+          "en": "Every morning Hươu Cao bends to the air vent to tell me the colour of the sunrise. Yesterday it was custard, and I was hungry all day.",
+          "about": "huou-cao"
+        },
+        {
+          "vi": "Nai Đom Đóm ở Khu rừng bí mật hứa cho gấu mượn một hũ đom đóm. Đèn mà biết bay, nghe thôi đã thấy can đảm hơn.",
+          "en": "Nai Đom Đóm in the Secret Forest promised to lend me a jar of fireflies. Lamps that fly! Just hearing it makes me braver.",
+          "about": "nai-dom-dom"
+        },
+        {
+          "vi": "Bác Thợ Khóa Thành làm cho hầm này mười bảy ổ khóa. Gấu thuộc tiếng kêu từng cái, nhắm mắt cũng biết cửa nào.",
+          "en": "Bác Thợ Khóa Thành made seventeen locks for this cellar. I know every click by heart; I could name each door with my eyes shut.",
+          "about": "bac-tho-khoa-thanh"
+        },
+        {
+          "vi": "Gấu kể nhỏ thôi: thứ gấu quý nhất là chiếc đèn dầu cổ mua ở Xóm Mái Ấm. Đèn dầu chẳng bao giờ tắt phụt như nến.",
+          "en": "Just between us: my dearest thing is an old oil lamp from Xóm Mái Ấm. Oil lamps never puff out the way candles do.",
+          "hearts": 2
+        },
+        {
+          "vi": "Có {name} ở đây, gấu đếm nến chỉ một lượt thôi. Lạ thật, có bạn đứng cạnh là đếm nhanh hẳn.",
+          "en": "With you here, {name}, I only count the candles once. Funny how a friend nearby makes the counting quicker.",
+          "hearts": 3
+        },
+        {
+          "vi": "Bánh Bao là tên con kỳ lân bông gấu ôm ngủ. Nó lạc vào kho từ đời nào chẳng ai nhận, nên gấu… nhận luôn.",
+          "en": "Bánh Bao is the plush unicorn I sleep with. It wandered into the store ages ago and nobody claimed it, so I… did.",
+          "hearts": 4
+        },
+        {
+          "vi": "Ước mơ ngắm bình minh vẫn đẹp, nhưng giờ thứ gấu mong nhất mỗi ngày là nghe {name} kể ngày của cậu.",
+          "en": "Watching a sunrise is still a lovely dream, but what I look forward to most each day is hearing about yours, {name}.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "huou-cao",
+      "name": "Hươu Cao",
+      "role": {
+        "vi": "Người dẫn đường của lâu đài, kiêm họa sĩ vẽ phông sân khấu và luôn là người đầu tiên thấy khách tới.",
+        "en": "The castle's guide, painter of stage backdrops, and always the first to spot a visitor on the road."
+      },
+      "personality": {
+        "vi": "Vui tính, tò mò, thích đùa về cái cổ dài của mình; giúp ai cũng hăng hái tới mức đầu va cả vào trần.",
+        "en": "Cheerful and nosy, forever joking about that long neck, and so keen to help that ceilings get bumped."
+      },
+      "voice": {
+        "vi": "Cười «hí hí», xưng tớ gọi cậu, hay mở đầu bằng «nhìn từ trên này thì…».",
+        "en": "Giggles «hee hee», chats like an old friend, and loves to begin with «from up here…»."
+      },
+      "fear": {
+        "vi": "Sợ cửa thấp: đã ba lần mắc cổ ở cổng nhà người hầu, giờ gặp cửa nào cũng phải đo bằng mắt trước.",
+        "en": "Low doorways: stuck three times at the servants' gate, and now every door gets measured by eye first."
+      },
+      "dream": {
+        "vi": "Vẽ một bức tranh dài khắp tường thành, kể đủ chuyện của mọi người trong lâu đài.",
+        "en": "To paint one picture along the whole castle wall, telling the story of everyone who lives here."
+      },
+      "secret": {
+        "vi": "Hươu Cao chẳng phải lúc nào cũng thấy hết đâu: mắt hơi cận, đã mấy lần cúi chào một cái cây vì tưởng là khách.",
+        "en": "Hươu Cao doesn't actually see everything: a little short-sighted, and has bowed to a tree more than once, mistaking it for a guest."
+      },
+      "habit": {
+        "vi": "Mỗi sáng cúi xuống ô thông hơi của hầm, kể cho Gấu Gác Hầm nghe bình minh hôm nay màu gì.",
+        "en": "Every morning bends down to the cellar air vent to tell Gấu Gác Hầm the colour of the sunrise."
+      },
+      "likes": ["vuong-mien-hoa", "ruy-bang-nhung"],
+      "lines": [
+        {
+          "vi": "Chào buổi sáng {name}! Nhìn từ trên này, mặt trời vừa ló khỏi ngọn tháp góc như quả trứng lòng đào, hí hí.",
+          "en": "Morning, {name}! From up here the sun has just peeped over the corner tower like a soft-boiled egg, hee hee.",
+          "when": "morning"
+        },
+        {
+          "vi": "Buổi chiều tớ vẽ phông cho bục múa rối. Hôm nay vẽ biển, mà tớ chưa thấy biển bao giờ nên sóng hơi giống bánh quy.",
+          "en": "Afternoons I paint backdrops for the puppet stage. Today it's the sea, but I've never seen one, so the waves look a bit like biscuits.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Hoàng hôn nhìn từ trên cao đẹp lắm, tường thành đỏ au như vừa được ai tô son. Cậu leo lên bậc kia xem cùng tớ không?",
+          "en": "Sunset from up high is gorgeous; the walls glow red as if someone painted them. Climb that step and watch with me?",
+          "when": "evening"
+        },
+        {
+          "vi": "Ban đêm cổ tớ thành cột ngắm sao. Tớ đếm được bảy ngôi trên đỉnh tháp, rồi ngủ gật ở ngôi thứ tám.",
+          "en": "At night my neck turns into a stargazing post. I counted seven stars over the tower and nodded off on the eighth.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa rồi! Đầu tớ ướt trước cả mái nhà, ai muốn biết trời sắp mưa cứ nhìn chỏm tóc tớ là được.",
+          "en": "Rain! My head gets wet before any roof does; want a weather warning? Just watch the tuft on top of my head.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời quang thế này tớ nhìn thấy tận dãy núi xa, người trượt tuyết bé như mấy chấm kẹo.",
+          "en": "Skies this clear and I can see the far mountains, where the skiers look as small as sprinkles.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Cậu biết hươu cao cổ ngủ rất ít không? Tớ ngủ ít ban đêm rồi ngủ bù lúc vẽ, nên tranh hay có vệt nguệch ngoạc.",
+          "en": "Did you know giraffes hardly sleep? I sleep little at night and nap while painting, so my pictures get the odd squiggle."
+        },
+        {
+          "vi": "Lâu đài có ba trăm bậc thang và đúng một cái cửa tớ đi qua không phải cúi. Đố {name} là cửa nào?",
+          "en": "The castle has three hundred steps and exactly one door I can walk through without ducking. Guess which, {name}?"
+        },
+        {
+          "vi": "Hôm nay tớ kể với Gấu Gác Hầm bình minh màu hồng đào. Gấu bảo nghe thôi đã thấy ấm, thế là tớ vui cả buổi.",
+          "en": "Today I told Gấu Gác Hầm the sunrise was peach pink. He said just hearing it felt warm, and that made my whole morning.",
+          "about": "gau-gac-ham"
+        },
+        {
+          "vi": "Cô Thủ Thư Mai gửi tớ một cuốn sách tranh về biển. Giờ sóng tớ vẽ bớt giống bánh quy rồi, chỉ còn hơi giống bánh bông lan.",
+          "en": "Cô Thủ Thư Mai sent me a picture book about the sea. Now my waves look less like biscuits and only a little like sponge cake.",
+          "about": "co-thu-thu-mai"
+        },
+        {
+          "vi": "Cáo Cung Thủ nhờ tớ đứng sau bia báo điểm. Tớ chỉ gật đầu khi cậu ấy hứa ngắm thấp hơn tai tớ một chút.",
+          "en": "Cáo Cung Thủ asked me to stand behind the target and call the scores. I agreed once he promised to aim a little below my ears.",
+          "about": "cao-cung-thu"
+        },
+        {
+          "vi": "Nói nhỏ nhé: tớ mắc cổ ở cổng nhà người hầu ba lần rồi. Lần thứ ba có cả đàn ngỗng đứng xem.",
+          "en": "Between you and me: I've got stuck in the servants' gate three times. The third time, a whole flock of geese stood watching.",
+          "hearts": 2
+        },
+        {
+          "vi": "Từ khi quen {name}, phông nào tớ vẽ cũng có thêm một chấm nhỏ. Ai hỏi tớ bảo là vì sao, chứ thật ra là cậu đấy.",
+          "en": "Since I met you, {name}, every backdrop I paint has an extra little dot. I tell people it's a star, but really it's you.",
+          "hearts": 3
+        },
+        {
+          "vi": "Bí mật này chỉ cậu biết: mắt tớ hơi cận. Hôm trước tớ cúi chào một cái cây rất lễ phép, nó chẳng thèm chào lại.",
+          "en": "A secret just for you: I'm a little short-sighted. The other day I bowed politely to a tree, and it didn't bother bowing back.",
+          "hearts": 4
+        },
+        {
+          "vi": "Bức tranh dài khắp tường thành của tớ sẽ có một đoạn riêng cho {name}. Cậu muốn được vẽ đang làm gì nào?",
+          "en": "My painting along the castle wall will have a stretch just for you, {name}. What would you like to be doing in it?",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "cao-cung-thu",
+      "name": "Cáo Cung Thủ",
+      "role": {
+        "vi": "Cung thủ trẻ của lâu đài, sáng nào cũng luyện bắn ở bãi tập bắn bên khu luyện tập.",
+        "en": "The castle's young archer, who practises every morning at the range beside the training ground."
+      },
+      "personality": {
+        "vi": "Hiếu thắng, nhanh nhảu, hơi khoe khoang, nhưng thua thì nhận ngay và đòi đấu lại liền.",
+        "en": "Competitive and quick, a bit of a show-off, but he owns up the moment he loses and demands a rematch."
+      },
+      "voice": {
+        "vi": "Nói ngắn, dứt khoát như mũi tên rời dây, hay đệm «Vút!» và «trúng phóc».",
+        "en": "Talks in short, sharp bursts like an arrow leaving the string, sprinkled with «Whoosh!» and «dead centre»."
+      },
+      "fear": {
+        "vi": "Sợ gió đổi chiều đúng lúc buông dây; còn sợ hơn nữa là bắn trượt trước mặt đông người.",
+        "en": "The wind turning just as he lets go; and, even worse, missing in front of a crowd."
+      },
+      "dream": {
+        "vi": "Một ngày được tranh tài với cung thủ mọi miền, và bắn một mũi tên mang thư sang tận bờ biển xa.",
+        "en": "To compete with archers from every land one day, and shoot an arrow carrying a letter all the way to the far shore."
+      },
+      "secret": {
+        "vi": "Cáo đeo bùa lông vũ trong túi áo vì tin nó đem may; thật ra đó là chiếc lông gà nhặt ở chuồng nhà người hầu.",
+        "en": "He keeps a lucky feather charm in his pocket; really it's a chicken feather he picked up by the servants' coop."
+      },
+      "habit": {
+        "vi": "Trước mỗi phát bắn, cáo liếm ngón tay giơ lên trời đoán gió, kể cả khi đang ăn bánh.",
+        "en": "Before every shot he licks a finger and holds it up to test the wind, even when he's eating cake."
+      },
+      "likes": ["huy-hieu-hiep-si", "cup-vinh-quang", "long-vu-chim-rung"],
+      "lines": [
+        {
+          "vi": "Vút! Mũi đầu tiên của buổi sáng trúng vòng bảy. Không sao, mặt trời còn chưa tỉnh hẳn mà.",
+          "en": "Whoosh! First arrow of the morning hit the seven ring. Never mind, the sun isn't properly awake yet.",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa nắng gắt, dây cung căng như dây đàn. {name} búng thử xem, nó kêu «tưng» nghe sướng tai lắm.",
+          "en": "In the afternoon heat my bowstring's as tight as a guitar string. Pluck it, {name}, it goes «twang», lovely.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều rồi, cáo đi nhặt tên rơi quanh bãi. Hôm nào nhặt đủ hai mươi mũi là hôm đó may mắn.",
+          "en": "Evening: time to gather stray arrows round the range. Any day I find all twenty is a lucky day.",
+          "when": "evening"
+        },
+        {
+          "vi": "Đêm không bắn được, cáo nằm ngửa tập ngắm sao. Ngôi sáng nhất chính là hồng tâm của bầu trời đấy {name}.",
+          "en": "No shooting at night, so I lie back and practise aiming at stars. The brightest one is the sky's bullseye, {name}.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa làm lông đuôi tên bết lại, bắn đi cứ lượn như con cá. Hôm nay cáo nghỉ, ngồi lau cung thôi.",
+          "en": "Rain makes the fletching soggy and arrows wiggle like fish. Day off today; I'll sit and polish my bow.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời đẹp, gió nhẹ, không một gợn mây: hôm nay mà bắn trượt thì chẳng đổ cho gió được rồi.",
+          "en": "Fine weather, soft breeze, not a cloud: if I miss today, I can't blame the wind.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Cáo vừa đặt tên cho cây cung là «Sấm Sét». Tên cũ là «Cung Số Hai», nghe chẳng oai tí nào.",
+          "en": "I've just named my bow «Thunderbolt». Its old name was «Bow Number Two», which wasn't grand at all."
+        },
+        {
+          "vi": "{name} có biết vì sao bắn cung phải thở ra rồi mới buông dây không? Vì nín thở thì tay run như lá.",
+          "en": "Know why archers breathe out before they let go, {name}? Hold your breath and your hand shakes like a leaf."
+        },
+        {
+          "vi": "Bác Quăng Lưới Biển ở Đảo bí ẩn dạy cáo đọc gió trên mặt sóng. Bác bảo lưới bung tròn hay méo đều do gió cả.",
+          "en": "Bác Quăng Lưới Biển on the Mysterious Island taught me to read wind on the waves. He says whether a net opens round or lopsided is all the wind's doing.",
+          "about": "bac-quang-luoi-bien"
+        },
+        {
+          "vi": "Tể Tướng Cờ Vua dặn cáo: muốn trúng thì phải chậm. Cáo đang tập chậm, nhưng mà chậm nhanh nhất có thể.",
+          "en": "Tể Tướng Cờ Vua told me: to hit, go slow. So I'm practising going slow, as fast as I possibly can.",
+          "about": "te-tuong-co-the"
+        },
+        {
+          "vi": "Lông đuôi tên tốt nhất là lông chim rừng ở Khu rừng bí mật, nhẹ mà thẳng. Ai cho cáo một chiếc là cáo nhớ ơn cả tháng.",
+          "en": "The best fletching comes from forest-bird feathers in the Secret Forest, light and straight. Give me one and I'll be grateful for a month."
+        },
+        {
+          "vi": "Cáo thú thật: lần thi cuối mùa, cáo trượt hồng tâm vì mải liếc xem khán giả đã vỗ tay chưa.",
+          "en": "Honest confession: at the end-of-season contest I missed the bullseye because I was peeking to see if people were clapping yet.",
+          "hearts": 2
+        },
+        {
+          "vi": "Nếu {name} muốn, cáo cho mượn «Sấm Sét» bắn một phát. Cáo chưa cho ai mượn đâu, kể cả Hươu Cao.",
+          "en": "If you like, {name}, I'll lend you «Thunderbolt» for one shot. I've never lent it to anyone, not even Hươu Cao.",
+          "hearts": 3
+        },
+        {
+          "vi": "Cái bùa lông vũ may mắn của cáo… thật ra là lông gà. Nhưng từ hôm có nó cáo bắn trúng hơn, nên cáo vẫn tin.",
+          "en": "My lucky feather charm… is really a chicken feather. But I've shot better since I got it, so I still believe in it.",
+          "hearts": 4
+        },
+        {
+          "vi": "Ngày nào cáo bắn được mũi tên mang thư sang bờ biển xa, dòng đầu tiên trong thư sẽ là tên {name}.",
+          "en": "The day I shoot an arrow with a letter to the far shore, the very first line of it will be your name, {name}.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "te-tuong-co-the",
+      "name": "Tể Tướng Cờ Vua",
+      "role": {
+        "vi": "Tể tướng của lâu đài, coi Đại sảnh ôn tập và lo cho mọi ván cờ, mật mã, yến tiệc đâu ra đấy.",
+        "en": "The castle's chancellor, keeper of the Great Hall of Study, who makes sure every chess game, cipher and banquet runs just so."
+      },
+      "personality": {
+        "vi": "Nghiêm trang, chuộng phép tắc, lúc nào cũng tính trước ba nước; nhưng sắp thua cờ là lén gỡ một quân rồi giả vờ quên.",
+        "en": "Solemn and proper, always three moves ahead; yet when he's losing at chess he slips a piece off the board and pretends to forget."
+      },
+      "voice": {
+        "vi": "Xưng «ta», nói câu dài trịnh trọng, hay ví mọi việc với nước cờ: «nước này…», «chiếu tướng!».",
+        "en": "Speaks in long, stately sentences and compares everything to chess: «this move…», «checkmate!»."
+      },
+      "fear": {
+        "vi": "Những thứ không theo luật: mèo nhảy lên bàn cờ, khách tới sớm, và lát bánh mì rơi úp mặt bơ.",
+        "en": "Anything that breaks the rules: cats leaping onto the board, guests arriving early, and toast landing butter-side down."
+      },
+      "dream": {
+        "vi": "Soạn xong cuốn «Một nghìn ván cờ không ai thua», nơi ván nào cũng kết thúc bằng một cái bắt tay.",
+        "en": "To finish his book «A Thousand Games Nobody Loses», where every game ends in a handshake."
+      },
+      "secret": {
+        "vi": "Ngài chưa từng thắng Bác Thợ Khóa Thành ván cờ nào, dù vẫn kể với cả thành rằng hai bên «ngang tài».",
+        "en": "He has never once beaten Bác Thợ Khóa Thành at chess, though he tells the whole castle they are «evenly matched»."
+      },
+      "habit": {
+        "vi": "Vuốt râu đúng ba lần trước mỗi quyết định, và đếm bậc thang thành tiếng khi xuống đại sảnh.",
+        "en": "Strokes his beard exactly three times before each decision, and counts the stairs aloud on the way down to the hall."
+      },
+      "likes": ["thu-niem-phong", "ly-pha-le"],
+      "lines": [
+        {
+          "vi": "Sáng nay ta đã xếp ba mươi hai quân cờ ngay ngắn, uống trà và đọc lại luật. Một nước khai cuộc đúng phép, {name} ạ.",
+          "en": "This morning I set out all thirty-two pieces, drank my tea and reread the rules. A most proper opening, {name}.",
+          "when": "morning"
+        },
+        {
+          "vi": "Buổi chiều đại sảnh yên ắng như bàn cờ trước nước đi đầu tiên. Ngươi có muốn đặt một quân không?",
+          "en": "Afternoons in the hall are as hushed as a board before the first move. Would you care to place a piece?",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều tối ta duyệt danh sách khách dự tiệc. Vị này ghét hành, vị kia ghét ngồi cạnh vị ghét hành. Rắc rối vô cùng.",
+          "en": "In the evening I check the banquet list. One guest dislikes onions, another dislikes sitting beside him. Most vexing.",
+          "when": "evening"
+        },
+        {
+          "vi": "Khuya rồi. Ta chỉ chơi thêm một ván nữa thôi… đó là điều ta đã nói từ bốn ván trước.",
+          "en": "It is late. I shall play just one more game… which is what I said four games ago.",
+          "when": "night"
+        },
+        {
+          "vi": "Trời mưa thì sân ngoài vắng, ta dời bàn cờ ra sát cửa sổ. Tiếng mưa giúp ta nghĩ sâu thêm được một nước.",
+          "en": "When it rains the courtyard empties, so I move the board to the window. The rain lets me think one move deeper.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Nắng đẹp như hôm nay, ta cho phép mình đi dạo thêm mười bước ngoài vườn. Không hơn, kẻo trễ giờ trà.",
+          "en": "On a fine day like this I allow myself ten extra steps in the garden. No more, or I shall be late for tea.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Trong cờ, quân tốt bé nhỏ đi tới cuối bàn thì hóa thành hậu. Ta rất quý những ai chịu đi từng bước như {name}.",
+          "en": "In chess, a humble pawn that reaches the far side becomes a queen. I'm fond of anyone who goes step by step, as you do, {name}."
+        },
+        {
+          "vi": "Mật mã hòm thư hoàng gia vừa đổi. Ta không nói được, chỉ gợi ý: nó đẹp như một bài thơ và dài bằng bốn màu.",
+          "en": "The royal mailbox code has just changed. I cannot tell you, only hint: it is pretty as a poem and four colours long."
+        },
+        {
+          "vi": "Mèo Đầm Sen ở Làng Ven Sông đánh cờ với ta qua thư, mỗi tuần một nước. Ván này e phải tới mùa sen năm sau mới xong.",
+          "en": "Mèo Đầm Sen in Làng Ven Sông plays chess with me by post, one move a week. This game may last until next lotus season.",
+          "about": "meo-dam-sen"
+        },
+        {
+          "vi": "Bác Thợ Khóa Thành lại xin ván phục thù. Ta nhận lời, miễn là chiếc chìa hộp cờ hôm nay không «tự dưng» biến mất nữa.",
+          "en": "Bác Thợ Khóa Thành wants a rematch. I accept, provided the chess-box key does not «mysteriously» vanish again today.",
+          "about": "bac-tho-khoa-thanh"
+        },
+        {
+          "vi": "Cáo Cung Thủ bắn nhanh như chớp, nghĩ còn nhanh hơn bắn. Ta đang dạy cậu ấy đếm tới ba rồi mới buông dây.",
+          "en": "Cáo Cung Thủ shoots like lightning and thinks even faster. I am teaching him to count to three before letting go.",
+          "about": "cao-cung-thu"
+        },
+        {
+          "vi": "Ta thú nhận với ngươi: có lần sắp thua, ta lén gỡ một quân tốt khỏi bàn. Chỉ một con thôi, và ta đã trả lại… hôm sau.",
+          "en": "I confess: once, when I was losing, I slipped a pawn off the board. Only one, and I returned it… the following day.",
+          "hearts": 2
+        },
+        {
+          "vi": "Cuốn «Một nghìn ván cờ không ai thua» của ta mới được ba mươi bảy ván. Ván thứ ba mươi tám, ta muốn chơi với {name}.",
+          "en": "My book «A Thousand Games Nobody Loses» has thirty-seven games so far. For the thirty-eighth, I should like to play you, {name}.",
+          "hearts": 3
+        },
+        {
+          "vi": "Đừng kể với ai: ta chưa thắng Bác Thợ Khóa Thành ván nào. «Ngang tài» chỉ là cách nói của người thua lịch sự.",
+          "en": "Tell no one: I have never beaten Bác Thợ Khóa Thành. «Evenly matched» is merely how a polite loser puts it.",
+          "hearts": 4
+        },
+        {
+          "vi": "Có những nước đi chẳng sách nào ghi, như việc {name} ghé thăm một lão tể tướng khó tính. Ta nhớ từng nước một.",
+          "en": "Some moves are in no book, like you calling on a fussy old chancellor, {name}. I remember every single one.",
+          "hearts": 5
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "a": "bac-tho-khoa-thanh",
+      "b": "ba-gau-nau",
+      "kind": "friend",
+      "note": {
+        "vi": "Ba mươi năm nay Bà Gấu Nâu mùa lạnh nào cũng đan găng len gửi lên thành; bác thì làm cho bà những ổ khóa bé xíu cho hộp bánh quy.",
+        "en": "For thirty winters Bà Gấu Nâu has knitted gloves and sent them up to the castle; in return he makes tiny locks for her biscuit tins."
+      }
+    },
+    {
+      "a": "cao-cung-thu",
+      "b": "bac-quang-luoi-bien",
+      "kind": "pen-pal",
+      "note": {
+        "vi": "Hai người viết thư thi nhau đọc gió: một người bằng mũi tên, một người bằng tấm lưới tung trên biển.",
+        "en": "They write to each other about reading the wind: one with arrows, the other with a net flung over the sea."
+      }
+    },
+    {
+      "a": "bac-tho-khoa-thanh",
+      "b": "gau-gac-ham",
+      "kind": "friend",
+      "note": {
+        "vi": "Bác làm cả mười bảy ổ khóa của hầm; đêm nào đổi ca hai người cũng uống chung một ấm trà gừng.",
+        "en": "He made all seventeen of the cellar's locks, and every night at the change of shift the two share a pot of ginger tea."
+      }
+    },
+    {
+      "a": "te-tuong-co-the",
+      "b": "bac-tho-khoa-thanh",
+      "kind": "rival",
+      "note": {
+        "vi": "Tuần nào hai người cũng đánh một ván cờ ở đại sảnh; tể tướng thua mãi nhưng vẫn gọi đó là «ngang tài».",
+        "en": "They play a game of chess in the great hall every week; the chancellor always loses but calls it «evenly matched»."
+      }
+    },
+    {
+      "a": "huou-cao",
+      "b": "gau-gac-ham",
+      "kind": "friend",
+      "note": {
+        "vi": "Sáng nào Hươu Cao cũng kể bình minh qua ô thông hơi cho Gấu Gác Hầm, người chưa từng được tận mắt ngắm nó.",
+        "en": "Every morning Hươu Cao describes the sunrise through the air vent to Gấu Gác Hầm, who has never seen one himself."
+      }
+    },
+    {
+      "a": "huou-cao",
+      "b": "cao-cung-thu",
+      "kind": "friend",
+      "note": {
+        "vi": "Hươu Cao đứng sau bia báo điểm cho Cáo Cung Thủ, vì cổ cao nhìn rõ mũi tên cắm ở vòng nào.",
+        "en": "Hươu Cao stands behind the target calling scores for Cáo Cung Thủ, tall enough to see which ring each arrow lands in."
+      }
+    },
+    {
+      "a": "te-tuong-co-the",
+      "b": "cao-cung-thu",
+      "kind": "mentor",
+      "note": {
+        "vi": "Tể tướng dạy Cáo Cung Thủ chơi cờ để tập tính trước và đếm tới ba rồi mới hành động.",
+        "en": "The chancellor teaches Cáo Cung Thủ chess, to help him think ahead and count to three before he acts."
+      }
+    }
+  ],
+  "arcs": [
+    {
+      "id": "chia-khoa-thu-tram",
+      "npc": "bac-tho-khoa-thanh",
+      "title": { "vi": "Chiếc chìa thứ một trăm", "en": "The hundredth key" },
+      "teaser": {
+        "vi": "Chùm chìa của bác có một trăm cái móc mà chỉ treo chín mươi chín chiếc chìa. Cái móc trống ấy đang chờ một thứ thầy bác để lại.",
+        "en": "My key ring has a hundred hooks but only ninety-nine keys. The empty hook is waiting for something my teacher left behind."
+      },
+      "chapters": [
+        {
+          "quest": "yarn-chia-khoa-thu-tram-1",
+          "hearts": 0,
+          "letter": {
+            "from": "bac-tho-khoa-thanh",
+            "title": { "vi": "Cảm ơn người thợ phụ khéo tay", "en": "Thanks to my handy helper" },
+            "body": {
+              "vi": "{name} thân mến, đêm nay cầu đá hạ xuống êm như ru, chẳng kêu một tiếng nào. Bác đặt tấm biển đồng của thầy cạnh gối, đọc đi đọc lại câu «chìa không rèn bằng lửa». Mai cháu ghé, bác cháu mình xuống gầm cầu xem nhé.",
+              "en": "Dear {name}, tonight the stone bridge came down as smooth as a lullaby, without a single creak. I've put my teacher's brass plate by my pillow and keep rereading «a key not forged in fire». Come by tomorrow and we'll look under the bridge."
+            },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-chia-khoa-thu-tram-2",
+          "hearts": 1,
+          "letter": {
+            "from": "ba-gau-nau",
+            "title": { "vi": "Thư từ Xóm Mái Ấm", "en": "A letter from Xóm Mái Ấm" },
+            "body": {
+              "vi": "Cháu {name} ơi, bác Thợ Khóa vừa viết thư kể cháu giúp bác mở cánh cửa dưới gầm cầu. Ba mươi năm quen nhau, bà chưa thấy chữ bác ấy nhảy nhót vui thế bao giờ. Bà gửi cháu chiếc khăn len, để lúc chui gầm cầu gió hào khỏi lùa vào cổ.",
+              "en": "Dear {name}, the old locksmith has written to tell me you helped him open the door under the bridge. In thirty years I've never seen his handwriting dance so happily. Here's a wool scarf, so the moat wind can't creep down your neck under there."
+            },
+            "reward": { "coins": 20, "xp": 15, "items": { "khan-len-dan": 1 } }
+          }
+        },
+        {
+          "quest": "yarn-chia-khoa-thu-tram-3",
+          "hearts": 2,
+          "letter": {
+            "from": "bac-tho-khoa-thanh",
+            "title": { "vi": "Hai mảnh rồi, còn một", "en": "Two pieces down, one to go" },
+            "body": {
+              "vi": "{name} ơi, hôm qua bác ngồi trên thuyền mà không run, chỉ vì có cháu ở cạnh. Hai mảnh chìa đã nằm trên bàn thợ, còn mảnh thứ ba thầy bảo bác phải tự làm. Bác nghĩ mãi chưa ra, cháu nghĩ giúp bác với.",
+              "en": "{name}, yesterday I sat in a boat without trembling, only because you were beside me. Two pieces of the key are on my workbench; the third, my teacher says, I must make myself. I can't work it out yet. Help me think?"
+            },
+            "reward": { "coins": 20, "xp": 20, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-chia-khoa-thu-tram-4",
+          "hearts": 3,
+          "letter": {
+            "from": "bac-tho-khoa-thanh",
+            "title": { "vi": "Móc thứ một trăm đã có chìa", "en": "The hundredth hook has its key" },
+            "body": {
+              "vi": "{name} thân mến, chùm chìa của bác giờ đủ một trăm. Chiếc cuối cùng có vòng quấn len đỏ, nặng nhất mà cũng nhẹ nhất. Bác bắt đầu vẽ ổ khóa mở bằng tiếng cười rồi, cháu nhớ ghé cười thử cho bác.",
+              "en": "Dear {name}, my key ring holds a hundred now. The last key has a ring wrapped in red wool, the heaviest and lightest of them all. I've started drawing the lock that opens with a laugh, so come and test it with a good giggle."
+            },
+            "reward": { "coins": 25, "xp": 25, "items": { "chuong-bac-thap-canh": 1 } }
+          }
+        }
+      ]
+    },
+    {
+      "id": "den-ham-khong-tat",
+      "npc": "gau-gac-ham",
+      "title": { "vi": "Ngọn đèn trong hầm", "en": "The light in the cellar" },
+      "teaser": {
+        "vi": "Suỵt… dạo này nến trong hầm cứ tắt phụt, mà gấu chắc chắn dưới này không có gió. {name} xuống xem cùng gấu nhé?",
+        "en": "Shh… lately the candles down here keep puffing out, and I'm certain there's no wind in this cellar. Will you come and look with me, {name}?"
+      },
+      "chapters": [
+        {
+          "quest": "yarn-den-ham-khong-tat-1",
+          "hearts": 0,
+          "letter": {
+            "from": "gau-gac-ham",
+            "title": { "vi": "Hầm có thêm người thuê nhà", "en": "The cellar has a new lodger" },
+            "body": {
+              "vi": "{name} ơi, Dơi Nhí Lộn Ngược ngủ ngoan trên xà ở góc tối, còn đèn của gấu sáng ở góc bên kia. Đêm nay chẳng cây nến nào tắt. Gấu đếm hai lượt rồi, vẫn đủ!",
+              "en": "{name}, Dơi Nhí Lộn Ngược is sleeping soundly on a beam in the dark corner, and my lamps glow in the other one. Not one candle went out tonight. I counted twice, and they're all there!"
+            },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-den-ham-khong-tat-2",
+          "hearts": 1,
+          "letter": {
+            "from": "nai-dom-dom",
+            "title": { "vi": "Thư từ cánh rừng có đom đóm", "en": "A letter from the firefly woods" },
+            "body": {
+              "vi": "Chào {name}, Gấu Gác Hầm viết thư kể chuyện mấy bóng ma vải và con rối mới. Ở rừng tớ, trời tối là lúc đom đóm thắp đèn, nên tớ chưa bao giờ thấy bóng tối đáng sợ. Tớ gửi gấu một hũ ánh sáng xanh, còn cậu thì nhận chút quà này nhé.",
+              "en": "Hello {name}, Gấu Gác Hầm wrote to me about the cloth ghosts and the new puppet. In my woods, darkness is when the fireflies light their lamps, so I've never found it scary. I've sent the bear a jar of green light, and this little gift is for you."
+            },
+            "reward": { "coins": 20, "xp": 20, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-den-ham-khong-tat-3",
+          "hearts": 2,
+          "letter": {
+            "from": "gau-gac-ham",
+            "title": { "vi": "Gấu đã thấy mặt trời mọc", "en": "I saw the sun come up" },
+            "body": {
+              "vi": "{name} thân mến, bình minh còn đẹp hơn mọi lời Hươu Cao kể. Gấu đứng dưới vòm hoa hồng, run như cầy sấy mà vẫn mở thật to mắt. Từ nay đêm có Dơi Nhí gác, sáng có gấu ngắm, hầm mình chẳng bao giờ một mình nữa.",
+              "en": "Dear {name}, the sunrise was even lovelier than all of Hươu Cao's descriptions. I stood under the rose arch, shaking like a jelly, but I kept my eyes wide open. Now Dơi Nhí keeps watch by night and I greet the sun by day, so our cellar is never alone."
+            },
+            "reward": { "coins": 25, "xp": 20, "items": { "ky-lan-bong": 1 } }
+          }
+        }
+      ]
+    }
+  ]
+}

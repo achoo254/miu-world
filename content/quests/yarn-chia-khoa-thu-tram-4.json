@@ -1,0 +1,353 @@
+{
+  "id": "yarn-chia-khoa-thu-tram-4",
+  "region": "lau-dai",
+  "chapter": 3,
+  "title": "Chuyện của Bác Thợ Khóa Thành, chương 4: Chiếc chìa không rèn bằng lửa",
+  "status": "active",
+  "category": "story",
+  "summary": "Chiếc chuông nhỏ dẫn {name} và Bác Thợ Khóa Thành tới gốc liễu, nơi hòm của Cụ Đồng chỉ mở bằng một khúc chuông. Lời dặn cuối của người thầy cho bác biết mảnh thứ ba là gì, và chiếc chìa thứ một trăm thật ra để làm gì.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bác Thợ Khóa Thành",
+    "where": "Lâu đài: cầu đá qua hào, gốc liễu ven hào, xưởng khóa bên cầu, cổng thành",
+    "goal": "Làm mảnh thứ ba, treo chiếc chìa thứ một trăm lên móc và hiểu lời dặn cuối của Cụ Đồng",
+    "play": "Tìm hòm và đồ dưới gốc liễu, đoán nốt chuông còn thiếu, đọc lời dặn, xếp các bước làm vòng chìa, chọn cách nhận lời bác, chơi mở khóa đĩa xoay",
+    "learn": "Tìm quy luật, đọc hiểu, sắp xếp trình tự công việc",
+    "reward": "75 XP, 22 Xu, Skill XP Logic, Đọc hiểu, Kể chuyện, vật phẩm Chìa khóa thành cổ",
+    "next": "Bác bắt đầu vẽ ổ khóa chỉ mở bằng tiếng cười"
+  },
+  "phases": {
+    "hook": "bac-thuc-trang",
+    "explore": "quanh-goc-lieu",
+    "learn": "khuc-chuong",
+    "challenge": "loi-dan-cuoi",
+    "decision": "nguoi-hoc-viec",
+    "finale": "mo-khoa-dau-tien",
+    "reward": "chum-chia-du-tram",
+    "next": "o-khoa-tieng-cuoi"
+  },
+  "places": {
+    "bac-tho-khoa-thanh": "Cầu đá qua hào",
+    "quanh-goc-lieu": "Gốc liễu",
+    "st-chia-khoa-thu-tram-hom-cu-dong": "Gốc liễu",
+    "st-chia-khoa-thu-tram-xuong-khoa": "Xưởng khóa",
+    "st-chia-khoa-thu-tram-o-khoa-dia": "Cổng thành"
+  },
+  "steps": [
+    {
+      "id": "bac-thuc-trang",
+      "title": "Một đêm không ngủ",
+      "goTo": "Tìm Bác Thợ Khóa Thành ở cầu đá qua hào, bác thức trắng cả đêm",
+      "kind": "dialogue",
+      "target": "bac-tho-khoa-thanh",
+      "lines": [
+        { "speaker": "Bác Thợ Khóa Thành", "text": "Cạch… à không, sáng nay bác chẳng còn sức bắt chước tiếng khóa nữa. Bác thức trắng nghĩ về mảnh thứ ba." },
+        { "speaker": "Bác Thợ Khóa Thành", "text": "Rạng sáng, chiếc chuông nhỏ lại kêu «đinh» khi gió thổi từ phía gốc liễu ven hào. Ngày xưa thầy bác hay ngồi câu cá ở đó." }
+      ],
+      "choices": [
+        { "text": "Mình ra gốc liễu xem ngay!", "reply": "Đi thôi, bác xách theo cả túi đồ nghề, lỡ đâu cần." },
+        { "text": "Bác đã ăn sáng chưa ạ?", "reply": "Chưa, nhưng có cháu hỏi thế là bác no được nửa bụng rồi." }
+      ],
+      "en": {
+        "title": "A sleepless night",
+        "goTo": "Find Bác Thợ Khóa Thành at the stone bridge over the moat; he's been up all night",
+        "lines": [
+          "Click… no, this morning I haven't the energy to imitate a lock. I stayed up all night thinking about the third piece.",
+          "At dawn the little bell rang «ding» again when the wind blew from the willow by the moat. My teacher used to sit and fish there."
+        ],
+        "choices": [
+          { "text": "Let's go to the willow right now!", "reply": "Off we go, and I'm bringing my whole tool bag, just in case." },
+          { "text": "Have you had breakfast yet?", "reply": "No, but you asking fills me up halfway already." }
+        ]
+      }
+    },
+    {
+      "id": "quanh-goc-lieu",
+      "title": "Dưới rễ cây liễu",
+      "goTo": "Ra gốc liễu bên hào nước, tìm quanh đám rễ",
+      "kind": "search",
+      "targets": ["st-chia-khoa-thu-tram-hom-cu-dong", "st-chia-khoa-thu-tram-day-dong", "st-chia-khoa-thu-tram-len-do"],
+      "en": {
+        "title": "Among the willow roots",
+        "goTo": "Go to the willow by the moat (Gốc liễu) and search around its roots"
+      }
+    },
+    {
+      "id": "khuc-chuong",
+      "title": "Ổ khóa biết hát",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "st-chia-khoa-thu-tram-hom-cu-dong",
+      "skill": "logic",
+      "prompt": "Hòm của Cụ Đồng không có lỗ khóa, chỉ có hai chiếc chuông: chuông nhỏ kêu «đinh», chuông to kêu «đoong». Khắc trên nắp: đinh, đoong, đinh, đinh, đoong, đinh, đinh, đinh, … Tiếng chuông nào gõ tiếp theo thì hòm mở?",
+      "choices": [
+        { "id": "a", "text": "Thêm một tiếng «đinh»" },
+        { "id": "b", "text": "Một tiếng «đoong»" },
+        { "id": "c", "text": "Gõ cả hai cùng lúc" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": [
+          "Đếm số tiếng «đinh» đứng trước mỗi tiếng «đoong».",
+          "Lần đầu một tiếng «đinh», lần sau hai tiếng, lần này đã ba tiếng.",
+          "Đủ số «đinh» rồi thì tiếng nào luôn theo sau?"
+        ],
+        "hint": "Sau mỗi chùm «đinh» luôn có một tiếng «đoong».",
+        "answer": {
+          "text": "Gõ chuông to: «đoong»",
+          "explanation": "Khúc chuông là 1 đinh, đoong, 2 đinh, đoong, 3 đinh rồi lại tới đoong; ba tiếng đinh đã đủ nên tiếp theo là đoong."
+        },
+        "en": {
+          "guide": [
+            "Count how many «dings» come before each «dong».",
+            "First one «ding», then two, and now three.",
+            "Once the dings are done, which sound always follows?"
+          ],
+          "hint": "Every bunch of «dings» is followed by one «dong».",
+          "answer": {
+            "text": "Ring the big bell: «dong»",
+            "explanation": "The tune goes 1 ding, dong, 2 dings, dong, 3 dings, then dong again; the three dings are done, so dong comes next."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đoong! Nắp hòm bật lên như có ai đẩy từ bên trong.",
+          "Một ổ khóa biết hát, và {name} hát đúng nốt cuối cùng!",
+          "Bác Thợ Khóa Thành ngẩn ra: thầy bác làm khóa bằng bài hát thật."
+        ],
+        "wrong": [
+          "Hòm vẫn im, chắc khúc chuông chưa tròn nhịp.",
+          "Đếm lại xem lần này đã đủ mấy tiếng «đinh» rồi.",
+          "Hai chuông cùng kêu thì ồn quá, khúc chuông của thầy đâu có thế."
+        ],
+        "en": {
+          "right": [
+            "Dong! The lid springs up as if pushed from inside.",
+            "A lock that sings, and {name} sang the very last note right!",
+            "Bác Thợ Khóa Thành is stunned: his teacher really made a lock from a song."
+          ],
+          "wrong": [
+            "The chest stays shut; the tune must be off the beat.",
+            "Count again: how many «dings» are there this time?",
+            "Both bells at once is just noise; that's not how his teacher's tune goes."
+          ]
+        }
+      },
+      "en": {
+        "title": "The lock that sings",
+        "prompt": "Cụ Đồng's chest has no keyhole, only two bells: the small one goes «ding», the big one «dong». Carved on the lid: ding, dong, ding, ding, dong, ding, ding, ding, … Which sound comes next to open it?",
+        "choices": ["One more «ding»", "A «dong»", "Ring both at once"]
+      }
+    },
+    {
+      "id": "loi-dan-cuoi",
+      "title": "Lời dặn cuối của thầy",
+      "kind": "read",
+      "target": "st-chia-khoa-thu-tram-hom-cu-dong",
+      "skill": "doc-hieu",
+      "text": "Trò Khóa,\nMảnh thứ ba là cái vòng để treo chìa. Hãy làm nó từ thứ con thương nhất, vì chìa nào cũng cần có người giữ. Treo nó lên móc thứ một trăm rồi con sẽ hiểu: chiếc chìa ấy không mở ổ nào cả. Nó là lời hứa con trao cho người học việc đầu tiên của con.\nCụ Đồng.",
+      "question": "Theo Cụ Đồng, chiếc chìa thứ một trăm dùng để làm gì?",
+      "choices": [
+        { "id": "a", "text": "Mở cái hòm vàng dưới gốc liễu" },
+        { "id": "b", "text": "Làm lời hứa trao cho người học việc" },
+        { "id": "c", "text": "Mở cổng thành lúc nửa đêm" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm câu nói chiếc chìa ấy «không mở ổ nào cả».", "Đọc câu đứng ngay sau nó."],
+        "hint": "Nó là thứ bác trao cho người đầu tiên học nghề với bác.",
+        "answer": {
+          "text": "Một lời hứa với người học việc",
+          "explanation": "Cụ Đồng viết: chiếc chìa ấy không mở ổ nào cả, nó là lời hứa con trao cho người học việc đầu tiên của con."
+        },
+        "en": {
+          "guide": ["Find the sentence saying the key «opens no lock at all».", "Read the sentence right after it."],
+          "hint": "It's something he gives to the first person who learns the trade from him.",
+          "answer": {
+            "text": "A promise to an apprentice",
+            "explanation": "Cụ Đồng writes: that key opens no lock at all; it is the promise you give your first apprentice."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bác lặng đi rất lâu, rồi khẽ nói: «Thầy ơi, con hiểu rồi.»",
+          "Phải, một lời hứa chứ không phải chìa mở kho báu, {name} đọc đúng.",
+          "Có những chiếc chìa mở lòng người, {name} vừa tìm ra một chiếc."
+        ],
+        "wrong": [
+          "Trong thư chẳng có hòm vàng nào đâu, đọc lại câu cuối nhé.",
+          "Cổng thành có chìa riêng rồi, chiếc này để làm việc khác cơ.",
+          "Tìm chữ «lời hứa» trong thư của thầy xem."
+        ],
+        "en": {
+          "right": [
+            "He is silent a long while, then whispers: «Teacher, I understand now.»",
+            "Yes, a promise, not a key to some treasure. You read it right, {name}.",
+            "Some keys open hearts, and you've just found one, {name}."
+          ],
+          "wrong": [
+            "There's no golden chest in the letter; read the last lines again.",
+            "The castle gate has its own key; this one is for something else.",
+            "Look for the word «promise» in the teacher's letter."
+          ]
+        }
+      },
+      "en": {
+        "title": "The teacher's last words",
+        "text": "Khóa, my pupil,\nThe third piece is the ring the key hangs by. Make it from the thing you love most, for every key needs someone to keep it. Hang it on the hundredth hook and you will understand: that key opens no lock at all. It is the promise you give to your first apprentice.\nCụ Đồng.",
+        "question": "According to Cụ Đồng, what is the hundredth key for?",
+        "choices": ["Opening a golden chest under the willow", "Being a promise given to an apprentice", "Opening the castle gate at midnight"]
+      }
+    },
+    {
+      "id": "lam-vong-chia",
+      "title": "Cái vòng quấn len đỏ",
+      "goTo": "Về xưởng khóa bên cầu làm cái vòng cho chìa",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-chia-khoa-thu-tram-xuong-khoa",
+      "skill": "ke-chuyen",
+      "prompt": "Bác chọn dây đồng quấn len đỏ, vì cuộn len là quà của người bạn bác thương nhất. Xếp các việc làm vòng chìa theo đúng thứ tự:",
+      "items": [
+        { "id": "quan-len", "label": "Quấn len đỏ quanh vòng đồng" },
+        { "id": "treo-moc", "label": "Treo chìa lên móc thứ một trăm" },
+        { "id": "uon-day", "label": "Uốn dây đồng thành vòng tròn" },
+        { "id": "gan-vong", "label": "Gắn vòng vào đầu cán chìa" }
+      ],
+      "answer": { "order": ["uon-day", "quan-len", "gan-vong", "treo-moc"] },
+      "support": {
+        "guide": ["Phải có cái vòng trước đã: vòng làm từ gì?", "Có vòng rồi mới quấn len lên được.", "Chìa có vòng rồi mới treo lên móc."],
+        "hint": "Việc cuối cùng là việc bác chờ suốt bao năm.",
+        "answer": {
+          "text": "Uốn, quấn, gắn rồi treo",
+          "explanation": "Uốn dây đồng thành vòng, quấn len đỏ, gắn vòng vào cán chìa, cuối cùng treo chìa lên móc thứ một trăm."
+        },
+        "en": {
+          "guide": ["First you need the ring: what's it made from?", "Only once there's a ring can the wool go round it.", "Once the key has its ring, it can go on the hook."],
+          "hint": "The last step is the one he has waited years for.",
+          "answer": {
+            "text": "Bend, wrap, fix, then hang",
+            "explanation": "Bend the copper wire into a ring, wrap it in red wool, fix the ring to the key shaft, and finally hang the key on the hundredth hook."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chiếc vòng tròn xoe, ấm như một cái nắm tay.",
+          "{name} làm việc có trước có sau, đúng nết thợ khóa.",
+          "Móc thứ một trăm vừa kêu «tinh» một tiếng, như reo vui."
+        ],
+        "wrong": [
+          "Chưa có vòng thì len quấn vào đâu được nhỉ?",
+          "Treo chìa khi chưa có vòng thì chìa rơi tõm mất.",
+          "Bắt đầu từ sợi dây đồng thẳng tưng kia xem nào."
+        ],
+        "en": {
+          "right": [
+            "The ring is perfectly round and warm as a held hand.",
+            "First things first, {name}, just like a true locksmith.",
+            "The hundredth hook gives a little «ting», as if cheering."
+          ],
+          "wrong": [
+            "Without a ring, what would the wool wrap around?",
+            "Hang the key before it has a ring and it'll just drop.",
+            "Start from that straight copper wire over there."
+          ]
+        }
+      },
+      "en": {
+        "title": "A ring wrapped in red wool",
+        "goTo": "Go back to the locksmith's workshop by the bridge (Xưởng khóa) to make the key's ring",
+        "prompt": "He chooses copper wire wrapped in red wool, because the wool was a gift from the friend he loves most. Put the steps for making the ring in order:",
+        "items": ["Wrap red wool round the copper ring", "Hang the key on the hundredth hook", "Bend the copper wire into a circle", "Fix the ring to the end of the key shaft"]
+      }
+    },
+    {
+      "id": "nguoi-hoc-viec",
+      "title": "Người học việc đầu tiên",
+      "goTo": "Cùng bác mang chùm chìa ra cầu đá qua hào",
+      "kind": "decision",
+      "target": "bac-tho-khoa-thanh",
+      "speaker": "Bác Thợ Khóa Thành",
+      "prompt": "Chùm chìa đã đủ một trăm. Bác Thợ Khóa Thành nhìn {name}, hắng giọng: «Bác cần một người học việc…» {name} trả lời thế nào?",
+      "choices": [
+        {
+          "id": "lam-hoc-tro",
+          "text": "Cháu xin làm học trò đầu tiên của bác!",
+          "consequence": "Bác cười tít mắt, gõ ba cái lên vai {name}: «Bài học đầu tiên: mở khóa bằng cái đầu, đừng bằng cái búa.»"
+        },
+        {
+          "id": "mo-lop",
+          "text": "Bác mở lớp dạy cho cả thành cùng học",
+          "consequence": "Bác gãi đầu: «Cả thành thì đông quá… nhưng thôi được, xưởng thêm người cười thì càng vui.»"
+        },
+        {
+          "id": "gioi-thieu",
+          "text": "Cháu giới thiệu cho bác một bạn thật khéo tay",
+          "consequence": "Bác gật gù: «Được, nhưng cháu vẫn phải ghé thường xuyên đấy, ổ khóa nào cũng nhớ cháu.»"
+        }
+      ],
+      "en": {
+        "title": "The first apprentice",
+        "goTo": "Carry the key ring out to the stone bridge over the moat with him",
+        "prompt": "The ring holds a hundred keys at last. Bác Thợ Khóa Thành looks at {name} and clears his throat: «I need an apprentice…» How does {name} answer?",
+        "choices": [
+          { "text": "Let me be your very first pupil!", "consequence": "His eyes crinkle into a smile as he taps {name}'s shoulder three times: «Lesson one: open locks with your head, not a hammer.»" },
+          { "text": "Start a class for the whole castle", "consequence": "He scratches his head: «The whole castle is a crowd… but fine, more laughter in the workshop is better.»" },
+          { "text": "I know a friend with very clever hands", "consequence": "He nods slowly: «Good, but you must still drop in often; every lock here misses you.»" }
+        ]
+      }
+    },
+    {
+      "id": "mo-khoa-dau-tien",
+      "title": "Bài học đầu tiên",
+      "goTo": "Ra cổng thành mở ổ khóa đĩa xoay, bài học đầu tiên của nghề",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-chia-khoa-thu-tram-o-khoa-dia",
+      "prompt": "Xoay đĩa mê cung cho chìa trượt tới ổ, mở ba ổ khóa trong bài học đầu tiên nhé!",
+      "game": "rotating-maze",
+      "goal": 3,
+      "en": {
+        "title": "Lesson one",
+        "goTo": "Go to the castle gate (Cổng thành) and open the turning-disc lock, the trade's first lesson",
+        "prompt": "Turn the maze disc so the key slides into the lock, and open three locks in your first lesson!"
+      }
+    },
+    {
+      "id": "chum-chia-du-tram",
+      "title": "Đủ một trăm chiếc chìa",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chiếc chìa thứ một trăm đung đưa trên móc, vòng len đỏ ấm như một cái nắm tay. Bác Thợ Khóa Thành tặng {name} chìa khóa thành cổ và hứa giữ sẵn một chỗ trong xưởng cho cháu.",
+      "en": {
+        "title": "A hundred keys at last",
+        "text": "The hundredth key swings on its hook, its red wool ring as warm as a held hand. Bác Thợ Khóa Thành gives {name} an old castle key and promises a spot in the workshop is always waiting."
+      }
+    },
+    {
+      "id": "o-khoa-tieng-cuoi",
+      "title": "Ổ khóa mở bằng tiếng cười",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đêm đó, bác bắt đầu vẽ bản thiết kế ổ khóa chỉ mở bằng tiếng cười. Bác bảo chiếc đầu tiên sẽ đặt ở cầu đá, để ai qua hào cũng phải cười một cái, và người cười thử đầu tiên là {name}.",
+      "en": {
+        "title": "A lock that opens with a laugh",
+        "text": "That night he starts drawing a lock that opens only with laughter. The first one, he says, will go on the stone bridge so everyone crossing the moat has to laugh once, and the first to test it will be {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 75,
+    "coin": 22,
+    "skillXp": { "logic": 1, "doc-hieu": 1, "ke-chuyen": 1 },
+    "items": { "chia-khoa-thanh-co": 1 }
+  },
+  "en": {
+    "title": "Bác Thợ Khóa Thành's story, chapter 4: The key not forged in fire",
+    "summary": "The little bell leads {name} and Bác Thợ Khóa Thành to the willow, where Cụ Đồng's chest opens only to a tune of bells. The teacher's last words reveal what the third piece is, and what the hundredth key is really for."
+  }
+}

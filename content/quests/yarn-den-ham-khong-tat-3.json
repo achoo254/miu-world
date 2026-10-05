@@ -1,0 +1,386 @@
+{
+  "id": "yarn-den-ham-khong-tat-3",
+  "region": "lau-dai",
+  "chapter": 2,
+  "title": "Chuyện của Gấu Gác Hầm, chương 3: Bình minh đầu tiên",
+  "status": "active",
+  "category": "story",
+  "summary": "Gấu Gác Hầm muốn một lần ngắm mặt trời mọc, nhưng ai sẽ trông hầm? {name} nhờ Dơi Nhí gác đêm, chọn giờ lên đường, tìm đúng hướng bình minh rồi ngồi cùng gấu dưới vòm hoa hồng chờ mặt trời ló.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Gấu Gác Hầm, Dơi Nhí Lộn Ngược",
+    "where": "Lâu đài: hầm ngục, góc hầm tối, gian đồng hồ, cổng tây, vòm hoa hồng",
+    "goal": "Đưa Gấu Gác Hầm ra ngắm bình minh đầu tiên mà hầm vẫn có người trông",
+    "play": "Đọc danh sách trực đêm, chọn các giờ trước 6 giờ, suy luận hướng mặt trời mọc, chọn cách giúp gấu bớt run, xếp lại chuyện đêm trực",
+    "learn": "Đọc hiểu danh sách, so sánh giờ, phương hướng, kể lại theo trình tự",
+    "reward": "70 XP, 20 Xu, Skill XP Đọc hiểu, Xem đồng hồ, Logic, Kể chuyện, vật phẩm Huy hiệu hiệp sĩ",
+    "next": "Gấu hẹn có ngày leo lên ngọn tháp cao nhất cùng {name}"
+  },
+  "phases": {
+    "hook": "gau-noi-uoc-mo",
+    "explore": "danh-sach-truc-dem",
+    "learn": "chon-gio-di",
+    "challenge": "huong-binh-minh",
+    "decision": "run-tren-ghe",
+    "finale": "ke-lai-dem-truc",
+    "reward": "gau-thay-binh-minh",
+    "next": "doi-ca-moi"
+  },
+  "places": {
+    "gau-gac-ham": "Hầm ngục",
+    "st-den-ham-khong-tat-doi-nhi": "Góc hầm tối",
+    "st-den-ham-khong-tat-dong-ho": "Gian đồng hồ",
+    "st-den-ham-khong-tat-bien-chi-huong": "Cổng tây",
+    "st-den-ham-khong-tat-ghe-da": "Vòm hoa hồng"
+  },
+  "steps": [
+    {
+      "id": "gau-noi-uoc-mo",
+      "title": "Ước mơ của gấu",
+      "goTo": "Xuống hầm ngục, Gấu Gác Hầm đang xoắn tay vì hồi hộp",
+      "kind": "dialogue",
+      "target": "gau-gac-ham",
+      "lines": [
+        { "speaker": "Gấu Gác Hầm", "text": "Suỵt… {name}, gấu đã nói với con rối rồi, giờ nói với cậu: gấu muốn được ngắm mặt trời mọc, một lần thôi." },
+        { "speaker": "Gấu Gác Hầm", "text": "Nhưng gấu gác hầm suốt đêm, rạng sáng mới được nghỉ. Bỏ hầm đi thì ai trông?" },
+        { "speaker": "Gấu Gác Hầm", "text": "Dơi Nhí bảo nó là bạn thức đêm giỏi nhất lâu đài. Cậu hỏi nó giúp gấu nhé?" }
+      ],
+      "choices": [
+        { "text": "Tớ đi hỏi Dơi Nhí ngay!", "reply": "Nhớ nói khẽ thôi, Dơi Nhí ghét tiếng ồn gần bằng ghét ánh sáng." },
+        { "text": "Gấu sẽ được thấy bình minh, tớ hứa!", "reply": "Đừng hứa vội, lỡ trời mưa thì sao… mà thôi, cứ hứa đi, nghe sướng tai lắm." }
+      ],
+      "en": {
+        "title": "The bear's dream",
+        "goTo": "Go down into the dungeon, where Gấu Gác Hầm is wringing his paws with nerves",
+        "lines": [
+          "Shh… {name}, I told the puppet, so now I'll tell you: I want to watch the sun rise, just once.",
+          "But I guard the cellar all night and only rest at dawn. If I leave, who'll keep watch?",
+          "Dơi Nhí says it's the best night-owl in the whole castle. Will you ask it for me?"
+        ],
+        "choices": [
+          { "text": "I'll go and ask Dơi Nhí right now!", "reply": "Speak softly; Dơi Nhí hates noise almost as much as bright light." },
+          { "text": "You'll see the sunrise, I promise!", "reply": "Don't promise too fast, what if it rains… oh, go on, promise anyway, it sounds lovely." }
+        ]
+      }
+    },
+    {
+      "id": "danh-sach-truc-dem",
+      "title": "Danh sách trực đêm",
+      "goTo": "Vào góc hầm tối hỏi Dơi Nhí Lộn Ngược",
+      "kind": "read",
+      "target": "st-den-ham-khong-tat-doi-nhi",
+      "skill": "doc-hieu",
+      "text": "Danh sách trực đêm của Dơi Nhí\n1. Gấu để lại một ngọn đèn dầu ở cửa hầm, vặn thật nhỏ.\n2. Không ai được hát to sau mười giờ đêm.\n3. Có khách tìm đồ thất lạc thì Dơi treo một mảnh giấy hẹn sáng mai.\n4. Gấu phải về trước khi mặt trời lên cao bằng ngọn tháp.",
+      "question": "Theo danh sách, nếu có khách tới tìm đồ ban đêm thì Dơi Nhí sẽ làm gì?",
+      "choices": [
+        { "id": "a", "text": "Bay đi đánh thức gấu dậy" },
+        { "id": "b", "text": "Treo một mảnh giấy hẹn sáng mai" },
+        { "id": "c", "text": "Tự lục kho tìm đồ cho khách" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Danh sách có bốn điều, mỗi điều một dòng.", "Tìm dòng có chữ «khách»."],
+        "hint": "Đó là điều thứ ba.",
+        "answer": {
+          "text": "Treo giấy hẹn khách sáng mai quay lại",
+          "explanation": "Điều thứ ba ghi: có khách tìm đồ thất lạc thì Dơi treo một mảnh giấy hẹn sáng mai."
+        },
+        "en": {
+          "guide": ["The list has four rules, one per line.", "Find the line with the word «visitor»."],
+          "hint": "It's rule number three.",
+          "answer": {
+            "text": "Hang a note asking them back in the morning",
+            "explanation": "Rule three says: if a visitor comes for lost property, Dơi hangs up a note saying come back tomorrow morning."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Dơi Nhí gật đầu lia lịa, suýt rơi khỏi xà: «Đúng điều số ba!»",
+          "{name} đọc danh sách còn kỹ hơn cả người viết ra nó.",
+          "Thế là gấu được ngủ yên, khách cũng chẳng phải chờ suông."
+        ],
+        "wrong": [
+          "Đánh thức gấu thì gấu mất ngủ mất, đọc lại điều số ba nhé.",
+          "Dơi Nhí bé tí, lục kho bốn trăm món sao nổi.",
+          "Tìm dòng có chữ «khách» trong danh sách xem nào."
+        ],
+        "en": {
+          "right": [
+            "Dơi Nhí nods so hard it nearly drops off the beam: «Rule three!»",
+            "You read that list more carefully than the one who wrote it, {name}.",
+            "So the bear can sleep, and visitors won't wait for nothing."
+          ],
+          "wrong": [
+            "Waking the bear would ruin his sleep; read rule three again.",
+            "Dơi Nhí is tiny; it could never search four hundred things.",
+            "Look for the line with the word «visitor»."
+          ]
+        }
+      },
+      "en": {
+        "title": "The night-watch list",
+        "goTo": "Go into the dark corner of the cellar (Góc hầm tối) to ask Dơi Nhí Lộn Ngược",
+        "text": "Dơi Nhí's night-watch list\n1. Bear leaves one oil lamp at the cellar door, turned right down.\n2. No loud singing after ten at night.\n3. If a visitor comes for lost property, Dơi hangs up a note saying come back tomorrow morning.\n4. Bear must be home before the sun climbs as high as the tower.",
+        "question": "According to the list, what will Dơi Nhí do if a visitor comes looking for something at night?",
+        "choices": ["Fly off and wake the bear", "Hang up a note saying come back in the morning", "Search the store room for them"]
+      }
+    },
+    {
+      "id": "chon-gio-di",
+      "title": "Giờ nào lên đường?",
+      "goTo": "Sang gian đồng hồ chọn giờ lên đường",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-den-ham-khong-tat-dong-ho",
+      "skill": "xem-dong-ho",
+      "prompt": "Hôm nay mặt trời mọc lúc 6 giờ sáng. Gấu phải ra khỏi hầm trước giờ đó. Chọn mọi đồng hồ chỉ giờ gấu có thể lên đường:",
+      "choices": [
+        { "id": "a", "text": "5 giờ" },
+        { "id": "b", "text": "7 giờ rưỡi" },
+        { "id": "c", "text": "4 giờ 30 phút" },
+        { "id": "d", "text": "6 giờ 15 phút" },
+        { "id": "e", "text": "5 giờ 45 phút" }
+      ],
+      "answer": { "choices": ["a", "c", "e"] },
+      "support": {
+        "guide": ["Giờ lên đường phải sớm hơn 6 giờ.", "So sánh từng giờ với 6 giờ: số giờ bé hơn 6 là sớm hơn.", "6 giờ 15 phút là đã quá 6 giờ rồi."],
+        "hint": "Có đúng ba chiếc đồng hồ hợp lệ.",
+        "answer": {
+          "text": "5 giờ, 4 giờ 30 phút, 5 giờ 45 phút",
+          "explanation": "Ba giờ này đều trước 6 giờ; còn 7 giờ rưỡi và 6 giờ 15 phút thì mặt trời đã mọc mất rồi."
+        },
+        "en": {
+          "guide": ["Setting-off time must be earlier than 6 o'clock.", "Compare each time with 6: an hour smaller than 6 is earlier.", "Quarter past 6 is already after 6."],
+          "hint": "Exactly three clocks will do.",
+          "answer": {
+            "text": "5:00, 4:30 and 5:45",
+            "explanation": "Those three are all before 6; at half past 7 or quarter past 6 the sun is already up."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba chiếc đồng hồ cùng tích tắc như vỗ tay cho {name}.",
+          "Đi giờ nào trong ba giờ ấy, gấu cũng kịp chào mặt trời.",
+          "Chuẩn rồi! Gấu ghi ngay giờ lên đường vào lòng bàn chân."
+        ],
+        "wrong": [
+          "Giờ ấy mặt trời đã lên cao rồi, gấu lỡ mất bình minh.",
+          "Còn một chiếc đồng hồ sớm hơn 6 giờ mà {name} chưa chọn.",
+          "So từng giờ với 6 giờ thật chậm xem nào."
+        ],
+        "en": {
+          "right": [
+            "All three clocks tick together as if clapping for {name}.",
+            "Leave at any of those times and the bear will greet the sun.",
+            "Spot on! The bear writes the time on the sole of his foot."
+          ],
+          "wrong": [
+            "By then the sun's already high, and the bear misses the dawn.",
+            "There's one more clock earlier than 6 that you haven't picked.",
+            "Compare each time with 6 o'clock, nice and slowly."
+          ]
+        }
+      },
+      "en": {
+        "title": "What time to set off?",
+        "goTo": "Go to the clock hall (Gian đồng hồ) to choose a time to set off",
+        "prompt": "Today the sun rises at 6 in the morning. The bear must leave the cellar before then. Pick every clock showing a time he could set off:",
+        "choices": ["5 o'clock", "Half past 7", "4:30", "Quarter past 6", "5:45"]
+      }
+    },
+    {
+      "id": "huong-binh-minh",
+      "title": "Đứng đâu mới thấy bình minh?",
+      "goTo": "Gấu kéo {name} ra cổng tây, định đứng đó chờ bình minh",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-den-ham-khong-tat-bien-chi-huong",
+      "skill": "logic",
+      "prompt": "Gấu định ngắm bình minh ở cổng tây. Nhưng mặt trời mọc ở phía đông và lặn ở phía tây. Biển chỉ đường ghi: vòm hoa hồng ở phía đông lâu đài, nhà người hầu ở phía bắc. Gấu nên đứng ở đâu?",
+      "choices": [
+        { "id": "a", "text": "Ngay tại cổng tây này" },
+        { "id": "b", "text": "Dưới vòm hoa hồng" },
+        { "id": "c", "text": "Trước nhà người hầu" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Mặt trời mọc ở phía nào?", "Trong ba chỗ, chỗ nào nằm ở phía ấy?"],
+        "hint": "Cổng tây nhìn về phía mặt trời lặn cơ.",
+        "answer": {
+          "text": "Phía đông, dưới vòm hoa hồng",
+          "explanation": "Mặt trời mọc ở phía đông, mà vòm hoa hồng nằm ở phía đông lâu đài, nên gấu phải sang đó."
+        },
+        "en": {
+          "guide": ["Which side does the sun rise on?", "Which of the three spots is on that side?"],
+          "hint": "The west gate faces where the sun sets.",
+          "answer": {
+            "text": "The east side, under the rose arch",
+            "explanation": "The sun rises in the east, and the rose arch is on the east side of the castle, so that's where the bear should go."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Gấu vỗ trán: suýt nữa thì ngồi chờ mặt trời lặn mất!",
+          "Phía đông, vòm hoa hồng, {name} chỉ hướng chuẩn như kim la bàn.",
+          "Hai bạn quay lưng lại cổng tây, đi về phía trời đang hửng."
+        ],
+        "wrong": [
+          "Cổng tây chỉ thấy hoàng hôn thôi, bình minh ở phía ngược lại.",
+          "Nhà người hầu ở phía bắc, mặt trời đâu mọc đằng đó.",
+          "Nhớ lại xem: mặt trời mọc đằng đông hay đằng tây?"
+        ],
+        "en": {
+          "right": [
+            "The bear smacks his forehead: he nearly sat waiting for a sunset!",
+            "East, the rose arch; you point the way like a compass needle, {name}.",
+            "The two of you turn your backs on the west gate and head for the brightening sky."
+          ],
+          "wrong": [
+            "From the west gate you only see sunsets; dawn is on the other side.",
+            "The servants' house is to the north, and the sun doesn't rise there.",
+            "Think back: does the sun rise in the east or the west?"
+          ]
+        }
+      },
+      "en": {
+        "title": "Where to watch the dawn?",
+        "goTo": "The bear drags {name} to the west gate (Cổng tây), planning to wait for dawn there",
+        "prompt": "The bear plans to watch the sunrise from the west gate. But the sun rises in the east and sets in the west. The signpost says: the rose arch is on the castle's east side, the servants' house to the north. Where should the bear stand?",
+        "choices": ["Right here at the west gate", "Under the rose arch", "In front of the servants' house"]
+      }
+    },
+    {
+      "id": "run-tren-ghe",
+      "title": "Run run trên ghế đá",
+      "goTo": "Chạy sang vòm hoa hồng, trời phía đông đã ửng hồng",
+      "kind": "decision",
+      "target": "st-den-ham-khong-tat-ghe-da",
+      "speaker": "Gấu Gác Hầm",
+      "prompt": "Gấu ngồi xuống ghế đá, run cầm cập: trời còn tối mờ mà hầm thì xa quá. «Hay là gấu về nhỉ?» {name} làm gì?",
+      "choices": [
+        {
+          "id": "dem-nguoc",
+          "text": "Cùng gấu đếm ngược từ mười tới lúc mặt trời ló",
+          "consequence": "Mười, chín, tám… vừa tới «một» thì một mép vàng ló khỏi tường thành, đúng hẹn như có ai canh giờ."
+        },
+        {
+          "id": "nam-tay",
+          "text": "Nắm tay gấu, kể Dơi Nhí đang gác giỏi thế nào",
+          "consequence": "Gấu thở ra một hơi dài, vai hạ xuống: «Ừ, hầm có bạn trông rồi.» Gấu ngẩng lên đúng lúc trời bừng sáng."
+        },
+        {
+          "id": "hat-khe",
+          "text": "Hát khe khẽ bài gấu vẫn hát cho mấy thùng gỗ",
+          "consequence": "Hai bạn ư ử hát, gấu quên cả run. Hết bài thì mặt trời đã tròn như lòng đỏ trứng trên đầu tường."
+        }
+      ],
+      "en": {
+        "title": "Shivering on the stone bench",
+        "goTo": "Run to the rose arch (Vòm hoa hồng); the eastern sky is already turning pink",
+        "prompt": "The bear sits on the stone bench, shaking all over: it's still dim, and the cellar feels so far away. «Maybe I should go back?» What does {name} do?",
+        "choices": [
+          { "text": "Count down from ten with him until the sun appears", "consequence": "Ten, nine, eight… right on «one» a golden edge peeps over the wall, as punctual as if someone timed it." },
+          { "text": "Hold his paw and tell him how well Dơi Nhí is keeping watch", "consequence": "The bear lets out a long breath and his shoulders drop: «Yes, the cellar has a friend minding it.» He looks up just as the sky bursts into light." },
+          { "text": "Softly hum the song he sings to his barrels", "consequence": "The two of you hum along and the bear forgets to shiver. By the end of the song the sun sits round as an egg yolk on top of the wall." }
+        ]
+      }
+    },
+    {
+      "id": "ke-lai-dem-truc",
+      "title": "Kể lại cho Hươu Cao nghe",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-den-ham-khong-tat-ghe-da",
+      "skill": "ke-chuyen",
+      "prompt": "Lần này gấu muốn tự kể cho Hươu Cao nghe về đêm trực đặc biệt. Xếp những việc đã xảy ra theo đúng thứ tự:",
+      "items": [
+        { "id": "ngam", "label": "Ngắm mặt trời ló khỏi tường thành" },
+        { "id": "nham", "label": "Suýt đứng chờ bình minh ở cổng tây" },
+        { "id": "hoi", "label": "Nhờ Dơi Nhí thức đêm trông hầm" },
+        { "id": "chon", "label": "Chọn giờ lên đường ở gian đồng hồ" }
+      ],
+      "answer": { "order": ["hoi", "chon", "nham", "ngam"] },
+      "support": {
+        "guide": ["Trước khi đi đâu, gấu phải lo cho hầm có người trông.", "Rồi mới chọn giờ, rồi mới tới chuyện đi nhầm hướng.", "Mặt trời ló là phần cuối cùng của chuyện."],
+        "hint": "Nhớ lại các chỗ {name} đã ghé từ đầu đêm.",
+        "answer": {
+          "text": "Nhờ Dơi, chọn giờ, suýt nhầm cổng, ngắm mặt trời",
+          "explanation": "Đầu tiên nhờ Dơi Nhí trông hầm, rồi chọn giờ ở gian đồng hồ, ra cổng tây suýt nhầm hướng, cuối cùng ngắm mặt trời dưới vòm hoa hồng."
+        },
+        "en": {
+          "guide": ["Before going anywhere, the bear had to get someone to mind the cellar.", "Then choosing the time, then the wrong-way mix-up.", "The sun peeping out is the very end of the story."],
+          "hint": "Think back through every place {name} visited tonight.",
+          "answer": {
+            "text": "Ask Dơi, pick a time, nearly wrong gate, sunrise",
+            "explanation": "First asking Dơi Nhí to mind the cellar, then picking a time in the clock hall, nearly waiting at the west gate, and finally watching the sun from the rose arch."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Gấu kể trơn tru, không vấp một chữ, Hươu Cao nghe mà chắc mê lắm.",
+          "Đầu đuôi rõ ràng, {name} giúp gấu kể chuyện hay như người kể rối.",
+          "Lần đầu tiên gấu kể bình minh cho Hươu Cao, thay vì chỉ ngồi nghe."
+        ],
+        "wrong": [
+          "Mặt trời ló là đoạn kết, đâu thể kể ngay từ đầu.",
+          "Chưa ai trông hầm mà gấu đã đi thì không ổn đâu.",
+          "Nhớ xem: chọn giờ trước, hay ra cổng tây trước?"
+        ],
+        "en": {
+          "right": [
+            "The bear tells it smoothly without a stumble; Hươu Cao will love it.",
+            "Beginning to end, crystal clear; you helped the bear tell it like a puppeteer, {name}.",
+            "For the first time the bear will describe a sunrise to Hươu Cao, instead of only listening."
+          ],
+          "wrong": [
+            "The sunrise is the ending; it can't come first.",
+            "Leaving before anyone minds the cellar just won't do.",
+            "Think: did choosing the time come before the west gate, or after?"
+          ]
+        }
+      },
+      "en": {
+        "title": "Telling it to Hươu Cao",
+        "prompt": "This time the bear wants to tell Hươu Cao about his special night himself. Put what happened in the right order:",
+        "items": ["Watch the sun peep over the wall", "Nearly wait for dawn at the west gate", "Ask Dơi Nhí to stay up and mind the cellar", "Pick a setting-off time in the clock hall"]
+      }
+    },
+    {
+      "id": "gau-thay-binh-minh",
+      "title": "Nắng trên bộ lông gấu",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mặt trời lên, nắng phủ vàng bộ lông Gấu Gác Hầm. Gấu cười toe như chưa từng biết sợ, rồi tặng {name} chiếc huy hiệu hiệp sĩ trong kho: «Hôm nay hai đứa mình đều dũng cảm.»",
+      "en": {
+        "title": "Sunlight on the bear's fur",
+        "text": "The sun climbs and turns Gấu Gác Hầm's fur to gold. He grins as if he'd never been afraid of anything, then gives {name} a knight's badge from the store: «We were both brave today.»"
+      }
+    },
+    {
+      "id": "doi-ca-moi",
+      "title": "Ca gác mới của hầm",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Từ hôm ấy, đêm Dơi Nhí gác hầm, sáng Gấu Gác Hầm ra vòm hoa hồng chào mặt trời rồi mới đi ngủ. Gấu còn hẹn sẽ có ngày leo lên tận ngọn tháp cao nhất, cùng {name}.",
+      "en": {
+        "title": "A new watch rota",
+        "text": "From that day on, Dơi Nhí guards the cellar by night, and every morning Gấu Gác Hầm greets the sun at the rose arch before going to bed. He's even promised to climb the tallest tower one day, with {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 20,
+    "skillXp": { "doc-hieu": 1, "xem-dong-ho": 1, "logic": 1, "ke-chuyen": 1 },
+    "items": { "huy-hieu-hiep-si": 1 }
+  },
+  "en": {
+    "title": "Gấu Gác Hầm's story, chapter 3: The first sunrise",
+    "summary": "Gấu Gác Hầm wants to watch the sun rise just once, but who will mind the cellar? {name} asks Dơi Nhí to keep night watch, picks a time to set off, works out where dawn comes from and sits with the bear under the rose arch waiting for the sun."
+  }
+}
