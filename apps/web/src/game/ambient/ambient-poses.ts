@@ -3,7 +3,7 @@
 // stretch), the head turning (looking around), a cup to the mouth, a waving arm, a rod held out and
 // jerked; a bird's wings beating or spread in a glide, a bee's buzzing blur, a dozing animal's breath.
 // Kenney Blocky Characters face +z with arms hanging along −y; Cube Pets wings hinge on z.
-import type { Object3D } from 'three';
+import type { Object3D, Vector3 } from 'three';
 import type { Pose, Wings } from './ambient-types';
 
 export interface PoseParts {
@@ -12,17 +12,24 @@ export interface PoseParts {
   head?: Object3D;
   torso?: Object3D;
   body?: Object3D;
-  wingLeft?: { node: Object3D; baseZ: number };
-  wingRight?: { node: Object3D; baseZ: number };
+  wingLeft?: Wing;
+  wingRight?: Wing;
   /** Rotation each posed part has at rest, restored every frame before the clip runs. */
   rest: Array<{ node: Object3D; x: number; y: number; z: number; scaleY: number }>;
 }
 
+/** A wing node (hinged where it meets the body, its span along x) and its angle and size at rest. */
+export interface Wing {
+  node: Object3D;
+  baseZ: number;
+  baseScale: Vector3;
+}
+
 export function findPoseParts(root: Object3D): PoseParts {
   const named = (name: string): Object3D | undefined => root.getObjectByName(name) ?? undefined;
-  const wing = (name: string) => {
+  const wing = (name: string): Wing | undefined => {
     const node = named(name);
-    return node ? { node, baseZ: node.rotation.z } : undefined;
+    return node ? { node, baseZ: node.rotation.z, baseScale: node.scale.clone() } : undefined;
   };
   const parts: PoseParts = { rest: [] };
   const set = <K extends keyof PoseParts>(key: K, value: PoseParts[K]): void => {
@@ -49,6 +56,12 @@ export function resetPose(parts: PoseParts): void {
   for (const r of parts.rest) {
     r.node.rotation.set(r.x, r.y, r.z);
     r.node.scale.y = r.scaleY;
+  }
+  // Wings too: landed, a bird's wings fold back to rest (or to the clip's own motion), not where the last beat left them.
+  for (const wing of [parts.wingLeft, parts.wingRight]) {
+    if (!wing) continue;
+    wing.node.rotation.z = wing.baseZ;
+    wing.node.scale.copy(wing.baseScale);
   }
 }
 
@@ -109,22 +122,48 @@ export function applyPose(parts: PoseParts, pose: Pose, t: number): void {
   }
 }
 
-export function applyWings(parts: PoseParts, wings: Wings, time: number): void {
-  const beat = (angle: number): void => {
-    if (parts.wingLeft) parts.wingLeft.node.rotation.z = parts.wingLeft.baseZ + angle;
-    if (parts.wingRight) parts.wingRight.node.rotation.z = parts.wingRight.baseZ - angle;
-  };
+/**
+ * A bird's wings in flight, seen from the ground a few blocks below (owner, 05/10/2026: "chim bay không vỗ
+ * cánh"): the Cube Pet wings are small plates, so in the air they open wider and longer and beat through a
+ * wide arc, centred a little above level so the downstroke reads; the body rises on each downstroke.
+ */
+const FLAP_RATE = 18; // radians of the beat per second: about three beats a second
+const FLAP_SWING = 1.15; // radians either side of the middle of the beat
+const FLAP_MIDDLE = 0.25;
+/** Spread wings in the air: their span (x) and chord (z) against the folded ones. */
+export const FLIGHT_WING_SPAN = 1.7;
+const FLIGHT_WING_CHORD = 1.25;
+/** How far the body rises and falls with each beat (blocks). */
+const FLAP_BOB = 0.14;
+
+/** The wing angle above level this frame (radians; the right wing mirrors it). Folded: none, the clip's own. */
+export function wingAngle(wings: Wings, time: number): number | null {
   switch (wings) {
     case 'flap':
-      beat(Math.sin(time * 16) * 0.95);
-      return;
+      return FLAP_MIDDLE + Math.sin(time * FLAP_RATE) * FLAP_SWING;
     case 'glide':
-      beat(0.18 + Math.sin(time * 2) * 0.05);
-      return;
+      // Held out, a little raised, rocking slowly on the air.
+      return 0.18 + Math.sin(time * 2) * 0.06;
     case 'buzz':
-      beat(Math.sin(time * 70) * 0.55);
-      return;
+      return Math.sin(time * 70) * 0.55;
     case 'folded':
-      return; // the clip's own wing motion
+      return null;
+  }
+}
+
+/** How far the body is lifted this frame by the beat: up on the downstroke, down as the wings rise. */
+export function wingBob(wings: Wings, time: number): number {
+  return wings === 'flap' ? -Math.sin(time * FLAP_RATE) * FLAP_BOB : 0;
+}
+
+export function applyWings(parts: PoseParts, wings: Wings, time: number): void {
+  const angle = wingAngle(wings, time);
+  // A bird's wings open out in the air (flap or glide); a bee's blur and a perched bird's keep their size
+  // (resetPose put them back at rest before the clip).
+  const spread = wings === 'flap' || wings === 'glide';
+  for (const [wing, side] of [[parts.wingLeft, 1], [parts.wingRight, -1]] as const) {
+    if (!wing) continue;
+    if (angle !== null) wing.node.rotation.z = wing.baseZ + side * angle;
+    if (spread) wing.node.scale.set(wing.baseScale.x * FLIGHT_WING_SPAN, wing.baseScale.y, wing.baseScale.z * FLIGHT_WING_CHORD);
   }
 }

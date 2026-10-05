@@ -11,7 +11,7 @@ import { AmbientActor, type ActorContext } from './ambient-actor';
 import { getLangMode } from '../../ui/i18n/i18n';
 import { AMBIENT_LINES } from './ambient-lines';
 import { AMBIENT_LINES_EN } from './ambient-lines-en';
-import { applyPose, applyWings, findPoseParts, resetPose, type PoseParts } from './ambient-poses';
+import { applyPose, applyWings, findPoseParts, resetPose, wingBob, type PoseParts } from './ambient-poses';
 import { ROUTINES } from './ambient-routines';
 import { mergeParts } from './merge-parts';
 import type { Vec3 } from './ambient-types';
@@ -368,8 +368,9 @@ export async function loadAmbientLife(loader: GuardedGltfLoader, ambients: reado
         mixer?.update(dt);
         applyPose(parts, frame.pose, frame.poseTime);
         applyWings(parts, frame.wings, m.time);
-        // A bee bobs as it hovers.
+        // A bee bobs as it hovers; a bird rises and falls with its wing beat.
         if (frame.wings === 'buzz') root.position.y += Math.sin(m.time * 6) * 0.08;
+        else if (parts.wingLeft || parts.wingRight) root.position.y += wingBob(frame.wings, m.time);
         held.forEach((item, i) => (item.visible = frame.held === i));
         m.target.position[0] = frame.position[0];
         m.target.position[1] = frame.position[1];

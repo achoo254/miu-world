@@ -136,6 +136,8 @@ describe('AmbientActor', () => {
     expect(flying.some((f) => f.wings === 'flap')).toBe(true);
     expect(flying.some((f) => f.wings === 'glide')).toBe(true);
     expect(frames.some((f) => f.wings === 'folded')).toBe(true); // perched sometimes
+    // Glides are short: most of the time in the air the wings beat (owner, 05/10/2026: birds never seemed to flap).
+    expect(flying.filter((f) => f.wings === 'glide').length / flying.length).toBeLessThan(0.35);
     expect(live(actorFor('bee', 2), 10).frames.every((f) => f.wings === 'buzz')).toBe(true);
   });
 

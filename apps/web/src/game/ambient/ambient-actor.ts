@@ -30,6 +30,8 @@ const FLY_SPEED = 4.5;
 const CIRCLE_SPEED = 3.2;
 /** Seconds a flyer takes to join its loop from where it is. */
 const CIRCLE_JOIN = 1.5;
+/** On its loop a bird glides only where it dips this steeply (cosine of the bob's phase): under a third of the way round. */
+const GLIDE_SLOPE = -0.6;
 const LEAP_SECONDS = 1.1;
 /** A greeting does not repeat if the child steps out and back in within this many seconds. */
 const GREET_COOLDOWN = 10;
@@ -440,8 +442,8 @@ export class AmbientActor {
         this.turnTowardsYaw(Math.atan2(run.to[0] - run.from[0], run.to[2] - run.from[2]), TURN_SPEED * dt);
         const climbing = this.pos[1] >= prevY;
         this.pitch = climbing ? 0.25 : -0.15;
-        // Wings beat on the way up and for the landing, and spread in a glide on the way down.
-        this.wings = climbing || t > 0.9 ? 'flap' : 'glide';
+        // Wings beat on the way up, glide the first part of the way down, and beat again to land.
+        this.wings = climbing || t > 0.75 ? 'flap' : 'glide';
         this.frameClip = 'idle';
         if (t >= 1) this.pitch = 0;
         return t >= 1;
@@ -456,9 +458,10 @@ export class AmbientActor {
         for (let i = 0; i < 3; i++) this.pos[i] = (run.from[i] ?? 0) + ((target[i] ?? 0) - (run.from[i] ?? 0)) * join;
         // Tangent of the loop (counter-clockwise seen from above).
         this.turnTowardsYaw(Math.atan2(-Math.sin(run.angle), Math.cos(run.angle)), TURN_SPEED * dt);
-        const rising = Math.cos(run.angle * 2) > 0;
-        this.wings = rising ? 'flap' : 'glide';
-        this.pitch = rising ? 0.2 : -0.1;
+        // Beating round most of the loop; a short glide only where it dips fastest.
+        const slope = Math.cos(run.angle * 2);
+        this.wings = slope > GLIDE_SLOPE ? 'flap' : 'glide';
+        this.pitch = slope > 0 ? 0.2 : -0.1;
         this.frameClip = 'idle';
         if (run.left > 0) return false;
         this.pitch = 0;

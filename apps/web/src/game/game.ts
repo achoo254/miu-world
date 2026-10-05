@@ -21,6 +21,7 @@ import type { SolidAt } from '@miu/voxel/grid-collision';
 import { castHidden, entitiesForChapter } from '@miu/voxel/world-entities';
 import { onLangModeChange, t as translate, writeText, type TextKey } from '../ui/i18n/i18n';
 import { PETS, UI_ICONS, assetUrl } from '../ui/kit/ui-art';
+import { readReduceMotion } from '../ui/system/display-setting';
 import type { GameStore } from '../game-bridge/game-store';
 import { loadAmbientLife, preloadAmbientModels, type AmbientTarget } from './ambient/ambient-life';
 import { createConfetti } from './scene/confetti';
@@ -467,7 +468,8 @@ export class Game {
       }
       return nearY;
     };
-    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    // The game's own "Chuyển động: Giảm bớt" (Settings), else the device's preference.
+    const reducedMotion = readReduceMotion();
     const [character, targets, props, pet, life] = await Promise.all([
       characterPending,
       targetsPending,
