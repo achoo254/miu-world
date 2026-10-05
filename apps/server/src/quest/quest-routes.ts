@@ -1,6 +1,6 @@
 import { and, asc, eq, gt } from 'drizzle-orm';
 import { Router, type Request } from 'express';
-import { ContentId, type LearningSupport, type QuestStep } from '@miu/schema/content';
+import { ContentId, stepTargets, type LearningSupport, type QuestStep } from '@miu/schema/content';
 import {
   InventoryResponse,
   QuestCategory,
@@ -24,6 +24,7 @@ import { HttpError } from '../http-error';
 import { ipKey, limiter } from '../rate-limit';
 import { paidRuns, paidRunsByQuest, progressSummary, questSource, recordedReward } from '../reward/reward-ledger';
 import { playableQuest, progressDto, questState, runFinished } from './quest-access';
+import { openGates, skillLevel, type OpenedGate } from './knowledge-gate';
 import { finishQuest } from './quest-completion';
 import { countAttempt, wrongAnswers } from './step-attempts';
 
@@ -165,22 +166,21 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
       return;
     }
 
-    const summary = await progressSummary(db, childId, content);
-    const skillInfo = summary.subjects.flatMap((s) => s.skills).find((k) => k.skillId === target.skillCheck?.skill);
-    const currentLevel = skillInfo?.level ?? 1;
-    const passed = currentLevel >= target.skillCheck.level;
-
+    const check = target.skillCheck;
+    const currentLevel = await skillLevel(db, content, childId, check.skill);
+    const skillName = content.subjects.flatMap((s) => s.skills).find((k) => k.id === check.skill)?.name ?? check.skill;
     res.json(
       SkillCheckResult.parse({
         targetId,
         targetName: target.name,
         hasSkillCheck: true,
-        passed,
-        skill: target.skillCheck.skill,
-        skillName: skillInfo?.name ?? target.skillCheck.skill,
+        passed: currentLevel >= check.level,
+        skill: check.skill,
+        skillName,
         currentLevel,
-        requiredLevel: target.skillCheck.level,
-        hintQuestId: target.skillCheck.hintQuest,
+        requiredLevel: check.level,
+        hintQuestId: check.hintQuest,
+        reward: check.reward,
       }),
     );
   });
@@ -210,6 +210,7 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
         reward: paid > 0 ? await recordedReward(tx, childId, questSource(questId, paid)) : null,
         repeated: true,
         completion: null,
+        gates: [],
       });
       if (row?.completedAt) {
         // Finished before: every run pays again (owner, 03/10/2026), but only a request naming the next run
@@ -225,7 +226,7 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
         if (result.error === 'wrong-answer') {
           // Try again as often as needed; only the count is kept, never the answer.
           const wrong = await countAttempt(tx, { childId, questId, stepId }, 'wrongCount');
-          return { correct: false, feedback: feedbackLine(stepDef, 'wrong', wrong - 1), row, paid, reward: null, repeated: false, completion: null };
+          return { correct: false, feedback: feedbackLine(stepDef, 'wrong', wrong - 1), row, paid, reward: null, repeated: false, completion: null, gates: [] };
         }
         const [status, code] = STEP_ERRORS[result.error];
         throw new HttpError(status, code);
@@ -239,10 +240,16 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
       // Read before finishing: scoring the quest clears its counters.
       const choice = input.data.answer && 'choice' in input.data.answer ? input.data.answer.choice : undefined;
       const feedback = feedbackLine(stepDef, 'right', await wrongAnswers(tx, { childId, questId, stepId }), choice);
-      if (!result.reward) return { correct: true, feedback, row: updated, paid, reward: null, repeated: false, completion: null };
+      // The step's knowledge gates pay their treasure once per run: a search pays for the target just found, any
+      // other step for its own target; a target the client names outside the step opens nothing.
+      const own = stepDef ? stepTargets(stepDef) : [];
+      const searching = stepDef?.kind === 'search' || stepDef?.kind === 'find-object';
+      const reached = searching ? own.filter((target) => target === input.data.target) : own;
+      const gates: OpenedGate[] = await openGates(tx, content, childId, reached, questSource(questId, run), now);
+      if (!result.reward) return { correct: true, feedback, row: updated, paid, reward: null, repeated: false, completion: null, gates };
       const finished = await finishQuest(tx, content, childId, quest, now, run);
       const [scored] = await tx.select().from(questProgress).where(thisProgressRow);
-      return { correct: true, feedback, row: scored, paid: run, reward: finished.reward, repeated: false, completion: finished.completion };
+      return { correct: true, feedback, row: scored, paid: run, reward: finished.reward, repeated: false, completion: finished.completion, gates };
     });
 
     res.json(
@@ -255,6 +262,7 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
         completion: outcome.completion,
         // A right answer: its question and answer to copy into the vở now.
         copy: outcome.correct && !outcome.repeated && stepDef ? notebookLine(stepDef) : null,
+        gates: outcome.gates,
         progress: await progressSummary(db, childId, content),
       }),
     );

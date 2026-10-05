@@ -8,6 +8,7 @@ import { notebookLines } from '@miu/quest/notebook';
 import { questScore } from '@miu/quest/quest-score';
 import type { ContentCatalog } from '../content/content-catalog';
 import { inventoryItems, questProgress, skillProgress } from '../db/schema';
+import { grantSkillGifts } from '../progression/skill-gifts';
 import { grantReward, questSource, totalXp, type Tx } from '../reward/reward-ledger';
 import { clearAttempts, questEffort } from './step-attempts';
 
@@ -49,7 +50,8 @@ async function dropCollectible(tx: Tx, content: ContentCatalog, childId: string,
 
 /**
  * Scores and pays a run of a quest whose last step was just recorded, in the caller's transaction. Every
- * run pays the quest's reward (owner, 03/10/2026); `run` names it in the ledger, so a run pays once. The
+ * run pays the quest's reward (owner, 03/10/2026); `run` names it in the ledger, so a run pays once. Skill
+ * levels it reaches pay their gifts (once per level). The
  * progress row keeps the best stars of all runs and the XP of the latest, so later counter changes never
  * rewrite them.
  */
@@ -64,6 +66,8 @@ export async function finishQuest(tx: Tx, content: ContentCatalog, childId: stri
   const source = questSource(quest.id, run);
   const granted = await grantReward(tx, childId, source, reward, now);
   const collectible = granted ? await dropCollectible(tx, content, childId, quest.region, source, now) : null;
+  // A skill level reached pays its gift once, with the skill XP that reached it.
+  const skillGifts = granted ? await grantSkillGifts(tx, content, childId, skillIds, now) : [];
   await tx
     .update(questProgress)
     .set({ stars: sql`greatest(coalesce(${questProgress.stars}, 0), ${score.stars})`, xpAwarded: score.xpAwarded })
@@ -88,6 +92,7 @@ export async function finishQuest(tx: Tx, content: ContentCatalog, childId: stri
       // Every question with its answer, to copy into the vở before the reward (owner, 03/10/2026).
       notebook: notebookLines(quest.steps),
       collectible,
+      skillGifts,
     },
   };
 }

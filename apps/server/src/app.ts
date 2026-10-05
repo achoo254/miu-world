@@ -29,6 +29,9 @@ import { petCareRoutes } from './pet-care/pet-care-routes';
 import { cookingRoutes } from './cooking/cooking-routes';
 import { olympiadRoutes } from './olympiad/olympiad-routes';
 import { mailRoutes } from './mail/mail-routes';
+import { achievementRoutes } from './progression/achievement-routes';
+import { journeyRoutes } from './progression/journey-routes';
+import { skillTreeRoutes } from './progression/skill-tree-routes';
 
 export interface AppDeps {
   config: ServerConfig;
@@ -102,6 +105,9 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(cookingRoutes({ db, content, clock }));
   api.use(olympiadRoutes({ db, content, clock }));
   api.use(mailRoutes({ db, content, clock }));
+  api.use(skillTreeRoutes({ db, content }));
+  api.use(journeyRoutes({ db, content }));
+  api.use(achievementRoutes({ db, content, clock }));
   api.use(worksheetRoutes({ worksheets, clock, fontDir: config.handwritingFontDir }));
   app.use('/api', api);
 

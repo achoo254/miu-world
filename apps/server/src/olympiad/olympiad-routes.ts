@@ -17,6 +17,7 @@ import type { Db } from '../db/client';
 import { rewardLedger } from '../db/schema';
 import { HttpError, parseInput } from '../http-error';
 import { ipKey, limiter } from '../rate-limit';
+import { grantSkillGifts } from '../progression/skill-gifts';
 import { grantReward } from '../reward/reward-ledger';
 import { getPublicExamQuestions, gradeExam, loadOlympiadCatalog } from './olympiad-catalog';
 
@@ -145,24 +146,12 @@ export function olympiadRoutes({ db, content, catalog = loadOlympiadCatalog(), c
     const source = `olympiad:exam:${graded.score}:${graded.award ?? 'none'}:${attemptId}`;
     const now = clock();
 
+    const quarter = Math.round(graded.rewards.xp * 0.25);
+    const skillXp = { 'phep-cong': quarter, 'phep-tru': quarter, logic: quarter, 'hinh-phang': quarter };
     await db.transaction(async (tx) => {
-      await grantReward(
-        tx,
-        childId,
-        source,
-        {
-          xp: graded.rewards.xp,
-          coin: graded.rewards.coin,
-          skillXp: {
-            'phep-cong': Math.round(graded.rewards.xp * 0.25),
-            'phep-tru': Math.round(graded.rewards.xp * 0.25),
-            logic: Math.round(graded.rewards.xp * 0.25),
-            'hinh-phang': Math.round(graded.rewards.xp * 0.25),
-          },
-          items: {},
-        },
-        now,
-      );
+      await grantReward(tx, childId, source, { xp: graded.rewards.xp, coin: graded.rewards.coin, skillXp, items: {} }, now);
+      // The skill XP may reach a skill level: its gift is paid with it (shown on the skill tree).
+      await grantSkillGifts(tx, content, childId, Object.keys(skillXp), now);
     });
 
     const response = ExamSubmitResponse.parse({

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { ContentId, MAX_MINIGAME_SCORE, QuestStepPublic, RewardSpec, WEEKDAYS } from './content';
+import { SkillGiftDto } from './progression';
 
 // Game DTOs for the active child profile. Diamonds are intentionally absent (not used in the MVP).
 
@@ -106,6 +107,8 @@ export const QuestCompletion = z.object({
   notebook: z.array(NotebookLine).optional(),
   /** The collectible this run dropped (content/collectibles.json), with how many she owns now (1: a new one). */
   collectible: CollectibleDrop.nullish(),
+  /** The skill level gifts this run paid (coins, a themed wearable), shown on the Skill Up screen. */
+  skillGifts: z.array(SkillGiftDto).optional(),
 });
 export type QuestCompletion = z.infer<typeof QuestCompletion>;
 
@@ -123,6 +126,8 @@ export const StepCompleteResponse = z.object({
   completion: QuestCompletion.nullable(),
   /** A right answer to a question: the question and its answer to copy into the vở now. */
   copy: NotebookLine.nullish(),
+  /** Knowledge gates this step opened for the player (their treasure, paid once per run). */
+  gates: z.array(z.object({ targetId: ContentId, skill: ContentId, level: z.number().int().min(1), coin: z.number().int().min(0), xp: z.number().int().min(0) })).optional(),
   progress: ProgressResponse,
 });
 export type StepCompleteResponse = z.infer<typeof StepCompleteResponse>;
@@ -242,6 +247,8 @@ export const SkillCheckResult = z.object({
   currentLevel: z.number().int().min(1).optional(),
   requiredLevel: z.number().int().min(1).optional(),
   hintQuestId: ContentId.optional(),
+  /** The gate's treasure, paid once per run of the quest that opens it when the level is reached. */
+  reward: z.object({ coin: z.number().int().min(0), xp: z.number().int().min(0) }).optional(),
 });
 export type SkillCheckResult = z.infer<typeof SkillCheckResult>;
 

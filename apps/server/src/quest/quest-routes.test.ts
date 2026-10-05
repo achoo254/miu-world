@@ -261,6 +261,7 @@ describe('scoring a finished quest', () => {
       skillLevels: [{ skillId: 'doc-hieu', levelBefore: 1, levelAfter: 1 }],
       notebook: [{ step: 'solve-tree', question: '2 + 3 = ?', answer: '5' }],
       collectible: expect.objectContaining({ mapId: 'khu-rung-bi-mat', owned: 1 }) as unknown,
+      skillGifts: [],
     });
     const b = await finish(agent, 'quest-b');
     expect(b.body.completion).toMatchObject({
@@ -471,7 +472,9 @@ describe('playing a finished quest again (every run pays, owner 03/10/2026)', ()
     expect(first.body.quest).toMatchObject({ completed: true, run: 1 });
     const second = await replay(agent, 'quest-a', 2);
     expect(second.body).toMatchObject({ repeated: false, reward: { xp: 60, coin: 10 }, completion: { stars: 3 }, quest: { completed: true, run: 2 } });
-    expect(second.body.progress).toMatchObject({ xp: 120, coins: 20, items: { 'la-than': 2 }, skillXp: { 'doc-hieu': 2 } });
+    // Đọc hiểu reaches level 2 on the second run: its skill gift adds its coins.
+    expect(second.body.completion?.skillGifts).toEqual([{ skillId: 'doc-hieu', level: 2, coin: app.content.skillGifts.coins['2'], item: null }]);
+    expect(second.body.progress).toMatchObject({ xp: 120, coins: 20 + (app.content.skillGifts.coins['2'] ?? 0), items: { 'la-than': 2 }, skillXp: { 'doc-hieu': 2 } });
     expect(await ledgerOf(childId)).toEqual(['quest:quest-a', 'quest:quest-a#2']);
   });
 
@@ -751,6 +754,7 @@ describe('IDOR and session rules for game routes', () => {
           skill: 'doc-hieu',
           level: 2,
           hintQuest: 'quest-a',
+          reward: { coin: 30, xp: 20 },
         },
       });
 
