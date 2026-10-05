@@ -93,15 +93,23 @@ export function checkQuestTargets(
 ): { issues: string[]; notes: string[] } {
   const issues: string[] = [];
   const notes: string[] = [];
+  // Hundreds of quests share a dozen maps: read and validate each map's entities once.
+  const entitiesByMap = new Map<string, ReturnType<typeof worldEntitiesSchema.safeParse> | null>();
+  const entitiesOf = (mapId: string) => {
+    if (!entitiesByMap.has(mapId)) {
+      const file = path.join(worldDir, mapId, 'entities.json');
+      entitiesByMap.set(mapId, existsSync(file) ? worldEntitiesSchema.safeParse(JSON.parse(readFileSync(file, 'utf8'))) : null);
+    }
+    return entitiesByMap.get(mapId) ?? null;
+  };
   for (const quest of quests) {
     if (quest.status === 'stub') continue;
     const mapId = mapForRegion(regions, quest.region);
-    const file = path.join(worldDir, mapId, 'entities.json');
-    if (!existsSync(file)) {
+    const parsed = entitiesOf(mapId);
+    if (!parsed) {
       notes.push(`quest ${quest.id}: map targets not checked, region ${quest.region} chapter ${quest.chapter} has no generated map`);
       continue;
     }
-    const parsed = worldEntitiesSchema.safeParse(JSON.parse(readFileSync(file, 'utf8')));
     if (!parsed.success) {
       issues.push(`map ${mapId}: entities.json is not a valid version 2 world entities file`);
       continue;

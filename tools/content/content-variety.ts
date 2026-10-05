@@ -59,8 +59,9 @@ function bookWording(books: readonly LoadedBook[]): string[] {
 
 export function varietyIssues(quests: readonly QuestDefinition[], books: readonly LoadedBook[]): string[] {
   const issues: string[] = [];
-  const printed = bookWording(books);
-  const fromBook = (line: string) => printed.some((p) => p.includes(line));
+  // One search over all printed text (NUL never occurs in wording) instead of one per passage.
+  const printed = bookWording(books).join('\u0000');
+  const fromBook = (line: string) => printed.includes(line);
   const firstUse = new Map<string, string>();
   for (const quest of quests) {
     for (const { where, text } of playerLines(quest)) {
