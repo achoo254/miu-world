@@ -2,7 +2,8 @@
 // leader's "come along", friend requests, who else is in the room and short notices. Discrete events only, like the game store; the direction arrows to
 // party members are written by the game straight into DOM anchors React registers. The store outlives a game
 // (it is the play screen's), so the party frame stays put while the next map loads.
-import type { MpNotice, PartyView, ReportReason, SafeCannedChat } from '@miu/schema/multiplayer';
+import type { CoopEndReason, CoopHelpLayer, CoopLobbyView, CoopResult, CoopStateView } from '@miu/schema/coop';
+import type { ClientWsMessage, MpNotice, PartyView, ReportReason, SafeCannedChat } from '@miu/schema/multiplayer';
 
 /** Another player as the menus show her. */
 export interface OnlinePlayer {
@@ -49,7 +50,18 @@ export interface SocialSnapshot {
    * soon (`at`, ms); a trip that never happened does not send a later visit home there.
    */
   visit: { host: string; at: number } | null;
+  /** Her team's co-op lobby while it is open (`at`: when it came, for its countdown). */
+  coopLobby: { lobby: CoopLobbyView; at: number } | null;
+  /** The co-op challenge she plays, as she sees it (`at`: when it came, for the time left of holds and pauses). */
+  coopState: { state: CoopStateView; at: number } | null;
+  /** Her challenge ended: why, and what the server paid her. */
+  coopEnd: { questId: string; reason: CoopEndReason; result: CoopResult | null } | null;
+  /** A support layer she asked for in the challenge. */
+  coopHelp: { task: string; layer: CoopHelpLayer; text: string; textEn: string | null; explanation: string | null; explanationEn: string | null } | null;
 }
+
+/** A co-op message from the UI to the server (the lobby, a move, help). */
+export type CoopMessage = Extract<ClientWsMessage, { type: `coop-${string}` }>;
 
 /** Commands from React to the game's online session. Dropped while no game runs (between maps). */
 export type SocialCommand =
@@ -66,7 +78,8 @@ export type SocialCommand =
   | { type: 'promote'; id: string }
   | { type: 'party-say'; text: SafeCannedChat }
   | { type: 'goto'; id: string }
-  | { type: 'travel-answer'; accept: boolean };
+  | { type: 'travel-answer'; accept: boolean }
+  | { type: 'coop'; message: CoopMessage };
 
 export interface SocialStore {
   subscribe(listener: () => void): () => void;
@@ -84,7 +97,22 @@ export interface SocialStore {
 
 type DistributiveOmit<T, K extends PropertyKey> = T extends unknown ? Omit<T, K> : never;
 
-export const INITIAL_SOCIAL: SocialSnapshot = { selfId: null, mapId: null, menu: null, party: null, invites: [], travel: null, toast: null, friendAsks: [], room: [], visit: null };
+export const INITIAL_SOCIAL: SocialSnapshot = {
+  selfId: null,
+  mapId: null,
+  menu: null,
+  party: null,
+  invites: [],
+  travel: null,
+  toast: null,
+  friendAsks: [],
+  room: [],
+  visit: null,
+  coopLobby: null,
+  coopState: null,
+  coopEnd: null,
+  coopHelp: null,
+};
 
 export function createSocialStore(): SocialStore {
   let snapshot = INITIAL_SOCIAL;

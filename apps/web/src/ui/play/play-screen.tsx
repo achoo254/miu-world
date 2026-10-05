@@ -2,7 +2,7 @@
 // owns the HUD (badge, quest tracker, menu buttons, Interact), the interaction label (content and
 // visibility from game-bridge), Pause (the game stops rendering while it is open) and the offline retry.
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router';
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router';
 import { rememberPlay } from '../system/back-to-game';
 import type { PlayerPosition } from '@miu/schema/player-position';
 import { createGameStore, type GameSnapshot, type GameStore } from '../../game-bridge/game-store';
@@ -38,6 +38,8 @@ import { usePlayTime } from './play-time';
 import { FriendsButton, FriendsDialog, useFriendsPrefetch } from '../friends/friends-screens';
 import { useSocial } from '../online/use-social';
 import { createPositionSaver, loadPlayerPositions } from './player-position';
+import { CoopLayer } from '../coop/coop-layer';
+import { useCoopChallenges } from '../coop/use-coop';
 
 const HOME_PATH = '/home';
 /** How often the child's spot is saved while playing; hiding or leaving the page saves it at once. */
@@ -190,6 +192,10 @@ export function PlayScreen() {
   const [social] = useState(createSocialStore);
   /** The online menu on another player is open (it covers the game like the other screens). */
   const onlineMenu = useSocial(social, (s) => s.menu !== null);
+  /** A co-op lobby, challenge or its end is on screen (it covers the game). */
+  const coopOpen = useSocial(social, (s) => s.coopLobby !== null || s.coopState !== null || s.coopEnd !== null);
+  const coop = useCoopChallenges(social);
+  const navigate = useNavigate();
   const [params] = useSearchParams();
   const here = useLocation();
   // The way back to this game from Home, the map and the other screens.
@@ -280,6 +286,10 @@ export function PlayScreen() {
     return () => window.removeEventListener('keydown', onKey);
   }, [status, paused]);
 
+  /** The server paid a co-op challenge: her XP, coins and quests are read again. */
+  const refreshPlayer = useCallback((): void => {
+    void loadPlayer().then(setData, () => undefined);
+  }, []);
   // Server numbers after each step: progress, this quest's state; a finished quest can open others.
   const onResponse = useCallback((response: StepCompleteResponse): void => {
     setData((prev) =>
@@ -298,7 +308,7 @@ export function PlayScreen() {
   const region = quest?.quest.region ?? DEFAULT_REGION;
   // An element of `positions` (set once), so the same object on every render: the game is not rebuilt.
   const savedSpot = positions?.find((p) => p.map === regionMap(region)) ?? null;
-  const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null || decorOpen || shopOpen || petCareOpen || cookingOpen || friendsOpen || onlineMenu;
+  const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null || decorOpen || shopOpen || petCareOpen || cookingOpen || friendsOpen || onlineMenu || coopOpen;
   const atHome = data !== null && regionMap(region) === regionMap(HOME_REGION);
   // The friends list is read in the background once the game is up, so it opens at once.
   useFriendsPrefetch(social, draftOwner, status === 'ready');
@@ -475,8 +485,10 @@ export function PlayScreen() {
               const next = data.quests.find((q) => q.quest.id === id);
               if (next) switchQuest(next, false, from);
             }}
+            claimCoop={coop.claim}
           />
         ) : null}
+        {data ? <CoopLayer social={social} quests={coop.quests} data={data} onPaid={refreshPlayer} onMap={(id) => navigate(`/region/${id}`)} /> : null}
         {paused ? (
           <PauseScreen
             onResume={() => setPaused(false)}

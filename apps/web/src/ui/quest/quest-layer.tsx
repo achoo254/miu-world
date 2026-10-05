@@ -35,6 +35,7 @@ export function QuestLayer({
   draftOwner = null,
   onPlayQuest,
   openAt = null,
+  claimCoop,
 }: {
   store: GameStore;
   data: PlayerData;
@@ -50,6 +51,8 @@ export function QuestLayer({
   onPlayQuest?: (questId: string, targetId: string) => void;
   /** The character the child just took this quest from: its first line opens as soon as the map is up. */
   openAt?: string | null;
+  /** A touched host of a co-op challenge opens its lobby (true when it did). */
+  claimCoop?: (targetId: string) => boolean;
 }) {
   // The notebook card and a side quest's screens cover the game too: all of them are reported together.
   const questCovers = useRef(false);
@@ -85,7 +88,7 @@ export function QuestLayer({
     [onResponse, refreshNpcs],
   );
   // The lesson comes first; a character with nothing for it shows its card (a profiled one) or offers its games.
-  const claimTarget = useCallback((target: string) => npcs.claim(target) || side.claim(target), [npcs, side]);
+  const claimTarget = useCallback((target: string) => (claimCoop?.(target) ?? false) || npcs.claim(target) || side.claim(target), [npcs, side, claimCoop]);
   const quest = useQuestController({ store, data, questId, onResponse: answered, onOverlayChange: reportCover, draftOwner, onSideTarget: claimTarget, openAt });
   useEffect(() => {
     resume.current = quest.resumeAt;
