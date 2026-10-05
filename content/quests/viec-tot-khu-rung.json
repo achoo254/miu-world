@@ -113,7 +113,7 @@
       "logicType": "maze",
       "target": "vt-kr-hai-ly-tho-moc",
       "skill": "logic",
-      "prompt": "Hải Ly vẽ bản đồ: đi từ ô có chú mèo tới ô ngôi sao, không bước vào ô tường gạch là bụi gai. Dãy bước nào đi được?",
+      "prompt": "Hải Ly vẽ bản đồ: đi từ ô có chú mèo tới ô ngôi sao, không bước vào ô tường gạch là bụi gai. Dãy bước nào đi được? (→ sang phải, ↓ đi xuống)",
       "grid": [
         ["S", ".", "#", "."],
         ["#", ".", ".", "#"],
@@ -121,9 +121,9 @@
         [".", ".", "#", "G"]
       ],
       "choices": [
-        { "id": "a", "text": "Phải, xuống, phải, xuống, phải, xuống" },
-        { "id": "b", "text": "Xuống, phải, phải, xuống, xuống, phải" },
-        { "id": "c", "text": "Phải, phải, xuống, xuống, phải, xuống" }
+        { "id": "a", "text": "→ ↓ → ↓ → ↓" },
+        { "id": "b", "text": "↓ → → ↓ ↓ →" },
+        { "id": "c", "text": "→ → ↓ ↓ → ↓" }
       ],
       "answer": { "choice": "a" },
       "support": {

@@ -1,0 +1,279 @@
+{
+  "id": "vuot-ai-lang-ven-song",
+  "region": "lang-ven-song",
+  "chapter": 4,
+  "title": "Trùm vui: Trâu Đen Đố Chữ",
+  "status": "active",
+  "summary": "Tối nay làng thả đèn hoa sen, nhưng giỏ đèn nằm cả chỗ Trâu Đen Đố Chữ. {name} hái sen, đọc bảng tin hội, nhảy đá qua đầm rồi giải bảy câu đố chữ để mang giỏ đèn về cho làng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Vịt Con Lạch Bạch, Cò Trắng Chân Dài, Trâu Đen Đố Chữ",
+    "where": "Làng Ven Sông, đầm sen và sân bóng: bờ đầm lau sậy, mép đầm sen, cọc tre bên đầm, bãi đá giữa đầm, gốc gạo sân bóng",
+    "goal": "Thắng bảy câu đố chữ của Trâu Đen để lấy giỏ đèn hoa sen cho hội làng",
+    "play": "Tìm sen, lá sen, nón lá theo lời tả, đọc bảng tin, tìm đường nhảy đá qua đầm, chọn cách đánh thức Trâu Đen, đấu trùm bảy câu",
+    "learn": "Chính tả c/k và g/gh, thứ tự bảng chữ cái, từ chỉ hoạt động, câu giới thiệu, dấu chấm, đọc hiểu",
+    "reward": "100 XP, 25 Xu, Skill XP Chính tả, Bảng chữ cái, Câu, Đọc hiểu",
+    "next": "Trăng lên, cả làng thả đèn; Cún Lúa rủ {name} ra bến đò nghe hò"
+  },
+  "phases": {
+    "hook": "gap-vit-con",
+    "explore": "hai-sen",
+    "learn": "doc-bang-tin-hoi",
+    "challenge": "nhay-da-qua-dam",
+    "decision": "danh-thuc-trau",
+    "finale": "tran-trum",
+    "reward": "gio-den-sen",
+    "next": "tha-den-dem-trang"
+  },
+  "places": {
+    "trum-lvs-vit-con": "Bờ đầm lau sậy",
+    "hai-sen": "Mép đầm sen",
+    "trum-lvs-bang-tin": "Cọc tre bên đầm",
+    "trum-lvs-co-trang": "Bãi đá giữa đầm",
+    "trum-lvs-trau-den": "Gốc gạo",
+    "trum-lvs-gio-den": "Gốc gạo"
+  },
+  "steps": [
+    {
+      "id": "gap-vit-con",
+      "title": "Vịt Con mách chuyện",
+      "goTo": "Tới bờ đầm lau sậy, Vịt Con Lạch Bạch đang kêu cạp cạp",
+      "kind": "dialogue",
+      "target": "trum-lvs-vit-con",
+      "lines": [
+        { "speaker": "Vịt Con Lạch Bạch", "text": "Cạp cạp! {name} ơi, giỏ đèn hoa sen của hội làng đang nằm cạnh Trâu Đen Đố Chữ dưới gốc gạo." },
+        { "speaker": "Vịt Con Lạch Bạch", "text": "Bác ấy hiền lắm nhưng mê đố chữ, chưa ai trả lời hết bảy câu thì bác chưa trao giỏ đèn đâu." }
+      ],
+      "choices": [
+        { "text": "Đố chữ thì tớ không sợ!", "reply": "Giỏi quá! Nhưng nhớ hái sen ở mép đầm trước, hội thả đèn cần sen mà." }
+      ]
+    },
+    {
+      "id": "hai-sen",
+      "title": "Chuẩn bị đồ thả đèn",
+      "goTo": "Ra mép đầm sen tìm ba món cho hội thả đèn",
+      "kind": "find-object",
+      "prompt": "Hội thả đèn cần ba món. Đọc lời tả của Vịt Con rồi tìm nhé:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "bong-sen",
+          "name": "Bông sen hồng",
+          "clue": "Cánh hồng phớt xếp nhiều lớp, giữa có gương vàng, mọc vươn lên khỏi mặt nước.",
+          "target": "trum-lvs-bong-sen"
+        },
+        {
+          "id": "la-sen",
+          "name": "Chiếc lá sen to",
+          "clue": "Tròn như cái mâm xanh, nước rơi vào lăn tròn như hạt ngọc mà không thấm.",
+          "target": "trum-lvs-la-sen"
+        },
+        {
+          "id": "non-la",
+          "name": "Chiếc nón lá",
+          "clue": "Hình chóp nhọn, đan bằng lá cọ trắng ngà, đội lên đầu che nắng che mưa.",
+          "target": "trum-lvs-non-la"
+        }
+      ]
+    },
+    {
+      "id": "doc-bang-tin-hoi",
+      "title": "Bảng tin hội đầm sen",
+      "goTo": "Ghé cọc tre bên đầm đọc bảng tin của hội",
+      "kind": "read",
+      "target": "trum-lvs-bang-tin",
+      "skill": "doc-hieu",
+      "text": "HỘI ĐẦM SEN TỐI NAY\nKhi trăng lên, cả làng thả đèn hoa sen trên mặt đầm. Đèn đang nằm trong giỏ của Trâu Đen. Bác Trâu chỉ trao giỏ cho bạn nào giải được bảy câu đố chữ. Mỗi bạn nhớ mang một bông sen để thả cùng đèn.",
+      "question": "Đèn hoa sen của hội làng đang ở đâu?",
+      "choices": [
+        { "id": "a", "text": "Dưới gốc đa đầu làng" },
+        { "id": "b", "text": "Trong giỏ của Trâu Đen" },
+        { "id": "c", "text": "Trên mái lớp học nhỏ" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm câu có chữ «đèn đang nằm».", "Đọc hết câu đó."],
+        "hint": "Đèn nằm ở chỗ một nhân vật mê đố chữ.",
+        "answer": {
+          "text": "Đèn ở trong giỏ của bác Trâu Đen",
+          "explanation": "Bảng tin viết: đèn đang nằm trong giỏ của Trâu Đen."
+        }
+      },
+      "feedback": {
+        "right": ["Đúng rồi, mình phải tới gặp bác Trâu Đen thôi!", "{name} tìm ra câu quan trọng nhất của bảng tin.", "Giỏ đèn ở chỗ bác Trâu, chẳng chạy đi đâu được!"],
+        "wrong": ["Bảng tin không nhắc tới gốc đa đâu, đọc lại nhé.", "Tìm chữ «giỏ» trong bảng tin xem nào {name}.", "Câu thứ hai nói rõ đèn ở đâu đấy, thử lại nha."]
+      }
+    },
+    {
+      "id": "nhay-da-qua-dam",
+      "title": "Nhảy đá qua đầm",
+      "goTo": "Tới bãi đá giữa đầm, Cò Trắng Chân Dài chỉ lối",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "maze",
+      "target": "trum-lvs-co-trang",
+      "skill": "logic",
+      "prompt": "Cò Trắng vẽ những hòn đá kê qua đầm: đi từ ô chú mèo tới ô ngôi sao, ô tường gạch là chỗ nước sâu. Dãy bước nào đi được? (→ sang phải, ↓ đi xuống)",
+      "grid": [
+        ["S", ".", ".", "#"],
+        ["#", "#", ".", "#"],
+        [".", ".", ".", "."],
+        [".", "#", "#", "G"]
+      ],
+      "choices": [
+        { "id": "a", "text": "↓ ↓ → → → ↓" },
+        { "id": "b", "text": "→ → ↓ ↓ → ↓" },
+        { "id": "c", "text": "→ → → ↓ ↓ ↓" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Bắt đầu từ ô chú mèo ở góc trên bên trái.", "Đi thử từng dãy, gặp ô tường gạch là rơi xuống nước.", "Dãy đúng dừng đúng ô ngôi sao ở góc dưới."],
+        "hint": "Hàng thứ hai chỉ có một ô đá để bước xuống.",
+        "answer": {
+          "text": "Sang phải hai bước, xuống hai bước, rồi phải, xuống",
+          "explanation": "Đi hết hai ô đá hàng trên, bước xuống ô đá duy nhất của hàng hai, xuống tiếp hàng ba, sang phải rồi xuống là tới ngôi sao."
+        }
+      },
+      "feedback": {
+        "right": ["Bõm bõm… không, chẳng bõm tí nào! {name} sang bờ khô ráo.", "Cò Trắng gật gù: bước đá vững vàng lắm!", "Qua đầm an toàn, gốc gạo hiện ra trước mặt rồi."],
+        "wrong": ["Ối, ô đó là nước sâu, thử dãy khác nhé.", "Xem hàng thứ hai còn ô đá nào để bước xuống không {name}.", "Đi thẳng một mạch sang phải sẽ gặp nước đấy."]
+      }
+    },
+    {
+      "id": "danh-thuc-trau",
+      "title": "Đánh thức Trâu Đen",
+      "kind": "decision",
+      "target": "trum-lvs-co-trang",
+      "speaker": "Cò Trắng Chân Dài",
+      "prompt": "Trâu Đen đang ngủ trưa dưới gốc gạo. {name} đánh thức bác bằng cách nào?",
+      "choices": [
+        {
+          "id": "dong-dao",
+          "text": "Hát một câu đồng dao thật vui",
+          "consequence": "Trâu Đen mở mắt, vẫy tai theo nhịp hát rồi cười khà khà."
+        },
+        {
+          "id": "co-xanh",
+          "text": "Mời bác một bó cỏ non",
+          "consequence": "Bác Trâu nhai cỏ ngon lành, tỉnh hẳn người, sẵn sàng ra câu đố."
+        },
+        {
+          "id": "goi-nhe",
+          "text": "Khẽ gọi «Bác Trâu ơi!»",
+          "consequence": "Trâu Đen dụi mắt: cháu lễ phép quá, bác ra câu đố ngay đây!"
+        }
+      ]
+    },
+    {
+      "id": "tran-trum",
+      "title": "Đố chữ với Trâu Đen",
+      "goTo": "Tới gốc gạo bên sân bóng, Trâu Đen đã dậy chờ",
+      "kind": "boss",
+      "target": "trum-lvs-trau-den",
+      "bossId": "trau-den-do-chu",
+      "bossName": "Trâu Đen Đố Chữ",
+      "introDialogue": "Ụm bò! Bác có bảy câu đố chữ, mỗi câu đúng là bác nhích giỏ đèn lại gần cháu thêm một chút.",
+      "winDialogue": "Giỏi lắm cháu ơi! Chữ nghĩa của {name} vững như bờ đê, giỏ đèn này của cả làng nhờ cháu đấy.",
+      "maxHp": 500,
+      "damagePerTurn": 80,
+      "turns": [
+        {
+          "id": "c-hay-k",
+          "skill": "chinh-ta",
+          "prompt": "Chữ còn thiếu trong «…on kiến» là chữ gì?",
+          "choices": [
+            { "id": "a", "text": "c" },
+            { "id": "b", "text": "k" },
+            { "id": "c", "text": "q" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "g-hay-gh",
+          "skill": "chinh-ta",
+          "prompt": "Đường làng sau mưa lồi lõm. Từ nào viết đúng chính tả?",
+          "choices": [
+            { "id": "a", "text": "gồ ghề" },
+            { "id": "b", "text": "ghồ gề" },
+            { "id": "c", "text": "gồ gề" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "thu-tu-ten",
+          "skill": "bang-chu-cai",
+          "prompt": "Xếp ba tên Hoa, Bình, Lan theo thứ tự bảng chữ cái. Tên nào đứng đầu?",
+          "choices": [
+            { "id": "a", "text": "Hoa" },
+            { "id": "b", "text": "Bình" },
+            { "id": "c", "text": "Lan" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "tu-hoat-dong",
+          "skill": "tu-ngu",
+          "prompt": "Trong ba từ sau, từ nào chỉ hoạt động?",
+          "choices": [
+            { "id": "a", "text": "con trâu" },
+            { "id": "b", "text": "xanh mướt" },
+            { "id": "c", "text": "cày ruộng" }
+          ],
+          "answer": { "choice": "c" }
+        },
+        {
+          "id": "cau-gioi-thieu",
+          "skill": "cau",
+          "prompt": "Câu nào là câu giới thiệu?",
+          "choices": [
+            { "id": "a", "text": "Tôi là Trâu Đen, nhà ở đầm sen." },
+            { "id": "b", "text": "Trâu Đen đang gặm cỏ bên bờ đầm." },
+            { "id": "c", "text": "Hoa sen nở thơm ngát cả một vùng." }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "dau-cham",
+          "skill": "dau-cau",
+          "prompt": "Câu kể «Đầm sen làng em nở hoa thơm ngát» cần đặt dấu gì ở cuối?",
+          "choices": [
+            { "id": "a", "text": "Dấu chấm hỏi" },
+            { "id": "b", "text": "Dấu chấm" },
+            { "id": "c", "text": "Dấu phẩy" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "vit-boi",
+          "skill": "doc-hieu",
+          "prompt": "Đọc câu: «Chiều nay, Vịt Con bơi quanh đầm sen tìm chiếc lá to nhất.» Vịt Con bơi ở đâu?",
+          "choices": [
+            { "id": "a", "text": "Quanh đầm sen" },
+            { "id": "b", "text": "Dưới chân cầu đá" },
+            { "id": "c", "text": "Ngoài bến đò" }
+          ],
+          "answer": { "choice": "a" }
+        }
+      ]
+    },
+    {
+      "id": "gio-den-sen",
+      "title": "Giỏ đèn hoa sen",
+      "kind": "reward",
+      "target": "trum-lvs-gio-den",
+      "text": "Trâu Đen dùng sừng đẩy giỏ đèn hoa sen tới chân {name}. Đèn nào cũng xinh xắn, đáy giỏ còn có XP, xu và điểm kỹ năng bác gửi tặng."
+    },
+    {
+      "id": "tha-den-dem-trang",
+      "title": "Thả đèn đêm trăng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Trăng lên tròn vành vạnh, cả làng thả đèn hoa sen lung linh khắp đầm. Cún Lúa rủ {name} ra bến đò nghe các bác hò khoan."
+    }
+  ],
+  "reward": {
+    "xp": 100,
+    "coin": 25,
+    "skillXp": { "chinh-ta": 1, "bang-chu-cai": 1, "cau": 1, "doc-hieu": 1 }
+  }
+}

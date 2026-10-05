@@ -1,0 +1,230 @@
+{
+  "id": "viec-tot-lang-ven-song",
+  "region": "lang-ven-song",
+  "chapter": 2,
+  "title": "Việc tốt: Giỏ rau của bà",
+  "status": "active",
+  "summary": "Đi qua bãi cỏ ven sông, Bà Cụ Hái Rau vấp ngã làm rau rơi tung tóe. {name} nhặt rau, đọc tờ dặn chợ, đoán hàng rau theo quy luật, chọn cách mang giỏ nặng về rồi viết lời cảm ơn bà cho đúng chính tả.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bà Cụ Hái Rau, Ong Thợ Chăm Chỉ, Bò Vàng Kéo Xe",
+    "where": "Làng Ven Sông, bãi cỏ ven sông: lối cỏ ven sông, bãi rau dại, gốc liễu bên sông, vườn hoa tổ ong, gốc tre ven bãi",
+    "goal": "Nhặt lại rau và giúp bà mang giỏ rau về nhà",
+    "play": "Tìm cà rốt, củ cải, dưa chuột theo lời tả, đọc tờ dặn chợ, tìm quy luật hàng rau, chọn cách chở giỏ, điền c/k, g/gh",
+    "learn": "Đọc hiểu tờ dặn, quy luật lặp lại, chính tả c/k và g/gh",
+    "reward": "70 XP, 18 Xu, Skill XP Đọc hiểu, Logic, Chính tả",
+    "next": "Bà hẹn {name} hôm sau ghé ăn xôi, Cún Lúa chờ ở cầu đá để đi chơi tiếp"
+  },
+  "phases": {
+    "hook": "gap-ba-cu",
+    "explore": "nhat-rau",
+    "learn": "doc-to-dan",
+    "challenge": "hang-rau-quy-luat",
+    "decision": "cach-cho-gio",
+    "finale": "loi-cam-on-ba",
+    "reward": "ba-cuoi-hien",
+    "next": "hen-an-xoi"
+  },
+  "places": {
+    "vt-lvs-ba-cu": "Lối cỏ ven sông",
+    "nhat-rau": "Bãi rau dại",
+    "vt-lvs-to-dan": "Gốc liễu bên sông",
+    "vt-lvs-ong-tho": "Vườn hoa tổ ong",
+    "vt-lvs-bo-vang": "Gốc tre ven bãi"
+  },
+  "steps": [
+    {
+      "id": "gap-ba-cu",
+      "title": "Bà cụ vấp ngã",
+      "goTo": "Có tiếng kêu ối ở lối cỏ ven sông, chạy lại xem",
+      "kind": "dialogue",
+      "target": "vt-lvs-ba-cu",
+      "lines": [
+        { "speaker": "Bà Cụ Hái Rau", "text": "Ối giời, bà vấp phải hòn đá, rau trong giỏ rơi hết ra bãi cỏ rồi cháu ạ." },
+        { "speaker": "Bà Cụ Hái Rau", "text": "Chân bà mỏi quá, cháu nhặt giúp bà mấy thứ rau với nhé." }
+      ],
+      "choices": [
+        { "text": "Bà cứ ngồi nghỉ, cháu nhặt ngay ạ!", "reply": "Cháu ngoan quá. Rau lăn xuống bãi rau dại đằng kia đấy." }
+      ]
+    },
+    {
+      "id": "nhat-rau",
+      "title": "Nhặt rau giúp bà",
+      "goTo": "Xuống bãi rau dại nhặt rau cho bà",
+      "kind": "find-object",
+      "prompt": "Bà tả ba thứ rau bị rơi. Đọc kĩ rồi nhặt cho đúng:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "ca-rot",
+          "name": "Củ cà rốt cam",
+          "clue": "Củ dài, màu cam, đầu nhọn, trên đỉnh còn chùm lá xanh như cái chổi nhỏ.",
+          "target": "vt-lvs-ca-rot"
+        },
+        {
+          "id": "cu-cai",
+          "name": "Củ cải trắng",
+          "clue": "Tròn trĩnh, trắng muốt, phần trên ửng tím, ăn giòn và hơi cay.",
+          "target": "vt-lvs-cu-cai"
+        },
+        {
+          "id": "dua-chuot",
+          "name": "Quả dưa chuột",
+          "clue": "Dài, xanh thẫm, vỏ lấm tấm gai nhỏ, bổ ra mát rượi những hạt trắng.",
+          "target": "vt-lvs-dua-chuot"
+        }
+      ]
+    },
+    {
+      "id": "doc-to-dan",
+      "title": "Tờ dặn chợ của bà",
+      "goTo": "Tờ dặn chợ của bà bay tới gốc liễu bên sông",
+      "kind": "read",
+      "target": "vt-lvs-to-dan",
+      "skill": "doc-hieu",
+      "text": "Dặn hái rau cho bữa tối:\n2 củ cà rốt nấu canh.\n3 củ cải trắng muối dưa.\n1 quả dưa chuột ăn sống.\nNhớ về nhà trước khi trời đổ mưa.",
+      "question": "Bà cần hái mấy củ cải trắng?",
+      "choices": [
+        { "id": "a", "text": "1 củ" },
+        { "id": "b", "text": "2 củ" },
+        { "id": "c", "text": "3 củ" }
+      ],
+      "answer": { "choice": "c" },
+      "support": {
+        "guide": ["Tìm dòng có chữ «củ cải trắng».", "Con số đứng đầu dòng cho biết cần bao nhiêu."],
+        "hint": "Củ cải trắng dùng để muối dưa.",
+        "answer": {
+          "text": "Ba củ cải trắng",
+          "explanation": "Tờ dặn ghi: 3 củ cải trắng muối dưa."
+        }
+      },
+      "feedback": {
+        "right": ["Đủ ba củ cải để muối dưa rồi, bà gật gù.", "{name} đọc tờ dặn chẳng sót chữ nào.", "Chuẩn, dòng thứ ba ghi rõ con số ấy!"],
+        "wrong": ["Con số ấy là của cà rốt hoặc dưa chuột đấy, xem lại nhé.", "Dò dòng có chữ «củ cải» nha {name}.", "Đọc chậm từng dòng một, con số đứng ở đầu dòng."]
+      }
+    },
+    {
+      "id": "hang-rau-quy-luat",
+      "title": "Hàng rau của Ong Thợ",
+      "goTo": "Qua vườn hoa tổ ong, Ong Thợ Chăm Chỉ đang xếp rau giúp",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "vt-lvs-ong-tho",
+      "skill": "logic",
+      "prompt": "Ong Thợ xếp rau vào giỏ thành một hàng có quy luật. Thứ rau tiếp theo là gì?",
+      "elements": [
+        { "id": "r1", "label": "Cà rốt" },
+        { "id": "r2", "label": "Củ cải" },
+        { "id": "r3", "label": "Dưa chuột" },
+        { "id": "r4", "label": "Cà rốt" },
+        { "id": "r5", "label": "Củ cải" }
+      ],
+      "choices": [
+        { "id": "ca-rot", "text": "Cà rốt" },
+        { "id": "cu-cai", "text": "Củ cải" },
+        { "id": "dua-chuot", "text": "Dưa chuột" }
+      ],
+      "answer": { "choice": "dua-chuot" },
+      "support": {
+        "guide": ["Nhìn ba thứ rau đầu tiên của hàng.", "Ba thứ ấy lặp lại theo đúng thứ tự.", "Sau củ cải thì tới thứ gì?"],
+        "hint": "Hàng rau lặp lại từng nhóm ba thứ.",
+        "answer": {
+          "text": "Tới lượt dưa chuột",
+          "explanation": "Hàng lặp lại cà rốt – củ cải – dưa chuột. Nhóm thứ hai đã có cà rốt và củ cải nên tiếp theo là dưa chuột."
+        }
+      },
+      "feedback": {
+        "right": ["Vo ve vo ve, Ong Thợ múa một vòng mừng {name}!", "Giỏ rau xếp đều tăm tắp, nhìn là thấy quy luật.", "Đúng thứ tự rồi, rau nằm gọn trong giỏ."],
+        "wrong": ["Thứ ấy vừa xuất hiện ngay trước rồi, nhìn lại nhé.", "Đếm từng nhóm ba thứ rau xem nào {name}.", "Sau cà rốt và củ cải, hàng đầu tiên có gì?"]
+      }
+    },
+    {
+      "id": "cach-cho-gio",
+      "title": "Mang giỏ rau về nhà",
+      "kind": "decision",
+      "target": "vt-lvs-ong-tho",
+      "speaker": "Ong Thợ Chăm Chỉ",
+      "prompt": "Giỏ rau nặng quá mà nhà bà còn xa. {name} chọn cách nào để mang giỏ về?",
+      "choices": [
+        {
+          "id": "don-ganh",
+          "text": "Tìm một khúc tre làm đòn gánh",
+          "consequence": "Khúc tre chắc và nhẹ, {name} gánh giỏ rau đi phăng phăng.",
+          "nextStepId": "loi-cam-on-ba"
+        },
+        {
+          "id": "duong-bang",
+          "text": "Đi vòng theo lối bằng phẳng",
+          "consequence": "Lối vòng xa hơn nhưng không có đá, bà và {name} đi chậm mà chắc.",
+          "nextStepId": "loi-cam-on-ba"
+        },
+        {
+          "id": "nho-bo-vang",
+          "text": "Nhờ Bò Vàng kéo xe giúp",
+          "consequence": "Ong Thợ bay vút đi báo tin. Bò Vàng Kéo Xe đang nghỉ ở gốc tre ven bãi, ra nhờ bạn ấy nhé!"
+        }
+      ]
+    },
+    {
+      "id": "nho-bo-vang-keo-xe",
+      "title": "Nhờ Bò Vàng kéo xe",
+      "goTo": "Ra gốc tre ven bãi nhờ Bò Vàng Kéo Xe",
+      "kind": "dialogue",
+      "target": "vt-lvs-bo-vang",
+      "lines": [
+        { "speaker": "Bò Vàng Kéo Xe", "text": "Ụm bò, giúp bà cụ thì tớ sẵn lòng! Đặt giỏ rau lên xe, tớ kéo một mạch tới cổng nhà bà." }
+      ],
+      "choices": [{ "text": "Cảm ơn Bò Vàng nhiều lắm!" }]
+    },
+    {
+      "id": "loi-cam-on-ba",
+      "title": "Lời cảm ơn gửi bà",
+      "goTo": "Đưa giỏ rau trả bà ở lối cỏ ven sông",
+      "kind": "challenge",
+      "mechanic": "fill-blank",
+      "target": "vt-lvs-ba-cu",
+      "skill": "chinh-ta",
+      "prompt": "Bà tặng quà và dặn dò. Chọn chữ đúng điền vào chỗ trống trong lời bà:",
+      "template": "Bà gửi cháu một {{b1}}ói xôi, ba {{b2}}ủ khoai và mấy viên {{b3}}ẹo lạc. Hôm nào rảnh, cháu lại {{b4}}é thăm bà nhé.",
+      "blanks": [
+        { "id": "b1", "options": [{ "id": "g", "text": "g" }, { "id": "gh", "text": "gh" }] },
+        { "id": "b2", "options": [{ "id": "c", "text": "c" }, { "id": "k", "text": "k" }] },
+        { "id": "b3", "options": [{ "id": "c", "text": "c" }, { "id": "k", "text": "k" }] },
+        { "id": "b4", "options": [{ "id": "g", "text": "g" }, { "id": "gh", "text": "gh" }] }
+      ],
+      "answer": { "fills": { "b1": "g", "b2": "c", "b3": "k", "b4": "gh" } },
+      "support": {
+        "guide": ["Viết k và gh khi đứng trước i, e, ê.", "Trước các vần còn lại thì viết c và g.", "Nhìn chữ cái đứng ngay sau chỗ trống để chọn."],
+        "hint": "«ẹo» bắt đầu bằng e, «é» cũng bắt đầu bằng e.",
+        "answer": {
+          "text": "gói xôi, củ khoai, kẹo lạc, ghé thăm",
+          "explanation": "Trước o, u viết g và c (gói, củ); trước e viết k và gh (kẹo, ghé)."
+        }
+      },
+      "feedback": {
+        "right": ["Bà xoa đầu {name}: chữ cháu viết đúng hết rồi!", "Gói xôi, củ khoai, kẹo lạc, ghé thăm, không sai một chữ.", "Nhớ luật k, gh đứng trước e là chẳng bao giờ nhầm."],
+        "wrong": ["Nhìn chữ cái ngay sau chỗ trống rồi chọn lại nhé.", "Trước chữ e thì dùng k hay c nhỉ {name}?", "Có một chỗ trống chưa đúng luật, soát lại từng chữ nha."]
+      }
+    },
+    {
+      "id": "ba-cuoi-hien",
+      "title": "Nụ cười của bà",
+      "kind": "reward",
+      "target": "vt-lvs-ba-cu",
+      "text": "Bà cười hiền, dúi vào tay {name} gói xôi còn ấm. Cả làng ven sông khen {name} biết giúp người già, XP và xu cũng tới theo lời khen."
+    },
+    {
+      "id": "hen-an-xoi",
+      "title": "Hẹn bữa xôi",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bà hẹn hôm sau {name} ghé ăn xôi lạc. Cún Lúa đứng chờ ở cầu đá, đuôi vẫy tít rủ {name} đi chơi tiếp."
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": { "doc-hieu": 1, "logic": 1, "chinh-ta": 1 }
+  }
+}
