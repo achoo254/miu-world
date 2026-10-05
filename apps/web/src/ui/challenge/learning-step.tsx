@@ -31,11 +31,11 @@ import { WorksheetStepScreen } from './mechanics/worksheet-step';
 import { DecisionScreen } from './decision-screen';
 import { BossScreen } from './boss/boss-screen';
 import { isCount, useDraftState } from '../quest/step-draft';
+import { MinigameOverlay } from '../minigame/minigame-overlay';
 
 /** A stored line in both languages, or none (the boss's last line in the step's draft). */
 const isBilingualOrNull = (v: unknown): v is Bilingual | null =>
   v === null || (typeof v === 'object' && typeof (v as { vi?: unknown }).vi === 'string' && typeof (v as { en?: unknown }).en === 'string');
-import { MinigameOverlay } from '../minigame/minigame-overlay';
 
 export function hasLearningScreen(step: QuestStepPublic): boolean {
   return (

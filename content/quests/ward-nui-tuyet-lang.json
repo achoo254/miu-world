@@ -80,7 +80,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "găng tay"
+              "text": "ô che mưa"
             },
             {
               "id": "b",
@@ -88,20 +88,20 @@
             },
             {
               "id": "c",
-              "text": "ô che mưa"
+              "text": "găng tay"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The letter says: «It will snow tomorrow, remember your gloves». What do the friends need tomorrow?",
             "choices": [
-              "găng tay (gloves)",
+              "ô che mưa (an umbrella)",
               "kem chống nắng (sun cream)",
-              "ô che mưa (an umbrella)"
+              "găng tay (gloves)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -111,28 +111,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "khăn len"
-            },
-            {
-              "id": "b",
               "text": "lạnh buốt"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "trượt tuyết"
+            },
+            {
+              "id": "c",
+              "text": "khăn len"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which word names something that keeps you warm in the snowy mountains?",
             "choices": [
-              "khăn len (a woolly scarf)",
               "lạnh buốt (freezing)",
-              "trượt tuyết (ski)"
+              "trượt tuyết (ski)",
+              "khăn len (a woolly scarf)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -142,28 +142,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "14"
+              "text": "2"
             },
             {
               "id": "b",
-              "text": "13"
+              "text": "14"
             },
             {
               "id": "c",
-              "text": "2"
+              "text": "13"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Cánh Cụt has 8 letters and gets 6 more. How many letters in all?",
             "choices": [
+              "2",
               "14",
-              "13",
-              "2"
+              "13"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -173,28 +173,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "nhà số 74"
-            },
-            {
-              "id": "b",
               "text": "nhà số 47"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "bằng nhau"
+            },
+            {
+              "id": "c",
+              "text": "nhà số 74"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Houses number 47 and 74 are waiting for post. Which house number is bigger?",
             "choices": [
-              "house 74",
               "house 47",
-              "they are equal"
+              "they are equal",
+              "house 74"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         }
       ],

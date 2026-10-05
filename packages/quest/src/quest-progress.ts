@@ -103,11 +103,11 @@ export function completeStep(def: ActiveQuest, progress: QuestProgress, stepId: 
     }
     const turn = step.turns.find((t) => t.id === answer.turnId);
     if (!turn) return { ok: false, error: 'unknown-target' };
-    if (turn.answer.choice !== answer.choice) return { ok: false, error: 'wrong-answer' };
     const soFar = found[stepId] ?? [];
-    if (!soFar.includes(turn.id)) {
-      found[stepId] = [...soFar, turn.id];
-    }
+    // A blow already landed (a request sent again after a lost connection) changes nothing.
+    if (soFar.includes(turn.id)) return { ok: false, error: 'already-completed' };
+    if (turn.answer.choice !== answer.choice) return { ok: false, error: 'wrong-answer' };
+    found[stepId] = [...soFar, turn.id];
     const answeredTurns = found[stepId] ?? [];
     const totalDamage = answeredTurns.reduce((sum, tid) => {
       const t = step.turns.find((item) => item.id === tid);

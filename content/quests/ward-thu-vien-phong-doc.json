@@ -80,7 +80,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "tên tác giả"
+              "text": "nhà xuất bản"
             },
             {
               "id": "b",
@@ -88,20 +88,20 @@
             },
             {
               "id": "c",
-              "text": "nhà xuất bản"
+              "text": "tên tác giả"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "On a book cover, which part tells you who wrote the book?",
             "choices": [
-              "tên tác giả (the author)",
+              "nhà xuất bản (the publisher)",
               "tên sách (the title)",
-              "nhà xuất bản (the publisher)"
+              "tên tác giả (the author)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -115,11 +115,11 @@
             },
             {
               "id": "b",
-              "text": "bìa sau"
+              "text": "tranh vẽ"
             },
             {
               "id": "c",
-              "text": "tranh vẽ"
+              "text": "bìa sau"
             }
           ],
           "damage": 100,
@@ -127,8 +127,8 @@
             "prompt": "To find which page a reading is on, which part of the book do you look at?",
             "choices": [
               "mục lục (contents)",
-              "bìa sau (back cover)",
-              "tranh vẽ (pictures)"
+              "tranh vẽ (pictures)",
+              "bìa sau (back cover)"
             ]
           },
           "answer": {
@@ -168,28 +168,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "thủ thư"
+              "text": "đọc sách"
             },
             {
               "id": "b",
-              "text": "giá sách"
+              "text": "thủ thư"
             },
             {
               "id": "c",
-              "text": "đọc sách"
+              "text": "giá sách"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which word names the person who looks after the books?",
             "choices": [
+              "đọc sách (read)",
               "thủ thư (librarian)",
-              "giá sách (bookshelf)",
-              "đọc sách (read)"
+              "giá sách (bookshelf)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         }
       ],

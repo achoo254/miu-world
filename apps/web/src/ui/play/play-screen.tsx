@@ -75,6 +75,8 @@ export function mapBossesOf(quests: readonly QuestSummary[], region: string, fil
   });
 }
 
+/** How long after the map of a picked boss is up its place may take to show before the walk is dropped (ms). */
+const PICK_WALK_WAIT_MS = 4_000;
 /** How often the child's spot is saved while playing; hiding or leaving the page saves it at once. */
 const SAVE_SPOT_MS = 10_000;
 
@@ -289,6 +291,11 @@ export function PlayScreen() {
   /** The character whose card offered the quest on screen: its first line opens when the map is up. */
   const [openAt, setOpenAt] = useState<string | null>(null);
   const spotOf = useRef<(() => PlayerPosition | null) | null>(null);
+  /**
+   * The walk after a boss picked on the full map: waits for the new map to start loading, to be up, then for the quest's
+   * place to be walkable; any other quest switch cancels it.
+   */
+  const walkAfterPick = useRef<'none' | 'loading' | 'loaded' | 'ready'>('none');
   const onSpotReader = useCallback((read: (() => PlayerPosition | null) | null): void => {
     spotOf.current = read;
   }, []);
@@ -419,6 +426,8 @@ export function PlayScreen() {
    * router navigation, which would reload the player data.
    */
   function switchQuest(next: QuestSummary, throughGate = false, from: string | null = null): void {
+    // Any other switch (the board, a gate, a character) cancels a walk still waiting from a boss picked on the map.
+    walkAfterPick.current = 'none';
     setQuestsOpen(false);
     setOpenAt(from);
     if (next.quest.id === questId) return;
@@ -449,8 +458,8 @@ export function PlayScreen() {
   // A big boss picked on the full map while another quest is played: its quest is taken up here (the map is built again
   // for it), then she walks to its next place as soon as the game can, like a tap on the quest card.
   const picked = useRef(store.getSnapshot().questPick?.count ?? 0);
-  /** The walk after a picked quest: waits for the new map to start loading, then for it to be ready to walk. */
-  const walkAfterPick = useRef<'none' | 'loading' | 'ready'>('none');
+  /** Pending timer that gives up the walk after a pick when the new map has nowhere to walk to. */
+  const pickTimer = useRef<number | null>(null);
   useEffect(
     () =>
       store.subscribe(() => {
@@ -460,18 +469,33 @@ export function PlayScreen() {
           picked.current = pick.count;
           const next = data.quests.find((q) => q.quest.id === pick.questId);
           if (next && next.quest.id !== questId) {
-            walkAfterPick.current = 'loading';
             switchQuest(next);
+            walkAfterPick.current = 'loading';
             return;
           }
         }
         // The old game is still up when the quest switches: only the new one, once it loads, walks her.
-        if (walkAfterPick.current === 'loading' && snapshot.status === 'loading') walkAfterPick.current = 'ready';
+        if (walkAfterPick.current === 'loading' && snapshot.status === 'loading') walkAfterPick.current = 'loaded';
+        if (walkAfterPick.current === 'loaded' && snapshot.status === 'ready') {
+          walkAfterPick.current = 'ready';
+          // The quest's place shows within moments of the map being up; if it never does, the walk is dropped.
+          if (pickTimer.current !== null) window.clearTimeout(pickTimer.current);
+          pickTimer.current = window.setTimeout(() => {
+            pickTimer.current = null;
+            if (walkAfterPick.current === 'ready') walkAfterPick.current = 'none';
+          }, PICK_WALK_WAIT_MS);
+        }
         if (walkAfterPick.current === 'ready' && snapshot.status === 'ready' && snapshot.autowalkAvailable) {
           walkAfterPick.current = 'none';
           store.send({ type: 'autowalk-start' });
         }
       }),
+  );
+  useEffect(
+    () => () => {
+      if (pickTimer.current !== null) window.clearTimeout(pickTimer.current);
+    },
+    [],
   );
   // Touching the timetable on the wall or the uniform calendar opens the board (the quest leaves them alone).
   const interacted = useRef(store.getSnapshot().lastInteraction?.count ?? 0);

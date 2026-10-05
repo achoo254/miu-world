@@ -80,28 +80,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "24 giờ"
+              "text": "60 giờ"
             },
             {
               "id": "b",
-              "text": "12 giờ"
+              "text": "24 giờ"
             },
             {
               "id": "c",
-              "text": "60 giờ"
+              "text": "12 giờ"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Gà Vàng Báo Giờ asks: how many hours are there in a whole day?",
             "choices": [
+              "60 hours",
               "24 hours",
-              "12 hours",
-              "60 hours"
+              "12 hours"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -111,28 +111,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "60 phút"
+              "text": "30 phút"
             },
             {
               "id": "b",
-              "text": "100 phút"
+              "text": "60 phút"
             },
             {
               "id": "c",
-              "text": "30 phút"
+              "text": "100 phút"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Gà reminds the children: one hour is how many minutes?",
             "choices": [
+              "30 minutes",
               "60 minutes",
-              "100 minutes",
-              "30 minutes"
+              "100 minutes"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -177,11 +177,11 @@
             },
             {
               "id": "b",
-              "text": "thứ Ba"
+              "text": "thứ Sáu"
             },
             {
               "id": "c",
-              "text": "thứ Sáu"
+              "text": "thứ Ba"
             }
           ],
           "damage": 100,
@@ -189,8 +189,8 @@
             "prompt": "Today's calendar page says Wednesday the 10th. What day is the 11th?",
             "choices": [
               "thứ Năm (Thursday)",
-              "thứ Ba (Tuesday)",
-              "thứ Sáu (Friday)"
+              "thứ Sáu (Friday)",
+              "thứ Ba (Tuesday)"
             ]
           },
           "answer": {

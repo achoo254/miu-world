@@ -80,11 +80,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "34"
+              "text": "44"
             },
             {
               "id": "b",
-              "text": "44"
+              "text": "34"
             },
             {
               "id": "c",
@@ -95,13 +95,13 @@
           "en": {
             "prompt": "There are 42 hens in the coop and 8 run out into the yard. How many are still in the coop?",
             "choices": [
-              "34",
               "44",
+              "34",
               "50"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -146,11 +146,11 @@
             },
             {
               "id": "b",
-              "text": ">"
+              "text": "="
             },
             {
               "id": "c",
-              "text": "="
+              "text": ">"
             }
           ],
           "damage": 100,
@@ -158,12 +158,12 @@
             "prompt": "Heo compares 63 − 9 with 50. Which sign goes in 63 − 9 … 50?",
             "choices": [
               "<",
-              ">",
-              "="
+              "=",
+              ">"
             ]
           },
           "answer": {
-            "choice": "b"
+            "choice": "c"
           }
         },
         {

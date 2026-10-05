@@ -94,6 +94,14 @@ export function PetCarePanel({ onClose, onPetGear, onRename }: PetCarePanelProps
   const [dishes, setDishes] = useState<CookedDish[] | null>(null);
   /** The feeding choice is open (the pet's own food, or one of her dishes). */
   const [feedPick, setFeedPick] = useState(false);
+  /** The board is on screen (a late answer is not applied after it closed). */
+  const mounted = useRef(true);
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+    };
+  }, []);
   const pickers = useRef(new Map<LinesKey, FreshPicker<Bilingual>>());
   const pet = PETS.find((p) => p.id === petId);
   const name = bond?.name ?? pet?.name ?? '';
@@ -181,8 +189,8 @@ export function PetCarePanel({ onClose, onPetGear, onRename }: PetCarePanelProps
       if (dish) setDishes((list) => (list ?? []).flatMap((d) => (d.itemId !== dish.itemId ? [d] : d.qty > 1 ? [{ ...d, qty: d.qty - 1 }] : [])));
     } catch (err) {
       setError(errorMessage(err));
-      // Eaten elsewhere meanwhile (another tab): read what is left.
-      if (dish) void loadCookedDishes().then(setDishes);
+      // Eaten elsewhere meanwhile (another tab): read what is left, if the board is still open.
+      if (dish) void loadCookedDishes().then((list) => mounted.current && setDishes(list));
     }
   }
 

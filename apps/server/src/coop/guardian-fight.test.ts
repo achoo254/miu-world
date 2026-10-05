@@ -65,7 +65,11 @@ describe('a zone guardian', () => {
     const said: string[] = [];
     const firstBlow = (await step(agent, boss.id, blow(first)).expect(200)).body;
     said.push(firstBlow.feedback);
-    for (const turn of rest.slice(0, -1)) said.push((await step(agent, boss.id, blow(turn)).expect(200)).body.feedback);
+    for (const [i, turn] of rest.slice(0, -1).entries()) {
+      // Misses between two blows never bring the last blow's line back.
+      if (i === 0) for (let miss = 0; miss < 2; miss++) await step(agent, boss.id, { answer: { turnId: turn.id, choice: wrongChoice(turn.id) } }).expect(200);
+      said.push((await step(agent, boss.id, blow(turn)).expect(200)).body.feedback);
+    }
     for (let i = 1; i < said.length; i++) expect(said[i]).not.toBe(said[i - 1]);
     for (const line of said) expect(feedback.right).toContain(line);
     const last = rest.at(-1);

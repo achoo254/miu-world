@@ -80,7 +80,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "13"
+              "text": "3"
             },
             {
               "id": "b",
@@ -88,20 +88,20 @@
             },
             {
               "id": "c",
-              "text": "3"
+              "text": "13"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Gà Mái has 8 eggs and lays 5 more. How many eggs in all?",
             "choices": [
-              "13",
+              "3",
               "12",
-              "3"
+              "13"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -111,7 +111,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "15"
+              "text": "16"
             },
             {
               "id": "b",
@@ -119,20 +119,20 @@
             },
             {
               "id": "c",
-              "text": "16"
+              "text": "15"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The flower stall has 9 roses and 6 daisies. How many flowers in all?",
             "choices": [
-              "15",
+              "16",
               "14",
-              "16"
+              "15"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -142,11 +142,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "5"
+              "text": "4"
             },
             {
               "id": "b",
-              "text": "4"
+              "text": "5"
             },
             {
               "id": "c",
@@ -157,13 +157,13 @@
           "en": {
             "prompt": "Which number goes in the gap: 7 + … = 12?",
             "choices": [
-              "5",
               "4",
+              "5",
               "19"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -173,11 +173,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "<"
+              "text": ">"
             },
             {
               "id": "b",
-              "text": ">"
+              "text": "<"
             },
             {
               "id": "c",
@@ -188,13 +188,13 @@
           "en": {
             "prompt": "Gà Mái compares two baskets: 8 + 7 and 14. Which sign goes in 8 + 7 … 14?",
             "choices": [
-              "<",
               ">",
+              "<",
               "="
             ]
           },
           "answer": {
-            "choice": "b"
+            "choice": "a"
           }
         }
       ],

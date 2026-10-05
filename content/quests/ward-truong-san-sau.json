@@ -80,7 +80,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "Em yêu cô giáo lắm!"
+              "text": "Cô đến lớp lúc bảy giờ."
             },
             {
               "id": "b",
@@ -88,20 +88,20 @@
             },
             {
               "id": "c",
-              "text": "Cô đến lớp lúc bảy giờ."
+              "text": "Em yêu cô giáo lắm!"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which sentence shows how the pupil feels about the teacher?",
             "choices": [
-              "Em yêu cô giáo lắm! (I love my teacher so much!)",
+              "Cô đến lớp lúc bảy giờ. (She arrives at seven.)",
               "Cô giáo mặc áo dài. (The teacher wears an áo dài.)",
-              "Cô đến lớp lúc bảy giờ. (She arrives at seven.)"
+              "Em yêu cô giáo lắm! (I love my teacher so much!)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -111,28 +111,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "2 môn"
-            },
-            {
-              "id": "b",
               "text": "3 môn"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "4 môn"
+            },
+            {
+              "id": "c",
+              "text": "2 môn"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Mèo reads the timetable: «Monday: Vietnamese, Maths, Art». How many subjects are there on Monday?",
             "choices": [
-              "2",
               "3",
-              "4"
+              "4",
+              "2"
             ]
           },
           "answer": {
-            "choice": "b"
+            "choice": "a"
           }
         },
         {
@@ -168,28 +168,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "viết bài"
-            },
-            {
-              "id": "b",
               "text": "cái thước"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "bàn ghế"
+            },
+            {
+              "id": "c",
+              "text": "viết bài"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which words tell what a pupil does in a lesson (an action)?",
             "choices": [
-              "viết bài (write)",
               "cái thước (the ruler)",
-              "bàn ghế (desks and chairs)"
+              "bàn ghế (desks and chairs)",
+              "viết bài (write)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         }
       ],

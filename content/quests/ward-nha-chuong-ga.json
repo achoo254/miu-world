@@ -142,7 +142,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "con gà"
+              "text": "cục tác"
             },
             {
               "id": "b",
@@ -150,20 +150,20 @@
             },
             {
               "id": "c",
-              "text": "cục tác"
+              "text": "con gà"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which word names an animal kept at home?",
             "choices": [
-              "con gà (a hen)",
+              "cục tác (cluck)",
               "cái ổ (a nest)",
-              "cục tác (cluck)"
+              "con gà (a hen)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -173,7 +173,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "đóng cửa chuồng"
+              "text": "đi ngủ ngay"
             },
             {
               "id": "b",
@@ -181,20 +181,20 @@
             },
             {
               "id": "c",
-              "text": "đi ngủ ngay"
+              "text": "đóng cửa chuồng"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Grandma says: «After collecting the eggs, remember to shut the coop». What does the child do after collecting the eggs?",
             "choices": [
-              "shut the coop",
+              "go straight to bed",
               "open the coop wide",
-              "go straight to bed"
+              "shut the coop"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -204,11 +204,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "19"
+              "text": "18"
             },
             {
               "id": "b",
-              "text": "18"
+              "text": "19"
             },
             {
               "id": "c",
@@ -219,13 +219,13 @@
           "en": {
             "prompt": "The child has 12 grains of rice and Grandma gives 7 more for the hens. How many grains now?",
             "choices": [
-              "19",
               "18",
+              "19",
               "5"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         }
       ],

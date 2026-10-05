@@ -80,28 +80,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "quạt mát"
-            },
-            {
-              "id": "b",
               "text": "ngọn đèn"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "dịu dàng"
+            },
+            {
+              "id": "c",
+              "text": "quạt mát"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "On a hot summer night mum stays up while you sleep. Which words tell what mum does (an action)?",
             "choices": [
-              "quạt mát (fans you cool)",
               "ngọn đèn (the lamp)",
-              "dịu dàng (gentle)"
+              "dịu dàng (gentle)",
+              "quạt mát (fans you cool)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -111,28 +111,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "Cháu cảm ơn bà ạ!"
-            },
-            {
-              "id": "b",
               "text": "Quà này của ai?"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "Cháu không thích."
+            },
+            {
+              "id": "c",
+              "text": "Cháu cảm ơn bà ạ!"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Grandma gives you a present. Which sentence says thank you?",
             "choices": [
-              "Cháu cảm ơn bà ạ! (Thank you, Grandma!)",
               "Quà này của ai? (Whose present is this?)",
-              "Cháu không thích. (I don't like it.)"
+              "Cháu không thích. (I don't like it.)",
+              "Cháu cảm ơn bà ạ! (Thank you, Grandma!)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -168,23 +168,23 @@
           "choices": [
             {
               "id": "a",
-              "text": "ao"
+              "text": "au"
             },
             {
               "id": "b",
-              "text": "au"
+              "text": "ao"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "ao or au: «bố dùng con d… gọt quả cho em» (dad peels fruit with a knife)?",
             "choices": [
-              "ao",
-              "au"
+              "au",
+              "ao"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         }
       ],

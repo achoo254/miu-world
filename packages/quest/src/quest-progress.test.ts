@@ -303,6 +303,8 @@ describe('a boss battle step', () => {
     expect(turn1.progress.completedSteps).toEqual(['scout']);
     expect(turn1.progress.found['boss-1']).toEqual(['turn-1']);
     expect(turn1.reward).toBeNull();
+    // The same blow sent again (a lost connection's retry) lands nothing more.
+    expect(completeStep(bossQuest, turn1.progress, 'boss-1', { answer: { turnId: 'turn-1', choice: 'c1' } })).toEqual({ ok: false, error: 'already-completed' });
 
     // Turn 2 right: 80 damage dealt, remaining HP = 0 -> boss defeated, quest finishes!
     const turn2 = completeStep(bossQuest, turn1.progress, 'boss-1', { answer: { turnId: 'turn-2', choice: 'c3' } });

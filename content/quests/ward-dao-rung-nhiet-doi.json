@@ -84,11 +84,11 @@
             },
             {
               "id": "b",
-              "text": "68"
+              "text": "14"
             },
             {
               "id": "c",
-              "text": "14"
+              "text": "68"
             }
           ],
           "damage": 100,
@@ -96,8 +96,8 @@
             "prompt": "Báo counts 46 coconut trees and 32 banana trees. How many trees in all?",
             "choices": [
               "78",
-              "68",
-              "14"
+              "14",
+              "68"
             ]
           },
           "answer": {
@@ -111,11 +111,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "<"
+              "text": ">"
             },
             {
               "id": "b",
-              "text": ">"
+              "text": "<"
             },
             {
               "id": "c",
@@ -126,13 +126,13 @@
           "en": {
             "prompt": "Two rocks by the falls say 63 and 36. Which sign goes in 63 … 36?",
             "choices": [
-              "<",
               ">",
+              "<",
               "="
             ]
           },
           "answer": {
-            "choice": "b"
+            "choice": "a"
           }
         },
         {
@@ -142,28 +142,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "hai bạn đi trước, một bạn đi sau"
-            },
-            {
-              "id": "b",
               "text": "cả ba cùng đi một lúc"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "không ai được qua"
+            },
+            {
+              "id": "c",
+              "text": "hai bạn đi trước, một bạn đi sau"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The wooden sign says: «Only two people on the rope bridge at a time». How can three friends cross?",
             "choices": [
-              "two go first, then one",
               "all three at once",
-              "nobody may cross"
+              "nobody may cross",
+              "two go first, then one"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -173,28 +173,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "18"
+              "text": "81"
             },
             {
               "id": "b",
-              "text": "19"
+              "text": "18"
             },
             {
               "id": "c",
-              "text": "81"
+              "text": "19"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The waterfall has 9 rocks at the top and 9 at the bottom. How many rocks in all?",
             "choices": [
+              "81",
               "18",
-              "19",
-              "81"
+              "19"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         }
       ],

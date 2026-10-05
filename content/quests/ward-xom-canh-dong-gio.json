@@ -80,28 +80,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "nhiều màu"
-            },
-            {
-              "id": "b",
               "text": "thổi gió"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "cầm tay"
+            },
+            {
+              "id": "c",
+              "text": "nhiều màu"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which word describes the child's paper pinwheel?",
             "choices": [
-              "nhiều màu (many-coloured)",
               "thổi gió (blow)",
-              "cầm tay (hold)"
+              "cầm tay (hold)",
+              "nhiều màu (many-coloured)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -137,23 +137,23 @@
           "choices": [
             {
               "id": "a",
-              "text": "ăt"
+              "text": "ăc"
             },
             {
               "id": "b",
-              "text": "ăc"
+              "text": "ăt"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Pick the right rhyme: «chú bò mở to đôi m… tròn xoe» (the cow opens its round eyes wide)?",
             "choices": [
-              "ăt",
-              "ăc"
+              "ăc",
+              "ăt"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -163,28 +163,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "nhường nhịn"
-            },
-            {
-              "id": "b",
               "text": "giành giật"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "cãi nhau"
+            },
+            {
+              "id": "c",
+              "text": "nhường nhịn"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which word is about kindness between brothers and sisters?",
             "choices": [
-              "nhường nhịn (give way to each other)",
               "giành giật (snatch)",
-              "cãi nhau (quarrel)"
+              "cãi nhau (quarrel)",
+              "nhường nhịn (give way to each other)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -194,7 +194,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "dấu chấm than"
+              "text": "dấu hai chấm"
             },
             {
               "id": "b",
@@ -202,20 +202,20 @@
             },
             {
               "id": "c",
-              "text": "dấu hai chấm"
+              "text": "dấu chấm than"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which mark should end «Mẹ ơi, con thương mẹ lắm» (Mum, I love you so much)?",
             "choices": [
-              "an exclamation mark",
+              "a colon",
               "a question mark",
-              "a colon"
+              "an exclamation mark"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         }
       ],

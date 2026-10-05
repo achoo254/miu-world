@@ -80,11 +80,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "yêu quý"
+              "text": "bảng đen"
             },
             {
               "id": "b",
-              "text": "bảng đen"
+              "text": "yêu quý"
             },
             {
               "id": "c",
@@ -95,13 +95,13 @@
           "en": {
             "prompt": "Which word shows how a pupil feels about the school?",
             "choices": [
-              "yêu quý (love dearly)",
               "bảng đen (blackboard)",
+              "yêu quý (love dearly)",
               "sân chơi (playground)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -111,11 +111,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "Sân chơi rộng và sạch."
+              "text": "Chúng em chơi ở sân."
             },
             {
               "id": "b",
-              "text": "Chúng em chơi ở sân."
+              "text": "Sân chơi rộng và sạch."
             },
             {
               "id": "c",
@@ -126,13 +126,13 @@
           "en": {
             "prompt": "Which sentence describes what the playground is like?",
             "choices": [
-              "Sân chơi rộng và sạch. (It is wide and clean.)",
               "Chúng em chơi ở sân. (We play there.)",
+              "Sân chơi rộng và sạch. (It is wide and clean.)",
               "Sân chơi ở đâu? (Where is it?)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -142,28 +142,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "sao – cao"
+              "text": "lá – lê"
             },
             {
               "id": "b",
-              "text": "mây – mưa"
+              "text": "sao – cao"
             },
             {
               "id": "c",
-              "text": "lá – lê"
+              "text": "mây – mưa"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which pair of words rhymes (has the same rhyme part)?",
             "choices": [
+              "lá – lê",
               "sao – cao",
-              "mây – mưa",
-              "lá – lê"
+              "mây – mưa"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -199,28 +199,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "bút màu"
-            },
-            {
-              "id": "b",
               "text": "tô màu"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "rực rỡ"
+            },
+            {
+              "id": "c",
+              "text": "bút màu"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which word names a thing you use to draw pictures?",
             "choices": [
-              "bút màu (crayons)",
               "tô màu (colour in)",
-              "rực rỡ (bright)"
+              "rực rỡ (bright)",
+              "bút màu (crayons)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         }
       ],

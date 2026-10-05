@@ -80,11 +80,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "71"
+              "text": "70"
             },
             {
               "id": "b",
-              "text": "70"
+              "text": "71"
             },
             {
               "id": "c",
@@ -95,13 +95,13 @@
           "en": {
             "prompt": "Three stone pillars say 71, 17 and 70. Which is the biggest number?",
             "choices": [
-              "71",
               "70",
+              "71",
               "17"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -111,11 +111,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "88"
+              "text": "78"
             },
             {
               "id": "b",
-              "text": "78"
+              "text": "88"
             },
             {
               "id": "c",
@@ -126,13 +126,13 @@
           "en": {
             "prompt": "The temple has 52 stone steps below and 36 above. How many steps in all?",
             "choices": [
-              "88",
               "78",
+              "88",
               "16"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -142,28 +142,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "giữ gìn di tích"
+              "text": "mang đá về nhà"
             },
             {
               "id": "b",
-              "text": "vẽ lên tường đền"
+              "text": "giữ gìn di tích"
             },
             {
               "id": "c",
-              "text": "mang đá về nhà"
+              "text": "vẽ lên tường đền"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The stone tablet says: «Whoever looks after the ruins is a friend of the temple». What does it ask us to do?",
             "choices": [
+              "take stones home",
               "look after the ruins",
-              "draw on the temple walls",
-              "take stones home"
+              "draw on the temple walls"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -204,11 +204,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "90"
+              "text": "88"
             },
             {
               "id": "b",
-              "text": "88"
+              "text": "90"
             },
             {
               "id": "c",
@@ -219,13 +219,13 @@
           "en": {
             "prompt": "The last pillar asks: which number comes right after 89?",
             "choices": [
-              "90",
               "88",
+              "90",
               "99"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         }
       ],

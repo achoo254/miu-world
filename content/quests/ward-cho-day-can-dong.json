@@ -80,28 +80,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "đĩa có dưa hấu"
-            },
-            {
-              "id": "b",
               "text": "đĩa có quả cam"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "hai đĩa bằng nhau"
+            },
+            {
+              "id": "c",
+              "text": "đĩa có dưa hấu"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "A watermelon is heavier than an orange. On the balance scales, which pan goes down?",
             "choices": [
-              "the watermelon's pan",
               "the orange's pan",
-              "they stay level"
+              "they stay level",
+              "the watermelon's pan"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -111,11 +111,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "8 kg"
+              "text": "2 kg"
             },
             {
               "id": "b",
-              "text": "2 kg"
+              "text": "8 kg"
             },
             {
               "id": "c",
@@ -126,13 +126,13 @@
           "en": {
             "prompt": "A bag of sugar weighs 5 kg and a bag of salt 3 kg. How much do both weigh?",
             "choices": [
-              "8 kg",
               "2 kg",
+              "8 kg",
               "53 kg"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -142,7 +142,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "6 l"
+              "text": "5 l"
             },
             {
               "id": "b",
@@ -150,20 +150,20 @@
             },
             {
               "id": "c",
-              "text": "5 l"
+              "text": "6 l"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The oil can holds 10 l and Voi pours out 4 l. How many litres are left?",
             "choices": [
-              "6 l",
+              "5 l",
               "14 l",
-              "5 l"
+              "6 l"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -173,7 +173,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "lít"
+              "text": "xăng-ti-mét"
             },
             {
               "id": "b",
@@ -181,20 +181,20 @@
             },
             {
               "id": "c",
-              "text": "xăng-ti-mét"
+              "text": "lít"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "To say how much water is in a bucket, which unit do we use?",
             "choices": [
-              "lít (litre)",
+              "xăng-ti-mét (centimetre)",
               "ki-lô-gam (kilogram)",
-              "xăng-ti-mét (centimetre)"
+              "lít (litre)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {

@@ -80,28 +80,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "78"
-            },
-            {
-              "id": "b",
               "text": "68"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "88"
+            },
+            {
+              "id": "c",
+              "text": "78"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Heo sells 36 sweets in the morning and 42 in the afternoon. How many sweets in the whole day?",
             "choices": [
-              "78",
               "68",
-              "88"
+              "88",
+              "78"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -111,11 +111,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "54"
+              "text": "64"
             },
             {
               "id": "b",
-              "text": "64"
+              "text": "54"
             },
             {
               "id": "c",
@@ -126,13 +126,13 @@
           "en": {
             "prompt": "The shop has 89 balloons and has sold 35. How many balloons are left?",
             "choices": [
-              "54",
               "64",
+              "54",
               "124"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -142,7 +142,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "<"
+              "text": "="
             },
             {
               "id": "b",
@@ -150,20 +150,20 @@
             },
             {
               "id": "c",
-              "text": "="
+              "text": "<"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Heo puts two prices on the shelf, 47 and 74. Which sign goes in 47 … 74?",
             "choices": [
-              "<",
+              "=",
               ">",
-              "="
+              "<"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -173,7 +173,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "quả táo"
+              "text": "quả cam"
             },
             {
               "id": "b",
@@ -181,20 +181,20 @@
             },
             {
               "id": "c",
-              "text": "quả cam"
+              "text": "quả táo"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "A customer asks for an «apple». Which fruit is that in Vietnamese?",
             "choices": [
-              "quả táo",
+              "quả cam",
               "quả chuối",
-              "quả cam"
+              "quả táo"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         }
       ],

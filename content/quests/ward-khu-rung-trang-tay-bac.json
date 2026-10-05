@@ -80,28 +80,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "c"
-            },
-            {
-              "id": "b",
               "text": "k"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "q"
+            },
+            {
+              "id": "c",
+              "text": "c"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which letter fills the gap in «…ể chuyện» (to tell a story)?",
             "choices": [
-              "c",
               "k",
-              "q"
+              "q",
+              "c"
             ]
           },
           "answer": {
-            "choice": "b"
+            "choice": "a"
           }
         },
         {
@@ -111,28 +111,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "con hươu"
-            },
-            {
-              "id": "b",
               "text": "con hiêu"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "con hưu"
+            },
+            {
+              "id": "c",
+              "text": "con hươu"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which meadow animal's name is spelt with the right «ươu» rhyme?",
             "choices": [
-              "con hươu",
               "con hiêu",
-              "con hưu"
+              "con hưu",
+              "con hươu"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -142,28 +142,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "đàn bò"
+              "text": "bên suối"
             },
             {
               "id": "b",
-              "text": "gặm cỏ"
+              "text": "đàn bò"
             },
             {
               "id": "c",
-              "text": "bên suối"
+              "text": "gặm cỏ"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "In «Đàn bò thong thả gặm cỏ bên suối» (the cows graze by the stream), which words name an action?",
             "choices": [
+              "bên suối (by the stream)",
               "đàn bò (the cows)",
-              "gặm cỏ (graze)",
-              "bên suối (by the stream)"
+              "gặm cỏ (graze)"
             ]
           },
           "answer": {
-            "choice": "b"
+            "choice": "c"
           }
         },
         {
@@ -173,11 +173,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "Dấu chấm"
+              "text": "Dấu chấm hỏi"
             },
             {
               "id": "b",
-              "text": "Dấu chấm hỏi"
+              "text": "Dấu chấm"
             },
             {
               "id": "c",
@@ -188,13 +188,13 @@
           "en": {
             "prompt": "Which mark ends «Mai cậu có ghé trảng cỏ chơi không» (will you visit the meadow tomorrow)?",
             "choices": [
-              "Full stop",
               "Question mark",
+              "Full stop",
               "Comma"
             ]
           },
           "answer": {
-            "choice": "b"
+            "choice": "a"
           }
         }
       ],

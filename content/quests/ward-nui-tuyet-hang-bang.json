@@ -80,28 +80,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "55"
-            },
-            {
-              "id": "b",
               "text": "45"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "19"
+            },
+            {
+              "id": "c",
+              "text": "55"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The expedition has 37 people and 18 more join later. How many people in all?",
             "choices": [
-              "55",
               "45",
-              "19"
+              "19",
+              "55"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -111,28 +111,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "36"
+              "text": "92"
             },
             {
               "id": "b",
-              "text": "46"
+              "text": "36"
             },
             {
               "id": "c",
-              "text": "92"
+              "text": "46"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The store has 64 torches and 28 are handed to the team. How many are left?",
             "choices": [
+              "92",
               "36",
-              "46",
-              "92"
+              "46"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -142,11 +142,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "băng"
+              "text": "lửa"
             },
             {
               "id": "b",
-              "text": "lửa"
+              "text": "băng"
             },
             {
               "id": "c",
@@ -157,13 +157,13 @@
           "en": {
             "prompt": "Tuần Lộc points at the cave wall and says «ice». What is «ice» in Vietnamese?",
             "choices": [
-              "băng",
               "lửa",
+              "băng",
               "đá cuội"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -173,7 +173,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "60"
+              "text": "71"
             },
             {
               "id": "b",
@@ -181,20 +181,20 @@
             },
             {
               "id": "c",
-              "text": "71"
+              "text": "60"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The steps into the cave are numbered 90, 80, 70, … What number is on the next step?",
             "choices": [
-              "60",
+              "71",
               "50",
-              "71"
+              "60"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -204,7 +204,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "vì trong hang tối"
+              "text": "vì trời mưa"
             },
             {
               "id": "b",
@@ -212,20 +212,20 @@
             },
             {
               "id": "c",
-              "text": "vì trời mưa"
+              "text": "vì trong hang tối"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The explorers' book says: «Wear a helmet with a lamp in the cave». Why?",
             "choices": [
-              "because the cave is dark",
+              "because it is raining",
               "because it is hot",
-              "because it is raining"
+              "because the cave is dark"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         }
       ],

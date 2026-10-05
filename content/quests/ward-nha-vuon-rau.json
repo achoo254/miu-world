@@ -80,28 +80,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "bắp cải"
-            },
-            {
-              "id": "b",
               "text": "tưới nước"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "xanh mướt"
+            },
+            {
+              "id": "c",
+              "text": "bắp cải"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which word names a vegetable growing in the home garden?",
             "choices": [
-              "bắp cải (cabbage)",
               "tưới nước (water)",
-              "xanh mướt (lush green)"
+              "xanh mướt (lush green)",
+              "bắp cải (cabbage)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -111,7 +111,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "13"
+              "text": "1"
             },
             {
               "id": "b",
@@ -119,20 +119,20 @@
             },
             {
               "id": "c",
-              "text": "1"
+              "text": "13"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The bed has 7 mustard plants and Thỏ plants 6 more. How many plants in all?",
             "choices": [
-              "13",
+              "1",
               "12",
-              "1"
+              "13"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -146,11 +146,11 @@
             },
             {
               "id": "b",
-              "text": "rổ cà chua"
+              "text": "hai rổ bằng nhau"
             },
             {
               "id": "c",
-              "text": "hai rổ bằng nhau"
+              "text": "rổ cà chua"
             }
           ],
           "damage": 100,
@@ -158,8 +158,8 @@
             "prompt": "The tomato basket has 25 and the carrot basket has 52. Which basket has more?",
             "choices": [
               "the carrots",
-              "the tomatoes",
-              "they are the same"
+              "they are the same",
+              "the tomatoes"
             ]
           },
           "answer": {
@@ -173,11 +173,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "tưới rau trước khi tối"
+              "text": "nhổ hết rau"
             },
             {
               "id": "b",
-              "text": "nhổ hết rau"
+              "text": "tưới rau trước khi tối"
             },
             {
               "id": "c",
@@ -188,13 +188,13 @@
           "en": {
             "prompt": "Mum says: «Water the vegetables before it gets dark this afternoon». What should the child do?",
             "choices": [
-              "water them before dark",
               "pull up all the vegetables",
+              "water them before dark",
               "water them at midnight"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         }
       ],

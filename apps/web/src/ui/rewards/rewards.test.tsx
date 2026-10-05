@@ -122,6 +122,23 @@ describe('completion screens', () => {
     expect(document.body.textContent).not.toMatch(/phạt|Kim cương/i);
   });
 
+  it("never shows the region chest's progress after a zone guardian's fight (it is not a lesson)", async () => {
+    const urls: string[] = [];
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url: string) => {
+        urls.push(url);
+        return new Response(JSON.stringify({ error: 'not-found' }), { status: 404 });
+      }),
+    );
+    const guardian = { ...QUEST, id: 'ward-thu', category: 'guardian' as const };
+    render(<CompletionSequence completion={completion()} reward={REWARD} quest={guardian} data={DATA} onMap={() => undefined} onExplore={() => undefined} />);
+    render(<CompletionSequence completion={completion()} reward={REWARD} quest={QUEST} data={DATA} onMap={() => undefined} onExplore={() => undefined} />);
+    // Only the lesson asks for its region's chest.
+    await vi.waitFor(() => expect(urls.filter((u) => u.includes('/regions/'))).toHaveLength(1));
+    expect(urls.filter((u) => u.includes('/regions/'))[0]).toContain(QUEST.region);
+  });
+
   it('after seeing an answer: 90 XP with a kind word, and no Level Up', () => {
     render(<CompletionSequence completion={completion({ xpAwarded: 90, levelAfter: 1 })} reward={REWARD} quest={QUEST} data={DATA} onMap={() => undefined} onExplore={() => undefined} />);
     expect(rowText('reward-xp')).toBe('+90 XP');

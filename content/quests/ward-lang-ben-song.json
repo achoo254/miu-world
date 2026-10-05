@@ -80,11 +80,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "trôi"
+              "text": "xanh"
             },
             {
               "id": "b",
-              "text": "xanh"
+              "text": "trôi"
             },
             {
               "id": "c",
@@ -95,13 +95,13 @@
           "en": {
             "prompt": "Which word is something the ferry boat does on the river (an action)?",
             "choices": [
-              "trôi (drift)",
               "xanh (green)",
+              "trôi (drift)",
               "mái chèo (oar)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -115,11 +115,11 @@
             },
             {
               "id": "b",
-              "text": "V"
+              "text": "T"
             },
             {
               "id": "c",
-              "text": "T"
+              "text": "V"
             }
           ],
           "damage": 100,
@@ -127,8 +127,8 @@
             "prompt": "In the Vietnamese alphabet, which letter comes right after U?",
             "choices": [
               "Ư",
-              "V",
-              "T"
+              "T",
+              "V"
             ]
           },
           "answer": {
@@ -142,11 +142,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "Tớ cảm ơn cậu nhé!"
+              "text": "Tất nhiên rồi!"
             },
             {
               "id": "b",
-              "text": "Tất nhiên rồi!"
+              "text": "Tớ cảm ơn cậu nhé!"
             },
             {
               "id": "c",
@@ -157,13 +157,13 @@
           "en": {
             "prompt": "A friend says: «You drew that crab so well!». Which reply is polite?",
             "choices": [
-              "Tớ cảm ơn cậu nhé! (Thank you!)",
               "Tất nhiên rồi! (Of course!)",
+              "Tớ cảm ơn cậu nhé! (Thank you!)",
               "Kệ tớ! (Leave me alone!)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -173,28 +173,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "Em ra bến sông chơi."
+              "text": "Chơi em ra bến sông."
             },
             {
               "id": "b",
-              "text": "Bến sông em ra chơi."
+              "text": "Em ra bến sông chơi."
             },
             {
               "id": "c",
-              "text": "Chơi em ra bến sông."
+              "text": "Bến sông em ra chơi."
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Put «em, ra, bến sông, chơi» in order to make a sentence. Which is right?",
             "choices": [
+              "Chơi em ra bến sông. (muddled)",
               "Em ra bến sông chơi. (I go to the river landing to play.)",
-              "Bến sông em ra chơi. (muddled)",
-              "Chơi em ra bến sông. (muddled)"
+              "Bến sông em ra chơi. (muddled)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         }
       ],

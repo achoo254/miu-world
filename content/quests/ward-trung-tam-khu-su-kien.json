@@ -84,11 +84,11 @@
             },
             {
               "id": "b",
-              "text": "12 giờ"
+              "text": "12 giờ 15 phút"
             },
             {
               "id": "c",
-              "text": "12 giờ 15 phút"
+              "text": "12 giờ"
             }
           ],
           "damage": 100,
@@ -96,8 +96,8 @@
             "prompt": "On the festival clock the short hand points to 3 and the long hand to 12. What time is it?",
             "choices": [
               "3 o'clock",
-              "12 o'clock",
-              "12:15"
+              "12:15",
+              "12 o'clock"
             ]
           },
           "answer": {
@@ -111,28 +111,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "vàng"
+              "text": "xanh"
             },
             {
               "id": "b",
-              "text": "đỏ"
+              "text": "vàng"
             },
             {
               "id": "c",
-              "text": "xanh"
+              "text": "đỏ"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The lanterns go red, yellow, red, yellow, red, … What colour is the next one?",
             "choices": [
+              "xanh (blue)",
               "vàng (yellow)",
-              "đỏ (red)",
-              "xanh (blue)"
+              "đỏ (red)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -177,11 +177,11 @@
             },
             {
               "id": "b",
-              "text": "21"
+              "text": "30"
             },
             {
               "id": "c",
-              "text": "30"
+              "text": "21"
             }
           ],
           "damage": 100,
@@ -189,8 +189,8 @@
             "prompt": "The event tickets are numbered 5, 10, 15, 20, … What number is the next ticket?",
             "choices": [
               "25",
-              "21",
-              "30"
+              "30",
+              "21"
             ]
           },
           "answer": {

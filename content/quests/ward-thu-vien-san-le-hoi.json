@@ -80,11 +80,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "cái chổi"
+              "text": "cái kéo"
             },
             {
               "id": "b",
-              "text": "cái kéo"
+              "text": "cái chổi"
             },
             {
               "id": "c",
@@ -95,13 +95,13 @@
           "en": {
             "prompt": "Cáo needs something to sweep the leaves into a pile. Which thing is it?",
             "choices": [
-              "cái chổi (a broom)",
               "cái kéo (scissors)",
+              "cái chổi (a broom)",
               "cái cốc (a cup)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -111,28 +111,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "Lá thu vàng óng."
+              "text": "Em nhặt lá thu."
             },
             {
               "id": "b",
-              "text": "Lá thu rơi xuống."
+              "text": "Lá thu vàng óng."
             },
             {
               "id": "c",
-              "text": "Em nhặt lá thu."
+              "text": "Lá thu rơi xuống."
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which sentence describes what an autumn leaf is like?",
             "choices": [
+              "Em nhặt lá thu. (I pick up a leaf.)",
               "Lá thu vàng óng. (Autumn leaves are golden.)",
-              "Lá thu rơi xuống. (The leaves fall.)",
-              "Em nhặt lá thu. (I pick up a leaf.)"
+              "Lá thu rơi xuống. (The leaves fall.)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -146,11 +146,11 @@
             },
             {
               "id": "b",
-              "text": "H"
+              "text": "M"
             },
             {
               "id": "c",
-              "text": "M"
+              "text": "H"
             }
           ],
           "damage": 100,
@@ -158,8 +158,8 @@
             "prompt": "Put the letter cards M, H and K in alphabetical order. Which card is in the middle?",
             "choices": [
               "K",
-              "H",
-              "M"
+              "M",
+              "H"
             ]
           },
           "answer": {
@@ -173,7 +173,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "10"
+              "text": "12"
             },
             {
               "id": "b",
@@ -181,20 +181,20 @@
             },
             {
               "id": "c",
-              "text": "12"
+              "text": "10"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The leaves are numbered 2, 4, 6, 8, … What number is on the next leaf?",
             "choices": [
-              "10",
+              "12",
               "9",
-              "12"
+              "10"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         }
       ],

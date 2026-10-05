@@ -80,7 +80,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "vi vu"
+              "text": "bay lượn"
             },
             {
               "id": "b",
@@ -88,20 +88,20 @@
             },
             {
               "id": "c",
-              "text": "bay lượn"
+              "text": "vi vu"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which word is the sound a kite full of wind makes in the sky?",
             "choices": [
-              "vi vu (whoosh)",
+              "bay lượn (glide)",
               "xanh biếc (deep blue)",
-              "bay lượn (glide)"
+              "vi vu (whoosh)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -142,11 +142,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "con nghựa gỗ"
+              "text": "con ngựa gỗ"
             },
             {
               "id": "b",
-              "text": "con ngựa gỗ"
+              "text": "con nghựa gỗ"
             },
             {
               "id": "c",
@@ -157,13 +157,13 @@
           "en": {
             "prompt": "Gấu Túi writes the name of a toy, a wooden horse. Which spelling is right?",
             "choices": [
-              "con nghựa gỗ",
               "con ngựa gỗ",
+              "con nghựa gỗ",
               "con ngưạ gỗ"
             ]
           },
           "answer": {
-            "choice": "b"
+            "choice": "a"
           }
         },
         {
@@ -173,23 +173,23 @@
           "choices": [
             {
               "id": "a",
-              "text": "ch"
+              "text": "tr"
             },
             {
               "id": "b",
-              "text": "tr"
+              "text": "ch"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "ch or tr: «…ong chóng quay tít trong gió» (the pinwheel spins in the wind)?",
             "choices": [
-              "ch",
-              "tr"
+              "tr",
+              "ch"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         }
       ],

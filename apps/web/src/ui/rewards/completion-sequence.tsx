@@ -118,8 +118,8 @@ function CountedReward({ value, delayMs, unit, icon, dataId }: { value: number; 
  * read once the quest is paid; nothing shows if it cannot be read.
  */
 function RegionChestProgress({ quest, data, reveal }: { quest: ActiveQuestView; data: PlayerData; reveal: CSSProperties }) {
-  // The chest counts lessons: a minigame or a chapter of a character's story leaves it as it is.
-  const dto = useRegionRewards(quest.category === 'side' || quest.category === 'story' || quest.category === 'coop' ? null : quest.region);
+  // The chest counts lessons: a minigame, a story chapter, a co-op challenge or a zone guardian leaves it as it is.
+  const dto = useRegionRewards((quest.category ?? 'main') === 'main' ? quest.region : null);
   const { t } = useT();
   if (!dto || dto.lessons === 0) return null;
   const line = regionGoalLine(dto) ?? pairOf('completion.areaDone');

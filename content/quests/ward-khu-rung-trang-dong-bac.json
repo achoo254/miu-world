@@ -111,11 +111,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "vui sướng"
+              "text": "gai nhọn"
             },
             {
               "id": "b",
-              "text": "gai nhọn"
+              "text": "vui sướng"
             },
             {
               "id": "c",
@@ -126,13 +126,13 @@
           "en": {
             "prompt": "A little hedgehog gets a birthday present from a friend. Which word tells how it feels?",
             "choices": [
-              "vui sướng (overjoyed)",
               "gai nhọn (sharp spines)",
+              "vui sướng (overjoyed)",
               "chạy nhảy (running about)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -142,28 +142,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "cái ghế"
-            },
-            {
-              "id": "b",
               "text": "cái gế"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "cái ghiế"
+            },
+            {
+              "id": "c",
+              "text": "cái ghế"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Chồn Đuôi Bông writes «chair» three ways. Which uses g/gh correctly?",
             "choices": [
-              "cái ghế",
               "cái gế",
-              "cái ghiế"
+              "cái ghiế",
+              "cái ghế"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {

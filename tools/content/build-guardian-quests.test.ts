@@ -5,7 +5,7 @@ import { CONTENT_DIR } from '../../apps/server/src/content/content-catalog';
 import { GUARDIAN_TURNS, QuestDefinition } from '../../packages/schema/src/content';
 import { RegionCatalog } from '../../packages/schema/src/region';
 import { LookCatalog, QuestTargetCatalog } from '../../packages/schema/src/world-target';
-import { GUARDIAN_LABEL, buildGuardianQuests, guardianLookId, readGuardianContext } from './build-guardian-quests';
+import { GUARDIAN_LABEL, buildGuardianQuests, choiceOrder, guardianLookId, readGuardianContext } from './build-guardian-quests';
 import { checkBossCoverage } from './check-content';
 import { readGuardianTables, type GuardianTable } from './guardian-table';
 
@@ -53,6 +53,42 @@ describe('zone guardians', () => {
       expect(parsed.reward.xp, quest.id).toBeGreaterThan(0);
       expect(parsed.reward.coin, quest.id).toBeGreaterThan(0);
     }
+  });
+
+  it('spreads the right answer over the choices: no place holds more than half of them', () => {
+    const { quests } = buildGuardianQuests(tables, ctx);
+    const at = new Map<number, number>();
+    let turns = 0;
+    for (const quest of quests) {
+      const parsed = QuestDefinition.parse(quest);
+      if (parsed.status !== 'active') continue;
+      for (const step of parsed.steps) {
+        if (step.kind !== 'boss') continue;
+        for (const turn of step.turns) {
+          const place = turn.choices.findIndex((c) => c.id === turn.answer.choice);
+          expect(place, `${quest.id} ${turn.id}`).toBeGreaterThanOrEqual(0);
+          expect(turn.en?.choices.length).toBe(turn.choices.length);
+          at.set(place, (at.get(place) ?? 0) + 1);
+          turns++;
+        }
+      }
+    }
+    for (const [place, n] of at) expect(n / turns, `answer at place ${place}`).toBeLessThanOrEqual(0.5);
+  });
+
+  it("keeps each choice beside its English label and the answer on the right choice after the shuffle", () => {
+    const [table] = tables;
+    const g = table?.guardians[0];
+    const turn = g?.turns[0];
+    if (!table || !g || !turn) throw new Error('no guardian tables');
+    const quest = QuestDefinition.parse(buildGuardianQuests(tables, ctx).quests.find((q) => q.id === g.quest));
+    if (quest.status !== 'active') throw new Error('not active');
+    const boss = quest.steps.find((s) => s.kind === 'boss');
+    const built = boss?.kind === 'boss' ? boss.turns.find((t) => t.id === turn.id) : undefined;
+    if (!built) throw new Error('no turn');
+    expect(built.choices.find((c) => c.id === built.answer.choice)?.text).toBe(turn.choices[turn.answer]);
+    built.choices.forEach((c, i) => expect(built.en?.choices[i]).toBe(turn.en.choices[turn.choices.indexOf(c.text)]));
+    expect(choiceOrder('x', 3)).toEqual(choiceOrder('x', 3));
   });
 
   it('draws each guardian from lessons of its own map, and asks about the skills those lessons train', () => {

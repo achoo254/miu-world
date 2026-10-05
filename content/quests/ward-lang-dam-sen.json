@@ -80,28 +80,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "thơm ngát"
-            },
-            {
-              "id": "b",
               "text": "hái sen"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "đầm nước"
+            },
+            {
+              "id": "c",
+              "text": "thơm ngát"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which word describes what the lotus flowers in the pond are like?",
             "choices": [
-              "thơm ngát (sweet-smelling)",
               "hái sen (pick lotus)",
-              "đầm nước (the pond)"
+              "đầm nước (the pond)",
+              "thơm ngát (sweet-smelling)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -111,28 +111,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "Lê Văn Hùng"
-            },
-            {
-              "id": "b",
               "text": "lê văn hùng"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "Lê văn hùng"
+            },
+            {
+              "id": "c",
+              "text": "Lê Văn Hùng"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Sư Tử Thủ Môn writes a player's name on the board. Which name has the right capital letters?",
             "choices": [
-              "Lê Văn Hùng",
               "lê văn hùng",
-              "Lê văn hùng"
+              "Lê văn hùng",
+              "Lê Văn Hùng"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -142,28 +142,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "Bình"
-            },
-            {
-              "id": "b",
               "text": "Đức"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "Hà"
+            },
+            {
+              "id": "c",
+              "text": "Bình"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Put Hà, Bình and Đức in alphabetical order. Who comes first?",
             "choices": [
-              "Bình",
               "Đức",
-              "Hà"
+              "Hà",
+              "Bình"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -173,28 +173,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "Chúc mừng các cậu nhé!"
-            },
-            {
-              "id": "b",
               "text": "Bàn đó không tính!"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "Thôi về nhà đi!"
+            },
+            {
+              "id": "c",
+              "text": "Chúc mừng các cậu nhé!"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The other team has just scored a lovely goal. Which words congratulate them?",
             "choices": [
-              "Chúc mừng các cậu nhé! (Well done, you lot!)",
               "Bàn đó không tính! (That doesn't count!)",
-              "Thôi về nhà đi! (Just go home!)"
+              "Thôi về nhà đi! (Just go home!)",
+              "Chúc mừng các cậu nhé! (Well done, you lot!)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -204,28 +204,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "biết cổ vũ đồng đội"
+              "text": "hay giận dỗi"
             },
             {
               "id": "b",
-              "text": "lười tập luyện"
+              "text": "biết cổ vũ đồng đội"
             },
             {
               "id": "c",
-              "text": "hay giận dỗi"
+              "text": "lười tập luyện"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Nam sits on the bench but cheers for the team all match. What is Nam like?",
             "choices": [
+              "hay giận dỗi (often sulks)",
               "biết cổ vũ đồng đội (supports the team)",
-              "lười tập luyện (lazy at training)",
-              "hay giận dỗi (often sulks)"
+              "lười tập luyện (lazy at training)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         }
       ],

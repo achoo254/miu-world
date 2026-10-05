@@ -33,7 +33,7 @@ export function BossScreen({
   onAnswer: (answer: StepAnswer) => void;
   onClose: () => void;
 }): ReactElement {
-  const { t } = useT();
+  const { t, inline } = useT();
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
 
   const answered = bossState?.answered ?? [];
@@ -94,7 +94,7 @@ export function BossScreen({
             {step.avatar ? (
               <Illustration picture={step.avatar} />
             ) : (
-              <span className="boss-avatar-icon" role="img" aria-label={bossName.vi}>
+              <span className="boss-avatar-icon" role="img" aria-label={inline(bossName)}>
                 {isDefeated ? '🥰' : '👾'}
               </span>
             )}

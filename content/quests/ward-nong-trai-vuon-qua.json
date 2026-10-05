@@ -80,11 +80,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "27"
+              "text": "63"
             },
             {
               "id": "b",
-              "text": "63"
+              "text": "27"
             },
             {
               "id": "c",
@@ -95,13 +95,13 @@
           "en": {
             "prompt": "The orange tree has 45 fruits and the pomelo tree has 18 fewer. How many fruits on the pomelo tree?",
             "choices": [
-              "27",
               "63",
+              "27",
               "37"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -115,11 +115,11 @@
             },
             {
               "id": "b",
-              "text": "48"
+              "text": "59"
             },
             {
               "id": "c",
-              "text": "59"
+              "text": "48"
             }
           ],
           "damage": 100,
@@ -127,8 +127,8 @@
             "prompt": "Khỉ picks 29 oranges and then 29 more. How many oranges in all?",
             "choices": [
               "58",
-              "48",
-              "59"
+              "59",
+              "48"
             ]
           },
           "answer": {
@@ -142,28 +142,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "6"
-            },
-            {
-              "id": "b",
               "text": "5"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "8"
+            },
+            {
+              "id": "c",
+              "text": "6"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Each hen has 2 legs. How many legs do three hens under the orange tree have?",
             "choices": [
-              "6",
               "5",
-              "8"
+              "8",
+              "6"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -177,11 +177,11 @@
             },
             {
               "id": "b",
-              "text": "53"
+              "text": "137"
             },
             {
               "id": "c",
-              "text": "137"
+              "text": "53"
             }
           ],
           "damage": 100,
@@ -189,8 +189,8 @@
             "prompt": "A basket holds 90 eggs and 47 are sold. How many eggs are left?",
             "choices": [
               "43",
-              "53",
-              "137"
+              "137",
+              "53"
             ]
           },
           "answer": {
@@ -204,7 +204,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "52"
+              "text": "62"
             },
             {
               "id": "b",
@@ -212,20 +212,20 @@
             },
             {
               "id": "c",
-              "text": "62"
+              "text": "52"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The tree rows are numbered 12, 22, 32, 42, … What number is the next row?",
             "choices": [
-              "52",
+              "62",
               "43",
-              "62"
+              "52"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         }
       ],

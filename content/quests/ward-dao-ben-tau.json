@@ -80,7 +80,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "dưới cây dừa thứ ba"
+              "text": "trong hang đá"
             },
             {
               "id": "b",
@@ -88,20 +88,20 @@
             },
             {
               "id": "c",
-              "text": "trong hang đá"
+              "text": "dưới cây dừa thứ ba"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The note in the bottle says: «The gift is under the third coconut tree». Where is the gift?",
             "choices": [
-              "under the third coconut tree",
+              "in the rock cave",
               "on the mountain top",
-              "in the rock cave"
+              "under the third coconut tree"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -115,11 +115,11 @@
             },
             {
               "id": "b",
-              "text": "thuyền số 85"
+              "text": "bằng nhau"
             },
             {
               "id": "c",
-              "text": "bằng nhau"
+              "text": "thuyền số 85"
             }
           ],
           "damage": 100,
@@ -127,8 +127,8 @@
             "prompt": "Boats number 58 and 85 come in to the pier. Which boat has the smaller number?",
             "choices": [
               "boat 58",
-              "boat 85",
-              "they are equal"
+              "they are equal",
+              "boat 85"
             ]
           },
           "answer": {
@@ -142,28 +142,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "59"
+              "text": "9"
             },
             {
               "id": "b",
-              "text": "49"
+              "text": "59"
             },
             {
               "id": "c",
-              "text": "9"
+              "text": "49"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Hồng Hạc picks up 34 shells and then 25 more. How many shells in all?",
             "choices": [
+              "9",
               "59",
-              "49",
-              "9"
+              "49"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -173,11 +173,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "15"
+              "text": "14"
             },
             {
               "id": "b",
-              "text": "14"
+              "text": "15"
             },
             {
               "id": "c",
@@ -188,13 +188,13 @@
           "en": {
             "prompt": "8 boats come in in the morning and 7 more in the afternoon. How many boats in all?",
             "choices": [
-              "15",
               "14",
+              "15",
               "1"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         }
       ],

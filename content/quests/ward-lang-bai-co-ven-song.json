@@ -80,28 +80,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "bác nông dân"
-            },
-            {
-              "id": "b",
               "text": "cánh diều"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "bãi cỏ"
+            },
+            {
+              "id": "c",
+              "text": "bác nông dân"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Thỏ Ngọc asks: which of these words names a person?",
             "choices": [
-              "bác nông dân (the farmer)",
               "cánh diều (the kite)",
-              "bãi cỏ (the meadow)"
+              "bãi cỏ (the meadow)",
+              "bác nông dân (the farmer)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -115,11 +115,11 @@
             },
             {
               "id": "b",
-              "text": "Cầu vồng có bảy màu."
+              "text": "Cầu vồng ở phía nào?"
             },
             {
               "id": "c",
-              "text": "Cầu vồng ở phía nào?"
+              "text": "Cầu vồng có bảy màu."
             }
           ],
           "damage": 100,
@@ -127,8 +127,8 @@
             "prompt": "After the rain on the meadow, which sentence shows surprise?",
             "choices": [
               "Ôi, cầu vồng đẹp quá! (Oh, what a lovely rainbow!)",
-              "Cầu vồng có bảy màu. (A rainbow has seven colours.)",
-              "Cầu vồng ở phía nào? (Where is the rainbow?)"
+              "Cầu vồng ở phía nào? (Where is the rainbow?)",
+              "Cầu vồng có bảy màu. (A rainbow has seven colours.)"
             ]
           },
           "answer": {
@@ -142,28 +142,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "M"
+              "text": "K"
             },
             {
               "id": "b",
-              "text": "N"
+              "text": "M"
             },
             {
               "id": "c",
-              "text": "K"
+              "text": "N"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "In the Vietnamese alphabet, which letter comes right after L?",
             "choices": [
+              "K",
               "M",
-              "N",
-              "K"
+              "N"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -173,28 +173,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "Đàn vịt lạch bạch xuống sông."
+              "text": "Đàn vịt của bà."
             },
             {
               "id": "b",
-              "text": "Đàn vịt trắng muốt."
+              "text": "Đàn vịt lạch bạch xuống sông."
             },
             {
               "id": "c",
-              "text": "Đàn vịt của bà."
+              "text": "Đàn vịt trắng muốt."
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which sentence tells about something happening on the meadow (an action)?",
             "choices": [
+              "Đàn vịt của bà. (Grandma's ducks.)",
               "Đàn vịt lạch bạch xuống sông. (The ducks waddle into the river.)",
-              "Đàn vịt trắng muốt. (The ducks are snow-white.)",
-              "Đàn vịt của bà. (Grandma's ducks.)"
+              "Đàn vịt trắng muốt. (The ducks are snow-white.)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         }
       ],

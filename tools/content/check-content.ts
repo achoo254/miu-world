@@ -505,7 +505,8 @@ export function checkProgression(
     reach: {
       lessons,
       minigames,
-      bosses: active.filter((q) => q.steps.some((step) => step.kind === 'boss')).length,
+      // Big bosses only (lessons that end in a boss fight): zone guardians do not count as boss wins.
+      bosses: active.filter((q) => (q.category ?? 'main') === 'main' && q.steps.some((step) => step.kind === 'boss')).length,
       coop: active.filter((q) => q.category === 'coop').length,
       collectibles: [...catalog.collectibles.values()].reduce((sum, set) => sum + set.items.length, 0),
       collectionSets: catalog.collectibles.size,

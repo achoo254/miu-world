@@ -84,11 +84,11 @@
             },
             {
               "id": "b",
-              "text": "bế em"
+              "text": "cái nôi"
             },
             {
               "id": "c",
-              "text": "cái nôi"
+              "text": "bế em"
             }
           ],
           "damage": 100,
@@ -96,8 +96,8 @@
             "prompt": "Ong Chúa visits the baby next door. Which word describes the baby?",
             "choices": [
               "bụ bẫm (chubby)",
-              "bế em (hold the baby)",
-              "cái nôi (the cradle)"
+              "cái nôi (the cradle)",
+              "bế em (hold the baby)"
             ]
           },
           "answer": {
@@ -111,28 +111,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "ông ngoại"
-            },
-            {
-              "id": "b",
               "text": "ông nội"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "chú"
+            },
+            {
+              "id": "c",
+              "text": "ông ngoại"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "What do you call your mum's father?",
             "choices": [
-              "ông ngoại (mum's dad)",
               "ông nội (dad's dad)",
-              "chú (uncle)"
+              "chú (uncle)",
+              "ông ngoại (mum's dad)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -142,23 +142,23 @@
           "choices": [
             {
               "id": "a",
-              "text": "d"
+              "text": "r"
             },
             {
               "id": "b",
-              "text": "r"
+              "text": "d"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "d or r: «vườn hoa nở …ực rỡ» (the garden blooms brightly)?",
             "choices": [
-              "d",
-              "r"
+              "r",
+              "d"
             ]
           },
           "answer": {
-            "choice": "b"
+            "choice": "a"
           }
         },
         {
@@ -168,28 +168,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "uyên"
+              "text": "yên"
             },
             {
               "id": "b",
-              "text": "iên"
+              "text": "uyên"
             },
             {
               "id": "c",
-              "text": "yên"
+              "text": "iên"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which rhyme completes «con th…», the little boat on the river (con thuyền)?",
             "choices": [
+              "yên",
               "uyên",
-              "iên",
-              "yên"
+              "iên"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         }
       ],

@@ -80,7 +80,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "43"
+              "text": "42"
             },
             {
               "id": "b",
@@ -88,20 +88,20 @@
             },
             {
               "id": "c",
-              "text": "42"
+              "text": "43"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "36 corn cobs are picked, then 7 more. How many cobs in all?",
             "choices": [
-              "43",
+              "42",
               "33",
-              "42"
+              "43"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -115,11 +115,11 @@
             },
             {
               "id": "b",
-              "text": "63"
+              "text": "23"
             },
             {
               "id": "c",
-              "text": "23"
+              "text": "63"
             }
           ],
           "damage": 100,
@@ -127,8 +127,8 @@
             "prompt": "The farmer picks 48 tomatoes in the morning and 25 in the afternoon. How many in the whole day?",
             "choices": [
               "73",
-              "63",
-              "23"
+              "23",
+              "63"
             ]
           },
           "answer": {
@@ -173,28 +173,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "62"
+              "text": "8"
             },
             {
               "id": "b",
-              "text": "52"
+              "text": "62"
             },
             {
               "id": "c",
-              "text": "8"
+              "text": "52"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The barn has 27 sacks of rice, and a cart brings 35 more. How many sacks in all?",
             "choices": [
+              "8",
               "62",
-              "52",
-              "8"
+              "52"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         }
       ],

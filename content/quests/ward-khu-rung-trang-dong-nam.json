@@ -111,23 +111,23 @@
           "choices": [
             {
               "id": "a",
-              "text": "s"
+              "text": "x"
             },
             {
               "id": "b",
-              "text": "x"
+              "text": "s"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "s or x: «bà nhờ cháu …âu kim» (Grandma asks me to thread the needle)?",
             "choices": [
-              "s",
-              "x"
+              "x",
+              "s"
             ]
           },
           "answer": {
-            "choice": "b"
+            "choice": "a"
           }
         },
         {
@@ -163,23 +163,23 @@
           "choices": [
             {
               "id": "a",
-              "text": "ươn"
+              "text": "ương"
             },
             {
               "id": "b",
-              "text": "ương"
+              "text": "ươn"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which rhyme completes «con đ…», the winding way through the forest (the road)?",
             "choices": [
-              "ươn",
-              "ương"
+              "ương",
+              "ươn"
             ]
           },
           "answer": {
-            "choice": "b"
+            "choice": "a"
           }
         },
         {

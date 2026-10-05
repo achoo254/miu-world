@@ -80,7 +80,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "74"
+              "text": "11"
             },
             {
               "id": "b",
@@ -88,20 +88,20 @@
             },
             {
               "id": "c",
-              "text": "11"
+              "text": "74"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Hươu Đếm Cờ has 7 tens of flags and 4 more single flags. How many flags in all?",
             "choices": [
-              "74",
+              "11",
               "47",
-              "11"
+              "74"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -111,11 +111,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "58"
+              "text": "60"
             },
             {
               "id": "b",
-              "text": "60"
+              "text": "58"
             },
             {
               "id": "c",
@@ -126,13 +126,13 @@
           "en": {
             "prompt": "On the number line along the school fence, which number comes right after 59?",
             "choices": [
-              "58",
               "60",
+              "58",
               "69"
             ]
           },
           "answer": {
-            "choice": "b"
+            "choice": "a"
           }
         },
         {
@@ -142,7 +142,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "tổng"
+              "text": "hiệu"
             },
             {
               "id": "b",
@@ -150,20 +150,20 @@
             },
             {
               "id": "c",
-              "text": "hiệu"
+              "text": "tổng"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Hươu writes 35 + 12 = 47 on the board. What is 47 called in this sum?",
             "choices": [
-              "tổng (the sum)",
+              "hiệu (the difference)",
               "số hạng (an addend)",
-              "hiệu (the difference)"
+              "tổng (the sum)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -173,28 +173,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "4 bạn"
-            },
-            {
-              "id": "b",
               "text": "5 bạn"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "60 bạn"
+            },
+            {
+              "id": "c",
+              "text": "4 bạn"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Class 2A has 32 pupils and class 2B has 28. How many more pupils does 2A have?",
             "choices": [
-              "4",
               "5",
-              "60"
+              "60",
+              "4"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         }
       ],

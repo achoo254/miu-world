@@ -115,11 +115,11 @@
             },
             {
               "id": "b",
-              "text": "7 cm"
+              "text": "24 cm"
             },
             {
               "id": "c",
-              "text": "24 cm"
+              "text": "7 cm"
             }
           ],
           "damage": 100,
@@ -127,8 +127,8 @@
             "prompt": "A zigzag line has three parts, 2 cm, 3 cm and 4 cm long. How long is the whole line?",
             "choices": [
               "9 cm",
-              "7 cm",
-              "24 cm"
+              "24 cm",
+              "7 cm"
             ]
           },
           "answer": {
@@ -142,28 +142,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "ba điểm thẳng hàng"
-            },
-            {
-              "id": "b",
               "text": "ba đoạn thẳng"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "một đường cong"
+            },
+            {
+              "id": "c",
+              "text": "ba điểm thẳng hàng"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "What do we call three points that lie on one straight line?",
             "choices": [
-              "ba điểm thẳng hàng (three points in a line)",
               "ba đoạn thẳng (three segments)",
-              "một đường cong (a curve)"
+              "một đường cong (a curve)",
+              "ba điểm thẳng hàng (three points in a line)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -173,28 +173,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "vành chiếc đĩa"
-            },
-            {
-              "id": "b",
               "text": "mép thước kẻ"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "cạnh bàn"
+            },
+            {
+              "id": "c",
+              "text": "vành chiếc đĩa"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Of a ruler's edge, a plate's rim and a table's edge, which is a curved line?",
             "choices": [
-              "vành chiếc đĩa (the plate's rim)",
               "mép thước kẻ (the ruler's edge)",
-              "cạnh bàn (the table's edge)"
+              "cạnh bàn (the table's edge)",
+              "vành chiếc đĩa (the plate's rim)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         }
       ],

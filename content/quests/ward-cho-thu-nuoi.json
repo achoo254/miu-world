@@ -80,28 +80,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "8"
-            },
-            {
-              "id": "b",
               "text": "9"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "20"
+            },
+            {
+              "id": "c",
+              "text": "8"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Chó Vàng has 14 bones and eats 6. How many bones are left?",
             "choices": [
-              "8",
               "9",
-              "20"
+              "20",
+              "8"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -111,28 +111,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "8"
+              "text": "18"
             },
             {
               "id": "b",
-              "text": "7"
+              "text": "8"
             },
             {
               "id": "c",
-              "text": "18"
+              "text": "7"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The stall has 13 goldfish and has sold 5. How many goldfish are left?",
             "choices": [
+              "18",
               "8",
-              "7",
-              "18"
+              "7"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -142,28 +142,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "12"
-            },
-            {
-              "id": "b",
               "text": "6"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "3"
+            },
+            {
+              "id": "c",
+              "text": "12"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Rabbit has 9 carrots and Cat has 3 more than Rabbit. How many carrots does Cat have?",
             "choices": [
-              "12",
               "6",
-              "3"
+              "3",
+              "12"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {

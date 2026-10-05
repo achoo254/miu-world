@@ -52,7 +52,8 @@ const STEP_ERRORS: Record<
 /**
  * The step's line for this attempt: the n-th wrong answer hears the n-th wrong line, a right answer after
  * n mistakes hears the n-th right line, cycling, so two tries in a row never get the same line. A boss with its own
- * lines rotates them over its blows too (`landed`: blows landed so far) and says its win line on the last one.
+ * lines rotates its blow lines over the blows landed (`landed`) and its miss lines over the misses, and says its win
+ * line on the last blow.
  */
 function feedbackLine(
   step: QuestStep | undefined,
@@ -73,8 +74,9 @@ function feedbackLine(
   if (step?.kind === "boss") {
     if (step.feedback) {
       if (kind === "right" && boss?.won) return { vi: step.winDialogue, en: step.en?.winDialogue ?? null };
+      // Blows rotate on the blows landed, misses on the misses: the next line of a kind is always another one.
       const lines = step.feedback[kind];
-      const at = (attempt + (kind === "right" ? Math.max(0, (boss?.landed ?? 1) - 1) : 0)) % lines.length;
+      const at = (kind === "right" ? Math.max(0, (boss?.landed ?? 1) - 1) : attempt) % lines.length;
       return { vi: lines[at] ?? "", en: step.feedback.en?.[kind][at] ?? null };
     }
     // A boss without lines of its own says only its win line, on the blow that wins.

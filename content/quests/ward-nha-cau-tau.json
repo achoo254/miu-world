@@ -80,28 +80,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "17"
+              "text": "1"
             },
             {
               "id": "b",
-              "text": "16"
+              "text": "17"
             },
             {
               "id": "c",
-              "text": "1"
+              "text": "16"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "There are 9 ducks on the pond and 8 more swim over. How many ducks in all?",
             "choices": [
+              "1",
               "17",
-              "16",
-              "1"
+              "16"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -173,28 +173,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "để không ngã xuống ao"
-            },
-            {
-              "id": "b",
               "text": "để cá được ngủ"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "vì cầu vừa sơn"
+            },
+            {
+              "id": "c",
+              "text": "để không ngã xuống ao"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The sign on the jetty says: «No running or jumping on the jetty». Why remember it?",
             "choices": [
-              "so you don't fall in the pond",
               "so the fish can sleep",
-              "because it was just painted"
+              "because it was just painted",
+              "so you don't fall in the pond"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         }
       ],

@@ -80,11 +80,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "thứ Bảy"
+              "text": "Chủ nhật"
             },
             {
               "id": "b",
-              "text": "Chủ nhật"
+              "text": "thứ Bảy"
             },
             {
               "id": "c",
@@ -95,13 +95,13 @@
           "en": {
             "prompt": "The notice board says: «The fair opens at 8 a.m. on Saturday in the square». Which day does the fair open?",
             "choices": [
-              "thứ Bảy (Saturday)",
               "Chủ nhật (Sunday)",
+              "thứ Bảy (Saturday)",
               "thứ Hai (Monday)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -142,7 +142,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "68"
+              "text": "58"
             },
             {
               "id": "b",
@@ -150,20 +150,20 @@
             },
             {
               "id": "c",
-              "text": "58"
+              "text": "68"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "There are 45 sparrows in the square and 23 more fly in. How many sparrows are there in all?",
             "choices": [
-              "68",
+              "58",
               "22",
-              "58"
+              "68"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -173,28 +173,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "43"
-            },
-            {
-              "id": "b",
               "text": "71"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "33"
+            },
+            {
+              "id": "c",
+              "text": "43"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "There are 57 flags round the square and the wind blows 14 away. How many flags are left?",
             "choices": [
-              "43",
               "71",
-              "33"
+              "33",
+              "43"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         }
       ],

@@ -23,6 +23,22 @@ export const GUARDIAN_LABEL = 'Thách đấu';
 
 const CHOICE_IDS = ['a', 'b', 'c', 'd'] as const;
 
+/**
+ * The order a question's choices are shown in: a fixed shuffle of the table's order, seeded by the quest and the
+ * question (the tables put the right choice first, which a child would soon learn to tap without reading).
+ */
+export function choiceOrder(key: string, count: number): number[] {
+  let seed = 2166136261;
+  for (const ch of key) seed = Math.imul(seed ^ ch.charCodeAt(0), 16777619) >>> 0;
+  const order = Array.from({ length: count }, (_, i) => i);
+  for (let i = count - 1; i > 0; i--) {
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+    const j = seed % (i + 1);
+    [order[i], order[j]] = [order[j] ?? j, order[i] ?? i];
+  }
+  return order;
+}
+
 /** The look a guardian wears: its table's look, tinted, as a look of its own. */
 export const guardianLookId = (guardian: Pick<Guardian, 'id' | 'look'>): string => `${guardian.look}-${guardian.id}`;
 
@@ -72,15 +88,20 @@ export function guardianQuestOf(table: GuardianTable, g: Guardian): QuestDefinit
         winDialogue: g.win,
         maxHp: GUARDIAN_DAMAGE * g.turns.length,
         damagePerTurn: GUARDIAN_DAMAGE,
-        turns: g.turns.map((t) => ({
-          id: t.id,
-          prompt: t.prompt,
-          skill: t.skill,
-          choices: t.choices.map((text, i) => ({ id: CHOICE_IDS[i] ?? `c${i}`, text })),
-          damage: GUARDIAN_DAMAGE,
-          en: { prompt: t.en.prompt, choices: [...t.en.choices] },
-          answer: { choice: CHOICE_IDS[t.answer] ?? `c${t.answer}` },
-        })),
+        turns: g.turns.map((t) => {
+          // Shown in a shuffled order; ids follow the shown order, the English labels the same order.
+          const order = choiceOrder(`${g.quest}/${t.id}`, t.choices.length);
+          const idAt = (shown: number): string => CHOICE_IDS[shown] ?? `c${shown}`;
+          return {
+            id: t.id,
+            prompt: t.prompt,
+            skill: t.skill,
+            choices: order.map((from, shown) => ({ id: idAt(shown), text: t.choices[from] ?? '' })),
+            damage: GUARDIAN_DAMAGE,
+            en: { prompt: t.en.prompt, choices: order.map((from) => t.en.choices[from] ?? '') },
+            answer: { choice: idAt(order.indexOf(t.answer)) },
+          };
+        }),
         feedback: { right: [...g.right], wrong: [...g.wrong], en: { right: [...en.right], wrong: [...en.wrong] } },
         en: { title: `Battle of wits with ${g.name}`, bossName: g.name, introDialogue: en.intro, winDialogue: en.win },
       },

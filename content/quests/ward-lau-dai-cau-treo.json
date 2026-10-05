@@ -80,28 +80,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "hiệp sĩ"
+              "text": "chạy nhảy"
             },
             {
               "id": "b",
-              "text": "cây cầu"
+              "text": "hiệp sĩ"
             },
             {
               "id": "c",
-              "text": "chạy nhảy"
+              "text": "cây cầu"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Of «hiệp sĩ, cây cầu, chạy nhảy», which word names a person?",
             "choices": [
+              "chạy nhảy (run and jump)",
               "hiệp sĩ (knight)",
-              "cây cầu (bridge)",
-              "chạy nhảy (run and jump)"
+              "cây cầu (bridge)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -111,23 +111,23 @@
           "choices": [
             {
               "id": "a",
-              "text": "iên"
+              "text": "yên"
             },
             {
               "id": "b",
-              "text": "yên"
+              "text": "iên"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "iên or yên: «cả đoàn ngồi … nghe kể chuyện» (everyone sits still to listen to the story)?",
             "choices": [
-              "iên",
-              "yên"
+              "yên",
+              "iên"
             ]
           },
           "answer": {
-            "choice": "b"
+            "choice": "a"
           }
         },
         {
@@ -137,28 +137,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "dấu chấm than"
-            },
-            {
-              "id": "b",
               "text": "dấu chấm hỏi"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "dấu phẩy"
+            },
+            {
+              "id": "c",
+              "text": "dấu chấm than"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Which mark should end «Ôi, cây cầu treo đẹp quá» (Oh, the rope bridge is so beautiful)?",
             "choices": [
-              "exclamation mark",
               "question mark",
-              "comma"
+              "comma",
+              "exclamation mark"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -172,11 +172,11 @@
             },
             {
               "id": "b",
-              "text": "áo giáp"
+              "text": "dũng cảm"
             },
             {
               "id": "c",
-              "text": "dũng cảm"
+              "text": "áo giáp"
             }
           ],
           "damage": 100,
@@ -184,8 +184,8 @@
             "prompt": "Which word tells what the guard by the castle gate does (an action)?",
             "choices": [
               "canh gác (keep watch)",
-              "áo giáp (armour)",
-              "dũng cảm (brave)"
+              "dũng cảm (brave)",
+              "áo giáp (armour)"
             ]
           },
           "answer": {
@@ -199,28 +199,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "bác thợ và dân làng"
+              "text": "cơn gió"
             },
             {
               "id": "b",
-              "text": "người lính gác"
+              "text": "bác thợ và dân làng"
             },
             {
               "id": "c",
-              "text": "cơn gió"
+              "text": "người lính gác"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Listen: «The wind shook the rope bridge, so the builder and the villagers tied every rope again.» Who fixed the bridge?",
             "choices": [
+              "the wind",
               "the builder and the villagers",
-              "the guard",
-              "the wind"
+              "the guard"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         }
       ],

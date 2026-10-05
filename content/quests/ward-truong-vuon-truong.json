@@ -84,11 +84,11 @@
             },
             {
               "id": "b",
-              "text": "chiếc trống"
+              "text": "mùa hè"
             },
             {
               "id": "c",
-              "text": "mùa hè"
+              "text": "chiếc trống"
             }
           ],
           "damage": 100,
@@ -96,8 +96,8 @@
             "prompt": "«Chiếc trống nằm ngủ say suốt mùa hè» (the drum sleeps soundly all summer) talks about a thing as if it were a person. Which words show it?",
             "choices": [
               "ngủ say (sleeps soundly)",
-              "chiếc trống (the drum)",
-              "mùa hè (summer)"
+              "mùa hè (summer)",
+              "chiếc trống (the drum)"
             ]
           },
           "answer": {
@@ -111,28 +111,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "An"
-            },
-            {
-              "id": "b",
               "text": "Bảo"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "Chi"
+            },
+            {
+              "id": "c",
+              "text": "An"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The class list goes in alphabetical order. Of An, Chi and Bảo, who comes first?",
             "choices": [
-              "An",
               "Bảo",
-              "Chi"
+              "Chi",
+              "An"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -142,23 +142,23 @@
           "choices": [
             {
               "id": "a",
-              "text": "nghỉ hè"
+              "text": "nghĩ hè"
             },
             {
               "id": "b",
-              "text": "nghĩ hè"
+              "text": "nghỉ hè"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "Gà Trống wants to write «summer holiday». Which has the right tone mark?",
             "choices": [
-              "nghỉ hè",
-              "nghĩ hè"
+              "nghĩ hè",
+              "nghỉ hè"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -168,23 +168,23 @@
           "choices": [
             {
               "id": "a",
-              "text": "s"
+              "text": "x"
             },
             {
               "id": "b",
-              "text": "x"
+              "text": "s"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "s or x: «quả …oài chín vàng trong vườn trường» (a ripe yellow mango in the school garden)?",
             "choices": [
-              "s",
-              "x"
+              "x",
+              "s"
             ]
           },
           "answer": {
-            "choice": "b"
+            "choice": "a"
           }
         }
       ],

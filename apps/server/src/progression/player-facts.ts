@@ -51,13 +51,18 @@ export async function loadPlayerRecord(db: Db | Tx, childId: string): Promise<Pl
   };
 }
 
-/** The active lessons and minigame side quests of each region, in catalogue order (story chapters and co-op challenges are neither). */
+/**
+ * The active lessons and minigame side quests of each region, in catalogue order (story chapters, co-op challenges and
+ * zone guardians are neither).
+ */
 export function regionQuests(content: ContentCatalog): { lessons: Map<string, string[]>; minigames: Map<string, string[]> } {
   const lessons = new Map<string, string[]>();
   const minigames = new Map<string, string[]>();
   for (const quest of content.quests.values()) {
-    if (quest.status !== 'active' || quest.category === 'story' || quest.category === 'coop') continue;
-    const into = quest.category === 'side' ? minigames : lessons;
+    if (quest.status !== 'active') continue;
+    const category = quest.category ?? 'main';
+    const into = category === 'side' ? minigames : category === 'main' ? lessons : null;
+    if (!into) continue;
     into.set(quest.region, [...(into.get(quest.region) ?? []), quest.id]);
   }
   return { lessons, minigames };
@@ -122,9 +127,10 @@ export function playerFacts(content: ContentCatalog, record: PlayerRecord): Play
   const collectibleIds = new Set([...content.collectibles.values()].flatMap((set) => set.items.map((item) => item.id)));
   const regionClaims = sources.flatMap((source) => regionRewardOfSource(source) ?? []);
   const olympiad = sources.flatMap((source) => /^olympiad:exam:\d+:([a-z-]+):/.exec(source)?.[1] ?? []);
+  // A map's big boss (a lesson that ends in a boss fight); its zone guardians' short fights are not counted.
   const isBoss = (id: string): boolean => {
     const quest = content.quests.get(id);
-    return quest?.status === 'active' && quest.steps.some((step) => step.kind === 'boss');
+    return quest?.status === 'active' && (quest.category ?? 'main') === 'main' && quest.steps.some((step) => step.kind === 'boss');
   };
   return {
     lessonsDone,

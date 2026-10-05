@@ -80,11 +80,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "chậm rãi"
+              "text": "cái gậy"
             },
             {
               "id": "b",
-              "text": "cái gậy"
+              "text": "chậm rãi"
             },
             {
               "id": "c",
@@ -95,13 +95,13 @@
           "en": {
             "prompt": "Which word describes how Grandpa looks as he climbs the slope with his stick?",
             "choices": [
-              "chậm rãi (slow and steady)",
               "cái gậy (the stick)",
+              "chậm rãi (slow and steady)",
               "con dốc (the slope)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -163,28 +163,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "ôm cháu"
-            },
-            {
-              "id": "b",
               "text": "cánh cửa"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "hiền hậu"
+            },
+            {
+              "id": "c",
+              "text": "ôm cháu"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "You come to visit and Grandma runs to the gate. Which words tell what Grandma does?",
             "choices": [
-              "ôm cháu (hugs you)",
               "cánh cửa (the door)",
-              "hiền hậu (kind)"
+              "hiền hậu (kind)",
+              "ôm cháu (hugs you)"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         }
       ],

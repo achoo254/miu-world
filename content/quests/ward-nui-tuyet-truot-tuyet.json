@@ -142,28 +142,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "20"
+              "text": "26"
             },
             {
               "id": "b",
-              "text": "15"
+              "text": "20"
             },
             {
               "id": "c",
-              "text": "26"
+              "text": "15"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The markers down the slope count down: 40, 35, 30, 25, … What is on the next marker?",
             "choices": [
+              "26",
               "20",
-              "15",
-              "26"
+              "15"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {

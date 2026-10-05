@@ -80,11 +80,11 @@
           "choices": [
             {
               "id": "a",
-              "text": "65"
+              "text": "55"
             },
             {
               "id": "b",
-              "text": "55"
+              "text": "65"
             },
             {
               "id": "c",
@@ -95,13 +95,13 @@
           "en": {
             "prompt": "The hall has 38 chairs set out, and 27 more are added. How many chairs in all?",
             "choices": [
-              "65",
               "55",
+              "65",
               "11"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "b"
           }
         },
         {
@@ -111,7 +111,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "27"
+              "text": "117"
             },
             {
               "id": "b",
@@ -119,20 +119,20 @@
             },
             {
               "id": "c",
-              "text": "117"
+              "text": "27"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "There are 72 candles and Mèo has lit 45. How many are still unlit?",
             "choices": [
-              "27",
+              "117",
               "37",
-              "117"
+              "27"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -142,28 +142,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "43 kg"
-            },
-            {
-              "id": "b",
               "text": "33 kg"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "7 kg"
+            },
+            {
+              "id": "c",
+              "text": "43 kg"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "A sack of rice weighs 25 kg and a sack of beans 18 kg. How much do they weigh together?",
             "choices": [
-              "43 kg",
               "33 kg",
-              "7 kg"
+              "7 kg",
+              "43 kg"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         },
         {
@@ -173,7 +173,7 @@
           "choices": [
             {
               "id": "a",
-              "text": "7 l"
+              "text": "6 l"
             },
             {
               "id": "b",
@@ -181,20 +181,20 @@
             },
             {
               "id": "c",
-              "text": "6 l"
+              "text": "7 l"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "The big jug holds 12 l of water and Mèo pours out 5 l for the flowers. How many litres are left?",
             "choices": [
-              "7 l",
+              "6 l",
               "17 l",
-              "6 l"
+              "7 l"
             ]
           },
           "answer": {
-            "choice": "a"
+            "choice": "c"
           }
         }
       ],

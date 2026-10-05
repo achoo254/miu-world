@@ -220,8 +220,8 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
         if (response.correct) {
           // A boss's screen stays open until it is beaten: the next blow follows (after the vở card) without a new tap.
           if (latest.current.overlay?.step.id === step.id && !bossGoesOn) setOverlay(null);
-          // Done: what was kept of the step is no longer needed.
-          if (latest.current.draftOwner) clearDraft(latest.current.draftOwner, active.quest.id);
+          // Done: what was kept of the step is no longer needed (a boss still fighting keeps its last line).
+          if (latest.current.draftOwner && !bossGoesOn) clearDraft(latest.current.draftOwner, active.quest.id);
           // The next step may start by itself (read the letter, open the gate after the chest).
           const next = bossGoesOn ? null : autoStep(active.quest, response.quest);
           if (next) window.setTimeout(() => startRef.current(next), 0);

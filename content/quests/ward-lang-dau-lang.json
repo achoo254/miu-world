@@ -111,28 +111,28 @@
           "choices": [
             {
               "id": "a",
-              "text": "Đ"
-            },
-            {
-              "id": "b",
               "text": "C"
             },
             {
-              "id": "c",
+              "id": "b",
               "text": "E"
+            },
+            {
+              "id": "c",
+              "text": "Đ"
             }
           ],
           "damage": 100,
           "en": {
             "prompt": "In the Vietnamese alphabet, which letter comes just before D?",
             "choices": [
-              "Đ",
               "C",
-              "E"
+              "E",
+              "Đ"
             ]
           },
           "answer": {
-            "choice": "b"
+            "choice": "a"
           }
         },
         {
@@ -146,11 +146,11 @@
             },
             {
               "id": "b",
-              "text": "đọc bài"
+              "text": "chăm chỉ"
             },
             {
               "id": "c",
-              "text": "chăm chỉ"
+              "text": "đọc bài"
             }
           ],
           "damage": 100,
@@ -158,8 +158,8 @@
             "prompt": "Which word names a thing in Cò's classroom?",
             "choices": [
               "cái bảng (the board)",
-              "đọc bài (read aloud)",
-              "chăm chỉ (hard-working)"
+              "chăm chỉ (hard-working)",
+              "đọc bài (read aloud)"
             ]
           },
           "answer": {
@@ -177,11 +177,11 @@
             },
             {
               "id": "b",
-              "text": "Giếng làng sâu ghê!"
+              "text": "Cậu uống nước chưa?"
             },
             {
               "id": "c",
-              "text": "Cậu uống nước chưa?"
+              "text": "Giếng làng sâu ghê!"
             }
           ],
           "damage": 100,
@@ -189,8 +189,8 @@
             "prompt": "Which sentence introduces the speaker?",
             "choices": [
               "Tớ là Cò, tớ giữ giếng làng. (I'm Cò, I keep the well.)",
-              "Giếng làng sâu ghê! (The well is so deep!)",
-              "Cậu uống nước chưa? (Have you had a drink?)"
+              "Cậu uống nước chưa? (Have you had a drink?)",
+              "Giếng làng sâu ghê! (The well is so deep!)"
             ]
           },
           "answer": {
