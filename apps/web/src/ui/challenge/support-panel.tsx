@@ -10,6 +10,7 @@ import { api, errorMessage } from '../api-client';
 import { mapBoth, pairOf, type TextKey } from '../i18n/i18n';
 import { Bi, T, useT } from '../i18n/use-t';
 import { Tabs } from '../kit/tabs';
+import { Say, twin } from '../quest/content-text';
 import { useDraftState } from '../quest/step-draft';
 
 const LAYERS: ReadonlyArray<{ key: SupportLayer; label: TextKey }> = [
@@ -76,18 +77,26 @@ export function SupportPanel({ questId, stepId, fill, wrongTries }: { questId: s
         ) : null
       ) : shown.layer === 'guide' ? (
         <ol className="support-guide" data-id="support-guide-steps">
-          {shown.steps.map((s) => (
-            <li key={s}>{fill(s)}</li>
+          {shown.steps.map((s, i) => (
+            <li key={s}>
+              <Say text={twin(s, shown.stepsEn?.[i])} fill={fill} />
+            </li>
           ))}
         </ol>
       ) : shown.layer === 'hint' ? (
-        <p data-id="support-hint-text">{fill(shown.text)}</p>
+        <p data-id="support-hint-text">
+          <Say text={twin(shown.text, shown.textEn)} fill={fill} />
+        </p>
       ) : (
         <div data-id="support-answer-text">
           <p>
-            <strong>{fill(shown.text)}</strong>
+            <strong>
+              <Say text={twin(shown.text, shown.textEn)} fill={fill} />
+            </strong>
           </p>
-          <p>{fill(shown.explanation)}</p>
+          <p>
+            <Say text={twin(shown.explanation, shown.explanationEn)} fill={fill} />
+          </p>
           <p className="hint">
             <Bi {...mapBoth(pairOf('support.answerNote'), fill)} />
           </p>

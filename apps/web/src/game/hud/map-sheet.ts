@@ -29,9 +29,9 @@ const WHEEL_ZOOM = 0.0018;
 const FOCUS_SCALE = 3;
 const GLIDE_MS = 260;
 /** From this zoom (px per block) each kind's names show on the map. */
-const LABEL_FROM: Readonly<Record<PlaceKind, number>> = { quest: 0, home: 0, side: 0.8, gate: 0.8, stop: 1.6, place: 2.4 };
+const LABEL_FROM: Readonly<Record<PlaceKind, number>> = { quest: 0, home: 0, story: 0.8, side: 0.8, gate: 0.8, stop: 1.6, place: 2.4 };
 /** Drawing order, bottom first; labels are fitted the other way round, so the most important keep theirs. */
-const DRAW_ORDER: readonly PlaceKind[] = ['place', 'stop', 'gate', 'side', 'home', 'quest'];
+const DRAW_ORDER: readonly PlaceKind[] = ['place', 'stop', 'gate', 'side', 'story', 'home', 'quest'];
 
 export function el<K extends keyof HTMLElementTagNameMap>(tag: K, className: string, dataId?: string): HTMLElementTagNameMap[K] {
   const node = document.createElement(tag);

@@ -13,8 +13,8 @@ export function QuizChallenge({ step, context, onAnswer }: { step: QuizStep; con
   const [choice, setChoice] = useDraftState<string | null>('choice', null, isStringOrNull);
   const { t } = useT();
   return (
-    <ChallengeFrame context={context} prompt={context.fill(step.prompt)} onCheck={() => choice && onAnswer({ choice })} canCheck={choice !== null}>
-      <ChoiceList choices={step.choices} selected={choice} onSelect={setChoice} fill={context.fill} label={t('challenge.pickChoice')} />
+    <ChallengeFrame context={context} prompt={context.say(step.prompt, step.en?.prompt)} onCheck={() => choice && onAnswer({ choice })} canCheck={choice !== null}>
+      <ChoiceList choices={step.choices} en={step.en?.choices} selected={choice} onSelect={setChoice} fill={context.fill} label={t('challenge.pickChoice')} />
     </ChallengeFrame>
   );
 }

@@ -8,7 +8,7 @@ import { PORTAL_COLOURS, portalColourOf } from '@miu/voxel/portal-colours';
 import type { Interactable, WorldEntities } from '@miu/voxel/world-entities';
 import type { WalkGoal } from '../../game-bridge/game-store';
 
-export type MarkerKind = 'player' | 'quest' | 'home' | 'gate' | 'side' | 'stop' | 'place';
+export type MarkerKind = 'player' | 'quest' | 'home' | 'gate' | 'story' | 'side' | 'stop' | 'place';
 /** What a marked place is (the child herself is drawn apart). */
 export type PlaceKind = Exclude<MarkerKind, 'player'>;
 
@@ -34,6 +34,7 @@ export const MARKER_COLOURS: Readonly<Record<Exclude<MarkerKind, 'gate'>, string
   quest: '#ffc93c',
   player: '#2f6ff0',
   side: '#d6336c',
+  story: '#e8590c',
   stop: '#0b7285',
   place: '#7a5230',
 };
@@ -52,6 +53,7 @@ export const MAP_MARGIN = 24;
 /** The legend's groups, in the order the chips show them; each can be hidden from the map. */
 export const MARKER_GROUPS: ReadonlyArray<{ kind: PlaceKind; label: string }> = [
   { kind: 'quest', label: 'Nhiệm vụ' },
+  { kind: 'story', label: 'Chuyện' },
   { kind: 'side', label: 'Trò chơi' },
   { kind: 'home', label: 'Nhà' },
   { kind: 'gate', label: 'Cổng' },
@@ -146,13 +148,34 @@ export interface SideGiver {
   games: readonly string[];
 }
 
-/** The characters who offer a minigame, where they stand on this map (one not on it is left out). */
-export function sideGiverMarkers(interactables: readonly Interactable[], givers: readonly SideGiver[]): MinimapMarker[] {
-  return givers.flatMap((giver): MinimapMarker[] => {
-    const target = interactables.find((t) => t.id === giver.targetId);
+/** A character of this map who tells a story (story-tellers.ts): its targets and the chapter it offers next. */
+export interface StoryTeller {
+  targetIds: readonly string[];
+  /** The next chapter's title; null once every chapter is finished (the story stays to replay). */
+  next: string | null;
+}
+
+/**
+ * The characters who offer a minigame or tell a story, where they stand on this map (one not on it is left out): a
+ * storyteller is marked as one, with its next chapter and its games on the card.
+ */
+export function sideGiverMarkers(interactables: readonly Interactable[], givers: readonly SideGiver[], tellers: readonly StoryTeller[] = []): MinimapMarker[] {
+  const gamesOf = new Map(givers.map((g) => [g.targetId, g.games]));
+  const marked = new Set<string>();
+  const story = tellers.flatMap((teller): MinimapMarker[] => {
+    const target = interactables.find((t) => teller.targetIds.includes(t.id));
     if (!target) return [];
+    marked.add(target.id);
+    const games = gamesOf.get(target.id);
+    const detail = [teller.next ? `Chuyện: ${teller.next}` : 'Chuyện đã kể hết, chơi lại tùy thích', ...(games ? [`Trò chơi: ${games.join(' · ')}`] : [])].join(' · ');
+    return [{ id: target.id, kind: 'story', ...at(target), colour: MARKER_COLOURS.story, label: target.name, detail, goal: { targetId: target.id } }];
+  });
+  const side = givers.flatMap((giver): MinimapMarker[] => {
+    const target = interactables.find((t) => t.id === giver.targetId);
+    if (!target || marked.has(target.id)) return [];
     return [{ id: target.id, kind: 'side', ...at(target), colour: MARKER_COLOURS.side, label: target.name, detail: `Trò chơi: ${giver.games.join(' · ')}`, goal: { targetId: target.id } }];
   });
+  return [...story, ...side];
 }
 
 /** The quest's place now (the target the quest card points at). */

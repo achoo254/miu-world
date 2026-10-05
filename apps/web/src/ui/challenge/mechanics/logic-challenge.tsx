@@ -2,7 +2,7 @@
 // or solve spatial/logical puzzles, then pick the right continuation.
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
-import { useT } from '../../i18n/use-t';
+import { Bi, useT } from '../../i18n/use-t';
 import { ChallengeFrame, type ChallengeContext } from '../challenge-frame';
 import { ChoiceList } from '../choice-list';
 import { Illustration } from '../illustrations/illustration';
@@ -26,7 +26,7 @@ export function LogicChallenge({
   return (
     <ChallengeFrame
       context={context}
-      prompt={context.fill(step.prompt)}
+      prompt={context.say(step.prompt, step.en?.prompt)}
       onCheck={() => choice && onAnswer({ choice })}
       canCheck={choice !== null}
     >
@@ -37,7 +37,9 @@ export function LogicChallenge({
               <div key={elem.id} className="logic-pattern-item" role="listitem">
                 <span className="logic-pattern-order">{idx + 1}</span>
                 {elem.image && <Illustration picture={elem.image} />}
-                <span className="logic-pattern-label">{context.fill(elem.label)}</span>
+                <span className="logic-pattern-label">
+                  <Bi {...context.say(elem.label, step.en?.elements?.[idx])} />
+                </span>
               </div>
             ))}
             <div className="logic-pattern-placeholder" aria-label="unknown next element">
@@ -68,6 +70,7 @@ export function LogicChallenge({
 
         <ChoiceList
           choices={step.choices}
+          en={step.en?.choices}
           selected={choice}
           onSelect={setChoice}
           fill={context.fill}

@@ -43,10 +43,11 @@ const bossStep: Extract<QuestStepPublic, { kind: 'boss' }> = {
 const context: ChallengeContext = {
   questId: 'quest-forest',
   stepId: 'boss-forest',
-  title: 'Trùm Vui Rừng Xanh',
+  title: { vi: 'Trùm Vui Rừng Xanh', en: 'Trùm Vui Rừng Xanh' },
   position: { index: 1, total: 1 },
   xp: 100,
   fill: (t) => t,
+  say: (vi, en) => ({ vi, en: en ?? vi }),
   busy: false,
   tryAgain: null,
   wrongTries: 0,

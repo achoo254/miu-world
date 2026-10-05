@@ -6,7 +6,8 @@ import { useRef, useState, type ReactElement } from 'react';
 import { freshPicker } from '@miu/quest/pick-fresh';
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { NotebookLine, StepAnswer, StepCompleteRequest, StepCompleteResponse } from '@miu/schema/game';
-import { mapBoth, same, type Bilingual } from '../i18n/i18n';
+import { mapBoth, type Bilingual } from '../i18n/i18n';
+import { stepTitleOf, twin } from '../quest/content-text';
 import { say, type PlayerData } from '../player/player-data';
 import { TRY_AGAIN_LINES } from '../quest/loop-lines';
 import { playCue } from '../sound/sfx';
@@ -74,7 +75,7 @@ export function LearningStep({
     playCue(response.correct ? 'right' : 'wrong');
     if (response.correct && response.copy) onRight?.(response.copy);
     if (!response.correct) {
-      setTryAgain(response.feedback ? same(fill(response.feedback)) : mapBoth(fallback.current.next(), fill));
+      setTryAgain(response.feedback ? mapBoth(twin(response.feedback, response.feedbackEn), fill) : mapBoth(fallback.current.next(), fill));
       setWrongTries((n) => n + 1);
     }
   }
@@ -82,7 +83,8 @@ export function LearningStep({
   const context: ChallengeContext = {
     questId: quest.id,
     stepId: step.id,
-    title: fill(step.title),
+    title: mapBoth(stepTitleOf(step), fill),
+    say: (vi, en) => mapBoth(twin(vi, en), fill),
     position: { index: quest.steps.findIndex((s) => s.id === step.id) + 1, total: quest.steps.length },
     xp: quest.reward.xp,
     fill,
@@ -137,6 +139,7 @@ export function LearningStep({
           playerName={data.character.name}
           species={data.character.species}
           prompt={step.prompt}
+          promptEn={step.en?.prompt}
           onDone={(result) => (result?.won ? void submit(step, { answer: { score: result.score } }) : onClose())}
         />
       );

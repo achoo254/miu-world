@@ -23,6 +23,7 @@ const RegionScreen = lazy(() => import('./region/region-screens').then((m) => ({
 const BackpackScreen = lazy(() => import('./profile/profile-screens').then((m) => ({ default: m.BackpackScreen })));
 const ProfileScreen = lazy(() => import('./profile/profile-screens').then((m) => ({ default: m.ProfileScreen })));
 const FriendsScreen = lazy(() => import('./friends/friends-screens').then((m) => ({ default: m.FriendsScreen })));
+const VillageFriendsScreen = lazy(() => import('./npc/village-friends').then((m) => ({ default: m.VillageFriendsScreen })));
 const JourneyScreen = lazy(() => import('./journey/journey-screen').then((m) => ({ default: m.JourneyScreen })));
 const AchievementsScreen = lazy(() => import('./journey/achievements-screen').then((m) => ({ default: m.AchievementsScreen })));
 const WorksheetListScreen = lazy(() => import('./parent/worksheets/worksheets-screen').then((m) => ({ default: m.WorksheetListScreen })));
@@ -136,6 +137,7 @@ export function AppRoutes() {
         <Route path="/backpack" element={<ChildScreen music="home"><BackpackScreen /></ChildScreen>} />
         <Route path="/profile" element={<ChildScreen music="home"><ProfileScreen /></ChildScreen>} />
         <Route path="/friends" element={<ChildScreen music="home"><FriendsScreen /></ChildScreen>} />
+        <Route path="/village" element={<ChildScreen music="home"><VillageFriendsScreen /></ChildScreen>} />
         <Route path="/journey" element={<ChildScreen music="home"><JourneyScreen /></ChildScreen>} />
         <Route path="/achievements" element={<ChildScreen music="home"><AchievementsScreen /></ChildScreen>} />
         <Route path="/play" element={<ChildScreen><PlayScreen /></ChildScreen>} />

@@ -33,7 +33,7 @@ export function CalendarChallenge({ step, context, onAnswer }: { step: CalendarS
   const answer: StepAnswer | null = step.ask === 'day' ? (day ? { day } : null) : weekday ? { weekday } : null;
 
   return (
-    <ChallengeFrame context={context} prompt={context.fill(step.prompt)} onCheck={() => answer && onAnswer(answer)} canCheck={answer !== null}>
+    <ChallengeFrame context={context} prompt={context.say(step.prompt, step.en?.prompt)} onCheck={() => answer && onAnswer(answer)} canCheck={answer !== null}>
       <p className="challenge-question" data-id="calendar-question">
         {context.fill(step.question)}
       </p>

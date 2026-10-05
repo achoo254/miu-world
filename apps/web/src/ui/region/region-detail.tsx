@@ -10,7 +10,9 @@ import { Link } from 'react-router';
 import type { ProgressResponse, QuestSummary } from '@miu/schema/game';
 import type { Region } from '@miu/schema/region';
 import type { TextKey } from '../i18n/i18n';
-import { T, useT } from '../i18n/use-t';
+import { inline, mapBoth } from '../i18n/i18n';
+import { titleOf, twin } from '../quest/content-text';
+import { Bi, T, useT } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { SkyScene } from '../kit/sky-scene';
@@ -18,7 +20,7 @@ import { StarRating } from '../kit/star-rating';
 import { assetUrl, REGION_BACKDROPS } from '../kit/ui-art';
 import { chapters, playPath, say, stepProgress, type PlayerData } from '../player/player-data';
 import { TextbookRef, textbookOf } from '../player/textbook-ref';
-import { isPlayable, recommendedQuest, regionProgress } from './region-board';
+import { boardStories, isPlayable, isStory, recommendedQuest, regionProgress } from './region-board';
 import { RegionRewardPanel } from './region-reward-panel';
 import './region.css';
 
@@ -93,12 +95,15 @@ export interface BoardPick {
 
 function BoardRow({ summary, region, data, pick }: { summary: QuestSummary; region: Region; data: PlayerData; pick?: BoardPick }) {
   const { done, total } = stepProgress(summary);
-  const title = boardTitle(say(summary.quest.title, data.character), say(region.name, data.character));
+  const { t, mode } = useT();
+  const shownTitle = summary.quest.status === 'active' ? titleOf(summary.quest) : twin(summary.quest.title, null);
+  const regionName = say(region.name, data.character);
+  const titlePair = mapBoth(shownTitle, (line) => boardTitle(say(line, data.character), regionName));
+  const title = inline(titlePair, mode);
   const stub = summary.quest.status === 'stub';
   const playable = isPlayable(summary);
   const textbook = textbookOf(summary);
   const current = pick?.current === summary.quest.id;
-  const { t } = useT();
   const goArrow = (
     <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
       <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -108,7 +113,9 @@ function BoardRow({ summary, region, data, pick }: { summary: QuestSummary; regi
     <li className={`board-row${playable ? '' : ' board-row--locked'}`} data-id={`region-quest-${summary.quest.id}`} data-state={summary.state}>
       <div className="board-row-text">
         {textbook ? <TextbookRef textbook={textbook} dataId={`region-quest-textbook-${summary.quest.id}`} /> : null}
-        <strong className="board-row-title">{title}</strong>
+        <strong className="board-row-title">
+          <Bi vi={titlePair.vi} en={titlePair.en} />
+        </strong>
         {stub ? (
           <span className="badge">
             <T k="common.comingSoon" />
@@ -156,7 +163,7 @@ export function QuestBoard({ region, quests, data, pick }: { region: Region; que
       <h2 id="quest-board-title" className="quest-board-title">
         <T k="region.board" />
       </h2>
-      {chapters([...quests], region.id).map(({ chapter, quests: list }) => (
+      {chapters(quests.filter((q) => !isStory(q)), region.id).map(({ chapter, quests: list }) => (
         <section key={chapter} className="board-chapter" aria-label={t('region.chapter', { chapter })} data-id={`region-chapter-${chapter}`}>
           {/* A chapter of one quest titled "Chương N…" needs no caption on screen (screen readers keep it). */}
           <h3 className={chapterNamedByQuest(list, chapter, region, data) ? 'visually-hidden' : 'board-chapter-title'}>
@@ -164,6 +171,18 @@ export function QuestBoard({ region, quests, data, pick }: { region: Region; que
           </h3>
           <ul className="board-list">
             {list.map((q) => (
+              <BoardRow key={q.quest.id} summary={q} region={region} data={data} pick={pick} />
+            ))}
+          </ul>
+        </section>
+      ))}
+      {boardStories(quests, region.id).map((story) => (
+        <section key={story.arc} className="board-chapter" aria-label={t('region.story', { name: say(story.npcName, data.character) })} data-id={`region-story-${story.arc}`}>
+          <h3 className="board-chapter-title">
+            <T k="region.story" params={{ name: say(story.npcName, data.character) }} /> · <Bi {...mapBoth(story.arcTitle, (line) => say(line, data.character))} />
+          </h3>
+          <ul className="board-list">
+            {story.chapters.map((q) => (
               <BoardRow key={q.quest.id} summary={q} region={region} data={data} pick={pick} />
             ))}
           </ul>

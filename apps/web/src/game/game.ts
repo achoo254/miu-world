@@ -43,6 +43,7 @@ import { createTargetArrow } from './entities/target-arrow';
 import { createMinimap } from './hud/minimap';
 import { minimapMarkers, sideGiverMarkers } from './hud/minimap-model';
 import { fetchSideGivers } from './hud/side-givers';
+import { fetchStoryTellers } from './hud/story-tellers';
 import { fillPlayerName } from '@miu/quest/player-name';
 import { HOME_REGION } from '../ui/region/regions';
 import { DEFAULT_SPECIES } from './content/characters';
@@ -458,6 +459,8 @@ export class Game {
       },
       places: entities.moods ?? [],
     });
+    /** Whether the last frame was under the rain surprise (React hears of each change). */
+    let wasRaining = false;
     const heldMood = params.get('mood');
     if (heldMood === 'dusk' || heldMood === 'night' || heldMood === 'cave') events.holdMood(heldMood);
     props.setViewDistance(quality.viewDistance);
@@ -683,9 +686,10 @@ export class Game {
     placeCast();
     // The characters who offer a minigame here, on the minimap and the full map (none in review shots).
     if (this.options.region && !params.has('shot')) {
-      void fetchSideGivers(this.options.region, fillName).then((givers) => {
+      const region = this.options.region;
+      void Promise.all([fetchSideGivers(region, fillName), fetchStoryTellers(region, fillName)]).then(([givers, tellers]) => {
         if (this.disposed) return;
-        minimap.setSideMarkers(sideGiverMarkers(entities.interactables.filter((t) => byId.get(t.id)?.available), givers));
+        minimap.setSideMarkers(sideGiverMarkers(entities.interactables.filter((t) => byId.get(t.id)?.available), givers, tellers));
       });
     }
     // Tapping the quest card walks Miu to the hinted target along the ways, "Đi tới đây" on the full map to any
@@ -1073,6 +1077,12 @@ export class Game {
       if (surprise.success && events.played === 0 && !events.active) events.start(surprise.data, controller.position);
       events.update(dt, controller.position, nearest !== null);
       overlay.stats.worldEvent = events.active;
+      // The characters' everyday lines follow the weather: tell React when a shower starts or ends.
+      const raining = events.active === 'rain-rainbow';
+      if (raining !== wasRaining) {
+        wasRaining = raining;
+        store.emit({ type: 'weather', raining });
+      }
       overlay.stats.worldEvents = events.played;
       overlay.stats.ambientCelebrations = life.stats.celebrations;
       overlay.stats.confetti = confetti.active;

@@ -1,7 +1,7 @@
 // Chọn nhiều: tap every right choice (tap again to drop it), then "Kiểm tra". The server checks the set.
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
-import { T, useT } from '../../i18n/use-t';
+import { Bi, T, useT } from '../../i18n/use-t';
 import { ChallengeFrame, type ChallengeContext } from '../challenge-frame';
 import './mechanics.css';
 import { isStringList, useDraftState } from '../../quest/step-draft';
@@ -15,7 +15,7 @@ export function MultiSelectChallenge({ step, context, onAnswer }: { step: MultiS
   return (
     <ChallengeFrame
       context={context}
-      prompt={context.fill(step.prompt)}
+      prompt={context.say(step.prompt, step.en?.prompt)}
       onCheck={() => onAnswer({ choices: picked })}
       canCheck={picked.length > 0}
       onReset={() => setPicked([])}
@@ -24,7 +24,7 @@ export function MultiSelectChallenge({ step, context, onAnswer }: { step: MultiS
         <T k="challenge.pickAll" />
       </p>
       <div className="choice-list" role="group" aria-label={t('challenge.pickMany')}>
-        {step.choices.map((c) => {
+        {step.choices.map((c, i) => {
           const on = picked.includes(c.id);
           return (
             <button
@@ -39,7 +39,7 @@ export function MultiSelectChallenge({ step, context, onAnswer }: { step: MultiS
               <span className="mechanic-tick" aria-hidden="true">
                 {on ? '✓' : ''}
               </span>
-              {context.fill(c.text)}
+              <Bi {...context.say(c.text, step.en?.choices?.[i])} />
             </button>
           );
         })}

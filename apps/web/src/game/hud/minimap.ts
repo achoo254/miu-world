@@ -15,7 +15,7 @@ const DISC_REACH = 36;
 /** Seconds between two drawings of the disc (low quality: twice as long). */
 const REDRAW_S = 0.25;
 /** What the small disc shows: the places worth heading for, not every stop and named place. */
-const ON_DISC: ReadonlySet<PlaceKind> = new Set(['gate', 'home', 'side', 'quest']);
+const ON_DISC: ReadonlySet<PlaceKind> = new Set(['gate', 'home', 'story', 'side', 'quest']);
 
 export interface MinimapInput {
   atlas: Atlas;

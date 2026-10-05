@@ -13,6 +13,7 @@ import { buttonClass } from '../kit/button';
 import { PlayerBadge } from '../player/player-badge';
 import { nextStep, say, stepProgress, type PlayerData } from '../player/player-data';
 import { TextbookRef, textbookOf } from '../player/textbook-ref';
+import { Say, stepLineOf, titleOf } from '../quest/content-text';
 import { searchCount } from '../quest/quest-flow';
 import { RideButton } from './ride-button';
 import './hud.css';
@@ -106,12 +107,12 @@ export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data
         </button>
       </p>
       <p className="hud-tracker-quest" data-id="hud-tracker-quest">
-        {say(quest.quest.title, data.character)}
+        <Say text={titleOf(quest.quest)} fill={(line) => say(line, data.character)} />
       </p>
       {textbook ? <TextbookRef textbook={textbook} dataId="hud-tracker-textbook" compact /> : null}
       <p className="hud-tracker-step" data-id="hud-tracker-step">
         {/* Where to walk while the step waits somewhere else; its title heads the scene once there. */}
-        {step ? say(step.goTo ?? step.title, data.character) : <T k="hud.done" />}
+        {step ? <Say text={stepLineOf(step)} fill={(line) => say(line, data.character)} /> : <T k="hud.done" />}
         {clues ? (
           <span className="hud-tracker-count" data-id="hud-tracker-count">
             {' '}

@@ -66,7 +66,9 @@ export type GameEvent =
   /** The equipped vehicle and whether she is on it (null: no vehicle equipped). */
   | { type: 'vehicle'; vehicle: VehicleState | null }
   /** What is switched on in her home changed (a lamp, the television): every kept key that is on now. */
-  | { type: 'object-states'; states: Readonly<Record<string, true>> };
+  | { type: 'object-states'; states: Readonly<Record<string, true>> }
+  /** A shower started or stopped over the child (the map's rain surprise): the characters talk about it. */
+  | { type: 'weather'; raining: boolean };
 
 export interface GameSnapshot {
   status: 'loading' | 'ready' | 'error';
@@ -86,6 +88,8 @@ export interface GameSnapshot {
   vehicle: VehicleState | null;
   /** What she switched on in her home, as last reported by the game (null until it reports): the play screen saves it. */
   objectStates: Readonly<Record<string, true>> | null;
+  /** Rain is falling where she plays now. */
+  raining: boolean;
 }
 
 /** Commands from React to the game. The game ignores commands it does not handle yet. */
@@ -135,6 +139,7 @@ export const INITIAL_SNAPSHOT: GameSnapshot = {
   autowalk: 'idle',
   vehicle: null,
   objectStates: null,
+  raining: false,
 };
 
 function samePrompt(a: InteractionPrompt | null, b: InteractionPrompt | null): boolean {
@@ -149,7 +154,7 @@ export function reduce(state: GameSnapshot, event: GameEvent): GameSnapshot {
     case 'loading':
       // A new map loads: the loading screen shows again, and "ready" will be news to every listener (the quest
       // sends its target to the new game then, so the card can walk her there).
-      return { ...state, status: 'loading', error: null, loading: { done: 0, total: state.loading.total }, prompt: null, stuck: false, autowalkAvailable: false, autowalk: 'idle', vehicle: null, objectStates: null };
+      return { ...state, status: 'loading', error: null, loading: { done: 0, total: state.loading.total }, prompt: null, stuck: false, autowalkAvailable: false, autowalk: 'idle', vehicle: null, objectStates: null, raining: false };
     case 'ready':
       return state.status === 'ready' ? state : { ...state, status: 'ready', error: null };
     case 'error':
@@ -180,6 +185,8 @@ export function reduce(state: GameSnapshot, event: GameEvent): GameSnapshot {
     }
     case 'object-states':
       return { ...state, objectStates: event.states };
+    case 'weather':
+      return state.raining === event.raining ? state : { ...state, raining: event.raining };
   }
 }
 

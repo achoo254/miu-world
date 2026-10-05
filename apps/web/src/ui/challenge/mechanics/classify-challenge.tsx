@@ -59,7 +59,7 @@ export function ClassifyChallenge({ step, context, onAnswer }: { step: ClassifyS
   return (
     <ChallengeFrame
       context={context}
-      prompt={context.fill(step.prompt)}
+      prompt={context.say(step.prompt, step.en?.prompt)}
       onCheck={() => onAnswer({ assignment })}
       canCheck={unplaced.length === 0}
       onReset={() => setAssignment({})}

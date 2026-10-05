@@ -1,0 +1,24 @@
+/* The characters' cards and the "Bạn bè trong làng" page: layout only, the scene materials come from kit/scene.css. */
+.npc-hearts { display: inline-flex; gap: 0.1em; font-size: var(--text-lg); line-height: 1; color: var(--color-primary); }
+.npc-hearts--small { font-size: var(--text-body); }
+.npc-heart { color: var(--color-ink-soft); }
+.npc-heart--full { color: var(--color-primary); }
+.npc-card-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm); margin: 0 0 var(--space-xs); }
+.npc-card-role { font-size: var(--text-sm); color: var(--color-parchment-ink); }
+.npc-card-raised { font-size: var(--text-sm); }
+.npc-card-wait { margin: 0; }
+.npc-gifts { display: grid; gap: var(--space-sm); }
+
+.village-page { display: grid; gap: var(--space-lg); padding: var(--space-lg); max-width: 72rem; margin: 0 auto; }
+.village-region { display: grid; gap: var(--space-md); }
+.village-region h2 { margin: 0; }
+.village-list { display: grid; gap: var(--space-md); grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); list-style: none; margin: 0; padding: 0; }
+.village-friend { display: grid; gap: var(--space-sm); padding: var(--space-md); }
+.village-friend-head { display: flex; align-items: center; gap: var(--space-sm); }
+.village-friend-name { display: grid; gap: var(--space-xs); }
+.village-friend dl { display: grid; gap: var(--space-xs); margin: 0; }
+.village-friend dt { font-weight: 700; }
+.village-friend dd { margin: 0 0 var(--space-xs); }
+.village-locked { color: var(--color-ink-soft); font-style: italic; }
+.village-likes, .village-relations, .village-chapters { margin: 0; padding-left: var(--space-lg); }
+.village-chapters li { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm); }

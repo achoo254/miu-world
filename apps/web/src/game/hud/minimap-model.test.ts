@@ -87,6 +87,12 @@ describe('minimap markers', () => {
     expect(markers).toEqual([{ id: 'vet', kind: 'side', x: 7, z: 8, colour: MARKER_COLOURS.side, label: 'Vẹt', detail: 'Trò chơi: Bắn cung có gió · Ghép hình', goal: { targetId: 'vet' } }]);
   });
 
+  it('marks a storyteller as one, with its next chapter and its games, in place of its minigame marker', () => {
+    const bird: Target = { id: 'hoa-mi', kind: 'npc', name: 'Họa Mi', label: 'Nói chuyện', position: [3, 13, 4], yaw: 0, radius: 2 };
+    const markers = sideGiverMarkers([bird], [{ targetId: 'hoa-mi', games: ['Hợp xướng'] }], [{ targetIds: ['hoa-mi'], next: 'Chương 2: Tiếng vọng' }]);
+    expect(markers).toEqual([{ id: 'hoa-mi', kind: 'story', x: 3, z: 4, colour: MARKER_COLOURS.story, label: 'Họa Mi', detail: 'Chuyện: Chương 2: Tiếng vọng · Trò chơi: Hợp xướng', goal: { targetId: 'hoa-mi' } }]);
+  });
+
   it("marks the quest's place, walked to by its target", () => {
     expect(questMarker({ id: 'parrot-guide', label: 'Vẹt', x: 1, z: 2 })).toEqual({ id: 'parrot-guide', kind: 'quest', x: 1, z: 2, colour: MARKER_COLOURS.quest, label: 'Vẹt', detail: 'Nơi làm nhiệm vụ', goal: { targetId: 'parrot-guide' } });
   });

@@ -3,7 +3,9 @@
 import { useState, type ReactElement } from 'react';
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
-import { T } from '../i18n/use-t';
+import { mapBoth } from '../i18n/i18n';
+import { Bi, T, useT } from '../i18n/use-t';
+import { stepTitleOf, twin } from '../quest/content-text';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
@@ -31,10 +33,15 @@ export function DecisionScreen({
   onClose: () => void;
 }): ReactElement {
   const [selectedChoiceId, setSelectedChoiceId] = useState<string | null>(null);
-  const speakerName = step.speaker ? say(step.speaker, data.character) : say(step.target ?? 'Bạn đồng hành', data.character);
-  const promptText = say(step.prompt, data.character);
+  const { t } = useT();
+  const fill = (text: string): string => say(text, data.character);
+  const speakerName = step.speaker ? fill(step.speaker) : fill(step.target ?? 'Bạn đồng hành');
+  const promptText = mapBoth(twin(step.prompt, step.en?.prompt), fill);
 
-  const chosen = step.choices.find((c) => c.id === selectedChoiceId);
+  const chosenIndex = step.choices.findIndex((c) => c.id === selectedChoiceId);
+  const chosen = step.choices[chosenIndex];
+  const consequence = chosen?.consequence ? mapBoth(twin(chosen.consequence, step.en?.choices[chosenIndex]?.consequence), fill) : null;
+  const said = consequence ?? promptText;
 
   const handleSelect = (choiceId: string) => {
     setSelectedChoiceId(choiceId);
@@ -52,7 +59,7 @@ export function DecisionScreen({
 
   return (
     <Modal
-      title={say(step.title, data.character)}
+      title={<Bi {...mapBoth(stepTitleOf(step), fill)} />}
       onClose={onClose}
       dataId="decision-screen"
       placement="bottom"
@@ -64,12 +71,14 @@ export function DecisionScreen({
           <NpcPortrait name={speakerName} target={step.target} size={96} reaction="speak" />
           <div className="npc-bubble">
             <span className="npc-tag">{speakerName}</span>
-            <p className="npc-line">{chosen?.consequence ? say(chosen.consequence, data.character) : promptText}</p>
-            <ListenButton text={{ vi: chosen?.consequence ? say(chosen.consequence, data.character) : promptText }} dataId="decision-listen" />
+            <p className="npc-line">
+              <Bi vi={said.vi} en={said.en} />
+            </p>
+            <ListenButton text={said.en === said.vi ? { vi: said.vi } : said} dataId="decision-listen" />
           </div>
         </div>
 
-        {chosen?.consequence ? (
+        {consequence ? (
           <div className="dialogue-actions">
             <button
               type="button"
@@ -82,7 +91,7 @@ export function DecisionScreen({
             </button>
           </div>
         ) : (
-          <div className="dialogue-choices" role="menu" aria-label="Lựa chọn hành động">
+          <div className="dialogue-choices" role="menu" aria-label={t('decision.choices')}>
             {step.choices.map((choice, i) => (
               <button
                 key={choice.id}
@@ -93,7 +102,9 @@ export function DecisionScreen({
                 data-id={`choice-${choice.id}`}
               >
                 <Icon name={DECISION_ICONS[i % DECISION_ICONS.length] ?? 'star'} size={24} />
-                <span>{say(choice.text, data.character)}</span>
+                <span>
+                  <Bi {...mapBoth(twin(choice.text, step.en?.choices[i]?.text), fill)} />
+                </span>
               </button>
             ))}
           </div>

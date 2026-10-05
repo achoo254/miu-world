@@ -72,6 +72,12 @@ export function drawMarker(ctx: CanvasRenderingContext2D, kind: PlaceKind, px: n
     ctx.moveTo(px + r * 0.57, py + r * 0.1);
     ctx.arc(px + r * 0.47, py + r * 0.1, r * 0.1, 0, Math.PI * 2);
     ctx.fill();
+  } else if (kind === 'story') {
+    // A heart: the character's story and the friendship it grows.
+    ctx.moveTo(px, py + r * 0.5);
+    ctx.bezierCurveTo(px - r * 0.85, py - r * 0.05, px - r * 0.35, py - r * 0.75, px, py - r * 0.25);
+    ctx.bezierCurveTo(px + r * 0.35, py - r * 0.75, px + r * 0.85, py - r * 0.05, px, py + r * 0.5);
+    ctx.fill();
   } else if (kind === 'stop') {
     // A bus from the side: its body, a row of windows, two wheels.
     roundedRect(ctx, px - r * 0.62, py - r * 0.5, r * 1.24, r * 0.85, r * 0.2);

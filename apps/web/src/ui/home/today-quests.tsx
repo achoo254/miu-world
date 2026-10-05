@@ -7,6 +7,7 @@ import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { playPath, say, stepProgress, type PlayerData } from '../player/player-data';
 import { TextbookRef, textbookOf } from '../player/textbook-ref';
+import { Say, summaryOf, titleOf } from '../quest/content-text';
 
 const MAX_ROWS = 3;
 
@@ -18,7 +19,7 @@ export function todayQuests(quests: readonly QuestSummary[]): QuestSummary[] {
 
 function QuestRow({ summary, first, data }: { summary: QuestSummary; first: boolean; data: PlayerData }) {
   const { quest } = summary;
-  const title = say(quest.title, data.character);
+  const fill = (line: string): string => say(line, data.character);
   const { done, total } = stepProgress(summary);
   const textbook = textbookOf(summary);
   return (
@@ -28,9 +29,13 @@ function QuestRow({ summary, first, data }: { summary: QuestSummary; first: bool
         <span className="today-row-text">
           {textbook ? <TextbookRef textbook={textbook} dataId={`home-today-textbook-${quest.id}`} /> : null}
           <span className="today-row-title" data-id={first ? 'home-today-quest' : undefined}>
-            {title}
+            <Say text={titleOf(quest)} fill={fill} />
           </span>
-          {first && quest.status === 'active' ? <span className="today-row-summary">{say(quest.summary, data.character)}</span> : null}
+          {first && quest.status === 'active' ? (
+            <span className="today-row-summary">
+              <Say text={summaryOf(quest)} fill={fill} />
+            </span>
+          ) : null}
           <span className="today-row-meta">
             {first ? <span data-id="home-today-progress">
                 <T k="common.progress" params={{ done, total }} />

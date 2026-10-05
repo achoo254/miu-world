@@ -43,7 +43,7 @@ export function FillBlankChallenge({ step, context, onAnswer }: { step: FillBlan
   return (
     <ChallengeFrame
       context={context}
-      prompt={context.fill(step.prompt)}
+      prompt={context.say(step.prompt, step.en?.prompt)}
       onCheck={() => onAnswer({ fills })}
       canCheck={full}
       onReset={() => {

@@ -3,7 +3,8 @@
 import { CanvasTexture, SRGBColorSpace, Sprite, SpriteMaterial } from 'three';
 
 const WIDTH = 512;
-const HEIGHT = 160;
+/** Room for the card, a second (English) line under the first in Song ngữ, and the tail. */
+const HEIGHT = 192;
 /** World size of the bubble (blocks). */
 const WORLD_WIDTH = 2.8;
 /** Seconds shown: reading time grows with the line, fading out over the last half second. */
@@ -14,7 +15,8 @@ const POP = 0.18;
 
 export interface SpeechBubble {
   readonly sprite: Sprite;
-  show(text: string): void;
+  /** `sub`: a smaller second line (the English one in Song ngữ). */
+  show(text: string, sub?: string | null): void;
   hide(): void;
   update(dt: number): void;
   readonly showing: boolean;
@@ -23,13 +25,18 @@ export interface SpeechBubble {
 /** --color-ink of the UI tokens (a canvas cannot read CSS variables). */
 const INK = '#2b2140';
 
-function paint(ctx: CanvasRenderingContext2D, text: string): void {
+const MAIN_FONT = '700 44px "Baloo 2", "Nunito", sans-serif';
+const SUB_FONT = '600 30px "Baloo 2", "Nunito", sans-serif';
+
+function paint(ctx: CanvasRenderingContext2D, text: string, sub: string | null): void {
   ctx.clearRect(0, 0, WIDTH, HEIGHT);
-  ctx.font = '700 44px "Baloo 2", "Nunito", sans-serif';
-  const textWidth = Math.min(WIDTH - 60, ctx.measureText(text).width);
+  ctx.font = SUB_FONT;
+  const subWidth = sub ? ctx.measureText(sub).width : 0;
+  ctx.font = MAIN_FONT;
+  const textWidth = Math.min(WIDTH - 60, Math.max(ctx.measureText(text).width, subWidth));
   const w = textWidth + 56;
   const x = (WIDTH - w) / 2;
-  const h = 96;
+  const h = sub ? 130 : 96;
   ctx.fillStyle = 'rgba(43, 33, 64, 0.18)'; // soft drop shadow
   ctx.beginPath();
   ctx.roundRect(x + 4, 10, w, h, 34);
@@ -49,7 +56,13 @@ function paint(ctx: CanvasRenderingContext2D, text: string): void {
   ctx.fillStyle = INK;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText(text, WIDTH / 2, 4 + h / 2 + 2, WIDTH - 60);
+  if (!sub) {
+    ctx.fillText(text, WIDTH / 2, 4 + h / 2 + 2, WIDTH - 60);
+    return;
+  }
+  ctx.fillText(text, WIDTH / 2, 4 + 42, WIDTH - 60);
+  ctx.font = SUB_FONT;
+  ctx.fillText(sub, WIDTH / 2, 4 + 94, WIDTH - 60);
 }
 
 export function createSpeechBubble(): SpeechBubble {
@@ -78,10 +91,10 @@ export function createSpeechBubble(): SpeechBubble {
     get showing() {
       return left > 0;
     },
-    show(text) {
-      if (ctx) paint(ctx, text);
+    show(text, sub = null) {
+      if (ctx) paint(ctx, text, sub);
       texture.needsUpdate = true;
-      total = Math.max(MIN_SECONDS, text.length * PER_CHAR);
+      total = Math.max(MIN_SECONDS, (text.length + (sub?.length ?? 0)) * PER_CHAR);
       left = total;
       sprite.visible = true;
     },

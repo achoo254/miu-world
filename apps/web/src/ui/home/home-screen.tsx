@@ -133,6 +133,10 @@ export function HomeScreen() {
                   <Icon name="coin" size={40} />
                   <T k="common.shop" />
                 </button>
+                <Link to="/village" className="home-rail-item" data-id="home-nav-village">
+                  <Icon name="heart" size={40} />
+                  <T k="home.village" />
+                </Link>
                 <Link to="/journey" className="home-rail-item" data-id="home-nav-journey">
                   <Icon name="map" size={40} />
                   <T k="home.journey" />

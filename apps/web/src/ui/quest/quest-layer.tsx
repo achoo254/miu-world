@@ -12,11 +12,13 @@ import { Toast } from '../kit/toast';
 import { T } from '../i18n/use-t';
 import { say, type PlayerData } from '../player/player-data';
 import { OfflineBanner } from '../system/offline-banner';
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react';
+import { useNpcs } from '../npc/use-npcs';
 import { useNavigate } from 'react-router';
 import { CompletionSequence } from '../rewards/completion-sequence';
 import { REGION_MUSIC } from '../region/regions';
 import { playMood, useMusicMood } from '../sound/music-player';
+import { Say, stepTitleOf, summaryOf } from './content-text';
 import { NotebookCard } from './notebook-card';
 import { useSideQuests } from './side-quests';
 import { GateOpenedBanner, SkillCheckModal } from './skill-check-modal';
@@ -31,6 +33,8 @@ export function QuestLayer({
   onResponse,
   onOverlayChange,
   draftOwner = null,
+  onPlayQuest,
+  openAt = null,
 }: {
   store: GameStore;
   data: PlayerData;
@@ -42,20 +46,38 @@ export function QuestLayer({
   onOverlayChange: (open: boolean) => void;
   /** The child whose step drafts are kept (a reload resumes the step on screen where it was); none: not kept. */
   draftOwner?: string | null;
+  /** A character offered a chapter of its story: play that quest (the child stands at `targetId`). */
+  onPlayQuest?: (questId: string, targetId: string) => void;
+  /** The character the child just took this quest from: its first line opens as soon as the map is up. */
+  openAt?: string | null;
 }) {
   // The notebook card and a side quest's screens cover the game too: all of them are reported together.
   const questCovers = useRef(false);
   const [copy, setCopy] = useState<NotebookLine | null>(null);
   const side = useSideQuests({ region, data, onResponse });
+  const raining = useSyncExternalStore(store.subscribe, () => store.getSnapshot().raining);
+  const npcs = useNpcs({ region, data, raining, hasGames: side.offers, onGames: (target) => void side.claim(target), onStory: (questId, target) => onPlayQuest?.(questId, target) });
+  const sideOpen = side.open || npcs.open;
   const reportCover = useCallback(
     (open: boolean) => {
       questCovers.current = open;
-      onOverlayChange(open || copy !== null || side.open);
+      onOverlayChange(open || copy !== null || sideOpen);
     },
-    [onOverlayChange, copy, side.open],
+    [onOverlayChange, copy, sideOpen],
   );
-  useEffect(() => onOverlayChange(questCovers.current || copy !== null || side.open), [copy, side.open, onOverlayChange]);
-  const quest = useQuestController({ store, data, questId, onResponse, onOverlayChange: reportCover, draftOwner, onSideTarget: side.claim });
+  useEffect(() => onOverlayChange(questCovers.current || copy !== null || sideOpen), [copy, sideOpen, onOverlayChange]);
+  // A finished story chapter changes the storyteller's hearts and its next chapter: read the characters again.
+  const refreshNpcs = npcs.refresh;
+  const answered = useCallback(
+    (response: StepCompleteResponse) => {
+      onResponse(response);
+      if (response.completion?.story) refreshNpcs();
+    },
+    [onResponse, refreshNpcs],
+  );
+  // The lesson comes first; a character with nothing for it shows its card (a profiled one) or offers its games.
+  const claimTarget = useCallback((target: string) => npcs.claim(target) || side.claim(target), [npcs, side]);
+  const quest = useQuestController({ store, data, questId, onResponse: answered, onOverlayChange: reportCover, draftOwner, onSideTarget: claimTarget, openAt });
   const navigate = useNavigate();
   const summary = data.quests.find((q) => q.quest.id === questId);
   const step = quest.overlay?.step ?? null;
@@ -72,7 +94,7 @@ export function QuestLayer({
       <DialogueScreen
         step={shown}
         character={data.character}
-        questSummary={summary?.quest.status === 'active' ? say(summary.quest.summary, data.character) : ''}
+        questSummary={summary?.quest.status === 'active' ? summaryOf(summary.quest) : ''}
         busy={quest.busy}
         onDone={() => void quest.submit(shown)}
         onClose={quest.close}
@@ -81,7 +103,7 @@ export function QuestLayer({
       <LearningStep key={shown.id} step={shown} quest={summary.quest} data={data} busy={quest.busy} submit={quest.submit} onClose={quest.close} onRight={onRight} />
     ) : (
       // Mechanics that have no screen yet (textbook ones arrive with their own plan).
-      <Modal title={say(shown.title, data.character)} onClose={quest.close} dataId="quest-step">
+      <Modal title={<Say text={stepTitleOf(shown)} fill={(line) => say(line, data.character)} />} onClose={quest.close} dataId="quest-step">
         <p>
           <T k="challenge.soon" />
         </p>
@@ -116,6 +138,7 @@ export function QuestLayer({
         </p>
       ) : null}
       {side.screens}
+      {npcs.screens}
       {quest.skillCheck ? (
         <SkillCheckModal
           check={quest.skillCheck}

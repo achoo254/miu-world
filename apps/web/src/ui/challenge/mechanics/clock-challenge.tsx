@@ -62,7 +62,7 @@ export function ClockChallenge({ step, context, onAnswer }: { step: ClockStep; c
   const shown = step.mode === 'read' ? step.time : time;
 
   return (
-    <ChallengeFrame context={context} prompt={context.fill(step.prompt)} onCheck={() => onAnswer(time)} canCheck={touched} onReset={() => setTime(start)}>
+    <ChallengeFrame context={context} prompt={context.say(step.prompt, step.en?.prompt)} onCheck={() => onAnswer(time)} canCheck={touched} onReset={() => setTime(start)}>
       {shown && step.display === 'analog' ? <ClockFace hour={shown.hour} minute={shown.minute} label={step.mode === 'read' ? 'Đồng hồ cần đọc' : 'Đồng hồ em đang quay'} /> : null}
       {shown && step.display === 'digital' ? (
         <p className="clock-digital" data-id="clock-digital">

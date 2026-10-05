@@ -24,16 +24,25 @@ export function ReadStepScreen({
   onAnswer: (answer: StepAnswer) => void;
 }) {
   const [choice, setChoice] = useDraftState<string | null>('choice', null, isStringOrNull);
-  const { t } = useT();
+  const { t, mode } = useT();
   const ref = step.textRef ? texts[step.textRef] : undefined;
-  const passage = context.fill(step.text ?? ref?.body ?? '');
+  // A passage of the step's own (a letter in a story) may have its English twin; a textbook reading has none.
+  const own = step.text !== undefined ? context.say(step.text, step.en?.text) : null;
+  const passage = own ? own.vi : context.fill(ref?.body ?? '');
   return (
-    <ChallengeFrame context={context} prompt={context.fill(step.question)} onCheck={() => choice && onAnswer({ choice })} canCheck={choice !== null}>
+    <ChallengeFrame context={context} prompt={context.say(step.question, step.en?.question)} onCheck={() => choice && onAnswer({ choice })} canCheck={choice !== null}>
       <article className="read-passage" data-id="read-passage">
         {ref ? <h3>{context.fill(ref.title)}</h3> : null}
         {passage.split('\n').map((line, i) => (
           <p key={i}>{line}</p>
         ))}
+        {own && own.en !== own.vi && mode !== 'vi'
+          ? own.en.split('\n').map((line, i) => (
+              <p key={`en-${i}`} className="bi-en" lang="en">
+                {line}
+              </p>
+            ))
+          : null}
         {ref?.author ? <p className="hint">{ref.author}</p> : null}
         {ref?.glossary?.length ? (
           <dl className="read-glossary" data-id="read-glossary" aria-label={t('challenge.words')}>
@@ -45,9 +54,9 @@ export function ReadStepScreen({
             ))}
           </dl>
         ) : null}
-        <ListenButton text={{ vi: passage }} dataId="read-listen" label="speech.listenAgain" />
+        <ListenButton text={own && own.en !== own.vi ? own : { vi: passage }} dataId="read-listen" label="speech.listenAgain" />
       </article>
-      <ChoiceList choices={step.choices} selected={choice} onSelect={setChoice} fill={context.fill} label={t('challenge.pickAnswer')} />
+      <ChoiceList choices={step.choices} en={step.en?.choices} selected={choice} onSelect={setChoice} fill={context.fill} label={t('challenge.pickAnswer')} />
     </ChallengeFrame>
   );
 }

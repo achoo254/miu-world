@@ -100,6 +100,8 @@ describe('quest controller', () => {
       'fetch',
       vi.fn(async (url: string, init?: RequestInit) => {
         if (url.includes('category=side')) return json({ quests: sideQuests });
+        // The map's characters (their cards) are read on their own too.
+        if (url.startsWith('/api/npcs')) return json({ npcs: [] });
         if (url.includes('skill-check')) return json({ hasSkillCheck: false, passed: true, targetId: '', targetName: '' });
         return fetchImpl(url, init);
       }),

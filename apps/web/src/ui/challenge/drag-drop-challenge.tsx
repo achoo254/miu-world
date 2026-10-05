@@ -48,7 +48,7 @@ export function DragDropChallenge({ step, context, onAnswer }: { step: DragDropS
   };
 
   return (
-    <ChallengeFrame context={context} prompt={context.fill(step.prompt)} onCheck={() => onAnswer({ placed })} canCheck={placed.length > 0} onReset={() => setPlaced([])}>
+    <ChallengeFrame context={context} prompt={context.say(step.prompt, step.en?.prompt)} onCheck={() => onAnswer({ placed })} canCheck={placed.length > 0} onReset={() => setPlaced([])}>
       <div className="drag-board">
         <div className="drag-source" {...{ [DROP_ZONE_ATTR]: 'source' }} data-id="drag-source" onClick={() => dropSelected(false)}>
           {step.pieces.filter((p) => !placed.includes(p.id)).map((p) => piece(p.id, context.fill(p.label)))}

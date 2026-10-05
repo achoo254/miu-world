@@ -24,6 +24,8 @@ import type { ActiveQuestView } from '../quest/quest-flow';
 import { regionGoalLine, rewardItemArt, useRegionRewards } from '../region/region-rewards';
 import { findRegion } from '../region/regions';
 import { playCue } from '../sound/sfx';
+import { Say, titleOf } from '../quest/content-text';
+import { Hearts } from '../npc/hearts';
 import './rewards.css';
 
 /** Time between two stars lighting up; the counters start once the last star is lit. */
@@ -116,7 +118,8 @@ function CountedReward({ value, delayMs, unit, icon, dataId }: { value: number; 
  * read once the quest is paid; nothing shows if it cannot be read.
  */
 function RegionChestProgress({ quest, data, reveal }: { quest: ActiveQuestView; data: PlayerData; reveal: CSSProperties }) {
-  const dto = useRegionRewards(quest.category === 'side' ? null : quest.region);
+  // The chest counts lessons: a minigame or a chapter of a character's story leaves it as it is.
+  const dto = useRegionRewards(quest.category === 'side' || quest.category === 'story' ? null : quest.region);
   const { t } = useT();
   if (!dto || dto.lessons === 0) return null;
   const line = regionGoalLine(dto) ?? pairOf('completion.areaDone');
@@ -154,7 +157,9 @@ function RewardScreen({ completion, reward, quest, data }: { completion: QuestCo
         {cheerer ? <NpcPortrait name={fill(cheerer.name)} target={cheerer.target} size={72} reaction="cheer" /> : null}
         <MiuPortrait pose="cheer" size="6rem" species={data.character.species} />
       </div>
-      <p className="hint">{fill(quest.title)}</p>
+      <p className="hint">
+        <Say text={titleOf(quest)} fill={fill} />
+      </p>
       <p className="reward-stars" aria-label={t('completion.stars', { stars: completion.stars })} data-id="reward-stars" data-stars={completion.stars}>
         {[1, 2, 3].map((n) => (
           <span key={n} className={n <= completion.stars ? 'reward-star' : 'reward-star reward-star--off'} style={{ '--star': n } as CSSProperties}>
@@ -182,6 +187,20 @@ function RewardScreen({ completion, reward, quest, data }: { completion: QuestCo
         ))}
       </ul>
       <CollectibleDropNote drop={completion.collectible} fill={fill} />
+      {completion.story ? (
+        <p className="reward-story reward-reveal" style={reveal(items.length + skills.length)} data-id="reward-story">
+          <Hearts hearts={completion.story.heartsAfter} dataId="reward-story-hearts" />{' '}
+          <T k={completion.story.heartsAfter > completion.story.heartsBefore ? 'completion.storyHeart' : 'completion.storyDone'} params={{ who: fill(completion.story.npcName) }} />
+          {completion.story.letter ? (
+            <>
+              {' '}
+              <span className="badge" data-id="reward-story-letter">
+                <T k="completion.storyLetter" />
+              </span>
+            </>
+          ) : null}
+        </p>
+      ) : null}
       <RegionChestProgress quest={quest} data={data} reveal={reveal(items.length + skills.length)} />
       {completion.xpAwarded < quest.reward.xp ? (
         <p className="hint" data-id="reward-encourage">

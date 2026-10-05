@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { QuestSummary } from '@miu/schema/game';
 import { questList } from '../player/test-fixtures';
 import { boardTitle } from './region-detail';
-import { recommendedQuest, regionBooks, regionProgress } from './region-board';
+import { boardStories, recommendedQuest, regionBooks, regionProgress } from './region-board';
 
 const [ch1, ch2] = questList(0).quests as [QuestSummary, QuestSummary];
 const as = (summary: QuestSummary, id: string, state: QuestSummary['state']): QuestSummary => ({ ...summary, quest: { ...summary.quest, id }, state });
@@ -45,5 +45,18 @@ describe('region board', () => {
   it('drops the region from a quest title on that region\'s own board', () => {
     expect(boardTitle('Khu rừng bí mật – Chương 1: Lá thần', 'Khu rừng bí mật')).toBe('Chương 1: Lá thần');
     expect(boardTitle('Thử dẫn đường', 'Khu rừng bí mật')).toBe('Thử dẫn đường');
+  });
+
+  it('groups the story chapters by story and never counts them as lessons', () => {
+    const story = (id: string, part: number, state: QuestSummary['state']): QuestSummary => {
+      const base = as(ch1, id, state);
+      if (base.quest.status !== 'active') throw new Error('fixture');
+      return { ...base, quest: { ...base.quest, category: 'story', story: { npc: 'hoa-mi', npcName: 'Họa Mi', arc: 'bai-ca', arcTitle: { vi: 'Bài ca', en: 'The song' }, part, parts: 2, hearts: 0 } } };
+    };
+    const list = [as(ch1, 'bai-1', 'completed'), story('yarn-bai-ca-1', 1, 'completed'), story('yarn-bai-ca-2', 2, 'open')];
+    expect(regionProgress(list)).toEqual({ done: 1, total: 1 });
+    const [group] = boardStories(list, ch1.quest.region);
+    expect(group?.npcName).toBe('Họa Mi');
+    expect(group?.chapters.map((q) => q.quest.id)).toEqual(['yarn-bai-ca-1', 'yarn-bai-ca-2']);
   });
 });

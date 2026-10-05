@@ -22,13 +22,16 @@ const SHAKE = 'challenge-area--wrong';
 export interface ChallengeContext {
   questId: string;
   stepId: string;
-  title: string;
+  /** The step's title in both languages, the player's name filled in. */
+  title: Bilingual;
   /** "Bước 5/11". */
   position: { index: number; total: number };
   /** XP the quest pays on completion (from QuestView; the server decides what is actually given). */
   xp: number;
   /** Fills `{name}` in content text. */
   fill: (text: string) => string;
+  /** A content line and its English twin (if the step has one), `{name}` filled: textbook wording has none. */
+  say: (vi: string, en?: string | null) => Bilingual;
   busy: boolean;
   /** Line after the last wrong answer, if any (the content's own feedback, or a kind line in both languages). */
   tryAgain: Bilingual | null;
@@ -48,7 +51,8 @@ export function ChallengeFrame({
   onReset,
 }: {
   context: ChallengeContext;
-  prompt: string;
+  /** The instruction in both languages (`context.say`); textbook wording shows in Vietnamese only. */
+  prompt: Bilingual;
   children: ReactNode;
   onCheck: () => void;
   canCheck: boolean;
@@ -75,7 +79,7 @@ export function ChallengeFrame({
   };
   const { index, total } = context.position;
   return (
-    <Modal title={context.title} onClose={context.onClose} dataId="challenge" size="wide" variant="scene" className="scene-modal--pinned">
+    <Modal title={<Bi vi={context.title.vi} en={context.title.en} />} onClose={context.onClose} dataId="challenge" size="wide" variant="scene" className="scene-modal--pinned">
       <div className="scene-chips">
         <div className="step-trail-wrap">
           <span className="visually-hidden" data-id="challenge-position">
@@ -102,9 +106,9 @@ export function ChallengeFrame({
         ) : null}
         <p className="parchment npc-bubble challenge-prompt" data-id="challenge-prompt">
           {presenter ? <span className="npc-name">{context.fill(presenter.name)}</span> : null}
-          {prompt}
-          {/* The lesson's question is the book's Vietnamese: read in Vietnamese in every mode. */}
-          <ListenButton text={{ vi: prompt }} dataId="challenge-listen" />
+          <Bi vi={prompt.vi} en={prompt.en} />
+          {/* A lesson's question is the book's Vietnamese: without an English twin it is read in Vietnamese in every mode. */}
+          <ListenButton text={prompt.en === prompt.vi ? { vi: prompt.vi } : prompt} dataId="challenge-listen" />
         </p>
       </div>
       <div ref={area} className="challenge-area" onClickCapture={tapSound}>

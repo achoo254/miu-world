@@ -13,6 +13,7 @@ import type { BoosterEffect } from '@miu/schema/shop';
 import { freshPicker } from '@miu/quest/pick-fresh';
 import { fillPlayerName } from '@miu/quest/player-name';
 import { linesOf, mapBoth, type Bilingual, type TextKey } from '../i18n/i18n';
+import { twin } from '../quest/content-text';
 import { Bi, T, useT } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
@@ -85,6 +86,8 @@ export interface MinigameOverlayProps {
   species?: string;
   /** What the quest's character asks, shown on the how-to card. */
   prompt?: string;
+  /** The same in English, when the quest has it. */
+  promptEn?: string | undefined;
   /** A won round's score goes to the server here; resolve with what it paid, or null when it could not be sent. */
   onWin?: (score: number) => Promise<WinOutcome | null>;
   /** "Xong" or ✕: the last round's result, or null when no round finished. */
@@ -97,7 +100,7 @@ export interface MinigameOverlayProps {
   freezeAt?: number;
 }
 
-export function MinigameOverlay({ game, goal, params = {}, region, playerName, species, prompt, onWin, onDone, bot = false, seed, freezeAt }: MinigameOverlayProps): ReactElement {
+export function MinigameOverlay({ game, goal, params = {}, region, playerName, species, prompt, promptEn, onWin, onDone, bot = false, seed, freezeAt }: MinigameOverlayProps): ReactElement {
   const spec = MINIGAME_SPECS.get(game);
   const [phase, setPhase] = useState<Phase>('loading');
   const [failed, setFailed] = useState(false);
@@ -289,7 +292,7 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
   };
   const leave = (): void => latest.current.onDone(latest.current.result ? { score: latest.current.result.score, won: latest.current.result.won } : null);
 
-  const title = spec?.name ?? t('minigame.title');
+  const title = spec ? <Bi {...twin(spec.name, spec.en?.name)} /> : t('minigame.title');
   const covered = phase === 'intro' || phase === 'paused' || phase === 'result';
   return (
     <div className="minigame" data-id="minigame" data-game={game} data-phase={phase} data-frozen={frozen || undefined}>
@@ -357,10 +360,16 @@ export function MinigameOverlay({ game, goal, params = {}, region, playerName, s
       {phase === 'intro' && spec ? (
         <Modal title={title} onClose={leave} dataId="minigame-intro" variant="scene">
           <div className="parchment minigame-howto">
-            {prompt ? <p className="minigame-prompt">{fill(prompt)}</p> : null}
+            {prompt ? (
+              <p className="minigame-prompt">
+                <Bi {...mapBoth(twin(prompt, promptEn), fill)} />
+              </p>
+            ) : null}
             <ul>
-              {spec.howTo.map((line) => (
-                <li key={line}>{fill(line)}</li>
+              {spec.howTo.map((line, i) => (
+                <li key={line}>
+                  <Bi {...mapBoth(twin(line, spec.en?.howTo[i]), fill)} />
+                </li>
               ))}
             </ul>
             <p className="minigame-goal">

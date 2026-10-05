@@ -13,7 +13,7 @@ export function RiddleStepScreen({ step, context, onAnswer }: { step: RiddleStep
   return (
     <ChallengeFrame
       context={context}
-      prompt={context.fill(step.question)}
+      prompt={context.say(step.question, step.en?.question)}
       onCheck={() => onAnswer({ value: Number(digits) })}
       canCheck={digits.length > 0}
       onReset={() => setDigits('')}

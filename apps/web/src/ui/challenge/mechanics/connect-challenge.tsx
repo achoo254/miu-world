@@ -41,7 +41,7 @@ export function ConnectChallenge({ step, context, onAnswer }: { step: ConnectSte
   const label = (id: string) => step.points.find((p) => p.id === id)?.label ?? id;
 
   return (
-    <ChallengeFrame context={context} prompt={context.fill(step.prompt)} onCheck={() => onAnswer({ edges })} canCheck={edges.length > 0} onReset={() => setEdges([])}>
+    <ChallengeFrame context={context} prompt={context.say(step.prompt, step.en?.prompt)} onCheck={() => onAnswer({ edges })} canCheck={edges.length > 0} onReset={() => setEdges([])}>
       <div className="connect-wrap">
         <svg className="connect-board" viewBox="0 0 100 100" data-id="connect-board" aria-label={`Đã nối: ${edges.map(([a, b]) => label(a) + label(b)).join(', ') || 'chưa có đoạn nào'}`}>
           {edges.map(([a, b]) => {

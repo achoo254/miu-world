@@ -8,7 +8,9 @@ import type { Ambient } from '@miu/voxel/world-entities';
 import type { GuardedGltfLoader } from '../asset-loader';
 import { seededRandom } from '../entities/seeded-random';
 import { AmbientActor, type ActorContext } from './ambient-actor';
+import { getLangMode } from '../../ui/i18n/i18n';
 import { AMBIENT_LINES } from './ambient-lines';
+import { AMBIENT_LINES_EN } from './ambient-lines-en';
 import { applyPose, applyWings, findPoseParts, resetPose, type PoseParts } from './ambient-poses';
 import { ROUTINES } from './ambient-routines';
 import { mergeParts } from './merge-parts';
@@ -179,13 +181,20 @@ export async function loadAmbientLife(loader: GuardedGltfLoader, ambients: reado
     // Its own copy of the spots: a visit adds one next to the child.
     const actor = new AmbientActor(def.id, spec, def.position, (def.yaw * Math.PI) / 180, { ...def.spots }, random);
     const bubble = createSpeechBubble();
-    const pickers = new Map<string, FreshPicker<string>>();
-    const line = (pool: string): string | null => {
+    const pickers = new Map<string, FreshPicker<number>>();
+    /** A line of the pool in the language shown (in Song ngữ the Vietnamese with the English under it). */
+    const line = (pool: string): { text: string; sub: string | null } | null => {
       const lines = AMBIENT_LINES[pool];
       if (!lines?.length) return null;
       let picker = pickers.get(pool);
-      if (!picker) pickers.set(pool, (picker = freshPicker(lines, random)));
-      return picker.next().replaceAll('{name}', options.playerName);
+      if (!picker) pickers.set(pool, (picker = freshPicker(lines.map((_, i) => i), random)));
+      const i = picker.next();
+      const fill = (text: string): string => text.replaceAll('{name}', options.playerName);
+      const vi = fill(lines[i] ?? '');
+      const en = fill(AMBIENT_LINES_EN[pool]?.[i] ?? vi);
+      const mode = getLangMode();
+      if (mode === 'en') return { text: en, sub: null };
+      return { text: vi, sub: mode === 'both' && en !== vi ? en : null };
     };
     const target: AmbientTarget & { position: number[]; available: boolean; labelHeight: number } = {
       id: def.id,
@@ -280,10 +289,10 @@ export async function loadAmbientLife(loader: GuardedGltfLoader, ambients: reado
   const say = (member: Member, pool: string, player: { x: number; y: number; z: number }, quiet: boolean): void => {
     const [x, y, z] = member.actor.position;
     if (quiet || Math.hypot(player.x - x, player.y - y, player.z - z) > HEAR_RADIUS) return;
-    const text = member.line(pool);
-    if (!text) return;
-    member.bubble.show(text);
-    stats.lastLine = text;
+    const said = member.line(pool);
+    if (!said) return;
+    member.bubble.show(said.text, said.sub);
+    stats.lastLine = said.text;
   };
 
   return {

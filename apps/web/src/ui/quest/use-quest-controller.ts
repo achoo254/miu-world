@@ -7,7 +7,8 @@ import type { QuestStepPublic } from '@miu/schema/content';
 import { SkillCheckResult, StepCompleteResponse, type QuestCompletion, type StepCompleteRequest } from '@miu/schema/game';
 import type { GameStore, InteractableKind } from '../../game-bridge/game-store';
 import { ApiError, api, errorMessage } from '../api-client';
-import { same, type Bilingual } from '../i18n/i18n';
+import { mapBoth, type Bilingual } from '../i18n/i18n';
+import { twin } from './content-text';
 import { say, type PlayerData } from '../player/player-data';
 import { TIMETABLE_TARGETS } from '../timetable/timetable-targets';
 import { DONE_LINES, FOUND_LINES, NOT_NOW_LINES, fillLine } from './loop-lines';
@@ -70,9 +71,14 @@ interface Options {
    * game). Returns true when it did, so no "not now" line is said.
    */
   onSideTarget?: (targetId: string) => boolean;
+  /**
+   * The character the child just took this quest from (a story chapter offered on its card): when the quest's first
+   * step to do is a dialogue at it, that dialogue opens as soon as the map is up.
+   */
+  openAt?: string | null;
 }
 
-export function useQuestController({ store, data, questId, onResponse, onOverlayChange, draftOwner = null, onSideTarget }: Options): QuestController {
+export function useQuestController({ store, data, questId, onResponse, onOverlayChange, draftOwner = null, onSideTarget, openAt = null }: Options): QuestController {
   const [overlay, setOverlayState] = useState<QuestOverlay>(null);
   const [finished, setFinished] = useState<FinishedQuest | null>(null);
   const [busy, setBusy] = useState(false);
@@ -93,6 +99,8 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   useEffect(() => {
     latest.current = { data, questId, overlay, busy, onResponse, onOverlayChange, draftOwner, onSideTarget };
   });
+  /** The character the quest was taken from, until its first line has opened. */
+  const openAtRef = useRef(openAt);
   /** The pending switch from the world's cheer to the reward screens. */
   const celebration = useRef<number | null>(null);
   useEffect(
@@ -186,7 +194,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
           }, celebrationMs());
         }
         // A wrong answer's line shows inside the step screen; only a right one becomes a toast.
-        if (response.feedback && response.correct) setToast(same(say(response.feedback, latest.current.data.character)));
+        if (response.feedback && response.correct) setToast(mapBoth(twin(response.feedback, response.feedbackEn), (line) => say(line, latest.current.data.character)));
         // A right answer to a learning step gets a burst of stars over the world as its screen closes.
         if (response.correct && (step.kind === 'read' || step.kind === 'riddle' || step.kind === 'challenge')) setCheers((n) => n + 1);
         if (response.correct) {
@@ -220,7 +228,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
     (step: QuestStepPublic): void => {
       const player = latest.current.data;
       if (step.kind === 'reward' || step.kind === 'next') {
-        setToast(same(say(step.text, player.character)));
+        setToast(mapBoth(twin(step.text, step.en?.text), (line) => say(line, player.character)));
         void submit(step);
         return;
       }
@@ -298,9 +306,15 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
         startStep(next);
         return;
       }
+      const on = currentStep(active.quest, active.progress);
+      // Taken from a character's card: its first line opens at once, where she stands beside it.
+      if (openAtRef.current && on?.kind === 'dialogue' && on.target === openAtRef.current) {
+        openAtRef.current = null;
+        startStep(on);
+        return;
+      }
       // A reload while a step's screen was open opens it again where the child was (step-draft.tsx).
       const owner = latest.current.draftOwner;
-      const on = currentStep(active.quest, active.progress);
       if (owner && on && on.kind !== 'search' && readDraft(owner, active.quest.id, on.id)?.open) startStep(on);
     };
     if (ready) onReady();

@@ -5,9 +5,12 @@ import type { QuestSummary } from '@miu/schema/game';
 /** A quest the child can open now: real content, not a "coming soon" stub (no quest is ever locked). */
 export const isPlayable = (summary: QuestSummary): boolean => summary.quest.status !== 'stub';
 
-/** Finished quests out of the region's real ones ("Hoàn thành: 4/12"); stubs are not counted. */
+/** A chapter of a character's story (listed after the lessons, never counted as one). */
+export const isStory = (summary: QuestSummary): boolean => summary.quest.status === 'active' && summary.quest.category === 'story';
+
+/** Finished lessons out of the region's real ones ("Hoàn thành: 4/12"); stubs and story chapters are not counted. */
 export function regionProgress(quests: readonly QuestSummary[]): { done: number; total: number } {
-  const real = quests.filter((q) => q.quest.status !== 'stub');
+  const real = quests.filter((q) => q.quest.status !== 'stub' && !isStory(q));
   return { done: real.filter((q) => q.state === 'completed').length, total: real.length };
 }
 
@@ -48,4 +51,26 @@ export function regionBooks(quests: readonly QuestSummary[], region: string): Re
     else books.set(textbook.book, { book: textbook.book, pages: [from, to], lessons: 1 });
   }
   return [...books.values()];
+}
+
+/** A character's story on the board: its chapters in order, under "Chuyện của <tên>". */
+export interface BoardStory {
+  npc: string;
+  npcName: string;
+  arc: string;
+  arcTitle: { vi: string; en: string };
+  chapters: QuestSummary[];
+}
+
+/** The region's story chapters grouped by story, in list order. */
+export function boardStories(quests: readonly QuestSummary[], region: string): BoardStory[] {
+  const stories = new Map<string, BoardStory>();
+  for (const summary of quests) {
+    const story = summary.quest.status === 'active' && summary.quest.region === region ? summary.quest.story : undefined;
+    if (!story) continue;
+    const known = stories.get(story.arc);
+    if (known) known.chapters.push(summary);
+    else stories.set(story.arc, { npc: story.npc, npcName: story.npcName, arc: story.arc, arcTitle: story.arcTitle, chapters: [summary] });
+  }
+  return [...stories.values()];
 }

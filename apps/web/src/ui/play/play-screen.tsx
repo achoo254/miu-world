@@ -229,6 +229,8 @@ export function PlayScreen() {
   const [decor, setDecor] = useState<Record<string, string> | null>(null);
   /** The map on screen loads after a gate: its loading screen is the trip through the portal. */
   const [viaPortal, setViaPortal] = useState(false);
+  /** The character whose card offered the quest on screen: its first line opens when the map is up. */
+  const [openAt, setOpenAt] = useState<string | null>(null);
   const spotOf = useRef<(() => PlayerPosition | null) | null>(null);
   const onSpotReader = useCallback((read: (() => PlayerPosition | null) | null): void => {
     spotOf.current = read;
@@ -327,8 +329,9 @@ export function PlayScreen() {
    * characters where the child stands now. The URL follows (a reload resumes the same quest) without a
    * router navigation, which would reload the player data.
    */
-  function switchQuest(next: QuestSummary, throughGate = false): void {
+  function switchQuest(next: QuestSummary, throughGate = false, from: string | null = null): void {
     setQuestsOpen(false);
+    setOpenAt(from);
     if (next.quest.id === questId) return;
     const spot = spotOf.current?.() ?? null;
     if (spot) setPositions((list) => [...(list ?? []).filter((p) => p.map !== spot.map), spot]);
@@ -454,7 +457,23 @@ export function PlayScreen() {
             </button>
           </Modal>
         ) : null}
-        {data ? <QuestLayer key={questId ?? 'none'} store={store} data={data} questId={quest?.quest.id ?? null} region={region} onResponse={onResponse} onOverlayChange={setQuestOpen} draftOwner={draftOwner} /> : null}
+        {data ? (
+          <QuestLayer
+            key={questId ?? 'none'}
+            store={store}
+            data={data}
+            questId={quest?.quest.id ?? null}
+            region={region}
+            onResponse={onResponse}
+            onOverlayChange={setQuestOpen}
+            draftOwner={draftOwner}
+            openAt={openAt}
+            onPlayQuest={(id, from) => {
+              const next = data.quests.find((q) => q.quest.id === id);
+              if (next) switchQuest(next, false, from);
+            }}
+          />
+        ) : null}
         {paused ? (
           <PauseScreen
             onResume={() => setPaused(false)}

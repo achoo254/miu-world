@@ -15,9 +15,10 @@ import { StarRating } from '../kit/star-rating';
 import { Toast } from '../kit/toast';
 import { MinigameOverlay, type WinOutcome } from '../minigame/minigame-overlay';
 import { MINIGAME_SPECS } from '../minigame/registry';
-import { mapBoth, pairOf, same, type Bilingual } from '../i18n/i18n';
+import { mapBoth, pairOf, type Bilingual } from '../i18n/i18n';
 import { Bi, useT } from '../i18n/use-t';
 import { say, type PlayerData } from '../player/player-data';
+import { Say, summaryOf, titleOf, twin } from './content-text';
 import { currentStep, runFor, type ActiveQuestView } from './quest-flow';
 import './side-quests.css';
 
@@ -70,6 +71,8 @@ export async function sendWonRun(side: SideQuest, score: number, onResponse: (re
 export interface SideQuests {
   /** Takes a touched target when its character offers a minigame; false otherwise. */
   claim: (targetId: string) => boolean;
+  /** Whether the character at a target offers a minigame (its card shows "Chơi trò chơi"). */
+  offers: (targetId: string) => boolean;
   /** True while one of its screens covers the game. */
   open: boolean;
   screens: ReactNode;
@@ -121,7 +124,7 @@ export function useSideQuests({ region, data, onResponse }: { region: string; da
     const shown = screen && screen.kind !== 'pick' ? quests.find((s) => s.quest.id === screen.id) : undefined;
     // A won game ends with its reward line from the character.
     const reward = shown?.quest.steps.find((s) => s.kind === 'reward');
-    if (won.current && reward && reward.kind === 'reward') setToast(same(say(reward.text, data.character)));
+    if (won.current && reward && reward.kind === 'reward') setToast(mapBoth(twin(reward.text, reward.en?.text), (line) => say(line, data.character)));
     setScreen(null);
   };
 
@@ -140,10 +143,13 @@ export function useSideQuests({ region, data, onResponse }: { region: string; da
         <div className="side-quest-games">
           {screen.quests.map((s) => {
             const step = minigameStep(s.quest);
-            const name = step && step.kind === 'challenge' && step.mechanic === 'minigame' ? (MINIGAME_SPECS.get(step.game)?.name ?? s.quest.title) : s.quest.title;
+            const spec = step && step.kind === 'challenge' && step.mechanic === 'minigame' ? MINIGAME_SPECS.get(step.game) : undefined;
+            const name = spec ? twin(spec.name, spec.en?.name) : titleOf(s.quest);
             return (
               <button key={s.quest.id} type="button" className="dialogue-choice dialogue-choice--main" data-id={`side-quest-${s.quest.id}`} onClick={() => setScreen({ kind: 'talk', id: s.quest.id })}>
-                <span>{name}</span>
+                <span>
+                  <Say text={name} fill={(line) => say(line, data.character)} />
+                </span>
                 {s.progress.stars ? <StarRating stars={s.progress.stars} size={24} /> : null}
               </button>
             );
@@ -158,7 +164,7 @@ export function useSideQuests({ region, data, onResponse }: { region: string; da
     const first = firstStep(shown.quest);
     body =
       first?.kind === 'dialogue' ? (
-        <DialogueScreen step={first} character={data.character} questSummary={say(shown.quest.summary, data.character)} busy={false} onDone={() => setScreen({ kind: 'play', id: shown.quest.id })} onClose={close} />
+        <DialogueScreen step={first} character={data.character} questSummary={summaryOf(shown.quest)} busy={false} onDone={() => setScreen({ kind: 'play', id: shown.quest.id })} onClose={close} />
       ) : null;
   } else if (screen?.kind === 'play' && shown) {
     const step = minigameStep(shown.quest);
@@ -172,6 +178,7 @@ export function useSideQuests({ region, data, onResponse }: { region: string; da
           playerName={data.character.name}
           species={data.character.species}
           prompt={step.prompt}
+          promptEn={step.en?.prompt}
           onWin={async (score) => {
             // Always the latest progress: a second win in a row is the next run.
             const current = latest.current.quests.find((s) => s.quest.id === shown.quest.id) ?? shown;
@@ -189,6 +196,7 @@ export function useSideQuests({ region, data, onResponse }: { region: string; da
   }
   return {
     claim,
+    offers: (targetId: string) => quests.some((s) => giverOf(s.quest) === targetId && minigameStep(s.quest) !== undefined),
     open: screen !== null,
     screens: (
       <>

@@ -6,6 +6,7 @@
 import { useCallback, useState } from 'react';
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
+import { useT } from '../i18n/use-t';
 import { ChallengeFrame, type ChallengeContext } from './challenge-frame';
 import { Illustration } from './illustrations/illustration';
 import { DROP_ZONE_ATTR, usePointerDrag } from './use-pointer-drag';
@@ -19,7 +20,12 @@ const STONE_LABEL_MAX = 6;
 export function SortChallenge({ step, context, onAnswer }: { step: SortStep; context: ChallengeContext; onAnswer: (answer: StepAnswer) => void }) {
   const [slots, setSlots] = useDraftState<Array<string | null>>('slots', () => step.items.map(() => null), (v): v is Array<string | null> => isSlotList(v) && v.length === step.items.length);
   const [selected, setSelected] = useState<string | null>(null);
-  const label = (id: string) => context.fill(step.items.find((i) => i.id === id)?.label ?? id);
+  /** An item's label as one string in the mode shown (the slots' aria labels, the stone or card text). */
+  const { inline } = useT();
+  const label = (id: string) => {
+    const index = step.items.findIndex((i) => i.id === id);
+    return inline(context.say(step.items[index]?.label ?? id, step.en?.items?.[index]));
+  };
 
   const put = useCallback((id: string, slot: number) => {
     setSlots((prev) => prev.map((current, i) => (i === slot ? id : current === id ? null : current)));
@@ -36,7 +42,7 @@ export function SortChallenge({ step, context, onAnswer }: { step: SortStep; con
   const dragProps = usePointerDrag(onDrop, onTap);
   const free = step.items.filter((item) => !slots.includes(item.id));
   const full = slots.every((s) => s !== null);
-  const cards = step.items.some((item) => item.image || context.fill(item.label).length > STONE_LABEL_MAX);
+  const cards = step.items.some((item) => item.image || label(item.id).length > STONE_LABEL_MAX);
   const content = (id: string) => {
     const item = step.items.find((i) => i.id === id);
     return (
@@ -50,7 +56,7 @@ export function SortChallenge({ step, context, onAnswer }: { step: SortStep; con
   return (
     <ChallengeFrame
       context={context}
-      prompt={context.fill(step.prompt)}
+      prompt={context.say(step.prompt, step.en?.prompt)}
       onCheck={() => onAnswer({ order: slots.filter((s): s is string => s !== null) })}
       canCheck={full}
       onReset={() => setSlots(step.items.map(() => null))}
@@ -65,7 +71,7 @@ export function SortChallenge({ step, context, onAnswer }: { step: SortStep; con
             data-id={`stone-${item.id}`}
             {...dragProps(item.id)}
           >
-            {cards ? content(item.id) : context.fill(item.label)}
+            {cards ? content(item.id) : label(item.id)}
           </button>
         ))}
       </div>
