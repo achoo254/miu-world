@@ -1,0 +1,242 @@
+{
+  "id": "yarn-gau-so-banh-cua-ba-1",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Chuyện của Gấu Bánh Ngọt, chương 1: Cuốn sổ bìa xanh",
+  "status": "active",
+  "category": "story",
+  "summary": "Gấu Bánh Ngọt muốn rán bánh rán mật ong theo sổ của bà, nhưng sáng nay chẳng nhớ để sổ ở đâu. {name} tìm sổ và cặp kính, đọc công thức, đếm thìa mật rồi phát hiện trang cuối đã bị xé mất.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Gấu Bánh Ngọt, Sẻ Nâu Mái Hiên",
+    "where": "Nhà của {name}: sân trước nhà, phòng khách, bếp và bàn ăn, cổng trước nhà",
+    "goal": "Tìm lại cuốn sổ bánh của bà Gấu và lần ra manh mối về trang cuối bị mất",
+    "play": "Tìm sổ, kính và bút chì theo lời tả; đọc công thức; đếm thìa mật; chọn cách tìm trang cuối; hỏi Sẻ Nâu",
+    "learn": "Đọc hiểu một công thức nấu ăn, cộng nhiều số bằng nhau (đếm cách hai)",
+    "reward": "60 XP, 15 Xu, Skill XP Đọc hiểu, Phép cộng",
+    "next": "Ra cầu tàu bên ao tìm chiếc thuyền giấy năm xưa"
+  },
+  "phases": {
+    "hook": "gau-goi",
+    "explore": "tim-so-va-kinh",
+    "learn": "doc-cong-thuc",
+    "challenge": "dem-thia-mat",
+    "decision": "trang-bi-xe",
+    "finale": "hoi-se-nau",
+    "reward": "banh-thu-dau-tien",
+    "next": "hen-ra-ao"
+  },
+  "places": {
+    "gau-banh-ngot": "Sân trước nhà",
+    "tim-so-va-kinh": "Phòng khách",
+    "st-gau-so-banh-cua-ba-so-bia-xanh": "Phòng khách",
+    "st-gau-so-banh-cua-ba-cap-kinh": "Phòng khách",
+    "st-gau-so-banh-cua-ba-but-chi": "Phòng khách",
+    "st-gau-so-banh-cua-ba-hu-mat": "Bếp và bàn ăn",
+    "st-gau-so-banh-cua-ba-se-nau": "Cổng trước nhà"
+  },
+  "steps": [
+    {
+      "id": "gau-goi",
+      "title": "Gấu mất sổ",
+      "goTo": "Gấu Bánh Ngọt đang cuống quýt ngoài sân trước nhà",
+      "kind": "dialogue",
+      "target": "gau-banh-ngot",
+      "lines": [
+        { "speaker": "Gấu Bánh Ngọt", "text": "Một thìa, hai thìa… ơ, {name} đấy à! Hôm nay Gấu định rán bánh rán mật ong theo cuốn sổ bánh của bà Gấu." },
+        { "speaker": "Gấu Bánh Ngọt", "text": "Khổ nỗi tối qua Gấu đọc sổ trên ghế phòng khách rồi ngủ quên. Sáng ra sổ biến mất, cặp kính cũng đi theo." },
+        { "speaker": "Gấu Bánh Ngọt", "text": "Không có kính, Gấu đọc chữ «muối» thành chữ «mật» mất. {name} tìm giúp Gấu với!" }
+      ],
+      "choices": [
+        { "text": "Để tớ lục phòng khách xem!", "reply": "Nhớ nhìn cả dưới gối ghế nhé, Gấu hay nhét đồ vào đấy lắm." },
+        { "text": "Bánh của bà chắc ngon lắm nhỉ?", "reply": "Ngon tới mức hồi xưa bà phải giấu sổ trên nóc tủ! Đi tìm thôi." }
+      ],
+      "en": {
+        "title": "Gấu's missing book",
+        "goTo": "Gấu Bánh Ngọt is in a flap out in the front yard",
+        "lines": [
+          "One spoon, two spoons… oh, it's you, {name}! Today I'm frying honey doughnuts from my grandmother's recipe book.",
+          "Trouble is, I read it on the living room sofa last night and fell asleep. This morning the book was gone, and my glasses with it.",
+          "Without my glasses I'd read “salt” as “honey”. Please help me find them, {name}!"
+        ],
+        "choices": [
+          { "text": "I'll search the living room!", "reply": "Check under the sofa cushions; I stuff things down there all the time." },
+          { "text": "Your grandma's doughnuts must be amazing.", "reply": "So amazing she used to hide the book on top of the cupboard! Let's go look." }
+        ]
+      }
+    },
+    {
+      "id": "tim-so-va-kinh",
+      "title": "Tìm sổ và kính",
+      "goTo": "Vào phòng khách tìm cuốn sổ và cặp kính của Gấu",
+      "kind": "find-object",
+      "prompt": "Gấu ngủ quên trên ghế nên đồ đạc rơi khắp nơi. Đọc lời tả rồi tìm từng món:",
+      "skill": "doc-hieu",
+      "items": [
+        { "id": "so-bia-xanh", "name": "Cuốn sổ bìa xanh", "clue": "Bìa xanh như lá chuối non, gáy sờn, mở ra thoang thoảng mùi bơ.", "target": "st-gau-so-banh-cua-ba-so-bia-xanh" },
+        { "id": "cap-kinh", "name": "Cặp kính tròn của Gấu", "clue": "Hai mắt kính tròn xoe, trên gọng còn dính một vệt bột trắng.", "target": "st-gau-so-banh-cua-ba-cap-kinh" },
+        { "id": "but-chi", "name": "Cây bút chì kẹp sổ", "clue": "Gấu dùng nó để đánh dấu trang, đầu bút cùn vì Gấu hay gặm khi nghĩ.", "target": "st-gau-so-banh-cua-ba-but-chi" }
+      ],
+      "en": {
+        "title": "Find the book and the glasses",
+        "goTo": "Go into the living room to find Gấu's book and glasses",
+        "prompt": "Gấu dozed off on the sofa and her things scattered everywhere. Read each description and find them:",
+        "items": [
+          { "name": "The green notebook", "clue": "A cover green as a young banana leaf, a worn spine, and a faint smell of butter when it opens." },
+          { "name": "Gấu's round glasses", "clue": "Two perfectly round lenses, with a smear of white flour still on the frame." },
+          { "name": "The bookmark pencil", "clue": "Gấu marks her page with it; the tip is blunt because she chews it while thinking." }
+        ]
+      }
+    },
+    {
+      "id": "doc-cong-thuc",
+      "title": "Công thức của bà",
+      "kind": "read",
+      "target": "st-gau-so-banh-cua-ba-so-bia-xanh",
+      "skill": "doc-hieu",
+      "text": "Bánh rán mật ong của bà (đủ 6 chiếc)\n– 2 bát bột nếp, 1 quả trứng, 1 nhúm muối.\n– Nhào bột cho tới khi mềm như dái tai.\n– Viên bột tròn bằng quả trứng chim cút, rán lửa nhỏ.\n– Mỗi chiếc rưới 2 thìa mật ong.\n– Bước cuối: (xem trang sau)",
+      "question": "Theo sổ của bà, nhào bột tới khi nào thì được?",
+      "choices": [
+        { "id": "a", "text": "Khi bột cứng như hòn đá" },
+        { "id": "b", "text": "Khi bột mềm như dái tai" },
+        { "id": "c", "text": "Khi bột nở to gấp đôi" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm dòng có chữ «nhào bột».", "Đọc phần đứng ngay sau chữ «cho tới khi»."],
+        "hint": "Bà so bột với một chỗ trên người mình, sờ thử là thấy mềm.",
+        "answer": { "text": "Nhào tới lúc bột mềm như dái tai là được", "explanation": "Sổ ghi rõ: nhào bột cho tới khi mềm như dái tai." },
+        "en": {
+          "guide": ["Find the line with the word “knead”.", "Read what comes right after “until”."],
+          "hint": "Grandma compares the dough to a part of your own body; touch it and feel how soft it is.",
+          "answer": { "text": "Knead until it feels as soft as an earlobe", "explanation": "The book says: knead until the dough is as soft as an earlobe." }
+        }
+      },
+      "feedback": {
+        "right": ["Đúng rồi, Gấu véo dái tai mình thử luôn: mềm thật!", "{name} đọc sổ còn nhanh hơn Gấu đeo kính.", "Bột mềm như dái tai, Gấu nhớ rồi, lần này không quên nữa!"],
+        "wrong": ["Bột cứng như đá thì rán xong gãy răng mất, {name} đọc lại dòng thứ ba nhé.", "Bà không nói tới chuyện bột nở đâu, tìm chữ «nhào bột» xem.", "Gần đúng rồi, chỉ cần nhìn kỹ phần sau chữ «cho tới khi» thôi."],
+        "en": {
+          "right": ["Right! Gấu pinches her own earlobe to check: soft indeed!", "You read that book faster than I can put my glasses on, {name}.", "Soft as an earlobe, got it, and this time I won't forget!"],
+          "wrong": ["Stone-hard dough would break our teeth, {name}. Read the third line again.", "Grandma says nothing about the dough rising; look for the word “knead”.", "Almost there, just look closely at what comes after “until”."]
+        }
+      },
+      "en": {
+        "title": "Grandma's recipe",
+        "text": "Grandma's honey doughnuts (makes 6)\n– 2 bowls of glutinous rice flour, 1 egg, 1 pinch of salt.\n– Knead until the dough is as soft as an earlobe.\n– Roll balls the size of a quail egg, fry on a low flame.\n– Pour 2 spoons of honey over each one.\n– Last step: (see next page)",
+        "question": "According to Grandma's book, when is the dough kneaded enough?",
+        "choices": ["When it's as hard as a stone", "When it's as soft as an earlobe", "When it has doubled in size"]
+      }
+    },
+    {
+      "id": "dem-thia-mat",
+      "title": "Đếm thìa mật",
+      "goTo": "Mang sổ vào bếp và bàn ăn, nơi Gấu để hũ mật ong",
+      "kind": "riddle",
+      "target": "st-gau-so-banh-cua-ba-hu-mat",
+      "skill": "phep-cong",
+      "question": "Sổ ghi mỗi chiếc bánh rưới 2 thìa mật ong. Mẻ này có 6 chiếc. Gấu cần tất cả bao nhiêu thìa mật?",
+      "answer": { "value": 12 },
+      "support": {
+        "guide": ["Mỗi chiếc bánh là 2 thìa mật.", "Đếm thêm hai, đủ sáu lần: 2, 4, 6…"],
+        "hint": "Bày sáu chiếc bánh ra, cạnh mỗi chiếc đặt hai thìa rồi đếm hết số thìa.",
+        "answer": { "text": "12 thìa", "explanation": "2 + 2 + 2 + 2 + 2 + 2 = 12, nên sáu chiếc bánh cần 12 thìa mật ong." },
+        "en": {
+          "guide": ["Each doughnut gets 2 spoons.", "Count on by twos, six times: 2, 4, 6…"],
+          "hint": "Picture six doughnuts with two spoons beside each, then count every spoon.",
+          "answer": { "text": "12 spoons", "explanation": "2 + 2 + 2 + 2 + 2 + 2 = 12, so six doughnuts need 12 spoons of honey." }
+        }
+      },
+      "feedback": {
+        "right": ["Mười hai thìa, Gấu đong ngay, không sót giọt nào!", "Đếm cách hai giỏi ghê, {name} làm thợ bánh được rồi.", "Đủ mật cho sáu chiếc bánh, thơm chưa nào? Thơm rồi!"],
+        "wrong": ["Thiếu mật thì bánh nhạt lắm, {name} đếm lại từng chiếc nhé.", "Mỗi chiếc những hai thìa cơ, đừng quên tính đủ cả hai.", "Gấu bày sáu chiếc bánh ra bàn rồi, {name} đếm thìa cạnh từng chiếc xem."],
+        "en": {
+          "right": ["Twelve spoons! Gấu measures them out without spilling a drop.", "Counting in twos like a pro, {name}; you could be a baker already.", "Enough honey for six doughnuts. Smell that? Smells done!"],
+          "wrong": ["Too little honey makes a bland doughnut, {name}; count each one again.", "Each doughnut gets two whole spoons, so count both every time.", "Gấu has laid six doughnuts on the table; count the spoons beside each one."]
+        }
+      },
+      "en": {
+        "title": "Counting spoons of honey",
+        "goTo": "Take the book to the kitchen table, where Gấu keeps the honey jar",
+        "question": "The book says 2 spoons of honey for each doughnut. This batch has 6. How many spoons of honey does Gấu need in all?"
+      }
+    },
+    {
+      "id": "trang-bi-xe",
+      "title": "Trang cuối bị xé",
+      "goTo": "Chạy ra sân trước nhà báo Gấu: trang cuối không còn nữa",
+      "kind": "decision",
+      "target": "gau-banh-ngot",
+      "speaker": "Gấu Bánh Ngọt",
+      "prompt": "Lật sang trang sau chỉ còn một mép giấy rách. Không có bước cuối, Gấu nên làm gì đây?",
+      "choices": [
+        { "id": "ran-thu", "text": "Cứ rán thử, nếm rồi đoán bước cuối", "consequence": "Chiếc bánh vàng ươm, Gấu cắn một miếng rồi lắc đầu: «Ngon, nhưng chưa phải bánh của bà. Thiếu gì đó… Hay mình hỏi Sẻ Nâu trên cổng?»" },
+        { "id": "hoi-hang-xom", "text": "Hỏi ai sống quanh nhà từ hồi Gấu còn bé", "consequence": "Gấu vỗ trán: «Sẻ Nâu trên cổng ở đây lâu lắm rồi, chắc Sẻ còn nhớ!»" }
+      ],
+      "en": {
+        "title": "The torn-out page",
+        "goTo": "Run out to the front yard and tell Gấu the last page is gone",
+        "prompt": "Turning the page shows only a torn edge. Without the last step, what should Gấu do?",
+        "choices": [
+          { "text": "Fry one anyway, taste it and guess the last step", "consequence": "The doughnut comes out golden. Gấu takes a bite and shakes her head: “Tasty, but not Grandma's. Something's missing… Shall we ask Sẻ Nâu on the gate?”" },
+          { "text": "Ask whoever has lived around the house since Gấu was a cub", "consequence": "Gấu slaps her forehead: “Sẻ Nâu on the gate has been here forever, she's sure to remember!”" }
+        ]
+      }
+    },
+    {
+      "id": "hoi-se-nau",
+      "title": "Sẻ Nâu nhớ lại",
+      "goTo": "Ra cổng trước nhà hỏi Sẻ Nâu Mái Hiên",
+      "kind": "dialogue",
+      "target": "st-gau-so-banh-cua-ba-se-nau",
+      "lines": [
+        { "speaker": "Sẻ Nâu Mái Hiên", "text": "Chíp! Trang giấy thơm mùi bơ à? Hồi Gấu còn bé tí, tớ thấy một chiếc thuyền giấy viết chữ nghiêng nghiêng trôi trên ao." },
+        { "speaker": "Sẻ Nâu Mái Hiên", "text": "Thuyền mắc vào cọc cầu tàu, rồi có người vớt lên cất vào hộp gỗ ở đó. Cậu ra cầu tàu bên ao mà tìm." }
+      ],
+      "choices": [
+        { "text": "Chữ nghiêng nghiêng… giống chữ trong sổ của bà quá!", "reply": "Thì đấy! Mà hồi đó Gấu con suốt ngày ngồi gấp thuyền giấy ngoài sân, chíp chíp." }
+      ],
+      "en": {
+        "title": "Sẻ Nâu remembers",
+        "goTo": "Go to the front gate and ask Sẻ Nâu Mái Hiên",
+        "lines": [
+          "Cheep! A page that smells of butter? When Gấu was tiny, I saw a paper boat with slanted handwriting floating on the pond.",
+          "It snagged on a post of the pier, and someone fished it out and kept it in the wooden box there. Go and look on the pier by the pond."
+        ],
+        "choices": [
+          { "text": "Slanted handwriting… just like in Grandma's book!", "reply": "Exactly! And back then little Gấu sat in the yard folding paper boats all day long, cheep cheep." }
+        ]
+      }
+    },
+    {
+      "id": "banh-thu-dau-tien",
+      "title": "Chiếc bánh thử đầu tiên",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Bánh Ngọt ôm cuốn sổ vào lòng, dúi cho {name} chiếc bánh rán thử đầu tiên: «Chưa đúng vị bà, nhưng là vị cảm ơn!»",
+      "en": {
+        "title": "The first trial doughnut",
+        "text": "Gấu Bánh Ngọt hugs the book and slips {name} the first trial doughnut: “Not Grandma's flavour yet, but it tastes of thank-you!”"
+      }
+    },
+    {
+      "id": "hen-ra-ao",
+      "title": "Hẹn ra bờ ao",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mai {name} cùng Gấu ra cầu tàu bên ao tìm chiếc thuyền giấy năm xưa. Gấu cứ lẩm bẩm: «Thuyền giấy… sao nghe quen quá nhỉ?»",
+      "en": {
+        "title": "See you at the pond",
+        "text": "Tomorrow {name} and Gấu head to the pier to find that old paper boat. Gấu keeps muttering: “A paper boat… why does that sound so familiar?”"
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": { "doc-hieu": 1, "phep-cong": 1 }
+  },
+  "en": {
+    "title": "Gấu Bánh Ngọt's story, chapter 1: The green notebook",
+    "summary": "Gấu Bánh Ngọt wants to fry honey doughnuts from her grandmother's recipe book, but this morning she can't remember where she left it. {name} finds the book and her glasses, reads the recipe, counts the spoons of honey and discovers the last page has been torn out."
+  }
+}

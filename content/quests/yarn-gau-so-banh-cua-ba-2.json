@@ -1,0 +1,260 @@
+{
+  "id": "yarn-gau-so-banh-cua-ba-2",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Chuyện của Gấu Bánh Ngọt, chương 2: Chiếc thuyền giấy năm xưa",
+  "status": "active",
+  "category": "story",
+  "summary": "Theo lời Sẻ Nâu, {name} ra cầu tàu bên ao tìm chiếc hộp gỗ cất đồ vớt được, giải khóa hình cá, hong khô trang giấy ẩm rồi đọc bước cuối của bà. Góc trang có một hình vẽ khiến Gấu đỏ bừng mặt.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Gấu Bánh Ngọt",
+    "where": "Nhà của {name}: sân trước nhà, cầu tàu bên ao, cầu thang, góc học tập",
+    "goal": "Tìm lại trang cuối sổ bánh và đọc bước cuối bà để lại",
+    "play": "Lục quanh cầu tàu; giải khóa hình cá trên nắp hộp; chọn cách hong khô giấy; đọc bước cuối; nói chuyện với Gấu",
+    "learn": "Tìm quy luật của một dãy số, chọn cách làm đúng, đọc hiểu",
+    "reward": "65 XP, 16 Xu, Skill XP Logic, Đọc hiểu",
+    "next": "Đi chào đàn ong để xin mật hoa vườn nhà"
+  },
+  "phases": {
+    "hook": "gau-nho-lai",
+    "explore": "luc-quanh-cau-tau",
+    "learn": "khoa-hinh-ca",
+    "challenge": "hong-kho-trang-giay",
+    "decision": "hinh-gau-con",
+    "finale": "hinh-gau-con",
+    "reward": "trang-giay-ve-nha",
+    "next": "to-ong-sau-vuon"
+  },
+  "places": {
+    "gau-banh-ngot": "Sân trước nhà",
+    "luc-quanh-cau-tau": "Cầu tàu bên ao",
+    "st-gau-so-banh-cua-ba-coc-cau": "Cầu tàu bên ao",
+    "st-gau-so-banh-cua-ba-xo-vot": "Cầu tàu bên ao",
+    "st-gau-so-banh-cua-ba-hop-go": "Cầu tàu bên ao",
+    "st-gau-so-banh-cua-ba-cua-so": "Cầu thang",
+    "st-gau-so-banh-cua-ba-trang-giay": "Góc học tập"
+  },
+  "steps": [
+    {
+      "id": "gau-nho-lai",
+      "title": "Gấu nhớ mang máng",
+      "goTo": "Gấu Bánh Ngọt đứng đợi ở sân trước nhà, tay ôm cuốn sổ",
+      "kind": "dialogue",
+      "target": "gau-banh-ngot",
+      "lines": [
+        { "speaker": "Gấu Bánh Ngọt", "text": "Cả đêm Gấu nằm nghĩ về chiếc thuyền giấy. Hồi bé Gấu mê gấp thuyền lắm, gặp tờ giấy nào cũng gấp." },
+        { "speaker": "Gấu Bánh Ngọt", "text": "Không lẽ… thôi, chưa chắc đâu! {name} ra ao tìm chiếc hộp gỗ trước nhé, Gấu đi sau, chân Gấu hơi run." }
+      ],
+      "choices": [
+        { "text": "Có gì tớ ở ngay bên cạnh Gấu mà.", "reply": "Ừ. Có {name} đi trước thì chân Gấu đỡ run hẳn." },
+        { "text": "Gấp thuyền giấy vui lắm, có gì sai đâu!", "reply": "Gấp thì không sai… gấp bằng trang sổ của bà mới chết chứ!" }
+      ],
+      "en": {
+        "title": "Gấu half remembers",
+        "goTo": "Gấu Bánh Ngọt is waiting in the front yard, hugging the book",
+        "lines": [
+          "I lay awake all night thinking about that paper boat. As a cub I folded boats out of every scrap of paper I found.",
+          "Surely not… no, can't be sure yet! {name}, find the wooden box at the pond first. I'll follow; my knees are a bit wobbly."
+        ],
+        "choices": [
+          { "text": "I'll be right beside you, Gấu.", "reply": "Okay. With you leading the way, my knees feel much steadier." },
+          { "text": "Folding paper boats is fun, nothing wrong with that!", "reply": "Folding isn't wrong… folding Grandma's recipe page would be!" }
+        ]
+      }
+    },
+    {
+      "id": "luc-quanh-cau-tau",
+      "title": "Lục quanh cầu tàu",
+      "goTo": "Ra cầu tàu bên ao, tìm những dấu vết Sẻ Nâu kể",
+      "kind": "search",
+      "targets": ["st-gau-so-banh-cua-ba-coc-cau", "st-gau-so-banh-cua-ba-xo-vot", "st-gau-so-banh-cua-ba-hop-go"],
+      "en": {
+        "title": "Searching the pier",
+        "goTo": "Go to the pier by the pond and look for the clues Sẻ Nâu described"
+      }
+    },
+    {
+      "id": "khoa-hinh-ca",
+      "title": "Khóa hình cá trên nắp hộp",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "st-gau-so-banh-cua-ba-hop-go",
+      "skill": "logic",
+      "prompt": "Nắp hộp gỗ khắc một hàng ô cá, ô cuối còn trống. Xoay ô cuối tới đúng số cá thì hộp mở:",
+      "elements": [
+        { "id": "o-mot", "label": "1 con cá" },
+        { "id": "o-hai", "label": "3 con cá" },
+        { "id": "o-ba", "label": "5 con cá" }
+      ],
+      "choices": [
+        { "id": "a", "text": "6 con cá" },
+        { "id": "b", "text": "7 con cá" },
+        { "id": "c", "text": "8 con cá" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["So ô thứ hai với ô thứ nhất: thêm mấy con cá?", "Ô thứ ba so với ô thứ hai cũng thêm từng ấy con."],
+        "hint": "Cứ mỗi ô lại thêm 2 con cá.",
+        "answer": { "text": "Ô cuối có 7 con cá", "explanation": "1, 3, 5: mỗi ô thêm 2 con cá, nên ô cuối là 5 + 2 = 7." },
+        "en": {
+          "guide": ["Compare box two with box one: how many fish were added?", "Box three adds the same number to box two."],
+          "hint": "Every box adds 2 more fish.",
+          "answer": { "text": "The last box holds 7 fish", "explanation": "1, 3, 5: each box adds 2 fish, so the last box is 5 + 2 = 7." }
+        }
+      },
+      "feedback": {
+        "right": ["Cạch! Nắp hộp bật ra, mùi giấy cũ bay lên thơm thơm.", "{name} nhìn ra quy luật nhanh như cá quẫy đuôi.", "Bảy con cá xếp hàng, hộp gỗ chịu thua rồi!"],
+        "wrong": ["Nắp hộp vẫn im re, {name} đếm xem mỗi ô thêm mấy con nhé.", "Hàng cá này tăng đều đặn, không nhảy cóc đâu.", "Thử cộng vào ô thứ ba đúng số cá như các ô trước đã thêm xem."],
+        "en": {
+          "right": ["Click! The lid pops open and the smell of old paper drifts out.", "You spotted the pattern quick as a flick of a fish tail, {name}.", "Seven fish in a row, and the wooden box gives up!"],
+          "wrong": ["The lid won't budge, {name}; count how many fish each box adds.", "This row of fish grows steadily; it never skips ahead.", "Try adding to box three the same number of fish the others added."]
+        }
+      },
+      "en": {
+        "title": "The fish lock on the lid",
+        "prompt": "The lid of the wooden box is carved with a row of fish boxes, and the last one is blank. Turn it to the right number of fish to open the box:",
+        "elements": ["1 fish", "3 fish", "5 fish"],
+        "choices": ["6 fish", "7 fish", "8 fish"]
+      }
+    },
+    {
+      "id": "hong-kho-trang-giay",
+      "title": "Hong khô trang giấy",
+      "goTo": "Mang trang giấy ẩm lên ô cửa sổ đầy nắng ở cầu thang",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-gau-so-banh-cua-ba-cua-so",
+      "skill": "logic",
+      "prompt": "Trang giấy trong hộp còn ẩm, chữ nhòe mờ. Chọn tất cả những cách làm khô giấy mà không làm rách:",
+      "choices": [
+        { "id": "giay-tham", "text": "Kẹp giữa hai tờ giấy thấm" },
+        { "id": "vat-manh", "text": "Vắt mạnh như vắt khăn" },
+        { "id": "nang-nhe", "text": "Đặt chỗ có nắng nhẹ, gió êm" },
+        { "id": "ho-lua", "text": "Hơ sát ngọn lửa cho nhanh" }
+      ],
+      "answer": { "choices": ["giay-tham", "nang-nhe"] },
+      "support": {
+        "guide": ["Giấy ướt rất dễ rách, nên bỏ việc nào phải kéo, vắt mạnh.", "Lửa có thể làm cháy giấy, nắng nhẹ thì không."],
+        "hint": "Có hai cách đúng: một cách hút bớt nước, một cách để nước bay hơi từ từ.",
+        "answer": { "text": "Dùng giấy thấm và nắng nhẹ, gió êm", "explanation": "Giấy thấm hút bớt nước, nắng nhẹ và gió êm làm khô từ từ. Vắt mạnh làm rách giấy, hơ lửa dễ cháy." },
+        "en": {
+          "guide": ["Wet paper tears easily, so rule out anything that pulls or squeezes hard.", "A flame can scorch paper; gentle sun cannot."],
+          "hint": "Two ways are right: one soaks up water, one lets it dry slowly.",
+          "answer": { "text": "Blotting paper, then soft sun and a breeze", "explanation": "Blotting paper soaks up the water, and soft sun with a breeze dries it slowly. Wringing tears paper, and a flame may burn it." }
+        }
+      },
+      "feedback": {
+        "right": ["Trang giấy phẳng dần, từng nét chữ hiện lên như được tắm nắng.", "Nhẹ tay và kiên nhẫn, đúng kiểu {name} rồi!", "Giấy khô mà không rách một mép nào, Gấu thở phào."],
+        "wrong": ["Ối, vắt kiểu ấy thì trang giấy rách làm đôi mất!", "Lửa với giấy là đôi bạn không nên ngồi gần nhau đâu {name}.", "Còn một cách đúng nữa chưa chọn, hoặc lỡ chọn thừa một cách rồi."],
+        "en": {
+          "right": ["The page flattens bit by bit, every word surfacing as if it were sunbathing.", "Gentle hands and patience, that's so you, {name}!", "Dry without a single torn edge. Gấu lets out a big sigh of relief."],
+          "wrong": ["Yikes, wringing it like that would rip the page in two!", "Fire and paper are friends who shouldn't sit together, {name}.", "Either one right way is still unpicked, or an extra one crept in."]
+        }
+      },
+      "en": {
+        "title": "Drying the page",
+        "goTo": "Carry the damp page up to the sunny window on the stairs",
+        "prompt": "The page in the box is still damp and the words are blurry. Pick every way to dry paper without tearing it:",
+        "choices": ["Press it between two sheets of blotting paper", "Wring it hard like a towel", "Lay it in soft sunlight and a gentle breeze", "Hold it right over a flame to speed things up"]
+      }
+    },
+    {
+      "id": "doc-buoc-cuoi",
+      "title": "Bước cuối hiện ra",
+      "goTo": "Đặt trang giấy đã khô lên bàn ở góc học tập để đọc",
+      "kind": "read",
+      "target": "st-gau-so-banh-cua-ba-trang-giay",
+      "skill": "doc-hieu",
+      "text": "…Bước cuối: rưới mật ong lấy từ hoa trong vườn nhà mình. Mật mua ngoài chợ thì bánh vẫn ngon, nhưng không thơm mùi nhà.\nTái bút: Muốn xin mật, nhớ chào đàn ong trước nhé.\n(Góc trang có hình một chú gấu con vẽ bằng bút chì, đang cười toe.)",
+      "question": "Theo trang giấy, mật ong cho bước cuối phải lấy ở đâu?",
+      "choices": [
+        { "id": "a", "text": "Mua ngoài chợ cho tiện" },
+        { "id": "b", "text": "Từ hoa trong vườn nhà mình" },
+        { "id": "c", "text": "Từ tổ ong trong rừng sâu" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm câu bắt đầu bằng «Bước cuối».", "Câu ngay sau đó nói mật mua ngoài chợ thiếu điều gì?"],
+        "hint": "Bà muốn bánh thơm mùi nhà.",
+        "answer": { "text": "Mật lấy từ hoa của chính khu vườn nhà", "explanation": "Trang giấy ghi: rưới mật ong lấy từ hoa trong vườn nhà mình; mật chợ thì không thơm mùi nhà." },
+        "en": {
+          "guide": ["Find the sentence that starts with “Last step”.", "What does the next sentence say market honey lacks?"],
+          "hint": "Grandma wants the doughnuts to smell of home.",
+          "answer": { "text": "Honey made from the home garden's own flowers", "explanation": "The page says: pour on honey from the flowers of our own garden; market honey won't smell of home." }
+        }
+      },
+      "feedback": {
+        "right": ["Mật hoa vườn nhà! Gấu chép ngay vào sổ, chữ to tướng.", "{name} đọc ra đúng điều bà dặn từ bao năm trước.", "Thì ra thiếu vị nhà! Gấu biết phải làm gì rồi… hình như vậy."],
+        "wrong": ["Bà có nhắc tới chợ, nhưng là để nói mật chợ thiếu gì đấy, {name}.", "Rừng sâu xa lắm, trang giấy chỉ nói tới khu vườn thôi.", "Đọc kỹ câu «Bước cuối» thêm một lần nữa nha."],
+        "en": {
+          "right": ["Honey from our own garden! Gấu copies it into the book in huge letters.", "You found exactly what Grandma wrote all those years ago, {name}.", "So the missing flavour is home! Gấu knows what to do now… probably."],
+          "wrong": ["Grandma does mention the market, {name}, but only to say what its honey lacks.", "The deep forest is far away; the page only talks about the garden.", "Read the “Last step” sentence carefully one more time."]
+        }
+      },
+      "en": {
+        "title": "The last step appears",
+        "goTo": "Lay the dry page on the desk in the study corner to read it",
+        "text": "…Last step: pour on honey from the flowers of our own garden. Market honey still tastes good, but it won't smell of home.\nP.S. To ask for honey, remember to greet the bees first.\n(In the corner, a bear cub drawn in pencil grins from ear to ear.)",
+        "question": "According to the page, where must the honey for the last step come from?",
+        "choices": ["From the market, it's easier", "From the flowers of our own garden", "From a hive deep in the forest"]
+      }
+    },
+    {
+      "id": "hinh-gau-con",
+      "title": "Hình gấu con trong góc trang",
+      "goTo": "Mang trang giấy ra sân trước nhà cho Gấu xem",
+      "kind": "decision",
+      "target": "gau-banh-ngot",
+      "speaker": "Gấu Bánh Ngọt",
+      "prompt": "Gấu nhìn hình gấu con rồi đỏ bừng mặt: «Hình này… Gấu vẽ. Chính Gấu đã gấp trang này thành thuyền!» Lại còn chuyện xin mật phải chào đàn ong, mà Gấu sợ ong nhất đời. {name} nói gì với Gấu?",
+      "choices": [
+        { "id": "an-ui", "text": "Hồi đó Gấu còn bé mà, chắc bà chẳng giận đâu", "consequence": "Gấu sụt sịt: «Bà còn vẽ thêm một mặt cười cạnh hình Gấu nữa này… Có lẽ bà biết từ lâu rồi.»" },
+        { "id": "di-cung", "text": "Tớ sẽ đi chào đàn ong cùng Gấu", "consequence": "Gấu nắm chặt tay {name}: «Đi cùng thì… Gấu thử. Nhưng {name} đứng trước nhé, một chút thôi!»" },
+        { "id": "hoi-tho", "text": "Hỏi Thỏ Làm Vườn xem tổ ong ở đâu", "consequence": "Gấu gật gù: «Thỏ bảo đàn ong hay bay về phía cối xay gió. Mai mình đi, sáng sớm, lúc ong còn ngái ngủ.»" }
+      ],
+      "en": {
+        "title": "The bear cub in the corner",
+        "goTo": "Take the page out to Gấu in the front yard",
+        "prompt": "Gấu looks at the bear cub and turns bright red: “That drawing… I drew it. I folded this page into a boat!” And asking for honey means greeting the bees, which scare her most of all. What do you say to Gấu?",
+        "choices": [
+          { "text": "You were tiny back then, Grandma surely wasn't cross", "consequence": "Gấu sniffles: “Look, Grandma drew a smiley face next to my bear… Maybe she knew all along.”" },
+          { "text": "I'll go and greet the bees with you", "consequence": "Gấu squeezes {name}'s hand: “If we go together… I'll try. But you stand in front, just a little!”" },
+          { "text": "Ask Thỏ Làm Vườn where the hive is", "consequence": "Gấu nods: “Thỏ says the bees fly toward the windmill. We'll go early tomorrow, while they're still sleepy.”" }
+        ]
+      }
+    },
+    {
+      "id": "trang-giay-ve-nha",
+      "title": "Trang giấy về nhà",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu kẹp trang giấy vào lại cuốn sổ bìa xanh, dán băng dính thật cẩn thận, rồi tặng {name} một túi bánh quy hình thuyền.",
+      "en": {
+        "title": "The page comes home",
+        "text": "Gấu tucks the page back into the green notebook, tapes it in very carefully, and gives {name} a bag of boat-shaped biscuits."
+      }
+    },
+    {
+      "id": "to-ong-sau-vuon",
+      "title": "Tổ ong sau vườn",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bước cuối cần mật hoa vườn nhà, mà muốn xin mật thì phải chào đàn ong. Gấu đã chuẩn bị… một cái nồi để đội lên đầu. {name} sẽ phải giúp Gấu nhiều đấy.",
+      "en": {
+        "title": "The hive past the garden",
+        "text": "The last step needs honey from the garden, and asking for honey means greeting the bees. Gấu has prepared… a pot to wear on her head. She'll need a lot of help, {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": { "logic": 1, "doc-hieu": 1 }
+  },
+  "en": {
+    "title": "Gấu Bánh Ngọt's story, chapter 2: The paper boat of long ago",
+    "summary": "Following Sẻ Nâu's tip, {name} searches the pier by the pond for the box of fished-out things, cracks the fish lock, dries the damp page and reads Grandma's last step. A drawing in the corner makes Gấu blush bright red."
+  }
+}

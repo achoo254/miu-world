@@ -1,0 +1,217 @@
+{
+  "id": "yarn-gau-so-banh-cua-ba-4",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Chuyện của Gấu Bánh Ngọt, chương 4: Bước cuối cùng",
+  "status": "active",
+  "category": "story",
+  "summary": "Gấu kể nốt chuyện chiếc thuyền giấy năm xưa rồi cùng {name} rán mẻ bánh đúng sổ của bà. Mặt sau trang giấy còn một lời dặn nữa, và ô cửa sổ bánh Gấu mơ bấy lâu cuối cùng cũng mở ở cổng trước.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Gấu Bánh Ngọt",
+    "where": "Nhà của {name}: sân trước nhà, bếp và bàn ăn, phòng khách, cổng trước nhà",
+    "goal": "Rán mẻ bánh rán mật ong đúng như sổ của bà và làm nốt bước cuối thật sự",
+    "play": "Rán và lật bánh; chia bánh ra đĩa; đọc lời dặn ở mặt sau trang giấy; chọn người nhận chiếc bánh đầu tiên qua cửa sổ bánh",
+    "learn": "Chia đều theo nhóm (đếm cách hai), đọc hiểu lời dặn",
+    "reward": "80 XP, 22 Xu, Skill XP Logic, Đọc hiểu",
+    "next": "Sáng chủ nhật nào cửa sổ bánh của Gấu cũng mở"
+  },
+  "phases": {
+    "hook": "chuyen-thuyen-giay",
+    "explore": "ran-me-banh",
+    "learn": "bay-banh-ra-dia",
+    "challenge": "loi-dan-mat-sau",
+    "decision": "cua-so-banh-mo-hang",
+    "finale": "cua-so-banh-mo-hang",
+    "reward": "me-banh-dung-vi",
+    "next": "sang-chu-nhat"
+  },
+  "places": {
+    "gau-banh-ngot": "Sân trước nhà",
+    "st-gau-so-banh-cua-ba-dia-banh": "Bếp và bàn ăn",
+    "st-gau-so-banh-cua-ba-mat-sau-trang": "Phòng khách",
+    "st-gau-so-banh-cua-ba-cua-so-banh": "Cổng trước nhà"
+  },
+  "steps": [
+    {
+      "id": "chuyen-thuyen-giay",
+      "title": "Chuyện chiếc thuyền giấy",
+      "goTo": "Lò nướng ngoài sân trước nhà đã đỏ lửa, Gấu đang đợi",
+      "kind": "dialogue",
+      "target": "gau-banh-ngot",
+      "lines": [
+        { "speaker": "Gấu Bánh Ngọt", "text": "Gấu kể nốt nhé. Năm Gấu lên năm, bà ốm phải đi viện. Gấu xé trang cuối gấp thành thuyền, định thả trôi tới chỗ bà." },
+        { "speaker": "Gấu Bánh Ngọt", "text": "Thuyền mắc ở cầu tàu, Gấu sợ bị mắng nên giấu biệt. Bà về nhà chẳng hỏi gì, chỉ cười. Hóa ra bà biết cả." },
+        { "speaker": "Gấu Bánh Ngọt", "text": "Hôm nay mình rán đúng mẻ bánh của bà nhé. {name} lật bánh, Gấu canh lửa!" }
+      ],
+      "choices": [
+        { "text": "Thuyền của Gấu tới được chỗ bà rồi, theo cách của bà.", "reply": "Ừ… Gấu cũng nghĩ thế. Nào, chảo nóng rồi!" },
+        { "text": "Lật bánh thì cứ để tớ!", "reply": "Nhớ nhé: viền vàng là lật, chần chừ là cháy!" }
+      ],
+      "en": {
+        "title": "The paper boat story",
+        "goTo": "The oven in the front yard is glowing, and Gấu is waiting",
+        "lines": [
+          "Let me finish the story. When I was five, Grandma was in hospital. I tore out the last page and folded a boat, hoping it would float all the way to her.",
+          "It got stuck at the pier, and I hid it, scared of a scolding. Grandma came home and never asked, only smiled. She knew all along.",
+          "Today we fry Grandma's batch exactly right. You flip, {name}, I'll mind the fire!"
+        ],
+        "choices": [
+          { "text": "Your boat reached her after all, in her own way.", "reply": "Yes… I think so too. Come on, the pan's hot!" },
+          { "text": "Leave the flipping to me!", "reply": "Remember: golden edge means flip, dither and it burns!" }
+        ]
+      }
+    },
+    {
+      "id": "ran-me-banh",
+      "title": "Rán mẻ bánh của bà",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Mượn chiếc chảo lớn của Gấu, lật cho tám chiếc bánh vàng đều hai mặt nhé!",
+      "game": "banh-xeo-flip",
+      "goal": 8,
+      "en": {
+        "title": "Frying Grandma's batch",
+        "prompt": "Borrow Gấu's big pan and flip eight cakes until both sides are golden!"
+      }
+    },
+    {
+      "id": "bay-banh-ra-dia",
+      "title": "Bày bánh ra đĩa",
+      "goTo": "Bưng rổ bánh nóng vào bếp và bàn ăn",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-gau-so-banh-cua-ba-dia-banh",
+      "skill": "logic",
+      "prompt": "Gấu rán gấp đôi công thức, được 12 chiếc bánh rán nóng hổi. Mỗi đĩa xếp 2 chiếc. Gấu cần lấy mấy cái đĩa?",
+      "choices": [
+        { "id": "a", "text": "5 cái đĩa" },
+        { "id": "b", "text": "6 cái đĩa" },
+        { "id": "c", "text": "7 cái đĩa" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Mỗi đĩa lấy đi 2 chiếc bánh.", "Đếm cách hai tới 12 rồi xem mình đếm mấy lần."],
+        "hint": "2, 4, 6, 8, 10, 12: đếm số lần đếm.",
+        "answer": { "text": "Cần đúng 6 cái đĩa", "explanation": "Đếm cách hai: 2, 4, 6, 8, 10, 12 là sáu lần, nên cần 6 cái đĩa." },
+        "en": {
+          "guide": ["Each plate takes 2 doughnuts.", "Count by twos up to 12 and see how many counts it takes."],
+          "hint": "2, 4, 6, 8, 10, 12: count the counts.",
+          "answer": { "text": "Exactly 6 plates are needed", "explanation": "Counting by twos: 2, 4, 6, 8, 10, 12 is six counts, so 6 plates." }
+        }
+      },
+      "feedback": {
+        "right": ["Sáu đĩa hoa lam xếp hàng, chiếc bánh nào cũng có bạn đôi.", "{name} chia bánh đều tăm tắp, chẳng chiếc nào lẻ loi.", "Đủ đĩa rồi! Gấu hít hà: thơm chưa nào? Thơm lắm rồi!"],
+        "wrong": ["Còn bánh nằm chơ vơ trong rổ kìa, {name} đếm lại số đĩa nhé.", "Thừa ra một cái đĩa trống trơn rồi, bớt đi một cái xem.", "Mỗi đĩa chỉ hai chiếc thôi, đếm cách hai cho tới mười hai nào."],
+        "en": {
+          "right": ["Six blue-flowered plates in a row, and every doughnut has a partner.", "You shared them out perfectly evenly, {name}, not one left alone.", "Enough plates! Gấu sniffs: smell that? Smells wonderful!"],
+          "wrong": ["Some doughnuts are still stranded in the basket, {name}; count the plates again.", "There's a plate left empty with nothing on it; try one fewer.", "Only two per plate, so count by twos all the way to twelve."]
+        }
+      },
+      "en": {
+        "title": "Plating the doughnuts",
+        "goTo": "Carry the basket of hot doughnuts to the kitchen table",
+        "prompt": "Gấu doubled the recipe and made 12 piping-hot doughnuts. Each plate holds 2. How many plates does Gấu need?",
+        "choices": ["5 plates", "6 plates", "7 plates"]
+      }
+    },
+    {
+      "id": "loi-dan-mat-sau",
+      "title": "Dòng chữ ở mặt sau",
+      "goTo": "Gấu soi trang giấy dưới đèn phòng khách, thấy mặt sau có chữ mờ",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-gau-so-banh-cua-ba-mat-sau-trang",
+      "skill": "doc-hieu",
+      "prompt": "Mặt sau trang giấy viết: «Bước cuối thật sự: mời những người con thương cùng ăn khi bánh còn nóng. Bánh rán để nguội thì cứng, lòng người ngồi ăn một mình cũng thế.» Chọn tất cả những việc đúng với lời dặn của bà:",
+      "choices": [
+        { "id": "moi-ca-nha", "text": "Mời cả nhà cùng ra ăn" },
+        { "id": "an-khi-nong", "text": "Ăn ngay khi bánh còn nóng" },
+        { "id": "cat-tu", "text": "Cất bánh vào tủ để dành tuần sau" },
+        { "id": "an-mot-minh", "text": "Ăn một mình cho khỏi phải chia" }
+      ],
+      "answer": { "choices": ["moi-ca-nha", "an-khi-nong"] },
+      "support": {
+        "guide": ["Tìm trong lời dặn: ai được mời?", "Bà dặn ăn vào lúc nào?"],
+        "hint": "Có hai việc đúng: một việc nói về người, một việc nói về lúc ăn.",
+        "answer": { "text": "Mời mọi người, và ăn lúc bánh còn nóng", "explanation": "Bà dặn mời những người mình thương cùng ăn khi bánh còn nóng; cất bánh đi hay ăn một mình đều trái lời bà." },
+        "en": {
+          "guide": ["Find in the advice: who should be invited?", "When does Grandma say to eat?"],
+          "hint": "Two are right: one is about people, one is about timing.",
+          "answer": { "text": "Invite everyone, and eat while they're warm", "explanation": "Grandma says to invite the ones you love and eat while the doughnuts are warm; locking them away or eating alone goes against her advice." }
+        }
+      },
+      "feedback": {
+        "right": ["Thì ra bước cuối không nằm trong chảo mà nằm quanh bàn ăn!", "{name} đọc ra lời bà dặn, Gấu ôm trang giấy cười rưng rưng.", "Mời mọi người khi bánh còn nóng: Gấu sẽ thêu câu này lên tạp dề."],
+        "wrong": ["Bánh cất tủ một tuần thì cứng như gạch mất, {name} ơi.", "Bà dặn đừng ngồi ăn một mình mà, đọc lại câu cuối nhé.", "Lời bà có hai ý, {name} đã chọn đủ cả hai, và chỉ hai thôi chưa?"],
+        "en": {
+          "right": ["So the last step was never in the pan; it was around the table!", "You read Grandma's words aloud, {name}, and Gấu hugs the page with teary smiles.", "Invite everyone while it's warm: Gấu will embroider that on her apron."],
+          "wrong": ["A week in the cupboard would turn them hard as bricks, {name}.", "Grandma said not to eat alone; read the last sentence again.", "Grandma's advice has two parts, {name}. Did you pick both, and only those?"]
+        }
+      },
+      "en": {
+        "title": "Words on the back",
+        "goTo": "Gấu holds the page under the living room lamp and spots faint writing on the back",
+        "prompt": "The back of the page reads: “The real last step: invite the ones you love to eat while the doughnuts are warm. Doughnuts left to cool turn hard, and so does a heart that eats alone.” Pick everything that follows Grandma's advice:",
+        "choices": ["Invite the whole household to eat", "Eat while the doughnuts are still warm", "Lock them in the cupboard for next week", "Eat alone so there's no sharing"]
+      }
+    },
+    {
+      "id": "cua-so-banh-mo-hang",
+      "title": "Cửa sổ bánh mở hàng",
+      "goTo": "Ra cổng trước nhà, nơi Gấu vừa dựng ô cửa sổ bánh",
+      "kind": "decision",
+      "target": "st-gau-so-banh-cua-ba-cua-so-banh",
+      "speaker": "Gấu Bánh Ngọt",
+      "prompt": "Mời cả nhà xong, Gấu vẫn còn bánh. Gấu dựng một ô cửa sổ bánh ngay cổng, như giấc mơ bao lâu nay. Chiếc bánh đầu tiên qua cửa sổ nên dành cho ai?",
+      "choices": [
+        { "id": "nguoi-qua-duong", "text": "Người đầu tiên đi ngang cổng", "consequence": "Một bác đưa thư dừng xe, cắn một miếng rồi đứng ngẩn ra: «Bánh này… thơm mùi nhà quá.» Gấu cười tít mắt." },
+        { "id": "phan-cua-ba", "text": "Một chiếc đặt cạnh cuốn sổ, phần của bà", "consequence": "Gấu đặt chiếc bánh lên bìa sổ, khẽ nói: «Bà ơi, Gấu làm đủ các bước rồi đấy.» Gió thổi qua, trang sổ lật một cái như gật đầu." },
+        { "id": "ban-an-truoc", "text": "{name} ăn trước, rồi Gấu nếm sau", "consequence": "Lần đầu tiên Gấu ăn hết trọn một chiếc bánh của chính mình mà chẳng muốn sửa gì. «Không cần sửa nữa. Đúng vị bà rồi.»" }
+      ],
+      "en": {
+        "title": "The cake window opens",
+        "goTo": "Go to the front gate, where Gấu has just set up her cake window",
+        "prompt": "Everyone at home has been fed and there are still doughnuts left. Gấu sets up a cake window right at the gate, the dream she's had for ages. Who should get the first doughnut through the window?",
+        "choices": [
+          { "text": "The first person to pass the gate", "consequence": "A postman stops his bike, takes a bite and stands there dazed: “This tastes… just like home.” Gấu's eyes crinkle with joy." },
+          { "text": "One set beside the notebook, Grandma's share", "consequence": "Gấu sets a doughnut on the notebook cover and whispers: “Grandma, I did every step.” A breeze flips a page, like a nod." },
+          { "text": "{name} eats first, then Gấu tastes", "consequence": "For the first time ever, Gấu finishes a whole doughnut of her own without wanting to change a thing. “No fixing needed. That's Grandma's flavour.”" }
+        ]
+      }
+    },
+    {
+      "id": "me-banh-dung-vi",
+      "title": "Mẻ bánh đúng vị bà",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cả nhà ngồi quanh bàn, bánh rán còn bốc khói. Gấu gói riêng cho {name} một chiếc trong lá chuối, buộc nơ xanh như bìa cuốn sổ.",
+      "en": {
+        "title": "A batch true to Grandma",
+        "text": "The whole household sits round the table, doughnuts still steaming. Gấu wraps one for {name} in a banana leaf, tied with a ribbon as green as the notebook."
+      }
+    },
+    {
+      "id": "sang-chu-nhat",
+      "title": "Sáng chủ nhật ở cổng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Từ nay sáng chủ nhật nào cửa sổ bánh của Gấu cũng mở. Gấu bảo sẽ viết thêm một trang vào sổ của bà: «Bước cuối, Gấu học được cùng {name}.»",
+      "en": {
+        "title": "Sunday mornings at the gate",
+        "text": "From now on Gấu's cake window opens every Sunday morning. She says she'll add a page to Grandma's book: “The last step, learnt together with {name}.”"
+      }
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 22,
+    "skillXp": { "logic": 1, "doc-hieu": 1 }
+  },
+  "en": {
+    "title": "Gấu Bánh Ngọt's story, chapter 4: The very last step",
+    "summary": "Gấu tells the rest of the paper boat story, then fries Grandma's batch exactly right with {name}. The back of the page holds one more piece of advice, and the cake window Gấu has long dreamed of finally opens at the front gate."
+  }
+}

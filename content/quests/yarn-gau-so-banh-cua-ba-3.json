@@ -1,0 +1,228 @@
+{
+  "id": "yarn-gau-so-banh-cua-ba-3",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Chuyện của Gấu Bánh Ngọt, chương 3: Chào đàn ong",
+  "status": "active",
+  "category": "story",
+  "summary": "Muốn có mật hoa vườn nhà, Gấu phải tự chào đàn ong, mà Gấu sợ ong nhất đời. {name} giúp Gấu chuẩn bị, lần theo đường bay của ong, giải câu đố của Bà Ong Vàng và đứng cạnh Gấu lúc Gấu cất lời chào.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Gấu Bánh Ngọt, Bà Ong Vàng Giữ Tổ",
+    "where": "Nhà của {name}: sân trước nhà, nhà kho, vườn rau, cối xay gió",
+    "goal": "Giúp Gấu vượt nỗi sợ ong để xin một hũ mật hoa vườn nhà",
+    "play": "Xếp các bước tới gần tổ ong; tìm những bông hoa ong hay ghé; giải câu đố ô sáp; chọn cách giúp Gấu chào đàn ong",
+    "learn": "Sắp xếp trình tự việc làm, phép trừ trong phạm vi 100",
+    "reward": "70 XP, 18 Xu, Skill XP Kể chuyện, Phép trừ",
+    "next": "Rán mẻ bánh đúng như sổ của bà"
+  },
+  "phases": {
+    "hook": "gau-doi-noi",
+    "explore": "theo-duong-bay",
+    "learn": "o-sap-cua-ba-ong",
+    "challenge": "o-sap-cua-ba-ong",
+    "decision": "ai-chao-ong",
+    "finale": "hu-mat-dau-tien",
+    "reward": "thia-mat-dung-cam",
+    "next": "me-banh-cua-ba"
+  },
+  "places": {
+    "gau-banh-ngot": "Sân trước nhà",
+    "st-gau-so-banh-cua-ba-mu-rom": "Nhà kho",
+    "theo-duong-bay": "Vườn rau",
+    "st-gau-so-banh-cua-ba-gian-bi": "Vườn rau",
+    "st-gau-so-banh-cua-ba-hoa-cai": "Vườn rau",
+    "st-gau-so-banh-cua-ba-hoa-dau-biec": "Vườn rau",
+    "st-gau-so-banh-cua-ba-ba-ong": "Cối xay gió"
+  },
+  "steps": [
+    {
+      "id": "gau-doi-noi",
+      "title": "Gấu đội nồi",
+      "goTo": "Ra sân trước nhà, Gấu đang đội… một cái nồi",
+      "kind": "dialogue",
+      "target": "gau-banh-ngot",
+      "lines": [
+        { "speaker": "Gấu Bánh Ngọt", "text": "{name} đừng cười! Cái nồi này là mũ bảo hiểm chống ong, Gấu tự nghĩ ra đấy." },
+        { "speaker": "Gấu Bánh Ngọt", "text": "Mà đội vào thì Gấu chẳng thấy đường, tiếng mình còn vọng ong ong trong nồi, nghe càng sợ hơn…" }
+      ],
+      "choices": [
+        { "text": "Tháo nồi ra đi, tớ biết một cách hay hơn.", "reply": "Thật hả? Vậy Gấu tháo… nhưng Gấu ôm nồi theo, phòng khi cần." }
+      ],
+      "en": {
+        "title": "Gấu in a pot helmet",
+        "goTo": "Go to the front yard, where Gấu is wearing… a pot",
+        "lines": [
+          "Don't laugh, {name}! This pot is my anti-bee helmet, my very own invention.",
+          "Only, with it on I can't see a thing, and my own voice echoes inside like buzzing, which is even scarier…"
+        ],
+        "choices": [
+          { "text": "Take the pot off, I know a better way.", "reply": "Really? Then off it comes… but I'm bringing it along, just in case." }
+        ]
+      }
+    },
+    {
+      "id": "chuan-bi-gap-ong",
+      "title": "Chuẩn bị đi gặp ong",
+      "goTo": "Vào nhà kho lấy chiếc mũ rơm rộng vành cho Gấu",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-gau-so-banh-cua-ba-mu-rom",
+      "skill": "ke-chuyen",
+      "prompt": "Thỏ Làm Vườn từng dặn cách tới gần tổ ong cho ong khỏi giật mình. Xếp các việc theo đúng thứ tự:",
+      "items": [
+        { "id": "dung-xa", "label": "Đứng cách tổ một sải tay, chào thật khẽ" },
+        { "id": "doi-mu", "label": "Đội mũ rộng vành, mặc áo dài tay" },
+        { "id": "xin-mat", "label": "Chờ đàn ong quen rồi mới xin mật" },
+        { "id": "di-cham", "label": "Bước chậm, không vung tay đập ong" }
+      ],
+      "answer": { "order": ["doi-mu", "di-cham", "dung-xa", "xin-mat"] },
+      "support": {
+        "guide": ["Việc nào làm ngay ở nhà, trước khi ra vườn?", "Trên đường tới tổ phải đi thế nào?", "Tới nơi thì chào trước, xin sau."],
+        "hint": "Mặc đồ trước, đi chậm, chào khẽ, cuối cùng mới xin.",
+        "answer": { "text": "Đội mũ, mặc áo dài tay → bước chậm → đứng cách một sải tay chào khẽ → chờ ong quen rồi xin mật", "explanation": "Chuẩn bị đồ trước khi đi, đi chậm cho ong không giật mình, chào trước rồi mới xin, giống như khi sang nhà ai đó." },
+        "en": {
+          "guide": ["Which job happens at home, before going out?", "How should you walk on the way to the hive?", "Once there, greet first and ask later."],
+          "hint": "Dress first, walk slowly, greet softly, ask last.",
+          "answer": { "text": "Hat and long sleeves → walk slowly → greet softly from an arm's length → wait, then ask for honey", "explanation": "Get dressed before you leave, walk slowly so the bees aren't startled, then greet before you ask, just like visiting someone's home." }
+        }
+      },
+      "feedback": {
+        "right": ["Đúng trình tự rồi, Gấu đội mũ rơm vào trông duyên hẳn!", "{name} sắp xếp gọn gàng như một người nuôi ong lành nghề.", "Có kế hoạch rồi, Gấu bớt run được một nửa."],
+        "wrong": ["Chưa mặc áo dài tay mà đã ra tổ thì Gấu chạy mất dép đấy.", "Xin mật trước khi chào thì ong phật ý cho xem, {name} xếp lại nhé.", "Thử nghĩ như khi sang nhà hàng xóm: chuẩn bị, đi tới, chào, rồi mới xin."],
+        "en": {
+          "right": ["Perfect order! In the straw hat Gấu looks rather charming.", "As tidy as a seasoned beekeeper, {name}.", "With a plan in place, Gấu is only half as shaky."],
+          "wrong": ["Heading to the hive without long sleeves would send Gấu running for her life.", "Ask before greeting and the bees will be offended. Try again, {name}.", "Think of visiting a neighbour: get ready, walk over, say hello, then ask."]
+        }
+      },
+      "en": {
+        "title": "Getting ready to meet the bees",
+        "goTo": "Go into the storeroom and fetch the wide straw hat for Gấu",
+        "prompt": "Thỏ Làm Vườn once explained how to approach a hive without startling the bees. Put the steps in order:",
+        "items": ["Stand an arm's length from the hive and greet softly", "Put on a wide hat and long sleeves", "Wait for the bees to get used to you before asking for honey", "Walk slowly and never swat at the bees"]
+      }
+    },
+    {
+      "id": "theo-duong-bay",
+      "title": "Theo đường bay của ong",
+      "goTo": "Ra vườn rau xem đàn ong hay ghé những bông hoa nào",
+      "kind": "search",
+      "targets": ["st-gau-so-banh-cua-ba-gian-bi", "st-gau-so-banh-cua-ba-hoa-cai", "st-gau-so-banh-cua-ba-hoa-dau-biec"],
+      "en": {
+        "title": "Following the bees' flight path",
+        "goTo": "Go out to the vegetable garden and see which flowers the bees visit"
+      }
+    },
+    {
+      "id": "o-sap-cua-ba-ong",
+      "title": "Câu đố của Bà Ong",
+      "goTo": "Đàn ong bay về tổ dưới chân cối xay gió, Bà Ong Vàng đang đợi",
+      "kind": "riddle",
+      "target": "st-gau-so-banh-cua-ba-ba-ong",
+      "skill": "phep-tru",
+      "question": "Bà Ong Vàng hỏi: «Tổ của ta có 3 tầng, mỗi tầng 10 ô sáp đầy mật. Đàn ong đã ăn hết mật ở 4 ô. Còn bao nhiêu ô đầy mật?»",
+      "answer": { "value": 26 },
+      "support": {
+        "guide": ["Ba tầng, mỗi tầng 10 ô: đếm 10, 20, 30.", "Lấy số ô cả tổ trừ đi 4 ô đã ăn hết."],
+        "hint": "30 − 4 = ?",
+        "answer": { "text": "Còn 26 ô đầy mật", "explanation": "10 + 10 + 10 = 30 ô; 30 − 4 = 26 ô vẫn đầy mật." },
+        "en": {
+          "guide": ["Three layers of 10 cells: count 10, 20, 30.", "Take the 4 eaten cells away from the whole hive."],
+          "hint": "30 − 4 = ?",
+          "answer": { "text": "26 cells are still full", "explanation": "10 + 10 + 10 = 30 cells; 30 − 4 = 26 cells are still full of honey." }
+        }
+      },
+      "feedback": {
+        "right": ["Bà Ong rung râu: «Đúng hai mươi sáu, cháu đếm giỏi hơn cả ong thợ!»", "Hai mươi sáu ô mật vàng óng, đủ chia cho cả đàn lẫn Gấu.", "{name} vừa trả lời, cả tổ ong vo ve như vỗ tay."],
+        "wrong": ["Bà Ong nghiêng đầu: «Hửm? Đếm lại ba tầng xem nào.»", "Nhớ trừ đi bốn ô đã ăn hết mật nhé {name}.", "Mỗi tầng mười ô, ba tầng là bao nhiêu ô? Bắt đầu từ đó."],
+        "en": {
+          "right": ["Bà Ong twitches her feelers: “Twenty-six exactly, you count better than my workers!”", "Twenty-six golden cells, plenty for the colony and for Gấu.", "As soon as you answer, the whole hive hums like applause, {name}."],
+          "wrong": ["Bà Ong tilts her head: “Hmm? Count the three layers again.”", "Don't forget to take away the four eaten cells, {name}.", "Ten cells per layer, three layers: how many cells? Start there."]
+        }
+      },
+      "en": {
+        "title": "Bà Ong's riddle",
+        "goTo": "The bees fly home to the hive at the foot of the windmill, where Bà Ong Vàng is waiting",
+        "question": "Bà Ong Vàng asks: “My hive has 3 layers, each with 10 wax cells full of honey. The colony has eaten the honey in 4 cells. How many cells are still full?”"
+      }
+    },
+    {
+      "id": "ai-chao-ong",
+      "title": "Ai sẽ chào đàn ong?",
+      "kind": "decision",
+      "target": "st-gau-so-banh-cua-ba-ba-ong",
+      "speaker": "Bà Ong Vàng Giữ Tổ",
+      "prompt": "Bà Ong nói: «Mật cho nhà nào thì người nhà ấy chào.» Gấu nấp sau lưng {name}, tay ôm khư khư cái nồi. {name} làm gì?",
+      "choices": [
+        { "id": "nam-tay", "text": "Nắm tay Gấu cùng bước lên một bước", "consequence": "Gấu bước lên, giọng run run: «Chào… chào các bạn ong. Gấu xin một thìa mật cho bánh của bà.» Đàn ong bay một vòng quanh mũ rơm rồi đậu lại, hiền khô." },
+        { "id": "noi-khe", "text": "Thì thầm nhắc Gấu từng chữ để chào", "consequence": "Gấu nhắc lại từng chữ theo {name}, rồi tự nói hết câu. Bà Ong gật đầu: «Chào thế là đủ lễ rồi.»" },
+        { "id": "dat-noi", "text": "Bảo Gấu đặt cái nồi xuống trước đã", "consequence": "Gấu đặt nồi xuống cỏ. Không có nồi, Gấu nghe rõ tiếng ong: hóa ra chúng không gầm gừ, chúng đang hát. Gấu bật cười rồi cất tiếng chào." }
+      ],
+      "en": {
+        "title": "Who greets the bees?",
+        "prompt": "Bà Ong says: “Whoever the honey is for must do the greeting.” Gấu hides behind {name}, clutching her pot. What do you do?",
+        "choices": [
+          { "text": "Hold Gấu's paw and step forward together", "consequence": "Gấu steps up, voice trembling: “H-hello, bees. May I have a spoon of honey for Grandma's doughnuts?” The bees circle her straw hat once and settle, gentle as can be." },
+          { "text": "Whisper the greeting to Gấu word by word", "consequence": "Gấu repeats each word after {name}, then finishes the sentence on her own. Bà Ong nods: “That's a proper greeting.”" },
+          { "text": "Tell Gấu to put the pot down first", "consequence": "Gấu sets the pot on the grass. Without it she hears the bees clearly: they aren't growling, they're singing. She laughs and says hello." }
+        ]
+      }
+    },
+    {
+      "id": "hu-mat-dau-tien",
+      "title": "Hũ mật đầu tiên Gấu tự xin",
+      "goTo": "Theo Gấu về sân trước nhà, hũ mật còn ấm nắng",
+      "kind": "dialogue",
+      "target": "gau-banh-ngot",
+      "lines": [
+        { "speaker": "Gấu Bánh Ngọt", "text": "Gấu làm được rồi, {name} ơi! Bà Ong bảo lần sau Gấu cứ tới, khỏi cần đội nồi." },
+        { "speaker": "Gấu Bánh Ngọt", "text": "Tim Gấu vẫn đập thình thịch, nhưng là thình thịch vui. Giờ chỉ còn rán bánh thôi… và một chuyện Gấu chưa kể." }
+      ],
+      "choices": [
+        { "text": "Chuyện gì thế Gấu?", "reply": "Mai rán bánh xong Gấu kể. Hứa đấy, hứa bằng cả hũ mật này!" }
+      ],
+      "en": {
+        "title": "The first honey Gấu asked for herself",
+        "goTo": "Follow Gấu back to the front yard, the honey jar still warm from the sun",
+        "lines": [
+          "I did it, {name}! Bà Ong says next time I can just come, no pot needed.",
+          "My heart's still thumping, but it's a happy thump. Now there's only the frying… and one thing I haven't told you yet."
+        ],
+        "choices": [
+          { "text": "What thing, Gấu?", "reply": "I'll tell you tomorrow after frying. Promise, I swear on this whole jar of honey!" }
+        ]
+      }
+    },
+    {
+      "id": "thia-mat-dung-cam",
+      "title": "Thìa mật dũng cảm",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu chia cho {name} thìa mật đầu tiên, rồi treo chiếc mũ rơm lên cửa như treo một tấm huy chương.",
+      "en": {
+        "title": "The brave spoonful",
+        "text": "Gấu shares the very first spoon of honey with {name}, then hangs the straw hat on the door like a medal."
+      }
+    },
+    {
+      "id": "me-banh-cua-ba",
+      "title": "Mẻ bánh của bà",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đủ cả bột, trứng và mật hoa vườn nhà. Mai Gấu nhóm lò thật sớm, rán mẻ bánh đúng như sổ của bà, và kể {name} nghe nốt chuyện chiếc thuyền giấy.",
+      "en": {
+        "title": "Grandma's batch",
+        "text": "Flour, egg and garden honey, all ready. Tomorrow Gấu lights the oven early to fry the batch exactly as Grandma wrote, and to tell {name} the rest of the paper boat story."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": { "ke-chuyen": 1, "phep-tru": 1 }
+  },
+  "en": {
+    "title": "Gấu Bánh Ngọt's story, chapter 3: Greeting the bees",
+    "summary": "For honey from the home garden, Gấu must greet the bees herself, and bees scare her most of all. {name} helps her get ready, follows the bees' flight path, solves Bà Ong Vàng's riddle and stands beside Gấu as she says hello."
+  }
+}

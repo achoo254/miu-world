@@ -1,0 +1,249 @@
+{
+  "version": 1,
+  "region": "nha-cua-be",
+  "climate": "mild",
+  "npcs": [
+    {
+      "id": "gau-banh-ngot",
+      "name": "Gấu Bánh Ngọt",
+      "role": { "vi": "Thợ làm bánh của cả nhà, ngày nào cũng nhóm lò nướng nhỏ ngoài sân trước.", "en": "The household's baker, who fires up a little oven in the front yard every day." },
+      "personality": { "vi": "Ấm áp, rộn ràng và hay quên đủ thứ, trừ ngày sinh nhật của từng người trong nhà.", "en": "Warm, bustling and forgetful about everything except each housemate's birthday." },
+      "voice": { "vi": "Đếm thìa bột thành tiếng ngay giữa câu, hay hỏi «Thơm chưa nào?» rồi tự trả lời «Thơm rồi!».", "en": "Counts spoons of flour out loud mid-sentence, and often asks “Smell that?” before answering herself: “Smells done!”" },
+      "fear": { "vi": "Sợ ong dù mê mật ong nhất đời: nghe tiếng vo ve là Gấu nấp ngay sau nồi hấp.", "en": "Scared of bees even though honey is her great love: one buzz and she hides behind the steamer." },
+      "dream": { "vi": "Mở một ô cửa sổ bánh ở cổng trước, để sáng chủ nhật ai đi ngang cũng được nếm một miếng còn nóng.", "en": "To open a little cake window at the front gate, so anyone passing on a Sunday morning gets a warm bite." },
+      "secret": { "vi": "Gấu chưa bao giờ ăn hết một chiếc bánh của chính mình: cắn một miếng là lại muốn sửa công thức, nên chiếc ngon nhất luôn để dành cho người khác.", "en": "Gấu has never finished one of her own cakes: one bite and she wants to fix the recipe, so the best one always goes to someone else." },
+      "habit": { "vi": "Sáng nào cũng chấm một chút bột lên mũi cho may mắn rồi mới nhóm lò.", "en": "Every morning she dabs a little flour on her nose for luck before lighting the oven." },
+      "likes": ["dia-banh-ran", "bat-sup-nong", "to-ong-mat"],
+      "lines": [
+        { "when": "morning", "vi": "Sáng sớm lò mới ấm tay thôi, {name} ngồi đây chờ mẻ bánh đầu với Gấu nhé. Một thìa đường, hai thìa đường…", "en": "The oven is only hand-warm this early, {name}, sit and wait for the first batch with me. One spoon of sugar, two spoons…" },
+        { "when": "afternoon", "vi": "Trưa nắng thế này bột nở nhanh lắm, Gấu phải chạy theo nó như chạy theo mèo con.", "en": "Dough rises fast in this midday sun; I have to chase it like a runaway kitten." },
+        { "when": "evening", "vi": "Chiều rồi, Gấu đang nướng bánh mì cho bữa tối. Ai về muộn nhất được miếng giòn nhất, luật nhà mình đấy.", "en": "It's evening, so I'm baking bread for dinner. Whoever gets home last gets the crunchiest piece; that's the house rule." },
+        { "when": "night", "vi": "Khuya rồi mà {name} chưa ngủ à? Gấu cũng thế, Gấu đang nghĩ bánh bao nhân mật ong thì kỳ hay ngon.", "en": "Still up, {name}? Me too. I'm wondering whether honey-filled buns would be strange or brilliant." },
+        { "weather": "rain", "vi": "Mưa rơi lộp độp trên mái lò, nghe như có ai đang đập trứng. Hôm nay mình làm bánh trong bếp thôi!", "en": "Rain is pattering on the oven roof like someone cracking eggs. We'll bake in the kitchen today!" },
+        { "weather": "fine", "vi": "Trời trong thế này phơi được cả mẹt bánh đa, {name} đuổi giùm Gấu mấy chú chim sẻ tham ăn nhé!", "en": "Skies this clear can dry a whole tray of rice crackers. Shoo the greedy sparrows away for me, {name}!" },
+        { "hearts": 2, "vi": "Gấu kể {name} nghe nhé: bánh hôm qua Gấu làm cháy một mặt, Gấu úp mặt cháy xuống đĩa, chẳng ai biết.", "en": "Here's one for you, {name}: yesterday's cake burnt on one side, so I served it burnt side down. Nobody knew." },
+        { "hearts": 3, "vi": "Mỗi lần {name} ghé sân, Gấu lại nướng dư một chiếc. Chỗ này Gấu không quên đâu, cố ý đấy.", "en": "Every time you drop by the yard, {name}, I bake one extra. That's not me being forgetful, it's on purpose." },
+        { "hearts": 4, "vi": "Gấu còn giữ chiếc thìa gỗ sứt mép của bà. Gấu chỉ cho {name} cầm thử thôi, vì {name} là bạn thân rồi.", "en": "I still keep Grandma's chipped wooden spoon. Only you get to hold it, {name}, because you're a close friend now." },
+        { "about": "voi-keo-bong", "vi": "Voi Kẹo Bông ở quảng trường viết thư bảo kẹo bông ngọt hơn bánh rán. Thư Gấu cãi lại đã dài ba trang rồi!", "en": "Voi Kẹo Bông at the square wrote that cotton candy beats doughnuts. My reply arguing back is three pages long already!" },
+        { "about": "meo-bep-truong", "vi": "Mèo Bếp Trưởng bảo bếp là của Mèo, sân là của Gấu. Thế mà tuần nào Mèo cũng sang xin vụn bánh.", "en": "Mèo Bếp Trưởng says the kitchen is his and the yard is mine. Yet every week he comes over begging for crumbs." },
+        { "vi": "Ai tặng Gấu một tổ ong mật rừng là Gấu nhớ ơn cả năm. Gấu không dám tự đi lấy đâu, ong đáng sợ lắm.", "en": "Give me a honeycomb from the forest and I'll be grateful for a whole year. I'd never fetch one myself; bees are terrifying." },
+        { "vi": "Bánh chưng phải vuông như viên gạch mới, bánh rán phải tròn như trăng rằm. Bánh nào cũng có luật riêng của nó.", "en": "Bánh chưng must be square as a new brick, doughnuts round as a full moon. Every cake has its own law." },
+        { "vi": "{name} thích bánh mềm hay bánh giòn? Gấu đang làm một cuốn sổ ghi khẩu vị của cả nhà đây.", "en": "Do you like your cakes soft or crunchy, {name}? I'm keeping a notebook of everyone's tastes." },
+        { "vi": "Biết không, bột nở là nhờ những chú men bé tí ăn đường rồi thở ra bong bóng. Ổ bánh mì nào cũng đầy hơi thở nhỏ.", "en": "Did you know dough rises because tiny yeast eats sugar and breathes out bubbles? Every loaf is full of little breaths." }
+      ]
+    },
+    {
+      "id": "ong-cu-trong-vuon",
+      "name": "Ông Cụ Trông Vườn",
+      "role": { "vi": "Ông cụ trông vườn, giữ nhà kho nhỏ, chăm cối xay gió và đẽo đồ chơi gỗ cho cả nhà.", "en": "The old garden keeper, who minds the little shed, tends the windmill and carves wooden toys for the household." },
+      "personality": { "vi": "Chậm rãi, hóm hỉnh, nhớ tên từng luống rau nhưng hay quên mình đã đội mũ hay chưa.", "en": "Unhurried and dry-humoured; he remembers every vegetable bed by name but forgets whether he's already wearing his hat." },
+      "voice": { "vi": "Hay mở đầu bằng «Ờ thì…», gọi người chơi là «cháu {name}» và đo mọi thứ bằng gang tay.", "en": "Starts with “Well now…”, calls the player “young {name}” and measures everything in hand-spans." },
+      "fear": { "vi": "Sợ một ngày quên tên các luống rau, nên ông cắm que ghi tên khắp vườn, cắm cả vào cái ghế của mình.", "en": "Afraid of one day forgetting the names of his beds, so he plants name sticks all over the garden, even one in his own chair." },
+      "dream": { "vi": "Dạy được một người đẽo gỗ, để chiếc cối xay gió ông dựng có người chăm khi ông già hơn nữa.", "en": "To teach someone to carve, so the windmill he built has a keeper when he grows even older." },
+      "secret": { "vi": "Ông chưa từng biết bơi: chiếc phao trong nhà kho ông mua để tập từ hai mươi năm trước, nhãn giá vẫn còn nguyên.", "en": "He never learnt to swim: the float in the shed was bought for lessons twenty years ago, and it still wears its price tag." },
+      "habit": { "vi": "Sáng nào cũng gõ ba cái vào chân cối xay gió như chào một người bạn cũ.", "en": "Each morning he knocks three times on the windmill's leg, like greeting an old friend." },
+      "likes": ["chuong-gio-ban-cong", "hat-huong-duong"],
+      "lines": [
+        { "when": "morning", "vi": "Ờ thì, sương còn đọng trên lá cải, cháu {name} đi nhẹ chân thôi kẻo rau giật mình.", "en": "Well now, the dew's still on the mustard leaves, young {name}. Tread softly or the greens will startle." },
+        { "when": "afternoon", "vi": "Trưa thế này ông ngồi dưới bóng cối xay gió đẽo gỗ, nghe cánh quạt kẽo kẹt như ru.", "en": "At this hour I sit in the windmill's shade carving wood, with the blades creaking like a lullaby." },
+        { "when": "evening", "vi": "Chiều tà là giờ ông tưới rau. Nước thấm xuống đất, mùi thơm như nồi cơm mới chín.", "en": "Late afternoon is watering time. When the soil drinks, it smells like a pot of freshly cooked rice." },
+        { "when": "night", "vi": "Đêm rồi, cháu {name} nhìn kìa, đom đóm đang đếm luống rau hộ ông đấy.", "en": "It's night, young {name}. Look, the fireflies are counting my vegetable beds for me." },
+        { "weather": "rain", "vi": "Mưa xuống là ông được nghỉ tưới, ông ngồi trong kho nghe mưa gõ mái tôn như gõ trống.", "en": "When it rains I get a day off watering. I sit in the shed and listen to the tin roof play like a drum." },
+        { "weather": "fine", "vi": "Nắng đẹp, gió lại vừa, cối xay gió quay đều như kim đồng hồ. Hôm nay rau khỏi lo khát.", "en": "Fine sun and a steady breeze: the windmill turns as evenly as a clock hand. No thirsty greens today." },
+        { "hearts": 2, "vi": "Ông kể cháu nghe, luống rau muống kia ông đặt tên là «Bà Lắm Mồm», vì gió thổi là nó lao xao cả buổi.", "en": "Between us, I named that water spinach bed “Chatterbox”, because it rustles all day whenever the wind blows." },
+        { "hearts": 3, "vi": "Trong túi áo ông có một mẩu gỗ đẽo dở. Đẽo ba năm rồi mà ông vẫn chưa biết nó sẽ thành con gì.", "en": "There's a half-carved bit of wood in my pocket. Three years of whittling and I still don't know what animal it'll become." },
+        { "hearts": 5, "vi": "Cháu {name} này, nếu có ngày ông quên tên một luống rau, cháu nhắc ông nhé. Ông tin cháu hơn tin que cắm.", "en": "Young {name}, if I ever forget a bed's name, remind me, will you? I trust you more than my name sticks." },
+        { "about": "ong-bay-co-ganh", "vi": "Ông Bảy Cờ Gánh dưới xóm hẹn ông ván cờ từ Tết năm ngoái. Ông cứ bảo bận tưới rau, thật ra là sợ thua.", "en": "Ông Bảy Cờ Gánh down in the village has been waiting for our match since last Tết. I say I'm busy watering; really I'm scared of losing." },
+        { "about": "tho-lam-vuon", "vi": "Thỏ Làm Vườn nhổ cỏ nhanh hơn ông nhiều, mỗi tội hay nhổ nhầm cả cây thì là. Ông dạy mãi chưa xong.", "en": "Thỏ Làm Vườn weeds far faster than me, but keeps pulling up the dill too. Still teaching that one." },
+        { "about": "bac-nong-dan-thanh", "vi": "Bác Nông Dân Thành gửi ông gói hạt hướng dương, dặn trồng cạnh cối xay gió cho hai đứa cùng ngắm trời.", "en": "Bác Nông Dân Thành sent me sunflower seeds and said to plant them by the windmill so the two can watch the sky together." },
+        { "vi": "Cây nào cũng có tính riêng, cháu ạ: cà chua thích nắng, rau má thích bóng râm, còn ông thích ngủ trưa.", "en": "Every plant has its temper, you know: tomatoes like sun, pennywort likes shade, and I like an afternoon nap." },
+        { "vi": "Cháu {name} thử đẽo gỗ bao giờ chưa? Đẽo theo thớ thì gỗ nghe lời, đẽo ngược thớ là nó cãi ngay.", "en": "Have you ever carved wood, young {name}? Cut with the grain and it listens; cut against it and it argues." },
+        { "vi": "Chuông gió ngoài hiên là ông làm từ ống tre gãy. Gió hát bài nào, ông nghe là biết mai trời ra sao.", "en": "That wind chime on the porch is made from broken bamboo. Whatever song the wind plays tells me tomorrow's weather." }
+      ]
+    },
+    {
+      "id": "meo-bep-truong",
+      "name": "Mèo Bếp Trưởng",
+      "role": { "vi": "Đầu bếp của gian bếp gia đình, giữ nồi cơm, đôi đũa cả và bàn ăn lúc nào cũng tươm tất.", "en": "Chef of the family kitchen, keeper of the rice pot, the big serving chopsticks and an always tidy table." },
+      "personality": { "vi": "Nghiêm như một vị tướng, bàn chuyện nước mắm như chuyện hệ trọng, nhưng mềm lòng trước bất kỳ ai khen món canh.", "en": "Stern as a general and discusses fish sauce like matters of state, yet melts for anyone who praises his soup." },
+      "voice": { "vi": "Nói ngắn như ra lệnh: «Rửa tay. Ngồi. Ăn.», thỉnh thoảng lỡ kêu «meo» khi nếm trúng món ngon.", "en": "Speaks in short orders, “Wash hands. Sit. Eat.”, and lets slip a “meow” when a dish tastes just right." },
+      "fear": { "vi": "Sợ hành tây: thái hành là Mèo khóc như mưa, nên Mèo đeo kính bơi mỗi lần vào việc.", "en": "Afraid of onions: chopping them makes him weep buckets, so he wears swimming goggles for the job." },
+      "dream": { "vi": "Nấu một mâm cơm mà ai ngồi vào cũng thấy có món của quê mình.", "en": "To cook one family meal where everyone at the table finds a dish from their own home." },
+      "secret": { "vi": "Món canh chua nổi tiếng của Mèo học lỏm từ một chiếc radio cũ, chứ chẳng phải công thức gia truyền như Mèo vẫn khoe.", "en": "His famous sour soup was learnt from an old radio show, not the family recipe he brags about." },
+      "habit": { "vi": "Gõ đũa ba nhịp vào mép nồi trước khi mở vung, như gọi món ăn thức dậy.", "en": "Taps the pot rim three times with chopsticks before lifting the lid, as if waking the food." },
+      "likes": ["bat-sup-nong", "vay-ca-bac"],
+      "lines": [
+        { "when": "morning", "vi": "Sáng. Cháo đã nhừ, hành đã phi. {name} rửa tay rồi ngồi vào bàn, Mèo không nhắc lần hai.", "en": "Morning. Porridge is soft, shallots are fried. Wash your hands and sit, {name}. I won't say it twice." },
+        { "when": "afternoon", "vi": "Giờ này Mèo ngâm gạo cho bữa tối. Gạo phải ngâm đủ lâu mới chịu nở, như người cần ngủ đủ giấc.", "en": "This is when I soak rice for dinner. Rice needs its soak to swell, the way people need their sleep." },
+        { "when": "evening", "vi": "Bữa tối sắp dọn. Đũa xếp thẳng hàng, bát úp ngay ngắn, ai làm lệch là Mèo nhìn thấy đấy.", "en": "Dinner's nearly served. Chopsticks in a straight row, bowls neatly turned. Make them crooked and I'll see." },
+        { "when": "night", "vi": "Bếp đã tắt lửa. Mèo lau dao, lau thớt, xong rồi mới được phép mơ về món ngày mai.", "en": "The stove is out. I wipe the knife and the board, and only then may I dream about tomorrow's dishes." },
+        { "weather": "rain", "vi": "Trời mưa thì phải có canh nóng. Mèo bắc nồi rồi, {name} lại gần bếp cho ấm.", "en": "Rainy days demand hot soup. The pot is already on, {name}; come close to the stove and warm up." },
+        { "weather": "fine", "vi": "Nắng to thế này phơi được một mẻ cá khô ngon lành. Mèo đứng canh, ai dám lại gần?", "en": "Sun this strong dries a perfect batch of fish. I'm standing guard; who dares come near?" },
+        { "hearts": 2, "vi": "Nói nhỏ thôi: Mèo từng nêm thử bằng đuôi, bị bỏng, từ đó Mèo dùng thìa như mọi người.", "en": "Quietly now: I once tasted soup with my tail, burnt it, and have used a spoon like everyone else since." },
+        { "hearts": 3, "vi": "{name} là người đầu tiên Mèo cho đứng cạnh chảo lúc đang xào. Đừng để Mèo hối hận.", "en": "You're the first one I've allowed beside the wok mid-stir, {name}. Don't make me regret it." },
+        { "hearts": 4, "vi": "Mèo để riêng cho {name} một cái bát men xanh, sứt mép tí xíu. Bát sứt mới là bát của người nhà.", "en": "I've put aside a green-glazed bowl just for you, {name}, with a tiny chip on the rim. Chipped bowls belong to family." },
+        { "about": "chu-lai-do-ba", "vi": "Chú Lái Đò Ba bên sông hay chèo đò mang cá tươi tới cho Mèo. Mèo trả bằng nồi cá kho, đôi bên đều lời.", "en": "Chú Lái Đò Ba from the river rows over with fresh fish for me. I pay him in braised fish, and we both come out ahead." },
+        { "about": "gau-banh-ngot", "vi": "Gấu Bánh Ngọt bảo món ngọt mới là món chính. Mèo không cãi, Mèo chỉ lặng lẽ nấu một nồi canh ngon hơn.", "en": "Gấu Bánh Ngọt claims dessert is the main course. I don't argue; I just quietly make a better soup." },
+        { "vi": "Ai tặng Mèo vảy cá bạc lấp lánh, Mèo khâu làm cúc áo tạp dề. Tạp dề đầu bếp phải có ánh bạc.", "en": "Bring me a shiny silver fish scale and I'll sew it onto my apron as a button. A chef's apron needs a gleam." },
+        { "vi": "Cầm đũa thì hai đầu đũa phải bằng nhau, ngón cái lái chiếc trên. Gắp được hạt đậu là ăn cỗ được.", "en": "Hold chopsticks with the tips level and your thumb steering the top one. If you can pick up a bean, you can eat at a feast." },
+        { "vi": "{name} thích món gì nhất trong mâm cơm nhà mình? Nói đi, Mèo ghi vào thực đơn tuần sau.", "en": "What's your favourite dish on our family table, {name}? Tell me and it goes on next week's menu." },
+        { "vi": "Muối, đường, nước mắm cãi nhau trong nồi suốt; đầu bếp giỏi là người làm cho ba anh em làm lành.", "en": "Salt, sugar and fish sauce bicker in every pot; a good cook is whoever makes the three of them friends again." }
+      ]
+    },
+    {
+      "id": "cun-dom-don-nha",
+      "name": "Cún Đốm Dọn Nhà",
+      "role": { "vi": "Chú cún giữ phòng khách gọn gàng, nhặt đồ chơi về chỗ và chỉ huy rô bốt hút bụi làm việc.", "en": "The puppy who keeps the living room tidy, returns toys to their places and bosses the robot vacuum around." },
+      "personality": { "vi": "Ngăn nắp tới mức đếm cả gối, nhưng hễ thấy quả bóng là quên sạch mọi nguyên tắc.", "en": "Tidy enough to count the cushions, yet forgets every rule the moment a ball appears." },
+      "voice": { "vi": "Nói nhanh, hay liệt kê «một, hai, ba» và chêm «gâu» mỗi khi phấn khích.", "en": "Talks fast, lists things as “one, two, three” and throws in a “woof” whenever he's excited." },
+      "fear": { "vi": "Sợ máy sấy tóc: tiếng ù ù làm Cún chui tọt xuống gầm ghế, mất cả buổi mới chịu ra.", "en": "Afraid of the hair dryer: its whirr sends him under the sofa for a whole afternoon." },
+      "dream": { "vi": "Dọn một căn phòng sạch tới mức rô bốt hút bụi phải xin nghỉ phép vì hết việc.", "en": "To clean a room so well that the robot vacuum has to take a holiday for lack of work." },
+      "secret": { "vi": "Mọi chiếc tất mất tích trong nhà đều nằm trong ổ của Cún; Cún giữ để ngửi cho đỡ nhớ mọi người.", "en": "Every missing sock in the house is in his bed; he keeps them to sniff when he misses everyone." },
+      "habit": { "vi": "Xếp dép trước cửa thành một hàng thẳng tắp, mũi dép quay ra ngoài cho ai xỏ cũng tiện.", "en": "Lines up the slippers at the door in a perfect row, toes facing out so anyone can step right in." },
+      "likes": ["gau-bong-om", "chia-khoa-nha", "canh-dieu-giay"],
+      "lines": [
+        { "when": "morning", "vi": "Gâu! Sáng nay Cún đã xếp xong một, hai, ba… mười hai cái gối. {name} đừng ngồi lệch nhé!", "en": "Woof! This morning I've straightened one, two, three… twelve cushions. Please don't sit crooked, {name}!" },
+        { "when": "afternoon", "vi": "Buổi trưa nắng chiếu qua cửa sổ, bụi bay lấp lánh. Cún đuổi mãi mà bụi chẳng chịu chui vào xẻng.", "en": "At midday the sun makes the dust sparkle. I chase and chase, but it won't get into the dustpan." },
+        { "when": "evening", "vi": "Chiều rồi, Cún đang lùa đồ chơi về rổ. {name} có thấy chiếc ô tô đỏ chạy đi đâu không?", "en": "It's evening and I'm herding toys back to the basket. Have you seen where the little red car drove off to, {name}?" },
+        { "when": "night", "vi": "Đêm rồi, Cún đi một vòng tuần tra: cửa đóng, đèn tắt, dép thẳng hàng. Xong mới dám ngáp.", "en": "Night patrol: doors shut, lights off, slippers in line. Only then am I allowed to yawn." },
+        { "weather": "rain", "vi": "Mưa rồi! Ai vào nhà nhớ chùi chân lên thảm, Cún vừa lau nhà xong, sàn bóng như mặt hồ.", "en": "It's raining! Wipe your feet on the mat, I've just mopped and the floor shines like a pond." },
+        { "weather": "fine", "vi": "Trời đẹp quá, Cún mang thảm ra sân giũ bụi. Bộp, bộp! Bụi bay tung như pháo hoa.", "en": "Lovely day! I'm shaking the rugs out in the yard. Thwack, thwack! The dust bursts like fireworks." },
+        { "hearts": 2, "vi": "Nói {name} nghe, rô bốt hút bụi với Cún từng giành nhau một chiếc bánh quy. Rô bốt thắng, nó hút mất luôn.", "en": "Between us, the robot vacuum and I once fought over a cookie. The robot won. It swallowed it whole." },
+        { "hearts": 3, "vi": "Lúc {name} đi vắng, Cún để dép của {name} ở ngay đầu hàng, để {name} về là thấy liền.", "en": "When you're away, {name}, I put your slippers first in the row, so you see them the moment you're home." },
+        { "hearts": 4, "vi": "Cún tin {name} nên mới kể: Cún hay chui gầm ghế không phải để tìm bụi, mà để nghe cả nhà nói chuyện.", "en": "I trust you, so here goes: I don't crawl under the sofa for dust. I go there to listen to everyone talking." },
+        { "about": "ong-bay-co-ganh", "vi": "Mỗi lần sang xóm, Cún xếp quân cờ gọn lại cho Ông Bảy Cờ Gánh. Ông bảo Cún xếp đẹp quá, chẳng nỡ đánh.", "en": "Whenever I visit the village I tidy Ông Bảy Cờ Gánh's game pieces. He says they look too neat to play with." },
+        { "about": "meo-bep-truong", "vi": "Mèo Bếp Trưởng làm rơi vụn bánh là Cún dọn ngay. Mèo gọi Cún là «cái chổi biết đi», Cún coi đó là lời khen.", "en": "When Mèo Bếp Trưởng drops crumbs, I clean them up at once. He calls me “the walking broom”, and I take it as praise." },
+        { "vi": "Cún mê cánh diều giấy nhất: diều bay là Cún được chạy theo, mà chạy thì chẳng phải dọn gì cả!", "en": "Paper kites are my favourite: when a kite flies I get to run after it, and running needs no tidying at all!" },
+        { "vi": "Mẹo của Cún: dùng xong cất ngay, đỡ phải dọn cả núi về sau. Một phút bây giờ bằng một giờ cuối tuần.", "en": "My trick: put things away right after using them. One minute now saves an hour on the weekend." },
+        { "vi": "{name} có biết đồ chơi nào thích ngủ trong rổ, đồ chơi nào thích ngủ trên giá không? Cún thuộc hết đấy.", "en": "Do you know which toys like sleeping in the basket and which prefer the shelf, {name}? I know them all by heart." },
+        { "vi": "Chú rô bốt hút bụi chạy theo đường Cún vẽ. Lệch một ô là nó húc chân bàn, kêu bíp bíp như phàn nàn.", "en": "The robot vacuum follows the path I plan. One square off and it bumps the table leg, beeping like it's complaining." }
+      ]
+    },
+    {
+      "id": "tho-lam-vuon",
+      "name": "Thỏ Làm Vườn",
+      "role": { "vi": "Người làm vườn của nhà, gieo hạt, nhổ cỏ và cắt cỏ quanh vườn rau cạnh nhà.", "en": "The household gardener, who sows seeds, pulls weeds and mows around the vegetable garden beside the house." },
+      "personality": { "vi": "Nhanh nhảu, lạc quan, tin rằng cây nào cũng mọc nhanh hơn nếu được nghe chuyện cười.", "en": "Quick and cheerful, convinced that every plant grows faster if it hears a good joke." },
+      "voice": { "vi": "Nói líu lo, hay đố «Đoán xem!» rồi chưa ai kịp đoán đã tự nói ra.", "en": "Chatters away, loves saying “Guess what!” and then blurts out the answer before anyone can guess." },
+      "fear": { "vi": "Sợ sâu róm dù biết sâu sẽ thành bướm: Thỏ chào bướm rất lễ phép nhưng thấy sâu là nhảy lùi ba bước.", "en": "Afraid of hairy caterpillars, though she knows they become butterflies: she greets butterflies politely but hops three steps back from caterpillars." },
+      "dream": { "vi": "Trồng một củ cà rốt to tới mức cả nhà phải cùng kéo mới nhổ lên được, như trong truyện cổ.", "en": "To grow a carrot so big the whole family must pull together to get it out, like in the old tale." },
+      "secret": { "vi": "Thỏ không mê cà rốt sống, chỉ thích cà rốt luộc chấm muối vừng; cả nhà cứ tưởng ngược lại nên ngày nào cũng để phần cà rốt sống.", "en": "She isn't fond of raw carrots, only boiled ones dipped in sesame salt; everyone thinks the opposite and saves her raw ones every day." },
+      "habit": { "vi": "Đặt tên cho từng hạt giống trước khi gieo, rồi thì thầm chúc «Mọc ngoan nhé».", "en": "Names every seed before sowing it and whispers, “Grow nicely now.”" },
+      "likes": ["chau-sen-da", "cu-ca-rot-ngot"],
+      "lines": [
+        { "when": "morning", "vi": "Đoán xem! Sáng nay luống cải nhú thêm mười hai mầm. À không, mười ba, mầm thứ mười ba vừa ló đầu kìa!", "en": "Guess what! Twelve new mustard sprouts this morning. No wait, thirteen, the thirteenth just poked its head out!" },
+        { "when": "afternoon", "vi": "Trưa nắng gắt, Thỏ che lưới cho luống xà lách. Xà lách mà say nắng là cụp lá dỗi cả buổi.", "en": "Harsh midday sun, so I'm shading the lettuce. Sunstruck lettuce droops and sulks all afternoon." },
+        { "when": "evening", "vi": "Chiều mát rồi, đúng giờ tưới vườn! {name} cầm bình nhỏ, Thỏ cầm bình to, thi xem ai tưới đều hơn nhé.", "en": "Cool evening, perfect watering time! You take the small can, {name}, I'll take the big one. Let's see who waters more evenly." },
+        { "when": "night", "vi": "Đêm xuống cây cũng ngủ, nhưng rễ thì vẫn thức uống nước. Thỏ thấy rễ cây chăm hơn cả Thỏ.", "en": "Plants sleep at night, but their roots stay up drinking. Roots work harder than I do." },
+        { "weather": "rain", "vi": "Mưa xuống mát cả vườn! Giun đất ngoi lên chào, Thỏ chào lại. Giun là bạn thân của rau đấy.", "en": "Rain cools the whole garden! The earthworms pop up to say hello, and I say hello back. Worms are a vegetable's best friends." },
+        { "weather": "fine", "vi": "Nắng đẹp thế này, cà chua đỏ lên trông thấy. {name} đếm giùm Thỏ xem có bao nhiêu quả chín rồi?", "en": "With sun like this the tomatoes blush before your eyes. Can you count the ripe ones for me, {name}?" },
+        { "hearts": 2, "vi": "Kể {name} nghe nè: Thỏ đặt tên hạt bí là Bí Đỏ Một, Bí Đỏ Hai… tới Bí Đỏ Bốn Mươi thì Thỏ hết ý.", "en": "Here's a secret, {name}: I named the pumpkin seeds Red One, Red Two… by Red Forty I ran out of ideas." },
+        { "hearts": 3, "vi": "Thỏ để dành cho {name} một góc luống nhỏ. Muốn trồng gì thì nói, Thỏ giữ phần đất ấy cho {name}.", "en": "I've saved a little corner of a bed for you, {name}. Tell me what to plant and I'll keep that patch of soil yours." },
+        { "hearts": 4, "vi": "{name} là bạn thân nên Thỏ thú thật: nhiều hôm Thỏ kể chuyện cười cho cây mà cây không cười, Thỏ đành tự cười.", "en": "You're a close friend, so I'll confess: some days I tell the plants jokes and they don't laugh, so I laugh for them." },
+        { "about": "cho-lua-vit", "vi": "Chó Lùa Vịt ở nông trại hay gửi phân vịt ủ hoai cho vườn mình. Nghe hơi kỳ, nhưng rau thích mê!", "en": "Chó Lùa Vịt at the farm sends us well-rotted duck manure. Sounds odd, but the vegetables adore it!" },
+        { "about": "ong-cu-trong-vuon", "vi": "Ông Cụ Trông Vườn dạy Thỏ đọc mây đoán mưa. Thỏ mới thuộc một kiểu: mây đen là mưa, mây trắng là… chưa chắc.", "en": "Ông Cụ Trông Vườn is teaching me to read clouds for rain. So far I know one: dark clouds mean rain, white ones mean… maybe." },
+        { "vi": "Cà rốt giòn ở nông trại ngọt lắm, ai tặng Thỏ một củ là Thỏ đem gieo lấy giống ngay.", "en": "The crunchy carrots from the farm are so sweet. Give me one and I'll plant it for seed straight away." },
+        { "vi": "Biết không, hạt đậu gieo xuống bao giờ cũng đưa mầm lên trời, rễ xuống đất, kể cả khi gieo lộn ngược.", "en": "Did you know a bean seed always sends its shoot up and its root down, even if you plant it upside down?" },
+        { "vi": "{name} thích ăn rau gì nhất? Đừng nói là không thích rau nhé, rau nghe thấy là buồn đấy.", "en": "Which vegetable do you like best, {name}? Don't say none; the vegetables can hear you." },
+        { "vi": "Cỏ dại mọc nhanh gấp ba rau, nên Thỏ nhổ cỏ nhanh gấp bốn. Toán học làm vườn là thế đấy!", "en": "Weeds grow three times faster than vegetables, so I pull them four times faster. That's garden maths!" }
+      ]
+    }
+  ],
+  "relations": [
+    { "a": "gau-banh-ngot", "b": "meo-bep-truong", "kind": "rival", "note": { "vi": "Gấu giữ lò nướng ngoài sân, Mèo giữ bếp trong nhà; hai bên thi nhau xem bữa nào cả nhà ăn sạch đĩa hơn.", "en": "Gấu rules the oven in the yard and Mèo the kitchen indoors; they compete over which meal leaves the cleaner plates." } },
+    { "a": "ong-cu-trong-vuon", "b": "tho-lam-vuon", "kind": "mentor", "note": { "vi": "Ông Cụ dạy Thỏ đọc mây, nhận mặt đất và gọi tên từng luống rau.", "en": "Ông Cụ teaches Thỏ to read clouds, judge soil and call each bed by its name." } },
+    { "a": "cun-dom-don-nha", "b": "meo-bep-truong", "kind": "neighbour", "note": { "vi": "Phòng khách sát gian bếp: Mèo làm rơi vụn nào là Cún dọn ngay vụn ấy.", "en": "The living room adjoins the kitchen: whatever crumb Mèo drops, Cún sweeps up." } },
+    { "a": "gau-banh-ngot", "b": "ong-cu-trong-vuon", "kind": "friend", "note": { "vi": "Ông Cụ đẽo cho Gấu chiếc cán lăn bột, Gấu trả ông bằng bánh nướng nóng mỗi sáng.", "en": "Ông Cụ carved Gấu her rolling pin, and she pays him in warm pastries every morning." } },
+    { "a": "tho-lam-vuon", "b": "cun-dom-don-nha", "kind": "friend", "note": { "vi": "Thỏ trồng cỏ thơm lót ổ cho Cún, còn Cún canh không cho gà bới luống rau.", "en": "Thỏ grows sweet grass for Cún's bed, and Cún keeps the hens from scratching up her beds." } },
+    { "a": "gau-banh-ngot", "b": "voi-keo-bong", "kind": "pen-pal", "note": { "vi": "Gấu và Voi Kẹo Bông viết thư đổi công thức đồ ngọt, và chưa bao giờ chịu nhận món của ai ngon hơn.", "en": "Gấu and Voi Kẹo Bông trade sweet recipes by letter and have never agreed whose treat is better." } },
+    { "a": "cun-dom-don-nha", "b": "ong-bay-co-ganh", "kind": "friend", "note": { "vi": "Mỗi lần sang xóm, Cún xếp gọn bàn cờ cho Ông Bảy, còn Ông Bảy dạy Cún đếm quân cờ.", "en": "Each time Cún visits the village he tidies Ông Bảy's board, and Ông Bảy teaches him to count the pieces." } }
+  ],
+  "arcs": [
+    {
+      "id": "gau-so-banh-cua-ba",
+      "npc": "gau-banh-ngot",
+      "title": { "vi": "Trang cuối sổ bánh của bà", "en": "The Last Page of Grandma's Recipe Book" },
+      "teaser": { "vi": "Sổ bánh của bà Gấu thiếu mất trang cuối. {name} có muốn cùng Gấu đi tìm không?", "en": "Gấu's grandmother's recipe book is missing its last page. Will you help her look for it, {name}?" },
+      "chapters": [
+        {
+          "quest": "yarn-gau-so-banh-cua-ba-1",
+          "hearts": 0,
+          "letter": {
+            "from": "gau-banh-ngot",
+            "title": { "vi": "Bánh rán chưa đúng vị", "en": "Doughnuts not quite right" },
+            "body": { "vi": "{name} ơi, tối nay Gấu rán thêm ba mẻ mà vẫn thiếu một vị gì đó. Gấu để phần {name} hai chiếc trên bậu cửa, nếm rồi nói Gấu nghe nhé. Mai mình ra ao!", "en": "{name}, I fried three more batches tonight and something is still missing. Two are waiting for you on the window ledge; taste them and tell me what you think. Tomorrow, the pond!" },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-gau-so-banh-cua-ba-2",
+          "hearts": 1,
+          "letter": {
+            "from": "voi-keo-bong",
+            "title": { "vi": "Thư từ quảng trường", "en": "A letter from the square" },
+            "body": { "vi": "Chào {name}, tớ là Voi Kẹo Bông. Gấu viết thư kể chuyện chiếc thuyền giấy, chữ run run vì xúc động. Tớ gửi kèm một gói đường kẹo bông, nhỡ bước cuối thiếu vị ngọt thì đã có tớ!", "en": "Hello {name}, it's Voi Kẹo Bông. Gấu wrote to me about the paper boat, her handwriting all wobbly with feeling. I'm sending a packet of cotton-candy sugar, in case the last step needs extra sweetness!" },
+            "reward": { "coins": 20, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-gau-so-banh-cua-ba-3",
+          "hearts": 2,
+          "letter": {
+            "from": "gau-banh-ngot",
+            "title": { "vi": "Gấu đã chào đàn ong!", "en": "I greeted the bees!" },
+            "body": { "vi": "{name} ơi, tay Gấu vẫn còn run, nhưng hũ mật trên bàn là do chính Gấu xin được. Bà Ong bảo Gấu chào hơi to, lần sau Gấu sẽ chào nhỏ hơn. Cảm ơn {name} đã đứng cạnh Gấu.", "en": "{name}, my paws are still shaking, but the honey jar on the table is one I asked for myself. Bà Ong said I greeted a bit loudly, so next time I'll whisper. Thank you for standing beside me." },
+            "reward": { "coins": 20, "xp": 20, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-gau-so-banh-cua-ba-4",
+          "hearts": 3,
+          "letter": {
+            "from": "gau-banh-ngot",
+            "title": { "vi": "Cửa sổ bánh đã mở", "en": "The cake window is open" },
+            "body": { "vi": "{name} ơi, sáng nay cửa sổ bánh ở cổng trước đón vị khách thứ mười. Chiếc bánh đầu mẻ bao giờ cũng là phần của {name}, Gấu gửi kèm thư đây. Bà mà biết chắc bà cười tít mắt.", "en": "{name}, this morning the cake window at the front gate welcomed its tenth visitor. The first doughnut of every batch is always yours, so here it is with this letter. Grandma would be beaming." },
+            "reward": { "coins": 25, "xp": 25, "items": { "dia-banh-ran": 1 } }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ong-cu-coi-xay-gio",
+      "npc": "ong-cu-trong-vuon",
+      "title": { "vi": "Cối xay gió đứng im", "en": "The Windmill That Stood Still" },
+      "teaser": { "vi": "Đêm qua giông to, cối xay gió trong vườn không chịu quay nữa. Cháu {name} giúp ông một tay chứ?", "en": "Last night's storm left the garden windmill refusing to turn. Lend an old man a hand, young {name}?" },
+      "chapters": [
+        {
+          "quest": "yarn-ong-cu-coi-xay-gio-1",
+          "hearts": 0,
+          "letter": {
+            "from": "ong-cu-trong-vuon",
+            "title": { "vi": "Rau đã đỡ khát", "en": "The greens are less thirsty" },
+            "body": { "vi": "Cháu {name}, tối nay ông xách thêm mấy gàu nước, rau cải đã ngẩng đầu lên rồi. Ông cứ nghĩ mãi về chiếc cánh quạt nhỏ năm xưa trong rương đồ chơi. Mai cháu ghé nhé.", "en": "Young {name}, I carried a few more buckets tonight and the mustard greens have lifted their heads. I keep thinking about that little propeller in the toy chest. Come by tomorrow." },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-ong-cu-coi-xay-gio-2",
+          "hearts": 1,
+          "letter": {
+            "from": "ong-bay-co-ganh",
+            "title": { "vi": "Thư từ dưới xóm", "en": "A letter from the village" },
+            "body": { "vi": "Cháu {name}, ông là Ông Bảy, bạn cờ của ông Cụ nhà cháu. Nghe tin cháu tìm được chiếc cánh quạt ông ấy đẽo năm xưa, ông cười suốt buổi. Bảo ông ấy sửa xong cối thì xuống đánh cờ, đừng viện cớ tưới rau nữa!", "en": "Young {name}, I'm Ông Bảy, your old gardener's chess friend. When I heard you found the propeller he carved years ago, I laughed all afternoon. Tell him that once the windmill's fixed he owes me a match, and no more watering excuses!" },
+            "reward": { "coins": 20, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-ong-cu-coi-xay-gio-3",
+          "hearts": 2,
+          "letter": {
+            "from": "ong-cu-trong-vuon",
+            "title": { "vi": "Thư thầy gửi trò", "en": "From teacher to apprentice" },
+            "body": { "vi": "Cháu {name}, cối xay gió đã quay đều, nước đã về từng luống. Ông gửi cháu chiếc chuông gió ông làm dư, treo ở đâu thì nhớ nghe gió hát. Tuần sau mình học bài đẽo thứ hai.", "en": "Young {name}, the windmill turns smoothly and water reaches every bed. Here's a spare wind chime I made; wherever you hang it, listen to the wind sing. Next week, carving lesson two." },
+            "reward": { "coins": 25, "xp": 25, "items": { "chuong-gio-ban-cong": 1 } }
+          }
+        }
+      ]
+    }
+  ]
+}

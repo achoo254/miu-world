@@ -1,0 +1,216 @@
+{
+  "id": "yarn-ong-cu-coi-xay-gio-1",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Chuyện của Ông Cụ Trông Vườn, chương 1: Cánh quạt gãy",
+  "status": "active",
+  "category": "story",
+  "summary": "Giông đêm qua làm gãy một cánh quạt của cối xay gió, máy bơm đứng im, luống rau khát khô. {name} nhặt các mảnh gãy, tìm hiểu bánh răng, đọc sổ tay cũ của ông và nghĩ cách giữ rau qua đêm.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Ông Cụ Trông Vườn",
+    "where": "Nhà của {name}: nhà kho nhỏ trong vườn, vườn rau, cối xay gió, bờ giếng sau vườn",
+    "goal": "Tìm hiểu vì sao cối xay gió đứng im và giữ cho luống rau khỏi héo",
+    "play": "Nhặt các mảnh cánh quạt; giải câu đố bánh răng; đọc sổ tay làm vườn; chọn cách giữ ẩm cho rau",
+    "learn": "Suy luận với bánh răng (cộng các số bằng nhau), đọc hiểu",
+    "reward": "60 XP, 14 Xu, Skill XP Logic, Đọc hiểu",
+    "next": "Mở rương đồ chơi tìm chiếc cánh quạt nhỏ năm xưa"
+  },
+  "phases": {
+    "hook": "coi-dung-im",
+    "explore": "nhat-manh-gay",
+    "learn": "banh-rang-to-nho",
+    "challenge": "so-tay-cua-ong",
+    "decision": "giu-rau-qua-dem",
+    "finale": "giu-rau-qua-dem",
+    "reward": "rau-ngang-dau",
+    "next": "ruong-dang-doi"
+  },
+  "places": {
+    "ong-cu-trong-vuon": "Nhà kho nhỏ",
+    "nhat-manh-gay": "Vườn rau",
+    "st-ong-cu-coi-xay-gio-manh-do": "Vườn rau",
+    "st-ong-cu-coi-xay-gio-manh-vang": "Vườn rau",
+    "st-ong-cu-coi-xay-gio-chot-truc": "Vườn rau",
+    "st-ong-cu-coi-xay-gio-banh-rang": "Cối xay gió",
+    "st-ong-cu-coi-xay-gio-so-tay": "Cối xay gió",
+    "st-ong-cu-coi-xay-gio-gau-nuoc": "Bờ giếng sau vườn"
+  },
+  "steps": [
+    {
+      "id": "coi-dung-im",
+      "title": "Cối xay gió đứng im",
+      "goTo": "Ra nhà kho nhỏ trong vườn, Ông Cụ Trông Vườn đang thở dài",
+      "kind": "dialogue",
+      "target": "ong-cu-trong-vuon",
+      "lines": [
+        { "speaker": "Ông Cụ Trông Vườn", "text": "Ờ thì, cháu {name} đến đúng lúc. Đêm qua giông to, một cánh quạt của cối xay gió gãy làm mấy mảnh." },
+        { "speaker": "Ông Cụ Trông Vườn", "text": "Cối không quay thì máy bơm không kéo nước, mấy luống rau đang khát khô cả họng." },
+        { "speaker": "Ông Cụ Trông Vườn", "text": "Gió còn thổi mảnh gãy văng khắp vườn rau. Cháu nhặt giúp ông nhé, đầu gối ông hôm nay cứng quá." }
+      ],
+      "choices": [
+        { "text": "Cháu đi ngay đây ạ!", "reply": "Nhớ tìm cả cái chốt gỗ nhỏ, thiếu nó là cánh quạt lỏng lẻo ngay." },
+        { "text": "Rau khát thật ạ? Lá cụp xuống hết rồi.", "reply": "Lá cụp là rau đang dỗi đấy. Có nước là chúng ngẩng lên liền." }
+      ],
+      "en": {
+        "title": "The windmill stands still",
+        "goTo": "Head to the little garden shed, where Ông Cụ Trông Vườn is sighing",
+        "lines": [
+          "Well now, young {name}, you're just in time. Last night's storm snapped one of the windmill's blades into pieces.",
+          "No turning windmill means no pump, and the vegetable beds are parched to the roots.",
+          "The wind scattered the pieces all over the vegetable garden. Gather them for me, would you? My knees are stiff today."
+        ],
+        "choices": [
+          { "text": "I'm on my way!", "reply": "Find the little wooden pin too; without it the blade wobbles loose." },
+          { "text": "Are the greens really that thirsty? All the leaves are drooping.", "reply": "Drooping leaves mean sulking greens. Give them water and up they'll perk." }
+        ]
+      }
+    },
+    {
+      "id": "nhat-manh-gay",
+      "title": "Nhặt mảnh cánh quạt",
+      "goTo": "Ra vườn rau nhặt những mảnh cánh quạt gió thổi bay",
+      "kind": "search",
+      "targets": ["st-ong-cu-coi-xay-gio-manh-do", "st-ong-cu-coi-xay-gio-manh-vang", "st-ong-cu-coi-xay-gio-chot-truc"],
+      "en": {
+        "title": "Gathering the blade pieces",
+        "goTo": "Go out to the vegetable garden and pick up the blade pieces the wind blew away"
+      }
+    },
+    {
+      "id": "banh-rang-to-nho",
+      "title": "Bánh răng to, bánh răng nhỏ",
+      "goTo": "Mang các mảnh tới chân cối xay gió, xem hộp bánh răng",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-ong-cu-coi-xay-gio-banh-rang",
+      "skill": "logic",
+      "prompt": "Ông giải thích: bánh răng to quay 1 vòng thì bánh răng nhỏ quay 2 vòng. Nếu bánh răng to quay 3 vòng, bánh răng nhỏ quay mấy vòng?",
+      "choices": [
+        { "id": "a", "text": "5 vòng" },
+        { "id": "b", "text": "6 vòng" },
+        { "id": "c", "text": "8 vòng" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Một vòng bánh to ứng với 2 vòng bánh nhỏ.", "Ba vòng bánh to là ba lần 2 vòng."],
+        "hint": "2 + 2 + 2 = ?",
+        "answer": { "text": "Bánh răng nhỏ quay 6 vòng", "explanation": "Mỗi vòng bánh to làm bánh nhỏ quay 2 vòng, ba vòng là 2 + 2 + 2 = 6 vòng." },
+        "en": {
+          "guide": ["One turn of the big gear means 2 turns of the small one.", "Three big turns are three lots of 2."],
+          "hint": "2 + 2 + 2 = ?",
+          "answer": { "text": "The small gear turns 6 times", "explanation": "Each big turn spins the small gear twice, so three big turns make 2 + 2 + 2 = 6." }
+        }
+      },
+      "feedback": {
+        "right": ["Ông gõ ngón tay vào bánh răng: «Sáu vòng! Cháu hiểu máy móc hơn khối người lớn.»", "Bánh nhỏ chạy nhanh gấp đôi bánh to, {name} nhìn ra ngay.", "Đúng thế, nhờ vậy cánh quạt quay chậm mà máy bơm vẫn chạy rộn ràng."],
+        "wrong": ["Bánh nhỏ phải chạy nhanh hơn bánh to cơ, cháu đếm lại xem.", "Mỗi vòng bánh to là hai vòng bánh nhỏ, cứ thế cộng dồn nhé.", "Ờ thì, gần rồi, nhưng bánh răng không biết nói dối đâu {name}."],
+        "en": {
+          "right": ["Ông taps the gear: “Six turns! You understand machines better than most grown-ups.”", "The small gear runs twice as fast as the big one, and you saw it straight away, {name}.", "Exactly, that's how slow blades still keep the pump busy."],
+          "wrong": ["The small gear has to spin faster than the big one; count again.", "Each big turn is two small turns, so keep adding them up.", "Well now, close, but gears never tell fibs, {name}."]
+        }
+      },
+      "en": {
+        "title": "Big gear, small gear",
+        "goTo": "Bring the pieces to the foot of the windmill and look at the gearbox",
+        "prompt": "Ông explains: when the big gear turns once, the small gear turns twice. If the big gear turns 3 times, how many times does the small gear turn?",
+        "choices": ["5 turns", "6 turns", "8 turns"]
+      }
+    },
+    {
+      "id": "so-tay-cua-ong",
+      "title": "Trang sổ tay cũ",
+      "kind": "read",
+      "target": "st-ong-cu-coi-xay-gio-so-tay",
+      "skill": "doc-hieu",
+      "text": "Sổ tay làm vườn, mùa mưa năm ấy\nĐẽo xong cối xay gió, còn thừa một mẩu gỗ thông. Đẽo thành cánh quạt nhỏ, giống hệt cánh thật, tặng bé con của ngôi nhà làm đồ chơi. Bé cất nó vào rương đồ chơi, dặn: «Khi nào cối hỏng thì lấy ra.»",
+      "question": "Theo sổ tay, chiếc cánh quạt nhỏ được cất ở đâu?",
+      "choices": [
+        { "id": "a", "text": "Trong rương đồ chơi" },
+        { "id": "b", "text": "Trên nóc cối xay gió" },
+        { "id": "c", "text": "Dưới gầm bàn đẽo gỗ" }
+      ],
+      "answer": { "choice": "a" },
+      "support": {
+        "guide": ["Tìm câu có chữ «cất».", "Bé con của ngôi nhà đã đặt nó vào đâu?"],
+        "hint": "Nơi cất đồ chơi của cả nhà.",
+        "answer": { "text": "Bé con cất nó trong rương đồ chơi", "explanation": "Sổ tay ghi: bé cất nó vào rương đồ chơi, để khi cối hỏng thì lấy ra." },
+        "en": {
+          "guide": ["Find the sentence with “put it”.", "Where did the little one of the house place it?"],
+          "hint": "The place where the household keeps its toys.",
+          "answer": { "text": "The little one kept it in the toy chest", "explanation": "The notebook says the little one put it in the toy chest, to take out when the windmill broke." }
+        }
+      },
+      "feedback": {
+        "right": ["Ông vỗ đùi: «Phải rồi, cái rương! Trí nhớ ông đúng là có lỗ thủng.»", "{name} đọc được cả chữ ông viết ngoáy, tài thật.", "Rương đồ chơi! Bé con năm ấy dặn cứ như đoán trước tương lai."],
+        "wrong": ["Nóc cối cao lắm, ai lại cất đồ chơi trên đó, cháu đọc lại câu cuối nhé.", "Bàn đẽo gỗ toàn mùn cưa thôi, tìm chữ «cất» trong sổ xem.", "Ờ thì, đọc chậm thôi, chữ ông xấu nhưng không lừa ai đâu."],
+        "en": {
+          "right": ["Ông slaps his knee: “Of course, the chest! My memory has holes in it.”", "You can read my scrawl, {name}? That's a real talent.", "The toy chest! That little one spoke as if they could see the future."],
+          "wrong": ["The top of the windmill is far too high for toys; read the last sentence again.", "The carving bench is all sawdust; look for “put it” in the notebook.", "Well now, read slowly; my handwriting is ugly but it never lies."]
+        }
+      },
+      "en": {
+        "title": "An old notebook page",
+        "text": "Garden notebook, that rainy season\nFinished the windmill with a scrap of pine left over. Carved it into a little propeller, just like the real blades, as a toy for the little one of the house. The little one put it in the toy chest and said: “We'll take it out when the windmill breaks.”",
+        "question": "According to the notebook, where was the little propeller kept?",
+        "choices": ["In the toy chest", "On top of the windmill", "Under the carving bench"]
+      }
+    },
+    {
+      "id": "giu-rau-qua-dem",
+      "title": "Rau khát, làm gì trước?",
+      "goTo": "Ra bờ giếng sau vườn lấy nước cho rau đỡ khát",
+      "kind": "decision",
+      "target": "st-ong-cu-coi-xay-gio-gau-nuoc",
+      "speaker": "Ông Cụ Trông Vườn",
+      "prompt": "Chờ sửa xong cối thì rau héo mất. Ông hỏi: «Tối nay mình giữ rau thế nào đây, cháu?»",
+      "choices": [
+        { "id": "xach-nuoc", "text": "Xách gàu nước tưới gốc từng luống", "consequence": "Hai ông cháu xách từng gàu, đất uống nước kêu xì xì. Lá cải từ từ ngẩng lên." },
+        { "id": "phu-rom", "text": "Phủ rơm lên luống cho đất giữ ẩm", "consequence": "Rơm vàng phủ kín luống như chăn. Ông gật gù: «Đất có chăn thì đỡ khát cả đêm.»" },
+        { "id": "ca-hai", "text": "Làm cả hai, tưới trước rồi phủ rơm", "consequence": "Ông cười khà: «Cháu tham việc y như ông hồi trẻ.» Tưới xong phủ rơm, luống rau mát rượi tới sáng." }
+      ],
+      "en": {
+        "title": "Thirsty greens: what first?",
+        "goTo": "Go to the well behind the garden to fetch water for the thirsty greens",
+        "prompt": "By the time the windmill's mended the greens will wilt. Ông asks: “How shall we look after them tonight?”",
+        "choices": [
+          { "text": "Carry buckets and water the roots of each bed", "consequence": "Old man and child carry bucket after bucket; the soil sizzles as it drinks, and the mustard leaves slowly lift." },
+          { "text": "Spread straw over the beds to keep the soil moist", "consequence": "Golden straw blankets the beds. Ông nods: “Soil with a blanket stays less thirsty all night.”" },
+          { "text": "Do both: water first, then add straw", "consequence": "Ông chuckles: “Greedy for work, just like me when I was young.” Watered and covered, the beds stay cool till morning." }
+        ]
+      }
+    },
+    {
+      "id": "rau-ngang-dau",
+      "title": "Rau ngẩng đầu",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ông Cụ dúi vào tay {name} một que cắm luống mới, khắc chữ «Luống của cháu». Rau đã đỡ khát, còn ông thì đỡ lo.",
+      "en": {
+        "title": "The greens perk up",
+        "text": "Ông Cụ presses a new bed marker into {name}'s hand, carved “Your bed”. The greens are less thirsty, and the old man less worried."
+      }
+    },
+    {
+      "id": "ruong-dang-doi",
+      "title": "Rương đồ chơi đang đợi",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chiếc cánh quạt nhỏ năm xưa nằm trong rương đồ chơi. Mai {name} ghé góc đồ chơi mở rương giúp ông, đầu gối ông không quỳ xuống nổi nữa rồi.",
+      "en": {
+        "title": "The toy chest is waiting",
+        "text": "The little propeller from long ago is in the toy chest. Tomorrow {name} will open it in the toy corner, since Ông's knees can no longer kneel."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 14,
+    "skillXp": { "logic": 1, "doc-hieu": 1 }
+  },
+  "en": {
+    "title": "Ông Cụ Trông Vườn's story, chapter 1: The broken blade",
+    "summary": "Last night's storm snapped a windmill blade, the pump stopped and the vegetable beds are parched. {name} gathers the broken pieces, works out the gears, reads Ông's old notebook and finds a way to keep the greens alive overnight."
+  }
+}

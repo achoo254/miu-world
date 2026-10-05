@@ -1,0 +1,232 @@
+{
+  "id": "yarn-ong-cu-coi-xay-gio-3",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Chuyện của Ông Cụ Trông Vườn, chương 3: Gió về vườn",
+  "status": "active",
+  "category": "story",
+  "summary": "{name} tập tay với hộp thả hình của ông, lấy sơn và cọ cho cánh quạt mới, kiểm tra cánh trước khi lắp rồi dẫn nước về luống rau khát nhất. Cối xay gió hát lại, và ông có một lời đề nghị dành cho {name}.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Ông Cụ Trông Vườn",
+    "where": "Nhà của {name}: nhà kho nhỏ trong vườn, nhà kho, cối xay gió, vườn rau",
+    "goal": "Lắp cánh quạt mới cho cối xay gió và đưa nước về từng luống rau",
+    "play": "Chơi hộp thả hình; tìm sơn và cọ; chọn những điều cánh mới cần có; dò đường mương nước; trả lời lời đề nghị của ông",
+    "learn": "So sánh để chọn đúng, tìm đường đi trên lưới ô",
+    "reward": "80 XP, 22 Xu, Skill XP Logic",
+    "next": "Bài đẽo thứ hai: con chim gỗ cho nóc cối xay gió"
+  },
+  "phases": {
+    "hook": "tap-tay-truoc",
+    "explore": "lay-son-va-co",
+    "learn": "kiem-tra-canh-moi",
+    "challenge": "dan-nuoc-ve-luong",
+    "decision": "loi-de-nghi",
+    "finale": "loi-de-nghi",
+    "reward": "coi-xay-gio-hat",
+    "next": "bai-deo-thu-hai"
+  },
+  "places": {
+    "ong-cu-trong-vuon": "Nhà kho nhỏ",
+    "lay-son-va-co": "Nhà kho",
+    "st-ong-cu-coi-xay-gio-hop-son": "Nhà kho",
+    "st-ong-cu-coi-xay-gio-co-quet": "Nhà kho",
+    "st-ong-cu-coi-xay-gio-canh-moi": "Cối xay gió",
+    "st-ong-cu-coi-xay-gio-muong-nuoc": "Vườn rau"
+  },
+  "steps": [
+    {
+      "id": "tap-tay-truoc",
+      "title": "Tập tay trước khi đẽo",
+      "goTo": "Tới nhà kho nhỏ trong vườn, bàn đẽo gỗ đã dọn sẵn",
+      "kind": "dialogue",
+      "target": "ong-cu-trong-vuon",
+      "lines": [
+        { "speaker": "Ông Cụ Trông Vườn", "text": "Hôm nay mình đẽo cánh thật. Nhưng thợ nào cũng phải tập tay trước, cháu thử chiếc hộp thả hình ông làm đây." },
+        { "speaker": "Ông Cụ Trông Vườn", "text": "Khối nào vừa lỗ nào, nhìn một lần là phải thấy. Mắt tinh thì nét đẽo mới thẳng." }
+      ],
+      "choices": [
+        { "text": "Cháu sẵn sàng rồi ạ!", "reply": "Tốt. Nhanh mà không vội, nhớ lấy." }
+      ],
+      "en": {
+        "title": "Warming up the hands",
+        "goTo": "Come to the little garden shed, where the carving bench is ready",
+        "lines": [
+          "Today we carve the real blade. But every craftsman warms up first, so try the shape-sorter box I made.",
+          "Which block fits which hole, you should see it at a glance. Sharp eyes make straight cuts."
+        ],
+        "choices": [
+          { "text": "I'm ready!", "reply": "Good. Quick but never hurried, remember that." }
+        ]
+      }
+    },
+    {
+      "id": "tha-hinh",
+      "title": "Hộp thả hình của ông",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Thả cho đủ hai mươi khối gỗ vào đúng lỗ vừa với chúng nhé!",
+      "game": "shape-sorter",
+      "goal": 20,
+      "en": {
+        "title": "Ông's shape-sorter",
+        "prompt": "Drop twenty wooden blocks into the holes that fit them!"
+      }
+    },
+    {
+      "id": "lay-son-va-co",
+      "title": "Sơn và cọ cho cánh mới",
+      "goTo": "Vào nhà kho tìm hộp sơn và cây cọ cho cánh quạt mới",
+      "kind": "search",
+      "targets": ["st-ong-cu-coi-xay-gio-hop-son", "st-ong-cu-coi-xay-gio-co-quet"],
+      "en": {
+        "title": "Paint and a brush for the new blade",
+        "goTo": "Go into the storeroom for a tin of paint and a brush for the new blade"
+      }
+    },
+    {
+      "id": "kiem-tra-canh-moi",
+      "title": "Kiểm tra cánh quạt mới",
+      "goTo": "Khiêng cánh quạt mới đã sơn tới chân cối xay gió",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-ong-cu-coi-xay-gio-canh-moi",
+      "skill": "logic",
+      "prompt": "Trước khi lắp, ông bảo kiểm tra thật kỹ. Chọn tất cả những điều cánh mới cần có để quay êm cùng ba cánh cũ:",
+      "choices": [
+        { "id": "dai-bang", "text": "Dài bằng các cánh còn lại" },
+        { "id": "nang-bang", "text": "Nặng bằng các cánh còn lại" },
+        { "id": "dai-gap-doi", "text": "Dài gấp đôi để quay nhanh hơn" },
+        { "id": "lo-chot", "text": "Lỗ chốt vừa khít với trục" }
+      ],
+      "answer": { "choices": ["dai-bang", "nang-bang", "lo-chot"] },
+      "support": {
+        "guide": ["Bốn cánh phải giống nhau thì cối mới quay đều.", "Cánh mới còn phải gắn chặt vào trục."],
+        "hint": "Có ba điều đúng; điều sai sẽ làm cối lệch hẳn sang một bên.",
+        "answer": { "text": "Ba điều: dài bằng, nặng bằng ba cánh kia và lỗ chốt vừa trục", "explanation": "Bốn cánh dài và nặng như nhau thì cối cân, lỗ chốt vừa khít thì cánh không lỏng. Cánh dài gấp đôi làm cối nghiêng lệch, quay giật cục." },
+        "en": {
+          "guide": ["All four blades must match for the windmill to turn evenly.", "The new blade must also fit firmly on the axle."],
+          "hint": "Three are right; the wrong one would tip the windmill sideways.",
+          "answer": { "text": "Three things: same length, same weight, snug pin hole", "explanation": "Four blades of equal length and weight keep the windmill balanced, and a snug pin hole stops wobbling. A double-length blade would tip it and make it jerk." }
+        }
+      },
+      "feedback": {
+        "right": ["Ông đo lại lần cuối rồi cười: «Bốn anh em giống nhau như đúc.»", "{name} nghĩ y như một người thợ làm cối xay gió thực thụ.", "Cánh mới đủ chuẩn, cối xay gió sắp được hát lại rồi!"],
+        "wrong": ["Cánh dài gấp đôi thì cối lệch như người một chân giày cao, một chân dép.", "Thiếu một điều quan trọng rồi, nghĩ xem cánh gắn vào trục ra sao.", "Ờ thì, bốn cánh phải là bốn anh em sinh tư, cháu xét lại nhé."],
+        "en": {
+          "right": ["Ông measures one last time and smiles: “Four brothers, alike as peas in a pod.”", "You think just like a real windmill-maker, {name}.", "The new blade passes, and the windmill will soon be singing again!"],
+          "wrong": ["A double-length blade would wobble like walking with one high heel and one slipper.", "Something important is missing; think about how the blade fixes to the axle.", "Well now, four blades must be quadruplets; take another look."]
+        }
+      },
+      "en": {
+        "title": "Checking the new blade",
+        "goTo": "Carry the freshly painted blade to the foot of the windmill",
+        "prompt": "Before mounting it, Ông says to check carefully. Pick everything the new blade needs to turn smoothly with the three old ones:",
+        "choices": ["As long as the other blades", "As heavy as the other blades", "Twice as long so it spins faster", "A pin hole that fits the axle snugly"]
+      }
+    },
+    {
+      "id": "dan-nuoc-ve-luong",
+      "title": "Dẫn nước về luống rau",
+      "goTo": "Cối đã quay! Ra vườn rau mở mương cho nước chảy về luống khát nhất",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "maze",
+      "target": "st-ong-cu-coi-xay-gio-muong-nuoc",
+      "skill": "logic",
+      "prompt": "Ô chú mèo là đầu mương cạnh cối xay gió, ô ngôi sao là luống rau khát nhất, ô gạch là đá chắn ngang. Dãy bước nào dẫn nước tới nơi? (→ sang phải, ↓ đi xuống)",
+      "grid": [
+        ["S", ".", ".", "#"],
+        ["#", "#", ".", "."],
+        [".", ".", "#", "."],
+        ["#", ".", ".", "G"]
+      ],
+      "choices": [
+        { "id": "a", "text": "→ → ↓ → ↓ ↓" },
+        { "id": "b", "text": "↓ → → ↓ → ↓" },
+        { "id": "c", "text": "→ → → ↓ ↓ ↓" }
+      ],
+      "answer": { "choice": "a" },
+      "support": {
+        "guide": ["Đặt ngón tay lên ô chú mèo, đó là đầu mương.", "Thử từng dãy, chạm ô gạch là dãy đó tắc.", "Dãy đúng đưa nước tới ô ngôi sao."],
+        "hint": "Ngay dưới ô xuất phát là đá, ô thứ tư của hàng trên cùng cũng là đá.",
+        "answer": { "text": "Sang phải hai ô, xuống, sang phải, rồi xuống hai ô", "explanation": "Dãy → → ↓ → ↓ ↓ đi vòng qua mọi hòn đá và đưa nước tới luống khát nhất." },
+        "en": {
+          "guide": ["Put your finger on the cat square, the head of the channel.", "Try each sequence; touch a brick and that one is blocked.", "The right one carries water to the star square."],
+          "hint": "Right below the start is a stone, and so is the fourth square of the top row.",
+          "answer": { "text": "Two right, one down, one right, then two down", "explanation": "The sequence → → ↓ → ↓ ↓ winds past every stone and brings water to the thirstiest bed." }
+        }
+      },
+      "feedback": {
+        "right": ["Nước reo róc rách chạy dọc mương, luống rau uống ừng ực.", "{name} dẫn nước khéo như người làm thủy lợi lâu năm.", "Không vướng hòn đá nào, nước về tới nơi trong một hơi!"],
+        "wrong": ["Ối, nước đâm vào đá rồi tràn ra lối đi mất, thử dãy khác nhé.", "Dò từng bước bằng ngón tay xem dãy này vướng ở đâu, {name}.", "Đi thẳng hết hàng trên cùng là đụng hòn đá ở góc đấy."],
+        "en": {
+          "right": ["Water babbles down the channel and the beds gulp it up.", "You guide water like a seasoned irrigation engineer, {name}.", "Not one stone in the way; the water arrives in a single rush!"],
+          "wrong": ["Oops, the water hit a stone and spilled onto the path. Try another sequence.", "Trace each step with your finger to see where this one gets stuck, {name}.", "Running straight along the top row bumps the stone in the corner."]
+        }
+      },
+      "en": {
+        "title": "Guiding water to the beds",
+        "goTo": "The windmill turns! Go to the vegetable garden and open the channel to the thirstiest bed",
+        "prompt": "The cat square is the channel's head by the windmill, the star square is the thirstiest bed, and brick squares are stones in the way. Which steps lead the water there? (→ right, ↓ down)",
+        "choices": ["→ → ↓ → ↓ ↓", "↓ → → ↓ → ↓", "→ → → ↓ ↓ ↓"]
+      }
+    },
+    {
+      "id": "loi-de-nghi",
+      "title": "Lời đề nghị của ông",
+      "goTo": "Quay về nhà kho nhỏ trong vườn, ông có điều muốn hỏi",
+      "kind": "decision",
+      "target": "ong-cu-trong-vuon",
+      "speaker": "Ông Cụ Trông Vườn",
+      "prompt": "Ông lau tay, nhìn cối xay gió quay đều: «Ông già rồi, cối này cần một người chăm sau ông. Cháu {name} có muốn làm học trò đẽo gỗ của ông không?»",
+      "choices": [
+        { "id": "nhan-loi", "text": "Cháu xin làm học trò của ông!", "consequence": "Ông Cụ cười rung cả râu, khắc ngay chữ «Học trò» lên một que cắm luống rồi cắm cạnh ghế của ông." },
+        { "id": "moi-tuan", "text": "Tuần nào cháu cũng sang học một bài", "consequence": "Ông gật gù: «Mỗi tuần một bài, chậm mà chắc. Bài đầu: đẽo cho đúng chiều thớ gỗ.»" },
+        { "id": "ru-tho", "text": "Cháu rủ cả Thỏ Làm Vườn cùng học", "consequence": "Ông vỗ tay: «Hai học trò thì cối xay gió có hai người chăm. Ông yên tâm rồi!»" }
+      ],
+      "en": {
+        "title": "Ông's offer",
+        "goTo": "Head back to the little garden shed; Ông has something to ask",
+        "prompt": "Ông wipes his hands and watches the windmill turn: “I'm getting old, and this windmill needs a keeper after me. Young {name}, would you be my carving apprentice?”",
+        "choices": [
+          { "text": "I'd love to be your apprentice!", "consequence": "Ông Cụ laughs till his beard shakes and carves “Apprentice” on a bed marker, planting it beside his own chair." },
+          { "text": "I'll come for a lesson every week", "consequence": "Ông nods: “One lesson a week, slow and sure. Lesson one: carve with the grain.”" },
+          { "text": "I'll bring Thỏ Làm Vườn to learn too", "consequence": "Ông claps: “Two apprentices means two keepers for the windmill. Now I can rest easy!”" }
+        ]
+      }
+    },
+    {
+      "id": "coi-xay-gio-hat",
+      "title": "Cối xay gió hát lại",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cối xay gió quay kẽo kẹt đều đều, nước chảy về từng luống. Ông Cụ tặng {name} chiếc giũa gỗ nhỏ bọc vải, «dụng cụ đầu tiên của học trò».",
+      "en": {
+        "title": "The windmill sings again",
+        "text": "The windmill creaks round steadily and water flows to every bed. Ông Cụ gives {name} a small cloth-wrapped wood rasp, “an apprentice's first tool”."
+      }
+    },
+    {
+      "id": "bai-deo-thu-hai",
+      "title": "Bài đẽo thứ hai",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Gió đã về vườn. Ông Cụ bảo bài tới là đẽo một con chim gỗ gắn lên nóc cối, «để cối có bạn ngắm trời». Ông còn hẹn xuống xóm đánh cờ với ông bạn già, lần này hết viện cớ.",
+      "en": {
+        "title": "Carving lesson two",
+        "text": "The wind is home in the garden. Ông Cụ says the next lesson is a wooden bird for the windmill's top, “so it has a friend to watch the sky with”. He's also promised his old friend a chess match down in the village, no more excuses."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 22,
+    "skillXp": { "logic": 1 }
+  },
+  "en": {
+    "title": "Ông Cụ Trông Vườn's story, chapter 3: The wind comes home",
+    "summary": "{name} warms up with Ông's shape-sorter, fetches paint and a brush for the new blade, checks it before mounting and guides water to the thirstiest bed. The windmill sings again, and Ông has an offer for {name}."
+  }
+}

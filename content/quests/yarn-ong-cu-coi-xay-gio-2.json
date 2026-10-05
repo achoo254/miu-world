@@ -1,0 +1,213 @@
+{
+  "id": "yarn-ong-cu-coi-xay-gio-2",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Chuyện của Ông Cụ Trông Vườn, chương 2: Rương đồ chơi",
+  "status": "active",
+  "category": "story",
+  "summary": "Đầu gối ông không quỳ nổi, nên {name} giải câu đố khắc trên nắp rương đồ chơi, lần theo mảnh giấy vào phòng ngủ tìm ba món đồ chơi gỗ ông đẽo năm xưa, rồi cùng ông chọn gỗ và lên kế hoạch đẽo cánh quạt mới.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Ông Cụ Trông Vườn",
+    "where": "Nhà của {name}: nhà kho nhỏ trong vườn, góc đồ chơi, phòng ngủ, nhà kho",
+    "goal": "Tìm lại chiếc cánh quạt gỗ nhỏ để làm mẫu đẽo cánh mới cho cối xay gió",
+    "play": "Giải câu đố trên nắp rương; tìm ba món đồ chơi gỗ theo lời tả; chọn loại gỗ; xếp các bước đẽo",
+    "learn": "Phép cộng trong phạm vi 20, đọc hiểu lời tả, sắp xếp trình tự",
+    "reward": "70 XP, 18 Xu, Skill XP Phép cộng, Đọc hiểu, Kể chuyện",
+    "next": "Đẽo, sơn và lắp cánh quạt mới lên cối xay gió"
+  },
+  "phases": {
+    "hook": "ong-khong-quy-noi",
+    "explore": "cau-do-nap-ruong",
+    "learn": "cau-do-nap-ruong",
+    "challenge": "do-choi-go-phong-ngu",
+    "decision": "chon-go",
+    "finale": "cac-buoc-deo",
+    "reward": "mau-canh-quat",
+    "next": "canh-cho-son"
+  },
+  "places": {
+    "ong-cu-trong-vuon": "Nhà kho nhỏ",
+    "ruong-do-choi-nha-be": "Góc đồ chơi",
+    "do-choi-go-phong-ngu": "Phòng ngủ",
+    "st-ong-cu-coi-xay-gio-canh-quat-nho": "Phòng ngủ",
+    "st-ong-cu-coi-xay-gio-thuyen-go": "Phòng ngủ",
+    "st-ong-cu-coi-xay-gio-bup-be-go": "Phòng ngủ",
+    "st-ong-cu-coi-xay-gio-chong-go": "Nhà kho"
+  },
+  "steps": [
+    {
+      "id": "ong-khong-quy-noi",
+      "title": "Ông không quỳ nổi",
+      "goTo": "Ghé nhà kho nhỏ trong vườn, ông đang xoa đầu gối",
+      "kind": "dialogue",
+      "target": "ong-cu-trong-vuon",
+      "lines": [
+        { "speaker": "Ông Cụ Trông Vườn", "text": "Rương đồ chơi thấp lè tè mà đầu gối ông thì cứng như khúc gỗ lim. Cháu mở giúp ông nhé." },
+        { "speaker": "Ông Cụ Trông Vườn", "text": "Ông nhớ mang máng nắp rương có khắc một câu đố, ông khắc cho vui, giờ chính ông cũng quên đáp án rồi." }
+      ],
+      "choices": [
+        { "text": "Câu đố của ông thì cháu giải được!", "reply": "Ờ thì, ông tin cháu. Ông chỉ sợ nó khó, hồi trẻ ông hơi tinh quái." }
+      ],
+      "en": {
+        "title": "Knees that won't kneel",
+        "goTo": "Stop by the little garden shed, where Ông is rubbing his knees",
+        "lines": [
+          "The toy chest sits so low, and my knees are stiff as ironwood. Open it for me, young one.",
+          "I vaguely recall carving a riddle on the lid for fun, and now even I've forgotten the answer."
+        ],
+        "choices": [
+          { "text": "If it's your riddle, I can solve it!", "reply": "Well now, I believe you. I only fear it's tricky; I was a bit of a rascal when I was young." }
+        ]
+      }
+    },
+    {
+      "id": "cau-do-nap-ruong",
+      "title": "Câu đố khắc trên nắp rương",
+      "goTo": "Tới góc đồ chơi, tìm chiếc rương đồ chơi của nhà",
+      "kind": "riddle",
+      "target": "ruong-do-choi-nha-be",
+      "skill": "phep-cong",
+      "question": "Nắp rương khắc: «Hai ngăn trên, mỗi ngăn 5 món đồ chơi. Ngăn dưới 7 món. Cả rương có bao nhiêu món?»",
+      "answer": { "value": 17 },
+      "support": {
+        "guide": ["Hai ngăn trên: 5 món và 5 món.", "Cộng thêm 7 món của ngăn dưới."],
+        "hint": "5 + 5 + 7 = ?",
+        "answer": { "text": "Cả rương có 17 món", "explanation": "5 + 5 = 10 món ở hai ngăn trên, thêm 7 món ngăn dưới là 10 + 7 = 17 món." },
+        "en": {
+          "guide": ["Two top drawers: 5 toys and 5 toys.", "Add the 7 toys in the bottom drawer."],
+          "hint": "5 + 5 + 7 = ?",
+          "answer": { "text": "The chest holds 17 toys", "explanation": "5 + 5 = 10 in the top drawers, plus 7 below makes 10 + 7 = 17." }
+        }
+      },
+      "feedback": {
+        "right": ["Cạch cạch, then rương bật mở, mùi gỗ thông cũ tỏa ra thơm lừng.", "Mười bảy món! Ông mà ở đây chắc khen cháu tinh như cú.", "{name} cộng nhanh hơn cả lúc ông khắc câu đố này."],
+        "wrong": ["Nắp rương vẫn đóng im, {name} thử cộng hai ngăn trên trước nhé.", "Đừng quên ngăn dưới còn bảy món đang chờ được đếm.", "Rương chưa chịu mở đâu, đếm từng ngăn một rồi gộp lại xem."],
+        "en": {
+          "right": ["Clack-clack, the latch springs open and old pine scent fills the air.", "Seventeen! If Ông were here he'd say you're sharp as an owl.", "You added that faster than Ông carved the riddle, {name}."],
+          "wrong": ["The lid stays shut, {name}; try adding the top drawers first.", "Don't forget the bottom drawer, seven toys waiting to be counted.", "No luck yet; count each drawer, then put them together."]
+        }
+      },
+      "en": {
+        "title": "The riddle carved on the lid",
+        "goTo": "Go to the toy corner and find the household's toy chest",
+        "question": "The lid reads: “Two top drawers, 5 toys in each. The bottom drawer holds 7. How many toys in the whole chest?”"
+      }
+    },
+    {
+      "id": "do-choi-go-phong-ngu",
+      "title": "Đồ chơi gỗ trong phòng ngủ",
+      "goTo": "Trong rương chỉ có mảnh giấy: «Đồ gỗ của ông, bé mang vào phòng ngủ.» Vào phòng ngủ tìm nhé",
+      "kind": "find-object",
+      "prompt": "Năm xưa ông đẽo cho ngôi nhà ba món đồ chơi. Đọc lời tả và tìm từng món:",
+      "skill": "doc-hieu",
+      "items": [
+        { "id": "canh-quat", "name": "Cánh quạt gỗ nhỏ", "clue": "Bốn cánh dài bằng nhau, giữa có một lỗ tròn vừa ngón tay út.", "target": "st-ong-cu-coi-xay-gio-canh-quat-nho" },
+        { "id": "thuyen", "name": "Con thuyền gỗ mũi đỏ", "clue": "Thân gỗ nâu, mũi sơn đỏ, đáy phẳng để nổi được trong chậu nước.", "target": "st-ong-cu-coi-xay-gio-thuyen-go" },
+        { "id": "bup-be", "name": "Bộ búp bê gỗ lồng nhau", "clue": "Mở một bạn ra là thấy một bạn nhỏ hơn bên trong, cứ thế năm lần.", "target": "st-ong-cu-coi-xay-gio-bup-be-go" }
+      ],
+      "en": {
+        "title": "Wooden toys in the bedroom",
+        "goTo": "The chest holds only a note: “Ông's wooden toys went to the bedroom.” Go and search the bedroom",
+        "prompt": "Long ago Ông carved three toys for the house. Read each description and find it:",
+        "items": [
+          { "name": "The little wooden propeller", "clue": "Four blades of equal length, with a round hole in the middle just right for a little finger." },
+          { "name": "The red-nosed wooden boat", "clue": "A brown wooden hull with a red-painted bow and a flat bottom, so it floats in a basin." },
+          { "name": "The nesting wooden dolls", "clue": "Open one and a smaller one waits inside, five times over." }
+        ]
+      }
+    },
+    {
+      "id": "chon-go",
+      "title": "Chọn gỗ đẽo cánh mới",
+      "goTo": "Mang cánh quạt nhỏ vào nhà kho, nơi ông chất gỗ",
+      "kind": "decision",
+      "target": "st-ong-cu-coi-xay-gio-chong-go",
+      "speaker": "Ông Cụ Trông Vườn",
+      "prompt": "Cánh quạt nhỏ quá, chỉ dùng làm mẫu được. Trong nhà kho có gỗ thông nhẹ và gỗ lim nặng. Ông hỏi: «Cháu chọn gỗ nào?»",
+      "choices": [
+        { "id": "go-thong", "text": "Gỗ thông nhẹ, gió đẩy là quay", "consequence": "Ông gật gù: «Đúng ý ông. Cánh quạt mà nặng như cánh cửa thì gió cũng phải xin thua.»" },
+        { "id": "go-lim", "text": "Gỗ lim chắc, bão không gãy được", "consequence": "Ông cười: «Chắc thì chắc thật, nhưng gió nhẹ đẩy không nổi. Ta lấy gỗ thông, sơn ba lớp cho bền nhé.»" }
+      ],
+      "en": {
+        "title": "Choosing wood for the new blade",
+        "goTo": "Take the little propeller to the storeroom, where Ông stacks his wood",
+        "prompt": "The little propeller is too small; it can only be a model. The storeroom has light pine and heavy ironwood. Ông asks: “Which wood do you choose?”",
+        "choices": [
+          { "text": "Light pine, so the wind can push it", "consequence": "Ông nods: “Just what I'd pick. A blade as heavy as a door would make the wind give up.”" },
+          { "text": "Sturdy ironwood, so storms can't snap it", "consequence": "Ông laughs: “Sturdy, yes, but a gentle breeze couldn't budge it. We'll use pine with three coats of paint for strength.”" }
+        ]
+      }
+    },
+    {
+      "id": "cac-buoc-deo",
+      "title": "Các bước đẽo cánh quạt",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-ong-cu-coi-xay-gio-chong-go",
+      "skill": "ke-chuyen",
+      "prompt": "Ông kể cách đẽo một cánh quạt mới theo mẫu. Xếp các bước theo đúng thứ tự:",
+      "items": [
+        { "id": "cua", "label": "Cưa tấm gỗ theo nét vạch" },
+        { "id": "nham", "label": "Chà giấy nhám cho thật nhẵn" },
+        { "id": "do", "label": "Đo cánh quạt mẫu bằng gang tay" },
+        { "id": "vach", "label": "Vạch hình cánh lên tấm gỗ" }
+      ],
+      "answer": { "order": ["do", "vach", "cua", "nham"] },
+      "support": {
+        "guide": ["Muốn biết cánh to bao nhiêu thì làm gì trước?", "Có số đo rồi mới vạch được hình.", "Cưa xong mới chà nhám cho nhẵn."],
+        "hint": "Đo → vạch → cưa → chà.",
+        "answer": { "text": "Đo mẫu → vạch hình → cưa theo nét → chà nhám", "explanation": "Phải đo mẫu mới biết vạch to bao nhiêu, vạch rồi mới cưa theo nét, cưa xong mới chà cho nhẵn." },
+        "en": {
+          "guide": ["To know how big the blade is, what comes first?", "Only with measurements can you draw the shape.", "Sanding comes after sawing."],
+          "hint": "Measure → draw → saw → sand.",
+          "answer": { "text": "Measure the model → draw the shape → saw along the line → sand", "explanation": "Measure the model to know how big to draw, draw before sawing along the line, and sand once it's cut." }
+        }
+      },
+      "feedback": {
+        "right": ["«Thợ khéo đo hai lần, cưa một lần,» ông nói, «cháu có nết thợ rồi đấy.»", "Bốn bước gọn gàng, cánh quạt mới coi như đã có hình hài.", "{name} xếp việc khéo như ông xếp củi, chẳng thừa một thanh."],
+        "wrong": ["Chưa vạch hình mà đã cưa thì cánh quạt méo xẹo mất.", "Chà nhám trước khi cưa là chà công cốc đấy, cháu xếp lại nhé.", "Ờ thì, nghĩ xem: chưa đo thì biết vạch to hay nhỏ đây?"],
+        "en": {
+          "right": ["“A good craftsman measures twice and cuts once,” says Ông, “and you've got a craftsman's habits.”", "Four tidy steps, and the new blade already has a shape.", "You order jobs as neatly as Ông stacks firewood, {name}, not one stick astray."],
+          "wrong": ["Sawing before drawing would leave a lopsided blade.", "Sanding before sawing is sanding for nothing; try again.", "Well now, think: without measuring, how would you know how big to draw?"]
+        }
+      },
+      "en": {
+        "title": "Steps for carving a blade",
+        "prompt": "Ông explains how to carve a new blade from the model. Put the steps in order:",
+        "items": ["Saw the board along the drawn line", "Sand it until it's perfectly smooth", "Measure the model blade in hand-spans", "Draw the blade's shape on the board"]
+      }
+    },
+    {
+      "id": "mau-canh-quat",
+      "title": "Mẫu cánh quạt năm xưa",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ông Cụ cầm chiếc cánh quạt nhỏ lên, mắt sáng như sao: «Bé con năm ấy dặn đúng thật.» Ông tặng {name} con thuyền gỗ mũi đỏ làm quà công tìm.",
+      "en": {
+        "title": "The old propeller model",
+        "text": "Ông Cụ lifts the little propeller, eyes bright as stars: “That little one was right after all.” He gives {name} the red-nosed wooden boat as a finder's reward."
+      }
+    },
+    {
+      "id": "canh-cho-son",
+      "title": "Cánh quạt chờ sơn",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tấm gỗ thông đã vạch hình. Mai ông cháu mình đẽo, sơn rồi lắp cánh mới lên cối. Ông dặn: «Cháu nhớ mang theo đôi tay khéo nhé.»",
+      "en": {
+        "title": "A blade waiting for paint",
+        "text": "The pine board is marked out. Tomorrow you and Ông will carve, paint and mount the new blade. He says: “Bring those clever hands along.”"
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": { "phep-cong": 1, "doc-hieu": 1, "ke-chuyen": 1 }
+  },
+  "en": {
+    "title": "Ông Cụ Trông Vườn's story, chapter 2: The toy chest",
+    "summary": "Ông's knees won't kneel, so {name} solves the riddle carved on the toy chest, follows a note to the bedroom to find three wooden toys Ông carved long ago, then helps him choose wood and plan the new blade."
+  }
+}
