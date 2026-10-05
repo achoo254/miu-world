@@ -1,0 +1,409 @@
+{
+  "id": "yarn-ho-bang-biet-hat-1",
+  "region": "nui-tuyet",
+  "chapter": 4,
+  "title": "Chuyện của Gấu Bắc Cực Câu Cá, chương 1: Lỗ câu đóng băng",
+  "status": "active",
+  "category": "story",
+  "summary": "Lỗ câu quen của bác Gấu đóng băng dày cả gang tay, đàn cánh cụt con thì đang đói. {name} gom đồ nghề, đọc bảng đo băng, chọn chỗ băng đủ dày rồi chia cá cho cả đàn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người phụ câu cá của bác Gấu Bắc Cực",
+    "where": "Hang băng và trạm thám hiểm, cửa hang băng, mặt hồ băng sau hang",
+    "goal": "Mở lại lỗ câu và có cá cho đàn cánh cụt con ăn trưa",
+    "play": "Tìm đồ nghề theo lời tả, đọc bảng đo băng, chọn các ô băng đủ dày, quyết định ai ra hồ, chia đều cá",
+    "learn": "Đọc hiểu một bảng ghi, so sánh các số đo, chia đều",
+    "reward": "60 XP, 15 Xu, Skill XP Đọc hiểu và So sánh số",
+    "next": "Đêm ấy băng lại kêu rắc rắc, bác Gấu không ngủ được"
+  },
+  "phases": {
+    "hook": "gap-bac-gau",
+    "explore": "tim-do-nghe",
+    "learn": "doc-bang-do",
+    "challenge": "chon-o-bang",
+    "decision": "ai-ra-ho",
+    "finale": "chia-ca",
+    "reward": "tra-cong",
+    "next": "dem-rac-rac"
+  },
+  "places": {
+    "gau-bac-cuc-cau-ca": "Hang băng và trạm thám hiểm",
+    "tim-do-nghe": "Trạm thám hiểm",
+    "st-ho-bang-biet-hat-bang-do": "Cửa hang băng",
+    "st-ho-bang-biet-hat-coc-do": "Mặt hồ băng sau hang"
+  },
+  "steps": [
+    {
+      "id": "gap-bac-gau",
+      "title": "Lỗ câu bị bịt kín",
+      "goTo": "Tới hang băng và trạm thám hiểm gặp bác Gấu Bắc Cực",
+      "kind": "dialogue",
+      "target": "gau-bac-cuc-cau-ca",
+      "lines": [
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Cháu {name} đấy à? Lỗ câu quen của bác đóng băng dày cả gang tay từ đêm qua rồi."
+        },
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Đàn cánh cụt con thì đứng xếp hàng chờ cá, mà bác lại... ngài ngại ra giữa hồ. Băng cứ kêu rắc rắc ấy."
+        },
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Đồ nghề của bác cất ở trạm thám hiểm. Cháu lấy giúp bác được không?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đi lấy ngay ạ!",
+          "reply": "Cái gì nặng thì để bác vác, cháu chỉ cần tìm thôi nhé."
+        },
+        {
+          "text": "Bác sợ băng kêu ạ?",
+          "reply": "Sợ thì... không hẳn. Chỉ là hai chân sau của bác hơi run thôi."
+        }
+      ],
+      "en": {
+        "title": "The hole is sealed shut",
+        "goTo": "Go to the ice cave and explorers' station to meet Uncle Polar Bear",
+        "lines": [
+          "Is that you, {name}? My favourite fishing hole froze a whole hand thick overnight.",
+          "The penguin chicks are lined up waiting for lunch, and I am... a little shy of the middle of the lake. The ice keeps going crack, crack.",
+          "My gear is kept at the explorers' station. Could you fetch it for me?"
+        ],
+        "choices": [
+          {
+            "text": "I'll go and get it right now!",
+            "reply": "Leave the heavy lifting to me, you only need to find things."
+          },
+          {
+            "text": "Are you scared of the ice noise?",
+            "reply": "Scared... not exactly. My back legs just get a little wobbly, that's all."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-do-nghe",
+      "title": "Đồ nghề câu cá",
+      "goTo": "Vào trạm thám hiểm tìm đồ nghề câu cá",
+      "kind": "find-object",
+      "prompt": "Bác Gấu dặn ba món. Đọc lời tả rồi tìm từng món nhé:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "duc-bang",
+          "name": "Cây đục băng",
+          "clue": "Cán gỗ, đầu sắt dẹt, gõ cốc cốc là băng mở ra một lỗ tròn.",
+          "target": "st-ho-bang-biet-hat-duc-bang"
+        },
+        {
+          "id": "day-cau",
+          "name": "Cuộn dây câu",
+          "clue": "Sợi mảnh màu kem, cuộn tròn như con ốc, đầu dây buộc một chiếc lưỡi câu nhỏ.",
+          "target": "st-ho-bang-biet-hat-day-cau"
+        },
+        {
+          "id": "xo-ca",
+          "name": "Xô đựng cá",
+          "clue": "Cái xô xanh có quai, đủ to để chứa cá cho cả một đàn cánh cụt.",
+          "target": "st-ho-bang-biet-hat-xo-ca"
+        }
+      ],
+      "en": {
+        "title": "The fishing gear",
+        "goTo": "Look inside the explorers' station for the fishing gear",
+        "prompt": "Uncle Bear asked for three things. Read each description and find them:",
+        "items": [
+          {
+            "name": "Ice chisel",
+            "clue": "A wooden handle with a flat iron head: tap-tap, and the ice opens a round hole."
+          },
+          {
+            "name": "Coil of fishing line",
+            "clue": "A thin cream thread rolled up like a snail shell, with a tiny hook tied to its end."
+          },
+          {
+            "name": "Fish bucket",
+            "clue": "A blue bucket with a handle, big enough to hold lunch for a whole flock of penguins."
+          }
+        ]
+      }
+    },
+    {
+      "id": "doc-bang-do",
+      "title": "Bảng đo băng",
+      "goTo": "Ra cửa hang băng đọc bảng đo băng của trạm",
+      "kind": "read",
+      "target": "st-ho-bang-biet-hat-bang-do",
+      "skill": "so-sanh-so",
+      "text": "Bảng của trạm thám hiểm:\nBăng dày dưới 10 phân: chưa ai được bước lên.\nBăng dày từ 10 phân: một người đi bộ ra được.\nBăng dày từ 15 phân: cả nhóm đứng được.\nSáng nay, băng ở lỗ câu của bác Gấu dày 12 phân.",
+      "question": "Băng ở lỗ câu dày 12 phân. Theo bảng, làm được gì?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Chưa ai được bước lên"
+        },
+        {
+          "id": "b",
+          "text": "Một người đi bộ ra được, chưa nên đứng cả nhóm"
+        },
+        {
+          "id": "c",
+          "text": "Cả nhóm ra đứng thoải mái"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Tìm số đo của sáng nay ở dòng cuối.",
+          "So 12 với 10 và với 15."
+        ],
+        "hint": "12 lớn hơn 10 nhưng còn nhỏ hơn 15.",
+        "answer": {
+          "text": "Đi được một người, cả nhóm thì chưa",
+          "explanation": "12 phân đã qua mốc 10 phân nên một người đi được, nhưng chưa tới mốc 15 phân dành cho cả nhóm."
+        },
+        "en": {
+          "guide": [
+            "Find this morning's measurement on the last line.",
+            "Compare 12 with 10 and with 15."
+          ],
+          "hint": "12 is more than 10 but still less than 15.",
+          "answer": {
+            "text": "One walker yes, a whole group not yet",
+            "explanation": "12 cm is past the 10 cm mark, so one person may walk, but it has not reached the 15 cm mark for a group."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chuẩn! Vậy chỉ một người ra hồ, đi chậm thôi.",
+          "Bác Gấu gật gù: cháu đọc bảng còn kỹ hơn bác.",
+          "Đúng rồi, 12 nằm giữa 10 và 15 mà."
+        ],
+        "wrong": [
+          "Ôi, 12 phân đã qua mốc 10 rồi, xem lại nhé.",
+          "Cả nhóm thì cần tới 15 phân cơ, {name} ạ.",
+          "Đặt 12 cạnh 10 và 15 rồi so từng cặp xem."
+        ],
+        "en": {
+          "right": [
+            "Spot on! So just one of us goes out, nice and slow.",
+            "Uncle Bear nods: you read that chart more carefully than I do.",
+            "Right, 12 sits between 10 and 15."
+          ],
+          "wrong": [
+            "Oh, 12 cm is already past the 10 mark, take another look.",
+            "A whole group needs 15 cm, {name}.",
+            "Put 12 next to 10 and 15 and compare each pair."
+          ]
+        }
+      },
+      "en": {
+        "title": "The ice chart",
+        "goTo": "Head to the ice cave mouth and read the station's ice chart",
+        "text": "The explorers' station chart:\nIce under 10 cm: nobody steps on it yet.\nIce from 10 cm: one person may walk out.\nIce from 15 cm: a whole group may stand on it.\nThis morning the ice at Uncle Bear's fishing hole is 12 cm thick.",
+        "question": "The ice at the hole is 12 cm thick. What does the chart allow?",
+        "choices": [
+          "Nobody may step on it yet",
+          "One person may walk out, but not a whole group",
+          "A whole group may stand there"
+        ]
+      }
+    },
+    {
+      "id": "chon-o-bang",
+      "title": "Chỗ nào đủ dày?",
+      "goTo": "Ra mặt hồ băng sau hang, tới cọc đo băng",
+      "kind": "challenge",
+      "target": "st-ho-bang-biet-hat-coc-do",
+      "mechanic": "multi-select",
+      "skill": "so-sanh-so",
+      "prompt": "Bác Gấu khoan thử năm chỗ quanh cọc đo. Chọn mọi chỗ một người đi bộ ra được (từ 10 phân trở lên).",
+      "choices": [
+        {
+          "id": "o8",
+          "text": "8 phân"
+        },
+        {
+          "id": "o11",
+          "text": "11 phân"
+        },
+        {
+          "id": "o15",
+          "text": "15 phân"
+        },
+        {
+          "id": "o6",
+          "text": "6 phân"
+        },
+        {
+          "id": "o10",
+          "text": "10 phân"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "o11",
+          "o15",
+          "o10"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Mốc an toàn cho một người là 10 phân.",
+          "Số nào bằng hoặc lớn hơn 10 thì chọn."
+        ],
+        "hint": "Có ba chỗ đạt mốc, một chỗ vừa đúng 10.",
+        "answer": {
+          "text": "Chỗ 11 phân, chỗ 15 phân và chỗ 10 phân",
+          "explanation": "11, 15 và 10 đều không nhỏ hơn 10; còn 8 và 6 thì mỏng quá."
+        },
+        "en": {
+          "guide": [
+            "The safe mark for one person is 10 cm.",
+            "Pick every number equal to or bigger than 10."
+          ],
+          "hint": "Three spots make the mark, and one of them is exactly 10.",
+          "answer": {
+            "text": "The 11 cm, 15 cm and 10 cm spots",
+            "explanation": "11, 15 and 10 are all at least 10; 8 and 6 are too thin."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba chỗ chắc nịch, bác Gấu cắm cờ xanh lên từng chỗ.",
+          "Không sót chỗ 10 phân, khéo thật!",
+          "Đúng hết! Hai chỗ mỏng thì mình tránh xa."
+        ],
+        "wrong": [
+          "Có một chỗ mỏng hơn 10 phân lọt vào rồi.",
+          "Còn sót một chỗ vừa đúng 10 phân đấy.",
+          "So từng số với 10 nhé, {name}."
+        ],
+        "en": {
+          "right": [
+            "Three solid spots: Uncle Bear plants a blue flag on each.",
+            "You didn't miss the 10 cm one. Sharp!",
+            "All right! We keep well away from the two thin ones."
+          ],
+          "wrong": [
+            "One spot thinner than 10 cm slipped in.",
+            "There is a spot of exactly 10 cm left out.",
+            "Check each number against 10, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "Where is it thick enough?",
+        "goTo": "Go out to the frozen lake behind the cave, to the measuring post",
+        "prompt": "Uncle Bear drilled five test holes around the measuring post. Pick every spot one person can walk on (10 cm or more).",
+        "choices": [
+          "8 cm",
+          "11 cm",
+          "15 cm",
+          "6 cm",
+          "10 cm"
+        ]
+      }
+    },
+    {
+      "id": "ai-ra-ho",
+      "title": "Ai ra lỗ câu?",
+      "kind": "decision",
+      "target": "st-ho-bang-biet-hat-coc-do",
+      "speaker": "Gấu Bắc Cực Câu Cá",
+      "prompt": "Chỉ một người được ra chỗ băng 12 phân. Bác Gấu nhìn hồ, nhìn {name}. Ai đi?",
+      "choices": [
+        {
+          "id": "chau-di",
+          "text": "Cháu ra đục lỗ, bác đứng bờ giữ xô",
+          "consequence": "Cốc, cốc, cốc! Lỗ câu tròn xoe mở ra, bác Gấu reo lên từ bờ như một chú gấu con."
+        },
+        {
+          "id": "bac-di",
+          "text": "Bác đi, cháu đứng bờ đếm bước cho bác",
+          "consequence": "Bác Gấu nín thở bước ra, cháu đếm to từng bước. Tới bước thứ chín thì bác cười: hóa ra băng chẳng nói gì cả."
+        },
+        {
+          "id": "cho-cut",
+          "text": "Gọi cả đàn cánh cụt ra cổ vũ",
+          "consequence": "Đàn cánh cụt xếp hàng trên bờ vỗ cánh lạch bạch. Bác Gấu được cổ vũ, đi một mạch tới lỗ câu."
+        }
+      ],
+      "en": {
+        "title": "Who goes out to the hole?",
+        "prompt": "Only one may walk on the 12 cm ice. Uncle Bear looks at the lake, then at {name}. Who goes?",
+        "choices": [
+          {
+            "text": "I go out and chisel, you hold the bucket on the shore",
+            "consequence": "Tap, tap, tap! A round hole opens, and Uncle Bear cheers from the shore like a cub."
+          },
+          {
+            "text": "You go, and I count your steps from the shore",
+            "consequence": "Uncle Bear holds his breath and steps out while you count out loud. On step nine he laughs: the ice has nothing to say after all."
+          },
+          {
+            "text": "Call the whole penguin flock to cheer",
+            "consequence": "The penguins line up on the shore flapping away. Cheered on, Uncle Bear marches straight to the hole."
+          }
+        ]
+      }
+    },
+    {
+      "id": "chia-ca",
+      "title": "Chia cá cho đàn con",
+      "kind": "challenge",
+      "trigger": "auto",
+      "mechanic": "minigame",
+      "prompt": "Cá lên đầy xô rồi! Chia đều cho đàn cánh cụt con, bạn nào cũng nhận như nhau nhé.",
+      "game": "penguin-share",
+      "goal": 6,
+      "en": {
+        "title": "Sharing fish with the chicks",
+        "prompt": "The bucket is full! Share the fish evenly so every penguin chick gets the same."
+      }
+    },
+    {
+      "id": "tra-cong",
+      "title": "Bữa trưa của đàn cánh cụt",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Đàn cánh cụt con no căng bụng, nằm phơi nắng trên tuyết. Bác Gấu dúi vào tay {name} một gói hạt dẻ nướng còn ấm.",
+      "en": {
+        "title": "The penguins' lunch",
+        "text": "The penguin chicks are full and sunbathing on the snow. Uncle Bear presses a warm bag of roasted chestnuts into {name}'s hands."
+      }
+    },
+    {
+      "id": "dem-rac-rac",
+      "title": "Tiếng kêu lúc nửa đêm",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối ấy, hồ băng lại kêu rắc... rắc... Bác Gấu trùm chăn kín đầu. Sáng mai bác cần một đôi tai thính, chắc chắn là đôi tai của {name}.",
+      "en": {
+        "title": "A noise at midnight",
+        "text": "That night the lake goes crack... crack... again. Uncle Bear pulls the blanket over his head. Tomorrow he will need a sharp pair of ears, and they will surely be {name}'s."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 1,
+      "so-sanh-so": 1
+    },
+    "items": {
+      "hat-de-tuyet": 1
+    }
+  },
+  "en": {
+    "title": "Gấu Bắc Cực Câu Cá's story, chapter 1: The frozen fishing hole",
+    "summary": "Uncle Bear's favourite fishing hole has frozen a hand's width thick, and the penguin chicks are hungry. {name} gathers his gear, reads the ice chart, picks ice thick enough to stand on and shares the fish out."
+  }
+}

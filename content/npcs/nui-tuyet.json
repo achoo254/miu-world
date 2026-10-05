@@ -1,0 +1,829 @@
+{
+  "version": 1,
+  "region": "nui-tuyet",
+  "climate": "snowy",
+  "npcs": [
+    {
+      "id": "gau-bac-cuc-cau-ca",
+      "name": "Gấu Bắc Cực Câu Cá",
+      "role": {
+        "vi": "Người câu cá già ở cửa hang băng, nuôi cả đàn cánh cụt con bằng những mẻ cá của mình.",
+        "en": "The old fisher at the ice cave mouth, who feeds a whole flock of penguin chicks from his catch."
+      },
+      "personality": {
+        "vi": "Chậm rãi, kiên nhẫn như mặt hồ mùa đông, thương bọn nhỏ hơn thương chính mình.",
+        "en": "Slow and patient as a winter lake, and kinder to the little ones than to himself."
+      },
+      "voice": {
+        "vi": "Xưng bác, gọi người chơi là cháu; nói chậm, hay ngừng giữa câu để «nghe xem cá có cắn câu không».",
+        "en": "Calls himself Uncle and talks slowly, often pausing mid-sentence \"to hear whether a fish is biting\"."
+      },
+      "fear": {
+        "vi": "Sợ tiếng băng kêu rắc rắc giữa đêm: con gấu to nhất núi mà nghe tiếng ấy là hai chân sau run lẩy bẩy.",
+        "en": "The ice crackling at night: the biggest bear on the mountain, and that sound makes his back legs wobble."
+      },
+      "dream": {
+        "vi": "Một ngày được xuống tận đảo xa, ngồi câu cá trên bến gỗ cạnh bạn thư Cua Lướt Sóng.",
+        "en": "To travel one day to the faraway island and fish from a wooden pier beside his pen-pal Cua Lướt Sóng."
+      },
+      "secret": {
+        "vi": "Bác chưa từng giữ con cá to nào: con nào to, bác đặt tên rồi thả về, sổ tên cá đã dày ba cuốn.",
+        "en": "He has never kept a big fish: every big one gets a name and goes back, and his book of fish names fills three volumes."
+      },
+      "habit": {
+        "vi": "Đếm thầm tới một trăm rồi mới nhấc cần, vừa đếm vừa ngân nga một bài hát không lời.",
+        "en": "Silently counts to a hundred before lifting the rod, humming a tune that has no words."
+      },
+      "likes": [
+        "gang-tay-tuyet",
+        "hat-de-tuyet",
+        "vo-oc-xa-cu"
+      ],
+      "lines": [
+        {
+          "vi": "Sáng sớm là lúc cá đói nhất, cháu ạ. Ngồi xuống đây, bác chia cho nửa cái ghế.",
+          "en": "Fish are hungriest at dawn, my dear. Sit down, I'll share half my stool.",
+          "when": "morning"
+        },
+        {
+          "vi": "Quá trưa rồi mà đàn cánh cụt vẫn kêu đói. Bọn nhỏ ăn như thể cá mọc trên cây ấy.",
+          "en": "Past noon and the penguins are still peeping for food. They eat as if fish grew on trees.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều tà, mặt hồ ửng hồng như má cháu lúc lạnh. Bác thích lúc này nhất, cá cũng thích.",
+          "en": "At dusk the lake turns pink like your cheeks in the cold. My favourite hour, and the fish's too.",
+          "when": "evening"
+        },
+        {
+          "vi": "Khuya rồi. Lỡ nghe hồ kêu rắc rắc thì đừng cười bác nhé, chân bác tự run đấy chứ bác đâu có muốn.",
+          "en": "It's late. If the lake goes crack and my legs shake, don't laugh; they do it all on their own.",
+          "when": "night"
+        },
+        {
+          "vi": "Tuyết rơi dày thế này, cá dưới băng ngủ say. Bác câu mà như đang hát ru chúng.",
+          "en": "With snow this thick the fish under the ice sleep soundly. Fishing now is like singing them a lullaby.",
+          "weather": "snow"
+        },
+        {
+          "vi": "Trời quang thế này, nhìn xuyên băng thấy cả bóng cá lượn. Cháu đếm giúp bác được mấy con?",
+          "en": "On a clear day you can see fish shadows right through the ice. How many can you count for me?",
+          "weather": "fine"
+        },
+        {
+          "vi": "Câu cá cần ba thứ: mồi ngon, dây chắc, và một cái bụng không vội.",
+          "en": "Fishing needs three things: good bait, strong line and a belly that isn't in a hurry."
+        },
+        {
+          "vi": "Cháu biết không, nước lạnh làm cá bơi chậm hẳn đi, lười như bác mỗi sáng thứ Hai.",
+          "en": "Did you know cold water makes fish swim slower? Lazy as me on a Monday morning."
+        },
+        {
+          "vi": "Bạn thư Cua Lướt Sóng ở Đảo bí ẩn vừa gửi bác một vỏ ốc. Áp vào tai nghe sóng biển, ấm cả bụng.",
+          "en": "My pen-pal Cua Lướt Sóng on the Mysterious Island sent me a shell. Hold it to your ear and hear the sea: it warms my belly.",
+          "about": "cua-luot-song"
+        },
+        {
+          "vi": "Hồi còn bé, Cánh Cụt Trượt Băng hay trượt bụng tới tận lỗ câu xin cá. Giờ lớn tướng rồi vẫn thế.",
+          "en": "As a chick, Cánh Cụt Trượt Băng would belly-slide right up to my hole to beg for fish. He's all grown up and still does.",
+          "about": "canh-cut-truot-bang"
+        },
+        {
+          "vi": "Nai Leo Vách lại treo mình trên vách đá sau trạm kìa. Bác nhìn thôi đã hoa mắt, còn cô ấy thì cười khanh khách.",
+          "en": "Nai Leo Vách is dangling off the cliff behind the station again. I get dizzy just watching, and she's giggling away.",
+          "about": "nai-leo-vach"
+        },
+        {
+          "vi": "Bác vừa thấy một vệt bạc lướt dưới băng. Chắc mắt bác hoa vì đói, đi rang hạt dẻ đã.",
+          "en": "I just saw a silver streak glide under the ice. Probably my eyes playing tricks from hunger; time to roast chestnuts."
+        },
+        {
+          "vi": "Cháu là người đầu tiên bác cho cầm cái cần câu của ông nội đấy. Cẩn thận, nó còn già hơn cả cái hang.",
+          "en": "You're the first I've let hold my grandfather's rod. Careful, it's older than the cave.",
+          "hearts": 2
+        },
+        {
+          "vi": "Bác kể cháu nghe: hồi trẻ bác từng sụt chân xuống một lỗ băng. Từ đó nghe băng kêu là bác lại nhớ cái lạnh thấu xương ấy.",
+          "en": "Here's a story: as a young bear I once fell through a hole in the ice. Ever since, the crackle brings back that bone-deep cold.",
+          "hearts": 3
+        },
+        {
+          "vi": "Sao Bạc ngoi lên chào bác tối qua đấy. Đừng kể ai nhé, cả hồ chỉ có bác, cháu và băng biết thôi.",
+          "en": "Silver Star came up to say hello last night. Don't tell a soul; only you, me and the ice know.",
+          "hearts": 4
+        },
+        {
+          "vi": "Bác để dành cho cháu tập bốn của sổ tên cá. Trang đầu bỏ trống, chờ con cá đầu tiên cháu đặt tên.",
+          "en": "I'm saving volume four of the fish-name book for you. The first page is blank, waiting for the first fish you name.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "nguoi-tuyet-dem-bac",
+      "name": "Người Tuyết Đếm Bậc",
+      "role": {
+        "vi": "Người tuyết gác cầu thang lên đài quan sát; việc chính là đếm: bậc thang, bông tuyết, khách leo núi.",
+        "en": "The snowman who keeps the observatory stairs; his real job is counting: steps, snowflakes, climbers."
+      },
+      "personality": {
+        "vi": "Tỉ mỉ, hay lo nhưng vui tính; tin rằng cái gì đếm được thì chẳng có gì đáng sợ.",
+        "en": "Fussy and a bit of a worrier, but cheerful; believes anything you can count can't be scary."
+      },
+      "voice": {
+        "vi": "Câu nào cũng chen một con số; hồi hộp là đếm thành tiếng: «một, hai, ba... ổn rồi».",
+        "en": "Slips a number into every sentence and counts out loud when nervous: \"one, two, three... all better.\""
+      },
+      "fear": {
+        "vi": "Sợ nắng giữa trưa: một buổi nắng to là mũi cà rốt nhỏ giọt và cậu thấy mình gầy đi một vòng.",
+        "en": "The midday sun: one strong noon and his carrot nose drips and he feels a whole size thinner."
+      },
+      "dream": {
+        "vi": "Được ngắm mặt trời mọc từ bậc cao nhất của đài quan sát, rồi đếm cho hết sao trên trời.",
+        "en": "To watch the sunrise from the top step of the observatory, and then count every star in the sky."
+      },
+      "secret": {
+        "vi": "Cái mũ của cậu là chiếc nồi canh cũ mà trạm thám hiểm tìm mãi không thấy; hễ có ai đi tìm nồi là cậu đứng im như tượng.",
+        "en": "His hat is the old soup pot the explorers' station has been searching for; whenever someone comes looking, he stands still as a statue."
+      },
+      "habit": {
+        "vi": "Mỗi sáng đếm bông tuyết đậu trên mũi cà rốt; đếm tới mười là hắt hơi, rồi đếm lại từ đầu.",
+        "en": "Every morning he counts the snowflakes landing on his carrot nose; at ten he sneezes and starts over."
+      },
+      "likes": [
+        "khoi-bang-xanh",
+        "canh-thong-tuyet",
+        "ban-do-sao-dem"
+      ],
+      "lines": [
+        {
+          "vi": "Sáng nay có bốn mươi hai bông tuyết đậu trên mũi tớ. Bông thứ bốn mươi ba làm tớ hắt hơi.",
+          "en": "Forty-two snowflakes landed on my nose this morning. Number forty-three made me sneeze.",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa nắng, tớ nép sau đài quan sát. Đừng tưởng tớ trốn việc nhé, tớ đang đếm bóng râm.",
+          "en": "At noon I tuck myself behind the observatory. I'm not skiving, I'm counting shadows.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều nay mười một người leo lên đài, chín người đi xuống. Hai người kia chắc còn mải ngắm hoàng hôn.",
+          "en": "Eleven people climbed up this afternoon and nine came down. The other two must still be watching the sunset.",
+          "when": "evening"
+        },
+        {
+          "vi": "Đêm nay trời trong, tớ đếm được ba trăm linh bảy ngôi sao rồi mới chịu đi ngủ.",
+          "en": "Clear sky tonight: I counted three hundred and seven stars before I'd go to bed.",
+          "when": "night"
+        },
+        {
+          "vi": "Tuyết rơi kìa! Tuyết rơi nghĩa là tớ được ăn thêm... à nhầm, được béo thêm.",
+          "en": "Snow! Snow means second helpings... I mean, I get to grow a bit chubbier.",
+          "weather": "snow"
+        },
+        {
+          "vi": "Nắng đẹp quá, đẹp tới mức tớ phải nhìn qua kẽ tay. Một, hai, ba... mũi vẫn còn nguyên.",
+          "en": "So sunny I have to peek through my fingers. One, two, three... nose still attached.",
+          "weather": "fine"
+        },
+        {
+          "vi": "{name} ơi, đố cậu: một người tuyết có ba quả cầu tuyết, năm người tuyết có tất cả mấy quả?",
+          "en": "Riddle, {name}: one snowman is made of three snowballs. How many snowballs make five snowmen?"
+        },
+        {
+          "vi": "Từ chân núi lên tới đây có đúng hai mươi ba khúc cua, tớ đếm rồi. Khúc thứ mười bảy đẹp nhất.",
+          "en": "There are exactly twenty-three bends from the foot of the mountain to here; I've counted. Bend seventeen is the prettiest."
+        },
+        {
+          "vi": "Ước gì có tấm bản đồ sao đêm của Thư viện, tớ sẽ biết mình còn đếm sót ngôi nào.",
+          "en": "If only I had the Library's night-sky map, I'd know which stars I'd missed."
+        },
+        {
+          "vi": "Mùa đông nào Cáo Tuyết Điêu Khắc cũng gọt lại mũi cho tớ. Năm nay cậu ấy hứa làm mũi thẳng hơn.",
+          "en": "Every winter Cáo Tuyết Điêu Khắc carves me a fresh nose. This year he's promised a straighter one.",
+          "about": "cao-tuyet-dieu-khac"
+        },
+        {
+          "vi": "Thỏ Ngắm Sao ở Thư viện viết thư khoe đêm qua đếm được bốn trăm sao. Tớ phải thức khuya hơn mới được.",
+          "en": "Thỏ Ngắm Sao at the Library wrote to boast about four hundred stars last night. I'll have to stay up later.",
+          "about": "tho-ngam-sao"
+        },
+        {
+          "vi": "Nai Leo Vách thi đếm bậc với tớ toàn thua, vì cô ấy leo nhanh quá quên mất phải đếm.",
+          "en": "Nai Leo Vách always loses our step-counting race; she climbs so fast she forgets to count.",
+          "about": "nai-leo-vach"
+        },
+        {
+          "vi": "Cậu biết không, tớ được đắp từ ba quả cầu lăn ở ba nơi. Bụng tớ là tuyết bờ hồ, đầu là tuyết đỉnh núi.",
+          "en": "Fun fact: I'm three snowballs rolled in three places. My tummy is lakeshore snow and my head is summit snow.",
+          "hearts": 2
+        },
+        {
+          "vi": "Có hôm tớ đếm tới chín mươi chín rồi đứng im cả buổi, vì sợ số tiếp theo sẽ sai. Cậu đừng cười nhé.",
+          "en": "Some days I counted to ninety-nine and stood frozen for hours, scared the next number would be wrong. Don't laugh.",
+          "hearts": 3
+        },
+        {
+          "vi": "Suỵt, nếu trạm thám hiểm hỏi chiếc nồi canh thì cậu cứ bảo không thấy nhé. Nó đang ở trên đầu tớ.",
+          "en": "Shh, if the explorers' station asks about their soup pot, say you haven't seen it. It's on my head.",
+          "hearts": 4
+        },
+        {
+          "vi": "Tớ để dành cho {name} bậc thứ một trăm hai mươi mốt. Chưa ai xây nó cả, nhưng tớ đếm sẵn rồi.",
+          "en": "I've saved step one hundred and twenty-one for {name}. Nobody has built it yet, but I've counted it already.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "canh-cut-truot-bang",
+      "name": "Cánh Cụt Trượt Băng",
+      "role": {
+        "vi": "Tay trượt băng của bờ hồ, dạy bọn cánh cụt con đẩy bi đá và tìm đường trong mê cung băng.",
+        "en": "The lakeshore's star skater, who teaches the penguin chicks curling and how to find their way through the ice maze."
+      },
+      "personality": {
+        "vi": "Hăng hái, mê được cổ vũ, hơi thích khoe nhưng tốt bụng; ngã thì cười trước cả người xem.",
+        "en": "Eager, loves a cheering crowd, a bit of a show-off but kind; when he falls he laughs before anyone else does."
+      },
+      "voice": {
+        "vi": "Nói nhanh, hay kéo dài chữ «vèèèo», nói xong câu nào cũng tạo một dáng trượt.",
+        "en": "Talks fast, stretches out a long \"wheeee\", and finishes every sentence with a skating pose."
+      },
+      "fear": {
+        "vi": "Sợ nước sâu: một chú cánh cụt mà chưa dám lặn quá đầu gối, toàn trượt trên mặt băng cho chắc.",
+        "en": "Deep water: a penguin who won't dive past his knees and sticks to the ice to be safe."
+      },
+      "dream": {
+        "vi": "Biểu diễn cú xoay ba vòng giữa hồ băng trong ngày hội tuyết mà không ngã lần nào.",
+        "en": "To land a triple spin in the middle of the lake at the snow festival without falling once."
+      },
+      "secret": {
+        "vi": "Năm ngoái cậu ngã sấp mặt giữa hội tuyết; từ đó đêm nào cũng lén ra hồ tập một mình dưới trăng.",
+        "en": "Last year he fell flat on his face at the snow festival; ever since, he sneaks out every night to practise alone under the moon."
+      },
+      "habit": {
+        "vi": "Gặp ai cũng chào bằng một vòng trượt quanh người đó, rồi phanh lại bằng bụng.",
+        "en": "Greets everyone by skating a circle round them, then braking on his belly."
+      },
+      "likes": [
+        "xe-truot-tuyet",
+        "bong-tuyet-pha-le",
+        "dau-tay-chin"
+      ],
+      "lines": [
+        {
+          "vi": "Sáng ra mặt hồ còn phủ sương, trượt một vòng là in một đường dài như nét bút chì.",
+          "en": "In the morning the lake is frosted, and one lap draws a line as long as a pencil stroke.",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa nay tớ đẩy bi đá trúng giữa vòng ba lần liền. Ba lần! Cậu có thấy không? Không à? Tiếc ghê.",
+          "en": "This afternoon I put three curling stones dead centre in a row. Three! Did you see? No? Such a shame.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều về, tớ dắt bọn nhỏ đi một hàng dọc qua mê cung băng. Đứa nào lạc hàng là tớ huýt sáo.",
+          "en": "In the evening I lead the little ones single file through the ice maze. Anyone who strays gets a whistle.",
+          "when": "evening"
+        },
+        {
+          "vi": "Khuya thế này mà cậu còn đi dạo à? Tớ... tớ cũng chỉ ra ngắm trăng thôi, không tập gì đâu.",
+          "en": "Out walking this late? Me... I'm only here for the moon, definitely not practising.",
+          "when": "night"
+        },
+        {
+          "vi": "Tuyết mới phủ kín hồ rồi! Trượt chậm hơn, nhưng ngã thì êm như ngã vào gối.",
+          "en": "Fresh snow all over the lake! Skating is slower, but falling feels like landing on a pillow.",
+          "weather": "snow"
+        },
+        {
+          "vi": "Nắng chiếu lên băng sáng lóa, tớ phải đeo kính râm. Trông tớ có ngầu không {name}?",
+          "en": "The sun on the ice is dazzling, so I need sunglasses. Do I look cool, {name}?",
+          "weather": "fine"
+        },
+        {
+          "vi": "Trượt bụng là môn thể thao số một của cánh cụt. Nằm sấp, đạp chân, vèèèo!",
+          "en": "Belly-sliding is the number one penguin sport. Lie flat, kick off, wheeeee!"
+        },
+        {
+          "vi": "Cậu biết vì sao cánh cụt hay đứng túm tụm không? Để sưởi cho nhau, ai đứng rìa lâu sẽ được đổi vào giữa.",
+          "en": "Know why penguins huddle? To keep each other warm, and whoever's been on the edge too long gets a turn in the middle."
+        },
+        {
+          "vi": "Đố cậu trượt được một đường thẳng tắp từ đây sang bờ bên kia. Tớ thì toàn trượt thành hình con rắn.",
+          "en": "Bet you can't skate a dead straight line to the far bank. Mine always come out snake-shaped."
+        },
+        {
+          "vi": "Hồi bé tớ hay trượt bụng tới lỗ câu của bác Gấu Bắc Cực. Bác giả vờ không thấy, rồi để rơi một con cá.",
+          "en": "As a chick I'd belly-slide to Uncle Polar Bear's fishing hole. He'd pretend not to notice, then drop a fish.",
+          "about": "gau-bac-cuc-cau-ca"
+        },
+        {
+          "vi": "Bác Nông Dân Thành dưới Nông trại gửi lên cho tớ một giỏ dâu tây. Cánh cụt ăn dâu có lạ không? Kệ, ngon là được.",
+          "en": "Bác Nông Dân Thành down at the Farm sent me a basket of strawberries. A penguin eating strawberries, odd? Who cares, they're yummy.",
+          "about": "bac-nong-dan-thanh"
+        },
+        {
+          "vi": "Cáo Tuyết Điêu Khắc tạc sẵn tượng tớ đang xoay ba vòng. Giờ tớ phải làm được thật, không thì xấu hổ với tượng.",
+          "en": "Cáo Tuyết Điêu Khắc already carved me doing a triple spin. Now I have to land it for real, or the statue will be embarrassed for me.",
+          "about": "cao-tuyet-dieu-khac"
+        },
+        {
+          "vi": "Lông Tơ là em họ tớ. Bé xíu mà gan to, thấy cái gì lấp lánh là chạy theo liền.",
+          "en": "Lông Tơ is my little cousin. Tiny but bold: she chases anything that sparkles.",
+          "hearts": 2
+        },
+        {
+          "vi": "Tớ chưa bao giờ lặn sâu quá đầu gối. Cánh cụt mà sợ nước sâu, nghe buồn cười lắm phải không?",
+          "en": "I've never dived deeper than my knees. A penguin scared of deep water, funny, isn't it?",
+          "hearts": 3
+        },
+        {
+          "vi": "Đêm nào tớ cũng ra đây tập xoay ba vòng. Ngã mười lần thì đứng dậy mười một lần. Đừng kể với ai nhé.",
+          "en": "Every night I come out here to practise the triple spin. Fall ten times, get up eleven. Don't tell anyone.",
+          "hearts": 4
+        },
+        {
+          "vi": "Hội tuyết năm nay tớ muốn {name} đứng hàng đầu. Lỡ tớ ngã, cậu cứ vỗ tay thật to như thể tớ cố tình.",
+          "en": "At this year's festival I want {name} in the front row. If I fall, clap really loud like I meant it.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "cao-tuyet-dieu-khac",
+      "name": "Cáo Tuyết Điêu Khắc",
+      "role": {
+        "vi": "Nhà điêu khắc của làng tuyết, gọt những khối băng trong vắt giữa quảng trường thành tượng.",
+        "en": "The snow village's sculptor, who carves clear blocks of ice into statues in the middle of the square."
+      },
+      "personality": {
+        "vi": "Trầm tính, tỉ mỉ, cầu toàn; ít nói nhưng để ý từng điều nhỏ ở người khác.",
+        "en": "Quiet, careful and a perfectionist; says little but notices every small thing about people."
+      },
+      "voice": {
+        "vi": "Nói khẽ, hay so mọi thứ với hình khối: «cậu cười tròn như quả cầu tuyết».",
+        "en": "Speaks softly and compares everything to shapes: \"your smile is as round as a snowball.\""
+      },
+      "fear": {
+        "vi": "Sợ những ngày ấm bất chợt, khi bức tượng gọt cả tuần bỗng chảy nước mắt chỉ trong một buổi chiều.",
+        "en": "Sudden warm days, when a statue a week in the making starts to weep in a single afternoon."
+      },
+      "dream": {
+        "vi": "Tạc một bức tượng băng to bằng cả đài quan sát, để ai đứng bên trong cũng thấy nắng xuyên qua thành bảy màu.",
+        "en": "To carve an ice statue as big as the observatory, so whoever stands inside sees sunlight split into seven colours."
+      },
+      "secret": {
+        "vi": "Bức tượng cậu quý nhất không đặt ở quảng trường mà giấu sau hang băng: một chú cáo nhỏ cầm đục lần đầu, chính là cậu ngày bé.",
+        "en": "His dearest statue isn't in the square but hidden behind the ice cave: a little fox holding a chisel for the first time, himself as a cub."
+      },
+      "habit": {
+        "vi": "Lúc nghĩ ngợi hay lấy chóp đuôi vẽ hình vuông, hình tròn lên tuyết.",
+        "en": "When he's thinking, he draws squares and circles in the snow with the tip of his tail."
+      },
+      "likes": [
+        "nguoi-tuyet-mini",
+        "dau-chan-tuyet",
+        "bang-pha-mau"
+      ],
+      "lines": [
+        {
+          "vi": "Buổi sáng băng cứng nhất, gọt đâu ra đấy. Tớ dậy từ lúc trời còn tím ngắt.",
+          "en": "Morning ice is the hardest, and every cut stays true. I'm up while the sky is still violet.",
+          "when": "morning"
+        },
+        {
+          "vi": "Đừng chạm vào tượng nhé, tay ấm làm nó buồn. Nhìn thôi, nhìn thật kỹ vào.",
+          "en": "Please don't touch the statue; warm hands make it sad. Just look, look closely.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều tối tớ đặt đèn sau mấy khối băng. Cả quảng trường như có những mặt trời bé con.",
+          "en": "At dusk I set lanterns behind the ice blocks, and the whole square fills with baby suns.",
+          "when": "evening"
+        },
+        {
+          "vi": "Đêm qua có một bạn chồn đi ngang quảng trường: bốn dấu chân nhỏ xíu, bước nào cũng cách đều nhau.",
+          "en": "Last night a weasel crossed the square: four tiny prints, every step evenly spaced.",
+          "when": "night"
+        },
+        {
+          "vi": "Tuyết phủ lên tượng như rắc đường. Tớ để yên, trời cũng biết trang trí đấy chứ.",
+          "en": "Snow is dusting the statues like icing sugar. I leave it; the sky knows how to decorate too.",
+          "weather": "snow"
+        },
+        {
+          "vi": "Nắng làm băng lấp lánh nhưng cũng làm tượng mềm đi. Tớ đang căng tấm bạt che cho chúng.",
+          "en": "Sunshine makes the ice sparkle but softens the statues. I'm stretching a canopy over them.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Lục giác là hình của bông tuyết: sáu cạnh, sáu góc, mà chẳng bông nào giống bông nào.",
+          "en": "A hexagon is a snowflake's shape: six sides, six corners, and no two alike."
+        },
+        {
+          "vi": "Đứng yên một chút được không {name}? Dáng cậu ngước nhìn trời rất hợp để tạc.",
+          "en": "Could you hold still a moment, {name}? That sky-gazing pose is perfect for carving."
+        },
+        {
+          "vi": "Dấu chân thỏ thì hai vết dài đi trước, hai vết tròn đi sau. Nghe ngược đời nhưng đúng thế đấy.",
+          "en": "Rabbit tracks put the two long prints in front and the two round ones behind. Back to front, but true."
+        },
+        {
+          "vi": "Mèo Xếp Khối ở Trung tâm gửi ảnh tháp khối mới, cao hơn tượng tớ một gang. Mùa sau tớ sẽ tạc cao hơn hai gang.",
+          "en": "Mèo Xếp Khối at the Town Centre sent a photo of a new block tower, a hand taller than my statue. Next season I'll carve two hands taller.",
+          "about": "meo-xep-khoi"
+        },
+        {
+          "vi": "Mũi Người Tuyết Đếm Bậc năm nào tớ cũng gọt lại. Cậu ấy toàn xin mũi thẳng, mà cà rốt thì cong mới đáng yêu.",
+          "en": "I recarve the snowman's nose every year. He always asks for a straight one, but carrots are cuter curved.",
+          "about": "nguoi-tuyet-dem-bac"
+        },
+        {
+          "vi": "Bảng pha màu Mèo Xếp Khối tặng, tớ dùng để thử màu đèn sau tượng. Băng trong nên màu nào cũng đẹp.",
+          "en": "I use the palette Mèo Xếp Khối gave me to test lantern colours behind the statues. Clear ice makes every colour pretty."
+        },
+        {
+          "vi": "Cho {name} xem cái đục bé nhất của tớ này. Nó chỉ dùng để gọt lông mi cho tượng thôi.",
+          "en": "Here's my tiniest chisel, {name}. It's only for carving the statues' eyelashes.",
+          "hearts": 2
+        },
+        {
+          "vi": "Tớ ít nói vì sợ nói ra là sai. Gọt băng hỏng còn sửa được, lời nói thì khó sửa lắm.",
+          "en": "I talk little because I'm afraid of getting it wrong. A bad cut in ice can be fixed; words are much harder.",
+          "hearts": 3
+        },
+        {
+          "vi": "Sau hang băng có một bức tượng tớ chưa cho ai xem: chú cáo nhỏ cầm cái đục lần đầu. Là tớ đấy.",
+          "en": "Behind the ice cave is a statue I've shown nobody: a little fox holding a chisel for the first time. It's me.",
+          "hearts": 4
+        },
+        {
+          "vi": "Mùa đông này tớ muốn tạc tượng {name}. Không phải vì cậu đứng yên giỏi, mà vì cậu là bạn tớ.",
+          "en": "This winter I want to carve a statue of {name}. Not because you stand still well, but because you're my friend.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "nai-leo-vach",
+      "name": "Nai Leo Vách",
+      "role": {
+        "vi": "Nhà leo núi của trạm thám hiểm, thuộc từng mấu đá trên vách băng sau trạm.",
+        "en": "The explorers' station climber, who knows every hold on the ice cliff behind it."
+      },
+      "personality": {
+        "vi": "Gan dạ, nóng vội, mê thử thách; hay rủ rê bạn nhưng bao giờ cũng kiểm tra dây cho bạn trước.",
+        "en": "Bold, impatient and hungry for challenges; always daring friends, but always checks their rope first."
+      },
+      "voice": {
+        "vi": "Câu ngắn, gọn như tiếng móng gõ đá; hay hô «Lên!» thay cho lời chào.",
+        "en": "Short, sharp sentences like hooves on rock; shouts \"Up!\" instead of hello."
+      },
+      "fear": {
+        "vi": "Sợ đi xuống: leo lên thì vèo vèo, nhưng nhìn xuống chân vách là đầu gối bủn rủn.",
+        "en": "Going down: she races up any cliff, but one look at the bottom turns her knees to jelly."
+      },
+      "dream": {
+        "vi": "Leo lên ngọn núi cao nhất phía sau đỉnh tuyết, nơi chưa móng nai nào chạm tới, và cắm ở đó một lá cờ đỏ.",
+        "en": "To climb the tallest peak behind the summit, where no deer has ever set hoof, and plant a red flag on top."
+      },
+      "secret": {
+        "vi": "Leo xong cô luôn chờ trời tối mới xuống, để không ai thấy cô bò lùi từng bước một.",
+        "en": "After every climb she waits until dark to come down, so nobody sees her backing down one step at a time."
+      },
+      "habit": {
+        "vi": "Sáng nào cũng gõ móng ba lần lên đá thử độ chắc rồi mới leo, kể cả khi chỉ bước lên bậc cửa.",
+        "en": "Every morning she taps her hoof three times on a rock to test it before climbing, even onto a doorstep."
+      },
+      "likes": [
+        "mu-len-tai-gau",
+        "chuong-tuyet-bac",
+        "kinh-lup-bac"
+      ],
+      "lines": [
+        {
+          "vi": "Lên! Sáng nay vách đá khô ráo, mấu nào bám cũng chắc. Đúng ngày để leo.",
+          "en": "Up! The cliff is dry this morning and every hold is solid. A perfect climbing day.",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa là lúc mấu băng nhỏ giọt. Tớ nghỉ, uống nước, ngắm mây. Leo vội là ngã.",
+          "en": "Midday is when ice holds drip. I rest, drink and watch clouds. Rush it and you fall.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều nay tớ lên tới mỏm thứ ba. Còn xuống thì... để tối hẵng tính.",
+          "en": "Made the third ledge this afternoon. As for getting down... I'll sort that out after dark.",
+          "when": "evening"
+        },
+        {
+          "vi": "Đêm trên vách đá nghe gió rõ lắm. Gió bảo mai trời quang. Tớ tin gió.",
+          "en": "At night on the cliff you hear the wind so clearly. It says tomorrow is clear. I trust the wind.",
+          "when": "night"
+        },
+        {
+          "vi": "Tuyết rơi thì mấu đá trơn như xà phòng. Hôm nay tớ chỉ leo cầu thang của trạm thôi.",
+          "en": "When it snows the holds go slippery as soap. Today I'm only climbing the station stairs.",
+          "weather": "snow"
+        },
+        {
+          "vi": "Trời trong thế này, đứng trên vách nhìn thấy cả những đỉnh núi xa tít, xanh như vết mực.",
+          "en": "On a day this clear you can see the faraway peaks from the cliff, blue as ink smudges.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Leo núi có ba điều: kiểm tra dây, kiểm tra mấu, kiểm tra bạn. Điều thứ ba quan trọng nhất.",
+          "en": "Climbing has three rules: check the rope, check the hold, check your partner. Rule three matters most."
+        },
+        {
+          "vi": "{name} nhìn tớ treo mình trên mấu này! Đừng lo, tớ vẫn có ba điểm bám, chỉ thả một chân thôi.",
+          "en": "Look at me hanging off this hold, {name}! Don't worry, three points of contact, only one leg free."
+        },
+        {
+          "vi": "Đá xám thì chắc, đá có vệt trắng là đá đã nứt rồi băng lấp vào. Tránh vệt trắng ra nhé.",
+          "en": "Grey rock is solid; rock with white streaks has cracked and filled with ice. Steer clear of white streaks."
+        },
+        {
+          "vi": "Koala Ghép Tranh ở Thư viện gửi tớ cái kính lúp bạc để soi vết nứt trên đá. Bạn ấy bảo vách đá cũng là một bức tranh ghép.",
+          "en": "Koala Ghép Tranh at the Library sent me a silver magnifier to read cracks in the rock. She says a cliff is a jigsaw too.",
+          "about": "koala-ghep-tranh"
+        },
+        {
+          "vi": "Bác Gấu Bắc Cực bảo nhìn tớ leo là bác chóng mặt. Tớ thì nhìn bác ngồi im cả buổi bên lỗ câu mới chóng mặt.",
+          "en": "Uncle Polar Bear says watching me climb makes him dizzy. Watching him sit still by his hole all day makes me dizzy.",
+          "about": "gau-bac-cuc-cau-ca"
+        },
+        {
+          "vi": "Người Tuyết Đếm Bậc thắng tớ ba ván đếm bậc rồi. Lần sau tớ sẽ leo chậm lại. Chậm một tí thôi.",
+          "en": "The snowman has beaten me at step-counting three times now. Next time I'll climb slower. A tiny bit slower.",
+          "about": "nguoi-tuyet-dem-bac"
+        },
+        {
+          "vi": "Cậu thử đeo găng leo của tớ xem. To quá hả? Ngày bé tớ cũng bơi trong đôi găng của mẹ.",
+          "en": "Try on my climbing gloves. Too big? As a fawn I used to swim around in my mum's.",
+          "hearts": 2
+        },
+        {
+          "vi": "Leo lên thì tớ chẳng sợ gì. Nhưng nhìn xuống chân vách là đầu gối tớ biến thành thạch rau câu.",
+          "en": "Going up, I fear nothing. But looking down at the bottom turns my knees to jelly.",
+          "hearts": 3
+        },
+        {
+          "vi": "Cậu thấy tớ xuống vách bao giờ chưa? Chưa đúng không. Tớ đợi trời tối rồi bò lùi từng bước một.",
+          "en": "Ever seen me climb down a cliff? No, right? I wait for dark and back down one step at a time.",
+          "hearts": 4
+        },
+        {
+          "vi": "Ngày tớ lên ngọn núi cao nhất kia, tớ muốn {name} đứng dưới chân vách. Không phải để đỡ tớ, mà để vẫy cờ.",
+          "en": "The day I climb that tallest peak, I want {name} at the bottom. Not to catch me, to wave the flag.",
+          "hearts": 5
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "a": "gau-bac-cuc-cau-ca",
+      "b": "canh-cut-truot-bang",
+      "kind": "mentor",
+      "note": {
+        "vi": "Bác Gấu nuôi Cánh Cụt bằng cá từ hồi cậu còn là một cục lông, và dạy cậu nhìn màu băng mà đoán băng dày hay mỏng.",
+        "en": "Uncle Bear has fed Cánh Cụt fish since he was a ball of fluff, and taught him to tell thick ice from thin by its colour."
+      }
+    },
+    {
+      "a": "gau-bac-cuc-cau-ca",
+      "b": "nai-leo-vach",
+      "kind": "neighbour",
+      "note": {
+        "vi": "Hai nhà cùng ở cạnh trạm thám hiểm: một người ngồi im cả ngày, một người chẳng chịu đứng yên phút nào.",
+        "en": "Neighbours by the explorers' station: one sits still all day, the other never stands still for a minute."
+      }
+    },
+    {
+      "a": "nguoi-tuyet-dem-bac",
+      "b": "cao-tuyet-dieu-khac",
+      "kind": "friend",
+      "note": {
+        "vi": "Mùa đông nào Cáo Tuyết cũng gọt lại mũi cà rốt cho Người Tuyết; đổi lại, Người Tuyết đếm khách tới xem tượng.",
+        "en": "Every winter the fox recarves the snowman's carrot nose; in return the snowman counts the visitors to the statues."
+      }
+    },
+    {
+      "a": "canh-cut-truot-bang",
+      "b": "cao-tuyet-dieu-khac",
+      "kind": "friend",
+      "note": {
+        "vi": "Cáo Tuyết tạc tượng cú xoay ba vòng của Cánh Cụt từ trước khi cậu làm được, để cổ vũ bạn.",
+        "en": "The fox carved Cánh Cụt's triple spin before he could even land it, to cheer him on."
+      }
+    },
+    {
+      "a": "nai-leo-vach",
+      "b": "nguoi-tuyet-dem-bac",
+      "kind": "friend",
+      "note": {
+        "vi": "Nai Leo Vách hay chạy lên đài quan sát thi đếm bậc với Người Tuyết, và lần nào cũng thua vì leo nhanh quá quên đếm.",
+        "en": "Nai Leo Vách races the snowman up the observatory stairs counting steps, and always loses because she climbs too fast to count."
+      }
+    },
+    {
+      "a": "gau-bac-cuc-cau-ca",
+      "b": "cua-luot-song",
+      "kind": "pen-pal",
+      "note": {
+        "vi": "Bác Gấu và Cua Lướt Sóng viết thư cho nhau mỗi tuần: một bên kể chuyện băng hát, một bên kể chuyện sóng hát.",
+        "en": "Uncle Bear and Cua Lướt Sóng write every week: one tells of the singing ice, the other of the singing waves."
+      }
+    },
+    {
+      "a": "cao-tuyet-dieu-khac",
+      "b": "meo-xep-khoi",
+      "kind": "rival",
+      "note": {
+        "vi": "Đôi đối thủ thân thiết: Cáo gửi ảnh tượng băng, Mèo gửi ảnh tháp khối, ai thua thì phải gửi bánh cho người kia.",
+        "en": "Friendly rivals: the fox sends photos of ice statues, the cat sends photos of block towers, and the loser sends the winner a cake."
+      }
+    }
+  ],
+  "arcs": [
+    {
+      "id": "ho-bang-biet-hat",
+      "npc": "gau-bac-cuc-cau-ca",
+      "title": {
+        "vi": "Hồ băng biết hát",
+        "en": "The Singing Ice Lake"
+      },
+      "teaser": {
+        "vi": "Đêm nào hồ băng cũng kêu rắc rắc, mà đó lại là tiếng bác Gấu sợ nhất đời. Sáng nay lỗ câu của bác còn đóng băng mất rồi...",
+        "en": "Every night the lake goes crack, crack, the one sound Uncle Bear fears most. And this morning his fishing hole has frozen over..."
+      },
+      "chapters": [
+        {
+          "quest": "yarn-ho-bang-biet-hat-1",
+          "hearts": 0,
+          "letter": {
+            "from": "gau-bac-cuc-cau-ca",
+            "title": {
+              "vi": "Hạt dẻ và cá",
+              "en": "Chestnuts and fish"
+            },
+            "body": {
+              "vi": "Cháu {name} thân mến, đàn cánh cụt con ăn no rồi ngủ một mạch tới chiều, đứa nào cũng ngáy khò khò. Bác vẫn chưa quen tiếng băng kêu, nhưng có cháu đứng cạnh thì chân bác đỡ run hẳn. Bác gửi cháu ít xu mua ca cao nhé.",
+              "en": "Dear {name}, the penguin chicks ate their fill and slept right through to the afternoon, every one of them snoring. I'm still not used to the ice noise, but with you beside me my legs shook a good deal less. Here are a few coins for some cocoa."
+            },
+            "reward": {
+              "coins": 15,
+              "xp": 15,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-ho-bang-biet-hat-2",
+          "hearts": 1,
+          "letter": {
+            "from": "cua-luot-song",
+            "title": {
+              "vi": "Thư từ bờ biển",
+              "en": "A letter from the beach"
+            },
+            "body": {
+              "vi": "Chào {name}! Bác Gấu viết thư kể cậu giúp bác ấy hiểu tiếng băng hát. Ở đảo tớ, sóng cũng hát suốt đêm mà chẳng ai sợ, tớ còn lướt theo nhịp nữa cơ. Gửi cậu một vỏ ốc, áp vào tai là nghe biển trả lời băng đấy.",
+              "en": "Hi {name}! Uncle Bear wrote that you helped him understand the singing ice. On my island the waves sing all night and nobody's scared; I even surf to the beat. Here's a shell: hold it to your ear and hear the sea answering the ice."
+            },
+            "reward": {
+              "coins": 15,
+              "xp": 20,
+              "items": {
+                "vo-oc-xa-cu": 1
+              }
+            }
+          }
+        },
+        {
+          "quest": "yarn-ho-bang-biet-hat-3",
+          "hearts": 2,
+          "letter": {
+            "from": "canh-cut-truot-bang",
+            "title": {
+              "vi": "Cảm ơn vì em Lông Tơ",
+              "en": "Thank you for Lông Tơ"
+            },
+            "body": {
+              "vi": "{name} ơi, tớ là anh họ của Lông Tơ đây. Nghe tin cậu với bác Gấu nhảy qua băng trôi cứu em ấy, tớ phải trượt ba vòng hồ mới bình tĩnh lại được. Giờ em ấy chỉ dám nhặt đồ lấp lánh sát bờ thôi. Tặng cậu chiếc xe trượt tuyết cũ của tớ, nó chạy nhanh lắm!",
+              "en": "{name}, it's Lông Tơ's big cousin. When I heard you and Uncle Bear hopped across the floes to save her, I had to skate three laps of the lake to calm down. Now she only collects sparkly things close to shore. Have my old sled, it's really fast!"
+            },
+            "reward": {
+              "coins": 20,
+              "xp": 20,
+              "items": {
+                "xe-truot-tuyet": 1
+              }
+            }
+          }
+        },
+        {
+          "quest": "yarn-ho-bang-biet-hat-4",
+          "hearts": 3,
+          "letter": {
+            "from": "gau-bac-cuc-cau-ca",
+            "title": {
+              "vi": "Sổ tên cá, tập bốn",
+              "en": "The fish-name book, volume four"
+            },
+            "body": {
+              "vi": "Cháu {name}, bác đã mở một cuốn sổ mới, trang đầu ghi tên Sao Bạc và tên cháu. Tối nào bác cũng ra giữa hồ ngồi nghe băng hát với đàn cánh cụt, chẳng run tí nào. Lần tới cháu ghé, hai bác cháu mình đặt tên thêm một con cá nữa nhé.",
+              "en": "Dear {name}, I've started a new book, and the first page holds Silver Star's name and yours. Every evening I sit in the middle of the lake listening to the ice with the penguins, not trembling one bit. Next time you visit, let's name another fish together."
+            },
+            "reward": {
+              "coins": 25,
+              "xp": 30,
+              "items": {}
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "bac-thang-mot-tram",
+      "npc": "nguoi-tuyet-dem-bac",
+      "title": {
+        "vi": "Một trăm hai mươi bậc thang",
+        "en": "A Hundred and Twenty Steps"
+      },
+      "teaser": {
+        "vi": "Người Tuyết đã đếm bậc thang lên đài quan sát ba mươi bảy lần, lần nào cũng ra một số khác. Cậu ấy cần một người đếm cùng.",
+        "en": "The snowman has counted the observatory stairs thirty-seven times and got a different answer every time. He needs someone to count with."
+      },
+      "chapters": [
+        {
+          "quest": "yarn-bac-thang-mot-tram-1",
+          "hearts": 0,
+          "letter": {
+            "from": "nguoi-tuyet-dem-bac",
+            "title": {
+              "vi": "Một trăm hai mươi",
+              "en": "One hundred and twenty"
+            },
+            "body": {
+              "vi": "{name} ơi, tớ viết số 120 lên tuyết bốn mươi lần cho nhớ, rồi viết thêm hai lần nữa cho chắc. Cảm ơn cậu đã đếm cùng tớ mà không cười khi tớ quên. Mai mình đi tìm chuông nhé!",
+              "en": "{name}, I wrote 120 in the snow forty times to remember it, then twice more to be sure. Thanks for counting with me and not laughing when I forgot. Tomorrow: the bells!"
+            },
+            "reward": {
+              "coins": 10,
+              "xp": 15,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-bac-thang-mot-tram-2",
+          "hearts": 1,
+          "letter": {
+            "from": "cao-tuyet-dieu-khac",
+            "title": {
+              "vi": "Móc băng hình trăng non",
+              "en": "New-moon ice hooks"
+            },
+            "body": {
+              "vi": "Chào {name}. Người Tuyết chạy xuống quảng trường kể chuyện dàn chuông cho tớ nghe ba lần, lần nào đếm số chuông cũng đúng. Tớ khắc thêm mấy cái móc dự phòng, cậu cất giúp nhé, lỡ gió núi lại tinh nghịch. Tặng cậu một dấu chân tuyết tớ đúc bằng băng.",
+              "en": "Hello {name}. The snowman came down to the square and told me about the bells three times, getting the count right every time. I've carved some spare hooks; keep them for him in case the mountain wind gets mischievous again. Here's a snow footprint I cast in ice for you."
+            },
+            "reward": {
+              "coins": 15,
+              "xp": 20,
+              "items": {
+                "dau-chan-tuyet": 1
+              }
+            }
+          }
+        },
+        {
+          "quest": "yarn-bac-thang-mot-tram-3",
+          "hearts": 2,
+          "letter": {
+            "from": "tho-ngam-sao",
+            "title": {
+              "vi": "Thư của một bạn ngắm sao",
+              "en": "From a fellow stargazer"
+            },
+            "body": {
+              "vi": "{name} thân mến, tớ là Thỏ Ngắm Sao ở Thư viện. Người Tuyết vừa viết thư khoe đã đếm được ba trăm linh bảy ngôi sao từ bậc một trăm hai mươi, và bảo tất cả là nhờ cậu. Tối nay tớ cũng ra sân Thư viện đếm để so số với cậu ấy. Tặng cậu tấm bản đồ sao của tớ, để hai bạn đếm không sót ngôi nào.",
+              "en": "Dear {name}, I'm Thỏ Ngắm Sao from the Library. The snowman just wrote to boast that he counted three hundred and seven stars from step one hundred and twenty, and says it's all thanks to you. Tonight I'll count from the Library yard to compare. Here's my star map, so the two of you don't miss a single one."
+            },
+            "reward": {
+              "coins": 20,
+              "xp": 25,
+              "items": {
+                "ban-do-sao-dem": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

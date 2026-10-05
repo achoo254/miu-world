@@ -1,0 +1,386 @@
+{
+  "id": "yarn-bac-thang-mot-tram-3",
+  "region": "nui-tuyet",
+  "chapter": 5,
+  "title": "Chuyện của Người Tuyết Đếm Bậc, chương 3: Bình minh ở bậc một trăm hai mươi",
+  "status": "active",
+  "category": "story",
+  "summary": "Trời còn tối và lạnh buốt, đúng lúc người tuyết đi được xa nhất. {name} giúp Người Tuyết học đếm qua một trăm, chuẩn bị đồ chống nắng, gọi thêm bạn và cùng cậu ấy lên tới bậc cuối để đón mặt trời.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn leo cùng Người Tuyết",
+    "where": "Đỉnh núi và đài quan sát, sân đỉnh núi, mỏm đá ngắm hoàng hôn, trên đài quan sát",
+    "goal": "Đưa Người Tuyết lên bậc thứ một trăm hai mươi kịp lúc mặt trời mọc",
+    "play": "Đọc biển đếm số qua một trăm, chọn đồ giúp người tuyết không tan, gọi thật đông bạn người tuyết tí hon, chọn cách đón bình minh",
+    "learn": "Đọc và đếm số từ 100 tới 120, chọn nhiều đáp án đúng, so sánh phép tính",
+    "reward": "75 XP, 20 Xu, Skill XP Đọc hiểu và Logic",
+    "next": "Người Tuyết bắt đầu một việc đếm mới: đếm sao"
+  },
+  "phases": {
+    "hook": "truoc-binh-minh",
+    "explore": "qua-mot-tram",
+    "learn": "goi-do-chong-nang",
+    "challenge": "goi-them-ban",
+    "decision": "don-mat-troi",
+    "finale": "tren-dinh",
+    "reward": "tra-cong-7",
+    "next": "dem-sao"
+  },
+  "places": {
+    "nguoi-tuyet-dem-bac": "Đỉnh núi",
+    "st-bac-thang-mot-tram-bien-dem": "Sân đỉnh núi",
+    "st-bac-thang-mot-tram-goi-do": "Mỏm đá giữa dốc",
+    "st-bac-thang-mot-tram-o-cua-dong": "Trên đài quan sát"
+  },
+  "steps": [
+    {
+      "id": "truoc-binh-minh",
+      "title": "Trước bình minh",
+      "goTo": "Lên đỉnh núi và đài quan sát lúc trời còn tối",
+      "kind": "dialogue",
+      "target": "nguoi-tuyet-dem-bac",
+      "lines": [
+        {
+          "speaker": "Người Tuyết Đếm Bậc",
+          "text": "Lạnh quá, lạnh tuyệt vời! {name} tới rồi! Tớ đã nghe chuông cả đêm: tới chuông thứ năm là bậc một trăm."
+        },
+        {
+          "speaker": "Người Tuyết Đếm Bậc",
+          "text": "Nhưng còn hai mươi bậc nữa... qua một trăm thì gọi các số là gì? Ở sân đỉnh núi có tấm biển dạy đếm đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình đọc biển cho cậu nghe!",
+          "reply": "Đọc chậm thôi nhé, đầu tớ làm bằng tuyết mà."
+        }
+      ],
+      "en": {
+        "title": "Before dawn",
+        "goTo": "Go up to the summit and observatory while it is still dark",
+        "lines": [
+          "Freezing, gloriously freezing! You came, {name}! I listened to the bells all night: the fifth bell is step one hundred.",
+          "But there are twenty more steps... what are the numbers after a hundred called? There's a sign about counting in the summit yard."
+        ],
+        "choices": [
+          {
+            "text": "I'll read the sign to you!",
+            "reply": "Read slowly, my head is made of snow."
+          }
+        ]
+      }
+    },
+    {
+      "id": "qua-mot-tram",
+      "title": "Đếm qua một trăm",
+      "goTo": "Ra sân đỉnh núi đọc tấm biển đếm bậc",
+      "kind": "read",
+      "target": "st-bac-thang-mot-tram-bien-dem",
+      "skill": "doc-hieu",
+      "text": "Tấm biển đếm bậc:\nĐếm qua một trăm dễ như đi cầu thang!\n100: một trăm. 101: một trăm linh một. 102: một trăm linh hai...\n109: một trăm linh chín. 110: một trăm mười. 111: một trăm mười một...\n120: một trăm hai mươi. Chúc bạn lên tới đỉnh!",
+      "question": "Đếm tới bậc 109, bậc ngay sau đó là bậc mấy?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Bậc 1010"
+        },
+        {
+          "id": "b",
+          "text": "Bậc 110: một trăm mười"
+        },
+        {
+          "id": "c",
+          "text": "Bậc 200"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Tìm số 109 trên biển.",
+          "Đọc số đứng ngay sau nó."
+        ],
+        "hint": "109 thêm 1.",
+        "answer": {
+          "text": "Bậc một trăm mười (110)",
+          "explanation": "109 + 1 = 110, đọc là một trăm mười, giống như sau 9 là 10."
+        },
+        "en": {
+          "guide": [
+            "Find 109 on the sign.",
+            "Read the number right after it."
+          ],
+          "hint": "109 plus 1.",
+          "answer": {
+            "text": "Step one hundred and ten (110)",
+            "explanation": "109 + 1 = 110, read as one hundred and ten, just as 10 comes after 9."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Một trăm mười! Người Tuyết nhắc lại ba lần cho thuộc.",
+          "Qua một trăm rồi mà vẫn đếm vèo vèo.",
+          "Biển nói đúng, dễ như đi cầu thang thật."
+        ],
+        "wrong": [
+          "1010 dài quá, số ấy lớn hơn cả ngọn núi đấy.",
+          "Chỉ thêm một bậc thôi, đừng nhảy tới 200.",
+          "Sau 9 là 10, vậy sau 109 là số nào nhỉ?"
+        ],
+        "en": {
+          "right": [
+            "One hundred and ten! The snowman repeats it three times to remember.",
+            "Past a hundred and still counting like a breeze.",
+            "The sign was right, easy as climbing stairs."
+          ],
+          "wrong": [
+            "1010 is far too big, bigger than the mountain itself.",
+            "Just one more step, don't leap to 200.",
+            "After 9 comes 10, so what comes after 109?"
+          ]
+        }
+      },
+      "en": {
+        "title": "Counting past a hundred",
+        "goTo": "Go to the summit yard and read the step-counting sign",
+        "text": "The step-counting sign:\nCounting past a hundred is as easy as climbing stairs!\n100: one hundred. 101: one hundred and one. 102: one hundred and two...\n109: one hundred and nine. 110: one hundred and ten. 111: one hundred and eleven...\n120: one hundred and twenty. Enjoy the top!",
+        "question": "After step 109, which step comes next?",
+        "choices": [
+          "Step 1010",
+          "Step 110: one hundred and ten",
+          "Step 200"
+        ]
+      }
+    },
+    {
+      "id": "goi-do-chong-nang",
+      "title": "Gói đồ chống nắng",
+      "goTo": "Nghỉ chân ở mỏm đá giữa dốc, mở gói đồ",
+      "kind": "challenge",
+      "target": "st-bac-thang-mot-tram-goi-do",
+      "mechanic": "multi-select",
+      "skill": "logic",
+      "prompt": "Mặt trời mọc là trời ấm lên. Chọn mọi thứ trong gói giúp Người Tuyết đỡ tan.",
+      "choices": [
+        {
+          "id": "o",
+          "text": "Chiếc ô che nắng"
+        },
+        {
+          "id": "suoi",
+          "text": "Túi sưởi tay"
+        },
+        {
+          "id": "khan",
+          "text": "Khăn len dày"
+        },
+        {
+          "id": "cacao",
+          "text": "Bình ca cao nóng"
+        },
+        {
+          "id": "ao",
+          "text": "Áo choàng trắng"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "o",
+          "khan",
+          "ao"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Thứ gì làm nóng lên thì bỏ ra.",
+          "Thứ gì che, chắn, giữ lạnh thì chọn."
+        ],
+        "hint": "Khăn len giữ cho người tuyết lạnh lâu hơn, như giữ cho {name} ấm vậy.",
+        "answer": {
+          "text": "Chiếc ô che nắng, khăn len dày, áo choàng trắng",
+          "explanation": "Ô che nắng, khăn len chắn hơi ấm, áo trắng hắt bớt nắng; còn túi sưởi và ca cao nóng sẽ làm tuyết tan nhanh hơn."
+        },
+        "en": {
+          "guide": [
+            "Leave out anything that heats things up.",
+            "Pick whatever shades, shields or keeps the cold in."
+          ],
+          "hint": "A wool scarf keeps a snowman cold for longer, the same way it keeps {name} warm.",
+          "answer": {
+            "text": "The sunshade, the thick wool scarf, the white cloak",
+            "explanation": "The shade blocks the sun, the scarf keeps warm air out, the white cloak bounces sunlight away; the hand warmer and hot cocoa would melt snow faster."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Gói đồ hoàn hảo cho một người tuyết đi ngắm bình minh!",
+          "Ai ngờ khăn len lại giữ lạnh được nhỉ, {name} biết cả mẹo này.",
+          "Người Tuyết quấn khăn, che ô, trông oai như một nhà thám hiểm."
+        ],
+        "wrong": [
+          "Ơ, có món làm nóng lọt vào gói rồi.",
+          "Còn thiếu một món che chắn đấy.",
+          "Ca cao nóng ngon thật, nhưng là cho {name} thôi."
+        ],
+        "en": {
+          "right": [
+            "The perfect pack for a snowman going to see the sunrise!",
+            "Who knew a scarf could keep cold in? {name} knows that trick too.",
+            "Wrapped and shaded, the snowman looks like a proper explorer."
+          ],
+          "wrong": [
+            "Oops, something warm slipped into the pack.",
+            "One shield-against-the-sun is still missing.",
+            "Hot cocoa is lovely, but only for {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "A pack against the sun",
+        "goTo": "Rest at the rock halfway up and open the pack",
+        "prompt": "Sunrise means warmer air. Pick everything in the pack that will stop the snowman melting.",
+        "choices": [
+          "A sunshade",
+          "A hand warmer",
+          "A thick wool scarf",
+          "A flask of hot cocoa",
+          "A white cloak"
+        ]
+      }
+    },
+    {
+      "id": "goi-them-ban",
+      "title": "Gọi thêm bạn",
+      "kind": "challenge",
+      "trigger": "auto",
+      "mechanic": "minigame",
+      "prompt": "Đoàn người tuyết tí hon muốn lên đỉnh cùng! Lướt qua cổng có phép tính lớn hơn để gọi thật đông bạn nhé.",
+      "game": "crowd-gates",
+      "goal": 20,
+      "en": {
+        "title": "Calling more friends",
+        "prompt": "A troop of tiny snowmen wants to come too! Slide through the gate with the bigger sum to gather lots of friends."
+      }
+    },
+    {
+      "id": "don-mat-troi",
+      "title": "Đón mặt trời",
+      "goTo": "Leo lên trên đài quan sát, tới ô cửa nhìn ra phía đông",
+      "kind": "decision",
+      "target": "st-bac-thang-mot-tram-o-cua-dong",
+      "speaker": "Người Tuyết Đếm Bậc",
+      "prompt": "Bậc một trăm hai mươi! Phía đông, sau dãy núi hai đỉnh, trời bắt đầu hồng. Người Tuyết hỏi: «Giờ mình làm gì?»",
+      "choices": [
+        {
+          "id": "dem-tia",
+          "text": "Đếm từng tia nắng đầu tiên",
+          "consequence": "Một tia, hai tia, ba tia... Người Tuyết đếm tới bảy thì quên đếm vì mải nhìn. Cậu bảo thế cũng hay."
+        },
+        {
+          "id": "im-lang",
+          "text": "Chẳng đếm gì, chỉ ngắm thôi",
+          "consequence": "Hai bạn đứng im. Lần đầu tiên trong đời, đầu Người Tuyết không có con số nào, chỉ có màu hồng."
+        },
+        {
+          "id": "nam-tay",
+          "text": "Nắm tay đoàn người tuyết tí hon",
+          "consequence": "Cả hàng người tuyết nắm tay nhau trên lan can, dài đúng hai mươi bạn. Lần này Người Tuyết đếm không sót ai."
+        }
+      ],
+      "en": {
+        "title": "Greeting the sun",
+        "goTo": "Climb up on top of the observatory to the window facing east",
+        "prompt": "Step one hundred and twenty! In the east, behind the twin peaks, the sky turns pink. The snowman asks: \"What do we do now?\"",
+        "choices": [
+          {
+            "text": "Count the first rays of sun",
+            "consequence": "One ray, two, three... at seven the snowman forgets to count because he's too busy looking. He says that's fine too."
+          },
+          {
+            "text": "Count nothing, just watch",
+            "consequence": "You both stand still. For the first time in his life the snowman's head holds no numbers at all, only pink."
+          },
+          {
+            "text": "Hold hands with the tiny snowmen",
+            "consequence": "A whole row of snowmen holds hands along the railing, exactly twenty of them. This time the snowman counts everyone."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tren-dinh",
+      "title": "Trên đỉnh",
+      "kind": "dialogue",
+      "target": "st-bac-thang-mot-tram-o-cua-dong",
+      "lines": [
+        {
+          "speaker": "Người Tuyết Đếm Bậc",
+          "text": "Mặt trời ấm thật, nhưng tớ có khăn, có ô, có {name}. Tớ chỉ tan mất một tí xíu ở chóp mũi thôi."
+        },
+        {
+          "speaker": "Người Tuyết Đếm Bậc",
+          "text": "Biết gì không? Tối nay tớ sẽ đếm sao. Sao thì nhiều hơn một trăm hai mươi nhiều lắm, nhưng tớ không sợ đếm qua một trăm nữa."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình đếm sao cùng cậu nhé!",
+          "reply": "Cậu đếm nửa bên trái, tớ đếm nửa bên phải. Không ai được ngủ quên đấy!"
+        }
+      ],
+      "en": {
+        "title": "At the top",
+        "lines": [
+          "The sun really is warm, but I have a scarf, a shade, and {name}. I've only melted a teeny bit at the tip of my nose.",
+          "Guess what? Tonight I'm going to count stars. There are far more than a hundred and twenty, but I'm not afraid of counting past a hundred any more."
+        ],
+        "choices": [
+          {
+            "text": "I'll count stars with you!",
+            "reply": "You take the left half of the sky, I'll take the right. No falling asleep!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tra-cong-7",
+      "title": "Bậc thứ một trăm hai mươi",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Người Tuyết khắc lên bậc cuối: «Bậc 120. Tới đây cùng {name}.» Cậu tặng {name} một người tuyết tí hon trong đoàn để làm bạn đường.",
+      "en": {
+        "title": "Step one hundred and twenty",
+        "text": "The snowman carves on the top step: \"Step 120. Reached with {name}.\" He gives {name} one of the tiny snowmen as a travelling companion."
+      }
+    },
+    {
+      "id": "dem-sao",
+      "title": "Đếm sao",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Từ nay, tối nào Người Tuyết cũng ngồi trên bậc một trăm hai mươi đếm sao, và viết thư cho một bạn thỏ mê ngắm sao ở thư viện xa để so số.",
+      "en": {
+        "title": "Counting stars",
+        "text": "From now on the snowman sits on step one hundred and twenty every evening counting stars, and writes to a star-loving rabbit at a faraway library to compare totals."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 75,
+    "coin": 20,
+    "skillXp": {
+      "doc-hieu": 1,
+      "logic": 1
+    },
+    "items": {
+      "nguoi-tuyet-mini": 1
+    }
+  },
+  "en": {
+    "title": "Người Tuyết Đếm Bậc's story, chapter 3: Sunrise on step one hundred and twenty",
+    "summary": "It is still dark and freezing, the best time for a snowman to travel far. {name} helps the snowman learn to count past a hundred, packs for the sunrise, gathers more friends and climbs with him to the last step to greet the sun."
+  }
+}

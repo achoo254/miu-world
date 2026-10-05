@@ -1,0 +1,347 @@
+{
+  "id": "yarn-bac-thang-mot-tram-2",
+  "region": "nui-tuyet",
+  "chapter": 5,
+  "title": "Chuyện của Người Tuyết Đếm Bậc, chương 2: Chuông băng lạc giọng",
+  "status": "active",
+  "category": "story",
+  "summary": "Dàn chuông băng giúp Người Tuyết nhớ mình đã leo tới đâu thì bị gió thổi rơi xuống vực. {name} xuống tìm chuông, xếp chúng theo tiếng trầm bổng, chơi nghe nhạc trên bậc thang rồi chọn cách treo chuông lại.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người tìm chuông",
+    "where": "Đỉnh núi và đài quan sát, vực thác băng, đáy vực băng, đài quan sát",
+    "goal": "Mang dàn chuông băng về treo lại dọc cầu thang",
+    "play": "Tìm ba chiếc chuông theo lời tả, xếp chuông từ to tới nhỏ, so sánh tiếng trầm bổng, chọn cách treo chuông",
+    "learn": "So sánh to nhỏ, tiếng trầm và tiếng bổng, đọc lời tả",
+    "reward": "65 XP, 16 Xu, Skill XP Đọc hiểu và So sánh số",
+    "next": "Chuông đã về chỗ, sáng mai Người Tuyết sẽ thử leo lên đỉnh lúc bình minh"
+  },
+  "phases": {
+    "hook": "tieng-leng-keng",
+    "explore": "tim-chuong",
+    "learn": "xep-chuong",
+    "challenge": "nghe-cao-thap",
+    "decision": "treo-chuong",
+    "finale": "chuong-reo",
+    "reward": "tra-cong-6",
+    "next": "hen-binh-minh"
+  },
+  "places": {
+    "nguoi-tuyet-dem-bac": "Chân cầu thang",
+    "tim-chuong": "Vực thác băng",
+    "st-bac-thang-mot-tram-moc-treo": "Đáy vực băng",
+    "st-bac-thang-mot-tram-xa-chuong": "Đài quan sát"
+  },
+  "steps": [
+    {
+      "id": "tieng-leng-keng",
+      "title": "Tiếng leng keng dưới vực",
+      "goTo": "Tới chân cầu thang lên đài, Người Tuyết đang nghe ngóng",
+      "kind": "dialogue",
+      "target": "nguoi-tuyet-dem-bac",
+      "lines": [
+        {
+          "speaker": "Người Tuyết Đếm Bậc",
+          "text": "Nghe thấy không {name}? Leng... keng... Chuông của tớ đang gọi từ dưới vực thác băng đấy."
+        },
+        {
+          "speaker": "Người Tuyết Đếm Bậc",
+          "text": "Chuông to treo ở chân cầu thang, chuông nhỏ treo trên cao. Leo tới đâu, nghe tiếng chuông là tớ biết ngay mình ở đâu."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để mình xuống vực tìm chuông!",
+          "reply": "Cẩn thận dốc trơn nhé. Tớ mà xuống thì lăn thành quả cầu tuyết mất."
+        }
+      ],
+      "en": {
+        "title": "A jingle from the gorge",
+        "goTo": "Go to the foot of the observatory stairs, the snowman is listening hard",
+        "lines": [
+          "Hear that, {name}? Jingle... jangle... My bells are calling from down in the frozen falls.",
+          "The big bell hangs at the bottom of the stairs, the little one up high. Wherever I am, one ring tells me where I've got to."
+        ],
+        "choices": [
+          {
+            "text": "I'll go down and find them!",
+            "reply": "Mind the slippery slope. If I went down I'd roll into a snowball."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-chuong",
+      "title": "Tìm chuông băng",
+      "goTo": "Xuống vực thác băng tìm ba chiếc chuông",
+      "kind": "find-object",
+      "prompt": "Người Tuyết tả từng chiếc chuông. Đọc lời tả rồi tìm cho đủ:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "to",
+          "name": "Chuông băng to",
+          "clue": "To nhất, màu xanh sẫm như nước hồ sâu, kêu «boong» trầm như ông nội ho.",
+          "target": "st-bac-thang-mot-tram-chuong-to"
+        },
+        {
+          "id": "vua",
+          "name": "Chuông băng vừa",
+          "clue": "Không to không nhỏ, xanh như bầu trời buổi trưa, kêu «keng» tròn trịa.",
+          "target": "st-bac-thang-mot-tram-chuong-vua"
+        },
+        {
+          "id": "nho",
+          "name": "Chuông băng nhỏ",
+          "clue": "Bé xíu, gần như trong suốt, kêu «linh» cao như chim sẻ hắt hơi.",
+          "target": "st-bac-thang-mot-tram-chuong-nho"
+        }
+      ],
+      "en": {
+        "title": "Finding the ice bells",
+        "goTo": "Climb down to the frozen falls and find three bells",
+        "prompt": "The snowman describes each bell. Read the descriptions and find them all:",
+        "items": [
+          {
+            "name": "Big ice bell",
+            "clue": "The biggest, deep blue like a deep lake, it goes \"bong\", low like Grandpa clearing his throat."
+          },
+          {
+            "name": "Middle ice bell",
+            "clue": "Not big, not small, blue as the noon sky, it goes a round \"kang\"."
+          },
+          {
+            "name": "Little ice bell",
+            "clue": "Tiny and nearly see-through, it goes a high \"ting\" like a sparrow sneezing."
+          }
+        ]
+      }
+    },
+    {
+      "id": "xep-chuong",
+      "title": "Chuông nào treo dưới cùng?",
+      "goTo": "Xuống đáy vực băng, tới móc treo chuông",
+      "kind": "challenge",
+      "target": "st-bac-thang-mot-tram-moc-treo",
+      "mechanic": "sort",
+      "skill": "so-sanh-so",
+      "prompt": "Trên móc treo dưới vực còn khắc chiều cao từng chiếc chuông. Chuông càng to tiếng càng trầm và treo càng thấp. Xếp chuông từ chân cầu thang lên đỉnh.",
+      "items": [
+        {
+          "id": "c9",
+          "label": "Chuông 9 phân"
+        },
+        {
+          "id": "c15",
+          "label": "Chuông 15 phân"
+        },
+        {
+          "id": "c6",
+          "label": "Chuông 6 phân"
+        },
+        {
+          "id": "c12",
+          "label": "Chuông 12 phân"
+        }
+      ],
+      "answer": {
+        "order": [
+          "c15",
+          "c12",
+          "c9",
+          "c6"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Chân cầu thang là chuông to nhất.",
+          "Xếp số từ lớn tới bé."
+        ],
+        "hint": "Chuông to nhất cao 15 phân.",
+        "answer": {
+          "text": "15 phân, 12 phân, 9 phân, 6 phân",
+          "explanation": "15 > 12 > 9 > 6: chuông to tiếng trầm treo dưới, chuông nhỏ tiếng bổng treo trên."
+        },
+        "en": {
+          "guide": [
+            "The bottom of the stairs gets the biggest bell.",
+            "Order the numbers from biggest to smallest."
+          ],
+          "hint": "The biggest bell is 15 cm tall.",
+          "answer": {
+            "text": "15 cm, 12 cm, 9 cm, 6 cm",
+            "explanation": "15 > 12 > 9 > 6: big deep bells hang low, small high bells hang up top."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Boong, keng, kang, linh: nghe như cầu thang đang hát!",
+          "Từ trầm lên bổng, chuẩn từng chiếc.",
+          "Người Tuyết vỗ tay làm rơi một ít tuyết trên vai."
+        ],
+        "wrong": [
+          "Chuông to phải ở dưới cùng cơ, {name}.",
+          "Có chuông nhỏ đang đứng dưới chuông to rồi.",
+          "Xếp số từ lớn tới bé thử xem."
+        ],
+        "en": {
+          "right": [
+            "Bong, kang, kling, ting: the stairs are singing!",
+            "Low to high, every bell in place.",
+            "The snowman claps so hard some snow slides off his shoulders."
+          ],
+          "wrong": [
+            "The big bell belongs at the very bottom, {name}.",
+            "A small bell is sitting below a bigger one.",
+            "Try ordering the numbers from biggest to smallest."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which bell hangs lowest?",
+        "goTo": "Down to the bottom of the ice gorge, to the bell rack",
+        "prompt": "The hook rack in the gorge still has each bell's height carved on it. The bigger the bell, the lower its voice and the lower it hangs. Order them from the bottom of the stairs to the top.",
+        "items": [
+          "9 cm bell",
+          "15 cm bell",
+          "6 cm bell",
+          "12 cm bell"
+        ]
+      }
+    },
+    {
+      "id": "nghe-cao-thap",
+      "title": "Bậc thang âm thanh",
+      "kind": "challenge",
+      "trigger": "auto",
+      "mechanic": "minigame",
+      "prompt": "Rung từng chiếc chuông thử giọng: tiếng sau cao hơn thì chọn lên, thấp hơn thì chọn xuống nhé!",
+      "game": "pitch-stairs",
+      "goal": 10,
+      "en": {
+        "title": "The musical stairs",
+        "prompt": "Ring each bell to test its voice: if the next note is higher pick up, if it's lower pick down!"
+      }
+    },
+    {
+      "id": "treo-chuong",
+      "title": "Treo chuông thế nào?",
+      "goTo": "Mang chuông lên đài quan sát, tới xà treo chuông",
+      "kind": "decision",
+      "target": "st-bac-thang-mot-tram-xa-chuong",
+      "speaker": "Người Tuyết Đếm Bậc",
+      "prompt": "Xà treo chuông đã sẵn. Gió núi mạnh lắm, treo thế nào để chuông không rơi nữa?",
+      "choices": [
+        {
+          "id": "buoc-doi",
+          "text": "Buộc hai vòng dây cho mỗi chuông",
+          "consequence": "Mỗi chuông hai vòng dây chắc nịch. Gió thổi, chuông chỉ đung đưa mà hát."
+        },
+        {
+          "id": "treo-thap",
+          "text": "Treo thấp hơn, khuất sau lan can",
+          "consequence": "Lan can chắn bớt gió. Chuông nằm gọn như chim trong tổ."
+        },
+        {
+          "id": "nho-cao",
+          "text": "Nhờ Cáo Tuyết khắc móc băng thật sâu",
+          "consequence": "Nghe tin, Cáo Tuyết Điêu Khắc gửi lên một túi móc băng khắc sẵn, móc nào cũng sâu và cong như vầng trăng non."
+        }
+      ],
+      "en": {
+        "title": "How shall we hang them?",
+        "goTo": "Carry the bells up to the observatory, to the bell beams",
+        "prompt": "The bell beams are ready. The mountain wind is strong; how do we stop the bells falling again?",
+        "choices": [
+          {
+            "text": "Tie every bell with two loops of cord",
+            "consequence": "Two snug loops per bell. The wind blows, and the bells just sway and sing."
+          },
+          {
+            "text": "Hang them lower, sheltered behind the railing",
+            "consequence": "The railing breaks the wind. The bells sit snug as birds in a nest."
+          },
+          {
+            "text": "Ask the snow fox carver to cut deep ice hooks",
+            "consequence": "Hearing the news, the snow fox carver sends up a bag of ready-cut ice hooks, each deep and curved like a new moon."
+          }
+        ]
+      }
+    },
+    {
+      "id": "chuong-reo",
+      "title": "Cầu thang biết hát",
+      "goTo": "Về chân cầu thang nghe Người Tuyết thử chuông",
+      "kind": "dialogue",
+      "target": "nguoi-tuyet-dem-bac",
+      "lines": [
+        {
+          "speaker": "Người Tuyết Đếm Bậc",
+          "text": "Tớ thử nhé. Một, hai... hai mươi: boong! Bốn mươi: keng! Sáu mươi: kang! Tám mươi: linh!"
+        },
+        {
+          "speaker": "Người Tuyết Đếm Bậc",
+          "text": "Ơ kìa, tớ không cần nhớ hết các số nữa, cứ nghe chuông là biết! {name} ơi, sáng mai trời lạnh nhất, tớ sẽ thử leo tới đỉnh."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình sẽ có mặt từ sớm!",
+          "reply": "Nhớ mang khăn ấm nhé. Tớ thì không cần, tớ là tuyết mà."
+        }
+      ],
+      "en": {
+        "title": "The stairs can sing",
+        "goTo": "Back to the foot of the stairs to hear the snowman test the bells",
+        "lines": [
+          "Let me try. One, two... twenty: bong! Forty: kang! Sixty: kling! Eighty: ting!",
+          "Look, I don't have to remember every number now, the bells tell me! {name}, tomorrow at dawn, when it's coldest, I'll try for the top."
+        ],
+        "choices": [
+          {
+            "text": "I'll be there bright and early!",
+            "reply": "Bring a warm scarf. I won't need one, I'm made of snow."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tra-cong-6",
+      "title": "Dàn chuông trở về",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gió núi thổi qua, cả cầu thang ngân lên từ trầm tới bổng. Người Tuyết tặng {name} một chiếc chuông tuyết bạc nhỏ xíu, «để đếm những cầu thang khác».",
+      "en": {
+        "title": "The bells are back",
+        "text": "The mountain wind blows and the whole staircase rings from low to high. The snowman gives {name} a tiny silver snow bell, \"for counting other stairs\"."
+      }
+    },
+    {
+      "id": "hen-binh-minh",
+      "title": "Hẹn lúc bình minh",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Người Tuyết đứng ở chân cầu thang suốt đêm, lẩm nhẩm: «Một trăm, một trăm... rồi sao nữa?» Sáng mai, cậu ấy sẽ cần {name} ở bên.",
+      "en": {
+        "title": "See you at dawn",
+        "text": "All night the snowman stands at the foot of the stairs, mumbling: \"A hundred, a hundred... then what?\" Tomorrow morning he will need {name} beside him."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "doc-hieu": 1,
+      "so-sanh-so": 1
+    },
+    "items": {
+      "chuong-tuyet-bac": 1
+    }
+  },
+  "en": {
+    "title": "Người Tuyết Đếm Bậc's story, chapter 2: The bells that lost their voices",
+    "summary": "The ice bells that help the snowman remember how far he has climbed were blown down into the gorge. {name} goes down to find them, orders them from low to high, plays the stair-music game and decides how to hang them back up."
+  }
+}

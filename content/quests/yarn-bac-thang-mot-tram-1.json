@@ -1,0 +1,390 @@
+{
+  "id": "yarn-bac-thang-mot-tram-1",
+  "region": "nui-tuyet",
+  "chapter": 5,
+  "title": "Chuyện của Người Tuyết Đếm Bậc, chương 1: Đếm mãi không xong",
+  "status": "active",
+  "category": "story",
+  "summary": "Sáng nào Người Tuyết cũng đếm bậc thang lên đài quan sát, mà lần nào đếm cũng ra một số khác. {name} phủi tuyết tìm cột mốc, tìm quy luật và tính xem cầu thang thật sự có bao nhiêu bậc.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn đếm bậc của Người Tuyết",
+    "where": "Đỉnh núi và đài quan sát, sân đỉnh núi, đài quan sát, mỏm đá ngắm hoàng hôn",
+    "goal": "Biết chắc cầu thang lên đài quan sát có bao nhiêu bậc",
+    "play": "Tìm ba cột mốc dưới tuyết, tìm số bị vùi theo quy luật, giải bài toán đếm bậc, chọn cách cứu Người Tuyết khỏi nắng trưa",
+    "learn": "Đếm thêm 20, phép cộng, số lớn hơn 100",
+    "reward": "55 XP, 14 Xu, Skill XP Logic và Phép cộng",
+    "next": "Muốn lên đỉnh, Người Tuyết cần dàn chuông băng bị gió thổi xuống vực"
+  },
+  "phases": {
+    "hook": "dem-lai-tu-dau",
+    "explore": "phui-tuyet",
+    "learn": "cot-bi-vui",
+    "challenge": "tong-so-bac",
+    "decision": "nang-trua",
+    "finale": "loi-thu-nhan",
+    "reward": "tra-cong-5",
+    "next": "chuong-roi"
+  },
+  "places": {
+    "nguoi-tuyet-dem-bac": "Đỉnh núi và đài quan sát",
+    "phui-tuyet": "Sân đỉnh núi",
+    "st-bac-thang-mot-tram-bang-bac": "Đài quan sát",
+    "st-bac-thang-mot-tram-tang-da": "Mỏm đá ngắm hoàng hôn"
+  },
+  "steps": [
+    {
+      "id": "dem-lai-tu-dau",
+      "title": "Lại đếm từ đầu",
+      "goTo": "Lên đỉnh núi và đài quan sát, nghe tiếng ai đang đếm",
+      "kind": "dialogue",
+      "target": "nguoi-tuyet-dem-bac",
+      "lines": [
+        {
+          "speaker": "Người Tuyết Đếm Bậc",
+          "text": "...chín mươi tám, chín mươi chín, một trăm... rồi... ôi, lại quên! Chào {name}. Hôm nay là lần thứ ba mươi bảy tớ đếm lại từ đầu đấy."
+        },
+        {
+          "speaker": "Người Tuyết Đếm Bậc",
+          "text": "Tớ muốn một lần được ngắm mặt trời mọc trên đỉnh đài quan sát. Nhưng tuyết vùi mất mấy bậc, nên tớ chẳng biết mình đã lên tới đâu."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình cùng đếm cho chắc nhé!",
+          "reply": "Hai người đếm thì không ai quên được nữa. Bắt đầu từ sân đỉnh núi nhé!"
+        },
+        {
+          "text": "Bậc thang có đánh số không?",
+          "reply": "Có cột mốc đấy, nhưng tuyết phủ kín cả rồi."
+        }
+      ],
+      "en": {
+        "title": "Starting over again",
+        "goTo": "Climb up to the summit and observatory, someone is counting out loud",
+        "lines": [
+          "...ninety-eight, ninety-nine, a hundred... then... oh, lost it again! Hi, {name}. That's the thirty-seventh time I've started over today.",
+          "Just once, I want to watch the sunrise from the top of the observatory. But the snow has buried some steps, so I never know how far up I am."
+        ],
+        "choices": [
+          {
+            "text": "Let's count it properly together!",
+            "reply": "With two of us counting, nobody can forget. Let's start at the summit yard!"
+          },
+          {
+            "text": "Are the steps numbered?",
+            "reply": "There are marker posts, but the snow has covered them all."
+          }
+        ]
+      }
+    },
+    {
+      "id": "phui-tuyet",
+      "title": "Phủi tuyết tìm cột mốc",
+      "goTo": "Ra sân đỉnh núi phủi tuyết tìm cột mốc",
+      "kind": "search",
+      "targets": [
+        "st-bac-thang-mot-tram-moc-20",
+        "st-bac-thang-mot-tram-moc-40",
+        "st-bac-thang-mot-tram-moc-80"
+      ],
+      "en": {
+        "title": "Brushing snow off the markers",
+        "goTo": "Go to the summit yard and brush the snow off the marker posts"
+      }
+    },
+    {
+      "id": "cot-bi-vui",
+      "title": "Cột mốc bị vùi",
+      "goTo": "Sang đài quan sát xem bảng bậc thang",
+      "kind": "challenge",
+      "target": "st-bac-thang-mot-tram-bang-bac",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "skill": "logic",
+      "prompt": "Bảng của đài vẽ các cột mốc dọc cầu thang, nhưng một cột vẫn bị tuyết vùi. Cột ấy mang số mấy?",
+      "elements": [
+        {
+          "id": "e20",
+          "label": "20"
+        },
+        {
+          "id": "e40",
+          "label": "40"
+        },
+        {
+          "id": "eq",
+          "label": "?"
+        },
+        {
+          "id": "e80",
+          "label": "80"
+        },
+        {
+          "id": "e100",
+          "label": "100"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c50",
+          "text": "50"
+        },
+        {
+          "id": "c60",
+          "text": "60"
+        },
+        {
+          "id": "c70",
+          "text": "70"
+        }
+      ],
+      "answer": {
+        "choice": "c60"
+      },
+      "support": {
+        "guide": [
+          "Nhìn hai cột đầu: 20 rồi 40.",
+          "Mỗi cột hơn cột trước bao nhiêu?"
+        ],
+        "hint": "Các cột cách nhau 20 bậc.",
+        "answer": {
+          "text": "Cột số 60",
+          "explanation": "20, 40, 60, 80, 100: mỗi cột thêm 20 bậc, nên cột bị vùi là 40 + 20 = 60."
+        },
+        "en": {
+          "guide": [
+            "Look at the first two posts: 20, then 40.",
+            "How much bigger is each post than the one before?"
+          ],
+          "hint": "The posts are 20 steps apart.",
+          "answer": {
+            "text": "Post 60",
+            "explanation": "20, 40, 60, 80, 100: each post adds 20 steps, so the buried one is 40 + 20 = 60."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sáu mươi! Người Tuyết đào lên đúng cột số 60.",
+          "Đếm thêm hai mươi, gọn gàng ghê.",
+          "Người Tuyết reo: hóa ra cột mốc cũng biết đếm!"
+        ],
+        "wrong": [
+          "Cột này phải nằm giữa 40 và 80 cơ.",
+          "Thử cộng 20 vào cột số 40 xem.",
+          "Các cột không cách nhau 10 đâu, {name} ạ."
+        ],
+        "en": {
+          "right": [
+            "Sixty! The snowman digs up post 60, right where you said.",
+            "Counting on in twenties, neat as anything.",
+            "The snowman cheers: so the markers can count too!"
+          ],
+          "wrong": [
+            "This post has to sit between 40 and 80.",
+            "Try adding 20 to post 40.",
+            "The posts aren't 10 apart, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "The buried marker",
+        "goTo": "Go over to the observatory and look at the stairs board",
+        "prompt": "The observatory board shows the markers up the stairs, but one is still buried in snow. What number is on it?",
+        "elements": [
+          "20",
+          "40",
+          "?",
+          "80",
+          "100"
+        ],
+        "choices": [
+          "50",
+          "60",
+          "70"
+        ]
+      }
+    },
+    {
+      "id": "tong-so-bac",
+      "title": "Cầu thang có bao nhiêu bậc?",
+      "kind": "riddle",
+      "target": "st-bac-thang-mot-tram-bang-bac",
+      "skill": "phep-cong",
+      "question": "Dưới bảng có dòng chữ nhỏ: «Từ cột mốc số 100 lên tới sàn đài còn 20 bậc nữa.» Vậy cầu thang có tất cả bao nhiêu bậc?",
+      "answer": {
+        "value": 120
+      },
+      "support": {
+        "guide": [
+          "Cột cuối ghi số 100.",
+          "Cộng thêm 20 bậc còn lại."
+        ],
+        "hint": "100 thêm 2 chục nữa.",
+        "answer": {
+          "text": "120 bậc",
+          "explanation": "100 + 20 = 120: cầu thang có một trăm hai mươi bậc."
+        },
+        "en": {
+          "guide": [
+            "The last post says 100.",
+            "Add the 20 steps that are left."
+          ],
+          "hint": "100 plus two more tens.",
+          "answer": {
+            "text": "120 steps",
+            "explanation": "100 + 20 = 120: the stairs have one hundred and twenty steps."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Một trăm hai mươi! Người Tuyết há hốc miệng cà rốt.",
+          "Cộng chục với chục, chuẩn không cần chỉnh.",
+          "Giờ cả đỉnh núi biết cầu thang dài bao nhiêu rồi."
+        ],
+        "wrong": [
+          "Mới tới cột 100 thôi, còn 20 bậc nữa mà.",
+          "Người Tuyết lắc đầu làm rơi cả mũ: cộng lại nhé.",
+          "Thử đếm tiếp từ 100 thêm hai chục xem."
+        ],
+        "en": {
+          "right": [
+            "One hundred and twenty! The snowman's carrot mouth drops open.",
+            "Tens plus tens, exactly right.",
+            "Now the whole summit knows how long the stairs are."
+          ],
+          "wrong": [
+            "That only gets you to post 100, there are 20 more.",
+            "The snowman shakes his head so hard his hat falls off: add it up again.",
+            "Try counting on two tens from 100."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many steps are there?",
+        "question": "Small print under the board says: \"From post 100 to the observatory floor there are 20 more steps.\" So how many steps are there altogether?"
+      }
+    },
+    {
+      "id": "nang-trua",
+      "title": "Nắng trưa",
+      "goTo": "Ra mỏm đá ngắm hoàng hôn, tìm chỗ tránh nắng",
+      "kind": "decision",
+      "target": "st-bac-thang-mot-tram-tang-da",
+      "speaker": "Người Tuyết Đếm Bậc",
+      "prompt": "Nắng trưa chiếu xuống, mũi cà rốt của Người Tuyết bắt đầu nhỏ giọt tong tong. {name} làm gì?",
+      "choices": [
+        {
+          "id": "bong-ram",
+          "text": "Kéo cậu ấy vào bóng tảng đá",
+          "consequence": "Trong bóng đá mát rượi, Người Tuyết thôi nhỏ giọt và thở phào một làn hơi trắng."
+        },
+        {
+          "id": "dap-tuyet",
+          "text": "Đắp thêm một lớp tuyết mới lên vai",
+          "consequence": "Lớp tuyết mới mịn như áo khoác. Người Tuyết bảo nó vừa khít, chỉ hơi ngứa ở nách."
+        },
+        {
+          "id": "quat",
+          "text": "Quạt cho cậu ấy bằng mũ",
+          "consequence": "Gió từ chiếc mũ mát lạnh, Người Tuyết khúc khích: «Nhột quá, nhưng dễ chịu lắm!»"
+        }
+      ],
+      "en": {
+        "title": "The noon sun",
+        "goTo": "Go to the sunset rock and find some shade",
+        "prompt": "The noon sun beats down and the snowman's carrot nose starts to drip, plip, plop. What does {name} do?",
+        "choices": [
+          {
+            "text": "Pull him into the shade of the rock",
+            "consequence": "In the cool shade he stops dripping and lets out a puff of white breath."
+          },
+          {
+            "text": "Pat a fresh layer of snow on his shoulders",
+            "consequence": "The fresh snow is soft as a coat. The snowman says it fits perfectly, just a bit itchy under the arms."
+          },
+          {
+            "text": "Fan him with your hat",
+            "consequence": "The hat-breeze is chilly, and the snowman giggles: \"That tickles, but it's lovely!\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "loi-thu-nhan",
+      "title": "Một lời thú nhận",
+      "goTo": "Về đỉnh núi và đài quan sát với Người Tuyết",
+      "kind": "dialogue",
+      "target": "nguoi-tuyet-dem-bac",
+      "lines": [
+        {
+          "speaker": "Người Tuyết Đếm Bậc",
+          "text": "Một trăm hai mươi... {name} biết không, tớ chỉ đếm được tới một trăm. Qua đó là đầu tớ trắng xóa như tuyết."
+        },
+        {
+          "speaker": "Người Tuyết Đếm Bậc",
+          "text": "Thế nên lần nào cũng phải đếm lại từ đầu. Hồi trước trên cầu thang có dàn chuông băng giúp tớ nhớ, nhưng gió đã thổi rơi hết rồi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình sẽ tìm lại chuông cho cậu!",
+          "reply": "Thật hả? Vậy mai mình xuống vực thác băng nhé, chuông rơi xuống đó cả."
+        }
+      ],
+      "en": {
+        "title": "A small confession",
+        "goTo": "Back to the summit and observatory with the snowman",
+        "lines": [
+          "One hundred and twenty... You know, {name}, I can only count to a hundred. After that my head goes as white as snow.",
+          "That's why I always start over. There used to be ice bells along the stairs to help me remember, but the wind blew them all away."
+        ],
+        "choices": [
+          {
+            "text": "We'll find your bells again!",
+            "reply": "Really? Then tomorrow we'll go down to the frozen falls, that's where they fell."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tra-cong-5",
+      "title": "Con số thật",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Người Tuyết khắc số 120 lên tấm bảng của đài bằng một que kem. Cậu tặng {name} một cục băng xanh trong vắt để cảm ơn.",
+      "en": {
+        "title": "The real number",
+        "text": "The snowman carves 120 on the observatory board with an ice-lolly stick. He gives {name} a clear blue ice cube to say thanks."
+      }
+    },
+    {
+      "id": "chuong-roi",
+      "title": "Dàn chuông dưới vực",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đêm ấy gió núi rít qua đỉnh, mang theo tiếng leng keng thật xa từ phía vực thác băng. Những chiếc chuông vẫn còn ở dưới đó.",
+      "en": {
+        "title": "Bells in the gorge",
+        "text": "That night the mountain wind whistles past the summit, carrying a faint jingle from the frozen falls. The bells are still down there."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": {
+      "logic": 1,
+      "phep-cong": 1
+    },
+    "items": {
+      "khoi-bang-xanh": 1
+    }
+  },
+  "en": {
+    "title": "Người Tuyết Đếm Bậc's story, chapter 1: Counting that never ends",
+    "summary": "Every morning the snowman counts the steps up to the observatory, and every time he gets a different number. {name} brushes off the snow to find the markers, spots the pattern and works out how many steps there really are."
+  }
+}

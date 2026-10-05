@@ -2907,6 +2907,243 @@
    "label": "Thách đấu",
    "animation": "idle",
    "tint": "#d8e4f8"
+  },
+  "st-ho-bang-biet-hat-duc-bang": {
+   "model": "packs/kenney-survival-kit/2.0/tool-hammer.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#8fb8d8"
+  },
+  "st-ho-bang-biet-hat-day-cau": {
+   "model": "generated/props/knot.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#e8e0c8"
+  },
+  "st-ho-bang-biet-hat-xo-ca": {
+   "model": "packs/kenney-survival-kit/2.0/bucket.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#5f8fb8"
+  },
+  "st-ho-bang-biet-hat-bang-do": {
+   "model": "generated/props/placard-blue.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-ho-bang-biet-hat-coc-do": {
+   "model": "packs/kenney-survival-kit/2.0/signpost-single.glb",
+   "height": 1.6,
+   "kind": "object",
+   "label": "Đọc bảng",
+   "tint": "#c8dce8"
+  },
+  "st-ho-bang-biet-hat-nhu-bang": {
+   "model": "generated/props/droplet.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#bfe3f5"
+  },
+  "st-ho-bang-biet-hat-vet-nut": {
+   "model": "packs/kenney-nature-kit/2.1/stone_smallFlatB.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#dceaf6"
+  },
+  "st-ho-bang-biet-hat-dau-chan": {
+   "model": "generated/props/paw-prints.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#9fb4c8"
+  },
+  "st-ho-bang-biet-hat-so-tram": {
+   "model": "generated/props/open-book.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Đọc sách"
+  },
+  "st-ho-bang-biet-hat-gia-mau": {
+   "model": "packs/kenney-survival-kit/2.0/workbench.glb",
+   "height": 1.1,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#b8cfe0"
+  },
+  "st-ho-bang-biet-hat-long-to": {
+   "model": "packs/kenney-cube-pets/2.0/animal-penguin.glb",
+   "height": 1.0,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#c9ccd6"
+  },
+  "st-ho-bang-biet-hat-leu-nghe": {
+   "model": "packs/kenney-nature-kit/2.1/tent_smallOpen.glb",
+   "height": 2.2,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#d86a4a"
+  },
+  "st-ho-bang-biet-hat-phao": {
+   "model": "generated/props/wheel.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#f08030"
+  },
+  "st-ho-bang-biet-hat-sao-go": {
+   "model": "packs/kenney-survival-kit/2.0/tool-hoe.glb",
+   "height": 0.9,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#a07850"
+  },
+  "st-ho-bang-biet-hat-day-thung": {
+   "model": "generated/props/knot.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#c89858"
+  },
+  "st-ho-bang-biet-hat-mep-bang": {
+   "model": "packs/kenney-survival-kit/2.0/rock-flat.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#e8f0f8"
+  },
+  "st-ho-bang-biet-hat-den-long": {
+   "model": "generated/props/glowing-star.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#cfe6ff"
+  },
+  "st-ho-bang-biet-hat-ca-cao": {
+   "model": "packs/kenney-food-kit/2.0/mug.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#8b5a3c"
+  },
+  "st-ho-bang-biet-hat-chan-len": {
+   "model": "packs/kenney-survival-kit/2.0/bedroll.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c84848"
+  },
+  "st-ho-bang-biet-hat-so-ten-ca": {
+   "model": "generated/props/notebook.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#6a8fb0"
+  },
+  "st-ho-bang-biet-hat-lo-cau-sao": {
+   "model": "packs/kenney-nature-kit/2.1/stone_smallFlatA.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc",
+   "tint": "#a8c8e8"
+  },
+  "st-bac-thang-mot-tram-moc-20": {
+   "model": "packs/kenney-nature-kit/2.1/stone_tallA.glb",
+   "height": 1.8,
+   "kind": "object",
+   "label": "Đọc",
+   "tint": "#d8e4f0"
+  },
+  "st-bac-thang-mot-tram-moc-40": {
+   "model": "packs/kenney-nature-kit/2.1/stone_smallFlatA.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc",
+   "tint": "#c0d0e0"
+  },
+  "st-bac-thang-mot-tram-moc-80": {
+   "model": "packs/kenney-nature-kit/2.1/sign.glb",
+   "height": 1.4,
+   "kind": "object",
+   "label": "Đọc bảng",
+   "tint": "#e0e8f0"
+  },
+  "st-bac-thang-mot-tram-bang-bac": {
+   "model": "generated/props/placard.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng",
+   "tint": "#a8bcd0"
+  },
+  "st-bac-thang-mot-tram-tang-da": {
+   "model": "packs/kenney-nature-kit/2.1/rock_largeA.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#a0a8b8"
+  },
+  "st-bac-thang-mot-tram-chuong-to": {
+   "model": "generated/props/wind-chime.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#7fa8d0"
+  },
+  "st-bac-thang-mot-tram-chuong-vua": {
+   "model": "generated/props/wind-chime.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#a8cce8"
+  },
+  "st-bac-thang-mot-tram-chuong-nho": {
+   "model": "generated/props/wind-chime.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#dceef8"
+  },
+  "st-bac-thang-mot-tram-moc-treo": {
+   "model": "packs/kenney-nature-kit/2.1/log.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#8a7a68"
+  },
+  "st-bac-thang-mot-tram-xa-chuong": {
+   "model": "packs/kenney-survival-kit/2.0/resource-planks.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#9a8a70"
+  },
+  "st-bac-thang-mot-tram-bien-dem": {
+   "model": "packs/kenney-survival-kit/2.0/signpost-single.glb",
+   "height": 1.6,
+   "kind": "object",
+   "label": "Đọc bảng",
+   "tint": "#d0dce8"
+  },
+  "st-bac-thang-mot-tram-goi-do": {
+   "model": "generated/props/backpack.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#5878a8"
+  },
+  "st-bac-thang-mot-tram-o-cua-dong": {
+   "model": "generated/props/window.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#d8e8f8"
   }
  }
 }

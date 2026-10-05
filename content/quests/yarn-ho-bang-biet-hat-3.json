@@ -1,0 +1,376 @@
+{
+  "id": "yarn-ho-bang-biet-hat-3",
+  "region": "nui-tuyet",
+  "chapter": 4,
+  "title": "Chuyện của Gấu Bắc Cực Câu Cá, chương 3: Tảng băng trôi",
+  "status": "active",
+  "category": "story",
+  "summary": "Lông Tơ mắc kẹt trên một tảng băng trôi. Bác Gấu sợ băng mỏng nhất trên đời, nhưng lần này bác phải ra. {name} gom đồ cứu hộ, tìm quy luật của dòng băng và cùng bác nhảy qua từng tảng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, đội cứu hộ trên hồ băng",
+    "where": "Hang băng và trạm thám hiểm, bờ băng trôi, bãi đá cạnh lỗ câu",
+    "goal": "Đưa Lông Tơ từ tảng băng trôi về bờ an toàn",
+    "play": "Tìm đồ cứu hộ theo lời tả, tìm quy luật số trên các tảng băng, nhảy qua băng trôi, giúp bác Gấu vượt nỗi sợ",
+    "learn": "Đọc lời tả, tìm quy luật đếm thêm 3, quyết định bình tĩnh khi vội",
+    "reward": "70 XP, 18 Xu, Skill XP Đọc hiểu và Logic",
+    "next": "Sổ của trạm nói cứ bảy ngày lại có một vệt bạc lướt dưới băng"
+  },
+  "phases": {
+    "hook": "keu-cuu",
+    "explore": "do-cuu-ho",
+    "learn": "quy-luat-bang",
+    "challenge": "nhay-bang",
+    "decision": "buoc-cuoi",
+    "finale": "long-to-ve",
+    "reward": "tra-cong-3",
+    "next": "vet-bac"
+  },
+  "places": {
+    "gau-bac-cuc-cau-ca": "Cạnh hang băng",
+    "do-cuu-ho": "Trạm thám hiểm",
+    "st-ho-bang-biet-hat-mep-bang": "Bờ băng trôi",
+    "st-ho-bang-biet-hat-long-to": "Bãi đá ven hồ"
+  },
+  "steps": [
+    {
+      "id": "keu-cuu",
+      "title": "Có bạn kêu cứu!",
+      "goTo": "Chạy tới cạnh hang băng, bác Gấu đang gọi",
+      "kind": "dialogue",
+      "target": "gau-bac-cuc-cau-ca",
+      "lines": [
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "{name}! Lông Tơ đứng trên tảng băng trôi ngoài cửa xả kìa. Bác đã dặn rồi mà..."
+        },
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Chỗ đó toàn băng mỏng, đúng cái thứ bác sợ nhất đời. Nhưng mình không thể đứng nhìn được."
+        },
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Cháu chạy vào trạm lấy đồ cứu hộ, bác ra bờ trước."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Bác cứ hít thở sâu, cháu tới ngay!",
+          "reply": "Hít... thở... Ừ, bác ổn. Bác ổn mà."
+        },
+        {
+          "text": "Mình sẽ đưa Lông Tơ về!"
+        }
+      ],
+      "en": {
+        "title": "Someone is calling for help!",
+        "goTo": "Run round to the side of the ice cave, Uncle Bear is calling",
+        "lines": [
+          "{name}! Lông Tơ is standing on a floe out by the outflow. I told her not to...",
+          "That spot is all thin ice, the very thing I fear most. But we cannot just stand and watch.",
+          "Run into the station for the rescue gear. I will head to the shore."
+        ],
+        "choices": [
+          {
+            "text": "Take a deep breath, I'll be right there!",
+            "reply": "Breathe in... out... Yes, I'm fine. I'm fine."
+          },
+          {
+            "text": "We will bring Lông Tơ home!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-cuu-ho",
+      "title": "Đồ cứu hộ",
+      "goTo": "Vào trạm thám hiểm tìm đồ cứu hộ",
+      "kind": "find-object",
+      "prompt": "Trên tường trạm có tờ dặn: «Cứu người trên băng cần ba thứ». Tìm đủ ba thứ ấy:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "phao",
+          "name": "Phao cứu hộ",
+          "clue": "Tròn như chiếc bánh vòng khổng lồ, màu cam để ai ở xa cũng nhìn thấy.",
+          "target": "st-ho-bang-biet-hat-phao"
+        },
+        {
+          "id": "sao",
+          "name": "Cây sào gỗ",
+          "clue": "Dài hơn cả bác Gấu đứng thẳng, để chìa ra cho bạn nắm lấy mà mình vẫn đứng trên bờ.",
+          "target": "st-ho-bang-biet-hat-sao-go"
+        },
+        {
+          "id": "thung",
+          "name": "Dây thừng",
+          "clue": "Bện từ nhiều sợi to, cuộn vòng vòng, buộc vào phao là kéo được cả một chú gấu.",
+          "target": "st-ho-bang-biet-hat-day-thung"
+        }
+      ],
+      "en": {
+        "title": "Rescue gear",
+        "goTo": "Get the rescue gear from the explorers' station",
+        "prompt": "A note on the station wall says: \"Three things for a rescue on ice\". Find all three:",
+        "items": [
+          {
+            "name": "Life ring",
+            "clue": "Round like a giant doughnut, bright orange so everyone far away can see it."
+          },
+          {
+            "name": "Wooden pole",
+            "clue": "Longer than Uncle Bear standing tall, to hold out to a friend while you stay on the shore."
+          },
+          {
+            "name": "Rope",
+            "clue": "Twisted from thick strands and coiled round and round: tie it to the ring and it can pull a whole bear."
+          }
+        ]
+      }
+    },
+    {
+      "id": "quy-luat-bang",
+      "title": "Dòng băng có quy luật",
+      "goTo": "Chạy ra bờ băng trôi, nhìn các tảng băng đang trôi",
+      "kind": "challenge",
+      "target": "st-ho-bang-biet-hat-mep-bang",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "skill": "logic",
+      "prompt": "Các tảng băng trôi qua mép bờ, trên mỗi tảng có số do trạm sơn. Tảng tiếp theo mang số mấy? Nhảy đúng tảng đó là chắc nhất.",
+      "elements": [
+        {
+          "id": "e3",
+          "label": "3"
+        },
+        {
+          "id": "e6",
+          "label": "6"
+        },
+        {
+          "id": "e9",
+          "label": "9"
+        },
+        {
+          "id": "e12",
+          "label": "12"
+        },
+        {
+          "id": "eq",
+          "label": "?"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c13",
+          "text": "13"
+        },
+        {
+          "id": "c15",
+          "text": "15"
+        },
+        {
+          "id": "c14",
+          "text": "14"
+        }
+      ],
+      "answer": {
+        "choice": "c15"
+      },
+      "support": {
+        "guide": [
+          "Xem hai tảng liền nhau hơn kém nhau mấy.",
+          "Cứ thế cộng thêm cho tảng có dấu hỏi."
+        ],
+        "hint": "Từ 3 lên 6 là thêm 3.",
+        "answer": {
+          "text": "Tảng số 15",
+          "explanation": "3, 6, 9, 12: mỗi tảng hơn tảng trước 3, nên tảng tiếp theo là 12 + 3 = 15."
+        },
+        "en": {
+          "guide": [
+            "See how much each floe is bigger than the one before.",
+            "Keep adding the same for the floe with the question mark."
+          ],
+          "hint": "From 3 to 6 you add 3.",
+          "answer": {
+            "text": "Floe number 15",
+            "explanation": "3, 6, 9, 12: each floe is 3 more than the one before, so the next is 12 + 3 = 15."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười lăm! Bác Gấu nhắm đúng tảng ấy.",
+          "Thêm ba, thêm ba, thêm ba: quy luật lộ ra rồi.",
+          "Dòng băng chẳng giấu được {name} điều gì."
+        ],
+        "wrong": [
+          "Thử đếm thêm ba từ số 12 xem.",
+          "Mỗi tảng không thêm 1 đâu, nhìn lại 3 và 6 nhé.",
+          "Bác Gấu suýt nhảy hụt rồi, tính lại nào."
+        ],
+        "en": {
+          "right": [
+            "Fifteen! Uncle Bear sets his sights on that floe.",
+            "Plus three, plus three, plus three: the pattern is out.",
+            "The drifting ice can't hide a thing from {name}."
+          ],
+          "wrong": [
+            "Try counting on three from 12.",
+            "Each floe doesn't add 1, look again at 3 and 6.",
+            "Uncle Bear nearly missed his jump, let's work it out again."
+          ]
+        }
+      },
+      "en": {
+        "title": "The ice drifts in a pattern",
+        "goTo": "Run out to the drifting-ice shore and watch the floes go by",
+        "prompt": "Floes drift past the edge, each with a number painted by the station. What number is on the next floe? That one is the safest to jump on.",
+        "elements": [
+          "3",
+          "6",
+          "9",
+          "12",
+          "?"
+        ],
+        "choices": [
+          "13",
+          "15",
+          "14"
+        ]
+      }
+    },
+    {
+      "id": "nhay-bang",
+      "title": "Nhảy qua băng trôi",
+      "kind": "challenge",
+      "trigger": "auto",
+      "mechanic": "minigame",
+      "prompt": "Nhảy từ tảng này sang tảng kia tới chỗ Lông Tơ. Tảng nào nứt thì nhảy sang ngay nhé!",
+      "game": "melting-floes",
+      "goal": 8,
+      "en": {
+        "title": "Hopping across the floes",
+        "prompt": "Hop from floe to floe out to Lông Tơ. If one cracks, jump to the next straight away!"
+      }
+    },
+    {
+      "id": "buoc-cuoi",
+      "title": "Tảng băng cuối cùng",
+      "kind": "decision",
+      "target": "st-ho-bang-biet-hat-mep-bang",
+      "speaker": "Gấu Bắc Cực Câu Cá",
+      "prompt": "Lông Tơ đã ôm chặt cổ {name}. Nhưng bác Gấu đứng sững trước tảng băng cuối, hai chân run run. Cháu giúp bác thế nào?",
+      "choices": [
+        {
+          "id": "dem-ba",
+          "text": "Đếm cùng bác: một, hai, ba, bước!",
+          "consequence": "Một... hai... ba! Bác Gấu bước. Tảng băng kêu «rắc» một tiếng thật to, rồi đứng im. Bác bật cười: chỉ là băng hát thôi mà."
+        },
+        {
+          "id": "nhac-so",
+          "text": "Nhắc bác lời sổ: băng hát là băng đang dày lên",
+          "consequence": "Bác Gấu lẩm bẩm câu trong sổ như một câu thần chú, rồi bước một bước thật dài."
+        },
+        {
+          "id": "nam-tay",
+          "text": "Chìa cây sào cho bác nắm",
+          "consequence": "Bác nắm đầu sào, {name} giữ đầu kia. Hai bên cùng bước, chẳng ai bị bỏ lại phía sau."
+        }
+      ],
+      "en": {
+        "title": "One floe to go",
+        "prompt": "Lông Tơ is hugging {name}'s neck. But Uncle Bear freezes before the last floe, legs trembling. How do you help him?",
+        "choices": [
+          {
+            "text": "Count with him: one, two, three, step!",
+            "consequence": "One... two... three! Uncle Bear steps. The floe gives one big crack, then holds still. He laughs: it was only the ice singing."
+          },
+          {
+            "text": "Remind him of the log: singing ice is ice growing thicker",
+            "consequence": "Uncle Bear mutters the line from the log like a magic spell, then takes one long stride."
+          },
+          {
+            "text": "Hold out the pole for him to grab",
+            "consequence": "He grabs one end of the pole, {name} holds the other. You step together, and nobody gets left behind."
+          }
+        ]
+      }
+    },
+    {
+      "id": "long-to-ve",
+      "title": "Lông Tơ về bờ",
+      "goTo": "Đưa Lông Tơ về bãi đá ven hồ",
+      "kind": "dialogue",
+      "target": "st-ho-bang-biet-hat-long-to",
+      "lines": [
+        {
+          "speaker": "Cánh Cụt Con Lông Tơ",
+          "text": "Cháu xin lỗi bác... Cháu chỉ muốn nhặt một mẩu băng lấp lánh về tặng anh Cánh Cụt Trượt Băng thôi."
+        },
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Không sao, con về là được. Mà này {name}, bác vừa đứng trên băng mỏng đấy. Bác... bác làm được!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Bác dũng cảm nhất hồ băng!",
+          "reply": "Dũng cảm nhờ có người đếm một hai ba bên cạnh đấy."
+        }
+      ],
+      "en": {
+        "title": "Lông Tơ is home",
+        "goTo": "Bring Lông Tơ back to the lakeside rocks",
+        "lines": [
+          "I'm sorry, Uncle... I only wanted a sparkly piece of ice for my big cousin Cánh Cụt Trượt Băng.",
+          "It's all right, you're home and that's what matters. And look, {name}, I just stood on thin ice. I... I did it!"
+        ],
+        "choices": [
+          {
+            "text": "You're the bravest bear on the lake!",
+            "reply": "Brave thanks to someone counting one, two, three beside me."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tra-cong-3",
+      "title": "Huy hiệu cứu hộ",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cả đàn cánh cụt xếp hàng cúi chào {name} và bác Gấu. Lông Tơ tặng lại mẩu băng xanh lấp lánh cô bé suýt đổi bằng một chuyến trôi xa.",
+      "en": {
+        "title": "A rescuer's thanks",
+        "text": "The whole flock lines up and bows to {name} and Uncle Bear. Lông Tơ hands over the sparkly blue ice she almost paid for with a long drift."
+      }
+    },
+    {
+      "id": "vet-bac",
+      "title": "Vệt bạc dưới băng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối đó bác Gấu lật sổ trạm và reo khẽ: cứ bảy ngày, đúng đêm trăng non, lại có một vệt bạc lướt dưới băng. Đêm bảy ngày nữa là đêm nay!",
+      "en": {
+        "title": "A silver streak under the ice",
+        "text": "That evening Uncle Bear leafs through the station log and gasps softly: every seven days, on the night of the new moon, a silver streak glides under the ice. The seventh night is tonight!"
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "doc-hieu": 1,
+      "logic": 1
+    },
+    "items": {
+      "khoi-bang-xanh": 1
+    }
+  },
+  "en": {
+    "title": "Gấu Bắc Cực Câu Cá's story, chapter 3: The drifting floe",
+    "summary": "Lông Tơ is stuck on a drifting floe. Uncle Bear fears thin ice more than anything, but this time he has to go. {name} gathers rescue gear, finds the pattern in the drifting ice and hops across the floes with him."
+  }
+}

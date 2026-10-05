@@ -1,0 +1,454 @@
+{
+  "id": "yarn-ho-bang-biet-hat-2",
+  "region": "nui-tuyet",
+  "chapter": 4,
+  "title": "Chuyện của Gấu Bắc Cực Câu Cá, chương 2: Tiếng rắc rắc lúc nửa đêm",
+  "status": "active",
+  "category": "story",
+  "summary": "Cả đêm bác Gấu không ngủ vì hồ băng cứ kêu rắc rắc. {name} đi dò quanh cửa hang, đọc sổ của trạm, xếp mẫu băng và giải câu đố của Lông Tơ để tìm ra tiếng kêu ấy từ đâu tới.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thám tử nghe tiếng băng",
+    "where": "Hang băng và trạm thám hiểm, cửa hang băng, mặt hồ băng sau hang, bãi đá cạnh lỗ câu, lều nhỏ bên bờ hồ",
+    "goal": "Tìm ra vì sao hồ băng kêu rắc rắc vào ban đêm",
+    "play": "Dò ba dấu vết quanh cửa hang, đọc sổ ghi chép, xếp mẫu băng từ mỏng tới dày, giải câu đố số, chọn chỗ ngủ cho bác Gấu",
+    "learn": "Đọc hiểu một trang sổ, so sánh và sắp xếp số, phép trừ",
+    "reward": "65 XP, 16 Xu, Skill XP Đọc hiểu, So sánh số, Phép trừ",
+    "next": "Băng tan ở cửa hồ, một bạn nhỏ gặp nạn trên tảng băng trôi"
+  },
+  "phases": {
+    "hook": "bac-gau-mat-ngu",
+    "explore": "do-dau-vet",
+    "learn": "doc-so-tram",
+    "challenge": "xep-mau-bang",
+    "decision": "ngu-o-dau",
+    "finale": "nghe-bang-hat",
+    "reward": "tra-cong-2",
+    "next": "bang-troi"
+  },
+  "places": {
+    "gau-bac-cuc-cau-ca": "Hang băng",
+    "do-dau-vet": "Cửa hang băng",
+    "st-ho-bang-biet-hat-so-tram": "Trạm thám hiểm",
+    "st-ho-bang-biet-hat-gia-mau": "Hồ băng sau hang",
+    "st-ho-bang-biet-hat-long-to": "Bãi đá cạnh lỗ câu",
+    "st-ho-bang-biet-hat-leu-nghe": "Lều nhỏ bên bờ hồ"
+  },
+  "steps": [
+    {
+      "id": "bac-gau-mat-ngu",
+      "title": "Đôi mắt thâm quầng",
+      "goTo": "Về hang băng và trạm thám hiểm, bác Gấu đang ngáp dài",
+      "kind": "dialogue",
+      "target": "gau-bac-cuc-cau-ca",
+      "lines": [
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Cháu nhìn mắt bác này, thâm như gấu trúc. Cả đêm hồ băng kêu rắc... rắc... ùng... như có ai gõ cửa."
+        },
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Cháu có đôi tai thính. Đi dò quanh cửa hang xem tiếng ấy từ đâu ra giúp bác nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Thám tử {name} nhận vụ này!",
+          "reply": "Hay lắm. Bác pha ca cao chờ thám tử về báo cáo."
+        }
+      ],
+      "en": {
+        "title": "Panda eyes on a polar bear",
+        "goTo": "Back to the ice cave and explorers' station, where Uncle Bear is yawning",
+        "lines": [
+          "Look at my eyes, dark as a panda's. All night the lake went crack... crack... boom... like someone knocking.",
+          "You have sharp ears. Go and look around the cave mouth for where that sound comes from, would you?"
+        ],
+        "choices": [
+          {
+            "text": "Detective {name} takes the case!",
+            "reply": "Splendid. I will make cocoa while the detective reports back."
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-dau-vet",
+      "title": "Ba dấu vết",
+      "goTo": "Dò quanh cửa hang băng tìm ba dấu vết lạ",
+      "kind": "search",
+      "targets": [
+        "st-ho-bang-biet-hat-nhu-bang",
+        "st-ho-bang-biet-hat-vet-nut",
+        "st-ho-bang-biet-hat-dau-chan"
+      ],
+      "en": {
+        "title": "Three clues",
+        "goTo": "Search around the ice cave mouth for three odd clues"
+      }
+    },
+    {
+      "id": "doc-so-tram",
+      "title": "Sổ ghi chép của trạm",
+      "goTo": "Sang trạm thám hiểm đọc sổ ghi chép mùa đông",
+      "kind": "read",
+      "target": "st-ho-bang-biet-hat-so-tram",
+      "skill": "doc-hieu",
+      "text": "Ghi chép mùa đông:\nĐêm nào trời lạnh thêm, mặt hồ co lại và kêu lách tách, rắc rắc, có khi ùng ục như trống. Đó là băng đang dày lên.\nBăng mỏng nguy hiểm thì không kêu to: nó có màu xám và nước thấm lên mặt.\nNgười trực trạm: đừng sợ băng hát.",
+      "question": "Theo sổ, vì sao hồ kêu rắc rắc vào những đêm lạnh?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Vì băng sắp vỡ tung"
+        },
+        {
+          "id": "b",
+          "text": "Vì băng co lại và đang dày lên"
+        },
+        {
+          "id": "c",
+          "text": "Vì có ai gõ cửa hang"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Tìm câu có chữ «lạnh thêm».",
+          "Đọc tiếp câu ngay sau nó."
+        ],
+        "hint": "Sổ gọi tiếng kêu ấy là «băng hát».",
+        "answer": {
+          "text": "Băng co lại khi lạnh thêm, tức là đang dày lên",
+          "explanation": "Sổ viết: trời lạnh thêm thì mặt hồ co lại và kêu, đó là băng đang dày lên."
+        },
+        "en": {
+          "guide": [
+            "Find the sentence with the words \"gets colder\".",
+            "Then read the sentence right after it."
+          ],
+          "hint": "The log calls that sound \"singing ice\".",
+          "answer": {
+            "text": "The ice shrinks as it gets colder, which means it is thickening",
+            "explanation": "The log says: when it gets colder the lake shrinks and crackles, and that is the ice growing thicker."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hóa ra băng kêu là băng đang khỏe lên!",
+          "Đọc chuẩn như người trực trạm lâu năm.",
+          "Bác Gấu mà nghe điều này chắc ngủ ngon cả tuần."
+        ],
+        "wrong": [
+          "Sổ bảo băng mỏng thì lại không kêu to cơ.",
+          "Chẳng ai gõ cửa đâu, đọc lại dòng đầu nhé.",
+          "Tìm chữ «dày lên» trong sổ xem, {name}."
+        ],
+        "en": {
+          "right": [
+            "So a crackling lake is a lake getting stronger!",
+            "You read that like a station keeper of many winters.",
+            "Uncle Bear will sleep soundly all week once he hears this."
+          ],
+          "wrong": [
+            "The log says thin ice is the quiet kind.",
+            "Nobody is knocking. Read the first lines again.",
+            "Look for the words \"growing thicker\" in the log, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "The station log",
+        "goTo": "Go over to the explorers' station and read the winter log",
+        "text": "Winter notes:\nOn nights that get colder, the lake shrinks and goes snap, crack, sometimes boom like a drum. That is the ice growing thicker.\nDangerous thin ice does not sing loudly: it looks grey and water seeps onto it.\nTo whoever is on duty: do not fear the singing ice.",
+        "question": "According to the log, why does the lake crackle on cold nights?",
+        "choices": [
+          "Because the ice is about to burst",
+          "Because the ice is shrinking and growing thicker",
+          "Because someone is knocking at the cave"
+        ]
+      }
+    },
+    {
+      "id": "xep-mau-bang",
+      "title": "Xếp mẫu băng",
+      "goTo": "Ra mặt hồ băng sau hang, tới giá phơi mẫu băng",
+      "kind": "challenge",
+      "target": "st-ho-bang-biet-hat-gia-mau",
+      "mechanic": "sort",
+      "skill": "so-sanh-so",
+      "prompt": "Mỗi sáng trạm khoan một mẫu băng. Xếp các mẫu từ mỏng nhất tới dày nhất để thấy băng lớn lên thế nào.",
+      "items": [
+        {
+          "id": "m12",
+          "label": "Mẫu băng 12 phân"
+        },
+        {
+          "id": "m7",
+          "label": "Mẫu băng 7 phân"
+        },
+        {
+          "id": "m14",
+          "label": "Mẫu băng 14 phân"
+        },
+        {
+          "id": "m9",
+          "label": "Mẫu băng 9 phân"
+        }
+      ],
+      "answer": {
+        "order": [
+          "m7",
+          "m9",
+          "m12",
+          "m14"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Đọc số phân ghi trên từng mẫu.",
+          "Mẫu có số nhỏ nhất đứng đầu."
+        ],
+        "hint": "Mẫu mỏng nhất chỉ 7 phân.",
+        "answer": {
+          "text": "7 phân, 9 phân, 12 phân, 14 phân",
+          "explanation": "7 < 9 < 12 < 14: mỗi đêm lạnh băng lại dày thêm một chút."
+        },
+        "en": {
+          "guide": [
+            "Read the centimetres written on each sample.",
+            "The sample with the smallest number goes first."
+          ],
+          "hint": "The thinnest sample is only 7 cm.",
+          "answer": {
+            "text": "7 cm, 9 cm, 12 cm, 14 cm",
+            "explanation": "7 < 9 < 12 < 14: every cold night the ice gets a little thicker."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Xếp đẹp như bậc thang băng!",
+          "Đúng rồi, đêm nào băng cũng lớn thêm.",
+          "Bốn mẫu đứng ngay hàng, {name} giỏi ghê."
+        ],
+        "wrong": [
+          "Có mẫu dày đứng trước mẫu mỏng rồi kìa.",
+          "Tìm mẫu có số nhỏ nhất đặt lên đầu trước nhé.",
+          "So từng cặp cạnh nhau xem số nào lớn hơn."
+        ],
+        "en": {
+          "right": [
+            "Neat as a staircase of ice!",
+            "Right, the ice grows a little every night.",
+            "Four samples in perfect order. Nicely done, {name}."
+          ],
+          "wrong": [
+            "A thick sample is standing before a thinner one.",
+            "Find the smallest number and put it first.",
+            "Compare each pair of neighbours to see which is bigger."
+          ]
+        }
+      },
+      "en": {
+        "title": "Lining up ice samples",
+        "goTo": "Out to the frozen lake behind the cave, to the ice sample rack",
+        "prompt": "Every morning the station drills an ice sample. Line them up from thinnest to thickest to see how the ice is growing.",
+        "items": [
+          "12 cm sample",
+          "7 cm sample",
+          "14 cm sample",
+          "9 cm sample"
+        ]
+      }
+    },
+    {
+      "id": "do-cua-long-to",
+      "title": "Câu đố của Lông Tơ",
+      "goTo": "Tới bãi đá cạnh lỗ câu, Lông Tơ có câu đố",
+      "kind": "riddle",
+      "target": "st-ho-bang-biet-hat-long-to",
+      "skill": "phep-tru",
+      "question": "Lông Tơ đếm giúp bác Gấu: đêm qua hồ kêu 15 tiếng rắc, đêm nay kêu ít hơn 6 tiếng. Đêm nay hồ kêu mấy tiếng?",
+      "answer": {
+        "value": 9
+      },
+      "support": {
+        "guide": [
+          "Ít hơn thì làm phép trừ.",
+          "Lấy 15 bớt đi 6."
+        ],
+        "hint": "15 bớt 5 còn 10, bớt thêm 1 nữa.",
+        "answer": {
+          "text": "9 tiếng",
+          "explanation": "15 − 6 = 9, nên đêm nay hồ kêu 9 tiếng rắc."
+        },
+        "en": {
+          "guide": [
+            "\"Fewer\" means take away.",
+            "Take 6 away from 15."
+          ],
+          "hint": "15 take away 5 is 10, then take away 1 more.",
+          "answer": {
+            "text": "9 cracks",
+            "explanation": "15 − 6 = 9, so the lake cracked 9 times tonight."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chín tiếng! Lông Tơ vẫy cánh rối rít.",
+          "Trừ nhanh như trượt trên băng vậy.",
+          "Lông Tơ bảo: cậu đếm còn giỏi hơn chú Người Tuyết."
+        ],
+        "wrong": [
+          "Ít hơn thì số phải nhỏ đi chứ, {name}.",
+          "Lông Tơ lắc đầu: thử lấy 15 bớt 6 xem.",
+          "Đếm lùi sáu bước từ 15 nhé."
+        ],
+        "en": {
+          "right": [
+            "Nine! Lông Tơ flaps both little wings.",
+            "Subtracting as fast as sliding on ice.",
+            "Lông Tơ says you count even better than the snowman up the mountain."
+          ],
+          "wrong": [
+            "Fewer means the number gets smaller, {name}.",
+            "Lông Tơ shakes her head: try 15 take away 6.",
+            "Count six steps back from 15."
+          ]
+        }
+      },
+      "en": {
+        "title": "Lông Tơ's puzzle",
+        "goTo": "Go to the rocks by the fishing hole, Lông Tơ has a puzzle",
+        "question": "Lông Tơ counted for Uncle Bear: last night the lake cracked 15 times, tonight 6 times fewer. How many cracks tonight?"
+      }
+    },
+    {
+      "id": "ngu-o-dau",
+      "title": "Đêm nay bác ngủ ở đâu?",
+      "goTo": "Về hang băng và trạm thám hiểm kể cho bác Gấu nghe",
+      "kind": "decision",
+      "target": "gau-bac-cuc-cau-ca",
+      "speaker": "Gấu Bắc Cực Câu Cá",
+      "prompt": "Nghe {name} kể xong, bác Gấu gãi gãi tai. Đêm nay bác nên ngủ ở đâu?",
+      "choices": [
+        {
+          "id": "leu",
+          "text": "Dựng lều bên bờ hồ, nghe băng hát",
+          "consequence": "Bác Gấu ôm chăn ra bờ hồ. «Hát đi, hát đi, bác không sợ nữa đâu!»"
+        },
+        {
+          "id": "hang",
+          "text": "Ngủ trong hang như mọi khi, nhét bông vào tai",
+          "consequence": "Bác nhét bông vào tai, nhưng đêm ấy lại tò mò rút ra để nghe. Bác ra lều ngồi nghe thử một lúc."
+        },
+        {
+          "id": "tram",
+          "text": "Ngủ ở trạm thám hiểm, cạnh cuốn sổ",
+          "consequence": "Bác đọc lại sổ ba lần rồi gật đầu. Trước khi ngủ, bác vẫn ra lều bên bờ hồ chào băng một câu."
+        }
+      ],
+      "en": {
+        "title": "Where will Uncle Bear sleep tonight?",
+        "goTo": "Back to the ice cave and explorers' station to tell Uncle Bear",
+        "prompt": "After hearing {name}'s report, Uncle Bear scratches his ear. Where should he sleep tonight?",
+        "choices": [
+          {
+            "text": "Pitch a tent by the lake and listen to the ice sing",
+            "consequence": "Uncle Bear carries his blanket to the shore. \"Sing away, I am not scared any more!\""
+          },
+          {
+            "text": "Sleep in the cave as usual, with cotton in his ears",
+            "consequence": "He stuffs his ears with cotton, then gets curious and pulls it out. He goes to sit in the tent and listen for a while."
+          },
+          {
+            "text": "Sleep at the station, next to the log book",
+            "consequence": "He reads the log three times and nods. Before bed he still pops out to the tent by the lake to say goodnight to the ice."
+          }
+        ]
+      }
+    },
+    {
+      "id": "nghe-bang-hat",
+      "title": "Băng hát ru",
+      "goTo": "Ra lều nhỏ bên bờ hồ nghe băng hát cùng bác",
+      "kind": "dialogue",
+      "target": "st-ho-bang-biet-hat-leu-nghe",
+      "lines": [
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Rắc... ùng... Nghe kỹ thì giống tiếng trống trầm của đàn cá voi thật đấy {name} ạ."
+        },
+        {
+          "speaker": "Cánh Cụt Con Lông Tơ",
+          "text": "Bác ơi, mai cho cháu ra mép hồ phía cửa xả chơi nhé? Băng ở đó lấp lánh lắm!"
+        },
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Chỗ đó băng mỏng, đừng ra một mình nhé con. Thôi ngủ đi, cả hồ đang hát ru mình đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Chúc cả nhà ngủ ngon!"
+        }
+      ],
+      "en": {
+        "title": "The ice lullaby",
+        "goTo": "Go to the little tent by the lake and listen to the ice with him",
+        "lines": [
+          "Crack... boom... Listen closely, {name}, it sounds like the deep drums of a whale band.",
+          "Uncle, can I play at the edge where the lake flows out tomorrow? The ice there sparkles so much!",
+          "The ice is thin there, never go alone, little one. Now sleep, the whole lake is singing us a lullaby."
+        ],
+        "choices": [
+          {
+            "text": "Goodnight, everyone!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tra-cong-2",
+      "title": "Giấc ngủ ngon",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Lần đầu sau nhiều mùa đông, bác Gấu ngáy khò khò giữa tiếng băng hát. Sáng ra bác tặng {name} một chiếc chuông tuyết bạc.",
+      "en": {
+        "title": "A good night's sleep",
+        "text": "For the first time in many winters, Uncle Bear snores happily through the singing ice. In the morning he gives {name} a silver snow bell."
+      }
+    },
+    {
+      "id": "bang-troi",
+      "title": "Mép hồ phía cửa xả",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Trưa hôm sau, có tiếng kêu cứu từ phía cửa xả: một chấm nhỏ xám xám đang đứng trên tảng băng trôi. Hình như là Lông Tơ...",
+      "en": {
+        "title": "The edge where the lake flows out",
+        "text": "The next noon, a cry for help comes from the outflow: a small grey dot is standing on a drifting floe. It looks like Lông Tơ..."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "doc-hieu": 1,
+      "so-sanh-so": 1,
+      "phep-tru": 1
+    },
+    "items": {
+      "chuong-tuyet-bac": 1
+    }
+  },
+  "en": {
+    "title": "Gấu Bắc Cực Câu Cá's story, chapter 2: The midnight crackle",
+    "summary": "Uncle Bear could not sleep: the frozen lake kept crackling all night. {name} searches the cave mouth, reads the station log, lines up ice samples and solves Lông Tơ's puzzle to find where the noise comes from."
+  }
+}

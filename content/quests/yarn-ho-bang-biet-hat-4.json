@@ -1,0 +1,309 @@
+{
+  "id": "yarn-ho-bang-biet-hat-4",
+  "region": "nui-tuyet",
+  "chapter": 4,
+  "title": "Chuyện của Gấu Bắc Cực Câu Cá, chương 4: Cá Bạc Vây Sao",
+  "status": "active",
+  "category": "story",
+  "summary": "Đêm trăng non, bác Gấu ra giữa hồ băng câu cá lần đầu sau nhiều năm. {name} chuẩn bị đồ đi đêm, đọc cuốn sổ bí mật của bác, câu cá dưới trời sao và giúp bác quyết định số phận của con cá bạc huyền thoại.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, bạn câu đêm của bác Gấu",
+    "where": "Hang băng và trạm thám hiểm, mỏm tuyết ngắm sao, cửa hang băng, mặt hồ băng sau hang",
+    "goal": "Gặp Cá Bạc Vây Sao giữa hồ băng trong đêm trăng non",
+    "play": "Tìm đồ đi đêm, đọc sổ tên cá, câu cá qua lỗ băng, chọn giữ hay thả con cá bạc",
+    "learn": "Đọc hiểu, đếm cách đều 7 ngày",
+    "reward": "80 XP, 20 Xu, Skill XP Đọc hiểu, Phép cộng",
+    "next": "Bác Gấu viết thư cho bạn xa và dạy đàn cánh cụt nghe băng hát"
+  },
+  "phases": {
+    "hook": "dem-trang-non",
+    "explore": "do-di-dem",
+    "learn": "so-ten-ca",
+    "challenge": "cau-dem",
+    "decision": "giu-hay-tha",
+    "finale": "dat-ten-ca",
+    "reward": "tra-cong-4",
+    "next": "thu-gui-bien"
+  },
+  "places": {
+    "gau-bac-cuc-cau-ca": "Trước hang băng",
+    "do-di-dem": "Mỏm tuyết ngắm sao",
+    "st-ho-bang-biet-hat-so-ten-ca": "Cửa hang băng",
+    "st-ho-bang-biet-hat-lo-cau-sao": "Giữa hồ băng"
+  },
+  "steps": [
+    {
+      "id": "dem-trang-non",
+      "title": "Đêm trăng non",
+      "goTo": "Tới trước hang băng, bác Gấu đã chờ sẵn",
+      "kind": "dialogue",
+      "target": "gau-bac-cuc-cau-ca",
+      "lines": [
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Tối nay bác ra giữa hồ câu cá, {name} ạ. Giữa hồ đấy, không phải mép bờ đâu!"
+        },
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Có một con cá bạc, vây lấp lánh như sao. Bác đã thấy bóng nó mấy mùa rồi mà chưa dám ra."
+        },
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Đêm trên hồ lạnh lắm. Cháu lên mỏm tuyết ngắm sao lấy đồ đi đêm giúp bác nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đêm nay mình câu cá với sao!",
+          "reply": "Câu cá với sao, nghe như tên một bài hát ấy nhỉ."
+        }
+      ],
+      "en": {
+        "title": "The new-moon night",
+        "goTo": "Go to the front of the ice cave, Uncle Bear is waiting",
+        "lines": [
+          "Tonight I am fishing in the middle of the lake, {name}. The middle, not the edge!",
+          "There is a silver fish with fins that twinkle like stars. I have seen its shadow for many winters but never dared go out.",
+          "Nights on the lake are bitter. Go up to the stargazing snow ledge and fetch our night things, will you?"
+        ],
+        "choices": [
+          {
+            "text": "Tonight we fish with the stars!",
+            "reply": "Fishing with the stars... sounds like the name of a song."
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-di-dem",
+      "title": "Đồ đi đêm",
+      "goTo": "Lên mỏm tuyết ngắm sao gom đồ đi đêm",
+      "kind": "search",
+      "targets": [
+        "st-ho-bang-biet-hat-den-long",
+        "st-ho-bang-biet-hat-ca-cao",
+        "st-ho-bang-biet-hat-chan-len"
+      ],
+      "en": {
+        "title": "Night things",
+        "goTo": "Climb to the stargazing snow ledge and gather the night things"
+      }
+    },
+    {
+      "id": "so-ten-ca",
+      "title": "Cuốn sổ tên cá",
+      "goTo": "Ghé cửa hang băng, cuốn sổ của bác Gấu rơi ở đó",
+      "kind": "read",
+      "target": "st-ho-bang-biet-hat-so-ten-ca",
+      "skill": "phep-cong",
+      "text": "Sổ tên cá của Gấu Bắc Cực (đừng ai đọc!):\nNgày 3: cá Mập Mạp, to bằng cái gối. Đã thả.\nNgày 10: cá Râu Dài, hay cau mày. Đã thả.\nNgày 17: cá Đuôi Cờ, bơi như múa. Đã thả.\nNgày 24: một vệt bạc lấp lánh. Chưa kịp đặt tên.",
+      "question": "Bác Gấu gặp cá to cứ cách nhau mấy ngày một lần?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "3 ngày"
+        },
+        {
+          "id": "b",
+          "text": "7 ngày"
+        },
+        {
+          "id": "c",
+          "text": "10 ngày"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Đọc các ngày: 3, 10, 17, 24.",
+          "Từ ngày 3 tới ngày 10 là thêm mấy?"
+        ],
+        "hint": "3 + 7 = 10.",
+        "answer": {
+          "text": "7 ngày",
+          "explanation": "3 + 7 = 10, 10 + 7 = 17, 17 + 7 = 24: cứ bảy ngày bác lại gặp một con cá to."
+        },
+        "en": {
+          "guide": [
+            "Read the days: 3, 10, 17, 24.",
+            "From day 3 to day 10, how many days are added?"
+          ],
+          "hint": "3 + 7 = 10.",
+          "answer": {
+            "text": "7 days",
+            "explanation": "3 + 7 = 10, 10 + 7 = 17, 17 + 7 = 24: every seven days he meets a big fish."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảy ngày một lần, đúng như sổ trạm nói!",
+          "{name} đọc ra cả bí mật của bác rồi: con nào bác cũng thả.",
+          "Cộng bảy, cộng bảy, chuẩn từng ngày."
+        ],
+        "wrong": [
+          "Từ ngày 3 tới ngày 10 đâu chỉ có ba ngày.",
+          "Lấy 10 trừ 3 xem được mấy nhé.",
+          "Đếm thử từ 17 tới 24 bằng ngón tay xem."
+        ],
+        "en": {
+          "right": [
+            "Once every seven days, just like the station log says!",
+            "{name} has read his secret too: he lets every one go.",
+            "Plus seven, plus seven, right to the day."
+          ],
+          "wrong": [
+            "Day 3 to day 10 is more than three days.",
+            "Work out 10 take away 3.",
+            "Count from 17 to 24 on your fingers."
+          ]
+        }
+      },
+      "en": {
+        "title": "The book of fish names",
+        "goTo": "Stop at the ice cave mouth, where Uncle Bear dropped his notebook",
+        "text": "Polar Bear's Book of Fish Names (nobody read this!):\nDay 3: Chubby, big as a pillow. Let go.\nDay 10: Longwhiskers, always frowning. Let go.\nDay 17: Flagtail, swims like a dancer. Let go.\nDay 24: a twinkling silver streak. No name yet.",
+        "question": "How many days apart does Uncle Bear meet each big fish?",
+        "choices": [
+          "3 days",
+          "7 days",
+          "10 days"
+        ]
+      }
+    },
+    {
+      "id": "cau-dem",
+      "title": "Câu cá dưới trời sao",
+      "kind": "challenge",
+      "trigger": "auto",
+      "mechanic": "minigame",
+      "prompt": "Bóng cá lượn dưới lớp băng. Thả câu trước một nhịp, câu đủ mười con để vệt bạc tò mò bơi tới!",
+      "game": "ice-fishing",
+      "goal": 10,
+      "en": {
+        "title": "Fishing under the stars",
+        "prompt": "Fish shadows glide under the ice. Drop the line a beat early and land ten fish so the silver streak gets curious!"
+      }
+    },
+    {
+      "id": "giu-hay-tha",
+      "title": "Cá Bạc Vây Sao",
+      "goTo": "Ra giữa hồ băng, ngồi bên lỗ câu dưới trời sao",
+      "kind": "decision",
+      "target": "st-ho-bang-biet-hat-lo-cau-sao",
+      "speaker": "Gấu Bắc Cực Câu Cá",
+      "prompt": "Dây câu rung nhẹ. Con cá bạc ngoi lên miệng lỗ, vây sáng như rắc sao. Bác Gấu nhìn {name}: «Mình làm gì đây?»",
+      "choices": [
+        {
+          "id": "tha",
+          "text": "Ngắm thật kỹ rồi thả về",
+          "consequence": "Con cá quẫy đuôi một vòng như cảm ơn rồi lặn mất. Bác Gấu khẽ cười: «Đúng như mọi lần.»"
+        },
+        {
+          "id": "ve",
+          "text": "Vẽ nó vào sổ rồi thả",
+          "consequence": "{name} vẽ nhanh chiếc vây sao vào sổ. Bác Gấu bảo đó là trang đẹp nhất cuốn sổ."
+        },
+        {
+          "id": "giu",
+          "text": "Giữ lại làm kỷ niệm",
+          "consequence": "Bác Gấu ngập ngừng: «Cá này sống dưới băng sướng hơn trong xô nhà bác.» Cả hai cùng thả nó về."
+        }
+      ],
+      "en": {
+        "title": "The star-finned silver fish",
+        "goTo": "Walk out to the middle of the frozen lake and sit by the starlit hole",
+        "prompt": "The line trembles. The silver fish rises to the hole, fins glittering like scattered stars. Uncle Bear looks at {name}: \"What do we do?\"",
+        "choices": [
+          {
+            "text": "Have a good look, then let it go",
+            "consequence": "The fish flicks its tail in a circle, like a thank-you, and dives. Uncle Bear smiles: \"Just like always.\""
+          },
+          {
+            "text": "Draw it in the notebook, then let it go",
+            "consequence": "{name} quickly sketches the star fin. Uncle Bear says it is the finest page in the book."
+          },
+          {
+            "text": "Keep it as a souvenir",
+            "consequence": "Uncle Bear hesitates: \"This fish is happier under the ice than in my bucket.\" Together you let it go."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dat-ten-ca",
+      "title": "Đặt tên cho cá",
+      "kind": "dialogue",
+      "target": "st-ho-bang-biet-hat-lo-cau-sao",
+      "lines": [
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Bác có một bí mật: bác chưa giữ con cá to nào bao giờ. Bác đặt tên cho chúng rồi thả, sổ tên cá dày ba cuốn rồi."
+        },
+        {
+          "speaker": "Gấu Bắc Cực Câu Cá",
+          "text": "Con này, mình gọi nó là «Sao Bạc» nhé? Và cháu nghe kìa, băng đang hát. Bác ngồi giữa hồ mà chẳng run tí nào."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Sao Bạc! Tên đẹp quá bác ơi.",
+          "reply": "Mai bác viết thư kể cho Cua Lướt Sóng ngoài biển xa. Cậu ấy sẽ ghen tị lắm đây."
+        }
+      ],
+      "en": {
+        "title": "Naming the fish",
+        "lines": [
+          "Here is my secret: I have never kept a single big fish. I name them and let them go. The name book is three volumes thick now.",
+          "Shall we call this one \"Silver Star\"? And listen, the ice is singing. Here I am in the middle of the lake, not shaking one bit."
+        ],
+        "choices": [
+          {
+            "text": "Silver Star! What a lovely name.",
+            "reply": "Tomorrow I'll write to Cua Lướt Sóng by the far-off sea. He'll be green with envy."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tra-cong-4",
+      "title": "Bạn câu đêm",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác Gấu ghi vào sổ: «Ngày 31: Sao Bạc. Đã thả. Người đặt tên: bác và {name}.» Rồi bác tặng {name} đôi găng tay tuyết ấm nhất của mình.",
+      "en": {
+        "title": "Night-fishing friends",
+        "text": "Uncle Bear writes: \"Day 31: Silver Star. Let go. Named by me and {name}.\" Then he gives {name} his warmest pair of snow gloves."
+      }
+    },
+    {
+      "id": "thu-gui-bien",
+      "title": "Thư gửi ra biển",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Giờ bác Gấu dạy đàn cánh cụt con ngồi nghe băng hát mỗi tối. Bác còn hẹn một ngày sẽ đi xuống tận đảo xa thăm bạn Cua, và rủ {name} đi cùng.",
+      "en": {
+        "title": "A letter to the sea",
+        "text": "Now every evening Uncle Bear teaches the penguin chicks to sit and listen to the ice sing. He has promised to travel all the way to the faraway island one day to visit his friend Cua, and wants {name} to come along."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 20,
+    "skillXp": {
+      "doc-hieu": 1,
+      "phep-cong": 1
+    },
+    "items": {
+      "gang-tay-tuyet": 1
+    }
+  },
+  "en": {
+    "title": "Gấu Bắc Cực Câu Cá's story, chapter 4: The star-finned silver fish",
+    "summary": "On the new-moon night, Uncle Bear fishes in the middle of the lake for the first time in years. {name} packs for the night, reads his secret notebook, fishes under the stars and helps him decide what becomes of the legendary silver fish."
+  }
+}
