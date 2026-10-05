@@ -281,6 +281,27 @@ export const mail = pgTable(
 );
 
 
+/**
+ * A player's friendship with a character of the maps (content/npcs): the points her chats and gifts earned and the
+ * day (Vietnam time) of the last of each, since one chat and one gift a day count. Chapter points are read from
+ * quest_progress (the story chapters she finished), never stored twice. Counters only; gone with the profile.
+ */
+export const npcFriendships = pgTable(
+  'npc_friendships',
+  {
+    childId: childRef(),
+    npcId: text('npc_id').notNull(),
+    talkPoints: integer('talk_points').notNull().default(0),
+    giftPoints: integer('gift_points').notNull().default(0),
+    lastTalkOn: date('last_talk_on'),
+    lastGiftOn: date('last_gift_on'),
+  },
+  (t) => [
+    primaryKey({ columns: [t.childId, t.npcId] }),
+    check('npc_friendships_points_not_negative', sql`${t.talkPoints} >= 0 and ${t.giftPoints} >= 0`),
+  ],
+);
+
 /** A player another player does not want to meet online: neither sees the other in any room, nor can invite her. */
 export const playerBlocks = pgTable(
   'player_blocks',

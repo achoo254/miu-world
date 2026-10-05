@@ -4,7 +4,7 @@
 //   character or the thing a step happens at; a search sends the child to several places at once);
 // - never hold the child at one place for more than MAX_STEPS_IN_A_ROW steps in a row;
 // and every character (an NPC look) plays in at most MAX_QUESTS_PER_CHARACTER quests, in any role, except
-// one guide per map, and lives on one map only (as a target or a speaker). Things (boards, boxes, trees)
+// one guide per map and a story's teller in its own chapters, and lives on one map only (as a target or a speaker). Things (boards, boxes, trees)
 // are not characters and are not capped. Minigame side quests are played on the spot where their character
 // stands: they follow the one-map rule but neither the moving rules nor the cap.
 // content:check reports the same issues; this script also prints where each quest stands.
@@ -82,6 +82,8 @@ export function questSpread(quests: Iterable<QuestDefinition>, targetsRaw: unkno
   for (const quest of all) {
     if (!('steps' in quest) || quest.status !== 'active' || HAND_BUILT.has(quest.id) || quest.category === 'side') continue;
     const named = 'places' in quest ? (quest.places ?? {}) : {};
+    const opening = quest.steps[0];
+    const storyteller = opening && 'target' in opening ? opening.target : undefined;
     const placeOf = (step: Step, id: string): string => named[id] ?? named[step.id] ?? characterOf(id);
     const visited = new Set<string>();
     let run = 0;
@@ -94,7 +96,9 @@ export function questSpread(quests: Iterable<QuestDefinition>, targetsRaw: unkno
         visited.add(placeOf(step, id));
         if (isCharacter(id)) {
           const character = characterOf(id);
-          if (guides[quest.region] !== character) castOf.set(character, (castOf.get(character) ?? new Set()).add(quest.id));
+          // A story's teller comes back in each of its chapters: its own story is not a role in someone else's.
+          const teller = quest.category === 'story' && character === characterOf(storyteller ?? '');
+          if (guides[quest.region] !== character && !teller) castOf.set(character, (castOf.get(character) ?? new Set()).add(quest.id));
         }
       }
       // A search walks the child round several places: it breaks a run like moving on would.

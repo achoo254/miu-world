@@ -36,6 +36,7 @@ async function playedFamily() {
   await app.db.insert(t.homeObjects).values({ childId, states: { 'lamp-toggle@lamp#0': true } });
   await app.db.insert(t.shopInventory).values({ childId, itemId: 'them-mot-tim', qty: 2 });
   await app.db.insert(t.mail).values({ id: randomUUID(), childId, templateId: 'welcome-gift', category: 'system' });
+  await app.db.insert(t.npcFriendships).values({ childId, npcId: 'hoa-mi-rung', talkPoints: 2, giftPoints: 3, lastTalkOn: '2026-10-05' });
   const me = (await family.agent.get('/api/auth/me').expect(200)).body as { parent: { id: string } };
   return { ...family, parentId: me.parent.id };
 }
@@ -121,6 +122,7 @@ describe('account export', () => {
     expect(child?.blocks).toEqual([{ displayName: 'Cáo Cam', since: expect.any(String) }]);
     expect(child?.reports).toEqual([{ displayName: 'Cáo Cam', reason: 'name', map: 'trung-tam', createdAt: expect.any(String) }]);
     expect(child?.playTime).toEqual([{ weekStart: '2026-09-28', seconds: 900, updatedAt: expect.any(String) }]);
+    expect(child?.npcFriendships).toEqual([{ npcId: 'hoa-mi-rung', talkPoints: 2, giftPoints: 3, lastTalkOn: '2026-10-05', lastGiftOn: null }]);
     expect(JSON.stringify(res.body)).not.toContain(other.childId);
     expect(JSON.stringify(res.body)).not.toContain(other.parent.email);
   });

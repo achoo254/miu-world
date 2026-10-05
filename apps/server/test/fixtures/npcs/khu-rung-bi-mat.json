@@ -1,0 +1,304 @@
+{
+  "version": 1,
+  "region": "khu-rung-bi-mat",
+  "climate": "mild",
+  "npcs": [
+    {
+      "id": "hoa-mi-rung",
+      "name": "Họa Mi Rừng Xanh",
+      "role": {
+        "vi": "Vai của Họa Mi Rừng Xanh",
+        "en": "Role of Họa Mi"
+      },
+      "personality": {
+        "vi": "Vui tính",
+        "en": "Cheerful"
+      },
+      "voice": {
+        "vi": "Nói nhanh",
+        "en": "Speaks fast"
+      },
+      "fear": {
+        "vi": "Sợ sấm",
+        "en": "Afraid of thunder"
+      },
+      "dream": {
+        "vi": "Mơ bay xa",
+        "en": "Dreams of flying far"
+      },
+      "secret": {
+        "vi": "Giấu một hạt dẻ",
+        "en": "Hides a chestnut"
+      },
+      "habit": {
+        "vi": "Dậy sớm",
+        "en": "Wakes early"
+      },
+      "likes": [
+        "hat-de-rung",
+        "la-phong-do"
+      ],
+      "lines": [
+        {
+          "vi": "Họa Mi Rừng Xanh chào {name} buổi sáng nay nhé",
+          "en": "Họa Mi says good morning, {name}",
+          "when": "morning"
+        },
+        {
+          "vi": "Họa Mi Rừng Xanh chào {name} buổi trưa nay nhé",
+          "en": "Họa Mi says good afternoon, {name}",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Họa Mi Rừng Xanh chào {name} buổi chiều tối nay nhé",
+          "en": "Họa Mi says good evening, {name}",
+          "when": "evening"
+        },
+        {
+          "vi": "Họa Mi Rừng Xanh chào {name} buổi đêm nay nhé",
+          "en": "Họa Mi says good night, {name}",
+          "when": "night"
+        },
+        {
+          "vi": "Họa Mi Rừng Xanh thích nắng hôm nay lắm",
+          "en": "Họa Mi loves today's sunshine",
+          "weather": "fine"
+        },
+        {
+          "vi": "Họa Mi Rừng Xanh trú mưa dưới tán lá",
+          "en": "Họa Mi hides from the rain under the leaves",
+          "weather": "rain"
+        },
+        {
+          "vi": "Họa Mi Rừng Xanh kể {name} nghe chuyện riêng số 2",
+          "en": "Họa Mi tells {name} private story number 2",
+          "hearts": 2
+        },
+        {
+          "vi": "Họa Mi Rừng Xanh kể {name} nghe chuyện riêng số 3",
+          "en": "Họa Mi tells {name} private story number 3",
+          "hearts": 3
+        },
+        {
+          "vi": "Họa Mi Rừng Xanh kể {name} nghe chuyện riêng số 4",
+          "en": "Họa Mi tells {name} private story number 4",
+          "hearts": 4
+        },
+        {
+          "vi": "Họa Mi Rừng Xanh nhớ người bạn ở xa lắm",
+          "en": "Họa Mi misses a faraway friend",
+          "about": "cun-lua"
+        },
+        {
+          "vi": "Họa Mi Rừng Xanh có chuyện thường ngày số 1",
+          "en": "Họa Mi has everyday news number 1"
+        },
+        {
+          "vi": "Họa Mi Rừng Xanh có chuyện thường ngày số 2",
+          "en": "Họa Mi has everyday news number 2"
+        },
+        {
+          "vi": "Họa Mi Rừng Xanh có chuyện thường ngày số 3",
+          "en": "Họa Mi has everyday news number 3"
+        }
+      ]
+    },
+    {
+      "id": "doi-hang-sau",
+      "name": "Dơi Đêm Tai To",
+      "role": {
+        "vi": "Vai của Dơi Đêm Tai To",
+        "en": "Role of Dơi"
+      },
+      "personality": {
+        "vi": "Vui tính",
+        "en": "Cheerful"
+      },
+      "voice": {
+        "vi": "Nói nhanh",
+        "en": "Speaks fast"
+      },
+      "fear": {
+        "vi": "Sợ sấm",
+        "en": "Afraid of thunder"
+      },
+      "dream": {
+        "vi": "Mơ bay xa",
+        "en": "Dreams of flying far"
+      },
+      "secret": {
+        "vi": "Giấu một hạt dẻ",
+        "en": "Hides a chestnut"
+      },
+      "habit": {
+        "vi": "Dậy sớm",
+        "en": "Wakes early"
+      },
+      "likes": [
+        "reu-xanh-co-thu"
+      ],
+      "lines": [
+        {
+          "vi": "Dơi Đêm Tai To chào {name} buổi sáng nay nhé",
+          "en": "Dơi says good morning, {name}",
+          "when": "morning"
+        },
+        {
+          "vi": "Dơi Đêm Tai To chào {name} buổi trưa nay nhé",
+          "en": "Dơi says good afternoon, {name}",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Dơi Đêm Tai To chào {name} buổi chiều tối nay nhé",
+          "en": "Dơi says good evening, {name}",
+          "when": "evening"
+        },
+        {
+          "vi": "Dơi Đêm Tai To chào {name} buổi đêm nay nhé",
+          "en": "Dơi says good night, {name}",
+          "when": "night"
+        },
+        {
+          "vi": "Dơi Đêm Tai To thích nắng hôm nay lắm",
+          "en": "Dơi loves today's sunshine",
+          "weather": "fine"
+        },
+        {
+          "vi": "Dơi Đêm Tai To trú mưa dưới tán lá",
+          "en": "Dơi hides from the rain under the leaves",
+          "weather": "rain"
+        },
+        {
+          "vi": "Dơi Đêm Tai To kể {name} nghe chuyện riêng số 2",
+          "en": "Dơi tells {name} private story number 2",
+          "hearts": 2
+        },
+        {
+          "vi": "Dơi Đêm Tai To kể {name} nghe chuyện riêng số 3",
+          "en": "Dơi tells {name} private story number 3",
+          "hearts": 3
+        },
+        {
+          "vi": "Dơi Đêm Tai To kể {name} nghe chuyện riêng số 4",
+          "en": "Dơi tells {name} private story number 4",
+          "hearts": 4
+        },
+        {
+          "vi": "Dơi Đêm Tai To nhớ người bạn ở xa lắm",
+          "en": "Dơi misses a faraway friend",
+          "about": "hoa-mi-rung"
+        },
+        {
+          "vi": "Dơi Đêm Tai To có chuyện thường ngày số 1",
+          "en": "Dơi has everyday news number 1"
+        },
+        {
+          "vi": "Dơi Đêm Tai To có chuyện thường ngày số 2",
+          "en": "Dơi has everyday news number 2"
+        },
+        {
+          "vi": "Dơi Đêm Tai To có chuyện thường ngày số 3",
+          "en": "Dơi has everyday news number 3"
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "a": "hoa-mi-rung",
+      "b": "doi-hang-sau",
+      "kind": "neighbour",
+      "note": {
+        "vi": "Hàng xóm cùng rừng",
+        "en": "Forest neighbours"
+      }
+    },
+    {
+      "a": "hoa-mi-rung",
+      "b": "cun-lua",
+      "kind": "pen-pal",
+      "note": {
+        "vi": "Bạn thư từ",
+        "en": "Pen pals"
+      }
+    }
+  ],
+  "arcs": [
+    {
+      "id": "fixture-song",
+      "npc": "hoa-mi-rung",
+      "title": {
+        "vi": "Tiếng hát thử",
+        "en": "A test song"
+      },
+      "teaser": {
+        "vi": "Nghe tớ hát nhé",
+        "en": "Listen to me sing"
+      },
+      "chapters": [
+        {
+          "quest": "yarn-fixture-song-1",
+          "hearts": 0,
+          "letter": {
+            "from": "hoa-mi-rung",
+            "title": {
+              "vi": "Thư chương 1",
+              "en": "Letter for chapter 1"
+            },
+            "body": {
+              "vi": "Cảm ơn {name} đã giúp chương 1.",
+              "en": "Thank you, {name}, for chapter 1."
+            },
+            "reward": {
+              "coins": 10,
+              "xp": 10,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-fixture-song-2",
+          "hearts": 1,
+          "letter": {
+            "from": "hoa-mi-rung",
+            "title": {
+              "vi": "Thư chương 2",
+              "en": "Letter for chapter 2"
+            },
+            "body": {
+              "vi": "Cảm ơn {name} đã giúp chương 2.",
+              "en": "Thank you, {name}, for chapter 2."
+            },
+            "reward": {
+              "coins": 10,
+              "xp": 10,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-fixture-song-3",
+          "hearts": 2,
+          "letter": {
+            "from": "cun-lua",
+            "title": {
+              "vi": "Thư chương 3",
+              "en": "Letter for chapter 3"
+            },
+            "body": {
+              "vi": "Cảm ơn {name} đã giúp chương 3.",
+              "en": "Thank you, {name}, for chapter 3."
+            },
+            "reward": {
+              "coins": 10,
+              "xp": 10,
+              "items": {
+                "hat-de-rung": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

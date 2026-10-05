@@ -6,6 +6,7 @@ import {
   QuestCategory,
   QuestListResponse,
   QuestSummary,
+  type QuestStory,
   QuestView,
   SkillCheckResult,
   StepCompleteRequest,
@@ -50,13 +51,14 @@ const STEP_ERRORS: Record<Exclude<StepError, 'already-completed' | 'wrong-answer
 
 
 function supportPayload(support: LearningSupport, layer: SupportLayer): SupportResponse {
+  const en = support.en;
   switch (layer) {
     case 'guide':
-      return { layer, steps: support.guide };
+      return { layer, steps: support.guide, ...(en ? { stepsEn: en.guide } : {}) };
     case 'hint':
-      return { layer, text: support.hint };
+      return { layer, text: support.hint, ...(en ? { textEn: en.hint } : {}) };
     case 'answer':
-      return { layer, text: support.answer.text, explanation: support.answer.explanation };
+      return { layer, text: support.answer.text, explanation: support.answer.explanation, ...(en ? { textEn: en.answer.text, explanationEn: en.answer.explanation } : {}) };
   }
 }
 
@@ -64,17 +66,36 @@ function supportPayload(support: LearningSupport, layer: SupportLayer): SupportR
  * The step's line for this attempt: the n-th wrong answer hears the n-th wrong line, a right answer after
  * n mistakes hears the n-th right line, cycling, so two tries in a row never get the same line.
  */
-function feedbackLine(step: QuestStep | undefined, kind: 'right' | 'wrong', attempt: number, choice?: string): string | null {
+function feedbackLine(step: QuestStep | undefined, kind: 'right' | 'wrong', attempt: number, choice?: string): { vi: string; en: string | null } | null {
   if (step?.kind === 'decision' && choice) {
-    const found = step.choices.find((c) => c.id === choice);
-    if (found) return found.consequence;
+    const index = step.choices.findIndex((c) => c.id === choice);
+    const found = step.choices[index];
+    if (found) return { vi: found.consequence, en: step.en?.choices[index]?.consequence ?? null };
   }
   if (step?.kind === 'boss') {
-    if (kind === 'right') return step.winDialogue;
-    return 'Suýt đúng rồi! Bé thử suy nghĩ lại một chút nhé!';
+    if (kind === 'right') return { vi: step.winDialogue, en: null };
+    return { vi: 'Suýt đúng rồi! Bé thử suy nghĩ lại một chút nhé!', en: null };
   }
-  const lines = step && isAnswerable(step) ? step.feedback?.[kind] : undefined;
-  return lines?.[attempt % lines.length] ?? null;
+  const feedback = step && isAnswerable(step) ? step.feedback : undefined;
+  const lines = feedback?.[kind];
+  if (!lines || lines.length === 0) return null;
+  const at = attempt % lines.length;
+  return { vi: lines[at] ?? '', en: feedback?.en?.[kind][at] ?? null };
+}
+
+/** The story a chapter belongs to, for the quest list (content/npcs); none for any other quest. */
+function storyOf(content: ContentCatalog, questId: string): QuestStory | undefined {
+  const entry = content.npcs.chapters.get(questId);
+  if (!entry) return undefined;
+  return {
+    npc: entry.npc,
+    npcName: content.npcs.npcs.get(entry.npc)?.profile.name ?? entry.npc,
+    arc: entry.arc.id,
+    arcTitle: entry.arc.title,
+    part: entry.part,
+    parts: entry.arc.chapters.length,
+    hearts: entry.chapter.hearts,
+  };
 }
 
 const MINUTE = 60 * 1000;
@@ -104,7 +125,7 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
       [...content.quests.values()].map((quest) => {
         const row = byQuest.get(quest.id);
         const summary = {
-          quest: QuestView.parse({ ...quest, textbook: content.textbooks.get(quest.id) }),
+          quest: QuestView.parse({ ...quest, textbook: content.textbooks.get(quest.id), story: storyOf(content, quest.id) }),
           state: questState(row),
           progress: progressDto(quest.id, row, runs.get(quest.id) ?? 0, quest),
         };
@@ -127,16 +148,18 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
     res.json(InventoryResponse.parse({ items: rows }));
   });
 
-  // The lessons by default; `?category=side` lists the minigame side quests instead, so a side quest never
-  // shows up where the lessons are counted, listed or picked as the one to play next.
+  // The quest list by default: the lessons, then the story chapters (their ids sort after every lesson, so the first
+  // lesson stays the one to play next). `?category=side` lists the minigame side quests instead, so a side quest never
+  // shows up where the lessons are counted, listed or picked; `?category=main` or `story` one kind only.
   router.get('/quests', requireParent, async (req, res) => {
     const childId = await activePlayerId(db, res, content.consent.version);
     const region = req.query.region === undefined ? undefined : ContentId.safeParse(req.query.region);
     if (region && !region.success) throw new HttpError(400, 'invalid-region');
-    const category = QuestCategory.safeParse(req.query.category ?? 'main');
-    if (!category.success) throw new HttpError(400, 'invalid-category');
+    const category = req.query.category === undefined ? undefined : QuestCategory.safeParse(req.query.category);
+    if (category && !category.success) throw new HttpError(400, 'invalid-category');
+    const listed = new Set<string>(category ? [category.data] : ['main', 'story']);
     const quests = [...(await summaries(childId)).values()].filter(
-      (s) => (!region || s.quest.region === region.data) && (s.quest.status === 'active' ? (s.quest.category ?? 'main') : 'main') === category.data,
+      (s) => (!region || s.quest.region === region.data) && listed.has(s.quest.status === 'active' ? (s.quest.category ?? 'main') : 'main'),
     );
     res.json(QuestListResponse.parse({ quests }));
   });
@@ -226,7 +249,7 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
         if (result.error === 'wrong-answer') {
           // Try again as often as needed; only the count is kept, never the answer.
           const wrong = await countAttempt(tx, { childId, questId, stepId }, 'wrongCount');
-          return { correct: false, feedback: feedbackLine(stepDef, 'wrong', wrong - 1), row, paid, reward: null, repeated: false, completion: null, gates: [] };
+          return { correct: false, feedback: feedbackLine(stepDef, 'wrong', wrong - 1), row, paid, reward: null, repeated: false, completion: null, gates: [] as OpenedGate[] };
         }
         const [status, code] = STEP_ERRORS[result.error];
         throw new HttpError(status, code);
@@ -257,7 +280,8 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
     res.json(
       StepCompleteResponse.parse({
         correct: outcome.correct,
-        feedback: outcome.feedback,
+        feedback: outcome.feedback?.vi ?? null,
+        feedbackEn: outcome.feedback?.en ?? null,
         quest: progressDto(questId, outcome.row, outcome.paid, quest),
         reward: outcome.reward,
         repeated: outcome.repeated,

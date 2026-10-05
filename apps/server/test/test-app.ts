@@ -12,8 +12,17 @@ import { loadWorksheets } from '../src/worksheet/worksheet-builder';
 export const ORIGIN = 'http://localhost:5173';
 /** Low scrypt cost keeps the suite fast; production cost has its own test in secret-hashing.test.ts. */
 const FAST_SCRYPT = { logN: 10, r: 8, p: 1 };
-/** Real content with fixture quests in place of the shipped ones, so tests do not change when content does. */
-export const FIXTURE_CONTENT = loadContentCatalog({ questDir: fileURLToPath(new URL('./fixtures/quests', import.meta.url)) });
+/**
+ * Real content with fixture quests in place of the shipped ones, so tests do not change when content does. The
+ * shipped characters tell shipped stories, so this catalogue has none (`STORY_CONTENT` has fixture ones).
+ */
+export const FIXTURE_CONTENT = loadContentCatalog({ questDir: fileURLToPath(new URL('./fixtures/quests', import.meta.url)), npcsDir: null });
+/** `FIXTURE_CONTENT` with fixture characters and the chapters of their story (fixtures/npcs, fixtures/story-quests). */
+export const STORY_CONTENT = loadContentCatalog({
+  questDir: fileURLToPath(new URL('./fixtures/quests', import.meta.url)),
+  extraQuestDir: fileURLToPath(new URL('./fixtures/story-quests', import.meta.url)),
+  npcsDir: fileURLToPath(new URL('./fixtures/npcs', import.meta.url)),
+});
 /** Worksheets from a small fixture inventory, for the same reason. */
 export const FIXTURE_WORKSHEETS = loadWorksheets(fileURLToPath(new URL('./fixtures/curriculum', import.meta.url)));
 

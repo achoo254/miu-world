@@ -148,6 +148,8 @@ export const AccountExport = z.object({
       playTime: z.array(z.object({ weekStart: z.string(), seconds: z.number(), updatedAt: Instant })),
       /** In-game letters: which one, whether read and its gift claimed. */
       mail: z.array(z.object({ templateId: z.string(), category: z.string(), read: z.boolean(), claimed: z.boolean(), claimedAt: Instant.nullable(), createdAt: Instant })),
+      /** Friendship with each character of the maps: the chat and gift points, and the day of the last of each. */
+      npcFriendships: z.array(z.object({ npcId: z.string(), talkPoints: z.number(), giftPoints: z.number(), lastTalkOn: z.string().nullable(), lastGiftOn: z.string().nullable() })),
       /** Her friends (other players by character name, companion bots labelled). */
       friends: z.array(z.object({ displayName: z.string(), isBot: z.boolean(), since: Instant })),
       /** Friend requests waiting: for her, and from her. */

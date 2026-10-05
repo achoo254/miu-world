@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto';
 import { and, eq, inArray, sql } from 'drizzle-orm';
 import type { ActiveQuest, RewardSpec } from '@miu/schema/content';
 import { collectibleDropSource } from '@miu/schema/collectible';
@@ -7,7 +8,9 @@ import { levelFromXp } from '@miu/quest/level';
 import { notebookLines } from '@miu/quest/notebook';
 import { questScore } from '@miu/quest/quest-score';
 import type { ContentCatalog } from '../content/content-catalog';
-import { inventoryItems, questProgress, skillProgress } from '../db/schema';
+import { inventoryItems, mail, questProgress, skillProgress } from '../db/schema';
+import { letterTemplateId } from '../npc/npc-catalog';
+import { chapterHearts } from '../npc/npc-routes';
 import { grantSkillGifts } from '../progression/skill-gifts';
 import { grantReward, questSource, totalXp, type Tx } from '../reward/reward-ledger';
 import { clearAttempts, questEffort } from './step-attempts';
@@ -73,6 +76,7 @@ export async function finishQuest(tx: Tx, content: ContentCatalog, childId: stri
     .set({ stars: sql`greatest(coalesce(${questProgress.stars}, 0), ${score.stars})`, xpAwarded: score.xpAwarded })
     .where(and(eq(questProgress.childId, childId), eq(questProgress.questId, quest.id)));
 
+  const story = quest.category === 'story' ? await finishChapter(tx, content, childId, quest.id, run === 1, now) : undefined;
   const paid = granted ? reward : null;
   const level = (xp: number) => levelFromXp(xp, content.levelCurve).level;
   const skillLevel = (xp: number) => levelFromXp(xp, content.skillCurve).level;
@@ -93,6 +97,25 @@ export async function finishQuest(tx: Tx, content: ContentCatalog, childId: stri
       notebook: notebookLines(quest.steps),
       collectible,
       skillGifts,
+      ...(story ? { story } : {}),
     },
   };
+}
+
+/**
+ * A story chapter finished: its letter comes to the mailbox on the first finish (one per player, the mailbox's
+ * unique key keeps it so), and the storyteller's hearts before and after it, for the reward screens.
+ */
+async function finishChapter(tx: Tx, content: ContentCatalog, childId: string, questId: string, first: boolean, now: Date): Promise<NonNullable<QuestCompletion['story']> | undefined> {
+  const entry = content.npcs.chapters.get(questId);
+  if (!entry) return undefined;
+  const sent = first
+    ? await tx
+        .insert(mail)
+        .values({ id: randomUUID(), childId, templateId: letterTemplateId(questId), category: 'npc', createdAt: now })
+        .onConflictDoNothing()
+        .returning({ id: mail.id })
+    : [];
+  const hearts = await chapterHearts(tx, content, childId, entry.npc, first);
+  return { npc: entry.npc, npcName: content.npcs.npcs.get(entry.npc)?.profile.name ?? entry.npc, heartsBefore: hearts.before, heartsAfter: hearts.after, letter: sent.length > 0 };
 }

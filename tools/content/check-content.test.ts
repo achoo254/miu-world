@@ -161,7 +161,7 @@ describe('content:check', () => {
       });
       const issues = checkQuestTargets(quests().values(), worldDir).issues;
       for (const quest of ['side-runner', 'side-penalty-kick']) {
-        expect(issues).toContain(`quest ${quest}: its giver parrot-guide is only on map forest-ch1 in some chapters or quests; a side quest's giver is always in the world`);
+        expect(issues).toContain(`quest ${quest}: its giver parrot-guide is only on map forest-ch1 in some chapters or quests; the character a side quest or a story opens at is always in the world`);
       }
     });
 

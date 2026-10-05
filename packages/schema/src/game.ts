@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ContentId, MAX_MINIGAME_SCORE, QuestStepPublic, RewardSpec, WEEKDAYS } from './content';
+import { ContentId, MAX_MINIGAME_SCORE, QUEST_CATEGORIES, QuestEn, QuestStepPublic, RewardSpec, WEEKDAYS } from './content';
 import { SkillGiftDto } from './progression';
 
 // Game DTOs for the active child profile. Diamonds are intentionally absent (not used in the MVP).
@@ -109,6 +109,11 @@ export const QuestCompletion = z.object({
   collectible: CollectibleDrop.nullish(),
   /** The skill level gifts this run paid (coins, a themed wearable), shown on the Skill Up screen. */
   skillGifts: z.array(SkillGiftDto).optional(),
+  /**
+   * A story chapter finished: the storyteller's hearts before and after it, and whether a letter came to the
+   * mailbox (sent on the first finish).
+   */
+  story: z.object({ npc: ContentId, npcName: z.string(), heartsBefore: z.number().int().min(0), heartsAfter: z.number().int().min(0), letter: z.boolean() }).optional(),
 });
 export type QuestCompletion = z.infer<typeof QuestCompletion>;
 
@@ -117,6 +122,8 @@ export const StepCompleteResponse = z.object({
   correct: z.boolean(),
   /** A character's line for this answer, never the same as the previous try (null when the step has none). */
   feedback: z.string().nullable(),
+  /** The same line in English, when the step has its feedback in English. */
+  feedbackEn: z.string().nullish(),
   quest: QuestProgressDto,
   /** Reward paid by this step (only the last step pays); on a repeat, the reward recorded the first time. */
   reward: GrantedReward.nullable(),
@@ -178,6 +185,19 @@ export const QuestTextbook = z.object({
 });
 export type QuestTextbook = z.infer<typeof QuestTextbook>;
 
+/** The story a chapter belongs to, as the quest list groups it ("Chuyện của <tên>"). */
+export const QuestStory = z.object({
+  npc: ContentId,
+  npcName: z.string(),
+  arc: ContentId,
+  arcTitle: z.object({ vi: z.string(), en: z.string() }),
+  part: z.number().int().min(1),
+  parts: z.number().int().min(1),
+  /** Hearts the character waits for before offering it (the list always lets her play it). */
+  hearts: z.number().int().min(0),
+});
+export type QuestStory = z.infer<typeof QuestStory>;
+
 /**
  * A quest as the client sees it. Parsing a definition through this schema drops every key it does not
  * list, so answers, support layers and authoring notes never leave the server. Draft quests are never
@@ -192,8 +212,13 @@ export const QuestView = z.discriminatedUnion('status', [
     title: z.string(),
     status: z.literal('active'),
     summary: z.string(),
-    /** `side`: a minigame side quest, listed apart from the lessons (`GET /quests?category=side`). Absent: main. */
-    category: z.enum(['main', 'side']).optional(),
+    /**
+     * `side`: a minigame side quest, listed apart from the lessons (`GET /quests?category=side`); `story`: a chapter
+     * of a character's story, listed after the lessons. Absent: main.
+     */
+    category: z.enum(QUEST_CATEGORIES).optional(),
+    /** Title and summary in English (the bilingual display). */
+    en: QuestEn.optional(),
     /** Passages the read steps point at (`textRef`). */
     texts: z.record(
       ContentId,
@@ -207,6 +232,8 @@ export const QuestView = z.discriminatedUnion('status', [
     steps: z.array(QuestStepPublic),
     reward: RewardSpec,
     textbook: QuestTextbook.optional(),
+    /** A story chapter: whose story, which arc and which part of it (content/npcs). */
+    story: QuestStory.optional(),
   }),
   z.object({ id: ContentId, region: ContentId, chapter: z.number().int().min(1), title: z.string(), status: z.literal('stub') }),
 ]);
@@ -220,8 +247,11 @@ export const QuestSummary = z.object({ quest: QuestView, state: QuestState, prog
 export type QuestSummary = z.infer<typeof QuestSummary>;
 
 export const QuestListResponse = z.object({ quests: z.array(QuestSummary) });
-/** `GET /quests` lists the lessons; `?category=side` the side quests instead. */
-export const QuestCategory = z.enum(['main', 'side']);
+/**
+ * `GET /quests` lists the lessons and, after them, the story chapters (the quest list); `?category=` one kind only
+ * (`side`: the minigame side quests, never in the default list).
+ */
+export const QuestCategory = z.enum(QUEST_CATEGORIES);
 export type QuestCategory = z.infer<typeof QuestCategory>;
 export type QuestListResponse = z.infer<typeof QuestListResponse>;
 
@@ -231,9 +261,9 @@ export const SupportRequest = z.object({ layer: SupportLayer });
 
 /** One support layer, handed out only on request so the server can count it. */
 export const SupportResponse = z.discriminatedUnion('layer', [
-  z.object({ layer: z.literal('guide'), steps: z.array(z.string()) }),
-  z.object({ layer: z.literal('hint'), text: z.string() }),
-  z.object({ layer: z.literal('answer'), text: z.string(), explanation: z.string() }),
+  z.object({ layer: z.literal('guide'), steps: z.array(z.string()), stepsEn: z.array(z.string()).optional() }),
+  z.object({ layer: z.literal('hint'), text: z.string(), textEn: z.string().optional() }),
+  z.object({ layer: z.literal('answer'), text: z.string(), explanation: z.string(), textEn: z.string().optional(), explanationEn: z.string().optional() }),
 ]);
 export type SupportResponse = z.infer<typeof SupportResponse>;
 

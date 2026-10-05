@@ -65,6 +65,8 @@ const CATALOGUE_FILES = [
   'olympiad/',
   // Mail templates (apps/server/src/mail).
   'mail/',
+  // Each map's characters, their everyday lines, relations and stories (apps/server/src/npc).
+  'npcs/',
 ];
 /** Content files the asset tools validate when they build characters, atlases and maps (any file in a folder). */
 const ASSET_TOOL_FILES = [
@@ -135,10 +137,12 @@ export function checkQuestTargets(
         if (!everywhere.has(target)) issues.push(`quest ${quest.id} step ${step.id} targets ${target}, which map ${mapId} does not place`);
         else if (!onMap.has(target)) issues.push(`quest ${quest.id} step ${step.id} targets ${target}, which map ${mapId} hides in chapter ${quest.chapter}`);
       }
-      // A side quest's giver offers its game whatever lesson is played: it is in the world in every chapter.
-      const giver = quest.category === 'side' && step === quest.steps[0] && step.kind === 'dialogue' ? onMap.get(step.target ?? '') : undefined;
+      // A side quest's giver offers its game, a storyteller its next chapter, whatever lesson is played: it is in
+      // the world in every chapter.
+      const opens = quest.category === 'side' || quest.category === 'story';
+      const giver = opens && step === quest.steps[0] && step.kind === 'dialogue' ? onMap.get(step.target ?? '') : undefined;
       if (giver && (giver.chapter !== undefined || giver.chapters !== undefined || giver.quest !== undefined)) {
-        issues.push(`quest ${quest.id}: its giver ${giver.id} is only on map ${mapId} in some chapters or quests; a side quest's giver is always in the world`);
+        issues.push(`quest ${quest.id}: its giver ${giver.id} is only on map ${mapId} in some chapters or quests; the character a side quest or a story opens at is always in the world`);
       }
       // The map paints the riddle on a board: it must say what the step asks.
       const board = step.kind === 'riddle' && step.target ? onMap.get(step.target)?.board : undefined;

@@ -10,11 +10,13 @@ import { questCatalogIssues } from '@miu/quest/quest-catalog';
 import { buildAccessoryCatalog, type AccessoryItem } from '@miu/voxel/accessory-schema';
 import { speciesSchema } from '@miu/voxel/character-recipe';
 import { RecipeCatalog, type Recipe } from '@miu/schema/cooking';
-import { QuestTargetCatalog, type QuestTarget } from '@miu/schema/world-target';
+import { LookCatalog, QuestTargetCatalog, type QuestTarget } from '@miu/schema/world-target';
+import { Item } from '@miu/schema/item';
 import { AchievementCatalog, achievementIssues, type AchievementEntry } from '@miu/schema/achievement';
 import { SkillGiftCatalog, skillGiftIssues } from '@miu/schema/progression';
 import { z } from 'zod';
 import { readCurriculum } from '../worksheet/curriculum-books';
+import { EMPTY_NPC_CATALOG, buildNpcCatalog, npcCatalogIssues, readNpcFiles, type NpcCatalog } from '../npc/npc-catalog';
 import { CONTENT_DIR } from './content-dir';
 
 /** Repo `content/` directory; validated once at startup so bad content fails the boot, not a request. */
@@ -54,6 +56,41 @@ export interface ContentCatalog {
   skillGifts: SkillGiftCatalog;
   /** Achievements (content/progression/achievements.json), by id, in catalogue order. */
   achievements: ReadonlyMap<string, AchievementEntry>;
+  /** The maps' characters, their friendships' stories and the chapters' letters (content/npcs). */
+  npcs: NpcCatalog;
+  /** content/items by id: what the backpack shows, what a character may be given. */
+  items: ReadonlyMap<string, Item>;
+}
+
+/** Every item of content/items, by id (a missing folder: none). */
+export function readItems(dir: string): Map<string, Item> {
+  return new Map(jsonFiles(path.join(dir, 'items')).map((file) => {
+    const item = readContentJson(Item, file);
+    return [item.id, item] as const;
+  }));
+}
+
+/**
+ * The characters' files, checked against the targets, looks, items and quests; a file that does not fit fails the
+ * boot. `requireEveryMap` (content:check): every open region has its characters and stories.
+ */
+export function loadNpcs(
+  dir: string,
+  context: { targets: ReadonlyMap<string, QuestTarget>; items: ReadonlyMap<string, Item>; quests: Iterable<PlayableQuest>; openRegions: ReadonlySet<string>; requireEveryMap?: boolean; npcsDir?: string },
+): NpcCatalog {
+  const files = readNpcFiles(context.npcsDir ?? path.join(dir, 'npcs'));
+  const looksFile = path.join(dir, 'world/looks.json');
+  const looks = existsSync(looksFile) ? readContentJson(LookCatalog, looksFile).looks : {};
+  const issues = npcCatalogIssues(files, {
+    targets: context.targets,
+    isNpcLook: (look) => looks[look]?.kind === 'npc',
+    items: context.items,
+    quests: [...context.quests],
+    openRegions: context.openRegions,
+    requireEveryMap: context.requireEveryMap,
+  });
+  if (issues.length > 0) throw new Error(`invalid characters (content/npcs): ${issues.join('; ')}`);
+  return buildNpcCatalog(files, context.targets);
 }
 
 /**
@@ -89,6 +126,10 @@ export interface ContentOptions {
   questDir?: string;
   /** Test-only folder whose quests load next to the others (E2E fixtures). */
   extraQuestDir?: string;
+  /** `pnpm content:check`: every open region must have its characters and stories (content/npcs). */
+  requireEveryMap?: boolean;
+  /** The characters' folder; defaults to `<dir>/npcs`. Null: no characters (tests on fixture quests). */
+  npcsDir?: string | null;
 }
 
 export function readContentJson<S extends z.ZodType>(schema: S, file: string): z.infer<S> {
@@ -153,7 +194,7 @@ export function questTextbooks(quests: Iterable<PlayableQuest>, curriculumDir: s
   );
 }
 
-export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir }: ContentOptions = {}): ContentCatalog {
+export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir, requireEveryMap = false, npcsDir }: ContentOptions = {}): ContentCatalog {
   const catalog = readContentJson(SkillCatalog, path.join(dir, 'learning/skills.json'));
   const skillIds = new Set(catalog.subjects.flatMap((s) => s.skills.map((k) => k.id)));
   const minigames = readMinigames(path.join(dir, 'minigames'));
@@ -164,7 +205,11 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir 
   const targets = existsSync(targetsFile)
     ? new Map(Object.entries(readContentJson(QuestTargetCatalog, targetsFile).targets))
     : new Map<string, QuestTarget>();
+  const items = readItems(dir);
+  const openRegions = new Set(regions.regions.filter((r) => r.status === 'open').map((r) => r.id));
   return {
+    items,
+    npcs: npcsDir === null ? EMPTY_NPC_CATALOG : loadNpcs(dir, { targets, items, quests: quests.values(), openRegions, requireEveryMap, npcsDir }),
     childDisplayNames: new Set(readContentJson(NameList, path.join(dir, 'names/child-display-names.json')).names),
     characterNames: new Set(readContentJson(NameList, path.join(dir, 'names/character-names.json')).names),
     species: new Set(Object.keys(readContentJson(z.record(ContentId, speciesSchema), path.join(dir, 'species.json')))),

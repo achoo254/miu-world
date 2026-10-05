@@ -1,0 +1,226 @@
+{
+  "version": 1,
+  "region": "lang-ven-song",
+  "climate": "mild",
+  "npcs": [
+    {
+      "id": "cun-lua",
+      "name": "Cún Lúa",
+      "role": {
+        "vi": "Vai của Cún Lúa",
+        "en": "Role of Cún Lúa"
+      },
+      "personality": {
+        "vi": "Vui tính",
+        "en": "Cheerful"
+      },
+      "voice": {
+        "vi": "Nói nhanh",
+        "en": "Speaks fast"
+      },
+      "fear": {
+        "vi": "Sợ sấm",
+        "en": "Afraid of thunder"
+      },
+      "dream": {
+        "vi": "Mơ bay xa",
+        "en": "Dreams of flying far"
+      },
+      "secret": {
+        "vi": "Giấu một hạt dẻ",
+        "en": "Hides a chestnut"
+      },
+      "habit": {
+        "vi": "Dậy sớm",
+        "en": "Wakes early"
+      },
+      "likes": [
+        "canh-sen-hong"
+      ],
+      "lines": [
+        {
+          "vi": "Cún Lúa chào {name} buổi sáng nay nhé",
+          "en": "Cún Lúa says good morning, {name}",
+          "when": "morning"
+        },
+        {
+          "vi": "Cún Lúa chào {name} buổi trưa nay nhé",
+          "en": "Cún Lúa says good afternoon, {name}",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Cún Lúa chào {name} buổi chiều tối nay nhé",
+          "en": "Cún Lúa says good evening, {name}",
+          "when": "evening"
+        },
+        {
+          "vi": "Cún Lúa chào {name} buổi đêm nay nhé",
+          "en": "Cún Lúa says good night, {name}",
+          "when": "night"
+        },
+        {
+          "vi": "Cún Lúa thích nắng hôm nay lắm",
+          "en": "Cún Lúa loves today's sunshine",
+          "weather": "fine"
+        },
+        {
+          "vi": "Cún Lúa trú mưa dưới tán lá",
+          "en": "Cún Lúa hides from the rain under the leaves",
+          "weather": "rain"
+        },
+        {
+          "vi": "Cún Lúa kể {name} nghe chuyện riêng số 2",
+          "en": "Cún Lúa tells {name} private story number 2",
+          "hearts": 2
+        },
+        {
+          "vi": "Cún Lúa kể {name} nghe chuyện riêng số 3",
+          "en": "Cún Lúa tells {name} private story number 3",
+          "hearts": 3
+        },
+        {
+          "vi": "Cún Lúa kể {name} nghe chuyện riêng số 4",
+          "en": "Cún Lúa tells {name} private story number 4",
+          "hearts": 4
+        },
+        {
+          "vi": "Cún Lúa nhớ người bạn ở xa lắm",
+          "en": "Cún Lúa misses a faraway friend",
+          "about": "hoa-mi-rung"
+        },
+        {
+          "vi": "Cún Lúa có chuyện thường ngày số 1",
+          "en": "Cún Lúa has everyday news number 1"
+        },
+        {
+          "vi": "Cún Lúa có chuyện thường ngày số 2",
+          "en": "Cún Lúa has everyday news number 2"
+        },
+        {
+          "vi": "Cún Lúa có chuyện thường ngày số 3",
+          "en": "Cún Lúa has everyday news number 3"
+        }
+      ]
+    },
+    {
+      "id": "meo-dam-sen",
+      "name": "Mèo Đầm Sen",
+      "role": {
+        "vi": "Vai của Mèo Đầm Sen",
+        "en": "Role of Mèo"
+      },
+      "personality": {
+        "vi": "Vui tính",
+        "en": "Cheerful"
+      },
+      "voice": {
+        "vi": "Nói nhanh",
+        "en": "Speaks fast"
+      },
+      "fear": {
+        "vi": "Sợ sấm",
+        "en": "Afraid of thunder"
+      },
+      "dream": {
+        "vi": "Mơ bay xa",
+        "en": "Dreams of flying far"
+      },
+      "secret": {
+        "vi": "Giấu một hạt dẻ",
+        "en": "Hides a chestnut"
+      },
+      "habit": {
+        "vi": "Dậy sớm",
+        "en": "Wakes early"
+      },
+      "likes": [
+        "vay-ca-bac"
+      ],
+      "lines": [
+        {
+          "vi": "Mèo Đầm Sen chào {name} buổi sáng nay nhé",
+          "en": "Mèo says good morning, {name}",
+          "when": "morning"
+        },
+        {
+          "vi": "Mèo Đầm Sen chào {name} buổi trưa nay nhé",
+          "en": "Mèo says good afternoon, {name}",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Mèo Đầm Sen chào {name} buổi chiều tối nay nhé",
+          "en": "Mèo says good evening, {name}",
+          "when": "evening"
+        },
+        {
+          "vi": "Mèo Đầm Sen chào {name} buổi đêm nay nhé",
+          "en": "Mèo says good night, {name}",
+          "when": "night"
+        },
+        {
+          "vi": "Mèo Đầm Sen thích nắng hôm nay lắm",
+          "en": "Mèo loves today's sunshine",
+          "weather": "fine"
+        },
+        {
+          "vi": "Mèo Đầm Sen trú mưa dưới tán lá",
+          "en": "Mèo hides from the rain under the leaves",
+          "weather": "rain"
+        },
+        {
+          "vi": "Mèo Đầm Sen kể {name} nghe chuyện riêng số 2",
+          "en": "Mèo tells {name} private story number 2",
+          "hearts": 2
+        },
+        {
+          "vi": "Mèo Đầm Sen kể {name} nghe chuyện riêng số 3",
+          "en": "Mèo tells {name} private story number 3",
+          "hearts": 3
+        },
+        {
+          "vi": "Mèo Đầm Sen kể {name} nghe chuyện riêng số 4",
+          "en": "Mèo tells {name} private story number 4",
+          "hearts": 4
+        },
+        {
+          "vi": "Mèo Đầm Sen nhớ người bạn ở xa lắm",
+          "en": "Mèo misses a faraway friend",
+          "about": "cun-lua"
+        },
+        {
+          "vi": "Mèo Đầm Sen có chuyện thường ngày số 1",
+          "en": "Mèo has everyday news number 1"
+        },
+        {
+          "vi": "Mèo Đầm Sen có chuyện thường ngày số 2",
+          "en": "Mèo has everyday news number 2"
+        },
+        {
+          "vi": "Mèo Đầm Sen có chuyện thường ngày số 3",
+          "en": "Mèo has everyday news number 3"
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "a": "cun-lua",
+      "b": "meo-dam-sen",
+      "kind": "friend",
+      "note": {
+        "vi": "Bạn cùng làng",
+        "en": "Village friends"
+      }
+    },
+    {
+      "a": "meo-dam-sen",
+      "b": "doi-hang-sau",
+      "kind": "pen-pal",
+      "note": {
+        "vi": "Viết thư cho nhau",
+        "en": "Write to each other"
+      }
+    }
+  ],
+  "arcs": []
+}

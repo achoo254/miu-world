@@ -51,12 +51,12 @@ export async function loadPlayerRecord(db: Db | Tx, childId: string): Promise<Pl
   };
 }
 
-/** The active lessons and minigame side quests of each region, in catalogue order. */
+/** The active lessons and minigame side quests of each region, in catalogue order (story chapters are neither). */
 export function regionQuests(content: ContentCatalog): { lessons: Map<string, string[]>; minigames: Map<string, string[]> } {
   const lessons = new Map<string, string[]>();
   const minigames = new Map<string, string[]>();
   for (const quest of content.quests.values()) {
-    if (quest.status !== 'active') continue;
+    if (quest.status !== 'active' || quest.category === 'story') continue;
     const into = quest.category === 'side' ? minigames : lessons;
     into.set(quest.region, [...(into.get(quest.region) ?? []), quest.id]);
   }

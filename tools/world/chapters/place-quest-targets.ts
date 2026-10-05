@@ -11,7 +11,8 @@
 //   tagged with the chapter and the quest, so it shows only while that quest is played. Quests of the same
 //   chapter may reuse the same ground: only one of them is in the world at a time.
 // - A character only side quests name (a minigame's giver) is always in the world, untagged, where the map's
-//   `sideSpot` puts it (beside the ways, at its place: tools/world/side-givers.ts), clear of everything else.
+//   `sideSpot` puts it (beside the ways, at its place: tools/world/side-givers.ts), clear of everything else. So
+//   is the character a story chapter opens at (its storyteller, content/npcs): the child talks to it any time.
 // Deterministic for a given seed and input.
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -29,7 +30,7 @@ export interface TargetUse {
   chapter: number;
   /** Name of the place the quest sends the child to for this target (its own entry or its step's). */
   place: string | null;
-  /** A minigame side quest's: the target is its giver, always in the world. */
+  /** A minigame side quest's giver, or the storyteller a story chapter opens at: always in the world. */
   side: boolean;
 }
 
@@ -39,6 +40,13 @@ export interface TargetUse {
  * always in the world) are left to the map; side quests never are.
  */
 const isSide = (quest: QuestDefinition): boolean => 'category' in quest && quest.category === 'side';
+const isStory = (quest: QuestDefinition): boolean => 'category' in quest && quest.category === 'story';
+/** The character a side quest or a story chapter opens at (the target of its first step): always in the world. */
+const giverOf = (quest: QuestDefinition): string | undefined => {
+  if (!isSide(quest) && !isStory(quest)) return undefined;
+  const first = 'steps' in quest ? quest.steps[0] : undefined;
+  return first && 'target' in first ? first.target : undefined;
+};
 
 export function targetUses(quests: readonly QuestDefinition[], region: string, ownChapter?: number): Map<string, TargetUse[]> {
   const uses = new Map<string, TargetUse[]>();
@@ -50,7 +58,7 @@ export function targetUses(quests: readonly QuestDefinition[], region: string, o
       const ids = new Set([...('target' in step && step.target ? [step.target] : []), ...stepTargets(step)]);
       for (const id of ids) {
         const list = uses.get(id) ?? [];
-        if (!list.some((u) => u.quest === quest.id)) list.push({ quest: quest.id, chapter: quest.chapter, place: places[id] ?? places[step.id] ?? null, side: isSide(quest) });
+        if (!list.some((u) => u.quest === quest.id)) list.push({ quest: quest.id, chapter: quest.chapter, place: places[id] ?? places[step.id] ?? null, side: isSide(quest) || id === giverOf(quest) });
         uses.set(id, list);
       }
     }

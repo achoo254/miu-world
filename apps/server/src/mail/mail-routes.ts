@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { and, desc, eq, sql } from 'drizzle-orm';
+import { and, desc, eq, inArray, sql } from 'drizzle-orm';
 import { Router } from 'express';
 import type { MailDto, MailTemplate } from '@miu/schema/mail';
 import { activePlayerId, requireParent } from '../auth/auth-context';
@@ -24,13 +24,17 @@ export function mailRoutes({
   clock = () => new Date(),
 }: MailRouteDeps): Router {
   const router = Router();
+  // The seeded mail and the story chapters' letters (content/npcs), which arrive when a chapter is finished.
+  const known = new Map<string, MailTemplate>([...templates.map((t) => [t.id, t] as const), ...content.npcs.letters]);
 
-  /** Ensure seed/welcome mail exists for the child */
+  /** Ensure seed/welcome mail exists for the child (a letter from a story may have arrived first). */
   async function ensureSeedMail(childId: string): Promise<void> {
+    const seedIds = templates.map((t) => t.id);
+    if (seedIds.length === 0) return;
     const existing = await db
       .select({ id: mail.id })
       .from(mail)
-      .where(eq(mail.childId, childId))
+      .where(and(eq(mail.childId, childId), inArray(mail.templateId, seedIds)))
       .limit(1);
 
     if (existing.length > 0) return;
@@ -78,7 +82,7 @@ export function mailRoutes({
       .where(eq(mail.childId, childId))
       .orderBy(desc(mail.createdAt));
 
-    const tmplMap = new Map(templates.map((t) => [t.id, t]));
+    const tmplMap = known;
 
     const mailDtos: MailDto[] = rows.map((row) => {
       const tmpl = tmplMap.get(row.templateId);
@@ -148,7 +152,7 @@ export function mailRoutes({
       throw new HttpError(404, 'mail-not-found');
     }
 
-    const tmpl = templates.find((t) => t.id === row.templateId);
+    const tmpl = known.get(row.templateId);
     const reward = tmpl?.reward ?? { coins: 0, xp: 0, items: {} };
 
     if (row.claimed === 0) {
