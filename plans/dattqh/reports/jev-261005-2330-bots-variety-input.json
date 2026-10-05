@@ -1,0 +1,39 @@
+{
+  "state": {
+    "project": "Miu World: a 3D voxel learn-while-playing online game for all ages; 100+ companion bots across 12 maps, always labelled as bots, can be friends, join parties; co-op for every quest is being built (each member answers her own questions; team bosses).",
+    "today": "2026-10-05",
+    "owner_request": "Bots must keep updating themselves so that in co-op every bot is different, not the same; a bot should be like a real player — good one moment, not the next.",
+    "facts": [
+      "Today bots share one simple behaviour: canned lines, accept invites, play with an adjustable right/wrong rate.",
+      "An earlier decision: do not train bots on raw children's movement or chat without consent and legal review; start from self-play and aggregated numbers.",
+      "Consent v3 (current) does not mention using play data to tune bots."
+    ]
+  },
+  "questions": {
+    "bot_variety_design": {
+      "stakes": "medium",
+      "instructions": "How should bots differ and change over time?",
+      "criteria": {
+        "personas_with_growth": "Each bot gets its own persona (strong and weak subjects, speed, carefulness, chattiness, mood by time of day) and its own per-skill level that grows as it plays (its own XP like a player); answers come from that level plus daily mood and fatigue, so the same bot is sometimes sharp and sometimes slips; bots remember players they played with (friendlier lines, shared history).",
+        "random_rate_per_bot": "Each bot only gets a different fixed right/wrong rate and speed."
+      }
+    },
+    "learning_source": {
+      "stakes": "high",
+      "instructions": "What data may bots learn from to 'update themselves'?",
+      "criteria": {
+        "self_play_and_aggregates": "Only their own play (their XP and results) and anonymous aggregate numbers per question (how often players get it right and how long they take), never any individual child's moves, answers or chat; no consent change needed beyond the privacy page line about aggregates.",
+        "individual_play_data": "Also learn from individual players' play histories (needs a consent change and legal review).",
+        "self_play_only": "Only their own play; no player numbers at all."
+      }
+    },
+    "when": {
+      "stakes": "low",
+      "instructions": "When to build it?",
+      "criteria": {
+        "with_coop": "Fold the bot personas and growth into the co-op work now, since bots fill co-op parties.",
+        "separate_after": "Build it as its own batch right after co-op."
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 856,
+    "output_tokens": 130
+  },
+  "results": {
+    "bot_variety_design": {
+      "stakes": "medium",
+      "choice": "personas_with_growth",
+      "confidence": 0.98,
+      "probabilities": {
+        "personas_with_growth": 0.99,
+        "random_rate_per_bot": 0.01
+      },
+      "decision": "auto"
+    },
+    "learning_source": {
+      "stakes": "high",
+      "choice": "self_play_and_aggregates",
+      "confidence": 0.95,
+      "probabilities": {
+        "individual_play_data": 0.02,
+        "self_play_only": 0.02,
+        "self_play_and_aggregates": 0.96
+      },
+      "decision": "escalate"
+    },
+    "when": {
+      "stakes": "low",
+      "choice": "with_coop",
+      "confidence": 0.52,
+      "probabilities": {
+        "separate_after": 0.24,
+        "with_coop": 0.76
+      },
+      "decision": "escalate"
+    }
+  }
+}

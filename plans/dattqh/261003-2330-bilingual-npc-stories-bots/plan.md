@@ -18,7 +18,7 @@ Người sở hữu (03/10/2026): "thêm song ngữ hiển thị tiếng anh và
 | B0 | M | Chốt đo "giống người": bộ số đo (quỹ đạo, nhịp thao tác, chuỗi hành động), bộ dữ liệu so sánh từ người thử nội bộ có đồng ý; quyết định pháp lý về dữ liệu | multiplayer bậc 1 |
 | B1 | XL | `bot-runner`: 100 người chơi ảo chạy qua cùng API, cây hành vi + tính cách + lịch sinh hoạt, đi lại và làm nhiệm vụ/minigame ở mọi map | B0, multiplayer bậc 1 |
 | B2 | L | Tổ đội 2–4, nhiệm vụ chung, chat câu có sẵn và emote, báo cáo/chặn, công tắc tắt khẩn cấp, nhãn "bạn máy" | B1 |
-| B3 | L | Tự training: tự chơi so điểm, tinh chỉnh tham số theo số đo; đạt ≥ 90% không tách được bot khỏi người ở bộ phân loại + đánh giá mù | B1 |
+| B3 | L | (05/10/2026: phần tính cách, cấp kỹ năng tăng dần, tâm trạng, học từ số liệu gộp ẩn danh làm trong plan co-op pha 5, Jev `reports/jev-261005-2330-bots-variety-output.json`) Tự training: tự chơi so điểm, tinh chỉnh tham số theo số đo; đạt ≥ 90% không tách được bot khỏi người ở bộ phân loại + đánh giá mù | B1 |
 
 ## Quyết định (Jev, 03/10/2026, `plans/dattqh/reports/jev-261003-2345-bots.md`)
 - Bot luôn có nhãn "bạn máy", chơi giống người, phụ huynh tắt được.
