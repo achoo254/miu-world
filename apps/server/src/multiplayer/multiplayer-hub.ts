@@ -11,6 +11,7 @@ import { randomUUID } from 'node:crypto';
 import { WebSocketServer, WebSocket } from 'ws';
 import {
   ClientWsMessage,
+  HOME_MAP_ID,
   INTERACT_RANGE,
   PARTY_INVITE_TTL_MS,
   type MpNotice,
@@ -44,13 +45,21 @@ type MoveUpdate = Pick<PlayerPresence, 'x' | 'y' | 'z' | 'yaw' | 'speed'> & { ac
 /** Whether `viewer` may see `other` (false for a blocked pair, either way). */
 type Sees = (viewer: string, other: string) => boolean;
 
+/** One room per map, and on the home map one per player (`host`, her public id): her home. */
+export const roomKey = (mapId: string, host: string | null): string => (host ? `${mapId}#${host}` : mapId);
+
 export class MultiplayerRoom {
   readonly mapId: string;
+  /** Whose home this room is (null: the map's one shared room). */
+  readonly host: string | null;
+  readonly key: string;
   readonly members = new Map<string, RoomMember>();
   private readonly sees: Sees;
 
-  constructor(mapId: string, sees: Sees = () => true) {
+  constructor(mapId: string, sees: Sees = () => true, host: string | null = null) {
     this.mapId = mapId;
+    this.host = host;
+    this.key = roomKey(mapId, host);
     this.sees = sees;
   }
 
@@ -110,6 +119,12 @@ export interface Transport {
   stillValid?(): Promise<boolean>;
 }
 
+/** Told when a home room opens (its first player comes in) and closes (its last player leaves): its bots come and go. */
+export interface HomeRoomHooks {
+  opened(room: MultiplayerRoom): void;
+  closed(room: MultiplayerRoom): void;
+}
+
 /** One player's connection, as the WebSocket (or a test) drives it. */
 export interface Connection {
   readonly publicId: string;
@@ -141,6 +156,8 @@ interface OnlinePlayer {
   bots: boolean;
   /** The companion bots she is friends with (they come by more often). */
   botFriends: Set<string>;
+  /** Her joins so far: a home visit checked after a later join does not take her back. */
+  joins: number;
   /** Flood limit: messages left in the bucket, refilled over time. */
   tokens: number;
   refilledAt: number;
@@ -202,6 +219,7 @@ export class MultiplayerHub {
   private readonly botAsks = new Map<string, { publicId: string; botId: string; at: number }>();
   private readonly friends: FriendStore | null;
   private readonly friendLimiter: FriendRequestLimiter;
+  private homeHooks: HomeRoomHooks | null = null;
   private readonly store: MultiplayerStore | null;
   private readonly authenticate: Authenticate | null;
   private readonly allowedOrigins: ReadonlySet<string>;
@@ -226,13 +244,27 @@ export class MultiplayerHub {
     this.recheck.unref();
   }
 
-  getOrCreateRoom(mapId: string): MultiplayerRoom {
-    let room = this.rooms.get(mapId);
+  /** The map's room, or on the home map the home of `host` (made when first needed). */
+  getOrCreateRoom(mapId: string, host: string | null = null): MultiplayerRoom {
+    const key = roomKey(mapId, host);
+    let room = this.rooms.get(key);
     if (!room) {
-      room = new MultiplayerRoom(mapId, this.roomSees);
-      this.rooms.set(mapId, room);
+      room = new MultiplayerRoom(mapId, this.roomSees, host);
+      this.rooms.set(key, room);
+      if (host) this.homeHooks?.opened(room);
     }
     return room;
+  }
+
+  /** The bot runner fills each home with its bots while players are in it. */
+  setHomeRoomHooks(hooks: HomeRoomHooks): void {
+    this.homeHooks = hooks;
+  }
+
+  /** The companion bots a player is friends with (none while she has bots switched off). */
+  botFriendsOf(publicId: string): string[] {
+    const player = this.players.get(publicId);
+    return player?.bots ? [...player.botFriends] : [];
   }
 
   /**
@@ -276,7 +308,7 @@ export class MultiplayerHub {
     const timer = this.partyTimers.get(publicId);
     if (timer) clearTimeout(timer);
     this.partyTimers.delete(publicId);
-    const player: OnlinePlayer = { publicId, childId, transport, appearance, room: null, bots: settings.botsEnabled, botFriends, tokens: BUCKET_SIZE, refilledAt: this.now() };
+    const player: OnlinePlayer = { publicId, childId, transport, appearance, room: null, bots: settings.botsEnabled, botFriends, joins: 0, tokens: BUCKET_SIZE, refilledAt: this.now() };
     this.players.set(publicId, player);
     return {
       publicId,
@@ -574,8 +606,33 @@ export class MultiplayerHub {
   }
 
   private join(player: OnlinePlayer, message: Extract<ClientWsMessage, { type: 'join' }>): void {
+    const seq = ++player.joins;
+    if (message.mapId === HOME_MAP_ID) {
+      void this.joinHome(player, message, seq);
+      return;
+    }
+    this.enter(player, message.mapId, null, message);
+  }
+
+  /**
+   * Her own home, or the home of a player whose party she is in or who is her friend (and neither blocked the
+   * other). Anyone else's: her own, and she is told.
+   */
+  private async joinHome(player: OnlinePlayer, message: Extract<ClientWsMessage, { type: 'join' }>, seq: number): Promise<void> {
+    const self = player.publicId;
+    const asked = message.host && message.host !== self ? message.host : null;
+    const allowed = asked !== null && this.childIds.has(asked) && this.sees(self, asked) && (await this.mayGoTo(player, asked));
+    // Joined somewhere else meanwhile, or gone.
+    if (player.joins !== seq || this.players.get(self) !== player) return;
+    if (asked && !allowed) this.notice(self, 'not-here', asked);
+    this.enter(player, HOME_MAP_ID, allowed ? asked : self, message);
+  }
+
+  /** Into the room of `mapId` (and `host`, at a home), where the join says she stands. */
+  private enter(player: OnlinePlayer, mapId: string, host: string | null, message: Extract<ClientWsMessage, { type: 'join' }>): void {
+    // Out first: a home she leaves as its last player closes before the next room is found or made.
     this.leaveRoom(player);
-    const room = this.getOrCreateRoom(message.mapId);
+    const room = this.getOrCreateRoom(mapId, host);
     player.room = room;
     room.join({
       id: player.publicId,
@@ -606,7 +663,12 @@ export class MultiplayerHub {
     if (!room) return;
     room.leave(player.publicId);
     player.room = null;
-    if (room.members.size === 0) this.rooms.delete(room.mapId);
+    // A home closes with its last player (its bots go too); a map's room once nobody is left.
+    const playersLeft = [...room.members.values()].some((m) => !m.isBot);
+    if (room.host && !playersLeft) {
+      this.homeHooks?.closed(room);
+      this.rooms.delete(room.key);
+    } else if (room.members.size === 0) this.rooms.delete(room.key);
   }
 
   private disconnect(player: OnlinePlayer): void {
@@ -687,7 +749,7 @@ export class MultiplayerHub {
     const where = this.locate(id);
     if (!where || !this.sees(self, id)) return this.notice(self, 'not-here', id);
     const { x, y, z } = where.member.presence;
-    player.transport.send({ type: 'party-goto', id, mapId: where.room.mapId, x, y, z });
+    player.transport.send({ type: 'party-goto', id, mapId: where.room.mapId, x, y, z, ...(where.room.host ? { host: where.room.host } : {}) });
   }
 
   /** Party members and friends (players or bots) can be gone to. */

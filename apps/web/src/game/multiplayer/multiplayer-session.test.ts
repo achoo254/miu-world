@@ -51,9 +51,8 @@ afterEach(() => {
   setLangMode('vi', false);
 });
 
-function session(mapId = 'trung-tam') {
+function session(mapId = 'trung-tam', social = createSocialStore()) {
   const store = createGameStore();
-  const social = createSocialStore();
   const commands: GameCommand[] = [];
   store.onCommand((c) => commands.push(c));
   /** Where the play screen was asked to travel through a gate (the last time). */
@@ -67,7 +66,7 @@ function session(mapId = 'trung-tam') {
     start: { mapId, x: 10, y: 5, z: 10, yaw: 0 },
     store,
     social,
-    regionOfMap: (id) => (id === 'cho-phien' ? 'cho-phien' : null),
+    regionOfMap: (id) => (id === 'cho-phien' || id === 'nha-cua-be' ? id : null),
     say: (text) => said.push(text),
   });
   const ws = socket();
@@ -201,6 +200,38 @@ describe('friends in the online session', () => {
     expect(social.getSnapshot().room).toEqual([{ id: 'p-b', name: 'Tôm', isBot: false, species: 'fox' }]);
     ws.receive({ type: 'despawn', id: 'p-b' });
     expect(social.getSnapshot().room).toEqual([]);
+    online.dispose();
+  });
+});
+
+describe('homes', () => {
+  it('goes to a friend at home on another map: the home map then joins her home', () => {
+    const first = session();
+    first.ws.receive({ type: 'party-goto', id: 'p-b', mapId: 'nha-cua-be', x: 75, y: 13, z: 25, host: 'p-b' });
+    expect(first.travelledTo()).toBe('nha-cua-be');
+    expect(first.social.getSnapshot().visit).toBe('p-b');
+    first.online.dispose();
+    const next = session('nha-cua-be', first.social);
+    expect(next.ws.sent[0]).toMatchObject({ type: 'join', mapId: 'nha-cua-be', host: 'p-b' });
+    expect(next.social.getSnapshot().visit).toBeNull();
+    next.online.dispose();
+  });
+
+  it('moves into another home of the home map where she stands, then walks to her friend', () => {
+    const { ws, online, commands } = session('nha-cua-be');
+    expect(ws.sent[0]).not.toHaveProperty('host');
+    ws.receive({ type: 'party-goto', id: 'p-b', mapId: 'nha-cua-be', x: 70, y: 13, z: 20, host: 'p-b' });
+    expect(ws.sent.at(-1)).toMatchObject({ type: 'join', mapId: 'nha-cua-be', host: 'p-b' });
+    expect(commands).toContainEqual({ type: 'autowalk-to', to: { position: [70, 13, 20] } });
+    online.dispose();
+  });
+
+  it('follows the party leader into the leader’s home', () => {
+    const { ws, social, online, travelledTo } = session();
+    ws.receive({ type: 'party-travel', from: 'p-lead', displayName: 'Tôm', region: 'nha-cua-be' });
+    social.send({ type: 'travel-answer', accept: true });
+    expect(travelledTo()).toBe('nha-cua-be');
+    expect(social.getSnapshot().visit).toBe('p-lead');
     online.dispose();
   });
 });

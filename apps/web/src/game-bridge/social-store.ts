@@ -44,6 +44,8 @@ export interface SocialSnapshot {
   friendAsks: readonly FriendAsk[];
   /** Everyone else in her room now (the friends list's "Cùng phòng"). */
   room: ReadonlyArray<OnlinePlayer & { species: string }>;
+  /** Going to the home of this player (a friend, a party member): the next home map joins hers. */
+  visit: string | null;
 }
 
 /** Commands from React to the game's online session. Dropped while no game runs (between maps). */
@@ -79,7 +81,7 @@ export interface SocialStore {
 
 type DistributiveOmit<T, K extends PropertyKey> = T extends unknown ? Omit<T, K> : never;
 
-export const INITIAL_SOCIAL: SocialSnapshot = { selfId: null, mapId: null, menu: null, party: null, invites: [], travel: null, toast: null, friendAsks: [], room: [] };
+export const INITIAL_SOCIAL: SocialSnapshot = { selfId: null, mapId: null, menu: null, party: null, invites: [], travel: null, toast: null, friendAsks: [], room: [], visit: null };
 
 export function createSocialStore(): SocialStore {
   let snapshot = INITIAL_SOCIAL;

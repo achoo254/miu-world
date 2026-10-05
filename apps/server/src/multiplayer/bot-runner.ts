@@ -3,6 +3,7 @@
 // patrolling roads, visiting sights, pausing to explore, and waving/saying hello
 // when a human child approaches. All bots are clearly labeled "[Bạn máy]".
 import {
+  HOME_MAP_ID,
   SAFE_CANNED_CHATS,
   type PlayerPresence,
   type ServerWsMessage,
@@ -188,6 +189,8 @@ export const BOT_FRIEND_ACCEPT = 0.85;
 const BOT_ASKS_AFTER_GREETS = 2;
 const BOT_ASK_CHANCE = 0.5;
 const MAX_GREET_PAIRS = 10_000;
+/** Bot friends of a home's owner who come to visit it. */
+const HOME_VISITORS = 2;
 /** A bot goes to visit a friend standing at most this far from it, and stops this far from her. */
 const VISIT_RANGE = 20;
 const VISIT_STOP = 2.5;
@@ -405,19 +408,45 @@ export class BotRunner {
   }
 
   start(): void {
-    // Populate companion bots for configured maps
+    // Populate companion bots for configured maps; each home gets its own while a player is in it.
     for (const [mapId, profiles] of Object.entries(BOT_MAP_CONFIGS)) {
-      const room = this.hub.getOrCreateRoom(mapId);
-      const instances = profiles.map((p) => this.instance(p, room));
-      for (const inst of instances) {
-        inst.join();
-      }
-      this.bots.set(mapId, instances);
+      if (mapId === HOME_MAP_ID) continue;
+      this.fill(this.hub.getOrCreateRoom(mapId), profiles);
     }
+    this.hub.setHomeRoomHooks({
+      opened: (room) => this.fill(room, this.homeBots(room)),
+      closed: (room) => {
+        for (const bot of this.bots.get(room.key) ?? []) bot.leave();
+        this.bots.delete(room.key);
+      },
+    });
 
     // Run tick loop at 10Hz (100ms)
     this.lastTick = Date.now();
     this.timer = setInterval(() => this.tick(), 100);
+  }
+
+  private fill(room: MultiplayerRoom, profiles: readonly BotProfile[]): void {
+    const instances = profiles.map((p) => this.instance(p, room));
+    for (const inst of instances) inst.join();
+    this.bots.set(room.key, instances);
+  }
+
+  /**
+   * A home's bots: the neighbours of the home map, and up to two of its owner's bot friends come to visit (along
+   * the neighbours' ways), so friends turn up more often.
+   */
+  private homeBots(room: MultiplayerRoom): BotProfile[] {
+    const neighbours = BOT_MAP_CONFIGS[HOME_MAP_ID] ?? [];
+    const visitors = (room.host ? this.hub.botFriendsOf(room.host) : [])
+      .filter((id) => !neighbours.some((n) => n.id === id))
+      .slice(0, HOME_VISITORS)
+      .flatMap((id, i): BotProfile[] => {
+        const friend = findBot(id)?.profile;
+        const way = neighbours[i % Math.max(1, neighbours.length)]?.waypoints;
+        return friend && way ? [{ ...friend, waypoints: way }] : [];
+      });
+    return [...neighbours, ...visitors];
   }
 
   /** Moves every bot on by the time since the last tick (at most a fifth of a second, after a stall). */

@@ -3,10 +3,10 @@
 // the invite card, the leader's "come along" card and friend requests (frame 8) at the top, short notices as toasts, and the interaction
 // menu on another player. Every line comes from a fixed list; companion bots are always labelled.
 import { useEffect, useState } from 'react';
-import type { MpNotice, PartyMember } from '@miu/schema/multiplayer';
+import { HOME_MAP_ID, type MpNotice, type PartyMember } from '@miu/schema/multiplayer';
 import type { OnlineToast, SocialStore } from '../../game-bridge/social-store';
 import { cannedPair } from '../../game/multiplayer/canned-lines';
-import { pairOf, same, type Bilingual, type TextKey } from '../i18n/i18n';
+import { pairOf, same, t, type Bilingual, type TextKey } from '../i18n/i18n';
 import { T, useT } from '../i18n/use-t';
 import { MiuArt } from '../kit/art';
 import { buttonClass } from '../kit/button';
@@ -21,8 +21,12 @@ import './online.css';
 /** Fills the child's name into content text (region names like "Nhà của {name}"). */
 type Fill = (text: string) => string;
 
-/** The open region's name of a map (its id when no open region is on it). */
+/**
+ * The open region's name of a map (its id when no open region is on it). Every player has her own home on the home
+ * map: someone else there is "at home", never in the child's home.
+ */
 export const placeOfMap = (mapId: string, fill: Fill): string => {
+  if (mapId === HOME_MAP_ID) return t('online.atHome');
   const region = REGIONS.find((r) => r.status === 'open' && r.map === mapId);
   return region ? fill(region.name) : mapId;
 };

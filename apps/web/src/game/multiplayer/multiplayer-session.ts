@@ -2,7 +2,7 @@
 // online UI (interaction menu, party frame, invites) through the social store. The game only feeds it where the
 // child is each frame and asks it for the nearest player; everything online lives here.
 import { Vector3, type Camera, type Group } from 'three';
-import type { PartyView, ServerWsMessage } from '@miu/schema/multiplayer';
+import { HOME_MAP_ID, type PartyView, type ServerWsMessage } from '@miu/schema/multiplayer';
 import type { GameStore } from '../../game-bridge/game-store';
 import { playerSettings } from '../../game-bridge/player-settings';
 import type { SocialCommand, SocialStore } from '../../game-bridge/social-store';
@@ -50,6 +50,8 @@ export class MultiplayerSession {
   private readonly stopSettings: () => void;
   private selfId: string | null = null;
   private party: PartyView | null;
+  /** Whose home she is in, on the home map (null: her own, or another map). */
+  private host: string | null = null;
   /** Everyone else in the room, for the friends list. */
   private readonly roster = new Map<string, { id: string; name: string; isBot: boolean; species: string }>();
   private arrowClock = 0;
@@ -59,6 +61,10 @@ export class MultiplayerSession {
     this.options = options;
     this.social = options.social;
     this.party = this.social?.getSnapshot().party ?? null;
+    // On her way to someone's home (a friend's, her party's): this map joins that home.
+    const visit = options.start.mapId === HOME_MAP_ID ? (this.social?.getSnapshot().visit ?? null) : null;
+    this.host = visit;
+    this.social?.update({ visit: null });
     this.remote = new RemotePlayerManager(options.loader, options.ground, options.shadows, options.onRemotes);
     this.social?.update({ mapId: options.start.mapId, menu: null });
     this.stopCommands = this.social?.onCommand((command) => this.command(command)) ?? (() => {});
@@ -66,7 +72,7 @@ export class MultiplayerSession {
     this.stopSettings = playerSettings.subscribe((settings) => {
       if (settings.onlineEnabled) this.client.reconnect();
     });
-    this.client = new MultiplayerClient(options.start, {
+    this.client = new MultiplayerClient(visit ? { ...options.start, host: visit } : options.start, {
       onMessage: (message) => this.handle(message),
       onStatus: (_connected, final) => {
         // Another tab plays as her now, she plays offline, or she has no player: this one sees no one and is out of
@@ -198,15 +204,25 @@ export class MultiplayerSession {
         remote.sayChat(message.from, message.text);
         if (message.from !== this.selfId) social?.toast({ kind: 'party-chat', name: message.displayName, text: message.text });
         return;
-      case 'party-goto':
+      case 'party-goto': {
+        // At a home, the home of `host`: her own one is "no host".
+        const host = message.host && message.host !== this.selfId ? message.host : null;
         if (message.mapId === this.options.start.mapId) {
+          // Another home of the same map: in there where she stands, then walk over.
+          if (message.mapId === HOME_MAP_ID && host !== this.host) {
+            this.host = host;
+            this.client.visit(host);
+          }
           this.options.store.send({ type: 'autowalk-to', to: { position: [message.x, message.y, message.z] } });
         } else {
           const region = this.options.regionOfMap(message.mapId);
-          if (region) this.options.store.emit({ type: 'travel', region });
-          else social?.toast({ kind: 'notice', code: 'not-here', name: this.nameOf(message.id) });
+          if (region) {
+            if (message.mapId === HOME_MAP_ID) social?.update({ visit: host });
+            this.options.store.emit({ type: 'travel', region });
+          } else social?.toast({ kind: 'notice', code: 'not-here', name: this.nameOf(message.id) });
         }
         return;
+      }
       case 'party-travel':
         social?.update({ travel: { from: { id: message.from, name: message.displayName, isBot: false }, region: message.region } });
         return;
@@ -267,7 +283,10 @@ export class MultiplayerSession {
       case 'travel-answer': {
         const travel = social?.getSnapshot().travel;
         social?.update({ travel: null });
-        if (command.accept && travel) this.options.store.emit({ type: 'travel', region: travel.region });
+        if (!command.accept || !travel) return;
+        // The leader went home: her party comes along into the leader's home.
+        if (travel.region === this.options.regionOfMap(HOME_MAP_ID)) social?.update({ visit: travel.from.id });
+        this.options.store.emit({ type: 'travel', region: travel.region });
         return;
       }
     }

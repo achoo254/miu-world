@@ -25,6 +25,8 @@ export interface MultiplayerStart {
   y: number;
   z: number;
   yaw: number;
+  /** On the home map: whose home she visits (her own when left out). */
+  host?: string;
 }
 
 export interface MultiplayerClientHandlers {
@@ -36,6 +38,8 @@ export interface MultiplayerClientHandlers {
 export class MultiplayerClient {
   private ws: WebSocket | null = null;
   private readonly start: MultiplayerStart;
+  /** Whose home she is in (home map only; null: her own). */
+  private host: string | null;
   private readonly handlers: MultiplayerClientHandlers;
   /** Where she is now: a reconnect joins there, not at the map's start. */
   private here: Omit<MultiplayerStart, 'mapId'> & { riding: boolean };
@@ -47,6 +51,7 @@ export class MultiplayerClient {
 
   constructor(start: MultiplayerStart, handlers: MultiplayerClientHandlers) {
     this.start = start;
+    this.host = start.host ?? null;
     this.here = { x: start.x, y: start.y, z: start.z, yaw: start.yaw, riding: false };
     this.handlers = handlers;
     this.connect();
@@ -70,7 +75,7 @@ export class MultiplayerClient {
         return;
       }
       this.failures = 0;
-      this.send({ type: 'join', mapId: this.start.mapId, ...this.here });
+      this.sendJoin();
       this.handlers.onStatus?.(true, false);
     };
     ws.onmessage = (event: MessageEvent<unknown>) => {
@@ -93,6 +98,16 @@ export class MultiplayerClient {
       if (!opened) this.failures += 1;
       if (!final) this.retry = window.setTimeout(() => this.connect(), reconnectDelay(this.failures));
     };
+  }
+
+  private sendJoin(): void {
+    this.send({ type: 'join', mapId: this.start.mapId, ...this.here, ...(this.host ? { host: this.host } : {}) });
+  }
+
+  /** Into another home of the home map, where she stands (the server lets her in, or keeps her in her own). */
+  visit(host: string | null): void {
+    this.host = host;
+    this.sendJoin();
   }
 
   /** Connects again after a final close (she switched online play back on); nothing while connected. */

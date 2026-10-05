@@ -33,6 +33,12 @@ export const REPORT_REASONS = ['harassment', 'spam', 'name', 'other'] as const;
 export const ReportReason = z.enum(REPORT_REASONS);
 export type ReportReason = z.infer<typeof ReportReason>;
 
+/**
+ * The home map: every player has her own room of it, her home. Only she, the members of her party and her friends
+ * come in.
+ */
+export const HOME_MAP_ID = 'nha-cua-be';
+
 /** A party holds two to four players (companion bots count as players). */
 export const PARTY_MAX = 4;
 /** A wave, a line, an invite reach a player at most this far away (blocks), on the same map. */
@@ -121,8 +127,11 @@ const Move = { x: Coordinate, y: Coordinate, z: Coordinate, yaw: z.number(), spe
 
 /** Message sent from client to server via WebSocket. */
 export const ClientWsMessage = z.discriminatedUnion('type', [
-  /** Enter a map's room where she stands; who she is comes from the server. */
-  z.strictObject({ type: z.literal('join'), mapId: ContentId, x: Coordinate, y: Coordinate, z: Coordinate, yaw: z.number(), riding: z.boolean().optional() }),
+  /**
+   * Enter a map's room where she stands; who she is comes from the server. On the home map, `host` is the player whose
+   * home she visits (her own when left out, or when she may not come in).
+   */
+  z.strictObject({ type: z.literal('join'), mapId: ContentId, x: Coordinate, y: Coordinate, z: Coordinate, yaw: z.number(), riding: z.boolean().optional(), host: PlayerId.optional() }),
   z.strictObject({ type: z.literal('update'), ...Move }),
   /** `to`: aimed at one player nearby (she is told), else shown to everyone around. */
   z.strictObject({ type: z.literal('emote'), emote: z.enum(SAFE_EMOTES), to: PlayerId.optional() }),
@@ -172,7 +181,8 @@ export const ServerWsMessage = z.discriminatedUnion('type', [
   /** Her party as it is now (null: in none), after every change and when she joins a map. */
   z.strictObject({ type: z.literal('party-state'), party: PartyView.nullable() }),
   z.strictObject({ type: z.literal('party-chat'), from: PlayerId, displayName: z.string().min(1).max(32), text: CannedChat }),
-  z.strictObject({ type: z.literal('party-goto'), id: PlayerId, mapId: ContentId, x: Coordinate, y: Coordinate, z: Coordinate }),
+  /** Where a party member or friend is; `host`: on the home map, whose home it is. */
+  z.strictObject({ type: z.literal('party-goto'), id: PlayerId, mapId: ContentId, x: Coordinate, y: Coordinate, z: Coordinate, host: PlayerId.optional() }),
   z.strictObject({ type: z.literal('party-travel'), from: PlayerId, displayName: z.string().min(1).max(32), region: ContentId }),
 ]);
 export type ServerWsMessage = z.infer<typeof ServerWsMessage>;
