@@ -75,6 +75,7 @@ import { RescueWatch } from './player/rescue';
 import { createRideControl } from './player/vehicle-ride';
 import { createRideJourney } from './ride/ride-journey';
 import { EMBEDDED_LIFT_S, isEmbedded, nearestUsableSpot } from './player/saved-spot';
+import { standBeside } from './player/stand-beside';
 import { readQuality } from './quality';
 import { disposeSceneGraph } from './scene/dispose-scene';
 import { SKY_HORIZON, createSky, skyColours } from './scene/sky';
@@ -543,16 +544,9 @@ export class Game {
     if (spawnPoint.length === 3 && spawnPoint.every(Number.isFinite)) {
       controller.position.set(spawnPoint[0] ?? 0, spawnPoint[1] ?? 0, spawnPoint[2] ?? 0);
     } else if (spawnTarget) {
-      // Beside the target, on the side where it is the nearest thing to tap (a lesson's place may hold a
-      // cluster of targets a couple of blocks apart).
-      const [x = 0, y = 0, z = 0] = spawnTarget.position;
-      const offset = Math.min(1.5, spawnTarget.radius * 0.5);
       const others = entities.interactables.filter((t) => t !== spawnTarget);
-      const nearestIsTarget = (px: number, pz: number): boolean =>
-        others.every((t) => Math.hypot((t.position[0] ?? 0) - px, (t.position[2] ?? 0) - pz) > Math.hypot(x - px, z - pz));
-      const sides = [[-1, -1], [1, -1], [-1, 1], [1, 1], [0, -1.4], [-1.4, 0], [1.4, 0], [0, 1.4]] as const;
-      const [dx, dz] = sides.find(([sx, sz]) => nearestIsTarget(x + sx * offset, z + sz * offset)) ?? sides[0];
-      controller.position.set(x + dx * offset, y, z + dz * offset);
+      const [sx, sy, sz] = standBeside(spawnTarget, others, solid, liquid, data.bounds, data.world.height);
+      controller.position.set(sx, sy, sz);
     } else if (spawnAt === null && this.options.savedSpot) {
       // Back where the child left off; any `spawnAt` (even `spawn`) starts where the URL says instead.
       const at = nearestUsableSpot(this.options.savedSpot.position, solid, liquid, data.bounds, data.world.height);

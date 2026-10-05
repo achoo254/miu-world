@@ -157,8 +157,6 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the LÃ
   await tap(page, '[data-id="challenge-check"]');
   await expect(page.locator('[data-id="challenge"]')).toHaveCount(0);
   await copied(page);
-  // Back beside the beaver: the fruit trees by the stream are interactable too, so Interact must name him.
-  await goTo(page, 'animal-beaver');
   await tap(page, '[data-id="hud-interact"]');
   await tap(page, '[data-id="choice-b"]');
   await shot(page, '07-quiz');
