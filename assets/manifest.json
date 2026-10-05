@@ -21842,6 +21842,54 @@
       "bytes": 7700
     },
     {
+      "path": "generated/box-props/ncb-pet-bed-basket.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "b821325397cbe317cd06bf5dea5e7c7ac9174a9d81b7f18e92663ff3fcb0d9d6",
+      "bytes": 14436
+    },
+    {
+      "path": "generated/box-props/ncb-pet-bed-blue.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "b68b4416f7c4622026c80ffdb67f2f7a9b34ac6bc9231d3783e3464fac1574e3",
+      "bytes": 7736
+    },
+    {
+      "path": "generated/box-props/ncb-pet-bed-lilac.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "7f6db9ed632c34a839cb12eeadbbc76ffb5b07ef11ea6144540cfd9d717ecb20",
+      "bytes": 7736
+    },
+    {
+      "path": "generated/box-props/ncb-pet-bed-mint.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "df5dcad612a275c7e4ce7e7336a3f6ecaa79eee1371b43b21d80173003ddf2c7",
+      "bytes": 9224
+    },
+    {
+      "path": "generated/box-props/ncb-pet-bed-pink.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "a004c77800fd348d3fae872355119d73ee9a6dc69a9b92095a9713ddf98d5d9e",
+      "bytes": 8480
+    },
+    {
+      "path": "generated/box-props/ncb-pet-bed-yellow.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "f4ffa00bb923a8ab7f80695d68c865a5f5d13e508fd5805e6ce6e3b271931b8d",
+      "bytes": 9224
+    },
+    {
       "path": "generated/box-props/ncb-picket-blue.glb",
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
@@ -36970,6 +37018,260 @@
       "bytes": 5121
     },
     {
+      "path": "generated/review/pet-scenes/board.png",
+      "license": "CC0-1.0",
+      "generator": "apps/web/e2e/pets.spec.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit",
+        "kenney-furniture-kit",
+        "fluent-emoji"
+      ],
+      "sha256": "7a4bc3dec934aa645bafa6161ae3a0bdb851f72687d59bccf32eec41f00be45f",
+      "bytes": 684745
+    },
+    {
+      "path": "generated/review/pet-scenes/care-bath.png",
+      "license": "CC0-1.0",
+      "generator": "apps/web/e2e/pets.spec.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit",
+        "kenney-furniture-kit",
+        "fluent-emoji"
+      ],
+      "sha256": "e45c7342508a38cbb21fd0627c02b8c639690d9419847481c815ddf30358d9ff",
+      "bytes": 631702
+    },
+    {
+      "path": "generated/review/pet-scenes/care-feed.png",
+      "license": "CC0-1.0",
+      "generator": "apps/web/e2e/pets.spec.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit",
+        "kenney-furniture-kit",
+        "fluent-emoji"
+      ],
+      "sha256": "f5ead7fc6f54374c4a03be902e2b7480e20f7ae64bc36b59d8ad278dafac9d20",
+      "bytes": 630573
+    },
+    {
+      "path": "generated/review/pet-scenes/care-nap-bed.png",
+      "license": "CC0-1.0",
+      "generator": "apps/web/e2e/pets.spec.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit",
+        "kenney-furniture-kit",
+        "fluent-emoji"
+      ],
+      "sha256": "bf3c217f7f8ba89116634353855901566c5d9f39113d6da16a99fb27574da2b5",
+      "bytes": 402582
+    },
+    {
+      "path": "generated/review/pet-scenes/care-nap.png",
+      "license": "CC0-1.0",
+      "generator": "apps/web/e2e/pets.spec.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit",
+        "kenney-furniture-kit",
+        "fluent-emoji"
+      ],
+      "sha256": "66afd070ce8f05a6136277cfa00a0203d7f7f6c044feee6aa780ff87ae396f3b",
+      "bytes": 636290
+    },
+    {
+      "path": "generated/review/pet-scenes/care-pet.png",
+      "license": "CC0-1.0",
+      "generator": "apps/web/e2e/pets.spec.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit",
+        "kenney-furniture-kit",
+        "fluent-emoji"
+      ],
+      "sha256": "fcb688eb22981ef51b18ef8a37f51fc26b528ace0b8cf3230fe87848a1d44fcb",
+      "bytes": 626852
+    },
+    {
+      "path": "generated/review/pet-scenes/care-play.png",
+      "license": "CC0-1.0",
+      "generator": "apps/web/e2e/pets.spec.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit",
+        "kenney-furniture-kit",
+        "fluent-emoji"
+      ],
+      "sha256": "97d2b521f20a01468bfe5813a3e9d1075b36c1567bbe0a9d0b9f54d2757b4ec6",
+      "bytes": 572614
+    },
+    {
+      "path": "generated/review/pets/cun-con--pet-bow-pink--pet-scarf.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "f143270a6dda32ff2f65cdfcba879312a3734893108ee87e032a3576c42a3db1",
+      "bytes": 21901
+    },
+    {
+      "path": "generated/review/pets/ga-con--pet-flower--pet-collar-bell.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "076ad72fd74d24167fd8855c6bac5ee045d3d3a521930d3c0ef5465474576cae",
+      "bytes": 18155
+    },
+    {
+      "path": "generated/review/pets/gau-truc--pet-sun-hat.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "7c2a24e48c9ba1f1c23a17a0611d29ba1de9b5630bea817b58a4bc3e4e880125",
+      "bytes": 23559
+    },
+    {
+      "path": "generated/review/pets/ho-con--pet-crown--pet-scarf.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "8043b294386823201962b370b70c99bc5b622c981a5baabbce6225d5247982e4",
+      "bytes": 23191
+    },
+    {
+      "path": "generated/review/pets/huou-cao-co--pet-bow-blue--pet-scarf.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "6097b57be6db1f239312eb04e28d5e84cae7c21ea3be65c6f015121860ec7e26",
+      "bytes": 22833
+    },
+    {
+      "path": "generated/review/pets/meo-xam--pet-party-hat--pet-collar-bell.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "3c41988c6ea9b488267ed8cbf490da7b1bf2ce4329c5d8c0571fea8c4496f87f",
+      "bytes": 19704
+    },
+    {
+      "path": "generated/review/pets/tho-nau--pet-crown--pet-collar-medal.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "aeb44fa38a9094eb8575894e53c122d3777764b535c1902a451216019ea225c3",
+      "bytes": 23238
+    },
+    {
+      "path": "generated/review/pets/voi-con--pet-party-hat--pet-collar-medal.png",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/render-preview.ts",
+      "derivedFrom": [
+        "kenney-blocky-characters",
+        "kenney-cube-pets",
+        "kenney-voxel-pack",
+        "kenney-nature-kit",
+        "kenney-survival-kit",
+        "kenney-food-kit",
+        "kenney-castle-kit"
+      ],
+      "sha256": "2c6b8a0af779e4b18dc17e450c03209cb0b3524e18b6b9e3bf04db5614ebad5c",
+      "bytes": 18871
+    },
+    {
       "path": "generated/review/props/toan2-cd1-b05.png",
       "license": "CC0-1.0",
       "generator": "apps/web/e2e/sgk-content.spec.ts",
@@ -41442,8 +41744,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nha-cua-be-map.ts",
       "derivedFrom": [],
-      "sha256": "2e3e3c131dd3e1cb62751e093ecd712725792239253fdefc324c57e51b000858",
-      "bytes": 212194
+      "sha256": "231c7467801e071b8d134f107ef3fb244f418fa51eb6a85f67b3f3ba7408e873",
+      "bytes": 213048
     },
     {
       "path": "generated/world/nha-cua-be/horizon.bin",

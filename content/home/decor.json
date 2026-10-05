@@ -96,6 +96,17 @@
       ]
     },
     {
+      "id": "pet-bed", "side": "inside", "name": "Ổ thú cưng", "default": "pet-bed-basket",
+      "options": [
+        {"id": "pet-bed-basket", "name": "Giỏ mây", "swatch": ["#c98f5a", "#fff3cf"], "models": ["generated/box-props/ncb-pet-bed-basket.glb"]},
+        {"id": "pet-bed-pink", "name": "Hồng trái tim", "swatch": ["#f4a3bf", "#e86f9c"], "models": ["generated/box-props/ncb-pet-bed-pink.glb"]},
+        {"id": "pet-bed-blue", "name": "Xanh ngôi sao", "swatch": ["#7fb6ea", "#ffe066"], "models": ["generated/box-props/ncb-pet-bed-blue.glb"]},
+        {"id": "pet-bed-mint", "name": "Bạc hà xương", "swatch": ["#9fe0c4", "#fffdf8"], "models": ["generated/box-props/ncb-pet-bed-mint.glb"]},
+        {"id": "pet-bed-yellow", "name": "Vàng dấu chân", "swatch": ["#ffe08a", "#c98f5a"], "models": ["generated/box-props/ncb-pet-bed-yellow.glb"]},
+        {"id": "pet-bed-lilac", "name": "Tím đám mây", "swatch": ["#cdb4f0", "#fffdf8"], "models": ["generated/box-props/ncb-pet-bed-lilac.glb"]}
+      ]
+    },
+    {
       "id": "house", "side": "outside", "name": "Kiểu nhà", "default": "house-red",
       "options": [
         {"id": "house-red", "name": "Mái đỏ tường kem", "swatch": ["#e2583e", "#f6e2c0", "#b8bfc9"], "blocks": {"roof": "brick-red", "ridge": "wood-red", "upper": "plaster", "lower": "brick-grey"}},

@@ -17,7 +17,7 @@
 // the pond fed by a stream, its wooden dock with a boat. Two things on the walls open the child's own
 // timetable and uniform days in the game: `nha-thoi-khoa-bieu` and `nha-lich-dong-phuc`; the notebook on
 // the living room's sideboard opens her decorating (`nha-trang-tri`, mock panels 11 and 12): every piece she
-// may restyle is a slot of content/home/decor.json, written here in all its styles.
+// may restyle is a slot of content/home/decor.json, written here in all its styles (her pet's bed among them).
 // Output: assets/generated/world/nha-cua-be/{regions/, horizon.bin, entities.json}
 import path from 'node:path';
 import { HomeDecorCatalog } from '../../packages/schema/src/home-decor';
@@ -795,6 +795,9 @@ function furnish(ctx: ZoneMapContext, home: HomeLayout): void {
   ctx.decorSpot('ornament', [bed.x - 1.5, u + 0.48, bedroom.z0 + 0.5], 180);
   ctx.decorSpot('rug', [90, u, 63.5], 0);
   ctx.propAt(H.vanity, [bedroom.x1 + 0.66, u, 63.6], 90);
+  // The pet's bed (her pick of styles) against the east wall by the foot of her bed, its way in toward the room:
+  // where her pet naps when she sends it to sleep at home.
+  ctx.decorSpot('pet-bed', [bedroom.x1 - 0.2, u, 60.8], 270);
   ctx.propAt(K.alarmClock, [bedroom.x1 + 0.5, u + 0.78, 63.2], 90);
   ctx.decorSpot('wardrobe', [partX + 1.37, u, 61.5], 270);
   ctx.propAt(H.calendar, [partX + 1.04, u + 0.9, 64.2], 270);
