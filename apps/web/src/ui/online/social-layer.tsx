@@ -1,6 +1,6 @@
 // NEW SCREEN, after mock `designs/multiplayer.png` frames 3 and 5: online play over the game. The party frame in
 // the HUD column (members with portrait, leader crown, where each is, pet, an arrow toward those on the same map),
-// the invite card and the leader's "come along" card at the top, short notices as toasts, and the interaction
+// the invite card, the leader's "come along" card and friend requests (frame 8) at the top, short notices as toasts, and the interaction
 // menu on another player. Every line comes from a fixed list; companion bots are always labelled.
 import { useEffect, useState } from 'react';
 import type { MpNotice, PartyMember } from '@miu/schema/multiplayer';
@@ -13,6 +13,7 @@ import { buttonClass } from '../kit/button';
 import { Toast } from '../kit/toast';
 import { PETS, assetUrl } from '../kit/ui-art';
 import { REGIONS, findRegion } from '../region/regions';
+import { FriendAskCard } from '../friends/friend-ask-card';
 import { CannedLines, PlayerMenu } from './player-menu';
 import { useSocial } from './use-social';
 import './online.css';
@@ -20,7 +21,8 @@ import './online.css';
 /** Fills the child's name into content text (region names like "Nhà của {name}"). */
 type Fill = (text: string) => string;
 
-const placeOfMap = (mapId: string, fill: Fill): string => {
+/** The open region's name of a map (its id when no open region is on it). */
+export const placeOfMap = (mapId: string, fill: Fill): string => {
   const region = REGIONS.find((r) => r.status === 'open' && r.map === mapId);
   return region ? fill(region.name) : mapId;
 };
@@ -38,6 +40,11 @@ const NOTICE_KEY: Record<MpNotice, TextKey> = {
   'not-leader': 'online.notice.not-leader',
   'rate-limited': 'online.notice.rate-limited',
   failed: 'online.notice.failed',
+  'friend-sent': 'online.notice.friend-sent',
+  'already-friends': 'online.notice.already-friends',
+  'friend-pending': 'online.notice.friend-pending',
+  'friends-full': 'online.notice.friends-full',
+  'friend-limit': 'online.notice.friend-limit',
 };
 
 /** What a toast says, in both languages. */
@@ -51,6 +58,8 @@ export function toastText(toast: OnlineToast): Bilingual {
       return pairOf('online.said', { who: same(toast.name), line: cannedPair(toast.text) });
     case 'party-chat':
       return pairOf('online.partyChat', { who: same(toast.name), line: cannedPair(toast.text) });
+    case 'friend':
+      return pairOf(toast.added ? 'online.friendAdded' : 'online.friendDeclined', { who: same(toast.isBot ? `🤖 ${toast.name}` : toast.name) });
   }
 }
 
@@ -247,6 +256,7 @@ export function SocialLayer({ social, covered, fill }: { social: SocialStore; co
         <div className="online-cards">
           <InviteCard social={social} />
           <TravelCard social={social} fill={fill} />
+          <FriendAskCard social={social} />
         </div>
       )}
       <OnlineToastLine social={social} />

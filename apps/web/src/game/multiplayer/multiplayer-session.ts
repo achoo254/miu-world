@@ -50,6 +50,8 @@ export class MultiplayerSession {
   private readonly stopSettings: () => void;
   private selfId: string | null = null;
   private party: PartyView | null;
+  /** Everyone else in the room, for the friends list. */
+  private readonly roster = new Map<string, { id: string; name: string; isBot: boolean; species: string }>();
   private arrowClock = 0;
   private readonly forward = new Vector3();
 
@@ -67,10 +69,12 @@ export class MultiplayerSession {
     this.client = new MultiplayerClient(options.start, {
       onMessage: (message) => this.handle(message),
       onStatus: (_connected, final) => {
-        // Another tab plays as her now, or she has no player: this one sees no one and is out of the party view.
+        // Another tab plays as her now, she plays offline, or she has no player: this one sees no one and is out of
+        // the party view.
         if (!final) return;
         this.remote.dispose();
-        this.social?.update({ party: null, invites: [], travel: null });
+        this.roster.clear();
+        this.social?.update({ party: null, invites: [], travel: null, room: [] });
       },
     });
   }
@@ -113,7 +117,7 @@ export class MultiplayerSession {
     this.stopSettings();
     this.client.dispose();
     this.remote.dispose();
-    this.social?.update({ menu: null });
+    this.social?.update({ menu: null, room: [] });
   }
 
   private nameOf(id: string | undefined): string | null {
@@ -127,11 +131,15 @@ export class MultiplayerSession {
       case 'welcome':
         // A new room (or the same one after a reconnect): whoever was drawn before comes again from the list.
         remote.dispose();
+        this.roster.clear();
         this.selfId = message.selfId;
-        social?.update({ selfId: message.selfId });
+        for (const p of message.players) this.roster.set(p.id, { id: p.id, name: p.displayName, isBot: p.isBot, species: p.species });
+        social?.update({ selfId: message.selfId, room: [...this.roster.values()] });
         for (const p of message.players) void remote.spawn(p);
         return;
       case 'spawn':
+        this.roster.set(message.player.id, { id: message.player.id, name: message.player.displayName, isBot: message.player.isBot, species: message.player.species });
+        social?.update({ room: [...this.roster.values()] });
         void remote.spawn(message.player);
         return;
       case 'move':
@@ -149,11 +157,27 @@ export class MultiplayerSession {
         if (message.to === this.selfId && name) social?.toast({ kind: 'said', name, text: message.text });
         return;
       }
-      case 'appearance':
+      case 'appearance': {
         remote.applyAppearance(message.id, message.appearance);
+        const known = this.roster.get(message.id);
+        if (known && (known.name !== message.appearance.displayName || known.species !== message.appearance.species)) {
+          this.roster.set(message.id, { ...known, name: message.appearance.displayName, species: message.appearance.species });
+          social?.update({ room: [...this.roster.values()] });
+        }
         return;
+      }
       case 'despawn':
+        if (this.roster.delete(message.id)) social?.update({ room: [...this.roster.values()] });
         remote.despawn(message.id);
+        return;
+      case 'friend-request': {
+        const { id, from } = message.request;
+        const ask = { id, from: { id, name: from.displayName, isBot: from.isBot, species: from.species } };
+        social?.update((s) => ({ friendAsks: [...s.friendAsks.filter((a) => a.id !== id), ask] }));
+        return;
+      }
+      case 'friend-news':
+        social?.toast({ kind: 'friend', added: message.kind === 'added', name: message.who.displayName, isBot: message.who.isBot });
         return;
       case 'notice':
         social?.toast({ kind: 'notice', code: message.code, name: this.nameOf(message.id) });
@@ -203,6 +227,10 @@ export class MultiplayerSession {
         return;
       case 'invite':
         client.send({ type: 'party-invite', to: command.to });
+        social?.update({ menu: null });
+        return;
+      case 'befriend':
+        client.send({ type: 'friend-request', to: command.to });
         social?.update({ menu: null });
         return;
       case 'block':

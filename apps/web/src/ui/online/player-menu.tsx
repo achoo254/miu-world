@@ -1,7 +1,8 @@
 // NEW SCREEN, after mock `designs/multiplayer.png` frame 7 ("Báo cáo & Chặn người chơi"): the interaction menu on
 // another player, opened with the Interact button next to her. A themed scene over the paused game: her name on
-// the wooden banner, the actions on parchment. Wave, a canned line, invite to the party, block, report: every word
-// comes from a fixed list (no typing, no voice). Companion bots are labelled and only get the friendly actions.
+// the wooden banner, the actions on parchment. Wave, a canned line, invite to the party, add as a friend, block,
+// report: every word comes from a fixed list (no typing, no voice). Companion bots are labelled and only get the
+// friendly actions.
 import { useState } from 'react';
 import { REPORT_REASONS, SAFE_CANNED_CHATS, type ReportReason, type SafeCannedChat } from '@miu/schema/multiplayer';
 import type { OnlinePlayer, SocialStore } from '../../game-bridge/social-store';
@@ -51,11 +52,12 @@ export function PlayerMenu({ social, player }: { social: SocialStore; player: On
   const [reason, setReason] = useState<ReportReason | null>(null);
   const close = (): void => social.send({ type: 'close-menu' });
   const who = { vi: player.name, en: player.name };
-  // The menu's actions, in order. A friend request item takes its place in this list once friends exist.
+  // The menu's actions, in order (mock frame 7: "Gửi lời mời kết bạn" next to inviting).
   const actions: MenuAction[] = [
     { id: 'wave', icon: '👋', label: 'online.menu.wave', run: () => social.send({ type: 'wave', to: player.id }) },
     { id: 'say', icon: '💬', label: 'online.menu.say', run: () => setStep('lines') },
     { id: 'invite', icon: '⭐', label: 'online.menu.invite', run: () => social.send({ type: 'invite', to: player.id }) },
+    { id: 'befriend', icon: '🤝', label: 'online.menu.befriend', run: () => social.send({ type: 'befriend', to: player.id }) },
     { id: 'block', icon: '🚫', label: 'online.menu.block', playersOnly: true, danger: true, run: () => setStep('block') },
     { id: 'report', icon: '🚩', label: 'online.menu.report', playersOnly: true, danger: true, run: () => setStep('report') },
   ];

@@ -34,6 +34,7 @@ import { TimetablePanel } from '../timetable/timetable-panel';
 import { TIMETABLE_TARGETS, type TimetableFocus } from '../timetable/timetable-targets';
 import { PartyFrame, SocialLayer } from '../online/social-layer';
 import { usePlayTime } from './play-time';
+import { FriendsButton, FriendsDialog } from '../friends/friends-screens';
 import { useSocial } from '../online/use-social';
 import { createPositionSaver, loadPlayerPositions } from './player-position';
 
@@ -213,6 +214,8 @@ export function PlayScreen() {
   const [petCareOpen, setPetCareOpen] = useState(false);
   /** The home cooking screen. */
   const [cookingOpen, setCookingOpen] = useState(false);
+  /** The friends list over the game. */
+  const [friendsOpen, setFriendsOpen] = useState(false);
   /** The child's picks for her home, read before her home's map is built (null until known; others need none). */
   const [decor, setDecor] = useState<Record<string, string> | null>(null);
   /** The map on screen loads after a gate: its loading screen is the trip through the portal. */
@@ -284,7 +287,7 @@ export function PlayScreen() {
   const region = quest?.quest.region ?? DEFAULT_REGION;
   // An element of `positions` (set once), so the same object on every render: the game is not rebuilt.
   const savedSpot = positions?.find((p) => p.map === regionMap(region)) ?? null;
-  const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null || decorOpen || shopOpen || petCareOpen || cookingOpen || onlineMenu;
+  const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null || decorOpen || shopOpen || petCareOpen || cookingOpen || friendsOpen || onlineMenu;
   const atHome = data !== null && regionMap(region) === regionMap(HOME_REGION);
   // Weekly play time for the progress views: counted while the game runs, not while paused.
   usePlayTime(data !== null && status === 'ready' && !paused);
@@ -384,6 +387,7 @@ export function PlayScreen() {
         <GameStatus />
         {data && status !== 'error' ? (
           <Hud data={data} quest={quest} covered={covered} onMenu={() => setPaused(true)} onQuests={() => setQuestsOpen(true)} onBackpack={() => setBackpackOpen(true)}>
+            <FriendsButton social={social} onOpen={() => setFriendsOpen(true)} />
             <PartyFrame social={social} fill={(text) => say(text, data.character)} />
           </Hud>
         ) : null}
@@ -407,6 +411,7 @@ export function PlayScreen() {
             </button>
           </Modal>
         ) : null}
+        {data && friendsOpen ? <FriendsDialog social={social} fill={(text) => say(text, data.character)} onClose={() => setFriendsOpen(false)} /> : null}
         {timetable ? <TimetablePanel focus={timetable} onClose={() => setTimetable(null)} /> : null}
         {decorOpen ? <HomeDecorPanel onClose={() => setDecorOpen(false)} onSaved={decorated} /> : null}
         {shopOpen ? (

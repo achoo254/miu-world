@@ -1,5 +1,5 @@
 // Online play between players, game → React: the interaction menu on another player, the party, invites, the
-// leader's "come along" and short notices. Discrete events only, like the game store; the direction arrows to
+// leader's "come along", friend requests, who else is in the room and short notices. Discrete events only, like the game store; the direction arrows to
 // party members are written by the game straight into DOM anchors React registers. The store outlives a game
 // (it is the play screen's), so the party frame stays put while the next map loads.
 import type { MpNotice, PartyView, ReportReason, SafeCannedChat } from '@miu/schema/multiplayer';
@@ -17,7 +17,15 @@ export type OnlineToast =
   | { kind: 'notice'; code: MpNotice; name: string | null; seq: number }
   | { kind: 'waved'; name: string; seq: number }
   | { kind: 'said'; name: string; text: SafeCannedChat; seq: number }
-  | { kind: 'party-chat'; name: string; text: SafeCannedChat; seq: number };
+  | { kind: 'party-chat'; name: string; text: SafeCannedChat; seq: number }
+  /** A friend request of hers was answered (or both asked: friends at once). */
+  | { kind: 'friend'; added: boolean; name: string; isBot: boolean; seq: number };
+
+/** Someone asks her to be friends (answered through the API, here or later in her friends list). */
+export interface FriendAsk {
+  id: string;
+  from: OnlinePlayer & { species: string };
+}
 
 export interface SocialSnapshot {
   /** The child's own public id once connected. */
@@ -32,6 +40,10 @@ export interface SocialSnapshot {
   /** The party leader went through a gate: come along? */
   travel: { from: OnlinePlayer; region: string } | null;
   toast: OnlineToast | null;
+  /** Friend requests that came while she plays, oldest first, until she answers. */
+  friendAsks: readonly FriendAsk[];
+  /** Everyone else in her room now (the friends list's "Cùng phòng"). */
+  room: ReadonlyArray<OnlinePlayer & { species: string }>;
 }
 
 /** Commands from React to the game's online session. Dropped while no game runs (between maps). */
@@ -39,6 +51,7 @@ export type SocialCommand =
   | { type: 'wave'; to: string }
   | { type: 'say'; to: string; text: SafeCannedChat }
   | { type: 'invite'; to: string }
+  | { type: 'befriend'; to: string }
   | { type: 'block'; id: string }
   | { type: 'report'; id: string; reason: ReportReason }
   | { type: 'close-menu' }
@@ -66,7 +79,7 @@ export interface SocialStore {
 
 type DistributiveOmit<T, K extends PropertyKey> = T extends unknown ? Omit<T, K> : never;
 
-export const INITIAL_SOCIAL: SocialSnapshot = { selfId: null, mapId: null, menu: null, party: null, invites: [], travel: null, toast: null };
+export const INITIAL_SOCIAL: SocialSnapshot = { selfId: null, mapId: null, menu: null, party: null, invites: [], travel: null, toast: null, friendAsks: [], room: [] };
 
 export function createSocialStore(): SocialStore {
   let snapshot = INITIAL_SOCIAL;

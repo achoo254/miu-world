@@ -1,7 +1,8 @@
 // NEW SCREEN (Master Plan §6, account area): the account owner looks after every player of the account. One card
-// per player, opened to her learning progress or her online switches. Everything is read from the server for that player
+// per player, opened to her learning progress, her online switches, or her friends and blocks (view, remove,
+// unblock; she answers requests herself). Everything is read from the server for that player
 // (`/api/players/:id/…`), behind the account area's optional PIN.
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { PlayerSettings, type PlayerDto, type PlayerSettingsPatch } from '@miu/schema/account';
 import { api } from '../api-client';
 import type { TextKey } from '../i18n/i18n';
@@ -9,13 +10,15 @@ import { T, useT } from '../i18n/use-t';
 import { Icon, MiuArt } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Tabs, type TabItem } from '../kit/tabs';
+import { accountSocial } from '../friends/friends-api';
+import { FriendsPanel } from '../friends/friends-panel';
 import { PlayerProgress } from '../profile/progress-panel';
 import { tileClass } from './profile-screens';
 import { useSubmit } from './use-submit';
 import '../system/settings.css';
 import './account-players.css';
 
-type CareTab = 'progress' | 'online';
+type CareTab = 'progress' | 'online' | 'friends';
 
 /** The account owner switches online play and companion bots for a player (applied at once, even in a room). */
 function PlayerOnlineSwitches({ player }: { player: PlayerDto }) {
@@ -74,7 +77,10 @@ function PlayerCareCard({ player, index }: { player: PlayerDto; index: number })
   const tabs: TabItem<CareTab>[] = [
     { key: 'progress', label: <T k="progress.title" /> },
     { key: 'online', label: <T k="settings.groupOnline" /> },
+    { key: 'friends', label: <T k="friends.title" /> },
   ];
+  // One source per player, so the list does not load again on every render.
+  const friends = useMemo(() => accountSocial(player.id), [player.id]);
   return (
     <li className="player-care" data-id={`player-care-${player.id}`}>
       <div className="player-care-head">
@@ -96,6 +102,14 @@ function PlayerCareCard({ player, index }: { player: PlayerDto; index: number })
         <Tabs label={t('playerCare.tabsLabel', { who: { vi: player.displayName, en: player.displayName } })} items={tabs} active={tab} onChange={setTab} dataId={`player-care-tabs-${player.id}`}>
           {tab === 'progress' ? <PlayerProgress playerId={player.id} /> : null}
           {tab === 'online' ? <PlayerOnlineSwitches player={player} /> : null}
+          {tab === 'friends' ? (
+            <>
+              <p className="hint">
+                <T k="friends.ownerNote" />
+              </p>
+              <FriendsPanel source={friends} dataId={`player-friends-${player.id}`} />
+            </>
+          ) : null}
         </Tabs>
       ) : null}
     </li>

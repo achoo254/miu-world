@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { SAFE_CANNED_CHATS, type ServerWsMessage } from '@miu/schema/multiplayer';
 import { createGameStore, type GameCommand } from '../../game-bridge/game-store';
+import { playerSettings } from '../../game-bridge/player-settings';
 import { createSocialStore } from '../../game-bridge/social-store';
 import { linesOf, setLangMode } from '../../ui/i18n/i18n';
 import type { GuardedGltfLoader } from '../asset-loader';
@@ -173,6 +174,48 @@ describe('the online session', () => {
       vi.advanceTimersByTime(10_000);
       expect(FakeSocket.last).toBe(ws);
       expect(social.getSnapshot().party).toBeNull();
+      online.dispose();
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+});
+
+describe('friends in the online session', () => {
+  it('asks a player to be friends, shows requests for her, and the answers to hers', () => {
+    const { ws, social, online } = session();
+    social.send({ type: 'befriend', to: 'p-b' });
+    expect(ws.sent.at(-1)).toEqual({ type: 'friend-request', to: 'p-b' });
+    const id = '00000000-0000-4000-8000-000000000001';
+    ws.receive({ type: 'friend-request', request: { id, from: { displayName: 'Bé Bông', species: 'rabbit', isBot: true } } });
+    expect(social.getSnapshot().friendAsks).toEqual([{ id, from: { id, name: 'Bé Bông', isBot: true, species: 'rabbit' } }]);
+    ws.receive({ type: 'friend-news', kind: 'added', who: { displayName: 'Tôm', species: 'fox', isBot: false } });
+    expect(social.getSnapshot().toast).toMatchObject({ kind: 'friend', added: true, name: 'Tôm', isBot: false });
+    online.dispose();
+  });
+
+  it('keeps the list of who else is in the room', () => {
+    const { ws, social, online } = session();
+    const presence = { displayName: 'Tôm', isBot: false, species: 'fox', outfit: [], pet: null, x: 1, y: 1, z: 1, yaw: 0, speed: 0, action: 'idle' as const, riding: false, bubble: null };
+    ws.receive({ type: 'spawn', player: { id: 'p-b', ...presence } });
+    expect(social.getSnapshot().room).toEqual([{ id: 'p-b', name: 'Tôm', isBot: false, species: 'fox' }]);
+    ws.receive({ type: 'despawn', id: 'p-b' });
+    expect(social.getSnapshot().room).toEqual([]);
+    online.dispose();
+  });
+});
+
+describe('the online switch in a running game', () => {
+  it('stays out after the server says she plays offline, and comes back when she switches online on', () => {
+    vi.useFakeTimers();
+    try {
+      const { ws, online } = session();
+      ws.onclose?.({ code: 4403 });
+      vi.advanceTimersByTime(120_000);
+      expect(FakeSocket.last).toBe(ws);
+      playerSettings.set({ onlineEnabled: false, botsEnabled: true });
+      playerSettings.set({ onlineEnabled: true, botsEnabled: true });
+      expect(FakeSocket.last).not.toBe(ws);
       online.dispose();
     } finally {
       vi.useRealTimers();

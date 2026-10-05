@@ -128,6 +128,10 @@ export function ProfileScreen() {
                 <Icon name="trophy" size={28} />
                 <T k="profile.achievements" />
               </Link>
+              <Link to="/friends" className={buttonClass('secondary')} data-id="profile-friends">
+                <span aria-hidden="true">🤝</span>
+                <T k="friends.title" />
+              </Link>
             </section>
           </>
         );

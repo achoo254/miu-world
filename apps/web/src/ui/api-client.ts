@@ -59,6 +59,7 @@ const MESSAGES: Readonly<Record<string, TextKey>> = {
   'invalid-equipment': 'errors.invalidEquipment',
   'invalid-character-name': 'errors.invalidCharacterName',
   'invalid-species': 'errors.invalidSpecies',
+  'friends-full': 'errors.friendsFull',
 };
 
 /** The message for a failed call, in the display mode chosen when it failed. */

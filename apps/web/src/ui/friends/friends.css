@@ -1,0 +1,29 @@
+/* Friends (mock designs/multiplayer.png frames 2, 8 and 9): parchment rows; values from tokens.css only;
+ * touch targets ≥ 48px. */
+.friends-panel { display: grid; gap: var(--space-sm); padding: var(--space-md); }
+.friends-panel .tabs-tab { min-height: 3rem; }
+.friend-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-xs); }
+.friend-row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm);
+  min-height: 3.5rem; padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-field); background: var(--color-surface-faint);
+}
+.friend-portrait {
+  flex-shrink: 0; width: 2.75rem; height: 2.75rem; border-radius: 50%; overflow: hidden;
+  border: 2px solid var(--color-grass); background: var(--color-sky-mid);
+}
+.friend-who { display: grid; min-width: 8rem; flex: 1; }
+.friend-name { font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.friend-line { font-size: var(--text-sm); color: var(--color-ink-soft); }
+.friend-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs); }
+.friend-heading { margin: var(--space-xs) 0 0; font-family: var(--font-display); font-size: var(--text-body); }
+.friend-requests { display: grid; gap: var(--space-xs); }
+.friend-ask-who { display: flex; align-items: center; gap: var(--space-sm); }
+/* The HUD's "Bạn bè" button, with the number of requests waiting. */
+.friends-hud-button { position: relative; justify-self: start; }
+.friends-hud-count {
+  position: absolute; top: calc(-1 * var(--space-xs)); right: calc(-1 * var(--space-xs));
+  display: grid; place-items: center; min-width: 1.5rem; height: 1.5rem; padding: 0 var(--space-xs);
+  border-radius: var(--radius-pill); background: var(--color-danger); color: var(--color-on-primary);
+  font-size: var(--text-sm); font-weight: 800;
+}
