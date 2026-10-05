@@ -114,6 +114,7 @@ const BOSS_SHOTS: Record<string, string> = {
   '1-ban-do-cac-trum': 'Bản đồ lớn: nhóm Trùm (vương miện), trùm lớn và bốn trùm canh khu trong danh sách',
   '2-gap-trum-canh-khu': 'Nói chuyện với trùm canh khu: trận đấu của nó bắt đầu ngay',
   '3-dau-tri': 'Đấu trí: HP của trùm, lời mở đầu, câu hỏi theo kỹ năng của khu',
+  '3b-ho-tro-dap-an': 'Mỗi câu của trùm có Hướng dẫn, Gợi ý, Đáp án kèm giải thích; Đáp án mở sau hai lần trượt câu đó, đòn vẫn đánh được',
   '4-sau-mot-don': 'Sau một đòn trúng: HP giảm, trùm nói câu mới',
   '5-chep-vao-vo': 'Thắng: mọi câu của trận để chép vào vở, rồi phần thưởng do server tính',
 };
