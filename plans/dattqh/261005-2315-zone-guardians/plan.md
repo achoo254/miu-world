@@ -1,7 +1,7 @@
 ---
 title: "Boss canh khu và boss trên bản đồ"
 description: "Mỗi map một boss lớn cộng 3–4 boss canh khu, mọi boss hiện trên bản đồ nhỏ và bản đồ lớn; boss lớn chơi được theo tổ đội."
-status: pending
+status: completed
 priority: P2
 tier: L
 branch: main
