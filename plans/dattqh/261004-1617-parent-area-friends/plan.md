@@ -31,7 +31,8 @@
 | 2 | M | Cột `online_enabled`, `bots_enabled` trên người chơi (migration, sao lưu trước); người chơi đổi trong Cài đặt, chủ tài khoản đổi cho người chơi phụ; hub kiểm khi vào phòng và đưa ra khi tắt; bỏ lưu cục bộ | `apps/server/src/db`, `apps/server/src/multiplayer`, `apps/web/src/ui/system/**` |
 | 3 | L | Bạn bè: `friend_requests`, `friendships` (người chơi với người chơi, người chơi với bạn máy); gửi lời mời từ người chơi cùng phòng hoặc khi chạm vào nhân vật, người nhận chấp nhận/từ chối, giới hạn tần suất gửi; bạn máy trả lời theo hành vi mô phỏng; danh sách bạn chỉ hiện tên nhân vật, có nhãn bạn máy | `apps/server/src/friend/**` (mới), `apps/server/src/multiplayer`, `packages/schema`, `apps/web/src/ui/friends/**` (mới) |
 | 4 | M | Danh sách chặn của người chơi, bỏ chặn, xóa bạn; chủ tài khoản quản lý bạn và chặn của người chơi phụ | `apps/web/src/ui/friends/**`, `apps/server/src/multiplayer` |
-| 5 | S | Văn bản: trang quyền riêng tư mô tả mã bạn và dữ liệu chia sẻ khi online (tên nhân vật, trang phục, vị trí trong phòng); nếu đổi cách chia sẻ thì nâng lời đồng ý và hỏi người sở hữu trước | `content/legal/**` |
+| 5 | S | Văn bản và quyền dữ liệu: trang quyền riêng tư mô tả bạn bè, chặn, báo cáo và dữ liệu chia sẻ khi online (tên nhân vật, trang phục, thú cưng, vị trí trong phòng); không nâng lời đồng ý lúc này, gộp vào lần nâng sau (Jev 0.89, `reports/jev-261005-1630-online-privacy-home-*.json`); file "Tải dữ liệu của tôi" có thêm bạn bè, lời mời, chặn, báo cáo của từng người chơi | `content/legal/privacy-vi.json`, `apps/server/src/auth/account-routes.ts`, `packages/schema/src/account.ts` |
+| 6 | M | Nhà riêng: map Nhà của bé là phòng riêng của từng người chơi, chỉ chủ nhà, người cùng tổ đội và bạn bè vào được (Jev 0.99); hub chia phòng theo chủ nhà; "Đến chỗ bạn"/"Cùng đi" vào nhà bạn theo cùng luật | `apps/server/src/multiplayer/**`, `apps/web/src/game/multiplayer/**` |
 
 ## Phụ thuộc và file dùng chung
 

@@ -1,0 +1,30 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 771,
+    "output_tokens": 96
+  },
+  "results": {
+    "consent_for_blocks_reports": {
+      "stakes": "high",
+      "choice": "privacy_page_now_consent_later",
+      "confidence": 0.89,
+      "probabilities": {
+        "bump_consent_v4_now": 0.07,
+        "privacy_page_now_consent_later": 0.93,
+        "nothing_yet": 0.0
+      },
+      "decision": "escalate"
+    },
+    "home_room": {
+      "stakes": "medium",
+      "choice": "per_player_home",
+      "confidence": 0.99,
+      "probabilities": {
+        "keep_shared": 0.01,
+        "per_player_home": 0.99
+      },
+      "decision": "auto"
+    }
+  }
+}

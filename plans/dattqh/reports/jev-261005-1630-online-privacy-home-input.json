@@ -1,0 +1,32 @@
+{
+  "state": {
+    "project": "Miu World: a 3D voxel learn-while-playing online game for all ages, like Minecraft; web now, mobile app later. Built 100% by AI. Today only the owner and one child play; no outside players yet.",
+    "today": "2026-10-05",
+    "facts": [
+      "Online play now shows other players' clothes and pets, and lets players wave, send canned lines (no free text), form parties of 2-4, block and report each other.",
+      "New tables store blocks (who blocked whom) and reports (who reported whom, a reason picked from a list). There is no moderation screen yet; reports are only queued.",
+      "Consent v3 (accepted by every account today) describes saved data: display names, PIN if set, game progress, timetable. It does not mention blocks or reports. Changing the consent text means bumping the version and every account accepts again once. The privacy page can be updated without re-consent.",
+      "The 'Nhà của bé' (home) map is one shared room for everyone online, so another player can appear inside someone's home and now interact there. Other maps are shared rooms by design.",
+      "A per-player home room would mean each player's home is a separate room, open to that player and their party members (and later friends)."
+    ]
+  },
+  "questions": {
+    "consent_for_blocks_reports": {
+      "stakes": "high",
+      "instructions": "How should the new block and report data be disclosed?",
+      "criteria": {
+        "privacy_page_now_consent_later": "Describe blocks and reports on the privacy page now (no re-consent); fold them into the next consent version when another change needs one.",
+        "bump_consent_v4_now": "Rewrite the consent now as v4 and make every account accept again.",
+        "nothing_yet": "Change nothing until outsiders play."
+      }
+    },
+    "home_room": {
+      "stakes": "medium",
+      "instructions": "Should the home map become a private room per player?",
+      "criteria": {
+        "per_player_home": "Yes: each player's home is its own room, open to the player and their party members (later friends).",
+        "keep_shared": "No: keep one shared home room for everyone."
+      }
+    }
+  }
+}
