@@ -22,6 +22,13 @@ created: 2026-10-05
 | Mẹo không đổi | Chỉ 2 câu `loading.tipPortal`, `loading.tipTalk`, chọn theo `viaPortal` | `loading-overlay.tsx`, `apps/web/src/ui/i18n/locales/*.json` |
 | Chim không vỗ cánh | Model `animal-parrot.glb` **có** nút `wing-left`, `wing-right` (đã kiểm file) và các clip `idle`, `walk`…; nhiều khả năng clip của mixer ghi đè góc cánh mà `ambient-poses.ts` đặt mỗi khung hình (thứ tự cập nhật), cần đo khi chạy | `apps/web/src/game/ambient/ambient-actor.ts`, `ambient-poses.ts`, `ambient-life.ts` |
 
+### Đọc thêm về chim (05/10/2026)
+
+- Chỉ có một loài bay là vẹt (`ambient-routines.ts`, `parrot`); vùng ngoài dùng cùng lớp ambient.
+- Thứ tự mỗi khung hình đúng: `mixer.update` rồi `applyWings` ghi đè `rotation.z` của `wing-left/right` (`ambient-life.ts`), nên giả thuyết "clip ghi đè cánh" **không đúng**.
+- Model: cánh là tấm phẳng 0,47 × 0,2 × 0,6 gắn ở mép thân (gốc nút ở chỗ khớp, xoay quanh z là vỗ lên xuống, đúng trục); thân rộng 1,25. Cánh nhỏ, bay xa (vòng bán kính 7 trên trời) nên nhịp vỗ ±0,95 rad gần như không thấy; lúc lượn (`glide`) cánh gần như đứng yên nửa vòng.
+- Nghi vấn còn lại cần đo khi chạy: skin gộp (`merge-parts.ts`, xương là chính nút phần) có cập nhật cánh không; nếu có thì vấn đề là nhìn không rõ → tăng biên độ và kích thước cánh khi bay (phóng cánh theo trục x), thêm nhịp nâng thân theo nhịp vỗ, giảm thời gian lượn.
+
 ## Việc làm
 
 1. Đo trước khi sửa: thời gian từng đoạn từ mốc 80% tới `ready` (lần đầu và lần quay lại), trên `quality=low/high`; ghi số vào report. Sửa theo số đo: chạy song song việc độc lập, không chờ API không cần cho khung hình đầu, cho vào chơi khi vùng gần bé xong rồi tải phần còn lại ở nền, giữ cache model/dữ liệu giữa các lần vào map; thanh tiến độ phản ánh đúng các đoạn còn lại.
