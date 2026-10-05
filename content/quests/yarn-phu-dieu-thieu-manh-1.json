@@ -1,0 +1,371 @@
+{
+  "id": "yarn-phu-dieu-thieu-manh-1",
+  "region": "dao-bi-an",
+  "chapter": 3,
+  "title": "Chuyện của Gấu Trúc Thám Hiểm, chương 1: Ba mảnh đá khắc",
+  "status": "active",
+  "category": "story",
+  "summary": "Gấu Trúc Thám Hiểm muốn biết ai đã xây ngôi đền cổ. Bức phù điêu trên tường đền kể chuyện hòn đảo nhưng rơi mất mấy mảnh. {name} tìm lại ba mảnh đá khắc, đọc ra quy luật của bức tranh và chọn hướng đi tìm mảnh giữa.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, trợ lý của nhà thám hiểm",
+    "where": "Khu di tích cổ và đền thờ, cổng di tích cổ, đền thờ bí ẩn, bậc đá trước đền",
+    "goal": "Tìm lại các mảnh đá khắc và hiểu bức phù điêu kể gì",
+    "play": "Tìm ba mảnh đá theo lời tả, tìm quy luật hình khắc, chọn nơi tìm mảnh còn thiếu",
+    "learn": "Đọc lời tả, tìm quy luật lặp lại của hình",
+    "reward": "55 XP, 15 Xu, Skill XP Đọc hiểu và Logic",
+    "next": "Dấu vết dẫn xuống đường hầm tối om dưới nền đền"
+  },
+  "phases": {
+    "hook": "hat-xi-bui",
+    "explore": "tim-manh-da",
+    "learn": "quy-luat-phu-dieu",
+    "challenge": "quy-luat-phu-dieu",
+    "decision": "tim-manh-giua-o-dau",
+    "finale": "ghi-chep-so-1",
+    "reward": "tra-cong-b1",
+    "next": "duong-ham-toi"
+  },
+  "places": {
+    "gau-truc-tham-hiem": "Khu di tích cổ và đền thờ",
+    "tim-manh-da": "Cổng di tích cổ",
+    "st-phu-dieu-thieu-manh-phu-dieu": "Đền thờ bí ẩn",
+    "st-phu-dieu-thieu-manh-bac-da": "Bậc đá trước đền"
+  },
+  "steps": [
+    {
+      "id": "hat-xi-bui",
+      "title": "Hắt xì!",
+      "goTo": "Tới khu di tích cổ và đền thờ, có tiếng hắt xì vang ra",
+      "kind": "dialogue",
+      "target": "gau-truc-tham-hiem",
+      "lines": [
+        {
+          "speaker": "Gấu Trúc Thám Hiểm",
+          "text": "Hắt xì! Xin lỗi, bụi di tích làm tớ hắt hơi suốt. Chào {name}, cậu tới đúng lúc lắm."
+        },
+        {
+          "speaker": "Gấu Trúc Thám Hiểm",
+          "text": "Bức phù điêu trên tường đền kể chuyện hòn đảo, nhưng rơi mất mấy mảnh. Tớ đoán chúng lăn ra phía cổng di tích cổ."
+        },
+        {
+          "speaker": "Gấu Trúc Thám Hiểm",
+          "text": "Nếu ghép đủ, có khi tớ biết được ai đã xây ngôi đền này. Đó là ước mơ lớn nhất của tớ đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Trợ lý {name} sẵn sàng!",
+          "reply": "Cầm lấy cây cọ mềm này. Đồ cổ thì phủi, không được gõ nhé."
+        },
+        {
+          "text": "Cậu đeo mũ thám hiểm oai quá!",
+          "reply": "Thật hả? Hắt xì! Cảm ơn cậu."
+        }
+      ],
+      "en": {
+        "title": "Achoo!",
+        "goTo": "Go to the ancient ruins and temple, someone is sneezing loudly",
+        "lines": [
+          "Achoo! Sorry, the dust here makes me sneeze all day. Hello {name}, you've come at just the right moment.",
+          "The carving on the temple wall tells the island's story, but some pieces have fallen off. I suspect they rolled towards the old gate.",
+          "If we put it back together, I might finally learn who built this temple. That's my biggest dream."
+        ],
+        "choices": [
+          {
+            "text": "Assistant {name}, ready!",
+            "reply": "Take this soft brush. Old things get brushed, never knocked."
+          },
+          {
+            "text": "Your explorer's hat looks great!",
+            "reply": "Really? Achoo! Thank you."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-manh-da",
+      "title": "Ba mảnh đá khắc",
+      "goTo": "Ra cổng di tích cổ tìm các mảnh đá khắc",
+      "kind": "find-object",
+      "prompt": "Gấu Trúc vẽ trong sổ hình dáng từng mảnh. Đọc lời tả rồi tìm cho đủ:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "song",
+          "name": "Mảnh khắc sóng biển",
+          "clue": "Phẳng và mỏng, màu xanh xám, trên mặt có ba đường cong lượn như sóng vỗ.",
+          "target": "st-phu-dieu-thieu-manh-manh-song"
+        },
+        {
+          "id": "troi",
+          "name": "Mảnh khắc mặt trời",
+          "clue": "Nhỏ, ánh vàng, khắc một vòng tròn với những tia ngắn tỏa ra xung quanh.",
+          "target": "st-phu-dieu-thieu-manh-manh-mat-troi"
+        },
+        {
+          "id": "rua",
+          "name": "Mảnh khắc con rùa",
+          "clue": "Phủ rêu xanh, khắc hình con vật có mai tròn và bốn chân bơi.",
+          "target": "st-phu-dieu-thieu-manh-manh-rua"
+        }
+      ],
+      "en": {
+        "title": "Three carved stones",
+        "goTo": "Go to the old gate and look for the carved stones",
+        "prompt": "Gấu Trúc has sketched each piece in his notebook. Read the descriptions and find them all:",
+        "items": [
+          {
+            "name": "The wave stone",
+            "clue": "Flat and thin, blue-grey, with three curling lines across it like breaking waves."
+          },
+          {
+            "name": "The sun stone",
+            "clue": "Small and golden, carved with a circle and short rays all around it."
+          },
+          {
+            "name": "The turtle stone",
+            "clue": "Mossy green, carved with an animal that has a round shell and four paddling legs."
+          }
+        ]
+      }
+    },
+    {
+      "id": "quy-luat-phu-dieu",
+      "title": "Quy luật của bức phù điêu",
+      "goTo": "Mang các mảnh vào đền thờ bí ẩn, tới bức phù điêu",
+      "kind": "challenge",
+      "target": "st-phu-dieu-thieu-manh-phu-dieu",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "skill": "logic",
+      "prompt": "Hàng hình khắc dưới chân bức phù điêu lặp lại theo một quy luật. Ô trống cần mảnh nào?",
+      "elements": [
+        {
+          "id": "e1",
+          "label": "Sóng"
+        },
+        {
+          "id": "e2",
+          "label": "Mặt trời"
+        },
+        {
+          "id": "e3",
+          "label": "Rùa"
+        },
+        {
+          "id": "e4",
+          "label": "Sóng"
+        },
+        {
+          "id": "e5",
+          "label": "Mặt trời"
+        },
+        {
+          "id": "eq",
+          "label": "?"
+        }
+      ],
+      "choices": [
+        {
+          "id": "song",
+          "text": "Mảnh sóng biển"
+        },
+        {
+          "id": "troi",
+          "text": "Mảnh mặt trời"
+        },
+        {
+          "id": "rua",
+          "text": "Mảnh con rùa"
+        }
+      ],
+      "answer": {
+        "choice": "rua"
+      },
+      "support": {
+        "guide": [
+          "Đọc từ trái sang phải: sóng, mặt trời, rùa...",
+          "Nhóm ba hình lặp lại thế nào?"
+        ],
+        "hint": "Sau mặt trời luôn là con rùa.",
+        "answer": {
+          "text": "Đặt mảnh có hình con rùa",
+          "explanation": "Sóng, mặt trời, rùa lặp lại. Ô trống đứng ngay sau mặt trời, nên phải là con rùa."
+        },
+        "en": {
+          "guide": [
+            "Read left to right: wave, sun, turtle...",
+            "How does the group of three repeat?"
+          ],
+          "hint": "The sun is always followed by the turtle.",
+          "answer": {
+            "text": "Put in the turtle carving",
+            "explanation": "Wave, sun, turtle repeats. The gap comes right after a sun, so it must be the turtle."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Khớp rồi! Mảnh rùa trượt vào ô trống vừa khít.",
+          "Gấu Trúc ghi ngay vào sổ: trợ lý {name} tìm ra quy luật.",
+          "Sóng, mặt trời, rùa: người xưa thích nhịp ba lắm."
+        ],
+        "wrong": [
+          "Mảnh ấy cấn mất rồi, thử đếm lại nhóm ba nhé.",
+          "Sau mặt trời chưa bao giờ là sóng đâu.",
+          "Hắt xì! Bụi bay mờ cả mắt, nhìn kỹ lại nào."
+        ],
+        "en": {
+          "right": [
+            "It fits! The turtle stone slides into the gap perfectly.",
+            "Gấu Trúc writes it down at once: assistant {name} found the pattern.",
+            "Wave, sun, turtle: the old builders loved a rhythm of three."
+          ],
+          "wrong": [
+            "That one won't fit; count the groups of three again.",
+            "A wave never comes straight after a sun.",
+            "Achoo! The dust is everywhere; take another careful look."
+          ]
+        }
+      },
+      "en": {
+        "title": "The pattern in the carving",
+        "goTo": "Carry the stones into the mysterious temple, to the carving",
+        "prompt": "The row of carvings along the bottom of the wall repeats in a pattern. Which piece fills the gap?",
+        "elements": [
+          "Wave",
+          "Sun",
+          "Turtle",
+          "Wave",
+          "Sun",
+          "?"
+        ],
+        "choices": [
+          "The wave stone",
+          "The sun stone",
+          "Turtle piece"
+        ]
+      }
+    },
+    {
+      "id": "tim-manh-giua-o-dau",
+      "title": "Mảnh giữa ở đâu?",
+      "goTo": "Ra bậc đá trước đền xem vết kéo lê",
+      "kind": "decision",
+      "target": "st-phu-dieu-thieu-manh-bac-da",
+      "speaker": "Gấu Trúc Thám Hiểm",
+      "prompt": "Bức phù điêu gần đủ, chỉ còn trống một mảnh to ngay chính giữa. Trên bậc đá có vết kéo lê dẫn xuống một khe tối. Đi đâu tìm tiếp?",
+      "choices": [
+        {
+          "id": "xuong-ham",
+          "text": "Theo vết kéo xuống khe tối",
+          "consequence": "Gấu Trúc nhìn khe tối, nuốt nước bọt đánh ực. «Mai... mai mình xuống nhé. Phải chuẩn bị đèn đã.»"
+        },
+        {
+          "id": "doc-so",
+          "text": "Đọc lại sổ ghi chép từ đầu",
+          "consequence": "Trang đầu sổ ghi: «Lối xuống hầm nằm dưới bậc đá thứ ba.» Hai bạn nhìn nhau, đúng chỗ có vết kéo."
+        },
+        {
+          "id": "phui",
+          "text": "Phủi sạch bậc đá xem còn dấu gì",
+          "consequence": "Dưới lớp bụi hiện ra một mũi tên khắc chỉ thẳng xuống khe tối."
+        }
+      ],
+      "en": {
+        "title": "Where is the middle piece?",
+        "goTo": "Step out to the stone steps before the temple to see the drag marks",
+        "prompt": "The carving is nearly whole, with one big gap right in the middle. On the steps, drag marks lead down into a dark crack. Where next?",
+        "choices": [
+          {
+            "text": "Follow the drag marks into the dark crack",
+            "consequence": "Gấu Trúc stares into the dark and gulps. \"Tomorrow... we'll go down tomorrow. We need lamps first.\""
+          },
+          {
+            "text": "Read the notebook again from the start",
+            "consequence": "The first page says: \"The way down lies under the third stone step.\" You look at each other: that's where the marks are."
+          },
+          {
+            "text": "Brush the steps clean for more clues",
+            "consequence": "Under the dust appears a carved arrow pointing straight down into the crack."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ghi-chep-so-1",
+      "title": "Ghi chép số một",
+      "goTo": "Về khu di tích cổ và đền thờ ghi chép cùng Gấu Trúc",
+      "kind": "dialogue",
+      "target": "gau-truc-tham-hiem",
+      "lines": [
+        {
+          "speaker": "Gấu Trúc Thám Hiểm",
+          "text": "Tớ ghi nhé: «Ngày một. Tìm được ba mảnh. Mảnh giữa ở dưới đất.» Hắt xì!"
+        },
+        {
+          "speaker": "Gấu Trúc Thám Hiểm",
+          "text": "Thú thật với cậu, nhà thám hiểm như tớ... hơi ngại chỗ tối. Nhưng mai tớ sẽ mang đủ đèn."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Có tớ đi cùng mà!",
+          "reply": "Vậy thì tớ mang ba cái đèn, một cái cho cậu."
+        }
+      ],
+      "en": {
+        "title": "Field note number one",
+        "goTo": "Back to the ancient ruins and temple to take notes with Gấu Trúc",
+        "lines": [
+          "Writing it down: \"Day one. Three pieces found. Middle piece underground.\" Achoo!",
+          "To be honest, an explorer like me... is a little nervous of dark places. But tomorrow I'll bring plenty of lamps."
+        ],
+        "choices": [
+          {
+            "text": "I'll be right there with you!",
+            "reply": "Then I'll bring three lamps, and one is for you."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tra-cong-b1",
+      "title": "Ba mảnh về chỗ cũ",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bức phù điêu sáng lên dưới nắng chiều: sóng, mặt trời, rùa nối nhau quanh hòn đảo. Gấu Trúc tặng {name} một viên đá bọt núi lửa nhẹ tênh.",
+      "en": {
+        "title": "Three pieces home",
+        "text": "The carving glows in the afternoon sun: waves, suns and turtles circling the island. Gấu Trúc gives {name} a feather-light piece of volcanic pumice."
+      }
+    },
+    {
+      "id": "duong-ham-toi",
+      "title": "Đường hầm tối",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đêm đó Gấu Trúc lau đèn tới khuya. Dưới bậc đá thứ ba, đường hầm dưới nền đền đang chờ, tối như mực.",
+      "en": {
+        "title": "The dark tunnel",
+        "text": "That night Gấu Trúc polishes lamps until late. Under the third step, the tunnel beneath the temple waits, black as ink."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 1,
+      "logic": 1
+    },
+    "items": {
+      "da-bot-nui-lua": 1
+    }
+  },
+  "en": {
+    "title": "Gấu Trúc Thám Hiểm's story, chapter 1: Three carved stones",
+    "summary": "Gấu Trúc Thám Hiểm wants to know who built the ancient temple. The carving on its wall tells the island's story but has lost some pieces. {name} finds three carved stones, reads the pattern of the picture and chooses where to look for the middle piece."
+  }
+}

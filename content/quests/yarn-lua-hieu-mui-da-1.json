@@ -1,0 +1,350 @@
+{
+  "id": "yarn-lua-hieu-mui-da-1",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Chuyện của Thuyền Trưởng Vẹt Biển, chương 1: Cuốn nhật ký ướt sũng",
+  "status": "active",
+  "category": "story",
+  "summary": "Đêm qua sương mù dày đặc, thuyền đánh cá lạc đường mãi mới về. Thuyền Trưởng Vẹt Biển nhớ tới ngọn lửa hiệu ông nội từng giữ, nhưng nhật ký của ông bị gió thổi tung khắp bãi. {name} nhặt lại từng trang, đọc lời dặn và dò bước tới mũi đá.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thủy thủ mới của Thuyền Trưởng Vẹt Biển",
+    "where": "Trước lều thuyền trưởng, bãi biển, cây dừa nghiêng, bến tàu",
+    "goal": "Nhặt lại nhật ký của ông nội thuyền trưởng và biết cách giữ lửa hiệu",
+    "play": "Tìm ba trang nhật ký theo lời tả, đọc lời dặn của ông, dò bước theo bản đồ, chọn việc làm trước",
+    "learn": "Đọc hiểu lời dặn, đọc hướng và đếm bước",
+    "reward": "55 XP, 14 Xu, Skill XP Đọc hiểu",
+    "next": "Muốn đốt lửa hiệu, cần củi, đá lửa và một lối an toàn qua đá ngầm"
+  },
+  "phases": {
+    "hook": "suong-mu-dem-qua",
+    "explore": "nhat-trang-nhat-ky",
+    "learn": "loi-dan-cua-ong",
+    "challenge": "do-buoc-mui-da",
+    "decision": "viec-gi-truoc",
+    "finale": "thu-thuyen-truong",
+    "reward": "tra-cong-a1",
+    "next": "can-cui-va-da"
+  },
+  "places": {
+    "thuyen-truong-vet-bien": "Trước lều thuyền trưởng",
+    "nhat-trang-nhat-ky": "Bãi biển",
+    "st-lua-hieu-mui-da-day-phoi": "Cây dừa nghiêng",
+    "st-lua-hieu-mui-da-hai-au": "Bến tàu"
+  },
+  "steps": [
+    {
+      "id": "suong-mu-dem-qua",
+      "title": "Sương mù đêm qua",
+      "goTo": "Tới trước lều thuyền trưởng, có tiếng vẹt kêu thất thanh",
+      "kind": "dialogue",
+      "target": "thuyen-truong-vet-bien",
+      "lines": [
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Thủy thủ {name}! Sương mù, sương mù! Đêm qua thuyền đánh cá loanh quanh ngoài khơi tới gần sáng mới về được bến."
+        },
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Ngày xưa ông nội ta giữ một ngọn lửa hiệu trên mũi đá. Sương dày cỡ nào, thuyền cũng thấy đường về."
+        },
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Ta mở nhật ký của ông ra phơi thì... phù! Gió thổi bay hết các trang xuống bãi biển rồi. Bay rồi, bay rồi!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Thủy thủ {name} đi nhặt ngay!",
+          "reply": "Hay lắm! Trang nào cũng quý như vàng, như vàng!"
+        },
+        {
+          "text": "Ông thuyền trưởng giữ lửa ạ?",
+          "reply": "Đúng thế, suốt bốn mươi mùa sương. Ta thì... chuyện dài lắm."
+        }
+      ],
+      "en": {
+        "title": "Last night's fog",
+        "goTo": "Head to the front of the captain's tent, a parrot is squawking in alarm",
+        "lines": [
+          "Sailor {name}! Fog, fog! Last night the fishing boats went round in circles out at sea and only got back near dawn.",
+          "Long ago my grandfather kept a signal fire on the rocky point. However thick the fog, the boats could always see their way home.",
+          "I opened his logbook to dry it and... whoosh! The wind blew every page down onto the beach. Gone, gone!"
+        ],
+        "choices": [
+          {
+            "text": "Sailor {name} is on it!",
+            "reply": "Splendid! Every page is worth its weight in gold, in gold!"
+          },
+          {
+            "text": "Your grandfather kept the fire?",
+            "reply": "Yes, for forty foggy seasons. As for me... that's a long story."
+          }
+        ]
+      }
+    },
+    {
+      "id": "nhat-trang-nhat-ky",
+      "title": "Nhặt trang nhật ký",
+      "goTo": "Xuống bãi biển nhặt các trang nhật ký bị gió thổi bay",
+      "kind": "find-object",
+      "prompt": "Thuyền trưởng nhớ ba trang quan trọng nhất. Đọc lời tả rồi tìm từng trang:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "lua",
+          "name": "Trang vẽ ngọn lửa",
+          "clue": "Giấy hơi ngả hồng, giữa trang vẽ một ngọn lửa đang cháy trên đống đá.",
+          "target": "st-lua-hieu-mui-da-trang-lua"
+        },
+        {
+          "id": "thuyen",
+          "name": "Trang vẽ con thuyền",
+          "clue": "Giấy xanh như nước biển, vẽ một con thuyền nhỏ đang quay mũi về phía đốm sáng.",
+          "target": "st-lua-hieu-mui-da-trang-thuyen"
+        },
+        {
+          "id": "mui",
+          "name": "Trang vẽ mũi đá",
+          "clue": "Trang bị cong mép vì ướt, vẽ một mũi đá nhô ra biển với những mũi tên đếm bước.",
+          "target": "st-lua-hieu-mui-da-trang-mui-da"
+        }
+      ],
+      "en": {
+        "title": "Gathering the pages",
+        "goTo": "Go down to the beach and pick up the windblown logbook pages",
+        "prompt": "The captain remembers the three most important pages. Read the descriptions and find each one:",
+        "items": [
+          {
+            "name": "The page with a flame",
+            "clue": "Slightly pinkish paper, with a flame burning on a pile of rocks in the middle."
+          },
+          {
+            "name": "The page with a boat",
+            "clue": "Paper blue as the sea, showing a little boat turning its bow towards a dot of light."
+          },
+          {
+            "name": "The page with the point",
+            "clue": "A page curled at the edges from the damp, showing a rocky point and arrows counting out steps."
+          }
+        ]
+      }
+    },
+    {
+      "id": "loi-dan-cua-ong",
+      "title": "Lời dặn của ông",
+      "goTo": "Mang các trang tới cây dừa nghiêng, phơi lên dây rồi đọc",
+      "kind": "read",
+      "target": "st-lua-hieu-mui-da-day-phoi",
+      "skill": "doc-hieu",
+      "text": "Nhật ký của Vẹt Đỏ, người giữ lửa:\nĐêm có sương mù, đốt lửa trên mũi đá đầu đảo.\nCứ đếm tới mười thì lấy tấm ván che lửa một lần rồi mở ra. Ngôi sao không bao giờ nháy theo nhịp, nên thuyền nhìn là biết ngay đó là lửa nhà mình.\nCủi phải khô, đá lửa phải đỏ, người giữ lửa không được ngủ gật.",
+      "question": "Vì sao ông che lửa mỗi lần đếm tới mười?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Để lửa đỡ tốn củi"
+        },
+        {
+          "id": "b",
+          "text": "Để thuyền nhận ra đó là lửa hiệu, không nhầm với sao"
+        },
+        {
+          "id": "c",
+          "text": "Để ông được nghỉ tay"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Tìm câu nói về ngôi sao.",
+          "Đọc xem thuyền «biết ngay» điều gì."
+        ],
+        "hint": "Sao không nháy theo nhịp, lửa hiệu thì có.",
+        "answer": {
+          "text": "Để thuyền phân biệt lửa hiệu với ngôi sao",
+          "explanation": "Nhật ký viết: sao không nháy theo nhịp, nên lửa nháy đều mười tiếng một lần là lửa nhà mình."
+        },
+        "en": {
+          "guide": [
+            "Find the sentence about stars.",
+            "Read what the boats \"know at once\"."
+          ],
+          "hint": "Stars don't blink in time; the signal fire does.",
+          "answer": {
+            "text": "So the boats can tell the fire from a star",
+            "explanation": "The logbook says stars never blink in time, so a fire that blinks every count of ten must be ours."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi, đúng rồi! Lửa biết nháy mắt với thuyền.",
+          "Thuyền trưởng vỗ cánh: ông ta mà nghe được chắc vui lắm.",
+          "{name} đọc nhật ký như một thủy thủ lão luyện."
+        ],
+        "wrong": [
+          "Ông có nhắc tới củi, nhưng không phải lý do này đâu.",
+          "Người giữ lửa còn không được ngủ gật cơ mà, nghỉ sao được.",
+          "Đọc lại câu có chữ «ngôi sao» nhé, thủy thủ."
+        ],
+        "en": {
+          "right": [
+            "Right, right! The fire winks at the boats.",
+            "The captain flaps his wings: Grandfather would be so pleased to hear that.",
+            "{name} reads a logbook like an old sea dog."
+          ],
+          "wrong": [
+            "Grandfather mentions wood, but that isn't the reason.",
+            "The keeper isn't even allowed to doze, never mind rest.",
+            "Read the sentence with the word \"stars\" again, sailor."
+          ]
+        }
+      },
+      "en": {
+        "title": "Grandfather's instructions",
+        "goTo": "Take the pages to the leaning palm, hang them up and read them",
+        "text": "Logbook of Vẹt Đỏ, keeper of the fire:\nOn foggy nights, light the fire on the point at the tip of the island.\nEvery time you count to ten, cover the flame with a board once, then uncover it. Stars never blink in time, so the boats know at once it is our fire.\nThe wood must be dry, the flint must be red, and the keeper must not doze off.",
+        "question": "Why did Grandfather cover the fire every time he counted to ten?",
+        "choices": [
+          "To save firewood",
+          "So the boats could tell it was the signal fire, not a star",
+          "So he could rest his wings"
+        ]
+      }
+    },
+    {
+      "id": "do-buoc-mui-da",
+      "title": "Dò bước tới mũi đá",
+      "kind": "challenge",
+      "trigger": "auto",
+      "mechanic": "minigame",
+      "prompt": "Trang vẽ mũi đá có số bước và mũi tên. Đếm bước theo bản đồ cổ, chạm đúng ô đất ông đánh dấu nhé!",
+      "game": "treasure-map-steps",
+      "goal": 4,
+      "en": {
+        "title": "Pacing out the point",
+        "prompt": "The point page has step counts and arrows. Follow the old map and tap the very square Grandfather marked!"
+      }
+    },
+    {
+      "id": "viec-gi-truoc",
+      "title": "Việc gì trước?",
+      "goTo": "Ra bến tàu, Chị Hải Âu vừa bay về",
+      "kind": "decision",
+      "target": "st-lua-hieu-mui-da-hai-au",
+      "speaker": "Chị Hải Âu Đưa Tin",
+      "prompt": "Chị Hải Âu đáp xuống bến: «Gió trở mùi rồi, đêm mai sương lại về đấy.» Thuyền trưởng hỏi {name}: làm gì trước?",
+      "choices": [
+        {
+          "id": "cui",
+          "text": "Đi gom củi khô ngay hôm nay",
+          "consequence": "Chị Hải Âu gật gù: «Củi dạt khô nhất nằm quanh vũng nước triều, nhưng phải chờ triều rút mới lấy được.»"
+        },
+        {
+          "id": "hoi",
+          "text": "Nhờ Chị Hải Âu bay báo cho các thuyền",
+          "consequence": "Chị Hải Âu vút lên trời: «Tôi báo ngay! Nhưng báo rồi thì vẫn cần lửa để thuyền thấy đường về đấy.»"
+        },
+        {
+          "id": "xem",
+          "text": "Lên xem nền lửa cũ còn dùng được không",
+          "consequence": "Chị Hải Âu bay một vòng rồi về báo: nền đá còn nguyên, chỉ thiếu củi, đá lửa và một lối qua đá ngầm."
+        }
+      ],
+      "en": {
+        "title": "What comes first?",
+        "goTo": "Go out to the pier, the gull has just flown in",
+        "prompt": "The gull lands on the pier: \"The wind smells different, the fog is coming back tomorrow night.\" The captain asks {name}: what first?",
+        "choices": [
+          {
+            "text": "Gather dry wood today",
+            "consequence": "The gull nods: \"The driest driftwood lies round the tide pools, but you must wait for low tide to reach it.\""
+          },
+          {
+            "text": "Ask the gull to fly and warn the boats",
+            "consequence": "The gull shoots into the sky: \"I'll tell them! But they'll still need a fire to find their way home.\""
+          },
+          {
+            "text": "Go and see whether the old fire base still works",
+            "consequence": "The gull circles once and reports: the stone base is whole; it only lacks wood, flint and a way through the reef."
+          }
+        ]
+      }
+    },
+    {
+      "id": "thu-thuyen-truong",
+      "title": "Thuyền trưởng thở dài",
+      "goTo": "Quay lại trước lều thuyền trưởng báo tin",
+      "kind": "dialogue",
+      "target": "thuyen-truong-vet-bien",
+      "lines": [
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Việc nào cũng phải làm, thủy thủ ạ. Ông ta viết: củi khô, đá lửa đỏ, và một lối đi qua đá ngầm khi triều xuống."
+        },
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Ta sẽ làm được. Ta là thuyền trưởng mà. Thuyền trưởng, thuyền trưởng!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Thủy thủ {name} theo thuyền trưởng!",
+          "reply": "Vậy mai triều xuống, ta gặp nhau ở vũng nước triều."
+        }
+      ],
+      "en": {
+        "title": "The captain sighs",
+        "goTo": "Go back to the front of the captain's tent with the news",
+        "lines": [
+          "Every one of those needs doing, sailor. Grandfather wrote: dry wood, red flint, and a way through the reef at low tide.",
+          "I can do it. I'm a captain, after all. A captain, a captain!"
+        ],
+        "choices": [
+          {
+            "text": "Sailor {name} is with you, Captain!",
+            "reply": "Then tomorrow at low tide, we meet at the tide pools."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tra-cong-a1",
+      "title": "Nhật ký trở về",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thuyền trưởng kẹp các trang vào nhật ký, buộc dây thật chặt. Ông thưởng cho thủy thủ {name} một chiếc vỏ ốc xà cừ óng ánh.",
+      "en": {
+        "title": "The logbook is whole again",
+        "text": "The captain tucks the pages back into the logbook and ties it tight. He rewards sailor {name} with a shimmering mother-of-pearl shell."
+      }
+    },
+    {
+      "id": "can-cui-va-da",
+      "title": "Củi khô và đá lửa",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đêm ấy thuyền trưởng ngủ ôm cuốn nhật ký. Sáng mai, khi triều rút khỏi vũng nước triều, sẽ là lúc đi tìm củi, đá lửa và lối qua đá ngầm.",
+      "en": {
+        "title": "Dry wood and flint",
+        "text": "That night the captain sleeps hugging the logbook. Tomorrow, when the tide leaves the pools, it will be time to find wood, flint and a way through the reef."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": {
+      "doc-hieu": 1
+    },
+    "items": {
+      "vo-oc-xa-cu": 1
+    }
+  },
+  "en": {
+    "title": "Thuyền Trưởng Vẹt Biển's story, chapter 1: The soggy logbook",
+    "summary": "Last night a thick fog rolled in and the fishing boats took ages to find their way home. Captain Vẹt Biển remembers the signal fire his grandfather used to keep, but the old logbook has blown all over the beach. {name} gathers the pages, reads the instructions and paces out the way to the point."
+  }
+}

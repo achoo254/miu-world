@@ -1,0 +1,368 @@
+{
+  "id": "yarn-lua-hieu-mui-da-4",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Chuyện của Thuyền Trưởng Vẹt Biển, chương 4: Lửa hiệu trong sương",
+  "status": "active",
+  "category": "story",
+  "summary": "Đêm sương lớn nhất mùa, {name} cùng thuyền trưởng nhóm lửa hiệu đúng như ông nội dặn, đếm thuyền về bến, dẫn từng chiếc cập cầu tàu, rồi theo thuyền trưởng ra khơi lần đầu trong đời ông.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thủy thủ của Thuyền Sò Đỏ",
+    "where": "Lều của Vẹt Biển, mũi đá đầu đảo, bến tàu, ngoài rạn san hô",
+    "goal": "Đưa cả ba thuyền lưới về bến an toàn trong đêm sương",
+    "play": "Xếp đúng các bước nhóm lửa, tính số thuyền còn ngoài khơi, lái thuyền cập bến, chọn cách ra khơi dẫn đường",
+    "learn": "Sắp xếp trình tự công việc, phép trừ",
+    "reward": "80 XP, 22 Xu, Skill XP Kể chuyện và Phép trừ",
+    "next": "Thuyền trưởng bắt đầu học đi biển, mỗi sáng một vòng quanh rạn"
+  },
+  "phases": {
+    "hook": "dem-suong",
+    "explore": "nhom-lua",
+    "learn": "dem-thuyen",
+    "challenge": "dan-thuyen-cap-ben",
+    "decision": "ra-khoi",
+    "finale": "ngoai-ran",
+    "reward": "tra-cong-a4",
+    "next": "moi-sang-mot-vong"
+  },
+  "places": {
+    "thuyen-truong-vet-bien": "Lều của Vẹt Biển",
+    "st-lua-hieu-mui-da-dong-lua": "Mũi đá đầu đảo",
+    "st-lua-hieu-mui-da-bang-thuyen": "Bến tàu",
+    "st-lua-hieu-mui-da-thuyen-so-do": "Bến tàu",
+    "st-lua-hieu-mui-da-phao-ngoai-ran": "Ngoài rạn san hô"
+  },
+  "steps": [
+    {
+      "id": "dem-suong",
+      "title": "Đêm sương",
+      "goTo": "Tới lều của Vẹt Biển, thuyền trưởng đã thắp đèn lồng",
+      "kind": "dialogue",
+      "target": "thuyen-truong-vet-bien",
+      "lines": [
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Sương về rồi, thủy thủ. Dày như cháo, dày như cháo! Ta không thấy nổi đầu mỏ mình nữa."
+        },
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Đêm nay ta làm đúng như ông: đốt lửa, đếm tới mười, che lửa. Lên mũi đá thôi!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đèn lồng sẵn sàng, thuyền trưởng!",
+          "reply": "Tốt lắm. Đêm nay, không thuyền nào bị bỏ lại ngoài kia."
+        }
+      ],
+      "en": {
+        "title": "Fog night",
+        "goTo": "Go to Vẹt Biển's tent, the captain has lit a lantern",
+        "lines": [
+          "The fog is here, sailor. Thick as porridge, thick as porridge! I can't even see the tip of my own beak.",
+          "Tonight we do it just like Grandfather: light the fire, count to ten, cover it. Up to the point!"
+        ],
+        "choices": [
+          {
+            "text": "Lantern ready, Captain!",
+            "reply": "Good. Tonight no boat gets left out there."
+          }
+        ]
+      }
+    },
+    {
+      "id": "nhom-lua",
+      "title": "Nhóm lửa hiệu",
+      "goTo": "Lên mũi đá đầu đảo, nhóm đống lửa hiệu",
+      "kind": "challenge",
+      "target": "st-lua-hieu-mui-da-dong-lua",
+      "mechanic": "sort",
+      "skill": "ke-chuyen",
+      "prompt": "Nhật ký ghi đủ các bước nhóm lửa nhưng gió làm xáo trộn. Xếp lại theo đúng thứ tự ông Vẹt Đỏ làm.",
+      "items": [
+        {
+          "id": "chau",
+          "label": "Châm lửa"
+        },
+        {
+          "id": "da",
+          "label": "Xếp đá chắn gió"
+        },
+        {
+          "id": "guong",
+          "label": "Dựng gương đồng phía sau"
+        },
+        {
+          "id": "cui",
+          "label": "Chất củi khô"
+        },
+        {
+          "id": "dau",
+          "label": "Rưới dầu dừa"
+        }
+      ],
+      "answer": {
+        "order": [
+          "da",
+          "cui",
+          "dau",
+          "chau",
+          "guong"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Lửa cần củi trước rồi mới châm được.",
+          "Gương dựng sau cùng, khi lửa đã cháy."
+        ],
+        "hint": "Bước đầu tiên là xếp đá chắn gió.",
+        "answer": {
+          "text": "Xếp đá chắn gió, chất củi khô, rưới dầu dừa, châm lửa, dựng gương đồng",
+          "explanation": "Phải chắn gió rồi mới chất củi, có củi mới rưới dầu và châm lửa; lửa cháy rồi gương mới có ánh sáng để hắt đi."
+        },
+        "en": {
+          "guide": [
+            "A fire needs wood before you can light it.",
+            "The mirror goes up last, once the fire is burning."
+          ],
+          "hint": "The very first step is the windbreak of stones.",
+          "answer": {
+            "text": "Stones for a windbreak, dry wood, coconut oil, light it, raise the mirror",
+            "explanation": "Shelter first, then wood; with wood you can add oil and light it; once it burns, the mirror has light to throw."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Lửa bùng lên, gương đồng sáng rực! Đúng từng bước.",
+          "Thuyền trưởng đếm theo: một, hai, ba, bốn, năm bước, chuẩn chuẩn!",
+          "Ông Vẹt Đỏ mà thấy chắc phải giơ cánh chào."
+        ],
+        "wrong": [
+          "Chưa có củi thì châm lửa vào đâu nhỉ?",
+          "Gió thổi tắt mất rồi, hình như thiếu đá chắn ở đầu.",
+          "Gương dựng sớm quá thì chẳng có gì để hắt sáng."
+        ],
+        "en": {
+          "right": [
+            "The fire roars up and the mirror blazes! Every step right.",
+            "The captain counts along: one, two, three, four, five steps, spot on!",
+            "Vẹt Đỏ himself would have raised a wing in salute."
+          ],
+          "wrong": [
+            "Light the fire... on what, with no wood yet?",
+            "The wind blew it out; maybe the stones should come first.",
+            "Raise the mirror too early and there's nothing to reflect."
+          ]
+        }
+      },
+      "en": {
+        "title": "Lighting the signal fire",
+        "goTo": "Climb to the point and build the signal fire",
+        "prompt": "The logbook lists every step for lighting the fire, but the wind has jumbled them. Put them back in the order Vẹt Đỏ used.",
+        "items": [
+          "Light it",
+          "Stack stones as a windbreak",
+          "Raise the copper mirror behind",
+          "Pile up dry wood",
+          "Pour on coconut oil"
+        ]
+      }
+    },
+    {
+      "id": "dem-thuyen",
+      "title": "Còn mấy thuyền?",
+      "goTo": "Xuống bến tàu xem bảng đếm thuyền",
+      "kind": "riddle",
+      "target": "st-lua-hieu-mui-da-bang-thuyen",
+      "skill": "phep-tru",
+      "question": "Bảng ở bến ghi: sáng nay 9 thuyền ra khơi. Từ lúc lửa cháy đã về 6 thuyền. Còn mấy thuyền đang ở ngoài sương?",
+      "answer": {
+        "value": 3
+      },
+      "support": {
+        "guide": [
+          "Ra khơi 9, đã về 6.",
+          "Lấy 9 bớt đi 6."
+        ],
+        "hint": "Đếm tiếp từ 6 lên 9 là mấy bước?",
+        "answer": {
+          "text": "3 thuyền",
+          "explanation": "9 − 6 = 3: còn ba thuyền lưới chưa về."
+        },
+        "en": {
+          "guide": [
+            "9 went out, 6 are back.",
+            "Take 6 away from 9."
+          ],
+          "hint": "How many steps from 6 up to 9?",
+          "answer": {
+            "text": "3 boats",
+            "explanation": "9 − 6 = 3: three net boats are still out."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba thuyền! Đúng như Chị Hải Âu báo tin.",
+          "Trừ gọn gàng, giờ ta biết phải chờ ai.",
+          "Thuyền trưởng ghi số 3 lên bảng bằng than."
+        ],
+        "wrong": [
+          "Đó là số thuyền đã về rồi mà.",
+          "Ra khơi nhiều hơn số đã về, nên phải trừ.",
+          "Đếm ngón tay từ 6 lên 9 xem nào."
+        ],
+        "en": {
+          "right": [
+            "Three boats! Just as the gull said.",
+            "Neatly done; now we know who we're waiting for.",
+            "The captain chalks a 3 on the board."
+          ],
+          "wrong": [
+            "That's how many came back.",
+            "More went out than came back, so take away.",
+            "Count on your fingers from 6 to 9."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many boats are left?",
+        "goTo": "Go down to the pier and read the boat board",
+        "question": "The pier board says: 9 boats went out this morning. Since the fire was lit, 6 have come home. How many are still out in the fog?"
+      }
+    },
+    {
+      "id": "dan-thuyen-cap-ben",
+      "title": "Dẫn thuyền cập bến",
+      "kind": "challenge",
+      "trigger": "auto",
+      "mechanic": "minigame",
+      "prompt": "Một thuyền lưới vừa hiện ra trong sương! Kéo ngón tay dẫn thuyền cập cầu tàu thật chậm, đừng để va mạnh nhé.",
+      "game": "ferry-dock",
+      "goal": 3,
+      "en": {
+        "title": "Guiding boats to the pier",
+        "prompt": "A net boat looms out of the fog! Drag your finger to bring it alongside the pier slowly, no bumping."
+      }
+    },
+    {
+      "id": "ra-khoi",
+      "title": "Thuyền cuối cùng",
+      "kind": "decision",
+      "target": "st-lua-hieu-mui-da-thuyen-so-do",
+      "speaker": "Thuyền Trưởng Vẹt Biển",
+      "prompt": "Còn một thuyền mãi chưa thấy đâu, có lẽ mắc ngoài rạn. Thuyền trưởng nhìn Thuyền Sò Đỏ, nhìn biển, rồi nhìn {name}.",
+      "choices": [
+        {
+          "id": "cung-di",
+          "text": "Cùng thuyền trưởng ra khơi dẫn đường",
+          "consequence": "Thuyền trưởng gật đầu, buộc chặt mũ. «Thủy thủ ngồi mũi, ta cầm lái. Đi!»"
+        },
+        {
+          "id": "hat",
+          "text": "Hát bài ca giữ lửa của ông để đỡ say sóng",
+          "consequence": "Vừa hát vừa chèo, sóng lắc thế nào thuyền trưởng cũng chỉ hơi chóng mặt một tí."
+        },
+        {
+          "id": "giu-lua",
+          "text": "Để thuyền trưởng giữ lửa, {name} tự chèo đi",
+          "consequence": "Thuyền trưởng lắc đầu: «Không, thuyền trưởng không để thủy thủ đi một mình.» Rồi ông bước lên thuyền."
+        }
+      ],
+      "en": {
+        "title": "The last boat",
+        "prompt": "One boat still hasn't appeared; it may be stuck out by the reef. The captain looks at the Red Shell, at the sea, then at {name}.",
+        "choices": [
+          {
+            "text": "Sail out with the captain to lead the way",
+            "consequence": "The captain nods and ties his hat on tight. \"Sailor at the bow, I'll steer. Go!\""
+          },
+          {
+            "text": "Sing Grandfather's fire-keeping song against seasickness",
+            "consequence": "Singing and rowing, the captain feels only a little dizzy however the waves rock."
+          },
+          {
+            "text": "Let the captain mind the fire while {name} rows out alone",
+            "consequence": "The captain shakes his head: \"No, a captain never sends his sailor alone.\" And he steps aboard."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ngoai-ran",
+      "title": "Lần đầu ra khơi",
+      "goTo": "Chèo Thuyền Sò Đỏ ra ngoài rạn san hô, tới phao đỏ",
+      "kind": "dialogue",
+      "target": "st-lua-hieu-mui-da-phao-ngoai-ran",
+      "lines": [
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Kia rồi! Thuyền lưới mắc ở phao đỏ. Theo ta, theo ánh lửa mà vào! Ọe... ta ổn, ta ổn!"
+        },
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Thủy thủ {name}, ta đang ở ngoài rạn san hô. Lần đầu tiên! Ông ơi, cháu ra khơi rồi!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Thuyền trưởng thật sự rồi!",
+          "reply": "Một thuyền trưởng say sóng, nhưng thật sự. Thật sự!"
+        }
+      ],
+      "en": {
+        "title": "Out to sea at last",
+        "goTo": "Row the Red Shell out beyond the coral reef to the red buoy",
+        "lines": [
+          "There! The net boat is caught at the red buoy. Follow me, follow the firelight in! Urp... I'm fine, I'm fine!",
+          "Sailor {name}, I'm beyond the coral reef. For the first time ever! Grandfather, I've gone to sea!"
+        ],
+        "choices": [
+          {
+            "text": "A real captain at last!",
+            "reply": "A seasick captain, but a real one. A real one!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tra-cong-a4",
+      "title": "Cả chín thuyền đã về",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bình minh lên, chín thuyền nằm ngay hàng ở bến. Thuyền trưởng ghi vào cuối nhật ký của ông: «Đêm nay cháu giữ lửa và ra khơi, cùng thủy thủ {name}.» Rồi ông trao cho {name} mảnh bản đồ cổ nhất trong rương.",
+      "en": {
+        "title": "All nine boats are home",
+        "text": "At sunrise nine boats lie in a neat row at the pier. At the end of Grandfather's logbook the captain writes: \"Tonight I kept the fire and went to sea, with sailor {name}.\" Then he hands {name} the oldest map piece in his chest."
+      }
+    },
+    {
+      "id": "moi-sang-mot-vong",
+      "title": "Mỗi sáng một vòng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Từ nay, sáng nào Thuyền Trưởng Vẹt Biển cũng chèo một vòng quanh rạn, mỗi ngày xa thêm một chút. Ông hứa một ngày sẽ đưa {name} tới tận chân trời, rồi về kể cho em họ Vẹt Xanh trong khu rừng xa nghe.",
+      "en": {
+        "title": "One lap every morning",
+        "text": "Every morning now Captain Vẹt Biển rows one lap of the reef, a little further each day. He promises one day to take {name} all the way to the horizon, then fly home and tell his cousin Vẹt Xanh in the faraway forest all about it."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 22,
+    "skillXp": {
+      "ke-chuyen": 1,
+      "phep-tru": 1
+    },
+    "items": {
+      "manh-ban-do-kho-bau": 1
+    }
+  },
+  "en": {
+    "title": "Thuyền Trưởng Vẹt Biển's story, chapter 4: A signal fire in the fog",
+    "summary": "On the foggiest night of the season, {name} and the captain light the signal fire just as Grandfather taught, count the boats coming home, guide each one to the pier, then sail out with the captain for the first time in his life."
+  }
+}

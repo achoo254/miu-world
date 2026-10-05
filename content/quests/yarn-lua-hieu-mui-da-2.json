@@ -1,0 +1,288 @@
+{
+  "id": "yarn-lua-hieu-mui-da-2",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Chuyện của Thuyền Trưởng Vẹt Biển, chương 2: Đường qua đá ngầm",
+  "status": "active",
+  "category": "story",
+  "summary": "Triều rút, {name} cùng thuyền trưởng gom củi, đá lửa và dầu dừa, dò lối an toàn qua đá ngầm rồi lên tới nền lửa cũ trên mũi đá. Ở đó, ông nội để lại một bài toán về củi.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thủy thủ dò đường",
+    "where": "Cửa lều thuyền trưởng, vũng nước triều, mũi đá đầu đảo, bến tàu",
+    "goal": "Mang đủ đồ đốt lửa lên mũi đá và tính đủ củi cho những đêm sương",
+    "play": "Tìm củi, đá lửa, dầu dừa quanh vũng triều, dò đá ngầm, giải bài toán củi, chọn người giữ lửa",
+    "learn": "Suy luận chỗ nguy hiểm, cộng nhiều số bằng nhau",
+    "reward": "60 XP, 16 Xu, Skill XP Phép cộng",
+    "next": "Lửa cháy rồi nhưng ánh sáng còn yếu, cần chiếc gương đồng ở làng chài"
+  },
+  "phases": {
+    "hook": "trieu-rut",
+    "explore": "gom-do-dot-lua",
+    "learn": "do-da-ngam",
+    "challenge": "bai-toan-cui",
+    "decision": "ai-giu-lua",
+    "finale": "tin-tu-hai-au",
+    "reward": "tra-cong-a2",
+    "next": "lua-con-yeu"
+  },
+  "places": {
+    "thuyen-truong-vet-bien": "Cửa lều thuyền trưởng",
+    "gom-do-dot-lua": "Vũng nước triều",
+    "st-lua-hieu-mui-da-nen-lua": "Mũi đá đầu đảo",
+    "st-lua-hieu-mui-da-hai-au": "Bến tàu"
+  },
+  "steps": [
+    {
+      "id": "trieu-rut",
+      "title": "Triều rút rồi!",
+      "goTo": "Tới cửa lều thuyền trưởng, ông đang đội mũ chờ sẵn",
+      "kind": "dialogue",
+      "target": "thuyen-truong-vet-bien",
+      "lines": [
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Triều rút, triều rút! Thủy thủ {name}, quanh vũng nước triều lúc này đầy củi dạt và đá đẹp."
+        },
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Gom đủ ba thứ rồi ta dò lối qua đá ngầm. Đá ngầm hiểm lắm, ông ta bảo nó cắn cả mạn thuyền."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đá ngầm đâu có răng ạ?",
+          "reply": "Không có răng mà vẫn cắn, đáng sợ thế đấy!"
+        },
+        {
+          "text": "Mình đi thôi, thuyền trưởng!"
+        }
+      ],
+      "en": {
+        "title": "The tide is out!",
+        "goTo": "Go to the door of the captain's tent, he's waiting with his hat on",
+        "lines": [
+          "Low tide, low tide! Sailor {name}, the tide pools are full of driftwood and fine stones right now.",
+          "Gather all three, then we find a way through the reef. The reef is nasty; Grandfather said it bites the sides of boats."
+        ],
+        "choices": [
+          {
+            "text": "Rocks don't have teeth, do they?",
+            "reply": "No teeth, and still it bites. That's how scary it is!"
+          },
+          {
+            "text": "Let's go, Captain!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gom-do-dot-lua",
+      "title": "Gom đồ đốt lửa",
+      "goTo": "Ra vũng nước triều gom củi, đá lửa và dầu dừa",
+      "kind": "search",
+      "targets": [
+        "st-lua-hieu-mui-da-da-lua",
+        "st-lua-hieu-mui-da-cui-dat",
+        "st-lua-hieu-mui-da-dau-dua"
+      ],
+      "en": {
+        "title": "Gathering fire things",
+        "goTo": "Go to the tide pools for wood, flint and coconut oil"
+      }
+    },
+    {
+      "id": "do-da-ngam",
+      "title": "Dò đá ngầm",
+      "kind": "challenge",
+      "trigger": "auto",
+      "mechanic": "minigame",
+      "prompt": "Chạm ô cát để biết quanh đó có mấy hòn đá ngầm. Chỗ nào chắc chắn có đá thì cắm cờ, mở đường lên mũi đá!",
+      "game": "reef-sweeper",
+      "goal": 2,
+      "en": {
+        "title": "Sweeping the reef",
+        "prompt": "Tap a sand square to see how many hidden rocks are around it. Flag every sure rock and open the way to the point!"
+      }
+    },
+    {
+      "id": "bai-toan-cui",
+      "title": "Bài toán củi của ông",
+      "goTo": "Theo lối an toàn lên mũi đá đầu đảo, tới nền lửa cũ",
+      "kind": "riddle",
+      "target": "st-lua-hieu-mui-da-nen-lua",
+      "skill": "phep-cong",
+      "question": "Trên nền đá có khắc: «Mỗi đêm sương đốt 3 bó củi. Mùa này sương về 5 đêm.» Vậy phải gom tất cả bao nhiêu bó củi?",
+      "answer": {
+        "value": 15
+      },
+      "support": {
+        "guide": [
+          "Mỗi đêm 3 bó, có 5 đêm.",
+          "Cộng 3 năm lần: 3 + 3 + 3 + 3 + 3."
+        ],
+        "hint": "Đếm thêm ba: 3, 6, 9...",
+        "answer": {
+          "text": "15 bó củi",
+          "explanation": "3 + 3 + 3 + 3 + 3 = 15, nên cần mười lăm bó củi cho năm đêm sương."
+        },
+        "en": {
+          "guide": [
+            "3 bundles a night, for 5 nights.",
+            "Add 3 five times: 3 + 3 + 3 + 3 + 3."
+          ],
+          "hint": "Count on in threes: 3, 6, 9...",
+          "answer": {
+            "text": "15 bundles",
+            "explanation": "3 + 3 + 3 + 3 + 3 = 15, so fifteen bundles cover five foggy nights."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười lăm bó! Thuyền trưởng gật gù như ông nội.",
+          "Ba, sáu, chín, mười hai, mười lăm: chuẩn, chuẩn!",
+          "Củi đủ cho cả mùa sương rồi, giỏi lắm thủy thủ."
+        ],
+        "wrong": [
+          "Mới tính một đêm thôi, còn bốn đêm nữa cơ.",
+          "Thử đếm thêm ba, năm lần liền xem.",
+          "Thuyền trưởng nghiêng đầu: hình như thiếu mất một đêm."
+        ],
+        "en": {
+          "right": [
+            "Fifteen bundles! The captain nods just like his grandfather.",
+            "Three, six, nine, twelve, fifteen: spot on, spot on!",
+            "Enough wood for the whole foggy season. Well done, sailor."
+          ],
+          "wrong": [
+            "That's just one night; there are four more.",
+            "Try counting on three, five times in a row.",
+            "The captain tilts his head: a night seems to be missing."
+          ]
+        }
+      },
+      "en": {
+        "title": "Grandfather's firewood sum",
+        "goTo": "Follow the safe path up to the point, to the old fire base",
+        "question": "Carved on the fire base: \"Each foggy night burns 3 bundles of wood. This season the fog comes for 5 nights.\" How many bundles are needed in all?"
+      }
+    },
+    {
+      "id": "ai-giu-lua",
+      "title": "Ai giữ lửa?",
+      "kind": "decision",
+      "target": "st-lua-hieu-mui-da-nen-lua",
+      "speaker": "Thuyền Trưởng Vẹt Biển",
+      "prompt": "Ngọn lửa đầu tiên bập bùng trên nền đá. Ông nội dặn người giữ lửa không được ngủ gật. Đêm nay ai thức?",
+      "choices": [
+        {
+          "id": "ca-hai",
+          "text": "Thuyền trưởng và {name} thay phiên nhau",
+          "consequence": "Người đếm tới mười, người che lửa, rồi đổi tay. Chẳng ai buồn ngủ vì bận cười."
+        },
+        {
+          "id": "hat",
+          "text": "Thuyền trưởng giữ, {name} hát cho đỡ buồn ngủ",
+          "consequence": "Thuyền trưởng nhún nhảy theo bài hát, che lửa đúng nhịp như một tay trống."
+        },
+        {
+          "id": "dong-ho",
+          "text": "Dùng cát chảy để đếm thay",
+          "consequence": "Cát chảy hết là che lửa một lần. Thuyền trưởng khen sáng kiến, nhưng vẫn đếm nhẩm theo cho chắc."
+        }
+      ],
+      "en": {
+        "title": "Who keeps the fire?",
+        "prompt": "The first flame flickers on the stone base. Grandfather said the keeper must not doze. Who stays awake tonight?",
+        "choices": [
+          {
+            "text": "The captain and {name} take turns",
+            "consequence": "One counts to ten, the other covers the flame, then you swap. Nobody gets sleepy for all the giggling."
+          },
+          {
+            "text": "The captain keeps it, {name} sings to keep him awake",
+            "consequence": "The captain bobs along to the song and covers the flame in perfect time, like a drummer."
+          },
+          {
+            "text": "Use an hourglass to keep count",
+            "consequence": "Each time the sand runs out, cover the flame. The captain praises the idea but counts along anyway, just in case."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tin-tu-hai-au",
+      "title": "Tin từ ngoài khơi",
+      "goTo": "Xuống bến tàu nghe Chị Hải Âu kể tin",
+      "kind": "dialogue",
+      "target": "st-lua-hieu-mui-da-hai-au",
+      "lines": [
+        {
+          "speaker": "Chị Hải Âu Đưa Tin",
+          "text": "Tôi vừa bay một vòng ngoài khơi. Lửa thì thấy rồi, nhưng chỉ như con đom đóm, đứng xa là mất."
+        },
+        {
+          "speaker": "Chị Hải Âu Đưa Tin",
+          "text": "Ngày xưa ông Vẹt Đỏ dựng một chiếc gương đồng sau đống lửa, ánh sáng hắt xa tới tận rạn san hô cuối."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Chiếc gương ấy giờ ở đâu ạ?",
+          "reply": "Nghe đâu ở làng chài, nhà một bà cụ vá lưới."
+        }
+      ],
+      "en": {
+        "title": "News from out at sea",
+        "goTo": "Go down to the pier to hear the gull's news",
+        "lines": [
+          "I just flew a lap out at sea. The fire shows, but it's like a firefly; from far away it disappears.",
+          "In the old days Vẹt Đỏ set a copper mirror behind the fire, and the light reached all the way to the last coral reef."
+        ],
+        "choices": [
+          {
+            "text": "Where is that mirror now?",
+            "reply": "They say it's in the fishing village, at the home of an old net-mender."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tra-cong-a2",
+      "title": "Ngọn lửa đầu tiên",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Lần đầu sau bao năm, trên mũi đá đầu đảo lại có lửa. Thuyền trưởng tặng {name} một con sao biển vàng nhặt được trên đường qua đá ngầm.",
+      "en": {
+        "title": "The first flame",
+        "text": "For the first time in years there is fire on the point again. The captain gives {name} a golden starfish he found crossing the reef."
+      }
+    },
+    {
+      "id": "lua-con-yeu",
+      "title": "Ánh lửa còn yếu",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ánh lửa nhỏ quá, sương dày là nuốt mất. Phải tìm cho được chiếc gương đồng của ông Vẹt Đỏ ở làng chài.",
+      "en": {
+        "title": "A fire too faint",
+        "text": "The firelight is too small; thick fog would swallow it. They must find Vẹt Đỏ's copper mirror in the fishing village."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 16,
+    "skillXp": {
+      "phep-cong": 1
+    },
+    "items": {
+      "sao-bien-vang": 1
+    }
+  },
+  "en": {
+    "title": "Thuyền Trưởng Vẹt Biển's story, chapter 2: The way through the reef",
+    "summary": "At low tide, {name} and the captain gather wood, flint and coconut oil, find a safe way through the reef and climb to the old fire base on the point. There, Grandfather left a puzzle about firewood."
+  }
+}

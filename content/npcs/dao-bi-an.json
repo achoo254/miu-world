@@ -1,0 +1,827 @@
+{
+  "version": 1,
+  "region": "dao-bi-an",
+  "climate": "mild",
+  "npcs": [
+    {
+      "id": "thuyen-truong-vet-bien",
+      "name": "Thuyền Trưởng Vẹt Biển",
+      "role": {
+        "vi": "Thuyền trưởng của chiếc Thuyền Sò Đỏ, sống trong căn lều cạnh bến, giữ cuốn nhật ký của ông nội người giữ lửa.",
+        "en": "Captain of the Red Shell, who lives in a tent by the pier and keeps the logbook of his fire-keeper grandfather."
+      },
+      "personality": {
+        "vi": "Ồn ào, mê kịch tính, thích kể chuyện biển cả; bên trong là một chú vẹt mềm lòng, sợ làm người khác thất vọng.",
+        "en": "Loud, dramatic and full of sea stories; underneath, a soft-hearted parrot who hates letting anyone down."
+      },
+      "voice": {
+        "vi": "Xưng ta, gọi người chơi là «thủy thủ»; chữ nào quan trọng là nói hai lần: «Kho báu, kho báu!»",
+        "en": "Calls himself \"I, the captain\" and the player \"sailor\"; says every important word twice: \"Treasure, treasure!\""
+      },
+      "fear": {
+        "vi": "Say sóng: thuyền vừa chòng chành là mặt ông xanh như lá chuối, nên bao năm chưa dám đi quá rạn san hô.",
+        "en": "Seasickness: the moment a boat rocks he turns green as a banana leaf, so for years he never sailed past the coral reef."
+      },
+      "dream": {
+        "vi": "Lái Thuyền Sò Đỏ tới tận chân trời như ông nội từng làm, rồi tự tay viết tiếp cuốn nhật ký.",
+        "en": "To sail the Red Shell all the way to the horizon as his grandfather once did, and write the next pages of the logbook himself."
+      },
+      "secret": {
+        "vi": "Mọi chuyện đi biển ông kể đều chép từ nhật ký của ông nội; chính ông chưa từng ra khơi một lần nào.",
+        "en": "Every sea tale he tells is copied from his grandfather's logbook; he himself has never once been out to sea."
+      },
+      "habit": {
+        "vi": "Sáng nào cũng lau chiếc ống nhòm đồng cho bóng loáng rồi đứng trên bến đếm buồm ngoài khơi.",
+        "en": "Every morning he polishes his brass spyglass until it gleams, then stands on the pier counting sails out at sea."
+      },
+      "likes": [
+        "manh-ban-do-kho-bau",
+        "ngoc-trai-bien",
+        "long-vu-chim-rung"
+      ],
+      "lines": [
+        {
+          "vi": "Chào buổi sáng, thủy thủ! Ta đếm được bảy cánh buồm ngoài khơi. Bảy, bảy! Một ngày đẹp để ra biển... cho người khác.",
+          "en": "Morning, sailor! I count seven sails out there. Seven, seven! A fine day for going to sea... for other people.",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa nắng chang chang, cát bỏng cả chân. Thuyền trưởng khôn ngoan thì ngồi trong lều đọc nhật ký.",
+          "en": "The noon sun is blazing and the sand burns my feet. A wise captain sits in his tent reading the logbook.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Hoàng hôn trên biển đỏ như lông ta vậy. Đẹp, đẹp! Ông ta bảo đó là lúc biển khoác áo lễ.",
+          "en": "The sunset is as red as my feathers. Beautiful, beautiful! Grandfather said that's when the sea puts on its party coat.",
+          "when": "evening"
+        },
+        {
+          "vi": "Đêm rồi, sóng vỗ đều như ai ru. Ta đếm sóng thay đếm cừu, tới con sóng thứ một trăm là ngủ.",
+          "en": "Night now, and the waves lap like a lullaby. I count waves instead of sheep and I'm asleep by the hundredth.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa rồi, mưa rồi! Mau cất nhật ký vào rương, giấy của ông ta không chịu được nước đâu.",
+          "en": "Rain, rain! Quick, the logbook goes in the chest; Grandfather's paper can't stand getting wet.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời quang thế này, đứng trên bến nhìn được tới tận rạn san hô cuối. Xa, xa lắm!",
+          "en": "On a clear day like this you can see from the pier right out to the last coral reef. Far, so far!",
+          "weather": "fine"
+        },
+        {
+          "vi": "Thủy thủ có biết vì sao nước biển mặn không? Vì sông mang muối từ đất đá đổ ra biển suốt hàng triệu năm.",
+          "en": "Sailor, know why the sea is salty? Rivers have been carrying salt from rocks into it for millions of years."
+        },
+        {
+          "vi": "Luật số một của biển: không bao giờ bỏ bạn lại phía sau. Luật số hai: luôn mang theo bánh quy.",
+          "en": "Rule one of the sea: never leave a friend behind. Rule two: always bring biscuits."
+        },
+        {
+          "vi": "Nhìn ống nhòm này xem, thủy thủ. Bóng chưa? Ta lau bốn mươi vòng mỗi sáng đấy, bốn mươi vòng!",
+          "en": "Look at this spyglass, sailor. Shiny? I polish it forty rounds every morning, forty rounds!"
+        },
+        {
+          "vi": "Vẹt Xanh, em họ ta ở Khu rừng bí mật, nói nhiều lắm, nhiều lắm! Họ nhà vẹt bọn ta ai cũng thế.",
+          "en": "My cousin Vẹt Xanh in the Secret Forest talks so much, so much! All of us parrots do.",
+          "about": "vet-xanh"
+        },
+        {
+          "vi": "Bác Quăng Lưới Biển quăng một mẻ lưới tròn như mặt trăng. Ta học mãi mà lưới của ta cứ thành hình quả chuối.",
+          "en": "Bác Quăng Lưới Biển throws a net as round as the moon. I've practised for ages and mine always comes out banana-shaped.",
+          "about": "bac-quang-luoi-bien"
+        },
+        {
+          "vi": "Cua Lướt Sóng lướt ngang qua trước lều ta mỗi sáng. Lướt ngang, đúng kiểu cua, ha ha!",
+          "en": "Cua Lướt Sóng surfs past my tent every morning. Sideways, the crab way, ha ha!",
+          "about": "cua-luot-song"
+        },
+        {
+          "vi": "Thủy thủ {name} là người đầu tiên ta cho đọc nhật ký của ông. Đọc nhẹ tay thôi, giấy giòn như bánh đa.",
+          "en": "Sailor {name}, you're the first I've let read Grandfather's logbook. Gently: the paper is as crisp as a rice cracker.",
+          "hearts": 2
+        },
+        {
+          "vi": "Ông ta chưa bao giờ mắng ta là thuyền trưởng nhát gan. Ông chỉ bảo: «Biển đợi được, cháu cứ từ từ.»",
+          "en": "Grandfather never called me a cowardly captain. He only said: \"The sea can wait; take your time.\"",
+          "hearts": 3
+        },
+        {
+          "vi": "Chuyện ta đánh nhau với bạch tuộc khổng lồ ấy à? Chép từ nhật ký đấy. Ta chưa gặp con bạch tuộc nào bao giờ.",
+          "en": "My battle with the giant octopus? Copied from the logbook. I've never met an octopus in my life.",
+          "hearts": 4
+        },
+        {
+          "vi": "Trang mới nhất của nhật ký ta để dành cho chuyến đi tới chân trời. Người ngồi mũi thuyền sẽ là {name}.",
+          "en": "The newest page of the logbook is saved for our voyage to the horizon. And {name} will sit at the bow.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "gau-truc-tham-hiem",
+      "name": "Gấu Trúc Thám Hiểm",
+      "role": {
+        "vi": "Nhà thám hiểm của khu di tích cổ, ngày ngày phủi bụi, ghi chép và vẽ lại từng hòn đá khắc quanh ngôi đền.",
+        "en": "The explorer of the ancient ruins, who spends his days brushing, noting and sketching every carved stone around the temple."
+      },
+      "personality": {
+        "vi": "Cẩn thận, lễ phép, tò mò không biết mệt; làm gì cũng muốn ghi lại cho người sau đọc.",
+        "en": "Careful, polite and endlessly curious; whatever he does, he wants to write it down for others to read later."
+      },
+      "voice": {
+        "vi": "Hay mở đầu bằng «theo tớ suy luận thì...», nói chậm và rõ, thỉnh thoảng bị ngắt bởi một tiếng «hắt xì».",
+        "en": "Often begins with \"by my reasoning...\", speaks slowly and clearly, and is now and then interrupted by an \"achoo\"."
+      },
+      "fear": {
+        "vi": "Sợ bóng tối, nhất là đường hầm hẹp: đi đâu cũng mang theo ba cái đèn, phòng khi hai cái kia tắt.",
+        "en": "The dark, especially narrow tunnels: he carries three lamps everywhere, in case the other two go out."
+      },
+      "dream": {
+        "vi": "Tìm ra ai đã xây ngôi đền cổ, rồi viết một cuốn sách thật dày để ai trên đảo cũng đọc được.",
+        "en": "To find out who built the ancient temple, then write a thick book that everyone on the island can read."
+      },
+      "secret": {
+        "vi": "Cậu chưa từng học trường thám hiểm nào: chiếc mũ thám hiểm trôi dạt vào bãi biển, và cậu quyết định sống cho xứng với nó.",
+        "en": "He never went to explorer school: his explorer's hat washed up on the beach, and he decided to live up to it."
+      },
+      "habit": {
+        "vi": "Cái gì cũng phủi bằng cây cọ mềm trước khi chạm vào, kể cả bát cơm và vai bạn bè.",
+        "en": "Brushes everything with his soft brush before touching it, even his rice bowl and his friends' shoulders."
+      },
+      "likes": [
+        "da-bot-nui-lua",
+        "rua-bien-con",
+        "kinh-lup-bac"
+      ],
+      "lines": [
+        {
+          "vi": "Buổi sáng nắng xiên qua cổng đền, chữ khắc hiện rõ nhất. Tớ phải ghi chép nhanh trước khi nắng lên cao.",
+          "en": "In the morning the sun slants through the temple gate and the carvings show best. I must take notes before it climbs.",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa nóng quá, tớ ngồi trong bóng cột đá ăn măng luộc. Cột đá này mát hơn cả quạt.",
+          "en": "Too hot at noon, so I sit in the shade of a stone pillar eating boiled bamboo shoots. Cooler than any fan.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều tối tớ chép lại sổ cho sạch. Hắt xì! Bụi trong sổ cũng là bụi cổ đấy nhé.",
+          "en": "In the evening I copy my notes out neatly. Achoo! Even the dust in my notebook is ancient dust.",
+          "when": "evening"
+        },
+        {
+          "vi": "Đêm ở di tích yên lắm. Tớ thắp đủ ba đèn rồi mới dám đọc sách. Đừng cười tớ nhé.",
+          "en": "Nights at the ruins are very quiet. I light all three lamps before I dare to read. Please don't laugh.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa rồi! Mau che bức phù điêu lại, nước mưa mài mòn chữ khắc nhanh hơn cậu tưởng đấy.",
+          "en": "Rain! Quick, cover the carving; rain wears away carvings faster than you'd think.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời nắng ráo, đẹp để phơi sổ ghi chép. Theo tớ suy luận thì hôm nay sẽ tìm được thứ gì đó hay ho.",
+          "en": "Bright and dry, perfect for airing my notebooks. By my reasoning, today we'll find something interesting.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Theo tớ suy luận thì đền này rất cổ: rêu mọc dày một đốt ngón tay, mà rêu mọc chậm lắm.",
+          "en": "By my reasoning this temple is very old: the moss is a finger joint thick, and moss grows very slowly."
+        },
+        {
+          "vi": "Đồ cổ thì phủi, không gõ. Nhớ nhé {name}, nhẹ tay như vuốt lông mèo.",
+          "en": "Old things get brushed, never knocked. Remember that, {name}: gentle as stroking a cat."
+        },
+        {
+          "vi": "Cậu biết không, gấu trúc ăn tre gần như cả ngày. Tớ thì ăn tre với sổ ghi chép mở bên cạnh.",
+          "en": "Did you know pandas eat bamboo nearly all day? I eat mine with a notebook open beside me."
+        },
+        {
+          "vi": "Anh họ tớ, Gấu Trúc Tròn, làm ở Thư viện. Anh ấy gửi tớ cái kính lúp bạc để soi chữ khắc nhỏ.",
+          "en": "My cousin Gấu Trúc Tròn works at the Library. He sent me a silver magnifier for reading tiny carvings.",
+          "about": "gau-truc"
+        },
+        {
+          "vi": "Khỉ Hái Dừa dẫn tớ qua rừng tới di tích hôm đầu tiên. Không có cậu ấy chắc tớ vẫn còn lạc trong bụi chuối.",
+          "en": "Khỉ Hái Dừa led me through the jungle to the ruins on my first day. Without him I'd still be lost among the banana plants.",
+          "about": "khi-hai-dua"
+        },
+        {
+          "vi": "Bác Quăng Lưới Biển chở tớ ra đảo trên chuyến phà sóng to nhất năm. Tớ ôm ba lô suốt chặng, không dám buông.",
+          "en": "Bác Quăng Lưới Biển ferried me here on the roughest crossing of the year. I hugged my backpack the whole way.",
+          "about": "bac-quang-luoi-bien"
+        },
+        {
+          "vi": "Tớ cho {name} mượn cây cọ phủi bụi thứ hai của tớ. Cây thứ nhất thì tớ không cho ai mượn cả.",
+          "en": "I'll lend {name} my second-best dusting brush. Nobody borrows the first one.",
+          "hearts": 2
+        },
+        {
+          "vi": "Nói nhỏ nhé: lần đầu xuống hầm, tớ bịt mắt lại vì sợ tối. Bịt mắt thì càng tối hơn, tớ mới biết.",
+          "en": "Just between us: my first time in the tunnel, I covered my eyes because I was scared of the dark. Turns out that makes it darker.",
+          "hearts": 3
+        },
+        {
+          "vi": "Chiếc mũ này không phải mũ của trường thám hiểm nào đâu. Nó trôi vào bãi biển một sáng mưa, và tớ nhặt lấy.",
+          "en": "This hat isn't from any explorer school. It washed up on the beach one rainy morning, and I picked it up.",
+          "hearts": 4
+        },
+        {
+          "vi": "Trong sách của tớ, chương nào cũng có tên {name}. Chương cuối tớ để trống, chờ chuyến thám hiểm tiếp theo của hai đứa.",
+          "en": "{name} is in every chapter of my book. I've left the last one blank for our next expedition.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "cua-luot-song",
+      "name": "Cua Lướt Sóng",
+      "role": {
+        "vi": "Tay lướt sóng của bãi biển cạnh bến tàu, dạy ai muốn học cách đọc sóng và bơi tới phao đỏ.",
+        "en": "The surfer of the beach by the pier, who teaches anyone who asks how to read the waves and swim out to the red buoy."
+      },
+      "personality": {
+        "vi": "Thong thả, vui vẻ, chẳng bao giờ vội; sóng đến thì lướt, sóng chưa đến thì nằm phơi nắng.",
+        "en": "Easy-going and cheerful, never in a hurry; when a wave comes he rides it, when it doesn't he sunbathes."
+      },
+      "voice": {
+        "vi": "Nói kéo dài, hay đệm «ầu ơ», «êm ru»; gọi ai cũng là «bồ».",
+        "en": "Drawls, sprinkles in \"ahoy-oh\" and \"smooth as butter\", and calls everyone \"buddy\"."
+      },
+      "fear": {
+        "vi": "Sợ bị lật ngửa trên cát: một con cua nằm ngửa thì quơ mãi mới lật lại được, mà mòng biển thì hay rình.",
+        "en": "Getting flipped on his back on the sand: an upside-down crab takes ages to roll over, and the gulls are always watching."
+      },
+      "dream": {
+        "vi": "Lên Núi tuyết một lần để xem «sóng đông cứng» mà bạn thư Gấu Bắc Cực hay kể, và thử trượt trên đó.",
+        "en": "To visit the Snow Mountain once and see the \"frozen waves\" his pen-pal the polar bear writes about, and try surfing them."
+      },
+      "secret": {
+        "vi": "Cậu cất mọi lá thư của bác Gấu trong một hộp thiếc chôn dưới gốc dừa nghiêng, đêm nào cũng đào lên đọc lại một lá.",
+        "en": "He keeps every letter from Uncle Bear in a tin box buried under the leaning palm, and digs it up every night to reread one."
+      },
+      "habit": {
+        "vi": "Trước mỗi lượt lướt, giơ hai càng lên trời đếm nhịp sóng: một, hai, ba, lướt!",
+        "en": "Before every ride he raises both claws to the sky and counts the waves: one, two, three, ride!"
+      },
+      "likes": [
+        "sao-bien-vang",
+        "vo-oc-xa-cu",
+        "bong-tuyet-pha-le"
+      ],
+      "lines": [
+        {
+          "vi": "Sáng sớm biển phẳng như gương, ầu ơ. Sóng còn ngủ, bồ ngồi đây đợi với tớ nhé.",
+          "en": "Early morning and the sea is flat as glass, ahoy-oh. The waves are still asleep; wait with me, buddy.",
+          "when": "morning"
+        },
+        {
+          "vi": "Chiều là lúc gió biển thổi vào, sóng lên đều tăm tắp. Lướt đi bồ, êm ru!",
+          "en": "Afternoon is when the sea breeze blows in and the waves line up neat as anything. Ride, buddy, smooth as butter!",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Tối rồi, tớ nằm trên cát nghe sóng đếm giờ. Biển là cái đồng hồ to nhất thế gian.",
+          "en": "Evening now; I lie on the sand listening to the waves keep time. The sea is the biggest clock in the world.",
+          "when": "evening"
+        },
+        {
+          "vi": "Khuya rồi mà bồ còn đi dạo? Nhìn kìa, sứa phát sáng dạt vào bờ như ai rải đèn.",
+          "en": "Still out this late, buddy? Look, glowing jellyfish washing ashore like someone scattered lanterns.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa rơi lộp độp trên mai, mát rượi. Cua đâu có sợ ướt, bồ ơi.",
+          "en": "Rain pattering on my shell, so refreshing. Crabs don't mind getting wet, buddy.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Nắng đẹp, sóng đẹp, cát ấm. Hôm nay mà không lướt thì phí cả một ngày, ầu ơ!",
+          "en": "Sunny, good waves, warm sand. Not surfing today would waste the whole day, ahoy-oh!",
+          "weather": "fine"
+        },
+        {
+          "vi": "Bồ biết vì sao cua đi ngang không? Chân cua gập sang hai bên, đi ngang là nhanh và vững nhất.",
+          "en": "Know why crabs walk sideways, buddy? Our legs bend out to the sides, so sideways is fastest and steadiest."
+        },
+        {
+          "vi": "Đọc sóng dễ lắm: sóng bạc đầu là sắp vỡ, sóng xanh tròn lưng là lướt được.",
+          "en": "Reading waves is easy: white-tipped ones are about to break, smooth green ones are good to ride."
+        },
+        {
+          "vi": "Đố bồ bơi tới phao đỏ trước tớ đấy. Tớ cho bồ chạy trước ba nhịp, êm ru.",
+          "en": "Bet you can't beat me to the red buoy, buddy. I'll give you a three-wave head start."
+        },
+        {
+          "vi": "Bác Gấu Bắc Cực ở Núi tuyết vừa gửi thư, kể hồ băng biết hát. Biển với băng chắc là anh em họ.",
+          "en": "Uncle Polar Bear on the Snow Mountain just wrote that his frozen lake sings. Sea and ice must be cousins.",
+          "about": "gau-bac-cuc-cau-ca"
+        },
+        {
+          "vi": "Khỉ Hái Dừa thách tớ thi xem ai tới gốc dừa trước: cậu ấy chuyền cành, tớ lướt sóng. Hòa mãi.",
+          "en": "Khỉ Hái Dừa races me to the palm: he swings through the branches, I ride the waves. Always a draw.",
+          "about": "khi-hai-dua"
+        },
+        {
+          "vi": "Thuyền Trưởng Vẹt Biển sáng nào cũng đứng trên bến đếm buồm. Tớ thì đếm sóng, hai đứa đếm thi.",
+          "en": "Captain Vẹt Biển counts sails on the pier every morning. I count waves, and we race each other.",
+          "about": "thuyen-truong-vet-bien"
+        },
+        {
+          "vi": "Bồ đứng lên ván thử xem. Chân trái trước, khụy gối, nhìn xa. Đấy, có dáng rồi!",
+          "en": "Hop on the board, buddy. Left foot forward, bend your knees, look far. There, you've got the stance!",
+          "hearts": 2
+        },
+        {
+          "vi": "Có lần tớ bị sóng lật ngửa giữa bãi, quơ càng mãi không dậy nổi. Một con mòng biển đứng nhìn cười. Tớ nhớ mãi.",
+          "en": "Once a wave flipped me on my back mid-beach and I waved my claws for ages. A gull just stood there laughing. Never forgot it.",
+          "hearts": 3
+        },
+        {
+          "vi": "Dưới gốc dừa nghiêng có một hộp thiếc. Trong đó là thư của bác Gấu, đủ năm mươi hai lá. Bí mật nhé bồ.",
+          "en": "There's a tin box under the leaning palm full of Uncle Bear's letters: fifty-two of them. Our secret, buddy.",
+          "hearts": 4
+        },
+        {
+          "vi": "Mùa đông tới tớ sẽ lên Núi tuyết lướt thử «sóng đông cứng». Bồ đi cùng thì tớ đỡ run hơn.",
+          "en": "Next winter I'm going up the Snow Mountain to try surfing \"frozen waves\". With you along I'll shiver less, buddy.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "khi-hai-dua",
+      "name": "Khỉ Hái Dừa",
+      "role": {
+        "vi": "Người hái dừa của rừng nhiệt đới, thuộc mọi lối mòn từ thác nước tới khu di tích.",
+        "en": "The coconut picker of the tropical forest, who knows every trail from the waterfall to the ruins."
+      },
+      "personality": {
+        "vi": "Nhanh nhảu, tinh nghịch, tốt bụng; không ngồi yên được quá một phút nhưng giữ lời hứa tuyệt đối.",
+        "en": "Quick, cheeky and kind; can't sit still for more than a minute, but always keeps a promise."
+      },
+      "voice": {
+        "vi": "Nói nhanh như chuyền cành, hay chêm tiếng kêu «úp úp» khi vui, thích đặt câu đố.",
+        "en": "Talks as fast as he swings, adds a happy \"oop oop\", and loves setting riddles."
+      },
+      "fear": {
+        "vi": "Sợ ong rừng: một chú khỉ dám trèo ngọn dừa cao nhất mà nghe tiếng vo ve là tụt xuống ngay.",
+        "en": "Wild bees: a monkey who climbs the tallest palm, but at the first buzz he slides straight down."
+      },
+      "dream": {
+        "vi": "Được đi học ở một ngôi trường thật, ngồi bàn đầu, đọc to bài cho cả lớp nghe.",
+        "en": "To go to a real school, sit in the front row and read aloud to the whole class."
+      },
+      "secret": {
+        "vi": "Cậu chưa đọc trôi chảy: mỗi lá thư của bạn thư Thỏ Măng Non, cậu phải nhờ chim sáo đánh vần giúp mới đọc hết.",
+        "en": "He can't read fluently yet: every letter from his pen-pal Thỏ Măng Non, he needs a myna bird to help him spell out."
+      },
+      "habit": {
+        "vi": "Hái quả dừa nào cũng gõ ba cái nghe tiếng, rồi mới quyết định thả xuống hay để lại cho dừa già thêm.",
+        "en": "Taps every coconut three times to listen before deciding whether to drop it or leave it to ripen."
+      },
+      "likes": [
+        "qua-dua-xiem",
+        "sua-bien-phat-sang",
+        "but-muc-tim"
+      ],
+      "lines": [
+        {
+          "vi": "Sáng nay tớ hái được mười hai quả dừa, rơi trúng đầu tớ có một quả. Úp úp, vẫn còn lãi chán!",
+          "en": "Picked twelve coconuts this morning and only one landed on my head. Oop oop, still way ahead!",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa ra thác nước tắm là sướng nhất. Nước thác mát như uống một ngụm nước dừa.",
+          "en": "A noon dip under the waterfall is the best. The water is as cool as a sip of coconut juice.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều tối rừng ồn lắm: ve kêu, chim gọi đàn, ếch tập hát. Tớ thì kêu to nhất.",
+          "en": "Evenings in the jungle are noisy: cicadas, birds calling, frogs practising songs. I'm the loudest of all.",
+          "when": "evening"
+        },
+        {
+          "vi": "Đêm tớ ngủ trên ngọn dừa, đắp lá chuối, đếm đom đóm thay sao.",
+          "en": "At night I sleep at the top of a palm under a banana leaf, counting fireflies instead of stars.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa rừng ào ào! Tớ trốn dưới lá chuối to nhất, nhường bồ một nửa nè.",
+          "en": "Jungle rain, whoosh! I'm hiding under the biggest banana leaf; here, have half.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời nắng đẹp thế này, khỉ nào ở yên dưới đất là khỉ lười. Lên cây thôi!",
+          "en": "On a sunny day like this, any monkey on the ground is a lazy monkey. Up the tree!",
+          "weather": "fine"
+        },
+        {
+          "vi": "Đố cậu: quả gì có nước mà không có vòi, có cùi mà không có xương? Úp úp, quả dừa chứ gì!",
+          "en": "Riddle: what has water but no tap, flesh but no bones? Oop oop, a coconut, of course!"
+        },
+        {
+          "vi": "Cây dừa có thể cao bằng sáu ngôi nhà chồng lên nhau đấy. Leo lên thì dễ, xuống mới khó.",
+          "en": "A coconut palm can grow as tall as six houses stacked up. Climbing up is easy; getting down is the hard part."
+        },
+        {
+          "vi": "Muốn chụp ảnh thú rừng thì phải đứng im như cây. Tớ tập mãi mà mới im được mười giây.",
+          "en": "To photograph jungle animals you must stand still as a tree. I've practised forever and can manage ten seconds."
+        },
+        {
+          "vi": "Thỏ Măng Non ở Trường học viết thư dạy tớ mỗi tuần một chữ mới. Tuần này là chữ «thác nước».",
+          "en": "Thỏ Măng Non at the School writes to teach me a new word every week. This week it's \"waterfall\".",
+          "about": "tho-mang-non"
+        },
+        {
+          "vi": "Gấu Trúc Thám Hiểm hôm đầu tới đảo đi lạc trong bụi chuối, tớ dẫn cậu ấy tới di tích. Giờ cậu ấy còn thuộc đường hơn tớ.",
+          "en": "On his first day Gấu Trúc Thám Hiểm got lost among the banana plants and I led him to the ruins. Now he knows the way better than me.",
+          "about": "gau-truc-tham-hiem"
+        },
+        {
+          "vi": "Cây bút mực tím Thỏ Măng Non gửi, tớ chỉ dùng để viết thư trả lời cậu ấy thôi. Tiếc lắm!",
+          "en": "The purple ink pen Thỏ Măng Non sent me is only for writing replies to Thỏ Măng Non. Too precious for anything else!"
+        },
+        {
+          "vi": "Tớ chỉ cho {name} cây dừa ngọt nhất rừng nhé. Đừng nói với ai, kẻo mai hết dừa.",
+          "en": "I'll show {name} the sweetest palm in the jungle. Don't tell anyone, or it'll be bare by tomorrow.",
+          "hearts": 2
+        },
+        {
+          "vi": "Nghe tiếng ong vo ve là tớ tụt khỏi cây nhanh hơn cả quả dừa rơi. Khỉ mà sợ ong, buồn cười nhỉ.",
+          "en": "One buzz of a bee and I'm down the tree faster than a falling coconut. A monkey scared of bees; funny, right?",
+          "hearts": 3
+        },
+        {
+          "vi": "Thật ra tớ đọc chưa giỏi. Thư của Thỏ Măng Non, tớ phải nhờ chim sáo đánh vần giúp từng chữ.",
+          "en": "The truth is I can't read well yet. With Thỏ Măng Non's letters, a myna bird helps me spell out every word.",
+          "hearts": 4
+        },
+        {
+          "vi": "Tớ viết được nguyên một câu không cần chim sáo rồi: «Cảm ơn {name}». Câu đầu tiên dành cho cậu đấy.",
+          "en": "I wrote a whole sentence without the myna bird: \"Thank you, {name}.\" My very first one is for you.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "bac-quang-luoi-bien",
+      "name": "Bác Quăng Lưới Biển",
+      "role": {
+        "vi": "Ngư dân lâu năm của bến tàu, vừa quăng lưới vừa lái phà đưa khách qua lại giữa đảo và đất liền.",
+        "en": "The pier's veteran fisherman, who casts nets and also runs the ferry between the island and the mainland."
+      },
+      "personality": {
+        "vi": "Điềm đạm, ít lời, nhìn trời đoán gió rất tài; thương ai thì lặng lẽ để dành cho người đó con cá ngon nhất.",
+        "en": "Calm and quiet, brilliant at reading wind and sky; when he cares for someone, he quietly saves them the best fish."
+      },
+      "voice": {
+        "vi": "Nói chậm, hay mượn chuyện biển làm câu ví: «lưới rách thì vá, buồm rách thì khâu».",
+        "en": "Speaks slowly and turns everything into sea sayings: \"a torn net gets mended, a torn sail gets sewn.\""
+      },
+      "fear": {
+        "vi": "Sợ sương mù: ba mươi năm đi biển bác chưa ngán sóng to, chỉ ngán những đêm không thấy mũi thuyền của chính mình.",
+        "en": "Fog: in thirty years at sea big waves never bothered him, only nights when he can't see his own bow."
+      },
+      "dream": {
+        "vi": "Thấy lũ trẻ trên đảo ai cũng biết bơi, biết đọc trời, để chẳng bao giờ phải sợ biển.",
+        "en": "To see every child on the island able to swim and read the sky, so none of them ever fears the sea."
+      },
+      "secret": {
+        "vi": "Tấm lưới bác quý nhất là tấm lưới đầu tiên bác vá hỏng, đến giờ vẫn còn một lỗ to bằng nắm tay mà bác không nỡ vá lại.",
+        "en": "His dearest net is the first one he ever mended badly; it still has a fist-sized hole he can't bring himself to fix."
+      },
+      "habit": {
+        "vi": "Trước khi ra khơi luôn ngửi gió ba lần và ngước nhìn mây, rồi mới tháo dây neo.",
+        "en": "Before setting out he always sniffs the wind three times and looks up at the clouds, then unties the mooring."
+      },
+      "likes": [
+        "chiec-phao-cuu-sinh",
+        "qua-dua-xiem",
+        "ngoc-trai-bien"
+      ],
+      "lines": [
+        {
+          "vi": "Sáng sớm cá mòi ăn nổi, lưới quăng ra là nặng tay. Cháu muốn thử một mẻ không?",
+          "en": "At dawn the sardines feed near the surface, and a cast net comes back heavy. Want to try a throw?",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa bác vá lưới dưới mái lều. Lưới rách thì vá, buồm rách thì khâu, chẳng có gì hỏng mãi.",
+          "en": "At noon I mend nets under the awning. A torn net gets mended, a torn sail gets sewn; nothing stays broken for good.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều nay phà chở mười hai khách và một con dê. Con dê say sóng hơn cả khách.",
+          "en": "This afternoon the ferry carried twelve passengers and a goat. The goat was seasicker than all of them.",
+          "when": "evening"
+        },
+        {
+          "vi": "Đêm thanh, nước lặng. Bác ngồi đầu cầu tàu nghe cá quẫy, đoán xem mai luồng cá đi đâu.",
+          "en": "A calm, still night. I sit at the end of the pier listening to fish splash, guessing where they'll run tomorrow.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa ngoài khơi thì sóng lặng, cá lại vào gần bờ. Mưa không phải lúc nào cũng xấu, cháu ạ.",
+          "en": "Rain out at sea calms the waves and brings fish closer to shore. Rain isn't always bad, you know.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời trong, mây trắng như bông, gió hướng nam. Mai đi biển được, bác đoán không sai đâu.",
+          "en": "Clear sky, cotton-white clouds, a southerly wind. Tomorrow is fine for sailing; I'm rarely wrong.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Mây vảy cá đầy trời là sắp đổi gió. Người đi biển nhìn mây như cháu nhìn đồng hồ vậy.",
+          "en": "A sky full of fish-scale clouds means the wind is about to change. Sailors read clouds the way you read a clock."
+        },
+        {
+          "vi": "Quăng lưới cần tay khéo, mắt tinh, và lòng kiên nhẫn. Ba thứ ấy cháu có cả, chỉ thiếu tập thôi.",
+          "en": "Casting a net takes clever hands, sharp eyes and patience. You have all three; you only need practice."
+        },
+        {
+          "vi": "Phao cứu sinh treo ở mạn phà không phải để trang trí. Lên phà là phải biết nó ở đâu.",
+          "en": "The lifebuoy on the ferry's rail isn't decoration. Once you're aboard, know where it is."
+        },
+        {
+          "vi": "Cáo Cung Thủ trên Lâu đài viết thư hỏi bác cách đoán gió. Bắn cung hay quăng lưới cũng phải hiểu gió cả.",
+          "en": "Cáo Cung Thủ up at the Castle wrote asking how I read the wind. Archery or net-casting, you have to understand the wind.",
+          "about": "cao-cung-thu"
+        },
+        {
+          "vi": "Thuyền Trưởng Vẹt Biển với bác quen nhau từ hồi cậu ấy còn bé xíu, đứng trên vai ông nội ngắm thuyền.",
+          "en": "Captain Vẹt Biển and I go back to when he was a tiny chick perched on his grandfather's shoulder watching the boats.",
+          "about": "thuyen-truong-vet-bien"
+        },
+        {
+          "vi": "Gấu Trúc Thám Hiểm qua đảo trên chuyến phà gió to nhất năm ấy. Cậu ấy ôm ba lô run cả chặng mà không kêu một tiếng.",
+          "en": "Gấu Trúc Thám Hiểm crossed on the windiest ferry of that year. He clung to his backpack the whole way and never complained once.",
+          "about": "gau-truc-tham-hiem"
+        },
+        {
+          "vi": "Cầm thử tay lưới của bác này. Nặng không? Ngày xưa bác cầm còn run hơn cháu.",
+          "en": "Hold my net for a moment. Heavy? When I started, my hands shook more than yours.",
+          "hearts": 2
+        },
+        {
+          "vi": "Bác không sợ sóng. Bác chỉ sợ những đêm sương mù, khi không thấy cả mũi thuyền mình.",
+          "en": "I don't fear waves. I only fear foggy nights when I can't see my own bow.",
+          "hearts": 3
+        },
+        {
+          "vi": "Tấm lưới thủng một lỗ to kia là tấm đầu tiên bác vá hỏng. Bác giữ nó để nhớ mình từng vụng thế nào.",
+          "en": "That net with the big hole is the first one I ever mended badly. I keep it to remember how clumsy I once was.",
+          "hearts": 4
+        },
+        {
+          "vi": "Con thuyền nhỏ buộc cạnh phà, bác đóng cho cháu đấy. Đặt tên gì cho nó thì tùy cháu.",
+          "en": "The little boat tied beside the ferry, I built it for you. What you name it is up to you.",
+          "hearts": 5
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "a": "thuyen-truong-vet-bien",
+      "b": "bac-quang-luoi-bien",
+      "kind": "friend",
+      "note": {
+        "vi": "Bác Quăng Lưới quen thuyền trưởng từ khi cậu còn đứng trên vai ông nội ngắm thuyền, và luôn để dành cho cậu một chỗ trên phà.",
+        "en": "The fisherman has known the captain since he was a chick on his grandfather's shoulder, and always keeps him a seat on the ferry."
+      }
+    },
+    {
+      "a": "thuyen-truong-vet-bien",
+      "b": "cua-luot-song",
+      "kind": "neighbour",
+      "note": {
+        "vi": "Cua lướt sóng ngay trước lều thuyền trưởng; sáng nào hai bên cũng thi đếm, một bên đếm buồm, một bên đếm sóng.",
+        "en": "The crab surfs right in front of the captain's tent; every morning they race at counting, sails against waves."
+      }
+    },
+    {
+      "a": "gau-truc-tham-hiem",
+      "b": "khi-hai-dua",
+      "kind": "friend",
+      "note": {
+        "vi": "Khỉ Hái Dừa dẫn Gấu Trúc qua rừng tới di tích hôm đầu tiên; giờ Gấu Trúc đọc chữ khắc cho Khỉ nghe mỗi chiều.",
+        "en": "Khỉ Hái Dừa led Gấu Trúc through the jungle to the ruins on his first day; now Gấu Trúc reads the carvings aloud to him every afternoon."
+      }
+    },
+    {
+      "a": "khi-hai-dua",
+      "b": "cua-luot-song",
+      "kind": "rival",
+      "note": {
+        "vi": "Hai bạn thi xem ai tới gốc dừa nghiêng trước, một bên chuyền cành, một bên lướt sóng, và lần nào cũng hòa.",
+        "en": "They race to the leaning palm, one swinging through branches, the other riding waves, and it's always a draw."
+      }
+    },
+    {
+      "a": "gau-truc-tham-hiem",
+      "b": "bac-quang-luoi-bien",
+      "kind": "friend",
+      "note": {
+        "vi": "Bác Quăng Lưới chở Gấu Trúc ra đảo trên chuyến phà sóng to nhất năm, và từ đó tuần nào cũng mang thư từ đất liền tới cho cậu.",
+        "en": "The fisherman ferried Gấu Trúc to the island on the roughest crossing of the year, and has brought him his mail from the mainland every week since."
+      }
+    },
+    {
+      "a": "thuyen-truong-vet-bien",
+      "b": "vet-xanh",
+      "kind": "family",
+      "note": {
+        "vi": "Hai anh em họ nhà vẹt: một người đỏ ở biển, một người xanh ở rừng, và cả hai đều nói mỗi chữ quan trọng hai lần.",
+        "en": "Parrot cousins: one red by the sea, one green in the forest, and both say every important word twice."
+      }
+    },
+    {
+      "a": "khi-hai-dua",
+      "b": "tho-mang-non",
+      "kind": "pen-pal",
+      "note": {
+        "vi": "Thỏ Măng Non mỗi tuần gửi Khỉ một chữ mới kèm thư; Khỉ gửi lại hoa rừng ép khô và những tấm ảnh thú rừng tự chụp.",
+        "en": "Each week Thỏ Măng Non sends Khỉ a new word with each letter; Khỉ sends back pressed jungle flowers and photos of animals he took himself."
+      }
+    }
+  ],
+  "arcs": [
+    {
+      "id": "lua-hieu-mui-da",
+      "npc": "thuyen-truong-vet-bien",
+      "title": {
+        "vi": "Lửa hiệu trên mũi đá",
+        "en": "The Signal Fire on the Point"
+      },
+      "teaser": {
+        "vi": "Đêm qua sương mù nuốt mất đường về của thuyền đánh cá. Ông nội thuyền trưởng từng giữ một ngọn lửa hiệu, nhưng nhật ký của ông vừa bị gió thổi tung khắp bãi...",
+        "en": "Last night the fog swallowed the fishing boats' way home. The captain's grandfather once kept a signal fire, but his logbook has just blown all over the beach..."
+      },
+      "chapters": [
+        {
+          "quest": "yarn-lua-hieu-mui-da-1",
+          "hearts": 0,
+          "letter": {
+            "from": "thuyen-truong-vet-bien",
+            "title": {
+              "vi": "Nhật ký đã khô",
+              "en": "The logbook is dry"
+            },
+            "body": {
+              "vi": "Thủy thủ {name}! Các trang nhật ký đã khô cong, ta xếp lại đủ cả, đủ cả! Tối qua ta đọc lời dặn của ông tới mười lần, lần nào cũng thấy như ông đang đứng sau lưng. Ít xu này để thủy thủ mua bánh quy, luật số hai của biển đấy.",
+              "en": "Sailor {name}! The logbook pages are dry and crinkly, and every one is back in place, every one! Last night I read Grandfather's instructions ten times, and each time it felt like he was right behind me. Here are a few coins for biscuits: rule two of the sea."
+            },
+            "reward": {
+              "coins": 15,
+              "xp": 15,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-lua-hieu-mui-da-2",
+          "hearts": 1,
+          "letter": {
+            "from": "vet-xanh",
+            "title": {
+              "vi": "Thư từ khu rừng",
+              "en": "A letter from the forest"
+            },
+            "body": {
+              "vi": "Chào chào {name}! Tớ là Vẹt Xanh, em họ của anh Vẹt Biển đây. Anh ấy viết thư khoe đốt được lửa trên mũi đá, khoe hai lần, hai lần! Từ trong rừng nhìn về phía biển tớ chẳng thấy gì, nhưng tớ tin lửa sáng lắm. Gửi cậu một chiếc lông vũ rừng, chuẩn chuẩn để cài mũ thủy thủ!",
+              "en": "Hello hello, {name}! I'm Vẹt Xanh, Vẹt Biển's cousin. He wrote to boast that he lit the fire on the point; he boasted twice, twice! From the forest I can't see the sea at all, but I'm sure it shines bright. Here's a forest feather, just right for a sailor's hat!"
+            },
+            "reward": {
+              "coins": 15,
+              "xp": 20,
+              "items": {
+                "long-vu-chim-rung": 1
+              }
+            }
+          }
+        },
+        {
+          "quest": "yarn-lua-hieu-mui-da-3",
+          "hearts": 2,
+          "letter": {
+            "from": "bac-quang-luoi-bien",
+            "title": {
+              "vi": "Tấm gương sáng tới rạn cuối",
+              "en": "A mirror that reaches the last reef"
+            },
+            "body": {
+              "vi": "Cháu {name}, đêm qua bác ngồi ngoài khơi mà vẫn thấy ánh lửa từ mũi đá, rõ như hồi ông Vẹt Đỏ còn giữ lửa. Thuyền trưởng có kể với bác chuyện cậu ấy say sóng; bác bảo, ngày đầu ai chẳng thế. Bác gửi cháu chiếc phao cứu sinh nhỏ, đi biển thì luôn mang theo nhé.",
+              "en": "Dear {name}, last night I was far out at sea and could still see the firelight from the point, as clear as when Vẹt Đỏ kept it. The captain told me about his seasickness; I said everyone feels that way on day one. Here's a little lifebuoy for you; take it whenever you go to sea."
+            },
+            "reward": {
+              "coins": 20,
+              "xp": 20,
+              "items": {
+                "chiec-phao-cuu-sinh": 1
+              }
+            }
+          }
+        },
+        {
+          "quest": "yarn-lua-hieu-mui-da-4",
+          "hearts": 3,
+          "letter": {
+            "from": "thuyen-truong-vet-bien",
+            "title": {
+              "vi": "Trang nhật ký đầu tiên của ta",
+              "en": "My first logbook page"
+            },
+            "body": {
+              "vi": "Thủy thủ {name}, hôm nay ta đi được hai vòng quanh rạn, chỉ say sóng một nửa vòng thôi. Một nửa! Ta đã viết trang đầu tiên của chính mình vào nhật ký, và trang ấy có tên cậu. Biển đợi được, nhưng ta thì nóng lòng lắm rồi: chân trời, chân trời!",
+              "en": "Sailor {name}, today I sailed two laps of the reef and was only seasick for half of one. Half! I've written my very own first page in the logbook, and your name is on it. The sea can wait, but I can't: the horizon, the horizon!"
+            },
+            "reward": {
+              "coins": 25,
+              "xp": 30,
+              "items": {}
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "phu-dieu-thieu-manh",
+      "npc": "gau-truc-tham-hiem",
+      "title": {
+        "vi": "Bức phù điêu thiếu mảnh",
+        "en": "The Carving with a Missing Piece"
+      },
+      "teaser": {
+        "vi": "Bức phù điêu trên tường đền kể chuyện hòn đảo, nhưng mảnh chính giữa lại trống trơn. Gấu Trúc Thám Hiểm tin rằng ai tìm ra mảnh ấy sẽ biết ai đã xây ngôi đền.",
+        "en": "The carving on the temple wall tells the island's story, but its very middle is blank. Gấu Trúc Thám Hiểm believes whoever finds that piece will learn who built the temple."
+      },
+      "chapters": [
+        {
+          "quest": "yarn-phu-dieu-thieu-manh-1",
+          "hearts": 0,
+          "letter": {
+            "from": "gau-truc-tham-hiem",
+            "title": {
+              "vi": "Ghi chép ngày một",
+              "en": "Notes from day one"
+            },
+            "body": {
+              "vi": "{name} thân mến, tớ đã chép sạch ghi chép ngày một, có cả hình ba mảnh đá cậu tìm được. Theo tớ suy luận thì cậu có năng khiếu thám hiểm đấy. Tớ đang lau đèn cho chuyến xuống hầm, hắt xì, bụi đèn cũng nhiều ghê.",
+              "en": "Dear {name}, I've written up the day-one notes neatly, with drawings of the three stones you found. By my reasoning, you have a gift for exploring. I'm cleaning lamps for the trip underground. Achoo, even lamps are dusty."
+            },
+            "reward": {
+              "coins": 15,
+              "xp": 15,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-phu-dieu-thieu-manh-2",
+          "hearts": 1,
+          "letter": {
+            "from": "khi-hai-dua",
+            "title": {
+              "vi": "Tớ thấy hết rồi nhé!",
+              "en": "I saw everything!"
+            },
+            "body": {
+              "vi": "Úp úp, {name}! Tớ ngồi trên ngọn dừa cạnh di tích, thấy cậu với Gấu Trúc chui ra khỏi hầm, tay vẫn nắm tay. Gấu Trúc kể với tớ cả chiều chuyện hũ đom đóm, kể mãi không dứt. Tặng cậu một chú sứa phát sáng tớ nhặt ở bờ, để lần sau xuống hầm khỏi sợ tối.",
+              "en": "Oop oop, {name}! From the top of a palm by the ruins I saw you and Gấu Trúc come out of the tunnel still holding hands. He talked about the firefly jar all afternoon and wouldn't stop. Here's a glowing jellyfish I found on the shore, so next time the tunnel won't be so dark."
+            },
+            "reward": {
+              "coins": 15,
+              "xp": 20,
+              "items": {
+                "sua-bien-phat-sang": 1
+              }
+            }
+          }
+        },
+        {
+          "quest": "yarn-phu-dieu-thieu-manh-3",
+          "hearts": 2,
+          "letter": {
+            "from": "gau-truc",
+            "title": {
+              "vi": "Thư từ người anh họ",
+              "en": "From the cousin at the library"
+            },
+            "body": {
+              "vi": "Chào {name}, tớ là Gấu Trúc Tròn ở Thư viện, anh họ của Gấu Trúc Thám Hiểm. Em tớ gửi bản thảo cuốn sách về ngôi đền, chương nào cũng nhắc tới cậu. Tớ đã dành sẵn một ngăn kệ cho cuốn sách ấy. Cảm ơn cậu đã đi cùng em tớ vào chỗ tối nhất, và ra chỗ sáng nhất.",
+              "en": "Hello {name}, I'm Gấu Trúc Tròn from the Library, Gấu Trúc Thám Hiểm's cousin. He sent me the draft of his book about the temple, and you're in every chapter. I've already saved a shelf for it. Thank you for going with him into the darkest place, and out into the brightest."
+            },
+            "reward": {
+              "coins": 20,
+              "xp": 25,
+              "items": {}
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

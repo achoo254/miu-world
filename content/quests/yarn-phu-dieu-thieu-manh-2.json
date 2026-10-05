@@ -1,0 +1,367 @@
+{
+  "id": "yarn-phu-dieu-thieu-manh-2",
+  "region": "dao-bi-an",
+  "chapter": 3,
+  "title": "Chuyện của Gấu Trúc Thám Hiểm, chương 2: Đường hầm dưới nền đền",
+  "status": "active",
+  "category": "story",
+  "summary": "Nhà thám hiểm sợ bóng tối nhất đảo phải xuống đường hầm tối om. {name} gom đèn, tính quãng đường trong hầm, đào lối tới vách đá có khắc chữ, và cùng Gấu Trúc vượt qua lúc đèn tắt.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người cầm đèn",
+    "where": "Cổng di tích cổ, trại thám hiểm, miệng đường hầm, lòng đường hầm",
+    "goal": "Xuống hầm tìm manh mối về mảnh giữa của bức phù điêu",
+    "play": "Tìm ba thứ soi sáng, tính số bước còn lại, đào hầm tìm lối, đọc chữ trên vách, chọn cách giúp bạn khi đèn tắt",
+    "learn": "Phép trừ có nhớ, đọc hiểu một lời nhắn cổ",
+    "reward": "70 XP, 18 Xu, Skill XP Phép trừ và Đọc hiểu",
+    "next": "Mảnh giữa không mất: người xưa để dành nó cho người đến sau"
+  },
+  "phases": {
+    "hook": "tu-tin-gia",
+    "explore": "gom-den",
+    "learn": "bia-mieng-ham",
+    "challenge": "dao-ham",
+    "decision": "den-tat",
+    "finale": "ra-khoi-ham",
+    "reward": "tra-cong-b2",
+    "next": "manh-de-danh"
+  },
+  "places": {
+    "gau-truc-tham-hiem": "Cổng di tích cổ",
+    "gom-den": "Trại thám hiểm",
+    "st-phu-dieu-thieu-manh-bia-mieng-ham": "Miệng đường hầm",
+    "st-phu-dieu-thieu-manh-chu-tren-vach": "Lòng đường hầm"
+  },
+  "steps": [
+    {
+      "id": "tu-tin-gia",
+      "title": "Can đảm... một chút",
+      "goTo": "Tới cổng di tích cổ, Gấu Trúc đang đi đi lại lại",
+      "kind": "dialogue",
+      "target": "gau-truc-tham-hiem",
+      "lines": [
+        {
+          "speaker": "Gấu Trúc Thám Hiểm",
+          "text": "Tớ không sợ đâu. Tớ chỉ... đang đếm xem mang bao nhiêu đèn là đủ. Ba cái nhé? Hay bốn?"
+        },
+        {
+          "speaker": "Gấu Trúc Thám Hiểm",
+          "text": "Đèn của tớ để ở trại thám hiểm. Cậu lấy giúp tớ, tớ đứng đây canh cổng. Canh cổng cũng quan trọng mà."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Ba đèn là đủ sáng cả đền!",
+          "reply": "Ừ nhỉ. Ba. Ba là con số dũng cảm."
+        }
+      ],
+      "en": {
+        "title": "Brave... ish",
+        "goTo": "Go to the old gate, Gấu Trúc is pacing back and forth",
+        "lines": [
+          "I'm not scared. I'm just... working out how many lamps is enough. Three? Or four?",
+          "My lamps are at the explorers' camp. Fetch them for me and I'll guard the gate. Guarding gates is important too."
+        ],
+        "choices": [
+          {
+            "text": "Three lamps will light up the whole temple!",
+            "reply": "You're right. Three. Three is a brave number."
+          }
+        ]
+      }
+    },
+    {
+      "id": "gom-den",
+      "title": "Gom đèn",
+      "goTo": "Sang trại thám hiểm gom ba thứ soi sáng",
+      "kind": "search",
+      "targets": [
+        "st-phu-dieu-thieu-manh-den-dau",
+        "st-phu-dieu-thieu-manh-hu-dom-dom",
+        "st-phu-dieu-thieu-manh-que-diem"
+      ],
+      "en": {
+        "title": "Gathering lights",
+        "goTo": "Go over to the explorers' camp and collect three lights"
+      }
+    },
+    {
+      "id": "bia-mieng-ham",
+      "title": "Tấm bia ở miệng hầm",
+      "goTo": "Mang đèn tới miệng đường hầm, đọc tấm bia",
+      "kind": "riddle",
+      "target": "st-phu-dieu-thieu-manh-bia-mieng-ham",
+      "skill": "phep-tru",
+      "question": "Bia khắc: «Hầm dài 30 bước.» Gấu Trúc mới đi 12 bước đã muốn quay lại. Còn bao nhiêu bước nữa mới tới cuối hầm?",
+      "answer": {
+        "value": 18
+      },
+      "support": {
+        "guide": [
+          "Cả hầm 30 bước, đã đi 12.",
+          "Lấy 30 trừ 12."
+        ],
+        "hint": "30 bớt 10 còn 20, bớt thêm 2.",
+        "answer": {
+          "text": "18 bước",
+          "explanation": "30 − 12 = 18: còn mười tám bước nữa là tới cuối hầm."
+        },
+        "en": {
+          "guide": [
+            "The tunnel is 30 steps; 12 are done.",
+            "Work out 30 take away 12."
+          ],
+          "hint": "30 take away 10 is 20, then take away 2 more.",
+          "answer": {
+            "text": "18 steps",
+            "explanation": "30 − 12 = 18: eighteen more steps to the end of the tunnel."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười tám bước, ít hơn Gấu Trúc tưởng nhiều!",
+          "Trừ có nhớ mà vẫn chuẩn, giỏi quá.",
+          "Gấu Trúc hít một hơi: mười tám bước thì tớ đi được."
+        ],
+        "wrong": [
+          "Còn ít hơn 30 chứ, vì đã đi được một đoạn rồi.",
+          "Thử bớt 10 trước, rồi bớt tiếp 2.",
+          "Hắt xì! Gấu Trúc đếm lại trên ngón tay cùng cậu."
+        ],
+        "en": {
+          "right": [
+            "Eighteen steps, far fewer than Gấu Trúc feared!",
+            "A tricky take-away, and still spot on.",
+            "Gấu Trúc takes a breath: eighteen steps, I can do that."
+          ],
+          "wrong": [
+            "It must be less than 30, some steps are already done.",
+            "Take away 10 first, then 2 more.",
+            "Achoo! Gấu Trúc counts it again on his paws with you."
+          ]
+        }
+      },
+      "en": {
+        "title": "The stone at the tunnel mouth",
+        "goTo": "Take the lights to the tunnel mouth and read the stone",
+        "question": "The stone reads: \"The tunnel is 30 steps long.\" Gấu Trúc has gone 12 steps and already wants to turn back. How many steps are left to the end?"
+      }
+    },
+    {
+      "id": "dao-ham",
+      "title": "Đào lối trong hầm",
+      "kind": "challenge",
+      "trigger": "auto",
+      "mechanic": "minigame",
+      "prompt": "Đất sụt lấp mất một đoạn hầm. Đào lối đi tìm ngọc, nhớ tránh xa chỗ có tảng đá treo nhé!",
+      "game": "dig-tunnel",
+      "goal": 6,
+      "en": {
+        "title": "Digging through",
+        "prompt": "A rockfall has filled part of the tunnel. Dig a way through and pick up gems, keeping clear of loose boulders!"
+      }
+    },
+    {
+      "id": "chu-tren-vach",
+      "title": "Dòng chữ trên vách",
+      "goTo": "Đi sâu vào lòng đường hầm, soi đèn lên vách",
+      "kind": "read",
+      "target": "st-phu-dieu-thieu-manh-chu-tren-vach",
+      "skill": "doc-hieu",
+      "text": "Chúng tôi là những người làm muối, đánh cá và trồng dừa trên đảo.\nMỗi người khắc một hình lên tường đền: người khắc sóng, người khắc mặt trời, người khắc rùa.\nMảnh chính giữa chúng tôi để trống. Đó là phần của người đến sau.",
+      "question": "Theo dòng chữ, vì sao mảnh giữa của bức phù điêu còn trống?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Vì nó bị vỡ mất"
+        },
+        {
+          "id": "b",
+          "text": "Vì người xưa để dành cho người đến sau"
+        },
+        {
+          "id": "c",
+          "text": "Vì hết đá để khắc"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Đọc câu cuối cùng trên vách.",
+          "«Người đến sau» là ai?"
+        ],
+        "hint": "Mảnh trống là «phần của» một ai đó.",
+        "answer": {
+          "text": "Để dành cho những người đến sau",
+          "explanation": "Vách viết: mảnh giữa để trống, đó là phần của người đến sau. Nó không hề bị mất."
+        },
+        "en": {
+          "guide": [
+            "Read the last line on the wall.",
+            "Who are \"those who come after\"?"
+          ],
+          "hint": "The empty piece \"belongs to\" someone.",
+          "answer": {
+            "text": "It was kept for whoever comes later",
+            "explanation": "The wall says the middle was left empty for whoever comes after. It was never lost."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thì ra mảnh giữa chẳng hề mất, nó đang chờ!",
+          "Gấu Trúc đọc lại ba lần, mắt rưng rưng.",
+          "Đọc hay lắm, người đến sau là chính hai bạn đấy."
+        ],
+        "wrong": [
+          "Vách không nhắc gì tới chuyện vỡ cả.",
+          "Hòn đảo đầy đá mà, đâu có hết được.",
+          "Tìm chữ «người đến sau» trên vách nhé."
+        ],
+        "en": {
+          "right": [
+            "So the middle piece was never lost; it's been waiting!",
+            "Gấu Trúc reads it three times, eyes misty.",
+            "Well read; the ones who came after are you two."
+          ],
+          "wrong": [
+            "The wall says nothing about breaking.",
+            "The island is full of stone; it couldn't run out.",
+            "Look for \"whoever comes after\" on the wall."
+          ]
+        }
+      },
+      "en": {
+        "title": "Writing on the wall",
+        "goTo": "Go deep into the tunnel and shine the lamp on the wall",
+        "text": "We are the salt-makers, fishers and coconut growers of this island.\nEach of us carved one picture on the temple wall: some carved waves, some the sun, some turtles.\nWe left the middle piece empty. That part belongs to whoever comes after us.",
+        "question": "According to the writing, why is the middle of the carving empty?",
+        "choices": [
+          "Because it broke",
+          "Because the builders saved it for those who came later",
+          "Because they ran out of stone"
+        ]
+      }
+    },
+    {
+      "id": "den-tat",
+      "title": "Đèn tắt!",
+      "kind": "decision",
+      "target": "st-phu-dieu-thieu-manh-chu-tren-vach",
+      "speaker": "Gấu Trúc Thám Hiểm",
+      "prompt": "Phụt! Gió lùa làm tắt đèn dầu. Trong bóng tối, Gấu Trúc run như cầy sấy. {name} làm gì?",
+      "choices": [
+        {
+          "id": "dom-dom",
+          "text": "Mở hũ đom đóm",
+          "consequence": "Hàng trăm đốm sáng bay lên, cả vách hầm lấp lánh như trời sao. Gấu Trúc quên cả sợ."
+        },
+        {
+          "id": "nam-tay",
+          "text": "Nắm tay Gấu Trúc, đếm bước ra cùng nhau",
+          "consequence": "Một, hai, ba... mười tám. Hai bạn bước ra ánh sáng, Gấu Trúc vẫn nắm tay chưa chịu buông."
+        },
+        {
+          "id": "diem",
+          "text": "Quẹt diêm thắp lại đèn",
+          "consequence": "Que diêm bùng sáng. Gấu Trúc thở phào: «Lần sau tớ mang năm hộp diêm.»"
+        }
+      ],
+      "en": {
+        "title": "The lamp goes out!",
+        "prompt": "Pfft! A draught blows out the oil lamp. In the dark, Gấu Trúc is shaking like a leaf. What does {name} do?",
+        "choices": [
+          {
+            "text": "Open the jar of fireflies",
+            "consequence": "Hundreds of little lights float up and the tunnel walls glitter like a starry sky. Gấu Trúc forgets to be afraid."
+          },
+          {
+            "text": "Hold Gấu Trúc's paw and count the steps out together",
+            "consequence": "One, two, three... eighteen. You step into the light, and Gấu Trúc still won't let go of your hand."
+          },
+          {
+            "text": "Strike a match and relight the lamp",
+            "consequence": "The match flares. Gấu Trúc sighs with relief: \"Next time I'm bringing five boxes of matches.\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "ra-khoi-ham",
+      "title": "Ra khỏi hầm",
+      "goTo": "Ra lại cổng di tích cổ, hít thở khí trời",
+      "kind": "dialogue",
+      "target": "gau-truc-tham-hiem",
+      "lines": [
+        {
+          "speaker": "Gấu Trúc Thám Hiểm",
+          "text": "Tớ vừa ở trong bóng tối mà không bỏ chạy! Cậu thấy không? Tớ run, nhưng không bỏ chạy!"
+        },
+        {
+          "speaker": "Gấu Trúc Thám Hiểm",
+          "text": "Mảnh giữa không mất, nó để dành cho người đến sau. Vậy ai sẽ khắc nó đây nhỉ..."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Run mà vẫn đi, thế mới là dũng cảm!",
+          "reply": "Tớ sẽ ghi câu ấy vào trang đầu sổ thám hiểm."
+        }
+      ],
+      "en": {
+        "title": "Out of the tunnel",
+        "goTo": "Come back out to the old gate and breathe the fresh air",
+        "lines": [
+          "I was in the dark and I didn't run away! Did you see? I shook, but I didn't run!",
+          "The middle piece isn't lost, it was saved for whoever comes after. So who will carve it, I wonder..."
+        ],
+        "choices": [
+          {
+            "text": "Shaking and still going: that's real courage!",
+            "reply": "I'm writing that on the first page of my explorer's notebook."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tra-cong-b2",
+      "title": "Đom đóm và ngọc",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Trúc chia cho {name} một nửa số ngọc đào được trong hầm, và một viên ngọc trai tròn nhất mà cậu bảo «sáng như cậu lúc đèn tắt».",
+      "en": {
+        "title": "Fireflies and gems",
+        "text": "Gấu Trúc shares half the gems from the tunnel with {name}, and the roundest pearl, which he says \"shone like you when the lamp went out\"."
+      }
+    },
+    {
+      "id": "manh-de-danh",
+      "title": "Mảnh để dành",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cả đêm Gấu Trúc ngồi nhìn chỗ trống giữa bức phù điêu. Cậu đã có một ý tưởng, và ý tưởng ấy cần {name}.",
+      "en": {
+        "title": "The piece that was saved",
+        "text": "All night Gấu Trúc sits gazing at the gap in the carving. He has an idea, and the idea needs {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "phep-tru": 1,
+      "doc-hieu": 1
+    },
+    "items": {
+      "ngoc-trai-bien": 1
+    }
+  },
+  "en": {
+    "title": "Gấu Trúc Thám Hiểm's story, chapter 2: The tunnel under the temple",
+    "summary": "The island's most dark-shy explorer must go down a pitch-black tunnel. {name} gathers lamps, works out the distance underground, digs through to a wall with writing on it, and stays with Gấu Trúc when the lamp goes out."
+  }
+}

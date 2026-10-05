@@ -3144,6 +3144,214 @@
    "kind": "object",
    "label": "Xem",
    "tint": "#d8e8f8"
+  },
+  "st-lua-hieu-mui-da-hai-au": {
+   "model": "packs/kenney-cube-pets/2.0/animal-parrot.glb",
+   "height": 0.8,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#eef2f4"
+  },
+  "st-lua-hieu-mui-da-trang-lua": {
+   "model": "generated/props/page-red.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-lua-hieu-mui-da-trang-thuyen": {
+   "model": "generated/props/page-blue.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-lua-hieu-mui-da-trang-mui-da": {
+   "model": "generated/props/page-curl.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-lua-hieu-mui-da-day-phoi": {
+   "model": "generated/props/scroll.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#d8c090"
+  },
+  "st-lua-hieu-mui-da-da-lua": {
+   "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#b84830"
+  },
+  "st-lua-hieu-mui-da-cui-dat": {
+   "model": "packs/kenney-nature-kit/2.1/log_stack.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#a88860"
+  },
+  "st-lua-hieu-mui-da-dau-dua": {
+   "model": "packs/kenney-survival-kit/2.0/bottle.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#e8d088"
+  },
+  "st-lua-hieu-mui-da-nen-lua": {
+   "model": "packs/kenney-survival-kit/2.0/rock-flat.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#605850"
+  },
+  "st-lua-hieu-mui-da-ba-cu-va-luoi": {
+   "model": "packs/kenney-blocky-characters/2.0/character-a.glb",
+   "height": 1.8,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#d8c8b8"
+  },
+  "st-lua-hieu-mui-da-guong-dong": {
+   "model": "generated/props/mirror.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c88848"
+  },
+  "st-lua-hieu-mui-da-khung-go": {
+   "model": "packs/kenney-survival-kit/2.0/resource-planks.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#8a6a48"
+  },
+  "st-lua-hieu-mui-da-day-buoc": {
+   "model": "generated/props/knot.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#b8a070"
+  },
+  "st-lua-hieu-mui-da-thuyen-so-do": {
+   "model": "packs/kenney-nature-kit/2.1/canoe.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#d84838"
+  },
+  "st-lua-hieu-mui-da-dong-lua": {
+   "model": "packs/kenney-nature-kit/2.1/campfire_logs.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-lua-hieu-mui-da-bang-thuyen": {
+   "model": "generated/props/placard.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng",
+   "tint": "#4f8fa8"
+  },
+  "st-lua-hieu-mui-da-phao-ngoai-ran": {
+   "model": "generated/props/wheel.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#e04040"
+  },
+  "st-phu-dieu-thieu-manh-manh-song": {
+   "model": "packs/kenney-nature-kit/2.1/stone_smallFlatA.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc",
+   "tint": "#7aa8c0"
+  },
+  "st-phu-dieu-thieu-manh-manh-mat-troi": {
+   "model": "packs/kenney-nature-kit/2.1/rock_smallFlatA.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#d8b048"
+  },
+  "st-phu-dieu-thieu-manh-manh-rua": {
+   "model": "packs/kenney-survival-kit/2.0/rock-flat-grass.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#7a9a68"
+  },
+  "st-phu-dieu-thieu-manh-phu-dieu": {
+   "model": "packs/kenney-nature-kit/2.1/stone_tallA.glb",
+   "height": 1.8,
+   "kind": "object",
+   "label": "Đọc",
+   "tint": "#b8a888"
+  },
+  "st-phu-dieu-thieu-manh-bac-da": {
+   "model": "packs/kenney-nature-kit/2.1/rock_largeB.glb",
+   "height": 1.4,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#8a8878"
+  },
+  "st-phu-dieu-thieu-manh-den-dau": {
+   "model": "packs/kenney-survival-kit/2.0/bottle.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#e09838"
+  },
+  "st-phu-dieu-thieu-manh-hu-dom-dom": {
+   "model": "packs/kenney-survival-kit/2.0/bottle-large.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#b8e070"
+  },
+  "st-phu-dieu-thieu-manh-que-diem": {
+   "model": "packs/kenney-survival-kit/2.0/box.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Mở hộp",
+   "tint": "#c84838"
+  },
+  "st-phu-dieu-thieu-manh-bia-mieng-ham": {
+   "model": "packs/kenney-nature-kit/2.1/stone_smallFlatB.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#9a9480"
+  },
+  "st-phu-dieu-thieu-manh-chu-tren-vach": {
+   "model": "packs/kenney-nature-kit/2.1/stone_tallA.glb",
+   "height": 1.8,
+   "kind": "object",
+   "label": "Đọc",
+   "tint": "#7a7468"
+  },
+  "st-phu-dieu-thieu-manh-phien-da": {
+   "model": "packs/kenney-survival-kit/2.0/rock-flat.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#c8b898"
+  },
+  "st-phu-dieu-thieu-manh-manh-trong": {
+   "model": "packs/kenney-nature-kit/2.1/stone_smallFlatA.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc",
+   "tint": "#e0d4b8"
+  },
+  "st-phu-dieu-thieu-manh-bang-ten": {
+   "model": "packs/kenney-nature-kit/2.1/sign.glb",
+   "height": 1.4,
+   "kind": "object",
+   "label": "Đọc bảng",
+   "tint": "#a08860"
   }
  }
 }

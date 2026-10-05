@@ -1,0 +1,395 @@
+{
+  "id": "yarn-phu-dieu-thieu-manh-3",
+  "region": "dao-bi-an",
+  "chapter": 3,
+  "title": "Chuyện của Gấu Trúc Thám Hiểm, chương 3: Phần của người đến sau",
+  "status": "active",
+  "category": "story",
+  "summary": "Người xưa để dành mảnh giữa của bức phù điêu cho người đến sau. {name} và Gấu Trúc chọn kể gì về hòn đảo hôm nay, đào lên chiếc đục cổ, khắc đúng từng bước và quyết định ai ký tên lên mảnh đá.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, người khắc mảnh giữa",
+    "where": "Khu di tích cổ, bãi cát trước đền, đền thờ bí ẩn, cổng di tích cổ",
+    "goal": "Khắc mảnh giữa của bức phù điêu kể chuyện hòn đảo hôm nay",
+    "play": "Chọn những điều thật có trên đảo, đào tìm chiếc đục cổ, xếp các bước khắc đá, chọn dấu ký tên",
+    "learn": "Phân biệt điều có thật và không có thật, sắp xếp trình tự công việc",
+    "reward": "75 XP, 20 Xu, Skill XP Logic và Kể chuyện",
+    "next": "Gấu Trúc viết sách về ngôi đền và đi tìm những di tích mới"
+  },
+  "phases": {
+    "hook": "y-tuong",
+    "explore": "chon-hinh-khac",
+    "learn": "dao-duc-co",
+    "challenge": "cac-buoc-khac",
+    "decision": "ai-ky-ten",
+    "finale": "bang-ten-moi",
+    "reward": "tra-cong-b3",
+    "next": "cuon-sach-dau-tien"
+  },
+  "places": {
+    "gau-truc-tham-hiem": "Khu di tích cổ",
+    "st-phu-dieu-thieu-manh-phien-da": "Bãi cát trước đền",
+    "st-phu-dieu-thieu-manh-manh-trong": "Đền thờ bí ẩn",
+    "st-phu-dieu-thieu-manh-bang-ten": "Cổng di tích cổ"
+  },
+  "steps": [
+    {
+      "id": "y-tuong",
+      "title": "Ý tưởng của Gấu Trúc",
+      "goTo": "Tới khu di tích cổ, Gấu Trúc đang vẫy cây cọ rối rít",
+      "kind": "dialogue",
+      "target": "gau-truc-tham-hiem",
+      "lines": [
+        {
+          "speaker": "Gấu Trúc Thám Hiểm",
+          "text": "{name} ơi, tớ nghĩ ra rồi! Mình là người đến sau. Mình sẽ khắc mảnh giữa, kể chuyện hòn đảo bây giờ."
+        },
+        {
+          "speaker": "Gấu Trúc Thám Hiểm",
+          "text": "Nhưng phải kể thật đúng. Người xưa khắc sóng, mặt trời, rùa: toàn những thứ có thật trên đảo."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình vẽ phác trước đã!",
+          "reply": "Đúng kiểu nhà thám hiểm. Phiến đá vẽ phác ở bãi cát trước đền đấy."
+        }
+      ],
+      "en": {
+        "title": "Gấu Trúc's idea",
+        "goTo": "Go to the ancient ruins, Gấu Trúc is waving his brush wildly",
+        "lines": [
+          "{name}, I've got it! We are the ones who came after. We'll carve the middle piece and tell the island's story as it is now.",
+          "But we have to tell it truly. The builders carved waves, sun and turtles: all real things on the island."
+        ],
+        "choices": [
+          {
+            "text": "Let's sketch it first!",
+            "reply": "Spoken like an explorer. The sketching slab is on the sand in front of the temple."
+          }
+        ]
+      }
+    },
+    {
+      "id": "chon-hinh-khac",
+      "title": "Kể chuyện hòn đảo hôm nay",
+      "goTo": "Ra bãi cát trước đền, tới phiến đá vẽ phác",
+      "kind": "challenge",
+      "target": "st-phu-dieu-thieu-manh-phien-da",
+      "mechanic": "multi-select",
+      "skill": "logic",
+      "prompt": "Gấu Trúc vẽ phác nhiều hình lên phiến đá. Chọn mọi hình kể đúng những điều có thật trên hòn đảo hôm nay.",
+      "choices": [
+        {
+          "id": "thuyen",
+          "text": "Thuyền đánh cá"
+        },
+        {
+          "id": "nguoi-tuyet",
+          "text": "Người tuyết quàng khăn"
+        },
+        {
+          "id": "dua",
+          "text": "Cây dừa"
+        },
+        {
+          "id": "xe-buyt",
+          "text": "Xe buýt hai tầng"
+        },
+        {
+          "id": "cua",
+          "text": "Chú cua lướt sóng"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "thuyen",
+          "dua",
+          "cua"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Nhớ lại những gì {name} đã thấy trên đảo.",
+          "Bỏ những thứ chỉ có ở nơi tuyết rơi hay phố xá."
+        ],
+        "hint": "Có ba hình đúng: một con thuyền, một cái cây, một bạn lướt sóng.",
+        "answer": {
+          "text": "Thuyền đánh cá, cây dừa, chú cua lướt sóng",
+          "explanation": "Đảo có thuyền đánh cá ở bến, dừa ở rừng, cua lướt sóng ở bãi biển; người tuyết và xe buýt hai tầng không có ở đây."
+        },
+        "en": {
+          "guide": [
+            "Think back to what {name} has seen on the island.",
+            "Leave out things that only belong in snowy places or busy towns."
+          ],
+          "hint": "Three are right: a boat, a tree and a surfing friend.",
+          "answer": {
+            "text": "The fishing boat, the coconut palm, the surfing crab",
+            "explanation": "The island has fishing boats at the pier, palms in the jungle and a surfing crab on the beach; snowmen and double-decker buses don't live here."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hình nào cũng thật như hòn đảo, khắc thôi!",
+          "Gấu Trúc gạch chân ba hình: thuyền, dừa, cua.",
+          "Người xưa mà xem chắc gật gù khen đúng."
+        ],
+        "wrong": [
+          "Người tuyết mà ở đảo này chắc tan trong nửa buổi.",
+          "Đảo mình làm gì có xe buýt hai tầng nhỉ.",
+          "Còn sót một hình có thật đấy, nhìn lại nhé."
+        ],
+        "en": {
+          "right": [
+            "Every picture as true as the island itself; let's carve!",
+            "Gấu Trúc underlines three pictures: boat, palm, crab.",
+            "The old builders would nod and say: that's right."
+          ],
+          "wrong": [
+            "A snowman on this island would melt by mid-morning.",
+            "There are no double-decker buses on our island.",
+            "One true picture is missing; look again."
+          ]
+        }
+      },
+      "en": {
+        "title": "The island today",
+        "goTo": "Go out to the sand in front of the temple, to the sketching slab",
+        "prompt": "Gấu Trúc has sketched lots of pictures on the slab. Pick every one that shows something really on the island today.",
+        "choices": [
+          "A fishing boat",
+          "A snowman in a scarf",
+          "A coconut palm",
+          "A double-decker bus",
+          "A surfing crab"
+        ]
+      }
+    },
+    {
+      "id": "dao-duc-co",
+      "title": "Tìm chiếc đục cổ",
+      "kind": "challenge",
+      "trigger": "auto",
+      "mechanic": "minigame",
+      "prompt": "Người xưa chôn đồ nghề khắc đá quanh đây. Đào thử từng ô: lửa là gần, tuyết là xa, tìm cho ra chiếc đục cổ nhé!",
+      "game": "treasure-dig",
+      "goal": 2,
+      "en": {
+        "title": "Finding the ancient chisel",
+        "prompt": "The builders buried their carving tools nearby. Dig square by square: fire means close, snow means far. Find the ancient chisel!"
+      }
+    },
+    {
+      "id": "cac-buoc-khac",
+      "title": "Khắc từng bước",
+      "goTo": "Vào đền thờ bí ẩn, tới mảnh đá trống giữa phù điêu",
+      "kind": "challenge",
+      "target": "st-phu-dieu-thieu-manh-manh-trong",
+      "mechanic": "sort",
+      "skill": "ke-chuyen",
+      "prompt": "Chiếc đục cổ đã trong tay. Xếp các bước khắc đá theo đúng thứ tự để mảnh giữa không bị nứt.",
+      "items": [
+        {
+          "id": "chi-tiet",
+          "label": "Đục chi tiết nhỏ"
+        },
+        {
+          "id": "phac",
+          "label": "Vẽ phác bằng than"
+        },
+        {
+          "id": "phui",
+          "label": "Phủi bụi bằng cọ mềm"
+        },
+        {
+          "id": "vien",
+          "label": "Đục đường viền"
+        }
+      ],
+      "answer": {
+        "order": [
+          "phac",
+          "vien",
+          "chi-tiet",
+          "phui"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Phải biết khắc gì trước khi đục.",
+          "Phủi bụi là việc làm sau cùng."
+        ],
+        "hint": "Bước đầu là vẽ phác bằng than.",
+        "answer": {
+          "text": "Vẽ phác, đục đường viền, đục chi tiết nhỏ, phủi bụi",
+          "explanation": "Vẽ phác để biết hình, đục viền để giữ dáng, đục chi tiết sau cùng, rồi phủi bụi cho hình hiện rõ."
+        },
+        "en": {
+          "guide": [
+            "You need to know what to carve before you chisel.",
+            "Brushing off the dust comes last."
+          ],
+          "hint": "Step one is a charcoal sketch.",
+          "answer": {
+            "text": "Sketch, chisel the outline, chisel the small details, brush off the dust",
+            "explanation": "Sketch to plan the picture, cut the outline to hold its shape, add details last, then brush away the dust so it shows clearly."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cạch, cạch, cạch: hình thuyền, hình dừa, hình cua hiện dần lên.",
+          "Thứ tự chuẩn như một nghệ nhân lâu năm.",
+          "Mảnh đá không nứt một đường nào, Gấu Trúc reo lên."
+        ],
+        "wrong": [
+          "Chưa vẽ phác mà đã đục thì lấy gì làm mẫu?",
+          "Phủi bụi sớm thế thì lát nữa lại bụi mù.",
+          "Chi tiết nhỏ đục sau đường viền mới chắc tay."
+        ],
+        "en": {
+          "right": [
+            "Tap, tap, tap: the boat, the palm and the crab slowly appear.",
+            "An order worthy of a master carver.",
+            "Not a single crack in the stone; Gấu Trúc cheers."
+          ],
+          "wrong": [
+            "Chisel before sketching? What would you follow?",
+            "Brush too early and the dust will just come back.",
+            "Small details come after the outline, for a steady hand."
+          ]
+        }
+      },
+      "en": {
+        "title": "Carving step by step",
+        "goTo": "Go into the mysterious temple, to the blank stone in the middle of the carving",
+        "prompt": "The ancient chisel is in hand. Put the carving steps in the right order so the middle piece doesn't crack.",
+        "items": [
+          "Chisel the small details",
+          "Sketch in charcoal",
+          "Brush off the dust with a soft brush",
+          "Chisel the outline"
+        ]
+      }
+    },
+    {
+      "id": "ai-ky-ten",
+      "title": "Dấu ký tên",
+      "kind": "decision",
+      "target": "st-phu-dieu-thieu-manh-manh-trong",
+      "speaker": "Gấu Trúc Thám Hiểm",
+      "prompt": "Người xưa không ký tên, chỉ khắc hình. Góc mảnh giữa còn một chỗ nhỏ. Để lại dấu gì đây?",
+      "choices": [
+        {
+          "id": "dau-tay",
+          "text": "In cả dấu tay {name} và dấu chân Gấu Trúc",
+          "consequence": "Một bàn tay, một bàn chân gấu, nằm cạnh nhau như hai người bạn đứng chụp ảnh."
+        },
+        {
+          "id": "chiec-mu",
+          "text": "Khắc chiếc mũ thám hiểm nhỏ",
+          "consequence": "Gấu Trúc khắc chiếc mũ, rồi khẽ chạm lên mũ thật trên đầu mình, mỉm cười rất lâu."
+        },
+        {
+          "id": "de-trong",
+          "text": "Để trống cho người đến sau nữa",
+          "consequence": "Hai bạn để góc ấy trống, giống như người xưa từng làm. Câu chuyện của đảo sẽ còn tiếp."
+        }
+      ],
+      "en": {
+        "title": "Signing the stone",
+        "prompt": "The builders never signed their names; they only carved pictures. There's a small space left in the corner. What mark do you leave?",
+        "choices": [
+          {
+            "text": "Press in both {name}'s handprint and Gấu Trúc's pawprint",
+            "consequence": "A hand and a bear paw side by side, like two friends posing for a photo."
+          },
+          {
+            "text": "Carve a tiny explorer's hat",
+            "consequence": "Gấu Trúc carves the hat, then gently touches the real one on his head and smiles for a long time."
+          },
+          {
+            "text": "Leave it empty for whoever comes next",
+            "consequence": "You leave the corner empty, just as the builders did. The island's story will go on."
+          }
+        ]
+      }
+    },
+    {
+      "id": "bang-ten-moi",
+      "title": "Tấm bảng tên mới",
+      "goTo": "Ra cổng di tích cổ, dựng lại tấm bảng tên di tích",
+      "kind": "dialogue",
+      "target": "st-phu-dieu-thieu-manh-bang-ten",
+      "lines": [
+        {
+          "speaker": "Gấu Trúc Thám Hiểm",
+          "text": "Tớ có một bí mật: tớ chưa học trường thám hiểm nào cả. Chiếc mũ này trôi dạt vào bãi biển, và tớ quyết định sống sao cho xứng với nó."
+        },
+        {
+          "speaker": "Gấu Trúc Thám Hiểm",
+          "text": "Hôm nay tớ biết ai đã xây ngôi đền rồi: là tất cả mọi người, và giờ có cả chúng mình. Tớ viết lên bảng nhé: «Do người trên đảo xây, và vẫn đang xây tiếp.»"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cậu là nhà thám hiểm thật sự!",
+          "reply": "Một nhà thám hiểm... từng sợ bóng tối. Ghi cả câu đó vào sách nhé!"
+        }
+      ],
+      "en": {
+        "title": "A new sign",
+        "goTo": "Go out to the old gate and put the ruins' sign back up",
+        "lines": [
+          "I have a secret: I never went to any explorer school. This hat washed up on the beach, and I decided to live up to it.",
+          "Today I found out who built the temple: everyone did, and now us too. I'll write it on the sign: \"Built by the people of the island, and still being built.\""
+        ],
+        "choices": [
+          {
+            "text": "You're a real explorer!",
+            "reply": "An explorer... who used to be scared of the dark. Put that in the book too!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tra-cong-b3",
+      "title": "Bức phù điêu trọn vẹn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bức phù điêu giờ có đủ sóng, mặt trời, rùa, và ở giữa là thuyền, dừa, cua của hôm nay. Gấu Trúc tặng {name} một chú rùa biển con bằng đá do chính tay cậu khắc.",
+      "en": {
+        "title": "The carving made whole",
+        "text": "The carving now has its waves, suns and turtles, and in the middle, today's boat, palm and crab. Gấu Trúc gives {name} a little stone sea turtle he carved himself."
+      }
+    },
+    {
+      "id": "cuon-sach-dau-tien",
+      "title": "Cuốn sách đầu tiên",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Gấu Trúc Thám Hiểm bắt đầu viết cuốn sách đầu tiên về ngôi đền, chương nào cũng có tên {name}. Cậu hẹn sẽ gửi bản đầu tiên cho người anh họ ở thư viện xa, rồi cùng {name} đi tìm di tích tiếp theo.",
+      "en": {
+        "title": "The first book",
+        "text": "Gấu Trúc Thám Hiểm starts writing his first book about the temple, with {name} in every chapter. He plans to send the first copy to his cousin at a faraway library, then set off with {name} to find the next ruin."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 75,
+    "coin": 20,
+    "skillXp": {
+      "logic": 1,
+      "ke-chuyen": 1
+    },
+    "items": {
+      "rua-bien-con": 1
+    }
+  },
+  "en": {
+    "title": "Gấu Trúc Thám Hiểm's story, chapter 3: The part for those who came after",
+    "summary": "The builders saved the middle of the carving for those who came after. {name} and Gấu Trúc choose what to tell about the island today, dig up an ancient chisel, carve it step by step and decide whose mark goes on the stone."
+  }
+}

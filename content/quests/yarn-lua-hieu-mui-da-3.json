@@ -1,0 +1,397 @@
+{
+  "id": "yarn-lua-hieu-mui-da-3",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Chuyện của Thuyền Trưởng Vẹt Biển, chương 3: Chiếc gương đồng",
+  "status": "active",
+  "category": "story",
+  "summary": "Chiếc gương đồng của ông Vẹt Đỏ đang ở nhà Bà Cụ Vá Lưới. {name} giải câu đố phao của bà, tìm đủ gương, khung và dây buộc, đưa thuyền chở gương ra khỏi chỗ kẹt, và nghe thuyền trưởng thú nhận một điều chưa ai biết.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, thủy thủ đi mượn gương",
+    "where": "Bên lều thuyền trưởng, làng chài, sân phơi lưới, bến tàu",
+    "goal": "Mang chiếc gương đồng của ông Vẹt Đỏ về để lửa hiệu sáng xa",
+    "play": "Tìm quy luật dãy phao, tìm gương, khung, dây theo lời tả, mở đường cho thuyền, chọn đường đưa gương về",
+    "learn": "Tìm quy luật lặp lại, đọc lời tả",
+    "reward": "70 XP, 18 Xu, Skill XP Logic và Đọc hiểu",
+    "next": "Đêm sương lớn nhất mùa đang tới, và thuyền trưởng phải chọn có ra khơi hay không"
+  },
+  "phases": {
+    "hook": "muon-guong",
+    "explore": "cau-do-phao",
+    "learn": "tim-guong",
+    "challenge": "mo-duong-thuyen",
+    "decision": "dua-guong-ve",
+    "finale": "loi-thu-nhan",
+    "reward": "tra-cong-a3",
+    "next": "dem-suong-lon"
+  },
+  "places": {
+    "thuyen-truong-vet-bien": "Bên lều thuyền trưởng",
+    "st-lua-hieu-mui-da-ba-cu-va-luoi": "Làng chài",
+    "tim-guong": "Sân phơi lưới",
+    "st-lua-hieu-mui-da-thuyen-so-do": "Bến tàu"
+  },
+  "steps": [
+    {
+      "id": "muon-guong",
+      "title": "Đi mượn gương",
+      "goTo": "Tới bên lều thuyền trưởng, ông đang chải lông cho thật mượt",
+      "kind": "dialogue",
+      "target": "thuyen-truong-vet-bien",
+      "lines": [
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Bà Cụ Vá Lưới ấy à? Bà khó tính lắm, khó tính lắm! Hồi bé ta trèo lên mái nhà bà một lần, bị mắng tới tận bây giờ."
+        },
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Thủy thủ {name} đi trước giúp ta nhé. Ta... ta đứng sau cổ vũ."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Thuyền trưởng sợ bà cụ ạ?",
+          "reply": "Sợ á? Không. Chỉ là... lông ta tự dựng lên thôi."
+        },
+        {
+          "text": "Cứ để thủy thủ lo!"
+        }
+      ],
+      "en": {
+        "title": "Borrowing a mirror",
+        "goTo": "Go round the side of the captain's tent, he's preening his feathers smooth",
+        "lines": [
+          "The old net-mender? She's strict, very strict! I climbed on her roof once as a chick and she's still telling me off.",
+          "Sailor {name}, would you go first? I'll... cheer from behind."
+        ],
+        "choices": [
+          {
+            "text": "Are you scared of her, Captain?",
+            "reply": "Scared? No. My feathers just... stand up on their own."
+          },
+          {
+            "text": "Leave it to your sailor!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cau-do-phao",
+      "title": "Câu đố dãy phao",
+      "goTo": "Vào làng chài tìm nhà Bà Cụ Vá Lưới",
+      "kind": "challenge",
+      "target": "st-lua-hieu-mui-da-ba-cu-va-luoi",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "skill": "logic",
+      "prompt": "Bà Cụ Vá Lưới chỉ dãy phao trên lưới: «Ta xâu phao theo một quy luật. Đoán đúng chiếc phao tiếp theo thì ta cho mượn gương.»",
+      "elements": [
+        {
+          "id": "e1",
+          "label": "Đỏ"
+        },
+        {
+          "id": "e2",
+          "label": "Vàng"
+        },
+        {
+          "id": "e3",
+          "label": "Vàng"
+        },
+        {
+          "id": "e4",
+          "label": "Đỏ"
+        },
+        {
+          "id": "e5",
+          "label": "Vàng"
+        },
+        {
+          "id": "e6",
+          "label": "Vàng"
+        },
+        {
+          "id": "e7",
+          "label": "Đỏ"
+        },
+        {
+          "id": "e8",
+          "label": "Vàng"
+        },
+        {
+          "id": "eq",
+          "label": "?"
+        }
+      ],
+      "choices": [
+        {
+          "id": "do",
+          "text": "Phao đỏ"
+        },
+        {
+          "id": "vang",
+          "text": "Phao vàng"
+        },
+        {
+          "id": "xanh",
+          "text": "Phao xanh"
+        }
+      ],
+      "answer": {
+        "choice": "vang"
+      },
+      "support": {
+        "guide": [
+          "Đọc to dãy màu từ trái sang phải.",
+          "Tìm nhóm màu lặp lại."
+        ],
+        "hint": "Nhóm lặp lại là: đỏ, vàng, vàng.",
+        "answer": {
+          "text": "Phao vàng",
+          "explanation": "Đỏ, vàng, vàng rồi lại đỏ, vàng, vàng. Sau chiếc đỏ thứ ba mới có một chiếc vàng, nên chiếc tiếp theo cũng màu vàng."
+        },
+        "en": {
+          "guide": [
+            "Say the colours out loud from left to right.",
+            "Find the group of colours that repeats."
+          ],
+          "hint": "The repeating group is: red, yellow, yellow.",
+          "answer": {
+            "text": "A yellow float",
+            "explanation": "Red, yellow, yellow, then red, yellow, yellow again. After the third red there is only one yellow so far, so the next is yellow too."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bà cụ nheo mắt rồi bật cười: «Tinh mắt đấy!»",
+          "Đỏ, vàng, vàng: quy luật chẳng trốn được {name}.",
+          "Bà cụ gật đầu, tay đã với lấy chùm chìa khóa."
+        ],
+        "wrong": [
+          "Sau chiếc đỏ mới có một chiếc vàng thôi mà.",
+          "Bà cụ lắc đầu: đếm lại nhóm ba chiếc xem.",
+          "Chưa tới lượt phao đỏ đâu, nhìn kỹ nhịp lặp nhé."
+        ],
+        "en": {
+          "right": [
+            "The old lady squints, then laughs: \"Sharp eyes!\"",
+            "Red, yellow, yellow: the pattern can't hide from {name}.",
+            "She nods and reaches for her bunch of keys."
+          ],
+          "wrong": [
+            "After that red there's only been one yellow.",
+            "She shakes her head: count the groups of three again.",
+            "It isn't red's turn yet; look closely at the rhythm."
+          ]
+        }
+      },
+      "en": {
+        "title": "The buoy puzzle",
+        "goTo": "Go into the fishing village and find the old net-mender",
+        "prompt": "The old net-mender points to the floats on her net: \"I thread my floats in a pattern. Guess the next float and I'll lend you the mirror.\"",
+        "elements": [
+          "Red",
+          "Yellow",
+          "Yellow",
+          "Red",
+          "Yellow",
+          "Yellow",
+          "Red",
+          "Yellow",
+          "?"
+        ],
+        "choices": [
+          "Red float",
+          "Yellow float",
+          "Blue float"
+        ]
+      }
+    },
+    {
+      "id": "tim-guong",
+      "title": "Gương, khung và dây",
+      "goTo": "Ra sân phơi lưới tìm gương đồng và đồ đi kèm",
+      "kind": "find-object",
+      "prompt": "Bà cụ dặn: «Gương cất lẫn trong đống đồ ở sân phơi lưới. Lấy đủ ba thứ, thiếu một là gương không đứng được.»",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "guong",
+          "name": "Gương đồng tròn",
+          "clue": "Tròn như mặt trăng rằm, màu đồng ấm, soi vào thấy cả mây bay.",
+          "target": "st-lua-hieu-mui-da-guong-dong"
+        },
+        {
+          "id": "khung",
+          "name": "Khung gỗ",
+          "clue": "Mấy tấm ván ghép chéo nhau, có rãnh vừa khít mép gương.",
+          "target": "st-lua-hieu-mui-da-khung-go"
+        },
+        {
+          "id": "day",
+          "name": "Dây gai",
+          "clue": "Thô ráp, màu rơm, cuộn thành nút to, buộc vào là gió biển cũng chịu thua.",
+          "target": "st-lua-hieu-mui-da-day-buoc"
+        }
+      ],
+      "en": {
+        "title": "Mirror, frame and cord",
+        "goTo": "Go to the net-drying yard to find the mirror and its parts",
+        "prompt": "The old lady says: \"The mirror is mixed in with the things in the net yard. Take all three; without one, it won't stand.\"",
+        "items": [
+          {
+            "name": "Round copper mirror",
+            "clue": "Round as a full moon, warm copper in colour; look in and you see the clouds float by."
+          },
+          {
+            "name": "Wooden frame",
+            "clue": "A few boards joined crosswise, with a groove that fits the mirror's rim exactly."
+          },
+          {
+            "name": "Hemp cord",
+            "clue": "Rough and straw-coloured, wound into a fat knot; tie it on and even the sea wind gives up."
+          }
+        ]
+      }
+    },
+    {
+      "id": "mo-duong-thuyen",
+      "title": "Mở đường cho thuyền",
+      "kind": "challenge",
+      "trigger": "auto",
+      "mechanic": "minigame",
+      "prompt": "Thuyền Sò Đỏ chở gương bị kẹt giữa các bè gỗ ở bến. Kéo trượt từng chiếc bè để mở lối ra nhé!",
+      "game": "unblock-ferry",
+      "goal": 2,
+      "en": {
+        "title": "Clearing the way for the boat",
+        "prompt": "The Red Shell, loaded with the mirror, is jammed between rafts at the pier. Slide the rafts one by one to clear its way!"
+      }
+    },
+    {
+      "id": "dua-guong-ve",
+      "title": "Đường nào về mũi đá?",
+      "goTo": "Ra bến tàu, nơi Thuyền Sò Đỏ đang chờ",
+      "kind": "decision",
+      "target": "st-lua-hieu-mui-da-thuyen-so-do",
+      "speaker": "Thuyền Trưởng Vẹt Biển",
+      "prompt": "Gương đã lên thuyền. Đi thuyền vòng ra ngoài rạn thì nhanh, đi bộ qua đá ngầm thì lâu mà chắc. Thuyền trưởng đứng im, cánh run run.",
+      "choices": [
+        {
+          "id": "di-bo",
+          "text": "Đi bộ qua đá ngầm cho chắc",
+          "consequence": "Thuyền trưởng thở phào rất to. Hai bạn khiêng gương đi qua đúng lối cờ đã cắm hôm trước."
+        },
+        {
+          "id": "di-thuyen",
+          "text": "Đi thuyền cho nhanh",
+          "consequence": "Thuyền vừa lắc nhẹ, mặt thuyền trưởng đã xanh như lá chuối. Thuyền quay vào bờ, hai bạn đi bộ."
+        },
+        {
+          "id": "hoi",
+          "text": "Hỏi thuyền trưởng có chuyện gì",
+          "consequence": "Thuyền trưởng ngồi phịch xuống mạn thuyền, cúi đầu: «Thủy thủ, ta phải kể với cậu một chuyện.»"
+        }
+      ],
+      "en": {
+        "title": "Which way to the point?",
+        "goTo": "Go out to the pier where the Red Shell is waiting",
+        "prompt": "The mirror is aboard. Sailing round outside the reef is quick; walking across the reef is slow but sure. The captain stands frozen, wings trembling.",
+        "choices": [
+          {
+            "text": "Walk across the reef to be safe",
+            "consequence": "The captain lets out a huge sigh of relief. You carry the mirror along the flagged path from before."
+          },
+          {
+            "text": "Sail for speed",
+            "consequence": "The boat barely rocks and the captain turns green as a banana leaf. Back to shore it goes, and you walk."
+          },
+          {
+            "text": "Ask the captain what's wrong",
+            "consequence": "The captain flops down on the gunwale and hangs his head: \"Sailor, there's something I must tell you.\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "loi-thu-nhan",
+      "title": "Bí mật của thuyền trưởng",
+      "kind": "dialogue",
+      "target": "st-lua-hieu-mui-da-thuyen-so-do",
+      "lines": [
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Ta chưa bao giờ đưa thuyền ra quá rạn san hô, chưa một lần. Thuyền vừa lắc là ta say sóng, say sóng."
+        },
+        {
+          "speaker": "Thuyền Trưởng Vẹt Biển",
+          "text": "Mọi chuyện đi biển ta kể đều chép từ nhật ký của ông. Một thuyền trưởng chưa từng ra khơi, nghe có buồn cười không?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Thuyền trưởng là người giữ lửa giỏi nhất đảo!",
+          "reply": "Người giữ lửa... Ông ta cũng chỉ đứng trên bờ thôi nhỉ. Cảm ơn thủy thủ."
+        },
+        {
+          "text": "Không buồn cười chút nào."
+        }
+      ],
+      "en": {
+        "title": "The captain's secret",
+        "lines": [
+          "I have never taken a boat past the coral reef. Not once. One little rock and I'm seasick, seasick.",
+          "Every sea tale I tell comes from Grandfather's logbook. A captain who has never been to sea; isn't that silly?"
+        ],
+        "choices": [
+          {
+            "text": "You're the best fire-keeper on the island!",
+            "reply": "A fire-keeper... Grandfather stood on the shore too, didn't he. Thank you, sailor."
+          },
+          {
+            "text": "Not silly at all."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tra-cong-a3",
+      "title": "Gương về mũi đá",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chiếc gương đồng đứng vững sau đống lửa, hắt ánh sáng xa tít ra biển. Bà Cụ Vá Lưới gửi theo cho {name} một quả dừa xiêm mát lạnh.",
+      "en": {
+        "title": "The mirror reaches the point",
+        "text": "The copper mirror stands firm behind the fire, throwing light far out to sea. The old net-mender sends {name} a cool green coconut."
+      }
+    },
+    {
+      "id": "dem-suong-lon",
+      "title": "Đêm sương lớn nhất",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chị Hải Âu báo: tối mai là đêm sương lớn nhất mùa, ba thuyền lưới còn chưa về. Có khi người giữ lửa phải làm nhiều hơn là đứng trên bờ.",
+      "en": {
+        "title": "The foggiest night",
+        "text": "The gull brings word: tomorrow night is the foggiest of the season, and three net boats are still out. This time the fire-keeper may have to do more than stand on the shore."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "logic": 1,
+      "doc-hieu": 1
+    },
+    "items": {
+      "qua-dua-xiem": 1
+    }
+  },
+  "en": {
+    "title": "Thuyền Trưởng Vẹt Biển's story, chapter 3: The copper mirror",
+    "summary": "Vẹt Đỏ's copper mirror is at the home of the old net-mender. {name} solves her buoy puzzle, finds the mirror, frame and cord, frees the boat that will carry them, and hears the captain admit something nobody knew."
+  }
+}
