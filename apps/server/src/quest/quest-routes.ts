@@ -242,9 +242,11 @@ export function questRoutes({ db, content, clock }: QuestRouteDeps): Router {
       const feedback = feedbackLine(stepDef, 'right', await wrongAnswers(tx, { childId, questId, stepId }), choice);
       // The step's knowledge gates pay their treasure once per run: a search pays for the target just found, any
       // other step for its own target; a target the client names outside the step opens nothing.
+      // A boss opens its gate once won, not on its first right turn.
       const own = stepDef ? stepTargets(stepDef) : [];
       const searching = stepDef?.kind === 'search' || stepDef?.kind === 'find-object';
-      const reached = searching ? own.filter((target) => target === input.data.target) : own;
+      const stepDone = result.progress.completedSteps.includes(stepId);
+      const reached = searching ? own.filter((target) => target === input.data.target) : stepDone ? own : [];
       const gates: OpenedGate[] = await openGates(tx, content, childId, reached, questSource(questId, run), now);
       if (!result.reward) return { correct: true, feedback, row: updated, paid, reward: null, repeated: false, completion: null, gates };
       const finished = await finishQuest(tx, content, childId, quest, now, run);
