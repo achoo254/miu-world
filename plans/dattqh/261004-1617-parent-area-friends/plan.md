@@ -63,7 +63,7 @@ Lệch so với plan (có lý do): thời gian chơi là dữ liệu mới (mộ
 
 ## Câu hỏi mở
 
-- Lời đồng ý: giữ v3, dữ liệu mới (bạn bè, chặn, báo cáo, thời gian chơi theo tuần) ghi ở trang quyền riêng tư, đưa vào lời đồng ý ở lần nâng tới (Jev 0.17, gần như phân vân 59/41, rủi ro cao: chờ người sở hữu xác nhận). Người chơi phụ luôn tự bật lại được online sau khi chủ tài khoản tắt (Jev 0.95). `reports/jev-261005-1730-consent-owner-lock-*.json`.
+- Lời đồng ý: giữ v3, dữ liệu mới (bạn bè, chặn, báo cáo, thời gian chơi theo tuần) ghi ở trang quyền riêng tư, đưa vào lời đồng ý ở lần nâng tới (Jev 0.17; người sở hữu chốt giữ v3, 05/10/2026). Người chơi phụ luôn tự bật lại được online sau khi chủ tài khoản tắt (Jev 0.95). `reports/jev-261005-1730-consent-owner-lock-*.json`.
 
 - ~~Mặc định bật kết bạn bằng mã~~ **Đã chốt (người sở hữu, 05/10/2026): kết bạn như game online thường, không mã, người nhận đồng ý; kết bạn được với bạn máy; mặc định bật.**
 
