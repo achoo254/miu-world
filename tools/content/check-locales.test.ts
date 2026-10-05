@@ -17,4 +17,9 @@ describe('locale check', () => {
     ]);
     expect(localeIssues({ c: ['Hai {who}'] }, { c: ['Two'] })).toEqual(['locales: c[0]: placeholders differ ({who} vs {})']);
   });
+
+  it('reports a pool that repeats a line, and a loading-tip pool too small to stay fresh', () => {
+    expect(localeIssues({ c: ['Một', 'Một'] }, { c: ['One', 'Two'] })).toEqual(['locales: c: vi pool repeats "Một"']);
+    expect(localeIssues({ 'loading.tips': ['Một', 'Hai'] }, { 'loading.tips': ['One', 'Two'] })).toEqual(['locales: loading.tips: pool needs at least 20 lines (has 2)']);
+  });
 });

@@ -78,8 +78,11 @@ function SkyDecor() {
   );
 }
 
-/** Miu on the island, bobbing in the air; with `altPose`, Miu hops and switches pose now and then. */
-export function MiuOnIsland({ pose, altPose, size }: { pose: MiuPose; altPose?: MiuPose; size?: string }) {
+/**
+ * Miu on the island, bobbing in the air; with `altPose`, Miu hops and switches pose now and then. `species`: the
+ * player's own animal instead of Miu; `bare`: the island alone, while the player's character is not known yet.
+ */
+export function MiuOnIsland({ pose, altPose, size, species, bare = false }: { pose: MiuPose; altPose?: MiuPose; size?: string; species?: string; bare?: boolean }) {
   return (
     <div className="island-stage" aria-hidden="true">
       <div className="island-float">
@@ -89,7 +92,7 @@ export function MiuOnIsland({ pose, altPose, size }: { pose: MiuPose; altPose?: 
         <span className="island-twinkle island-twinkle--2">
           <Icon name="sparkles" size={28} />
         </span>
-        <MiuPortrait pose={pose} altPose={altPose} size={size} />
+        {bare ? <div className="miu-portrait" style={size ? ({ '--size': size } as CSSProperties) : undefined} /> : <MiuPortrait pose={pose} altPose={altPose} size={size} species={species} />}
         <div className="island">
           {ISLAND_ROWS.map((n, row) => (
             <div className="island-row" key={row}>

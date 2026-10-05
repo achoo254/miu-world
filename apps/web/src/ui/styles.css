@@ -441,6 +441,8 @@ input:focus-visible, select:focus-visible { border-color: var(--color-secondary)
 .loading-progress { width: 100%; display: flex; align-items: center; gap: var(--space-md); margin-top: var(--space-md); }
 .loading-progress .progress { flex-grow: 1; }
 .loading-percent { min-width: 3.5rem; font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); text-align: right; }
+.loading-outfit { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-xs); margin: calc(-1 * var(--space-sm)) 0 0; padding: 0; list-style: none; }
+.loading-outfit li { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: var(--radius-field); background: var(--color-surface); box-shadow: 0 3px 0 var(--color-logo-shade); }
 .loading-tip { flex-direction: row; align-items: center; gap: var(--space-md); margin-top: var(--space-lg); padding: var(--space-md) var(--space-lg); text-align: left; }
 .loading-tip-title { font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); }
 

@@ -22,7 +22,7 @@ import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
 import { QuestBoard } from '../region/region-detail';
 import { DEFAULT_REGION, HOME_REGION, findRegion, regionMap } from '../region/regions';
-import { LoadingOverlay } from '../system/loading-overlay';
+import { LoadingOverlay, recallLook, rememberLook, type LoadingLook } from '../system/loading-overlay';
 import { OfflineBanner } from '../system/offline-banner';
 import { PauseScreen } from '../system/pause-screen';
 import { DECOR_TARGET } from '../home-decor/decor-catalog';
@@ -414,6 +414,17 @@ export function PlayScreen() {
       }),
     [store],
   );
+  // Her own character on the loading screen: from her data, or until it arrives the look remembered this session.
+  const [recalled] = useState(() => recallLook(draftOwner));
+  const species = data?.character.species;
+  const equippedKey = data?.character.equipped.join(',');
+  const look = useMemo<LoadingLook | null>(
+    () => (species !== undefined && equippedKey !== undefined ? { species, outfit: equippedKey ? equippedKey.split(',') : [] } : recalled),
+    [species, equippedKey, recalled],
+  );
+  useEffect(() => {
+    if (draftOwner && species !== undefined && look) rememberLook(draftOwner, look);
+  }, [draftOwner, species, look]);
   const boardRegion = findRegion(region);
   const regionTitle = findRegion(quest?.quest.region ?? '')?.name ?? t('play.defaultRegion');
   const regionName = data ? say(regionTitle, data.character) : regionTitle;
@@ -434,7 +445,7 @@ export function PlayScreen() {
             </p>
           </div>
         ) : null}
-        {loadError || offline ? null : <LoadingOverlay region={regionName} viaPortal={viaPortal} />}
+        {loadError || offline ? null : <LoadingOverlay region={regionName} viaPortal={viaPortal} look={look} />}
         {offline ? <OfflineBanner onRetry={retryOffline} /> : null}
         {/* The in-world label and Interact would show through a screen's backdrop: only while playing. */}
         {covered ? null : <InteractionLabel />}
