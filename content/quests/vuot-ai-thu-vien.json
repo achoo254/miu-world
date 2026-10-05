@@ -1,0 +1,272 @@
+{
+  "id": "vuot-ai-thu-vien",
+  "region": "thu-vien",
+  "chapter": 3,
+  "title": "Trùm vui: Sâu Mọt Sách Khổng Lồ",
+  "status": "active",
+  "summary": "Sâu Mọt Sách Khổng Lồ bò lên tháp đồng hồ gặm mất mấy tờ lịch, chuông tháp đứng im từ sáng. {name} nhặt đồ của tháp, đọc nhật kí bác gác tháp, tính ngày trên tờ lịch rồi đấu bảy câu về giờ, ngày và sách.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cú Mèo Gác Tháp, Koala Giữ Lịch, Sâu Mọt Sách Khổng Lồ",
+    "where": "Thư viện, tháp đồng hồ và phòng lịch: cổng sân tháp, bãi cỏ sân tháp, ghế đá cạnh tháp, hiên phòng lịch, gác chuông nhỏ",
+    "goal": "Thắng Sâu Mọt Sách để chuông tháp đồng hồ ngân lại",
+    "play": "Tìm tờ lịch, đồng hồ báo thức, chìa khóa theo lời tả, đọc nhật kí, tính thứ trong tuần, chọn cách đánh thức Sâu, đấu trùm bảy câu",
+    "learn": "Xem đồng hồ, giờ và phút, ngày trong tháng, thứ trong tuần, đọc hiểu",
+    "reward": "100 XP, 25 Xu, Skill XP Xem đồng hồ, Xem lịch, Đọc hiểu, Logic",
+    "next": "Chuông tháp ngân vang, Gấu Trúc Tròn mời {name} vào phòng đọc nghe kể chuyện"
+  },
+  "phases": {
+    "hook": "gap-cu-meo",
+    "explore": "nhat-do-cua-thap",
+    "learn": "doc-nhat-ki-gac-thap",
+    "challenge": "tinh-thu-trong-tuan",
+    "decision": "danh-thuc-sau",
+    "finale": "tran-trum",
+    "reward": "chuong-thap-ngan",
+    "next": "ve-phong-doc"
+  },
+  "places": {
+    "trum-tv-cu-meo": "Cổng sân tháp",
+    "nhat-do-cua-thap": "Bãi cỏ sân tháp",
+    "trum-tv-nhat-ki": "Ghế đá cạnh tháp",
+    "trum-tv-koala": "Hiên phòng lịch",
+    "trum-tv-sau-mot-sach": "Gác chuông nhỏ"
+  },
+  "steps": [
+    {
+      "id": "gap-cu-meo",
+      "title": "Cú Mèo báo tin",
+      "goTo": "Tới cổng sân tháp, Cú Mèo Gác Tháp đang đứng chờ",
+      "kind": "dialogue",
+      "target": "trum-tv-cu-meo",
+      "lines": [
+        { "speaker": "Cú Mèo Gác Tháp", "text": "Hú hú… {name} ơi, Sâu Mọt Sách Khổng Lồ gặm mất mấy tờ lịch của tháp, giờ chuông chẳng biết hôm nay là ngày nào để mà điểm." },
+        { "speaker": "Cú Mèo Gác Tháp", "text": "Sâu chỉ chịu trả lịch cho ai trả lời được câu đố về giờ giấc của nó. Đồ của tháp lại rơi đầy bãi cỏ nữa chứ." }
+      ],
+      "choices": [
+        { "text": "Cú Mèo đừng lo, tớ nhặt đồ trước!", "reply": "Cảm ơn nhé, mắt tớ ban ngày kém lắm, chẳng tìm nổi." }
+      ]
+    },
+    {
+      "id": "nhat-do-cua-thap",
+      "title": "Nhặt đồ của tháp",
+      "goTo": "Ra bãi cỏ sân tháp nhặt đồ bị rơi",
+      "kind": "find-object",
+      "prompt": "Ba món của tháp đồng hồ rơi trên cỏ. Đọc lời tả rồi tìm đủ:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "to-lich",
+          "name": "Tờ lịch bị gặm dở",
+          "clue": "Một tờ giấy in số ngày to, mép bị gặm thành những vết răng cưa nhỏ.",
+          "target": "trum-tv-to-lich"
+        },
+        {
+          "id": "dong-ho-bao-thuc",
+          "name": "Đồng hồ hai chuông",
+          "clue": "Mặt tròn có hai kim, trên đỉnh đội hai cái chuông nhỏ, kêu reng reng mỗi sáng.",
+          "target": "trum-tv-dong-ho"
+        },
+        {
+          "id": "chia-khoa-thap",
+          "name": "Chìa khóa gác chuông",
+          "clue": "Làm bằng đồng cũ, đầu tròn có lỗ, răng khía để mở cánh cửa lên gác chuông.",
+          "target": "trum-tv-chia-khoa"
+        }
+      ]
+    },
+    {
+      "id": "doc-nhat-ki-gac-thap",
+      "title": "Nhật kí bác gác tháp",
+      "goTo": "Cuốn nhật kí của bác gác tháp để trên ghế đá cạnh tháp",
+      "kind": "read",
+      "target": "trum-tv-nhat-ki",
+      "skill": "doc-hieu",
+      "text": "Nhật kí gác tháp\nThứ Năm, ngày 10 tháng 10.\nĐúng 7 giờ sáng, tháp đánh bảy tiếng chuông. Đến 9 giờ, Sâu Mọt Sách bò lên gác chuông, gặm mất mấy tờ lịch. Từ lúc ấy chuông đứng im. Ai giúp chuông kêu lại thì cứ lên gác hỏi Sâu.",
+      "question": "Sâu Mọt Sách bò lên gác chuông lúc mấy giờ?",
+      "choices": [
+        { "id": "a", "text": "7 giờ sáng" },
+        { "id": "b", "text": "9 giờ" },
+        { "id": "c", "text": "10 giờ" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm câu có tên Sâu Mọt Sách.", "Xem con số đứng ngay trước chữ «giờ» trong câu đó."],
+        "hint": "Lúc 7 giờ chuông vẫn còn kêu bình thường.",
+        "answer": {
+          "text": "Sâu lên gác chuông lúc 9 giờ",
+          "explanation": "Nhật kí viết: đến 9 giờ, Sâu Mọt Sách bò lên gác chuông."
+        }
+      },
+      "feedback": {
+        "right": ["Chín giờ đúng, {name} đọc nhật kí tinh ghê!", "Cú Mèo gật gù: thế là biết chuông đứng từ bao giờ rồi.", "Đúng mốc giờ ấy, Sâu chẳng chối được đâu."],
+        "wrong": ["Lúc ấy chuông còn đánh bảy tiếng mà, đọc lại nhé.", "Số 10 là ngày trong tháng chứ chưa phải giờ đâu {name}.", "Tìm câu có chữ «Sâu Mọt Sách» xem nào."]
+      }
+    },
+    {
+      "id": "tinh-thu-trong-tuan",
+      "title": "Tính thứ trong tuần",
+      "goTo": "Ghé hiên phòng lịch, Koala Giữ Lịch đang dán lại các tờ lịch",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "trum-tv-koala",
+      "skill": "xem-lich",
+      "prompt": "Koala đố: nhật kí ghi thứ Năm là ngày 10 tháng 10. Vậy ngày 13 tháng 10 là thứ mấy?",
+      "choices": [
+        { "id": "a", "text": "Thứ Bảy" },
+        { "id": "b", "text": "Chủ nhật" },
+        { "id": "c", "text": "Thứ Hai" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Ngày 10 là thứ Năm.", "Đếm tiếp từng ngày: ngày 11, 12, 13 ứng với thứ mấy?", "Sau thứ Bảy là Chủ nhật."],
+        "hint": "Ngày 13 cách ngày 10 đúng ba ngày.",
+        "answer": {
+          "text": "Ngày 13 tháng 10 là Chủ nhật",
+          "explanation": "Ngày 10 thứ Năm, ngày 11 thứ Sáu, ngày 12 thứ Bảy, ngày 13 Chủ nhật."
+        }
+      },
+      "feedback": {
+        "right": ["Koala dán tờ Chủ nhật vào đúng chỗ, lịch liền lại rồi!", "{name} đếm ngày chẳng sót bước nào.", "Ba ngày sau thứ Năm là Chủ nhật, chuẩn luôn!"],
+        "wrong": ["Đếm lại từng ngày từ ngày 10 nhé.", "Ngày 11 là thứ Sáu đấy, đếm tiếp xem nào {name}.", "Nhớ sau thứ Bảy là Chủ nhật, không phải thứ Tám đâu."]
+      }
+    },
+    {
+      "id": "danh-thuc-sau",
+      "title": "Đánh thức Sâu Mọt Sách",
+      "kind": "decision",
+      "target": "trum-tv-koala",
+      "speaker": "Koala Giữ Lịch",
+      "prompt": "Sâu Mọt Sách đang ngủ khì trên chồng sách ở gác chuông. {name} đánh thức nó thế nào?",
+      "choices": [
+        {
+          "id": "doc-truyen",
+          "text": "Đọc to một đoạn truyện hay",
+          "consequence": "Sâu mở mắt, ngóc đầu lên nghe say sưa, quên cả ngáp."
+        },
+        {
+          "id": "reng-dong-ho",
+          "text": "Vặn đồng hồ báo thức reng reng",
+          "consequence": "Reng reng! Sâu giật mình cuộn tròn rồi bật cười: được rồi, ta dậy đây!"
+        },
+        {
+          "id": "moi-la-xanh",
+          "text": "Mời Sâu một chiếc lá non",
+          "consequence": "Sâu nhai lá ngon lành, khen lá thơm hơn giấy lịch nhiều."
+        }
+      ]
+    },
+    {
+      "id": "tran-trum",
+      "title": "Đấu trí với Sâu Mọt Sách",
+      "goTo": "Lên gác chuông nhỏ, Sâu Mọt Sách đang chờ",
+      "kind": "boss",
+      "target": "trum-tv-sau-mot-sach",
+      "bossId": "sau-mot-sach-khong-lo",
+      "bossName": "Sâu Mọt Sách Khổng Lồ",
+      "introDialogue": "Rộp rộp! Ta đọc hết sách trong tháp rồi. Bảy câu về giờ giấc và sách vở đây, mỗi câu đúng ta nhả ra một tờ lịch!",
+      "winDialogue": "Ta xin trả lại lịch! {name} biết giờ, biết ngày, lại mê đọc sách, đúng là bạn của thư viện.",
+      "maxHp": 500,
+      "damagePerTurn": 80,
+      "turns": [
+        {
+          "id": "chin-ruoi",
+          "skill": "xem-dong-ho",
+          "prompt": "Kim ngắn chỉ giữa số 9 và số 10, kim dài chỉ số 6. Đồng hồ chỉ mấy giờ?",
+          "choices": [
+            { "id": "a", "text": "9 giờ 30 phút" },
+            { "id": "b", "text": "6 giờ 45 phút" },
+            { "id": "c", "text": "9 giờ đúng" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "mot-ngay",
+          "skill": "xem-dong-ho",
+          "prompt": "Từ nửa đêm hôm nay tới nửa đêm hôm sau là trọn một ngày. Một ngày có bao nhiêu giờ?",
+          "choices": [
+            { "id": "a", "text": "12 giờ" },
+            { "id": "b", "text": "24 giờ" },
+            { "id": "c", "text": "60 giờ" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "mot-gio",
+          "skill": "xem-dong-ho",
+          "prompt": "Một giờ bằng bao nhiêu phút?",
+          "choices": [
+            { "id": "a", "text": "30 phút" },
+            { "id": "b", "text": "100 phút" },
+            { "id": "c", "text": "60 phút" }
+          ],
+          "answer": { "choice": "c" }
+        },
+        {
+          "id": "thang-muoi",
+          "skill": "xem-lich",
+          "prompt": "Tháng 10 có bao nhiêu ngày?",
+          "choices": [
+            { "id": "a", "text": "30 ngày" },
+            { "id": "b", "text": "31 ngày" },
+            { "id": "c", "text": "28 ngày" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "ngay-mai",
+          "skill": "xem-lich",
+          "prompt": "Ngày 15 tháng 10 là thứ Ba. Ngày 16 tháng 10 là thứ mấy?",
+          "choices": [
+            { "id": "a", "text": "Thứ Hai" },
+            { "id": "b", "text": "Thứ Tư" },
+            { "id": "c", "text": "Thứ Năm" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "muoi-lam-gio",
+          "skill": "xem-dong-ho",
+          "prompt": "Đồng hồ điện tử hiện 15:00. Lúc đó là mấy giờ chiều?",
+          "choices": [
+            { "id": "a", "text": "3 giờ chiều" },
+            { "id": "b", "text": "5 giờ chiều" },
+            { "id": "c", "text": "1 giờ chiều" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "sach-ban-hien",
+          "skill": "doc-hieu",
+          "prompt": "Sâu đọc câu: «Mỗi cuốn sách là một người bạn hiền.» Câu này so sánh cuốn sách với gì?",
+          "choices": [
+            { "id": "a", "text": "Một người bạn hiền" },
+            { "id": "b", "text": "Một chiếc đồng hồ" },
+            { "id": "c", "text": "Một tờ lịch" }
+          ],
+          "answer": { "choice": "a" }
+        }
+      ]
+    },
+    {
+      "id": "chuong-thap-ngan",
+      "title": "Chuông tháp ngân vang",
+      "kind": "reward",
+      "target": "trum-tv-sau-mot-sach",
+      "text": "Sâu nhả lại từng tờ lịch, Koala dán vào ngay ngắn. Boong boong, chuông tháp ngân vang! Túi quà của Sâu rơi ra XP, xu và điểm kỹ năng cho {name}."
+    },
+    {
+      "id": "ve-phong-doc",
+      "title": "Về phòng đọc",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sâu Mọt Sách hứa từ nay chỉ gặm lá, không gặm sách nữa. Gấu Trúc Tròn mời {name} vào phòng đọc nghe kể chuyện bên cửa sổ."
+    }
+  ],
+  "reward": {
+    "xp": 100,
+    "coin": 25,
+    "skillXp": { "xem-dong-ho": 1, "xem-lich": 1, "doc-hieu": 1, "logic": 1 }
+  }
+}

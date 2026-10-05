@@ -1,0 +1,228 @@
+{
+  "id": "viec-tot-thu-vien",
+  "region": "thu-vien",
+  "chapter": 2,
+  "title": "Việc tốt: Xe sách rong của Voi",
+  "status": "active",
+  "summary": "Chiếc xe sách rong của Voi Chở Sách lật nghiêng giữa lễ hội lá vàng, sách văng khắp nơi. {name} nhặt sách, đọc sổ cho mượn, tìm số kệ theo quy luật, chọn cách đưa sách tới các bạn ở xa rồi xếp sách theo thứ tự chữ cái.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Voi Chở Sách Rong, Hươu Sao Xếp Kệ, Bồ Nông Đưa Sách",
+    "where": "Thư viện, sân lễ hội lá vàng: bánh xe sách rong, thảm lá ven đường, chiếu đọc sách, kệ sách ngoài trời, mái lều bồ nông",
+    "goal": "Giúp Voi dựng lại xe sách rong để mọi bạn nhỏ đều có sách đọc",
+    "play": "Tìm ba cuốn sách theo lời tả, đọc sổ cho mượn, tìm quy luật số kệ, chọn cách đưa sách đi xa, xếp sách theo thứ tự chữ cái",
+    "learn": "Đọc hiểu sổ ghi chép, dãy số tăng dần không đều, thứ tự bảng chữ cái",
+    "reward": "70 XP, 18 Xu, Skill XP Đọc hiểu, Logic, Bảng chữ cái",
+    "next": "Xe sách lại lăn bánh, Voi hẹn {name} tuần sau cùng đi phát sách"
+  },
+  "phases": {
+    "hook": "gap-voi-cho-sach",
+    "explore": "nhat-sach-roi",
+    "learn": "doc-so-cho-muon",
+    "challenge": "so-ke-quy-luat",
+    "decision": "dua-sach-di-xa",
+    "finale": "xep-sach",
+    "reward": "xe-sach-lan-banh",
+    "next": "hen-phat-sach"
+  },
+  "places": {
+    "vt-tv-voi-cho-sach": "Bánh xe sách rong",
+    "nhat-sach-roi": "Thảm lá ven đường",
+    "vt-tv-so-cho-muon": "Chiếu đọc sách",
+    "vt-tv-huou-xep-ke": "Kệ sách ngoài trời",
+    "vt-tv-bo-nong": "Mái lều bồ nông"
+  },
+  "steps": [
+    {
+      "id": "gap-voi-cho-sach",
+      "title": "Xe sách bị lật",
+      "goTo": "Có tiếng rầm ở chỗ bánh xe sách rong, chạy lại xem",
+      "kind": "dialogue",
+      "target": "vt-tv-voi-cho-sach",
+      "lines": [
+        { "speaker": "Voi Chở Sách Rong", "text": "Ôi, bánh xe vấp phải rễ cây, sách của tớ văng tung tóe cả ra rồi! Chiều nay tớ còn phải chở sách cho các bạn ở xa nữa." },
+        { "speaker": "Voi Chở Sách Rong", "text": "{name} nhặt sách giúp tớ nhé? Vòi tớ to quá, cầm sách mỏng cứ rơi hoài." }
+      ],
+      "choices": [
+        { "text": "Để tớ nhặt, cậu dựng xe lại đi!", "reply": "Cảm ơn cậu! Sách bay ra tận thảm lá ven đường đấy." }
+      ]
+    },
+    {
+      "id": "nhat-sach-roi",
+      "title": "Nhặt sách bị rơi",
+      "goTo": "Ra thảm lá ven đường tìm ba cuốn sách",
+      "kind": "find-object",
+      "prompt": "Voi tả ba cuốn sách bị văng ra. Đọc kĩ rồi tìm từng cuốn:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "sach-bia-xanh",
+          "name": "Cuốn truyện bìa xanh dương",
+          "clue": "Bìa màu xanh như bầu trời, vẽ một chú ếch đeo cặp sách đi học.",
+          "target": "vt-tv-sach-xanh"
+        },
+        {
+          "id": "sach-bia-cam",
+          "name": "Cuốn sách bìa cam",
+          "clue": "Bìa cam rực như quả quýt chín, kể chuyện một chú gấu được mẹ may áo mới.",
+          "target": "vt-tv-sach-cam"
+        },
+        {
+          "id": "sach-bia-la",
+          "name": "Cuốn sách bìa xanh lá",
+          "clue": "Bìa xanh như lá non, có hình một dòng sông nhỏ uốn quanh làng.",
+          "target": "vt-tv-sach-la"
+        }
+      ]
+    },
+    {
+      "id": "doc-so-cho-muon",
+      "title": "Sổ cho mượn sách",
+      "goTo": "Sổ cho mượn của Voi rơi trên chiếu đọc sách",
+      "kind": "read",
+      "target": "vt-tv-so-cho-muon",
+      "skill": "doc-hieu",
+      "text": "SỔ CHO MƯỢN SÁCH\nBạn Thỏ mượn cuốn «Bé tập bơi», hẹn trả thứ Hai.\nBạn Nai mượn cuốn «Dòng sông nhỏ», hẹn trả thứ Tư.\nBạn Sóc mượn cuốn «Áo mới của gấu», hẹn trả thứ Sáu.",
+      "question": "Ai mượn cuốn «Dòng sông nhỏ»?",
+      "choices": [
+        { "id": "a", "text": "Bạn Thỏ" },
+        { "id": "b", "text": "Bạn Nai" },
+        { "id": "c", "text": "Bạn Sóc" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm dòng có tên sách «Dòng sông nhỏ».", "Đọc tên bạn ở đầu dòng đó."],
+        "hint": "Bạn ấy hẹn trả sách vào thứ Tư.",
+        "answer": {
+          "text": "Bạn Nai mượn cuốn ấy",
+          "explanation": "Sổ ghi: Bạn Nai mượn cuốn «Dòng sông nhỏ», hẹn trả thứ Tư."
+        }
+      },
+      "feedback": {
+        "right": ["Đúng là bạn Nai, Voi đánh dấu vào sổ ngay!", "{name} dò sổ nhanh như một thủ thư.", "Chuẩn rồi, thứ Tư bạn Nai sẽ mang sách trả."],
+        "wrong": ["Bạn ấy mượn cuốn khác cơ, dò lại nhé.", "Tìm tên sách «Dòng sông nhỏ» trước đã nha {name}.", "Mỗi dòng là một bạn, đọc từng dòng một xem nào."]
+      }
+    },
+    {
+      "id": "so-ke-quy-luat",
+      "title": "Số trên kệ sách",
+      "goTo": "Tới kệ sách ngoài trời, Hươu Sao Xếp Kệ đang treo số kệ",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "vt-tv-huou-xep-ke",
+      "skill": "logic",
+      "prompt": "Hươu đánh số các kệ theo một quy luật lạ: kệ sau hơn kệ trước 2, rồi 3, rồi 4… Kệ tiếp theo mang số mấy?",
+      "elements": [
+        { "id": "k1", "label": "1" },
+        { "id": "k2", "label": "3" },
+        { "id": "k3", "label": "6" },
+        { "id": "k4", "label": "10" }
+      ],
+      "choices": [
+        { "id": "a", "text": "14" },
+        { "id": "b", "text": "15" },
+        { "id": "c", "text": "16" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Từ 1 lên 3 tăng 2, từ 3 lên 6 tăng 3, từ 6 lên 10 tăng 4.", "Lần sau sẽ tăng thêm mấy?", "Cộng số đó vào 10."],
+        "hint": "Mỗi lần, số được thêm vào lại lớn hơn lần trước một đơn vị.",
+        "answer": {
+          "text": "Kệ tiếp theo mang số 15",
+          "explanation": "Các bước tăng là 2, 3, 4, nên bước tiếp theo tăng 5: 10 + 5 = 15."
+        }
+      },
+      "feedback": {
+        "right": ["Hươu ngẩng cổ khen: quy luật này khó mà {name} vẫn giải được!", "Kệ số 15 treo lên ngay ngắn rồi.", "{name} nhìn ra các bước tăng dần, giỏi quá!"],
+        "wrong": ["Thử viết ra mỗi lần tăng thêm bao nhiêu nhé.", "Lần trước tăng 4, lần này tăng mấy nhỉ {name}?", "Các bước tăng không bằng nhau đâu, nhìn kĩ lại nha."]
+      }
+    },
+    {
+      "id": "dua-sach-di-xa",
+      "title": "Đưa sách tới các bạn ở xa",
+      "kind": "decision",
+      "target": "vt-tv-huou-xep-ke",
+      "speaker": "Hươu Sao Xếp Kệ",
+      "prompt": "Mấy bạn nhỏ nhà xa không tới lễ hội được. {name} làm gì để các bạn ấy cũng có sách đọc?",
+      "choices": [
+        {
+          "id": "mang-tan-nha",
+          "text": "Cùng Voi chở sách tới tận nhà các bạn",
+          "consequence": "Xe sách rong lăn bánh qua từng ngõ nhỏ, bạn nào cũng ùa ra chọn sách.",
+          "nextStepId": "xep-sach"
+        },
+        {
+          "id": "goc-doc-chung",
+          "text": "Mở một góc đọc sách chung ở đầu làng",
+          "consequence": "Góc đọc nhỏ dưới gốc cây thành nơi các bạn hẹn nhau mỗi chiều.",
+          "nextStepId": "xep-sach"
+        },
+        {
+          "id": "nho-bo-nong",
+          "text": "Nhờ Bồ Nông bay đưa sách đi",
+          "consequence": "Hươu chỉ lên mái lều: Bồ Nông Đưa Sách đang nghỉ ở đó, sang nhờ bạn ấy nhé!"
+        }
+      ]
+    },
+    {
+      "id": "nho-bo-nong",
+      "title": "Nhờ Bồ Nông đưa sách",
+      "goTo": "Sang mái lều bồ nông nhờ Bồ Nông Đưa Sách",
+      "kind": "dialogue",
+      "target": "vt-tv-bo-nong",
+      "lines": [
+        { "speaker": "Bồ Nông Đưa Sách", "text": "Cái túi dưới mỏ tớ đựng được cả chục cuốn sách đấy! Xếp sách gọn gàng rồi đưa đây, tớ bay một mạch tới nhà các bạn." }
+      ],
+      "choices": [{ "text": "Tớ xếp sách ngay, chờ chút nhé!" }]
+    },
+    {
+      "id": "xep-sach",
+      "title": "Xếp sách theo chữ cái",
+      "goTo": "Quay lại bánh xe sách rong xếp sách lên xe",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "vt-tv-voi-cho-sach",
+      "skill": "bang-chu-cai",
+      "prompt": "Voi xếp sách theo thứ tự bảng chữ cái của chữ đầu tên sách. Sắp xếp giúp Voi:",
+      "items": [
+        { "id": "ech-con", "label": "Ếch con đi học" },
+        { "id": "be-tap-boi", "label": "Bé tập bơi" },
+        { "id": "dong-song", "label": "Dòng sông nhỏ" },
+        { "id": "ao-moi", "label": "Áo mới của gấu" }
+      ],
+      "answer": { "order": ["ao-moi", "be-tap-boi", "dong-song", "ech-con"] },
+      "support": {
+        "guide": ["Nhìn chữ cái đầu tiên của mỗi tên sách.", "Nhớ thứ tự: A, Ă, Â, B, C, D, Đ, E, Ê…", "Tên bắt đầu bằng chữ đứng trước thì xếp trước."],
+        "hint": "Chữ A đứng đầu bảng chữ cái, chữ Ê đứng sau E.",
+        "answer": {
+          "text": "Áo mới, Bé tập bơi, Dòng sông, Ếch con",
+          "explanation": "Chữ đầu lần lượt là A, B, D, Ê, đúng thứ tự trong bảng chữ cái."
+        }
+      },
+      "feedback": {
+        "right": ["Kệ xe sách thẳng hàng, tìm cuốn nào cũng thấy ngay!", "{name} thuộc bảng chữ cái làu làu.", "Voi vẫy tai mừng rỡ: xếp thế này các bạn dễ chọn lắm."],
+        "wrong": ["Nhìn chữ cái đầu tiên của mỗi cuốn nhé.", "Chữ Ê đứng sau hay trước chữ D nhỉ {name}?", "Sách bắt đầu bằng chữ A phải lên đầu hàng."]
+      }
+    },
+    {
+      "id": "xe-sach-lan-banh",
+      "title": "Xe sách lăn bánh",
+      "kind": "reward",
+      "target": "vt-tv-voi-cho-sach",
+      "text": "Xe sách rong đứng vững trở lại, sách xếp gọn gàng theo thứ tự. Voi tặng {name} một chiếc kẹp sách hình chiếc lá vàng cùng lời cảm ơn thật to."
+    },
+    {
+      "id": "hen-phat-sach",
+      "title": "Hẹn đi phát sách",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Voi rung chuông xe leng keng chào lễ hội, hẹn tuần sau {name} cùng đi phát sách cho các bạn ở bên kia hồ."
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": { "doc-hieu": 1, "logic": 1, "bang-chu-cai": 1 }
+  }
+}
