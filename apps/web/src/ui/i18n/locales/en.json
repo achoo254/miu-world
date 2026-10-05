@@ -945,5 +945,61 @@
   "partyQuest.hint": "Suggest the Hint",
   "partyQuest.done": "{done} steps done",
   "quest.partyWaiting": "Wait until everyone in the party has answered this one.",
-  "quest.notYourTurn": "Not your turn yet: cheer your teammate on!"
+  "quest.notYourTurn": "Not your turn yet: cheer your teammate on!",
+  "coop.botLines.share": [
+    "Here is my piece, everyone!",
+    "This is the piece I hold.",
+    "Ta-da! My secret piece!",
+    "Team, read this piece!",
+    "I am putting my piece down here.",
+    "This piece is a bit tricky, hehe!",
+    "Who needs my piece? Here!",
+    "My piece, read it carefully.",
+    "Revealing my piece!"
+  ],
+  "coop.botLines.right": [
+    "Yay, right!",
+    "Just as I thought.",
+    "Lucky guess, hehe!",
+    "Hooray, I did it!",
+    "I worked it out before picking.",
+    "Bang on!",
+    "Not bad, right?",
+    "Right, let us go on.",
+    "Wow, even I am surprised!"
+  ],
+  "coop.botLines.oops": [
+    "Oops, I got it wrong!",
+    "Hmm, not right, let me think again.",
+    "Uh-oh, hehe!",
+    "Ouch, wrong one!",
+    "I rushed it, sorry.",
+    "My head is in the clouds!",
+    "So close!",
+    "Next time I will read more carefully.",
+    "Huh, how was that wrong?"
+  ],
+  "coop.botLines.hold": [
+    "Hold tight!",
+    "I have the rope.",
+    "Pull! Heave-ho!",
+    "Come on, I am holding!",
+    "Rope is tight, waiting for the team.",
+    "Phew, heavy, but I have got it!",
+    "I will not let go!",
+    "Hold steady, everyone.",
+    "Hehe, stuck like glue!"
+  ],
+  "coop.botLines.won": [
+    "We won, amazing!",
+    "Great job, team.",
+    "Party time, yay!",
+    "We are the best team!",
+    "Done, thank you all.",
+    "Hehe, easy as pie!",
+    "High five!",
+    "Let us play again next time.",
+    "I could jump for joy!"
+  ],
+  "coop.greeting": "Hello again! We have won together {runs} times, last time “{quest}”."
 }

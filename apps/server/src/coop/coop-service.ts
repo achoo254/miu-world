@@ -5,7 +5,9 @@
 // bot doing all the work pays nobody). Leaving, dropping out or blocking never breaks the challenge: a bot plays
 // the place, or the team waits a minute and then goes on; nothing learnt is lost by stepping out.
 import { coopTasks, type ActiveQuest, type CoopStep } from '@miu/schema/content';
-import { COOP_COUNTDOWN_MS, type CoopAction, type CoopLobbyView, type CoopResult, type CoopStateView } from '@miu/schema/coop';
+import { COOP_COUNTDOWN_MS, type CoopAction, type CoopBotLine, type CoopLobbyView, type CoopResult, type CoopStateView } from '@miu/schema/coop';
+import type { QuestionInfo } from '../multiplayer/bot-persona';
+import { difficultyOf, medianMs, type BotStore, type QuestionNumbers } from '../multiplayer/bot-store';
 import type { ClientWsMessage, MpNotice, ServerWsMessage } from '@miu/schema/multiplayer';
 import { CoopSession, type CoopPerson } from './coop-session';
 
@@ -29,10 +31,19 @@ export interface CoopHost {
 export interface CoopBotDriver {
   /** Up to `count` companion bots of `mapId` (any map when it has too few), none of `exclude`. */
   pick(mapId: string | null, count: number, exclude: ReadonlySet<string>): CoopPerson[];
-  /** The challenge as the bot sees it now: it acts through `act` after a moment, knowing an answer only now and then. */
-  play(botId: string, state: CoopStateView, moves: { act(action: CoopAction): void; answerOf(taskId: string): string | null }): void;
+  /**
+   * The challenge as the bot sees it now: it acts through `act` after a moment (with a line of its own, sometimes),
+   * knowing the right answer (`answerOf`) and what players find of the question (`question`); its own skill decides.
+   */
+  play(botId: string, state: CoopStateView, moves: CoopBotMoves): void;
   /** The challenge ended (or the bot stood down): it forgets what it was about to do. */
   forget(botIds: readonly string[]): void;
+}
+
+export interface CoopBotMoves {
+  act(action: CoopAction, say?: CoopBotLine): void;
+  answerOf(taskId: string): string | null;
+  question(taskId: string): QuestionInfo | null;
 }
 
 /** Pays one player for a won challenge, in her own transaction. */
@@ -51,6 +62,10 @@ export interface CoopServiceOptions {
   startLimit?: number;
   /** …in this long (ms): a bot farm cannot run challenges back to back. Every run still pays in full. */
   startWindowMs?: number;
+  /** Anonymous numbers per question and bots' memories of players (none: bots know only the questions). */
+  store?: BotStore;
+  /** The subject of a skill (content/learning/skills.json). */
+  subjectOf?: (skill: string) => string | null;
 }
 
 interface Lobby {
@@ -78,6 +93,8 @@ interface Running {
   bots: Set<string>;
   /** Each player's bot switch when it began (read again while she is connected). */
   switches: Map<string, boolean>;
+  /** The players' anonymous numbers for its questions, read when it began. */
+  numbers: Map<string, QuestionNumbers>;
 }
 
 /** The co-op step of a co-op challenge. */
@@ -293,10 +310,38 @@ export class CoopService {
       timer: null,
       bots: new Set(people.filter((p) => p.isBot).map((p) => p.id)),
       switches: new Map(people.filter((p) => !p.isBot).map((p) => [p.id, this.host.botsOn(p.id)])),
+      numbers: new Map(),
     };
     this.running.set(run.key, run);
     for (const p of people) this.playing.set(p.id, run.key);
-    this.push(run);
+    run.session.markShown(this.now());
+    void this.prepare(run).finally(() => this.push(run));
+  }
+
+  /** What the bots need before they play: the questions' anonymous numbers, and the players they remember. */
+  private async prepare(run: Running): Promise<void> {
+    const store = this.options.store;
+    if (!store) return;
+    try {
+      run.numbers = await store.questionNumbers(coopTasks(run.session.step).map((t) => `${run.quest.id}/${t.id}`));
+      for (const bot of run.session.bots()) {
+        for (const player of run.players) {
+          const child = this.host.childIdOf(player);
+          const memory = child ? await store.recall(bot.id.split('@')[0] ?? bot.id, child) : null;
+          if (memory) run.session.greet(player, bot.id, memory);
+        }
+      }
+    } catch (err) {
+      console.error('co-op bot memories failed', err instanceof Error ? err.name : typeof err);
+    }
+  }
+
+  /** What a bot knows of a question: its skill and subject, and the players' anonymous numbers for it. */
+  private questionInfo(run: Running, taskId: string): QuestionInfo | null {
+    const task = coopTasks(run.session.step).find((t) => t.id === taskId);
+    if (!task) return null;
+    const numbers = run.numbers.get(`${run.quest.id}/${taskId}`);
+    return { skill: task.skill, subject: this.options.subjectOf?.(task.skill) ?? null, difficulty: difficultyOf(numbers), medianMs: (numbers ? medianMs(numbers.times) : null) ?? 6_000 };
   }
 
   /** Whether bots may play in it: every player in it has her bot switch on. */
@@ -318,11 +363,25 @@ export class CoopService {
     return person;
   }
 
-  private act(key: string, actor: string, action: CoopAction): void {
+  private act(key: string, actor: string, action: CoopAction, say?: CoopBotLine): void {
     const run = this.running.get(key);
     if (!run) return;
-    const result = run.session.act(actor, action, this.now());
-    if (result.ok) this.changed(run);
+    const now = this.now();
+    const shown = action.kind === 'answer' ? run.session.shownAt(action.task) : null;
+    const result = run.session.act(actor, action, now);
+    if (!result.ok) return;
+    if (say) run.session.say(actor, say);
+    // A player's answer counts in the question's anonymous numbers (right or not, how long it took; never who).
+    const store = this.options.store;
+    if (store && action.kind === 'answer' && shown !== null && !this.isBot(actor) && this.host.childIdOf(actor)) {
+      const view = run.session.view(actor, now);
+      const right = view.last?.by === actor && (view.last.kind === 'right' || view.last.kind === 'won' || view.last.kind === 'round');
+      void store.recordAnswer(`${run.quest.id}/${action.task}`, right, (now - shown) / 1000).catch((err: unknown) => {
+        console.error('question numbers failed', err instanceof Error ? err.name : typeof err);
+      });
+    }
+    run.session.markShown(now);
+    this.changed(run);
   }
 
   private help(id: string, task: string, layer: 'hint' | 'answer'): void {
@@ -361,8 +420,9 @@ export class CoopService {
         continue;
       }
       this.bots?.play(person.id, state, {
-        act: (action) => this.act(run.key, person.id, action),
+        act: (action, say) => this.act(run.key, person.id, action, say),
         answerOf: (taskId) => coopTasks(run.session.step).find((t) => t.id === taskId)?.answer.choice ?? null,
+        question: (taskId) => this.questionInfo(run, taskId),
       });
     }
   }
@@ -385,6 +445,15 @@ export class CoopService {
           }
         }
         this.host.send(id, { type: 'coop-end', questId: run.quest.id, reason: 'done', result });
+        // The bots that played remember her (how often, the last challenge), to greet her next time.
+        const store = this.options.store;
+        if (store && child && paid.has(id)) {
+          for (const bot of run.session.bots()) {
+            await store.remember(bot.id.split('@')[0] ?? bot.id, child, run.quest.id, new Date(this.now())).catch((err: unknown) => {
+              console.error('bot memory failed', err instanceof Error ? err.name : typeof err);
+            });
+          }
+        }
       }),
     );
   }

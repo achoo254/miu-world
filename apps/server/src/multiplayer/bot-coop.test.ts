@@ -19,8 +19,8 @@ const BASE: CoopStateView = {
   round: 0,
   rounds: 2,
   seats: [
-    { id: 'p-a', displayName: 'A', isBot: false, species: 'cat', standIn: null, away: false },
-    { id: 'bot-1@c1', displayName: 'Máy', isBot: true, species: 'fox', standIn: null, away: false },
+    { id: 'p-a', displayName: 'A', isBot: false, species: 'cat', standIn: null, away: false, greeting: null },
+    { id: 'bot-1@c1', displayName: 'Máy', isBot: true, species: 'fox', standIn: null, away: false, greeting: null },
   ],
   turn: 'p-a',
   task: { id: 't1', prompt: 'Câu?', choices: [{ id: 'a', text: 'Một' }, { id: 'b', text: 'Hai' }, { id: 'c', text: 'Ba' }] },
@@ -39,7 +39,7 @@ function runner(options: { random?: number; accuracy?: number } = {}) {
   const { hub } = hubHarness();
   const bots = new BotRunner(hub, { random: () => options.random ?? 0, coopAccuracy: options.accuracy, coopThinkMs: 1_000 });
   const acts: CoopAction[] = [];
-  const moves = { act: (a: CoopAction) => void acts.push(a), answerOf: () => 'a' };
+  const moves = { act: (a: CoopAction) => void acts.push(a), answerOf: () => 'a', question: () => ({ skill: 'phep-cong', subject: 'toan', difficulty: 0.35, medianMs: 6_000 }) };
   return { driver: bots.coopDriver(), acts, moves, stop: () => bots.stop() };
 }
 

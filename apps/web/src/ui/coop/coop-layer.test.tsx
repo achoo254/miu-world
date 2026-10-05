@@ -52,8 +52,8 @@ const PIECES: CoopStateView = {
   round: 0,
   rounds: 2,
   seats: [
-    { id: 'p-me', displayName: 'Mochi', isBot: false, species: 'rabbit', standIn: null, away: false },
-    { id: 'bot-tt-1@c1', displayName: 'Bé Bông', isBot: true, species: 'rabbit', standIn: null, away: false },
+    { id: 'p-me', displayName: 'Mochi', isBot: false, species: 'rabbit', standIn: null, away: false, greeting: null },
+    { id: 'bot-tt-1@c1', displayName: 'Bé Bông', isBot: true, species: 'rabbit', standIn: null, away: false, greeting: null },
   ],
   turn: 'p-me',
   task: { id: 't1', prompt: 'Cầu dài mấy mét?', choices: [{ id: 'a', text: '12 m' }, { id: 'b', text: '21 m' }] },
@@ -119,9 +119,17 @@ describe('playing a co-op challenge', () => {
     fireEvent.click(document.querySelector('[data-id="coop-help-hint"]') as HTMLElement);
     expect(sent.at(-1)).toEqual({ type: 'coop', message: { type: 'coop-help', task: 't1', layer: 'hint' } });
     // The host's line after a right answer, and the line to copy into the vở.
-    act(() => social.update({ coopState: { state: { ...shared, last: { seq: 1, by: 'p-me', kind: 'right', line: 'Giỏi lắm {name}!', lineEn: null, copy: { step: 't1', question: 'Cầu dài mấy mét?', answer: '12 m' } } }, at: Date.now() } }));
+    act(() => social.update({ coopState: { state: { ...shared, last: { seq: 1, by: 'p-me', kind: 'right', line: 'Giỏi lắm {name}!', lineEn: null, copy: { step: 't1', question: 'Cầu dài mấy mét?', answer: '12 m' }, say: null } }, at: Date.now() } }));
     expect(screen.getByText('Giỏi lắm Mochi!')).toBeTruthy();
     expect(document.querySelector('[data-id="coop-copy"]')?.textContent).toContain('Cầu dài mấy mét? — 12 m');
+  });
+
+  it('shows what a bot says in its own voice, and greets a player it won with before', () => {
+    const { social } = setup();
+    const seats = PIECES.seats.map((seat) => (seat.isBot ? { ...seat, greeting: { runs: 2, lastQuestId: QUEST.id } } : seat));
+    act(() => social.update({ coopState: { state: { ...PIECES, seats, last: { seq: 2, by: 'bot-tt-1@c1', kind: 'shared', line: null, lineEn: null, copy: null, say: { key: 'share', variant: 2 } } }, at: Date.now() } }));
+    expect(screen.getByText('Tèn ten! Mảnh bí mật của tớ nè!')).toBeTruthy();
+    expect(document.querySelector('[data-id="coop-greeting-bot-tt-1@c1"]')?.textContent).toContain('cùng thắng 2 lần, lần trước là «Dựng cầu tre»');
   });
 
   it('says who the team waits for, shows the boss HP, and steps out only after a confirmation', () => {

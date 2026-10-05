@@ -9,7 +9,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import type { CoopLobbyView, CoopStateView, CoopTaskView } from '@miu/schema/coop';
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { CoopMessage, SocialStore } from '../../game-bridge/social-store';
-import { same, type Bilingual, type TextKey } from '../i18n/i18n';
+import { linesOf, same, type Bilingual, type TextKey } from '../i18n/i18n';
 import { Bi, T, useT } from '../i18n/use-t';
 import { MiuArt } from '../kit/art';
 import { buttonClass } from '../kit/button';
@@ -206,7 +206,7 @@ function Question({ task, enabled, send, fill, dataId }: { task: CoopTaskView; e
   );
 }
 
-function Seats({ state, nameOf }: { state: CoopStateView; nameOf: (id: string) => string }) {
+function Seats({ state, nameOf, titleOfQuest }: { state: CoopStateView; nameOf: (id: string) => string; titleOfQuest: (id: string) => Bilingual }) {
   const { t } = useT();
   return (
     <ul className="coop-seats" aria-label={t('coop.lobby.team', { count: state.seats.length, seats: state.seats.length })}>
@@ -224,6 +224,11 @@ function Seats({ state, nameOf }: { state: CoopStateView; nameOf: (id: string) =
                 <T k="coop.away" />
               </span>
             ) : null}
+            {seat.greeting ? (
+              <span className="coop-standin" data-id={`coop-greeting-${seat.id}`}>
+                💬 <T k="coop.greeting" params={{ runs: seat.greeting.runs, quest: titleOfQuest(seat.greeting.lastQuestId) }} />
+              </span>
+            ) : null}
             {seat.standIn ? (
               <span className="coop-standin">
                 🤖 <T k="coop.standIn" params={{ bot: same(seat.standIn.displayName) }} />
@@ -236,7 +241,7 @@ function Seats({ state, nameOf }: { state: CoopStateView; nameOf: (id: string) =
   );
 }
 
-function Play({ social, state, at, quest, fill }: { social: SocialStore; state: CoopStateView; at: number; quest: ActiveQuestView; fill: (line: string) => string }) {
+function Play({ social, state, at, quest, fill, titleOfQuest }: { social: SocialStore; state: CoopStateView; at: number; quest: ActiveQuestView; fill: (line: string) => string; titleOfQuest: (id: string) => Bilingual }) {
   const { t } = useT();
   const help = useSocial(social, (s) => s.coopHelp);
   const [leaving, setLeaving] = useState(false);
@@ -343,7 +348,7 @@ function Play({ social, state, at, quest, fill }: { social: SocialStore; state: 
       <button type="button" className="scene-close" data-id="coop-play-close" aria-label={t('coop.leave')} onClick={() => setLeaving(true)}>
         ✕
       </button>
-      <Seats state={state} nameOf={nameOf} />
+      <Seats state={state} nameOf={nameOf} titleOfQuest={titleOfQuest} />
       <p className="coop-status" role="status" data-id="coop-status">
         {state.status === 'done' ? (
           <T k="coop.won" />
@@ -360,15 +365,25 @@ function Play({ social, state, at, quest, fill }: { social: SocialStore; state: 
         )}
       </p>
       <div className="coop-board parchment">{body}</div>
-      {line ? (
-        <div className="coop-last" data-id="coop-last" data-kind={last?.kind}>
-          <p>
-            <strong>{nameOf(last?.by ?? '')}</strong> ·{' '}
-            <span className="coop-line">
-              <Say text={line} fill={fill} />
-            </span>
-          </p>
-          {last?.copy ? (
+      {last && (line || last.say || last.copy) ? (
+        <div className="coop-last" data-id="coop-last" data-kind={last.kind}>
+          {line ? (
+            <p>
+              <strong>{nameOf(last.by)}</strong> ·{' '}
+              <span className="coop-line">
+                <Say text={line} fill={fill} />
+              </span>
+            </p>
+          ) : null}
+          {last.say ? (
+            <p className="coop-bot-line" data-id="coop-bot-line">
+              🤖 <strong>{nameOf(last.by)}</strong>:{' '}
+              <span className="coop-line">
+                <Bi {...(linesOf(`coop.botLines.${last.say.key}`)[last.say.variant] ?? same(''))} />
+              </span>
+            </p>
+          ) : null}
+          {last.copy ? (
             <p className="coop-copy" data-id="coop-copy">
               ✏️ <T k="coop.copy" />: {fill(last.copy.question)} — <strong>{fill(last.copy.answer)}</strong>
             </p>
@@ -465,7 +480,7 @@ export function CoopLayer({ social, quests, data, onPaid, onMap }: { social: Soc
   }
   if (play) {
     const quest = quests.get(play.state.questId);
-    return quest ? <Play key={play.state.questId} social={social} state={play.state} at={play.at} quest={quest} fill={fill} /> : null;
+    return quest ? <Play key={play.state.questId} social={social} state={play.state} at={play.at} quest={quest} fill={fill} titleOfQuest={(id) => { const q = quests.get(id); return q ? titleOf(q) : same(id); }} /> : null;
   }
   if (lobby) {
     const quest = quests.get(lobby.lobby.questId);

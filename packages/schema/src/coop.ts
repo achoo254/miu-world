@@ -51,6 +51,17 @@ export const CoopTaskView = z.strictObject({
 });
 export type CoopTaskView = z.infer<typeof CoopTaskView>;
 
+/**
+ * What a companion bot says after its move, from a fixed set of lines per kind (each player reads them in her own
+ * language from the locale files, `coop.botLines.<key>`); `variant` picks one of its `COOP_BOT_LINE_VARIANTS`.
+ */
+export const COOP_BOT_LINES = ['share', 'right', 'oops', 'hold', 'won'] as const;
+export const CoopBotLineKey = z.enum(COOP_BOT_LINES);
+export type CoopBotLineKey = z.infer<typeof CoopBotLineKey>;
+export const COOP_BOT_LINE_VARIANTS = 9;
+export const CoopBotLine = z.strictObject({ key: CoopBotLineKey, variant: z.number().int().min(0).max(COOP_BOT_LINE_VARIANTS - 1) });
+export type CoopBotLine = z.infer<typeof CoopBotLine>;
+
 export const CoopSeatView = z.strictObject({
   id: MemberId,
   displayName: Name,
@@ -60,6 +71,8 @@ export const CoopSeatView = z.strictObject({
   standIn: z.strictObject({ id: MemberId, displayName: Name }).nullable(),
   /** She dropped out and is waited for. */
   away: z.boolean(),
+  /** A bot that won a challenge with the player looking before: how often, and the last one (it greets her so). */
+  greeting: z.strictObject({ runs: z.number().int().min(1), lastQuestId: ContentId }).nullable(),
 });
 export type CoopSeatView = z.infer<typeof CoopSeatView>;
 
@@ -73,6 +86,8 @@ export const CoopEvent = z.strictObject({
   line: z.string().nullable(),
   lineEn: z.string().nullable(),
   copy: NotebookLine.nullable(),
+  /** What a companion bot says with its move (players say nothing here). */
+  say: CoopBotLine.nullable(),
 });
 export type CoopEvent = z.infer<typeof CoopEvent>;
 

@@ -37,15 +37,20 @@ async function playedFamily() {
   await app.db.insert(t.shopInventory).values({ childId, itemId: 'them-mot-tim', qty: 2 });
   await app.db.insert(t.mail).values({ id: randomUUID(), childId, templateId: 'welcome-gift', category: 'system' });
   await app.db.insert(t.npcFriendships).values({ childId, npcId: 'hoa-mi-rung', talkPoints: 2, giftPoints: 3, lastTalkOn: '2026-10-05' });
+  await app.db.insert(t.botMemories).values({ botId: 'bot-tt-1', childId, runs: 2, lastQuestId: 'with-dung-cau-tre' });
   const me = (await family.agent.get('/api/auth/me').expect(200)).body as { parent: { id: string } };
   return { ...family, parentId: me.parent.id };
 }
+
+/** Tables that hold nothing about a player: a bot's own skills, anonymous numbers per question. */
+const NOT_ABOUT_PLAYERS = new Set(['bot_skills', 'question_stats']);
 
 /** Rows in every table that belong to this parent or its children. */
 async function rowsOf(parentId: string, childIds: string[]): Promise<Record<string, number>> {
   const counts: Record<string, number> = {};
   for (const table of tables) {
     const config = getTableConfig(table);
+    if (NOT_ABOUT_PLAYERS.has(config.name)) continue;
     const byParent = config.columns.find((c) => c.name === 'parent_id');
     const byChild = config.columns.find((c) => c.name === 'child_id');
     const byId = config.name === 'parents' ? config.columns.find((c) => c.name === 'id') : undefined;
@@ -123,6 +128,7 @@ describe('account export', () => {
     expect(child?.reports).toEqual([{ displayName: 'Cáo Cam', reason: 'name', map: 'trung-tam', createdAt: expect.any(String) }]);
     expect(child?.playTime).toEqual([{ weekStart: '2026-09-28', seconds: 900, updatedAt: expect.any(String) }]);
     expect(child?.npcFriendships).toEqual([{ npcId: 'hoa-mi-rung', talkPoints: 2, giftPoints: 3, lastTalkOn: '2026-10-05', lastGiftOn: null }]);
+    expect(child?.botMemories).toEqual([{ botId: 'bot-tt-1', runs: 2, lastQuestId: 'with-dung-cau-tre', lastPlayedAt: expect.any(String) }]);
     expect(JSON.stringify(res.body)).not.toContain(other.childId);
     expect(JSON.stringify(res.body)).not.toContain(other.parent.email);
   });

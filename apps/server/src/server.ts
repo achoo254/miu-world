@@ -14,6 +14,7 @@ import { MultiplayerHub } from './multiplayer/multiplayer-hub';
 import { dbMultiplayerStore, sessionAuthenticator } from './multiplayer/multiplayer-store';
 import { CoopService } from './coop/coop-service';
 import { dbCoopRewards } from './reward/coop-reward';
+import { dbBotStore } from './multiplayer/bot-store';
 import { PartyQuestService, type PartyQuestHooks } from './coop/party-quest';
 
 const config = loadConfig();
@@ -63,7 +64,9 @@ const multiplayer = new MultiplayerHub(server, {
 hub = multiplayer;
 characterEvents.on((childId, character) => multiplayer.characterSaved(childId, character));
 playerEvents.on((event) => multiplayer.playerEvent(event));
-const botRunner = new BotRunner(multiplayer);
+// Bots keep their own skills, the questions' anonymous numbers and whom they won with.
+const botStore = dbBotStore(db);
+const botRunner = new BotRunner(multiplayer, { store: botStore });
 botRunner.start();
 // Co-op challenges: parties (or a player with companion bots) play them over the hub; the server pays each player.
 const coop = new CoopService({
@@ -74,6 +77,8 @@ const coop = new CoopService({
   },
   rewards: dbCoopRewards(db, content),
   bots: botRunner.coopDriver(),
+  store: botStore,
+  subjectOf: (skill) => content.subjects.find((s) => s.skills.some((k) => k.id === skill))?.id ?? null,
 });
 multiplayer.setCoop(coop);
 // Any lesson or story chapter played by a party: shared exploring, each member's own answers, team bosses.

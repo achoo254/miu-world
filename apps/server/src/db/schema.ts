@@ -388,3 +388,44 @@ export const friendRequests = pgTable(
     check('friend_requests_not_self', sql`${t.childId} <> ${t.fromChildId}`),
   ],
 );
+
+/**
+ * A companion bot's own skill XP (it learns from its own play, like a player): one row per bot and skill. Bots have
+ * no profile; nothing here is about a player.
+ */
+export const botSkills = pgTable(
+  'bot_skills',
+  {
+    botId: text('bot_id').notNull(),
+    skillId: text('skill_id').notNull(),
+    xp: integer('xp').notNull().default(0),
+    updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [primaryKey({ columns: [t.botId, t.skillId] }), check('bot_skills_xp_not_negative', sql`${t.xp} >= 0`)],
+);
+
+/**
+ * Anonymous numbers per co-op question: how many answers, how many right, and answer times counted in buckets of
+ * whole seconds (`times[i]`: answers that took i seconds, the last bucket everything longer). Never who answered.
+ */
+export const questionStats = pgTable('question_stats', {
+  /** `<quest id>/<question id>`. */
+  questionKey: text('question_key').primaryKey(),
+  answers: integer('answers').notNull().default(0),
+  rights: integer('rights').notNull().default(0),
+  times: jsonb('times').$type<number[]>().notNull().default(sql`'[]'::jsonb`),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+});
+
+/** A companion bot remembers a player it won a co-op challenge with: how often, and the last challenge (no words). */
+export const botMemories = pgTable(
+  'bot_memories',
+  {
+    botId: text('bot_id').notNull(),
+    childId: childRef(),
+    runs: integer('runs').notNull().default(0),
+    lastQuestId: text('last_quest_id').notNull(),
+    lastPlayedAt: timestamp('last_played_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [primaryKey({ columns: [t.botId, t.childId] }), index('bot_memories_child_idx').on(t.childId)],
+);

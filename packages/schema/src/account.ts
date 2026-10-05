@@ -150,6 +150,8 @@ export const AccountExport = z.object({
       mail: z.array(z.object({ templateId: z.string(), category: z.string(), read: z.boolean(), claimed: z.boolean(), claimedAt: Instant.nullable(), createdAt: Instant })),
       /** Friendship with each character of the maps: the chat and gift points, and the day of the last of each. */
       npcFriendships: z.array(z.object({ npcId: z.string(), talkPoints: z.number(), giftPoints: z.number(), lastTalkOn: z.string().nullable(), lastGiftOn: z.string().nullable() })),
+      /** Companion bots that won a co-op challenge with her: how often, and the last challenge. */
+      botMemories: z.array(z.object({ botId: z.string(), runs: z.number(), lastQuestId: z.string(), lastPlayedAt: z.string() })),
       /** Her friends (other players by character name, companion bots labelled). */
       friends: z.array(z.object({ displayName: z.string(), isBot: z.boolean(), since: Instant })),
       /** Friend requests waiting: for her, and from her. */

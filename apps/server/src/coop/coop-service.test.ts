@@ -3,13 +3,13 @@ import type { ActiveQuest } from '@miu/schema/content';
 import { COOP_COUNTDOWN_MS, COOP_PAUSE_MS, type CoopResult, type CoopStateView } from '@miu/schema/coop';
 import { coopQuest } from '../../test/coop-fixture';
 import { hubHarness, settle, type Client } from '../../test/hub-harness';
-import { CoopService, type CoopBotDriver } from './coop-service';
+import { CoopService, type CoopBotDriver, type CoopBotMoves } from './coop-service';
 
 const QUESTS = new Map(['pieces', 'together', 'team-boss'].map((mode) => [`with-test-${mode}`, coopQuest(mode as 'pieces')]));
 
 /** Bots that play only when the test says, always answering right. */
 function testBots() {
-  const seen = new Map<string, { state: CoopStateView; moves: Parameters<CoopBotDriver['play']>[2] }>();
+  const seen = new Map<string, { state: CoopStateView; moves: CoopBotMoves }>();
   const driver: CoopBotDriver = {
     pick: (_mapId, count, exclude) =>
       ['bot-tt-1', 'bot-tt-2', 'bot-tt-3'].filter((id) => !exclude.has(id)).slice(0, count).map((id) => ({ id, displayName: `Máy ${id}`, species: 'fox', isBot: true })),

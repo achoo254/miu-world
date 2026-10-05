@@ -4,7 +4,7 @@
 // the same question waits. A player who drops out is waited for (or a companion bot plays her place); a place
 // nobody plays any more is played by the next player in the team, so the challenge always goes on.
 import { COOP_DEFAULT_DAMAGE, type CoopStep, type CoopTask } from '@miu/schema/content';
-import { COOP_HOLD_MS, COOP_PAUSE_MS, type CoopAction, type CoopEvent, type CoopHelpLayer, type CoopStateView, type CoopTaskView } from '@miu/schema/coop';
+import { COOP_HOLD_MS, COOP_PAUSE_MS, type CoopAction, type CoopBotLine, type CoopEvent, type CoopHelpLayer, type CoopStateView, type CoopTaskView } from '@miu/schema/coop';
 import type { NotebookLine } from '@miu/schema/game';
 import { coopAnswerText as answerText } from '@miu/quest/notebook';
 
@@ -66,12 +66,44 @@ export class CoopSession {
   private seq = 0;
   private last: CoopEvent | null = null;
   private finished = false;
+  /** When each question was first shown (ms), for the players' anonymous answer times. */
+  private readonly shown = new Map<string, number>();
+  /** Bots that won a challenge with a player before, as each player sees them (viewer → bot → memory). */
+  private readonly greetings = new Map<string, Map<string, { runs: number; lastQuestId: string }>>();
 
   constructor(questId: string, step: CoopStep, people: readonly CoopPerson[]) {
     if (people.length === 0) throw new Error('a co-op challenge needs at least one player');
     this.questId = questId;
     this.step = step;
     this.seats = people.map((p) => ({ ...p, standIn: null, away: false, awayUntil: null, left: false, gone: false, part: false }));
+  }
+
+  /** The questions on screen now are marked shown at `now` (those already marked keep their time). */
+  markShown(now: number): void {
+    const visible = this.step.mode === 'together' ? this.roundTasks().map((t) => t.task) : [this.current()?.task].filter((t): t is CoopTask => t !== undefined);
+    for (const task of visible) if (!this.shown.has(task.id)) this.shown.set(task.id, now);
+  }
+
+  /** When a question was first shown (ms), null if never. */
+  shownAt(taskId: string): number | null {
+    return this.shown.get(taskId) ?? null;
+  }
+
+  /** A bot remembers `viewer`: it greets her with how often they won together and the last challenge. */
+  greet(viewer: string, botId: string, memory: { runs: number; lastQuestId: string }): void {
+    const own = this.greetings.get(viewer) ?? new Map<string, { runs: number; lastQuestId: string }>();
+    own.set(botId, memory);
+    this.greetings.set(viewer, own);
+  }
+
+  /** The line a bot says with the move it just made (on the last event, when it is the bot's). */
+  say(botId: string, line: CoopBotLine): void {
+    if (this.last?.by === botId) this.last = { ...this.last, say: line };
+  }
+
+  /** Bots playing in it (their own places, and those standing in for players). */
+  bots(): CoopPerson[] {
+    return this.audience().filter((p) => p.isBot);
   }
 
   get done(): boolean {
@@ -224,7 +256,7 @@ export class CoopSession {
 
   private event(by: string, kind: CoopEvent['kind'], line: { vi: string; en: string | null } | null = null, copy: NotebookLine | null = null): void {
     this.seq += 1;
-    this.last = { seq: this.seq, by, kind, line: line?.vi ?? null, lineEn: line?.en ?? null, copy };
+    this.last = { seq: this.seq, by, kind, line: line?.vi ?? null, lineEn: line?.en ?? null, copy, say: null };
   }
 
   private feedback(kind: 'right' | 'wrong'): { vi: string; en: string | null } {
@@ -376,6 +408,7 @@ export class CoopSession {
         species: s.species,
         standIn: s.standIn ? { id: s.standIn.id, displayName: s.standIn.displayName } : null,
         away: s.away && !s.standIn,
+        greeting: s.isBot ? (this.greetings.get(viewer)?.get(s.id) ?? null) : null,
       })),
       turn: current ? this.controller(current.seat) : null,
       task: current ? taskView(current.task) : null,
