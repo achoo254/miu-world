@@ -1,0 +1,229 @@
+{
+  "id": "viec-tot-khu-rung",
+  "region": "khu-rung-bi-mat",
+  "chapter": 3,
+  "title": "Việc tốt: Đưa Sẻ Con về tổ",
+  "status": "active",
+  "summary": "Một cơn gió lớn làm Sẻ Con rơi khỏi tổ trên cây dẻ cao. {name} nhặt đồ làm tổ, đọc lời nhắn của Sẻ Mẹ, tìm đường tới gốc dẻ, chọn cách lên cành rồi làm lại chiếc tổ ấm.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Sẻ Con, Hải Ly Thợ Mộc, Khỉ Leo Trèo",
+    "where": "Khu rừng bí mật: lùm cỏ ven lối mòn, bãi lá khô, tảng đá dưới gốc thông, xưởng gỗ của Hải Ly, cành ổi rừng, gốc dẻ cao",
+    "goal": "Đưa Sẻ Con trở về tổ an toàn trước khi trời tối",
+    "play": "Tìm cành khô, rơm, lông vũ theo lời gợi ý; đọc lời nhắn; dò đường qua bụi gai; chọn cách lên cành; xếp đúng thứ tự làm tổ",
+    "learn": "Đọc hiểu lời nhắn, tìm đường đi theo hướng, sắp xếp trình tự công việc",
+    "reward": "70 XP, 18 Xu, Skill XP Đọc hiểu, Logic, Kể chuyện",
+    "next": "Sẻ Mẹ bay về cảm ơn và rủ {name} sang nghe đàn chim hát ở rừng bên"
+  },
+  "phases": {
+    "hook": "gap-se-con",
+    "explore": "nhat-do-lam-to",
+    "learn": "doc-loi-nhan-se-me",
+    "challenge": "duong-toi-goc-de",
+    "decision": "chon-cach-len-canh",
+    "finale": "lam-lai-to",
+    "reward": "se-con-ve-to",
+    "next": "se-me-cam-on"
+  },
+  "places": {
+    "vt-kr-se-con": "Lùm cỏ ven lối mòn",
+    "nhat-do-lam-to": "Bãi lá khô",
+    "vt-kr-loi-nhan": "Tảng đá dưới gốc thông",
+    "vt-kr-hai-ly-tho-moc": "Xưởng gỗ của Hải Ly",
+    "vt-kr-khi-leo-treo": "Cành ổi rừng",
+    "vt-kr-to-chim": "Gốc dẻ cao"
+  },
+  "steps": [
+    {
+      "id": "gap-se-con",
+      "title": "Sẻ Con lạc tổ",
+      "goTo": "Có tiếng chiêm chiếp trong lùm cỏ ven lối mòn",
+      "kind": "dialogue",
+      "target": "vt-kr-se-con",
+      "lines": [
+        { "speaker": "Sẻ Con", "text": "Chiếp chiếp… Cơn gió ban sáng hất tớ khỏi tổ, cánh tớ còn non chưa bay lên nổi." },
+        { "speaker": "Sẻ Con", "text": "Tổ của tớ cũng bị gió làm xô lệch rồi. {name} giúp tớ làm lại tổ và đưa tớ về được không?" }
+      ],
+      "choices": [
+        { "text": "Đừng lo, tớ giúp cậu ngay!", "reply": "Cảm ơn cậu! Đồ làm tổ hay rơi ở bãi lá khô gần đây đấy." }
+      ]
+    },
+    {
+      "id": "nhat-do-lam-to",
+      "title": "Nhặt đồ làm tổ",
+      "goTo": "Tới bãi lá khô tìm đồ làm tổ cho Sẻ Con",
+      "kind": "find-object",
+      "prompt": "Một chiếc tổ ấm cần ba thứ. Đọc lời gợi ý và tìm từng thứ:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "canh-kho",
+          "name": "Bó cành khô",
+          "clue": "Những que gỗ nhỏ, khô giòn, gãy từ cành cây xuống, dùng để dựng khung tổ.",
+          "target": "vt-kr-canh-kho"
+        },
+        {
+          "id": "rom-vang",
+          "name": "Nắm rơm vàng",
+          "clue": "Sợi dài màu vàng nhạt, mềm và thơm mùi nắng, lót vào lòng tổ cho êm.",
+          "target": "vt-kr-rom-vang"
+        },
+        {
+          "id": "long-vu",
+          "name": "Chiếc lông vũ trắng",
+          "clue": "Nhẹ tênh, trắng muốt, chỉ một làn gió thoảng là bay lên.",
+          "target": "vt-kr-long-vu"
+        }
+      ]
+    },
+    {
+      "id": "doc-loi-nhan-se-me",
+      "title": "Lời nhắn của Sẻ Mẹ",
+      "goTo": "Sẻ Mẹ để lời nhắn trên tảng đá dưới gốc thông",
+      "kind": "read",
+      "target": "vt-kr-loi-nhan",
+      "skill": "doc-hieu",
+      "text": "Con yêu của mẹ,\nMẹ bay đi tìm thóc, chiều mẹ về. Tổ nhà mình ở trên cây dẻ cao nhất, cạnh xưởng gỗ của bác Hải Ly. Nếu lạc đường, con cứ hỏi bác Hải Ly, bác biết lối đi tránh bụi gai.\nMẹ của con.",
+      "question": "Theo lời nhắn, ai biết lối đi tới cây dẻ mà tránh được bụi gai?",
+      "choices": [
+        { "id": "a", "text": "Sẻ Mẹ" },
+        { "id": "b", "text": "Bác Hải Ly" },
+        { "id": "c", "text": "Sẻ Con" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm câu có chữ «lạc đường».", "Xem lời nhắn bảo con hỏi ai."],
+        "hint": "Người đó có một xưởng gỗ ngay cạnh cây dẻ.",
+        "answer": {
+          "text": "Bác Hải Ly",
+          "explanation": "Lời nhắn viết: nếu lạc đường, con cứ hỏi bác Hải Ly, bác biết lối đi tránh bụi gai."
+        }
+      },
+      "feedback": {
+        "right": ["Phải rồi, mình sang xưởng gỗ hỏi bác Hải Ly thôi!", "{name} tìm đúng câu dặn dò của Sẻ Mẹ rồi.", "Đọc chậm mà chắc, lời nhắn chẳng giấu được gì!"],
+        "wrong": ["Sẻ Mẹ đang bay đi tìm thóc mà, đọc lại câu cuối nhé {name}.", "Sẻ Con đang lạc nên chưa biết đường đâu.", "Tìm chữ «hỏi» trong lời nhắn xem ai được nhắc tới nha."]
+      }
+    },
+    {
+      "id": "duong-toi-goc-de",
+      "title": "Lối đi tránh bụi gai",
+      "goTo": "Sang xưởng gỗ của Hải Ly hỏi đường tới cây dẻ",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "maze",
+      "target": "vt-kr-hai-ly-tho-moc",
+      "skill": "logic",
+      "prompt": "Hải Ly vẽ bản đồ: đi từ ô có chú mèo tới ô ngôi sao, không bước vào ô tường gạch là bụi gai. Dãy bước nào đi được?",
+      "grid": [
+        ["S", ".", "#", "."],
+        ["#", ".", ".", "#"],
+        [".", "#", ".", "."],
+        [".", ".", "#", "G"]
+      ],
+      "choices": [
+        { "id": "a", "text": "Phải, xuống, phải, xuống, phải, xuống" },
+        { "id": "b", "text": "Xuống, phải, phải, xuống, xuống, phải" },
+        { "id": "c", "text": "Phải, phải, xuống, xuống, phải, xuống" }
+      ],
+      "answer": { "choice": "a" },
+      "support": {
+        "guide": ["Đặt ngón tay lên ô có chú mèo.", "Thử từng dãy bước, gặp ô tường gạch là dãy đó sai.", "Dãy đúng đưa ngón tay tới ô ngôi sao."],
+        "hint": "Ngay dưới ô xuất phát là bụi gai, nên bước đầu tiên phải sang phải.",
+        "answer": {
+          "text": "Đi bậc thang: sang phải rồi xuống, ba lần liền",
+          "explanation": "Đường đi bậc thang: cứ sang phải một ô rồi xuống một ô, ba lần là tới ngôi sao mà không chạm bụi gai."
+        }
+      },
+      "feedback": {
+        "right": ["Bác Hải Ly gật gù: đường bậc thang ấy an toàn nhất!", "{name} dò bản đồ chẳng sai một ô nào.", "Tránh hết bụi gai rồi, cây dẻ ở ngay trước mặt!"],
+        "wrong": ["Ối, dãy này bước vào bụi gai mất rồi, thử dãy khác nhé.", "Dò lại từng bước bằng ngón tay xem nào {name}.", "Bước đầu tiên đi xuống là vướng gai đấy, xem lại nha."]
+      }
+    },
+    {
+      "id": "chon-cach-len-canh",
+      "title": "Lên cành dẻ bằng cách nào?",
+      "kind": "decision",
+      "target": "vt-kr-hai-ly-tho-moc",
+      "speaker": "Hải Ly Thợ Mộc",
+      "prompt": "Tổ của Sẻ Con nằm trên cành dẻ cao quá. {name} chọn cách nào để đưa Sẻ Con lên tổ?",
+      "choices": [
+        {
+          "id": "tim-go",
+          "text": "Tìm gỗ ghép một chiếc thang",
+          "consequence": "Bác Hải Ly đưa mấy tấm ván thừa. Cộc cộc cộc, chiếc thang nhỏ đã đứng vững bên gốc dẻ!",
+          "nextStepId": "lam-lai-to"
+        },
+        {
+          "id": "di-vong",
+          "text": "Đi vòng lên con dốc sau gốc dẻ",
+          "consequence": "Đường vòng xa hơn nhưng thoai thoải, đứng trên đỉnh dốc là với tới cành dẻ ngay.",
+          "nextStepId": "lam-lai-to"
+        },
+        {
+          "id": "nho-ban",
+          "text": "Nhờ Khỉ Leo Trèo giúp một tay",
+          "consequence": "Bác Hải Ly huýt sáo gọi bạn. Khỉ Leo Trèo đang đu trên cành ổi rừng gần đó, sang rủ bạn nhé!"
+        }
+      ]
+    },
+    {
+      "id": "nho-khi-giup",
+      "title": "Nhờ Khỉ Leo Trèo",
+      "goTo": "Tới cành ổi rừng nhờ Khỉ Leo Trèo giúp",
+      "kind": "dialogue",
+      "target": "vt-kr-khi-leo-treo",
+      "lines": [
+        { "speaker": "Khỉ Leo Trèo", "text": "Leo cây là nghề của tớ! Cậu cứ chuẩn bị tổ dưới gốc, tớ sẽ đỡ Sẻ Con lên cành thật nhẹ nhàng." }
+      ],
+      "choices": [{ "text": "Cảm ơn cậu, mình cùng ra gốc dẻ nhé!" }]
+    },
+    {
+      "id": "lam-lai-to",
+      "title": "Làm lại tổ cho Sẻ Con",
+      "goTo": "Mang đồ làm tổ tới gốc dẻ cao",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "vt-kr-to-chim",
+      "skill": "ke-chuyen",
+      "prompt": "Xếp các việc theo đúng thứ tự để chiếc tổ vừa chắc vừa ấm:",
+      "items": [
+        { "id": "dat-se", "label": "Đặt Sẻ Con vào tổ" },
+        { "id": "lot-rom", "label": "Lót rơm vàng vào lòng tổ" },
+        { "id": "dung-khung", "label": "Đan cành khô thành khung tổ" },
+        { "id": "trai-long", "label": "Trải lông vũ lên trên cùng" }
+      ],
+      "answer": { "order": ["dung-khung", "lot-rom", "trai-long", "dat-se"] },
+      "support": {
+        "guide": ["Việc nào làm cho tổ có hình dáng trước tiên?", "Sau khung tổ là lớp lót mềm, rồi tới lớp ấm nhất.", "Tổ xong xuôi mới đặt Sẻ Con vào."],
+        "hint": "Làm tổ giống xây nhà: dựng khung trước, trải nệm sau.",
+        "answer": {
+          "text": "Đan khung, lót rơm, trải lông vũ, đặt Sẻ Con",
+          "explanation": "Cành khô làm khung giữ tổ chắc, rơm lót cho êm, lông vũ trên cùng cho ấm, cuối cùng mới đặt Sẻ Con vào."
+        }
+      },
+      "feedback": {
+        "right": ["Chiếc tổ tròn xoe, chắc chắn và ấm áp quá!", "{name} làm tổ khéo như một chú chim thợ.", "Sẻ Con rúc vào lông vũ, kêu chiêm chiếp sung sướng!"],
+        "wrong": ["Chưa có khung thì rơm rơi mất, xếp lại nha {name}.", "Sẻ Con phải chờ tổ làm xong đã chứ!", "Lông vũ ấm nhất nên nằm ở lớp nào nhỉ? Thử lại nhé."]
+      }
+    },
+    {
+      "id": "se-con-ve-to",
+      "title": "Sẻ Con về tổ",
+      "kind": "reward",
+      "target": "vt-kr-to-chim",
+      "text": "Sẻ Con nằm gọn trong chiếc tổ mới, ló đầu ra hót một khúc cảm ơn {name}. Cả cây dẻ rung rinh như cũng vui lây."
+    },
+    {
+      "id": "se-me-cam-on",
+      "title": "Sẻ Mẹ trở về",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chiều xuống, Sẻ Mẹ ngậm thóc bay về, nghe con kể chuyện liền cảm ơn {name} mãi. Mai Sẻ Mẹ rủ {name} sang rừng bên nghe đàn chim hát."
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": { "doc-hieu": 1, "logic": 1, "ke-chuyen": 1 }
+  }
+}

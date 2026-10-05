@@ -1,0 +1,296 @@
+{
+  "id": "vuot-ai-khu-rung",
+  "region": "khu-rung-bi-mat",
+  "chapter": 5,
+  "title": "Trùm vui: Thần Rừng Tinh Nghịch",
+  "status": "active",
+  "summary": "Thần Rừng Tinh Nghịch móc chiếc chuông gió của hội rừng lên bộ gạc rồi chạy vào khoảng rừng trăng. {name} gom quà mời, đọc lời thách, giải vòng lá rồi thắng trận đố vui bảy câu để mang chuông về.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Thỏ Kèn Lá, Gấu Trúc Đếm Lá, Thần Rừng Tinh Nghịch",
+    "where": "Khu rừng bí mật, chặng cuối: gốc sồi rỗng, bãi cỏ dưới tán dẻ, cột mốc đầu lối mòn, bậc đá rêu xanh, khoảng rừng trăng",
+    "goal": "Thắng trận đố vui của Thần Rừng để lấy lại chuông gió cho hội rừng",
+    "play": "Tìm ba món quà theo lời gợi ý, đọc lời thách, tìm quy luật vòng lá, chọn cách chào Thần Rừng, đấu trùm bảy câu",
+    "learn": "Ôn bảng chữ cái, từ chỉ sự vật và tình cảm, chính tả ng/ngh, dấu câu, câu nêu hoạt động, đọc hiểu",
+    "reward": "100 XP, 25 Xu, Skill XP Đọc hiểu, Từ ngữ, Chính tả, Logic",
+    "next": "Hội rừng mở lúc hoàng hôn, Vẹt Xanh chờ ở cửa rừng kể chuyện ngày hội"
+  },
+  "phases": {
+    "hook": "gap-tho-ken-la",
+    "explore": "tim-qua-moi",
+    "learn": "doc-loi-thach",
+    "challenge": "vong-la-quy-luat",
+    "decision": "chon-cach-chao",
+    "finale": "tran-trum",
+    "reward": "trao-chuong-gio",
+    "next": "hoi-rung-mo-man"
+  },
+  "places": {
+    "trum-kr-tho-ken-la": "Gốc sồi rỗng",
+    "tim-qua-moi": "Bãi cỏ dưới tán dẻ",
+    "trum-kr-cot-moc": "Cột mốc đầu lối mòn",
+    "trum-kr-gau-truc-dem-la": "Bậc đá rêu xanh",
+    "trum-kr-than-rung": "Rừng trăng",
+    "trum-kr-chuong-gio": "Rừng trăng"
+  },
+  "steps": [
+    {
+      "id": "gap-tho-ken-la",
+      "title": "Thỏ Kèn Lá báo tin",
+      "goTo": "Tới gốc sồi rỗng, Thỏ Kèn Lá đang thổi kèn gọi bạn",
+      "kind": "dialogue",
+      "target": "trum-kr-tho-ken-la",
+      "lines": [
+        { "speaker": "Thỏ Kèn Lá", "text": "{name} ơi, Thần Rừng Tinh Nghịch vừa móc chiếc chuông gió của hội rừng lên bộ gạc rồi chạy tót vào khoảng rừng trăng!" },
+        { "speaker": "Thỏ Kèn Lá", "text": "Ngài bảo chỉ trả chuông cho ai mang quà tới mời và thắng trận đố vui của ngài. Không có chuông, tối nay muông thú chẳng biết lúc nào khai hội." }
+      ],
+      "choices": [
+        { "text": "Để tớ mang chuông gió về!", "reply": "Hay quá! Ngài mê quà của rừng lắm, cậu ra bãi cỏ dưới tán dẻ tìm thử nhé." },
+        { "text": "Thần Rừng có đáng sợ không?", "reply": "Không đâu, ngài chỉ ham đố vui thôi. Cứ ra bãi cỏ dưới tán dẻ tìm quà trước đã." }
+      ]
+    },
+    {
+      "id": "tim-qua-moi",
+      "title": "Tìm ba món quà mời",
+      "goTo": "Ra bãi cỏ dưới tán dẻ tìm ba món quà mời Thần Rừng",
+      "kind": "find-object",
+      "prompt": "Đọc từng lời gợi ý rồi tìm ba món quà Thần Rừng thích nhất:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "sao-truc",
+          "name": "Cây sáo trúc",
+          "clue": "Thân tròn, rỗng ruột, có một hàng lỗ nhỏ; thổi vào là cất tiếng véo von.",
+          "target": "trum-kr-sao-truc"
+        },
+        {
+          "id": "mat-ong-rung",
+          "name": "Hũ mật ong rừng",
+          "clue": "Vàng óng và ngọt lịm, đàn ong chăm chỉ góp suốt một mùa hoa mới đầy.",
+          "target": "trum-kr-mat-ong"
+        },
+        {
+          "id": "nam-do",
+          "name": "Cây nấm mũ đỏ",
+          "clue": "Đội chiếc mũ đỏ lấm tấm chấm trắng, mọc lên sau cơn mưa đêm qua.",
+          "target": "trum-kr-nam-do"
+        }
+      ]
+    },
+    {
+      "id": "doc-loi-thach",
+      "title": "Đọc lời thách của Thần Rừng",
+      "goTo": "Mang quà tới cột mốc đầu lối mòn, nơi Thần Rừng để lại lời thách",
+      "kind": "read",
+      "target": "trum-kr-cot-moc",
+      "skill": "doc-hieu",
+      "text": "Lời thách của Thần Rừng\nAi muốn lấy lại chuông gió thì hãy tới khoảng rừng trăng lúc hoàng hôn. Ta sẽ hỏi bảy câu. Mỗi câu trả lời đúng làm sức tinh nghịch của ta vơi đi một ít. Đúng đủ bảy câu, ta trả chuông và cùng muông thú mở hội.\nKí tên: Thần Rừng Tinh Nghịch",
+      "question": "Muốn lấy lại chuông gió, {name} phải làm gì?",
+      "choices": [
+        { "id": "a", "text": "Tới khoảng rừng trăng và trả lời đúng đủ bảy câu" },
+        { "id": "b", "text": "Chạy thật nhanh đuổi theo Thần Rừng" },
+        { "id": "c", "text": "Đợi tới sáng mai rồi xin lại chuông" }
+      ],
+      "answer": { "choice": "a" },
+      "support": {
+        "guide": ["Đọc câu thứ nhất để biết Thần Rừng hẹn gặp ở đâu.", "Đọc câu cuối để biết cần đúng bao nhiêu câu."],
+        "hint": "Lời thách có nhắc tới một nơi và một con số.",
+        "answer": {
+          "text": "Tới khoảng rừng trăng, trả lời đúng cả bảy câu",
+          "explanation": "Lời thách viết: hãy tới khoảng rừng trăng; đúng đủ bảy câu, ta trả chuông."
+        }
+      },
+      "feedback": {
+        "right": ["Chuẩn rồi, bảy câu đố đang chờ {name} đấy!", "Đọc kĩ thế này thì Thần Rừng phải dè chừng rồi.", "Đúng ý lời thách, mình lên đường tới khoảng rừng trăng thôi!"],
+        "wrong": ["Thần Rừng có bảo chạy đuổi đâu, đọc lại câu đầu nha {name}.", "Lời thách hẹn lúc hoàng hôn, chẳng phải sáng mai đâu.", "Tìm con số bảy trong lời thách rồi chọn lại nhé."]
+      }
+    },
+    {
+      "id": "vong-la-quy-luat",
+      "title": "Vòng lá của Gấu Trúc",
+      "goTo": "Tới bậc đá rêu xanh, Gấu Trúc Đếm Lá đang xếp lá thành vòng",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "trum-kr-gau-truc-dem-la",
+      "skill": "logic",
+      "prompt": "Gấu Trúc xếp vòng lá mời khách theo một quy luật. Chiếc lá tiếp theo màu gì?",
+      "elements": [
+        { "id": "l1", "label": "Lá đỏ" },
+        { "id": "l2", "label": "Lá vàng" },
+        { "id": "l3", "label": "Lá vàng" },
+        { "id": "l4", "label": "Lá đỏ" },
+        { "id": "l5", "label": "Lá vàng" },
+        { "id": "l6", "label": "Lá vàng" },
+        { "id": "l7", "label": "Lá đỏ" }
+      ],
+      "choices": [
+        { "id": "do", "text": "Lá đỏ" },
+        { "id": "vang", "text": "Lá vàng" },
+        { "id": "xanh", "text": "Lá xanh" }
+      ],
+      "answer": { "choice": "vang" },
+      "support": {
+        "guide": ["Chia dãy lá thành từng nhóm ba chiếc.", "Mỗi nhóm mở đầu bằng một lá đỏ, theo sau là hai lá vàng.", "Chiếc lá cuối là lá đỏ mở đầu một nhóm mới."],
+        "hint": "Sau mỗi chiếc lá đỏ luôn có hai chiếc lá vàng.",
+        "answer": {
+          "text": "Lá vàng",
+          "explanation": "Quy luật lặp lại đỏ – vàng – vàng. Nhóm mới vừa mở bằng lá đỏ nên chiếc tiếp theo là lá vàng."
+        }
+      },
+      "feedback": {
+        "right": ["Vòng lá khép kín rồi, Gấu Trúc vỗ bụng khen giỏi!", "{name} nhìn ra nhịp đỏ – vàng – vàng thật nhanh.", "Đúng quy luật, vòng lá đẹp như vương miện!"],
+        "wrong": ["Đếm từng nhóm ba chiếc lá xem nào {name}.", "Sau lá đỏ có mấy lá vàng nhỉ? Nhìn lại nhóm đầu nhé.", "Trong vòng này chưa có lá xanh nào đâu, chọn lại nha."]
+      }
+    },
+    {
+      "id": "chon-cach-chao",
+      "title": "Chọn cách chào Thần Rừng",
+      "kind": "decision",
+      "target": "trum-kr-gau-truc-dem-la",
+      "speaker": "Gấu Trúc Đếm Lá",
+      "prompt": "Khoảng rừng trăng ở ngay phía trước rồi. {name} muốn chào Thần Rừng thế nào?",
+      "choices": [
+        {
+          "id": "thoi-sao",
+          "text": "Thổi sáo trúc một khúc chào",
+          "consequence": "Tiếng sáo vọng vào rừng sâu, Thần Rừng vểnh tai nghe rồi gật gù chờ {name} tới.",
+          "nextStepId": "tran-trum"
+        },
+        {
+          "id": "tang-mat-ong",
+          "text": "Đặt hũ mật ong làm quà ra mắt",
+          "consequence": "Thần Rừng hít hà mùi mật thơm, bộ gạc rung rinh vì thích thú.",
+          "nextStepId": "tran-trum"
+        },
+        {
+          "id": "ru-tho",
+          "text": "Quay lại rủ Thỏ Kèn Lá đi cùng",
+          "consequence": "Gấu Trúc gật gù: có bạn cổ vũ thì vững dạ hơn. Chạy về gốc sồi rỗng gọi Thỏ nhé!"
+        }
+      ]
+    },
+    {
+      "id": "ru-tho-di-cung",
+      "title": "Rủ Thỏ Kèn Lá đi cùng",
+      "goTo": "Quay về gốc sồi rỗng rủ Thỏ Kèn Lá đi cùng",
+      "kind": "dialogue",
+      "target": "trum-kr-tho-ken-la",
+      "lines": [
+        { "speaker": "Thỏ Kèn Lá", "text": "Cậu quay lại rủ tớ thật à? Vui quá! Mỗi lần cậu trả lời đúng, tớ sẽ thổi một hồi kèn lá thật to." }
+      ],
+      "choices": [{ "text": "Mình cùng tới khoảng rừng trăng nào!" }]
+    },
+    {
+      "id": "tran-trum",
+      "title": "Đấu trí với Thần Rừng",
+      "goTo": "Bước vào rừng trăng, Thần Rừng đang chờ",
+      "kind": "boss",
+      "target": "trum-kr-than-rung",
+      "bossId": "than-rung-tinh-nghich",
+      "bossName": "Thần Rừng Tinh Nghịch",
+      "introDialogue": "Ha ha, khách quý tới rồi! Bảy câu đố về chữ nghĩa và bạn bè đây, mỗi câu đúng làm ta bớt tinh nghịch một chút!",
+      "winDialogue": "Ta chịu thua rồi! {name} đọc nhanh, nghĩ giỏi, đúng là bạn tốt của cả khu rừng.",
+      "maxHp": 500,
+      "damagePerTurn": 80,
+      "turns": [
+        {
+          "id": "chu-sau-a",
+          "skill": "bang-chu-cai",
+          "prompt": "Trong bảng chữ cái tiếng Việt, chữ nào đứng ngay sau chữ A?",
+          "choices": [
+            { "id": "a", "text": "Ă" },
+            { "id": "b", "text": "B" },
+            { "id": "c", "text": "Â" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "do-choi",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào gọi tên một món đồ chơi của các bạn nhỏ trong rừng?",
+          "choices": [
+            { "id": "a", "text": "dòng suối" },
+            { "id": "b", "text": "con diều" },
+            { "id": "c", "text": "chạy nhảy" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "ng-ngh",
+          "skill": "chinh-ta",
+          "prompt": "Thần Rừng viết ba lần mà chỉ một lần đúng. Từ nào viết đúng chính tả?",
+          "choices": [
+            { "id": "a", "text": "ngỉ ngơi" },
+            { "id": "b", "text": "nghỉ nghơi" },
+            { "id": "c", "text": "nghỉ ngơi" }
+          ],
+          "answer": { "choice": "c" }
+        },
+        {
+          "id": "dau-hoi",
+          "skill": "dau-cau",
+          "prompt": "Cuối câu «Bạn có muốn cùng tớ thả diều không» phải đặt dấu gì?",
+          "choices": [
+            { "id": "a", "text": "Dấu chấm" },
+            { "id": "b", "text": "Dấu chấm hỏi" },
+            { "id": "c", "text": "Dấu phẩy" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "cau-hoat-dong",
+          "skill": "cau",
+          "prompt": "Câu nào kể về một hoạt động đang diễn ra?",
+          "choices": [
+            { "id": "a", "text": "Chú nhím có bộ lông nâu sẫm." },
+            { "id": "b", "text": "Các bạn nhỏ chơi rồng rắn lên mây." },
+            { "id": "c", "text": "Khu rừng chiều nay rất yên tĩnh." }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "tinh-ban",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào nói về tình cảm giữa hai người bạn?",
+          "choices": [
+            { "id": "a", "text": "lấp lánh" },
+            { "id": "b", "text": "thân thiết" },
+            { "id": "c", "text": "cao vút" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "do-dieu",
+          "skill": "doc-hieu",
+          "prompt": "Đố vui: thân mỏng và nhẹ, đuôi dài phấp phới, bay cao nhờ gió, sợi dây nằm trong tay bạn nhỏ. Đó là gì?",
+          "choices": [
+            { "id": "a", "text": "Chiếc lá khô" },
+            { "id": "b", "text": "Quả bóng bay" },
+            { "id": "c", "text": "Con diều" }
+          ],
+          "answer": { "choice": "c" }
+        }
+      ]
+    },
+    {
+      "id": "trao-chuong-gio",
+      "title": "Chuông gió trở về",
+      "kind": "reward",
+      "target": "trum-kr-chuong-gio",
+      "text": "Thần Rừng gỡ chuông gió khỏi bộ gạc, treo lại cho {name} gõ thử. Leng keng! Muông thú ùa ra reo hò, túi quà của ngài rơi ra đầy XP, xu và điểm kỹ năng."
+    },
+    {
+      "id": "hoi-rung-mo-man",
+      "title": "Hội rừng mở màn",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chuông gió ngân vang khắp khu rừng bí mật. Thần Rừng hẹn {name} hôm nào quay lại đố tiếp, còn Vẹt Xanh đang chờ ở cửa rừng để kể chuyện ngày hội."
+    }
+  ],
+  "reward": {
+    "xp": 100,
+    "coin": 25,
+    "skillXp": { "doc-hieu": 1, "tu-ngu": 1, "chinh-ta": 1, "logic": 1 }
+  }
+}
