@@ -1,0 +1,30 @@
+{
+  "state": {
+    "project": "Miu World: a 3D voxel learn-while-playing online game for all ages; 12 maps, each core 800x800 blocks with several named zones, plus generated land around. Owner's north star: lively, never boring. Co-op (party of 2-4 with team boss, shared HP) is being built now.",
+    "today": "2026-10-05",
+    "facts": [
+      "Each map has exactly one friendly boss fight today (12 total), as a quest in the map's last chapter: 7 skill questions, each right answer takes 80 of 500 HP, losing costs nothing, full reward every replay.",
+      "The minimap and full map mark only the current quest target, storytellers (NPC stories) and minigame givers; a boss is not marked unless its quest is the current one.",
+      "The owner asks: should bosses show on the minimap, and is one boss per map too few for the map's size?"
+    ]
+  },
+  "questions": {
+    "boss_on_map": {
+      "stakes": "low",
+      "instructions": "Should bosses be marked on the minimap and the full map?",
+      "criteria": {
+        "always_marked": "Yes: every boss always has its own friendly icon on the minimap and full map, with a tap-to-walk-there like quests.",
+        "only_when_current": "Only when the boss quest is the current quest."
+      }
+    },
+    "boss_count": {
+      "stakes": "medium",
+      "instructions": "How many boss fights per map?",
+      "criteria": {
+        "map_boss_plus_zone_guardians": "One big map boss plus 3-4 smaller zone guardians per map (one in each main zone), each with its own character, skills of that zone's lessons, shorter fights (4-5 questions), and the big boss also playable as a co-op team boss.",
+        "map_boss_plus_daily": "Keep one boss per map but add a daily rotating guardian somewhere on the map.",
+        "keep_one": "Keep one boss per map."
+      }
+    }
+  }
+}

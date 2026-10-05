@@ -1,0 +1,30 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 731,
+    "output_tokens": 88
+  },
+  "results": {
+    "boss_on_map": {
+      "stakes": "low",
+      "choice": "always_marked",
+      "confidence": 0.19,
+      "probabilities": {
+        "only_when_current": 0.4,
+        "always_marked": 0.6
+      },
+      "decision": "escalate"
+    },
+    "boss_count": {
+      "stakes": "medium",
+      "choice": "keep_one",
+      "confidence": 0.77,
+      "probabilities": {
+        "map_boss_plus_zone_guardians": 0.14,
+        "map_boss_plus_daily": 0.02,
+        "keep_one": 0.84
+      },
+      "decision": "escalate"
+    }
+  }
+}
