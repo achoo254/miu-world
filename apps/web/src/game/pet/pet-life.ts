@@ -85,6 +85,9 @@ const SNIFF_SHORT = 2;
 /** She stands still this long before it plays round her (seconds), and it sits by her this long after a round. */
 const IDLE_PLAY = 7;
 const ROUND_REST = 12;
+/** Scenes that go on while she walks. */
+const WALK_ALONG: ReadonlySet<PetSceneName> = new Set(['greet', 'celebrate', 'sniff']);
+const UP = new Vector3(0, 1, 0);
 /** Its bed at home is where it naps when she is this near it, on the same floor (blocks). */
 const BED_REACH = 10;
 /** Longest wait for the pet to reach a spot in a scene before the scene goes on without it (seconds). */
@@ -138,7 +141,8 @@ export function createPetLife(options: PetLifeOptions): PetLife {
   let mood: PetLife['mood'] = 'follow';
   let idleFor = 0;
   let sniffCooldown = 0;
-  let playRound: { points: Array<[number, number]>; index: number; rest: number } | null = null;
+  /** Her round: the points it runs between, the one it is on and the one it was sent to, its rest at each. */
+  let playRound: { points: Array<[number, number]>; index: number; sent: number; rest: number; sitting: boolean } | null = null;
 
   /** A spot `distance` ahead of her where the pet can stand (turning aside, then behind, when ahead is blocked). */
   const stage = (player: PetPlayer, distance: number): { x: number; z: number; y: number; angle: number } => {
@@ -374,7 +378,7 @@ export function createPetLife(options: PetLifeOptions): PetLife {
           pet.goTo({ x: home.x, z: home.z, face: { x: player.x, z: player.z }, run: true });
         } else if (phase === 'back') {
           // In its mouth on the way back.
-          mouth.set(pet.anchors.mouth.x, pet.anchors.mouth.y - 0.16 / pet.scale, pet.anchors.mouth.z).multiplyScalar(pet.scale).applyAxisAngle(new Vector3(0, 1, 0), pet.root.rotation.y).add(pet.root.position);
+          mouth.set(pet.anchors.mouth.x, pet.anchors.mouth.y - 0.16 / pet.scale, pet.anchors.mouth.z).multiplyScalar(pet.scale).applyAxisAngle(UP, pet.root.rotation.y).add(pet.root.position);
           ball.mesh.position.copy(mouth);
           if (reached(wait, dt)) {
             phase = 'drop';
@@ -666,8 +670,9 @@ export function createPetLife(options: PetLifeOptions): PetLife {
         mood = 'scene';
         options.onScene(running.name);
       }
-      // Walking off ends a scene (the pet comes along); a ride ends it too.
-      if (running && (player.riding || (player.speed > 0.5 && running.name !== 'greet' && running.name !== 'celebrate'))) stop();
+      // Walking off ends a scene (the pet comes along); a ride ends it too. Not a greeting, a cheer or a sniff:
+      // those go on round her as she walks (she often follows the sniffing pet at once).
+      if (running && (player.riding || (player.speed > 0.5 && !WALK_ALONG.has(running.name)))) stop();
       if (running) {
         if (running.update(dt, player)) stop();
       } else {
@@ -686,13 +691,13 @@ export function createPetLife(options: PetLifeOptions): PetLife {
         } else if (still && (mood === 'play-round' || idleFor > IDLE_PLAY)) {
           if (mood !== 'play-round' || !playRound) {
             mood = 'play-round';
-            playRound = { points: circleRound(player), index: 0, rest: 0 };
+            playRound = { points: circleRound(player), index: 0, sent: -1, rest: 0, sitting: false };
             pet.perform(null);
           }
           if (playRound.rest > 0) {
             playRound.rest -= dt;
             // Sat by her a while after its round: it follows again, and plays again after another still spell.
-            if (playRound.rest <= 0 && playRound.index >= playRound.points.length) {
+            if (playRound.rest <= 0 && playRound.sitting) {
               mood = 'follow';
               idleFor = 0;
               playRound = null;
@@ -701,8 +706,11 @@ export function createPetLife(options: PetLifeOptions): PetLife {
             }
           } else if (playRound.index < playRound.points.length) {
             const point = playRound.points[playRound.index];
-            if (point && pet.motion === null) pet.goTo({ x: point[0], z: point[1], run: true });
-            if (pet.arrived) {
+            // Sent once to each point; there it hops, then on to the next.
+            if (point && playRound.sent !== playRound.index) {
+              playRound.sent = playRound.index;
+              pet.goTo({ x: point[0], z: point[1], run: true });
+            } else if (pet.arrived) {
               playRound.index += 1;
               pet.perform('hop', gentle);
               playRound.rest = MOTION_SECONDS.hop;
@@ -711,6 +719,7 @@ export function createPetLife(options: PetLifeOptions): PetLife {
             pet.goTo({ x: pet.root.position.x, z: pet.root.position.z, face: { x: player.x, z: player.z } });
             pet.perform('sit');
             playRound.rest = ROUND_REST;
+            playRound.sitting = true;
           }
         } else if (mood !== 'follow') {
           mood = 'follow';

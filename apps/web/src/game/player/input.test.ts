@@ -29,6 +29,24 @@ describe('PlayerInput', () => {
     expect(state.jump).toBe(false);
   });
 
+  it('leaves keys pressed in a dialog over the running game to the dialog', () => {
+    const input = create();
+    const dialog = el();
+    dialog.setAttribute('role', 'dialog');
+    const button = document.createElement('button');
+    dialog.append(button);
+    button.dispatchEvent(new KeyboardEvent('keydown', { code: 'Space', bubbles: true }));
+    button.dispatchEvent(new KeyboardEvent('keydown', { code: 'KeyW', bubbles: true }));
+    const state = input.read();
+    expect(state.jump).toBe(false);
+    expect(state.moveY).toBe(0);
+    // A HUD button keeps focus after a click: the game's keys still work there.
+    const hud = document.createElement('button');
+    document.body.append(hud);
+    hud.dispatchEvent(new KeyboardEvent('keydown', { code: 'Space', bubbles: true }));
+    expect(input.read().jump).toBe(true);
+  });
+
   it('still reports a press made after resuming', () => {
     const input = create();
     input.clear();

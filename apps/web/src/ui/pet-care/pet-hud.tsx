@@ -10,12 +10,15 @@ import { PETS, assetUrl } from '../kit/ui-art';
 import { loadPetCare } from './pet-care-api';
 import './pet-care.css';
 
-export function PetHud({ petId, onOpen }: { petId: string | null; onOpen: () => void }) {
+export function PetHud({ petId, renamed, hidden = false, onOpen }: { petId: string | null; renamed?: string | null; hidden?: boolean; onOpen: () => void }) {
   const store = useGameStore();
   const { t } = useT();
   const ready = useGameState((s) => s.status === 'ready');
   const sniff = useGameState((s) => s.petSniff);
-  const [name, setName] = useState<string | null>(null);
+  /** Its name as read when the game came up (undefined until read). */
+  const [loaded, setLoaded] = useState<string | null | undefined>(undefined);
+  // A name picked on the care board since: newer than the one read when the game came up.
+  const name = renamed === undefined ? loaded : renamed;
   const pet = PETS.find((p) => p.id === petId);
 
   // The name she gave it, for this button and over the pet in the world.
@@ -23,7 +26,7 @@ export function PetHud({ petId, onOpen }: { petId: string | null; onOpen: () => 
     if (!petId) return;
     let live = true;
     loadPetCare().then(
-      (status) => live && status.hasPet && setName(status.bond.name),
+      (status) => live && status.hasPet && setLoaded(status.bond.name),
       () => undefined,
     );
     return () => {
@@ -31,10 +34,10 @@ export function PetHud({ petId, onOpen }: { petId: string | null; onOpen: () => 
     };
   }, [petId]);
   useEffect(() => {
-    if (ready && name !== null) store.send({ type: 'pet-name', name });
+    if (ready && name !== undefined) store.send({ type: 'pet-name', name });
   }, [ready, name, store]);
 
-  if (!pet) return null;
+  if (!pet || hidden) return null;
   return (
     <>
       <button type="button" className={`${buttonClass('secondary', { small: true })} pet-hud-button`} data-id="hud-pet" aria-label={t('hud.pet')} onClick={onOpen}>

@@ -22,6 +22,8 @@ const KEYS_LEFT = ['KeyA', 'ArrowLeft'];
 const KEYS_RIGHT = ['KeyD', 'ArrowRight'];
 const KEYS_ZOOM_IN = ['Equal', 'NumpadAdd'];
 const KEYS_ZOOM_OUT = ['Minus', 'NumpadSubtract'];
+/** Where a key press belongs to the page, not to the game: a dialog, a text field. */
+const OWN_KEYS = '[role="dialog"], input, textarea, select, [contenteditable="true"]';
 /** Zoom per wheel pixel, and per + / − press (log scale of the camera distance). */
 const ZOOM_PER_WHEEL_PX = 0.0015;
 const ZOOM_PER_KEY = 0.15;
@@ -43,6 +45,8 @@ export class PlayerInput implements InputSource {
     window.addEventListener(
       'keydown',
       (e) => {
+        // Keys typed in a dialog over the running game (the pet's care board) or in a text field are theirs.
+        if (e.target instanceof Element && e.target.closest(OWN_KEYS)) return;
         this.keys.add(e.code);
         if (e.code === 'Space') this.jumpQueued = true;
         if (e.code === 'KeyE') this.interactQueued = true;

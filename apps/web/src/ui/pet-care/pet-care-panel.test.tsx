@@ -40,17 +40,19 @@ function mockApi(status: PetCareStatusResponse, answers: Record<string, unknown>
   return calls;
 }
 
-function renderPanel(): { store: GameStore; sent: GameCommand[]; onClose: () => void } {
+function renderPanel(): { store: GameStore; sent: GameCommand[]; onClose: () => void; onPetGear: (gear: string[]) => void; onRename: (name: string | null) => void } {
   const store = createGameStore();
   const sent: GameCommand[] = [];
   store.onCommand((c) => sent.push(c));
   const onClose = vi.fn();
+  const onPetGear = vi.fn();
+  const onRename = vi.fn();
   render(
     <GameStoreContext.Provider value={store}>
-      <PetCarePanel onClose={onClose} />
+      <PetCarePanel onClose={onClose} onPetGear={onPetGear} onRename={onRename} />
     </GameStoreContext.Provider>,
   );
-  return { store, sent, onClose };
+  return { store, sent, onClose, onPetGear, onRename };
 }
 
 describe('pet care board', () => {
@@ -97,6 +99,16 @@ describe('pet care board', () => {
     expect(screen.getByText('100%')).toBeTruthy();
   });
 
+  it('stays open when another scene (a greeting) starts while it waits for its own', async () => {
+    mockApi({ hasPet: true, petId: 'meo-xam', bond: BOND }, { 'POST /character/pet/care': { bond: BOND, xpGained: 0, levelUp: false, unlocked: [] } });
+    const { store } = renderPanel();
+    fireEvent.click(await screen.findByRole('button', { name: /^Tắm$/ }));
+    act(() => store.emit({ type: 'pet-scene', scene: 'greet' }));
+    expect(screen.queryByRole('dialog')).not.toBeNull();
+    act(() => store.emit({ type: 'pet-scene', scene: 'care:bath' }));
+    expect(await screen.findByText('Mèo xám đang tắm…')).toBeTruthy();
+  });
+
   it('every care button asks for its own scene', async () => {
     mockApi({ hasPet: true, petId: 'meo-xam', bond: BOND }, { 'POST /character/pet/care': { bond: BOND, xpGained: 0, levelUp: false, unlocked: [] } });
     const { store, sent } = renderPanel();
@@ -128,20 +140,22 @@ describe('pet care board', () => {
 
   it('names the pet from the list', async () => {
     const calls = mockApi({ hasPet: true, petId: 'meo-xam', bond: BOND }, { 'PUT /character/pet/name': { bond: { ...BOND, name: 'Mochi' } } });
-    const { sent } = renderPanel();
+    const { sent, onRename } = renderPanel();
     fireEvent.click(await screen.findByRole('tab', { name: /Đặt tên/ }));
     fireEvent.click(screen.getByRole('button', { name: 'Mochi' }));
     expect(await screen.findByText('Từ nay gọi là Mochi nhé!')).toBeTruthy();
     expect(calls.posts).toEqual([{ url: 'PUT /api/character/pet/name', body: { name: 'Mochi' } }]);
     expect(sent).toContainEqual({ type: 'pet-name', name: 'Mochi' });
+    expect(onRename).toHaveBeenCalledWith('Mochi');
     expect(screen.getByText('Chăm sóc Mochi')).toBeTruthy();
   });
 
   it('dresses the pet in gear she bought, one per place', async () => {
     const calls = mockApi({ hasPet: true, petId: 'meo-xam', bond: { ...BOND, gear: ['pet-bow-pink'] } }, { 'PUT /character/pet/gear': { bond: { ...BOND, gear: ['pet-crown'] } } }, { 'pet-bow-pink': 1, 'pet-crown': 1, 'them-mot-tim': 2 });
-    const { sent } = renderPanel();
+    const { sent, onPetGear } = renderPanel();
     fireEvent.click(await screen.findByRole('tab', { name: /Phụ kiện/ }));
     fireEvent.click(await screen.findByRole('button', { name: /Vương miện nhỏ/ }));
+    await vi.waitFor(() => expect(onPetGear).toHaveBeenCalledWith(['pet-crown']));
     await vi.waitFor(() => expect(sent).toContainEqual({ type: 'pet-gear', gear: ['pet-crown'] }));
     // The crown takes the bow's place on its head.
     expect(calls.posts).toEqual([{ url: 'PUT /api/character/pet/gear', body: { gear: ['pet-crown'] } }]);

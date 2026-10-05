@@ -242,8 +242,14 @@ export class RemotePlayerManager {
       entity.pet?.root.removeFromParent();
       entity.pet = null;
       void this.loadPet(appearance.pet, appearance.petGear).then((pet) => {
-        // Still her, still that pet (no newer change, not gone meanwhile).
-        if (!pet || this.entities.get(id) !== entity || entity.presence.pet !== appearance.pet) return;
+        // Still her, still that pet (no newer change, not gone meanwhile, no other load of it first).
+        if (!pet) return;
+        if (this.entities.get(id) !== entity || entity.presence.pet !== appearance.pet || entity.pet) {
+          pet.dispose();
+          return;
+        }
+        // In what she dressed it in by now (gear saved while it loaded).
+        pet.wear(gearLooks(entity.presence.petGear));
         entity.pet = pet;
         const root = entity.character.root;
         pet.place(root.position.x, root.position.y - entity.lift, root.position.z, root.rotation.y);

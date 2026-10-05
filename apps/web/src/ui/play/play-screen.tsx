@@ -350,12 +350,17 @@ export function PlayScreen() {
   const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null || decorOpen || shopOpen || cookingOpen || friendsOpen || onlineMenu || coopOpen;
   // The pet's care board leaves the game running (its scenes play in the world), only the HUD steps aside.
   const hudCovered = covered || petCareOpen;
-  /** Bumped when the care board closes: the HUD's pet button reads its (maybe new) name again. */
-  const [petCareCloses, setPetCareCloses] = useState(0);
-  const closePetCare = useCallback((): void => {
-    setPetCareOpen(false);
-    setPetCareCloses((n) => n + 1);
-  }, []);
+  /** The name picked for her pet on the care board this visit (undefined: none picked yet), for the HUD's button. */
+  const [petRenamed, setPetRenamed] = useState<string | null | undefined>(undefined);
+  const closePetCare = useCallback((): void => setPetCareOpen(false), []);
+  /** What her pet wears, saved from the care board or the shop: worn at once, and on the next map. */
+  const petGearSaved = useCallback(
+    (gear: string[]): void => {
+      store.send({ type: 'pet-gear', gear });
+      setData((prev) => prev && { ...prev, character: { ...prev.character, petGear: gear } });
+    },
+    [store],
+  );
   const atHome = data !== null && regionMap(region) === regionMap(HOME_REGION);
   // The friends list is read in the background once the game is up, so it opens at once.
   useFriendsPrefetch(social, draftOwner, status === 'ready');
@@ -475,7 +480,7 @@ export function PlayScreen() {
           <Hud data={data} quest={quest} covered={hudCovered} onMenu={() => setPaused(true)} onQuests={() => setQuestsOpen(true)} onBackpack={() => setBackpackOpen(true)}>
             <div className="hud-row">
               <FriendsButton social={social} onOpen={() => setFriendsOpen(true)} />
-              {hudCovered ? null : <PetHud key={petCareCloses} petId={data.character.pet} onOpen={() => setPetCareOpen(true)} />}
+              <PetHud petId={data.character.pet} renamed={petRenamed} hidden={hudCovered} onOpen={() => setPetCareOpen(true)} />
             </div>
             {/* Out of the way while a screen (the friends list…) covers the game: the two never overlap. */}
             {covered ? null : <PartyFrame social={social} fill={(text) => say(text, data.character)} />}
@@ -521,13 +526,10 @@ export function PlayScreen() {
             onCoins={(coins) => setData((prev) => prev && { ...prev, progress: { ...prev.progress, coins } })}
             // Worn at once in the game, without rebuilding the map (the next visit starts in it from the server).
             onWear={(equipped) => store.send({ type: 'set-outfit', equipped })}
-            onPetGear={(gear) => {
-              store.send({ type: 'pet-gear', gear });
-              setData((prev) => prev && { ...prev, character: { ...prev.character, petGear: gear } });
-            }}
+            onPetGear={petGearSaved}
           />
         ) : null}
-        {petCareOpen && !covered ? <PetCarePanel onClose={closePetCare} /> : null}
+        {petCareOpen && !covered ? <PetCarePanel onClose={closePetCare} onPetGear={(gear) => petGearSaved(gear)} onRename={setPetRenamed} /> : null}
         {cookingOpen ? (
           <Modal title="Bếp Nhà Nấu Ăn 🍳" onClose={() => setCookingOpen(false)} dataId="play-cooking" size="wide">
             <CookingPanel onClose={() => setCookingOpen(false)} />

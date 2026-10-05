@@ -75,7 +75,7 @@ export type PetCareStatusResponse = z.infer<typeof PetCareStatusResponse>;
 
 /**
  * A care button. `itemId`: a cooked dish she owns (content/recipes.json result) to feed instead of the pet's own
- * food; one is used up. Anything else in the body is ignored.
+ * food; one is used up. Anything else in the body (a stat, an XP) is refused (400).
  */
 export const PetCareRequest = z.strictObject({
   action: PetCareAction,

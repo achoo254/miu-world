@@ -62,9 +62,13 @@ const SCENE_START_MS = 900;
 
 export interface PetCarePanelProps {
   onClose: () => void;
+  /** What the pet wears now, as saved (the play screen keeps it for the next map). */
+  onPetGear?: (gear: string[]) => void;
+  /** The name she picked (null: its kind's), for the HUD's pet button. */
+  onRename?: (name: string | null) => void;
 }
 
-export function PetCarePanel({ onClose }: PetCarePanelProps) {
+export function PetCarePanel({ onClose, onPetGear, onRename }: PetCarePanelProps) {
   const store = useGameStore();
   const { t } = useT();
   const [state, setState] = useState<'loading' | 'none' | 'ready' | 'failed'>('loading');
@@ -73,6 +77,8 @@ export function PetCarePanel({ onClose }: PetCarePanelProps) {
   const [tab, setTab] = useState<Tab>('care');
   const [phase, setPhase] = useState<Phase>('idle');
   const phaseRef = useRef<Phase>('idle');
+  /** The scene the board waits for (`care:feed`, `trick:sit`): another one starting meanwhile (a greeting) does not fold it. */
+  const expected = useRef<string | null>(null);
   const go = useCallback((next: Phase): void => {
     phaseRef.current = next;
     setPhase(next);
@@ -121,7 +127,7 @@ export function PetCarePanel({ onClose }: PetCarePanelProps) {
     () =>
       store.subscribe(() => {
         const scene = store.getSnapshot().petScene;
-        if (scene && phaseRef.current === 'waiting') go('playing');
+        if (scene && scene === expected.current && phaseRef.current === 'waiting') go('playing');
         else if (!scene && phaseRef.current === 'playing') {
           go('idle');
           playCue('star');
@@ -157,6 +163,7 @@ export function PetCarePanel({ onClose }: PetCarePanelProps) {
     if (phase !== 'idle') return;
     press(action);
     setCaption(`petCare.scene.${action}`);
+    expected.current = `care:${action}`;
     go('waiting');
     store.send({ type: 'pet-care', action });
     try {
@@ -176,6 +183,7 @@ export function PetCarePanel({ onClose }: PetCarePanelProps) {
       const answer = await askTrick(id);
       setBond(answer.bond);
       setCaption('petCare.scene.trick');
+      expected.current = `trick:${id}`;
       go('waiting');
       store.send({ type: 'pet-trick', trick: id });
     } catch (err) {
@@ -189,6 +197,7 @@ export function PetCarePanel({ onClose }: PetCarePanelProps) {
       const answer = await namePet(next);
       setBond(answer.bond);
       store.send({ type: 'pet-name', name: answer.bond.name });
+      onRename?.(answer.bond.name);
       setNews([mapBoth(pairOf('petCare.named'), (l) => l.replaceAll('{pet}', answer.bond.name ?? pet?.name ?? ''))]);
       playCue('right');
     } catch (err) {
@@ -218,6 +227,7 @@ export function PetCarePanel({ onClose }: PetCarePanelProps) {
       const answer = await dressPet(next);
       setBond(answer.bond);
       store.send({ type: 'pet-gear', gear: answer.bond.gear });
+      onPetGear?.(answer.bond.gear);
       playCue('place');
     } catch (err) {
       setError(errorMessage(err));

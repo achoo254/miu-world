@@ -50,7 +50,7 @@ import { HOME_REGION } from '../ui/region/regions';
 import { DEFAULT_SPECIES } from './content/characters';
 import { loadPlayerCharacter, type ExtraPlayerAction } from './entities/player-character';
 import { loadPetCompanion } from './entities/pet-companion';
-import { createPetLife, type PetLife } from './pet/pet-life';
+import { createPetLife, type PetLife, type PetPlayer } from './pet/pet-life';
 import { gearLooks } from './pet/pet-gear-catalog';
 
 const ANIMAL_PET_LINES = [
@@ -798,6 +798,13 @@ export class Game {
       const target = byId.get(id);
       return target?.available ? [target.def.position] : [];
     });
+    /** Whether a clue to sniff toward stands on this map, checked a few times a second (not every frame). */
+    let sniffable = false;
+    let sniffCheck = 0;
+    /** Her, as the pet sees her each frame (one object, filled in place). */
+    const petPlayer: PetPlayer = { x: 0, y: 0, z: 0, facing: 0, speed: 0, seated: null, riding: false };
+    const petSeat = { x: 0, z: 0, lying: false };
+    const petAt: [number, number, number] = [0, 0, 0];
     const arrow = createTargetArrow();
     scene.add(arrow.root);
     let hint: InteractableObject | null = null;
@@ -1062,28 +1069,39 @@ export class Game {
           petLife.greet();
         }
         const body = objectState.body;
-        const lying = objectState.action === 'sleep' || objectState.action === 'lay';
-        petLife.update(dt, {
-          x: p.x,
-          y: p.y,
-          z: p.z,
-          facing: controller.facing,
-          speed: controller.speed,
-          seated: body ? { x: body.position[0], z: body.position[2], lying } : null,
-          riding: carried !== null || ride.riding,
-        });
+        if (body) {
+          petSeat.x = body.position[0];
+          petSeat.z = body.position[2];
+          petSeat.lying = objectState.action === 'sleep' || objectState.action === 'lay';
+        }
+        petPlayer.x = p.x;
+        petPlayer.y = p.y;
+        petPlayer.z = p.z;
+        petPlayer.facing = controller.facing;
+        petPlayer.speed = controller.speed;
+        petPlayer.seated = body ? petSeat : null;
+        petPlayer.riding = carried !== null || ride.riding;
+        petLife.update(dt, petPlayer);
         // The pet waits out a ride and catches up with her at the far stop.
         pet.root.visible = !carried && !reviewShot?.backdrop && !reviewShot?.hidesPlayer;
         petBubble.update(dt);
         petBubble.sprite.position.set(pet.root.position.x, pet.root.position.y + pet.anchors.height * pet.scale + 0.35, pet.root.position.z);
-        // Her pet's scene in view: the camera turns to frame them both (unless she just dragged the view).
-        if (petLife.viewYaw !== null && sinceLook > LOOK_HOLD_S && !carried) rig.follow(petLife.viewYaw, dt, PET_SCENE_FOLLOW);
+        // Her pet's scene in view: the camera turns to frame them both (unless she just dragged the view; slowly
+        // with less motion asked for).
+        if (petLife.viewYaw !== null && sinceLook > LOOK_HOLD_S && !carried) rig.follow(petLife.viewYaw, dt, reducedMotion ? PET_SCENE_FOLLOW / 3 : PET_SCENE_FOLLOW);
         overlay.stats.petClip = pet.clip;
         overlay.stats.petMood = petLife.mood;
         overlay.stats.petMotion = pet.motion;
-        overlay.stats.petAt = [pet.root.position.x, pet.root.position.y, pet.root.position.z];
-        const sniffable = sniffPlaces().length > 0 && !carried;
-        store.emit({ type: 'pet-sniff', available: sniffable, wait: Math.ceil(petLife.sniffCooldown) });
+        petAt[0] = pet.root.position.x;
+        petAt[1] = pet.root.position.y;
+        petAt[2] = pet.root.position.z;
+        overlay.stats.petAt = petAt;
+        sniffCheck -= dt;
+        if (sniffCheck <= 0) {
+          sniffCheck = 0.25;
+          sniffable = sniffTargets.length > 0 && sniffPlaces().length > 0;
+          store.emit({ type: 'pet-sniff', available: sniffable && !carried, wait: Math.ceil(petLife.sniffCooldown) });
+        }
       }
       reviewShot?.apply(camera);
       sky.position.copy(camera.position);

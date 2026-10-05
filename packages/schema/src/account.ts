@@ -162,6 +162,9 @@ export const AccountExport = z.object({
             statsAt: Instant,
             careXp: z.number(),
             walkSeconds: z.number(),
+            /** When each care last paid bond XP, and when a walk was last counted. */
+            carePaidAt: z.record(z.string(), z.string()).default({}),
+            walkedAt: Instant.nullable().default(null),
           }),
         )
         .default([]),

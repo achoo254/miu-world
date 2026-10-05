@@ -185,12 +185,28 @@ describe('reactions to her', () => {
     expect(petLife.mood).toBe('follow');
   });
 
-  it('plays round her while she stands still, and follows again when she walks', async () => {
-    const { petLife, run } = await life();
+  it('plays round her while she stands still, hopping at each point, then sits by her; follows again when she walks', async () => {
+    const { pet, petLife, run } = await life();
     run(8);
     expect(petLife.mood).toBe('play-round');
+    const seen = new Set<string | null>();
+    for (let t = 0; t < 10; t += 1 / 30) {
+      petLife.update(1 / 30, flat);
+      seen.add(pet.motion);
+    }
+    expect(seen.has('hop')).toBe(true);
+    expect(pet.motion).toBe('sit');
     run(0.2, { ...flat, speed: 2 });
     expect(petLife.mood).toBe('follow');
+  });
+
+  it('keeps sniffing as she walks after it', async () => {
+    const { petLife, scenes, run } = await life();
+    petLife.sniff([[0, 1, 9]]);
+    run(0.5);
+    run(0.5, { ...flat, speed: 2 });
+    expect(petLife.scene).toBe('sniff');
+    expect(scenes).toEqual(['sniff']);
   });
 });
 
