@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from '@playwright/test';
 import { DEFAULT_TEST_TIMEOUT_MS } from './e2e/time-budget-reporter';
+import { writeFakeVoice } from './e2e/fake-voice';
 
 // Fixed ports: a stale server shows up with `netstat -ano | findstr :4173` (web) or `:8787` (API).
 const WEB_PORT = 4173;
@@ -56,6 +57,9 @@ export default defineConfig({
         GOOGLE_TOKEN_URL: `${FAKE_GOOGLE}/token`,
         // Test-only quests (every textbook mechanic), loaded after the shipped ones.
         EXTRA_QUEST_DIR: fileURLToPath(new URL('./e2e/fixtures/quests', import.meta.url)),
+        // A voice relay key from the caller's env (never in the repo) lets the voice spec try the real TURN relay;
+        // without one the server hands out STUN only and that test is skipped.
+        ...(process.env.CF_TURN_KEY_ID && process.env.CF_TURN_API_TOKEN ? { CF_TURN_KEY_ID: process.env.CF_TURN_KEY_ID, CF_TURN_API_TOKEN: process.env.CF_TURN_API_TOKEN } : {}),
       },
       reuseExistingServer: false,
       timeout: 120_000,
@@ -78,6 +82,13 @@ export default defineConfig({
       testMatch: 'speak.spec.ts',
       dependencies: ['setup'],
       use: { launchOptions: { args: ['--use-fake-device-for-media-stream', '--use-fake-ui-for-media-stream'] } },
+    },
+    // Voice between two players (two contexts) with Chromium's fake microphone playing a made-up voice.
+    {
+      name: 'voice',
+      testMatch: 'voice.spec.ts',
+      dependencies: ['setup'],
+      use: { launchOptions: { args: ['--use-fake-device-for-media-stream', '--use-fake-ui-for-media-stream', `--use-file-for-fake-audio-capture=${writeFakeVoice()}`] } },
     },
     { name: 'perf', testMatch: 'perf.spec.ts', dependencies: ['setup'], use: { storageState: PARENT_STATE }, timeout: 30 * 60_000 },
   ],
