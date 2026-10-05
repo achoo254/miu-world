@@ -1,0 +1,29 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 784,
+    "output_tokens": 94
+  },
+  "results": {
+    "consent_wording": {
+      "stakes": "high",
+      "choice": "keep_v3_disclose_on_privacy_page",
+      "confidence": 0.17,
+      "probabilities": {
+        "bump_v4_now": 0.41,
+        "keep_v3_disclose_on_privacy_page": 0.59
+      },
+      "decision": "escalate"
+    },
+    "owner_lock_online": {
+      "stakes": "low",
+      "choice": "player_always_controls",
+      "confidence": 0.95,
+      "probabilities": {
+        "owner_can_lock_extra": 0.03,
+        "player_always_controls": 0.97
+      },
+      "decision": "auto"
+    }
+  }
+}

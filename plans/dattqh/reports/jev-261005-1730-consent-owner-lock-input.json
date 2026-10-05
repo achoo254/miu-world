@@ -1,0 +1,31 @@
+{
+  "state": {
+    "project": "Miu World: a 3D voxel learn-while-playing online game for all ages; web now, mobile later. Built 100% by AI. Only the owner and one child play today.",
+    "today": "2026-10-05",
+    "owner_direction": "All ages, no parental supervision required; parents who let a child play are responsible; never gate features on parents.",
+    "facts": [
+      "New data stored today: friends and friend requests, blocks, reports a player filed, weekly play time totals, per-player online/bot switches.",
+      "Consent v3 (accepted by every account this morning) does not list these. A decision earlier today (Jev 0.89) chose to describe new online data on the privacy page now and fold it into the next consent version, without making everyone accept again now.",
+      "The privacy page's last paragraph used to promise 'when we change how data is collected, the page and the consent are updated and the account owner is asked to agree again before playing on'. It now says friends, blocks, reports and weekly play time will be folded into the next consent update.",
+      "Extra players on an account are usually the owner's child on a shared device. The online switch is the player's own setting; the owner can switch it for an extra player, but the extra player can switch it back on."
+    ]
+  },
+  "questions": {
+    "consent_wording": {
+      "stakes": "high",
+      "instructions": "Keep consent at v3 with the softened privacy wording, or bump now?",
+      "criteria": {
+        "keep_v3_disclose_on_privacy_page": "Keep v3 and the privacy page wording as is; bump the consent version at the next change that needs one.",
+        "bump_v4_now": "Bump consent to v4 now listing friends, blocks, reports and play time; every account accepts once more."
+      }
+    },
+    "owner_lock_online": {
+      "stakes": "low",
+      "instructions": "Can an extra player re-enable online after the account owner turned it off for them?",
+      "criteria": {
+        "owner_can_lock_extra": "The owner may lock the online switch for an extra player (an optional lock, off by default); the primary player always controls their own.",
+        "player_always_controls": "Every player always controls their own switch; the owner's change is only a default."
+      }
+    }
+  }
+}
