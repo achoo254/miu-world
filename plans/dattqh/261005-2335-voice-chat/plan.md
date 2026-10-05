@@ -11,7 +11,7 @@ created: 2026-10-05
 
 # Nói chuyện bằng giọng với bạn bè, tổ đội và bạn máy
 
-**Trạng thái:** đã lập (05/10/2026); làm sau `261005-2315-zone-guardians` (dùng chung hub, khung đội, `bot-runner.ts`); cần khóa TURN của Cloudflare từ người sở hữu trước pha 2 · **Tier:** L
+**Trạng thái:** đã lập (05/10/2026); làm sau `261005-2315-zone-guardians` (dùng chung hub, khung đội, `bot-runner.ts`); khóa TURN đã có; xong thì deploy production (người sở hữu cho phép, 05/10/2026) · **Tier:** L
 **Nguồn:** người sở hữu (05/10/2026): "khi kết bạn và tổ đội có thể voice được với nhau. bot máy voice được". Thay cho dòng "không chat tự do" của Master Plan §9 theo định hướng mọi lứa tuổi (`.claude/rules/product-audience.md`). Quyết định: Jev (`reports/jev-261005-2335-voice-{input,output}.json`).
 
 ## Hiện trạng (05/10/2026)
@@ -29,6 +29,10 @@ created: 2026-10-05
 | Bạn máy | Nói lời của mình bằng giọng tổng hợp trên máy, mỗi bạn máy một cao độ/tốc độ theo tính cách (plan co-op, mục bạn máy); khi người chơi nói thì phản ứng (đợi lượt, câu ngắn hợp lúc, emote), không chuyển lời người chơi thành chữ | 0.97 |
 | Đường truyền | WebRTC nối thẳng giữa tối đa 4 người, báo hiệu qua WebSocket của game; STUN miễn phí của Cloudflare; TURN của Cloudflare làm đường dự phòng (gói miễn phí dư so với nhu cầu); IP gốc vẫn ẩn, không mở cổng mới | 0.99 (Jev đánh dấu cần người xem: cần người sở hữu tạo khóa TURN) |
 | Lời đồng ý | Giữ v3; trang quyền riêng tư thêm dòng: giọng đi thẳng giữa người chơi (hoặc qua trạm chuyển tiếp), game không ghi và không lưu | 0.71 |
+
+## Khóa TURN (05/10/2026)
+
+Người sở hữu cho phép tạo khóa trong tài khoản Cloudflare của họ. Đã tạo khóa TURN `miu-world-voice` bằng API; mã khóa và token nằm trong `access-tokens.json` trong iCloud (mục `rtc.live.cloudflare.com (TURN)`, cùng chỗ các credential khác, `docs/STAG-DEV-README.md` §3), không vào repo. Đã thử xin credential ngắn hạn (`generate-ice-servers`, ttl 300): trả 2 mục ICE (STUN, TURN). Lúc deploy thêm hai biến vào file env production ngoài repo; ghi đường lấy credential vào `docs/deployment-guide.md`.
 
 ## Pha
 
