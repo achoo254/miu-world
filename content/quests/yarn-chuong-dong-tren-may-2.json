@@ -1,0 +1,373 @@
+{
+  "id": "yarn-chuong-dong-tren-may-2",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Chuyện của Bò Chuông Đồng, chương 2: Chuông méo tiếng",
+  "status": "active",
+  "category": "story",
+  "summary": "Chiếc chuông đồng của Bò Chuông Đồng bị móp, kêu rè như cái xoong. {name} tìm đồ sửa trong nhà kho chế biến, giải câu đố tiếng chuông của Bác Thợ Hàn Nồi, xếp các bước vá chuông, chọn cách giữ vết vá và giúp Bò vắt sữa cảm ơn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bò Chuông Đồng, Bác Thợ Hàn Nồi",
+    "where": "Nông trại: đồng cỏ bò sữa, nhà kho chế biến, xóm nông dân, cầu đá qua sông",
+    "goal": "Sửa chiếc chuông đồng cho kêu trong trẻo lại",
+    "play": "Tìm miếng đồng, nhựa thông, dùi gỗ; giải đố to nhỏ; xếp bước vá chuông; chọn giữ vết vá; vắt sữa",
+    "learn": "Suy luận so sánh, sắp xếp trình tự",
+    "reward": "65 XP, 16 Xu, Skill XP Logic, Kể chuyện",
+    "next": "Bò mơ thả một con diều mang tiếng chuông lên tận mây"
+  },
+  "phases": {
+    "hook": "chuong-keu-nhu-xoong",
+    "explore": "do-sua-trong-kho",
+    "learn": "chuong-nao-tram-nhat",
+    "challenge": "chuong-nao-tram-nhat",
+    "decision": "vet-va-tren-chuong",
+    "finale": "vat-sua-cam-on",
+    "reward": "chuong-trong-treo",
+    "next": "dam-may-hinh-bo"
+  },
+  "places": {
+    "bo-chuong-dong": "Đồng cỏ bò sữa",
+    "do-sua-trong-kho": "Nhà kho chế biến",
+    "st-chuong-dong-tren-may-bac-tho-han-noi": "Xóm nông dân",
+    "st-chuong-dong-tren-may-dau-cau-da": "Cầu đá qua sông"
+  },
+  "steps": [
+    {
+      "id": "chuong-keu-nhu-xoong",
+      "title": "Chuông kêu như xoong",
+      "kind": "dialogue",
+      "target": "bo-chuong-dong",
+      "goTo": "Ra đồng cỏ bò sữa, Bò đang buồn thiu",
+      "lines": [
+        {
+          "speaker": "Bò Chuông Đồng",
+          "text": "Ò... nghe này: cạch, cạch. Đàn bò sữa đốm đen cứ tưởng tớ đeo cái xoong lên cổ, cười suốt buổi sáng."
+        },
+        {
+          "speaker": "Bò Chuông Đồng",
+          "text": "Bác Thợ Hàn Nồi ở xóm nông dân chữa được, nhưng bác cần miếng đồng vá, hũ nhựa thông và cái dùi gỗ. Heo Kho Hàng cất mọi thứ trong nhà kho, kệ nào cũng dán nhãn."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ vào kho tìm!",
+          "reply": "Ò, nhớ đọc nhãn nhé, Heo dán nhãn cả lên... cái chổi."
+        },
+        {
+          "text": "Chuông cậu quý lắm hả Bò?",
+          "reply": "Quý lắm... nó theo tớ từ hồi bé tí. Thôi, để lúc khác tớ kể."
+        }
+      ],
+      "en": {
+        "title": "A bell like a saucepan",
+        "goTo": "Go to the dairy meadow, where Bò is moping",
+        "lines": [
+          "Mooo... listen: clack, clack. The spotted cows think I’m wearing a saucepan round my neck. They’ve laughed all morning.",
+          "The tinker in the farmers’ hamlet can mend it, but he needs a brass patch, a pot of pine resin and a wooden mallet. Heo Kho Hàng keeps everything in the barn, with every shelf labelled."
+        ],
+        "choices": [
+          {
+            "text": "I'll go and search the barn!",
+            "reply": "Mooo, read the labels: Heo has even labelled... the broom."
+          },
+          {
+            "text": "Is your bell very precious, Bò?",
+            "reply": "Very... it's been with me since I was tiny. I'll tell you another time."
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-sua-trong-kho",
+      "title": "Đồ sửa trong kho",
+      "kind": "search",
+      "targets": [
+        "st-chuong-dong-tren-may-dong-va",
+        "st-chuong-dong-tren-may-hu-nhua-thong",
+        "st-chuong-dong-tren-may-dui-go"
+      ],
+      "goTo": "Vào nhà kho chế biến tìm miếng đồng, nhựa thông, dùi gỗ",
+      "en": {
+        "title": "Repair things in the barn",
+        "goTo": "Go into the processing barn for the brass patch, the resin and the mallet"
+      }
+    },
+    {
+      "id": "chuong-nao-tram-nhat",
+      "title": "Chuông nào trầm nhất?",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "target": "st-chuong-dong-tren-may-bac-tho-han-noi",
+      "goTo": "Mang đồ ra xóm nông dân gặp Bác Thợ Hàn Nồi",
+      "skill": "logic",
+      "prompt": "Bác Thợ Hàn Nồi treo bốn chiếc chuông: «Chuông A to hơn chuông B. Chuông C nhỏ hơn chuông B. Chuông D to hơn chuông A. Chuông càng to kêu càng trầm. Đoán đúng chuông trầm nhất thì bác chữa cho.»",
+      "logicType": "puzzle",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Chuông A"
+        },
+        {
+          "id": "b",
+          "text": "Chuông B"
+        },
+        {
+          "id": "c",
+          "text": "Chuông C"
+        },
+        {
+          "id": "d",
+          "text": "Chuông D"
+        }
+      ],
+      "answer": {
+        "choice": "d"
+      },
+      "support": {
+        "guide": [
+          "Xếp bốn chuông từ nhỏ tới to theo từng câu.",
+          "C nhỏ hơn B, B nhỏ hơn A, A nhỏ hơn D."
+        ],
+        "hint": "Chuông nào to hơn cả chuông A?",
+        "answer": {
+          "text": "Chuông D",
+          "explanation": "Thứ tự từ nhỏ tới to là C, B, A, D. D to nhất nên kêu trầm nhất."
+        },
+        "en": {
+          "guide": [
+            "Line the four bells up from small to big, one clue at a time.",
+            "C is smaller than B, B smaller than A, A smaller than D."
+          ],
+          "hint": "Which bell is bigger even than A?",
+          "answer": {
+            "text": "Bell D, the biggest",
+            "explanation": "From small to big: C, B, A, D. D is the biggest, so it rings deepest."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "«Boong...» Chuông D ngân trầm, Bác Thợ Hàn Nồi giơ ngón cái.",
+          "{name} xếp to nhỏ trong đầu nhanh như lật bánh đa.",
+          "Đúng chuông trầm nhất! Bác thợ xắn tay áo bắt tay vào việc."
+        ],
+        "wrong": [
+          "Chuông ấy còn có chuông khác to hơn đấy.",
+          "Thử xếp bốn chuông thành một hàng từ nhỏ tới to xem.",
+          "Nhớ: to hơn thì trầm hơn, nhỏ hơn thì thanh hơn."
+        ],
+        "en": {
+          "right": [
+            "«Bonnng...» Bell D hums low, and the tinker gives a thumbs-up.",
+            "{name} sorts big and small in their head in a flash.",
+            "The deepest one! The tinker rolls up his sleeves and gets to work."
+          ],
+          "wrong": [
+            "There’s a bell bigger than that one.",
+            "Try lining the four bells up from small to big.",
+            "Remember: bigger is deeper, smaller is higher."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which bell is deepest?",
+        "goTo": "Take everything to the farmers’ hamlet to see the tinker",
+        "prompt": "The tinker hangs up four bells: «Bell A is bigger than B. Bell C is smaller than B. Bell D is bigger than A. The bigger the bell, the deeper it rings. Guess the deepest and I’ll do the mending.»",
+        "choices": [
+          "Bell A",
+          "Bell B",
+          "Bell C",
+          "Bell D"
+        ]
+      }
+    },
+    {
+      "id": "vet-va-tren-chuong",
+      "title": "Vá chuông",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-chuong-dong-tren-may-bac-tho-han-noi",
+      "skill": "ke-chuyen",
+      "prompt": "Bác thợ bảo {name} xếp các bước vá chuông cho đúng thứ tự:",
+      "items": [
+        {
+          "id": "ho-lua",
+          "label": "Hơ lửa cho nhựa thông chảy kín mép"
+        },
+        {
+          "id": "go-thu",
+          "label": "Để nguội rồi gõ thử"
+        },
+        {
+          "id": "go-phang",
+          "label": "Gõ nhẹ cho phẳng chỗ móp"
+        },
+        {
+          "id": "dap-dong",
+          "label": "Đắp miếng đồng vá lên vết nứt"
+        }
+      ],
+      "answer": {
+        "order": [
+          "go-phang",
+          "dap-dong",
+          "ho-lua",
+          "go-thu"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Chỗ móp phải phẳng trước thì miếng vá mới nằm khít.",
+          "Gõ thử là việc cuối cùng, khi mọi thứ đã nguội."
+        ],
+        "hint": "Phẳng, vá, hơ, thử.",
+        "answer": {
+          "text": "Gõ phẳng, đắp đồng, hơ lửa, gõ thử",
+          "explanation": "Gõ phẳng chỗ móp, đắp miếng đồng, hơ lửa cho nhựa thông gắn kín, rồi để nguội và gõ thử."
+        },
+        "en": {
+          "guide": [
+            "The dent must be flat first so the patch sits snug.",
+            "Ringing it is the last job, once everything has cooled."
+          ],
+          "hint": "Flatten, patch, warm, test.",
+          "answer": {
+            "text": "Flatten, patch, warm, test it",
+            "explanation": "Flatten the dent, lay on the patch, warm it so the resin seals it, then let it cool and ring it."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Leng keng! Tiếng chuông trong vắt như nước suối.",
+          "Bác Thợ Hàn Nồi khen: tay {name} làm thợ được đấy.",
+          "Vết vá khít rịt, chuông như chưa từng bị móp."
+        ],
+        "wrong": [
+          "Chưa gõ phẳng mà đã vá thì miếng đồng vênh lên mất.",
+          "Gõ thử khi còn nóng là bỏng tay đấy, xếp lại nhé.",
+          "Nghĩ xem miếng vá cần một chỗ thế nào để nằm cho khít."
+        ],
+        "en": {
+          "right": [
+            "Ding-a-ling! The bell rings clear as a stream.",
+            "The tinker says {name} has a craftsman’s hands.",
+            "The patch is so snug it’s as if the bell was never dented."
+          ],
+          "wrong": [
+            "Patch it before flattening and the brass will buckle.",
+            "Ring it while it’s hot and you’ll burn your hand. Try again.",
+            "Think about what kind of surface the patch needs to sit snug."
+          ]
+        }
+      },
+      "en": {
+        "title": "Mending the bell",
+        "prompt": "The tinker asks {name} to put the mending steps in order:",
+        "items": [
+          "Warm it so the resin melts into the edges",
+          "Let it cool, then ring it to test",
+          "Tap the dent gently until it is flat",
+          "Lay the brass patch over the crack"
+        ]
+      }
+    },
+    {
+      "id": "vet-va-hay-moi",
+      "title": "Giữ vết vá hay đánh bóng?",
+      "kind": "decision",
+      "target": "st-chuong-dong-tren-may-dau-cau-da",
+      "goTo": "Theo Bò ra cầu đá qua sông thử chuông",
+      "speaker": "Bò Chuông Đồng",
+      "prompt": "Bò rung chuông thử trên cầu đá, tiếng vang xa tới tận bờ bên kia. Rồi Bò ngắm vết vá: «Có nên đánh bóng cho mất dấu không nhỉ?»",
+      "choices": [
+        {
+          "id": "giu",
+          "text": "Giữ vết vá cho nhớ",
+          "consequence": "Bò gật gù: «Ừ, chuông có vết vá cũng như tớ có vết sẹo ở chân, đều là chuyện để kể.»"
+        },
+        {
+          "id": "danh-bong",
+          "text": "Đánh bóng cho sáng như mới",
+          "consequence": "Chiếc chuông sáng loáng, soi được cả mặt Bò. Bò ngắm mãi rồi cười: «Trông tớ béo hơn trong chuông!»"
+        },
+        {
+          "id": "khac-ten",
+          "text": "Khắc tên Bò lên vết vá",
+          "consequence": "Bác thợ khắc chữ «Bò» thật nắn nót. Bò ò lên sung sướng: «Giờ ai nhặt được cũng biết trả cho ai rồi!»"
+        }
+      ],
+      "en": {
+        "title": "Keep the patch or polish it?",
+        "goTo": "Follow Bò to the stone bridge over the river to test the bell",
+        "prompt": "Bò rings the bell on the stone bridge and the sound carries right across to the far bank. Then she studies the patch: «Should I polish it so nobody can tell?»",
+        "choices": [
+          {
+            "text": "Keep the patch, as a memory",
+            "consequence": "Bò nods: «Yes. A bell with a patch is like me with the scar on my leg: both are stories to tell.»"
+          },
+          {
+            "text": "Polish it as good as new",
+            "consequence": "The bell gleams so brightly Bò can see her face in it. She looks for ages and laughs: «I look fatter in the bell!»"
+          },
+          {
+            "text": "Engrave Bò’s name on the patch",
+            "consequence": "The tinker carves «Bò» very neatly. Bò moos with joy: «Now whoever finds it will know whose it is!»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "vat-sua-cam-on",
+      "title": "Vắt sữa cảm ơn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "bo-chuong-dong",
+      "goTo": "Về đồng cỏ bò sữa, Bò muốn cảm ơn bác thợ",
+      "prompt": "Ò, tớ muốn tặng bác thợ một bình sữa tươi. Vắt giúp tớ nhé, nhẹ tay thôi, tớ sợ nhột!",
+      "game": "milk-cow",
+      "goal": 25,
+      "en": {
+        "title": "A thank-you milking",
+        "goTo": "Back to the dairy meadow: Bò wants to thank the tinker",
+        "prompt": "Mooo, I want to give the tinker a jug of fresh milk. Help me milk, gently, I’m ticklish!"
+      }
+    },
+    {
+      "id": "chuong-trong-treo",
+      "title": "Chuông trong trẻo",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Leng keng, leng keng. Bò đi tới đâu, tiếng chuông trong trẻo theo tới đó. Đàn bò sữa đốm đen không cười nữa, còn đòi Bò cho mượn đeo thử.",
+      "en": {
+        "title": "A clear bell",
+        "text": "Ding-a-ling, ding-a-ling. Wherever Bò goes, the clear chime follows. The spotted cows have stopped laughing and are begging to try it on."
+      }
+    },
+    {
+      "id": "dam-may-hinh-bo",
+      "title": "Đám mây hình con bò",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chiều ấy Bò nằm đếm mây, thấy một đám mây hình con bò đeo chuông. Bò thì thầm: «Giá mà tiếng chuông của tớ bay được lên tận đó...»",
+      "en": {
+        "title": "A cow-shaped cloud",
+        "text": "That afternoon Bò lies counting clouds and spots one shaped like a cow wearing a bell. She whispers: «If only my bell could fly all the way up there...»"
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "logic": 1,
+      "ke-chuyen": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Bò Chuông Đồng's story, chapter 2: A dented bell",
+    "summary": "Bò Chuông Đồng’s brass bell got dented and now croaks like a saucepan. {name} finds repair things in the processing barn, solves the tinker’s bell puzzle, orders the mending steps, decides what to do with the patch, and helps Bò with the milking to say thanks."
+  }
+}

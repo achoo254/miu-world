@@ -3907,6 +3907,229 @@
    "kind": "object",
    "label": "Xem",
    "tint": "#8a6a30"
+  },
+  "st-lua-thom-mat-cuoi-bong-lua-tim": {
+   "model": "packs/kenney-nature-kit/2.1/crops_wheatStageB.glb",
+   "height": 0.9,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c8a040"
+  },
+  "st-lua-thom-mat-cuoi-coc-tre": {
+   "model": "packs/kenney-nature-kit/2.1/crops_bambooStageA.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#a8b860"
+  },
+  "st-lua-thom-mat-cuoi-so-ruong": {
+   "model": "generated/props/notebook.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#6a8a4a"
+  },
+  "st-lua-thom-mat-cuoi-nong-phoi": {
+   "model": "generated/props/basket.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c8a868"
+  },
+  "st-lua-thom-mat-cuoi-non-la-rach": {
+   "model": "generated/props/womans-hat.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#e0d0a0"
+  },
+  "st-lua-thom-mat-cuoi-ao-toi": {
+   "model": "generated/props/t-shirt.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#8a7a50"
+  },
+  "st-lua-thom-mat-cuoi-que-tre": {
+   "model": "packs/kenney-nature-kit/2.1/crops_bambooStageB.glb",
+   "height": 1.8,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#b0b870"
+  },
+  "st-lua-thom-mat-cuoi-khung-bu-nhin": {
+   "model": "packs/kenney-survival-kit/2.0/signpost-single.glb",
+   "height": 1.6,
+   "kind": "object",
+   "label": "Đọc bảng",
+   "tint": "#9a7a4a"
+  },
+  "st-lua-thom-mat-cuoi-to-viec-lam": {
+   "model": "generated/props/placard.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng",
+   "tint": "#e8d8a8"
+  },
+  "st-lua-thom-mat-cuoi-tam-van-ket": {
+   "model": "packs/kenney-survival-kit/2.0/resource-planks.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#8a6a40"
+  },
+  "st-lua-thom-mat-cuoi-bo-rom": {
+   "model": "packs/kenney-survival-kit/2.0/bedroll-packed.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#d8c060"
+  },
+  "st-lua-thom-mat-cuoi-ban-ve-muong": {
+   "model": "generated/props/scroll.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c8b890"
+  },
+  "st-lua-thom-mat-cuoi-co-trong-ngo": {
+   "model": "packs/kenney-blocky-characters/2.0/character-l.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "st-lua-thom-mat-cuoi-coi-gia-gao": {
+   "model": "packs/kenney-nature-kit/2.1/pot_small.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#6a5040"
+  },
+  "st-lua-thom-mat-cuoi-bep-cui": {
+   "model": "packs/kenney-nature-kit/2.1/campfire_logs.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-lua-thom-mat-cuoi-mam-com": {
+   "model": "packs/kenney-food-kit/2.0/bowl.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c8a070"
+  },
+  "st-lua-thom-mat-cuoi-nhat-ky-moi": {
+   "model": "generated/props/open-book.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Đọc sách",
+   "tint": "#e8e0c8"
+  },
+  "st-chuong-dong-tren-may-dau-chan-de": {
+   "model": "generated/props/paw-prints.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#8a6a4a"
+  },
+  "st-chuong-dong-tren-may-long-de": {
+   "model": "generated/props/feather.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#f4f0e8"
+  },
+  "st-chuong-dong-tren-may-de-rau-xom": {
+   "model": "packs/kenney-cube-pets/2.0/animal-deer.glb",
+   "height": 1.4,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#e8e0d0"
+  },
+  "st-chuong-dong-tren-may-qua-lac": {
+   "model": "packs/kenney-food-kit/2.0/egg.glb",
+   "height": 0.3,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#c8962e"
+  },
+  "st-chuong-dong-tren-may-bui-co": {
+   "model": "packs/kenney-nature-kit/2.1/plant_bushLarge.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Tìm trong bụi",
+   "tint": "#4a8a3a"
+  },
+  "st-chuong-dong-tren-may-dong-va": {
+   "model": "generated/props/medal-bronze.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-chuong-dong-tren-may-hu-nhua-thong": {
+   "model": "packs/kenney-food-kit/2.0/honey.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c88a20"
+  },
+  "st-chuong-dong-tren-may-dui-go": {
+   "model": "packs/kenney-survival-kit/2.0/tool-hammer.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#9a6a3a"
+  },
+  "st-chuong-dong-tren-may-bac-tho-han-noi": {
+   "model": "packs/kenney-blocky-characters/2.0/character-g.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "st-chuong-dong-tren-may-dau-cau-da": {
+   "model": "packs/kenney-nature-kit/2.1/rock_largeA.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#9a9a90"
+  },
+  "st-chuong-dong-tren-may-nan-tre": {
+   "model": "packs/kenney-nature-kit/2.1/crops_bambooStageA.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c8c070"
+  },
+  "st-chuong-dong-tren-may-day-gai": {
+   "model": "generated/props/knot.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#c0a070"
+  },
+  "st-chuong-dong-tren-may-giay-do": {
+   "model": "generated/props/page-curl.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#f0e8d0"
+  },
+  "st-chuong-dong-tren-may-anh-tha-dieu": {
+   "model": "packs/kenney-blocky-characters/2.0/character-k.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "st-chuong-dong-tren-may-coc-buoc-dieu": {
+   "model": "packs/kenney-nature-kit/2.1/stump_round.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#8a6a4a"
   }
  }
 }

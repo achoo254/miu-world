@@ -1,0 +1,296 @@
+{
+  "id": "yarn-chuong-dong-tren-may-1",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Chuyện của Bò Chuông Đồng, chương 1: Chuông im tiếng",
+  "status": "active",
+  "category": "story",
+  "summary": "Sáng nay chiếc chuông đồng của Bò Chuông Đồng không kêu nữa: quả lắc bên trong đã biến mất. {name} lần theo dấu chân trước cửa chuồng bò, đếm xem mấy chú dê đã ghé qua, tìm cách để Dê Râu Xồm khai ra chỗ giấu, rồi tìm lại quả lắc ở khu chăn nuôi.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bò Chuông Đồng, Dê Râu Xồm",
+    "where": "Nông trại: đồng cỏ bò sữa, cửa chuồng bò, bãi cỏ ven sông, khu chăn nuôi",
+    "goal": "Tìm lại quả lắc cho chiếc chuông đồng của Bò",
+    "play": "Tìm dấu vết theo lời tả, đếm dấu chân, chọn cách nói chuyện với Dê, chơi bịt mắt bắt dê, tìm bụi cỏ giấu quả lắc",
+    "learn": "Đọc hiểu lời tả, đếm theo nhóm",
+    "reward": "60 XP, 15 Xu, Skill XP Đọc hiểu, Logic",
+    "next": "Chuông kêu lại rồi, nhưng tiếng nghe rè rè như cái xoong"
+  },
+  "phases": {
+    "hook": "chuong-khong-keu",
+    "explore": "dau-vet-truoc-chuong",
+    "learn": "dem-dau-chan-de",
+    "challenge": "dem-dau-chan-de",
+    "decision": "noi-chuyen-voi-de",
+    "finale": "bui-co-thu-nam",
+    "reward": "chuong-keu-lai",
+    "next": "tieng-chuong-re"
+  },
+  "places": {
+    "bo-chuong-dong": "Đồng cỏ bò sữa",
+    "dau-vet-truoc-chuong": "Cửa chuồng bò",
+    "st-chuong-dong-tren-may-dau-chan-de": "Cửa chuồng bò",
+    "st-chuong-dong-tren-may-de-rau-xom": "Bãi cỏ ven sông",
+    "bui-co-thu-nam": "Khu chăn nuôi"
+  },
+  "steps": [
+    {
+      "id": "chuong-khong-keu",
+      "title": "Chuông không kêu",
+      "kind": "dialogue",
+      "target": "bo-chuong-dong",
+      "goTo": "Ra đồng cỏ bò sữa gặp Bò Chuông Đồng",
+      "lines": [
+        {
+          "speaker": "Bò Chuông Đồng",
+          "text": "Ò... chào {name}. Sáng nay tớ lắc đầu mà chuông chẳng kêu. Quả lắc bên trong rơi đâu mất rồi."
+        },
+        {
+          "speaker": "Bò Chuông Đồng",
+          "text": "Không có tiếng leng keng, lỡ tớ lạc trong sương sớm thì ai tìm ra tớ? Ò... nghĩ thôi đã thấy lạnh gáy."
+        },
+        {
+          "speaker": "Bò Chuông Đồng",
+          "text": "Đêm qua mấy chú dê nhà bên sang chuồng chơi, sáng ra trước cửa chuồng toàn dấu chân lạ."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cậu đừng sợ, tớ tìm quả lắc cho!",
+          "reply": "Ò, cảm ơn cậu! Cửa chuồng bò ngay đằng kia thôi."
+        },
+        {
+          "text": "Dê nhà bên nghịch lắm hả?",
+          "reply": "Nghịch nhất vùng! Nhất là con có bộ râu xồm ấy."
+        }
+      ],
+      "en": {
+        "title": "The bell won’t ring",
+        "goTo": "Go to the dairy meadow to meet Bò Chuông Đồng",
+        "lines": [
+          "Mooo... hello, {name}. This morning I shook my head and the bell didn't ring. The clapper inside has fallen out somewhere.",
+          "Without my jingle, if I got lost in the morning mist, who would ever find me? Mooo... just thinking about it gives me shivers.",
+          "Last night the goats from next door came visiting, and this morning the cowshed door is covered in strange prints."
+        ],
+        "choices": [
+          {
+            "text": "Don't be scared, I'll find the clapper!",
+            "reply": "Mooo, thank you! The cowshed door is just over there."
+          },
+          {
+            "text": "Are the goats next door naughty?",
+            "reply": "The naughtiest around! Especially the one with the shaggy beard."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau-vet-truoc-chuong",
+      "title": "Dấu vết trước chuồng",
+      "kind": "find-object",
+      "goTo": "Ra cửa chuồng bò tìm dấu vết",
+      "prompt": "Đọc lời tả rồi tìm hai dấu vết khách lạ để lại:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "dau-chan",
+          "name": "Dấu chân dê nhỏ",
+          "clue": "Những dấu chân nhỏ xíu chẻ đôi như hạt cà phê, in trên bùn trước cửa chuồng.",
+          "target": "st-chuong-dong-tren-may-dau-chan-de"
+        },
+        {
+          "id": "long",
+          "name": "Túm lông dê trắng",
+          "clue": "Một nhúm lông trắng xoăn tít, mắc trên chốt cửa, thơm mùi cỏ ba lá.",
+          "target": "st-chuong-dong-tren-may-long-de"
+        }
+      ],
+      "en": {
+        "title": "Clues at the cowshed",
+        "goTo": "Go to the cowshed door to look for clues",
+        "prompt": "Read the descriptions and find two clues the visitors left:",
+        "items": [
+          {
+            "name": "Small goat prints",
+            "clue": "Tiny split prints like coffee beans, pressed into the mud by the shed door."
+          },
+          {
+            "name": "A tuft of white goat hair",
+            "clue": "A curly tuft of white hair caught on the door latch, smelling of clover."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dem-dau-chan-de",
+      "title": "Mấy chú dê ghé chơi?",
+      "kind": "riddle",
+      "target": "st-chuong-dong-tren-may-dau-chan-de",
+      "skill": "logic",
+      "question": "Trước cửa chuồng có 12 dấu chân dê, không chú dê nào đi hai lượt. Mỗi chú dê có 4 chân. Đêm qua có mấy chú dê ghé qua?",
+      "answer": {
+        "value": 3
+      },
+      "support": {
+        "guide": [
+          "Mỗi chú dê để lại 4 dấu chân.",
+          "Đếm thêm 4 mỗi lần: 4, 8, 12."
+        ],
+        "hint": "Đếm xem phải cộng bao nhiêu số 4 mới được 12.",
+        "answer": {
+          "text": "3 chú dê",
+          "explanation": "4 + 4 + 4 = 12, nên có 3 chú dê."
+        },
+        "en": {
+          "guide": [
+            "Each goat leaves 4 prints.",
+            "Count up in fours: 4, 8, 12."
+          ],
+          "hint": "Count how many 4s you need to make 12.",
+          "answer": {
+            "text": "3 goats",
+            "explanation": "4 + 4 + 4 = 12, so there were 3 goats."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba chú dê! Bò ò lên một tiếng như vừa phá được vụ án.",
+          "{name} đếm theo nhóm bốn nhanh như thám tử.",
+          "Đúng ba, mà một chú trong đó chắc chắn có râu xồm."
+        ],
+        "wrong": [
+          "Mười hai là số dấu chân, còn câu hỏi là số dê cơ.",
+          "Mỗi chú dê có tới 4 chân đấy, đừng quên nhé.",
+          "Thử đếm 4, 8, 12 trên ngón tay xem được mấy lần."
+        ],
+        "en": {
+          "right": [
+            "Three goats! Bò lets out a moo as if she just cracked the case.",
+            "{name} counts in fours as fast as a detective.",
+            "Three exactly, and one of them surely has a shaggy beard."
+          ],
+          "wrong": [
+            "Twelve is the prints; the question asks for goats.",
+            "Each goat has 4 legs, remember.",
+            "Try counting 4, 8, 12 on your fingers and see how many times."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many goats came by?",
+        "question": "There are 12 goat prints by the shed door, and no goat walked through twice. Each goat has 4 legs. How many goats came by last night?"
+      }
+    },
+    {
+      "id": "noi-chuyen-voi-de",
+      "title": "Nói chuyện với Dê Râu Xồm",
+      "kind": "decision",
+      "target": "st-chuong-dong-tren-may-de-rau-xom",
+      "goTo": "Ra bãi cỏ ven sông, Dê Râu Xồm đang gặm cỏ",
+      "speaker": "Dê Râu Xồm",
+      "prompt": "Dê Râu Xồm nhai nhóp nhép: «Cái cục vàng vàng ấy à? Ờ... tớ thấy đẹp nên giấu đi chơi.» {name} làm gì để Dê chịu nói chỗ giấu?",
+      "choices": [
+        {
+          "id": "choi",
+          "text": "Rủ Dê chơi bịt mắt bắt dê",
+          "consequence": "Mắt Dê sáng rỡ: «Bắt được tớ thì tớ nói!» Dê nhảy tót ra bãi cỏ."
+        },
+        {
+          "id": "doi-co",
+          "text": "Đổi cho Dê một bó cỏ non",
+          "consequence": "Dê nhai bó cỏ, gật gù: «Cỏ ngon thế thì tớ khai: bụi cỏ thứ năm ở khu chăn nuôi.»",
+          "nextStepId": "bui-co-thu-nam"
+        },
+        {
+          "id": "ke-bo-buon",
+          "text": "Kể cho Dê nghe Bò đang buồn",
+          "consequence": "Dê cúi đầu, râu rũ xuống: «Tớ không biết Bò buồn thế. Bụi cỏ thứ năm ở khu chăn nuôi, tớ xin lỗi.»",
+          "nextStepId": "bui-co-thu-nam"
+        }
+      ],
+      "en": {
+        "title": "Talking to Dê Râu Xồm",
+        "goTo": "Go to the grassy riverbank, where Dê Râu Xồm is grazing",
+        "prompt": "Dê Râu Xồm chews noisily: «That shiny yellow thing? Er... it looked pretty, so I hid it for fun.» What does {name} do to make him tell where?",
+        "choices": [
+          {
+            "text": "Challenge him to blind man’s goat",
+            "consequence": "Dê’s eyes light up: «Catch me and I’ll tell!» He bounds off across the grass."
+          },
+          {
+            "text": "Trade him a bundle of fresh grass",
+            "consequence": "Dê munches the grass and nods: «Grass this good deserves a confession: the fifth bush in the livestock area.»"
+          },
+          {
+            "text": "Tell him how sad Bò is",
+            "consequence": "Dê hangs his head, beard drooping: «I didn’t know Bò was that sad. The fifth bush in the livestock area. I’m sorry.»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bit-mat-bat-de",
+      "title": "Bịt mắt bắt dê",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-chuong-dong-tren-may-de-rau-xom",
+      "prompt": "Bịt mắt lại, nghe tiếng be he mà bắt Dê Râu Xồm nhé!",
+      "game": "blind-goat",
+      "goal": 5,
+      "en": {
+        "title": "Blind man's goat",
+        "prompt": "Blindfold on: follow the bleating and catch Dê Râu Xồm!"
+      }
+    },
+    {
+      "id": "bui-co-thu-nam",
+      "title": "Bụi cỏ thứ năm",
+      "kind": "search",
+      "targets": [
+        "st-chuong-dong-tren-may-bui-co",
+        "st-chuong-dong-tren-may-qua-lac"
+      ],
+      "goTo": "Tới khu chăn nuôi tìm bụi cỏ thứ năm và quả lắc",
+      "en": {
+        "title": "The fifth bush",
+        "goTo": "Go to the livestock area for the fifth bush and the clapper"
+      }
+    },
+    {
+      "id": "chuong-keu-lai",
+      "title": "Chuông kêu lại rồi",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Quả lắc về chỗ cũ, Bò lắc đầu thử: «leng... cạch». Bò vẫn mừng quýnh, đi một vòng quanh đồng cỏ cho mọi người nghe.",
+      "en": {
+        "title": "The bell rings again",
+        "text": "The clapper back in place, Bò shakes her head to test it: «ding... clack». She is thrilled anyway and walks a lap of the meadow so everyone can hear."
+      }
+    },
+    {
+      "id": "tieng-chuong-re",
+      "title": "Tiếng chuông rè",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối đó Bò thì thầm: «Tiếng chuông nghe rè rè như cái xoong... Chắc nó bị móp lúc rơi rồi.» Mai {name} giúp Bò tìm người chữa nhé.",
+      "en": {
+        "title": "A croaky bell",
+        "text": "That night Bò whispers: «It sounds croaky, like a saucepan... It must have got dented when it fell.» Tomorrow, {name} can help Bò find someone to mend it."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 1,
+      "logic": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Bò Chuông Đồng's story, chapter 1: The silent bell",
+    "summary": "This morning Bò Chuông Đồng's brass bell went silent: the clapper inside has vanished. {name} follows hoof prints at the cowshed door, works out how many goats came by, finds a way to make Dê Râu Xồm confess where he hid it, then tracks the clapper down in the livestock area."
+  }
+}

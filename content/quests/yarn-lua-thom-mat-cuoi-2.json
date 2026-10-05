@@ -1,0 +1,386 @@
+{
+  "id": "yarn-lua-thom-mat-cuoi-2",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Chuyện của Bác Nông Dân Thành, chương 2: Lũ sẻ tinh ranh",
+  "status": "active",
+  "category": "story",
+  "summary": "Đàn chim sẻ cứ sà xuống ruộng mạ lúa thơm. Bác Thành chẳng nỡ đuổi chúng, mà cũng chẳng nỡ mất giống. {name} tìm đồ cũ làm bù nhìn, dựng bù nhìn đúng thứ tự, chọn cho nó một khuôn mặt, làm một góc ăn riêng cho sẻ rồi cấy lại chỗ mạ bị giẫm.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bác Nông Dân Thành",
+    "where": "Nông trại: khu trồng trọt, cửa chuồng bò, ruộng mạ, bảng nhiệm vụ",
+    "goal": "Giữ ruộng mạ lúa thơm mà không làm hại đàn chim sẻ",
+    "play": "Tìm nón, áo tơi, que tre; dựng bù nhìn theo thứ tự; chọn mặt bù nhìn; chọn thức ăn cho sẻ; cấy lại mạ",
+    "learn": "Sắp xếp trình tự công việc, từ ngữ chỉ sự vật",
+    "reward": "65 XP, 16 Xu, Skill XP Kể chuyện, Từ ngữ",
+    "next": "Nắng hạn kéo về, mương nước cạn dần"
+  },
+  "phases": {
+    "hook": "se-sa-xuong-ruong",
+    "explore": "do-cu-lam-bu-nhin",
+    "learn": "dung-bu-nhin",
+    "challenge": "dung-bu-nhin",
+    "decision": "mat-bu-nhin",
+    "finale": "goc-an-cho-se",
+    "reward": "bu-nhin-dung-gac",
+    "next": "nang-han-keo-ve"
+  },
+  "places": {
+    "bac-nong-dan-thanh": "Khu trồng trọt",
+    "do-cu-lam-bu-nhin": "Cửa chuồng bò",
+    "st-lua-thom-mat-cuoi-khung-bu-nhin": "Ruộng mạ",
+    "st-lua-thom-mat-cuoi-to-viec-lam": "Bảng nhiệm vụ"
+  },
+  "steps": [
+    {
+      "id": "se-sa-xuong-ruong",
+      "title": "Lũ sẻ sà xuống",
+      "kind": "dialogue",
+      "target": "bac-nong-dan-thanh",
+      "goTo": "Ra khu trồng trọt, bác Thành đang xua chim",
+      "lines": [
+        {
+          "speaker": "Bác Nông Dân Thành",
+          "text": "Lũ sẻ tinh ranh lắm cháu ạ. Bác vừa quay lưng là chúng sà xuống, mổ lách tách như gõ cửa nhà người ta."
+        },
+        {
+          "speaker": "Bác Nông Dân Thành",
+          "text": "Bác càu nhàu thế thôi chứ đâu nỡ đuổi đánh chúng. Mình dựng một ông bù nhìn cho chúng sợ chơi vậy. Đồ cũ treo ở cửa chuồng bò ấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đi lấy đồ ngay ạ!",
+          "reply": "Lấy cả chiếc nón lá rách nhé, bù nhìn mà đầu trần thì sẻ nó cười cho."
+        },
+        {
+          "text": "Bác thương lũ sẻ ghê.",
+          "reply": "Ấy thế mà chúng chẳng thương lại bác tí nào!"
+        }
+      ],
+      "en": {
+        "title": "The sparrows swoop",
+        "goTo": "Go to the crop fields, where Bác Thành is shooing birds",
+        "lines": [
+          "Those sparrows are sly, I tell you. The moment I turn my back they swoop down, pecking tap-tap-tap like knocking on someone’s door.",
+          "I grumble, but I don't have the heart to hurt them. Let's put up a scarecrow just to spook them. There's old gear hanging by the cowshed door."
+        ],
+        "choices": [
+          {
+            "text": "I'm off to get it!",
+            "reply": "Bring the torn conical hat too: a bare-headed scarecrow would just make them laugh."
+          },
+          {
+            "text": "You really love those sparrows.",
+            "reply": "And yet they don't love me back one bit!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-cu-lam-bu-nhin",
+      "title": "Đồ cũ làm bù nhìn",
+      "kind": "search",
+      "targets": [
+        "st-lua-thom-mat-cuoi-non-la-rach",
+        "st-lua-thom-mat-cuoi-ao-toi",
+        "st-lua-thom-mat-cuoi-que-tre"
+      ],
+      "goTo": "Ra cửa chuồng bò tìm nón, áo tơi và que tre",
+      "en": {
+        "title": "Old things for a scarecrow",
+        "goTo": "Go to the cowshed door for a hat, a straw raincoat and bamboo poles"
+      }
+    },
+    {
+      "id": "dung-bu-nhin",
+      "title": "Dựng ông bù nhìn",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-lua-thom-mat-cuoi-khung-bu-nhin",
+      "goTo": "Mang đồ ra ruộng mạ dựng bù nhìn",
+      "skill": "ke-chuyen",
+      "prompt": "Xếp các việc theo đúng thứ tự để ông bù nhìn đứng vững:",
+      "items": [
+        {
+          "id": "mac-ao",
+          "label": "Khoác áo tơi lên vai bù nhìn"
+        },
+        {
+          "id": "cam-que",
+          "label": "Cắm hai que tre thành hình chữ thập"
+        },
+        {
+          "id": "doi-non",
+          "label": "Đội nón lá lên đầu bù nhìn"
+        },
+        {
+          "id": "buoc-rom",
+          "label": "Buộc rơm vào khung làm thân"
+        }
+      ],
+      "answer": {
+        "order": [
+          "cam-que",
+          "buoc-rom",
+          "mac-ao",
+          "doi-non"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Việc nào tạo ra cái khung trước tiên?",
+          "Có thân rồi mới mặc áo, mặc áo xong mới đội nón cho gọn."
+        ],
+        "hint": "Dựng bù nhìn giống mặc đồ cho người: từ trong ra ngoài, từ dưới lên đầu.",
+        "answer": {
+          "text": "Cắm que, buộc rơm, khoác áo, đội nón",
+          "explanation": "Hai que tre làm khung, rơm làm thân, áo tơi khoác ngoài, nón lá đội sau cùng."
+        },
+        "en": {
+          "guide": [
+            "Which job makes the frame first?",
+            "A body comes before clothes, and the hat goes on last."
+          ],
+          "hint": "Building a scarecrow is like dressing someone: inside out, and the head last.",
+          "answer": {
+            "text": "Poles, straw, raincoat, hat",
+            "explanation": "The poles make the frame, the straw makes the body, the raincoat goes over it and the hat goes on last."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ông bù nhìn đứng sừng sững, oai như tướng giữ ruộng!",
+          "{name} dựng bù nhìn khéo, gió thổi cũng không nghiêng.",
+          "Bác Thành vỗ tay: đúng y như ông nội bác dạy ngày xưa."
+        ],
+        "wrong": [
+          "Chưa có khung mà buộc rơm thì rơm rơi tung tóe mất.",
+          "Đội nón trước rồi mặc áo thì nón lệch hết, xếp lại nhé.",
+          "Nghĩ xem bù nhìn cần gì trước tiên để đứng được."
+        ],
+        "en": {
+          "right": [
+            "The scarecrow stands tall, as grand as a general guarding the field!",
+            "{name}'s scarecrow is so sturdy the wind can't tip it.",
+            "Bác Thành claps: exactly how his grandfather taught him long ago."
+          ],
+          "wrong": [
+            "Tie straw before there is a frame and it falls everywhere.",
+            "Hat first, then raincoat, and the hat gets knocked crooked. Try again.",
+            "Think about what the scarecrow needs first just to stand up."
+          ]
+        }
+      },
+      "en": {
+        "title": "Building the scarecrow",
+        "goTo": "Take everything to the seedbed and build the scarecrow",
+        "prompt": "Put the jobs in order so the scarecrow stands firm:",
+        "items": [
+          "Hang the straw raincoat on its shoulders",
+          "Plant the two bamboo poles in a cross",
+          "Put the conical hat on its head",
+          "Tie straw to the frame for a body"
+        ]
+      }
+    },
+    {
+      "id": "mat-bu-nhin",
+      "title": "Mặt ông bù nhìn",
+      "kind": "decision",
+      "target": "st-lua-thom-mat-cuoi-khung-bu-nhin",
+      "speaker": "Bác Nông Dân Thành",
+      "prompt": "Bác Thành đưa {name} cục than: «Cháu vẽ mặt cho ông bù nhìn đi. Mặt thế nào đây?»",
+      "choices": [
+        {
+          "id": "du",
+          "text": "Mặt thật dữ, lông mày xếch",
+          "consequence": "Lũ sẻ ngó một lúc... rồi đậu luôn lên nón bù nhìn mà hót. Bác Thành ôm bụng cười: «Dữ thế mà chúng coi như ông bạn!»"
+        },
+        {
+          "id": "cuoi",
+          "text": "Mặt cười thật tươi",
+          "consequence": "Bác Thành nhìn khuôn mặt cười, bỗng lặng đi một chút: «Trông quen quen... giống cái hình bác vẽ hồi bé.»"
+        },
+        {
+          "id": "chuong",
+          "text": "Không vẽ mặt, treo chuông gió",
+          "consequence": "Gió thổi, chuông kêu leng keng, lũ sẻ giật mình bay vòng vòng. Bác gật gù: «Sẻ không sợ mặt, sẻ sợ tiếng.»"
+        }
+      ],
+      "en": {
+        "title": "The scarecrow's face",
+        "prompt": "Bác Thành hands {name} a lump of charcoal: «You draw his face. What should it look like?»",
+        "choices": [
+          {
+            "text": "A fierce face with slanted brows",
+            "consequence": "The sparrows study it for a while... then perch right on its hat and sing. Bác Thành clutches his belly laughing: «So fierce, and they treat him like an old friend!»"
+          },
+          {
+            "text": "A big smiling face",
+            "consequence": "Bác Thành looks at the smiling face and goes quiet for a moment: «Looks familiar... like a picture I drew as a boy.»"
+          },
+          {
+            "text": "No face, hang a wind chime instead",
+            "consequence": "The wind blows, the chime tinkles, and the startled sparrows circle off. Bác nods: «Sparrows don’t fear faces, they fear noises.»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "goc-an-cho-se",
+      "title": "Góc ăn cho chim sẻ",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-lua-thom-mat-cuoi-to-viec-lam",
+      "goTo": "Tới bảng nhiệm vụ xem bác viết gì",
+      "skill": "tu-ngu",
+      "prompt": "Bác Thành viết lên bảng: «Làm góc ăn riêng cho sẻ, để chúng khỏi ăn mạ.» Chọn tất cả thứ chim sẻ ăn được:",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Hạt kê"
+        },
+        {
+          "id": "b",
+          "text": "Sỏi nhỏ"
+        },
+        {
+          "id": "c",
+          "text": "Thóc lép"
+        },
+        {
+          "id": "d",
+          "text": "Cúc áo"
+        },
+        {
+          "id": "e",
+          "text": "Hạt hướng dương"
+        },
+        {
+          "id": "f",
+          "text": "Hạt cát"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "a",
+          "c",
+          "e"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Chim sẻ ăn hạt: hạt cây, hạt cỏ, hạt lúa.",
+          "Bỏ những thứ không phải đồ ăn, dù trông nhỏ như hạt."
+        ],
+        "hint": "Có ba thứ ăn được.",
+        "answer": {
+          "text": "Hạt kê, thóc lép, hạt hướng dương",
+          "explanation": "Kê, thóc lép và hạt hướng dương là hạt cây, sẻ ăn được. Sỏi, cúc áo, cát không phải đồ ăn."
+        },
+        "en": {
+          "guide": [
+            "Sparrows eat seeds: plant seeds, grass seeds, grain.",
+            "Leave out anything that is not food, even if it looks seed-sized."
+          ],
+          "hint": "Three of them are food.",
+          "answer": {
+            "text": "Millet, husks with grain, sunflower seeds",
+            "explanation": "Millet, husky grain and sunflower seeds come from plants, so sparrows can eat them. Pebbles, buttons and sand are not food."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Góc ăn đầy ắp, lũ sẻ kéo cả họ hàng tới, bỏ mặc ruộng mạ!",
+          "{name} hiểu chim sẻ chẳng kém người nuôi chim.",
+          "Bác Thành cười khà: sẻ no bụng thì mạ yên thân."
+        ],
+        "wrong": [
+          "Ối, sẻ mà mổ phải thứ đó thì gãy mỏ mất!",
+          "Còn thiếu hoặc thừa một thứ, xem lại từng hạt nhé.",
+          "Hỏi mình: thứ này có mọc ra từ cây không?"
+        ],
+        "en": {
+          "right": [
+            "The corner fills up and the sparrows bring their whole family, forgetting the seedbed!",
+            "{name} understands sparrows as well as a bird keeper.",
+            "Bác Thành chuckles: full sparrows mean safe seedlings."
+          ],
+          "wrong": [
+            "Ouch, a sparrow pecking that would break its beak!",
+            "Something is missing or extra: check each one again.",
+            "Ask yourself: did this grow on a plant?"
+          ]
+        }
+      },
+      "en": {
+        "title": "A feeding corner for sparrows",
+        "goTo": "Go to the task board and see what Bác wrote",
+        "prompt": "Bác Thành writes on the board: «Make a separate feeding corner for the sparrows so they leave the seedlings alone.» Pick everything sparrows can eat:",
+        "choices": [
+          "Millet",
+          "Little pebbles",
+          "Empty rice husks with a little grain",
+          "Buttons",
+          "Sunflower seeds",
+          "Grains of sand"
+        ]
+      }
+    },
+    {
+      "id": "cay-lai-ma",
+      "title": "Cấy lại chỗ mạ bị giẫm",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "bac-nong-dan-thanh",
+      "goTo": "Về khu trồng trọt cấy lại mạ",
+      "prompt": "Lũ sẻ chạy nhảy làm xô mấy hàng mạ. Cấy lại cho thẳng hàng giúp bác nhé!",
+      "game": "rice-plant",
+      "goal": 25,
+      "en": {
+        "title": "Replanting the trampled seedlings",
+        "goTo": "Back to the crop fields to replant",
+        "prompt": "The sparrows knocked a few rows of seedlings askew. Replant them in straight lines for me!"
+      }
+    },
+    {
+      "id": "bu-nhin-dung-gac",
+      "title": "Bù nhìn đứng gác",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ông bù nhìn đứng gác ruộng mạ, góc ăn đầy hạt kê ở xa xa, lũ sẻ chẳng thèm ngó tới mạ nữa. Bác Thành bảo: «Thế là hòa, chẳng ai thua.»",
+      "en": {
+        "title": "The scarecrow on guard",
+        "text": "The scarecrow guards the seedbed, the millet corner sits far off, and the sparrows don’t even glance at the seedlings now. Bác Thành says: «A draw. Nobody loses.»"
+      }
+    },
+    {
+      "id": "nang-han-keo-ve",
+      "title": "Nắng hạn kéo về",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mấy hôm sau trời nắng chang chang. Bác Thành nhúng ngón tay xuống ruộng mạ mà chỉ chạm bùn khô. «Mương nước có chuyện rồi,» bác lo lắng nói.",
+      "en": {
+        "title": "The dry spell arrives",
+        "text": "A few days later the sun blazes down. Bác Thành dips his finger into the seedbed and touches only dry mud. «Something is wrong with the channel,» he says, worried."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "ke-chuyen": 1,
+      "tu-ngu": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Bác Nông Dân Thành's story, chapter 2: The cunning sparrows",
+    "summary": "The sparrows keep swooping on the fragrant seedbed. Bác Thành doesn't have the heart to chase them off, nor to lose his seed. {name} finds old things for a scarecrow, builds it in the right order, gives it a face, sets up a feeding corner just for the sparrows, then replants the trampled seedlings."
+  }
+}

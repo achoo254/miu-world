@@ -1,0 +1,365 @@
+{
+  "id": "yarn-lua-thom-mat-cuoi-1",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Chuyện của Bác Nông Dân Thành, chương 1: Bông lúa thơm lạ",
+  "status": "active",
+  "category": "story",
+  "summary": "Sáng nay thử nước ruộng, Bác Nông Dân Thành ngửi thấy một mùi thơm lạ từ một bông lúa, mà bông nào trông cũng giống nhau. {name} tìm bông lúa cuống tím, đọc lời dặn của ông nội bác trong sổ ruộng, đếm hạt, chọn giữ bí mật hay không, rồi sảy sạch mẻ hạt giống đầu tiên.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bác Nông Dân Thành",
+    "where": "Nông trại: khu trồng trọt, góc ruộng trũng, nhà nông trại, sân nông trại",
+    "goal": "Tìm và giữ lại hạt của bông lúa thơm lạ để làm giống",
+    "play": "Tìm bông lúa theo lời tả, đọc sổ ruộng, đếm hạt, quyết định có kể cho ai không, sảy thóc",
+    "learn": "Đọc hiểu ghi chép, phép cộng",
+    "reward": "60 XP, 15 Xu, Skill XP Đọc hiểu, Phép cộng",
+    "next": "Đàn chim sẻ đã phát hiện ra nong hạt giống"
+  },
+  "phases": {
+    "hook": "ngon-tay-thu-nuoc",
+    "explore": "tim-bong-lua-tim",
+    "learn": "loi-dan-cua-ong-noi",
+    "challenge": "dem-hat-lua-thom",
+    "decision": "giu-bi-mat-hay-khoe",
+    "finale": "say-me-hat-dau",
+    "reward": "mot-nhum-hat-giong",
+    "next": "chim-se-ghe-tham"
+  },
+  "places": {
+    "bac-nong-dan-thanh": "Khu trồng trọt",
+    "tim-bong-lua-tim": "Góc ruộng trũng",
+    "st-lua-thom-mat-cuoi-so-ruong": "Nhà nông trại",
+    "st-lua-thom-mat-cuoi-nong-phoi": "Sân nông trại"
+  },
+  "steps": [
+    {
+      "id": "ngon-tay-thu-nuoc",
+      "title": "Ngón tay thử nước",
+      "kind": "dialogue",
+      "target": "bac-nong-dan-thanh",
+      "goTo": "Ra khu trồng trọt gặp Bác Nông Dân Thành",
+      "lines": [
+        {
+          "speaker": "Bác Nông Dân Thành",
+          "text": "Sáng nào bác cũng nhúng ngón tay xuống ruộng thử nước rồi mới chào ai. Ấy thế mà sáng nay, rút tay lên lại thơm phức như vừa bóc nồi xôi."
+        },
+        {
+          "speaker": "Bác Nông Dân Thành",
+          "text": "Bốn mươi năm trồng lúa, bác chưa gặp bông nào thơm thế. Có điều mắt bác kém rồi, bông nào nhìn cũng như bông nào."
+        },
+        {
+          "speaker": "Bác Nông Dân Thành",
+          "text": "Ông nội bác dặn: bông lúa thơm thật thì cuống có vệt tím. Cháu ra góc ruộng trũng tìm giúp bác nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu sẽ tìm ra bông lúa ấy!",
+          "reply": "Nhớ đi trên bờ ruộng, đừng giẫm vào mạ nhé cháu."
+        },
+        {
+          "text": "Thơm như nồi xôi thật hả bác?",
+          "reply": "Thật! Bác suýt nữa cắn luôn ngón tay mình."
+        }
+      ],
+      "en": {
+        "title": "A finger in the water",
+        "goTo": "Go to the crop fields to meet Bác Nông Dân Thành",
+        "lines": [
+          "Every morning I dip a finger in the field to test the water before I say hello to anyone. And yet this morning my finger came up smelling like a freshly opened pot of sticky rice.",
+          "Forty years of rice and I've never met a stalk that smelled like that. Trouble is, my eyes aren't what they were: every stalk looks the same to me.",
+          "My grandfather used to say a truly fragrant stalk has a purple streak on its stem. Go and look in the low corner of the field for me, would you?"
+        ],
+        "choices": [
+          {
+            "text": "I'll find that stalk!",
+            "reply": "Keep to the raised edges and don't tread on the seedlings."
+          },
+          {
+            "text": "Really like sticky rice?",
+            "reply": "Really! I nearly bit my own finger."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-bong-lua-tim",
+      "title": "Bông lúa có vệt tím",
+      "kind": "find-object",
+      "goTo": "Ra góc ruộng trũng tìm bông lúa thơm",
+      "prompt": "Đọc lời tả rồi tìm hai thứ bác cần:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "bong",
+          "name": "Bông lúa cuống tím",
+          "clue": "Bông cúi đầu thấp nhất ruộng, hạt thon dài vàng óng, cuống có một vệt tím như ai lấy mực chấm vào.",
+          "target": "st-lua-thom-mat-cuoi-bong-lua-tim"
+        },
+        {
+          "id": "coc",
+          "name": "Cọc tre đánh dấu",
+          "clue": "Cây cọc tre vót nhọn, đầu buộc dải vải đỏ, để cắm cạnh bông lúa cho khỏi lẫn.",
+          "target": "st-lua-thom-mat-cuoi-coc-tre"
+        }
+      ],
+      "en": {
+        "title": "The stalk with a purple streak",
+        "goTo": "Go to the low corner of the field to find the fragrant stalk",
+        "prompt": "Read the descriptions and find the two things Bác needs:",
+        "items": [
+          {
+            "name": "The purple-stemmed rice",
+            "clue": "The stalk bowing lowest in the field, with long slim golden grains and a purple streak on the stem as if someone dabbed it with ink."
+          },
+          {
+            "name": "The marker stake",
+            "clue": "A sharpened bamboo stake with a red rag tied on top, for marking the stalk so it never gets mixed up."
+          }
+        ]
+      }
+    },
+    {
+      "id": "loi-dan-cua-ong-noi",
+      "title": "Lời dặn của ông nội",
+      "kind": "read",
+      "target": "st-lua-thom-mat-cuoi-so-ruong",
+      "goTo": "Vào nhà nông trại đọc sổ ruộng của bác",
+      "skill": "doc-hieu",
+      "text": "Ghi chép của ông nội, mùa gặt năm ấy:\nGặp bông lúa thơm lạ thì đừng ăn vội. Cắt riêng, phơi trong bóng râm cho hạt khỏi nứt, chớ phơi nắng gắt. Phơi đủ ba ngày, cất vào chum sành lót lá chuối khô, để chỗ cao ráo. Mùa sau đem gieo. Thơm hay không là nhờ cái tay người giữ giống.",
+      "question": "Theo ghi chép, hạt lúa thơm phải phơi ở đâu?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Ngoài nắng gắt cho nhanh khô"
+        },
+        {
+          "id": "b",
+          "text": "Trong bóng râm"
+        },
+        {
+          "id": "c",
+          "text": "Trong chum sành"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Tìm câu có chữ «phơi».",
+          "Chum sành là chỗ cất sau khi phơi xong, không phải chỗ phơi."
+        ],
+        "hint": "Ông dặn phơi sao cho hạt khỏi nứt.",
+        "answer": {
+          "text": "Phơi trong bóng râm",
+          "explanation": "Ghi chép viết: phơi trong bóng râm cho hạt khỏi nứt, chớ phơi nắng gắt."
+        },
+        "en": {
+          "guide": [
+            "Find the sentence with the word «dry».",
+            "The clay jar is for storing after drying, not for drying."
+          ],
+          "hint": "Grandfather says how to dry them so the grains do not crack.",
+          "answer": {
+            "text": "Dry them in the shade",
+            "explanation": "The notes say: dry them in the shade so the grains do not crack, never in harsh sun."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bóng râm! Ông nội bác mà nghe chắc gật gù vuốt râu.",
+          "{name} đọc chữ của ông còn nhanh hơn bác.",
+          "Đúng rồi, nắng gắt là hạt nứt như ruộng hạn."
+        ],
+        "wrong": [
+          "Nắng gắt thì nhanh khô thật, nhưng ông dặn chớ phơi thế.",
+          "Chum sành để cất, còn phơi thì phải ở chỗ khác.",
+          "Đọc lại câu thứ hai trong ghi chép xem nào {name}."
+        ],
+        "en": {
+          "right": [
+            "The shade! My grandfather would nod and stroke his beard at that.",
+            "{name} reads Grandfather’s writing faster than I do.",
+            "Right: harsh sun cracks grains like a dry field."
+          ],
+          "wrong": [
+            "Harsh sun dries fast, true, but Grandfather says never do that.",
+            "The jar is for keeping; drying happens somewhere else.",
+            "Read the second sentence of the notes again, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "Grandfather's advice",
+        "goTo": "Go into the farmhouse and read Bác's field diary",
+        "text": "Grandfather's notes, harvest of that year:\nIf you find a strangely fragrant stalk, don't eat it in a hurry. Cut it apart and dry it in the shade so the grains don't crack; never in harsh sun. Dry it three full days, then store it in a clay jar lined with dry banana leaves, somewhere high and dry. Sow it next season. Whether it stays fragrant depends on the hands that keep the seed.",
+        "question": "According to the notes, where should the fragrant grains be dried?",
+        "choices": [
+          "Out in harsh sun so they dry fast",
+          "In the shade",
+          "Inside the clay jar"
+        ]
+      }
+    },
+    {
+      "id": "dem-hat-lua-thom",
+      "title": "Đếm hạt trên nong",
+      "kind": "riddle",
+      "target": "st-lua-thom-mat-cuoi-nong-phoi",
+      "goTo": "Mang bông lúa ra nong phơi trong bóng râm ở sân nông trại",
+      "skill": "phep-cong",
+      "question": "Bông lúa thơm có ba nhánh: nhánh thứ nhất 12 hạt, nhánh thứ hai 10 hạt, nhánh thứ ba 8 hạt. Bông lúa có tất cả bao nhiêu hạt?",
+      "answer": {
+        "value": 30
+      },
+      "support": {
+        "guide": [
+          "Cộng hai nhánh đầu trước: 12 + 10.",
+          "Rồi cộng thêm 8 hạt của nhánh thứ ba."
+        ],
+        "hint": "12 + 10 = 22.",
+        "answer": {
+          "text": "30 hạt",
+          "explanation": "12 + 10 + 8 = 30 hạt."
+        },
+        "en": {
+          "guide": [
+            "Add the first two sprigs first: 12 + 10.",
+            "Then add the 8 grains on the third sprig."
+          ],
+          "hint": "12 + 10 = 22.",
+          "answer": {
+            "text": "30 grains",
+            "explanation": "12 + 10 + 8 = 30 grains."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba mươi hạt vàng, hạt nào cũng quý như vàng thật!",
+          "Bác ghi ngay vào sổ: «Mùa đầu: 30 hạt, người đếm: {name}.»",
+          "Đếm không sót hạt nào, mắt {name} tinh hơn chim sẻ."
+        ],
+        "wrong": [
+          "Hình như sót một nhánh rồi, đếm lại nhé.",
+          "Cộng từng nhánh một, đừng vội cháu ơi.",
+          "Thử lấy 22 cộng tiếp 8 xem được bao nhiêu."
+        ],
+        "en": {
+          "right": [
+            "Thirty golden grains, each as precious as real gold!",
+            "Bác writes it straight in the diary: «First season: 30 grains, counted by {name}.»",
+            "Not a grain missed: {name} has sharper eyes than a sparrow."
+          ],
+          "wrong": [
+            "Looks like a sprig got left out. Count again.",
+            "Add one sprig at a time, no rush.",
+            "Try 22 plus 8 and see what you get."
+          ]
+        }
+      },
+      "en": {
+        "title": "Counting grains on the tray",
+        "goTo": "Take the stalk to the drying tray in the shade of the farmyard",
+        "question": "The fragrant stalk has three sprigs: 12 grains on the first, 10 on the second, 8 on the third. How many grains are there in all?"
+      }
+    },
+    {
+      "id": "giu-bi-mat-hay-khoe",
+      "title": "Khoe hay giữ bí mật?",
+      "kind": "decision",
+      "target": "st-lua-thom-mat-cuoi-nong-phoi",
+      "speaker": "Bác Nông Dân Thành",
+      "prompt": "Bác Thành gãi đầu: «Ba mươi hạt thôi, mà bác muốn khoe cả nông trại quá. Cháu bảo sao?»",
+      "choices": [
+        {
+          "id": "khoe",
+          "text": "Khoe cả nông trại ngay!",
+          "consequence": "Bác đứng giữa sân gọi to. Bò Chuông Đồng lắc chuông leng keng, gà con kêu chiếp chiếp, cả nông trại như mở hội."
+        },
+        {
+          "id": "bi-mat",
+          "text": "Giữ bí mật tới khi lúa mọc",
+          "consequence": "Bác nháy mắt, đặt ngón tay lên môi: «Bí mật của hai bác cháu mình. Lúa mọc rồi mới khoe cho oai.»"
+        },
+        {
+          "id": "heo-giu",
+          "text": "Chỉ kể cho Heo Kho Hàng giữ chum",
+          "consequence": "Bác cười: «Phải. Heo dán nhãn cho chum là không ai lấy nhầm.» Chắc chiếc nhãn sẽ ghi: «Hạt thơm. Cấm ăn. Kể cả Heo.»"
+        }
+      ],
+      "en": {
+        "title": "Tell everyone or keep it secret?",
+        "prompt": "Bác Thành scratches his head: «Only thirty grains, and I want to tell the whole farm. What do you think?»",
+        "choices": [
+          {
+            "text": "Tell the whole farm now!",
+            "consequence": "Bác shouts it from the middle of the yard. Bò Chuông Đồng rings her bell, the chicks cheep, and the whole farm feels like a festival."
+          },
+          {
+            "text": "Keep it secret until the rice sprouts",
+            "consequence": "Bác winks and puts a finger to his lips: «Our secret. We will show off once it sprouts, for extra glory.»"
+          },
+          {
+            "text": "Tell only Heo Kho Hàng, who keeps the jars",
+            "consequence": "Bác laughs: «Good idea. With Heo labelling the jar, nobody will take it by mistake.» The label will probably say: «Fragrant seed. Do not eat. Not even Heo.»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "say-me-hat-dau",
+      "title": "Sảy mẻ hạt đầu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "bac-nong-dan-thanh",
+      "goTo": "Về khu trồng trọt sảy hạt cùng bác",
+      "prompt": "Hạt giống phải sạch trấu mới cất được. Sảy giúp bác vài nia nhé!",
+      "game": "rice-winnow",
+      "goal": 3,
+      "en": {
+        "title": "Winnowing the first seeds",
+        "goTo": "Back to the crop fields to winnow with Bác",
+        "prompt": "Seed must be free of husks before it is stored. Winnow a few trays for me!"
+      }
+    },
+    {
+      "id": "mot-nhum-hat-giong",
+      "title": "Một nhúm hạt giống",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ba mươi hạt lúa thơm nằm gọn trong chiếc chum sành nhỏ, lót lá chuối khô. Bác Thành áp tai vào chum như nghe được tiếng mùa sau.",
+      "en": {
+        "title": "A pinch of seed",
+        "text": "Thirty fragrant grains lie snug in a small clay jar lined with dry banana leaves. Bác Thành puts his ear to the jar as if he can hear next season."
+      }
+    },
+    {
+      "id": "chim-se-ghe-tham",
+      "title": "Khách không mời",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sáng hôm sau, bác Thành gieo hạt xuống ruộng mạ thì nghe ríu rít trên đầu: cả một đàn chim sẻ đang nghiêng đầu nhìn xuống, mắt sáng rỡ.",
+      "en": {
+        "title": "Uninvited guests",
+        "text": "Next morning, as Bác Thành sows the seeds in the seedbed, he hears twittering overhead: a whole flock of sparrows is peering down, eyes gleaming."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 1,
+      "phep-cong": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Bác Nông Dân Thành's story, chapter 1: The strangely fragrant rice",
+    "summary": "Testing the water in his field this morning, Bác Nông Dân Thành caught a strange fragrance from one rice stalk, but they all look alike. {name} finds the purple-stemmed stalk, reads his grandfather’s advice in the field diary, counts the grains, decides whether to keep it secret, then winnows the very first seeds clean."
+  }
+}

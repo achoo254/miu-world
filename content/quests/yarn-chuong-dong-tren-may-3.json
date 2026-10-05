@@ -1,0 +1,390 @@
+{
+  "id": "yarn-chuong-dong-tren-may-3",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Chuyện của Bò Chuông Đồng, chương 3: Chuông trên mây",
+  "status": "active",
+  "category": "story",
+  "summary": "Bò Chuông Đồng mơ thả một con diều mang tiếng chuông lên tận mây. {name} tìm nan tre, dây gai và giấy dó, chọn chỗ thả diều an toàn cùng Anh Thả Diều Sáo, tính chiều dài dây diều, chọn chỗ buộc chuông và thả diều từ gò cao đầu đồng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bò Chuông Đồng, Anh Thả Diều Sáo",
+    "where": "Nông trại: đồng cỏ bò sữa, sạp nông sản, bãi cỏ ven sông, gò cao đầu đồng",
+    "goal": "Làm và thả một con diều mang tiếng chuông lên mây",
+    "play": "Tìm đồ làm diều theo lời tả, chọn chỗ thả diều an toàn, giải bài toán dây diều, chọn chỗ buộc chuông, chơi thả diều",
+    "learn": "An toàn khi thả diều, bài toán có lời văn",
+    "reward": "75 XP, 20 Xu, Skill XP Đọc hiểu, Bài toán có lời văn, quà Cánh diều giấy",
+    "next": "Chiều nào gió lên, cả nông trại lại nghe tiếng chuông trên mây"
+  },
+  "phases": {
+    "hook": "giac-mo-dieu-chuong",
+    "explore": "do-lam-dieu",
+    "learn": "cho-tha-dieu-an-toan",
+    "challenge": "day-dieu-dai-bao-nhieu",
+    "decision": "buoc-chuong-o-dau",
+    "finale": "tha-dieu-len-may",
+    "reward": "dieu-chuong-tren-may",
+    "next": "chuong-tren-may-moi-chieu"
+  },
+  "places": {
+    "bo-chuong-dong": "Đồng cỏ bò sữa",
+    "do-lam-dieu": "Sạp nông sản",
+    "st-chuong-dong-tren-may-anh-tha-dieu": "Bãi cỏ ven sông",
+    "st-chuong-dong-tren-may-coc-buoc-dieu": "Gò cao đầu đồng"
+  },
+  "steps": [
+    {
+      "id": "giac-mo-dieu-chuong",
+      "title": "Giấc mơ diều chuông",
+      "kind": "dialogue",
+      "target": "bo-chuong-dong",
+      "goTo": "Ra đồng cỏ bò sữa nghe Bò kể giấc mơ",
+      "lines": [
+        {
+          "speaker": "Bò Chuông Đồng",
+          "text": "Ò... {name} ơi, tớ có một giấc mơ hơi ngốc: thả một con diều cao tới mức tiếng chuông buộc trên diều kêu được ở trên mây."
+        },
+        {
+          "speaker": "Bò Chuông Đồng",
+          "text": "Để ai ở xa lắm cũng nghe thấy, và biết ở đồng cỏ này có một con bò đang vui. Mình cần nan tre, dây gai với giấy dó, sạp nông sản có bán đủ cả."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Chẳng ngốc tí nào, mình làm thôi!",
+          "reply": "Ò! Thế thì tớ lắc chuông ăn mừng trước đây: leng keng!"
+        },
+        {
+          "text": "Diều mà mang được chuông à?",
+          "reply": "Anh Thả Diều Sáo bảo được, miễn là diều đủ to và gió đủ khỏe."
+        }
+      ],
+      "en": {
+        "title": "The bell-kite dream",
+        "goTo": "Go to the dairy meadow to hear Bò’s dream",
+        "lines": [
+          "Mooo... {name}, I have a slightly silly dream: to fly a kite so high that a bell tied to it rings up in the clouds.",
+          "So that someone far, far away hears it and knows there is a happy cow in this meadow. We need bamboo strips, twine and dó paper; the farm stall sells them all."
+        ],
+        "choices": [
+          {
+            "text": "Not silly at all, let's do it!",
+            "reply": "Mooo! Then I’ll ring my bell to celebrate early: ding-a-ling!"
+          },
+          {
+            "text": "Can a kite really carry a bell?",
+            "reply": "The kite master says yes, as long as the kite is big enough and the wind strong enough."
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-lam-dieu",
+      "title": "Đồ làm diều",
+      "kind": "find-object",
+      "goTo": "Tới sạp nông sản tìm đồ làm diều",
+      "prompt": "Đọc lời tả rồi tìm ba thứ để làm diều:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "nan",
+          "name": "Nan tre vót mỏng",
+          "clue": "Những thanh tre mảnh như que đũa, uốn cong được mà không gãy, để làm khung diều.",
+          "target": "st-chuong-dong-tren-may-nan-tre"
+        },
+        {
+          "id": "day",
+          "name": "Cuộn dây gai dài",
+          "clue": "Cuộn dây màu nâu nhạt, to bằng nắm tay, dài đủ để diều bay lên thật cao.",
+          "target": "st-chuong-dong-tren-may-day-gai"
+        },
+        {
+          "id": "giay",
+          "name": "Tờ giấy dó",
+          "clue": "Tờ giấy mỏng mà dai, soi lên nắng thấy cả thớ sợi như mạng nhện.",
+          "target": "st-chuong-dong-tren-may-giay-do"
+        }
+      ],
+      "en": {
+        "title": "Kite-making things",
+        "goTo": "Go to the farm stall for kite-making things",
+        "prompt": "Read the descriptions and find three things for the kite:",
+        "items": [
+          {
+            "name": "Thin bamboo strips",
+            "clue": "Bamboo strips as slim as chopsticks that bend without snapping, for the kite frame."
+          },
+          {
+            "name": "A long roll of twine",
+            "clue": "A light-brown roll as big as a fist, long enough to send a kite very high."
+          },
+          {
+            "name": "A sheet of dó paper",
+            "clue": "Thin but tough paper: hold it to the sun and you see fibres like a spider’s web."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cho-tha-dieu-an-toan",
+      "title": "Chỗ thả diều an toàn",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-chuong-dong-tren-may-anh-tha-dieu",
+      "goTo": "Ra bãi cỏ ven sông hỏi Anh Thả Diều Sáo",
+      "skill": "doc-hieu",
+      "prompt": "Anh Thả Diều Sáo hỏi: «Thả diều ở chỗ nào mới an toàn?» Chọn tất cả chỗ đúng:",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Bãi cỏ rộng, thoáng"
+        },
+        {
+          "id": "b",
+          "text": "Trên mái nhà"
+        },
+        {
+          "id": "c",
+          "text": "Nơi xa dây điện"
+        },
+        {
+          "id": "d",
+          "text": "Cạnh cột điện cao"
+        },
+        {
+          "id": "e",
+          "text": "Cách xa đường xe chạy"
+        },
+        {
+          "id": "f",
+          "text": "Giữa đường làng"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "a",
+          "c",
+          "e"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Chỗ an toàn thì rộng, không có gì để diều vướng vào.",
+          "Tránh chỗ cao dễ ngã, chỗ có điện, chỗ có xe."
+        ],
+        "hint": "Có ba chỗ đúng.",
+        "answer": {
+          "text": "Bãi rộng, xa dây điện, xa đường xe",
+          "explanation": "Thả diều ở bãi rộng, xa dây điện và đường xe. Mái nhà dễ ngã, cột điện nguy hiểm, giữa đường thì xe đâm."
+        },
+        "en": {
+          "guide": [
+            "A safe spot is wide, with nothing for the kite to tangle in.",
+            "Avoid high places you could fall from, electricity and traffic."
+          ],
+          "hint": "Three places are right.",
+          "answer": {
+            "text": "Open field, no power lines, no traffic",
+            "explanation": "Fly kites in open fields away from power lines and roads. Rooftops mean falls, poles mean electricity, roads mean traffic."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Anh Thả Diều Sáo huýt sáo: «Chuẩn người thả diều!»",
+          "Bò ò lên: chỗ này rộng thênh thang, bay thoải mái!",
+          "{name} chọn chỗ thả diều kỹ như chọn chỗ ngắm sao."
+        ],
+        "wrong": [
+          "Ối, chỗ đó diều vướng là nguy hiểm lắm đấy!",
+          "Còn thiếu hoặc thừa một chỗ, xem lại từng dòng nhé.",
+          "Hỏi mình: chỗ này có dây điện, có xe, hay dễ ngã không?"
+        ],
+        "en": {
+          "right": [
+            "The kite master whistles: «A true kite flyer!»",
+            "Bò moos: this spot is wide open, plenty of room to fly!",
+            "{name} picks a kite spot as carefully as a stargazing spot."
+          ],
+          "wrong": [
+            "Whoa, a kite caught there would be really dangerous!",
+            "One place too many or too few: check each line again.",
+            "Ask yourself: power lines, traffic, or a risk of falling?"
+          ]
+        }
+      },
+      "en": {
+        "title": "A safe place for kites",
+        "goTo": "Go to the grassy riverbank and ask the kite master",
+        "prompt": "The kite master asks: «Where is it safe to fly a kite?» Pick every right place:",
+        "choices": [
+          "A wide open field",
+          "On a rooftop",
+          "Somewhere far from power lines",
+          "Next to a tall electricity pole",
+          "Well away from roads with traffic",
+          "In the middle of the village road"
+        ]
+      }
+    },
+    {
+      "id": "day-dieu-dai-bao-nhieu",
+      "title": "Dây diều dài bao nhiêu?",
+      "kind": "riddle",
+      "target": "st-chuong-dong-tren-may-anh-tha-dieu",
+      "skill": "bai-toan-loi-van",
+      "question": "Anh Thả Diều Sáo kể: «Diều bay lên khi dây dài 50 mét. Gió mạnh, anh nhả thêm 30 mét, rồi thu về 20 mét cho diều đứng gió.» Lúc này dây diều dài bao nhiêu mét?",
+      "answer": {
+        "value": 60
+      },
+      "support": {
+        "guide": [
+          "Nhả thêm là cộng, thu về là trừ.",
+          "50 + 30 trước, rồi trừ 20."
+        ],
+        "hint": "50 + 30 = 80.",
+        "answer": {
+          "text": "60 mét",
+          "explanation": "50 + 30 = 80 mét, thu về 20 mét còn 80 − 20 = 60 mét."
+        },
+        "en": {
+          "guide": [
+            "Letting out means adding; reeling in means taking away.",
+            "50 + 30 first, then take away 20."
+          ],
+          "hint": "50 + 30 = 80.",
+          "answer": {
+            "text": "60 metres",
+            "explanation": "50 + 30 = 80 metres; reel in 20 and 80 − 20 = 60 metres are left."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sáu mươi mét, diều đứng gió vững như cắm cọc!",
+          "Anh Thả Diều Sáo gật gù: {name} tính dây diều như dân thả diều lâu năm.",
+          "Đúng rồi, dây vừa đủ dài để chuông kêu trên cao."
+        ],
+        "wrong": [
+          "Nhớ trừ phần dây đã thu về nhé.",
+          "Nhả thêm thì dây dài ra, đừng trừ chỗ ấy.",
+          "Tính từng bước: cộng trước, trừ sau."
+        ],
+        "en": {
+          "right": [
+            "Sixty metres: the kite holds steady as if staked to the sky!",
+            "The kite master nods: {name} reckons string like an old hand.",
+            "Right: just long enough for the bell to ring up high."
+          ],
+          "wrong": [
+            "Remember to take off the string that was reeled in.",
+            "Letting out makes it longer, so don’t subtract that part.",
+            "One step at a time: add first, then subtract."
+          ]
+        }
+      },
+      "en": {
+        "title": "How long is the string?",
+        "question": "The kite master explains: «The kite was up on 50 metres of string. The wind picked up so I let out 30 more, then reeled in 20 to steady it.» How long is the string now?"
+      }
+    },
+    {
+      "id": "buoc-chuong-o-dau",
+      "title": "Buộc chuông ở đâu?",
+      "kind": "decision",
+      "target": "bo-chuong-dong",
+      "goTo": "Mang diều về đồng cỏ bò sữa cho Bò",
+      "speaker": "Bò Chuông Đồng",
+      "prompt": "Diều làm xong, to bằng cả cánh cửa. Bò ngập ngừng tháo chuông đồng ra, rồi lại đeo vào: «Buộc chuông ở đâu bây giờ?»",
+      "choices": [
+        {
+          "id": "duoi",
+          "text": "Buộc chuông đồng vào đuôi diều",
+          "consequence": "Đuôi diều đung đưa, tiếng chuông leng keng theo từng nhịp gió. Bò nhìn mãi theo, như nhìn một người thân đi xa."
+        },
+        {
+          "id": "than",
+          "text": "Buộc chuông đồng giữa thân diều",
+          "consequence": "Chuông nằm chính giữa, diều bay thăng bằng, tiếng chuông đều đều như nhịp tim."
+        },
+        {
+          "id": "chuong-khac",
+          "text": "Buộc một chiếc chuông nhỏ khác, chuông đồng vẫn ở cổ Bò",
+          "consequence": "Bò thở phào, áp má vào chiếc chuông đồng: «Cảm ơn cậu. Chuông này... tớ không rời được đâu.»"
+        }
+      ],
+      "en": {
+        "title": "Where to tie the bell?",
+        "goTo": "Bring the kite back to Bò in the dairy meadow",
+        "prompt": "The kite is done, as big as a door. Bò hesitates, takes off her brass bell, then puts it back on: «Where do we tie the bell?»",
+        "choices": [
+          {
+            "text": "Tie the brass bell to the kite’s tail",
+            "consequence": "The tail sways and the bell jingles with every gust. Bò watches it the whole time, like watching someone dear travel far."
+          },
+          {
+            "text": "Tie the brass bell to the middle of the kite",
+            "consequence": "With the bell in the middle the kite flies level, the chime as steady as a heartbeat."
+          },
+          {
+            "text": "Tie on a different little bell; the brass one stays on Bò",
+            "consequence": "Bò sighs with relief and rests her cheek against the brass bell: «Thank you. This one... I can’t ever part with.»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tha-dieu-len-may",
+      "title": "Thả diều lên mây",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-chuong-dong-tren-may-coc-buoc-dieu",
+      "goTo": "Lên gò cao đầu đồng, chỗ gió mạnh nhất",
+      "prompt": "Gió lên rồi! Lái diều vào luồng gió, tránh cành cây với lũ chim, đưa tiếng chuông lên thật cao nhé!",
+      "game": "kite-fly",
+      "goal": 60,
+      "en": {
+        "title": "Up into the clouds",
+        "goTo": "Climb the high mound at the edge of the field, where the wind is strongest",
+        "prompt": "The wind is up! Steer the kite into the breeze, dodge the branches and birds, and carry the bell up high!"
+      }
+    },
+    {
+      "id": "dieu-chuong-tren-may",
+      "title": "Tiếng chuông trên mây",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Con diều chui vào một đám mây trắng, và từ trong mây vọng xuống tiếng leng keng nho nhỏ. Bò đứng lặng, mắt long lanh. Anh Thả Diều Sáo tặng {name} một cánh diều giấy nhỏ làm kỷ niệm.",
+      "en": {
+        "title": "A chime in the clouds",
+        "text": "The kite slips into a white cloud, and a tiny jingle drifts down from inside it. Bò stands perfectly still, eyes shining. The kite master gives {name} a little paper kite to remember the day."
+      }
+    },
+    {
+      "id": "chuong-tren-may-moi-chieu",
+      "title": "Mỗi chiều có gió",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Từ hôm ấy, chiều nào gió lên, cả nông trại lại nghe tiếng chuông trên mây. Bò bảo: «Đó là tớ đang chào những người ở xa. Mai tớ sẽ thả cao hơn nữa.»",
+      "en": {
+        "title": "Every windy afternoon",
+        "text": "From that day on, every windy afternoon the whole farm hears a bell in the clouds. Bò says: «That’s me saying hello to faraway friends. Tomorrow I’ll fly it even higher.»"
+      }
+    }
+  ],
+  "reward": {
+    "xp": 75,
+    "coin": 20,
+    "skillXp": {
+      "doc-hieu": 1,
+      "bai-toan-loi-van": 1
+    },
+    "items": {
+      "canh-dieu-giay": 1
+    }
+  },
+  "en": {
+    "title": "Bò Chuông Đồng's story, chapter 3: A bell in the clouds",
+    "summary": "Bò Chuông Đồng dreams of flying a kite that carries a bell’s chime up into the clouds. {name} finds bamboo strips, twine and dó paper, picks a safe kite-flying spot with the kite master, works out the length of the string, chooses where to tie the bell, and launches the kite from the high mound."
+  }
+}

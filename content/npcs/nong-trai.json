@@ -1,0 +1,825 @@
+{
+  "version": 1,
+  "region": "nong-trai",
+  "climate": "mild",
+  "npcs": [
+    {
+      "id": "bac-nong-dan-thanh",
+      "name": "Bác Nông Dân Thành",
+      "role": {
+        "vi": "Người trồng lúa lâu năm nhất nông trại, giữ khu trồng trọt và cái cối giã gạo chày đôi.",
+        "en": "The longest-serving rice farmer on the farm, keeper of the crop fields and the double-pestle rice mortar."
+      },
+      "personality": {
+        "vi": "Chậm mà chắc, tin trời đất nhưng tin cả sổ ghi chép. Hiền khô, chỉ hay càu nhàu với lũ chim sẻ.",
+        "en": "Slow but sure; trusts the weather and his notebooks alike. Kind as can be, though he grumbles at sparrows."
+      },
+      "voice": {
+        "vi": "Hay đọc một câu tục ngữ thời tiết rồi tự giải thích, câu nào cũng mở đầu bằng «ấy thế mà...».",
+        "en": "Quotes a weather proverb and then explains it himself, and loves to start with «and yet...»."
+      },
+      "fear": {
+        "vi": "Con ngỗng đực nhà hàng xóm. Ba mươi năm trước nó đuổi bác chạy ba vòng sân, tới giờ nghe «quác» bác vẫn giật mình.",
+        "en": "The neighbour’s gander. Thirty years ago it chased him three times round the yard, and a honk still makes him jump."
+      },
+      "dream": {
+        "vi": "Lai được một giống lúa thơm mang tên nông trại, thơm từ ruộng thơm tới nồi.",
+        "en": "To breed a fragrant rice named for the farm, fragrant from the field all the way to the pot."
+      },
+      "secret": {
+        "vi": "Bác ghi nhật ký ruộng lúa bốn mươi năm. Bìa quyển đầu tiên là bức vẽ của bác hồi lớp Hai: một bông lúa có mặt cười.",
+        "en": "He has kept a rice diary for forty years. The cover of the very first one is a drawing he made in second grade: a rice ear with a smiling face."
+      },
+      "habit": {
+        "vi": "Sáng nào cũng nhúng ngón tay xuống ruộng thử nước rồi mới chào ai.",
+        "en": "Every morning he dips a finger in the paddy to test the water before saying hello to anyone."
+      },
+      "likes": [
+        "bong-lua-vang",
+        "bap-ngo-vang",
+        "hat-de-tuyet"
+      ],
+      "lines": [
+        {
+          "vi": "Chào cháu, đợi bác thử nước đã... Ừ, nước vừa, lúa vui. Giờ mới chào được tử tế.",
+          "en": "Morning, wait while I test the water... Right, just enough, the rice is happy. Now I can greet you properly.",
+          "when": "morning"
+        },
+        {
+          "vi": "«Chuồn chuồn bay thấp thì mưa». Sáng nay chuồn chuồn bay cao vút, ấy thế mà bác vẫn mang áo tơi.",
+          "en": "«Low dragonflies mean rain.» They’re flying high this morning, and yet I’ve still brought my straw raincoat.",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa nắng, bác ngồi dưới gốc cây nghe lúa trổ. Cháu không tin lúa có tiếng à? Ngồi im mà nghe.",
+          "en": "At noon I sit under the tree listening to the rice grow. Don’t believe rice makes a sound? Sit quietly and listen.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều rồi, bác ghi sổ: hôm nay nắng mấy giờ, nước cao mấy đốt tay, sẻ ghé mấy lần.",
+          "en": "Evening: time for the diary. How many hours of sun, how many finger-joints of water, how many sparrow raids.",
+          "when": "evening"
+        },
+        {
+          "vi": "Đêm khuya ếch kêu ran ruộng, bác nằm đếm tiếng ếch thay cho đếm sao. Ếch kêu nhiều là ruộng khỏe.",
+          "en": "Late at night the frogs chorus across the paddies and I count them instead of stars. Lots of frogs means a healthy field.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa xuống rồi! Ruộng uống no nước, bác cũng nhẹ cả lòng. Cháu vào hiên trú đi kẻo ướt.",
+          "en": "Here comes the rain! The field gets a good drink and my heart feels lighter. Shelter under the porch before you get soaked.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời ráo thế này phơi thóc là nhất. «Nắng tốt dưa, mưa tốt lúa», mà nắng cũng tốt cho sân phơi nữa.",
+          "en": "Dry days like this are best for drying grain. «Sun for melons, rain for rice», but sun is good for the threshing floor too.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Bác càu nhàu lũ sẻ thế thôi, chứ sáng nào không nghe chúng ríu rít là bác thấy thiếu thiếu.",
+          "en": "I grumble at the sparrows, but a morning without their chatter feels empty."
+        },
+        {
+          "vi": "Cánh Cụt Trượt Băng trên Núi tuyết hay viết thư hỏi bác: lúa có lạnh không? Bác bảo: lúa thích ấm như cánh cụt thích lạnh.",
+          "en": "Cánh Cụt Trượt Băng up on Snow Mountain writes asking if rice gets cold. I tell her rice loves warmth the way penguins love the cold.",
+          "about": "canh-cut-truot-bang"
+        },
+        {
+          "vi": "Mùa đông năm ngoái Cánh Cụt gửi bác một túi hạt dẻ tuyết. Rang lên bùi ơi là bùi, ai cho bác thêm là bác quý lắm.",
+          "en": "Last winter Cánh Cụt sent me a bag of snow chestnuts. Roasted, they’re so nutty. Anyone who brings me more wins my heart."
+        },
+        {
+          "vi": "Heo Kho Hàng giữ sổ kho thóc giúp bác. Chữ nó đẹp hơn chữ bác, mà nhãn nào cũng vẽ thêm cái mặt heo.",
+          "en": "Heo Kho Hàng keeps the grain-store ledger for me. His handwriting is neater than mine, though he draws a pig face on every label.",
+          "about": "heo-kho-hang"
+        },
+        {
+          "vi": "{name} có biết một bông lúa có thể có tới hơn một trăm hạt không? Mỗi hạt là một bát cơm tí hon đấy.",
+          "en": "Did you know one rice ear can hold over a hundred grains, {name}? Each one is a tiny bowl of rice."
+        },
+        {
+          "vi": "Hồi bé bác ghét ra ruộng lắm, toàn trốn đi bắt cào cào. Ông nội cứ để yên, bảo: rồi ruộng sẽ gọi cháu về.",
+          "en": "As a boy I hated the fields and always ran off to catch grasshoppers. Grandfather let me be: «The field will call you back,» he said.",
+          "hearts": 2
+        },
+        {
+          "vi": "Nói cháu nghe, bác sợ con ngỗng nhà bên lắm. Ba mươi năm rồi mà nó vẫn nhìn bác như nhìn đứa trẻ trốn việc.",
+          "en": "Between us, I’m terrified of the neighbour’s gander. Thirty years on, it still looks at me like a boy skiving off chores.",
+          "hearts": 3
+        },
+        {
+          "vi": "Quyển nhật ký ruộng đầu tiên của bác có bìa là bức vẽ hồi lớp Hai: một bông lúa có mặt cười. Bác chưa cho ai xem đâu.",
+          "en": "The cover of my very first field diary is a drawing from second grade: a rice ear with a smiling face. I’ve never shown anyone.",
+          "hearts": 4
+        },
+        {
+          "vi": "Bác già rồi, nhưng có người giữ giống cùng thì bác không sợ. Ruộng này rồi sẽ gọi cháu về, như từng gọi bác.",
+          "en": "I’m getting old, but with someone to keep the seed alongside me I’m not afraid. This field will call you back, just as it called me.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "bo-chuong-dong",
+      "name": "Bò Chuông Đồng",
+      "role": {
+        "vi": "Cô bò sữa thích thả diều ở đồng cỏ bò sữa, cổ đeo một chiếc chuông đồng kêu leng keng.",
+        "en": "A kite-loving dairy cow on the meadow, with a brass bell that jingles at her neck."
+      },
+      "personality": {
+        "vi": "Mơ màng, hiền lành, hay quên, mê đếm mây hình con vật. Nhạy cảm và rất dễ nhột.",
+        "en": "Dreamy, gentle and forgetful, loves spotting animal-shaped clouds. Sensitive, and very ticklish."
+      },
+      "voice": {
+        "vi": "Kéo dài tiếng «Ò...» trước khi nói, nói chậm như đang nhai cỏ.",
+        "en": "Starts with a long «Mooo...» and talks slowly, as if chewing grass."
+      },
+      "fear": {
+        "vi": "Mất chiếc chuông đồng: không có tiếng leng keng, Bò sợ lạc trong sương mà không ai tìm ra.",
+        "en": "Losing her brass bell: without its jingle she fears getting lost in the mist with nobody able to find her."
+      },
+      "dream": {
+        "vi": "Thả một con diều cao tới mức tiếng chuông buộc trên diều kêu được ở trên mây.",
+        "en": "To fly a kite so high that a bell tied to it rings up in the clouds."
+      },
+      "secret": {
+        "vi": "Chiếc chuông đồng không phải của Bò mà là của bà Bò, đeo suốt một đời đi cày. Bò giữ nó để nhớ tiếng bà gọi về chuồng mỗi chiều.",
+        "en": "The brass bell isn’t really Bò’s: it belonged to her grandmother, who wore it through a lifetime of ploughing. Bò keeps it to remember Grandma calling her home each evening."
+      },
+      "habit": {
+        "vi": "Chiều nào cũng nằm ngửa trên cỏ đếm mây, đặt tên cho từng đám: mây con mèo, mây cái bánh, mây ông Thành.",
+        "en": "Every afternoon she lies on her back in the grass naming the clouds: cat cloud, cake cloud, Uncle Thành cloud."
+      },
+      "likes": [
+        "cu-ca-rot-ngot",
+        "qua-dua-hau",
+        "canh-dieu-giay"
+      ],
+      "lines": [
+        {
+          "vi": "Ò... sáng sớm cỏ còn đẫm sương, ngọt như kẹo. {name} ăn thử không? À quên, cậu đâu có ăn cỏ.",
+          "en": "Mooo... early-morning grass is still wet with dew, sweet as candy. Want some, {name}? Oh, I forgot, you don’t eat grass.",
+          "when": "morning"
+        },
+        {
+          "vi": "Ò... trưa nắng tớ đứng dưới bóng cây, lắc chuông cho ruồi biết đường tránh.",
+          "en": "Mooo... in the midday sun I stand under the tree and ring my bell so the flies know to keep away.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều rồi, mây kéo về đầy trời. Đám kia giống hệt cái bánh bao, đám này giống bác Thành đội nón.",
+          "en": "Evening, and the sky is full of clouds. That one’s a steamed bun, and this one looks just like Uncle Thành in his hat.",
+          "when": "evening"
+        },
+        {
+          "vi": "Ò... đêm rồi, tớ lắc chuông thật khẽ, kẻo đánh thức cả đàn gà con.",
+          "en": "Mooo... it’s night, so I ring my bell very softly or I’ll wake all the chicks.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa thì chuông kêu đục hẳn đi, nghe như chuông đang hắt hơi. Ò... tớ cũng muốn hắt hơi theo.",
+          "en": "In the rain my bell sounds muffled, like it’s sneezing. Mooo... it makes me want to sneeze too.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời xanh, gió hiu hiu, đúng ngày thả diều. Ò... ai cầm hộ tớ cuộn dây với?",
+          "en": "Blue sky, gentle breeze: a perfect kite day. Mooo... can someone hold the string for me?",
+          "weather": "fine"
+        },
+        {
+          "vi": "Cậu biết không, bò nhai lại cả ngày, ăn một bữa mà nhai được mấy lần. Tiết kiệm lắm đấy.",
+          "en": "Did you know cows chew the cud all day? One meal, chewed again and again. Very thrifty."
+        },
+        {
+          "vi": "Ò... tớ đếm mây giỏi lắm, nhưng đếm bò thì toàn sai. Tớ cứ quên đếm chính mình.",
+          "en": "Mooo... I’m great at counting clouds but hopeless at counting cows. I always forget to count myself."
+        },
+        {
+          "vi": "Cánh diều giấy mua ở Chợ phiên là quà tớ thích nhất. Giấy mỏng mà bay cao, như giấc mơ của tớ.",
+          "en": "A paper kite from the market fair is my favourite present. Thin paper, high flight, just like my dreams."
+        },
+        {
+          "vi": "Voi Kẹo Bông ở Trung tâm bảo đứng trên quảng trường nhìn lên trời thấy diều của tớ đấy. Tớ vẫy đuôi chào mà chắc bạn ấy không thấy.",
+          "en": "Voi Kẹo Bông in the central town says she can see my kite from the square. I wag my tail hello, though she probably can’t see it.",
+          "about": "voi-keo-bong"
+        },
+        {
+          "vi": "Bé Chăn Gà Con hay nằm cạnh tớ đếm mây. Bé đặt tên mây toàn theo tên gà con, nghe buồn cười lắm.",
+          "en": "Bé Chăn Gà Con often lies beside me counting clouds. She names them all after her chicks, which is very funny.",
+          "about": "be-chan-ga-con"
+        },
+        {
+          "vi": "Ai mang cho tớ củ cà rốt giòn là tớ lắc chuông ba hồi cảm ơn. Leng keng, leng keng, leng keng!",
+          "en": "Bring me a crunchy carrot and I’ll ring three thank-yous. Ding-a-ling, ding-a-ling, ding-a-ling!"
+        },
+        {
+          "vi": "Ò... tớ sợ sương mù lắm. Sương dày là tớ chẳng thấy ai, chỉ còn tiếng chuông của mình để bám vào.",
+          "en": "Mooo... I’m scared of fog. When it’s thick I can’t see anyone, and all I have to hold onto is the sound of my bell.",
+          "hearts": 2
+        },
+        {
+          "vi": "Hồi bé tớ hay chạy lạc, lần nào cũng có tiếng chuông gọi tớ về. Tiếng chuông ấy... là của một người tớ thương nhất.",
+          "en": "As a calf I often wandered off, and every time a bell called me home. That bell... belonged to the one I loved most.",
+          "hearts": 3
+        },
+        {
+          "vi": "Chiếc chuông này là của bà tớ, bà đeo nó suốt một đời đi cày. Mỗi lần lắc, tớ lại nghe như bà gọi về chuồng.",
+          "en": "This bell was my grandmother’s; she wore it through a lifetime of ploughing. Every time it rings, it’s as if she’s calling me home.",
+          "hearts": 4
+        },
+        {
+          "vi": "Ò... nếu có ngày cậu lạc ở đâu đó, cứ nghe tiếng chuông này nhé. Tớ sẽ lắc thật to cho tới khi cậu về.",
+          "en": "Mooo... if you ever get lost somewhere, listen for this bell. I’ll ring it as loud as I can until you find your way home.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "heo-kho-hang",
+      "name": "Heo Kho Hàng",
+      "role": {
+        "vi": "Người giữ nhà kho chế biến của nông trại: chia đồ trên băng chuyền, đóng bao, dán nhãn.",
+        "en": "Keeper of the farm’s processing barn: sorts goods on the conveyor, bags them and labels them."
+      },
+      "personality": {
+        "vi": "Ngăn nắp tới mức kỳ quặc, dán nhãn cho mọi thứ, kể cả cái đuôi của mình. Tốt bụng, nói nhiều, mê âm nhạc.",
+        "en": "Tidy to the point of oddness, labels everything, even his own tail. Kind, chatty and music-mad."
+      },
+      "voice": {
+        "vi": "Mở đầu bằng «Ủn ỉn», nói như đọc nhãn: «Mục số ba: chào cậu!».",
+        "en": "Opens with «Oink oink» and talks like he’s reading labels: «Item three: hello!»."
+      },
+      "fear": {
+        "vi": "Góc tối nhất trong kho. Heo lúc nào cũng bật ba cái đèn, và đi qua góc ấy bằng... mắt nhắm.",
+        "en": "The darkest corner of the barn. He always keeps three lamps lit, and walks past that corner with... his eyes shut."
+      },
+      "dream": {
+        "vi": "Lập một dàn đồng ca nông trại gồm bò, gà, vịt, rồi biểu diễn ở chợ phiên.",
+        "en": "To start a farm choir of cows, hens and ducks and perform at the market fair."
+      },
+      "secret": {
+        "vi": "Heo không biết hát. Trong dàn đồng ca do chính Heo lập, Heo chỉ đứng giữa... nhép miệng.",
+        "en": "He can’t sing. In the choir he founded himself, he stands in the middle and... mimes."
+      },
+      "habit": {
+        "vi": "Tối nào cũng đếm bao gạo trước khi ngủ, thay cho đếm cừu.",
+        "en": "Every night he counts rice sacks to fall asleep instead of counting sheep."
+      },
+      "likes": [
+        "bap-ngo-vang",
+        "to-he-rong",
+        "dau-tay-chin"
+      ],
+      "lines": [
+        {
+          "vi": "Ủn ỉn! Mục số một của buổi sáng: chào {name}. Mục số hai: dán nhãn lên bao ngô mới. Mục ba: ăn sáng!",
+          "en": "Oink oink! Morning item one: say hi to {name}. Item two: label the new corn sacks. Item three: breakfast!",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa băng chuyền chạy nhanh nhất, đồ trôi như suối. Tớ chia đồ mà mũi đỏ cả lên vì hăng say.",
+          "en": "At noon the conveyor runs fastest and goods pour by like a stream. I sort so hard my snout goes pink.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều tớ tập dàn đồng ca: bò hát trầm, gà hát cao, vịt hát... lạc giọng. Tớ thì chỉ huy.",
+          "en": "In the evening I rehearse the choir: cows sing low, hens sing high, ducks sing... off-key. I conduct.",
+          "when": "evening"
+        },
+        {
+          "vi": "Đêm rồi, tớ đếm bao gạo cho dễ ngủ: một bao, hai bao... ba mươi bảy bao... khò...",
+          "en": "Night-time: counting rice sacks to doze off. One sack, two sacks... thirty-seven sacks... zzz...",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa thì kho kín mít, tớ đi kiểm tra từng góc xem có dột không. Trừ góc tối nhất, góc ấy tự lo.",
+          "en": "When it rains the barn is shut tight and I check every corner for leaks. Except the darkest one: that corner can look after itself.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Nắng đẹp thì phơi thóc ngoài sân, tớ dán nhãn cho từng nong: «Phơi lúc tám giờ, nhớ đảo lúc mười giờ».",
+          "en": "Sunny days mean drying grain in the yard, and I label every tray: «Out at eight, turn at ten».",
+          "weather": "fine"
+        },
+        {
+          "vi": "Cô Nặn Tò He ở Chợ phiên gửi tớ một con heo tò he, giống tớ y đúc. Tớ dán nhãn cho nó: «Heo số hai».",
+          "en": "Cô Nặn Tò He at the market fair sent me a tò he pig that looks just like me. I labelled it «Pig number two».",
+          "about": "co-nan-to-he"
+        },
+        {
+          "vi": "Ai tặng tớ tò he rồng là tớ để trên kệ cao nhất, nhãn ghi «Báu vật, cấm chạm, kể cả chuột».",
+          "en": "Give me a tò he dragon and it goes on the top shelf, labelled «Treasure, do not touch, mice included»."
+        },
+        {
+          "vi": "Chó Lùa Vịt ở ao cá sát vách. Sáng nào đàn vịt đi qua kho, tớ cũng đếm hộ: đủ mười hai con!",
+          "en": "Chó Lùa Vịt lives by the fishpond next door. Every morning the ducks pass the barn and I count them for him: all twelve!",
+          "about": "cho-lua-vit"
+        },
+        {
+          "vi": "{name} biết không, heo là loài rất sạch sẽ đấy. Tụi tớ lăn bùn là để mát, chứ không phải vì thích bẩn.",
+          "en": "Did you know pigs are very clean, {name}? We roll in mud to keep cool, not because we like being dirty."
+        },
+        {
+          "vi": "Mẹo nhớ thứ tự của tớ: gắn mỗi thứ với một tiếng kêu. Bò là «ò», gà là «ò ó o», nhớ mãi không quên.",
+          "en": "My trick for remembering an order: tie each thing to a sound. Cow is «moo», rooster is «cock-a-doodle»: never forgotten."
+        },
+        {
+          "vi": "Dâu tây mọng là thứ duy nhất tớ không dán nhãn, vì chưa kịp dán đã... ăn mất rồi.",
+          "en": "Juicy strawberries are the one thing I never label, because I’ve... eaten them before I get the chance."
+        },
+        {
+          "vi": "Tớ dán nhãn mọi thứ vì hồi bé tớ hay quên. Có lần quên luôn đường về chuồng, phải ngủ trong bao ngô.",
+          "en": "I label everything because I used to be so forgetful. Once I even forgot the way home and slept in a corn sack.",
+          "hearts": 2
+        },
+        {
+          "vi": "Góc tối nhất trong kho ấy... tớ chưa bước vào bao giờ. Ba cái đèn kia là để canh nó đấy.",
+          "en": "That darkest corner of the barn... I’ve never set foot in it. Those three lamps are there to keep an eye on it.",
+          "hearts": 3
+        },
+        {
+          "vi": "Nói nhỏ nhé: tớ không biết hát. Đứng giữa dàn đồng ca, tớ chỉ nhép miệng thôi. Đừng nói với Bò Chuông Đồng!",
+          "en": "Whisper it: I can’t sing. In the middle of the choir, I just mime. Don’t tell Bò Chuông Đồng!",
+          "hearts": 4
+        },
+        {
+          "vi": "Tớ vừa dán một cái nhãn mới lên cửa kho: «Bạn thân nhất: {name}». Nhãn này tớ dán bằng keo loại chắc nhất.",
+          "en": "I’ve just put a new label on the barn door: «Best friend: {name}». I used my very strongest glue.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "cho-lua-vit",
+      "name": "Chó Lùa Vịt",
+      "role": {
+        "vi": "Người chăn đàn vịt ở ao cá, sáng lùa ra ao, chiều lùa về chuồng.",
+        "en": "The duck herder of the fishpond: out to the water in the morning, home to the coop at dusk."
+      },
+      "personality": {
+        "vi": "Trách nhiệm tới mức hay lo, sủa hơi to rồi lại xin lỗi. Thương đàn vịt như con.",
+        "en": "Responsible to the point of fretting, barks a bit too loudly and then apologises. Loves his ducks like his own pups."
+      },
+      "voice": {
+        "vi": "Câu ngắn như mệnh lệnh: «Hàng một! Tiến!», ngay sau đó là «à, xin lỗi, to quá».",
+        "en": "Short commands: «Single file! Forward!», followed at once by «oh, sorry, too loud»."
+      },
+      "fear": {
+        "vi": "Sấm. Trời gầm một tiếng là Chó chui tọt vào gầm cầu ao, chỉ chừa cái đuôi ra ngoài.",
+        "en": "Thunder. One rumble and he dives under the pond footbridge, with only his tail sticking out."
+      },
+      "dream": {
+        "vi": "Dắt đàn vịt đi thi «Đàn vịt thẳng hàng nhất vùng» và giành giải nhất.",
+        "en": "To enter his ducks in the «Straightest Duck Line in the Region» contest and win first prize."
+      },
+      "secret": {
+        "vi": "Chó thầm ước được làm vịt một ngày. Có lần Chó lén nhảy xuống ao lội cùng đàn vịt, bị bắt gặp thì chối là... trượt chân.",
+        "en": "He secretly wishes he could be a duck for a day. Once he sneaked into the pond to paddle with them, and when he was caught he claimed he... slipped."
+      },
+      "habit": {
+        "vi": "Đếm vịt mỗi lần đàn đi qua cầu ao: đủ mười hai con mới thở phào.",
+        "en": "Counts the ducks every time they cross the pond bridge: only twelve lets him breathe again."
+      },
+      "likes": [
+        "binh-sua-bo",
+        "chau-sen-da",
+        "trung-ga-ta"
+      ],
+      "lines": [
+        {
+          "vi": "Gâu! Sáng rồi! Hàng một, ra ao... à xin lỗi {name}, tớ không quát cậu, tớ quát đàn vịt.",
+          "en": "Woof! Morning! Single file, to the pond... oh, sorry, {name}, I wasn’t shouting at you, I was shouting at the ducks.",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa nắng vịt lặn hết xuống ao cho mát, tớ đếm đầu vịt nhô lên mà hoa cả mắt.",
+          "en": "In the midday sun the ducks all dive to keep cool, and counting heads popping up makes me dizzy.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều tà, lùa vịt về chuồng. Mười, mười một, mười hai! Đủ cả. Giờ tớ mới được ngồi.",
+          "en": "Dusk: herding the ducks home. Ten, eleven, twelve! All present. Now I’m allowed to sit down.",
+          "when": "evening"
+        },
+        {
+          "vi": "Đêm khuya tớ nằm canh cửa chuồng vịt, nghe tiếng cạc cạc trong mơ của chúng mà buồn cười.",
+          "en": "Late at night I guard the coop door, listening to the ducks quacking in their sleep. It makes me laugh.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa rồi! Vịt thì sướng, tớ thì ướt như chuột lột. Mà... có sấm không đấy? Có sấm thì tớ đi trước nhé.",
+          "en": "Rain! The ducks love it, I’m soaked to the bone. But... is there thunder? If there’s thunder, I’m off.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời quang mây tạnh, đàn vịt đi thẳng hàng như kẻ chỉ. Ngày như thế này tớ muốn sủa vì vui.",
+          "en": "Clear skies, and the ducks walk in a line as straight as a ruler. Days like this make me want to bark for joy.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Lùa vịt là phải đi vòng ra sau lưng chúng, đừng chặn đầu. Vịt thấy cậu sau lưng là tự đi về phía trước.",
+          "en": "To herd ducks, circle behind them; never block the front. When they see you behind, they walk forward on their own."
+        },
+        {
+          "vi": "Thỏ Làm Vườn bên Nhà của bé gửi tớ chậu sen đá nhỏ, dặn để cạnh chuồng vịt cho «xanh mắt». Tớ tưới nó mỗi sáng.",
+          "en": "Thỏ Làm Vườn at the home garden sent me a little succulent and told me to keep it by the duck coop «to rest my eyes». I water it every morning.",
+          "about": "tho-lam-vuon"
+        },
+        {
+          "vi": "Ai tặng tớ chậu sen đá là tớ nhớ ngay tới bạn thỏ làm vườn. Cây ấy chẳng cần tưới nhiều, như bạn ấy chẳng cần nói nhiều.",
+          "en": "A succulent always reminds me of my rabbit gardener friend. It needs little water, just as she needs few words."
+        },
+        {
+          "vi": "Bé Chăn Gà Con ở chuồng gà sát ao. Gà với vịt thỉnh thoảng đi nhầm chuồng, hai đứa tớ lại đổi trả nhau.",
+          "en": "Bé Chăn Gà Con keeps the hens right by the pond. Now and then a hen and a duck swap coops by mistake, and we trade them back.",
+          "about": "be-chan-ga-con"
+        },
+        {
+          "vi": "{name} biết không, lông vịt có một lớp dầu mỏng nên nước trôi tuột đi. Lông tớ thì... ướt sũng.",
+          "en": "Did you know duck feathers have a thin layer of oil so water rolls right off, {name}? My fur, on the other hand... gets soaked."
+        },
+        {
+          "vi": "Bình sữa tươi của Bò là phần thưởng tớ thích nhất sau một ngày lùa vịt. Uống xong ngủ ngon cả đêm.",
+          "en": "A jug of Bò’s fresh milk is my favourite reward after a day of duck herding. One drink and I sleep all night."
+        },
+        {
+          "vi": "Tớ hay lo lắm. Thiếu một con vịt thôi là tớ chạy khắp nông trại, tới khi thấy nó đang ngủ dưới gốc chuối.",
+          "en": "I worry a lot. One duck missing and I run all over the farm, until I find it asleep under a banana tree.",
+          "hearts": 2
+        },
+        {
+          "vi": "Tớ sợ sấm lắm. Lần nào trời gầm tớ cũng chui gầm cầu ao. Mà đàn vịt lại chui vào cùng, như muốn che cho tớ.",
+          "en": "I’m so scared of thunder. Every time it rumbles I hide under the pond bridge, and the ducks crowd in with me as if to shelter me.",
+          "hearts": 3
+        },
+        {
+          "vi": "Tớ kể cậu nghe, nhưng cấm cười: tớ ước được làm vịt một ngày. Có lần tớ nhảy xuống ao lội cùng chúng, rồi chối là trượt chân.",
+          "en": "I’ll tell you, but no laughing: I wish I could be a duck for a day. Once I jumped in to paddle with them and claimed I slipped.",
+          "hearts": 4
+        },
+        {
+          "vi": "Nếu tớ được đi thi đàn vịt thẳng hàng, cậu đi cùng nhé. Cậu sẽ là con vịt thứ mười ba, con quan trọng nhất.",
+          "en": "If I ever get to the duck-line contest, come with me. You’ll be duck number thirteen, the most important one.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "be-chan-ga-con",
+      "name": "Bé Chăn Gà Con",
+      "role": {
+        "vi": "Cô bé chăn đàn gà con ở chuồng gà nông trại, thuộc tên từng con.",
+        "en": "The girl who looks after the chicks at the farm’s henhouse and knows every one by name."
+      },
+      "personality": {
+        "vi": "Lanh lợi, nói liến thoắng, gan dạ với mọi thứ trừ bầu trời có cánh diều hâu.",
+        "en": "Quick-witted, a non-stop chatterbox, and fearless about everything except a hawk in the sky."
+      },
+      "voice": {
+        "vi": "Nói nhanh như gà mổ thóc, câu nào cũng chêm «cậu biết không?».",
+        "en": "Talks as fast as a hen pecking grain, sprinkling «you know what?» everywhere."
+      },
+      "fear": {
+        "vi": "Con diều hâu hay lượn trên nông trại. Thấy bóng nó là Bé dang tay che cả đàn gà.",
+        "en": "The hawk that circles over the farm. When its shadow passes she spreads her arms over the whole flock."
+      },
+      "dream": {
+        "vi": "Nuôi được một con gà trống gáy đúng giờ hơn cả chiếc đồng hồ trên tường.",
+        "en": "To raise a rooster that crows more punctually than the clock on the wall."
+      },
+      "secret": {
+        "vi": "Bé từng ấp một quả trứng vịt lạc trong ổ gà. Con «gà» xấu nhất đàn thật ra là vịt con, và Bé chưa dám nói với Chó Lùa Vịt.",
+        "en": "She once hatched a stray duck egg in a hen’s nest. The ugliest «chick» in her flock is actually a duckling, and she hasn’t dared tell Chó Lùa Vịt."
+      },
+      "habit": {
+        "vi": "Tối nào cũng đếm gà bằng một bài hát tự chế, sai một con là hát lại từ đầu.",
+        "en": "Every evening she counts the chicks with a song she made up, and one wrong count means starting the song over."
+      },
+      "likes": [
+        "hat-huong-duong",
+        "bap-ngo-vang",
+        "tem-be-ngoan"
+      ],
+      "lines": [
+        {
+          "vi": "Cậu biết không, sáng nay con gà trống gáy lúc năm giờ kém năm! Sớm năm phút, tớ ghi vào sổ rồi.",
+          "en": "You know what? This morning the rooster crowed at five to five! Five minutes early. I’ve written it down.",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa nóng, gà con chui hết vào bóng mát dưới cánh gà mẹ, trông như cái ô có chân.",
+          "en": "Hot noon, and all the chicks are hiding in the shade under the mother hen, like an umbrella with legs.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều rồi, tớ phải hát bài đếm gà đây: «Một con lông vàng, hai con mỏ nhọn...» Cậu hát cùng không?",
+          "en": "Evening, time for my chick-counting song: «One with yellow fluff, two with pointy beaks...» Want to sing along?",
+          "when": "evening"
+        },
+        {
+          "vi": "Khuya rồi mà tớ chưa ngủ được, cứ nghĩ không biết diều hâu có bay đêm không. Cậu biết không?",
+          "en": "It’s late and I can’t sleep, wondering whether hawks fly at night. Do you know?",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa rồi! Nhanh lên, lùa gà vào chuồng! Gà con mà ướt lông là run cầm cập cả buổi.",
+          "en": "Rain! Quick, get the chicks inside! Wet chicks shiver for hours.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Nắng đẹp thế này gà con tắm nắng, xòe lông ra như những bông hoa vàng.",
+          "en": "In sunshine like this the chicks sunbathe, fluffing out like little yellow flowers.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Cậu biết không, gà con mới nở đã biết mổ thóc rồi, chẳng cần ai dạy. Tớ thì phải học mãi mới biết buộc dây giày.",
+          "en": "You know what? Chicks can peck grain the moment they hatch, nobody teaches them. It took me ages to learn to tie my shoes."
+        },
+        {
+          "vi": "Đàn gà của tớ có tên hết: Bánh Bao, Hạt Tiêu, Mây Trắng, Sấm Sét... Con Sấm Sét nhát nhất đàn.",
+          "en": "All my chicks have names: Dumpling, Pepper, White Cloud, Thunderbolt... Thunderbolt is the shyest of the lot."
+        },
+        {
+          "vi": "Hổ Còi Vàng ở Trường học tặng tớ một con tem bé ngoan vì chăn gà giỏi. Ai tặng tớ thêm tem là tớ dán kín cửa chuồng.",
+          "en": "Hổ Còi Vàng at the school gave me a good-kid sticker for chicken-minding. Give me more and I’ll cover the henhouse door.",
+          "about": "ho-coi-vang"
+        },
+        {
+          "vi": "Chó Lùa Vịt chăn vịt sát vách chuồng tớ. Bạn ấy đếm vịt to lắm, nghe thấy là gà con của tớ cũng đếm theo.",
+          "en": "Chó Lùa Vịt herds ducks right next door. He counts them so loudly that my chicks start counting along.",
+          "about": "cho-lua-vit"
+        },
+        {
+          "vi": "Hạt hướng dương là kẹo của gà con. Cho một hạt thôi là cả đàn chạy tới, như tớ chạy theo xe kem.",
+          "en": "Sunflower seeds are sweets for chicks. Drop one and the whole flock comes running, like me chasing an ice-cream cart."
+        },
+        {
+          "vi": "Chiều nào tớ cũng ra đồng cỏ nằm đếm mây với Bò Chuông Đồng. Tớ đặt tên mây theo tên gà, Bò cười suốt.",
+          "en": "Every afternoon I lie in the meadow counting clouds with Bò Chuông Đồng. I name them after my chicks and she can’t stop laughing.",
+          "about": "bo-chuong-dong"
+        },
+        {
+          "vi": "Tớ sợ con diều hâu lắm. Có lần nó sà xuống, tớ đứng chắn trước đàn gà mà chân run như cầy sấy.",
+          "en": "I’m so scared of that hawk. Once it swooped down and I stood in front of the chicks with my knees knocking.",
+          "hearts": 2
+        },
+        {
+          "vi": "Con gà trống tớ nuôi chưa bao giờ gáy đúng giờ. Nhưng tớ vẫn thương nó nhất, vì nó gáy to nhất.",
+          "en": "My rooster has never once crowed on time. But I still love him best, because he crows the loudest.",
+          "hearts": 3
+        },
+        {
+          "vi": "Bí mật nhé: con «gà» xấu nhất đàn thật ra là vịt con! Tớ ấp nhầm trứng vịt. Tớ chưa dám nói với Chó Lùa Vịt đâu.",
+          "en": "Secret: the ugliest «chick» in my flock is actually a duckling! I hatched a duck egg by mistake. I haven’t dared tell Chó Lùa Vịt.",
+          "hearts": 4
+        },
+        {
+          "vi": "Tớ vừa đặt tên cho con gà con mới nở là «{name}». Nó lon ton theo tớ khắp nơi, y như cậu.",
+          "en": "I just named the newest chick «{name}». It toddles after me everywhere, just like you.",
+          "hearts": 5
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "a": "bac-nong-dan-thanh",
+      "b": "bo-chuong-dong",
+      "kind": "friend",
+      "note": {
+        "vi": "Bà của Bò từng kéo cày trên ruộng bác Thành; giờ bác vẫn để dành cho Bò những bó cỏ non nhất bờ ruộng.",
+        "en": "Bò’s grandmother once pulled the plough in Bác Thành’s fields; he still saves Bò the freshest grass from the paddy banks."
+      }
+    },
+    {
+      "a": "bac-nong-dan-thanh",
+      "b": "heo-kho-hang",
+      "kind": "friend",
+      "note": {
+        "vi": "Heo giữ sổ kho thóc và dán nhãn từng chum giống cho bác Thành.",
+        "en": "Heo keeps the grain ledger and labels every seed jar for Bác Thành."
+      }
+    },
+    {
+      "a": "cho-lua-vit",
+      "b": "be-chan-ga-con",
+      "kind": "neighbour",
+      "note": {
+        "vi": "Chuồng gà sát ao vịt; gà với vịt hay đi nhầm chuồng, hai bạn lại đổi trả cho nhau.",
+        "en": "The henhouse is right by the duck pond; hens and ducks keep wandering into the wrong coop and the two of them swap them back."
+      }
+    },
+    {
+      "a": "heo-kho-hang",
+      "b": "cho-lua-vit",
+      "kind": "neighbour",
+      "note": {
+        "vi": "Đàn vịt đi qua cửa kho mỗi sáng, Heo đếm hộ cho Chó yên tâm.",
+        "en": "The ducks pass the barn door every morning, and Heo counts them so Chó can relax."
+      }
+    },
+    {
+      "a": "bo-chuong-dong",
+      "b": "be-chan-ga-con",
+      "kind": "friend",
+      "note": {
+        "vi": "Chiều nào hai bạn cũng nằm trên đồng cỏ đếm mây và đặt tên cho từng đám.",
+        "en": "Every afternoon the two of them lie in the meadow counting clouds and naming each one."
+      }
+    },
+    {
+      "a": "bac-nong-dan-thanh",
+      "b": "canh-cut-truot-bang",
+      "kind": "pen-pal",
+      "note": {
+        "vi": "Bác gửi gạo mới lên núi tuyết, Cánh Cụt gửi hạt dẻ tuyết xuống nông trại; hai bên hỏi nhau chuyện nóng lạnh qua từng lá thư.",
+        "en": "He sends new rice up to the snowy mountain and Cánh Cụt sends snow chestnuts down to the farm; in every letter they ask each other about heat and cold."
+      }
+    },
+    {
+      "a": "cho-lua-vit",
+      "b": "tho-lam-vuon",
+      "kind": "friend",
+      "note": {
+        "vi": "Thỏ Làm Vườn gửi cây cho Chó trồng cạnh chuồng vịt, Chó gửi lại phân vịt ủ hoai cho vườn của Thỏ.",
+        "en": "Thỏ Làm Vườn sends plants for Chó to grow by the duck coop, and Chó sends back well-rotted duck manure for Thỏ’s garden."
+      }
+    }
+  ],
+  "arcs": [
+    {
+      "id": "lua-thom-mat-cuoi",
+      "npc": "bac-nong-dan-thanh",
+      "title": {
+        "vi": "Giống lúa thơm của bác Thành",
+        "en": "Bác Thành’s fragrant rice"
+      },
+      "teaser": {
+        "vi": "Ấy thế mà sáng nay ngón tay bác thơm mùi xôi... Cháu có muốn nghe chuyện một bông lúa lạ không?",
+        "en": "And yet this morning my finger smelled of sticky rice... Want to hear about a very unusual rice stalk?"
+      },
+      "chapters": [
+        {
+          "quest": "yarn-lua-thom-mat-cuoi-1",
+          "hearts": 0,
+          "letter": {
+            "from": "bac-nong-dan-thanh",
+            "title": {
+              "vi": "Ba mươi hạt trong chum",
+              "en": "Thirty grains in a jar"
+            },
+            "body": {
+              "vi": "{name} à, tối nay bác lại mở chum ra ngửi một lần. Vẫn thơm. Bác ghi vào sổ: người tìm ra bông lúa là {name}. Ông nội bác mà còn chắc cũng muốn bắt tay cháu.",
+              "en": "{name}, tonight I opened the jar for one more sniff. Still fragrant. I wrote in the diary: the one who found the stalk was {name}. My grandfather would have wanted to shake your hand."
+            },
+            "reward": {
+              "coins": 15,
+              "xp": 15,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-lua-thom-mat-cuoi-2",
+          "hearts": 1,
+          "letter": {
+            "from": "canh-cut-truot-bang",
+            "title": {
+              "vi": "Thư từ trên băng",
+              "en": "A letter from the ice"
+            },
+            "body": {
+              "vi": "Chào {name}! Tớ là Cánh Cụt Trượt Băng, bạn thư của bác Thành. Bác kể có người dựng giúp bác ông bù nhìn và làm góc ăn cho sẻ. Trên này chẳng có sẻ, chỉ có gió, nên tớ gửi xuống ít hạt dẻ tuyết, nhờ cậu rang chia cho bác một nửa nhé.",
+              "en": "Hi {name}! I’m Cánh Cụt Trượt Băng, Bác Thành’s pen pal. He told me someone built him a scarecrow and a feeding corner for the sparrows. Up here there are no sparrows, only wind, so I’m sending down some snow chestnuts: roast them and give Bác half, will you?"
+            },
+            "reward": {
+              "coins": 15,
+              "xp": 20,
+              "items": {
+                "hat-de-tuyet": 1
+              }
+            }
+          }
+        },
+        {
+          "quest": "yarn-lua-thom-mat-cuoi-3",
+          "hearts": 2,
+          "letter": {
+            "from": "heo-kho-hang",
+            "title": {
+              "vi": "Nhãn mới trên chum giống",
+              "en": "A new label on the seed jar"
+            },
+            "body": {
+              "vi": "Ủn ỉn, {name}! Bác Thành bảo nhờ cậu mà ruộng mạ uống no nước. Tớ đã dán thêm một dòng lên chum giống: «Đã qua hạn hán. Người cứu: {name}.» Nhãn này tớ viết chữ to nhất từ trước tới giờ.",
+              "en": "Oink oink, {name}! Bác Thành says thanks to you the seedbed got a good drink. I added a line to the seed jar’s label: «Survived the drought. Rescued by {name}.» Biggest letters I’ve ever written."
+            },
+            "reward": {
+              "coins": 15,
+              "xp": 20,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-lua-thom-mat-cuoi-4",
+          "hearts": 3,
+          "letter": {
+            "from": "bac-nong-dan-thanh",
+            "title": {
+              "vi": "Mùa sau, ba thửa",
+              "en": "Next season, three plots"
+            },
+            "body": {
+              "vi": "{name} thân mến, bác vừa cất nắm giống cuối cùng vào chum. Mùa sau ba thửa, mùa sau nữa chắc cả cánh đồng. Cháu nhớ ghé nông trại lúc lúa trổ bông nhé, mùi thơm ấy là của cháu một nửa.",
+              "en": "Dear {name}, I’ve just put the last handful of seed in the jar. Three plots next season, and maybe the whole field the season after. Come by when the rice heads out: half of that fragrance belongs to you."
+            },
+            "reward": {
+              "coins": 20,
+              "xp": 25,
+              "items": {
+                "bap-ngo-vang": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "chuong-dong-tren-may",
+      "npc": "bo-chuong-dong",
+      "title": {
+        "vi": "Chiếc chuông đồng của Bò",
+        "en": "Bò’s brass bell"
+      },
+      "teaser": {
+        "vi": "Ò... chuông của tớ hôm nay im re. Cậu có nghe thấy gì không? Tớ thì chẳng nghe thấy gì cả.",
+        "en": "Mooo... my bell has gone completely quiet today. Can you hear anything? I can’t hear a thing."
+      },
+      "chapters": [
+        {
+          "quest": "yarn-chuong-dong-tren-may-1",
+          "hearts": 0,
+          "letter": {
+            "from": "bo-chuong-dong",
+            "title": {
+              "vi": "Leng... cạch",
+              "en": "Ding... clack"
+            },
+            "body": {
+              "vi": "Ò... {name} ơi, tối nay tớ lắc chuông chúc ngủ ngon cả đồng cỏ. Tiếng hơi rè, nhưng có tiếng là tớ yên tâm rồi. Dê Râu Xồm còn sang xin lỗi, mang theo một bó cỏ ba lá.",
+              "en": "Mooo... {name}, tonight I rang my bell to say goodnight to the whole meadow. It’s a bit croaky, but a sound is all I need to feel safe. Dê Râu Xồm even came over to apologise, with a bunch of clover."
+            },
+            "reward": {
+              "coins": 12,
+              "xp": 15,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-chuong-dong-tren-may-2",
+          "hearts": 1,
+          "letter": {
+            "from": "be-chan-ga-con",
+            "title": {
+              "vi": "Đàn gà nghe chuông",
+              "en": "The chicks hear the bell"
+            },
+            "body": {
+              "vi": "Cậu biết không, {name}? Chiều nay Bò lắc chuông mới sửa, đàn gà con của tớ đứng im nghe như nghe hát. Con Sấm Sét nhát nhất còn dám bước ra khỏi cánh mẹ. Tớ gửi cậu ít hạt hướng dương, kẹo của gà đấy!",
+              "en": "You know what, {name}? This afternoon Bò rang her mended bell and my chicks stood still listening as if it were a song. Even shy Thunderbolt stepped out from under his mum’s wing. Here are some sunflower seeds: chick candy!"
+            },
+            "reward": {
+              "coins": 12,
+              "xp": 20,
+              "items": {
+                "hat-huong-duong": 1
+              }
+            }
+          }
+        },
+        {
+          "quest": "yarn-chuong-dong-tren-may-3",
+          "hearts": 2,
+          "letter": {
+            "from": "voi-keo-bong",
+            "title": {
+              "vi": "Tiếng chuông trên quảng trường",
+              "en": "A bell above the square"
+            },
+            "body": {
+              "vi": "Chào {name}! Chiều qua đang bán kẹo bông ở quảng trường, tớ nghe tiếng leng keng từ trên mây vọng xuống. Ngẩng lên thấy một con diều tít tắp. Bò Chuông Đồng viết thư bảo có cậu giúp. Cảm ơn nhé, cả quảng trường đã ngẩng đầu mỉm cười đấy!",
+              "en": "Hi {name}! Yesterday afternoon, while I was selling cotton candy in the square, I heard a jingle drifting down from the clouds. I looked up and saw a kite way, way up. Bò Chuông Đồng wrote that you helped. Thank you: the whole square looked up and smiled!"
+            },
+            "reward": {
+              "coins": 20,
+              "xp": 25,
+              "items": {}
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,371 @@
+{
+  "id": "yarn-lua-thom-mat-cuoi-3",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Chuyện của Bác Nông Dân Thành, chương 3: Ruộng nứt chân chim",
+  "status": "active",
+  "category": "story",
+  "summary": "Nắng hạn làm ruộng mạ lúa thơm nứt nẻ, điều bác Thành sợ nhất. {name} tìm thứ làm nghẹt mương ở cối xay gió, dò đường đào mương từ hồ sau nông trại, chọn cách chia nước với hàng xóm và tính số thùng nước còn lại.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bác Nông Dân Thành, Cô Hàng Xóm Trồng Ngô",
+    "where": "Nông trại: khu trồng trọt, cối xay gió, hồ sau nông trại, ruộng ngô",
+    "goal": "Đưa nước về cứu ruộng mạ lúa thơm",
+    "play": "Tìm vật làm nghẹt mương, dò đường đào mương trên lưới ô, chọn cách chia nước, giải bài toán thùng nước",
+    "learn": "Tìm đường trên lưới ô, phép trừ",
+    "reward": "70 XP, 18 Xu, Skill XP Logic, Phép trừ",
+    "next": "Lúa thơm trổ bông, tới mùa gặt đầu tiên"
+  },
+  "phases": {
+    "hook": "ruong-nut-ne",
+    "explore": "muong-nghet",
+    "learn": "dao-muong-moi",
+    "challenge": "dao-muong-moi",
+    "decision": "chia-nuoc",
+    "finale": "tinh-thung-nuoc",
+    "reward": "nuoc-ve-ruong",
+    "next": "lua-tro-bong"
+  },
+  "places": {
+    "bac-nong-dan-thanh": "Khu trồng trọt",
+    "muong-nghet": "Cối xay gió",
+    "st-lua-thom-mat-cuoi-ban-ve-muong": "Hồ sau nông trại",
+    "st-lua-thom-mat-cuoi-co-trong-ngo": "Ruộng ngô"
+  },
+  "steps": [
+    {
+      "id": "ruong-nut-ne",
+      "title": "Ruộng nứt nẻ",
+      "kind": "dialogue",
+      "target": "bac-nong-dan-thanh",
+      "goTo": "Ra khu trồng trọt, ruộng mạ đang khô",
+      "lines": [
+        {
+          "speaker": "Bác Nông Dân Thành",
+          "text": "Cháu nhìn xem, ruộng nứt như chân chim. Bác sợ nhất cảnh này: lúa khát mà mình đứng nhìn, chẳng làm gì được."
+        },
+        {
+          "speaker": "Bác Nông Dân Thành",
+          "text": "Mương từ cối xay gió chảy về đây tự dưng cạn. Chắc có thứ gì làm nghẹt rồi. Bác chân yếu, cháu chạy ra xem giúp bác."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Bác đừng lo, cháu chạy ra ngay!",
+          "reply": "Cảm ơn cháu. Nhớ đội nón, nắng này rát mặt lắm."
+        },
+        {
+          "text": "Lúa khát thì mình mang nước tới!",
+          "reply": "Nói hay lắm! Ấy thế mà bác đứng đây than nãy giờ."
+        }
+      ],
+      "en": {
+        "title": "A cracked field",
+        "goTo": "Go to the crop fields: the seedbed is drying out",
+        "lines": [
+          "Look, the field is cracked like bird tracks. This is what I dread most: the rice thirsty and me standing here helpless.",
+          "The channel from the windmill has suddenly run dry. Something must be blocking it. My legs are slow; run over and look for me."
+        ],
+        "choices": [
+          {
+            "text": "Don't worry, I'm running there now!",
+            "reply": "Thank you. Wear a hat, this sun stings."
+          },
+          {
+            "text": "If the rice is thirsty, we'll bring it water!",
+            "reply": "Well said! And here I was, just moaning about it."
+          }
+        ]
+      }
+    },
+    {
+      "id": "muong-nghet",
+      "title": "Mương bị nghẹt",
+      "kind": "find-object",
+      "goTo": "Ra cối xay gió xem vì sao mương cạn",
+      "prompt": "Tìm hai thứ đang chặn dòng nước ở cửa mương:",
+      "items": [
+        {
+          "id": "van",
+          "name": "Tấm ván kẹt cửa cống",
+          "clue": "Tấm ván gỗ sẫm màu, bị gió xô kẹt ngang cửa cống, nước chỉ rỉ qua được một tí.",
+          "target": "st-lua-thom-mat-cuoi-tam-van-ket"
+        },
+        {
+          "id": "rom",
+          "name": "Bó rơm nghẹt mương",
+          "clue": "Một bó rơm vàng to tướng rơi từ xe kéo, nằm chắn giữa lòng mương.",
+          "target": "st-lua-thom-mat-cuoi-bo-rom"
+        }
+      ],
+      "en": {
+        "title": "The blocked channel",
+        "goTo": "Go to the windmill and find out why the channel is dry",
+        "prompt": "Find the two things blocking the water at the channel mouth:",
+        "items": [
+          {
+            "name": "The plank stuck in the sluice",
+            "clue": "A dark wooden plank blown sideways across the sluice so only a trickle gets past."
+          },
+          {
+            "name": "The straw bundle in the ditch",
+            "clue": "A huge bundle of yellow straw that fell off a cart and is lying across the ditch."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dao-muong-moi",
+      "title": "Đào mương tránh đá",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "target": "st-lua-thom-mat-cuoi-ban-ve-muong",
+      "goTo": "Ra hồ sau nông trại xem bản vẽ mương nước",
+      "skill": "logic",
+      "prompt": "Dỡ ván, bỏ rơm rồi vẫn chưa đủ nước. Phải đào thêm một nhánh mương từ hồ (ô chú mèo) tới ruộng mạ (ô ngôi sao), tránh các ô đá. Dãy bước nào đúng? (→ sang phải, ↓ đi xuống)",
+      "logicType": "maze",
+      "grid": [
+        [
+          "S",
+          "#",
+          ".",
+          "."
+        ],
+        [
+          ".",
+          ".",
+          ".",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          ".",
+          "."
+        ],
+        [
+          ".",
+          ".",
+          "#",
+          "G"
+        ]
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "→ ↓ ↓ → → ↓"
+        },
+        {
+          "id": "b",
+          "text": "↓ → → ↓ → ↓"
+        },
+        {
+          "id": "c",
+          "text": "↓ → → → ↓ ↓"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Ngón tay đặt ở ô hồ nước, thử từng dãy bước.",
+          "Gặp ô đá là dãy đó phải bỏ.",
+          "Dãy đúng đi xuống trước, rồi lượn sang phải theo bậc thang."
+        ],
+        "hint": "Bước đầu tiên phải đi xuống, vì ngay bên phải ô hồ nước là đá.",
+        "answer": {
+          "text": "↓ → → ↓ → ↓",
+          "explanation": "Xuống một ô, sang phải hai ô, xuống một ô, sang phải một ô, rồi xuống là tới ruộng mạ."
+        },
+        "en": {
+          "guide": [
+            "Finger on the lake square, try each set of moves.",
+            "Hit a rock and that set is out.",
+            "The right one goes down first, then steps right like a staircase."
+          ],
+          "hint": "The first move must go down, because the square right of the lake is rock.",
+          "answer": {
+            "text": "↓ → → ↓ → ↓",
+            "explanation": "Down one, right two, down one, right one, then down to reach the seedbed."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Nước hồ ào ào chảy theo đường mương mới!",
+          "{name} vẽ đường mương tài như kỹ sư thủy lợi.",
+          "Không đụng hòn đá nào, mương thẳng một mạch về ruộng."
+        ],
+        "wrong": [
+          "Cuốc chạm đá kêu «keng» rồi, thử dãy bước khác nhé.",
+          "Dò lại từng bước, đừng để mương đâm vào ô đá.",
+          "Đi sang phải ngay từ đầu là vướng đá đấy."
+        ],
+        "en": {
+          "right": [
+            "Lake water gushes along the new ditch!",
+            "{name} plans ditches like a real irrigation engineer.",
+            "Not a single rock in the way: the ditch runs straight to the field."
+          ],
+          "wrong": [
+            "The hoe hits rock with a clang. Try another set of moves.",
+            "Trace each move again; don't let the ditch run into a rock.",
+            "Going right at the very start runs into rock."
+          ]
+        }
+      },
+      "en": {
+        "title": "Digging around the rocks",
+        "goTo": "Go to the lake behind the farm and study the ditch plan",
+        "prompt": "Even with the plank and straw gone, there is not enough water. A new branch must be dug from the lake (cat square) to the seedbed (star square), avoiding the rock squares. Which moves work? (→ right, ↓ down)",
+        "choices": [
+          "→ ↓ ↓ → → ↓",
+          "↓ → → ↓ → ↓",
+          "↓ → → → ↓ ↓"
+        ]
+      }
+    },
+    {
+      "id": "chia-nuoc",
+      "title": "Chia nước thế nào?",
+      "kind": "decision",
+      "target": "st-lua-thom-mat-cuoi-ban-ve-muong",
+      "speaker": "Bác Nông Dân Thành",
+      "prompt": "Nước về rồi, nhưng ruộng ngô nhà hàng xóm cũng đang héo rũ. Bác Thành hỏi: «Mở nước cho ruộng nào trước đây cháu?»",
+      "choices": [
+        {
+          "id": "ma-truoc",
+          "text": "Ruộng mạ lúa thơm trước",
+          "consequence": "Mạ uống nước no nê. Rồi bác tự tay mở cửa mương cho ruộng ngô: «Mạ của bác no rồi, giờ tới lượt ngô.»"
+        },
+        {
+          "id": "chia-deu",
+          "text": "Chia đều cho cả hai ruộng",
+          "consequence": "Bác chia mương làm hai nhánh bằng nhau. Nước chảy róc rách hai bên, nghe như hai đứa trẻ cùng cười."
+        },
+        {
+          "id": "ngo-truoc",
+          "text": "Ruộng ngô trước, ngô đang héo nặng hơn",
+          "consequence": "Bác gật đầu: «Ai khát hơn thì uống trước.» Cô hàng xóm chạy ra cảm ơn rối rít."
+        }
+      ],
+      "en": {
+        "title": "How to share the water?",
+        "prompt": "The water is flowing, but the neighbour’s cornfield is wilting too. Bác Thành asks: «Which field gets the water first?»",
+        "choices": [
+          {
+            "text": "The fragrant seedbed first",
+            "consequence": "The seedlings drink their fill. Then Bác opens the gate to the cornfield himself: «My seedlings are full; now it’s the corn’s turn.»"
+          },
+          {
+            "text": "Share it equally between both",
+            "consequence": "Bác splits the ditch into two equal branches. Water babbles down both sides like two children laughing together."
+          },
+          {
+            "text": "The corn first: it is wilting worse",
+            "consequence": "Bác nods: «The thirstiest drinks first.» The neighbour runs out to thank him over and over."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tinh-thung-nuoc",
+      "title": "Còn mấy thùng nước?",
+      "kind": "riddle",
+      "target": "st-lua-thom-mat-cuoi-co-trong-ngo",
+      "goTo": "Ra ruộng ngô gặp Cô Hàng Xóm Trồng Ngô",
+      "skill": "phep-tru",
+      "question": "Cô Hàng Xóm Trồng Ngô tính: «Hồ cho được 20 thùng nước. Ruộng mạ cần 8 thùng, ruộng ngô của cô cần 9 thùng. Còn lại mấy thùng để tưới vườn rau?»",
+      "answer": {
+        "value": 3
+      },
+      "support": {
+        "guide": [
+          "Lấy 20 trừ số thùng của ruộng mạ trước.",
+          "Rồi trừ tiếp số thùng của ruộng ngô."
+        ],
+        "hint": "20 − 8 = 12.",
+        "answer": {
+          "text": "3 thùng",
+          "explanation": "20 − 8 = 12, rồi 12 − 9 = 3 thùng cho vườn rau."
+        },
+        "en": {
+          "guide": [
+            "First take the seedbed’s buckets away from 20.",
+            "Then take away the cornfield’s buckets."
+          ],
+          "hint": "20 − 8 = 12.",
+          "answer": {
+            "text": "3 buckets",
+            "explanation": "20 − 8 = 12, then 12 − 9 = 3 buckets for the vegetables."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba thùng! Vườn rau cũng được một bữa no.",
+          "Cô hàng xóm khen: {name} tính nước giỏi hơn cả cô.",
+          "Chẳng ruộng nào phải nhịn khát nữa rồi."
+        ],
+        "wrong": [
+          "Nhớ trừ cả hai ruộng nhé, đừng bỏ sót ruộng nào.",
+          "Thử trừ từng bước: 20 trừ 8 trước đã.",
+          "Số thùng còn lại phải ít hơn số thùng ruộng ngô cần đấy."
+        ],
+        "en": {
+          "right": [
+            "Three buckets! The vegetable garden gets a good drink too.",
+            "The neighbour says {name} counts water better than she does.",
+            "Not one field has to go thirsty now."
+          ],
+          "wrong": [
+            "Remember to take away both fields, not just one.",
+            "Go step by step: 20 minus 8 first.",
+            "What is left is fewer than the cornfield needs."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many buckets left?",
+        "goTo": "Go to the cornfield to see the corn-growing neighbour",
+        "question": "The corn-growing neighbour works it out: «The lake gives 20 buckets of water. The seedbed needs 8, my cornfield needs 9. How many are left for the vegetable garden?»"
+      }
+    },
+    {
+      "id": "nuoc-ve-ruong",
+      "title": "Nước về ruộng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Nước len vào từng vết nứt, ruộng mạ xanh lại sau một buổi chiều. Bác Thành nhúng ngón tay xuống ruộng, lần này mát rượi, và bác cười như trẻ con.",
+      "en": {
+        "title": "Water in the fields",
+        "text": "Water seeps into every crack, and the seedbed turns green again in one afternoon. Bác Thành dips a finger in, cool this time, and grins like a child."
+      }
+    },
+    {
+      "id": "lua-tro-bong",
+      "title": "Lúa trổ bông",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ít lâu sau, ruộng mạ trổ bông. Gió thổi qua, mùi thơm bay khắp nông trại. Bác Thành nói khẽ: «Mùa gặt đầu tiên tới rồi, cháu ạ.»",
+      "en": {
+        "title": "The rice heads out",
+        "text": "Before long the seedlings head out. When the wind blows, the fragrance drifts across the whole farm. Bác Thành says softly: «The first harvest is here.»"
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "logic": 1,
+      "phep-tru": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Bác Nông Dân Thành's story, chapter 3: Cracks like bird tracks",
+    "summary": "A dry spell cracks the fragrant seedbed, the thing Bác Thành fears most. {name} finds what is blocking the channel by the windmill, plots a new ditch from the lake behind the farm, decides how to share water with the neighbours, and works out how many buckets are left."
+  }
+}

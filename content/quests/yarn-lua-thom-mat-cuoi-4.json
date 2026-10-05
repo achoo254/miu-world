@@ -1,0 +1,420 @@
+{
+  "id": "yarn-lua-thom-mat-cuoi-4",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Chuyện của Bác Nông Dân Thành, chương 4: Nồi cơm đầu mùa",
+  "status": "active",
+  "category": "story",
+  "summary": "Mùa gặt đầu tiên của giống lúa thơm chỉ được một nắm, vừa đủ một nồi cơm. {name} giã gạo, nấu cơm đúng các bước, tính số bạn được mời, giúp bác đặt tên cho giống lúa mới và đọc trang nhật ký bác vừa viết.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bác Nông Dân Thành",
+    "where": "Nông trại: khu trồng trọt, sân nông trại, nhà nông trại, khu nghỉ dưới gốc cây",
+    "goal": "Nấu nồi cơm đầu tiên từ giống lúa thơm và mời cả nông trại",
+    "play": "Giã gạo, xếp các bước nấu cơm, tính số khách, đặt tên giống lúa, đọc nhật ký",
+    "learn": "Sắp xếp trình tự, phép trừ, đọc hiểu",
+    "reward": "80 XP, 20 Xu, Skill XP Kể chuyện, Phép trừ, Đọc hiểu, quà Bông lúa vàng",
+    "next": "Mùa sau bác Thành gieo ba thửa lúa thơm"
+  },
+  "phases": {
+    "hook": "mua-gat-dau-tien",
+    "explore": "gia-gao-moi",
+    "learn": "nau-com-dung-buoc",
+    "challenge": "moi-them-ban",
+    "decision": "dat-ten-giong-lua",
+    "finale": "trang-nhat-ky-moi",
+    "reward": "noi-com-thom",
+    "next": "ba-thua-mua-sau"
+  },
+  "places": {
+    "bac-nong-dan-thanh": "Khu trồng trọt",
+    "st-lua-thom-mat-cuoi-coi-gia-gao": "Sân nông trại",
+    "st-lua-thom-mat-cuoi-bep-cui": "Nhà nông trại",
+    "st-lua-thom-mat-cuoi-mam-com": "Khu nghỉ dưới gốc cây",
+    "st-lua-thom-mat-cuoi-nhat-ky-moi": "Nhà nông trại"
+  },
+  "steps": [
+    {
+      "id": "mua-gat-dau-tien",
+      "title": "Mùa gặt đầu tiên",
+      "kind": "dialogue",
+      "target": "bac-nong-dan-thanh",
+      "goTo": "Ra khu trồng trọt, bác Thành vừa gặt xong",
+      "lines": [
+        {
+          "speaker": "Bác Nông Dân Thành",
+          "text": "Gặt xong rồi đây! Ấy thế mà chỉ được đúng một nắm. Bốn mươi năm làm ruộng, chưa nắm thóc nào bác nâng niu như nắm này."
+        },
+        {
+          "speaker": "Bác Nông Dân Thành",
+          "text": "Bác muốn nấu một nồi cơm mời cả nông trại, mỗi người một bát thôi, để ai cũng biết mùi giống lúa mới."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu phụ bác giã gạo!",
+          "reply": "Cối ở sân nông trại ấy. Giã nhẹ thôi, hạt quý lắm."
+        },
+        {
+          "text": "Một nắm mà mời cả nông trại ạ?",
+          "reply": "Cơm ít thì bát nhỏ, chứ tình thì không nhỏ được cháu ạ."
+        }
+      ],
+      "en": {
+        "title": "The first harvest",
+        "goTo": "Go to the crop fields: Bác Thành has just finished harvesting",
+        "lines": [
+          "Harvest done! And yet it's just one handful. Forty years of farming, and I've never cradled a handful of rice like this one.",
+          "I want to cook one pot and invite the whole farm, just a bowl each, so everyone knows the smell of the new rice."
+        ],
+        "choices": [
+          {
+            "text": "I'll help you pound the rice!",
+            "reply": "The mortar is in the farmyard. Gently, these grains are precious."
+          },
+          {
+            "text": "One handful for the whole farm?",
+            "reply": "Little rice means small bowls, but the kindness is never small."
+          }
+        ]
+      }
+    },
+    {
+      "id": "gia-gao-moi",
+      "title": "Giã gạo mới",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-lua-thom-mat-cuoi-coi-gia-gao",
+      "goTo": "Ra cối giã gạo ở sân nông trại",
+      "prompt": "Bác giã một nhịp, cháu đón nhịp sau. Giã cho hạt gạo trắng ra mà không vỡ nhé!",
+      "game": "rice-pound",
+      "goal": 25,
+      "en": {
+        "title": "Pounding the new rice",
+        "goTo": "Go to the rice mortar in the farmyard",
+        "prompt": "I pound one beat, you take the next. Pound until the grains turn white without breaking!"
+      }
+    },
+    {
+      "id": "nau-com-dung-buoc",
+      "title": "Nấu cơm đúng bước",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-lua-thom-mat-cuoi-bep-cui",
+      "goTo": "Vào bếp củi nhà nông trại nấu cơm",
+      "skill": "ke-chuyen",
+      "prompt": "Xếp các bước nấu nồi cơm đầu mùa theo đúng thứ tự:",
+      "items": [
+        {
+          "id": "ha-lua",
+          "label": "Hạ lửa nhỏ, ủ cho cơm chín đều"
+        },
+        {
+          "id": "vo-gao",
+          "label": "Vo gạo cho sạch"
+        },
+        {
+          "id": "dun-soi",
+          "label": "Bắc nồi lên bếp đun sôi"
+        },
+        {
+          "id": "dong-nuoc",
+          "label": "Đổ nước ngập gạo một đốt ngón tay"
+        }
+      ],
+      "answer": {
+        "order": [
+          "vo-gao",
+          "dong-nuoc",
+          "dun-soi",
+          "ha-lua"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Gạo phải sạch trước khi cho nước nấu.",
+          "Sôi rồi mới hạ lửa ủ."
+        ],
+        "hint": "Bắt đầu bằng việc làm sạch, kết thúc bằng việc chờ cơm chín.",
+        "answer": {
+          "text": "Vo gạo, đong nước, đun sôi, hạ lửa",
+          "explanation": "Vo sạch gạo, đổ nước vừa đủ, đun sôi rồi hạ lửa nhỏ ủ cho cơm chín đều."
+        },
+        "en": {
+          "guide": [
+            "The rice must be clean before the cooking water goes in.",
+            "Only after it boils do you turn it down to steam."
+          ],
+          "hint": "Start with cleaning, end with waiting for it to cook.",
+          "answer": {
+            "text": "Rinse, add water, boil, turn down",
+            "explanation": "Rinse the rice, add just enough water, boil it, then turn it down so it steams through."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Nồi cơm sôi lục bục, hơi thơm bay ra tận cửa!",
+          "{name} nấu cơm khéo như bà nội bác ngày xưa.",
+          "Từng bước một, chẳng vội bước nào, cơm sẽ dẻo lắm đây."
+        ],
+        "wrong": [
+          "Chưa có nước mà đã đun thì cháy nồi mất cháu ơi!",
+          "Gạo chưa vo mà nấu thì cơm có sạn, xếp lại nhé.",
+          "Nghĩ xem việc nào phải làm trước khi bắc nồi lên bếp."
+        ],
+        "en": {
+          "right": [
+            "The pot bubbles and the fragrant steam drifts right out the door!",
+            "{name} cooks rice as well as my grandmother used to.",
+            "One step at a time, none rushed: this rice will be perfect."
+          ],
+          "wrong": [
+            "Boil it with no water and you burn the pot!",
+            "Cook it unrinsed and there’ll be grit. Try again.",
+            "Think about what must happen before the pot goes on the fire."
+          ]
+        }
+      },
+      "en": {
+        "title": "Cooking rice the right way",
+        "goTo": "Go to the wood stove in the farmhouse to cook",
+        "prompt": "Put the steps for cooking the first pot in the right order:",
+        "items": [
+          "Turn the fire down and let the rice steam through",
+          "Rinse the rice clean",
+          "Put the pot on the fire and bring it to the boil",
+          "Add water to one finger-joint above the rice"
+        ]
+      }
+    },
+    {
+      "id": "moi-them-ban",
+      "title": "Mời thêm mấy bạn?",
+      "kind": "riddle",
+      "target": "st-lua-thom-mat-cuoi-mam-com",
+      "goTo": "Bưng nồi cơm ra mâm dưới gốc cây ở khu nghỉ dưới gốc cây",
+      "skill": "phep-tru",
+      "question": "Nồi cơm chia được 12 bát. Đã có 7 bạn ngồi vào mâm dưới gốc cây, mỗi bạn một bát. Bác còn mời thêm được mấy bạn nữa?",
+      "answer": {
+        "value": 5
+      },
+      "support": {
+        "guide": [
+          "Số bát còn lại = số bát cả nồi − số bát đã chia.",
+          "Mỗi bát còn lại mời được một bạn."
+        ],
+        "hint": "Lấy 12 trừ 7.",
+        "answer": {
+          "text": "5 bạn",
+          "explanation": "12 − 7 = 5 bát, nên bác mời thêm được 5 bạn."
+        },
+        "en": {
+          "guide": [
+            "Bowls left = bowls in the pot − bowls already served.",
+            "Each bowl left means one more guest."
+          ],
+          "hint": "Take 7 away from 12.",
+          "answer": {
+            "text": "5 friends",
+            "explanation": "12 − 7 = 5 bowls, so Bác can invite 5 more friends."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Năm bạn nữa! Bác Thành chạy đi gọi ngay, quên cả đội nón.",
+          "Mâm cơm đủ chỗ cho tất cả, không ai bị bỏ quên.",
+          "{name} chia cơm công bằng như chia bánh sinh nhật."
+        ],
+        "wrong": [
+          "Đếm lại số bát đã chia nhé, có 7 bạn ngồi rồi.",
+          "Thử đếm tiếp từ 7 lên tới 12 xem được mấy số.",
+          "Nhiều quá thì có bạn không có cơm đâu, tính lại nha."
+        ],
+        "en": {
+          "right": [
+            "Five more! Bác Thành rushes off to call them, forgetting his hat.",
+            "There is room for everyone, nobody left out.",
+            "{name} shares rice as fairly as birthday cake."
+          ],
+          "wrong": [
+            "Count the bowls already served again: 7 friends are seated.",
+            "Try counting on from 7 up to 12 and see how many numbers that is.",
+            "Too many and someone goes without. Work it out again."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many more guests?",
+        "goTo": "Carry the pot out to the tray in the shady rest area under the tree",
+        "question": "The pot makes 12 bowls. 7 friends have already sat down at the tray under the tree, one bowl each. How many more friends can Bác invite?"
+      }
+    },
+    {
+      "id": "dat-ten-giong-lua",
+      "title": "Tên của giống lúa mới",
+      "kind": "decision",
+      "target": "st-lua-thom-mat-cuoi-mam-com",
+      "speaker": "Bác Nông Dân Thành",
+      "prompt": "Cả mâm ăn xong, chẳng ai nói gì, chỉ cười. Bác Thành hắng giọng: «Giống lúa mới cần một cái tên. Cháu đặt đi.»",
+      "choices": [
+        {
+          "id": "mat-cuoi",
+          "text": "Lúa Mặt Cười",
+          "consequence": "Bác Thành sững lại, rồi cười to tới chảy nước mắt: «Mặt Cười... sao cháu biết? Thôi, để hôm nào bác kể.»"
+        },
+        {
+          "id": "som-mai",
+          "text": "Lúa Thơm Sớm Mai",
+          "consequence": "Bác gật gù: «Sớm mai, như cái lúc bác nhúng tay xuống ruộng mà ngửi thấy nó.»"
+        },
+        {
+          "id": "ong-thanh",
+          "text": "Lúa Ông Thành",
+          "consequence": "Bác đỏ mặt, xua tay lia lịa, nhưng cả mâm đã vỗ tay rầm rầm. Bác đành chịu, miệng vẫn cười."
+        }
+      ],
+      "en": {
+        "title": "A name for the new rice",
+        "prompt": "Everyone finishes eating. Nobody says a word, they just smile. Bác Thành clears his throat: «The new rice needs a name. You choose.»",
+        "choices": [
+          {
+            "text": "Smiling-Face Rice",
+            "consequence": "Bác Thành freezes, then laughs until he cries: «Smiling Face... how did you know? Never mind, I’ll tell you some day.»"
+          },
+          {
+            "text": "Morning Fragrance Rice",
+            "consequence": "Bác nods slowly: «Morning, like the moment I dipped my hand in the field and smelled it.»"
+          },
+          {
+            "text": "Grandpa Thành's Rice",
+            "consequence": "Bác goes red and waves it away, but the whole table is already clapping. He gives in, still smiling."
+          }
+        ]
+      }
+    },
+    {
+      "id": "trang-nhat-ky-moi",
+      "title": "Trang nhật ký mới",
+      "kind": "read",
+      "target": "st-lua-thom-mat-cuoi-nhat-ky-moi",
+      "goTo": "Vào nhà nông trại đọc trang nhật ký bác vừa viết",
+      "skill": "doc-hieu",
+      "text": "Ngày rằm. Mùa đầu của giống lúa mới: một nắm thóc, một nồi cơm, mười hai bát. Cả nông trại ăn sạch, chẳng ai nói gì, chỉ cười. Mùa sau gieo ba thửa. Người giữ giống: {name} và lão Thành.",
+      "question": "Theo trang nhật ký, mùa sau bác Thành định gieo bao nhiêu thửa?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Một thửa"
+        },
+        {
+          "id": "b",
+          "text": "Ba thửa"
+        },
+        {
+          "id": "c",
+          "text": "Mười hai thửa"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Tìm câu nói về «mùa sau».",
+          "Mười hai là số bát cơm, không phải số thửa ruộng."
+        ],
+        "hint": "Câu ấy đứng ngay trước dòng ghi tên người giữ giống.",
+        "answer": {
+          "text": "Ba thửa ruộng",
+          "explanation": "Nhật ký viết: «Mùa sau gieo ba thửa.»"
+        },
+        "en": {
+          "guide": [
+            "Find the sentence about «next season».",
+            "Twelve is the number of bowls, not plots."
+          ],
+          "hint": "It comes right before the line naming the seed keepers.",
+          "answer": {
+            "text": "Three plots of land",
+            "explanation": "The diary says: «Next season: sow three plots.»"
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba thửa! Mùa sau cả nông trại sẽ thơm mùi lúa mới.",
+          "{name} đọc nhật ký kỹ như đọc thư của chính mình.",
+          "Đúng rồi, bác Thành gạch chân con số ba hai lần."
+        ],
+        "wrong": [
+          "Mười hai là số bát cơm đấy, không phải thửa ruộng.",
+          "Một nắm thóc là mùa này, còn câu hỏi về mùa sau cơ.",
+          "Tìm chữ «mùa sau» trong trang nhật ký nhé {name}."
+        ],
+        "en": {
+          "right": [
+            "Three plots! Next season the whole farm will smell of the new rice.",
+            "{name} reads the diary as carefully as their own letters.",
+            "Right: Bác Thành underlined that three twice."
+          ],
+          "wrong": [
+            "Twelve is the bowls of rice, not the plots.",
+            "One handful was this season; the question is about next season.",
+            "Look for «next season» on the diary page, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "A new diary page",
+        "goTo": "Go into the farmhouse and read the page Bác just wrote",
+        "text": "Full-moon day. First season of the new rice: one handful of grain, one pot, twelve bowls. The whole farm ate every grain; nobody said anything, they just smiled. Next season: sow three plots. Keepers of the seed: {name} and old Thành.",
+        "question": "According to the diary, how many plots will Bác Thành sow next season?",
+        "choices": [
+          "One plot",
+          "Three plots",
+          "Twelve plots"
+        ]
+      }
+    },
+    {
+      "id": "noi-com-thom",
+      "title": "Nồi cơm thơm cả nông trại",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Nồi cơm đã hết, mà mùi thơm còn vương khắp nông trại tới tận tối. Bác Thành dúi vào tay {name} một bông lúa vàng: «Cháu giữ một bông. Người giữ giống thì phải có giống mà giữ chứ.»",
+      "en": {
+        "title": "A pot that perfumed the farm",
+        "text": "The pot is empty, but the fragrance lingers over the farm until evening. Bác Thành presses a golden rice ear into {name}’s hand: «Keep one. A seed keeper needs seed to keep.»"
+      }
+    },
+    {
+      "id": "ba-thua-mua-sau",
+      "title": "Ba thửa mùa sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bác Thành đã cắm sẵn ba cây cọc tre buộc vải đỏ ở ba thửa ruộng. «Mùa sau, rồi mùa sau nữa,» bác nói, «tới khi cả vùng ăn cơm thơm, bác mới chịu già.»",
+      "en": {
+        "title": "Three plots next season",
+        "text": "Bác Thành has already planted three red-ribboned stakes in three plots. «Next season, and the one after,» he says. «When the whole region eats fragrant rice, then I’ll allow myself to get old.»"
+      }
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 20,
+    "skillXp": {
+      "ke-chuyen": 1,
+      "phep-tru": 1,
+      "doc-hieu": 1
+    },
+    "items": {
+      "bong-lua-vang": 1
+    }
+  },
+  "en": {
+    "title": "Bác Nông Dân Thành's story, chapter 4: The first pot of rice",
+    "summary": "The first harvest of the fragrant rice is just a handful, enough for one pot. {name} pounds the rice, cooks it step by step, works out how many friends can be invited, helps Bác name the new rice, and reads the diary page he has just written."
+  }
+}
