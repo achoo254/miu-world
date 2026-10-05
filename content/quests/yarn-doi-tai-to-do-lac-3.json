@@ -1,0 +1,245 @@
+{
+  "id": "yarn-doi-tai-to-do-lac-3",
+  "region": "khu-rung-bi-mat",
+  "chapter": 4,
+  "title": "Chuyện của Dơi Đêm Tai To, chương 3: Hoàng hôn ở cửa hang",
+  "status": "active",
+  "category": "story",
+  "summary": "Cả rừng được mời tới cửa hang lúc chạng vạng để nhận lại đồ lạc, còn Dơi thì run như lá. {name} bày biện cùng Nhím Gai Mềm, xếp lịch cho buổi chiều, đưa dơi con lạc đường về kịp giờ và giúp Dơi bước ra chào mọi người.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Dơi Đêm Tai To, Nhím Gai Mềm, Sóc Hạt Dẻ Hay Quên",
+    "where": "Khu rừng bí mật: cửa hang đá, trảng cỏ ven hang, gốc dương xỉ, bãi đá cửa hang, gốc dẻ ven đồi",
+    "goal": "Tổ chức buổi trả đồ lạc lúc chạng vạng để Dơi gặp cả rừng mà không ai sợ",
+    "play": "Tìm đồ bày biện theo gợi ý, xếp lịch theo giờ, chơi dẫn dơi con ra khỏi hang, chọn cách Dơi ra chào",
+    "learn": "Xem giờ và sắp xếp việc theo thứ tự thời gian",
+    "reward": "75 XP, 20 Xu, Skill XP Xem đồng hồ và Đọc hiểu, một cây nấm chuông đỏ",
+    "next": "Chiều nào cửa hang cũng có góc đồ lạc, và Dơi hẹn {name} một buổi ngắm bình minh"
+  },
+  "phases": {
+    "hook": "doi-run-nhu-la",
+    "explore": "bay-bien",
+    "learn": "nhim-chia-se",
+    "challenge": "lich-buoi-chieu",
+    "decision": "doi-ra-chao",
+    "finale": "doi-ra-chao",
+    "reward": "hoang-hon-dau-tien",
+    "next": "goc-do-lac"
+  },
+  "places": {
+    "doi-hang-sau": "Cửa hang đá",
+    "bay-bien": "Trảng cỏ ven hang",
+    "st-doi-tai-to-do-lac-nhim": "Gốc dương xỉ",
+    "st-doi-tai-to-do-lac-bang-lich": "Bãi đá cửa hang",
+    "st-doi-tai-to-do-lac-soc": "Gốc dẻ ven đồi"
+  },
+  "steps": [
+    {
+      "id": "doi-run-nhu-la",
+      "title": "Dơi run như lá",
+      "goTo": "Ghé cửa hang đá, Dơi Đêm Tai To đã thức dậy từ giữa trưa vì hồi hộp",
+      "kind": "dialogue",
+      "target": "doi-hang-sau",
+      "lines": [
+        { "speaker": "Dơi Đêm Tai To", "text": "{name} ơi, tớ thức từ trưa, đếm giọt nước tới năm trăm mà vẫn không ngủ lại được. Chiều nay cả rừng sẽ tới đây…" },
+        { "speaker": "Dơi Đêm Tai To", "text": "Lỡ có ai hét lên thì sao? Tai tớ sẽ cụp xuống mất, rồi tớ lại bay vào hang trốn như mọi lần." },
+        { "speaker": "Dơi Đêm Tai To", "text": "Cậu giúp tớ bày biện cho thật ấm cúng nhé. Chỗ nào ấm cúng thì người ta ít hét hơn, tớ đoán vậy." }
+      ],
+      "choices": [
+        { "text": "Có tớ đứng cạnh cậu suốt buổi mà.", "reply": "Vậy… vậy tớ sẽ nghe tiếng bước chân của cậu, để biết cậu vẫn ở đó." },
+        { "text": "Biết đâu chẳng ai hét, chỉ vỗ tay thôi?", "reply": "Vỗ tay á? Tớ chưa từng nghĩ tới khả năng ấy… nghe cũng hay hay." }
+      ],
+      "en": {
+        "title": "Dơi is shaking like a leaf",
+        "goTo": "Stop by the stone cave, where Dơi Đêm Tai To has been awake since noon from nerves",
+        "lines": [
+          "{name}, I've been awake since noon. I counted five hundred drops and still couldn't get back to sleep. This evening the whole forest is coming here…",
+          "What if someone screams? My ears will droop, and I'll fly back into the cave and hide like always.",
+          "Help me make it really cosy, will you? People scream less in cosy places. I think."
+        ],
+        "choices": [
+          { "text": "I'll be right beside you the whole time.", "reply": "Then… then I'll listen for your footsteps, so I know you're still there." },
+          { "text": "Maybe nobody screams and they just clap?", "reply": "Clap? I've never even thought of that… it sounds rather nice." }
+        ]
+      }
+    },
+    {
+      "id": "bay-bien",
+      "title": "Bày biện cho ấm cúng",
+      "goTo": "Ra trảng cỏ ven hang tìm đồ bày biện",
+      "kind": "find-object",
+      "prompt": "Dơi tả ba món cần cho buổi chiều. Đọc gợi ý rồi tìm quanh trảng cỏ ven hang:",
+      "skill": "doc-hieu",
+      "items": [
+        { "id": "lo-dom-dom", "name": "Lọ đèn đom đóm", "clue": "Một chiếc lọ thủy tinh nắp mở, ban ngày trông trống trơn nhưng tối xuống sẽ sáng lung linh.", "target": "st-doi-tai-to-do-lac-lo-den" },
+        { "id": "tham-la", "name": "Tấm thảm lá khô", "clue": "Cuộn tròn như chiếc bánh cuốn khổng lồ, trải ra là cả nhà thỏ ngồi vừa.", "target": "st-doi-tai-to-do-lac-tham-la" },
+        { "id": "gio-qua", "name": "Giỏ quả dại", "clue": "Đan bằng mây, bên trong đầy quả mâm xôi đỏ, có mùi chua chua ngòn ngọt.", "target": "st-doi-tai-to-do-lac-gio-qua" }
+      ],
+      "en": {
+        "title": "Make it cosy",
+        "goTo": "Go to the meadow by the cave and find things to decorate with",
+        "prompt": "Dơi describes three things the evening needs. Read the clues and search around the meadow by the cave:",
+        "items": [
+          { "name": "Firefly lantern jar", "clue": "A glass jar with its lid off. It looks empty by day, but once it gets dark it will glow." },
+          { "name": "Dry-leaf mat", "clue": "Rolled up like a giant rice roll; spread it out and a whole rabbit family can sit on it." },
+          { "name": "Basket of wild berries", "clue": "Woven from rattan and full of red raspberries, with a sweet-and-sour smell." }
+        ]
+      }
+    },
+    {
+      "id": "nhim-chia-se",
+      "title": "Nhím Gai Mềm chia sẻ",
+      "goTo": "Nhím Gai Mềm vẫy gọi từ gốc dương xỉ",
+      "kind": "dialogue",
+      "target": "st-doi-tai-to-do-lac-nhim",
+      "lines": [
+        { "speaker": "Nhím Gai Mềm", "text": "Tớ nghe Sóc kể hết rồi. Cậu biết không, hồi bé ai cũng gọi tớ là «quả bóng gai», chẳng ai dám rủ tớ chơi." },
+        { "speaker": "Nhím Gai Mềm", "text": "Rồi có một buổi tớ tự đứng ra chào trước. Hóa ra gai tớ mềm hơn người ta tưởng. Cậu nói với Dơi thế giúp tớ nhé." }
+      ],
+      "choices": [
+        { "text": "Cậu tới chào Dơi cùng tớ đi!", "reply": "Ừ! Tớ sẽ đứng hàng đầu, xù gai lên làm trò cho mọi người cười." }
+      ],
+      "en": {
+        "title": "Nhím Gai Mềm opens up",
+        "goTo": "Nhím Gai Mềm is waving from the ferns",
+        "lines": [
+          "Sóc told me everything. You know, when I was little everyone called me 'the spiky ball' and nobody dared ask me to play.",
+          "Then one day I walked up and said hello first. Turns out my spines are softer than people think. Please tell Dơi that from me."
+        ],
+        "choices": [
+          { "text": "Come and greet Dơi with me!", "reply": "Yes! I'll stand in the front row and puff up my spines to make everyone laugh." }
+        ]
+      }
+    },
+    {
+      "id": "lich-buoi-chieu",
+      "title": "Lịch buổi chiều",
+      "goTo": "Tới tấm bảng ở bãi đá cửa hang xếp lịch cho buổi chiều",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-doi-tai-to-do-lac-bang-lich",
+      "skill": "xem-dong-ho",
+      "prompt": "Dơi viết bốn việc lên bảng mà quên xếp. Xếp theo giờ, từ sớm tới muộn:",
+      "items": [
+        { "id": "tra-do", "label": "Trả đồ cho từng bạn: 5 giờ rưỡi chiều" },
+        { "id": "trai-tham", "label": "Trải thảm lá: 4 giờ chiều" },
+        { "id": "thap-den", "label": "Thắp đèn đom đóm: 7 giờ tối" },
+        { "id": "ngam-hoang-hon", "label": "Cùng ngắm hoàng hôn: 6 giờ chiều" }
+      ],
+      "answer": { "order": ["trai-tham", "tra-do", "ngam-hoang-hon", "thap-den"] },
+      "support": {
+        "guide": ["Tìm việc có giờ sớm nhất.", "5 giờ rưỡi là sau 5 giờ, trước 6 giờ.", "7 giờ tối là muộn nhất, để cuối cùng."],
+        "hint": "Thứ tự giờ: 4 giờ, 5 giờ rưỡi, 6 giờ, 7 giờ.",
+        "answer": { "text": "Trải thảm, trả đồ, ngắm hoàng hôn, thắp đèn", "explanation": "Xếp theo giờ tăng dần: 4 giờ trải thảm, 5 giờ rưỡi trả đồ, 6 giờ ngắm hoàng hôn, 7 giờ thắp đèn đom đóm." },
+        "en": {
+          "guide": ["Find the job with the earliest time.", "Half past 5 comes after 5 o'clock and before 6.", "7 in the evening is the latest, so it goes last."],
+          "hint": "The times in order: 4, half past 5, 6, 7.",
+          "answer": { "text": "Spread the mat, give things back, watch the sunset, light the jars", "explanation": "In time order: 4 o'clock spread the mat, half past 5 give things back, 6 o'clock watch the sunset, 7 o'clock light the firefly jars." }
+        }
+      },
+      "feedback": {
+        "right": ["Dơi treo ngược đọc bảng rồi gật gù: «Lịch đẹp như tiếng vang đều đặn.»", "{name} xếp giờ chuẩn như chiếc đồng hồ của rừng.", "Đúng rồi! Trời tối hẳn mới thắp đèn, đom đóm sẽ sáng rõ nhất."],
+        "wrong": ["Ơ, trời còn sáng mà đã thắp đèn rồi, xếp lại nhé.", "5 giờ rưỡi đứng trước 6 giờ chứ {name}.", "Thảm chưa trải thì khách ngồi đâu? Việc ấy phải sớm nhất."],
+        "en": {
+          "right": ["Dơi reads the board upside down and nods: 'A timetable as steady as a good echo.'", "{name} orders the times like the forest's own clock.", "Right! Light the jars once it's properly dark and the fireflies glow brightest."],
+          "wrong": ["Oops, lanterns lit while it's still light? Try again.", "Half past 5 comes before 6 o'clock, {name}.", "If the mat isn't spread, where will the guests sit? That job comes first."]
+        }
+      },
+      "en": {
+        "title": "The evening's timetable",
+        "goTo": "Go to the board on the rocks in front of the cave and put the evening in order",
+        "prompt": "Dơi wrote four jobs on the board but forgot to order them. Sort them by time, earliest first:",
+        "items": ["Give things back to each friend: half past 5 in the afternoon", "Spread the leaf mat: 4 in the afternoon", "Light the firefly jars: 7 in the evening", "Watch the sunset together: 6 in the evening"]
+      }
+    },
+    {
+      "id": "soc-bao-tin",
+      "title": "Sóc báo tin",
+      "goTo": "Sóc Hạt Dẻ Hay Quên đang gọi ầm ĩ ở gốc dẻ ven đồi",
+      "kind": "dialogue",
+      "target": "st-doi-tai-to-do-lac-soc",
+      "lines": [
+        { "speaker": "Sóc Hạt Dẻ Hay Quên", "text": "{name}! Tớ đi báo khắp rừng rồi, lần này không quên ai hết! À… trừ một người: dơi con nhà bên cạnh hang." },
+        { "speaker": "Sóc Hạt Dẻ Hay Quên", "text": "Bạn ấy mải chơi bay tít vào sâu trong hang, giờ không tìm được lối ra. Sắp tới giờ rồi, cậu giúp với!" }
+      ],
+      "choices": [
+        { "text": "Để tớ vào dẫn bạn ấy ra!", "reply": "Cảm ơn cậu! Lần sau tớ sẽ buộc một sợi chỉ đỏ vào đuôi để nhớ báo tin đủ mọi người." }
+      ],
+      "en": {
+        "title": "Sóc spreads the word",
+        "goTo": "Sóc Hạt Dẻ Hay Quên is calling loudly from the chestnut tree by the hill",
+        "lines": [
+          "{name}! I've told the whole forest, and this time I didn't forget anyone! Well… except one: the little bat who lives next to the cave.",
+          "He was playing and flew deep into the cave, and now he can't find the way out. It's nearly time, please help!"
+        ],
+        "choices": [
+          { "text": "I'll go in and lead him out!", "reply": "Thank you! Next time I'll tie a red thread round my tail so I remember to tell everyone." }
+        ]
+      }
+    },
+    {
+      "id": "dan-doi-con",
+      "title": "Dẫn dơi con ra",
+      "goTo": "Chạy về cửa hang đá giúp dơi con tìm lối ra",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "doi-hang-sau",
+      "prompt": "Dơi con lạc trong lòng hang ngay trước giờ hẹn. Đưa dơi con bay qua 3 khúc hang tối về kịp buổi chạng vạng nhé!",
+      "game": "bat-echo",
+      "goal": 3,
+      "en": {
+        "title": "Guide the little bat out",
+        "goTo": "Hurry back to the stone cave to help the little bat find the way out",
+        "prompt": "A little bat is lost inside the cave just before the gathering. Guide him through 3 dark stretches of cave so he's back in time for twilight!"
+      }
+    },
+    {
+      "id": "doi-ra-chao",
+      "title": "Dơi ra chào",
+      "kind": "decision",
+      "target": "doi-hang-sau",
+      "speaker": "Dơi Đêm Tai To",
+      "prompt": "Khách đã tới đông đủ. Một bạn thỏ nhỏ vừa thấy Dơi liền «á» lên một tiếng. Tai Dơi bắt đầu cụp xuống. {name} làm gì?",
+      "choices": [
+        { "id": "tu-chao", "text": "Khẽ đẩy Dơi bay ra chào trước", "consequence": "Dơi bay ra, giọng run run: «Chào… chào mọi người. Tớ giữ đồ hộ các cậu.» Thỏ nhỏ chớp mắt: «Ơ, giọng bạn hiền thế!»" },
+        { "id": "gioi-thieu", "text": "Đứng lên giới thiệu Dơi với cả rừng", "consequence": "{name} kể chuyện chiếc rương bao năm. Cả trảng cỏ im phăng phắc, rồi Sóc vỗ tay trước tiên, sau đó là tất cả." },
+        { "id": "lam-tro", "text": "Rủ Dơi treo ngược vẫy tai làm trò", "consequence": "Dơi treo ngược, vẫy đôi tai to như hai chiếc quạt. Thỏ nhỏ cười ngặt nghẽo, cả rừng cười theo, chẳng ai còn sợ nữa." }
+      ],
+      "en": {
+        "title": "Dơi says hello",
+        "prompt": "Everyone has arrived. A little rabbit sees Dơi and squeaks 'eek!'. Dơi's ears start to droop. What do you do, {name}?",
+        "choices": [
+          { "text": "Gently nudge Dơi to fly out and say hello first", "consequence": "Dơi flies out, voice trembling: 'H… hello, everyone. I've been keeping your things safe.' The little rabbit blinks: 'Oh, what a kind voice!'" },
+          { "text": "Stand up and introduce Dơi to the forest", "consequence": "{name} tells the story of the chest and all those years. The meadow goes completely silent, then Sóc starts clapping, and then everyone does." },
+          { "text": "Get Dơi to hang upside down and waggle his ears", "consequence": "Dơi hangs upside down and flaps his big ears like two fans. The little rabbit falls about laughing, the whole forest joins in, and nobody is scared any more." }
+        ]
+      }
+    },
+    {
+      "id": "hoang-hon-dau-tien",
+      "title": "Hoàng hôn đầu tiên",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ba mươi món đồ về với chủ. Mặt trời lặn đỏ rực sau rặng cây, và Dơi ngồi giữa đám đông ngắm hoàng hôn, đôi tai to dựng thẳng như hai cánh buồm.",
+      "en": { "title": "The first sunset", "text": "Thirty lost things go home to their owners. The sun sinks red behind the trees, and Dơi sits right in the crowd watching the sunset, his big ears standing up like two sails." }
+    },
+    {
+      "id": "goc-do-lac",
+      "title": "Góc đồ lạc ở cửa hang",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Từ hôm ấy, chiều nào cửa hang đá cũng có góc đồ lạc, và khách tới chơi đông hơn cả khách tới tìm đồ. Dơi bảo một sáng nào đó sẽ thử thức dậy ngắm bình minh, nếu {name} chịu ngồi cạnh.",
+      "en": { "title": "A lost-and-found corner", "text": "From that day on there's a lost-and-found corner at the stone cave every evening, and more friends drop by to visit than to look for things. Dơi says that one morning he'll try staying up for the sunrise, if {name} sits beside him." }
+    }
+  ],
+  "reward": {
+    "xp": 75,
+    "coin": 20,
+    "skillXp": { "xem-dong-ho": 1, "doc-hieu": 1 },
+    "items": { "nam-chuong-do": 1 }
+  },
+  "en": {
+    "title": "Dơi Đêm Tai To's story, chapter 3: Sunset at the cave",
+    "summary": "The whole forest is invited to the cave at twilight to collect their lost things, and Dơi is shaking like a leaf. {name} decorates with Nhím Gai Mềm, puts the evening's jobs in time order, guides a lost little bat out in time and helps Dơi step out to greet everyone."
+  }
+}

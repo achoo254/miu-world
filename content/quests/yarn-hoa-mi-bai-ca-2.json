@@ -1,0 +1,215 @@
+{
+  "id": "yarn-hoa-mi-bai-ca-2",
+  "region": "khu-rung-bi-mat",
+  "chapter": 5,
+  "title": "Chuyện của Họa Mi Rừng Xanh, chương 2: Con suối biết hát",
+  "status": "active",
+  "category": "story",
+  "summary": "Họa Mi muốn con suối cũng có một câu trong bài ca. {name} nhặt ống tre, vỏ ốc và quả bầu khô ven suối, nhờ Gõ Kiến Giữ Nhịp tìm ra nhịp của suối, rồi hát thử cùng cả dàn chim.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Họa Mi Rừng Xanh, Gõ Kiến Giữ Nhịp",
+    "where": "Khu rừng bí mật: vòm lá xanh, ghềnh suối nhỏ, lùm tre ven suối, giàn bầu bỏ hoang, gốc thông già",
+    "goal": "Tìm ra tiếng hát của con suối để ghép vào bài ca của rừng",
+    "play": "Đi nhặt ba món biết kêu, đoán tiếng tiếp theo của một dãy lặp, chơi dàn đồng ca chim, chọn chỗ cho câu hát của suối",
+    "learn": "Nhận ra quy luật lặp lại trong một dãy âm thanh",
+    "reward": "65 XP, 16 Xu, Skill XP Logic",
+    "next": "Họa Mi tập quá sức và mất giọng ngay trước đêm hòa nhạc"
+  },
+  "phases": {
+    "hook": "y-tuong-cua-hoa-mi",
+    "explore": "nhat-mon-biet-keu",
+    "learn": "go-kien-nghe-thu",
+    "challenge": "doan-nhip-suoi",
+    "decision": "cho-cua-suoi",
+    "finale": "cho-cua-suoi",
+    "reward": "suoi-vao-bai",
+    "next": "dem-tap-qua-khuya"
+  },
+  "places": {
+    "hoa-mi-rung": "Vòm lá xanh",
+    "nhat-mon-biet-keu": "Ghềnh suối nhỏ",
+    "st-hoa-mi-bai-ca-ong-tre": "Lùm tre ven suối",
+    "st-hoa-mi-bai-ca-vo-oc": "Ghềnh suối nhỏ",
+    "st-hoa-mi-bai-ca-qua-bau": "Giàn bầu bỏ hoang",
+    "st-hoa-mi-bai-ca-go-kien": "Gốc thông già"
+  },
+  "steps": [
+    {
+      "id": "y-tuong-cua-hoa-mi",
+      "title": "Ý tưởng của Họa Mi",
+      "goTo": "Họa Mi Rừng Xanh đang chờ ở vòm lá xanh, mỏ ngậm một chiếc lá dong mới",
+      "kind": "dialogue",
+      "target": "hoa-mi-rung",
+      "lines": [
+        { "speaker": "Họa Mi Rừng Xanh", "text": "Tra-la… {name} tới rồi! Tối qua tớ nằm nghe suối chảy mà nghĩ mãi: suối đâu có mỏ, vậy làm sao cho suối một câu trong bài?" },
+        { "speaker": "Họa Mi Rừng Xanh", "text": "Tớ có ý này: nhặt những thứ biết kêu ở ven suối rồi ghép lại thành tiếng suối. Ống tre, vỏ ốc, quả bầu khô, gõ vào là ra nhạc hết!" }
+      ],
+      "choices": [
+        { "text": "Nghe vui quá, mình đi nhặt ngay!", "reply": "Nhặt đủ ba món thì mang tới gốc thông già nhé. Ở đó có một bác gõ nhịp giỏi nhất rừng." },
+        { "text": "Suối chỉ róc rách thôi, hát sao được?", "reply": "Róc rách cũng là hát đấy! Có điều suối hát nhỏ, phải ghé sát tai mới nghe ra." }
+      ],
+      "en": {
+        "title": "Họa Mi's idea",
+        "goTo": "Họa Mi Rừng Xanh is waiting in the green canopy with a fresh leaf in her beak",
+        "lines": [
+          "Tra-la… you're here, {name}! Last night I lay listening to the stream and kept wondering: a stream has no beak, so how can it have a line in our song?",
+          "Here's my idea: we gather things by the stream that make sounds and put them together into the stream's voice. Bamboo, shells, a dry gourd: tap them and out comes music!"
+        ],
+        "choices": [
+          { "text": "Sounds fun, let's go and collect them!", "reply": "Once you have all three, take them to the old pine stump. The best rhythm-keeper in the forest lives there." },
+          { "text": "A stream only babbles. How can it sing?", "reply": "Babbling is singing! The stream just sings quietly, you have to put your ear right up close." }
+        ]
+      }
+    },
+    {
+      "id": "nhat-mon-biet-keu",
+      "title": "Nhặt ba món biết kêu",
+      "goTo": "Xuống ghềnh suối nhỏ nhặt một ống tre, một vỏ ốc và một quả bầu khô",
+      "kind": "search",
+      "targets": ["st-hoa-mi-bai-ca-ong-tre", "st-hoa-mi-bai-ca-vo-oc", "st-hoa-mi-bai-ca-qua-bau"],
+      "en": {
+        "title": "Collect three things that make sounds",
+        "goTo": "Go down to the little rapids and pick up a bamboo tube, a snail shell and a dry gourd"
+      }
+    },
+    {
+      "id": "go-kien-nghe-thu",
+      "title": "Bác Gõ Kiến nghe thử",
+      "goTo": "Mang ba món tới gốc thông già, nơi Gõ Kiến Giữ Nhịp đang gõ cành",
+      "kind": "dialogue",
+      "target": "st-hoa-mi-bai-ca-go-kien",
+      "lines": [
+        { "speaker": "Gõ Kiến Giữ Nhịp", "text": "Cộc cộc! Họa Mi nhờ cháu tới hả? Bác giữ nhịp cho cả rừng ba mươi mùa rồi, nghe ba món này là biết suối hát kiểu gì." },
+        { "speaker": "Gõ Kiến Giữ Nhịp", "text": "Ống tre kêu «tách», vỏ ốc thổi kêu «u», quả bầu lắc kêu «xào». Suối chảy theo một vòng lặp đi lặp lại. Cháu nghe kỹ rồi đoán tiếp nhé." }
+      ],
+      "choices": [{ "text": "Cháu dỏng tai lên nghe rồi ạ!" }],
+      "en": {
+        "title": "Gõ Kiến has a listen",
+        "goTo": "Bring the three things to the old pine stump, where Gõ Kiến Giữ Nhịp is tapping a branch",
+        "lines": [
+          "Knock knock! Did Họa Mi send you? I've kept the beat for this forest for thirty seasons; one listen to these three and I'll know how the stream sings.",
+          "The bamboo goes 'tick', the shell, when you blow it, goes 'oo', and the gourd, when you shake it, goes 'swish'. The stream flows in a loop that repeats. Listen closely and guess what comes next."
+        ],
+        "choices": [{ "text": "My ears are wide open!" }]
+      }
+    },
+    {
+      "id": "doan-nhip-suoi",
+      "title": "Đoán nhịp của suối",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "st-hoa-mi-bai-ca-go-kien",
+      "skill": "logic",
+      "prompt": "Bác Gõ Kiến gõ lại tiếng suối: tách, tách, u, xào – tách, tách, u, xào – tách, tách, u… Tiếng tiếp theo là gì?",
+      "elements": [
+        { "id": "e1", "label": "tách" },
+        { "id": "e2", "label": "tách" },
+        { "id": "e3", "label": "u" },
+        { "id": "e4", "label": "xào" },
+        { "id": "e5", "label": "tách" },
+        { "id": "e6", "label": "tách" },
+        { "id": "e7", "label": "u" },
+        { "id": "e8", "label": "xào" },
+        { "id": "e9", "label": "tách" },
+        { "id": "e10", "label": "tách" },
+        { "id": "e11", "label": "u" },
+        { "id": "e12", "label": "?" }
+      ],
+      "choices": [
+        { "id": "a", "text": "tách" },
+        { "id": "b", "text": "u" },
+        { "id": "c", "text": "xào" }
+      ],
+      "answer": { "choice": "c" },
+      "support": {
+        "guide": ["Chia dãy tiếng thành từng nhóm bốn tiếng.", "Nhóm đầu tiên là: tách, tách, u, xào.", "Nhóm thứ ba mới có ba tiếng, còn thiếu tiếng cuối nhóm."],
+        "hint": "Tiếng cuối của mỗi nhóm luôn là tiếng quả bầu.",
+        "answer": { "text": "xào", "explanation": "Dãy lặp lại nhóm «tách, tách, u, xào». Nhóm thứ ba đã có «tách, tách, u», nên tiếng tiếp theo là «xào»." },
+        "en": {
+          "guide": ["Split the sounds into groups of four.", "The first group is: tick, tick, oo, swish.", "The third group only has three sounds so far; its last one is missing."],
+          "hint": "Every group ends with the gourd's sound.",
+          "answer": { "text": "swish", "explanation": "The pattern repeats 'tick, tick, oo, swish'. The third group already has 'tick, tick, oo', so the next sound is 'swish'." }
+        }
+      },
+      "feedback": {
+        "right": ["Cộc cộc cộc! Bác Gõ Kiến gõ một tràng khen ngợi.", "Xào xào… nghe y như suối đang cười với {name}.", "Tai {name} bắt được vòng lặp nhanh hơn cả bác gõ kiến già!"],
+        "wrong": ["Khoan, nhóm nào cũng có bốn tiếng, đếm lại xem nào.", "Tiếng ấy nằm ở đầu nhóm cơ, chưa tới lượt nó đâu {name}.", "Bác gõ chậm lại nhé: tách, tách, u… rồi tới gì?"],
+        "en": {
+          "right": ["Knock knock knock! Gõ Kiến drums out a round of applause.", "Swish swish… it sounds just like the stream laughing with {name}.", "{name}'s ears caught the loop faster than an old woodpecker!"],
+          "wrong": ["Wait, every group has four sounds. Count again.", "That sound starts a group, {name}; it isn't its turn yet.", "Let me tap it slowly: tick, tick, oo… and then what?"]
+        }
+      },
+      "en": {
+        "title": "Guess the stream's rhythm",
+        "prompt": "Gõ Kiến taps out the stream again: tick, tick, oo, swish – tick, tick, oo, swish – tick, tick, oo… What comes next?",
+        "elements": ["tick", "tick", "oo", "swish", "tick", "tick", "oo", "swish", "tick", "tick", "oo", "?"],
+        "choices": ["tick", "oo", "swish"]
+      }
+    },
+    {
+      "id": "hat-thu-cung-dan",
+      "title": "Hát thử cùng dàn chim",
+      "goTo": "Quay về vòm lá xanh hát thử bài có tiếng suối",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "hoa-mi-rung",
+      "prompt": "Cả dàn hát bài mới có tiếng suối, nhưng vài bạn chim còn hát lệch giọng. Tìm đủ 8 bạn hát lệch giúp Họa Mi nhé!",
+      "game": "bird-choir",
+      "goal": 8,
+      "en": {
+        "title": "Rehearse with the choir",
+        "goTo": "Go back to the green canopy and try the song with the stream in it",
+        "prompt": "The choir sings the new song with the stream, but a few birds are off-key. Find 8 off-key singers for Họa Mi!"
+      }
+    },
+    {
+      "id": "cho-cua-suoi",
+      "title": "Câu hát của suối",
+      "kind": "decision",
+      "target": "hoa-mi-rung",
+      "speaker": "Họa Mi Rừng Xanh",
+      "prompt": "Tiếng suối hay quá! Nhưng đặt câu của suối vào đâu trong bài đây, {name}?",
+      "choices": [
+        { "id": "mo-dau", "text": "Ở đầu bài, suối thức dậy trước tiên", "consequence": "Họa Mi gật gù: đúng rồi, sáng nào suối cũng róc rách trước khi con chim nào kịp mở mắt." },
+        { "id": "giua-bai", "text": "Ở giữa bài, nối các câu với nhau", "consequence": "«Như cây cầu nối hai bờ!» Họa Mi reo lên, rồi hát thử: câu chim, tiếng suối, lại câu chim. Êm ru." },
+        { "id": "cuoi-bai", "text": "Ở cuối bài, ru cả khu rừng ngủ", "consequence": "Họa Mi ngân nhỏ dần theo tiếng xào xào. Mấy chú chim non trên vòm lá ngáp dài, díp cả mắt." }
+      ],
+      "en": {
+        "title": "The stream's line",
+        "prompt": "The stream sounds wonderful! But where in the song does its line go, {name}?",
+        "choices": [
+          { "text": "At the start: the stream wakes up first", "consequence": "Họa Mi nods: of course, every morning the stream is babbling before any bird has opened its eyes." },
+          { "text": "In the middle, linking the lines", "consequence": "'Like a bridge between two banks!' Họa Mi cheers, then tries it: bird line, stream, bird line again. Smooth as silk." },
+          { "text": "At the end, to sing the forest to sleep", "consequence": "Họa Mi lets her voice fade into the swishing. A few chicks up in the canopy yawn and their eyes droop shut." }
+        ]
+      }
+    },
+    {
+      "id": "suoi-vao-bai",
+      "title": "Suối đã có câu hát",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Họa Mi ghi tiếng suối lên một chiếc lá mới bằng ba ký hiệu: vạch, tròn, xoắn. Bác Gõ Kiến bay sang dặn: «Ống tre cháu giữ lấy, đêm hòa nhạc cần đấy.»",
+      "en": { "title": "The stream has its line", "text": "Họa Mi writes the stream's part on a fresh leaf with three signs: a dash, a circle, a swirl. Gõ Kiến flies over: 'Keep that bamboo tube, you'll need it on concert night.'" }
+    },
+    {
+      "id": "dem-tap-qua-khuya",
+      "title": "Đêm tập quá khuya",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đêm ấy Họa Mi tập say sưa tới tận khuya, gọi cả dàn hát to hơn, to hơn nữa. Sáng hôm sau vòm lá yên lặng lạ thường: Họa Mi mở mỏ mà chẳng có tiếng nào bay ra.",
+      "en": { "title": "Practising far too late", "text": "That night Họa Mi rehearsed until very late, calling the choir to sing louder, louder still. Next morning the canopy is strangely quiet: Họa Mi opens her beak and not a sound comes out." }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": { "logic": 1 }
+  },
+  "en": {
+    "title": "Họa Mi Rừng Xanh's story, chapter 2: The stream that sings",
+    "summary": "Họa Mi wants the stream to have a line in the song too. {name} gathers a bamboo tube, a snail shell and a dry gourd by the water, works out the stream's rhythm with Gõ Kiến Giữ Nhịp, then rehearses with the whole bird choir."
+  }
+}

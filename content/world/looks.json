@@ -3352,6 +3352,194 @@
    "kind": "object",
    "label": "Đọc bảng",
    "tint": "#a08860"
+  },
+  "st-hoa-mi-bai-ca-se-nho": {
+   "model": "packs/kenney-cube-pets/2.0/animal-chick.glb",
+   "height": 0.7,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#c8a070"
+  },
+  "st-hoa-mi-bai-ca-la-gai": {
+   "model": "generated/props/fallen-leaf.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#4f9a3c"
+  },
+  "st-hoa-mi-bai-ca-la-nam": {
+   "model": "generated/props/fallen-leaf.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#9a6ad0"
+  },
+  "st-hoa-mi-bai-ca-la-da": {
+   "model": "generated/props/fallen-leaf.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#c89a30"
+  },
+  "st-hoa-mi-bai-ca-phien-da": {
+   "model": "packs/kenney-nature-kit/2.1/stone_smallFlatA.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "st-hoa-mi-bai-ca-ong-tre": {
+   "model": "packs/kenney-nature-kit/2.1/crops_bambooStageA.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-hoa-mi-bai-ca-vo-oc": {
+   "model": "generated/props/spiral-shell.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-hoa-mi-bai-ca-qua-bau": {
+   "model": "packs/kenney-nature-kit/2.1/crop_pumpkin.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c8b878"
+  },
+  "st-hoa-mi-bai-ca-go-kien": {
+   "model": "packs/kenney-cube-pets/2.0/animal-parrot.glb",
+   "height": 0.8,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#c8402c"
+  },
+  "st-hoa-mi-bai-ca-cu-meo": {
+   "model": "packs/kenney-cube-pets/2.0/animal-parrot.glb",
+   "height": 0.8,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#8a6a48"
+  },
+  "st-hoa-mi-bai-ca-vo-cay": {
+   "model": "generated/props/scroll.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#a07850"
+  },
+  "st-hoa-mi-bai-ca-hu-mat": {
+   "model": "packs/kenney-food-kit/2.0/honey.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-hoa-mi-bai-ca-binh-nuoc": {
+   "model": "packs/kenney-survival-kit/2.0/bottle.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-hoa-mi-bai-ca-khan-la": {
+   "model": "generated/props/scarf.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#5aa848"
+  },
+  "st-hoa-mi-bai-ca-ghe-go": {
+   "model": "packs/kenney-nature-kit/2.1/log.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-doi-tai-to-do-lac-nhim": {
+   "model": "packs/kenney-cube-pets/2.0/animal-hog.glb",
+   "height": 1.0,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#b89878"
+  },
+  "st-doi-tai-to-do-lac-dau-chan": {
+   "model": "generated/props/paw-prints.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-doi-tai-to-do-lac-vo-hat": {
+   "model": "packs/kenney-nature-kit/2.1/rock_smallFlatA.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#8a5a30"
+  },
+  "st-doi-tai-to-do-lac-soi-day": {
+   "model": "generated/props/knot.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-doi-tai-to-do-lac-con-quay": {
+   "model": "generated/props/wheel.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#a8783c"
+  },
+  "st-doi-tai-to-do-lac-da-reu": {
+   "model": "packs/kenney-survival-kit/2.0/rock-flat-grass.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-doi-tai-to-do-lac-da-det": {
+   "model": "packs/kenney-nature-kit/2.1/stone_smallFlatB.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-doi-tai-to-do-lac-so-ghi": {
+   "model": "generated/props/notebook.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-doi-tai-to-do-lac-soc": {
+   "model": "packs/kenney-cube-pets/2.0/animal-fox.glb",
+   "height": 1.0,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#b06a34"
+  },
+  "st-doi-tai-to-do-lac-lo-den": {
+   "model": "packs/kenney-survival-kit/2.0/bottle-large.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#e8e070"
+  },
+  "st-doi-tai-to-do-lac-tham-la": {
+   "model": "packs/kenney-survival-kit/2.0/bedroll-packed.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#b08a48"
+  },
+  "st-doi-tai-to-do-lac-gio-qua": {
+   "model": "generated/props/basket.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-doi-tai-to-do-lac-bang-lich": {
+   "model": "packs/kenney-nature-kit/2.1/sign.glb",
+   "height": 1.4,
+   "kind": "object",
+   "label": "Đọc bảng"
   }
  }
 }

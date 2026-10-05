@@ -1,0 +1,182 @@
+{
+  "id": "yarn-doi-tai-to-do-lac-1",
+  "region": "khu-rung-bi-mat",
+  "chapter": 4,
+  "title": "Chuyện của Dơi Đêm Tai To, chương 1: Tiếng cộc cộc lúc nửa đêm",
+  "status": "active",
+  "category": "story",
+  "summary": "Đêm nào trong hang cũng có tiếng «cộc… cộc» làm Dơi Đêm Tai To mất ngủ. {name} hỏi Nhím Gai Mềm, soi manh mối ở lối vào hang, lần theo tiếng gió tới khe đá và tìm ra thủ phạm: một con quay gỗ ai đánh rơi.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Dơi Đêm Tai To, Nhím Gai Mềm",
+    "where": "Khu rừng bí mật: cửa hang đá, gốc dương xỉ, lối vào hang, khe đá trong hang",
+    "goal": "Tìm ra thứ gì gõ «cộc cộc» trong hang mỗi đêm",
+    "play": "Hỏi chuyện Nhím, tìm ba manh mối, đếm theo nhịp gió, chọn cách xử lý món đồ tìm được",
+    "learn": "Đếm thêm theo nhóm ba, suy luận từ manh mối",
+    "reward": "55 XP, 14 Xu, Skill XP Logic",
+    "next": "Dơi kể bí mật về chiếc rương đầy đồ thất lạc trong rừng già"
+  },
+  "phases": {
+    "hook": "dem-mat-ngu",
+    "explore": "hoi-nhim",
+    "learn": "soi-manh-moi",
+    "challenge": "dem-tieng-coc",
+    "decision": "con-quay-cua-ai",
+    "finale": "con-quay-cua-ai",
+    "reward": "hang-yen-tieng",
+    "next": "bi-mat-cua-doi"
+  },
+  "places": {
+    "doi-hang-sau": "Cửa hang đá",
+    "st-doi-tai-to-do-lac-nhim": "Gốc dương xỉ",
+    "soi-manh-moi": "Lối vào hang",
+    "st-doi-tai-to-do-lac-con-quay": "Khe đá trong hang"
+  },
+  "steps": [
+    {
+      "id": "dem-mat-ngu",
+      "title": "Đêm mất ngủ",
+      "goTo": "Tới cửa hang đá, Dơi Đêm Tai To đang treo ngược và vẫy vẫy đôi tai to",
+      "kind": "dialogue",
+      "target": "doi-hang-sau",
+      "lines": [
+        { "speaker": "Dơi Đêm Tai To", "text": "Suỵt… {name}, lại gần đây. Mấy đêm nay trong hang có tiếng «cộc… cộc» lạ lắm, đều đều như ai gõ cửa." },
+        { "speaker": "Dơi Đêm Tai To", "text": "Tai tớ nghe được cả tiếng nấm mọc, vậy mà tiếng này tớ chịu, đoán mãi không ra. Mà tớ thì… hơi ngại vào sâu một mình." }
+      ],
+      "choices": [
+        { "text": "Mình cùng đi tìm, cậu cứ bay sau tớ.", "reply": "Cảm ơn cậu… À, Nhím Gai Mềm cũng nghe thấy đấy, bạn ấy ngủ ở gốc dương xỉ ngay cạnh hang." },
+        { "text": "Dơi mà cũng sợ chỗ tối à?", "reply": "Tớ không sợ tối… tớ sợ thứ mình không hiểu. Hai cái đó khác nhau đấy!" }
+      ],
+      "en": {
+        "title": "Wide awake at bedtime",
+        "goTo": "Go to the stone cave, where Dơi Đêm Tai To hangs upside down flapping his big ears",
+        "lines": [
+          "Shh… {name}, come closer. For nights now there's been a strange 'knock… knock' in the cave, steady as someone at a door.",
+          "My ears can hear mushrooms growing, yet this one beats me; I can't work it out. And I'm… a bit shy about going deep inside on my own."
+        ],
+        "choices": [
+          { "text": "Let's look together. Fly right behind me.", "reply": "Thank you… Oh, Nhím Gai Mềm hears it too. She sleeps under the ferns right by the cave." },
+          { "text": "A bat who's scared of the dark?", "reply": "I'm not scared of the dark… I'm scared of what I don't understand. That's different!" }
+        ]
+      }
+    },
+    {
+      "id": "hoi-nhim",
+      "title": "Nhím Gai Mềm nghe thấy gì",
+      "goTo": "Ghé gốc dương xỉ hỏi chuyện Nhím Gai Mềm",
+      "kind": "dialogue",
+      "target": "st-doi-tai-to-do-lac-nhim",
+      "lines": [
+        { "speaker": "Nhím Gai Mềm", "text": "Ối, cậu làm tớ giật mình xù hết cả gai! Tiếng cộc cộc ấy hả? Tớ nghe suốt, sợ quá cuộn tròn cả đêm." },
+        { "speaker": "Nhím Gai Mềm", "text": "Có điều tớ để ý: cứ gió lùa qua cửa hang là nó kêu, gió lặng là nó im re. Lại còn có mùi hạt dẻ thoang thoảng nữa." }
+      ],
+      "choices": [
+        { "text": "Gió với hạt dẻ à? Manh mối hay đấy!", "reply": "Thật hả? Vậy tớ thôi sợ… à, vẫn sợ một tí tẹo thôi." }
+      ],
+      "en": {
+        "title": "What Nhím Gai Mềm heard",
+        "goTo": "Stop by the ferns to ask Nhím Gai Mềm",
+        "lines": [
+          "Eek, you made all my spines pop up! The knocking? I hear it all the time; I was so scared I stayed curled up all night.",
+          "But I noticed: whenever the wind blows through the cave mouth it knocks, and when the wind drops it goes quiet. And there's a faint smell of chestnuts too."
+        ],
+        "choices": [
+          { "text": "Wind and chestnuts? Great clues!", "reply": "Really? Then I'm not scared any more… well, maybe a teeny bit." }
+        ]
+      }
+    },
+    {
+      "id": "soi-manh-moi",
+      "title": "Soi manh mối",
+      "goTo": "Soi đèn tìm ba manh mối ở lối vào hang",
+      "kind": "search",
+      "targets": ["st-doi-tai-to-do-lac-dau-chan", "st-doi-tai-to-do-lac-vo-hat", "st-doi-tai-to-do-lac-soi-day"],
+      "en": {
+        "title": "Look for clues",
+        "goTo": "Shine your light around the cave entrance and find three clues"
+      }
+    },
+    {
+      "id": "dem-tieng-coc",
+      "title": "Đếm theo nhịp gió",
+      "goTo": "Lần theo tiếng gió tới khe đá trong hang",
+      "kind": "riddle",
+      "target": "st-doi-tai-to-do-lac-con-quay",
+      "skill": "logic",
+      "question": "Trong khe đá kẹt một con quay gỗ, gió thổi qua là nó gõ «cộc». Dơi đếm nhịp gió: tiếng cộc thứ nhất ở nhịp 3, thứ hai ở nhịp 6, thứ ba ở nhịp 9. Tiếng cộc thứ năm sẽ ở nhịp thứ mấy?",
+      "answer": { "value": 15 },
+      "support": {
+        "guide": ["Nhìn xem từ tiếng cộc này tới tiếng cộc sau cách nhau mấy nhịp.", "3, 6, 9: mỗi lần thêm 3.", "Đếm tiếp: tiếng thứ tư, rồi tiếng thứ năm."],
+        "hint": "Sau 9 là 12, sau 12 là…?",
+        "answer": { "text": "Nhịp 15", "explanation": "Tiếng cộc cứ cách 3 nhịp: 3, 6, 9, 12, 15. Tiếng thứ năm ở nhịp 15." },
+        "en": {
+          "guide": ["See how many gusts there are from one knock to the next.", "3, 6, 9: it goes up by 3 each time.", "Keep counting: the fourth knock, then the fifth."],
+          "hint": "After 9 comes 12, after 12 comes…?",
+          "answer": { "text": "Gust 15", "explanation": "There's a knock every 3 gusts: 3, 6, 9, 12, 15. The fifth knock comes at gust 15." }
+        }
+      },
+      "feedback": {
+        "right": ["Dơi dỏng tai: «cộc» đúng nhịp 15 thật! Cậu đoán trước cả tiếng vang.", "{name} đếm cách ba đều như giọt nước rơi.", "Suỵt… nghe kìa, con quay gõ đúng lúc {name} vừa nói!"],
+        "wrong": ["Tai Dơi cụp xuống: nhịp ấy gió thổi mà chẳng có tiếng cộc nào.", "Mỗi lần cách nhau ba nhịp, đếm lại từ 9 nhé.", "Đó mới là tiếng thứ tư thôi, còn một tiếng nữa cơ {name}."],
+        "en": {
+          "right": ["Dơi pricks up his ears: a 'knock' right on gust 15! You guessed it before the echo.", "{name} counts in threes as steady as dripping water.", "Shh… listen, the top knocks just as {name} says it!"],
+          "wrong": ["Dơi's ears droop: on that gust the wind blew but nothing knocked.", "They're three gusts apart. Count on again from 9.", "That's only the fourth knock, {name}; there's one more."]
+        }
+      },
+      "en": {
+        "title": "Count with the wind",
+        "goTo": "Follow the sound of the wind to the crack in the cave rock",
+        "question": "A wooden spinning top is stuck in a crack in the rock; every time the wind blows through, it goes 'knock'. Dơi counts the gusts: the first knock is at gust 3, the second at gust 6, the third at gust 9. At which gust will the fifth knock come?"
+      }
+    },
+    {
+      "id": "con-quay-cua-ai",
+      "title": "Con quay của ai?",
+      "goTo": "Mang con quay gỗ ra cửa hang đá cho Dơi xem",
+      "kind": "decision",
+      "target": "doi-hang-sau",
+      "speaker": "Dơi Đêm Tai To",
+      "prompt": "Trên con quay có khắc ba chữ «S.H.D». Dơi ôm con quay, ngập ngừng: «Mình làm gì với nó đây, {name}?»",
+      "choices": [
+        { "id": "tra-ngay", "text": "Sáng mai mang đi trả ngay", "consequence": "Dơi cụp tai: «Ban ngày ai thấy tớ cũng hét… nhưng thôi, cậu nói đúng. Để tớ nghĩ cách.»" },
+        { "id": "cat-giu", "text": "Cất vào chỗ của những món đồ lạc", "consequence": "Dơi giật mình: «Sao cậu biết tớ có chỗ cất đồ lạc?» Rồi Dơi thở dài: «Thôi được, tớ sẽ kể cậu nghe.»" },
+        { "id": "doan-chu", "text": "Thử đoán xem «S.H.D» là ai", "consequence": "Dơi lẩm nhẩm: «S… H… D… Sóc Hạt Dẻ! Bạn ấy hay quên nhất rừng, chắc chẳng nhớ mình làm rơi.»" }
+      ],
+      "en": {
+        "title": "Whose top is it?",
+        "goTo": "Bring the wooden top back to the stone cave to show Dơi",
+        "prompt": "Three letters are carved on the top: 'S.H.D'. Dơi hugs it and hesitates: 'What do we do with it, {name}?'",
+        "choices": [
+          { "text": "Give it back first thing tomorrow", "consequence": "Dơi's ears droop: 'In daylight everyone screams when they see me… but you're right. Let me think of a way.'" },
+          { "text": "Put it where the lost things go", "consequence": "Dơi jumps: 'How did you know I keep lost things?' Then he sighs: 'All right, I'll tell you.'" },
+          { "text": "Try to guess who 'S.H.D' is", "consequence": "Dơi mutters: 'S… H… D… Sóc Hạt Dẻ! The most forgetful squirrel in the forest. She probably doesn't even know she dropped it.'" }
+        ]
+      }
+    },
+    {
+      "id": "hang-yen-tieng",
+      "title": "Hang đã yên tiếng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gió vẫn lùa qua cửa hang, nhưng không còn tiếng cộc nào nữa. Nhím Gai Mềm duỗi người ra ngủ, còn Dơi treo con quay lên vách như treo một chiếc huy chương.",
+      "en": { "title": "The cave is quiet again", "text": "The wind still blows through the cave mouth, but there's no more knocking. Nhím Gai Mềm stretches out to sleep, and Dơi hangs the top on the wall like a medal." }
+    },
+    {
+      "id": "bi-mat-cua-doi",
+      "title": "Bí mật của Dơi",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Trước khi {name} về, Dơi thì thầm: «Thật ra… tớ có cả một rương đầy đồ thất lạc, giấu trong rừng già bao năm nay. Mai cậu đi cùng tớ nhé?»",
+      "en": { "title": "Dơi's secret", "text": "Before {name} leaves, Dơi whispers: 'Actually… I have a whole chest of lost things, hidden in the old forest for years. Will you come with me tomorrow?'" }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": { "logic": 1 }
+  },
+  "en": {
+    "title": "Dơi Đêm Tai To's story, chapter 1: Knocking at midnight",
+    "summary": "Every night a 'knock… knock' in the cave keeps Dơi Đêm Tai To awake. {name} asks Nhím Gai Mềm, searches the cave entrance for clues, follows the wind to a crack in the rock and finds the culprit: a wooden top someone dropped."
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "id": "yarn-hoa-mi-bai-ca-3",
+  "region": "khu-rung-bi-mat",
+  "chapter": 5,
+  "title": "Chuyện của Họa Mi Rừng Xanh, chương 3: Giọng hát lạc mất",
+  "status": "active",
+  "category": "story",
+  "summary": "Họa Mi mất giọng chỉ ba ngày trước đêm hòa nhạc. {name} tìm Bác Cú Mèo, đọc lời dặn trên tấm vỏ cây, đi gom mật ong, nước ấm, khăn lá chuối, rồi giúp Họa Mi chọn người hát thay.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Họa Mi Rừng Xanh, Bác Cú Mèo",
+    "where": "Khu rừng bí mật: vòm lá xanh, hốc cây sồi, bìa rừng hoa dại, vách đá tổ ong, mạch nước ấm, bụi chuối rừng",
+    "goal": "Giúp Họa Mi giữ gìn giọng hát và chuẩn bị cho đêm hòa nhạc dù chưa hát được",
+    "play": "Đọc lời dặn, tìm ba món theo gợi ý, chọn mọi việc nên làm, quyết định ai hát giọng chính",
+    "learn": "Đọc hiểu một lời dặn ngắn và chọn đúng các ý trong bài đọc",
+    "reward": "70 XP, 18 Xu, Skill XP Đọc hiểu và Logic",
+    "next": "Giọng Họa Mi trở lại vừa kịp đêm hòa nhạc dưới vòm lá"
+  },
+  "phases": {
+    "hook": "ho-ma-khong-ra-tieng",
+    "explore": "tim-bac-cu-meo",
+    "learn": "doc-loi-dan",
+    "challenge": "gom-thuoc-ngot",
+    "decision": "ai-hat-thay",
+    "finale": "ai-hat-thay",
+    "reward": "ba-ngay-im-lang",
+    "next": "giong-hat-tro-ve"
+  },
+  "places": {
+    "hoa-mi-rung": "Vòm lá xanh",
+    "st-hoa-mi-bai-ca-cu-meo": "Hốc cây sồi",
+    "st-hoa-mi-bai-ca-vo-cay": "Hốc cây sồi",
+    "gom-thuoc-ngot": "Bìa rừng hoa dại",
+    "st-hoa-mi-bai-ca-hu-mat": "Vách đá tổ ong",
+    "st-hoa-mi-bai-ca-binh-nuoc": "Mạch nước ấm",
+    "st-hoa-mi-bai-ca-khan-la": "Bụi chuối rừng"
+  },
+  "steps": [
+    {
+      "id": "ho-ma-khong-ra-tieng",
+      "title": "Há mỏ mà không ra tiếng",
+      "goTo": "Vòm lá xanh im ắng lạ thường, tới xem Họa Mi Rừng Xanh thế nào",
+      "kind": "dialogue",
+      "target": "hoa-mi-rung",
+      "lines": [
+        { "speaker": "Họa Mi Rừng Xanh", "text": "(Họa Mi há mỏ, chỉ có tiếng gió khò khè. Chị cắn một chiếc lá, cào vội mấy chữ:) «Mất giọng rồi. Ba ngày nữa là hòa nhạc.»" },
+        { "speaker": "Họa Mi Rừng Xanh", "text": "(Thêm một chiếc lá nữa, nét chữ run run:) «Bác Cú Mèo ở hốc cây sồi biết chữa giọng. {name} đi giúp tớ được không?»" }
+      ],
+      "choices": [
+        { "text": "Cậu cứ nghỉ đi, để tớ lo!", "reply": "(Họa Mi gật lia lịa, mắt rưng rưng, rồi vẽ một trái tim lên lá đưa cho {name}.)" },
+        { "text": "Đừng sợ, giọng cậu chỉ đi dạo thôi.", "reply": "(Họa Mi bật cười không thành tiếng, viết: «Đi dạo thì nhớ về sớm nhé, giọng ơi.»)" }
+      ],
+      "en": {
+        "title": "A beak with no voice",
+        "goTo": "The green canopy is strangely quiet. Go and see how Họa Mi Rừng Xanh is",
+        "lines": [
+          "(Họa Mi opens her beak; only a wheezy breath comes out. She grabs a leaf and scratches a few words:) 'Lost my voice. Concert in three days.'",
+          "(Another leaf, in shaky letters:) 'Old Cú Mèo in the oak hollow knows how to mend voices. Will you go for me, {name}?'"
+        ],
+        "choices": [
+          { "text": "Just rest, I'll take care of it!", "reply": "(Họa Mi nods and nods, eyes brimming, then draws a heart on a leaf and hands it to {name}.)" },
+          { "text": "Don't worry, your voice just went for a walk.", "reply": "(Họa Mi laughs without a sound and writes: 'Then tell it to come home early.')" }
+        ]
+      }
+    },
+    {
+      "id": "tim-bac-cu-meo",
+      "title": "Bác Cú Mèo",
+      "goTo": "Tới hốc cây sồi tìm Bác Cú Mèo",
+      "kind": "dialogue",
+      "target": "st-hoa-mi-bai-ca-cu-meo",
+      "lines": [
+        { "speaker": "Bác Cú Mèo", "text": "Hù… hù… Họa Mi lại hát quá sức rồi. Tập tới nửa đêm, lại còn gào gọi cả dàn cho to, cổ nào chịu cho nổi." },
+        { "speaker": "Bác Cú Mèo", "text": "Bác khắc sẵn cách chăm giọng lên tấm vỏ cây cạnh cửa. Cháu đọc kỹ rồi hẵng đi lấy đồ, đọc ẩu là lấy nhầm đấy." }
+      ],
+      "choices": [
+        { "text": "Cháu đọc ngay đây ạ.", "reply": "Ngoan. Mắt cú như bác đọc được giữa đêm, còn mắt cháu thì đọc ban ngày cho rõ." }
+      ],
+      "en": {
+        "title": "Old Cú Mèo",
+        "goTo": "Go to the oak hollow to find old Cú Mèo",
+        "lines": [
+          "Hoo… hoo… Họa Mi has overdone it again. Rehearsing till midnight and shouting at the whole choir to sing louder: no throat can take that.",
+          "I carved how to care for a voice on the piece of bark by my door. Read it carefully before you fetch anything; read it sloppily and you'll fetch the wrong things."
+        ],
+        "choices": [
+          { "text": "I'll read it right now.", "reply": "Good child. Owl eyes like mine read at midnight; yours read best in daylight." }
+        ]
+      }
+    },
+    {
+      "id": "doc-loi-dan",
+      "title": "Lời dặn trên vỏ cây",
+      "kind": "read",
+      "target": "st-hoa-mi-bai-ca-vo-cay",
+      "skill": "doc-hieu",
+      "text": "Cho giọng hót đang khàn:\n– Uống một ngụm nước ấm pha mật ong, sáng một lần, tối một lần.\n– Quàng khăn lá chuối giữ ấm cổ mỗi khi gió đêm thổi.\n– Ba ngày không gào, không hót, muốn nói gì thì thì thầm.\n– Tránh quả sấu chua: chua làm cổ rát thêm.\nBác Cú Mèo.",
+      "question": "Theo lời dặn, mỗi ngày Họa Mi uống nước ấm pha mật ong mấy lần?",
+      "choices": [
+        { "id": "a", "text": "Một lần" },
+        { "id": "b", "text": "Hai lần" },
+        { "id": "c", "text": "Ba lần" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm dòng có chữ «mật ong».", "Đọc tiếp xem dòng ấy nói uống vào những lúc nào.", "Đếm số lúc được nhắc tới."],
+        "hint": "Một lần lúc mặt trời lên, một lần lúc trời tối.",
+        "answer": { "text": "Hai lần", "explanation": "Lời dặn viết: sáng một lần, tối một lần. Cộng lại là hai lần mỗi ngày." },
+        "en": {
+          "guide": ["Find the line with the word 'honey'.", "Read on to see when it says to drink it.", "Count how many times of day it names."],
+          "hint": "Once when the sun comes up, once when it gets dark.",
+          "answer": { "text": "Twice", "explanation": "The note says: once in the morning, once in the evening. That makes two times a day." }
+        }
+      },
+      "feedback": {
+        "right": ["Hù hù, chính xác! Bác Cú Mèo xoay đầu gần trọn một vòng.", "{name} đọc chậm mà trúng, đúng kiểu cú mèo.", "Hai ngụm mỗi ngày, Họa Mi sẽ nhớ thôi."],
+        "wrong": ["Đọc lại dòng có chữ «mật ong» nhé, có hai lúc được nhắc tới cơ.", "Hù… nhiều quá thì Họa Mi uống no nước mất.", "Sáng có, tối có… vậy là mấy lần nhỉ {name}?"],
+        "en": {
+          "right": ["Hoo hoo, exactly! Cú Mèo turns his head almost all the way round.", "{name} reads slowly and gets it right, a true owl.", "Two sips a day. Họa Mi won't forget."],
+          "wrong": ["Read the line with 'honey' again; it names two times of day.", "Hoo… that many and Họa Mi will be sloshing with water.", "Morning, yes, evening, yes… so how many times, {name}?"]
+        }
+      },
+      "en": {
+        "title": "The note on the bark",
+        "text": "For a voice gone hoarse:\n– One sip of warm water with honey, once in the morning, once in the evening.\n– Wear a banana-leaf scarf to keep your throat warm whenever the night wind blows.\n– Three days with no shouting and no singing; if you must speak, whisper.\n– Stay away from sour hog plums: sourness makes a sore throat sorer.\nCú Mèo.",
+        "question": "According to the note, how many times a day does Họa Mi drink warm honey water?",
+        "choices": ["Once", "Twice", "Three times"]
+      }
+    },
+    {
+      "id": "gom-thuoc-ngot",
+      "title": "Gom đồ chăm giọng",
+      "goTo": "Ra bìa rừng hoa dại tìm mật ong, nước ấm và khăn lá chuối",
+      "kind": "find-object",
+      "prompt": "Ba món Bác Cú Mèo dặn đang ở quanh bìa rừng hoa dại. Đọc gợi ý mà tìm:",
+      "skill": "doc-hieu",
+      "items": [
+        { "id": "hu-mat", "name": "Hũ mật ong rừng", "clue": "Ong bay vo ve quanh vách đá, dưới chân vách có một chiếc hũ sóng sánh màu nắng.", "target": "st-hoa-mi-bai-ca-hu-mat" },
+        { "id": "binh-nuoc", "name": "Bình nước ấm", "clue": "Có một mạch nước bốc hơi nghi ngút, ai đó để sẵn chiếc bình hứng bên cạnh.", "target": "st-hoa-mi-bai-ca-binh-nuoc" },
+        { "id": "khan-la", "name": "Khăn lá chuối", "clue": "Mềm, xanh mướt, dài vừa một vòng cổ chim, phơi trên bụi chuối rừng.", "target": "st-hoa-mi-bai-ca-khan-la" }
+      ],
+      "en": {
+        "title": "Gather the voice remedies",
+        "goTo": "Head to the wildflower edge of the forest for honey, warm water and a banana-leaf scarf",
+        "prompt": "The three things Cú Mèo listed are around the wildflower edge. Follow the clues:",
+        "items": [
+          { "name": "Jar of wild honey", "clue": "Bees buzz round a rock face, and at its foot sits a jar the colour of sunshine." },
+          { "name": "Flask of warm water", "clue": "A spring is steaming away, and someone has left a flask beside it to fill." },
+          { "name": "Banana-leaf scarf", "clue": "Soft and bright green, just long enough to wrap once round a bird's neck, drying on the wild banana plants." }
+        ]
+      }
+    },
+    {
+      "id": "viec-nen-lam",
+      "title": "Ba ngày nên làm gì?",
+      "goTo": "Mang đồ về vòm lá xanh cho Họa Mi",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "hoa-mi-rung",
+      "skill": "logic",
+      "prompt": "Họa Mi viết lên lá: «Ba ngày tới tớ được làm gì?» Chọn mọi việc đúng với lời dặn của Bác Cú Mèo:",
+      "choices": [
+        { "id": "a", "text": "Uống nước ấm pha mật ong" },
+        { "id": "b", "text": "Gào gọi cả dàn ra tập hát" },
+        { "id": "c", "text": "Quàng khăn lá chuối khi gió đêm thổi" },
+        { "id": "d", "text": "Thì thầm thay vì hót" },
+        { "id": "e", "text": "Ăn một rổ quả sấu cho tỉnh người" }
+      ],
+      "answer": { "choices": ["a", "c", "d"] },
+      "support": {
+        "guide": ["Nhớ lại bốn dòng trên tấm vỏ cây.", "Việc nào giúp cổ ấm và được nghỉ thì chọn.", "Việc nào bị dặn tránh thì bỏ ra."],
+        "hint": "Có ba việc nên làm; gào và ăn đồ chua đều bị dặn tránh.",
+        "answer": { "text": "Uống nước ấm pha mật, quàng khăn lá chuối, thì thầm", "explanation": "Lời dặn bảo uống nước ấm pha mật, quàng khăn khi gió đêm, chỉ thì thầm; còn gào và ăn sấu chua thì phải tránh." },
+        "en": {
+          "guide": ["Remember the four lines on the bark.", "Pick the things that keep a throat warm and rested.", "Leave out anything the note says to avoid."],
+          "hint": "Three things are right; shouting and sour fruit are both on the 'avoid' list.",
+          "answer": { "text": "Warm honey water, the banana-leaf scarf, whispering", "explanation": "The note says to drink warm honey water, wear the scarf in the night wind and only whisper; shouting and sour hog plums must be avoided." }
+        }
+      },
+      "feedback": {
+        "right": ["Họa Mi vẽ ba dấu tích to tướng lên lá, kèm một khuôn mặt cười.", "{name} nhớ lời dặn còn kỹ hơn cả Bác Cú Mèo.", "Đúng hết rồi! Ba ngày này vòm lá sẽ chỉ có tiếng thì thầm."],
+        "wrong": ["Họa Mi lắc đầu nguầy nguậy: việc ấy bị dặn tránh mà!", "Còn sót một việc nên làm đấy {name}, nghĩ tới gió đêm xem.", "Gào thì cổ càng khàn thêm, bỏ việc ấy ra nhé."],
+        "en": {
+          "right": ["Họa Mi draws three huge ticks on a leaf, plus a smiley face.", "{name} remembers the note even better than Cú Mèo does.", "All correct! For three days the canopy will only hear whispers."],
+          "wrong": ["Họa Mi shakes her head hard: that one is on the 'avoid' list!", "One good thing is still missing, {name}. Think about the night wind.", "Shouting only makes a voice hoarser. Leave that one out."]
+        }
+      },
+      "en": {
+        "title": "What to do for three days?",
+        "goTo": "Bring everything back to Họa Mi in the green canopy",
+        "prompt": "Họa Mi writes on a leaf: 'What am I allowed to do these three days?' Choose everything that matches Cú Mèo's note:",
+        "choices": ["Drink warm water with honey", "Shout for the whole choir to come and rehearse", "Wear the banana-leaf scarf when the night wind blows", "Whisper instead of singing", "Eat a basket of hog plums to perk up"]
+      }
+    },
+    {
+      "id": "ai-hat-thay",
+      "title": "Ai hát giọng chính?",
+      "kind": "decision",
+      "target": "hoa-mi-rung",
+      "speaker": "Họa Mi Rừng Xanh",
+      "prompt": "Họa Mi viết: «Lỡ tới hôm hòa nhạc giọng tớ chưa về thì sao? Ai sẽ hát giọng chính?» {name} khuyên gì?",
+      "choices": [
+        { "id": "se-nho", "text": "Sẻ Nhỏ Nốt Lặng, giọng trong như sương", "consequence": "Họa Mi viết tên Sẻ Nhỏ thật to, rồi gạch chân ba lần. «Em ấy cần ai đó tin mình. Tớ sẽ tin.»" },
+        { "id": "ca-dan", "text": "Cả dàn cùng hát, mỗi bạn một câu", "consequence": "Họa Mi ngẫm nghĩ thật lâu rồi gật đầu: «Bài của cả rừng thì cả rừng hát. Sao trước giờ tớ không nghĩ ra nhỉ?»" },
+        { "id": "hoan-lai", "text": "Hoãn đêm nhạc chờ Họa Mi khỏe hẳn", "consequence": "Họa Mi lắc đầu, viết: «Cả rừng đã hẹn nhau rồi, không hoãn đâu. Mình sẽ tìm ra cách khác.»" }
+      ],
+      "en": {
+        "title": "Who sings the lead?",
+        "prompt": "Họa Mi writes: 'What if my voice isn't back by concert night? Who sings the lead?' What do you advise, {name}?",
+        "choices": [
+          { "text": "Sẻ Nhỏ Nốt Lặng, with a voice clear as dew", "consequence": "Họa Mi writes Sẻ Nhỏ's name big and underlines it three times. 'She needs someone to believe in her. I will.'" },
+          { "text": "The whole choir, one line each", "consequence": "Họa Mi thinks for a long while, then nods: 'The forest's song, sung by the forest. Why didn't I think of that before?'" },
+          { "text": "Put the concert off until Họa Mi is well", "consequence": "Họa Mi shakes her head and writes: 'The whole forest has made plans. No postponing. We'll find another way.'" }
+        ]
+      }
+    },
+    {
+      "id": "ba-ngay-im-lang",
+      "title": "Ba ngày im lặng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Họa Mi quàng khăn lá chuối, nhấp ngụm nước ấm pha mật rồi nhắm mắt lắng nghe. Lần đầu tiên chị nghe ra tiếng ve, tiếng ếch, tiếng suối hát cùng một lúc.",
+      "en": { "title": "Three quiet days", "text": "Họa Mi wraps on the banana-leaf scarf, sips warm honey water and closes her eyes to listen. For the first time she hears cicadas, frogs and the stream all singing at once." }
+    },
+    {
+      "id": "giong-hat-tro-ve",
+      "title": "Giọng hát trở về",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sáng ngày thứ ba, một tiếng «tra» bé xíu bật ra khỏi mỏ Họa Mi. Tối nay là đêm hòa nhạc dưới vòm lá, và Họa Mi đã có một ý mới cần {name} giúp.",
+      "en": { "title": "The voice comes home", "text": "On the third morning, a tiny 'tra' pops out of Họa Mi's beak. Tonight is the concert under the canopy, and Họa Mi has a new idea she needs {name}'s help with." }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": { "doc-hieu": 1, "logic": 1 }
+  },
+  "en": {
+    "title": "Họa Mi Rừng Xanh's story, chapter 3: The lost voice",
+    "summary": "Họa Mi loses her voice just three days before the concert. {name} finds old Cú Mèo, reads his note carved on bark, gathers honey, warm water and a banana-leaf scarf, then helps Họa Mi decide who will sing in her place."
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "id": "yarn-hoa-mi-bai-ca-1",
+  "region": "khu-rung-bi-mat",
+  "chapter": 5,
+  "title": "Chuyện của Họa Mi Rừng Xanh, chương 1: Bản nhạc bay theo gió",
+  "status": "active",
+  "category": "story",
+  "summary": "Gió thổi bay bốn chiếc lá dong ghi bài ca buổi sớm của Họa Mi. {name} nhặt lá quanh bãi dương xỉ, gặp Sẻ Nhỏ Nốt Lặng đang giữ chiếc lá cuối, xếp các câu theo đúng thứ tự rồi giúp Họa Mi chọn nốt kết bài.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Họa Mi Rừng Xanh, Sẻ Nhỏ Nốt Lặng",
+    "where": "Khu rừng bí mật: vòm lá xanh, bãi dương xỉ, cành sim thấp, phiến đá bên suối",
+    "goal": "Tìm lại đủ bốn chiếc lá ghi bài ca buổi sớm và ghép bài cho đúng",
+    "play": "Đọc gợi ý tìm ba chiếc lá, thuyết phục Sẻ Nhỏ trả chiếc thứ tư, xếp lá theo số nốt, chọn nốt kết",
+    "learn": "Đọc hiểu lời gợi ý, so sánh và sắp xếp số theo quy luật đếm cách hai",
+    "reward": "60 XP, 15 Xu, Skill XP Đọc hiểu và So sánh số, một chiếc lông chim rừng",
+    "next": "Bài ca còn thiếu giọng của con suối: Họa Mi rủ {name} đi nghe suối hát"
+  },
+  "phases": {
+    "hook": "hoa-mi-cuong-quyt",
+    "explore": "nhat-la-nhac",
+    "learn": "se-nho-giu-la",
+    "challenge": "xep-la-nhac",
+    "decision": "chon-not-ket",
+    "finale": "chon-not-ket",
+    "reward": "bai-ca-tron-ven",
+    "next": "con-thieu-tieng-suoi"
+  },
+  "places": {
+    "hoa-mi-rung": "Vòm lá xanh",
+    "nhat-la-nhac": "Bãi dương xỉ",
+    "st-hoa-mi-bai-ca-se-nho": "Cành sim thấp",
+    "st-hoa-mi-bai-ca-phien-da": "Phiến đá bên suối"
+  },
+  "steps": [
+    {
+      "id": "hoa-mi-cuong-quyt",
+      "title": "Họa Mi cuống quýt",
+      "goTo": "Tới vòm lá xanh, nơi Họa Mi Rừng Xanh đang nhảy hết cành này sang cành khác",
+      "kind": "dialogue",
+      "target": "hoa-mi-rung",
+      "lines": [
+        { "speaker": "Họa Mi Rừng Xanh", "text": "Một, hai, ba… mất rồi, mất thật rồi! Bài ca buổi sớm tớ viết trên bốn chiếc lá dong, chặn dưới hòn sỏi cẩn thận lắm cơ." },
+        { "speaker": "Họa Mi Rừng Xanh", "text": "Thế mà một cơn gió tinh nghịch thổi qua, lá bay tứ tung! Sáng mai cả dàn chim phải tập bài mới đấy {name} ơi." },
+        { "speaker": "Họa Mi Rừng Xanh", "text": "Lá của tớ dễ nhận lắm: nốt nhạc vẽ bằng nước quả mồng tơi, tím ngắt từ đầu tới cuối lá." }
+      ],
+      "choices": [
+        { "text": "Để tớ đi nhặt lá giúp cậu!", "reply": "Ôi, cảm ơn {name}! Gió thổi về phía bãi dương xỉ, tớ thấy lá bay đằng ấy." },
+        { "text": "Cậu hát lại theo trí nhớ không được à?", "reply": "Giai điệu thì tớ nhớ, nhưng câu nào trước câu nào sau thì rối tung cả rồi. Phải có lá mới chắc." }
+      ],
+      "en": {
+        "title": "Họa Mi in a flap",
+        "goTo": "Go to the green canopy, where Họa Mi Rừng Xanh is hopping from branch to branch",
+        "lines": [
+          "One, two, three… gone, really gone! I wrote the morning song on four big leaves and pinned them under a pebble, so carefully.",
+          "Then a cheeky gust blew through and the leaves flew everywhere! Tomorrow morning the whole choir has to learn the new song, {name}.",
+          "My leaves are easy to spot: the notes are painted in purple berry juice, from one end of the leaf to the other."
+        ],
+        "choices": [
+          { "text": "I'll go and pick them up for you!", "reply": "Oh, thank you, {name}! The wind blew towards the fern patch, I saw them flutter that way." },
+          { "text": "Can't you sing it again from memory?", "reply": "I remember the tune, but which line comes first is all tangled up now. I need the leaves to be sure." }
+        ]
+      }
+    },
+    {
+      "id": "nhat-la-nhac",
+      "title": "Nhặt lá nhạc",
+      "goTo": "Ra bãi dương xỉ tìm những chiếc lá dong bị gió thổi bay",
+      "kind": "find-object",
+      "prompt": "Ba chiếc lá dong có vẽ nốt nhạc tím đã rơi quanh bãi dương xỉ. Đọc gợi ý rồi nhặt từng lá:",
+      "skill": "doc-hieu",
+      "items": [
+        { "id": "la-bui-gai", "name": "Lá nhạc mắc bụi gai", "clue": "Bị mấy chiếc gai móc giữ lại, gió qua là rung rung như đang tự hát một mình.", "target": "st-hoa-mi-bai-ca-la-gai" },
+        { "id": "la-o-nam", "name": "Lá nhạc trên ô nấm", "clue": "Nằm vắt ngang mũ một cây nấm đỏ, thành ra cây nấm có mái che hai tầng.", "target": "st-hoa-mi-bai-ca-la-nam" },
+        { "id": "la-khe-da", "name": "Lá nhạc dưới khe đá", "clue": "Chui tọt vào kẽ giữa hai hòn đá, chỉ ló ra đúng một mép xanh.", "target": "st-hoa-mi-bai-ca-la-da" }
+      ],
+      "en": {
+        "title": "Gather the music leaves",
+        "goTo": "Head to the fern patch to find the leaves the wind blew away",
+        "prompt": "Three leaves with purple notes landed around the fern patch. Read the clues and pick up each one:",
+        "items": [
+          { "name": "Music leaf caught on a thorn bush", "clue": "A few thorns are holding it, and when the wind blows it quivers as if it were singing to itself." },
+          { "name": "Music leaf on a mushroom", "clue": "It lies across the cap of a red mushroom, giving the mushroom a two-storey roof." },
+          { "name": "Music leaf under the rocks", "clue": "It slipped into the gap between two stones; only one green edge is peeking out." }
+        ]
+      }
+    },
+    {
+      "id": "se-nho-giu-la",
+      "title": "Chiếc lá thứ tư",
+      "goTo": "Có tiếng chíp khe khẽ trên cành sim thấp, hình như ai đang giữ chiếc lá thứ tư",
+      "kind": "dialogue",
+      "target": "st-hoa-mi-bai-ca-se-nho",
+      "lines": [
+        { "speaker": "Sẻ Nhỏ Nốt Lặng", "text": "Chíp… tớ nhặt được chiếc lá này, nhưng tớ ngại mang trả. Chị Họa Mi hát hay thế, còn tớ chỉ dám hót đúng một nốt." },
+        { "speaker": "Sẻ Nhỏ Nốt Lặng", "text": "Mà tớ để ý thấy thế này: lá nào cũng nhiều hơn lá trước đúng hai nốt. Bài của chị ấy lúc nào cũng dài dần ra, như nắng sớm lan dần trên lá." }
+      ],
+      "choices": [
+        { "text": "Cậu tinh ý thật, đi cùng tớ nhé!", "reply": "Thật hả? Vậy tớ bay sau lưng cậu… nhưng đừng bảo chị ấy là tớ phát hiện ra nhé." }
+      ],
+      "en": {
+        "title": "The fourth leaf",
+        "goTo": "A tiny cheep comes from the low myrtle branch, as if someone is holding the fourth leaf",
+        "lines": [
+          "Cheep… I found this leaf, but I'm too shy to give it back. Họa Mi sings so beautifully, and I only dare to chirp one single note.",
+          "But I noticed something: every leaf has exactly two notes more than the one before. Her songs always grow longer, like morning sun spreading over the leaves."
+        ],
+        "choices": [
+          { "text": "You've got sharp eyes. Come with me!", "reply": "Really? Then I'll fly right behind you… but please don't tell her I was the one who noticed." }
+        ]
+      }
+    },
+    {
+      "id": "xep-la-nhac",
+      "title": "Ghép bài ca",
+      "goTo": "Bày bốn chiếc lá lên phiến đá bên suối cho dễ ghép",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-hoa-mi-bai-ca-phien-da",
+      "skill": "so-sanh-so",
+      "prompt": "Xếp bốn chiếc lá theo đúng thứ tự bài ca: câu sau dài hơn câu trước hai nốt.",
+      "items": [
+        { "id": "la-sau-not", "label": "Lá có 6 nốt" },
+        { "id": "la-hai-not", "label": "Lá có 2 nốt" },
+        { "id": "la-tam-not", "label": "Lá có 8 nốt" },
+        { "id": "la-bon-not", "label": "Lá có 4 nốt" }
+      ],
+      "answer": { "order": ["la-hai-not", "la-bon-not", "la-sau-not", "la-tam-not"] },
+      "support": {
+        "guide": ["Tìm lá có ít nốt nhất: đó là câu mở đầu.", "Mỗi câu sau thêm hai nốt, cứ đếm cách hai mà xếp.", "Kiểm tra lại: lá đứng cuối phải nhiều nốt nhất."],
+        "hint": "Đếm cách hai: 2, 4, rồi tới số nào nữa?",
+        "answer": { "text": "2 nốt, 4 nốt, 6 nốt, 8 nốt", "explanation": "Bài ca dài dần, mỗi câu thêm hai nốt, nên xếp từ ít tới nhiều: 2, 4, 6, 8." },
+        "en": {
+          "guide": ["Find the leaf with the fewest notes: that's the opening line.", "Each line adds two notes, so count in twos as you go.", "Check: the last leaf must have the most notes."],
+          "hint": "Count in twos: 2, 4, and then what?",
+          "answer": { "text": "2 notes, 4 notes, 6 notes, 8 notes", "explanation": "The song grows longer, two notes per line, so the leaves go from fewest to most: 2, 4, 6, 8." }
+        }
+      },
+      "feedback": {
+        "right": ["Bốn chiếc lá nằm thẳng hàng như những bậc thang nốt nhạc!", "{name} đếm cách hai nhanh như chim chuyền cành.", "Đúng rồi, bài ca dài dần ra như nắng sớm lan trên lá."],
+        "wrong": ["Ơ, câu này lại ngắn hơn câu trước, nghe hụt hơi lắm. Xếp lại nhé!", "Thử đếm số nốt từ ít tới nhiều xem nào, {name}.", "Lá tám nốt là câu dài nhất, nó phải đứng cuối bài chứ."],
+        "en": {
+          "right": ["The four leaves line up like a staircase of notes!", "{name} counts in twos as quick as a bird hopping branches.", "That's it, the song grows like morning light spreading across the leaves."],
+          "wrong": ["Hmm, this line is shorter than the one before, it sounds out of breath. Try again!", "Count the notes from fewest to most, {name}.", "The eight-note leaf is the longest line, so it belongs at the very end."]
+        }
+      },
+      "en": {
+        "title": "Put the song together",
+        "goTo": "Lay the four leaves out on the flat stone by the stream",
+        "prompt": "Put the four leaves in the song's order: each line is two notes longer than the one before.",
+        "items": ["Leaf with 6 notes", "Leaf with 2 notes", "Leaf with 8 notes", "Leaf with 4 notes"]
+      }
+    },
+    {
+      "id": "chon-not-ket",
+      "title": "Nốt kết bài",
+      "goTo": "Mang bốn chiếc lá về vòm lá xanh cho Họa Mi",
+      "kind": "decision",
+      "target": "hoa-mi-rung",
+      "speaker": "Họa Mi Rừng Xanh",
+      "prompt": "Đủ lá rồi, nhưng chiếc lá tám nốt bị rách mép, câu cuối thiếu mất một nốt. {name} gợi ý gì cho Họa Mi?",
+      "choices": [
+        { "id": "nho-se-nho", "text": "Nhờ Sẻ Nhỏ hót nốt còn thiếu", "consequence": "Sẻ Nhỏ run run hót một tiếng «chíp» trong veo. Họa Mi tròn mắt: «Đúng nốt tớ cần! Sao em giấu giọng hay thế?»" },
+        { "id": "not-lang", "text": "Để một nốt lặng ở cuối bài", "consequence": "Họa Mi ngẫm nghĩ rồi gật gù: một khoảng lặng nhỏ để cả rừng kịp nín thở. Sẻ Nhỏ đỏ mặt, vì đó chính là tên em." },
+        { "id": "ngan-dai", "text": "Cả dàn cùng ngân nốt cuối thật dài", "consequence": "Họa Mi thử ngân một hơi dài, lá trên vòm rung rinh. Nghe như cả khu rừng đang ôm lấy nhau." }
+      ],
+      "en": {
+        "title": "The final note",
+        "goTo": "Take the four leaves back to Họa Mi in the green canopy",
+        "prompt": "All four leaves are here, but the eight-note leaf has a torn edge and the last line is missing a note. What do you suggest, {name}?",
+        "choices": [
+          { "text": "Ask Sẻ Nhỏ to sing the missing note", "consequence": "Sẻ Nhỏ gives one trembling, crystal-clear 'cheep'. Họa Mi's eyes go round: 'That's exactly the note! Why have you been hiding that voice?'" },
+          { "text": "End the song with a rest", "consequence": "Họa Mi thinks it over and nods: a little silence so the whole forest can hold its breath. Sẻ Nhỏ blushes, because 'Nốt Lặng' means 'the rest'." },
+          { "text": "Let the whole choir hold the last note", "consequence": "Họa Mi tries one long held note and the leaves above them tremble. It sounds like the whole forest is hugging." }
+        ]
+      }
+    },
+    {
+      "id": "bai-ca-tron-ven",
+      "title": "Bài ca trọn vẹn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Họa Mi cất bốn chiếc lá vào hốc cây, ngân thử cả bài từ đầu tới cuối. Sẻ Nhỏ nấp sau lưng {name}, khe khẽ hót theo từng câu.",
+      "en": { "title": "The song is whole again", "text": "Họa Mi tucks the four leaves into a hollow and sings the song through from start to finish. Hiding behind {name}, Sẻ Nhỏ hums along to every line." }
+    },
+    {
+      "id": "con-thieu-tieng-suoi",
+      "title": "Còn thiếu một giọng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hát xong, Họa Mi nghiêng đầu: «Bài này hay, nhưng vẫn thiếu một giọng… giọng của con suối. Mai {name} giúp tớ đi nghe xem suối hát thế nào nhé!»",
+      "en": { "title": "One voice still missing", "text": "When the song ends, Họa Mi tilts her head: 'It's lovely, but one voice is missing… the stream's. Tomorrow, {name}, help me find out how the stream sings!'" }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": { "doc-hieu": 1, "so-sanh-so": 1 },
+    "items": { "long-vu-chim-rung": 1 }
+  },
+  "en": {
+    "title": "Họa Mi Rừng Xanh's story, chapter 1: Music on the wind",
+    "summary": "The wind has scattered the four leaves holding Họa Mi's morning song. {name} gathers them around the fern patch, meets Sẻ Nhỏ Nốt Lặng holding the last one, puts the lines in order and helps Họa Mi choose the song's final note."
+  }
+}

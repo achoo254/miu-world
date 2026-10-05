@@ -1,0 +1,250 @@
+{
+  "id": "yarn-hoa-mi-bai-ca-4",
+  "region": "khu-rung-bi-mat",
+  "chapter": 5,
+  "title": "Chuyện của Họa Mi Rừng Xanh, chương 4: Đêm hòa nhạc dưới vòm lá",
+  "status": "active",
+  "category": "story",
+  "summary": "Giọng Họa Mi đã về, nhỏ thôi nhưng đủ. {name} đếm chỗ ngồi cho khán giả, động viên Sẻ Nhỏ, xếp chỗ đứng cho dàn nhạc, thắp đèn đom đóm và giúp Họa Mi chọn chỗ của mình trong đêm hòa nhạc của cả khu rừng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Họa Mi Rừng Xanh, Sẻ Nhỏ Nốt Lặng, Gõ Kiến Giữ Nhịp",
+    "where": "Khu rừng bí mật: vòm lá xanh, hàng ghế gỗ, cành sim thấp, gốc thông già",
+    "goal": "Chuẩn bị và mở màn đêm hòa nhạc mà mọi sinh vật trong rừng đều được hát",
+    "play": "Đếm chỗ còn trống, giải câu đố xếp hàng, hòa nhịp đèn đom đóm, chọn chỗ đứng cho Họa Mi",
+    "learn": "Cộng trừ trong phạm vi 20, suy luận từ nhiều điều kiện",
+    "reward": "80 XP, 22 Xu, Skill XP Phép trừ và Logic, một bông hoa chuông tím",
+    "next": "Từ nay sáng nào vòm lá cũng vang bài ca của cả khu rừng"
+  },
+  "phases": {
+    "hook": "giong-ve-roi",
+    "explore": "dem-cho-ngoi",
+    "learn": "go-kien-nho-xep",
+    "challenge": "xep-cho-dung",
+    "decision": "cho-cua-hoa-mi",
+    "finale": "cho-cua-hoa-mi",
+    "reward": "bai-ca-cua-rung",
+    "next": "moi-sang-mot-bai"
+  },
+  "places": {
+    "hoa-mi-rung": "Vòm lá xanh",
+    "st-hoa-mi-bai-ca-ghe-go": "Hàng ghế gỗ",
+    "st-hoa-mi-bai-ca-se-nho": "Cành sim thấp",
+    "st-hoa-mi-bai-ca-go-kien": "Gốc thông già"
+  },
+  "steps": [
+    {
+      "id": "giong-ve-roi",
+      "title": "Giọng đã về",
+      "goTo": "Tới vòm lá xanh, Họa Mi Rừng Xanh đang thử giọng thật khẽ",
+      "kind": "dialogue",
+      "target": "hoa-mi-rung",
+      "lines": [
+        { "speaker": "Họa Mi Rừng Xanh", "text": "Tra… la! Nghe chưa {name}? Giọng tớ về rồi, tuy còn bé như tiếng muỗi vo ve." },
+        { "speaker": "Họa Mi Rừng Xanh", "text": "Ba ngày không hót, tớ nghĩ ra một điều: bài ca của rừng đâu cần một giọng thật to, nó cần mọi giọng cùng vang lên." },
+        { "speaker": "Họa Mi Rừng Xanh", "text": "Tối nay hòa nhạc rồi! Cậu ra hàng ghế gỗ đếm giúp tớ xem còn bao nhiêu chỗ cho khán giả nhé." }
+      ],
+      "choices": [
+        { "text": "Giọng nhỏ mà ấm lắm đấy!", "reply": "Thật không? Vậy tối nay tớ sẽ hát nhỏ thôi, để nghe được người khác hát." },
+        { "text": "Tớ chạy đi đếm ngay đây!", "reply": "Một, hai, ba… chạy! À không, đi thôi, đừng ngã đấy {name}." }
+      ],
+      "en": {
+        "title": "The voice is back",
+        "goTo": "Go to the green canopy, where Họa Mi Rừng Xanh is softly testing her voice",
+        "lines": [
+          "Tra… la! Did you hear that, {name}? My voice is back, though it's still as tiny as a buzzing mosquito.",
+          "Three days without singing taught me something: the forest's song doesn't need one big voice, it needs every voice ringing out together.",
+          "The concert is tonight! Could you go to the log benches and count how many seats are left for the audience?"
+        ],
+        "choices": [
+          { "text": "It's small, but it's so warm!", "reply": "Really? Then tonight I'll sing softly, so I can hear everyone else." },
+          { "text": "I'll run and count right now!", "reply": "One, two, three… run! No, wait, walk, I don't want you tripping, {name}." }
+        ]
+      }
+    },
+    {
+      "id": "dem-cho-ngoi",
+      "title": "Đếm chỗ ngồi",
+      "goTo": "Ra hàng ghế gỗ đếm chỗ cho khán giả",
+      "kind": "riddle",
+      "target": "st-hoa-mi-bai-ca-ghe-go",
+      "skill": "phep-tru",
+      "question": "Khán giả ngồi trên ba khúc gỗ, mỗi khúc vừa đúng 5 chỗ. Thỏ, sóc, nhím và mấy bạn khác đã ngồi kín 9 chỗ. Còn mấy chỗ trống?",
+      "answer": { "value": 6 },
+      "support": {
+        "guide": ["Trước hết tìm xem ba khúc gỗ có tất cả bao nhiêu chỗ.", "Ba khúc, mỗi khúc 5 chỗ: 5 + 5 + 5.", "Lấy tổng số chỗ trừ đi số chỗ đã có người ngồi."],
+        "hint": "5 + 5 + 5 = 15, rồi 15 trừ 9 bằng mấy?",
+        "answer": { "text": "6 chỗ", "explanation": "Ba khúc gỗ có 5 + 5 + 5 = 15 chỗ. Đã có 9 bạn ngồi, nên còn 15 − 9 = 6 chỗ trống." },
+        "en": {
+          "guide": ["First work out how many seats the three logs have altogether.", "Three logs with 5 seats each: 5 + 5 + 5.", "Then take away the seats that are already taken."],
+          "hint": "5 + 5 + 5 = 15, and 15 take away 9 is…?",
+          "answer": { "text": "6 seats", "explanation": "The three logs have 5 + 5 + 5 = 15 seats. 9 friends are already sitting, so 15 − 9 = 6 seats are free." }
+        }
+      },
+      "feedback": {
+        "right": ["Sáu chỗ trống, vừa đủ cho gia đình nhà ếch mời sang!", "{name} đếm chỗ còn nhanh hơn sóc nhặt hạt dẻ.", "Chuẩn rồi! Ai tới muộn vẫn có chỗ ngồi nghe hát."],
+        "wrong": ["Ba khúc gỗ cơ, đếm đủ cả ba khúc nhé {name}.", "Khoan, nhớ trừ đi chín bạn đã ngồi rồi chứ.", "Thử cộng 5 + 5 + 5 trước, rồi hẵng bớt đi."],
+        "en": {
+          "right": ["Six free seats, just right for the frog family!", "{name} counts seats faster than a squirrel gathers chestnuts.", "Spot on! Even latecomers will have a seat for the music."],
+          "wrong": ["There are three logs, {name}; count all of them.", "Wait, remember to take away the nine friends already sitting.", "Try adding 5 + 5 + 5 first, then take some away."]
+        }
+      },
+      "en": {
+        "title": "Count the seats",
+        "goTo": "Go to the log benches and count the audience seats",
+        "question": "The audience sits on three logs, each with exactly 5 seats. Rabbits, squirrels, hedgehogs and other friends already fill 9 seats. How many seats are free?"
+      }
+    },
+    {
+      "id": "se-nho-run",
+      "title": "Sẻ Nhỏ run quá",
+      "goTo": "Sẻ Nhỏ Nốt Lặng đang trốn trên cành sim thấp, ghé động viên bạn ấy",
+      "kind": "dialogue",
+      "target": "st-hoa-mi-bai-ca-se-nho",
+      "lines": [
+        { "speaker": "Sẻ Nhỏ Nốt Lặng", "text": "Chíp… chị Họa Mi bảo em hát câu mở đầu. Ngồi đông thế kia, em sợ mở mỏ ra là thành tiếng «chép» mất." },
+        { "speaker": "Sẻ Nhỏ Nốt Lặng", "text": "Mà Bác Gõ Kiến đang rối lắm, dàn nhạc cãi nhau chuyện ai đứng chỗ nào. Anh chị qua gốc thông xem giúp với." }
+      ],
+      "choices": [
+        { "text": "Lỡ «chép» thì cả rừng cười cùng em!", "reply": "Hì… nghe vậy em đỡ run hẳn. Một tiếng «chép» cũng là một nốt mà, phải không?" },
+        { "text": "Cứ nhìn tớ ở hàng ghế mà hát nhé.", "reply": "Vâng! Em sẽ tìm {name} trước tiên, rồi mới nhìn những người khác." }
+      ],
+      "en": {
+        "title": "Sẻ Nhỏ has the jitters",
+        "goTo": "Sẻ Nhỏ Nốt Lặng is hiding on the low myrtle branch. Go and cheer her up",
+        "lines": [
+          "Cheep… Họa Mi wants me to sing the opening line. With such a crowd, I'm scared I'll open my beak and out comes a 'squawk'.",
+          "And Gõ Kiến is in a muddle: the band is arguing about who stands where. Could you go to the pine stump and help?"
+        ],
+        "choices": [
+          { "text": "If you squawk, the whole forest laughs with you!", "reply": "Hee… that makes me feel much less shaky. A squawk is a note too, isn't it?" },
+          { "text": "Just look at me in the audience and sing.", "reply": "Okay! I'll find {name} first, and only then look at everyone else." }
+        ]
+      }
+    },
+    {
+      "id": "go-kien-nho-xep",
+      "title": "Dàn nhạc cãi nhau",
+      "goTo": "Qua gốc thông già gặp Gõ Kiến Giữ Nhịp",
+      "kind": "dialogue",
+      "target": "st-hoa-mi-bai-ca-go-kien",
+      "lines": [
+        { "speaker": "Gõ Kiến Giữ Nhịp", "text": "Cộc! May quá cháu tới. Bốn bạn đứng một hàng trên cành đàn, mà ai cũng có điều kiện riêng, bác ghi lại cả đây." },
+        { "speaker": "Gõ Kiến Giữ Nhịp", "text": "Cháu cứ xếp từng bạn một: ai chắc chỗ thì đặt trước, ai còn lấn cấn thì để sau. Xếp vội là đánh nhau đấy!" }
+      ],
+      "choices": [{ "text": "Bác đọc điều kiện cho cháu nghe đi ạ." }],
+      "en": {
+        "title": "The band is bickering",
+        "goTo": "Go over to the old pine stump to see Gõ Kiến Giữ Nhịp",
+        "lines": [
+          "Knock! Thank goodness you're here. Four friends stand in a row on the music branch, and each one has their own condition. I've written them all down.",
+          "Place them one at a time: whoever's spot is certain goes first, the unsure ones go last. Rush it and there'll be a squabble!"
+        ],
+        "choices": [{ "text": "Read me the conditions, please." }]
+      }
+    },
+    {
+      "id": "xep-cho-dung",
+      "title": "Xếp chỗ đứng",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-hoa-mi-bai-ca-go-kien",
+      "skill": "logic",
+      "prompt": "Bốn bạn đứng một hàng từ trái sang phải. Ếch đòi đứng đầu hàng. Sẻ Nhỏ đứng ngay sau Ếch. Gõ Kiến không đứng cạnh Sẻ Nhỏ. Vậy Ve Sầu đứng thứ mấy?",
+      "choices": [
+        { "id": "a", "text": "Thứ hai" },
+        { "id": "b", "text": "Thứ ba" },
+        { "id": "c", "text": "Thứ tư" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Đặt Ếch vào chỗ thứ nhất.", "Sẻ Nhỏ đứng ngay sau Ếch, tức là chỗ thứ hai.", "Gõ Kiến không được đứng cạnh Sẻ Nhỏ, nên không thể đứng chỗ thứ ba."],
+        "hint": "Còn hai chỗ trống: thứ ba và thứ tư. Gõ Kiến chỉ đứng được một chỗ.",
+        "answer": { "text": "Thứ ba", "explanation": "Ếch thứ nhất, Sẻ Nhỏ thứ hai. Gõ Kiến không cạnh Sẻ Nhỏ nên phải đứng thứ tư. Chỗ còn lại, thứ ba, là của Ve Sầu." },
+        "en": {
+          "guide": ["Put the Frog in first place.", "Sẻ Nhỏ stands right after the Frog, so she's second.", "Gõ Kiến can't stand next to Sẻ Nhỏ, so he can't be third."],
+          "hint": "Two spots are left: third and fourth. Gõ Kiến only fits one of them.",
+          "answer": { "text": "Third", "explanation": "Frog first, Sẻ Nhỏ second. Gõ Kiến can't be next to Sẻ Nhỏ, so he must be fourth. The spot that's left, third, belongs to the Cicada." }
+        }
+      },
+      "feedback": {
+        "right": ["Cộc cộc! Cả bốn bạn đứng ngay ngắn, chẳng ai cãi nữa.", "Ve Sầu kêu «re re» sung sướng ở chỗ thứ ba.", "{name} gỡ rối giỏi hơn cả bác gõ kiến già này!"],
+        "wrong": ["Ối, thế thì Gõ Kiến lại đứng sát Sẻ Nhỏ rồi.", "Chỗ thứ hai đã có Sẻ Nhỏ giữ rồi mà {name}.", "Xếp lần lượt từng bạn xem, bắt đầu từ Ếch."],
+        "en": {
+          "right": ["Knock knock! All four stand neatly in line, no more bickering.", "The Cicada buzzes happily from third place.", "{name} untangles knots better than this old woodpecker!"],
+          "wrong": ["Oops, that puts Gõ Kiến right next to Sẻ Nhỏ again.", "Sẻ Nhỏ already has second place, {name}.", "Place them one by one, starting with the Frog."]
+        }
+      },
+      "en": {
+        "title": "Who stands where",
+        "prompt": "Four friends stand in a row from left to right. The Frog insists on being first. Sẻ Nhỏ stands right after the Frog. Gõ Kiến does not stand next to Sẻ Nhỏ. So where does the Cicada stand?",
+        "choices": ["Second", "Third", "Fourth"]
+      }
+    },
+    {
+      "id": "thap-den-dom-dom",
+      "title": "Thắp đèn đom đóm",
+      "goTo": "Về vòm lá xanh, đom đóm đã bay tới làm đèn cho sân khấu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "hoa-mi-rung",
+      "prompt": "Đom đóm làm đèn sân khấu! Chạm cho đèn lồng nháy cùng nhịp với bầy đom đóm 10 lần để dàn nhạc thấy rõ nhịp.",
+      "game": "firefly-sync",
+      "goal": 10,
+      "en": {
+        "title": "Light up the fireflies",
+        "goTo": "Back to the green canopy: the fireflies have arrived to light the stage",
+        "prompt": "The fireflies are the stage lights! Tap so your lantern blinks in time with the swarm 10 times, so the band can see the beat."
+      }
+    },
+    {
+      "id": "cho-cua-hoa-mi",
+      "title": "Chỗ của Họa Mi",
+      "kind": "decision",
+      "target": "hoa-mi-rung",
+      "speaker": "Họa Mi Rừng Xanh",
+      "prompt": "Nhạc sắp vào rồi. Họa Mi khẽ hỏi: «Tối nay tớ đứng ở đâu đây, {name}?»",
+      "choices": [
+        { "id": "giua-vom", "text": "Giữa vòm lá, hát giọng chính như mọi năm", "consequence": "Họa Mi bay lên giữa vòm, rồi khựng lại nhìn Sẻ Nhỏ đang run. Chị hạ cánh, khẽ đẩy em lên trước: «Câu mở đầu là của em.»" },
+        { "id": "bat-nhip", "text": "Trước dàn nhạc, cầm cành cây bắt nhịp", "consequence": "Họa Mi giơ cành cây nhỏ lên: một, hai, ba! Suối, ếch, ve, gõ kiến lần lượt vào bài, không ai lạc một nhịp." },
+        { "id": "ngoi-nghe", "text": "Ngồi cùng khán giả, nghe cả rừng hát", "consequence": "Họa Mi đậu xuống hàng ghế gỗ cạnh {name}. Lần đầu tiên chị nghe bài của mình từ phía dưới, và chị khóc vì vui." }
+      ],
+      "en": {
+        "title": "Họa Mi's place",
+        "prompt": "The music is about to start. Họa Mi asks quietly: 'Where should I stand tonight, {name}?'",
+        "choices": [
+          { "text": "In the middle of the canopy, singing lead as always", "consequence": "Họa Mi flies to the centre, then stops and looks at Sẻ Nhỏ trembling. She lands and gently nudges her forward: 'The opening line is yours.'" },
+          { "text": "In front of the band, conducting with a twig", "consequence": "Họa Mi lifts a little twig: one, two, three! Stream, frogs, cicadas, woodpecker come in one after another without missing a beat." },
+          { "text": "In the audience, listening to the forest sing", "consequence": "Họa Mi settles on the log bench beside {name}. For the first time she hears her song from below, and she cries because she's happy." }
+        ]
+      }
+    },
+    {
+      "id": "bai-ca-cua-rung",
+      "title": "Bài ca của cả rừng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Sẻ Nhỏ mở đầu, suối nối câu, ếch ve vào điệp khúc, đom đóm nháy theo nhịp. Hết bài, cả khu rừng lặng đi một nốt lặng, rồi vỗ cánh, vỗ tay rào rào.",
+      "en": { "title": "The whole forest's song", "text": "Sẻ Nhỏ opens, the stream links the lines, frogs and cicadas join the chorus, fireflies blink to the beat. When it ends, the forest holds one silent rest, then bursts into flapping wings and clapping paws." }
+    },
+    {
+      "id": "moi-sang-mot-bai",
+      "title": "Mỗi sáng một bài ca",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Từ đêm ấy, sáng nào vòm lá cũng vang bài ca của cả khu rừng, mỗi bạn một câu. Họa Mi giờ đứng bắt nhịp nhiều hơn đứng hát, và chị hứa năm sau sẽ viết thêm một câu dành riêng cho {name}.",
+      "en": { "title": "A song every morning", "text": "From that night on, every morning the canopy rings with the whole forest's song, one line per friend. Họa Mi conducts more than she sings now, and she promises that next year she'll write a line just for {name}." }
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 22,
+    "skillXp": { "phep-tru": 1, "logic": 1 },
+    "items": { "hoa-chuong-tim": 1 }
+  },
+  "en": {
+    "title": "Họa Mi Rừng Xanh's story, chapter 4: Concert under the canopy",
+    "summary": "Họa Mi's voice is back, small but enough. {name} counts the audience seats, cheers up Sẻ Nhỏ, sorts out where the band stands, lights the firefly lanterns and helps Họa Mi choose her own place on the forest's concert night."
+  }
+}

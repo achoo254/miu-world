@@ -1,0 +1,274 @@
+{
+  "id": "yarn-doi-tai-to-do-lac-2",
+  "region": "khu-rung-bi-mat",
+  "chapter": 4,
+  "title": "Chuyện của Dơi Đêm Tai To, chương 2: Chiếc rương trong rừng già",
+  "status": "active",
+  "category": "story",
+  "summary": "Dơi dẫn {name} tới chiếc rương gỗ giấu trong rừng già, nơi bao năm nay Dơi cất đồ thất lạc của cả rừng. {name} tìm hai viên đá ghi số, cộng ra mật mã, đọc sổ ghi đồ lạc rồi giúp Sóc Hạt Dẻ Hay Quên nhận lại đồ của mình.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Dơi Đêm Tai To, Sóc Hạt Dẻ Hay Quên",
+    "where": "Khu rừng bí mật: cửa hang đá, lối mòn rừng già, rương gỗ bí mật rừng già, gốc dẻ ven đồi",
+    "goal": "Mở chiếc rương đồ lạc và trả đồ cho người chủ đầu tiên",
+    "play": "Tìm hai viên đá theo gợi ý, cộng hai số ra mật mã, đọc sổ ghi chép, chọn đúng đồ của Sóc, chọn cách trả đồ",
+    "learn": "Cộng có nhớ trong phạm vi 20, đọc hiểu một danh sách",
+    "reward": "70 XP, 18 Xu, Skill XP Phép cộng, Đọc hiểu, Logic",
+    "next": "Dơi mời cả rừng tới cửa hang lúc chạng vạng để trả hết đồ lạc"
+  },
+  "phases": {
+    "hook": "doi-ke-bi-mat",
+    "explore": "tim-da-ghi-so",
+    "learn": "doc-so-do-lac",
+    "challenge": "do-cua-soc",
+    "decision": "cach-tra-do",
+    "finale": "cach-tra-do",
+    "reward": "mon-dau-tien-ve-nha",
+    "next": "loi-moi-chang-vang"
+  },
+  "places": {
+    "doi-hang-sau": "Cửa hang đá",
+    "tim-da-ghi-so": "Lối mòn rừng già",
+    "ruong-go-bi-mat": "Rương rừng già",
+    "st-doi-tai-to-do-lac-so-ghi": "Rương rừng già",
+    "st-doi-tai-to-do-lac-soc": "Gốc dẻ ven đồi"
+  },
+  "steps": [
+    {
+      "id": "doi-ke-bi-mat",
+      "title": "Dơi kể bí mật",
+      "goTo": "Tới cửa hang đá, Dơi Đêm Tai To đã chờ sẵn từ lúc chạng vạng",
+      "kind": "dialogue",
+      "target": "doi-hang-sau",
+      "lines": [
+        { "speaker": "Dơi Đêm Tai To", "text": "Suỵt… tớ chưa kể với ai bao giờ. Hồi bé, mỗi lần nhặt được đồ rơi, tớ định mang trả, nhưng ai thấy tớ cũng hét «ma hang!» rồi bỏ chạy." },
+        { "speaker": "Dơi Đêm Tai To", "text": "Thế là tớ cất hết vào một chiếc rương trong rừng già, món nào cũng ghi chỗ nhặt. Bao năm rồi, rương đầy ắp mà tớ thì… quên mất mật mã." },
+        { "speaker": "Dơi Đêm Tai To", "text": "Tớ chỉ nhớ đã khắc hai con số lên hai viên đá dọc lối mòn rừng già. Cậu tìm giúp tớ nhé?" }
+      ],
+      "choices": [
+        { "text": "Cậu tốt bụng mà chưa ai biết thôi.", "reply": "Tai tớ nóng ran hết rồi đây này… Thôi, đi tìm đá đi {name}." },
+        { "text": "Một rương đầy đồ lạc á? Đi thôi!", "reply": "Nhẹ chân thôi nhé, rừng già ngủ sớm lắm." }
+      ],
+      "en": {
+        "title": "Dơi shares a secret",
+        "goTo": "Go to the stone cave, where Dơi Đêm Tai To has been waiting since twilight",
+        "lines": [
+          "Shh… I've never told anyone this. When I was little, whenever I found something dropped I meant to give it back, but everyone who saw me screamed 'cave ghost!' and ran.",
+          "So I kept it all in a chest in the old forest, each thing with a note of where I found it. Years later the chest is full to the brim, and I've… forgotten the code.",
+          "All I remember is that I carved two numbers on two stones along the old forest path. Will you help me find them?"
+        ],
+        "choices": [
+          { "text": "You're kind, it's just that nobody knows.", "reply": "My ears have gone all hot… Come on, let's find those stones, {name}." },
+          { "text": "A whole chest of lost things? Let's go!", "reply": "Tread softly, the old forest goes to bed early." }
+        ]
+      }
+    },
+    {
+      "id": "tim-da-ghi-so",
+      "title": "Hai viên đá ghi số",
+      "goTo": "Dọc lối mòn rừng già tìm hai viên đá Dơi đã khắc số",
+      "kind": "find-object",
+      "prompt": "Dơi nhớ mang máng chỗ giấu hai viên đá. Đọc lời Dơi tả rồi tìm từng viên:",
+      "skill": "doc-hieu",
+      "items": [
+        { "id": "da-rau-reu", "name": "Viên đá râu rêu", "clue": "Tròn như quả trứng ngỗng, rêu mọc dài như bộ râu ông cụ, nằm ngay chỗ lối mòn rẽ đôi.", "target": "st-doi-tai-to-do-lac-da-reu" },
+        { "id": "da-dep-xam", "name": "Viên đá dẹt xám", "clue": "Dẹt như chiếc bánh đa, xám như trời sắp mưa, kê dưới chân một cây nấm đỏ.", "target": "st-doi-tai-to-do-lac-da-det" }
+      ],
+      "en": {
+        "title": "Two numbered stones",
+        "goTo": "Search along the old forest path for the two stones Dơi carved numbers on",
+        "prompt": "Dơi vaguely remembers where he hid the stones. Read his descriptions and find each one:",
+        "items": [
+          { "name": "Bearded mossy stone", "clue": "Round as a goose egg, with moss hanging off it like an old man's beard, right where the path forks." },
+          { "name": "Flat grey stone", "clue": "Flat as a rice cracker, grey as a sky about to rain, propped at the foot of a red mushroom." }
+        ]
+      }
+    },
+    {
+      "id": "mo-ruong",
+      "title": "Mật mã chiếc rương",
+      "goTo": "Mang hai viên đá tới chỗ rương rừng già đang khóa",
+      "kind": "riddle",
+      "target": "ruong-go-bi-mat",
+      "skill": "phep-cong",
+      "question": "Viên đá râu rêu khắc số 7, viên đá dẹt xám khắc số 6. Dơi nhớ ra: «Mật mã là hai số cộng lại.» Mật mã mở rương là bao nhiêu?",
+      "answer": { "value": 13 },
+      "support": {
+        "guide": ["Mật mã là tổng của hai số trên hai viên đá.", "Cộng 7 với 6.", "Có thể tách 6 thành 3 và 3: 7 + 3 = 10, rồi thêm 3 nữa."],
+        "hint": "7 + 3 tròn 10, còn lại 3.",
+        "answer": { "text": "13", "explanation": "7 + 6: tách 6 thành 3 + 3, lấy 7 + 3 = 10, rồi 10 + 3 = 13." },
+        "en": {
+          "guide": ["The code is the sum of the two numbers on the stones.", "Add 7 and 6.", "You can split 6 into 3 and 3: 7 + 3 = 10, then add 3 more."],
+          "hint": "7 + 3 makes a neat 10, with 3 left over.",
+          "answer": { "text": "13", "explanation": "7 + 6: split 6 into 3 + 3, do 7 + 3 = 10, then 10 + 3 = 13." }
+        }
+      },
+      "feedback": {
+        "right": ["Cạch! Nắp rương bật mở, bụi bay lên lấp lánh như sao.", "{name} gom về tròn chục rồi cộng tiếp, gọn gàng quá!", "Dơi vỗ cánh tí tách: «Đúng số đó, giờ tớ nhớ ra rồi!»"],
+        "wrong": ["Ổ khóa kêu «kịch» mà không mở. Cộng lại hai số nhé.", "Thử gom 7 cho tròn 10 trước, rồi cộng phần còn lại {name}.", "Hơi xa rồi, rương chỉ cần đúng tổng của hai viên đá thôi."],
+        "en": {
+          "right": ["Click! The lid pops open and dust swirls up, twinkling like stars.", "{name} made a ten and added on. So neat!", "Dơi flutters: 'That's the number, now I remember!'"],
+          "wrong": ["The lock clunks but stays shut. Add the two numbers again.", "Try topping 7 up to 10 first, then add what's left, {name}.", "Not quite. The chest only wants the two stones added together."]
+        }
+      },
+      "en": {
+        "title": "The chest's code",
+        "goTo": "Bring the two stones to the wooden chest in the old forest",
+        "question": "The bearded mossy stone says 7 and the flat grey stone says 6. Dơi remembers: 'The code is the two numbers added together.' What is the code?"
+      }
+    },
+    {
+      "id": "doc-so-do-lac",
+      "title": "Sổ ghi đồ lạc",
+      "kind": "read",
+      "target": "st-doi-tai-to-do-lac-so-ghi",
+      "skill": "doc-hieu",
+      "text": "Sổ ghi đồ lạc của Dơi:\n– Con quay gỗ khắc S.H.D: khe đá trong hang, mùa này.\n– Chiếc khăn len đỏ: bờ suối, mùa đông năm ngoái. Chắc của Sóc Hạt Dẻ, bạn ấy hay quàng khăn đỏ.\n– Ba hạt dẻ bọc lá: gốc thông, mùa thu. Ai giấu hạt dẻ kỹ thế ngoài Sóc?\n– Cái kèn lá: vòm lá xanh, mùa xuân. Của một bạn chim nào đó.\n– Chiếc chuông đồng nhỏ: trảng cỏ, mùa hè.",
+      "question": "Theo sổ, Dơi nhặt được chiếc khăn len đỏ ở đâu?",
+      "choices": [
+        { "id": "a", "text": "Ở bờ suối" },
+        { "id": "b", "text": "Ở gốc thông" },
+        { "id": "c", "text": "Ở trảng cỏ" }
+      ],
+      "answer": { "choice": "a" },
+      "support": {
+        "guide": ["Tìm dòng có chữ «khăn len đỏ».", "Ngay sau tên món đồ là chỗ Dơi nhặt được.", "Đừng nhầm với dòng của hạt dẻ hay chuông đồng."],
+        "hint": "Chỗ ấy có nước chảy róc rách.",
+        "answer": { "text": "Ở bờ suối", "explanation": "Sổ ghi: «Chiếc khăn len đỏ: bờ suối, mùa đông năm ngoái.»" },
+        "en": {
+          "guide": ["Find the line with 'red wool scarf'.", "Right after the item's name comes where Dơi found it.", "Don't mix it up with the chestnut line or the bell line."],
+          "hint": "That place has babbling water.",
+          "answer": { "text": "By the stream", "explanation": "The notebook says: 'Red wool scarf: by the stream, last winter.'" }
+        }
+      },
+      "feedback": {
+        "right": ["Đúng rồi! Dơi còn nhớ cả mùi nước suối trên chiếc khăn.", "{name} đọc sổ nhanh như Dơi nghe tiếng vang.", "Bờ suối, mùa đông năm ngoái: chiếc khăn chờ chủ lâu lắm rồi."],
+        "wrong": ["Gốc thông là chỗ của ba hạt dẻ cơ, đọc lại dòng khăn len nhé.", "Trảng cỏ là nơi Dơi nhặt chiếc chuông đồng đấy {name}.", "Tìm đúng dòng có chữ «khăn len đỏ» rồi đọc chậm thôi."],
+        "en": {
+          "right": ["Right! Dơi even remembers the scarf smelling of stream water.", "{name} reads the notebook as fast as Dơi hears an echo.", "By the stream, last winter: that scarf has waited a long time for its owner."],
+          "wrong": ["The pine stump is where the chestnuts were. Read the scarf line again.", "The meadow is where Dơi found the little brass bell, {name}.", "Find the line with 'red wool scarf' and read it slowly."]
+        }
+      },
+      "en": {
+        "title": "The lost-things notebook",
+        "text": "Dơi's lost-things notebook:\n– Wooden top carved S.H.D: crack in the cave rock, this season.\n– Red wool scarf: by the stream, last winter. Probably Sóc Hạt Dẻ's, she always wears a red scarf.\n– Three chestnuts wrapped in leaves: at the pine stump, autumn. Who else hides chestnuts that carefully?\n– Leaf whistle: in the green canopy, spring. Some bird's, surely.\n– Little brass bell: in the meadow, summer.",
+        "question": "According to the notebook, where did Dơi find the red wool scarf?",
+        "choices": ["By the stream", "At the pine stump", "In the meadow"]
+      }
+    },
+    {
+      "id": "gap-soc",
+      "title": "Gặp bạn sóc hay quên",
+      "goTo": "Mang sổ tới gốc dẻ ven đồi tìm Sóc Hạt Dẻ Hay Quên",
+      "kind": "dialogue",
+      "target": "st-doi-tai-to-do-lac-soc",
+      "lines": [
+        { "speaker": "Sóc Hạt Dẻ Hay Quên", "text": "Ơ, chào… ai nhỉ? À, {name}! Tớ đang tìm… tìm gì ấy nhỉ? Hình như là cái gì đó tròn tròn." },
+        { "speaker": "Sóc Hạt Dẻ Hay Quên", "text": "Dơi giữ đồ của tớ á? Hồi trước tớ thấy bạn ấy lượn quanh, tưởng bạn ấy định lấy trộm, tớ còn ném vỏ hạt dẻ vào nữa cơ. Chết thật!" }
+      ],
+      "choices": [
+        { "text": "Bạn ấy giữ hộ cậu suốt bao năm đấy.", "reply": "Vậy mà tớ… Thôi, cậu xem sổ giúp tớ món nào là của tớ đi, đầu tớ như cái giỏ thủng." }
+      ],
+      "en": {
+        "title": "Meet the forgetful squirrel",
+        "goTo": "Take the notebook to the chestnut tree by the hill to find Sóc Hạt Dẻ Hay Quên",
+        "lines": [
+          "Oh, hello… who are you again? Ah, {name}! I'm looking for… what was it? Something round, I think.",
+          "Dơi has been keeping my things? I used to see him flitting about and thought he was a thief. I even threw chestnut shells at him. Oh dear!"
+        ],
+        "choices": [
+          { "text": "He's kept them safe for you for years.", "reply": "And I… Well, check the notebook and tell me which things are mine. My head's like a basket full of holes." }
+        ]
+      }
+    },
+    {
+      "id": "do-cua-soc",
+      "title": "Đồ nào của Sóc?",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-doi-tai-to-do-lac-soc",
+      "skill": "logic",
+      "prompt": "Dựa vào sổ của Dơi, chọn mọi món là của Sóc Hạt Dẻ Hay Quên:",
+      "choices": [
+        { "id": "a", "text": "Con quay gỗ khắc S.H.D" },
+        { "id": "b", "text": "Chiếc khăn len đỏ" },
+        { "id": "c", "text": "Ba hạt dẻ bọc lá" },
+        { "id": "d", "text": "Cái kèn lá" },
+        { "id": "e", "text": "Chuông đồng nhặt ở trảng cỏ" }
+      ],
+      "answer": { "choices": ["a", "b", "c"] },
+      "support": {
+        "guide": ["«S.H.D» là chữ đầu của tên ai?", "Sổ ghi khăn đỏ và hạt dẻ đều có nhắc tới Sóc.", "Món nào sổ bảo là của một bạn chim, hay không ghi chủ, thì để lại."],
+        "hint": "Có ba món của Sóc; kèn lá là của một bạn chim.",
+        "answer": { "text": "Con quay gỗ, khăn len đỏ, ba hạt dẻ bọc lá", "explanation": "S.H.D là Sóc Hạt Dẻ; sổ đoán khăn đỏ và hạt dẻ là của Sóc. Kèn lá của một bạn chim, chuông đồng chưa rõ chủ." },
+        "en": {
+          "guide": ["Whose initials are 'S.H.D'?", "The scarf and the chestnut lines both mention Sóc.", "Leave anything the notebook says belongs to a bird, or that has no owner written."],
+          "hint": "Three things are Sóc's; the leaf whistle belongs to a bird.",
+          "answer": { "text": "The wooden top, the red scarf, the three chestnuts", "explanation": "S.H.D stands for Sóc Hạt Dẻ, and the notebook guesses the scarf and the chestnuts are Sóc's too. The whistle is some bird's, and the bell's owner is unknown." }
+        }
+      },
+      "feedback": {
+        "right": ["Sóc ôm chầm cả ba món: «Khăn của tớ! Hạt dẻ của tớ! Quay của tớ!»", "{name} chọn chuẩn, không sót mà cũng không thừa món nào.", "Sóc quàng ngay khăn đỏ, mặt đỏ chẳng kém vì ngượng với Dơi."],
+        "wrong": ["Món ấy sổ ghi là của một bạn chim mà, để lại nhé.", "Còn sót một món của Sóc đấy, nhìn lại chữ khắc trên con quay xem.", "Chiếc chuông chưa biết của ai đâu {name}, đừng vội đưa Sóc."],
+        "en": {
+          "right": ["Sóc hugs all three: 'My scarf! My chestnuts! My top!'", "{name} picked exactly right, nothing missing, nothing extra.", "Sóc wraps on the red scarf, her cheeks just as red from embarrassment about Dơi."],
+          "wrong": ["The notebook says that one belongs to a bird. Leave it.", "One of Sóc's things is still missing. Look at the letters on the top.", "Nobody knows whose bell that is yet, {name}. Don't hand it to Sóc."]
+        }
+      },
+      "en": {
+        "title": "Which things are Sóc's?",
+        "prompt": "Using Dơi's notebook, choose everything that belongs to Sóc Hạt Dẻ Hay Quên:",
+        "choices": ["Wooden top carved S.H.D", "Red wool scarf", "Three chestnuts wrapped in leaves", "Leaf whistle", "Brass bell from the meadow"]
+      }
+    },
+    {
+      "id": "cach-tra-do",
+      "title": "Trả đồ thế nào?",
+      "goTo": "Quay về cửa hang đá kể cho Dơi nghe",
+      "kind": "decision",
+      "target": "doi-hang-sau",
+      "speaker": "Dơi Đêm Tai To",
+      "prompt": "Dơi nghe kể chuyện Sóc mà tai dựng đứng vì vui. «Trong rương còn bao nhiêu đồ của các bạn khác. Mình trả thế nào đây, {name}?»",
+      "choices": [
+        { "id": "tung-nha", "text": "Mỗi đêm mang trả một nhà", "consequence": "Dơi đếm: «Ba mươi món… ba mươi đêm.» Rồi bạn ấy cười: «Lâu quá. Hay mình làm cách khác nhanh hơn?»" },
+        { "id": "moi-ca-rung", "text": "Mời cả rừng tới cửa hang lúc chạng vạng", "consequence": "Tai Dơi run run: «Đông thế à?» Rồi bạn ấy hít một hơi thật sâu: «Ừ. Lúc chạng vạng tớ dũng cảm nhất.»" },
+        { "id": "nho-soc", "text": "Nhờ Sóc mang trả giúp", "consequence": "Dơi ngẫm nghĩ: «Sóc hay quên lắm, lỡ trả nhầm nhà thì sao?» Rồi bạn ấy quyết: «Thôi, tớ sẽ tự mời mọi người tới.»" }
+      ],
+      "en": {
+        "title": "How to give things back?",
+        "goTo": "Head back to the stone cave and tell Dơi everything",
+        "prompt": "Dơi's ears stand straight up with joy at the news about Sóc. 'There's still so much in the chest that belongs to other friends. How should we give it back, {name}?'",
+        "choices": [
+          { "text": "Return one household's things each night", "consequence": "Dơi counts: 'Thirty things… thirty nights.' Then he grins: 'Too slow. Is there a quicker way?'" },
+          { "text": "Invite the whole forest to the cave at twilight", "consequence": "Dơi's ears tremble: 'That many?' Then he takes a deep breath: 'Yes. Twilight is when I'm bravest.'" },
+          { "text": "Ask Sóc to deliver them", "consequence": "Dơi thinks: 'Sóc forgets everything, what if she takes them to the wrong home?' Then he decides: 'No, I'll invite everyone myself.'" }
+        ]
+      }
+    },
+    {
+      "id": "mon-dau-tien-ve-nha",
+      "title": "Món đồ đầu tiên về nhà",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Đêm ấy, lần đầu tiên sau bao năm, chiếc rương nhẹ đi ba món. Dơi gạch ba dòng trong sổ, nét gạch run run mà vui.",
+      "en": { "title": "The first things go home", "text": "That night, for the first time in years, the chest is three things lighter. Dơi crosses out three lines in his notebook, with a shaky but happy hand." }
+    },
+    {
+      "id": "loi-moi-chang-vang",
+      "title": "Lời mời lúc chạng vạng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sóc chạy khắp rừng báo tin, lần này không quên chữ nào: «Chiều mai, cửa hang đá, Dơi trả đồ lạc!» Dơi thì thầm với {name}: «Lỡ mọi người lại hét thì sao…»",
+      "en": { "title": "An invitation at twilight", "text": "Sóc races round the forest spreading the news, and for once she doesn't forget a word: 'Tomorrow evening, stone cave, Dơi is giving back lost things!' Dơi whispers to {name}: 'What if everyone screams again…'" }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": { "phep-cong": 1, "doc-hieu": 1, "logic": 1 }
+  },
+  "en": {
+    "title": "Dơi Đêm Tai To's story, chapter 2: The chest in the old forest",
+    "summary": "Dơi leads {name} to a wooden chest hidden in the old forest, where for years he has kept everything the forest lost. {name} finds two numbered stones, adds them up for the code, reads the lost-things notebook and helps Sóc Hạt Dẻ Hay Quên get her things back."
+  }
+}
