@@ -1,0 +1,280 @@
+{
+  "id": "vuot-ai-xom-mai-am",
+  "region": "xom-mai-am",
+  "chapter": 4,
+  "title": "Trùm vui: Diều Hâu Gió Lốc",
+  "status": "active",
+  "summary": "Ngày hội gia đình ở cánh đồng gió đang vui thì Diều Hâu Gió Lốc sà xuống quắp mất khung ảnh cả nhà. {name} chuẩn bị đồ dã ngoại, đọc thư mời, đếm hoa giấy trên cánh quạt rồi đấu bảy câu đố về gia đình để xin lại khung ảnh.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Heo Con Ủn Ỉn, Chị Thoa Hái Ngô, Diều Hâu Gió Lốc",
+    "where": "Xóm Mái Ấm, hồ sen và cánh đồng gió: bờ rào hoa dại, bãi cỏ cánh đồng gió, cọc gỗ đầu đồng, ruộng ngô nhỏ, gò lộng gió",
+    "goal": "Thắng Diều Hâu Gió Lốc để lấy lại khung ảnh cả nhà cho ngày hội gia đình",
+    "play": "Tìm bánh, nước chanh, chiếu hoa theo lời tả, đọc thư mời, tìm quy luật dãy số, chọn cách nói chuyện với Diều Hâu, đấu trùm bảy câu",
+    "learn": "Từ chỉ người trong gia đình và tình cảm, câu nêu đặc điểm, câu Ai làm gì, dấu phẩy, đọc hiểu, kể theo trình tự",
+    "reward": "100 XP, 25 Xu, Skill XP Từ ngữ, Câu, Dấu câu, Kể chuyện",
+    "next": "Cả xóm chụp ảnh chung, Bà Gấu Nâu mời {name} về hiên nhà ăn chè"
+  },
+  "phases": {
+    "hook": "gap-heo-con",
+    "explore": "chuan-bi-da-ngoai",
+    "learn": "doc-thu-moi",
+    "challenge": "hoa-giay-canh-quat",
+    "decision": "noi-chuyen-dieu-hau",
+    "finale": "tran-trum",
+    "reward": "khung-anh-ve-tay",
+    "next": "anh-ca-xom"
+  },
+  "places": {
+    "trum-xma-heo-con": "Bờ rào hoa dại",
+    "chuan-bi-da-ngoai": "Bãi cỏ cánh đồng gió",
+    "trum-xma-thu-moi": "Cọc gỗ đầu đồng",
+    "trum-xma-chi-thoa": "Ruộng ngô nhỏ",
+    "trum-xma-dieu-hau": "Gò lộng gió",
+    "trum-xma-khung-anh": "Gò lộng gió"
+  },
+  "steps": [
+    {
+      "id": "gap-heo-con",
+      "title": "Heo Con mếu máo",
+      "goTo": "Tới bờ rào hoa dại, Heo Con Ủn Ỉn đang mếu máo",
+      "kind": "dialogue",
+      "target": "trum-xma-heo-con",
+      "lines": [
+        { "speaker": "Heo Con Ủn Ỉn", "text": "Ủn ỉn… {name} ơi, Diều Hâu Gió Lốc vừa sà xuống quắp mất khung ảnh cả nhà, bay lên gò lộng gió rồi!" },
+        { "speaker": "Heo Con Ủn Ỉn", "text": "Bác ấy không xấu đâu, chỉ thích đố về gia đình thôi. Nhưng bữa dã ngoại còn chưa dọn xong, cậu giúp tớ với!" }
+      ],
+      "choices": [
+        { "text": "Mình dọn bữa dã ngoại trước nhé!", "reply": "Ừ, đồ để cả trên bãi cỏ cánh đồng gió, gió thổi bay tứ tung." },
+        { "text": "Diều Hâu đố khó lắm không?", "reply": "Khó mà vui! Nhưng dọn bữa dã ngoại trên bãi cỏ đã nhé." }
+      ]
+    },
+    {
+      "id": "chuan-bi-da-ngoai",
+      "title": "Dọn bữa dã ngoại",
+      "goTo": "Ra bãi cỏ cánh đồng gió gom đồ dã ngoại",
+      "kind": "find-object",
+      "prompt": "Gió thổi bay ba món của bữa dã ngoại. Đọc lời tả rồi tìm lại:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "banh-bong-lan",
+          "name": "Chiếc bánh bông lan",
+          "clue": "Mềm xốp, vàng ươm, phủ một lớp kem trắng, mẹ nướng từ sáng sớm.",
+          "target": "trum-xma-banh"
+        },
+        {
+          "id": "nuoc-chanh",
+          "name": "Bình nước chanh",
+          "clue": "Một bình đầy nước chua chua ngọt ngọt, uống vào mát cả người.",
+          "target": "trum-xma-nuoc-chanh"
+        },
+        {
+          "id": "chieu-hoa",
+          "name": "Tấm chiếu hoa",
+          "clue": "Cuộn tròn lại thì gọn, trải ra thì cả nhà ngồi vừa, mặt in hoa đỏ.",
+          "target": "trum-xma-chieu"
+        }
+      ]
+    },
+    {
+      "id": "doc-thu-moi",
+      "title": "Thư mời ngày hội gia đình",
+      "goTo": "Ghé cọc gỗ đầu đồng đọc thư mời ngày hội",
+      "kind": "read",
+      "target": "trum-xma-thu-moi",
+      "skill": "doc-hieu",
+      "text": "THƯ MỜI NGÀY HỘI GIA ĐÌNH\nKính mời ông bà, bố mẹ và các cháu ra cánh đồng gió chiều nay.\n3 giờ: cả nhà ăn bánh.\n4 giờ: thả diều, chơi chong chóng.\n5 giờ: chụp một tấm ảnh cả nhà để treo trong khung.\nXóm Mái Ấm",
+      "question": "Theo thư mời, mấy giờ cả nhà chụp ảnh?",
+      "choices": [
+        { "id": "a", "text": "3 giờ" },
+        { "id": "b", "text": "4 giờ" },
+        { "id": "c", "text": "5 giờ" }
+      ],
+      "answer": { "choice": "c" },
+      "support": {
+        "guide": ["Tìm dòng có chữ «chụp».", "Con số ở đầu dòng chính là giờ chụp ảnh."],
+        "hint": "Chụp ảnh là việc cuối cùng của buổi chiều.",
+        "answer": {
+          "text": "Chụp ảnh lúc 5 giờ",
+          "explanation": "Thư mời ghi: 5 giờ, chụp một tấm ảnh cả nhà để treo trong khung."
+        }
+      },
+      "feedback": {
+        "right": ["Năm giờ chụp ảnh, còn kịp lấy khung về!", "{name} đọc thư mời nhanh như gió đồng.", "Chuẩn giờ rồi, Heo Con thở phào nhẹ nhõm."],
+        "wrong": ["Giờ đó cả nhà đang ăn bánh hoặc thả diều đấy.", "Tìm chữ «chụp» trong thư mời nhé {name}.", "Việc chụp ảnh nằm ở dòng cuối cùng của lịch."]
+      }
+    },
+    {
+      "id": "hoa-giay-canh-quat",
+      "title": "Hoa giấy trên cánh quạt",
+      "goTo": "Tới ruộng ngô nhỏ, Chị Thoa Hái Ngô đang gắn hoa lên cánh quạt gió",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "trum-xma-chi-thoa",
+      "skill": "logic",
+      "prompt": "Chị Thoa gắn hoa giấy lên các cánh quạt, cánh sau nhiều hơn cánh trước cùng một số bông. Cánh tiếp theo có mấy bông?",
+      "elements": [
+        { "id": "c1", "label": "2 bông" },
+        { "id": "c2", "label": "5 bông" },
+        { "id": "c3", "label": "8 bông" },
+        { "id": "c4", "label": "11 bông" }
+      ],
+      "choices": [
+        { "id": "a", "text": "12 bông" },
+        { "id": "b", "text": "13 bông" },
+        { "id": "c", "text": "14 bông" }
+      ],
+      "answer": { "choice": "c" },
+      "support": {
+        "guide": ["Lấy số bông cánh thứ hai trừ cánh thứ nhất.", "Kiểm tra các cánh sau có thêm đúng bấy nhiêu không.", "Cộng thêm số đó vào cánh cuối."],
+        "hint": "Mỗi cánh nhiều hơn cánh trước 3 bông.",
+        "answer": {
+          "text": "Cánh tiếp theo có 14 bông",
+          "explanation": "Dãy tăng đều 3: 2, 5, 8, 11, rồi 11 + 3 = 14."
+        }
+      },
+      "feedback": {
+        "right": ["Cánh quạt quay tít, hoa giấy rực rỡ cả cánh đồng!", "{name} đếm thêm ba giỏi quá, chị Thoa khen nức nở.", "Mười bốn bông, cánh quạt đẹp nhất xóm rồi!"],
+        "wrong": ["Thử lấy 5 trừ 2 xem mỗi cánh thêm mấy bông nhé.", "Cánh cuối có 11 bông, thêm bao nhiêu nữa nhỉ {name}?", "Các cánh tăng đều nhau, không tăng một bông đâu."]
+      }
+    },
+    {
+      "id": "noi-chuyen-dieu-hau",
+      "title": "Nói chuyện với Diều Hâu",
+      "kind": "decision",
+      "target": "trum-xma-chi-thoa",
+      "speaker": "Chị Thoa Hái Ngô",
+      "prompt": "Diều Hâu đang đậu trên gò, ôm khung ảnh khư khư. {name} mở lời thế nào?",
+      "choices": [
+        {
+          "id": "xin-le-phep",
+          "text": "Lễ phép xin bác trả khung ảnh",
+          "consequence": "Diều Hâu xòe cánh gật gù: lễ phép thế thì bác cho cháu một cơ hội đố tài."
+        },
+        {
+          "id": "ke-gia-dinh",
+          "text": "Kể bác nghe về gia đình mình",
+          "consequence": "Diều Hâu nghe say sưa, mắt rơm rớm: bác cũng nhớ tổ nhà bác lắm."
+        },
+        {
+          "id": "moi-banh",
+          "text": "Mời bác một miếng bánh bông lan",
+          "consequence": "Diều Hâu ăn ngon lành rồi vỗ cánh phành phạch, sẵn sàng ra đề."
+        }
+      ]
+    },
+    {
+      "id": "tran-trum",
+      "title": "Đấu trí với Diều Hâu Gió Lốc",
+      "goTo": "Leo lên gò lộng gió, Diều Hâu đang chờ",
+      "kind": "boss",
+      "target": "trum-xma-dieu-hau",
+      "bossId": "dieu-hau-gio-loc",
+      "bossName": "Diều Hâu Gió Lốc",
+      "introDialogue": "Vù vù! Bảy câu đố về gia đình đây. Mỗi câu đúng, ta hạ cánh xuống thấp hơn một chút!",
+      "winDialogue": "Ta xin hạ cánh! {name} hiểu chuyện gia đình hơn cả ta, khung ảnh xin gửi lại cả nhà.",
+      "maxHp": 500,
+      "damagePerTurn": 80,
+      "turns": [
+        {
+          "id": "ba-noi",
+          "skill": "tu-ngu",
+          "prompt": "Mẹ của bố em, em gọi là gì?",
+          "choices": [
+            { "id": "a", "text": "Bà ngoại" },
+            { "id": "b", "text": "Bà nội" },
+            { "id": "c", "text": "Cô" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "tinh-cam-gia-dinh",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào nói về tình cảm giữa những người trong nhà?",
+          "choices": [
+            { "id": "a", "text": "yêu thương" },
+            { "id": "b", "text": "nhanh nhẹn" },
+            { "id": "c", "text": "tròn xoe" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "cau-dac-diem",
+          "skill": "cau",
+          "prompt": "Câu nào nêu đặc điểm của một người?",
+          "choices": [
+            { "id": "a", "text": "Mái tóc của bà đã bạc trắng." },
+            { "id": "b", "text": "Bà đang kể chuyện cổ tích." },
+            { "id": "c", "text": "Bà ơi, bà kể chuyện đi!" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "dau-phay",
+          "skill": "dau-cau",
+          "prompt": "Câu nào đặt dấu phẩy đúng chỗ?",
+          "choices": [
+            { "id": "a", "text": "Em, yêu ông bà bố mẹ." },
+            { "id": "b", "text": "Em yêu ông bà, bố mẹ." },
+            { "id": "c", "text": "Em yêu, ông bà bố mẹ." }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "lam-gi",
+          "skill": "cau",
+          "prompt": "Trong câu «Ông tưới cây ngoài vườn», bộ phận nào trả lời câu hỏi «Làm gì?»",
+          "choices": [
+            { "id": "a", "text": "Ông" },
+            { "id": "b", "text": "tưới cây ngoài vườn" },
+            { "id": "c", "text": "ngoài vườn" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "ai-doc-truyen",
+          "skill": "doc-hieu",
+          "prompt": "Đọc câu: «Tối nào bố cũng đọc truyện cho em nghe rồi mới tắt đèn.» Ai đọc truyện cho em?",
+          "choices": [
+            { "id": "a", "text": "Mẹ" },
+            { "id": "b", "text": "Ông" },
+            { "id": "c", "text": "Bố" }
+          ],
+          "answer": { "choice": "c" }
+        },
+        {
+          "id": "lam-chong-chong",
+          "skill": "ke-chuyen",
+          "prompt": "Kể lại cách làm chong chóng: gấp tờ giấy vuông, cắt bốn đường chéo, rồi gắn vào que. Việc nào làm sau cùng?",
+          "choices": [
+            { "id": "a", "text": "Gấp tờ giấy vuông" },
+            { "id": "b", "text": "Cắt bốn đường chéo" },
+            { "id": "c", "text": "Gắn chong chóng vào que" }
+          ],
+          "answer": { "choice": "c" }
+        }
+      ]
+    },
+    {
+      "id": "khung-anh-ve-tay",
+      "title": "Khung ảnh về tay",
+      "kind": "reward",
+      "target": "trum-xma-khung-anh",
+      "text": "Diều Hâu đặt khung ảnh vào tay {name}, còn xin đứng chung một tấm cho vui. Trong khung kẹp sẵn quà của bác: XP, xu và điểm kỹ năng."
+    },
+    {
+      "id": "anh-ca-xom",
+      "title": "Tấm ảnh cả xóm",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đúng năm giờ, cả xóm đứng sát vào nhau cười thật tươi. Bà Gấu Nâu mời {name} về hiên nhà ăn chè đỗ đen."
+    }
+  ],
+  "reward": {
+    "xp": 100,
+    "coin": 25,
+    "skillXp": { "tu-ngu": 1, "cau": 1, "dau-cau": 1, "ke-chuyen": 1 }
+  }
+}

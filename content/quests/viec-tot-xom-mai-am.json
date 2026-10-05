@@ -1,0 +1,229 @@
+{
+  "id": "viec-tot-xom-mai-am",
+  "region": "xom-mai-am",
+  "chapter": 2,
+  "title": "Việc tốt: Cặp kính của bà Mướp",
+  "status": "active",
+  "summary": "Bà Mèo Mướp đánh rơi cặp kính nên không đọc được thư cháu gửi. {name} tìm đồ giúp bà, đọc thư cho bà nghe, đếm hàng len bà đan, chọn cách làm bà vui rồi chọn những việc thể hiện lòng quan tâm tới ông bà.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bà Mèo Mướp, Đom Đóm Thắp Đèn, Mèo Mun Hàng Xóm",
+    "where": "Xóm Mái Ấm, hiên nhà đêm trăng: bậc hiên nhà bà Mướp, góc vườn đêm trăng, bàn đá dưới giàn, bụi tre đom đóm, ngõ nhà Mèo Mun",
+    "goal": "Giúp bà Mèo Mướp tìm kính, nghe thư cháu và có một buổi tối vui",
+    "play": "Tìm kính, cuộn len, quạt nan theo lời tả, đọc thư, tìm quy luật hàng len, chọn cách giúp bà, chọn các việc làm quan tâm",
+    "learn": "Đọc hiểu lá thư, quy luật dãy số tăng đều, cách thể hiện tình cảm với ông bà",
+    "reward": "70 XP, 18 Xu, Skill XP Đọc hiểu, Logic, Từ ngữ",
+    "next": "Chủ nhật cháu Mít về, bà Mướp hẹn {name} sang ăn bánh"
+  },
+  "phases": {
+    "hook": "gap-ba-muop",
+    "explore": "tim-do-cua-ba",
+    "learn": "doc-thu-chau-mit",
+    "challenge": "hang-len-cua-ba",
+    "decision": "lam-ba-vui",
+    "finale": "quan-tam-ong-ba",
+    "reward": "ba-muop-cam-on",
+    "next": "cho-chau-ve"
+  },
+  "places": {
+    "vt-xma-ba-muop": "Bậc hiên nhà bà Mướp",
+    "tim-do-cua-ba": "Góc vườn đêm trăng",
+    "vt-xma-thu-chau": "Bàn đá dưới giàn",
+    "vt-xma-dom-dom": "Bụi tre đom đóm",
+    "vt-xma-meo-mun": "Ngõ nhà Mèo Mun"
+  },
+  "steps": [
+    {
+      "id": "gap-ba-muop",
+      "title": "Bà Mướp tìm kính",
+      "goTo": "Tới bậc hiên nhà bà Mướp, bà đang lần mò tìm gì đó",
+      "kind": "dialogue",
+      "target": "vt-xma-ba-muop",
+      "lines": [
+        { "speaker": "Bà Mèo Mướp", "text": "Meo… Cháu đấy à? Bà vừa nhận thư của cháu Mít mà chẳng biết cặp kính rơi đâu mất, mắt bà mờ không đọc nổi." },
+        { "speaker": "Bà Mèo Mướp", "text": "Ban nãy bà ra góc vườn hái mấy quả na, chắc rơi ngoài đó cả." }
+      ],
+      "choices": [
+        { "text": "Bà ngồi nghỉ, cháu đi tìm ạ!", "reply": "Ngoan quá. Trăng sáng thế này chắc cháu tìm nhanh thôi." }
+      ]
+    },
+    {
+      "id": "tim-do-cua-ba",
+      "title": "Tìm đồ của bà",
+      "goTo": "Ra góc vườn đêm trăng tìm đồ bà đánh rơi",
+      "kind": "find-object",
+      "prompt": "Bà đánh rơi ba thứ. Đọc lời bà tả rồi tìm giúp bà:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "kinh-lao",
+          "name": "Cặp kính lão",
+          "clue": "Hai mắt kính tròn có gọng, đeo lên thì chữ nhỏ cũng hóa to và rõ.",
+          "target": "vt-xma-kinh-lao"
+        },
+        {
+          "id": "cuon-len",
+          "name": "Cuộn len đỏ",
+          "clue": "Tròn như quả bóng nhỏ, quấn bằng sợi mềm màu đỏ, bà dùng để đan khăn.",
+          "target": "vt-xma-cuon-len"
+        },
+        {
+          "id": "quat-nan",
+          "name": "Chiếc quạt nan",
+          "clue": "Xòe ra như đuôi công, phe phẩy mấy cái là gió mát ngay.",
+          "target": "vt-xma-quat-nan"
+        }
+      ]
+    },
+    {
+      "id": "doc-thu-chau-mit",
+      "title": "Đọc thư cho bà nghe",
+      "goTo": "Bà để lá thư trên bàn đá dưới giàn, đọc cho bà nghe nhé",
+      "kind": "read",
+      "target": "vt-xma-thu-chau",
+      "skill": "doc-hieu",
+      "text": "Bà ơi,\nCháu nhớ bà lắm! Chủ nhật này bố mẹ cho cháu về thăm bà. Cháu sẽ mang theo chiếc khăn len cháu tự đan để bà quàng khi trời trở lạnh. Bà nhớ giữ gìn sức khỏe nhé.\nCháu của bà,\nMít",
+      "question": "Khi nào cháu Mít về thăm bà?",
+      "choices": [
+        { "id": "a", "text": "Sáng mai" },
+        { "id": "b", "text": "Chủ nhật này" },
+        { "id": "c", "text": "Tết năm sau" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm câu có chữ «về thăm bà».", "Đọc phần đầu câu đó để biết thời gian."],
+        "hint": "Mít nhắc tới một ngày trong tuần.",
+        "answer": {
+          "text": "Mít về vào Chủ nhật này",
+          "explanation": "Thư viết: Chủ nhật này bố mẹ cho cháu về thăm bà."
+        }
+      },
+      "feedback": {
+        "right": ["Bà cười móm mém: Chủ nhật này cháu bà về rồi!", "{name} đọc thư rõ ràng, bà nghe rành rọt từng chữ.", "Đúng rồi, bà phải chuẩn bị bánh đón cháu thôi."],
+        "wrong": ["Thư không nhắc tới ngày ấy đâu, đọc lại câu thứ hai nhé.", "Tìm chữ «về thăm bà» xem đi kèm ngày nào {name}.", "Đọc chậm câu đầu tiên sau lời chào nha."]
+      }
+    },
+    {
+      "id": "hang-len-cua-ba",
+      "title": "Hàng len bà đan",
+      "goTo": "Qua bụi tre đom đóm, Đom Đóm Thắp Đèn soi giúp bà đếm hàng len",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "vt-xma-dom-dom",
+      "skill": "logic",
+      "prompt": "Mỗi tối bà đan nhiều hơn tối hôm trước cùng một số hàng len. Tối nay bà đan bao nhiêu hàng?",
+      "elements": [
+        { "id": "t1", "label": "3 hàng" },
+        { "id": "t2", "label": "5 hàng" },
+        { "id": "t3", "label": "7 hàng" },
+        { "id": "t4", "label": "9 hàng" }
+      ],
+      "choices": [
+        { "id": "a", "text": "10 hàng" },
+        { "id": "b", "text": "11 hàng" },
+        { "id": "c", "text": "12 hàng" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["So sánh hai tối liền nhau: tăng thêm mấy hàng?", "Các tối sau cũng tăng đúng chừng ấy.", "Cộng thêm vào số hàng của tối cuối."],
+        "hint": "Mỗi tối bà đan thêm 2 hàng so với tối trước.",
+        "answer": {
+          "text": "Tối nay bà đan 11 hàng",
+          "explanation": "Dãy tăng đều 2: 3, 5, 7, 9, nên tối tiếp theo là 9 + 2 = 11."
+        }
+      },
+      "feedback": {
+        "right": ["Đom Đóm nhấp nháy mừng, khăn len của bà sắp xong rồi!", "{name} nhìn ra ngay mỗi tối thêm hai hàng.", "Mười một hàng, đúng y như bà đếm!"],
+        "wrong": ["Thử lấy 5 trừ 3 xem mỗi tối thêm mấy hàng nhé.", "Tối cuối là 9 hàng, thêm bao nhiêu nữa nhỉ {name}?", "Dãy này tăng đều, không nhảy cóc đâu."]
+      }
+    },
+    {
+      "id": "lam-ba-vui",
+      "title": "Làm bà vui",
+      "kind": "decision",
+      "target": "vt-xma-dom-dom",
+      "speaker": "Đom Đóm Thắp Đèn",
+      "prompt": "Trời tối dần, bà ngồi một mình ngoài hiên. {name} làm gì cho bà vui?",
+      "choices": [
+        {
+          "id": "doc-lai-thu",
+          "text": "Đọc thư cho bà nghe thêm lần nữa",
+          "consequence": "Bà nhắm mắt nghe, tủm tỉm cười như thấy cháu Mít ngồi ngay bên cạnh.",
+          "nextStepId": "quan-tam-ong-ba"
+        },
+        {
+          "id": "thap-den",
+          "text": "Thắp đèn lồng ngoài hiên cho sáng",
+          "consequence": "Hiên nhà sáng bừng, bà bảo nhìn rõ cả từng mũi len.",
+          "nextStepId": "quan-tam-ong-ba"
+        },
+        {
+          "id": "ru-meo-mun",
+          "text": "Rủ Mèo Mun hàng xóm sang chơi",
+          "consequence": "Đom Đóm bay trước soi đường. Nhà Mèo Mun ở cuối ngõ, sang rủ bạn ấy nhé!"
+        }
+      ]
+    },
+    {
+      "id": "ru-meo-mun",
+      "title": "Rủ Mèo Mun sang chơi",
+      "goTo": "Sang ngõ nhà Mèo Mun rủ bạn tới chơi với bà",
+      "kind": "dialogue",
+      "target": "vt-xma-meo-mun",
+      "lines": [
+        { "speaker": "Mèo Mun Hàng Xóm", "text": "Sang chơi với bà Mướp hả? Tớ đi ngay! Tớ còn mang theo đĩa ổi chín mẹ vừa hái để biếu bà." }
+      ],
+      "choices": [{ "text": "Bà chắc vui lắm đây!" }]
+    },
+    {
+      "id": "quan-tam-ong-ba",
+      "title": "Những việc làm quan tâm",
+      "goTo": "Quay lại bậc hiên nhà bà Mướp",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "vt-xma-ba-muop",
+      "skill": "tu-ngu",
+      "prompt": "Bà hỏi đố: những việc nào thể hiện sự quan tâm tới ông bà? Chọn tất cả việc đúng.",
+      "choices": [
+        { "id": "doc-bao", "text": "Đọc báo cho ông nghe" },
+        { "id": "lay-nuoc", "text": "Lấy nước mời bà uống" },
+        { "id": "on-ao", "text": "Chạy nhảy ầm ĩ khi bà đang ngủ" },
+        { "id": "hoi-tham", "text": "Hỏi thăm sức khỏe ông bà" },
+        { "id": "gianh-tivi", "text": "Giành điều khiển ti vi với ông" }
+      ],
+      "answer": { "choices": ["doc-bao", "lay-nuoc", "hoi-tham"] },
+      "support": {
+        "guide": ["Đọc từng việc và tự hỏi: ông bà có vui khi em làm thế không?", "Chọn mọi việc làm ông bà vui, bỏ qua việc làm ông bà mệt."],
+        "hint": "Có ba việc đúng và hai việc nên tránh.",
+        "answer": {
+          "text": "Đọc báo cho ông, lấy nước mời bà, hỏi thăm sức khỏe",
+          "explanation": "Ba việc ấy giúp ông bà vui và khỏe; chạy nhảy ồn ào hay giành ti vi làm ông bà mệt và buồn."
+        }
+      },
+      "feedback": {
+        "right": ["Bà ôm {name} vào lòng: cháu hiểu chuyện quá!", "Ba việc ấy làm ông bà nào cũng vui.", "Đúng hết rồi, bà sẽ kể cho cháu Mít nghe về cháu."],
+        "wrong": ["Có một việc làm bà mệt đấy, bỏ ra nhé.", "Còn sót một việc quan tâm chưa chọn kìa {name}.", "Hỏi lại từng việc: ông bà có vui không nào?"]
+      }
+    },
+    {
+      "id": "ba-muop-cam-on",
+      "title": "Bà Mướp cảm ơn",
+      "kind": "reward",
+      "target": "vt-xma-ba-muop",
+      "text": "Bà Mướp đeo kính, nhìn {name} thật lâu rồi cảm ơn. Bà dúi vào tay một nắm kẹo lạc, cả xóm khen {name} là đứa cháu ngoan của xóm."
+    },
+    {
+      "id": "cho-chau-ve",
+      "title": "Chờ cháu về",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bà hẹn Chủ nhật cháu Mít về sẽ làm bánh, mời {name} sang ăn cùng. Đom Đóm Thắp Đèn bay theo soi đường cho {name} về nhà."
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": { "doc-hieu": 1, "logic": 1, "tu-ngu": 1 }
+  }
+}
