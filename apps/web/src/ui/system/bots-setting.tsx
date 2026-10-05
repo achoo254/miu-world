@@ -1,6 +1,7 @@
-// The player's own online switches (Master Plan §8; owner 05/10/2026: her own settings, on by default): "Chơi
-// online" (others see and meet her) and "Bạn máy" (companion bots around her). Kept on the server for this player,
-// so they follow her to any device; a change applies at once, even in a room.
+// The player's own companion bot switch (Master Plan §8; owner 05/10/2026: her own setting, on by default): "Bạn
+// máy" (companion bots around her). Kept on the server for this player, so it follows her to any device; a change
+// applies at once, even in a room. Online play itself has no switch: the game is always online (owner,
+// 05/10/2026).
 import { useEffect, useState } from 'react';
 import { PlayerSettings, type PlayerSettingsPatch } from '@miu/schema/account';
 import { playerSettings } from '../../game-bridge/player-settings';
@@ -59,7 +60,7 @@ function Switch({ dataId, title, hint, on, busy, onChange }: { dataId: string; t
   );
 }
 
-export function OnlineSettings({ dataId }: { dataId: string }) {
+export function BotSettings({ dataId }: { dataId: string }) {
   const [settings, setSettings] = useState<PlayerSettings | null>(playerSettings.get);
   const [busy, setBusy] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -99,17 +100,16 @@ export function OnlineSettings({ dataId }: { dataId: string }) {
   if (!settings) {
     return failed ? (
       <p className="hint" role="alert" data-id={`${dataId}-failed`}>
-        <T k="settings.onlineFailed" />
+        <T k="settings.botsFailed" />
       </p>
     ) : null;
   }
   return (
     <>
-      <Switch dataId={`${dataId}-online`} title="settings.online" hint="settings.onlineHint" on={settings.onlineEnabled} busy={busy} onChange={(on) => void change({ onlineEnabled: on })} />
       <Switch dataId={`${dataId}-bots`} title="settings.bots" hint="settings.botsHint" on={settings.botsEnabled} busy={busy} onChange={(on) => void change({ botsEnabled: on })} />
       {failed ? (
         <p className="hint" role="alert" data-id={`${dataId}-failed`}>
-          <T k="settings.onlineFailed" />
+          <T k="settings.botsFailed" />
         </p>
       ) : null}
     </>

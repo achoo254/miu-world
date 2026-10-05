@@ -6,7 +6,7 @@ import type { PlayerProgressDto } from '@miu/schema/progress';
 import { AccountProvider } from './account-context';
 import { AccountPlayersPanel } from './account-players-panel';
 
-const EXTRA: PlayerDto = { id: '3b0e8e0c-6f1a-4b8e-9a53-1f1c2a3b4c5d', displayName: 'Thỏ Bông', species: 'rabbit', language: 'vi', primary: false, onlineEnabled: true, botsEnabled: true };
+const EXTRA: PlayerDto = { id: '3b0e8e0c-6f1a-4b8e-9a53-1f1c2a3b4c5d', displayName: 'Thỏ Bông', species: 'rabbit', language: 'vi', primary: false, botsEnabled: true };
 const PROGRESS: PlayerProgressDto = {
   subjects: [],
   strong: [],
@@ -59,16 +59,17 @@ describe('the account owner’s card per player', () => {
     expect(document.querySelector('[data-id^="player-progress-"][data-id*="-play-"]')).toBeNull();
   });
 
-  it('switches the player’s online play off for her', async () => {
+  it('switches the player’s companion bots off for her, and offers no switch for online play (always on)', async () => {
     const calls = stubApi({
       [`GET /api/players/${EXTRA.id}/learning-progress`]: () => ({ status: 200, body: PROGRESS }),
-      [`PATCH /api/players/${EXTRA.id}/settings`]: (body) => ({ status: 200, body: { onlineEnabled: true, botsEnabled: true, ...(body as object) } }),
+      [`PATCH /api/players/${EXTRA.id}/settings`]: (body) => ({ status: 200, body: { botsEnabled: true, ...(body as object) } }),
     });
     renderPanel();
     fireEvent.click(document.querySelector(`[data-id="player-care-toggle-${EXTRA.id}"]`) as HTMLElement);
     fireEvent.click(await screen.findByRole('tab', { name: 'Chơi online' }));
-    fireEvent.click(document.querySelector(`[data-id="player-care-onlineEnabled-${EXTRA.id}-off"]`) as HTMLElement);
-    await waitFor(() => expect(document.querySelector(`[data-id="player-care-onlineEnabled-${EXTRA.id}-off"]`)?.getAttribute('aria-checked')).toBe('true'));
-    expect(calls.find((c) => c.key.startsWith('PATCH'))?.body).toEqual({ onlineEnabled: false });
+    expect(document.querySelector(`[data-id="player-care-onlineEnabled-${EXTRA.id}"]`)).toBeNull();
+    fireEvent.click(document.querySelector(`[data-id="player-care-botsEnabled-${EXTRA.id}-off"]`) as HTMLElement);
+    await waitFor(() => expect(document.querySelector(`[data-id="player-care-botsEnabled-${EXTRA.id}-off"]`)?.getAttribute('aria-checked')).toBe('true'));
+    expect(calls.find((c) => c.key.startsWith('PATCH'))?.body).toEqual({ botsEnabled: false });
   });
 });

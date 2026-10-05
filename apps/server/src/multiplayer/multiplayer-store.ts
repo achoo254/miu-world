@@ -21,7 +21,7 @@ export interface MultiplayerStore {
   blockedWith(childId: string): Promise<Set<string>>;
   block(childId: string, blockedChildId: string): Promise<void>;
   report(childId: string, reportedChildId: string, reason: ReportReason, mapId: string | null): Promise<void>;
-  /** Her online and companion bot switches (both on when the store does not keep them). */
+  /** Her companion bot switch (on when the store does not keep it). */
   settings?(childId: string): Promise<PlayerSettings>;
 }
 
@@ -51,10 +51,10 @@ export function dbMultiplayerStore(db: Db): MultiplayerStore {
     },
     async settings(childId) {
       const [row] = await db
-        .select({ onlineEnabled: childProfiles.onlineEnabled, botsEnabled: childProfiles.botsEnabled })
+        .select({ botsEnabled: childProfiles.botsEnabled })
         .from(childProfiles)
         .where(eq(childProfiles.id, childId));
-      return row ?? { onlineEnabled: false, botsEnabled: false };
+      return row ?? { botsEnabled: false };
     },
   };
 }

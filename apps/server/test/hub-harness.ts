@@ -24,7 +24,7 @@ export function memoryStore() {
     report: async (from, about, reason, map) => {
       reports.push({ from, about, reason, map });
     },
-    settings: async (id) => settings.get(id) ?? { onlineEnabled: true, botsEnabled: true },
+    settings: async (id) => settings.get(id) ?? { botsEnabled: true },
   };
   return { store, characters, settings, blocks, reports };
 }

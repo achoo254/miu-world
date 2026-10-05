@@ -4,7 +4,7 @@ import { T } from '../i18n/use-t';
 import { FontSizeSetting, ReduceMotionSetting } from './display-controls';
 import { LanguageSetting, VoiceSpeedSetting } from './language-setting';
 import { MusicToggle } from './music-toggle';
-import { OnlineSettings } from './online-setting';
+import { BotSettings } from './bots-setting';
 import { SoundToggle } from './sound-toggle';
 import './settings.css';
 
@@ -38,12 +38,12 @@ export function FullSettingsGroups({ prefix = 'settings' }: { prefix?: string })
         <LanguageSetting dataId={`${prefix}-language`} />
       </section>
 
-      {/* 4. Chơi online và bạn máy (the player's own, kept on the server) */}
+      {/* 4. Chơi online: always on; the player's own companion bot switch, kept on the server */}
       <section className="settings-section" aria-labelledby={`${prefix}-online-title`}>
         <h3 className="settings-section-header" id={`${prefix}-online-title`}>
           <T k="settings.groupOnline" />
         </h3>
-        <OnlineSettings dataId={`${prefix}`} />
+        <BotSettings dataId={`${prefix}`} />
       </section>
 
       {/* 5. Hiển thị & Trợ năng */}

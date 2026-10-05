@@ -1,0 +1,1 @@
+ALTER TABLE "child_profiles" DROP COLUMN "online_enabled";

@@ -4,7 +4,6 @@
 import { Vector3, type Camera, type Group } from 'three';
 import { HOME_MAP_ID, type PartyView, type ServerWsMessage } from '@miu/schema/multiplayer';
 import type { GameStore } from '../../game-bridge/game-store';
-import { playerSettings } from '../../game-bridge/player-settings';
 import type { SocialCommand, SocialStore } from '../../game-bridge/social-store';
 import type { GuardedGltfLoader } from '../asset-loader';
 import type { RemoteSummary } from '../debug/stats-overlay';
@@ -50,7 +49,6 @@ export class MultiplayerSession {
   private readonly options: MultiplayerSessionOptions;
   private readonly social: SocialStore | null;
   private readonly stopCommands: () => void;
-  private readonly stopSettings: () => void;
   private selfId: string | null = null;
   private party: PartyView | null;
   /** Whose home she is in, on the home map (null: her own, or another map). */
@@ -72,15 +70,10 @@ export class MultiplayerSession {
     this.remote = new RemotePlayerManager(options.loader, options.ground, options.shadows, options.onRemotes);
     this.social?.update({ mapId: options.start.mapId, menu: null });
     this.stopCommands = this.social?.onCommand((command) => this.command(command)) ?? (() => {});
-    // Switched back on while she plays: in again at once (switched off, the server takes her out itself).
-    this.stopSettings = playerSettings.subscribe((settings) => {
-      if (settings.onlineEnabled) this.client.reconnect();
-    });
     this.client = new MultiplayerClient(visit ? { ...options.start, host: visit } : options.start, {
       onMessage: (message) => this.handle(message),
       onStatus: (_connected, final) => {
-        // Another tab plays as her now, she plays offline, or she has no player: this one sees no one and is out of
-        // the party view.
+        // Another tab plays as her now, or she has no player: this one sees no one and is out of the party view.
         if (!final) return;
         this.remote.dispose();
         this.roster.clear();
@@ -124,7 +117,6 @@ export class MultiplayerSession {
 
   dispose(): void {
     this.stopCommands();
-    this.stopSettings();
     this.client.dispose();
     this.remote.dispose();
     this.social?.update({ menu: null, room: [] });

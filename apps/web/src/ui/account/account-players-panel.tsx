@@ -1,5 +1,5 @@
 // NEW SCREEN (Master Plan §6, account area): the account owner looks after every player of the account. One card
-// per player, opened to her learning progress, her online switches, or her friends and blocks (view, remove,
+// per player, opened to her learning progress, her companion bot switch, or her friends and blocks (view, remove,
 // unblock; she answers requests herself). Everything is read from the server for that player
 // (`/api/players/:id/…`), behind the account area's optional PIN.
 import { useMemo, useRef, useState } from 'react';
@@ -20,11 +20,14 @@ import './account-players.css';
 
 type CareTab = 'progress' | 'online' | 'friends';
 
-/** The account owner switches online play and companion bots for a player (applied at once, even in a room). */
+/**
+ * The account owner switches companion bots for a player (applied at once, even in a room). Online play itself
+ * has no switch: the game is always online (owner, 05/10/2026).
+ */
 function PlayerOnlineSwitches({ player }: { player: PlayerDto }) {
-  const [settings, setSettings] = useState<PlayerSettings>({ onlineEnabled: player.onlineEnabled, botsEnabled: player.botsEnabled });
+  const [settings, setSettings] = useState<PlayerSettings>({ botsEnabled: player.botsEnabled });
   /** The change being saved (the submit wrapper takes no arguments). */
-  const pending = useRef<PlayerSettingsPatch>({});
+  const pending = useRef<PlayerSettingsPatch>({ botsEnabled: player.botsEnabled });
   const save = useSubmit(async () => {
     setSettings(await api('PATCH', `/players/${player.id}/settings`, PlayerSettings, pending.current));
   });
@@ -59,7 +62,6 @@ function PlayerOnlineSwitches({ player }: { player: PlayerDto }) {
       <p className="hint">
         <T k="playerCare.onlineHint" />
       </p>
-      {choice('onlineEnabled', 'settings.online')}
       {choice('botsEnabled', 'settings.bots')}
       {save.error ? (
         <p role="alert" className="error">

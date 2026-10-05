@@ -171,7 +171,7 @@ interface OnlinePlayer {
 }
 
 /** Codes a WebSocket is closed with, so the client knows not to reconnect. */
-export const WS_CLOSE = { replaced: 4001, offline: 4403, noPlayer: 4401 } as const;
+export const WS_CLOSE = { replaced: 4001, noPlayer: 4401 } as const;
 
 const BUCKET_SIZE = 40;
 const BUCKET_REFILL_PER_S = 20;
@@ -227,8 +227,6 @@ export class MultiplayerHub {
   private readonly friends: FriendStore | null;
   private readonly friendLimiter: FriendRequestLimiter;
   private homeHooks: HomeRoomHooks | null = null;
-  /** Players switched offline by the API, so a connection still being set up does not let her in. */
-  private readonly offline = new Set<string>();
   private readonly store: MultiplayerStore | null;
   private readonly authenticate: Authenticate | null;
   private readonly allowedOrigins: ReadonlySet<string>;
@@ -277,9 +275,9 @@ export class MultiplayerHub {
   }
 
   /**
-   * Opens a player's connection: her look, her switches and her blocks from the database. A second connection of
-   * the same player (another tab) takes over and the first is closed. Null when she has no character, or plays
-   * offline (closed with `offline`, so her page does not try again).
+   * Opens a player's connection: her look, her bot switch and her blocks from the database. A second connection of
+   * the same player (another tab) takes over and the first is closed. Null when she has no character. Online play
+   * has no off switch (owner, 05/10/2026): every player with a character comes in.
    */
   async connect(childId: string, transport: Transport): Promise<Connection | null> {
     if (!this.store) return null;
@@ -288,16 +286,12 @@ export class MultiplayerHub {
     const [appearance, blocked, settings, botFriends] = await Promise.all([
       this.store.appearance(childId),
       this.store.blockedWith(childId),
-      this.store.settings?.(childId) ?? { onlineEnabled: true, botsEnabled: true },
+      this.store.settings?.(childId) ?? { botsEnabled: true },
       this.friends?.botFriends(childId) ?? new Set<string>(),
     ]);
     const latest = this.attempts.get(childId) === attempt;
     if (latest) this.attempts.delete(childId);
     if (!appearance) return null;
-    if (!settings.onlineEnabled || this.offline.has(childId)) {
-      transport.close(WS_CLOSE.offline, 'offline');
-      return null;
-    }
     // A newer tab is on its way in, or this one already left: it takes no one's place.
     if (!latest || transport.alive?.() === false) {
       transport.close(WS_CLOSE.replaced, 'replaced');
@@ -402,23 +396,11 @@ export class MultiplayerHub {
     }
   }
 
-  /**
-   * Her switches changed: switched off-line, she leaves her party and her room at once and her page is told not to
-   * come back; companion bots vanish or appear around her as her bot switch says.
-   */
+  /** Her bot switch changed: companion bots vanish or appear around her as it says. */
   settingsChanged(childId: string, settings: PlayerSettings): void {
-    if (settings.onlineEnabled) this.offline.delete(childId);
-    else this.offline.add(childId);
     const publicId = this.publicIds.get(childId);
     const player = publicId ? this.players.get(publicId) : undefined;
     if (!publicId || !player) return;
-    if (!settings.onlineEnabled) {
-      this.parties.dropInvites(publicId);
-      this.pushParty(this.parties.leave(publicId));
-      this.disconnect(player);
-      player.transport.close(WS_CLOSE.offline, 'offline');
-      return;
-    }
     if (player.bots === settings.botsEnabled) return;
     player.bots = settings.botsEnabled;
     for (const member of player.room?.members.values() ?? []) {

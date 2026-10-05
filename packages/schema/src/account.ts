@@ -51,24 +51,21 @@ export const PlayerDto = z.object({
   species: z.string(),
   language: PlayerLanguage.default('vi'),
   primary: z.boolean(),
-  /** Her online and companion bot switches (see `PlayerSettings`). */
-  onlineEnabled: z.boolean().default(true),
+  /** Her companion bot switch (see `PlayerSettings`). */
   botsEnabled: z.boolean().default(true),
 });
 export type PlayerDto = z.infer<typeof PlayerDto>;
 
 /**
- * A player's own switches, on by default: `onlineEnabled` (she sees and meets other players; off, she plays alone
- * and is taken out of any room at once) and `botsEnabled` (companion bots show up around her). She changes them in
- * Cài đặt; the account owner can change them for any player of the account.
+ * A player's own switch, on by default: `botsEnabled` (companion bots show up around her). She changes it in
+ * Cài đặt; the account owner can change it for any player of the account. Online play itself has no switch: the
+ * game is online from the start, always (owner, 05/10/2026).
  */
-export const PlayerSettings = z.object({ onlineEnabled: z.boolean(), botsEnabled: z.boolean() });
+export const PlayerSettings = z.object({ botsEnabled: z.boolean() });
 export type PlayerSettings = z.infer<typeof PlayerSettings>;
 
-/** A change of one or both switches. */
-export const PlayerSettingsPatch = z
-  .strictObject({ onlineEnabled: z.boolean().optional(), botsEnabled: z.boolean().optional() })
-  .refine((p) => p.onlineEnabled !== undefined || p.botsEnabled !== undefined, { message: 'empty patch' });
+/** A change of the switch. */
+export const PlayerSettingsPatch = z.strictObject({ botsEnabled: z.boolean() });
 export type PlayerSettingsPatch = z.infer<typeof PlayerSettingsPatch>;
 
 // NFC so a decomposed "Mèo" (some mobile keyboards) matches the list entry.
@@ -145,7 +142,7 @@ export const AccountExport = z.object({
       homeDecor: DecorChoices.nullable(),
       /** What she left switched on in her home (a lamp, the television); null until she first switches one. */
       homeObjects: HomeObjectStates.nullable(),
-      /** Her online and companion bot switches. */
+      /** Her companion bot switch. */
       settings: PlayerSettings,
       /** Seconds played per week (Monday, Vietnam time), for the progress views; `updatedAt`: the last report. */
       playTime: z.array(z.object({ weekStart: z.string(), seconds: z.number(), updatedAt: Instant })),

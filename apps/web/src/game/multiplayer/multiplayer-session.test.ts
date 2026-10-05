@@ -1,7 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { SAFE_CANNED_CHATS, type ServerWsMessage } from '@miu/schema/multiplayer';
 import { createGameStore, type GameCommand } from '../../game-bridge/game-store';
-import { playerSettings } from '../../game-bridge/player-settings';
 import { createSocialStore } from '../../game-bridge/social-store';
 import { linesOf, setLangMode } from '../../ui/i18n/i18n';
 import type { GuardedGltfLoader } from '../asset-loader';
@@ -236,16 +235,13 @@ describe('homes', () => {
   });
 });
 
-describe('the online switch in a running game', () => {
-  it('stays out after the server says she plays offline, and comes back when she switches online on', () => {
+describe('always online', () => {
+  it('connects again after any close but another tab taking over or no player (there is no offline switch)', () => {
     vi.useFakeTimers();
     try {
       const { ws, online } = session();
       ws.onclose?.({ code: 4403 });
-      vi.advanceTimersByTime(120_000);
-      expect(FakeSocket.last).toBe(ws);
-      playerSettings.set({ onlineEnabled: false, botsEnabled: true });
-      playerSettings.set({ onlineEnabled: true, botsEnabled: true });
+      vi.advanceTimersByTime(4_000);
       expect(FakeSocket.last).not.toBe(ws);
       online.dispose();
     } finally {

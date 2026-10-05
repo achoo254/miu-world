@@ -5,10 +5,10 @@
 import { ClientWsMessage, ServerWsMessage, type SafeEmote } from '@miu/schema/multiplayer';
 
 /**
- * Close codes after which reconnecting is pointless: another tab took over, she switched online play off (her page
- * connects again when she switches it back on), or there is no player to play as.
+ * Close codes after which reconnecting is pointless: another tab took over, or there is no player to play as.
+ * Online play has no off switch (owner, 05/10/2026): any other close is followed by a reconnect.
  */
-const FINAL_CLOSE_CODES = new Set([4001, 4403, 4401]);
+const FINAL_CLOSE_CODES = new Set([4001, 4401]);
 /**
  * Waits before reconnecting: 3 s, doubling while the server keeps refusing (no session, another origin: the
  * browser only sees the socket fail), up to a minute.
@@ -108,15 +108,6 @@ export class MultiplayerClient {
   visit(host: string | null): void {
     this.host = host;
     this.sendJoin();
-  }
-
-  /** Connects again after a final close (she switched online play back on); nothing while connected. */
-  reconnect(): void {
-    if (this.disposed || this.ws) return;
-    if (this.retry !== null) window.clearTimeout(this.retry);
-    this.retry = null;
-    this.failures = 0;
-    this.connect();
   }
 
   /** Sends a message when connected; dropped otherwise (nothing is queued for later). */

@@ -173,14 +173,13 @@ describe('another account', () => {
     expect((await social(a.agent)).blocks).toHaveLength(1);
   });
 
-  it('shows nobody online to a player who plays offline', async () => {
+  it('shows a friend online where she is (online play has no off switch)', async () => {
     const a = await player('Cáo Cam');
     const b = await player('Thỏ Bông');
     await store().request(a.childId, b.childId);
     await store().request(b.childId, a.childId);
-    onlineNow.set(b.childId, { publicId: 'p-off', mapId: 'trung-tam' });
-    await a.agent.put('/api/player-settings').send({ onlineEnabled: false }).expect(200);
-    expect((await social(a.agent)).friends[0]).toMatchObject({ online: false, publicId: null, mapId: null });
+    onlineNow.set(b.childId, { publicId: 'p-on', mapId: 'trung-tam' });
+    expect((await social(a.agent)).friends[0]).toMatchObject({ online: true, publicId: 'p-on', mapId: 'trung-tam' });
   });
 });
 

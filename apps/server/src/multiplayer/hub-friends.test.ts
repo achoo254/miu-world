@@ -137,7 +137,7 @@ describe('friends with companion bots', () => {
   });
 
   it('never asks a player who switched bots off', async () => {
-    h.db.settings.set('child-a', { onlineEnabled: true, botsEnabled: false });
+    h.db.settings.set('child-a', { botsEnabled: false });
     const room = h.hub.getOrCreateRoom('trung-tam');
     h.bot(room, 'bot-tt-1');
     const a = await h.joined('child-a');

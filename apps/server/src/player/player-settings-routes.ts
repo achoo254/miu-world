@@ -16,12 +16,12 @@ export interface PlayerSettingsRouteDeps {
   events?: PlayerEvents;
 }
 
-const columns = { onlineEnabled: childProfiles.onlineEnabled, botsEnabled: childProfiles.botsEnabled };
+const columns = { botsEnabled: childProfiles.botsEnabled };
 
 /**
- * A player's online and companion bot switches: her own (`GET`/`PUT /player-settings`, no PIN: they are hers),
- * and any player's for the account owner (`PATCH /players/:id/settings`, behind the optional PIN). A change
- * takes effect at once in the online rooms.
+ * A player's companion bot switch: her own (`GET`/`PUT /player-settings`, no PIN: it is hers), and any player's
+ * for the account owner (`PATCH /players/:id/settings`, behind the optional PIN). A change takes effect at once
+ * in the online rooms. Online play has no switch: it is always on.
  */
 export function playerSettingsRoutes({ db, content, clock, events }: PlayerSettingsRouteDeps): Router {
   const router = Router();

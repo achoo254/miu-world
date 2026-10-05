@@ -114,7 +114,7 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
         timetable: timetableRows.find((r) => r.childId === p.id)?.timetable ?? null,
         homeDecor: decorRows.find((r) => r.childId === p.id)?.choices ?? null,
         homeObjects: objectRows.find((r) => r.childId === p.id)?.states ?? null,
-        settings: { onlineEnabled: p.onlineEnabled, botsEnabled: p.botsEnabled },
+        settings: { botsEnabled: p.botsEnabled },
         playTime: (played.get(p.id) ?? []).map(({ weekStart, seconds, updatedAt }) => ({ weekStart, seconds, updatedAt: iso(updatedAt) })),
         mail: (letters.get(p.id) ?? []).map((m) => ({
           templateId: m.templateId,

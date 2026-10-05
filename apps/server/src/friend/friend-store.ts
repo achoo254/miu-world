@@ -163,16 +163,13 @@ const lookOf = (looks: Map<string, { displayName: string; species: string }>, id
 
 /** A player's friends, the requests for her and from her, and the players she blocked. */
 export async function socialView(db: Db, childId: string, lookup: OnlineLookup): Promise<SocialView> {
-  const [[viewer], blockedWith] = await Promise.all([
-    db.select({ onlineEnabled: childProfiles.onlineEnabled }).from(childProfiles).where(eq(childProfiles.id, childId)),
-    db
-      .select({ a: playerBlocks.childId, b: playerBlocks.blockedChildId })
-      .from(playerBlocks)
-      .where(or(eq(playerBlocks.childId, childId), eq(playerBlocks.blockedChildId, childId))),
-  ]);
-  // Playing offline, she sees nobody online; and never someone blocked either way.
+  const blockedWith = await db
+    .select({ a: playerBlocks.childId, b: playerBlocks.blockedChildId })
+    .from(playerBlocks)
+    .where(or(eq(playerBlocks.childId, childId), eq(playerBlocks.blockedChildId, childId)));
+  // She never sees someone blocked either way as online.
   const hidden = new Set(blockedWith.map((r) => (r.a === childId ? r.b : r.a)));
-  const online: OnlineLookup = viewer?.onlineEnabled ? { player: (id) => (hidden.has(id) ? null : lookup.player(id)), bot: lookup.bot } : NOBODY_ONLINE;
+  const online: OnlineLookup = { player: (id) => (hidden.has(id) ? null : lookup.player(id)), bot: lookup.bot };
   const [friendRows, incomingRows, outgoingRows, blockRows] = await Promise.all([
     db.select().from(friendships).where(eq(friendships.childId, childId)).orderBy(asc(friendships.createdAt)),
     db.select().from(friendRequests).where(eq(friendRequests.childId, childId)).orderBy(asc(friendRequests.createdAt)),

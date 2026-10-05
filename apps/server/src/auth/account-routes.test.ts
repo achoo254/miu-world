@@ -86,7 +86,7 @@ describe('account export', () => {
       shop: [{ itemId: 'them-mot-tim', qty: 2 }],
     });
     expect(child?.quests.map((q) => q.questId).sort()).toEqual(['q-done', 'q-open']);
-    expect(child?.settings).toEqual({ onlineEnabled: true, botsEnabled: true });
+    expect(child?.settings).toEqual({ botsEnabled: true });
     expect(child?.mail).toEqual([{ templateId: 'welcome-gift', category: 'system', read: false, claimed: false, claimedAt: null, createdAt: expect.any(String) }]);
     expect(child).toMatchObject({ friends: [], friendRequests: { received: [], sent: [] }, blocks: [], reports: [], playTime: [] });
     expect(child?.rewards).toEqual([{ source: 'quest:q-done', xp: 40, coins: 5, skillXp: { 'doc-hieu': 10 }, items: { 'la-than': 1 }, createdAt: expect.any(String) }]);
