@@ -659,7 +659,10 @@ export class Game {
       store.onCommand((command) => {
         if (command.type === 'interact') interactRequested = true;
         // Worn at once (the shop's "Mặc"); the others see it from the server when it is saved.
-        if (command.type === 'set-outfit') character.wear(command.equipped);
+        if (command.type === 'set-outfit') {
+          character.wear(command.equipped);
+          overlay.stats.outfit = character.outfit;
+        }
         if (command.type === 'rescue') rescueRequested = true;
         if (command.type === 'celebrate') celebrateRequested = true;
         if (command.type === 'autowalk-start' && hint?.available) walkTo({ target: hint.def, interactOnArrival: true });
@@ -884,7 +887,7 @@ export class Game {
         currentAction,
         ride.riding,
       );
-      if (nearest !== promptTarget || nearAmbient !== promptAmbient || nearObject !== promptObject || nearPet !== promptPet || nearPlayer?.id !== promptPlayer?.id) {
+      if (nearest !== promptTarget || nearAmbient !== promptAmbient || nearObject !== promptObject || nearPet !== promptPet || nearPlayer?.id !== promptPlayer?.id || nearPlayer?.name !== promptPlayer?.name) {
         promptTarget = nearest;
         promptAmbient = nearAmbient;
         promptObject = nearObject;

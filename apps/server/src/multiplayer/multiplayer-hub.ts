@@ -72,14 +72,14 @@ export class MultiplayerRoom {
 
   broadcastEmote(id: string, emote: SafeEmote, to?: string): void {
     if (!this.members.has(id)) return;
-    this.broadcast({ type: 'emote', id, emote, ...(to ? { to } : {}) }, id);
+    this.broadcast({ type: 'emote', id, emote, ...(to ? { to } : {}) }, id, to);
   }
 
   broadcastChat(id: string, text: SafeCannedChat, to?: string): void {
     const member = this.members.get(id);
     if (!member) return;
     member.presence.bubble = { text, at: Date.now() };
-    this.broadcast({ type: 'chat', id, text, ...(to ? { to } : {}) }, id);
+    this.broadcast({ type: 'chat', id, text, ...(to ? { to } : {}) }, id, to);
   }
 
   leave(id: string): void {
@@ -87,10 +87,10 @@ export class MultiplayerRoom {
     this.broadcast({ type: 'despawn', id }, id);
   }
 
-  /** To everyone in the room but `from`, who may see `from`. */
-  broadcast(message: ServerWsMessage, from: string): void {
+  /** To everyone in the room but `from`, who may see `from` (and `about`, the player a message is aimed at). */
+  broadcast(message: ServerWsMessage, from: string, about?: string): void {
     for (const [memberId, member] of this.members) {
-      if (memberId === from || !this.sees(memberId, from)) continue;
+      if (memberId === from || !this.sees(memberId, from) || (about !== undefined && !this.sees(memberId, about))) continue;
       member.send(message);
     }
   }
@@ -99,6 +99,10 @@ export class MultiplayerRoom {
 export interface Transport {
   send(message: ServerWsMessage): void;
   close(code: number, reason: string): void;
+  /** Whether the other end is still there (a tab closed while it was being let in takes no one's place). */
+  alive?(): boolean;
+  /** Whether the session it opened with still plays as this player (checked every few minutes). */
+  stillValid?(): Promise<boolean>;
 }
 
 /** One player's connection, as the WebSocket (or a test) drives it. */
@@ -128,8 +132,6 @@ interface OnlinePlayer {
   /** Flood limit: messages left in the bucket, refilled over time. */
   tokens: number;
   refilledAt: number;
-  /** Last report per reported player: a repeat within the cooldown files nothing new. */
-  reported: Map<string, number>;
 }
 
 /** Codes a WebSocket is closed with, so the client knows not to reconnect. */
@@ -138,6 +140,8 @@ export const WS_CLOSE = { replaced: 4001, noPlayer: 4401 } as const;
 const BUCKET_SIZE = 40;
 const BUCKET_REFILL_PER_S = 20;
 const REPORT_COOLDOWN_MS = 10 * 60_000;
+/** How often open connections re-check their session (sign-out, expiry, a deleted player, a new policy). */
+const RECHECK_MS = 2 * 60_000;
 const MAX_PAYLOAD_BYTES = 4096;
 
 const PARTY_NOTICE: Record<PartyError, MpNotice> = {
@@ -168,8 +172,17 @@ export class MultiplayerHub {
   private readonly childIds = new Map<string, string>();
   /** Her look, kept after she drops out so her party still lists her. */
   private readonly appearances = new Map<string, PlayerAppearance>();
-  /** Public ids each player may not see (blocked either way); kept symmetric. */
+  /**
+   * Public ids each player may not see (blocked either way), for players online or keeping a party place;
+   * rebuilt from the database on every connection.
+   */
   private readonly hidden = new Map<string, Set<string>>();
+  /** Last report per reporter and reported player: a repeat within the cooldown files nothing new. */
+  private readonly reports = new Map<string, number>();
+  /** The newest connection attempt per player: an older one finishing later does not take her place. */
+  private readonly attempts = new Map<string, number>();
+  private attemptSeq = 0;
+  private readonly recheck: NodeJS.Timeout;
   private readonly partyTimers = new Map<string, NodeJS.Timeout>();
   private readonly store: MultiplayerStore | null;
   private readonly authenticate: Authenticate | null;
@@ -184,9 +197,11 @@ export class MultiplayerHub {
     this.allowedOrigins = new Set(options.allowedOrigins ?? []);
     this.now = options.now ?? Date.now;
     this.partyGraceMs = options.partyGraceMs ?? 30_000;
-    this.parties = options.parties ?? new PartyService({ now: this.now });
+    this.parties = options.parties ?? new PartyService({ now: this.now, isPlayer: (id) => this.childIds.has(id) });
     this.wss = new WebSocketServer({ noServer: true, maxPayload: MAX_PAYLOAD_BYTES });
     server?.on('upgrade', (req: IncomingMessage, socket: Duplex, head: Buffer) => this.upgrade(req, socket, head));
+    this.recheck = setInterval(() => void this.recheckSessions(), RECHECK_MS);
+    this.recheck.unref();
   }
 
   getOrCreateRoom(mapId: string): MultiplayerRoom {
@@ -204,8 +219,17 @@ export class MultiplayerHub {
    */
   async connect(childId: string, transport: Transport): Promise<Connection | null> {
     if (!this.store) return null;
+    const attempt = ++this.attemptSeq;
+    this.attempts.set(childId, attempt);
     const [appearance, blocked] = await Promise.all([this.store.appearance(childId), this.store.blockedWith(childId)]);
+    const latest = this.attempts.get(childId) === attempt;
+    if (latest) this.attempts.delete(childId);
     if (!appearance) return null;
+    // A newer tab is on its way in, or this one already left: it takes no one's place.
+    if (!latest || transport.alive?.() === false) {
+      transport.close(WS_CLOSE.replaced, 'replaced');
+      return null;
+    }
     const publicId = this.publicIdOf(childId);
     const older = this.players.get(publicId);
     if (older) {
@@ -220,7 +244,7 @@ export class MultiplayerHub {
     const timer = this.partyTimers.get(publicId);
     if (timer) clearTimeout(timer);
     this.partyTimers.delete(publicId);
-    const player: OnlinePlayer = { publicId, childId, transport, appearance, room: null, tokens: BUCKET_SIZE, refilledAt: this.now(), reported: new Map() };
+    const player: OnlinePlayer = { publicId, childId, transport, appearance, room: null, tokens: BUCKET_SIZE, refilledAt: this.now() };
     this.players.set(publicId, player);
     return {
       publicId,
@@ -270,6 +294,7 @@ export class MultiplayerHub {
   }
 
   close(): Promise<void> {
+    clearInterval(this.recheck);
     for (const timer of this.partyTimers.values()) clearTimeout(timer);
     this.partyTimers.clear();
     return new Promise((resolve) => {
@@ -291,7 +316,7 @@ export class MultiplayerHub {
     authenticate(req).then(
       (childId) => {
         if (!childId) return refuse(socket, 401, 'Unauthorized');
-        this.wss.handleUpgrade(req, socket, head, (ws) => void this.accept(ws, childId));
+        this.wss.handleUpgrade(req, socket, head, (ws) => void this.accept(ws, req, childId));
       },
       (err: unknown) => {
         console.error('multiplayer upgrade failed', err instanceof Error ? err.name : typeof err);
@@ -300,7 +325,7 @@ export class MultiplayerHub {
     );
   }
 
-  private async accept(ws: WebSocket, childId: string): Promise<void> {
+  private async accept(ws: WebSocket, req: IncomingMessage, childId: string): Promise<void> {
     const early: string[] = [];
     let connection: Connection | null = null;
     let closed = false;
@@ -314,11 +339,16 @@ export class MultiplayerHub {
       connection?.close();
     });
     ws.on('error', () => ws.terminate());
+    // Only the cookie is kept for the re-checks, not the whole request.
+    const cookie = { headers: { cookie: req.headers.cookie } };
+    const authenticate = this.authenticate;
     const transport: Transport = {
       send: (message) => {
         if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(message));
       },
       close: (code, reason) => ws.close(code, reason),
+      alive: () => !closed,
+      stillValid: async () => (authenticate ? (await authenticate(cookie)) === childId : false),
     };
     try {
       connection = await this.connect(childId, transport);
@@ -462,11 +492,14 @@ export class MultiplayerHub {
     if (this.players.get(player.publicId) !== player) return;
     this.leaveRoom(player);
     this.players.delete(player.publicId);
-    const party = this.parties.partyOf(player.publicId);
-    if (!party) return;
+    const id = player.publicId;
+    const party = this.parties.partyOf(id);
+    if (!party) {
+      this.forget(id);
+      return;
+    }
     this.pushParty(party.members);
     // Gone for good unless she is back within the grace (a gate loads the next map over a new connection).
-    const id = player.publicId;
     this.partyTimers.set(
       id,
       setTimeout(() => {
@@ -474,8 +507,36 @@ export class MultiplayerHub {
         if (this.players.has(id)) return;
         this.parties.dropInvites(id);
         this.pushParty(this.parties.leave(id));
+        this.forget(id);
       }, this.partyGraceMs),
     );
+  }
+
+  /**
+   * Drops what is kept about a player who has left (her blocks and look are read again when she is back). Her
+   * public id stays for the life of the server, so a party or an invite never mistakes her for someone else.
+   */
+  private forget(id: string): void {
+    this.hidden.delete(id);
+    this.appearances.delete(id);
+  }
+
+  /** Closes the connections whose session no longer plays as their player (signed out, expired, deleted). */
+  private async recheckSessions(): Promise<void> {
+    for (const player of [...this.players.values()]) {
+      const check = player.transport.stillValid;
+      if (!check) continue;
+      let valid = true;
+      try {
+        valid = await check();
+      } catch (err) {
+        console.error('multiplayer session re-check failed', err instanceof Error ? err.name : typeof err);
+      }
+      if (!valid && this.players.get(player.publicId) === player) {
+        this.disconnect(player);
+        player.transport.close(WS_CLOSE.noPlayer, 'no-player');
+      }
+    }
   }
 
   /** The room member with `id` near her on her map, and visible to her. */
@@ -518,7 +579,8 @@ export class MultiplayerHub {
       return this.notice(self, 'failed', id);
     }
     this.hide(self, id);
-    this.hide(id, self);
+    // Her set is read again from the database when she connects; kept only while she is online or holds a place.
+    if (this.hidden.has(id)) this.hide(id, self);
     // Out of each other's sight at once, and never in one party.
     for (const [a, b] of [
       [self, id],
@@ -537,14 +599,18 @@ export class MultiplayerHub {
     const target = this.childIds.get(id);
     if (!this.store || !target || target === player.childId) return this.notice(self, 'not-here', id);
     const now = this.now();
-    if (now - (player.reported.get(id) ?? Number.NEGATIVE_INFINITY) < REPORT_COOLDOWN_MS) return this.notice(self, 'reported', id);
+    const key = `${player.childId}>${target}`;
+    if (now - (this.reports.get(key) ?? Number.NEGATIVE_INFINITY) < REPORT_COOLDOWN_MS) return this.notice(self, 'reported', id);
+    // Taken before the write, so a burst of the same report files one row.
+    this.reports.set(key, now);
+    for (const [k, at] of this.reports) if (now - at >= REPORT_COOLDOWN_MS) this.reports.delete(k);
     try {
       await this.store.report(player.childId, target, reason, player.room?.mapId ?? null);
     } catch (err) {
       console.error('report failed', err instanceof Error ? err.name : typeof err);
+      this.reports.delete(key);
       return this.notice(self, 'failed', id);
     }
-    player.reported.set(id, now);
     this.notice(self, 'reported', id);
   }
 

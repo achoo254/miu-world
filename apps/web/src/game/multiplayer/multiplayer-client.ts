@@ -6,7 +6,13 @@ import { ClientWsMessage, ServerWsMessage, type SafeEmote } from '@miu/schema/mu
 
 /** Close codes after which reconnecting is pointless: another tab took over, or there is no player to play as. */
 const FINAL_CLOSE_CODES = new Set([4001, 4401]);
+/**
+ * Waits before reconnecting: 3 s, doubling while the server keeps refusing (no session, another origin: the
+ * browser only sees the socket fail), up to a minute.
+ */
 const RECONNECT_MS = 3_000;
+const RECONNECT_MAX_MS = 60_000;
+export const reconnectDelay = (failures: number): number => Math.min(RECONNECT_MAX_MS, RECONNECT_MS * 2 ** Math.max(0, failures - 1));
 /** Movement updates at most ten times a second. */
 const UPDATE_GAP_MS = 95;
 
@@ -33,6 +39,8 @@ export class MultiplayerClient {
   private lastUpdateSent = 0;
   private disposed = false;
   private retry: number | null = null;
+  /** Connections in a row that never opened. */
+  private failures = 0;
 
   constructor(start: MultiplayerStart, handlers: MultiplayerClientHandlers) {
     this.start = start;
@@ -51,11 +59,14 @@ export class MultiplayerClient {
       return; // no WebSocket here: play goes on alone
     }
     this.ws = ws;
+    let opened = false;
     ws.onopen = () => {
+      opened = true;
       if (this.disposed) {
         ws.close();
         return;
       }
+      this.failures = 0;
       this.send({ type: 'join', mapId: this.start.mapId, ...this.here });
       this.handlers.onStatus?.(true, false);
     };
@@ -76,7 +87,8 @@ export class MultiplayerClient {
       if (this.disposed) return;
       const final = FINAL_CLOSE_CODES.has(event.code);
       this.handlers.onStatus?.(false, final);
-      if (!final) this.retry = window.setTimeout(() => this.connect(), RECONNECT_MS);
+      if (!opened) this.failures += 1;
+      if (!final) this.retry = window.setTimeout(() => this.connect(), reconnectDelay(this.failures));
     };
   }
 

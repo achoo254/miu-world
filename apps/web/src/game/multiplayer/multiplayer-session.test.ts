@@ -5,6 +5,7 @@ import { createSocialStore } from '../../game-bridge/social-store';
 import { linesOf, setLangMode } from '../../ui/i18n/i18n';
 import type { GuardedGltfLoader } from '../asset-loader';
 import { cannedLine } from './canned-lines';
+import { reconnectDelay } from './multiplayer-client';
 import { MultiplayerSession, arrowTurn } from './multiplayer-session';
 
 /** A socket that never touches the network: the test reads what was sent and plays the server. */
@@ -172,6 +173,45 @@ describe('the online session', () => {
       vi.advanceTimersByTime(10_000);
       expect(FakeSocket.last).toBe(ws);
       expect(social.getSnapshot().party).toBeNull();
+      online.dispose();
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+});
+
+describe('reconnecting', () => {
+  it('waits longer while the server keeps refusing, up to a minute', () => {
+    expect([0, 1, 2, 3, 6, 20].map(reconnectDelay)).toEqual([3_000, 3_000, 6_000, 12_000, 60_000, 60_000]);
+  });
+
+  it('backs off after sockets that never open, and starts over once one does', () => {
+    vi.useFakeTimers();
+    try {
+      const store = createGameStore();
+      const online = new MultiplayerSession({
+        // No model is loaded in this test (no spawn): the loader is never called.
+        loader: {} as unknown as GuardedGltfLoader,
+        ground: (_x, _z, y) => y,
+        shadows: false,
+        start: { mapId: 'trung-tam', x: 0, y: 0, z: 0, yaw: 0 },
+        store,
+        social: null,
+        regionOfMap: () => null,
+        say: () => {},
+      });
+      const first = socket();
+      first.onclose?.({ code: 1006 });
+      vi.advanceTimersByTime(2_999);
+      expect(FakeSocket.last).toBe(first);
+      vi.advanceTimersByTime(1);
+      const second = socket();
+      expect(second).not.toBe(first);
+      second.onclose?.({ code: 1006 });
+      vi.advanceTimersByTime(5_999);
+      expect(FakeSocket.last).toBe(second);
+      vi.advanceTimersByTime(1);
+      expect(FakeSocket.last).not.toBe(second);
       online.dispose();
     } finally {
       vi.useRealTimers();

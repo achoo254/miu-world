@@ -30,6 +30,11 @@ export interface PartyServiceOptions {
   inviteGapMs?: number;
   /** …and has at most this many waiting for an answer. */
   maxPendingInvites?: number;
+  /**
+   * Whether a member is a player rather than a companion bot. Bots never lead (they never go through a gate)
+   * and a party with no player left ends, or the bots in it would stay taken until the server restarts.
+   */
+  isPlayer?: (member: string) => boolean;
 }
 
 const ok = <T>(value: T): PartyResult<T> => ({ ok: true, value });
@@ -45,6 +50,7 @@ export class PartyService {
   private readonly inviteTtlMs: number;
   private readonly inviteGapMs: number;
   private readonly maxPendingInvites: number;
+  private readonly isPlayer: (member: string) => boolean;
 
   constructor(options: PartyServiceOptions = {}) {
     this.now = options.now ?? Date.now;
@@ -52,6 +58,7 @@ export class PartyService {
     this.inviteTtlMs = options.inviteTtlMs ?? PARTY_INVITE_TTL_MS;
     this.inviteGapMs = options.inviteGapMs ?? 2_000;
     this.maxPendingInvites = options.maxPendingInvites ?? 3;
+    this.isPlayer = options.isPlayer ?? (() => true);
   }
 
   partyOf(member: string): Party | null {
@@ -98,19 +105,23 @@ export class PartyService {
     return ok([...party.members]);
   }
 
-  /** Leaves her party; returns everyone whose party changed (her too). Two left alone dissolve the party. */
+  /**
+   * Leaves her party; returns everyone whose party changed (her too). A party ends when one member is left or
+   * no player is (only bots). A leader who leaves hands over to the longest-standing player.
+   */
   leave(member: string): string[] {
     const party = this.partyOf(member);
     if (!party) return [];
     const affected = [...party.members];
     party.members = party.members.filter((m) => m !== member);
     this.partyIdOf.delete(member);
-    if (party.members.length < 2) {
+    const nextLeader = party.members.find((m) => this.isPlayer(m));
+    if (party.members.length < 2 || nextLeader === undefined) {
       for (const m of party.members) this.partyIdOf.delete(m);
       this.parties.delete(party.id);
       this.invites = this.invites.filter((i) => !affected.includes(i.from));
     } else if (party.leader === member) {
-      party.leader = party.members[0] ?? party.leader;
+      party.leader = nextLeader;
     }
     // Her own invites (sent as leader) go with her.
     this.invites = this.invites.filter((i) => i.from !== member);
@@ -127,7 +138,7 @@ export class PartyService {
   promote(leader: string, member: string): PartyResult<string[]> {
     const party = this.partyOf(leader);
     if (!party || party.leader !== leader) return fail('not-leader');
-    if (member === leader || !party.members.includes(member)) return fail('not-in-party');
+    if (member === leader || !party.members.includes(member) || !this.isPlayer(member)) return fail('not-in-party');
     party.leader = member;
     return ok([...party.members]);
   }
@@ -148,5 +159,6 @@ export class PartyService {
   private prune(): void {
     const now = this.now();
     this.invites = this.invites.filter((i) => i.expiresAt > now);
+    for (const [member, at] of this.lastInviteAt) if (now - at >= this.inviteGapMs) this.lastInviteAt.delete(member);
   }
 }

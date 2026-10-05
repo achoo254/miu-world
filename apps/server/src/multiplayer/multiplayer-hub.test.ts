@@ -40,7 +40,7 @@ beforeEach(() => {
   vi.useFakeTimers();
   now = 1_000_000;
   db = memoryStore();
-  hub = new MultiplayerHub(undefined, { store: db.store, now: () => now, partyGraceMs: 30_000, parties: new PartyService({ now: () => now, inviteGapMs: 0 }) });
+  hub = new MultiplayerHub(undefined, { store: db.store, now: () => now, partyGraceMs: 30_000, parties: new PartyService({ now: () => now, inviteGapMs: 0, isPlayer: (id) => id.startsWith('p-') }) });
 });
 
 afterEach(async () => {
@@ -48,7 +48,7 @@ afterEach(async () => {
   vi.useRealTimers();
 });
 
-async function connect(childId: string, look: Partial<PlayerAppearance> = {}): Promise<Client> {
+async function connect(childId: string, look: Partial<PlayerAppearance> = {}, valid: () => boolean = () => true): Promise<Client> {
   if (!db.characters.has(childId)) db.characters.set(childId, { displayName: `Bạn ${childId}`, species: 'cat', outfit: [], pet: null, ...look });
   const inbox: ServerWsMessage[] = [];
   const client = {
@@ -60,6 +60,7 @@ async function connect(childId: string, look: Partial<PlayerAppearance> = {}): P
     close: (code) => {
       client.closed = code;
     },
+    stillValid: async () => valid(),
   });
   if (!conn) throw new Error('no connection');
   client.conn = conn;
@@ -114,6 +115,37 @@ describe('identity comes from the server', () => {
     first.conn.close(); // the old socket's close event comes late: it must not take the new one out
     second.send({ type: 'emote', emote: 'heart' });
     expect(watcher.last('emote')?.id).toBe(second.id);
+  });
+
+  it('lets the newest of two overlapping tabs in, and a tab gone while being let in takes no one’s place', async () => {
+    const closed: number[] = [];
+    const tab = (code: number[]) => ({ send: () => {}, close: (c: number) => void code.push(c) });
+    await connect('child-a');
+    const first = hub.connect('child-a', tab(closed));
+    const second = hub.connect('child-a', tab([]));
+    expect(await first).toBeNull();
+    expect(closed).toEqual([WS_CLOSE.replaced]);
+    expect(await second).not.toBeNull();
+
+    const watcher = await joined('child-w');
+    const stays = await joined('child-s');
+    expect(await hub.connect('child-s', { send: () => {}, close: () => {}, alive: () => false })).toBeNull();
+    stays.send({ type: 'emote', emote: 'heart' });
+    expect(watcher.last('emote')?.id).toBe(stays.id);
+    expect(stays.closed).toBeNull();
+  });
+
+  it('closes a connection whose session no longer plays as her (signed out, expired, deleted)', async () => {
+    let signedIn = true;
+    const a = await connect('child-a', {}, () => signedIn);
+    a.send({ type: 'join', mapId: 'trung-tam', x: 1, y: 1, z: 1, yaw: 0 });
+    const b = await joined('child-b', [1, 1, 1]);
+    await vi.advanceTimersByTimeAsync(2 * 60_000);
+    expect(a.closed).toBeNull();
+    signedIn = false;
+    await vi.advanceTimersByTimeAsync(2 * 60_000);
+    expect(a.closed).toBe(WS_CLOSE.noPlayer);
+    expect(b.last('despawn')?.id).toBe(a.id);
   });
 
   it('redresses a player for the others when she saves new clothes, without a new spawn', async () => {
@@ -173,6 +205,27 @@ describe('interactions between players', () => {
     const a2 = await joined('child-a', [10, 5, 10], 'cho-phien');
     expect(a2.last('welcome')?.players.map((p) => p.id)).not.toContain(b2.id);
     expect(b2.all('spawn').map((m) => m.player.id)).not.toContain(a2.id);
+  });
+
+  it('keeps the report cooldown across reconnects', async () => {
+    const b = await joined('child-b');
+    for (let i = 0; i < 3; i++) {
+      const a = await joined('child-a');
+      a.send({ type: 'report', id: b.id, reason: 'spam' });
+      await settle();
+    }
+    expect(db.reports).toHaveLength(1);
+  });
+
+  it('does not show a wave aimed at a player to someone who blocked her', async () => {
+    const a = await joined('child-a', [10, 5, 10]);
+    const b = await joined('child-b', [12, 5, 10]);
+    const c = await joined('child-c', [11, 5, 10]);
+    c.send({ type: 'block', id: b.id });
+    await settle();
+    a.send({ type: 'emote', emote: 'wave', to: b.id });
+    expect(b.last('emote')?.to).toBe(b.id);
+    expect(c.all('emote')).toEqual([]);
   });
 
   it('a report is queued with a picked reason only, once per player within the cooldown; bots cannot be reported', async () => {

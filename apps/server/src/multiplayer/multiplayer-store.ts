@@ -21,7 +21,7 @@ export interface MultiplayerStore {
 }
 
 /** Who opens a multiplayer connection: the player her session plays as, or null (no session, no player, no consent). */
-export type Authenticate = (req: IncomingMessage) => Promise<string | null>;
+export type Authenticate = (req: Pick<IncomingMessage, 'headers'>) => Promise<string | null>;
 
 export function dbMultiplayerStore(db: Db): MultiplayerStore {
   return {

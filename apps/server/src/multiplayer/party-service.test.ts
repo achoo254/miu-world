@@ -3,7 +3,7 @@ import { PartyService } from './party-service';
 
 function service(max = 4) {
   let now = 1_000_000;
-  const parties = new PartyService({ now: () => now, max, inviteTtlMs: 60_000, inviteGapMs: 2_000, maxPendingInvites: 3 });
+  const parties = new PartyService({ now: () => now, max, inviteTtlMs: 60_000, inviteGapMs: 2_000, maxPendingInvites: 3, isPlayer: (id) => !id.startsWith('bot-') });
   return {
     parties,
     advance(ms: number) {
@@ -129,6 +129,27 @@ describe('PartyService', () => {
     t.parties.dropInvites('p-d', 'p-c');
     expect(t.parties.reply('p-d', 'p-c', true)).toEqual({ ok: false, error: 'invite-expired' });
     expect(t.parties.reply('p-d', 'p-e', true).ok).toBe(true);
+  });
+
+  it('ends a party with only companion bots left, so the bots are free for everyone again', () => {
+    const t = service();
+    join(t, 'p-a', 'bot-1');
+    join(t, 'p-a', 'bot-2');
+    expect(t.parties.leave('p-a')).toEqual(['p-a', 'bot-1', 'bot-2']);
+    expect(t.parties.partyOf('bot-1')).toBeNull();
+    expect(t.parties.partyOf('bot-2')).toBeNull();
+    t.advance(2_000);
+    expect(t.parties.invite('p-b', 'bot-1').ok).toBe(true);
+  });
+
+  it('never hands the lead to a bot: the longest-standing player takes it, and a bot cannot be promoted', () => {
+    const t = service();
+    join(t, 'p-c', 'bot-3');
+    join(t, 'p-c', 'p-d');
+    expect(t.parties.promote('p-c', 'bot-3')).toEqual({ ok: false, error: 'not-in-party' });
+    t.parties.leave('p-c');
+    expect(t.parties.partyOf('p-d')?.leader).toBe('p-d');
+    expect(t.parties.kick('p-d', 'bot-3').ok).toBe(true);
   });
 
   it('keeps the party whatever map its members are on: it knows no rooms', () => {

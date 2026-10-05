@@ -61,8 +61,10 @@ export class MultiplayerSession {
     this.client = new MultiplayerClient(options.start, {
       onMessage: (message) => this.handle(message),
       onStatus: (_connected, final) => {
-        // Another tab plays as her now, or she has no player: this one is out of the party view.
-        if (final) this.social?.update({ party: null, invites: [], travel: null });
+        // Another tab plays as her now, or she has no player: this one sees no one and is out of the party view.
+        if (!final) return;
+        this.remote.dispose();
+        this.social?.update({ party: null, invites: [], travel: null });
       },
     });
   }
@@ -109,7 +111,7 @@ export class MultiplayerSession {
 
   private nameOf(id: string | undefined): string | null {
     if (!id) return null;
-    return this.remote.player(id)?.name ?? this.party?.members.find((m) => m.id === id)?.displayName ?? this.social?.getSnapshot().menu?.name ?? null;
+    return this.remote.player(id)?.name ?? this.party?.members.find((m) => m.id === id)?.displayName ?? null;
   }
 
   private handle(message: ServerWsMessage): void {
