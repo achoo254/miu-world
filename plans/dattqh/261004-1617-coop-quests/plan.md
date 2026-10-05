@@ -1,6 +1,6 @@
 # Co-op: 2–4 bạn cùng giải một thử thách hoặc đánh một trùm
 
-**Trạng thái:** đã duyệt (04/10/2026), sửa theo định hướng mọi lứa tuổi, luôn online (05/10/2026), chưa thi công; mọi tổ đội chơi co-op được (Jev 05/10/2026), kiểm duyệt làm trước khi có ghép đội ngẫu nhiên với người lạ · **Tier:** L · **Nhánh:** `main` · **Ngày:** 04/10/2026
+**Trạng thái:** đã thi công đủ pha 1–6 và hai mục mở rộng (06/10/2026), chờ người duyệt và deploy (report `plans/dattqh/reports/coop-quests-261005.md`); đã duyệt (04/10/2026), sửa theo định hướng mọi lứa tuổi, luôn online (05/10/2026); mọi tổ đội chơi co-op được (Jev 05/10/2026), kiểm duyệt làm trước khi có ghép đội ngẫu nhiên với người lạ · **Tier:** L · **Nhánh:** `main` · **Ngày:** 04/10/2026
 **Nguồn:** Master Plan §8 (Bậc 2: "Co-op quest: 2 đến 4 bạn cùng giải một puzzle hoặc đánh một boss, dùng lại cơ chế M3.10"; điều kiện mở: có kiểm duyệt và quy trình xử lý báo cáo), §8b (bot lập tổ đội), §6 ("phòng chờ co-op").
 
 ## Kết quả mong muốn
@@ -41,12 +41,12 @@ Người sở hữu: "bot máy luôn phải tự update để khi co op làm nhi
 
 | Pha | Tier | Nội dung | File sở hữu |
 | --- | --- | --- | --- |
-| 1 | M | **Phòng chờ co-op**: trưởng đội chọn thử thách co-op ở NPC/cổng, cả đội thấy "sẵn sàng", đếm ngược, thoát trước khi bắt đầu không mất gì; giao diện theo mock cảnh | `apps/web/src/ui/coop/**` (mới) |
-| 2 | L | **Phiên co-op ở server**: `CoopSession` giữ trạng thái chung (bước, HP trùm, ai đang làm gì) theo thành viên đội, đồng bộ qua hub; chống một bé phá hỏng (không có hành động gây thua riêng), mất kết nối thì bạn máy/AI điền chỗ hoặc thử thách tạm dừng 60 giây rồi giữ phần đã làm | `apps/server/src/coop/**` (mới), `apps/server/src/multiplayer` |
-| 3 | M | **Loại thử thách co-op** (dữ liệu, không sửa code khi thêm): *mỗi người một mảnh* (ghép đáp án chung: người A giữ số, người B giữ phép tính), *cùng giữ nhịp* (giữ cửa/kéo cầu cùng lúc), *trùm đội* (mỗi bé trả lời một đòn, HP chung); schema `coop` bọc quest hiện có | `packages/schema`, `packages/quest` |
-| 4 | M | **Thưởng**: mỗi bé nhận như quest thường (server tính riêng từng hồ sơ, theo quyết định "thưởng mỗi lần chơi lại, mỗi lần chạy trả một lần"), thêm danh hiệu/đồ riêng cho co-op; chống bơm thưởng bằng bot-farm (giới hạn tần suất theo hồ sơ, không giới hạn thưởng cơ bản) | `apps/server/src/reward` |
-| 5 | L | **Bạn máy trong co-op**: bot nhận lời mời, vào phiên, chơi theo tính cách và cấp kỹ năng riêng (mục "Bạn máy mỗi con một kiểu"), tâm trạng và độ mệt đổi theo lúc, nhãn "Bạn máy"; khi chỉ có một người chơi thì tự thêm bạn máy vào chỗ trống nếu công tắc bạn máy của người chơi đang bật (mặc định bật; Jev 0.93) | `apps/server/src/multiplayer/bot-runner.ts` |
-| 6 | L | **Nội dung**: ≥ 12 thử thách co-op (mỗi map một, bối cảnh hợp: dựng cầu ở Làng Ven Sông, cùng nấu ở Nhà của bé…), kiểm chống lặp, sinh lại map liên quan + 3 audit | `content/quests/**`, `content/world/**` |
+| 1 | M | ✅ **Phòng chờ co-op**: trưởng đội chọn thử thách co-op ở NPC/cổng, cả đội thấy "sẵn sàng", đếm ngược, thoát trước khi bắt đầu không mất gì; giao diện theo mock cảnh | `apps/web/src/ui/coop/**` (mới) |
+| 2 | L | ✅ **Phiên co-op ở server**: `CoopSession` giữ trạng thái chung (bước, HP trùm, ai đang làm gì) theo thành viên đội, đồng bộ qua hub; chống một bé phá hỏng (không có hành động gây thua riêng), mất kết nối thì bạn máy/AI điền chỗ hoặc thử thách tạm dừng 60 giây rồi giữ phần đã làm | `apps/server/src/coop/**` (mới), `apps/server/src/multiplayer` |
+| 3 | M | ✅ **Loại thử thách co-op** (dữ liệu, không sửa code khi thêm): *mỗi người một mảnh* (ghép đáp án chung: người A giữ số, người B giữ phép tính), *cùng giữ nhịp* (giữ cửa/kéo cầu cùng lúc), *trùm đội* (mỗi bé trả lời một đòn, HP chung); schema `coop` bọc quest hiện có | `packages/schema`, `packages/quest` |
+| 4 | M | ✅ **Thưởng**: mỗi bé nhận như quest thường (server tính riêng từng hồ sơ, theo quyết định "thưởng mỗi lần chơi lại, mỗi lần chạy trả một lần"), thêm danh hiệu/đồ riêng cho co-op; chống bơm thưởng bằng bot-farm (giới hạn tần suất theo hồ sơ, không giới hạn thưởng cơ bản) | `apps/server/src/reward` |
+| 5 | L | ✅ **Bạn máy trong co-op**: bot nhận lời mời, vào phiên, chơi theo tính cách và cấp kỹ năng riêng (mục "Bạn máy mỗi con một kiểu"), tâm trạng và độ mệt đổi theo lúc, nhãn "Bạn máy"; khi chỉ có một người chơi thì tự thêm bạn máy vào chỗ trống nếu công tắc bạn máy của người chơi đang bật (mặc định bật; Jev 0.93) | `apps/server/src/multiplayer/bot-runner.ts` |
+| 6 | L | ✅ **Nội dung**: ≥ 12 thử thách co-op (mỗi map một, bối cảnh hợp: dựng cầu ở Làng Ven Sông, cùng nấu ở Nhà của bé…), kiểm chống lặp, sinh lại map liên quan + 3 audit | `content/quests/**`, `content/world/**` |
 
 ## Phụ thuộc và file dùng chung
 
