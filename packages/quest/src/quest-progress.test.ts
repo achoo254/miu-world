@@ -241,8 +241,10 @@ describe('a boss battle step', () => {
     summary: 'Đối đầu Trùm Vui',
     review: 'teacher-pending',
     sevenQuestions: { who: 'a', where: 'b', goal: 'c', play: 'd', learn: 'e', reward: 'f', next: 'g' },
-    phases: { hook: 'boss-1', explore: 'boss-1', learn: 'boss-1', challenge: 'boss-1', decision: 'boss-1', finale: 'boss-1', reward: 'boss-1', next: 'boss-1' },
+    phases: { hook: 'scout', explore: 'scout', learn: 'boss-1', challenge: 'boss-1', decision: 'boss-1', finale: 'boss-1', reward: 'boss-1', next: 'boss-1' },
     steps: [
+      // Every quest needs two mechanics besides multiple choice: a search before the battle.
+      { id: 'scout', title: 'Dò đường', kind: 'search', targets: ['stump'] },
       {
         id: 'boss-1',
         title: 'Thử thách Trùm',
@@ -284,7 +286,9 @@ describe('a boss battle step', () => {
   });
 
   it('reduces HP on right turn answers and completes when HP hits 0', () => {
-    const p = emptyProgress();
+    const scouted = completeStep(bossQuest, emptyProgress(), 'scout', { target: 'stump' });
+    if (!scouted.ok) throw new Error('the search step should complete');
+    const p = scouted.progress;
     expect(completeStep(bossQuest, p, 'boss-1')).toEqual({ ok: false, error: 'answer-required' });
     expect(completeStep(bossQuest, p, 'boss-1', { answer: { turnId: 'turn-1', choice: 'c2' } })).toEqual({
       ok: false,
@@ -295,7 +299,7 @@ describe('a boss battle step', () => {
     const turn1 = completeStep(bossQuest, p, 'boss-1', { answer: { turnId: 'turn-1', choice: 'c1' } });
     expect(turn1.ok).toBe(true);
     if (!turn1.ok) throw new Error();
-    expect(turn1.progress.completedSteps).toEqual([]);
+    expect(turn1.progress.completedSteps).toEqual(['scout']);
     expect(turn1.progress.found['boss-1']).toEqual(['turn-1']);
     expect(turn1.reward).toBeNull();
 
@@ -303,8 +307,8 @@ describe('a boss battle step', () => {
     const turn2 = completeStep(bossQuest, turn1.progress, 'boss-1', { answer: { turnId: 'turn-2', choice: 'c3' } });
     expect(turn2.ok).toBe(true);
     if (!turn2.ok) throw new Error();
-    expect(turn2.progress.completedSteps).toEqual(['boss-1']);
+    expect(turn2.progress.completedSteps).toEqual(['scout', 'boss-1']);
     expect(turn2.progress.completed).toBe(true);
-    expect(turn2.reward).toEqual({ xp: 100 });
+    expect(turn2.reward).toMatchObject({ xp: 100 });
   });
 });

@@ -232,8 +232,11 @@ const minigameShape = {
   params: MinigameParams.default({}),
 };
 
-/** A single turn/question within a boss battle. */
-export const BossTurn = z.strictObject({
+/**
+ * A single turn/question within a boss battle, as the client sees it: not strict, so parsing a turn with
+ * its answer (`BossTurnWithSecret`, the authoring shape) drops the answer instead of failing.
+ */
+export const BossTurn = z.object({
   id: ContentId,
   prompt: Text,
   skill: ContentId,

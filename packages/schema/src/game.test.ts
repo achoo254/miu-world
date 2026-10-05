@@ -36,6 +36,15 @@ describe('QuestView', () => {
     expect(view.steps.find((s) => s.id === 'read-clock')).toMatchObject({ mechanic: 'clock', mode: 'read', time: { hour: 3, minute: 0 } });
   });
 
+  it('drops every boss turn answer from the shipped quests that end in a boss battle', () => {
+    for (const id of ['kho-bau-dao-ch1', 'nha-cua-be-ch1']) {
+      const def = loadQuest(id);
+      if (def.status !== 'active') throw new Error(`${id} should be active`);
+      expect(def.steps.some((s) => s.kind === 'boss'), id).toBe(true);
+      expect(keysDeep(QuestView.parse(def)), id).not.toContain('answer');
+    }
+  });
+
   it('shows a stub as coming soon with no content', () => {
     const stub = { id: 'forest-ch2', region: 'khu-rung-bi-mat', chapter: 2, title: 'Khu rừng bí mật – Chương 2', status: 'stub' };
     expect(QuestView.parse(stub)).toEqual({
