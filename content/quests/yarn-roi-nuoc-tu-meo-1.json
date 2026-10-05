@@ -1,0 +1,187 @@
+{
+  "id": "yarn-roi-nuoc-tu-meo-1",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Chuyện của Nghệ Nhân Múa Rối, chương 1: Ba con rối trôi sông",
+  "status": "active",
+  "category": "story",
+  "summary": "Mưa đêm làm ba con rối nước trôi khỏi xưởng, mà tối mai đã diễn. {name} đọc tin của Bé Thủy Học Rối trên bảng tin làng, đi dọc bờ kênh tìm Chú Tễu, con trâu và ông câu cá, tính số dây giật cần thay rồi giúp Nghệ Nhân chữa cánh tay nứt của Chú Tễu.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Nghệ Nhân Múa Rối, Bé Thủy Học Rối",
+    "where": "Làng ven sông: xưởng thủ công, bảng tin làng, bờ kênh sau làng, đám bèo tây, gốc sung bờ ao, giếng làng",
+    "goal": "Tìm lại ba con rối trôi sông kịp cho buổi diễn tối mai",
+    "play": "Hỏi tin Bé Thủy, tìm ba con rối dọc bờ nước, tính số dây giật, chọn cách chữa cánh tay Chú Tễu",
+    "learn": "Cộng ba số nhỏ trong một bài toán đời thường",
+    "reward": "55 XP, 14 Xu, Skill XP Phép cộng",
+    "next": "Cánh tay Chú Tễu cần một khúc gỗ sung thật nhẹ"
+  },
+  "phases": {
+    "hook": "roi-troi-mat",
+    "explore": "hoi-be-thuy",
+    "learn": "tim-roi-troi",
+    "challenge": "dem-day-giat",
+    "decision": "chua-tay-teu",
+    "finale": "chua-tay-teu",
+    "reward": "ba-con-roi-ve-xuong",
+    "next": "can-go-sung"
+  },
+  "places": {
+    "nghe-nhan-mua-roi": "Xưởng thủ công",
+    "st-roi-nuoc-tu-meo-be-thuy": "Bảng tin làng",
+    "tim-roi-troi": "Bờ kênh sau làng",
+    "st-roi-nuoc-tu-meo-roi-teu": "Đám bèo tây",
+    "st-roi-nuoc-tu-meo-roi-trau": "Gốc sung bờ ao",
+    "st-roi-nuoc-tu-meo-roi-ong-cau": "Giếng làng",
+    "st-roi-nuoc-tu-meo-ban-sua": "Hiên xưởng"
+  },
+  "steps": [
+    {
+      "id": "roi-troi-mat",
+      "title": "Rối trôi mất rồi",
+      "goTo": "Tới xưởng thủ công, Nghệ Nhân Múa Rối đang đứng ngó ra ao, mặt mếu xệch",
+      "kind": "dialogue",
+      "target": "nghe-nhan-mua-roi",
+      "lines": [
+        { "speaker": "Nghệ Nhân Múa Rối", "text": "Tễu tôi xin thưa… mà thôi, hôm nay Tễu không thưa nổi. Đêm qua mưa to, nước ao dâng, ba con rối trôi tuột khỏi xưởng." },
+        { "speaker": "Nghệ Nhân Múa Rối", "text": "Chú Tễu, con trâu và ông câu cá, hì… hì… thiếu ba đứa ấy thì tối mai ông diễn với ai?" },
+        { "speaker": "Nghệ Nhân Múa Rối", "text": "Bé Thủy học trò ông vừa dán tin lên bảng tin làng hỏi ai thấy rối trôi. Cháu ra xem có ai báo gì chưa nhé." }
+      ],
+      "choices": [
+        { "text": "Ông đừng lo, cháu tìm về đủ cả ba!", "reply": "Ôi, cháu nói câu ấy nghe như hát chèo. Đi đi, ông thắp sẵn bếp hong khô cho chúng." },
+        { "text": "Rối gỗ trôi thì chắc nổi, dễ tìm thôi ông.", "reply": "Ừ, gỗ sung nổi bập bềnh. Chỉ sợ chúng trôi vào chỗ bèo rậm thì khó thấy lắm." }
+      ],
+      "en": {
+        "title": "The puppets floated away",
+        "goTo": "Go to the craft workshop, where Nghệ Nhân Múa Rối stands staring at the pond with a woeful face",
+        "lines": [
+          "Tễu here begs to say… no, today Tễu can't say a thing. Last night's rain raised the pond, and three puppets slipped right out of the workshop.",
+          "Chú Tễu, the buffalo and the old fisherman, hee… hee… without those three, who will I perform with tomorrow night?",
+          "My pupil Bé Thủy has just pinned a notice on the village board asking if anyone saw them. Go and see if anyone has reported anything."
+        ],
+        "choices": [
+          { "text": "Don't worry, I'll bring all three back!", "reply": "Oh, you said that like a folk-opera line. Off you go, and I'll light the stove to dry them." },
+          { "text": "Wooden puppets float, so they'll be easy to find.", "reply": "Yes, fig wood bobs along. I'm only afraid they drifted into thick water hyacinth, where they're hard to spot." }
+        ]
+      }
+    },
+    {
+      "id": "hoi-be-thuy",
+      "title": "Tin trên bảng tin",
+      "goTo": "Ra bảng tin làng gặp Bé Thủy Học Rối",
+      "kind": "dialogue",
+      "target": "st-roi-nuoc-tu-meo-be-thuy",
+      "lines": [
+        { "speaker": "Bé Thủy Học Rối", "text": "Có tin rồi! Bác bán bánh đa thấy cái áo đỏ trong đám bèo tây, cô giặt đồ thấy sừng trâu nhô ra ở gốc sung bờ ao." },
+        { "speaker": "Bé Thủy Học Rối", "text": "Còn ông câu cá thì bạn Tí bảo trôi tận ra chỗ giếng làng. Bạn cứ đi dọc bờ kênh sau làng là gặp cả ba." }
+      ],
+      "choices": [
+        { "text": "Cảm ơn cậu, cậu dán tin hay quá!", "reply": "Hì, tớ học ông cách viết cho người ta muốn đọc. Tìm được thì nhớ kể tớ nghe nhé!" }
+      ],
+      "en": {
+        "title": "News on the notice board",
+        "goTo": "Go to the village notice board to meet Bé Thủy Học Rối",
+        "lines": [
+          "We've got news! The rice-cracker seller saw a red jacket in the water hyacinth, and the lady doing her washing saw buffalo horns sticking up by the fig tree at the pond.",
+          "And Tí says the old fisherman drifted all the way to the village well. Just follow the canal behind the village and you'll find all three."
+        ],
+        "choices": [
+          { "text": "Thanks, your notice worked brilliantly!", "reply": "Hee, Grandpa taught me to write things people want to read. Tell me everything when you find them!" }
+        ]
+      }
+    },
+    {
+      "id": "tim-roi-troi",
+      "title": "Tìm rối dọc bờ kênh",
+      "goTo": "Đi dọc bờ kênh sau làng tìm ba con rối",
+      "kind": "search",
+      "targets": ["st-roi-nuoc-tu-meo-roi-teu", "st-roi-nuoc-tu-meo-roi-trau", "st-roi-nuoc-tu-meo-roi-ong-cau"],
+      "en": {
+        "title": "Search along the canal",
+        "goTo": "Walk along the canal behind the village to find the three puppets"
+      }
+    },
+    {
+      "id": "dem-day-giat",
+      "title": "Đếm dây giật",
+      "goTo": "Mang ba con rối về hiên xưởng, đặt lên bàn sửa rối",
+      "kind": "riddle",
+      "target": "st-roi-nuoc-tu-meo-ban-sua",
+      "skill": "phep-cong",
+      "question": "Dây giật của ba con rối bị nước làm đứt: Chú Tễu đứt 2 sợi, con trâu đứt 1 sợi, ông câu cá đứt 4 sợi. Ông cần thay tất cả bao nhiêu sợi dây mới?",
+      "answer": { "value": 7 },
+      "support": {
+        "guide": ["Ghi ra số dây đứt của từng con rối.", "Cộng lần lượt: Chú Tễu với con trâu trước.", "Rồi cộng thêm số dây của ông câu cá."],
+        "hint": "2 + 1 = 3, rồi 3 + 4 = ?",
+        "answer": { "text": "7 sợi", "explanation": "2 sợi của Chú Tễu, 1 sợi của con trâu, 4 sợi của ông câu cá: 2 + 1 + 4 = 7 sợi." },
+        "en": {
+          "guide": ["Write down how many strings each puppet lost.", "Add them in turn: Chú Tễu and the buffalo first.", "Then add the fisherman's strings."],
+          "hint": "2 + 1 = 3, then 3 + 4 = ?",
+          "answer": { "text": "7 strings", "explanation": "Chú Tễu's 2, the buffalo's 1 and the fisherman's 4: 2 + 1 + 4 = 7 strings." }
+        }
+      },
+      "feedback": {
+        "right": ["Ông cắt đúng bảy sợi dây, không thừa một gang.", "{name} cộng nhanh như tay ông giật rối!", "Hì hì, đủ dây rồi, ba đứa lại múa được ngay."],
+        "wrong": ["Ông câu cá đứt nhiều nhất đấy, đừng quên phần của ông ấy.", "Cộng lại từng con một nhé {name}, chậm mà chắc.", "Thiếu dây thì con trâu cứ lắc đầu mãi không thôi đâu."],
+        "en": {
+          "right": ["Grandpa cuts exactly seven strings, not a hand's width extra.", "{name} adds as quick as Grandpa's puppet-pulling hands!", "Hee hee, enough strings: all three can dance again."],
+          "wrong": ["The fisherman lost the most; don't forget his.", "Add them one puppet at a time, {name}, slow and sure.", "Short of strings, the buffalo will just keep shaking its head."]
+        }
+      },
+      "en": {
+        "title": "Count the strings",
+        "goTo": "Bring the three puppets back to the workshop porch and lay them on the repair bench",
+        "question": "The water snapped some of the puppets' control strings: Chú Tễu lost 2, the buffalo lost 1 and the old fisherman lost 4. How many new strings does Grandpa need altogether?"
+      }
+    },
+    {
+      "id": "chua-tay-teu",
+      "title": "Cánh tay Chú Tễu",
+      "goTo": "Vào trong xưởng thủ công, Nghệ Nhân đang soi cánh tay Chú Tễu",
+      "kind": "decision",
+      "target": "nghe-nhan-mua-roi",
+      "speaker": "Nghệ Nhân Múa Rối",
+      "prompt": "Cánh tay Chú Tễu bị nứt một đường dài. Ông thở dài: «Tối mai diễn rồi, chữa thế nào đây cháu?»",
+      "choices": [
+        { "id": "dan-keo", "text": "Dán tạm bằng keo nhựa sung", "consequence": "Ông dán thử, cánh tay dính lại nhưng giơ lên là kêu răng rắc. «Đỡ được một đêm thôi», ông lắc đầu." },
+        { "id": "deo-moi", "text": "Đẽo một cánh tay mới", "consequence": "Mắt ông sáng lên: «Đẽo mới thì phải có gỗ sung thật nhẹ. Gỗ ấy chỉ bác thợ ngoài chợ nhỏ trong làng có.»" },
+        { "id": "treo-tay", "text": "Cho Chú Tễu đeo tay băng mà diễn", "consequence": "Ông bật cười hì hì: «Tễu bị thương mà vẫn ra chọc cười thiên hạ, hay đấy!» Nhưng ông vẫn muốn Tễu có cánh tay lành lặn." }
+      ],
+      "en": {
+        "title": "Chú Tễu's arm",
+        "goTo": "Go inside the craft workshop, where the puppet master is examining Chú Tễu's arm",
+        "prompt": "Chú Tễu's arm has a long crack. Grandpa sighs: 'The show is tomorrow night. How do we fix it, little one?'",
+        "choices": [
+          { "text": "Glue it for now with fig sap", "consequence": "He tries it: the arm holds, but it creaks every time it lifts. 'Good for one night at most,' he says, shaking his head." },
+          { "text": "Carve a brand-new arm", "consequence": "His eyes light up: 'A new arm needs really light fig wood. Only the woodworker at the little village market has any.'" },
+          { "text": "Let Chú Tễu perform with his arm in a sling", "consequence": "He giggles, hee hee: 'Tễu hurt but still out there making everyone laugh, I like it!' But he still wants Tễu to have a sound arm." }
+        ]
+      }
+    },
+    {
+      "id": "ba-con-roi-ve-xuong",
+      "title": "Ba con rối về xưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ba con rối nằm hong bên bếp lửa, áo đỏ của Chú Tễu bốc hơi nghi ngút. Ông Nghệ Nhân ngâm chân xuống ao, giật thử dây con trâu, và lần đầu trong ngày ông lại cười hì hì.",
+      "en": { "title": "Three puppets back home", "text": "The three puppets dry beside the fire, steam rising from Chú Tễu's red jacket. The puppet master dips his feet in the pond, tugs the buffalo's new strings, and for the first time today he giggles hee hee again." }
+    },
+    {
+      "id": "can-go-sung",
+      "title": "Cần một khúc gỗ sung",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối ấy ông ngồi xoay xoay cánh tay nứt của Chú Tễu mãi: «Tễu tôi xin thưa, tay này phải thay thôi.» Mai ông cháu mình ra chợ nhỏ tìm gỗ sung nhé, {name}.",
+      "en": { "title": "In need of fig wood", "text": "That evening Grandpa sits turning Chú Tễu's cracked arm over and over: 'Tễu here begs to say, this arm must be replaced.' Tomorrow, {name}, let's go to the little market and find some fig wood." }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": { "phep-cong": 1 }
+  },
+  "en": {
+    "title": "Nghệ Nhân Múa Rối's story, chapter 1: Three puppets adrift",
+    "summary": "A night of rain has washed three water puppets out of the workshop, and the show is tomorrow. {name} reads Bé Thủy Học Rối's news on the village board, searches the canal for Chú Tễu, the buffalo and the old fisherman, works out how many strings to replace and helps the puppet master mend Chú Tễu's cracked arm."
+  }
+}

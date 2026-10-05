@@ -3540,6 +3540,172 @@
    "height": 1.4,
    "kind": "object",
    "label": "Đọc bảng"
+  },
+  "st-do-ba-con-do-may-ba-nuoi-ong": {
+   "model": "packs/kenney-blocky-characters/2.0/character-i.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#c8a048"
+  },
+  "st-do-ba-con-do-may-sap-ong": {
+   "model": "packs/kenney-food-kit/2.0/honey.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#e8c860"
+  },
+  "st-do-ba-con-do-may-xo-dua": {
+   "model": "generated/props/knot.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#8a6038"
+  },
+  "st-do-ba-con-do-may-van-va": {
+   "model": "packs/kenney-survival-kit/2.0/resource-planks.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-do-ba-con-do-may-do-may": {
+   "model": "packs/kenney-nature-kit/2.1/canoe.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-do-ba-con-do-may-be-ti": {
+   "model": "packs/kenney-blocky-characters/2.0/character-c.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#6aa0d8"
+  },
+  "st-do-ba-con-do-may-bang-gio": {
+   "model": "packs/kenney-survival-kit/2.0/signpost-single.glb",
+   "height": 1.6,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-do-ba-con-do-may-tho-cau": {
+   "model": "packs/kenney-blocky-characters/2.0/character-k.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#7a9a48"
+  },
+  "st-do-ba-con-do-may-tre-luy": {
+   "model": "packs/kenney-nature-kit/2.1/crops_bambooStageA.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#7ab050"
+  },
+  "st-do-ba-con-do-may-tre-ao": {
+   "model": "packs/kenney-nature-kit/2.1/crops_bambooStageA.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c8b860"
+  },
+  "st-do-ba-con-do-may-tre-san": {
+   "model": "packs/kenney-nature-kit/2.1/crops_bambooStageA.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#a87840"
+  },
+  "st-do-ba-con-do-may-den-hong": {
+   "model": "generated/props/lotus.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#f0a0c0"
+  },
+  "st-do-ba-con-do-may-den-vang": {
+   "model": "generated/props/lotus.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#f0d060"
+  },
+  "st-do-ba-con-do-may-den-trang": {
+   "model": "generated/props/lotus.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#f4f0e8"
+  },
+  "st-roi-nuoc-tu-meo-be-thuy": {
+   "model": "packs/kenney-blocky-characters/2.0/character-f.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#d878a0"
+  },
+  "st-roi-nuoc-tu-meo-roi-teu": {
+   "model": "generated/props/nesting-dolls.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#d84838"
+  },
+  "st-roi-nuoc-tu-meo-roi-trau": {
+   "model": "generated/props/nesting-dolls.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#6a5040"
+  },
+  "st-roi-nuoc-tu-meo-roi-ong-cau": {
+   "model": "generated/props/nesting-dolls.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#4868a8"
+  },
+  "st-roi-nuoc-tu-meo-ban-sua": {
+   "model": "packs/kenney-survival-kit/2.0/workbench.glb",
+   "height": 1.1,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-roi-nuoc-tu-meo-bac-tho-go": {
+   "model": "packs/kenney-blocky-characters/2.0/character-b.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#8a6a40"
+  },
+  "st-roi-nuoc-tu-meo-chau-nuoc": {
+   "model": "packs/kenney-survival-kit/2.0/bucket.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-roi-nuoc-tu-meo-gian-phoi": {
+   "model": "packs/kenney-nature-kit/2.1/log_stack.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-roi-nuoc-tu-meo-to-chuong-trinh": {
+   "model": "generated/props/placard.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-roi-nuoc-tu-meo-manh-tre": {
+   "model": "packs/kenney-nature-kit/2.1/crops_bambooStageB.glb",
+   "height": 1.8,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c8a860"
   }
  }
 }

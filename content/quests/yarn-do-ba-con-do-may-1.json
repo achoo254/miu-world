@@ -1,0 +1,206 @@
+{
+  "id": "yarn-do-ba-con-do-may-1",
+  "region": "lang-ven-song",
+  "chapter": 2,
+  "title": "Chuyện của Chú Lái Đò Ba, chương 1: Đò Mây bị rỉ nước",
+  "status": "active",
+  "category": "story",
+  "summary": "Con đò Mây của Chú Lái Đò Ba rỉ nước dưới đáy. {name} hỏi Bà Nuôi Ong cách trám đò, gom sáp ong, xơ dừa và tấm ván vá, rồi cùng Chú Ba vá đò theo đúng thứ tự và chọn người đi chuyến thử đầu tiên.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Chú Lái Đò Ba, Bà Nuôi Ong",
+    "where": "Làng ven sông: bãi cỏ ven sông, vườn hoa tổ ong, bãi lau ven sông, mép nước bến đò",
+    "goal": "Vá con đò Mây để bến sông có đò chạy trở lại",
+    "play": "Nghe bà nuôi ong mách cách trám đò, tìm ba món theo gợi ý, xếp các bước vá đò, chọn người đi chuyến thử",
+    "learn": "Đọc hiểu lời gợi ý, sắp xếp trình tự công việc",
+    "reward": "60 XP, 15 Xu, Skill XP Đọc hiểu và Kể chuyện, một mảnh vảy cá bạc",
+    "next": "Chú Ba nhận một chuyến đò chở ba vị khách khó tính"
+  },
+  "phases": {
+    "hook": "do-ri-nuoc",
+    "explore": "hoi-ba-nuoi-ong",
+    "learn": "gom-do-va",
+    "challenge": "va-do",
+    "decision": "chuyen-thu",
+    "finale": "chuyen-thu",
+    "reward": "do-may-noi-lai",
+    "next": "ba-vi-khach"
+  },
+  "places": {
+    "chu-lai-do-ba": "Bãi cỏ ven sông",
+    "st-do-ba-con-do-may-ba-nuoi-ong": "Vườn hoa tổ ong",
+    "gom-do-va": "Bãi lau ven sông",
+    "st-do-ba-con-do-may-do-may": "Mép nước bến đò"
+  },
+  "steps": [
+    {
+      "id": "do-ri-nuoc",
+      "title": "Đò rỉ nước",
+      "goTo": "Ra bãi cỏ ven sông, Chú Lái Đò Ba đang tát nước khỏi con đò",
+      "kind": "dialogue",
+      "target": "chu-lai-do-ba",
+      "lines": [
+        { "speaker": "Chú Lái Đò Ba", "text": "Này cháu, sáng nay chú gõ ba tiếng chào sông xong thì thấy nước rỉ vào đáy Đò Mây, tí tách như ai đếm giây." },
+        { "speaker": "Chú Lái Đò Ba", "text": "Ba mươi năm nay Đò Mây chưa bỏ chú bao giờ. Không vá kịp thì chiều nay cả làng đứng bên kia sông mà gọi «đò ơi» suông." },
+        { "speaker": "Chú Lái Đò Ba", "text": "Bà Nuôi Ong ở vườn hoa đầu bãi biết cách trám đò bằng sáp. Cháu chạy qua hỏi bà giúp chú nhé." }
+      ],
+      "choices": [
+        { "text": "Cháu đi ngay, chú cứ tát nước nhé!", "reply": "Ừ, chú tát, cháu chạy. Nhanh như nước xiết nhé, nhưng đừng ngã xuống sông đấy." },
+        { "text": "Đò cũng biết mệt hả chú?", "reply": "Biết chứ. Đò cũng như người, già rồi thì chỗ này chỗ kia rỉ một tí, chăm là khỏe lại thôi." }
+      ],
+      "en": {
+        "title": "A leaking boat",
+        "goTo": "Head to the grassy riverbank, where Chú Lái Đò Ba is bailing water out of his boat",
+        "lines": [
+          "Now then, little one, this morning I knocked three times to greet the river and then saw water seeping into the Cloud Ferry, drip, drip, like someone counting seconds.",
+          "In thirty years she's never let me down. If I can't patch her in time, this evening the whole village will stand on the far bank calling 'ferry!' for nothing.",
+          "The bee-keeper granny in the flower garden up the bank knows how to seal a boat with wax. Run over and ask her for me, will you?"
+        ],
+        "choices": [
+          { "text": "I'm off! You keep bailing!", "reply": "Right, I bail, you run. Quick as a current, but don't fall in the river." },
+          { "text": "Do boats get tired too?", "reply": "Of course. Boats are like people: when they get old, a bit leaks here and there, but look after them and they bounce back." }
+        ]
+      }
+    },
+    {
+      "id": "hoi-ba-nuoi-ong",
+      "title": "Hỏi Bà Nuôi Ong",
+      "goTo": "Tới vườn hoa tổ ong hỏi Bà Nuôi Ong cách trám đò",
+      "kind": "dialogue",
+      "target": "st-do-ba-con-do-may-ba-nuoi-ong",
+      "lines": [
+        { "speaker": "Bà Nuôi Ong", "text": "Ong của bà vừa bay về báo có đứa nhỏ chạy hớt hải. Đò Mây lại rỉ hả cháu? Chuyện nhỏ, chuyện nhỏ thôi." },
+        { "speaker": "Bà Nuôi Ong", "text": "Cần ba thứ: bánh sáp ong để trám, nắm xơ dừa để nhét vết nứt, và một tấm ván mỏng để ốp ngoài. Bà để cả ba ngoài bãi lau, cháu đọc kỹ lời bà tả mà tìm." }
+      ],
+      "choices": [
+        { "text": "Cháu cảm ơn bà, cháu đi tìm ngay!", "reply": "Đi đi cháu, mà nhớ đi chậm qua tổ ong nhé. Ong nhà bà hiền, nhưng ghét ai chạy ầm ầm." }
+      ],
+      "en": {
+        "title": "Ask the bee-keeper",
+        "goTo": "Go to the flower garden with the beehives and ask Bà Nuôi Ong how to seal the boat",
+        "lines": [
+          "My bees just flew back to tell me a youngster was racing about. Is the Cloud Ferry leaking again, dear? Oh, that's nothing, nothing at all.",
+          "You need three things: a cake of beeswax to seal it, a handful of coconut fibre to stuff the crack, and a thin board to cover it outside. I left all three by the reeds; read how I describe them and you'll find them."
+        ],
+        "choices": [
+          { "text": "Thank you, Granny, I'll go and look!", "reply": "Off you go, but walk slowly past the hives. My bees are gentle, but they hate anyone stomping about." }
+        ]
+      }
+    },
+    {
+      "id": "gom-do-va",
+      "title": "Gom đồ vá đò",
+      "goTo": "Ra bãi lau ven sông tìm sáp ong, xơ dừa và tấm ván",
+      "kind": "find-object",
+      "prompt": "Bà Nuôi Ong tả ba món để ngoài bãi lau. Đọc lời tả rồi tìm từng món:",
+      "skill": "doc-hieu",
+      "items": [
+        { "id": "banh-sap", "name": "Bánh sáp ong", "clue": "Vàng như mật, sờ vào hơi dính tay, ngửi thấy thơm mùi hoa nhãn.", "target": "st-do-ba-con-do-may-sap-ong" },
+        { "id": "xo-dua", "name": "Nắm xơ dừa", "clue": "Nâu, xù như bộ râu ông già, xé ra từng sợi dai nhách.", "target": "st-do-ba-con-do-may-xo-dua" },
+        { "id": "van-va", "name": "Tấm ván vá", "clue": "Mỏng, phẳng, dài hơn một gang tay, gác trên hai khóm lau cho khỏi ướt.", "target": "st-do-ba-con-do-may-van-va" }
+      ],
+      "en": {
+        "title": "Gather the patching things",
+        "goTo": "Go to the reed bed by the river for the beeswax, coconut fibre and board",
+        "prompt": "Bà Nuôi Ong described three things she left by the reeds. Read her descriptions and find each one:",
+        "items": [
+          { "name": "Cake of beeswax", "clue": "Golden as honey, a bit sticky to touch, and it smells of longan blossom." },
+          { "name": "Handful of coconut fibre", "clue": "Brown and bristly like an old man's beard; it pulls apart into tough strands." },
+          { "name": "Patching board", "clue": "Thin and flat, a little longer than a hand span, resting on two clumps of reeds to keep it dry." }
+        ]
+      }
+    },
+    {
+      "id": "va-do",
+      "title": "Vá Đò Mây",
+      "goTo": "Mang đồ ra mép nước bến đò, nơi Đò Mây đang chờ",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-do-ba-con-do-may-do-may",
+      "skill": "ke-chuyen",
+      "prompt": "Chú Ba nhờ {name} xếp các bước vá đò cho đúng thứ tự:",
+      "items": [
+        { "id": "miet-sap", "label": "Miết sáp ong phủ kín chỗ nứt" },
+        { "id": "keo-len", "label": "Kéo đò lên bãi cho đáy khô" },
+        { "id": "day-xuong", "label": "Đẩy đò xuống nước chèo thử" },
+        { "id": "nhet-xo", "label": "Nhét xơ dừa vào vết nứt" },
+        { "id": "op-van", "label": "Ốp tấm ván ra ngoài cho chắc" }
+      ],
+      "answer": { "order": ["keo-len", "nhet-xo", "miet-sap", "op-van", "day-xuong"] },
+      "support": {
+        "guide": ["Đáy còn ướt thì sáp không bám: việc đầu tiên là làm khô.", "Vết nứt phải được lấp đầy trước, rồi mới trám kín bên ngoài.", "Vá xong xuôi mới đem đò xuống nước thử."],
+        "hint": "Khô đáy, lấp nứt, trám sáp, ốp ván, thử nước.",
+        "answer": { "text": "Kéo lên, nhét xơ, miết sáp, ốp ván, đẩy xuống", "explanation": "Đáy phải khô trước; xơ dừa lấp vết nứt; sáp ong trám kín; tấm ván ốp ngoài giữ chắc; cuối cùng mới chèo thử." },
+        "en": {
+          "guide": ["Wax won't stick to a wet hull, so first get it dry.", "Fill the crack first, then seal it over.", "Only test the boat in the water once the patch is finished."],
+          "hint": "Dry it, fill it, wax it, board it, test it.",
+          "answer": { "text": "Pull up, stuff fibre, smooth wax, fix board, push in", "explanation": "The hull must be dry first; the coconut fibre fills the crack; the beeswax seals it; the board on the outside holds it firm; only then do you row out to test." }
+        }
+      },
+      "feedback": {
+        "right": ["Chú Ba gõ ba tiếng vào mạn: «Chắc như đá tảng rồi!»", "{name} vá đò khéo như thợ ba mươi năm.", "Đáy đò khô cong, không một giọt nào lọt vào nữa."],
+        "wrong": ["Đáy còn ướt sũng thế kia thì sáp trôi tuột mất, cháu ạ.", "Chưa vá đã đẩy xuống nước thì Đò Mây uống no nước sông mất.", "Xơ dừa phải vào vết nứt trước, sáp mới phủ lên được {name}."],
+        "en": {
+          "right": ["Uncle Ba knocks three times on the side: 'Solid as a rock!'", "{name} patches a boat like a ferryman with thirty years behind him.", "The hull is bone dry, not a single drop getting in."],
+          "wrong": ["With the hull that wet, the wax would slide right off, little one.", "Push her in before patching and the Cloud Ferry will drink half the river.", "The fibre goes into the crack first, {name}; then the wax can cover it."]
+        }
+      },
+      "en": {
+        "title": "Patch the Cloud Ferry",
+        "goTo": "Take everything to the water's edge at the landing, where the Cloud Ferry is waiting",
+        "prompt": "Uncle Ba asks {name} to put the patching steps in the right order:",
+        "items": ["Smooth beeswax over the crack", "Pull the boat up so the hull dries", "Push the boat in and row a test", "Stuff coconut fibre into the crack", "Fix the board on the outside"]
+      }
+    },
+    {
+      "id": "chuyen-thu",
+      "title": "Chuyến thử đầu tiên",
+      "goTo": "Về bãi cỏ ven sông báo Chú Ba đò đã vá xong",
+      "kind": "decision",
+      "target": "chu-lai-do-ba",
+      "speaker": "Chú Lái Đò Ba",
+      "prompt": "Đò Mây đã nổi êm trên mặt nước. «Chuyến thử đầu tiên chở ai đây cháu?»",
+      "choices": [
+        { "id": "ba-nuoi-ong", "text": "Mời Bà Nuôi Ong, người mách cách vá", "consequence": "Bà Nuôi Ong ngồi đầu mũi, ôm một hũ mật. Giữa dòng bà cười khà khà: «Đò êm thế này thì bà sang chợ bên kia bán mật luôn!»" },
+        { "id": "chu-chau", "text": "Chú cháu mình đi thử với nhau", "consequence": "Chú Ba đưa {name} cầm một mái chèo. Đò lượn một vòng quanh bến, mặt nước êm như mặt đầm." },
+        { "id": "cho-gao", "text": "Chở luôn bao gạo cho nhà bên kia", "consequence": "Chú Ba gật gù: «Thử thật mới biết đò khỏe thật.» Bao gạo sang tới bờ khô ráo, người bên kia vỗ tay rộn ràng." }
+      ],
+      "en": {
+        "title": "The first test crossing",
+        "goTo": "Go back to the grassy riverbank and tell Uncle Ba the boat is patched",
+        "prompt": "The Cloud Ferry floats smoothly on the water. 'Who rides the very first test crossing, little one?'",
+        "choices": [
+          { "text": "Invite Bà Nuôi Ong, who knew how to fix it", "consequence": "Bà Nuôi Ong sits at the bow hugging a jar of honey. Midstream she chuckles: 'A ride this smooth? I'll go and sell my honey at the market over there!'" },
+          { "text": "Just the two of us", "consequence": "Uncle Ba hands {name} an oar. The boat makes a loop round the landing, the water as calm as a pond." },
+          { "text": "Carry a sack of rice for the family across", "consequence": "Uncle Ba nods: 'A real load is the real test.' The rice reaches the far bank perfectly dry, and the people there clap and cheer." }
+        ]
+      }
+    },
+    {
+      "id": "do-may-noi-lai",
+      "title": "Đò Mây nổi lại",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chiều ấy bên kia sông lại vang tiếng «đò ơi», và Đò Mây lại xuôi ngược, đáy khô cong. Chú Ba gõ ba tiếng vào mạn, lần này là để cảm ơn {name}.",
+      "en": { "title": "The Cloud Ferry floats again", "text": "That evening the call 'ferry!' rings out from the far bank again, and the Cloud Ferry goes back and forth with a dry hull. Uncle Ba knocks three times on her side, and this time it's to thank {name}." }
+    },
+    {
+      "id": "ba-vi-khach",
+      "title": "Ba vị khách khó tính",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Trước khi neo đò, Chú Ba gãi đầu: «Sáng mai có cậu bé nhờ chở một con dê, một con chó và một bó rau sang sông. Đò thì chỉ chở được một thứ mỗi chuyến… cháu ghé giúp chú nghĩ nhé.»",
+      "en": { "title": "Three fussy passengers", "text": "Before mooring, Uncle Ba scratches his head: 'Tomorrow morning a boy wants me to take a goat, a dog and a bundle of greens across. The boat only fits one at a time… come and help me think it through.'" }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": { "doc-hieu": 1, "ke-chuyen": 1 },
+    "items": { "vay-ca-bac": 1 }
+  },
+  "en": {
+    "title": "Chú Lái Đò Ba's story, chapter 1: The Cloud Ferry springs a leak",
+    "summary": "Uncle Ba's boat, the Cloud Ferry, is leaking. {name} asks Bà Nuôi Ong how to seal it, gathers beeswax, coconut fibre and a patching board, puts the repair steps in order with Uncle Ba and picks who rides the first test crossing."
+  }
+}

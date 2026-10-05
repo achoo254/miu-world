@@ -1,0 +1,251 @@
+{
+  "id": "yarn-do-ba-con-do-may-4",
+  "region": "lang-ven-song",
+  "chapter": 2,
+  "title": "Chuyện của Chú Lái Đò Ba, chương 4: Đêm hoa đăng trên sông",
+  "status": "active",
+  "category": "story",
+  "summary": "Đêm rằm, cầu tre vừa xong và cả làng thả hoa đăng. {name} gom hoa đăng ba màu, rủ Bé Tí chèo cùng, đoán thứ tự thả đèn với Anh Thợ Cầu, căng buồm đưa Đò Mây ra giữa dòng rồi giúp Chú Ba chọn con đường mới cho con đò của mình.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Chú Lái Đò Ba, Bé Tí Học Chèo, Anh Thợ Cầu Tre",
+    "where": "Làng ven sông: bãi cỏ ven sông, hiên phơi đèn, gốc gạo bến đò, đầu cầu tre mới",
+    "goal": "Đưa hoa đăng của cả làng ra giữa dòng trong đêm rằm",
+    "play": "Tìm hoa đăng ba màu theo gợi ý, đoán màu tiếp theo trong dãy, chơi căng buồm đón gió, chọn tương lai cho Đò Mây",
+    "learn": "Đọc hiểu lời gợi ý, nhận ra quy luật lặp lại của màu sắc",
+    "reward": "80 XP, 22 Xu, Skill XP Đọc hiểu và Logic, một chiếc thuyền nan giấy",
+    "next": "Đò Mây có việc mới, và Chú Ba vẫn mơ một ngày xuôi dòng ra tới biển"
+  },
+  "phases": {
+    "hook": "dem-ram",
+    "explore": "gom-hoa-dang",
+    "learn": "tho-cau-chi-mau",
+    "challenge": "doan-mau-den",
+    "decision": "con-duong-moi",
+    "finale": "con-duong-moi",
+    "reward": "song-sang-ruc",
+    "next": "xuoi-dong-ra-bien"
+  },
+  "places": {
+    "chu-lai-do-ba": "Bãi cỏ ven sông",
+    "gom-hoa-dang": "Hiên phơi đèn",
+    "st-do-ba-con-do-may-be-ti": "Gốc gạo bến đò",
+    "st-do-ba-con-do-may-tho-cau": "Đầu cầu tre mới"
+  },
+  "steps": [
+    {
+      "id": "dem-ram",
+      "title": "Đêm rằm",
+      "goTo": "Trăng lên rồi, ra bãi cỏ ven sông gặp Chú Lái Đò Ba",
+      "kind": "dialogue",
+      "target": "chu-lai-do-ba",
+      "lines": [
+        { "speaker": "Chú Lái Đò Ba", "text": "Này cháu, trăng rằm tròn như cái mâm đồng. Cầu tre xong rồi, người đi bộ sang sông đông như hội." },
+        { "speaker": "Chú Lái Đò Ba", "text": "Nhưng hoa đăng thì phải ra tận giữa dòng mới trôi xa được. Cháu lên hiên phơi đèn gom hoa đăng ba màu về đây nhé." }
+      ],
+      "choices": [
+        { "text": "Đêm nay Đò Mây là ngôi sao đấy chú!", "reply": "Ha ha, ngôi sao gì mà già khú đế. Nhưng đêm nay chú cũng thấy nó đẹp thật." },
+        { "text": "Cháu đi ngay, chú chuẩn bị chèo nhé!", "reply": "Ừ, chú gõ ba tiếng chào sông rồi đợi cháu ở mép nước." }
+      ],
+      "en": {
+        "title": "Full moon night",
+        "goTo": "The moon is up. Go to the grassy riverbank to meet Chú Lái Đò Ba",
+        "lines": [
+          "Now then, the full moon's as round as a brass tray. The bridge is finished, and people are walking across like it's a festival.",
+          "But lantern-flowers have to go right out to midstream to float far. Go up to the lantern porch and bring back flowers in three colours."
+        ],
+        "choices": [
+          { "text": "Tonight the Cloud Ferry's the star!", "reply": "Ha ha, some star, old as the hills. But tonight even I think she looks lovely." },
+          { "text": "I'm off, get the oars ready!", "reply": "Right, I'll knock three times to greet the river and wait for you at the water's edge." }
+        ]
+      }
+    },
+    {
+      "id": "gom-hoa-dang",
+      "title": "Gom hoa đăng",
+      "goTo": "Lên hiên phơi đèn gom hoa đăng ba màu",
+      "kind": "find-object",
+      "prompt": "Hoa đăng ba màu đang phơi trên hiên. Đọc lời tả để lấy đúng từng chiếc:",
+      "skill": "doc-hieu",
+      "items": [
+        { "id": "den-hong", "name": "Hoa đăng hồng", "clue": "Hồng như má em bé lúc ngủ dậy, đặt trên chiếc chõng tre sát cửa.", "target": "st-do-ba-con-do-may-den-hong" },
+        { "id": "den-vang", "name": "Hoa đăng vàng", "clue": "Vàng như lòng đỏ trứng gà, treo lủng lẳng dưới mái hiên.", "target": "st-do-ba-con-do-may-den-vang" },
+        { "id": "den-trang", "name": "Hoa đăng trắng", "clue": "Trắng như vầng trăng đêm nay, nằm trong chiếc rổ cạnh chum nước mưa.", "target": "st-do-ba-con-do-may-den-trang" }
+      ],
+      "en": {
+        "title": "Gather the lantern-flowers",
+        "goTo": "Go up to the lantern porch and gather lantern-flowers in three colours",
+        "prompt": "Lantern-flowers in three colours are drying on the porch. Read each description to pick the right one:",
+        "items": [
+          { "name": "Pink lantern-flower", "clue": "Pink as a baby's cheeks after a nap, sitting on the bamboo bench by the door." },
+          { "name": "Yellow lantern-flower", "clue": "Yellow as an egg yolk, dangling under the eaves." },
+          { "name": "White lantern-flower", "clue": "White as tonight's moon, lying in a basket next to the rain jar." }
+        ]
+      }
+    },
+    {
+      "id": "be-ti-xin-cheo",
+      "title": "Bé Tí muốn chèo",
+      "goTo": "Bé Tí Học Chèo đang đứng chờ ở gốc gạo bến đò",
+      "kind": "dialogue",
+      "target": "st-do-ba-con-do-may-be-ti",
+      "lines": [
+        { "speaker": "Bé Tí Học Chèo", "text": "Bạn ơi! Tối nào tớ cũng tập chèo với Chú Ba, giờ tớ chèo thẳng được rồi. Cho tớ đi cùng đêm nay nhé?" },
+        { "speaker": "Bé Tí Học Chèo", "text": "À, Anh Thợ Cầu dặn đèn phải thả theo một thứ tự màu, anh ấy đang đứng ở đầu cầu đấy." }
+      ],
+      "choices": [
+        { "text": "Đi chứ! Cậu chèo trái, tớ chèo phải.", "reply": "Hay quá! Để tớ chạy về lấy cái mũ cói, gió đêm trên sông lạnh lắm." }
+      ],
+      "en": {
+        "title": "Bé Tí wants to row",
+        "goTo": "Bé Tí Học Chèo is waiting by the silk-cotton tree at the landing",
+        "lines": [
+          "Hey! I've practised rowing with Uncle Ba every evening, and now I can row in a straight line. Can I come along tonight?",
+          "Oh, and the bridge builder says the lanterns have to go in a colour order. He's standing at the bridgehead."
+        ],
+        "choices": [
+          { "text": "Of course! You row left, I'll row right.", "reply": "Brilliant! Let me run and fetch my straw hat; the night wind on the river is chilly." }
+        ]
+      }
+    },
+    {
+      "id": "tho-cau-chi-mau",
+      "title": "Thứ tự màu đèn",
+      "goTo": "Ra đầu cầu tre mới hỏi Anh Thợ Cầu Tre",
+      "kind": "dialogue",
+      "target": "st-do-ba-con-do-may-tho-cau",
+      "lines": [
+        { "speaker": "Anh Thợ Cầu Tre", "text": "Em tới đúng lúc! Anh treo đèn dọc thành cầu theo một nhịp màu, hoa đăng dưới sông thả theo đúng nhịp ấy thì trên dưới sáng như soi gương." },
+        { "speaker": "Anh Thợ Cầu Tre", "text": "Em nhìn hàng đèn trên cầu mà đoán màu tiếp theo nhé. Đoán đúng thì anh vẫy đèn ra hiệu cho Chú Ba." }
+      ],
+      "choices": [{ "text": "Để em nhìn kỹ hàng đèn ạ." }],
+      "en": {
+        "title": "The colour order",
+        "goTo": "Go to the new bamboo bridgehead and ask Anh Thợ Cầu Tre",
+        "lines": [
+          "Perfect timing! I've hung lanterns along the railing in a colour pattern. If the lantern-flowers on the river follow the same pattern, above and below will shine like a mirror.",
+          "Look at the row of lanterns on the bridge and guess the next colour. Get it right and I'll wave a lantern to signal Uncle Ba."
+        ],
+        "choices": [{ "text": "Let me look carefully at the row." }]
+      }
+    },
+    {
+      "id": "doan-mau-den",
+      "title": "Đoán màu đèn",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "st-do-ba-con-do-may-tho-cau",
+      "skill": "logic",
+      "prompt": "Hàng đèn trên cầu: hồng, vàng, vàng, trắng – hồng, vàng, vàng, trắng – hồng, vàng, vàng… Chiếc tiếp theo màu gì?",
+      "elements": [
+        { "id": "d1", "label": "hồng" },
+        { "id": "d2", "label": "vàng" },
+        { "id": "d3", "label": "vàng" },
+        { "id": "d4", "label": "trắng" },
+        { "id": "d5", "label": "hồng" },
+        { "id": "d6", "label": "vàng" },
+        { "id": "d7", "label": "vàng" },
+        { "id": "d8", "label": "trắng" },
+        { "id": "d9", "label": "hồng" },
+        { "id": "d10", "label": "vàng" },
+        { "id": "d11", "label": "vàng" },
+        { "id": "d12", "label": "?" }
+      ],
+      "choices": [
+        { "id": "a", "text": "Hồng" },
+        { "id": "b", "text": "Vàng" },
+        { "id": "c", "text": "Trắng" }
+      ],
+      "answer": { "choice": "c" },
+      "support": {
+        "guide": ["Tìm nhóm màu lặp đi lặp lại.", "Mỗi nhóm có bốn chiếc: hồng, vàng, vàng, trắng.", "Nhóm cuối đã có hồng, vàng, vàng; còn thiếu chiếc cuối nhóm."],
+        "hint": "Mỗi nhóm luôn kết thúc bằng màu của vầng trăng.",
+        "answer": { "text": "Trắng", "explanation": "Hàng đèn lặp lại nhóm «hồng, vàng, vàng, trắng». Nhóm thứ ba đã có «hồng, vàng, vàng», nên chiếc tiếp theo là trắng." },
+        "en": {
+          "guide": ["Find the group of colours that keeps repeating.", "Each group has four: pink, yellow, yellow, white.", "The last group already has pink, yellow, yellow; it's missing its final lantern."],
+          "hint": "Every group ends in the colour of the moon.",
+          "answer": { "text": "White", "explanation": "The lanterns repeat the group 'pink, yellow, yellow, white'. The third group already has 'pink, yellow, yellow', so the next one is white." }
+        }
+      },
+      "feedback": {
+        "right": ["Anh Thợ Cầu vẫy đèn trắng, dưới sông Chú Ba vẫy lại ngay.", "{name} đọc ra nhịp màu nhanh hơn cả gió thổi qua cầu.", "Trắng rồi lại hồng, trên cầu dưới sông sáng như soi gương!"],
+        "wrong": ["Vàng đã đi hai chiếc liền rồi, thêm nữa là lệch nhịp đấy.", "Hồng chỉ mở đầu mỗi nhóm thôi {name}, chưa tới lượt nó.", "Đếm lại từng nhóm bốn chiếc xem nào."],
+        "en": {
+          "right": ["The builder waves a white lantern, and down on the river Uncle Ba waves straight back.", "{name} reads the colour rhythm faster than the wind crosses the bridge.", "White, then pink again: bridge and river shine like a mirror!"],
+          "wrong": ["Yellow has already come twice in a row; another would break the pattern.", "Pink only starts each group, {name}; it isn't its turn.", "Count each group of four again."]
+        }
+      },
+      "en": {
+        "title": "Guess the lantern colour",
+        "prompt": "The lanterns on the bridge go: pink, yellow, yellow, white – pink, yellow, yellow, white – pink, yellow, yellow… What colour comes next?",
+        "elements": ["pink", "yellow", "yellow", "white", "pink", "yellow", "yellow", "white", "pink", "yellow", "yellow", "?"],
+        "choices": ["Pink", "Yellow", "White"]
+      }
+    },
+    {
+      "id": "cang-buom",
+      "title": "Căng buồm ra giữa dòng",
+      "goTo": "Về bãi cỏ ven sông, lên Đò Mây căng buồm ra giữa dòng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "chu-lai-do-ba",
+      "prompt": "Gió đêm thổi lồng lộng! Căng buồm đón gió, đưa Đò Mây chở hoa đăng lướt qua 4 chiếc phao hoa ra tận giữa dòng nhé.",
+      "game": "sail-wind",
+      "goal": 4,
+      "en": {
+        "title": "Sail out to midstream",
+        "goTo": "Back to the grassy riverbank: board the Cloud Ferry and sail out to midstream",
+        "prompt": "The night wind is blowing strong! Set the sail to catch it and steer the Cloud Ferry, loaded with lantern-flowers, past 4 flower buoys out to midstream."
+      }
+    },
+    {
+      "id": "con-duong-moi",
+      "title": "Con đường mới của Đò Mây",
+      "kind": "decision",
+      "target": "chu-lai-do-ba",
+      "speaker": "Chú Lái Đò Ba",
+      "prompt": "Hoa đăng trôi lấp lánh quanh mạn đò. Chú Ba khẽ hỏi: «Có cầu rồi, Đò Mây nên làm gì tiếp, {name}?»",
+      "choices": [
+        { "id": "lop-cheo", "text": "Mở lớp dạy chèo cho tụi nhỏ", "consequence": "«Bé Tí là học trò đầu, {name} là học trò thứ hai», Chú Ba cười. «Bến sông này sẽ chẳng bao giờ thiếu người lái đò.»" },
+        { "id": "cho-khach-ngam", "text": "Rằm nào cũng chở khách ngắm hoa đăng", "consequence": "Chú Ba gật gù: «Đêm rằm chở khách ngắm đèn, ngày thường chở thóc chở cá. Đò Mây còn bận hơn trước ấy chứ!»" },
+        { "id": "ra-bien", "text": "Sửa soạn cho chuyến xuôi dòng ra biển", "consequence": "Chú Ba nhìn theo dòng nước trôi về phía xa, mắt sáng lên: «Ba mươi năm chú chỉ chèo ngang sông. Có lẽ đã tới lúc chèo dọc rồi.»" }
+      ],
+      "en": {
+        "title": "A new course for the Cloud Ferry",
+        "prompt": "Lantern-flowers twinkle all around the boat. Uncle Ba asks softly: 'Now there's a bridge, what should the Cloud Ferry do next, {name}?'",
+        "choices": [
+          { "text": "Start a rowing class for the kids", "consequence": "'Bé Tí is pupil number one, {name} is pupil number two,' Uncle Ba laughs. 'This landing will never be short of a ferryman.'" },
+          { "text": "Take people out to see the lanterns every full moon", "consequence": "Uncle Ba nods: 'Lantern trips at full moon, rice and fish on ordinary days. The Cloud Ferry will be busier than ever!'" },
+          { "text": "Get ready for a voyage downstream to the sea", "consequence": "Uncle Ba gazes after the water flowing into the distance, his eyes shining: 'Thirty years I've only rowed across the river. Maybe it's time to row along it.'" }
+        ]
+      }
+    },
+    {
+      "id": "song-sang-ruc",
+      "title": "Dòng sông sáng rực",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Trên cầu, đèn sáng thành một hàng; dưới sông, hoa đăng trôi thành một dải. Ở giữa, Đò Mây đậu im, Chú Ba, Bé Tí và {name} ngồi ngắm, chẳng ai nói câu nào mà ai cũng cười.",
+      "en": { "title": "The river aglow", "text": "On the bridge, the lanterns shine in a row; on the river, the lantern-flowers drift in a ribbon. In between, the Cloud Ferry rests, and Uncle Ba, Bé Tí and {name} sit and watch, nobody saying a word and everybody smiling." }
+    },
+    {
+      "id": "xuoi-dong-ra-bien",
+      "title": "Một ngày xuôi dòng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Từ đêm ấy, sáng nào bến sông vẫn vang tiếng «đò ơi», có điều thêm cả tiếng tụi nhỏ gọi nhau đi học chèo. Chú Ba vẫn gõ ba tiếng chào sông, và hứa một ngày sẽ xuôi dòng ra tới biển, chỗ đầu mũi đò để dành cho {name}.",
+      "en": { "title": "Downstream, one day", "text": "From that night on, every morning the landing still rings with 'ferry!', and now with kids calling each other to rowing lessons too. Uncle Ba still knocks three times to greet the river, and promises that one day he'll drift all the way down to the sea, with the seat at the bow saved for {name}." }
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 22,
+    "skillXp": { "doc-hieu": 1, "logic": 1 },
+    "items": { "thuyen-nan-giay": 1 }
+  },
+  "en": {
+    "title": "Chú Lái Đò Ba's story, chapter 4: Lantern night on the river",
+    "summary": "On full moon night the bamboo bridge is finished and the village floats lantern-flowers. {name} gathers lanterns in three colours, invites Bé Tí to row along, works out the lantern order with Anh Thợ Cầu, sails the Cloud Ferry out to midstream and helps Uncle Ba choose a new course for his boat."
+  }
+}

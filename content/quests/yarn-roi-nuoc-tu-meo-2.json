@@ -1,0 +1,221 @@
+{
+  "id": "yarn-roi-nuoc-tu-meo-2",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Chuyện của Nghệ Nhân Múa Rối, chương 2: Khúc gỗ nhẹ như bấc",
+  "status": "active",
+  "category": "story",
+  "summary": "Chú Tễu cần một cánh tay mới bằng gỗ thật nhẹ. {name} ra chợ nhỏ nghe Bác Thợ Gỗ Sung kể về các loại gỗ, thả thử gỗ ở bờ ao để chọn loại nổi, xếp các bước làm cánh tay rối rồi giúp Nghệ Nhân quyết định ai sẽ sơn cánh tay ấy.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Nghệ Nhân Múa Rối, Bác Thợ Gỗ Sung",
+    "where": "Làng ven sông: xưởng thủ công, chợ nhỏ trong làng, bờ ao làng, sân phơi rối",
+    "goal": "Làm một cánh tay mới cho Chú Tễu kịp buổi diễn",
+    "play": "Nghe bác thợ kể chuyện gỗ, chọn mọi loại gỗ nổi, xếp các bước làm rối, chọn người sơn cánh tay",
+    "learn": "Đọc hiểu lời kể để chọn đúng nhiều ý, sắp xếp trình tự công việc",
+    "reward": "65 XP, 16 Xu, Skill XP Đọc hiểu và Kể chuyện",
+    "next": "Đêm diễn ở thủy đình tới gần, và ông Nghệ Nhân phải ra chào khán giả"
+  },
+  "phases": {
+    "hook": "tim-go-nhe",
+    "explore": "bac-tho-ke-go",
+    "learn": "chon-go-noi",
+    "challenge": "lam-canh-tay",
+    "decision": "ai-son-tay",
+    "finale": "ai-son-tay",
+    "reward": "canh-tay-moi",
+    "next": "le-ra-mat"
+  },
+  "places": {
+    "nghe-nhan-mua-roi": "Xưởng thủ công",
+    "st-roi-nuoc-tu-meo-bac-tho-go": "Chợ nhỏ trong làng",
+    "st-roi-nuoc-tu-meo-chau-nuoc": "Bờ ao làng",
+    "st-roi-nuoc-tu-meo-gian-phoi": "Sân phơi rối"
+  },
+  "steps": [
+    {
+      "id": "tim-go-nhe",
+      "title": "Đi tìm gỗ nhẹ",
+      "goTo": "Ghé xưởng thủ công, Nghệ Nhân Múa Rối đã mài sẵn con dao đẽo",
+      "kind": "dialogue",
+      "target": "nghe-nhan-mua-roi",
+      "lines": [
+        { "speaker": "Nghệ Nhân Múa Rối", "text": "Tễu tôi xin thưa: dao đã mài, đục đã lau, chỉ thiếu khúc gỗ. Rối nước mà nặng thì chìm nghỉm, khán giả chỉ thấy bong bóng." },
+        { "speaker": "Nghệ Nhân Múa Rối", "text": "Bác Thợ Gỗ Sung ở chợ nhỏ trong làng biết rõ gỗ nào nổi gỗ nào chìm. Cháu ra hỏi bác, nhớ nghe kỹ từng chữ nhé." }
+      ],
+      "choices": [
+        { "text": "Cháu đi ngay, ông giữ Chú Tễu nhé!", "reply": "Hì hì, Tễu nằm đây chờ, có chạy đi đâu được với một tay đâu." },
+        { "text": "Sao không lấy gỗ ở xưởng hả ông?", "reply": "Gỗ trong xưởng toàn gỗ làm khung sân khấu, nặng như đá. Rối phải có gỗ riêng của rối." }
+      ],
+      "en": {
+        "title": "In search of light wood",
+        "goTo": "Stop by the craft workshop, where Nghệ Nhân Múa Rối has already sharpened his carving knife",
+        "lines": [
+          "Tễu here begs to say: knife sharpened, chisel wiped, only the wood is missing. A heavy water puppet sinks like a stone, and all the audience sees is bubbles.",
+          "The woodworker at the little village market knows which woods float and which sink. Go and ask him, and listen to every word."
+        ],
+        "choices": [
+          { "text": "I'm off, you look after Chú Tễu!", "reply": "Hee hee, Tễu will lie right here. He can't run far with one arm." },
+          { "text": "Why not use wood from the workshop?", "reply": "The wood in here is all for the stage frame, heavy as rock. Puppets need puppet wood." }
+        ]
+      }
+    },
+    {
+      "id": "bac-tho-ke-go",
+      "title": "Bác Thợ Gỗ kể chuyện gỗ",
+      "goTo": "Ra chợ nhỏ trong làng tìm Bác Thợ Gỗ Sung",
+      "kind": "dialogue",
+      "target": "st-roi-nuoc-tu-meo-bac-tho-go",
+      "lines": [
+        { "speaker": "Bác Thợ Gỗ Sung", "text": "Gỗ cho rối nước hả? Nghe bác này: gỗ sung với gỗ gạo nhẹ như bấc, thả xuống ao là nổi lềnh bềnh." },
+        { "speaker": "Bác Thợ Gỗ Sung", "text": "Còn gỗ lim, gỗ sến thì nặng trịch, thả xuống là chìm nghỉm, chỉ để làm cột nhà. Gỗ mít thì làm tượng đẹp, nhưng ngâm nước lâu là nứt. Cháu mang mấy mẩu ra ao thả thử mà xem." }
+      ],
+      "choices": [
+        { "text": "Cháu cảm ơn bác, cháu thả thử ngay!", "reply": "Ừ, mắt thấy tai nghe mới nhớ lâu. Chậu nước để sẵn ở bờ ao đấy." }
+      ],
+      "en": {
+        "title": "The woodworker talks wood",
+        "goTo": "Go to the little village market to find Bác Thợ Gỗ Sung",
+        "lines": [
+          "Wood for water puppets? Listen: fig wood and silk-cotton wood are light as cork. Drop them in the pond and they float right up.",
+          "Ironwood and sến wood are heavy as can be; drop them in and down they go, so they're only for house pillars. Jackfruit wood makes lovely statues, but it cracks if it soaks too long. Take some pieces to the pond and try them."
+        ],
+        "choices": [
+          { "text": "Thank you, I'll go and test them now!", "reply": "Good. What you see for yourself, you remember. There's a tub of water ready by the pond." }
+        ]
+      }
+    },
+    {
+      "id": "chon-go-noi",
+      "title": "Gỗ nào làm được rối nước?",
+      "goTo": "Mang mấy mẩu gỗ ra bờ ao làng thả thử vào chậu nước",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-roi-nuoc-tu-meo-chau-nuoc",
+      "skill": "doc-hieu",
+      "prompt": "Theo lời Bác Thợ Gỗ Sung, chọn mọi loại gỗ nhẹ, nổi và hợp làm rối nước:",
+      "choices": [
+        { "id": "a", "text": "Gỗ sung" },
+        { "id": "b", "text": "Gỗ lim" },
+        { "id": "c", "text": "Gỗ gạo" },
+        { "id": "d", "text": "Gỗ sến" },
+        { "id": "e", "text": "Gỗ mít" }
+      ],
+      "answer": { "choices": ["a", "c"] },
+      "support": {
+        "guide": ["Nhớ lại câu bác thợ nói về gỗ «nhẹ như bấc».", "Gỗ nào bác bảo «chìm nghỉm» thì bỏ ra.", "Gỗ nào ngâm nước lâu bị nứt cũng không hợp với rối nước."],
+        "hint": "Có hai loại gỗ: một loại trùng tên với bác thợ, một loại là cây hoa đỏ đầu làng.",
+        "answer": { "text": "Gỗ sung và gỗ gạo", "explanation": "Bác thợ nói gỗ sung và gỗ gạo nhẹ, nổi. Gỗ lim, gỗ sến nặng nên chìm; gỗ mít ngâm nước lâu thì nứt." },
+        "en": {
+          "guide": ["Remember what the woodworker said was 'light as cork'.", "Leave out any wood he said 'sinks'.", "Wood that cracks after soaking won't suit water puppets either."],
+          "hint": "There are two: one shares the woodworker's name, the other is the red-flowered tree by the village gate.",
+          "answer": { "text": "Fig wood and silk-cotton wood", "explanation": "The woodworker said fig and silk-cotton wood are light and float. Ironwood and sến are heavy and sink; jackfruit wood cracks if it soaks too long." }
+        }
+      },
+      "feedback": {
+        "right": ["Hai mẩu gỗ nổi bồng bềnh như hai chú vịt con!", "{name} nhớ lời bác thợ không sót một chữ.", "Đúng rồi, rối gỗ sung múa trên nước nhẹ như lá rơi."],
+        "wrong": ["Ùm! Mẩu gỗ ấy chìm nghỉm xuống đáy chậu rồi kìa.", "Gỗ mít đẹp thật, nhưng ngâm lâu là nứt đấy {name}.", "Còn sót một loại gỗ nhẹ nữa, nhớ lại lời bác thợ xem."],
+        "en": {
+          "right": ["Two pieces bob on the water like a pair of ducklings!", "{name} remembered every word the woodworker said.", "That's right: a fig-wood puppet dances on water as lightly as a falling leaf."],
+          "wrong": ["Plop! That piece sank straight to the bottom of the tub.", "Jackfruit wood is pretty, but it cracks after a long soak, {name}.", "There's one more light wood. Think back to what the woodworker said."]
+        }
+      },
+      "en": {
+        "title": "Which woods make water puppets?",
+        "goTo": "Take the wood samples to the village pond and test them in the tub",
+        "prompt": "Going by what Bác Thợ Gỗ Sung said, choose every wood that is light, floats and suits water puppets:",
+        "choices": ["Fig wood", "Ironwood", "Silk-cotton wood", "Sến wood", "Jackfruit wood"]
+      }
+    },
+    {
+      "id": "lam-canh-tay",
+      "title": "Làm cánh tay mới",
+      "goTo": "Ra sân phơi rối, nơi ông bày sẵn đồ nghề",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-roi-nuoc-tu-meo-gian-phoi",
+      "skill": "ke-chuyen",
+      "prompt": "Xếp các bước làm cánh tay mới cho Chú Tễu theo đúng thứ tự:",
+      "items": [
+        { "id": "phoi-kho", "label": "Phơi khô ba nắng" },
+        { "id": "lap-tay", "label": "Lắp cánh tay vào vai Chú Tễu" },
+        { "id": "deo-tay", "label": "Đẽo cánh tay từ khúc gỗ sung" },
+        { "id": "son-ta", "label": "Phủ ba lớp sơn ta" }
+      ],
+      "answer": { "order": ["deo-tay", "phoi-kho", "son-ta", "lap-tay"] },
+      "support": {
+        "guide": ["Chưa có cánh tay thì chưa phơi, chưa sơn được gì.", "Gỗ còn ướt mà sơn thì sơn bong ngay.", "Sơn khô bóng rồi mới lắp vào vai."],
+        "hint": "Đẽo, phơi, sơn, lắp.",
+        "answer": { "text": "Đẽo, phơi khô, sơn ta, lắp vào vai", "explanation": "Đẽo cánh tay trước, phơi cho gỗ khô, sơn ba lớp cho bóng và chống nước, xong xuôi mới lắp vào vai Chú Tễu." },
+        "en": {
+          "guide": ["Until the arm exists, there's nothing to dry or paint.", "Paint on damp wood peels straight off.", "Only fit it to the shoulder once the paint is dry and shiny."],
+          "hint": "Carve, dry, lacquer, fit.",
+          "answer": { "text": "Carve, dry, lacquer, fit to the shoulder", "explanation": "Carve the arm first, dry the wood in the sun, give it three coats of lacquer to shine and keep the water out, and only then fit it to Chú Tễu's shoulder." }
+        }
+      },
+      "feedback": {
+        "right": ["Cánh tay mới bóng loáng, ông giơ lên soi nắng mà cười hì hì.", "{name} làm rối đúng nghề như học trò lâu năm.", "Chú Tễu vẫy cánh tay mới, chào cả sân phơi!"],
+        "wrong": ["Sơn lên gỗ ướt là bong như vỏ hành đấy cháu.", "Chưa đẽo thì lấy gì mà phơi, mà sơn hả {name}?", "Lắp vội khi sơn chưa khô thì áo Chú Tễu lem nhem hết."],
+        "en": {
+          "right": ["The new arm gleams; Grandpa holds it up to the sun and giggles hee hee.", "{name} works like a puppet-maker with years of training.", "Chú Tễu waves his new arm and greets the whole drying yard!"],
+          "wrong": ["Lacquer on damp wood peels like an onion skin, little one.", "If it isn't carved yet, what are you drying and painting, {name}?", "Fit it before the paint dries and Chú Tễu's jacket gets smudged all over."]
+        }
+      },
+      "en": {
+        "title": "Make the new arm",
+        "goTo": "Go to the puppet drying yard, where Grandpa has laid out his tools",
+        "prompt": "Put the steps for making Chú Tễu's new arm in the right order:",
+        "items": ["Dry it in the sun for three days", "Fit the arm to Chú Tễu's shoulder", "Carve the arm from a piece of fig wood", "Apply three coats of lacquer"]
+      }
+    },
+    {
+      "id": "ai-son-tay",
+      "title": "Ai sơn cánh tay?",
+      "goTo": "Mang cánh tay đã phơi về xưởng thủ công",
+      "kind": "decision",
+      "target": "nghe-nhan-mua-roi",
+      "speaker": "Nghệ Nhân Múa Rối",
+      "prompt": "Ông ngập ngừng: «Bé Thủy xin được sơn cánh tay này, mà con bé run tay lắm. Lỡ lem thì sao? Cháu nghĩ thế nào?»",
+      "choices": [
+        { "id": "thuy-son", "text": "Để Bé Thủy sơn, ông cầm tay chỉ", "consequence": "Ông nắm tay Bé Thủy, từng nét chậm rãi. Có một vệt lem nhỏ ở khuỷu tay, ông bảo: «Để đó. Vệt ấy là chữ ký của học trò.»" },
+        { "id": "ong-son", "text": "Ông tự sơn cho thật đẹp", "consequence": "Ông sơn ba lớp bóng như mật. Bé Thủy đứng xem, mắt hơi buồn. Ông nhận ra, bèn dúi cho con bé cây cọ sơn nốt cái móng tay Chú Tễu." },
+        { "id": "moi-nguoi", "text": "Mỗi người sơn một lớp", "consequence": "Ông lớp đầu, {name} lớp giữa, Bé Thủy lớp cuối. «Ba người ba lớp, Tễu có ba người thương», ông cười hì hì." }
+      ],
+      "en": {
+        "title": "Who paints the arm?",
+        "goTo": "Bring the dried arm back to the craft workshop",
+        "prompt": "Grandpa hesitates: 'Bé Thủy has asked to paint this arm, but her hands shake so. What if she smudges it? What do you think?'",
+        "choices": [
+          { "text": "Let Bé Thủy paint it, with Grandpa guiding her hand", "consequence": "Grandpa holds Bé Thủy's hand, stroke by slow stroke. There's a tiny smudge at the elbow, and he says: 'Leave it. That's a pupil's signature.'" },
+          { "text": "Grandpa paints it himself, perfectly", "consequence": "He lays on three coats, glossy as honey. Bé Thủy watches, eyes a little sad. He notices, and hands her the brush to finish Chú Tễu's fingernails." },
+          { "text": "Everyone paints one coat", "consequence": "Grandpa the first coat, {name} the middle, Bé Thủy the last. 'Three people, three coats: Tễu has three people who love him,' he giggles." }
+        ]
+      }
+    },
+    {
+      "id": "canh-tay-moi",
+      "title": "Cánh tay mới của Chú Tễu",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Tễu đã có cánh tay mới, nhẹ tênh mà bóng loáng. Ông Nghệ Nhân thả Tễu xuống ao thử, Tễu vẫy tay chào cả làng, nổi bồng bềnh như chiếc lá sung.",
+      "en": { "title": "Chú Tễu's new arm", "text": "Chú Tễu has his new arm, feather-light and gleaming. The puppet master tries him in the pond, and Tễu waves to the whole village, bobbing like a fig leaf." }
+    },
+    {
+      "id": "le-ra-mat",
+      "title": "Lễ ra mắt",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Lúc dọn đồ, ông bỗng lặng đi: «Trưởng làng dặn đêm mai ông phải ra trước khán giả cúi chào… sáu mươi năm nay ông toàn đứng sau mành.» {name} nhớ ghé đêm diễn nhé.",
+      "en": { "title": "The curtain call", "text": "Tidying up, Grandpa suddenly goes quiet: 'The village head says tomorrow night I must step out in front of the audience and bow… for sixty years I've always stood behind the screen.' Be there on show night, {name}." }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": { "doc-hieu": 1, "ke-chuyen": 1 }
+  },
+  "en": {
+    "title": "Nghệ Nhân Múa Rối's story, chapter 2: Wood as light as cork",
+    "summary": "Chú Tễu needs a new arm of really light wood. {name} goes to the little market to hear Bác Thợ Gỗ Sung talk about wood, tests which pieces float at the pond, puts the steps for making a puppet arm in order and helps the puppet master decide who will paint it."
+  }
+}

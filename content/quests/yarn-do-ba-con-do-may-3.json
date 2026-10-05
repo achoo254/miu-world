@@ -1,0 +1,224 @@
+{
+  "id": "yarn-do-ba-con-do-may-3",
+  "region": "lang-ven-song",
+  "chapter": 2,
+  "title": "Chuyện của Chú Lái Đò Ba, chương 3: Cây cầu tre mới",
+  "status": "active",
+  "category": "story",
+  "summary": "Làng sắp bắc cầu tre qua sông, còn Chú Ba thì lặng lẽ lo bến đò sẽ vắng. {name} gặp Anh Thợ Cầu Tre, tính số tre còn thiếu, đi gom tre quanh làng, rồi cùng Chú Ba nghĩ xem có cầu rồi làng vẫn cần đò vào những việc gì.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Chú Lái Đò Ba, Anh Thợ Cầu Tre",
+    "where": "Làng ven sông: bãi cỏ ven sông, đầu cầu tre mới, lũy tre đầu bến, bờ ao làng, sân phơi rơm",
+    "goal": "Giúp làng dựng cầu mà Chú Ba không thấy mình bị bỏ quên",
+    "play": "Giải bài toán số cây tre, đi gom ba bó tre, chọn những việc chỉ đò làm được, quyết định cách Chú Ba góp tay",
+    "learn": "Bài toán có lời văn với phép cộng, phép trừ; so sánh, phân loại",
+    "reward": "70 XP, 18 Xu, Skill XP Bài toán có lời văn và Logic",
+    "next": "Cầu xong đúng đêm rằm, đêm thả hoa đăng trên sông"
+  },
+  "phases": {
+    "hook": "chu-ba-lang-im",
+    "explore": "gap-tho-cau",
+    "learn": "dem-cay-tre",
+    "challenge": "gom-tre",
+    "decision": "chu-ba-gop-tay",
+    "finale": "chu-ba-gop-tay",
+    "reward": "nhip-cau-dau-tien",
+    "next": "dem-ram-sap-toi"
+  },
+  "places": {
+    "chu-lai-do-ba": "Bãi cỏ ven sông",
+    "st-do-ba-con-do-may-tho-cau": "Đầu cầu tre mới",
+    "gom-tre": "Lũy tre đầu bến",
+    "st-do-ba-con-do-may-tre-luy": "Lũy tre đầu bến",
+    "st-do-ba-con-do-may-tre-ao": "Bờ ao làng",
+    "st-do-ba-con-do-may-tre-san": "Sân phơi rơm"
+  },
+  "steps": [
+    {
+      "id": "chu-ba-lang-im",
+      "title": "Chú Ba lặng im",
+      "goTo": "Ra bãi cỏ ven sông, Chú Lái Đò Ba ngồi một mình nhìn sang bờ bên kia",
+      "kind": "dialogue",
+      "target": "chu-lai-do-ba",
+      "lines": [
+        { "speaker": "Chú Lái Đò Ba", "text": "Cháu tới à… Cầu tre mà xong thì người ta đi bộ sang sông lúc nào cũng được, chẳng cần đợi đò nữa." },
+        { "speaker": "Chú Lái Đò Ba", "text": "Chú mừng cho làng, thật đấy. Có điều chú cứ nghĩ tới một sáng ra bến mà chẳng còn ai gọi «đò ơi»…" },
+        { "speaker": "Chú Lái Đò Ba", "text": "Anh Thợ Cầu Tre đang thiếu người phụ. Cháu ra đầu cầu xem anh ấy cần gì, chú… chú ngồi đây thêm chút." }
+      ],
+      "choices": [
+        { "text": "Cháu đi, nhưng cháu quay lại ngay nhé.", "reply": "Ừ. Đi đi cháu, chú không sao đâu. Sông vẫn chảy mà." },
+        { "text": "Có cầu thì đò vẫn có việc chứ chú.", "reply": "Cháu nói vậy cho chú vui thôi… Nhưng thôi, cứ đi xem đã." }
+      ],
+      "en": {
+        "title": "Uncle Ba goes quiet",
+        "goTo": "Go to the grassy riverbank, where Chú Lái Đò Ba sits alone gazing at the far bank",
+        "lines": [
+          "Oh, you're here… Once the bamboo bridge is done, people can walk across whenever they like. No more waiting for the ferry.",
+          "I'm happy for the village, truly. It's just that I keep picturing a morning when I come down and nobody calls 'ferry!'…",
+          "The bridge builder needs a helper. Go to the bridgehead and see what he needs. I'll… I'll sit here a little longer."
+        ],
+        "choices": [
+          { "text": "I'll go, but I'll be right back.", "reply": "All right. Off you go, I'm fine. The river keeps flowing." },
+          { "text": "Even with a bridge, the boat will have work.", "reply": "You're just saying that to cheer me up… But go on, take a look first." }
+        ]
+      }
+    },
+    {
+      "id": "gap-tho-cau",
+      "title": "Anh Thợ Cầu Tre",
+      "goTo": "Tới đầu cầu tre mới gặp Anh Thợ Cầu Tre",
+      "kind": "dialogue",
+      "target": "st-do-ba-con-do-may-tho-cau",
+      "lines": [
+        { "speaker": "Anh Thợ Cầu Tre", "text": "Chào em! Cầu này ba nhịp, nhịp nào cũng cần đúng tám cây tre già làm khung. Bà con mới chở tới được mười cây." },
+        { "speaker": "Anh Thợ Cầu Tre", "text": "Mà nói thật, không có Chú Ba chở tre sang bờ bên kia thì cầu này chẳng bao giờ nối được hai đầu đâu." }
+      ],
+      "choices": [
+        { "text": "Anh nói điều đó với Chú Ba chưa?", "reply": "Chưa… Chú ấy ít nói, anh cũng ngại. Em giúp anh tính số tre trước đã nhé." }
+      ],
+      "en": {
+        "title": "The bamboo bridge builder",
+        "goTo": "Go to the new bamboo bridgehead to meet Anh Thợ Cầu Tre",
+        "lines": [
+          "Hello! This bridge has three spans, and each span needs exactly eight old bamboo poles for its frame. Folks have only brought ten so far.",
+          "And honestly, without Uncle Ba ferrying poles to the other side, this bridge could never join its two ends."
+        ],
+        "choices": [
+          { "text": "Have you told Uncle Ba that?", "reply": "Not yet… He's a quiet man and I'm a bit shy. First, help me work out how many poles we need." }
+        ]
+      }
+    },
+    {
+      "id": "dem-cay-tre",
+      "title": "Còn thiếu bao nhiêu cây tre?",
+      "kind": "riddle",
+      "target": "st-do-ba-con-do-may-tho-cau",
+      "skill": "bai-toan-loi-van",
+      "question": "Cầu có 3 nhịp, mỗi nhịp cần 8 cây tre. Bà con đã chở tới 10 cây. Còn thiếu bao nhiêu cây tre nữa?",
+      "answer": { "value": 14 },
+      "support": {
+        "guide": ["Tìm xem cả cây cầu cần bao nhiêu cây tre.", "Ba nhịp, mỗi nhịp 8 cây: 8 + 8 + 8.", "Lấy số cây cần có trừ đi số cây đã chở tới."],
+        "hint": "8 + 8 + 8 = 24. Còn 24 trừ 10 thì sao?",
+        "answer": { "text": "14 cây", "explanation": "Cả cầu cần 8 + 8 + 8 = 24 cây. Đã có 10 cây, nên còn thiếu 24 − 10 = 14 cây." },
+        "en": {
+          "guide": ["Work out how many poles the whole bridge needs.", "Three spans with 8 poles each: 8 + 8 + 8.", "Take away the poles already delivered."],
+          "hint": "8 + 8 + 8 = 24. And 24 take away 10?",
+          "answer": { "text": "14 poles", "explanation": "The whole bridge needs 8 + 8 + 8 = 24 poles. 10 are here already, so 24 − 10 = 14 are still missing." }
+        }
+      },
+      "feedback": {
+        "right": ["Anh Thợ Cầu Tre khắc ngay số 14 lên cột: «Chuẩn từng cây!»", "{name} tính gọn như bó tre vừa buộc.", "Mười bốn cây nữa thôi, cầu sẽ nối được hai bờ."],
+        "wrong": ["Cầu có những ba nhịp đấy, đừng quên nhịp nào {name}.", "Khoan, mình đã có sẵn mười cây rồi mà.", "Thử cộng tám ba lần trước, rồi mới bớt đi nhé."],
+        "en": {
+          "right": ["Anh Thợ Cầu Tre carves 14 on a post right away: 'Spot on, every pole!'", "{name}'s maths is as neat as a freshly tied bundle of bamboo.", "Just fourteen more, and the bridge will join both banks."],
+          "wrong": ["The bridge has three spans, {name}; don't leave one out.", "Hold on, we already have ten poles.", "Try adding eight three times first, then take some away."]
+        }
+      },
+      "en": {
+        "title": "How many poles are missing?",
+        "question": "The bridge has 3 spans, and each span needs 8 bamboo poles. Folks have brought 10 poles. How many more poles are needed?"
+      }
+    },
+    {
+      "id": "gom-tre",
+      "title": "Gom tre quanh làng",
+      "goTo": "Đi gom ba bó tre quanh làng, bắt đầu từ lũy tre đầu bến",
+      "kind": "search",
+      "targets": ["st-do-ba-con-do-may-tre-luy", "st-do-ba-con-do-may-tre-ao", "st-do-ba-con-do-may-tre-san"],
+      "en": {
+        "title": "Collect bamboo round the village",
+        "goTo": "Collect three bundles of bamboo round the village, starting at the bamboo hedge by the landing"
+      }
+    },
+    {
+      "id": "viec-cua-do",
+      "title": "Việc chỉ đò làm được",
+      "goTo": "Mang tre về bãi cỏ ven sông kể cho Chú Ba nghe",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "chu-lai-do-ba",
+      "skill": "logic",
+      "prompt": "Một cây cầu tre nhỏ chỉ cho người đi bộ. Chọn mọi việc mà có cầu rồi, làng vẫn cần tới Đò Mây:",
+      "choices": [
+        { "id": "a", "text": "Chở mười bao thóc nặng sang chợ" },
+        { "id": "b", "text": "Đi bộ sang thăm bà ngoại bên kia sông" },
+        { "id": "c", "text": "Đưa hoa đăng ra tận giữa dòng" },
+        { "id": "d", "text": "Xuôi dòng ngắm cảnh hai bên bờ" },
+        { "id": "e", "text": "Dắt tay nhau qua sông đi học" }
+      ],
+      "answer": { "choices": ["a", "c", "d"] },
+      "support": {
+        "guide": ["Cầu tre nhỏ chỉ cho người đi bộ qua sông.", "Việc gì cần chở nặng, ra giữa sông hay đi dọc sông thì cầu không làm được.", "Việc đi bộ từ bờ này sang bờ kia thì cầu làm tốt."],
+        "hint": "Có ba việc vẫn cần đò; hai việc đi bộ qua sông thì cầu lo được.",
+        "answer": { "text": "Chở thóc, đưa hoa đăng ra giữa dòng, xuôi dòng ngắm cảnh", "explanation": "Cầu tre chỉ giúp người đi bộ sang sông. Chở hàng nặng, ra giữa dòng hay đi dọc theo sông thì vẫn phải nhờ đò." },
+        "en": {
+          "guide": ["A small bamboo bridge is only for people on foot.", "Anything heavy, out in the middle of the river, or along the river is something a bridge can't do.", "Walking from one bank to the other is what a bridge does well."],
+          "hint": "Three jobs still need the boat; the two walking jobs the bridge can handle.",
+          "answer": { "text": "Carrying rice, taking lantern-flowers to midstream, a trip downriver", "explanation": "A bamboo bridge only helps people walk across. Heavy loads, going out to midstream or travelling along the river still need the ferry." }
+        }
+      },
+      "feedback": {
+        "right": ["Chú Ba nhìn danh sách hồi lâu, rồi khẽ mỉm cười: «Đò vẫn còn việc thật.»", "{name} nhìn ra điều Chú Ba nghĩ mãi không thấy.", "Đúng rồi! Cầu lo việc của cầu, đò lo việc của đò."],
+        "wrong": ["Đi bộ sang sông thì cầu làm được rồi, bỏ việc ấy ra nhé.", "Còn một việc ở giữa dòng sông mà cầu không với tới đấy {name}.", "Mười bao thóc nặng thế, cầu tre nhỏ chịu sao nổi?"],
+        "en": {
+          "right": ["Uncle Ba studies the list a long while, then smiles softly: 'The boat still has work after all.'", "{name} spotted what Uncle Ba couldn't see for days.", "That's it! The bridge does bridge jobs, the boat does boat jobs."],
+          "wrong": ["Walking across is something the bridge can do. Leave that one out.", "There's still a job out in midstream that the bridge can't reach, {name}.", "Ten heavy sacks of rice? A little bamboo bridge couldn't take that."]
+        }
+      },
+      "en": {
+        "title": "Jobs only a boat can do",
+        "goTo": "Bring the bamboo back to the grassy riverbank and tell Uncle Ba",
+        "prompt": "A small bamboo bridge is only for people on foot. Choose every job the village will still need the Cloud Ferry for, even with the bridge:",
+        "choices": ["Carry ten heavy sacks of rice to market", "Walk across to visit Grandma on the other bank", "Take lantern-flowers out to midstream", "Drift downriver to enjoy the scenery", "Walk across together to school"]
+      }
+    },
+    {
+      "id": "chu-ba-gop-tay",
+      "title": "Chú Ba góp tay",
+      "kind": "decision",
+      "target": "chu-lai-do-ba",
+      "speaker": "Chú Lái Đò Ba",
+      "prompt": "Chú Ba đứng dậy, phủi quần: «Anh Thợ Cầu cần người chở tre sang bờ bên kia. Chú nên làm gì đây, {name}?»",
+      "choices": [
+        { "id": "cho-tre", "text": "Chở tre sang sông giúp dựng cầu", "consequence": "Chú Ba gõ ba tiếng vào mạn, lần này thật mạnh. Đò Mây chở tre sang sông, Anh Thợ Cầu reo lên từ bờ bên kia." },
+        { "id": "day-be-ti", "text": "Dạy Bé Tí chèo chở tre cùng", "consequence": "Bé Tí chèo trái, Chú Ba chèo phải, Đò Mây lướt thẳng tắp. «Cầu dựng xong thì làng có thêm một người lái đò», chú cười." },
+        { "id": "noi-chuyen", "text": "Nói chuyện với Anh Thợ Cầu trước", "consequence": "Hai người đứng ở đầu cầu nói chuyện thật lâu. Lúc về, Chú Ba bảo: «Nó bảo không có đò thì cầu không nối được hai bờ. Thằng bé này được.»" }
+      ],
+      "en": {
+        "title": "Uncle Ba lends a hand",
+        "prompt": "Uncle Ba stands up and brushes off his trousers: 'The bridge builder needs someone to ferry poles across. What should I do, {name}?'",
+        "choices": [
+          { "text": "Ferry the bamboo across to help build the bridge", "consequence": "Uncle Ba knocks three times on the boat, hard this time. The Cloud Ferry carries the bamboo across, and the builder cheers from the far bank." },
+          { "text": "Teach Bé Tí to row the bamboo with him", "consequence": "Bé Tí rows left, Uncle Ba rows right, and the Cloud Ferry glides dead straight. 'When the bridge is done, the village will have one more ferryman,' he laughs." },
+          { "text": "Talk to the bridge builder first", "consequence": "The two of them stand talking at the bridgehead for a long time. On the way back Uncle Ba says: 'He told me that without the boat, the bridge could never join both banks. Good lad, that one.'" }
+        ]
+      }
+    },
+    {
+      "id": "nhip-cau-dau-tien",
+      "title": "Nhịp cầu đầu tiên",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chiều ấy, nhịp cầu đầu tiên vươn ra giữa sông, và bên dưới nó, Đò Mây vẫn xuôi ngược chở tre. Lần đầu sau nhiều ngày, Chú Ba lại huýt sáo.",
+      "en": { "title": "The first span", "text": "That afternoon the first span reaches out over the river, and beneath it the Cloud Ferry keeps going back and forth with bamboo. For the first time in days, Uncle Ba whistles again." }
+    },
+    {
+      "id": "dem-ram-sap-toi",
+      "title": "Đêm rằm sắp tới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cầu sẽ xong đúng đêm rằm, đêm cả làng thả hoa đăng trên sông. Chú Ba nháy mắt với {name}: «Hoa đăng mà muốn ra tận giữa dòng thì phải có đò. Đêm ấy cháu chèo cùng chú nhé.»",
+      "en": { "title": "Full moon is coming", "text": "The bridge will be finished on the night of the full moon, when the whole village floats lantern-flowers on the river. Uncle Ba winks at {name}: 'If lantern-flowers want to reach midstream, they need a boat. Row with me that night.'" }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": { "bai-toan-loi-van": 1, "logic": 1 }
+  },
+  "en": {
+    "title": "Chú Lái Đò Ba's story, chapter 3: The new bamboo bridge",
+    "summary": "The village is about to build a bamboo bridge, and Uncle Ba quietly worries his landing will fall silent. {name} meets Anh Thợ Cầu Tre, works out how many poles are missing, gathers bamboo round the village, then helps Uncle Ba see which jobs the village will still need his boat for."
+  }
+}

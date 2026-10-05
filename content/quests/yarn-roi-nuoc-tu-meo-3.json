@@ -1,0 +1,198 @@
+{
+  "id": "yarn-roi-nuoc-tu-meo-3",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Chuyện của Nghệ Nhân Múa Rối, chương 3: Lời chào sau tấm mành",
+  "status": "active",
+  "category": "story",
+  "summary": "Đêm diễn rối nước đã tới, và theo lệ ông Nghệ Nhân phải ra cúi chào khán giả. {name} động viên Bé Thủy đang giấu con rối méo đầu tay, xếp thứ tự các tiết mục, cùng ông điều khiển Chú Tễu sau mành, rồi tìm cách giúp ông bước ra chào.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Nghệ Nhân Múa Rối, Bé Thủy Học Rối",
+    "where": "Làng ven sông: xưởng thủ công, bảng tin làng, cổng thủy đình, sau mành tre",
+    "goal": "Diễn trọn đêm rối nước và giúp ông Nghệ Nhân vượt qua nỗi sợ đứng trước khán giả",
+    "play": "Động viên Bé Thủy, giải câu đố thứ tự tiết mục, chơi múa rối nước, chọn cách giúp ông ra chào",
+    "learn": "Suy luận từ nhiều điều kiện để xếp thứ tự",
+    "reward": "75 XP, 20 Xu, Skill XP Logic, một chiếc chuông gió trúc",
+    "next": "Xưởng mở lớp đẽo rối cho mọi đứa trẻ trong làng"
+  },
+  "phases": {
+    "hook": "truoc-gio-dien",
+    "explore": "be-thuy-giau-roi",
+    "learn": "thu-tu-tiet-muc",
+    "challenge": "mua-roi",
+    "decision": "buoc-ra-chao",
+    "finale": "buoc-ra-chao",
+    "reward": "tieng-vo-tay",
+    "next": "lop-deo-roi"
+  },
+  "places": {
+    "nghe-nhan-mua-roi": "Xưởng thủ công",
+    "st-roi-nuoc-tu-meo-be-thuy": "Bảng tin làng",
+    "st-roi-nuoc-tu-meo-to-chuong-trinh": "Cổng thủy đình",
+    "st-roi-nuoc-tu-meo-manh-tre": "Sau mành tre"
+  },
+  "steps": [
+    {
+      "id": "truoc-gio-dien",
+      "title": "Trước giờ diễn",
+      "goTo": "Tới xưởng thủ công, Nghệ Nhân Múa Rối đang đi tới đi lui",
+      "kind": "dialogue",
+      "target": "nghe-nhan-mua-roi",
+      "lines": [
+        { "speaker": "Nghệ Nhân Múa Rối", "text": "Tễu tôi xin thưa… thưa… thôi chết, ông quên cả câu quen thuộc nhất rồi. Đêm nay phải ra cúi chào, đầu gối ông run như cầy sấy." },
+        { "speaker": "Nghệ Nhân Múa Rối", "text": "Sau mành thì ông là vua, ra trước mành thì ông là con cò đứng một chân. Thôi, cứ diễn đã. Cháu ra xem Bé Thủy đâu, con bé biến đâu mất từ chiều." }
+      ],
+      "choices": [
+        { "text": "Ông diễn giỏi thế, ai cũng quý ông mà!", "reply": "Quý con rối thôi cháu ạ… Hì, nói thế chứ cảm ơn cháu, nghe cũng ấm bụng." },
+        { "text": "Cháu đi tìm Bé Thủy ngay ạ.", "reply": "Ừ. Con bé mà có chuyện buồn là hay ra đứng ở bảng tin làng." }
+      ],
+      "en": {
+        "title": "Before the show",
+        "goTo": "Go to the craft workshop, where Nghệ Nhân Múa Rối is pacing back and forth",
+        "lines": [
+          "Tễu here begs to… begs to… oh dear, I've even forgotten my own catchphrase. Tonight I have to step out and bow, and my knees are trembling like jelly.",
+          "Behind the screen I'm a king; in front of it I'm a heron standing on one leg. Well, let's do the show first. Go and see where Bé Thủy is; she's vanished since this afternoon."
+        ],
+        "choices": [
+          { "text": "You perform so well, everyone loves you!", "reply": "They love the puppets, little one… Hee, but thank you, that warms my tummy." },
+          { "text": "I'll go and find Bé Thủy right away.", "reply": "Good. When she's upset she usually stands by the village notice board." }
+        ]
+      }
+    },
+    {
+      "id": "be-thuy-giau-roi",
+      "title": "Con rối Bé Thủy giấu",
+      "goTo": "Ra bảng tin làng tìm Bé Thủy Học Rối",
+      "kind": "dialogue",
+      "target": "st-roi-nuoc-tu-meo-be-thuy",
+      "lines": [
+        { "speaker": "Bé Thủy Học Rối", "text": "Tớ… tớ tự đẽo một con rối để tặng ông. Nhưng bạn nhìn này: mũi nó lệch hẳn sang một bên, mắt to mắt nhỏ. Xấu quá, tớ không dám đưa." },
+        { "speaker": "Bé Thủy Học Rối", "text": "Mà tờ chương trình đêm nay bị nước làm nhòe, chẳng ai biết tiết mục nào trước tiết mục nào. Tớ chỉ nhớ vài lời ông dặn thôi." }
+      ],
+      "choices": [
+        { "text": "Lệch một tí thì con rối mới có tính cách!", "reply": "Thật hả bạn? Vậy… tớ cứ mang theo. Còn tờ chương trình, bạn ra cổng thủy đình giúp tớ nhé." },
+        { "text": "Mình cứ đi xếp tiết mục trước đã.", "reply": "Ừ! Tờ chương trình dán ở cổng thủy đình đấy, tớ đọc lời dặn của ông cho bạn nghe." }
+      ],
+      "en": {
+        "title": "The puppet Bé Thủy is hiding",
+        "goTo": "Go to the village notice board to find Bé Thủy Học Rối",
+        "lines": [
+          "I… I carved a puppet of my own to give Grandpa. But look: its nose is way off to one side, one eye big and one small. It's so ugly I don't dare give it to him.",
+          "And tonight's programme got smudged by water, so nobody knows which act comes first. I only remember a few things Grandpa told me."
+        ],
+        "choices": [
+          { "text": "A bit crooked gives a puppet character!", "reply": "Really? Then… I'll bring it along. As for the programme, help me at the water-stage gate." },
+          { "text": "Let's sort out the acts first.", "reply": "Yes! The programme is pinned at the water-stage gate. I'll tell you what Grandpa said." }
+        ]
+      }
+    },
+    {
+      "id": "thu-tu-tiet-muc",
+      "title": "Thứ tự tiết mục",
+      "goTo": "Ra cổng thủy đình, nơi dán tờ chương trình bị nhòe",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-roi-nuoc-tu-meo-to-chuong-trinh",
+      "skill": "logic",
+      "prompt": "Đêm nay có bốn tiết mục: Chú Tễu ra chào, Câu ếch, Đua thuyền, Múa rồng. Ông dặn: Chú Tễu luôn mở màn; Múa rồng diễn cuối cùng; Câu ếch diễn trước Đua thuyền. Tiết mục thứ ba là gì?",
+      "choices": [
+        { "id": "a", "text": "Câu ếch" },
+        { "id": "b", "text": "Đua thuyền" },
+        { "id": "c", "text": "Múa rồng" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Đặt Chú Tễu vào tiết mục thứ nhất.", "Đặt Múa rồng vào tiết mục thứ tư.", "Còn chỗ thứ hai và thứ ba cho Câu ếch và Đua thuyền: bạn nào diễn trước?"],
+        "hint": "Câu ếch phải đứng trước Đua thuyền.",
+        "answer": { "text": "Đua thuyền", "explanation": "Chú Tễu thứ nhất, Múa rồng thứ tư. Câu ếch diễn trước Đua thuyền nên Câu ếch thứ hai, Đua thuyền thứ ba." },
+        "en": {
+          "guide": ["Put Chú Tễu in first place.", "Put the Dragon Dance in fourth place.", "Second and third are left for Frog Fishing and the Boat Race: which goes first?"],
+          "hint": "Frog Fishing has to come before the Boat Race.",
+          "answer": { "text": "The Boat Race", "explanation": "Chú Tễu is first and the Dragon Dance fourth. Frog Fishing comes before the Boat Race, so Frog Fishing is second and the Boat Race third." }
+        }
+      },
+      "feedback": {
+        "right": ["Bé Thủy chép lại tờ chương trình bằng nét chữ thật to.", "{name} xếp tiết mục khéo như trưởng phường rối.", "Đúng rồi! Thuyền đua xong thì rồng mới ra phun nước kết màn."],
+        "wrong": ["Múa rồng là tiết mục kết, nó phải đứng cuối cơ.", "Câu ếch phải diễn trước Đua thuyền, nhớ lời ông dặn nhé {name}.", "Đặt Chú Tễu với Múa rồng vào chỗ trước, rồi hẵng xếp phần còn lại."],
+        "en": {
+          "right": ["Bé Thủy copies out the programme in great big letters.", "{name} orders the acts like the head of a puppet troupe.", "That's it! After the boat race, the dragon comes out spouting water to close the show."],
+          "wrong": ["The Dragon Dance is the finale; it has to go last.", "Frog Fishing comes before the Boat Race, {name}; remember what Grandpa said.", "Place Chú Tễu and the Dragon Dance first, then sort out the rest."]
+        }
+      },
+      "en": {
+        "title": "The order of the acts",
+        "goTo": "Go to the water-stage gate, where the smudged programme is pinned",
+        "prompt": "Tonight there are four acts: Chú Tễu's Welcome, Frog Fishing, the Boat Race and the Dragon Dance. Grandpa said: Chú Tễu always opens; the Dragon Dance comes last; Frog Fishing comes before the Boat Race. What is the third act?",
+        "choices": ["Frog Fishing", "The Boat Race", "The Dragon Dance"]
+      }
+    },
+    {
+      "id": "mua-roi",
+      "title": "Múa rối sau mành",
+      "goTo": "Vòng ra sau mành tre, nước ngập tới đầu gối, ông đang chờ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-roi-nuoc-tu-meo-manh-tre",
+      "prompt": "Trống chèo nổi lên! Cùng ông giật dây cho Chú Tễu múa khớp theo bóng tròn trên mặt nước, đủ 30 nhịp nhé.",
+      "game": "water-puppet",
+      "goal": 30,
+      "en": {
+        "title": "Puppets behind the screen",
+        "goTo": "Go round behind the bamboo screen, knee-deep in water, where Grandpa is waiting",
+        "prompt": "The opera drums start up! Pull the strings with Grandpa so Chú Tễu dances in time with the round shadow on the water, 30 beats in all."
+      }
+    },
+    {
+      "id": "buoc-ra-chao",
+      "title": "Bước ra chào",
+      "goTo": "Diễn xong, ông Nghệ Nhân lẻn về xưởng thủ công, đi tìm ông",
+      "kind": "decision",
+      "target": "nghe-nhan-mua-roi",
+      "speaker": "Nghệ Nhân Múa Rối",
+      "prompt": "Khán giả đang gọi «Nghệ nhân đâu, ra chào đi!», còn ông thì trốn trong xưởng, ôm Chú Tễu. «Cháu ơi, ông ra bằng cách nào đây?»",
+      "choices": [
+        { "id": "teu-meo", "text": "Mang theo con rối đầu tay của ông", "consequence": "Ông lặng đi, rồi mở rương lấy ra một con rối mũi lệch: «Tễu Méo, con đầu tiên ông đẽo.» Ông ôm nó bước ra, và cả làng vỗ tay rần rần." },
+        { "id": "roi-be-thuy", "text": "Để con rối méo của Bé Thủy chào trước", "consequence": "Con rối mũi lệch của Bé Thủy cúi chào trước, cả làng cười ồ thích thú. Ông đứng sau nhìn, rồi chẳng biết từ lúc nào đã bước ra đứng cạnh." },
+        { "id": "cung-teu", "text": "Cầm Chú Tễu ra chào cùng", "consequence": "Ông giơ Chú Tễu lên trước mặt, Tễu cúi chào, ông cúi theo. Hạ Tễu xuống, ông thấy cả làng đang nhìn ông, chứ không phải con rối, và ông mỉm cười." }
+      ],
+      "en": {
+        "title": "Stepping out to bow",
+        "goTo": "After the show, the puppet master slipped back to the craft workshop. Go and find him",
+        "prompt": "The audience is calling 'Where's the master? Come and take a bow!', but Grandpa is hiding in the workshop, hugging Chú Tễu. 'Little one, how do I go out there?'",
+        "choices": [
+          { "text": "Take along the very first puppet he carved", "consequence": "He goes quiet, then opens his chest and lifts out a puppet with a crooked nose: 'Wonky Tễu, the first one I ever carved.' He carries it out, and the whole village bursts into applause." },
+          { "text": "Let Bé Thủy's crooked puppet bow first", "consequence": "Bé Thủy's crooked-nosed puppet bows first, and the village laughs with delight. Grandpa watches from behind, and before he knows it he's stepped out to stand beside it." },
+          { "text": "Go out and bow together with Chú Tễu", "consequence": "He holds Chú Tễu up in front of his face; Tễu bows, and he bows too. When he lowers Tễu, he sees the whole village looking at him, not the puppet, and he smiles." }
+        ]
+      }
+    },
+    {
+      "id": "tieng-vo-tay",
+      "title": "Tiếng vỗ tay",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Lần đầu tiên sau sáu mươi năm, ông Nghệ Nhân đứng trước mành tre mà nghe tiếng vỗ tay. Đầu gối ông vẫn run, nhưng lần này là run vì vui.",
+      "en": { "title": "The applause", "text": "For the first time in sixty years, the puppet master stands in front of the bamboo screen and hears the applause. His knees still tremble, but this time it's from joy." }
+    },
+    {
+      "id": "lop-deo-roi",
+      "title": "Lớp đẽo rối",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hôm sau, trước xưởng thủ công treo một tấm biển mới: «Lớp đẽo rối, mũi lệch cũng nhận». Ông bảo mùa diễn tới, đứa trẻ nào trong làng cũng sẽ có một con rối của mình, và một khúc gỗ sung đẹp nhất đang chờ {name}.",
+      "en": { "title": "The carving class", "text": "Next day a new sign hangs outside the craft workshop: 'Puppet carving class. Crooked noses welcome.' Grandpa says that by next season every child in the village will have a puppet of their own, and his finest piece of fig wood is waiting for {name}." }
+    }
+  ],
+  "reward": {
+    "xp": 75,
+    "coin": 20,
+    "skillXp": { "logic": 1 },
+    "items": { "chuong-gio-truc": 1 }
+  },
+  "en": {
+    "title": "Nghệ Nhân Múa Rối's story, chapter 3: A bow from behind the screen",
+    "summary": "Water-puppet night is here, and tradition says the master must step out and bow. {name} cheers up Bé Thủy, who is hiding her first crooked puppet, works out the order of the acts, works Chú Tễu with Grandpa behind the screen, then finds a way to help him step out and take his bow."
+  }
+}

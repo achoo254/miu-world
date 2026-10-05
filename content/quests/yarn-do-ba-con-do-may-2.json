@@ -1,0 +1,236 @@
+{
+  "id": "yarn-do-ba-con-do-may-2",
+  "region": "lang-ven-song",
+  "chapter": 2,
+  "title": "Chuyện của Chú Lái Đò Ba, chương 2: Dê, chó và bó rau",
+  "status": "active",
+  "category": "story",
+  "summary": "Bé Tí Học Chèo nhờ Chú Ba chở dê con, chó Vện và bó rau muống sang sông, mà đò chỉ chở được một thứ mỗi chuyến. {name} nghĩ ra chuyến đầu tiên, cùng Chú Ba chèo đủ các chuyến, đọc bảng giờ đò bên kia sông rồi giúp chú trả lời một lời xin rất đặc biệt.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Chú Lái Đò Ba, Bé Tí Học Chèo",
+    "where": "Làng ven sông: bãi cỏ ven sông, gốc gạo bến đò, mép nước bến đò, bến bờ bên kia",
+    "goal": "Chở dê, chó và bó rau sang sông mà không ai bị ăn, không ai bị đuổi",
+    "play": "Giải câu đố qua sông, chơi trò chở đồ qua sông, đọc bảng giờ đò, quyết định có dạy Bé Tí chèo đò không",
+    "learn": "Suy luận nhiều bước, đọc bảng và cộng các số nhỏ",
+    "reward": "65 XP, 16 Xu, Skill XP Logic và Đọc hiểu",
+    "next": "Làng bàn chuyện bắc một cây cầu tre qua sông"
+  },
+  "phases": {
+    "hook": "chuyen-do-kho",
+    "explore": "be-ti-nho-cho",
+    "learn": "chuyen-dau-tien",
+    "challenge": "cheo-du-chuyen",
+    "decision": "be-ti-xin-hoc",
+    "finale": "be-ti-xin-hoc",
+    "reward": "sang-song-tron-ven",
+    "next": "tin-cay-cau"
+  },
+  "places": {
+    "chu-lai-do-ba": "Bãi cỏ ven sông",
+    "st-do-ba-con-do-may-be-ti": "Gốc gạo bến đò",
+    "st-do-ba-con-do-may-do-may": "Mép nước bến đò",
+    "st-do-ba-con-do-may-bang-gio": "Bến bờ bên kia"
+  },
+  "steps": [
+    {
+      "id": "chuyen-do-kho",
+      "title": "Chuyến đò khó",
+      "goTo": "Ra bãi cỏ ven sông, Chú Lái Đò Ba đang gãi đầu bên mái chèo",
+      "kind": "dialogue",
+      "target": "chu-lai-do-ba",
+      "lines": [
+        { "speaker": "Chú Lái Đò Ba", "text": "Này cháu, ba mươi năm lái đò chú chở đủ thứ: lợn, gà, cả một cái tủ thờ. Vậy mà chuyến hôm nay làm chú bí." },
+        { "speaker": "Chú Lái Đò Ba", "text": "Đò Mây nhỏ, mỗi chuyến chỉ chở chú với một vị khách. Bé Tí đang chờ ở gốc gạo, cháu ra nghe nó kể ba vị khách khó tính thế nào nhé." }
+      ],
+      "choices": [
+        { "text": "Câu đố hả chú? Cháu thích lắm!", "reply": "Thế thì tốt. Nghĩ cho kỹ nhé, sai một chuyến là có đứa bị ăn mất bữa trưa đấy." },
+        { "text": "Chở ba chuyến là xong mà chú?", "reply": "Chú cũng nghĩ thế, cho tới lúc Bé Tí kể chuyện con dê với bó rau." }
+      ],
+      "en": {
+        "title": "A tricky crossing",
+        "goTo": "Go to the grassy riverbank, where Chú Lái Đò Ba is scratching his head beside his oar",
+        "lines": [
+          "Now then, in thirty years I've ferried everything: pigs, chickens, even a whole family altar. But today's crossing has me stumped.",
+          "The Cloud Ferry is small; each trip takes just me and one passenger. Bé Tí is waiting by the silk-cotton tree; go and hear how fussy his three passengers are."
+        ],
+        "choices": [
+          { "text": "A puzzle? I love puzzles!", "reply": "Good. Think it through, mind; one wrong trip and somebody's lunch gets eaten." },
+          { "text": "Can't you just make three trips?", "reply": "That's what I thought, until Bé Tí told me about the goat and the greens." }
+        ]
+      }
+    },
+    {
+      "id": "be-ti-nho-cho",
+      "title": "Ba vị khách của Bé Tí",
+      "goTo": "Tới gốc gạo bến đò gặp Bé Tí Học Chèo",
+      "kind": "dialogue",
+      "target": "st-do-ba-con-do-may-be-ti",
+      "lines": [
+        { "speaker": "Bé Tí Học Chèo", "text": "Chào bạn! Mẹ tớ dặn mang dê con, chó Vện với bó rau muống sang nhà bà ngoại bên kia sông." },
+        { "speaker": "Bé Tí Học Chèo", "text": "Khổ nỗi dê con thấy rau là ăn sạch, còn chó Vện thấy dê là đuổi chạy vòng vòng. Chó với rau thì chẳng ai thèm để ý ai." },
+        { "speaker": "Bé Tí Học Chèo", "text": "Tớ phải ở lại trông chừng, mà để hai đứa không hợp nhau đứng chung một bờ là có chuyện ngay." }
+      ],
+      "choices": [
+        { "text": "Để tớ nghĩ cách cho cậu!", "reply": "Cảm ơn bạn! Nghĩ xong thì ra mép nước, Đò Mây đang chờ ở đó." }
+      ],
+      "en": {
+        "title": "Bé Tí's three passengers",
+        "goTo": "Go to the silk-cotton tree by the landing to meet Bé Tí Học Chèo",
+        "lines": [
+          "Hi! Mum told me to take the little goat, our dog Vện and a bundle of water spinach to Grandma's across the river.",
+          "The trouble is, the goat gobbles up greens the moment it sees them, and Vện chases the goat round and round. The dog and the greens don't care about each other at all.",
+          "I have to stay and watch, and if two who don't get along are left on the same bank, there's trouble straight away."
+        ],
+        "choices": [
+          { "text": "Let me work it out for you!", "reply": "Thanks! When you've got it, come to the water's edge; the Cloud Ferry is waiting there." }
+        ]
+      }
+    },
+    {
+      "id": "chuyen-dau-tien",
+      "title": "Chở ai trước?",
+      "goTo": "Ra mép nước bến đò nghĩ chuyến đầu tiên",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-do-ba-con-do-may-do-may",
+      "skill": "logic",
+      "prompt": "Đò chỉ chở Chú Ba với một vị khách. Bỏ dê với rau một bờ thì dê ăn rau; bỏ chó với dê một bờ thì chó đuổi dê. Chuyến đầu tiên Chú Ba nên chở ai?",
+      "choices": [
+        { "id": "a", "text": "Dê con" },
+        { "id": "b", "text": "Chó Vện" },
+        { "id": "c", "text": "Bó rau muống" }
+      ],
+      "answer": { "choice": "a" },
+      "support": {
+        "guide": ["Thử từng cách: chở đi một vị khách, hai vị còn lại đứng chung bờ.", "Chở chó đi thì dê ở lại với rau. Có ổn không?", "Chở rau đi thì dê ở lại với chó. Có ổn không?"],
+        "hint": "Chỉ có một cặp để chung mà không ai phiền ai: chó với rau.",
+        "answer": { "text": "Dê con", "explanation": "Chở dê đi trước, bờ này còn chó với rau, hai bạn chẳng để ý nhau. Chở chó hay rau trước thì dê sẽ ăn rau hoặc bị chó đuổi." },
+        "en": {
+          "guide": ["Try each one: take one passenger, and the other two stay on the bank together.", "Take the dog: the goat stays with the greens. Is that all right?", "Take the greens: the goat stays with the dog. Is that all right?"],
+          "hint": "Only one pair can be left together without trouble: the dog and the greens.",
+          "answer": { "text": "The little goat", "explanation": "Take the goat first, and the dog and the greens stay behind, ignoring each other. Taking the dog or the greens first leaves the goat to eat the greens or be chased." }
+        }
+      },
+      "feedback": {
+        "right": ["Chú Ba vỗ đùi: «Dê đi trước! Sao chú không nghĩ ra nhỉ?»", "{name} nghĩ trước một bước, đúng kiểu người lái đò giỏi.", "Chó Vện nằm cạnh bó rau ngáp dài, chẳng ai phiền ai."],
+        "wrong": ["Ối, dê con ở lại đã nhai sạch nửa bó rau rồi kìa!", "Chó Vện đuổi dê chạy ba vòng quanh gốc gạo mất rồi {name}.", "Thử nghĩ xem cặp nào để chung một bờ mà vẫn yên ổn."],
+        "en": {
+          "right": ["Uncle Ba slaps his knee: 'The goat goes first! Why didn't I think of that?'", "{name} thinks one step ahead, like a true ferryman.", "Vện lies yawning beside the greens; nobody bothers anybody."],
+          "wrong": ["Oops, the goat left behind has already munched half the greens!", "Vện has chased the goat three times round the silk-cotton tree, {name}.", "Think which pair can share a bank and stay peaceful."]
+        }
+      },
+      "en": {
+        "title": "Who goes first?",
+        "goTo": "Go to the water's edge at the landing and work out the first trip",
+        "prompt": "The boat only carries Uncle Ba and one passenger. Leave the goat with the greens and the goat eats them; leave the dog with the goat and the dog chases it. Who should Uncle Ba take on the first trip?",
+        "choices": ["The little goat", "Vện the dog", "The bundle of greens"]
+      }
+    },
+    {
+      "id": "cheo-du-chuyen",
+      "title": "Chèo đủ các chuyến",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-do-ba-con-do-may-do-may",
+      "prompt": "Giờ thì chèo thật! Xếp khách lên Đò Mây sao cho không ai bị ăn, không ai bị đuổi, chở trọn 2 chuyến hàng sang sông nhé.",
+      "game": "river-crossing",
+      "goal": 2,
+      "en": {
+        "title": "Row every trip",
+        "prompt": "Now row for real! Load the Cloud Ferry so nobody gets eaten and nobody gets chased, and carry 2 full loads across the river."
+      }
+    },
+    {
+      "id": "doc-bang-gio",
+      "title": "Bảng giờ đò",
+      "goTo": "Sang tới bến bờ bên kia, đọc tấm bảng giờ đò",
+      "kind": "read",
+      "target": "st-do-ba-con-do-may-bang-gio",
+      "skill": "doc-hieu",
+      "text": "GIỜ ĐÒ MÂY\nBuổi sáng: 6 giờ, 7 giờ, 8 giờ.\nBuổi trưa: chú lái đò nghỉ, đò neo dưới gốc tre.\nBuổi chiều: 3 giờ, 4 giờ, 5 giờ.\nChuyến cuối: 6 giờ chiều. Ai lỡ chuyến thì gọi «đò ơi» thật to.",
+      "question": "Theo bảng, một ngày Đò Mây chạy tất cả bao nhiêu chuyến?",
+      "choices": [
+        { "id": "a", "text": "6 chuyến" },
+        { "id": "b", "text": "7 chuyến" },
+        { "id": "c", "text": "8 chuyến" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Đếm số chuyến buổi sáng.", "Đếm số chuyến buổi chiều; buổi trưa thì không có chuyến nào.", "Đừng quên chuyến cuối lúc 6 giờ chiều."],
+        "hint": "Sáng 3 chuyến, chiều 3 chuyến, cộng thêm chuyến cuối.",
+        "answer": { "text": "7 chuyến", "explanation": "Buổi sáng 3 chuyến, buổi chiều 3 chuyến, thêm chuyến cuối 6 giờ: 3 + 3 + 1 = 7 chuyến." },
+        "en": {
+          "guide": ["Count the morning trips.", "Count the afternoon trips; there are none at noon.", "Don't forget the last trip at 6 in the evening."],
+          "hint": "3 in the morning, 3 in the afternoon, plus the last one.",
+          "answer": { "text": "7 trips", "explanation": "3 morning trips, 3 afternoon trips and the last one at 6: 3 + 3 + 1 = 7 trips." }
+        }
+      },
+      "feedback": {
+        "right": ["Bảy chuyến một ngày, đều như nhịp mái chèo!", "{name} đọc bảng mà không sót chuyến cuối nào, giỏi quá.", "Đúng rồi, chuyến 6 giờ chiều là chuyến chú Ba thích nhất."],
+        "wrong": ["Còn chuyến cuối lúc 6 giờ chiều nữa đấy, đếm lại nhé.", "Buổi trưa chú Ba ngủ dưới gốc tre, không có chuyến nào đâu {name}.", "Đếm từng giờ trên bảng xem nào, sáng mấy, chiều mấy?"],
+        "en": {
+          "right": ["Seven trips a day, steady as oar strokes!", "{name} read the board without missing the last trip. Brilliant.", "That's right, and the 6 o'clock one is Uncle Ba's favourite."],
+          "wrong": ["There's still the last trip at 6 in the evening. Count again.", "At noon Uncle Ba naps under the bamboo; there are no trips then, {name}.", "Count each time on the board: how many in the morning, how many in the afternoon?"]
+        }
+      },
+      "en": {
+        "title": "The ferry timetable",
+        "goTo": "Once you're on the far bank, read the ferry timetable",
+        "text": "CLOUD FERRY TIMES\nMorning: 6, 7 and 8 o'clock.\nNoon: the ferryman rests and the boat is moored under the bamboo.\nAfternoon: 3, 4 and 5 o'clock.\nLast trip: 6 in the evening. Missed it? Shout 'ferry!' really loud.",
+        "question": "According to the board, how many trips does the Cloud Ferry make in a day?",
+        "choices": ["6 trips", "7 trips", "8 trips"]
+      }
+    },
+    {
+      "id": "be-ti-xin-hoc",
+      "title": "Lời xin của Bé Tí",
+      "goTo": "Chèo về bãi cỏ ven sông, Chú Ba có chuyện muốn hỏi",
+      "kind": "decision",
+      "target": "chu-lai-do-ba",
+      "speaker": "Chú Lái Đò Ba",
+      "prompt": "Lúc chia tay, Bé Tí xin Chú Ba dạy chèo đò. Chú Ba ngập ngừng: «Chú chưa dạy ai bao giờ. Cháu thấy sao, {name}?»",
+      "choices": [
+        { "id": "day-ngay", "text": "Dạy luôn, mỗi chiều một buổi", "consequence": "Chú Ba gật đầu: «Ừ, mỗi chiều một buổi, bắt đầu bằng gõ ba tiếng chào sông.» Bé Tí nhảy cẫng lên suýt rơi xuống nước." },
+        { "id": "cho-lon", "text": "Đợi Bé Tí lớn thêm chút nữa", "consequence": "Chú Ba nghĩ một lúc rồi bảo: «Lớn thêm chút thì tay mới đủ khỏe. Nhưng chú cho cháu ngồi xem chú chèo từ hôm nay.»" },
+        { "id": "cung-hoc", "text": "Rủ cả {name} cùng học", "consequence": "Chú Ba cười khà: «Hai học trò một lúc à? Được! Một đứa chèo trái, một đứa chèo phải, đò đi thẳng tắp.»" }
+      ],
+      "en": {
+        "title": "Bé Tí's request",
+        "goTo": "Row back to the grassy riverbank; Uncle Ba wants to ask you something",
+        "prompt": "As they say goodbye, Bé Tí asks Uncle Ba to teach him to row. Uncle Ba hesitates: 'I've never taught anyone. What do you think, {name}?'",
+        "choices": [
+          { "text": "Teach him now, a lesson every evening", "consequence": "Uncle Ba nods: 'Right, one lesson each evening, starting with three knocks to greet the river.' Bé Tí jumps so high he nearly falls in." },
+          { "text": "Wait until Bé Tí is a bit bigger", "consequence": "Uncle Ba thinks, then says: 'A bit bigger and his arms will be strong enough. But he can sit and watch me row from today.'" },
+          { "text": "Ask if {name} can learn too", "consequence": "Uncle Ba laughs: 'Two pupils at once? Done! One rows left, one rows right, and the boat goes dead straight.'" }
+        ]
+      }
+    },
+    {
+      "id": "sang-song-tron-ven",
+      "title": "Sang sông trọn vẹn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Dê con, chó Vện và bó rau muống sang tới nhà bà ngoại, đứa nào cũng nguyên vẹn. Chú Ba gửi lên bếp một giỏ cá tươi, kể cho cả làng nghe về câu đố của {name}.",
+      "en": { "title": "Everyone safely across", "text": "The little goat, Vện and the water spinach all reach Grandma's in one piece. Uncle Ba sends a basket of fresh fish up to the kitchen and tells the whole village about {name}'s puzzle-solving." }
+    },
+    {
+      "id": "tin-cay-cau",
+      "title": "Tin về cây cầu",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối ấy, trưởng làng gõ kẻng báo tin: làng sẽ bắc một cây cầu tre qua sông. Ai cũng reo lên, chỉ có Chú Ba ngồi lặng ở đầu bến, mái chèo nằm im trên đùi.",
+      "en": { "title": "News of a bridge", "text": "That night the village head rings the gong with news: the village will build a bamboo bridge across the river. Everyone cheers, except Uncle Ba, who sits silent at the landing with the oar lying still on his knees." }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": { "logic": 1, "doc-hieu": 1 }
+  },
+  "en": {
+    "title": "Chú Lái Đò Ba's story, chapter 2: A goat, a dog and some greens",
+    "summary": "Bé Tí Học Chèo needs his goat, his dog Vện and a bundle of water spinach ferried across, but the boat carries only one at a time. {name} works out the first trip, rows every crossing with Uncle Ba, reads the timetable on the far bank and helps him answer a very special request."
+  }
+}
