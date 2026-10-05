@@ -2573,6 +2573,29 @@
    "label": "Nói chuyện",
    "animation": "idle",
    "tint": "#e0c8a0"
+  },
+  "animal-parrot-bo-cau-dua-tin": {
+   "model": "packs/kenney-cube-pets/2.0/animal-parrot.glb",
+   "height": 0.7,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#f4f4f4"
+  },
+  "animal-koala-chu-sap-do-cu": {
+   "model": "packs/kenney-cube-pets/2.0/animal-koala.glb",
+   "height": 1,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle"
+  },
+  "animal-fox-cao-ao-thuat": {
+   "model": "packs/kenney-cube-pets/2.0/animal-fox.glb",
+   "height": 2.4,
+   "kind": "npc",
+   "label": "Thách đấu",
+   "animation": "idle",
+   "tint": "#c8a8e8"
   }
  }
 }

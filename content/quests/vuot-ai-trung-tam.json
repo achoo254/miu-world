@@ -1,0 +1,278 @@
+{
+  "id": "vuot-ai-trung-tam",
+  "region": "trung-tam",
+  "chapter": 2,
+  "title": "Trùm vui: Cáo Ảo Thuật",
+  "status": "active",
+  "summary": "Cáo Ảo Thuật dựng sân khấu giữa khu giao dịch và thách mọi người đấu trí. {name} tìm đồ diễn cho Cáo, đọc áp phích, đoán chiếc cốc giấu bi rồi bước lên sân khấu trả lời bảy câu đố đủ môn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bồ Câu Đưa Tin, Koala Chủ Sạp Đồ Cũ, Cáo Ảo Thuật",
+    "where": "Trung tâm, khu giao dịch và cửa hàng: cổng khu giao dịch, dãy sạp đồ cũ, cột áp phích, sạp của Koala, sân khấu nhỏ",
+    "goal": "Thắng màn đố tài của Cáo Ảo Thuật trên sân khấu khu giao dịch",
+    "play": "Tìm mũ, bộ bài, khăn lụa theo lời tả, đọc áp phích, giải câu đố chiếc cốc, chọn cách lên sân khấu, đấu trùm bảy câu",
+    "learn": "Từ vựng tiếng Anh, xem đồng hồ, quy luật dãy số, so sánh số, đọc hiểu, phép trừ trong phạm vi 20",
+    "reward": "100 XP, 25 Xu, Skill XP Từ vựng, Xem đồng hồ, Logic, Đọc hiểu",
+    "next": "Cáo Ảo Thuật lên đường biểu diễn, Mèo Đại Sứ mời {name} qua cổng dịch chuyển kể cho các map khác nghe"
+  },
+  "phases": {
+    "hook": "gap-bo-cau",
+    "explore": "tim-do-dien",
+    "learn": "doc-ap-phich",
+    "challenge": "coc-giau-bi",
+    "decision": "chon-cach-len-san-khau",
+    "finale": "tran-trum",
+    "reward": "ruong-dao-cu",
+    "next": "cao-len-duong"
+  },
+  "places": {
+    "trum-tt-bo-cau": "Cổng khu giao dịch",
+    "tim-do-dien": "Dãy sạp đồ cũ",
+    "trum-tt-ap-phich": "Cột áp phích",
+    "trum-tt-koala": "Sạp của Koala",
+    "trum-tt-cao-ao-thuat": "Sân khấu nhỏ",
+    "trum-tt-ruong-dao-cu": "Sân khấu nhỏ"
+  },
+  "steps": [
+    {
+      "id": "gap-bo-cau",
+      "title": "Tin nóng từ Bồ Câu",
+      "goTo": "Tới cổng khu giao dịch, Bồ Câu Đưa Tin đang chờ",
+      "kind": "dialogue",
+      "target": "trum-tt-bo-cau",
+      "lines": [
+        { "speaker": "Bồ Câu Đưa Tin", "text": "Gù gù, tin nóng đây! Cáo Ảo Thuật vừa dựng sân khấu giữa khu giao dịch, ai thắng màn đố tài sẽ được mở rương đạo cụ của Cáo." },
+        { "speaker": "Bồ Câu Đưa Tin", "text": "Có điều Cáo đãng trí lắm, đồ diễn rơi khắp dãy sạp đồ cũ. Chưa đủ đồ là Cáo không chịu diễn đâu." }
+      ],
+      "choices": [
+        { "text": "Tớ đi gom đồ diễn cho Cáo!", "reply": "Nhanh chân lên nhé, dãy sạp đồ cũ ở ngay bên trái kia." }
+      ]
+    },
+    {
+      "id": "tim-do-dien",
+      "title": "Gom đồ diễn",
+      "goTo": "Sang dãy sạp đồ cũ tìm ba món đồ diễn của Cáo",
+      "kind": "find-object",
+      "prompt": "Cáo để quên ba món đồ diễn. Đọc lời tả và tìm đủ cả ba:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "mu-ao-thuat",
+          "name": "Chiếc mũ ảo thuật",
+          "clue": "Rộng vành, sâu lòng, nghe đồn thò tay vào là lôi ra được cả chú thỏ.",
+          "target": "trum-tt-mu-ao-thuat"
+        },
+        {
+          "id": "bo-bai",
+          "name": "Bộ bài ảo thuật",
+          "clue": "Một xấp thẻ giấy mỏng, mặt nào cũng in hình và con số, xòe ra như cánh quạt.",
+          "target": "trum-tt-bo-bai"
+        },
+        {
+          "id": "khan-lua",
+          "name": "Khăn lụa bảy màu",
+          "clue": "Mỏng mượt, rực rỡ đủ màu cầu vồng, phất một cái là che kín cả bàn tay.",
+          "target": "trum-tt-khan-lua"
+        }
+      ]
+    },
+    {
+      "id": "doc-ap-phich",
+      "title": "Đọc áp phích buổi diễn",
+      "goTo": "Ghé cột áp phích xem Cáo Ảo Thuật viết gì",
+      "kind": "read",
+      "target": "trum-tt-ap-phich",
+      "skill": "doc-hieu",
+      "text": "BUỔI DIỄN «PHÉP MÀU KHU GIAO DỊCH»\nNgười diễn: Cáo Ảo Thuật.\nGiờ diễn: 4 giờ chiều, ở sân khấu nhỏ.\nAi tìm đủ mũ, bộ bài và khăn lụa cho Cáo sẽ được mời lên sân khấu đố tài. Thắng bảy câu, rương đạo cụ là của bạn!",
+      "question": "Muốn được mời lên sân khấu đố tài, {name} cần làm gì?",
+      "choices": [
+        { "id": "a", "text": "Mua một chiếc vé thật đắt" },
+        { "id": "b", "text": "Tìm đủ mũ, bộ bài và khăn lụa cho Cáo" },
+        { "id": "c", "text": "Tới sân khấu nhỏ lúc 4 giờ sáng" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm câu có chữ «mời lên sân khấu».", "Đọc phần đầu câu đó xem cần làm gì trước."],
+        "hint": "Áp phích không nhắc gì tới tiền vé cả.",
+        "answer": {
+          "text": "Gom đủ ba món đồ diễn cho Cáo",
+          "explanation": "Áp phích viết: ai tìm đủ mũ, bộ bài và khăn lụa cho Cáo sẽ được mời lên sân khấu đố tài."
+        }
+      },
+      "feedback": {
+        "right": ["Ba món đã đủ, {name} chắc suất lên sân khấu rồi!", "Đọc áp phích kĩ thế thì Cáo chẳng lừa được ai.", "Chuẩn rồi, giờ đi luyện mắt tinh thôi!"],
+        "wrong": ["Buổi diễn vào 4 giờ chiều cơ, đọc lại dòng giờ diễn nhé.", "Áp phích có bắt mua vé đâu {name} ơi.", "Tìm câu có chữ «mời» rồi chọn lại nha."]
+      }
+    },
+    {
+      "id": "coc-giau-bi",
+      "title": "Chiếc cốc giấu bi",
+      "goTo": "Ghé sạp của Koala, Koala đang bày trò cốc úp",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "trum-tt-koala",
+      "skill": "logic",
+      "prompt": "Koala úp ba chiếc cốc thành hàng: đỏ, xanh, vàng, rồi giấu một viên bi. Bi không ở dưới chiếc cốc đứng giữa. Cốc có bi cũng không cùng màu với quả chuối chín. Bi nằm dưới cốc nào?",
+      "elements": [
+        { "id": "coc-do", "label": "Cốc đỏ" },
+        { "id": "coc-xanh", "label": "Cốc xanh" },
+        { "id": "coc-vang", "label": "Cốc vàng" }
+      ],
+      "choices": [
+        { "id": "do", "text": "Cốc đỏ" },
+        { "id": "xanh", "text": "Cốc xanh" },
+        { "id": "vang", "text": "Cốc vàng" }
+      ],
+      "answer": { "choice": "do" },
+      "support": {
+        "guide": ["Chiếc cốc đứng giữa hàng là cốc màu gì? Gạch nó đi.", "Quả chuối chín có màu gì? Gạch thêm chiếc cốc cùng màu.", "Còn lại chiếc nào thì bi nằm dưới chiếc đó."],
+        "hint": "Mỗi gợi ý giúp em loại đi một chiếc cốc.",
+        "answer": {
+          "text": "Bi nằm dưới cốc đỏ",
+          "explanation": "Cốc xanh đứng giữa nên bị loại; chuối chín màu vàng nên cốc vàng cũng bị loại; chỉ còn cốc đỏ."
+        }
+      },
+      "feedback": {
+        "right": ["Lật cốc đỏ lên, viên bi lăn ra lấp lánh!", "{name} loại trừ khéo như một thám tử nhí.", "Koala tròn mắt: chưa ai đoán nhanh thế!"],
+        "wrong": ["Chiếc đó đã bị một gợi ý loại rồi, xem lại nhé.", "Quả chuối chín màu gì nhỉ {name}?", "Cốc đứng giữa hàng không giấu bi đâu."]
+      }
+    },
+    {
+      "id": "chon-cach-len-san-khau",
+      "title": "Lên sân khấu thế nào?",
+      "kind": "decision",
+      "target": "trum-tt-koala",
+      "speaker": "Koala Chủ Sạp Đồ Cũ",
+      "prompt": "Sân khấu nhỏ đã sáng đèn. {name} muốn bước lên thế nào cho thật ấn tượng?",
+      "choices": [
+        {
+          "id": "chao-khan-gia",
+          "text": "Cúi chào khán giả thật lễ phép",
+          "consequence": "Khán giả vỗ tay rào rào, Cáo Ảo Thuật cũng ngả mũ chào lại {name}."
+        },
+        {
+          "id": "phat-khan",
+          "text": "Phất chiếc khăn lụa bảy màu",
+          "consequence": "Chiếc khăn bay phấp phới như cầu vồng, cả khu giao dịch ồ lên thích thú."
+        },
+        {
+          "id": "doi-mu",
+          "text": "Đội chiếc mũ ảo thuật lên đầu",
+          "consequence": "Cáo bật cười: trông {name} cũng ra dáng một nhà ảo thuật nhí rồi đấy!"
+        }
+      ]
+    },
+    {
+      "id": "tran-trum",
+      "title": "Đố tài với Cáo Ảo Thuật",
+      "goTo": "Bước lên sân khấu nhỏ, Cáo Ảo Thuật đang chờ",
+      "kind": "boss",
+      "target": "trum-tt-cao-ao-thuat",
+      "bossId": "cao-ao-thuat",
+      "bossName": "Cáo Ảo Thuật",
+      "introDialogue": "Xin chào khán giả! Ta có bảy phép màu, mỗi phép là một câu đố. Đoán đúng phép nào, phép ấy tan biến!",
+      "winDialogue": "Bravo! Phép màu nào cũng bị {name} hóa giải, rương đạo cụ xin trao tận tay nhà vô địch!",
+      "maxHp": 500,
+      "damagePerTurn": 80,
+      "turns": [
+        {
+          "id": "the-cat",
+          "skill": "tu-vung",
+          "prompt": "Cáo rút ra tấm thẻ ghi chữ «cat». Từ tiếng Anh này nghĩa là gì?",
+          "choices": [
+            { "id": "a", "text": "Con mèo" },
+            { "id": "b", "text": "Con chó" },
+            { "id": "c", "text": "Con cá" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "qua-tao",
+          "skill": "tu-vung",
+          "prompt": "Cáo biến ra một quả táo đỏ. Quả táo trong tiếng Anh gọi là gì?",
+          "choices": [
+            { "id": "a", "text": "banana" },
+            { "id": "b", "text": "apple" },
+            { "id": "c", "text": "orange" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "dong-ho-bon-gio",
+          "skill": "xem-dong-ho",
+          "prompt": "Trên đồng hồ của Cáo, kim ngắn chỉ số 4, kim dài chỉ số 12. Đồng hồ chỉ mấy giờ?",
+          "choices": [
+            { "id": "a", "text": "12 giờ" },
+            { "id": "b", "text": "4 giờ 30 phút" },
+            { "id": "c", "text": "4 giờ" }
+          ],
+          "answer": { "choice": "c" }
+        },
+        {
+          "id": "day-so-mu",
+          "skill": "logic",
+          "prompt": "Những con số bay ra từ chiếc mũ: 3, 6, 9, 12, … Số tiếp theo là số nào?",
+          "choices": [
+            { "id": "a", "text": "13" },
+            { "id": "b", "text": "15" },
+            { "id": "c", "text": "16" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "hai-tui-xu",
+          "skill": "so-sanh-so",
+          "prompt": "Túi bên trái có 45 đồng xu, túi bên phải có 54 đồng xu. Túi nào nhiều xu hơn?",
+          "choices": [
+            { "id": "a", "text": "Túi bên trái" },
+            { "id": "b", "text": "Túi bên phải" },
+            { "id": "c", "text": "Hai túi bằng nhau" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "con-vat-dua-thu",
+          "skill": "doc-hieu",
+          "prompt": "Đọc câu: «Chú chim trắng ngậm lá thư bay qua quảng trường, đậu xuống mái cửa hàng.» Câu này kể về con vật nào?",
+          "choices": [
+            { "id": "a", "text": "Chim bồ câu đưa thư" },
+            { "id": "b", "text": "Chú cáo ảo thuật" },
+            { "id": "c", "text": "Bạn koala bán hàng" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "bong-bay",
+          "skill": "phep-tru",
+          "prompt": "Cáo có 18 quả bóng bay, tặng các bạn nhỏ 9 quả. Cáo còn lại bao nhiêu quả bóng bay?",
+          "choices": [
+            { "id": "a", "text": "8 quả" },
+            { "id": "b", "text": "9 quả" },
+            { "id": "c", "text": "27 quả" }
+          ],
+          "answer": { "choice": "b" }
+        }
+      ]
+    },
+    {
+      "id": "ruong-dao-cu",
+      "title": "Rương đạo cụ",
+      "kind": "reward",
+      "target": "trum-tt-ruong-dao-cu",
+      "text": "Cáo Ảo Thuật mở rương đạo cụ, hàng trăm mảnh giấy màu bay lên như pháo hoa. Trong rương là XP, xu và điểm kỹ năng dành cho {name}."
+    },
+    {
+      "id": "cao-len-duong",
+      "title": "Cáo Ảo Thuật lên đường",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cáo Ảo Thuật thu dọn sân khấu để đi diễn ở map khác. Mèo Đại Sứ mời {name} qua cổng dịch chuyển, kể cho bạn bè khắp nơi nghe chuyện vừa thắng Cáo."
+    }
+  ],
+  "reward": {
+    "xp": 100,
+    "coin": 25,
+    "skillXp": { "tu-vung": 1, "xem-dong-ho": 1, "logic": 1, "doc-hieu": 1 }
+  }
+}
