@@ -19,6 +19,14 @@ Người sở hữu báo ba lỗi trong nhà. Chẩn đoán bằng đọc code v
 | Lưu trạng thái | Trong nhà riêng của người chơi: lưu ở server cùng trang trí nhà (đèn còn bật lần sau); ở map chung: chỉ trong lượt chơi, chỉ người đó thấy | 0.87 |
 | Ghế | Thêm chiều cao mặt ngồi (và mặt nằm cho giường) cho mỗi model ngồi được trong `models.json`, đặt hông lên mặt ghế quay ra phía trước, có giá trị mặc định theo chiều cao model; tivi và vật tương tự dùng chỗ đứng hoặc ngồi sàn phía trước, không đưa bé vào trong vật | 1.0 |
 
+## Thêm: xích đu (người sở hữu, 05/10/2026)
+
+"Chơi xích đu thì phải ngồi trên xích đu và đung đưa." Hiện `swing-play` dùng `pose: 'sit'`, nên bé bị đặt xuống đất giữa khung `generated/box-props/swing-set.glb` (cao 3,06) và không có chuyển động nào. Sửa cùng đợt:
+
+- Bé ngồi lên mặt ván xích đu (chiều cao mặt ngồi khai trong `models.json` như ghế).
+- Ván, dây và bé đung đưa cùng nhau như con lắc quanh xà trên (biên độ nhẹ, tắt được khi bật "giảm chuyển động"); muốn ván và dây chuyển động riêng thì generator của `swing-set` tách chúng thành nút riêng trong model.
+- Hết đung đưa khi bé bấm lại hoặc bước đi; người chơi khác thấy bé đang đu (trạng thái ngồi và tư thế đi qua giao thức online như các tư thế khác).
+
 ## Thi công
 
 Làm sau khi phiên đang sửa nhà riêng và kết bạn (`261004-1617-parent-area-friends`) commit, vì cùng đụng nhà của bé và trang trí nhà. Sau khi sinh lại map nhà: 3 audit (`scenery-audit`, `room-audit`, `reach-audit`) và `pnpm assets:manifest`.
