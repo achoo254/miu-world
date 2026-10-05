@@ -10,7 +10,7 @@ Mọi hạng mục của Master Plan v3 (§5, §6, §8, §8b, §8c, §9, §13, �
 
 - Không viết lại plan đã có; chỉ lập plan cho phần chưa có chủ.
 - Không đổi quyết định đã chốt ở Master Plan §15 (không đặt/phá block ở thế giới chính, không Kim cương, không mở khóa, bot luôn gắn nhãn).
-- Thứ tự đã được duyệt (04/10/2026); thi công theo bảng "Lượt".
+- Thứ tự đã được duyệt (04/10/2026); thi công theo bảng "Lượt". Người sở hữu (05/10/2026): SGK tập 2 và môn English để sau, tập trung việc khác trước.
 
 ## Đối chiếu Master Plan với plan hiện có (quét ngày 04/10/2026)
 
@@ -22,7 +22,7 @@ Mọi hạng mục của Master Plan v3 (§5, §6, §8, §8b, §8c, §9, §13, �
 | §8c Song ngữ S2 | `261003-2330-bilingual-npc-stories-bots` | S1, S3 xong; S2 chưa |
 | §8b Chuyện riêng NPC (N1–N3), bot | `261003-2330-bilingual-npc-stories-bots` | Bạn máy B1 xong; N1–N3, B0, B2, B3 chưa |
 | §8 Bậc 1: diện mạo, tương tác, tổ đội | `261004-1540-online-appearance-interact-party` | Chưa thi công |
-| Nội dung SGK tập 2 | `261002-1139-sgk-lop2-tap2-content` | Đã lập plan, `pending` |
+| Nội dung SGK tập 2 | `261002-1139-sgk-lop2-tap2-content` | Hoãn (người sở hữu 05/10/2026: làm sau) |
 | **§5, §6 Trùm, Skill Check, cơ chế còn thiếu (lựa chọn hành động, logic, tìm đồ vật, ghép câu)** | `261004-1617-boss-skill-check-new-mechanics` | Cơ chế xong; nội dung (pha 5) và tài liệu còn |
 | **§5 Môn English (mới có 1 kỹ năng, 0 quest)** | `261004-1617-english-subject-content` | Nguồn đã chốt (Tiếng Anh 2 Global Success, bản mẫu), chưa thi công |
 | **§6, §9 Tiến bộ học, kết bạn trong game (cả với bạn máy), bật/tắt online** (thiết kế lại 05/10/2026: người nhận đồng ý, không mã, không cần phụ huynh duyệt) | `261004-1617-parent-area-friends` | Chưa thi công |
@@ -53,7 +53,7 @@ Quy tắc xếp thứ tự: (1) việc không phụ thuộc và rủi ro thấp 
 | --- | --- | --- |
 | 0 | `live-world-events` Pha 0: luyện thi vòng loại TIMO khối 2, hạn 10/10/2026 (nếu người sở hữu chọn làm) | M |
 | 1 | `system-screens-v1`, `boss-skill-check-new-mechanics`, `parent-area-friends` | M, L, L |
-| 2 | `english-subject-content` (`moderation-safety` hoãn đến khi có người ngoài gia đình chơi) | XL |
+| 2 | ~~`english-subject-content`~~ hoãn (người sở hữu 05/10/2026: làm sau); `moderation-safety` hoãn đến khi có người ngoài gia đình chơi | XL |
 | 3 | `coop-quests` | L |
 | 4 | `live-world-events` | XL |
 | Xuyên suốt | `mvp-gate-launch-readiness` | L |

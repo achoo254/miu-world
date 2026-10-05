@@ -1,6 +1,6 @@
 # Môn English: kỹ năng, quest và trò chơi cho lớp 2
 
-**Trạng thái:** đã duyệt (04/10/2026); nguồn đã chốt (người sở hữu, 05/10/2026: Tiếng Anh 2 Global Success), sẵn sàng thi công · **Tier:** XL · **Nhánh:** `main` · **Ngày:** 04/10/2026
+**Trạng thái:** đã duyệt (04/10/2026); nguồn đã chốt (người sở hữu, 05/10/2026: Tiếng Anh 2 Global Success), hoãn theo người sở hữu (05/10/2026: làm sau) · **Tier:** XL · **Nhánh:** `main` · **Ngày:** 04/10/2026
 **Nguồn:** Master Plan §5 (Subject: Toán, Tiếng Việt, **English**; kỹ năng "English Challenge" ở §6), §8c (song ngữ).
 
 ## Kết quả mong muốn
