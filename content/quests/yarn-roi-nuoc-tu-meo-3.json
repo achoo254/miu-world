@@ -153,7 +153,7 @@
       "speaker": "Nghệ Nhân Múa Rối",
       "prompt": "Khán giả đang gọi «Nghệ nhân đâu, ra chào đi!», còn ông thì trốn trong xưởng, ôm Chú Tễu. «Cháu ơi, ông ra bằng cách nào đây?»",
       "choices": [
-        { "id": "teu-meo", "text": "Mang theo con rối đầu tay của ông", "consequence": "Ông lặng đi, rồi mở rương lấy ra một con rối mũi lệch: «Tễu Méo, con đầu tiên ông đẽo.» Ông ôm nó bước ra, và cả làng vỗ tay rần rần." },
+        { "id": "teu-meo", "text": "Mang theo con rối đầu tay của ông", "consequence": "Ông lặng đi, rồi mở rương lấy ra một con rối mũi lệch: «Con đầu tiên ông đẽo đấy, cái tên của nó ông chưa kể với ai.» Ông ôm nó bước ra, và cả làng vỗ tay rần rần." },
         { "id": "roi-be-thuy", "text": "Để con rối méo của Bé Thủy chào trước", "consequence": "Con rối mũi lệch của Bé Thủy cúi chào trước, cả làng cười ồ thích thú. Ông đứng sau nhìn, rồi chẳng biết từ lúc nào đã bước ra đứng cạnh." },
         { "id": "cung-teu", "text": "Cầm Chú Tễu ra chào cùng", "consequence": "Ông giơ Chú Tễu lên trước mặt, Tễu cúi chào, ông cúi theo. Hạ Tễu xuống, ông thấy cả làng đang nhìn ông, chứ không phải con rối, và ông mỉm cười." }
       ],
@@ -162,7 +162,7 @@
         "goTo": "After the show, the puppet master slipped back to the craft workshop. Go and find him",
         "prompt": "The audience is calling 'Where's the master? Come and take a bow!', but Grandpa is hiding in the workshop, hugging Chú Tễu. 'Little one, how do I go out there?'",
         "choices": [
-          { "text": "Take along the very first puppet he carved", "consequence": "He goes quiet, then opens his chest and lifts out a puppet with a crooked nose: 'Wonky Tễu, the first one I ever carved.' He carries it out, and the whole village bursts into applause." },
+          { "text": "Take along the very first puppet he carved", "consequence": "He goes quiet, then opens his chest and lifts out a puppet with a crooked nose: 'The first one I ever carved; its name I have never told anyone.' He carries it out, and the whole village bursts into applause." },
           { "text": "Let Bé Thủy's crooked puppet bow first", "consequence": "Bé Thủy's crooked-nosed puppet bows first, and the village laughs with delight. Grandpa watches from behind, and before he knows it he's stepped out to stand beside it." },
           { "text": "Go out and bow together with Chú Tễu", "consequence": "He holds Chú Tễu up in front of his face; Tễu bows, and he bows too. When he lowers Tễu, he sees the whole village looking at him, not the puppet, and he smiles." }
         ]

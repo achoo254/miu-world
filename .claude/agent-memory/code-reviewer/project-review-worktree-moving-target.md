@@ -11,4 +11,6 @@ Reviews of Miu World feature worktrees (e.g. `../miu-world-life`) are requested 
 
 Same on `main`: during the 2026-10-05 skills/journey/achievements review, HEAD gained docs + test commits mid-review; also tests run on PGlite (single connection), so "racing" tests do not prove real Postgres concurrency (prod uses node-postgres pool) — reason about locks instead.
 
+A scout-block hook denies any Bash/Read path containing `node_modules` (e.g. checking drizzle driver internals): reason from existing repo usage instead (e.g. `date()` columns already exported as strings).
+
 **How to apply:** record `ls --time-style` mtimes at start, re-read a file right before citing line numbers, say in the report which snapshot was reviewed. Review screenshots in `.data/<feature>/review-shots/` are useful evidence (they exposed a delayed-tap bug) — check them. Never run E2E yourself there. Scratch scripts: `.mts` + `pnpm exec tsx` from `apps/web` can import worktree TS modules for quick behavioural checks without editing the repo.
