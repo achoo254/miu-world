@@ -1,0 +1,47 @@
+{
+  "state": {
+    "project": "Miu World: a 3D voxel learn-while-playing online game for all ages, 12 maps, ~150 quests, 308 minigames with NPC givers, friends/parties/bots online. Built 100% by AI. Owner's north star: the game must feel lively, never boring; no repeated lines anywhere (machine-checked).",
+    "today": "2026-10-05",
+    "plan": "NPC stories: N1 character profiles for each map's main NPCs (personality, voice, fears, dreams, secrets, habits) and a relationship graph within and across maps; N2 personal story arcs (target ≥6 arcs × 3–5 chapters per map, with scenes, places, objects, small rewards; a friendship level per player per NPC kept on the server; letters and gifts between NPCs via the existing mailbox); N3 deep everyday lines for ordinary NPCs (≥12 lines each by personality, time of day, weather, relationship). S2: translate NPC lines, item names, side quests, minigame how-tos and shop into English shown under the Vietnamese; textbook (SGK) text stays Vietnamese only.",
+    "facts": [
+      "Full N2 scope is about 72 arcs and 250+ chapters; each needs targets placed on maps (map regeneration and three scenery audits per map).",
+      "The mailbox, skill/achievement systems, quest engine (decision/find-object/logic/boss steps) and content checks already exist.",
+      "English UI translation (S1) and read-aloud exist; quest and NPC content is Vietnamese only today."
+    ]
+  },
+  "questions": {
+    "rollout": {
+      "stakes": "medium",
+      "instructions": "How to stage NPC stories?",
+      "criteria": {
+        "profiles_lines_then_arcs": "First N1 profiles + N3 everyday lines for every map and 2 arcs per map (24 arcs) with friendship levels; then further arcs in later batches until the ≥6 per map target.",
+        "all_at_once": "Write the full ≥6 arcs per map in one batch.",
+        "one_map_pilot": "Pilot all of N1–N3 on one map first, then roll out."
+      }
+    },
+    "story_entry": {
+      "stakes": "low",
+      "instructions": "How does a player find an NPC's story?",
+      "criteria": {
+        "talk_and_list": "Talking to the NPC offers the next chapter when the friendship level allows; chapters also appear in the quest list under 'Chuyện của <tên>' and on the minimap like side quests.",
+        "talk_only": "Only by talking to the NPC; no list entry."
+      }
+    },
+    "friendship_visible": {
+      "stakes": "low",
+      "instructions": "Should the friendship level with each NPC be visible?",
+      "criteria": {
+        "hearts_visible": "Yes: hearts on the NPC's dialogue card and a 'Bạn bè trong làng' page; raising it by talking, gifts and finishing chapters.",
+        "hidden": "No: keep it hidden and only unlock chapters."
+      }
+    },
+    "translation_timing": {
+      "stakes": "low",
+      "instructions": "When to do S2 English translations of NPC and game content?",
+      "criteria": {
+        "with_each_batch": "Translate as each content batch is written (new NPC lines ship bilingual), and backfill existing NPC/side-quest/minigame/shop text in the same batch.",
+        "after_english_subject": "Leave until the English subject work resumes."
+      }
+    }
+  }
+}

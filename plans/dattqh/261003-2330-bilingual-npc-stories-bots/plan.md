@@ -25,6 +25,15 @@ Người sở hữu (03/10/2026): "thêm song ngữ hiển thị tiếng anh và
 - Học bằng tự chơi và số liệu tổng hợp ẩn danh; quỹ đạo thô của trẻ chỉ khi chính sách riêng tư có mục đích đó và phụ huynh đồng ý riêng.
 - Luật sư cần xác nhận trước khi mở bot cho người dùng thật (NĐ 13/2023, Luật Trẻ em, NĐ 147/2024).
 
+## Quyết định cho chuyện NPC (Jev, 05/10/2026, `plans/dattqh/reports/jev-261005-1915-npc-stories-{input,output}.json`)
+
+| Câu | Chọn | Độ tin |
+| --- | --- | --- |
+| Chia đợt | Đợt 1: N1 hồ sơ + N3 lời thường cho mọi map, 2 mạch chuyện mỗi map (24 mạch) kèm độ thân thiết; các đợt sau thêm mạch tới ≥ 6 mỗi map | 0.91 |
+| Lối vào chuyện | Nói chuyện với NPC mở chương kế khi đủ thân thiết; chương hiện trong danh sách quest ("Chuyện của <tên>") và trên bản đồ nhỏ như quest phụ | 0.69 |
+| Độ thân thiết | Hiện bằng trái tim trên thẻ hội thoại và trang "Bạn bè trong làng"; tăng khi nói chuyện, tặng quà, xong chương | 0.94 |
+| Dịch tiếng Anh (S2) | Dịch cùng từng đợt nội dung, và dịch bù lời NPC, quest phụ, minigame, cửa hàng đã có trong cùng đợt | 0.97 |
+
 ## Lưu ý quan trọng cho người sở hữu
 - **Bot phải gắn nhãn "bạn máy":** không giả làm người thật với trẻ em (an toàn, tín nhiệm, pháp lý); vẫn chơi giống người để bé thấy sinh động.
 - **Dữ liệu học:** không lấy quỹ đạo thô, chat của trẻ để huấn luyện nếu chưa có đồng ý của phụ huynh và pháp lý duyệt; ban đầu dùng tự chơi và số liệu tổng hợp.

@@ -1,0 +1,50 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1057,
+    "output_tokens": 158
+  },
+  "results": {
+    "rollout": {
+      "stakes": "medium",
+      "choice": "profiles_lines_then_arcs",
+      "confidence": 0.91,
+      "probabilities": {
+        "one_map_pilot": 0.05,
+        "all_at_once": 0.0,
+        "profiles_lines_then_arcs": 0.95
+      },
+      "decision": "auto"
+    },
+    "story_entry": {
+      "stakes": "low",
+      "choice": "talk_and_list",
+      "confidence": 0.69,
+      "probabilities": {
+        "talk_and_list": 0.84,
+        "talk_only": 0.16
+      },
+      "decision": "auto"
+    },
+    "friendship_visible": {
+      "stakes": "low",
+      "choice": "hearts_visible",
+      "confidence": 0.94,
+      "probabilities": {
+        "hidden": 0.03,
+        "hearts_visible": 0.97
+      },
+      "decision": "auto"
+    },
+    "translation_timing": {
+      "stakes": "low",
+      "choice": "with_each_batch",
+      "confidence": 0.97,
+      "probabilities": {
+        "after_english_subject": 0.02,
+        "with_each_batch": 0.98
+      },
+      "decision": "auto"
+    }
+  }
+}
