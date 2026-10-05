@@ -1,6 +1,6 @@
 # Xu, đồ thưởng và điểm kỹ năng có chỗ dùng
 
-Trạng thái: pha 1–4 xong (cửa hàng, đồ sưu tầm, thú cưng, bếp); pha 5 mới có phần lõi (Kỹ năng lên cấp, Skill Check ở server), còn màn cây kỹ năng và Cổng tri thức; pha 6 (Hành trình, Thành tích) chưa làm (rà lại 05/10/2026) · Tier tổng: XL · Nhánh: `main` · Ngày: 03/10/2026
+Trạng thái: xong cả 6 pha (05/10/2026): pha 1–4 (cửa hàng, đồ sưu tầm, thú cưng, bếp); pha 5 (cây kỹ năng trong Hồ sơ, quà mỗi cấp kỹ năng, Cổng tri thức có kho báu); pha 6 (Hành trình, Thành tích); report `reports/skills-journey-achievements-261005.md` · Tier tổng: XL · Nhánh: `main` · Ngày: 03/10/2026
 
 Người sở hữu (03/10/2026): "hiện tại xp dùng lên cấp để chọn thêm đồ mặc còn xu với đồ thưởng chưa có dụng j, lên plan để có thể sử dụng"; "điểm kỹ năng nữa".
 
@@ -47,8 +47,8 @@ Người sở hữu (03/10/2026): "hiện tại xp dùng lên cấp để chọn
 | 2 | L | Đồ sưu tầm theo map (~150 món), rơi từ quest/minigame, Sổ sưu tập, thưởng đủ bộ, kệ trưng bày trong nhà |
 | 3 | M | Thú cưng: cho ăn, chơi, thanh vui vẻ, trò mới |
 | 4 | M | Bếp và xưởng ở nhà bé, khu giao dịch NPC ở Trung tâm |
-| 5 | L | Cây kỹ năng + quà mỗi cấp kỹ năng, Cổng tri thức trên các map |
-| 6 | M | Hành trình + Thành tích theo mock |
+| 5 | L | Cây kỹ năng + quà mỗi cấp kỹ năng, Cổng tri thức trên các map. **Xong 05/10/2026:** cây kỹ năng trong Hồ sơ (`GET /api/skill-tree`: mỗi cấp một lá, điểm tới cấp sau, quà từng cấp); quà cấp kỹ năng là dữ liệu (`content/progression/skill-gifts.json`: Xu mọi cấp 2–10, 10 món đồ mặc theo chủ đề), server trả đúng một lần mỗi cấp cùng lượt chơi đạt cấp, hiện ở màn Kỹ năng lên cấp; Cổng tri thức: bảng theo mock M3.9 (kỹ năng, cấp cần, cấp hiện tại, kho báu, nút tới quest luyện), kho báu trả một lần mỗi lượt chơi quest có bước mở cổng; bài học không bao giờ chờ cổng (thiếu cấp thì đi tiếp, kho báu đóng); 5 cổng khai trong `content/world/targets.json` (3 cổng có bước quest trên map) |
+| 6 | M | Hành trình + Thành tích theo mock. **Xong 05/10/2026:** Hành trình (`GET /api/journey`: tiến độ từng vùng đất, dòng thời gian từ `reward_ledger` gồm nhiệm vụ, trò chơi, nhận đồ, lên cấp, kỹ năng lên cấp; không thêm dữ liệu cá nhân); Thành tích (63 mục trong `content/progression/achievements.json`, 5 nhóm, 10 món độc quyền; server tính tiến độ từ dữ liệu có sẵn, `POST /api/achievements/:id/claim` trả một lần, màn "Chúc mừng!"); lối vào từ Trang chủ (huy hiệu số thành tích chờ nhận), Hồ sơ, menu Tạm dừng |
 
 Phụ thuộc: chạy sau khung minigame (dùng chung luồng thưởng ở server) và tùy biến nhà (Nhà cửa trong cửa hàng). Mỗi pha có migration riêng, nối tiếp nhau.
 
