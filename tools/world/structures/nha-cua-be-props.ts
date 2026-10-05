@@ -2,9 +2,11 @@
 // timetable board on the wall over the study desk with its days and periods and the lunch break, the school
 // uniform calendar beside the wardrobe, the bed under its pink polka-dot quilt with the bunny pillow, the cat
 // rug, the pink curtains, the wardrobe, the little dressing table, the cream sofa with its pink cushions, the
-// fridge with its magnets, the children's drawings pinned on the wall, the gallery railing, the open leaves of
+// fridge with its magnets, the children's drawings pinned on the wall, the gallery railing, the two leaves of
 // the arched front door, the cat-shaped mailbox, the flag with its cat, the cat's head over the name board,
-// the watering can. Boards are lettered with the hub's pixel capitals (trung-tam-props.ts), so the marks of
+// the watering can. What opens in the game (the wardrobe's and the fridge's doors, the mailbox's flap, the
+// stair cupboard's door, the front door's leaves) is a moving part with its hinge (BoxProp `parts`), with
+// something behind it to see when it is open. Boards are lettered with the hub's pixel capitals (trung-tam-props.ts), so the marks of
 // "THỜI KHÓA BIỂU" and "LỊCH ĐỒNG PHỤC" stay. Each prop stands on y = 0, its front toward -z. Writes
 // content/world/box-props/nha-cua-be.json; run it after changing a prop:
 //   pnpm exec tsx tools/world/structures/nha-cua-be-props.ts
@@ -18,6 +20,9 @@ import { REPO_ROOT } from '../../assets/asset-lib';
 import { box, catalogJson, propHeight, textBoxes } from './trung-tam-props';
 
 type Box = BoxProp['boxes'][number];
+
+/** The boxes as part `name` of their prop (a door, a flap): they turn together about the part's hinge. */
+const asPart = (name: string, boxes: Box[]): Box[] => boxes.map((b) => ({ ...b, part: name }));
 
 const WOOD = { dark: '#6b4423', mid: '#8a5a32', light: '#c98f5a', pale: '#e3c193' };
 const PINK = { deep: '#e86f9c', mid: '#f4a3bf', pale: '#fbd3e2' };
@@ -266,20 +271,37 @@ const DESKS: Readonly<Record<string, [string, string, string]>> = {
   'ncb-desk-yellow': ['#fff3cf', '#f6c945', WOOD.dark],
 };
 
-/** A wardrobe of panel 3 in a colour: two doors with knobs, a crown with its mark, feet. */
-function styledWardrobe(body: string, doors: string, crown: string, mark: string): Box[] {
-  return [
-    box([-0.8, 0.12, -0.35], [0.8, 2.5, 0.35], body),
-    box([-0.75, 0.2, -0.37], [-0.03, 2.4, -0.35], doors),
-    box([0.03, 0.2, -0.37], [0.75, 2.4, -0.35], doors),
-    box([-0.12, 1.2, -0.4], [-0.06, 1.4, -0.37], '#e2b13c'),
-    box([0.06, 1.2, -0.4], [0.12, 1.4, -0.37], '#e2b13c'),
-    box([-0.86, 2.5, -0.4], [0.86, 2.62, 0.4], crown),
-    box([-0.3, 2.62, -0.2], [0.3, 2.72, 0.2], mark),
-    ...pixels(7, 7, 0.06, -0.39, 1.95, [-0.39, -0.37], 'xy', (i, j) => (markAt('heart')(i, j) ? mark : null)),
-    ...pixels(7, 7, 0.06, 0.39, 1.95, [-0.39, -0.37], 'xy', (i, j) => (markAt('star')(i, j) ? mark : null)),
-    ...[-0.7, 0.7].flatMap((x) => [-0.28, 0.28].map((z) => box([x - 0.06, 0, z - 0.06], [x + 0.06, 0.12, z + 0.06], WOOD.dark))),
-  ];
+/**
+ * A wardrobe of panel 3 in a colour: two doors with knobs (hinged at the sides, opening outward), a crown with its
+ * mark, feet; behind the doors a dark inside with a rail and three hanging clothes.
+ */
+function styledWardrobe(body: string, doors: string, crown: string, mark: string): BoxProp {
+  return {
+    boxes: [
+      box([-0.8, 0.12, -0.35], [0.8, 2.5, 0.35], body),
+      ...asPart('door-left', [
+        box([-0.75, 0.2, -0.37], [-0.03, 2.4, -0.35], doors),
+        box([-0.12, 1.2, -0.4], [-0.06, 1.4, -0.37], '#e2b13c'),
+        ...pixels(7, 7, 0.06, -0.39, 1.95, [-0.39, -0.37], 'xy', (i, j) => (markAt('heart')(i, j) ? mark : null)),
+      ]),
+      ...asPart('door-right', [
+        box([0.03, 0.2, -0.37], [0.75, 2.4, -0.35], doors),
+        box([0.06, 1.2, -0.4], [0.12, 1.4, -0.37], '#e2b13c'),
+        ...pixels(7, 7, 0.06, 0.39, 1.95, [-0.39, -0.37], 'xy', (i, j) => (markAt('star')(i, j) ? mark : null)),
+      ]),
+      box([-0.86, 2.5, -0.4], [0.86, 2.62, 0.4], crown),
+      box([-0.3, 2.62, -0.2], [0.3, 2.72, 0.2], mark),
+      ...[-0.7, 0.7].flatMap((x) => [-0.28, 0.28].map((z) => box([x - 0.06, 0, z - 0.06], [x + 0.06, 0.12, z + 0.06], WOOD.dark))),
+      // Inside, hidden by the closed doors.
+      box([-0.74, 0.21, -0.356], [0.74, 2.39, -0.35], '#7a5234'),
+      box([-0.7, 2.08, -0.364], [0.7, 2.11, -0.356], '#b8bfc9'),
+      box([-0.6, 1.2, -0.364], [-0.3, 2.06, -0.356], PINK.mid),
+      box([-0.2, 1.5, -0.364], [0.15, 2.06, -0.356], '#6fa8dc'),
+      box([0.28, 1.3, -0.364], [0.6, 2.06, -0.356], '#ffd23f'),
+      box([-0.7, 0.21, -0.364], [0.7, 0.24, -0.356], '#5c3c22'),
+    ],
+    parts: { 'door-left': { pivot: [-0.75, 0, -0.36], axis: 'y', angle: 100 }, 'door-right': { pivot: [0.75, 0, -0.36], axis: 'y', angle: -100 } },
+  };
 }
 
 const WARDROBES: Readonly<Record<string, [string, string, string, string]>> = {
@@ -531,14 +553,31 @@ function stairRunner(rise: boolean): Box[] {
   return out;
 }
 
-/** The cupboard under the stairs: a little door with a heart, on the stringer's open side (its face toward -z). */
-function underStairDoor(): Box[] {
-  return [
-    box([-0.55, 0, -0.04], [0.55, 1.9, 0], WOOD.dark),
-    box([-0.48, 0.06, -0.06], [0.48, 1.84, -0.04], WOOD.light),
-    ...pixels(7, 7, 0.06, 0, 1.4, [-0.075, -0.06], 'xy', (i, j) => (markAt('heart')(i, j) ? PINK.deep : null)),
-    box([0.3, 0.85, -0.1], [0.38, 0.95, -0.06], '#e2b13c'),
-  ];
+/**
+ * The cupboard under the stairs: half a door high (owner, 05/10/2026: the door-high one read as the house's
+ * door), a little hatch with a heart on the stringer's open side (its face toward -z), hinged at its left; inside,
+ * a broom and the toy box.
+ */
+function underStairDoor(): BoxProp {
+  return {
+    boxes: [
+      box([-0.55, 0, -0.05], [-0.48, 1.12, 0], WOOD.dark),
+      box([0.48, 0, -0.05], [0.55, 1.12, 0], WOOD.dark),
+      box([-0.55, 1.05, -0.05], [0.55, 1.12, 0], WOOD.dark),
+      box([-0.48, 0, -0.05], [0.48, 0.04, 0], WOOD.dark),
+      box([-0.48, 0.04, -0.012], [0.48, 1.05, 0], '#2f2219'),
+      box([0.2, 0.04, -0.02], [0.24, 0.9, -0.012], WOOD.light),
+      box([0.12, 0.04, -0.03], [0.32, 0.2, -0.012], '#e2b13c'),
+      box([-0.38, 0.04, -0.04], [-0.08, 0.3, -0.012], PINK.deep),
+      ...asPart('door', [
+        box([-0.48, 0.04, -0.045], [0.48, 1.05, -0.012], WOOD.light),
+        box([-0.4, 0.12, -0.052], [0.4, 0.97, -0.045], '#d9a273'),
+        ...pixels(7, 7, 0.04, 0, 0.72, [-0.06, -0.052], 'xy', (i, j) => (markAt('heart')(i, j) ? PINK.deep : null)),
+        box([0.3, 0.5, -0.075], [0.38, 0.58, -0.045], '#e2b13c'),
+      ]),
+    ],
+    parts: { door: { pivot: [-0.48, 0, -0.0285], axis: 'y', angle: 100 } },
+  };
 }
 
 // ——— More of the house as the mock has it. ———
@@ -689,22 +728,45 @@ function sofa(): Box[] {
   ];
 }
 
-/** The fridge of panel 6: cream, two doors, chrome handles, the children's magnets on its front. */
-function fridge(): Box[] {
-  return [
-    box([-0.5, 0, -0.4], [0.5, 2.1, 0.4], CREAM),
-    box([-0.5, 1.33, -0.42], [0.5, 1.37, -0.4], '#c9bfae'),
-    box([0.32, 1.45, -0.46], [0.38, 1.9, -0.42], '#b8bfc9'),
-    box([0.32, 0.6, -0.46], [0.38, 1.2, -0.42], '#b8bfc9'),
-    // Magnets: a cat, a star, an apple, a heart, a little note.
-    box([-0.35, 1.7, -0.43], [-0.15, 1.88, -0.41], '#f0a04b'),
-    box([-0.33, 1.88, -0.43], [-0.29, 1.94, -0.41], '#f0a04b'),
-    box([-0.21, 1.88, -0.43], [-0.17, 1.94, -0.41], '#f0a04b'),
-    box([-0.05, 1.55, -0.43], [0.13, 1.71, -0.41], '#ffd23f'),
-    box([-0.38, 1.45, -0.43], [-0.22, 1.6, -0.41], '#d9342b'),
-    box([-0.1, 0.95, -0.43], [0.08, 1.1, -0.41], PINK.deep),
-    box([-0.4, 0.7, -0.425], [-0.1, 1.05, -0.41], WHITE),
-  ];
+/**
+ * The fridge of panel 6: cream, two doors hinged at the left (chrome handles on the right), the children's
+ * magnets on its front; inside, shelves with milk, an apple, cheese, a carrot and greens.
+ */
+function fridge(): BoxProp {
+  return {
+    boxes: [
+      box([-0.5, 0, -0.34], [0.5, 2.1, 0.4], CREAM),
+      ...asPart('door-top', [
+        box([-0.5, 1.36, -0.4], [0.5, 2.1, -0.34], CREAM),
+        box([-0.5, 1.36, -0.42], [0.5, 1.39, -0.4], '#c9bfae'),
+        box([0.32, 1.45, -0.46], [0.38, 1.9, -0.42], '#b8bfc9'),
+        // Magnets: a cat, a star, an apple.
+        box([-0.35, 1.7, -0.43], [-0.15, 1.88, -0.41], '#f0a04b'),
+        box([-0.33, 1.88, -0.43], [-0.29, 1.94, -0.41], '#f0a04b'),
+        box([-0.21, 1.88, -0.43], [-0.17, 1.94, -0.41], '#f0a04b'),
+        box([-0.05, 1.55, -0.43], [0.13, 1.71, -0.41], '#ffd23f'),
+        box([-0.38, 1.45, -0.43], [-0.22, 1.6, -0.41], '#d9342b'),
+      ]),
+      ...asPart('door-bottom', [
+        box([-0.5, 0, -0.4], [0.5, 1.34, -0.34], CREAM),
+        box([0.32, 0.6, -0.46], [0.38, 1.2, -0.42], '#b8bfc9'),
+        // A heart and a little note.
+        box([-0.1, 0.95, -0.43], [0.08, 1.1, -0.41], PINK.deep),
+        box([-0.4, 0.7, -0.425], [-0.1, 1.05, -0.41], WHITE),
+      ]),
+      // Inside, hidden by the closed doors.
+      box([-0.46, 0.04, -0.346], [0.46, 2.06, -0.34], '#d6e9f2'),
+      box([-0.46, 0.68, -0.352], [0.46, 0.71, -0.346], WHITE),
+      box([-0.46, 1.62, -0.352], [0.46, 1.65, -0.346], WHITE),
+      box([-0.32, 0.71, -0.38], [-0.2, 1.0, -0.346], WHITE),
+      box([-0.3, 1.0, -0.372], [-0.22, 1.04, -0.35], '#5fb8ff'),
+      box([0.08, 0.71, -0.372], [0.2, 0.83, -0.35], '#d9342b'),
+      box([0.1, 1.65, -0.372], [0.3, 1.75, -0.35], '#ffd23f'),
+      box([-0.3, 1.65, -0.372], [-0.1, 1.7, -0.35], '#f0a04b'),
+      box([-0.2, 0.04, -0.372], [0.25, 0.3, -0.35], '#9bd36b'),
+    ],
+    parts: { 'door-top': { pivot: [-0.5, 0, -0.37], axis: 'y', angle: 105 }, 'door-bottom': { pivot: [-0.5, 0, -0.37], axis: 'y', angle: 105 } },
+  };
 }
 
 /** Children's drawings pinned on the wall (panel 4): three sheets with crayon pictures (a sun, a house, a cat). */
@@ -737,27 +799,51 @@ function galleryRailing(): Box[] {
   return out;
 }
 
-/** A leaf of the arched front door (panel 1), folded back flat on the wall: planks, iron straps, a round top. */
-function doorLeaf(): Box[] {
-  const out: Box[] = [box([-0.7, 0, -0.06], [0.7, 3.4, 0.06], WOOD.mid)];
-  for (let i = 0; i < 4; i++) out.push(box([-0.7 + i * 0.35 + 0.02, 0, -0.08], [-0.7 + i * 0.35 + 0.04, 3.4, -0.06], WOOD.dark));
-  out.push(box([-0.5, 3.4, -0.06], [0.5, 3.7, 0.06], WOOD.mid));
-  for (const y of [0.6, 2.6]) out.push(box([-0.7, y, -0.09], [0.7, y + 0.1, -0.06], '#3f4248'));
-  out.push(box([-0.5, 1.6, -0.12], [-0.4, 1.75, -0.06], '#e2b13c'));
-  return out;
+/**
+ * A leaf of the arched front door (panel 1), hung in the arch: 1.5 wide and 4 high, its inner end 5 high under
+ * the arch's middle; planks, iron straps and a brass handle on both faces. Its hinge is its origin; the left
+ * leaf runs to +x (`side` 1), the right one to -x, and each opens inward (toward +z).
+ */
+function doorLeaf(side: 1 | -1): BoxProp {
+  const at = (x0: number, x1: number): [number, number] => (side > 0 ? [x0, x1] : [-x1, -x0]);
+  const b = (x0: number, y0: number, z0: number, x1: number, y1: number, z1: number, color: string): Box => {
+    const [a, c] = at(x0, x1);
+    return box([a, y0, z0], [c, y1, z1], color);
+  };
+  const boxes: Box[] = [b(0, 0, -0.06, 1.5, 4, 0.06, WOOD.mid), b(1, 4, -0.06, 1.5, 4.95, 0.06, WOOD.mid)];
+  for (const z of [-1, 1]) {
+    const [zIn, zOut] = z < 0 ? [-0.075, -0.06] : [0.06, 0.075];
+    for (const x of [0.36, 0.72, 1.08]) boxes.push(b(x, 0.05, zIn, x + 0.03, 3.95, zOut, WOOD.dark));
+    boxes.push(b(1.08, 4, zIn, 1.11, 4.9, zOut, WOOD.dark));
+    for (const y of [0.6, 3.1]) boxes.push(b(0.05, y, z < 0 ? -0.08 : 0.06, 1.45, y + 0.1, z < 0 ? -0.06 : 0.08, '#3f4248'));
+    boxes.push(b(1.28, 1.7, z < 0 ? -0.12 : 0.06, 1.38, 1.85, z < 0 ? -0.06 : 0.12, '#e2b13c'));
+  }
+  return { boxes: asPart('leaf', boxes), parts: { leaf: { pivot: [0, 0, 0], axis: 'y', angle: side > 0 ? -95 : 95 } } };
 }
 
-/** The cat-shaped mailbox of panel 1: a post, a white box with a cat's ears and face, a red flag. */
-function catMailbox(): Box[] {
-  return [
-    box([-0.07, 0, -0.07], [0.07, 1.0, 0.07], WOOD.dark),
-    box([-0.3, 1.0, -0.36], [0.3, 1.45, 0.36], WHITE),
-    box([-0.26, 1.0, -0.38], [0.26, 1.08, -0.36], '#e8e0d2'),
-    box([-0.1, 1.15, -0.39], [0.1, 1.2, -0.36], INK),
-    ...catFace(0, 1.62, 0.5, -0.12, '#f0a04b', 0.12),
-    box([0.3, 1.1, 0.0], [0.34, 1.6, 0.06], '#d9342b'),
-    box([0.3, 1.45, 0.06], [0.34, 1.6, 0.26], '#d9342b'),
-  ];
+/**
+ * The cat-shaped mailbox of panel 1: a post, a white box with a cat's ears and face, a red flag; its front is a
+ * flap with the letter slot, hinged at the bottom, and a letter waits inside.
+ */
+function catMailbox(): BoxProp {
+  return {
+    boxes: [
+      box([-0.07, 0, -0.07], [0.07, 1.0, 0.07], WOOD.dark),
+      box([-0.3, 1.0, -0.36], [0.3, 1.45, 0.36], WHITE),
+      ...asPart('flap', [
+        box([-0.26, 1.02, -0.385], [0.26, 1.42, -0.36], WHITE),
+        box([-0.26, 1.02, -0.395], [0.26, 1.08, -0.385], '#e8e0d2'),
+        box([-0.1, 1.15, -0.4], [0.1, 1.2, -0.385], INK),
+      ]),
+      box([-0.24, 1.04, -0.366], [0.24, 1.4, -0.36], INK),
+      box([-0.13, 1.08, -0.372], [0.13, 1.3, -0.366], WHITE),
+      box([-0.03, 1.15, -0.375], [0.03, 1.19, -0.372], PINK.deep),
+      ...catFace(0, 1.62, 0.5, -0.12, '#f0a04b', 0.12),
+      box([0.3, 1.1, 0.0], [0.34, 1.6, 0.06], '#d9342b'),
+      box([0.3, 1.45, 0.06], [0.34, 1.6, 0.26], '#d9342b'),
+    ],
+    parts: { flap: { pivot: [0, 1.02, -0.3725], axis: 'x', angle: -100 } },
+  };
 }
 
 /** The flag of panel 1 on its pole: pink cloth with a white cat's face on both sides. */
@@ -795,11 +881,12 @@ export function nhaCuaBeProps(): Record<string, BoxProp> {
     'ncb-cat-rug': { boxes: catRug() },
     'ncb-vanity': { boxes: vanity() },
     'ncb-sofa': { boxes: sofa() },
-    'ncb-fridge': { boxes: fridge() },
+    'ncb-fridge': fridge(),
     'ncb-drawings': { boxes: drawings() },
     'ncb-railing': { boxes: galleryRailing() },
-    'ncb-door-leaf': { boxes: doorLeaf() },
-    'ncb-cat-mailbox': { boxes: catMailbox() },
+    'ncb-door-left': doorLeaf(1),
+    'ncb-door-right': doorLeaf(-1),
+    'ncb-cat-mailbox': catMailbox(),
     'ncb-cat-flag': { boxes: catFlag() },
     'ncb-sign-cat': { boxes: signCat() },
     'ncb-watering-can': { boxes: wateringCan() },
@@ -808,7 +895,7 @@ export function nhaCuaBeProps(): Record<string, BoxProp> {
     'ncb-newel': { boxes: newelPost() },
     'ncb-runner-rise': { boxes: stairRunner(true) },
     'ncb-runner-flat': { boxes: stairRunner(false) },
-    'ncb-under-stair-door': { boxes: underStairDoor() },
+    'ncb-under-stair-door': underStairDoor(),
     'ncb-bookcase-tall': { boxes: tallBookcase() },
     'ncb-rose-vine': { boxes: roseVine() },
     'ncb-flower-box': { boxes: flowerBox() },
@@ -819,7 +906,7 @@ export function nhaCuaBeProps(): Record<string, BoxProp> {
     'ncb-hedge': { boxes: hedge() },
     ...styles(BEDS, styledBed),
     ...styles(DESKS, ([top, body, knob]) => styledDesk(top, body, knob)),
-    ...styles(WARDROBES, ([body, doors, crown, mark]) => styledWardrobe(body, doors, crown, mark)),
+    ...Object.fromEntries(Object.entries(WARDROBES).map(([id, [body, doors, crown, mark]]) => [id, styledWardrobe(body, doors, crown, mark)])),
     ...styles(RUGS, (make) => make()),
     ...styles(CURTAINS, ([main, deep, pale]) => styledCurtains(main, deep, pale)),
     ...styles(FLOOR_LAMPS, (make) => make()),

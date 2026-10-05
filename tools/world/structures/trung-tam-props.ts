@@ -503,9 +503,17 @@ export function trungTamProps(regionNames: Readonly<Record<string, string>>): Re
 /** Height of a prop's top (for its line in content/world/models.json). */
 export const propHeight = (prop: BoxProp): number => round(Math.max(...prop.boxes.flatMap((b) => [b.from[1], b.to[1]])));
 
-/** One box per line, so the file stays readable and diffable. */
+/** One box per line (and one moving part per line), so the file stays readable and diffable. */
 export function catalogJson(props: Record<string, BoxProp>): string {
-  const entries = Object.entries(props).map(([id, prop]) => `    ${JSON.stringify(id)}: {\n      "boxes": [\n${prop.boxes.map((b) => `        ${JSON.stringify(b)}`).join(',\n')}\n      ]\n    }`);
+  const entries = Object.entries(props).map(([id, prop]) => {
+    const boxes = `      "boxes": [\n${prop.boxes.map((b) => `        ${JSON.stringify(b)}`).join(',\n')}\n      ]`;
+    const parts = prop.parts
+      ? `,\n      "parts": {\n${Object.entries(prop.parts)
+          .map(([name, part]) => `        ${JSON.stringify(name)}: ${JSON.stringify(part)}`)
+          .join(',\n')}\n      }`
+      : '';
+    return `    ${JSON.stringify(id)}: {\n${boxes}${parts}\n    }`;
+  });
   return `{\n  "version": 1,\n  "props": {\n${entries.join(',\n')}\n  }\n}\n`;
 }
 

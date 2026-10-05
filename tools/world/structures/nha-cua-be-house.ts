@@ -192,7 +192,7 @@ export function placeHomeCottage(world: WorldWriter, x0: number, z0: number, gro
       else if (frame) put(world, x, y, z0, b.log);
     }
   }
-  // A lantern either side, clear of the door's leaves folded back on the wall.
+  // A lantern either side of the arch.
   for (const x of [doorX0 - 3, doorX0 + 5]) put(world, x, groundY + 3, z0 - 1, b.lantern);
   // The doorways' sills are floor, so the walk outside runs on into the house.
   for (let x = doorX0; x < doorX0 + 3; x++) put(world, x, groundY - 1, z0, b.planks);

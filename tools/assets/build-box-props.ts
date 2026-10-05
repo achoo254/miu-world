@@ -73,15 +73,37 @@ export async function buildBoxProp(prop: BoxProp): Promise<Uint8Array> {
       .setAttribute('COLOR_0', accessor(new Uint8Array(mesh.colors), 'VEC4').setNormalized(true))
       .setIndices(accessor(new Uint16Array(mesh.indices), 'SCALAR'));
   };
-  const mesh = doc.createMesh('box-prop');
-  const plain = prop.boxes.filter((b) => !b.glow);
-  if (plain.length > 0) mesh.addPrimitive(primitiveOf(plain).setMaterial(doc.createMaterial('box-prop').setBaseColorFactor([1, 1, 1, 1]).setMetallicFactor(0).setRoughnessFactor(1)));
-  for (const color of [...new Set(prop.boxes.filter((b) => b.glow).map((b) => b.color))].sort()) {
-    const linear = [1, 3, 5].map((i) => toLinear(parseInt(color.slice(i, i + 2), 16) / 255)) as [number, number, number];
-    const glow = doc.createMaterial(`glow-${color.slice(1)}`).setBaseColorFactor([1, 1, 1, 1]).setEmissiveFactor(linear).setMetallicFactor(0).setRoughnessFactor(1);
-    mesh.addPrimitive(primitiveOf(prop.boxes.filter((b) => b.glow && b.color === color)).setMaterial(glow));
+  // One plain material and one per glowing colour, shared by the still body and the moving parts.
+  let plainMaterial: ReturnType<Document['createMaterial']> | null = null;
+  const glowMaterials = new Map<string, ReturnType<Document['createMaterial']>>();
+  const meshOf = (name: string, boxes: BoxProp['boxes']) => {
+    const mesh = doc.createMesh(name);
+    const plain = boxes.filter((b) => !b.glow);
+    if (plain.length > 0) {
+      plainMaterial ??= doc.createMaterial('box-prop').setBaseColorFactor([1, 1, 1, 1]).setMetallicFactor(0).setRoughnessFactor(1);
+      mesh.addPrimitive(primitiveOf(plain).setMaterial(plainMaterial));
+    }
+    for (const color of [...new Set(boxes.filter((b) => b.glow).map((b) => b.color))].sort()) {
+      let glow = glowMaterials.get(color);
+      if (!glow) {
+        const linear = [1, 3, 5].map((i) => toLinear(parseInt(color.slice(i, i + 2), 16) / 255)) as [number, number, number];
+        glow = doc.createMaterial(`glow-${color.slice(1)}`).setBaseColorFactor([1, 1, 1, 1]).setEmissiveFactor(linear).setMetallicFactor(0).setRoughnessFactor(1);
+        glowMaterials.set(color, glow);
+      }
+      mesh.addPrimitive(primitiveOf(boxes.filter((b) => b.glow && b.color === color)).setMaterial(glow));
+    }
+    return mesh;
+  };
+  const scene = doc.createScene('box-prop');
+  const still = prop.boxes.filter((b) => b.part === undefined);
+  if (still.length > 0) scene.addChild(doc.createNode('box-prop').setMesh(meshOf('box-prop', still)));
+  // Each moving part is its own node standing at its pivot (its boxes drawn relative to it), so the game turns
+  // it about that point; `axis` and `angle` ride along as the node's extras.
+  for (const [name, { pivot, axis, angle }] of Object.entries(prop.parts ?? {}).sort(([a], [b]) => a.localeCompare(b))) {
+    const shift = (v: readonly [number, number, number]): [number, number, number] => [v[0] - pivot[0], v[1] - pivot[1], v[2] - pivot[2]];
+    const boxes = prop.boxes.filter((b) => b.part === name).map((b) => ({ ...b, from: shift(b.from), to: shift(b.to) }));
+    scene.addChild(doc.createNode(`part-${name}`).setTranslation([...pivot]).setExtras({ axis, angle }).setMesh(meshOf(`part-${name}`, boxes)));
   }
-  doc.createScene('box-prop').addChild(doc.createNode('box-prop').setMesh(mesh));
   return new NodeIO().writeBinary(doc);
 }
 

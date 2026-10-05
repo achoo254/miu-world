@@ -94,7 +94,8 @@ const H = {
   fridge: `${BX}/ncb-fridge.glb`,
   drawings: `${BX}/ncb-drawings.glb`,
   railing: `${BX}/ncb-railing.glb`,
-  doorLeaf: `${BX}/ncb-door-leaf.glb`,
+  doorLeft: `${BX}/ncb-door-left.glb`,
+  doorRight: `${BX}/ncb-door-right.glb`,
   mailbox: `${BX}/ncb-cat-mailbox.glb`,
   wateringCan: `${BX}/ncb-watering-can.glb`,
   stairRailRise: `${BX}/ncb-stair-rail-rise.glb`,
@@ -345,9 +346,10 @@ function buildHome(ctx: ZoneMapContext, decor: HomeDecorCatalog): void {
   for (const [x, y, z] of home.sills) ctx.propAt(K.flowers[Math.floor(x) % K.flowers.length] ?? K.bush, [x, y, z], (Math.floor(x) * 37) % 360);
   // Window boxes of flowers under the upper front windows.
   for (const w of home.windows) if (w.face === 'north' && w.at[1] > STAND + 4) ctx.propAt(H.flowerBox, [w.at[0], w.at[1] - 0.42, HOME.z0 - 0.22], 0);
-  // The door's two leaves folded back on the wall either side of the arch.
-  ctx.propAt(H.doorLeaf, [home.door.x0 - 1.25, STAND, HOME.z0 - 0.08], 0);
-  ctx.propAt(H.doorLeaf, [home.door.x0 + home.door.width + 1.25, STAND, HOME.z0 - 0.08], 0);
+  // The front door: two leaves hung in the arch from its sides, in the middle of the wall; they open inward as the
+  // child comes near (or taps them) and close behind her (the game's door effect).
+  ctx.propAt(H.doorLeft, [home.door.x0, STAND, HOME.z0 + 0.5], 0);
+  ctx.propAt(H.doorRight, [home.door.x0 + home.door.width, STAND, HOME.z0 + 0.5], 0);
   furnish(ctx, home);
   // The house's own colours (panel 12): its roof, ridge, walls up and down, with the hen house's and the shed's roofs.
   const { x0: hx0, z0: hz0 } = HOME;
@@ -630,7 +632,8 @@ function furnish(ctx: ZoneMapContext, home: HomeLayout): void {
   }
 
   // The staircase (panel 2): balusters and a handrail along the stringer, the newel posts with their lanterns,
-  // the red runner up the steps, the little cupboard under the stairs, a lantern over the landing.
+  // the red runner up the steps, the little cupboard under the stairs (half the height of a door, so it never
+  // reads as the house's door), a lantern over the landing.
   for (const piece of home.stairPieces) {
     const model = { 'rail-rise': H.stairRailRise, 'rail-flat': H.stairRailFlat, newel: H.newel, 'runner-rise': H.runnerRise, 'runner-flat': H.runnerFlat }[piece.kind];
     ctx.propAt(model, piece.at, 0);

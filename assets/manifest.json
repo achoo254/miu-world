@@ -21542,8 +21542,8 @@
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
       "derivedFrom": [],
-      "sha256": "9f66a5f9c31d9e4693874dfdde75734cea973de950af73c535dabb1f1cf2cc90",
-      "bytes": 22624
+      "sha256": "a42ec7c9260ebad63b58314e98ed50a0bf4cb181d522fe47634a7a182995295f",
+      "bytes": 26348
     },
     {
       "path": "generated/box-props/ncb-cat-rug.glb",
@@ -21658,12 +21658,20 @@
       "bytes": 7736
     },
     {
-      "path": "generated/box-props/ncb-door-leaf.glb",
+      "path": "generated/box-props/ncb-door-left.glb",
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
       "derivedFrom": [],
-      "sha256": "28dd7c5dbb9f4481c75625fe0b88ac75f440eed9a1331a48cf7236b0c2f96fc5",
-      "bytes": 7736
+      "sha256": "44c7674c1b0a5250c1899b66cf76d58e5d93b1050c844eb01788bd560e3470fc",
+      "bytes": 12952
+    },
+    {
+      "path": "generated/box-props/ncb-door-right.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "cb09c5d4dc8e890fe437285e600c11f285e261a29fda7fe56a7836606f939e88",
+      "bytes": 12952
     },
     {
       "path": "generated/box-props/ncb-drawings.glb",
@@ -21726,8 +21734,8 @@
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
       "derivedFrom": [],
-      "sha256": "92ba5433b30e8b4642ba38d8a45ee9f752ff20e80cccbce62a13a4635d8e07c6",
-      "bytes": 9196
+      "sha256": "c379b1733a887f530a2db5daf06d12d3a276c6eb5b803a1d5e07811a5bb29298",
+      "bytes": 18860
     },
     {
       "path": "generated/box-props/ncb-fruit-bowl.glb",
@@ -22062,8 +22070,8 @@
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
       "derivedFrom": [],
-      "sha256": "021ea6a689a9b84cf7c7bb1ad28ebfb30745582a15ce0973c2e9dcf4c75f7a4c",
-      "bytes": 8460
+      "sha256": "9aac092f38ebf48a47a1d1293b5f6a655b800dc2c8cf099d5632763860b1d142",
+      "bytes": 15176
     },
     {
       "path": "generated/box-props/ncb-uniform-calendar.glb",
@@ -22094,48 +22102,48 @@
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
       "derivedFrom": [],
-      "sha256": "2c77ef64bca0905beb5b58e7325c1a70a8e7224205042cbc9658e9b8c67e8102",
-      "bytes": 21132
+      "sha256": "94856658acfdec43e82a6a144462abe212e1226c3ab98a413855f9e866cdb36f",
+      "bytes": 27136
     },
     {
       "path": "generated/box-props/ncb-wardrobe-lilac.glb",
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
       "derivedFrom": [],
-      "sha256": "682fe2d53d362482d283ac84e5cabe36da9b9f87a6c42de023eeba1cbbfbc5da",
-      "bytes": 21132
+      "sha256": "c544be2ba9f2dc3a2ece7f663f6aa5587151b830e5eb7dd2be8182cf84717781",
+      "bytes": 27136
     },
     {
       "path": "generated/box-props/ncb-wardrobe-mint.glb",
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
       "derivedFrom": [],
-      "sha256": "85f0c1981ba321acf705d0ce1774d3c80bf4992ff49066499c4aa41a3441deda",
-      "bytes": 21132
+      "sha256": "a4d8e4be985a77ed53c89bcccea49563516714fd6b6cab3e2386e1e0b80ece4b",
+      "bytes": 27136
     },
     {
       "path": "generated/box-props/ncb-wardrobe-white.glb",
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
       "derivedFrom": [],
-      "sha256": "8b54a438debcb5736984cf25378e0d320b82887be999a42a05e8f6c934612497",
-      "bytes": 21132
+      "sha256": "57800af1e88ba7f49b90a8eab9fc58ab5293270327d265b1821107ba1a7d5e1d",
+      "bytes": 27136
     },
     {
       "path": "generated/box-props/ncb-wardrobe-yellow.glb",
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
       "derivedFrom": [],
-      "sha256": "5915b628a6e187bdcc8a26d2f6290173d8f7f0d51d9c8e5af79d0bf8f45e6ade",
-      "bytes": 21132
+      "sha256": "d1af1d18b5cf868634bd510863ecc19e841b6b64721e51753025497ae297335d",
+      "bytes": 27136
     },
     {
       "path": "generated/box-props/ncb-wardrobe.glb",
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
       "derivedFrom": [],
-      "sha256": "2c10b266a0d4ccf9eda7ae051759e5d388ad34aa2a5da8780630abb236f80f09",
-      "bytes": 21132
+      "sha256": "e84aaa028fa0a75aa70ef122d10669456d8143f5b472834a1173aaeae84fdfd0",
+      "bytes": 27136
     },
     {
       "path": "generated/box-props/ncb-watering-can.glb",
@@ -22246,8 +22254,8 @@
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
       "derivedFrom": [],
-      "sha256": "4d453928966f97cda166af4d113ba8f4ae5924a2c8f1f1503f1a5b56bf2a5820",
-      "bytes": 5508
+      "sha256": "cdd142b73c53e97991947828f3b25cd77bcd26df406b0f25ae206119eb5113e9",
+      "bytes": 9224
     },
     {
       "path": "generated/box-props/nt-milk-can.glb",
@@ -22646,8 +22654,8 @@
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
       "derivedFrom": [],
-      "sha256": "0251df56a6cab225027d3a57e1b0a7c48987b8c82a12324f7a43e610ce979d7b",
-      "bytes": 10680
+      "sha256": "252d37f97fa24825491a0e048025d1e0318e9dc0921b52c19c6cdc5d9edd0f84",
+      "bytes": 12228
     },
     {
       "path": "generated/box-props/th-art-board.glb",
@@ -41426,8 +41434,8 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nha-cua-be-map.ts",
       "derivedFrom": [],
-      "sha256": "e65db3236e56391eddf3bebe31a3b826dcc7e0fb5f8d19fec65b6d977285451b",
-      "bytes": 202732
+      "sha256": "1e5fe61d41137e20af5391f25299f77ea6519b8c5f8ab49aebf7e7f5edee429c",
+      "bytes": 202725
     },
     {
       "path": "generated/world/nha-cua-be/horizon.bin",

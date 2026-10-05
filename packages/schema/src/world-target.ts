@@ -88,19 +88,40 @@ const BoxVec = z.tuple([z.number(), z.number(), z.number()]);
  * (origin at the bottom centre) with a colour each; tools/assets/build-box-props.ts builds them into
  * generated/box-props/<id>.glb.
  */
-export const BoxProp = z.strictObject({
-  boxes: z
-    .array(
-      z.strictObject({
-        from: BoxVec,
-        to: BoxVec,
-        color: z.string().regex(/^#[0-9a-f]{6}$/),
-        /** Lit from within at its own colour (a lantern's glass, a lit window): bright by day, aglow at dusk. */
-        glow: z.boolean().optional(),
-      }),
-    )
-    .min(1),
-});
+export const BoxProp = z
+  .strictObject({
+    boxes: z
+      .array(
+        z.strictObject({
+          from: BoxVec,
+          to: BoxVec,
+          color: z.string().regex(/^#[0-9a-f]{6}$/),
+          /** Lit from within at its own colour (a lantern's glass, a lit window): bright by day, aglow at dusk. */
+          glow: z.boolean().optional(),
+          /** The moving part this box belongs to (`parts`): a door, a lid, a swing's seat. */
+          part: ContentId.optional(),
+        }),
+      )
+      .min(1),
+    /**
+     * Parts that move in the game (a wardrobe's doors, a mailbox's flap, a swing's seat and ropes): each turns
+     * about `axis` through `pivot` (block units, the prop's own frame); `angle` (degrees) is how far it opens,
+     * or for a swing how far it swings either way.
+     */
+    parts: z
+      .record(ContentId, z.strictObject({ pivot: BoxVec, axis: z.enum(['x', 'y', 'z']), angle: z.number().min(-180).max(180) }))
+      .optional(),
+  })
+  .superRefine((prop, ctx) => {
+    const declared = new Set(Object.keys(prop.parts ?? {}));
+    const used = new Set<string>();
+    for (const [i, box] of prop.boxes.entries()) {
+      if (box.part === undefined) continue;
+      used.add(box.part);
+      if (!declared.has(box.part)) ctx.addIssue({ code: 'custom', path: ['boxes', i, 'part'], message: `part ${box.part} is not declared in parts` });
+    }
+    for (const part of declared) if (!used.has(part)) ctx.addIssue({ code: 'custom', path: ['parts', part], message: `part ${part} has no boxes` });
+  });
 export type BoxProp = z.infer<typeof BoxProp>;
 
 export const BoxPropCatalog = z.strictObject({ version: z.literal(1), props: z.record(ContentId, BoxProp) });
