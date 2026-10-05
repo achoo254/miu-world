@@ -11,6 +11,8 @@ import { buildAccessoryCatalog, type AccessoryItem } from '@miu/voxel/accessory-
 import { speciesSchema } from '@miu/voxel/character-recipe';
 import { RecipeCatalog, type Recipe } from '@miu/schema/cooking';
 import { QuestTargetCatalog, type QuestTarget } from '@miu/schema/world-target';
+import { AchievementCatalog, achievementIssues, type AchievementEntry } from '@miu/schema/achievement';
+import { SkillGiftCatalog, skillGiftIssues } from '@miu/schema/progression';
 import { z } from 'zod';
 import { readCurriculum } from '../worksheet/curriculum-books';
 import { CONTENT_DIR } from './content-dir';
@@ -48,6 +50,29 @@ export interface ContentCatalog {
   recipes: ReadonlyMap<string, Recipe>;
   /** Interactive targets in the world (content/world/targets.json), by id. */
   targets: ReadonlyMap<string, QuestTarget>;
+  /** What each skill level gives (content/progression/skill-gifts.json). */
+  skillGifts: SkillGiftCatalog;
+  /** Achievements (content/progression/achievements.json), by id, in catalogue order. */
+  achievements: ReadonlyMap<string, AchievementEntry>;
+}
+
+/**
+ * The skill gifts and the achievements, checked against the skills, regions and wearables; a catalogue that does
+ * not fit fails the boot. Goals in reach and pictures are checked by `pnpm content:check`.
+ */
+export function loadProgression(
+  dir: string,
+  context: { skills: ReadonlySet<string>; subjects: ReadonlySet<string>; regions: ReadonlySet<string>; accessories: ReadonlyMap<string, AccessoryItem> },
+): { skillGifts: SkillGiftCatalog; achievements: Map<string, AchievementEntry> } {
+  const wearables = new Map([...context.accessories.values()].map((item) => [item.id, { award: item.unlock?.award === true }]));
+  const skillGifts = readContentJson(SkillGiftCatalog, path.join(dir, 'progression/skill-gifts.json'));
+  const achievements = readContentJson(AchievementCatalog, path.join(dir, 'progression/achievements.json'));
+  const issues = [
+    ...skillGiftIssues(skillGifts, { skills: context.skills, wearables }),
+    ...achievementIssues(achievements, { ...context, wearables, giftItems: new Set(skillGifts.items.map((i) => i.item)) }),
+  ];
+  if (issues.length > 0) throw new Error(`invalid progression content: ${issues.join('; ')}`);
+  return { skillGifts, achievements: new Map(achievements.achievements.map((a) => [a.id, a])) };
 }
 
 /** The collectible sets, checked against the regions; a catalogue that does not fit fails the boot. */
@@ -157,5 +182,6 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir 
     collectibles: loadCollectibles(dir, regions),
     recipes: new Map(readContentJson(RecipeCatalog, path.join(dir, 'recipes.json')).recipes.map((r) => [r.id, r])),
     targets,
+    ...loadProgression(dir, { skills: skillIds, subjects: new Set(catalog.subjects.map((s) => s.id)), regions: new Set(regions.regions.map((r) => r.id)), accessories }),
   };
 }

@@ -1,0 +1,974 @@
+{
+  "version": 1,
+  "achievements": [
+    {
+      "id": "buoc-chan-dau-tien",
+      "category": "kham-pha",
+      "name": "Bước chân đầu tiên",
+      "description": "{name} học xong bài đầu tiên ở một vùng đất bất kỳ.",
+      "icon": "map",
+      "metric": {
+        "kind": "regions-started"
+      },
+      "goal": 1,
+      "reward": {
+        "xp": 20,
+        "coin": 20
+      }
+    },
+    {
+      "id": "lu-hanh-ba-mien",
+      "category": "kham-pha",
+      "name": "Lữ hành ba miền",
+      "description": "Ghé ba vùng đất khác nhau và học ở mỗi nơi ít nhất một bài.",
+      "icon": "map",
+      "metric": {
+        "kind": "regions-started"
+      },
+      "goal": 3,
+      "reward": {
+        "xp": 40,
+        "coin": 40
+      }
+    },
+    {
+      "id": "nua-vong-the-gioi",
+      "category": "kham-pha",
+      "name": "Nửa vòng thế giới",
+      "description": "Đặt chân và học bài ở sáu vùng đất của thế giới.",
+      "icon": "airplane",
+      "metric": {
+        "kind": "regions-started"
+      },
+      "goal": 6,
+      "reward": {
+        "xp": 60,
+        "coin": 60
+      }
+    },
+    {
+      "id": "khap-muon-noi",
+      "category": "kham-pha",
+      "name": "Khắp muôn nơi",
+      "description": "{name} đã học bài ở cả mười hai vùng đất, không bỏ sót nơi nào!",
+      "icon": "airplane",
+      "metric": {
+        "kind": "regions-started"
+      },
+      "goal": 12,
+      "reward": {
+        "xp": 100,
+        "coin": 100,
+        "item": "hand-thanh-tich-kinh-vien-vong"
+      }
+    },
+    {
+      "id": "vung-dat-tron-ven",
+      "category": "kham-pha",
+      "name": "Một vùng đất trọn vẹn",
+      "description": "Hoàn thành mọi bài học của một vùng đất.",
+      "icon": "trophy",
+      "metric": {
+        "kind": "regions-complete"
+      },
+      "goal": 1,
+      "reward": {
+        "xp": 50,
+        "coin": 50
+      }
+    },
+    {
+      "id": "ba-vung-tron-ven",
+      "category": "kham-pha",
+      "name": "Ba vùng đất trọn vẹn",
+      "description": "Học hết bài ở ba vùng đất khác nhau.",
+      "icon": "crown",
+      "metric": {
+        "kind": "regions-complete"
+      },
+      "goal": 3,
+      "reward": {
+        "xp": 80,
+        "coin": 100
+      }
+    },
+    {
+      "id": "nha-tham-hiem-lung-danh",
+      "category": "kham-pha",
+      "name": "Nhà thám hiểm lừng danh",
+      "description": "Hoàn thành mọi bài học trên khắp thế giới của {name}.",
+      "icon": "crown",
+      "metric": {
+        "kind": "regions-complete"
+      },
+      "goal": 12,
+      "reward": {
+        "xp": 200,
+        "coin": 200,
+        "item": "hat-thanh-tich-tham-hiem"
+      }
+    },
+    {
+      "id": "ban-cua-rung-xanh",
+      "category": "kham-pha",
+      "name": "Bạn của rừng xanh",
+      "description": "Học xong năm bài trong Khu rừng bí mật.",
+      "icon": "tree",
+      "metric": {
+        "kind": "lessons",
+        "region": "khu-rung-bi-mat"
+      },
+      "goal": 5,
+      "reward": {
+        "xp": 30,
+        "coin": 30
+      }
+    },
+    {
+      "id": "hoc-tro-truong-xanh",
+      "category": "kham-pha",
+      "name": "Học trò trường xanh",
+      "description": "Học xong năm bài ở Trường học.",
+      "icon": "pencil",
+      "metric": {
+        "kind": "lessons",
+        "region": "truong-hoc"
+      },
+      "goal": 5,
+      "reward": {
+        "xp": 30,
+        "coin": 30
+      }
+    },
+    {
+      "id": "khach-quen-cho-phien",
+      "category": "kham-pha",
+      "name": "Khách quen chợ phiên",
+      "description": "Học xong năm bài giữa những gian hàng Chợ phiên.",
+      "icon": "basket",
+      "metric": {
+        "kind": "lessons",
+        "region": "cho-phien"
+      },
+      "goal": 5,
+      "reward": {
+        "xp": 30,
+        "coin": 30
+      }
+    },
+    {
+      "id": "nguoi-ban-ven-song",
+      "category": "kham-pha",
+      "name": "Người bạn ven sông",
+      "description": "Học xong năm bài bên bờ Làng Ven Sông.",
+      "icon": "sailboat",
+      "metric": {
+        "kind": "lessons",
+        "region": "lang-ven-song"
+      },
+      "goal": 5,
+      "reward": {
+        "xp": 30,
+        "coin": 30
+      }
+    },
+    {
+      "id": "hiep-si-tap-su",
+      "category": "kham-pha",
+      "name": "Hiệp sĩ tập sự",
+      "description": "Học xong năm bài trong Lâu đài.",
+      "icon": "key",
+      "metric": {
+        "kind": "lessons",
+        "region": "lau-dai"
+      },
+      "goal": 5,
+      "reward": {
+        "xp": 30,
+        "coin": 30
+      }
+    },
+    {
+      "id": "hang-xom-than-thiet",
+      "category": "kham-pha",
+      "name": "Hàng xóm thân thiết",
+      "description": "Học xong năm bài cùng bà con Xóm Mái Ấm.",
+      "icon": "house",
+      "metric": {
+        "kind": "lessons",
+        "region": "xom-mai-am"
+      },
+      "goal": 5,
+      "reward": {
+        "xp": 30,
+        "coin": 30
+      }
+    },
+    {
+      "id": "nguoi-mo-cong",
+      "category": "kham-pha",
+      "name": "Người mở cổng tri thức",
+      "description": "Đủ kỹ năng để mở một Cổng tri thức trên đường đi.",
+      "icon": "oldKey",
+      "metric": {
+        "kind": "gates-opened"
+      },
+      "goal": 1,
+      "reward": {
+        "xp": 30,
+        "coin": 30
+      }
+    },
+    {
+      "id": "bac-thay-mo-cong",
+      "category": "kham-pha",
+      "name": "Bậc thầy mở cổng",
+      "description": "Mở được ba Cổng tri thức khác nhau trên các vùng đất.",
+      "icon": "oldKey",
+      "metric": {
+        "kind": "gates-opened"
+      },
+      "goal": 3,
+      "reward": {
+        "xp": 80,
+        "coin": 80
+      }
+    },
+    {
+      "id": "bai-hoc-dau-tien",
+      "category": "hoc-tap",
+      "name": "Bài học đầu tiên",
+      "description": "{name} hoàn thành bài học đầu tiên của mình.",
+      "icon": "books",
+      "metric": {
+        "kind": "lessons"
+      },
+      "goal": 1,
+      "reward": {
+        "xp": 20,
+        "coin": 20
+      }
+    },
+    {
+      "id": "mot-chong-sach",
+      "category": "hoc-tap",
+      "name": "Một chồng sách",
+      "description": "Hoàn thành mười bài học.",
+      "icon": "books",
+      "metric": {
+        "kind": "lessons"
+      },
+      "goal": 10,
+      "reward": {
+        "xp": 50,
+        "coin": 50
+      }
+    },
+    {
+      "id": "ba-muoi-bai-hoc",
+      "category": "hoc-tap",
+      "name": "Ba mươi trang vở",
+      "description": "Hoàn thành ba mươi bài học.",
+      "icon": "bookmarkTabs",
+      "metric": {
+        "kind": "lessons"
+      },
+      "goal": 30,
+      "reward": {
+        "xp": 80,
+        "coin": 80
+      }
+    },
+    {
+      "id": "sau-muoi-bai-hoc",
+      "category": "hoc-tap",
+      "name": "Sáu mươi bài giỏi",
+      "description": "Hoàn thành sáu mươi bài học.",
+      "icon": "scroll",
+      "metric": {
+        "kind": "lessons"
+      },
+      "goal": 60,
+      "reward": {
+        "xp": 120,
+        "coin": 120
+      }
+    },
+    {
+      "id": "vuong-mien-tri-thuc",
+      "category": "hoc-tap",
+      "name": "Vương miện tri thức",
+      "description": "Hoàn thành chín mươi bài học, gần như cả cuốn sách!",
+      "icon": "crown",
+      "metric": {
+        "kind": "lessons"
+      },
+      "goal": 90,
+      "reward": {
+        "xp": 200,
+        "coin": 200,
+        "item": "hat-thanh-tich-vuong-mien"
+      }
+    },
+    {
+      "id": "nam-ngoi-sao",
+      "category": "hoc-tap",
+      "name": "Năm ngôi sao",
+      "description": "Đạt ba sao ở năm bài học.",
+      "icon": "star",
+      "metric": {
+        "kind": "three-stars"
+      },
+      "goal": 5,
+      "reward": {
+        "xp": 30,
+        "coin": 30
+      }
+    },
+    {
+      "id": "hai-muoi-ngoi-sao",
+      "category": "hoc-tap",
+      "name": "Bầu trời hai mươi sao",
+      "description": "Đạt ba sao ở hai mươi bài học.",
+      "icon": "glowingStar",
+      "metric": {
+        "kind": "three-stars"
+      },
+      "goal": 20,
+      "reward": {
+        "xp": 80,
+        "coin": 80
+      }
+    },
+    {
+      "id": "kinh-sao-sang",
+      "category": "hoc-tap",
+      "name": "Chòm sao rực rỡ",
+      "description": "Đạt ba sao ở năm mươi bài học.",
+      "icon": "glowingStar",
+      "metric": {
+        "kind": "three-stars"
+      },
+      "goal": 50,
+      "reward": {
+        "xp": 150,
+        "coin": 150,
+        "item": "glasses-thanh-tich-sao-sang"
+      }
+    },
+    {
+      "id": "on-bai-cham-chi",
+      "category": "hoc-tap",
+      "name": "Ôn bài chăm chỉ",
+      "description": "Chơi bài học một trăm lượt, kể cả những lần chơi lại để ôn.",
+      "icon": "fountainPen",
+      "metric": {
+        "kind": "quest-runs"
+      },
+      "goal": 100,
+      "reward": {
+        "xp": 100,
+        "coin": 100
+      }
+    },
+    {
+      "id": "len-cap-nam",
+      "category": "hoc-tap",
+      "name": "Lớn thêm một chút",
+      "description": "{name} đạt cấp 5.",
+      "icon": "sparkles",
+      "metric": {
+        "kind": "player-level"
+      },
+      "goal": 5,
+      "reward": {
+        "xp": 30,
+        "coin": 40
+      }
+    },
+    {
+      "id": "len-cap-muoi",
+      "category": "hoc-tap",
+      "name": "Cấp mười rạng rỡ",
+      "description": "{name} đạt cấp 10.",
+      "icon": "sparkles",
+      "metric": {
+        "kind": "player-level"
+      },
+      "goal": 10,
+      "reward": {
+        "xp": 60,
+        "coin": 80
+      }
+    },
+    {
+      "id": "tay-tinh-nhanh-nhen",
+      "category": "hoc-tap",
+      "name": "Tay tính nhanh nhẹn",
+      "description": "Đưa kỹ năng Phép cộng lên cấp 5.",
+      "icon": "abacus",
+      "metric": {
+        "kind": "skill-level",
+        "skill": "phep-cong"
+      },
+      "goal": 5,
+      "reward": {
+        "xp": 40,
+        "coin": 40
+      }
+    },
+    {
+      "id": "doc-hieu-sau-sac",
+      "category": "hoc-tap",
+      "name": "Đọc hiểu sâu sắc",
+      "description": "Đưa kỹ năng Đọc hiểu lên cấp 5.",
+      "icon": "books",
+      "metric": {
+        "kind": "skill-level",
+        "skill": "doc-hieu"
+      },
+      "goal": 5,
+      "reward": {
+        "xp": 40,
+        "coin": 40
+      }
+    },
+    {
+      "id": "da-tai-da-nghe",
+      "category": "hoc-tap",
+      "name": "Đa tài đa nghệ",
+      "description": "Có tám kỹ năng cùng đạt từ cấp 3 trở lên.",
+      "icon": "gemStone",
+      "metric": {
+        "kind": "skills-at-level",
+        "level": 3
+      },
+      "goal": 8,
+      "reward": {
+        "xp": 60,
+        "coin": 60
+      }
+    },
+    {
+      "id": "nha-toan-hoc-nhi",
+      "category": "hoc-tap",
+      "name": "Nhà toán học nhí",
+      "description": "Đưa môn Toán lên cấp 5.",
+      "icon": "straightRuler",
+      "metric": {
+        "kind": "subject-level",
+        "subject": "toan"
+      },
+      "goal": 5,
+      "reward": {
+        "xp": 60,
+        "coin": 60
+      }
+    },
+    {
+      "id": "cay-but-vang",
+      "category": "hoc-tap",
+      "name": "Cây bút vàng",
+      "description": "Đưa môn Tiếng Việt lên cấp 5.",
+      "icon": "paintbrush",
+      "metric": {
+        "kind": "subject-level",
+        "subject": "tieng-viet"
+      },
+      "goal": 5,
+      "reward": {
+        "xp": 60,
+        "coin": 60
+      }
+    },
+    {
+      "id": "qua-tang-ky-nang",
+      "category": "hoc-tap",
+      "name": "Năm món quà kỹ năng",
+      "description": "Nhận năm món quà lên cấp kỹ năng.",
+      "icon": "gift",
+      "metric": {
+        "kind": "skill-gifts"
+      },
+      "goal": 5,
+      "reward": {
+        "xp": 30,
+        "coin": 30
+      }
+    },
+    {
+      "id": "tro-choi-dau-tien",
+      "category": "minigame",
+      "name": "Trò chơi đầu tiên",
+      "description": "{name} chơi xong một trò chơi cùng các bạn trên bản đồ.",
+      "icon": "balloon",
+      "metric": {
+        "kind": "minigame-runs"
+      },
+      "goal": 1,
+      "reward": {
+        "xp": 20,
+        "coin": 20
+      }
+    },
+    {
+      "id": "muoi-luot-vui",
+      "category": "minigame",
+      "name": "Mười lượt vui",
+      "description": "Chơi xong mười lượt trò chơi.",
+      "icon": "kite",
+      "metric": {
+        "kind": "minigame-runs"
+      },
+      "goal": 10,
+      "reward": {
+        "xp": 40,
+        "coin": 40
+      }
+    },
+    {
+      "id": "tay-choi-cu-khoi",
+      "category": "minigame",
+      "name": "Tay chơi cừ khôi",
+      "description": "Chơi xong năm mươi lượt trò chơi.",
+      "icon": "drum",
+      "metric": {
+        "kind": "minigame-runs"
+      },
+      "goal": 50,
+      "reward": {
+        "xp": 80,
+        "coin": 80
+      }
+    },
+    {
+      "id": "ky-luc-gia",
+      "category": "minigame",
+      "name": "Kỷ lục gia trò chơi",
+      "description": "Chơi xong một trăm năm mươi lượt trò chơi.",
+      "icon": "firstMedal",
+      "metric": {
+        "kind": "minigame-runs"
+      },
+      "goal": 150,
+      "reward": {
+        "xp": 120,
+        "coin": 120
+      }
+    },
+    {
+      "id": "ten-lua-vo-dich",
+      "category": "minigame",
+      "name": "Tên lửa vô địch",
+      "description": "Chơi xong ba trăm lượt trò chơi, không gì cản nổi {name}!",
+      "icon": "firstMedal",
+      "metric": {
+        "kind": "minigame-runs"
+      },
+      "goal": 300,
+      "reward": {
+        "xp": 200,
+        "coin": 200,
+        "item": "back-thanh-tich-ten-lua"
+      }
+    },
+    {
+      "id": "thu-du-tro",
+      "category": "minigame",
+      "name": "Thử đủ trò",
+      "description": "Chơi năm trò chơi khác nhau.",
+      "icon": "admissionTickets",
+      "metric": {
+        "kind": "minigames-tried"
+      },
+      "goal": 5,
+      "reward": {
+        "xp": 30,
+        "coin": 30
+      }
+    },
+    {
+      "id": "nha-suu-tam-tro-choi",
+      "category": "minigame",
+      "name": "Nhà sưu tầm trò chơi",
+      "description": "Chơi hai mươi lăm trò chơi khác nhau.",
+      "icon": "admissionTickets",
+      "metric": {
+        "kind": "minigames-tried"
+      },
+      "goal": 25,
+      "reward": {
+        "xp": 80,
+        "coin": 80
+      }
+    },
+    {
+      "id": "khong-tro-nao-kho",
+      "category": "minigame",
+      "name": "Không trò nào làm khó",
+      "description": "Chơi sáu mươi trò chơi khác nhau.",
+      "icon": "robot",
+      "metric": {
+        "kind": "minigames-tried"
+      },
+      "goal": 60,
+      "reward": {
+        "xp": 120,
+        "coin": 120
+      }
+    },
+    {
+      "id": "ban-nha-nong",
+      "category": "minigame",
+      "name": "Bạn nhà nông",
+      "description": "Chơi mười lượt trò chơi ở Nông trại.",
+      "icon": "earOfCorn",
+      "metric": {
+        "kind": "minigame-runs",
+        "region": "nong-trai"
+      },
+      "goal": 10,
+      "reward": {
+        "xp": 40,
+        "coin": 40
+      }
+    },
+    {
+      "id": "mot-sach-vui-ve",
+      "category": "minigame",
+      "name": "Mọt sách vui vẻ",
+      "description": "Chơi mười lượt trò chơi ở Thư viện.",
+      "icon": "bookmarkTabs",
+      "metric": {
+        "kind": "minigame-runs",
+        "region": "thu-vien"
+      },
+      "goal": 10,
+      "reward": {
+        "xp": 40,
+        "coin": 40
+      }
+    },
+    {
+      "id": "vua-tuyet",
+      "category": "minigame",
+      "name": "Vua trượt tuyết",
+      "description": "Chơi mười lượt trò chơi trên Núi tuyết.",
+      "icon": "snowman",
+      "metric": {
+        "kind": "minigame-runs",
+        "region": "nui-tuyet"
+      },
+      "goal": 10,
+      "reward": {
+        "xp": 40,
+        "coin": 40
+      }
+    },
+    {
+      "id": "ha-guc-trum-dau-tien",
+      "category": "minigame",
+      "name": "Trận trùm đầu tiên",
+      "description": "Thắng một thử thách trùm vui.",
+      "icon": "dragonFace",
+      "metric": {
+        "kind": "boss-wins"
+      },
+      "goal": 1,
+      "reward": {
+        "xp": 50,
+        "coin": 50
+      }
+    },
+    {
+      "id": "sau-tran-trum",
+      "category": "minigame",
+      "name": "Sáu trận trùm",
+      "description": "Thắng thử thách trùm ở sáu vùng đất.",
+      "icon": "trophy",
+      "metric": {
+        "kind": "boss-wins"
+      },
+      "goal": 6,
+      "reward": {
+        "xp": 100,
+        "coin": 100
+      }
+    },
+    {
+      "id": "hiep-si-dung-cam",
+      "category": "minigame",
+      "name": "Hiệp sĩ dũng cảm",
+      "description": "Thắng mọi thử thách trùm trên thế giới.",
+      "icon": "trophy",
+      "metric": {
+        "kind": "boss-wins"
+      },
+      "goal": 12,
+      "reward": {
+        "xp": 200,
+        "coin": 200,
+        "item": "clothes-thanh-tich-hiep-si"
+      }
+    },
+    {
+      "id": "mon-do-dau-tien",
+      "category": "suu-tam",
+      "name": "Món đồ đầu tiên",
+      "description": "{name} nhặt được món đồ sưu tầm đầu tiên.",
+      "icon": "spiralShell",
+      "metric": {
+        "kind": "collectibles"
+      },
+      "goal": 1,
+      "reward": {
+        "xp": 20,
+        "coin": 20
+      }
+    },
+    {
+      "id": "tui-do-lap-lanh",
+      "category": "suu-tam",
+      "name": "Túi đồ lấp lánh",
+      "description": "Sưu tầm mười món đồ khác nhau.",
+      "icon": "gemStone",
+      "metric": {
+        "kind": "collectibles"
+      },
+      "goal": 10,
+      "reward": {
+        "xp": 40,
+        "coin": 40
+      }
+    },
+    {
+      "id": "kho-bau-nho",
+      "category": "suu-tam",
+      "name": "Kho báu nhỏ",
+      "description": "Sưu tầm bốn mươi món đồ khác nhau.",
+      "icon": "package",
+      "metric": {
+        "kind": "collectibles"
+      },
+      "goal": 40,
+      "reward": {
+        "xp": 80,
+        "coin": 80
+      }
+    },
+    {
+      "id": "ngoi-sao-suu-tam",
+      "category": "suu-tam",
+      "name": "Ngôi sao sưu tầm",
+      "description": "Sưu tầm một trăm món đồ khác nhau.",
+      "icon": "glowingStar",
+      "metric": {
+        "kind": "collectibles"
+      },
+      "goal": 100,
+      "reward": {
+        "xp": 200,
+        "coin": 200,
+        "item": "back-thanh-tich-ngoi-sao"
+      }
+    },
+    {
+      "id": "tron-bo-dau-tien",
+      "category": "suu-tam",
+      "name": "Trọn bộ đầu tiên",
+      "description": "Nhận thưởng một bộ sưu tập đầy đủ.",
+      "icon": "framedPicture",
+      "metric": {
+        "kind": "collection-sets"
+      },
+      "goal": 1,
+      "reward": {
+        "xp": 50,
+        "coin": 50
+      }
+    },
+    {
+      "id": "nam-bo-suu-tap",
+      "category": "suu-tam",
+      "name": "Năm trang sổ đầy",
+      "description": "Nhận thưởng năm bộ sưu tập đầy đủ.",
+      "icon": "framedPicture",
+      "metric": {
+        "kind": "collection-sets"
+      },
+      "goal": 5,
+      "reward": {
+        "xp": 150,
+        "coin": 150,
+        "item": "hand-thanh-tich-trang-khuyet"
+      }
+    },
+    {
+      "id": "ruong-dau-tien",
+      "category": "suu-tam",
+      "name": "Rương báu đầu tiên",
+      "description": "Mở rương khu vực đầu tiên.",
+      "icon": "package",
+      "metric": {
+        "kind": "region-chests"
+      },
+      "goal": 1,
+      "reward": {
+        "xp": 40,
+        "coin": 40
+      }
+    },
+    {
+      "id": "sau-ruong-bau",
+      "category": "suu-tam",
+      "name": "Sáu rương báu",
+      "description": "Mở rương của sáu vùng đất.",
+      "icon": "package",
+      "metric": {
+        "kind": "region-chests"
+      },
+      "goal": 6,
+      "reward": {
+        "xp": 100,
+        "coin": 100
+      }
+    },
+    {
+      "id": "tu-do-diu-dang",
+      "category": "suu-tam",
+      "name": "Tủ đồ dịu dàng",
+      "description": "Có năm món đồ mặc mua ở cửa hàng hoặc được tặng.",
+      "icon": "scarf",
+      "metric": {
+        "kind": "wearables-owned"
+      },
+      "goal": 5,
+      "reward": {
+        "xp": 40,
+        "coin": 40
+      }
+    },
+    {
+      "id": "khach-hang-than-thiet",
+      "category": "suu-tam",
+      "name": "Khách hàng thân thiết",
+      "description": "Mua ba món ở cửa hàng.",
+      "icon": "coin",
+      "metric": {
+        "kind": "shop-purchases"
+      },
+      "goal": 3,
+      "reward": {
+        "xp": 20,
+        "coin": 30
+      }
+    },
+    {
+      "id": "heo-dat-day",
+      "category": "suu-tam",
+      "name": "Heo đất đầy ắp",
+      "description": "Kiếm được tổng cộng một nghìn Xu.",
+      "icon": "coin",
+      "metric": {
+        "kind": "coins-earned"
+      },
+      "goal": 1000,
+      "reward": {
+        "xp": 50,
+        "coin": 50
+      }
+    },
+    {
+      "id": "thi-sinh-olympic",
+      "category": "su-kien",
+      "name": "Thí sinh Olympic",
+      "description": "{name} làm bài thi Olympic Toán lần đầu.",
+      "icon": "firstMedal",
+      "metric": {
+        "kind": "olympiad-runs"
+      },
+      "goal": 1,
+      "reward": {
+        "xp": 30,
+        "coin": 30
+      }
+    },
+    {
+      "id": "luyen-thi-mien-man",
+      "category": "su-kien",
+      "name": "Luyện thi miệt mài",
+      "description": "Làm năm bài thi Olympic Toán.",
+      "icon": "trophy",
+      "metric": {
+        "kind": "olympiad-runs"
+      },
+      "goal": 5,
+      "reward": {
+        "xp": 60,
+        "coin": 60
+      }
+    },
+    {
+      "id": "huy-chuong-olympic",
+      "category": "su-kien",
+      "name": "Huy chương Olympic",
+      "description": "Đạt giải trong một bài thi Olympic Toán.",
+      "icon": "firstMedal",
+      "metric": {
+        "kind": "olympiad-awards"
+      },
+      "goal": 1,
+      "reward": {
+        "xp": 150,
+        "coin": 150,
+        "item": "hat-thanh-tich-phi-hanh-gia"
+      }
+    },
+    {
+      "id": "buc-thu-dau-tien",
+      "category": "su-kien",
+      "name": "Bức thư đầu tiên",
+      "description": "Nhận món quà đầu tiên gửi kèm thư.",
+      "icon": "envelope",
+      "metric": {
+        "kind": "mail-gifts"
+      },
+      "goal": 1,
+      "reward": {
+        "xp": 20,
+        "coin": 20
+      }
+    },
+    {
+      "id": "hop-thu-ri-rao",
+      "category": "su-kien",
+      "name": "Hộp thư rộn ràng",
+      "description": "Nhận năm món quà gửi kèm thư.",
+      "icon": "envelope",
+      "metric": {
+        "kind": "mail-gifts"
+      },
+      "goal": 5,
+      "reward": {
+        "xp": 100,
+        "coin": 100,
+        "item": "hand-thanh-tich-den-ong-sao"
+      }
+    },
+    {
+      "id": "san-qua-khu-vuc",
+      "category": "su-kien",
+      "name": "Săn quà khu vực",
+      "description": "Nhận mười phần quà ở các khu vực.",
+      "icon": "gift",
+      "metric": {
+        "kind": "region-tiers"
+      },
+      "goal": 10,
+      "reward": {
+        "xp": 80,
+        "coin": 80
+      }
+    }
+  ]
+}

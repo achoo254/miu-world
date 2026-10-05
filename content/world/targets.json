@@ -291,8 +291,12 @@
       "label": "Mở rương",
       "skillCheck": {
         "skill": "so-sanh-so",
-        "level": 1,
-        "hintQuest": "kho-bau-dao-ch1"
+        "level": 2,
+        "hintQuest": "toan2-cd1-b01",
+        "reward": {
+          "coin": 30,
+          "xp": 20
+        }
       }
     },
     "ruong-do-choi-nha-be": {
@@ -301,8 +305,12 @@
       "label": "Mở rương đồ chơi",
       "skillCheck": {
         "skill": "logic",
-        "level": 1,
-        "hintQuest": "nha-cua-be-ch1"
+        "level": 2,
+        "hintQuest": "toan2-cd4-b20",
+        "reward": {
+          "coin": 25,
+          "xp": 15
+        }
       }
     },
     "ruong-go-bi-mat": {
@@ -312,7 +320,11 @@
       "skillCheck": {
         "skill": "phep-cong",
         "level": 2,
-        "hintQuest": "forest-ch1"
+        "hintQuest": "toan2-cd1-b03",
+        "reward": {
+          "coin": 30,
+          "xp": 20
+        }
       }
     },
     "dba-so-nhat-ki": {
@@ -2878,7 +2890,16 @@
     "tv2-t16-canh-cua-go": {
       "name": "Cánh cửa gỗ",
       "look": "door",
-      "label": "Nói chuyện"
+      "label": "Nói chuyện",
+      "skillCheck": {
+        "skill": "doc-hieu",
+        "level": 3,
+        "hintQuest": "tv2-t01-b01",
+        "reward": {
+          "coin": 30,
+          "xp": 20
+        }
+      }
     },
     "tv2-t16-gay-ong-ven": {
       "name": "Gậy của ông",
@@ -3240,7 +3261,16 @@
     },
     "trum-tt-ruong-dao-cu": {
       "name": "Rương đạo cụ ảo thuật",
-      "look": "chest"
+      "look": "chest",
+      "skillCheck": {
+        "skill": "logic",
+        "level": 3,
+        "hintQuest": "toan2-cd4-b20",
+        "reward": {
+          "coin": 40,
+          "xp": 30
+        }
+      }
     },
     "trum-lvs-vit-con": {
       "name": "Vịt Con Lạch Bạch",

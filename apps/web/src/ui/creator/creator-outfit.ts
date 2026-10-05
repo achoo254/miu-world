@@ -32,10 +32,10 @@ export function wornInSlot(equipped: readonly string[], slot: OpenSlot, species:
   return chosen ?? (slot === 'clothes' ? (characterForSpecies(species).clothes ?? null) : null);
 }
 
-/** Open items first, then by level, then the shop's, then the region chests', then quest-locked ones. */
+/** Open items first, then by level, then the shop's, then the region chests', then the awards, then quest-locked ones. */
 export function itemsForSlot(slot: OpenSlot): AccessoryItem[] {
   const rank = (item: AccessoryItem): number =>
-    !item.unlock ? 0 : item.unlock.quest ? 200 : item.unlock.region ? 175 : item.unlock.shop ? 150 : (item.unlock.level ?? 0);
+    !item.unlock ? 0 : item.unlock.quest ? 200 : item.unlock.award ? 190 : item.unlock.region ? 175 : item.unlock.shop ? 150 : (item.unlock.level ?? 0);
   return [...ACCESSORIES.values()].filter((item) => item.slot === slot).sort((a, b) => rank(a) - rank(b));
 }
 
@@ -45,7 +45,7 @@ export function equip(equipped: readonly string[], slot: OpenSlot, itemId: strin
   return itemId ? [...kept, itemId] : kept;
 }
 
-/** `owned`: what she bought in the shop or claimed from a region chest (such an item opens once hers). */
+/** `owned`: what she bought in the shop, claimed from a region chest or received as an award (such an item opens once hers). */
 export function isOpen(item: AccessoryItem, level: number, completed: ReadonlySet<string>, worn: readonly string[], owned: ReadonlySet<string> = new Set()): boolean {
   return worn.includes(item.id) || isAccessoryOpen(item.unlock, level, completed, owned.has(item.id));
 }
@@ -54,6 +54,7 @@ export function isOpen(item: AccessoryItem, level: number, completed: ReadonlySe
 export function lockText(item: AccessoryItem, questTitle: (id: string) => string, regionName: (id: string) => string = (id) => id): Bilingual {
   if (item.unlock?.shop) return pairOf('creator.lock.shop');
   if (item.unlock?.region) return pairOf('creator.lock.region', { region: regionName(item.unlock.region) });
+  if (item.unlock?.award) return pairOf('creator.lock.award');
   const parts: Bilingual[] = [];
   if (item.unlock?.level) parts.push(pairOf('creator.needLevel', { level: item.unlock.level }));
   if (item.unlock?.quest) parts.push(pairOf('creator.lock.quest', { quest: questTitle(item.unlock.quest) }));

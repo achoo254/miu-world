@@ -3,7 +3,7 @@ import { Router } from 'express';
 import { levelFromXp } from '@miu/quest/level';
 import { CharacterDto, CharacterUpdate } from '@miu/schema/game';
 import { isPetOpen } from '@miu/schema/pet';
-import { isAccessoryOpen } from '@miu/voxel/accessory-schema';
+import { isAccessoryOpen, isOwnedUnlock } from '@miu/voxel/accessory-schema';
 import { activePlayerId, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
@@ -60,7 +60,7 @@ export function characterRoutes({ db, content }: CharacterRouteDeps): Router {
         const worn = new Set(current.equipped);
         const completed = await completedQuestIds(db, childId);
         // Shop items once bought, region chest items once claimed: both sit in her cupboard.
-        const owned = items.some((item) => item?.unlock?.shop || item?.unlock?.region) ? await ownedItems(db, childId) : new Map<string, number>();
+        const owned = items.some((item) => isOwnedUnlock(item?.unlock)) ? await ownedItems(db, childId) : new Map<string, number>();
         for (const item of items) {
           if (item && !worn.has(item.id) && !isAccessoryOpen(item.unlock, level, completed, owned.has(item.id))) throw new HttpError(403, 'equipment-locked');
         }

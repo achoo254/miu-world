@@ -34,12 +34,18 @@ export const LookCatalog = z.strictObject({ version: z.literal(1), looks: z.reco
 export type LookCatalog = z.infer<typeof LookCatalog>;
 
 export const SkillCheckSpec = z.strictObject({
-  /** Skill id from content/learning/skills.json required to interact/unlock. */
+  /** Skill id from content/learning/skills.json the gate asks for. */
   skill: ContentId,
-  /** Minimum skill level required (starting at 1). */
+  /** Minimum skill level (starting at 1). */
   level: z.number().int().min(1),
-  /** Optional quest id to guide the child to practice this skill if level is insufficient. */
+  /** A quest that trains the skill, offered when the player is short of the level. */
   hintQuest: ContentId.optional(),
+  /**
+   * The gate's treasure (Cổng tri thức, Master Plan M3.9): paid by the server, once per run of the quest whose
+   * step opens it, when the player has the level. A lesson never waits for a gate (no unlock between quests):
+   * short of the level, the step goes on and only the treasure stays shut.
+   */
+  reward: z.strictObject({ coin: z.number().int().min(1).max(200), xp: z.number().int().min(0).max(200) }),
 });
 export type SkillCheckSpec = z.infer<typeof SkillCheckSpec>;
 

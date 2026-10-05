@@ -4,7 +4,9 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { CONTENT_DIR, loadContentCatalog, readQuestDefinitions } from '../../apps/server/src/content/content-catalog';
+import { CONTENT_DIR, loadContentCatalog, readQuestDefinitions, type ContentCatalog } from '../../apps/server/src/content/content-catalog';
+import { AchievementCatalog, achievementIssues } from '../../packages/schema/src/achievement';
+import { MAX_SKILL_LEVEL } from '../../packages/schema/src/progression';
 import { playerTextIssues } from '../../packages/quest/src/player-name';
 import { PrivacyDocument, stepTargets, type QuestDefinition } from '../../packages/schema/src/content';
 import { accessoryArtPath } from '../../packages/schema/src/accessory-art';
@@ -41,6 +43,9 @@ const CATALOGUE_FILES = [
   'legal/consent-vi.json',
   'progression/level-curve.json',
   'progression/skill-curve.json',
+  // Gifts of each skill level and the achievements (apps/server/src/progression).
+  'progression/skill-gifts.json',
+  'progression/achievements.json',
   'pets.json',
   'accessories/',
   'quests/',
@@ -434,6 +439,54 @@ export function checkHomeDecor(raw: unknown, manifestPaths: ReadonlySet<string>,
   return issues;
 }
 
+/**
+ * Every achievement asks for no more than the shipped game has (lessons, minigames, bosses, collectibles, gates,
+ * levels) and shows a picture the UI ships; its wording follows the player's name rule.
+ */
+export function checkProgression(
+  dir: string,
+  catalog: ContentCatalog,
+  lessons: ReadonlyMap<string, number>,
+  targets: Readonly<Record<string, { skillCheck?: { skill: string; hintQuest?: string } }>>,
+): string[] {
+  const active = [...catalog.quests.values()].filter((q) => q.status === 'active');
+  // Gates a quest step opens (a gate no step reaches is never opened).
+  const reached = new Set(active.flatMap((q) => q.steps.flatMap((step) => stepTargets(step))));
+  const minigames = new Map([...questsByRegion(catalog.quests.values(), 'side')].map(([region, ids]) => [region, ids.length]));
+  const parsed = AchievementCatalog.safeParse(JSON.parse(readFileSync(path.join(dir, 'progression/achievements.json'), 'utf8')));
+  if (!parsed.success) return [`content/progression/achievements.json: ${parsed.error.message}`];
+  const issues = achievementIssues(parsed.data, {
+    regions: new Set([...lessons.keys(), ...minigames.keys()]),
+    skills: catalog.skillIds,
+    subjects: new Set(catalog.subjects.map((s) => s.id)),
+    wearables: new Map([...catalog.accessories.values()].map((item) => [item.id, { award: item.unlock?.award === true }])),
+    giftItems: new Set(catalog.skillGifts.items.map((i) => i.item)),
+    icons: new Set(Object.keys(UI_ICONS)),
+    reach: {
+      lessons,
+      minigames,
+      bosses: active.filter((q) => q.steps.some((step) => step.kind === 'boss')).length,
+      collectibles: [...catalog.collectibles.values()].reduce((sum, set) => sum + set.items.length, 0),
+      collectionSets: catalog.collectibles.size,
+      gates: Object.entries(targets).filter(([id, t]) => t.skillCheck !== undefined && reached.has(id)).length,
+      skillLevels: catalog.skillCurve.thresholds.length,
+      playerLevels: catalog.levelCurve.thresholds.length,
+    },
+  }).map((issue) => `content/progression/achievements.json: ${issue}`);
+  for (const entry of parsed.data.achievements) {
+    for (const text of [entry.name, entry.description]) for (const issue of playerTextIssues(text)) issues.push(`achievement ${entry.id} ${issue}`);
+  }
+  // A gate's practice quest trains the skill it asks for.
+  for (const [id, target] of Object.entries(targets)) {
+    const check = target.skillCheck;
+    const hint = check?.hintQuest ? catalog.quests.get(check.hintQuest) : undefined;
+    if (check && hint?.status === 'active' && !(check.skill in hint.reward.skillXp)) issues.push(`target ${id}: skillCheck hintQuest ${hint.id} does not train ${check.skill}`);
+  }
+  const top = catalog.skillCurve.thresholds.length;
+  if (top !== MAX_SKILL_LEVEL) issues.push(`content/progression/skill-gifts.json: the skill curve has ${top} levels, the gifts cover ${MAX_SKILL_LEVEL}`);
+  return issues;
+}
+
 /** The public privacy page parses and describes the consent version parents are asked to accept. */
 export function checkPrivacy(raw: unknown, consentVersion: string): string[] {
   const parsed = PrivacyDocument.safeParse(raw);
@@ -530,6 +583,7 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     // Every open region has a chest of its own wearables, and lessons to earn it with.
     const lessons = new Map([...questsByRegion(catalog.quests.values(), 'main')].map(([region, ids]) => [region, ids.length]));
     loadRegionRewards(catalog.accessories, dir, lessons);
+    issues.push(...checkProgression(dir, catalog, lessons, targetCatalog?.targets ?? {}));
     const privacy: unknown = JSON.parse(readFileSync(path.join(dir, PRIVACY_FILE), 'utf8'));
     issues.push(...checkPrivacy(privacy, catalog.consent.version));
     if (PrivacyDocument.safeParse(privacy).data?.contactEmail === null) warnings.push(`content/${PRIVACY_FILE} has no contact email yet`);
