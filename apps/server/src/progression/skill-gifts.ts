@@ -1,11 +1,10 @@
-import { randomUUID } from 'node:crypto';
 import { and, eq, inArray, like } from 'drizzle-orm';
 import { levelFromXp } from '@miu/quest/level';
 import { skillGiftOfSource, skillGiftSource, type AwardItemDto, type SkillGiftDto } from '@miu/schema/progression';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
-import { rewardLedger, shopInventory, skillProgress } from '../db/schema';
-import type { Tx } from '../reward/reward-ledger';
+import { rewardLedger, skillProgress } from '../db/schema';
+import { grantAward, type Tx } from '../reward/reward-ledger';
 
 /** A wearable as the screens name it; null for an id the catalogue does not have. */
 export function awardItem(content: ContentCatalog, itemId: string | undefined): AwardItemDto | null {
@@ -51,13 +50,7 @@ export async function grantSkillGifts(tx: Tx, content: ContentCatalog, childId: 
     for (let next = 2; next <= level; next += 1) {
       if (received.has(`${row.skillId}:${next}`)) continue;
       const gift = skillGift(content, row.skillId, next);
-      const inserted = await tx
-        .insert(rewardLedger)
-        .values({ id: randomUUID(), childId, source: skillGiftSource(row.skillId, next), coins: gift.coin, items: gift.item ? { [gift.item.id]: 1 } : {}, createdAt: now })
-        .onConflictDoNothing()
-        .returning({ id: rewardLedger.id });
-      if (inserted.length === 0) continue;
-      if (gift.item) await tx.insert(shopInventory).values({ childId, itemId: gift.item.id, qty: 1 }).onConflictDoNothing();
+      if (!(await grantAward(tx, childId, skillGiftSource(row.skillId, next), { xp: 0, coin: gift.coin, item: gift.item?.id }, now))) continue;
       paid.push(gift);
     }
   }

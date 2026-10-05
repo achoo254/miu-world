@@ -1,4 +1,3 @@
-import { randomUUID } from 'node:crypto';
 import { and, asc, eq, like } from 'drizzle-orm';
 import { Router } from 'express';
 import { levelFromXp } from '@miu/quest/level';
@@ -17,9 +16,9 @@ import {
 import { activePlayerId, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
-import { questProgress, rewardLedger, shopInventory } from '../db/schema';
+import { questProgress, rewardLedger } from '../db/schema';
 import { HttpError, parseInput } from '../http-error';
-import { paidRunsByQuest, progressSummary, totalXp, type Tx } from '../reward/reward-ledger';
+import { grantAward, paidRunsByQuest, progressSummary, totalXp, type Tx } from '../reward/reward-ledger';
 import { lockChild } from '../shop/shop-routes';
 import { questsByRegion, type RegionRewards } from './region-reward-catalog';
 
@@ -136,13 +135,7 @@ export function regionRewardRoutes({ db, content, clock, rewards }: RegionReward
       if (state?.claimed) return { granted: false, xpBefore, xp: 0 };
       if (!state?.reached) throw new HttpError(409, 'tier-not-reached');
       const reward = tierReward(entry, tier);
-      const inserted = await tx
-        .insert(rewardLedger)
-        .values({ id: randomUUID(), childId, source: regionRewardSource(entry.region, tier), xp: reward.xp, coins: reward.coin, items: reward.item ? { [reward.item]: 1 } : {}, createdAt: clock() })
-        .onConflictDoNothing()
-        .returning({ id: rewardLedger.id });
-      if (inserted.length === 0) return { granted: false, xpBefore, xp: 0 };
-      if (reward.item) await tx.insert(shopInventory).values({ childId, itemId: reward.item, qty: 1 }).onConflictDoNothing();
+      if (!(await grantAward(tx, childId, regionRewardSource(entry.region, tier), reward, clock()))) return { granted: false, xpBefore, xp: 0 };
       return { granted: true, xpBefore, xp: reward.xp };
     });
     const level = (xp: number): number => levelFromXp(xp, content.levelCurve).level;

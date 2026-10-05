@@ -1,4 +1,3 @@
-import { randomUUID } from 'node:crypto';
 import { Router } from 'express';
 import { levelFromXp } from '@miu/quest/level';
 import { achievementOfSource, achievementSource, type AchievementClaimResponse, type AchievementDto, type AchievementEntry, type AchievementListResponse } from '@miu/schema/achievement';
@@ -6,9 +5,8 @@ import { ContentId } from '@miu/schema/content';
 import { activePlayerId, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
-import { rewardLedger, shopInventory } from '../db/schema';
 import { HttpError } from '../http-error';
-import { progressSummary, totalXp, type Tx } from '../reward/reward-ledger';
+import { grantAward, progressSummary, totalXp, type Tx } from '../reward/reward-ledger';
 import { lockChild } from '../shop/shop-routes';
 import { loadPlayerRecord, metricValue, playerFacts, type PlayerFacts } from './player-facts';
 import { awardItem } from './skill-gifts';
@@ -82,14 +80,7 @@ export function achievementRoutes({ db, content, clock }: AchievementRouteDeps):
       const xpBefore = await totalXp(tx, childId);
       if (state.claimed) return { granted: false, xpBefore, xp: 0 };
       if (!state.reached) throw new HttpError(409, 'achievement-not-reached');
-      const { item } = entry.reward;
-      const inserted = await tx
-        .insert(rewardLedger)
-        .values({ id: randomUUID(), childId, source: achievementSource(entry.id), xp: entry.reward.xp, coins: entry.reward.coin, items: item ? { [item]: 1 } : {}, createdAt: clock() })
-        .onConflictDoNothing()
-        .returning({ id: rewardLedger.id });
-      if (inserted.length === 0) return { granted: false, xpBefore, xp: 0 };
-      if (item) await tx.insert(shopInventory).values({ childId, itemId: item, qty: 1 }).onConflictDoNothing();
+      if (!(await grantAward(tx, childId, achievementSource(entry.id), entry.reward, clock()))) return { granted: false, xpBefore, xp: 0 };
       return { granted: true, xpBefore, xp: entry.reward.xp };
     });
     const level = (xp: number): number => levelFromXp(xp, content.levelCurve).level;

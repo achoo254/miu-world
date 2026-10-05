@@ -5,7 +5,7 @@ import { ProgressResponse, type SubjectProgress } from '@miu/schema/game';
 import { levelFromXp } from '@miu/quest/level';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
-import { inventoryItems, questProgress, rewardLedger, skillProgress } from '../db/schema';
+import { inventoryItems, questProgress, rewardLedger, shopInventory, skillProgress } from '../db/schema';
 import { progressDto } from '../quest/quest-access';
 
 /** A transaction handle; same query surface as the db. */
@@ -81,6 +81,22 @@ export async function grantReward(tx: Tx, childId: string, source: string, rewar
       .values({ childId, skillId, xp })
       .onConflictDoUpdate({ target: [skillProgress.childId, skillProgress.skillId], set: { xp: sql`${skillProgress.xp} + ${xp}` } });
   }
+  return true;
+}
+
+/**
+ * Pays a one-off award in the caller's transaction: a ledger row (`source`: a region chest tier, a skill level
+ * gift, an achievement) with its coins and XP and, for a wearable, the item into her cupboard (`shop_inventory`,
+ * where the wardrobe reads what she owns). The (child, source) key pays it once; returns whether this call paid.
+ */
+export async function grantAward(tx: Tx, childId: string, source: string, award: { xp: number; coin: number; item?: string | null }, now: Date): Promise<boolean> {
+  const inserted = await tx
+    .insert(rewardLedger)
+    .values({ id: randomUUID(), childId, source, xp: award.xp, coins: award.coin, items: award.item ? { [award.item]: 1 } : {}, createdAt: now })
+    .onConflictDoNothing()
+    .returning({ id: rewardLedger.id });
+  if (inserted.length === 0) return false;
+  if (award.item) await tx.insert(shopInventory).values({ childId, itemId: award.item, qty: 1 }).onConflictDoNothing();
   return true;
 }
 
