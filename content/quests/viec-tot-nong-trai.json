@@ -1,0 +1,231 @@
+{
+  "id": "viec-tot-nong-trai",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Việc tốt: Một buổi làm thay bác Ba",
+  "status": "active",
+  "summary": "Bác Nông Dân Ba bị đau lưng, đàn gia súc thì đang đói. {name} gom thức ăn, đọc sổ tay chăm thú, đếm đầu đếm chân trong chuồng, chọn cách chở đồ nặng rồi chia thức ăn cho đúng từng con.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bác Nông Dân Ba, Chó Chăn Cừu Lu Lu, Anh Nông Dân Tú",
+    "where": "Nông trại: hiên nhà bác Ba, góc sân phơi, bàn gỗ cạnh giếng, bãi cỏ chăn thả, ruộng cày xới",
+    "goal": "Làm thay bác Ba một buổi cho gà, lợn, bò ăn no",
+    "play": "Tìm xô nước, bao thóc, bó cỏ theo lời tả, đọc sổ tay, giải câu đố đầu và chân, chọn cách chở đồ, phân loại thức ăn của từng con vật",
+    "learn": "Đọc hiểu sổ tay, suy luận đếm đầu và chân, phân loại theo thông tin đã đọc",
+    "reward": "70 XP, 18 Xu, Skill XP Đọc hiểu, Logic, Phép cộng",
+    "next": "Bác Ba khỏi đau lưng, mời {name} ra ao cá xem cá đớp mồi"
+  },
+  "phases": {
+    "hook": "gap-bac-ba",
+    "explore": "gom-thuc-an",
+    "learn": "doc-so-tay",
+    "challenge": "dau-va-chan",
+    "decision": "cach-cho-do",
+    "finale": "chia-thuc-an",
+    "reward": "bac-ba-cam-on",
+    "next": "xem-ca-dop-moi"
+  },
+  "places": {
+    "vt-ntr-bac-ba": "Hiên nhà bác Ba",
+    "gom-thuc-an": "Góc sân phơi",
+    "vt-ntr-so-tay": "Bàn gỗ cạnh giếng",
+    "vt-ntr-cho-lu-lu": "Bãi cỏ chăn thả",
+    "vt-ntr-anh-tu": "Ruộng cày xới"
+  },
+  "steps": [
+    {
+      "id": "gap-bac-ba",
+      "title": "Bác Ba đau lưng",
+      "goTo": "Ghé hiên nhà bác Ba, bác đang ngồi xoa lưng",
+      "kind": "dialogue",
+      "target": "vt-ntr-bac-ba",
+      "lines": [
+        { "speaker": "Bác Nông Dân Ba", "text": "Ôi cái lưng của bác! Sáng nay khuân bao thóc bị trẹo mất rồi, mà đàn gà, đàn lợn, con bò đều đang réo đói." },
+        { "speaker": "Bác Nông Dân Ba", "text": "Cháu làm thay bác một buổi được không? Đồ cho chúng ăn bác để ở góc sân phơi." }
+      ],
+      "choices": [
+        { "text": "Bác nghỉ đi ạ, để cháu lo!", "reply": "Giỏi quá! Nhớ đọc sổ tay của bác trước khi cho ăn nhé." }
+      ]
+    },
+    {
+      "id": "gom-thuc-an",
+      "title": "Gom thức ăn cho đàn thú",
+      "goTo": "Ra góc sân phơi gom thức ăn",
+      "kind": "find-object",
+      "prompt": "Bác Ba dặn lấy ba thứ. Đọc lời tả và tìm cho đúng:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "xo-nuoc",
+          "name": "Xô nước giếng",
+          "clue": "Có quai xách, bên trong đầy nước mát vừa kéo từ dưới giếng lên.",
+          "target": "vt-ntr-xo-nuoc"
+        },
+        {
+          "id": "bao-thoc",
+          "name": "Bao thóc",
+          "clue": "Một bao vải căng phồng, bên trong là những hạt vàng còn nguyên vỏ trấu.",
+          "target": "vt-ntr-bao-thoc"
+        },
+        {
+          "id": "bo-co",
+          "name": "Bó cỏ non",
+          "clue": "Xanh mướt, mềm và thơm, vừa cắt ở bờ mương sáng nay.",
+          "target": "vt-ntr-bo-co"
+        }
+      ]
+    },
+    {
+      "id": "doc-so-tay",
+      "title": "Sổ tay chăm thú",
+      "goTo": "Sổ tay của bác Ba để trên bàn gỗ cạnh giếng",
+      "kind": "read",
+      "target": "vt-ntr-so-tay",
+      "skill": "doc-hieu",
+      "text": "SỔ TAY CHĂM THÚ\nGà và vịt ăn thóc.\nLợn ăn cám nấu với rau.\nBò, dê và thỏ ăn cỏ non.\nSáng nào cũng thay nước sạch cho cả chuồng.",
+      "question": "Theo sổ tay, lợn ăn gì?",
+      "choices": [
+        { "id": "a", "text": "Thóc" },
+        { "id": "b", "text": "Cám nấu với rau" },
+        { "id": "c", "text": "Cỏ non" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm dòng có chữ «Lợn».", "Đọc phần sau chữ «ăn»."],
+        "hint": "Thức ăn của lợn phải nấu chín.",
+        "answer": {
+          "text": "Lợn ăn cám nấu với rau",
+          "explanation": "Sổ tay ghi: Lợn ăn cám nấu với rau."
+        }
+      },
+      "feedback": {
+        "right": ["Đúng rồi, nồi cám nấu rau đang thơm phức kìa!", "{name} đọc sổ tay như một bác nông dân thực thụ.", "Chuẩn dòng thứ ba, đàn lợn sắp được no bụng."],
+        "wrong": ["Thức ăn ấy dành cho con vật khác đấy, đọc lại nhé.", "Tìm dòng có chữ «Lợn» nha {name}.", "Cỏ non là của bò, dê và thỏ cơ mà."]
+      }
+    },
+    {
+      "id": "dau-va-chan",
+      "title": "Đếm đầu, đếm chân",
+      "goTo": "Ra bãi cỏ chăn thả, Chó Chăn Cừu Lu Lu đang trông chuồng",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "vt-ntr-cho-lu-lu",
+      "skill": "logic",
+      "prompt": "Lu Lu đố: trong chuồng chỉ có gà và lợn. Tớ đếm được 5 cái đầu và 14 cái chân. Trong chuồng có mấy con lợn?",
+      "choices": [
+        { "id": "a", "text": "1 con lợn" },
+        { "id": "b", "text": "2 con lợn" },
+        { "id": "c", "text": "3 con lợn" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Mỗi con gà có 2 chân, mỗi con lợn có 4 chân.", "Thử với 2 con lợn: còn lại bao nhiêu con gà?", "Đếm tổng số chân xem có đúng 14 không."],
+        "hint": "Nếu cả 5 con đều là gà thì chỉ có 10 chân, còn thiếu 4 chân.",
+        "answer": {
+          "text": "Có 2 con lợn và 3 con gà",
+          "explanation": "2 con lợn có 8 chân, 3 con gà có 6 chân, 8 + 6 = 14 chân, 2 + 3 = 5 đầu."
+        }
+      },
+      "feedback": {
+        "right": ["Gâu gâu! Hai con lợn, ba con gà, đúng phóc!", "{name} thử từng trường hợp thông minh quá.", "Lu Lu vẫy đuôi: câu này làm khó cả bác Ba đấy!"],
+        "wrong": ["Đếm thử số chân với đáp án ấy xem có đủ 14 không nhé.", "Gà 2 chân, lợn 4 chân, cộng lại thử xem {name}.", "Số đầu phải đúng 5 và số chân phải đúng 14 cơ."]
+      }
+    },
+    {
+      "id": "cach-cho-do",
+      "title": "Chở đồ nặng",
+      "kind": "decision",
+      "target": "vt-ntr-cho-lu-lu",
+      "speaker": "Chó Chăn Cừu Lu Lu",
+      "prompt": "Xô nước và bao thóc nặng trĩu tay. {name} chở chúng tới chuồng bằng cách nào?",
+      "choices": [
+        {
+          "id": "xe-cut-kit",
+          "text": "Tìm gỗ ghép một chiếc xe cút kít",
+          "consequence": "Vài tấm ván, một bánh xe cũ, thế là có ngay chiếc xe cút kít chở đồ băng băng.",
+          "nextStepId": "chia-thuc-an"
+        },
+        {
+          "id": "chia-nho",
+          "text": "Chia thóc ra nhiều túi nhỏ, chở nhiều chuyến",
+          "consequence": "Mỗi chuyến nhẹ tênh, đi vài chuyến là xong, lưng chẳng mỏi chút nào.",
+          "nextStepId": "chia-thuc-an"
+        },
+        {
+          "id": "nho-anh-tu",
+          "text": "Nhờ Anh Nông Dân Tú giúp một tay",
+          "consequence": "Lu Lu chạy vụt đi báo. Anh Tú đang cày ở ruộng cày xới, ra nhờ anh ấy nhé!"
+        }
+      ]
+    },
+    {
+      "id": "nho-anh-tu",
+      "title": "Nhờ anh Tú",
+      "goTo": "Tới ruộng cày xới nhờ Anh Nông Dân Tú",
+      "kind": "dialogue",
+      "target": "vt-ntr-anh-tu",
+      "lines": [
+        { "speaker": "Anh Nông Dân Tú", "text": "Làm thay bác Ba à? Giỏi đấy! Anh vác bao thóc cho, em xách xô nước nhẹ hơn thôi nhé." }
+      ],
+      "choices": [{ "text": "Dạ, mình cùng làm nhanh lên anh!" }]
+    },
+    {
+      "id": "chia-thuc-an",
+      "title": "Chia thức ăn đúng từng con",
+      "goTo": "Quay về hiên nhà bác Ba chia thức ăn",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "vt-ntr-bac-ba",
+      "skill": "doc-hieu",
+      "prompt": "Nhớ lại sổ tay của bác Ba, xếp mỗi con vật vào đúng máng thức ăn của nó:",
+      "groups": [
+        { "id": "thoc", "label": "Máng thóc" },
+        { "id": "cam", "label": "Máng cám" },
+        { "id": "co", "label": "Máng cỏ" }
+      ],
+      "items": [
+        { "id": "ga", "label": "Gà mái" },
+        { "id": "bo", "label": "Bò sữa" },
+        { "id": "lon", "label": "Lợn ỉ" },
+        { "id": "vit", "label": "Vịt bầu" },
+        { "id": "de", "label": "Dê con" },
+        { "id": "tho", "label": "Thỏ trắng" }
+      ],
+      "answer": {
+        "assignment": { "ga": "thoc", "bo": "co", "lon": "cam", "vit": "thoc", "de": "co", "tho": "co" }
+      },
+      "support": {
+        "guide": ["Đọc lại từng dòng của sổ tay.", "Gà và vịt chung một máng, lợn một máng riêng.", "Ba con vật còn lại cùng ăn một thứ."],
+        "hint": "Máng cỏ đông nhất, có tới ba con.",
+        "answer": {
+          "text": "Thóc: gà mái, vịt bầu. Cám: lợn ỉ. Cỏ: bò sữa, dê con, thỏ trắng",
+          "explanation": "Sổ tay ghi gà và vịt ăn thóc; lợn ăn cám; bò, dê và thỏ ăn cỏ non."
+        }
+      },
+      "feedback": {
+        "right": ["Con nào cũng ăn ngon lành, chẳng ai tranh máng của ai!", "{name} nhớ sổ tay không sót một dòng.", "Cả chuồng no căng bụng, kêu vang cảm ơn."],
+        "wrong": ["Có một bạn đang đứng nhầm máng rồi, xem lại nhé.", "Lợn có máng riêng của lợn đấy {name}.", "Đọc lại sổ tay: con nào ăn cỏ non?"]
+      }
+    },
+    {
+      "id": "bac-ba-cam-on",
+      "title": "Bác Ba cảm ơn",
+      "kind": "reward",
+      "target": "vt-ntr-bac-ba",
+      "text": "Bác Ba cười khà khà: có cháu giúp, lưng bác đỡ hẳn. Bác biếu {name} rổ trứng gà tươi, cả nông trại cũng khen nức nở."
+    },
+    {
+      "id": "xem-ca-dop-moi",
+      "title": "Xem cá đớp mồi",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chiều mát, bác Ba đã đi lại được. Bác rủ {name} ra ao cá xem đàn cá chép đớp mồi, nghe kể chuyện ngày xưa làm ruộng."
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": { "doc-hieu": 1, "logic": 1, "phep-cong": 1 }
+  }
+}

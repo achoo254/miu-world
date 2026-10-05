@@ -1,0 +1,279 @@
+{
+  "id": "vuot-ai-nong-trai",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Trùm vui: Gà Trống Choai Khổng Lồ",
+  "status": "active",
+  "summary": "Hội gặt chỉ mở khi chiếc chiêng mùa vang lên, mà chiêng lại nằm dưới cánh Gà Trống Choai Khổng Lồ trên đống rơm. {name} gom nông sản, đọc lịch mùa gặt, tìm đường qua ruộng ngô rồi đấu bảy phép tính có nhớ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Thỏ Trắng Trồng Rau, Lợn Ỉ Lấm Lem, Gà Trống Choai Khổng Lồ",
+    "where": "Nông trại: luống rau cải, ruộng gặt nhỏ, hiên nhà kho, bờ ruộng ngô, đống rơm vàng",
+    "goal": "Thắng Gà Trống Choai Khổng Lồ để đánh chiêng mở hội gặt",
+    "play": "Tìm bó lúa, bí ngô, bắp ngô theo lời tả, đọc lịch mùa gặt, tìm đường qua ruộng ngô, chọn cách chào Gà Trống, đấu trùm bảy câu",
+    "learn": "Cộng, trừ có nhớ trong phạm vi 100, bài toán có lời văn, so sánh số",
+    "reward": "100 XP, 25 Xu, Skill XP Phép cộng, Phép trừ, Bài toán có lời văn, Logic",
+    "next": "Chiêng mùa vang lên, Bò Sữa Mơ mời {name} ra ruộng gặt lúa cùng cả nông trại"
+  },
+  "phases": {
+    "hook": "gap-tho-trang",
+    "explore": "gom-nong-san",
+    "learn": "doc-lich-mua-gat",
+    "challenge": "duong-qua-ruong-ngo",
+    "decision": "chao-ga-trong",
+    "finale": "tran-trum",
+    "reward": "chieng-mua-vang",
+    "next": "hoi-gat-bat-dau"
+  },
+  "places": {
+    "trum-ntr-tho-trang": "Luống rau cải",
+    "gom-nong-san": "Ruộng gặt nhỏ",
+    "trum-ntr-lich-mua": "Hiên nhà kho",
+    "trum-ntr-lon-i": "Bờ ruộng ngô",
+    "trum-ntr-ga-trong": "Đống rơm vàng"
+  },
+  "steps": [
+    {
+      "id": "gap-tho-trang",
+      "title": "Thỏ Trắng lo lắng",
+      "goTo": "Tới luống rau cải, Thỏ Trắng Trồng Rau đang ngóng về phía đống rơm",
+      "kind": "dialogue",
+      "target": "trum-ntr-tho-trang",
+      "lines": [
+        { "speaker": "Thỏ Trắng Trồng Rau", "text": "{name} ơi, Gà Trống Choai Khổng Lồ ôm chiếc chiêng mùa lên đống rơm rồi. Chưa đánh chiêng thì chưa mở hội gặt được!" },
+        { "speaker": "Thỏ Trắng Trồng Rau", "text": "Anh ấy bảo ai mang đủ nông sản tới mừng và tính giỏi hơn anh ấy thì mới trả chiêng." }
+      ],
+      "choices": [
+        { "text": "Nông sản ở đâu, tớ đi gom ngay!", "reply": "Ở ruộng gặt nhỏ ấy, mọi người gặt dở thì trời đổ mưa nên bỏ lại cả." }
+      ]
+    },
+    {
+      "id": "gom-nong-san",
+      "title": "Gom nông sản mừng mùa",
+      "goTo": "Ra ruộng gặt nhỏ gom ba thứ nông sản",
+      "kind": "find-object",
+      "prompt": "Hội gặt cần ba thứ nông sản. Đọc lời tả và tìm đủ:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "bo-lua",
+          "name": "Bó lúa chín",
+          "clue": "Những bông hạt vàng trĩu xuống, buộc gọn bằng một sợi lạt tre.",
+          "target": "trum-ntr-bo-lua"
+        },
+        {
+          "id": "bi-ngo",
+          "name": "Quả bí ngô cam",
+          "clue": "To tròn, vỏ màu cam có những múi khía, cuống ngắn và cong.",
+          "target": "trum-ntr-bi-ngo"
+        },
+        {
+          "id": "bap-ngo",
+          "name": "Bắp ngô non",
+          "clue": "Bọc trong lớp áo lá xanh, đầu có chùm râu mềm, bóc ra thấy hạt vàng xếp hàng.",
+          "target": "trum-ntr-bap-ngo"
+        }
+      ]
+    },
+    {
+      "id": "doc-lich-mua-gat",
+      "title": "Lịch mùa gặt",
+      "goTo": "Mang nông sản tới hiên nhà kho, nơi treo lịch mùa gặt",
+      "kind": "read",
+      "target": "trum-ntr-lich-mua",
+      "skill": "doc-hieu",
+      "text": "LỊCH MÙA GẶT\nSáng sớm: gặt lúa ở ruộng phía tây.\nTrưa: hái bí ngô và bẻ ngô.\nChiều: đánh chiêng mừng mùa, mời cả nông trại ăn cơm mới.\nChiêng đang được Gà Trống Choai giữ trên đống rơm.",
+      "question": "Theo lịch, buổi trưa nông trại làm gì?",
+      "choices": [
+        { "id": "a", "text": "Gặt lúa ở ruộng phía tây" },
+        { "id": "b", "text": "Hái bí ngô và bẻ ngô" },
+        { "id": "c", "text": "Đánh chiêng mừng mùa" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm dòng bắt đầu bằng chữ «Trưa».", "Đọc phần sau dấu hai chấm của dòng đó."],
+        "hint": "Buổi trưa làm việc với hai thứ nông sản.",
+        "answer": {
+          "text": "Trưa hái bí ngô và bẻ ngô",
+          "explanation": "Lịch ghi: Trưa: hái bí ngô và bẻ ngô."
+        }
+      },
+      "feedback": {
+        "right": ["Chuẩn rồi, bí ngô với ngô là việc buổi trưa!", "{name} đọc lịch mùa gặt rõ từng buổi.", "Thỏ Trắng ghi nhớ ngay: trưa nay bẻ ngô!"],
+        "wrong": ["Việc ấy làm vào buổi khác đấy, dò lại nhé.", "Tìm dòng có chữ «Trưa» nha {name}.", "Đánh chiêng là việc buổi chiều mà, đọc lại xem."]
+      }
+    },
+    {
+      "id": "duong-qua-ruong-ngo",
+      "title": "Đường qua ruộng ngô",
+      "goTo": "Ra bờ ruộng ngô, Lợn Ỉ Lấm Lem biết lối tắt",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "maze",
+      "target": "trum-ntr-lon-i",
+      "skill": "logic",
+      "prompt": "Lợn Ỉ vẽ lối qua ruộng ngô tới đống rơm: đi từ ô chú mèo tới ô ngôi sao, ô tường gạch là ngô mọc dày không lách được. Dãy bước nào đúng? (→ sang phải, ↓ đi xuống)",
+      "grid": [
+        ["S", ".", "#", ".", "."],
+        ["#", ".", "#", ".", "#"],
+        [".", ".", ".", ".", "#"],
+        [".", "#", "#", ".", "."],
+        [".", ".", "#", "#", "G"]
+      ],
+      "choices": [
+        { "id": "a", "text": "→ ↓ ↓ → → ↓ → ↓" },
+        { "id": "b", "text": "→ ↓ ↓ ↓ → → → ↓" },
+        { "id": "c", "text": "→ → ↓ ↓ → ↓ → ↓" }
+      ],
+      "answer": { "choice": "a" },
+      "support": {
+        "guide": ["Đặt ngón tay lên ô chú mèo ở góc trên bên trái.", "Đi theo từng mũi tên của một dãy, chạm ô tường gạch là dãy đó sai.", "Dãy đúng đi qua hàng thứ ba rồi mới xuống."],
+        "hint": "Ở hàng thứ hai chỉ có một ô trống ngay dưới ô cạnh chú mèo.",
+        "answer": {
+          "text": "Phải một, xuống hai, phải hai, xuống, phải, xuống",
+          "explanation": "Sang phải một ô, xuống hai ô tới hàng ba, đi sang phải hai ô, xuống một ô, sang phải rồi xuống là tới ngôi sao."
+        }
+      },
+      "feedback": {
+        "right": ["Lách qua ruộng ngô gọn gàng, đống rơm hiện ra rồi!", "Lợn Ỉ khịt mũi khen: lối tắt chuẩn không cần chỉnh!", "{name} đọc bản đồ giỏi như người làm vườn lâu năm."],
+        "wrong": ["Ối, ngô dày quá không lách qua được, thử dãy khác nhé.", "Dò lại từng mũi tên bằng ngón tay xem nào {name}.", "Xuống tới hàng ba rồi thì đi sang phải trước đã."]
+      }
+    },
+    {
+      "id": "chao-ga-trong",
+      "title": "Chào Gà Trống Choai",
+      "kind": "decision",
+      "target": "trum-ntr-lon-i",
+      "speaker": "Lợn Ỉ Lấm Lem",
+      "prompt": "Gà Trống đang ưỡn ngực trên đống rơm, gáy ò ó o. {name} chào anh ấy thế nào?",
+      "choices": [
+        {
+          "id": "khen-tieng-gay",
+          "text": "Khen tiếng gáy vang nhất nông trại",
+          "consequence": "Gà Trống sướng rơn, xòe đôi cánh đỏ rực: được khen thế này thì phải đố cho đã!"
+        },
+        {
+          "id": "dang-nong-san",
+          "text": "Dâng nông sản mừng mùa",
+          "consequence": "Gà Trống mổ thử một hạt lúa rồi gật gù: lúa năm nay chắc hạt lắm."
+        },
+        {
+          "id": "gay-theo",
+          "text": "Gáy thử một tiếng ò ó o",
+          "consequence": "Gà Trống cười nghiêng ngả: tiếng gáy của {name} non quá, nhưng gan dạ lắm!"
+        }
+      ]
+    },
+    {
+      "id": "tran-trum",
+      "title": "Đấu tính với Gà Trống Choai",
+      "goTo": "Trèo lên đống rơm vàng, Gà Trống Choai đang chờ",
+      "kind": "boss",
+      "target": "trum-ntr-ga-trong",
+      "bossId": "ga-trong-choai-khong-lo",
+      "bossName": "Gà Trống Choai Khổng Lồ",
+      "introDialogue": "Ò ó o! Bảy phép tính có nhớ đây. Mỗi câu đúng, ta gáy nhỏ đi một chút và thả chiêng xuống gần hơn!",
+      "winDialogue": "Ò… ó… o… ta chịu rồi! {name} nhớ phép tính còn giỏi hơn ta nhớ giờ gáy, chiêng mùa xin trao lại.",
+      "maxHp": 500,
+      "damagePerTurn": 80,
+      "turns": [
+        {
+          "id": "ba-tam-cong-hai-lam",
+          "skill": "phep-cong",
+          "prompt": "Gà Trống hỏi: 38 + 25 bằng bao nhiêu?",
+          "choices": [
+            { "id": "a", "text": "53" },
+            { "id": "b", "text": "63" },
+            { "id": "c", "text": "513" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "bay-hai-tru-muoi-tam",
+          "skill": "phep-tru",
+          "prompt": "Tính nhẩm cho nhanh: 72 − 18 bằng bao nhiêu?",
+          "choices": [
+            { "id": "a", "text": "54" },
+            { "id": "b", "text": "64" },
+            { "id": "c", "text": "66" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "dat-tinh-cong",
+          "skill": "phep-cong",
+          "prompt": "Đặt tính rồi tính 46 + 37. Kết quả là bao nhiêu?",
+          "choices": [
+            { "id": "a", "text": "73" },
+            { "id": "b", "text": "713" },
+            { "id": "c", "text": "83" }
+          ],
+          "answer": { "choice": "c" }
+        },
+        {
+          "id": "chin-muoi-tru",
+          "skill": "phep-tru",
+          "prompt": "Đặt tính rồi tính 90 − 45. Kết quả là bao nhiêu?",
+          "choices": [
+            { "id": "a", "text": "45" },
+            { "id": "b", "text": "55" },
+            { "id": "c", "text": "65" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "chuong-ga",
+          "skill": "bai-toan-loi-van",
+          "prompt": "Chuồng có 35 con gà mái và 27 con gà trống. Chuồng có tất cả bao nhiêu con gà?",
+          "choices": [
+            { "id": "a", "text": "52 con" },
+            { "id": "b", "text": "62 con" },
+            { "id": "c", "text": "8 con" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "ban-trung",
+          "skill": "bai-toan-loi-van",
+          "prompt": "Nông trại thu được 64 quả trứng, đã bán 29 quả. Còn lại bao nhiêu quả trứng?",
+          "choices": [
+            { "id": "a", "text": "35 quả" },
+            { "id": "b", "text": "45 quả" },
+            { "id": "c", "text": "93 quả" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "so-sanh-tong",
+          "skill": "so-sanh-so",
+          "prompt": "So sánh 47 + 8 với 56. Câu nào đúng?",
+          "choices": [
+            { "id": "a", "text": "47 + 8 lớn hơn 56" },
+            { "id": "b", "text": "47 + 8 bằng 56" },
+            { "id": "c", "text": "47 + 8 bé hơn 56" }
+          ],
+          "answer": { "choice": "c" }
+        }
+      ]
+    },
+    {
+      "id": "chieng-mua-vang",
+      "title": "Chiêng mùa vang lên",
+      "kind": "reward",
+      "target": "trum-ntr-ga-trong",
+      "text": "Gà Trống thả chiếc chiêng vào tay {name}. Boong boong! Cả nông trại reo hò, giỏ quà mùa gặt đầy XP, xu và điểm kỹ năng."
+    },
+    {
+      "id": "hoi-gat-bat-dau",
+      "title": "Hội gặt bắt đầu",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tiếng chiêng lan khắp cánh đồng, Gà Trống Choai gáy mừng một hồi dài. Bò Sữa Mơ mời {name} ra ruộng gặt lúa và ăn cơm mới cùng cả nông trại."
+    }
+  ],
+  "reward": {
+    "xp": 100,
+    "coin": 25,
+    "skillXp": { "phep-cong": 1, "phep-tru": 1, "bai-toan-loi-van": 1, "logic": 1 }
+  }
+}
