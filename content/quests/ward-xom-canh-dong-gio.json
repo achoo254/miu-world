@@ -1,0 +1,289 @@
+{
+  "id": "ward-xom-canh-dong-gio",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Trùm canh khu: Bò Gió Đồng Xa",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Bò Gió Đồng Xa canh cánh đồng gió bên hồ sen, đố {name} năm câu về đồ chơi, chính tả và tình thương.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bò Gió Đồng Xa",
+    "where": "Hồ sen và cánh đồng gió",
+    "goal": "Thắng trận đố của Bò Gió Đồng Xa",
+    "play": "Trả lời 5 câu đố, mỗi câu đúng làm Bò Gió Đồng Xa vơi bớt sức",
+    "learn": "Từ tả đồ vật, chính tả iu/ưu và ăt/ăc, từ chỉ tình cảm anh chị em, dấu chấm than",
+    "reward": "50 XP, 12 Xu mỗi lần thắng",
+    "next": "Bốn trùm canh khu đều đã gặp, {name} ghé chặng cuối đấu với Diều Hâu Gió Lốc nhé."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Bò Gió Đồng Xa",
+      "kind": "dialogue",
+      "target": "bo-gio-dong-xa",
+      "lines": [
+        {
+          "speaker": "Bò Gió Đồng Xa",
+          "text": "Ò… ọ! {name} có thấy chong chóng quay tít không? Ta là Bò Gió Đồng Xa, ta giữ gió cho cả cánh đồng."
+        },
+        {
+          "speaker": "Bò Gió Đồng Xa",
+          "text": "Năm câu đố gió thổi đây, trả lời đúng hết thì cả cánh đồng thả chong chóng mừng cậu."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Thổi gió lên nào!"
+        }
+      ],
+      "en": {
+        "title": "Meet Bò Gió Đồng Xa",
+        "lines": [
+          "Moo-oo! {name}, see the pinwheels spinning? I'm Bò Gió Đồng Xa, and I keep the wind for the whole field.",
+          "Here are five windy riddles. Get them all right and the whole field will spin pinwheels for you."
+        ],
+        "choices": [
+          {
+            "text": "Blow the wind!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Bò Gió Đồng Xa",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "bo-gio-dong-xa",
+      "bossId": "bo-gio-dong-xa",
+      "bossName": "Bò Gió Đồng Xa",
+      "introDialogue": "Gió nổi rồi, câu đố thứ nhất bay vù tới!",
+      "winDialogue": "Ò… ta hết gió rồi! {name} thắng, chong chóng khắp đồng quay tít mừng cậu.",
+      "maxHp": 500,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "ta-chong-chong",
+          "prompt": "Từ nào tả chiếc chong chóng giấy của bé?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "nhiều màu"
+            },
+            {
+              "id": "b",
+              "text": "thổi gió"
+            },
+            {
+              "id": "c",
+              "text": "cầm tay"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which word describes the child's paper pinwheel?",
+            "choices": [
+              "nhiều màu (many-coloured)",
+              "thổi gió (blow)",
+              "cầm tay (hold)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "iu-riu",
+          "prompt": "Vần nào điền vào «cái r…» để thành tên đồ dùng chặt củi?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "iu"
+            },
+            {
+              "id": "b",
+              "text": "ưu"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which rhyme completes «cái r…», the tool for chopping firewood (an axe)?",
+            "choices": [
+              "iu",
+              "ưu"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "at-mat",
+          "prompt": "Chọn vần đúng: «chú bò mở to đôi m… tròn xoe»?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ăt"
+            },
+            {
+              "id": "b",
+              "text": "ăc"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Pick the right rhyme: «chú bò mở to đôi m… tròn xoe» (the cow opens its round eyes wide)?",
+            "choices": [
+              "ăt",
+              "ăc"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "nhuong-nhin",
+          "prompt": "Từ nào nói về tình cảm tốt đẹp giữa anh chị em?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "nhường nhịn"
+            },
+            {
+              "id": "b",
+              "text": "giành giật"
+            },
+            {
+              "id": "c",
+              "text": "cãi nhau"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which word is about kindness between brothers and sisters?",
+            "choices": [
+              "nhường nhịn (give way to each other)",
+              "giành giật (snatch)",
+              "cãi nhau (quarrel)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "thuong-me",
+          "prompt": "Câu «Mẹ ơi, con thương mẹ lắm» nên kết thúc bằng dấu gì?",
+          "skill": "dau-cau",
+          "choices": [
+            {
+              "id": "a",
+              "text": "dấu chấm than"
+            },
+            {
+              "id": "b",
+              "text": "dấu chấm hỏi"
+            },
+            {
+              "id": "c",
+              "text": "dấu hai chấm"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which mark should end «Mẹ ơi, con thương mẹ lắm» (Mum, I love you so much)?",
+            "choices": [
+              "an exclamation mark",
+              "a question mark",
+              "a colon"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Vù vù, đúng rồi!",
+          "Chong chóng quay tít vì câu trả lời của cậu!",
+          "Hay quá, gió đồng thổi mát cả hồ sen."
+        ],
+        "wrong": [
+          "Gió quẩn mất rồi, chọn lại nhé.",
+          "Chưa đúng đâu, nghe kĩ tiếng gió xem.",
+          "Suýt đúng rồi, thổi thêm một hơi nữa nào!"
+        ],
+        "en": {
+          "right": [
+            "Whoosh, that's right!",
+            "The pinwheels are spinning because of your answer!",
+            "Wonderful, the field wind cools the whole lotus lake."
+          ],
+          "wrong": [
+            "The wind swirled the wrong way, choose again.",
+            "Not right, listen carefully to the wind.",
+            "Nearly right, one more puff!"
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Bò Gió Đồng Xa",
+        "bossName": "Bò Gió Đồng Xa",
+        "introDialogue": "The wind is up, and the first riddle whooshes over!",
+        "winDialogue": "Moo… I'm out of wind! {name} wins, and pinwheels spin all over the field for you."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Bò Gió Đồng Xa",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bò Gió Đồng Xa tặng {name} một chiếc chong chóng giấy bảy màu, có gió là quay.",
+      "en": {
+        "title": "Bò Gió Đồng Xa's gift",
+        "text": "Bò Gió Đồng Xa gives {name} a rainbow paper pinwheel that spins in every breeze."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Bò Gió Đồng Xa",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bốn trùm canh khu đều đã gặp, {name} ghé chặng cuối đấu với Diều Hâu Gió Lốc nhé.",
+      "en": {
+        "title": "Goodbye, Bò Gió Đồng Xa",
+        "text": "All four zone guardians met, {name}: visit the last stop and battle the Whirlwind Hawk."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 50,
+    "coin": 12,
+    "skillXp": {
+      "tu-ngu": 1,
+      "chinh-ta": 1,
+      "dau-cau": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Bò Gió Đồng Xa",
+    "summary": "Bò Gió Đồng Xa guards the windy fields by the lotus lake and asks {name} five riddles about toys, spelling and caring."
+  }
+}

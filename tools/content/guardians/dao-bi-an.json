@@ -1,0 +1,423 @@
+{
+  "region": "dao-bi-an",
+  "guardians": [
+    {
+      "quest": "ward-dao-ben-tau",
+      "id": "hong-hac-bai-cat",
+      "name": "Hồng Hạc Bãi Cát",
+      "look": "animal-parrot",
+      "tint": "#f08aa8",
+      "height": 2.2,
+      "zone": "Bến tàu và bãi biển",
+      "lessons": [
+        "kho-bau-dao-ch1"
+      ],
+      "learn": "Đọc hiểu mẩu giấy, so sánh số có hai chữ số, phép cộng trong phạm vi 100 và 20",
+      "summary": "Hồng Hạc Bãi Cát canh làng chài bên bãi biển, đố {name} bốn câu về mẩu giấy trong chai, số thuyền và vỏ sò.",
+      "hook": [
+        "Chào {name}! Ta là Hồng Hạc Bãi Cát, ta đứng một chân canh bãi biển suốt ngày.",
+        "Sóng vừa đánh dạt vào một chai thủy tinh có bốn câu đố. Mình cùng giải nhé!"
+      ],
+      "choice": "Mở chai ra xem nào!",
+      "intro": "Nút chai bật ra, câu đố thứ nhất cuộn tròn bên trong!",
+      "win": "Ta đổi chân đứng chịu thua! {name} giải đố giỏi như thuyền trưởng lão luyện.",
+      "right": [
+        "Sóng vỗ rì rào, đúng rồi!",
+        "Hay quá, lông ta hồng thêm vì vui!",
+        "Câu trả lời lấp lánh như vỏ sò!"
+      ],
+      "wrong": [
+        "Sóng cuốn mất câu trả lời rồi, chọn lại nhé.",
+        "Chưa đúng, đọc lại mẩu giấy xem.",
+        "Gần trúng rồi, so kĩ từng chữ số nào."
+      ],
+      "reward": "Hồng Hạc Bãi Cát tặng {name} một chiếc vỏ ốc xà cừ, áp vào tai là nghe tiếng sóng.",
+      "next": "Vào rừng nhiệt đới đi {name}, bên thác nước có trùm canh khu nhanh như chớp.",
+      "turns": [
+        {
+          "id": "giay-trong-chai",
+          "skill": "doc-hieu",
+          "prompt": "Mẩu giấy trong chai ghi: «Quà ở dưới cây dừa thứ ba». Quà nằm ở đâu?",
+          "choices": [
+            "dưới cây dừa thứ ba",
+            "trên đỉnh núi",
+            "trong hang đá"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The note in the bottle says: «The gift is under the third coconut tree». Where is the gift?",
+            "choices": [
+              "under the third coconut tree",
+              "on the mountain top",
+              "in the rock cave"
+            ]
+          }
+        },
+        {
+          "id": "thuyen-be-hon",
+          "skill": "so-sanh-so",
+          "prompt": "Thuyền số 58 và thuyền số 85 cùng cập bến. Thuyền nào mang số bé hơn?",
+          "choices": [
+            "thuyền số 58",
+            "thuyền số 85",
+            "bằng nhau"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Boats number 58 and 85 come in to the pier. Which boat has the smaller number?",
+            "choices": [
+              "boat 58",
+              "boat 85",
+              "they are equal"
+            ]
+          }
+        },
+        {
+          "id": "vo-so",
+          "skill": "phep-cong",
+          "prompt": "Hồng Hạc nhặt 34 vỏ sò rồi nhặt thêm 25 vỏ. Hồng Hạc có tất cả bao nhiêu vỏ sò?",
+          "choices": [
+            "59",
+            "49",
+            "9"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Hồng Hạc picks up 34 shells and then 25 more. How many shells in all?",
+            "choices": [
+              "59",
+              "49",
+              "9"
+            ]
+          }
+        },
+        {
+          "id": "thuyen-cap-ben",
+          "skill": "phep-cong",
+          "prompt": "Sáng có 8 con thuyền cập bến, chiều thêm 7 con nữa. Có tất cả bao nhiêu con thuyền?",
+          "choices": [
+            "15",
+            "14",
+            "1"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "8 boats come in in the morning and 7 more in the afternoon. How many boats in all?",
+            "choices": [
+              "15",
+              "14",
+              "1"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Hồng Hạc Bãi Cát guards the fishing village by the beach and asks {name} four riddles about a message in a bottle, boat numbers and shells.",
+        "hook": [
+          "Hello {name}! I'm Hồng Hạc Bãi Cát, and I stand on one leg guarding the beach all day.",
+          "The waves just washed up a glass bottle with four riddles inside. Let's solve them together!"
+        ],
+        "choice": "Let's open the bottle!",
+        "intro": "Pop goes the cork, and the first riddle is rolled up inside!",
+        "win": "I switch legs and give up! {name} solves riddles like a seasoned captain.",
+        "right": [
+          "The waves whisper: that's right!",
+          "Lovely, my feathers are turning pinker with joy!",
+          "That answer sparkles like a seashell!"
+        ],
+        "wrong": [
+          "A wave swept your answer away, choose again.",
+          "Not right, read the note again.",
+          "Nearly there, compare each digit carefully."
+        ],
+        "reward": "Hồng Hạc Bãi Cát gives {name} a mother-of-pearl shell: hold it to your ear and hear the sea.",
+        "next": "Go into the rainforest, {name}: by the waterfall waits a zone guardian as quick as lightning."
+      }
+    },
+    {
+      "quest": "ward-dao-rung-nhiet-doi",
+      "id": "bao-dom-rung-mua",
+      "name": "Báo Đốm Rừng Mưa",
+      "look": "animal-tiger",
+      "tint": "#e0b040",
+      "height": 2.1,
+      "zone": "Rừng nhiệt đới và thác nước",
+      "lessons": [
+        "kho-bau-dao-ch1"
+      ],
+      "learn": "Phép cộng trong phạm vi 100 và 20, so sánh số, đọc hiểu bảng chỉ dẫn",
+      "summary": "Báo Đốm Rừng Mưa canh thác nước trong rừng nhiệt đới, đố {name} bốn câu về cây rừng, đá thác và cầu treo.",
+      "hook": [
+        "Soạt! Ta là Báo Đốm Rừng Mưa, nhanh nhất khu rừng này, {name} có theo kịp ta không?",
+        "Ta không đua chạy đâu, ta đua đố. Bốn câu, ai nhanh trí hơn người ấy thắng!"
+      ],
+      "choice": "Đua đố thì tớ không ngại!",
+      "intro": "Mưa rừng lộp độp, câu đố thứ nhất nhảy ra từ bụi cây!",
+      "win": "Ta nằm dài trên tảng đá chịu thua! {name} nhanh trí hơn cả báo đốm.",
+      "right": [
+        "Soạt, đúng như chớp!",
+        "Hay quá, đốm trên lưng ta nhảy múa mừng cậu.",
+        "Câu trả lời mát như nước thác!"
+      ],
+      "wrong": [
+        "Trượt chân trên rêu rồi, thử lại nhé.",
+        "Chưa đúng, đọc kĩ bảng gỗ xem.",
+        "Suýt đúng rồi, nghĩ thêm một nhịp nữa nào!"
+      ],
+      "reward": "Báo Đốm Rừng Mưa tặng {name} một chiếc lá chuối rừng to làm ô che mưa.",
+      "next": "Đi tiếp tới khu di tích cổ, trùm canh khu ở đó đã canh đền hàng trăm năm rồi, {name} ạ.",
+      "turns": [
+        {
+          "id": "dua-chuoi",
+          "skill": "phep-cong",
+          "prompt": "Báo đốm đếm được 46 cây dừa và 32 cây chuối. Có tất cả bao nhiêu cây?",
+          "choices": [
+            "78",
+            "68",
+            "14"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Báo counts 46 coconut trees and 32 banana trees. How many trees in all?",
+            "choices": [
+              "78",
+              "68",
+              "14"
+            ]
+          }
+        },
+        {
+          "id": "dau-63-36",
+          "skill": "so-sanh-so",
+          "prompt": "Hai tảng đá bên thác ghi 63 và 36. Điền dấu vào 63 … 36.",
+          "choices": [
+            "<",
+            ">",
+            "="
+          ],
+          "answer": 1,
+          "en": {
+            "prompt": "Two rocks by the falls say 63 and 36. Which sign goes in 63 … 36?",
+            "choices": [
+              "<",
+              ">",
+              "="
+            ]
+          }
+        },
+        {
+          "id": "cau-treo-hai-nguoi",
+          "skill": "doc-hieu",
+          "prompt": "Bảng gỗ ghi: «Mỗi lần chỉ hai người qua cầu treo». Ba bạn muốn qua cầu thì làm thế nào?",
+          "choices": [
+            "hai bạn đi trước, một bạn đi sau",
+            "cả ba cùng đi một lúc",
+            "không ai được qua"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The wooden sign says: «Only two people on the rope bridge at a time». How can three friends cross?",
+            "choices": [
+              "two go first, then one",
+              "all three at once",
+              "nobody may cross"
+            ]
+          }
+        },
+        {
+          "id": "da-thac",
+          "skill": "phep-cong",
+          "prompt": "Thác nước có 9 tảng đá ở trên và 9 tảng đá ở dưới. Có tất cả mấy tảng đá?",
+          "choices": [
+            "18",
+            "19",
+            "81"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The waterfall has 9 rocks at the top and 9 at the bottom. How many rocks in all?",
+            "choices": [
+              "18",
+              "19",
+              "81"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Báo Đốm Rừng Mưa guards the rainforest waterfall and asks {name} four riddles about forest trees, waterfall rocks and the rope bridge.",
+        "hook": [
+          "Swish! I'm Báo Đốm Rừng Mưa, the fastest in this forest. Can {name} keep up with me?",
+          "I don't race on foot, I race with riddles. Four of them: the quickest mind wins!"
+        ],
+        "choice": "A riddle race? Bring it on!",
+        "intro": "Rain patters in the forest, and the first riddle leaps from a bush!",
+        "win": "I stretch out on a rock and give up! {name} is quicker-witted than a leopard.",
+        "right": [
+          "Swish, quick as lightning!",
+          "Brilliant, the spots on my back are dancing for you.",
+          "That answer is as cool as the waterfall!"
+        ],
+        "wrong": [
+          "Slipped on the moss, try again.",
+          "Not right, read the wooden sign carefully.",
+          "Nearly right, think one more beat!"
+        ],
+        "reward": "Báo Đốm Rừng Mưa gives {name} a big wild banana leaf to use as an umbrella.",
+        "next": "On to the ancient ruins, {name}: their zone guardian has watched the temple for hundreds of years."
+      }
+    },
+    {
+      "quest": "ward-dao-di-tich",
+      "id": "voi-da-den-co",
+      "name": "Voi Đá Đền Cổ",
+      "look": "animal-elephant",
+      "tint": "#c8b088",
+      "height": 2.5,
+      "zone": "Khu di tích cổ và đền thờ",
+      "lessons": [
+        "kho-bau-dao-ch1"
+      ],
+      "learn": "So sánh số, phép cộng trong phạm vi 100 và 20, đọc hiểu lời khắc, số liền sau",
+      "summary": "Voi Đá Đền Cổ canh cổng di tích cổ, đố {name} năm câu khắc trên những cột đá.",
+      "hook": [
+        "Rầm… rầm… ta là Voi Đá Đền Cổ, ta đứng canh cổng di tích này lâu lắm rồi, {name} ạ.",
+        "Trên năm cột đá có năm câu đố cổ. Giải được hết thì cổng di tích mở chào cậu."
+      ],
+      "choice": "Tớ giải được hết!",
+      "intro": "Rêu trên cột đá thứ nhất rơi xuống, câu đố hiện ra!",
+      "win": "Rầm, ta quỳ xuống chịu thua! {name} xứng đáng là người bạn của di tích cổ.",
+      "right": [
+        "Rầm, cột đá sáng lên rồi!",
+        "Đúng rồi, câu đố cổ cũng phải chịu cậu.",
+        "Hay quá, chim trên mái đền hót vang mừng cậu!"
+      ],
+      "wrong": [
+        "Cột đá chưa sáng, thử lại nhé.",
+        "Chưa đúng, đọc kĩ lời khắc trên đá xem.",
+        "Gần đúng rồi, so lại từng chữ số nào."
+      ],
+      "reward": "Voi Đá Đền Cổ tặng {name} một viên ngọc đá cuội khắc hình voi, mang theo là gặp may.",
+      "next": "Đã gặp ba trùm canh khu, {name} ra bãi biển đấu với Cua Biển Khổng Lồ ở chặng cuối nhé.",
+      "turns": [
+        {
+          "id": "cot-lon-nhat",
+          "skill": "so-sanh-so",
+          "prompt": "Ba cột đá ghi số 71, 17 và 70. Cột ghi số lớn nhất là số mấy?",
+          "choices": [
+            "71",
+            "70",
+            "17"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Three stone pillars say 71, 17 and 70. Which is the biggest number?",
+            "choices": [
+              "71",
+              "70",
+              "17"
+            ]
+          }
+        },
+        {
+          "id": "bac-den",
+          "skill": "phep-cong",
+          "prompt": "Đền có 52 bậc đá ở dưới và 36 bậc ở trên. Đền có tất cả bao nhiêu bậc?",
+          "choices": [
+            "88",
+            "78",
+            "16"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The temple has 52 stone steps below and 36 above. How many steps in all?",
+            "choices": [
+              "88",
+              "78",
+              "16"
+            ]
+          }
+        },
+        {
+          "id": "loi-khac",
+          "skill": "doc-hieu",
+          "prompt": "Bia đá khắc: «Ai giữ gìn di tích là bạn của ngôi đền». Lời khắc khuyên điều gì?",
+          "choices": [
+            "giữ gìn di tích",
+            "vẽ lên tường đền",
+            "mang đá về nhà"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The stone tablet says: «Whoever looks after the ruins is a friend of the temple». What does it ask us to do?",
+            "choices": [
+              "look after the ruins",
+              "draw on the temple walls",
+              "take stones home"
+            ]
+          }
+        },
+        {
+          "id": "ngoc-do-xanh",
+          "skill": "phep-cong",
+          "prompt": "Voi Đá xếp 6 viên ngọc đỏ và 8 viên ngọc xanh. Có tất cả mấy viên ngọc?",
+          "choices": [
+            "14",
+            "13",
+            "2"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Voi Đá lines up 6 red gems and 8 blue gems. How many gems in all?",
+            "choices": [
+              "14",
+              "13",
+              "2"
+            ]
+          }
+        },
+        {
+          "id": "lien-sau-89",
+          "skill": "so-den-100",
+          "prompt": "Cột đá cuối cùng hỏi: số liền sau của 89 là số nào?",
+          "choices": [
+            "90",
+            "88",
+            "99"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The last pillar asks: which number comes right after 89?",
+            "choices": [
+              "90",
+              "88",
+              "99"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Voi Đá Đền Cổ guards the gate of the ancient ruins and asks {name} five riddles carved on the stone pillars.",
+        "hook": [
+          "Rumble… rumble… I'm Voi Đá Đền Cổ, and I've guarded these ruins for a very long time, {name}.",
+          "Five pillars hold five ancient riddles. Solve them all and the ruins' gate will open for you."
+        ],
+        "choice": "I can solve them all!",
+        "intro": "Moss falls from the first pillar, and a riddle appears!",
+        "win": "Rumble, I kneel and give up! {name} is a true friend of the ancient ruins.",
+        "right": [
+          "Rumble, the pillar is glowing!",
+          "Right, even the ancient riddle gives in to you.",
+          "Brilliant, the birds on the temple roof sing for you!"
+        ],
+        "wrong": [
+          "The pillar isn't glowing yet, try again.",
+          "Not right, read the carving carefully.",
+          "Nearly right, compare each digit again."
+        ],
+        "reward": "Voi Đá Đền Cổ gives {name} a pebble carved with an elephant: carry it for luck.",
+        "next": "Three zone guardians met, {name}: go to the beach and battle the Giant Sea Crab at the last stop."
+      }
+    }
+  ]
+}

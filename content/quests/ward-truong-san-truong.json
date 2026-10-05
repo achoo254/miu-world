@@ -1,0 +1,269 @@
+{
+  "id": "ward-truong-san-truong",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Trùm canh khu: Hươu Đếm Cờ",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Hươu Đếm Cờ canh sân trường bên cột cờ, đố {name} bốn câu về số đến 100 và phép tính.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Hươu Đếm Cờ",
+    "where": "Sân trường",
+    "goal": "Thắng trận đố của Hươu Đếm Cờ",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Hươu Đếm Cờ vơi bớt sức",
+    "learn": "Số đến 100, tia số, số hạng và tổng, nhiều hơn bao nhiêu",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Ra sân sau dãy lớp đi {name}, có một trùm canh khu thuộc làu thời khóa biểu."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Hươu Đếm Cờ",
+      "kind": "dialogue",
+      "target": "huou-dem-co",
+      "lines": [
+        {
+          "speaker": "Hươu Đếm Cờ",
+          "text": "Chào {name}! Ta là Hươu Đếm Cờ, cổ ta cao nên ta đếm được mọi lá cờ quanh sân trường."
+        },
+        {
+          "speaker": "Hươu Đếm Cờ",
+          "text": "Đếm mãi thành nghiện, giờ ta muốn đố cậu bốn câu toán. Chơi không?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Chơi luôn, Hươu ơi!"
+        }
+      ],
+      "en": {
+        "title": "Meet Hươu Đếm Cờ",
+        "lines": [
+          "Hello {name}! I'm Hươu Đếm Cờ, and my long neck lets me count every flag round the schoolyard.",
+          "Counting has made me hungry for maths, so let me ask you four riddles. Shall we?"
+        ],
+        "choices": [
+          {
+            "text": "Yes, let's play, Hươu!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Hươu Đếm Cờ",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "huou-dem-co",
+      "bossId": "huou-dem-co",
+      "bossName": "Hươu Đếm Cờ",
+      "introDialogue": "Cờ đã kéo lên đỉnh, câu toán đầu tiên bay phấp phới đây!",
+      "winDialogue": "Ta cúi cổ chào thua! {name} đếm số còn nhanh hơn ta nhìn từ trên cao.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "bay-chuc-bon",
+          "prompt": "Hươu Đếm Cờ có 7 chục lá cờ và 4 lá cờ lẻ. Hươu có tất cả bao nhiêu lá cờ?",
+          "skill": "so-den-100",
+          "choices": [
+            {
+              "id": "a",
+              "text": "74"
+            },
+            {
+              "id": "b",
+              "text": "47"
+            },
+            {
+              "id": "c",
+              "text": "11"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Hươu Đếm Cờ has 7 tens of flags and 4 more single flags. How many flags in all?",
+            "choices": [
+              "74",
+              "47",
+              "11"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "lien-sau-59",
+          "prompt": "Trên tia số dọc hàng rào sân trường, số liền sau của 59 là số nào?",
+          "skill": "tia-so",
+          "choices": [
+            {
+              "id": "a",
+              "text": "58"
+            },
+            {
+              "id": "b",
+              "text": "60"
+            },
+            {
+              "id": "c",
+              "text": "69"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "On the number line along the school fence, which number comes right after 59?",
+            "choices": [
+              "58",
+              "60",
+              "69"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        },
+        {
+          "id": "ten-tong",
+          "prompt": "Hươu viết lên bảng: 35 + 12 = 47. Số 47 trong phép tính này gọi là gì?",
+          "skill": "thanh-phan-phep-tinh",
+          "choices": [
+            {
+              "id": "a",
+              "text": "tổng"
+            },
+            {
+              "id": "b",
+              "text": "số hạng"
+            },
+            {
+              "id": "c",
+              "text": "hiệu"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Hươu writes 35 + 12 = 47 on the board. What is 47 called in this sum?",
+            "choices": [
+              "tổng (the sum)",
+              "số hạng (an addend)",
+              "hiệu (the difference)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "nhieu-hon",
+          "prompt": "Lớp 2A có 32 bạn, lớp 2B có 28 bạn. Lớp 2A nhiều hơn lớp 2B mấy bạn?",
+          "skill": "hon-kem",
+          "choices": [
+            {
+              "id": "a",
+              "text": "4 bạn"
+            },
+            {
+              "id": "b",
+              "text": "5 bạn"
+            },
+            {
+              "id": "c",
+              "text": "60 bạn"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Class 2A has 32 pupils and class 2B has 28. How many more pupils does 2A have?",
+            "choices": [
+              "4",
+              "5",
+              "60"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Đúng rồi, cổ ta cúi xuống một nấc!",
+          "Tính nhẩm siêu thế, ta phục cậu rồi.",
+          "Một lá cờ chiến thắng cho {name}!"
+        ],
+        "wrong": [
+          "Đếm lệch một lá cờ rồi, đếm lại nhé.",
+          "Chưa đúng, cậu thử viết ra nháp xem.",
+          "Suýt trúng, nhìn kĩ hàng chục và hàng đơn vị nào."
+        ],
+        "en": {
+          "right": [
+            "Right, my neck just dropped a notch!",
+            "Such quick mental maths, I'm impressed.",
+            "A winning flag for {name}!"
+          ],
+          "wrong": [
+            "You counted one flag too many or too few, count again.",
+            "Not right, try working it out on scrap paper.",
+            "So close, look carefully at the tens and the ones."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Hươu Đếm Cờ",
+        "bossName": "Hươu Đếm Cờ",
+        "introDialogue": "The flag is at the top of the pole: here flutters the first maths riddle!",
+        "winDialogue": "I bow my neck and give up! {name} counts faster than I can look down from up here."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Hươu Đếm Cờ",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hươu Đếm Cờ tặng {name} một lá cờ nhỏ thêu số 100, đấu lại lúc nào cũng được.",
+      "en": {
+        "title": "Hươu Đếm Cờ's gift",
+        "text": "Hươu Đếm Cờ gives {name} a little flag stitched with the number 100. Battle again whenever you like."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Hươu Đếm Cờ",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ra sân sau dãy lớp đi {name}, có một trùm canh khu thuộc làu thời khóa biểu.",
+      "en": {
+        "title": "Goodbye, Hươu Đếm Cờ",
+        "text": "Go round to the yard behind the classrooms, {name}: a zone guardian there knows the timetable by heart."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "so-den-100": 1,
+      "tia-so": 1,
+      "thanh-phan-phep-tinh": 1,
+      "hon-kem": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Hươu Đếm Cờ",
+    "summary": "Hươu Đếm Cờ guards the schoolyard by the flagpole and asks {name} four riddles about numbers to 100 and sums."
+  }
+}

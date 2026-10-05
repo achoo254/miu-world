@@ -1,0 +1,268 @@
+{
+  "id": "ward-dao-rung-nhiet-doi",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Trùm canh khu: Báo Đốm Rừng Mưa",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Báo Đốm Rừng Mưa canh thác nước trong rừng nhiệt đới, đố {name} bốn câu về cây rừng, đá thác và cầu treo.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Báo Đốm Rừng Mưa",
+    "where": "Rừng nhiệt đới và thác nước",
+    "goal": "Thắng trận đố của Báo Đốm Rừng Mưa",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Báo Đốm Rừng Mưa vơi bớt sức",
+    "learn": "Phép cộng trong phạm vi 100 và 20, so sánh số, đọc hiểu bảng chỉ dẫn",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Đi tiếp tới khu di tích cổ, trùm canh khu ở đó đã canh đền hàng trăm năm rồi, {name} ạ."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Báo Đốm Rừng Mưa",
+      "kind": "dialogue",
+      "target": "bao-dom-rung-mua",
+      "lines": [
+        {
+          "speaker": "Báo Đốm Rừng Mưa",
+          "text": "Soạt! Ta là Báo Đốm Rừng Mưa, nhanh nhất khu rừng này, {name} có theo kịp ta không?"
+        },
+        {
+          "speaker": "Báo Đốm Rừng Mưa",
+          "text": "Ta không đua chạy đâu, ta đua đố. Bốn câu, ai nhanh trí hơn người ấy thắng!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đua đố thì tớ không ngại!"
+        }
+      ],
+      "en": {
+        "title": "Meet Báo Đốm Rừng Mưa",
+        "lines": [
+          "Swish! I'm Báo Đốm Rừng Mưa, the fastest in this forest. Can {name} keep up with me?",
+          "I don't race on foot, I race with riddles. Four of them: the quickest mind wins!"
+        ],
+        "choices": [
+          {
+            "text": "A riddle race? Bring it on!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Báo Đốm Rừng Mưa",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "bao-dom-rung-mua",
+      "bossId": "bao-dom-rung-mua",
+      "bossName": "Báo Đốm Rừng Mưa",
+      "introDialogue": "Mưa rừng lộp độp, câu đố thứ nhất nhảy ra từ bụi cây!",
+      "winDialogue": "Ta nằm dài trên tảng đá chịu thua! {name} nhanh trí hơn cả báo đốm.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "dua-chuoi",
+          "prompt": "Báo đốm đếm được 46 cây dừa và 32 cây chuối. Có tất cả bao nhiêu cây?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "78"
+            },
+            {
+              "id": "b",
+              "text": "68"
+            },
+            {
+              "id": "c",
+              "text": "14"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Báo counts 46 coconut trees and 32 banana trees. How many trees in all?",
+            "choices": [
+              "78",
+              "68",
+              "14"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "dau-63-36",
+          "prompt": "Hai tảng đá bên thác ghi 63 và 36. Điền dấu vào 63 … 36.",
+          "skill": "so-sanh-so",
+          "choices": [
+            {
+              "id": "a",
+              "text": "<"
+            },
+            {
+              "id": "b",
+              "text": ">"
+            },
+            {
+              "id": "c",
+              "text": "="
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Two rocks by the falls say 63 and 36. Which sign goes in 63 … 36?",
+            "choices": [
+              "<",
+              ">",
+              "="
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        },
+        {
+          "id": "cau-treo-hai-nguoi",
+          "prompt": "Bảng gỗ ghi: «Mỗi lần chỉ hai người qua cầu treo». Ba bạn muốn qua cầu thì làm thế nào?",
+          "skill": "doc-hieu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "hai bạn đi trước, một bạn đi sau"
+            },
+            {
+              "id": "b",
+              "text": "cả ba cùng đi một lúc"
+            },
+            {
+              "id": "c",
+              "text": "không ai được qua"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The wooden sign says: «Only two people on the rope bridge at a time». How can three friends cross?",
+            "choices": [
+              "two go first, then one",
+              "all three at once",
+              "nobody may cross"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "da-thac",
+          "prompt": "Thác nước có 9 tảng đá ở trên và 9 tảng đá ở dưới. Có tất cả mấy tảng đá?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "18"
+            },
+            {
+              "id": "b",
+              "text": "19"
+            },
+            {
+              "id": "c",
+              "text": "81"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The waterfall has 9 rocks at the top and 9 at the bottom. How many rocks in all?",
+            "choices": [
+              "18",
+              "19",
+              "81"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Soạt, đúng như chớp!",
+          "Hay quá, đốm trên lưng ta nhảy múa mừng cậu.",
+          "Câu trả lời mát như nước thác!"
+        ],
+        "wrong": [
+          "Trượt chân trên rêu rồi, thử lại nhé.",
+          "Chưa đúng, đọc kĩ bảng gỗ xem.",
+          "Suýt đúng rồi, nghĩ thêm một nhịp nữa nào!"
+        ],
+        "en": {
+          "right": [
+            "Swish, quick as lightning!",
+            "Brilliant, the spots on my back are dancing for you.",
+            "That answer is as cool as the waterfall!"
+          ],
+          "wrong": [
+            "Slipped on the moss, try again.",
+            "Not right, read the wooden sign carefully.",
+            "Nearly right, think one more beat!"
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Báo Đốm Rừng Mưa",
+        "bossName": "Báo Đốm Rừng Mưa",
+        "introDialogue": "Rain patters in the forest, and the first riddle leaps from a bush!",
+        "winDialogue": "I stretch out on a rock and give up! {name} is quicker-witted than a leopard."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Báo Đốm Rừng Mưa",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Báo Đốm Rừng Mưa tặng {name} một chiếc lá chuối rừng to làm ô che mưa.",
+      "en": {
+        "title": "Báo Đốm Rừng Mưa's gift",
+        "text": "Báo Đốm Rừng Mưa gives {name} a big wild banana leaf to use as an umbrella."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Báo Đốm Rừng Mưa",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đi tiếp tới khu di tích cổ, trùm canh khu ở đó đã canh đền hàng trăm năm rồi, {name} ạ.",
+      "en": {
+        "title": "Goodbye, Báo Đốm Rừng Mưa",
+        "text": "On to the ancient ruins, {name}: their zone guardian has watched the temple for hundreds of years."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "phep-cong": 1,
+      "so-sanh-so": 1,
+      "doc-hieu": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Báo Đốm Rừng Mưa",
+    "summary": "Báo Đốm Rừng Mưa guards the rainforest waterfall and asks {name} four riddles about forest trees, waterfall rocks and the rope bridge."
+  }
+}

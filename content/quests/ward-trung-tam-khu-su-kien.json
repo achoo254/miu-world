@@ -1,0 +1,268 @@
+{
+  "id": "ward-trung-tam-khu-su-kien",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Trùm canh khu: Gấu Trúc Lễ Hội",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Gấu Trúc Lễ Hội canh khu sự kiện theo mùa, đố {name} bốn câu về giờ giấc, quy luật và màu sắc.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Gấu Trúc Lễ Hội",
+    "where": "Khu sự kiện theo mùa",
+    "goal": "Thắng trận đố của Gấu Trúc Lễ Hội",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Gấu Trúc Lễ Hội vơi bớt sức",
+    "learn": "Xem đồng hồ, quy luật dãy màu và dãy số, từ tiếng Anh về màu sắc",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Sân trước lâu đài có trùm canh khu canh gác nghiêm nhất trung tâm, {name} sang đó nhé."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Gấu Trúc Lễ Hội",
+      "kind": "dialogue",
+      "target": "gau-truc-le-hoi",
+      "lines": [
+        {
+          "speaker": "Gấu Trúc Lễ Hội",
+          "text": "Ồ, {name}! Ta là Gấu Trúc Lễ Hội, mùa nào ta cũng treo đèn, kết hoa cho khu sự kiện."
+        },
+        {
+          "speaker": "Gấu Trúc Lễ Hội",
+          "text": "Hôm nay ta treo đố vui lên dây đèn lồng. Gỡ được bốn câu thì cậu thắng!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Gỡ đèn lồng nào!"
+        }
+      ],
+      "en": {
+        "title": "Meet Gấu Trúc Lễ Hội",
+        "lines": [
+          "Oh, {name}! I'm Gấu Trúc Lễ Hội, and every season I hang lights and flowers round the events area.",
+          "Today I've hung riddles on the lantern string. Take down four and you win!"
+        ],
+        "choices": [
+          {
+            "text": "Let's take down the lanterns!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Gấu Trúc Lễ Hội",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "gau-truc-le-hoi",
+      "bossId": "gau-truc-le-hoi",
+      "bossName": "Gấu Trúc Lễ Hội",
+      "introDialogue": "Đèn lồng thứ nhất sáng lên, câu đố hiện ra rồi!",
+      "winDialogue": "Ta tắt đèn chịu thua! {name} thông minh như đèn lồng sáng nhất lễ hội.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "ba-gio",
+          "prompt": "Đồng hồ lễ hội có kim ngắn chỉ số 3, kim dài chỉ số 12. Đồng hồ chỉ mấy giờ?",
+          "skill": "xem-dong-ho",
+          "choices": [
+            {
+              "id": "a",
+              "text": "3 giờ"
+            },
+            {
+              "id": "b",
+              "text": "12 giờ"
+            },
+            {
+              "id": "c",
+              "text": "12 giờ 15 phút"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "On the festival clock the short hand points to 3 and the long hand to 12. What time is it?",
+            "choices": [
+              "3 o'clock",
+              "12 o'clock",
+              "12:15"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "day-den",
+          "prompt": "Dây đèn lồng xếp màu: đỏ, vàng, đỏ, vàng, đỏ, … Chiếc đèn tiếp theo màu gì?",
+          "skill": "logic",
+          "choices": [
+            {
+              "id": "a",
+              "text": "vàng"
+            },
+            {
+              "id": "b",
+              "text": "đỏ"
+            },
+            {
+              "id": "c",
+              "text": "xanh"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The lanterns go red, yellow, red, yellow, red, … What colour is the next one?",
+            "choices": [
+              "vàng (yellow)",
+              "đỏ (red)",
+              "xanh (blue)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "red",
+          "prompt": "Gấu Trúc nói tiếng Anh: «red lantern». Chiếc đèn lồng màu gì?",
+          "skill": "tu-vung",
+          "choices": [
+            {
+              "id": "a",
+              "text": "màu đỏ"
+            },
+            {
+              "id": "b",
+              "text": "màu xanh"
+            },
+            {
+              "id": "c",
+              "text": "màu vàng"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Gấu Trúc says «red lantern». What colour is the lantern in Vietnamese?",
+            "choices": [
+              "màu đỏ",
+              "màu xanh",
+              "màu vàng"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "nam-muoi",
+          "prompt": "Số trên vé sự kiện: 5, 10, 15, 20, … Vé tiếp theo mang số mấy?",
+          "skill": "logic",
+          "choices": [
+            {
+              "id": "a",
+              "text": "25"
+            },
+            {
+              "id": "b",
+              "text": "21"
+            },
+            {
+              "id": "c",
+              "text": "30"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The event tickets are numbered 5, 10, 15, 20, … What number is the next ticket?",
+            "choices": [
+              "25",
+              "21",
+              "30"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Đèn sáng rực, đúng rồi!",
+          "Hay quá, pháo hoa nổ tung chúc mừng cậu!",
+          "Câu trả lời lung linh như dây đèn lồng."
+        ],
+        "wrong": [
+          "Đèn chập chờn rồi, chọn lại xem.",
+          "Chưa đúng, cậu nhìn kĩ quy luật nhé.",
+          "Suýt sáng đèn rồi, thử lần nữa nào!"
+        ],
+        "en": {
+          "right": [
+            "The lantern glows, that's right!",
+            "Brilliant, fireworks are bursting for you!",
+            "That answer twinkles like a lantern string."
+          ],
+          "wrong": [
+            "The lantern flickered, choose again.",
+            "Not right, look closely at the pattern.",
+            "Almost lit up, try once more!"
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Gấu Trúc Lễ Hội",
+        "bossName": "Gấu Trúc Lễ Hội",
+        "introDialogue": "The first lantern lights up, and a riddle appears!",
+        "winDialogue": "I switch off my lights and give up! {name} shines like the brightest lantern of the festival."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Gấu Trúc Lễ Hội",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Trúc Lễ Hội tặng {name} một chiếc đèn lồng giấy nhỏ, mùa lễ hội nào cũng mời cậu tới.",
+      "en": {
+        "title": "Gấu Trúc Lễ Hội's gift",
+        "text": "Gấu Trúc Lễ Hội gives {name} a little paper lantern. You're invited to every festival."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Gấu Trúc Lễ Hội",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sân trước lâu đài có trùm canh khu canh gác nghiêm nhất trung tâm, {name} sang đó nhé.",
+      "en": {
+        "title": "Goodbye, Gấu Trúc Lễ Hội",
+        "text": "The castle forecourt has the strictest zone guardian in town, {name}, go there next."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "xem-dong-ho": 1,
+      "logic": 1,
+      "tu-vung": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Gấu Trúc Lễ Hội",
+    "summary": "Gấu Trúc Lễ Hội guards the seasonal events area and asks {name} four riddles about time, patterns and colours."
+  }
+}

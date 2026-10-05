@@ -1,0 +1,262 @@
+{
+  "id": "ward-xom-vuon-hoa",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Trùm canh khu: Ong Chúa Vườn Hoa",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Ong Chúa Vườn Hoa canh ngõ nhỏ bên vườn hoa, đố {name} bốn câu về em bé, họ hàng và chính tả.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Ong Chúa Vườn Hoa",
+    "where": "Vườn hoa và ngõ nhà Mẩy",
+    "goal": "Thắng trận đố của Ong Chúa Vườn Hoa",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Ong Chúa Vườn Hoa vơi bớt sức",
+    "learn": "Từ tả em bé, họ nội họ ngoại, chính tả d/r và vần uyên",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Ra hiên nhà đêm trăng, một trùm canh khu đang ngắm trăng và chờ đố {name}."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Ong Chúa Vườn Hoa",
+      "kind": "dialogue",
+      "target": "ong-chua-vuon-hoa",
+      "lines": [
+        {
+          "speaker": "Ong Chúa Vườn Hoa",
+          "text": "Vo ve… {name} ơi, ta là Ong Chúa Vườn Hoa! Cả đàn ong đang bận lấy mật, chỉ ta rảnh để đố vui thôi."
+        },
+        {
+          "speaker": "Ong Chúa Vườn Hoa",
+          "text": "Bốn câu đố ngọt như mật đây. Đúng hết thì ta mời cậu một giọt mật hoa tỉ muội."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ thích mật ong lắm!"
+        }
+      ],
+      "en": {
+        "title": "Meet Ong Chúa Vườn Hoa",
+        "lines": [
+          "Bzzz… {name}, I'm Ong Chúa Vườn Hoa! The whole hive is busy making honey, so only I have time for riddles.",
+          "Here are four riddles as sweet as honey. Get them all and I'll treat you to a drop of flower nectar."
+        ],
+        "choices": [
+          {
+            "text": "I love honey!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Ong Chúa Vườn Hoa",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "ong-chua-vuon-hoa",
+      "bossId": "ong-chua-vuon-hoa",
+      "bossName": "Ong Chúa Vườn Hoa",
+      "introDialogue": "Vo ve vo ve, câu đố thứ nhất bay tới rồi!",
+      "winDialogue": "Vo ve… ta xếp cánh chịu thua! {name} ngọt ngào và thông minh quá.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "ta-em-be",
+          "prompt": "Ong Chúa ghé thăm em bé nhà bên. Từ nào tả em bé?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "bụ bẫm"
+            },
+            {
+              "id": "b",
+              "text": "bế em"
+            },
+            {
+              "id": "c",
+              "text": "cái nôi"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Ong Chúa visits the baby next door. Which word describes the baby?",
+            "choices": [
+              "bụ bẫm (chubby)",
+              "bế em (hold the baby)",
+              "cái nôi (the cradle)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "ong-ngoai",
+          "prompt": "Bố của mẹ em được gọi là gì?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ông ngoại"
+            },
+            {
+              "id": "b",
+              "text": "ông nội"
+            },
+            {
+              "id": "c",
+              "text": "chú"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "What do you call your mum's father?",
+            "choices": [
+              "ông ngoại (mum's dad)",
+              "ông nội (dad's dad)",
+              "chú (uncle)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "d-r-ruc-ro",
+          "prompt": "Điền d hay r vào chỗ trống: «vườn hoa nở …ực rỡ»?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "d"
+            },
+            {
+              "id": "b",
+              "text": "r"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "d or r: «vườn hoa nở …ực rỡ» (the garden blooms brightly)?",
+            "choices": [
+              "d",
+              "r"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        },
+        {
+          "id": "uyen",
+          "prompt": "Vần nào điền vào «con th…» để thành tên chiếc ghe đi trên sông?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "uyên"
+            },
+            {
+              "id": "b",
+              "text": "iên"
+            },
+            {
+              "id": "c",
+              "text": "yên"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which rhyme completes «con th…», the little boat on the river (con thuyền)?",
+            "choices": [
+              "uyên",
+              "iên",
+              "yên"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Ngọt như mật, đúng rồi!",
+          "Vo ve, cả đàn ong vỗ cánh khen cậu.",
+          "Câu trả lời thơm như hoa tỉ muội!"
+        ],
+        "wrong": [
+          "Ong bay lạc hoa rồi, thử lại nhé.",
+          "Chưa đúng, cậu đọc chậm từng tiếng xem.",
+          "Gần trúng nhụy hoa rồi, chọn lại nào."
+        ],
+        "en": {
+          "right": [
+            "Sweet as honey, that's right!",
+            "Bzzz, the whole hive is buzzing for you.",
+            "That answer smells as lovely as the sister flowers!"
+          ],
+          "wrong": [
+            "The bee landed on the wrong flower, try again.",
+            "Not right, read each word slowly.",
+            "Almost at the centre of the flower, choose again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Ong Chúa Vườn Hoa",
+        "bossName": "Ong Chúa Vườn Hoa",
+        "introDialogue": "Bzzz bzzz, here flies the first riddle!",
+        "winDialogue": "Bzzz… I fold my wings and give up! {name} is so sweet and clever."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Ong Chúa Vườn Hoa",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ong Chúa Vườn Hoa tặng {name} một hũ mật nhỏ xíu, ngọt lịm như tình chị em.",
+      "en": {
+        "title": "Ong Chúa Vườn Hoa's gift",
+        "text": "Ong Chúa Vườn Hoa gives {name} a tiny pot of honey, as sweet as love between sisters."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Ong Chúa Vườn Hoa",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ra hiên nhà đêm trăng, một trùm canh khu đang ngắm trăng và chờ đố {name}.",
+      "en": {
+        "title": "Goodbye, Ong Chúa Vườn Hoa",
+        "text": "Out on the moonlit porch a zone guardian is watching the moon and waiting to quiz {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "tu-ngu": 1,
+      "chinh-ta": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Ong Chúa Vườn Hoa",
+    "summary": "Ong Chúa Vườn Hoa guards the lane by the flower garden and asks {name} four riddles about babies, relatives and spelling."
+  }
+}

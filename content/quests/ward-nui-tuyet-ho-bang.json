@@ -1,0 +1,269 @@
+{
+  "id": "ward-nui-tuyet-ho-bang",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Trùm canh khu: Cáo Bạc Hồ Băng",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Cáo Bạc Hồ Băng canh bờ hồ băng, đố {name} bốn câu về băng giá, số và biển báo an toàn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cáo Bạc Hồ Băng",
+    "where": "Hồ băng",
+    "goal": "Thắng trận đố của Cáo Bạc Hồ Băng",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Cáo Bạc Hồ Băng vơi bớt sức",
+    "learn": "Từ tiếng Anh về mùa đông, so sánh số, phép trừ trong phạm vi 20, đọc hiểu biển báo",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Sang cửa hang băng đi {name}, trùm canh khu mạnh nhất núi đang chờ ở trạm thám hiểm."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Cáo Bạc Hồ Băng",
+      "kind": "dialogue",
+      "target": "cao-bac-ho-bang",
+      "lines": [
+        {
+          "speaker": "Cáo Bạc Hồ Băng",
+          "text": "Xin chào {name}! Ta là Cáo Bạc Hồ Băng, bộ lông bạc của ta lấp lánh như mặt hồ đóng băng."
+        },
+        {
+          "speaker": "Cáo Bạc Hồ Băng",
+          "text": "Mặt hồ còn mỏng nên ta đứng trên bờ đố cậu bốn câu thôi nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đứng trên bờ đố nhé!"
+        }
+      ],
+      "en": {
+        "title": "Meet Cáo Bạc Hồ Băng",
+        "lines": [
+          "Hello {name}! I'm Cáo Bạc Hồ Băng, and my silver fur sparkles like the frozen lake.",
+          "The ice is still thin, so I'll stay on the shore and ask you just four riddles."
+        ],
+        "choices": [
+          {
+            "text": "Ask me from the shore!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Cáo Bạc Hồ Băng",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "cao-bac-ho-bang",
+      "bossId": "cao-bac-ho-bang",
+      "bossName": "Cáo Bạc Hồ Băng",
+      "introDialogue": "Băng kêu lách tách, câu đố thứ nhất trồi lên đây!",
+      "winDialogue": "Ta cúp đuôi chịu thua! {name} vừa giỏi vừa cẩn thận, đúng là bạn của hồ băng.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "cold",
+          "prompt": "Gió hồ thổi qua, Cáo nói «It's cold!». «Cold» nghĩa là gì?",
+          "skill": "tu-vung",
+          "choices": [
+            {
+              "id": "a",
+              "text": "lạnh"
+            },
+            {
+              "id": "b",
+              "text": "nóng"
+            },
+            {
+              "id": "c",
+              "text": "ấm"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The lake wind blows and Cáo says «It's cold!». What is «cold» in Vietnamese?",
+            "choices": [
+              "lạnh",
+              "nóng",
+              "ấm"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "so-be-nhat",
+          "prompt": "Ba chiếc xe trượt mang số 92, 29 và 90. Xe mang số bé nhất là số mấy?",
+          "skill": "so-sanh-so",
+          "choices": [
+            {
+              "id": "a",
+              "text": "29"
+            },
+            {
+              "id": "b",
+              "text": "90"
+            },
+            {
+              "id": "c",
+              "text": "92"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Three sledges are numbered 92, 29 and 90. Which is the smallest number?",
+            "choices": [
+              "29",
+              "90",
+              "92"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "ca-duoi-bang",
+          "prompt": "Dưới lỗ băng có 16 con cá, 9 con bơi xuống đáy. Gần mặt nước còn mấy con?",
+          "skill": "phep-tru",
+          "choices": [
+            {
+              "id": "a",
+              "text": "7"
+            },
+            {
+              "id": "b",
+              "text": "8"
+            },
+            {
+              "id": "c",
+              "text": "25"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "There are 16 fish under the ice hole and 9 swim to the bottom. How many stay near the top?",
+            "choices": [
+              "7",
+              "8",
+              "25"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "bang-mong",
+          "prompt": "Biển báo ghi: «Băng mỏng, không đi ra giữa hồ». Biển nhắc mọi người điều gì?",
+          "skill": "doc-hieu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "không ra giữa hồ"
+            },
+            {
+              "id": "b",
+              "text": "hãy ra giữa hồ"
+            },
+            {
+              "id": "c",
+              "text": "hồ rất ấm"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The sign says: «Thin ice, do not walk to the middle of the lake». What does it tell people?",
+            "choices": [
+              "don't go to the middle",
+              "go to the middle",
+              "the lake is warm"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Lách tách, đúng rồi!",
+          "Hay quá, mặt hồ sáng bừng lên!",
+          "Câu trả lời trong vắt như băng!"
+        ],
+        "wrong": [
+          "Băng nứt một chút rồi, chọn lại nhé.",
+          "Chưa đúng đâu, đọc kĩ biển báo xem.",
+          "Gần đúng rồi, so lại từng số nào."
+        ],
+        "en": {
+          "right": [
+            "Crackle, that's right!",
+            "Brilliant, the lake is shining!",
+            "That answer is as clear as ice!"
+          ],
+          "wrong": [
+            "The ice cracked a little, choose again.",
+            "Not quite, read the warning sign again.",
+            "Nearly right, compare each number again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Cáo Bạc Hồ Băng",
+        "bossName": "Cáo Bạc Hồ Băng",
+        "introDialogue": "The ice crackles, and the first riddle pops up!",
+        "winDialogue": "I tuck my tail and give up! {name} is clever and careful, a true friend of the frozen lake."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Cáo Bạc Hồ Băng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cáo Bạc Hồ Băng tặng {name} một viên đá băng không bao giờ tan, nằm trong chiếc lọ thủy tinh.",
+      "en": {
+        "title": "Cáo Bạc Hồ Băng's gift",
+        "text": "Cáo Bạc Hồ Băng gives {name} an ice crystal that never melts, inside a little glass jar."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Cáo Bạc Hồ Băng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sang cửa hang băng đi {name}, trùm canh khu mạnh nhất núi đang chờ ở trạm thám hiểm.",
+      "en": {
+        "title": "Goodbye, Cáo Bạc Hồ Băng",
+        "text": "Go to the ice cave entrance, {name}: the mountain's strongest zone guardian waits at the explorers' station."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "tu-vung": 1,
+      "so-sanh-so": 1,
+      "phep-tru": 1,
+      "doc-hieu": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Cáo Bạc Hồ Băng",
+    "summary": "Cáo Bạc Hồ Băng guards the frozen lake shore and asks {name} four riddles about ice, numbers and safety signs."
+  }
+}

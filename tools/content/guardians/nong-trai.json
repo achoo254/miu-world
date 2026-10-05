@@ -1,0 +1,427 @@
+{
+  "region": "nong-trai",
+  "guardians": [
+    {
+      "quest": "ward-nong-trai-trong-trot",
+      "id": "lon-rung-dem-bap",
+      "name": "Lợn Rừng Đếm Bắp",
+      "look": "animal-hog",
+      "tint": "#a0785a",
+      "height": 2.0,
+      "zone": "Khu trồng trọt",
+      "lessons": [
+        "toan2-cd4-b19",
+        "toan2-cd4-b20",
+        "toan2-cd4-b21"
+      ],
+      "learn": "Phép cộng có nhớ trong phạm vi 100, bài toán có lời văn",
+      "summary": "Lợn Rừng Đếm Bắp canh khu trồng trọt, đố {name} bốn câu cộng có nhớ với bắp ngô và cà chua.",
+      "hook": [
+        "Ụt ịt! {name} ơi, ta là Lợn Rừng Đếm Bắp, ruộng ngô này bắp nào ta cũng đếm thuộc lòng.",
+        "Đếm nhiều quá ta muốn có bạn đố cùng. Bốn câu cộng có nhớ, cậu dám không?"
+      ],
+      "choice": "Ụt ịt, tớ dám!",
+      "intro": "Bắp ngô thứ nhất bẻ xuống, câu đố nằm trong lớp vỏ đây!",
+      "win": "Ụt ịt, ta chịu thua rồi! {name} cộng có nhớ mà không quên nhớ lần nào.",
+      "right": [
+        "Ụt ịt, cộng chuẩn luôn!",
+        "Đúng rồi, nhớ một sang hàng chục khéo ghê!",
+        "Bắp ngô vàng rực mừng cậu đây!"
+      ],
+      "wrong": [
+        "Quên nhớ một rồi, cộng lại nhé.",
+        "Chưa đúng, đặt tính thẳng cột xem.",
+        "Gần đúng rồi, kiểm lại hàng đơn vị nào."
+      ],
+      "reward": "Lợn Rừng Đếm Bắp tặng {name} một bắp ngô nếp luộc thơm phức, ăn xong ghé đấu tiếp nhé.",
+      "next": "Sang khu chăn nuôi đi {name}, trùm canh khu ở đó chuyên đố phép trừ có nhớ.",
+      "turns": [
+        {
+          "id": "bap-ngo",
+          "skill": "phep-cong",
+          "prompt": "Ruộng có 36 bắp ngô đã hái, hái thêm 7 bắp nữa. Có tất cả bao nhiêu bắp ngô?",
+          "choices": [
+            "43",
+            "33",
+            "42"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "36 corn cobs are picked, then 7 more. How many cobs in all?",
+            "choices": [
+              "43",
+              "33",
+              "42"
+            ]
+          }
+        },
+        {
+          "id": "ca-chua",
+          "skill": "phep-cong",
+          "prompt": "Bác nông dân hái 48 quả cà chua buổi sáng và 25 quả buổi chiều. Cả ngày bác hái bao nhiêu quả?",
+          "choices": [
+            "73",
+            "63",
+            "23"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The farmer picks 48 tomatoes in the morning and 25 in the afternoon. How many in the whole day?",
+            "choices": [
+              "73",
+              "63",
+              "23"
+            ]
+          }
+        },
+        {
+          "id": "nham-59-6",
+          "skill": "phep-cong",
+          "prompt": "Lợn Rừng tính nhẩm 59 + 6. Kết quả đúng là bao nhiêu?",
+          "choices": [
+            "65",
+            "55",
+            "515"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Lợn Rừng works out 59 + 6 in his head. What is the right answer?",
+            "choices": [
+              "65",
+              "55",
+              "515"
+            ]
+          }
+        },
+        {
+          "id": "bao-thoc",
+          "skill": "bai-toan-loi-van",
+          "prompt": "Kho có 27 bao thóc, xe chở về thêm 35 bao. Kho có tất cả bao nhiêu bao thóc?",
+          "choices": [
+            "62",
+            "52",
+            "8"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The barn has 27 sacks of rice, and a cart brings 35 more. How many sacks in all?",
+            "choices": [
+              "62",
+              "52",
+              "8"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Lợn Rừng Đếm Bắp guards the crop fields and asks {name} four carrying-over sums about corn and tomatoes.",
+        "hook": [
+          "Oink oink! {name}, I'm Lợn Rừng Đếm Bắp, and I know every cob in this cornfield by heart.",
+          "All that counting makes me want a riddle friend. Four carrying sums, dare you?"
+        ],
+        "choice": "Oink, I dare!",
+        "intro": "The first cob is picked, and the riddle is inside the husk!",
+        "win": "Oink, I give up! {name} never forgets to carry the one.",
+        "right": [
+          "Oink, added up perfectly!",
+          "Right, you carried the one to the tens so neatly!",
+          "A golden cob to celebrate!"
+        ],
+        "wrong": [
+          "You forgot to carry the one, add again.",
+          "Not right, line up the columns.",
+          "Nearly right, check the ones again."
+        ],
+        "reward": "Lợn Rừng Đếm Bắp gives {name} a hot boiled cob of sticky corn. Come back for another battle after your snack.",
+        "next": "Go to the livestock area, {name}: its zone guardian loves take-away riddles with exchanging."
+      }
+    },
+    {
+      "quest": "ward-nong-trai-chan-nuoi",
+      "id": "heo-hong-chan-dan",
+      "name": "Heo Hồng Chăn Đàn",
+      "look": "animal-pig",
+      "tint": "#f0a0b0",
+      "height": 2.0,
+      "zone": "Khu chăn nuôi",
+      "lessons": [
+        "toan2-cd4-b22",
+        "toan2-cd4-b23"
+      ],
+      "learn": "Phép trừ có nhớ trong phạm vi 100, so sánh hiệu với một số, tìm số chưa biết",
+      "summary": "Heo Hồng Chăn Đàn canh khu chăn nuôi, đố {name} bốn câu trừ có nhớ với đàn gà, đàn vịt.",
+      "hook": [
+        "Ủn ỉn, chào {name}! Ta là Heo Hồng Chăn Đàn, gà vịt trong trại đều nghe ta gọi về chuồng.",
+        "Hôm nay ta cho đàn đi dạo và mang theo bốn câu đố trừ. Cậu đếm cùng ta nhé!"
+      ],
+      "choice": "Đếm đàn cùng Heo nào!",
+      "intro": "Đàn gà ra sân rồi, câu đố thứ nhất cục tác đây!",
+      "win": "Ủn ỉn, ta chịu thua! {name} chăn đàn bằng phép trừ còn giỏi hơn ta.",
+      "right": [
+        "Ủn ỉn, trừ đúng rồi!",
+        "Hay quá, đàn vịt quạc quạc khen cậu.",
+        "Chuẩn rồi, không con nào đi lạc!"
+      ],
+      "wrong": [
+        "Lạc mất một con rồi, đếm lại nhé.",
+        "Chưa đúng, nhớ mượn một chục khi trừ xem.",
+        "Suýt đúng rồi, thử cộng ngược lại để kiểm tra."
+      ],
+      "reward": "Heo Hồng Chăn Đàn tặng {name} chiếc còi chăn đàn bằng tre, thổi lên là gà vịt kéo về.",
+      "next": "Ra vườn cây ăn quả đi {name}, trùm canh khu cuối cùng của trại đang hái cam chờ cậu.",
+      "turns": [
+        {
+          "id": "ga-ra-san",
+          "skill": "phep-tru",
+          "prompt": "Chuồng có 42 con gà, 8 con chạy ra sân. Trong chuồng còn mấy con gà?",
+          "choices": [
+            "34",
+            "44",
+            "50"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "There are 42 hens in the coop and 8 run out into the yard. How many are still in the coop?",
+            "choices": [
+              "34",
+              "44",
+              "50"
+            ]
+          }
+        },
+        {
+          "id": "vit-xuong-ao",
+          "skill": "phep-tru",
+          "prompt": "Đàn vịt có 71 con, 36 con xuống ao bơi. Trên bờ còn bao nhiêu con vịt?",
+          "choices": [
+            "35",
+            "45",
+            "107"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "A flock of 71 ducks: 36 go swimming in the pond. How many ducks are left on the bank?",
+            "choices": [
+              "35",
+              "45",
+              "107"
+            ]
+          }
+        },
+        {
+          "id": "so-hieu",
+          "skill": "so-sanh-so",
+          "prompt": "Heo so sánh 63 − 9 với 50. Điền dấu vào 63 − 9 … 50.",
+          "choices": [
+            "<",
+            ">",
+            "="
+          ],
+          "answer": 1,
+          "en": {
+            "prompt": "Heo compares 63 − 9 with 50. Which sign goes in 63 − 9 … 50?",
+            "choices": [
+              "<",
+              ">",
+              "="
+            ]
+          }
+        },
+        {
+          "id": "so-tru-thieu",
+          "skill": "phep-tru",
+          "prompt": "Số nào điền vào chỗ trống để có 80 − … = 52?",
+          "choices": [
+            "28",
+            "32",
+            "38"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which number goes in the gap: 80 − … = 52?",
+            "choices": [
+              "28",
+              "32",
+              "38"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Heo Hồng Chăn Đàn guards the livestock area and asks {name} four take-away-with-exchanging riddles about hens and ducks.",
+        "hook": [
+          "Oink oink, hello {name}! I'm Heo Hồng Chăn Đàn, and every hen and duck on the farm comes when I call.",
+          "Today I'm taking the flock for a walk with four take-away riddles. Count with me!"
+        ],
+        "choice": "Let's count the flock!",
+        "intro": "The hens are out in the yard: cluck, here's the first riddle!",
+        "win": "Oink, I give up! {name} herds with take-aways better than I do.",
+        "right": [
+          "Oink, taken away right!",
+          "Brilliant, the ducks are quacking for you.",
+          "Spot on, not one animal got lost!"
+        ],
+        "wrong": [
+          "One wandered off, count again.",
+          "Not right, remember to borrow a ten.",
+          "Nearly right, add back to check."
+        ],
+        "reward": "Heo Hồng Chăn Đàn gives {name} a bamboo herding whistle: blow it and the hens and ducks come home.",
+        "next": "Head to the orchard, {name}: the farm's last zone guardian is picking oranges and waiting for you."
+      }
+    },
+    {
+      "quest": "ward-nong-trai-vuon-qua",
+      "id": "khi-vuon-cam",
+      "name": "Khỉ Vườn Cam",
+      "look": "animal-monkey",
+      "tint": "#e89040",
+      "height": 2.0,
+      "zone": "Vườn cây ăn quả",
+      "lessons": [
+        "toan2-cd4-b24",
+        "viec-tot-nong-trai"
+      ],
+      "learn": "Cộng, trừ có nhớ trong phạm vi 100, bài toán ít hơn, đếm chân con vật, dãy số",
+      "summary": "Khỉ Vườn Cam canh vườn cây ăn quả, đố {name} năm câu về cộng trừ có nhớ và suy luận.",
+      "hook": [
+        "Chít chít! {name} ơi, nhìn lên đây! Ta là Khỉ Vườn Cam, cây cam nào chín ta biết trước tiên.",
+        "Ta treo năm câu đố trên năm cành cam. Hái đúng hết là cả rổ cam ngọt thuộc về cậu!"
+      ],
+      "choice": "Hái cam thôi nào!",
+      "intro": "Cành cam thứ nhất rung rinh, câu đố rơi xuống đây!",
+      "win": "Chít chít, ta tụt xuống đất chịu thua! Rổ cam ngọt này là của {name}.",
+      "right": [
+        "Chít chít, ngọt như cam chín!",
+        "Đúng rồi, ta đu cành ăn mừng đây!",
+        "Câu trả lời vàng ươm như quả cam!"
+      ],
+      "wrong": [
+        "Hái nhầm quả xanh rồi, chọn lại nhé.",
+        "Chưa đúng, đọc lại đề xem ai nhiều, ai ít.",
+        "Gần đúng rồi, tính thêm một lần nữa nào!"
+      ],
+      "reward": "Khỉ Vườn Cam tặng {name} một rổ cam ngọt lịm, chia cho cả nhà cùng ăn nhé.",
+      "next": "Thắng cả ba trùm canh khu rồi, {name} ra chặng cuối đấu với Gà Trống Choai Khổng Lồ nhé.",
+      "turns": [
+        {
+          "id": "buoi-it-hon",
+          "skill": "bai-toan-loi-van",
+          "prompt": "Cây cam có 45 quả, cây bưởi có ít hơn cây cam 18 quả. Cây bưởi có bao nhiêu quả?",
+          "choices": [
+            "27",
+            "63",
+            "37"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The orange tree has 45 fruits and the pomelo tree has 18 fewer. How many fruits on the pomelo tree?",
+            "choices": [
+              "27",
+              "63",
+              "37"
+            ]
+          }
+        },
+        {
+          "id": "hai-lan",
+          "skill": "phep-cong",
+          "prompt": "Khỉ hái 29 quả cam rồi hái thêm 29 quả nữa. Khỉ hái tất cả bao nhiêu quả?",
+          "choices": [
+            "58",
+            "48",
+            "59"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Khỉ picks 29 oranges and then 29 more. How many oranges in all?",
+            "choices": [
+              "58",
+              "48",
+              "59"
+            ]
+          }
+        },
+        {
+          "id": "chan-ga",
+          "skill": "logic",
+          "prompt": "Mỗi con gà có 2 chân. Ba con gà đứng dưới gốc cam có tất cả mấy chân?",
+          "choices": [
+            "6",
+            "5",
+            "8"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Each hen has 2 legs. How many legs do three hens under the orange tree have?",
+            "choices": [
+              "6",
+              "5",
+              "8"
+            ]
+          }
+        },
+        {
+          "id": "ro-trung",
+          "skill": "phep-tru",
+          "prompt": "Rổ có 90 quả trứng, đã bán 47 quả. Rổ còn lại bao nhiêu quả trứng?",
+          "choices": [
+            "43",
+            "53",
+            "137"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "A basket holds 90 eggs and 47 are sold. How many eggs are left?",
+            "choices": [
+              "43",
+              "53",
+              "137"
+            ]
+          }
+        },
+        {
+          "id": "day-cay",
+          "skill": "logic",
+          "prompt": "Số trên các hàng cây: 12, 22, 32, 42, … Hàng tiếp theo mang số mấy?",
+          "choices": [
+            "52",
+            "43",
+            "62"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The tree rows are numbered 12, 22, 32, 42, … What number is the next row?",
+            "choices": [
+              "52",
+              "43",
+              "62"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Khỉ Vườn Cam guards the orchard and asks {name} five riddles about carrying sums, take-aways and reasoning.",
+        "hook": [
+          "Chee chee! {name}, look up here! I'm Khỉ Vườn Cam, and I always know first when an orange is ripe.",
+          "I've hung five riddles on five orange branches. Pick them all right and a whole basket of sweet oranges is yours!"
+        ],
+        "choice": "Let's pick oranges!",
+        "intro": "The first branch shakes, and down drops a riddle!",
+        "win": "Chee chee, I climb down and give up! This basket of sweet oranges is {name}'s.",
+        "right": [
+          "Chee chee, sweet as a ripe orange!",
+          "Right, I'm swinging on a branch to celebrate!",
+          "That answer is as golden as an orange!"
+        ],
+        "wrong": [
+          "That one was still green, choose again.",
+          "Not right, read again who has more and who has fewer.",
+          "Nearly right, work it out once more!"
+        ],
+        "reward": "Khỉ Vườn Cam gives {name} a basket of super-sweet oranges to share with the family.",
+        "next": "All three zone guardians beaten, {name}: head to the last stop and battle the Giant Cockerel."
+      }
+    }
+  ]
+}

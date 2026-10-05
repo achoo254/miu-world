@@ -1,0 +1,294 @@
+{
+  "id": "ward-truong-san-choi",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Trùm canh khu: Khỉ Cầu Trượt",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Khỉ Cầu Trượt canh sân chơi, trượt xuống năm câu đố về tình cảm với trường, câu và chính tả cho {name}.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Khỉ Cầu Trượt",
+    "where": "Sân chơi",
+    "goal": "Thắng trận đố của Khỉ Cầu Trượt",
+    "play": "Trả lời 5 câu đố, mỗi câu đúng làm Khỉ Cầu Trượt vơi bớt sức",
+    "learn": "Từ chỉ tình cảm, câu nêu đặc điểm, tiếng cùng vần, chính tả ng/ngh, từ chỉ sự vật",
+    "reward": "50 XP, 12 Xu mỗi lần thắng",
+    "next": "Thắng cả bốn trùm canh khu rồi, {name} vào gặp Voi Tính Nhẩm ở chặng cuối của trường nhé."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Khỉ Cầu Trượt",
+      "kind": "dialogue",
+      "target": "khi-cau-truot",
+      "lines": [
+        {
+          "speaker": "Khỉ Cầu Trượt",
+          "text": "Vèo! Ta là Khỉ Cầu Trượt, ta trượt xuống đây đúng lúc {name} đi ngang qua."
+        },
+        {
+          "speaker": "Khỉ Cầu Trượt",
+          "text": "Năm câu đố, mỗi câu một lượt trượt. Cậu trả lời hết thì cả sân chơi là của cậu!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Trượt đi, tớ đỡ hết!"
+        }
+      ],
+      "en": {
+        "title": "Meet Khỉ Cầu Trượt",
+        "lines": [
+          "Wheee! I'm Khỉ Cầu Trượt, and I slid down just as {name} walked by.",
+          "Five riddles, one slide each. Answer them all and the whole playground is yours!"
+        ],
+        "choices": [
+          {
+            "text": "Slide away, I'll catch them all!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Khỉ Cầu Trượt",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "khi-cau-truot",
+      "bossId": "khi-cau-truot",
+      "bossName": "Khỉ Cầu Trượt",
+      "introDialogue": "Một, hai, ba, vèo… câu đố thứ nhất trượt xuống đây!",
+      "winDialogue": "Ta ngã chổng vó rồi! {name} giỏi thế, cả sân chơi vỗ tay cho cậu.",
+      "maxHp": 500,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "yeu-truong",
+          "prompt": "Từ nào nói lên tình cảm của bạn nhỏ với mái trường?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "yêu quý"
+            },
+            {
+              "id": "b",
+              "text": "bảng đen"
+            },
+            {
+              "id": "c",
+              "text": "sân chơi"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which word shows how a pupil feels about the school?",
+            "choices": [
+              "yêu quý (love dearly)",
+              "bảng đen (blackboard)",
+              "sân chơi (playground)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "dac-diem-san",
+          "prompt": "Câu nào nêu đặc điểm của sân chơi?",
+          "skill": "cau",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Sân chơi rộng và sạch."
+            },
+            {
+              "id": "b",
+              "text": "Chúng em chơi ở sân."
+            },
+            {
+              "id": "c",
+              "text": "Sân chơi ở đâu?"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which sentence describes what the playground is like?",
+            "choices": [
+              "Sân chơi rộng và sạch. (It is wide and clean.)",
+              "Chúng em chơi ở sân. (We play there.)",
+              "Sân chơi ở đâu? (Where is it?)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "cung-van",
+          "prompt": "Cặp tiếng nào có cùng vần?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "sao – cao"
+            },
+            {
+              "id": "b",
+              "text": "mây – mưa"
+            },
+            {
+              "id": "c",
+              "text": "lá – lê"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which pair of words rhymes (has the same rhyme part)?",
+            "choices": [
+              "sao – cao",
+              "mây – mưa",
+              "lá – lê"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "ng-ngoi",
+          "prompt": "Điền ng hay ngh: «bé …ồi vẽ tranh dưới gốc cây»?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ng"
+            },
+            {
+              "id": "b",
+              "text": "ngh"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "ng or ngh: «bé …ồi vẽ tranh dưới gốc cây» (the child sits drawing under a tree)?",
+            "choices": [
+              "ng",
+              "ngh"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "do-ve",
+          "prompt": "Từ nào gọi tên đồ vật dùng để vẽ tranh?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "bút màu"
+            },
+            {
+              "id": "b",
+              "text": "tô màu"
+            },
+            {
+              "id": "c",
+              "text": "rực rỡ"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which word names a thing you use to draw pictures?",
+            "choices": [
+              "bút màu (crayons)",
+              "tô màu (colour in)",
+              "rực rỡ (bright)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Vèo, trúng ngay đích!",
+          "Đúng rồi, ta treo ngược trên xà vì phục cậu.",
+          "Câu trả lời mượt như cầu trượt mới!"
+        ],
+        "wrong": [
+          "Ối, trượt lệch ra cát rồi, leo lên thử lại nhé.",
+          "Chưa phải, cậu đọc lại câu hỏi xem.",
+          "Suýt nữa thôi, đu thêm một nhịp nữa nào!"
+        ],
+        "en": {
+          "right": [
+            "Wheee, right on target!",
+            "Right, I'm hanging upside down from the bar in awe.",
+            "That answer is as smooth as a brand-new slide!"
+          ],
+          "wrong": [
+            "Oops, I slid off into the sand, climb up and try again.",
+            "Not that one, read the question again.",
+            "So close, swing one more time!"
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Khỉ Cầu Trượt",
+        "bossName": "Khỉ Cầu Trượt",
+        "introDialogue": "One, two, three, wheee… the first riddle slides down!",
+        "winDialogue": "I landed head over heels! {name} is so clever, the whole playground is clapping."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Khỉ Cầu Trượt",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khỉ Cầu Trượt tặng {name} một chiếc huy hiệu hình cầu trượt, sân chơi luôn để phần cậu một lượt.",
+      "en": {
+        "title": "Khỉ Cầu Trượt's gift",
+        "text": "Khỉ Cầu Trượt gives {name} a slide badge. The playground always saves you a turn."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Khỉ Cầu Trượt",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Thắng cả bốn trùm canh khu rồi, {name} vào gặp Voi Tính Nhẩm ở chặng cuối của trường nhé.",
+      "en": {
+        "title": "Goodbye, Khỉ Cầu Trượt",
+        "text": "All four zone guardians beaten, {name}: go and meet Voi Tính Nhẩm at the school's last stop."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 50,
+    "coin": 12,
+    "skillXp": {
+      "tu-ngu": 1,
+      "cau": 1,
+      "chinh-ta": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Khỉ Cầu Trượt",
+    "summary": "Khỉ Cầu Trượt guards the playground and slides five riddles about loving school, sentences and spelling down to {name}."
+  }
+}

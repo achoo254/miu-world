@@ -1,0 +1,546 @@
+{
+  "region": "xom-mai-am",
+  "guardians": [
+    {
+      "quest": "ward-xom-vuon-hoa",
+      "id": "ong-chua-vuon-hoa",
+      "name": "Ong Chúa Vườn Hoa",
+      "look": "animal-bee",
+      "tint": "#f6c445",
+      "height": 1.6,
+      "zone": "Vườn hoa và ngõ nhà Mẩy",
+      "lessons": [
+        "tv2-t14-b25",
+        "tv2-t14-b26"
+      ],
+      "learn": "Từ tả em bé, họ nội họ ngoại, chính tả d/r và vần uyên",
+      "summary": "Ong Chúa Vườn Hoa canh ngõ nhỏ bên vườn hoa, đố {name} bốn câu về em bé, họ hàng và chính tả.",
+      "hook": [
+        "Vo ve… {name} ơi, ta là Ong Chúa Vườn Hoa! Cả đàn ong đang bận lấy mật, chỉ ta rảnh để đố vui thôi.",
+        "Bốn câu đố ngọt như mật đây. Đúng hết thì ta mời cậu một giọt mật hoa tỉ muội."
+      ],
+      "choice": "Tớ thích mật ong lắm!",
+      "intro": "Vo ve vo ve, câu đố thứ nhất bay tới rồi!",
+      "win": "Vo ve… ta xếp cánh chịu thua! {name} ngọt ngào và thông minh quá.",
+      "right": [
+        "Ngọt như mật, đúng rồi!",
+        "Vo ve, cả đàn ong vỗ cánh khen cậu.",
+        "Câu trả lời thơm như hoa tỉ muội!"
+      ],
+      "wrong": [
+        "Ong bay lạc hoa rồi, thử lại nhé.",
+        "Chưa đúng, cậu đọc chậm từng tiếng xem.",
+        "Gần trúng nhụy hoa rồi, chọn lại nào."
+      ],
+      "reward": "Ong Chúa Vườn Hoa tặng {name} một hũ mật nhỏ xíu, ngọt lịm như tình chị em.",
+      "next": "Ra hiên nhà đêm trăng, một trùm canh khu đang ngắm trăng và chờ đố {name}.",
+      "turns": [
+        {
+          "id": "ta-em-be",
+          "skill": "tu-ngu",
+          "prompt": "Ong Chúa ghé thăm em bé nhà bên. Từ nào tả em bé?",
+          "choices": [
+            "bụ bẫm",
+            "bế em",
+            "cái nôi"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Ong Chúa visits the baby next door. Which word describes the baby?",
+            "choices": [
+              "bụ bẫm (chubby)",
+              "bế em (hold the baby)",
+              "cái nôi (the cradle)"
+            ]
+          }
+        },
+        {
+          "id": "ong-ngoai",
+          "skill": "tu-ngu",
+          "prompt": "Bố của mẹ em được gọi là gì?",
+          "choices": [
+            "ông ngoại",
+            "ông nội",
+            "chú"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "What do you call your mum's father?",
+            "choices": [
+              "ông ngoại (mum's dad)",
+              "ông nội (dad's dad)",
+              "chú (uncle)"
+            ]
+          }
+        },
+        {
+          "id": "d-r-ruc-ro",
+          "skill": "chinh-ta",
+          "prompt": "Điền d hay r vào chỗ trống: «vườn hoa nở …ực rỡ»?",
+          "choices": [
+            "d",
+            "r"
+          ],
+          "answer": 1,
+          "en": {
+            "prompt": "d or r: «vườn hoa nở …ực rỡ» (the garden blooms brightly)?",
+            "choices": [
+              "d",
+              "r"
+            ]
+          }
+        },
+        {
+          "id": "uyen",
+          "skill": "chinh-ta",
+          "prompt": "Vần nào điền vào «con th…» để thành tên chiếc ghe đi trên sông?",
+          "choices": [
+            "uyên",
+            "iên",
+            "yên"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which rhyme completes «con th…», the little boat on the river (con thuyền)?",
+            "choices": [
+              "uyên",
+              "iên",
+              "yên"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Ong Chúa Vườn Hoa guards the lane by the flower garden and asks {name} four riddles about babies, relatives and spelling.",
+        "hook": [
+          "Bzzz… {name}, I'm Ong Chúa Vườn Hoa! The whole hive is busy making honey, so only I have time for riddles.",
+          "Here are four riddles as sweet as honey. Get them all and I'll treat you to a drop of flower nectar."
+        ],
+        "choice": "I love honey!",
+        "intro": "Bzzz bzzz, here flies the first riddle!",
+        "win": "Bzzz… I fold my wings and give up! {name} is so sweet and clever.",
+        "right": [
+          "Sweet as honey, that's right!",
+          "Bzzz, the whole hive is buzzing for you.",
+          "That answer smells as lovely as the sister flowers!"
+        ],
+        "wrong": [
+          "The bee landed on the wrong flower, try again.",
+          "Not right, read each word slowly.",
+          "Almost at the centre of the flower, choose again."
+        ],
+        "reward": "Ong Chúa Vườn Hoa gives {name} a tiny pot of honey, as sweet as love between sisters.",
+        "next": "Out on the moonlit porch a zone guardian is watching the moon and waiting to quiz {name}."
+      }
+    },
+    {
+      "quest": "ward-xom-hien-nha",
+      "id": "meo-dem-trang",
+      "name": "Mèo Đêm Trăng",
+      "look": "animal-cat",
+      "tint": "#d8d8f0",
+      "height": 2.0,
+      "zone": "Hiên nhà đêm trăng và hang đá",
+      "lessons": [
+        "tv2-t15-b27",
+        "tv2-t15-b28"
+      ],
+      "learn": "Từ chỉ hoạt động, lời biết ơn, chính tả l/n và ao/au",
+      "summary": "Mèo Đêm Trăng canh ngõ nhỏ ánh trăng, đố {name} bốn câu về tình thương của mẹ, lời biết ơn và chính tả.",
+      "hook": [
+        "Meo… trăng sáng quá phải không {name}? Ta là Mèo Đêm Trăng, đêm nào ta cũng ngồi đếm sao ở đây.",
+        "Ngồi một mình buồn lắm, cậu đấu trí với ta bốn câu nhé."
+      ],
+      "choice": "Ngồi đố cùng Mèo nào!",
+      "intro": "Ánh trăng chiếu xuống, câu đố thứ nhất hiện ra kìa!",
+      "win": "Ta cuộn tròn chịu thua! {name} sáng dạ như trăng rằm.",
+      "right": [
+        "Meo, sáng như trăng rằm!",
+        "Đúng rồi, ta đếm thêm một ngôi sao cho cậu.",
+        "Câu trả lời dịu dàng như gió đêm hè."
+      ],
+      "wrong": [
+        "Mây che mất trăng rồi, chọn lại nhé.",
+        "Chưa đúng, cậu nghĩ về những người thân trong nhà xem.",
+        "Suýt đúng, đọc lại câu hỏi dưới ánh trăng nào."
+      ],
+      "reward": "Mèo Đêm Trăng tặng {name} một ngôi sao giấy phát sáng để treo ở đầu giường.",
+      "next": "Xuống bờ hồ có căn chòi cũ, trùm canh khu ở đó thương ông bà lắm, {name} ghé nhé.",
+      "turns": [
+        {
+          "id": "me-quat",
+          "skill": "tu-ngu",
+          "prompt": "Đêm hè nóng, mẹ thức canh cho em ngủ. Từ nào chỉ hoạt động của mẹ?",
+          "choices": [
+            "quạt mát",
+            "ngọn đèn",
+            "dịu dàng"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "On a hot summer night mum stays up while you sleep. Which words tell what mum does (an action)?",
+            "choices": [
+              "quạt mát (fans you cool)",
+              "ngọn đèn (the lamp)",
+              "dịu dàng (gentle)"
+            ]
+          }
+        },
+        {
+          "id": "biet-on-ba",
+          "skill": "cau",
+          "prompt": "Em được bà tặng quà. Câu nào nói lời biết ơn?",
+          "choices": [
+            "Cháu cảm ơn bà ạ!",
+            "Quà này của ai?",
+            "Cháu không thích."
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Grandma gives you a present. Which sentence says thank you?",
+            "choices": [
+              "Cháu cảm ơn bà ạ! (Thank you, Grandma!)",
+              "Quà này của ai? (Whose present is this?)",
+              "Cháu không thích. (I don't like it.)"
+            ]
+          }
+        },
+        {
+          "id": "l-n-noi",
+          "skill": "chinh-ta",
+          "prompt": "Điền l hay n: «…ồi cơm mẹ nấu thơm phức»?",
+          "choices": [
+            "l",
+            "n"
+          ],
+          "answer": 1,
+          "en": {
+            "prompt": "l or n: «…ồi cơm mẹ nấu thơm phức» (the pot of rice mum cooks smells lovely)?",
+            "choices": [
+              "l",
+              "n"
+            ]
+          }
+        },
+        {
+          "id": "ao-au",
+          "skill": "chinh-ta",
+          "prompt": "Vần ao hay au: «bố dùng con d… gọt quả cho em»?",
+          "choices": [
+            "ao",
+            "au"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "ao or au: «bố dùng con d… gọt quả cho em» (dad peels fruit with a knife)?",
+            "choices": [
+              "ao",
+              "au"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Mèo Đêm Trăng guards the moonlit lane and asks {name} four riddles about a mother's love, saying thank you and spelling.",
+        "hook": [
+          "Meow… isn't the moon bright, {name}? I'm Mèo Đêm Trăng, and every night I sit here counting stars.",
+          "It's lonely on my own, so have a battle of wits with me: four riddles."
+        ],
+        "choice": "Let's do riddles, Mèo!",
+        "intro": "The moonlight shines down, and look, the first riddle appears!",
+        "win": "I curl up and give up! {name} is as bright as the full moon.",
+        "right": [
+          "Meow, bright as a full moon!",
+          "Right, I'll count one more star for you.",
+          "That answer is as gentle as a summer night breeze."
+        ],
+        "wrong": [
+          "A cloud hid the moon, choose again.",
+          "Not right, think about the people in your family.",
+          "Nearly right, read the question again by moonlight."
+        ],
+        "reward": "Mèo Đêm Trăng gives {name} a glow-in-the-dark paper star to hang over your bed.",
+        "next": "Down by the lake there's an old hut, and its zone guardian loves grandparents dearly, {name}, pay a visit."
+      }
+    },
+    {
+      "quest": "ward-xom-choi-cu",
+      "id": "huou-nau-con-doc",
+      "name": "Hươu Nâu Con Dốc",
+      "look": "animal-deer",
+      "tint": "#a08060",
+      "height": 2.2,
+      "zone": "Chòi cũ bên bờ hồ và con dốc nhà ông",
+      "lessons": [
+        "tv2-t16-b29",
+        "tv2-t16-b30"
+      ],
+      "learn": "Từ chỉ dáng vẻ và hoạt động, chính tả ch/tr và ac/at",
+      "summary": "Hươu Nâu Con Dốc canh bãi cát cạnh căn chòi cũ, đố {name} bốn câu về ông bà và chính tả.",
+      "hook": [
+        "Hì hục, hì hục… ta là Hươu Nâu Con Dốc, ngày nào ta cũng đỡ ông leo con dốc đằng kia.",
+        "Giờ ông nghỉ trưa rồi, {name} đấu trí với ta bốn câu nhé. Câu đố nào cũng có ông bà đấy."
+      ],
+      "choice": "Đố đi, Hươu Nâu!",
+      "intro": "Nắng chiều trên bãi cát, câu đố thứ nhất đây!",
+      "win": "Ta chịu thua rồi! {name} hiếu thảo và giỏi chữ, ông bà chắc vui lắm.",
+      "right": [
+        "Đúng rồi, sừng ta lắc lư mừng cậu!",
+        "Giỏi quá, ông ngồi trong chòi cũng gật gù khen.",
+        "Câu trả lời ấm áp như vòng tay của bà!"
+      ],
+      "wrong": [
+        "Trượt chân trên dốc rồi, đứng dậy thử lại nhé.",
+        "Chưa đúng đâu, cậu đọc thật chậm xem.",
+        "Gần lắm rồi, nghĩ thêm một bước nữa thôi."
+      ],
+      "reward": "Hươu Nâu Con Dốc tặng {name} một chiếc gậy trúc nhỏ, mang về tặng ông nhé.",
+      "next": "Ra hồ sen và cánh đồng gió, trùm canh khu cuối cùng của xóm đang thả chong chóng chờ {name}.",
+      "turns": [
+        {
+          "id": "cham-rai",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào tả dáng vẻ của ông khi chống gậy leo dốc?",
+          "choices": [
+            "chậm rãi",
+            "cái gậy",
+            "con dốc"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which word describes how Grandpa looks as he climbs the slope with his stick?",
+            "choices": [
+              "chậm rãi (slow and steady)",
+              "cái gậy (the stick)",
+              "con dốc (the slope)"
+            ]
+          }
+        },
+        {
+          "id": "ch-tr-tre",
+          "skill": "chinh-ta",
+          "prompt": "Điền ch hay tr: «bụi …e trước ngõ nhà ông»?",
+          "choices": [
+            "ch",
+            "tr"
+          ],
+          "answer": 1,
+          "en": {
+            "prompt": "ch or tr: «bụi …e trước ngõ nhà ông» (the bamboo clump in front of Grandpa's lane)?",
+            "choices": [
+              "ch",
+              "tr"
+            ]
+          }
+        },
+        {
+          "id": "ac-at",
+          "skill": "chinh-ta",
+          "prompt": "Vần ac hay at: «bãi c… vàng ven hồ»?",
+          "choices": [
+            "ac",
+            "at"
+          ],
+          "answer": 1,
+          "en": {
+            "prompt": "ac or at: «bãi c… vàng ven hồ» (the yellow sand by the lake)?",
+            "choices": [
+              "ac",
+              "at"
+            ]
+          }
+        },
+        {
+          "id": "om-chau",
+          "skill": "tu-ngu",
+          "prompt": "Cháu về chơi, bà chạy ra cổng đón. Từ nào chỉ hoạt động của bà?",
+          "choices": [
+            "ôm cháu",
+            "cánh cửa",
+            "hiền hậu"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "You come to visit and Grandma runs to the gate. Which words tell what Grandma does?",
+            "choices": [
+              "ôm cháu (hugs you)",
+              "cánh cửa (the door)",
+              "hiền hậu (kind)"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Hươu Nâu Con Dốc guards the sandy shore by the old hut and asks {name} four riddles about grandparents and spelling.",
+        "hook": [
+          "Huff, puff… I'm Hươu Nâu Con Dốc, and every day I help Grandpa climb that slope over there.",
+          "Grandpa's having his nap now, so battle me in four riddles, {name}. Every riddle has a grandparent in it."
+        ],
+        "choice": "Ask away, Hươu Nâu!",
+        "intro": "Afternoon sun on the sand: here's the first riddle!",
+        "win": "I give up! {name} is so caring and good with words, your grandparents must be proud.",
+        "right": [
+          "Right, my antlers are swaying for you!",
+          "Brilliant, Grandpa is nodding from the hut.",
+          "That answer is as warm as Grandma's hug!"
+        ],
+        "wrong": [
+          "Slipped on the slope, get up and try again.",
+          "Not right, read it really slowly.",
+          "So close, just one more step."
+        ],
+        "reward": "Hươu Nâu Con Dốc gives {name} a little bamboo walking stick to take home for Grandpa.",
+        "next": "Out at the lotus lake and windy fields, the hamlet's last zone guardian is spinning pinwheels for {name}."
+      }
+    },
+    {
+      "quest": "ward-xom-canh-dong-gio",
+      "id": "bo-gio-dong-xa",
+      "name": "Bò Gió Đồng Xa",
+      "look": "animal-cow",
+      "tint": "#e0d8b0",
+      "height": 2.2,
+      "zone": "Hồ sen và cánh đồng gió",
+      "lessons": [
+        "tv2-t17-b31",
+        "tv2-t17-b32"
+      ],
+      "learn": "Từ tả đồ vật, chính tả iu/ưu và ăt/ăc, từ chỉ tình cảm anh chị em, dấu chấm than",
+      "summary": "Bò Gió Đồng Xa canh cánh đồng gió bên hồ sen, đố {name} năm câu về đồ chơi, chính tả và tình thương.",
+      "hook": [
+        "Ò… ọ! {name} có thấy chong chóng quay tít không? Ta là Bò Gió Đồng Xa, ta giữ gió cho cả cánh đồng.",
+        "Năm câu đố gió thổi đây, trả lời đúng hết thì cả cánh đồng thả chong chóng mừng cậu."
+      ],
+      "choice": "Thổi gió lên nào!",
+      "intro": "Gió nổi rồi, câu đố thứ nhất bay vù tới!",
+      "win": "Ò… ta hết gió rồi! {name} thắng, chong chóng khắp đồng quay tít mừng cậu.",
+      "right": [
+        "Vù vù, đúng rồi!",
+        "Chong chóng quay tít vì câu trả lời của cậu!",
+        "Hay quá, gió đồng thổi mát cả hồ sen."
+      ],
+      "wrong": [
+        "Gió quẩn mất rồi, chọn lại nhé.",
+        "Chưa đúng đâu, nghe kĩ tiếng gió xem.",
+        "Suýt đúng rồi, thổi thêm một hơi nữa nào!"
+      ],
+      "reward": "Bò Gió Đồng Xa tặng {name} một chiếc chong chóng giấy bảy màu, có gió là quay.",
+      "next": "Bốn trùm canh khu đều đã gặp, {name} ghé chặng cuối đấu với Diều Hâu Gió Lốc nhé.",
+      "turns": [
+        {
+          "id": "ta-chong-chong",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào tả chiếc chong chóng giấy của bé?",
+          "choices": [
+            "nhiều màu",
+            "thổi gió",
+            "cầm tay"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which word describes the child's paper pinwheel?",
+            "choices": [
+              "nhiều màu (many-coloured)",
+              "thổi gió (blow)",
+              "cầm tay (hold)"
+            ]
+          }
+        },
+        {
+          "id": "iu-riu",
+          "skill": "chinh-ta",
+          "prompt": "Vần nào điền vào «cái r…» để thành tên đồ dùng chặt củi?",
+          "choices": [
+            "iu",
+            "ưu"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which rhyme completes «cái r…», the tool for chopping firewood (an axe)?",
+            "choices": [
+              "iu",
+              "ưu"
+            ]
+          }
+        },
+        {
+          "id": "at-mat",
+          "skill": "chinh-ta",
+          "prompt": "Chọn vần đúng: «chú bò mở to đôi m… tròn xoe»?",
+          "choices": [
+            "ăt",
+            "ăc"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Pick the right rhyme: «chú bò mở to đôi m… tròn xoe» (the cow opens its round eyes wide)?",
+            "choices": [
+              "ăt",
+              "ăc"
+            ]
+          }
+        },
+        {
+          "id": "nhuong-nhin",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào nói về tình cảm tốt đẹp giữa anh chị em?",
+          "choices": [
+            "nhường nhịn",
+            "giành giật",
+            "cãi nhau"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which word is about kindness between brothers and sisters?",
+            "choices": [
+              "nhường nhịn (give way to each other)",
+              "giành giật (snatch)",
+              "cãi nhau (quarrel)"
+            ]
+          }
+        },
+        {
+          "id": "thuong-me",
+          "skill": "dau-cau",
+          "prompt": "Câu «Mẹ ơi, con thương mẹ lắm» nên kết thúc bằng dấu gì?",
+          "choices": [
+            "dấu chấm than",
+            "dấu chấm hỏi",
+            "dấu hai chấm"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which mark should end «Mẹ ơi, con thương mẹ lắm» (Mum, I love you so much)?",
+            "choices": [
+              "an exclamation mark",
+              "a question mark",
+              "a colon"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Bò Gió Đồng Xa guards the windy fields by the lotus lake and asks {name} five riddles about toys, spelling and caring.",
+        "hook": [
+          "Moo-oo! {name}, see the pinwheels spinning? I'm Bò Gió Đồng Xa, and I keep the wind for the whole field.",
+          "Here are five windy riddles. Get them all right and the whole field will spin pinwheels for you."
+        ],
+        "choice": "Blow the wind!",
+        "intro": "The wind is up, and the first riddle whooshes over!",
+        "win": "Moo… I'm out of wind! {name} wins, and pinwheels spin all over the field for you.",
+        "right": [
+          "Whoosh, that's right!",
+          "The pinwheels are spinning because of your answer!",
+          "Wonderful, the field wind cools the whole lotus lake."
+        ],
+        "wrong": [
+          "The wind swirled the wrong way, choose again.",
+          "Not right, listen carefully to the wind.",
+          "Nearly right, one more puff!"
+        ],
+        "reward": "Bò Gió Đồng Xa gives {name} a rainbow paper pinwheel that spins in every breeze.",
+        "next": "All four zone guardians met, {name}: visit the last stop and battle the Whirlwind Hawk."
+      }
+    }
+  ]
+}

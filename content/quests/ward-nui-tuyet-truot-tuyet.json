@@ -1,0 +1,269 @@
+{
+  "id": "ward-nui-tuyet-truot-tuyet",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Trùm canh khu: Gấu Bạc Trượt Dốc",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Gấu Bạc Trượt Dốc canh khu trượt tuyết, đố {name} bốn câu về vòng trượt, cờ cắm và tuyết.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Gấu Bạc Trượt Dốc",
+    "where": "Khu trượt tuyết",
+    "goal": "Thắng trận đố của Gấu Bạc Trượt Dốc",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Gấu Bạc Trượt Dốc vơi bớt sức",
+    "learn": "Cộng, trừ có nhớ trong phạm vi 100, dãy số giảm dần, từ tiếng Anh về mùa đông",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Xuống hồ băng đi {name}, trùm canh khu ở đó đố toàn chuyện băng giá."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Gấu Bạc Trượt Dốc",
+      "kind": "dialogue",
+      "target": "gau-bac-truot-doc",
+      "lines": [
+        {
+          "speaker": "Gấu Bạc Trượt Dốc",
+          "text": "Vèo… phanh! Suýt nữa thì đâm vào {name}. Ta là Gấu Bạc Trượt Dốc, nhanh nhất dốc này đấy."
+        },
+        {
+          "speaker": "Gấu Bạc Trượt Dốc",
+          "text": "Muốn trượt cùng ta thì thắng bốn câu đố trước đã nhé!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Trượt đua thôi!"
+        }
+      ],
+      "en": {
+        "title": "Meet Gấu Bạc Trượt Dốc",
+        "lines": [
+          "Wheee… brake! I nearly crashed into {name}. I'm Gấu Bạc Trượt Dốc, the fastest on this slope.",
+          "To ski with me, first win four riddles!"
+        ],
+        "choices": [
+          {
+            "text": "Let's race!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Gấu Bạc Trượt Dốc",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "gau-bac-truot-doc",
+      "bossId": "gau-bac-truot-doc",
+      "bossName": "Gấu Bạc Trượt Dốc",
+      "introDialogue": "Cờ xuất phát phất lên, câu đố thứ nhất lao xuống dốc!",
+      "winDialogue": "Ta lăn tròn xuống chân dốc chịu thua rồi! {name} về đích trước ta.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "vong-truot",
+          "prompt": "Gấu trượt 26 vòng buổi sáng và 38 vòng buổi chiều. Gấu trượt tất cả bao nhiêu vòng?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "64"
+            },
+            {
+              "id": "b",
+              "text": "54"
+            },
+            {
+              "id": "c",
+              "text": "12"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Gấu skis 26 laps in the morning and 38 in the afternoon. How many laps in all?",
+            "choices": [
+              "64",
+              "54",
+              "12"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "co-doc",
+          "prompt": "Dốc trượt cắm 50 lá cờ, gió thổi đổ 17 lá. Còn bao nhiêu lá cờ đứng vững?",
+          "skill": "phep-tru",
+          "choices": [
+            {
+              "id": "a",
+              "text": "33"
+            },
+            {
+              "id": "b",
+              "text": "43"
+            },
+            {
+              "id": "c",
+              "text": "67"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "50 flags mark the slope and the wind knocks 17 over. How many are still standing?",
+            "choices": [
+              "33",
+              "43",
+              "67"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "giam-dan",
+          "prompt": "Các cột mốc trên dốc ghi số giảm dần: 40, 35, 30, 25, … Cột tiếp theo ghi số mấy?",
+          "skill": "logic",
+          "choices": [
+            {
+              "id": "a",
+              "text": "20"
+            },
+            {
+              "id": "b",
+              "text": "15"
+            },
+            {
+              "id": "c",
+              "text": "26"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The markers down the slope count down: 40, 35, 30, 25, … What is on the next marker?",
+            "choices": [
+              "20",
+              "15",
+              "26"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "snow",
+          "prompt": "Gấu Bạc reo lên «Snow!». «Snow» trong tiếng Anh là gì?",
+          "skill": "tu-vung",
+          "choices": [
+            {
+              "id": "a",
+              "text": "tuyết"
+            },
+            {
+              "id": "b",
+              "text": "mưa"
+            },
+            {
+              "id": "c",
+              "text": "gió"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Gấu Bạc shouts «Snow!». What is «snow» in Vietnamese?",
+            "choices": [
+              "tuyết",
+              "mưa",
+              "gió"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Vèo, về đích rồi!",
+          "Đúng rồi, cú trượt hoàn hảo!",
+          "Tuyết bắn tung tóe mừng câu trả lời của cậu!"
+        ],
+        "wrong": [
+          "Trượt chệch đường rồi, leo lên thử lại nhé.",
+          "Chưa đúng, nhớ đặt tính cẩn thận nhé.",
+          "Suýt về đích rồi, thêm một lượt nữa nào!"
+        ],
+        "en": {
+          "right": [
+            "Wheee, over the finish line!",
+            "Right, a perfect run!",
+            "Snow sprays everywhere to cheer your answer!"
+          ],
+          "wrong": [
+            "Off the track, climb back up and try again.",
+            "Not right, set out the sum carefully.",
+            "Nearly at the finish, one more run!"
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Gấu Bạc Trượt Dốc",
+        "bossName": "Gấu Bạc Trượt Dốc",
+        "introDialogue": "The start flag drops, and the first riddle zooms down the slope!",
+        "winDialogue": "I rolled all the way to the bottom and give up! {name} crossed the line before me."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Gấu Bạc Trượt Dốc",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Bạc Trượt Dốc tặng {name} cặp kính trượt tuyết tí hon màu bạc.",
+      "en": {
+        "title": "Gấu Bạc Trượt Dốc's gift",
+        "text": "Gấu Bạc Trượt Dốc gives {name} a tiny pair of silver ski goggles."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Gấu Bạc Trượt Dốc",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Xuống hồ băng đi {name}, trùm canh khu ở đó đố toàn chuyện băng giá.",
+      "en": {
+        "title": "Goodbye, Gấu Bạc Trượt Dốc",
+        "text": "Go down to the frozen lake, {name}: its zone guardian asks all about ice and frost."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "phep-cong": 1,
+      "phep-tru": 1,
+      "logic": 1,
+      "tu-vung": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Gấu Bạc Trượt Dốc",
+    "summary": "Gấu Bạc Trượt Dốc guards the ski area and asks {name} four riddles about ski laps, flags and snow."
+  }
+}

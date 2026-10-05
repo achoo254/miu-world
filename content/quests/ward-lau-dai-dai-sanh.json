@@ -1,0 +1,269 @@
+{
+  "id": "ward-lau-dai-dai-sanh",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Trùm canh khu: Mèo Quản Gia",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Mèo Quản Gia canh sân trong thành trước đại sảnh, đố {name} bốn câu tính ghế, nến, bao gạo và bình nước.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Quản Gia",
+    "where": "Đại sảnh ôn tập",
+    "goal": "Thắng trận đố của Mèo Quản Gia",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Mèo Quản Gia vơi bớt sức",
+    "learn": "Cộng, trừ có nhớ trong phạm vi 100, ki-lô-gam và lít",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Ra cổng thành đi {name}, ở bờ hào bên cầu treo có trùm canh khu mê chữ nghĩa."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Mèo Quản Gia",
+      "kind": "dialogue",
+      "target": "meo-quan-gia",
+      "lines": [
+        {
+          "speaker": "Mèo Quản Gia",
+          "text": "Kính chào {name}! Ta là Mèo Quản Gia, ta lo mọi việc trong đại sảnh từ ghế ngồi tới nến thắp."
+        },
+        {
+          "speaker": "Mèo Quản Gia",
+          "text": "Buổi tổng kết sắp bắt đầu, cậu giúp ta tính bốn việc nhé. Đúng hết là ta mời cậu ngồi hàng ghế đầu."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ giúp ngay, bác Quản Gia!"
+        }
+      ],
+      "en": {
+        "title": "Meet Mèo Quản Gia",
+        "lines": [
+          "Greetings, {name}! I'm Mèo Quản Gia, and I look after everything in the great hall, from chairs to candles.",
+          "The prize-giving is about to start, so help me with four sums. Get them all right and you sit in the front row."
+        ],
+        "choices": [
+          {
+            "text": "I'll help right away!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Mèo Quản Gia",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "meo-quan-gia",
+      "bossId": "meo-quan-gia",
+      "bossName": "Mèo Quản Gia",
+      "introDialogue": "Đại sảnh mở cửa, việc thứ nhất cần tính đây!",
+      "winDialogue": "Ta cúi chào chịu thua! Mời {name} ngồi hàng ghế đầu trong buổi tổng kết.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "xep-ghe",
+          "prompt": "Đại sảnh đã xếp 38 chiếc ghế, xếp thêm 27 chiếc nữa. Có tất cả bao nhiêu chiếc ghế?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "65"
+            },
+            {
+              "id": "b",
+              "text": "55"
+            },
+            {
+              "id": "c",
+              "text": "11"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The hall has 38 chairs set out, and 27 more are added. How many chairs in all?",
+            "choices": [
+              "65",
+              "55",
+              "11"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "thap-nen",
+          "prompt": "Có 72 ngọn nến, Mèo đã thắp 45 ngọn. Còn bao nhiêu ngọn chưa thắp?",
+          "skill": "phep-tru",
+          "choices": [
+            {
+              "id": "a",
+              "text": "27"
+            },
+            {
+              "id": "b",
+              "text": "37"
+            },
+            {
+              "id": "c",
+              "text": "117"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "There are 72 candles and Mèo has lit 45. How many are still unlit?",
+            "choices": [
+              "27",
+              "37",
+              "117"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "bao-gao",
+          "prompt": "Bao gạo nặng 25 kg, bao đậu nặng 18 kg. Hai bao nặng tất cả bao nhiêu ki-lô-gam?",
+          "skill": "khoi-luong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "43 kg"
+            },
+            {
+              "id": "b",
+              "text": "33 kg"
+            },
+            {
+              "id": "c",
+              "text": "7 kg"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "A sack of rice weighs 25 kg and a sack of beans 18 kg. How much do they weigh together?",
+            "choices": [
+              "43 kg",
+              "33 kg",
+              "7 kg"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "binh-nuoc",
+          "prompt": "Bình to có 12 l nước, Mèo rót ra 5 l để tưới hoa. Bình còn lại bao nhiêu lít?",
+          "skill": "dung-tich",
+          "choices": [
+            {
+              "id": "a",
+              "text": "7 l"
+            },
+            {
+              "id": "b",
+              "text": "17 l"
+            },
+            {
+              "id": "c",
+              "text": "6 l"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The big jug holds 12 l of water and Mèo pours out 5 l for the flowers. How many litres are left?",
+            "choices": [
+              "7 l",
+              "17 l",
+              "6 l"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Chính xác, ta ghi vào sổ ngay!",
+          "Đúng rồi, đại sảnh sắp xếp gọn gàng nhờ cậu.",
+          "Tuyệt, nến trong sảnh sáng thêm một ngọn!"
+        ],
+        "wrong": [
+          "Sổ sách lệch mất rồi, tính lại nhé.",
+          "Chưa đúng đâu, đặt tính cho thẳng hàng xem.",
+          "Suýt khớp rồi, nhớ cộng phần nhớ nữa nhé."
+        ],
+        "en": {
+          "right": [
+            "Exactly, I'll write it in my book!",
+            "Right, the hall is tidy thanks to you.",
+            "Wonderful, one more candle glows in the hall!"
+          ],
+          "wrong": [
+            "The books don't balance, work it out again.",
+            "Not right, line up the digits neatly.",
+            "Nearly there, remember to carry."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Mèo Quản Gia",
+        "bossName": "Mèo Quản Gia",
+        "introDialogue": "The hall doors open: here's the first job to work out!",
+        "winDialogue": "I bow and give up! Please take a front-row seat at the prize-giving, {name}."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Mèo Quản Gia",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Quản Gia trao cho {name} tấm vé mời hàng ghế đầu, có in hình ngai vàng.",
+      "en": {
+        "title": "Mèo Quản Gia's gift",
+        "text": "Mèo Quản Gia hands {name} a front-row invitation printed with the golden throne."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Mèo Quản Gia",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ra cổng thành đi {name}, ở bờ hào bên cầu treo có trùm canh khu mê chữ nghĩa.",
+      "en": {
+        "title": "Goodbye, Mèo Quản Gia",
+        "text": "Head out of the castle gate, {name}: by the moat at the rope bridge a zone guardian loves words."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "phep-cong": 1,
+      "phep-tru": 1,
+      "khoi-luong": 1,
+      "dung-tich": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Mèo Quản Gia",
+    "summary": "Mèo Quản Gia guards the courtyard before the great hall and asks {name} four riddles counting chairs, candles, rice sacks and water jugs."
+  }
+}

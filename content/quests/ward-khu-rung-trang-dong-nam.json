@@ -1,0 +1,284 @@
+{
+  "id": "ward-khu-rung-trang-dong-nam",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Trùm canh khu: Sâu Rồng Ngũ Sắc",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Sâu Rồng Ngũ Sắc canh trảng rừng phía đông nam, rủ {name} chơi rồng rắn bằng năm câu đố về câu và chữ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Sâu Rồng Ngũ Sắc",
+    "where": "Trảng rừng phía đông nam",
+    "goal": "Thắng trận đố của Sâu Rồng Ngũ Sắc",
+    "play": "Trả lời 5 câu đố, mỗi câu đúng làm Sâu Rồng Ngũ Sắc vơi bớt sức",
+    "learn": "Câu Nếu… thì…, từ chỉ cảm xúc, chính tả s/x, da/gia và ươn/ương",
+    "reward": "50 XP, 12 Xu mỗi lần thắng",
+    "next": "Bốn trảng rừng đều đã gặp, {name} ghé khoảng rừng trăng thăm Thần Rừng Tinh Nghịch nhé."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Sâu Rồng Ngũ Sắc",
+      "kind": "dialogue",
+      "target": "sau-rong-ngu-sac",
+      "lines": [
+        {
+          "speaker": "Sâu Rồng Ngũ Sắc",
+          "text": "Ta là Sâu Rồng Ngũ Sắc, dài như cả một đoàn rồng rắn đấy, {name} ạ!"
+        },
+        {
+          "speaker": "Sâu Rồng Ngũ Sắc",
+          "text": "Đúng đủ năm câu đố là cậu được làm đầu rồng dẫn cả đoàn đi chơi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ muốn làm đầu rồng!"
+        }
+      ],
+      "en": {
+        "title": "Meet Sâu Rồng Ngũ Sắc",
+        "lines": [
+          "I'm Sâu Rồng Ngũ Sắc, as long as a whole dragon-and-snake line, {name}!",
+          "Get all five riddles right and you'll be the dragon's head leading everyone."
+        ],
+        "choices": [
+          {
+            "text": "I want to be the dragon's head!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Sâu Rồng Ngũ Sắc",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "sau-rong-ngu-sac",
+      "bossId": "sau-rong-ngu-sac",
+      "bossName": "Sâu Rồng Ngũ Sắc",
+      "introDialogue": "Đoàn rồng rắn xếp hàng rồi, năm câu đố sắp bò tới!",
+      "winDialogue": "Ta xin làm khúc đuôi! {name} xứng đáng làm đầu rồng dẫn cả đoàn.",
+      "maxHp": 500,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "neu-thi",
+          "prompt": "Chọn vế hợp để nói tiếp câu: «Nếu trời mưa thì…»",
+          "skill": "cau",
+          "choices": [
+            {
+              "id": "a",
+              "text": "chúng mình chơi trong nhà"
+            },
+            {
+              "id": "b",
+              "text": "cái ô màu đỏ"
+            },
+            {
+              "id": "c",
+              "text": "trời rất xanh"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Pick the best ending for «Nếu trời mưa thì…» (If it rains, then…)",
+            "choices": [
+              "chúng mình chơi trong nhà (we play indoors)",
+              "cái ô màu đỏ (the red umbrella)",
+              "trời rất xanh (the sky is very blue)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "s-x",
+          "prompt": "Điền s hay x vào chỗ trống: «bà nhờ cháu …âu kim»?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "s"
+            },
+            {
+              "id": "b",
+              "text": "x"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "s or x: «bà nhờ cháu …âu kim» (Grandma asks me to thread the needle)?",
+            "choices": [
+              "s",
+              "x"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        },
+        {
+          "id": "da-gia",
+          "prompt": "Tiếng nào ghép với «đình» thành từ chỉ những người thân sống chung một nhà?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "da"
+            },
+            {
+              "id": "b",
+              "text": "gia"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which goes with «đình» to make the word for the people who live together at home (family)?",
+            "choices": [
+              "da",
+              "gia"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        },
+        {
+          "id": "uon-uong",
+          "prompt": "Vần nào điền vào «con đ…» để thành lối đi quanh co qua rừng?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ươn"
+            },
+            {
+              "id": "b",
+              "text": "ương"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which rhyme completes «con đ…», the winding way through the forest (the road)?",
+            "choices": [
+              "ươn",
+              "ương"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        },
+        {
+          "id": "tu-hao",
+          "prompt": "Bé nặn xong chú voi bằng đất rồi chạy khoe mẹ. Từ nào chỉ cảm xúc của bé?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "tự hào"
+            },
+            {
+              "id": "b",
+              "text": "đất sét"
+            },
+            {
+              "id": "c",
+              "text": "nặn tượng"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "A child finishes a clay elephant and runs to show mum. Which word tells how the child feels?",
+            "choices": [
+              "tự hào (proud)",
+              "đất sét (clay)",
+              "nặn tượng (sculpt)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Khúc đầu rồng sáng rực lên rồi!",
+          "Đúng nhé, cả đoàn rồng rắn reo hò ầm ĩ.",
+          "Thêm một khúc mây tan, cậu giỏi quá!"
+        ],
+        "wrong": [
+          "Rồng rắn lạc nhịp rồi, mình chơi lại câu này nha.",
+          "Chưa phải đâu, nhìn lại từng chữ xem nào.",
+          "Khúc đuôi vẫy vẫy: thử thêm lần nữa đi!"
+        ],
+        "en": {
+          "right": [
+            "The dragon's head is glowing now!",
+            "Right, the whole dragon line is cheering.",
+            "Another cloud melts away, you're brilliant!"
+          ],
+          "wrong": [
+            "The dragon lost its rhythm, let's play this one again.",
+            "Not that one, look at each word again.",
+            "The tail is waving: give it one more go!"
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Sâu Rồng Ngũ Sắc",
+        "bossName": "Sâu Rồng Ngũ Sắc",
+        "introDialogue": "The dragon line is ready, five riddles are crawling your way!",
+        "winDialogue": "I'll be the tail! {name} deserves to be the head of the dragon."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Sâu Rồng Ngũ Sắc",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Sâu Rồng Ngũ Sắc tặng {name} một chiếc vảy bảy màu lấp lánh để đội khi làm đầu rồng.",
+      "en": {
+        "title": "Sâu Rồng Ngũ Sắc's gift",
+        "text": "Sâu Rồng Ngũ Sắc gives {name} a shiny rainbow scale to wear as the dragon's head."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Sâu Rồng Ngũ Sắc",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bốn trảng rừng đều đã gặp, {name} ghé khoảng rừng trăng thăm Thần Rừng Tinh Nghịch nhé.",
+      "en": {
+        "title": "Goodbye, Sâu Rồng Ngũ Sắc",
+        "text": "You've met all four glades, {name}: visit the Mischievous Forest Spirit in the moonlit glade."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 50,
+    "coin": 12,
+    "skillXp": {
+      "cau": 1,
+      "chinh-ta": 1,
+      "tu-ngu": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Sâu Rồng Ngũ Sắc",
+    "summary": "Sâu Rồng Ngũ Sắc guards the south-east glade and invites {name} to a dragon-and-snake game of five riddles about sentences and spelling."
+  }
+}

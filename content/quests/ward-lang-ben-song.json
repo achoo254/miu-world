@@ -1,0 +1,268 @@
+{
+  "id": "ward-lang-ben-song",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Trùm canh khu: Cua Kềnh Gác Bến",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Cua Kềnh Gác Bến canh bến sông, giơ càng đố {name} bốn câu về từ, câu và lời đáp lịch sự.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cua Kềnh Gác Bến",
+    "where": "Bến sông",
+    "goal": "Thắng trận đố của Cua Kềnh Gác Bến",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Cua Kềnh Gác Bến vơi bớt sức",
+    "learn": "Từ chỉ hoạt động, đáp lời khen, bảng chữ cái, sắp xếp từ thành câu",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Đầm sen và sân bóng còn một trùm canh khu mạnh nhất làng đấy, {name} sang đó thử xem."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Cua Kềnh Gác Bến",
+      "kind": "dialogue",
+      "target": "cua-kenh-gac-ben",
+      "lines": [
+        {
+          "speaker": "Cua Kềnh Gác Bến",
+          "text": "Đứng lại, đứng lại! Cua Kềnh Gác Bến đây, càng ta to nhất bến sông này đấy, {name} ạ."
+        },
+        {
+          "speaker": "Cua Kềnh Gác Bến",
+          "text": "Nhưng ta không kẹp ai đâu, ta chỉ đố thôi. Đúng bốn câu là ta giơ càng chào cậu."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cua ơi, tớ không sợ đâu!"
+        }
+      ],
+      "en": {
+        "title": "Meet Cua Kềnh Gác Bến",
+        "lines": [
+          "Halt, halt! Cua Kềnh Gác Bến here, with the biggest claws on this landing, {name}.",
+          "But I never pinch, I only ask riddles. Get four right and I'll raise my claws to salute you."
+        ],
+        "choices": [
+          {
+            "text": "Crab, I'm not scared!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Cua Kềnh Gác Bến",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "cua-kenh-gac-ben",
+      "bossId": "cua-kenh-gac-ben",
+      "bossName": "Cua Kềnh Gác Bến",
+      "introDialogue": "Càng trái giữ câu đố, càng phải giữ câu đố, bắt đầu nào!",
+      "winDialogue": "Ta giơ cả hai càng chào {name}! Cậu giỏi hơn cả cua bò ngang.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "hoat-dong-thuyen",
+          "prompt": "Từ nào chỉ hoạt động của con đò trên sông?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "trôi"
+            },
+            {
+              "id": "b",
+              "text": "xanh"
+            },
+            {
+              "id": "c",
+              "text": "mái chèo"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which word is something the ferry boat does on the river (an action)?",
+            "choices": [
+              "trôi (drift)",
+              "xanh (green)",
+              "mái chèo (oar)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "sau-chu-u",
+          "prompt": "Trong bảng chữ cái tiếng Việt, chữ nào đứng ngay sau chữ U?",
+          "skill": "bang-chu-cai",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Ư"
+            },
+            {
+              "id": "b",
+              "text": "V"
+            },
+            {
+              "id": "c",
+              "text": "T"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "In the Vietnamese alphabet, which letter comes right after U?",
+            "choices": [
+              "Ư",
+              "V",
+              "T"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "dap-loi-khen",
+          "prompt": "Bạn khen: «Cậu vẽ con cua đẹp quá!». Đáp lại thế nào cho lịch sự?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Tớ cảm ơn cậu nhé!"
+            },
+            {
+              "id": "b",
+              "text": "Tất nhiên rồi!"
+            },
+            {
+              "id": "c",
+              "text": "Kệ tớ!"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "A friend says: «You drew that crab so well!». Which reply is polite?",
+            "choices": [
+              "Tớ cảm ơn cậu nhé! (Thank you!)",
+              "Tất nhiên rồi! (Of course!)",
+              "Kệ tớ! (Leave me alone!)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "xep-cau-ben",
+          "prompt": "Xếp các từ «em, ra, bến sông, chơi» thành câu. Câu nào đúng?",
+          "skill": "ghep-cau",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Em ra bến sông chơi."
+            },
+            {
+              "id": "b",
+              "text": "Bến sông em ra chơi."
+            },
+            {
+              "id": "c",
+              "text": "Chơi em ra bến sông."
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Put «em, ra, bến sông, chơi» in order to make a sentence. Which is right?",
+            "choices": [
+              "Em ra bến sông chơi. (I go to the river landing to play.)",
+              "Bến sông em ra chơi. (muddled)",
+              "Chơi em ra bến sông. (muddled)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Cạch cạch, càng ta buông lỏng rồi!",
+          "Đúng rồi, ta bò ngang một bước tỏ lòng phục.",
+          "Câu trả lời chắc như mai cua!"
+        ],
+        "wrong": [
+          "Ối, bò ngang nhầm hướng rồi, thử lại xem.",
+          "Chưa đúng, cậu ngẫm thêm một chút nào.",
+          "Sóng vỗ lệch câu trả lời rồi, chọn lại nhé."
+        ],
+        "en": {
+          "right": [
+            "Clack clack, my claws just let go!",
+            "Right, I'll step sideways to show I'm impressed.",
+            "That answer is as solid as a crab shell!"
+          ],
+          "wrong": [
+            "Oops, I scuttled the wrong way, try again.",
+            "Not right, think a little longer.",
+            "A wave knocked that answer off course, choose again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Cua Kềnh Gác Bến",
+        "bossName": "Cua Kềnh Gác Bến",
+        "introDialogue": "A riddle in my left claw, a riddle in my right claw, let's start!",
+        "winDialogue": "I salute {name} with both claws! You're cleverer than a sideways crab."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Cua Kềnh Gác Bến",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cua Kềnh Gác Bến tặng {name} một vỏ ốc biết hát, áp vào tai là nghe tiếng sông.",
+      "en": {
+        "title": "Cua Kềnh Gác Bến's gift",
+        "text": "Cua Kềnh Gác Bến gives {name} a singing shell: hold it to your ear and you hear the river."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Cua Kềnh Gác Bến",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đầm sen và sân bóng còn một trùm canh khu mạnh nhất làng đấy, {name} sang đó thử xem.",
+      "en": {
+        "title": "Goodbye, Cua Kềnh Gác Bến",
+        "text": "The lotus pond and football pitch have the strongest zone guardian in the village, {name}, go and try."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "tu-ngu": 1,
+      "bang-chu-cai": 1,
+      "ghep-cau": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Cua Kềnh Gác Bến",
+    "summary": "Cua Kềnh Gác Bến guards the river landing and raises its claws to ask {name} four riddles about words, sentences and polite replies."
+  }
+}

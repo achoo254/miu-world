@@ -1,0 +1,268 @@
+{
+  "id": "ward-lang-dau-lang",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Trùm canh khu: Cò Trắng Giữ Giếng",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Cò Trắng Giữ Giếng canh khu đầu làng, đố {name} bốn câu về lời chào, chữ cái và câu giới thiệu.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cò Trắng Giữ Giếng",
+    "where": "Đầu làng",
+    "goal": "Thắng trận đố của Cò Trắng Giữ Giếng",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Cò Trắng Giữ Giếng vơi bớt sức",
+    "learn": "Lời chào lễ phép, bảng chữ cái, từ chỉ sự vật, câu giới thiệu",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Ra bãi cỏ ven sông đi {name}, ở đó có một trùm canh khu mê đố câu."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Cò Trắng Giữ Giếng",
+      "kind": "dialogue",
+      "target": "co-trang-giu-gieng",
+      "lines": [
+        {
+          "speaker": "Cò Trắng Giữ Giếng",
+          "text": "Cúc cu… à không, ta là Cò Trắng Giữ Giếng! Ai đi qua đầu làng đều phải chào ta một câu đố."
+        },
+        {
+          "speaker": "Cò Trắng Giữ Giếng",
+          "text": "Trả lời đúng bốn câu, ta kéo cho {name} một gàu nước mát nhất làng."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cò ơi, đố đi!"
+        }
+      ],
+      "en": {
+        "title": "Meet Cò Trắng Giữ Giếng",
+        "lines": [
+          "Coo… no, I'm Cò Trắng Giữ Giếng! Everyone passing the village entrance greets me with a riddle.",
+          "Answer four right and I'll draw {name} the coolest bucket of water in the village."
+        ],
+        "choices": [
+          {
+            "text": "Go on, Cò, ask me!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Cò Trắng Giữ Giếng",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "co-trang-giu-gieng",
+      "bossId": "co-trang-giu-gieng",
+      "bossName": "Cò Trắng Giữ Giếng",
+      "introDialogue": "Giếng làng trong veo, câu đố đầu tiên rơi xuống tõm đây!",
+      "winDialogue": "Gàu nước mát của {name} đây! Ta thua mà vẫn vui ơi là vui.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "loi-chao",
+          "prompt": "Ngày đầu vào lớp Hai, bạn nhỏ gặp cô giáo ở cổng. Lời chào nào lễ phép?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Em chào cô ạ!"
+            },
+            {
+              "id": "b",
+              "text": "Chào nhé!"
+            },
+            {
+              "id": "c",
+              "text": "Ê cô ơi!"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "On the first day of Year 2 a pupil meets the teacher at the gate. Which greeting is polite?",
+            "choices": [
+              "Em chào cô ạ! (polite hello)",
+              "Chào nhé! (casual hi)",
+              "Ê cô ơi! (hey, you)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "truoc-chu-d",
+          "prompt": "Trong bảng chữ cái, chữ nào đứng ngay trước chữ D?",
+          "skill": "bang-chu-cai",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Đ"
+            },
+            {
+              "id": "b",
+              "text": "C"
+            },
+            {
+              "id": "c",
+              "text": "E"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "In the Vietnamese alphabet, which letter comes just before D?",
+            "choices": [
+              "Đ",
+              "C",
+              "E"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        },
+        {
+          "id": "su-vat-lop",
+          "prompt": "Từ nào gọi tên một đồ vật trong lớp học của Cò?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "cái bảng"
+            },
+            {
+              "id": "b",
+              "text": "đọc bài"
+            },
+            {
+              "id": "c",
+              "text": "chăm chỉ"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which word names a thing in Cò's classroom?",
+            "choices": [
+              "cái bảng (the board)",
+              "đọc bài (read aloud)",
+              "chăm chỉ (hard-working)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "cau-gioi-thieu",
+          "prompt": "Câu nào là câu giới thiệu về bản thân?",
+          "skill": "cau",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Tớ là Cò, tớ giữ giếng làng."
+            },
+            {
+              "id": "b",
+              "text": "Giếng làng sâu ghê!"
+            },
+            {
+              "id": "c",
+              "text": "Cậu uống nước chưa?"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which sentence introduces the speaker?",
+            "choices": [
+              "Tớ là Cò, tớ giữ giếng làng. (I'm Cò, I keep the well.)",
+              "Giếng làng sâu ghê! (The well is so deep!)",
+              "Cậu uống nước chưa? (Have you had a drink?)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Đúng rồi, ta vỗ cánh khen cậu đây!",
+          "Câu trả lời trong như nước giếng làng.",
+          "Hay lắm, chân ta đứng không vững nữa rồi!"
+        ],
+        "wrong": [
+          "Ối, rơi nhầm xuống giếng rồi, kéo lên chọn lại nào.",
+          "Chưa phải, cậu đọc to câu hỏi một lần nữa nhé.",
+          "Nghiêng đầu nghĩ thêm chút, cò chờ được mà."
+        ],
+        "en": {
+          "right": [
+            "Right, I'm flapping my wings for you!",
+            "That answer is as clear as the village well.",
+            "Great, I can hardly stand on one leg now!"
+          ],
+          "wrong": [
+            "Oops, that one fell in the well, pull it up and choose again.",
+            "Not that one, read the question aloud once more.",
+            "Tilt your head and think a bit, the stork can wait."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Cò Trắng Giữ Giếng",
+        "bossName": "Cò Trắng Giữ Giếng",
+        "introDialogue": "The well is crystal clear: splash, here's the first riddle!",
+        "winDialogue": "Here's your cool water, {name}! I lost, and I'm still so happy."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Cò Trắng Giữ Giếng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cò Trắng Giữ Giếng kéo cho {name} một gàu nước mát và tặng chiếc lông trắng muốt làm bút.",
+      "en": {
+        "title": "Cò Trắng Giữ Giếng's gift",
+        "text": "Cò Trắng Giữ Giếng draws {name} a bucket of cool water and gives a snow-white feather to write with."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Cò Trắng Giữ Giếng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ra bãi cỏ ven sông đi {name}, ở đó có một trùm canh khu mê đố câu.",
+      "en": {
+        "title": "Goodbye, Cò Trắng Giữ Giếng",
+        "text": "Head to the riverside meadow, {name}: a zone guardian there loves sentence riddles."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "tu-ngu": 1,
+      "bang-chu-cai": 1,
+      "cau": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Cò Trắng Giữ Giếng",
+    "summary": "Cò Trắng Giữ Giếng guards the village entrance and asks {name} four riddles about greetings, letters and introductions."
+  }
+}

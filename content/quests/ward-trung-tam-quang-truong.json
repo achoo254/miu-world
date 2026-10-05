@@ -1,0 +1,269 @@
+{
+  "id": "ward-trung-tam-quang-truong",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Trùm canh khu: Sẻ Nâu Đưa Thư",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Sẻ Nâu Đưa Thư canh quảng trường, mang bốn câu đố về thông báo, so sánh số và phép tính cho {name}.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Sẻ Nâu Đưa Thư",
+    "where": "Quảng trường trung tâm",
+    "goal": "Thắng trận đố của Sẻ Nâu Đưa Thư",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Sẻ Nâu Đưa Thư vơi bớt sức",
+    "learn": "Đọc hiểu thông báo, so sánh số có hai chữ số, cộng và trừ trong phạm vi 100",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Khu giao dịch và cửa hàng có trùm canh khu giỏi tính nhất phố đấy, {name}."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Sẻ Nâu Đưa Thư",
+      "kind": "dialogue",
+      "target": "se-nau-dua-thu",
+      "lines": [
+        {
+          "speaker": "Sẻ Nâu Đưa Thư",
+          "text": "Ríu rít! {name} có thư đây. Ta là Sẻ Nâu Đưa Thư, chuyên mang tin vui khắp quảng trường."
+        },
+        {
+          "speaker": "Sẻ Nâu Đưa Thư",
+          "text": "Lá thư hôm nay là bốn câu đố. Mở thư ra đấu với ta không?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mở thư ra nào!"
+        }
+      ],
+      "en": {
+        "title": "Meet Sẻ Nâu Đưa Thư",
+        "lines": [
+          "Tweet tweet! A letter for {name}. I'm Sẻ Nâu Đưa Thư, and I carry happy news all round the square.",
+          "Today's letter is four riddles. Open it and battle me?"
+        ],
+        "choices": [
+          {
+            "text": "Let's open it!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Sẻ Nâu Đưa Thư",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "se-nau-dua-thu",
+      "bossId": "se-nau-dua-thu",
+      "bossName": "Sẻ Nâu Đưa Thư",
+      "introDialogue": "Phong thư thứ nhất đã bay tới tay {name} rồi đây!",
+      "winDialogue": "Ríu rít, ta thua rồi! {name} đọc thư nhanh hơn cả ta bay.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "thong-bao-hoi-cho",
+          "prompt": "Bảng tin ghi: «Hội chợ mở lúc 8 giờ sáng thứ Bảy ở quảng trường». Hội chợ mở vào hôm nào?",
+          "skill": "doc-hieu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "thứ Bảy"
+            },
+            {
+              "id": "b",
+              "text": "Chủ nhật"
+            },
+            {
+              "id": "c",
+              "text": "thứ Hai"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The notice board says: «The fair opens at 8 a.m. on Saturday in the square». Which day does the fair open?",
+            "choices": [
+              "thứ Bảy (Saturday)",
+              "Chủ nhật (Sunday)",
+              "thứ Hai (Monday)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "thu-so-lon",
+          "prompt": "Sẻ Nâu mang ba lá thư số 68, 86 và 79. Lá thư mang số lớn nhất là số nào?",
+          "skill": "so-sanh-so",
+          "choices": [
+            {
+              "id": "a",
+              "text": "86"
+            },
+            {
+              "id": "b",
+              "text": "79"
+            },
+            {
+              "id": "c",
+              "text": "68"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Sẻ Nâu carries three letters numbered 68, 86 and 79. Which number is the biggest?",
+            "choices": [
+              "86",
+              "79",
+              "68"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "them-bo-cau",
+          "prompt": "Quảng trường có 45 chú chim sẻ, bay tới thêm 23 chú. Có tất cả bao nhiêu chú chim sẻ?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "68"
+            },
+            {
+              "id": "b",
+              "text": "22"
+            },
+            {
+              "id": "c",
+              "text": "58"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "There are 45 sparrows in the square and 23 more fly in. How many sparrows are there in all?",
+            "choices": [
+              "68",
+              "22",
+              "58"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "co-bay",
+          "prompt": "Có 57 lá cờ treo quanh quảng trường, gió thổi bay mất 14 lá. Còn lại bao nhiêu lá cờ?",
+          "skill": "phep-tru",
+          "choices": [
+            {
+              "id": "a",
+              "text": "43"
+            },
+            {
+              "id": "b",
+              "text": "71"
+            },
+            {
+              "id": "c",
+              "text": "33"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "There are 57 flags round the square and the wind blows 14 away. How many flags are left?",
+            "choices": [
+              "43",
+              "71",
+              "33"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Ríu rít, đúng tin rồi!",
+          "Chính xác, cánh ta vỗ phành phạch khen cậu.",
+          "Lá thư này cậu đọc đúng từng chữ!"
+        ],
+        "wrong": [
+          "Thư gửi nhầm địa chỉ rồi, chọn lại nhé.",
+          "Chưa đúng đâu, đọc lại phong thư lần nữa nào.",
+          "Gần lắm, so kĩ từng con số xem."
+        ],
+        "en": {
+          "right": [
+            "Tweet tweet, right news!",
+            "Exactly, I'm flapping my wings to cheer you.",
+            "You read every word of that letter right!"
+          ],
+          "wrong": [
+            "Wrong address, choose again.",
+            "Not right, read the letter once more.",
+            "So close, compare each number carefully."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Sẻ Nâu Đưa Thư",
+        "bossName": "Sẻ Nâu Đưa Thư",
+        "introDialogue": "The first envelope has landed in {name}'s hands!",
+        "winDialogue": "Tweet tweet, I lost! {name} reads letters faster than I can fly."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Sẻ Nâu Đưa Thư",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Sẻ Nâu Đưa Thư tặng {name} một chiếc tem thư in hình quảng trường, thư sau ta lại mang đố mới tới.",
+      "en": {
+        "title": "Sẻ Nâu Đưa Thư's gift",
+        "text": "Sẻ Nâu Đưa Thư gives {name} a stamp with the square on it. Next time I'll bring new riddles."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Sẻ Nâu Đưa Thư",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Khu giao dịch và cửa hàng có trùm canh khu giỏi tính nhất phố đấy, {name}.",
+      "en": {
+        "title": "Goodbye, Sẻ Nâu Đưa Thư",
+        "text": "The trading street and shops have the best counter in town as their zone guardian, {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "doc-hieu": 1,
+      "so-sanh-so": 1,
+      "phep-cong": 1,
+      "phep-tru": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Sẻ Nâu Đưa Thư",
+    "summary": "Sẻ Nâu Đưa Thư guards the square and brings {name} four riddles about notices, comparing numbers and sums."
+  }
+}

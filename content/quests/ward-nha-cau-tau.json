@@ -1,0 +1,269 @@
+{
+  "id": "ward-nha-cau-tau",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Trùm canh khu: Vịt Bầu Cầu Tàu",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Vịt Bầu Cầu Tàu canh cầu tàu bên ao, đố {name} bốn câu về đàn vịt, cần câu và tấm biển nhắc nhở.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Vịt Bầu Cầu Tàu",
+    "where": "Cầu tàu bên ao",
+    "goal": "Thắng trận đố của Vịt Bầu Cầu Tàu",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Vịt Bầu Cầu Tàu vơi bớt sức",
+    "learn": "Phép cộng trong phạm vi 20, so sánh số, từ chỉ đồ vật, đọc hiểu tấm biển",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Ra chuồng gà sau nhà đi {name}, trùm canh khu cuối cùng đang ấp trứng chờ cậu."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Vịt Bầu Cầu Tàu",
+      "kind": "dialogue",
+      "target": "vit-bau-cau-tau",
+      "lines": [
+        {
+          "speaker": "Vịt Bầu Cầu Tàu",
+          "text": "Cạc cạc! {name} ơi, Vịt Bầu Cầu Tàu đây. Cả ngày ta bơi quanh ao, thuộc từng tấm ván của cầu tàu."
+        },
+        {
+          "speaker": "Vịt Bầu Cầu Tàu",
+          "text": "Hôm nay ao lặng sóng, mình đấu trí bốn câu cho vui nhé!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cạc cạc, đấu thì đấu!"
+        }
+      ],
+      "en": {
+        "title": "Meet Vịt Bầu Cầu Tàu",
+        "lines": [
+          "Quack quack! {name}, it's Vịt Bầu Cầu Tàu. I swim round the pond all day and know every plank of the jetty.",
+          "The pond is calm today, so let's have a four-riddle battle for fun!"
+        ],
+        "choices": [
+          {
+            "text": "Quack, let's battle!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Vịt Bầu Cầu Tàu",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "vit-bau-cau-tau",
+      "bossId": "vit-bau-cau-tau",
+      "bossName": "Vịt Bầu Cầu Tàu",
+      "introDialogue": "Mặt ao gợn sóng, câu đố thứ nhất nổi lên đây!",
+      "winDialogue": "Cạc… ta lặn xuống ao chịu thua! {name} giỏi quá trời.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "vit-boi-toi",
+          "prompt": "Ao có 9 con vịt, thêm 8 con nữa bơi tới. Ao có tất cả bao nhiêu con vịt?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "17"
+            },
+            {
+              "id": "b",
+              "text": "16"
+            },
+            {
+              "id": "c",
+              "text": "1"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "There are 9 ducks on the pond and 8 more swim over. How many ducks in all?",
+            "choices": [
+              "17",
+              "16",
+              "1"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "dau-39-93",
+          "prompt": "Hai chiếc phao ghi 39 và 93. Điền dấu vào 39 … 93.",
+          "skill": "so-sanh-so",
+          "choices": [
+            {
+              "id": "a",
+              "text": "<"
+            },
+            {
+              "id": "b",
+              "text": ">"
+            },
+            {
+              "id": "c",
+              "text": "="
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Two floats are numbered 39 and 93. Which sign goes in 39 … 93?",
+            "choices": [
+              "<",
+              ">",
+              "="
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "can-cau",
+          "prompt": "Từ nào gọi tên một đồ vật người ta mang ra cầu tàu?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "cần câu"
+            },
+            {
+              "id": "b",
+              "text": "bơi lội"
+            },
+            {
+              "id": "c",
+              "text": "mát rượi"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which word names a thing people bring to the jetty?",
+            "choices": [
+              "cần câu (fishing rod)",
+              "bơi lội (swim)",
+              "mát rượi (refreshingly cool)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "khong-chay",
+          "prompt": "Tấm biển ở cầu tàu ghi: «Không chạy nhảy trên cầu». Vì sao phải nhớ điều đó?",
+          "skill": "doc-hieu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "để không ngã xuống ao"
+            },
+            {
+              "id": "b",
+              "text": "để cá được ngủ"
+            },
+            {
+              "id": "c",
+              "text": "vì cầu vừa sơn"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The sign on the jetty says: «No running or jumping on the jetty». Why remember it?",
+            "choices": [
+              "so you don't fall in the pond",
+              "so the fish can sleep",
+              "because it was just painted"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Cạc cạc, đúng rồi!",
+          "Hay quá, đàn vịt bơi vòng tròn mừng cậu.",
+          "Câu trả lời êm như mặt ao buổi sáng!"
+        ],
+        "wrong": [
+          "Té nước mất rồi, chọn lại nhé.",
+          "Chưa đúng, đọc kĩ tấm biển xem.",
+          "Gần đúng rồi, bơi thêm một vòng suy nghĩ nào!"
+        ],
+        "en": {
+          "right": [
+            "Quack quack, that's right!",
+            "Brilliant, the ducks are swimming in circles for you.",
+            "That answer is as calm as the pond at dawn!"
+          ],
+          "wrong": [
+            "Splash, that went everywhere, choose again.",
+            "Not right, read the sign carefully.",
+            "Nearly right, swim one more lap of thinking!"
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Vịt Bầu Cầu Tàu",
+        "bossName": "Vịt Bầu Cầu Tàu",
+        "introDialogue": "Ripples on the pond, and up floats the first riddle!",
+        "winDialogue": "Quack… I dive under and give up! {name} is ever so clever."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Vịt Bầu Cầu Tàu",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Vịt Bầu Cầu Tàu tặng {name} một chiếc phao vịt nhỏ màu vàng, thả xuống chậu tắm là nổi.",
+      "en": {
+        "title": "Vịt Bầu Cầu Tàu's gift",
+        "text": "Vịt Bầu Cầu Tàu gives {name} a little yellow rubber duck that floats in the bath."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Vịt Bầu Cầu Tàu",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ra chuồng gà sau nhà đi {name}, trùm canh khu cuối cùng đang ấp trứng chờ cậu.",
+      "en": {
+        "title": "Goodbye, Vịt Bầu Cầu Tàu",
+        "text": "Go to the henhouse behind the house, {name}: the last zone guardian is sitting on her eggs and waiting."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "phep-cong": 1,
+      "so-sanh-so": 1,
+      "tu-ngu": 1,
+      "doc-hieu": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Vịt Bầu Cầu Tàu",
+    "summary": "Vịt Bầu Cầu Tàu guards the jetty by the pond and asks {name} four riddles about ducks, fishing rods and a safety sign."
+  }
+}

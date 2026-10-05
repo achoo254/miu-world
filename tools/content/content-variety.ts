@@ -10,9 +10,10 @@ import { normaliseWording, stepMechanic } from './curriculum-links';
 const MIN_LINE_LENGTH = 16;
 /**
  * Keys whose values are ids, enums or machine data, not something a child reads or hears, and the speaker of a
- * line (a character's name: a character who gives several games says its name in each).
+ * line or a boss's name (a character's name: a character who gives several games says its name in each, and keeps it
+ * in English).
  */
-const NOT_TEXT = new Set(['speaker', 'id', 'kind', 'mechanic', 'trigger', 'target', 'targets', 'skill', 'status', 'region', 'review', 'textRef', 'lessonId', 'curriculumRef', 'phases', 'type', 'mode', 'display', 'sevenQuestions', 'category', 'game', 'params']);
+const NOT_TEXT = new Set(['speaker', 'bossName', 'id', 'kind', 'mechanic', 'trigger', 'target', 'targets', 'skill', 'status', 'region', 'review', 'textRef', 'lessonId', 'curriculumRef', 'phases', 'type', 'mode', 'display', 'sevenQuestions', 'category', 'game', 'params']);
 
 function playerLines(quest: QuestDefinition): Array<{ where: string; text: string }> {
   const lines: Array<{ where: string; text: string }> = [];

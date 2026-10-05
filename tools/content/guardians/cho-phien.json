@@ -1,0 +1,432 @@
+{
+  "region": "cho-phien",
+  "guardians": [
+    {
+      "quest": "ward-cho-sap-hoa",
+      "id": "ga-mai-ban-trung",
+      "name": "Gà Mái Bán Trứng",
+      "look": "animal-chick",
+      "tint": "#f4e0b0",
+      "height": 1.8,
+      "zone": "Chợ rau hoa, dãy sạp hoa",
+      "lessons": [
+        "toan2-cd2-b07",
+        "toan2-cd2-b08",
+        "toan2-cd2-b10"
+      ],
+      "learn": "Phép cộng qua 10 trong phạm vi 20, bảng cộng, so sánh tổng với một số",
+      "summary": "Gà Mái Bán Trứng canh dãy sạp hoa của chợ rau hoa, đố {name} bốn câu cộng qua 10.",
+      "hook": [
+        "Cục ta cục tác! Chào {name}, ta là Gà Mái Bán Trứng, sạp trứng của ta ngay cạnh dãy hoa.",
+        "Chợ đông quá, ta đếm trứng không kịp. Cậu đấu với ta bốn câu cộng nhé, đúng hết ta tặng quà."
+      ],
+      "choice": "Cục tác, tớ đếm giúp!",
+      "intro": "Rổ trứng đầy rồi, câu cộng thứ nhất đây!",
+      "win": "Cục tác, ta thua rồi! {name} cộng nhanh hơn cả ta đẻ trứng.",
+      "right": [
+        "Cục tác, đếm đúng rồi!",
+        "Hay quá, rổ trứng không vỡ quả nào.",
+        "Đủ chục rồi còn dư mấy, cậu tính chuẩn ghê!"
+      ],
+      "wrong": [
+        "Trứng lăn mất một quả rồi, đếm lại nhé.",
+        "Chưa đúng, cậu thử gom cho đủ chục trước xem.",
+        "Gần đúng rồi, đếm thêm từ 10 nào."
+      ],
+      "reward": "Gà Mái Bán Trứng tặng {name} một quả trứng gỗ sơn hoa, đặt lên bàn học cho vui.",
+      "next": "Ghé khu bán thú nuôi đi {name}, trùm canh khu ở đó toàn đố phép trừ.",
+      "turns": [
+        {
+          "id": "trung-tam-them",
+          "skill": "phep-cong",
+          "prompt": "Gà Mái có 8 quả trứng, đẻ thêm 5 quả. Gà có tất cả bao nhiêu quả trứng?",
+          "choices": [
+            "13",
+            "12",
+            "3"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Gà Mái has 8 eggs and lays 5 more. How many eggs in all?",
+            "choices": [
+              "13",
+              "12",
+              "3"
+            ]
+          }
+        },
+        {
+          "id": "hong-cuc",
+          "skill": "phep-cong",
+          "prompt": "Sạp hoa có 9 bông hồng và 6 bông cúc. Sạp có tất cả bao nhiêu bông hoa?",
+          "choices": [
+            "15",
+            "14",
+            "16"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The flower stall has 9 roses and 6 daisies. How many flowers in all?",
+            "choices": [
+              "15",
+              "14",
+              "16"
+            ]
+          }
+        },
+        {
+          "id": "so-con-thieu",
+          "skill": "phep-cong",
+          "prompt": "Số nào điền vào chỗ trống để có 7 + … = 12?",
+          "choices": [
+            "5",
+            "4",
+            "19"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which number goes in the gap: 7 + … = 12?",
+            "choices": [
+              "5",
+              "4",
+              "19"
+            ]
+          }
+        },
+        {
+          "id": "so-tong",
+          "skill": "so-sanh-so",
+          "prompt": "Gà Mái so hai rổ trứng: 8 + 7 và 14. Điền dấu vào 8 + 7 … 14.",
+          "choices": [
+            "<",
+            ">",
+            "="
+          ],
+          "answer": 1,
+          "en": {
+            "prompt": "Gà Mái compares two baskets: 8 + 7 and 14. Which sign goes in 8 + 7 … 14?",
+            "choices": [
+              "<",
+              ">",
+              "="
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Gà Mái Bán Trứng guards the flower stalls of the vegetable and flower market and asks {name} four add-over-ten riddles.",
+        "hook": [
+          "Cluck cluck! Hello {name}, I'm Gà Mái Bán Trứng, and my egg stall is right by the flowers.",
+          "The market is so busy I can't count fast enough. Battle me in four sums, and get them right for a present."
+        ],
+        "choice": "Cluck, I'll help count!",
+        "intro": "The egg basket is full: here's the first sum!",
+        "win": "Cluck, I lost! {name} adds faster than I can lay eggs.",
+        "right": [
+          "Cluck, counted right!",
+          "Lovely, not a single egg broken.",
+          "A full ten and some more, you worked it out perfectly!"
+        ],
+        "wrong": [
+          "An egg rolled away, count again.",
+          "Not right, try making a ten first.",
+          "Nearly right, count on from 10."
+        ],
+        "reward": "Gà Mái Bán Trứng gives {name} a flower-painted wooden egg to keep on your desk.",
+        "next": "Drop by the pet stalls, {name}: the zone guardian there only asks take-away riddles."
+      }
+    },
+    {
+      "quest": "ward-cho-thu-nuoi",
+      "id": "cho-vang-giu-sap",
+      "name": "Chó Vàng Giữ Sạp",
+      "look": "animal-dog",
+      "tint": "#c08850",
+      "height": 2.0,
+      "zone": "Chợ rau hoa, khu bán thú nuôi",
+      "lessons": [
+        "toan2-cd2-b09",
+        "toan2-cd2-b11",
+        "toan2-cd2-b12",
+        "toan2-cd2-b13",
+        "toan2-cd2-b14"
+      ],
+      "learn": "Phép trừ qua 10 trong phạm vi 20, bài toán thêm bớt, nhiều hơn",
+      "summary": "Chó Vàng Giữ Sạp canh khu bán thú nuôi, đố {name} bốn câu trừ qua 10 và bài toán nhiều hơn, ít hơn.",
+      "hook": [
+        "Gâu gâu! {name} đừng sợ, ta là Chó Vàng Giữ Sạp, ta chỉ sủa để chào khách thôi.",
+        "Sạp thú nuôi của ta hôm nay bán chạy lắm. Cậu tính giúp ta bốn bài nhé!"
+      ],
+      "choice": "Gâu, tớ tính giúp!",
+      "intro": "Cửa lồng mở rồi, bài toán thứ nhất chạy ra đây!",
+      "win": "Gâu… ta nằm phục chịu thua! {name} trừ giỏi hơn cả chủ sạp.",
+      "right": [
+        "Gâu gâu, chuẩn rồi!",
+        "Đuôi ta vẫy tít vì cậu tính đúng!",
+        "Hay lắm, đàn cá vàng cũng quẫy đuôi khen."
+      ],
+      "wrong": [
+        "Gâu, chưa đúng, tính lại nhé.",
+        "Thử tách số để trừ cho tròn chục xem.",
+        "Suýt đúng, kiểm lại phép trừ nào."
+      ],
+      "reward": "Chó Vàng Giữ Sạp tặng {name} một chiếc vòng cổ có lục lạc nhỏ, đeo vào là kêu leng keng.",
+      "next": "Sang dãy hàng cân đong, trùm canh khu ở đó mang cả cân đĩa ra đố {name}.",
+      "turns": [
+        {
+          "id": "khuc-xuong",
+          "skill": "phep-tru",
+          "prompt": "Chó Vàng có 14 khúc xương, ăn mất 6 khúc. Chó còn lại mấy khúc xương?",
+          "choices": [
+            "8",
+            "9",
+            "20"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Chó Vàng has 14 bones and eats 6. How many bones are left?",
+            "choices": [
+              "8",
+              "9",
+              "20"
+            ]
+          }
+        },
+        {
+          "id": "ca-vang",
+          "skill": "phep-tru",
+          "prompt": "Sạp có 13 chú cá vàng, đã bán 5 chú. Sạp còn bao nhiêu chú cá vàng?",
+          "choices": [
+            "8",
+            "7",
+            "18"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The stall has 13 goldfish and has sold 5. How many goldfish are left?",
+            "choices": [
+              "8",
+              "7",
+              "18"
+            ]
+          }
+        },
+        {
+          "id": "meo-nhieu-hon",
+          "skill": "bai-toan-loi-van",
+          "prompt": "Thỏ có 9 củ cà rốt, mèo có nhiều hơn thỏ 3 củ. Mèo có mấy củ cà rốt?",
+          "choices": [
+            "12",
+            "6",
+            "3"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Rabbit has 9 carrots and Cat has 3 more than Rabbit. How many carrots does Cat have?",
+            "choices": [
+              "12",
+              "6",
+              "3"
+            ]
+          }
+        },
+        {
+          "id": "chim-bay",
+          "skill": "bai-toan-loi-van",
+          "prompt": "Trong lồng có 11 chú chim, bay ra mất 4 chú. Trong lồng còn mấy chú chim?",
+          "choices": [
+            "7",
+            "15",
+            "6"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "There are 11 birds in the cage and 4 fly out. How many birds are still in the cage?",
+            "choices": [
+              "7",
+              "15",
+              "6"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Chó Vàng Giữ Sạp guards the pet stalls and asks {name} four riddles about taking away over ten and more-or-fewer problems.",
+        "hook": [
+          "Woof woof! Don't be scared, {name}, I'm Chó Vàng Giữ Sạp, and I only bark to say hello to customers.",
+          "My pet stall is selling fast today. Help me with four sums!"
+        ],
+        "choice": "Woof, I'll help!",
+        "intro": "The cage door opens, and out runs the first problem!",
+        "win": "Woof… I lie down and give up! {name} takes away better than the stall owner.",
+        "right": [
+          "Woof woof, spot on!",
+          "My tail is wagging because you got it right!",
+          "Great, even the goldfish are flicking their tails for you."
+        ],
+        "wrong": [
+          "Woof, not right, work it out again.",
+          "Try splitting the number to take away to a ten.",
+          "Nearly right, check the take-away again."
+        ],
+        "reward": "Chó Vàng Giữ Sạp gives {name} a collar with a little bell that jingles.",
+        "next": "Over at the weighing row the zone guardian brings out the balance scales for {name}."
+      }
+    },
+    {
+      "quest": "ward-cho-day-can-dong",
+      "id": "voi-tim-can-dong",
+      "name": "Voi Tím Cân Đong",
+      "look": "animal-elephant",
+      "tint": "#b0a0c8",
+      "height": 2.4,
+      "zone": "Dãy hàng cân đong",
+      "lessons": [
+        "toan2-cd3-b15",
+        "toan2-cd3-b16",
+        "toan2-cd3-b17",
+        "toan2-cd3-b18"
+      ],
+      "learn": "Nặng hơn, nhẹ hơn, ki-lô-gam, lít, cộng trừ với đơn vị đo",
+      "summary": "Voi Tím Cân Đong canh dãy sạp có cân, đố {name} năm câu về cân đĩa, ki-lô-gam và lít.",
+      "hook": [
+        "Ầm, ầm! Ta là Voi Tím Cân Đong, cái cân to nhất chợ là của ta đấy, {name}.",
+        "Hôm nay ta mang cả cân đĩa lẫn can nước ra đố. Năm câu, đúng hết là cậu thắng!"
+      ],
+      "choice": "Đặt lên cân đi nào!",
+      "intro": "Cân đĩa đã thăng bằng, câu đố thứ nhất đặt lên đây!",
+      "win": "Đĩa cân của ta nghiêng hẳn về phía {name} rồi, ta chịu thua!",
+      "right": [
+        "Cân thăng bằng, đúng rồi!",
+        "Chính xác từng ki-lô-gam!",
+        "Đúng rồi, vòi ta rót nước mừng cậu."
+      ],
+      "wrong": [
+        "Đĩa cân lệch rồi, cân lại nhé.",
+        "Chưa đúng, nhớ ghi cả đơn vị đo nhé.",
+        "Can nước còn vơi, tính lại xem nào."
+      ],
+      "reward": "Voi Tím Cân Đong tặng {name} một quả cân đồng bé xíu, nặng đúng một trăm gam.",
+      "next": "Gặp đủ ba trùm canh khu rồi, {name} ra chặng cuối đấu với Heo Đất Khổng Lồ nhé.",
+      "turns": [
+        {
+          "id": "dia-thap",
+          "skill": "khoi-luong",
+          "prompt": "Quả dưa hấu nặng hơn quả cam. Đặt hai quả lên cân đĩa, đĩa nào thấp xuống?",
+          "choices": [
+            "đĩa có dưa hấu",
+            "đĩa có quả cam",
+            "hai đĩa bằng nhau"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "A watermelon is heavier than an orange. On the balance scales, which pan goes down?",
+            "choices": [
+              "the watermelon's pan",
+              "the orange's pan",
+              "they stay level"
+            ]
+          }
+        },
+        {
+          "id": "duong-muoi",
+          "skill": "khoi-luong",
+          "prompt": "Bao đường nặng 5 kg, bao muối nặng 3 kg. Cả hai bao nặng bao nhiêu?",
+          "choices": [
+            "8 kg",
+            "2 kg",
+            "53 kg"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "A bag of sugar weighs 5 kg and a bag of salt 3 kg. How much do both weigh?",
+            "choices": [
+              "8 kg",
+              "2 kg",
+              "53 kg"
+            ]
+          }
+        },
+        {
+          "id": "can-dau",
+          "skill": "dung-tich",
+          "prompt": "Can dầu có 10 l, Voi rót ra 4 l. Can còn lại bao nhiêu lít?",
+          "choices": [
+            "6 l",
+            "14 l",
+            "5 l"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The oil can holds 10 l and Voi pours out 4 l. How many litres are left?",
+            "choices": [
+              "6 l",
+              "14 l",
+              "5 l"
+            ]
+          }
+        },
+        {
+          "id": "don-vi-lit",
+          "skill": "dung-tich",
+          "prompt": "Muốn biết trong xô có bao nhiêu nước, ta dùng đơn vị đo nào?",
+          "choices": [
+            "lít",
+            "ki-lô-gam",
+            "xăng-ti-mét"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "To say how much water is in a bucket, which unit do we use?",
+            "choices": [
+              "lít (litre)",
+              "ki-lô-gam (kilogram)",
+              "xăng-ti-mét (centimetre)"
+            ]
+          }
+        },
+        {
+          "id": "tui-dau",
+          "skill": "khoi-luong",
+          "prompt": "Túi gạo nặng 12 kg, túi đậu nhẹ hơn túi gạo 4 kg. Túi đậu nặng bao nhiêu?",
+          "choices": [
+            "8 kg",
+            "16 kg",
+            "4 kg"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "A bag of rice weighs 12 kg and a bag of beans is 4 kg lighter. How much does the bag of beans weigh?",
+            "choices": [
+              "8 kg",
+              "16 kg",
+              "4 kg"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Voi Tím Cân Đong guards the stalls with scales and asks {name} five riddles about balance scales, kilograms and litres.",
+        "hook": [
+          "Thud, thud! I'm Voi Tím Cân Đong, and the biggest scales in the market are mine, {name}.",
+          "Today I've brought the balance and the water cans for riddles. Five of them: get them all and you win!"
+        ],
+        "choice": "Put it on the scales!",
+        "intro": "The scales are level: here goes the first riddle!",
+        "win": "My scales have tipped right over to {name}'s side, I give up!",
+        "right": [
+          "The scales balance, that's right!",
+          "Exact to the kilogram!",
+          "Right, my trunk pours water to celebrate."
+        ],
+        "wrong": [
+          "The pans are uneven, weigh again.",
+          "Not right, remember to write the unit.",
+          "The can isn't full yet, work it out again."
+        ],
+        "reward": "Voi Tím Cân Đong gives {name} a tiny brass weight of exactly one hundred grams.",
+        "next": "All three zone guardians met, {name}: head to the last stop and battle the Giant Piggy Bank."
+      }
+    }
+  ]
+}

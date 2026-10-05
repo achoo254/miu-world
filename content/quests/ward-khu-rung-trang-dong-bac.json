@@ -1,0 +1,263 @@
+{
+  "id": "ward-khu-rung-trang-dong-bac",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Trùm canh khu: Chồn Đuôi Bông",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Chồn Đuôi Bông canh trảng rừng phía đông bắc, đố {name} bốn câu về bảng chữ cái, cảm xúc và chính tả.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Chồn Đuôi Bông",
+    "where": "Trảng rừng phía đông bắc",
+    "goal": "Thắng trận đố của Chồn Đuôi Bông",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Chồn Đuôi Bông vơi bớt sức",
+    "learn": "Thứ tự bảng chữ cái, từ chỉ cảm xúc, chính tả g/gh và iu/ưu",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Phía tây nam khu rừng có trùm canh khu mê âm thanh và đồ chơi."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Chồn Đuôi Bông",
+      "kind": "dialogue",
+      "target": "chon-duoi-bong",
+      "lines": [
+        {
+          "speaker": "Chồn Đuôi Bông",
+          "text": "Chào {name}! Tớ là Chồn Đuôi Bông, tớ xếp cả bảng chữ cái thành hàng rào quanh trảng này đấy."
+        },
+        {
+          "speaker": "Chồn Đuôi Bông",
+          "text": "Muốn đi qua thì đấu trí với tớ nhé, sai thì cứ thử lại thôi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đấu thì đấu!"
+        }
+      ],
+      "en": {
+        "title": "Meet Chồn Đuôi Bông",
+        "lines": [
+          "Hi {name}! I'm Chồn Đuôi Bông, and I've lined up the whole alphabet as a fence round this glade.",
+          "To get through, have a battle of wits with me. If you miss, just try again."
+        ],
+        "choices": [
+          {
+            "text": "Let's battle!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Chồn Đuôi Bông",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "chon-duoi-bong",
+      "bossId": "chon-duoi-bong",
+      "bossName": "Chồn Đuôi Bông",
+      "introDialogue": "Chữ cái đã xếp hàng, cảm xúc đã sẵn sàng, mình bắt đầu nào!",
+      "winDialogue": "Đuôi tớ cụp xuống rồi! {name} thuộc bảng chữ cái còn hơn cả tớ.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "sau-chu-g",
+          "prompt": "Trong bảng chữ cái tiếng Việt, chữ nào đứng ngay sau chữ G?",
+          "skill": "bang-chu-cai",
+          "choices": [
+            {
+              "id": "a",
+              "text": "H"
+            },
+            {
+              "id": "b",
+              "text": "I"
+            },
+            {
+              "id": "c",
+              "text": "K"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "In the Vietnamese alphabet, which letter comes right after G?",
+            "choices": [
+              "H",
+              "I",
+              "K"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "cam-xuc-nhim",
+          "prompt": "Nhím con được bạn tặng quà sinh nhật. Từ nào chỉ cảm xúc của nhím lúc ấy?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "vui sướng"
+            },
+            {
+              "id": "b",
+              "text": "gai nhọn"
+            },
+            {
+              "id": "c",
+              "text": "chạy nhảy"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "A little hedgehog gets a birthday present from a friend. Which word tells how it feels?",
+            "choices": [
+              "vui sướng (overjoyed)",
+              "gai nhọn (sharp spines)",
+              "chạy nhảy (running about)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "g-gh",
+          "prompt": "Chồn Đuôi Bông viết tên một đồ vật theo ba cách. Cách nào đúng chính tả g/gh?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "cái ghế"
+            },
+            {
+              "id": "b",
+              "text": "cái gế"
+            },
+            {
+              "id": "c",
+              "text": "cái ghiế"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Chồn Đuôi Bông writes «chair» three ways. Which uses g/gh correctly?",
+            "choices": [
+              "cái ghế",
+              "cái gế",
+              "cái ghiế"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "iu-uu",
+          "prompt": "Vần nào điền vào chỗ trống trong «quả l…» để thành tên một loại quả đỏ mọng?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "iu"
+            },
+            {
+              "id": "b",
+              "text": "ưu"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which rhyme completes «quả l…», the name of a juicy red fruit (pomegranate)?",
+            "choices": [
+              "iu",
+              "ưu"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Chuẩn không cần chỉnh, đuôi tớ xẹp bớt rồi!",
+          "Ồ, cậu nhớ thứ tự chữ cái giỏi thật.",
+          "Thêm một câu đúng, hàng rào chữ cái lung lay!"
+        ],
+        "wrong": [
+          "Ối, chữ cái xếp nhầm hàng rồi, thử lần nữa nhé.",
+          "Nhẩm lại bảng chữ cái từ đầu xem sao.",
+          "Suýt nữa thôi, cậu đọc to từng tiếng thử nhé."
+        ],
+        "en": {
+          "right": [
+            "Spot on, my tail just went flat!",
+            "Wow, you really know the order of the letters.",
+            "Another right answer, the alphabet fence is wobbling!"
+          ],
+          "wrong": [
+            "Oops, a letter is out of line, try once more.",
+            "Run through the alphabet from the start and see.",
+            "Nearly there, try saying each word out loud."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Chồn Đuôi Bông",
+        "bossName": "Chồn Đuôi Bông",
+        "introDialogue": "The letters are in line and the feelings are ready, here we go!",
+        "winDialogue": "My tail is drooping! {name} knows the alphabet even better than I do."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Chồn Đuôi Bông",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chồn Đuôi Bông tặng {name} một chiếc lá khắc đủ hai mươi chín chữ cái, đấu lại lúc nào cũng được.",
+      "en": {
+        "title": "Chồn Đuôi Bông's gift",
+        "text": "Chồn Đuôi Bông gives {name} a leaf carved with all twenty-nine letters. Battle again whenever you like."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Chồn Đuôi Bông",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Phía tây nam khu rừng có trùm canh khu mê âm thanh và đồ chơi.",
+      "en": {
+        "title": "Goodbye, Chồn Đuôi Bông",
+        "text": "In the south-west of the forest a zone guardian loves sounds and toys."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "bang-chu-cai": 1,
+      "tu-ngu": 1,
+      "chinh-ta": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Chồn Đuôi Bông",
+    "summary": "Chồn Đuôi Bông guards the north-east glade and asks {name} four riddles about the alphabet, feelings and spelling."
+  }
+}

@@ -1,0 +1,554 @@
+{
+  "region": "truong-hoc",
+  "guardians": [
+    {
+      "quest": "ward-truong-san-truong",
+      "id": "huou-dem-co",
+      "name": "Hươu Đếm Cờ",
+      "look": "animal-giraffe",
+      "tint": "#f0c75e",
+      "height": 2.6,
+      "zone": "Sân trường",
+      "lessons": [
+        "toan2-cd1-b01",
+        "toan2-cd1-b02",
+        "toan2-cd1-b03",
+        "toan2-cd1-b04"
+      ],
+      "learn": "Số đến 100, tia số, số hạng và tổng, nhiều hơn bao nhiêu",
+      "summary": "Hươu Đếm Cờ canh sân trường bên cột cờ, đố {name} bốn câu về số đến 100 và phép tính.",
+      "hook": [
+        "Chào {name}! Ta là Hươu Đếm Cờ, cổ ta cao nên ta đếm được mọi lá cờ quanh sân trường.",
+        "Đếm mãi thành nghiện, giờ ta muốn đố cậu bốn câu toán. Chơi không?"
+      ],
+      "choice": "Chơi luôn, Hươu ơi!",
+      "intro": "Cờ đã kéo lên đỉnh, câu toán đầu tiên bay phấp phới đây!",
+      "win": "Ta cúi cổ chào thua! {name} đếm số còn nhanh hơn ta nhìn từ trên cao.",
+      "right": [
+        "Đúng rồi, cổ ta cúi xuống một nấc!",
+        "Tính nhẩm siêu thế, ta phục cậu rồi.",
+        "Một lá cờ chiến thắng cho {name}!"
+      ],
+      "wrong": [
+        "Đếm lệch một lá cờ rồi, đếm lại nhé.",
+        "Chưa đúng, cậu thử viết ra nháp xem.",
+        "Suýt trúng, nhìn kĩ hàng chục và hàng đơn vị nào."
+      ],
+      "reward": "Hươu Đếm Cờ tặng {name} một lá cờ nhỏ thêu số 100, đấu lại lúc nào cũng được.",
+      "next": "Ra sân sau dãy lớp đi {name}, có một trùm canh khu thuộc làu thời khóa biểu.",
+      "turns": [
+        {
+          "id": "bay-chuc-bon",
+          "skill": "so-den-100",
+          "prompt": "Hươu Đếm Cờ có 7 chục lá cờ và 4 lá cờ lẻ. Hươu có tất cả bao nhiêu lá cờ?",
+          "choices": [
+            "74",
+            "47",
+            "11"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Hươu Đếm Cờ has 7 tens of flags and 4 more single flags. How many flags in all?",
+            "choices": [
+              "74",
+              "47",
+              "11"
+            ]
+          }
+        },
+        {
+          "id": "lien-sau-59",
+          "skill": "tia-so",
+          "prompt": "Trên tia số dọc hàng rào sân trường, số liền sau của 59 là số nào?",
+          "choices": [
+            "58",
+            "60",
+            "69"
+          ],
+          "answer": 1,
+          "en": {
+            "prompt": "On the number line along the school fence, which number comes right after 59?",
+            "choices": [
+              "58",
+              "60",
+              "69"
+            ]
+          }
+        },
+        {
+          "id": "ten-tong",
+          "skill": "thanh-phan-phep-tinh",
+          "prompt": "Hươu viết lên bảng: 35 + 12 = 47. Số 47 trong phép tính này gọi là gì?",
+          "choices": [
+            "tổng",
+            "số hạng",
+            "hiệu"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Hươu writes 35 + 12 = 47 on the board. What is 47 called in this sum?",
+            "choices": [
+              "tổng (the sum)",
+              "số hạng (an addend)",
+              "hiệu (the difference)"
+            ]
+          }
+        },
+        {
+          "id": "nhieu-hon",
+          "skill": "hon-kem",
+          "prompt": "Lớp 2A có 32 bạn, lớp 2B có 28 bạn. Lớp 2A nhiều hơn lớp 2B mấy bạn?",
+          "choices": [
+            "4 bạn",
+            "5 bạn",
+            "60 bạn"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Class 2A has 32 pupils and class 2B has 28. How many more pupils does 2A have?",
+            "choices": [
+              "4",
+              "5",
+              "60"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Hươu Đếm Cờ guards the schoolyard by the flagpole and asks {name} four riddles about numbers to 100 and sums.",
+        "hook": [
+          "Hello {name}! I'm Hươu Đếm Cờ, and my long neck lets me count every flag round the schoolyard.",
+          "Counting has made me hungry for maths, so let me ask you four riddles. Shall we?"
+        ],
+        "choice": "Yes, let's play, Hươu!",
+        "intro": "The flag is at the top of the pole: here flutters the first maths riddle!",
+        "win": "I bow my neck and give up! {name} counts faster than I can look down from up here.",
+        "right": [
+          "Right, my neck just dropped a notch!",
+          "Such quick mental maths, I'm impressed.",
+          "A winning flag for {name}!"
+        ],
+        "wrong": [
+          "You counted one flag too many or too few, count again.",
+          "Not right, try working it out on scrap paper.",
+          "So close, look carefully at the tens and the ones."
+        ],
+        "reward": "Hươu Đếm Cờ gives {name} a little flag stitched with the number 100. Battle again whenever you like.",
+        "next": "Go round to the yard behind the classrooms, {name}: a zone guardian there knows the timetable by heart."
+      }
+    },
+    {
+      "quest": "ward-truong-san-sau",
+      "id": "meo-thoi-khoa-bieu",
+      "name": "Mèo Thời Khóa Biểu",
+      "look": "animal-cat",
+      "tint": "#9bc4e8",
+      "height": 2.0,
+      "zone": "Sân sau dãy lớp",
+      "lessons": [
+        "tv2-t05-b09",
+        "tv2-t05-b10"
+      ],
+      "learn": "Câu nói tình cảm, đọc thời khóa biểu, chính tả v/d, từ chỉ hoạt động",
+      "summary": "Mèo Thời Khóa Biểu canh sân sau dãy lớp, đố {name} bốn câu về thầy cô, môn học và chính tả.",
+      "hook": [
+        "Meo! {name} đến đúng giờ ra chơi rồi. Ta là Mèo Thời Khóa Biểu, ta nhớ hết môn học của cả trường.",
+        "Thắng ta bốn câu thì ta kể cho cậu nghe hôm nào được học vẽ nhé."
+      ],
+      "choice": "Kể cho tớ nghe với!",
+      "intro": "Trống báo giờ ra chơi rồi, ta đố nhanh trước khi vào lớp nhé!",
+      "win": "Meo… ta thua rồi! {name} chăm học thế này, môn nào cũng giỏi.",
+      "right": [
+        "Meo meo, chuẩn rồi!",
+        "Đúng bài luôn, cô giáo mà biết chắc khen cậu.",
+        "Râu ta rung rinh vì câu trả lời hay quá!"
+      ],
+      "wrong": [
+        "Meo, chưa đúng, cậu xem lại nhé.",
+        "Nhầm tiết rồi, đọc chậm lại một chút xem.",
+        "Gần đúng rồi, nghĩ thêm một tí thôi."
+      ],
+      "reward": "Mèo Thời Khóa Biểu tặng {name} một nhãn vở có vẽ hình mèo, viết tên vào rồi dán lên vở nhé.",
+      "next": "Vườn trường có trùm canh khu giữ chiếc trống to nhất trường, {name} ra gặp thử xem.",
+      "turns": [
+        {
+          "id": "yeu-co",
+          "skill": "cau",
+          "prompt": "Câu nào thể hiện tình cảm của bạn nhỏ với cô giáo?",
+          "choices": [
+            "Em yêu cô giáo lắm!",
+            "Cô giáo mặc áo dài.",
+            "Cô đến lớp lúc bảy giờ."
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which sentence shows how the pupil feels about the teacher?",
+            "choices": [
+              "Em yêu cô giáo lắm! (I love my teacher so much!)",
+              "Cô giáo mặc áo dài. (The teacher wears an áo dài.)",
+              "Cô đến lớp lúc bảy giờ. (She arrives at seven.)"
+            ]
+          }
+        },
+        {
+          "id": "dem-mon",
+          "skill": "doc-hieu",
+          "prompt": "Mèo đọc thời khóa biểu: «Thứ Hai: Tiếng Việt, Toán, Mĩ thuật». Thứ Hai có mấy môn học?",
+          "choices": [
+            "2 môn",
+            "3 môn",
+            "4 môn"
+          ],
+          "answer": 1,
+          "en": {
+            "prompt": "Mèo reads the timetable: «Monday: Vietnamese, Maths, Art». How many subjects are there on Monday?",
+            "choices": [
+              "2",
+              "3",
+              "4"
+            ]
+          }
+        },
+        {
+          "id": "v-d",
+          "skill": "chinh-ta",
+          "prompt": "Điền v hay d vào chỗ trống: «em ghi bài vào quyển …ở ô li»?",
+          "choices": [
+            "v",
+            "d"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "v or d: «em ghi bài vào quyển …ở ô li» (I write the lesson in my squared exercise book)?",
+            "choices": [
+              "v",
+              "d"
+            ]
+          }
+        },
+        {
+          "id": "viet-bai",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào chỉ hoạt động của bạn nhỏ trong giờ học?",
+          "choices": [
+            "viết bài",
+            "cái thước",
+            "bàn ghế"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which words tell what a pupil does in a lesson (an action)?",
+            "choices": [
+              "viết bài (write)",
+              "cái thước (the ruler)",
+              "bàn ghế (desks and chairs)"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Mèo Thời Khóa Biểu guards the yard behind the classrooms and asks {name} four riddles about teachers, subjects and spelling.",
+        "hook": [
+          "Meow! {name} has come right at break time. I'm Mèo Thời Khóa Biểu and I remember every subject in the school.",
+          "Beat me in four riddles and I'll tell you which day has art."
+        ],
+        "choice": "Tell me, please!",
+        "intro": "The drum says it's break time, quick, a riddle before lessons start!",
+        "win": "Meow… I lost! {name} studies so well, every subject must be easy.",
+        "right": [
+          "Meow meow, spot on!",
+          "Exactly right, the teacher would praise you.",
+          "My whiskers are quivering at that great answer!"
+        ],
+        "wrong": [
+          "Meow, not right, look again.",
+          "Wrong lesson, read a bit more slowly.",
+          "Nearly there, think just a little more."
+        ],
+        "reward": "Mèo Thời Khóa Biểu gives {name} a book label with a cat on it: write your name and stick it on your exercise book.",
+        "next": "In the school garden a zone guardian keeps the biggest drum in the school, {name}, go and meet it."
+      }
+    },
+    {
+      "quest": "ward-truong-vuon-truong",
+      "id": "ga-trong-go-trong",
+      "name": "Gà Trống Gõ Trống",
+      "look": "animal-chick",
+      "tint": "#e9583c",
+      "height": 1.8,
+      "zone": "Vườn trường",
+      "lessons": [
+        "tv2-t06-b11",
+        "tv2-t06-b12"
+      ],
+      "learn": "Từ ngữ nói về vật như nói về người, thứ tự bảng chữ cái, dấu hỏi và dấu ngã, s/x",
+      "summary": "Gà Trống Gõ Trống canh vườn trường, gõ bốn câu đố về từ ngữ, bảng chữ cái và chính tả cho {name}.",
+      "hook": [
+        "Tùng tùng tùng! Ta là Gà Trống Gõ Trống, sáng nào ta cũng gõ trống gọi cả vườn trường thức dậy.",
+        "{name} đoán đúng bốn câu thì ta cho cậu gõ thử một hồi trống nhé!"
+      ],
+      "choice": "Cho tớ gõ trống với!",
+      "intro": "Tùng! Câu đố thứ nhất vang lên giữa vườn trường!",
+      "win": "Ò ó o… ta thua rồi! Dùi trống đây, {name} gõ một hồi thật vang đi.",
+      "right": [
+        "Tùng, tùng, đúng rồi!",
+        "Hay quá, mào ta đỏ rực vì phục cậu.",
+        "Câu trả lời vang như tiếng trống khai giảng!"
+      ],
+      "wrong": [
+        "Cạch, trống gõ lệch nhịp rồi, thử lại nhé.",
+        "Chưa đúng đâu, nghe kĩ từng tiếng một xem.",
+        "Ò… gần đúng rồi, chọn lại nào."
+      ],
+      "reward": "Gà Trống Gõ Trống trao cho {name} chiếc dùi trống nhỏ bằng gỗ, mai lại cùng gọi vườn trường dậy nhé.",
+      "next": "Sân chơi bên cầu trượt có trùm canh khu cuối cùng của trường, khó nhất đấy {name}.",
+      "turns": [
+        {
+          "id": "vat-nhu-nguoi",
+          "skill": "tu-ngu",
+          "prompt": "Câu «Chiếc trống nằm ngủ say suốt mùa hè» nói về đồ vật như nói về người. Từ nào cho thấy điều đó?",
+          "choices": [
+            "ngủ say",
+            "chiếc trống",
+            "mùa hè"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "«Chiếc trống nằm ngủ say suốt mùa hè» (the drum sleeps soundly all summer) talks about a thing as if it were a person. Which words show it?",
+            "choices": [
+              "ngủ say (sleeps soundly)",
+              "chiếc trống (the drum)",
+              "mùa hè (summer)"
+            ]
+          }
+        },
+        {
+          "id": "ten-dau-tien",
+          "skill": "bang-chu-cai",
+          "prompt": "Danh sách lớp xếp theo bảng chữ cái. Trong ba bạn An, Chi, Bảo, bạn nào đứng đầu?",
+          "choices": [
+            "An",
+            "Bảo",
+            "Chi"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The class list goes in alphabetical order. Of An, Chi and Bảo, who comes first?",
+            "choices": [
+              "An",
+              "Bảo",
+              "Chi"
+            ]
+          }
+        },
+        {
+          "id": "dau-hoi-nga",
+          "skill": "chinh-ta",
+          "prompt": "Gà Trống muốn viết «kì nghỉ hè». Cách viết nào đúng dấu?",
+          "choices": [
+            "nghỉ hè",
+            "nghĩ hè"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Gà Trống wants to write «summer holiday». Which has the right tone mark?",
+            "choices": [
+              "nghỉ hè",
+              "nghĩ hè"
+            ]
+          }
+        },
+        {
+          "id": "s-x-xoai",
+          "skill": "chinh-ta",
+          "prompt": "Điền s hay x: «quả …oài chín vàng trong vườn trường»?",
+          "choices": [
+            "s",
+            "x"
+          ],
+          "answer": 1,
+          "en": {
+            "prompt": "s or x: «quả …oài chín vàng trong vườn trường» (a ripe yellow mango in the school garden)?",
+            "choices": [
+              "s",
+              "x"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Gà Trống Gõ Trống guards the school garden and beats out four riddles about words, the alphabet and spelling for {name}.",
+        "hook": [
+          "Boom boom boom! I'm Gà Trống Gõ Trống, and every morning I beat the drum to wake up the whole school garden.",
+          "If {name} gets four riddles right, you can have a go on the drum!"
+        ],
+        "choice": "Let me play the drum!",
+        "intro": "Boom! The first riddle rings out across the school garden!",
+        "win": "Cock-a-doodle… I lost! Here's the drumstick, {name}, give it a good loud beat.",
+        "right": [
+          "Boom, boom, that's right!",
+          "Brilliant, my comb is glowing red with respect.",
+          "That answer rings out like the first-day-of-school drum!"
+        ],
+        "wrong": [
+          "Clack, the drum missed a beat, try again.",
+          "Not right, listen carefully to each word.",
+          "Cock-a… nearly right, choose again."
+        ],
+        "reward": "Gà Trống Gõ Trống gives {name} a little wooden drumstick. Let's wake the school garden together tomorrow.",
+        "next": "The playground by the slide has the school's last zone guardian, the hardest one, {name}."
+      }
+    },
+    {
+      "quest": "ward-truong-san-choi",
+      "id": "khi-cau-truot",
+      "name": "Khỉ Cầu Trượt",
+      "look": "animal-monkey",
+      "tint": "#c9a06a",
+      "height": 2.0,
+      "zone": "Sân chơi",
+      "lessons": [
+        "tv2-t07-b13",
+        "tv2-t07-b14"
+      ],
+      "learn": "Từ chỉ tình cảm, câu nêu đặc điểm, tiếng cùng vần, chính tả ng/ngh, từ chỉ sự vật",
+      "summary": "Khỉ Cầu Trượt canh sân chơi, trượt xuống năm câu đố về tình cảm với trường, câu và chính tả cho {name}.",
+      "hook": [
+        "Vèo! Ta là Khỉ Cầu Trượt, ta trượt xuống đây đúng lúc {name} đi ngang qua.",
+        "Năm câu đố, mỗi câu một lượt trượt. Cậu trả lời hết thì cả sân chơi là của cậu!"
+      ],
+      "choice": "Trượt đi, tớ đỡ hết!",
+      "intro": "Một, hai, ba, vèo… câu đố thứ nhất trượt xuống đây!",
+      "win": "Ta ngã chổng vó rồi! {name} giỏi thế, cả sân chơi vỗ tay cho cậu.",
+      "right": [
+        "Vèo, trúng ngay đích!",
+        "Đúng rồi, ta treo ngược trên xà vì phục cậu.",
+        "Câu trả lời mượt như cầu trượt mới!"
+      ],
+      "wrong": [
+        "Ối, trượt lệch ra cát rồi, leo lên thử lại nhé.",
+        "Chưa phải, cậu đọc lại câu hỏi xem.",
+        "Suýt nữa thôi, đu thêm một nhịp nữa nào!"
+      ],
+      "reward": "Khỉ Cầu Trượt tặng {name} một chiếc huy hiệu hình cầu trượt, sân chơi luôn để phần cậu một lượt.",
+      "next": "Thắng cả bốn trùm canh khu rồi, {name} vào gặp Voi Tính Nhẩm ở chặng cuối của trường nhé.",
+      "turns": [
+        {
+          "id": "yeu-truong",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào nói lên tình cảm của bạn nhỏ với mái trường?",
+          "choices": [
+            "yêu quý",
+            "bảng đen",
+            "sân chơi"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which word shows how a pupil feels about the school?",
+            "choices": [
+              "yêu quý (love dearly)",
+              "bảng đen (blackboard)",
+              "sân chơi (playground)"
+            ]
+          }
+        },
+        {
+          "id": "dac-diem-san",
+          "skill": "cau",
+          "prompt": "Câu nào nêu đặc điểm của sân chơi?",
+          "choices": [
+            "Sân chơi rộng và sạch.",
+            "Chúng em chơi ở sân.",
+            "Sân chơi ở đâu?"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which sentence describes what the playground is like?",
+            "choices": [
+              "Sân chơi rộng và sạch. (It is wide and clean.)",
+              "Chúng em chơi ở sân. (We play there.)",
+              "Sân chơi ở đâu? (Where is it?)"
+            ]
+          }
+        },
+        {
+          "id": "cung-van",
+          "skill": "chinh-ta",
+          "prompt": "Cặp tiếng nào có cùng vần?",
+          "choices": [
+            "sao – cao",
+            "mây – mưa",
+            "lá – lê"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which pair of words rhymes (has the same rhyme part)?",
+            "choices": [
+              "sao – cao",
+              "mây – mưa",
+              "lá – lê"
+            ]
+          }
+        },
+        {
+          "id": "ng-ngoi",
+          "skill": "chinh-ta",
+          "prompt": "Điền ng hay ngh: «bé …ồi vẽ tranh dưới gốc cây»?",
+          "choices": [
+            "ng",
+            "ngh"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "ng or ngh: «bé …ồi vẽ tranh dưới gốc cây» (the child sits drawing under a tree)?",
+            "choices": [
+              "ng",
+              "ngh"
+            ]
+          }
+        },
+        {
+          "id": "do-ve",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào gọi tên đồ vật dùng để vẽ tranh?",
+          "choices": [
+            "bút màu",
+            "tô màu",
+            "rực rỡ"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which word names a thing you use to draw pictures?",
+            "choices": [
+              "bút màu (crayons)",
+              "tô màu (colour in)",
+              "rực rỡ (bright)"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Khỉ Cầu Trượt guards the playground and slides five riddles about loving school, sentences and spelling down to {name}.",
+        "hook": [
+          "Wheee! I'm Khỉ Cầu Trượt, and I slid down just as {name} walked by.",
+          "Five riddles, one slide each. Answer them all and the whole playground is yours!"
+        ],
+        "choice": "Slide away, I'll catch them all!",
+        "intro": "One, two, three, wheee… the first riddle slides down!",
+        "win": "I landed head over heels! {name} is so clever, the whole playground is clapping.",
+        "right": [
+          "Wheee, right on target!",
+          "Right, I'm hanging upside down from the bar in awe.",
+          "That answer is as smooth as a brand-new slide!"
+        ],
+        "wrong": [
+          "Oops, I slid off into the sand, climb up and try again.",
+          "Not that one, read the question again.",
+          "So close, swing one more time!"
+        ],
+        "reward": "Khỉ Cầu Trượt gives {name} a slide badge. The playground always saves you a turn.",
+        "next": "All four zone guardians beaten, {name}: go and meet Voi Tính Nhẩm at the school's last stop."
+      }
+    }
+  ]
+}

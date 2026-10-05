@@ -1,0 +1,267 @@
+{
+  "id": "ward-nong-trai-chan-nuoi",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Trùm canh khu: Heo Hồng Chăn Đàn",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Heo Hồng Chăn Đàn canh khu chăn nuôi, đố {name} bốn câu trừ có nhớ với đàn gà, đàn vịt.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Heo Hồng Chăn Đàn",
+    "where": "Khu chăn nuôi",
+    "goal": "Thắng trận đố của Heo Hồng Chăn Đàn",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Heo Hồng Chăn Đàn vơi bớt sức",
+    "learn": "Phép trừ có nhớ trong phạm vi 100, so sánh hiệu với một số, tìm số chưa biết",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Ra vườn cây ăn quả đi {name}, trùm canh khu cuối cùng của trại đang hái cam chờ cậu."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Heo Hồng Chăn Đàn",
+      "kind": "dialogue",
+      "target": "heo-hong-chan-dan",
+      "lines": [
+        {
+          "speaker": "Heo Hồng Chăn Đàn",
+          "text": "Ủn ỉn, chào {name}! Ta là Heo Hồng Chăn Đàn, gà vịt trong trại đều nghe ta gọi về chuồng."
+        },
+        {
+          "speaker": "Heo Hồng Chăn Đàn",
+          "text": "Hôm nay ta cho đàn đi dạo và mang theo bốn câu đố trừ. Cậu đếm cùng ta nhé!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đếm đàn cùng Heo nào!"
+        }
+      ],
+      "en": {
+        "title": "Meet Heo Hồng Chăn Đàn",
+        "lines": [
+          "Oink oink, hello {name}! I'm Heo Hồng Chăn Đàn, and every hen and duck on the farm comes when I call.",
+          "Today I'm taking the flock for a walk with four take-away riddles. Count with me!"
+        ],
+        "choices": [
+          {
+            "text": "Let's count the flock!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Heo Hồng Chăn Đàn",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "heo-hong-chan-dan",
+      "bossId": "heo-hong-chan-dan",
+      "bossName": "Heo Hồng Chăn Đàn",
+      "introDialogue": "Đàn gà ra sân rồi, câu đố thứ nhất cục tác đây!",
+      "winDialogue": "Ủn ỉn, ta chịu thua! {name} chăn đàn bằng phép trừ còn giỏi hơn ta.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "ga-ra-san",
+          "prompt": "Chuồng có 42 con gà, 8 con chạy ra sân. Trong chuồng còn mấy con gà?",
+          "skill": "phep-tru",
+          "choices": [
+            {
+              "id": "a",
+              "text": "34"
+            },
+            {
+              "id": "b",
+              "text": "44"
+            },
+            {
+              "id": "c",
+              "text": "50"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "There are 42 hens in the coop and 8 run out into the yard. How many are still in the coop?",
+            "choices": [
+              "34",
+              "44",
+              "50"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "vit-xuong-ao",
+          "prompt": "Đàn vịt có 71 con, 36 con xuống ao bơi. Trên bờ còn bao nhiêu con vịt?",
+          "skill": "phep-tru",
+          "choices": [
+            {
+              "id": "a",
+              "text": "35"
+            },
+            {
+              "id": "b",
+              "text": "45"
+            },
+            {
+              "id": "c",
+              "text": "107"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "A flock of 71 ducks: 36 go swimming in the pond. How many ducks are left on the bank?",
+            "choices": [
+              "35",
+              "45",
+              "107"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "so-hieu",
+          "prompt": "Heo so sánh 63 − 9 với 50. Điền dấu vào 63 − 9 … 50.",
+          "skill": "so-sanh-so",
+          "choices": [
+            {
+              "id": "a",
+              "text": "<"
+            },
+            {
+              "id": "b",
+              "text": ">"
+            },
+            {
+              "id": "c",
+              "text": "="
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Heo compares 63 − 9 with 50. Which sign goes in 63 − 9 … 50?",
+            "choices": [
+              "<",
+              ">",
+              "="
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        },
+        {
+          "id": "so-tru-thieu",
+          "prompt": "Số nào điền vào chỗ trống để có 80 − … = 52?",
+          "skill": "phep-tru",
+          "choices": [
+            {
+              "id": "a",
+              "text": "28"
+            },
+            {
+              "id": "b",
+              "text": "32"
+            },
+            {
+              "id": "c",
+              "text": "38"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which number goes in the gap: 80 − … = 52?",
+            "choices": [
+              "28",
+              "32",
+              "38"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Ủn ỉn, trừ đúng rồi!",
+          "Hay quá, đàn vịt quạc quạc khen cậu.",
+          "Chuẩn rồi, không con nào đi lạc!"
+        ],
+        "wrong": [
+          "Lạc mất một con rồi, đếm lại nhé.",
+          "Chưa đúng, nhớ mượn một chục khi trừ xem.",
+          "Suýt đúng rồi, thử cộng ngược lại để kiểm tra."
+        ],
+        "en": {
+          "right": [
+            "Oink, taken away right!",
+            "Brilliant, the ducks are quacking for you.",
+            "Spot on, not one animal got lost!"
+          ],
+          "wrong": [
+            "One wandered off, count again.",
+            "Not right, remember to borrow a ten.",
+            "Nearly right, add back to check."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Heo Hồng Chăn Đàn",
+        "bossName": "Heo Hồng Chăn Đàn",
+        "introDialogue": "The hens are out in the yard: cluck, here's the first riddle!",
+        "winDialogue": "Oink, I give up! {name} herds with take-aways better than I do."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Heo Hồng Chăn Đàn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Heo Hồng Chăn Đàn tặng {name} chiếc còi chăn đàn bằng tre, thổi lên là gà vịt kéo về.",
+      "en": {
+        "title": "Heo Hồng Chăn Đàn's gift",
+        "text": "Heo Hồng Chăn Đàn gives {name} a bamboo herding whistle: blow it and the hens and ducks come home."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Heo Hồng Chăn Đàn",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ra vườn cây ăn quả đi {name}, trùm canh khu cuối cùng của trại đang hái cam chờ cậu.",
+      "en": {
+        "title": "Goodbye, Heo Hồng Chăn Đàn",
+        "text": "Head to the orchard, {name}: the farm's last zone guardian is picking oranges and waiting for you."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "phep-tru": 1,
+      "so-sanh-so": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Heo Hồng Chăn Đàn",
+    "summary": "Heo Hồng Chăn Đàn guards the livestock area and asks {name} four take-away-with-exchanging riddles about hens and ducks."
+  }
+}

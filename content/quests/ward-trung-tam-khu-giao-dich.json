@@ -1,0 +1,269 @@
+{
+  "id": "ward-trung-tam-khu-giao-dich",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Trùm canh khu: Heo Thu Ngân",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Heo Thu Ngân canh khu giao dịch, đố {name} bốn câu tính tiền hàng, so sánh số và một từ tiếng Anh.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Heo Thu Ngân",
+    "where": "Khu giao dịch và cửa hàng",
+    "goal": "Thắng trận đố của Heo Thu Ngân",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Heo Thu Ngân vơi bớt sức",
+    "learn": "Cộng và trừ trong phạm vi 100, so sánh số, từ tiếng Anh về đồ ăn",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Ở khu sự kiện theo mùa, một trùm canh khu đang treo đèn lồng chờ {name}."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Heo Thu Ngân",
+      "kind": "dialogue",
+      "target": "heo-thu-ngan",
+      "lines": [
+        {
+          "speaker": "Heo Thu Ngân",
+          "text": "Leng keng! Heo Thu Ngân đây, quầy của ta đông khách nhất khu giao dịch, {name} ạ."
+        },
+        {
+          "speaker": "Heo Thu Ngân",
+          "text": "Hôm nay ta mời khách một trận đố vui bốn câu. Ai thắng được ta tặng quà nhé!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ là khách đầu tiên!"
+        }
+      ],
+      "en": {
+        "title": "Meet Heo Thu Ngân",
+        "lines": [
+          "Ka-ching! Heo Thu Ngân here, my counter is the busiest on the trading street, {name}.",
+          "Today I'm treating customers to a four-riddle quiz. Whoever beats me gets a present!"
+        ],
+        "choices": [
+          {
+            "text": "I'm your first customer!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Heo Thu Ngân",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "heo-thu-ngan",
+      "bossId": "heo-thu-ngan",
+      "bossName": "Heo Thu Ngân",
+      "introDialogue": "Ngăn kéo tiền mở ra, câu đố đầu tiên ở trong đó!",
+      "winDialogue": "Ủn ỉn, ta tính thua cậu rồi! {name} tính nhanh hơn cả máy thu ngân.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "ban-keo",
+          "prompt": "Heo bán 36 cái kẹo buổi sáng và 42 cái buổi chiều. Cả ngày Heo bán bao nhiêu cái kẹo?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "78"
+            },
+            {
+              "id": "b",
+              "text": "68"
+            },
+            {
+              "id": "c",
+              "text": "88"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Heo sells 36 sweets in the morning and 42 in the afternoon. How many sweets in the whole day?",
+            "choices": [
+              "78",
+              "68",
+              "88"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "con-bong",
+          "prompt": "Cửa hàng có 89 quả bóng bay, đã bán 35 quả. Cửa hàng còn lại bao nhiêu quả?",
+          "skill": "phep-tru",
+          "choices": [
+            {
+              "id": "a",
+              "text": "54"
+            },
+            {
+              "id": "b",
+              "text": "64"
+            },
+            {
+              "id": "c",
+              "text": "124"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The shop has 89 balloons and has sold 35. How many balloons are left?",
+            "choices": [
+              "54",
+              "64",
+              "124"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "dau-47-74",
+          "prompt": "Heo dán hai giá trên kệ: 47 và 74. Điền dấu vào 47 … 74.",
+          "skill": "so-sanh-so",
+          "choices": [
+            {
+              "id": "a",
+              "text": "<"
+            },
+            {
+              "id": "b",
+              "text": ">"
+            },
+            {
+              "id": "c",
+              "text": "="
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Heo puts two prices on the shelf, 47 and 74. Which sign goes in 47 … 74?",
+            "choices": [
+              "<",
+              ">",
+              "="
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "apple",
+          "prompt": "Một vị khách hỏi mua «apple». Khách muốn mua quả gì?",
+          "skill": "tu-vung",
+          "choices": [
+            {
+              "id": "a",
+              "text": "quả táo"
+            },
+            {
+              "id": "b",
+              "text": "quả chuối"
+            },
+            {
+              "id": "c",
+              "text": "quả cam"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "A customer asks for an «apple». Which fruit is that in Vietnamese?",
+            "choices": [
+              "quả táo",
+              "quả chuối",
+              "quả cam"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Leng keng, cộng đúng rồi!",
+          "Chuẩn từng con số, ta nể cậu đấy.",
+          "Ủn ỉn, câu này cậu tính như chớp!"
+        ],
+        "wrong": [
+          "Ối, lệch sổ rồi, tính lại nhé.",
+          "Chưa khớp đâu, cộng lại từ hàng đơn vị xem.",
+          "Gần đúng rồi, kiểm lại một lần nữa nào."
+        ],
+        "en": {
+          "right": [
+            "Ka-ching, added up right!",
+            "Every number spot on, I'm impressed.",
+            "Oink, you worked that out in a flash!"
+          ],
+          "wrong": [
+            "Oops, the books don't balance, work it out again.",
+            "That doesn't add up, start again from the ones.",
+            "Nearly right, check it once more."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Heo Thu Ngân",
+        "bossName": "Heo Thu Ngân",
+        "introDialogue": "The cash drawer slides open, and the first riddle is inside!",
+        "winDialogue": "Oink, you out-counted me! {name} adds faster than a till."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Heo Thu Ngân",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Heo Thu Ngân tặng {name} một con heo đất nhỏ xinh để để dành Xu, lúc nào rảnh ghé quầy đấu lại.",
+      "en": {
+        "title": "Heo Thu Ngân's gift",
+        "text": "Heo Thu Ngân gives {name} a cute little piggy bank for saving coins. Drop by the counter to battle again."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Heo Thu Ngân",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ở khu sự kiện theo mùa, một trùm canh khu đang treo đèn lồng chờ {name}.",
+      "en": {
+        "title": "Goodbye, Heo Thu Ngân",
+        "text": "At the seasonal events area a zone guardian is hanging up lanterns, waiting for {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "phep-cong": 1,
+      "phep-tru": 1,
+      "so-sanh-so": 1,
+      "tu-vung": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Heo Thu Ngân",
+    "summary": "Heo Thu Ngân guards the trading street and asks {name} four riddles about shop sums, comparing numbers and one English word."
+  }
+}

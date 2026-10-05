@@ -1,0 +1,300 @@
+{
+  "id": "ward-nong-trai-vuon-qua",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Trùm canh khu: Khỉ Vườn Cam",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Khỉ Vườn Cam canh vườn cây ăn quả, đố {name} năm câu về cộng trừ có nhớ và suy luận.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Khỉ Vườn Cam",
+    "where": "Vườn cây ăn quả",
+    "goal": "Thắng trận đố của Khỉ Vườn Cam",
+    "play": "Trả lời 5 câu đố, mỗi câu đúng làm Khỉ Vườn Cam vơi bớt sức",
+    "learn": "Cộng, trừ có nhớ trong phạm vi 100, bài toán ít hơn, đếm chân con vật, dãy số",
+    "reward": "50 XP, 12 Xu mỗi lần thắng",
+    "next": "Thắng cả ba trùm canh khu rồi, {name} ra chặng cuối đấu với Gà Trống Choai Khổng Lồ nhé."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Khỉ Vườn Cam",
+      "kind": "dialogue",
+      "target": "khi-vuon-cam",
+      "lines": [
+        {
+          "speaker": "Khỉ Vườn Cam",
+          "text": "Chít chít! {name} ơi, nhìn lên đây! Ta là Khỉ Vườn Cam, cây cam nào chín ta biết trước tiên."
+        },
+        {
+          "speaker": "Khỉ Vườn Cam",
+          "text": "Ta treo năm câu đố trên năm cành cam. Hái đúng hết là cả rổ cam ngọt thuộc về cậu!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Hái cam thôi nào!"
+        }
+      ],
+      "en": {
+        "title": "Meet Khỉ Vườn Cam",
+        "lines": [
+          "Chee chee! {name}, look up here! I'm Khỉ Vườn Cam, and I always know first when an orange is ripe.",
+          "I've hung five riddles on five orange branches. Pick them all right and a whole basket of sweet oranges is yours!"
+        ],
+        "choices": [
+          {
+            "text": "Let's pick oranges!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Khỉ Vườn Cam",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "khi-vuon-cam",
+      "bossId": "khi-vuon-cam",
+      "bossName": "Khỉ Vườn Cam",
+      "introDialogue": "Cành cam thứ nhất rung rinh, câu đố rơi xuống đây!",
+      "winDialogue": "Chít chít, ta tụt xuống đất chịu thua! Rổ cam ngọt này là của {name}.",
+      "maxHp": 500,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "buoi-it-hon",
+          "prompt": "Cây cam có 45 quả, cây bưởi có ít hơn cây cam 18 quả. Cây bưởi có bao nhiêu quả?",
+          "skill": "bai-toan-loi-van",
+          "choices": [
+            {
+              "id": "a",
+              "text": "27"
+            },
+            {
+              "id": "b",
+              "text": "63"
+            },
+            {
+              "id": "c",
+              "text": "37"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The orange tree has 45 fruits and the pomelo tree has 18 fewer. How many fruits on the pomelo tree?",
+            "choices": [
+              "27",
+              "63",
+              "37"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "hai-lan",
+          "prompt": "Khỉ hái 29 quả cam rồi hái thêm 29 quả nữa. Khỉ hái tất cả bao nhiêu quả?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "58"
+            },
+            {
+              "id": "b",
+              "text": "48"
+            },
+            {
+              "id": "c",
+              "text": "59"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Khỉ picks 29 oranges and then 29 more. How many oranges in all?",
+            "choices": [
+              "58",
+              "48",
+              "59"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "chan-ga",
+          "prompt": "Mỗi con gà có 2 chân. Ba con gà đứng dưới gốc cam có tất cả mấy chân?",
+          "skill": "logic",
+          "choices": [
+            {
+              "id": "a",
+              "text": "6"
+            },
+            {
+              "id": "b",
+              "text": "5"
+            },
+            {
+              "id": "c",
+              "text": "8"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Each hen has 2 legs. How many legs do three hens under the orange tree have?",
+            "choices": [
+              "6",
+              "5",
+              "8"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "ro-trung",
+          "prompt": "Rổ có 90 quả trứng, đã bán 47 quả. Rổ còn lại bao nhiêu quả trứng?",
+          "skill": "phep-tru",
+          "choices": [
+            {
+              "id": "a",
+              "text": "43"
+            },
+            {
+              "id": "b",
+              "text": "53"
+            },
+            {
+              "id": "c",
+              "text": "137"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "A basket holds 90 eggs and 47 are sold. How many eggs are left?",
+            "choices": [
+              "43",
+              "53",
+              "137"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "day-cay",
+          "prompt": "Số trên các hàng cây: 12, 22, 32, 42, … Hàng tiếp theo mang số mấy?",
+          "skill": "logic",
+          "choices": [
+            {
+              "id": "a",
+              "text": "52"
+            },
+            {
+              "id": "b",
+              "text": "43"
+            },
+            {
+              "id": "c",
+              "text": "62"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The tree rows are numbered 12, 22, 32, 42, … What number is the next row?",
+            "choices": [
+              "52",
+              "43",
+              "62"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Chít chít, ngọt như cam chín!",
+          "Đúng rồi, ta đu cành ăn mừng đây!",
+          "Câu trả lời vàng ươm như quả cam!"
+        ],
+        "wrong": [
+          "Hái nhầm quả xanh rồi, chọn lại nhé.",
+          "Chưa đúng, đọc lại đề xem ai nhiều, ai ít.",
+          "Gần đúng rồi, tính thêm một lần nữa nào!"
+        ],
+        "en": {
+          "right": [
+            "Chee chee, sweet as a ripe orange!",
+            "Right, I'm swinging on a branch to celebrate!",
+            "That answer is as golden as an orange!"
+          ],
+          "wrong": [
+            "That one was still green, choose again.",
+            "Not right, read again who has more and who has fewer.",
+            "Nearly right, work it out once more!"
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Khỉ Vườn Cam",
+        "bossName": "Khỉ Vườn Cam",
+        "introDialogue": "The first branch shakes, and down drops a riddle!",
+        "winDialogue": "Chee chee, I climb down and give up! This basket of sweet oranges is {name}'s."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Khỉ Vườn Cam",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khỉ Vườn Cam tặng {name} một rổ cam ngọt lịm, chia cho cả nhà cùng ăn nhé.",
+      "en": {
+        "title": "Khỉ Vườn Cam's gift",
+        "text": "Khỉ Vườn Cam gives {name} a basket of super-sweet oranges to share with the family."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Khỉ Vườn Cam",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Thắng cả ba trùm canh khu rồi, {name} ra chặng cuối đấu với Gà Trống Choai Khổng Lồ nhé.",
+      "en": {
+        "title": "Goodbye, Khỉ Vườn Cam",
+        "text": "All three zone guardians beaten, {name}: head to the last stop and battle the Giant Cockerel."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 50,
+    "coin": 12,
+    "skillXp": {
+      "bai-toan-loi-van": 1,
+      "phep-cong": 1,
+      "logic": 1,
+      "phep-tru": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Khỉ Vườn Cam",
+    "summary": "Khỉ Vườn Cam guards the orchard and asks {name} five riddles about carrying sums, take-aways and reasoning."
+  }
+}

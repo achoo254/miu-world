@@ -1,0 +1,301 @@
+{
+  "id": "ward-trung-tam-san-truoc",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Trùm canh khu: Voi Gác Sân Trước",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Voi Gác Sân Trước giữ sân trước lâu đài, đố {name} năm câu về phép trừ, giờ giấc, số và biển báo.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Voi Gác Sân Trước",
+    "where": "Sân trước lâu đài",
+    "goal": "Thắng trận đố của Voi Gác Sân Trước",
+    "play": "Trả lời 5 câu đố, mỗi câu đúng làm Voi Gác Sân Trước vơi bớt sức",
+    "learn": "Phép trừ trong phạm vi 20, xem đồng hồ, so sánh số, từ tiếng Anh, đọc hiểu biển báo",
+    "reward": "50 XP, 12 Xu mỗi lần thắng",
+    "next": "Thắng hết bốn trùm canh khu rồi thì {name} ghé chặng cuối gặp Cáo Ảo Thuật nhé."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Voi Gác Sân Trước",
+      "kind": "dialogue",
+      "target": "voi-gac-san-truoc",
+      "lines": [
+        {
+          "speaker": "Voi Gác Sân Trước",
+          "text": "Hự! Voi Gác Sân Trước đây. Muốn qua sân này, {name} phải trả lời năm câu đố của ta."
+        },
+        {
+          "speaker": "Voi Gác Sân Trước",
+          "text": "Đừng lo, vòi ta chỉ dùng để phun nước tưới hoa thôi. Sẵn sàng chưa?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Sẵn sàng, Voi ơi!"
+        }
+      ],
+      "en": {
+        "title": "Meet Voi Gác Sân Trước",
+        "lines": [
+          "Hup! Voi Gác Sân Trước here. To cross this forecourt, {name} must answer my five riddles.",
+          "Don't worry, I only use my trunk to water the flowers. Ready?"
+        ],
+        "choices": [
+          {
+            "text": "Ready, Voi!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Voi Gác Sân Trước",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "voi-gac-san-truoc",
+      "bossId": "voi-gac-san-truoc",
+      "bossName": "Voi Gác Sân Trước",
+      "introDialogue": "Vòi ta giơ cao rồi, câu đố thứ nhất phun ra đây!",
+      "winDialogue": "Ta quỳ một chân chào thua! {name} xứng đáng đi qua sân trước rồi.",
+      "maxHp": 500,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "tru-chuoi",
+          "prompt": "Voi có 15 quả chuối, đem cho bạn 7 quả. Voi còn lại mấy quả chuối?",
+          "skill": "phep-tru",
+          "choices": [
+            {
+              "id": "a",
+              "text": "8"
+            },
+            {
+              "id": "b",
+              "text": "9"
+            },
+            {
+              "id": "c",
+              "text": "22"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Voi has 15 bananas and gives 7 to a friend. How many bananas are left?",
+            "choices": [
+              "8",
+              "9",
+              "22"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "ruoi",
+          "prompt": "Đồng hồ sân trước chỉ 7 giờ 30 phút. Ta còn gọi giờ đó là gì?",
+          "skill": "xem-dong-ho",
+          "choices": [
+            {
+              "id": "a",
+              "text": "7 giờ rưỡi"
+            },
+            {
+              "id": "b",
+              "text": "7 giờ kém"
+            },
+            {
+              "id": "c",
+              "text": "8 giờ rưỡi"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The forecourt clock says 7:30. What else do we call that time?",
+            "choices": [
+              "half past seven",
+              "nearly seven",
+              "half past eight"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "so-be",
+          "prompt": "Ba bậc đá ghi số 51, 15 và 50. Bậc ghi số bé nhất là số mấy?",
+          "skill": "so-sanh-so",
+          "choices": [
+            {
+              "id": "a",
+              "text": "15"
+            },
+            {
+              "id": "b",
+              "text": "50"
+            },
+            {
+              "id": "c",
+              "text": "51"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Three stone steps are numbered 51, 15 and 50. Which is the smallest number?",
+            "choices": [
+              "15",
+              "50",
+              "51"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "castle",
+          "prompt": "Voi chỉ tay về phía tòa tháp và nói «castle». «Castle» nghĩa là gì?",
+          "skill": "tu-vung",
+          "choices": [
+            {
+              "id": "a",
+              "text": "lâu đài"
+            },
+            {
+              "id": "b",
+              "text": "cây cầu"
+            },
+            {
+              "id": "c",
+              "text": "con thuyền"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Voi points at the towers and says «castle». What is «castle» in Vietnamese?",
+            "choices": [
+              "lâu đài",
+              "cây cầu",
+              "con thuyền"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "bien-cong",
+          "prompt": "Biển ghi: «Cổng mở từ 7 giờ sáng đến 5 giờ chiều». Lúc 6 giờ chiều cổng thế nào?",
+          "skill": "doc-hieu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "đã đóng"
+            },
+            {
+              "id": "b",
+              "text": "đang mở"
+            },
+            {
+              "id": "c",
+              "text": "mới mở"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The sign says: «Gate open from 7 a.m. to 5 p.m.». What about the gate at 6 p.m.?",
+            "choices": [
+              "already closed",
+              "open",
+              "just opened"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Tốt lắm, vòi ta phun nước mừng cậu!",
+          "Đúng rồi, đất dưới chân ta rung lên vì phục!",
+          "Câu này cậu đáp chắc như cột đá!"
+        ],
+        "wrong": [
+          "Chưa qua được đâu, thử lại nhé.",
+          "Ta lắc tai rồi, cậu nghĩ thêm chút xem.",
+          "Gần đúng rồi, đọc lại câu hỏi nào."
+        ],
+        "en": {
+          "right": [
+            "Well done, my trunk sprays water to cheer you!",
+            "Right, the ground under my feet is trembling with respect!",
+            "You answered that as firmly as a stone pillar!"
+          ],
+          "wrong": [
+            "You can't pass yet, try again.",
+            "I'm flapping my ears, think a bit more.",
+            "Nearly right, read the question again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Voi Gác Sân Trước",
+        "bossName": "Voi Gác Sân Trước",
+        "introDialogue": "My trunk is up: here sprays the first riddle!",
+        "winDialogue": "I kneel on one knee and give up! {name} has earned the way across the forecourt."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Voi Gác Sân Trước",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Voi Gác Sân Trước phun một cầu vồng nước nhỏ tặng {name} và hẹn đấu lại vào lúc khác.",
+      "en": {
+        "title": "Voi Gác Sân Trước's gift",
+        "text": "Voi Gác Sân Trước sprays a little water rainbow for {name} and hopes to battle again another time."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Voi Gác Sân Trước",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Thắng hết bốn trùm canh khu rồi thì {name} ghé chặng cuối gặp Cáo Ảo Thuật nhé.",
+      "en": {
+        "title": "Goodbye, Voi Gác Sân Trước",
+        "text": "Beaten all four zone guardians? Then visit the Magician Fox at the last stop, {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 50,
+    "coin": 12,
+    "skillXp": {
+      "phep-tru": 1,
+      "xem-dong-ho": 1,
+      "so-sanh-so": 1,
+      "tu-vung": 1,
+      "doc-hieu": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Voi Gác Sân Trước",
+    "summary": "Voi Gác Sân Trước guards the castle forecourt and asks {name} five riddles about take-aways, time, numbers and signs."
+  }
+}

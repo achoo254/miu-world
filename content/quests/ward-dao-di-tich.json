@@ -1,0 +1,300 @@
+{
+  "id": "ward-dao-di-tich",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Trùm canh khu: Voi Đá Đền Cổ",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Voi Đá Đền Cổ canh cổng di tích cổ, đố {name} năm câu khắc trên những cột đá.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Voi Đá Đền Cổ",
+    "where": "Khu di tích cổ và đền thờ",
+    "goal": "Thắng trận đố của Voi Đá Đền Cổ",
+    "play": "Trả lời 5 câu đố, mỗi câu đúng làm Voi Đá Đền Cổ vơi bớt sức",
+    "learn": "So sánh số, phép cộng trong phạm vi 100 và 20, đọc hiểu lời khắc, số liền sau",
+    "reward": "50 XP, 12 Xu mỗi lần thắng",
+    "next": "Đã gặp ba trùm canh khu, {name} ra bãi biển đấu với Cua Biển Khổng Lồ ở chặng cuối nhé."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Voi Đá Đền Cổ",
+      "kind": "dialogue",
+      "target": "voi-da-den-co",
+      "lines": [
+        {
+          "speaker": "Voi Đá Đền Cổ",
+          "text": "Rầm… rầm… ta là Voi Đá Đền Cổ, ta đứng canh cổng di tích này lâu lắm rồi, {name} ạ."
+        },
+        {
+          "speaker": "Voi Đá Đền Cổ",
+          "text": "Trên năm cột đá có năm câu đố cổ. Giải được hết thì cổng di tích mở chào cậu."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ giải được hết!"
+        }
+      ],
+      "en": {
+        "title": "Meet Voi Đá Đền Cổ",
+        "lines": [
+          "Rumble… rumble… I'm Voi Đá Đền Cổ, and I've guarded these ruins for a very long time, {name}.",
+          "Five pillars hold five ancient riddles. Solve them all and the ruins' gate will open for you."
+        ],
+        "choices": [
+          {
+            "text": "I can solve them all!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Voi Đá Đền Cổ",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "voi-da-den-co",
+      "bossId": "voi-da-den-co",
+      "bossName": "Voi Đá Đền Cổ",
+      "introDialogue": "Rêu trên cột đá thứ nhất rơi xuống, câu đố hiện ra!",
+      "winDialogue": "Rầm, ta quỳ xuống chịu thua! {name} xứng đáng là người bạn của di tích cổ.",
+      "maxHp": 500,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "cot-lon-nhat",
+          "prompt": "Ba cột đá ghi số 71, 17 và 70. Cột ghi số lớn nhất là số mấy?",
+          "skill": "so-sanh-so",
+          "choices": [
+            {
+              "id": "a",
+              "text": "71"
+            },
+            {
+              "id": "b",
+              "text": "70"
+            },
+            {
+              "id": "c",
+              "text": "17"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Three stone pillars say 71, 17 and 70. Which is the biggest number?",
+            "choices": [
+              "71",
+              "70",
+              "17"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "bac-den",
+          "prompt": "Đền có 52 bậc đá ở dưới và 36 bậc ở trên. Đền có tất cả bao nhiêu bậc?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "88"
+            },
+            {
+              "id": "b",
+              "text": "78"
+            },
+            {
+              "id": "c",
+              "text": "16"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The temple has 52 stone steps below and 36 above. How many steps in all?",
+            "choices": [
+              "88",
+              "78",
+              "16"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "loi-khac",
+          "prompt": "Bia đá khắc: «Ai giữ gìn di tích là bạn của ngôi đền». Lời khắc khuyên điều gì?",
+          "skill": "doc-hieu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "giữ gìn di tích"
+            },
+            {
+              "id": "b",
+              "text": "vẽ lên tường đền"
+            },
+            {
+              "id": "c",
+              "text": "mang đá về nhà"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The stone tablet says: «Whoever looks after the ruins is a friend of the temple». What does it ask us to do?",
+            "choices": [
+              "look after the ruins",
+              "draw on the temple walls",
+              "take stones home"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "ngoc-do-xanh",
+          "prompt": "Voi Đá xếp 6 viên ngọc đỏ và 8 viên ngọc xanh. Có tất cả mấy viên ngọc?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "14"
+            },
+            {
+              "id": "b",
+              "text": "13"
+            },
+            {
+              "id": "c",
+              "text": "2"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Voi Đá lines up 6 red gems and 8 blue gems. How many gems in all?",
+            "choices": [
+              "14",
+              "13",
+              "2"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "lien-sau-89",
+          "prompt": "Cột đá cuối cùng hỏi: số liền sau của 89 là số nào?",
+          "skill": "so-den-100",
+          "choices": [
+            {
+              "id": "a",
+              "text": "90"
+            },
+            {
+              "id": "b",
+              "text": "88"
+            },
+            {
+              "id": "c",
+              "text": "99"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The last pillar asks: which number comes right after 89?",
+            "choices": [
+              "90",
+              "88",
+              "99"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Rầm, cột đá sáng lên rồi!",
+          "Đúng rồi, câu đố cổ cũng phải chịu cậu.",
+          "Hay quá, chim trên mái đền hót vang mừng cậu!"
+        ],
+        "wrong": [
+          "Cột đá chưa sáng, thử lại nhé.",
+          "Chưa đúng, đọc kĩ lời khắc trên đá xem.",
+          "Gần đúng rồi, so lại từng chữ số nào."
+        ],
+        "en": {
+          "right": [
+            "Rumble, the pillar is glowing!",
+            "Right, even the ancient riddle gives in to you.",
+            "Brilliant, the birds on the temple roof sing for you!"
+          ],
+          "wrong": [
+            "The pillar isn't glowing yet, try again.",
+            "Not right, read the carving carefully.",
+            "Nearly right, compare each digit again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Voi Đá Đền Cổ",
+        "bossName": "Voi Đá Đền Cổ",
+        "introDialogue": "Moss falls from the first pillar, and a riddle appears!",
+        "winDialogue": "Rumble, I kneel and give up! {name} is a true friend of the ancient ruins."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Voi Đá Đền Cổ",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Voi Đá Đền Cổ tặng {name} một viên ngọc đá cuội khắc hình voi, mang theo là gặp may.",
+      "en": {
+        "title": "Voi Đá Đền Cổ's gift",
+        "text": "Voi Đá Đền Cổ gives {name} a pebble carved with an elephant: carry it for luck."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Voi Đá Đền Cổ",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đã gặp ba trùm canh khu, {name} ra bãi biển đấu với Cua Biển Khổng Lồ ở chặng cuối nhé.",
+      "en": {
+        "title": "Goodbye, Voi Đá Đền Cổ",
+        "text": "Three zone guardians met, {name}: go to the beach and battle the Giant Sea Crab at the last stop."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 50,
+    "coin": 12,
+    "skillXp": {
+      "so-sanh-so": 1,
+      "phep-cong": 1,
+      "doc-hieu": 1,
+      "so-den-100": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Voi Đá Đền Cổ",
+    "summary": "Voi Đá Đền Cổ guards the gate of the ancient ruins and asks {name} five riddles carved on the stone pillars."
+  }
+}

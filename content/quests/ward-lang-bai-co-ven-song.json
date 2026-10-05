@@ -1,0 +1,268 @@
+{
+  "id": "ward-lang-bai-co-ven-song",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Trùm canh khu: Thỏ Ngọc Bãi Sông",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Thỏ Ngọc Bãi Sông canh bãi cỏ ven sông, thách {name} bốn câu đố về từ ngữ, câu và bảng chữ cái.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Thỏ Ngọc Bãi Sông",
+    "where": "Bãi cỏ ven sông",
+    "goal": "Thắng trận đố của Thỏ Ngọc Bãi Sông",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Thỏ Ngọc Bãi Sông vơi bớt sức",
+    "learn": "Từ chỉ người và hoạt động, câu thể hiện sự ngạc nhiên, câu nêu hoạt động, bảng chữ cái",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Xuôi xuống bến sông, có một trùm canh khu đang ngồi đợi bạn đố chữ."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Thỏ Ngọc Bãi Sông",
+      "kind": "dialogue",
+      "target": "tho-ngoc-bai-song",
+      "lines": [
+        {
+          "speaker": "Thỏ Ngọc Bãi Sông",
+          "text": "Ơ kìa, {name}! Tớ là Thỏ Ngọc Bãi Sông, tớ đang đếm từng ngọn cỏ ven sông đây."
+        },
+        {
+          "speaker": "Thỏ Ngọc Bãi Sông",
+          "text": "Đếm mãi cũng chán, mình đố nhau bốn câu cho vui nhé?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đố vui thôi nào!"
+        }
+      ],
+      "en": {
+        "title": "Meet Thỏ Ngọc Bãi Sông",
+        "lines": [
+          "Oh look, {name}! I'm Thỏ Ngọc Bãi Sông, and I'm counting every blade of grass by the river.",
+          "Counting gets boring, so shall we swap four riddles for fun?"
+        ],
+        "choices": [
+          {
+            "text": "Riddles for fun!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Thỏ Ngọc Bãi Sông",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "tho-ngoc-bai-song",
+      "bossId": "tho-ngoc-bai-song",
+      "bossName": "Thỏ Ngọc Bãi Sông",
+      "introDialogue": "Tai tớ dựng lên rồi, câu đố đầu tiên nhảy ra đây!",
+      "winDialogue": "Tớ chịu thua rồi! {name} còn nhanh hơn cả thỏ.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "tu-chi-nguoi",
+          "prompt": "Thỏ Ngọc hỏi: trong ba từ sau, từ nào chỉ người?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "bác nông dân"
+            },
+            {
+              "id": "b",
+              "text": "cánh diều"
+            },
+            {
+              "id": "c",
+              "text": "bãi cỏ"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Thỏ Ngọc asks: which of these words names a person?",
+            "choices": [
+              "bác nông dân (the farmer)",
+              "cánh diều (the kite)",
+              "bãi cỏ (the meadow)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "ngac-nhien",
+          "prompt": "Sau cơn mưa trên bãi cỏ, câu nào thể hiện sự ngạc nhiên?",
+          "skill": "cau",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Ôi, cầu vồng đẹp quá!"
+            },
+            {
+              "id": "b",
+              "text": "Cầu vồng có bảy màu."
+            },
+            {
+              "id": "c",
+              "text": "Cầu vồng ở phía nào?"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "After the rain on the meadow, which sentence shows surprise?",
+            "choices": [
+              "Ôi, cầu vồng đẹp quá! (Oh, what a lovely rainbow!)",
+              "Cầu vồng có bảy màu. (A rainbow has seven colours.)",
+              "Cầu vồng ở phía nào? (Where is the rainbow?)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "sau-chu-l",
+          "prompt": "Trong bảng chữ cái, chữ nào đứng ngay sau chữ L?",
+          "skill": "bang-chu-cai",
+          "choices": [
+            {
+              "id": "a",
+              "text": "M"
+            },
+            {
+              "id": "b",
+              "text": "N"
+            },
+            {
+              "id": "c",
+              "text": "K"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "In the Vietnamese alphabet, which letter comes right after L?",
+            "choices": [
+              "M",
+              "N",
+              "K"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "cau-hoat-dong",
+          "prompt": "Câu nào nêu một hoạt động diễn ra trên bãi cỏ?",
+          "skill": "cau",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Đàn vịt lạch bạch xuống sông."
+            },
+            {
+              "id": "b",
+              "text": "Đàn vịt trắng muốt."
+            },
+            {
+              "id": "c",
+              "text": "Đàn vịt của bà."
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which sentence tells about something happening on the meadow (an action)?",
+            "choices": [
+              "Đàn vịt lạch bạch xuống sông. (The ducks waddle into the river.)",
+              "Đàn vịt trắng muốt. (The ducks are snow-white.)",
+              "Đàn vịt của bà. (Grandma's ducks.)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Tuyệt, tai tớ cụp xuống một bên rồi!",
+          "Nhanh như thỏ luôn, đúng quá đi!",
+          "Câu này cậu trả lời ngon như cà rốt."
+        ],
+        "wrong": [
+          "Nhảy lệch một chút rồi, chọn lại nhé.",
+          "Chưa đúng đâu, cậu đọc kĩ từng từ xem.",
+          "Gần trúng rồi, nhảy thêm một bước nữa thôi!"
+        ],
+        "en": {
+          "right": [
+            "Great, one of my ears just flopped!",
+            "Quick as a rabbit, and right too!",
+            "You answered that one as sweet as a carrot."
+          ],
+          "wrong": [
+            "That hop went a bit sideways, choose again.",
+            "Not right yet, read each word carefully.",
+            "Almost, just one more hop!"
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Thỏ Ngọc Bãi Sông",
+        "bossName": "Thỏ Ngọc Bãi Sông",
+        "introDialogue": "My ears are up: here hops the first riddle!",
+        "winDialogue": "I give up! {name} is even quicker than a rabbit."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Thỏ Ngọc Bãi Sông",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thỏ Ngọc Bãi Sông tặng {name} một bó cỏ ba lá may mắn, lúc nào buồn thì ra đây đố tiếp nhé.",
+      "en": {
+        "title": "Thỏ Ngọc Bãi Sông's gift",
+        "text": "Thỏ Ngọc Bãi Sông gives {name} a bunch of lucky clover. Come back for more riddles whenever you feel blue."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Thỏ Ngọc Bãi Sông",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Xuôi xuống bến sông, có một trùm canh khu đang ngồi đợi bạn đố chữ.",
+      "en": {
+        "title": "Goodbye, Thỏ Ngọc Bãi Sông",
+        "text": "Down at the river landing a zone guardian is waiting for someone to play word riddles."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "tu-ngu": 1,
+      "cau": 1,
+      "bang-chu-cai": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Thỏ Ngọc Bãi Sông",
+    "summary": "Thỏ Ngọc Bãi Sông guards the riverside meadow and challenges {name} to four riddles about words, sentences and the alphabet."
+  }
+}

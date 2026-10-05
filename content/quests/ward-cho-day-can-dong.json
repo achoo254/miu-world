@@ -1,0 +1,298 @@
+{
+  "id": "ward-cho-day-can-dong",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Trùm canh khu: Voi Tím Cân Đong",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Voi Tím Cân Đong canh dãy sạp có cân, đố {name} năm câu về cân đĩa, ki-lô-gam và lít.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Voi Tím Cân Đong",
+    "where": "Dãy hàng cân đong",
+    "goal": "Thắng trận đố của Voi Tím Cân Đong",
+    "play": "Trả lời 5 câu đố, mỗi câu đúng làm Voi Tím Cân Đong vơi bớt sức",
+    "learn": "Nặng hơn, nhẹ hơn, ki-lô-gam, lít, cộng trừ với đơn vị đo",
+    "reward": "50 XP, 12 Xu mỗi lần thắng",
+    "next": "Gặp đủ ba trùm canh khu rồi, {name} ra chặng cuối đấu với Heo Đất Khổng Lồ nhé."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Voi Tím Cân Đong",
+      "kind": "dialogue",
+      "target": "voi-tim-can-dong",
+      "lines": [
+        {
+          "speaker": "Voi Tím Cân Đong",
+          "text": "Ầm, ầm! Ta là Voi Tím Cân Đong, cái cân to nhất chợ là của ta đấy, {name}."
+        },
+        {
+          "speaker": "Voi Tím Cân Đong",
+          "text": "Hôm nay ta mang cả cân đĩa lẫn can nước ra đố. Năm câu, đúng hết là cậu thắng!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đặt lên cân đi nào!"
+        }
+      ],
+      "en": {
+        "title": "Meet Voi Tím Cân Đong",
+        "lines": [
+          "Thud, thud! I'm Voi Tím Cân Đong, and the biggest scales in the market are mine, {name}.",
+          "Today I've brought the balance and the water cans for riddles. Five of them: get them all and you win!"
+        ],
+        "choices": [
+          {
+            "text": "Put it on the scales!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Voi Tím Cân Đong",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "voi-tim-can-dong",
+      "bossId": "voi-tim-can-dong",
+      "bossName": "Voi Tím Cân Đong",
+      "introDialogue": "Cân đĩa đã thăng bằng, câu đố thứ nhất đặt lên đây!",
+      "winDialogue": "Đĩa cân của ta nghiêng hẳn về phía {name} rồi, ta chịu thua!",
+      "maxHp": 500,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "dia-thap",
+          "prompt": "Quả dưa hấu nặng hơn quả cam. Đặt hai quả lên cân đĩa, đĩa nào thấp xuống?",
+          "skill": "khoi-luong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "đĩa có dưa hấu"
+            },
+            {
+              "id": "b",
+              "text": "đĩa có quả cam"
+            },
+            {
+              "id": "c",
+              "text": "hai đĩa bằng nhau"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "A watermelon is heavier than an orange. On the balance scales, which pan goes down?",
+            "choices": [
+              "the watermelon's pan",
+              "the orange's pan",
+              "they stay level"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "duong-muoi",
+          "prompt": "Bao đường nặng 5 kg, bao muối nặng 3 kg. Cả hai bao nặng bao nhiêu?",
+          "skill": "khoi-luong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "8 kg"
+            },
+            {
+              "id": "b",
+              "text": "2 kg"
+            },
+            {
+              "id": "c",
+              "text": "53 kg"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "A bag of sugar weighs 5 kg and a bag of salt 3 kg. How much do both weigh?",
+            "choices": [
+              "8 kg",
+              "2 kg",
+              "53 kg"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "can-dau",
+          "prompt": "Can dầu có 10 l, Voi rót ra 4 l. Can còn lại bao nhiêu lít?",
+          "skill": "dung-tich",
+          "choices": [
+            {
+              "id": "a",
+              "text": "6 l"
+            },
+            {
+              "id": "b",
+              "text": "14 l"
+            },
+            {
+              "id": "c",
+              "text": "5 l"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The oil can holds 10 l and Voi pours out 4 l. How many litres are left?",
+            "choices": [
+              "6 l",
+              "14 l",
+              "5 l"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "don-vi-lit",
+          "prompt": "Muốn biết trong xô có bao nhiêu nước, ta dùng đơn vị đo nào?",
+          "skill": "dung-tich",
+          "choices": [
+            {
+              "id": "a",
+              "text": "lít"
+            },
+            {
+              "id": "b",
+              "text": "ki-lô-gam"
+            },
+            {
+              "id": "c",
+              "text": "xăng-ti-mét"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "To say how much water is in a bucket, which unit do we use?",
+            "choices": [
+              "lít (litre)",
+              "ki-lô-gam (kilogram)",
+              "xăng-ti-mét (centimetre)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "tui-dau",
+          "prompt": "Túi gạo nặng 12 kg, túi đậu nhẹ hơn túi gạo 4 kg. Túi đậu nặng bao nhiêu?",
+          "skill": "khoi-luong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "8 kg"
+            },
+            {
+              "id": "b",
+              "text": "16 kg"
+            },
+            {
+              "id": "c",
+              "text": "4 kg"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "A bag of rice weighs 12 kg and a bag of beans is 4 kg lighter. How much does the bag of beans weigh?",
+            "choices": [
+              "8 kg",
+              "16 kg",
+              "4 kg"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Cân thăng bằng, đúng rồi!",
+          "Chính xác từng ki-lô-gam!",
+          "Đúng rồi, vòi ta rót nước mừng cậu."
+        ],
+        "wrong": [
+          "Đĩa cân lệch rồi, cân lại nhé.",
+          "Chưa đúng, nhớ ghi cả đơn vị đo nhé.",
+          "Can nước còn vơi, tính lại xem nào."
+        ],
+        "en": {
+          "right": [
+            "The scales balance, that's right!",
+            "Exact to the kilogram!",
+            "Right, my trunk pours water to celebrate."
+          ],
+          "wrong": [
+            "The pans are uneven, weigh again.",
+            "Not right, remember to write the unit.",
+            "The can isn't full yet, work it out again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Voi Tím Cân Đong",
+        "bossName": "Voi Tím Cân Đong",
+        "introDialogue": "The scales are level: here goes the first riddle!",
+        "winDialogue": "My scales have tipped right over to {name}'s side, I give up!"
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Voi Tím Cân Đong",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Voi Tím Cân Đong tặng {name} một quả cân đồng bé xíu, nặng đúng một trăm gam.",
+      "en": {
+        "title": "Voi Tím Cân Đong's gift",
+        "text": "Voi Tím Cân Đong gives {name} a tiny brass weight of exactly one hundred grams."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Voi Tím Cân Đong",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Gặp đủ ba trùm canh khu rồi, {name} ra chặng cuối đấu với Heo Đất Khổng Lồ nhé.",
+      "en": {
+        "title": "Goodbye, Voi Tím Cân Đong",
+        "text": "All three zone guardians met, {name}: head to the last stop and battle the Giant Piggy Bank."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 50,
+    "coin": 12,
+    "skillXp": {
+      "khoi-luong": 1,
+      "dung-tich": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Voi Tím Cân Đong",
+    "summary": "Voi Tím Cân Đong guards the stalls with scales and asks {name} five riddles about balance scales, kilograms and litres."
+  }
+}

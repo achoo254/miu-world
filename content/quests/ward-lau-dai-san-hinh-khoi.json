@@ -1,0 +1,266 @@
+{
+  "id": "ward-lau-dai-san-hinh-khoi",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Trùm canh khu: Hổ Xanh Vẽ Hình",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Hổ Xanh Vẽ Hình canh sân hình khối, đố {name} bốn câu về đoạn thẳng, đường gấp khúc và hình tứ giác.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Hổ Xanh Vẽ Hình",
+    "where": "Sân hình khối",
+    "goal": "Thắng trận đố của Hổ Xanh Vẽ Hình",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Hổ Xanh Vẽ Hình vơi bớt sức",
+    "learn": "Hình tứ giác, đường gấp khúc và độ dài, ba điểm thẳng hàng, đường thẳng và đường cong",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Vào trong thành tới đại sảnh ôn tập, có trùm canh khu thích tính toán đang chờ {name}."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Hổ Xanh Vẽ Hình",
+      "kind": "dialogue",
+      "target": "ho-xanh-ve-hinh",
+      "lines": [
+        {
+          "speaker": "Hổ Xanh Vẽ Hình",
+          "text": "Gừ… à không, ta chỉ gừ cho vui thôi! Ta là Hổ Xanh Vẽ Hình, móng ta vẽ hình đẹp nhất sân này."
+        },
+        {
+          "speaker": "Hổ Xanh Vẽ Hình",
+          "text": "{name} giải đúng bốn câu đố hình học thì ta vẽ tặng cậu một bức tranh."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Vẽ tặng tớ nhé!"
+        }
+      ],
+      "en": {
+        "title": "Meet Hổ Xanh Vẽ Hình",
+        "lines": [
+          "Grr… no, I only growl for fun! I'm Hổ Xanh Vẽ Hình, and my claws draw the best shapes in this yard.",
+          "If {name} solves four shape riddles, I'll draw you a picture."
+        ],
+        "choices": [
+          {
+            "text": "Draw me one!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Hổ Xanh Vẽ Hình",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "ho-xanh-ve-hinh",
+      "bossId": "ho-xanh-ve-hinh",
+      "bossName": "Hổ Xanh Vẽ Hình",
+      "introDialogue": "Thước đã kẻ, bút đã gọt, câu đố hình thứ nhất đây!",
+      "winDialogue": "Ta gác bút chịu thua! {name} nhìn hình còn tinh hơn mắt hổ.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "tu-giac",
+          "prompt": "Hổ Xanh vẽ một hình có 4 cạnh và 4 đỉnh. Đó là hình gì?",
+          "skill": "hinh-phang",
+          "choices": [
+            {
+              "id": "a",
+              "text": "hình tứ giác"
+            },
+            {
+              "id": "b",
+              "text": "hình tam giác"
+            },
+            {
+              "id": "c",
+              "text": "hình tròn"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Hổ Xanh draws a shape with 4 sides and 4 corners. What shape is it?",
+            "choices": [
+              "hình tứ giác (quadrilateral)",
+              "hình tam giác (triangle)",
+              "hình tròn (circle)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "gap-khuc",
+          "prompt": "Đường gấp khúc gồm ba đoạn dài 2 cm, 3 cm và 4 cm. Đường gấp khúc dài bao nhiêu?",
+          "skill": "hinh-phang",
+          "choices": [
+            {
+              "id": "a",
+              "text": "9 cm"
+            },
+            {
+              "id": "b",
+              "text": "7 cm"
+            },
+            {
+              "id": "c",
+              "text": "24 cm"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "A zigzag line has three parts, 2 cm, 3 cm and 4 cm long. How long is the whole line?",
+            "choices": [
+              "9 cm",
+              "7 cm",
+              "24 cm"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "thang-hang",
+          "prompt": "Ba điểm cùng nằm trên một đường thẳng thì gọi là gì?",
+          "skill": "hinh-phang",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ba điểm thẳng hàng"
+            },
+            {
+              "id": "b",
+              "text": "ba đoạn thẳng"
+            },
+            {
+              "id": "c",
+              "text": "một đường cong"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "What do we call three points that lie on one straight line?",
+            "choices": [
+              "ba điểm thẳng hàng (three points in a line)",
+              "ba đoạn thẳng (three segments)",
+              "một đường cong (a curve)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "duong-cong",
+          "prompt": "Trong mép thước kẻ, vành chiếc đĩa và cạnh bàn, đâu là một đường cong?",
+          "skill": "hinh-phang",
+          "choices": [
+            {
+              "id": "a",
+              "text": "vành chiếc đĩa"
+            },
+            {
+              "id": "b",
+              "text": "mép thước kẻ"
+            },
+            {
+              "id": "c",
+              "text": "cạnh bàn"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Of a ruler's edge, a plate's rim and a table's edge, which is a curved line?",
+            "choices": [
+              "vành chiếc đĩa (the plate's rim)",
+              "mép thước kẻ (the ruler's edge)",
+              "cạnh bàn (the table's edge)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Chuẩn như kẻ bằng thước!",
+          "Đúng rồi, sọc xanh trên lưng ta sáng rực.",
+          "Hình học khó thế mà cậu giải ngon ơ!"
+        ],
+        "wrong": [
+          "Đường kẻ lệch rồi, đo lại nhé.",
+          "Chưa đúng đâu, đếm lại các cạnh xem.",
+          "Gần đúng rồi, nhìn kĩ hình thêm chút nữa."
+        ],
+        "en": {
+          "right": [
+            "As neat as a ruled line!",
+            "Right, the blue stripes on my back are glowing.",
+            "Tricky geometry, and you solved it easily!"
+          ],
+          "wrong": [
+            "The line went crooked, measure again.",
+            "Not right, count the sides again.",
+            "Nearly right, look at the shape a little longer."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Hổ Xanh Vẽ Hình",
+        "bossName": "Hổ Xanh Vẽ Hình",
+        "introDialogue": "Ruler ready, pencil sharpened: here's the first shape riddle!",
+        "winDialogue": "I put down my pencil and give up! {name} sees shapes better than a tiger's eye."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Hổ Xanh Vẽ Hình",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hổ Xanh Vẽ Hình vẽ tặng {name} một ngôi sao nhiều cánh bằng các đoạn thẳng.",
+      "en": {
+        "title": "Hổ Xanh Vẽ Hình's gift",
+        "text": "Hổ Xanh Vẽ Hình draws {name} a many-pointed star made of straight segments."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Hổ Xanh Vẽ Hình",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Vào trong thành tới đại sảnh ôn tập, có trùm canh khu thích tính toán đang chờ {name}.",
+      "en": {
+        "title": "Goodbye, Hổ Xanh Vẽ Hình",
+        "text": "Go inside the walls to the great review hall, a zone guardian who loves sums is waiting for {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "hinh-phang": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Hổ Xanh Vẽ Hình",
+    "summary": "Hổ Xanh Vẽ Hình guards the shapes yard and asks {name} four riddles about segments, zigzag lines and quadrilaterals."
+  }
+}

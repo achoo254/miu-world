@@ -1,0 +1,264 @@
+{
+  "id": "ward-truong-san-sau",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Trùm canh khu: Mèo Thời Khóa Biểu",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Mèo Thời Khóa Biểu canh sân sau dãy lớp, đố {name} bốn câu về thầy cô, môn học và chính tả.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Thời Khóa Biểu",
+    "where": "Sân sau dãy lớp",
+    "goal": "Thắng trận đố của Mèo Thời Khóa Biểu",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Mèo Thời Khóa Biểu vơi bớt sức",
+    "learn": "Câu nói tình cảm, đọc thời khóa biểu, chính tả v/d, từ chỉ hoạt động",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Vườn trường có trùm canh khu giữ chiếc trống to nhất trường, {name} ra gặp thử xem."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Mèo Thời Khóa Biểu",
+      "kind": "dialogue",
+      "target": "meo-thoi-khoa-bieu",
+      "lines": [
+        {
+          "speaker": "Mèo Thời Khóa Biểu",
+          "text": "Meo! {name} đến đúng giờ ra chơi rồi. Ta là Mèo Thời Khóa Biểu, ta nhớ hết môn học của cả trường."
+        },
+        {
+          "speaker": "Mèo Thời Khóa Biểu",
+          "text": "Thắng ta bốn câu thì ta kể cho cậu nghe hôm nào được học vẽ nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Kể cho tớ nghe với!"
+        }
+      ],
+      "en": {
+        "title": "Meet Mèo Thời Khóa Biểu",
+        "lines": [
+          "Meow! {name} has come right at break time. I'm Mèo Thời Khóa Biểu and I remember every subject in the school.",
+          "Beat me in four riddles and I'll tell you which day has art."
+        ],
+        "choices": [
+          {
+            "text": "Tell me, please!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Mèo Thời Khóa Biểu",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "meo-thoi-khoa-bieu",
+      "bossId": "meo-thoi-khoa-bieu",
+      "bossName": "Mèo Thời Khóa Biểu",
+      "introDialogue": "Trống báo giờ ra chơi rồi, ta đố nhanh trước khi vào lớp nhé!",
+      "winDialogue": "Meo… ta thua rồi! {name} chăm học thế này, môn nào cũng giỏi.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "yeu-co",
+          "prompt": "Câu nào thể hiện tình cảm của bạn nhỏ với cô giáo?",
+          "skill": "cau",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Em yêu cô giáo lắm!"
+            },
+            {
+              "id": "b",
+              "text": "Cô giáo mặc áo dài."
+            },
+            {
+              "id": "c",
+              "text": "Cô đến lớp lúc bảy giờ."
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which sentence shows how the pupil feels about the teacher?",
+            "choices": [
+              "Em yêu cô giáo lắm! (I love my teacher so much!)",
+              "Cô giáo mặc áo dài. (The teacher wears an áo dài.)",
+              "Cô đến lớp lúc bảy giờ. (She arrives at seven.)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "dem-mon",
+          "prompt": "Mèo đọc thời khóa biểu: «Thứ Hai: Tiếng Việt, Toán, Mĩ thuật». Thứ Hai có mấy môn học?",
+          "skill": "doc-hieu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "2 môn"
+            },
+            {
+              "id": "b",
+              "text": "3 môn"
+            },
+            {
+              "id": "c",
+              "text": "4 môn"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Mèo reads the timetable: «Monday: Vietnamese, Maths, Art». How many subjects are there on Monday?",
+            "choices": [
+              "2",
+              "3",
+              "4"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        },
+        {
+          "id": "v-d",
+          "prompt": "Điền v hay d vào chỗ trống: «em ghi bài vào quyển …ở ô li»?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "v"
+            },
+            {
+              "id": "b",
+              "text": "d"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "v or d: «em ghi bài vào quyển …ở ô li» (I write the lesson in my squared exercise book)?",
+            "choices": [
+              "v",
+              "d"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "viet-bai",
+          "prompt": "Từ nào chỉ hoạt động của bạn nhỏ trong giờ học?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "viết bài"
+            },
+            {
+              "id": "b",
+              "text": "cái thước"
+            },
+            {
+              "id": "c",
+              "text": "bàn ghế"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which words tell what a pupil does in a lesson (an action)?",
+            "choices": [
+              "viết bài (write)",
+              "cái thước (the ruler)",
+              "bàn ghế (desks and chairs)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Meo meo, chuẩn rồi!",
+          "Đúng bài luôn, cô giáo mà biết chắc khen cậu.",
+          "Râu ta rung rinh vì câu trả lời hay quá!"
+        ],
+        "wrong": [
+          "Meo, chưa đúng, cậu xem lại nhé.",
+          "Nhầm tiết rồi, đọc chậm lại một chút xem.",
+          "Gần đúng rồi, nghĩ thêm một tí thôi."
+        ],
+        "en": {
+          "right": [
+            "Meow meow, spot on!",
+            "Exactly right, the teacher would praise you.",
+            "My whiskers are quivering at that great answer!"
+          ],
+          "wrong": [
+            "Meow, not right, look again.",
+            "Wrong lesson, read a bit more slowly.",
+            "Nearly there, think just a little more."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Mèo Thời Khóa Biểu",
+        "bossName": "Mèo Thời Khóa Biểu",
+        "introDialogue": "The drum says it's break time, quick, a riddle before lessons start!",
+        "winDialogue": "Meow… I lost! {name} studies so well, every subject must be easy."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Mèo Thời Khóa Biểu",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Thời Khóa Biểu tặng {name} một nhãn vở có vẽ hình mèo, viết tên vào rồi dán lên vở nhé.",
+      "en": {
+        "title": "Mèo Thời Khóa Biểu's gift",
+        "text": "Mèo Thời Khóa Biểu gives {name} a book label with a cat on it: write your name and stick it on your exercise book."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Mèo Thời Khóa Biểu",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Vườn trường có trùm canh khu giữ chiếc trống to nhất trường, {name} ra gặp thử xem.",
+      "en": {
+        "title": "Goodbye, Mèo Thời Khóa Biểu",
+        "text": "In the school garden a zone guardian keeps the biggest drum in the school, {name}, go and meet it."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "cau": 1,
+      "doc-hieu": 1,
+      "chinh-ta": 1,
+      "tu-ngu": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Mèo Thời Khóa Biểu",
+    "summary": "Mèo Thời Khóa Biểu guards the yard behind the classrooms and asks {name} four riddles about teachers, subjects and spelling."
+  }
+}

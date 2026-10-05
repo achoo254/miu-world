@@ -1,0 +1,558 @@
+{
+  "region": "trung-tam",
+  "guardians": [
+    {
+      "quest": "ward-trung-tam-quang-truong",
+      "id": "se-nau-dua-thu",
+      "name": "Sẻ Nâu Đưa Thư",
+      "look": "animal-parrot",
+      "tint": "#b08a64",
+      "height": 1.9,
+      "zone": "Quảng trường trung tâm",
+      "lessons": [
+        "trung-tam-ch1"
+      ],
+      "learn": "Đọc hiểu thông báo, so sánh số có hai chữ số, cộng và trừ trong phạm vi 100",
+      "summary": "Sẻ Nâu Đưa Thư canh quảng trường, mang bốn câu đố về thông báo, so sánh số và phép tính cho {name}.",
+      "hook": [
+        "Ríu rít! {name} có thư đây. Ta là Sẻ Nâu Đưa Thư, chuyên mang tin vui khắp quảng trường.",
+        "Lá thư hôm nay là bốn câu đố. Mở thư ra đấu với ta không?"
+      ],
+      "choice": "Mở thư ra nào!",
+      "intro": "Phong thư thứ nhất đã bay tới tay {name} rồi đây!",
+      "win": "Ríu rít, ta thua rồi! {name} đọc thư nhanh hơn cả ta bay.",
+      "right": [
+        "Ríu rít, đúng tin rồi!",
+        "Chính xác, cánh ta vỗ phành phạch khen cậu.",
+        "Lá thư này cậu đọc đúng từng chữ!"
+      ],
+      "wrong": [
+        "Thư gửi nhầm địa chỉ rồi, chọn lại nhé.",
+        "Chưa đúng đâu, đọc lại phong thư lần nữa nào.",
+        "Gần lắm, so kĩ từng con số xem."
+      ],
+      "reward": "Sẻ Nâu Đưa Thư tặng {name} một chiếc tem thư in hình quảng trường, thư sau ta lại mang đố mới tới.",
+      "next": "Khu giao dịch và cửa hàng có trùm canh khu giỏi tính nhất phố đấy, {name}.",
+      "turns": [
+        {
+          "id": "thong-bao-hoi-cho",
+          "skill": "doc-hieu",
+          "prompt": "Bảng tin ghi: «Hội chợ mở lúc 8 giờ sáng thứ Bảy ở quảng trường». Hội chợ mở vào hôm nào?",
+          "choices": [
+            "thứ Bảy",
+            "Chủ nhật",
+            "thứ Hai"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The notice board says: «The fair opens at 8 a.m. on Saturday in the square». Which day does the fair open?",
+            "choices": [
+              "thứ Bảy (Saturday)",
+              "Chủ nhật (Sunday)",
+              "thứ Hai (Monday)"
+            ]
+          }
+        },
+        {
+          "id": "thu-so-lon",
+          "skill": "so-sanh-so",
+          "prompt": "Sẻ Nâu mang ba lá thư số 68, 86 và 79. Lá thư mang số lớn nhất là số nào?",
+          "choices": [
+            "86",
+            "79",
+            "68"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Sẻ Nâu carries three letters numbered 68, 86 and 79. Which number is the biggest?",
+            "choices": [
+              "86",
+              "79",
+              "68"
+            ]
+          }
+        },
+        {
+          "id": "them-bo-cau",
+          "skill": "phep-cong",
+          "prompt": "Quảng trường có 45 chú chim sẻ, bay tới thêm 23 chú. Có tất cả bao nhiêu chú chim sẻ?",
+          "choices": [
+            "68",
+            "22",
+            "58"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "There are 45 sparrows in the square and 23 more fly in. How many sparrows are there in all?",
+            "choices": [
+              "68",
+              "22",
+              "58"
+            ]
+          }
+        },
+        {
+          "id": "co-bay",
+          "skill": "phep-tru",
+          "prompt": "Có 57 lá cờ treo quanh quảng trường, gió thổi bay mất 14 lá. Còn lại bao nhiêu lá cờ?",
+          "choices": [
+            "43",
+            "71",
+            "33"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "There are 57 flags round the square and the wind blows 14 away. How many flags are left?",
+            "choices": [
+              "43",
+              "71",
+              "33"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Sẻ Nâu Đưa Thư guards the square and brings {name} four riddles about notices, comparing numbers and sums.",
+        "hook": [
+          "Tweet tweet! A letter for {name}. I'm Sẻ Nâu Đưa Thư, and I carry happy news all round the square.",
+          "Today's letter is four riddles. Open it and battle me?"
+        ],
+        "choice": "Let's open it!",
+        "intro": "The first envelope has landed in {name}'s hands!",
+        "win": "Tweet tweet, I lost! {name} reads letters faster than I can fly.",
+        "right": [
+          "Tweet tweet, right news!",
+          "Exactly, I'm flapping my wings to cheer you.",
+          "You read every word of that letter right!"
+        ],
+        "wrong": [
+          "Wrong address, choose again.",
+          "Not right, read the letter once more.",
+          "So close, compare each number carefully."
+        ],
+        "reward": "Sẻ Nâu Đưa Thư gives {name} a stamp with the square on it. Next time I'll bring new riddles.",
+        "next": "The trading street and shops have the best counter in town as their zone guardian, {name}."
+      }
+    },
+    {
+      "quest": "ward-trung-tam-khu-giao-dich",
+      "id": "heo-thu-ngan",
+      "name": "Heo Thu Ngân",
+      "look": "animal-pig",
+      "tint": "#f2b6c6",
+      "height": 1.9,
+      "zone": "Khu giao dịch và cửa hàng",
+      "lessons": [
+        "trung-tam-ch1",
+        "vuot-ai-trung-tam"
+      ],
+      "learn": "Cộng và trừ trong phạm vi 100, so sánh số, từ tiếng Anh về đồ ăn",
+      "summary": "Heo Thu Ngân canh khu giao dịch, đố {name} bốn câu tính tiền hàng, so sánh số và một từ tiếng Anh.",
+      "hook": [
+        "Leng keng! Heo Thu Ngân đây, quầy của ta đông khách nhất khu giao dịch, {name} ạ.",
+        "Hôm nay ta mời khách một trận đố vui bốn câu. Ai thắng được ta tặng quà nhé!"
+      ],
+      "choice": "Tớ là khách đầu tiên!",
+      "intro": "Ngăn kéo tiền mở ra, câu đố đầu tiên ở trong đó!",
+      "win": "Ủn ỉn, ta tính thua cậu rồi! {name} tính nhanh hơn cả máy thu ngân.",
+      "right": [
+        "Leng keng, cộng đúng rồi!",
+        "Chuẩn từng con số, ta nể cậu đấy.",
+        "Ủn ỉn, câu này cậu tính như chớp!"
+      ],
+      "wrong": [
+        "Ối, lệch sổ rồi, tính lại nhé.",
+        "Chưa khớp đâu, cộng lại từ hàng đơn vị xem.",
+        "Gần đúng rồi, kiểm lại một lần nữa nào."
+      ],
+      "reward": "Heo Thu Ngân tặng {name} một con heo đất nhỏ xinh để để dành Xu, lúc nào rảnh ghé quầy đấu lại.",
+      "next": "Ở khu sự kiện theo mùa, một trùm canh khu đang treo đèn lồng chờ {name}.",
+      "turns": [
+        {
+          "id": "ban-keo",
+          "skill": "phep-cong",
+          "prompt": "Heo bán 36 cái kẹo buổi sáng và 42 cái buổi chiều. Cả ngày Heo bán bao nhiêu cái kẹo?",
+          "choices": [
+            "78",
+            "68",
+            "88"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Heo sells 36 sweets in the morning and 42 in the afternoon. How many sweets in the whole day?",
+            "choices": [
+              "78",
+              "68",
+              "88"
+            ]
+          }
+        },
+        {
+          "id": "con-bong",
+          "skill": "phep-tru",
+          "prompt": "Cửa hàng có 89 quả bóng bay, đã bán 35 quả. Cửa hàng còn lại bao nhiêu quả?",
+          "choices": [
+            "54",
+            "64",
+            "124"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The shop has 89 balloons and has sold 35. How many balloons are left?",
+            "choices": [
+              "54",
+              "64",
+              "124"
+            ]
+          }
+        },
+        {
+          "id": "dau-47-74",
+          "skill": "so-sanh-so",
+          "prompt": "Heo dán hai giá trên kệ: 47 và 74. Điền dấu vào 47 … 74.",
+          "choices": [
+            "<",
+            ">",
+            "="
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Heo puts two prices on the shelf, 47 and 74. Which sign goes in 47 … 74?",
+            "choices": [
+              "<",
+              ">",
+              "="
+            ]
+          }
+        },
+        {
+          "id": "apple",
+          "skill": "tu-vung",
+          "prompt": "Một vị khách hỏi mua «apple». Khách muốn mua quả gì?",
+          "choices": [
+            "quả táo",
+            "quả chuối",
+            "quả cam"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "A customer asks for an «apple». Which fruit is that in Vietnamese?",
+            "choices": [
+              "quả táo",
+              "quả chuối",
+              "quả cam"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Heo Thu Ngân guards the trading street and asks {name} four riddles about shop sums, comparing numbers and one English word.",
+        "hook": [
+          "Ka-ching! Heo Thu Ngân here, my counter is the busiest on the trading street, {name}.",
+          "Today I'm treating customers to a four-riddle quiz. Whoever beats me gets a present!"
+        ],
+        "choice": "I'm your first customer!",
+        "intro": "The cash drawer slides open, and the first riddle is inside!",
+        "win": "Oink, you out-counted me! {name} adds faster than a till.",
+        "right": [
+          "Ka-ching, added up right!",
+          "Every number spot on, I'm impressed.",
+          "Oink, you worked that out in a flash!"
+        ],
+        "wrong": [
+          "Oops, the books don't balance, work it out again.",
+          "That doesn't add up, start again from the ones.",
+          "Nearly right, check it once more."
+        ],
+        "reward": "Heo Thu Ngân gives {name} a cute little piggy bank for saving coins. Drop by the counter to battle again.",
+        "next": "At the seasonal events area a zone guardian is hanging up lanterns, waiting for {name}."
+      }
+    },
+    {
+      "quest": "ward-trung-tam-khu-su-kien",
+      "id": "gau-truc-le-hoi",
+      "name": "Gấu Trúc Lễ Hội",
+      "look": "animal-panda",
+      "tint": "#e8b0d8",
+      "height": 2.1,
+      "zone": "Khu sự kiện theo mùa",
+      "lessons": [
+        "vuot-ai-trung-tam"
+      ],
+      "learn": "Xem đồng hồ, quy luật dãy màu và dãy số, từ tiếng Anh về màu sắc",
+      "summary": "Gấu Trúc Lễ Hội canh khu sự kiện theo mùa, đố {name} bốn câu về giờ giấc, quy luật và màu sắc.",
+      "hook": [
+        "Ồ, {name}! Ta là Gấu Trúc Lễ Hội, mùa nào ta cũng treo đèn, kết hoa cho khu sự kiện.",
+        "Hôm nay ta treo đố vui lên dây đèn lồng. Gỡ được bốn câu thì cậu thắng!"
+      ],
+      "choice": "Gỡ đèn lồng nào!",
+      "intro": "Đèn lồng thứ nhất sáng lên, câu đố hiện ra rồi!",
+      "win": "Ta tắt đèn chịu thua! {name} thông minh như đèn lồng sáng nhất lễ hội.",
+      "right": [
+        "Đèn sáng rực, đúng rồi!",
+        "Hay quá, pháo hoa nổ tung chúc mừng cậu!",
+        "Câu trả lời lung linh như dây đèn lồng."
+      ],
+      "wrong": [
+        "Đèn chập chờn rồi, chọn lại xem.",
+        "Chưa đúng, cậu nhìn kĩ quy luật nhé.",
+        "Suýt sáng đèn rồi, thử lần nữa nào!"
+      ],
+      "reward": "Gấu Trúc Lễ Hội tặng {name} một chiếc đèn lồng giấy nhỏ, mùa lễ hội nào cũng mời cậu tới.",
+      "next": "Sân trước lâu đài có trùm canh khu canh gác nghiêm nhất trung tâm, {name} sang đó nhé.",
+      "turns": [
+        {
+          "id": "ba-gio",
+          "skill": "xem-dong-ho",
+          "prompt": "Đồng hồ lễ hội có kim ngắn chỉ số 3, kim dài chỉ số 12. Đồng hồ chỉ mấy giờ?",
+          "choices": [
+            "3 giờ",
+            "12 giờ",
+            "12 giờ 15 phút"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "On the festival clock the short hand points to 3 and the long hand to 12. What time is it?",
+            "choices": [
+              "3 o'clock",
+              "12 o'clock",
+              "12:15"
+            ]
+          }
+        },
+        {
+          "id": "day-den",
+          "skill": "logic",
+          "prompt": "Dây đèn lồng xếp màu: đỏ, vàng, đỏ, vàng, đỏ, … Chiếc đèn tiếp theo màu gì?",
+          "choices": [
+            "vàng",
+            "đỏ",
+            "xanh"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The lanterns go red, yellow, red, yellow, red, … What colour is the next one?",
+            "choices": [
+              "vàng (yellow)",
+              "đỏ (red)",
+              "xanh (blue)"
+            ]
+          }
+        },
+        {
+          "id": "red",
+          "skill": "tu-vung",
+          "prompt": "Gấu Trúc nói tiếng Anh: «red lantern». Chiếc đèn lồng màu gì?",
+          "choices": [
+            "màu đỏ",
+            "màu xanh",
+            "màu vàng"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Gấu Trúc says «red lantern». What colour is the lantern in Vietnamese?",
+            "choices": [
+              "màu đỏ",
+              "màu xanh",
+              "màu vàng"
+            ]
+          }
+        },
+        {
+          "id": "nam-muoi",
+          "skill": "logic",
+          "prompt": "Số trên vé sự kiện: 5, 10, 15, 20, … Vé tiếp theo mang số mấy?",
+          "choices": [
+            "25",
+            "21",
+            "30"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The event tickets are numbered 5, 10, 15, 20, … What number is the next ticket?",
+            "choices": [
+              "25",
+              "21",
+              "30"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Gấu Trúc Lễ Hội guards the seasonal events area and asks {name} four riddles about time, patterns and colours.",
+        "hook": [
+          "Oh, {name}! I'm Gấu Trúc Lễ Hội, and every season I hang lights and flowers round the events area.",
+          "Today I've hung riddles on the lantern string. Take down four and you win!"
+        ],
+        "choice": "Let's take down the lanterns!",
+        "intro": "The first lantern lights up, and a riddle appears!",
+        "win": "I switch off my lights and give up! {name} shines like the brightest lantern of the festival.",
+        "right": [
+          "The lantern glows, that's right!",
+          "Brilliant, fireworks are bursting for you!",
+          "That answer twinkles like a lantern string."
+        ],
+        "wrong": [
+          "The lantern flickered, choose again.",
+          "Not right, look closely at the pattern.",
+          "Almost lit up, try once more!"
+        ],
+        "reward": "Gấu Trúc Lễ Hội gives {name} a little paper lantern. You're invited to every festival.",
+        "next": "The castle forecourt has the strictest zone guardian in town, {name}, go there next."
+      }
+    },
+    {
+      "quest": "ward-trung-tam-san-truoc",
+      "id": "voi-gac-san-truoc",
+      "name": "Voi Gác Sân Trước",
+      "look": "animal-elephant",
+      "tint": "#9aa8b8",
+      "height": 2.4,
+      "zone": "Sân trước lâu đài",
+      "lessons": [
+        "trung-tam-ch1",
+        "vuot-ai-trung-tam"
+      ],
+      "learn": "Phép trừ trong phạm vi 20, xem đồng hồ, so sánh số, từ tiếng Anh, đọc hiểu biển báo",
+      "summary": "Voi Gác Sân Trước giữ sân trước lâu đài, đố {name} năm câu về phép trừ, giờ giấc, số và biển báo.",
+      "hook": [
+        "Hự! Voi Gác Sân Trước đây. Muốn qua sân này, {name} phải trả lời năm câu đố của ta.",
+        "Đừng lo, vòi ta chỉ dùng để phun nước tưới hoa thôi. Sẵn sàng chưa?"
+      ],
+      "choice": "Sẵn sàng, Voi ơi!",
+      "intro": "Vòi ta giơ cao rồi, câu đố thứ nhất phun ra đây!",
+      "win": "Ta quỳ một chân chào thua! {name} xứng đáng đi qua sân trước rồi.",
+      "right": [
+        "Tốt lắm, vòi ta phun nước mừng cậu!",
+        "Đúng rồi, đất dưới chân ta rung lên vì phục!",
+        "Câu này cậu đáp chắc như cột đá!"
+      ],
+      "wrong": [
+        "Chưa qua được đâu, thử lại nhé.",
+        "Ta lắc tai rồi, cậu nghĩ thêm chút xem.",
+        "Gần đúng rồi, đọc lại câu hỏi nào."
+      ],
+      "reward": "Voi Gác Sân Trước phun một cầu vồng nước nhỏ tặng {name} và hẹn đấu lại vào lúc khác.",
+      "next": "Thắng hết bốn trùm canh khu rồi thì {name} ghé chặng cuối gặp Cáo Ảo Thuật nhé.",
+      "turns": [
+        {
+          "id": "tru-chuoi",
+          "skill": "phep-tru",
+          "prompt": "Voi có 15 quả chuối, đem cho bạn 7 quả. Voi còn lại mấy quả chuối?",
+          "choices": [
+            "8",
+            "9",
+            "22"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Voi has 15 bananas and gives 7 to a friend. How many bananas are left?",
+            "choices": [
+              "8",
+              "9",
+              "22"
+            ]
+          }
+        },
+        {
+          "id": "ruoi",
+          "skill": "xem-dong-ho",
+          "prompt": "Đồng hồ sân trước chỉ 7 giờ 30 phút. Ta còn gọi giờ đó là gì?",
+          "choices": [
+            "7 giờ rưỡi",
+            "7 giờ kém",
+            "8 giờ rưỡi"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The forecourt clock says 7:30. What else do we call that time?",
+            "choices": [
+              "half past seven",
+              "nearly seven",
+              "half past eight"
+            ]
+          }
+        },
+        {
+          "id": "so-be",
+          "skill": "so-sanh-so",
+          "prompt": "Ba bậc đá ghi số 51, 15 và 50. Bậc ghi số bé nhất là số mấy?",
+          "choices": [
+            "15",
+            "50",
+            "51"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Three stone steps are numbered 51, 15 and 50. Which is the smallest number?",
+            "choices": [
+              "15",
+              "50",
+              "51"
+            ]
+          }
+        },
+        {
+          "id": "castle",
+          "skill": "tu-vung",
+          "prompt": "Voi chỉ tay về phía tòa tháp và nói «castle». «Castle» nghĩa là gì?",
+          "choices": [
+            "lâu đài",
+            "cây cầu",
+            "con thuyền"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Voi points at the towers and says «castle». What is «castle» in Vietnamese?",
+            "choices": [
+              "lâu đài",
+              "cây cầu",
+              "con thuyền"
+            ]
+          }
+        },
+        {
+          "id": "bien-cong",
+          "skill": "doc-hieu",
+          "prompt": "Biển ghi: «Cổng mở từ 7 giờ sáng đến 5 giờ chiều». Lúc 6 giờ chiều cổng thế nào?",
+          "choices": [
+            "đã đóng",
+            "đang mở",
+            "mới mở"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The sign says: «Gate open from 7 a.m. to 5 p.m.». What about the gate at 6 p.m.?",
+            "choices": [
+              "already closed",
+              "open",
+              "just opened"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Voi Gác Sân Trước guards the castle forecourt and asks {name} five riddles about take-aways, time, numbers and signs.",
+        "hook": [
+          "Hup! Voi Gác Sân Trước here. To cross this forecourt, {name} must answer my five riddles.",
+          "Don't worry, I only use my trunk to water the flowers. Ready?"
+        ],
+        "choice": "Ready, Voi!",
+        "intro": "My trunk is up: here sprays the first riddle!",
+        "win": "I kneel on one knee and give up! {name} has earned the way across the forecourt.",
+        "right": [
+          "Well done, my trunk sprays water to cheer you!",
+          "Right, the ground under my feet is trembling with respect!",
+          "You answered that as firmly as a stone pillar!"
+        ],
+        "wrong": [
+          "You can't pass yet, try again.",
+          "I'm flapping my ears, think a bit more.",
+          "Nearly right, read the question again."
+        ],
+        "reward": "Voi Gác Sân Trước sprays a little water rainbow for {name} and hopes to battle again another time.",
+        "next": "Beaten all four zone guardians? Then visit the Magician Fox at the last stop, {name}."
+      }
+    }
+  ]
+}

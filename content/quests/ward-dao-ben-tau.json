@@ -1,0 +1,268 @@
+{
+  "id": "ward-dao-ben-tau",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Trùm canh khu: Hồng Hạc Bãi Cát",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Hồng Hạc Bãi Cát canh làng chài bên bãi biển, đố {name} bốn câu về mẩu giấy trong chai, số thuyền và vỏ sò.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Hồng Hạc Bãi Cát",
+    "where": "Bến tàu và bãi biển",
+    "goal": "Thắng trận đố của Hồng Hạc Bãi Cát",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Hồng Hạc Bãi Cát vơi bớt sức",
+    "learn": "Đọc hiểu mẩu giấy, so sánh số có hai chữ số, phép cộng trong phạm vi 100 và 20",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Vào rừng nhiệt đới đi {name}, bên thác nước có trùm canh khu nhanh như chớp."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Hồng Hạc Bãi Cát",
+      "kind": "dialogue",
+      "target": "hong-hac-bai-cat",
+      "lines": [
+        {
+          "speaker": "Hồng Hạc Bãi Cát",
+          "text": "Chào {name}! Ta là Hồng Hạc Bãi Cát, ta đứng một chân canh bãi biển suốt ngày."
+        },
+        {
+          "speaker": "Hồng Hạc Bãi Cát",
+          "text": "Sóng vừa đánh dạt vào một chai thủy tinh có bốn câu đố. Mình cùng giải nhé!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mở chai ra xem nào!"
+        }
+      ],
+      "en": {
+        "title": "Meet Hồng Hạc Bãi Cát",
+        "lines": [
+          "Hello {name}! I'm Hồng Hạc Bãi Cát, and I stand on one leg guarding the beach all day.",
+          "The waves just washed up a glass bottle with four riddles inside. Let's solve them together!"
+        ],
+        "choices": [
+          {
+            "text": "Let's open the bottle!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Hồng Hạc Bãi Cát",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "hong-hac-bai-cat",
+      "bossId": "hong-hac-bai-cat",
+      "bossName": "Hồng Hạc Bãi Cát",
+      "introDialogue": "Nút chai bật ra, câu đố thứ nhất cuộn tròn bên trong!",
+      "winDialogue": "Ta đổi chân đứng chịu thua! {name} giải đố giỏi như thuyền trưởng lão luyện.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "giay-trong-chai",
+          "prompt": "Mẩu giấy trong chai ghi: «Quà ở dưới cây dừa thứ ba». Quà nằm ở đâu?",
+          "skill": "doc-hieu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "dưới cây dừa thứ ba"
+            },
+            {
+              "id": "b",
+              "text": "trên đỉnh núi"
+            },
+            {
+              "id": "c",
+              "text": "trong hang đá"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The note in the bottle says: «The gift is under the third coconut tree». Where is the gift?",
+            "choices": [
+              "under the third coconut tree",
+              "on the mountain top",
+              "in the rock cave"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "thuyen-be-hon",
+          "prompt": "Thuyền số 58 và thuyền số 85 cùng cập bến. Thuyền nào mang số bé hơn?",
+          "skill": "so-sanh-so",
+          "choices": [
+            {
+              "id": "a",
+              "text": "thuyền số 58"
+            },
+            {
+              "id": "b",
+              "text": "thuyền số 85"
+            },
+            {
+              "id": "c",
+              "text": "bằng nhau"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Boats number 58 and 85 come in to the pier. Which boat has the smaller number?",
+            "choices": [
+              "boat 58",
+              "boat 85",
+              "they are equal"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "vo-so",
+          "prompt": "Hồng Hạc nhặt 34 vỏ sò rồi nhặt thêm 25 vỏ. Hồng Hạc có tất cả bao nhiêu vỏ sò?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "59"
+            },
+            {
+              "id": "b",
+              "text": "49"
+            },
+            {
+              "id": "c",
+              "text": "9"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Hồng Hạc picks up 34 shells and then 25 more. How many shells in all?",
+            "choices": [
+              "59",
+              "49",
+              "9"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "thuyen-cap-ben",
+          "prompt": "Sáng có 8 con thuyền cập bến, chiều thêm 7 con nữa. Có tất cả bao nhiêu con thuyền?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "15"
+            },
+            {
+              "id": "b",
+              "text": "14"
+            },
+            {
+              "id": "c",
+              "text": "1"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "8 boats come in in the morning and 7 more in the afternoon. How many boats in all?",
+            "choices": [
+              "15",
+              "14",
+              "1"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Sóng vỗ rì rào, đúng rồi!",
+          "Hay quá, lông ta hồng thêm vì vui!",
+          "Câu trả lời lấp lánh như vỏ sò!"
+        ],
+        "wrong": [
+          "Sóng cuốn mất câu trả lời rồi, chọn lại nhé.",
+          "Chưa đúng, đọc lại mẩu giấy xem.",
+          "Gần trúng rồi, so kĩ từng chữ số nào."
+        ],
+        "en": {
+          "right": [
+            "The waves whisper: that's right!",
+            "Lovely, my feathers are turning pinker with joy!",
+            "That answer sparkles like a seashell!"
+          ],
+          "wrong": [
+            "A wave swept your answer away, choose again.",
+            "Not right, read the note again.",
+            "Nearly there, compare each digit carefully."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Hồng Hạc Bãi Cát",
+        "bossName": "Hồng Hạc Bãi Cát",
+        "introDialogue": "Pop goes the cork, and the first riddle is rolled up inside!",
+        "winDialogue": "I switch legs and give up! {name} solves riddles like a seasoned captain."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Hồng Hạc Bãi Cát",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hồng Hạc Bãi Cát tặng {name} một chiếc vỏ ốc xà cừ, áp vào tai là nghe tiếng sóng.",
+      "en": {
+        "title": "Hồng Hạc Bãi Cát's gift",
+        "text": "Hồng Hạc Bãi Cát gives {name} a mother-of-pearl shell: hold it to your ear and hear the sea."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Hồng Hạc Bãi Cát",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Vào rừng nhiệt đới đi {name}, bên thác nước có trùm canh khu nhanh như chớp.",
+      "en": {
+        "title": "Goodbye, Hồng Hạc Bãi Cát",
+        "text": "Go into the rainforest, {name}: by the waterfall waits a zone guardian as quick as lightning."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "doc-hieu": 1,
+      "so-sanh-so": 1,
+      "phep-cong": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Hồng Hạc Bãi Cát",
+    "summary": "Hồng Hạc Bãi Cát guards the fishing village by the beach and asks {name} four riddles about a message in a bottle, boat numbers and shells."
+  }
+}

@@ -1,0 +1,558 @@
+{
+  "region": "nui-tuyet",
+  "guardians": [
+    {
+      "quest": "ward-nui-tuyet-lang",
+      "id": "canh-cut-dua-thu",
+      "name": "Cánh Cụt Đưa Thư",
+      "look": "animal-penguin",
+      "tint": "#90b0e0",
+      "height": 1.8,
+      "zone": "Làng núi tuyết",
+      "lessons": [
+        "nui-tuyet-ch1"
+      ],
+      "learn": "Đọc hiểu lá thư, từ chỉ đồ vật giữ ấm, phép cộng trong phạm vi 20, so sánh số",
+      "summary": "Cánh Cụt Đưa Thư canh phố làng núi tuyết, đố {name} bốn câu về lá thư, đồ ấm và phép tính.",
+      "hook": [
+        "Lạch bạch, lạch bạch… thư đây! Chào {name}, ta là Cánh Cụt Đưa Thư của làng núi tuyết.",
+        "Túi thư hôm nay có bốn câu đố. Cậu mở được hết thì ta tặng con tem tuyết đẹp nhất."
+      ],
+      "choice": "Đưa thư cho tớ nào!",
+      "intro": "Phong thư phủ tuyết thứ nhất đây, mở ra xem nào!",
+      "win": "Lạch bạch… ta trượt ngã chịu thua! {name} đọc thư nhanh như gió tuyết.",
+      "right": [
+        "Lạch bạch, đúng rồi!",
+        "Chuẩn quá, tuyết rơi lấp lánh mừng cậu.",
+        "Lá thư này cậu đọc không sót chữ nào!"
+      ],
+      "wrong": [
+        "Trượt chân trên băng rồi, thử lại nhé.",
+        "Chưa đúng, đọc lại lá thư xem.",
+        "Gần đúng rồi, phủi tuyết khỏi câu hỏi mà đọc kĩ nào."
+      ],
+      "reward": "Cánh Cụt Đưa Thư tặng {name} một con tem in hình bông tuyết sáu cánh.",
+      "next": "Lên khu trượt tuyết đi {name}, có trùm canh khu trượt nhanh nhất núi đang chờ.",
+      "turns": [
+        {
+          "id": "mang-gang",
+          "skill": "doc-hieu",
+          "prompt": "Thư ghi: «Mai trời có tuyết, các bạn nhớ mang găng tay». Ngày mai các bạn cần mang gì?",
+          "choices": [
+            "găng tay",
+            "kem chống nắng",
+            "ô che mưa"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The letter says: «It will snow tomorrow, remember your gloves». What do the friends need tomorrow?",
+            "choices": [
+              "găng tay (gloves)",
+              "kem chống nắng (sun cream)",
+              "ô che mưa (an umbrella)"
+            ]
+          }
+        },
+        {
+          "id": "khan-len",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào gọi tên một đồ dùng giữ ấm ở núi tuyết?",
+          "choices": [
+            "khăn len",
+            "lạnh buốt",
+            "trượt tuyết"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which word names something that keeps you warm in the snowy mountains?",
+            "choices": [
+              "khăn len (a woolly scarf)",
+              "lạnh buốt (freezing)",
+              "trượt tuyết (ski)"
+            ]
+          }
+        },
+        {
+          "id": "them-thu",
+          "skill": "phep-cong",
+          "prompt": "Cánh Cụt có 8 lá thư, nhận thêm 6 lá nữa. Cánh Cụt có tất cả mấy lá thư?",
+          "choices": [
+            "14",
+            "13",
+            "2"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Cánh Cụt has 8 letters and gets 6 more. How many letters in all?",
+            "choices": [
+              "14",
+              "13",
+              "2"
+            ]
+          }
+        },
+        {
+          "id": "so-nha",
+          "skill": "so-sanh-so",
+          "prompt": "Nhà số 47 và nhà số 74 cùng chờ thư. Nhà nào mang số lớn hơn?",
+          "choices": [
+            "nhà số 74",
+            "nhà số 47",
+            "bằng nhau"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Houses number 47 and 74 are waiting for post. Which house number is bigger?",
+            "choices": [
+              "house 74",
+              "house 47",
+              "they are equal"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Cánh Cụt Đưa Thư guards the street of the snowy village and asks {name} four riddles about letters, warm things and sums.",
+        "hook": [
+          "Waddle, waddle… post! Hello {name}, I'm Cánh Cụt Đưa Thư of the snowy village.",
+          "Today's postbag holds four riddles. Open them all and I'll give you my prettiest snow stamp."
+        ],
+        "choice": "Give me the post!",
+        "intro": "Here's the first snow-covered envelope: open it!",
+        "win": "Waddle… I slipped over and give up! {name} reads letters as fast as a snowstorm.",
+        "right": [
+          "Waddle waddle, that's right!",
+          "Spot on, the snow sparkles for you.",
+          "You read that letter without missing a word!"
+        ],
+        "wrong": [
+          "Slipped on the ice, try again.",
+          "Not right, read the letter again.",
+          "Nearly right, brush the snow off the question and read carefully."
+        ],
+        "reward": "Cánh Cụt Đưa Thư gives {name} a stamp printed with a six-pointed snowflake.",
+        "next": "Go up to the ski area, {name}: the fastest skier on the mountain is a zone guardian waiting there."
+      }
+    },
+    {
+      "quest": "ward-nui-tuyet-truot-tuyet",
+      "id": "gau-bac-truot-doc",
+      "name": "Gấu Bạc Trượt Dốc",
+      "look": "animal-polar",
+      "tint": "#d8e8f8",
+      "height": 2.3,
+      "zone": "Khu trượt tuyết",
+      "lessons": [
+        "vuot-ai-nui-tuyet"
+      ],
+      "learn": "Cộng, trừ có nhớ trong phạm vi 100, dãy số giảm dần, từ tiếng Anh về mùa đông",
+      "summary": "Gấu Bạc Trượt Dốc canh khu trượt tuyết, đố {name} bốn câu về vòng trượt, cờ cắm và tuyết.",
+      "hook": [
+        "Vèo… phanh! Suýt nữa thì đâm vào {name}. Ta là Gấu Bạc Trượt Dốc, nhanh nhất dốc này đấy.",
+        "Muốn trượt cùng ta thì thắng bốn câu đố trước đã nhé!"
+      ],
+      "choice": "Trượt đua thôi!",
+      "intro": "Cờ xuất phát phất lên, câu đố thứ nhất lao xuống dốc!",
+      "win": "Ta lăn tròn xuống chân dốc chịu thua rồi! {name} về đích trước ta.",
+      "right": [
+        "Vèo, về đích rồi!",
+        "Đúng rồi, cú trượt hoàn hảo!",
+        "Tuyết bắn tung tóe mừng câu trả lời của cậu!"
+      ],
+      "wrong": [
+        "Trượt chệch đường rồi, leo lên thử lại nhé.",
+        "Chưa đúng, nhớ đặt tính cẩn thận nhé.",
+        "Suýt về đích rồi, thêm một lượt nữa nào!"
+      ],
+      "reward": "Gấu Bạc Trượt Dốc tặng {name} cặp kính trượt tuyết tí hon màu bạc.",
+      "next": "Xuống hồ băng đi {name}, trùm canh khu ở đó đố toàn chuyện băng giá.",
+      "turns": [
+        {
+          "id": "vong-truot",
+          "skill": "phep-cong",
+          "prompt": "Gấu trượt 26 vòng buổi sáng và 38 vòng buổi chiều. Gấu trượt tất cả bao nhiêu vòng?",
+          "choices": [
+            "64",
+            "54",
+            "12"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Gấu skis 26 laps in the morning and 38 in the afternoon. How many laps in all?",
+            "choices": [
+              "64",
+              "54",
+              "12"
+            ]
+          }
+        },
+        {
+          "id": "co-doc",
+          "skill": "phep-tru",
+          "prompt": "Dốc trượt cắm 50 lá cờ, gió thổi đổ 17 lá. Còn bao nhiêu lá cờ đứng vững?",
+          "choices": [
+            "33",
+            "43",
+            "67"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "50 flags mark the slope and the wind knocks 17 over. How many are still standing?",
+            "choices": [
+              "33",
+              "43",
+              "67"
+            ]
+          }
+        },
+        {
+          "id": "giam-dan",
+          "skill": "logic",
+          "prompt": "Các cột mốc trên dốc ghi số giảm dần: 40, 35, 30, 25, … Cột tiếp theo ghi số mấy?",
+          "choices": [
+            "20",
+            "15",
+            "26"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The markers down the slope count down: 40, 35, 30, 25, … What is on the next marker?",
+            "choices": [
+              "20",
+              "15",
+              "26"
+            ]
+          }
+        },
+        {
+          "id": "snow",
+          "skill": "tu-vung",
+          "prompt": "Gấu Bạc reo lên «Snow!». «Snow» trong tiếng Anh là gì?",
+          "choices": [
+            "tuyết",
+            "mưa",
+            "gió"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Gấu Bạc shouts «Snow!». What is «snow» in Vietnamese?",
+            "choices": [
+              "tuyết",
+              "mưa",
+              "gió"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Gấu Bạc Trượt Dốc guards the ski area and asks {name} four riddles about ski laps, flags and snow.",
+        "hook": [
+          "Wheee… brake! I nearly crashed into {name}. I'm Gấu Bạc Trượt Dốc, the fastest on this slope.",
+          "To ski with me, first win four riddles!"
+        ],
+        "choice": "Let's race!",
+        "intro": "The start flag drops, and the first riddle zooms down the slope!",
+        "win": "I rolled all the way to the bottom and give up! {name} crossed the line before me.",
+        "right": [
+          "Wheee, over the finish line!",
+          "Right, a perfect run!",
+          "Snow sprays everywhere to cheer your answer!"
+        ],
+        "wrong": [
+          "Off the track, climb back up and try again.",
+          "Not right, set out the sum carefully.",
+          "Nearly at the finish, one more run!"
+        ],
+        "reward": "Gấu Bạc Trượt Dốc gives {name} a tiny pair of silver ski goggles.",
+        "next": "Go down to the frozen lake, {name}: its zone guardian asks all about ice and frost."
+      }
+    },
+    {
+      "quest": "ward-nui-tuyet-ho-bang",
+      "id": "cao-bac-ho-bang",
+      "name": "Cáo Bạc Hồ Băng",
+      "look": "animal-fox",
+      "tint": "#eef2ff",
+      "height": 2.0,
+      "zone": "Hồ băng",
+      "lessons": [
+        "nui-tuyet-ch1",
+        "vuot-ai-nui-tuyet"
+      ],
+      "learn": "Từ tiếng Anh về mùa đông, so sánh số, phép trừ trong phạm vi 20, đọc hiểu biển báo",
+      "summary": "Cáo Bạc Hồ Băng canh bờ hồ băng, đố {name} bốn câu về băng giá, số và biển báo an toàn.",
+      "hook": [
+        "Xin chào {name}! Ta là Cáo Bạc Hồ Băng, bộ lông bạc của ta lấp lánh như mặt hồ đóng băng.",
+        "Mặt hồ còn mỏng nên ta đứng trên bờ đố cậu bốn câu thôi nhé."
+      ],
+      "choice": "Đứng trên bờ đố nhé!",
+      "intro": "Băng kêu lách tách, câu đố thứ nhất trồi lên đây!",
+      "win": "Ta cúp đuôi chịu thua! {name} vừa giỏi vừa cẩn thận, đúng là bạn của hồ băng.",
+      "right": [
+        "Lách tách, đúng rồi!",
+        "Hay quá, mặt hồ sáng bừng lên!",
+        "Câu trả lời trong vắt như băng!"
+      ],
+      "wrong": [
+        "Băng nứt một chút rồi, chọn lại nhé.",
+        "Chưa đúng đâu, đọc kĩ biển báo xem.",
+        "Gần đúng rồi, so lại từng số nào."
+      ],
+      "reward": "Cáo Bạc Hồ Băng tặng {name} một viên đá băng không bao giờ tan, nằm trong chiếc lọ thủy tinh.",
+      "next": "Sang cửa hang băng đi {name}, trùm canh khu mạnh nhất núi đang chờ ở trạm thám hiểm.",
+      "turns": [
+        {
+          "id": "cold",
+          "skill": "tu-vung",
+          "prompt": "Gió hồ thổi qua, Cáo nói «It's cold!». «Cold» nghĩa là gì?",
+          "choices": [
+            "lạnh",
+            "nóng",
+            "ấm"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The lake wind blows and Cáo says «It's cold!». What is «cold» in Vietnamese?",
+            "choices": [
+              "lạnh",
+              "nóng",
+              "ấm"
+            ]
+          }
+        },
+        {
+          "id": "so-be-nhat",
+          "skill": "so-sanh-so",
+          "prompt": "Ba chiếc xe trượt mang số 92, 29 và 90. Xe mang số bé nhất là số mấy?",
+          "choices": [
+            "29",
+            "90",
+            "92"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Three sledges are numbered 92, 29 and 90. Which is the smallest number?",
+            "choices": [
+              "29",
+              "90",
+              "92"
+            ]
+          }
+        },
+        {
+          "id": "ca-duoi-bang",
+          "skill": "phep-tru",
+          "prompt": "Dưới lỗ băng có 16 con cá, 9 con bơi xuống đáy. Gần mặt nước còn mấy con?",
+          "choices": [
+            "7",
+            "8",
+            "25"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "There are 16 fish under the ice hole and 9 swim to the bottom. How many stay near the top?",
+            "choices": [
+              "7",
+              "8",
+              "25"
+            ]
+          }
+        },
+        {
+          "id": "bang-mong",
+          "skill": "doc-hieu",
+          "prompt": "Biển báo ghi: «Băng mỏng, không đi ra giữa hồ». Biển nhắc mọi người điều gì?",
+          "choices": [
+            "không ra giữa hồ",
+            "hãy ra giữa hồ",
+            "hồ rất ấm"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The sign says: «Thin ice, do not walk to the middle of the lake». What does it tell people?",
+            "choices": [
+              "don't go to the middle",
+              "go to the middle",
+              "the lake is warm"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Cáo Bạc Hồ Băng guards the frozen lake shore and asks {name} four riddles about ice, numbers and safety signs.",
+        "hook": [
+          "Hello {name}! I'm Cáo Bạc Hồ Băng, and my silver fur sparkles like the frozen lake.",
+          "The ice is still thin, so I'll stay on the shore and ask you just four riddles."
+        ],
+        "choice": "Ask me from the shore!",
+        "intro": "The ice crackles, and the first riddle pops up!",
+        "win": "I tuck my tail and give up! {name} is clever and careful, a true friend of the frozen lake.",
+        "right": [
+          "Crackle, that's right!",
+          "Brilliant, the lake is shining!",
+          "That answer is as clear as ice!"
+        ],
+        "wrong": [
+          "The ice cracked a little, choose again.",
+          "Not quite, read the warning sign again.",
+          "Nearly right, compare each number again."
+        ],
+        "reward": "Cáo Bạc Hồ Băng gives {name} an ice crystal that never melts, inside a little glass jar.",
+        "next": "Go to the ice cave entrance, {name}: the mountain's strongest zone guardian waits at the explorers' station."
+      }
+    },
+    {
+      "quest": "ward-nui-tuyet-hang-bang",
+      "id": "tuan-loc-tham-hiem",
+      "name": "Tuần Lộc Thám Hiểm",
+      "look": "animal-deer",
+      "tint": "#b07850",
+      "height": 2.4,
+      "zone": "Hang băng và trạm thám hiểm",
+      "lessons": [
+        "nui-tuyet-ch1",
+        "vuot-ai-nui-tuyet"
+      ],
+      "learn": "Cộng, trừ có nhớ trong phạm vi 100, từ tiếng Anh, dãy số giảm, đọc hiểu sổ thám hiểm",
+      "summary": "Tuần Lộc Thám Hiểm canh cửa hang băng, đố {name} năm câu về đoàn thám hiểm và đường vào hang.",
+      "hook": [
+        "Lục lạc leng keng! Ta là Tuần Lộc Thám Hiểm, ta dẫn đoàn vào hang băng mỗi sáng.",
+        "Ai muốn vào hang cùng đoàn phải qua năm câu đố của ta. {name} đã sẵn đèn chưa?"
+      ],
+      "choice": "Đèn sẵn rồi, đố đi!",
+      "intro": "Đèn pin bật sáng, câu đố thứ nhất hiện trên vách băng!",
+      "win": "Leng keng, ta chịu thua! {name} xứng đáng làm trưởng đoàn thám hiểm.",
+      "right": [
+        "Leng keng, đúng rồi!",
+        "Chuẩn xác, cả đoàn hoan hô cậu!",
+        "Câu trả lời sáng như đèn trong hang!"
+      ],
+      "wrong": [
+        "Lạc lối trong hang rồi, quay lại thử nhé.",
+        "Chưa đúng, đọc lại sổ thám hiểm xem.",
+        "Gần lối ra rồi, nghĩ thêm một chút nào!"
+      ],
+      "reward": "Tuần Lộc Thám Hiểm tặng {name} một chiếc huy hiệu thám hiểm hình ngọn núi tuyết.",
+      "next": "Bốn trùm canh khu đều đã gặp, {name} ra chặng cuối đấu với Cánh Cụt Hoàng Đế nhé.",
+      "turns": [
+        {
+          "id": "doan-tham-hiem",
+          "skill": "phep-cong",
+          "prompt": "Đoàn thám hiểm có 37 người, thêm 18 người đến sau. Đoàn có tất cả bao nhiêu người?",
+          "choices": [
+            "55",
+            "45",
+            "19"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The expedition has 37 people and 18 more join later. How many people in all?",
+            "choices": [
+              "55",
+              "45",
+              "19"
+            ]
+          }
+        },
+        {
+          "id": "den-pin",
+          "skill": "phep-tru",
+          "prompt": "Kho có 64 chiếc đèn pin, đã phát cho đoàn 28 chiếc. Kho còn bao nhiêu chiếc?",
+          "choices": [
+            "36",
+            "46",
+            "92"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The store has 64 torches and 28 are handed to the team. How many are left?",
+            "choices": [
+              "36",
+              "46",
+              "92"
+            ]
+          }
+        },
+        {
+          "id": "ice",
+          "skill": "tu-vung",
+          "prompt": "Tuần Lộc chỉ vào vách hang và nói «ice». «Ice» nghĩa là gì?",
+          "choices": [
+            "băng",
+            "lửa",
+            "đá cuội"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Tuần Lộc points at the cave wall and says «ice». What is «ice» in Vietnamese?",
+            "choices": [
+              "băng",
+              "lửa",
+              "đá cuội"
+            ]
+          }
+        },
+        {
+          "id": "chuc-giam",
+          "skill": "logic",
+          "prompt": "Các bậc thang vào hang ghi số: 90, 80, 70, … Bậc tiếp theo ghi số mấy?",
+          "choices": [
+            "60",
+            "50",
+            "71"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The steps into the cave are numbered 90, 80, 70, … What number is on the next step?",
+            "choices": [
+              "60",
+              "50",
+              "71"
+            ]
+          }
+        },
+        {
+          "id": "mu-den",
+          "skill": "doc-hieu",
+          "prompt": "Sổ thám hiểm ghi: «Vào hang phải đội mũ có đèn». Vì sao cần mũ có đèn?",
+          "choices": [
+            "vì trong hang tối",
+            "vì trời nóng",
+            "vì trời mưa"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The explorers' book says: «Wear a helmet with a lamp in the cave». Why?",
+            "choices": [
+              "because the cave is dark",
+              "because it is hot",
+              "because it is raining"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Tuần Lộc Thám Hiểm guards the ice cave entrance and asks {name} five riddles about the expedition and the way into the cave.",
+        "hook": [
+          "Jingle jingle! I'm Tuần Lộc Thám Hiểm, and I lead the team into the ice cave every morning.",
+          "Anyone who wants to join must pass my five riddles. Got your torch, {name}?"
+        ],
+        "choice": "Torch ready, ask away!",
+        "intro": "Torches on: the first riddle appears on the ice wall!",
+        "win": "Jingle jingle, I give up! {name} deserves to lead the expedition.",
+        "right": [
+          "Jingle jingle, that's right!",
+          "Exactly, the whole team cheers you!",
+          "That answer shines like a lamp in the cave!"
+        ],
+        "wrong": [
+          "Lost in the cave, go back and try again.",
+          "Not right, read the explorers' book again.",
+          "Close to the exit, think a bit more!"
+        ],
+        "reward": "Tuần Lộc Thám Hiểm gives {name} an explorer's badge shaped like a snowy peak.",
+        "next": "All four zone guardians met, {name}: head to the last stop and battle the Emperor Penguin."
+      }
+    }
+  ]
+}

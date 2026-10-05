@@ -24,9 +24,9 @@ describe('forest generator', () => {
     // from content/world/targets.json) is tagged with the chapters or the quest it belongs to.
     const ch1 = ['ancient-tree', 'animal-beaver', 'chest', 'clue-box', 'clue-letter', 'clue-mushroom', 'cong-trung-tam', 'gate-ch2', 'parrot-guide', 'stream-stones'];
     // The forest train's stops (rides to the glades and back), the characters who offer minigames (side quests)
-    // and the co-op challenge's host stand in every chapter too.
+    // the co-op challenge's host and the zone guardians stand in every chapter too.
     const table = sideQuestTableOf('khu-rung-bi-mat');
-    const givers = [...table.givers, ...table.hosts].map((g) => g.id);
+    const givers = [...table.givers, ...table.hosts, ...table.guardians].map((g) => g.id);
     expect(givers.length).toBeGreaterThanOrEqual(3);
     const untagged = parsed.interactables.filter((t) => t.chapter === undefined && t.chapters === undefined && !t.ride);
     expect(untagged.map((t) => t.id).sort()).toEqual([...ch1, ...givers].sort());

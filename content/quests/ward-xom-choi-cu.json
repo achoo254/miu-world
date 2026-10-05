@@ -1,0 +1,257 @@
+{
+  "id": "ward-xom-choi-cu",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Trùm canh khu: Hươu Nâu Con Dốc",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Hươu Nâu Con Dốc canh bãi cát cạnh căn chòi cũ, đố {name} bốn câu về ông bà và chính tả.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Hươu Nâu Con Dốc",
+    "where": "Chòi cũ bên bờ hồ và con dốc nhà ông",
+    "goal": "Thắng trận đố của Hươu Nâu Con Dốc",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Hươu Nâu Con Dốc vơi bớt sức",
+    "learn": "Từ chỉ dáng vẻ và hoạt động, chính tả ch/tr và ac/at",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Ra hồ sen và cánh đồng gió, trùm canh khu cuối cùng của xóm đang thả chong chóng chờ {name}."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Hươu Nâu Con Dốc",
+      "kind": "dialogue",
+      "target": "huou-nau-con-doc",
+      "lines": [
+        {
+          "speaker": "Hươu Nâu Con Dốc",
+          "text": "Hì hục, hì hục… ta là Hươu Nâu Con Dốc, ngày nào ta cũng đỡ ông leo con dốc đằng kia."
+        },
+        {
+          "speaker": "Hươu Nâu Con Dốc",
+          "text": "Giờ ông nghỉ trưa rồi, {name} đấu trí với ta bốn câu nhé. Câu đố nào cũng có ông bà đấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đố đi, Hươu Nâu!"
+        }
+      ],
+      "en": {
+        "title": "Meet Hươu Nâu Con Dốc",
+        "lines": [
+          "Huff, puff… I'm Hươu Nâu Con Dốc, and every day I help Grandpa climb that slope over there.",
+          "Grandpa's having his nap now, so battle me in four riddles, {name}. Every riddle has a grandparent in it."
+        ],
+        "choices": [
+          {
+            "text": "Ask away, Hươu Nâu!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Hươu Nâu Con Dốc",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "huou-nau-con-doc",
+      "bossId": "huou-nau-con-doc",
+      "bossName": "Hươu Nâu Con Dốc",
+      "introDialogue": "Nắng chiều trên bãi cát, câu đố thứ nhất đây!",
+      "winDialogue": "Ta chịu thua rồi! {name} hiếu thảo và giỏi chữ, ông bà chắc vui lắm.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "cham-rai",
+          "prompt": "Từ nào tả dáng vẻ của ông khi chống gậy leo dốc?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "chậm rãi"
+            },
+            {
+              "id": "b",
+              "text": "cái gậy"
+            },
+            {
+              "id": "c",
+              "text": "con dốc"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which word describes how Grandpa looks as he climbs the slope with his stick?",
+            "choices": [
+              "chậm rãi (slow and steady)",
+              "cái gậy (the stick)",
+              "con dốc (the slope)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "ch-tr-tre",
+          "prompt": "Điền ch hay tr: «bụi …e trước ngõ nhà ông»?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ch"
+            },
+            {
+              "id": "b",
+              "text": "tr"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "ch or tr: «bụi …e trước ngõ nhà ông» (the bamboo clump in front of Grandpa's lane)?",
+            "choices": [
+              "ch",
+              "tr"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        },
+        {
+          "id": "ac-at",
+          "prompt": "Vần ac hay at: «bãi c… vàng ven hồ»?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ac"
+            },
+            {
+              "id": "b",
+              "text": "at"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "ac or at: «bãi c… vàng ven hồ» (the yellow sand by the lake)?",
+            "choices": [
+              "ac",
+              "at"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        },
+        {
+          "id": "om-chau",
+          "prompt": "Cháu về chơi, bà chạy ra cổng đón. Từ nào chỉ hoạt động của bà?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ôm cháu"
+            },
+            {
+              "id": "b",
+              "text": "cánh cửa"
+            },
+            {
+              "id": "c",
+              "text": "hiền hậu"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "You come to visit and Grandma runs to the gate. Which words tell what Grandma does?",
+            "choices": [
+              "ôm cháu (hugs you)",
+              "cánh cửa (the door)",
+              "hiền hậu (kind)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Đúng rồi, sừng ta lắc lư mừng cậu!",
+          "Giỏi quá, ông ngồi trong chòi cũng gật gù khen.",
+          "Câu trả lời ấm áp như vòng tay của bà!"
+        ],
+        "wrong": [
+          "Trượt chân trên dốc rồi, đứng dậy thử lại nhé.",
+          "Chưa đúng đâu, cậu đọc thật chậm xem.",
+          "Gần lắm rồi, nghĩ thêm một bước nữa thôi."
+        ],
+        "en": {
+          "right": [
+            "Right, my antlers are swaying for you!",
+            "Brilliant, Grandpa is nodding from the hut.",
+            "That answer is as warm as Grandma's hug!"
+          ],
+          "wrong": [
+            "Slipped on the slope, get up and try again.",
+            "Not right, read it really slowly.",
+            "So close, just one more step."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Hươu Nâu Con Dốc",
+        "bossName": "Hươu Nâu Con Dốc",
+        "introDialogue": "Afternoon sun on the sand: here's the first riddle!",
+        "winDialogue": "I give up! {name} is so caring and good with words, your grandparents must be proud."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Hươu Nâu Con Dốc",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hươu Nâu Con Dốc tặng {name} một chiếc gậy trúc nhỏ, mang về tặng ông nhé.",
+      "en": {
+        "title": "Hươu Nâu Con Dốc's gift",
+        "text": "Hươu Nâu Con Dốc gives {name} a little bamboo walking stick to take home for Grandpa."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Hươu Nâu Con Dốc",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ra hồ sen và cánh đồng gió, trùm canh khu cuối cùng của xóm đang thả chong chóng chờ {name}.",
+      "en": {
+        "title": "Goodbye, Hươu Nâu Con Dốc",
+        "text": "Out at the lotus lake and windy fields, the hamlet's last zone guardian is spinning pinwheels for {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "tu-ngu": 1,
+      "chinh-ta": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Hươu Nâu Con Dốc",
+    "summary": "Hươu Nâu Con Dốc guards the sandy shore by the old hut and asks {name} four riddles about grandparents and spelling."
+  }
+}

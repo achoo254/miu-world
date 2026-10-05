@@ -1,0 +1,268 @@
+{
+  "id": "ward-khu-rung-trang-tay-bac",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Trùm canh khu: Nai Gác Đồng Cỏ",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Nai Gác Đồng Cỏ giữ lối vào trảng rừng phía tây bắc. {name} thắng bốn câu đố chữ nghĩa để nai mở lối.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Nai Gác Đồng Cỏ",
+    "where": "Trảng rừng phía tây bắc",
+    "goal": "Thắng trận đố của Nai Gác Đồng Cỏ",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Nai Gác Đồng Cỏ vơi bớt sức",
+    "learn": "Chính tả c/k và vần ươu, từ chỉ hoạt động, dấu chấm hỏi",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Trảng rừng phía đông bắc còn một trùm canh khu nữa đang chờ {name}."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Nai Gác Đồng Cỏ",
+      "kind": "dialogue",
+      "target": "nai-gac-dong-co",
+      "lines": [
+        {
+          "speaker": "Nai Gác Đồng Cỏ",
+          "text": "Khoan đã, {name}! Ta là Nai Gác Đồng Cỏ, ai qua trảng rừng này cũng phải đấu trí với ta một trận."
+        },
+        {
+          "speaker": "Nai Gác Đồng Cỏ",
+          "text": "Thua cũng chẳng mất gì đâu, đúng câu nào ta vơi sức câu ấy. Cậu dám thử không?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ thử ngay!"
+        }
+      ],
+      "en": {
+        "title": "Meet Nai Gác Đồng Cỏ",
+        "lines": [
+          "Hold on, {name}! I'm Nai Gác Đồng Cỏ, and everyone who crosses this glade has a battle of wits with me.",
+          "You lose nothing if you miss, and every right answer wears me down. Dare to try?"
+        ],
+        "choices": [
+          {
+            "text": "I'll try right now!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Nai Gác Đồng Cỏ",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "nai-gac-dong-co",
+      "bossId": "nai-gac-dong-co",
+      "bossName": "Nai Gác Đồng Cỏ",
+      "introDialogue": "Bốn câu đố chữ nghĩa đây, vừa nghe cỏ reo vừa trả lời nhé!",
+      "winDialogue": "Ta chịu rồi! {name} đọc nhanh viết đúng, trảng cỏ này mở lối cho cậu.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "k-truoc-e",
+          "prompt": "Nai Gác Đồng Cỏ hỏi: chữ nào điền vào chỗ trống trong «…ể chuyện» cho đúng?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "c"
+            },
+            {
+              "id": "b",
+              "text": "k"
+            },
+            {
+              "id": "c",
+              "text": "q"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which letter fills the gap in «…ể chuyện» (to tell a story)?",
+            "choices": [
+              "c",
+              "k",
+              "q"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        },
+        {
+          "id": "van-uou",
+          "prompt": "Tên con vật nào trên trảng cỏ được viết đúng vần ươu?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "con hươu"
+            },
+            {
+              "id": "b",
+              "text": "con hiêu"
+            },
+            {
+              "id": "c",
+              "text": "con hưu"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which meadow animal's name is spelt with the right «ươu» rhyme?",
+            "choices": [
+              "con hươu",
+              "con hiêu",
+              "con hưu"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "tu-hoat-dong",
+          "prompt": "Trong câu «Đàn bò thong thả gặm cỏ bên suối», từ nào chỉ hoạt động?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "đàn bò"
+            },
+            {
+              "id": "b",
+              "text": "gặm cỏ"
+            },
+            {
+              "id": "c",
+              "text": "bên suối"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "In «Đàn bò thong thả gặm cỏ bên suối» (the cows graze by the stream), which words name an action?",
+            "choices": [
+              "đàn bò (the cows)",
+              "gặm cỏ (graze)",
+              "bên suối (by the stream)"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        },
+        {
+          "id": "dau-hoi",
+          "prompt": "Câu «Mai cậu có ghé trảng cỏ chơi không» cần đặt dấu gì ở cuối?",
+          "skill": "dau-cau",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Dấu chấm"
+            },
+            {
+              "id": "b",
+              "text": "Dấu chấm hỏi"
+            },
+            {
+              "id": "c",
+              "text": "Dấu phẩy"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which mark ends «Mai cậu có ghé trảng cỏ chơi không» (will you visit the meadow tomorrow)?",
+            "choices": [
+              "Full stop",
+              "Question mark",
+              "Comma"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Ui da, trúng ngay câu ta đắc ý nhất!",
+          "Câu này cậu trả lời ngọt như cỏ non buổi sớm.",
+          "Giỏi quá, đôi sừng của ta run run rồi đây!"
+        ],
+        "wrong": [
+          "Chưa trúng đâu, nhìn kĩ từng chữ thêm chút nhé.",
+          "Gió thổi lệch mất rồi, cậu chọn lại đi.",
+          "Gần lắm rồi, đọc chậm lại một lượt xem sao."
+        ],
+        "en": {
+          "right": [
+            "Ouch, you got my favourite riddle right!",
+            "You answered that one as sweetly as fresh morning grass.",
+            "Brilliant, my antlers are trembling now!"
+          ],
+          "wrong": [
+            "Not quite, look at each letter a little more closely.",
+            "The wind blew that one off course, pick again.",
+            "So close, read it slowly once more."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Nai Gác Đồng Cỏ",
+        "bossName": "Nai Gác Đồng Cỏ",
+        "introDialogue": "Here are four word riddles: listen to the grass rustle and answer!",
+        "winDialogue": "I give up! {name} reads fast and spells right, so the glade is open to you."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Nai Gác Đồng Cỏ",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Nai Gác Đồng Cỏ tặng {name} một túi hạt cỏ thơm, hẹn đấu lại bất cứ lúc nào.",
+      "en": {
+        "title": "Nai Gác Đồng Cỏ's gift",
+        "text": "Nai Gác Đồng Cỏ gives {name} a bag of sweet grass seeds and says you can battle again any time."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Nai Gác Đồng Cỏ",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Trảng rừng phía đông bắc còn một trùm canh khu nữa đang chờ {name}.",
+      "en": {
+        "title": "Goodbye, Nai Gác Đồng Cỏ",
+        "text": "Another zone guardian is waiting for {name} in the north-east glade."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "chinh-ta": 1,
+      "tu-ngu": 1,
+      "dau-cau": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Nai Gác Đồng Cỏ",
+    "summary": "Nai Gác Đồng Cỏ guards the way into the north-west glade. {name} wins four word riddles and the stag opens the way."
+  }
+}

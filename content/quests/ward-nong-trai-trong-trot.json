@@ -1,0 +1,267 @@
+{
+  "id": "ward-nong-trai-trong-trot",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Trùm canh khu: Lợn Rừng Đếm Bắp",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Lợn Rừng Đếm Bắp canh khu trồng trọt, đố {name} bốn câu cộng có nhớ với bắp ngô và cà chua.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Lợn Rừng Đếm Bắp",
+    "where": "Khu trồng trọt",
+    "goal": "Thắng trận đố của Lợn Rừng Đếm Bắp",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Lợn Rừng Đếm Bắp vơi bớt sức",
+    "learn": "Phép cộng có nhớ trong phạm vi 100, bài toán có lời văn",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Sang khu chăn nuôi đi {name}, trùm canh khu ở đó chuyên đố phép trừ có nhớ."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Lợn Rừng Đếm Bắp",
+      "kind": "dialogue",
+      "target": "lon-rung-dem-bap",
+      "lines": [
+        {
+          "speaker": "Lợn Rừng Đếm Bắp",
+          "text": "Ụt ịt! {name} ơi, ta là Lợn Rừng Đếm Bắp, ruộng ngô này bắp nào ta cũng đếm thuộc lòng."
+        },
+        {
+          "speaker": "Lợn Rừng Đếm Bắp",
+          "text": "Đếm nhiều quá ta muốn có bạn đố cùng. Bốn câu cộng có nhớ, cậu dám không?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Ụt ịt, tớ dám!"
+        }
+      ],
+      "en": {
+        "title": "Meet Lợn Rừng Đếm Bắp",
+        "lines": [
+          "Oink oink! {name}, I'm Lợn Rừng Đếm Bắp, and I know every cob in this cornfield by heart.",
+          "All that counting makes me want a riddle friend. Four carrying sums, dare you?"
+        ],
+        "choices": [
+          {
+            "text": "Oink, I dare!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Lợn Rừng Đếm Bắp",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "lon-rung-dem-bap",
+      "bossId": "lon-rung-dem-bap",
+      "bossName": "Lợn Rừng Đếm Bắp",
+      "introDialogue": "Bắp ngô thứ nhất bẻ xuống, câu đố nằm trong lớp vỏ đây!",
+      "winDialogue": "Ụt ịt, ta chịu thua rồi! {name} cộng có nhớ mà không quên nhớ lần nào.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "bap-ngo",
+          "prompt": "Ruộng có 36 bắp ngô đã hái, hái thêm 7 bắp nữa. Có tất cả bao nhiêu bắp ngô?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "43"
+            },
+            {
+              "id": "b",
+              "text": "33"
+            },
+            {
+              "id": "c",
+              "text": "42"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "36 corn cobs are picked, then 7 more. How many cobs in all?",
+            "choices": [
+              "43",
+              "33",
+              "42"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "ca-chua",
+          "prompt": "Bác nông dân hái 48 quả cà chua buổi sáng và 25 quả buổi chiều. Cả ngày bác hái bao nhiêu quả?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "73"
+            },
+            {
+              "id": "b",
+              "text": "63"
+            },
+            {
+              "id": "c",
+              "text": "23"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The farmer picks 48 tomatoes in the morning and 25 in the afternoon. How many in the whole day?",
+            "choices": [
+              "73",
+              "63",
+              "23"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "nham-59-6",
+          "prompt": "Lợn Rừng tính nhẩm 59 + 6. Kết quả đúng là bao nhiêu?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "65"
+            },
+            {
+              "id": "b",
+              "text": "55"
+            },
+            {
+              "id": "c",
+              "text": "515"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Lợn Rừng works out 59 + 6 in his head. What is the right answer?",
+            "choices": [
+              "65",
+              "55",
+              "515"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "bao-thoc",
+          "prompt": "Kho có 27 bao thóc, xe chở về thêm 35 bao. Kho có tất cả bao nhiêu bao thóc?",
+          "skill": "bai-toan-loi-van",
+          "choices": [
+            {
+              "id": "a",
+              "text": "62"
+            },
+            {
+              "id": "b",
+              "text": "52"
+            },
+            {
+              "id": "c",
+              "text": "8"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The barn has 27 sacks of rice, and a cart brings 35 more. How many sacks in all?",
+            "choices": [
+              "62",
+              "52",
+              "8"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Ụt ịt, cộng chuẩn luôn!",
+          "Đúng rồi, nhớ một sang hàng chục khéo ghê!",
+          "Bắp ngô vàng rực mừng cậu đây!"
+        ],
+        "wrong": [
+          "Quên nhớ một rồi, cộng lại nhé.",
+          "Chưa đúng, đặt tính thẳng cột xem.",
+          "Gần đúng rồi, kiểm lại hàng đơn vị nào."
+        ],
+        "en": {
+          "right": [
+            "Oink, added up perfectly!",
+            "Right, you carried the one to the tens so neatly!",
+            "A golden cob to celebrate!"
+          ],
+          "wrong": [
+            "You forgot to carry the one, add again.",
+            "Not right, line up the columns.",
+            "Nearly right, check the ones again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Lợn Rừng Đếm Bắp",
+        "bossName": "Lợn Rừng Đếm Bắp",
+        "introDialogue": "The first cob is picked, and the riddle is inside the husk!",
+        "winDialogue": "Oink, I give up! {name} never forgets to carry the one."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Lợn Rừng Đếm Bắp",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Lợn Rừng Đếm Bắp tặng {name} một bắp ngô nếp luộc thơm phức, ăn xong ghé đấu tiếp nhé.",
+      "en": {
+        "title": "Lợn Rừng Đếm Bắp's gift",
+        "text": "Lợn Rừng Đếm Bắp gives {name} a hot boiled cob of sticky corn. Come back for another battle after your snack."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Lợn Rừng Đếm Bắp",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sang khu chăn nuôi đi {name}, trùm canh khu ở đó chuyên đố phép trừ có nhớ.",
+      "en": {
+        "title": "Goodbye, Lợn Rừng Đếm Bắp",
+        "text": "Go to the livestock area, {name}: its zone guardian loves take-away riddles with exchanging."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "phep-cong": 1,
+      "bai-toan-loi-van": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Lợn Rừng Đếm Bắp",
+    "summary": "Lợn Rừng Đếm Bắp guards the crop fields and asks {name} four carrying-over sums about corn and tomatoes."
+  }
+}

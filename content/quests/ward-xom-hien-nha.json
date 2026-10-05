@@ -1,0 +1,258 @@
+{
+  "id": "ward-xom-hien-nha",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Trùm canh khu: Mèo Đêm Trăng",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Mèo Đêm Trăng canh ngõ nhỏ ánh trăng, đố {name} bốn câu về tình thương của mẹ, lời biết ơn và chính tả.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Đêm Trăng",
+    "where": "Hiên nhà đêm trăng và hang đá",
+    "goal": "Thắng trận đố của Mèo Đêm Trăng",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Mèo Đêm Trăng vơi bớt sức",
+    "learn": "Từ chỉ hoạt động, lời biết ơn, chính tả l/n và ao/au",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Xuống bờ hồ có căn chòi cũ, trùm canh khu ở đó thương ông bà lắm, {name} ghé nhé."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Mèo Đêm Trăng",
+      "kind": "dialogue",
+      "target": "meo-dem-trang",
+      "lines": [
+        {
+          "speaker": "Mèo Đêm Trăng",
+          "text": "Meo… trăng sáng quá phải không {name}? Ta là Mèo Đêm Trăng, đêm nào ta cũng ngồi đếm sao ở đây."
+        },
+        {
+          "speaker": "Mèo Đêm Trăng",
+          "text": "Ngồi một mình buồn lắm, cậu đấu trí với ta bốn câu nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Ngồi đố cùng Mèo nào!"
+        }
+      ],
+      "en": {
+        "title": "Meet Mèo Đêm Trăng",
+        "lines": [
+          "Meow… isn't the moon bright, {name}? I'm Mèo Đêm Trăng, and every night I sit here counting stars.",
+          "It's lonely on my own, so have a battle of wits with me: four riddles."
+        ],
+        "choices": [
+          {
+            "text": "Let's do riddles, Mèo!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Mèo Đêm Trăng",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "meo-dem-trang",
+      "bossId": "meo-dem-trang",
+      "bossName": "Mèo Đêm Trăng",
+      "introDialogue": "Ánh trăng chiếu xuống, câu đố thứ nhất hiện ra kìa!",
+      "winDialogue": "Ta cuộn tròn chịu thua! {name} sáng dạ như trăng rằm.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "me-quat",
+          "prompt": "Đêm hè nóng, mẹ thức canh cho em ngủ. Từ nào chỉ hoạt động của mẹ?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "quạt mát"
+            },
+            {
+              "id": "b",
+              "text": "ngọn đèn"
+            },
+            {
+              "id": "c",
+              "text": "dịu dàng"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "On a hot summer night mum stays up while you sleep. Which words tell what mum does (an action)?",
+            "choices": [
+              "quạt mát (fans you cool)",
+              "ngọn đèn (the lamp)",
+              "dịu dàng (gentle)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "biet-on-ba",
+          "prompt": "Em được bà tặng quà. Câu nào nói lời biết ơn?",
+          "skill": "cau",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Cháu cảm ơn bà ạ!"
+            },
+            {
+              "id": "b",
+              "text": "Quà này của ai?"
+            },
+            {
+              "id": "c",
+              "text": "Cháu không thích."
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Grandma gives you a present. Which sentence says thank you?",
+            "choices": [
+              "Cháu cảm ơn bà ạ! (Thank you, Grandma!)",
+              "Quà này của ai? (Whose present is this?)",
+              "Cháu không thích. (I don't like it.)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "l-n-noi",
+          "prompt": "Điền l hay n: «…ồi cơm mẹ nấu thơm phức»?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "l"
+            },
+            {
+              "id": "b",
+              "text": "n"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "l or n: «…ồi cơm mẹ nấu thơm phức» (the pot of rice mum cooks smells lovely)?",
+            "choices": [
+              "l",
+              "n"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        },
+        {
+          "id": "ao-au",
+          "prompt": "Vần ao hay au: «bố dùng con d… gọt quả cho em»?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ao"
+            },
+            {
+              "id": "b",
+              "text": "au"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "ao or au: «bố dùng con d… gọt quả cho em» (dad peels fruit with a knife)?",
+            "choices": [
+              "ao",
+              "au"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Meo, sáng như trăng rằm!",
+          "Đúng rồi, ta đếm thêm một ngôi sao cho cậu.",
+          "Câu trả lời dịu dàng như gió đêm hè."
+        ],
+        "wrong": [
+          "Mây che mất trăng rồi, chọn lại nhé.",
+          "Chưa đúng, cậu nghĩ về những người thân trong nhà xem.",
+          "Suýt đúng, đọc lại câu hỏi dưới ánh trăng nào."
+        ],
+        "en": {
+          "right": [
+            "Meow, bright as a full moon!",
+            "Right, I'll count one more star for you.",
+            "That answer is as gentle as a summer night breeze."
+          ],
+          "wrong": [
+            "A cloud hid the moon, choose again.",
+            "Not right, think about the people in your family.",
+            "Nearly right, read the question again by moonlight."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Mèo Đêm Trăng",
+        "bossName": "Mèo Đêm Trăng",
+        "introDialogue": "The moonlight shines down, and look, the first riddle appears!",
+        "winDialogue": "I curl up and give up! {name} is as bright as the full moon."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Mèo Đêm Trăng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo Đêm Trăng tặng {name} một ngôi sao giấy phát sáng để treo ở đầu giường.",
+      "en": {
+        "title": "Mèo Đêm Trăng's gift",
+        "text": "Mèo Đêm Trăng gives {name} a glow-in-the-dark paper star to hang over your bed."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Mèo Đêm Trăng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Xuống bờ hồ có căn chòi cũ, trùm canh khu ở đó thương ông bà lắm, {name} ghé nhé.",
+      "en": {
+        "title": "Goodbye, Mèo Đêm Trăng",
+        "text": "Down by the lake there's an old hut, and its zone guardian loves grandparents dearly, {name}, pay a visit."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "tu-ngu": 1,
+      "cau": 1,
+      "chinh-ta": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Mèo Đêm Trăng",
+    "summary": "Mèo Đêm Trăng guards the moonlit lane and asks {name} four riddles about a mother's love, saying thank you and spelling."
+  }
+}

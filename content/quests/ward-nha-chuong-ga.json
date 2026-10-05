@@ -1,0 +1,300 @@
+{
+  "id": "ward-nha-chuong-ga",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Trùm canh khu: Gà Mơ Giữ Ổ",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Gà Mơ Giữ Ổ canh chuồng gà sau nhà, đố {name} năm câu về trứng, thóc và lời bà dặn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Gà Mơ Giữ Ổ",
+    "where": "Chuồng gà sau nhà",
+    "goal": "Thắng trận đố của Gà Mơ Giữ Ổ",
+    "play": "Trả lời 5 câu đố, mỗi câu đúng làm Gà Mơ Giữ Ổ vơi bớt sức",
+    "learn": "Phép cộng trong phạm vi 20, so sánh số, từ chỉ con vật, đọc hiểu lời dặn",
+    "reward": "50 XP, 12 Xu mỗi lần thắng",
+    "next": "Gặp đủ ba trùm canh khu rồi, {name} vào nhà đấu với Mèo Đại Vương Bánh Bao nhé."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Gà Mơ Giữ Ổ",
+      "kind": "dialogue",
+      "target": "ga-mo-giu-o",
+      "lines": [
+        {
+          "speaker": "Gà Mơ Giữ Ổ",
+          "text": "Cục cục… {name} đến thăm ổ trứng của ta à? Ta là Gà Mơ Giữ Ổ, ta canh chuồng gà sau nhà."
+        },
+        {
+          "speaker": "Gà Mơ Giữ Ổ",
+          "text": "Ai muốn xem trứng thì phải đấu với ta năm câu. Trứng nở ra câu đố đấy!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cho tớ xem trứng nở nào!"
+        }
+      ],
+      "en": {
+        "title": "Meet Gà Mơ Giữ Ổ",
+        "lines": [
+          "Cluck cluck… has {name} come to see my eggs? I'm Gà Mơ Giữ Ổ, and I guard the henhouse behind the house.",
+          "Whoever wants to see the eggs must battle me in five riddles. My eggs hatch riddles!"
+        ],
+        "choices": [
+          {
+            "text": "Let me see them hatch!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Gà Mơ Giữ Ổ",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "ga-mo-giu-o",
+      "bossId": "ga-mo-giu-o",
+      "bossName": "Gà Mơ Giữ Ổ",
+      "introDialogue": "Lách cách, quả trứng thứ nhất nứt vỏ, câu đố chui ra!",
+      "winDialogue": "Cục tác, ta nhường ổ chịu thua! {name} chăm chỉ và thông minh quá.",
+      "maxHp": 500,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "trung-hai-ngay",
+          "prompt": "Gà Mơ đẻ 5 quả trứng hôm qua và 9 quả hôm nay. Có tất cả bao nhiêu quả trứng?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "14"
+            },
+            {
+              "id": "b",
+              "text": "13"
+            },
+            {
+              "id": "c",
+              "text": "4"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Gà Mơ laid 5 eggs yesterday and 9 today. How many eggs in all?",
+            "choices": [
+              "14",
+              "13",
+              "4"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "o-lon-nhat",
+          "prompt": "Ba ổ rơm đánh số 48, 84 và 80. Ổ mang số lớn nhất là số mấy?",
+          "skill": "so-sanh-so",
+          "choices": [
+            {
+              "id": "a",
+              "text": "84"
+            },
+            {
+              "id": "b",
+              "text": "80"
+            },
+            {
+              "id": "c",
+              "text": "48"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Three straw nests are numbered 48, 84 and 80. Which is the biggest number?",
+            "choices": [
+              "84",
+              "80",
+              "48"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "vat-nuoi",
+          "prompt": "Từ nào gọi tên một con vật được nuôi trong nhà?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "con gà"
+            },
+            {
+              "id": "b",
+              "text": "cái ổ"
+            },
+            {
+              "id": "c",
+              "text": "cục tác"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which word names an animal kept at home?",
+            "choices": [
+              "con gà (a hen)",
+              "cái ổ (a nest)",
+              "cục tác (cluck)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "dong-cua-chuong",
+          "prompt": "Bà dặn: «Nhặt trứng xong nhớ đóng cửa chuồng». Nhặt trứng xong bé làm gì?",
+          "skill": "doc-hieu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "đóng cửa chuồng"
+            },
+            {
+              "id": "b",
+              "text": "mở toang cửa chuồng"
+            },
+            {
+              "id": "c",
+              "text": "đi ngủ ngay"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Grandma says: «After collecting the eggs, remember to shut the coop». What does the child do after collecting the eggs?",
+            "choices": [
+              "shut the coop",
+              "open the coop wide",
+              "go straight to bed"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "hat-thoc",
+          "prompt": "Bé có 12 hạt thóc, bà cho thêm 7 hạt để rắc cho gà. Bé có bao nhiêu hạt thóc?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "19"
+            },
+            {
+              "id": "b",
+              "text": "18"
+            },
+            {
+              "id": "c",
+              "text": "5"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The child has 12 grains of rice and Grandma gives 7 more for the hens. How many grains now?",
+            "choices": [
+              "19",
+              "18",
+              "5"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Cục tác, đúng rồi!",
+          "Hay quá, gà con chiêm chiếp khen cậu.",
+          "Câu trả lời ấm như ổ rơm!"
+        ],
+        "wrong": [
+          "Trứng chưa nở, thử lại nhé.",
+          "Chưa đúng, đếm lại từng hạt thóc xem.",
+          "Gần đúng rồi, ấp thêm chút suy nghĩ nào!"
+        ],
+        "en": {
+          "right": [
+            "Cluck-cluck, that's right!",
+            "Brilliant, the chicks are cheeping for you.",
+            "That answer is as warm as a straw nest!"
+          ],
+          "wrong": [
+            "The egg hasn't hatched, try again.",
+            "Not right, count each grain again.",
+            "Nearly right, sit on it a little longer!"
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Gà Mơ Giữ Ổ",
+        "bossName": "Gà Mơ Giữ Ổ",
+        "introDialogue": "Crack, the first egg breaks open and out comes a riddle!",
+        "winDialogue": "Cluck-cluck, I give up my nest! {name} is so hard-working and clever."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Gà Mơ Giữ Ổ",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gà Mơ Giữ Ổ tặng {name} một chiếc lông vũ màu mơ, cài lên mũ là đẹp nhất xóm.",
+      "en": {
+        "title": "Gà Mơ Giữ Ổ's gift",
+        "text": "Gà Mơ Giữ Ổ gives {name} an apricot-coloured feather: tuck it in your hat and you'll be the smartest in the neighbourhood."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Gà Mơ Giữ Ổ",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Gặp đủ ba trùm canh khu rồi, {name} vào nhà đấu với Mèo Đại Vương Bánh Bao nhé.",
+      "en": {
+        "title": "Goodbye, Gà Mơ Giữ Ổ",
+        "text": "All three zone guardians met, {name}: go inside and battle the Great Bun Cat King."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 50,
+    "coin": 12,
+    "skillXp": {
+      "phep-cong": 1,
+      "so-sanh-so": 1,
+      "tu-ngu": 1,
+      "doc-hieu": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Gà Mơ Giữ Ổ",
+    "summary": "Gà Mơ Giữ Ổ guards the henhouse behind the house and asks {name} five riddles about eggs, grain and Grandma's reminder."
+  }
+}

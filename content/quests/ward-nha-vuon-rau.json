@@ -1,0 +1,269 @@
+{
+  "id": "ward-nha-vuon-rau",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Trùm canh khu: Thỏ Bông Giữ Luống",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Thỏ Bông Giữ Luống canh vườn rau cạnh nhà, đố {name} bốn câu về rau, cây con và lời mẹ dặn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Thỏ Bông Giữ Luống",
+    "where": "Vườn rau cạnh nhà",
+    "goal": "Thắng trận đố của Thỏ Bông Giữ Luống",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Thỏ Bông Giữ Luống vơi bớt sức",
+    "learn": "Từ chỉ sự vật, phép cộng trong phạm vi 20, so sánh số, đọc hiểu lời dặn",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Ra cầu tàu bên ao đi {name}, có trùm canh khu đang ngồi câu cá chờ cậu."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Thỏ Bông Giữ Luống",
+      "kind": "dialogue",
+      "target": "tho-bong-giu-luong",
+      "lines": [
+        {
+          "speaker": "Thỏ Bông Giữ Luống",
+          "text": "Ơ, {name} về rồi! Tớ là Thỏ Bông Giữ Luống, tớ trông vườn rau giúp cả nhà đấy."
+        },
+        {
+          "speaker": "Thỏ Bông Giữ Luống",
+          "text": "Tớ hứa không ăn vụng cà rốt, nhưng tớ thèm đố vui lắm. Bốn câu nhé?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Bốn câu thì nhằm nhò gì!"
+        }
+      ],
+      "en": {
+        "title": "Meet Thỏ Bông Giữ Luống",
+        "lines": [
+          "Oh, {name} is home! I'm Thỏ Bông Giữ Luống, and I look after the vegetable garden for the whole family.",
+          "I promise not to nibble the carrots, but I'm dying for some riddles. Four of them?"
+        ],
+        "choices": [
+          {
+            "text": "Four? Easy!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Thỏ Bông Giữ Luống",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "tho-bong-giu-luong",
+      "bossId": "tho-bong-giu-luong",
+      "bossName": "Thỏ Bông Giữ Luống",
+      "introDialogue": "Tai tớ vểnh lên rồi, câu đố thứ nhất mọc lên giữa luống đây!",
+      "winDialogue": "Tớ chịu thua rồi! {name} chăm vườn giỏi, đố cũng giỏi.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "ten-rau",
+          "prompt": "Từ nào gọi tên một loại rau đang lớn trong vườn nhà?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "bắp cải"
+            },
+            {
+              "id": "b",
+              "text": "tưới nước"
+            },
+            {
+              "id": "c",
+              "text": "xanh mướt"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which word names a vegetable growing in the home garden?",
+            "choices": [
+              "bắp cải (cabbage)",
+              "tưới nước (water)",
+              "xanh mướt (lush green)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "cay-cai",
+          "prompt": "Luống rau có 7 cây cải, Thỏ trồng thêm 6 cây. Luống có tất cả bao nhiêu cây?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "13"
+            },
+            {
+              "id": "b",
+              "text": "12"
+            },
+            {
+              "id": "c",
+              "text": "1"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The bed has 7 mustard plants and Thỏ plants 6 more. How many plants in all?",
+            "choices": [
+              "13",
+              "12",
+              "1"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "ro-nhieu-hon",
+          "prompt": "Rổ cà chua có 25 quả, rổ cà rốt có 52 củ. Rổ nào có nhiều hơn?",
+          "skill": "so-sanh-so",
+          "choices": [
+            {
+              "id": "a",
+              "text": "rổ cà rốt"
+            },
+            {
+              "id": "b",
+              "text": "rổ cà chua"
+            },
+            {
+              "id": "c",
+              "text": "hai rổ bằng nhau"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The tomato basket has 25 and the carrot basket has 52. Which basket has more?",
+            "choices": [
+              "the carrots",
+              "the tomatoes",
+              "they are the same"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "loi-dan",
+          "prompt": "Mẹ dặn: «Chiều nay con tưới rau trước khi trời tối nhé». Bé cần làm gì?",
+          "skill": "doc-hieu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "tưới rau trước khi tối"
+            },
+            {
+              "id": "b",
+              "text": "nhổ hết rau"
+            },
+            {
+              "id": "c",
+              "text": "tưới rau lúc nửa đêm"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Mum says: «Water the vegetables before it gets dark this afternoon». What should the child do?",
+            "choices": [
+              "water them before dark",
+              "pull up all the vegetables",
+              "water them at midnight"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Giòn như cà rốt, đúng rồi!",
+          "Hay quá, luống rau xanh mướt mừng cậu.",
+          "Chuẩn luôn, tớ nhảy tưng tưng đây!"
+        ],
+        "wrong": [
+          "Nhổ nhầm cây rồi, chọn lại nhé.",
+          "Chưa đúng, đếm lại từng cây xem.",
+          "Gần đúng rồi, tưới thêm chút suy nghĩ nào!"
+        ],
+        "en": {
+          "right": [
+            "Crunchy as a carrot, that's right!",
+            "Lovely, the vegetable beds are glowing green for you.",
+            "Spot on, I'm bouncing up and down!"
+          ],
+          "wrong": [
+            "Pulled up the wrong plant, choose again.",
+            "Not right, count each plant again.",
+            "Nearly right, water it with a bit more thinking!"
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Thỏ Bông Giữ Luống",
+        "bossName": "Thỏ Bông Giữ Luống",
+        "introDialogue": "My ears are up, and the first riddle sprouts from the bed!",
+        "winDialogue": "I give up! {name} is great at gardening and at riddles."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Thỏ Bông Giữ Luống",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thỏ Bông Giữ Luống tặng {name} một gói hạt giống cà rốt, gieo xuống là mọc ngay.",
+      "en": {
+        "title": "Thỏ Bông Giữ Luống's gift",
+        "text": "Thỏ Bông Giữ Luống gives {name} a packet of carrot seeds: sow them and they sprout at once."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Thỏ Bông Giữ Luống",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ra cầu tàu bên ao đi {name}, có trùm canh khu đang ngồi câu cá chờ cậu.",
+      "en": {
+        "title": "Goodbye, Thỏ Bông Giữ Luống",
+        "text": "Go down to the jetty by the pond, {name}: a zone guardian is fishing there and waiting for you."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "tu-ngu": 1,
+      "phep-cong": 1,
+      "so-sanh-so": 1,
+      "doc-hieu": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Thỏ Bông Giữ Luống",
+    "summary": "Thỏ Bông Giữ Luống guards the vegetable garden beside the house and asks {name} four riddles about vegetables, seedlings and Mum's reminder."
+  }
+}

@@ -1,0 +1,263 @@
+{
+  "id": "ward-thu-vien-phong-doc",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Trùm canh khu: Cú Kính Tròn",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Cú Kính Tròn canh vườn đọc sách cạnh phòng đọc, đố {name} bốn câu về cuốn sách và chính tả.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cú Kính Tròn",
+    "where": "Phòng đọc",
+    "goal": "Thắng trận đố của Cú Kính Tròn",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Cú Kính Tròn vơi bớt sức",
+    "learn": "Bìa sách, tên tác giả, mục lục, chính tả l/n, từ chỉ người",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Theo đường lá vàng sang sân lễ hội, có trùm canh khu đang quét lá chờ {name}."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Cú Kính Tròn",
+      "kind": "dialogue",
+      "target": "cu-kinh-tron",
+      "lines": [
+        {
+          "speaker": "Cú Kính Tròn",
+          "text": "Suỵt… nói khẽ thôi {name}, đây là chỗ đọc sách. Ta là Cú Kính Tròn, ta đọc sách suốt đêm."
+        },
+        {
+          "speaker": "Cú Kính Tròn",
+          "text": "Ta có bốn câu đố về sách. Thì thầm trả lời đúng hết thì ta cho cậu mượn cuốn sách hay nhất."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ thì thầm trả lời nhé!"
+        }
+      ],
+      "en": {
+        "title": "Meet Cú Kính Tròn",
+        "lines": [
+          "Shh… quietly, {name}, this is a reading place. I'm Cú Kính Tròn, and I read all night long.",
+          "I have four riddles about books. Whisper them all right and I'll lend you my best book."
+        ],
+        "choices": [
+          {
+            "text": "I'll whisper my answers!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Cú Kính Tròn",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "cu-kinh-tron",
+      "bossId": "cu-kinh-tron",
+      "bossName": "Cú Kính Tròn",
+      "introDialogue": "Trang sách thứ nhất lật ra, câu đố nằm ngay đây!",
+      "winDialogue": "Hú… ta gấp sách chịu thua! {name} đúng là mọt sách đáng yêu.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "tac-gia",
+          "prompt": "Trên bìa một cuốn sách, phần nào cho biết ai đã viết cuốn sách ấy?",
+          "skill": "doc-hieu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "tên tác giả"
+            },
+            {
+              "id": "b",
+              "text": "tên sách"
+            },
+            {
+              "id": "c",
+              "text": "nhà xuất bản"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "On a book cover, which part tells you who wrote the book?",
+            "choices": [
+              "tên tác giả (the author)",
+              "tên sách (the title)",
+              "nhà xuất bản (the publisher)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "muc-luc",
+          "prompt": "Muốn biết một bài đọc nằm ở trang nào, em xem phần nào của sách?",
+          "skill": "doc-hieu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "mục lục"
+            },
+            {
+              "id": "b",
+              "text": "bìa sau"
+            },
+            {
+              "id": "c",
+              "text": "tranh vẽ"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "To find which page a reading is on, which part of the book do you look at?",
+            "choices": [
+              "mục lục (contents)",
+              "bìa sau (back cover)",
+              "tranh vẽ (pictures)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "l-n-lat",
+          "prompt": "Điền l hay n: «Cú …ật từng trang sách thật nhẹ»?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "l"
+            },
+            {
+              "id": "b",
+              "text": "n"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "l or n: «Cú …ật từng trang sách thật nhẹ» (Cú turns each page gently)?",
+            "choices": [
+              "l",
+              "n"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "thu-thu",
+          "prompt": "Từ nào chỉ người làm việc trông coi sách?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "thủ thư"
+            },
+            {
+              "id": "b",
+              "text": "giá sách"
+            },
+            {
+              "id": "c",
+              "text": "đọc sách"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which word names the person who looks after the books?",
+            "choices": [
+              "thủ thư (librarian)",
+              "giá sách (bookshelf)",
+              "đọc sách (read)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Hú hú, chuẩn như sách!",
+          "Đúng rồi, kính ta trượt xuống mũi vì ngạc nhiên.",
+          "Câu trả lời ấy đáng ghi vào sổ vàng!"
+        ],
+        "wrong": [
+          "Suỵt… chưa đúng, lật lại trang trước xem.",
+          "Nhầm chương rồi, cậu đọc lại câu hỏi nhé.",
+          "Gần đúng rồi, nghĩ thêm một dòng nữa thôi."
+        ],
+        "en": {
+          "right": [
+            "Hoo hoo, right by the book!",
+            "Right, my glasses slid down my beak in surprise.",
+            "That answer belongs in the golden book!"
+          ],
+          "wrong": [
+            "Shh… not right, turn back a page.",
+            "Wrong chapter, read the question again.",
+            "Nearly right, think one more line."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Cú Kính Tròn",
+        "bossName": "Cú Kính Tròn",
+        "introDialogue": "The first page turns over, and the riddle is right here!",
+        "winDialogue": "Hoo… I close my book and give up! {name} is a lovely bookworm."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Cú Kính Tròn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cú Kính Tròn cho {name} mượn một chiếc thẻ đánh dấu trang bằng lông vũ, đọc xong nhớ ghé đấu tiếp.",
+      "en": {
+        "title": "Cú Kính Tròn's gift",
+        "text": "Cú Kính Tròn lends {name} a feather bookmark. Come back for more riddles when you've finished reading."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Cú Kính Tròn",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Theo đường lá vàng sang sân lễ hội, có trùm canh khu đang quét lá chờ {name}.",
+      "en": {
+        "title": "Goodbye, Cú Kính Tròn",
+        "text": "Follow the golden leaf road to the festival yard, a zone guardian is sweeping leaves for {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "doc-hieu": 1,
+      "chinh-ta": 1,
+      "tu-ngu": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Cú Kính Tròn",
+    "summary": "Cú Kính Tròn guards the reading garden by the reading room and asks {name} four riddles about books and spelling."
+  }
+}

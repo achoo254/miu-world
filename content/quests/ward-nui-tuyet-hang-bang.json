@@ -1,0 +1,301 @@
+{
+  "id": "ward-nui-tuyet-hang-bang",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Trùm canh khu: Tuần Lộc Thám Hiểm",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Tuần Lộc Thám Hiểm canh cửa hang băng, đố {name} năm câu về đoàn thám hiểm và đường vào hang.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Tuần Lộc Thám Hiểm",
+    "where": "Hang băng và trạm thám hiểm",
+    "goal": "Thắng trận đố của Tuần Lộc Thám Hiểm",
+    "play": "Trả lời 5 câu đố, mỗi câu đúng làm Tuần Lộc Thám Hiểm vơi bớt sức",
+    "learn": "Cộng, trừ có nhớ trong phạm vi 100, từ tiếng Anh, dãy số giảm, đọc hiểu sổ thám hiểm",
+    "reward": "50 XP, 12 Xu mỗi lần thắng",
+    "next": "Bốn trùm canh khu đều đã gặp, {name} ra chặng cuối đấu với Cánh Cụt Hoàng Đế nhé."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Tuần Lộc Thám Hiểm",
+      "kind": "dialogue",
+      "target": "tuan-loc-tham-hiem",
+      "lines": [
+        {
+          "speaker": "Tuần Lộc Thám Hiểm",
+          "text": "Lục lạc leng keng! Ta là Tuần Lộc Thám Hiểm, ta dẫn đoàn vào hang băng mỗi sáng."
+        },
+        {
+          "speaker": "Tuần Lộc Thám Hiểm",
+          "text": "Ai muốn vào hang cùng đoàn phải qua năm câu đố của ta. {name} đã sẵn đèn chưa?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đèn sẵn rồi, đố đi!"
+        }
+      ],
+      "en": {
+        "title": "Meet Tuần Lộc Thám Hiểm",
+        "lines": [
+          "Jingle jingle! I'm Tuần Lộc Thám Hiểm, and I lead the team into the ice cave every morning.",
+          "Anyone who wants to join must pass my five riddles. Got your torch, {name}?"
+        ],
+        "choices": [
+          {
+            "text": "Torch ready, ask away!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Tuần Lộc Thám Hiểm",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "tuan-loc-tham-hiem",
+      "bossId": "tuan-loc-tham-hiem",
+      "bossName": "Tuần Lộc Thám Hiểm",
+      "introDialogue": "Đèn pin bật sáng, câu đố thứ nhất hiện trên vách băng!",
+      "winDialogue": "Leng keng, ta chịu thua! {name} xứng đáng làm trưởng đoàn thám hiểm.",
+      "maxHp": 500,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "doan-tham-hiem",
+          "prompt": "Đoàn thám hiểm có 37 người, thêm 18 người đến sau. Đoàn có tất cả bao nhiêu người?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "55"
+            },
+            {
+              "id": "b",
+              "text": "45"
+            },
+            {
+              "id": "c",
+              "text": "19"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The expedition has 37 people and 18 more join later. How many people in all?",
+            "choices": [
+              "55",
+              "45",
+              "19"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "den-pin",
+          "prompt": "Kho có 64 chiếc đèn pin, đã phát cho đoàn 28 chiếc. Kho còn bao nhiêu chiếc?",
+          "skill": "phep-tru",
+          "choices": [
+            {
+              "id": "a",
+              "text": "36"
+            },
+            {
+              "id": "b",
+              "text": "46"
+            },
+            {
+              "id": "c",
+              "text": "92"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The store has 64 torches and 28 are handed to the team. How many are left?",
+            "choices": [
+              "36",
+              "46",
+              "92"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "ice",
+          "prompt": "Tuần Lộc chỉ vào vách hang và nói «ice». «Ice» nghĩa là gì?",
+          "skill": "tu-vung",
+          "choices": [
+            {
+              "id": "a",
+              "text": "băng"
+            },
+            {
+              "id": "b",
+              "text": "lửa"
+            },
+            {
+              "id": "c",
+              "text": "đá cuội"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Tuần Lộc points at the cave wall and says «ice». What is «ice» in Vietnamese?",
+            "choices": [
+              "băng",
+              "lửa",
+              "đá cuội"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "chuc-giam",
+          "prompt": "Các bậc thang vào hang ghi số: 90, 80, 70, … Bậc tiếp theo ghi số mấy?",
+          "skill": "logic",
+          "choices": [
+            {
+              "id": "a",
+              "text": "60"
+            },
+            {
+              "id": "b",
+              "text": "50"
+            },
+            {
+              "id": "c",
+              "text": "71"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The steps into the cave are numbered 90, 80, 70, … What number is on the next step?",
+            "choices": [
+              "60",
+              "50",
+              "71"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "mu-den",
+          "prompt": "Sổ thám hiểm ghi: «Vào hang phải đội mũ có đèn». Vì sao cần mũ có đèn?",
+          "skill": "doc-hieu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "vì trong hang tối"
+            },
+            {
+              "id": "b",
+              "text": "vì trời nóng"
+            },
+            {
+              "id": "c",
+              "text": "vì trời mưa"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The explorers' book says: «Wear a helmet with a lamp in the cave». Why?",
+            "choices": [
+              "because the cave is dark",
+              "because it is hot",
+              "because it is raining"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Leng keng, đúng rồi!",
+          "Chuẩn xác, cả đoàn hoan hô cậu!",
+          "Câu trả lời sáng như đèn trong hang!"
+        ],
+        "wrong": [
+          "Lạc lối trong hang rồi, quay lại thử nhé.",
+          "Chưa đúng, đọc lại sổ thám hiểm xem.",
+          "Gần lối ra rồi, nghĩ thêm một chút nào!"
+        ],
+        "en": {
+          "right": [
+            "Jingle jingle, that's right!",
+            "Exactly, the whole team cheers you!",
+            "That answer shines like a lamp in the cave!"
+          ],
+          "wrong": [
+            "Lost in the cave, go back and try again.",
+            "Not right, read the explorers' book again.",
+            "Close to the exit, think a bit more!"
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Tuần Lộc Thám Hiểm",
+        "bossName": "Tuần Lộc Thám Hiểm",
+        "introDialogue": "Torches on: the first riddle appears on the ice wall!",
+        "winDialogue": "Jingle jingle, I give up! {name} deserves to lead the expedition."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Tuần Lộc Thám Hiểm",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tuần Lộc Thám Hiểm tặng {name} một chiếc huy hiệu thám hiểm hình ngọn núi tuyết.",
+      "en": {
+        "title": "Tuần Lộc Thám Hiểm's gift",
+        "text": "Tuần Lộc Thám Hiểm gives {name} an explorer's badge shaped like a snowy peak."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Tuần Lộc Thám Hiểm",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bốn trùm canh khu đều đã gặp, {name} ra chặng cuối đấu với Cánh Cụt Hoàng Đế nhé.",
+      "en": {
+        "title": "Goodbye, Tuần Lộc Thám Hiểm",
+        "text": "All four zone guardians met, {name}: head to the last stop and battle the Emperor Penguin."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 50,
+    "coin": 12,
+    "skillXp": {
+      "phep-cong": 1,
+      "phep-tru": 1,
+      "tu-vung": 1,
+      "logic": 1,
+      "doc-hieu": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Tuần Lộc Thám Hiểm",
+    "summary": "Tuần Lộc Thám Hiểm guards the ice cave entrance and asks {name} five riddles about the expedition and the way into the cave."
+  }
+}

@@ -1,0 +1,262 @@
+{
+  "id": "ward-khu-rung-trang-tay-nam",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Trùm canh khu: Gấu Túi Diều Gió",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Gấu Túi Diều Gió canh trảng rừng phía tây nam, thách {name} bốn câu đố về âm thanh, đồ chơi và chính tả.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Gấu Túi Diều Gió",
+    "where": "Trảng rừng phía tây nam",
+    "goal": "Thắng trận đố của Gấu Túi Diều Gió",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Gấu Túi Diều Gió vơi bớt sức",
+    "learn": "Từ chỉ âm thanh và đặc điểm, chính tả ng/ngh và ch/tr",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Ở trảng rừng phía đông nam, một trùm canh khu đang chuẩn bị trò rồng rắn đố chữ."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Gấu Túi Diều Gió",
+      "kind": "dialogue",
+      "target": "gau-tui-dieu-gio",
+      "lines": [
+        {
+          "speaker": "Gấu Túi Diều Gió",
+          "text": "{name} nghe thấy không? Diều của ta kêu vi vu suốt ngày trên trảng rừng này."
+        },
+        {
+          "speaker": "Gấu Túi Diều Gió",
+          "text": "Ai trả lời được bốn câu đố của ta thì được cầm dây diều một lát!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cho tớ cầm dây diều nhé!"
+        }
+      ],
+      "en": {
+        "title": "Meet Gấu Túi Diều Gió",
+        "lines": [
+          "Can you hear it, {name}? My kite hums whoosh-whoosh over this glade all day long.",
+          "Whoever answers my four riddles gets to hold the kite string for a while!"
+        ],
+        "choices": [
+          {
+            "text": "Let me hold the string!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Gấu Túi Diều Gió",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "gau-tui-dieu-gio",
+      "bossId": "gau-tui-dieu-gio",
+      "bossName": "Gấu Túi Diều Gió",
+      "introDialogue": "Gió đã lên, diều đã căng, câu đố đầu tiên bay tới đây!",
+      "winDialogue": "Diều của ta hạ cánh rồi! {name} giỏi thật, cầm dây diều đi nào.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "am-thanh-dieu",
+          "prompt": "Từ nào chỉ âm thanh của cánh diều no gió trên trời?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "vi vu"
+            },
+            {
+              "id": "b",
+              "text": "xanh biếc"
+            },
+            {
+              "id": "c",
+              "text": "bay lượn"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which word is the sound a kite full of wind makes in the sky?",
+            "choices": [
+              "vi vu (whoosh)",
+              "xanh biếc (deep blue)",
+              "bay lượn (glide)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "dac-diem-gach",
+          "prompt": "Từ nào chỉ đặc điểm của những viên gạch đồ chơi trong hộp?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "nhiều màu"
+            },
+            {
+              "id": "b",
+              "text": "xếp hình"
+            },
+            {
+              "id": "c",
+              "text": "cái hộp"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which words describe what the toy bricks in the box are like?",
+            "choices": [
+              "nhiều màu (colourful)",
+              "xếp hình (build)",
+              "cái hộp (a box)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "ng-ngh",
+          "prompt": "Gấu Túi viết tên một món đồ chơi. Cách viết nào đúng?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "con nghựa gỗ"
+            },
+            {
+              "id": "b",
+              "text": "con ngựa gỗ"
+            },
+            {
+              "id": "c",
+              "text": "con ngưạ gỗ"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Gấu Túi writes the name of a toy, a wooden horse. Which spelling is right?",
+            "choices": [
+              "con nghựa gỗ",
+              "con ngựa gỗ",
+              "con ngưạ gỗ"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        },
+        {
+          "id": "ch-tr",
+          "prompt": "Điền ch hay tr vào chỗ trống: «…ong chóng quay tít trong gió»?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ch"
+            },
+            {
+              "id": "b",
+              "text": "tr"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "ch or tr: «…ong chóng quay tít trong gió» (the pinwheel spins in the wind)?",
+            "choices": [
+              "ch",
+              "tr"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Vi vu, câu trả lời bay cao như diều!",
+          "Đúng rồi, gió đưa câu trả lời tới tận mây.",
+          "Hay quá, sợi dây diều của ta chùng xuống rồi!"
+        ],
+        "wrong": [
+          "Gió đổi chiều mất rồi, thử lại nào.",
+          "Diều chao một chút thôi, cậu chọn lại nhé.",
+          "Chưa đúng, lắng nghe thật kĩ âm thanh xem."
+        ],
+        "en": {
+          "right": [
+            "Whoosh, that answer flew as high as a kite!",
+            "Right, the wind carried that answer up to the clouds.",
+            "Lovely, my kite string just went slack!"
+          ],
+          "wrong": [
+            "The wind changed direction, try again.",
+            "The kite only wobbled a little, choose again.",
+            "Not yet, listen carefully to the sound."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Gấu Túi Diều Gió",
+        "bossName": "Gấu Túi Diều Gió",
+        "introDialogue": "The wind is up and the kite is tight: here comes the first riddle!",
+        "winDialogue": "My kite has landed! {name} is brilliant, here, take the string."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Gấu Túi Diều Gió",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gấu Túi Diều Gió buộc cho {name} một chiếc nơ đuôi diều màu xanh, mai lại bay cùng nhau nhé.",
+      "en": {
+        "title": "Gấu Túi Diều Gió's gift",
+        "text": "Gấu Túi Diều Gió ties a blue kite-tail bow for {name}. Let's fly again tomorrow!"
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Gấu Túi Diều Gió",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ở trảng rừng phía đông nam, một trùm canh khu đang chuẩn bị trò rồng rắn đố chữ.",
+      "en": {
+        "title": "Goodbye, Gấu Túi Diều Gió",
+        "text": "In the south-east glade a zone guardian is setting up a dragon-and-snake word game."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "tu-ngu": 1,
+      "chinh-ta": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Gấu Túi Diều Gió",
+    "summary": "Gấu Túi Diều Gió guards the south-west glade and challenges {name} to four riddles about sounds, toys and spelling."
+  }
+}

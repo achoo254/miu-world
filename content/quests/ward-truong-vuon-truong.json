@@ -1,0 +1,258 @@
+{
+  "id": "ward-truong-vuon-truong",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Trùm canh khu: Gà Trống Gõ Trống",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Gà Trống Gõ Trống canh vườn trường, gõ bốn câu đố về từ ngữ, bảng chữ cái và chính tả cho {name}.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Gà Trống Gõ Trống",
+    "where": "Vườn trường",
+    "goal": "Thắng trận đố của Gà Trống Gõ Trống",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Gà Trống Gõ Trống vơi bớt sức",
+    "learn": "Từ ngữ nói về vật như nói về người, thứ tự bảng chữ cái, dấu hỏi và dấu ngã, s/x",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Sân chơi bên cầu trượt có trùm canh khu cuối cùng của trường, khó nhất đấy {name}."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Gà Trống Gõ Trống",
+      "kind": "dialogue",
+      "target": "ga-trong-go-trong",
+      "lines": [
+        {
+          "speaker": "Gà Trống Gõ Trống",
+          "text": "Tùng tùng tùng! Ta là Gà Trống Gõ Trống, sáng nào ta cũng gõ trống gọi cả vườn trường thức dậy."
+        },
+        {
+          "speaker": "Gà Trống Gõ Trống",
+          "text": "{name} đoán đúng bốn câu thì ta cho cậu gõ thử một hồi trống nhé!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cho tớ gõ trống với!"
+        }
+      ],
+      "en": {
+        "title": "Meet Gà Trống Gõ Trống",
+        "lines": [
+          "Boom boom boom! I'm Gà Trống Gõ Trống, and every morning I beat the drum to wake up the whole school garden.",
+          "If {name} gets four riddles right, you can have a go on the drum!"
+        ],
+        "choices": [
+          {
+            "text": "Let me play the drum!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Gà Trống Gõ Trống",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "ga-trong-go-trong",
+      "bossId": "ga-trong-go-trong",
+      "bossName": "Gà Trống Gõ Trống",
+      "introDialogue": "Tùng! Câu đố thứ nhất vang lên giữa vườn trường!",
+      "winDialogue": "Ò ó o… ta thua rồi! Dùi trống đây, {name} gõ một hồi thật vang đi.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "vat-nhu-nguoi",
+          "prompt": "Câu «Chiếc trống nằm ngủ say suốt mùa hè» nói về đồ vật như nói về người. Từ nào cho thấy điều đó?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "ngủ say"
+            },
+            {
+              "id": "b",
+              "text": "chiếc trống"
+            },
+            {
+              "id": "c",
+              "text": "mùa hè"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "«Chiếc trống nằm ngủ say suốt mùa hè» (the drum sleeps soundly all summer) talks about a thing as if it were a person. Which words show it?",
+            "choices": [
+              "ngủ say (sleeps soundly)",
+              "chiếc trống (the drum)",
+              "mùa hè (summer)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "ten-dau-tien",
+          "prompt": "Danh sách lớp xếp theo bảng chữ cái. Trong ba bạn An, Chi, Bảo, bạn nào đứng đầu?",
+          "skill": "bang-chu-cai",
+          "choices": [
+            {
+              "id": "a",
+              "text": "An"
+            },
+            {
+              "id": "b",
+              "text": "Bảo"
+            },
+            {
+              "id": "c",
+              "text": "Chi"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The class list goes in alphabetical order. Of An, Chi and Bảo, who comes first?",
+            "choices": [
+              "An",
+              "Bảo",
+              "Chi"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "dau-hoi-nga",
+          "prompt": "Gà Trống muốn viết «kì nghỉ hè». Cách viết nào đúng dấu?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "nghỉ hè"
+            },
+            {
+              "id": "b",
+              "text": "nghĩ hè"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Gà Trống wants to write «summer holiday». Which has the right tone mark?",
+            "choices": [
+              "nghỉ hè",
+              "nghĩ hè"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "s-x-xoai",
+          "prompt": "Điền s hay x: «quả …oài chín vàng trong vườn trường»?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "s"
+            },
+            {
+              "id": "b",
+              "text": "x"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "s or x: «quả …oài chín vàng trong vườn trường» (a ripe yellow mango in the school garden)?",
+            "choices": [
+              "s",
+              "x"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Tùng, tùng, đúng rồi!",
+          "Hay quá, mào ta đỏ rực vì phục cậu.",
+          "Câu trả lời vang như tiếng trống khai giảng!"
+        ],
+        "wrong": [
+          "Cạch, trống gõ lệch nhịp rồi, thử lại nhé.",
+          "Chưa đúng đâu, nghe kĩ từng tiếng một xem.",
+          "Ò… gần đúng rồi, chọn lại nào."
+        ],
+        "en": {
+          "right": [
+            "Boom, boom, that's right!",
+            "Brilliant, my comb is glowing red with respect.",
+            "That answer rings out like the first-day-of-school drum!"
+          ],
+          "wrong": [
+            "Clack, the drum missed a beat, try again.",
+            "Not right, listen carefully to each word.",
+            "Cock-a… nearly right, choose again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Gà Trống Gõ Trống",
+        "bossName": "Gà Trống Gõ Trống",
+        "introDialogue": "Boom! The first riddle rings out across the school garden!",
+        "winDialogue": "Cock-a-doodle… I lost! Here's the drumstick, {name}, give it a good loud beat."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Gà Trống Gõ Trống",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gà Trống Gõ Trống trao cho {name} chiếc dùi trống nhỏ bằng gỗ, mai lại cùng gọi vườn trường dậy nhé.",
+      "en": {
+        "title": "Gà Trống Gõ Trống's gift",
+        "text": "Gà Trống Gõ Trống gives {name} a little wooden drumstick. Let's wake the school garden together tomorrow."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Gà Trống Gõ Trống",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sân chơi bên cầu trượt có trùm canh khu cuối cùng của trường, khó nhất đấy {name}.",
+      "en": {
+        "title": "Goodbye, Gà Trống Gõ Trống",
+        "text": "The playground by the slide has the school's last zone guardian, the hardest one, {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "tu-ngu": 1,
+      "bang-chu-cai": 1,
+      "chinh-ta": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Gà Trống Gõ Trống",
+    "summary": "Gà Trống Gõ Trống guards the school garden and beats out four riddles about words, the alphabet and spelling for {name}."
+  }
+}

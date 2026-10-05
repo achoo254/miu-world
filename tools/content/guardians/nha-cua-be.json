@@ -1,0 +1,423 @@
+{
+  "region": "nha-cua-be",
+  "guardians": [
+    {
+      "quest": "ward-nha-vuon-rau",
+      "id": "tho-bong-giu-luong",
+      "name": "Thỏ Bông Giữ Luống",
+      "look": "animal-bunny",
+      "tint": "#f8f0c0",
+      "height": 1.8,
+      "zone": "Vườn rau cạnh nhà",
+      "lessons": [
+        "nha-cua-be-ch1"
+      ],
+      "learn": "Từ chỉ sự vật, phép cộng trong phạm vi 20, so sánh số, đọc hiểu lời dặn",
+      "summary": "Thỏ Bông Giữ Luống canh vườn rau cạnh nhà, đố {name} bốn câu về rau, cây con và lời mẹ dặn.",
+      "hook": [
+        "Ơ, {name} về rồi! Tớ là Thỏ Bông Giữ Luống, tớ trông vườn rau giúp cả nhà đấy.",
+        "Tớ hứa không ăn vụng cà rốt, nhưng tớ thèm đố vui lắm. Bốn câu nhé?"
+      ],
+      "choice": "Bốn câu thì nhằm nhò gì!",
+      "intro": "Tai tớ vểnh lên rồi, câu đố thứ nhất mọc lên giữa luống đây!",
+      "win": "Tớ chịu thua rồi! {name} chăm vườn giỏi, đố cũng giỏi.",
+      "right": [
+        "Giòn như cà rốt, đúng rồi!",
+        "Hay quá, luống rau xanh mướt mừng cậu.",
+        "Chuẩn luôn, tớ nhảy tưng tưng đây!"
+      ],
+      "wrong": [
+        "Nhổ nhầm cây rồi, chọn lại nhé.",
+        "Chưa đúng, đếm lại từng cây xem.",
+        "Gần đúng rồi, tưới thêm chút suy nghĩ nào!"
+      ],
+      "reward": "Thỏ Bông Giữ Luống tặng {name} một gói hạt giống cà rốt, gieo xuống là mọc ngay.",
+      "next": "Ra cầu tàu bên ao đi {name}, có trùm canh khu đang ngồi câu cá chờ cậu.",
+      "turns": [
+        {
+          "id": "ten-rau",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào gọi tên một loại rau đang lớn trong vườn nhà?",
+          "choices": [
+            "bắp cải",
+            "tưới nước",
+            "xanh mướt"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which word names a vegetable growing in the home garden?",
+            "choices": [
+              "bắp cải (cabbage)",
+              "tưới nước (water)",
+              "xanh mướt (lush green)"
+            ]
+          }
+        },
+        {
+          "id": "cay-cai",
+          "skill": "phep-cong",
+          "prompt": "Luống rau có 7 cây cải, Thỏ trồng thêm 6 cây. Luống có tất cả bao nhiêu cây?",
+          "choices": [
+            "13",
+            "12",
+            "1"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The bed has 7 mustard plants and Thỏ plants 6 more. How many plants in all?",
+            "choices": [
+              "13",
+              "12",
+              "1"
+            ]
+          }
+        },
+        {
+          "id": "ro-nhieu-hon",
+          "skill": "so-sanh-so",
+          "prompt": "Rổ cà chua có 25 quả, rổ cà rốt có 52 củ. Rổ nào có nhiều hơn?",
+          "choices": [
+            "rổ cà rốt",
+            "rổ cà chua",
+            "hai rổ bằng nhau"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The tomato basket has 25 and the carrot basket has 52. Which basket has more?",
+            "choices": [
+              "the carrots",
+              "the tomatoes",
+              "they are the same"
+            ]
+          }
+        },
+        {
+          "id": "loi-dan",
+          "skill": "doc-hieu",
+          "prompt": "Mẹ dặn: «Chiều nay con tưới rau trước khi trời tối nhé». Bé cần làm gì?",
+          "choices": [
+            "tưới rau trước khi tối",
+            "nhổ hết rau",
+            "tưới rau lúc nửa đêm"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Mum says: «Water the vegetables before it gets dark this afternoon». What should the child do?",
+            "choices": [
+              "water them before dark",
+              "pull up all the vegetables",
+              "water them at midnight"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Thỏ Bông Giữ Luống guards the vegetable garden beside the house and asks {name} four riddles about vegetables, seedlings and Mum's reminder.",
+        "hook": [
+          "Oh, {name} is home! I'm Thỏ Bông Giữ Luống, and I look after the vegetable garden for the whole family.",
+          "I promise not to nibble the carrots, but I'm dying for some riddles. Four of them?"
+        ],
+        "choice": "Four? Easy!",
+        "intro": "My ears are up, and the first riddle sprouts from the bed!",
+        "win": "I give up! {name} is great at gardening and at riddles.",
+        "right": [
+          "Crunchy as a carrot, that's right!",
+          "Lovely, the vegetable beds are glowing green for you.",
+          "Spot on, I'm bouncing up and down!"
+        ],
+        "wrong": [
+          "Pulled up the wrong plant, choose again.",
+          "Not right, count each plant again.",
+          "Nearly right, water it with a bit more thinking!"
+        ],
+        "reward": "Thỏ Bông Giữ Luống gives {name} a packet of carrot seeds: sow them and they sprout at once.",
+        "next": "Go down to the jetty by the pond, {name}: a zone guardian is fishing there and waiting for you."
+      }
+    },
+    {
+      "quest": "ward-nha-cau-tau",
+      "id": "vit-bau-cau-tau",
+      "name": "Vịt Bầu Cầu Tàu",
+      "look": "animal-parrot",
+      "tint": "#a8b0a0",
+      "height": 1.7,
+      "zone": "Cầu tàu bên ao",
+      "lessons": [
+        "nha-cua-be-ch1"
+      ],
+      "learn": "Phép cộng trong phạm vi 20, so sánh số, từ chỉ đồ vật, đọc hiểu tấm biển",
+      "summary": "Vịt Bầu Cầu Tàu canh cầu tàu bên ao, đố {name} bốn câu về đàn vịt, cần câu và tấm biển nhắc nhở.",
+      "hook": [
+        "Cạc cạc! {name} ơi, Vịt Bầu Cầu Tàu đây. Cả ngày ta bơi quanh ao, thuộc từng tấm ván của cầu tàu.",
+        "Hôm nay ao lặng sóng, mình đấu trí bốn câu cho vui nhé!"
+      ],
+      "choice": "Cạc cạc, đấu thì đấu!",
+      "intro": "Mặt ao gợn sóng, câu đố thứ nhất nổi lên đây!",
+      "win": "Cạc… ta lặn xuống ao chịu thua! {name} giỏi quá trời.",
+      "right": [
+        "Cạc cạc, đúng rồi!",
+        "Hay quá, đàn vịt bơi vòng tròn mừng cậu.",
+        "Câu trả lời êm như mặt ao buổi sáng!"
+      ],
+      "wrong": [
+        "Té nước mất rồi, chọn lại nhé.",
+        "Chưa đúng, đọc kĩ tấm biển xem.",
+        "Gần đúng rồi, bơi thêm một vòng suy nghĩ nào!"
+      ],
+      "reward": "Vịt Bầu Cầu Tàu tặng {name} một chiếc phao vịt nhỏ màu vàng, thả xuống chậu tắm là nổi.",
+      "next": "Ra chuồng gà sau nhà đi {name}, trùm canh khu cuối cùng đang ấp trứng chờ cậu.",
+      "turns": [
+        {
+          "id": "vit-boi-toi",
+          "skill": "phep-cong",
+          "prompt": "Ao có 9 con vịt, thêm 8 con nữa bơi tới. Ao có tất cả bao nhiêu con vịt?",
+          "choices": [
+            "17",
+            "16",
+            "1"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "There are 9 ducks on the pond and 8 more swim over. How many ducks in all?",
+            "choices": [
+              "17",
+              "16",
+              "1"
+            ]
+          }
+        },
+        {
+          "id": "dau-39-93",
+          "skill": "so-sanh-so",
+          "prompt": "Hai chiếc phao ghi 39 và 93. Điền dấu vào 39 … 93.",
+          "choices": [
+            "<",
+            ">",
+            "="
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Two floats are numbered 39 and 93. Which sign goes in 39 … 93?",
+            "choices": [
+              "<",
+              ">",
+              "="
+            ]
+          }
+        },
+        {
+          "id": "can-cau",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào gọi tên một đồ vật người ta mang ra cầu tàu?",
+          "choices": [
+            "cần câu",
+            "bơi lội",
+            "mát rượi"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which word names a thing people bring to the jetty?",
+            "choices": [
+              "cần câu (fishing rod)",
+              "bơi lội (swim)",
+              "mát rượi (refreshingly cool)"
+            ]
+          }
+        },
+        {
+          "id": "khong-chay",
+          "skill": "doc-hieu",
+          "prompt": "Tấm biển ở cầu tàu ghi: «Không chạy nhảy trên cầu». Vì sao phải nhớ điều đó?",
+          "choices": [
+            "để không ngã xuống ao",
+            "để cá được ngủ",
+            "vì cầu vừa sơn"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The sign on the jetty says: «No running or jumping on the jetty». Why remember it?",
+            "choices": [
+              "so you don't fall in the pond",
+              "so the fish can sleep",
+              "because it was just painted"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Vịt Bầu Cầu Tàu guards the jetty by the pond and asks {name} four riddles about ducks, fishing rods and a safety sign.",
+        "hook": [
+          "Quack quack! {name}, it's Vịt Bầu Cầu Tàu. I swim round the pond all day and know every plank of the jetty.",
+          "The pond is calm today, so let's have a four-riddle battle for fun!"
+        ],
+        "choice": "Quack, let's battle!",
+        "intro": "Ripples on the pond, and up floats the first riddle!",
+        "win": "Quack… I dive under and give up! {name} is ever so clever.",
+        "right": [
+          "Quack quack, that's right!",
+          "Brilliant, the ducks are swimming in circles for you.",
+          "That answer is as calm as the pond at dawn!"
+        ],
+        "wrong": [
+          "Splash, that went everywhere, choose again.",
+          "Not right, read the sign carefully.",
+          "Nearly right, swim one more lap of thinking!"
+        ],
+        "reward": "Vịt Bầu Cầu Tàu gives {name} a little yellow rubber duck that floats in the bath.",
+        "next": "Go to the henhouse behind the house, {name}: the last zone guardian is sitting on her eggs and waiting."
+      }
+    },
+    {
+      "quest": "ward-nha-chuong-ga",
+      "id": "ga-mo-giu-o",
+      "name": "Gà Mơ Giữ Ổ",
+      "look": "animal-chick",
+      "tint": "#d0a060",
+      "height": 1.8,
+      "zone": "Chuồng gà sau nhà",
+      "lessons": [
+        "nha-cua-be-ch1"
+      ],
+      "learn": "Phép cộng trong phạm vi 20, so sánh số, từ chỉ con vật, đọc hiểu lời dặn",
+      "summary": "Gà Mơ Giữ Ổ canh chuồng gà sau nhà, đố {name} năm câu về trứng, thóc và lời bà dặn.",
+      "hook": [
+        "Cục cục… {name} đến thăm ổ trứng của ta à? Ta là Gà Mơ Giữ Ổ, ta canh chuồng gà sau nhà.",
+        "Ai muốn xem trứng thì phải đấu với ta năm câu. Trứng nở ra câu đố đấy!"
+      ],
+      "choice": "Cho tớ xem trứng nở nào!",
+      "intro": "Lách cách, quả trứng thứ nhất nứt vỏ, câu đố chui ra!",
+      "win": "Cục tác, ta nhường ổ chịu thua! {name} chăm chỉ và thông minh quá.",
+      "right": [
+        "Cục tác, đúng rồi!",
+        "Hay quá, gà con chiêm chiếp khen cậu.",
+        "Câu trả lời ấm như ổ rơm!"
+      ],
+      "wrong": [
+        "Trứng chưa nở, thử lại nhé.",
+        "Chưa đúng, đếm lại từng hạt thóc xem.",
+        "Gần đúng rồi, ấp thêm chút suy nghĩ nào!"
+      ],
+      "reward": "Gà Mơ Giữ Ổ tặng {name} một chiếc lông vũ màu mơ, cài lên mũ là đẹp nhất xóm.",
+      "next": "Gặp đủ ba trùm canh khu rồi, {name} vào nhà đấu với Mèo Đại Vương Bánh Bao nhé.",
+      "turns": [
+        {
+          "id": "trung-hai-ngay",
+          "skill": "phep-cong",
+          "prompt": "Gà Mơ đẻ 5 quả trứng hôm qua và 9 quả hôm nay. Có tất cả bao nhiêu quả trứng?",
+          "choices": [
+            "14",
+            "13",
+            "4"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Gà Mơ laid 5 eggs yesterday and 9 today. How many eggs in all?",
+            "choices": [
+              "14",
+              "13",
+              "4"
+            ]
+          }
+        },
+        {
+          "id": "o-lon-nhat",
+          "skill": "so-sanh-so",
+          "prompt": "Ba ổ rơm đánh số 48, 84 và 80. Ổ mang số lớn nhất là số mấy?",
+          "choices": [
+            "84",
+            "80",
+            "48"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Three straw nests are numbered 48, 84 and 80. Which is the biggest number?",
+            "choices": [
+              "84",
+              "80",
+              "48"
+            ]
+          }
+        },
+        {
+          "id": "vat-nuoi",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào gọi tên một con vật được nuôi trong nhà?",
+          "choices": [
+            "con gà",
+            "cái ổ",
+            "cục tác"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which word names an animal kept at home?",
+            "choices": [
+              "con gà (a hen)",
+              "cái ổ (a nest)",
+              "cục tác (cluck)"
+            ]
+          }
+        },
+        {
+          "id": "dong-cua-chuong",
+          "skill": "doc-hieu",
+          "prompt": "Bà dặn: «Nhặt trứng xong nhớ đóng cửa chuồng». Nhặt trứng xong bé làm gì?",
+          "choices": [
+            "đóng cửa chuồng",
+            "mở toang cửa chuồng",
+            "đi ngủ ngay"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Grandma says: «After collecting the eggs, remember to shut the coop». What does the child do after collecting the eggs?",
+            "choices": [
+              "shut the coop",
+              "open the coop wide",
+              "go straight to bed"
+            ]
+          }
+        },
+        {
+          "id": "hat-thoc",
+          "skill": "phep-cong",
+          "prompt": "Bé có 12 hạt thóc, bà cho thêm 7 hạt để rắc cho gà. Bé có bao nhiêu hạt thóc?",
+          "choices": [
+            "19",
+            "18",
+            "5"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The child has 12 grains of rice and Grandma gives 7 more for the hens. How many grains now?",
+            "choices": [
+              "19",
+              "18",
+              "5"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Gà Mơ Giữ Ổ guards the henhouse behind the house and asks {name} five riddles about eggs, grain and Grandma's reminder.",
+        "hook": [
+          "Cluck cluck… has {name} come to see my eggs? I'm Gà Mơ Giữ Ổ, and I guard the henhouse behind the house.",
+          "Whoever wants to see the eggs must battle me in five riddles. My eggs hatch riddles!"
+        ],
+        "choice": "Let me see them hatch!",
+        "intro": "Crack, the first egg breaks open and out comes a riddle!",
+        "win": "Cluck-cluck, I give up my nest! {name} is so hard-working and clever.",
+        "right": [
+          "Cluck-cluck, that's right!",
+          "Brilliant, the chicks are cheeping for you.",
+          "That answer is as warm as a straw nest!"
+        ],
+        "wrong": [
+          "The egg hasn't hatched, try again.",
+          "Not right, count each grain again.",
+          "Nearly right, sit on it a little longer!"
+        ],
+        "reward": "Gà Mơ Giữ Ổ gives {name} an apricot-coloured feather: tuck it in your hat and you'll be the smartest in the neighbourhood.",
+        "next": "All three zone guardians met, {name}: go inside and battle the Great Bun Cat King."
+      }
+    }
+  ]
+}

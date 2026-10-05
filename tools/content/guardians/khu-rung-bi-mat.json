@@ -1,0 +1,361 @@
+{
+  "region": "khu-rung-bi-mat",
+  "guardians": [
+    {
+      "quest": "ward-khu-rung-trang-tay-bac",
+      "id": "nai-gac-dong-co",
+      "name": "Nai Gác Đồng Cỏ",
+      "look": "animal-deer",
+      "tint": "#d9c7a0",
+      "height": 2.3,
+      "zone": "Trảng rừng phía tây bắc",
+      "lessons": ["tv2-t10-b17", "tv2-t10-b18"],
+      "learn": "Chính tả c/k và vần ươu, từ chỉ hoạt động, dấu chấm hỏi",
+      "summary": "Nai Gác Đồng Cỏ giữ lối vào trảng rừng phía tây bắc. {name} thắng bốn câu đố chữ nghĩa để nai mở lối.",
+      "hook": [
+        "Khoan đã, {name}! Ta là Nai Gác Đồng Cỏ, ai qua trảng rừng này cũng phải đấu trí với ta một trận.",
+        "Thua cũng chẳng mất gì đâu, đúng câu nào ta vơi sức câu ấy. Cậu dám thử không?"
+      ],
+      "choice": "Tớ thử ngay!",
+      "intro": "Bốn câu đố chữ nghĩa đây, vừa nghe cỏ reo vừa trả lời nhé!",
+      "win": "Ta chịu rồi! {name} đọc nhanh viết đúng, trảng cỏ này mở lối cho cậu.",
+      "right": [
+        "Ui da, trúng ngay câu ta đắc ý nhất!",
+        "Câu này cậu trả lời ngọt như cỏ non buổi sớm.",
+        "Giỏi quá, đôi sừng của ta run run rồi đây!"
+      ],
+      "wrong": [
+        "Chưa trúng đâu, nhìn kĩ từng chữ thêm chút nhé.",
+        "Gió thổi lệch mất rồi, cậu chọn lại đi.",
+        "Gần lắm rồi, đọc chậm lại một lượt xem sao."
+      ],
+      "reward": "Nai Gác Đồng Cỏ tặng {name} một túi hạt cỏ thơm, hẹn đấu lại bất cứ lúc nào.",
+      "next": "Trảng rừng phía đông bắc còn một trùm canh khu nữa đang chờ {name}.",
+      "turns": [
+        {
+          "id": "k-truoc-e",
+          "skill": "chinh-ta",
+          "prompt": "Nai Gác Đồng Cỏ hỏi: chữ nào điền vào chỗ trống trong «…ể chuyện» cho đúng?",
+          "choices": ["c", "k", "q"],
+          "answer": 1,
+          "en": { "prompt": "Which letter fills the gap in «…ể chuyện» (to tell a story)?", "choices": ["c", "k", "q"] }
+        },
+        {
+          "id": "van-uou",
+          "skill": "chinh-ta",
+          "prompt": "Tên con vật nào trên trảng cỏ được viết đúng vần ươu?",
+          "choices": ["con hươu", "con hiêu", "con hưu"],
+          "answer": 0,
+          "en": { "prompt": "Which meadow animal's name is spelt with the right «ươu» rhyme?", "choices": ["con hươu", "con hiêu", "con hưu"] }
+        },
+        {
+          "id": "tu-hoat-dong",
+          "skill": "tu-ngu",
+          "prompt": "Trong câu «Đàn bò thong thả gặm cỏ bên suối», từ nào chỉ hoạt động?",
+          "choices": ["đàn bò", "gặm cỏ", "bên suối"],
+          "answer": 1,
+          "en": { "prompt": "In «Đàn bò thong thả gặm cỏ bên suối» (the cows graze by the stream), which words name an action?", "choices": ["đàn bò (the cows)", "gặm cỏ (graze)", "bên suối (by the stream)"] }
+        },
+        {
+          "id": "dau-hoi",
+          "skill": "dau-cau",
+          "prompt": "Câu «Mai cậu có ghé trảng cỏ chơi không» cần đặt dấu gì ở cuối?",
+          "choices": ["Dấu chấm", "Dấu chấm hỏi", "Dấu phẩy"],
+          "answer": 1,
+          "en": { "prompt": "Which mark ends «Mai cậu có ghé trảng cỏ chơi không» (will you visit the meadow tomorrow)?", "choices": ["Full stop", "Question mark", "Comma"] }
+        }
+      ],
+      "en": {
+        "summary": "Nai Gác Đồng Cỏ guards the way into the north-west glade. {name} wins four word riddles and the stag opens the way.",
+        "hook": [
+          "Hold on, {name}! I'm Nai Gác Đồng Cỏ, and everyone who crosses this glade has a battle of wits with me.",
+          "You lose nothing if you miss, and every right answer wears me down. Dare to try?"
+        ],
+        "choice": "I'll try right now!",
+        "intro": "Here are four word riddles: listen to the grass rustle and answer!",
+        "win": "I give up! {name} reads fast and spells right, so the glade is open to you.",
+        "right": [
+          "Ouch, you got my favourite riddle right!",
+          "You answered that one as sweetly as fresh morning grass.",
+          "Brilliant, my antlers are trembling now!"
+        ],
+        "wrong": [
+          "Not quite, look at each letter a little more closely.",
+          "The wind blew that one off course, pick again.",
+          "So close, read it slowly once more."
+        ],
+        "reward": "Nai Gác Đồng Cỏ gives {name} a bag of sweet grass seeds and says you can battle again any time.",
+        "next": "Another zone guardian is waiting for {name} in the north-east glade."
+      }
+    },
+    {
+      "quest": "ward-khu-rung-trang-dong-bac",
+      "id": "chon-duoi-bong",
+      "name": "Chồn Đuôi Bông",
+      "look": "animal-fox",
+      "tint": "#e0b48a",
+      "height": 2.0,
+      "zone": "Trảng rừng phía đông bắc",
+      "lessons": ["tv2-t11-b19", "tv2-t11-b20"],
+      "learn": "Thứ tự bảng chữ cái, từ chỉ cảm xúc, chính tả g/gh và iu/ưu",
+      "summary": "Chồn Đuôi Bông canh trảng rừng phía đông bắc, đố {name} bốn câu về bảng chữ cái, cảm xúc và chính tả.",
+      "hook": [
+        "Chào {name}! Tớ là Chồn Đuôi Bông, tớ xếp cả bảng chữ cái thành hàng rào quanh trảng này đấy.",
+        "Muốn đi qua thì đấu trí với tớ nhé, sai thì cứ thử lại thôi."
+      ],
+      "choice": "Đấu thì đấu!",
+      "intro": "Chữ cái đã xếp hàng, cảm xúc đã sẵn sàng, mình bắt đầu nào!",
+      "win": "Đuôi tớ cụp xuống rồi! {name} thuộc bảng chữ cái còn hơn cả tớ.",
+      "right": [
+        "Chuẩn không cần chỉnh, đuôi tớ xẹp bớt rồi!",
+        "Ồ, cậu nhớ thứ tự chữ cái giỏi thật.",
+        "Thêm một câu đúng, hàng rào chữ cái lung lay!"
+      ],
+      "wrong": [
+        "Ối, chữ cái xếp nhầm hàng rồi, thử lần nữa nhé.",
+        "Nhẩm lại bảng chữ cái từ đầu xem sao.",
+        "Suýt nữa thôi, cậu đọc to từng tiếng thử nhé."
+      ],
+      "reward": "Chồn Đuôi Bông tặng {name} một chiếc lá khắc đủ hai mươi chín chữ cái, đấu lại lúc nào cũng được.",
+      "next": "Phía tây nam khu rừng có trùm canh khu mê âm thanh và đồ chơi.",
+      "turns": [
+        {
+          "id": "sau-chu-g",
+          "skill": "bang-chu-cai",
+          "prompt": "Trong bảng chữ cái tiếng Việt, chữ nào đứng ngay sau chữ G?",
+          "choices": ["H", "I", "K"],
+          "answer": 0,
+          "en": { "prompt": "In the Vietnamese alphabet, which letter comes right after G?", "choices": ["H", "I", "K"] }
+        },
+        {
+          "id": "cam-xuc-nhim",
+          "skill": "tu-ngu",
+          "prompt": "Nhím con được bạn tặng quà sinh nhật. Từ nào chỉ cảm xúc của nhím lúc ấy?",
+          "choices": ["vui sướng", "gai nhọn", "chạy nhảy"],
+          "answer": 0,
+          "en": { "prompt": "A little hedgehog gets a birthday present from a friend. Which word tells how it feels?", "choices": ["vui sướng (overjoyed)", "gai nhọn (sharp spines)", "chạy nhảy (running about)"] }
+        },
+        {
+          "id": "g-gh",
+          "skill": "chinh-ta",
+          "prompt": "Chồn Đuôi Bông viết tên một đồ vật theo ba cách. Cách nào đúng chính tả g/gh?",
+          "choices": ["cái ghế", "cái gế", "cái ghiế"],
+          "answer": 0,
+          "en": { "prompt": "Chồn Đuôi Bông writes «chair» three ways. Which uses g/gh correctly?", "choices": ["cái ghế", "cái gế", "cái ghiế"] }
+        },
+        {
+          "id": "iu-uu",
+          "skill": "chinh-ta",
+          "prompt": "Vần nào điền vào chỗ trống trong «quả l…» để thành tên một loại quả đỏ mọng?",
+          "choices": ["iu", "ưu"],
+          "answer": 1,
+          "en": { "prompt": "Which rhyme completes «quả l…», the name of a juicy red fruit (pomegranate)?", "choices": ["iu", "ưu"] }
+        }
+      ],
+      "en": {
+        "summary": "Chồn Đuôi Bông guards the north-east glade and asks {name} four riddles about the alphabet, feelings and spelling.",
+        "hook": [
+          "Hi {name}! I'm Chồn Đuôi Bông, and I've lined up the whole alphabet as a fence round this glade.",
+          "To get through, have a battle of wits with me. If you miss, just try again."
+        ],
+        "choice": "Let's battle!",
+        "intro": "The letters are in line and the feelings are ready, here we go!",
+        "win": "My tail is drooping! {name} knows the alphabet even better than I do.",
+        "right": [
+          "Spot on, my tail just went flat!",
+          "Wow, you really know the order of the letters.",
+          "Another right answer, the alphabet fence is wobbling!"
+        ],
+        "wrong": [
+          "Oops, a letter is out of line, try once more.",
+          "Run through the alphabet from the start and see.",
+          "Nearly there, try saying each word out loud."
+        ],
+        "reward": "Chồn Đuôi Bông gives {name} a leaf carved with all twenty-nine letters. Battle again whenever you like.",
+        "next": "In the south-west of the forest a zone guardian loves sounds and toys."
+      }
+    },
+    {
+      "quest": "ward-khu-rung-trang-tay-nam",
+      "id": "gau-tui-dieu-gio",
+      "name": "Gấu Túi Diều Gió",
+      "look": "animal-koala",
+      "tint": "#a7b6c9",
+      "height": 2.0,
+      "zone": "Trảng rừng phía tây nam",
+      "lessons": ["tv2-t12-b21", "tv2-t12-b22"],
+      "learn": "Từ chỉ âm thanh và đặc điểm, chính tả ng/ngh và ch/tr",
+      "summary": "Gấu Túi Diều Gió canh trảng rừng phía tây nam, thách {name} bốn câu đố về âm thanh, đồ chơi và chính tả.",
+      "hook": [
+        "{name} nghe thấy không? Diều của ta kêu vi vu suốt ngày trên trảng rừng này.",
+        "Ai trả lời được bốn câu đố của ta thì được cầm dây diều một lát!"
+      ],
+      "choice": "Cho tớ cầm dây diều nhé!",
+      "intro": "Gió đã lên, diều đã căng, câu đố đầu tiên bay tới đây!",
+      "win": "Diều của ta hạ cánh rồi! {name} giỏi thật, cầm dây diều đi nào.",
+      "right": [
+        "Vi vu, câu trả lời bay cao như diều!",
+        "Đúng rồi, gió đưa câu trả lời tới tận mây.",
+        "Hay quá, sợi dây diều của ta chùng xuống rồi!"
+      ],
+      "wrong": [
+        "Gió đổi chiều mất rồi, thử lại nào.",
+        "Diều chao một chút thôi, cậu chọn lại nhé.",
+        "Chưa đúng, lắng nghe thật kĩ âm thanh xem."
+      ],
+      "reward": "Gấu Túi Diều Gió buộc cho {name} một chiếc nơ đuôi diều màu xanh, mai lại bay cùng nhau nhé.",
+      "next": "Ở trảng rừng phía đông nam, một trùm canh khu đang chuẩn bị trò rồng rắn đố chữ.",
+      "turns": [
+        {
+          "id": "am-thanh-dieu",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào chỉ âm thanh của cánh diều no gió trên trời?",
+          "choices": ["vi vu", "xanh biếc", "bay lượn"],
+          "answer": 0,
+          "en": { "prompt": "Which word is the sound a kite full of wind makes in the sky?", "choices": ["vi vu (whoosh)", "xanh biếc (deep blue)", "bay lượn (glide)"] }
+        },
+        {
+          "id": "dac-diem-gach",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào chỉ đặc điểm của những viên gạch đồ chơi trong hộp?",
+          "choices": ["nhiều màu", "xếp hình", "cái hộp"],
+          "answer": 0,
+          "en": { "prompt": "Which words describe what the toy bricks in the box are like?", "choices": ["nhiều màu (colourful)", "xếp hình (build)", "cái hộp (a box)"] }
+        },
+        {
+          "id": "ng-ngh",
+          "skill": "chinh-ta",
+          "prompt": "Gấu Túi viết tên một món đồ chơi. Cách viết nào đúng?",
+          "choices": ["con nghựa gỗ", "con ngựa gỗ", "con ngưạ gỗ"],
+          "answer": 1,
+          "en": { "prompt": "Gấu Túi writes the name of a toy, a wooden horse. Which spelling is right?", "choices": ["con nghựa gỗ", "con ngựa gỗ", "con ngưạ gỗ"] }
+        },
+        {
+          "id": "ch-tr",
+          "skill": "chinh-ta",
+          "prompt": "Điền ch hay tr vào chỗ trống: «…ong chóng quay tít trong gió»?",
+          "choices": ["ch", "tr"],
+          "answer": 0,
+          "en": { "prompt": "ch or tr: «…ong chóng quay tít trong gió» (the pinwheel spins in the wind)?", "choices": ["ch", "tr"] }
+        }
+      ],
+      "en": {
+        "summary": "Gấu Túi Diều Gió guards the south-west glade and challenges {name} to four riddles about sounds, toys and spelling.",
+        "hook": [
+          "Can you hear it, {name}? My kite hums whoosh-whoosh over this glade all day long.",
+          "Whoever answers my four riddles gets to hold the kite string for a while!"
+        ],
+        "choice": "Let me hold the string!",
+        "intro": "The wind is up and the kite is tight: here comes the first riddle!",
+        "win": "My kite has landed! {name} is brilliant, here, take the string.",
+        "right": [
+          "Whoosh, that answer flew as high as a kite!",
+          "Right, the wind carried that answer up to the clouds.",
+          "Lovely, my kite string just went slack!"
+        ],
+        "wrong": [
+          "The wind changed direction, try again.",
+          "The kite only wobbled a little, choose again.",
+          "Not yet, listen carefully to the sound."
+        ],
+        "reward": "Gấu Túi Diều Gió ties a blue kite-tail bow for {name}. Let's fly again tomorrow!",
+        "next": "In the south-east glade a zone guardian is setting up a dragon-and-snake word game."
+      }
+    },
+    {
+      "quest": "ward-khu-rung-trang-dong-nam",
+      "id": "sau-rong-ngu-sac",
+      "name": "Sâu Rồng Ngũ Sắc",
+      "look": "animal-caterpillar",
+      "tint": "#b48ad6",
+      "height": 1.8,
+      "zone": "Trảng rừng phía đông nam",
+      "lessons": ["tv2-t13-b23", "tv2-t13-b24"],
+      "learn": "Câu Nếu… thì…, từ chỉ cảm xúc, chính tả s/x, da/gia và ươn/ương",
+      "summary": "Sâu Rồng Ngũ Sắc canh trảng rừng phía đông nam, rủ {name} chơi rồng rắn bằng năm câu đố về câu và chữ.",
+      "hook": [
+        "Ta là Sâu Rồng Ngũ Sắc, dài như cả một đoàn rồng rắn đấy, {name} ạ!",
+        "Đúng đủ năm câu đố là cậu được làm đầu rồng dẫn cả đoàn đi chơi."
+      ],
+      "choice": "Tớ muốn làm đầu rồng!",
+      "intro": "Đoàn rồng rắn xếp hàng rồi, năm câu đố sắp bò tới!",
+      "win": "Ta xin làm khúc đuôi! {name} xứng đáng làm đầu rồng dẫn cả đoàn.",
+      "right": [
+        "Khúc đầu rồng sáng rực lên rồi!",
+        "Đúng nhé, cả đoàn rồng rắn reo hò ầm ĩ.",
+        "Thêm một khúc mây tan, cậu giỏi quá!"
+      ],
+      "wrong": [
+        "Rồng rắn lạc nhịp rồi, mình chơi lại câu này nha.",
+        "Chưa phải đâu, nhìn lại từng chữ xem nào.",
+        "Khúc đuôi vẫy vẫy: thử thêm lần nữa đi!"
+      ],
+      "reward": "Sâu Rồng Ngũ Sắc tặng {name} một chiếc vảy bảy màu lấp lánh để đội khi làm đầu rồng.",
+      "next": "Bốn trảng rừng đều đã gặp, {name} ghé khoảng rừng trăng thăm Thần Rừng Tinh Nghịch nhé.",
+      "turns": [
+        {
+          "id": "neu-thi",
+          "skill": "cau",
+          "prompt": "Chọn vế hợp để nói tiếp câu: «Nếu trời mưa thì…»",
+          "choices": ["chúng mình chơi trong nhà", "cái ô màu đỏ", "trời rất xanh"],
+          "answer": 0,
+          "en": { "prompt": "Pick the best ending for «Nếu trời mưa thì…» (If it rains, then…)", "choices": ["chúng mình chơi trong nhà (we play indoors)", "cái ô màu đỏ (the red umbrella)", "trời rất xanh (the sky is very blue)"] }
+        },
+        {
+          "id": "s-x",
+          "skill": "chinh-ta",
+          "prompt": "Điền s hay x vào chỗ trống: «bà nhờ cháu …âu kim»?",
+          "choices": ["s", "x"],
+          "answer": 1,
+          "en": { "prompt": "s or x: «bà nhờ cháu …âu kim» (Grandma asks me to thread the needle)?", "choices": ["s", "x"] }
+        },
+        {
+          "id": "da-gia",
+          "skill": "chinh-ta",
+          "prompt": "Tiếng nào ghép với «đình» thành từ chỉ những người thân sống chung một nhà?",
+          "choices": ["da", "gia"],
+          "answer": 1,
+          "en": { "prompt": "Which goes with «đình» to make the word for the people who live together at home (family)?", "choices": ["da", "gia"] }
+        },
+        {
+          "id": "uon-uong",
+          "skill": "chinh-ta",
+          "prompt": "Vần nào điền vào «con đ…» để thành lối đi quanh co qua rừng?",
+          "choices": ["ươn", "ương"],
+          "answer": 1,
+          "en": { "prompt": "Which rhyme completes «con đ…», the winding way through the forest (the road)?", "choices": ["ươn", "ương"] }
+        },
+        {
+          "id": "tu-hao",
+          "skill": "tu-ngu",
+          "prompt": "Bé nặn xong chú voi bằng đất rồi chạy khoe mẹ. Từ nào chỉ cảm xúc của bé?",
+          "choices": ["tự hào", "đất sét", "nặn tượng"],
+          "answer": 0,
+          "en": { "prompt": "A child finishes a clay elephant and runs to show mum. Which word tells how the child feels?", "choices": ["tự hào (proud)", "đất sét (clay)", "nặn tượng (sculpt)"] }
+        }
+      ],
+      "en": {
+        "summary": "Sâu Rồng Ngũ Sắc guards the south-east glade and invites {name} to a dragon-and-snake game of five riddles about sentences and spelling.",
+        "hook": [
+          "I'm Sâu Rồng Ngũ Sắc, as long as a whole dragon-and-snake line, {name}!",
+          "Get all five riddles right and you'll be the dragon's head leading everyone."
+        ],
+        "choice": "I want to be the dragon's head!",
+        "intro": "The dragon line is ready, five riddles are crawling your way!",
+        "win": "I'll be the tail! {name} deserves to be the head of the dragon.",
+        "right": [
+          "The dragon's head is glowing now!",
+          "Right, the whole dragon line is cheering.",
+          "Another cloud melts away, you're brilliant!"
+        ],
+        "wrong": [
+          "The dragon lost its rhythm, let's play this one again.",
+          "Not that one, look at each word again.",
+          "The tail is waving: give it one more go!"
+        ],
+        "reward": "Sâu Rồng Ngũ Sắc gives {name} a shiny rainbow scale to wear as the dragon's head.",
+        "next": "You've met all four glades, {name}: visit the Mischievous Forest Spirit in the moonlit glade."
+      }
+    }
+  ]
+}

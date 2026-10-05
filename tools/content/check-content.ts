@@ -388,6 +388,39 @@ export function checkRegions(
   return issues;
 }
 
+/** Zone guardians every open map has at least (owner, 05/10/2026: a map is too wide for one boss), besides its big boss. */
+export const MIN_GUARDIANS_PER_MAP = 3;
+
+/**
+ * Every open map has its big boss (a lesson that ends in a boss fight) and at least MIN_GUARDIANS_PER_MAP zone guardians,
+ * each guardian a different character. Returns the issues and, per region, how many of each it has.
+ */
+export function checkBossCoverage(raw: unknown, quests: Iterable<QuestDefinition>): { issues: string[]; counts: Map<string, { big: number; guardians: number }> } {
+  const parsed = RegionCatalog.safeParse(raw);
+  if (!parsed.success) return { issues: [], counts: new Map() };
+  const counts = new Map(parsed.data.regions.filter((r) => r.status === 'open').map((r) => [r.id, { big: 0, guardians: 0 }]));
+  const guardianOf = new Map<string, string>();
+  const issues: string[] = [];
+  for (const quest of quests) {
+    if (quest.status !== 'active') continue;
+    const count = counts.get(quest.region);
+    if (!count) continue;
+    const boss = quest.steps.find((s) => s.kind === 'boss');
+    if (!boss) continue;
+    if (quest.category === 'guardian') {
+      count.guardians++;
+      const other = boss.target ? guardianOf.get(boss.target) : undefined;
+      if (other) issues.push(`zone guardians ${other} and ${quest.id} are the same character (${boss.target}): each guardian is its own`);
+      if (boss.target) guardianOf.set(boss.target, quest.id);
+    } else if ((quest.category ?? 'main') === 'main') count.big++;
+  }
+  for (const [region, { big, guardians }] of counts) {
+    if (big < 1) issues.push(`region ${region} has no big boss: a lesson of every map ends in a boss fight`);
+    if (guardians < MIN_GUARDIANS_PER_MAP) issues.push(`region ${region} has ${guardians} zone guardian(s), needs at least ${MIN_GUARDIANS_PER_MAP} (one for each main zone)`);
+  }
+  return { issues, counts };
+}
+
 /**
  * A quest tells its story where the child stands: its story text never names another region (a lesson moved
  * to a new map must not still say it happens in the forest). Story text is the summary, who / where / what
@@ -529,6 +562,10 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     const targetIds = targetCatalog ? new Set(Object.keys(targetCatalog.targets)) : null;
     issues.push(...checkRegions(JSON.parse(readFileSync(path.join(dir, REGIONS_FILE), 'utf8')), catalog.quests.values(), undefined, targetIds));
     if (regions.success) issues.push(...checkRegionMentions(readQuestDefinitions(path.join(dir, 'quests')), regions.data));
+    const bosses = checkBossCoverage(JSON.parse(readFileSync(path.join(dir, REGIONS_FILE), 'utf8')), catalog.quests.values());
+    issues.push(...bosses.issues);
+    const tally = [...bosses.counts.values()].reduce((sum, c) => ({ big: sum.big + c.big, guardians: sum.guardians + c.guardians }), { big: 0, guardians: 0 });
+    notes.push(`bosses: ${tally.big} big bosses and ${tally.guardians} zone guardians on ${bosses.counts.size} maps`);
     const manifest = JSON.parse(readFileSync(path.join(ASSETS_DIR, 'manifest.json'), 'utf8')) as { files: Array<{ path: string }>; generated: Array<{ path: string }> };
     const petSwatches = new Map<string, ReadonlySet<string>>();
     const swatchesOf = (model: string): ReadonlySet<string> => {

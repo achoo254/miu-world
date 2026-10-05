@@ -1,0 +1,269 @@
+{
+  "id": "ward-nui-tuyet-lang",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Trùm canh khu: Cánh Cụt Đưa Thư",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Cánh Cụt Đưa Thư canh phố làng núi tuyết, đố {name} bốn câu về lá thư, đồ ấm và phép tính.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cánh Cụt Đưa Thư",
+    "where": "Làng núi tuyết",
+    "goal": "Thắng trận đố của Cánh Cụt Đưa Thư",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Cánh Cụt Đưa Thư vơi bớt sức",
+    "learn": "Đọc hiểu lá thư, từ chỉ đồ vật giữ ấm, phép cộng trong phạm vi 20, so sánh số",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Lên khu trượt tuyết đi {name}, có trùm canh khu trượt nhanh nhất núi đang chờ."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Cánh Cụt Đưa Thư",
+      "kind": "dialogue",
+      "target": "canh-cut-dua-thu",
+      "lines": [
+        {
+          "speaker": "Cánh Cụt Đưa Thư",
+          "text": "Lạch bạch, lạch bạch… thư đây! Chào {name}, ta là Cánh Cụt Đưa Thư của làng núi tuyết."
+        },
+        {
+          "speaker": "Cánh Cụt Đưa Thư",
+          "text": "Túi thư hôm nay có bốn câu đố. Cậu mở được hết thì ta tặng con tem tuyết đẹp nhất."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đưa thư cho tớ nào!"
+        }
+      ],
+      "en": {
+        "title": "Meet Cánh Cụt Đưa Thư",
+        "lines": [
+          "Waddle, waddle… post! Hello {name}, I'm Cánh Cụt Đưa Thư of the snowy village.",
+          "Today's postbag holds four riddles. Open them all and I'll give you my prettiest snow stamp."
+        ],
+        "choices": [
+          {
+            "text": "Give me the post!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Cánh Cụt Đưa Thư",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "canh-cut-dua-thu",
+      "bossId": "canh-cut-dua-thu",
+      "bossName": "Cánh Cụt Đưa Thư",
+      "introDialogue": "Phong thư phủ tuyết thứ nhất đây, mở ra xem nào!",
+      "winDialogue": "Lạch bạch… ta trượt ngã chịu thua! {name} đọc thư nhanh như gió tuyết.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "mang-gang",
+          "prompt": "Thư ghi: «Mai trời có tuyết, các bạn nhớ mang găng tay». Ngày mai các bạn cần mang gì?",
+          "skill": "doc-hieu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "găng tay"
+            },
+            {
+              "id": "b",
+              "text": "kem chống nắng"
+            },
+            {
+              "id": "c",
+              "text": "ô che mưa"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The letter says: «It will snow tomorrow, remember your gloves». What do the friends need tomorrow?",
+            "choices": [
+              "găng tay (gloves)",
+              "kem chống nắng (sun cream)",
+              "ô che mưa (an umbrella)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "khan-len",
+          "prompt": "Từ nào gọi tên một đồ dùng giữ ấm ở núi tuyết?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "khăn len"
+            },
+            {
+              "id": "b",
+              "text": "lạnh buốt"
+            },
+            {
+              "id": "c",
+              "text": "trượt tuyết"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which word names something that keeps you warm in the snowy mountains?",
+            "choices": [
+              "khăn len (a woolly scarf)",
+              "lạnh buốt (freezing)",
+              "trượt tuyết (ski)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "them-thu",
+          "prompt": "Cánh Cụt có 8 lá thư, nhận thêm 6 lá nữa. Cánh Cụt có tất cả mấy lá thư?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "14"
+            },
+            {
+              "id": "b",
+              "text": "13"
+            },
+            {
+              "id": "c",
+              "text": "2"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Cánh Cụt has 8 letters and gets 6 more. How many letters in all?",
+            "choices": [
+              "14",
+              "13",
+              "2"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "so-nha",
+          "prompt": "Nhà số 47 và nhà số 74 cùng chờ thư. Nhà nào mang số lớn hơn?",
+          "skill": "so-sanh-so",
+          "choices": [
+            {
+              "id": "a",
+              "text": "nhà số 74"
+            },
+            {
+              "id": "b",
+              "text": "nhà số 47"
+            },
+            {
+              "id": "c",
+              "text": "bằng nhau"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Houses number 47 and 74 are waiting for post. Which house number is bigger?",
+            "choices": [
+              "house 74",
+              "house 47",
+              "they are equal"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Lạch bạch, đúng rồi!",
+          "Chuẩn quá, tuyết rơi lấp lánh mừng cậu.",
+          "Lá thư này cậu đọc không sót chữ nào!"
+        ],
+        "wrong": [
+          "Trượt chân trên băng rồi, thử lại nhé.",
+          "Chưa đúng, đọc lại lá thư xem.",
+          "Gần đúng rồi, phủi tuyết khỏi câu hỏi mà đọc kĩ nào."
+        ],
+        "en": {
+          "right": [
+            "Waddle waddle, that's right!",
+            "Spot on, the snow sparkles for you.",
+            "You read that letter without missing a word!"
+          ],
+          "wrong": [
+            "Slipped on the ice, try again.",
+            "Not right, read the letter again.",
+            "Nearly right, brush the snow off the question and read carefully."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Cánh Cụt Đưa Thư",
+        "bossName": "Cánh Cụt Đưa Thư",
+        "introDialogue": "Here's the first snow-covered envelope: open it!",
+        "winDialogue": "Waddle… I slipped over and give up! {name} reads letters as fast as a snowstorm."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Cánh Cụt Đưa Thư",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cánh Cụt Đưa Thư tặng {name} một con tem in hình bông tuyết sáu cánh.",
+      "en": {
+        "title": "Cánh Cụt Đưa Thư's gift",
+        "text": "Cánh Cụt Đưa Thư gives {name} a stamp printed with a six-pointed snowflake."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Cánh Cụt Đưa Thư",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Lên khu trượt tuyết đi {name}, có trùm canh khu trượt nhanh nhất núi đang chờ.",
+      "en": {
+        "title": "Goodbye, Cánh Cụt Đưa Thư",
+        "text": "Go up to the ski area, {name}: the fastest skier on the mountain is a zone guardian waiting there."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "doc-hieu": 1,
+      "tu-ngu": 1,
+      "phep-cong": 1,
+      "so-sanh-so": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Cánh Cụt Đưa Thư",
+    "summary": "Cánh Cụt Đưa Thư guards the street of the snowy village and asks {name} four riddles about letters, warm things and sums."
+  }
+}

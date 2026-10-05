@@ -1,0 +1,267 @@
+{
+  "id": "ward-cho-thu-nuoi",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Trùm canh khu: Chó Vàng Giữ Sạp",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Chó Vàng Giữ Sạp canh khu bán thú nuôi, đố {name} bốn câu trừ qua 10 và bài toán nhiều hơn, ít hơn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Chó Vàng Giữ Sạp",
+    "where": "Chợ rau hoa, khu bán thú nuôi",
+    "goal": "Thắng trận đố của Chó Vàng Giữ Sạp",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Chó Vàng Giữ Sạp vơi bớt sức",
+    "learn": "Phép trừ qua 10 trong phạm vi 20, bài toán thêm bớt, nhiều hơn",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Sang dãy hàng cân đong, trùm canh khu ở đó mang cả cân đĩa ra đố {name}."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Chó Vàng Giữ Sạp",
+      "kind": "dialogue",
+      "target": "cho-vang-giu-sap",
+      "lines": [
+        {
+          "speaker": "Chó Vàng Giữ Sạp",
+          "text": "Gâu gâu! {name} đừng sợ, ta là Chó Vàng Giữ Sạp, ta chỉ sủa để chào khách thôi."
+        },
+        {
+          "speaker": "Chó Vàng Giữ Sạp",
+          "text": "Sạp thú nuôi của ta hôm nay bán chạy lắm. Cậu tính giúp ta bốn bài nhé!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Gâu, tớ tính giúp!"
+        }
+      ],
+      "en": {
+        "title": "Meet Chó Vàng Giữ Sạp",
+        "lines": [
+          "Woof woof! Don't be scared, {name}, I'm Chó Vàng Giữ Sạp, and I only bark to say hello to customers.",
+          "My pet stall is selling fast today. Help me with four sums!"
+        ],
+        "choices": [
+          {
+            "text": "Woof, I'll help!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Chó Vàng Giữ Sạp",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "cho-vang-giu-sap",
+      "bossId": "cho-vang-giu-sap",
+      "bossName": "Chó Vàng Giữ Sạp",
+      "introDialogue": "Cửa lồng mở rồi, bài toán thứ nhất chạy ra đây!",
+      "winDialogue": "Gâu… ta nằm phục chịu thua! {name} trừ giỏi hơn cả chủ sạp.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "khuc-xuong",
+          "prompt": "Chó Vàng có 14 khúc xương, ăn mất 6 khúc. Chó còn lại mấy khúc xương?",
+          "skill": "phep-tru",
+          "choices": [
+            {
+              "id": "a",
+              "text": "8"
+            },
+            {
+              "id": "b",
+              "text": "9"
+            },
+            {
+              "id": "c",
+              "text": "20"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Chó Vàng has 14 bones and eats 6. How many bones are left?",
+            "choices": [
+              "8",
+              "9",
+              "20"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "ca-vang",
+          "prompt": "Sạp có 13 chú cá vàng, đã bán 5 chú. Sạp còn bao nhiêu chú cá vàng?",
+          "skill": "phep-tru",
+          "choices": [
+            {
+              "id": "a",
+              "text": "8"
+            },
+            {
+              "id": "b",
+              "text": "7"
+            },
+            {
+              "id": "c",
+              "text": "18"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The stall has 13 goldfish and has sold 5. How many goldfish are left?",
+            "choices": [
+              "8",
+              "7",
+              "18"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "meo-nhieu-hon",
+          "prompt": "Thỏ có 9 củ cà rốt, mèo có nhiều hơn thỏ 3 củ. Mèo có mấy củ cà rốt?",
+          "skill": "bai-toan-loi-van",
+          "choices": [
+            {
+              "id": "a",
+              "text": "12"
+            },
+            {
+              "id": "b",
+              "text": "6"
+            },
+            {
+              "id": "c",
+              "text": "3"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Rabbit has 9 carrots and Cat has 3 more than Rabbit. How many carrots does Cat have?",
+            "choices": [
+              "12",
+              "6",
+              "3"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "chim-bay",
+          "prompt": "Trong lồng có 11 chú chim, bay ra mất 4 chú. Trong lồng còn mấy chú chim?",
+          "skill": "bai-toan-loi-van",
+          "choices": [
+            {
+              "id": "a",
+              "text": "7"
+            },
+            {
+              "id": "b",
+              "text": "15"
+            },
+            {
+              "id": "c",
+              "text": "6"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "There are 11 birds in the cage and 4 fly out. How many birds are still in the cage?",
+            "choices": [
+              "7",
+              "15",
+              "6"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Gâu gâu, chuẩn rồi!",
+          "Đuôi ta vẫy tít vì cậu tính đúng!",
+          "Hay lắm, đàn cá vàng cũng quẫy đuôi khen."
+        ],
+        "wrong": [
+          "Gâu, chưa đúng, tính lại nhé.",
+          "Thử tách số để trừ cho tròn chục xem.",
+          "Suýt đúng, kiểm lại phép trừ nào."
+        ],
+        "en": {
+          "right": [
+            "Woof woof, spot on!",
+            "My tail is wagging because you got it right!",
+            "Great, even the goldfish are flicking their tails for you."
+          ],
+          "wrong": [
+            "Woof, not right, work it out again.",
+            "Try splitting the number to take away to a ten.",
+            "Nearly right, check the take-away again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Chó Vàng Giữ Sạp",
+        "bossName": "Chó Vàng Giữ Sạp",
+        "introDialogue": "The cage door opens, and out runs the first problem!",
+        "winDialogue": "Woof… I lie down and give up! {name} takes away better than the stall owner."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Chó Vàng Giữ Sạp",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chó Vàng Giữ Sạp tặng {name} một chiếc vòng cổ có lục lạc nhỏ, đeo vào là kêu leng keng.",
+      "en": {
+        "title": "Chó Vàng Giữ Sạp's gift",
+        "text": "Chó Vàng Giữ Sạp gives {name} a collar with a little bell that jingles."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Chó Vàng Giữ Sạp",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sang dãy hàng cân đong, trùm canh khu ở đó mang cả cân đĩa ra đố {name}.",
+      "en": {
+        "title": "Goodbye, Chó Vàng Giữ Sạp",
+        "text": "Over at the weighing row the zone guardian brings out the balance scales for {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "phep-tru": 1,
+      "bai-toan-loi-van": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Chó Vàng Giữ Sạp",
+    "summary": "Chó Vàng Giữ Sạp guards the pet stalls and asks {name} four riddles about taking away over ten and more-or-fewer problems."
+  }
+}

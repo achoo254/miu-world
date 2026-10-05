@@ -1,0 +1,298 @@
+{
+  "id": "ward-thu-vien-thap-dong-ho",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Trùm canh khu: Gà Vàng Báo Giờ",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Gà Vàng Báo Giờ canh bãi cỏ quanh tháp đồng hồ, đố {name} năm câu về giờ, phút và tờ lịch.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Gà Vàng Báo Giờ",
+    "where": "Tháp đồng hồ và phòng lịch",
+    "goal": "Thắng trận đố của Gà Vàng Báo Giờ",
+    "play": "Trả lời 5 câu đố, mỗi câu đúng làm Gà Vàng Báo Giờ vơi bớt sức",
+    "learn": "Ngày có 24 giờ, giờ và phút, giờ buổi chiều, xem lịch tháng",
+    "reward": "50 XP, 12 Xu mỗi lần thắng",
+    "next": "Đủ ba trùm canh khu rồi, {name} lên tháp gặp Sâu Mọt Sách Khổng Lồ ở chặng cuối nhé."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Gà Vàng Báo Giờ",
+      "kind": "dialogue",
+      "target": "ga-vang-bao-gio",
+      "lines": [
+        {
+          "speaker": "Gà Vàng Báo Giờ",
+          "text": "Ò ó o, đúng giờ rồi! Ta là Gà Vàng Báo Giờ, ta gáy theo từng tiếng chuông của tháp."
+        },
+        {
+          "speaker": "Gà Vàng Báo Giờ",
+          "text": "Năm câu đố về giờ giấc và lịch đây, {name} trả lời trước khi chuông điểm nhé!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Bắt đầu tính giờ đi!"
+        }
+      ],
+      "en": {
+        "title": "Meet Gà Vàng Báo Giờ",
+        "lines": [
+          "Cock-a-doodle-doo, right on time! I'm Gà Vàng Báo Giờ, and I crow with every chime of the tower.",
+          "Here are five riddles about time and the calendar, {name}: answer before the bell rings!"
+        ],
+        "choices": [
+          {
+            "text": "Start the clock!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Gà Vàng Báo Giờ",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "ga-vang-bao-gio",
+      "bossId": "ga-vang-bao-gio",
+      "bossName": "Gà Vàng Báo Giờ",
+      "introDialogue": "Kim giây chạy rồi, câu đố đầu tiên điểm chuông!",
+      "winDialogue": "Boong boong, ta thua đúng giờ luôn! {name} xem giờ, xem lịch giỏi quá.",
+      "maxHp": 500,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "mot-ngay",
+          "prompt": "Gà Vàng Báo Giờ hỏi: một ngày có tất cả bao nhiêu giờ?",
+          "skill": "xem-dong-ho",
+          "choices": [
+            {
+              "id": "a",
+              "text": "24 giờ"
+            },
+            {
+              "id": "b",
+              "text": "12 giờ"
+            },
+            {
+              "id": "c",
+              "text": "60 giờ"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Gà Vàng Báo Giờ asks: how many hours are there in a whole day?",
+            "choices": [
+              "24 hours",
+              "12 hours",
+              "60 hours"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "mot-gio",
+          "prompt": "Gà nhắc bạn nhỏ: 1 giờ bằng bao nhiêu phút?",
+          "skill": "xem-dong-ho",
+          "choices": [
+            {
+              "id": "a",
+              "text": "60 phút"
+            },
+            {
+              "id": "b",
+              "text": "100 phút"
+            },
+            {
+              "id": "c",
+              "text": "30 phút"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Gà reminds the children: one hour is how many minutes?",
+            "choices": [
+              "60 minutes",
+              "100 minutes",
+              "30 minutes"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "muoi-lam-gio",
+          "prompt": "Chuông tháp điểm 15 giờ. 15 giờ còn gọi là mấy giờ chiều?",
+          "skill": "xem-dong-ho",
+          "choices": [
+            {
+              "id": "a",
+              "text": "3 giờ chiều"
+            },
+            {
+              "id": "b",
+              "text": "5 giờ chiều"
+            },
+            {
+              "id": "c",
+              "text": "1 giờ chiều"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The tower bell strikes 15:00. What is 15:00 in the afternoon?",
+            "choices": [
+              "3 p.m.",
+              "5 p.m.",
+              "1 p.m."
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "ngay-mai",
+          "prompt": "Tờ lịch hôm nay ghi thứ Tư ngày 10. Ngày 11 là thứ mấy?",
+          "skill": "xem-lich",
+          "choices": [
+            {
+              "id": "a",
+              "text": "thứ Năm"
+            },
+            {
+              "id": "b",
+              "text": "thứ Ba"
+            },
+            {
+              "id": "c",
+              "text": "thứ Sáu"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Today's calendar page says Wednesday the 10th. What day is the 11th?",
+            "choices": [
+              "thứ Năm (Thursday)",
+              "thứ Ba (Tuesday)",
+              "thứ Sáu (Friday)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "cuoi-thang",
+          "prompt": "Tháng Mười có 31 ngày. Ngày cuối cùng của tháng Mười là ngày mấy?",
+          "skill": "xem-lich",
+          "choices": [
+            {
+              "id": "a",
+              "text": "31"
+            },
+            {
+              "id": "b",
+              "text": "30"
+            },
+            {
+              "id": "c",
+              "text": "1"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "October has 31 days. What date is the last day of October?",
+            "choices": [
+              "31",
+              "30",
+              "1"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Ò ó o, đúng từng phút!",
+          "Chính xác, chuông tháp vang lên mừng cậu.",
+          "Câu trả lời đúng giờ hơn cả ta gáy!"
+        ],
+        "wrong": [
+          "Kim lệch một chút rồi, xem lại nhé.",
+          "Chưa đúng, đếm lại các vạch trên mặt đồng hồ xem.",
+          "Lật lịch nhầm trang rồi, thử lần nữa nào."
+        ],
+        "en": {
+          "right": [
+            "Cock-a-doodle-doo, right to the minute!",
+            "Exactly, the tower bell rings for you.",
+            "That answer is more punctual than my crowing!"
+          ],
+          "wrong": [
+            "The hand is a little off, look again.",
+            "Not right, count the marks on the clock face again.",
+            "Wrong calendar page, try once more."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Gà Vàng Báo Giờ",
+        "bossName": "Gà Vàng Báo Giờ",
+        "introDialogue": "The second hand is ticking, and the first riddle chimes!",
+        "winDialogue": "Bong bong, I lost right on the hour! {name} is so good at clocks and calendars."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Gà Vàng Báo Giờ",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gà Vàng Báo Giờ tặng {name} một chiếc đồng hồ cát nhỏ, mỗi lần lật là một ván đố mới.",
+      "en": {
+        "title": "Gà Vàng Báo Giờ's gift",
+        "text": "Gà Vàng Báo Giờ gives {name} a little sand timer: every turn is a new round of riddles."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Gà Vàng Báo Giờ",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đủ ba trùm canh khu rồi, {name} lên tháp gặp Sâu Mọt Sách Khổng Lồ ở chặng cuối nhé.",
+      "en": {
+        "title": "Goodbye, Gà Vàng Báo Giờ",
+        "text": "All three zone guardians met, {name}: climb the tower to meet the Giant Bookworm at the last stop."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 50,
+    "coin": 12,
+    "skillXp": {
+      "xem-dong-ho": 1,
+      "xem-lich": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Gà Vàng Báo Giờ",
+    "summary": "Gà Vàng Báo Giờ guards the lawn round the clock tower and asks {name} five riddles about hours, minutes and the calendar."
+  }
+}

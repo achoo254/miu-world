@@ -1,0 +1,426 @@
+{
+  "region": "thu-vien",
+  "guardians": [
+    {
+      "quest": "ward-thu-vien-phong-doc",
+      "id": "cu-kinh-tron",
+      "name": "Cú Kính Tròn",
+      "look": "animal-parrot",
+      "tint": "#8b6b4a",
+      "height": 1.9,
+      "zone": "Phòng đọc",
+      "lessons": [
+        "tv2-t08-b15",
+        "tv2-t08-b16"
+      ],
+      "learn": "Bìa sách, tên tác giả, mục lục, chính tả l/n, từ chỉ người",
+      "summary": "Cú Kính Tròn canh vườn đọc sách cạnh phòng đọc, đố {name} bốn câu về cuốn sách và chính tả.",
+      "hook": [
+        "Suỵt… nói khẽ thôi {name}, đây là chỗ đọc sách. Ta là Cú Kính Tròn, ta đọc sách suốt đêm.",
+        "Ta có bốn câu đố về sách. Thì thầm trả lời đúng hết thì ta cho cậu mượn cuốn sách hay nhất."
+      ],
+      "choice": "Tớ thì thầm trả lời nhé!",
+      "intro": "Trang sách thứ nhất lật ra, câu đố nằm ngay đây!",
+      "win": "Hú… ta gấp sách chịu thua! {name} đúng là mọt sách đáng yêu.",
+      "right": [
+        "Hú hú, chuẩn như sách!",
+        "Đúng rồi, kính ta trượt xuống mũi vì ngạc nhiên.",
+        "Câu trả lời ấy đáng ghi vào sổ vàng!"
+      ],
+      "wrong": [
+        "Suỵt… chưa đúng, lật lại trang trước xem.",
+        "Nhầm chương rồi, cậu đọc lại câu hỏi nhé.",
+        "Gần đúng rồi, nghĩ thêm một dòng nữa thôi."
+      ],
+      "reward": "Cú Kính Tròn cho {name} mượn một chiếc thẻ đánh dấu trang bằng lông vũ, đọc xong nhớ ghé đấu tiếp.",
+      "next": "Theo đường lá vàng sang sân lễ hội, có trùm canh khu đang quét lá chờ {name}.",
+      "turns": [
+        {
+          "id": "tac-gia",
+          "skill": "doc-hieu",
+          "prompt": "Trên bìa một cuốn sách, phần nào cho biết ai đã viết cuốn sách ấy?",
+          "choices": [
+            "tên tác giả",
+            "tên sách",
+            "nhà xuất bản"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "On a book cover, which part tells you who wrote the book?",
+            "choices": [
+              "tên tác giả (the author)",
+              "tên sách (the title)",
+              "nhà xuất bản (the publisher)"
+            ]
+          }
+        },
+        {
+          "id": "muc-luc",
+          "skill": "doc-hieu",
+          "prompt": "Muốn biết một bài đọc nằm ở trang nào, em xem phần nào của sách?",
+          "choices": [
+            "mục lục",
+            "bìa sau",
+            "tranh vẽ"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "To find which page a reading is on, which part of the book do you look at?",
+            "choices": [
+              "mục lục (contents)",
+              "bìa sau (back cover)",
+              "tranh vẽ (pictures)"
+            ]
+          }
+        },
+        {
+          "id": "l-n-lat",
+          "skill": "chinh-ta",
+          "prompt": "Điền l hay n: «Cú …ật từng trang sách thật nhẹ»?",
+          "choices": [
+            "l",
+            "n"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "l or n: «Cú …ật từng trang sách thật nhẹ» (Cú turns each page gently)?",
+            "choices": [
+              "l",
+              "n"
+            ]
+          }
+        },
+        {
+          "id": "thu-thu",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào chỉ người làm việc trông coi sách?",
+          "choices": [
+            "thủ thư",
+            "giá sách",
+            "đọc sách"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which word names the person who looks after the books?",
+            "choices": [
+              "thủ thư (librarian)",
+              "giá sách (bookshelf)",
+              "đọc sách (read)"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Cú Kính Tròn guards the reading garden by the reading room and asks {name} four riddles about books and spelling.",
+        "hook": [
+          "Shh… quietly, {name}, this is a reading place. I'm Cú Kính Tròn, and I read all night long.",
+          "I have four riddles about books. Whisper them all right and I'll lend you my best book."
+        ],
+        "choice": "I'll whisper my answers!",
+        "intro": "The first page turns over, and the riddle is right here!",
+        "win": "Hoo… I close my book and give up! {name} is a lovely bookworm.",
+        "right": [
+          "Hoo hoo, right by the book!",
+          "Right, my glasses slid down my beak in surprise.",
+          "That answer belongs in the golden book!"
+        ],
+        "wrong": [
+          "Shh… not right, turn back a page.",
+          "Wrong chapter, read the question again.",
+          "Nearly right, think one more line."
+        ],
+        "reward": "Cú Kính Tròn lends {name} a feather bookmark. Come back for more riddles when you've finished reading.",
+        "next": "Follow the golden leaf road to the festival yard, a zone guardian is sweeping leaves for {name}."
+      }
+    },
+    {
+      "quest": "ward-thu-vien-san-le-hoi",
+      "id": "cao-la-vang",
+      "name": "Cáo Lá Vàng",
+      "look": "animal-fox",
+      "tint": "#f0a830",
+      "height": 2.0,
+      "zone": "Sân lễ hội lá vàng",
+      "lessons": [
+        "tv2-t09-on-giua-ki",
+        "viec-tot-thu-vien"
+      ],
+      "learn": "Tên đồ vật và công dụng, câu nêu đặc điểm, thứ tự bảng chữ cái, dãy số",
+      "summary": "Cáo Lá Vàng canh sân lễ hội lá vàng, đố {name} bốn câu về đồ vật, câu tả và quy luật.",
+      "hook": [
+        "Xào xạc, xào xạc! {name} đến đúng mùa lá vàng rồi. Ta là Cáo Lá Vàng.",
+        "Mỗi chiếc lá ta quét có ghi một câu đố. Gom đủ bốn chiếc là cậu thắng!"
+      ],
+      "choice": "Gom lá nào!",
+      "intro": "Chiếc lá thứ nhất rơi xuống, đọc câu đố trên lá đi!",
+      "win": "Đống lá của ta bay tung hết rồi! {name} thắng, cả sân lễ hội reo vui.",
+      "right": [
+        "Xào xạc, đúng rồi!",
+        "Hay quá, một chiếc lá vàng thưởng cho cậu!",
+        "Câu trả lời óng ánh như lá thu!"
+      ],
+      "wrong": [
+        "Lá bay lệch rồi, chọn lại nhé.",
+        "Chưa đúng đâu, đọc kĩ dòng chữ trên lá xem.",
+        "Gió thu thổi lạc câu trả lời rồi, thử lần nữa!"
+      ],
+      "reward": "Cáo Lá Vàng ép tặng {name} một chiếc lá vàng thật đẹp để kẹp vào vở.",
+      "next": "Sang tháp đồng hồ đi {name}, trùm canh khu ở đó canh giờ chưa sai một phút.",
+      "turns": [
+        {
+          "id": "cai-choi",
+          "skill": "tu-ngu",
+          "prompt": "Cáo cần một đồ vật để gom lá trên sân. Đó là đồ vật nào?",
+          "choices": [
+            "cái chổi",
+            "cái kéo",
+            "cái cốc"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Cáo needs something to sweep the leaves into a pile. Which thing is it?",
+            "choices": [
+              "cái chổi (a broom)",
+              "cái kéo (scissors)",
+              "cái cốc (a cup)"
+            ]
+          }
+        },
+        {
+          "id": "la-thu",
+          "skill": "cau",
+          "prompt": "Câu nào nêu đặc điểm của chiếc lá mùa thu?",
+          "choices": [
+            "Lá thu vàng óng.",
+            "Lá thu rơi xuống.",
+            "Em nhặt lá thu."
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which sentence describes what an autumn leaf is like?",
+            "choices": [
+              "Lá thu vàng óng. (Autumn leaves are golden.)",
+              "Lá thu rơi xuống. (The leaves fall.)",
+              "Em nhặt lá thu. (I pick up a leaf.)"
+            ]
+          }
+        },
+        {
+          "id": "the-giua",
+          "skill": "bang-chu-cai",
+          "prompt": "Ba thẻ chữ M, H, K xếp theo thứ tự bảng chữ cái. Thẻ nào đứng giữa?",
+          "choices": [
+            "K",
+            "H",
+            "M"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Put the letter cards M, H and K in alphabetical order. Which card is in the middle?",
+            "choices": [
+              "K",
+              "H",
+              "M"
+            ]
+          }
+        },
+        {
+          "id": "la-chan",
+          "skill": "logic",
+          "prompt": "Số ghi trên những chiếc lá: 2, 4, 6, 8, … Chiếc lá tiếp theo ghi số mấy?",
+          "choices": [
+            "10",
+            "9",
+            "12"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The leaves are numbered 2, 4, 6, 8, … What number is on the next leaf?",
+            "choices": [
+              "10",
+              "9",
+              "12"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Cáo Lá Vàng guards the golden leaf festival yard and asks {name} four riddles about things, describing sentences and patterns.",
+        "hook": [
+          "Rustle, rustle! {name} has come just in golden leaf season. I'm Cáo Lá Vàng.",
+          "Every leaf I sweep has a riddle on it. Collect four and you win!"
+        ],
+        "choice": "Let's collect leaves!",
+        "intro": "The first leaf floats down: read the riddle on it!",
+        "win": "My leaf pile has blown everywhere! {name} wins and the whole festival yard cheers.",
+        "right": [
+          "Rustle, that's right!",
+          "Brilliant, a golden leaf for you!",
+          "That answer shimmers like an autumn leaf!"
+        ],
+        "wrong": [
+          "That leaf drifted off, choose again.",
+          "Not right, read the writing on the leaf carefully.",
+          "The autumn wind blew your answer away, try again!"
+        ],
+        "reward": "Cáo Lá Vàng presses a beautiful golden leaf for {name} to keep in an exercise book.",
+        "next": "Go to the clock tower, {name}: its zone guardian has never been a minute late."
+      }
+    },
+    {
+      "quest": "ward-thu-vien-thap-dong-ho",
+      "id": "ga-vang-bao-gio",
+      "name": "Gà Vàng Báo Giờ",
+      "look": "animal-chick",
+      "tint": "#ffd34d",
+      "height": 1.8,
+      "zone": "Tháp đồng hồ và phòng lịch",
+      "lessons": [
+        "toan2-cd6-b29",
+        "toan2-cd6-b30",
+        "toan2-cd6-b31",
+        "toan2-cd6-b32"
+      ],
+      "learn": "Ngày có 24 giờ, giờ và phút, giờ buổi chiều, xem lịch tháng",
+      "summary": "Gà Vàng Báo Giờ canh bãi cỏ quanh tháp đồng hồ, đố {name} năm câu về giờ, phút và tờ lịch.",
+      "hook": [
+        "Ò ó o, đúng giờ rồi! Ta là Gà Vàng Báo Giờ, ta gáy theo từng tiếng chuông của tháp.",
+        "Năm câu đố về giờ giấc và lịch đây, {name} trả lời trước khi chuông điểm nhé!"
+      ],
+      "choice": "Bắt đầu tính giờ đi!",
+      "intro": "Kim giây chạy rồi, câu đố đầu tiên điểm chuông!",
+      "win": "Boong boong, ta thua đúng giờ luôn! {name} xem giờ, xem lịch giỏi quá.",
+      "right": [
+        "Ò ó o, đúng từng phút!",
+        "Chính xác, chuông tháp vang lên mừng cậu.",
+        "Câu trả lời đúng giờ hơn cả ta gáy!"
+      ],
+      "wrong": [
+        "Kim lệch một chút rồi, xem lại nhé.",
+        "Chưa đúng, đếm lại các vạch trên mặt đồng hồ xem.",
+        "Lật lịch nhầm trang rồi, thử lần nữa nào."
+      ],
+      "reward": "Gà Vàng Báo Giờ tặng {name} một chiếc đồng hồ cát nhỏ, mỗi lần lật là một ván đố mới.",
+      "next": "Đủ ba trùm canh khu rồi, {name} lên tháp gặp Sâu Mọt Sách Khổng Lồ ở chặng cuối nhé.",
+      "turns": [
+        {
+          "id": "mot-ngay",
+          "skill": "xem-dong-ho",
+          "prompt": "Gà Vàng Báo Giờ hỏi: một ngày có tất cả bao nhiêu giờ?",
+          "choices": [
+            "24 giờ",
+            "12 giờ",
+            "60 giờ"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Gà Vàng Báo Giờ asks: how many hours are there in a whole day?",
+            "choices": [
+              "24 hours",
+              "12 hours",
+              "60 hours"
+            ]
+          }
+        },
+        {
+          "id": "mot-gio",
+          "skill": "xem-dong-ho",
+          "prompt": "Gà nhắc bạn nhỏ: 1 giờ bằng bao nhiêu phút?",
+          "choices": [
+            "60 phút",
+            "100 phút",
+            "30 phút"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Gà reminds the children: one hour is how many minutes?",
+            "choices": [
+              "60 minutes",
+              "100 minutes",
+              "30 minutes"
+            ]
+          }
+        },
+        {
+          "id": "muoi-lam-gio",
+          "skill": "xem-dong-ho",
+          "prompt": "Chuông tháp điểm 15 giờ. 15 giờ còn gọi là mấy giờ chiều?",
+          "choices": [
+            "3 giờ chiều",
+            "5 giờ chiều",
+            "1 giờ chiều"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The tower bell strikes 15:00. What is 15:00 in the afternoon?",
+            "choices": [
+              "3 p.m.",
+              "5 p.m.",
+              "1 p.m."
+            ]
+          }
+        },
+        {
+          "id": "ngay-mai",
+          "skill": "xem-lich",
+          "prompt": "Tờ lịch hôm nay ghi thứ Tư ngày 10. Ngày 11 là thứ mấy?",
+          "choices": [
+            "thứ Năm",
+            "thứ Ba",
+            "thứ Sáu"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Today's calendar page says Wednesday the 10th. What day is the 11th?",
+            "choices": [
+              "thứ Năm (Thursday)",
+              "thứ Ba (Tuesday)",
+              "thứ Sáu (Friday)"
+            ]
+          }
+        },
+        {
+          "id": "cuoi-thang",
+          "skill": "xem-lich",
+          "prompt": "Tháng Mười có 31 ngày. Ngày cuối cùng của tháng Mười là ngày mấy?",
+          "choices": [
+            "31",
+            "30",
+            "1"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "October has 31 days. What date is the last day of October?",
+            "choices": [
+              "31",
+              "30",
+              "1"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Gà Vàng Báo Giờ guards the lawn round the clock tower and asks {name} five riddles about hours, minutes and the calendar.",
+        "hook": [
+          "Cock-a-doodle-doo, right on time! I'm Gà Vàng Báo Giờ, and I crow with every chime of the tower.",
+          "Here are five riddles about time and the calendar, {name}: answer before the bell rings!"
+        ],
+        "choice": "Start the clock!",
+        "intro": "The second hand is ticking, and the first riddle chimes!",
+        "win": "Bong bong, I lost right on the hour! {name} is so good at clocks and calendars.",
+        "right": [
+          "Cock-a-doodle-doo, right to the minute!",
+          "Exactly, the tower bell rings for you.",
+          "That answer is more punctual than my crowing!"
+        ],
+        "wrong": [
+          "The hand is a little off, look again.",
+          "Not right, count the marks on the clock face again.",
+          "Wrong calendar page, try once more."
+        ],
+        "reward": "Gà Vàng Báo Giờ gives {name} a little sand timer: every turn is a new round of riddles.",
+        "next": "All three zone guardians met, {name}: climb the tower to meet the Giant Bookworm at the last stop."
+      }
+    }
+  ]
+}

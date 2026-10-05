@@ -1,0 +1,295 @@
+{
+  "id": "ward-lau-dai-cau-treo",
+  "region": "lau-dai",
+  "chapter": 1,
+  "title": "Trùm canh khu: Chó Bạc Canh Hào",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Chó Bạc Canh Hào canh bờ hào trước cầu treo, đố {name} năm câu ôn tập cuối học kì.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Chó Bạc Canh Hào",
+    "where": "Cầu treo trước cổng thành",
+    "goal": "Thắng trận đố của Chó Bạc Canh Hào",
+    "play": "Trả lời 5 câu đố, mỗi câu đúng làm Chó Bạc Canh Hào vơi bớt sức",
+    "learn": "Từ chỉ người và hoạt động, chính tả yên/iên, dấu chấm than, đọc hiểu",
+    "reward": "50 XP, 12 Xu mỗi lần thắng",
+    "next": "Đã gặp ba trùm canh khu, {name} qua cầu treo gặp Hiệp Sĩ Đá Gác Cầu ở chặng cuối nhé."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Chó Bạc Canh Hào",
+      "kind": "dialogue",
+      "target": "cho-bac-canh-hao",
+      "lines": [
+        {
+          "speaker": "Chó Bạc Canh Hào",
+          "text": "Gâu! Chó Bạc Canh Hào đây. Ta gác bờ hào này từ khi cây cầu treo mới dựng."
+        },
+        {
+          "speaker": "Chó Bạc Canh Hào",
+          "text": "Ai muốn ngắm cầu cùng ta phải qua năm câu đố ôn tập. {name} có sẵn sàng không?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Gâu gâu, tớ sẵn sàng!"
+        }
+      ],
+      "en": {
+        "title": "Meet Chó Bạc Canh Hào",
+        "lines": [
+          "Woof! Chó Bạc Canh Hào here. I've guarded this moat since the rope bridge was first built.",
+          "Anyone who wants to admire the bridge with me must pass five review riddles. Are you ready, {name}?"
+        ],
+        "choices": [
+          {
+            "text": "Woof woof, I'm ready!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Chó Bạc Canh Hào",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "cho-bac-canh-hao",
+      "bossId": "cho-bac-canh-hao",
+      "bossName": "Chó Bạc Canh Hào",
+      "introDialogue": "Dây cầu treo đã căng, câu đố thứ nhất đung đưa đây!",
+      "winDialogue": "Gâu… ta vẫy đuôi chịu thua! {name} ôn bài kĩ thật, cầu treo chào đón cậu.",
+      "maxHp": 500,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "chi-nguoi",
+          "prompt": "Trong các từ «hiệp sĩ, cây cầu, chạy nhảy», từ nào chỉ người?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "hiệp sĩ"
+            },
+            {
+              "id": "b",
+              "text": "cây cầu"
+            },
+            {
+              "id": "c",
+              "text": "chạy nhảy"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Of «hiệp sĩ, cây cầu, chạy nhảy», which word names a person?",
+            "choices": [
+              "hiệp sĩ (knight)",
+              "cây cầu (bridge)",
+              "chạy nhảy (run and jump)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "ngoi-yen",
+          "prompt": "Điền iên hay yên vào chỗ trống: «cả đoàn ngồi … nghe kể chuyện»?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "iên"
+            },
+            {
+              "id": "b",
+              "text": "yên"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "iên or yên: «cả đoàn ngồi … nghe kể chuyện» (everyone sits still to listen to the story)?",
+            "choices": [
+              "iên",
+              "yên"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        },
+        {
+          "id": "cham-than",
+          "prompt": "Câu «Ôi, cây cầu treo đẹp quá» nên kết thúc bằng dấu gì?",
+          "skill": "dau-cau",
+          "choices": [
+            {
+              "id": "a",
+              "text": "dấu chấm than"
+            },
+            {
+              "id": "b",
+              "text": "dấu chấm hỏi"
+            },
+            {
+              "id": "c",
+              "text": "dấu phẩy"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which mark should end «Ôi, cây cầu treo đẹp quá» (Oh, the rope bridge is so beautiful)?",
+            "choices": [
+              "exclamation mark",
+              "question mark",
+              "comma"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "canh-gac",
+          "prompt": "Từ nào chỉ hoạt động của người lính gác bên cổng thành?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "canh gác"
+            },
+            {
+              "id": "b",
+              "text": "áo giáp"
+            },
+            {
+              "id": "c",
+              "text": "dũng cảm"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which word tells what the guard by the castle gate does (an action)?",
+            "choices": [
+              "canh gác (keep watch)",
+              "áo giáp (armour)",
+              "dũng cảm (brave)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "sua-cau",
+          "prompt": "Nghe chuyện: «Gió làm cầu treo lung lay, bác thợ cùng dân làng buộc lại từng sợi dây.» Ai đã sửa cây cầu?",
+          "skill": "doc-hieu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "bác thợ và dân làng"
+            },
+            {
+              "id": "b",
+              "text": "người lính gác"
+            },
+            {
+              "id": "c",
+              "text": "cơn gió"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Listen: «The wind shook the rope bridge, so the builder and the villagers tied every rope again.» Who fixed the bridge?",
+            "choices": [
+              "the builder and the villagers",
+              "the guard",
+              "the wind"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Gâu gâu, đúng rồi!",
+          "Hay quá, đuôi ta vẫy tít luôn!",
+          "Câu trả lời vững như cầu treo mới!"
+        ],
+        "wrong": [
+          "Gâu, chưa đúng đâu, nghĩ lại nhé.",
+          "Lệch một nhịp cầu rồi, đọc kĩ câu hỏi xem.",
+          "Suýt đúng, cậu ngẫm thêm một chút nào."
+        ],
+        "en": {
+          "right": [
+            "Woof woof, that's right!",
+            "Brilliant, my tail is wagging like mad!",
+            "That answer is as sturdy as the new bridge!"
+          ],
+          "wrong": [
+            "Woof, not right, think again.",
+            "One plank off, read the question carefully.",
+            "Nearly right, think a little longer."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Chó Bạc Canh Hào",
+        "bossName": "Chó Bạc Canh Hào",
+        "introDialogue": "The bridge ropes are tight, and the first riddle is swinging over!",
+        "winDialogue": "Woof… I wag my tail and give up! {name} has revised so well, the rope bridge welcomes you."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Chó Bạc Canh Hào",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chó Bạc Canh Hào tặng {name} chiếc chuông bạc nhỏ, rung lên là ta chạy tới đố tiếp.",
+      "en": {
+        "title": "Chó Bạc Canh Hào's gift",
+        "text": "Chó Bạc Canh Hào gives {name} a little silver bell: ring it and I'll come running with more riddles."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Chó Bạc Canh Hào",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đã gặp ba trùm canh khu, {name} qua cầu treo gặp Hiệp Sĩ Đá Gác Cầu ở chặng cuối nhé.",
+      "en": {
+        "title": "Goodbye, Chó Bạc Canh Hào",
+        "text": "Three zone guardians met, {name}: cross the rope bridge to meet the Stone Knight at the last stop."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 50,
+    "coin": 12,
+    "skillXp": {
+      "tu-ngu": 1,
+      "chinh-ta": 1,
+      "dau-cau": 1,
+      "doc-hieu": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Chó Bạc Canh Hào",
+    "summary": "Chó Bạc Canh Hào guards the moat before the rope bridge and asks {name} five end-of-term review riddles."
+  }
+}

@@ -1,0 +1,269 @@
+{
+  "id": "ward-thu-vien-san-le-hoi",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Trùm canh khu: Cáo Lá Vàng",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Cáo Lá Vàng canh sân lễ hội lá vàng, đố {name} bốn câu về đồ vật, câu tả và quy luật.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cáo Lá Vàng",
+    "where": "Sân lễ hội lá vàng",
+    "goal": "Thắng trận đố của Cáo Lá Vàng",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Cáo Lá Vàng vơi bớt sức",
+    "learn": "Tên đồ vật và công dụng, câu nêu đặc điểm, thứ tự bảng chữ cái, dãy số",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Sang tháp đồng hồ đi {name}, trùm canh khu ở đó canh giờ chưa sai một phút."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Cáo Lá Vàng",
+      "kind": "dialogue",
+      "target": "cao-la-vang",
+      "lines": [
+        {
+          "speaker": "Cáo Lá Vàng",
+          "text": "Xào xạc, xào xạc! {name} đến đúng mùa lá vàng rồi. Ta là Cáo Lá Vàng."
+        },
+        {
+          "speaker": "Cáo Lá Vàng",
+          "text": "Mỗi chiếc lá ta quét có ghi một câu đố. Gom đủ bốn chiếc là cậu thắng!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Gom lá nào!"
+        }
+      ],
+      "en": {
+        "title": "Meet Cáo Lá Vàng",
+        "lines": [
+          "Rustle, rustle! {name} has come just in golden leaf season. I'm Cáo Lá Vàng.",
+          "Every leaf I sweep has a riddle on it. Collect four and you win!"
+        ],
+        "choices": [
+          {
+            "text": "Let's collect leaves!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Cáo Lá Vàng",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "cao-la-vang",
+      "bossId": "cao-la-vang",
+      "bossName": "Cáo Lá Vàng",
+      "introDialogue": "Chiếc lá thứ nhất rơi xuống, đọc câu đố trên lá đi!",
+      "winDialogue": "Đống lá của ta bay tung hết rồi! {name} thắng, cả sân lễ hội reo vui.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "cai-choi",
+          "prompt": "Cáo cần một đồ vật để gom lá trên sân. Đó là đồ vật nào?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "cái chổi"
+            },
+            {
+              "id": "b",
+              "text": "cái kéo"
+            },
+            {
+              "id": "c",
+              "text": "cái cốc"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Cáo needs something to sweep the leaves into a pile. Which thing is it?",
+            "choices": [
+              "cái chổi (a broom)",
+              "cái kéo (scissors)",
+              "cái cốc (a cup)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "la-thu",
+          "prompt": "Câu nào nêu đặc điểm của chiếc lá mùa thu?",
+          "skill": "cau",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Lá thu vàng óng."
+            },
+            {
+              "id": "b",
+              "text": "Lá thu rơi xuống."
+            },
+            {
+              "id": "c",
+              "text": "Em nhặt lá thu."
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which sentence describes what an autumn leaf is like?",
+            "choices": [
+              "Lá thu vàng óng. (Autumn leaves are golden.)",
+              "Lá thu rơi xuống. (The leaves fall.)",
+              "Em nhặt lá thu. (I pick up a leaf.)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "the-giua",
+          "prompt": "Ba thẻ chữ M, H, K xếp theo thứ tự bảng chữ cái. Thẻ nào đứng giữa?",
+          "skill": "bang-chu-cai",
+          "choices": [
+            {
+              "id": "a",
+              "text": "K"
+            },
+            {
+              "id": "b",
+              "text": "H"
+            },
+            {
+              "id": "c",
+              "text": "M"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Put the letter cards M, H and K in alphabetical order. Which card is in the middle?",
+            "choices": [
+              "K",
+              "H",
+              "M"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "la-chan",
+          "prompt": "Số ghi trên những chiếc lá: 2, 4, 6, 8, … Chiếc lá tiếp theo ghi số mấy?",
+          "skill": "logic",
+          "choices": [
+            {
+              "id": "a",
+              "text": "10"
+            },
+            {
+              "id": "b",
+              "text": "9"
+            },
+            {
+              "id": "c",
+              "text": "12"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The leaves are numbered 2, 4, 6, 8, … What number is on the next leaf?",
+            "choices": [
+              "10",
+              "9",
+              "12"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Xào xạc, đúng rồi!",
+          "Hay quá, một chiếc lá vàng thưởng cho cậu!",
+          "Câu trả lời óng ánh như lá thu!"
+        ],
+        "wrong": [
+          "Lá bay lệch rồi, chọn lại nhé.",
+          "Chưa đúng đâu, đọc kĩ dòng chữ trên lá xem.",
+          "Gió thu thổi lạc câu trả lời rồi, thử lần nữa!"
+        ],
+        "en": {
+          "right": [
+            "Rustle, that's right!",
+            "Brilliant, a golden leaf for you!",
+            "That answer shimmers like an autumn leaf!"
+          ],
+          "wrong": [
+            "That leaf drifted off, choose again.",
+            "Not right, read the writing on the leaf carefully.",
+            "The autumn wind blew your answer away, try again!"
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Cáo Lá Vàng",
+        "bossName": "Cáo Lá Vàng",
+        "introDialogue": "The first leaf floats down: read the riddle on it!",
+        "winDialogue": "My leaf pile has blown everywhere! {name} wins and the whole festival yard cheers."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Cáo Lá Vàng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cáo Lá Vàng ép tặng {name} một chiếc lá vàng thật đẹp để kẹp vào vở.",
+      "en": {
+        "title": "Cáo Lá Vàng's gift",
+        "text": "Cáo Lá Vàng presses a beautiful golden leaf for {name} to keep in an exercise book."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Cáo Lá Vàng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sang tháp đồng hồ đi {name}, trùm canh khu ở đó canh giờ chưa sai một phút.",
+      "en": {
+        "title": "Goodbye, Cáo Lá Vàng",
+        "text": "Go to the clock tower, {name}: its zone guardian has never been a minute late."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "tu-ngu": 1,
+      "cau": 1,
+      "bang-chu-cai": 1,
+      "logic": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Cáo Lá Vàng",
+    "summary": "Cáo Lá Vàng guards the golden leaf festival yard and asks {name} four riddles about things, describing sentences and patterns."
+  }
+}

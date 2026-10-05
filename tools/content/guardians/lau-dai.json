@@ -1,0 +1,426 @@
+{
+  "region": "lau-dai",
+  "guardians": [
+    {
+      "quest": "ward-lau-dai-san-hinh-khoi",
+      "id": "ho-xanh-ve-hinh",
+      "name": "Hổ Xanh Vẽ Hình",
+      "look": "animal-tiger",
+      "tint": "#8fb4e8",
+      "height": 2.1,
+      "zone": "Sân hình khối",
+      "lessons": [
+        "toan2-cd5-b25",
+        "toan2-cd5-b26",
+        "toan2-cd5-b27",
+        "toan2-cd5-b28"
+      ],
+      "learn": "Hình tứ giác, đường gấp khúc và độ dài, ba điểm thẳng hàng, đường thẳng và đường cong",
+      "summary": "Hổ Xanh Vẽ Hình canh sân hình khối, đố {name} bốn câu về đoạn thẳng, đường gấp khúc và hình tứ giác.",
+      "hook": [
+        "Gừ… à không, ta chỉ gừ cho vui thôi! Ta là Hổ Xanh Vẽ Hình, móng ta vẽ hình đẹp nhất sân này.",
+        "{name} giải đúng bốn câu đố hình học thì ta vẽ tặng cậu một bức tranh."
+      ],
+      "choice": "Vẽ tặng tớ nhé!",
+      "intro": "Thước đã kẻ, bút đã gọt, câu đố hình thứ nhất đây!",
+      "win": "Ta gác bút chịu thua! {name} nhìn hình còn tinh hơn mắt hổ.",
+      "right": [
+        "Chuẩn như kẻ bằng thước!",
+        "Đúng rồi, sọc xanh trên lưng ta sáng rực.",
+        "Hình học khó thế mà cậu giải ngon ơ!"
+      ],
+      "wrong": [
+        "Đường kẻ lệch rồi, đo lại nhé.",
+        "Chưa đúng đâu, đếm lại các cạnh xem.",
+        "Gần đúng rồi, nhìn kĩ hình thêm chút nữa."
+      ],
+      "reward": "Hổ Xanh Vẽ Hình vẽ tặng {name} một ngôi sao nhiều cánh bằng các đoạn thẳng.",
+      "next": "Vào trong thành tới đại sảnh ôn tập, có trùm canh khu thích tính toán đang chờ {name}.",
+      "turns": [
+        {
+          "id": "tu-giac",
+          "skill": "hinh-phang",
+          "prompt": "Hổ Xanh vẽ một hình có 4 cạnh và 4 đỉnh. Đó là hình gì?",
+          "choices": [
+            "hình tứ giác",
+            "hình tam giác",
+            "hình tròn"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Hổ Xanh draws a shape with 4 sides and 4 corners. What shape is it?",
+            "choices": [
+              "hình tứ giác (quadrilateral)",
+              "hình tam giác (triangle)",
+              "hình tròn (circle)"
+            ]
+          }
+        },
+        {
+          "id": "gap-khuc",
+          "skill": "hinh-phang",
+          "prompt": "Đường gấp khúc gồm ba đoạn dài 2 cm, 3 cm và 4 cm. Đường gấp khúc dài bao nhiêu?",
+          "choices": [
+            "9 cm",
+            "7 cm",
+            "24 cm"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "A zigzag line has three parts, 2 cm, 3 cm and 4 cm long. How long is the whole line?",
+            "choices": [
+              "9 cm",
+              "7 cm",
+              "24 cm"
+            ]
+          }
+        },
+        {
+          "id": "thang-hang",
+          "skill": "hinh-phang",
+          "prompt": "Ba điểm cùng nằm trên một đường thẳng thì gọi là gì?",
+          "choices": [
+            "ba điểm thẳng hàng",
+            "ba đoạn thẳng",
+            "một đường cong"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "What do we call three points that lie on one straight line?",
+            "choices": [
+              "ba điểm thẳng hàng (three points in a line)",
+              "ba đoạn thẳng (three segments)",
+              "một đường cong (a curve)"
+            ]
+          }
+        },
+        {
+          "id": "duong-cong",
+          "skill": "hinh-phang",
+          "prompt": "Trong mép thước kẻ, vành chiếc đĩa và cạnh bàn, đâu là một đường cong?",
+          "choices": [
+            "vành chiếc đĩa",
+            "mép thước kẻ",
+            "cạnh bàn"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Of a ruler's edge, a plate's rim and a table's edge, which is a curved line?",
+            "choices": [
+              "vành chiếc đĩa (the plate's rim)",
+              "mép thước kẻ (the ruler's edge)",
+              "cạnh bàn (the table's edge)"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Hổ Xanh Vẽ Hình guards the shapes yard and asks {name} four riddles about segments, zigzag lines and quadrilaterals.",
+        "hook": [
+          "Grr… no, I only growl for fun! I'm Hổ Xanh Vẽ Hình, and my claws draw the best shapes in this yard.",
+          "If {name} solves four shape riddles, I'll draw you a picture."
+        ],
+        "choice": "Draw me one!",
+        "intro": "Ruler ready, pencil sharpened: here's the first shape riddle!",
+        "win": "I put down my pencil and give up! {name} sees shapes better than a tiger's eye.",
+        "right": [
+          "As neat as a ruled line!",
+          "Right, the blue stripes on my back are glowing.",
+          "Tricky geometry, and you solved it easily!"
+        ],
+        "wrong": [
+          "The line went crooked, measure again.",
+          "Not right, count the sides again.",
+          "Nearly right, look at the shape a little longer."
+        ],
+        "reward": "Hổ Xanh Vẽ Hình draws {name} a many-pointed star made of straight segments.",
+        "next": "Go inside the walls to the great review hall, a zone guardian who loves sums is waiting for {name}."
+      }
+    },
+    {
+      "quest": "ward-lau-dai-dai-sanh",
+      "id": "meo-quan-gia",
+      "name": "Mèo Quản Gia",
+      "look": "animal-cat",
+      "tint": "#5a5a7a",
+      "height": 2.0,
+      "zone": "Đại sảnh ôn tập",
+      "lessons": [
+        "toan2-cd7-b33",
+        "toan2-cd7-b35",
+        "toan2-cd7-b36"
+      ],
+      "learn": "Cộng, trừ có nhớ trong phạm vi 100, ki-lô-gam và lít",
+      "summary": "Mèo Quản Gia canh sân trong thành trước đại sảnh, đố {name} bốn câu tính ghế, nến, bao gạo và bình nước.",
+      "hook": [
+        "Kính chào {name}! Ta là Mèo Quản Gia, ta lo mọi việc trong đại sảnh từ ghế ngồi tới nến thắp.",
+        "Buổi tổng kết sắp bắt đầu, cậu giúp ta tính bốn việc nhé. Đúng hết là ta mời cậu ngồi hàng ghế đầu."
+      ],
+      "choice": "Tớ giúp ngay, bác Quản Gia!",
+      "intro": "Đại sảnh mở cửa, việc thứ nhất cần tính đây!",
+      "win": "Ta cúi chào chịu thua! Mời {name} ngồi hàng ghế đầu trong buổi tổng kết.",
+      "right": [
+        "Chính xác, ta ghi vào sổ ngay!",
+        "Đúng rồi, đại sảnh sắp xếp gọn gàng nhờ cậu.",
+        "Tuyệt, nến trong sảnh sáng thêm một ngọn!"
+      ],
+      "wrong": [
+        "Sổ sách lệch mất rồi, tính lại nhé.",
+        "Chưa đúng đâu, đặt tính cho thẳng hàng xem.",
+        "Suýt khớp rồi, nhớ cộng phần nhớ nữa nhé."
+      ],
+      "reward": "Mèo Quản Gia trao cho {name} tấm vé mời hàng ghế đầu, có in hình ngai vàng.",
+      "next": "Ra cổng thành đi {name}, ở bờ hào bên cầu treo có trùm canh khu mê chữ nghĩa.",
+      "turns": [
+        {
+          "id": "xep-ghe",
+          "skill": "phep-cong",
+          "prompt": "Đại sảnh đã xếp 38 chiếc ghế, xếp thêm 27 chiếc nữa. Có tất cả bao nhiêu chiếc ghế?",
+          "choices": [
+            "65",
+            "55",
+            "11"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The hall has 38 chairs set out, and 27 more are added. How many chairs in all?",
+            "choices": [
+              "65",
+              "55",
+              "11"
+            ]
+          }
+        },
+        {
+          "id": "thap-nen",
+          "skill": "phep-tru",
+          "prompt": "Có 72 ngọn nến, Mèo đã thắp 45 ngọn. Còn bao nhiêu ngọn chưa thắp?",
+          "choices": [
+            "27",
+            "37",
+            "117"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "There are 72 candles and Mèo has lit 45. How many are still unlit?",
+            "choices": [
+              "27",
+              "37",
+              "117"
+            ]
+          }
+        },
+        {
+          "id": "bao-gao",
+          "skill": "khoi-luong",
+          "prompt": "Bao gạo nặng 25 kg, bao đậu nặng 18 kg. Hai bao nặng tất cả bao nhiêu ki-lô-gam?",
+          "choices": [
+            "43 kg",
+            "33 kg",
+            "7 kg"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "A sack of rice weighs 25 kg and a sack of beans 18 kg. How much do they weigh together?",
+            "choices": [
+              "43 kg",
+              "33 kg",
+              "7 kg"
+            ]
+          }
+        },
+        {
+          "id": "binh-nuoc",
+          "skill": "dung-tich",
+          "prompt": "Bình to có 12 l nước, Mèo rót ra 5 l để tưới hoa. Bình còn lại bao nhiêu lít?",
+          "choices": [
+            "7 l",
+            "17 l",
+            "6 l"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "The big jug holds 12 l of water and Mèo pours out 5 l for the flowers. How many litres are left?",
+            "choices": [
+              "7 l",
+              "17 l",
+              "6 l"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Mèo Quản Gia guards the courtyard before the great hall and asks {name} four riddles counting chairs, candles, rice sacks and water jugs.",
+        "hook": [
+          "Greetings, {name}! I'm Mèo Quản Gia, and I look after everything in the great hall, from chairs to candles.",
+          "The prize-giving is about to start, so help me with four sums. Get them all right and you sit in the front row."
+        ],
+        "choice": "I'll help right away!",
+        "intro": "The hall doors open: here's the first job to work out!",
+        "win": "I bow and give up! Please take a front-row seat at the prize-giving, {name}.",
+        "right": [
+          "Exactly, I'll write it in my book!",
+          "Right, the hall is tidy thanks to you.",
+          "Wonderful, one more candle glows in the hall!"
+        ],
+        "wrong": [
+          "The books don't balance, work it out again.",
+          "Not right, line up the digits neatly.",
+          "Nearly there, remember to carry."
+        ],
+        "reward": "Mèo Quản Gia hands {name} a front-row invitation printed with the golden throne.",
+        "next": "Head out of the castle gate, {name}: by the moat at the rope bridge a zone guardian loves words."
+      }
+    },
+    {
+      "quest": "ward-lau-dai-cau-treo",
+      "id": "cho-bac-canh-hao",
+      "name": "Chó Bạc Canh Hào",
+      "look": "animal-dog",
+      "tint": "#c0c0d8",
+      "height": 2.0,
+      "zone": "Cầu treo trước cổng thành",
+      "lessons": [
+        "tv2-t18-on-cuoi-ki"
+      ],
+      "learn": "Từ chỉ người và hoạt động, chính tả yên/iên, dấu chấm than, đọc hiểu",
+      "summary": "Chó Bạc Canh Hào canh bờ hào trước cầu treo, đố {name} năm câu ôn tập cuối học kì.",
+      "hook": [
+        "Gâu! Chó Bạc Canh Hào đây. Ta gác bờ hào này từ khi cây cầu treo mới dựng.",
+        "Ai muốn ngắm cầu cùng ta phải qua năm câu đố ôn tập. {name} có sẵn sàng không?"
+      ],
+      "choice": "Gâu gâu, tớ sẵn sàng!",
+      "intro": "Dây cầu treo đã căng, câu đố thứ nhất đung đưa đây!",
+      "win": "Gâu… ta vẫy đuôi chịu thua! {name} ôn bài kĩ thật, cầu treo chào đón cậu.",
+      "right": [
+        "Gâu gâu, đúng rồi!",
+        "Hay quá, đuôi ta vẫy tít luôn!",
+        "Câu trả lời vững như cầu treo mới!"
+      ],
+      "wrong": [
+        "Gâu, chưa đúng đâu, nghĩ lại nhé.",
+        "Lệch một nhịp cầu rồi, đọc kĩ câu hỏi xem.",
+        "Suýt đúng, cậu ngẫm thêm một chút nào."
+      ],
+      "reward": "Chó Bạc Canh Hào tặng {name} chiếc chuông bạc nhỏ, rung lên là ta chạy tới đố tiếp.",
+      "next": "Đã gặp ba trùm canh khu, {name} qua cầu treo gặp Hiệp Sĩ Đá Gác Cầu ở chặng cuối nhé.",
+      "turns": [
+        {
+          "id": "chi-nguoi",
+          "skill": "tu-ngu",
+          "prompt": "Trong các từ «hiệp sĩ, cây cầu, chạy nhảy», từ nào chỉ người?",
+          "choices": [
+            "hiệp sĩ",
+            "cây cầu",
+            "chạy nhảy"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Of «hiệp sĩ, cây cầu, chạy nhảy», which word names a person?",
+            "choices": [
+              "hiệp sĩ (knight)",
+              "cây cầu (bridge)",
+              "chạy nhảy (run and jump)"
+            ]
+          }
+        },
+        {
+          "id": "ngoi-yen",
+          "skill": "chinh-ta",
+          "prompt": "Điền iên hay yên vào chỗ trống: «cả đoàn ngồi … nghe kể chuyện»?",
+          "choices": [
+            "iên",
+            "yên"
+          ],
+          "answer": 1,
+          "en": {
+            "prompt": "iên or yên: «cả đoàn ngồi … nghe kể chuyện» (everyone sits still to listen to the story)?",
+            "choices": [
+              "iên",
+              "yên"
+            ]
+          }
+        },
+        {
+          "id": "cham-than",
+          "skill": "dau-cau",
+          "prompt": "Câu «Ôi, cây cầu treo đẹp quá» nên kết thúc bằng dấu gì?",
+          "choices": [
+            "dấu chấm than",
+            "dấu chấm hỏi",
+            "dấu phẩy"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which mark should end «Ôi, cây cầu treo đẹp quá» (Oh, the rope bridge is so beautiful)?",
+            "choices": [
+              "exclamation mark",
+              "question mark",
+              "comma"
+            ]
+          }
+        },
+        {
+          "id": "canh-gac",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào chỉ hoạt động của người lính gác bên cổng thành?",
+          "choices": [
+            "canh gác",
+            "áo giáp",
+            "dũng cảm"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Which word tells what the guard by the castle gate does (an action)?",
+            "choices": [
+              "canh gác (keep watch)",
+              "áo giáp (armour)",
+              "dũng cảm (brave)"
+            ]
+          }
+        },
+        {
+          "id": "sua-cau",
+          "skill": "doc-hieu",
+          "prompt": "Nghe chuyện: «Gió làm cầu treo lung lay, bác thợ cùng dân làng buộc lại từng sợi dây.» Ai đã sửa cây cầu?",
+          "choices": [
+            "bác thợ và dân làng",
+            "người lính gác",
+            "cơn gió"
+          ],
+          "answer": 0,
+          "en": {
+            "prompt": "Listen: «The wind shook the rope bridge, so the builder and the villagers tied every rope again.» Who fixed the bridge?",
+            "choices": [
+              "the builder and the villagers",
+              "the guard",
+              "the wind"
+            ]
+          }
+        }
+      ],
+      "en": {
+        "summary": "Chó Bạc Canh Hào guards the moat before the rope bridge and asks {name} five end-of-term review riddles.",
+        "hook": [
+          "Woof! Chó Bạc Canh Hào here. I've guarded this moat since the rope bridge was first built.",
+          "Anyone who wants to admire the bridge with me must pass five review riddles. Are you ready, {name}?"
+        ],
+        "choice": "Woof woof, I'm ready!",
+        "intro": "The bridge ropes are tight, and the first riddle is swinging over!",
+        "win": "Woof… I wag my tail and give up! {name} has revised so well, the rope bridge welcomes you.",
+        "right": [
+          "Woof woof, that's right!",
+          "Brilliant, my tail is wagging like mad!",
+          "That answer is as sturdy as the new bridge!"
+        ],
+        "wrong": [
+          "Woof, not right, think again.",
+          "One plank off, read the question carefully.",
+          "Nearly right, think a little longer."
+        ],
+        "reward": "Chó Bạc Canh Hào gives {name} a little silver bell: ring it and I'll come running with more riddles.",
+        "next": "Three zone guardians met, {name}: cross the rope bridge to meet the Stone Knight at the last stop."
+      }
+    }
+  ]
+}

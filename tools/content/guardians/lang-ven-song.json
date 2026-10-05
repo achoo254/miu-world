@@ -1,0 +1,361 @@
+{
+  "region": "lang-ven-song",
+  "guardians": [
+    {
+      "quest": "ward-lang-dau-lang",
+      "id": "co-trang-giu-gieng",
+      "name": "Cò Trắng Giữ Giếng",
+      "look": "animal-parrot",
+      "tint": "#f2f1ea",
+      "height": 1.9,
+      "zone": "Đầu làng",
+      "lessons": ["tv2-t01-b01", "tv2-t01-b02"],
+      "learn": "Lời chào lễ phép, bảng chữ cái, từ chỉ sự vật, câu giới thiệu",
+      "summary": "Cò Trắng Giữ Giếng canh khu đầu làng, đố {name} bốn câu về lời chào, chữ cái và câu giới thiệu.",
+      "hook": [
+        "Cúc cu… à không, ta là Cò Trắng Giữ Giếng! Ai đi qua đầu làng đều phải chào ta một câu đố.",
+        "Trả lời đúng bốn câu, ta kéo cho {name} một gàu nước mát nhất làng."
+      ],
+      "choice": "Cò ơi, đố đi!",
+      "intro": "Giếng làng trong veo, câu đố đầu tiên rơi xuống tõm đây!",
+      "win": "Gàu nước mát của {name} đây! Ta thua mà vẫn vui ơi là vui.",
+      "right": [
+        "Đúng rồi, ta vỗ cánh khen cậu đây!",
+        "Câu trả lời trong như nước giếng làng.",
+        "Hay lắm, chân ta đứng không vững nữa rồi!"
+      ],
+      "wrong": [
+        "Ối, rơi nhầm xuống giếng rồi, kéo lên chọn lại nào.",
+        "Chưa phải, cậu đọc to câu hỏi một lần nữa nhé.",
+        "Nghiêng đầu nghĩ thêm chút, cò chờ được mà."
+      ],
+      "reward": "Cò Trắng Giữ Giếng kéo cho {name} một gàu nước mát và tặng chiếc lông trắng muốt làm bút.",
+      "next": "Ra bãi cỏ ven sông đi {name}, ở đó có một trùm canh khu mê đố câu.",
+      "turns": [
+        {
+          "id": "loi-chao",
+          "skill": "tu-ngu",
+          "prompt": "Ngày đầu vào lớp Hai, bạn nhỏ gặp cô giáo ở cổng. Lời chào nào lễ phép?",
+          "choices": ["Em chào cô ạ!", "Chào nhé!", "Ê cô ơi!"],
+          "answer": 0,
+          "en": { "prompt": "On the first day of Year 2 a pupil meets the teacher at the gate. Which greeting is polite?", "choices": ["Em chào cô ạ! (polite hello)", "Chào nhé! (casual hi)", "Ê cô ơi! (hey, you)"] }
+        },
+        {
+          "id": "truoc-chu-d",
+          "skill": "bang-chu-cai",
+          "prompt": "Trong bảng chữ cái, chữ nào đứng ngay trước chữ D?",
+          "choices": ["Đ", "C", "E"],
+          "answer": 1,
+          "en": { "prompt": "In the Vietnamese alphabet, which letter comes just before D?", "choices": ["Đ", "C", "E"] }
+        },
+        {
+          "id": "su-vat-lop",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào gọi tên một đồ vật trong lớp học của Cò?",
+          "choices": ["cái bảng", "đọc bài", "chăm chỉ"],
+          "answer": 0,
+          "en": { "prompt": "Which word names a thing in Cò's classroom?", "choices": ["cái bảng (the board)", "đọc bài (read aloud)", "chăm chỉ (hard-working)"] }
+        },
+        {
+          "id": "cau-gioi-thieu",
+          "skill": "cau",
+          "prompt": "Câu nào là câu giới thiệu về bản thân?",
+          "choices": ["Tớ là Cò, tớ giữ giếng làng.", "Giếng làng sâu ghê!", "Cậu uống nước chưa?"],
+          "answer": 0,
+          "en": { "prompt": "Which sentence introduces the speaker?", "choices": ["Tớ là Cò, tớ giữ giếng làng. (I'm Cò, I keep the well.)", "Giếng làng sâu ghê! (The well is so deep!)", "Cậu uống nước chưa? (Have you had a drink?)"] }
+        }
+      ],
+      "en": {
+        "summary": "Cò Trắng Giữ Giếng guards the village entrance and asks {name} four riddles about greetings, letters and introductions.",
+        "hook": [
+          "Coo… no, I'm Cò Trắng Giữ Giếng! Everyone passing the village entrance greets me with a riddle.",
+          "Answer four right and I'll draw {name} the coolest bucket of water in the village."
+        ],
+        "choice": "Go on, Cò, ask me!",
+        "intro": "The well is crystal clear: splash, here's the first riddle!",
+        "win": "Here's your cool water, {name}! I lost, and I'm still so happy.",
+        "right": [
+          "Right, I'm flapping my wings for you!",
+          "That answer is as clear as the village well.",
+          "Great, I can hardly stand on one leg now!"
+        ],
+        "wrong": [
+          "Oops, that one fell in the well, pull it up and choose again.",
+          "Not that one, read the question aloud once more.",
+          "Tilt your head and think a bit, the stork can wait."
+        ],
+        "reward": "Cò Trắng Giữ Giếng draws {name} a bucket of cool water and gives a snow-white feather to write with.",
+        "next": "Head to the riverside meadow, {name}: a zone guardian there loves sentence riddles."
+      }
+    },
+    {
+      "quest": "ward-lang-bai-co-ven-song",
+      "id": "tho-ngoc-bai-song",
+      "name": "Thỏ Ngọc Bãi Sông",
+      "look": "animal-bunny",
+      "tint": "#e8d0f0",
+      "height": 1.9,
+      "zone": "Bãi cỏ ven sông",
+      "lessons": ["tv2-t02-b03", "tv2-t02-b04"],
+      "learn": "Từ chỉ người và hoạt động, câu thể hiện sự ngạc nhiên, câu nêu hoạt động, bảng chữ cái",
+      "summary": "Thỏ Ngọc Bãi Sông canh bãi cỏ ven sông, thách {name} bốn câu đố về từ ngữ, câu và bảng chữ cái.",
+      "hook": [
+        "Ơ kìa, {name}! Tớ là Thỏ Ngọc Bãi Sông, tớ đang đếm từng ngọn cỏ ven sông đây.",
+        "Đếm mãi cũng chán, mình đố nhau bốn câu cho vui nhé?"
+      ],
+      "choice": "Đố vui thôi nào!",
+      "intro": "Tai tớ dựng lên rồi, câu đố đầu tiên nhảy ra đây!",
+      "win": "Tớ chịu thua rồi! {name} còn nhanh hơn cả thỏ.",
+      "right": [
+        "Tuyệt, tai tớ cụp xuống một bên rồi!",
+        "Nhanh như thỏ luôn, đúng quá đi!",
+        "Câu này cậu trả lời ngon như cà rốt."
+      ],
+      "wrong": [
+        "Nhảy lệch một chút rồi, chọn lại nhé.",
+        "Chưa đúng đâu, cậu đọc kĩ từng từ xem.",
+        "Gần trúng rồi, nhảy thêm một bước nữa thôi!"
+      ],
+      "reward": "Thỏ Ngọc Bãi Sông tặng {name} một bó cỏ ba lá may mắn, lúc nào buồn thì ra đây đố tiếp nhé.",
+      "next": "Xuôi xuống bến sông, có một trùm canh khu đang ngồi đợi bạn đố chữ.",
+      "turns": [
+        {
+          "id": "tu-chi-nguoi",
+          "skill": "tu-ngu",
+          "prompt": "Thỏ Ngọc hỏi: trong ba từ sau, từ nào chỉ người?",
+          "choices": ["bác nông dân", "cánh diều", "bãi cỏ"],
+          "answer": 0,
+          "en": { "prompt": "Thỏ Ngọc asks: which of these words names a person?", "choices": ["bác nông dân (the farmer)", "cánh diều (the kite)", "bãi cỏ (the meadow)"] }
+        },
+        {
+          "id": "ngac-nhien",
+          "skill": "cau",
+          "prompt": "Sau cơn mưa trên bãi cỏ, câu nào thể hiện sự ngạc nhiên?",
+          "choices": ["Ôi, cầu vồng đẹp quá!", "Cầu vồng có bảy màu.", "Cầu vồng ở phía nào?"],
+          "answer": 0,
+          "en": { "prompt": "After the rain on the meadow, which sentence shows surprise?", "choices": ["Ôi, cầu vồng đẹp quá! (Oh, what a lovely rainbow!)", "Cầu vồng có bảy màu. (A rainbow has seven colours.)", "Cầu vồng ở phía nào? (Where is the rainbow?)"] }
+        },
+        {
+          "id": "sau-chu-l",
+          "skill": "bang-chu-cai",
+          "prompt": "Trong bảng chữ cái, chữ nào đứng ngay sau chữ L?",
+          "choices": ["M", "N", "K"],
+          "answer": 0,
+          "en": { "prompt": "In the Vietnamese alphabet, which letter comes right after L?", "choices": ["M", "N", "K"] }
+        },
+        {
+          "id": "cau-hoat-dong",
+          "skill": "cau",
+          "prompt": "Câu nào nêu một hoạt động diễn ra trên bãi cỏ?",
+          "choices": ["Đàn vịt lạch bạch xuống sông.", "Đàn vịt trắng muốt.", "Đàn vịt của bà."],
+          "answer": 0,
+          "en": { "prompt": "Which sentence tells about something happening on the meadow (an action)?", "choices": ["Đàn vịt lạch bạch xuống sông. (The ducks waddle into the river.)", "Đàn vịt trắng muốt. (The ducks are snow-white.)", "Đàn vịt của bà. (Grandma's ducks.)"] }
+        }
+      ],
+      "en": {
+        "summary": "Thỏ Ngọc Bãi Sông guards the riverside meadow and challenges {name} to four riddles about words, sentences and the alphabet.",
+        "hook": [
+          "Oh look, {name}! I'm Thỏ Ngọc Bãi Sông, and I'm counting every blade of grass by the river.",
+          "Counting gets boring, so shall we swap four riddles for fun?"
+        ],
+        "choice": "Riddles for fun!",
+        "intro": "My ears are up: here hops the first riddle!",
+        "win": "I give up! {name} is even quicker than a rabbit.",
+        "right": [
+          "Great, one of my ears just flopped!",
+          "Quick as a rabbit, and right too!",
+          "You answered that one as sweet as a carrot."
+        ],
+        "wrong": [
+          "That hop went a bit sideways, choose again.",
+          "Not right yet, read each word carefully.",
+          "Almost, just one more hop!"
+        ],
+        "reward": "Thỏ Ngọc Bãi Sông gives {name} a bunch of lucky clover. Come back for more riddles whenever you feel blue.",
+        "next": "Down at the river landing a zone guardian is waiting for someone to play word riddles."
+      }
+    },
+    {
+      "quest": "ward-lang-ben-song",
+      "id": "cua-kenh-gac-ben",
+      "name": "Cua Kềnh Gác Bến",
+      "look": "animal-crab",
+      "tint": "#d0603c",
+      "height": 1.6,
+      "zone": "Bến sông",
+      "lessons": ["tv2-t03-b05", "tv2-t03-b06"],
+      "learn": "Từ chỉ hoạt động, đáp lời khen, bảng chữ cái, sắp xếp từ thành câu",
+      "summary": "Cua Kềnh Gác Bến canh bến sông, giơ càng đố {name} bốn câu về từ, câu và lời đáp lịch sự.",
+      "hook": [
+        "Đứng lại, đứng lại! Cua Kềnh Gác Bến đây, càng ta to nhất bến sông này đấy, {name} ạ.",
+        "Nhưng ta không kẹp ai đâu, ta chỉ đố thôi. Đúng bốn câu là ta giơ càng chào cậu."
+      ],
+      "choice": "Cua ơi, tớ không sợ đâu!",
+      "intro": "Càng trái giữ câu đố, càng phải giữ câu đố, bắt đầu nào!",
+      "win": "Ta giơ cả hai càng chào {name}! Cậu giỏi hơn cả cua bò ngang.",
+      "right": [
+        "Cạch cạch, càng ta buông lỏng rồi!",
+        "Đúng rồi, ta bò ngang một bước tỏ lòng phục.",
+        "Câu trả lời chắc như mai cua!"
+      ],
+      "wrong": [
+        "Ối, bò ngang nhầm hướng rồi, thử lại xem.",
+        "Chưa đúng, cậu ngẫm thêm một chút nào.",
+        "Sóng vỗ lệch câu trả lời rồi, chọn lại nhé."
+      ],
+      "reward": "Cua Kềnh Gác Bến tặng {name} một vỏ ốc biết hát, áp vào tai là nghe tiếng sông.",
+      "next": "Đầm sen và sân bóng còn một trùm canh khu mạnh nhất làng đấy, {name} sang đó thử xem.",
+      "turns": [
+        {
+          "id": "hoat-dong-thuyen",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào chỉ hoạt động của con đò trên sông?",
+          "choices": ["trôi", "xanh", "mái chèo"],
+          "answer": 0,
+          "en": { "prompt": "Which word is something the ferry boat does on the river (an action)?", "choices": ["trôi (drift)", "xanh (green)", "mái chèo (oar)"] }
+        },
+        {
+          "id": "sau-chu-u",
+          "skill": "bang-chu-cai",
+          "prompt": "Trong bảng chữ cái tiếng Việt, chữ nào đứng ngay sau chữ U?",
+          "choices": ["Ư", "V", "T"],
+          "answer": 0,
+          "en": { "prompt": "In the Vietnamese alphabet, which letter comes right after U?", "choices": ["Ư", "V", "T"] }
+        },
+        {
+          "id": "dap-loi-khen",
+          "skill": "tu-ngu",
+          "prompt": "Bạn khen: «Cậu vẽ con cua đẹp quá!». Đáp lại thế nào cho lịch sự?",
+          "choices": ["Tớ cảm ơn cậu nhé!", "Tất nhiên rồi!", "Kệ tớ!"],
+          "answer": 0,
+          "en": { "prompt": "A friend says: «You drew that crab so well!». Which reply is polite?", "choices": ["Tớ cảm ơn cậu nhé! (Thank you!)", "Tất nhiên rồi! (Of course!)", "Kệ tớ! (Leave me alone!)"] }
+        },
+        {
+          "id": "xep-cau-ben",
+          "skill": "ghep-cau",
+          "prompt": "Xếp các từ «em, ra, bến sông, chơi» thành câu. Câu nào đúng?",
+          "choices": ["Em ra bến sông chơi.", "Bến sông em ra chơi.", "Chơi em ra bến sông."],
+          "answer": 0,
+          "en": { "prompt": "Put «em, ra, bến sông, chơi» in order to make a sentence. Which is right?", "choices": ["Em ra bến sông chơi. (I go to the river landing to play.)", "Bến sông em ra chơi. (muddled)", "Chơi em ra bến sông. (muddled)"] }
+        }
+      ],
+      "en": {
+        "summary": "Cua Kềnh Gác Bến guards the river landing and raises its claws to ask {name} four riddles about words, sentences and polite replies.",
+        "hook": [
+          "Halt, halt! Cua Kềnh Gác Bến here, with the biggest claws on this landing, {name}.",
+          "But I never pinch, I only ask riddles. Get four right and I'll raise my claws to salute you."
+        ],
+        "choice": "Crab, I'm not scared!",
+        "intro": "A riddle in my left claw, a riddle in my right claw, let's start!",
+        "win": "I salute {name} with both claws! You're cleverer than a sideways crab.",
+        "right": [
+          "Clack clack, my claws just let go!",
+          "Right, I'll step sideways to show I'm impressed.",
+          "That answer is as solid as a crab shell!"
+        ],
+        "wrong": [
+          "Oops, I scuttled the wrong way, try again.",
+          "Not right, think a little longer.",
+          "A wave knocked that answer off course, choose again."
+        ],
+        "reward": "Cua Kềnh Gác Bến gives {name} a singing shell: hold it to your ear and you hear the river.",
+        "next": "The lotus pond and football pitch have the strongest zone guardian in the village, {name}, go and try."
+      }
+    },
+    {
+      "quest": "ward-lang-dam-sen",
+      "id": "su-tu-thu-mon",
+      "name": "Sư Tử Thủ Môn",
+      "look": "animal-lion",
+      "tint": "#e6c27a",
+      "height": 2.2,
+      "zone": "Đầm sen và sân bóng",
+      "lessons": ["tv2-t04-b07", "tv2-t04-b08"],
+      "learn": "Từ chỉ đặc điểm, viết hoa tên riêng, xếp tên theo bảng chữ cái, lời chúc mừng, đọc hiểu",
+      "summary": "Sư Tử Thủ Môn giữ khung thành bên đầm sen, sút năm câu đố về tên riêng, đặc điểm và lời chúc mừng cho {name} đỡ.",
+      "hook": [
+        "Gầm… ta là Sư Tử Thủ Môn! Chưa ai sút qua được khung thành của ta đâu, {name} ạ.",
+        "Năm câu đố là năm cú sút, cậu trả lời đúng cả năm là thắng trận này."
+      ],
+      "choice": "Sút đi, tớ sẵn sàng!",
+      "intro": "Còi khai cuộc vang lên, cú sút câu đố đầu tiên đây!",
+      "win": "Vào! Vào rồi! {name} sút tung lưới ta, cả đầm sen vỗ tay rầm rầm.",
+      "right": [
+        "Bóng vào lưới, ta không cản kịp!",
+        "Một bàn thắng đẹp mắt, ta xin chịu!",
+        "Đúng rồi, khán giả đầm sen hò reo kìa!"
+      ],
+      "wrong": [
+        "Bóng chạm cột dọc rồi, sút lại nhé!",
+        "Ta bắt được quả này, cậu thử cú khác xem.",
+        "Chệch khung thành một chút thôi, ngắm kĩ lại nào."
+      ],
+      "reward": "Sư Tử Thủ Môn trao cho {name} chiếc băng đội trưởng bằng lá sen, sân bóng luôn chờ cậu quay lại.",
+      "next": "Đã thắng cả bốn trùm canh khu? Trâu Đen Đố Chữ vẫn đang chờ {name} ở chặng cuối của làng.",
+      "turns": [
+        {
+          "id": "dac-diem-sen",
+          "skill": "tu-ngu",
+          "prompt": "Từ nào chỉ đặc điểm của bông sen trong đầm?",
+          "choices": ["thơm ngát", "hái sen", "đầm nước"],
+          "answer": 0,
+          "en": { "prompt": "Which word describes what the lotus flowers in the pond are like?", "choices": ["thơm ngát (sweet-smelling)", "hái sen (pick lotus)", "đầm nước (the pond)"] }
+        },
+        {
+          "id": "viet-hoa-ten",
+          "skill": "chinh-ta",
+          "prompt": "Sư Tử Thủ Môn ghi tên cầu thủ lên bảng. Tên nào được viết hoa đúng?",
+          "choices": ["Lê Văn Hùng", "lê văn hùng", "Lê văn hùng"],
+          "answer": 0,
+          "en": { "prompt": "Sư Tử Thủ Môn writes a player's name on the board. Which name has the right capital letters?", "choices": ["Lê Văn Hùng", "lê văn hùng", "Lê văn hùng"] }
+        },
+        {
+          "id": "xep-ten",
+          "skill": "bang-chu-cai",
+          "prompt": "Xếp ba bạn Hà, Bình, Đức theo thứ tự bảng chữ cái. Bạn nào đứng đầu?",
+          "choices": ["Bình", "Đức", "Hà"],
+          "answer": 0,
+          "en": { "prompt": "Put Hà, Bình and Đức in alphabetical order. Who comes first?", "choices": ["Bình", "Đức", "Hà"] }
+        },
+        {
+          "id": "chuc-mung",
+          "skill": "tu-ngu",
+          "prompt": "Đội bạn vừa ghi bàn đẹp. Lời chúc mừng nào phù hợp?",
+          "choices": ["Chúc mừng các cậu nhé!", "Bàn đó không tính!", "Thôi về nhà đi!"],
+          "answer": 0,
+          "en": { "prompt": "The other team has just scored a lovely goal. Which words congratulate them?", "choices": ["Chúc mừng các cậu nhé! (Well done, you lot!)", "Bàn đó không tính! (That doesn't count!)", "Thôi về nhà đi! (Just go home!)"] }
+        },
+        {
+          "id": "du-bi",
+          "skill": "doc-hieu",
+          "prompt": "Bạn Nam ngồi ghế dự bị nhưng vẫn hò reo cổ vũ cả đội suốt trận. Nam là người thế nào?",
+          "choices": ["biết cổ vũ đồng đội", "lười tập luyện", "hay giận dỗi"],
+          "answer": 0,
+          "en": { "prompt": "Nam sits on the bench but cheers for the team all match. What is Nam like?", "choices": ["biết cổ vũ đồng đội (supports the team)", "lười tập luyện (lazy at training)", "hay giận dỗi (often sulks)"] }
+        }
+      ],
+      "en": {
+        "summary": "Sư Tử Thủ Môn guards the goal by the lotus pond and shoots five riddles about names, describing words and congratulations for {name} to stop.",
+        "hook": [
+          "Roar… I'm Sư Tử Thủ Môn! Nobody has ever scored past me, {name}.",
+          "Five riddles are five shots: answer all five right and you win the match."
+        ],
+        "choice": "Shoot, I'm ready!",
+        "intro": "The whistle blows: here comes the first riddle shot!",
+        "win": "Goal! Goal! {name} hit the back of my net, and the whole lotus pond is clapping.",
+        "right": [
+          "Into the net, I couldn't stop it!",
+          "A beautiful goal, I give up on that one!",
+          "Right, the lotus pond fans are cheering!"
+        ],
+        "wrong": [
+          "It hit the post, shoot again!",
+          "I caught that one, try another shot.",
+          "Just wide of the goal, aim again."
+        ],
+        "reward": "Sư Tử Thủ Môn hands {name} a lotus-leaf captain's armband. The pitch is always waiting for you.",
+        "next": "Beaten all four zone guardians? Trâu Đen Đố Chữ is still waiting for {name} at the village's last stop."
+      }
+    }
+  ]
+}

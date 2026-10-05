@@ -1,0 +1,300 @@
+{
+  "id": "ward-lang-dam-sen",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Trùm canh khu: Sư Tử Thủ Môn",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Sư Tử Thủ Môn giữ khung thành bên đầm sen, sút năm câu đố về tên riêng, đặc điểm và lời chúc mừng cho {name} đỡ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Sư Tử Thủ Môn",
+    "where": "Đầm sen và sân bóng",
+    "goal": "Thắng trận đố của Sư Tử Thủ Môn",
+    "play": "Trả lời 5 câu đố, mỗi câu đúng làm Sư Tử Thủ Môn vơi bớt sức",
+    "learn": "Từ chỉ đặc điểm, viết hoa tên riêng, xếp tên theo bảng chữ cái, lời chúc mừng, đọc hiểu",
+    "reward": "50 XP, 12 Xu mỗi lần thắng",
+    "next": "Đã thắng cả bốn trùm canh khu? Trâu Đen Đố Chữ vẫn đang chờ {name} ở chặng cuối của làng."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Sư Tử Thủ Môn",
+      "kind": "dialogue",
+      "target": "su-tu-thu-mon",
+      "lines": [
+        {
+          "speaker": "Sư Tử Thủ Môn",
+          "text": "Gầm… ta là Sư Tử Thủ Môn! Chưa ai sút qua được khung thành của ta đâu, {name} ạ."
+        },
+        {
+          "speaker": "Sư Tử Thủ Môn",
+          "text": "Năm câu đố là năm cú sút, cậu trả lời đúng cả năm là thắng trận này."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Sút đi, tớ sẵn sàng!"
+        }
+      ],
+      "en": {
+        "title": "Meet Sư Tử Thủ Môn",
+        "lines": [
+          "Roar… I'm Sư Tử Thủ Môn! Nobody has ever scored past me, {name}.",
+          "Five riddles are five shots: answer all five right and you win the match."
+        ],
+        "choices": [
+          {
+            "text": "Shoot, I'm ready!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Sư Tử Thủ Môn",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "su-tu-thu-mon",
+      "bossId": "su-tu-thu-mon",
+      "bossName": "Sư Tử Thủ Môn",
+      "introDialogue": "Còi khai cuộc vang lên, cú sút câu đố đầu tiên đây!",
+      "winDialogue": "Vào! Vào rồi! {name} sút tung lưới ta, cả đầm sen vỗ tay rầm rầm.",
+      "maxHp": 500,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "dac-diem-sen",
+          "prompt": "Từ nào chỉ đặc điểm của bông sen trong đầm?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "thơm ngát"
+            },
+            {
+              "id": "b",
+              "text": "hái sen"
+            },
+            {
+              "id": "c",
+              "text": "đầm nước"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which word describes what the lotus flowers in the pond are like?",
+            "choices": [
+              "thơm ngát (sweet-smelling)",
+              "hái sen (pick lotus)",
+              "đầm nước (the pond)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "viet-hoa-ten",
+          "prompt": "Sư Tử Thủ Môn ghi tên cầu thủ lên bảng. Tên nào được viết hoa đúng?",
+          "skill": "chinh-ta",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Lê Văn Hùng"
+            },
+            {
+              "id": "b",
+              "text": "lê văn hùng"
+            },
+            {
+              "id": "c",
+              "text": "Lê văn hùng"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Sư Tử Thủ Môn writes a player's name on the board. Which name has the right capital letters?",
+            "choices": [
+              "Lê Văn Hùng",
+              "lê văn hùng",
+              "Lê văn hùng"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "xep-ten",
+          "prompt": "Xếp ba bạn Hà, Bình, Đức theo thứ tự bảng chữ cái. Bạn nào đứng đầu?",
+          "skill": "bang-chu-cai",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Bình"
+            },
+            {
+              "id": "b",
+              "text": "Đức"
+            },
+            {
+              "id": "c",
+              "text": "Hà"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Put Hà, Bình and Đức in alphabetical order. Who comes first?",
+            "choices": [
+              "Bình",
+              "Đức",
+              "Hà"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "chuc-mung",
+          "prompt": "Đội bạn vừa ghi bàn đẹp. Lời chúc mừng nào phù hợp?",
+          "skill": "tu-ngu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Chúc mừng các cậu nhé!"
+            },
+            {
+              "id": "b",
+              "text": "Bàn đó không tính!"
+            },
+            {
+              "id": "c",
+              "text": "Thôi về nhà đi!"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The other team has just scored a lovely goal. Which words congratulate them?",
+            "choices": [
+              "Chúc mừng các cậu nhé! (Well done, you lot!)",
+              "Bàn đó không tính! (That doesn't count!)",
+              "Thôi về nhà đi! (Just go home!)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "du-bi",
+          "prompt": "Bạn Nam ngồi ghế dự bị nhưng vẫn hò reo cổ vũ cả đội suốt trận. Nam là người thế nào?",
+          "skill": "doc-hieu",
+          "choices": [
+            {
+              "id": "a",
+              "text": "biết cổ vũ đồng đội"
+            },
+            {
+              "id": "b",
+              "text": "lười tập luyện"
+            },
+            {
+              "id": "c",
+              "text": "hay giận dỗi"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Nam sits on the bench but cheers for the team all match. What is Nam like?",
+            "choices": [
+              "biết cổ vũ đồng đội (supports the team)",
+              "lười tập luyện (lazy at training)",
+              "hay giận dỗi (often sulks)"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Bóng vào lưới, ta không cản kịp!",
+          "Một bàn thắng đẹp mắt, ta xin chịu!",
+          "Đúng rồi, khán giả đầm sen hò reo kìa!"
+        ],
+        "wrong": [
+          "Bóng chạm cột dọc rồi, sút lại nhé!",
+          "Ta bắt được quả này, cậu thử cú khác xem.",
+          "Chệch khung thành một chút thôi, ngắm kĩ lại nào."
+        ],
+        "en": {
+          "right": [
+            "Into the net, I couldn't stop it!",
+            "A beautiful goal, I give up on that one!",
+            "Right, the lotus pond fans are cheering!"
+          ],
+          "wrong": [
+            "It hit the post, shoot again!",
+            "I caught that one, try another shot.",
+            "Just wide of the goal, aim again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Sư Tử Thủ Môn",
+        "bossName": "Sư Tử Thủ Môn",
+        "introDialogue": "The whistle blows: here comes the first riddle shot!",
+        "winDialogue": "Goal! Goal! {name} hit the back of my net, and the whole lotus pond is clapping."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Sư Tử Thủ Môn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Sư Tử Thủ Môn trao cho {name} chiếc băng đội trưởng bằng lá sen, sân bóng luôn chờ cậu quay lại.",
+      "en": {
+        "title": "Sư Tử Thủ Môn's gift",
+        "text": "Sư Tử Thủ Môn hands {name} a lotus-leaf captain's armband. The pitch is always waiting for you."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Sư Tử Thủ Môn",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đã thắng cả bốn trùm canh khu? Trâu Đen Đố Chữ vẫn đang chờ {name} ở chặng cuối của làng.",
+      "en": {
+        "title": "Goodbye, Sư Tử Thủ Môn",
+        "text": "Beaten all four zone guardians? Trâu Đen Đố Chữ is still waiting for {name} at the village's last stop."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 50,
+    "coin": 12,
+    "skillXp": {
+      "tu-ngu": 1,
+      "chinh-ta": 1,
+      "bang-chu-cai": 1,
+      "doc-hieu": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Sư Tử Thủ Môn",
+    "summary": "Sư Tử Thủ Môn guards the goal by the lotus pond and shoots five riddles about names, describing words and congratulations for {name} to stop."
+  }
+}

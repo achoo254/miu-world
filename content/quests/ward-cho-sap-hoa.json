@@ -1,0 +1,267 @@
+{
+  "id": "ward-cho-sap-hoa",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Trùm canh khu: Gà Mái Bán Trứng",
+  "status": "active",
+  "category": "guardian",
+  "summary": "Gà Mái Bán Trứng canh dãy sạp hoa của chợ rau hoa, đố {name} bốn câu cộng qua 10.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Gà Mái Bán Trứng",
+    "where": "Chợ rau hoa, dãy sạp hoa",
+    "goal": "Thắng trận đố của Gà Mái Bán Trứng",
+    "play": "Trả lời 4 câu đố, mỗi câu đúng làm Gà Mái Bán Trứng vơi bớt sức",
+    "learn": "Phép cộng qua 10 trong phạm vi 20, bảng cộng, so sánh tổng với một số",
+    "reward": "40 XP, 12 Xu mỗi lần thắng",
+    "next": "Ghé khu bán thú nuôi đi {name}, trùm canh khu ở đó toàn đố phép trừ."
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "gap",
+    "learn": "dau",
+    "challenge": "dau",
+    "decision": "dau",
+    "finale": "dau",
+    "reward": "qua",
+    "next": "tiep"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Gà Mái Bán Trứng",
+      "kind": "dialogue",
+      "target": "ga-mai-ban-trung",
+      "lines": [
+        {
+          "speaker": "Gà Mái Bán Trứng",
+          "text": "Cục ta cục tác! Chào {name}, ta là Gà Mái Bán Trứng, sạp trứng của ta ngay cạnh dãy hoa."
+        },
+        {
+          "speaker": "Gà Mái Bán Trứng",
+          "text": "Chợ đông quá, ta đếm trứng không kịp. Cậu đấu với ta bốn câu cộng nhé, đúng hết ta tặng quà."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cục tác, tớ đếm giúp!"
+        }
+      ],
+      "en": {
+        "title": "Meet Gà Mái Bán Trứng",
+        "lines": [
+          "Cluck cluck! Hello {name}, I'm Gà Mái Bán Trứng, and my egg stall is right by the flowers.",
+          "The market is so busy I can't count fast enough. Battle me in four sums, and get them right for a present."
+        ],
+        "choices": [
+          {
+            "text": "Cluck, I'll help count!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dau",
+      "title": "Đấu trí với Gà Mái Bán Trứng",
+      "kind": "boss",
+      "trigger": "auto",
+      "target": "ga-mai-ban-trung",
+      "bossId": "ga-mai-ban-trung",
+      "bossName": "Gà Mái Bán Trứng",
+      "introDialogue": "Rổ trứng đầy rồi, câu cộng thứ nhất đây!",
+      "winDialogue": "Cục tác, ta thua rồi! {name} cộng nhanh hơn cả ta đẻ trứng.",
+      "maxHp": 400,
+      "damagePerTurn": 100,
+      "turns": [
+        {
+          "id": "trung-tam-them",
+          "prompt": "Gà Mái có 8 quả trứng, đẻ thêm 5 quả. Gà có tất cả bao nhiêu quả trứng?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "13"
+            },
+            {
+              "id": "b",
+              "text": "12"
+            },
+            {
+              "id": "c",
+              "text": "3"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Gà Mái has 8 eggs and lays 5 more. How many eggs in all?",
+            "choices": [
+              "13",
+              "12",
+              "3"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "hong-cuc",
+          "prompt": "Sạp hoa có 9 bông hồng và 6 bông cúc. Sạp có tất cả bao nhiêu bông hoa?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "15"
+            },
+            {
+              "id": "b",
+              "text": "14"
+            },
+            {
+              "id": "c",
+              "text": "16"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "The flower stall has 9 roses and 6 daisies. How many flowers in all?",
+            "choices": [
+              "15",
+              "14",
+              "16"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "so-con-thieu",
+          "prompt": "Số nào điền vào chỗ trống để có 7 + … = 12?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "5"
+            },
+            {
+              "id": "b",
+              "text": "4"
+            },
+            {
+              "id": "c",
+              "text": "19"
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Which number goes in the gap: 7 + … = 12?",
+            "choices": [
+              "5",
+              "4",
+              "19"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          }
+        },
+        {
+          "id": "so-tong",
+          "prompt": "Gà Mái so hai rổ trứng: 8 + 7 và 14. Điền dấu vào 8 + 7 … 14.",
+          "skill": "so-sanh-so",
+          "choices": [
+            {
+              "id": "a",
+              "text": "<"
+            },
+            {
+              "id": "b",
+              "text": ">"
+            },
+            {
+              "id": "c",
+              "text": "="
+            }
+          ],
+          "damage": 100,
+          "en": {
+            "prompt": "Gà Mái compares two baskets: 8 + 7 and 14. Which sign goes in 8 + 7 … 14?",
+            "choices": [
+              "<",
+              ">",
+              "="
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Cục tác, đếm đúng rồi!",
+          "Hay quá, rổ trứng không vỡ quả nào.",
+          "Đủ chục rồi còn dư mấy, cậu tính chuẩn ghê!"
+        ],
+        "wrong": [
+          "Trứng lăn mất một quả rồi, đếm lại nhé.",
+          "Chưa đúng, cậu thử gom cho đủ chục trước xem.",
+          "Gần đúng rồi, đếm thêm từ 10 nào."
+        ],
+        "en": {
+          "right": [
+            "Cluck, counted right!",
+            "Lovely, not a single egg broken.",
+            "A full ten and some more, you worked it out perfectly!"
+          ],
+          "wrong": [
+            "An egg rolled away, count again.",
+            "Not right, try making a ten first.",
+            "Nearly right, count on from 10."
+          ]
+        }
+      },
+      "en": {
+        "title": "Battle of wits with Gà Mái Bán Trứng",
+        "bossName": "Gà Mái Bán Trứng",
+        "introDialogue": "The egg basket is full: here's the first sum!",
+        "winDialogue": "Cluck, I lost! {name} adds faster than I can lay eggs."
+      }
+    },
+    {
+      "id": "qua",
+      "title": "Quà của Gà Mái Bán Trứng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Gà Mái Bán Trứng tặng {name} một quả trứng gỗ sơn hoa, đặt lên bàn học cho vui.",
+      "en": {
+        "title": "Gà Mái Bán Trứng's gift",
+        "text": "Gà Mái Bán Trứng gives {name} a flower-painted wooden egg to keep on your desk."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Chia tay Gà Mái Bán Trứng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ghé khu bán thú nuôi đi {name}, trùm canh khu ở đó toàn đố phép trừ.",
+      "en": {
+        "title": "Goodbye, Gà Mái Bán Trứng",
+        "text": "Drop by the pet stalls, {name}: the zone guardian there only asks take-away riddles."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 12,
+    "skillXp": {
+      "phep-cong": 1,
+      "so-sanh-so": 1
+    }
+  },
+  "en": {
+    "title": "Zone guardian: Gà Mái Bán Trứng",
+    "summary": "Gà Mái Bán Trứng guards the flower stalls of the vegetable and flower market and asks {name} four add-over-ten riddles."
+  }
+}
