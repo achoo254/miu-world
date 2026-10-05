@@ -1,0 +1,274 @@
+{
+  "id": "vuot-ai-truong-hoc",
+  "region": "truong-hoc",
+  "chapter": 4,
+  "title": "Trùm vui: Voi Tính Nhẩm",
+  "status": "active",
+  "summary": "Hội khỏe lớp Hai chỉ khai mạc khi có người thắng Voi Tính Nhẩm, chú voi khổng lồ mê đố toán ở sân chơi. {name} gom đồ thi đấu, đọc chương trình hội, xếp hàng chạy tiếp sức rồi đấu trí bảy câu.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Chim Sâu Lớp Trưởng, Hươu Trọng Tài, Voi Tính Nhẩm",
+    "where": "Trường học, sân chơi: góc trò chơi, quanh cầu trượt, hàng rào gỗ, bãi cát giữa sân, sân chơi",
+    "goal": "Thắng Voi Tính Nhẩm để Hội khỏe lớp Hai được khai mạc",
+    "play": "Tìm bóng, vợt và ruy băng theo lời gợi ý, đọc chương trình hội, giải câu đố xếp hàng, chọn cách khởi động, đấu trùm bảy câu",
+    "learn": "Ôn số đến 100, tia số, số hạng và tổng, hiệu, nhiều hơn bao nhiêu, so sánh số, cộng không nhớ",
+    "reward": "100 XP, 25 Xu, Skill XP Số đến 100, Thành phần phép tính, Hơn kém, Logic",
+    "next": "Hội khỏe khai mạc, Sư Tử Vàng mời {name} ghé vườn trường xem cây mới trồng"
+  },
+  "phases": {
+    "hook": "gap-chim-sau",
+    "explore": "tim-do-thi-dau",
+    "learn": "doc-chuong-trinh-hoi",
+    "challenge": "xep-hang-tiep-suc",
+    "decision": "chon-cach-khoi-dong",
+    "finale": "tran-trum",
+    "reward": "ngoi-sao-thi-dua",
+    "next": "hoi-khoe-khai-mac"
+  },
+  "places": {
+    "trum-th-chim-sau": "Góc trò chơi",
+    "tim-do-thi-dau": "Quanh cầu trượt",
+    "trum-th-bang-hoi-khoe": "Hàng rào gỗ",
+    "trum-th-huou-trong-tai": "Bãi cát giữa sân",
+    "trum-th-voi-tinh-nham": "Sân chơi",
+    "trum-th-ngoi-sao": "Sân chơi"
+  },
+  "steps": [
+    {
+      "id": "gap-chim-sau",
+      "title": "Chim Sâu Lớp Trưởng gọi",
+      "goTo": "Tới góc trò chơi, Chim Sâu Lớp Trưởng đang vẫy cánh gọi",
+      "kind": "dialogue",
+      "target": "trum-th-chim-sau",
+      "lines": [
+        { "speaker": "Chim Sâu Lớp Trưởng", "text": "{name} ơi, Voi Tính Nhẩm ngồi chắn giữa sân chơi rồi! Chú ấy bảo chưa ai thắng trận đố toán thì Hội khỏe lớp Hai chưa được khai mạc." },
+        { "speaker": "Chim Sâu Lớp Trưởng", "text": "Mà muốn vào sân còn phải mang đủ đồ thi đấu nữa. Lớp mình trông cả vào cậu đấy!" }
+      ],
+      "choices": [
+        { "text": "Đồ thi đấu để ở đâu thế?", "reply": "Hôm qua các bạn chơi xong để quanh cầu trượt, cậu ra đó tìm nhé." },
+        { "text": "Tớ nhận lời, lớp mình sẽ thắng!", "reply": "Cả lớp tin cậu! Ra quanh cầu trượt tìm đồ thi đấu trước đã." }
+      ]
+    },
+    {
+      "id": "tim-do-thi-dau",
+      "title": "Tìm đồ thi đấu",
+      "goTo": "Ra quanh cầu trượt tìm ba món đồ thi đấu",
+      "kind": "find-object",
+      "prompt": "Hội khỏe cần ba món đồ. Đọc kĩ từng lời tả rồi tìm cho đúng:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "bong-da",
+          "name": "Quả bóng đá",
+          "clue": "Tròn vo, khâu từ những mảnh trắng đen, lăn tới đâu là các bạn đuổi theo tới đó.",
+          "target": "trum-th-bong-da"
+        },
+        {
+          "id": "vot-cau-long",
+          "name": "Cây vợt cầu lông",
+          "clue": "Cán dài, mặt lưới căng tròn, đánh quả cầu lông bay qua lưới.",
+          "target": "trum-th-vot-cau-long"
+        },
+        {
+          "id": "ruy-bang",
+          "name": "Dải ruy băng về đích",
+          "clue": "Mềm, dài và đỏ thắm, căng ngang vạch đích chờ người chạy nhanh nhất chạm vào.",
+          "target": "trum-th-ruy-bang"
+        }
+      ]
+    },
+    {
+      "id": "doc-chuong-trinh-hoi",
+      "title": "Chương trình Hội khỏe",
+      "goTo": "Mang đồ tới bảng chương trình treo trên hàng rào gỗ",
+      "kind": "read",
+      "target": "trum-th-bang-hoi-khoe",
+      "skill": "doc-hieu",
+      "text": "CHƯƠNG TRÌNH HỘI KHỎE LỚP HAI\n8 giờ: chạy tiếp sức quanh sân trường.\n9 giờ: nhảy dây ở góc trò chơi.\n10 giờ: đấu trí với Voi Tính Nhẩm giữa sân chơi.\nAi mang đủ bóng, vợt và ruy băng thì được vào sân.",
+      "question": "Theo bảng, cuộc đấu trí với Voi Tính Nhẩm bắt đầu lúc mấy giờ?",
+      "choices": [
+        { "id": "a", "text": "8 giờ" },
+        { "id": "b", "text": "9 giờ" },
+        { "id": "c", "text": "10 giờ" }
+      ],
+      "answer": { "choice": "c" },
+      "support": {
+        "guide": ["Tìm dòng có tên Voi Tính Nhẩm.", "Đọc con số đứng đầu dòng đó."],
+        "hint": "Mỗi dòng bắt đầu bằng một giờ, rồi mới tới việc làm.",
+        "answer": {
+          "text": "Lúc 10 giờ",
+          "explanation": "Bảng ghi: 10 giờ, đấu trí với Voi Tính Nhẩm giữa sân chơi."
+        }
+      },
+      "feedback": {
+        "right": ["Mười giờ đúng, mình còn kịp khởi động kĩ!", "{name} dò đúng dòng có tên Voi Tính Nhẩm rồi.", "Chuẩn giờ! Chim Sâu Lớp Trưởng ghi ngay vào sổ."],
+        "wrong": ["Giờ ấy là của chạy tiếp sức hoặc nhảy dây đấy, đọc lại nhé.", "Tìm dòng nhắc tới Voi Tính Nhẩm xem nào {name}.", "Con số đứng trước chữ «đấu trí» là mấy nhỉ?"]
+      }
+    },
+    {
+      "id": "xep-hang-tiep-suc",
+      "title": "Xếp hàng chạy tiếp sức",
+      "goTo": "Tới bãi cát giữa sân, Hươu Trọng Tài đang xếp hàng các đội",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "trum-th-huou-trong-tai",
+      "skill": "logic",
+      "prompt": "Hươu Trọng Tài xếp ba bạn đứng từ thấp đến cao. Thỏ cao hơn Sóc. Sóc cao hơn Chuột. Bạn nào đứng đầu hàng?",
+      "choices": [
+        { "id": "tho", "text": "Thỏ" },
+        { "id": "soc", "text": "Sóc" },
+        { "id": "chuot", "text": "Chuột" }
+      ],
+      "answer": { "choice": "chuot" },
+      "support": {
+        "guide": ["Hàng xếp từ thấp đến cao, nên bạn thấp nhất đứng đầu.", "Thỏ cao hơn Sóc, vậy Thỏ không thấp nhất.", "Sóc lại cao hơn Chuột, vậy ai thấp nhất?"],
+        "hint": "Tìm bạn không cao hơn ai cả.",
+        "answer": {
+          "text": "Chuột đứng đầu hàng",
+          "explanation": "Thỏ cao hơn Sóc, Sóc cao hơn Chuột, nên Chuột thấp nhất và đứng đầu hàng từ thấp đến cao."
+        }
+      },
+      "feedback": {
+        "right": ["Tuýt! Hàng tiếp sức đã thẳng tắp rồi!", "{name} so chiều cao nhanh hơn cả Hươu Trọng Tài.", "Chuột nhỏ nhất đứng đầu, đúng luật rồi!"],
+        "wrong": ["Bạn ấy còn cao hơn một bạn khác đấy, thử lại nhé.", "Tìm bạn thấp nhất trong ba bạn xem nào {name}.", "Đọc lại hai câu so sánh, ai luôn đứng sau chữ «hơn»?"]
+      }
+    },
+    {
+      "id": "chon-cach-khoi-dong",
+      "title": "Khởi động trước trận đấu",
+      "kind": "decision",
+      "target": "trum-th-huou-trong-tai",
+      "speaker": "Hươu Trọng Tài",
+      "prompt": "Sắp tới giờ đấu trí rồi. {name} khởi động thế nào cho đầu óc tỉnh táo?",
+      "choices": [
+        {
+          "id": "chay-cham",
+          "text": "Chạy chậm một vòng quanh sân",
+          "consequence": "Gió mát lùa qua, {name} thở đều và thấy người nhẹ hẳn."
+        },
+        {
+          "id": "xoay-khop",
+          "text": "Xoay cổ tay, cổ chân thật kĩ",
+          "consequence": "Hươu Trọng Tài đếm nhịp một hai ba bốn, tay chân {name} dẻo dai hẳn ra."
+        },
+        {
+          "id": "dem-nham",
+          "text": "Đếm nhẩm từ 1 tới 20 cho nóng máy",
+          "consequence": "Mười tám, mười chín, hai mươi! Cái đầu đã sẵn sàng tính nhẩm thật nhanh."
+        }
+      ]
+    },
+    {
+      "id": "tran-trum",
+      "title": "Đấu trí với Voi Tính Nhẩm",
+      "goTo": "Vào giữa sân chơi, Voi Tính Nhẩm đang vẫy vòi chờ",
+      "kind": "boss",
+      "target": "trum-th-voi-tinh-nham",
+      "bossId": "voi-tinh-nham",
+      "bossName": "Voi Tính Nhẩm",
+      "introDialogue": "Bộp bộp! Ta có bảy câu đố toán, mỗi câu đúng làm ta lùi một bước. Hết bảy bước là sân chơi thuộc về Hội khỏe!",
+      "winDialogue": "Ta phục rồi! {name} tính nhẩm nhanh như chớp, mời cả lớp vào sân khai mạc thôi!",
+      "maxHp": 500,
+      "damagePerTurn": 80,
+      "turns": [
+        {
+          "id": "chuc-don-vi",
+          "skill": "so-den-100",
+          "prompt": "Số 58 gồm mấy chục và mấy đơn vị?",
+          "choices": [
+            { "id": "a", "text": "5 chục và 8 đơn vị" },
+            { "id": "b", "text": "8 chục và 5 đơn vị" },
+            { "id": "c", "text": "58 chục" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "lien-sau",
+          "skill": "tia-so",
+          "prompt": "Trên tia số, số liền sau của 69 là số nào?",
+          "choices": [
+            { "id": "a", "text": "68" },
+            { "id": "b", "text": "70" },
+            { "id": "c", "text": "79" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "ten-tong",
+          "skill": "thanh-phan-phep-tinh",
+          "prompt": "Trong phép cộng 32 + 15 = 47, số 47 được gọi là gì?",
+          "choices": [
+            { "id": "a", "text": "Số hạng" },
+            { "id": "b", "text": "Tổng" },
+            { "id": "c", "text": "Hiệu" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "tim-hieu",
+          "skill": "phep-tru",
+          "prompt": "Hiệu của 86 và 34 là bao nhiêu?",
+          "choices": [
+            { "id": "a", "text": "52" },
+            { "id": "b", "text": "42" },
+            { "id": "c", "text": "120" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "nhieu-hon",
+          "skill": "hon-kem",
+          "prompt": "Đội Thỏ ghi 27 điểm, đội Sóc ghi 23 điểm. Đội Thỏ nhiều hơn đội Sóc bao nhiêu điểm?",
+          "choices": [
+            { "id": "a", "text": "4 điểm" },
+            { "id": "b", "text": "5 điểm" },
+            { "id": "c", "text": "50 điểm" }
+          ],
+          "answer": { "choice": "a" }
+        },
+        {
+          "id": "lon-nhat",
+          "skill": "so-sanh-so",
+          "prompt": "Ba chiếc áo số 67, 76 và 69. Áo nào mang số lớn nhất?",
+          "choices": [
+            { "id": "a", "text": "Áo số 67" },
+            { "id": "b", "text": "Áo số 76" },
+            { "id": "c", "text": "Áo số 69" }
+          ],
+          "answer": { "choice": "b" }
+        },
+        {
+          "id": "cong-nham",
+          "skill": "phep-cong",
+          "prompt": "Câu cuối cùng: 41 + 37 bằng bao nhiêu?",
+          "choices": [
+            { "id": "a", "text": "68" },
+            { "id": "b", "text": "77" },
+            { "id": "c", "text": "78" }
+          ],
+          "answer": { "choice": "c" }
+        }
+      ]
+    },
+    {
+      "id": "ngoi-sao-thi-dua",
+      "title": "Ngôi sao thi đua",
+      "kind": "reward",
+      "target": "trum-th-ngoi-sao",
+      "text": "Voi Tính Nhẩm dùng vòi gắn ngôi sao thi đua lên ngực áo {name}. Cả lớp Hai reo vang, túi quà của Voi đầy XP, xu và điểm kỹ năng."
+    },
+    {
+      "id": "hoi-khoe-khai-mac",
+      "title": "Hội khỏe khai mạc",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tiếng trống khai mạc vang lên, Voi Tính Nhẩm xin vào đội chạy tiếp sức. Sư Tử Vàng mời {name} ghé vườn trường xem các bạn vừa trồng cây mới."
+    }
+  ],
+  "reward": {
+    "xp": 100,
+    "coin": 25,
+    "skillXp": { "so-den-100": 1, "thanh-phan-phep-tinh": 1, "hon-kem": 1, "logic": 1 }
+  }
+}

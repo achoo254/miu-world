@@ -1,0 +1,247 @@
+{
+  "id": "viec-tot-truong-hoc",
+  "region": "truong-hoc",
+  "chapter": 2,
+  "title": "Việc tốt: Ngày đầu của Chồn Bông",
+  "status": "active",
+  "summary": "Chồn Bông vừa chuyển tới lớp 2B, làm rơi đồ khắp sân sau và chưa quen ai. {name} tìm lại đồ cho bạn, đọc thời khóa biểu, đoán nhịp trống trường, chọn cách giúp bạn hòa nhập rồi cùng bạn xếp ba lô.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Chồn Bông, Bác Bảo Vệ Tư, Cún Đá Cầu",
+    "where": "Trường học, sân sau dãy lớp: bậc thềm dãy lớp, góc sân rợp bóng, bảng tin sân sau, chòi bảo vệ nhỏ, bãi đá cầu",
+    "goal": "Giúp bạn mới tìm lại đồ dùng và thấy vui trong ngày đầu tới trường",
+    "play": "Tìm vở, hộp bút màu và ba lô theo lời tả, đọc thời khóa biểu, tìm quy luật tiếng trống, chọn cách làm quen, phân loại đồ vào ba lô",
+    "learn": "Đọc hiểu thời khóa biểu, quy luật lặp lại, phân biệt đồ dùng học tập và đồ chơi",
+    "reward": "70 XP, 18 Xu, Skill XP Đọc hiểu, Logic, Từ ngữ",
+    "next": "Chồn Bông rủ {name} ngày mai cùng ngồi bàn đầu nghe cô kể chuyện"
+  },
+  "phases": {
+    "hook": "gap-chon-bong",
+    "explore": "tim-do-chon-bong",
+    "learn": "doc-thoi-khoa-bieu",
+    "challenge": "nhip-trong-truong",
+    "decision": "chon-cach-lam-quen",
+    "finale": "xep-ba-lo",
+    "reward": "ban-moi-vui-ve",
+    "next": "hen-ngay-mai"
+  },
+  "places": {
+    "vt-th-chon-bong": "Bậc thềm dãy lớp",
+    "tim-do-chon-bong": "Góc sân rợp bóng",
+    "vt-th-thoi-khoa-bieu": "Bảng tin sân sau",
+    "vt-th-bac-bao-ve": "Chòi bảo vệ nhỏ",
+    "vt-th-cun-da-cau": "Bãi đá cầu"
+  },
+  "steps": [
+    {
+      "id": "gap-chon-bong",
+      "title": "Bạn mới ở bậc thềm",
+      "goTo": "Có một bạn lạ đang ngồi một mình ở bậc thềm dãy lớp",
+      "kind": "dialogue",
+      "target": "vt-th-chon-bong",
+      "lines": [
+        { "speaker": "Chồn Bông", "text": "Chào cậu… Tớ là Chồn Bông, hôm nay mới chuyển tới lớp 2B. Tớ chạy vội quá nên làm rơi hết đồ ngoài sân rồi." },
+        { "speaker": "Chồn Bông", "text": "Tớ cũng chưa biết lớp mình học môn gì, chưa quen bạn nào cả." }
+      ],
+      "choices": [
+        { "text": "Tớ là {name}, để tớ giúp cậu nhé!", "reply": "Thật hả? Cảm ơn {name}! Hình như đồ rơi ở góc sân rợp bóng kia." }
+      ]
+    },
+    {
+      "id": "tim-do-chon-bong",
+      "title": "Tìm đồ cho Chồn Bông",
+      "goTo": "Ra góc sân rợp bóng tìm đồ của Chồn Bông",
+      "kind": "find-object",
+      "prompt": "Chồn Bông tả lại ba món đồ bị rơi. Đọc kĩ rồi tìm giúp bạn:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "vo-o-li",
+          "name": "Quyển vở ô li",
+          "clue": "Bìa in hình chú chồn, bên trong là những dòng kẻ ô vuông nhỏ xíu để tập viết.",
+          "target": "vt-th-vo-o-li"
+        },
+        {
+          "id": "hop-but-mau",
+          "name": "Hộp bút sáp màu",
+          "clue": "Một hộp những thỏi sáp nhiều màu, tô lên giấy thì sáng rực như cầu vồng.",
+          "target": "vt-th-hop-but-mau"
+        },
+        {
+          "id": "ba-lo-xanh",
+          "name": "Chiếc ba lô xanh lá",
+          "clue": "Màu xanh như lá non, có hai quai đeo sau lưng và nhiều ngăn đựng đồ.",
+          "target": "vt-th-ba-lo"
+        }
+      ]
+    },
+    {
+      "id": "doc-thoi-khoa-bieu",
+      "title": "Đọc thời khóa biểu",
+      "goTo": "Dẫn Chồn Bông tới bảng tin sân sau xem thời khóa biểu",
+      "kind": "read",
+      "target": "vt-th-thoi-khoa-bieu",
+      "skill": "doc-hieu",
+      "text": "THỜI KHÓA BIỂU LỚP 2B\nThứ Hai: Tiếng Việt, Toán, Hoạt động trải nghiệm.\nThứ Ba: Toán, Tiếng Việt, Mĩ thuật.\nThứ Tư: Tiếng Việt, Âm nhạc, Toán.\nThứ Năm: Toán, Tự nhiên và Xã hội, Tiếng Việt.\nThứ Sáu: Tiếng Việt, Giáo dục thể chất, Đạo đức.",
+      "question": "Chồn Bông rất thích vẽ. Lớp 2B học Mĩ thuật vào thứ mấy?",
+      "choices": [
+        { "id": "a", "text": "Thứ Hai" },
+        { "id": "b", "text": "Thứ Ba" },
+        { "id": "c", "text": "Thứ Sáu" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Dò từng dòng, tìm chữ «Mĩ thuật».", "Nhìn chữ đứng đầu dòng đó để biết là thứ mấy."],
+        "hint": "Môn Mĩ thuật chỉ xuất hiện đúng một lần trong tuần.",
+        "answer": {
+          "text": "Học Mĩ thuật vào thứ Ba",
+          "explanation": "Dòng «Thứ Ba: Toán, Tiếng Việt, Mĩ thuật» có môn Mĩ thuật."
+        }
+      },
+      "feedback": {
+        "right": ["Chồn Bông reo lên: thứ Ba được vẽ rồi!", "{name} đọc thời khóa biểu thành thạo ghê.", "Đúng dòng thứ Ba rồi, Chồn Bông ghi ngay vào vở."],
+        "wrong": ["Ngày ấy không có môn Mĩ thuật đâu, dò lại nhé.", "Tìm chữ «Mĩ thuật» trước đã nha {name}.", "Đọc từng dòng một, từ thứ Hai xuống thứ Sáu xem nào."]
+      }
+    },
+    {
+      "id": "nhip-trong-truong",
+      "title": "Nhịp trống trường",
+      "goTo": "Ghé chòi bảo vệ nhỏ, Bác Bảo Vệ Tư sắp đánh trống",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "vt-th-bac-bao-ve",
+      "skill": "logic",
+      "prompt": "Bác Bảo Vệ Tư đánh trống theo một nhịp đều. Tiếng tiếp theo là tiếng gì?",
+      "elements": [
+        { "id": "n1", "label": "Tùng" },
+        { "id": "n2", "label": "Tùng" },
+        { "id": "n3", "label": "Cắc" },
+        { "id": "n4", "label": "Tùng" },
+        { "id": "n5", "label": "Tùng" },
+        { "id": "n6", "label": "Cắc" },
+        { "id": "n7", "label": "Tùng" },
+        { "id": "n8", "label": "Tùng" }
+      ],
+      "choices": [
+        { "id": "tung", "text": "Tùng" },
+        { "id": "cac", "text": "Cắc" },
+        { "id": "reng", "text": "Reng" }
+      ],
+      "answer": { "choice": "cac" },
+      "support": {
+        "guide": ["Đếm theo từng nhóm ba tiếng.", "Mỗi nhóm có hai tiếng «Tùng» rồi một tiếng «Cắc».", "Nhóm cuối mới có hai tiếng «Tùng»."],
+        "hint": "Cứ hai tiếng Tùng thì tới một tiếng gì?",
+        "answer": {
+          "text": "Tiếng «Cắc»",
+          "explanation": "Nhịp trống lặp lại Tùng – Tùng – Cắc. Nhóm cuối đã có hai tiếng Tùng nên tiếp theo là Cắc."
+        }
+      },
+      "feedback": {
+        "right": ["Tùng tùng cắc! Bác bảo vệ khen {name} có tai nghe nhạc.", "Đúng nhịp rồi, Chồn Bông gõ tay theo luôn.", "Ba tiếng một nhóm, {name} nghe ra ngay!"],
+        "wrong": ["Sau hai tiếng Tùng là tiếng khác đấy, nghe lại nhé.", "Trống trường không kêu reng đâu {name} ơi.", "Chia thành từng nhóm ba tiếng xem nhóm cuối còn thiếu gì."]
+      }
+    },
+    {
+      "id": "chon-cach-lam-quen",
+      "title": "Giúp Chồn Bông làm quen",
+      "kind": "decision",
+      "target": "vt-th-bac-bao-ve",
+      "speaker": "Bác Bảo Vệ Tư",
+      "prompt": "Chồn Bông vẫn còn rụt rè lắm. {name} làm gì để bạn thấy vui ở trường mới?",
+      "choices": [
+        {
+          "id": "xem-truong",
+          "text": "Dẫn bạn đi một vòng xem trường",
+          "consequence": "Hai bạn đi qua thư viện, căng tin, phòng mĩ thuật. Chồn Bông nhớ đường nhanh lắm!",
+          "nextStepId": "xep-ba-lo"
+        },
+        {
+          "id": "gioi-thieu",
+          "text": "Giới thiệu bạn với các bạn trong lớp",
+          "consequence": "Cả lớp vỗ tay chào bạn mới, Chồn Bông cười tít mắt.",
+          "nextStepId": "xep-ba-lo"
+        },
+        {
+          "id": "ru-da-cau",
+          "text": "Rủ bạn chơi đá cầu giờ ra chơi",
+          "consequence": "Bác bảo vệ chỉ tay: Cún Đá Cầu đang tập ở bãi đá cầu, ra rủ thêm bạn ấy cho vui!"
+        }
+      ]
+    },
+    {
+      "id": "ru-cun-da-cau",
+      "title": "Rủ Cún Đá Cầu",
+      "goTo": "Ra bãi đá cầu rủ Cún Đá Cầu chơi cùng",
+      "kind": "dialogue",
+      "target": "vt-th-cun-da-cau",
+      "lines": [
+        { "speaker": "Cún Đá Cầu", "text": "Bạn mới hả? Hay quá, đội đá cầu đang thiếu một người! Chồn Bông cứ chuyền thử, tớ chỉ cho." }
+      ],
+      "choices": [{ "text": "Ra chơi xong mình cùng xếp đồ nhé!" }]
+    },
+    {
+      "id": "xep-ba-lo",
+      "title": "Xếp đồ vào ba lô",
+      "goTo": "Quay lại bậc thềm dãy lớp giúp Chồn Bông xếp ba lô",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "target": "vt-th-chon-bong",
+      "skill": "tu-ngu",
+      "prompt": "Ngăn lớn đựng đồ dùng học tập, ngăn nhỏ đựng đồ chơi. Xếp từng món vào đúng ngăn:",
+      "groups": [
+        { "id": "hoc-tap", "label": "Đồ dùng học tập" },
+        { "id": "do-choi", "label": "Đồ chơi" }
+      ],
+      "items": [
+        { "id": "thuoc-ke", "label": "Thước kẻ" },
+        { "id": "qua-cau", "label": "Quả cầu" },
+        { "id": "cuc-tay", "label": "Cục tẩy" },
+        { "id": "con-quay", "label": "Con quay" },
+        { "id": "but-muc", "label": "Bút mực" },
+        { "id": "bup-be", "label": "Búp bê vải" }
+      ],
+      "answer": {
+        "assignment": {
+          "thuoc-ke": "hoc-tap",
+          "qua-cau": "do-choi",
+          "cuc-tay": "hoc-tap",
+          "con-quay": "do-choi",
+          "but-muc": "hoc-tap",
+          "bup-be": "do-choi"
+        }
+      },
+      "support": {
+        "guide": ["Hỏi từng món: dùng để học hay để chơi?", "Món nào dùng khi viết, vẽ, đo thì vào ngăn lớn."],
+        "hint": "Có ba món dùng trong giờ học và ba món dùng giờ ra chơi.",
+        "answer": {
+          "text": "Học tập: thước kẻ, cục tẩy, bút mực. Đồ chơi: quả cầu, con quay, búp bê vải",
+          "explanation": "Thước kẻ, cục tẩy, bút mực giúp em học bài; quả cầu, con quay, búp bê vải để vui chơi."
+        }
+      },
+      "feedback": {
+        "right": ["Ba lô gọn gàng ngăn nắp, Chồn Bông khen mãi.", "{name} phân loại đồ vật đâu ra đấy!", "Ngăn nào ra ngăn nấy, sáng mai đi học chẳng quên gì."],
+        "wrong": ["Món này dùng giờ học hay giờ chơi nhỉ? Xem lại nha.", "Có một món đang nằm nhầm ngăn rồi {name} ơi.", "Con quay với quả cầu để chơi, còn thước kẻ thì sao?"]
+      }
+    },
+    {
+      "id": "ban-moi-vui-ve",
+      "title": "Bạn mới vui vẻ",
+      "kind": "reward",
+      "target": "vt-th-chon-bong",
+      "text": "Chồn Bông đeo ba lô lên vai, nắm tay {name} cảm ơn rối rít. Ngày đầu ở trường mới hóa ra vui hơn bạn ấy tưởng nhiều."
+    },
+    {
+      "id": "hen-ngay-mai",
+      "title": "Hẹn ngày mai",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Trống tan học vang lên. Chồn Bông hẹn ngày mai cùng {name} ngồi bàn đầu nghe cô kể chuyện, rồi vẫy tay chạy ra cổng trường."
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": { "doc-hieu": 1, "logic": 1, "tu-ngu": 1 }
+  }
+}
