@@ -10,6 +10,7 @@ const context: ShopContext = {
     ['bed-pink', { isDefault: true }],
     ['bed-rainbow', { isDefault: false }],
   ]),
+  petGear: new Set(['pet-bow-pink']),
   icons: new Set(['heart', 'gift']),
 };
 
@@ -18,6 +19,7 @@ const files = (...extra: unknown[]): ShopFile[] =>
   [
     { category: 'trang-phuc', items: [{ kind: 'wearable', id: 'hat-night', price: 150 }] },
     { category: 'nha-cua', items: [{ kind: 'decor', id: 'bed-rainbow', price: 120 }] },
+    { category: 'thu-cung', items: [{ kind: 'pet-gear', id: 'pet-bow-pink', price: 50 }] },
     { category: 'tieu-hao', items: [heart] },
     ...extra,
   ].map((f) => ShopFile.parse(f));
@@ -30,6 +32,7 @@ describe('shop catalogue', () => {
     expect([...listings.values()].map((l) => [l.id, l.category])).toEqual([
       ['hat-night', 'trang-phuc'],
       ['bed-rainbow', 'nha-cua'],
+      ['pet-bow-pink', 'thu-cung'],
       ['them-mot-tim', 'tieu-hao'],
       ['goi-thu', 'goi-dac-biet'],
     ]);
@@ -40,6 +43,8 @@ describe('shop catalogue', () => {
     ['an unknown wearable', { category: 'phu-kien', items: [{ kind: 'wearable', id: 'hat-ghost', price: 80 }] }, /not a wearable/],
     ['a default home style', { category: 'nha-cua', items: [{ kind: 'decor', id: 'bed-pink', price: 80 }] }, /default style, which stays free/],
     ['a thing under the wrong tab', { category: 'phu-kien', items: [{ kind: 'decor', id: 'bed-pink', price: 80 }] }, /cannot be sold under phu-kien/],
+    ['unknown pet gear', { category: 'thu-cung', items: [{ kind: 'pet-gear', id: 'pet-cape', price: 80 }] }, /not pet gear/],
+    ['pet gear under the wrong tab', { category: 'phu-kien', items: [{ kind: 'pet-gear', id: 'pet-bow-pink', price: 80 }] }, /cannot be sold under phu-kien/],
     ['an id twice', { category: 'tieu-hao', items: [heart] }, /listed twice/],
     ['an unknown picture', { category: 'tieu-hao', items: [{ ...heart, id: 'them-gio', icon: 'rocket' }] }, /unknown picture rocket/],
     ['a bundle that costs as much as its things', { category: 'goi-dac-biet', items: [{ kind: 'bundle', id: 'g', name: 'G', description: 'G', icon: 'gift', contains: { 'hat-night': 1, 'them-mot-tim': 1 }, price: 200 }] }, /not less than/],
@@ -52,6 +57,11 @@ describe('shop catalogue', () => {
   it('reports a shop-only wearable the shop forgot to sell', () => {
     const issues = buildShopCatalog(files().slice(1), context).issues;
     expect(issues).toEqual(['accessory hat-night opens in the shop but the shop does not sell it']);
+  });
+
+  it('reports pet gear the shop forgot to sell', () => {
+    const issues = buildShopCatalog(files().filter((f) => f.category !== 'thu-cung'), context).issues;
+    expect(issues).toEqual(['pet gear pet-bow-pink is not on sale in the shop']);
   });
 
   it('keeps prices between 50 and 500 Xu', () => {

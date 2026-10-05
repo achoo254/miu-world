@@ -115,7 +115,7 @@ describe('opening a multiplayer connection', () => {
 
     await dress(a.cookie, { name: 'Bông', equipped: ['hat-witch-mint', 'backpack-green'] });
     const changed = await first(sb.inbox, 'appearance');
-    expect(changed).toEqual({ type: 'appearance', id: selfId, appearance: { displayName: 'Bông', species: 'fox', outfit: ['hat-witch-mint', 'backpack-green'], pet: 'cun-con' } });
+    expect(changed).toEqual({ type: 'appearance', id: selfId, appearance: { displayName: 'Bông', species: 'fox', outfit: ['hat-witch-mint', 'backpack-green'], pet: 'cun-con', petGear: [] } });
   });
 
   it('saves a block made over the connection', async () => {

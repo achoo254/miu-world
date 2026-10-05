@@ -47,6 +47,9 @@ const CATALOGUE_FILES = [
   'progression/skill-gifts.json',
   'progression/achievements.json',
   'pets.json',
+  // What a pet may wear (apps/server/src/pet-care, sold in the shop) and the names it may be given.
+  'pet-gear.json',
+  'names/pet-names.json',
   'accessories/',
   'quests/',
   // One file per minigame (packages/schema/src/minigame.ts); quests' minigame steps are checked against them.
@@ -584,7 +587,9 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     }
     // The shop sells real wearables and home styles; its pictures are the web app's icons and minigame pictures.
     const decor = HomeDecorCatalog.safeParse(read('home/decor.json'));
-    if (decor.success) loadShopCatalog(catalog.accessories, decor.data, dir, new Set([...Object.keys(UI_ICONS), ...Object.keys(SPRITE_PATHS)]));
+    if (decor.success) loadShopCatalog(catalog, decor.data, dir, new Set([...Object.keys(UI_ICONS), ...Object.keys(SPRITE_PATHS)]));
+    // A pet's gear shows its picture on the shop card and in the care screen: a UI icon of the web app.
+    for (const gear of catalog.petGear.values()) if (!(gear.icon in UI_ICONS)) issues.push(`pet gear ${gear.id}: unknown picture ${gear.icon}`);
     // Every open region has a chest of its own wearables, and lessons to earn it with.
     const lessons = new Map([...questsByRegion(catalog.quests.values(), 'main')].map(([region, ids]) => [region, ids.length]));
     loadRegionRewards(catalog.accessories, dir, lessons);

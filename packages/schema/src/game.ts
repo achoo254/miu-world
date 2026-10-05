@@ -12,6 +12,11 @@ export const CharacterDto = z.object({
   equipped: z.array(ContentId),
   /** Pet id from `content/pets.json` that trots after the character, or none. */
   pet: ContentId.nullable().default(null),
+  /**
+   * What the pet wears (`content/pet-gear.json`), bought in the shop; at most one on its head and one round its neck.
+   * The server always sends it (left out: nothing worn).
+   */
+  petGear: z.array(ContentId).max(2).optional(),
 });
 export type CharacterDto = z.infer<typeof CharacterDto>;
 

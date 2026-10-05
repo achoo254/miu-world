@@ -37,6 +37,7 @@ async function playedFamily() {
   await app.db.insert(t.shopInventory).values({ childId, itemId: 'them-mot-tim', qty: 2 });
   await app.db.insert(t.mail).values({ id: randomUUID(), childId, templateId: 'welcome-gift', category: 'system' });
   await app.db.insert(t.npcFriendships).values({ childId, npcId: 'hoa-mi-rung', talkPoints: 2, giftPoints: 3, lastTalkOn: '2026-10-05' });
+  await app.db.insert(t.petBonds).values({ childId, petId: 'meo-xam', name: 'Bông', happiness: 90, fullness: 60, cleanliness: 70, statsAt: new Date('2026-10-05T08:00:00Z'), careXp: 20, walkSeconds: 120 });
   await app.db.insert(t.botMemories).values({ botId: 'bot-tt-1', childId, runs: 2, lastQuestId: 'with-dung-cau-tre' });
   const me = (await family.agent.get('/api/auth/me').expect(200)).body as { parent: { id: string } };
   return { ...family, parentId: me.parent.id };
@@ -81,7 +82,7 @@ describe('account export', () => {
     expect(child).toMatchObject({
       displayName: 'Mèo Mây',
       primary: true,
-      character: { species: 'cat', name: 'Miu', equipped: [], pet: null },
+      character: { species: 'cat', name: 'Miu', equipped: [], pet: null, petGear: [] },
       stepCounters: [{ questId: 'q-open', stepId: 'b', wrongCount: 2, answerViews: 1 }],
       inventory: [{ itemId: 'la-than', qty: 1 }],
       skills: [{ skillId: 'doc-hieu', xp: 10 }],
@@ -128,6 +129,7 @@ describe('account export', () => {
     expect(child?.reports).toEqual([{ displayName: 'Cáo Cam', reason: 'name', map: 'trung-tam', createdAt: expect.any(String) }]);
     expect(child?.playTime).toEqual([{ weekStart: '2026-09-28', seconds: 900, updatedAt: expect.any(String) }]);
     expect(child?.npcFriendships).toEqual([{ npcId: 'hoa-mi-rung', talkPoints: 2, giftPoints: 3, lastTalkOn: '2026-10-05', lastGiftOn: null }]);
+    expect(child?.petBonds).toEqual([{ petId: 'meo-xam', name: 'Bông', happiness: 90, fullness: 60, cleanliness: 70, statsAt: '2026-10-05T08:00:00.000Z', careXp: 20, walkSeconds: 120 }]);
     expect(child?.botMemories).toEqual([{ botId: 'bot-tt-1', runs: 2, lastQuestId: 'with-dung-cau-tre', lastPlayedAt: expect.any(String) }]);
     expect(JSON.stringify(res.body)).not.toContain(other.childId);
     expect(JSON.stringify(res.body)).not.toContain(other.parent.email);

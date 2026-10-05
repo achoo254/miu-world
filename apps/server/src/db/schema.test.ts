@@ -18,7 +18,7 @@ afterAll(async () => {
   await handle.close();
 });
 
-const CHILD_TABLES = [t.characters, t.questProgress, t.rewardLedger, t.inventoryItems, t.skillProgress, t.stepAttempts, t.timetables, t.homeDecor, t.homeObjects] as const;
+const CHILD_TABLES = [t.characters, t.questProgress, t.rewardLedger, t.inventoryItems, t.skillProgress, t.stepAttempts, t.timetables, t.homeDecor, t.homeObjects, t.petBonds] as const;
 
 async function seedParentWithChild(): Promise<{ parentId: string; childId: string }> {
   const parentId = randomUUID();
@@ -34,6 +34,7 @@ async function seedParentWithChild(): Promise<{ parentId: string; childId: strin
   await db.insert(t.timetables).values({ childId, timetable: emptyTimetable() });
   await db.insert(t.homeDecor).values({ childId, choices: { bed: 'bed-blue' } });
   await db.insert(t.homeObjects).values({ childId, states: { 'lamp-toggle@lamp#0': true } });
+  await db.insert(t.petBonds).values({ childId, petId: 'meo-xam', happiness: 80, fullness: 75, cleanliness: 85, statsAt: new Date() });
   await db.insert(t.sessions).values({ id: randomUUID(), parentId, activeChildId: childId, expiresAt: new Date(Date.now() + 60_000) });
   await db.insert(t.consents).values({ id: randomUUID(), parentId, policyVersion: 'draft-1' });
   return { parentId, childId };

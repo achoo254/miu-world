@@ -2,7 +2,7 @@
 // bots joined straight into rooms, for the hub's tests. Timers are the test's (vi.useFakeTimers).
 import { vi } from 'vitest';
 import type { PlayerSettings } from '@miu/schema/account';
-import type { PlayerAppearance, PlayerPresence, ServerWsMessage } from '@miu/schema/multiplayer';
+import type { PlayerAppearanceInput, PlayerPresence, ServerWsMessage } from '@miu/schema/multiplayer';
 import { MultiplayerHub, type Connection, type HubOptions, type MultiplayerRoom } from '../src/multiplayer/multiplayer-hub';
 import type { MultiplayerStore } from '../src/multiplayer/multiplayer-store';
 import { PartyService } from '../src/multiplayer/party-service';
@@ -11,7 +11,7 @@ import type { FriendStore } from '../src/friend/friend-store';
 
 /** The database as the hub sees it: characters, switches, blocks and reports in memory. */
 export function memoryStore() {
-  const characters = new Map<string, PlayerAppearance>();
+  const characters = new Map<string, PlayerAppearanceInput>();
   const settings = new Map<string, PlayerSettings>();
   const blocks: Array<[string, string]> = [];
   const reports: Array<{ from: string; about: string; reason: string; map: string | null }> = [];
@@ -102,7 +102,7 @@ export function hubHarness(options: Omit<HubOptions, 'store'> = {}) {
   });
 
   /** Connects a player (null when the hub refuses her); her character is made up when she has none yet. */
-  async function tryConnect(childId: string, look: Partial<PlayerAppearance> = {}): Promise<Client | null> {
+  async function tryConnect(childId: string, look: Partial<PlayerAppearanceInput> = {}): Promise<Client | null> {
     if (!db.characters.has(childId)) db.characters.set(childId, { displayName: `Bạn ${childId}`, species: 'cat', outfit: [], pet: null, ...look });
     const inbox: ServerWsMessage[] = [];
     const client = { inbox, closed: null as number | null } as Client;
@@ -121,7 +121,7 @@ export function hubHarness(options: Omit<HubOptions, 'store'> = {}) {
     return client;
   }
 
-  async function connect(childId: string, look: Partial<PlayerAppearance> = {}): Promise<Client> {
+  async function connect(childId: string, look: Partial<PlayerAppearanceInput> = {}): Promise<Client> {
     const client = await tryConnect(childId, look);
     if (!client) throw new Error(`no connection for ${childId}`);
     return client;
@@ -143,6 +143,7 @@ export function hubHarness(options: Omit<HubOptions, 'store'> = {}) {
       species: 'fox',
       outfit: [],
       pet: null,
+      petGear: [],
       x: at[0],
       y: at[1],
       z: at[2],

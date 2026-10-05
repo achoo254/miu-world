@@ -1,155 +1,156 @@
-import { eq } from 'drizzle-orm';
+// The pet's care screen, for the selected player and the pet she takes along (never a pet or player named in the
+// request): its needs, bond level and tricks, its name and what it wears. The server counts every number; the web
+// app only says what she did.
+import { and, eq, sql } from 'drizzle-orm';
 import { Router } from 'express';
-import { PetCareRequest, PetCareResponse, PetCareStats, PetCareStatusResponse } from '@miu/schema/pet-care';
+import { CARE_XP, applyCare, bondXp, careXpDue, petLevel, unlockedTricks, walkCredit } from '@miu/quest/pet-bond';
+import {
+  PetCareRequest,
+  PetGearRequest,
+  PetNameRequest,
+  PetTrickRequest,
+  type PetBondChange,
+  type PetBondResponse,
+  type PetCareStatusResponse,
+} from '@miu/schema/pet-care';
+import { gearIssues } from '@miu/schema/pet-gear';
+import { CharacterDto } from '@miu/schema/game';
 import { activePlayerId, requireParent } from '../auth/auth-context';
+import type { CharacterEvents } from '../character/character-events';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { characters, shopInventory } from '../db/schema';
 import { HttpError, parseInput } from '../http-error';
+import { ownedItems } from '../shop/shop-routes';
+import { bondView, changeBond, readBond, statsAt, type PetBondRow } from './pet-bond-store';
 
 export interface PetCareRouteDeps {
   db: Db;
   content: ContentCatalog;
-  clock?: () => Date;
+  clock: () => Date;
+  /** Told when the pet's gear changes (the others see it). */
+  events?: CharacterEvents;
 }
 
-interface PetCareRecord {
-  stats: PetCareStats;
-  lastCareAt: number;
+/** Happiness a trick adds (a little: tricks are play, not a way to raise the bond). */
+const TRICK_JOY = 3;
+
+/** What a change of the bond brought, from the rows before and after. */
+function bondChange(before: PetBondRow, after: PetBondRow, now: Date, gear: readonly string[]): PetBondChange {
+  const was = petLevel(bondXp(before.careXp, before.walkSeconds)).level;
+  const bond = bondView(after, now, gear);
+  const opened = new Set(unlockedTricks(was));
+  return { bond, xpGained: bond.xp - bondXp(before.careXp, before.walkSeconds), levelUp: bond.level > was, unlocked: bond.tricks.filter((t) => !opened.has(t)) };
 }
 
-// In-memory state keyed by childId, seeded with friendly baseline
-const petCareState = new Map<string, PetCareRecord>();
-
-function getPetCare(childId: string): PetCareRecord {
-  const existing = petCareState.get(childId);
-  if (existing) return existing;
-  const initial: PetCareRecord = {
-    stats: {
-      happiness: 80,
-      fullness: 75,
-      cleanliness: 85,
-    },
-    lastCareAt: Date.now(),
-  };
-  petCareState.set(childId, initial);
-  return initial;
-}
-
-function calculateTier(stats: PetCareStats): { tier: 1 | 2 | 3; title: string } {
-  const avg = (stats.happiness + stats.fullness + stats.cleanliness) / 3;
-  if (avg >= 85) return { tier: 3, title: 'Tri Kỷ Nhỏ' };
-  if (avg >= 60) return { tier: 2, title: 'Bạn Thân Thiết' };
-  return { tier: 1, title: 'Bạn Đồng Hành' };
-}
-
-export function petCareRoutes({ db, content }: PetCareRouteDeps): Router {
+export function petCareRoutes({ db, content, clock, events }: PetCareRouteDeps): Router {
   const router = Router();
 
-  /** Get pet care status for the active child's current pet */
+  /** The selected player's character row; her pet must be one the catalogue still has. */
+  async function withPet(childId: string): Promise<{ petId: string; gear: string[] }> {
+    const [row] = await db.select({ pet: characters.pet, petGear: characters.petGear }).from(characters).where(eq(characters.childId, childId));
+    if (!row?.pet || !content.pets.has(row.pet)) throw new HttpError(400, 'no-pet-equipped');
+    return { petId: row.pet, gear: row.petGear };
+  }
+
   router.get('/character/pet/care', requireParent, async (_req, res) => {
     const childId = await activePlayerId(db, res, content.consent.version);
-    const [row] = await db.select().from(characters).where(eq(characters.childId, childId));
-    if (!row || !row.pet) {
-      const empty: PetCareStatusResponse = {
-        hasPet: false,
-        petId: null,
-      };
-      return res.json(empty);
+    const [row] = await db.select({ pet: characters.pet, petGear: characters.petGear }).from(characters).where(eq(characters.childId, childId));
+    if (!row?.pet || !content.pets.has(row.pet)) {
+      const none: PetCareStatusResponse = { hasPet: false, petId: null };
+      return res.json(none);
     }
-
-    const petDef = content.pets.get(row.pet);
-    const petName = petDef?.name ?? 'Thú cưng';
-    const record = getPetCare(childId);
-    const { tier, title } = calculateTier(record.stats);
-
-    const body: PetCareStatusResponse = {
-      hasPet: true,
-      petId: row.pet,
-      petName,
-      stats: record.stats,
-      friendshipTier: tier,
-      title,
-    };
+    const now = clock();
+    const body: PetCareStatusResponse = { hasPet: true, petId: row.pet, bond: bondView(await readBond(db, childId, row.pet, now), now, row.petGear) };
     res.json(body);
   });
 
-  /** Perform a pet care action (feed, pet, bath, play) */
+  /**
+   * A care scene (feed, pet, bath, play, nap): lifts the need it answers and pays bond XP when that care was not
+   * paid in the last half minute. Feeding a cooked dish she owns uses one up (409 `not-owned` without one).
+   */
   router.post('/character/pet/care', requireParent, async (req, res) => {
     const childId = await activePlayerId(db, res, content.consent.version);
-    const [row] = await db.select().from(characters).where(eq(characters.childId, childId));
-    if (!row || !row.pet) throw new HttpError(400, 'no-pet-equipped');
-
-    const petDef = content.pets.get(row.pet);
-    const petName = petDef?.name ?? 'Bé cưng';
+    const { petId, gear } = await withPet(childId);
     const input = parseInput(PetCareRequest, req.body);
-    const record = getPetCare(childId);
-
-    let message = '';
-    let emote = '';
-
-    switch (input.action) {
-      case 'feed': {
-        let hungerBonus = 30;
-        let happyBonus = 20;
-
-        if (input.itemId) {
-          const recipe = content.recipes.get(input.itemId);
-          if (recipe) {
-            hungerBonus = recipe.hungerRestore;
-            happyBonus = recipe.happinessBonus;
-          }
-          // If child owns item in shop_inventory, consume 1
-          const [owned] = await db
-            .select()
-            .from(shopInventory)
-            .where(eq(shopInventory.childId, childId));
-          if (owned && owned.qty > 0) {
-            await db
-              .update(shopInventory)
-              .set({ qty: owned.qty - 1 })
-              .where(eq(shopInventory.childId, childId));
-          }
-        }
-
-        record.stats.fullness = Math.min(100, record.stats.fullness + hungerBonus);
-        record.stats.happiness = Math.min(100, record.stats.happiness + happyBonus);
-        message = `${petName} ăn thật ngon miệng và no nê! 🥕`;
-        emote = 'yummy';
-        break;
+    const dish = input.itemId === undefined ? undefined : [...content.recipes.values()].find((r) => r.resultItemId === input.itemId);
+    if (input.itemId !== undefined && (input.action !== 'feed' || !dish)) throw new HttpError(400, 'invalid-item');
+    const now = clock();
+    const { before, after } = await changeBond(db, childId, petId, now, async (row, tx) => {
+      if (dish) {
+        const used = await tx
+          .update(shopInventory)
+          .set({ qty: sql`${shopInventory.qty} - 1` })
+          .where(and(eq(shopInventory.childId, childId), eq(shopInventory.itemId, dish.resultItemId), sql`${shopInventory.qty} > 0`))
+          .returning({ qty: shopInventory.qty });
+        if (used.length === 0) throw new HttpError(409, 'not-owned');
       }
-      case 'pet': {
-        record.stats.happiness = Math.min(100, record.stats.happiness + 20);
-        message = `${petName} dụi đầu vào lòng bàn tay bạn thật âu yếm! ❤️`;
-        emote = 'love';
-        break;
-      }
-      case 'bath': {
-        record.stats.cleanliness = Math.min(100, record.stats.cleanliness + 35);
-        record.stats.happiness = Math.min(100, record.stats.happiness + 10);
-        message = `${petName} thích mê làn nước mát và bọt xà phòng thơm phức! 🫧`;
-        emote = 'sparkles';
-        break;
-      }
-      case 'play': {
-        record.stats.happiness = Math.min(100, record.stats.happiness + 25);
-        record.stats.fullness = Math.max(20, record.stats.fullness - 5);
-        message = `${petName} nhảy múa tung tăng theo điệu nhạc vui vẻ! 🎵`;
-        emote = 'dance';
-        break;
-      }
+      const stats = applyCare(statsAt(row, now), input.action, dish ? { fullness: dish.hungerRestore, happiness: dish.happinessBonus } : undefined);
+      const paidAt = row.carePaidAt[input.action];
+      const pays = careXpDue(paidAt === undefined ? undefined : Date.parse(paidAt), now.getTime());
+      return {
+        ...stats,
+        statsAt: now,
+        ...(pays ? { careXp: row.careXp + CARE_XP, carePaidAt: { ...row.carePaidAt, [input.action]: now.toISOString() } } : {}),
+      };
+    });
+    res.json(bondChange(before, after, now, gear));
+  });
+
+  /** Time walking together, reported about once a minute while she plays with her pet along; counted by the clock. */
+  router.post('/character/pet/walk', requireParent, async (_req, res) => {
+    const childId = await activePlayerId(db, res, content.consent.version);
+    const { petId, gear } = await withPet(childId);
+    const now = clock();
+    const { before, after } = await changeBond(db, childId, petId, now, (row) => ({
+      walkSeconds: row.walkSeconds + walkCredit(row.walkedAt?.getTime() ?? null, now.getTime()),
+      walkedAt: now,
+    }));
+    res.json(bondChange(before, after, now, gear));
+  });
+
+  /** A trick from the menu: only one the bond level has opened (403 `trick-locked`). */
+  router.post('/character/pet/trick', requireParent, async (req, res) => {
+    const childId = await activePlayerId(db, res, content.consent.version);
+    const { petId, gear } = await withPet(childId);
+    const { trick } = parseInput(PetTrickRequest, req.body);
+    const now = clock();
+    const { after } = await changeBond(db, childId, petId, now, (row) => {
+      if (!unlockedTricks(petLevel(bondXp(row.careXp, row.walkSeconds)).level).includes(trick)) throw new HttpError(403, 'trick-locked');
+      const stats = statsAt(row, now);
+      return { ...stats, happiness: Math.min(100, stats.happiness + TRICK_JOY), statsAt: now };
+    });
+    const body: PetBondResponse = { bond: bondView(after, now, gear) };
+    res.json(body);
+  });
+
+  /** Names the pet from the list (`content/names/pet-names.json`); null gives it back its kind's name. */
+  router.put('/character/pet/name', requireParent, async (req, res) => {
+    const childId = await activePlayerId(db, res, content.consent.version);
+    const { petId, gear } = await withPet(childId);
+    const { name } = parseInput(PetNameRequest, req.body);
+    if (name !== null && !content.petNames.has(name)) throw new HttpError(400, 'invalid-pet-name');
+    const now = clock();
+    const { after } = await changeBond(db, childId, petId, now, () => ({ name }));
+    const body: PetBondResponse = { bond: bondView(after, now, gear) };
+    res.json(body);
+  });
+
+  /** What the pet wears: gear she bought (403 `gear-not-owned` otherwise), at most one per slot. The others see it. */
+  router.put('/character/pet/gear', requireParent, async (req, res) => {
+    const childId = await activePlayerId(db, res, content.consent.version);
+    const { petId } = await withPet(childId);
+    const { gear } = parseInput(PetGearRequest, req.body);
+    if (gearIssues(gear, content.petGear).length > 0) throw new HttpError(400, 'invalid-pet-gear');
+    if (gear.length > 0) {
+      const owned = await ownedItems(db, childId);
+      if (gear.some((id) => !owned.has(id))) throw new HttpError(403, 'gear-not-owned');
     }
-
-    record.lastCareAt = Date.now();
-    const { tier, title } = calculateTier(record.stats);
-
-    const body: PetCareResponse = {
-      stats: record.stats,
-      message,
-      emote,
-      friendshipTier: tier,
-      title,
-    };
+    const [saved] = await db.update(characters).set({ petGear: gear }).where(eq(characters.childId, childId)).returning();
+    if (!saved) throw new HttpError(404, 'not-found');
+    events?.emit(childId, CharacterDto.parse(saved));
+    const now = clock();
+    const body: PetBondResponse = { bond: bondView(await readBond(db, childId, petId, now), now, saved.petGear) };
     res.json(body);
   });
 

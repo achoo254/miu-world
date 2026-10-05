@@ -108,7 +108,7 @@ export const AccountExport = z.object({
       primary: z.boolean(),
       language: PlayerLanguage.default('vi'),
       createdAt: Instant,
-      character: z.object({ species: z.string(), name: z.string(), equipped: z.array(z.string()), pet: z.string().nullable() }).nullable(),
+      character: z.object({ species: z.string(), name: z.string(), equipped: z.array(z.string()), pet: z.string().nullable(), petGear: z.array(z.string()).default([]) }).nullable(),
       quests: z.array(
         z.object({
           questId: z.string(),
@@ -150,6 +150,21 @@ export const AccountExport = z.object({
       mail: z.array(z.object({ templateId: z.string(), category: z.string(), read: z.boolean(), claimed: z.boolean(), claimedAt: Instant.nullable(), createdAt: Instant })),
       /** Friendship with each character of the maps: the chat and gift points, and the day of the last of each. */
       npcFriendships: z.array(z.object({ npcId: z.string(), talkPoints: z.number(), giftPoints: z.number(), lastTalkOn: z.string().nullable(), lastGiftOn: z.string().nullable() })),
+      /** Her bond with each pet she cared for: its picked name, its needs when last counted, bond XP and seconds walked together. */
+      petBonds: z
+        .array(
+          z.object({
+            petId: z.string(),
+            name: z.string().nullable(),
+            happiness: z.number(),
+            fullness: z.number(),
+            cleanliness: z.number(),
+            statsAt: Instant,
+            careXp: z.number(),
+            walkSeconds: z.number(),
+          }),
+        )
+        .default([]),
       /** Companion bots that won a co-op challenge with her: how often, and the last challenge. */
       botMemories: z.array(z.object({ botId: z.string(), runs: z.number(), lastQuestId: z.string(), lastPlayedAt: z.string() })),
       /** Her friends (other players by character name, companion bots labelled). */

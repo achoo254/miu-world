@@ -2,6 +2,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { CollectibleCatalog, collectibleIssues, type CollectibleSet } from '@miu/schema/collectible';
 import { PetCatalog, type Pet } from '@miu/schema/pet';
+import { PetGearCatalog, type PetGearItem } from '@miu/schema/pet-gear';
 import { RegionCatalog, playableMaps } from '@miu/schema/region';
 import { ConsentDocument, ContentId, LevelCurve, NameList, QuestDefinition, SkillCatalog, type PlayableQuest } from '@miu/schema/content';
 import { MinigameSpec } from '@miu/schema/minigame';
@@ -29,6 +30,10 @@ export interface ContentCatalog {
   species: ReadonlySet<string>;
   /** Pets a character may take along (`content/pets.json`), by id, with the level that opens each. */
   pets: ReadonlyMap<string, Pet>;
+  /** Names a pet may be given (`content/names/pet-names.json`). */
+  petNames: ReadonlySet<string>;
+  /** What a pet may wear (`content/pet-gear.json`), by id; bought in the shop. */
+  petGear: ReadonlyMap<string, PetGearItem>;
   consent: ConsentDocument;
   /** Wearable items (accessories and their colour variants); the character wears these, one per slot. */
   accessories: ReadonlyMap<string, AccessoryItem>;
@@ -214,6 +219,8 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir,
     characterNames: new Set(readContentJson(NameList, path.join(dir, 'names/character-names.json')).names),
     species: new Set(Object.keys(readContentJson(z.record(ContentId, speciesSchema), path.join(dir, 'species.json')))),
     pets: new Map(readContentJson(PetCatalog, path.join(dir, 'pets.json')).pets.map((p) => [p.id, p])),
+    petNames: new Set(readContentJson(NameList, path.join(dir, 'names/pet-names.json')).names),
+    petGear: new Map(readContentJson(PetGearCatalog, path.join(dir, 'pet-gear.json')).items.map((i) => [i.id, i])),
     consent: readContentJson(ConsentDocument, path.join(dir, 'legal/consent-vi.json')),
     accessories,
     levelCurve: readContentJson(LevelCurve, path.join(dir, 'progression/level-curve.json')),

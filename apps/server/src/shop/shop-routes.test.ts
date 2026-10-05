@@ -14,7 +14,7 @@ let app: TestApp;
 let items: ShopItemDto[];
 beforeAll(async () => {
   app = await createTestApp();
-  items = loadShopCatalog(app.content.accessories, loadDecorCatalog()).items as ShopItemDto[];
+  items = loadShopCatalog(app.content, loadDecorCatalog()).items as ShopItemDto[];
 });
 afterAll(async () => {
   await app.handle.close();
@@ -51,7 +51,7 @@ describe('shop', () => {
     expect(body.coins).toBe(37);
     expect(body.level).toBe(1);
     expect(body.owned).toEqual({});
-    expect(body.items.map((i) => i.kind)).toEqual(expect.arrayContaining(['wearable', 'decor', 'booster', 'bundle']));
+    expect(body.items.map((i) => i.kind)).toEqual(expect.arrayContaining(['wearable', 'pet-gear', 'decor', 'booster', 'bundle']));
     expect(body.items.every((i) => i.price >= 50 && i.price <= 500)).toBe(true);
     // The HUD's coins come from the same ledger.
     expect((await agent.get('/api/progress').expect(200)).body).toMatchObject({ coins: 37 });
@@ -111,6 +111,15 @@ describe('shop', () => {
     expect((await buy(agent, levelled.id).expect(403)).body).toEqual({ error: 'shop-level-locked' });
     await earn(childId, 0, 100_000);
     await buy(agent, levelled.id).expect(200);
+  });
+
+  it("sells her pet's gear once, with its name, place and picture from the gear catalogue", async () => {
+    const { agent, childId } = await playingChild();
+    const gear = pick((i) => i.kind === 'pet-gear' && i.level === null);
+    expect(gear).toMatchObject({ category: 'thu-cung', slot: expect.stringMatching(/^(head|neck)$/), icon: expect.any(String), name: app.content.petGear.get(gear.id)?.name });
+    await earn(childId, gear.price);
+    expect(ShopState.parse((await buy(agent, gear.id).expect(200)).body).owned[gear.id]).toBe(1);
+    expect((await buy(agent, gear.id).expect(409)).body).toEqual({ error: 'already-owned' });
   });
 
   it('gives every thing of a bundle, boosters counted, and refuses one holding something she owns', async () => {
@@ -221,6 +230,6 @@ describe('shop catalogue', () => {
     const dir = mkdtempSync(path.join(tmpdir(), 'miu-shop-'));
     mkdirSync(path.join(dir, 'shop'));
     writeFileSync(path.join(dir, 'shop/phu-kien.json'), JSON.stringify({ category: 'phu-kien', items: [{ kind: 'wearable', id: 'hat-gold-diamond', price: 100 }] }));
-    expect(() => loadShopCatalog(app.content.accessories, loadDecorCatalog(), dir)).toThrow(/hat-gold-diamond is not a wearable/);
+    expect(() => loadShopCatalog(app.content, loadDecorCatalog(), dir)).toThrow(/hat-gold-diamond is not a wearable/);
   });
 });

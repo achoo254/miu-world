@@ -99,6 +99,8 @@ export const characters = pgTable('characters', {
   equipped: jsonb('equipped').$type<string[]>().notNull().default(sql`'[]'::jsonb`),
   /** Pet that follows the character (`content/pets.json`), or none. */
   pet: text('pet'),
+  /** What the pet wears (`content/pet-gear.json` ids she owns), at most one per slot; worn by whichever pet she takes. */
+  petGear: jsonb('pet_gear').$type<string[]>().notNull().default(sql`'[]'::jsonb`),
 });
 
 export const questProgress = pgTable(
@@ -299,6 +301,35 @@ export const npcFriendships = pgTable(
   (t) => [
     primaryKey({ columns: [t.childId, t.npcId] }),
     check('npc_friendships_points_not_negative', sql`${t.talkPoints} >= 0 and ${t.giftPoints} >= 0`),
+  ],
+);
+
+/**
+ * A player's bond with one of her pets (content/pets.json): its needs as they were at `stats_at` (they drift down
+ * from there, never below a cheerful floor, packages/quest pet-bond.ts), the bond XP earned by care and the seconds
+ * walked together, the name she picked from the list, when each care last paid XP and when a walk was last counted.
+ * Game counters only; gone with the profile.
+ */
+export const petBonds = pgTable(
+  'pet_bonds',
+  {
+    childId: childRef(),
+    petId: text('pet_id').notNull(),
+    name: text('name'),
+    happiness: smallint('happiness').notNull(),
+    fullness: smallint('fullness').notNull(),
+    cleanliness: smallint('cleanliness').notNull(),
+    statsAt: timestamp('stats_at', { withTimezone: true }).notNull(),
+    careXp: integer('care_xp').notNull().default(0),
+    walkSeconds: integer('walk_seconds').notNull().default(0),
+    /** Care action → when it last paid bond XP (ISO time). */
+    carePaidAt: jsonb('care_paid_at').$type<Record<string, string>>().notNull().default(sql`'{}'::jsonb`),
+    walkedAt: timestamp('walked_at', { withTimezone: true }),
+  },
+  (t) => [
+    primaryKey({ columns: [t.childId, t.petId] }),
+    check('pet_bonds_stats_in_range', sql`${t.happiness} between 0 and 100 and ${t.fullness} between 0 and 100 and ${t.cleanliness} between 0 and 100`),
+    check('pet_bonds_counters_not_negative', sql`${t.careXp} >= 0 and ${t.walkSeconds} >= 0`),
   ],
 );
 

@@ -320,7 +320,7 @@ export class MultiplayerHub {
     if (!this.store) return null;
     const attempt = ++this.attemptSeq;
     this.attempts.set(childId, attempt);
-    const [appearance, blocked, settings, botFriends] = await Promise.all([
+    const [stored, blocked, settings, botFriends] = await Promise.all([
       this.store.appearance(childId),
       this.store.blockedWith(childId),
       this.store.settings?.(childId) ?? { botsEnabled: true },
@@ -328,7 +328,8 @@ export class MultiplayerHub {
     ]);
     const latest = this.attempts.get(childId) === attempt;
     if (latest) this.attempts.delete(childId);
-    if (!appearance) return null;
+    if (!stored) return null;
+    const appearance: PlayerAppearance = { ...stored, outfit: stored.outfit ?? [], species: stored.species ?? 'cat', pet: stored.pet ?? null, petGear: stored.petGear ?? [] };
     // A newer tab is on its way in, or this one already left: it takes no one's place.
     if (!latest || transport.alive?.() === false) {
       transport.close(WS_CLOSE.replaced, 'replaced');
@@ -361,7 +362,7 @@ export class MultiplayerHub {
   characterSaved(childId: string, character: CharacterDto): void {
     const publicId = this.publicIds.get(childId);
     if (!publicId) return;
-    const appearance: PlayerAppearance = { displayName: character.name, species: character.species, outfit: [...character.equipped], pet: character.pet };
+    const appearance: PlayerAppearance = { displayName: character.name, species: character.species, outfit: [...character.equipped], pet: character.pet, petGear: [...(character.petGear ?? [])] };
     this.appearances.set(publicId, appearance);
     const player = this.players.get(publicId);
     if (!player) return;

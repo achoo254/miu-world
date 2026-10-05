@@ -2,22 +2,23 @@ import { z } from 'zod';
 import { ContentId } from './content';
 
 // The shop (owner's mock "Cửa hàng", panels 7–9; plan "Xu, đồ thưởng và điểm kỹ năng có chỗ dùng"): coins buy
-// wearables sold only here, the fancier styles of the child's home, minigame boosters and bundles. The
-// catalogue is content/shop/*.json, one file per category; a wearable or a home style is named by its id in
-// content/accessories or content/home/decor.json (its name and picture come from there). The server is the
-// only judge of prices, balance and ownership.
+// wearables sold only here, what her pet wears, the fancier styles of the child's home, minigame boosters and
+// bundles. The catalogue is content/shop/*.json, one file per category; a wearable, a pet's gear or a home style is
+// named by its id in content/accessories, content/pet-gear.json or content/home/decor.json (its name and picture
+// come from there). The server is the only judge of prices, balance and ownership.
 
 /** The shop's tabs after "Nổi bật" (the featured items of every category), in the mock's order. */
-export const SHOP_CATEGORIES = ['trang-phuc', 'phu-kien', 'nha-cua', 'tieu-hao', 'goi-dac-biet'] as const;
+export const SHOP_CATEGORIES = ['trang-phuc', 'phu-kien', 'thu-cung', 'nha-cua', 'tieu-hao', 'goi-dac-biet'] as const;
 export type ShopCategory = (typeof SHOP_CATEGORIES)[number];
 
-export const SHOP_KINDS = ['wearable', 'decor', 'booster', 'bundle'] as const;
+export const SHOP_KINDS = ['wearable', 'pet-gear', 'decor', 'booster', 'bundle'] as const;
 export type ShopKind = (typeof SHOP_KINDS)[number];
 
 /** What each category sells. */
 export const CATEGORY_KIND: Readonly<Record<ShopCategory, ShopKind>> = {
   'trang-phuc': 'wearable',
   'phu-kien': 'wearable',
+  'thu-cung': 'pet-gear',
   'nha-cua': 'decor',
   'tieu-hao': 'booster',
   'goi-dac-biet': 'bundle',
@@ -50,6 +51,8 @@ export type BoosterEffect = z.infer<typeof BoosterEffect>;
 export const ShopEntry = z.discriminatedUnion('kind', [
   /** A wearable of content/accessories marked `unlock: { shop: true }`; its name and picture are the item's. */
   z.strictObject({ kind: z.literal('wearable'), ...common, description: Text.optional() }),
+  /** Something her pet wears (content/pet-gear.json); its name and picture are the gear's. */
+  z.strictObject({ kind: z.literal('pet-gear'), ...common, description: Text.optional() }),
   /** A home style of content/home/decor.json; the slot's default style is never sold. */
   z.strictObject({ kind: z.literal('decor'), ...common, description: Text.optional() }),
   /**
@@ -82,6 +85,8 @@ export type ShopListing = ShopEntry & { category: ShopCategory };
 export interface ShopContext {
   /** Every wearable by id; `shopOnly`: marked to open by buying only. */
   wearables: ReadonlyMap<string, { shopOnly: boolean }>;
+  /** Every piece of pet gear by id (left out: none, and any on sale is refused). */
+  petGear?: ReadonlySet<string>;
   /** Every home style by option id; `isDefault`: the house is built with it (always free). */
   decor: ReadonlyMap<string, { isDefault: boolean }>;
   /** Pictures a booster or bundle may name; left out, they are not checked. */
@@ -89,7 +94,7 @@ export interface ShopContext {
 }
 
 /** Whether a thing, once owned, is never bought again (everything but boosters). */
-export const keptForever = (kind: ShopKind): boolean => kind === 'wearable' || kind === 'decor';
+export const keptForever = (kind: ShopKind): boolean => kind === 'wearable' || kind === 'pet-gear' || kind === 'decor';
 
 /**
  * The catalogue from every file of content/shop (any order), checked against the content it sells: each id
@@ -111,6 +116,8 @@ export function buildShopCatalog(files: readonly ShopFile[], context: ShopContex
       const wearable = context.wearables.get(listing.id);
       if (!wearable) issues.push(`shop item ${listing.id} is not a wearable of content/accessories`);
       else if (!wearable.shopOnly) issues.push(`shop item ${listing.id}: the accessory must say "unlock": { "shop": true }`);
+    } else if (listing.kind === 'pet-gear') {
+      if (!context.petGear?.has(listing.id)) issues.push(`shop item ${listing.id} is not pet gear of content/pet-gear.json`);
     } else if (listing.kind === 'decor') {
       const style = context.decor.get(listing.id);
       if (!style) issues.push(`shop item ${listing.id} is not a style of content/home/decor.json`);
@@ -129,6 +136,10 @@ export function buildShopCatalog(files: readonly ShopFile[], context: ShopContex
         if (listing.price >= worth) issues.push(`bundle ${listing.id} costs ${listing.price}, not less than its things one by one (${worth})`);
       }
     }
+  }
+  // Pet gear comes only from the shop: every piece is on sale.
+  for (const id of context.petGear ?? []) {
+    if (listings.get(id)?.kind !== 'pet-gear') issues.push(`pet gear ${id} is not on sale in the shop`);
   }
   for (const [id, wearable] of context.wearables) {
     if (wearable.shopOnly && listings.get(id)?.kind !== 'wearable') issues.push(`accessory ${id} opens in the shop but the shop does not sell it`);
@@ -149,11 +160,11 @@ export const ShopItemDto = z.object({
   price: z.number().int(),
   level: z.number().int().nullable(),
   featured: z.boolean(),
-  /** Wearables: the slot it is worn in; decor: the piece of the house it restyles. */
+  /** Wearables: the slot it is worn in; pet gear: on the pet's head or neck; decor: the piece of the house it restyles. */
   slot: z.string().nullable(),
   /** Decor: the style's colours. */
   swatch: z.array(z.string()).nullable(),
-  /** Boosters and bundles: their picture's key. */
+  /** Pet gear, boosters and bundles: their picture's key. */
   icon: z.string().nullable(),
   effect: BoosterEffect.nullable(),
   /** Bundles: item id → how many. */

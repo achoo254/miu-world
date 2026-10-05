@@ -1,6 +1,7 @@
 import { readdirSync } from 'node:fs';
 import path from 'node:path';
 import type { HomeDecorCatalog } from '@miu/schema/home-decor';
+import { gearSlot, type PetGearItem } from '@miu/schema/pet-gear';
 import { ShopFile, buildShopCatalog, type ShopItemDto, type ShopListing } from '@miu/schema/shop';
 import type { AccessoryItem } from '@miu/voxel/accessory-schema';
 import { readContentJson } from '../content/content-catalog';
@@ -30,16 +31,23 @@ export function readShopFiles(dir: string = CONTENT_DIR): ShopFile[] {
     .map((f) => readContentJson(ShopFile, path.join(folder, f)));
 }
 
+/** The content the shop sells from: the wearables and what a pet may wear. */
+export interface ShopContent {
+  accessories: ReadonlyMap<string, AccessoryItem>;
+  petGear: ReadonlyMap<string, PetGearItem>;
+}
+
 /**
- * The shop over the wearables and home styles it sells. A catalogue that does not fit the content fails the
- * boot (and `pnpm content:check`), never a request. `icons`: pictures a booster or bundle may name (the web
+ * The shop over the wearables, pet gear and home styles it sells. A catalogue that does not fit the content fails
+ * the boot (and `pnpm content:check`), never a request. `icons`: pictures a booster or bundle may name (the web
  * app's; the content check passes them, the server does not know them).
  */
-export function loadShopCatalog(accessories: ReadonlyMap<string, AccessoryItem>, decor: HomeDecorCatalog, dir: string = CONTENT_DIR, icons?: ReadonlySet<string>): ShopCatalog {
+export function loadShopCatalog({ accessories, petGear }: ShopContent, decor: HomeDecorCatalog, dir: string = CONTENT_DIR, icons?: ReadonlySet<string>): ShopCatalog {
   const styles = new Map(decor.slots.flatMap((slot) => slot.options.map((option) => [option.id, { slot, option }] as const)));
   const { listings, issues } = buildShopCatalog(readShopFiles(dir), {
     wearables: new Map([...accessories.values()].map((item) => [item.id, { shopOnly: item.unlock?.shop === true }])),
     decor: new Map([...styles].map(([id, { slot }]) => [id, { isDefault: slot.default === id }])),
+    petGear: new Set(petGear.keys()),
     icons,
   });
   if (issues.length > 0) throw new Error(`invalid shop catalogue: ${issues.join('; ')}`);
@@ -59,6 +67,10 @@ export function loadShopCatalog(accessories: ReadonlyMap<string, AccessoryItem>,
       case 'wearable': {
         const item = accessories.get(listing.id);
         return { ...base, ...none, name: item?.name ?? listing.id, description: listing.description ?? null, slot: item?.slot ?? null };
+      }
+      case 'pet-gear': {
+        const gear = petGear.get(listing.id);
+        return { ...base, ...none, name: gear?.name ?? listing.id, nameEn: listing.en?.name ?? gear?.en.name ?? null, description: listing.description ?? null, slot: gear ? gearSlot(gear) : null, icon: gear?.icon ?? null };
       }
       case 'decor': {
         const style = styles.get(listing.id);

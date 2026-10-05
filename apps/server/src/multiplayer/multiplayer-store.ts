@@ -5,7 +5,7 @@ import { randomUUID } from 'node:crypto';
 import { eq, or } from 'drizzle-orm';
 import type { IncomingMessage } from 'node:http';
 import type { PlayerSettings } from '@miu/schema/account';
-import type { PlayerAppearance, ReportReason } from '@miu/schema/multiplayer';
+import type { PlayerAppearanceInput, ReportReason } from '@miu/schema/multiplayer';
 import { findActivePlayer } from '../auth/auth-context';
 import { readSessionToken } from '../auth/session-cookie';
 import { findSession } from '../auth/session-store';
@@ -16,7 +16,7 @@ import { blockPlayer } from '../friend/friend-store';
 
 export interface MultiplayerStore {
   /** Her saved character as the others see it; null when she has none. */
-  appearance(childId: string): Promise<PlayerAppearance | null>;
+  appearance(childId: string): Promise<PlayerAppearanceInput | null>;
   /** Every player she blocked or who blocked her. */
   blockedWith(childId: string): Promise<Set<string>>;
   block(childId: string, blockedChildId: string): Promise<void>;
@@ -32,10 +32,10 @@ export function dbMultiplayerStore(db: Db): MultiplayerStore {
   return {
     async appearance(childId) {
       const [row] = await db
-        .select({ name: characters.name, species: characters.species, equipped: characters.equipped, pet: characters.pet })
+        .select({ name: characters.name, species: characters.species, equipped: characters.equipped, pet: characters.pet, petGear: characters.petGear })
         .from(characters)
         .where(eq(characters.childId, childId));
-      return row ? { displayName: row.name, species: row.species, outfit: row.equipped, pet: row.pet } : null;
+      return row ? { displayName: row.name, species: row.species, outfit: row.equipped, pet: row.pet, petGear: row.petGear } : null;
     },
     async blockedWith(childId) {
       const rows = await db

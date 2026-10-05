@@ -1,12 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import type { PlayerAppearance, ServerWsMessage } from '@miu/schema/multiplayer';
+import type { PlayerAppearanceInput, ServerWsMessage } from '@miu/schema/multiplayer';
 import { MultiplayerHub, WS_CLOSE, type Connection } from './multiplayer-hub';
 import type { MultiplayerStore } from './multiplayer-store';
 import { PartyService } from './party-service';
 
 /** The database as the hub sees it: characters, blocks and reports in memory. */
 function memoryStore() {
-  const characters = new Map<string, PlayerAppearance>();
+  const characters = new Map<string, PlayerAppearanceInput>();
   const blocks: Array<[string, string]> = [];
   const reports: Array<{ from: string; about: string; reason: string; map: string | null }> = [];
   const store: MultiplayerStore = {
@@ -48,7 +48,7 @@ afterEach(async () => {
   vi.useRealTimers();
 });
 
-async function connect(childId: string, look: Partial<PlayerAppearance> = {}, valid: () => boolean = () => true): Promise<Client> {
+async function connect(childId: string, look: Partial<PlayerAppearanceInput> = {}, valid: () => boolean = () => true): Promise<Client> {
   if (!db.characters.has(childId)) db.characters.set(childId, { displayName: `Bạn ${childId}`, species: 'cat', outfit: [], pet: null, ...look });
   const inbox: ServerWsMessage[] = [];
   const client = {
@@ -71,7 +71,7 @@ async function connect(childId: string, look: Partial<PlayerAppearance> = {}, va
   return client;
 }
 
-async function joined(childId: string, at: [number, number, number] = [10, 5, 10], mapId = 'trung-tam', look: Partial<PlayerAppearance> = {}): Promise<Client> {
+async function joined(childId: string, at: [number, number, number] = [10, 5, 10], mapId = 'trung-tam', look: Partial<PlayerAppearanceInput> = {}): Promise<Client> {
   const client = await connect(childId, look);
   client.send({ type: 'join', mapId, x: at[0], y: at[1], z: at[2], yaw: 0 });
   return client;
@@ -148,12 +148,20 @@ describe('identity comes from the server', () => {
     expect(b.last('despawn')?.id).toBe(a.id);
   });
 
+  it("shows the others what her pet wears, from her saved character and when she dresses it", async () => {
+    const a = await joined('child-a', [10, 5, 10], 'trung-tam', { pet: 'meo-xam', petGear: ['pet-bow-pink'] });
+    const b = await joined('child-b');
+    expect(b.last('welcome')?.players.find((p) => p.id === a.id)?.petGear).toEqual(['pet-bow-pink']);
+    hub.characterSaved('child-a', { name: 'Bạn child-a', species: 'cat', equipped: [], pet: 'meo-xam', petGear: ['pet-crown', 'pet-scarf'] });
+    expect(b.last('appearance')?.appearance.petGear).toEqual(['pet-crown', 'pet-scarf']);
+  });
+
   it('redresses a player for the others when she saves new clothes, without a new spawn', async () => {
     const a = await joined('child-a');
     const b = await joined('child-b');
     const spawns = b.all('spawn').length;
     hub.characterSaved('child-a', { name: 'Bạn child-a', species: 'cat', equipped: ['hat-cat-mint'], pet: 'pet-cat' });
-    expect(b.last('appearance')).toEqual({ type: 'appearance', id: a.id, appearance: { displayName: 'Bạn child-a', species: 'cat', outfit: ['hat-cat-mint'], pet: 'pet-cat' } });
+    expect(b.last('appearance')).toEqual({ type: 'appearance', id: a.id, appearance: { displayName: 'Bạn child-a', species: 'cat', outfit: ['hat-cat-mint'], pet: 'pet-cat', petGear: [] } });
     expect(b.all('spawn')).toHaveLength(spawns);
     expect(a.last('appearance')).toBeUndefined();
     // Someone arriving later sees the new look too.

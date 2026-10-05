@@ -12,6 +12,7 @@ import {
   inventoryItems,
   mail,
   npcFriendships,
+  petBonds,
   botMemories,
   playerPositions,
   playerReports,
@@ -49,7 +50,7 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
   const profiles = await db.select().from(childProfiles).where(eq(childProfiles.parentId, parent.id)).orderBy(childProfiles.createdAt);
   const ids = profiles.map((p) => p.id);
   const ofChildren = <T extends { childId: string }>(rows: Promise<T[]>) => (ids.length ? rows : Promise.resolve([] as T[]));
-  const [consentRows, sessionRows, characterRows, questRows, counterRows, rewardRows, itemRows, skillRows, positionRows, timetableRows, decorRows, objectRows, shopRows, playRows, mailRows, reportRows, bondRows, memoryRows] = await Promise.all([
+  const [consentRows, sessionRows, characterRows, questRows, counterRows, rewardRows, itemRows, skillRows, positionRows, timetableRows, decorRows, objectRows, shopRows, playRows, mailRows, reportRows, bondRows, memoryRows, petRows] = await Promise.all([
     db.select().from(consents).where(eq(consents.parentId, parent.id)).orderBy(consents.acceptedAt),
     db.select().from(sessions).where(eq(sessions.parentId, parent.id)).orderBy(sessions.createdAt),
     ofChildren(db.select().from(characters).where(inArray(characters.childId, ids))),
@@ -75,6 +76,7 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
     ),
     ofChildren(db.select().from(npcFriendships).where(inArray(npcFriendships.childId, ids)).orderBy(npcFriendships.npcId)),
     ofChildren(db.select().from(botMemories).where(inArray(botMemories.childId, ids)).orderBy(botMemories.botId)),
+    ofChildren(db.select().from(petBonds).where(inArray(petBonds.childId, ids)).orderBy(petBonds.petId)),
   ]);
   // Friends, requests and blocks as each player's own lists show them (others by character name only).
   const social = new Map(await Promise.all(ids.map(async (id) => [id, await socialView(db, id, NOBODY_ONLINE)] as const)));
@@ -90,6 +92,7 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
   const reported = byChild(reportRows);
   const bonds = byChild(bondRows);
   const memories = byChild(memoryRows);
+  const pets = byChild(petRows);
   return {
     exportedAt: iso(now),
     parent: { email: parent.email, signIn: parent.googleSub ? 'google' : 'password', createdAt: iso(parent.createdAt) },
@@ -102,7 +105,7 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
         primary: p.isPrimary,
         language: (p.language ?? 'vi') as 'vi' | 'en' | 'both',
         createdAt: iso(p.createdAt),
-        character: character ? { species: character.species, name: character.name, equipped: character.equipped, pet: character.pet } : null,
+        character: character ? { species: character.species, name: character.name, equipped: character.equipped, pet: character.pet, petGear: character.petGear } : null,
         quests: (quests.get(p.id) ?? []).map((q) => ({
           questId: q.questId,
           completedSteps: q.completedSteps,
@@ -131,6 +134,7 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
           createdAt: iso(m.createdAt),
         })),
         npcFriendships: (bonds.get(p.id) ?? []).map(({ npcId, talkPoints, giftPoints, lastTalkOn, lastGiftOn }) => ({ npcId, talkPoints, giftPoints, lastTalkOn, lastGiftOn })),
+        petBonds: (pets.get(p.id) ?? []).map(({ petId, name, happiness, fullness, cleanliness, statsAt, careXp, walkSeconds }) => ({ petId, name, happiness, fullness, cleanliness, statsAt: iso(statsAt), careXp, walkSeconds })),
         botMemories: (memories.get(p.id) ?? []).map(({ botId, runs, lastQuestId, lastPlayedAt }) => ({ botId, runs, lastQuestId, lastPlayedAt: iso(lastPlayedAt) })),
         friends: (social.get(p.id)?.friends ?? []).map(({ displayName, isBot, since }) => ({ displayName, isBot, since })),
         friendRequests: {

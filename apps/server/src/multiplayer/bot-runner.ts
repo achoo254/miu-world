@@ -246,6 +246,7 @@ class CompanionBotInstance {
       species: profile.species,
       outfit: profile.outfit,
       pet: null,
+      petGear: [],
       x: startWp.x,
       y: startWp.y,
       z: startWp.z,

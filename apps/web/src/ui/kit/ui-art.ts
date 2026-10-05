@@ -112,6 +112,17 @@ export const UI_ICONS = {
   unlocked: `${FLUENT}/unlocked.png`,
   watermelon: `${FLUENT_MINI}/watermelon.png`,
   windChime: `${FLUENT_PROPS}/wind-chime.png`,
+  // The pet's care screen, its tricks and what it wears (content/pet-gear.json).
+  bubbles: `${FLUENT_MINI}/bubbles.png`,
+  dogFace: `${FLUENT_MINI}/dog-face.png`,
+  fullMoon: `${FLUENT_MINI}/full-moon.png`,
+  musicalNote: `${FLUENT_MINI}/musical-note.png`,
+  partyPopper: `${FLUENT_MINI}/party-popper.png`,
+  raisedHand: `${FLUENT_MINI}/raised-hand.png`,
+  soccerBall: `${FLUENT_PROPS}/soccer-ball.png`,
+  wheel: `${FLUENT_PROPS}/wheel.png`,
+  womansHat: `${FLUENT_PROPS}/womans-hat.png`,
+  yoYo: `${FLUENT_MINI}/yo-yo.png`,
   // Collectibles' pictures (content/items, the sets in content/collectibles.json).
   abacus: `${FLUENT_PROPS}/abacus.png`,
   admissionTickets: `${FLUENT_PROPS}/admission-tickets.png`,

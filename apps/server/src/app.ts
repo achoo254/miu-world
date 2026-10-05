@@ -116,13 +116,13 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(questRoutes({ db, content, clock, partyQuests }));
   api.use(timetableRoutes({ db, content, clock, defaultTimetable: loadDefaultTimetable(config.timetableDefaultFile) }));
   const decor = loadDecorCatalog();
-  const shop = loadShopCatalog(content.accessories, decor);
+  const shop = loadShopCatalog(content, decor);
   api.use(homeDecorRoutes({ db, content, clock, catalog: decor, shop }));
   api.use(homeObjectRoutes({ db, content, clock }));
   api.use(shopRoutes({ db, content, clock, shop }));
   api.use(regionRewardRoutes({ db, content, clock, rewards: loadRegionRewards(content.accessories) }));
   api.use(collectionRoutes({ db, content, clock }));
-  api.use(petCareRoutes({ db, content, clock }));
+  api.use(petCareRoutes({ db, content, clock, events: characterEvents }));
   api.use(cookingRoutes({ db, content, clock }));
   api.use(olympiadRoutes({ db, content, clock }));
   api.use(mailRoutes({ db, content, clock }));

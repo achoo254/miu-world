@@ -97,6 +97,8 @@ export const PlayerPresence = z.strictObject({
   species: z.string().min(1).max(32).default('cat'),
   outfit: z.array(z.string().min(1).max(64)).max(24).default([]),
   pet: z.string().max(64).nullable().default(null),
+  /** What her pet wears (content/pet-gear.json), from her saved character. */
+  petGear: z.array(z.string().min(1).max(64)).max(2).default([]),
   x: Coordinate,
   y: Coordinate,
   z: Coordinate,
@@ -110,8 +112,10 @@ export const PlayerPresence = z.strictObject({
 export type PlayerPresence = z.infer<typeof PlayerPresence>;
 
 /** What the server reads from a player's saved character: who she is to the others. */
-export const PlayerAppearance = PlayerPresence.pick({ displayName: true, species: true, outfit: true, pet: true });
+export const PlayerAppearance = PlayerPresence.pick({ displayName: true, species: true, outfit: true, pet: true, petGear: true });
 export type PlayerAppearance = z.infer<typeof PlayerAppearance>;
+/** An appearance as a store may hand it over: what is left out takes its default (nothing on the pet). */
+export type PlayerAppearanceInput = z.input<typeof PlayerAppearance>;
 
 export const PartyMember = z.strictObject({
   id: PlayerId,
