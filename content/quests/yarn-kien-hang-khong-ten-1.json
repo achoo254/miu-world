@@ -1,0 +1,361 @@
+{
+  "id": "yarn-kien-hang-khong-ten-1",
+  "region": "cho-phien",
+  "chapter": 2,
+  "title": "Chuyện của Voi Bốc Hàng, chương 1: Kiện hàng không tên",
+  "status": "active",
+  "category": "story",
+  "summary": "Sáng nay ở bến hàng có một kiện hàng không ghi tên người nhận, Voi Bốc Hàng lo sốt vó. {name} lần theo mùi biển tới gian hàng hải sản, đọc bảng giờ thuyền ở hải đăng, cân kiện hàng ở dãy sạp có cân, rồi giúp Voi quyết định nên làm gì với nó.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Voi Bốc Hàng",
+    "where": "Chợ phiên: bến hàng bên kênh, gian hàng hải sản, hải đăng, dãy sạp có cân",
+    "goal": "Tìm xem kiện hàng không tên từ đâu tới",
+    "play": "Tìm manh mối, đọc bảng giờ thuyền, giải đố cân nặng, chọn cách xử lý kiện hàng, xếp hàng lên xe",
+    "learn": "Đọc hiểu bảng giờ, cộng khối lượng",
+    "reward": "60 XP, 15 Xu, Skill XP Đọc hiểu, Khối lượng",
+    "next": "Thứ Hai, thuyền Cá Chuồn sẽ quay lại bến"
+  },
+  "phases": {
+    "hook": "kien-hang-la",
+    "explore": "manh-moi-mui-bien",
+    "learn": "bang-gio-thuyen",
+    "challenge": "can-kien-hang",
+    "decision": "mo-hay-cho",
+    "finale": "xep-hang-len-xe",
+    "reward": "kien-hang-cho-chu",
+    "next": "cho-toi-thu-hai"
+  },
+  "places": {
+    "voi-boc-hang": "Bến hàng",
+    "manh-moi-mui-bien": "Gian hàng hải sản",
+    "st-kien-hang-khong-ten-bang-gio-thuyen": "Hải đăng",
+    "st-kien-hang-khong-ten-can-dia": "Dãy sạp có cân",
+    "st-kien-hang-khong-ten-kien-hang": "Bến hàng"
+  },
+  "steps": [
+    {
+      "id": "kien-hang-la",
+      "title": "Một kiện hàng lạ",
+      "kind": "dialogue",
+      "target": "voi-boc-hang",
+      "goTo": "Ra bến hàng bên kênh, Voi Bốc Hàng đang đứng ngồi không yên",
+      "lines": [
+        {
+          "speaker": "Voi Bốc Hàng",
+          "text": "Một kiện, hai kiện... ba kiện. Đếm lại: một, hai, ba. Vẫn thừa một kiện không ghi tên ai, {name} ạ."
+        },
+        {
+          "speaker": "Voi Bốc Hàng",
+          "text": "Ta bốc hàng ở bến này hai mươi năm, chưa để món nào nằm qua đêm mà không biết chủ. Nó lại thoang thoảng mùi... mặn mặn."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mùi mặn à? Như mùi biển ấy?",
+          "reply": "Đúng rồi! Gian hàng hải sản ngày nào cũng có mùi ấy, cháu ra đó hỏi thử."
+        },
+        {
+          "text": "Bác đừng lo, cháu tìm ra chủ cho!",
+          "reply": "Nhẹ tay nhé, nhẹ tay... à ta nói với kiện hàng đấy, không phải với cháu."
+        }
+      ],
+      "en": {
+        "title": "A strange parcel",
+        "goTo": "Go down to the canal wharf, where Voi Bốc Hàng can't sit still",
+        "lines": [
+          "One parcel, two parcels... three. Count again: one, two, three. There's still one extra with nobody's name on it, {name}.",
+          "I've loaded goods on this wharf for twenty years and never let a thing sit overnight without knowing whose it is. And it smells sort of... salty."
+        ],
+        "choices": [
+          {
+            "text": "Salty? Like the sea?",
+            "reply": "Exactly! The seafood stall smells like that every day. Go and ask there."
+          },
+          {
+            "text": "Don't worry, I'll find the owner!",
+            "reply": "Gently, gently... oh, I was talking to the parcel, not you."
+          }
+        ]
+      }
+    },
+    {
+      "id": "manh-moi-mui-bien",
+      "title": "Manh mối mùi biển",
+      "kind": "find-object",
+      "goTo": "Sang gian hàng hải sản tìm thứ giống kiện hàng",
+      "prompt": "Kiện hàng được gói bằng giấy báo và buộc dây thừng to. Tìm hai thứ giống thế ở gian hàng hải sản:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "giay",
+          "name": "Tờ giấy gói cá",
+          "clue": "Tờ báo cũ thấm mùi cá khô, góc giấy in hình một ngọn hải đăng sọc đỏ trắng.",
+          "target": "st-kien-hang-khong-ten-giay-goi-ca"
+        },
+        {
+          "id": "day",
+          "name": "Mẩu dây thừng tàu",
+          "clue": "Sợi thừng xoắn ba, to bằng ngón tay cái, thắt kiểu nút thuyền chài không bao giờ tuột.",
+          "target": "st-kien-hang-khong-ten-day-thung-tau"
+        }
+      ],
+      "en": {
+        "title": "Clues that smell of the sea",
+        "goTo": "Go over to the seafood stall and look for things that match the parcel",
+        "prompt": "The parcel is wrapped in newspaper and tied with thick rope. Find two things like that at the seafood stall:",
+        "items": [
+          {
+            "name": "The fish-wrapping paper",
+            "clue": "An old newspaper that smells of dried fish, with a red-and-white striped lighthouse printed in the corner."
+          },
+          {
+            "name": "A bit of ship's rope",
+            "clue": "Three-strand rope as thick as a thumb, tied in a fisherman's knot that never slips."
+          }
+        ]
+      }
+    },
+    {
+      "id": "bang-gio-thuyen",
+      "title": "Bảng giờ thuyền bên hải đăng",
+      "kind": "read",
+      "target": "st-kien-hang-khong-ten-bang-gio-thuyen",
+      "goTo": "Tờ báo có hình hải đăng: ra hải đăng xem bảng giờ thuyền",
+      "skill": "doc-hieu",
+      "text": "BẢNG GIỜ THUYỀN CẬP BẾN\n- Thuyền Lúa Vàng: thứ Ba và thứ Bảy, chở gạo, ngô từ đồng ruộng.\n- Thuyền Gốm Nâu: thứ Tư, chở bát đĩa, chum vại.\n- Thuyền Cá Chuồn: thứ Hai và thứ Năm, chở hàng từ biển, cập bến lúc nửa đêm.\nHàng gửi nhờ không quá 20 ki-lô-gam.",
+      "question": "Kiện hàng xuất hiện sau đêm thứ Năm và có mùi biển. Thuyền nào đã chở nó?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Thuyền Lúa Vàng"
+        },
+        {
+          "id": "b",
+          "text": "Thuyền Gốm Nâu"
+        },
+        {
+          "id": "c",
+          "text": "Thuyền Cá Chuồn"
+        }
+      ],
+      "answer": {
+        "choice": "c"
+      },
+      "support": {
+        "guide": [
+          "Tìm thuyền nào cập bến vào thứ Năm.",
+          "Xem thuyền đó chở hàng từ đâu tới."
+        ],
+        "hint": "Hàng từ biển thì có mùi gì?",
+        "answer": {
+          "text": "Thuyền Cá Chuồn",
+          "explanation": "Thuyền Cá Chuồn cập bến thứ Hai và thứ Năm, chở hàng từ biển, nên kiện hàng mùi biển tới bằng thuyền ấy."
+        },
+        "en": {
+          "guide": [
+            "Find which boat docks on Thursday.",
+            "Check where that boat's goods come from."
+          ],
+          "hint": "What do goods from the sea smell of?",
+          "answer": {
+            "text": "The Flying Fish (Cá Chuồn)",
+            "explanation": "The Flying Fish boat docks on Monday and Thursday with goods from the sea, so the sea-smelling parcel came on it."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thuyền Cá Chuồn! Manh mối khớp như hai nửa quả dừa.",
+          "{name} đọc bảng giờ như một người gác hải đăng thực thụ.",
+          "Đúng thứ Năm, đúng mùi biển, không trật đi đâu được."
+        ],
+        "wrong": [
+          "Thuyền ấy không cập bến thứ Năm đâu, đọc lại ngày nhé.",
+          "Gạo với bát đĩa thì đâu có mùi biển, {name} nhỉ?",
+          "Dò ngón tay theo từng dòng, tìm chữ «thứ Năm»."
+        ],
+        "en": {
+          "right": [
+            "The Flying Fish boat! The clues fit like two halves of a coconut.",
+            "{name} reads a timetable like a real lighthouse keeper.",
+            "Thursday, sea smell: it couldn't be anything else."
+          ],
+          "wrong": [
+            "That boat doesn't dock on Thursday. Check the days again.",
+            "Rice and plates don't smell of the sea, do they, {name}?",
+            "Run your finger down each line looking for «Thursday»."
+          ]
+        }
+      },
+      "en": {
+        "title": "The timetable by the lighthouse",
+        "goTo": "The newspaper shows a lighthouse: go to the lighthouse and read the boat timetable",
+        "text": "BOAT ARRIVALS\n- Golden Rice boat: Tuesday and Saturday, rice and corn from the fields.\n- Brown Pottery boat: Wednesday, bowls, plates and jars.\n- Flying Fish boat (Cá Chuồn): Monday and Thursday, goods from the sea, docks at midnight.\nParcels sent along must weigh no more than 20 kilograms.",
+        "question": "The parcel appeared after Thursday night and smells of the sea. Which boat brought it?",
+        "choices": [
+          "The Golden Rice boat",
+          "The Brown Pottery boat",
+          "The Flying Fish boat"
+        ]
+      }
+    },
+    {
+      "id": "can-kien-hang",
+      "title": "Kiện hàng nặng bao nhiêu?",
+      "kind": "riddle",
+      "target": "st-kien-hang-khong-ten-can-dia",
+      "goTo": "Mang kiện hàng tới cân đĩa ở dãy sạp có cân",
+      "skill": "khoi-luong",
+      "question": "Đĩa bên kia cân phải đặt 3 quả cân 5 ki-lô-gam và 1 quả cân 2 ki-lô-gam thì cân mới thăng bằng. Kiện hàng nặng mấy ki-lô-gam?",
+      "answer": {
+        "value": 17
+      },
+      "support": {
+        "guide": [
+          "Cân thăng bằng thì hai đĩa nặng bằng nhau.",
+          "Cộng các quả cân: 5 + 5 + 5 + 2."
+        ],
+        "hint": "Ba quả 5 ki-lô-gam là 15 ki-lô-gam.",
+        "answer": {
+          "text": "17 ki-lô-gam",
+          "explanation": "5 + 5 + 5 + 2 = 17, nên kiện hàng nặng 17 ki-lô-gam, nhẹ hơn mức 20 ki-lô-gam của thuyền."
+        },
+        "en": {
+          "guide": [
+            "When the scale balances, both pans weigh the same.",
+            "Add up the weights: 5 + 5 + 5 + 2."
+          ],
+          "hint": "Three 5-kilogram weights make 15 kilograms.",
+          "answer": {
+            "text": "17 kilograms",
+            "explanation": "5 + 5 + 5 + 2 = 17, so the parcel weighs 17 kilograms, under the boat's 20-kilogram limit."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười bảy ki-lô-gam, vừa đúng hàng gửi nhờ của thuyền!",
+          "Voi vỗ tai phành phạch: tính giỏi quá {name} ơi!",
+          "Kim cân đứng im, đáp án của {name} cũng đứng vững."
+        ],
+        "wrong": [
+          "Cân vẫn lệch, có quả cân nào chưa được cộng không?",
+          "Có ba quả 5 ki-lô-gam cơ, không phải một đâu.",
+          "Đừng quên quả cân 2 ki-lô-gam bé xíu ở góc đĩa."
+        ],
+        "en": {
+          "right": [
+            "Seventeen kilograms: just right for a parcel sent by boat!",
+            "Voi flaps his ears with a whump-whump: great sums, {name}!",
+            "The needle holds still, and so does {name}'s answer."
+          ],
+          "wrong": [
+            "The scale still tips: is there a weight you haven't added?",
+            "There are three 5-kilogram weights, not just one.",
+            "Don't forget the little 2-kilogram weight in the corner of the pan."
+          ]
+        }
+      },
+      "en": {
+        "title": "How heavy is the parcel?",
+        "goTo": "Take the parcel to the pan scale at the row of scales",
+        "question": "To balance the scale, the other pan needs three 5-kilogram weights and one 2-kilogram weight. How many kilograms does the parcel weigh?"
+      }
+    },
+    {
+      "id": "mo-hay-cho",
+      "title": "Mở ra xem hay chờ?",
+      "kind": "decision",
+      "target": "st-kien-hang-khong-ten-kien-hang",
+      "goTo": "Đưa kiện hàng về bến hàng cho Voi",
+      "speaker": "Voi Bốc Hàng",
+      "prompt": "Voi gãi gãi vòi: «Thuyền Cá Chuồn thứ Hai mới quay lại. Mình làm gì với kiện hàng bây giờ?»",
+      "choices": [
+        {
+          "id": "cho-thuyen",
+          "text": "Cất kỹ, chờ thuyền về hỏi",
+          "consequence": "Voi gật gù: hàng của ai thì người ấy mở. Ta đặt nó lên ngăn cao nhất, chỗ chuột nhắt không với tới."
+        },
+        {
+          "id": "ghi-bien",
+          "text": "Viết một tấm biển «Ai mất kiện hàng?»",
+          "consequence": "Voi nắn nót từng chữ bằng đầu vòi, chữ to như quả bưởi. Cả chợ đi qua đều dừng lại đọc."
+        },
+        {
+          "id": "lac-thu",
+          "text": "Lắc nhẹ nghe bên trong có gì",
+          "consequence": "Lắc lắc... có tiếng lạo xạo như vỏ ốc, và một vật tròn tròn lăn qua lăn lại. Voi càng tò mò, nhưng vẫn quyết chờ."
+        }
+      ],
+      "en": {
+        "title": "Open it or wait?",
+        "goTo": "Carry the parcel back to Voi at the wharf",
+        "prompt": "Voi scratches his trunk: «The Flying Fish boat won't be back until Monday. What do we do with the parcel now?»",
+        "choices": [
+          {
+            "text": "Store it safely and ask when the boat returns",
+            "consequence": "Voi nods: only the owner opens a parcel. We put it on the top shelf, where no mouse can reach."
+          },
+          {
+            "text": "Write a sign: «Lost a parcel?»",
+            "consequence": "Voi writes each letter carefully with the tip of his trunk, letters as big as grapefruits. Everyone in the market stops to read it."
+          },
+          {
+            "text": "Give it a gentle shake to hear what's inside",
+            "consequence": "Shake, shake... a rattle like seashells, and something round rolling back and forth. Voi is even more curious, but he decides to wait."
+          }
+        ]
+      }
+    },
+    {
+      "id": "xep-hang-len-xe",
+      "title": "Xếp hàng lên xe",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "voi-boc-hang",
+      "prompt": "Việc nào ra việc nấy! Giúp Voi xếp hàng lên xe tải cho gọn nhé.",
+      "game": "block-fit",
+      "goal": 5,
+      "en": {
+        "title": "Loading the truck",
+        "prompt": "First things first! Help Voi pack the truck nice and tidy."
+      }
+    },
+    {
+      "id": "kien-hang-cho-chu",
+      "title": "Kiện hàng chờ chủ",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Kiện hàng nằm trên ngăn cao nhất, gói kỹ, buộc chặt. Voi đếm lại cả bến một lần nữa, lần này mỉm cười: «Đủ cả, kể cả một bí ẩn.»",
+      "en": {
+        "title": "The parcel waits for its owner",
+        "text": "The parcel sits on the top shelf, well wrapped and tightly tied. Voi counts the whole wharf once more and this time he smiles: «All present, including one mystery.»"
+      }
+    },
+    {
+      "id": "cho-toi-thu-hai",
+      "title": "Chờ tới thứ Hai",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối đó Voi đứng nhìn con kênh mãi về phía biển. «Thứ Hai thuyền Cá Chuồn về,» Voi nói, «{name} nhớ ra bến sớm nhé.»",
+      "en": {
+        "title": "Waiting for Monday",
+        "text": "That evening Voi stands gazing down the canal toward the sea. «The Flying Fish boat comes Monday,» he says. «Come to the wharf early, {name}.»"
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 1,
+      "khoi-luong": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Voi Bốc Hàng's story, chapter 1: The parcel with no name",
+    "summary": "This morning a parcel turned up at the wharf with no name on it, and Voi Bốc Hàng is fretting. {name} follows a smell of the sea to the seafood stall, reads the boat timetable at the lighthouse, weighs the parcel at the row of scales, then helps Voi decide what to do with it."
+  }
+}

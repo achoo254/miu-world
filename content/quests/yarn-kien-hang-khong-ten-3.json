@@ -1,0 +1,379 @@
+{
+  "id": "yarn-kien-hang-khong-ten-3",
+  "region": "cho-phien",
+  "chapter": 2,
+  "title": "Chuyện của Voi Bốc Hàng, chương 3: Voi xuống nước",
+  "status": "active",
+  "category": "story",
+  "summary": "Voi Bốc Hàng muốn tập nổi ở ao vịt, chỗ nước nông nhất chợ. {name} mang phao và khăn từ lán gỗ, chọn đúng những việc an toàn trước khi xuống nước, đếm đàn vịt cùng Chị Cứu Hộ, giúp Voi chọn người trông bến và học cách giữ cân cho thăng bằng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Voi Bốc Hàng, Chị Cứu Hộ Áo Cam",
+    "where": "Chợ phiên: bến hàng bên kênh, lán gỗ bên kênh, ao vịt, cân lớn giữa chợ",
+    "goal": "Giúp Voi tập nổi và sẵn sàng cho chuyến thuyền ra biển",
+    "play": "Tìm phao và khăn, chọn việc an toàn khi xuống nước, đếm vịt, chọn người trông bến, chơi cân thăng bằng",
+    "learn": "An toàn khi ở gần nước, phép cộng",
+    "reward": "75 XP, 20 Xu, Skill XP Đọc hiểu, Phép cộng, quà Quạt nan tre",
+    "next": "Voi sẽ lên thuyền Cá Chuồn ra biển vào phiên trăng tới"
+  },
+  "phases": {
+    "hook": "voi-hit-sau",
+    "explore": "lay-phao-va-khan",
+    "learn": "an-toan-duoi-nuoc",
+    "challenge": "dem-vit-quanh-voi",
+    "decision": "ai-trong-ben",
+    "finale": "can-bang-cung-voi",
+    "reward": "voi-biet-noi",
+    "next": "phien-trang-toi"
+  },
+  "places": {
+    "voi-boc-hang": "Bến hàng",
+    "lay-phao-va-khan": "Lán gỗ bên kênh",
+    "st-kien-hang-khong-ten-chi-cuu-ho": "Ao vịt",
+    "st-kien-hang-khong-ten-qua-can-dong": "Cân lớn giữa chợ"
+  },
+  "steps": [
+    {
+      "id": "voi-hit-sau",
+      "title": "Hít một hơi thật sâu",
+      "kind": "dialogue",
+      "target": "voi-boc-hang",
+      "goTo": "Ra bến hàng, Voi Bốc Hàng đã đứng chờ từ sớm",
+      "lines": [
+        {
+          "speaker": "Voi Bốc Hàng",
+          "text": "Ta nghĩ cả đêm rồi {name}. Ước mơ thì không chờ ai biết bơi mới tới. Hôm nay ta tập nổi."
+        },
+        {
+          "speaker": "Voi Bốc Hàng",
+          "text": "Ao vịt nước chỉ tới bụng ta, lại có Chị Cứu Hộ Áo Cam trông. Cháu lấy giúp ta cái phao với cái khăn trong lán gỗ nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Bác giỏi lắm, cháu đi lấy ngay!",
+          "reply": "Giỏi gì đâu, chân ta đang run như cầy sấy đây này."
+        },
+        {
+          "text": "Lũ vịt sẽ cổ vũ bác cho xem.",
+          "reply": "Miễn là chúng đừng cười ta là được."
+        }
+      ],
+      "en": {
+        "title": "A deep breath",
+        "goTo": "Go to the wharf: Voi Bốc Hàng has been waiting since dawn",
+        "lines": [
+          "I thought about it all night, {name}. Dreams don't wait for you to learn to swim. Today I practise floating.",
+          "The duck pond only comes up to my belly, and the lifeguard in the orange shirt keeps watch. Fetch me the life ring and the towel from the wooden shed, would you?"
+        ],
+        "choices": [
+          {
+            "text": "You're brave! I'll fetch them now!",
+            "reply": "Brave? My legs are shaking like leaves."
+          },
+          {
+            "text": "The ducks will cheer you on, you'll see.",
+            "reply": "As long as they don't laugh at me."
+          }
+        ]
+      }
+    },
+    {
+      "id": "lay-phao-va-khan",
+      "title": "Phao và khăn",
+      "kind": "find-object",
+      "goTo": "Vào lán gỗ bên kênh lấy đồ cho Voi",
+      "prompt": "Tìm hai thứ Voi cần mang ra ao:",
+      "items": [
+        {
+          "id": "phao",
+          "name": "Phao đỏ của Voi",
+          "clue": "Treo trên móc gỗ, vẫn còn thơm mùi biển từ hôm mở kiện hàng.",
+          "target": "st-kien-hang-khong-ten-phao-do"
+        },
+        {
+          "id": "khan",
+          "name": "Khăn tắm to",
+          "clue": "Chiếc khăn xanh to bằng cái chiếu, đủ quấn quanh một con voi.",
+          "target": "st-kien-hang-khong-ten-khan-tam"
+        }
+      ],
+      "en": {
+        "title": "Life ring and towel",
+        "goTo": "Go into the wooden shed by the canal and get Voi's things",
+        "prompt": "Find the two things Voi needs at the pond:",
+        "items": [
+          {
+            "name": "Voi's red ring",
+            "clue": "Hanging on a wooden hook, still smelling of the sea from the day the parcel was opened."
+          },
+          {
+            "name": "A big towel",
+            "clue": "A blue towel as big as a sleeping mat, big enough to wrap round an elephant."
+          }
+        ]
+      }
+    },
+    {
+      "id": "an-toan-duoi-nuoc",
+      "title": "Trước khi xuống ao",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-kien-hang-khong-ten-chi-cuu-ho",
+      "goTo": "Ra ao vịt, Chị Cứu Hộ Áo Cam đang chờ",
+      "skill": "doc-hieu",
+      "prompt": "Chị Cứu Hộ hỏi: «Trước khi xuống nước, mình nên làm những việc nào?» Chọn tất cả việc đúng:",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Đeo phao cho chắc"
+        },
+        {
+          "id": "b",
+          "text": "Có người lớn trông ở bờ"
+        },
+        {
+          "id": "c",
+          "text": "Khởi động tay chân"
+        },
+        {
+          "id": "d",
+          "text": "Nhảy ùm xuống chỗ nước sâu"
+        },
+        {
+          "id": "e",
+          "text": "Ăn thật no rồi xuống ngay"
+        },
+        {
+          "id": "f",
+          "text": "Xuống nước một mình cho quen"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Việc an toàn giúp mình nổi được và có người giúp khi cần.",
+          "Bỏ những việc làm mình dễ chìm, dễ chuột rút hoặc ở một mình."
+        ],
+        "hint": "Có ba việc đúng.",
+        "answer": {
+          "text": "Đeo phao, có người lớn trông, khởi động",
+          "explanation": "Phao giữ mình nổi, người lớn trông để giúp kịp, khởi động để không chuột rút. Nhảy chỗ sâu, ăn no rồi bơi, xuống nước một mình đều nguy hiểm."
+        },
+        "en": {
+          "guide": [
+            "Safe steps keep you afloat and make sure someone can help.",
+            "Leave out anything that makes you sink, cramp up, or be on your own."
+          ],
+          "hint": "Three of them are right.",
+          "answer": {
+            "text": "Life ring on, a grown-up watching, a warm-up",
+            "explanation": "The ring keeps you up, a grown-up can help in time, warming up stops cramps. Jumping into deep water, swimming on a full stomach and going in alone are all dangerous."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chị Cứu Hộ giơ ngón cái: «Chuẩn bài an toàn!»",
+          "Voi đeo phao, vươn vòi khởi động, trông oai như vận động viên.",
+          "{name} nhớ hết luật nước, Voi yên tâm hẳn."
+        ],
+        "wrong": [
+          "Chị Cứu Hộ thổi còi «toét»: có việc nguy hiểm lọt vào rồi, hoặc còn sót việc an toàn!",
+          "Chưa đủ hoặc thừa một việc rồi, xem lại từng dòng nhé.",
+          "Hỏi mình: việc này giúp mình nổi và có người trông không?"
+        ],
+        "en": {
+          "right": [
+            "«Safety rules, nailed!» says the lifeguard with a thumbs-up.",
+            "Voi puts on the ring and stretches his trunk like an athlete.",
+            "{name} knows every water rule, and Voi relaxes at once."
+          ],
+          "wrong": [
+            "Tweet goes the whistle: something dangerous slipped in, or a safe step is missing!",
+            "One too many or one too few: check each line again.",
+            "Ask yourself: does this keep me afloat with someone watching?"
+          ]
+        }
+      },
+      "en": {
+        "title": "Before getting in",
+        "goTo": "Go to the duck pond, where the lifeguard in orange is waiting",
+        "prompt": "«Before getting in the water, what should we do?» asks the lifeguard. Pick every right answer:",
+        "choices": [
+          "Put the life ring on securely",
+          "Have a grown-up watching from the bank",
+          "Warm up your arms and legs",
+          "Cannonball into the deep part",
+          "Eat a huge meal and jump straight in",
+          "Go in alone to get used to it"
+        ]
+      }
+    },
+    {
+      "id": "dem-vit-quanh-voi",
+      "title": "Đàn vịt cổ vũ",
+      "kind": "riddle",
+      "target": "st-kien-hang-khong-ten-chi-cuu-ho",
+      "skill": "phep-cong",
+      "question": "Voi nổi được rồi! Đàn vịt bơi quanh kêu cạc cạc cổ vũ: bên trái Voi có 6 con, bên phải nhiều hơn bên trái 2 con. Có tất cả bao nhiêu con vịt?",
+      "answer": {
+        "value": 14
+      },
+      "support": {
+        "guide": [
+          "Bên phải nhiều hơn bên trái 2 con: 6 + 2.",
+          "Rồi cộng hai bên lại với nhau."
+        ],
+        "hint": "Bên phải có 8 con.",
+        "answer": {
+          "text": "14 con vịt",
+          "explanation": "Bên phải: 6 + 2 = 8 con. Tất cả: 6 + 8 = 14 con vịt."
+        },
+        "en": {
+          "guide": [
+            "The right side has 2 more than the left: 6 + 2.",
+            "Then add both sides together."
+          ],
+          "hint": "There are 8 on the right.",
+          "answer": {
+            "text": "14 ducks",
+            "explanation": "Right side: 6 + 2 = 8. Altogether: 6 + 8 = 14 ducks."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười bốn con vịt, mười bốn tiếng cạc cạc chúc mừng!",
+          "Voi cười to quá, sóng lăn tăn khắp ao.",
+          "{name} đếm vịt không sót con nào, kể cả con đang lặn."
+        ],
+        "wrong": [
+          "Bên phải nhiều hơn bên trái đấy, không bằng nhau đâu.",
+          "Cạc cạc! Hình như {name} đếm sót một nhóm vịt.",
+          "Tính bên phải trước rồi mới cộng cả hai bên nhé."
+        ],
+        "en": {
+          "right": [
+            "Fourteen ducks, fourteen quacks of congratulations!",
+            "Voi laughs so hard that ripples run across the pond.",
+            "{name} counts every duck, even the one diving."
+          ],
+          "wrong": [
+            "The right side has more than the left, not the same.",
+            "Quack quack! Looks like {name} missed a group of ducks.",
+            "Work out the right side first, then add both."
+          ]
+        }
+      },
+      "en": {
+        "title": "The duck cheer squad",
+        "question": "Voi is floating! The ducks paddle round him quacking: 6 on his left, and 2 more on his right than on his left. How many ducks are there altogether?"
+      }
+    },
+    {
+      "id": "ai-trong-ben",
+      "title": "Ai trông bến?",
+      "kind": "decision",
+      "target": "voi-boc-hang",
+      "goTo": "Về bến hàng, Voi có chuyện cần bàn",
+      "speaker": "Voi Bốc Hàng",
+      "prompt": "Voi lau khô người, rồi lo lắng: «Ta đi biển rồi, ai trông bến? Hàng mà nằm qua đêm không ai đếm là ta không ngủ được.»",
+      "choices": [
+        {
+          "id": "meo",
+          "text": "Nhờ Mèo Gắp Thú, chiều nào cũng đếm thuyền",
+          "consequence": "Voi gật: «Con mèo ấy đếm thuyền chưa sai lần nào. Mà chuột thấy nó là chạy mất dép, ta càng yên tâm!»"
+        },
+        {
+          "id": "thu-ngan",
+          "text": "Nhờ Bác Thu Ngân, mê con số nhất chợ",
+          "consequence": "Voi cười: «Bác ấy đếm hàng xong chắc còn kể thêm ba chuyện cười về kiện hàng.»"
+        },
+        {
+          "id": "ca-cho",
+          "text": "Cả chợ chia nhau, mỗi người một buổi",
+          "consequence": "Voi rưng rưng: «Cả chợ trông bến cho ta à? Thế thì ta đi yên tâm rồi.»"
+        }
+      ],
+      "en": {
+        "title": "Who minds the wharf?",
+        "goTo": "Back to the wharf: Voi has something to discuss",
+        "prompt": "Voi dries off, then frets: «If I go to sea, who'll mind the wharf? I can't sleep if goods sit overnight with nobody counting them.»",
+        "choices": [
+          {
+            "text": "Ask Mèo Gắp Thú: she counts boats every evening anyway",
+            "consequence": "Voi nods: «That cat has never miscounted a boat. And mice run for their lives when they see her, even better!»"
+          },
+          {
+            "text": "Ask Bác Thu Ngân: nobody loves numbers more",
+            "consequence": "Voi laughs: «After counting the goods he'll tell three jokes about parcels, I bet.»"
+          },
+          {
+            "text": "The whole market takes turns, one shift each",
+            "consequence": "Voi's eyes well up: «The whole market minding the wharf for me? Then I can go in peace.»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "can-bang-cung-voi",
+      "title": "Học giữ cân",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-kien-hang-khong-ten-qua-can-dong",
+      "goTo": "Ra cân lớn giữa chợ, Voi dạy cách giữ cân cho người trông bến",
+      "prompt": "Người trông bến phải cân hàng cho đúng. Làm cân thăng bằng cho Voi xem nào!",
+      "game": "balance-scale",
+      "goal": 4,
+      "en": {
+        "title": "Learning the scale",
+        "goTo": "Go to the big scale in the middle of the market: Voi is teaching the wharf-minders",
+        "prompt": "Whoever minds the wharf must weigh goods properly. Show Voi you can balance the scale!"
+      }
+    },
+    {
+      "id": "voi-biet-noi",
+      "title": "Voi biết nổi rồi",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Voi treo chiếc phao đỏ lên móc, nhìn nó như nhìn một người bạn. «Hôm nay ta nổi được mười đếm,» Voi khoe với cả bến, «mười đếm đấy!» Rồi Voi tặng {name} chiếc quạt nan vẫn dùng quạt cho hàng rau.",
+      "en": {
+        "title": "Voi can float",
+        "text": "Voi hangs the red ring on its hook and looks at it like an old friend. «Today I floated for a count of ten,» he tells the whole wharf, «ten!» Then he gives {name} the bamboo fan he uses to cool the vegetables."
+      }
+    },
+    {
+      "id": "phien-trang-toi",
+      "title": "Phiên trăng tới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Voi đã viết thư trả lời ông bạn quăng lưới: phiên trăng tới, Voi sẽ lên thuyền Cá Chuồn ra biển. «Ta sẽ mang về cho cháu một vỏ ốc to hơn cả cái tai ta,» Voi hứa.",
+      "en": {
+        "title": "Next full moon",
+        "text": "Voi has written back to his net-casting friend: next full moon, he'll board the Flying Fish boat to the sea. «I'll bring you back a shell bigger than my ear,» Voi promises."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 75,
+    "coin": 20,
+    "skillXp": {
+      "doc-hieu": 1,
+      "phep-cong": 1
+    },
+    "items": {
+      "quat-nan-tre": 1
+    }
+  },
+  "en": {
+    "title": "Voi Bốc Hàng's story, chapter 3: Voi gets his feet wet",
+    "summary": "Voi Bốc Hàng wants to practise floating in the duck pond, the shallowest water in the market. {name} brings the life ring and a towel from the wooden shed, picks the right safety steps before getting in, counts ducks with the lifeguard, helps Voi choose who will mind the wharf, and learns to keep the scale balanced."
+  }
+}

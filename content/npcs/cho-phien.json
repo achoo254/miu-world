@@ -1,0 +1,835 @@
+{
+  "version": 1,
+  "region": "cho-phien",
+  "climate": "mild",
+  "npcs": [
+    {
+      "id": "co-nan-to-he",
+      "name": "Cô Nặn Tò He",
+      "role": {
+        "vi": "Người nặn tò he ở đầu dãy sạp hoa, tay lúc nào cũng dính bột nếp năm màu.",
+        "en": "The tò he maker at the head of the flower stalls: little figures of coloured sticky-rice dough, and hands never quite clean of it."
+      },
+      "personality": {
+        "vi": "Nhanh tay, hay cười, tò mò về mọi khuôn mặt đi qua chợ. Cô kỹ tính tới mức sửa một chiếc vảy mười lần.",
+        "en": "Quick hands, quicker laugh, curious about every face that passes. So particular she'll redo one scale ten times."
+      },
+      "voice": {
+        "vi": "Nói theo nhịp tay nặn: «xoay, vuốt, xong!», hay gọi đồ mình nặn là «các con bột».",
+        "en": "Talks in the rhythm of her hands: «roll, smooth, done!», and calls her figures «my little dough-babies»."
+      },
+      "fear": {
+        "vi": "Sợ mưa dầm: bột nếp ngấm nước là cả đàn rồng nhũn ra như cháo.",
+        "en": "Steady rain: once wet, a whole herd of dough dragons goes soft as porridge."
+      },
+      "dream": {
+        "vi": "Nặn một con rồng tò he dài bằng cả dãy sạp hoa cho phiên chợ rằm.",
+        "en": "To make a tò he dragon as long as the whole row of flower stalls for the full-moon fair."
+      },
+      "secret": {
+        "vi": "Cô giữ con tò he hỏng đầu tiên mình nặn, một cục bột méo khô cứng, trong hộp thiếc. Cô gọi nó là «thầy» và sáng nào cũng chào nó trước khi mở sạp.",
+        "en": "She keeps the first tò he she ever botched, a hard lopsided lump, in a tin box. She calls it «teacher» and says good morning to it before opening the stall."
+      },
+      "habit": {
+        "vi": "Lúc vắng khách, cô nặn trộm khuôn mặt người qua đường rồi chạy theo tặng luôn cho họ.",
+        "en": "When it is quiet she secretly sculpts the faces of passers-by, then runs after them to hand them over."
+      },
+      "likes": [
+        "to-he-rong",
+        "banh-com-xanh",
+        "bong-lua-vang"
+      ],
+      "lines": [
+        {
+          "vi": "Sáng sớm bột còn mát tay, nặn gì cũng ngoan. {name} muốn một con gì nào?",
+          "en": "Early morning dough is cool and well-behaved. What would you like me to make, {name}?",
+          "when": "morning"
+        },
+        {
+          "vi": "Cô bánh mì Hạnh mở lò trước cô đúng năm phút. Năm nay cô quyết dậy sớm hơn!",
+          "en": "Hạnh the baker lights her oven exactly five minutes before I open up. This year I will beat her!",
+          "when": "morning",
+          "about": "co-banh-mi-hanh"
+        },
+        {
+          "vi": "Trưa nắng, bột khô nhanh lắm, cô phải nặn nhanh như chớp. Xoay, vuốt, xong!",
+          "en": "Midday sun dries dough fast, so I work like lightning. Roll, smooth, done!",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Hôm nay có bà khách đòi nặn con mèo giống hệt mèo nhà bà. Cô hỏi: béo hay gầy? Bà bảo: béo, nhưng đừng nói với nó.",
+          "en": "A lady wanted a cat exactly like hers today. I asked: fat or thin? She said: fat, but don't tell him.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều tà ánh đèn lồng hắt lên sạp, màu bột đẹp như kẹo. Ngồi xuống đây với cô một lát.",
+          "en": "At dusk the lantern light falls on the stall and the dough looks like candy. Sit with me a while.",
+          "when": "evening"
+        },
+        {
+          "vi": "Khuya rồi, các con bột ngủ cả. Cô thì còn thức nghĩ xem vảy rồng nên to bằng cái cúc hay cái kẹo.",
+          "en": "It's late and the dough-babies are asleep. I'm still awake wondering if dragon scales should be button-sized or sweet-sized.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa rồi, mưa rồi! Ai giúp cô kéo tấm bạt với, bột của cô sắp thành chè trôi nước mất!",
+          "en": "Rain, rain! Someone help me pull the tarp over, my dough's about to turn into dumpling soup!",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời hanh thế này nặn tò he là đẹp nhất, màu lên tươi rói.",
+          "en": "Dry weather like this is perfect for tò he: the colours come out bright as anything.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Heo Kho Hàng ở nông trại gửi cô bao nếp nào cũng dán nhãn ghi ngày, ghi giờ, ghi cả... tâm trạng lúc đóng bao.",
+          "en": "Heo Kho Hàng at the farm labels every sack of sticky rice he sends me with the date, the time and even... his mood when he packed it.",
+          "about": "heo-kho-hang"
+        },
+        {
+          "vi": "Ai tặng cô bông lúa vàng là cô mừng lắm: hạt nếp ngon thì tò he mới dẻo.",
+          "en": "Give me a golden rice ear and I am delighted: good sticky rice makes supple tò he."
+        },
+        {
+          "vi": "Tò he ngày xưa nặn xong còn ăn được đấy. Bột của cô vẫn ăn được, nhưng đừng cắn con rồng của cô nhé.",
+          "en": "In the old days you could eat tò he once you had made them. My dough is still edible, but please do not bite my dragon."
+        },
+        {
+          "vi": "{name} đứng yên một tí... rồi! Cô vừa thuộc lòng cái mũi của cháu.",
+          "en": "Hold still a moment, {name}... got it! I've just memorised your nose."
+        },
+        {
+          "vi": "Mèo Gắp Thú cứ đòi cô nặn thú bông bằng bột để bỏ vào máy gắp. Bột thì gắp sao được hả mèo!",
+          "en": "Mèo Gắp Thú keeps asking me for dough plushies for her claw machine. You can't grab dough, cat!",
+          "about": "meo-gap-thu"
+        },
+        {
+          "vi": "Cháu biết không, hồi mới học nghề cô làm hỏng tới ba trăm con. Con thứ ba trăm lẻ một mới ra hình con gà.",
+          "en": "You know, when I was learning I ruined three hundred of them. Number three hundred and one finally looked like a chicken.",
+          "hearts": 2
+        },
+        {
+          "vi": "Cô hay sửa đi sửa lại vì sợ người ta chê. Từ hôm có cháu đi cùng, cô bớt sợ hơn một chút rồi.",
+          "en": "I redo things over and over because I'm scared people will sneer. Since you started coming round, I'm a little less scared.",
+          "hearts": 3
+        },
+        {
+          "vi": "Sáng nào cô cũng chào «thầy» trước khi mở sạp. «Thầy» là cục bột méo đầu tiên của cô đấy. Bí mật nhé!",
+          "en": "Every morning I greet «teacher» before I open up. «Teacher» is my very first lopsided lump of dough. Our secret!",
+          "hearts": 4
+        },
+        {
+          "vi": "Nếu một ngày cô không nặn nữa, cô muốn cháu giữ con rồng nhỏ cô tặng. Nó biết hết chuyện của cô rồi.",
+          "en": "If I ever stop making tò he, I'd like you to keep the little dragon I gave you. It knows all my stories.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "voi-boc-hang",
+      "name": "Voi Bốc Hàng",
+      "role": {
+        "vi": "Người bốc hàng ở bến kênh của chợ phiên: thuyền nào cập bến, hàng nào lên xe đều qua vòi của Voi.",
+        "en": "The porter at the market's canal wharf: every boat that docks and every crate that goes on a truck passes through Voi's trunk."
+      },
+      "personality": {
+        "vi": "Khỏe nhất bến mà cẩn thận nhất chợ, đếm cái gì cũng đếm hai lần. Hiền, chậm, và rất dễ cảm động.",
+        "en": "Strongest on the wharf and the most careful in the market: he counts everything twice. Gentle, slow and easily moved."
+      },
+      "voice": {
+        "vi": "Nói chậm rãi, hay đếm thành tiếng «một kiện, hai kiện...» và tự nhắc mình «nhẹ tay nhé».",
+        "en": "Speaks slowly, counts out loud «one crate, two crates...» and reminds himself «gently now»."
+      },
+      "fear": {
+        "vi": "Chuột nhắt. Ai cũng cười, nhưng hễ có con chuột chạy qua bến là Voi co ngay một chân lên.",
+        "en": "Mice. Everyone laughs, but whenever one scurries across the wharf, Voi lifts a foot right up."
+      },
+      "dream": {
+        "vi": "Được một lần theo thuyền hàng ra tận biển, xem những kiện hàng mình bốc đi về đâu.",
+        "en": "To ride a cargo boat all the way to the sea once, and see where all the crates he loads end up."
+      },
+      "secret": {
+        "vi": "Trong túi áo Voi có một tấm vé thuyền ra biển mua từ mười năm trước. Voi chưa dùng lần nào, vì sợ mình đi rồi bến không ai trông.",
+        "en": "In Voi's pocket is a boat ticket to the sea he bought ten years ago. He's never used it, afraid that if he left nobody would mind the wharf."
+      },
+      "habit": {
+        "vi": "Trưa nào Voi cũng dùng vòi tưới mát hàng rau, rồi lén phun một tia nước lên trời làm cầu vồng cho bọn trẻ.",
+        "en": "Every noon Voi sprays the vegetable stalls with his trunk to cool them, then secretly shoots one jet into the sky to make a rainbow for the kids."
+      },
+      "likes": [
+        "quat-nan-tre",
+        "keo-mach-nha",
+        "qua-dua-hau"
+      ],
+      "lines": [
+        {
+          "vi": "Sáng nay sương xuống dày quá, ta đếm kiện hàng mà cứ tưởng đang đếm mây.",
+          "en": "So much mist this morning, counting crates felt like counting clouds.",
+          "when": "morning"
+        },
+        {
+          "vi": "Một kiện, hai kiện... chào {name}! Ba kiện. Đấy, ta vừa chào vừa đếm được đấy.",
+          "en": "One crate, two crates... morning, {name}! Three crates. See, I can greet and count at the same time.",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa rồi, rau héo hết. Đứng xa ra {name}, ta sắp tưới đây... và có cầu vồng nữa!",
+          "en": "It's noon and the greens are wilting. Stand back, {name}, I'm about to spray... and there'll be a rainbow!",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều nào ta cũng nhìn thuyền xuôi về phía biển cho tới khi nó nhỏ bằng hạt đậu.",
+          "en": "Every evening I watch the boats head for the sea until they are as small as beans.",
+          "when": "evening"
+        },
+        {
+          "vi": "Đêm rồi mà ta vẫn ra bến đếm lại lần cuối. Một, hai... có tiếng gì sột soạt thế? Chuột hả?!",
+          "en": "It's night, and I'm still down at the wharf for one last count. One, two... what's that rustle? A mouse?!",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa thì ta lấy tai che hàng. Một tai che rau, một tai che gạo, còn ta thì... ướt.",
+          "en": "When it rains I cover the goods with my ears. One ear for the greens, one for the rice, and me... I get wet.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời trong thế này thuyền vào bến êm ru, hàng nào cũng khô ráo. Ta thích những ngày như hôm nay.",
+          "en": "Clear days like this, the boats glide in and every crate stays dry. I love days like today.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Đừng thấy ta to mà nghĩ ta vụng nhé. Ta bê được cả chồng bát sứ mà không mẻ cái nào.",
+          "en": "Don't think I'm clumsy just because I'm big. I can carry a stack of china bowls without chipping one."
+        },
+        {
+          "vi": "Cháu biết không, voi nghe được tiếng rất trầm bằng... bàn chân. Thuyền còn xa ta đã biết rồi.",
+          "en": "Did you know elephants can hear very low sounds through... their feet? I know a boat is coming long before it arrives."
+        },
+        {
+          "vi": "Dưa hấu xe nông trại chở lên bến là ta mê nhất. Bổ ra đỏ au, mát tận vòi.",
+          "en": "The watermelons the farm cart brings up to the wharf are my favourite. Split one open, bright red, cool right down my trunk."
+        },
+        {
+          "vi": "Bác Thu Ngân đọc số cân mà như hát quan họ. Ta bê hàng lên cân chỉ để được nghe bác hát.",
+          "en": "Bác Thu Ngân reads out the weights as if he were singing folk songs. I put crates on the scale just to hear him.",
+          "about": "bac-thu-ngan-vui-ve"
+        },
+        {
+          "vi": "Bác Quăng Lưới Biển gửi cá lên bến lúc nào cũng kèm một câu: «Biển nhớ Voi đấy.» Ta đã gặp biển bao giờ đâu mà.",
+          "en": "Bác Quăng Lưới Biển always sends a line with his fish: «The sea misses you, Voi.» I have never even met the sea!",
+          "about": "bac-quang-luoi-bien"
+        },
+        {
+          "vi": "Hồi bé ta từng bị một con chuột nhắt chui vào vòi. Từ đó tới giờ... thôi, đừng cười ta.",
+          "en": "When I was small a mouse once crawled up my trunk. Ever since then... no, don't laugh at me.",
+          "hearts": 2
+        },
+        {
+          "vi": "Có khi ta nghĩ: hàng đi khắp nơi, chỉ ta là đứng yên. Mà đứng yên lâu quá thì chân cũng mỏi, lòng cũng mỏi.",
+          "en": "Sometimes I think: the goods go everywhere and only I stay put. Stand still too long and your legs get tired, and your heart does too.",
+          "hearts": 3
+        },
+        {
+          "vi": "Ta có một tấm vé thuyền ra biển, mua từ mười năm trước, chưa dùng lần nào. Cháu đừng kể với ai nhé.",
+          "en": "I've got a boat ticket to the sea, bought ten years ago and never used. Don't tell anyone.",
+          "hearts": 4
+        },
+        {
+          "vi": "Lần tới thuyền đi, ta sẽ chỉ đếm hàng một lần thôi. Một lần thôi! Rồi ta lên thuyền. {name} giữ lời hứa giúp ta nhé.",
+          "en": "Next time the boat goes, I'll count the crates just once. Only once! Then I'll get on. Hold me to it, {name}.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "co-banh-mi-hanh",
+      "name": "Cô bánh mì Hạnh",
+      "role": {
+        "vi": "Chủ sạp bánh mì ở gian hàng đồ ăn, mở lò sớm nhất chợ phiên.",
+        "en": "Owner of the bánh mì stall in the food row, the first oven lit in the market."
+      },
+      "personality": {
+        "vi": "Thẳng tính, nhanh nhảu, thương khách như người nhà. Cô nhớ món của từng người, kể cả người chỉ ghé một lần.",
+        "en": "Blunt, brisk and as fond of customers as of family. She remembers everyone's order, even people who came once."
+      },
+      "voice": {
+        "vi": "Nói nhanh và giòn như vỏ bánh: «Giòn chưa? Giòn rồi!», câu chuyện nào cũng kèm câu hỏi «ăn sáng chưa?».",
+        "en": "Talks fast and crisp as a crust: «Crunchy? Crunchy!», and every chat comes with «had breakfast yet?»."
+      },
+      "fear": {
+        "vi": "Mùi khét. Chỉ một ổ bánh cháy thôi là tim cô đập như trống hội cả buổi.",
+        "en": "The smell of burning. One scorched loaf and her heart drums like a festival all morning."
+      },
+      "dream": {
+        "vi": "Có một chiếc xe bánh mì nhỏ, chạy khắp các phiên chợ trong vùng, đến đâu thơm tới đó.",
+        "en": "A little bánh mì cart that rolls from fair to fair across the region, leaving a lovely smell wherever it goes."
+      },
+      "secret": {
+        "vi": "Cô không ăn được ớt. Lọ tương ớt «cay xé lưỡi» nổi tiếng của sạp là cô nếm bằng... mũi.",
+        "en": "She can't eat chilli. The stall's famous «tongue-scorcher» chilli sauce is tested with... her nose."
+      },
+      "habit": {
+        "vi": "Ổ bánh đầu tiên mỗi sáng cô bẻ đôi: nửa cho đàn chim sẻ đầu chợ, nửa cho người khách đầu tiên.",
+        "en": "She breaks the first loaf of every morning in two: half for the sparrows at the market gate, half for the first customer."
+      },
+      "likes": [
+        "banh-com-xanh",
+        "trung-ga-ta",
+        "keo-mach-nha"
+      ],
+      "lines": [
+        {
+          "vi": "Ăn sáng chưa {name}? Chưa thì đứng đây, ổ này vừa ra lò, giòn rụm!",
+          "en": "Had breakfast, {name}? No? Then stand right there, this one's fresh out of the oven, crackling!",
+          "when": "morning"
+        },
+        {
+          "vi": "Chim sẻ đầu chợ đã ăn nửa ổ đầu tiên rồi. Nửa còn lại... hôm nay ai tới trước nhỉ?",
+          "en": "The sparrows have had their half of the first loaf. The other half... who's first today?",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa vắng khách, cô ngồi tập gấp giấy gói bánh cho thẳng mép. Gói xấu là bánh buồn đấy.",
+          "en": "Quiet at noon, so I practise folding the wrappers neatly. A badly wrapped loaf is a sad loaf.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều cô nướng mẻ bánh nhỏ cho người tan chợ về muộn. Mẻ này cô gọi là «bánh mì đi đường».",
+          "en": "In the evening I bake a little batch for the late-leaving stallholders. I call them «road loaves».",
+          "when": "evening"
+        },
+        {
+          "vi": "Đêm cô ủ bột cho mai. Bột cũng như người, phải ngủ đủ giấc mới nở đẹp.",
+          "en": "At night I set tomorrow's dough to rise. Dough is like people: it needs a good sleep to rise well.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa thế này khách ghé trú, cô bán được gấp đôi. Mưa ơi mưa, cảm ơn nhé!",
+          "en": "Rain like this sends people in for shelter and I sell twice as much. Thank you, rain!",
+          "weather": "rain"
+        },
+        {
+          "vi": "Nắng ráo thì vỏ bánh giòn tan, cắn một miếng nghe «rắc» cả dãy hàng.",
+          "en": "Dry sunny days make the crust shatter: one bite and the whole row hears it crack.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Giòn chưa? Giòn rồi! Cô nghe tiếng bánh là biết ổ nào ngon nhất, chẳng cần nhìn.",
+          "en": "Crunchy? Crunchy! I can tell the best loaf by its sound, no need to look."
+        },
+        {
+          "vi": "Bà Năm Kể Chuyện bảo bánh mì của cô giòn như pháo Tết. Cô nghe xong vui cả ngày, nướng cháy luôn một mẻ.",
+          "en": "Bà Năm Kể Chuyện says my bread crackles like New Year firecrackers. I was so pleased I burnt a whole batch.",
+          "about": "ba-nam-ke-chuyen"
+        },
+        {
+          "vi": "Trứng gà ta nông trại gửi lên làm ốp la là số một. Ai mang tặng cô một quả, cô nợ người đó một ổ đặc biệt.",
+          "en": "Farm hens’ eggs make the best fried eggs. Bring me one and I owe you a special loaf."
+        },
+        {
+          "vi": "Cô Nặn Tò He đổi cho cô một con tò he lấy một ổ bánh. Cô để nó trên nóc lò, nó nhìn cô nướng suốt ngày.",
+          "en": "Cô Nặn Tò He swapped me a tò he for a loaf. I keep it on top of the oven and it watches me bake all day.",
+          "about": "co-nan-to-he"
+        },
+        {
+          "vi": "{name} có biết vì sao ổ bánh mì có đường rạch trên lưng không? Để hơi nóng thoát ra mà bánh không bị nứt đấy.",
+          "en": "Know why a baguette has a slash on top, {name}? It lets the steam out so the loaf does not split."
+        },
+        {
+          "vi": "Hồi mới mở sạp, cả ngày cô bán được đúng ba ổ. Một ổ cho mẹ, một ổ cho em, ổ còn lại cô tự ăn cho đỡ buồn.",
+          "en": "When I first opened, I sold exactly three loaves all day. One for Mum, one for my brother, and the last I ate myself to cheer up.",
+          "hearts": 2
+        },
+        {
+          "vi": "Cô muốn có xe bánh mì chạy khắp các phiên chợ. Nhưng đi rồi ai nướng cho chim sẻ đầu chợ ăn đây?",
+          "en": "I want a bánh mì cart that goes from fair to fair. But then who'd bake for the sparrows at the gate?",
+          "hearts": 3
+        },
+        {
+          "vi": "Nói nhỏ nhé: cô không ăn được ớt. Lọ tương ớt cay nhất chợ ấy, cô nếm bằng mũi đấy!",
+          "en": "Just between us: I can’t eat chilli. That fiercest sauce in the market? I taste it with my nose!",
+          "hearts": 4
+        },
+        {
+          "vi": "Cháu là khách quen thứ một nghìn của cô đấy, cô đếm mà. Từ nay ổ đầu tiên chia ba: chim sẻ, khách đầu tiên, và {name}.",
+          "en": "You're my thousandth regular, I've been counting. From now on the first loaf splits three ways: sparrows, first customer, and {name}.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "meo-gap-thu",
+      "name": "Mèo Gắp Thú",
+      "role": {
+        "vi": "Chủ máy gắp thú ở chân cầu hình rồng, kiêm người bày trò úp bát tìm ngọc.",
+        "en": "Keeper of the claw machine at the foot of the dragon bridge, and host of the find-the-pearl cup game."
+      },
+      "personality": {
+        "vi": "Láu lỉnh, mê đố mẹo, thua thì chịu nhưng đòi chơi lại ngay. Bề ngoài tinh quái, bên trong rất hay nhớ nhà.",
+        "en": "Sly, mad about trick questions, a good loser who always demands a rematch. Mischievous outside, homesick inside."
+      },
+      "voice": {
+        "vi": "Hay thả một tiếng «meo» ở cuối câu và thích thách: «đố cậu đấy, meo!».",
+        "en": "Ends sentences with a little «meow» and loves to dare: «bet you can’t, meow!»."
+      },
+      "fear": {
+        "vi": "Tiếng máy gắp kêu «rè rè» lúc nửa đêm: Mèo tin có con thú bông nào đang định trốn ra.",
+        "en": "The claw machine whirring at midnight: she is sure some plushie is plotting an escape."
+      },
+      "dream": {
+        "vi": "Chế một chiếc máy gắp khổng lồ gắp được cả mặt trăng, ít nhất là cái bóng trăng dưới kênh.",
+        "en": "To build a giant claw machine that can grab the moon, or at least its reflection in the canal."
+      },
+      "secret": {
+        "vi": "Trong máy gắp có một con gấu bông chẳng ai gắp được, vì Mèo dán keo dưới chân nó. Đó là con gấu của Mèo hồi bé, Mèo không nỡ để ai mang đi.",
+        "en": "There's one teddy in the machine nobody can ever win, because Mèo glued its feet down. It was her bear when she was small, and she can't bear to let it go."
+      },
+      "habit": {
+        "vi": "Chiều nào cũng ngồi vắt vẻo trên lan can cầu rồng đếm thuyền qua, hết thuyền thì đếm... cá.",
+        "en": "Every evening she perches on the dragon bridge railing counting boats, and when she runs out of boats she counts... fish."
+      },
+      "likes": [
+        "vong-chuoi-hat",
+        "to-he-rong",
+        "hoa-dang-sen"
+      ],
+      "lines": [
+        {
+          "vi": "Sáng ra máy gắp được lau bóng loáng, meo. Lượt đầu ngày may nhất đấy, {name} thử không?",
+          "en": "The claw machine's polished every morning, meow. First go of the day is the luckiest. Want a try, {name}?",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa nóng, tớ nằm dưới gầm cầu rồng cho mát. Đừng gọi, trừ khi có cá khô.",
+          "en": "Hot afternoons I lie in the shade under the dragon bridge. Don't call me unless there's dried fish.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều rồi, ra lan can đếm thuyền với tớ không? Hôm qua mười một chiếc, hôm nay tớ cá là mười hai, meo.",
+          "en": "Evening! Count boats with me on the railing? Eleven yesterday, I bet twelve today, meow.",
+          "when": "evening"
+        },
+        {
+          "vi": "Nửa đêm máy gắp lại kêu rè rè... {name} có nghe không? Chắc con thỏ bông lại định vượt ngục.",
+          "en": "The claw machine's whirring again at midnight... hear it, {name}? The toy rabbit must be planning a jailbreak.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa ướt hết ria rồi, meo! Ai lại để mèo đứng trông máy gắp giữa trời mưa thế này?",
+          "en": "My whiskers are soaked, meow! Who leaves a cat minding a claw machine in the rain?",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời đẹp thế này, tối nay bóng trăng dưới kênh sẽ tròn vành vạnh. Tớ phải canh gắp nó mới được.",
+          "en": "Weather like this means a perfectly round moon in the canal tonight. I must be ready to grab it.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Đố cậu đấy, meo: cái gì có ba cái bát mà chỉ một viên ngọc? Trò của tớ chứ còn gì!",
+          "en": "Bet you can’t guess, meow: what has three bowls and only one pearl? My game, of course!"
+        },
+        {
+          "vi": "Thua thì thua, chơi lại! Ở chân cầu này không ai thua mãi, chỉ có người chưa chơi lại thôi.",
+          "en": "Lost? Rematch! Nobody here loses forever, only people who haven't played again yet."
+        },
+        {
+          "vi": "Cô Đèn Lồng Sen ở Làng Ven Sông gửi tớ một chiếc đèn hoa sen. Tối tớ thả xuống kênh, đèn trôi đi như đang đi tìm bạn.",
+          "en": "Cô Đèn Lồng Sen from Riverside Village sent me a lotus lantern. At night I float it on the canal and it drifts off as if looking for a friend.",
+          "about": "co-den-long-sen"
+        },
+        {
+          "vi": "Ai tặng tớ hoa đăng sen là tớ nhớ ngay tới cô bạn đèn lồng bên làng sông. Quà ấy làm mèo ấm lòng lắm, meo.",
+          "en": "A lotus lantern always reminds me of my lantern friend in the river village. That gift warms a cat’s heart, meow."
+        },
+        {
+          "vi": "Voi Bốc Hàng cho tớ ngồi trên lưng đếm thuyền. Cao thế đếm được cả thuyền chưa tới, meo!",
+          "en": "Voi Bốc Hàng lets me sit on his back to count boats. From up there I can count boats that haven't even arrived, meow!",
+          "about": "voi-boc-hang"
+        },
+        {
+          "vi": "Mẹo gắp thú nè: đừng nhìn cần gắp, nhìn cái bóng của nó. Bóng không biết nói dối.",
+          "en": "Claw machine tip: don’t watch the claw, watch its shadow. Shadows never lie."
+        },
+        {
+          "vi": "Tớ mê đố mẹo vì hồi bé tớ nhỏ nhất nhà, không đố thì chẳng ai để ý tới tớ.",
+          "en": "I love trick questions because I was the littlest at home, and nobody noticed me unless I stumped them.",
+          "hearts": 2
+        },
+        {
+          "vi": "Có hôm tớ nhớ nhà quá, ngồi đếm thuyền mà đếm sai. Lần đầu tiên đấy, đừng kể ai nhé.",
+          "en": "Some days I miss home so much I miscount the boats. First time ever, don't tell anyone.",
+          "hearts": 3
+        },
+        {
+          "vi": "Con gấu nâu góc trái máy gắp ấy... tớ dán keo chân nó. Gấu của tớ hồi bé đấy, không ai được mang đi đâu.",
+          "en": "The brown bear in the left corner of the machine... I glued its feet down. It was my bear when I was little. Nobody is taking it.",
+          "hearts": 4
+        },
+        {
+          "vi": "Nếu cậu muốn, tối nay tớ bóc keo cho cậu ôm con gấu một lần. Chỉ cậu thôi đấy, meo.",
+          "en": "If you like, tonight I’ll unstick it so you can hug my bear once. Only you, meow.",
+          "hearts": 5
+        }
+      ]
+    },
+    {
+      "id": "bac-thu-ngan-vui-ve",
+      "name": "Bác Thu Ngân Vui Vẻ",
+      "role": {
+        "vi": "Người thu ngân ở dãy hàng cân đong, giữ cái két gỗ và cái bàn tính của cả chợ phiên.",
+        "en": "The cashier on the weighing row, keeper of the wooden till and the abacus for the whole market."
+      },
+      "personality": {
+        "vi": "Cười suốt ngày, tính nhẩm nhanh như chớp, kể chuyện cười dở tệ nhưng tự cười to nhất.",
+        "en": "Laughs all day, does sums in a flash, tells terrible jokes and laughs loudest at them himself."
+      },
+      "voice": {
+        "vi": "Đọc số như hát: «hai nghìn năm trăm... tính tiền nàooo!», cuối câu hay thêm tiếng «hô hô».",
+        "en": "Sings out numbers: «two thousand five hundred... there you go-o-o!», with a «ho ho» at the end."
+      },
+      "fear": {
+        "vi": "Thối nhầm tiền cho khách. Tối nào bác cũng đếm lại két ba lần mới dám về.",
+        "en": "Giving someone the wrong change. Every night he counts the till three times before he dares go home."
+      },
+      "dream": {
+        "vi": "Viết một quyển sách tên «Một trăm chuyện cười về con số», mà chuyện nào cũng buồn cười thật.",
+        "en": "To write a book called «A Hundred Jokes About Numbers», with every single one actually funny."
+      },
+      "secret": {
+        "vi": "Bác vẫn giữ đồng xu cổ đầu tiên mình kiếm được hồi bé, nhờ bán nước vối ở chính chợ này. Đồng xu ấy chưa bao giờ rời túi áo bác.",
+        "en": "He still keeps the first old coin he ever earned as a boy, selling herbal tea at this very market. It has never left his pocket."
+      },
+      "habit": {
+        "vi": "Thối tiền xong, bác luôn tặng kèm một câu đố nhẩm; ai trả lời được thì được thêm viên kẹo.",
+        "en": "After giving change he always throws in a mental-maths riddle; get it right and you get a sweet."
+      },
+      "likes": [
+        "dong-tien-co",
+        "keo-mach-nha",
+        "ve-xe-buyt-sao"
+      ],
+      "lines": [
+        {
+          "vi": "Sáng ra bác lau bàn tính trước, lau mặt sau. Bàn tính sạch thì tính mới nhanh, hô hô!",
+          "en": "Morning: first I polish the abacus, then my face. A clean abacus counts faster, ho ho!",
+          "when": "morning"
+        },
+        {
+          "vi": "Khách đầu tiên được bác tặng câu đố đầu tiên: năm cộng năm bằng mấy? Mười! Dễ quá phải không, hô hô.",
+          "en": "First customer gets the first riddle: five plus five? Ten! Too easy, ho ho.",
+          "when": "morning"
+        },
+        {
+          "vi": "Trưa đông khách nhất, bác đọc số nhanh như mưa rào. Hai nghìn, ba nghìn, tính tiền nàooo!",
+          "en": "Noon is the rush: I call numbers like a downpour. Two thousand, three thousand, there you go-o-o!",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều tà bác đếm két lần thứ nhất. Còn hai lần nữa mới được về ăn cơm.",
+          "en": "Dusk: first count of the till. Two more before I’m allowed home for dinner.",
+          "when": "evening"
+        },
+        {
+          "vi": "Khuya rồi bác vẫn nghĩ chuyện cười cho quyển sách. Số 8 nói gì với số 0? «Thắt lưng đẹp đấy!» Hô hô hô!",
+          "en": "Late at night I’m still writing jokes for my book. What did 8 say to 0? «Nice belt!» Ho ho ho!",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa thì khách ít, bác ngồi đố mưa: hai giọt cộng ba giọt thì ướt mấy giọt? Ướt hết, hô hô!",
+          "en": "Rainy days are slow, so I set rain riddles: two drops plus three drops makes how wet? Soaked, ho ho!",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời đẹp, khách đi chợ vui, ai cũng trả tiền chẵn. Ngày đẹp nhất của thu ngân là đây!",
+          "en": "Nice weather, happy shoppers, everyone pays with exact change. A cashier's dream day!",
+          "weather": "fine"
+        },
+        {
+          "vi": "{name} đố bác đi! Đố gì bác cũng trả lời được, trừ câu «bác bao nhiêu tuổi».",
+          "en": "Give me a riddle, {name}! I can answer anything except «how old are you?»."
+        },
+        {
+          "vi": "Chó Cảnh Sát Còi ở Trung tâm hay gửi vé xe buýt vàng lên rủ bác đi chơi. Bác chưa đi, sợ không ai trông két.",
+          "en": "Chó Cảnh Sát Còi in the central town keeps sending me golden bus tickets to visit. I haven’t gone yet: who would mind the till?",
+          "about": "cho-canh-sat-coi"
+        },
+        {
+          "vi": "Kẹo mạch nha là kẹo thưởng câu đố của bác. Ai tặng bác một túi, bác đố được thêm cả trăm câu.",
+          "en": "Malt candy is my riddle prize. Bring me a bag and I can set a hundred more riddles."
+        },
+        {
+          "vi": "Voi Bốc Hàng bê hàng lên cân nhẹ như bê bông. Bác đọc số, Voi đếm lại, chưa sai bao giờ.",
+          "en": "Voi Bốc Hàng puts crates on the scale as lightly as cotton. I read the weight, he counts again: never once wrong.",
+          "about": "voi-boc-hang"
+        },
+        {
+          "vi": "Mẹo tính nhẩm của bác nè: cộng với chín thì cứ mượn một cho đủ mười, rồi cộng phần còn lại.",
+          "en": "Here’s my mental-maths trick: adding nine? Borrow one to make ten, then add what’s left."
+        },
+        {
+          "vi": "Chuyện cười của bác dở lắm phải không? Bác biết mà. Nhưng thấy người ta cười vì bác dở là bác vui rồi.",
+          "en": "My jokes are terrible, aren’t they? I know. But seeing people laugh because they’re terrible makes me happy.",
+          "hearts": 2
+        },
+        {
+          "vi": "Có lần bác thối thừa cho khách một nghìn đồng, bác chạy theo ba con phố để trả. Từ đó bác đếm két ba lần.",
+          "en": "Once I gave a customer a thousand đồng too much and chased her down three streets to fix it. That’s why I count three times.",
+          "hearts": 3
+        },
+        {
+          "vi": "Đồng xu cổ trong túi bác là đồng đầu tiên bác kiếm được, bán nước vối ngay đầu chợ này. Bác chưa tiêu nó bao giờ.",
+          "en": "The old coin in my pocket is the first I ever earned, selling herbal tea at this market’s gate. I’ve never spent it.",
+          "hearts": 4
+        },
+        {
+          "vi": "Bác dành cho cháu một trang trong quyển sách chuyện cười. Trang ấy tên là «{name} và con số không biết cười».",
+          "en": "I’ve saved you a page in my joke book. It’s called «{name} and the Number Who Couldn’t Laugh».",
+          "hearts": 5
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "a": "co-nan-to-he",
+      "b": "co-banh-mi-hanh",
+      "kind": "neighbour",
+      "note": {
+        "vi": "Hai cô dậy sớm nhất chợ, sáng nào cũng đổi cho nhau một con tò he lấy một ổ bánh nóng.",
+        "en": "The two earliest risers in the market swap a tò he for a hot loaf every morning."
+      }
+    },
+    {
+      "a": "voi-boc-hang",
+      "b": "bac-thu-ngan-vui-ve",
+      "kind": "friend",
+      "note": {
+        "vi": "Voi bê hàng lên cân, bác thu ngân hát số cân; hai người cùng giữ cái cân của chợ đúng từng lạng.",
+        "en": "Voi lifts the goods onto the scale and the cashier sings out the weight; together they keep the market's scale true to the gram."
+      }
+    },
+    {
+      "a": "meo-gap-thu",
+      "b": "voi-boc-hang",
+      "kind": "friend",
+      "note": {
+        "vi": "Chiều nào Mèo cũng ngồi trên lưng Voi đếm thuyền qua cầu rồng.",
+        "en": "Every evening Mèo sits on Voi's back to count the boats passing the dragon bridge."
+      }
+    },
+    {
+      "a": "meo-gap-thu",
+      "b": "co-nan-to-he",
+      "kind": "friend",
+      "note": {
+        "vi": "Mèo hay đặt cô nặn thú bông bằng bột cho máy gắp, còn cô thì toàn thua câu đố mẹo của Mèo.",
+        "en": "Mèo keeps ordering dough plushies for her claw machine, and Cô keeps losing Mèo's trick riddles."
+      }
+    },
+    {
+      "a": "bac-thu-ngan-vui-ve",
+      "b": "co-banh-mi-hanh",
+      "kind": "neighbour",
+      "note": {
+        "vi": "Sạp bánh mì ngay cạnh dãy cân đong; bác thu ngân là người duy nhất được cô Hạnh cho ghi sổ nợ.",
+        "en": "The bread stall is right next to the weighing row; the cashier is the only one Hạnh lets buy on credit."
+      }
+    },
+    {
+      "a": "co-nan-to-he",
+      "b": "heo-kho-hang",
+      "kind": "pen-pal",
+      "note": {
+        "vi": "Heo Kho Hàng gửi nếp từ nông trại lên cho cô nặn tò he, cô gửi lại những con heo tò he; hai bên viết thư cho nhau mỗi phiên chợ.",
+        "en": "Heo Kho Hàng sends sticky rice from the farm for her tò he, and she sends back tò he pigs; they write to each other every market day."
+      }
+    },
+    {
+      "a": "meo-gap-thu",
+      "b": "co-den-long-sen",
+      "kind": "friend",
+      "note": {
+        "vi": "Cô Đèn Lồng Sen gửi đèn hoa sen để Mèo thả xuống kênh; Mèo gửi lại những câu đố mẹo để cô đố khách đi thả đèn.",
+        "en": "Cô Đèn Lồng Sen sends lotus lanterns for Mèo to float on the canal; Mèo sends back trick riddles for the lantern lady's customers."
+      }
+    }
+  ],
+  "arcs": [
+    {
+      "id": "to-he-rong-dai",
+      "npc": "co-nan-to-he",
+      "title": {
+        "vi": "Con rồng tò he dài nhất chợ",
+        "en": "The longest tò he dragon in the market"
+      },
+      "teaser": {
+        "vi": "Phiên rằm này cô định làm một chuyện điên rồ: nặn con rồng dài bằng cả dãy sạp hoa. Nghe không, {name}?",
+        "en": "For this full-moon fair I'm planning something mad: a dough dragon as long as all the flower stalls. Want to hear, {name}?"
+      },
+      "chapters": [
+        {
+          "quest": "yarn-to-he-rong-dai-1",
+          "hearts": 0,
+          "letter": {
+            "from": "co-nan-to-he",
+            "title": {
+              "vi": "Hũ bột màu cam đầu tiên",
+              "en": "The first pot of orange dough"
+            },
+            "body": {
+              "vi": "{name} thân mến, hôm nay cả dãy sạp hoa cứ hỏi sao sạp cô thơm mùi lá dứa thế. Cô bảo: nhờ một người bạn nhỏ chạy khắp chợ tìm màu đấy. Con cá chép cam nhớ để chỗ mát kẻo nó bơi mất nhé!",
+              "en": "Dear {name}, today the whole row of flower stalls kept asking why my stall smells of pandan. I told them: a young friend ran all round the market finding colours. Keep the orange carp somewhere cool, or it might swim away!"
+            },
+            "reward": {
+              "coins": 15,
+              "xp": 15,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-to-he-rong-dai-2",
+          "hearts": 1,
+          "letter": {
+            "from": "heo-kho-hang",
+            "title": {
+              "vi": "Bao nếp dán nhãn «Cho rồng»",
+              "en": "A sack labelled «For the dragon»"
+            },
+            "body": {
+              "vi": "Ủn ỉn, {name}! Cô Nặn Tò He viết thư khoe con rồng có cả mặt Ông Chổi Rơm đang cười. Tớ đọc xong cười lăn ra sàn kho. Tớ vừa dán nhãn một bao nếp mới: «Cho rồng, dẻo nhất nông trại», gửi theo xe chở rau sáng mai.",
+              "en": "Oink oink, {name}! Cô Nặn Tò He wrote to boast that her dragon even has Ông Chổi Rơm smiling on it. I laughed so hard I rolled across the warehouse floor. I have just labelled a new sack of sticky rice: «For the dragon: the stickiest on the farm». It goes out with the vegetable cart tomorrow morning."
+            },
+            "reward": {
+              "coins": 15,
+              "xp": 20,
+              "items": {
+                "bong-lua-vang": 1
+              }
+            }
+          }
+        },
+        {
+          "quest": "yarn-to-he-rong-dai-3",
+          "hearts": 2,
+          "letter": {
+            "from": "co-banh-mi-hanh",
+            "title": {
+              "vi": "Người đứng dưới mưa không mở ô",
+              "en": "The one who stood in the rain without an umbrella"
+            },
+            "body": {
+              "vi": "{name} ơi, chiều qua cô thấy Cô Nặn Tò He đứng dưới mưa mà không mở ô, cứ ôm khư khư cái khay rồng. Hôm nay cô ấy cười suốt, còn nặn tặng cô một ổ bánh mì tí hon. Ghé sạp nhé, cô để dành cho cháu ổ giòn nhất mẻ đầu.",
+              "en": "{name}, yesterday afternoon I saw Cô Nặn Tò He standing in the rain without an umbrella, hugging her dragon tray. Today she has been smiling non-stop, and she made me a tiny dough baguette. Drop by: I am saving you the crispiest loaf of the first batch."
+            },
+            "reward": {
+              "coins": 12,
+              "xp": 20,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-to-he-rong-dai-4",
+          "hearts": 3,
+          "letter": {
+            "from": "co-nan-to-he",
+            "title": {
+              "vi": "Rồng đã về sạp",
+              "en": "The dragon comes home"
+            },
+            "body": {
+              "vi": "{name} ơi, rồng giờ nằm trên sạp cho khách ngắm, vảy méo của Bé Mít được khen nhiều nhất đấy. Cô cất cục bột méo đầu tiên lại vào hộp thiếc, lần này cô đặt cạnh nó một chiếc vảy tròn nhỏ để nhớ đêm rằm có cháu. Hẹn cháu ở lớp nặn tò he!",
+              "en": "{name}, the dragon now lies on my stall for customers to admire, and Bé Mít's wonky scale gets the most compliments. I put my first lumpy tò he back in its tin, and this time I laid a little round scale beside it to remember the full-moon night with you. See you at tò he class!"
+            },
+            "reward": {
+              "coins": 20,
+              "xp": 25,
+              "items": {
+                "keo-mach-nha": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "kien-hang-khong-ten",
+      "npc": "voi-boc-hang",
+      "title": {
+        "vi": "Kiện hàng không tên",
+        "en": "The parcel with no name"
+      },
+      "teaser": {
+        "vi": "Một kiện, hai kiện... ơ, sao lại thừa một kiện không tên thế này? {name} giúp ta tìm chủ nó với.",
+        "en": "One crate, two crates... hm, why is there an extra parcel with no name? Help me find its owner, {name}."
+      },
+      "chapters": [
+        {
+          "quest": "yarn-kien-hang-khong-ten-1",
+          "hearts": 0,
+          "letter": {
+            "from": "voi-boc-hang",
+            "title": {
+              "vi": "Ta đếm thêm một lần nữa",
+              "en": "I counted one more time"
+            },
+            "body": {
+              "vi": "{name} à, đêm qua ta lại ra bến đếm hàng. Kiện hàng bí ẩn vẫn nằm ngoan trên ngăn cao, không con chuột nào dám mon men. Ta gửi cháu ít kẹo mạch nha, ăn cho ngọt giọng mà gọi thuyền sáng thứ Hai nhé.",
+              "en": "{name}, last night I went down to count the goods again. The mystery parcel is still sitting nicely on the top shelf, and not a single mouse has dared go near. Here is some malt candy: sweeten your voice for hailing the boat on Monday morning."
+            },
+            "reward": {
+              "coins": 12,
+              "xp": 15,
+              "items": {
+                "keo-mach-nha": 1
+              }
+            }
+          }
+        },
+        {
+          "quest": "yarn-kien-hang-khong-ten-2",
+          "hearts": 1,
+          "letter": {
+            "from": "bac-quang-luoi-bien",
+            "title": {
+              "vi": "Thư của ông bạn quăng lưới",
+              "en": "From the old net-caster"
+            },
+            "body": {
+              "vi": "Chào {name}, ông là người gửi kiện số 7 đây. Năm ngoái ông lên bến chợ phiên bán cá, thấy Voi đứng nhìn thuyền ra khơi lâu ơi là lâu. Ông đoán Voi muốn đi biển mà ngại. Nhờ cháu đi cạnh Voi một đoạn nhé, đoạn còn lại để biển lo.",
+              "en": "Hello {name}, I am the one who sent parcel no. 7. Last year I came up to the market wharf to sell fish and saw Voi watching the boats head out for ages and ages. I guessed he longs for the sea but holds back. Walk beside him a little way, would you? The sea will take care of the rest."
+            },
+            "reward": {
+              "coins": 15,
+              "xp": 20,
+              "items": {
+                "vo-oc-xa-cu": 1
+              }
+            }
+          }
+        },
+        {
+          "quest": "yarn-kien-hang-khong-ten-3",
+          "hearts": 2,
+          "letter": {
+            "from": "voi-boc-hang",
+            "title": {
+              "vi": "Mười đếm, rồi hai mươi đếm",
+              "en": "Ten counts, then twenty"
+            },
+            "body": {
+              "vi": "{name} ơi, sáng nay ta lại ra ao vịt, nổi được hai mươi đếm, lũ vịt giờ coi ta như vịt đầu đàn. Cả chợ đã chia ca trông bến rồi. Lúc thuyền nhổ neo, cháu ra vẫy ta nhé: tai ta to, ta vẫy lại được xa lắm.",
+              "en": "{name}, this morning I went back to the duck pond and floated for a count of twenty. The ducks treat me as their leader now. The whole market has sorted out shifts for the wharf. When the boat sets off, come and wave to me: my ears are big, I can wave back from a long way."
+            },
+            "reward": {
+              "coins": 20,
+              "xp": 25,
+              "items": {}
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

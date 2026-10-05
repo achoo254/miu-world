@@ -1,0 +1,442 @@
+{
+  "id": "yarn-to-he-rong-dai-1",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Chuyện của Cô Nặn Tò He, chương 1: Màu cho con rồng",
+  "status": "active",
+  "category": "story",
+  "summary": "Cô Nặn Tò He mơ nặn một con rồng tò he dài bằng cả dãy sạp hoa cho phiên rằm. {name} đi tìm lá dứa, quả gấc, củ nghệ để nhuộm bột, đọc tờ công thức bị gió thổi bay, đoán màu vảy rồng và in thử một bức tranh.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cô Nặn Tò He",
+    "where": "Chợ phiên: dãy sạp hoa, chợ rau hoa, gian hàng tạp hóa, tháp đồng hồ",
+    "goal": "Tìm đủ màu tự nhiên để nhuộm bột nặn rồng",
+    "play": "Tìm lá dứa, gấc, nghệ theo lời tả; đọc công thức pha màu; đoán màu vảy theo quy luật; chọn màu đầu rồng; in tranh thử màu",
+    "learn": "Đọc hiểu công thức, tìm quy luật lặp lại",
+    "reward": "60 XP, 15 Xu, Skill XP Đọc hiểu, Logic",
+    "next": "Con rồng cần vảy, mà mỗi chiếc vảy cô muốn là một khuôn mặt của chợ"
+  },
+  "phases": {
+    "hook": "giac-mo-dai-bang-day-sap",
+    "explore": "tim-mau-tu-nhien",
+    "learn": "cong-thuc-bi-gio-thoi",
+    "challenge": "vay-rong-xep-mau",
+    "decision": "chon-mau-dau-rong",
+    "finale": "in-tranh-thu-mau",
+    "reward": "mau-da-du",
+    "next": "vay-la-khuon-mat"
+  },
+  "places": {
+    "co-nan-to-he": "Dãy sạp hoa",
+    "tim-mau-tu-nhien": "Chợ rau hoa",
+    "st-to-he-rong-dai-cong-thuc-mau": "Gian hàng tạp hóa",
+    "st-to-he-rong-dai-ban-in-tranh": "Tháp đồng hồ"
+  },
+  "steps": [
+    {
+      "id": "giac-mo-dai-bang-day-sap",
+      "title": "Giấc mơ dài bằng dãy sạp",
+      "kind": "dialogue",
+      "target": "co-nan-to-he",
+      "goTo": "Tới dãy sạp hoa gặp Cô Nặn Tò He",
+      "lines": [
+        {
+          "speaker": "Cô Nặn Tò He",
+          "text": "Xoay, vuốt, xong! Ơ, {name} đấy à? Lại đây cô khoe cái này, nói nhỏ thôi nhé."
+        },
+        {
+          "speaker": "Cô Nặn Tò He",
+          "text": "Phiên rằm này cô muốn nặn một con rồng tò he dài bằng cả dãy sạp hoa. Cả đời cô chỉ mơ mỗi chuyện ấy thôi."
+        },
+        {
+          "speaker": "Cô Nặn Tò He",
+          "text": "Khổ nỗi bột nếp của cô đang trắng tinh. Cô không dùng phẩm màu mua sẵn đâu, màu phải lấy từ lá, từ quả, từ củ cơ."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đi tìm màu cho rồng ngay!",
+          "reply": "Giỏi! Ra chợ rau hoa, chỗ người ta bày lá với củ ấy."
+        },
+        {
+          "text": "Rồng dài bằng cả dãy sạp thật hả cô?",
+          "reply": "Thật! Dài tới mức con mèo nhà bên đi dọc theo phải nghỉ giữa đường."
+        }
+      ],
+      "en": {
+        "title": "A dream as long as the stalls",
+        "goTo": "Go to the flower stalls to meet Cô Nặn Tò He",
+        "lines": [
+          "Roll, smooth, done! Oh, {name}, is that you? Come here, I've got something to show you. Quietly, now.",
+          "For this full-moon fair I want to make a tò he dragon as long as the whole row of flower stalls. It's the one thing I've dreamed of all my life.",
+          "Trouble is, my sticky-rice dough is snow white. And I won't use shop-bought dye: colour has to come from leaves, fruit and roots."
+        ],
+        "choices": [
+          {
+            "text": "I'll go and find the dragon's colours now!",
+            "reply": "Wonderful! Try the vegetable and flower market, where the leaves and roots are laid out."
+          },
+          {
+            "text": "As long as all the stalls? Really?",
+            "reply": "Really! So long the cat next door would need a rest halfway along it."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-mau-tu-nhien",
+      "title": "Ba sắc màu ở chợ rau hoa",
+      "kind": "find-object",
+      "goTo": "Ra chợ rau hoa tìm lá, quả và củ để nhuộm bột",
+      "prompt": "Cô cần màu xanh, màu đỏ và màu vàng. Đọc lời tả rồi tìm từng thứ:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "la-dua",
+          "name": "Lá dứa tươi",
+          "clue": "Lá dài như thanh kiếm nhỏ, xanh mướt, vò nhẹ là thơm mùi xôi.",
+          "target": "st-to-he-rong-dai-la-dua"
+        },
+        {
+          "id": "qua-gac",
+          "name": "Quả gấc chín",
+          "clue": "Quả tròn to, vỏ đỏ cam đầy gai mềm, ruột đỏ như son.",
+          "target": "st-to-he-rong-dai-qua-gac"
+        },
+        {
+          "id": "cu-nghe",
+          "name": "Củ nghệ",
+          "clue": "Củ nhỏ xù xì như ngón tay, cắt ra vàng rực, chạm vào là vàng cả tay.",
+          "target": "st-to-he-rong-dai-cu-nghe"
+        }
+      ],
+      "en": {
+        "title": "Three colours at the flower market",
+        "goTo": "Head to the vegetable and flower market for leaves, fruit and roots",
+        "prompt": "Cô needs green, red and yellow. Read each description and find it:",
+        "items": [
+          {
+            "name": "Fresh pandan leaves",
+            "clue": "Long leaves like little swords, bright green, smelling of sticky rice when you crush them."
+          },
+          {
+            "name": "A ripe gấc fruit",
+            "clue": "A big round fruit with soft spikes on its orange-red skin and flesh as red as lipstick."
+          },
+          {
+            "name": "A knob of turmeric",
+            "clue": "A knobbly root like a little finger, blazing yellow inside: touch it and your hands turn yellow too."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cong-thuc-bi-gio-thoi",
+      "title": "Tờ công thức bay đi đâu?",
+      "kind": "read",
+      "target": "st-to-he-rong-dai-cong-thuc-mau",
+      "goTo": "Gió thổi tờ công thức màu sang gian hàng tạp hóa, ra nhặt về",
+      "skill": "doc-hieu",
+      "text": "Công thức pha màu (mẹ cô viết, cô chép lại):\n- Xanh lá: vò lá dứa, vắt lấy nước, nhỏ từng giọt vào bột.\n- Đỏ: trộn ruột gấc với một thìa dầu cho bóng.\n- Vàng: giã nghệ, lọc lấy nước.\n- Cam: một phần đỏ gấc trộn một phần vàng nghệ.\nNhớ: màu nào cũng nhồi kỹ ba lần, bột mới đều màu.",
+      "question": "Bờm rồng màu cam. Cô phải trộn những gì?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Lá dứa với nghệ"
+        },
+        {
+          "id": "b",
+          "text": "Gấc với nghệ"
+        },
+        {
+          "id": "c",
+          "text": "Gấc với lá dứa"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Tìm dòng bắt đầu bằng chữ «Cam».",
+          "Dòng đó nhắc tới hai màu, mỗi màu lấy từ một thứ."
+        ],
+        "hint": "Đỏ của quả gì, vàng của củ gì?",
+        "answer": {
+          "text": "Gấc với nghệ",
+          "explanation": "Công thức viết: cam là một phần đỏ gấc trộn một phần vàng nghệ."
+        },
+        "en": {
+          "guide": [
+            "Find the line that starts with «Orange».",
+            "That line names two colours, each from one ingredient."
+          ],
+          "hint": "Red from which fruit, yellow from which root?",
+          "answer": {
+            "text": "Gấc plus turmeric",
+            "explanation": "The recipe says orange is one part gấc red mixed with one part turmeric yellow."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chuẩn! Đỏ gấc gặp vàng nghệ là ra cam rực như nắng chiều.",
+          "{name} đọc công thức còn kỹ hơn cả cô hồi trẻ.",
+          "Bờm rồng có màu rồi, cảm ơn tờ giấy biết bay!"
+        ],
+        "wrong": [
+          "Lá dứa cho màu xanh cơ, bờm rồng xanh thì giống bó rau mất.",
+          "Đọc lại dòng có chữ «Cam» xem nào {name}.",
+          "Gần đúng rồi, chỉ nhầm một thứ thôi, thử lần nữa nhé."
+        ],
+        "en": {
+          "right": [
+            "Spot on! Gấc red meets turmeric yellow and out comes a sunset orange.",
+            "{name} reads a recipe more carefully than I did at your age.",
+            "The mane has its colour. Thank you, flying piece of paper!"
+          ],
+          "wrong": [
+            "Pandan gives green, and a green mane would look like a bunch of greens.",
+            "Read the line with «Orange» in it again, {name}.",
+            "Almost: just one ingredient is off. Try once more."
+          ]
+        }
+      },
+      "en": {
+        "title": "Where did the recipe fly?",
+        "goTo": "The wind blew the colour recipe over to the general store: go and fetch it",
+        "text": "Colour recipe (my mother wrote it, I copied it out):\n- Green: crush pandan leaves, squeeze out the juice, add it to the dough drop by drop.\n- Red: mix gấc flesh with a spoonful of oil to make it shine.\n- Yellow: pound turmeric and strain the juice.\n- Orange: one part gấc red mixed with one part turmeric yellow.\nRemember: knead every colour three times so it comes out even.",
+        "question": "The dragon's mane is orange. What does Cô have to mix?",
+        "choices": [
+          "Pandan and turmeric",
+          "Gấc and turmeric",
+          "Gấc and pandan"
+        ]
+      }
+    },
+    {
+      "id": "vay-rong-xep-mau",
+      "title": "Vảy rồng theo hàng",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "target": "co-nan-to-he",
+      "goTo": "Mang màu về dãy sạp hoa cho Cô Nặn Tò He",
+      "skill": "logic",
+      "prompt": "Cô xếp vảy theo một quy luật lặp lại. Vảy thứ mười màu gì?",
+      "logicType": "pattern",
+      "elements": [
+        {
+          "id": "v1",
+          "label": "1: đỏ"
+        },
+        {
+          "id": "v2",
+          "label": "2: vàng"
+        },
+        {
+          "id": "v3",
+          "label": "3: vàng"
+        },
+        {
+          "id": "v4",
+          "label": "4: xanh"
+        },
+        {
+          "id": "v5",
+          "label": "5: đỏ"
+        },
+        {
+          "id": "v6",
+          "label": "6: vàng"
+        },
+        {
+          "id": "v7",
+          "label": "7: vàng"
+        },
+        {
+          "id": "v8",
+          "label": "8: xanh"
+        }
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "Đỏ"
+        },
+        {
+          "id": "b",
+          "text": "Vàng"
+        },
+        {
+          "id": "c",
+          "text": "Xanh"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Tìm nhóm màu lặp lại: mấy vảy thì quay về màu đỏ?",
+          "Nhóm gồm bốn vảy: đỏ, vàng, vàng, xanh.",
+          "Đếm tiếp: vảy 9 mở nhóm mới, vảy 10 đứng thứ hai trong nhóm."
+        ],
+        "hint": "Vảy thứ hai của nhóm nào cũng cùng một màu.",
+        "answer": {
+          "text": "Vàng",
+          "explanation": "Nhóm đỏ, vàng, vàng, xanh lặp lại sau mỗi bốn vảy. Vảy 9 là đỏ, vảy 10 là vàng."
+        },
+        "en": {
+          "guide": [
+            "Find the group that repeats: after how many scales does red come back?",
+            "The group is four scales: red, yellow, yellow, green.",
+            "Keep counting: scale 9 starts a new group, scale 10 is second in it."
+          ],
+          "hint": "The second scale of every group is the same colour.",
+          "answer": {
+            "text": "Yellow",
+            "explanation": "Red, yellow, yellow, green repeats every four scales. Scale 9 is red, scale 10 is yellow."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Vàng! Cô vừa nặn xong vảy thứ mười, khớp từng li.",
+          "Mắt {name} bắt quy luật nhanh như mèo bắt chuột.",
+          "Xoay, vuốt, xong! Hàng vảy chạy đều tăm tắp."
+        ],
+        "wrong": [
+          "Ối, vảy đỏ chỉ quay lại ở vị trí thứ chín thôi.",
+          "Đếm theo nhóm bốn vảy một, chỉ tay vào từng vảy nhé.",
+          "Màu xanh khép lại mỗi nhóm, còn vảy mười thì chưa tới cuối nhóm đâu."
+        ],
+        "en": {
+          "right": [
+            "Yellow! I've just shaped scale ten and it fits to the millimetre.",
+            "Your eyes catch a pattern faster than a cat catches a mouse, {name}.",
+            "Roll, smooth, done! The row of scales runs perfectly even."
+          ],
+          "wrong": [
+            "Oops, red only comes back at position nine.",
+            "Count in groups of four, pointing at each scale.",
+            "Green closes each group, and scale ten isn't at the end of one yet."
+          ]
+        }
+      },
+      "en": {
+        "title": "Scales in a row",
+        "goTo": "Bring the colours back to Cô Nặn Tò He at the flower stalls",
+        "prompt": "Cô lays the scales out in a repeating pattern. What colour is the tenth scale?",
+        "elements": [
+          "1: red",
+          "2: yellow",
+          "3: yellow",
+          "4: green",
+          "5: red",
+          "6: yellow",
+          "7: yellow",
+          "8: green"
+        ],
+        "choices": [
+          "Red",
+          "Yellow",
+          "Green"
+        ]
+      }
+    },
+    {
+      "id": "chon-mau-dau-rong",
+      "title": "Đầu rồng màu gì?",
+      "kind": "decision",
+      "target": "co-nan-to-he",
+      "speaker": "Cô Nặn Tò He",
+      "prompt": "Cô đưa {name} ba nắm bột: đỏ gấc, vàng nghệ, xanh lá dứa. Đầu rồng nên màu nào?",
+      "choices": [
+        {
+          "id": "do",
+          "text": "Đỏ gấc cho may mắn",
+          "consequence": "Cô gật gù: rồng đỏ đi đầu, cả phiên chợ sẽ đỏ rực theo."
+        },
+        {
+          "id": "vang",
+          "text": "Vàng nghệ như mặt trời",
+          "consequence": "Cô cười tít mắt: rồng mang mặt trời trên đầu, đêm rằm cũng sáng."
+        },
+        {
+          "id": "xanh",
+          "text": "Xanh lá dứa như cánh đồng",
+          "consequence": "Cô hít một hơi: thơm mùi xôi! Rồng xanh này chắc ai đi ngang cũng đói bụng."
+        }
+      ],
+      "en": {
+        "title": "What colour is the head?",
+        "prompt": "Cô hands {name} three lumps of dough: gấc red, turmeric yellow, pandan green. Which colour for the dragon's head?",
+        "choices": [
+          {
+            "text": "Gấc red, for luck",
+            "consequence": "Cô nods: a red dragon in front, and the whole fair will glow red behind it."
+          },
+          {
+            "text": "Turmeric yellow, like the sun",
+            "consequence": "Cô beams: a dragon wearing the sun on its head lights up even a full-moon night."
+          },
+          {
+            "text": "Pandan green, like the rice fields",
+            "consequence": "Cô takes a sniff: it smells of sticky rice! Anyone walking past this green dragon will get hungry."
+          }
+        ]
+      }
+    },
+    {
+      "id": "in-tranh-thu-mau",
+      "title": "In tranh thử màu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-to-he-rong-dai-ban-in-tranh",
+      "goTo": "Tới bàn in tranh dưới tháp đồng hồ thử màu mới",
+      "prompt": "Màu mới phải thử trên giấy dó trước. In giúp cô một xấp tranh nhé!",
+      "game": "dong-ho-print",
+      "goal": 20,
+      "en": {
+        "title": "Test print",
+        "goTo": "Go to the printing table under the clock tower to test the new colours",
+        "prompt": "New colours get tested on dó paper first. Print me a stack of pictures!"
+      }
+    },
+    {
+      "id": "mau-da-du",
+      "title": "Đủ màu cho rồng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ba hũ bột xanh, đỏ, vàng xếp hàng trên sạp, thơm phức. Cô Nặn Tò He nặn tặng {name} một con cá chép tí hon bằng mẻ bột cam đầu tiên.",
+      "en": {
+        "title": "Colours for the dragon",
+        "text": "Three pots of green, red and yellow dough line up on the stall, smelling lovely. Cô Nặn Tò He shapes {name} a tiny carp from the very first batch of orange dough."
+      }
+    },
+    {
+      "id": "vay-la-khuon-mat",
+      "title": "Vảy rồng là gì?",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cô thì thầm: «Vảy rồng của cô sẽ không giống ai. Mỗi chiếc là một khuôn mặt của chợ phiên.» Lần tới, {name} giúp cô đi ngắm mặt người nhé.",
+      "en": {
+        "title": "What are the scales?",
+        "text": "Cô whispers: «My dragon's scales won't be like anyone's. Each one will be a face from the market.» Next time, {name} will help her go face-watching."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 1,
+      "logic": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Cô Nặn Tò He's story, chapter 1: Colours for the dragon",
+    "summary": "Cô Nặn Tò He dreams of a tò he dragon as long as the whole row of flower stalls for the full-moon fair. {name} hunts for pandan, a gấc fruit and turmeric to dye the dough, reads a recipe the wind blew away, works out the scale pattern and prints a test picture."
+  }
+}

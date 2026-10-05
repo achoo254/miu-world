@@ -1,0 +1,352 @@
+{
+  "id": "yarn-to-he-rong-dai-2",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Chuyện của Cô Nặn Tò He, chương 2: Vảy rồng là khuôn mặt",
+  "status": "active",
+  "category": "story",
+  "summary": "Cô Nặn Tò He muốn mỗi vảy rồng là một khuôn mặt của chợ. {name} đi tìm người có nụ cười móm mém và bộ ria cong, giải câu đố của ông bán chổi khó tính nhất chợ, rồi xếp vảy từ to tới nhỏ trên bàn nặn rồng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cô Nặn Tò He, Bà Cụ Bán Cau, Anh Cắt Tóc Dạo, Ông Chổi Rơm",
+    "where": "Chợ phiên: dãy sạp hoa, phố phía bắc, lối đi trong chợ, nhà lồng chợ",
+    "goal": "Tìm ba khuôn mặt đặc biệt của chợ để nặn vảy rồng",
+    "play": "Tìm người theo lời tả, giải đố của Ông Chổi Rơm, chọn cách làm ông cười, xếp vảy theo kích thước",
+    "learn": "Đọc hiểu lời tả, bài toán có lời văn, so sánh số",
+    "reward": "65 XP, 16 Xu, Skill XP Đọc hiểu, Bài toán có lời văn, So sánh số",
+    "next": "Trời kéo mây đen, mà con rồng đang nằm dưới mái nhà lồng chợ"
+  },
+  "phases": {
+    "hook": "co-ke-ve-vay",
+    "explore": "tim-khuon-mat",
+    "learn": "do-cua-ong-choi-rom",
+    "challenge": "do-cua-ong-choi-rom",
+    "decision": "lam-ong-cuoi",
+    "finale": "xep-vay-to-nho",
+    "reward": "bon-khuon-mat",
+    "next": "may-den-dau-cho"
+  },
+  "places": {
+    "co-nan-to-he": "Dãy sạp hoa",
+    "tim-khuon-mat": "Phố phía bắc",
+    "st-to-he-rong-dai-ong-choi-rom": "Lối đi trong chợ",
+    "st-to-he-rong-dai-ban-nan-rong": "Nhà lồng chợ"
+  },
+  "steps": [
+    {
+      "id": "co-ke-ve-vay",
+      "title": "Ngắm mặt người",
+      "kind": "dialogue",
+      "target": "co-nan-to-he",
+      "goTo": "Ghé dãy sạp hoa nghe Cô Nặn Tò He kể tiếp",
+      "lines": [
+        {
+          "speaker": "Cô Nặn Tò He",
+          "text": "Cô có cái tật nhỏ: thấy ai đi qua là tay cô nặn luôn khuôn mặt người ta. Có bà còn quay lại đòi nặn cho... bớt cằm."
+        },
+        {
+          "speaker": "Cô Nặn Tò He",
+          "text": "Rồng của cô sẽ mang mặt cả chợ trên lưng. Cô cần ba khuôn mặt đặc biệt: một nụ cười móm mém, một bộ ria cong, và người khó cười nhất chợ."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Người khó cười nhất chợ là ai ạ?",
+          "reply": "Ông Chổi Rơm. Hai mươi năm cô chưa thấy ông cười lần nào. Lần này nhờ cả vào {name} đấy."
+        },
+        {
+          "text": "Cháu sẽ nhìn thật kỹ từng người!"
+        }
+      ],
+      "en": {
+        "title": "Face-watching",
+        "goTo": "Drop by the flower stalls to hear more from Cô Nặn Tò He",
+        "lines": [
+          "I have a little habit: whoever walks past, my hands start shaping their face. One lady even came back asking me to give her... less chin.",
+          "My dragon will carry the whole market on its back. I need three special faces: a toothless grin, a curly moustache, and the hardest person in the market to make smile."
+        ],
+        "choices": [
+          {
+            "text": "Who's the hardest to make smile?",
+            "reply": "Ông Chổi Rơm, the broom man. In twenty years I've never once seen him smile. This time it's all up to you, {name}."
+          },
+          {
+            "text": "I'll look really closely at everyone!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-khuon-mat",
+      "title": "Nụ cười và bộ ria",
+      "kind": "find-object",
+      "goTo": "Lên phố phía bắc tìm hai khuôn mặt cô dặn",
+      "prompt": "Đọc lời tả của Cô Nặn Tò He rồi tìm đúng người:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "ba-cu",
+          "name": "Bà Cụ Bán Cau",
+          "clue": "Bà đội khăn mỏ quạ, ngồi bên buồng cau, cười móm mém để lộ hai cái răng duy nhất.",
+          "target": "st-to-he-rong-dai-ba-cu-ban-cau"
+        },
+        {
+          "id": "anh-cat-toc",
+          "name": "Anh Cắt Tóc Dạo",
+          "clue": "Anh có bộ ria cong vút như hai con tôm, tay lúc nào cũng cầm cây kéo kêu lách cách.",
+          "target": "st-to-he-rong-dai-anh-cat-toc-dao"
+        }
+      ],
+      "en": {
+        "title": "A grin and a moustache",
+        "goTo": "Go up the north street to find the two faces Cô described",
+        "prompt": "Read Cô Nặn Tò He's descriptions and find the right people:",
+        "items": [
+          {
+            "name": "The old betel-nut seller",
+            "clue": "She wears a pointed headscarf, sits by a bunch of areca nuts and grins a toothless grin that shows her only two teeth."
+          },
+          {
+            "name": "The street barber",
+            "clue": "He has a moustache curled like two shrimps and a pair of scissors always clicking in his hand."
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-cua-ong-choi-rom",
+      "title": "Câu đố của Ông Chổi Rơm",
+      "kind": "riddle",
+      "target": "st-to-he-rong-dai-ong-choi-rom",
+      "goTo": "Ra lối đi trong chợ, nơi Ông Chổi Rơm đang quét",
+      "skill": "bai-toan-loi-van",
+      "question": "Ông Chổi Rơm không ngẩng lên: «Muốn ngắm mặt ta à? Đố đã. Sáng nay ta bán 8 cái chổi, chiều bán ít hơn sáng 3 cái. Cả ngày ta bán mấy cái chổi?»",
+      "answer": {
+        "value": 13
+      },
+      "support": {
+        "guide": [
+          "Buổi chiều ít hơn buổi sáng 3 cái: lấy 8 trừ 3.",
+          "Rồi cộng số chổi buổi sáng với buổi chiều."
+        ],
+        "hint": "Chiều ông bán 5 cái.",
+        "answer": {
+          "text": "13 cái chổi",
+          "explanation": "Chiều: 8 − 3 = 5 cái. Cả ngày: 8 + 5 = 13 cái chổi."
+        },
+        "en": {
+          "guide": [
+            "The afternoon is 3 fewer than the morning: 8 take away 3.",
+            "Then add the morning brooms to the afternoon ones."
+          ],
+          "hint": "He sold 5 in the afternoon.",
+          "answer": {
+            "text": "13 brooms",
+            "explanation": "Afternoon: 8 − 3 = 5. All day: 8 + 5 = 13 brooms."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "«Hừm. Đúng.» Ông vẫn chưa cười, nhưng lông mày nhích lên một tí.",
+          "Mười ba cái, chuẩn không cần chỉnh!",
+          "{name} tính nhanh hơn cả cái chổi quét lá."
+        ],
+        "wrong": [
+          "«Sai rồi. Ta bán chổi chứ có bán phép màu đâu.» Tính lại nhé.",
+          "Nhớ tính số chổi buổi chiều trước đã, {name}.",
+          "Cả ngày là sáng cộng chiều, đừng quên buổi nào nhé."
+        ],
+        "en": {
+          "right": [
+            "«Hmph. Right.» He still doesn't smile, but one eyebrow twitches up.",
+            "Thirteen, exactly right!",
+            "{name} counts faster than a broom sweeps leaves."
+          ],
+          "wrong": [
+            "«Wrong. I sell brooms, not magic.» Try again.",
+            "Work out the afternoon brooms first, {name}.",
+            "All day means morning plus afternoon: don't leave one out."
+          ]
+        }
+      },
+      "en": {
+        "title": "The broom man's riddle",
+        "goTo": "Go to the market aisle, where Ông Chổi Rơm is sweeping",
+        "question": "Ông Chổi Rơm doesn't look up: «Want to look at my face? Riddle first. This morning I sold 8 brooms, this afternoon 3 fewer than this morning. How many brooms did I sell all day?»"
+      }
+    },
+    {
+      "id": "lam-ong-cuoi",
+      "title": "Làm ông cười",
+      "kind": "decision",
+      "target": "st-to-he-rong-dai-ong-choi-rom",
+      "speaker": "Ông Chổi Rơm",
+      "prompt": "Ông Chổi Rơm cho ngắm mặt, nhưng mặt ông vẫn nhăn như quả táo tàu. {name} làm gì để ông cười?",
+      "choices": [
+        {
+          "id": "ke-chuyen",
+          "text": "Kể một chuyện cười",
+          "consequence": "Ông bĩu môi: «Nhạt.» Nhưng khóe miệng giật giật, rồi ông phá lên cười khùng khục như cái ấm sôi."
+        },
+        {
+          "id": "giup-quet",
+          "text": "Cầm chổi quét giúp ông một đoạn",
+          "consequence": "Ông nhìn {name} quét vụng về, lắc đầu, rồi bật cười: «Cầm chổi thế kia là chổi nó khóc đấy!»"
+        },
+        {
+          "id": "khen-choi",
+          "text": "Khen chổi của ông đẹp nhất chợ",
+          "consequence": "Ông đỏ mặt, gãi đầu, rồi cười hở cả lợi: «Thì... ta buộc bằng rơm nếp đấy.»"
+        }
+      ],
+      "en": {
+        "title": "Making him smile",
+        "prompt": "Ông Chổi Rơm lets you look at his face, but it's still as wrinkled as a dried jujube. What does {name} do to make him smile?",
+        "choices": [
+          {
+            "text": "Tell a joke",
+            "consequence": "He sniffs: «Lame.» But the corner of his mouth twitches, and then he bursts out laughing like a kettle coming to the boil."
+          },
+          {
+            "text": "Grab a broom and sweep a stretch for him",
+            "consequence": "He watches {name} sweep clumsily, shakes his head and laughs: «Hold a broom like that and it'll cry!»"
+          },
+          {
+            "text": "Say his brooms are the finest in the market",
+            "consequence": "He goes red, scratches his head, then grins from ear to ear: «Well... I tie them with sticky-rice straw.»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "xep-vay-to-nho",
+      "title": "Vảy to ở cổ, vảy nhỏ ở đuôi",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-to-he-rong-dai-ban-nan-rong",
+      "goTo": "Mang vảy tới bàn nặn rồng trong nhà lồng chợ",
+      "skill": "so-sanh-so",
+      "prompt": "Cô dặn: vảy to nhất gắn ở cổ, nhỏ dần về đuôi. Xếp vảy từ to tới nhỏ:",
+      "items": [
+        {
+          "id": "ria",
+          "label": "Vảy bộ ria cong: 4 xăng-ti-mét"
+        },
+        {
+          "id": "choi",
+          "label": "Vảy Ông Chổi Rơm cười: 6 xăng-ti-mét"
+        },
+        {
+          "id": "cau",
+          "label": "Vảy nụ cười móm mém: 5 xăng-ti-mét"
+        },
+        {
+          "id": "be",
+          "label": "Vảy mặt em bé đầu chợ: 3 xăng-ti-mét"
+        }
+      ],
+      "answer": {
+        "order": [
+          "choi",
+          "cau",
+          "ria",
+          "be"
+        ]
+      },
+      "support": {
+        "guide": [
+          "So sánh các số đo: 3, 4, 5, 6.",
+          "Số lớn nhất đứng đầu, số bé nhất đứng cuối."
+        ],
+        "hint": "Vảy của ông bán chổi to nhất, vì nụ cười của ông hiếm nhất.",
+        "answer": {
+          "text": "6, 5, 4, 3 xăng-ti-mét",
+          "explanation": "Xếp từ to tới nhỏ: Ông Chổi Rơm 6, nụ cười móm mém 5, bộ ria 4, em bé 3."
+        },
+        "en": {
+          "guide": [
+            "Compare the sizes: 3, 4, 5, 6.",
+            "The biggest number goes first, the smallest last."
+          ],
+          "hint": "The broom man's scale is the biggest, because his smile is the rarest.",
+          "answer": {
+            "text": "6, 5, 4, 3 centimetres",
+            "explanation": "Biggest to smallest: broom man 6, toothless grin 5, moustache 4, baby 3."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cổ rồng to oai, đuôi rồng nhỏ xinh, đúng ý cô!",
+          "{name} xếp vảy khéo như thợ lợp ngói.",
+          "Bốn khuôn mặt nằm ngay ngắn, như đang xếp hàng chờ rằm."
+        ],
+        "wrong": [
+          "Vảy 3 xăng-ti-mét mà gắn ở cổ thì rồng bị... cổ cò mất.",
+          "Nhìn lại số đo nhé, số to đứng trước.",
+          "Chưa đúng thứ tự, thử bắt đầu từ vảy to nhất xem."
+        ],
+        "en": {
+          "right": [
+            "A proud big neck, a dainty little tail: just how I wanted it!",
+            "{name} lays scales as neatly as a roof tiler.",
+            "Four faces in a tidy line, as if queuing for the full moon."
+          ],
+          "wrong": [
+            "A 3-centimetre scale at the neck would give the dragon a stork's neck.",
+            "Check the sizes again: the big number comes first.",
+            "Not in order yet: try starting with the biggest scale."
+          ]
+        }
+      },
+      "en": {
+        "title": "Big scales at the neck, small at the tail",
+        "goTo": "Take the scales to the dragon table inside the covered market",
+        "prompt": "Cô says the biggest scale goes at the neck and they shrink toward the tail. Order the scales from biggest to smallest:",
+        "items": [
+          "Curly-moustache scale: 4 centimetres",
+          "Laughing broom-man scale: 6 centimetres",
+          "Toothless-grin scale: 5 centimetres",
+          "Scale of the baby at the market gate: 3 centimetres"
+        ]
+      }
+    },
+    {
+      "id": "bon-khuon-mat",
+      "title": "Bốn khuôn mặt trên lưng rồng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cô Nặn Tò He nặn xong vảy cuối, giơ lên ngắm rồi bật cười: «Ông Chổi Rơm cười trên lưng rồng! Chuyện này cả chợ phải kể mười năm.»",
+      "en": {
+        "title": "Four faces on the dragon's back",
+        "text": "Cô Nặn Tò He finishes the last scale, holds it up and laughs: «Ông Chổi Rơm smiling on a dragon's back! The market will talk about this for ten years.»"
+      }
+    },
+    {
+      "id": "may-den-dau-cho",
+      "title": "Mây đen đầu chợ",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chiều ấy, gió đổi chiều và mây đen kéo về đầu chợ. Cô Nặn Tò He nhìn trời, mặt tái đi: con rồng còn nằm dưới mái nhà lồng chợ cũ, mà mái ấy hay dột lắm.",
+      "en": {
+        "title": "Dark clouds over the market",
+        "text": "That afternoon the wind turns and dark clouds roll in over the market. Cô Nặn Tò He looks up and goes pale: the dragon is still lying under the old roof of the covered market, and that roof leaks."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "doc-hieu": 1,
+      "bai-toan-loi-van": 1,
+      "so-sanh-so": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Cô Nặn Tò He's story, chapter 2: Scales with faces",
+    "summary": "Cô Nặn Tò He wants every dragon scale to be a face from the market. {name} finds a toothless grin and a curly moustache, solves a riddle from the grumpiest broom seller around, then lines the scales up from biggest to smallest on the dragon table."
+  }
+}

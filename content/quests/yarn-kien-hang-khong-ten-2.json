@@ -1,0 +1,392 @@
+{
+  "id": "yarn-kien-hang-khong-ten-2",
+  "region": "cho-phien",
+  "chapter": 2,
+  "title": "Chuyện của Voi Bốc Hàng, chương 2: Người có đôi tai quạt nan",
+  "status": "active",
+  "category": "story",
+  "summary": "Thuyền Cá Chuồn trở lại. Trong sổ giao hàng, người gửi không ghi tên người nhận mà tả một người rất lạ. {name} đọc lời tả, mở kiện hàng trong lán gỗ bên kênh, giải câu đố con nước và giúp Voi Bốc Hàng nói ra điều khó nói.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Voi Bốc Hàng",
+    "where": "Chợ phiên: bến hàng bên kênh, đập nhỏ và cửa cống, lán gỗ bên kênh, mép nước con kênh",
+    "goal": "Tìm ra người nhận kiện hàng và đọc lá thư bên trong",
+    "play": "Đọc lời tả trong sổ giao hàng, tìm đồ trong kiện, đoán giờ con nước, chọn cách hỏi chuyện Voi",
+    "learn": "Đọc hiểu lời tả, tìm quy luật số",
+    "reward": "65 XP, 16 Xu, Skill XP Đọc hiểu, Logic",
+    "next": "Voi chưa từng lội nước quá đầu gối"
+  },
+  "phases": {
+    "hook": "thuyen-ve-ben",
+    "explore": "so-giao-hang",
+    "learn": "mo-kien-hang",
+    "challenge": "gio-con-nuoc",
+    "decision": "voi-o-mep-nuoc",
+    "finale": "voi-o-mep-nuoc",
+    "reward": "la-thu-tu-bien",
+    "next": "chiec-phao-do"
+  },
+  "places": {
+    "voi-boc-hang": "Bến hàng",
+    "st-kien-hang-khong-ten-so-giao-hang": "Đập nhỏ và cửa cống",
+    "mo-kien-hang": "Lán gỗ bên kênh",
+    "st-kien-hang-khong-ten-la-thu-day-gai": "Lán gỗ bên kênh",
+    "st-kien-hang-khong-ten-mep-nuoc": "Con kênh"
+  },
+  "steps": [
+    {
+      "id": "thuyen-ve-ben",
+      "title": "Thuyền Cá Chuồn về rồi",
+      "kind": "dialogue",
+      "target": "voi-boc-hang",
+      "goTo": "Sáng thứ Hai, ra bến hàng gặp Voi Bốc Hàng",
+      "lines": [
+        {
+          "speaker": "Voi Bốc Hàng",
+          "text": "Thuyền về rồi {name}! Chú lái thuyền bảo người gửi không ghi tên, chỉ viết vài dòng trong sổ giao hàng, sổ để trên thuyền đang neo ở cửa cống."
+        },
+        {
+          "speaker": "Voi Bốc Hàng",
+          "text": "Ta... ta hơi run. Cứ như sắp mở thư của chính mình ấy, mà làm gì có ai gửi thư cho một con voi khuân hàng."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Biết đâu đấy bác!",
+          "reply": "Ừ thì... biết đâu. Cháu đọc giúp ta nhé, mắt ta cứ hoa lên."
+        },
+        {
+          "text": "Cháu ra cửa cống đọc sổ ngay!"
+        }
+      ],
+      "en": {
+        "title": "The Flying Fish boat is back",
+        "goTo": "Monday morning: meet Voi Bốc Hàng at the wharf",
+        "lines": [
+          "The boat's in, {name}! The boatman says the sender didn't write a name, just a few lines in the delivery book. The book's on the boat, moored at the sluice gate.",
+          "I'm... a bit shaky. It's as if I'm about to open my own letter, and who would ever write to an elephant who carries boxes?"
+        ],
+        "choices": [
+          {
+            "text": "You never know!",
+            "reply": "Well... you never know. Read it for me, will you? My eyes keep going blurry."
+          },
+          {
+            "text": "I'll go and read the book at the sluice gate!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "so-giao-hang",
+      "title": "Lời tả trong sổ giao hàng",
+      "kind": "read",
+      "target": "st-kien-hang-khong-ten-so-giao-hang",
+      "goTo": "Ra đập nhỏ và cửa cống, đọc sổ giao hàng trên thuyền",
+      "skill": "doc-hieu",
+      "text": "Kiện số 7. Người nhận: không biết tên. Chỉ biết là người có đôi tai to như hai cái quạt nan, cái mũi dài tưới mát cả hàng rau mỗi trưa. Khỏe nhất bến kênh, vậy mà thấy chuột nhắt là co một chân lên. Người gửi: một ông bạn quăng lưới ngoài biển.",
+      "question": "Lời tả trong sổ nói về ai?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Mèo Gắp Thú ở chân cầu"
+        },
+        {
+          "id": "b",
+          "text": "Chú khuân hàng lên bến"
+        },
+        {
+          "id": "c",
+          "text": "Voi Bốc Hàng"
+        }
+      ],
+      "answer": {
+        "choice": "c"
+      },
+      "support": {
+        "guide": [
+          "Gạch chân từng điều được tả: tai, mũi, sức khỏe, nỗi sợ.",
+          "Ai ở bến có cái mũi dài tưới được nước?"
+        ],
+        "hint": "Tai to như quạt, mũi là cái vòi.",
+        "answer": {
+          "text": "Voi Bốc Hàng",
+          "explanation": "Tai to như quạt nan, mũi dài tưới rau, khỏe nhất bến mà sợ chuột: chỉ có thể là Voi Bốc Hàng."
+        },
+        "en": {
+          "guide": [
+            "Underline each clue: ears, nose, strength, fear.",
+            "Who on the wharf has a long nose that can spray water?"
+          ],
+          "hint": "Ears like fans, a nose that's a trunk.",
+          "answer": {
+            "text": "Voi Bốc Hàng",
+            "explanation": "Fan-sized ears, a long nose that waters vegetables, the strongest on the wharf and scared of mice: it can only be Voi Bốc Hàng."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Là Voi đấy! Kiện hàng có chủ rồi.",
+          "{name} đọc lời tả mà như đang nhìn thấy Voi trước mặt.",
+          "Tai quạt nan, vòi tưới rau, không lẫn vào ai được!"
+        ],
+        "wrong": [
+          "Mèo thì tai nhỏ xíu, đâu giống quạt nan, {name}.",
+          "Chú khuân hàng khỏe thật, nhưng chú đâu có cái mũi dài.",
+          "Đọc lại câu về cái mũi tưới rau xem nào."
+        ],
+        "en": {
+          "right": [
+            "It's Voi! The parcel has its owner.",
+            "{name} reads the description as if Voi were standing right there.",
+            "Bamboo-fan ears, a vegetable-watering trunk: no mistaking him!"
+          ],
+          "wrong": [
+            "A cat's ears are tiny, nothing like bamboo fans, {name}.",
+            "The porter is strong, but he doesn't have a long nose.",
+            "Read the bit about the nose that waters the vegetables again."
+          ]
+        }
+      },
+      "en": {
+        "title": "The description in the delivery book",
+        "goTo": "Go to the little dam and sluice gate and read the delivery book on the boat",
+        "text": "Parcel no. 7. To: don't know the name. All I know is: ears as big as two bamboo fans, and a long nose that cools the vegetable stalls with water every noon. Strongest on the canal wharf, and yet lifts one foot whenever a mouse runs by. From: an old friend who casts nets out at sea.",
+        "question": "Who does the description fit?",
+        "choices": [
+          "Mèo Gắp Thú at the bridge",
+          "The porter on the wharf",
+          "Voi Bốc Hàng"
+        ]
+      }
+    },
+    {
+      "id": "mo-kien-hang",
+      "title": "Bên trong kiện số 7",
+      "kind": "find-object",
+      "goTo": "Khiêng kiện hàng vào lán gỗ bên kênh để mở",
+      "prompt": "Voi run run tháo nút thừng. Tìm ba thứ trong kiện hàng:",
+      "items": [
+        {
+          "id": "phao",
+          "name": "Chiếc phao đỏ",
+          "clue": "Tròn như cái bánh xe, đỏ chót, ôm vào là nổi bồng bềnh trên nước.",
+          "target": "st-kien-hang-khong-ten-phao-do"
+        },
+        {
+          "id": "oc",
+          "name": "Vỏ ốc biển to",
+          "clue": "Áp vào tai là nghe thấy tiếng sóng rì rào ở tận đâu đâu.",
+          "target": "st-kien-hang-khong-ten-vo-oc-bien"
+        },
+        {
+          "id": "thu",
+          "name": "Lá thư buộc dây gai",
+          "clue": "Phong thư màu cát, buộc bằng sợi dây gai nhỏ, ngoài ghi «Mở cuối cùng».",
+          "target": "st-kien-hang-khong-ten-la-thu-day-gai"
+        }
+      ],
+      "en": {
+        "title": "Inside parcel no. 7",
+        "goTo": "Carry the parcel into the wooden shed by the canal to open it",
+        "prompt": "Voi's trunk trembles as he undoes the knot. Find three things in the parcel:",
+        "items": [
+          {
+            "name": "A red life ring",
+            "clue": "Round as a wheel and bright red: hug it and you float."
+          },
+          {
+            "name": "A big seashell",
+            "clue": "Hold it to your ear and you hear waves murmuring somewhere far away."
+          },
+          {
+            "name": "A letter tied with string",
+            "clue": "A sand-coloured envelope tied with thin hemp string, marked «Open last»."
+          }
+        ]
+      }
+    },
+    {
+      "id": "gio-con-nuoc",
+      "title": "Giờ nước lên",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "target": "st-kien-hang-khong-ten-la-thu-day-gai",
+      "skill": "logic",
+      "prompt": "Thư viết: «Thuyền ra biển rời bến lúc nước lên ngày thứ Sáu. Nước lên thứ Hai lúc 5 giờ sáng, thứ Ba 6 giờ, thứ Tư 7 giờ, mỗi ngày muộn thêm một giờ.» Thứ Sáu nước lên lúc mấy giờ?",
+      "logicType": "pattern",
+      "elements": [
+        {
+          "id": "t2",
+          "label": "Thứ Hai: 5 giờ"
+        },
+        {
+          "id": "t3",
+          "label": "Thứ Ba: 6 giờ"
+        },
+        {
+          "id": "t4",
+          "label": "Thứ Tư: 7 giờ"
+        }
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "8 giờ sáng"
+        },
+        {
+          "id": "b",
+          "text": "9 giờ sáng"
+        },
+        {
+          "id": "c",
+          "text": "10 giờ sáng"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Mỗi ngày nước lên muộn hơn hôm trước 1 giờ.",
+          "Đếm tiếp sau thứ Tư: thứ Năm, rồi thứ Sáu."
+        ],
+        "hint": "Thứ Năm nước lên lúc 8 giờ.",
+        "answer": {
+          "text": "9 giờ sáng",
+          "explanation": "Thứ Tư 7 giờ, thứ Năm 8 giờ, thứ Sáu 9 giờ sáng."
+        },
+        "en": {
+          "guide": [
+            "Each day the tide comes in an hour later than the day before.",
+            "Keep counting after Wednesday: Thursday, then Friday."
+          ],
+          "hint": "On Thursday the tide comes in at 8 o'clock.",
+          "answer": {
+            "text": "Nine a.m. on Friday",
+            "explanation": "Wednesday 7, Thursday 8, Friday 9 in the morning."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chín giờ sáng thứ Sáu, con nước không trốn được {name}!",
+          "Quy luật cộng một giờ, {name} nhìn ra ngay.",
+          "Đúng giờ nước lên, thuyền sẽ nhổ neo ngay lúc ấy."
+        ],
+        "wrong": [
+          "Nhớ còn thứ Năm chen giữa thứ Tư và thứ Sáu nhé.",
+          "Mỗi ngày chỉ muộn thêm đúng một giờ thôi, không hơn.",
+          "Đếm ngón tay theo từng ngày trong tuần xem nào."
+        ],
+        "en": {
+          "right": [
+            "Nine o'clock Friday morning: the tide can't hide from {name}!",
+            "An hour more each day: {name} spotted it straight away.",
+            "Right on the tide: that's when the boat will weigh anchor."
+          ],
+          "wrong": [
+            "Remember Thursday sits between Wednesday and Friday.",
+            "Only one hour later each day, no more.",
+            "Count the days of the week on your fingers."
+          ]
+        }
+      },
+      "en": {
+        "title": "When the tide comes in",
+        "prompt": "The letter says: «The boat to the sea leaves when the tide comes in on Friday. The tide came in at 5 in the morning on Monday, 6 on Tuesday, 7 on Wednesday: an hour later each day.» What time does the tide come in on Friday?",
+        "elements": [
+          "Monday: 5 o'clock",
+          "Tuesday: 6 o'clock",
+          "Wednesday: 7 o'clock"
+        ],
+        "choices": [
+          "8 in the morning",
+          "9 in the morning",
+          "10 in the morning"
+        ]
+      }
+    },
+    {
+      "id": "voi-o-mep-nuoc",
+      "title": "Voi lặng im",
+      "kind": "decision",
+      "target": "st-kien-hang-khong-ten-mep-nuoc",
+      "goTo": "Voi đọc thư xong thì ra mép nước con kênh, đứng im",
+      "speaker": "Voi Bốc Hàng",
+      "prompt": "Thư mời Voi đi thuyền ra biển chơi, ký tên Bác Quăng Lưới Biển. Ước mơ cả đời của Voi đây rồi, vậy mà Voi cứ nhìn nước, chẳng nói gì. {name} làm gì?",
+      "choices": [
+        {
+          "id": "hoi",
+          "text": "Hỏi khẽ: «Bác sợ điều gì ạ?»",
+          "consequence": "Voi thở dài một hơi dài như gió: «Ta... chưa từng lội nước quá đầu gối. Ta không biết bơi, {name} ạ.»"
+        },
+        {
+          "id": "ngoi-canh",
+          "text": "Ngồi xuống cạnh Voi, không nói gì",
+          "consequence": "Hai bạn ngồi nhìn con kênh một lúc lâu. Rồi Voi thì thầm: «Ta không biết bơi. Đứng ở bến cả đời mà chưa dám xuống nước.»"
+        },
+        {
+          "id": "dua-oc",
+          "text": "Đưa vỏ ốc cho Voi áp vào tai",
+          "consequence": "Voi nghe tiếng sóng, mắt đỏ hoe: «Hay quá... mà ta sợ lắm. Ta không biết bơi.»"
+        }
+      ],
+      "en": {
+        "title": "Voi goes quiet",
+        "goTo": "After reading the letter, Voi walks to the edge of the canal and stands still",
+        "prompt": "The letter invites Voi to sail to the sea, signed Bác Quăng Lưới Biển. It's Voi's lifelong dream, and yet he just stares at the water and says nothing. What does {name} do?",
+        "choices": [
+          {
+            "text": "Ask softly: «What are you afraid of?»",
+            "consequence": "Voi lets out a sigh as long as a breeze: «I've... never been in water above my knees. I can't swim, {name}.»"
+          },
+          {
+            "text": "Sit down beside Voi without a word",
+            "consequence": "The two of you watch the canal for a long while. Then Voi whispers: «I can't swim. A whole life on the wharf and I've never dared go in.»"
+          },
+          {
+            "text": "Hand Voi the shell to hold to his ear",
+            "consequence": "Voi listens to the waves, eyes going red: «It's wonderful... but I'm so scared. I can't swim.»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "la-thu-tu-bien",
+      "title": "Lá thư từ biển",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Voi gấp lá thư cẩn thận, cất vào túi áo. «Cảm ơn {name} đã đọc giúp ta,» Voi nói, giọng nhỏ hẳn đi, nhưng mắt vẫn nhìn mãi về phía biển.",
+      "en": {
+        "title": "A letter from the sea",
+        "text": "«Thank you for reading it for me, {name},» Voi says, folding the letter carefully into his pocket. His voice is much smaller, but his eyes stay turned toward the sea."
+      }
+    },
+    {
+      "id": "chiec-phao-do",
+      "title": "Chiếc phao đỏ",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chiếc phao đỏ vẫn nằm trong lán gỗ. Ngày mai, Voi bảo, ta sẽ thử... chỉ thử thôi... ở chỗ nước nông nhất chợ. {name} đi cùng ta nhé.",
+      "en": {
+        "title": "The red life ring",
+        "text": "The red life ring is still in the wooden shed. Tomorrow, Voi says, I'll try... just try... in the shallowest water in the market. Come with me, {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "doc-hieu": 1,
+      "logic": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Voi Bốc Hàng's story, chapter 2: Ears like bamboo fans",
+    "summary": "The Flying Fish boat is back. In its delivery book, the sender didn't write a name but described someone very unusual. {name} reads the description, opens the parcel in the wooden shed by the canal, solves the tide puzzle and helps Voi Bốc Hàng say something hard to say."
+  }
+}

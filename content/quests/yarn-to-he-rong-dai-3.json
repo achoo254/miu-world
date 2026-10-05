@@ -1,0 +1,387 @@
+{
+  "id": "yarn-to-he-rong-dai-3",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Chuyện của Cô Nặn Tò He, chương 3: Mưa trên mái nhà lồng",
+  "status": "active",
+  "category": "story",
+  "summary": "Mưa đổ xuống trước phiên rằm, mái nhà lồng chợ dột ngay trên con rồng tò he. {name} tìm vải dầu và chậu hứng dột, dò đường đẩy khay rồng tránh giọt mưa, chọn cách cứu khúc đuôi bị ướt, tính giờ còn lại với Chú Gác Tháp rồi cùng cô nặn lại.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cô Nặn Tò He, Chú Gác Tháp Đồng Hồ",
+    "where": "Chợ phiên: dãy sạp hoa, gian hàng quần áo, nhà lồng chợ, tháp đồng hồ",
+    "goal": "Cứu con rồng tò he khỏi trận mưa trước phiên rằm",
+    "play": "Tìm đồ che mưa, dò đường tránh giọt dột, chọn cách cứu đuôi rồng, tính giờ, lăn bột nặn lại",
+    "learn": "Tìm đường trên lưới ô, tính khoảng thời gian",
+    "reward": "70 XP, 18 Xu, Skill XP Logic, Xem đồng hồ",
+    "next": "Đêm rằm tới, các bạn nhỏ trong chợ mang vảy tự nặn tới"
+  },
+  "phases": {
+    "hook": "mua-dau-cho",
+    "explore": "do-che-mua",
+    "learn": "day-khay-rong",
+    "challenge": "day-khay-rong",
+    "decision": "cuu-duoi-rong",
+    "finale": "lan-bot-nan-lai",
+    "reward": "rong-qua-con-mua",
+    "next": "nhung-chiec-vay-meo"
+  },
+  "places": {
+    "co-nan-to-he": "Dãy sạp hoa",
+    "do-che-mua": "Gian hàng quần áo",
+    "st-to-he-rong-dai-ban-nan-rong": "Nhà lồng chợ",
+    "st-to-he-rong-dai-chu-gac-thap": "Tháp đồng hồ"
+  },
+  "steps": [
+    {
+      "id": "mua-dau-cho",
+      "title": "Mưa rồi!",
+      "kind": "dialogue",
+      "target": "co-nan-to-he",
+      "goTo": "Chạy về dãy sạp hoa, Cô Nặn Tò He đang gọi",
+      "lines": [
+        {
+          "speaker": "Cô Nặn Tò He",
+          "text": "Mưa rồi {name} ơi! Cô sợ nhất là mưa dầm: bột nếp ngấm nước là nhũn như cháo, rồng thành... giun."
+        },
+        {
+          "speaker": "Cô Nặn Tò He",
+          "text": "Mái nhà lồng chợ dột ba chỗ, mà rồng của cô đang nằm ngay dưới đấy. Cô cần một tấm vải dầu và cái chậu hứng dột, nhanh lên!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu chạy đi lấy ngay!",
+          "reply": "Gian hàng quần áo có bán vải dầu đấy, chạy chậm thôi kẻo trơn!"
+        },
+        {
+          "text": "Cô đừng lo, rồng không thành giun đâu!",
+          "reply": "Cô mong thế... Ừ, mình cứu được mà."
+        }
+      ],
+      "en": {
+        "title": "It's raining!",
+        "goTo": "Run back to the flower stalls: Cô Nặn Tò He is calling",
+        "lines": [
+          "It's raining, {name}! Steady rain is what I dread most: wet sticky-rice dough goes as soft as porridge, and a dragon turns into... a worm.",
+          "The covered-market roof leaks in three places, and my dragon is lying right under it. I need an oilcloth and a bucket for the drips, quick!"
+        ],
+        "choices": [
+          {
+            "text": "I'm running for them now!",
+            "reply": "The clothes stall sells oilcloth. Don't run too fast, it's slippery!"
+          },
+          {
+            "text": "Don't worry, it won't turn into a worm!",
+            "reply": "I hope not... Yes, we can save it."
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-che-mua",
+      "title": "Vải dầu và chậu hứng",
+      "kind": "find-object",
+      "goTo": "Sang gian hàng quần áo tìm đồ che mưa",
+      "prompt": "Tìm hai thứ cứu rồng khỏi mưa:",
+      "items": [
+        {
+          "id": "vai-dau",
+          "name": "Tấm vải dầu xanh",
+          "clue": "Cuộn vải bóng loáng, nước mưa rơi lên là lăn đi như hạt đậu.",
+          "target": "st-to-he-rong-dai-vai-dau"
+        },
+        {
+          "id": "chau",
+          "name": "Cái chậu hứng dột",
+          "clue": "Cái chậu nhôm sáng, gõ vào kêu boong boong, để úp ở góc sạp.",
+          "target": "st-to-he-rong-dai-chau-hung-dot"
+        }
+      ],
+      "en": {
+        "title": "An oilcloth and a bucket",
+        "goTo": "Go over to the clothes stall for rain gear",
+        "prompt": "Find two things to save the dragon from the rain:",
+        "items": [
+          {
+            "name": "The blue oilcloth",
+            "clue": "A shiny roll of cloth: raindrops roll off it like beans."
+          },
+          {
+            "name": "A bucket for the drips",
+            "clue": "A bright tin bucket that goes bong-bong when you tap it, left upside down at the corner of the stall."
+          }
+        ]
+      }
+    },
+    {
+      "id": "day-khay-rong",
+      "title": "Đẩy khay rồng tránh giọt dột",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "target": "st-to-he-rong-dai-ban-nan-rong",
+      "goTo": "Mang đồ vào nhà lồng chợ, chỗ con rồng đang nằm",
+      "skill": "logic",
+      "prompt": "Ô gạch là chỗ mái dột. Đẩy khay rồng từ ô có chú mèo tới ô ngôi sao khô ráo mà không qua ô dột nào. Dãy bước nào đúng? (→ sang phải, ↓ đi xuống)",
+      "logicType": "maze",
+      "grid": [
+        [
+          "S",
+          ".",
+          "#",
+          "."
+        ],
+        [
+          "#",
+          ".",
+          ".",
+          "."
+        ],
+        [
+          ".",
+          "#",
+          "#",
+          "."
+        ],
+        [
+          ".",
+          ".",
+          ".",
+          "G"
+        ]
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "→ → ↓ ↓ → ↓"
+        },
+        {
+          "id": "b",
+          "text": "→ ↓ → → ↓ ↓"
+        },
+        {
+          "id": "c",
+          "text": "→ ↓ ↓ → → ↓"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Bắt đầu từ ô có chú mèo, ngón tay đặt sẵn.",
+          "Thử từng dãy bước; chạm ô gạch là dãy đó hỏng.",
+          "Dãy đúng đi men theo mép phải xuống ngôi sao."
+        ],
+        "hint": "Bước thứ hai phải đi xuống, vì ô bên phải bước một là chỗ dột.",
+        "answer": {
+          "text": "→ ↓ → → ↓ ↓",
+          "explanation": "Sang phải, xuống một ô, sang phải hai ô tới mép, rồi xuống hai ô là tới ngôi sao khô."
+        },
+        "en": {
+          "guide": [
+            "Start on the cat square with your finger ready.",
+            "Try each set of moves; touching a brick square ruins it.",
+            "The right one hugs the right-hand edge down to the star."
+          ],
+          "hint": "The second move must go down, because the square right of the first step is a drip.",
+          "answer": {
+            "text": "→ ↓ → → ↓ ↓",
+            "explanation": "Right, down one, right two to the edge, then down two to reach the dry star."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Khay rồng trượt qua giữa ba giọt dột, khô cong!",
+          "Lộ trình của {name} chuẩn như bản đồ của Chú Gác Tháp.",
+          "Cô thở phào: rồng chưa dính giọt nào!"
+        ],
+        "wrong": [
+          "Tách! Giọt mưa rơi trúng vảy rồng rồi, thử dãy khác nhé.",
+          "Dò từng bước bằng ngón tay, gặp ô gạch là dừng.",
+          "Đi xuống quá sớm là gặp chỗ dột giữa nhà đấy."
+        ],
+        "en": {
+          "right": [
+            "The tray slides between all three drips, bone dry!",
+            "{name}'s route is as precise as a clock-tower map.",
+            "Cô breathes out: not a single drop on the dragon!"
+          ],
+          "wrong": [
+            "Plip! A raindrop hit a scale. Try another set of moves.",
+            "Trace each move with your finger and stop at any brick.",
+            "Go down too early and you hit the leak in the middle."
+          ]
+        }
+      },
+      "en": {
+        "title": "Steering the dragon tray between drips",
+        "goTo": "Take everything into the covered market, where the dragon is lying",
+        "prompt": "Brick squares are where the roof drips. Push the dragon tray from the cat square to the dry star square without crossing a drip. Which moves work? (→ right, ↓ down)",
+        "choices": [
+          "→ → ↓ ↓ → ↓",
+          "→ ↓ → → ↓ ↓",
+          "→ ↓ ↓ → → ↓"
+        ]
+      }
+    },
+    {
+      "id": "cuu-duoi-rong",
+      "title": "Khúc đuôi bị ướt",
+      "kind": "decision",
+      "target": "st-to-he-rong-dai-ban-nan-rong",
+      "speaker": "Cô Nặn Tò He",
+      "prompt": "Khúc đuôi rồng đã kịp ướt, mềm oặt. Cô Nặn Tò He ngồi thụp xuống: «Hay thôi, chắc trời không cho...» {name} nói gì?",
+      "choices": [
+        {
+          "id": "nan-lai",
+          "text": "Mình nặn lại đuôi mới, cháu phụ cô!",
+          "consequence": "Cô lau tay vào tạp dề, đứng dậy: «Ừ. Bột còn, tay còn, rồng còn.»"
+        },
+        {
+          "id": "hong-kho",
+          "text": "Hong đuôi cạnh lò bánh mì cho khô",
+          "consequence": "Cô bật cười: «Cô Hạnh mà biết rồng sưởi lò bánh mì chắc đòi tiền thuê chỗ!» Khúc đuôi se lại, dẻo vừa tay."
+        },
+        {
+          "id": "giu-duoi-meo",
+          "text": "Giữ đuôi méo, coi như rồng vừa vượt mưa",
+          "consequence": "Cô nhìn khúc đuôi lâu thật lâu, rồi khẽ gật: «Rồng vượt mưa... Nghe cũng oai đấy chứ.»"
+        }
+      ],
+      "en": {
+        "title": "The soggy tail",
+        "prompt": "The tail got wet before you arrived and it's gone floppy. Cô Nặn Tò He sinks down: «Maybe I should give up, the sky doesn't want this...» What does {name} say?",
+        "choices": [
+          {
+            "text": "Let's make a new tail, I'll help!",
+            "consequence": "Cô wipes her hands on her apron and stands up: «Right. Still got dough, still got hands, still got a dragon.»"
+          },
+          {
+            "text": "Dry the tail beside the bread oven",
+            "consequence": "Cô laughs: «If Hạnh finds out a dragon's warming itself at her oven, she'll charge rent!» The tail firms up, just right to work."
+          },
+          {
+            "text": "Keep the wonky tail: the dragon just came through a storm",
+            "consequence": "Cô looks at the tail for a long, long time, then gives a small nod: «A dragon that came through the rain... That sounds rather grand.»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hoi-gio-thap",
+      "title": "Còn mấy giờ?",
+      "kind": "riddle",
+      "target": "st-to-he-rong-dai-chu-gac-thap",
+      "goTo": "Lên tháp đồng hồ hỏi Chú Gác Tháp bao giờ tạnh mưa",
+      "skill": "xem-dong-ho",
+      "question": "Chú Gác Tháp Đồng Hồ nhìn trời: «Mưa tạnh lúc 3 giờ chiều. Phiên rằm mở lúc 7 giờ tối.» Từ lúc tạnh mưa tới lúc mở phiên, cô có mấy giờ để nặn?",
+      "answer": {
+        "value": 4
+      },
+      "support": {
+        "guide": [
+          "7 giờ tối cũng là 19 giờ, 3 giờ chiều là 15 giờ.",
+          "Đếm từng giờ: 4 giờ, 5 giờ, 6 giờ, 7 giờ."
+        ],
+        "hint": "Đếm số lần kim ngắn nhảy sang số mới.",
+        "answer": {
+          "text": "4 giờ",
+          "explanation": "Từ 3 giờ chiều tới 7 giờ tối là 4 giờ: 7 − 3 = 4."
+        },
+        "en": {
+          "guide": [
+            "7 in the evening is 19:00, and 3 in the afternoon is 15:00.",
+            "Count the hours: 4, 5, 6, 7 o'clock."
+          ],
+          "hint": "Count how many times the short hand jumps to a new number.",
+          "answer": {
+            "text": "4 hours",
+            "explanation": "From 3 in the afternoon to 7 in the evening is 4 hours: 7 − 3 = 4."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn giờ! Chú Gác Tháp gõ chuông «boong» một tiếng như chúc may mắn.",
+          "Đủ thời gian nặn cả một đàn rồng ấy chứ!",
+          "{name} đọc giờ còn nhanh hơn chiếc đồng hồ trên tháp."
+        ],
+        "wrong": [
+          "Chú Gác Tháp lắc đầu: «Tính lại đi cháu, đồng hồ không biết nói dối.»",
+          "Thử đếm trên ngón tay từ 3 tới 7 xem.",
+          "Đừng tính cả giờ tạnh mưa vào nhé, bắt đầu đếm từ giờ sau."
+        ],
+        "en": {
+          "right": [
+            "Four hours! The keeper strikes the bell once, «bong», for luck.",
+            "That's enough time to make a whole herd of dragons!",
+            "{name} reads time faster than the clock on the tower."
+          ],
+          "wrong": [
+            "The keeper shakes his head: «Count again, a clock never lies.»",
+            "Try counting on your fingers from 3 up to 7.",
+            "Don't count the hour the rain stops: start from the next one."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many hours left?",
+        "goTo": "Climb the clock tower and ask the keeper when the rain will stop",
+        "question": "The clock-tower keeper squints at the sky: «The rain stops at 3 in the afternoon. The full-moon fair opens at 7 in the evening.» From the end of the rain to the opening, how many hours does Cô have?"
+      }
+    },
+    {
+      "id": "lan-bot-nan-lai",
+      "title": "Lăn bột nặn lại",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "co-nan-to-he",
+      "goTo": "Về dãy sạp hoa lăn bột cùng cô",
+      "prompt": "Lăn từng thỏi bột dài đúng vạch để thay khúc rồng bị ướt nhé!",
+      "game": "to-he-roll",
+      "goal": 5,
+      "en": {
+        "title": "Rolling the dough again",
+        "goTo": "Back to the flower stalls to roll dough with Cô",
+        "prompt": "Roll each strip of dough to exactly the right mark to replace the wet piece of dragon!"
+      }
+    },
+    {
+      "id": "rong-qua-con-mua",
+      "title": "Rồng qua cơn mưa",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mưa tạnh đúng 3 giờ. Con rồng nằm khô ráo dưới tấm vải dầu, thân dài thẳng, vảy nào cũng còn nguyên mặt cười. Cô Nặn Tò He khẽ vỗ vai {name}: «Không có cháu chắc cô bỏ cuộc rồi.»",
+      "en": {
+        "title": "The dragon survives the rain",
+        "text": "The rain stops at three on the dot. The dragon lies dry under the oilcloth, long and straight, every scale still smiling. Cô Nặn Tò He pats {name} on the shoulder: «Without you I'd have given up.»"
+      }
+    },
+    {
+      "id": "nhung-chiec-vay-meo",
+      "title": "Những chiếc vảy méo",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Lúc dọn sạp, cô thấy mấy đứa nhỏ trong chợ đứng ngó, tay cầm những chiếc vảy tự nặn, méo xẹo. Chúng hỏi: «Cô ơi, cho tụi con gắn lên rồng được không?» Cô chưa trả lời được.",
+      "en": {
+        "title": "The wonky scales",
+        "text": "Packing up, Cô sees some of the market kids watching, holding scales they made themselves, all lopsided. They ask: «Can we put ours on the dragon?» She doesn't know what to say yet."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "logic": 1,
+      "xem-dong-ho": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Cô Nặn Tò He's story, chapter 3: Rain on the market roof",
+    "summary": "Rain pours down before the full-moon fair, and the covered-market roof leaks right onto the tò he dragon. {name} finds an oilcloth and a bucket, steers the dragon tray between the drips, decides how to save the soggy tail, works out the hours left with the clock-tower keeper, then helps Cô reshape the dough."
+  }
+}

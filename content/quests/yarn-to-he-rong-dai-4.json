@@ -1,0 +1,332 @@
+{
+  "id": "yarn-to-he-rong-dai-4",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Chuyện của Cô Nặn Tò He, chương 4: Rồng bò qua phiên rằm",
+  "status": "active",
+  "category": "story",
+  "summary": "Đêm phiên rằm, con rồng tò he chỉ còn thiếu râu và chiếc lục lạc. Các bạn nhỏ mang tới những chiếc vảy tự nặn, méo xẹo. {name} giúp Cô Nặn Tò He tìm râu rồng, đếm vảy cùng Bé Mít, quyết định số phận những chiếc vảy méo và xếp các bạn rước rồng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cô Nặn Tò He, Bé Mít và các bạn nhỏ trong chợ",
+    "where": "Chợ phiên: dãy sạp hoa, khu bán thú nuôi, phố chợ, quảng trường chợ",
+    "goal": "Hoàn thành con rồng tò he và rước rồng trong đêm phiên rằm",
+    "play": "Tìm lông gà trống và lục lạc, đếm vảy, chọn có gắn vảy méo không, xếp các bạn rước rồng theo chiều cao",
+    "learn": "Phép cộng, phép trừ, so sánh số đo",
+    "reward": "80 XP, 20 Xu, Skill XP Phép trừ, So sánh số, quà Tò he rồng nhỏ",
+    "next": "Cô Nặn Tò He mở lớp nặn tò he cho trẻ con trong chợ"
+  },
+  "phases": {
+    "hook": "dem-ram",
+    "explore": "tim-rau-rong",
+    "learn": "dem-vay-cung-be-mit",
+    "challenge": "dem-vay-cung-be-mit",
+    "decision": "vay-meo-hay-tron",
+    "finale": "xep-ban-ruoc-rong",
+    "reward": "rong-cua-ca-cho",
+    "next": "lop-nan-to-he"
+  },
+  "places": {
+    "co-nan-to-he": "Dãy sạp hoa",
+    "tim-rau-rong": "Khu bán thú nuôi",
+    "st-to-he-rong-dai-be-mit": "Phố chợ",
+    "st-to-he-rong-dai-rong-to-he": "Quảng trường chợ"
+  },
+  "steps": [
+    {
+      "id": "dem-ram",
+      "title": "Đêm phiên rằm",
+      "kind": "dialogue",
+      "target": "co-nan-to-he",
+      "goTo": "Tới dãy sạp hoa, đêm nay là phiên rằm",
+      "lines": [
+        {
+          "speaker": "Cô Nặn Tò He",
+          "text": "Trăng lên rồi kìa {name}. Rồng xong cả thân, chỉ thiếu bộ râu với chiếc lục lạc đeo dưới cằm cho kêu leng keng."
+        },
+        {
+          "speaker": "Cô Nặn Tò He",
+          "text": "Còn mấy đứa nhỏ... chúng nặn vảy méo lắm. Cô sợ rồng xấu đi. Mà từ chối thì cô lại thấy mình giống Ông Chổi Rơm ngày trước."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình đi tìm râu rồng trước đã cô ạ!",
+          "reply": "Phải, việc gì ra việc nấy. Khu bán thú nuôi có lông gà trống đẹp lắm."
+        },
+        {
+          "text": "Vảy méo cũng có cái đáng yêu mà cô.",
+          "reply": "Cô biết... nhưng để cô nghĩ thêm chút nữa."
+        }
+      ],
+      "en": {
+        "title": "Full-moon night",
+        "goTo": "Go to the flower stalls: tonight is the full-moon fair",
+        "lines": [
+          "The moon's up, {name}. The dragon's body is done; it just needs whiskers and a little bell under its chin to jingle.",
+          "And the kids... their scales are so lopsided. I'm afraid they'll spoil the dragon. But if I say no, I feel like Ông Chổi Rơm used to be."
+        ],
+        "choices": [
+          {
+            "text": "Let's find the dragon's whiskers first!",
+            "reply": "Yes, one thing at a time. The pet market has beautiful rooster feathers."
+          },
+          {
+            "text": "Wonky scales can be lovely too.",
+            "reply": "I know... but let me think a little longer."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-rau-rong",
+      "title": "Râu rồng và lục lạc",
+      "kind": "search",
+      "targets": [
+        "st-to-he-rong-dai-long-ga-trong",
+        "st-to-he-rong-dai-luc-lac-dong"
+      ],
+      "goTo": "Tới khu bán thú nuôi tìm lông gà trống và lục lạc đồng",
+      "en": {
+        "title": "Whiskers and a bell",
+        "goTo": "Go to the pet market for rooster feathers and a brass bell"
+      }
+    },
+    {
+      "id": "dem-vay-cung-be-mit",
+      "title": "Rổ vảy của Bé Mít",
+      "kind": "riddle",
+      "target": "st-to-he-rong-dai-be-mit",
+      "goTo": "Ra phố chợ, Bé Mít đang đợi ở đó",
+      "skill": "phep-tru",
+      "question": "Bé Mít khoe: «Con, bạn Su với bạn Hến mỗi đứa nặn 4 vảy. Mà lúc chạy ra đây con làm rơi vỡ mất 2 vảy...» Rổ của Mít còn bao nhiêu vảy?",
+      "answer": {
+        "value": 10
+      },
+      "support": {
+        "guide": [
+          "Ba bạn, mỗi bạn 4 vảy: 4 + 4 + 4.",
+          "Có 12 vảy, rơi vỡ 2 vảy thì lấy 12 trừ 2."
+        ],
+        "hint": "Cộng ba số 4 trước rồi mới trừ.",
+        "answer": {
+          "text": "10 vảy",
+          "explanation": "4 + 4 + 4 = 12 vảy, vỡ 2 vảy nên còn 12 − 2 = 10 vảy."
+        },
+        "en": {
+          "guide": [
+            "Three kids, 4 scales each: 4 + 4 + 4.",
+            "That's 12 scales; 2 broke, so 12 take away 2."
+          ],
+          "hint": "Add the three 4s first, then subtract.",
+          "answer": {
+            "text": "10 scales",
+            "explanation": "4 + 4 + 4 = 12 scales; 2 broke, so 12 − 2 = 10 are left."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười vảy! Bé Mít nhảy cẫng lên giữa phố chợ, rổ vảy rung rinh.",
+          "{name} đếm vảy còn nhanh hơn Mít đếm kẹo.",
+          "Đúng mười, không thiếu một vảy méo nào!"
+        ],
+        "wrong": [
+          "Mít nhăn mũi: «Ơ, con đếm mãi mới ra mà...» Thử lại nhé.",
+          "Đừng quên hai vảy đã vỡ nằm dưới đất nhé.",
+          "Ba bạn mỗi bạn 4 vảy, cộng lại trước đã {name}."
+        ],
+        "en": {
+          "right": [
+            "Ten scales! Bé Mít leaps for joy in the middle of the street, her basket wobbling.",
+            "{name} counts scales faster than Mít counts sweets.",
+            "Exactly ten, not one wonky scale missing!"
+          ],
+          "wrong": [
+            "Mít wrinkles her nose: «But it took me ages to count...» Try again.",
+            "Don't forget the two broken scales on the ground.",
+            "Three kids with 4 each: add those up first, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "Bé Mít's basket of scales",
+        "goTo": "Go to the market street, where Bé Mít is waiting",
+        "question": "Bé Mít shows off: «Me, Su and Hến made 4 scales each. But I dropped 2 and broke them running here...» How many scales are left in Mít's basket?"
+      }
+    },
+    {
+      "id": "vay-meo-hay-tron",
+      "title": "Gắn vảy méo không?",
+      "kind": "decision",
+      "target": "st-to-he-rong-dai-rong-to-he",
+      "goTo": "Mang vảy tới quảng trường chợ, nơi con rồng đang chờ",
+      "speaker": "Cô Nặn Tò He",
+      "prompt": "Cô Nặn Tò He mở chiếc hộp thiếc nhỏ, bên trong là một cục bột méo khô cứng: «Con tò he đầu tiên cô nặn hỏng đấy.» Rồi cô nhìn {name}: «Cháu bảo cô làm sao với vảy của tụi nhỏ?»",
+      "choices": [
+        {
+          "id": "gan-het",
+          "text": "Gắn hết, vảy méo nào cũng có chỗ",
+          "consequence": "Cô cười, mắt rưng rưng: «Ừ. Rồng của chợ thì phải có tay của cả chợ.»"
+        },
+        {
+          "id": "tu-tay-gan",
+          "text": "Để các bạn tự tay gắn vảy của mình",
+          "consequence": "Mười bàn tay nhỏ xúm vào, vảy nghiêng vảy lệch, mà con rồng bỗng như đang cười."
+        },
+        {
+          "id": "gan-o-tim",
+          "text": "Gắn vảy méo ngay chỗ trái tim rồng",
+          "consequence": "Cô đặt cả cục bột méo đầu tiên của mình vào giữa: «Tim rồng thì phải là thứ cô thương nhất.»"
+        }
+      ],
+      "en": {
+        "title": "Wonky scales or not?",
+        "goTo": "Bring the scales to the market square, where the dragon is waiting",
+        "prompt": "Cô Nặn Tò He opens a little tin box. Inside is a hard, lopsided lump of dough: «The very first tò he I ever made, and I botched it.» Then she looks at {name}: «What should I do with the kids' scales?»",
+        "choices": [
+          {
+            "text": "Put them all on: every wonky scale gets a place",
+            "consequence": "Cô laughs, eyes shining: «Yes. The market's dragon should carry the whole market's hands.»"
+          },
+          {
+            "text": "Let the kids stick on their own scales",
+            "consequence": "Ten little hands crowd in, scales tilting every which way, and suddenly the dragon seems to be laughing."
+          },
+          {
+            "text": "Put the wonky scales right over the dragon's heart",
+            "consequence": "Cô sets her own first lumpy tò he in the middle: «The heart should be the thing I love most.»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "xep-ban-ruoc-rong",
+      "title": "Xếp hàng rước rồng",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-to-he-rong-dai-rong-to-he",
+      "skill": "so-sanh-so",
+      "prompt": "Đầu rồng thấp, đuôi rồng vồng cao. Xếp các bạn cầm gậy rước từ thấp tới cao:",
+      "items": [
+        {
+          "id": "hen",
+          "label": "Bé Hến: 112 xăng-ti-mét"
+        },
+        {
+          "id": "mit",
+          "label": "Bé Mít: 98 xăng-ti-mét"
+        },
+        {
+          "id": "su",
+          "label": "Bé Su: 105 xăng-ti-mét"
+        },
+        {
+          "id": "na",
+          "label": "Bé Na: 101 xăng-ti-mét"
+        }
+      ],
+      "answer": {
+        "order": [
+          "mit",
+          "na",
+          "su",
+          "hen"
+        ]
+      },
+      "support": {
+        "guide": [
+          "So sánh bốn số: 98, 101, 105, 112.",
+          "98 chỉ có hai chữ số nên bé nhất; các số có ba chữ số thì so hàng chục."
+        ],
+        "hint": "Bạn thấp nhất cầm đầu rồng, bạn cao nhất cầm đuôi.",
+        "answer": {
+          "text": "Mít, Na, Su rồi Hến",
+          "explanation": "98 < 101 < 105 < 112, nên thứ tự là Mít, Na, Su rồi Hến."
+        },
+        "en": {
+          "guide": [
+            "Compare the four numbers: 98, 101, 105, 112.",
+            "Only 98 has two digits, so it is the smallest; for the three-digit ones, compare the tens."
+          ],
+          "hint": "The shortest kid holds the head, the tallest the tail.",
+          "answer": {
+            "text": "Mít, Na, Su and Hến",
+            "explanation": "98 < 101 < 105 < 112, so the order is Mít, Na, Su, then Hến."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Rồng uốn mình từ thấp lên cao, y như đang bay!",
+          "{name} xếp hàng khéo, gậy rước chẳng va vào nhau cái nào.",
+          "Trống hội nổi lên, rồng bắt đầu bò qua dãy sạp!"
+        ],
+        "wrong": [
+          "Bạn cao nhất mà đứng đầu thì rồng... chúi mũi mất.",
+          "So từng cặp chiều cao một nhé {name}.",
+          "Có bạn đang đứng nhầm chỗ, so lại hàng chục nhé."
+        ],
+        "en": {
+          "right": [
+            "The dragon curves up from low to high, as if it's flying!",
+            "{name} lines everyone up so well that not one stick bumps another.",
+            "The festival drums start up and the dragon begins to wind past the stalls!"
+          ],
+          "wrong": [
+            "With the tallest kid at the front, the dragon would nose-dive.",
+            "Compare the heights two at a time, {name}.",
+            "Some kids are in the wrong spots: compare the tens again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Lining up to carry the dragon",
+        "prompt": "The dragon's head dips low and its tail curls up high. Line up the stick carriers from shortest to tallest:",
+        "items": [
+          "Hến: 112 centimetres",
+          "Mít: 98 centimetres",
+          "Su: 105 centimetres",
+          "Na: 101 centimetres"
+        ]
+      }
+    },
+    {
+      "id": "rong-cua-ca-cho",
+      "title": "Rồng của cả chợ",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Con rồng tò he dài bằng cả dãy sạp hoa uốn qua quảng trường dưới trăng rằm, vảy méo vảy tròn lấp lánh. Cô Nặn Tò He đi bên cạnh, lần đầu không sửa một vảy nào. Cô dúi vào tay {name} một con rồng tò he nhỏ xíu.",
+      "en": {
+        "title": "The whole market's dragon",
+        "text": "The tò he dragon, as long as the whole row of flower stalls, winds across the square under the full moon, wonky scales and round ones glittering. Cô Nặn Tò He walks beside it and, for the first time, doesn't fix a single scale. She presses a tiny tò he dragon into {name}'s hand."
+      }
+    },
+    {
+      "id": "lop-nan-to-he",
+      "title": "Lớp nặn tò he",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sáng hôm sau, đầu dãy sạp hoa có tấm bảng mới: «Lớp nặn tò he, ai nặn méo cũng được nhận». Cô Nặn Tò He bảo phiên rằm sau, rồng sẽ dài gấp đôi, vì cả chợ đều biết nặn vảy rồi.",
+      "en": {
+        "title": "The tò he class",
+        "text": "Next morning a new sign stands at the head of the flower stalls: «Tò he class: wonky makers welcome». Cô Nặn Tò He says next full moon the dragon will be twice as long, because the whole market can make scales now."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 20,
+    "skillXp": {
+      "phep-tru": 1,
+      "so-sanh-so": 1
+    },
+    "items": {
+      "to-he-rong": 1
+    }
+  },
+  "en": {
+    "title": "Cô Nặn Tò He's story, chapter 4: The dragon at the full-moon fair",
+    "summary": "On the night of the full-moon fair, the tò he dragon only lacks its whiskers and a little bell. The market kids bring scales they made themselves, all lopsided. {name} helps Cô Nặn Tò He find the whiskers, counts scales with Bé Mít, decides what happens to the wonky scales and lines up the kids to carry the dragon."
+  }
+}
