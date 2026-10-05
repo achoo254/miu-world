@@ -46,7 +46,19 @@
         {
           "text": "Tớ trượt ngay đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Oh {name}, a cheeky bird shuffled my sliding picture to bits.",
+          "Tap a tile next to the empty gap to slide it over, and line them up from 1 to 8 again."
+        ],
+        "choices": [
+          {
+            "text": "I will start sliding right now!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Xếp xong một bức tranh trượt nhé!",
       "game": "sliding-tiles",
-      "goal": 1
+      "goal": 1,
+      "en": {
+        "title": "Sliding Picture Puzzle",
+        "prompt": "Finish 1 sliding pictures!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tranh về đúng chỗ rồi, Koala Ghép Tranh vỗ tay khen {name}!"
+      "text": "Tranh về đúng chỗ rồi, Koala Ghép Tranh vỗ tay khen {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Every tile is home again, and Koala Ghép Tranh claps for {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mỗi ngày tớ lại có tranh trượt mới, nhớ ra vườn chơi tiếp nhé."
+      "text": "Mỗi ngày tớ lại có tranh trượt mới, nhớ ra vườn chơi tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "I get a fresh sliding picture every day, so come back to the garden for another round."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Sliding picture tiles with Koala Ghép Tranh",
+    "summary": "A number picture got all jumbled; slide the tiles into the empty gap until they run from 1 to 8."
   }
 }

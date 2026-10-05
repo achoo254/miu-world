@@ -10,5 +10,13 @@
   "controls": ["swipe", "tap"],
   "duration": 55,
   "goal": 30,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Growing crowd",
+    "howTo": [
+      "{name}'s crowd of friends runs through pairs of gates marked with sums.",
+      "Swipe or tap toward the gate that makes the crowd bigger.",
+      "At the end of the road you need at least 30 friends to push the cart!"
+    ]
+  }
 }

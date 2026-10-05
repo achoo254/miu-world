@@ -9,5 +9,12 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 10,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Herd the Ducks",
+    "howTo": [
+      "The ducks are scared of the dog and run away from it. {name} drags the dog around behind the flock.",
+      "Herd the ducks through the gap in the fence into the pen. Each duck inside is a point."
+    ]
+  }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Để tớ tìm số lấp đầy bảng!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hi {name}! My one-to-a-hundred chart is missing some squares.",
+          "Remember: one step right adds one, one step down adds ten. Use that to fill them in."
+        ],
+        "choices": [
+          {
+            "text": "Let me fill in the chart!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Gắn đúng vị trí tám mảnh số vào bảng trăm ô nhé!",
       "game": "hundred-chart",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Hundred chart",
+        "prompt": "Put 8 number tiles back on the hundred chart!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bé Mê Bảng Số vỗ tay reo hò: {name} nắm chắc các hàng số tự nhiên siêu thật đấy!"
+      "text": "Bé Mê Bảng Số vỗ tay reo hò: {name} nắm chắc các hàng số tự nhiên siêu thật đấy!",
+      "en": {
+        "title": "Reward",
+        "text": "Bé Mê Bảng Số cheers: {name} really knows the number order inside out!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bảng số đã tròn vẹn một trăm rồi, cậu rảnh cứ qua chân tháp đồng hồ tính toán nha."
+      "text": "Bảng số đã tròn vẹn một trăm rồi, cậu rảnh cứ qua chân tháp đồng hồ tính toán nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "The chart has all hundred squares again. Come do some counting at the clock tower anytime."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "The hundred chart with Bé Mê Bảng Số",
+    "summary": "The wind blew a few squares off the hundred chart; use the row and column patterns to put the numbers back."
   }
 }

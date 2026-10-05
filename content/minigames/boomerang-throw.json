@@ -9,5 +9,12 @@
   "controls": ["swipe", "tap"],
   "duration": 60,
   "goal": 20,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Boomerang throw",
+    "howTo": [
+      "{name}, swipe to throw the boomerang through the fruit bunches. A long swipe flies far.",
+      "The boomerang circles back: tap to catch it when the ring at your hand lights up."
+    ]
+  }
 }

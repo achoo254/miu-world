@@ -46,7 +46,19 @@
         {
           "text": "Để tớ ghép cầu băng thật chắc!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The ice has cracked in lots of dangerous spots. {name}, help me build a bridge to the other side!",
+          "Tap a water square to freeze it into a solid block of ice you can walk on."
+        ],
+        "choices": [
+          {
+            "text": "I'll build a sturdy ice bridge!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Hóa phép nối liền bốn cây cầu băng vượt qua hồ nước nhé!",
       "game": "ice-bridge",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Freeze a bridge",
+        "prompt": "Freeze 4 ice bridges across the lake!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cánh Cụt chạy ào sang bờ: nhờ chiếc cầu của {name} mà đàn chim về tổ an toàn!"
+      "text": "Cánh Cụt chạy ào sang bờ: nhờ chiếc cầu của {name} mà đàn chim về tổ an toàn!",
+      "en": {
+        "title": "Reward",
+        "text": "Cánh Cụt dashes across: thanks to {name}'s bridge, the birds got home safely!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mùa đông còn lạnh giá, Cánh Cụt đợi {name} ghé chơi và bắc thêm cầu băng."
+      "text": "Mùa đông còn lạnh giá, Cánh Cụt đợi {name} ghé chơi và bắc thêm cầu băng.",
+      "en": {
+        "title": "See you soon",
+        "text": "Winter is still freezing. Cánh Cụt is waiting for {name} to build more ice bridges."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Ice Bridge Across the Lake with Cánh Cụt Khúc Côn Cầu",
+    "summary": "The lake is full of deep holes; use a magic snowflake to freeze the water and make a safe path."
   }
 }

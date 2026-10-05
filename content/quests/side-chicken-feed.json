@@ -46,7 +46,19 @@
         {
           "text": "Đưa nắm thóc đây cho tớ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, the little chicks are starving, but the mother hens keep eating everything.",
+          "Toss the grain near the chicks and a bit away from the hens. I'll keep watch."
+        ],
+        "choices": [
+          {
+            "text": "Hand me a fistful of grain!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Cho gà con ăn được mười lăm hạt thóc nhé!",
       "game": "chicken-feed",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Feed every chick",
+        "prompt": "Feed the chicks 15 grains!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gà con no căng bụng, Chó Lùa Vịt khen {name} thương gà ghê!"
+      "text": "Gà con no căng bụng, Chó Lùa Vịt khen {name} thương gà ghê!",
+      "en": {
+        "title": "Reward",
+        "text": "The chicks are full to bursting, and Chó Lùa Vịt says {name} really cares for them!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Sáng mai gà lại đói, cậu nhớ ghé ao cá rải thóc với tớ nhé."
+      "text": "Sáng mai gà lại đói, cậu nhớ ghé ao cá rải thóc với tớ nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The chicks will be hungry again tomorrow. Come scatter grain with me by the fish pond."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Feed the Chicks with Chó Lùa Vịt",
+    "summary": "Greedy mother hens grab all the grain; scatter it cleverly so every chick gets enough."
   }
 }

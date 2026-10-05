@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 4,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Robot Vacuum",
+    "howTo": [
+      "{name} taps buttons to line up commands: one step, turn left, turn right. The red button removes the last one.",
+      "When ready, tap run. The robot must suck up all the dust without bumping into anything.",
+      "If it bumps something, it goes back to its corner. Fix the commands and run again."
+    ]
+  }
 }

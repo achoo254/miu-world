@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 40,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Zigzag Road",
+    "howTo": [
+      "The ball rolls diagonally along a zigzag road by itself.",
+      "{name} taps the screen to turn at each bend. Don't let the ball fall off the road!",
+      "Every bend you make and every gem you grab is a point."
+    ]
+  }
 }

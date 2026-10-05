@@ -46,7 +46,19 @@
         {
           "text": "Tớ xếp quả vào ô ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "I just made a funny little fruit sudoku board, {name}.",
+          "Every row, every column and every small square needs all four fruits, with no repeats."
+        ],
+        "choices": [
+          {
+            "text": "I will place the fruit now!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Giải xong trọn vẹn ba bảng sudoku mini bốn ô nhé!",
       "game": "sudoku-mini",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Fruit Sudoku 4 × 4",
+        "prompt": "Solve 3 mini four-by-four sudokus!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bé Mê Bảng Số cười tít mắt, khen {name} suy luận logic chẳng thua gì nhà toán học!"
+      "text": "Bé Mê Bảng Số cười tít mắt, khen {name} suy luận logic chẳng thua gì nhà toán học!",
+      "en": {
+        "title": "Reward",
+        "text": "Bé Mê Bảng Số grins: {name} reasons things out just like a mathematician!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Những con số kỳ diệu luôn chờ cậu dưới chân tháp đồng hồ, nhớ quay lại chơi nha."
+      "text": "Những con số kỳ diệu luôn chờ cậu dưới chân tháp đồng hồ, nhớ quay lại chơi nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "Magic numbers are always waiting at the foot of the clock tower, so come back and play."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Four-by-four mini sudoku with Bé Mê Bảng Số",
+    "summary": "A cute four-by-four grid: place four kinds of fruit so none repeats in a row or column."
   }
 }

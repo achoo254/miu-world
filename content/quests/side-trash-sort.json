@@ -46,7 +46,19 @@
         {
           "text": "Tớ phân loại được mà!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, our village road is much nicer when it is clean!",
+          "Fruit peel goes in the green bin, and paper and cans go in the blue bin."
+        ],
+        "choices": [
+          {
+            "text": "I can sort it all!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Bỏ đúng thùng hai mươi món rác nhé!",
       "game": "trash-sort",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Sort the Rubbish",
+        "prompt": "Put 20 pieces of rubbish in the right bin!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Đường đồng sạch tinh tươm, {name} là bạn của môi trường!"
+      "text": "Đường đồng sạch tinh tươm, {name} là bạn của môi trường!",
+      "en": {
+        "title": "Reward",
+        "text": "The field road is spotless: {name} is a true friend of nature!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mỗi sáng tớ đi nhặt rác, cậu nhập hội với tớ tiếp nhé."
+      "text": "Mỗi sáng tớ đi nhặt rác, cậu nhập hội với tớ tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "I pick up litter every morning, so join my team again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Sorting rubbish with Gấu Đưa Báo",
+    "summary": "Rubbish falls by the field road: drag each piece into the right bin, green, blue or grey."
   }
 }

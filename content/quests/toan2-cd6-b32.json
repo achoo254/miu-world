@@ -64,7 +64,26 @@
           "text": "Đừng gặm lá để đếm nữa nhé!",
           "reply": "Sâu Xanh cười khúc khích: Ừ, từ nay tớ dùng lịch. Nhưng nhặt bưu ảnh giúp tớ trước đã!"
         }
-      ]
+      ],
+      "en": {
+        "title": "The day-counting leaves got nibbled",
+        "goTo": "Go up to the sky-watching balcony, where Sâu Xanh is draped over the railing",
+        "lines": [
+          "Hi {name}! Mum says I'll turn into a butterfly at the end of the month. I count the days by nibbling one leaf every day...",
+          "...but yesterday I was so hungry I nibbled seven leaves in a row, and now my whole week's count is wrong. Munch munch, how embarrassing!",
+          "My friend Rô-bốt is travelling and sent me some postcards with dates on them, but the wind blew them out onto the porch roof."
+        ],
+        "choices": [
+          {
+            "text": "I'll pick up the postcards for you!",
+            "reply": "Sâu Xanh curls into a question mark: Thank you, I crawl really slowly!"
+          },
+          {
+            "text": "No more counting by nibbling leaves!",
+            "reply": "Sâu Xanh giggles: Okay, from now on I'll use a calendar. But please get my postcards first!"
+          }
+        ]
+      }
     },
     {
       "id": "nhat-buu-anh",
@@ -102,7 +121,22 @@
           "text": "Tớ nhìn đồng hồ đã!",
           "reply": "Ông Lộc đẩy gọng kính: Phải rồi, nhìn kim ngắn đang ở đâu trước nhé."
         }
-      ]
+      ],
+      "en": {
+        "title": "The long hand goes round and round",
+        "goTo": "Bring the postcards back to the sky-watching balcony",
+        "lines": [
+          "I love watching the long hand move around the tower clock face. It crawls much faster than me!",
+          "When the long hand moves from one number to the next, that's 5 minutes. From 12 to 3 is 15 minutes, to 6 is 30 minutes.",
+          "So when the long hand crawls to 6, what time does the clock show? {name}, have a guess!"
+        ],
+        "choices": [
+          {
+            "text": "Let me look at the clock first!",
+            "reply": "Grandpa Lộc pushes up his glasses: That's right, first see where the short hand is."
+          }
+        ]
+      }
     },
     {
       "id": "kim-dai-den-so-sau",
@@ -313,7 +347,26 @@
           "text": "Nhớ giờ mở cửa, đóng cửa trước",
           "reply": "Sâu Xanh: 8 giờ mở, 16 giờ 30 phút đóng. Giờ soi ảnh nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Off to the museum?",
+        "goTo": "Go to the telescope corner, where Grandpa Lộc is looking out over the town",
+        "lines": [
+          "When I was young I was a guide at the Vietnam Military History Museum. Now some youngsters are meeting there, and each one arrives at a different time.",
+          "The museum opens from 8 o'clock to 16:30. Anyone who's too late has to stand outside the gate looking at the helicopter!",
+          "{name}, do you want to look at each child's clock first, or set the closing time first?"
+        ],
+        "choices": [
+          {
+            "text": "Look at each child's clock first",
+            "reply": "Grandpa Lộc fans out four photos: Here, one clock for each child."
+          },
+          {
+            "text": "Remember the opening and closing times first",
+            "reply": "Sâu Xanh: Opens at 8, closes at 16:30. Now let's look at the photos!"
+          }
+        ]
+      }
     },
     {
       "id": "ai-vao-bao-tang",
@@ -661,14 +714,22 @@
       "title": "Huy hiệu đếm ngày",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Sâu Xanh tặng {name} huy hiệu \"Bạn đồng hành đếm ngày\" và hứa: khi hóa bướm, chuyến bay đầu tiên sẽ là bay tới vai {name}."
+      "text": "Sâu Xanh tặng {name} huy hiệu \"Bạn đồng hành đếm ngày\" và hứa: khi hóa bướm, chuyến bay đầu tiên sẽ là bay tới vai {name}.",
+      "en": {
+        "title": "Day-counting badge",
+        "text": "Sâu Xanh gives {name} the \"Day-Counting Companion\" badge and promises: when she becomes a butterfly, her very first flight will be to {name}'s shoulder."
+      }
     },
     {
       "id": "ve-ghe-la-phep-tinh",
       "title": "Vé ghế là phép tính",
       "kind": "next",
       "trigger": "auto",
-      "text": "Một lá thư mời bay tới ban công tháp: Lâu đài sắp tổng duyệt văn nghệ cuối kì ở đại sảnh, vé ghế nào cũng là một phép tính, ai tính đúng mới tìm được chỗ ngồi!"
+      "text": "Một lá thư mời bay tới ban công tháp: Lâu đài sắp tổng duyệt văn nghệ cuối kì ở đại sảnh, vé ghế nào cũng là một phép tính, ai tính đúng mới tìm được chỗ ngồi!",
+      "en": {
+        "title": "Seat tickets are sums",
+        "text": "An invitation flutters onto the tower balcony: the Castle is about to hold its end-of-term show rehearsal in the great hall, every seat ticket is a sum, and only those who work it out can find their seat!"
+      }
     }
   ],
   "reward": {

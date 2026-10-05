@@ -46,7 +46,19 @@
         {
           "text": "Tớ trèo thùng gỗ ngay đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, rainwater is flooding the yard. We have to climb up the barrels!",
+          "Scramble up rung by rung, and jump over the sacks rolling down."
+        ],
+        "choices": [
+          {
+            "text": "Climbing the barrels now!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Trèo thùng gỗ vượt qua mười hai chướng ngại vật nhé!",
       "game": "barrel-climb",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Barn climb",
+        "prompt": "Climb the barrels past 12 obstacles!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bé Chăn Gà Con thở phào nhẹ nhõm, khen {name} leo trèo nhanh nhẹn như chú sóc nhỏ!"
+      "text": "Bé Chăn Gà Con thở phào nhẹ nhõm, khen {name} leo trèo nhanh nhẹn như chú sóc nhỏ!",
+      "en": {
+        "title": "Reward",
+        "text": "Bé Chăn Gà Con breathes a sigh of relief and says {name} climbs as nimbly as a squirrel!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Nước rút khỏi sân chuồng gà rồi, cậu nhớ ghé thăm đàn gà lông vàng đáng yêu nhé."
+      "text": "Nước rút khỏi sân chuồng gà rồi, cậu nhớ ghé thăm đàn gà lông vàng đáng yêu nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The water has drained from the coop yard. Remember to visit the fluffy yellow chicks."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Barrel Climb from the Flood with Bé Chăn Gà",
+    "summary": "Water is rising around the coop's brick yard; climb up the tall wooden barrels to keep your feet dry."
   }
 }

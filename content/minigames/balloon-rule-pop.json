@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 30,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Pop on command",
+    "howTo": [
+      "The board at the top tells {name} which balloon colour to pop.",
+      "Tap balloons of that colour to pop them. Popping the wrong colour costs a point!",
+      "Every ten seconds the board changes colour, so keep an eye on it."
+    ]
+  }
 }

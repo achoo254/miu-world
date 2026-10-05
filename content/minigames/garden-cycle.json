@@ -10,5 +10,13 @@
   "controls": ["tap", "drag"],
   "duration": 90,
   "goal": 20,
-  "params": { "growth": 1 }
+  "params": { "growth": 1 },
+  "en": {
+    "name": "My vegetable garden",
+    "howTo": [
+      "Tap an empty bed to sow seeds. Wilting plant? Tap it (or drag your finger across) to water.",
+      "Tap ripe veggies to pick them. Birds pecking the seeds? Tap to shoo them away!",
+      "{name}, harvest as many vegetables as you can."
+    ]
+  }
 }

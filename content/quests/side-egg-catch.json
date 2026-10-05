@@ -36,7 +36,19 @@
         { "speaker": "Hải ly", "text": "Gió to quá, trứng trong tổ chim rơi xuống rồi {name} ơi!" },
         { "speaker": "Hải ly", "text": "Cầm giỏ hứng giúp tớ với, coi chừng đá rơi theo nhé." }
       ],
-      "choices": [{ "text": "Đưa giỏ đây, tớ hứng cho!" }]
+      "choices": [{ "text": "Đưa giỏ đây, tớ hứng cho!" }],
+      "en": {
+        "title": "Hải Ly Needs a Catcher",
+        "lines": [
+          "The wind's so strong, the eggs are falling out of the bird's nest, {name}!",
+          "Grab the basket and help me catch them, but watch out for falling rocks."
+        ],
+        "choices": [
+          {
+            "text": "Pass me the basket, I've got this!"
+          }
+        ]
+      }
     },
     {
       "id": "catch",
@@ -46,22 +58,38 @@
       "trigger": "auto",
       "prompt": "Hứng được hai mươi điểm trứng là thắng!",
       "game": "egg-catch",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Catch the Eggs",
+        "prompt": "Catch twenty points' worth of eggs to win!"
+      }
     },
     {
       "id": "thanks",
       "title": "Hải ly cảm ơn",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hải ly ôm giỏ trứng: cảm ơn {name} nhiều lắm!"
+      "text": "Hải ly ôm giỏ trứng: cảm ơn {name} nhiều lắm!",
+      "en": {
+        "title": "Hải Ly Says Thanks",
+        "text": "Hải Ly hugs the basket of eggs: thank you so much, {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn gặp ở bờ suối",
       "kind": "next",
       "trigger": "auto",
-      "text": "Gió còn thổi, Hải ly vẫn chờ {name} ở bờ suối."
+      "text": "Gió còn thổi, Hải ly vẫn chờ {name} ở bờ suối.",
+      "en": {
+        "title": "See You by the Stream",
+        "text": "The wind is still blowing, and Hải Ly is waiting for {name} by the stream."
+      }
     }
   ],
-  "reward": { "xp": 15, "coin": 5 }
+  "reward": { "xp": 15, "coin": 5 },
+  "en": {
+    "title": "Catch the Eggs for Hải Ly",
+    "summary": "The wind is rocking a bird's nest and eggs keep tumbling down: slide the basket to catch them and dodge the rocks."
+  }
 }

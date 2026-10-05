@@ -9,5 +9,12 @@
   "controls": ["hold", "drag"],
   "duration": 60,
   "goal": 20,
-  "params": { "power": 1 }
+  "params": { "power": 1 },
+  "en": {
+    "name": "Blow the leaves",
+    "howTo": [
+      "Keep your finger on the yard: the fan blows leaves away from your finger.",
+      "{name}, put the fan behind a leaf to blow it into the leaf pen."
+    ]
+  }
 }

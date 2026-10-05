@@ -46,7 +46,19 @@
         {
           "text": "Cơm canh đủ món, dinh dưỡng dồi dào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "School lunch time is nearly here, {name}! Let us pack a healthy lunchbox together!",
+          "Pick four foods from four different food groups for the box, and do not take the same one twice."
+        ],
+        "choices": [
+          {
+            "text": "A full meal, packed with goodness!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Xếp hoàn thành tám hộp cơm đủ chất nhé!",
       "game": "lunchbox-pack",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Balanced lunchbox",
+        "prompt": "Pack 8 balanced lunchboxes!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chó Đội Trưởng vỗ hai chân trước reo vang: hộp cơm của {name} trông vừa đẹp vừa ngon miệng!"
+      "text": "Chó Đội Trưởng vỗ hai chân trước reo vang: hộp cơm của {name} trông vừa đẹp vừa ngon miệng!",
+      "en": {
+        "title": "Reward",
+        "text": "Chó Đội Trưởng claps both front paws: the lunchbox {name} packed looks pretty and delicious!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bếp ăn trưa mai lại đỏ lửa, {name} ghé mép sân trường xếp cơm cùng Chó Đội Trưởng nha."
+      "text": "Bếp ăn trưa mai lại đỏ lửa, {name} ghé mép sân trường xếp cơm cùng Chó Đội Trưởng nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "The lunch kitchen fires up again tomorrow, {name}, so come pack lunches with Chó Đội Trưởng."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Packing a balanced lunchbox with Chó Đội Trưởng",
+    "summary": "Food rolls past on a conveyor belt: pick all four food groups to pack a tasty school lunch."
   }
 }

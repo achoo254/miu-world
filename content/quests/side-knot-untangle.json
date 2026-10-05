@@ -46,7 +46,19 @@
         {
           "text": "Em gỡ xong chùm bóng ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The wind has tangled the shop's balloons, {name}! The strings are all crossed!",
+          "Pull the balloons into open space until every red line is gone."
+        ],
+        "choices": [
+          {
+            "text": "I'll untangle them now!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Kéo tách các quả bóng gỡ rối thành công ba chùm dây chéo nhé!",
       "game": "knot-untangle",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Untangle the balloons",
+        "prompt": "Untangle 3 bunches of crossed strings!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chùm bóng bay thẳng thớm rực rỡ sắc màu, {name} gỡ rối tài tình ghê!"
+      "text": "Chùm bóng bay thẳng thớm rực rỡ sắc màu, {name} gỡ rối tài tình ghê!",
+      "en": {
+        "title": "Reward",
+        "text": "Straight strings and bright balloons! {name} is a brilliant untangler!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Gian hàng tạp hóa luôn sẵn lòng chào đón em ghé chơi gỡ dây bóng."
+      "text": "Gian hàng tạp hóa luôn sẵn lòng chào đón em ghé chơi gỡ dây bóng.",
+      "en": {
+        "title": "See you soon",
+        "text": "The corner shop is always happy to see you, especially with tangled balloons."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Untangle the strings with Chị Tiệm Tạp Hóa",
+    "summary": "Move the balloons around until none of their tangled strings cross each other."
   }
 }

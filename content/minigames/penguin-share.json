@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 8,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Fish for Penguins",
+    "howTo": [
+      "{name} taps a penguin to give it one fish from the bucket.",
+      "When the fish run out and everyone has the same number, that's fair: one point.",
+      "If it's uneven, the penguin with the most hands one back so you can keep sharing."
+    ]
+  }
 }

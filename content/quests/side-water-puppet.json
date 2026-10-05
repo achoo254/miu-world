@@ -46,7 +46,19 @@
         {
           "text": "Cháu múa rối Chú Tễu ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The water stage is all lit up, {name}!",
+          "Move the Chú Tễu puppet so it dances along the round shadow on the water."
+        ],
+        "choices": [
+          {
+            "text": "I'll make Chú Tễu dance!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Dẫn chú rối múa khớp với bóng sáu mươi hai nhịp điệu rộn ràng nhé!",
       "game": "water-puppet",
-      "goal": 62
+      "goal": 62,
+      "en": {
+        "title": "Water Puppet Dance",
+        "prompt": "Match the puppet to the shadow for 62 lively beats!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khán giả vỗ tay reo hò râm ran vì điệu múa tuyệt vời của {name}!"
+      "text": "Khán giả vỗ tay reo hò râm ran vì điệu múa tuyệt vời của {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "The audience claps and cheers for {name}'s wonderful puppet dance!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Hiên xưởng thủ công lúc nào cũng mở cửa đón cháu vào luyện múa rối."
+      "text": "Hiên xưởng thủ công lúc nào cũng mở cửa đón cháu vào luyện múa rối.",
+      "en": {
+        "title": "See you soon",
+        "text": "The craft workshop porch is always open for you to practise puppetry."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Water puppetry with Nghệ Nhân Múa Rối",
+    "summary": "Steer the Chú Tễu puppet so it sways in rhythm along the faint shadow on the water."
   }
 }

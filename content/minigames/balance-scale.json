@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 5,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Balance the scale",
+    "howTo": [
+      "The left pan holds weights. Each one shows how heavy it is.",
+      "{name}, drag (or tap) weights from the shelf onto the right pan until both sides match.",
+      "Tap a weight on the pan to take it off. A level scale earns a point!"
+    ]
+  }
 }

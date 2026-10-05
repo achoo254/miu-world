@@ -64,7 +64,26 @@
           "text": "Cậu nhảy xuống đứng thẳng nhìn thử xem!",
           "reply": "Sâu Tòn Ten thả tơ tụt xuống sàn đá, ngắm bức tranh rồi kêu ré lên: Ối, ngược thật này!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Every painting is upside down!",
+        "goTo": "Go into the picture gallery, where Sâu Tòn Ten is dangling from the picture rail on a silk thread",
+        "lines": [
+          "Hello {name}! I'm Sâu Tòn Ten, and all I love doing all day is spinning silk and swinging upside down from the rail. From up here, every painting I hung looks perfectly straight!",
+          "Miss Hằng calls out from her easel: Tòn Ten, you only think they're the right way up because you're upside down! Every painting has its head on the floor, the snail in that one is crawling up into the sky!",
+          "Eek, really? A gust of wind spun me right round just now, and the nails and frames all came tumbling down. {name}, pick them up for me, please!"
+        ],
+        "choices": [
+          {
+            "text": "I'll pick them up, you hold on tight!",
+            "reply": "Sâu Tòn Ten sways on her silk thread: My silk is very strong, it's only my things that aren't!"
+          },
+          {
+            "text": "Hop down and stand the right way up to look!",
+            "reply": "Sâu Tòn Ten slides down her silk to the stone floor, looks at the painting and squeals: Eek, it really is upside down!"
+          }
+        ]
+      }
     },
     {
       "id": "tim-dinh-khung",
@@ -102,7 +121,22 @@
           "text": "Tớ nhớ rồi, soi tranh thôi!",
           "reply": "Cô Hằng giơ cây bút lông chỉ lên xà treo tranh: Bức đầu tiên Tòn Ten đang ôm đấy, chạy lại xem nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Miss Hằng reviews the lesson",
+        "goTo": "Bring the things to Miss Hằng's easel, where she's mixing paint and waiting for you both",
+        "lines": [
+          "Before we rehang them, let's do a quick review: a line segment has two end points, while a straight line goes on forever in both directions.",
+          "Three points on the same straight line are called collinear points. A shape with four sides is a quadrilateral.",
+          "And a curve is a wiggly line, like me when I crawl along a leaf, hee hee!"
+        ],
+        "choices": [
+          {
+            "text": "I remember, let's inspect the paintings!",
+            "reply": "Miss Hằng points her brush at the picture rail: Tòn Ten is hugging the first one, go and have a look!"
+          }
+        ]
+      }
     },
     {
       "id": "cau-dung-cau-sai",
@@ -341,7 +375,25 @@
           "text": "Áp thước kẻ dài vào từng hàng",
           "reply": "Sâu Tòn Ten cuộn mình ôm lấy thước: Tớ giữ thước, cậu ngắm nhé, cẩn thận đừng để tớ bò lệch."
         }
-      ]
+      ],
+      "en": {
+        "title": "The stand-in-a-line game",
+        "goTo": "Go back to Miss Hằng's easel, where she's hanging the playground painting",
+        "lines": [
+          "This painting shows five children standing on a squared playground. Tòn Ten looked at it upside down and said nobody was in line with anybody.",
+          "Now that I'm the right way up, I can see lots of them in a line! Do you want to climb on a chair and look from above, or hold a ruler up to the painting?"
+        ],
+        "choices": [
+          {
+            "text": "Climb on a chair and look from above",
+            "reply": "Miss Hằng holds the chair legs steady: Look down from up here and you'll spot the straight rows right away!"
+          },
+          {
+            "text": "Hold a long ruler along each row",
+            "reply": "Sâu Tòn Ten curls around the ruler: I'll hold the ruler, you take aim, and don't let me crawl off line."
+          }
+        ]
+      }
     },
     {
       "id": "nhom-ba-ban-thang-hang",
@@ -522,14 +574,22 @@
       "title": "Phòng tranh mở cửa",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mọi bức tranh hình khối đã treo xuôi. Sâu Tòn Ten bò xuôi xuống ngắm lại một lượt, trao cho {name} huy hiệu \"Thám tử hình khối\" và hứa: từ nay treo tranh xong phải bò xuôi nhìn lại!"
+      "text": "Mọi bức tranh hình khối đã treo xuôi. Sâu Tòn Ten bò xuôi xuống ngắm lại một lượt, trao cho {name} huy hiệu \"Thám tử hình khối\" và hứa: từ nay treo tranh xong phải bò xuôi nhìn lại!",
+      "en": {
+        "title": "The gallery opens",
+        "text": "Every shape painting now hangs the right way up. Sâu Tòn Ten crawls down the right way to check them all once more, gives {name} the \"Shape Detective\" badge and promises: from now on, after hanging a painting, check it the right way up!"
+      }
     },
     {
       "id": "dong-ho-thap-ngu-quen",
       "title": "Tiếng ngáy dưới tháp đồng hồ",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ở Thư viện, dưới chân tháp đồng hồ vọng lên tiếng ngáy khò khò: Gấu Trúc Khò ngủ quên, kim đồng hồ tháp chạy lung tung, chẳng ai biết mấy giờ rồi!"
+      "text": "Ở Thư viện, dưới chân tháp đồng hồ vọng lên tiếng ngáy khò khò: Gấu Trúc Khò ngủ quên, kim đồng hồ tháp chạy lung tung, chẳng ai biết mấy giờ rồi!",
+      "en": {
+        "title": "Snoring under the clock tower",
+        "text": "At the Library, loud snores come from the foot of the clock tower: Gấu Trúc Khò has overslept, the tower clock's hands are running wild, and nobody knows what time it is!"
+      }
     }
   ],
   "reward": {

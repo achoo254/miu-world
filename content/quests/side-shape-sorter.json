@@ -46,7 +46,19 @@
         {
           "text": "Cháu xoay khớp đúng lỗ hình ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "I've just carved this lovely shape-sorting box, {name}. Try fitting the shapes with me!",
+          "When a shape slides down, tap to turn the lid so the matching hole sits right under it."
+        ],
+        "choices": [
+          {
+            "text": "I'll turn it to match each hole!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Xoay khớp lỗ thả lọt thành công hai mươi lăm khối hình vào hộp nhé!",
       "game": "shape-sorter",
-      "goal": 25
+      "goal": 25,
+      "en": {
+        "title": "Shape Sorter Box",
+        "prompt": "Turn the lid and drop 25 shapes into the box!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ông cụ cười vui vẻ: mắt cháu {name} nhận hình nhanh nhạy, khối nào cũng lọt tọt!"
+      "text": "Ông cụ cười vui vẻ: mắt cháu {name} nhận hình nhanh nhạy, khối nào cũng lọt tọt!",
+      "en": {
+        "title": "Reward",
+        "text": "Grandpa laughs merrily: {name} spots shapes so quickly, every one slips right in!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Góc kho vườn còn nhiều đồ chơi gỗ mộc, ông đón {name} ghé chơi bất cứ lúc nào."
+      "text": "Góc kho vườn còn nhiều đồ chơi gỗ mộc, ông đón {name} ghé chơi bất cứ lúc nào.",
+      "en": {
+        "title": "See you soon",
+        "text": "The garden shed has lots more wooden toys. Grandpa welcomes {name} any time."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Shape Sorter Lid with Ông Cụ Trông Vườn",
+    "summary": "Wooden shapes slide down onto the box lid; turn the lid so the matching hole lines up and the shape drops in."
   }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Tớ đếm kỹ từng tầng một!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "I've just stacked these square snow blocks into a tower, {name}. Guess how many there are?",
+          "Don't forget to count the hidden blocks holding up the rows below."
+        ],
+        "choices": [
+          {
+            "text": "I'll count each layer carefully!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đếm chính xác số khối hộp trong mười chồng tuyết xếp tầng nhé!",
       "game": "block-count",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Count the blocks",
+        "prompt": "Count the blocks exactly in 10 snowy stacks!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Người Tuyết gật gù thán phục: mắt {name} sáng như sao, khối ẩn nào cũng thấy!"
+      "text": "Người Tuyết gật gù thán phục: mắt {name} sáng như sao, khối ẩn nào cũng thấy!",
+      "en": {
+        "title": "Reward",
+        "text": "Người Tuyết nods in awe: {name}'s eyes shine like stars, spotting every hidden block!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tháp tuyết trên đỉnh còn nhiều hình mới, Người Tuyết mong {name} ghé đếm cùng."
+      "text": "Tháp tuyết trên đỉnh còn nhiều hình mới, Người Tuyết mong {name} ghé đếm cùng.",
+      "en": {
+        "title": "See you soon",
+        "text": "The summit tower has lots of new shapes. Người Tuyết hopes {name} will come count again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Count Snow Blocks with Người Tuyết Đếm Bậc",
+    "summary": "Snow blocks are stacked unevenly; count even the hidden ones at the back to find the total."
   }
 }

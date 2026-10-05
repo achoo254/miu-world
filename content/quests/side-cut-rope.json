@@ -46,7 +46,19 @@
         {
           "text": "Để tớ canh thật chuẩn rồi cắt!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Look, {name}, the little frog is starving, but the sweet is hanging way up high.",
+          "Swipe to cut the rope when the sweet swings to the right spot, and it'll drop straight into the frog's mouth."
+        ],
+        "choices": [
+          {
+            "text": "I'll time it perfectly, then cut!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Thả ba viên kẹo vào miệng ếch nhé!",
       "game": "cut-rope",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Cut the rope",
+        "prompt": "Drop 3 sweets into the frog's mouth!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ếch con ăn kẹo no căng bụng, Nai Đom Đóm cảm ơn {name} rối rít!"
+      "text": "Ếch con ăn kẹo no căng bụng, Nai Đom Đóm cảm ơn {name} rối rít!",
+      "en": {
+        "title": "Reward",
+        "text": "The frog is full to bursting, and Nai Đom Đóm can't thank {name} enough!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ếch lại sắp đói rồi, nhớ quay lại trảng cỏ chơi cùng Nai Đom Đóm nhé."
+      "text": "Ếch lại sắp đói rồi, nhớ quay lại trảng cỏ chơi cùng Nai Đom Đóm nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The frog will be hungry again soon. Come back to the meadow and play with Nai Đom Đóm."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Cut the rope for Nai Đom Đóm",
+    "summary": "A sweet swings on a rope while a hungry frog waits: swipe to cut at just the right moment so it drops into the frog's mouth."
   }
 }

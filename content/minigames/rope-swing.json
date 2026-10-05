@@ -10,5 +10,13 @@
   "controls": ["hold"],
   "duration": 90,
   "goal": 6,
-  "params": { "reach": 1 }
+  "params": { "reach": 1 },
+  "en": {
+    "name": "Monkey Rope Swing",
+    "howTo": [
+      "Hold your finger: the monkey hooks onto the nearest hook and swings. Let go: it flies!",
+      "{name} lets go while the monkey swings forward to fly really far.",
+      "Fly past the tree with the bananas to clear a stage. Fall in the stream and climb back up."
+    ]
+  }
 }

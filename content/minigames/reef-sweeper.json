@@ -10,5 +10,13 @@
   "controls": ["tap", "hold"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Hidden Reef Finder",
+    "howTo": [
+      "Tap a sand square to check it. Its number tells how many hidden rocks touch it.",
+      "When {name} is sure a square hides a rock, press and hold to plant a flag.",
+      "Hit a rock and you lose a heart. Clear every safe square to finish a beach."
+    ]
+  }
 }

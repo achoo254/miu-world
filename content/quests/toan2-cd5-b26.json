@@ -65,7 +65,26 @@
           "text": "Ong Nhí ơi, đậu nghỉ một chút đi!",
           "reply": "Ong Nhí đậu lên mũi đen bóng của Gấu Mực: Đậu rồi nè. Còn mảnh kính thì nhờ cậu đó!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Ong Nhí is dizzy",
+        "goTo": "Go to the stained-glass window by the shapes courtyard, where Ong Nhí is flying in circles",
+        "lines": [
+          "Bzzz... bonk! I'm Ong Nhí, I only learnt to fly three days ago. Every pane of glass sparkles, I keep zigzagging, I'm so dizzy, {name}!",
+          "I told you to just fly straight. Oh wait, fly straight and you'd crash into the red pane, ho ho.",
+          "The wind on the castle wall just knocked a few pieces of coloured glass onto the windowsill. Once they're all back in, I can draw my flight path."
+        ],
+        "choices": [
+          {
+            "text": "I'll pick up the glass for you!",
+            "reply": "Ong Nhí does a twirl: Careful, the glass is slippery, I've slipped three times already."
+          },
+          {
+            "text": "Ong Nhí, land and rest a moment!",
+            "reply": "Ong Nhí lands on Gấu Mực's shiny black nose: There, I've landed. The glass pieces are up to you!"
+          }
+        ]
+      }
     },
     {
       "id": "nhat-manh-kinh",
@@ -102,7 +121,21 @@
           "text": "Bay thử một lối nào!",
           "reply": "Ong Nhí chấm bốn điểm lên kính: D, E, G, H. Cậu nối giúp tớ nhé."
         }
-      ]
+      ],
+      "en": {
+        "title": "What is a broken line?",
+        "lines": [
+          "My flight path is a few line segments joined end to end, bending at each joint. That's called a broken line!",
+          "If it goes through A, B, C, it's called broken line ABC. To find how long it is, add up the lengths of the segments.",
+          "And a glass pane with four sides and four corners is a quadrilateral. The round panes... I don't count those, looking at them makes me dizzy."
+        ],
+        "choices": [
+          {
+            "text": "Let's try flying a path!",
+            "reply": "Ong Nhí dots four points on the glass: D, E, G, H. Join them up for me, please."
+          }
+        ]
+      }
     },
     {
       "id": "noi-loi-bay-dgeh",
@@ -684,7 +717,26 @@
           "text": "Xem ba bạn chạy thi trước",
           "reply": "Ong Nhí: Được thôi, nhưng soi tranh một chút đã, tranh sắp khô rồi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Where to next?",
+        "goTo": "Fly over to the corner of the drawing table, where Gấu Mực is hanging up a still-wet classroom painting",
+        "lines": [
+          "Come and look! I'm Gấu Mực, and I just finished a painting of a classroom, with all sorts of broken lines and quadrilaterals hidden in it.",
+          "I also recorded the paths Rô-bốt, Việt and Mai ran across the lawn. They ran as zigzaggy as I fly!",
+          "{name}, do you want to study the classroom painting first, or look at the three runners first?"
+        ],
+        "choices": [
+          {
+            "text": "Study the classroom painting first",
+            "reply": "Gấu Mực points his paintbrush at the wall: Start with the bookshelves!"
+          },
+          {
+            "text": "Look at the three runners first",
+            "reply": "Ong Nhí: Sure, but study the painting a little first, it's nearly dry!"
+          }
+        ]
+      }
     },
     {
       "id": "soi-tranh-phong-hoc",
@@ -1265,14 +1317,22 @@
       "title": "Huy hiệu cánh ong",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cửa sổ kính màu của lâu đài lấp lánh trở lại, Ong Nhí bay một vòng đúng lối mà không đâm vào ô nào. Ong Nhí gắn lên áo {name} huy hiệu \"Phi công đường gấp khúc\", Gấu Mực vỗ tay rung cả giá vẽ."
+      "text": "Cửa sổ kính màu của lâu đài lấp lánh trở lại, Ong Nhí bay một vòng đúng lối mà không đâm vào ô nào. Ong Nhí gắn lên áo {name} huy hiệu \"Phi công đường gấp khúc\", Gấu Mực vỗ tay rung cả giá vẽ.",
+      "en": {
+        "title": "Bee wings badge",
+        "text": "The castle's stained-glass window sparkles again, and Ong Nhí flies a full loop along the right path without bumping into a single pane. She pins the \"Broken Line Pilot\" badge on {name}'s shirt, and Gấu Mực claps so hard the easel shakes."
+      }
     },
     {
       "id": "thiep-cua-chip",
       "title": "Tấm thiệp của Hổ Con Đậu",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ở bàn thủ công trong phòng vẽ, Hổ Con Đậu ôm một xấp giấy màu bằng hai chân trước: Đậu muốn gấp thiệp cảm ơn cô Hằng dạy vẽ, mà gấp mãi tờ giấy vẫn méo xệch!"
+      "text": "Ở bàn thủ công trong phòng vẽ, Hổ Con Đậu ôm một xấp giấy màu bằng hai chân trước: Đậu muốn gấp thiệp cảm ơn cô Hằng dạy vẽ, mà gấp mãi tờ giấy vẫn méo xệch!",
+      "en": {
+        "title": "Hổ Con Đậu's card",
+        "text": "At the craft table in the painting room, Hổ Con Đậu is hugging a stack of coloured paper in his front paws: Đậu wants to fold a thank-you card for Miss Hằng the art teacher, but however he folds it, the paper comes out all crooked!"
+      }
     }
   ],
   "reward": {

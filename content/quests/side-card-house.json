@@ -46,7 +46,19 @@
         {
           "text": "Cháu đặt từng lá bài thật êm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, while the horses rest, let's try building a castle out of playing cards.",
+          "Slide each card into place really slowly. Rush it with a shaky hand and the tower falls!"
+        ],
+        "choices": [
+          {
+            "text": "I'll place each card ever so gently!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Dựng đứng vững vàng ba tầng lâu đài bài tây nhé!",
       "game": "card-house",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "House of cards",
+        "prompt": "Build 3 steady tiers of your card castle!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Quản Mã Hoàng Gia nín thở rồi reo to: lâu đài bài của {name} cao vút và vững như bàn thạch!"
+      "text": "Quản Mã Hoàng Gia nín thở rồi reo to: lâu đài bài của {name} cao vút và vững như bàn thạch!",
+      "en": {
+        "title": "Reward",
+        "text": "Quản Mã Hoàng Gia holds his breath, then cheers: {name}'s card castle is tall and rock-solid!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Những quân bài mỏng manh dạy ta lòng kiên nhẫn, rảnh rỗi cháu lại ghé cầu treo chơi tiếp."
+      "text": "Những quân bài mỏng manh dạy ta lòng kiên nhẫn, rảnh rỗi cháu lại ghé cầu treo chơi tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "Flimsy cards teach us patience. When you're free, come back to the drawbridge and play."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Build a Card Castle with Quản Mã Hoàng Gia",
+    "summary": "Flimsy playing cards need a perfectly calm hand; gently stack them into tall tiers."
   }
 }

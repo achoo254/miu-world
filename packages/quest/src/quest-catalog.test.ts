@@ -72,10 +72,11 @@ describe('minigame steps in the catalogue', () => {
       category: 'side',
       phases: { hook: 'ask', explore: 'ask', learn: 'ask', challenge: 'play', decision: 'play', finale: 'play', reward: 'play', next: 'play' },
       steps: [
-        { id: 'ask', title: 'Nhờ', kind: 'dialogue', target: 'parrot', lines: [{ speaker: 'Vẹt', text: 'Chơi nhé!' }] },
-        { id: 'play', title: 'Chơi', kind: 'challenge', mechanic: 'minigame', trigger: 'auto', prompt: 'Hứng trứng', game, goal },
+        { id: 'ask', title: 'Nhờ', kind: 'dialogue', target: 'parrot', lines: [{ speaker: 'Vẹt', text: 'Chơi nhé!' }], en: { title: 'Ask', lines: ["Let's play!"] } },
+        { id: 'play', title: 'Chơi', kind: 'challenge', mechanic: 'minigame', trigger: 'auto', prompt: 'Hứng trứng', game, goal, en: { title: 'Play', prompt: 'Catch eggs' } },
       ],
       reward: {},
+      en: { title: 'Egg catch', summary: 'Catch eggs' },
     });
 
   it('accepts a known game with a goal it is proven to reach, and names what is wrong otherwise', () => {

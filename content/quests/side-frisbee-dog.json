@@ -46,7 +46,19 @@
         {
           "text": "Đĩa bay chuẩn tầm đón đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "It's cool and shady in the yard this afternoon. Throw the frisbee for me, {name}!",
+          "Swipe long towards where I'm about to run, so the frisbee glides in just right."
+        ],
+        "choices": [
+          {
+            "text": "One perfect frisbee, coming up!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ném đĩa bay chuẩn xác cho Cún Đốm đớp trúng tám lần nhé!",
       "game": "frisbee-dog",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Frisbee for the puppy",
+        "prompt": "Throw so Cún Đốm catches the frisbee 8 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cún Đốm ngậm đĩa nhảy tưng tưng: {name} ném đĩa vừa tầm, tớ chộp không trượt phát nào!"
+      "text": "Cún Đốm ngậm đĩa nhảy tưng tưng: {name} ném đĩa vừa tầm, tớ chộp không trượt phát nào!",
+      "en": {
+        "title": "Reward",
+        "text": "Cún Đốm bounces with the frisbee in his mouth: {name} throws so well, I never miss!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Sân cỏ trước hiên nhà rộng thênh thang, Cún Đốm chờ {name} ra chơi trò ném đĩa."
+      "text": "Sân cỏ trước hiên nhà rộng thênh thang, Cún Đốm chờ {name} ra chơi trò ném đĩa.",
+      "en": {
+        "title": "See you soon",
+        "text": "The lawn by the porch is wide open. Cún Đốm is waiting for {name} to play frisbee."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Frisbee in the Yard with Cún Đốm Dọn Nhà",
+    "summary": "The puppy scampers across the lawn; swipe to throw the frisbee ahead of where the pup is running."
   }
 }

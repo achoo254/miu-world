@@ -46,7 +46,19 @@
         {
           "text": "Tớ trượt ván biểu diễn ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, do you love the feeling of skating and flying over the grass?",
+          "Jump off the ramp edge and swipe to spin the board in style before you land."
+        ],
+        "choices": [
+          {
+            "text": "Watch my skateboard show!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Thực hiện thành công mười lăm động tác lướt ván điệu nghệ nhé!",
       "game": "skate-tricks",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Skateboard Tricks",
+        "prompt": "Land 15 slick skateboard tricks!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cú xoay ván trên không đẹp như vũ điệu, {name} thật tài ba!"
+      "text": "Cú xoay ván trên không đẹp như vũ điệu, {name} thật tài ba!",
+      "en": {
+        "title": "Reward",
+        "text": "That mid-air spin was as pretty as a dance. {name} is so talented!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Con dốc bãi thả bò lúc nào cũng sẵn sàng cho cậu thỏa sức lướt ván."
+      "text": "Con dốc bãi thả bò lúc nào cũng sẵn sàng cho cậu thỏa sức lướt ván.",
+      "en": {
+        "title": "See you soon",
+        "text": "The slope by the cow pasture is always ready for you to skate to your heart's content."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Skateboard tricks with Bé Đánh Cù Sơn",
+    "summary": "Ride the wooden board over the ramps, then swipe to spin through amazing tricks in mid-air."
   }
 }

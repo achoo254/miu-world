@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 12,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Word Chain",
+    "howTo": [
+      "The last syllable of one word starts the next: gấu bông → bông hoa.",
+      "{name}, tap the right card to make the word dragon grow longer!"
+    ]
+  }
 }

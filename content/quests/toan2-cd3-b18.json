@@ -64,7 +64,26 @@
           "text": "Phương Bắc có xa không Băng?",
           "reply": "Gấu Băng: Xa lắm! Xa đến nỗi tuyết ở đó dày bằng… ba chú gấu tuyết chồng lên nhau."
         }
-      ]
+      ],
+      "en": {
+        "title": "Gấu Băng packs a box",
+        "goTo": "Go into the cool corner of the storehouse at the end of the market, where Gấu Băng is sneezing because it's... too warm",
+        "lines": [
+          "Aaa-choo! The market is so crowded and hot, only this corner of the storehouse is cool. I'm wrapping presents to send home to the far north.",
+          "But the postman says: no weight on the box, no delivery. And I've completely forgotten how to add kilograms!",
+          "My storehouse, my rules: every box needs the right label. {name}, help Băng out, and I'll... keep watch at the door."
+        ],
+        "choices": [
+          {
+            "text": "I'll help you label them!",
+            "reply": "Gấu Băng gives {name} a big hug: Oh, this hug's a bit chilly, sorry about that!"
+          },
+          {
+            "text": "Is the far north really far, Băng?",
+            "reply": "Gấu Băng: Very far! So far that the snow there is as deep as... three snow bears standing on each other's shoulders."
+          }
+        ]
+      }
     },
     {
       "id": "tim-thung-qua",
@@ -102,7 +121,22 @@
           "text": "Kg với kg, lít với lít!",
           "reply": "Bác Lượm gật đầu cái rụp: Câu thần chú của kho hàng đấy."
         }
-      ]
+      ],
+      "en": {
+        "title": "Kilograms go with kilograms",
+        "goTo": "Go to the storekeeper's desk, where Uncle Lượm is fanning himself with a bamboo fan",
+        "lines": [
+          "Remember this: when you add or take away kilograms, work it out like normal numbers and keep the kg. Litres too, keep the l.",
+          "Then what about 3 kg plus 2 l?",
+          "That makes... a muddled-up soup! Kg goes with kg, litres go with litres, never mixed together."
+        ],
+        "choices": [
+          {
+            "text": "Kg with kg, litres with litres!",
+            "reply": "Uncle Lượm nods firmly: That's the storehouse's magic words."
+          }
+        ]
+      }
     },
     {
       "id": "nhan-thung-ki-lo-gam",
@@ -519,7 +553,25 @@
           "text": "Chọn túi to trước rồi bù thêm",
           "reply": "Bác Lượm: Mẹo hay! Nhưng nhớ cộng lại cho chắc."
         }
-      ]
+      ],
+      "en": {
+        "title": "Grandma's rice parcels",
+        "goTo": "Go to the storekeeper's desk, where Uncle Lượm is flipping through the rice ledger",
+        "lines": [
+          "My grandma told me: send exactly 13 kg of rice to my uncle's family, and 9 kg to my auntie's. The storehouse has five bags: 2 kg, 4 kg, 6 kg, 3 kg, 7 kg.",
+          "No opening the bags to split them, my storehouse doesn't allow spilled rice! {name}, will you try every pair, or pick the big bags first?"
+        ],
+        "choices": [
+          {
+            "text": "Try the bags in pairs",
+            "reply": "Băng: Slow and steady, like my grandma always says."
+          },
+          {
+            "text": "Pick the big bags first, then top up",
+            "reply": "Uncle Lượm: Good trick! But remember to add it up again to be sure."
+          }
+        ]
+      }
     },
     {
       "id": "hai-tui-muoi-ba-kg",
@@ -693,14 +745,22 @@
       "title": "Khăn len tuyết trắng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Băng quàng cho {name} chiếc khăn len trắng muốt đan ở phương Bắc. \"Lần sau tớ gửi thư kể chuyện tuyết cho cậu nhé!\""
+      "text": "Gấu Băng quàng cho {name} chiếc khăn len trắng muốt đan ở phương Bắc. \"Lần sau tớ gửi thư kể chuyện tuyết cho cậu nhé!\"",
+      "en": {
+        "title": "A snow-white wool scarf",
+        "text": "Gấu Băng wraps {name} in a snow-white wool scarf knitted in the far north. \"Next time I'll send you a letter all about the snow!\""
+      }
     },
     {
       "id": "linh-kien-lach-cach",
       "title": "Tiếng loảng xoảng ở xưởng nông cụ",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ở Nông trại, trong xưởng nông cụ vang lên tiếng loảng xoảng: Lợn Lấm Lem làm đổ cả hộp ốc vít ra bàn sửa xe, đang cuống cuồng đếm theo chục và rời."
+      "text": "Ở Nông trại, trong xưởng nông cụ vang lên tiếng loảng xoảng: Lợn Lấm Lem làm đổ cả hộp ốc vít ra bàn sửa xe, đang cuống cuồng đếm theo chục và rời.",
+      "en": {
+        "title": "Clattering in the tool workshop",
+        "text": "At the Farm, there's a clatter from the tool workshop: Lợn Lấm Lem has spilled a whole box of nuts and bolts onto the repair bench and is frantically counting them in tens and ones."
+      }
     }
   ],
   "reward": {

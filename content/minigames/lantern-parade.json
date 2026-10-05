@@ -10,5 +10,13 @@
   "controls": ["hold"],
   "duration": 60,
   "goal": 10,
-  "params": { "pace": 1 }
+  "params": { "pace": 1 },
+  "en": {
+    "name": "Mid-Autumn lantern parade",
+    "howTo": [
+      "Hold your finger so {name} walks faster, let go to slow down, and keep up with your friends.",
+      "Go too fast and the needle swings into red, the candle flickers and goes out. Keep it in the green!",
+      "Pick up mooncakes along the way. Fall far behind and others grab them first."
+    ]
+  }
 }

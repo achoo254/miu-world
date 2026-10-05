@@ -46,7 +46,19 @@
         {
           "text": "Mắt soi vạch đích, thứ hạng rõ ràng!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The race in the square just had a breathtaking finish, {name}!",
+          "Look at the finish line photo, see who is closer to the line, and pick the right finishing order."
+        ],
+        "choices": [
+          {
+            "text": "Eyes on the line, places made clear!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Xác định đúng thứ hạng về đích qua mười chặng đua nhé!",
       "game": "photo-finish",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Photo Finish",
+        "prompt": "Rank the finishers correctly in 10 races!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bác Lái Xe Hải giơ ngón tay cái: {name} tinh mắt phân xử công minh, không ai cãi được!"
+      "text": "Bác Lái Xe Hải giơ ngón tay cái: {name} tinh mắt phân xử công minh, không ai cãi được!",
+      "en": {
+        "title": "Reward",
+        "text": "Bác Lái Xe Hải gives a thumbs up: {name} has sharp eyes and judges fairly, no one can argue!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Giải đua chặng tiếp theo sắp khởi tranh, {name} ghé quảng trường xem ảnh về đích cùng bác nhé."
+      "text": "Giải đua chặng tiếp theo sắp khởi tranh, {name} ghé quảng trường xem ảnh về đích cùng bác nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The next race is about to start, {name}. Come check the finish photos with me at the square."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Photo finish with Bác Lái Xe Hải",
+    "summary": "A nail-biting race: study the photo of the finish line to decide where each racer placed."
   }
 }

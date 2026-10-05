@@ -46,7 +46,19 @@
         {
           "text": "Tớ ôm ván ra ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The waves are just the right height today! Grab your board and come out with me, {name}!",
+          "Hold to speed down the wave, then let go on the way up and whoosh right over."
+        ],
+        "choices": [
+          {
+            "text": "Grabbing my board now!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Lướt qua năm hòn đảo trên sóng nhé!",
       "game": "wave-surf",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Wave Surfing",
+        "prompt": "Surf past 5 islands on the waves!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cua Lướt Sóng giơ hai càng reo hò: {name} lướt sóng như cá heo!"
+      "text": "Cua Lướt Sóng giơ hai càng reo hò: {name} lướt sóng như cá heo!",
+      "en": {
+        "title": "Reward",
+        "text": "Cua Lướt Sóng waves both claws and cheers: {name} surfs like a dolphin!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ngày nào biển cũng có sóng, Cua chờ {name} ở bãi biển cạnh bến tàu."
+      "text": "Ngày nào biển cũng có sóng, Cua chờ {name} ở bãi biển cạnh bến tàu.",
+      "en": {
+        "title": "See you soon",
+        "text": "There are waves every day. Cua will wait for {name} on the beach by the pier."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Surf past the islands with Cua Lướt Sóng",
+    "summary": "On the board, hold to drop down a wave for speed, then let go to fly over the crest."
   }
 }

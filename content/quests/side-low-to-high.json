@@ -46,7 +46,19 @@
         {
           "text": "Tớ nhớ hết các số rồi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Do you have sharp eyes and a super memory, {name}? Let us put them to the test!",
+          "The number cards will flip over. Tap them one by one from the smallest number to the biggest."
+        ],
+        "choices": [
+          {
+            "text": "I remember every number!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chạm đúng thứ tự bé đến lớn sáu dãy số úp mặt nhé!",
       "game": "low-to-high",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Smallest to biggest",
+        "prompt": "Tap 6 hidden number rows in order, smallest first!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bé Mê Bảng Số ngả mũ thán phục: trí nhớ và khả năng so sánh của {name} đỉnh thật!"
+      "text": "Bé Mê Bảng Số ngả mũ thán phục: trí nhớ và khả năng so sánh của {name} đỉnh thật!",
+      "en": {
+        "title": "Reward",
+        "text": "Bé Mê Bảng Số tips a hat: the memory and comparing skills of {name} are top notch!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Dãy số ngày càng thách thức hơn, hôm nào cậu lại ghé tháp đồng hồ đọ tài nhé."
+      "text": "Dãy số ngày càng thách thức hơn, hôm nào cậu lại ghé tháp đồng hồ đọ tài nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The rows get trickier and trickier, so come challenge me at the clock tower again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Smallest to biggest with Bé Mê Bảng Số",
+    "summary": "Number cards flash up and then flip face down; remember them and tap from the smallest to the biggest."
   }
 }

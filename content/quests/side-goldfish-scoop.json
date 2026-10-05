@@ -46,7 +46,19 @@
         {
           "text": "Tớ nhẹ tay lắm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Some goldfish swam off into the pond, {name}. Help me scoop them back into the bowl!",
+          "Dip the scoop ahead of a fish, wait for it to swim over, then lift. Leave it in too long and it tears."
+        ],
+        "choices": [
+          {
+            "text": "I'll be really gentle!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Vớt được sáu chú cá vàng nhé!",
       "game": "goldfish-scoop",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Goldfish scooping",
+        "prompt": "Scoop 6 goldfish!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chó Giữ Ao vẫy đuôi tít: cá vàng về chậu đủ cả nhờ {name}!"
+      "text": "Chó Giữ Ao vẫy đuôi tít: cá vàng về chậu đủ cả nhờ {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Chó Giữ Ao wags his tail like mad: all the goldfish are home thanks to {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cá vàng hay bơi đi chơi lắm, Chó Giữ Ao chờ {name} ở cầu tàu."
+      "text": "Cá vàng hay bơi đi chơi lắm, Chó Giữ Ao chờ {name} ở cầu tàu.",
+      "en": {
+        "title": "See you soon",
+        "text": "Goldfish love to wander off. Chó Giữ Ao will wait for {name} at the pier."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Goldfish Scooping at the Pier with Chó Giữ Ao",
+    "summary": "Dip the paper scoop in front of a fish and lift at the right moment, without tearing the paper."
   }
 }

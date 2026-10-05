@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 12,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Terrace Field Gates",
+    "howTo": [
+      "{name} taps the gate by the stream to let water into the field, and taps again to close it.",
+      "Close it when the water reaches the yellow line and the rice grows: one point.",
+      "Past the line? Drain some and open it again. If it overflows, water spills into the field below."
+    ]
+  }
 }

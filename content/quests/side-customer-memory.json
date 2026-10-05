@@ -46,7 +46,19 @@
         {
           "text": "Cháu nhớ rõ từng đơn hàng!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "I'm run off my feet! {name}, help me remember what everyone ordered!",
+          "Once the bubble disappears, tap the customer and give them the right item."
+        ],
+        "choices": [
+          {
+            "text": "I'll remember every order!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nhớ đúng yêu cầu phục vụ trọn vẹn mười lăm lượt khách ghé mua nhé!",
       "game": "customer-memory",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Remember the orders",
+        "prompt": "Remember and serve 15 customers correctly!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khách nào cũng hài lòng tươi cười cảm ơn {name} phục vụ chu đáo!"
+      "text": "Khách nào cũng hài lòng tươi cười cảm ơn {name} phục vụ chu đáo!",
+      "en": {
+        "title": "Reward",
+        "text": "Every customer smiles and thanks {name} for such kind service!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cửa hàng cân đong tấp nập ngày phiên luôn cần người nhớ dai như cháu."
+      "text": "Cửa hàng cân đong tấp nập ngày phiên luôn cần người nhớ dai như cháu.",
+      "en": {
+        "title": "See you soon",
+        "text": "The busy weighing stalls always need someone with a memory like yours."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Remember the orders with Bác Thu Ngân Vui Vẻ",
+    "summary": "Remember what each customer asked for, then hand the right item to each person."
   }
 }

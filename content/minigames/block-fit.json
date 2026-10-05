@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 8,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Load the truck",
+    "howTo": [
+      "Drag each parcel onto the truck bed; the glowing squares show where it will land.",
+      "Fill a whole row or column and it gets driven away: one point.",
+      "When nothing else fits, the truck leaves and a new one arrives. Pack it neatly, {name}!"
+    ]
+  }
 }

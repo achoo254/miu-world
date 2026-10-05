@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 8,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Hopscotch",
+    "howTo": [
+      "A light moves back and forth: {name}, tap when it's on the gold-edged square to toss your pebble there.",
+      "Then tap squares 1 to 8 in order to hop, remembering to skip the one with the pebble.",
+      "Miss the toss or hop on the wrong square and you redo that turn."
+    ]
+  }
 }

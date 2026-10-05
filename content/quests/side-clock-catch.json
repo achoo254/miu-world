@@ -46,7 +46,19 @@
         {
           "text": "Tớ nhìn kim đồng hồ chuẩn lắm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The school bus is coming soon, {name}. Help the robot watch the time!",
+          "The clock hands whizz round. When the driver calls a time, tap to stop the hands on it."
+        ],
+        "choices": [
+          {
+            "text": "I read clocks really well!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Dừng kim chuẩn xác đúng giờ trong tám chuyến xe buýt tới đón nhé!",
       "game": "clock-catch",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Alarm clock",
+        "prompt": "Stop the hands on the right time for 8 bus pickups!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chú Rô Bốt tích tắc vui nhộn: {name} xem giờ chuẩn boong, kịp giờ xe khởi hành rồi!"
+      "text": "Chú Rô Bốt tích tắc vui nhộn: {name} xem giờ chuẩn boong, kịp giờ xe khởi hành rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Chú Rô Bốt ticks merrily: {name} reads the time perfectly, just in time for the bus!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đồng hồ trên bàn vẫn tích tắc gõ nhịp, Rô Bốt chờ {name} so tài xem giờ tiếp."
+      "text": "Đồng hồ trên bàn vẫn tích tắc gõ nhịp, Rô Bốt chờ {name} so tài xem giờ tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "The desk clock is still tick-tocking. Rô Bốt is waiting for {name} for another time challenge."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Stop the Clock for the Bus with Chú Rô Bốt Đồng Hồ",
+    "summary": "The clock hands keep spinning; listen for the time the driver calls, then tap to stop the hands right there."
   }
 }

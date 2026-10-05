@@ -46,7 +46,19 @@
         {
           "text": "Tớ cắt thật khéo cho!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "I am making cards. Could you help me cut the paper, {name}?",
+          "Put your finger on the scissors and follow the dotted line. Stray too far and they stop."
+        ],
+        "choices": [
+          {
+            "text": "I will cut really neatly!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Cắt xong năm hình nhé!",
       "game": "scissor-trace",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Cut Along the Line",
+        "prompt": "Cut out 5 shapes!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tấm thiệp đẹp quá! Gấu Trúc Bút Chì tặng {name} một hình cắt đầu tiên."
+      "text": "Tấm thiệp đẹp quá! Gấu Trúc Bút Chì tặng {name} một hình cắt đầu tiên.",
+      "en": {
+        "title": "Reward",
+        "text": "What a pretty card! Gấu Trúc Bút Chì gives {name} the very first cut-out shape."
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Còn nhiều giấy màu lắm, mai cậu lại ra vườn trường cắt tiếp nhé."
+      "text": "Còn nhiều giấy màu lắm, mai cậu lại ra vườn trường cắt tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "There is lots more coloured paper, so come back to the school garden tomorrow to cut more."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Cutting along the lines with Gấu Trúc Bút Chì",
+    "summary": "Coloured paper with dotted lines: guide the scissors along each line to cut out the shapes."
   }
 }

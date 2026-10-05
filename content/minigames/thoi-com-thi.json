@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Rice Cooking Contest",
+    "howTo": [
+      "The fire slowly dies down, and the wind makes it weaker. {name} taps to add firewood.",
+      "Keep the needle in the green zone and the rice cooks. Let it reach red and the rice burns.",
+      "A perfect pot is 2 points, a slightly burnt pot is 1 point."
+    ]
+  }
 }

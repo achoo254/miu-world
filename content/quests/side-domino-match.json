@@ -46,7 +46,19 @@
         {
           "text": "Cháu tìm quân domino ghép nối ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "These spotted dominoes are great for training your memory, {name}!",
+          "Look at the dots on both ends of the row, then place a domino with exactly the same dots."
+        ],
+        "choices": [
+          {
+            "text": "I will find a domino that fits!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ghép khớp đúng số chấm một quân domino vào chuỗi dài nhé!",
       "game": "domino-match",
-      "goal": 1
+      "goal": 1,
+      "en": {
+        "title": "Domino dots",
+        "prompt": "Match the dots on 1 dominoes into the long chain!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Quân cờ đặt xuống khớp từng nét chấm, {name} quan sát tinh ý lắm!"
+      "text": "Quân cờ đặt xuống khớp từng nét chấm, {name} quan sát tinh ý lắm!",
+      "en": {
+        "title": "Reward",
+        "text": "Every domino fits dot for dot. {name} has a very sharp eye!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Hộp cờ domino bằng gỗ ông cất bên chõng tre đợi cháu đến nối tiếp."
+      "text": "Hộp cờ domino bằng gỗ ông cất bên chõng tre đợi cháu đến nối tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "Grandpa keeps the wooden domino box by the bamboo bed, waiting for you to play on."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Matching dominoes with Ông Bảy Cờ Gánh",
+    "summary": "Find dominoes with matching dots and join them to either end of the chain on the mat."
   }
 }

@@ -45,7 +45,21 @@
       ],
       "choices": [
         { "text": "Cú Mèo đừng lo, tớ nhặt đồ trước!", "reply": "Cảm ơn nhé, mắt tớ ban ngày kém lắm, chẳng tìm nổi." }
-      ]
+      ],
+      "en": {
+        "title": "Cú Mèo brings news",
+        "goTo": "Go to the tower yard gate, Cú Mèo Gác Tháp is waiting",
+        "lines": [
+          "Hoo hoo… {name}, the Giant Bookworm has nibbled up several pages of the tower calendar, and now the bell doesn't know what day it is to ring.",
+          "The bookworm will only give back the calendar to someone who can answer its riddles about time. And the tower's things are scattered all over the lawn, too."
+        ],
+        "choices": [
+          {
+            "text": "Don't worry, Cú Mèo, I'll pick up the things first!",
+            "reply": "Thank you, my eyes are terrible in the daytime, I can't find a thing."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-do-cua-thap",
@@ -155,7 +169,25 @@
           "text": "Mời Sâu một chiếc lá non",
           "consequence": "Sâu nhai lá ngon lành, khen lá thơm hơn giấy lịch nhiều."
         }
-      ]
+      ],
+      "en": {
+        "title": "Waking the Bookworm",
+        "prompt": "The Bookworm is snoozing on a pile of books in the bell loft. How will {name} wake it up?",
+        "choices": [
+          {
+            "text": "Read a good story out loud",
+            "consequence": "The worm opens its eyes and lifts its head, listening so eagerly it forgets to yawn."
+          },
+          {
+            "text": "Wind up the alarm clock, brrring!",
+            "consequence": "Brrring! The worm curls up with a start, then laughs: all right, all right, I'm up!"
+          },
+          {
+            "text": "Offer the worm a fresh young leaf",
+            "consequence": "The worm munches the leaf happily and says it tastes much nicer than calendar paper."
+          }
+        ]
+      }
     },
     {
       "id": "tran-trum",
@@ -254,14 +286,22 @@
       "title": "Chuông tháp ngân vang",
       "kind": "reward",
       "target": "trum-tv-sau-mot-sach",
-      "text": "Sâu nhả lại từng tờ lịch, Koala dán vào ngay ngắn. Boong boong, chuông tháp ngân vang! Túi quà của Sâu rơi ra XP, xu và điểm kỹ năng cho {name}."
+      "text": "Sâu nhả lại từng tờ lịch, Koala dán vào ngay ngắn. Boong boong, chuông tháp ngân vang! Túi quà của Sâu rơi ra XP, xu và điểm kỹ năng cho {name}.",
+      "en": {
+        "title": "The tower bell rings out",
+        "text": "The worm gives back each calendar page, and Koala sticks them neatly in place. Bong bong, the tower bell rings out! The worm's gift bag drops XP, coins and skill points for {name}."
+      }
     },
     {
       "id": "ve-phong-doc",
       "title": "Về phòng đọc",
       "kind": "next",
       "trigger": "auto",
-      "text": "Sâu Mọt Sách hứa từ nay chỉ gặm lá, không gặm sách nữa. Gấu Trúc Tròn mời {name} vào phòng đọc nghe kể chuyện bên cửa sổ."
+      "text": "Sâu Mọt Sách hứa từ nay chỉ gặm lá, không gặm sách nữa. Gấu Trúc Tròn mời {name} vào phòng đọc nghe kể chuyện bên cửa sổ.",
+      "en": {
+        "title": "Back to the reading room",
+        "text": "The Bookworm promises to nibble only leaves from now on, never books. Gấu Trúc Tròn invites {name} into the reading room for a story by the window."
+      }
     }
   ],
   "reward": {

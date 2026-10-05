@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 6,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Animal Snapshots",
+    "howTo": [
+      "{name} takes photos in the forest. Animals hide behind bushes, rocks and stumps, then peek out.",
+      "Tap to snap when an animal is fully out and inside the viewfinder.",
+      "The film only has 12 shots, so don't snap at random!"
+    ]
+  }
 }

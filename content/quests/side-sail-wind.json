@@ -46,7 +46,19 @@
         {
           "text": "Cháu căng buồm đón gió đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The river wind is blowing strong, {name}!",
+          "Pull the sail so the wind fills it, and the boat glides along smoothly."
+        ],
+        "choices": [
+          {
+            "text": "I'm raising the sail!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đón gió đưa thuyền lướt qua sáu chiếc phao hoa trên sông nhé!",
       "game": "sail-wind",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Sail with the Wind",
+        "prompt": "Catch the wind and sail past 6 flower buoys on the river!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thuyền chạy nhanh tựa chim bay, {name} cầm lái buồm cừ lắm!"
+      "text": "Thuyền chạy nhanh tựa chim bay, {name} cầm lái buồm cừ lắm!",
+      "en": {
+        "title": "Reward",
+        "text": "The boat flies like a bird! {name} handles the sail like a pro!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Khi nào gió chiều nổi lên, chú cháu mình lại giương buồm ra xa."
+      "text": "Khi nào gió chiều nổi lên, chú cháu mình lại giương buồm ra xa.",
+      "en": {
+        "title": "See you soon",
+        "text": "When the evening wind picks up, you and I will hoist the sail and head out again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Catch the wind with Chú Lái Đò Ba",
+    "summary": "Turn the white sail to catch the south wind so the boat speeds past the marker buoys."
   }
 }

@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 40,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Draw the bus routes",
+    "howTo": [
+      "Drag from one stop to another to draw a bus route; drag from a route's end to extend it.",
+      "Each passenger wants to reach the stop with the same shape as them.",
+      "{name}, connect the stops so everyone gets where they're going!"
+    ]
+  }
 }

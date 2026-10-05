@@ -46,7 +46,19 @@
         {
           "text": "Em tìm ra món đổi chỗ ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, take a good look at the counter before the curtain drops!",
+          "When it opens, two things have swapped. Tap the two that moved."
+        ],
+        "choices": [
+          {
+            "text": "I'll find the swap!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Phát hiện chính xác tám lần các món đồ hoán đổi vị trí nhé!",
       "game": "who-swapped",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Who Swapped Places?",
+        "prompt": "Spot the swapped items 8 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mắt em tinh như mắt cú mèo, không món nào lọt qua mắt {name}!"
+      "text": "Mắt em tinh như mắt cú mèo, không món nào lọt qua mắt {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Eyes as sharp as an owl! Nothing slips past {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Trò chơi đổi chỗ vui nhộn ở góc quảng trường chợ đợi em đến phá án."
+      "text": "Trò chơi đổi chỗ vui nhộn ở góc quảng trường chợ đợi em đến phá án.",
+      "en": {
+        "title": "See you soon",
+        "text": "The swapping game in the market square is waiting for its detective."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Who swapped? with Anh Lái Xe Đụng",
+    "summary": "Look quickly at where the items are, then spot the two that swapped places when the curtain lifts."
   }
 }

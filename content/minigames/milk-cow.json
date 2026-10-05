@@ -10,5 +10,13 @@
   "controls": ["swipe"],
   "duration": 60,
   "goal": 40,
-  "params": { "refill": 1 }
+  "params": { "refill": 1 },
+  "en": {
+    "name": "Milk the Cow",
+    "howTo": [
+      "{name} swipes down on a teat to squirt milk into the bucket.",
+      "A plump pink teat has milk in it. Left, then right, nice and steady!",
+      "Rush it before the milk is ready and the cow gets grumpy and wanders off for a bit."
+    ]
+  }
 }

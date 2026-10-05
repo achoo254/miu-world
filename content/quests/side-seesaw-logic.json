@@ -46,7 +46,19 @@
         {
           "text": "Em đoán ra bạn nặng nhất ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The bears and rabbits are on the seesaws, comparing weights, {name}!",
+          "The end that dips down is heavier. Now guess who's the heaviest!"
+        ],
+        "choices": [
+          {
+            "text": "I'll find the heaviest one!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Suy luận chuẩn xác tìm bạn nặng nhất hoặc nhẹ nhất mười lần nhé!",
       "game": "seesaw-logic",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Who's the Heaviest?",
+        "prompt": "Work out the heaviest or lightest animal 10 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Suy luận logic đỉnh cao, {name} tìm ra bạn nặng nhất chuẩn không cần chỉnh!"
+      "text": "Suy luận logic đỉnh cao, {name} tìm ra bạn nặng nhất chuẩn không cần chỉnh!",
+      "en": {
+        "title": "Reward",
+        "text": "Brilliant reasoning! {name} found the heaviest one, spot on!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cặp bập bênh góc chợ phiên vẫn đung đưa đợi em ra so tài suy luận."
+      "text": "Cặp bập bênh góc chợ phiên vẫn đung đưa đợi em ra so tài suy luận.",
+      "en": {
+        "title": "See you soon",
+        "text": "The seesaws at the market are still swaying, waiting for your next puzzle."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Seesaw weigh-in with Anh Lái Xe Đụng",
+    "summary": "Watch which way the seesaws tip to work out which animal is the heaviest or the lightest."
   }
 }

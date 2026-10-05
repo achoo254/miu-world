@@ -46,7 +46,19 @@
         {
           "text": "Cháu chỉ đĩa nhiều hơn cho cá sấu!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "This greedy crocodile only likes the plate with the bigger number, {name}!",
+          "Compare them carefully, then swipe to turn the crocodile towards the bigger plate."
+        ],
+        "choices": [
+          {
+            "text": "I'll show the croc the bigger plate!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chỉ đúng đĩa nhiều hơn hai mươi lần cho cá sấu no bụng nhé!",
       "game": "croc-compare",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Greedy crocodile",
+        "prompt": "Point the crocodile to the bigger plate 20 times to fill its tummy!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cá sấu vỗ bụng cười khà khà vì được {name} cho ăn no căng!"
+      "text": "Cá sấu vỗ bụng cười khà khà vì được {name} cho ăn no căng!",
+      "en": {
+        "title": "Reward",
+        "text": "The crocodile pats its belly and chuckles. {name} fed it till it's stuffed!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bác vẫn để bàn tính bên sân bóng đầm sen đón cháu ra so tài số học."
+      "text": "Bác vẫn để bàn tính bên sân bóng đầm sen đón cháu ra so tài số học.",
+      "en": {
+        "title": "See you soon",
+        "text": "I keep my counting table by the pitch near the lotus pond, ready for a maths contest."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "The crocodile eats the bigger number with Bác Thổi Cơm Thi",
+    "summary": "Compare the two plates of food, then swipe to open the crocodile's mouth towards the one with more."
   }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Thử thì biết ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "I bet you cannot shoot marbles as well as me, {name}!",
+          "Pull back away from where you want to shoot, then let go. Knock a marble out of the ring to win it."
+        ],
+        "choices": [
+          {
+            "text": "Only one way to find out!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đẩy năm viên bi ra khỏi vòng nhé!",
       "game": "marbles",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Shooting marbles",
+        "prompt": "Knock 5 marbles out of the ring!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bi lăn đâu trúng đó, {name} bắn chuẩn quá trời!"
+      "text": "Bi lăn đâu trúng đó, {name} bắn chuẩn quá trời!",
+      "en": {
+        "title": "Reward",
+        "text": "Every marble goes right where it should. {name} has such a perfect aim!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Túi bi của tớ còn đầy, ra bờ hồ sen tỉ thí tiếp nha."
+      "text": "Túi bi của tớ còn đầy, ra bờ hồ sen tỉ thí tiếp nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "My marble bag is still full, so meet me at the lotus pond for another contest."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Marbles by the lotus pond with Khỉ Bắn Bi",
+    "summary": "Pull your finger back like a slingshot and let go so your shooter knocks marbles out of the chalk ring."
   }
 }

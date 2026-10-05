@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 12,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Quick-Witted Rock Paper Scissors",
+    "howTo": [
+      "Your friend shows a hand first. WIN means {name} picks the hand that beats it; LOSE means the one that loses.",
+      "Rock beats scissors, scissors beat paper, paper beats rock. Tap fast!"
+    ]
+  }
 }

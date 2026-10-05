@@ -46,7 +46,19 @@
         {
           "text": "Chiếm lấy góc bàn, lật màu toàn bộ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Oh {name}, wise Cú the owl is waiting for someone to play this black-and-white flipping game.",
+          "Place a piece so a row of Cú's pieces is trapped between two of yours to flip them, and grab the corners."
+        ],
+        "choices": [
+          {
+            "text": "Take the corners, flip them all!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Thắng bạn Cú một ván cờ lật thông minh nhé!",
       "game": "reversi",
-      "goal": 1
+      "goal": 1,
+      "en": {
+        "title": "Flip Stones",
+        "prompt": "Beat Cú at 1 games of the flipping board game!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thỏ Măng Non reo hò phấn khích: bàn cờ trắng tinh màu của {name}, bạn Cú chịu thua rồi!"
+      "text": "Thỏ Măng Non reo hò phấn khích: bàn cờ trắng tinh màu của {name}, bạn Cú chịu thua rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Thỏ Măng Non bounces with excitement: the board is all the colour of {name}, and Cú gives up!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bạn Cú đang nghiên cứu nước cờ mới, {name} nhớ quay lại hội trường so tài tiếp nha."
+      "text": "Bạn Cú đang nghiên cứu nước cờ mới, {name} nhớ quay lại hội trường so tài tiếp nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "Cú is studying new moves, {name}, so come back to the hall for another round."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Flip-colour board game with Thỏ Măng Non",
+    "summary": "A square board with black-and-white pieces: trap the other side's pieces between yours to flip them all to your colour."
   }
 }

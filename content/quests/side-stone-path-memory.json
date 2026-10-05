@@ -46,7 +46,19 @@
         {
           "text": "Tớ nhớ từng viên đá rồi, nhảy qua thôi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Look at the shiny pebbles in the cool forest stream, {name}.",
+          "The stones light up one by one. Remember the path, then tap to step across."
+        ],
+        "choices": [
+          {
+            "text": "I remember every stone, let's hop!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Bước qua suối thành công sáu lần nhé!",
       "game": "stone-path-memory",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Stepping Stone Memory",
+        "prompt": "Cross the stream 6 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Họa Mi Rừng Xanh lượn vòng khen ngợi: {name} có trí nhớ tuyệt đỉnh, bước chân vững như bàn thạch!"
+      "text": "Họa Mi Rừng Xanh lượn vòng khen ngợi: {name} có trí nhớ tuyệt đỉnh, bước chân vững như bàn thạch!",
+      "en": {
+        "title": "Reward",
+        "text": "Họa Mi Rừng Xanh circles in praise: {name} has an amazing memory and rock-steady steps!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Dòng suối vẫn róc rách chờ đón, {name} rảnh lại ra vòm lá xanh dạo bước qua suối nha."
+      "text": "Dòng suối vẫn róc rách chờ đón, {name} rảnh lại ra vòm lá xanh dạo bước qua suối nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "The stream is still babbling away. Come stroll across it at the green canopy, {name}."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Remember the stepping stones with Họa Mi Rừng Xanh",
+    "summary": "A clear stream babbles along: remember the order the stones light up to step across to the other bank."
   }
 }

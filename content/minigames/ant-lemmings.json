@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 20,
-  "params": { "ants": 6 }
+  "params": { "ants": 6 },
+  "en": {
+    "name": "Ants going home",
+    "howTo": [
+      "Ants walk straight ahead and turn around at anything in the way. Help them home, {name}!",
+      "Tap an ant to make it stand and block the path; tap one at the edge of a gap to lie down as a bridge.",
+      "Ants that fall into a gap or the pond get lost."
+    ]
+  }
 }

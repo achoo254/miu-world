@@ -46,7 +46,19 @@
         {
           "text": "Cháu bước nhẹ chân nhảy sang ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The lake is sweeping the ice away so fast! {name}, let's cross the water together!",
+          "When a floe cracks, jump to the next one right away, or you'll slip and get soaked."
+        ],
+        "choices": [
+          {
+            "text": "I'll hop over lightly!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nhặt được mười con cá tươi trên những tảng băng trôi nhé!",
       "game": "melting-floes",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Melting Ice Floes",
+        "prompt": "Collect 10 fresh fish from the drifting ice!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Bắc Cực vỗ vai khen: chân cháu {name} nhanh thoăn thoắt, nhảy chuẩn từng bước!"
+      "text": "Gấu Bắc Cực vỗ vai khen: chân cháu {name} nhanh thoăn thoắt, nhảy chuẩn từng bước!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Bắc Cực claps {name} on the back: such quick feet, every jump just right!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Dòng nước lạnh vẫn còn trôi dạt, bác Gấu chờ {name} ở cửa hang băng."
+      "text": "Dòng nước lạnh vẫn còn trôi dạt, bác Gấu chờ {name} ở cửa hang băng.",
+      "en": {
+        "title": "See you soon",
+        "text": "The cold water is still drifting. Gấu Bắc Cực is waiting for {name} at the ice cave entrance."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Hop the Drifting Ice with Gấu Bắc Cực Câu Cá",
+    "summary": "Bobbing ice floes are about to sink; lead your little friend to hop quickly onto steady ones and grab the fish."
   }
 }

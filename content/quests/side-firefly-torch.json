@@ -46,7 +46,19 @@
         {
           "text": "Đưa tớ đèn pin, tớ soi ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "It's getting dark, {name}. Soon the meadow will be full of fireflies.",
+          "Here's a torch and a jar. Wherever it lights up, tap to catch one."
+        ],
+        "choices": [
+          {
+            "text": "Pass me the torch, I'll shine it now!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Bắt hai mươi chú đom đóm vào lọ nhé!",
       "game": "firefly-torch",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Night firefly hunt",
+        "prompt": "Catch 20 fireflies in the jar!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Lọ đom đóm sáng lung linh như cái đèn lồng, Nai Đom Đóm reo: {name} giỏi quá!"
+      "text": "Lọ đom đóm sáng lung linh như cái đèn lồng, Nai Đom Đóm reo: {name} giỏi quá!",
+      "en": {
+        "title": "Reward",
+        "text": "The jar glows like a lantern! Nai Đom Đóm cheers: {name}, that's amazing!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đêm nào cũng có đom đóm, cậu cứ tới trảng cỏ tìm Nai Đom Đóm."
+      "text": "Đêm nào cũng có đom đóm, cậu cứ tới trảng cỏ tìm Nai Đom Đóm.",
+      "en": {
+        "title": "See you soon",
+        "text": "There are fireflies every night, so come to the meadow and find Nai Đom Đóm."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Torchlight firefly hunt with Nai Đom Đóm",
+    "summary": "The meadow is pitch dark and fireflies flicker: shine the torch on a glow, then tap to catch it in the jar."
   }
 }

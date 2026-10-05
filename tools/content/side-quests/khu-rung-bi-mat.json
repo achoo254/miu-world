@@ -32,7 +32,19 @@
           "reward": "Khỉ Chuyền Cành treo ngược trên cành vỗ tay: {name} bay như chim rồi!",
           "next": "Lúc nào muốn đu tiếp, cứ ra bìa trảng rừng gọi Khỉ Chuyền Cành nhé.",
           "who": "{name}, bạn đu dây của bầy khỉ",
-          "learn": "Chọn đúng lúc buông tay và ước lượng đà bay"
+          "learn": "Chọn đúng lúc buông tay và ước lượng đà bay",
+          "en": {
+            "title": "Swing through the forest with Khỉ Chuyền Cành",
+            "summary": "Vines hang all over the tall trees: grab one, swing up high, then fly over to the tree with the bananas.",
+            "lines": [
+              "{name}, I've hung vines from one tree to the next, all ready for you!",
+              "Hold to grab a vine, swing up nice and high, then let go and fly."
+            ],
+            "choice": "I swing as well as a monkey!",
+            "prompt": "Fly across {goal} banana stops to win!",
+            "reward": "Khỉ Chuyền Cành claps while hanging upside down: {name} flies like a bird!",
+            "next": "Whenever you want another swing, come to the edge of the clearing and call Khỉ Chuyền Cành."
+          }
         },
         {
           "game": "doodle-climb",
@@ -47,7 +59,19 @@
           "reward": "Ếch con ngồi trên mây cười tít mắt, cảm ơn {name} đã lái giỏi thế!",
           "next": "Mai ếch lại muốn lên mây, Khỉ Chuyền Cành sẽ đợi cậu dưới tán cây cao.",
           "who": "{name}, người lái ếch lên trời",
-          "learn": "Lái khéo và nhìn trước tấm lá sắp đáp"
+          "learn": "Lái khéo và nhìn trước tấm lá sắp đáp",
+          "en": {
+            "title": "Bounce the frog to the clouds with Khỉ Chuyền Cành",
+            "summary": "A little frog wants to reach the clouds: steer it bouncing from leaf to leaf, higher and higher.",
+            "lines": [
+              "Hey {name}, that little frog keeps begging to go play with the white clouds.",
+              "Drag left and right to steer it up for me. A red mushroom sends it shooting sky-high!"
+            ],
+            "choice": "Come on, froggy, up to the clouds!",
+            "prompt": "Bounce the frog {goal} metres high!",
+            "reward": "The little frog sits on a cloud, all smiles, thanking {name} for such great steering!",
+            "next": "The frog will want to visit the clouds again tomorrow. Khỉ Chuyền Cành will wait under the tall trees."
+          }
         }
       ]
     },
@@ -81,7 +105,19 @@
           "reward": "Vẹt Mỏ Cong hót vang cả lối mòn: {name} dạy chim non bay giỏi quá!",
           "next": "Chim non còn muốn tập nữa, cứ ghé lối mòn phía đông tìm Vẹt Mỏ Cong.",
           "who": "{name}, thầy dạy bay của chim non",
-          "learn": "Giữ nhịp chạm đều tay và canh độ cao"
+          "learn": "Giữ nhịp chạm đều tay và canh độ cao",
+          "en": {
+            "title": "Fly through the bamboo with Vẹt Mỏ Cong",
+            "summary": "The bamboo grows close together: tap to make the bird flap and squeeze through each narrow gap.",
+            "lines": [
+              "{name}, my little chick is learning to fly through the bamboo grove!",
+              "One tap and the bird flaps its wings. Don't let it bump the bamboo stems!"
+            ],
+            "choice": "Flap along to my beat, little bird!",
+            "prompt": "Fly the bird through {goal} bamboo gaps!",
+            "reward": "Vẹt Mỏ Cong sings all along the trail: {name} is a wonderful flying teacher!",
+            "next": "The chick wants more practice. Drop by the east trail and find Vẹt Mỏ Cong."
+          }
         },
         {
           "game": "dodge-fall",
@@ -96,7 +132,19 @@
           "reward": "Vẹt Mỏ Cong nghiêng đầu khen: mắt {name} tinh, chân {name} nhanh ghê!",
           "next": "Hôm nào gió to, Vẹt Mỏ Cong lại rủ cậu ra lối mòn né quả nhé.",
           "who": "{name}, người chạy né nhanh nhất lối mòn",
-          "learn": "Quan sát bóng đổ để đoán chỗ vật rơi"
+          "learn": "Quan sát bóng đổ để đoán chỗ vật rơi",
+          "en": {
+            "title": "Dodge the falling pine cones with Vẹt Mỏ Cong",
+            "summary": "The wind shakes the trees and pine cones and coconuts thud down: watch the shadows, dodge and grab the stars.",
+            "lines": [
+              "Careful, {name}! The wind is shaking the trees and pine cones are falling everywhere!",
+              "A round shadow on the ground means something is about to fall. Dodge it and grab the stars for me."
+            ],
+            "choice": "I'm super quick, watch this!",
+            "prompt": "Grab {goal} stars without getting hit three times!",
+            "reward": "Vẹt Mỏ Cong tilts its head in praise: {name} has sharp eyes and quick feet!",
+            "next": "On the next windy day, Vẹt Mỏ Cong will invite you back to the trail to dodge some more."
+          }
         }
       ]
     },
@@ -131,7 +179,19 @@
           "reward": "Lọ đom đóm sáng lung linh như cái đèn lồng, Nai Đom Đóm reo: {name} giỏi quá!",
           "next": "Đêm nào cũng có đom đóm, cậu cứ tới trảng cỏ tìm Nai Đom Đóm.",
           "who": "{name}, người soi đèn trong rừng đêm",
-          "learn": "Tìm kiếm có trật tự và phản xạ khi thấy ánh sáng"
+          "learn": "Tìm kiếm có trật tự và phản xạ khi thấy ánh sáng",
+          "en": {
+            "title": "Torchlight firefly hunt with Nai Đom Đóm",
+            "summary": "The meadow is pitch dark and fireflies flicker: shine the torch on a glow, then tap to catch it in the jar.",
+            "lines": [
+              "It's getting dark, {name}. Soon the meadow will be full of fireflies.",
+              "Here's a torch and a jar. Wherever it lights up, tap to catch one."
+            ],
+            "choice": "Pass me the torch, I'll shine it now!",
+            "prompt": "Catch {goal} fireflies in the jar!",
+            "reward": "The jar glows like a lantern! Nai Đom Đóm cheers: {name}, that's amazing!",
+            "next": "There are fireflies every night, so come to the meadow and find Nai Đom Đóm."
+          }
         },
         {
           "game": "cut-rope",
@@ -146,7 +206,19 @@
           "reward": "Ếch con ăn kẹo no căng bụng, Nai Đom Đóm cảm ơn {name} rối rít!",
           "next": "Ếch lại sắp đói rồi, nhớ quay lại trảng cỏ chơi cùng Nai Đom Đóm nhé.",
           "who": "{name}, người bạn tốt bụng của ếch con",
-          "learn": "Hiểu chuyển động đung đưa và chọn thời điểm"
+          "learn": "Hiểu chuyển động đung đưa và chọn thời điểm",
+          "en": {
+            "title": "Cut the rope for Nai Đom Đóm",
+            "summary": "A sweet swings on a rope while a hungry frog waits: swipe to cut at just the right moment so it drops into the frog's mouth.",
+            "lines": [
+              "Look, {name}, the little frog is starving, but the sweet is hanging way up high.",
+              "Swipe to cut the rope when the sweet swings to the right spot, and it'll drop straight into the frog's mouth."
+            ],
+            "choice": "I'll time it perfectly, then cut!",
+            "prompt": "Drop {goal} sweets into the frog's mouth!",
+            "reward": "The frog is full to bursting, and Nai Đom Đóm can't thank {name} enough!",
+            "next": "The frog will be hungry again soon. Come back to the meadow and play with Nai Đom Đóm."
+          }
         }
       ]
     },
@@ -180,7 +252,19 @@
           "reward": "Lối mòn sạch bong, Thỏ Quét Lá nhảy cẫng lên: {name} đúng là thợ gom lá!",
           "next": "Mùa thu lá còn rụng nữa, Thỏ Quét Lá vẫn ở lối mòn lá vàng chờ cậu.",
           "who": "{name}, người gom lá của rừng sâu",
-          "learn": "Hiểu hướng gió đẩy và chọn chỗ đặt quạt"
+          "learn": "Hiểu hướng gió đẩy và chọn chỗ đặt quạt",
+          "en": {
+            "title": "Blow the leaves into a pile with Thỏ Quét Lá",
+            "summary": "Golden leaves cover the trail: place a fan behind each leaf to blow it into the collecting frame.",
+            "lines": [
+              "So many leaves have fallen, {name}! I sweep and sweep but I can't keep up!",
+              "Hold the fan behind a leaf and the wind will push it into the frame for me."
+            ],
+            "choice": "Fan's ready, let's gather leaves!",
+            "prompt": "Blow {goal} leaves into the frame!",
+            "reward": "The trail is spotless! Thỏ Quét Lá jumps for joy: {name} is a real leaf gatherer!",
+            "next": "More leaves will fall this autumn. Thỏ Quét Lá is still on the golden trail, waiting for you."
+          }
         },
         {
           "game": "lane-runner",
@@ -195,7 +279,19 @@
           "reward": "Thỏ Quét Lá giơ chổi làm cờ: {name} về đích với cả túi sao!",
           "next": "Còn nhiều sao rơi trên lối mòn lắm, chạy lại với Thỏ Quét Lá lúc nào cũng được.",
           "who": "{name}, vận động viên chạy làn của rừng",
-          "learn": "Phản xạ đổi hướng và nhìn trước chướng ngại"
+          "learn": "Phản xạ đổi hướng và nhìn trước chướng ngại",
+          "en": {
+            "title": "Three-lane run with Thỏ Quét Lá",
+            "summary": "The trail has three lanes with logs, barrels and rocks: swipe to switch lanes, jump the logs and collect stars.",
+            "lines": [
+              "Hey {name}, I've just marked out three running lanes on the trail. Want a go?",
+              "Swipe sideways to switch lanes and swipe up to jump the logs. Collect lots of stars!"
+            ],
+            "choice": "I'm off! Count my stars for me!",
+            "prompt": "Collect {goal} stars on the three-lane track!",
+            "reward": "Thỏ Quét Lá waves the broom like a flag: {name} crossed the finish with a bag full of stars!",
+            "next": "Plenty of stars still lie on the trail. You can run with Thỏ Quét Lá any time."
+          }
         }
       ]
     },
@@ -230,7 +326,19 @@
           "reward": "Sóc Đu Đuôi ngoe nguẩy cái đuôi xù: {name} che ô khéo quá, bóng an toàn rồi!",
           "next": "Khi nào muốn ngắm bóng bay, {name} cứ ghé bãi cỏ hoang tìm Sóc Đu Đuôi nhé.",
           "who": "{name}, vệ sĩ bảo vệ bóng bay",
-          "learn": "Kéo ô nhanh nhẹn và bảo vệ bạn từ xa"
+          "learn": "Kéo ô nhanh nhẹn và bảo vệ bạn từ xa",
+          "en": {
+            "title": "Guard the balloons with Sóc Đu Đuôi",
+            "summary": "A child floats up with a bunch of balloons: drag the umbrella to shield them from falling leaves and pebbles.",
+            "lines": [
+              "{name}, a little friend is floating up into the sky, but there are pebbles falling everywhere!",
+              "Drag the umbrella over the balloons to knock away anything that falls."
+            ],
+            "choice": "Umbrella ready, I'll shield you!",
+            "prompt": "Escort the balloons {goal} metres up!",
+            "reward": "Sóc Đu Đuôi swishes its fluffy tail: {name} held the umbrella so well, the balloons are safe!",
+            "next": "Whenever you want to watch the balloons, {name}, come to the wild meadow and find Sóc Đu Đuôi."
+          }
         },
         {
           "game": "ant-lemmings",
@@ -245,7 +353,19 @@
           "reward": "Sóc Đu Đuôi chia hạt dẻ khen: {name} chỉ đường thông minh, đàn kiến về đủ rồi!",
           "next": "Tổ kiến còn cần gom hạt nữa, rảnh rỗi {name} lại ghé bìa rừng chỉ đường tiếp nha.",
           "who": "{name}, người dẫn lối cho đàn kiến",
-          "learn": "Phán đoán đường đi và phối hợp bắc cầu"
+          "learn": "Phán đoán đường đi và phối hợp bắc cầu",
+          "en": {
+            "title": "Lead the ants home with Sóc Đu Đuôi",
+            "summary": "Busy ants have lost their way: tap an ant to turn it into a blocker or a bridge over a gap in the rocks.",
+            "lines": [
+              "Look, {name}, the little ants are struggling to find their way home.",
+              "Tap an ant to make it stand guard, or lie down as a bridge so the others can cross."
+            ],
+            "choice": "Follow me, ants, I'll clear the way!",
+            "prompt": "Lead {goal} ants safely home!",
+            "reward": "Sóc Đu Đuôi shares a chestnut in praise: {name} showed the way so cleverly, every ant made it home!",
+            "next": "The ants still need to gather seeds. When you're free, {name}, come back to the forest edge and guide them."
+          }
         },
         {
           "game": "butterfly-net",
@@ -260,7 +380,19 @@
           "reward": "Sóc Đu Đuôi vỗ hai tay tấm tắc: {name} rón rén thật tài, đàn bướm chẳng hề giật mình!",
           "next": "Mỗi sớm hoa nở bướm lại bay về, {name} nhớ quay lại bìa rừng ngắm bướm cùng sóc nhé.",
           "who": "{name}, tay bắt bướm khéo léo",
-          "learn": "Kiên nhẫn di chuyển chậm và canh thời điểm"
+          "learn": "Kiên nhẫn di chuyển chậm và canh thời điểm",
+          "en": {
+            "title": "Tiptoe butterfly catching with Sóc Đu Đuôi",
+            "summary": "Bright butterflies flutter around the flowers: move the net gently closer, then lift and scoop softly.",
+            "lines": [
+              "Look, {name}, rainbow butterflies are resting on the bright wildflowers.",
+              "Move the net very gently, line it up where a butterfly sits, then lift to scoop."
+            ],
+            "choice": "I'll tiptoe in and scoop!",
+            "prompt": "Gently catch {goal} flower butterflies!",
+            "reward": "Sóc Đu Đuôi claps both paws: {name} crept up so softly, not one butterfly got a fright!",
+            "next": "Butterflies come back every morning when the flowers open. Come watch them with the squirrel, {name}."
+          }
         }
       ]
     },
@@ -295,7 +427,19 @@
           "reward": "Gấu Trèo Cây tròn xoe mắt: {name} đếm nhẩm chuẩn xác, cây tre cao vút tới mây!",
           "next": "Lúc nào muốn trổ tài tính nhẩm, {name} cứ ghé gốc đại thụ tìm Gấu Trèo Cây nhé.",
           "who": "{name}, thợ ghép tre tài ba",
-          "learn": "Đếm nhảy cách các dãy số đều đặn"
+          "learn": "Đếm nhảy cách các dãy số đều đặn",
+          "en": {
+            "title": "Build the hundred-knot bamboo with Gấu Trèo Cây",
+            "summary": "Bamboo pieces lie scattered round the grove: skip-count along the number pattern and join them into one tall stem.",
+            "lines": [
+              "{name}, I'm looking for the magic bamboo pieces by their numbers to build the hundred-knot bamboo.",
+              "Check the counting step on the board, then tap each piece in the right counting order."
+            ],
+            "choice": "Khắc nhập, khắc nhập! Grow, bamboo!",
+            "prompt": "Join {goal} bamboo pieces in number order!",
+            "reward": "Gấu Trèo Cây's eyes go wide: {name} counted perfectly, and the bamboo reaches the clouds!",
+            "next": "Whenever you want to show off your mental maths, {name}, find Gấu Trèo Cây at the big old tree."
+          }
         },
         {
           "game": "boomerang-throw",
@@ -310,7 +454,19 @@
           "reward": "Gấu Trèo Cây ôm đống quả tươi cười tít mắt: {name} ném vừa chuẩn vừa bắt dính tay!",
           "next": "Mùa quả chín vẫn còn nhiều, {name} nhớ ghé gốc cây cổ thụ chơi boomerang tiếp nha.",
           "who": "{name}, tay ném boomerang cừ khôi",
-          "learn": "Ước lượng quỹ đạo bay vòng và bắt đúng nhịp"
+          "learn": "Ước lượng quỹ đạo bay vòng và bắt đúng nhịp",
+          "en": {
+            "title": "Boomerang fruit picking with Gấu Trèo Cây",
+            "summary": "Ripe fruit hangs high in the treetops: swipe to throw the boomerang in a loop to pick the fruit, then catch it.",
+            "lines": [
+              "The fruit up top smells so good, {name}! Let's throw boomerangs to harvest it together!",
+              "Swipe a nice curve to throw, then catch the boomerang when it comes back to the glowing ring."
+            ],
+            "choice": "Off it goes, and back into my hands!",
+            "prompt": "Hit {goal} bunches of ripe fruit with the boomerang!",
+            "reward": "Gấu Trèo Cây hugs the pile of fruit, beaming: {name} throws straight and catches clean!",
+            "next": "There's still lots of ripe fruit this season. Come back to the old tree for more boomerangs, {name}."
+          }
         },
         {
           "game": "bird-flock",
@@ -325,7 +481,19 @@
           "reward": "Gấu Trèo Cây vẫy hai tay mừng rỡ: {name} dẫn đường khéo ghê, đàn chim bay đều tăm tắp!",
           "next": "Đàn chim di cư vẫn tập luyện mỗi ngày, {name} rảnh lại đến gốc đại thụ ngắm chim nhé.",
           "who": "{name}, chim đầu đàn dẫn lối",
-          "learn": "Điều hướng đường bay mềm mại và né mây giông"
+          "learn": "Điều hướng đường bay mềm mại và né mây giông",
+          "en": {
+            "title": "Lead the V formation with Gấu Trèo Cây",
+            "summary": "Young birds are learning to fly in a V: glide your finger to guide them through the fluffy cloud gates.",
+            "lines": [
+              "Look up, {name}! The young birds need a leader to fly in a V.",
+              "Move your finger up and down to guide the lead bird through each white cloud ring."
+            ],
+            "choice": "Stay close, flock, let's fly!",
+            "prompt": "Lead the flock through {goal} white cloud rings!",
+            "reward": "Gấu Trèo Cây waves both paws: {name} leads so well, the flock flies in perfect formation!",
+            "next": "The migrating birds practise every day. Come watch them at the big old tree when you're free, {name}."
+          }
         }
       ]
     },
@@ -360,7 +528,19 @@
           "reward": "Dơi Đêm Tai To vỗ cánh tí tách: {name} nhớ đường siêu thật, đã thấy ánh trăng rọi rồi!",
           "next": "Khi nào muốn thám hiểm hang đá kỳ bí, {name} cứ tìm Dơi Đêm Tai To ở cửa hang nha.",
           "who": "{name}, hoa tiêu thám hiểm hang sâu",
-          "learn": "Định vị bằng tiếng vang và ghi nhớ ngã rẽ"
+          "learn": "Định vị bằng tiếng vang và ghi nhớ ngã rẽ",
+          "en": {
+            "title": "Help the baby bat out of the cave with Dơi Đêm Tai To",
+            "summary": "Deep inside the dark cave: tap to send out a sound wave that lights up the rock walls, then guide the baby bat out.",
+            "lines": [
+              "The cave is deep and pitch black, {name}. Help the little bat find its way out!",
+              "Tap to make the bat squeak and light up the walls, then drag your finger to guide it."
+            ],
+            "choice": "Echoes, show the way to the moonlight!",
+            "prompt": "Guide the baby bat through {goal} dark stretches of cave!",
+            "reward": "Dơi Đêm Tai To flutters happily: {name} has a super memory for paths, and there's the moonlight!",
+            "next": "Whenever you want to explore the mysterious cave, {name}, find Dơi Đêm Tai To at its mouth."
+          }
         },
         {
           "game": "odd-one-out",
@@ -375,7 +555,19 @@
           "reward": "Dơi Đêm Tai To rung rung đôi tai to: mắt {name} sáng như sao, chọn câu nào chuẩn câu đó!",
           "next": "Còn nhiều câu đố tinh mắt hấp dẫn lắm, {name} nhớ ghé cửa hang đá thử tài tiếp nhé.",
           "who": "{name}, thám tử tinh mắt của hang đá",
-          "learn": "Quan sát phân loại đặc điểm và loại trừ"
+          "learn": "Quan sát phân loại đặc điểm và loại trừ",
+          "en": {
+            "title": "Odd one out with Dơi Đêm Tai To",
+            "summary": "Five forest friends dance under the moon: spot the one that's different from the rest.",
+            "lines": [
+              "{name}, the cave animals are gathering for a spot-the-difference game.",
+              "Watch the five dancers quickly, then point to the one that doesn't belong."
+            ],
+            "choice": "I've got sharp eyes, I see the odd one!",
+            "prompt": "Spot {goal} odd ones out!",
+            "reward": "Dơi Đêm Tai To wiggles those big ears: {name}'s eyes shine like stars, every pick is right!",
+            "next": "There are lots more sharp-eyed puzzles. Come back to the cave mouth and try again, {name}."
+          }
         },
         {
           "game": "polyline-length",
@@ -390,7 +582,19 @@
           "reward": "Dơi Đêm Tai To gật gù khen ngợi: {name} tính tổng các đoạn thẳng chuẩn không cần chỉnh!",
           "next": "Ốc sên còn nhiều chặng đường mới, {name} ghé cửa hang đá dẫn đường tiếp nha.",
           "who": "{name}, chuyên gia đo đường gấp khúc",
-          "learn": "Cộng độ dài các đoạn thẳng và tư duy hình học"
+          "learn": "Cộng độ dài các đoạn thẳng và tư duy hình học",
+          "en": {
+            "title": "Broken-line lengths with Dơi Đêm Tai To",
+            "summary": "A snail crawls over the rocks looking for food: add up each segment to draw the right broken line.",
+            "lines": [
+              "The snail wants to find its way to a sweet young cabbage, {name}.",
+              "Add up the rock lengths to match the number on the sign, then drag out the path."
+            ],
+            "choice": "I'll add it up and lead the snail!",
+            "prompt": "Draw {goal} correct broken lines for the snail!",
+            "reward": "Dơi Đêm Tai To nods in praise: {name} added up the segments, spot on!",
+            "next": "The snail has many new journeys ahead. Come to the cave mouth and guide it again, {name}."
+          }
         }
       ]
     },
@@ -425,7 +629,19 @@
           "reward": "Họa Mi Rừng Xanh cất tiếng hót véo von: đôi tai {name} thính tuyệt vời, bài ca đã thật hoàn hảo!",
           "next": "Dàn hợp xướng tập hát mỗi sớm mai, {name} nhớ lại ghé vòm lá xanh nghe chim ca nhé.",
           "who": "{name}, nhạc trưởng của dàn chim rừng",
-          "learn": "Lắng nghe phân biệt cao độ và nhịp điệu"
+          "learn": "Lắng nghe phân biệt cao độ và nhịp điệu",
+          "en": {
+            "title": "Listen to the bird choir with Họa Mi Rừng Xanh",
+            "summary": "The forest bird choir sings its morning song: listen closely to find the bird singing off the beat.",
+            "lines": [
+              "{name}, the birds are rehearsing a choir piece to greet the forest sunrise.",
+              "Listen closely to the tune and watch the notes to find the bird singing the wrong one."
+            ],
+            "choice": "My ears are on every note!",
+            "prompt": "Find {goal} birds singing out of tune!",
+            "reward": "Họa Mi Rừng Xanh trills sweetly: {name} has wonderful ears, and the song is perfect now!",
+            "next": "The choir practises every morning. Come back to the green canopy to hear the birds, {name}."
+          }
         },
         {
           "game": "firefly-sync",
@@ -440,7 +656,19 @@
           "reward": "Họa Mi Rừng Xanh xòe cánh reo vui: {name} bắt nhịp chuẩn xác, đàn đom đóm vây quanh sáng rực!",
           "next": "Đêm nào đom đóm cũng mở hội hoa đăng, {name} hãy đến vòm lá xanh hòa nhịp cùng rừng nhé.",
           "who": "{name}, người thắp sáng đêm rừng",
-          "learn": "Cảm nhận nhịp điệu thị giác và phản xạ đúng lúc"
+          "learn": "Cảm nhận nhịp điệu thị giác và phản xạ đúng lúc",
+          "en": {
+            "title": "Flash in time with the fireflies with Họa Mi Rừng Xanh",
+            "summary": "Night falls and a thousand fireflies blink in rhythm: tap the lantern just as they light up.",
+            "lines": [
+              "The leaves are twinkling with fireflies, {name}, like a thousand stars!",
+              "Watch the ring shrink, then tap so your lantern flashes in time with the fireflies."
+            ],
+            "choice": "Flash and twinkle, fireflies follow me!",
+            "prompt": "Flash the lantern in time with the fireflies {goal} times!",
+            "reward": "Họa Mi Rừng Xanh spreads its wings: {name} kept the beat, and the fireflies glow all around!",
+            "next": "The fireflies hold a lantern festival every night. Come to the green canopy and keep time with the forest, {name}."
+          }
         },
         {
           "game": "stone-path-memory",
@@ -455,7 +683,19 @@
           "reward": "Họa Mi Rừng Xanh lượn vòng khen ngợi: {name} có trí nhớ tuyệt đỉnh, bước chân vững như bàn thạch!",
           "next": "Dòng suối vẫn róc rách chờ đón, {name} rảnh lại ra vòm lá xanh dạo bước qua suối nha.",
           "who": "{name}, lữ khách vượt suối thông thái",
-          "learn": "Ghi nhớ chuỗi vị trí trong không gian"
+          "learn": "Ghi nhớ chuỗi vị trí trong không gian",
+          "en": {
+            "title": "Remember the stepping stones with Họa Mi Rừng Xanh",
+            "summary": "A clear stream babbles along: remember the order the stones light up to step across to the other bank.",
+            "lines": [
+              "Look at the shiny pebbles in the cool forest stream, {name}.",
+              "The stones light up one by one. Remember the path, then tap to step across."
+            ],
+            "choice": "I remember every stone, let's hop!",
+            "prompt": "Cross the stream {goal} times!",
+            "reward": "Họa Mi Rừng Xanh circles in praise: {name} has an amazing memory and rock-steady steps!",
+            "next": "The stream is still babbling away. Come stroll across it at the green canopy, {name}."
+          }
         }
       ]
     },
@@ -490,7 +730,19 @@
           "reward": "Hươu Đốm Rừng Rậm gật đầu êm ái: {name} chu đáo quá, chú mèo con ngủ say sưa rồi kìa!",
           "next": "Trảng cỏ vẫn rợp bóng thông xanh, {name} cứ ghé chơi cùng Hươu Đốm Rừng Rậm lúc ban trưa nhé.",
           "who": "{name}, người bạn ân cần của muông thú",
-          "learn": "Quan sát hướng nắng và điều chỉnh bóng đổ"
+          "learn": "Quan sát hướng nắng và điều chỉnh bóng đổ",
+          "en": {
+            "title": "Shade the kitten with Hươu Đốm Rừng Rậm",
+            "summary": "A kitten lies sunbathing on the grass: move the sun so the tree's shadow keeps its nap cool.",
+            "lines": [
+              "The midday sun is so hot the kitten can't sleep, {name}.",
+              "Drag the sun across the sky so the pine's cool shadow covers the kitten's spot."
+            ],
+            "choice": "Nice and cool, sleep tight, kitty!",
+            "prompt": "Shade the kitten {goal} times!",
+            "reward": "Hươu Đốm Rừng Rậm nods gently: {name} is so thoughtful, the kitten is fast asleep!",
+            "next": "The meadow is shady under the pines. Come and play with Hươu Đốm Rừng Rậm around midday, {name}."
+          }
         },
         {
           "game": "sun-rain-balance",
@@ -505,7 +757,19 @@
           "reward": "Hươu Đốm Rừng Rậm reo mừng: cây non trĩu cành xanh tốt nhờ bàn tay chăm chút của {name}!",
           "next": "Rừng thông còn nhiều mầm non cần tưới, {name} nhớ quay lại trảng cỏ chăm cây cùng hươu nha.",
           "who": "{name}, người làm vườn thông thái",
-          "learn": "Cân bằng hai yếu tố và quan sát chỉ số"
+          "learn": "Cân bằng hai yếu tố và quan sát chỉ số",
+          "en": {
+            "title": "Balance sun and rain with Hươu Đốm Rừng Rậm",
+            "summary": "A young pine seedling is growing: move the clouds to give it just the right sun and rain.",
+            "lines": [
+              "Young trees in the pine forest need both cool rain and warm sunshine, {name}.",
+              "Drag the cloud to block the sun or let the rain fall, so both gauges stay in the green."
+            ],
+            "choice": "Sun and rain together, grow fast!",
+            "prompt": "Help the tree grow and bear fruit over {goal} growth stages!",
+            "reward": "Hươu Đốm Rừng Rậm cheers: the young tree is green and laden thanks to {name}'s care!",
+            "next": "Lots of pine seedlings still need watering. Come back to the meadow and tend them with the deer, {name}."
+          }
         },
         {
           "game": "zigzag-path",
@@ -520,7 +784,19 @@
           "reward": "Hươu Đốm Rừng Rậm nhảy chân sáo: phản xạ của {name} thật đáng nể, bóng lăn mượt mà ghê!",
           "next": "Đường cua zíc zắc thử thách lòng can đảm, {name} ghé trảng cỏ rừng thông so tài tiếp nha.",
           "who": "{name}, tay lái bóng cừ khôi",
-          "learn": "Phản xạ nhanh tại các điểm chuyển hướng"
+          "learn": "Phản xạ nhanh tại các điểm chuyển hướng",
+          "en": {
+            "title": "Zigzag ball roll with Hươu Đốm Rừng Rậm",
+            "summary": "A winding wooden path snakes through the forest: tap to turn the wooden ball and collect gems as it rolls.",
+            "lines": [
+              "{name}, a round wooden ball is zooming along this zigzag trail!",
+              "At every sharp bend, tap quickly to turn the ball or it'll fall off."
+            ],
+            "choice": "Here's a bend, turn now!",
+            "prompt": "Roll the ball round {goal} zigzag bends!",
+            "reward": "Hươu Đốm Rừng Rậm skips with joy: {name} has amazing reflexes, the ball rolls so smoothly!",
+            "next": "The zigzag bends test your nerve. Come to the pine meadow for another try, {name}."
+          }
         }
       ]
     }

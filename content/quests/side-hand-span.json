@@ -46,7 +46,19 @@
         {
           "text": "Gang tay nối tiếp, đo chuẩn từng li!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Today our class is learning to estimate length with hand spans, {name}.",
+          "Lay your hand spans end to end from the left edge, with no gaps or overlaps, then count them."
+        ],
+        "choices": [
+          {
+            "text": "Span by span, measured just right!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đo đúng độ dài của tám món đồ dùng học tập nhé!",
       "game": "hand-span",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Measure in hand spans",
+        "prompt": "Measure 8 school things correctly!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Bó Đũa gật gù khen ngợi: {name} đo đạc khéo ghê, số gang tay khớp từng centimet!"
+      "text": "Gấu Bó Đũa gật gù khen ngợi: {name} đo đạc khéo ghê, số gang tay khớp từng centimet!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Bó Đũa nods with approval: {name} measures so carefully, every span counts just right!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Sân sau còn bao nhiêu thứ để đo, {name} cứ ra ghế đá dãy lớp tìm Gấu Bó Đũa nha."
+      "text": "Sân sau còn bao nhiêu thứ để đo, {name} cứ ra ghế đá dãy lớp tìm Gấu Bó Đũa nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "The back yard has plenty more to measure, {name}, so look for Gấu Bó Đũa at the stone bench."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Measuring with hand spans with Gấu Bó Đũa",
+    "summary": "Desks, the blackboard and pencil cases of all lengths: lay hand spans end to end to measure each one."
   }
 }

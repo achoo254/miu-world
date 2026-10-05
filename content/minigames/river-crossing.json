@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 2,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "River Crossing Puzzle",
+    "howTo": [
+      "The boat carries {name} and one thing. Tap a thing to load it, then tap Row to cross.",
+      "The wooden board shows pairs that can't be left alone together (like dog and hen, hen and grain).",
+      "Get everything to the far bank for a point."
+    ]
+  }
 }

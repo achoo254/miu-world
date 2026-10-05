@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 4,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Dig a water channel",
+    "howTo": [
+      "{name}, drag through the soil to dig a channel. Water flows down and sideways.",
+      "Lead the water into the duck's bathtub. Rocks can't be dug.",
+      "Water reaching a mud pit means that level restarts. Each level cleared is a point."
+    ]
+  }
 }

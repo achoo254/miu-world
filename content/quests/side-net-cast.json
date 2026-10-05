@@ -46,7 +46,19 @@
         {
           "text": "Cháu tung chài đón đầu đàn cá!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "A school of sardines is swimming past the boat, {name}! Help me cast the net!",
+          "Swipe a long way forward to open the net wide in front of the fish."
+        ],
+        "choices": [
+          {
+            "text": "I'll cast ahead of the fish!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Quăng lưới khéo léo bắt được bốn mươi con cá tươi roi rói nhé!",
       "game": "net-cast",
-      "goal": 40
+      "goal": 40,
+      "en": {
+        "title": "Cast the Net",
+        "prompt": "Cast the net well and catch 40 fresh fish!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bác Quăng Lưới cười hào sảng: mẻ chài của {name} bung tròn trịa gom trọn đàn cá!"
+      "text": "Bác Quăng Lưới cười hào sảng: mẻ chài của {name} bung tròn trịa gom trọn đàn cá!",
+      "en": {
+        "title": "Reward",
+        "text": "Bác Quăng Lưới laughs heartily: {name}'s net spread perfectly round and caught the whole school!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Khoang thuyền còn rộng rãi lắm, bác ngư dân mong {name} ghé cầu tàu ra khơi tiếp."
+      "text": "Khoang thuyền còn rộng rãi lắm, bác ngư dân mong {name} ghé cầu tàu ra khơi tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "There's plenty of room in the hold. The old fisherman hopes {name} will sail out again from the pier."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Cast the net at sea with Bác Quăng Lưới Biển",
+    "summary": "From the bow, swipe to throw the round net wide open ahead of the swimming fish."
   }
 }

@@ -64,7 +64,26 @@
           "text": "Kg không phải kẹo gừng đâu Ú!",
           "reply": "Mèo Ú đỏ mặt: Ơ, vậy mà tớ định ăn thử…"
         }
-      ]
+      ],
+      "en": {
+        "title": "Heo Ủn's chè recipe",
+        "goTo": "Go to the chè kitchen in the middle of the market, where Heo Ủn is wearing a towering chef's hat",
+        "lines": [
+          "Oink oink! Today I'm cooking the biggest pot of chè in market history! Here's the recipe: mung beans, sugar, water... it's all written in \"kg\" and \"l\".",
+          "Is kg for ginger candy? And l is for... for... leaf?",
+          "No, Ú! Kg is kilograms for weighing, l is litres for measuring liquids. But I've... sort of forgotten how to weigh too. {name}, help us out!"
+        ],
+        "choices": [
+          {
+            "text": "Let's cook the chè together!",
+            "reply": "Heo Ủn cheers: Wonderful! The kitchen helper gets the first taste!"
+          },
+          {
+            "text": "Kg isn't ginger candy, Ú!",
+            "reply": "Mèo Ú blushes: Oh, and I was going to taste it..."
+          }
+        ]
+      }
     },
     {
       "id": "tim-nguyen-lieu-che",
@@ -102,7 +121,22 @@
           "text": "Để mình đoán thử!",
           "reply": "Heo Ủn chìa hai tay ra: Mời thầy bói nặng nhẹ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Guess first, weigh after",
+        "goTo": "Carry the ingredients back to the chè kitchen in the middle of the market",
+        "lines": [
+          "Chef's secret: hold two things in your hands, guess which is heavier, and only then put them on the scale to check.",
+          "What about the dial scale? The needle keeps spinning round and round like a pinwheel!",
+          "Whatever number the needle stops at, that's how many kilograms it weighs. And water we measure with a 1 l jug or by counting cups."
+        ],
+        "choices": [
+          {
+            "text": "Let me take a guess!",
+            "reply": "Heo Ủn holds out both trotters: Over to you, master of heavy and light!"
+          }
+        ]
+      }
     },
     {
       "id": "nang-hon-nhe-hon-doan-nhanh",
@@ -541,7 +575,25 @@
           "text": "Dùng ca 1 l cho nhanh",
           "reply": "Heo Ủn: Nhanh gọn! Nhưng bài này cứ đếm cốc trước đã."
         }
-      ]
+      ],
+      "en": {
+        "title": "What do we measure water with?",
+        "goTo": "Mèo Ú is waving at you from the vegetable sink by the canal",
+        "lines": [
+          "Now for the water for the chè! But I've only got these teeny cups, measuring will take till next season.",
+          "Counting cups is fine, Ú! {name}, you choose: count the cups in each jar, or measure with the 1 l jug?"
+        ],
+        "choices": [
+          {
+            "text": "Count the cups in each jar",
+            "reply": "Mèo Ú: One cup, two cups... I'll count along!"
+          },
+          {
+            "text": "Use the 1 l jug, it is faster",
+            "reply": "Heo Ủn: Quick and neat! But for this one, let's count cups first."
+          }
+        ]
+      }
     },
     {
       "id": "binh-cua-viet-va-mai",
@@ -766,14 +818,22 @@
       "title": "Chiếc muôi gỗ phụ bếp",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nồi chè đậu xanh thơm lừng cả dãy hàng cân đong. Heo Ủn trao cho {name} chiếc muôi gỗ \"Phụ bếp siêu đong\", còn Mèo Ú được múc bát chè đầu tiên… và làm đổ một nửa."
+      "text": "Nồi chè đậu xanh thơm lừng cả dãy hàng cân đong. Heo Ủn trao cho {name} chiếc muôi gỗ \"Phụ bếp siêu đong\", còn Mèo Ú được múc bát chè đầu tiên… và làm đổ một nửa.",
+      "en": {
+        "title": "The kitchen helper's wooden ladle",
+        "text": "The mung bean chè fills the whole weighing row with its sweet smell. Heo Ủn gives {name} the \"Super Measuring Helper\" wooden ladle, and Mèo Ú gets the first bowl of chè... and spills half of it."
+      }
     },
     {
       "id": "kho-lanh-tuyet-roi",
       "title": "Hắt xì trong kho hàng",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cửa kho hàng cuối chợ kẽo kẹt mở ra: Gấu Băng đang đóng thùng hàng gửi về phương xa, vừa đóng vừa hắt xì, mà nhãn cân nặng thì chưa ghi gì cả!"
+      "text": "Cửa kho hàng cuối chợ kẽo kẹt mở ra: Gấu Băng đang đóng thùng hàng gửi về phương xa, vừa đóng vừa hắt xì, mà nhãn cân nặng thì chưa ghi gì cả!",
+      "en": {
+        "title": "Sneezing in the storehouse",
+        "text": "The storehouse door at the end of the market creaks open: Gấu Băng is packing boxes to send far away, sneezing as he packs, and none of the weight labels are filled in!"
+      }
     }
   ],
   "reward": {

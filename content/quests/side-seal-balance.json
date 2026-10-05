@@ -46,7 +46,19 @@
         {
           "text": "Tớ giữ thăng bằng rất dẻo dai!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The sea breeze is playing tricks today, {name}. Help me keep the ball balanced!",
+          "Whichever way the ball leans, move that way to catch it. Don't let it roll off."
+        ],
+        "choices": [
+          {
+            "text": "I've got great balance!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Giữ quả bóng thăng bằng trên đầu đạt ba mươi lăm giây nhé!",
       "game": "seal-balance",
-      "goal": 35
+      "goal": 35,
+      "en": {
+        "title": "Seal Ball Balance",
+        "prompt": "Keep the ball balanced on your head for 35 seconds!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hải Cẩu reo hò phấn khích: {name} khéo léo giữ bóng vững vàng chẳng chao đảo!"
+      "text": "Hải Cẩu reo hò phấn khích: {name} khéo léo giữ bóng vững vàng chẳng chao đảo!",
+      "en": {
+        "title": "Reward",
+        "text": "Hải Cẩu cheers with excitement: {name} kept the ball steady without a wobble!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bãi biển lúc nào cũng rộn rã sóng vỗ, Hải Cẩu mong {name} ghé giữ bóng tiếp."
+      "text": "Bãi biển lúc nào cũng rộn rã sóng vỗ, Hải Cẩu mong {name} ghé giữ bóng tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "The beach is always full of crashing waves. Hải Cẩu hopes {name} will come balance again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Balance the ball with Hải Cẩu Bóng Chuyền",
+    "summary": "The sea breeze keeps gusting: lean left and right to keep the ball balanced."
   }
 }

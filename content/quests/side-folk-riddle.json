@@ -46,7 +46,19 @@
         {
           "text": "Cháu giải đố cùng bà ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Come here, dear {name}, and Granny will read you some old folk riddles!",
+          "Listen closely to the hints in the rhyme, then tap the picture with the right answer."
+        ],
+        "choices": [
+          {
+            "text": "Let us solve riddles together, Granny!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Giải mã đúng bảy câu đố vui dân gian của bà nhé!",
       "game": "folk-riddle",
-      "goal": 7
+      "goal": 7,
+      "en": {
+        "title": "Folk riddles",
+        "prompt": "Crack 7 of Granny's folk riddles!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cháu của bà thông minh sắc sảo quá, câu đố nào {name} cũng giải ra!"
+      "text": "Cháu của bà thông minh sắc sảo quá, câu đố nào {name} cũng giải ra!",
+      "en": {
+        "title": "Reward",
+        "text": "My grandchild is so clever: {name} solved every single riddle!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mảnh sân trước ngõ nhà Mẩy chiều nào bà cũng ngồi quạt mát đợi cháu."
+      "text": "Mảnh sân trước ngõ nhà Mẩy chiều nào bà cũng ngồi quạt mát đợi cháu.",
+      "en": {
+        "title": "See you soon",
+        "text": "Every afternoon Granny sits fanning herself outside the lane of Mẩy, waiting for you."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Folk riddles with Bà Năm Kể Chuyện",
+    "summary": "Listen to each of Granny Năm's rhyming riddles, then tap the picture that solves it."
   }
 }

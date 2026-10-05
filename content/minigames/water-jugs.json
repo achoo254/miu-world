@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 3,
-  "params": { "hard": false }
+  "params": { "hard": false },
+  "en": {
+    "name": "Measure the Water",
+    "howTo": [
+      "The cow needs exactly the number of litres on the trough. {name} taps one jug, then another to pour.",
+      "Water pours until the other jug is full or this one is empty. Any jug with the right amount wins!",
+      "All in a muddle? Tap Start Over."
+    ]
+  }
 }

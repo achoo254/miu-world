@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 30,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Bubble shooter",
+    "howTo": [
+      "{name}, drag your finger to aim along the dots, then let go to shoot a bubble.",
+      "Three of the same colour (same shape) touching will pop. Bubbles left dangling drop too!",
+      "Don't let the bubble cluster reach the red line."
+    ]
+  }
 }

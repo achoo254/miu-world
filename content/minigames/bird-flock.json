@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 60,
   "goal": 15,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "V-formation flock",
+    "howTo": [
+      "{name}, drag your finger up and down to lead the front bird; the whole flock follows.",
+      "Fly through a cloud ring with at least five birds in the flock to score.",
+      "Avoid storm clouds: a bird that touches one gets lost and rejoins three seconds later."
+    ]
+  }
 }

@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 70,
   "goal": 5,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Find the Pearl",
+    "howTo": [
+      "The pearl is under one bowl. Watch closely, {name}!",
+      "The three bowls swap places; keep your eyes on the one with the pearl.",
+      "When the bowls stop, tap the one hiding the pearl: a right guess is a point."
+    ]
+  }
 }

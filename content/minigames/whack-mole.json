@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 25,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Whack-a-Mole",
+    "howTo": [
+      "A mole pops out of its hole: {name} taps fast to bop it!",
+      "Moles wearing crowns are worth three points. Don't bop the bunny, that's minus two!"
+    ]
+  }
 }

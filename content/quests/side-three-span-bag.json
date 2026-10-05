@@ -46,7 +46,19 @@
         {
           "text": "Tớ tính toán chuẩn xác từng số!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The magic bird just dropped off the three-span bag, {name}! Pick gems with me!",
+          "Tap gems until their numbers add up to exactly the number on the bag."
+        ],
+        "choices": [
+          {
+            "text": "I'll add up every number exactly!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Xếp ngọc vừa khít cho sáu chiếc túi ba gang thần kỳ nhé!",
       "game": "three-span-bag",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "The Three-Span Bag",
+        "prompt": "Fill 6 magic three-span bags exactly!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cua Càng vung càng nhảy múa: phép cộng của {name} vừa in, túi bay về trời rồi!"
+      "text": "Cua Càng vung càng nhảy múa: phép cộng của {name} vừa in, túi bay về trời rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Cua Càng dances with joy: {name}'s sum is spot on, and the bag flies off to the sky!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chim thần sẽ còn chở thêm nhiều túi ngọc, Cua Càng hẹn gặp {name} bờ biển."
+      "text": "Chim thần sẽ còn chở thêm nhiều túi ngọc, Cua Càng hẹn gặp {name} bờ biển.",
+      "en": {
+        "title": "See you soon",
+        "text": "The magic bird will bring more bags of gems. Cua Càng will meet {name} on the shore."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Fill the three-span bag with Cua Càng Cắp Cua",
+    "summary": "The magic bag from the old tale holds only the set amount: pick gems that fit it exactly."
   }
 }

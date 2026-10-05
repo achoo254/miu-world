@@ -45,7 +45,21 @@
       ],
       "choices": [
         { "text": "Tớ đi gom đồ ấm cho cả hai!", "reply": "Cảm ơn cậu! Nhớ tìm cả cốc ca cao nóng nữa nhé." }
-      ]
+      ],
+      "en": {
+        "title": "Thỏ Tuyết invites you to compete",
+        "goTo": "Go to the ski rental hut, Thỏ Tuyết Mũ Len is waving",
+        "lines": [
+          "Brrr brrr, it's freezing! {name}, the Emperor Penguin is holding the ski trophy at the bottom of the big slope; whoever wins his seven frosty riddles takes the trophy home to the village.",
+          "But head to the slope without your warm things and you'll freeze solid. The wind blew my stuff all over the flat snowfield."
+        ],
+        "choices": [
+          {
+            "text": "I'll gather warm things for both of us!",
+            "reply": "Thank you! Remember to find the mug of hot cocoa too."
+          }
+        ]
+      }
     },
     {
       "id": "do-truot-tuyet",
@@ -155,7 +169,25 @@
           "text": "Cúi chào lễ phép kiểu chim cánh cụt",
           "consequence": "Hoàng Đế bật cười, cúi chào lại rồi lắc lư đúng kiểu chim cánh cụt."
         }
-      ]
+      ],
+      "en": {
+        "title": "Greeting the Emperor Penguin",
+        "prompt": "The Emperor Penguin stands proudly at the bottom of the big slope. How does {name} greet him?",
+        "choices": [
+          {
+            "text": "Ski over in one beautiful swoop to say hello",
+            "consequence": "{name} carves a smooth, graceful arc, and the Emperor claps his short flippers in praise."
+          },
+          {
+            "text": "Offer him a mug of hot cocoa",
+            "consequence": "The Emperor takes a sip and his cheeks turn rosy: how warming, now I'm ready for riddles!"
+          },
+          {
+            "text": "Bow politely, penguin style",
+            "consequence": "The Emperor laughs, bows back and waddles side to side, penguin style."
+          }
+        ]
+      }
     },
     {
       "id": "tran-trum",
@@ -254,14 +286,22 @@
       "title": "Cúp trượt tuyết",
       "kind": "reward",
       "target": "trum-nt-canh-cut",
-      "text": "Cánh Cụt Hoàng Đế trao chiếc cúp trượt tuyết lấp lánh cho {name}. Cả làng núi tuyết hò reo, cúp còn đựng đầy XP, xu và điểm kỹ năng."
+      "text": "Cánh Cụt Hoàng Đế trao chiếc cúp trượt tuyết lấp lánh cho {name}. Cả làng núi tuyết hò reo, cúp còn đựng đầy XP, xu và điểm kỹ năng.",
+      "en": {
+        "title": "The ski trophy",
+        "text": "The Emperor Penguin hands {name} the sparkling ski trophy. The whole snowy mountain village cheers, and the trophy is brimming with XP, coins and skill points."
+      }
     },
     {
       "id": "cap-treo-len-dinh",
       "title": "Cáp treo lên đỉnh",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cánh Cụt Hoàng Đế hẹn mùa đông năm sau sẽ thi tiếp. Gấu Băng Tuyết mời {name} đi cáp treo lên đỉnh núi ngắm hoàng hôn trên tuyết."
+      "text": "Cánh Cụt Hoàng Đế hẹn mùa đông năm sau sẽ thi tiếp. Gấu Băng Tuyết mời {name} đi cáp treo lên đỉnh núi ngắm hoàng hôn trên tuyết.",
+      "en": {
+        "title": "Cable car to the summit",
+        "text": "The Emperor Penguin promises a rematch next winter. Gấu Băng Tuyết invites {name} to ride the cable car to the summit and watch the sunset over the snow."
+      }
     }
   ],
   "reward": {

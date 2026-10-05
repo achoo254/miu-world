@@ -9,5 +9,12 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 12,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Guide the Ducklings",
+    "howTo": [
+      "The ducklings are lost. {name} puts a finger on one and draws a path to the pen of the same colour.",
+      "Don't let two ducklings bump into each other, or both sit down dizzy!"
+    ]
+  }
 }

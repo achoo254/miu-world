@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 60,
   "goal": 5,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Sun and Rain for the Tree",
+    "howTo": [
+      "The apple tree needs both sun and water. Drag the cloud over the sun to make it rain.",
+      "Drag the cloud away and the sun shines. {name} keeps both the sun and water bars on the green line.",
+      "Too little or too much slows the tree down. Once it's grown enough, it bears fruit!"
+    ]
+  }
 }

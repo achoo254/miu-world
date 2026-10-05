@@ -46,7 +46,19 @@
         {
           "text": "Em nhặt đúng đồ mẹ dặn ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Mum sent you a shopping list, {name}!",
+          "Look at each item carefully, then pick the right ones around the shop."
+        ],
+        "choices": [
+          {
+            "text": "I'll get exactly what Mum asked for!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nhặt chuẩn xác không sai món nào trọn bốn chuyến đi chợ nhé!",
       "game": "shopping-memory",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Market Memory",
+        "prompt": "Get every item right on 4 shopping trips!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Giỏ hàng đầy ắp đúng y lời mẹ dặn, {name} đi chợ đảm đang quá!"
+      "text": "Giỏ hàng đầy ắp đúng y lời mẹ dặn, {name} đi chợ đảm đang quá!",
+      "en": {
+        "title": "Reward",
+        "text": "A full basket, just as Mum asked! {name} is a great shopper!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Gian hàng tạp hóa ngày phiên lúc nào cũng mở cửa đón em ghé mua."
+      "text": "Gian hàng tạp hóa ngày phiên lúc nào cũng mở cửa đón em ghé mua.",
+      "en": {
+        "title": "See you soon",
+        "text": "The corner shop is open every market day, so drop in whenever you like."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Remember the shopping list with Chị Tiệm Tạp Hóa",
+    "summary": "Remember Mum's shopping list, then walk along the shelves and put the right things in the basket."
   }
 }

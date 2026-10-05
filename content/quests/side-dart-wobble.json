@@ -46,7 +46,19 @@
         {
           "text": "Cháu canh kỹ rồi mới phóng!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Here's the dartboard, {name}. Show me how well you can aim!",
+          "The aim keeps circling. Wait until it's right in the middle, then throw."
+        ],
+        "choices": [
+          {
+            "text": "I'll wait for the perfect moment!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ghi được một trăm năm mươi điểm phi tiêu nhé!",
       "game": "dart-wobble",
-      "goal": 150
+      "goal": 150,
+      "en": {
+        "title": "Wobbly darts",
+        "prompt": "Score 150 points with the darts!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Phập! Trúng hồng tâm, {name} giỏi hơn cả chú!"
+      "text": "Phập! Trúng hồng tâm, {name} giỏi hơn cả chú!",
+      "en": {
+        "title": "Reward",
+        "text": "Thunk! Bullseye! {name} is better than me!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chú còn cả hộp phi tiêu, lúc nào cháu cũng tới phóng được."
+      "text": "Chú còn cả hộp phi tiêu, lúc nào cháu cũng tới phóng được.",
+      "en": {
+        "title": "See you soon",
+        "text": "I've got a whole box of darts, so you can throw here any time."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Throw darts with Uncle Tí",
+    "summary": "The aim circles around the board: tap just as it crosses the bullseye to throw."
   }
 }

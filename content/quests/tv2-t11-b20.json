@@ -82,7 +82,23 @@
           "text": "Đừng buồn, mình sẽ giúp cậu kết bạn!",
           "reply": "Thật không? Vậy cậu đi trước nhé, tớ… tớ nấp sau bụi gai thêm một chút đã."
         }
-      ]
+      ],
+      "en": {
+        "title": "Sư Tử Xù hiding in the thorns",
+        "goTo": "Go to the thorn bush at the forest edge, where the Grrr! just came from",
+        "lines": [
+          "Grrr! Who's there? Oh… it's {name}. Don't be scared, I only roar to look brave; my legs are actually trembling.",
+          "I really want to make friends. But whenever I say hello, everyone vanishes and all that's left is a falling leaf.",
+          "Why is his mane so fluffy? Why are his teeth so big? Why… eek, I'm hiding!",
+          "See, Xíu shot straight behind the oak tree. Grrr… I mean, boo hoo."
+        ],
+        "choices": [
+          {
+            "text": "Don't be sad, I'll help you make friends!",
+            "reply": "Really? Then you go first, I'll… I'll hide behind the thorn bush a little longer."
+          }
+        ]
+      }
     },
     {
       "id": "do-vat-loi-mon",
@@ -879,7 +895,28 @@
           "text": "Cậu rủ Xíu chơi trốn tìm, cậu làm người đi tìm.",
           "reply": "Ý hay! Lần này tớ đi tìm, khỏi lo cái bờm xù thò ra ngoài nữa."
         }
-      ]
+      ],
+      "en": {
+        "title": "Sư Tử Xù picks a way to say hello",
+        "lines": [
+          "I get it now! Nhím trắng (the white hedgehog) never roared; he smiled brightly and said hello so warmly.",
+          "So how should I make friends with Xíu this time, {name}? My tail's started trembling again…"
+        ],
+        "choices": [
+          {
+            "text": "Give a big smile and say: Hello, I'm so happy to meet you!",
+            "reply": "Grrr… oops, I mean, hello! Oh, Xíu is waving her ears back at me!"
+          },
+          {
+            "text": "Offer Xíu some of the wild berries you just picked.",
+            "reply": "Xíu nibbles one and asks: why is this berry so sweet? I don't know, but I'm so happy!"
+          },
+          {
+            "text": "Ask Xíu to play hide-and-seek, with you as the seeker.",
+            "reply": "Good idea! If I'm the seeker, I don't have to worry about my fluffy mane poking out."
+          }
+        ]
+      }
     },
     {
       "id": "hoat-dong-yeu-thich",
@@ -925,14 +962,22 @@
       "title": "Huy hiệu nhím cuộn tròn",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Sư Tử Xù tặng {name} chiếc huy hiệu hình chú nhím cuộn tròn, khắc dòng chữ “Bạn đầu tiên của Sư Tử Xù”. Lần này bạn ấy chỉ gầm khẽ: grừ… cảm ơn nhé!"
+      "text": "Sư Tử Xù tặng {name} chiếc huy hiệu hình chú nhím cuộn tròn, khắc dòng chữ “Bạn đầu tiên của Sư Tử Xù”. Lần này bạn ấy chỉ gầm khẽ: grừ… cảm ơn nhé!",
+      "en": {
+        "title": "The curled-up hedgehog badge",
+        "text": "Sư Tử Xù gives {name} a badge shaped like a curled-up hedgehog, engraved with “Sư Tử Xù's first friend”. This time he only roars softly: grrr… thank you!"
+      }
     },
     {
       "id": "mo-bai-21",
       "title": "Con diều trên ngọn cây",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ đỉnh đồi lộng gió, Khỉ Lanh đu cành kêu ầm: con diều mới tinh vướng trên ngọn cây cao vút rồi! Một, hai, ba… ai lên giúp tớ với?"
+      "text": "Từ đỉnh đồi lộng gió, Khỉ Lanh đu cành kêu ầm: con diều mới tinh vướng trên ngọn cây cao vút rồi! Một, hai, ba… ai lên giúp tớ với?",
+      "en": {
+        "title": "A kite stuck up a tree",
+        "text": "From the top of the windy hill, Khỉ Lanh swings on a branch, shouting: my brand-new kite is stuck at the top of a really tall tree! One, two, three… who'll come up and help?"
+      }
     }
   ],
   "reward": {

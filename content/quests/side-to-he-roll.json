@@ -46,7 +46,19 @@
         {
           "text": "Cháu lăn bột nặn tò he ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "This colourful rice dough smells of pomelo blossom, {name}!",
+          "Roll the dough to the customer's centimetre mark, then cut it."
+        ],
+        "choices": [
+          {
+            "text": "I'll roll some tò he right now!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nặn bột đúng kích thước hoàn thành tám chú tò he xinh xắn nhé!",
       "game": "to-he-roll",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Tò he Dough Figures",
+        "prompt": "Roll the dough to size and finish 8 lovely tò he figures!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Con tò he rồng bay phượng múa lung linh, {name} nặn khéo tay quá!"
+      "text": "Con tò he rồng bay phượng múa lung linh, {name} nặn khéo tay quá!",
+      "en": {
+        "title": "Reward",
+        "text": "Dragons and phoenixes in every colour! {name} has clever hands!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Góc sạp hoa rực rỡ lúc nào cũng thơm lừng mùi bột nếp đợi cháu."
+      "text": "Góc sạp hoa rực rỡ lúc nào cũng thơm lừng mùi bột nếp đợi cháu.",
+      "en": {
+        "title": "See you soon",
+        "text": "The flower stall corner always smells of sweet rice dough, waiting for you."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Colourful tò he with Cô Nặn Tò He",
+    "summary": "Roll the soft, colourful rice dough to the right length on the ruler, then cut and shape a tò he figure."
   }
 }

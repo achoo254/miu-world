@@ -46,7 +46,19 @@
         {
           "text": "Tớ bay lượn trên trời đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Soaring up from the top of a palm tree is so much fun! Put on a parachute and fly with me, {name}!",
+          "Check which way the wind blows, then pull the chute that way to land in the middle of the circle."
+        ],
+        "choices": [
+          {
+            "text": "I'm gliding through the sky!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Điều khiển dù tiếp đất chuẩn xác mười lần trên bãi cát nhé!",
       "game": "parachute-land",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Parachute to the Island",
+        "prompt": "Steer the parachute to land on target 10 times on the sand!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khỉ con vỗ tay nhảy tưng tưng: {name} lượn cánh dù êm ái trúng phóc hồng tâm luôn!"
+      "text": "Khỉ con vỗ tay nhảy tưng tưng: {name} lượn cánh dù êm ái trúng phóc hồng tâm luôn!",
+      "en": {
+        "title": "Reward",
+        "text": "The little monkey claps and bounces: {name} glided down softly, right on the bullseye!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Gió đại dương vẫn nâng cánh dù lượn, Khỉ con chờ {name} bay thêm vòng nữa."
+      "text": "Gió đại dương vẫn nâng cánh dù lượn, Khỉ con chờ {name} bay thêm vòng nữa.",
+      "en": {
+        "title": "See you soon",
+        "text": "The ocean wind still lifts the parachutes. The little monkey is waiting for {name} to fly again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Parachute onto the island with Khỉ Nhảy Dù Đảo Cổ",
+    "summary": "The parachute glides through the windy sky: steer around the gusts to land right on the target."
   }
 }

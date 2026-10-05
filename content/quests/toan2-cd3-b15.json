@@ -66,7 +66,26 @@
           "text": "Heo Lúc Lắc đừng ăn bưởi nữa nhé!",
           "reply": "Heo Lúc Lắc giấu vội quả bưởi ra sau lưng: Ủn… tớ chỉ ngửi thôi mà."
         }
-      ]
+      ],
+      "en": {
+        "title": "The tipsy balance scale",
+        "goTo": "Go into the weighing row of the market, to the balance scale stall where Cánh Cụt Pin is frowning",
+        "lines": [
+          "Stop! Nobody is weighing anything at today's market. This balance scale is tipping like a canoe in the waves out on the canal!",
+          "Oink... I only put one pomelo on it, I mean, three pomelos, and it just tipped.",
+          "Three pomelos and you call that \"only\"! {name}, help me reweigh every bag before the customers arrive. I'm a very particular penguin, you know."
+        ],
+        "choices": [
+          {
+            "text": "I'll help you weigh them right away!",
+            "reply": "Pin straightens his glasses: Good. First we need the weights, and the weights have... rolled off somewhere."
+          },
+          {
+            "text": "No more pomelos, Heo Lúc Lắc!",
+            "reply": "Heo Lúc Lắc quickly hides the pomelo behind his back: Oink... I was only sniffing it."
+          }
+        ]
+      }
     },
     {
       "id": "tim-qua-can",
@@ -103,7 +122,21 @@
           "text": "Cháu nhớ rồi: đĩa thấp là vật nặng hơn!",
           "reply": "Pin gật gù: Chính xác. Giờ thì thử mắt cháu xem nào."
         }
-      ]
+      ],
+      "en": {
+        "title": "The lower pan holds the heavier thing",
+        "lines": [
+          "We have all the weights now. Listen carefully: on a balance scale, the heavier side's pan sinks lower.",
+          "Just like when I sit on the seesaw with a friend, the moment I sit down my friend shoots up to the market roof!",
+          "When both pans are level, both sides weigh the same. And we measure weight in kilograms, written kg. This weight is exactly 1 kg."
+        ],
+        "choices": [
+          {
+            "text": "I remember: the lower pan is heavier!",
+            "reply": "Pin nods: Precisely. Now let's test your eyes."
+          }
+        ]
+      }
     },
     {
       "id": "gau-va-ba-chu-cho",
@@ -612,7 +645,25 @@
           "text": "Cộng các quả cân ở mỗi đĩa",
           "reply": "Heo Lúc Lắc: Cộng nhanh lên, bụng tớ réo rồi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Heo Lúc Lắc's three boxes",
+        "goTo": "Go to the cake stall, where Heo Lúc Lắc is hugging three cake boxes: A, B and C",
+        "lines": [
+          "Oink oink! I brought three cake boxes: A, B and C. I want to take the heaviest one home, because the heaviest one must have the most cakes!",
+          "That's Heo Lúc Lắc logic for you. Fine, put them on the scale. {name}, do you want to weigh each box, or count the weights first?"
+        ],
+        "choices": [
+          {
+            "text": "Weigh the boxes one by one",
+            "reply": "Pin: Careful and certain, just how I like it."
+          },
+          {
+            "text": "Add up the weights on each pan",
+            "reply": "Heo Lúc Lắc: Add faster, my tummy's rumbling!"
+          }
+        ]
+      }
     },
     {
       "id": "hop-banh-a-b-c",
@@ -1105,14 +1156,22 @@
       "title": "Tạp dề thợ cân",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chiếc cân đĩa lại thăng bằng tăm tắp. Pin trao cho {name} chiếc tạp dề \"Thợ cân tí hon\", còn Heo Lúc Lắc được thưởng… đúng một múi bưởi."
+      "text": "Chiếc cân đĩa lại thăng bằng tăm tắp. Pin trao cho {name} chiếc tạp dề \"Thợ cân tí hon\", còn Heo Lúc Lắc được thưởng… đúng một múi bưởi.",
+      "en": {
+        "title": "The weigher's apron",
+        "text": "The balance scale is perfectly level again. Pin gives {name} the \"Little Weigher\" apron, and Heo Lúc Lắc gets a reward of... exactly one pomelo segment."
+      }
     },
     {
       "id": "be-ca-can-nuoc",
       "title": "Tiếng bì bõm ở quầy nước",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ quầy nước bên kênh vọng lại tiếng bì bõm: Cá Lia Thia kêu bể cá vơi mất nửa, phải đổ thêm cho đủ lít nước mới bơi được!"
+      "text": "Từ quầy nước bên kênh vọng lại tiếng bì bõm: Cá Lia Thia kêu bể cá vơi mất nửa, phải đổ thêm cho đủ lít nước mới bơi được!",
+      "en": {
+        "title": "Splashing at the water stall",
+        "text": "Splashing sounds come from the water stall by the canal: Cá Lia Thia the fighting fish says the tank is half empty, and needs enough litres of water poured in before she can swim!"
+      }
     }
   ],
   "reward": {

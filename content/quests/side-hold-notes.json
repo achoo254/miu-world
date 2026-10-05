@@ -46,7 +46,19 @@
         {
           "text": "Cháu giữ nốt sáo vi vu!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, can you hear the kite flutes humming over the fields?",
+          "Hold your finger so the note rings long, then lift right at the red line."
+        ],
+        "choices": [
+          {
+            "text": "I'll hold the humming note!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ngân dài đúng nhịp mười bảy nốt sáo lượn trên bầu trời nhé!",
       "game": "hold-notes",
-      "goal": 17
+      "goal": 17,
+      "en": {
+        "title": "Kite flute notes",
+        "prompt": "Hold 17 soaring flute notes in time!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nốt sáo của {name} bay vút lên chín tầng mây thật du dương!"
+      "text": "Nốt sáo của {name} bay vút lên chín tầng mây thật du dương!",
+      "en": {
+        "title": "Reward",
+        "text": "{name}'s flute notes float high above the clouds, so sweet!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Gió đồng vẫn vi vu thổi sáo quanh hiên xưởng thủ công mỗi chiều."
+      "text": "Gió đồng vẫn vi vu thổi sáo quanh hiên xưởng thủ công mỗi chiều.",
+      "en": {
+        "title": "See you soon",
+        "text": "The field breeze plays its flute around the workshop porch every afternoon."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Hold the long notes with Nghệ Nhân Múa Rối",
+    "summary": "Tap and hold each sweet flute note for exactly as long as it soars across the blue sky."
   }
 }

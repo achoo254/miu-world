@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 25,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Guard the rice field",
+    "howTo": [
+      "Birds fly along three rows to eat the rice. {name}, drag farmers from the hut to the field.",
+      "Each farmer waves a hat to shoo birds off their row (up to four farmers). Tap a bird to push it back.",
+      "Chase off lots of birds, and don't let them carry away all ten bundles of rice!"
+    ]
+  }
 }

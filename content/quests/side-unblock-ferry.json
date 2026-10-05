@@ -46,7 +46,19 @@
         {
           "text": "Để cháu mở đường cho thuyền ra khơi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "My golden sailing ship is stuck between the wooden rafts, {name}! Come to the rescue!",
+          "Slide each boat along its length to clear a way to the river mouth."
+        ],
+        "choices": [
+          {
+            "text": "I'll clear a way out to sea!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Khéo léo giải cứu thuyền qua ba khúc kênh kẹt đá nhé!",
       "game": "unblock-ferry",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Harbour Boat Jam",
+        "prompt": "Free the ship from 3 blocked channels!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Vẹt Biển kêu to vui sướng: thuyền buồm của ta giương cánh lướt sóng nhờ {name} rồi!"
+      "text": "Vẹt Biển kêu to vui sướng: thuyền buồm của ta giương cánh lướt sóng nhờ {name} rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Vẹt Biển squawks with joy: my ship is sailing the waves again thanks to {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Biển cả còn nhiều chuyến hải trình, thuyền trưởng hẹn {name} hội ngộ trên bờ cát."
+      "text": "Biển cả còn nhiều chuyến hải trình, thuyền trưởng hẹn {name} hội ngộ trên bờ cát.",
+      "en": {
+        "title": "See you soon",
+        "text": "There are many more voyages ahead. The captain will meet {name} again on the sand."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Free the stuck boat with Thuyền Trưởng Vẹt Biển",
+    "summary": "Rafts are blocking the bay: slide the boats back and forth to get the golden ship out to sea."
   }
 }

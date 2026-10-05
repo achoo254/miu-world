@@ -46,7 +46,19 @@
         {
           "text": "Tớ giữ chắc tay lái rồi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The track around the frozen lake is super slippery. {name}, take the wheel!",
+          "At each bend, hold tight around the flag post, and only let go after the turn."
+        ],
+        "choices": [
+          {
+            "text": "Hands steady on the wheel!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Lái xe khéo léo vượt qua hai mươi khúc cua trượt băng nhé!",
       "game": "drift-corner",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Drift the corners",
+        "prompt": "Drift skilfully through 20 icy bends!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cánh Cụt nhảy múa cổ vũ: {name} ôm cua ngọt ngào chẳng trượt ra ngoài!"
+      "text": "Cánh Cụt nhảy múa cổ vũ: {name} ôm cua ngọt ngào chẳng trượt ra ngoài!",
+      "en": {
+        "title": "Reward",
+        "text": "Cánh Cụt dances and cheers: {name} takes the corners smoothly without sliding off!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đường đua hồ băng còn dài, Cánh Cụt chờ {name} tiếp tục so tài tốc độ."
+      "text": "Đường đua hồ băng còn dài, Cánh Cụt chờ {name} tiếp tục so tài tốc độ.",
+      "en": {
+        "title": "See you soon",
+        "text": "The lake track goes on and on. Cánh Cụt is waiting for {name} to race again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Drift Corners on the Ice Track with Cánh Cụt",
+    "summary": "The car speeds over slippery snow; hold to hug the post round the bend, then let go to drive straight."
   }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Dô ta! Cháu vào đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "My team is one person short, {name}. Join the tug of war!",
+          "When the drum calls 'heave-ho', pull twice as hard."
+        ],
+        "choices": [
+          {
+            "text": "Heave-ho! I'm in!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Thắng ba hiệp kéo co nhé!",
       "game": "tug-of-war",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Tug of War",
+        "prompt": "Win 3 rounds of tug of war!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Đội mình thắng rồi! {name} khỏe như voi con!"
+      "text": "Đội mình thắng rồi! {name} khỏe như voi con!",
+      "en": {
+        "title": "Reward",
+        "text": "We won! {name} is as strong as a baby elephant!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đội bên kia hẹn kéo lại trận nữa, cô chờ cháu ở quảng trường."
+      "text": "Đội bên kia hẹn kéo lại trận nữa, cô chờ cháu ở quảng trường.",
+      "en": {
+        "title": "See you soon",
+        "text": "The other team wants a rematch. I'll wait for you in the square."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Tug of war with Cô Hội Làng's team",
+    "summary": "Two teams grip the rope: tap fast in time with the shout to pull the red ribbon to your side."
   }
 }

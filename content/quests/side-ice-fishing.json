@@ -46,7 +46,19 @@
         {
           "text": "Cháu cầm cần câu sẵn sàng rồi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The cold wind outside the cave is blowing snow about. {name}, sit and fish with me!",
+          "Watch the fish shadows under the ice and drop the bait one beat early so they bite."
+        ],
+        "choices": [
+          {
+            "text": "Fishing rod at the ready!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Kéo dây câu bắt được mười con cá tươi ngon dưới băng nhé!",
       "game": "ice-fishing",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Ice hole fishing",
+        "prompt": "Reel in 10 fresh fish from under the ice!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Bắc Cực cười xòa: xô cá đầy ắp nhờ đôi mắt tinh tường của cháu {name}!"
+      "text": "Gấu Bắc Cực cười xòa: xô cá đầy ắp nhờ đôi mắt tinh tường của cháu {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Bắc Cực laughs: the bucket is full thanks to {name}'s sharp eyes!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Dưới lòng hồ còn cá ngon, bác Gấu đợi {name} ghé trạm thám hiểm câu tiếp."
+      "text": "Dưới lòng hồ còn cá ngon, bác Gấu đợi {name} ghé trạm thám hiểm câu tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "There are more tasty fish in the lake. Gấu Bắc Cực is waiting for {name} at the explorer station."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Ice Fishing with Gấu Bắc Cực Câu Cá",
+    "summary": "The lake is covered with thick ice; watch the fish shadows glide by and drop your line into the hole."
   }
 }

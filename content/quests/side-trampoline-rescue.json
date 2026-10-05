@@ -46,7 +46,19 @@
         {
           "text": "Bạt căng rồi, các bạn nhảy đi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "It is rescue drill time, {name}! Grab a corner of the trampoline with me!",
+          "Watch the shadow on the ground to see where a friend will land, then slide the trampoline there."
+        ],
+        "choices": [
+          {
+            "text": "Trampoline ready, jump, everyone!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đưa mười lăm bạn nảy sang xe cứu hỏa nhé!",
       "game": "trampoline-rescue",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Trampoline Rescue",
+        "prompt": "Bounce 15 friends over to the fire truck!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bạn nào cũng an toàn, Cáo Phi Công gắn huy hiệu cứu hộ cho {name}!"
+      "text": "Bạn nào cũng an toàn, Cáo Phi Công gắn huy hiệu cứu hộ cho {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Everyone is safe, and Cáo Phi Công pins a rescue badge on {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tuần sau lại diễn tập, Cáo Phi Công hẹn cậu ở khu học tập."
+      "text": "Tuần sau lại diễn tập, Cáo Phi Công hẹn cậu ở khu học tập.",
+      "en": {
+        "title": "See you soon",
+        "text": "There is another drill next week, and Cáo Phi Công will see you at the learning area."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Rescue trampoline with Cáo Phi Công",
+    "summary": "Friends jump from the practice building: slide the trampoline to catch them and bounce them over to the fire truck."
   }
 }

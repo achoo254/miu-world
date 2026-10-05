@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "House of cards",
+    "howTo": [
+      "{name}, drag cards from the deck to the dotted outlines to build a house of cards.",
+      "Drag really slowly! Rush and your hand shakes, the house sways (left bar turns red) and that level falls.",
+      "Each finished level is a point. The house has three levels."
+    ]
+  }
 }

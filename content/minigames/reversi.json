@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 1,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Flip Stones",
+    "howTo": [
+      "{name} taps a dotted square to place a stone, trapping Owl's row between two of your own.",
+      "Trapped stones (across, down or diagonal) flip to {name}'s colour. Corners are great spots!",
+      "Have more stones than Owl when the board is full to win."
+    ]
+  }
 }

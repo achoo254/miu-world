@@ -46,7 +46,19 @@
         {
           "text": "Tớ cầm vòi xua tan mây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Look, {name}! Grey clouds are drifting over, trying to soak the chicken coop!",
+          "Aim the water hose at the clouds to chase the gloomy sky away."
+        ],
+        "choices": [
+          {
+            "text": "I'll grab the hose and clear the sky!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Tưới nước xua tan được ba mươi đám mây xám xịt nhé!",
       "game": "cloud-blaster",
-      "goal": 30
+      "goal": 30,
+      "en": {
+        "title": "Water the dry clouds",
+        "prompt": "Spray away 30 grey clouds!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bé Chăn Gà Con nhảy chân sáo: trời lại hửng nắng vàng nhờ có {name} dũng cảm rồi!"
+      "text": "Bé Chăn Gà Con nhảy chân sáo: trời lại hửng nắng vàng nhờ có {name} dũng cảm rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Bé Chăn Gà Con skips with joy: the sun is shining again thanks to brave {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Trời quang mây tạnh rồi, hôm nào có giông bão cậu lại tới chuồng gà giúp tớ nha."
+      "text": "Trời quang mây tạnh rồi, hôm nào có giông bão cậu lại tới chuồng gà giúp tớ nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "The sky is clear now. If a storm ever comes, come help me at the chicken coop."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Blast the Storm Clouds with Bé Chăn Gà Con",
+    "summary": "Grey clouds roll in over the chicken coop; spray water to make the gloomy clouds vanish."
   }
 }

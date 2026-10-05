@@ -46,7 +46,19 @@
         {
           "text": "Tớ cầm còi đây, xe ơi đi lần lượt!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Tweet! {name}, be a traffic officer with me for a little while!",
+          "Tap a car and it goes. Never let cars from both directions cross together, or they will bump."
+        ],
+        "choices": [
+          {
+            "text": "Whistle ready, cars go one at a time!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Cho ba mươi chiếc xe qua ngã tư an toàn nhé!",
       "game": "traffic-cop",
-      "goal": 30
+      "goal": 30,
+      "en": {
+        "title": "Crossroads Traffic Cop",
+        "prompt": "Get 30 cars safely through the crossroads!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chó Cảnh Sát Còi giơ tay chào: nhờ {name} mà ngã tư thông suốt!"
+      "text": "Chó Cảnh Sát Còi giơ tay chào: nhờ {name} mà ngã tư thông suốt!",
+      "en": {
+        "title": "Reward",
+        "text": "Chó Cảnh Sát Còi salutes: thanks to {name}, the crossroads is flowing smoothly!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Giờ tan tầm đông xe lắm, Chó Cảnh Sát Còi cần cậu ở ngã tư nữa."
+      "text": "Giờ tan tầm đông xe lắm, Chó Cảnh Sát Còi cần cậu ở ngã tư nữa.",
+      "en": {
+        "title": "See you soon",
+        "text": "Rush hour gets so busy, Chó Cảnh Sát Còi will need you at the crossroads again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Running the crossroads with Chó Cảnh Sát Còi",
+    "summary": "Cars wait at the four lines of the crossroads: tap to send each one through, never letting up-down and across cars in at once."
   }
 }

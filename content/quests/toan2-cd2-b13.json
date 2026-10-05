@@ -64,7 +64,26 @@
           "text": "Hổ Vằn gầm to quá đó!",
           "reply": "Hổ Vằn cúi mặt, đỏ cả vằn: Xin lỗi… tớ gầm nhỏ lại đây, gừ… gừ…"
         }
-      ]
+      ],
+      "en": {
+        "title": "Grrr... who has more carrots?",
+        "goTo": "Go to the carrot stall, where Hổ Vằn and Thỏ Cốm are arguing",
+        "lines": [
+          "GRRR... RRR! My stall has the most carrots in the market! ...Oh, but don't be scared, {name}, I only roar to look tough.",
+          "Pfft, I brought 2 more carrots to market than you! Wait... or was it 3? I've forgotten.",
+          "How many is 2 more? I... I can't work it out, that's why I'm roaring."
+        ],
+        "choices": [
+          {
+            "text": "Stop arguing, let me work it out!",
+            "reply": "Thỏ Cốm pricks up her ears: Brilliant! But I've dropped my watering can somewhere."
+          },
+          {
+            "text": "You're roaring way too loud, Hổ Vằn!",
+            "reply": "Hổ Vằn hangs his head, red right down to his stripes: Sorry... I'll roar quietly, grr... grr..."
+          }
+        ]
+      }
     },
     {
       "id": "do-lam-vuon",
@@ -101,7 +120,21 @@
           "text": "Tớ làm mẫu ngay!",
           "reply": "Hổ Vằn ngồi xuống cạnh sạp, hai tai dựng đứng chăm chú."
         }
-      ]
+      ],
+      "en": {
+        "title": "What do we do with \"more\"?",
+        "lines": [
+          "My granny told me: if I have 2 more carrots than Tiger, then my carrots equal Tiger's carrots plus 2. Adding on means addition!",
+          "And if I have 2 fewer than Bunny then... take away 2. Taking away is subtraction, right?",
+          "Exactly! But the solution needs a proper summary, calculation and answer. {name}, show us how!"
+        ],
+        "choices": [
+          {
+            "text": "I'll show you right now!",
+            "reply": "Hổ Vằn sits down by the stall, both ears standing up, all attention."
+          }
+        ]
+      }
     },
     {
       "id": "lop-hoc-boi",
@@ -372,7 +405,25 @@
           "text": "Ít hơn cũng không sao đâu Hổ ơi",
           "reply": "Hổ Vằn cười tít mắt: Ừ nhỉ, ít hơn thì vụ sau mình trồng thêm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Tiger wants to learn about \"fewer\"",
+        "goTo": "Go back to the carrot stall, where Hổ Vằn sits gloomily counting carrot after carrot",
+        "lines": [
+          "I counted again: I have fewer carrots than Thỏ Cốm. How sad... but never mind, I want to learn the \"fewer\" lesson anyway.",
+          "After the lesson, come wash vegetables with me, okay? The water trough has toy boats, it's loads of fun!"
+        ],
+        "choices": [
+          {
+            "text": "Learn \"fewer\" first, then wash the vegetables",
+            "reply": "Hổ Vằn nods eagerly, tail swishing like a kitten's."
+          },
+          {
+            "text": "Having fewer is okay, Tiger",
+            "reply": "Hổ Vằn grins from ear to ear: You're right, next season we'll just grow more!"
+          }
+        ]
+      }
     },
     {
       "id": "hat-quan-ho",
@@ -695,14 +746,22 @@
       "title": "Huy hiệu cà rốt",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hổ Vằn và Thỏ Cốm làm hòa, cùng chọn củ cà rốt to nhất trên sạp tặng {name} kèm huy hiệu \"Giải toán nhiều hơn, ít hơn\". Hổ còn gầm một tiếng thật nhỏ: \"Gừ… cảm ơn!\""
+      "text": "Hổ Vằn và Thỏ Cốm làm hòa, cùng chọn củ cà rốt to nhất trên sạp tặng {name} kèm huy hiệu \"Giải toán nhiều hơn, ít hơn\". Hổ còn gầm một tiếng thật nhỏ: \"Gừ… cảm ơn!\"",
+      "en": {
+        "title": "Carrot badge",
+        "text": "Hổ Vằn and Thỏ Cốm make up and together pick the biggest carrot on the stall for {name}, along with the \"More-and-Fewer Problem Solver\" badge. Tiger even gives a teeny little roar: \"Grr... thank you!\""
+      }
     },
     {
       "id": "cua-nha-kinh",
       "title": "Cửa nhà kính còn khóa",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cánh Cụt Pin đứng trước cửa nhà kính bán cây giống, rung chùm chìa khóa leng keng: \"Chưa kiểm xong từng câu đố thì tớ chưa mở cửa đâu nhé!\""
+      "text": "Cánh Cụt Pin đứng trước cửa nhà kính bán cây giống, rung chùm chìa khóa leng keng: \"Chưa kiểm xong từng câu đố thì tớ chưa mở cửa đâu nhé!\"",
+      "en": {
+        "title": "The greenhouse door is still locked",
+        "text": "Cánh Cụt Pin stands at the door of the seedling greenhouse, jingling a bunch of keys: \"Not until every puzzle has been checked will I open this door!\""
+      }
     }
   ],
   "reward": {

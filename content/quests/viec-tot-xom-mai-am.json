@@ -45,7 +45,21 @@
       ],
       "choices": [
         { "text": "Bà ngồi nghỉ, cháu đi tìm ạ!", "reply": "Ngoan quá. Trăng sáng thế này chắc cháu tìm nhanh thôi." }
-      ]
+      ],
+      "en": {
+        "title": "Granny Mướp looks for her glasses",
+        "goTo": "Go to Granny Mướp's porch step, she's feeling around for something",
+        "lines": [
+          "Meow… Is that you, dear? I just got a letter from my grandchild Mít, but I can't find my glasses anywhere, and my eyes are too blurry to read.",
+          "A little while ago I went to the corner of the garden to pick custard apples; they must have fallen out there."
+        ],
+        "choices": [
+          {
+            "text": "You rest, Granny, I'll go and look!",
+            "reply": "What a dear. With the moon this bright, I'm sure you'll find them quickly."
+          }
+        ]
+      }
     },
     {
       "id": "tim-do-cua-ba",
@@ -163,7 +177,25 @@
           "text": "Rủ Mèo Mun hàng xóm sang chơi",
           "consequence": "Đom Đóm bay trước soi đường. Nhà Mèo Mun ở cuối ngõ, sang rủ bạn ấy nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Cheer Granny up",
+        "prompt": "It's getting dark and Granny is sitting alone on the porch. What will {name} do to cheer her up?",
+        "choices": [
+          {
+            "text": "Read her the letter one more time",
+            "consequence": "Granny closes her eyes to listen, smiling as if little Mít were sitting right beside her."
+          },
+          {
+            "text": "Light the lantern on the porch",
+            "consequence": "The porch glows bright, and Granny says she can see every single knitting stitch."
+          },
+          {
+            "text": "Invite Mèo Mun from next door over",
+            "consequence": "Đom Đóm flies ahead to light the way. Mèo Mun's house is at the end of the lane, go and invite her!"
+          }
+        ]
+      }
     },
     {
       "id": "ru-meo-mun",
@@ -174,7 +206,19 @@
       "lines": [
         { "speaker": "Mèo Mun Hàng Xóm", "text": "Sang chơi với bà Mướp hả? Tớ đi ngay! Tớ còn mang theo đĩa ổi chín mẹ vừa hái để biếu bà." }
       ],
-      "choices": [{ "text": "Bà chắc vui lắm đây!" }]
+      "choices": [{ "text": "Bà chắc vui lắm đây!" }],
+      "en": {
+        "title": "Invite Mèo Mun over",
+        "goTo": "Go down Mèo Mun's lane and invite her over to keep Granny company",
+        "lines": [
+          "Come and visit Granny Mướp? I'm coming right now! I'll even bring the plate of ripe guavas Mum just picked, as a gift for her."
+        ],
+        "choices": [
+          {
+            "text": "Granny will be so happy!"
+          }
+        ]
+      }
     },
     {
       "id": "quan-tam-ong-ba",
@@ -211,14 +255,22 @@
       "title": "Bà Mướp cảm ơn",
       "kind": "reward",
       "target": "vt-xma-ba-muop",
-      "text": "Bà Mướp đeo kính, nhìn {name} thật lâu rồi cảm ơn. Bà dúi vào tay một nắm kẹo lạc, cả xóm khen {name} là đứa cháu ngoan của xóm."
+      "text": "Bà Mướp đeo kính, nhìn {name} thật lâu rồi cảm ơn. Bà dúi vào tay một nắm kẹo lạc, cả xóm khen {name} là đứa cháu ngoan của xóm.",
+      "en": {
+        "title": "Granny Mướp says thank you",
+        "text": "Granny Mướp puts on her glasses, gazes at {name} for a long moment and says thank you. She presses a handful of peanut sweets into {name}'s hand, and the whole hamlet calls {name} the hamlet's sweetest grandchild."
+      }
     },
     {
       "id": "cho-chau-ve",
       "title": "Chờ cháu về",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bà hẹn Chủ nhật cháu Mít về sẽ làm bánh, mời {name} sang ăn cùng. Đom Đóm Thắp Đèn bay theo soi đường cho {name} về nhà."
+      "text": "Bà hẹn Chủ nhật cháu Mít về sẽ làm bánh, mời {name} sang ăn cùng. Đom Đóm Thắp Đèn bay theo soi đường cho {name} về nhà.",
+      "en": {
+        "title": "Waiting for the grandchild",
+        "text": "Granny says that on Sunday, when Mít comes home, she'll bake cakes and invite {name} over to share. Đom Đóm Thắp Đèn flies along to light {name}'s way home."
+      }
     }
   ],
   "reward": {

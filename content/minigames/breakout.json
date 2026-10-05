@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 30,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Brick breaker",
+    "howTo": [
+      "Tap to launch the ball, then drag the paddle left and right so the ball bounces up and breaks bricks.",
+      "Star bricks are worth three points. Catch a falling apple and your paddle grows longer.",
+      "Miss the ball and you lose a heart. Smash lots of bricks, {name}!"
+    ]
+  }
 }

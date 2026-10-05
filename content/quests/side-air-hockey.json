@@ -46,7 +46,19 @@
         {
           "text": "Tớ vào vị trí bắt đĩa ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, the natural ice rink is slippery and smooth today, perfect!",
+          "Take the paddle on this side and let's battle with the puck."
+        ],
+        "choices": [
+          {
+            "text": "In position to block the puck!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đẩy đĩa trúng khung thành đối phương được năm điểm nhé!",
       "game": "air-hockey",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Air hockey",
+        "prompt": "Score 5 goals against your rival!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cánh Cụt vỗ cánh ríu rít: những đường gạt đĩa của {name} hiểm hóc quá!"
+      "text": "Cánh Cụt vỗ cánh ríu rít: những đường gạt đĩa của {name} hiểm hóc quá!",
+      "en": {
+        "title": "Reward",
+        "text": "Cánh Cụt flaps and chirps: {name}'s shots are so tricky!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Sân băng luôn sẵn sàng, Cánh Cụt đón {name} thi thêm trận nữa nhé."
+      "text": "Sân băng luôn sẵn sàng, Cánh Cụt đón {name} thi thêm trận nữa nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The rink is always ready. Cánh Cụt welcomes {name} for another match."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Ice Hockey with Cánh Cụt Khúc Côn Cầu",
+    "summary": "Slide your paddle across the smooth ice to push the puck into your rival's net."
   }
 }

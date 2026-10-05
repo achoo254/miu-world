@@ -65,7 +65,26 @@
           "text": "Voi Bảo bị cảm à?",
           "reply": "Voi Bảo: Không, tại hạt bụi bay vào vòi thôi. Mà cậu tìm giúp tớ mấy mảnh lịch nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "One enormous sneeze",
+        "goTo": "Climb up to the calendar room in the tower, where Voi Bảo is sniffling",
+        "lines": [
+          "Aaah... CHOOO! Oh no, {name}! My trunk just blew the library's whole stack of calendars away.",
+          "The December page has lost a few squares, and the February page is full of holes too. I have a great memory, but I remember... a bit slowly.",
+          "(yawning from the balcony) A few calendar pages blew out here, soft as a blanket... zzz..."
+        ],
+        "choices": [
+          {
+            "text": "I'll pick up the calendar pages now!",
+            "reply": "Voi Bảo waves her trunk: Hurry, before Gấu Trúc Khò uses them all as a blanket!"
+          },
+          {
+            "text": "Have you got a cold, Voi Bảo?",
+            "reply": "Voi Bảo: No, a speck of dust flew up my trunk, that's all. Will you find the calendar pieces for me?"
+          }
+        ]
+      }
     },
     {
       "id": "nhat-manh-lich",
@@ -103,7 +122,22 @@
           "text": "Tớ dò cột thử xem!",
           "reply": "Voi Bảo: Trước hết, giúp tớ ghép mấy tấm thẻ ngày sinh của các bạn đã."
         }
-      ]
+      ],
+      "en": {
+        "title": "Reading days and months",
+        "goTo": "Bring the calendar pieces back to the calendar room in the tower",
+        "lines": [
+          "Thank you, {name}! Look: each calendar page is one month. The big number in each square is the date, and the top row shows the day of the week.",
+          "\"Ngày 8 tháng 3\" is read \"Ngày tám tháng Ba\", the 8th of March. Some months have 30 days, some have 31, and February always skimps a little.",
+          "To find which day of the week a date is, just run your finger up to the top of its column. Easy as me spraying myself for a bath!"
+        ],
+        "choices": [
+          {
+            "text": "Let me try tracing a column!",
+            "reply": "Voi Bảo: First, help me match up my friends' birthday cards."
+          }
+        ]
+      }
     },
     {
       "id": "the-ngay-sinh",
@@ -545,7 +579,26 @@
           "text": "Tớ đắp cho Khò cái chăn thật nhé",
           "reply": "Gấu Trúc Khò cười tít: Tốt bụng thế! Vậy tớ đố cậu luôn cho tỉnh ngủ."
         }
-      ]
+      ],
+      "en": {
+        "title": "Gấu Trúc Khò naps under a calendar",
+        "goTo": "Go out to the tower balcony, where Gấu Trúc Khò is sleeping soundly under the January page",
+        "lines": [
+          "Zzz... zzz... January is so cozy... just five more minutes...",
+          "Khò, that's the calendar room's January page, not a blanket!",
+          "(rubbing his eyes) Fine... whoever can answer my calendar quiz gets the page back, okay?"
+        ],
+        "choices": [
+          {
+            "text": "Quiz me, I'll answer them all!",
+            "reply": "Gấu Trúc Khò sits up, eyes still drooping: Okay, but ask quietly, please."
+          },
+          {
+            "text": "I'll tuck you in with a real blanket, Khò",
+            "reply": "Gấu Trúc Khò grins: How kind! Then I'll quiz you right away to wake myself up."
+          }
+        ]
+      }
     },
     {
       "id": "thang-mot-may-ngay",
@@ -1194,14 +1247,22 @@
       "title": "Huy hiệu người giữ lịch",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Voi Bảo treo đủ các tờ lịch lên tường, rồi lấy vòi gắn cho {name} huy hiệu \"Người giữ lịch tháp đồng hồ\". Lần này Voi Bảo nhớ quay mặt đi chỗ khác mới hắt xì."
+      "text": "Voi Bảo treo đủ các tờ lịch lên tường, rồi lấy vòi gắn cho {name} huy hiệu \"Người giữ lịch tháp đồng hồ\". Lần này Voi Bảo nhớ quay mặt đi chỗ khác mới hắt xì.",
+      "en": {
+        "title": "Calendar keeper badge",
+        "text": "Voi Bảo hangs all the calendar pages back on the wall, then uses her trunk to pin the \"Clock Tower Calendar Keeper\" badge on {name}. This time she remembers to turn away before she sneezes."
+      }
     },
     {
       "id": "chuong-thap-im-lim",
       "title": "Chuông tháp im lìm",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chó Đốm Boong chạy xuống từ gác chuông, thở hồng hộc: \"Cả tuần tới chưa ai trực đánh chuông cho tháp! Phải xem đồng hồ, xem lịch để lên lịch trực ngay thôi!\""
+      "text": "Chó Đốm Boong chạy xuống từ gác chuông, thở hồng hộc: \"Cả tuần tới chưa ai trực đánh chuông cho tháp! Phải xem đồng hồ, xem lịch để lên lịch trực ngay thôi!\"",
+      "en": {
+        "title": "The tower bell is silent",
+        "text": "Chó Đốm Boong runs down from the bell loft, panting: \"Nobody's on duty to ring the tower bell all next week! We need to check the clock and the calendar and make a duty rota right now!\""
+      }
     }
   ],
   "reward": {

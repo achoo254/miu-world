@@ -65,7 +65,26 @@
           "text": "Ong vỡ tổ thật à? Buồn cười ghê",
           "reply": "Chó Đốm Boong gãi tai: Bác thủ thư Gấu Trúc Tròn thì không cười đâu. Đi tìm đồ trực chuông với tớ nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Nobody is on bell duty",
+        "goTo": "Climb to the top of the bell tower, where Chó Đốm Boong is hugging the bell striker",
+        "lines": [
+          "Woof woof! {name}, you came up at just the right time! Nobody's on bell duty next week, and I... can't quite read the clock properly yet.",
+          "Yesterday I rang the closing bell just as everyone opened their books. The whole reading room thought time was up, slammed their books shut and swarmed out like bees from a broken hive!",
+          "The short hand shows the hour, the long hand shows the minutes. Long hand on 3 is 15 minutes, on 6 is 30 minutes. I know it by heart, but my paws keep turning it wrong."
+        ],
+        "choices": [
+          {
+            "text": "Let's practise telling the time together!",
+            "reply": "Chó Đốm Boong wags his spotty tail like mad: First, help me find the model clock and the calendar!"
+          },
+          {
+            "text": "Like bees from a hive? That's so funny",
+            "reply": "Chó Đốm Boong scratches his ear: Librarian Gấu Trúc Tròn didn't laugh. Come on, let's find the bell-duty things!"
+          }
+        ]
+      }
     },
     {
       "id": "tim-do-truc-chuong",
@@ -415,7 +434,26 @@
           "text": "Đánh chuông to cho cả thư viện tỉnh!",
           "reply": "Chó Đốm Boong cười khì: Đánh chuông thì phải đúng giờ đã, xem ảnh trước nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Gấu Trắng Ú rushes in",
+        "goTo": "Go down to the foot of the clock tower, where Gấu Trắng Ú has just run up, fur all tousled",
+        "lines": [
+          "Huff, puff... am I late for story time? I set an alarm, but the clock... overslept along with me.",
+          "Story time at the tower starts at 2 in the afternoon, just like the class in this photo. Look, Ú: someone else was late too, just like you.",
+          "{name}, will you check for me, or shall we let Chó Đốm Boong ring the bell really loud so everyone wakes up?"
+        ],
+        "choices": [
+          {
+            "text": "Let's check the times in the photo first",
+            "reply": "Gấu Trắng Ú nods: Yes, look closely and we'll know who was late."
+          },
+          {
+            "text": "Ring the bell loud to wake the whole library!",
+            "reply": "Chó Đốm Boong chuckles: The bell has to ring at the right time first, let's look at the photo!"
+          }
+        ]
+      }
     },
     {
       "id": "ai-den-lop-muon",
@@ -1365,14 +1403,22 @@
       "title": "Huy hiệu trực chuông",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chó Đốm Boong treo bảng lịch trực lên cột chuông, rồi đeo cho {name} huy hiệu \"Người giữ giờ tháp chuông\". Gấu Trắng Ú hứa từ nay đặt hai cái báo thức."
+      "text": "Chó Đốm Boong treo bảng lịch trực lên cột chuông, rồi đeo cho {name} huy hiệu \"Người giữ giờ tháp chuông\". Gấu Trắng Ú hứa từ nay đặt hai cái báo thức.",
+      "en": {
+        "title": "Bell duty badge",
+        "text": "Chó Đốm Boong hangs the duty rota on the bell post, then gives {name} the \"Bell Tower Timekeeper\" badge. Gấu Trắng Ú promises to set two alarms from now on."
+      }
     },
     {
       "id": "sau-xanh-dem-ngay",
       "title": "Sâu Xanh đếm ngày",
       "kind": "next",
       "trigger": "auto",
-      "text": "Trên ban công tháp, Sâu Xanh nằm ngắm trời, đếm từng ngày chờ hóa bướm: \"Còn bao nhiêu ngày nữa nhỉ? Tớ đếm mãi mà cứ quên mất!\""
+      "text": "Trên ban công tháp, Sâu Xanh nằm ngắm trời, đếm từng ngày chờ hóa bướm: \"Còn bao nhiêu ngày nữa nhỉ? Tớ đếm mãi mà cứ quên mất!\"",
+      "en": {
+        "title": "Sâu Xanh counts the days",
+        "text": "On the tower balcony, Sâu Xanh the green caterpillar lies gazing at the sky, counting the days until she turns into a butterfly: \"How many days are left? I keep counting and I keep forgetting!\""
+      }
     }
   ],
   "reward": {

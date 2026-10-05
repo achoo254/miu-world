@@ -46,7 +46,19 @@
         {
           "text": "Tớ ngắm đường lăn vào lỗ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "I just made a mini golf course around the palm tree, {name}! Let's play a round!",
+          "Pull back to wind up, then let go, but not too hard or the ball will jump the hole."
+        ],
+        "choices": [
+          {
+            "text": "I'm lining up my putt!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đánh bóng lăn trúng hố cờ đạt sáu điểm thật xuất sắc nhé!",
       "game": "mini-golf",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Mini Golf",
+        "prompt": "Sink the ball and score 6 brilliant points!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khỉ con gãi đầu cười toe: bóng của {name} lăn lượn một đường rồi tụt tọt vào lỗ!"
+      "text": "Khỉ con gãi đầu cười toe: bóng của {name} lăn lượn một đường rồi tụt tọt vào lỗ!",
+      "en": {
+        "title": "Reward",
+        "text": "The little monkey grins: {name}'s ball curved all the way and dropped right into the hole!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Sân cát bờ biển còn nhiều chướng ngại mới, Khỉ con đợi {name} so tài đường gậy."
+      "text": "Sân cát bờ biển còn nhiều chướng ngại mới, Khỉ con đợi {name} so tài đường gậy.",
+      "en": {
+        "title": "See you soon",
+        "text": "The beach course has new obstacles. The little monkey is waiting for {name} to play another round."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Mini golf on the sand with Khỉ Nhảy Dù Đảo Cổ",
+    "summary": "On a bumpy, winding sand course, pull back to set the power and bank the ball off the walls into the hole."
   }
 }

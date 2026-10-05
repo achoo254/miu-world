@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 45,
   "goal": 36,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Festival drum",
+    "howTo": [
+      "Notes slide toward the circle on the left. When a note enters it, {name} hits the drum!",
+      "Solid red note: hit the middle of the drum. Hollow blue note: hit the rim.",
+      "Right on time is 2 points, a little off is 1. Random banging throws the drum off the beat."
+    ]
+  }
 }

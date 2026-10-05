@@ -46,7 +46,19 @@
         {
           "text": "Cháu bước đi cùng chiếc bóng!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The knight greets you, {name}! The palace's magic mirror is putting us to the test.",
+          "When you step one square, your reflection steps the opposite way. Bring you both to the stars."
+        ],
+        "choices": [
+          {
+            "text": "I'll walk with my reflection!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Dẫn hai bạn qua gương tới đích thành công bốn lần nhé!",
       "game": "mirror-twins",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Mirror Buddies",
+        "prompt": "Lead both twins through the mirror to the goal 4 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hiệp Sĩ Gương Soi nâng kiếm chào: {name} am hiểu phép đối xứng gương tài tình vô song!"
+      "text": "Hiệp Sĩ Gương Soi nâng kiếm chào: {name} am hiểu phép đối xứng gương tài tình vô song!",
+      "en": {
+        "title": "Reward",
+        "text": "Hiệp Sĩ Gương Soi raises his sword: {name} has mastered mirror symmetry like no one else!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Sân hình khối hoàng cung luôn rộng mở, hiệp sĩ chờ cháu quay lại luyện tập phép gương."
+      "text": "Sân hình khối hoàng cung luôn rộng mở, hiệp sĩ chờ cháu quay lại luyện tập phép gương.",
+      "en": {
+        "title": "See you soon",
+        "text": "The palace shape courtyard is always open. The knight awaits your return to practise mirror magic."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Mirror Twins with Hiệp Sĩ Gương Soi",
+    "summary": "Two knights walk across a marble floor; guide them so both reach their mirrored goals together."
   }
 }

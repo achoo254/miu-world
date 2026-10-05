@@ -46,7 +46,19 @@
         {
           "text": "Tớ nhớ giỏi lắm, hát đi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, I've formed a choir of cows, chickens and ducks!",
+          "Each one sings a note. Remember who sang first and who sang next, then tap them in order."
+        ],
+        "choices": [
+          {
+            "text": "I've got a great memory, start singing!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nhớ đúng sáu lượt bài hát của các bạn thú nhé!",
       "game": "simon-says",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Animal Sing-Along",
+        "prompt": "Remember 6 rounds of the animals' song!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cả dàn đồng ca cúi chào, Heo Kho Hàng khen {name} nhớ như in!"
+      "text": "Cả dàn đồng ca cúi chào, Heo Kho Hàng khen {name} nhớ như in!",
+      "en": {
+        "title": "Reward",
+        "text": "The whole choir bows, and Heo Kho Hàng praises {name}'s perfect memory!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Dàn đồng ca còn tập bài mới, lúc khác cậu nghe tiếp ở cửa kho nhé."
+      "text": "Dàn đồng ca còn tập bài mới, lúc khác cậu nghe tiếp ở cửa kho nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The choir is learning a new song. Come listen again by the storehouse door."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Farm Choir with Heo Kho Hàng",
+    "summary": "The farm animals sing one after another; remember the order and tap it back just right."
   }
 }

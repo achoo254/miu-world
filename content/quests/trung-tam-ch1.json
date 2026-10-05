@@ -63,7 +63,26 @@
           "text": "Ngày hội gặp gỡ có gì vui?",
           "reply": "Có sân khấu, có tổ đội, có quà, và có thật nhiều bạn mới!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Meet the Cat Ambassador",
+        "goTo": "Go to the cat statue fountain in the middle of the square",
+        "lines": [
+          "Meow meow, welcome to the Hub, {name}! This is where friends from all over come to meet.",
+          "This afternoon the square is holding the Meet-Up Festival, but the wind has scattered the decorations all around the fountain.",
+          "Could you pick up a ticket, a balloon and a gift box for me?"
+        ],
+        "choices": [
+          {
+            "text": "I'll pick them up right away!",
+            "reply": "Thank you, {name}, you really are the festival's guest of honour."
+          },
+          {
+            "text": "What's fun at the Meet-Up Festival?",
+            "reply": "There's a stage, there are teams, there are presents, and there are lots and lots of new friends!"
+          }
+        ]
+      }
     },
     {
       "id": "tim-do-trang-tri",
@@ -282,7 +301,25 @@
           "text": "Cổng nào đẹp nhất hả chú?",
           "reply": "Cổng nào cũng đẹp, mỗi cổng một màu như cầu vồng!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Meet Uncle Tròn the gatekeeper",
+        "goTo": "Bring the lanterns to the row of portal gates",
+        "lines": [
+          "Ah, {name} has brought the lanterns! Each gate leads to a land of its own, you know.",
+          "To light up every gate, you'll need to work out how many gates are still dark."
+        ],
+        "choices": [
+          {
+            "text": "I can work it out!",
+            "reply": "Well done, I'll stand right here and cheer you on."
+          },
+          {
+            "text": "Which gate is the prettiest, Uncle?",
+            "reply": "They're all pretty, each gate a different colour, like a rainbow!"
+          }
+        ]
+      }
     },
     {
       "id": "thap-cong",
@@ -325,14 +362,23 @@
       "kind": "reward",
       "target": "meo-dai-su",
       "text": "Dãy cổng dịch chuyển sáng rực, nhạc ngày hội vang khắp quảng trường! Mèo Đại Sứ gắn lên áo {name} huy hiệu Bạn của Trung tâm.",
-      "goTo": "Quay về đài phun nước tượng mèo nhận quà"
+      "goTo": "Quay về đài phun nước tượng mèo nhận quà",
+      "en": {
+        "title": "Meet-Up Festival gift",
+        "goTo": "Go back to the cat statue fountain to get your gift",
+        "text": "The row of portal gates blazes with light, and festival music fills the square! The Cat Ambassador pins the Friend of the Hub badge on {name}'s shirt."
+      }
     },
     {
       "id": "len-duong",
       "title": "Chọn một cổng để lên đường",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mỗi cổng sáng một màu đang mời gọi. {name} chọn một cổng và bước qua, bao bạn mới đang chờ ở phía bên kia!"
+      "text": "Mỗi cổng sáng một màu đang mời gọi. {name} chọn một cổng và bước qua, bao bạn mới đang chờ ở phía bên kia!",
+      "en": {
+        "title": "Pick a gate and set off",
+        "text": "Every gate glows its own colour, calling you in. {name}, pick a gate and step through, lots of new friends are waiting on the other side!"
+      }
     }
   ],
   "reward": {

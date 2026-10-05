@@ -10,5 +10,13 @@
   "controls": ["swipe", "drag"],
   "duration": 60,
   "goal": 6,
-  "params": { "ice": 1 }
+  "params": { "ice": 1 },
+  "en": {
+    "name": "Curling on ice",
+    "howTo": [
+      "Swipe up to push the stone gliding toward the rings.",
+      "When the stone slows, rub back and forth on the ice in front of it to help it go farther.",
+      "A stone resting in the centre scores three. {name} has five stones!"
+    ]
+  }
 }

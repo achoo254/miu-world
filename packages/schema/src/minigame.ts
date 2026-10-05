@@ -29,6 +29,8 @@ export const MinigameSpec = z.strictObject({
   goal: z.number().int().min(1).max(MAX_MINIGAME_SCORE),
   /** Tuning values with their defaults; a quest step may override any of them with a value of the same type. */
   params: z.record(MinigameParamKey, MinigameParamValue).default({}),
+  /** The name and the how-to lines in English (as many lines), for the bilingual display. */
+  en: z.strictObject({ name: Text.max(40), howTo: z.array(Text.max(110)).min(1).max(3) }).optional(),
 });
 export type MinigameSpec = z.infer<typeof MinigameSpec>;
 

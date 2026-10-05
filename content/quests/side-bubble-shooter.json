@@ -46,7 +46,19 @@
         {
           "text": "Ngắm kỹ rồi bắn này!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "See the coloured bubbles stuck in the palm leaves, {name}? Shoot them down for me!",
+          "Aim so three of the same colour stick together and pop! Don't let the bubbles reach the red line."
+        ],
+        "choices": [
+          {
+            "text": "Aiming carefully, here goes!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Bắn nổ bóng được ba mươi điểm nhé!",
       "game": "bubble-shooter",
-      "goal": 30
+      "goal": 30,
+      "en": {
+        "title": "Bubble shooter",
+        "prompt": "Score 30 points popping bubbles!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khỉ Hái Dừa đu cành reo lên: {name} bắn bóng trăm phát trăm trúng!"
+      "text": "Khỉ Hái Dừa đu cành reo lên: {name} bắn bóng trăm phát trăm trúng!",
+      "en": {
+        "title": "Reward",
+        "text": "Khỉ Hái Dừa swings on a branch and cheers: {name} never misses a shot!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Gió lại thổi bóng mắc lên cây, {name} ghé rừng chơi tiếp với Khỉ nhé."
+      "text": "Gió lại thổi bóng mắc lên cây, {name} ghé rừng chơi tiếp với Khỉ nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The wind keeps blowing bubbles into the trees. Come play in the jungle with Khỉ again, {name}."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Bubble shooter under the palms with Khỉ Hái Dừa",
+    "summary": "Drag your finger to aim along the dotted line and shoot; three bubbles of one colour that touch will pop."
   }
 }

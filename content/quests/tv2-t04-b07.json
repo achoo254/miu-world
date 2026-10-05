@@ -95,7 +95,27 @@
           "text": "Lấm ơi, cậu bước nhẹ thôi nhé!",
           "reply": "Lấm gật đầu lia lịa, rón rén một bước rồi… Oạch! Bụi xấu hổ lại cụp lá."
         }
-      ]
+      ],
+      "en": {
+        "title": "The half-finished poem",
+        "goTo": "Go to the willow by the pond, where Cáo Vần is chewing a leaf-pen, writing a poem",
+        "lines": [
+          "{name}, I'm writing a poem for this little plant: “Leaves so green, leaves so bright, leaves so…” Oh no, it's squeezed its eyes shut again!",
+          "It wasn't me! I only… Whoops! …tripped a tiny bit.",
+          "Any strange noise and every leaf folds up. My poem freezes and the rhymes run away.",
+          "There are things along the pond much louder than my bottom. Go and look, {name}!"
+        ],
+        "choices": [
+          {
+            "text": "I'll track down whoever's making the noise!",
+            "reply": "Cáo Vần recites on the spot: “You go and find the sound, I'll sit and wait… um… all around.” Not my best rhyme, I'll fix it later."
+          },
+          {
+            "text": "Lấm, try to walk softly, okay?",
+            "reply": "Lấm nods hard and takes one tiptoe step… Whoops! The shy bush folds its leaves again."
+          }
+        ]
+      }
     },
     {
       "id": "tim-tieng-dong-la",
@@ -564,7 +584,30 @@
           "text": "Gõ thật nhẹ, đếm từng nhịp một.",
           "reply": "Hải Ly gõ khẽ: cốc… cốc… Lấm đếm theo, đếm tới ba thì… Oạch!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Hải Ly's hammer",
+        "goTo": "Follow the tap-tap sound to the plank bridge over the lotus pond, where Hải Ly Đinh is hammering nails",
+        "lines": [
+          "Sorry, everyone, I have to finish this plank bridge across the lotus pond, and my hammer keeps going tock-tock.",
+          "Every tock and the bush shuts its eyes. Tock, shut. Tock, shut. That's almost a poem!",
+          "Think of a way, {name}, so the bridge gets built and the shy bush doesn't get scared."
+        ],
+        "choices": [
+          {
+            "text": "Wrap the hammer head in banana leaves to soften it!",
+            "reply": "Hải Ly gives it a try: thup, thup. The shy bush only trembles a little bit."
+          },
+          {
+            "text": "Warn the bush before you knock.",
+            "reply": "Cáo Vần recites: “Don't be scared, little plant, the hammer's just for the bridge.” The leaves fold, but open again much faster."
+          },
+          {
+            "text": "Tap really gently and count each beat.",
+            "reply": "Hải Ly taps softly: tik… tik… Lấm counts along, and on three… Whoops!"
+          }
+        ]
+      }
     },
     {
       "id": "xep-tranh-do-con",
@@ -762,14 +805,22 @@
       "title": "Bài thơ Lá cụp lá xoè",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cáo Vần tặng {name} trang sổ lá chép bài thơ “Lá cụp lá xoè” vừa làm xong. Lấm thì tặng đôi dép rơm đi êm ru để khỏi làm bụi cỏ giật mình. Đi được ba bước thì… Oạch! Lấm vẫn ngã."
+      "text": "Cáo Vần tặng {name} trang sổ lá chép bài thơ “Lá cụp lá xoè” vừa làm xong. Lấm thì tặng đôi dép rơm đi êm ru để khỏi làm bụi cỏ giật mình. Đi được ba bước thì… Oạch! Lấm vẫn ngã.",
+      "en": {
+        "title": "The poem “Lá cụp lá xoè”",
+        "text": "Cáo Vần gives {name} a leaf-page with his brand-new poem “Lá cụp lá xoè” (Leaves Fold, Leaves Open) copied on it. Lấm hands over a pair of soft straw sandals so the shy bush won't get a fright. Three steps later… Whoops! Lấm still falls over."
+      }
     },
     {
       "id": "mo-bai-8",
       "title": "Tiếng gầm ở sân bóng",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ sân bóng của làng vọng lại một tiếng “Grừ!” rõ to, rồi im bặt. Hổ Sọc đang một mình sút bóng vào gôn, vì chưa đội nào chịu nhận cậu vào chơi."
+      "text": "Từ sân bóng của làng vọng lại một tiếng “Grừ!” rõ to, rồi im bặt. Hổ Sọc đang một mình sút bóng vào gôn, vì chưa đội nào chịu nhận cậu vào chơi.",
+      "en": {
+        "title": "A roar at the football pitch",
+        "text": "A big “Grrr!” echoes from the village football pitch, then silence. Hổ Sọc is kicking balls into the goal all by himself, because no team will take him yet."
+      }
     }
   ],
   "reward": {

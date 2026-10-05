@@ -10,5 +10,13 @@
   "controls": ["hold"],
   "duration": 45,
   "goal": 25,
-  "params": { "turnSpeed": 1 }
+  "params": { "turnSpeed": 1 },
+  "en": {
+    "name": "Red Light, Green Light",
+    "howTo": [
+      "Hold your finger and {name} steps toward the finish line; lift it to stop.",
+      "When the teddy bear turns around, freeze! Caught moving and you go back three steps.",
+      "Green circle means go, yellow means it's about to turn, red means freeze."
+    ]
+  }
 }

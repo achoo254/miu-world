@@ -46,7 +46,19 @@
         {
           "text": "Tớ khéo tay gọt đẽo lắm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "There are crystal-clear ice blocks in the middle of the square. {name}, let's carve statues!",
+          "Swipe gently to chip away the pale outer edge and keep the blue statue shape inside."
+        ],
+        "choices": [
+          {
+            "text": "I'm great at carving!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Khéo léo gọt đẽo thành công ba bức tượng băng tuyệt đẹp nhé!",
       "game": "ice-sculpt",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Ice sculpture",
+        "prompt": "Carve 3 beautiful ice statues!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cáo Tuyết phe phẩy chiếc đuôi trắng: tượng của {name} tạc lấp lánh như pha lê!"
+      "text": "Cáo Tuyết phe phẩy chiếc đuôi trắng: tượng của {name} tạc lấp lánh như pha lê!",
+      "en": {
+        "title": "Reward",
+        "text": "Cáo Tuyết swishes a fluffy white tail: {name}'s statue sparkles like crystal!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Còn nhiều khối băng mới đưa về làng, Cáo Tuyết hẹn {name} gọt tượng tiếp."
+      "text": "Còn nhiều khối băng mới đưa về làng, Cáo Tuyết hẹn {name} gọt tượng tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "More new ice blocks are coming to the village. Cáo Tuyết hopes {name} will carve again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Ice Sculpting with Cáo Tuyết Điêu Khắc",
+    "summary": "A clear block of ice hides a statue inside; gently tap away the extra ice around it."
   }
 }

@@ -45,7 +45,21 @@
       ],
       "choices": [
         { "text": "Tớ là {name}, để tớ giúp cậu nhé!", "reply": "Thật hả? Cảm ơn {name}! Hình như đồ rơi ở góc sân rợp bóng kia." }
-      ]
+      ],
+      "en": {
+        "title": "A new friend on the steps",
+        "goTo": "Someone new is sitting alone on the classroom steps",
+        "lines": [
+          "Hi… I'm Chồn Bông, I just moved to class 2B today. I was rushing so much I dropped all my things in the yard.",
+          "I don't know what lessons our class has yet, and I don't know anyone."
+        ],
+        "choices": [
+          {
+            "text": "I'm {name}, let me help you!",
+            "reply": "Really? Thank you, {name}! I think my things fell in that shady corner of the yard."
+          }
+        ]
+      }
     },
     {
       "id": "tim-do-chon-bong",
@@ -167,7 +181,25 @@
           "text": "Rủ bạn chơi đá cầu giờ ra chơi",
           "consequence": "Bác bảo vệ chỉ tay: Cún Đá Cầu đang tập ở bãi đá cầu, ra rủ thêm bạn ấy cho vui!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Help Chồn Bông make friends",
+        "prompt": "Chồn Bông is still really shy. What will {name} do to make the new school feel fun?",
+        "choices": [
+          {
+            "text": "Give a tour of the school",
+            "consequence": "The two of you pass the library, the canteen and the art room. Chồn Bông learns the way so quickly!"
+          },
+          {
+            "text": "Introduce the newcomer to the class",
+            "consequence": "The whole class claps to welcome their new friend, and Chồn Bông beams from ear to ear."
+          },
+          {
+            "text": "Invite Chồn Bông to play shuttlecock at break",
+            "consequence": "The caretaker points: Cún Đá Cầu is practising at the shuttlecock court, go and invite him too for extra fun!"
+          }
+        ]
+      }
     },
     {
       "id": "ru-cun-da-cau",
@@ -178,7 +210,19 @@
       "lines": [
         { "speaker": "Cún Đá Cầu", "text": "Bạn mới hả? Hay quá, đội đá cầu đang thiếu một người! Chồn Bông cứ chuyền thử, tớ chỉ cho." }
       ],
-      "choices": [{ "text": "Ra chơi xong mình cùng xếp đồ nhé!" }]
+      "choices": [{ "text": "Ra chơi xong mình cùng xếp đồ nhé!" }],
+      "en": {
+        "title": "Invite Cún Đá Cầu",
+        "goTo": "Go to the shuttlecock court and invite Cún Đá Cầu to play",
+        "lines": [
+          "A new friend? Great, our shuttlecock team is one player short! Chồn Bông, give it a kick, I'll show you how."
+        ],
+        "choices": [
+          {
+            "text": "After break, let's pack your things together!"
+          }
+        ]
+      }
     },
     {
       "id": "xep-ba-lo",
@@ -229,14 +273,22 @@
       "title": "Bạn mới vui vẻ",
       "kind": "reward",
       "target": "vt-th-chon-bong",
-      "text": "Chồn Bông đeo ba lô lên vai, nắm tay {name} cảm ơn rối rít. Ngày đầu ở trường mới hóa ra vui hơn bạn ấy tưởng nhiều."
+      "text": "Chồn Bông đeo ba lô lên vai, nắm tay {name} cảm ơn rối rít. Ngày đầu ở trường mới hóa ra vui hơn bạn ấy tưởng nhiều.",
+      "en": {
+        "title": "A happy new friend",
+        "text": "Chồn Bông slings the backpack on, holds {name}'s hand and says thank you over and over. The first day at the new school turned out much more fun than expected."
+      }
     },
     {
       "id": "hen-ngay-mai",
       "title": "Hẹn ngày mai",
       "kind": "next",
       "trigger": "auto",
-      "text": "Trống tan học vang lên. Chồn Bông hẹn ngày mai cùng {name} ngồi bàn đầu nghe cô kể chuyện, rồi vẫy tay chạy ra cổng trường."
+      "text": "Trống tan học vang lên. Chồn Bông hẹn ngày mai cùng {name} ngồi bàn đầu nghe cô kể chuyện, rồi vẫy tay chạy ra cổng trường.",
+      "en": {
+        "title": "See you tomorrow",
+        "text": "The home-time drum sounds. Chồn Bông promises to sit at the front with {name} tomorrow to hear the teacher's story, then waves and runs to the school gate."
+      }
     }
   ],
   "reward": {

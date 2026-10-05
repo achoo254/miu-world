@@ -46,7 +46,19 @@
         {
           "text": "Cháu rút chiếc chốt gỗ ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, a pile of golden grain is stuck behind the wooden pins on the chute.",
+          "Work out which pin to pull first, so the grain falls straight into the bin and not into the mud."
+        ],
+        "choices": [
+          {
+            "text": "I'll pull the wooden pin!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Rút chốt khéo léo cứu được bốn bồ thóc đầy nhé!",
       "game": "pull-pin",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Pull the Pins",
+        "prompt": "Pull the pins cleverly and save 4 full bins of grain!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chú Đào Kênh Dẫn Nước vỗ tay giòn giã vì {name} gỡ chốt thông minh không sót hạt thóc!"
+      "text": "Chú Đào Kênh Dẫn Nước vỗ tay giòn giã vì {name} gỡ chốt thông minh không sót hạt thóc!",
+      "en": {
+        "title": "Reward",
+        "text": "Chú Đào Kênh Dẫn Nước claps loudly: {name} pulled the pins so smartly, not a grain was lost!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Máng dẫn thóc đã thông thoáng, lần sau ghé cối xay gió chơi tiếp với chú nhé."
+      "text": "Máng dẫn thóc đã thông thoáng, lần sau ghé cối xay gió chơi tiếp với chú nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The grain chute is clear now. Next time, come play by the windmill with me."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Pull the Pins, Save the Grain with Chú Đào Kênh",
+    "summary": "Golden grain is stuck in a high chute; think carefully and pull each pin so the grain drops safely into the bin."
   }
 }

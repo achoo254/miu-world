@@ -10,5 +10,13 @@
   "controls": ["hold"],
   "duration": 60,
   "goal": 8,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Blow up balloons",
+    "howTo": [
+      "Hold your finger to pump the balloon, and let go when it fills the green ring.",
+      "Pump past the ring and it pops: three pops and the round is over.",
+      "{name}, sell as many balloons as you can!"
+    ]
+  }
 }

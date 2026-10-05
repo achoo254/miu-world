@@ -46,7 +46,19 @@
         {
           "text": "Kiến ơi đi theo tớ, tớ mở đường cho!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Look, {name}, the little ants are struggling to find their way home.",
+          "Tap an ant to make it stand guard, or lie down as a bridge so the others can cross."
+        ],
+        "choices": [
+          {
+            "text": "Follow me, ants, I'll clear the way!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Dẫn đủ hai mươi bạn kiến về tổ an toàn nhé!",
       "game": "ant-lemmings",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Ants going home",
+        "prompt": "Lead 20 ants safely home!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Sóc Đu Đuôi chia hạt dẻ khen: {name} chỉ đường thông minh, đàn kiến về đủ rồi!"
+      "text": "Sóc Đu Đuôi chia hạt dẻ khen: {name} chỉ đường thông minh, đàn kiến về đủ rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Sóc Đu Đuôi shares a chestnut in praise: {name} showed the way so cleverly, every ant made it home!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tổ kiến còn cần gom hạt nữa, rảnh rỗi {name} lại ghé bìa rừng chỉ đường tiếp nha."
+      "text": "Tổ kiến còn cần gom hạt nữa, rảnh rỗi {name} lại ghé bìa rừng chỉ đường tiếp nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "The ants still need to gather seeds. When you're free, {name}, come back to the forest edge and guide them."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Lead the ants home with Sóc Đu Đuôi",
+    "summary": "Busy ants have lost their way: tap an ant to turn it into a blocker or a bridge over a gap in the rocks."
   }
 }

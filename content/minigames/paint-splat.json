@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 20,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Paint Splat Picture",
+    "howTo": [
+      "The paint ball at the bottom keeps changing colour. Each part of the picture has a colour dot to fill.",
+      "When the ball matches a part's colour, {name} taps that part to splat the paint on.",
+      "Each right splat is a point. The wrong colour smears it, so splat again."
+    ]
+  }
 }

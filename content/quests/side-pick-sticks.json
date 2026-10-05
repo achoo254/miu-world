@@ -46,7 +46,19 @@
         {
           "text": "Tớ rút nhẹ tay lắm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, I just dropped a heap of sticks on the mat!",
+          "Only take a stick lying on top. Pull the wrong one and the whole pile wobbles."
+        ],
+        "choices": [
+          {
+            "text": "I have very gentle hands!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Rút được mười lăm que nhé!",
       "game": "pick-sticks",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Pick-Up Sticks",
+        "prompt": "Pull out 15 sticks!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Không một que nào rung, {name} khéo tay hơn cả khỉ!"
+      "text": "Không một que nào rung, {name} khéo tay hơn cả khỉ!",
+      "en": {
+        "title": "Reward",
+        "text": "Not one stick wobbled: {name} is even nimbler than a monkey!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đống que vẫn bày bên hồ sen, lúc nào cậu cũng rút được."
+      "text": "Đống que vẫn bày bên hồ sen, lúc nào cậu cũng rút được.",
+      "en": {
+        "title": "See you soon",
+        "text": "The sticks are still laid out by the lotus pond, so you can play any time."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Pick-up sticks with Khỉ Bắn Bi",
+    "summary": "Sticks lie in a crisscross heap: pull out the top one each time without making the pile wobble."
   }
 }

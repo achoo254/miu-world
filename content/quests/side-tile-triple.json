@@ -46,7 +46,19 @@
         {
           "text": "Em xếp gọn các ô ba ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The toy shelf is piled up in a mess, {name}!",
+          "Tap the bright tiles to drop them in the tray and gather sets of three."
+        ],
+        "choices": [
+          {
+            "text": "I'll tidy them into threes!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Thu dọn biến mất mười sáu bộ ba ô hình giống nhau trên kệ nhé!",
       "game": "tile-triple",
-      "goal": 16
+      "goal": 16,
+      "en": {
+        "title": "Triple Tile Match",
+        "prompt": "Clear 16 sets of three matching tiles!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Kệ hàng gọn gàng ngăn nắp nhờ tài sắp xếp khéo léo của {name}!"
+      "text": "Kệ hàng gọn gàng ngăn nắp nhờ tài sắp xếp khéo léo của {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "The shelf is spick and span thanks to {name}'s tidying!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Các kiện đồ chơi mới về trước gian tạp hóa luôn đợi em ra xếp."
+      "text": "Các kiện đồ chơi mới về trước gian tạp hóa luôn đợi em ra xếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "New boxes of toys arrive at the corner shop, all waiting for you to sort."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Triple tiles with Chị Tiệm Tạp Hóa",
+    "summary": "Pick uncovered tiles into the tray; three of the same kind together vanish."
   }
 }

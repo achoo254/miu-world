@@ -46,7 +46,19 @@
         {
           "text": "Mệnh lệnh rõ ràng, cờ bay phấp phới!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, our school flag team is practising for the opening ceremony.",
+          "Red flag in your left hand, blue in your right. If you see the word \"Don't\", stay perfectly still."
+        ],
+        "choices": [
+          {
+            "text": "Clear commands, flags flying high!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Thực hiện chuẩn xác hai mươi khẩu lệnh cờ hiệu nhé!",
       "game": "flag-commands",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Flag commands",
+        "prompt": "Follow 20 flag commands exactly!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bé Đội Viên nghiêm trang chào kiểu đội viên: {name} tập trung cao độ, động tác dứt khoát!"
+      "text": "Bé Đội Viên nghiêm trang chào kiểu đội viên: {name} tập trung cao độ, động tác dứt khoát!",
+      "en": {
+        "title": "Reward",
+        "text": "Bé Đội Viên gives a proper salute: {name} stayed focused and moved crisp and sharp!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Buổi sinh hoạt đội tuần tới, {name} nhớ ra sân chơi dưới bóng bàng tập cờ hiệu tiếp nha."
+      "text": "Buổi sinh hoạt đội tuần tới, {name} nhớ ra sân chơi dưới bóng bàng tập cờ hiệu tiếp nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "For next week's club meeting, {name}, come back to the playground under the almond tree."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Flag signals with Bé Đội Viên",
+    "summary": "A red flag and a blue flag flutter in the wind: read the command on the board to raise or lower them exactly."
   }
 }

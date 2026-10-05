@@ -46,7 +46,19 @@
         {
           "text": "Cháu khoanh từng ô ruộng vuông vắn!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, look at this gridded yard. Each patch of land needs dividing into rectangles.",
+          "Each patch you draw holds just one number, and its area must equal that number."
+        ],
+        "choices": [
+          {
+            "text": "I'll mark out each field neatly!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chia ô vuông vắn cho ba mảnh ruộng mẫu mực nhé!",
       "game": "shikaku-fields",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Divide the Fields",
+        "prompt": "Divide 3 model fields into neat rectangles!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ông Lão Pháo Đất tấm tắc ngợi khen {name} chia ruộng ngay ngắn và hợp lý vô cùng!"
+      "text": "Ông Lão Pháo Đất tấm tắc ngợi khen {name} chia ruộng ngay ngắn và hợp lý vô cùng!",
+      "en": {
+        "title": "Reward",
+        "text": "Ông Lão Pháo Đất is full of praise: {name} divides the fields so neatly and sensibly!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Những ô ruộng đã chia thật thẳng thớm, ông cháu mình lại gặp nhau ở sân gạch nhé."
+      "text": "Những ô ruộng đã chia thật thẳng thớm, ông cháu mình lại gặp nhau ở sân gạch nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The fields are divided nice and straight. Let's meet again in the brick yard, my dear."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Rectangle Fields with Ông Lão Pháo Đất",
+    "summary": "The yard is ruled into squares like a game board; drag rectangles around each number clue."
   }
 }

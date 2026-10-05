@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 60,
   "goal": 6,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Catch the loach",
+    "howTo": [
+      "A slippery loach swims round and round in a water jar.",
+      "{name}, put your finger on the loach's head and follow it until the glowing ring fills up to catch it.",
+      "Let it slip away and the loach dives down, then pops up somewhere else."
+    ]
+  }
 }

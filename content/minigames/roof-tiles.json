@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 27,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Tile the Roof Before Rain",
+    "howTo": [
+      "Drag tiles from the stack onto the roof.",
+      "Work from the bottom up: each upper row must overlap the row below it.",
+      "{name}, cover the whole roof so it won't leak when it rains!"
+    ]
+  }
 }

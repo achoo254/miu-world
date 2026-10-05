@@ -78,7 +78,28 @@
           "text": "Cậu cất củ cà rốt đi đã nhé!",
           "reply": "Ừ nhỉ! Tớ để dành làm bữa xế. Giờ thì đi tìm đồ thôi, nhanh nhanh!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Thỏ Vội in a flap in the corridor",
+        "goTo": "Go up to the second floor, Thỏ Vội is in a flap on the corridor bench",
+        "lines": [
+          "{name}, help! I zoomed up the stairs so fast my bag strap slipped, and my ruler and scissors went flying who knows where!",
+          "And why is there only this carrot in my bag? We don't have Carrot-Eating class today…",
+          "Yesterday you brought a pillow because you thought we had Nap class! Class 2A laughed until home time.",
+          "That's because I pack my bag from memory, and my memory runs even faster than my legs. It's Thursday, what lessons do we have?",
+          "The timetable is pinned on the board right there in the corridor. Pick up your things first, then ask Gấu Bắp at the duty desk, he keeps the whole school's schedule."
+        ],
+        "choices": [
+          {
+            "text": "I'll help you find your things right away!",
+            "reply": "Hooray! My ears can hear the ruler jingling on the stairs… oh no, that's the clock chiming."
+          },
+          {
+            "text": "Put that carrot away first, okay?",
+            "reply": "Good idea! I'll save it for an afternoon snack. Now let's find my things, quick quick!"
+          }
+        ]
+      }
     },
     {
       "id": "nhat-do-roi",
@@ -901,7 +922,26 @@
           "text": "Tối nào cũng soạn cặp theo thời khoá biểu",
           "reply": "Soạn xong mới đi ngủ, sáng ra chỉ việc xách cặp mà phóng. Cà rốt để ở nhà!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Thỏ Vội's promise",
+        "goTo": "Go to the duty desk, Gấu Bắp has his notebook open, waiting for Thỏ Vội's promise",
+        "lines": [
+          "Thỏ Vội, from tomorrow, what will you do so you stop bringing pillows and carrots to school?",
+          "I was going to write it in a notebook like Gấu Bắp… but I ran so fast the notebook fell out, and all I've got left is the pen!",
+          "{name}, give me a really easy way to remember, and I promise I'll do it!"
+        ],
+        "choices": [
+          {
+            "text": "Copy the timetable and stick it by your desk",
+            "reply": "Great idea! I just look up and there it is, no notebook needed. My ears thank you, {name}!"
+          },
+          {
+            "text": "Pack your bag from the timetable every evening",
+            "reply": "Pack it before bed, then in the morning just grab it and dash. Carrot stays at home!"
+          }
+        ]
+      }
     },
     {
       "id": "dong-ho-gio-ra-choi",
@@ -1039,14 +1079,22 @@
       "title": "Kẹp gỗ hình cà rốt của Thỏ Vội",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thỏ Vội tặng {name} một chiếc kẹp gỗ hình cà rốt để kẹp thời khoá biểu vào góc học tập, kèm củ cà rốt “dự phòng”. Gấu Bắp đóng lên đó con dấu hình bắp ngô, còn Cua Kéo cắt tặng thêm một cái nhãn tên."
+      "text": "Thỏ Vội tặng {name} một chiếc kẹp gỗ hình cà rốt để kẹp thời khoá biểu vào góc học tập, kèm củ cà rốt “dự phòng”. Gấu Bắp đóng lên đó con dấu hình bắp ngô, còn Cua Kéo cắt tặng thêm một cái nhãn tên.",
+      "en": {
+        "title": "Thỏ Vội's carrot-shaped clip",
+        "text": "Thỏ Vội gives {name} a wooden carrot-shaped clip for pinning the timetable by the study corner, plus a “spare” carrot. Gấu Bắp stamps it with a corn-cob stamp, and Cua Kéo snips a name label to go with it."
+      }
     },
     {
       "id": "mo-bai-11",
       "title": "Tiếng gọi trống ngoài sân",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ chòi trống giữa sân trường vọng lên tiếng Chó Lu gọi í ới: “Dậy đi trống ơi, hết hè rồi!”. Chiếc trống trường ngủ say suốt mùa hè, liệu hôm nay có chịu cất tiếng không?"
+      "text": "Từ chòi trống giữa sân trường vọng lên tiếng Chó Lu gọi í ới: “Dậy đi trống ơi, hết hè rồi!”. Chiếc trống trường ngủ say suốt mùa hè, liệu hôm nay có chịu cất tiếng không?",
+      "en": {
+        "title": "A call to the drum in the yard",
+        "text": "From the drum hut in the middle of the schoolyard, Chó Lu is calling out: “Wake up, drum, summer's over!” The school drum slept soundly all summer. Will it make a sound today?"
+      }
     }
   ],
   "reward": {

@@ -9,5 +9,12 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 2,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Seven-Piece Tangram",
+    "howTo": [
+      "Drag each piece into the silhouette. Tap a piece to turn it.",
+      "All seven pieces fit and the shape is done. {name}, build lots of shapes!"
+    ]
+  }
 }

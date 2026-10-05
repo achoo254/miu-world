@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 50,
   "goal": 69,
-  "params": { "tempo": 1 }
+  "params": { "tempo": 1 },
+  "en": {
+    "name": "Falling Piano Keys",
+    "howTo": [
+      "Coloured keys fall to the song. {name} taps the keys to play.",
+      "Tap just as a key touches the glowing line for two points.",
+      "Miss six keys and the song stops early!"
+    ]
+  }
 }

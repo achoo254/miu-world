@@ -66,7 +66,26 @@
           "text": "Gấu Sún sợ bụi rậm thật à?",
           "reply": "Gấu Sún đỏ mặt: Đâu có! Tớ chỉ… sợ gai móc rách áo thôi."
         }
-      ]
+      ],
+      "en": {
+        "title": "Nobody knows the score",
+        "goTo": "Go out to the running track, where referee Hươu Lêu Nghêu is tooting his whistle",
+        "lines": [
+          "Toot toot! The Bear team picked up 6 balls, the Cat team picked up 4. But who has more, and by how many... I'm this tall and I still can't figure it out!",
+          "My team won for sure! But... three balls rolled into the bushes, and I'd rather not crawl in there.",
+          "A bear afraid of bushes? My neck is too long to squeeze in. {name}, please find the balls for us."
+        ],
+        "choices": [
+          {
+            "text": "I'll fetch the balls right now!",
+            "reply": "Gấu Sún sighs with relief: Phew, thank you! I'll go watch the finish line."
+          },
+          {
+            "text": "Gấu Sún, are you really scared of bushes?",
+            "reply": "Gấu Sún blushes: No way! I'm just... worried the thorns will rip my shirt."
+          }
+        ]
+      }
     },
     {
       "id": "tim-bong-lan",
@@ -103,7 +122,21 @@
           "text": "Lấy số lớn trừ số bé!",
           "reply": "Hươu Lêu Nghêu vươn cổ ngó lên cây: Chuẩn! Giờ ta thử với bầy chim nào."
         }
-      ]
+      ],
+      "en": {
+        "title": "How many more balls?",
+        "lines": [
+          "All the balls are here! Put the Bear team's 6 balls in one row and the Cat team's 4 balls in the row below, pairing them up one by one.",
+          "The top row has 2 balls left with no partner. So 6 – 4 = 2: the Bear team has 2 more than the Cat team, and the Cat team has 2 fewer than the Bear team.",
+          "2 more! Hee hee, I'm grinning so wide you can see my missing tooth! To find how many more, take the smaller number from the bigger one. Got it."
+        ],
+        "choices": [
+          {
+            "text": "Take the smaller number from the bigger one!",
+            "reply": "Hươu Lêu Nghêu stretches his neck up to peek into the tree: Exactly! Now let's try it with the flock of birds."
+          }
+        ]
+      }
     },
     {
       "id": "chim-tren-canh",
@@ -434,7 +467,25 @@
           "text": "Đọc số xăng-ti-mét rồi trừ",
           "reply": "Gấu Sún: Nhanh gọn, tớ thích kiểu này!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Paper strips at the finish line",
+        "goTo": "Run to the finish line, where Gấu Sún is holding three paper strips",
+        "lines": [
+          "Referee Hươu Lêu Nghêu told me to stick paper strips down as the finish line. The red strip is 7 cm, the yellow one 4 cm, the blue one 6 cm. Which strip is longer than which, and by how much?",
+          "When I compare things on my own I always get mixed up. {name}, pick a way to compare them for me."
+        ],
+        "choices": [
+          {
+            "text": "Line the strips up side by side and compare",
+            "reply": "Gấu Sún: The bit that sticks out is the extra length, how clever!"
+          },
+          {
+            "text": "Read the centimetres and subtract",
+            "reply": "Gấu Sún: Quick and neat, I like this way!"
+          }
+        ]
+      }
     },
     {
       "id": "bang-giay-ba-mau",
@@ -869,14 +920,22 @@
       "title": "Huy chương hơn kém",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Trọng tài Hươu Lêu Nghêu cúi cổ đeo cho {name} chiếc huy chương \"Trọng tài hơn kém\". Gấu Sún reo một tiếng thật to… rồi ngượng ngùng xin chụp ảnh chung."
+      "text": "Trọng tài Hươu Lêu Nghêu cúi cổ đeo cho {name} chiếc huy chương \"Trọng tài hơn kém\". Gấu Sún reo một tiếng thật to… rồi ngượng ngùng xin chụp ảnh chung.",
+      "en": {
+        "title": "More-or-less medal",
+        "text": "Referee Hươu Lêu Nghêu bends his long neck to hang the \"More-or-Less Referee\" medal on {name}. Gấu Sún gives a huge cheer... then shyly asks for a photo together."
+      }
     },
     {
       "id": "tui-thu-nham-lop",
       "title": "Túi thư ở cổng trường",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ở cổng trường, Chó Mực ôm túi thư rối rít: phong bì nào cũng ghi một phép tính thay cho tên lớp, thư sắp đưa nhầm hết rồi!"
+      "text": "Ở cổng trường, Chó Mực ôm túi thư rối rít: phong bì nào cũng ghi một phép tính thay cho tên lớp, thư sắp đưa nhầm hết rồi!",
+      "en": {
+        "title": "The mailbag at the school gate",
+        "text": "At the school gate, Chó Mực is fussing over his mailbag: every envelope has a sum written on it instead of a class name, and the letters are about to go to all the wrong places!"
+      }
     }
   ],
   "reward": {

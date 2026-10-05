@@ -10,5 +10,13 @@
   "controls": ["drag", "swipe"],
   "duration": 60,
   "goal": 5,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Shooting marbles",
+    "howTo": [
+      "Drag your finger away from where you want to shoot, then let go, like a slingshot.",
+      "{name}'s shooter marble rolls out and knocks the others. A longer pull shoots harder.",
+      "Each marble pushed out of the chalk circle is a point. You get eight shots."
+    ]
+  }
 }

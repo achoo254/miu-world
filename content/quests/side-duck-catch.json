@@ -46,7 +46,19 @@
         {
           "text": "Để tớ lội xuống bắt!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Oh no, {name}! The ducks got out and they're swimming everywhere!",
+          "Wade after them and herd them to the fence. I really don't like water."
+        ],
+        "choices": [
+          {
+            "text": "I'll wade in and catch them!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Bắt lại đủ mười con vịt nhé!",
       "game": "duck-catch",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Catch the pond ducks",
+        "prompt": "Catch 10 ducks!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Meo, đàn vịt về đủ rồi, cảm ơn {name} nhiều!"
+      "text": "Meo, đàn vịt về đủ rồi, cảm ơn {name} nhiều!",
+      "en": {
+        "title": "Reward",
+        "text": "Meow, all the ducks are back! Thank you so much, {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đàn vịt nghịch lắm, mai thế nào cũng xổng nữa, cậu ghé bờ đầm nhé."
+      "text": "Đàn vịt nghịch lắm, mai thế nào cũng xổng nữa, cậu ghé bờ đầm nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Those ducks are so naughty, they'll surely escape again tomorrow. Come by the pond."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Round up the ducks with Mèo Đầm Sen",
+    "summary": "Wade into the pond, herd the ducks against the fence, then pounce and grab them one by one."
   }
 }

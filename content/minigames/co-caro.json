@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 1,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Four in a row",
+    "howTo": [
+      "{name} and Puppy take turns tapping empty squares to place a piece.",
+      "Whoever lines up four pieces first (across, down or diagonal) wins!",
+      "Remember to block when Puppy is about to get four."
+    ]
+  }
 }

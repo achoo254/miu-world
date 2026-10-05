@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Dock the ferry",
+    "howTo": [
+      "{name}, put your finger on the water: the ferry heads toward it, harder the farther away it is.",
+      "The current pushes the ferry along. Ease slowly into the lit dock (the ring around the ferry goes green).",
+      "Dock too hard and the ferry bounces off. Each docking is a point."
+    ]
+  }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Máy bay cất cánh nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The seaside houses are waiting for their parcels, {name}. Fly the plane for me!",
+          "Parcels keep drifting forward a bit, so drop them before you reach the yellow ring."
+        ],
+        "choices": [
+          {
+            "text": "Ready for take-off!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Thả trúng tám hộp quà vào vòng nhé!",
       "game": "package-drop",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Air Drop Gifts",
+        "prompt": "Drop 8 parcels right in the ring!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chú Sóng vẫy mũ: nhà nào cũng nhận quà nhờ {name} đấy!"
+      "text": "Chú Sóng vẫy mũ: nhà nào cũng nhận quà nhờ {name} đấy!",
+      "en": {
+        "title": "Reward",
+        "text": "Uncle Sóng waves his hat: every house got its parcel thanks to {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chuyến quà sau chú vẫn cần phi công, nhớ ra bờ đá tìm chú Sóng."
+      "text": "Chuyến quà sau chú vẫn cần phi công, nhớ ra bờ đá tìm chú Sóng.",
+      "en": {
+        "title": "See you soon",
+        "text": "I'll need a pilot for the next delivery too. Come find Uncle Sóng on the rocks."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Air-drop parcels with Uncle Sóng",
+    "summary": "The plane flies across the sky: tap a little early so each parcel lands in the yellow ring."
   }
 }

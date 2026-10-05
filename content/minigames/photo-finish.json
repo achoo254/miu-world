@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 75,
   "goal": 10,
-  "params": { "runners": 5 }
+  "params": { "runners": 5 },
+  "en": {
+    "name": "Photo Finish",
+    "howTo": [
+      "The animals race, and the camera snaps the moment the first one crosses the line.",
+      "Look at the photo: closer to the finish line means a better place. {name}, tap who came in that place!"
+    ]
+  }
 }

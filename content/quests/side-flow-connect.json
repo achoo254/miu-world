@@ -46,7 +46,19 @@
         {
           "text": "Câu đố này khó mà vui, thử nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, I bet you cannot join every same-colour pair without the pipes crossing!",
+          "Remember to fill every square on the board too, so think it through before you drag."
+        ],
+        "choices": [
+          {
+            "text": "Tricky but fun, let me try!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Giải xong ba bàn nối ống nhé!",
       "game": "flow-connect",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Connect the colours",
+        "prompt": "Solve 3 pipe boards!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Trúc Bút Chì gật gù mãi: {name} nghĩ đường đi giỏi thật!"
+      "text": "Gấu Trúc Bút Chì gật gù mãi: {name} nghĩ đường đi giỏi thật!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Trúc Bút Chì keeps nodding: {name} is so good at planning paths!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tớ còn cả tập câu đố nối ống, ghé vườn trường giải cùng tớ nhé."
+      "text": "Tớ còn cả tập câu đố nối ống, ghé vườn trường giải cùng tớ nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "I have a whole book of pipe puzzles, so come solve them with me in the school garden."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Connecting colour pipes with Gấu Trúc Bút Chì",
+    "summary": "A square board with coloured dots: join each matching pair so the pipes never cross and every square is filled."
   }
 }

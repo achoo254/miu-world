@@ -46,7 +46,19 @@
         {
           "text": "Đưa xẻng cho tớ nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The old map says treasure is buried around these ruins, {name}!",
+          "If fire shows up, you're really close; snow means it's still far. Only eight digs, mind!"
+        ],
+        "choices": [
+          {
+            "text": "Hand me the shovel!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Tìm ra ba kho báu dưới cát nhé!",
       "game": "treasure-dig",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Hot and Cold Treasure Dig",
+        "prompt": "Dig up 3 treasures from the sand!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Trúc Thám Hiểm ôm rương vàng: {name} có cái mũi tìm kho báu thật!"
+      "text": "Gấu Trúc Thám Hiểm ôm rương vàng: {name} có cái mũi tìm kho báu thật!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Trúc Thám Hiểm hugs the golden chest: {name} has a real nose for treasure!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bản đồ còn nhiều dấu chéo lắm, {name} quay lại khu di tích đào tiếp nhé."
+      "text": "Bản đồ còn nhiều dấu chéo lắm, {name} quay lại khu di tích đào tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The map still has lots of X marks. Come back to the ruins and keep digging, {name}."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Hot-and-cold treasure dig with Gấu Trúc Thám Hiểm",
+    "summary": "Tap a patch of sand to dig: fire means close, snow means far. Find the treasure in eight digs."
   }
 }

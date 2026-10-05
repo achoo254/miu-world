@@ -46,7 +46,19 @@
         {
           "text": "Mắt tớ tinh lắm, nhìn ra bạn khác rồi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, the cave animals are gathering for a spot-the-difference game.",
+          "Watch the five dancers quickly, then point to the one that doesn't belong."
+        ],
+        "choices": [
+          {
+            "text": "I've got sharp eyes, I see the odd one!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Phát hiện đúng mười lăm bạn khác biệt trong nhóm nhé!",
       "game": "odd-one-out",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Which One Is Different?",
+        "prompt": "Spot 15 odd ones out!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Dơi Đêm Tai To rung rung đôi tai to: mắt {name} sáng như sao, chọn câu nào chuẩn câu đó!"
+      "text": "Dơi Đêm Tai To rung rung đôi tai to: mắt {name} sáng như sao, chọn câu nào chuẩn câu đó!",
+      "en": {
+        "title": "Reward",
+        "text": "Dơi Đêm Tai To wiggles those big ears: {name}'s eyes shine like stars, every pick is right!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Còn nhiều câu đố tinh mắt hấp dẫn lắm, {name} nhớ ghé cửa hang đá thử tài tiếp nhé."
+      "text": "Còn nhiều câu đố tinh mắt hấp dẫn lắm, {name} nhớ ghé cửa hang đá thử tài tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "There are lots more sharp-eyed puzzles. Come back to the cave mouth and try again, {name}."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Odd one out with Dơi Đêm Tai To",
+    "summary": "Five forest friends dance under the moon: spot the one that's different from the rest."
   }
 }

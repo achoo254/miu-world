@@ -10,5 +10,13 @@
   "controls": ["tap", "drag"],
   "duration": 90,
   "goal": 5,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Cướp cờ (grab the flag)",
+    "howTo": [
+      "Whoever's picture the top card shows gets to run. See {name}'s picture? Tap at once to dash for the flag!",
+      "Holding the flag, drag left and right to dodge Doggo guarding the middle.",
+      "Bring the flag back to the green line for a point. Someone else's picture? Stand still and wait."
+    ]
+  }
 }

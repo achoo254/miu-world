@@ -46,7 +46,19 @@
         {
           "text": "Để tớ tính nhẩm rồi dẫn đường cho ốc sên!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The snail wants to find its way to a sweet young cabbage, {name}.",
+          "Add up the rock lengths to match the number on the sign, then drag out the path."
+        ],
+        "choices": [
+          {
+            "text": "I'll add it up and lead the snail!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Vẽ đúng sáu đường gấp khúc cho ốc sên nhé!",
       "game": "polyline-length",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Zigzag Paths",
+        "prompt": "Draw 6 correct broken lines for the snail!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Dơi Đêm Tai To gật gù khen ngợi: {name} tính tổng các đoạn thẳng chuẩn không cần chỉnh!"
+      "text": "Dơi Đêm Tai To gật gù khen ngợi: {name} tính tổng các đoạn thẳng chuẩn không cần chỉnh!",
+      "en": {
+        "title": "Reward",
+        "text": "Dơi Đêm Tai To nods in praise: {name} added up the segments, spot on!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ốc sên còn nhiều chặng đường mới, {name} ghé cửa hang đá dẫn đường tiếp nha."
+      "text": "Ốc sên còn nhiều chặng đường mới, {name} ghé cửa hang đá dẫn đường tiếp nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "The snail has many new journeys ahead. Come to the cave mouth and guide it again, {name}."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Broken-line lengths with Dơi Đêm Tai To",
+    "summary": "A snail crawls over the rocks looking for food: add up each segment to draw the right broken line."
   }
 }

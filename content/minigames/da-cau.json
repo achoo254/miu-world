@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 30,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Đá cầu (shuttlecock kick)",
+    "howTo": [
+      "The feather shuttlecock falls: {name}, tap it to kick it back up.",
+      "Each kick is a point. If it hits the ground, your friend tosses it back, so keep going!",
+      "In the second half, a second shuttlecock joins in!"
+    ]
+  }
 }

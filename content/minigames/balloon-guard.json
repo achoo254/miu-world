@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 60,
   "goal": 100,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Balloon escort",
+    "howTo": [
+      "{name}'s friend floats up into the sky on a balloon. Leaves, chestnuts and pebbles are falling!",
+      "{name}, drag the umbrella (it sits just above your finger) to push them away from the balloon.",
+      "Every metre up is a point. Three hits and the balloon drifts back down."
+    ]
+  }
 }

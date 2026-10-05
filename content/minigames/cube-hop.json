@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 35,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Pyramid colour hop",
+    "howTo": [
+      "Tap a block right next to {name} to hop onto it. Every block you land on changes colour.",
+      "Dodge the balls bouncing down from the top, and don't hop off the pyramid.",
+      "Change the whole pyramid's colour and a new one appears!"
+    ]
+  }
 }

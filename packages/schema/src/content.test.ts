@@ -457,3 +457,32 @@ describe('shipped account content', () => {
     expect(page.sections.flatMap((s) => s.paragraphs).join(' ')).toMatch(/tự soạn/);
   });
 });
+
+describe('story chapters and English twins', () => {
+  const chapter = (): Record<string, unknown> & { steps: Array<Record<string, unknown>> } =>
+    JSON.parse(readFileSync(new URL('../../../apps/server/test/fixtures/story-quests/yarn-fixture-song-1.json', import.meta.url), 'utf8')) as Record<string, unknown> & { steps: Array<Record<string, unknown>> };
+
+  it('parses a story chapter that opens at its teller and ships in both languages', () => {
+    expect(issues(chapter())).toEqual([]);
+  });
+
+  it('asks a story chapter for its prefix, its English and its feedback lines', () => {
+    expect(issues({ ...chapter(), id: 'chuyen-hoa-mi-1' })).toContain('a story chapter id starts with "yarn-"');
+    expect(issues({ ...chapter(), en: undefined })).toContain('needs its title and summary in English ("en")');
+    const noFeedback = chapter();
+    const riddle = noFeedback.steps.find((s) => s.id === 'do');
+    if (riddle) delete riddle.feedback;
+    expect(issues(noFeedback)).toContain("step do: a story chapter's character answers every try (feedback lines)");
+    expect(issues({ ...chapter(), category: 'main' })).toContain('a quest whose id starts with "yarn-" is a story chapter ("category": "story")');
+  });
+
+  it('keeps an English twin line for line with its step', () => {
+    const quest = chapter();
+    const meet = quest.steps[0] as { en: { lines: string[] } };
+    meet.en.lines.push('An extra line');
+    expect(issues(quest)).toContain('step gap: en has 2 lines, the step 1');
+    const lesson = validQuest();
+    (lesson.steps[0] as Record<string, unknown>).en = { title: 'Hi', goTo: 'Somewhere', lines: ['Hello!'] };
+    expect(issues(lesson)).toContain('step hi: en.goTo is there exactly when goTo is');
+  });
+});

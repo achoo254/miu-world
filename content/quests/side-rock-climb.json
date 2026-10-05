@@ -46,7 +46,19 @@
         {
           "text": "Tớ bám chắc rồi, leo thôi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The cliff behind the explorer station is really high, {name}. Let's race to the top!",
+          "Cracked holds fall after two seconds. See an exclamation mark? Dodge sideways fast."
+        ],
+        "choices": [
+          {
+            "text": "I've got a good grip, let's climb!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Leo lên cao ba mươi mét trên vách đá nhé!",
       "game": "rock-climb",
-      "goal": 30
+      "goal": 30,
+      "en": {
+        "title": "Rock Wall Climb",
+        "prompt": "Climb 30 metres up the cliff!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nai Leo Vách gật gù: {name} leo nhanh như sóc núi vậy!"
+      "text": "Nai Leo Vách gật gù: {name} leo nhanh như sóc núi vậy!",
+      "en": {
+        "title": "Reward",
+        "text": "Nai Leo Vách nods: {name} climbs as fast as a mountain squirrel!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Vách đá vẫn đứng đó, Nai Leo Vách hẹn {name} lần sau leo cao hơn."
+      "text": "Vách đá vẫn đứng đó, Nai Leo Vách hẹn {name} lần sau leo cao hơn.",
+      "en": {
+        "title": "See you soon",
+        "text": "The cliff isn't going anywhere. Nai Leo Vách hopes {name} climbs even higher next time."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Icy Rock Climb with Nai Leo Vách",
+    "summary": "Tap the glowing holds to climb the wall, hurry past cracked holds and dodge falling rocks."
   }
 }

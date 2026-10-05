@@ -45,7 +45,21 @@
       ],
       "choices": [
         { "text": "Đồ đong đếm để ở đâu hả Cua?", "reply": "Sạp tạp hóa nhỏ đằng kia vừa đổ cả ra đất, cậu nhặt giúp nhé." }
-      ]
+      ],
+      "en": {
+        "title": "Cua Đồng calls for help",
+        "goTo": "Go to the start of the weighing-stall row, Cua Đồng Gánh Hàng is waiting and watching",
+        "lines": [
+          "{name}, the Giant Piggy Bank at the market landing has woken up! He's blocking the way, and none of the stalls can pack up and go home.",
+          "Heo Đất says he'll only move for someone who's better at mental maths. And to challenge him, you need all the market's measuring tools."
+        ],
+        "choices": [
+          {
+            "text": "Where are the measuring tools, Cua?",
+            "reply": "That little general store over there just spilled everything on the ground, could you pick them up?"
+          }
+        ]
+      }
     },
     {
       "id": "gom-do-dong-dem",
@@ -155,7 +169,25 @@
           "text": "Mời Heo Đất một rổ rau tươi",
           "consequence": "Heo Đất hít hà rổ rau, khen dãy hàng cân đong có rau ngon nhất chợ."
         }
-      ]
+      ],
+      "en": {
+        "title": "Getting to know Heo Đất",
+        "prompt": "Heo Đất is as big as a whole stall, standing at the canal-side landing. How will {name} make friends?",
+        "choices": [
+          {
+            "text": "Drop a coin into Heo Đất's back",
+            "consequence": "Clink! Heo Đất giggles because it tickles, and his china eyes sparkle."
+          },
+          {
+            "text": "Ask Heo Đất why he's blocking the way",
+            "consequence": "Heo Đất admits it: standing still all day with nobody to chat to makes him so sad."
+          },
+          {
+            "text": "Offer Heo Đất a basket of fresh greens",
+            "consequence": "Heo Đất sniffs the basket happily and says the weighing row has the tastiest greens in the market."
+          }
+        ]
+      }
     },
     {
       "id": "tran-trum",
@@ -254,14 +286,22 @@
       "title": "Quà của Heo Đất",
       "kind": "reward",
       "target": "trum-cp-heo-dat",
-      "text": "Heo Đất lắc mình một cái, những đồng xu trong bụng kêu leng keng rồi rơi ra một túi quà cho {name}: XP, xu và điểm kỹ năng."
+      "text": "Heo Đất lắc mình một cái, những đồng xu trong bụng kêu leng keng rồi rơi ra một túi quà cho {name}: XP, xu và điểm kỹ năng.",
+      "en": {
+        "title": "Heo Đất's present",
+        "text": "Heo Đất gives himself a shake, the coins in his tummy jingle, and out drops a gift bag for {name}: XP, coins and skill points."
+      }
     },
     {
       "id": "cho-don-hang",
       "title": "Chợ dọn hàng",
       "kind": "next",
       "trigger": "auto",
-      "text": "Các sạp lần lượt dọn hàng, Heo Đất xin được đứng canh chợ phiên sau. Cánh Cụt Pin vẫy cánh rủ {name} phiên tới quay lại đi chợ cùng."
+      "text": "Các sạp lần lượt dọn hàng, Heo Đất xin được đứng canh chợ phiên sau. Cánh Cụt Pin vẫy cánh rủ {name} phiên tới quay lại đi chợ cùng.",
+      "en": {
+        "title": "The market packs up",
+        "text": "One by one the stalls pack up, and Heo Đất asks to stand guard at the next market day. Cánh Cụt Pin flaps a flipper and invites {name} back to shop together next time."
+      }
     }
   ],
   "reward": {

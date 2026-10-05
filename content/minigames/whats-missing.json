@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 100,
   "goal": 6,
-  "params": { "lookSeconds": 5 }
+  "params": { "lookSeconds": 5 },
+  "en": {
+    "name": "What's Missing?",
+    "howTo": [
+      "Look closely at the things on the tray. The lights will go out for a moment!",
+      "When they come back on, one thing has vanished. {name} taps the missing thing in the bottom row.",
+      "There are eight rounds; guess six right to win."
+    ]
+  }
 }

@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 1,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Domino dots",
+    "howTo": [
+      "{name} and Panda take turns placing dominoes on either end of the line.",
+      "A domino must match the dots on that end. Tap a piece, then tap an end if it fits both.",
+      "No match? Tap Draw. The first to play all their dominoes wins!"
+    ]
+  }
 }

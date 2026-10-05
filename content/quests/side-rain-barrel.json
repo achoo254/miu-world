@@ -46,7 +46,19 @@
         {
           "text": "Cháu nghiêng tàu lá hứng nước!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "A summer shower is pouring fresh water into the garden, {name}!",
+          "Tilt the banana leaf to guide the water into the mouth of the jar."
+        ],
+        "choices": [
+          {
+            "text": "I'll tilt the leaf to catch it!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Hứng dòng nước mát làm đầy tràn sáu chiếc chum sành nhé!",
       "game": "rain-barrel",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Catch the Rain",
+        "prompt": "Fill 6 clay jars to the brim with cool rainwater!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Những chum nước mưa đã đầy ắp nước ngọt mát lành rồi {name} ơi!"
+      "text": "Những chum nước mưa đã đầy ắp nước ngọt mát lành rồi {name} ơi!",
+      "en": {
+        "title": "Reward",
+        "text": "The rain jars are brimming with fresh, cool water, {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bóng cây đa đầu làng luôn mát rượi đón cháu đến hứng nước mưa."
+      "text": "Bóng cây đa đầu làng luôn mát rượi đón cháu đến hứng nước mưa.",
+      "en": {
+        "title": "See you soon",
+        "text": "The banyan tree at the village gate is always cool and shady, waiting for you to catch rain."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Catch rainwater in jars with Cô Đèn Lồng Sen",
+    "summary": "Tilt the green banana leaf to guide clear rainwater into the clay jars until they're full."
   }
 }

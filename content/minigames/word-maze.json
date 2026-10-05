@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 4,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Folk Rhyme Maze",
+    "howTo": [
+      "The folk rhyme is at the top. Its words sit in the grid, each square next to the last.",
+      "{name} drags from the glowing square through each word of the rhyme in order (or taps each square).",
+      "Pick wrong and the square shakes; rest a moment and pick again."
+    ]
+  }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Khắc nhập khắc nhập, tre dài ra mau!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, I'm looking for the magic bamboo pieces by their numbers to build the hundred-knot bamboo.",
+          "Check the counting step on the board, then tap each piece in the right counting order."
+        ],
+        "choices": [
+          {
+            "text": "Khắc nhập, khắc nhập! Grow, bamboo!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nối đúng hai mươi mốt đốt tre theo dãy số nhé!",
       "game": "bamboo-hundred",
-      "goal": 21
+      "goal": 21,
+      "en": {
+        "title": "Hundred-knot bamboo",
+        "prompt": "Join 21 bamboo pieces in number order!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Trèo Cây tròn xoe mắt: {name} đếm nhẩm chuẩn xác, cây tre cao vút tới mây!"
+      "text": "Gấu Trèo Cây tròn xoe mắt: {name} đếm nhẩm chuẩn xác, cây tre cao vút tới mây!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Trèo Cây's eyes go wide: {name} counted perfectly, and the bamboo reaches the clouds!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Lúc nào muốn trổ tài tính nhẩm, {name} cứ ghé gốc đại thụ tìm Gấu Trèo Cây nhé."
+      "text": "Lúc nào muốn trổ tài tính nhẩm, {name} cứ ghé gốc đại thụ tìm Gấu Trèo Cây nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Whenever you want to show off your mental maths, {name}, find Gấu Trèo Cây at the big old tree."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Build the hundred-knot bamboo with Gấu Trèo Cây",
+    "summary": "Bamboo pieces lie scattered round the grove: skip-count along the number pattern and join them into one tall stem."
   }
 }

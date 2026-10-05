@@ -81,7 +81,27 @@
           "text": "Hay là trống đang ngủ nướng?",
           "reply": "Ngủ suốt ba tháng hè thì còn hơn cả mèo lười! Phải đánh thức nó thôi."
         }
-      ]
+      ],
+      "en": {
+        "title": "The drum that slept all summer",
+        "goTo": "Go out to the drum hut in the schoolyard, Chó Lu is wagging and calling from its porch",
+        "lines": [
+          "Woof! Woof! {name}'s here! School starts tomorrow and the school drum won't make a peep.",
+          "I tried hitting it with my tail and all I got was a soft “thud”. Now my tail aches and the drum's still snoozing.",
+          "I mended the wooden fence right next to the hut all summer and never once heard the drum. The drumstick must have rolled off somewhere.",
+          "Without a drumstick, how do we wake the drum up? Woof… I'm so worried both my ears have drooped."
+        ],
+        "choices": [
+          {
+            "text": "I'll go find the drumstick right now!",
+            "reply": "Woof woof! My tail's spinning like a fan!"
+          },
+          {
+            "text": "Maybe the drum is having a lie-in?",
+            "reply": "Three whole months asleep, that's lazier than a lazy cat! We have to wake it up."
+          }
+        ]
+      }
     },
     {
       "id": "tim-do-cua-trong",
@@ -595,7 +615,25 @@
           "text": "Đọc thơ cho trống nghe đã",
           "reply": "Hay quá! Nghe thơ về mình, trống chắc mừng vui lắm."
         }
-      ]
+      ],
+      "en": {
+        "title": "How do we wake the drum?",
+        "lines": [
+          "Drumstick, cloth and peg, all found! Now how do we wake the drum without making it jump?",
+          "Start soft, then get stronger, just like when I hammer nails into the fence.",
+          "Woof! You decide, {name}, I'll hold the drum stand steady."
+        ],
+        "choices": [
+          {
+            "text": "Three soft taps to say hello first",
+            "reply": "Tap, tap, tap… Wake up, drum! Woof!"
+          },
+          {
+            "text": "Read the drum a poem first",
+            "reply": "Lovely! Hearing a poem about itself, the drum must be so happy."
+          }
+        ]
+      }
     },
     {
       "id": "trong-thuc-day",
@@ -737,14 +775,22 @@
       "title": "Chiếc dùi trống tí hon",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chó Lu tặng {name} một chiếc dùi trống tí hon khắc chữ “Tùng!”, còn Hải Ly Mộc mời {name} ngồi thử chiếc ghế gỗ đầu tiên vừa đóng xong bên hàng rào."
+      "text": "Chó Lu tặng {name} một chiếc dùi trống tí hon khắc chữ “Tùng!”, còn Hải Ly Mộc mời {name} ngồi thử chiếc ghế gỗ đầu tiên vừa đóng xong bên hàng rào.",
+      "en": {
+        "title": "The tiny drumstick",
+        "text": "Chó Lu gives {name} a tiny drumstick carved with the word “Tùng!” (the drum's big boom), and Hải Ly Mộc invites {name} to try the first wooden bench he has just finished beside the fence."
+      }
     },
     {
       "id": "mo-bai-12",
       "title": "Danh sách ướt sũng",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mưa rào hắt qua cửa sổ phòng đọc của trường. Cô thủ thư Mèo Kính ôm tờ danh sách ướt sũng, tên các bạn nhoè hết, dí sát mắt cũng chẳng đọc ra. Ai giúp cô đọc lại đây?"
+      "text": "Mưa rào hắt qua cửa sổ phòng đọc của trường. Cô thủ thư Mèo Kính ôm tờ danh sách ướt sũng, tên các bạn nhoè hết, dí sát mắt cũng chẳng đọc ra. Ai giúp cô đọc lại đây?",
+      "en": {
+        "title": "A soggy list",
+        "text": "A rain shower splashed through the school reading-room window. Librarian Mèo Kính is holding a soaking list; the names have all run, and even squinting up close she can't read them. Who will help her read it again?"
+      }
     }
   ],
   "reward": {

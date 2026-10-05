@@ -46,7 +46,19 @@
         {
           "text": "Để tớ ước lượng cho!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, this stream has so many gaps, I can't get across!",
+          "Grow the bamboo just long enough to reach the stone pillar on the other side for me."
+        ],
+        "choices": [
+          {
+            "text": "Let me judge the length!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Bắc cầu qua mười khe suối nhé!",
       "game": "stick-bridge",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Bamboo Bridge",
+        "prompt": "Bridge 10 gaps in the stream!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tuyệt cú mèo, cầu của {name} vừa khít luôn!"
+      "text": "Tuyệt cú mèo, cầu của {name} vừa khít luôn!",
+      "en": {
+        "title": "Reward",
+        "text": "Brilliant! {name}'s bridge is a perfect fit!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Còn mấy con suối nữa ở đầu cầu đá, lúc nào rảnh ghé tớ nhé."
+      "text": "Còn mấy con suối nữa ở đầu cầu đá, lúc nào rảnh ghé tớ nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "There are more streams by the stone bridge. Visit me whenever you're free."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Bamboo bridges over the stream with Khỉ Cầu Tre",
+    "summary": "Hold so the bamboo grows just long enough, then drop it as a bridge between two stone pillars."
   }
 }

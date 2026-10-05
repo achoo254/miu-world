@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 10,
-  "params": { "white": true }
+  "params": { "white": true },
+  "en": {
+    "name": "Mix the colours",
+    "howTo": [
+      "A little friend needs a colour. {name}, tap two paint jars to mix them in the tub.",
+      "Red and yellow make orange, yellow and blue make green… Mix wrong? Pour it out and try again."
+    ]
+  }
 }

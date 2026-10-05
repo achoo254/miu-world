@@ -44,7 +44,16 @@ export function loadShopCatalog(accessories: ReadonlyMap<string, AccessoryItem>,
   });
   if (issues.length > 0) throw new Error(`invalid shop catalogue: ${issues.join('; ')}`);
   const items = [...listings.values()].map((listing): ShopItemDto => {
-    const base = { id: listing.id, kind: listing.kind, category: listing.category, price: listing.price, level: listing.level ?? null, featured: listing.featured ?? false };
+    const base = {
+      id: listing.id,
+      kind: listing.kind,
+      category: listing.category,
+      price: listing.price,
+      level: listing.level ?? null,
+      featured: listing.featured ?? false,
+      nameEn: listing.en?.name ?? null,
+      descriptionEn: listing.en?.description ?? null,
+    };
     const none = { slot: null, swatch: null, icon: null, effect: null, contains: null };
     switch (listing.kind) {
       case 'wearable': {

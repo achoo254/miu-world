@@ -46,7 +46,19 @@
         {
           "text": "Tớ nhận ra dấu chân ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "So many animals went for a walk around the snow village last night, {name}!",
+          "Look at the footprints in the white snow, then point to the right animal's name."
+        ],
+        "choices": [
+          {
+            "text": "I can spot those footprints!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đoán đúng danh tính của mười bạn thú qua vết chân trên tuyết nhé!",
       "game": "snow-tracks",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Who Walked Here?",
+        "prompt": "Name 10 animals from their tracks in the snow!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cáo Tuyết nghiêng đầu thán phục: tài thám tử của {name} chẳng thua ai ở xứ tuyết!"
+      "text": "Cáo Tuyết nghiêng đầu thán phục: tài thám tử của {name} chẳng thua ai ở xứ tuyết!",
+      "en": {
+        "title": "Reward",
+        "text": "Cáo Tuyết tilts a head in awe: {name} is the best detective in snow country!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tuyết mới lại rơi phủ lối, Cáo Tuyết chờ {name} ra quảng trường soi dấu chân."
+      "text": "Tuyết mới lại rơi phủ lối, Cáo Tuyết chờ {name} ra quảng trường soi dấu chân.",
+      "en": {
+        "title": "See you soon",
+        "text": "Fresh snow covers the paths again. Cáo Tuyết is waiting for {name} at the square to read tracks."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Tracks in the Snow with Cáo Tuyết Điêu Khắc",
+    "summary": "Strange footprints are pressed into the snow; study the tracks to work out which forest animal made them."
   }
 }

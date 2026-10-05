@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 75,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Seesaw Launcher",
+    "howTo": [
+      "{name} taps a height on the pole: a sandbag drops onto the seesaw and the ball flies off.",
+      "Drop from higher to launch the ball further. Land it in the basket for a point.",
+      "You have 10 sandbags. The red flag marks the height of your last drop."
+    ]
+  }
 }

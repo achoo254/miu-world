@@ -46,7 +46,19 @@
         {
           "text": "Cháu gắp chắc tay không rơi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The family meal's nearly ready, {name}. Let's show off our chopstick skills!",
+          "Pinch the bean firmly and move it slowly to the bowl. Go too fast and it slips!"
+        ],
+        "choices": [
+          {
+            "text": "I'll hold tight and not drop any!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Dùng đũa gắp thành công hai mươi hạt đậu vàng óng vào bát nhé!",
       "game": "chopsticks",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Chopstick bean race",
+        "prompt": "Use chopsticks to move 20 golden beans into the bowl!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mèo Bếp Trưởng rung râu mỉm cười: đôi tay {name} cầm đũa khéo léo và vững vàng lắm!"
+      "text": "Mèo Bếp Trưởng rung râu mỉm cười: đôi tay {name} cầm đũa khéo léo và vững vàng lắm!",
+      "en": {
+        "title": "Reward",
+        "text": "Mèo Bếp Trưởng twitches his whiskers: {name}'s chopstick hands are skilful and steady!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Gian bếp lúc nào cũng thơm lừng món ngon, Mèo Bếp Trưởng chờ {name} phụ giúp."
+      "text": "Gian bếp lúc nào cũng thơm lừng món ngon, Mèo Bếp Trưởng chờ {name} phụ giúp.",
+      "en": {
+        "title": "See you soon",
+        "text": "The kitchen always smells delicious. Mèo Bếp Trưởng is waiting for {name} to help."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Chopstick Practice with Mèo Bếp Trưởng",
+    "summary": "Small bamboo chopsticks pinch round beans; keep a gentle hand and move each bean from plate to bowl."
   }
 }

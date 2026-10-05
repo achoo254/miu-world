@@ -46,7 +46,19 @@
         {
           "text": "Tớ nhảy cú thật ngoạn mục!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Look at that beautiful high cliff over the sea, {name}! Try a dive into the blue water!",
+          "Tap to leap up and tuck, then tap again to stretch out and land softly."
+        ],
+        "choices": [
+          {
+            "text": "I'll do a spectacular dive!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Thực hiện thành công năm cú tiếp nước hoàn hảo từ vách đá nhé!",
       "game": "high-dive",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "High dive",
+        "prompt": "Make 5 perfect dives from the cliff!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hải Cẩu tung bọt nước vỗ tay: cú nhảy lặn của {name} đẹp như một chú cá heo lượn!"
+      "text": "Hải Cẩu tung bọt nước vỗ tay: cú nhảy lặn của {name} đẹp như một chú cá heo lượn!",
+      "en": {
+        "title": "Reward",
+        "text": "Hải Cẩu splashes and claps: {name}'s dive was as graceful as a dolphin's!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mỏm đá nhìn ra đại dương bao la, Hải Cẩu đứng đón {name} ghé nhảy sóng tiếp."
+      "text": "Mỏm đá nhìn ra đại dương bao la, Hải Cẩu đứng đón {name} ghé nhảy sóng tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "The cliff looks out over the wide ocean, and Hải Cẩu will be there to welcome {name} back."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Cliff diving into the waves with Hải Cẩu",
+    "summary": "From the top of a tall rock, jump and flip, then stretch out straight to slice into the water."
   }
 }

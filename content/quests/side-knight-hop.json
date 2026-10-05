@@ -46,7 +46,19 @@
         {
           "text": "Cháu dắt tuấn mã nhảy bước chữ L!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hello, {name}! The royal steed loves jumping in L shapes across the chessboard.",
+          "Lead the horse two squares straight, then one square across, to collect all the stars on the stone floor."
+        ],
+        "choices": [
+          {
+            "text": "I'll lead the steed in L-shaped leaps!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Dắt chú ngựa nhảy nhặt đủ mười bảy ngôi sao lấp lánh nhé!",
       "game": "knight-hop",
-      "goal": 17
+      "goal": 17,
+      "en": {
+        "title": "Knight seeks the stars",
+        "prompt": "Help the horse jump and gather 17 twinkling stars!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Quản Mã Hoàng Gia vuốt bờm ngựa cười vang, khen {name} nắm chắc nước cờ mã độc đáo!"
+      "text": "Quản Mã Hoàng Gia vuốt bờm ngựa cười vang, khen {name} nắm chắc nước cờ mã độc đáo!",
+      "en": {
+        "title": "Reward",
+        "text": "Quản Mã Hoàng Gia strokes the horse's mane and laughs: {name} really knows the knight's move!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ngựa hoàng gia đã no cỏ và sao vàng, hẹn gặp lại cháu ở đầu cầu treo trước cổng thành."
+      "text": "Ngựa hoàng gia đã no cỏ và sao vàng, hẹn gặp lại cháu ở đầu cầu treo trước cổng thành.",
+      "en": {
+        "title": "See you soon",
+        "text": "The royal horse is full of grass and gold stars. See you at the drawbridge by the castle gate."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Knight Hops with Quản Mã Hoàng Gia",
+    "summary": "A stone chessboard floor sparkles with stars; lead the magic horse in L-shaped jumps to collect every one."
   }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Tớ xoay thử nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Look, {name}, the pipes to the field have been turned every which way!",
+          "Tap each piece to turn it. Wherever the water reaches, the pipe turns blue."
+        ],
+        "choices": [
+          {
+            "text": "I'll give it a try!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đưa nước ra ruộng hai lần nhé!",
       "game": "pipe-connect",
-      "goal": 2
+      "goal": 2,
+      "en": {
+        "title": "Water Pipe Puzzle",
+        "prompt": "Get water to the field 2 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nước mát chảy róc rách rồi, {name} giỏi ghê!"
+      "text": "Nước mát chảy róc rách rồi, {name} giỏi ghê!",
+      "en": {
+        "title": "Reward",
+        "text": "Cool water is trickling through now! {name} is so clever!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ruộng ven đầm còn khát nước lắm, hôm khác lại giúp tớ nha."
+      "text": "Ruộng ven đầm còn khát nước lắm, hôm khác lại giúp tớ nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "The fields by the pond are still thirsty. Help me again another day."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Connect the water pipes with Mèo Đầm Sen",
+    "summary": "Turn each pipe piece so water flows all the way from the well to the field."
   }
 }

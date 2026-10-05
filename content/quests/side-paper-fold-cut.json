@@ -46,7 +46,19 @@
         {
           "text": "Tớ cắt theo đường nét liền!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "I've got some bright coloured paper, {name}. Let's cut out flowers to decorate!",
+          "Look at the sample flower, then swipe along the edge to open up a whole flower."
+        ],
+        "choices": [
+          {
+            "text": "I'll cut along the solid line!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Cắt mở thành công năm bông hoa giấy rực rỡ sắc màu nhé!",
       "game": "paper-fold-cut",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Fold and Cut Flowers",
+        "prompt": "Cut and open 5 colourful paper flowers!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bé Gấp Giấy vỗ tay reo hò: hoa của {name} cắt mở ra nở đều cánh như thật!"
+      "text": "Bé Gấp Giấy vỗ tay reo hò: hoa của {name} cắt mở ra nở đều cánh như thật!",
+      "en": {
+        "title": "Reward",
+        "text": "Bé Gấp Giấy claps and cheers: {name}'s flowers open up with even petals, just like real ones!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Góc đồ chơi còn nhiều giấy màu đẹp, bạn nhớ ghé chơi trò cắt dán với tớ nhé."
+      "text": "Góc đồ chơi còn nhiều giấy màu đẹp, bạn nhớ ghé chơi trò cắt dán với tớ nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The toy corner has lots more pretty paper. Come play cut-and-paste with me again!"
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Fold and Cut Paper Flowers with Bé Gấp Giấy Vui",
+    "summary": "A sheet of coloured paper is folded in half; study the flower pattern, then swipe to cut and open up the petals."
   }
 }

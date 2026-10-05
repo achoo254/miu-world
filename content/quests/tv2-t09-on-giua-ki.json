@@ -90,7 +90,27 @@
           "text": "Bác ơi, trạm nào khó nhất ạ?",
           "reply": "Bác Gấu Trúc Tròn ngẫm nghĩ thật lâu rồi mới đáp: trạm cuối có một bó đũa không ai bẻ được đâu."
         }
-      ]
+      ],
+      "en": {
+        "title": "The librarian opens the festival",
+        "goTo": "Go to the golden-leaf stage by the library door, Gấu Trúc Tròn is slowly climbing up",
+        "lines": [
+          "The golden-leaf festival… has begun. I'll speak slowly so you can all hear: whoever clears every stall gets to light the leaf lantern.",
+          "A new friend keeps each stall, and each one brings a puzzle from the half term we've just had. Get to know them slowly, nobody has to rush.",
+          "Hi {name}, I'm Gấu Bùi, keeper of the objects stall… but I dropped all the golden-leaf tickets along the way. Hee hee.",
+          "Without tickets, nobody can enter the stalls. {name}, please help Gấu Bùi pick them up, one at a time is plenty."
+        ],
+        "choices": [
+          {
+            "text": "I'll pick up the tickets, Gấu Bùi, you stay right here!",
+            "reply": "Gấu Bùi stands to attention… for exactly three seconds, then wanders off to look for the honey pot."
+          },
+          {
+            "text": "Which stall is the hardest, sir?",
+            "reply": "Gấu Trúc Tròn thinks for a very long time before answering: the last stall has a bundle of chopsticks nobody can break."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-ve-la-vang",
@@ -1132,7 +1152,26 @@
           "text": "Treo đèn giữa sân, chỗ ai cũng nhìn thấy được.",
           "reply": "Khỉ Nhót gãi tai: ừ nhỉ, đèn ở giữa thì cả sân lễ hội cùng sáng. Tớ đồng ý!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Who keeps the leaf lantern?",
+        "goTo": "Go back to the golden-leaf stage, the whole class is squabbling over the leaf lantern",
+        "lines": [
+          "I picked up the most golden leaves! Well, no, {name} picked them up, but I'm the one who dropped them!",
+          "My stall was the hardest, so the lantern should hang at my place!",
+          "You're arguing so loudly the lantern will never light. I think slowly; {name}, help me think of a way."
+        ],
+        "choices": [
+          {
+            "text": "Everyone adds one leaf and we light the lantern together!",
+            "reply": "The class goes quiet for a second, then everyone nods. Gấu Bùi adds the first leaf, and this time he doesn't drop it."
+          },
+          {
+            "text": "Hang the lantern in the middle of the yard where everyone can see it.",
+            "reply": "Khỉ Nhót scratches his ear: true, a lantern in the middle lights up the whole festival. I agree!"
+          }
+        ]
+      }
     },
     {
       "id": "doc-bo-dua",
@@ -1609,14 +1648,22 @@
       "title": "Thắp đèn lá vàng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cả lớp góp lá vàng vào chiếc đèn lá khổng lồ. Đèn bừng sáng giữa sân trước thư viện, bác Gấu Trúc Tròn chậm rãi xướng tên {name} thật to, còn Gấu Bùi ôm chặt chiếc huy hiệu lá vàng của mình, lần này nhất định không làm rơi."
+      "text": "Cả lớp góp lá vàng vào chiếc đèn lá khổng lồ. Đèn bừng sáng giữa sân trước thư viện, bác Gấu Trúc Tròn chậm rãi xướng tên {name} thật to, còn Gấu Bùi ôm chặt chiếc huy hiệu lá vàng của mình, lần này nhất định không làm rơi.",
+      "en": {
+        "title": "Lighting the golden-leaf lantern",
+        "text": "The whole class adds golden leaves to the giant leaf lantern. It blazes into light in the yard before the library; Gấu Trúc Tròn slowly calls out {name} loud and clear, and Gấu Bùi hugs his golden-leaf badge tight, determined not to drop it this time."
+      }
     },
     {
       "id": "mo-bai-17",
       "title": "Tiếng gọi giữa đồng khô",
       "kind": "next",
       "trigger": "auto",
-      "text": "Lễ hội vừa tan, bác Gấu Trúc Tròn đọc chậm lá thư mới gửi tới: ở Khu rừng bí mật, đồng cỏ khô giòn như bánh đa, có một bạn nhỏ gọi bạn mãi mà chẳng thấy ai thưa."
+      "text": "Lễ hội vừa tan, bác Gấu Trúc Tròn đọc chậm lá thư mới gửi tới: ở Khu rừng bí mật, đồng cỏ khô giòn như bánh đa, có một bạn nhỏ gọi bạn mãi mà chẳng thấy ai thưa.",
+      "en": {
+        "title": "A call across the dry meadow",
+        "text": "As the festival ends, Gấu Trúc Tròn slowly reads a new letter: in the Secret Forest the meadow is dry and crunchy as a rice cracker, and a little one keeps calling a friend who never answers."
+      }
     }
   ],
   "reward": {

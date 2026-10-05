@@ -69,7 +69,27 @@
           "text": "Lem đừng hắt xì nữa nhé!",
           "reply": "Lem bịt mũi: Tớ cố… hắt… à không, tớ nhịn được rồi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Crash! The box of nuts and bolts spills",
+        "goTo": "Go into the Farm tool workshop, to the repair bench where the clatter just came from",
+        "lines": [
+          "Mooo... welcome to the farm, {name}! The moment I heard that clatter I knew: Lem has knocked something over again.",
+          "Crash! Oops, I only meant to sneeze once, and the whole box of nuts and bolts went flying across the repair bench!",
+          "Bolts rolled under the bench, wheels hid in the straw pile, springs went boing boing. I need to count them again to build the vegetable cart.",
+          "But when I count them one by one, I get to 27 and... forget what I'm counting. {name}, save me!"
+        ],
+        "choices": [
+          {
+            "text": "I'll pick them up with you!",
+            "reply": "Lem beams, then trips over a stool: Whoops... thanks a lot!"
+          },
+          {
+            "text": "No more sneezing, Lem!",
+            "reply": "Lem pinches his snout: I'll try... ah... ah... no, I held it in!"
+          }
+        ]
+      }
     },
     {
       "id": "tim-linh-kien",
@@ -106,7 +126,21 @@
           "text": "Đủ mười thì nhớ một!",
           "reply": "Lem giơ ngón tay cái dính đầy dầu máy: Câu thần chú của xưởng nông cụ đấy!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Bag ten bolts into one ten",
+        "lines": [
+          "Oh, I remember the trick now: every time there are 10 bolts, put them in a bag and call it one ten!",
+          "28 bolts is 2 bags and 8 loose ones. Add 3 more: 8 + 3 = 11, that's one more bag, with 1 left loose.",
+          "Write 1, carry 1 to the tens: 2 bags plus 1 bag is 3 bags. So 28 + 3 = 31. Oink... oops, I'm a wild boar, I don't oink!"
+        ],
+        "choices": [
+          {
+            "text": "Make ten, carry one!",
+            "reply": "Lem holds up a thumb covered in engine oil: That's the tool workshop's magic spell!"
+          }
+        ]
+      }
     },
     {
       "id": "cong-co-nho-dau-tien",
@@ -793,7 +827,25 @@
           "text": "Đặt tính cho chắc",
           "reply": "Gà Con Líu: Thẳng cột như hàng gà con đi học!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Líu scratched away the answers",
+        "goTo": "Run to the chicken coop, where Gà Con Líu is hopping about pointing at the scratched-up ground",
+        "lines": [
+          "Cheep cheep! I'm Líu. I was only looking for worms, and I scratched away every answer Lem wrote in the dirt in front of the coop!",
+          "Oh no, that was my parts order sheet! {name}, let's write it again. Do you like mental maths or column sums?"
+        ],
+        "choices": [
+          {
+            "text": "Mental maths, it is faster",
+            "reply": "Lem: Fast is good, but don't forget the 1 you carried!"
+          },
+          {
+            "text": "Column sums, to be safe",
+            "reply": "Gà Con Líu: Straight columns, like a line of chicks going to school!"
+          }
+        ]
+      }
     },
     {
       "id": "ket-qua-ga-boi-mat",
@@ -1239,14 +1291,22 @@
       "title": "Cờ lê thợ sửa xe",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chiếc xe kéo chở rau chạy bon bon quanh sân nông trại. Lợn Lấm Lem trao cho {name} chiếc cờ lê nhỏ \"Thợ sửa xe nhớ một\", rồi… vấp chân lần thứ mười trong ngày."
+      "text": "Chiếc xe kéo chở rau chạy bon bon quanh sân nông trại. Lợn Lấm Lem trao cho {name} chiếc cờ lê nhỏ \"Thợ sửa xe nhớ một\", rồi… vấp chân lần thứ mười trong ngày.",
+      "en": {
+        "title": "The mechanic's spanner",
+        "text": "The vegetable cart trundles merrily around the farmyard. Lợn Lấm Lem gives {name} the little \"Carry-One Mechanic\" spanner, then... trips over his own feet for the tenth time today."
+      }
     },
     {
       "id": "toa-tau-roi-ray",
       "title": "Toa xe kéo đòi đi trước",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ở bãi xe kéo, Khỉ Ổi ôm một chồng toa xe chở nông sản: mỗi toa chở một số hàng, ghép mãi chẳng khớp, toa nào cũng đòi đi trước!"
+      "text": "Ở bãi xe kéo, Khỉ Ổi ôm một chồng toa xe chở nông sản: mỗi toa chở một số hàng, ghép mãi chẳng khớp, toa nào cũng đòi đi trước!",
+      "en": {
+        "title": "Every cart wants to go first",
+        "text": "At the cart yard, Khỉ Ổi is hugging a pile of produce carts: each cart carries a different load, they never fit together, and every single one wants to go first!"
+      }
     }
   ],
   "reward": {

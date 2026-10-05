@@ -46,7 +46,19 @@
         {
           "text": "Cháu chia thật công bằng cho từng bạn!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "These baby penguins have hunted all morning and they're worn out. {name}, help me share the fish!",
+          "Tap each penguin to give it fish, and count so everyone gets the same number."
+        ],
+        "choices": [
+          {
+            "text": "I'll share fairly with everyone!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chia phần cá thật đều cho tám nhóm cánh cụt tí hon nhé!",
       "game": "penguin-share",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Fish for Penguins",
+        "prompt": "Share the fish evenly among 8 groups of tiny penguins!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bác Gấu xoa đầu khen ngợi: cháu {name} chia phần chu đáo, bạn nào cũng no bụng!"
+      "text": "Bác Gấu xoa đầu khen ngợi: cháu {name} chia phần chu đáo, bạn nào cũng no bụng!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Bắc Cực pats {name}'s head: such careful sharing, every penguin is full!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đàn cánh cụt lại sắp tới giờ ăn trưa, bác Gấu đợi {name} quay lại trổ tài."
+      "text": "Đàn cánh cụt lại sắp tới giờ ăn trưa, bác Gấu đợi {name} quay lại trổ tài.",
+      "en": {
+        "title": "See you soon",
+        "text": "It's almost the penguins' lunchtime again. Gấu Bắc Cực is waiting for {name} to come back."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Share Fish Fairly with Gấu Bắc Cực",
+    "summary": "Hungry penguins wait in line; share out the fish so every friend gets the same amount."
   }
 }

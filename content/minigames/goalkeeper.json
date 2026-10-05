@@ -9,5 +9,12 @@
   "controls": ["tap", "swipe"],
   "duration": 45,
   "goal": 6,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Be the goalkeeper",
+    "howTo": [
+      "{name} is the goalie! Panda takes ten shots.",
+      "Tap where the ball is heading (or swipe to that side) to dive and save it."
+    ]
+  }
 }

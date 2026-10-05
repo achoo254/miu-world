@@ -114,10 +114,11 @@ describe('a minigame step', () => {
     sevenQuestions: { who: 'a', where: 'b', goal: 'c', play: 'd', learn: 'e', reward: 'f', next: 'g' },
     phases: { hook: 'ask', explore: 'ask', learn: 'ask', challenge: 'play', decision: 'play', finale: 'play', reward: 'play', next: 'play' },
     steps: [
-      { id: 'ask', title: 'Nhờ', kind: 'dialogue', target: 'parrot-guide', lines: [{ speaker: 'Vẹt', text: 'Chơi nhé!' }] },
-      { id: 'play', title: 'Chơi', kind: 'challenge', mechanic: 'minigame', trigger: 'auto', prompt: 'Hứng trứng', game: 'egg-catch', goal: 10 },
+      { id: 'ask', title: 'Nhờ', kind: 'dialogue', target: 'parrot-guide', lines: [{ speaker: 'Vẹt', text: 'Chơi nhé!' }], en: { title: 'Ask', lines: ["Let's play!"] } },
+      { id: 'play', title: 'Chơi', kind: 'challenge', mechanic: 'minigame', trigger: 'auto', prompt: 'Hứng trứng', game: 'egg-catch', goal: 10, en: { title: 'Play', prompt: 'Catch eggs' } },
     ],
     reward: { xp: 20 },
+    en: { title: 'Egg catch', summary: 'Catch eggs' },
   });
   const asked = { completedSteps: ['ask'], completed: false, found: {} };
 

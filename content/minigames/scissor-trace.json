@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 60,
   "goal": 5,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Cut Along the Line",
+    "howTo": [
+      "Put your finger on the scissors and guide them along the dotted line.",
+      "Stray too far and the scissors stop: {name} puts a finger back on them to keep cutting.",
+      "Cut all the way around to finish a shape: one point."
+    ]
+  }
 }

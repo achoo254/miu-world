@@ -46,7 +46,19 @@
         {
           "text": "Tớ nối dây cho đèn sáng!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hi {name}! The fountain lights are about to come on, but the circuit still has a gap.",
+          "Run a wire from the plus end of the battery through the bulb to the minus end, then flip the switch on."
+        ],
+        "choices": [
+          {
+            "text": "I will wire up the light!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nối kín mạch điện thắp sáng bốn bóng đèn lung linh nhé!",
       "game": "simple-circuit",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Light-Up Circuit",
+        "prompt": "Close the circuit to light 4 shining bulbs!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chú Thợ Điện Nhí giơ ngón tay cái khen ngợi {name} lắp mạch điện an toàn và sáng rực!"
+      "text": "Chú Thợ Điện Nhí giơ ngón tay cái khen ngợi {name} lắp mạch điện an toàn và sáng rực!",
+      "en": {
+        "title": "Reward",
+        "text": "Chú Thợ Điện Nhí gives a thumbs up: {name} built a safe circuit that glows so bright!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đèn quảng trường đã sáng trưng, khi nào thích khám phá khoa học cậu cứ lại tìm tớ."
+      "text": "Đèn quảng trường đã sáng trưng, khi nào thích khám phá khoa học cậu cứ lại tìm tớ.",
+      "en": {
+        "title": "See you soon",
+        "text": "The square is lit up now. Whenever you feel like exploring science, come find me."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Lighting up a circuit with Chú Thợ Điện Nhí",
+    "summary": "The copper wires are broken; drag them into a closed loop from the battery through the switch to a bright bulb."
   }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Tớ chuyển cẩn thận lắm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Help me, {name}! I have to carry this cake stack over to the star plate!",
+          "Lift only the top layer each time, and a big layer must never sit on a smaller one."
+        ],
+        "choices": [
+          {
+            "text": "I will move it very carefully!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chuyển trọn hai chồng bánh sang đĩa ngôi sao nhé!",
       "game": "hanoi-tower",
-      "goal": 2
+      "goal": 2,
+      "en": {
+        "title": "Move the cake tower",
+        "prompt": "Move 2 whole cake stacks to the star plate!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bánh vẫn nguyên vẹn, Thỏ Ngắm Sao mời {name} ăn miếng đầu tiên!"
+      "text": "Bánh vẫn nguyên vẹn, Thỏ Ngắm Sao mời {name} ăn miếng đầu tiên!",
+      "en": {
+        "title": "Reward",
+        "text": "The cake is still perfect, and Thỏ Ngắm Sao offers {name} the very first slice!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Lần sau tớ làm chồng bánh cao hơn, cậu lại tới thử tài nhé."
+      "text": "Lần sau tớ làm chồng bánh cao hơn, cậu lại tới thử tài nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Next time I will bake an even taller stack, so come back and test your skill."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Moving the layer cake with Thỏ Ngắm Sao",
+    "summary": "A tall layer cake sits on a plate; move it layer by layer to the star plate, never putting a big layer on a small one."
   }
 }

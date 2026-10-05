@@ -46,7 +46,19 @@
         {
           "text": "Mười que thành bó, đếm chục thật nhanh!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, I have a whole basket of coloured counting sticks to sort into bundles of ten.",
+          "Draw a loop around exactly ten sticks to tie them up, then count the tens and the ones."
+        ],
+        "choices": [
+          {
+            "text": "Ten sticks a bundle, count the tens fast!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Khoanh buộc thành công năm bó que tính chục nhé!",
       "game": "tens-bundles",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Bundles of Ten",
+        "prompt": "Tie 5 bundles of ten counting sticks!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Bó Đũa giơ từng bó que gọn gàng: {name} đếm chục que chuẩn xác, bài toán dễ ợt rồi!"
+      "text": "Gấu Bó Đũa giơ từng bó que gọn gàng: {name} đếm chục que chuẩn xác, bài toán dễ ợt rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Bó Đũa holds up each tidy bundle: {name} counts tens perfectly, this sum is easy now!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Sắp tới bài đếm trăm, {name} nhớ ghé ghế đá sân sau bó que tính cùng Gấu Bó Đũa nhé."
+      "text": "Sắp tới bài đếm trăm, {name} nhớ ghé ghế đá sân sau bó que tính cùng Gấu Bó Đũa nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Counting to a hundred is next, {name}, so come bundle sticks with Gấu Bó Đũa at the stone bench."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Bundling counting sticks into tens with Gấu Bó Đũa",
+    "summary": "Counting sticks are scattered on the desk: circle exactly ten to tie them into a neat bundle of ten."
   }
 }

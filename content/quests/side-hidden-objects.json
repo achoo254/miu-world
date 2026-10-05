@@ -46,7 +46,19 @@
         {
           "text": "Tớ tìm ra hết cho cậu!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, I dropped my things all over the dungeon and now I can't find them!",
+          "The tray below shows the six things I need. Look closely at the picture and tap the right ones."
+        ],
+        "choices": [
+          {
+            "text": "I'll find every one for you!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Tìm được sáu món đồ ẩn nhé!",
       "game": "hidden-objects",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Hidden objects",
+        "prompt": "Find 6 hidden items!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Đồ về đủ cả, Gấu Gác Hầm vỗ vai {name}: mắt cậu sáng thật!"
+      "text": "Đồ về đủ cả, Gấu Gác Hầm vỗ vai {name}: mắt cậu sáng thật!",
+      "en": {
+        "title": "Reward",
+        "text": "Everything's back! Gấu Gác Hầm pats {name} on the shoulder: you have sharp eyes!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tớ hay để quên đồ lắm, lúc nào ghé hầm ngục tìm giúp tớ nhé."
+      "text": "Tớ hay để quên đồ lắm, lúc nào ghé hầm ngục tìm giúp tớ nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "I forget things all the time. Whenever you visit the dungeon, help me look!"
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Hidden Things in the Dungeon with Gấu Gác Hầm",
+    "summary": "A dungeon picture is piled with old junk; find the six items shown in the tray below to send them flying in."
   }
 }

@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 12,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Crane tower",
+    "howTo": [
+      "A floor of the building swings from the crane. {name}, tap to drop it right onto the tower.",
+      "Drop it off-centre and the tower sways harder. Three floors missing the tower ends the round!"
+    ]
+  }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Lên xe, mình giao báo nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "So many papers came in this morning, {name}! Help me deliver them!",
+          "A mailbox with its red flag up means the house is waiting. Throw before you ride past."
+        ],
+        "choices": [
+          {
+            "text": "On the bike, let us deliver!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Giao báo tới mười hộp thư nhé!",
       "game": "paper-route",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Bike Paper Route",
+        "prompt": "Deliver papers to 10 mailboxes!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cả xóm có báo đọc rồi, cảm ơn {name} nhé!"
+      "text": "Cả xóm có báo đọc rồi, cảm ơn {name} nhé!",
+      "en": {
+        "title": "Reward",
+        "text": "The whole village has something to read now. Thank you, {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Sáng mai báo lại về, tớ chờ cậu ở đầu đường đồng."
+      "text": "Sáng mai báo lại về, tớ chờ cậu ở đầu đường đồng.",
+      "en": {
+        "title": "See you soon",
+        "text": "More papers arrive tomorrow morning, so I will wait for you where the field road starts."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Newspaper bike round with Gấu Đưa Báo",
+    "summary": "Ride along the dirt road through the rice fields and toss papers into mailboxes with a red flag up."
   }
 }

@@ -76,7 +76,27 @@
           "text": "Để mình tìm kính cho anh Tùng trước đã!",
           "reply": "Voi Tùng mừng rỡ: anh nhớ rõ mình đặt kính trên bãi sỏi bên bến… hay trên ngọn cây nhỉ?"
         }
-      ]
+      ],
+      "en": {
+        "title": "Voi Út's twig antlers",
+        "goTo": "Go to the river landing, someone is admiring their reflection in the water",
+        "lines": [
+          "{name}! {name}! Am I pretty? I just stuck two twigs on my head so they look like Deer's antlers!",
+          "Út, hold still so I can look… huh, where are my glasses? All I can see is a grey blob with sticks on it.",
+          "Bonk! Ouch, I've bumped my head on a branch again. Út, my antlers aren't made of dry twigs, you know!",
+          "Then I'll add some grass for a beard and be the prettiest in the village! What do you think, {name}?"
+        ],
+        "choices": [
+          {
+            "text": "Út, you're pretty even without the twigs!",
+            "reply": "Really? Big brother Tùng hasn't found his glasses, so nobody has told me that yet!"
+          },
+          {
+            "text": "Let me find Tùng's glasses first!",
+            "reply": "Voi Tùng is delighted: he's sure he left his glasses on the pebbles by the landing… or was it up a tree?"
+          }
+        ]
+      }
     },
     {
       "id": "tim-kinh-voi-bao",
@@ -488,7 +508,30 @@
           "text": "Út là chính Út, thế là xinh nhất rồi!",
           "reply": "Voi Út cười tít mắt, quấn vòi ôm anh Tùng một cái thật chặt."
         }
-      ]
+      ],
+      "en": {
+        "title": "Say something kind to Voi Út",
+        "goTo": "Go back to the river landing, Voi Út is looking at her reflection",
+        "lines": [
+          "I took off all the twigs and grass. Now I don't look like anybody… Am I pretty?",
+          "I've got my glasses on and I can see clearly: you're prettiest when you're just you, Út.",
+          "Then you say something nice about me, {name}! Anything at all, just not about antlers."
+        ],
+        "choices": [
+          {
+            "text": "Út has ears as big as two fans, so cute!",
+            "reply": "Voi Út flaps her ears flip-flap: hee hee, I can cool the whole riverbank!"
+          },
+          {
+            "text": "Út is the best water-sprayer on the river!",
+            "reply": "Voi Út fills her trunk and sprays a tiny rainbow. Hươu Sừng Non claps, and bumps a branch again."
+          },
+          {
+            "text": "Út is just Út, and that's the prettiest of all!",
+            "reply": "Voi Út smiles until her eyes crinkle and wraps her trunk around big brother Tùng in a tight hug."
+          }
+        ]
+      }
     },
     {
       "id": "bai-hoc-cua-voi-em",
@@ -691,14 +734,22 @@
       "title": "Chiếc gương lá sen",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Voi Út tặng {name} một chiếc gương lá sen để soi bóng. Voi Tùng thì buộc luôn một sợi dây vào kính, thề từ nay không làm rơi kính nữa."
+      "text": "Voi Út tặng {name} một chiếc gương lá sen để soi bóng. Voi Tùng thì buộc luôn một sợi dây vào kính, thề từ nay không làm rơi kính nữa.",
+      "en": {
+        "title": "The lotus-leaf mirror",
+        "text": "Voi Út gives {name} a lotus-leaf mirror to look into. Voi Tùng ties a string to his glasses and swears he'll never drop them again."
+      }
     },
     {
       "id": "mo-bai-6",
       "title": "Lớp học dưới gốc đa",
       "kind": "next",
       "trigger": "auto",
-      "text": "Dưới gốc đa gần bến sông, lớp học của làng sắp vào giờ. Mèo Nghệ ngồi im thin thít ở bàn cuối, cứ nghĩ tới chuyện phải nói trước lớp là râu lại run run."
+      "text": "Dưới gốc đa gần bến sông, lớp học của làng sắp vào giờ. Mèo Nghệ ngồi im thin thít ở bàn cuối, cứ nghĩ tới chuyện phải nói trước lớp là râu lại run run.",
+      "en": {
+        "title": "Class under the banyan tree",
+        "text": "Under the banyan near the river, the village class is about to begin. Mèo Nghệ sits silent at the back desk; just thinking about speaking in front of everyone makes his whiskers wobble."
+      }
     }
   ],
   "reward": {

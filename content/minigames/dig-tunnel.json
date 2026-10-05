@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 10,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Dig for gems",
+    "howTo": [
+      "{name}, drag (or tap) where you want to dig to tunnel your way to the gems.",
+      "Dig away the soil under a boulder and it shakes, then falls: stay clear!",
+      "Three hits from falling rocks ends your turn."
+    ]
+  }
 }

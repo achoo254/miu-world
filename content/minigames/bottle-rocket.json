@@ -10,5 +10,13 @@
   "controls": ["swipe", "tap"],
   "duration": 60,
   "goal": 5,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Water rocket",
+    "howTo": [
+      "Swipe up and down to pump the rocket to the green line. Pump too much and water squirts out.",
+      "The launch pad tilts back and forth. Tap to launch when the needle is in the green.",
+      "{name}, make the rocket open its parachute and land on the target!"
+    ]
+  }
 }

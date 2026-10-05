@@ -46,7 +46,19 @@
         {
           "text": "Bao cát rơi xuống, bóng bay vào rổ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, look at the colourful ball-launching seesaw of our circus troupe!",
+          "Tap to pick how high the sandbag drops, and judge the bounce so the ball flies into the hoop."
+        ],
+        "choices": [
+          {
+            "text": "Sandbag down, ball in the hoop!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Phóng bóng trúng rổ ghi được sáu điểm nhé!",
       "game": "seesaw-launch",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Seesaw Launcher",
+        "prompt": "Launch balls into the hoop for 6 points!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bé Xiếc Vui Vẻ vỗ tay reo hò: bóng của {name} bay vút vào rổ rinh trọn tràng pháo tay!"
+      "text": "Bé Xiếc Vui Vẻ vỗ tay reo hò: bóng của {name} bay vút vào rổ rinh trọn tràng pháo tay!",
+      "en": {
+        "title": "Reward",
+        "text": "Bé Xiếc Vui Vẻ cheers: the ball from {name} swooshed into the hoop to a round of applause!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Vẫn còn nhiều bao cát và bóng màu, {name} lại sân khấu sự kiện chơi bập bênh tiếp nha."
+      "text": "Vẫn còn nhiều bao cát và bóng màu, {name} lại sân khấu sự kiện chơi bập bênh tiếp nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "There are plenty more sandbags and balls, {name}, so come back to the stage and seesaw again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Seesaw ball launch with Bé Xiếc Vui Vẻ",
+    "summary": "A magical lever seesaw: drop a sandbag from up high to launch a ball into the hoop."
   }
 }

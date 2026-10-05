@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 3,
-  "params": { "digs": 8 }
+  "params": { "digs": 8 },
+  "en": {
+    "name": "Hot and Cold Treasure Dig",
+    "howTo": [
+      "Tap a sand square to dig. Fire means very close; snow means the treasure is still far away.",
+      "{name} has eight digs to find the treasure!"
+    ]
+  }
 }

@@ -9,5 +9,12 @@
   "controls": ["swipe", "tap"],
   "duration": 90,
   "goal": 3,
-  "params": { "rocks": 0.18 }
+  "params": { "rocks": 0.18 },
+  "en": {
+    "name": "Ice maze slide",
+    "howTo": [
+      "Swipe up, down, left or right: the penguin slides until it bumps a rock.",
+      "{name}, guide the penguin home! Stuck? Tap the Restart button."
+    ]
+  }
 }

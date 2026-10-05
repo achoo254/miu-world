@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Build the blueprint",
+    "howTo": [
+      "Look at the little blue blueprint: {name}, build one exactly like it!",
+      "Tap a paint pot, then tap a square to place a brick of that colour. Tap a brick again to remove it.",
+      "Match the blueprint to finish a building: one point."
+    ]
+  }
 }

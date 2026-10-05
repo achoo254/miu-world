@@ -45,7 +45,21 @@
       ],
       "choices": [
         { "text": "Bà cứ ngồi nghỉ, cháu nhặt ngay ạ!", "reply": "Cháu ngoan quá. Rau lăn xuống bãi rau dại đằng kia đấy." }
-      ]
+      ],
+      "en": {
+        "title": "Granny trips over",
+        "goTo": "Someone cried out on the grassy path by the river, run over and see",
+        "lines": [
+          "Oh my, I tripped on a stone, and all the vegetables in my basket spilled into the grass, dear.",
+          "My legs are so tired; would you pick up the vegetables for me?"
+        ],
+        "choices": [
+          {
+            "text": "You sit and rest, Granny, I'll pick them up right away!",
+            "reply": "What a good child. The vegetables rolled down to the wild greens over there."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-rau",
@@ -164,7 +178,25 @@
           "text": "Nhờ Bò Vàng kéo xe giúp",
           "consequence": "Ong Thợ bay vút đi báo tin. Bò Vàng Kéo Xe đang nghỉ ở gốc tre ven bãi, ra nhờ bạn ấy nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Carrying the basket home",
+        "prompt": "The basket is heavy and Granny's house is still far away. How will {name} carry it home?",
+        "choices": [
+          {
+            "text": "Find a bamboo pole to carry it on your shoulder",
+            "consequence": "The bamboo is strong and light, and {name} strides along with the basket on the pole."
+          },
+          {
+            "text": "Take the flat path the long way round",
+            "consequence": "The long way is further but there are no stones, so Granny and {name} go slow and steady."
+          },
+          {
+            "text": "Ask Bò Vàng to pull a cart",
+            "consequence": "Ong Thợ zooms off with the news. Bò Vàng Kéo Xe is resting by the bamboo at the riverbank, go and ask him!"
+          }
+        ]
+      }
     },
     {
       "id": "nho-bo-vang-keo-xe",
@@ -175,7 +207,19 @@
       "lines": [
         { "speaker": "Bò Vàng Kéo Xe", "text": "Ụm bò, giúp bà cụ thì tớ sẵn lòng! Đặt giỏ rau lên xe, tớ kéo một mạch tới cổng nhà bà." }
       ],
-      "choices": [{ "text": "Cảm ơn Bò Vàng nhiều lắm!" }]
+      "choices": [{ "text": "Cảm ơn Bò Vàng nhiều lắm!" }],
+      "en": {
+        "title": "Ask Bò Vàng to pull the cart",
+        "goTo": "Go to the bamboo by the riverbank and ask Bò Vàng Kéo Xe",
+        "lines": [
+          "Moo, I'm always happy to help Granny! Put the basket on the cart and I'll pull it straight to her gate."
+        ],
+        "choices": [
+          {
+            "text": "Thank you so much, Bò Vàng!"
+          }
+        ]
+      }
     },
     {
       "id": "loi-cam-on-ba",
@@ -212,14 +256,22 @@
       "title": "Nụ cười của bà",
       "kind": "reward",
       "target": "vt-lvs-ba-cu",
-      "text": "Bà cười hiền, dúi vào tay {name} gói xôi còn ấm. Cả làng ven sông khen {name} biết giúp người già, XP và xu cũng tới theo lời khen."
+      "text": "Bà cười hiền, dúi vào tay {name} gói xôi còn ấm. Cả làng ven sông khen {name} biết giúp người già, XP và xu cũng tới theo lời khen.",
+      "en": {
+        "title": "Granny's smile",
+        "text": "Granny smiles gently and presses a warm parcel of sticky rice into {name}'s hand. The whole riverside village praises {name} for helping the elderly, and XP and coins follow the praise."
+      }
     },
     {
       "id": "hen-an-xoi",
       "title": "Hẹn bữa xôi",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bà hẹn hôm sau {name} ghé ăn xôi lạc. Cún Lúa đứng chờ ở cầu đá, đuôi vẫy tít rủ {name} đi chơi tiếp."
+      "text": "Bà hẹn hôm sau {name} ghé ăn xôi lạc. Cún Lúa đứng chờ ở cầu đá, đuôi vẫy tít rủ {name} đi chơi tiếp.",
+      "en": {
+        "title": "A sticky-rice date",
+        "text": "Granny invites {name} to drop by tomorrow for peanut sticky rice. Cún Lúa is waiting at the stone bridge, tail wagging, ready to go and play some more."
+      }
     }
   ],
   "reward": {

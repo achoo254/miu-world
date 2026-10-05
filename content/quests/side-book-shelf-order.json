@@ -46,7 +46,19 @@
         {
           "text": "Cháu xếp sách lên giá ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hello {name}! So many readers borrowed books that the shelf is all mixed up.",
+          "Check the number on each spine and slot it between the others, from smallest to largest."
+        ],
+        "choices": [
+          {
+            "text": "I will shelve the books now!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Xếp ngăn nắp hai mươi hai cuốn sách lên giá gỗ nhé!",
       "game": "book-shelf-order",
-      "goal": 22
+      "goal": 22,
+      "en": {
+        "title": "Shelve the books",
+        "prompt": "Tidy 22 books onto the wooden shelf!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cô Thủ Thư Mai mỉm cười dịu dàng, cảm ơn {name} đã làm giá sách ngăn nắp như mới!"
+      "text": "Cô Thủ Thư Mai mỉm cười dịu dàng, cảm ơn {name} đã làm giá sách ngăn nắp như mới!",
+      "en": {
+        "title": "Reward",
+        "text": "Cô Thủ Thư Mai smiles gently and thanks {name} for making the shelf as neat as new!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Giá sách thẳng tắp rồi, khi nào tìm sách hay cháu cứ tới bàn hướng dẫn gặp cô."
+      "text": "Giá sách thẳng tắp rồi, khi nào tìm sách hay cháu cứ tới bàn hướng dẫn gặp cô.",
+      "en": {
+        "title": "See you soon",
+        "text": "The shelf is straight again. Whenever you want a good book, come see me at the help desk."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Putting the books in order with Cô Thủ Thư Mai",
+    "summary": "Books with flowery spines lie in a jumble; put the spines back in the right number order."
   }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Cháu nối tiếp từ ngữ ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The word chain game in our mother tongue is such fun, {name}!",
+          "Pick the word card whose first sound matches the last sound of the word before."
+        ],
+        "choices": [
+          {
+            "text": "I will add the next word!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nối liền mạch tạo thành chuỗi mười hai từ ngữ tiếng Việt nhé!",
       "game": "word-chain",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Word Chain",
+        "prompt": "Link up a chain of 12 Vietnamese words!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Vốn từ phong phú tuyệt vời, {name} nối thành dải chữ dài thướt tha!"
+      "text": "Vốn từ phong phú tuyệt vời, {name} nối thành dải chữ dài thướt tha!",
+      "en": {
+        "title": "Reward",
+        "text": "What a wonderful vocabulary: {name} linked a long, flowing ribbon of words!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bà còn cả kho tàng từ ngữ hay muốn dạy cho cháu trước ngõ vườn hoa."
+      "text": "Bà còn cả kho tàng từ ngữ hay muốn dạy cho cháu trước ngõ vườn hoa.",
+      "en": {
+        "title": "See you soon",
+        "text": "Granny has a whole treasure of lovely words to teach you by the flower garden lane."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Vietnamese word chain with Bà Năm Kể Chuyện",
+    "summary": "Find the next word that begins with the last sound of the word before, building a long dragon of words."
   }
 }

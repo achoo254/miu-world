@@ -46,7 +46,19 @@
         {
           "text": "Khép góc chiếm ô, tớ tính trước rồi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Cú and I are playing dots and boxes. Take my place for a round, {name}!",
+          "Draw a line between two neighbouring dots; whoever closes the fourth side of a box wins it."
+        ],
+        "choices": [
+          {
+            "text": "Close the corner, claim the box!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chiến thắng bạn Cú một ván cờ nối ô vuông nhé!",
       "game": "dots-boxes",
-      "goal": 1
+      "goal": 1,
+      "en": {
+        "title": "Dots and boxes",
+        "prompt": "Beat Cú the owl at 1 games of dots and boxes!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mèo Vẽ Màu vỗ tay nồng nhiệt: {name} giăng bẫy quá khéo, chiếm trọn cả góc bàn cờ rồi!"
+      "text": "Mèo Vẽ Màu vỗ tay nồng nhiệt: {name} giăng bẫy quá khéo, chiếm trọn cả góc bàn cờ rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Mèo Vẽ Màu claps warmly: {name} set clever traps and took a whole corner of the board!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bạn Cú hẹn ngày mai tái đấu, {name} nhớ ghé phòng mĩ thuật so tài cờ ô vuông tiếp nhé."
+      "text": "Bạn Cú hẹn ngày mai tái đấu, {name} nhớ ghé phòng mĩ thuật so tài cờ ô vuông tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Cú wants a rematch tomorrow, {name}, so come back to the art room for another game."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Dots and boxes with Mèo Vẽ Màu",
+    "summary": "A neat dot grid on drawing paper: take turns drawing one line at a time to claim the squares."
   }
 }

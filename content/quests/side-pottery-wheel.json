@@ -46,7 +46,19 @@
         {
           "text": "Cháu vuốt gốm tạo dáng bình hoa!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Look, {name}, the village pottery wheel is spinning fast!",
+          "Smooth the clay with your fingertip so it fits the golden outline."
+        ],
+        "choices": [
+          {
+            "text": "I'll shape a flower vase!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Tạo hình khéo léo hoàn thành bốn chiếc bình gốm tráng men nhé!",
       "game": "pottery-wheel",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Bát Tràng Pottery",
+        "prompt": "Shape 4 glazed pottery vases!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chiếc bình gốm tròn xoe duyên dáng, {name} vuốt đất sét điêu luyện ghê!"
+      "text": "Chiếc bình gốm tròn xoe duyên dáng, {name} vuốt đất sét điêu luyện ghê!",
+      "en": {
+        "title": "Reward",
+        "text": "A round, graceful vase! {name} shapes clay like a master!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bàn xoay gốm bên sạp hoa luôn rộn ràng đón cháu đến trổ tài nhào nặn."
+      "text": "Bàn xoay gốm bên sạp hoa luôn rộn ràng đón cháu đến trổ tài nhào nặn.",
+      "en": {
+        "title": "See you soon",
+        "text": "The pottery wheel by the flower stall is always ready for your clay skills."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Pottery wheel with Cô Nặn Tò He",
+    "summary": "Cup your hand gently around the spinning clay and shape it into a graceful vase."
   }
 }

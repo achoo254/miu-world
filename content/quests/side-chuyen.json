@@ -46,7 +46,19 @@
         {
           "text": "Em muốn học chơi chuyền!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Do you know how to play chuyền, {name}? Let me teach you!",
+          "Round one, pick up one stick; round two, pick up two. Once you have them, catch the ball."
+        ],
+        "choices": [
+          {
+            "text": "I want to learn chuyền!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chuyền qua năm bàn nhé!",
       "game": "chuyen",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Chơi chuyền (ball and sticks)",
+        "prompt": "Get through 5 rounds of chuyền!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tay em nhanh như cắt, chị phục {name} luôn đấy!"
+      "text": "Tay em nhanh như cắt, chị phục {name} luôn đấy!",
+      "en": {
+        "title": "Reward",
+        "text": "Your hands are lightning fast! I am truly impressed, {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bộ que chuyền chị cất ở đầu ngõ, lúc nào chơi tiếp cũng được."
+      "text": "Bộ que chuyền chị cất ở đầu ngõ, lúc nào chơi tiếp cũng được.",
+      "en": {
+        "title": "See you soon",
+        "text": "I keep the chuyền sticks at the end of the lane, so we can play again whenever you like."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Playing chuyền (sticks and ball) with Chị Thỏ Nhảy Dây",
+    "summary": "Toss the ball up, scoop sticks off the mat fast, and catch the ball before it lands."
   }
 }

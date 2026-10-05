@@ -46,7 +46,19 @@
         {
           "text": "Boomerang bay đi, đón thật êm tay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The fruit up top smells so good, {name}! Let's throw boomerangs to harvest it together!",
+          "Swipe a nice curve to throw, then catch the boomerang when it comes back to the glowing ring."
+        ],
+        "choices": [
+          {
+            "text": "Off it goes, and back into my hands!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ném boomerang trúng hai mươi chùm quả chín nhé!",
       "game": "boomerang-throw",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Boomerang throw",
+        "prompt": "Hit 20 bunches of ripe fruit with the boomerang!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Trèo Cây ôm đống quả tươi cười tít mắt: {name} ném vừa chuẩn vừa bắt dính tay!"
+      "text": "Gấu Trèo Cây ôm đống quả tươi cười tít mắt: {name} ném vừa chuẩn vừa bắt dính tay!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Trèo Cây hugs the pile of fruit, beaming: {name} throws straight and catches clean!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mùa quả chín vẫn còn nhiều, {name} nhớ ghé gốc cây cổ thụ chơi boomerang tiếp nha."
+      "text": "Mùa quả chín vẫn còn nhiều, {name} nhớ ghé gốc cây cổ thụ chơi boomerang tiếp nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "There's still lots of ripe fruit this season. Come back to the old tree for more boomerangs, {name}."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Boomerang fruit picking with Gấu Trèo Cây",
+    "summary": "Ripe fruit hangs high in the treetops: swipe to throw the boomerang in a loop to pick the fruit, then catch it."
   }
 }

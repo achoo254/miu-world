@@ -65,7 +65,26 @@
           "text": "Lần sau đừng ôm lóng tre ngủ nữa!",
           "reply": "Gấu Trúc Nứa đỏ mặt: Tại lóng tre mát quá mà… thôi, nhặt đã."
         }
-      ]
+      ],
+      "en": {
+        "title": "A disastrous nap",
+        "goTo": "Go into the bamboo stall, where Gấu Trúc Nứa is sitting and scratching his head",
+        "lines": [
+          "Yaaawn... hello... {name}. I carved the whole subtraction table onto bamboo pieces to sell, and it took me... three whole days.",
+          "This noon I hugged them while napping on the stall to keep cool. I rolled over just once... crack crack... bamboo flew everywhere, all in a jumble.",
+          "I'm really slow, picking them up alone would take till Lunar New Year. Could you... slow... ly... help me?"
+        ],
+        "choices": [
+          {
+            "text": "I'll help, but let's be quick!",
+            "reply": "Gấu Trúc Nứa: Quick... how quick is quick? Ah, quicker than me will do."
+          },
+          {
+            "text": "Next time don't nap hugging the bamboo!",
+            "reply": "Gấu Trúc Nứa blushes: But the bamboo is so nice and cool... anyway, let's pick them up."
+          }
+        ]
+      }
     },
     {
       "id": "tim-long-tre",
@@ -682,7 +701,25 @@
           "text": "Quên thì tách 10 ra mà tính",
           "reply": "Gấu Trúc: Ừ nhỉ, tách số thì không sợ quên. Chậm mà chắc!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Learn it by heart, or split the number?",
+        "goTo": "Go back to the bamboo stall, where Gấu Trúc Nứa is yawning by the subtraction table",
+        "lines": [
+          "The subtraction table looks lovely now. But I forget things a lot, will I have to... roll over in my sleep again tomorrow to remember?",
+          "{name}, tell me: should I learn the subtraction table by heart, or when I forget, split off 10 and work it out?"
+        ],
+        "choices": [
+          {
+            "text": "Learn the table by heart, it is faster",
+            "reply": "Gấu Trúc: Okay, I'll read one column a day while munching bamboo."
+          },
+          {
+            "text": "When you forget, split off 10 and work it out",
+            "reply": "Gấu Trúc: Oh yes, with splitting there's no fear of forgetting. Slow and steady!"
+          }
+        ]
+      }
     },
     {
       "id": "luyen-nham-chin-phep",
@@ -1171,14 +1208,22 @@
       "title": "Huy hiệu lóng tre",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Trúc Nứa khắc tên {name} lên lóng tre đẹp nhất trên sạp và tặng huy hiệu \"Thuộc bảng trừ\". Rồi Gấu Trúc… ôm bảng trừ ngủ tiếp, nhưng lần này nằm im không lăn."
+      "text": "Gấu Trúc Nứa khắc tên {name} lên lóng tre đẹp nhất trên sạp và tặng huy hiệu \"Thuộc bảng trừ\". Rồi Gấu Trúc… ôm bảng trừ ngủ tiếp, nhưng lần này nằm im không lăn.",
+      "en": {
+        "title": "Bamboo badge",
+        "text": "Gấu Trúc Nứa carves {name}'s name onto the finest piece of bamboo on the stall and hands over the \"Subtraction Table Whiz\" badge. Then the panda... falls asleep hugging the table again, but this time lies perfectly still."
+      }
     },
     {
       "id": "luong-ca-rot",
       "title": "Cuộc thi ở sạp cà rốt",
       "kind": "next",
       "trigger": "auto",
-      "text": "Phía hàng rau củ vang lên tiếng gầm \"Gừ… ừ\" rồi tiếng cười khúc khích: Hổ Vằn và Thỏ Cốm đang cãi nhau xem ai mang ra chợ được nhiều cà rốt hơn."
+      "text": "Phía hàng rau củ vang lên tiếng gầm \"Gừ… ừ\" rồi tiếng cười khúc khích: Hổ Vằn và Thỏ Cốm đang cãi nhau xem ai mang ra chợ được nhiều cà rốt hơn.",
+      "en": {
+        "title": "A contest at the carrot stall",
+        "text": "From the vegetable stalls comes a \"Grrr...\" and then giggling: Hổ Vằn and Thỏ Cốm are arguing about who brought more carrots to market."
+      }
     }
   ],
   "reward": {

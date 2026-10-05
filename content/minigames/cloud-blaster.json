@@ -9,5 +9,12 @@
   "controls": ["drag"],
   "duration": 60,
   "goal": 30,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Water the dry clouds",
+    "howTo": [
+      "Keep your finger on the screen: the hose follows {name}'s finger and sprays upward by itself.",
+      "Three drops turn a dry cloud into a rain cloud. Don't let dry clouds reach the rice field!"
+    ]
+  }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Để tớ chọn chỗ đáp cho cậu!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hello, {name}! I've got springy legs that love bouncing over the number marks.",
+          "Read the distance on the sign, then put the carrot right where I'll land."
+        ],
+        "choices": [
+          {
+            "text": "I'll pick your landing spot!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đón đúng mười hai bước nhảy của chú chuột túi nhé!",
       "game": "kangaroo-hop",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Kangaroo number-line hops",
+        "prompt": "Catch 12 of the kangaroo's jumps!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chú Chuột Túi Nhảy bật tưng tưng khoái chí, tấm tắc khen {name} tính nhẩm siêu đẳng!"
+      "text": "Chú Chuột Túi Nhảy bật tưng tưng khoái chí, tấm tắc khen {name} tính nhẩm siêu đẳng!",
+      "en": {
+        "title": "Reward",
+        "text": "Chú Chuột Túi Nhảy bounces with delight, praising {name}'s super mental maths!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cỏ non trên sân khu chăn nuôi còn tốt lắm, mai cậu lại ra nhảy thi cùng tớ nha."
+      "text": "Cỏ non trên sân khu chăn nuôi còn tốt lắm, mai cậu lại ra nhảy thi cùng tớ nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "The fresh grass in the animal yard is lovely. Come back tomorrow for a jumping contest."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Kangaroo Long Jump with Chú Chuột Túi",
+    "summary": "On a grassy number line, work out the jumps so the kangaroo lands right on a tasty carrot."
   }
 }

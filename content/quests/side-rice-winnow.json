@@ -46,7 +46,19 @@
         {
           "text": "Cháu nâng nia thóc lên ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, the freshly pounded grain is still full of husks floating about.",
+          "Lift the winnowing tray and toss gently into the wind, so the husks fly off and the plump grains fall back."
+        ],
+        "choices": [
+          {
+            "text": "I'll lift the tray right now!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Sảy sạch trấu cho năm nia thóc vàng óng nhé!",
       "game": "rice-winnow",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Winnow Rice for Tấm",
+        "prompt": "Winnow the husks from 5 trays of golden grain!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bác Nông Dân Thành ngắm nia thóc mẩy, khen {name} sảy thóc vô cùng điệu nghệ!"
+      "text": "Bác Nông Dân Thành ngắm nia thóc mẩy, khen {name} sảy thóc vô cùng điệu nghệ!",
+      "en": {
+        "title": "Reward",
+        "text": "Bác Nông Dân Thành admires the plump grain and says {name} winnows like a real expert!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Thóc đã sạch bóng rồi, hẹn gặp lại cháu ở bờ ruộng khu trồng trọt thân thương."
+      "text": "Thóc đã sạch bóng rồi, hẹn gặp lại cháu ở bờ ruộng khu trồng trọt thân thương.",
+      "en": {
+        "title": "See you soon",
+        "text": "The grain is spotless now. See you again at the dear old paddy bank in the growing fields."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Winnowing Rice with Bác Nông Dân Thành",
+    "summary": "A cool breeze blows over the fields as Bác Nông Dân Thành shows you how to toss the tray and winnow away the husks."
   }
 }

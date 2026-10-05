@@ -46,7 +46,19 @@
         {
           "text": "Cháu dập nhiều bánh xinh xắn!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "This yummy sheet of dough is freshly rolled. {name}, cut cookies with me!",
+          "Press each star and heart close to the edge so no dough goes to waste."
+        ],
+        "choices": [
+          {
+            "text": "I'll cut lots of pretty cookies!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Dập khuôn được đủ mười hai chiếc bánh quy hình dáng đẹp mắt nhé!",
       "game": "cookie-cutter",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Cookie cutters",
+        "prompt": "Cut out 12 nicely shaped cookies!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mèo Bếp Trưởng liếm mép reo vang: mẻ bánh của {name} nướng lên thơm nức cả gian bếp!"
+      "text": "Mèo Bếp Trưởng liếm mép reo vang: mẻ bánh của {name} nướng lên thơm nức cả gian bếp!",
+      "en": {
+        "title": "Reward",
+        "text": "Mèo Bếp Trưởng licks his lips: {name}'s batch makes the whole kitchen smell wonderful!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Lò nướng vẫn còn ấm áp, Mèo Bếp Trưởng đợi {name} ghé dập thêm mẻ bánh mới."
+      "text": "Lò nướng vẫn còn ấm áp, Mèo Bếp Trưởng đợi {name} ghé dập thêm mẻ bánh mới.",
+      "en": {
+        "title": "See you soon",
+        "text": "The oven is still warm. Mèo Bếp Trưởng is waiting for {name} to cut a new batch."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Cookie Cutting with Mèo Bếp Trưởng",
+    "summary": "Buttery dough is rolled flat; press the cutters so they fit snugly and make lots of cookies."
   }
 }

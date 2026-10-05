@@ -64,7 +64,26 @@
           "text": "Heo Mũm Mĩm lại ăn vụng rồi!",
           "reply": "Heo Mũm Mĩm đỏ mặt: Tớ nếm thử chứ có ăn đâu… mà thôi, tớ giúp tìm đồ chuộc lỗi."
         }
-      ]
+      ],
+      "en": {
+        "title": "Fox's polka-dot notebook",
+        "goTo": "Go backstage in the great hall, where Cáo Chấm Bi is trotting around checking things",
+        "lines": [
+          "One, two, three... dot! Oops, wrong line! Is that you, {name}? I'm Cáo Chấm Bi, and every time I finish checking something backstage, I put a dot in my notebook.",
+          "Chấm Bi, your notebook is so full of dots it makes my eyes swim... and I've only taste-tested three cakes.",
+          "THREE CAKES?! That's it, everything has to be weighed again. But where have my weights, my one-litre jug and my can run off to?"
+        ],
+        "choices": [
+          {
+            "text": "I'll go find the measuring things!",
+            "reply": "Cáo Chấm Bi swishes his red tail: Thanks! Every one you find gets a dot straight away!"
+          },
+          {
+            "text": "Heo Mũm Mĩm has been snacking again!",
+            "reply": "Heo Mũm Mĩm blushes: I was tasting, not eating... oh fine, I'll help look for things to make up for it."
+          }
+        ]
+      }
     },
     {
       "id": "tim-do-do-luong",
@@ -102,7 +121,22 @@
           "text": "Bắt đầu kiểm đồ thôi!",
           "reply": "Cáo Chấm Bi lật sổ soạt soạt: Mục một, kho thú bông."
         }
-      ]
+      ],
+      "en": {
+        "title": "Kilograms and litres",
+        "goTo": "Bring the things backstage, where Cáo Chấm Bi opens his polka-dot notebook",
+        "lines": [
+          "Quick review: heavy and light are measured in kilograms, written kg; how much water a jar holds is measured in litres, written l.",
+          "Adding and taking away kg or l is just like with ordinary numbers, only remember to write the unit after.",
+          "So how many kg did the three cakes I tasted weigh? Oh, never mind, please don't weigh me!"
+        ],
+        "choices": [
+          {
+            "text": "Let's start checking!",
+            "reply": "Cáo Chấm Bi flips through his notebook: Item one, the stuffed toy store."
+          }
+        ]
+      }
     },
     {
       "id": "bap-benh-thu-bong",
@@ -572,7 +606,26 @@
           "text": "Tìm hai chú dê nhẹ nhất",
           "reply": "Chị Ngân: Thông minh, đỡ phải thử đi thử lại!"
         }
-      ]
+      ],
+      "en": {
+        "title": "The puppet show of three goats",
+        "goTo": "Go to the puppet stage, where Ngân is rehearsing the play \"Goats Across the River\"",
+        "lines": [
+          "Ladies and gentlemen! In today's puppet show, three goats want to cross the river to eat grass, and I'm playing... Rô-bốt the boatman, beep beep!",
+          "Trouble is, the boat is small, and if it carries too much it sinks. I tried putting all three goats on, and the goat puppets got soaked.",
+          "Soggy puppets means ruined props! {name}, work it out first before you put the goats on the boat."
+        ],
+        "choices": [
+          {
+            "text": "Try the goats two at a time",
+            "reply": "Ngân: The lightest pair goes first, good idea!"
+          },
+          {
+            "text": "Find the two lightest goats",
+            "reply": "Ngân: Clever, no need to try again and again!"
+          }
+        ]
+      }
     },
     {
       "id": "de-qua-song",
@@ -1040,14 +1093,22 @@
       "title": "Huy hiệu hậu trường",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cáo Chấm Bi chấm chấm bi cuối cùng vào sổ rồi gắn cho {name} huy hiệu \"Thanh tra cân đong\". Heo Mũm Mĩm được thưởng một chiếc bánh, đã cân trước hẳn hoi."
+      "text": "Cáo Chấm Bi chấm chấm bi cuối cùng vào sổ rồi gắn cho {name} huy hiệu \"Thanh tra cân đong\". Heo Mũm Mĩm được thưởng một chiếc bánh, đã cân trước hẳn hoi.",
+      "en": {
+        "title": "Backstage badge",
+        "text": "Cáo Chấm Bi puts the very last dot in his notebook and pins the \"Weights and Measures Inspector\" badge on {name}. Heo Mũm Mĩm is rewarded with one cake, properly weighed beforehand."
+      }
     },
     {
       "id": "le-tong-ket-sap-mo",
       "title": "Lễ tổng kết sắp mở",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tiếng trống vang từ bục trao huy hiệu: cả lâu đài đang kéo về đại sảnh, mỗi gian ôn tập mang theo một câu đố cuối cùng của học kì!"
+      "text": "Tiếng trống vang từ bục trao huy hiệu: cả lâu đài đang kéo về đại sảnh, mỗi gian ôn tập mang theo một câu đố cuối cùng của học kì!",
+      "en": {
+        "title": "The end-of-term ceremony is about to begin",
+        "text": "Drums sound from the badge stage: the whole castle is streaming into the great hall, and every review stall is bringing one last puzzle of the term!"
+      }
     }
   ],
   "reward": {

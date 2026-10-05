@@ -46,7 +46,19 @@
         {
           "text": "Diều ơi, bay lên nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The wind is lovely and cool today. {name}, want to fly a kite?",
+          "Steer the kite into the wind so it shoots up, and dodge the branches and birds."
+        ],
+        "choices": [
+          {
+            "text": "Fly high, little kite!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đưa con diều lên cao một trăm mét nhé!",
       "game": "kite-fly",
-      "goal": 100
+      "goal": 100,
+      "en": {
+        "title": "Fly a kite",
+        "prompt": "Fly the kite 100 metres high!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ò ò, diều của {name} chạm tận mây trắng rồi kìa!"
+      "text": "Ò ò, diều của {name} chạm tận mây trắng rồi kìa!",
+      "en": {
+        "title": "Reward",
+        "text": "Moo! {name}'s kite has touched the white clouds!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Hôm nào gió to, tớ lại chờ cậu ở mép đồng cỏ thả diều tiếp."
+      "text": "Hôm nào gió to, tớ lại chờ cậu ở mép đồng cỏ thả diều tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "On windy days I'll wait for you at the edge of the meadow to fly kites again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Kites up to the Clouds with Bò Chuông Đồng",
+    "summary": "The meadow wind blows wide and free, and the paper kite waits for you to steer it high."
   }
 }

@@ -10,5 +10,13 @@
   "controls": ["tap", "hold"],
   "duration": 60,
   "goal": 15,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Snow Fort Snowball Fight",
+    "howTo": [
+      "Friends pop up behind snow forts. {name} taps one to throw a snowball!",
+      "See a snowball coming? Hold your finger to duck, let go to pop back up.",
+      "Each hit is a point. Get hit five times and your turn is over."
+    ]
+  }
 }

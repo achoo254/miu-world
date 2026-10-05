@@ -10,5 +10,13 @@
   "controls": ["swipe", "drag"],
   "duration": 60,
   "goal": 15,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Basketball shots",
+    "howTo": [
+      "Swipe the ball up toward the hoop: a long swipe throws hard, a short one throws soft.",
+      "Drag slowly to see a dotted path of the throw. Yellow dots mean just right!",
+      "Each basket is a point. After {name} makes three, the hoop starts to move!"
+    ]
+  }
 }

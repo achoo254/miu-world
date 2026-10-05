@@ -46,7 +46,19 @@
         {
           "text": "Tớ đu giỏi như khỉ luôn!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, I've hung vines from one tree to the next, all ready for you!",
+          "Hold to grab a vine, swing up nice and high, then let go and fly."
+        ],
+        "choices": [
+          {
+            "text": "I swing as well as a monkey!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Bay qua sáu chặng có nải chuối là thắng!",
       "game": "rope-swing",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Monkey Rope Swing",
+        "prompt": "Fly across 6 banana stops to win!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khỉ Chuyền Cành treo ngược trên cành vỗ tay: {name} bay như chim rồi!"
+      "text": "Khỉ Chuyền Cành treo ngược trên cành vỗ tay: {name} bay như chim rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Khỉ Chuyền Cành claps while hanging upside down: {name} flies like a bird!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Lúc nào muốn đu tiếp, cứ ra bìa trảng rừng gọi Khỉ Chuyền Cành nhé."
+      "text": "Lúc nào muốn đu tiếp, cứ ra bìa trảng rừng gọi Khỉ Chuyền Cành nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Whenever you want another swing, come to the edge of the clearing and call Khỉ Chuyền Cành."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Swing through the forest with Khỉ Chuyền Cành",
+    "summary": "Vines hang all over the tall trees: grab one, swing up high, then fly over to the tree with the bananas."
   }
 }

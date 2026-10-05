@@ -33,7 +33,19 @@
           "reward": "Lân Con Rộn Ràng lắc đầu chớp mắt: {name} múa đẹp nhất hội!",
           "next": "Hội nào cũng có múa lân, cậu cứ tìm Lân Con Rộn Ràng ở khu sự kiện.",
           "who": "{name}, người dẫn lân trong ngày hội",
-          "learn": "Nhận biết hướng và giữ nhịp theo tiếng trống"
+          "learn": "Nhận biết hướng và giữ nhịp theo tiếng trống",
+          "en": {
+            "title": "Lion dance to the drums with Lân Con Rộn Ràng",
+            "summary": "The festival drums pound and arrows fly into a circle: swipe the right way on the beat to make the lion dance.",
+            "lines": [
+              "Boom-tak-boom! {name}, do the lion dance with me and liven up the event square!",
+              "When an arrow lands in the circle, swipe that way and the lion will toss its head with you."
+            ],
+            "choice": "Come on, lion, let us dance!",
+            "prompt": "Score {goal} points in the lion dance!",
+            "reward": "Lân Con Rộn Ràng shakes its head and blinks: {name} is the best dancer at the festival!",
+            "next": "Every festival has a lion dance, so look for Lân Con Rộn Ràng at the event square."
+          }
         },
         {
           "game": "lantern-parade",
@@ -48,7 +60,19 @@
           "reward": "Đèn của {name} vẫn sáng tới cuối đoàn, Lân Con Rộn Ràng nhảy múa mừng!",
           "next": "Đêm rước đèn sau tớ vẫn chờ cậu ở khu sự kiện theo mùa nhé.",
           "who": "{name}, bạn nhỏ cầm đèn đi đầu đoàn rước",
-          "learn": "Điều chỉnh tốc độ đều đặn, kiên nhẫn"
+          "learn": "Điều chỉnh tốc độ đều đặn, kiên nhẫn",
+          "en": {
+            "title": "Star lantern parade with Lân Con Rộn Ràng",
+            "summary": "The lantern parade circles the square: keep a steady pace so the candle stays lit, and pick up mooncakes.",
+            "lines": [
+              "{name}, grab a star lantern and join the parade with me!",
+              "Walk too fast and the candle flickers out, too slow and you fall behind. Keep the needle in the green."
+            ],
+            "choice": "My lantern is glowing bright!",
+            "prompt": "Pick up {goal} mooncakes along the parade route!",
+            "reward": "The lantern of {name} stays lit to the very end, and Lân Con Rộn Ràng dances for joy!",
+            "next": "I will wait for you at the seasonal event square for the next lantern night too."
+          }
         },
         {
           "game": "balloon-rule-pop",
@@ -63,7 +87,19 @@
           "reward": "Lân Con Rộn Ràng tung kim tuyến: mắt {name} tinh quá, chẳng nổ nhầm quả nào!",
           "next": "Bóng bay mới vừa thổi xong, quay lại chơi với tớ lúc nào cũng được.",
           "who": "{name}, người nổ bóng theo đúng luật",
-          "learn": "Làm theo quy tắc thay đổi và tập trung chú ý"
+          "learn": "Làm theo quy tắc thay đổi và tập trung chú ý",
+          "en": {
+            "title": "Pop the balloons on command with Lân Con Rộn Ràng",
+            "summary": "Balloons of every colour float up; the sign above says which colour to pop, and it changes every ten seconds.",
+            "lines": [
+              "Look, {name}! Balloons of every colour are rising into the sky!",
+              "Only pop the colour the sign up top names. Pop the wrong one and you lose points."
+            ],
+            "choice": "I will check the sign before popping!",
+            "prompt": "Score {goal} points popping the right colours!",
+            "reward": "Lân Con Rộn Ràng throws glitter: {name} has such sharp eyes, not one wrong pop!",
+            "next": "I just blew up a fresh batch of balloons, so come play with me any time."
+          }
         }
       ]
     },
@@ -95,7 +131,19 @@
           "reward": "Voi Kẹo Bông giơ vòi khen: kẹo của {name} tròn như đám mây hồng!",
           "next": "Máy kẹo bông chạy cả ngày, cứ tới khu giao dịch tìm Voi Kẹo Bông nhé.",
           "who": "{name}, thợ làm kẹo bông nhí",
-          "learn": "Vẽ vòng tròn đều tay và giữ tốc độ vừa phải"
+          "learn": "Vẽ vòng tròn đều tay và giữ tốc độ vừa phải",
+          "en": {
+            "title": "Spinning cotton candy with Voi Kẹo Bông",
+            "summary": "The cotton candy machine whirs: draw smooth circles around the stick so the sugar wraps into a round fluffy cloud.",
+            "lines": [
+              "Smells sweet, does it not, {name}? I am making cotton candy!",
+              "Draw even circles around the stick. Spin too fast and the candy flies right off."
+            ],
+            "choice": "I will spin a really big one!",
+            "prompt": "Spin {goal} sticks of cotton candy!",
+            "reward": "Voi Kẹo Bông raises its trunk in praise: the candy {name} made is round as a pink cloud!",
+            "next": "The candy machine runs all day, so come find Voi Kẹo Bông by the trading area."
+          }
         },
         {
           "game": "plinko",
@@ -110,7 +158,19 @@
           "reward": "Xu nào của {name} cũng rơi vào ô đẹp, Voi Kẹo Bông thổi kèn mừng!",
           "next": "Bảng đinh vẫn đứng trước cửa hàng, cậu ghé thả xu tiếp nhé.",
           "who": "{name}, người thả xu khéo léo",
-          "learn": "Quan sát, đoán đường nảy và chọn vị trí"
+          "learn": "Quan sát, đoán đường nảy và chọn vị trí",
+          "en": {
+            "title": "Dropping coins through pegs with Voi Kẹo Bông",
+            "summary": "A tall peg board stands outside the shop: pick where to drop each coin so it bounces to the middle or into a gift box.",
+            "lines": [
+              "Hey {name}, I have eight coins for you to drop into this peg board!",
+              "Tap where you want to drop it, and the coin will clink through the pegs. The middle slot scores the most."
+            ],
+            "choice": "Drop the coin, clink clink clink!",
+            "prompt": "Collect {goal} points with eight coins!",
+            "reward": "Every coin from {name} lands in a great slot, and Voi Kẹo Bông trumpets with joy!",
+            "next": "The peg board is still standing outside the shop, so drop by for another go."
+          }
         },
         {
           "game": "bowling",
@@ -125,7 +185,19 @@
           "reward": "Rầm rầm! Ki đổ rạp, Voi Kẹo Bông giậm chân khen {name} ném mạnh quá!",
           "next": "Tớ xếp lại ki ngay đây, lúc nào muốn ném tiếp cứ quay lại nhé.",
           "who": "{name}, người ném bóng đổ ki giỏi",
-          "learn": "Ngắm hướng và căn chỗ đứng"
+          "learn": "Ngắm hướng và căn chỗ đứng",
+          "en": {
+            "title": "Bowling with Voi Kẹo Bông",
+            "summary": "A shiny lane with ten pins in a triangle: choose where to stand, then swipe to roll the ball and knock them down.",
+            "lines": [
+              "Ten pins are standing tall, waiting for {name}!",
+              "Drag the ball to pick your spot, then swipe up toward the pins. Knock them all down for a bonus."
+            ],
+            "choice": "Watch out, pins!",
+            "prompt": "Knock down pins for {goal} points!",
+            "reward": "Crash! The pins go flying, and Voi Kẹo Bông stomps: {name} throws so hard!",
+            "next": "I will set the pins back up right away, so come back for another roll any time."
+          }
         }
       ]
     },
@@ -157,7 +229,19 @@
           "reward": "Chó Cảnh Sát Còi giơ tay chào: nhờ {name} mà ngã tư thông suốt!",
           "next": "Giờ tan tầm đông xe lắm, Chó Cảnh Sát Còi cần cậu ở ngã tư nữa.",
           "who": "{name}, cảnh sát giao thông nhí",
-          "learn": "Hiểu luật nhường đường và quan sát nhiều hướng"
+          "learn": "Hiểu luật nhường đường và quan sát nhiều hướng",
+          "en": {
+            "title": "Running the crossroads with Chó Cảnh Sát Còi",
+            "summary": "Cars wait at the four lines of the crossroads: tap to send each one through, never letting up-down and across cars in at once.",
+            "lines": [
+              "Tweet! {name}, be a traffic officer with me for a little while!",
+              "Tap a car and it goes. Never let cars from both directions cross together, or they will bump."
+            ],
+            "choice": "Whistle ready, cars go one at a time!",
+            "prompt": "Get {goal} cars safely through the crossroads!",
+            "reward": "Chó Cảnh Sát Còi salutes: thanks to {name}, the crossroads is flowing smoothly!",
+            "next": "Rush hour gets so busy, Chó Cảnh Sát Còi will need you at the crossroads again."
+          }
         },
         {
           "game": "kart-race",
@@ -172,7 +256,19 @@
           "reward": "Chó Cảnh Sát Còi phất cờ ca rô: {name} lái xe giỏi mà vẫn an toàn!",
           "next": "Đường đua vẫn chờ cậu dưới tháp đồng hồ, chạy lại lúc nào cũng được.",
           "who": "{name}, tay đua nhí cẩn thận",
-          "learn": "Điều khiển theo đường cong và giữ hướng"
+          "learn": "Điều khiển theo đường cong và giữ hướng",
+          "en": {
+            "title": "Mini kart race with Chó Cảnh Sát Còi",
+            "summary": "A track loops around the clock tower: hold your finger down to steer, stay off the grass, and finish in the top three.",
+            "lines": [
+              "The mini race track is open, {name}! Hop in!",
+              "The kart follows your finger. Drive two laps without wandering onto the grass."
+            ],
+            "choice": "Zoom zoom, watch me win!",
+            "prompt": "Finish the race with {goal} points in the top three!",
+            "reward": "Chó Cảnh Sát Còi waves the chequered flag: {name} drives fast and still drives safe!",
+            "next": "The track is still waiting under the clock tower, so race again whenever you like."
+          }
         },
         {
           "game": "slot-cars",
@@ -187,7 +283,19 @@
           "reward": "Xe của {name} về trước một mũi, Chó Cảnh Sát Còi bấm còi mừng!",
           "next": "Cáo đòi đua lại đấy, cậu ghé ngã tư tìm tớ khi rảnh nhé.",
           "who": "{name}, tay đua đường ray",
-          "learn": "Biết lúc tăng tốc, lúc giảm tốc"
+          "learn": "Biết lúc tăng tốc, lúc giảm tốc",
+          "en": {
+            "title": "Slot car racing with Chó Cảnh Sát Còi",
+            "summary": "A winding track with sharp bends: hold to speed up, and let go before each corner.",
+            "lines": [
+              "Hey {name}, Cáo has a car waiting to race against yours!",
+              "Hold down to go fast, and let go just before a bend or your car will fly off the track."
+            ],
+            "choice": "My car is ready!",
+            "prompt": "Finish {goal} laps ahead of the car of Cáo!",
+            "reward": "The car of {name} wins by a nose, and Chó Cảnh Sát Còi honks to celebrate!",
+            "next": "Cáo wants a rematch, so come find me at the crossroads when you are free."
+          }
         }
       ]
     },
@@ -218,7 +326,19 @@
           "reward": "Tháp cao vút tới mây, Gấu Mũ Bảo Hộ giơ ngón cái: {name} thả chuẩn từng tầng!",
           "next": "Bãi cảng còn nhiều tầng nhà lắm, cậu quay lại xây tiếp với tớ nhé.",
           "who": "{name}, người lái cần cẩu nhí",
-          "learn": "Chọn đúng thời điểm và giữ thăng bằng"
+          "learn": "Chọn đúng thời điểm và giữ thăng bằng",
+          "en": {
+            "title": "Building a tower by crane with Gấu Mũ Bảo Hộ",
+            "summary": "The crane at the harbour yard swings each floor back and forth: tap to drop it neatly onto the tower.",
+            "lines": [
+              "Hi {name}! I am building the tallest tower at the harbour!",
+              "The floor swings on the crane. Tap to drop it when it is right above the tower."
+            ],
+            "choice": "Let me drive the crane!",
+            "prompt": "Stack {goal} floors on the tower!",
+            "reward": "The tower reaches the clouds, and Gấu Mũ Bảo Hộ gives a thumbs up: {name} dropped every floor just right!",
+            "next": "The harbour yard has plenty more floors, so come back and keep building with me."
+          }
         },
         {
           "game": "train-switch",
@@ -233,7 +353,19 @@
           "reward": "Tàu nào cũng về đúng ga, Gấu Mũ Bảo Hộ kéo còi tu tu mừng {name}!",
           "next": "Chuyến tàu chiều sắp tới, Gấu Mũ Bảo Hộ chờ cậu ở bãi hàng nhé.",
           "who": "{name}, người bẻ ghi ở bến cảng",
-          "learn": "Ghép màu, hình và tính trước đường đi"
+          "learn": "Ghép màu, hình và tính trước đường đi",
+          "en": {
+            "title": "Switching tracks with Gấu Mũ Bảo Hộ",
+            "summary": "Colourful trains roll into the yard: tap the arrows at each junction so every train reaches the station of its colour.",
+            "lines": [
+              "Oh {name}, a cargo train is heading into the port, and the switch operator is away!",
+              "Each train goes to the station of its colour. Tap the arrow at a junction to change its track."
+            ],
+            "choice": "I will work the switches, trains go home!",
+            "prompt": "Guide {goal} trains to the right station!",
+            "reward": "Every train reaches its station, and Gấu Mũ Bảo Hộ toots the horn for {name}!",
+            "next": "The afternoon train is due soon, and Gấu Mũ Bảo Hộ will wait for you at the cargo yard."
+          }
         }
       ]
     },
@@ -264,7 +396,19 @@
           "reward": "Cáo Phi Công chào kiểu phi công: {name} bay vững như đại bàng!",
           "next": "Ba lô còn đầy nhiên liệu, cậu ghé khu học tập bay với tớ tiếp nhé.",
           "who": "{name}, phi công ba lô tên lửa",
-          "learn": "Giữ độ cao bằng nhịp giữ và thả tay"
+          "learn": "Giữ độ cao bằng nhịp giữ và thả tay",
+          "en": {
+            "title": "Jetpack flight with Cáo Phi Công",
+            "summary": "Strap on a rocket pack and fly across the city: hold to rise, let go to drop, grab coins and dodge thunderclouds.",
+            "lines": [
+              "Hey {name}, I just finished building a rocket backpack. Want to try flying?",
+              "Hold down to fly up, let go to sink down, and swerve around any thunderclouds."
+            ],
+            "choice": "Rocket pack, lift off!",
+            "prompt": "Grab {goal} coins up in the sky!",
+            "reward": "Cáo Phi Công gives a pilot salute: {name} flies as steady as an eagle!",
+            "next": "The backpack still has plenty of fuel, so meet me at the learning area to fly again."
+          }
         },
         {
           "game": "trampoline-rescue",
@@ -279,7 +423,19 @@
           "reward": "Bạn nào cũng an toàn, Cáo Phi Công gắn huy hiệu cứu hộ cho {name}!",
           "next": "Tuần sau lại diễn tập, Cáo Phi Công hẹn cậu ở khu học tập.",
           "who": "{name}, đội viên cứu hộ dũng cảm",
-          "learn": "Đoán điểm rơi và di chuyển kịp thời"
+          "learn": "Đoán điểm rơi và di chuyển kịp thời",
+          "en": {
+            "title": "Rescue trampoline with Cáo Phi Công",
+            "summary": "Friends jump from the practice building: slide the trampoline to catch them and bounce them over to the fire truck.",
+            "lines": [
+              "It is rescue drill time, {name}! Grab a corner of the trampoline with me!",
+              "Watch the shadow on the ground to see where a friend will land, then slide the trampoline there."
+            ],
+            "choice": "Trampoline ready, jump, everyone!",
+            "prompt": "Bounce {goal} friends over to the fire truck!",
+            "reward": "Everyone is safe, and Cáo Phi Công pins a rescue badge on {name}!",
+            "next": "There is another drill next week, and Cáo Phi Công will see you at the learning area."
+          }
         }
       ]
     },
@@ -311,7 +467,19 @@
           "reward": "Bác Lái Xe Hải bấm còi pim pim: cháu {name} điều phối tài tình, bến xe trật tự trở lại rồi!",
           "next": "Chuyến xe buýt sau sắp về bến, {name} rảnh lại ra bến xe quảng trường phụ bác nhé.",
           "who": "{name}, điều phối viên bến xe buýt",
-          "learn": "Xếp hàng theo màu sắc và quản lý chỗ chờ"
+          "learn": "Xếp hàng theo màu sắc và quản lý chỗ chờ",
+          "en": {
+            "title": "Clearing the bus jam with Bác Lái Xe Hải",
+            "summary": "The bus stop is packed at rush hour: send passengers onto the bus of their own colour to clear the jam.",
+            "lines": [
+              "Hello {name}! Passengers are queuing in a huge crowd at the square bus stop!",
+              "Tap someone with a clear path onto the bus of their colour, and remember the waiting bench has only five seats."
+            ],
+            "choice": "Right colour, right bus, clear the stop!",
+            "prompt": "Board passengers to clear {goal} buses!",
+            "reward": "Bác Lái Xe Hải beeps the horn: {name} directed everyone brilliantly, and the stop is orderly again!",
+            "next": "The next bus is almost here, {name}. Come help me at the square bus stop when you are free."
+          }
         },
         {
           "game": "bus-lines",
@@ -326,7 +494,19 @@
           "reward": "Bác Lái Xe Hải cười sảng khoái: lộ trình {name} vẽ thông minh ghê, ai cũng về nhà an toàn!",
           "next": "Thành phố còn tiếp tục mở rộng, bác Hải hẹn {name} ở quảng trường vẽ tiếp các tuyến xe nha.",
           "who": "{name}, kỹ sư quy hoạch tuyến xe buýt",
-          "learn": "Thiết kế mạng lưới giao thông và tối ưu lộ trình"
+          "learn": "Thiết kế mạng lưới giao thông và tối ưu lộ trình",
+          "en": {
+            "title": "Drawing bus routes with Bác Lái Xe Hải",
+            "summary": "A city map dotted with shape-stations: drag your finger to link the stations into connected bus lines.",
+            "lines": [
+              "Oh {name}, the city has just opened lots of brand-new bus stops for everyone.",
+              "Drag to join the stops so that every shaped passenger rides to the stop of the same shape."
+            ],
+            "choice": "Draw the lines, buses everywhere!",
+            "prompt": "Carry {goal} passengers to the right stops!",
+            "reward": "Bác Lái Xe Hải laughs heartily: the routes {name} drew are so smart, everyone got home safe!",
+            "next": "The city keeps growing, so Uncle Hải will meet {name} at the square to draw more routes."
+          }
         },
         {
           "game": "photo-finish",
@@ -341,7 +521,19 @@
           "reward": "Bác Lái Xe Hải giơ ngón tay cái: {name} tinh mắt phân xử công minh, không ai cãi được!",
           "next": "Giải đua chặng tiếp theo sắp khởi tranh, {name} ghé quảng trường xem ảnh về đích cùng bác nhé.",
           "who": "{name}, trọng tài phân định đích đến",
-          "learn": "So sánh khoảng cách và xác định thứ tự trước sau"
+          "learn": "So sánh khoảng cách và xác định thứ tự trước sau",
+          "en": {
+            "title": "Photo finish with Bác Lái Xe Hải",
+            "summary": "A nail-biting race: study the photo of the finish line to decide where each racer placed.",
+            "lines": [
+              "The race in the square just had a breathtaking finish, {name}!",
+              "Look at the finish line photo, see who is closer to the line, and pick the right finishing order."
+            ],
+            "choice": "Eyes on the line, places made clear!",
+            "prompt": "Rank the finishers correctly in {goal} races!",
+            "reward": "Bác Lái Xe Hải gives a thumbs up: {name} has sharp eyes and judges fairly, no one can argue!",
+            "next": "The next race is about to start, {name}. Come check the finish photos with me at the square."
+          }
         }
       ]
     },
@@ -373,7 +565,19 @@
           "reward": "Bé Xiếc Vui Vẻ tung mũ chào: {name} canh lực siêu khéo, chai nào đáp xuống cũng vững vàng!",
           "next": "Khán giả đang vỗ tay đòi diễn tiếp, {name} cứ lại trước sân khấu sự kiện tung chai nhé.",
           "who": "{name}, nghệ sĩ tung chai điêu luyện",
-          "learn": "Cảm nhận lực vuốt và thời điểm lộn vòng"
+          "learn": "Cảm nhận lực vuốt và thời điểm lộn vòng",
+          "en": {
+            "title": "Bottle flip with Bé Xiếc Vui Vẻ",
+            "summary": "A soda bottle sits on the circus table: swipe to flip it over once and land it standing straight.",
+            "lines": [
+              "Hi {name}! The circus bottle-flip act needs a performer.",
+              "Swipe up to toss the bottle into a flip, with just enough force so it lands upright on the stand."
+            ],
+            "choice": "One flip, landed upright!",
+            "prompt": "Land the bottle standing {goal} times!",
+            "reward": "Bé Xiếc Vui Vẻ tips a hat: {name} judges the force so well, every bottle lands steady!",
+            "next": "The crowd is clapping for an encore, {name}. Come flip bottles by the event stage any time."
+          }
         },
         {
           "game": "stilts-walk",
@@ -388,7 +592,19 @@
           "reward": "Bé Xiếc Vui Vẻ nhào lộn khen ngợi: {name} giữ thăng bằng cừ thật, bước đi tự tin như nghệ sĩ!",
           "next": "Gánh xiếc còn diễn hết mùa lễ hội, {name} ghé sân khấu sự kiện bước cà kheo cùng tớ nha.",
           "who": "{name}, diễn viên xiếc cà kheo dũng cảm",
-          "learn": "Phản xạ giữ thăng bằng đối xứng hai bên"
+          "learn": "Phản xạ giữ thăng bằng đối xứng hai bên",
+          "en": {
+            "title": "Bamboo stilt walking with Bé Xiếc Vui Vẻ",
+            "summary": "A pair of tall, wobbly bamboo stilts: tap the leaning side to keep your balance and take sure, steady steps.",
+            "lines": [
+              "{name}, want to climb onto these bouncy bamboo stilts and do a circus act with me?",
+              "Whichever way you lean, tap that side to step and keep your balance so you do not fall."
+            ],
+            "choice": "Steady stilts, stand up tall!",
+            "prompt": "Walk {goal} metres on stilts!",
+            "reward": "Bé Xiếc Vui Vẻ does a somersault: {name} balances so well and walks like a real performer!",
+            "next": "The circus plays all festival season, {name}, so come stilt-walk with me by the event stage."
+          }
         },
         {
           "game": "seesaw-launch",
@@ -403,7 +619,19 @@
           "reward": "Bé Xiếc Vui Vẻ vỗ tay reo hò: bóng của {name} bay vút vào rổ rinh trọn tràng pháo tay!",
           "next": "Vẫn còn nhiều bao cát và bóng màu, {name} lại sân khấu sự kiện chơi bập bênh tiếp nha.",
           "who": "{name}, nhà thiện xạ bập bênh",
-          "learn": "Hiểu nguyên lý đòn bẩy và thế năng rơi"
+          "learn": "Hiểu nguyên lý đòn bẩy và thế năng rơi",
+          "en": {
+            "title": "Seesaw ball launch with Bé Xiếc Vui Vẻ",
+            "summary": "A magical lever seesaw: drop a sandbag from up high to launch a ball into the hoop.",
+            "lines": [
+              "{name}, look at the colourful ball-launching seesaw of our circus troupe!",
+              "Tap to pick how high the sandbag drops, and judge the bounce so the ball flies into the hoop."
+            ],
+            "choice": "Sandbag down, ball in the hoop!",
+            "prompt": "Launch balls into the hoop for {goal} points!",
+            "reward": "Bé Xiếc Vui Vẻ cheers: the ball from {name} swooshed into the hoop to a round of applause!",
+            "next": "There are plenty more sandbags and balls, {name}, so come back to the stage and seesaw again."
+          }
         }
       ]
     },
@@ -435,7 +663,19 @@
           "reward": "Chú Đố Chữ Quang mỉm cười vuốt râu: nét bút của {name} ngay ngắn, đậm đà phong vị ngày Tết!",
           "next": "Mùa xuân chợ phiên còn bày câu đối, {name} rảnh lại ghé góc chợ đàm đạo chữ nghĩa nhé.",
           "who": "{name}, học trò nhỏ của ông đồ",
-          "learn": "Đưa cọ nắn nót kiên nhẫn theo đường nét"
+          "learn": "Đưa cọ nắn nót kiên nhẫn theo đường nét",
+          "en": {
+            "title": "Calligraphy at the old scholar stall with Chú Đố Chữ Quang",
+            "summary": "Red paper and fragrant ink fill the spring market: guide the brush carefully along each flowing calligraphy stroke.",
+            "lines": [
+              "Hello {name}! Come see some New Year calligraphy with me, Uncle Quang, at the market corner!",
+              "Set the brush on the white dot, then trace slowly along the faint stroke so the ink comes out rich."
+            ],
+            "choice": "Soft brushstrokes, bright red couplets!",
+            "prompt": "Carefully write {goal} calligraphy characters!",
+            "reward": "Chú Đố Chữ Quang smiles and strokes his beard: the writing of {name} is neat and full of Tết spirit!",
+            "next": "The spring market still has couplets on show, {name}. Come chat about words at the market corner."
+          }
         },
         {
           "game": "sentence-train",
@@ -450,7 +690,19 @@
           "reward": "Chú Đố Chữ Quang tấm tắc khen ngợi: {name} ghép câu rành mạch, đoàn tàu tu tu hú còi chạy rồi!",
           "next": "Còn nhiều câu văn hay trong kho sách, cháu {name} nhớ ghé chợ giao dịch ghép tàu tiếp nha.",
           "who": "{name}, kỹ sư nối câu tài ba",
-          "learn": "Ngữ pháp tiếng Việt và trật tự từ trong câu"
+          "learn": "Ngữ pháp tiếng Việt và trật tự từ trong câu",
+          "en": {
+            "title": "Sentence train with Chú Đố Chữ Quang",
+            "summary": "A train hauls carriages of loose words: look at the picture and line the words up into a full sentence.",
+            "lines": [
+              "Oh {name}, the word train is about to leave from the trading market.",
+              "Look at the picture, then tap the word carriages in sentence order so the train can roll out."
+            ],
+            "choice": "Carriages linked, sentence complete!",
+            "prompt": "Put {goal} sentence trains in the right order!",
+            "reward": "Chú Đố Chữ Quang is impressed: {name} builds clear sentences, and the train toots away!",
+            "next": "There are many more fine sentences in the book store, {name}, so come build trains at the market."
+          }
         },
         {
           "game": "hole-in-wall",
@@ -465,7 +717,19 @@
           "reward": "Chú Đố Chữ Quang vỗ tay tán thưởng: cháu {name} uốn mình nhanh nhẹn, dáng nào cũng chuẩn!",
           "next": "Bức tường tiếp theo sắp tiến vào, {name} rảnh lại ghé góc chợ giao dịch so tài uốn dáng nhé.",
           "who": "{name}, cao thủ luồn tường linh hoạt",
-          "learn": "Nhận biết hình thể không gian và phản xạ tạo dáng"
+          "learn": "Nhận biết hình thể không gian và phản xạ tạo dáng",
+          "en": {
+            "title": "Hole in the wall with Chú Đố Chữ Quang",
+            "summary": "A foam wall with funny-shaped holes slides closer: pick the right pose to slip through safely.",
+            "lines": [
+              "The foam-wall game is drawing a big crowd of kids at the market corner, {name}!",
+              "Look at the shape cut into the wall, then pick the matching pose button to squeeze through."
+            ],
+            "choice": "Perfect pose, straight through!",
+            "prompt": "Strike the right pose to pass {goal} foam walls!",
+            "reward": "Chú Đố Chữ Quang applauds: {name} twists so quickly, and every pose is spot on!",
+            "next": "The next wall is on its way, {name}. Come test your poses at the market corner again."
+          }
         }
       ]
     },
@@ -497,7 +761,19 @@
           "reward": "Mèo Xếp Khối vẫy đuôi reo hò: chuỗi domino của {name} đổ đều tăm tắp, tiếng chuông vang lừng!",
           "next": "Còn bao nhiêu cách xếp hình domino kỳ thú, {name} lại ra đài phun nước chơi cùng mèo nha.",
           "who": "{name}, kiến trúc sư chuỗi domino",
-          "learn": "Tính toán khoảng cách và chuỗi phản ứng dây chuyền"
+          "learn": "Tính toán khoảng cách và chuỗi phản ứng dây chuyền",
+          "en": {
+            "title": "Domino chain with Mèo Xếp Khối",
+            "summary": "Dominoes are scattered along the fountain edge: drag to stand a chain of them, then tap to topple them into the bell.",
+            "lines": [
+              "Meow! {name}, let us set up a domino run around this cool fountain edge!",
+              "Drag along the dotted path to place dominoes around the obstacles, then tap the first one to ring the bell."
+            ],
+            "choice": "Down they all go, ding-a-ling!",
+            "prompt": "Build and topple a domino chain to ring the bell {goal} times!",
+            "reward": "Mèo Xếp Khối waves her tail: the dominoes of {name} fell perfectly, and the bell rang loud!",
+            "next": "There are so many fun ways to lay dominoes, {name}, so come back to the fountain and play."
+          }
         },
         {
           "game": "tile-flood",
@@ -512,7 +788,19 @@
           "reward": "Mèo Xếp Khối tròn xoe mắt thán phục: cả sân gạch đã rực một màu nhờ tài tính toán của {name}!",
           "next": "Mặt sàn mới với nhiều ô màu đang chờ, {name} ghé đài phun nước tượng mèo giải đố tiếp nha.",
           "who": "{name}, bậc thầy lan tỏa sắc màu",
-          "learn": "Tư duy quy hoạch vùng và tối ưu số bước đi"
+          "learn": "Tư duy quy hoạch vùng và tối ưu số bước đi",
+          "en": {
+            "title": "Colour flood tiles with Mèo Xếp Khối",
+            "summary": "A courtyard of coloured tiles by the fountain: pick colours that blend outward until the whole floor is one colour.",
+            "lines": [
+              "{name}, I bet you cannot paint this whole tiled courtyard one colour in just a few changes!",
+              "Tap a new colour so your patch spreads into the tiles next to it before your turns run out."
+            ],
+            "choice": "Spread the colour, cover the courtyard!",
+            "prompt": "Turn the whole board one colour within {goal} moves!",
+            "reward": "Mèo Xếp Khối stares in awe: the whole courtyard glows one colour thanks to the planning of {name}!",
+            "next": "A new floor of colourful tiles is waiting, {name}. Come solve it by the cat-statue fountain."
+          }
         },
         {
           "game": "hole-grow",
@@ -527,7 +815,19 @@
           "reward": "Mèo Xếp Khối cọ đầu mừng rỡ: bờ đài phun nước sạch bong không còn hạt bụi nhờ có {name}!",
           "next": "Mỗi buổi chiều gió thổi lá rụng, {name} lại ra tượng mèo giúp hố thần kỳ dọn sân nhé.",
           "who": "{name}, người giữ sạch quảng trường",
-          "learn": "So sánh kích thước và lộ trình thu gom hợp lý"
+          "learn": "So sánh kích thước và lộ trình thu gom hợp lý",
+          "en": {
+            "title": "The tidy-up hole with Mèo Xếp Khối",
+            "summary": "The square is littered with rubbish and dry leaves: steer a magic hole that swallows everything from small to big.",
+            "lines": [
+              "There are so many toys and scraps around the cat statue. Help me tidy up, {name}!",
+              "Steer the hole over small things first so it grows, then gobble up the bigger things."
+            ],
+            "choice": "Swallow the mess, sparkling clean!",
+            "prompt": "Clear {goal} stray things from the square!",
+            "reward": "Mèo Xếp Khối nuzzles happily: thanks to {name}, the fountain edge is spotless, not a speck left!",
+            "next": "The wind blows leaves down every afternoon, {name}, so come help the magic hole tidy up again."
+          }
         }
       ]
     },
@@ -559,7 +859,19 @@
           "reward": "Khỉ Tính Nhanh nhào lộn trên bậc thềm: cúp vô địch thuộc về {name}, tính nhanh như chớp!",
           "next": "Đường đua lâu đài luôn đón chờ tay lái cừ khôi, {name} lại đến bậc thềm so tài nhé.",
           "who": "{name}, tay đua số học siêu tốc",
-          "learn": "Tính nhẩm phép cộng trừ trong phạm vi nhanh chóng"
+          "learn": "Tính nhẩm phép cộng trừ trong phạm vi nhanh chóng",
+          "en": {
+            "title": "Quick-maths race with Khỉ Tính Nhanh",
+            "summary": "A mini racing car on the castle steps: work out each sum on the signs in your head to speed to the finish.",
+            "lines": [
+              "Ook ook! {name}, jump into the maths racer with me and let us see who does sums fastest!",
+              "Whatever sum the sign shows, tap the right answer straight away to zoom into the lead."
+            ],
+            "choice": "Lightning sums, first across the line!",
+            "prompt": "Win {goal} quick-maths race stages!",
+            "reward": "Khỉ Tính Nhanh flips on the steps: the trophy goes to {name}, quick as a flash!",
+            "next": "The castle race track always welcomes a skilled driver, {name}, so come race on the steps again."
+          }
         },
         {
           "game": "lift-numbers",
@@ -574,7 +886,19 @@
           "reward": "Khỉ Tính Nhanh cúi chào kiểu hoàng gia: {name} hiểu rõ hàng chục hàng đơn vị, phục vụ chu đáo quá!",
           "next": "Khách tham quan lâu đài tấp nập suốt ngày, {name} nhớ ghé bậc thềm lái thang máy tiếp nha.",
           "who": "{name}, người lái thang máy lâu đài",
-          "learn": "Đọc viết số có hai chữ số theo cấu tạo thập phân"
+          "learn": "Đọc viết số có hai chữ số theo cấu tạo thập phân",
+          "en": {
+            "title": "Running the number lift with Khỉ Tính Nhanh",
+            "summary": "A grand castle tower: read the tens and ones on the card each guest holds to send the lift to the right floor.",
+            "lines": [
+              "Oh {name}, castle guests are holding cards with the tens and the loose sticks for their floor!",
+              "Put the tens and the ones together to make the floor number, then tap to send the lift up."
+            ],
+            "choice": "Tens and ones together, lift going up!",
+            "prompt": "Take {goal} groups of guests to the right castle floor!",
+            "reward": "Khỉ Tính Nhanh bows royally: {name} really knows tens and ones, and looks after every guest!",
+            "next": "Castle visitors come and go all day, {name}, so come back to the steps and run the lift again."
+          }
         },
         {
           "game": "micro-mix",
@@ -589,7 +913,19 @@
           "reward": "Khỉ Tính Nhanh vỗ tay rầm rộ: {name} phản xạ nhanh như chớp giật, trò nào cũng qua mượt mà!",
           "next": "Kho thử thách còn hàng trăm trò vui lạ lùng, {name} ghé bậc thềm sân lâu đài quẩy tiếp nhé.",
           "who": "{name}, quán quân thử thách chớp nhoáng",
-          "learn": "Tập trung chú ý cao độ và phản xạ tức thời"
+          "learn": "Tập trung chú ý cao độ và phản xạ tức thời",
+          "en": {
+            "title": "Lightning challenges with Khỉ Tính Nhanh",
+            "summary": "Tiny tasks pop up one after another: tap or swipe in a flash before the clock runs out.",
+            "lines": [
+              "The super lightning challenge is starting, {name}! Are your fingers ready?",
+              "Whatever game appears, tap or swipe within three seconds before the timer buzzes."
+            ],
+            "choice": "See it, do it, lightning fast!",
+            "prompt": "Beat {goal} tiny challenges in a row!",
+            "reward": "Khỉ Tính Nhanh claps wildly: {name} reacts like lightning and breezes through every game!",
+            "next": "There are hundreds more wacky challenges, {name}, so come party on the castle steps again."
+          }
         }
       ]
     }

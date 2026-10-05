@@ -46,7 +46,19 @@
         {
           "text": "Thả khăn kín đáo, chạy nhanh về đích!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The whole class is playing bỏ khăn on the grass, {name}! Join the circle and run with us!",
+          "Stroll around, drop the hanky behind someone who is not looking, then dash back to the mat."
+        ],
+        "choices": [
+          {
+            "text": "Sneaky drop, quick dash home!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Thả khăn và chạy về chỗ an toàn sáu lần nhé!",
       "game": "bo-khan",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Bỏ khăn (drop the handkerchief)",
+        "prompt": "Drop the hanky and get back safely 6 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bé Đội Viên cười giòn tan: chân {name} thoăn thoắt, bạn đuổi theo mà không kịp chạm vai!"
+      "text": "Bé Đội Viên cười giòn tan: chân {name} thoăn thoắt, bạn đuổi theo mà không kịp chạm vai!",
+      "en": {
+        "title": "Reward",
+        "text": "Bé Đội Viên laughs out loud: {name} is so quick on their feet, no one could tag them!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Giờ ra chơi nào vòng tròn cũng rộn tiếng cười, {name} cứ lại bóng cây bàng chơi cùng lớp nhé."
+      "text": "Giờ ra chơi nào vòng tròn cũng rộn tiếng cười, {name} cứ lại bóng cây bàng chơi cùng lớp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The circle is full of laughter every break time, {name}, so come play under the almond tree."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Playing bỏ khăn (drop the hanky) with Bé Đội Viên",
+    "summary": "Friends sit in a circle clapping: sneak the hanky behind someone who is not looking, then race back to your spot."
   }
 }

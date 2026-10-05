@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Nesting Dolls",
+    "howTo": [
+      "The dolls are nearly the same size. {name} drags a doll into the one exactly one size bigger.",
+      "You can also tap one doll, then the other. The wrong size pops right back out.",
+      "Nest them all into one doll to finish a set and earn a point."
+    ]
+  }
 }

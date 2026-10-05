@@ -46,7 +46,19 @@
         {
           "text": "Cháu nặn quả pháo đất thật đẹp!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hello, {name}! The folk game of pháo đất, clay poppers, has always been so lively, my dear.",
+          "Smooth the inside of the popper thin, then slam it on the brick yard for a big bang."
+        ],
+        "choices": [
+          {
+            "text": "I'll mould a lovely clay popper!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Làm nổ giòn giã sáu quả pháo đất đất sét nhé!",
       "game": "phao-dat",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Pháo đất (Mud Poppers)",
+        "prompt": "Make 6 clay poppers go bang!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ông Lão Pháo Đất cười hiền hậu, vỗ đùi khen {name} đánh pháo đất vừa to vừa giòn!"
+      "text": "Ông Lão Pháo Đất cười hiền hậu, vỗ đùi khen {name} đánh pháo đất vừa to vừa giòn!",
+      "en": {
+        "title": "Reward",
+        "text": "Ông Lão Pháo Đất smiles warmly and slaps his knee: {name}'s poppers are loud and crisp!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đất sét mùa này dẻo lắm, chiều nào ông cũng ngồi ở sân gạch nông trại đợi cháu."
+      "text": "Đất sét mùa này dẻo lắm, chiều nào ông cũng ngồi ở sân gạch nông trại đợi cháu.",
+      "en": {
+        "title": "See you soon",
+        "text": "The clay is nice and soft this season. Grandpa waits in the farm's brick yard every afternoon."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Clay Poppers with Ông Lão Pháo Đất",
+    "summary": "Soft, sticky clay in Grandpa's hands; shape a thin hollow popper and slam it down on the yard."
   }
 }

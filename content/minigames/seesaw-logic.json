@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 75,
   "goal": 10,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Who's the Heaviest?",
+    "howTo": [
+      "Each seesaw shows who is heavier: the heavier side dips down.",
+      "Study the seesaws, then {name} taps the heaviest friend (rock) or the lightest (feather).",
+      "Only a right answer on the first try scores. Pick wrong and you get an extra hint seesaw."
+    ]
+  }
 }

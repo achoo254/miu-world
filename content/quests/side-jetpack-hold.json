@@ -46,7 +46,19 @@
         {
           "text": "Ba lô tên lửa, cất cánh!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hey {name}, I just finished building a rocket backpack. Want to try flying?",
+          "Hold down to fly up, let go to sink down, and swerve around any thunderclouds."
+        ],
+        "choices": [
+          {
+            "text": "Rocket pack, lift off!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nhặt bốn mươi đồng xu trên trời nhé!",
       "game": "jetpack-hold",
-      "goal": 40
+      "goal": 40,
+      "en": {
+        "title": "Jetpack",
+        "prompt": "Grab 40 coins up in the sky!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cáo Phi Công chào kiểu phi công: {name} bay vững như đại bàng!"
+      "text": "Cáo Phi Công chào kiểu phi công: {name} bay vững như đại bàng!",
+      "en": {
+        "title": "Reward",
+        "text": "Cáo Phi Công gives a pilot salute: {name} flies as steady as an eagle!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ba lô còn đầy nhiên liệu, cậu ghé khu học tập bay với tớ tiếp nhé."
+      "text": "Ba lô còn đầy nhiên liệu, cậu ghé khu học tập bay với tớ tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The backpack still has plenty of fuel, so meet me at the learning area to fly again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Jetpack flight with Cáo Phi Công",
+    "summary": "Strap on a rocket pack and fly across the city: hold to rise, let go to drop, grab coins and dodge thunderclouds."
   }
 }

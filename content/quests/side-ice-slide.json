@@ -46,7 +46,19 @@
         {
           "text": "Tớ sẽ tìm đường về cho bạn!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "My cousin slid off and got lost in the ice maze. {name}, help!",
+          "It slides all the way until it bumps a rock, so think hard before you swipe."
+        ],
+        "choices": [
+          {
+            "text": "I'll find the way home for it!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đưa cánh cụt về nhà qua ba mê cung nhé!",
       "game": "ice-slide",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Ice maze slide",
+        "prompt": "Bring the penguin home through 3 mazes!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cả nhà cánh cụt reo lên: cảm ơn {name} đã dẫn đường giỏi thế!"
+      "text": "Cả nhà cánh cụt reo lên: cảm ơn {name} đã dẫn đường giỏi thế!",
+      "en": {
+        "title": "Reward",
+        "text": "The whole penguin family cheers: thank you, {name}, for leading the way so well!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Lúc nào băng đóng dày, cứ ra bờ hồ tìm Cánh Cụt nhé."
+      "text": "Lúc nào băng đóng dày, cứ ra bờ hồ tìm Cánh Cụt nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Whenever the ice is thick, come find Cánh Cụt at the lakeside."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Slide the Penguin Home Through the Ice Maze",
+    "summary": "The penguin slides until it hits a rock; swipe the right way to bring it home."
   }
 }

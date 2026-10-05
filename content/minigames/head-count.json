@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 100,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Who's in the house?",
+    "howTo": [
+      "Friends run into the house, some run out, some climb through the window.",
+      "When the door shuts, {name}, tap how many friends are still inside.",
+      "Miscounted? Let's watch it again, nice and slow!"
+    ]
+  }
 }

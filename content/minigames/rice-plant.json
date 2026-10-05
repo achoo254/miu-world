@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 40,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Plant Rice in Rows",
+    "howTo": [
+      "{name} steps backward through the field. When a faint mark in the mud enters the hand circle, tap to plant.",
+      "Hit the mark and the seedling stands tall. Seedlings are limited, so don't rush!"
+    ]
+  }
 }

@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 4,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Fence in the chick",
+    "howTo": [
+      "{name}, tap a square to put up a fence. After each fence, the chick runs one step toward the edge.",
+      "Fence it in until there's no way out, and the chick is caught!"
+    ]
+  }
 }

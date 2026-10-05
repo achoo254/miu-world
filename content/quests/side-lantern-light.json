@@ -46,7 +46,19 @@
         {
           "text": "Cháu thắp đèn lồng ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The breeze is making the candles in the lanterns flicker, {name}!",
+          "Tap the lanterns quickly to light the way for the people walking by."
+        ],
+        "choices": [
+          {
+            "text": "I'll light the lanterns now!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Giữ ánh sáng cho mười lượt đoàn khách dạo hội hoa đăng nhé!",
       "game": "lantern-light",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Light up Hội An",
+        "prompt": "Keep the lights on for 10 groups at the lantern festival!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cả xóm làng bừng sáng ấm áp muôn màu dưới bàn tay của {name}!"
+      "text": "Cả xóm làng bừng sáng ấm áp muôn màu dưới bàn tay của {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "The whole village glows warm and colourful, thanks to {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Hàng đèn lồng sen đầu làng vẫn treo lung linh chờ cháu ghé thắp."
+      "text": "Hàng đèn lồng sen đầu làng vẫn treo lung linh chờ cháu ghé thắp.",
+      "en": {
+        "title": "See you soon",
+        "text": "The row of lotus lanterns at the village gate is still glowing, waiting for you to light it."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Light the lanterns with Cô Đèn Lồng Sen",
+    "summary": "Relight the flickering lotus lanterns so the whole village road glows with colour."
   }
 }

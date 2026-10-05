@@ -46,7 +46,19 @@
         {
           "text": "Ra ruộng giữ lúa thôi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Look, {name}, a whole flock of sparrows has come to eat the rice!",
+          "Send the farmers out to each row and tap the birds to make them fly back."
+        ],
+        "choices": [
+          {
+            "text": "Off to guard the rice!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đuổi được hai mươi lăm chú chim khỏi ruộng nhé!",
       "game": "farmer-defense",
-      "goal": 25
+      "goal": 25,
+      "en": {
+        "title": "Guard the rice field",
+        "prompt": "Chase 25 birds out of the field!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bó lúa vẫn còn nguyên, Thỏ Giữ Vườn reo: {name} giữ ruộng giỏi quá!"
+      "text": "Bó lúa vẫn còn nguyên, Thỏ Giữ Vườn reo: {name} giữ ruộng giỏi quá!",
+      "en": {
+        "title": "Reward",
+        "text": "The rice sheaves are safe, and Thỏ Giữ Vườn cheers: {name} guards the field so well!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mùa gặt còn dài, cậu cứ tới bờ ruộng ngô cùng tớ canh lúa."
+      "text": "Mùa gặt còn dài, cậu cứ tới bờ ruộng ngô cùng tớ canh lúa.",
+      "en": {
+        "title": "See you soon",
+        "text": "Harvest season is long. Come to the corn field edge and watch the rice with me."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Guard the Rice from Birds with Thỏ Giữ Vườn",
+    "summary": "Flocks of sparrows come to peck the rice; send the farmers out to the rows to wave their hats and shoo them."
   }
 }

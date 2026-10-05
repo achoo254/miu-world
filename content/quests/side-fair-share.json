@@ -46,7 +46,19 @@
         {
           "text": "Cháu cắt từng miếng đều tăm tắp!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The whole family is waiting for dessert, {name}. Help me share out the cake!",
+          "Swipe each cut cleanly so every slice comes out exactly the same size."
+        ],
+        "choices": [
+          {
+            "text": "I'll cut every slice even!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Cắt chia đều các phần bánh cho tám chiếc bánh thơm ngon nhé!",
       "game": "fair-share",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Share the cake fairly",
+        "prompt": "Cut 8 tasty cakes into equal slices!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mèo Bếp Trưởng nghiêng đầu tán thưởng: miếng bánh nào {name} chia cũng công bằng tuyệt đối!"
+      "text": "Mèo Bếp Trưởng nghiêng đầu tán thưởng: miếng bánh nào {name} chia cũng công bằng tuyệt đối!",
+      "en": {
+        "title": "Reward",
+        "text": "Mèo Bếp Trưởng tilts his head in approval: every slice {name} cuts is perfectly fair!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mâm cỗ ngọt vẫn còn nhiều món ngon, Mèo Bếp Trưởng hẹn gặp lại {name} bên bàn ăn."
+      "text": "Mâm cỗ ngọt vẫn còn nhiều món ngon, Mèo Bếp Trưởng hẹn gặp lại {name} bên bàn ăn.",
+      "en": {
+        "title": "See you soon",
+        "text": "The sweet tray still has lots of treats. Mèo Bếp Trưởng will see {name} at the table."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Fair Cake Slices with Mèo Bếp Trưởng",
+    "summary": "A round cake sits on the table; swipe the knife to cut it into equal pieces for everyone."
   }
 }

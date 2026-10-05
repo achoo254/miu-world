@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 35,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Pound the Rice",
+    "howTo": [
+      "The farmer pounds one beat, {name} pounds the next, taking turns like that.",
+      "Tap when the glowing ring closes on the mortar. Tap during the farmer's beat and the pestles clash!"
+    ]
+  }
 }

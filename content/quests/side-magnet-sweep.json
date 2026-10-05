@@ -46,7 +46,19 @@
         {
           "text": "Thanh nam châm hút sạch đồ sắt đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "So many paper clips and pins on the study desk! {name}, grab the magnet and sweep with me!",
+          "Drag the magnet to pick up the metal bits, then drop them in the tray. Leave the paper scraps alone."
+        ],
+        "choices": [
+          {
+            "text": "My magnet will grab every bit of metal!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Hút sạch sẽ gọn gàng ba mươi chiếc kẹp kim loại bỏ vào hộp nhé!",
       "game": "magnet-sweep",
-      "goal": 30
+      "goal": 30,
+      "en": {
+        "title": "Magnet sweep",
+        "prompt": "Sweep up 30 metal clips into the box!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Rô Bốt nhấp nháy đèn xanh: bàn học sạch bong đồ kim loại nhờ tay {name} quét dọn!"
+      "text": "Rô Bốt nhấp nháy đèn xanh: bàn học sạch bong đồ kim loại nhờ tay {name} quét dọn!",
+      "en": {
+        "title": "Reward",
+        "text": "Rô Bốt flashes a green light: the desk is metal-free thanks to {name}'s sweeping!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bàn học ngăn nắp giúp học bài mau nhớ, Rô Bốt hẹn gặp {name} cạnh giá sách."
+      "text": "Bàn học ngăn nắp giúp học bài mau nhớ, Rô Bốt hẹn gặp {name} cạnh giá sách.",
+      "en": {
+        "title": "See you soon",
+        "text": "A tidy desk helps you remember lessons. Rô Bốt will meet {name} by the bookshelf."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Magnet Desk Sweep with Chú Rô Bốt Đồng Hồ",
+    "summary": "Screws and paper clips are scattered on the desk; sweep the magnet to pick up all the metal and drop it in the tray."
   }
 }

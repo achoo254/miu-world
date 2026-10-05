@@ -10,5 +10,13 @@
   "controls": ["hold", "drag"],
   "duration": 45,
   "goal": 4,
-  "params": { "rivals": 1 }
+  "params": { "rivals": 1 },
+  "en": {
+    "name": "Mini kart race",
+    "howTo": [
+      "Keep your finger on the screen: {name}'s kart follows it.",
+      "Race two laps of the track; stay off the grass or the kart slows down.",
+      "Finish in the top three to win, and grab stars for extra points!"
+    ]
+  }
 }

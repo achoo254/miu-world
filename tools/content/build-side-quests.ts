@@ -49,9 +49,17 @@ export function promptWithGoal(prompt: string, goal: number): string {
   return prompt.startsWith('{goal}') ? prompt.replace('{goal}', words.charAt(0).toUpperCase() + words.slice(1)) : prompt.replace('{goal}', words);
 }
 
+/** The English prompt with its goal in figures. */
+export const englishPromptWithGoal = (prompt: string, goal: number): string => prompt.replace('{goal}', String(goal));
+
+/** English titles of the side quests' fixed steps (short: they are labels, not lines). */
+export const SIDE_STEP_TITLES_EN = { ask: 'Invitation', thanks: 'Reward', bye: 'See you soon' } as const;
+
 /** One side quest: the giver's invitation, the game at its standard goal, the giver's cheer and the way on. */
 export function sideQuestOf(table: SideQuestTable, giver: SideGiver, entry: SideGame, spec: MinigameSpec): QuestDefinition {
   const prompt = promptWithGoal(entry.prompt, spec.goal);
+  if (!spec.en) throw new Error(`minigame ${spec.id} has no English name and how-to (en): its side quest ships in both languages`);
+  const en = entry.en;
   const quest = {
     id: `side-${entry.game}`,
     region: table.region,
@@ -79,12 +87,24 @@ export function sideQuestOf(table: SideQuestTable, giver: SideGiver, entry: Side
         target: giver.id,
         lines: entry.lines.map((text) => ({ speaker: giver.name, text })),
         choices: [{ text: entry.choice }],
+        en: { title: SIDE_STEP_TITLES_EN.ask, lines: [...en.lines], choices: [{ text: en.choice }] },
       },
-      { id: 'play', title: spec.name, kind: 'challenge', mechanic: 'minigame', trigger: 'auto', prompt, game: entry.game, goal: spec.goal },
-      { id: 'thanks', title: 'Phần thưởng', kind: 'reward', trigger: 'auto', text: entry.reward },
-      { id: 'bye', title: 'Hẹn lần sau', kind: 'next', trigger: 'auto', text: entry.next },
+      {
+        id: 'play',
+        title: spec.name,
+        kind: 'challenge',
+        mechanic: 'minigame',
+        trigger: 'auto',
+        prompt,
+        game: entry.game,
+        goal: spec.goal,
+        en: { title: spec.en.name, prompt: englishPromptWithGoal(en.prompt, spec.goal) },
+      },
+      { id: 'thanks', title: 'Phần thưởng', kind: 'reward', trigger: 'auto', text: entry.reward, en: { title: SIDE_STEP_TITLES_EN.thanks, text: en.reward } },
+      { id: 'bye', title: 'Hẹn lần sau', kind: 'next', trigger: 'auto', text: entry.next, en: { title: SIDE_STEP_TITLES_EN.bye, text: en.next } },
     ],
     reward: { ...SIDE_REWARD },
+    en: { title: en.title, summary: en.summary },
   };
   const parsed = QuestDefinition.safeParse(quest);
   if (!parsed.success) throw new Error(`side-${entry.game}: ${parsed.error.message}`);

@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 20,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Magic letter strokes",
+    "howTo": [
+      "Balloons carrying letters float down, each with a picture of a word starting with that letter.",
+      "{name}, write that letter with one finger stroke, anywhere you like, to pop the balloon.",
+      "Each balloon popped is a point. A balloon that touches the ground costs a heart."
+    ]
+  }
 }

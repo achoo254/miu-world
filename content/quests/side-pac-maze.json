@@ -46,7 +46,19 @@
         {
           "text": "Tớ vào hầm đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Shh, {name}! A few cloth ghosts are wandering around down in the dungeon.",
+          "Swipe to move and eat seeds. Grab a star right away and the ghosts will run off scared."
+        ],
+        "choices": [
+          {
+            "text": "Into the dungeon I go!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ăn được năm mươi hạt trong hầm nhé!",
       "game": "pac-maze",
-      "goal": 50
+      "goal": 50,
+      "en": {
+        "title": "Dot Muncher",
+        "prompt": "Eat 50 seeds in the dungeon!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Gác Hầm giơ đèn cười: {name} né ma khéo quá!"
+      "text": "Gấu Gác Hầm giơ đèn cười: {name} né ma khéo quá!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Gác Hầm raises his lantern and laughs: {name} dodges ghosts so well!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Hầm ngục còn nhiều lối, cậu cứ xuống chơi tiếp khi muốn nhé."
+      "text": "Hầm ngục còn nhiều lối, cậu cứ xuống chơi tiếp khi muốn nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The dungeon has lots more tunnels. Come down and play whenever you like."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Eat Seeds, Dodge Ghosts with Gấu Gác Hầm",
+    "summary": "The dungeon tunnels are a tangle of paths full of seeds; eat them all while dodging the slow ghosts."
   }
 }

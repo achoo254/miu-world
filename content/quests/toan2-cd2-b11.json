@@ -69,7 +69,26 @@
           "text": "Mình nhặt táo trước đã nhé",
           "reply": "Heo Ủn: Đúng rồi, táo lăn khắp gốc cây, lăn cả xuống gầm sạp, nhặt nhanh kẻo kiến tha mất!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Apples plopping down",
+        "goTo": "Go to the apple tree by the fruit stalls, where Heo Ủn is holding his tummy and giggling",
+        "lines": [
+          "Oink oink! {name}, can you hear that? Thump, thump, thump! The wind just shook the tree, and apples are raining down.",
+          "I wanted to collect enough apples to bake a pie for the whole market... but every time I pick one up, my mouth takes a bite all by itself. Chomp!",
+          "So the apples keep getting fewer and fewer. Help me work out how many are left, and I promise... I'll try not to eat any more."
+        ],
+        "choices": [
+          {
+            "text": "Okay, but put that mouth away first!",
+            "reply": "Heo Ủn covers his mouth with both trotters: Mm-hmm, mouth locked!"
+          },
+          {
+            "text": "Let's pick up the apples first",
+            "reply": "Heo Ủn: Right, apples have rolled all around the tree and even under the stalls, quick, before the ants carry them off!"
+          }
+        ]
+      }
     },
     {
       "id": "nhat-tao-rung",
@@ -1257,7 +1276,25 @@
           "text": "Đếm lùi từng quả cho chắc",
           "reply": "Heo Ủn: Chậm mà chắc, mỗi quả một tiếng \"ủn\" nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Heo Ủn can't decide",
+        "goTo": "Go back to the apple tree by the fruit stalls, where Heo Ủn is counting on his toes",
+        "lines": [
+          "I just picked up more apples, now I have 14, even 15. My fingers aren't enough, I'm counting on my toes too and I'm still in a muddle!",
+          "Pick a way for me: split off 10 and take away from it first, or count back one apple at a time?"
+        ],
+        "choices": [
+          {
+            "text": "Split off 10 first, it is faster",
+            "reply": "Heo Ủn: Quick as a head chef chopping spring onions, I choose this way!"
+          },
+          {
+            "text": "Count back one by one to be sure",
+            "reply": "Heo Ủn: Slow and steady, one \"oink\" for every apple!"
+          }
+        ]
+      }
     },
     {
       "id": "tach-14-va-15",
@@ -3049,14 +3086,22 @@
       "title": "Bánh táo thơm lừng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Heo Ủn nướng xong mẻ bánh táo thơm lừng cả chợ, cắt miếng to nhất tặng {name} kèm huy hiệu \"Thợ trừ qua 10\". Lần này Heo chỉ ăn đúng… một miếng!"
+      "text": "Heo Ủn nướng xong mẻ bánh táo thơm lừng cả chợ, cắt miếng to nhất tặng {name} kèm huy hiệu \"Thợ trừ qua 10\". Lần này Heo chỉ ăn đúng… một miếng!",
+      "en": {
+        "title": "Sweet-smelling apple pie",
+        "text": "Heo Ủn bakes a batch of apple pie that makes the whole market smell wonderful, cuts the biggest slice for {name}, and adds the \"Take-Away-Past-10 Pro\" badge. This time Heo only eats... exactly one slice!"
+      }
     },
     {
       "id": "long-tre-lon-xon",
       "title": "Lóng tre lộn xộn",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ hàng tre nứa vọng sang tiếng thở dài: Gấu Trúc Nứa khắc bảng trừ lên từng lóng tre, mà ai đó xếp lộn xộn hết cả rồi."
+      "text": "Từ hàng tre nứa vọng sang tiếng thở dài: Gấu Trúc Nứa khắc bảng trừ lên từng lóng tre, mà ai đó xếp lộn xộn hết cả rồi.",
+      "en": {
+        "title": "Bamboo pieces all mixed up",
+        "text": "A sigh drifts over from the bamboo stall: Gấu Trúc Nứa carved the subtraction tables onto pieces of bamboo, and somebody has jumbled them all up."
+      }
     }
   ],
   "reward": {

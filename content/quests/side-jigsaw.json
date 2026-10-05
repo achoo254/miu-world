@@ -46,7 +46,19 @@
         {
           "text": "Để tớ ghép lại cho!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hi {name}! The wind just blew my picture apart into little pieces!",
+          "Find the faint shape that matches a piece and set it there. I will sit and watch you work."
+        ],
+        "choices": [
+          {
+            "text": "Let me put it back together!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ghép đúng mười lăm mảnh tranh nhé!",
       "game": "jigsaw",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Jigsaw puzzle",
+        "prompt": "Fit 15 puzzle pieces into place!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Koala Ghép Tranh ôm bức tranh lành lặn: {name} khéo tay thật đấy!"
+      "text": "Koala Ghép Tranh ôm bức tranh lành lặn: {name} khéo tay thật đấy!",
+      "en": {
+        "title": "Reward",
+        "text": "Koala Ghép Tranh hugs the whole picture again: {name}, you have such clever hands!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tớ còn cả chồng tranh nữa, rảnh thì ra vườn đọc sách ghép cùng tớ."
+      "text": "Tớ còn cả chồng tranh nữa, rảnh thì ra vườn đọc sách ghép cùng tớ.",
+      "en": {
+        "title": "See you soon",
+        "text": "I have a whole stack of puzzles left, so drop by the reading garden and solve one with me."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Puzzle time in the reading garden with Koala Ghép Tranh",
+    "summary": "Puzzle pieces lie scattered on the garden table; drag each one onto the faint picture where it belongs."
   }
 }

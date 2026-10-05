@@ -46,7 +46,19 @@
         {
           "text": "Tính nhẩm thần tốc, xe về nhất chặng!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Ook ook! {name}, jump into the maths racer with me and let us see who does sums fastest!",
+          "Whatever sum the sign shows, tap the right answer straight away to zoom into the lead."
+        ],
+        "choices": [
+          {
+            "text": "Lightning sums, first across the line!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Về đích thắng lợi trong ba chặng đua tính nhanh nhé!",
       "game": "math-race",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Mental Math Race",
+        "prompt": "Win 3 quick-maths race stages!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khỉ Tính Nhanh nhào lộn trên bậc thềm: cúp vô địch thuộc về {name}, tính nhanh như chớp!"
+      "text": "Khỉ Tính Nhanh nhào lộn trên bậc thềm: cúp vô địch thuộc về {name}, tính nhanh như chớp!",
+      "en": {
+        "title": "Reward",
+        "text": "Khỉ Tính Nhanh flips on the steps: the trophy goes to {name}, quick as a flash!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đường đua lâu đài luôn đón chờ tay lái cừ khôi, {name} lại đến bậc thềm so tài nhé."
+      "text": "Đường đua lâu đài luôn đón chờ tay lái cừ khôi, {name} lại đến bậc thềm so tài nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The castle race track always welcomes a skilled driver, {name}, so come race on the steps again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Quick-maths race with Khỉ Tính Nhanh",
+    "summary": "A mini racing car on the castle steps: work out each sum on the signs in your head to speed to the finish."
   }
 }

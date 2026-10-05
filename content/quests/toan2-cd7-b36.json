@@ -71,7 +71,26 @@
           "text": "Huy hiệu to bằng bánh rán thật ạ?",
           "reply": "Thầy Quang cười khà khà: Hơi nhỏ hơn một chút, nhưng sáng hơn nhiều!"
         }
-      ]
+      ],
+      "en": {
+        "title": "The end-of-term ceremony begins",
+        "goTo": "Go to the badge stage in the middle of the great hall, where Mr Quang is about to open the ceremony",
+        "lines": [
+          "Dear everyone in the castle... achoo! Glitter dust flew up my nose. I declare the end-of-term-one ceremony open!",
+          "This year every review stall has sent one final puzzle. Whoever solves them all gets the term badge, as big as a doughnut!",
+          "But sir, the three badge boxes are buried under confetti, nobody can see them!"
+        ],
+        "choices": [
+          {
+            "text": "I'll find the badge boxes!",
+            "reply": "Mr Quang: When you find one, knock twice on the lid and I'll hear it."
+          },
+          {
+            "text": "Is the badge really as big as a doughnut?",
+            "reply": "Mr Quang chuckles: A little smaller, but much shinier!"
+          }
+        ]
+      }
     },
     {
       "id": "tim-hop-huy-hieu",
@@ -105,7 +124,21 @@
           "text": "Bắt đầu vòng tổng kết!",
           "reply": "Cả đại sảnh gõ trống: tùng tùng tùng!"
         }
-      ]
+      ],
+      "en": {
+        "title": "The rules of the review stalls",
+        "goTo": "Carry the boxes back to the badge stage for Mr Quang",
+        "lines": [
+          "All three boxes are here! Here's how it works: go round all the review stalls, and at each one a friend is waiting with a puzzle from the whole term.",
+          "Numbers, calendars, clocks, adding and taking away with carrying, weighing, measuring, shapes... there's a bit of everything. If you're stuck, ask the stall keeper, they love being asked for help."
+        ],
+        "choices": [
+          {
+            "text": "Start the end-of-term round!",
+            "reply": "The whole great hall beats the drums: boom boom boom!"
+          }
+        ]
+      }
     },
     {
       "id": "tia-so-cua-chip",
@@ -567,7 +600,25 @@
           "text": "Phải cộng độ dài mới biết",
           "reply": "Cô Hằng: Chuẩn tinh thần nhà toán học! Cộng thôi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Two paths in Miss Hằng's painting",
+        "goTo": "Go to the flat shapes stall, where Miss Hằng is waving her paintbrush at you",
+        "lines": [
+          "{name}, come here! In my painting there's a little ant crawling off to find a piece of cake.",
+          "He has two paths to choose from, one bending twice and one bending three times. Can you guess which path he should take?"
+        ],
+        "choices": [
+          {
+            "text": "The one with fewer bends must be shorter",
+            "reply": "Miss Hằng: Guessing is easy, measuring is sure. Let's add up the length of each part!"
+          },
+          {
+            "text": "We have to add up the lengths to know",
+            "reply": "Miss Hằng: Spoken like a true mathematician! Let's add!"
+          }
+        ]
+      }
     },
     {
       "id": "kien-tim-banh",
@@ -1052,14 +1103,22 @@
       "title": "Huy hiệu học kì một",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thầy Quang trao cho {name} huy hiệu học kì một, các gian ôn tập cùng tung pháo giấy khắp đại sảnh. Lần này thầy không hắt xì nữa, chỉ hô vang qua micro thật vui: HOAN HÔ!"
+      "text": "Thầy Quang trao cho {name} huy hiệu học kì một, các gian ôn tập cùng tung pháo giấy khắp đại sảnh. Lần này thầy không hắt xì nữa, chỉ hô vang qua micro thật vui: HOAN HÔ!",
+      "en": {
+        "title": "Term one badge",
+        "text": "Mr Quang presents {name} with the term one badge, and all the review stalls throw confetti across the great hall. This time he doesn't sneeze, he just cheers happily into the microphone: HOORAY!"
+      }
     },
     {
       "id": "hen-gap-hoc-ki-hai",
       "title": "Hẹn gặp học kì hai",
       "kind": "next",
       "trigger": "auto",
-      "text": "Khi pháo giấy còn bay, Hươu Cao vươn cổ nhìn qua ô cửa cao nhất của đại sảnh và thì thầm: Toán 2 tập một khép lại rồi, học kì hai, Toán 2 tập hai đang chờ những câu đố lớn hơn!"
+      "text": "Khi pháo giấy còn bay, Hươu Cao vươn cổ nhìn qua ô cửa cao nhất của đại sảnh và thì thầm: Toán 2 tập một khép lại rồi, học kì hai, Toán 2 tập hai đang chờ những câu đố lớn hơn!",
+      "en": {
+        "title": "See you in term two",
+        "text": "While the confetti is still falling, Hươu Cao stretches her neck to look out of the great hall's highest window and whispers: Toán 2 tập một (Maths 2, Book One) is done, and in term two, Toán 2 tập hai (Book Two) is waiting with even bigger puzzles!"
+      }
     }
   ],
   "reward": {

@@ -9,5 +9,12 @@
   "controls": ["swipe", "tap"],
   "duration": 60,
   "goal": 40,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Spinning Top",
+    "howTo": [
+      "Swipe up to throw the top into the chalk circle.",
+      "When the top wobbles, {name} taps to whip the string and keep it spinning. Tap too early and it topples!"
+    ]
+  }
 }

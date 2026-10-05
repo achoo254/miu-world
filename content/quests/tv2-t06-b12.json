@@ -74,7 +74,27 @@
           "text": "Cô ơi, cô đeo thêm một cái kính nữa thử xem?",
           "reply": "Hai cái kính chồng lên thì cô thấy… bốn cái {name} mất! Hì hì, thôi con ra sân nhặt giấy nhé."
         }
-      ]
+      ],
+      "en": {
+        "title": "Mèo Kính and the wet paper",
+        "goTo": "Go into the reading room, Mèo Kính is sighing at the librarian's desk",
+        "lines": [
+          "Is that you, {name}? I had to push my glasses up to tell. Something terrible has happened in the reading room, dear.",
+          "A rain shower blew in through the window and soaked the sign-up list for Friday afternoon's story club. Everyone's name has run into inky smudges, and I can't read a thing even with my nose on the page.",
+          "And there was wind too! It blew three pages right out into the yard! I only spotted them by climbing the bookshelf!",
+          "My eyes aren't good; if I go searching outside I'll probably step on the pages. You've got sharp eyes, {name}, will you help me?"
+        ],
+        "choices": [
+          {
+            "text": "I'll pick up the pages for you right now!",
+            "reply": "Thank you, dear. I'll sit here, wipe my glasses and keep this pencil from rolling away."
+          },
+          {
+            "text": "What if you wore a second pair of glasses?",
+            "reply": "Two pairs stacked up and I'd see… four of you, {name}! Hee hee, off you go and gather the pages."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-giay-uot",
@@ -1058,7 +1078,31 @@
           "text": "Không được ghi bừa đâu Khỉ Tí Toáy ơi, danh sách phải đúng!",
           "reply": "Khỉ Tí Toáy gãi đầu gãi tai: thôi được, tớ chỉ đùa một tí thôi mà!"
         }
-      ]
+      ],
+      "en": {
+        "title": "The smudgiest name",
+        "goTo": "Go back to the librarian's desk, Thỏ Đậu has his nose pressed to the list",
+        "lines": [
+          "Oh look, there's still one great big ink blot! Whose name is that? Maybe… mine? I've forgotten which story I signed up for.",
+          "I've pushed my glasses right up to my nose and still all I see is a round blot like a cat's paw print.",
+          "Just guess, Miss! Write down the one about the chicken who can't swim, quick!",
+          "{name}, help me think. What's the right thing to do?"
+        ],
+        "choices": [
+          {
+            "text": "Ask Thỏ Đậu again before writing it down.",
+            "reply": "Thỏ Đậu closes his eyes and thinks for ages… Oh! I picked Ếch xanh đi học (Green Frog Goes to School)! This time I'll write my own name."
+          },
+          {
+            "text": "Copy the list onto a fresh sheet and keep it in the book cupboard so it stays dry.",
+            "reply": "Mèo Kính nods: I'll keep it in a wooden box with a lid, far away from the window."
+          },
+          {
+            "text": "No guessing, Khỉ Tí Toáy, the list has to be right!",
+            "reply": "Khỉ Tí Toáy scratches his head: okay, okay, I was only joking a little!"
+          }
+        ]
+      }
     },
     {
       "id": "to-1-lop-2a",
@@ -1242,14 +1286,22 @@
       "title": "Thẻ phòng đọc của em",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cô Mèo Kính trao cho {name} một tấm thẻ phòng đọc in hình cặp kính, tên em đứng ngay dòng đầu tiên, cô viết nắn nót bằng mực không phai."
+      "text": "Cô Mèo Kính trao cho {name} một tấm thẻ phòng đọc in hình cặp kính, tên em đứng ngay dòng đầu tiên, cô viết nắn nót bằng mực không phai.",
+      "en": {
+        "title": "Your own reading-room card",
+        "text": "Mèo Kính hands {name} a reading-room card printed with a pair of glasses. Your name sits on the very first line, written neatly in ink that never runs."
+      }
     },
     {
       "id": "mo-bai-13",
       "title": "Tiếng khóc giờ ra chơi",
       "kind": "next",
       "trigger": "auto",
-      "text": "Trống ra chơi vừa điểm, sân chơi ồn ào như chợ, vậy mà Gà Con Ri lại ngồi một mình dưới gốc phượng cạnh xích đu sụt sịt: tớ nhớ nhà, tớ chưa thấy yêu trường chút nào…"
+      "text": "Trống ra chơi vừa điểm, sân chơi ồn ào như chợ, vậy mà Gà Con Ri lại ngồi một mình dưới gốc phượng cạnh xích đu sụt sịt: tớ nhớ nhà, tớ chưa thấy yêu trường chút nào…",
+      "en": {
+        "title": "Crying at break time",
+        "text": "The break-time drum has just sounded and the playground is as noisy as a market, yet Gà Con Ri sits alone under the flame tree by the swings, sniffling: I miss home, I don't love school one little bit yet…"
+      }
     }
   ],
   "reward": {

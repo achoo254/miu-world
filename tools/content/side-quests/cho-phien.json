@@ -28,7 +28,19 @@
           "reward": "Khách nào cũng khen ngon, {name} làm bánh mì chuẩn vị!",
           "next": "Sạp bánh mì mở từ sáng sớm, cháu ghé phụ cô nữa nhé.",
           "who": "{name}, phụ bếp sạp bánh mì",
-          "learn": "Ghi nhớ thứ tự và làm theo yêu cầu"
+          "learn": "Ghi nhớ thứ tự và làm theo yêu cầu",
+          "en": {
+            "title": "Bánh mì orders with Auntie Hạnh",
+            "summary": "Customers line up and call out their orders: fill each bánh mì in the order shown in the bubble.",
+            "lines": [
+              "{name}, look at this queue! Lend me a hand with the bánh mì, will you?",
+              "Read the order bubble and add the fillings from left to right, in that order."
+            ],
+            "choice": "Apron's on, Auntie!",
+            "prompt": "Make {goal} bánh mì exactly as ordered!",
+            "reward": "Every customer says it's delicious. {name} makes a proper bánh mì!",
+            "next": "The bánh mì stall opens at dawn, so come and help me again soon."
+          }
         },
         {
           "game": "stack-catch",
@@ -43,7 +55,19 @@
           "reward": "Chồng bánh cao chót vót, {name} giữ tay vững thật!",
           "next": "Ngày nào cô cũng nướng bánh, mẻ sau lại nhờ cháu đỡ nhé.",
           "who": "{name}, người đỡ bánh vững tay",
-          "learn": "Điều khiển tay đều và giữ thăng bằng"
+          "learn": "Điều khiển tay đều và giữ thăng bằng",
+          "en": {
+            "title": "Catch the cake stack with Auntie Hạnh",
+            "summary": "Cakes drop from above: slide the plate smoothly so the stack grows tall without toppling.",
+            "lines": [
+              "A fresh batch of bánh bò just came out of the oven. Catch them for me, {name}!",
+              "Move the plate gently, dear. Jerk it and the whole stack tips over."
+            ],
+            "choice": "I'll catch every one!",
+            "prompt": "Stack the cakes {goal} layers high!",
+            "reward": "That stack is sky-high! {name} has such steady hands!",
+            "next": "I bake every single day, so I'll need your steady hands for the next batch."
+          }
         },
         {
           "game": "fruit-merge",
@@ -58,7 +82,19 @@
           "reward": "Cả quả dưa hấu to tướng luôn, {name} khéo ghê!",
           "next": "Thùng quả lúc nào cũng đầy ở gian đồ ăn, cháu ghé chơi tiếp nhé.",
           "who": "{name}, người sắp quả thông minh",
-          "learn": "Tính trước chỗ thả và gộp nhóm"
+          "learn": "Tính trước chỗ thả và gộp nhóm",
+          "en": {
+            "title": "Merge the falling fruit with Auntie Hạnh",
+            "summary": "Drop fruit into the crate: two of the same that touch merge into a bigger one.",
+            "lines": [
+              "My fruit crate is such a jumble, {name}!",
+              "Drop the fruit so two of a kind touch, and they'll merge into a bigger one."
+            ],
+            "choice": "Let me sort it out!",
+            "prompt": "Score {goal} points merging fruit!",
+            "reward": "A giant watermelon! {name}, you're so clever!",
+            "next": "The crate by the food stall is always full, so drop by and play again."
+          }
         }
       ]
     },
@@ -94,7 +130,19 @@
           "reward": "Vịt ngã rạp hết rồi, {name} bắn chuẩn ghê!",
           "next": "Gian trò chơi mở tới tối, cháu quay lại bắn tiếp nhé.",
           "who": "{name}, xạ thủ súng nước nhí",
-          "learn": "Điều khiển tay và ngắm mục tiêu di động"
+          "learn": "Điều khiển tay và ngắm mục tiêu di động",
+          "en": {
+            "title": "Fairground water pistols with Uncle Tí",
+            "summary": "The game stall is full of rubber ducks: hold to spray water, knock the ducks over and hit the round targets.",
+            "lines": [
+              "My game stall is open! Want to have a shot, {name}?",
+              "Hold your finger down to spray. When the water runs out, let go to pump it back up."
+            ],
+            "choice": "Watch me hit them all!",
+            "prompt": "Score {goal} points with the water pistol!",
+            "reward": "Every duck is down! {name} has a sharp aim!",
+            "next": "The game stall stays open till night, so come back for another round."
+          }
         },
         {
           "game": "dart-wobble",
@@ -109,7 +157,19 @@
           "reward": "Phập! Trúng hồng tâm, {name} giỏi hơn cả chú!",
           "next": "Chú còn cả hộp phi tiêu, lúc nào cháu cũng tới phóng được.",
           "who": "{name}, tay phi tiêu bình tĩnh",
-          "learn": "Kiên nhẫn chờ đúng thời điểm"
+          "learn": "Kiên nhẫn chờ đúng thời điểm",
+          "en": {
+            "title": "Throw darts with Uncle Tí",
+            "summary": "The aim circles around the board: tap just as it crosses the bullseye to throw.",
+            "lines": [
+              "Here's the dartboard, {name}. Show me how well you can aim!",
+              "The aim keeps circling. Wait until it's right in the middle, then throw."
+            ],
+            "choice": "I'll wait for the perfect moment!",
+            "prompt": "Score {goal} points with the darts!",
+            "reward": "Thunk! Bullseye! {name} is better than me!",
+            "next": "I've got a whole box of darts, so you can throw here any time."
+          }
         },
         {
           "game": "ring-toss-duck",
@@ -124,7 +184,19 @@
           "reward": "Vòng nào cũng vào, {name} ôm quà về nhé!",
           "next": "Hàng vịt gỗ còn chờ cháu ở phố chợ đấy, ném tiếp nha.",
           "who": "{name}, cao thủ ném vòng",
-          "learn": "Ước lượng khoảng cách và hướng"
+          "learn": "Ước lượng khoảng cách và hướng",
+          "en": {
+            "title": "Ring the ducks with Uncle Tí",
+            "summary": "Wooden ducks stand near and far: judge the distance and direction so the ring drops over a duck's neck.",
+            "lines": [
+              "{name}, land a ring on a duck's neck and you win a prize!",
+              "First tap picks how far, second tap picks the direction. Aim for a duck!"
+            ],
+            "choice": "I want that prize!",
+            "prompt": "Ring {goal} duck necks!",
+            "reward": "Every ring went on! Take your prizes home, {name}!",
+            "next": "The wooden ducks are waiting for you on the market street. Come toss again."
+          }
         },
         {
           "game": "inflate-balloon",
@@ -139,7 +211,19 @@
           "reward": "Bóng bay đủ màu bay lượn, {name} bơm khéo quá!",
           "next": "Ngày phiên nào chú cũng bán bóng bay, cháu tới phụ tiếp nhé.",
           "who": "{name}, người bơm bóng khéo léo",
-          "learn": "Ước lượng độ lớn và dừng đúng lúc"
+          "learn": "Ước lượng độ lớn và dừng đúng lúc",
+          "en": {
+            "title": "Blow up balloons to sell with Uncle Tí",
+            "summary": "Pump each balloon to fit the green ring to sell to the little ones. Too much and it pops!",
+            "lines": [
+              "The kids are begging for balloons! Pump some up for me, {name}?",
+              "Hold to pump and let go when it fits the green ring, or it'll go POP."
+            ],
+            "choice": "I'll pump them just right!",
+            "prompt": "Pump up {goal} balloons to just the right size!",
+            "reward": "Balloons of every colour, floating everywhere! {name} pumps like a pro!",
+            "next": "I sell balloons every market day, so come and help me again."
+          }
         }
       ]
     },
@@ -171,7 +255,19 @@
           "reward": "Thùng xe gọn gàng tăm tắp, {name} xếp hàng siêu thật!",
           "next": "Bến kênh xe ra vào liên tục, mai lại xếp hàng với tớ nha.",
           "who": "{name}, bạn xếp hàng lên xe",
-          "learn": "Sắp xếp hình khối vào chỗ trống"
+          "learn": "Sắp xếp hình khối vào chỗ trống",
+          "en": {
+            "title": "Load the lorry with Voi Bốc Hàng",
+            "summary": "Drag each crate onto the lorry and fill a whole row or column so it can drive off.",
+            "lines": [
+              "The lorry's at the wharf! Help me pack the crates, {name}!",
+              "Drag the crates into the gaps. Fill a row and off it goes."
+            ],
+            "choice": "I'll pack the neatest load!",
+            "prompt": "Fill {goal} rows of crates!",
+            "reward": "Neat as a pin! {name} is a super packer!",
+            "next": "Lorries come and go at the canal wharf all day. Pack with me again tomorrow."
+          }
         },
         {
           "game": "balance-scale",
@@ -186,7 +282,19 @@
           "reward": "Cân thẳng tắp rồi, {name} tính nhanh như chớp!",
           "next": "Ngày phiên nào cũng có hàng cần cân, tớ chờ cậu ở bến hàng.",
           "who": "{name}, người giữ cân của bến hàng",
-          "learn": "Cộng số và so sánh nặng nhẹ"
+          "learn": "Cộng số và so sánh nặng nhẹ",
+          "en": {
+            "title": "Balance the scale with Voi Bốc Hàng",
+            "summary": "The left pan holds numbered weights: pick weights for the right pan so both sides are equal.",
+            "lines": [
+              "{name}, my scale keeps tipping to one side!",
+              "Add up the numbers on the weights to match the other pan, and it'll balance."
+            ],
+            "choice": "Let me work it out!",
+            "prompt": "Balance the scale {goal} times!",
+            "reward": "Perfectly level! {name} adds as fast as lightning!",
+            "next": "There's always cargo to weigh on market day. I'll wait for you at the wharf."
+          }
         }
       ]
     },
@@ -217,7 +325,19 @@
           "reward": "Meo meo, {name} gắp toàn trúng, tài thế!",
           "next": "Máy gắp vẫn đặt ở chân cầu rồng, cậu tới gắp nữa nha.",
           "who": "{name}, cao thủ máy gắp",
-          "learn": "Căn vị trí theo hai chiều"
+          "learn": "Căn vị trí theo hai chiều",
+          "en": {
+            "title": "Claw machine with Mèo Gắp Thú",
+            "summary": "Move the claw right, then back, then drop it to grab the soft toy you want.",
+            "lines": [
+              "The new claw machine just arrived! Grab one, {name}!",
+              "Hold to move the claw, let go to stop. Line it up right above a toy."
+            ],
+            "choice": "I want the teddy bear!",
+            "prompt": "Grab {goal} soft toys!",
+            "reward": "Meow! {name} never misses. What a talent!",
+            "next": "The claw machine stays at the foot of the dragon bridge. Come grab some more."
+          }
         },
         {
           "game": "shell-game",
@@ -232,7 +352,19 @@
           "reward": "Không qua được mắt {name}, tớ chịu thua rồi!",
           "next": "Tớ sẽ tập đảo bát nhanh hơn, hẹn cậu ở chân cầu nhé.",
           "who": "{name}, người dõi theo tinh mắt",
-          "learn": "Tập trung chú ý và ghi nhớ"
+          "learn": "Tập trung chú ý và ghi nhớ",
+          "en": {
+            "title": "Find the pearl with Mèo Gắp Thú",
+            "summary": "Three bowls swap places in a flash: follow the one hiding the pearl and point to it.",
+            "lines": [
+              "{name}, the pearl is hiding under this bowl!",
+              "I shuffle really fast, so keep your eyes glued to it."
+            ],
+            "choice": "I've got sharp eyes!",
+            "prompt": "Find the pearl {goal} times!",
+            "reward": "Nothing gets past {name}! I give up!",
+            "next": "I'll practise shuffling faster. See you at the foot of the bridge!"
+          }
         },
         {
           "game": "match-3",
@@ -247,7 +379,19 @@
           "reward": "Lốp bốp lốp bốp, {name} xếp quả giỏi quá!",
           "next": "Rổ quả lúc nào cũng đầy, ghé chân cầu rồng chơi tiếp nhé.",
           "who": "{name}, người xếp quả nhanh trí",
-          "learn": "Nhận ra mẫu giống nhau và tính trước"
+          "learn": "Nhận ra mẫu giống nhau và tính trước",
+          "en": {
+            "title": "Match three fruits with Mèo Gắp Thú",
+            "summary": "Swap two neighbouring fruits to line up three of a kind and make them pop.",
+            "lines": [
+              "My fruit basket is a total mess, {name}! Help!",
+              "Swap them so three of the same line up, and pop, pop, pop!"
+            ],
+            "choice": "Let me make them pop!",
+            "prompt": "Pop {goal} fruits!",
+            "reward": "Pop, pop, pop! {name} is great at matching fruit!",
+            "next": "The basket is always full. Come play again by the dragon bridge."
+          }
         }
       ]
     },
@@ -279,7 +423,19 @@
           "reward": "Con tò he rồng bay phượng múa lung linh, {name} nặn khéo tay quá!",
           "next": "Góc sạp hoa rực rỡ lúc nào cũng thơm lừng mùi bột nếp đợi cháu.",
           "who": "{name}, nghệ nhân tò he nhí tài hoa",
-          "learn": "Ước lượng độ dài chính xác theo thước đo"
+          "learn": "Ước lượng độ dài chính xác theo thước đo",
+          "en": {
+            "title": "Colourful tò he with Cô Nặn Tò He",
+            "summary": "Roll the soft, colourful rice dough to the right length on the ruler, then cut and shape a tò he figure.",
+            "lines": [
+              "This colourful rice dough smells of pomelo blossom, {name}!",
+              "Roll the dough to the customer's centimetre mark, then cut it."
+            ],
+            "choice": "I'll roll some tò he right now!",
+            "prompt": "Roll the dough to size and finish {goal} lovely tò he figures!",
+            "reward": "Dragons and phoenixes in every colour! {name} has clever hands!",
+            "next": "The flower stall corner always smells of sweet rice dough, waiting for you."
+          }
         },
         {
           "game": "pottery-wheel",
@@ -294,7 +450,19 @@
           "reward": "Chiếc bình gốm tròn xoe duyên dáng, {name} vuốt đất sét điêu luyện ghê!",
           "next": "Bàn xoay gốm bên sạp hoa luôn rộn ràng đón cháu đến trổ tài nhào nặn.",
           "who": "{name}, thợ gốm nhỏ tuổi tài năng của phiên chợ",
-          "learn": "Khéo léo điều khiển ngón tay theo đường viền mẫu"
+          "learn": "Khéo léo điều khiển ngón tay theo đường viền mẫu",
+          "en": {
+            "title": "Pottery wheel with Cô Nặn Tò He",
+            "summary": "Cup your hand gently around the spinning clay and shape it into a graceful vase.",
+            "lines": [
+              "Look, {name}, the village pottery wheel is spinning fast!",
+              "Smooth the clay with your fingertip so it fits the golden outline."
+            ],
+            "choice": "I'll shape a flower vase!",
+            "prompt": "Shape {goal} glazed pottery vases!",
+            "reward": "A round, graceful vase! {name} shapes clay like a master!",
+            "next": "The pottery wheel by the flower stall is always ready for your clay skills."
+          }
         },
         {
           "game": "dong-ho-print",
@@ -309,7 +477,19 @@
           "reward": "Màu sắc tranh Đông Hồ tươi rói óng ánh, {name} in tranh đẹp tuyệt vời!",
           "next": "Xấp giấy điệp trắng ngần đầu dãy sạp hoa vẫn chờ cháu đến in tranh.",
           "who": "{name}, thợ in tranh dân gian khéo léo",
-          "learn": "Canh đúng thời điểm giấy lướt qua khuôn in"
+          "learn": "Canh đúng thời điểm giấy lướt qua khuôn in",
+          "en": {
+            "title": "Đông Hồ printing with Cô Nặn Tò He",
+            "summary": "Press the carved woodblock onto the shimmering paper at just the right moment so the folk picture shows clearly.",
+            "lines": [
+              "{name}, would you like to print the bright yin-yang pig picture yourself?",
+              "When the paper slides under the glowing block, tap to press the print."
+            ],
+            "choice": "I'll press a Đông Hồ print!",
+            "prompt": "Print each colour layer just right to finish {goal} Đông Hồ pictures!",
+            "reward": "Bright, shimmering Đông Hồ colours! {name} prints beautifully!",
+            "next": "A stack of pearly paper at the flower stall is waiting for your prints."
+          }
         }
       ]
     },
@@ -341,7 +521,19 @@
           "reward": "Chiếc bánh kem rực rỡ ngọt ngào làm khách hàng của {name} mê tít!",
           "next": "Cửa tiệm bánh kem trước sạp rau hoa luôn thơm lừng đón cháu ghé.",
           "who": "{name}, chuyên gia trang trí bánh sinh nhật nhí",
-          "learn": "Đếm đúng số lượng trang trí theo đơn hàng"
+          "learn": "Đếm đúng số lượng trang trí theo đơn hàng",
+          "en": {
+            "title": "Decorate birthday cakes with Chú Bán Bánh Kem",
+            "summary": "Put candles, strawberries and sweets on the soft sponge, as many as each young customer ordered.",
+            "lines": [
+              "So many birthday cake orders today, {name}!",
+              "Read the order, then put the right number of strawberries and candles on top."
+            ],
+            "choice": "I'll decorate a cake now!",
+            "prompt": "Decorate {goal} sweet-smelling cakes just as ordered!",
+            "reward": "Such a bright, sweet cake! {name}'s customers absolutely love it!",
+            "next": "The cake shop by the vegetable and flower stalls always smells lovely. Pop by!"
+          }
         },
         {
           "game": "fruit-skewer",
@@ -356,7 +548,19 @@
           "reward": "Xiên hoa quả đủ màu đẹp như tranh, {name} nhận biết mẫu giỏi ghê!",
           "next": "Khay hoa quả tươi rói của chú lúc nào cũng sẵn sàng đón cháu phụ.",
           "who": "{name}, phụ bếp nhanh trí xâu xiên hoa quả",
-          "learn": "Nhận biết quy luật chuỗi hình ảnh lặp lại"
+          "learn": "Nhận biết quy luật chuỗi hình ảnh lặp lại",
+          "en": {
+            "title": "Fruit skewers with Chú Bán Bánh Kem",
+            "summary": "Pick the right fresh fruit off the conveyor belt to follow the repeating colour pattern on the skewer.",
+            "lines": [
+              "Don't these rainbow fruit skewers look yummy, {name}?",
+              "Look at the pattern of the fruit so far, then pick the one that comes next."
+            ],
+            "choice": "I'll follow the fruit pattern!",
+            "prompt": "Follow the pattern to finish {goal} sweet fruit skewers!",
+            "reward": "Colourful as a painting! {name} is great at spotting patterns!",
+            "next": "My tray of fresh fruit is always ready whenever you want to help."
+          }
         },
         {
           "game": "pinball",
@@ -371,7 +575,19 @@
           "reward": "Chuông reo leng keng rực rỡ, {name} giữ bi điệu nghệ tuyệt vời!",
           "next": "Chiếc máy pinball đèn hoa rực rỡ ở chợ luôn mở nút chờ cháu chơi.",
           "who": "{name}, tay bấm bi pinball cừ khôi phiên chợ",
-          "learn": "Phản xạ nhanh hai tay giữ bóng nảy liên tục"
+          "learn": "Phản xạ nhanh hai tay giữ bóng nảy liên tục",
+          "en": {
+            "title": "Fairground pinball with Chú Bán Bánh Kem",
+            "summary": "Flip the left and right flippers to keep the steel ball bouncing into golden bells and star targets.",
+            "lines": [
+              "The pinball machine with all its flashing lights is so much fun, {name}!",
+              "Tap each side of the screen to flip, and don't let the ball fall in the hole."
+            ],
+            "choice": "I'll flip the ball back up!",
+            "prompt": "Keep the ball bouncing to score {goal} points!",
+            "reward": "The bells are ringing! {name} keeps that ball flying like a champ!",
+            "next": "The flower-lit pinball machine at the market is always switched on for you."
+          }
         }
       ]
     },
@@ -403,7 +619,19 @@
           "reward": "Khay tiền vừa khít không thừa một xu, {name} tính tiền giỏi như người lớn!",
           "next": "Quầy thu ngân dãy hàng cân đong lúc nào cũng chào đón cháu tới giúp.",
           "who": "{name}, thu ngân nhí tính toán chuẩn xác",
-          "learn": "Cộng nhẩm các mệnh giá tiền Việt Nam"
+          "learn": "Cộng nhẩm các mệnh giá tiền Việt Nam",
+          "en": {
+            "title": "Pay the exact amount with Bác Thu Ngân Vui Vẻ",
+            "summary": "Choose banknotes of different values for the tray so they add up to exactly the price.",
+            "lines": [
+              "The market is packed with shoppers today, {name}!",
+              "Look at the price, then put exactly the right notes in the tray."
+            ],
+            "choice": "I'll count out the exact money!",
+            "prompt": "Pay exactly right for {goal} market items!",
+            "reward": "Not a single đồng too much! {name} counts money like a grown-up!",
+            "next": "The till by the weighing stalls always welcomes a helper like you."
+          }
         },
         {
           "game": "jar-estimate",
@@ -418,7 +646,19 @@
           "reward": "Đoán sát sạt số kẹo luôn, đôi mắt của {name} ước lượng chuẩn ghê!",
           "next": "Những lọ kẹo đủ màu trên kệ cân đong luôn đợi cháu ghé ước lượng.",
           "who": "{name}, bạn nhỏ ước lượng số lượng tinh tế",
-          "learn": "Ước lượng nhanh số lượng vật thể bằng mắt"
+          "learn": "Ước lượng nhanh số lượng vật thể bằng mắt",
+          "en": {
+            "title": "Guess the sweets in the jar with Bác Thu Ngân Vui Vẻ",
+            "summary": "Take a quick look, guess how many sweets are in the glass jar, then drag the needle to your best guess.",
+            "lines": [
+              "{name}, can you guess how many sweets are in this glass jar?",
+              "Take a three-second look, then drag the needle to your guess."
+            ],
+            "choice": "I'll make my guess now!",
+            "prompt": "Guess close to the number of sweets in {goal} glass jars!",
+            "reward": "So close! {name} has a real eye for numbers!",
+            "next": "The jars of colourful sweets on the shelf are waiting for your next guess."
+          }
         },
         {
           "game": "customer-memory",
@@ -433,7 +673,19 @@
           "reward": "Khách nào cũng hài lòng tươi cười cảm ơn {name} phục vụ chu đáo!",
           "next": "Cửa hàng cân đong tấp nập ngày phiên luôn cần người nhớ dai như cháu.",
           "who": "{name}, người phục vụ có trí nhớ tuyệt hảo",
-          "learn": "Ghi nhớ hình ảnh tức thời và xử lý nhanh"
+          "learn": "Ghi nhớ hình ảnh tức thời và xử lý nhanh",
+          "en": {
+            "title": "Remember the orders with Bác Thu Ngân Vui Vẻ",
+            "summary": "Remember what each customer asked for, then hand the right item to each person.",
+            "lines": [
+              "I'm run off my feet! {name}, help me remember what everyone ordered!",
+              "Once the bubble disappears, tap the customer and give them the right item."
+            ],
+            "choice": "I'll remember every order!",
+            "prompt": "Remember and serve {goal} customers correctly!",
+            "reward": "Every customer smiles and thanks {name} for such kind service!",
+            "next": "The busy weighing stalls always need someone with a memory like yours."
+          }
         }
       ]
     },
@@ -465,7 +717,19 @@
           "reward": "Những cú va chạm nảy lửa giòn giã, tay lái {name} cừ khôi thật!",
           "next": "Sàn xe điện góc quảng trường chợ lúc nào cũng rộn ràng tiếng cười.",
           "who": "{name}, tay đua xe đụng dũng mãnh quả cảm",
-          "learn": "Định hướng di chuyển và phán đoán đường chạy"
+          "learn": "Định hướng di chuyển và phán đoán đường chạy",
+          "en": {
+            "title": "Bumper cars with Anh Lái Xe Đụng",
+            "summary": "Steer your round electric car and bump the other cars off the floor to the cheerful music.",
+            "lines": [
+              "Come onto the bumper car floor, {name}. It's a real thrill!",
+              "Drag your finger to steer, turn hard, and bump the others to the edge."
+            ],
+            "choice": "I'll bump them all off!",
+            "prompt": "Bump {goal} cars off the floor!",
+            "reward": "Bang, bang, crash! {name} is an ace driver!",
+            "next": "The bumper cars in the market square are always full of laughter."
+          }
         },
         {
           "game": "who-swapped",
@@ -480,7 +744,19 @@
           "reward": "Mắt em tinh như mắt cú mèo, không món nào lọt qua mắt {name}!",
           "next": "Trò chơi đổi chỗ vui nhộn ở góc quảng trường chợ đợi em đến phá án.",
           "who": "{name}, thám tử quan sát tinh anh nhạy bén",
-          "learn": "Ghi nhớ không gian vị trí và phát hiện thay đổi"
+          "learn": "Ghi nhớ không gian vị trí và phát hiện thay đổi",
+          "en": {
+            "title": "Who swapped? with Anh Lái Xe Đụng",
+            "summary": "Look quickly at where the items are, then spot the two that swapped places when the curtain lifts.",
+            "lines": [
+              "{name}, take a good look at the counter before the curtain drops!",
+              "When it opens, two things have swapped. Tap the two that moved."
+            ],
+            "choice": "I'll find the swap!",
+            "prompt": "Spot the swapped items {goal} times!",
+            "reward": "Eyes as sharp as an owl! Nothing slips past {name}!",
+            "next": "The swapping game in the market square is waiting for its detective."
+          }
         },
         {
           "game": "seesaw-logic",
@@ -495,7 +771,19 @@
           "reward": "Suy luận logic đỉnh cao, {name} tìm ra bạn nặng nhất chuẩn không cần chỉnh!",
           "next": "Cặp bập bênh góc chợ phiên vẫn đung đưa đợi em ra so tài suy luận.",
           "who": "{name}, nhà logic học tí hon của hội chợ",
-          "learn": "Tư duy bắc cầu so sánh nặng nhẹ logic"
+          "learn": "Tư duy bắc cầu so sánh nặng nhẹ logic",
+          "en": {
+            "title": "Seesaw weigh-in with Anh Lái Xe Đụng",
+            "summary": "Watch which way the seesaws tip to work out which animal is the heaviest or the lightest.",
+            "lines": [
+              "The bears and rabbits are on the seesaws, comparing weights, {name}!",
+              "The end that dips down is heavier. Now guess who's the heaviest!"
+            ],
+            "choice": "I'll find the heaviest one!",
+            "prompt": "Work out the heaviest or lightest animal {goal} times!",
+            "reward": "Brilliant reasoning! {name} found the heaviest one, spot on!",
+            "next": "The seesaws at the market are still swaying, waiting for your next puzzle."
+          }
         }
       ]
     },
@@ -527,7 +815,19 @@
           "reward": "Giỏ hàng đầy ắp đúng y lời mẹ dặn, {name} đi chợ đảm đang quá!",
           "next": "Gian hàng tạp hóa ngày phiên lúc nào cũng mở cửa đón em ghé mua.",
           "who": "{name}, bạn nhỏ đi chợ tháo vát đảm đang",
-          "learn": "Ghi nhớ danh sách đồ vật bằng trí nhớ ngắn hạn"
+          "learn": "Ghi nhớ danh sách đồ vật bằng trí nhớ ngắn hạn",
+          "en": {
+            "title": "Remember the shopping list with Chị Tiệm Tạp Hóa",
+            "summary": "Remember Mum's shopping list, then walk along the shelves and put the right things in the basket.",
+            "lines": [
+              "Mum sent you a shopping list, {name}!",
+              "Look at each item carefully, then pick the right ones around the shop."
+            ],
+            "choice": "I'll get exactly what Mum asked for!",
+            "prompt": "Get every item right on {goal} shopping trips!",
+            "reward": "A full basket, just as Mum asked! {name} is a great shopper!",
+            "next": "The corner shop is open every market day, so drop in whenever you like."
+          }
         },
         {
           "game": "tile-triple",
@@ -542,7 +842,19 @@
           "reward": "Kệ hàng gọn gàng ngăn nắp nhờ tài sắp xếp khéo léo của {name}!",
           "next": "Các kiện đồ chơi mới về trước gian tạp hóa luôn đợi em ra xếp.",
           "who": "{name}, chuyên gia xếp đồ ngăn nắp của tiệm",
-          "learn": "Phân loại theo bộ ba và quản lý ô trống khay"
+          "learn": "Phân loại theo bộ ba và quản lý ô trống khay",
+          "en": {
+            "title": "Triple tiles with Chị Tiệm Tạp Hóa",
+            "summary": "Pick uncovered tiles into the tray; three of the same kind together vanish.",
+            "lines": [
+              "The toy shelf is piled up in a mess, {name}!",
+              "Tap the bright tiles to drop them in the tray and gather sets of three."
+            ],
+            "choice": "I'll tidy them into threes!",
+            "prompt": "Clear {goal} sets of three matching tiles!",
+            "reward": "The shelf is spick and span thanks to {name}'s tidying!",
+            "next": "New boxes of toys arrive at the corner shop, all waiting for you to sort."
+          }
         },
         {
           "game": "knot-untangle",
@@ -557,7 +869,19 @@
           "reward": "Chùm bóng bay thẳng thớm rực rỡ sắc màu, {name} gỡ rối tài tình ghê!",
           "next": "Gian hàng tạp hóa luôn sẵn lòng chào đón em ghé chơi gỡ dây bóng.",
           "who": "{name}, bạn nhỏ gỡ rối dây thừng kiên nhẫn",
-          "learn": "Tư duy hình học phẳng và sắp xếp không gian"
+          "learn": "Tư duy hình học phẳng và sắp xếp không gian",
+          "en": {
+            "title": "Untangle the strings with Chị Tiệm Tạp Hóa",
+            "summary": "Move the balloons around until none of their tangled strings cross each other.",
+            "lines": [
+              "The wind has tangled the shop's balloons, {name}! The strings are all crossed!",
+              "Pull the balloons into open space until every red line is gone."
+            ],
+            "choice": "I'll untangle them now!",
+            "prompt": "Untangle {goal} bunches of crossed strings!",
+            "reward": "Straight strings and bright balloons! {name} is a brilliant untangler!",
+            "next": "The corner shop is always happy to see you, especially with tangled balloons."
+          }
         }
       ]
     }

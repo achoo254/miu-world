@@ -62,7 +62,26 @@
           "text": "Bánh Bao có nhớ tớ không?",
           "reply": "Nhớ lắm, ngày nào tớ cũng ra cổng ngóng cậu!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Meet Bánh Bao the Cat",
+        "goTo": "Go to the front gate of the house with the red tiled roof",
+        "lines": [
+          "Meow, {name} is home! I've been guarding the gate since noon, you know.",
+          "Tonight the family is cooking a lovely dinner to welcome you. Mom is at the chicken coop, Dad is in the little shed in the garden.",
+          "The wind blew a few things all over the front yard. Could you pick up a letter, a yellow daisy and a little potted plant for me?"
+        ],
+        "choices": [
+          {
+            "text": "I'll go and pick them up right now!",
+            "reply": "You're the best! I'll wait for you up on the gate roof."
+          },
+          {
+            "text": "Did you miss me, Bánh Bao?",
+            "reply": "Loads! Every single day I sat by the gate watching for you!"
+          }
+        ]
+      }
     },
     {
       "id": "nhat-do-ngoai-san",
@@ -212,7 +231,22 @@
           "text": "Trứng hấp thịt bùi béo",
           "consequence": "Mẹ hào hứng chuẩn bị xửng hấp nóng hổi cho cả gia đình!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Choose a dish for dinner",
+        "goTo": "Talk to Mom at the chicken coop",
+        "choices": [
+          {
+            "text": "Crispy fried eggs with mustard greens",
+            "consequence": "Mom smiles and promises a plate of golden, sweet-smelling fried eggs!"
+          },
+          {
+            "text": "Rich steamed eggs with minced pork",
+            "consequence": "Mom happily gets the steamer going, piping hot for the whole family!"
+          }
+        ],
+        "prompt": "What would {name} like Mom to cook tonight for the whole family to enjoy?"
+      }
     },
     {
       "id": "boss-banh-bao",
@@ -294,7 +328,12 @@
       "kind": "reward",
       "target": "meo-banh-bao",
       "text": "Đèn lồng trong nhà thắp sáng, mâm cơm có trứng chiên, rau cải và canh cá. Cả nhà quây quần bên bàn ăn, Mèo Bánh Bao cuộn tròn dưới chân {name}.",
-      "goTo": "Về cổng trước nhà gọi Mèo Bánh Bao vào ăn cơm"
+      "goTo": "Về cổng trước nhà gọi Mèo Bánh Bao vào ăn cơm",
+      "en": {
+        "title": "Family dinner",
+        "goTo": "Go back to the front gate and call Bánh Bao the Cat in for dinner",
+        "text": "The lanterns inside light up, and the table holds fried eggs, mustard greens and fish soup. The family gathers round to eat, and Bánh Bao curls up at {name}'s feet."
+      }
     },
     {
       "id": "xem-thoi-khoa-bieu",
@@ -302,7 +341,11 @@
       "kind": "next",
       "trigger": "auto",
       "target": "nha-me",
-      "text": "Ăn xong, {name} lên cầu thang tới góc học tập: tấm bảng trên bàn học là thời khóa biểu, còn tấm lịch cạnh tủ quần áo nói ngày mai mặc đồng phục nào."
+      "text": "Ăn xong, {name} lên cầu thang tới góc học tập: tấm bảng trên bàn học là thời khóa biểu, còn tấm lịch cạnh tủ quần áo nói ngày mai mặc đồng phục nào.",
+      "en": {
+        "title": "Getting ready for tomorrow",
+        "text": "After dinner, {name} climbs the stairs to the study corner: the board on the desk is the class timetable, and the calendar by the wardrobe says which uniform to wear tomorrow."
+      }
     }
   ],
   "reward": {

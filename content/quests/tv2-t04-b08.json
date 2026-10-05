@@ -82,7 +82,27 @@
           "text": "Cậu gầm to thế, sao lại trốn?",
           "reply": "Hổ Sọc gãi tai: gầm to là để che tiếng tim tớ đập thình thịch đấy."
         }
-      ]
+      ],
+      "en": {
+        "title": "Hổ Sọc kicks alone",
+        "goTo": "Go to the village pitch, Hổ Sọc is hiding in the bushes beside the goal",
+        "lines": [
+          "Grrr! Who's there? Oh, it's {name}… I'm not sad. I'm just roaring to… feel less sad.",
+          "Both teams are picked and nobody chose Hổ Sọc. Every ball he kicks flies straight into the bushes.",
+          "So I crawl into the bushes to fetch it. And once I'm in there… I might as well stay.",
+          "One, two! Three balls are still lost around the bamboo hedge. Grab them, {name}, then we'll make a plan!"
+        ],
+        "choices": [
+          {
+            "text": "Let me fetch the balls with you!",
+            "reply": "Hổ Sọc pokes his stripy head out of the bush: really? Grrr… oops, I mean, thank you!"
+          },
+          {
+            "text": "You roar so loudly, why are you hiding?",
+            "reply": "Hổ Sọc scratches his ear: I roar loudly to cover up my heart going thump-thump."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-bong-lac",
@@ -875,7 +895,30 @@
           "text": "Mình sẽ ra sân tập cùng cậu.",
           "reply": "Hổ Sọc ôm chầm lấy {name}, quên luôn chuyện trốn vào bụi cây."
         }
-      ]
+      ],
+      "en": {
+        "title": "Be a substitute?",
+        "goTo": "Khỉ Mít is swinging on the tamarind tree at the end of the pitch, he wants to talk to Hổ Sọc",
+        "lines": [
+          "Hổ Sọc, next week how about being the substitute for both teams? One, two, deal?",
+          "Grrr… a substitute sits on the side, doesn't he? I… I really want to crawl into the bushes.",
+          "Be honest, {name}, should I say yes?"
+        ],
+        "choices": [
+          {
+            "text": "Say yes, then train hard like the little bear!",
+            "reply": "Hổ Sọc puffs out his chest: okay! I'll be on the pitch tomorrow before the rooster even crows."
+          },
+          {
+            "text": "A substitute is still a player!",
+            "reply": "Hổ Sọc grins: true, it's got the word “player” right in it. Grrr, how exciting!"
+          },
+          {
+            "text": "I'll come and train with you.",
+            "reply": "Hổ Sọc throws his arms around {name} and forgets all about hiding in the bushes."
+          }
+        ]
+      }
     },
     {
       "id": "hoi-the-thao-giua-hiep",
@@ -947,14 +990,22 @@
       "title": "Băng đội trưởng dự bị",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hổ Sọc tặng {name} chiếc băng tay “Đội trưởng dự bị” khâu bằng lá chuối. Đúng lúc ấy, Gấu Ngáp vừa ngủ dậy ở gốc nhãn bên đầm sen, lũn cũn chạy ra sân vỗ tay cổ vũ rồi ôm chầm lấy Hổ Sọc. Lần này Hổ Sọc không gầm, chỉ cười."
+      "text": "Hổ Sọc tặng {name} chiếc băng tay “Đội trưởng dự bị” khâu bằng lá chuối. Đúng lúc ấy, Gấu Ngáp vừa ngủ dậy ở gốc nhãn bên đầm sen, lũn cũn chạy ra sân vỗ tay cổ vũ rồi ôm chầm lấy Hổ Sọc. Lần này Hổ Sọc không gầm, chỉ cười.",
+      "en": {
+        "title": "The substitute captain's armband",
+        "text": "Hổ Sọc gives {name} a “Substitute Captain” armband stitched from banana leaf. Just then Gấu Ngáp wakes up under the longan tree by the lotus pond, toddles over to cheer, and hugs Hổ Sọc tight. This time Hổ Sọc doesn't roar, he just smiles."
+      }
     },
     {
       "id": "mo-bai-9",
       "title": "Bài thơ tặng cô giáo",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ở Trường học, lớp 2A sắp đón cô giáo vào giờ đầu tiên. Có một bạn nhỏ đang cắn bút, muốn viết một bài thơ tặng cô mà chưa tìm được câu mở đầu nào đủ đẹp. {name} có muốn giúp không?"
+      "text": "Ở Trường học, lớp 2A sắp đón cô giáo vào giờ đầu tiên. Có một bạn nhỏ đang cắn bút, muốn viết một bài thơ tặng cô mà chưa tìm được câu mở đầu nào đủ đẹp. {name} có muốn giúp không?",
+      "en": {
+        "title": "A poem for the teacher",
+        "text": "At the School, class 2A is about to welcome their teacher for the first lesson. One little friend is chewing a pencil, wanting to write a poem for her but unable to find a first line lovely enough. Would {name} like to help?"
+      }
     }
   ],
   "reward": {

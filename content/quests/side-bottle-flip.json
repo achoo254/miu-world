@@ -46,7 +46,19 @@
         {
           "text": "Lộn nhào một vòng, đứng thẳng trên bục!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hi {name}! The circus bottle-flip act needs a performer.",
+          "Swipe up to toss the bottle into a flip, with just enough force so it lands upright on the stand."
+        ],
+        "choices": [
+          {
+            "text": "One flip, landed upright!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Tung chai tiếp đất đứng vững tám lần nhé!",
       "game": "bottle-flip",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Bottle flip",
+        "prompt": "Land the bottle standing 8 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bé Xiếc Vui Vẻ tung mũ chào: {name} canh lực siêu khéo, chai nào đáp xuống cũng vững vàng!"
+      "text": "Bé Xiếc Vui Vẻ tung mũ chào: {name} canh lực siêu khéo, chai nào đáp xuống cũng vững vàng!",
+      "en": {
+        "title": "Reward",
+        "text": "Bé Xiếc Vui Vẻ tips a hat: {name} judges the force so well, every bottle lands steady!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Khán giả đang vỗ tay đòi diễn tiếp, {name} cứ lại trước sân khấu sự kiện tung chai nhé."
+      "text": "Khán giả đang vỗ tay đòi diễn tiếp, {name} cứ lại trước sân khấu sự kiện tung chai nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The crowd is clapping for an encore, {name}. Come flip bottles by the event stage any time."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Bottle flip with Bé Xiếc Vui Vẻ",
+    "summary": "A soda bottle sits on the circus table: swipe to flip it over once and land it standing straight."
   }
 }

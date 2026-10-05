@@ -9,5 +9,12 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Sail with the Wind",
+    "howTo": [
+      "The boat steers itself to the buoy. {name} drags to turn the sail toward your finger.",
+      "Watch the wind arrow: a full sail moves the boat, a sail at the wrong angle leaves it stuck."
+    ]
+  }
 }

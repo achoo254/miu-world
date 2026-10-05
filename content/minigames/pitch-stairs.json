@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 15,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Musical Stairs",
+    "howTo": [
+      "Two icicles chime and light up in turn. The one on the right sounds higher.",
+      "If the second note is higher, tap the up arrow; if lower, tap the down arrow.",
+      "Get it right and {name} climbs a step!"
+    ]
+  }
 }

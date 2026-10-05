@@ -46,7 +46,19 @@
         {
           "text": "Lan tỏa sắc màu, phủ kín mặt sân!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, I bet you cannot paint this whole tiled courtyard one colour in just a few changes!",
+          "Tap a new colour so your patch spreads into the tiles next to it before your turns run out."
+        ],
+        "choices": [
+          {
+            "text": "Spread the colour, cover the courtyard!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nhuộm cùng một màu toàn bộ bàn gạch trong ba lượt nhé!",
       "game": "tile-flood",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Colour Flood",
+        "prompt": "Turn the whole board one colour within 3 moves!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mèo Xếp Khối tròn xoe mắt thán phục: cả sân gạch đã rực một màu nhờ tài tính toán của {name}!"
+      "text": "Mèo Xếp Khối tròn xoe mắt thán phục: cả sân gạch đã rực một màu nhờ tài tính toán của {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Mèo Xếp Khối stares in awe: the whole courtyard glows one colour thanks to the planning of {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mặt sàn mới với nhiều ô màu đang chờ, {name} ghé đài phun nước tượng mèo giải đố tiếp nha."
+      "text": "Mặt sàn mới với nhiều ô màu đang chờ, {name} ghé đài phun nước tượng mèo giải đố tiếp nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "A new floor of colourful tiles is waiting, {name}. Come solve it by the cat-statue fountain."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Colour flood tiles with Mèo Xếp Khối",
+    "summary": "A courtyard of coloured tiles by the fountain: pick colours that blend outward until the whole floor is one colour."
   }
 }

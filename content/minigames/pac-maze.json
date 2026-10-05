@@ -10,5 +10,13 @@
   "controls": ["swipe", "tap"],
   "duration": 90,
   "goal": 50,
-  "params": { "ghostSpeed": 1 }
+  "params": { "ghostSpeed": 1 },
+  "en": {
+    "name": "Dot Muncher",
+    "howTo": [
+      "{name} swipes up, down, left or right to roam the maze and munch dots.",
+      "The ghosts are slow, but don't let them touch you. Eat a star and they run away scared!",
+      "One point per dot. Three ghost bumps and your turn is over."
+    ]
+  }
 }

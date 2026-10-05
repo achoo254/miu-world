@@ -10,5 +10,13 @@
   "controls": ["swipe", "tap"],
   "duration": 60,
   "goal": 30,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Conveyor sorting",
+    "howTo": [
+      "Things ride along the belt. Check the signs above the two baskets: water animals, fruit, vehicles…",
+      "{name}, swipe left or right (or tap that side) to send each thing into the right basket.",
+      "The signs change partway through, so watch closely!"
+    ]
+  }
 }

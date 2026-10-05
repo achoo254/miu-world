@@ -46,7 +46,19 @@
         {
           "text": "Xe tớ sẵn sàng rồi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hey {name}, Cáo has a car waiting to race against yours!",
+          "Hold down to go fast, and let go just before a bend or your car will fly off the track."
+        ],
+        "choices": [
+          {
+            "text": "My car is ready!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chạy đủ ba vòng trước xe của Cáo nhé!",
       "game": "slot-cars",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Slot Car Racing",
+        "prompt": "Finish 3 laps ahead of the car of Cáo!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Xe của {name} về trước một mũi, Chó Cảnh Sát Còi bấm còi mừng!"
+      "text": "Xe của {name} về trước một mũi, Chó Cảnh Sát Còi bấm còi mừng!",
+      "en": {
+        "title": "Reward",
+        "text": "The car of {name} wins by a nose, and Chó Cảnh Sát Còi honks to celebrate!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cáo đòi đua lại đấy, cậu ghé ngã tư tìm tớ khi rảnh nhé."
+      "text": "Cáo đòi đua lại đấy, cậu ghé ngã tư tìm tớ khi rảnh nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Cáo wants a rematch, so come find me at the crossroads when you are free."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Slot car racing with Chó Cảnh Sát Còi",
+    "summary": "A winding track with sharp bends: hold to speed up, and let go before each corner."
   }
 }

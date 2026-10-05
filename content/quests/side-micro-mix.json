@@ -46,7 +46,19 @@
         {
           "text": "Mắt thấy tay làm, phản xạ chớp nhoáng!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The super lightning challenge is starting, {name}! Are your fingers ready?",
+          "Whatever game appears, tap or swipe within three seconds before the timer buzzes."
+        ],
+        "choices": [
+          {
+            "text": "See it, do it, lightning fast!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Vượt qua thành công mười hai thử thách tí hon liên tiếp nhé!",
       "game": "micro-mix",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Lightning Challenges",
+        "prompt": "Beat 12 tiny challenges in a row!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khỉ Tính Nhanh vỗ tay rầm rộ: {name} phản xạ nhanh như chớp giật, trò nào cũng qua mượt mà!"
+      "text": "Khỉ Tính Nhanh vỗ tay rầm rộ: {name} phản xạ nhanh như chớp giật, trò nào cũng qua mượt mà!",
+      "en": {
+        "title": "Reward",
+        "text": "Khỉ Tính Nhanh claps wildly: {name} reacts like lightning and breezes through every game!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Kho thử thách còn hàng trăm trò vui lạ lùng, {name} ghé bậc thềm sân lâu đài quẩy tiếp nhé."
+      "text": "Kho thử thách còn hàng trăm trò vui lạ lùng, {name} ghé bậc thềm sân lâu đài quẩy tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "There are hundreds more wacky challenges, {name}, so come party on the castle steps again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Lightning challenges with Khỉ Tính Nhanh",
+    "summary": "Tiny tasks pop up one after another: tap or swipe in a flash before the clock runs out."
   }
 }

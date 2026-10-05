@@ -9,5 +9,12 @@
   "controls": ["drag", "tap"],
   "duration": 60,
   "goal": 8,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Blindfold goat chase",
+    "howTo": [
+      "{name} is blindfolded and can only see close by. When the goat bleats, a ring of light spreads out.",
+      "Drag (or tap) to walk toward the bleating; get right next to the goat to catch it!"
+    ]
+  }
 }

@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Stepping Stone Memory",
+    "howTo": [
+      "Stones light up one by one, making a path across the stream.",
+      "Remember them, then tap the same stones in the same order so {name} can hop across.",
+      "Tap a wrong one and it sinks a little, so take another look at the path!"
+    ]
+  }
 }

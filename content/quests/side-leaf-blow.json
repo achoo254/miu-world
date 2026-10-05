@@ -46,7 +46,19 @@
         {
           "text": "Quạt đây, gom lá thôi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "So many leaves have fallen, {name}! I sweep and sweep but I can't keep up!",
+          "Hold the fan behind a leaf and the wind will push it into the frame for me."
+        ],
+        "choices": [
+          {
+            "text": "Fan's ready, let's gather leaves!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Thổi hai mươi chiếc lá vào khung gom nhé!",
       "game": "leaf-blow",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Blow the leaves",
+        "prompt": "Blow 20 leaves into the frame!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Lối mòn sạch bong, Thỏ Quét Lá nhảy cẫng lên: {name} đúng là thợ gom lá!"
+      "text": "Lối mòn sạch bong, Thỏ Quét Lá nhảy cẫng lên: {name} đúng là thợ gom lá!",
+      "en": {
+        "title": "Reward",
+        "text": "The trail is spotless! Thỏ Quét Lá jumps for joy: {name} is a real leaf gatherer!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mùa thu lá còn rụng nữa, Thỏ Quét Lá vẫn ở lối mòn lá vàng chờ cậu."
+      "text": "Mùa thu lá còn rụng nữa, Thỏ Quét Lá vẫn ở lối mòn lá vàng chờ cậu.",
+      "en": {
+        "title": "See you soon",
+        "text": "More leaves will fall this autumn. Thỏ Quét Lá is still on the golden trail, waiting for you."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Blow the leaves into a pile with Thỏ Quét Lá",
+    "summary": "Golden leaves cover the trail: place a fan behind each leaf to blow it into the collecting frame."
   }
 }

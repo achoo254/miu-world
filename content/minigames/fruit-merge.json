@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 150,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Fruit merge",
+    "howTo": [
+      "{name}, tap where you want to drop fruit into the box.",
+      "Two matching fruits that touch merge into a bigger one: cherry, strawberry, grape… all the way to watermelon!",
+      "Don't let the fruit pile above the line at the top of the box."
+    ]
+  }
 }

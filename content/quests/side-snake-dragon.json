@@ -46,7 +46,19 @@
         {
           "text": "Rồng rắn lên mây nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "\"Rồng rắn lên mây!\" {name}, you be the head of the dragon!",
+          "Swipe to turn and pick up more friends, but never loop into your own line."
+        ],
+        "choices": [
+          {
+            "text": "Up into the clouds we go!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đón mười lăm bạn nối vào đoàn nhé!",
       "game": "snake-dragon",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Rồng rắn lên mây (Dragon Line)",
+        "prompt": "Pick up 15 friends to join the line!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Đoàn rồng dài ngoằng luôn, {name} dẫn đầu hay ghê!"
+      "text": "Đoàn rồng dài ngoằng luôn, {name} dẫn đầu hay ghê!",
+      "en": {
+        "title": "Reward",
+        "text": "The dragon is super long now, and {name} leads it so well!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Gió trên gò vẫn lộng, tớ chờ cậu chơi rồng rắn ván sau."
+      "text": "Gió trên gò vẫn lộng, tớ chờ cậu chơi rồng rắn ván sau.",
+      "en": {
+        "title": "See you soon",
+        "text": "The hilltop is still breezy, and I will wait for our next dragon game."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Rồng rắn lên mây (the dragon-snake game) with Heo Rồng Rắn",
+    "summary": "Lead the dragon-snake line on the windy hill, picking up friends at the tail without biting yourself."
   }
 }

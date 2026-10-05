@@ -46,7 +46,19 @@
         {
           "text": "Đèn của tớ sáng rực rồi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, grab a star lantern and join the parade with me!",
+          "Walk too fast and the candle flickers out, too slow and you fall behind. Keep the needle in the green."
+        ],
+        "choices": [
+          {
+            "text": "My lantern is glowing bright!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nhặt mười chiếc bánh trung thu trên đường rước nhé!",
       "game": "lantern-parade",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Mid-Autumn lantern parade",
+        "prompt": "Pick up 10 mooncakes along the parade route!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Đèn của {name} vẫn sáng tới cuối đoàn, Lân Con Rộn Ràng nhảy múa mừng!"
+      "text": "Đèn của {name} vẫn sáng tới cuối đoàn, Lân Con Rộn Ràng nhảy múa mừng!",
+      "en": {
+        "title": "Reward",
+        "text": "The lantern of {name} stays lit to the very end, and Lân Con Rộn Ràng dances for joy!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đêm rước đèn sau tớ vẫn chờ cậu ở khu sự kiện theo mùa nhé."
+      "text": "Đêm rước đèn sau tớ vẫn chờ cậu ở khu sự kiện theo mùa nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "I will wait for you at the seasonal event square for the next lantern night too."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Star lantern parade with Lân Con Rộn Ràng",
+    "summary": "The lantern parade circles the square: keep a steady pace so the candle stays lit, and pick up mooncakes."
   }
 }

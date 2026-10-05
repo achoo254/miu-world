@@ -10,5 +10,13 @@
   "controls": ["swipe"],
   "duration": 75,
   "goal": 8,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Bottle flip",
+    "howTo": [
+      "{name}, swipe up to toss the bottle. The longer the swipe, the higher it flies.",
+      "One full flip that lands standing on a step, chair or table scores a point.",
+      "If it falls, read the hint: too soft or too hard. You have 15 bottles."
+    ]
+  }
 }

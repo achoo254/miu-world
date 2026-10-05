@@ -46,7 +46,19 @@
         {
           "text": "Mình đàn chung nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name} is here! I am practising a really happy tune for the golden-leaf festival.",
+          "When a key reaches the glowing line, tap it, and try not to let too many slip past."
+        ],
+        "choices": [
+          {
+            "text": "Let us play together!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đàn được sáu mươi chín điểm phím nhạc nhé!",
       "game": "piano-tiles",
-      "goal": 69
+      "goal": 69,
+      "en": {
+        "title": "Falling Piano Keys",
+        "prompt": "Score 69 points on the piano keys!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cả sân khấu vỗ tay, Gấu Trúc Đàn Phím cúi chào {name} cùng nhau!"
+      "text": "Cả sân khấu vỗ tay, Gấu Trúc Đàn Phím cúi chào {name} cùng nhau!",
+      "en": {
+        "title": "Reward",
+        "text": "The whole stage cheers, and Gấu Trúc Đàn Phím takes a bow alongside {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chiều nào tớ cũng tập đàn trước sân khấu lá vàng, ghé nghe nhé."
+      "text": "Chiều nào tớ cũng tập đàn trước sân khấu lá vàng, ghé nghe nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "I practise in front of the golden-leaf stage every afternoon, so come and listen."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Falling piano keys with Gấu Trúc Đàn Phím",
+    "summary": "Coloured keys fall in time with the song by the golden-leaf stage; tap each one right on the beat to make the music ring."
   }
 }

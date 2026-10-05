@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 12,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Link the Twins",
+    "howTo": [
+      "{name} taps two matching pictures to link them.",
+      "The link may bend only twice and can't pass through other pictures.",
+      "Can't find a match? Wait a moment and two pictures light up as a hint."
+    ]
+  }
 }

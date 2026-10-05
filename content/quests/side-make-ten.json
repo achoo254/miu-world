@@ -46,7 +46,19 @@
         {
           "text": "Cộng lại thành mười, giải phóng hàng số!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The number blocks are rising so fast, {name}! Help me rescue the rows!",
+          "Tap two number squares that add up to exactly ten to clear them, and keep them off the top line."
+        ],
+        "choices": [
+          {
+            "text": "Add up to ten, clear the row!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ghép đúng hai mươi cặp số có tổng bằng mười nhé!",
       "game": "make-ten",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Make ten",
+        "prompt": "Match 20 pairs of numbers that add up to ten!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Bó Đũa vỗ bụng cười vang: {name} tính nhẩm siêu tốc, hàng số đã sạch bong rồi!"
+      "text": "Gấu Bó Đũa vỗ bụng cười vang: {name} tính nhẩm siêu tốc, hàng số đã sạch bong rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Bó Đũa pats his tummy and laughs: {name} adds super fast, and the rows are spotless!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mỗi giờ học toán xong, {name} lại ra ghế đá sân sau cùng Gấu Bó Đũa giải đố nha."
+      "text": "Mỗi giờ học toán xong, {name} lại ra ghế đá sân sau cùng Gấu Bó Đũa giải đố nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "After every maths lesson, {name}, come solve puzzles with Gấu Bó Đũa at the stone bench."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Making ten with Gấu Bó Đũa",
+    "summary": "Number blocks slowly rise up: tap two numbers that add up to ten to make them vanish."
   }
 }

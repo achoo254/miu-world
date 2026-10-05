@@ -65,7 +65,26 @@
           "text": "Hổ gầm to vậy mà nhát ghê!",
           "reply": "Hổ Gừ đỏ mặt: Suỵt! Bí mật của tớ đó, đừng kể cho Cáo Mía nha."
         }
-      ]
+      ],
+      "en": {
+        "title": "Grrr! My plane is broken!",
+        "goTo": "Go to the grass by the windmill, where Hổ Gừ is growling beside a pile of paper planes",
+        "lines": [
+          "Grrr! My plane flew 72 steps away, but the wind blew it back and it came 19 steps closer. That's so... so...",
+          "So what, Tiger? Why did you hide behind the haystack after you said that?",
+          "Be... because I'm scared everyone will laugh if I get the sum wrong. {name}, please work it out for me, I only look fierce."
+        ],
+        "choices": [
+          {
+            "text": "Nobody's laughing, let's work it out together!",
+            "reply": "Hổ Gừ peeks out with a big grin: Really? Then... one little grrr, just to look tough."
+          },
+          {
+            "text": "Such a big roar, yet so shy!",
+            "reply": "Hổ Gừ blushes: Shh! That's my secret, don't tell Cáo Mía."
+          }
+        ]
+      }
     },
     {
       "id": "tim-may-bay-giay",
@@ -103,7 +122,22 @@
           "reply": "Hươu Gió vươn cổ cao vút: Tuyệt! Giờ mình đo chuyến bay nào."
         }
       ],
-      "goTo": "Ra hàng rào đo đường bay, Hươu Gió vươn cổ đón máy bay giấy giúp Hổ"
+      "goTo": "Ra hàng rào đo đường bay, Hươu Gió vươn cổ đón máy bay giấy giúp Hổ",
+      "en": {
+        "title": "Hươu Gió shows how to take away",
+        "goTo": "Go to the fence where the flights are measured, where Hươu Gió is stretching her neck to catch paper planes for Tiger",
+        "lines": [
+          "Flew 72 steps away, came 19 steps back: we set out 72 – 19. In the ones, you can't take 9 from 2, so borrow a ten: 12 – 9 = 3, write 3, carry 1.",
+          "Tens: 1 plus the 1 carried is 2; 7 – 2 = 5, write 5. So 72 – 19 = 53.",
+          "Add the carried 1 to the number being taken away... like putting on an extra scarf to keep warm. Got it, grrr!"
+        ],
+        "choices": [
+          {
+            "text": "Borrow a ten, add the carry to the number taken away!",
+            "reply": "Hươu Gió stretches her neck up high: Brilliant! Now let's measure the flights."
+          }
+        ]
+      }
     },
     {
       "id": "do-chuyen-bay-dau",
@@ -936,7 +970,25 @@
           "reply": "Hổ Gừ xắn tay áo: Grừ! Lần này tớ không trốn nữa đâu."
         }
       ],
-      "goTo": "Quay lại bãi cỏ cạnh cối xay gió, Hổ Gừ diện đồ phi công rủ cậu thi đấu"
+      "goTo": "Quay lại bãi cỏ cạnh cối xay gió, Hổ Gừ diện đồ phi công rủ cậu thi đấu",
+      "en": {
+        "title": "Tiger wants a contest",
+        "goTo": "Go back to the grass by the windmill, where Hổ Gừ, dressed as a pilot, wants a contest with you",
+        "lines": [
+          "Grrr... I mean, {name}! I'm not scared any more. Let's split up the rest of the challenges and then race at the hedgehog-guiding game!",
+          "Good idea. {name}, do you want to go slow and steady, or test your speed against Tiger?"
+        ],
+        "choices": [
+          {
+            "text": "Slow and steady, checking every problem",
+            "reply": "Hổ Gừ nods: Just like a professional plane measurer."
+          },
+          {
+            "text": "Speed test, let's see who's faster!",
+            "reply": "Hổ Gừ rolls up his sleeves: Grrr! This time I won't hide."
+          }
+        ]
+      }
     },
     {
       "id": "chon-ket-qua-hai-dong",
@@ -1726,14 +1778,22 @@
       "title": "Đôi cánh dũng cảm",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hổ Gừ gỡ chiếc máy bay đẹp nhất tặng {name}, trên cánh có dòng chữ ngoằn ngoèo: \"Cảm ơn bạn đã không cười tớ\". Hươu Gió trao thêm huy hiệu \"Kĩ sư đường bay\"."
+      "text": "Hổ Gừ gỡ chiếc máy bay đẹp nhất tặng {name}, trên cánh có dòng chữ ngoằn ngoèo: \"Cảm ơn bạn đã không cười tớ\". Hươu Gió trao thêm huy hiệu \"Kĩ sư đường bay\".",
+      "en": {
+        "title": "Brave wings",
+        "text": "Hổ Gừ gives {name} his best paper plane, with wobbly writing on the wing: \"Thank you for not laughing at me\". Hươu Gió adds the \"Flight Path Engineer\" badge."
+      }
     },
     {
       "id": "tu-kinh-con-trong",
       "title": "Tủ kính còn trống",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mèo Tam Thể vẫy gọi từ tủ kính ở hiên kho: \"Bác Sáu đẽo xong nhiều đồ chơi gỗ quá mà tủ kính thì đánh số ngăn lung tung, xếp sao cho đúng thứ tự đây?\""
+      "text": "Mèo Tam Thể vẫy gọi từ tủ kính ở hiên kho: \"Bác Sáu đẽo xong nhiều đồ chơi gỗ quá mà tủ kính thì đánh số ngăn lung tung, xếp sao cho đúng thứ tự đây?\"",
+      "en": {
+        "title": "The display case is still empty",
+        "text": "Mèo Tam Thể waves from the display case on the storehouse porch: \"Uncle Sáu has carved so many wooden toys, but the case's shelves are numbered all higgledy-piggledy. How do I put them in the right order?\""
+      }
     }
   ],
   "reward": {

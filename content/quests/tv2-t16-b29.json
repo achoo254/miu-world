@@ -81,7 +81,27 @@
           "text": "Bà cậu khắc vạch bằng gì thế?",
           "reply": "Bằng con dao nhỏ bà vẫn dùng gọt tre. Vạch nào bà khắc cũng thẳng tắp."
         }
-      ]
+      ],
+      "en": {
+        "title": "Cua Kềnh scuttles back to the old hut",
+        "goTo": "Go to the old hut on the lakeshore, Cua Kềnh is scuttling sideways towards it",
+        "lines": [
+          "Goodbye, {name}! Oops, I mean hello. I'm so used to saying things backwards!",
+          "This is my family's old hut. When I was little I lived here with Grandma; now everyone's moved to a new house.",
+          "Every year, Grandma used to carve a line on the door to see how much I'd grown.",
+          "I miss her so much. Will you help me find those marks again? I walk sideways, so I always drift off course."
+        ],
+        "choices": [
+          {
+            "text": "I'll walk straight, you walk sideways, we'll get there somehow!",
+            "reply": "Good plan! I'll scuttle sideways on the left, you walk straight down the middle."
+          },
+          {
+            "text": "What did your grandma carve the lines with?",
+            "reply": "With the little knife she used for whittling bamboo. Every line she carved was perfectly straight."
+          }
+        ]
+      }
     },
     {
       "id": "tim-quanh-choi",
@@ -547,7 +567,31 @@
           "text": "Mời bà về chơi để bà tự khắc vạch tiếp theo.",
           "reply": "Bà sẽ vui lắm! Nhưng chắc tớ phải ngồi thụp xuống thì bà mới với tới."
         }
-      ]
+      ],
+      "en": {
+        "title": "Carved marks under the dust",
+        "goTo": "Cua Kềnh is waving a claw from the old hut on the shore: found the marks!",
+        "lines": [
+          "{name}, look! Under the dust there are little carved lines, with an age written beside each one.",
+          "The lowest line is level with the bottom bar. The highest one reaches right up to the top bar.",
+          "Every year after carving, Grandma would pat my head: grow up quickly, my little one.",
+          "Now I'm taller than the last line. What should we do with this door?"
+        ],
+        "choices": [
+          {
+            "text": "Carve a new line, then tell Grandma how tall you've grown.",
+            "reply": "Lovely! I'll carve it really straight, just the way Grandma taught me."
+          },
+          {
+            "text": "Copy the lines onto a plank and take it to the new house.",
+            "reply": "Oh yes, then every time I open the door of the new house, Grandma will be right there."
+          },
+          {
+            "text": "Invite Grandma over so she can carve the next line herself.",
+            "reply": "She'll be so happy! But I'll probably have to crouch right down so she can reach."
+          }
+        ]
+      }
     },
     {
       "id": "doan-tranh-ba-chau",
@@ -756,7 +800,22 @@
           "text": "Cua ơi, giữ mẩu then cửa ấy thật cẩn thận nhé!",
           "reply": "Cua Kềnh ôm mẩu then cửa: cầm nó là tớ lại nhớ bà, giống đẩy cửa trong bài thơ ấy."
         }
-      ]
+      ],
+      "en": {
+        "title": "A new line on the old door",
+        "lines": [
+          "Done! The new line is a whole claw-span above the old one. I carved it nice and neat, not backwards at all!",
+          "Hello, you two! I was walking by the lake, heard the tock-tock of carving and immediately remembered old Granny Crab.",
+          "You knew my grandma, Granny Gấu Nâu? Oh, I should have said hello first, I've got it backwards again!",
+          "Long ago, after carving the lines, Granny Crab would sit in her rattan chair and tell the whole hamlet the story Bà cháu (Grandma and the Grandchildren). That broken door bar there, you keep it as a keepsake."
+        ],
+        "choices": [
+          {
+            "text": "Cua, look after that piece of door bar really carefully!",
+            "reply": "Cua Kềnh hugs the piece of wood: holding it makes me think of Grandma, just like pushing the door in that poem."
+          }
+        ]
+      }
     },
     {
       "id": "phieu-viet-bai-29",
@@ -776,14 +835,22 @@
       "title": "Mẩu then cửa khắc vạch",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cua Kềnh tặng {name} một mẩu gỗ nhỏ cắt từ then cửa của bà, có khắc sẵn một vạch. Cua dặn: cậu cao tới đâu thì khắc tới đó nhé!"
+      "text": "Cua Kềnh tặng {name} một mẩu gỗ nhỏ cắt từ then cửa của bà, có khắc sẵn một vạch. Cua dặn: cậu cao tới đâu thì khắc tới đó nhé!",
+      "en": {
+        "title": "A marked piece of the door bar",
+        "text": "Cua Kềnh gives {name} a small piece of wood cut from Grandma's door bar, with one line already carved. Cua says: carve a line wherever your height reaches!"
+      }
     },
     {
       "id": "mo-bai-30",
       "title": "Tiếng gâu gâu trên con dốc",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ con dốc gập ghềnh phía xa vọng lại tiếng \"Gâu! Gâu!\". Cún Vừng đang cuống quýt: ông Vện đau chân, chẳng bước lên dốc được."
+      "text": "Từ con dốc gập ghềnh phía xa vọng lại tiếng \"Gâu! Gâu!\". Cún Vừng đang cuống quýt: ông Vện đau chân, chẳng bước lên dốc được.",
+      "en": {
+        "title": "Woofing on the slope",
+        "text": "A “Woof! Woof!” rings out from the bumpy slope in the distance. Cún Vừng is in a panic: Grandpa Vện has a sore leg and can't climb the hill."
+      }
     }
   ],
   "reward": {

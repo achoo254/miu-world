@@ -29,7 +29,19 @@
           "reward": "Koala Ghép Tranh ôm bức tranh lành lặn: {name} khéo tay thật đấy!",
           "next": "Tớ còn cả chồng tranh nữa, rảnh thì ra vườn đọc sách ghép cùng tớ.",
           "who": "{name}, thợ ghép tranh của vườn sách",
-          "learn": "Nhận ra hình dạng và chi tiết giống nhau"
+          "learn": "Nhận ra hình dạng và chi tiết giống nhau",
+          "en": {
+            "title": "Puzzle time in the reading garden with Koala Ghép Tranh",
+            "summary": "Puzzle pieces lie scattered on the garden table; drag each one onto the faint picture where it belongs.",
+            "lines": [
+              "Hi {name}! The wind just blew my picture apart into little pieces!",
+              "Find the faint shape that matches a piece and set it there. I will sit and watch you work."
+            ],
+            "choice": "Let me put it back together!",
+            "prompt": "Fit {goal} puzzle pieces into place!",
+            "reward": "Koala Ghép Tranh hugs the whole picture again: {name}, you have such clever hands!",
+            "next": "I have a whole stack of puzzles left, so drop by the reading garden and solve one with me."
+          }
         },
         {
           "game": "sliding-tiles",
@@ -44,7 +56,19 @@
           "reward": "Tranh về đúng chỗ rồi, Koala Ghép Tranh vỗ tay khen {name}!",
           "next": "Mỗi ngày tớ lại có tranh trượt mới, nhớ ra vườn chơi tiếp nhé.",
           "who": "{name}, người xếp ô tài giỏi",
-          "learn": "Suy nghĩ trước nhiều bước và đếm theo thứ tự"
+          "learn": "Suy nghĩ trước nhiều bước và đếm theo thứ tự",
+          "en": {
+            "title": "Sliding picture tiles with Koala Ghép Tranh",
+            "summary": "A number picture got all jumbled; slide the tiles into the empty gap until they run from 1 to 8.",
+            "lines": [
+              "Oh {name}, a cheeky bird shuffled my sliding picture to bits.",
+              "Tap a tile next to the empty gap to slide it over, and line them up from 1 to 8 again."
+            ],
+            "choice": "I will start sliding right now!",
+            "prompt": "Finish {goal} sliding pictures!",
+            "reward": "Every tile is home again, and Koala Ghép Tranh claps for {name}!",
+            "next": "I get a fresh sliding picture every day, so come back to the garden for another round."
+          }
         },
         {
           "game": "tangram",
@@ -59,7 +83,19 @@
           "reward": "Ôi đẹp quá! Koala Ghép Tranh treo hình của {name} lên cành cây.",
           "next": "Tớ sẽ nghĩ thêm hình mới, cậu quay lại vườn đọc sách thử tiếp nha.",
           "who": "{name}, nhà ghép hình sáng tạo",
-          "learn": "Nhận biết hình phẳng và xoay hình trong đầu"
+          "learn": "Nhận biết hình phẳng và xoay hình trong đầu",
+          "en": {
+            "title": "Seven-piece shapes with Koala Ghép Tranh",
+            "summary": "Seven coloured wooden pieces sit beside some shadow shapes; turn and drag them until the shadow is filled.",
+            "lines": [
+              "Look, {name}! My seven wooden pieces can turn into a cat!",
+              "Tap a piece to turn it, then drag it into the shadow so it fits snugly. Place all seven and you are done."
+            ],
+            "choice": "Let me try building a shape!",
+            "prompt": "Build {goal} shapes out of the seven pieces!",
+            "reward": "How lovely! Koala Ghép Tranh hangs the shape made by {name} up on a branch.",
+            "next": "I will dream up new shapes, so pop back to the reading garden and try again."
+          }
         }
       ]
     },
@@ -91,7 +127,19 @@
           "reward": "Cả sân khấu vỗ tay, Gấu Trúc Đàn Phím cúi chào {name} cùng nhau!",
           "next": "Chiều nào tớ cũng tập đàn trước sân khấu lá vàng, ghé nghe nhé.",
           "who": "{name}, nghệ sĩ đàn nhí",
-          "learn": "Giữ nhịp và chạm đúng thời điểm"
+          "learn": "Giữ nhịp và chạm đúng thời điểm",
+          "en": {
+            "title": "Falling piano keys with Gấu Trúc Đàn Phím",
+            "summary": "Coloured keys fall in time with the song by the golden-leaf stage; tap each one right on the beat to make the music ring.",
+            "lines": [
+              "{name} is here! I am practising a really happy tune for the golden-leaf festival.",
+              "When a key reaches the glowing line, tap it, and try not to let too many slip past."
+            ],
+            "choice": "Let us play together!",
+            "prompt": "Score {goal} points on the piano keys!",
+            "reward": "The whole stage cheers, and Gấu Trúc Đàn Phím takes a bow alongside {name}!",
+            "next": "I practise in front of the golden-leaf stage every afternoon, so come and listen."
+          }
         },
         {
           "game": "memory-pairs",
@@ -106,7 +154,19 @@
           "reward": "Gấu Trúc Đàn Phím gõ một nốt thật vang: trí nhớ của {name} siêu quá!",
           "next": "Bộ thẻ của tớ còn nhiều hình nữa, lúc nào rảnh lại lật cùng tớ nhé.",
           "who": "{name}, người có trí nhớ tốt",
-          "learn": "Ghi nhớ vị trí hình ảnh"
+          "learn": "Ghi nhớ vị trí hình ảnh",
+          "en": {
+            "title": "Flip-and-match cards with Gấu Trúc Đàn Phím",
+            "summary": "Cards lie face down on a stone table; flip two at a time and remember where each picture hides to find the pairs.",
+            "lines": [
+              "Hey {name}, I have a set of instrument picture cards lying face down here.",
+              "Flip two cards. If they match, you win a pair; if not, remember where they were for next time."
+            ],
+            "choice": "I have a great memory!",
+            "prompt": "Find {goal} matching pairs!",
+            "reward": "Gấu Trúc Đàn Phím plays one big ringing note: what a memory you have, {name}!",
+            "next": "My deck has lots more pictures, so come flip cards with me whenever you are free."
+          }
         }
       ]
     },
@@ -137,7 +197,19 @@
           "reward": "Bầu trời sáng rực hình mới, Thỏ Ngắm Sao reo: {name} vẽ trời đẹp quá!",
           "next": "Đêm nào trời trong, tớ cũng ngồi bãi cỏ quanh tháp chờ cậu ngắm sao.",
           "who": "{name}, nhà thiên văn nhí",
-          "learn": "Đếm theo thứ tự từ 1 đến 10"
+          "learn": "Đếm theo thứ tự từ 1 đến 10",
+          "en": {
+            "title": "Joining up the stars with Thỏ Ngắm Sao",
+            "summary": "Night falls around the clock tower; join the stars in number order and a friend appears in the sky.",
+            "lines": [
+              "Look up at the sky, {name}! The stars are waiting to be joined together!",
+              "Tap the stars in order, 1, 2, 3 all the way to 10, and a fun picture will pop out."
+            ],
+            "choice": "Let us join the stars!",
+            "prompt": "Complete {goal} star pictures!",
+            "reward": "A new shape glows across the sky, and Thỏ Ngắm Sao cheers: {name} paints the sky so well!",
+            "next": "Every clear night I sit on the grass by the tower, waiting to stargaze with you."
+          }
         },
         {
           "game": "hanoi-tower",
@@ -152,7 +224,19 @@
           "reward": "Bánh vẫn nguyên vẹn, Thỏ Ngắm Sao mời {name} ăn miếng đầu tiên!",
           "next": "Lần sau tớ làm chồng bánh cao hơn, cậu lại tới thử tài nhé.",
           "who": "{name}, người chuyển bánh khéo nhất",
-          "learn": "Lập kế hoạch nhiều bước và so sánh to nhỏ"
+          "learn": "Lập kế hoạch nhiều bước và so sánh to nhỏ",
+          "en": {
+            "title": "Moving the layer cake with Thỏ Ngắm Sao",
+            "summary": "A tall layer cake sits on a plate; move it layer by layer to the star plate, never putting a big layer on a small one.",
+            "lines": [
+              "Help me, {name}! I have to carry this cake stack over to the star plate!",
+              "Lift only the top layer each time, and a big layer must never sit on a smaller one."
+            ],
+            "choice": "I will move it very carefully!",
+            "prompt": "Move {goal} whole cake stacks to the star plate!",
+            "reward": "The cake is still perfect, and Thỏ Ngắm Sao offers {name} the very first slice!",
+            "next": "Next time I will bake an even taller stack, so come back and test your skill."
+          }
         },
         {
           "game": "ball-sort-tubes",
@@ -167,7 +251,19 @@
           "reward": "Ống nào cũng gọn một màu, Thỏ Ngắm Sao khen {name} kiên nhẫn ghê!",
           "next": "Hộp bi của tớ hay đổ lắm, cậu ghé tháp đồng hồ xếp giúp tớ nữa nhé.",
           "who": "{name}, người phân màu kiên nhẫn",
-          "learn": "Phân loại theo màu và suy tính trước"
+          "learn": "Phân loại theo màu và suy tính trước",
+          "en": {
+            "title": "Sorting marbles into tubes with Thỏ Ngắm Sao",
+            "summary": "Marbles of every colour are mixed up in glass tubes; lift them one by one until each tube holds just one colour.",
+            "lines": [
+              "Hey {name}, I knocked over my marble box and now all the colours are mixed up.",
+              "Lift the top marble into another tube, but only onto the same colour or into an empty tube."
+            ],
+            "choice": "Let me sort the colours!",
+            "prompt": "Fill {goal} tubes with a single colour each!",
+            "reward": "Every tube is one tidy colour, and Thỏ Ngắm Sao praises how patient {name} is!",
+            "next": "My marble box tips over a lot, so swing by the clock tower and help me sort again."
+          }
         }
       ]
     },
@@ -199,7 +295,19 @@
           "reward": "Nai Trí Nhớ dụi mũi vào tay {name}: cậu tinh mắt thật!",
           "next": "Khay đồ của tớ đổi món mỗi ngày, cậu ghé đầu cầu đá chơi tiếp nhé.",
           "who": "{name}, thám tử nhí tinh mắt",
-          "learn": "Quan sát kỹ và ghi nhớ đồ vật"
+          "learn": "Quan sát kỹ và ghi nhớ đồ vật",
+          "en": {
+            "title": "What went missing? with Nai Trí Nhớ",
+            "summary": "A tray holds lots of objects; the light goes out for a moment, and when it comes back you spot what disappeared.",
+            "lines": [
+              "Did you come to play with me, {name}? I have a tray of things that love to hide!",
+              "Study the tray closely, and when the light comes back, point to the thing that vanished."
+            ],
+            "choice": "I have looked closely, lights out!",
+            "prompt": "Spot the missing object {goal} times!",
+            "reward": "Nai Trí Nhớ nuzzles the hand of {name}: you have sharp eyes!",
+            "next": "My tray gets new things every day, so visit the stone bridge and play some more."
+          }
         },
         {
           "game": "pair-link",
@@ -214,7 +322,19 @@
           "reward": "Bảng hình sạch trơn, Nai Trí Nhớ khen {name} nhìn nhanh như gió!",
           "next": "Cầu đá bên hồ luôn có tớ với bảng hình mới, nhớ quay lại nha.",
           "who": "{name}, người nối hình nhanh nhẹn",
-          "learn": "Nhìn tìm hình giống và tìm đường đi"
+          "learn": "Nhìn tìm hình giống và tìm đường đi",
+          "en": {
+            "title": "Linking matching pictures with Nai Trí Nhớ",
+            "summary": "A board is packed with pictures; find two that match and link them with a path that bends only a few times.",
+            "lines": [
+              "Oh look, {name}! My picture board needs someone with sharp eyes to link it up!",
+              "Tap two matching pictures. The link may bend only twice and cannot cross other pictures."
+            ],
+            "choice": "I already found the first pair!",
+            "prompt": "Link {goal} pairs of matching pictures!",
+            "reward": "The board is spotless, and Nai Trí Nhớ says {name} spots things as quick as the wind!",
+            "next": "I am always at the stone bridge by the lake with a new board, so do come back."
+          }
         }
       ]
     },
@@ -246,7 +366,19 @@
           "reward": "Cô Thủ Thư Mai mỉm cười dịu dàng, cảm ơn {name} đã làm giá sách ngăn nắp như mới!",
           "next": "Giá sách thẳng tắp rồi, khi nào tìm sách hay cháu cứ tới bàn hướng dẫn gặp cô.",
           "who": "{name}, phụ tá thư viện tỉ mỉ",
-          "learn": "So sánh thứ tự chữ số và chèn đúng vị trí"
+          "learn": "So sánh thứ tự chữ số và chèn đúng vị trí",
+          "en": {
+            "title": "Putting the books in order with Cô Thủ Thư Mai",
+            "summary": "Books with flowery spines lie in a jumble; put the spines back in the right number order.",
+            "lines": [
+              "Hello {name}! So many readers borrowed books that the shelf is all mixed up.",
+              "Check the number on each spine and slot it between the others, from smallest to largest."
+            ],
+            "choice": "I will shelve the books now!",
+            "prompt": "Tidy {goal} books onto the wooden shelf!",
+            "reward": "Cô Thủ Thư Mai smiles gently and thanks {name} for making the shelf as neat as new!",
+            "next": "The shelf is straight again. Whenever you want a good book, come see me at the help desk."
+          }
         },
         {
           "game": "story-order",
@@ -261,7 +393,19 @@
           "reward": "Cô Thủ Thư Mai gật đầu hài lòng, khen {name} nắm bắt nội dung câu chuyện rất sâu sắc!",
           "next": "Còn nhiều truyện cổ tích kỳ thú lắm, cháu nhớ ghé thư viện đọc sách cùng cô nhé.",
           "who": "{name}, người kể chuyện tài tình",
-          "learn": "Hiểu diễn biến thời gian và liên kết tình tiết"
+          "learn": "Hiểu diễn biến thời gian và liên kết tình tiết",
+          "en": {
+            "title": "Ordering the story pictures with Cô Thủ Thư Mai",
+            "summary": "Four fairy-tale pictures are out of order; follow what happens to put the story back in sequence.",
+            "lines": [
+              "Oh {name}, the wind blew this folk-tale picture book all over the reading table.",
+              "Look carefully at each picture and place them in boxes one to four, from start to finish."
+            ],
+            "choice": "I will retell the story in pictures!",
+            "prompt": "Put {goal} picture stories in the right order!",
+            "reward": "Cô Thủ Thư Mai nods happily: {name} really understands what the story is about!",
+            "next": "There are so many wonderful fairy tales left, so come read with me at the library."
+          }
         },
         {
           "game": "word-search",
@@ -276,7 +420,19 @@
           "reward": "Cô Thủ Thư Mai xoa đầu khen ngợi {name} có vốn từ vựng phong phú và đôi mắt tinh tường!",
           "next": "Mỗi tuần cô lại có bảng ô chữ mới, cháu nhớ ghé bàn hướng dẫn cửa thư viện chơi.",
           "who": "{name}, thám tử ngôn ngữ nhí",
-          "learn": "Mở rộng vốn từ vựng và nhận diện mặt chữ"
+          "learn": "Mở rộng vốn từ vựng và nhận diện mặt chữ",
+          "en": {
+            "title": "Vietnamese word search with Cô Thủ Thư Mai",
+            "summary": "A square grid of letters hides some dear, familiar words; use your sharp eyes to circle each one.",
+            "lines": [
+              "I have a really useful word puzzle here just for you, dear {name}.",
+              "Look at the little pictures beside the grid, then drag across the letters that spell each word."
+            ],
+            "choice": "I will find the hidden words!",
+            "prompt": "Find {goal} Vietnamese words hidden in the grid!",
+            "reward": "Cô Thủ Thư Mai pats {name} on the head: such a rich vocabulary and such keen eyes!",
+            "next": "I make a new word grid every week, so drop by the help desk at the library door."
+          }
         }
       ]
     },
@@ -308,7 +464,19 @@
           "reward": "Thầy Đố Chữ Hán vuốt chòm râu mỉm cười: {name} thông minh sáng dạ, tìm đường chuẩn lắm!",
           "next": "Kho tàng ca dao đồng dao còn sâu rộng lắm, trò hãy thường xuyên tới phòng đọc dùi mài.",
           "who": "{name}, học trò giỏi chữ nghĩa",
-          "learn": "Đọc thành câu mạch lạc và định hướng ô chữ"
+          "learn": "Đọc thành câu mạch lạc và định hướng ô chữ",
+          "en": {
+            "title": "Finding the way through the letter maze with Thầy Đố Chữ Hán",
+            "summary": "Nursery rhymes lead the way through a maze; link each word in turn to walk out the exit.",
+            "lines": [
+              "Greetings, {name}. To get past this stone table, you must find the right path.",
+              "Read the sample rhyme, then slide your finger through each neighbouring word to escape the maze."
+            ],
+            "choice": "I will follow the words one by one!",
+            "prompt": "Make it through {goal} rhyme mazes!",
+            "reward": "Thầy Đố Chữ Hán strokes his beard and smiles: {name} is bright and found the path perfectly!",
+            "next": "Our treasure of folk rhymes runs deep, so come to the reading room often to keep learning."
+          }
         },
         {
           "game": "tone-mark",
@@ -323,7 +491,19 @@
           "reward": "Thầy Đố Chữ Hán khen {name} đặt dấu thanh đúng chỗ, câu từ chuẩn xác và nắn nót!",
           "next": "Chữ nghĩa ngay ngắn là nết người đẹp đẽ, lần sau con lại ghé bàn gỗ lớn đàm đạo.",
           "who": "{name}, người giữ gìn vẻ đẹp con chữ",
-          "learn": "Quy tắc chính tả dấu thanh tiếng Việt"
+          "learn": "Quy tắc chính tả dấu thanh tiếng Việt",
+          "en": {
+            "title": "Tone marks in the right place with Thầy Đố Chữ Hán",
+            "summary": "The little tone-mark hats fell off the letters; lift each mark and set it neatly on its vowel.",
+            "lines": [
+              "Look, {name}, the words a young pupil just copied are missing their tone marks.",
+              "Read each word out loud, then drag its tone mark onto the right letter so it means what it should."
+            ],
+            "choice": "I will place the tone marks neatly!",
+            "prompt": "Place {goal} tone marks exactly right!",
+            "reward": "Thầy Đố Chữ Hán praises {name}: every tone mark is in place, neat and correct!",
+            "next": "Tidy writing shows a tidy heart. Come back to the big wooden table and chat with me again."
+          }
         },
         {
           "game": "picture-crossword",
@@ -338,7 +518,19 @@
           "reward": "Thầy Đố Chữ Hán tấm tắc khen {name} học sâu hiểu rộng, suy đoán như thần đồng!",
           "next": "Học chữ qua tranh thật thú vị phải không, rảnh rỗi trò lại ghé phòng đọc đối ẩm.",
           "who": "{name}, trạng nguyên giải đố nhí",
-          "learn": "Liên tưởng hình ảnh sang từ ngữ và đánh vần"
+          "learn": "Liên tưởng hình ảnh sang từ ngữ và đánh vần",
+          "en": {
+            "title": "Picture crossword with Thầy Đố Chữ Hán",
+            "summary": "A criss-cross word grid comes with simple drawings as clues; fill in the letters to finish it.",
+            "lines": [
+              "I have a one-of-a-kind puzzle board of folk drawings waiting for you, {name}.",
+              "Each drawing hints at a name. Fill in the letters across and down so the words cross neatly."
+            ],
+            "choice": "I will solve every square!",
+            "prompt": "Fill every square of {goal} picture crosswords!",
+            "reward": "Thầy Đố Chữ Hán is amazed: {name} knows so much and guesses like a little genius!",
+            "next": "Learning words through pictures is fun, is it not? Come by the reading room any time."
+          }
         }
       ]
     },
@@ -370,7 +562,19 @@
           "reward": "Bé Mê Bảng Số vỗ tay reo hò: {name} nắm chắc các hàng số tự nhiên siêu thật đấy!",
           "next": "Bảng số đã tròn vẹn một trăm rồi, cậu rảnh cứ qua chân tháp đồng hồ tính toán nha.",
           "who": "{name}, chuyên gia bảng số trăm ô",
-          "learn": "Quy luật cấu tạo số hàng chục và hàng đơn vị"
+          "learn": "Quy luật cấu tạo số hàng chục và hàng đơn vị",
+          "en": {
+            "title": "The hundred chart with Bé Mê Bảng Số",
+            "summary": "The wind blew a few squares off the hundred chart; use the row and column patterns to put the numbers back.",
+            "lines": [
+              "Hi {name}! My one-to-a-hundred chart is missing some squares.",
+              "Remember: one step right adds one, one step down adds ten. Use that to fill them in."
+            ],
+            "choice": "Let me fill in the chart!",
+            "prompt": "Put {goal} number tiles back on the hundred chart!",
+            "reward": "Bé Mê Bảng Số cheers: {name} really knows the number order inside out!",
+            "next": "The chart has all hundred squares again. Come do some counting at the clock tower anytime."
+          }
         },
         {
           "game": "low-to-high",
@@ -385,7 +589,19 @@
           "reward": "Bé Mê Bảng Số ngả mũ thán phục: trí nhớ và khả năng so sánh của {name} đỉnh thật!",
           "next": "Dãy số ngày càng thách thức hơn, hôm nào cậu lại ghé tháp đồng hồ đọ tài nhé.",
           "who": "{name}, cao thủ ghi nhớ dãy số",
-          "learn": "Ghi nhớ không gian và so sánh độ lớn các số"
+          "learn": "Ghi nhớ không gian và so sánh độ lớn các số",
+          "en": {
+            "title": "Smallest to biggest with Bé Mê Bảng Số",
+            "summary": "Number cards flash up and then flip face down; remember them and tap from the smallest to the biggest.",
+            "lines": [
+              "Do you have sharp eyes and a super memory, {name}? Let us put them to the test!",
+              "The number cards will flip over. Tap them one by one from the smallest number to the biggest."
+            ],
+            "choice": "I remember every number!",
+            "prompt": "Tap {goal} hidden number rows in order, smallest first!",
+            "reward": "Bé Mê Bảng Số tips a hat: the memory and comparing skills of {name} are top notch!",
+            "next": "The rows get trickier and trickier, so come challenge me at the clock tower again."
+          }
         },
         {
           "game": "sudoku-mini",
@@ -400,7 +616,19 @@
           "reward": "Bé Mê Bảng Số cười tít mắt, khen {name} suy luận logic chẳng thua gì nhà toán học!",
           "next": "Những con số kỳ diệu luôn chờ cậu dưới chân tháp đồng hồ, nhớ quay lại chơi nha.",
           "who": "{name}, kiện tướng suy luận sudoku",
-          "learn": "Tư duy loại trừ logic trên lưới hai chiều"
+          "learn": "Tư duy loại trừ logic trên lưới hai chiều",
+          "en": {
+            "title": "Four-by-four mini sudoku with Bé Mê Bảng Số",
+            "summary": "A cute four-by-four grid: place four kinds of fruit so none repeats in a row or column.",
+            "lines": [
+              "I just made a funny little fruit sudoku board, {name}.",
+              "Every row, every column and every small square needs all four fruits, with no repeats."
+            ],
+            "choice": "I will place the fruit now!",
+            "prompt": "Solve {goal} mini four-by-four sudokus!",
+            "reward": "Bé Mê Bảng Số grins: {name} reasons things out just like a mathematician!",
+            "next": "Magic numbers are always waiting at the foot of the clock tower, so come back and play."
+          }
         }
       ]
     },
@@ -432,7 +660,19 @@
           "reward": "Chú Thợ Điện Nhí giơ ngón tay cái khen ngợi {name} lắp mạch điện an toàn và sáng rực!",
           "next": "Đèn quảng trường đã sáng trưng, khi nào thích khám phá khoa học cậu cứ lại tìm tớ.",
           "who": "{name}, kỹ sư điện nhí tài năng",
-          "learn": "Khái niệm mạch điện khép kín và cực nguồn điện"
+          "learn": "Khái niệm mạch điện khép kín và cực nguồn điện",
+          "en": {
+            "title": "Lighting up a circuit with Chú Thợ Điện Nhí",
+            "summary": "The copper wires are broken; drag them into a closed loop from the battery through the switch to a bright bulb.",
+            "lines": [
+              "Hi {name}! The fountain lights are about to come on, but the circuit still has a gap.",
+              "Run a wire from the plus end of the battery through the bulb to the minus end, then flip the switch on."
+            ],
+            "choice": "I will wire up the light!",
+            "prompt": "Close the circuit to light {goal} shining bulbs!",
+            "reward": "Chú Thợ Điện Nhí gives a thumbs up: {name} built a safe circuit that glows so bright!",
+            "next": "The square is lit up now. Whenever you feel like exploring science, come find me."
+          }
         },
         {
           "game": "one-stroke-house",
@@ -447,7 +687,19 @@
           "reward": "Chú Thợ Điện Nhí vỗ tay tán thưởng: nét vẽ của {name} khéo léo và chuẩn xác lạ thường!",
           "next": "Còn nhiều hình vẽ một nét hóc búa lắm, hẹn gặp lại cậu ở quảng trường đài phun.",
           "who": "{name}, họa sĩ một nét diệu kỳ",
-          "learn": "Quy luật đồ thị Euler và lập lộ trình không lặp"
+          "learn": "Quy luật đồ thị Euler và lập lộ trình không lặp",
+          "en": {
+            "title": "Drawing a house in one line with Chú Thợ Điện Nhí",
+            "summary": "A house plan sits on grid paper; trace one smooth line over every edge without lifting your finger.",
+            "lines": [
+              "Oh {name}, I designed a house drawn with one single electric wire!",
+              "Run your finger over every edge of the house without lifting it or going over a line twice."
+            ],
+            "choice": "I will draw it in one go!",
+            "prompt": "Draw {goal} houses using just one unbroken line!",
+            "reward": "Chú Thợ Điện Nhí applauds: the line {name} drew is wonderfully skilful and exact!",
+            "next": "There are plenty more tricky one-line drawings. See you again at the fountain square."
+          }
         },
         {
           "game": "merge-2048",
@@ -462,7 +714,19 @@
           "reward": "Chú Thợ Điện Nhí reo hò phấn khích khi {name} tạo ra con số mục tiêu ngoạn mục!",
           "next": "Những con số đôi lúc nào cũng cuốn hút, rảnh tay cậu cứ ra quảng trường chơi tiếp.",
           "who": "{name}, nhà vô địch gộp số đôi",
-          "learn": "Phép nhân đôi lũy thừa hai và sắp xếp ô số"
+          "learn": "Phép nhân đôi lũy thừa hai và sắp xếp ô số",
+          "en": {
+            "title": "Doubling numbers with Chú Thợ Điện Nhí",
+            "summary": "Number blocks slide around a square board; merge matching numbers to double their power.",
+            "lines": [
+              "Come play the merging game with me, {name}! The more you merge, the bigger the numbers get!",
+              "Swipe so matching tiles bump together: two and two make four, four and four make eight."
+            ],
+            "choice": "Let me grow those numbers!",
+            "prompt": "Merge cleverly until you make a shining {goal} tile!",
+            "reward": "Chú Thợ Điện Nhí whoops with excitement as {name} reaches the target number in style!",
+            "next": "Doubling numbers never gets old, so come play in the square whenever your hands are free."
+          }
         }
       ]
     },
@@ -494,7 +758,19 @@
           "reward": "Mèo Hộp Nhạc vẫy đuôi kêu meo meo, khen {name} có đôi tai cảm thụ âm nhạc tuyệt vời!",
           "next": "Giai điệu mùa thu ngân vang khắp nơi, cậu ghé bục gỗ sân lễ hội lá vàng nghe đàn nhé.",
           "who": "{name}, nhạc sĩ hộp nhạc tài ba",
-          "learn": "Cảm thụ cao độ nốt nhạc và tái tạo chuỗi âm thanh"
+          "learn": "Cảm thụ cao độ nốt nhạc và tái tạo chuỗi âm thanh",
+          "en": {
+            "title": "The spinning fairy-tale music box with Mèo Hộp Nhạc",
+            "summary": "A wooden box plays a sweet tune; set each pin on the right note so the box sings.",
+            "lines": [
+              "Meow meow, hi {name}! My music box lost a few of its gentle note pins.",
+              "Listen to the sample tune, then set pins on the spinning drum at just the right pitch."
+            ],
+            "choice": "Let me tune the music box!",
+            "prompt": "Pin the right notes to finish {goal} sweet music-box tunes!",
+            "reward": "Mèo Hộp Nhạc swishes her tail and meows: {name} has a wonderful ear for music!",
+            "next": "Autumn tunes ring out everywhere. Visit the wooden stage at the golden-leaf festival to listen."
+          }
         },
         {
           "game": "marble-run",
@@ -509,7 +785,19 @@
           "reward": "Mèo Hộp Nhạc nhảy lò cò thích thú, khen {name} canh góc nghiêng chuẩn xác phi thường!",
           "next": "Tiếng bi lăn lách cách nghe vui tai lắm, khi nào rảnh cậu lại tới chơi cùng tớ.",
           "who": "{name}, người dẫn đường bi tài tình",
-          "learn": "Trọng lực hướng dốc và chuyển đổi đường ray"
+          "learn": "Trọng lực hướng dốc và chuyển đổi đường ray",
+          "en": {
+            "title": "The wooden marble run with Mèo Hộp Nhạc",
+            "summary": "A round marble rolls along wooden chutes; flip the slopes so it rolls into the right coloured cup.",
+            "lines": [
+              "{name}, look at this round marble rolling along! It is about to fall off the chute!",
+              "Tap each section of chute to change its slope and guide the marble gently into the right cup."
+            ],
+            "choice": "I will steer the marble!",
+            "prompt": "Guide {goal} marbles safely into the right cup!",
+            "reward": "Mèo Hộp Nhạc hops about in delight: {name} judged every slope perfectly!",
+            "next": "The clatter of rolling marbles is such fun, so come play with me when you are free."
+          }
         },
         {
           "game": "snap-match",
@@ -524,7 +812,19 @@
           "reward": "Mèo Hộp Nhạc chịu thua tâm phục khẩu phục: mắt {name} sáng và tay nhanh hơn cả mèo!",
           "next": "Hội lá vàng lúc nào cũng rộn ràng, có dịp cậu lại ghé bục gỗ so tài với tớ nhé.",
           "who": "{name}, tay bắt bài nhanh như chớp",
-          "learn": "Tập trung chú ý thị giác và tốc độ phản xạ"
+          "learn": "Tập trung chú ý thị giác và tốc độ phản xạ",
+          "en": {
+            "title": "Snap when the pictures match with Mèo Hộp Nhạc",
+            "summary": "Picture cards flip over one after another; stay focused and tap the moment two in a row are the same.",
+            "lines": [
+              "Let us see who has the quicker eyes and hands, {name}! Who reacts faster?",
+              "As each card flips, if it is exactly like the one before, tap it as fast as you can."
+            ],
+            "choice": "My hands are lightning fast!",
+            "prompt": "Snap {goal} matching pictures!",
+            "reward": "Mèo Hộp Nhạc admits defeat: {name} has sharper eyes and quicker paws than a cat!",
+            "next": "The golden-leaf festival is always buzzing, so come to the wooden stage for a rematch."
+          }
         }
       ]
     }

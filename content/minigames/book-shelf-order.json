@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 22,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Shelve the books",
+    "howTo": [
+      "Books on the shelf go from the smallest number to the biggest, left to right.",
+      "{name}, drag the new book onto the shelf (or tap a gap) in the right place.",
+      "Put it in the wrong spot and the books topple; wait for it to return to the cart, then try again."
+    ]
+  }
 }

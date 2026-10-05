@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 80,
   "goal": 4,
-  "params": { "lookSeconds": 3 }
+  "params": { "lookSeconds": 3 },
+  "en": {
+    "name": "Đập niêu (smash the pot)",
+    "howTo": [
+      "Look closely at where the clay pots hang. After three seconds, {name} is blindfolded!",
+      "Drag to walk to the right pot, then tap the screen to swing.",
+      "You get two swings per pot. Break four pots to win!"
+    ]
+  }
 }

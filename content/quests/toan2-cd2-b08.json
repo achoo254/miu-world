@@ -65,7 +65,26 @@
           "text": "Bác Lành chờ chút nha!",
           "reply": "Bác Lành cười khà khà từ quán: Được thôi, nhưng nồi nước sắp sôi rồi đấy."
         }
-      ]
+      ],
+      "en": {
+        "title": "The addition tables fell off",
+        "goTo": "Go to the seed-gourd trellis, where Khỉ Lủng Lẳng is hanging by his tail",
+        "lines": [
+          "Boo hoo, {name}... I spent the whole summer carving addition tables onto each seed gourd, and last night the wind knocked them all down.",
+          "Oh, gourds have fallen? I heard it from my soup stall. Can I have a few to make soup for the lunch crowd?",
+          "No! They've got addition tables on them. My hands are still holding the ones on the trellis, so {name}, please pick them up before Uncle Lành takes them all."
+        ],
+        "choices": [
+          {
+            "text": "I'll pick them up now!",
+            "reply": "Khỉ Lủng Lẳng sniffles: Thank you! If I let go, the ones on the trellis will fall too."
+          },
+          {
+            "text": "Wait a moment, Uncle Lành!",
+            "reply": "Uncle Lành chuckles from his stall: Sure, but the water's nearly boiling."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-bau-rung",
@@ -703,7 +722,26 @@
           "text": "Giải nhanh rồi cho bác nấu canh",
           "reply": "Bác Lành reo lên: Cháu ngoan quá! Bác sẽ nấu canh bằng quả bầu trơn, không khắc chữ."
         }
-      ]
+      ],
+      "en": {
+        "title": "Uncle Lành wants to make soup",
+        "goTo": "Follow the smell of smoke to the soup stall at the end of the row, where Uncle Lành has lit the fire",
+        "lines": [
+          "The fire's crackling now! Any gourd without writing on it, let me cook it in my soup, please, please, please?",
+          "Every gourd has a puzzle on it, Uncle Lành! I have to solve them all before I can copy them down.",
+          "Then {name}, solve them for us, and I'll watch the pot. Do you want to do the table puzzle first or the comparing puzzle first?"
+        ],
+        "choices": [
+          {
+            "text": "The table puzzle first",
+            "reply": "Uncle Lành: All right, the addend table is right here on the pot lid."
+          },
+          {
+            "text": "Solve them fast so Uncle can make soup",
+            "reply": "Uncle Lành cheers: What a good child! I'll make soup from a plain gourd, no carving on it."
+          }
+        ]
+      }
     },
     {
       "id": "bang-tren-nap-noi",
@@ -1142,14 +1180,22 @@
       "title": "Huy hiệu bảng cộng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khỉ Lủng Lẳng tặng {name} một quả bầu giống tí hon khắc chữ \"Bạn thuộc bảng cộng\". Bác Lành cũng múc mời một bát canh bầu nấu từ quả bầu trơn, thơm phưng phức."
+      "text": "Khỉ Lủng Lẳng tặng {name} một quả bầu giống tí hon khắc chữ \"Bạn thuộc bảng cộng\". Bác Lành cũng múc mời một bát canh bầu nấu từ quả bầu trơn, thơm phưng phức.",
+      "en": {
+        "title": "Addition table badge",
+        "text": "Khỉ Lủng Lẳng gives {name} a teeny seed gourd carved with the words \"Addition Table Expert\". Uncle Lành ladles out a bowl of fragrant gourd soup, made from a plain gourd."
+      }
     },
     {
       "id": "be-con-chay-tung-tang",
       "title": "Bê con chạy tung tăng",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ góc chợ vọng ra tiếng \"ụm bò\" hớt hải: đàn bê con theo Bò Mẹ Gạo đi chợ cứ chạy ra chạy vào đống rơm, cô đếm mãi không biết còn bao nhiêu con!"
+      "text": "Từ góc chợ vọng ra tiếng \"ụm bò\" hớt hải: đàn bê con theo Bò Mẹ Gạo đi chợ cứ chạy ra chạy vào đống rơm, cô đếm mãi không biết còn bao nhiêu con!",
+      "en": {
+        "title": "Calves frolicking about",
+        "text": "From the corner of the market comes a flustered \"moo!\": the calves who came to market with Bò Mẹ Gạo keep running in and out of the haystack, and she can't work out how many are left!"
+      }
     }
   ],
   "reward": {

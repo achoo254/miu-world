@@ -9,5 +9,12 @@
   "controls": ["swipe"],
   "duration": 60,
   "goal": 30,
-  "params": { "stones": 6 }
+  "params": { "stones": 6 },
+  "en": {
+    "name": "Skipping Stones",
+    "howTo": [
+      "Swipe sideways to the right across the lake to throw a stone. Fast and straight makes it skip more.",
+      "Skip onto a star on the water for two extra points. {name} has six stones!"
+    ]
+  }
 }

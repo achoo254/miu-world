@@ -65,7 +65,26 @@
           "text": "Khoá mà cũng biết hắt xì à?",
           "reply": "Cáo Mía cười lăn: Khoá của tớ là khoá có cảm xúc đấy nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "All the gifts are locked!",
+        "goTo": "Go to the yard in front of the granary, where Cáo Mía is whistling under the harvest festival flag",
+        "lines": [
+          "Hello, hello! This year at the harvest festival I'm not hiding corn cobs, I'm hiding... presents! Three secret gift boxes, with real number locks.",
+          "Hey now, those presents are the prizes for the whole farm! I've turned the lock ten times, and every time it goes \"click\" and stays shut.",
+          "To open them you have to work it out right. Get it wrong and the lock sneezes, pff pff, hee hee!"
+        ],
+        "choices": [
+          {
+            "text": "I'll open every one of them!",
+            "reply": "Cáo Mía raises an eyebrow: Confident, aren't you! Then find the boxes first."
+          },
+          {
+            "text": "Locks can sneeze?",
+            "reply": "Cáo Mía rolls about laughing: My locks have feelings, you know!"
+          }
+        ]
+      }
     },
     {
       "id": "tim-hop-qua",
@@ -103,7 +122,22 @@
           "reply": "Bác thợ Tùng giơ ngón cái dính đầy mùn cưa: Chuẩn thợ cả!"
         }
       ],
-      "goTo": "Ôm hộp sang bàn bào gỗ ở xưởng nông cụ, Bác thợ Tùng phủi mùn cưa chờ dạy bí kíp"
+      "goTo": "Ôm hộp sang bàn bào gỗ ở xưởng nông cụ, Bác thợ Tùng phủi mùn cưa chờ dạy bí kíp",
+      "en": {
+        "title": "The secret of column sums",
+        "goTo": "Carry the boxes to the woodworking bench in the tool workshop, where Uncle Tùng is brushing off sawdust, ready to share his secret",
+        "lines": [
+          "All three boxes are here! The master craftsman's secret is column sums: ones under ones, tens under tens.",
+          "Add from right to left. If the ones make 10 or more, write the ones digit and carry 1 to the tens.",
+          "Carry the 1, don't forget the 1, or the lock will sneeze right away!"
+        ],
+        "choices": [
+          {
+            "text": "Line them up, carry 1, got it!",
+            "reply": "Uncle Tùng gives a sawdust-covered thumbs up: Spoken like a master craftsman!"
+          }
+        ]
+      }
     },
     {
       "id": "khoa-hop-do",
@@ -387,7 +421,26 @@
           "reply": "Cáo Mía: Hừm, nhảy cóc nhanh ghê, nhưng nhớ đừng đếm lố!"
         }
       ],
-      "goTo": "Chạy tới lối đá qua vườn cây, Nai Lộc đang lên dây cót cho chú chuột túi"
+      "goTo": "Chạy tới lối đá qua vườn cây, Nai Lộc đang lên dây cót cho chú chuột túi",
+      "en": {
+        "title": "Winding up the kangaroo",
+        "goTo": "Run to the stepping-stone path through the orchard, where Nai Lộc is winding up a toy kangaroo",
+        "lines": [
+          "The yellow box had a wind-up kangaroo! It's challenging me to a long-jump contest on the stepping stones in the orchard, marked 5, 10, 15... up to 50.",
+          "Each stone is worth 5 more points. I bet {name} can't guess the second jump!",
+          "Ignore Fox's teasing. {name}, do you want to count stone by stone, or count on in fives to go faster?"
+        ],
+        "choices": [
+          {
+            "text": "Count one stone at a time",
+            "reply": "Nai Lộc: Slow and steady, like me picking my way along the paddy edges."
+          },
+          {
+            "text": "Count on 5 with each step",
+            "reply": "Cáo Mía: Hmm, hopping ahead fast, but don't count too far!"
+          }
+        ]
+      }
     },
     {
       "id": "chuot-tui-nhay-xa",
@@ -775,14 +828,22 @@
       "title": "Cúp thợ mở khoá",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ba hộp quà đều mở tung! Bác thợ Tùng trao cho {name} chiếc cúp gỗ \"Thợ mở khoá số\", còn Cáo Mía phải hứa từ nay chỉ khoá quà bằng nơ."
+      "text": "Ba hộp quà đều mở tung! Bác thợ Tùng trao cho {name} chiếc cúp gỗ \"Thợ mở khoá số\", còn Cáo Mía phải hứa từ nay chỉ khoá quà bằng nơ.",
+      "en": {
+        "title": "The locksmith's trophy",
+        "text": "All three gift boxes pop open! Uncle Tùng gives {name} the wooden \"Number Lock Master\" trophy, and Cáo Mía has to promise that from now on he'll only tie presents shut with ribbons."
+      }
     },
     {
       "id": "ke-gau-bong-day-ap",
       "title": "Ruộng ngô đầy bắp",
       "kind": "next",
       "trigger": "auto",
-      "text": "Giữa ruộng ngô, Koala Lơ Mơ ngáp một cái thật dài: \"Tớ bẻ được nhiều bắp ngô quá, muốn tặng bớt cho các em nhỏ quanh vùng… mà tặng bớt thì còn lại bao nhiêu nhỉ? Zzz…\""
+      "text": "Giữa ruộng ngô, Koala Lơ Mơ ngáp một cái thật dài: \"Tớ bẻ được nhiều bắp ngô quá, muốn tặng bớt cho các em nhỏ quanh vùng… mà tặng bớt thì còn lại bao nhiêu nhỉ? Zzz…\"",
+      "en": {
+        "title": "A cornfield full of cobs",
+        "text": "In the middle of the cornfield, Koala Lơ Mơ gives a long, long yawn: \"I picked so many corn cobs, I want to give some to the little ones around here... but if I give some away, how many will I have left? Zzz...\""
+      }
     }
   ],
   "reward": {

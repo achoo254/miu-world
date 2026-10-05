@@ -46,7 +46,19 @@
         {
           "text": "Nét bút mềm mại, câu đối đỏ tươi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hello {name}! Come see some New Year calligraphy with me, Uncle Quang, at the market corner!",
+          "Set the brush on the white dot, then trace slowly along the faint stroke so the ink comes out rich."
+        ],
+        "choices": [
+          {
+            "text": "Soft brushstrokes, bright red couplets!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Viết nắn nót hoàn thành bốn chữ thư pháp nhé!",
       "game": "ong-do-calligraphy",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "The Calligrapher's Gift",
+        "prompt": "Carefully write 4 calligraphy characters!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chú Đố Chữ Quang mỉm cười vuốt râu: nét bút của {name} ngay ngắn, đậm đà phong vị ngày Tết!"
+      "text": "Chú Đố Chữ Quang mỉm cười vuốt râu: nét bút của {name} ngay ngắn, đậm đà phong vị ngày Tết!",
+      "en": {
+        "title": "Reward",
+        "text": "Chú Đố Chữ Quang smiles and strokes his beard: the writing of {name} is neat and full of Tết spirit!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mùa xuân chợ phiên còn bày câu đối, {name} rảnh lại ghé góc chợ đàm đạo chữ nghĩa nhé."
+      "text": "Mùa xuân chợ phiên còn bày câu đối, {name} rảnh lại ghé góc chợ đàm đạo chữ nghĩa nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The spring market still has couplets on show, {name}. Come chat about words at the market corner."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Calligraphy at the old scholar stall with Chú Đố Chữ Quang",
+    "summary": "Red paper and fragrant ink fill the spring market: guide the brush carefully along each flowing calligraphy stroke."
   }
 }

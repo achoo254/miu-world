@@ -54,7 +54,25 @@
           "text": "Lá thần là gì vậy?",
           "reply": "Là chiếc lá biết phát sáng, có phép chữa lành. Cùng tìm nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Meet Vẹt the Parrot",
+        "lines": [
+          "Hi {name}! The great old tree of the forest is wilting.",
+          "Only the Magic Leaf can heal it. Will you help me find it?",
+          "Look for 3 clues around here: a box, a letter and a red mushroom."
+        ],
+        "choices": [
+          {
+            "text": "I'll help!",
+            "reply": "Wonderful! Off we go!"
+          },
+          {
+            "text": "What's a Magic Leaf?",
+            "reply": "A leaf that glows and has healing magic. Let's find it together!"
+          }
+        ]
+      }
     },
     {
       "id": "find-clues",
@@ -135,7 +153,15 @@
           "speaker": "Hải ly",
           "text": "Mẹo nhỏ: mỗi lần đặt một quả vào giỏ, bạn đếm tiếp một số."
         }
-      ]
+      ],
+      "en": {
+        "title": "Meet Hải Ly the Beaver",
+        "lines": [
+          "Hi {name}! I'll show you the way to the great old tree.",
+          "But first I need exactly 10 apples to bake a pie for my whole family.",
+          "Little tip: each time you drop an apple in the basket, count one number up."
+        ]
+      }
     },
     {
       "id": "apples-for-beaver",
@@ -378,7 +404,24 @@
           "text": "Cháu và các bạn cùng giúp ông!",
           "reply": "Cùng nhau thì việc gì cũng xong."
         }
-      ]
+      ],
+      "en": {
+        "title": "Meet the Great Old Tree",
+        "lines": [
+          "Who is this who has come all the way to me?",
+          "To open the chest of the Magic Leaf, you must solve my riddle, little one."
+        ],
+        "choices": [
+          {
+            "text": "I came to heal you, Grandpa Tree!",
+            "reply": "What a kind heart you have."
+          },
+          {
+            "text": "My friends and I will help you together!",
+            "reply": "Together, there's nothing we can't do."
+          }
+        ]
+      }
     },
     {
       "id": "tree-riddle",
@@ -420,7 +463,11 @@
       "title": "Mở rương Lá thần",
       "kind": "reward",
       "target": "chest",
-      "text": "Rương mở ra, Lá thần phát sáng! Cây cổ thụ xanh tươi trở lại."
+      "text": "Rương mở ra, Lá thần phát sáng! Cây cổ thụ xanh tươi trở lại.",
+      "en": {
+        "title": "Open the Magic Leaf chest",
+        "text": "The chest swings open and the Magic Leaf glows! The great old tree turns green and lush again."
+      }
     },
     {
       "id": "open-gate",
@@ -428,7 +475,11 @@
       "kind": "next",
       "target": "gate-ch2",
       "trigger": "auto",
-      "text": "Cổng đá sau cây cổ thụ mở ra: lối vào sâu trong rừng hiện ra, bao bạn mới đang chờ {name} ghé thăm!"
+      "text": "Cổng đá sau cây cổ thụ mở ra: lối vào sâu trong rừng hiện ra, bao bạn mới đang chờ {name} ghé thăm!",
+      "en": {
+        "title": "The road to chapter 2",
+        "text": "The stone gate behind the great old tree opens: a path into the deep forest appears, and lots of new friends are waiting for {name} to visit!"
+      }
     }
   ],
   "reward": {

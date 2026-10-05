@@ -46,7 +46,19 @@
         {
           "text": "Đưa dùi đây, tớ gõ cho!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Boom boom! You came at just the right time, {name}. The drum team needs one more drummer.",
+          "Red notes hit the middle, blue notes hit the rim, and strike as the note enters the circle."
+        ],
+        "choices": [
+          {
+            "text": "Hand me the sticks, I will drum!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Gõ trống được ba mươi sáu điểm nhé!",
       "game": "drum-beat",
-      "goal": 36
+      "goal": 36,
+      "en": {
+        "title": "Festival drum",
+        "prompt": "Score 36 points on the drum!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Voi Trống Hội vẫy vòi theo nhịp: tiếng trống của {name} rộn ràng cả sân!"
+      "text": "Voi Trống Hội vẫy vòi theo nhịp: tiếng trống của {name} rộn ràng cả sân!",
+      "en": {
+        "title": "Reward",
+        "text": "Voi Trống Hội swings its trunk to the beat: the drumming of {name} livens up the whole yard!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Sắp có buổi biểu diễn nữa, Voi Trống Hội chờ cậu ở sân khấu sự kiện."
+      "text": "Sắp có buổi biểu diễn nữa, Voi Trống Hội chờ cậu ở sân khấu sự kiện.",
+      "en": {
+        "title": "See you soon",
+        "text": "Another show is coming soon, and Voi Trống Hội is waiting for you at the event stage."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Festival drumming with Voi Trống Hội",
+    "summary": "Notes race toward the circle: red notes hit the middle of the drum, blue notes hit the rim."
   }
 }

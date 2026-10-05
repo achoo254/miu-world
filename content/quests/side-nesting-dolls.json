@@ -46,7 +46,19 @@
         {
           "text": "Tớ so cỡ từng bạn thật chuẩn!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The layered wooden dolls on the table are so cute. {name}, help me nest them!",
+          "Compare their sizes, then drag each small doll into the one just one size bigger."
+        ],
+        "choices": [
+          {
+            "text": "I'll match every size just right!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Lồng hoàn chỉnh từ bé đến lớn ba bộ búp bê gỗ đáng yêu nhé!",
       "game": "nesting-dolls",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Nesting Dolls",
+        "prompt": "Nest 3 sets of wooden dolls from smallest to biggest!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chú Rô Bốt gật đầu tích tắc: {name} lồng búp bê vừa in, thành một khối tròn trịa!"
+      "text": "Chú Rô Bốt gật đầu tích tắc: {name} lồng búp bê vừa in, thành một khối tròn trịa!",
+      "en": {
+        "title": "Reward",
+        "text": "Chú Rô Bốt nods, tick-tock: {name} nested the dolls perfectly into one round doll!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Góc học tập luôn rộn ràng kiến thức mới, Rô Bốt đón {name} ghé thăm mỗi ngày."
+      "text": "Góc học tập luôn rộn ràng kiến thức mới, Rô Bốt đón {name} ghé thăm mỗi ngày.",
+      "en": {
+        "title": "See you soon",
+        "text": "The study corner is always buzzing with new things to learn. Rô Bốt welcomes {name} every day."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Nesting Dolls with Chú Rô Bốt Đồng Hồ",
+    "summary": "Wooden dolls of many sizes; compare them and tuck each smaller doll inside the next bigger one."
   }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Cháu nhảy cờ thu dọn bàn cờ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Welcome, {name}, to the elegant and challenging court game of peg jumping.",
+          "Pick a gem to jump over the one beside it and remove the middle one. Leave as few as you can."
+        ],
+        "choices": [
+          {
+            "text": "I'll jump and clear the board!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nhảy cờ tài tình thu dọn được mười hai viên ngọc trên bàn cờ nhé!",
       "game": "peg-solitaire",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Peg Jump",
+        "prompt": "Jump cleverly to clear 12 gems from the board!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tể Tướng Cờ Vua đứng dậy chúc mừng {name} đã hoàn thành ván cờ với chiến thuật tuyệt luân!"
+      "text": "Tể Tướng Cờ Vua đứng dậy chúc mừng {name} đã hoàn thành ván cờ với chiến thuật tuyệt luân!",
+      "en": {
+        "title": "Reward",
+        "text": "Tể Tướng Cờ Vua rises to congratulate {name} on a game played with brilliant tactics!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Nghệ thuật cờ nhảy cần sự suy xét cẩn trọng, rảnh rỗi cháu cứ tới đại sảnh đàm đạo cùng ta."
+      "text": "Nghệ thuật cờ nhảy cần sự suy xét cẩn trọng, rảnh rỗi cháu cứ tới đại sảnh đàm đạo cùng ta.",
+      "en": {
+        "title": "See you soon",
+        "text": "Peg jumping needs careful thought. Come to the great hall and talk strategy with me any time."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Peg Jump with Tể Tướng Cờ Vua",
+    "summary": "A cross-shaped board of fine wood; jump each gem over its neighbour to clear the board."
   }
 }

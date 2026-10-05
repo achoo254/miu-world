@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 5,
-  "params": { "ink": 300 }
+  "params": { "ink": 300 },
+  "en": {
+    "name": "Shelter the Puppy",
+    "howTo": [
+      "Rain's coming! {name} drags a finger to draw one line as a roof for the puppy.",
+      "Rain runs down the roof and the wind blows it slanted. Keep the puppy dry till the rain stops to pass.",
+      "Puppy got wet? Draw that level again."
+    ]
+  }
 }

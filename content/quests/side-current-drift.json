@@ -46,7 +46,19 @@
         {
           "text": "Cháu nắn dòng đưa thư cập bến!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The sailors' message bottles must reach a faraway island, {name}. Help me steer the current!",
+          "Drop pebbles into the stream to bend the flow and push the bottle safely ashore."
+        ],
+        "choices": [
+          {
+            "text": "I'll steer the bottles ashore!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Dẫn dòng hải lưu đưa trót lọt bốn chai thư cập bến đảo hoang nhé!",
       "game": "current-drift",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Message in the current",
+        "prompt": "Guide the current to bring 4 bottles to the desert island!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bác Quăng Lưới siết chặt tay cháu: thư đã gửi tới nơi trọn vẹn nhờ công {name}!"
+      "text": "Bác Quăng Lưới siết chặt tay cháu: thư đã gửi tới nơi trọn vẹn nhờ công {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Bác Quăng Lưới shakes your hand: every letter arrived safely thanks to {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Biển cả bao la còn nhiều lời nhắn nhủ, bác chờ {name} ở bến tàu đón thuyền."
+      "text": "Biển cả bao la còn nhiều lời nhắn nhủ, bác chờ {name} ở bến tàu đón thuyền.",
+      "en": {
+        "title": "See you soon",
+        "text": "The wide sea has many more messages to carry. I'll wait for {name} at the pier."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Guide the message bottles with Bác Quăng Lưới Biển",
+    "summary": "Water rushes over the rocks: drop pebbles to bend the current and carry each message bottle to shore."
   }
 }

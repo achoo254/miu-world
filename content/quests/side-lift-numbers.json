@@ -46,7 +46,19 @@
         {
           "text": "Ghép chục ghép đơn vị, thang máy lên tầng!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Oh {name}, castle guests are holding cards with the tens and the loose sticks for their floor!",
+          "Put the tens and the ones together to make the floor number, then tap to send the lift up."
+        ],
+        "choices": [
+          {
+            "text": "Tens and ones together, lift going up!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chở đúng mười lăm lượt khách lên đúng tầng lâu đài nhé!",
       "game": "lift-numbers",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Number lift",
+        "prompt": "Take 15 groups of guests to the right castle floor!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khỉ Tính Nhanh cúi chào kiểu hoàng gia: {name} hiểu rõ hàng chục hàng đơn vị, phục vụ chu đáo quá!"
+      "text": "Khỉ Tính Nhanh cúi chào kiểu hoàng gia: {name} hiểu rõ hàng chục hàng đơn vị, phục vụ chu đáo quá!",
+      "en": {
+        "title": "Reward",
+        "text": "Khỉ Tính Nhanh bows royally: {name} really knows tens and ones, and looks after every guest!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Khách tham quan lâu đài tấp nập suốt ngày, {name} nhớ ghé bậc thềm lái thang máy tiếp nha."
+      "text": "Khách tham quan lâu đài tấp nập suốt ngày, {name} nhớ ghé bậc thềm lái thang máy tiếp nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "Castle visitors come and go all day, {name}, so come back to the steps and run the lift again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Running the number lift with Khỉ Tính Nhanh",
+    "summary": "A grand castle tower: read the tens and ones on the card each guest holds to send the lift to the right floor."
   }
 }

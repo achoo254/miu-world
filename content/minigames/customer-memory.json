@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 15,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Remember the orders",
+    "howTo": [
+      "Customers sit down and order in a speech bubble, then it vanishes. Remember it well, {name}!",
+      "Tap a customer, then the right dish on the counter (or the dish first, then the customer).",
+      "A customer with the full order is a point. Serve the wrong dish and they'll repeat it once."
+    ]
+  }
 }

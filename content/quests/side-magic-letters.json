@@ -46,7 +46,19 @@
         {
           "text": "Cháu vẽ nét chữ thần kỳ ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Look up, {name}! Magic bubbles with letters inside are swooping down from the sky!",
+          "Quickly draw the letter on each bubble with your finger before it touches the ground to break the spell."
+        ],
+        "choices": [
+          {
+            "text": "I'll draw the magic letters right now!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Vẽ chuẩn xác giải trừ hai mươi quả bóng chữ ma thuật nhé!",
       "game": "magic-letters",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Magic letter strokes",
+        "prompt": "Break the spell on 20 letter bubbles with neat drawing!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hiệp Sĩ Gương Soi khom mình thán phục nét vẽ thần tốc và chữ viết tuyệt đẹp của {name}!"
+      "text": "Hiệp Sĩ Gương Soi khom mình thán phục nét vẽ thần tốc và chữ viết tuyệt đẹp của {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Hiệp Sĩ Gương Soi bows in admiration at {name}'s lightning-fast, beautiful letters!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bầu trời hoàng cung lại bình yên rồi, cháu nhớ ghé thăm sân hình khối trò chuyện nhé."
+      "text": "Bầu trời hoàng cung lại bình yên rồi, cháu nhớ ghé thăm sân hình khối trò chuyện nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The palace sky is peaceful again. Remember to visit the shape courtyard for a chat."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Magic Letter Drawing with Hiệp Sĩ Gương Soi",
+    "summary": "Magic bubbles carrying letters float down from a high tower; draw each letter with your finger to pop them."
   }
 }

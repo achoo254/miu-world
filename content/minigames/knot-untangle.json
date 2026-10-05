@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Untangle the balloons",
+    "howTo": [
+      "The balloons' strings are tied together in a tangle. Red strings are the ones crossing.",
+      "{name}, drag balloons somewhere else (or tap a balloon, then an empty spot) until no strings cross.",
+      "Untangle a bunch for one point."
+    ]
+  }
 }

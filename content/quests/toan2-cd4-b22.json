@@ -68,7 +68,27 @@
           "text": "Lơ Mơ ơi đừng ngủ nữa nha!",
           "reply": "Koala Lơ Mơ cười tít: Tớ đang cố đây, mắt tớ tự díp lại đấy chứ."
         }
-      ]
+      ],
+      "en": {
+        "title": "Lơ Mơ yawns in the cornfield",
+        "goTo": "Go to the cornfield, where Koala Lơ Mơ has dozed off hugging a corn cob",
+        "lines": [
+          "Mooo... {name}, could you go to the cornfield and help? Lơ Mơ has been picking corn since dawn, and is probably nodding off again by now.",
+          "Oh, {name}'s here... I was going to give some corn to the little ones nearby, but I'd only counted to 42 when... zzz...",
+          "Wake up, Lơ Mơ! You fell asleep right on the 43rd cob, and you've got corn silk all over your face.",
+          "Huh? Oh, right. {name}, help me work out how many are left after I give some away, I'm very forgetful."
+        ],
+        "choices": [
+          {
+            "text": "I'll do the maths, you wrap the gifts!",
+            "reply": "Koala Lơ Mơ rubs her eyes: Thanks! I promise not to sleep... for at least five minutes."
+          },
+          {
+            "text": "Please don't fall asleep again, Lơ Mơ!",
+            "reply": "Koala Lơ Mơ smiles sleepily: I'm trying, my eyes just close all by themselves."
+          }
+        ]
+      }
     },
     {
       "id": "na-dem-gau",
@@ -90,7 +110,20 @@
           "text": "Tháo một bó chục ra là được!",
           "reply": "Thỏ Ruy Băng: Đúng rồi, tháo một bó 10 bắp ra cho đủ chỗ lấy."
         }
-      ]
+      ],
+      "en": {
+        "title": "Counting cobs in the field",
+        "lines": [
+          "There are 4 bundles of 10 cobs each, plus 2 loose cobs: 42 cobs. Lơ Mơ wants to give away 8.",
+          "But there are only 2 loose cobs, how can we take out 8? Or maybe... we nap first and work it out after?"
+        ],
+        "choices": [
+          {
+            "text": "Just untie one bundle of ten!",
+            "reply": "Thỏ Ruy Băng: That's right, untie a bundle of 10 cobs so there are enough to take."
+          }
+        ]
+      }
     },
     {
       "id": "tru-co-nho-la-gi",
@@ -117,7 +150,22 @@
           "reply": "Koala Lơ Mơ ôm bắp ngô gật gù: Câu thần chú hay ghê, tớ thuộc rồi."
         }
       ],
-      "goTo": "Sang chòi gói quà bên ruộng, Thỏ Ruy Băng đang tháo một bó chục bắp ngô"
+      "goTo": "Sang chòi gói quà bên ruộng, Thỏ Ruy Băng đang tháo một bó chục bắp ngô",
+      "en": {
+        "title": "Untie a ten to take away",
+        "goTo": "Go to the gift-wrapping hut by the field, where Thỏ Ruy Băng is untying a bundle of ten cobs",
+        "lines": [
+          "Set out 42 – 8 in columns: in the ones, you can't take 8 from 2, so borrow a ten to make 12. 12 take away 8 is 4, write 4, carry 1.",
+          "Tens: 4 take away the 1 we borrowed leaves 3, write 3. So 42 – 8 = 34.",
+          "If you borrow, you must give it back, like when I borrow Bunny's fluffy pillow. Hee hee."
+        ],
+        "choices": [
+          {
+            "text": "Borrow a ten, remember to pay it back!",
+            "reply": "Koala Lơ Mơ hugs a corn cob and nods: What a nice spell, I know it by heart now."
+          }
+        ]
+      }
     },
     {
       "id": "goi-qua-dot-mot",
@@ -871,7 +919,25 @@
           "reply": "Thỏ Ruy Băng lôi ra cuộn ruy băng dài ngoằng: Để tớ lo phần nơ!"
         }
       ],
-      "goTo": "Về ruộng ngô, Koala Lơ Mơ dụi mắt chờ cậu bàn cách gói quà"
+      "goTo": "Về ruộng ngô, Koala Lơ Mơ dụi mắt chờ cậu bàn cách gói quà",
+      "en": {
+        "title": "Wrap fast or wrap pretty?",
+        "goTo": "Go back to the cornfield, where Koala Lơ Mơ is rubbing her eyes, waiting to plan the gift-wrapping with you",
+        "lines": [
+          "There are still some puzzles the little ones sent over. {name}, should we wrap fast to finish in time, or wrap them really pretty?",
+          "Wrap fast and Lơ Mơ won't doze off. Wrap pretty and the little ones will be happier. So hard to choose!"
+        ],
+        "choices": [
+          {
+            "text": "Wrap fast, before Lơ Mơ falls asleep!",
+            "reply": "Koala Lơ Mơ stands up straight: Yes sir! My eyes are wide open, as big as grapes."
+          },
+          {
+            "text": "Wrap them really pretty, with bows!",
+            "reply": "Thỏ Ruy Băng pulls out an extra-long roll of ribbon: Leave the bows to me!"
+          }
+        ]
+      }
     },
     {
       "id": "chuoi-so-va-o-to",
@@ -1595,14 +1661,22 @@
       "title": "Bắp ngô cảm ơn",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Các em nhỏ ôm bắp ngô chạy ùa ra cổng nông trại. Koala Lơ Mơ tặng {name} một bắp ngô nếp buộc nơ đỏ, kèm lời hứa: \"Lần sau tớ sẽ đếm ngô… trước khi ngủ.\""
+      "text": "Các em nhỏ ôm bắp ngô chạy ùa ra cổng nông trại. Koala Lơ Mơ tặng {name} một bắp ngô nếp buộc nơ đỏ, kèm lời hứa: \"Lần sau tớ sẽ đếm ngô… trước khi ngủ.\"",
+      "en": {
+        "title": "Thank-you corn",
+        "text": "The little ones hug their corn cobs and rush out of the farm gate. Koala Lơ Mơ gives {name} a sticky-corn cob tied with a red bow, with a promise: \"Next time I'll count the corn... before I fall asleep.\""
+      }
     },
     {
       "id": "may-bay-giay-cua-ho",
       "title": "Máy bay giấy của Hổ Gừ",
       "kind": "next",
       "trigger": "auto",
-      "text": "Trên bãi cỏ cạnh cối xay gió, Hổ Gừ gầm lên một tiếng: \"Grừ! Máy bay giấy của tớ bay xa thế mà sao về gần thế này?\" rồi lén chui ra sau đống rơm vì sợ bị cười."
+      "text": "Trên bãi cỏ cạnh cối xay gió, Hổ Gừ gầm lên một tiếng: \"Grừ! Máy bay giấy của tớ bay xa thế mà sao về gần thế này?\" rồi lén chui ra sau đống rơm vì sợ bị cười.",
+      "en": {
+        "title": "Hổ Gừ's paper plane",
+        "text": "On the grass by the windmill, Hổ Gừ lets out a roar: \"Grrr! My paper plane flew so far, so why did it come back this close?\" Then he sneaks behind the haystack, scared of being laughed at."
+      }
     }
   ],
   "reward": {

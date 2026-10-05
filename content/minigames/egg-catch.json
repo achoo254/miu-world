@@ -9,5 +9,12 @@
   "controls": ["drag"],
   "duration": 40,
   "goal": 25,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Catch the eggs",
+    "howTo": [
+      "Drag the basket left and right to catch the falling eggs.",
+      "Golden eggs are worth three points. Dodge the rocks: three rock hits and you lose!"
+    ]
+  }
 }

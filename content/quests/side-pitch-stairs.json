@@ -46,7 +46,19 @@
         {
           "text": "Đôi tai tớ nghe rõ lắm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The mountain wind is ringing the ice bells, {name}. Listen with me!",
+          "If the next sound is higher, choose the up arrow; if it's lower, press the down arrow."
+        ],
+        "choices": [
+          {
+            "text": "My ears hear really well!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Lắng nghe chuẩn xác để bước lên mười lăm bậc thang nốt nhạc nhé!",
       "game": "pitch-stairs",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Musical Stairs",
+        "prompt": "Listen closely to climb 15 musical steps!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Người Tuyết Đếm Bậc xoay tròn vui sướng: {name} có đôi tai cảm âm thật tuyệt vời!"
+      "text": "Người Tuyết Đếm Bậc xoay tròn vui sướng: {name} có đôi tai cảm âm thật tuyệt vời!",
+      "en": {
+        "title": "Reward",
+        "text": "Người Tuyết Đếm Bậc spins with joy: {name} has a wonderful ear for music!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Gió núi vẫn gảy từng bản nhạc trong trẻo, Người Tuyết đón {name} lên đài nghe tiếp."
+      "text": "Gió núi vẫn gảy từng bản nhạc trong trẻo, Người Tuyết đón {name} lên đài nghe tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "The mountain wind keeps playing clear tunes. Người Tuyết welcomes {name} back to listen."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Musical Stairs with Người Tuyết Đếm Bậc",
+    "summary": "Falling ice drops ring out like musical notes; listen to tell if the next note is higher or lower."
   }
 }

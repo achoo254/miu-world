@@ -10,5 +10,13 @@
   "controls": ["hold"],
   "duration": 60,
   "goal": 8,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Pour Tea to the Line",
+    "howTo": [
+      "Hold your finger to tip the teapot and pour; let go to stop.",
+      "Tea between the two green lines earns {name} a point. Not enough? Pour a bit more.",
+      "The snail teapot pours slowly, the rabbit one fast. Overflow three cups and your turn ends!"
+    ]
+  }
 }

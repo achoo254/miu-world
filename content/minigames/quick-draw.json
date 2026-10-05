@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 50,
   "goal": 4,
-  "params": { "catSpeed": 1 }
+  "params": { "catSpeed": 1 },
+  "en": {
+    "name": "Who's Quicker?",
+    "howTo": [
+      "Wait for the lantern to glow red, then tap as fast as you can, faster than Cat!",
+      "Tapping before it lights up breaks the rule. {name}, don't let light bulbs or butterflies fool you!",
+      "There are 8 rounds: winning 4 is already great."
+    ]
+  }
 }

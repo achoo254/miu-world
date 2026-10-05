@@ -27,10 +27,14 @@
     "next": "bye"
   },
   "steps": [
-    { "id": "ask", "title": "Hải ly nhờ", "kind": "dialogue", "target": "animal-beaver", "lines": [{ "speaker": "Hải ly", "text": "Hứng trứng giúp tớ nhé!" }] },
-    { "id": "play", "title": "Hứng trứng", "kind": "challenge", "mechanic": "minigame", "trigger": "auto", "prompt": "Hứng tám quả trứng nhé!", "game": "egg-catch", "goal": 8 },
-    { "id": "thanks", "title": "Cảm ơn", "kind": "reward", "trigger": "auto", "text": "Cảm ơn bạn nhiều!" },
-    { "id": "bye", "title": "Hẹn gặp lại", "kind": "next", "trigger": "auto", "text": "Lúc nào rảnh lại chơi nhé." }
+    { "id": "ask", "title": "Hải ly nhờ", "kind": "dialogue", "target": "animal-beaver", "lines": [{ "speaker": "Hải ly", "text": "Hứng trứng giúp tớ nhé!" }], "en": {"title": "Invitation", "lines": ["Catch the eggs for me!"], "choices": []} },
+    { "id": "play", "title": "Hứng trứng", "kind": "challenge", "mechanic": "minigame", "trigger": "auto", "prompt": "Hứng tám quả trứng nhé!", "game": "egg-catch", "goal": 8, "en": {"title": "Egg catch", "prompt": "Catch eight eggs!"} },
+    { "id": "thanks", "title": "Cảm ơn", "kind": "reward", "trigger": "auto", "text": "Cảm ơn bạn nhiều!", "en": {"title": "Reward", "text": "Thank you so much!"} },
+    { "id": "bye", "title": "Hẹn gặp lại", "kind": "next", "trigger": "auto", "text": "Lúc nào rảnh lại chơi nhé.", "en": {"title": "See you soon", "text": "Come and play again any time."} }
   ],
-  "reward": { "xp": 12, "coin": 3 }
+  "reward": { "xp": 12, "coin": 3 },
+  "en": {
+    "title": "Test egg catch",
+    "summary": "A side quest used by the server tests."
+  }
 }

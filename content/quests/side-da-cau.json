@@ -46,7 +46,19 @@
         {
           "text": "Tâng cầu là nghề của tớ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Do you know how to play đá cầu, {name}? I have a beautiful feather shuttlecock!",
+          "Wherever the shuttlecock falls, tap to kick it back up. Watch out, a second one is coming."
+        ],
+        "choices": [
+          {
+            "text": "Kicking shuttlecocks is my thing!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Tâng cầu được ba mươi lần nhé!",
       "game": "da-cau",
-      "goal": 30
+      "goal": 30,
+      "en": {
+        "title": "Đá cầu (shuttlecock kick)",
+        "prompt": "Keep the shuttlecock up for 30 kicks!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hổ Còi Vàng đếm không kịp: {name} tâng cầu dẻo quá trời!"
+      "text": "Hổ Còi Vàng đếm không kịp: {name} tâng cầu dẻo quá trời!",
+      "en": {
+        "title": "Reward",
+        "text": "Hổ Còi Vàng cannot count fast enough: {name} kicks the shuttlecock so smoothly!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Giờ ra chơi nào tớ cũng mang cầu ra sân, rủ cậu tâng tiếp nhé."
+      "text": "Giờ ra chơi nào tớ cũng mang cầu ra sân, rủ cậu tâng tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "I bring a shuttlecock out every break time, so come kick it around with me again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Shuttlecock kicking with Hổ Còi Vàng",
+    "summary": "Colourful feather shuttlecocks keep dropping: tap to kick them back up, and a second one joins halfway through."
   }
 }

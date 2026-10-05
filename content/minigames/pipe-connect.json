@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 2,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Water Pipe Puzzle",
+    "howTo": [
+      "Tap a pipe tile to turn it a quarter.",
+      "Link pipes from the well on the left to the field on the right. Pipes with water turn blue.",
+      "When water reaches the field, {name} finishes the board: one point!"
+    ]
+  }
 }

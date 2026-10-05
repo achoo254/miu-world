@@ -46,7 +46,19 @@
         {
           "text": "Cháu giúp cá chép nhảy ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, the carp are setting off together to leap the Vũ Môn waterfall!",
+          "Wait for the water to calm, then tap to send the carp leaping up."
+        ],
+        "choices": [
+          {
+            "text": "I'll help the carp jump!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Giúp đàn cá chép nhảy vượt qua mười hai bậc thác nước nhé!",
       "game": "carp-waterfall",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Carp leaps the falls",
+        "prompt": "Help the carp leap 12 steps of the waterfall!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hay lắm {name}, đàn cá chép đã hóa rồng bay vút lên trời rồi!"
+      "text": "Hay lắm {name}, đàn cá chép đã hóa rồng bay vút lên trời rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Wonderful, {name}! The carp have turned into dragons and soared into the sky!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chú lái đò vẫn neo ở bãi cỏ ven sông đón cháu ghé chơi tiếp."
+      "text": "Chú lái đò vẫn neo ở bãi cỏ ven sông đón cháu ghé chơi tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "The ferryman is still moored at the riverside meadow, waiting for you to visit."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Carp leap the Vũ Môn falls with Chú Lái Đò Ba",
+    "summary": "Tap gently to make the carp leap up each step of the rushing waterfall to the high rocks."
   }
 }

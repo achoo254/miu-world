@@ -10,5 +10,13 @@
   "controls": ["hold", "tap"],
   "duration": 90,
   "goal": 12,
-  "params": { "band": 0.18 }
+  "params": { "band": 0.18 },
+  "en": {
+    "name": "Build a Sandcastle",
+    "howTo": [
+      "Hold your finger to scoop sand into the bucket, and let go when it reaches the green line.",
+      "Tap an empty spot on the castle to flip the bucket into a tower. Too little sand crumbles, too much slumps.",
+      "{name}, build four towers on each castle!"
+    ]
+  }
 }

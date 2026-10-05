@@ -46,7 +46,19 @@
         {
           "text": "Cháu trang trí bánh kem ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "So many birthday cake orders today, {name}!",
+          "Read the order, then put the right number of strawberries and candles on top."
+        ],
+        "choices": [
+          {
+            "text": "I'll decorate a cake now!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Trang trí chuẩn vị ngọt ngào tám chiếc bánh kem thơm lừng nhé!",
       "game": "cake-decorate",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Decorate to order",
+        "prompt": "Decorate 8 sweet-smelling cakes just as ordered!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chiếc bánh kem rực rỡ ngọt ngào làm khách hàng của {name} mê tít!"
+      "text": "Chiếc bánh kem rực rỡ ngọt ngào làm khách hàng của {name} mê tít!",
+      "en": {
+        "title": "Reward",
+        "text": "Such a bright, sweet cake! {name}'s customers absolutely love it!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cửa tiệm bánh kem trước sạp rau hoa luôn thơm lừng đón cháu ghé."
+      "text": "Cửa tiệm bánh kem trước sạp rau hoa luôn thơm lừng đón cháu ghé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The cake shop by the vegetable and flower stalls always smells lovely. Pop by!"
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Decorate birthday cakes with Chú Bán Bánh Kem",
+    "summary": "Put candles, strawberries and sweets on the soft sponge, as many as each young customer ordered."
   }
 }

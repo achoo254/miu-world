@@ -10,5 +10,13 @@
   "controls": ["hold"],
   "duration": 60,
   "goal": 10,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Bamboo Bridge",
+    "howTo": [
+      "Hold your finger to grow the bamboo pole, then let go so it falls across the stream.",
+      "If it reaches the stone pillar on the far side, {name} crosses one gap.",
+      "Too short or too long and the bamboo drops in the stream, so try that gap again!"
+    ]
+  }
 }

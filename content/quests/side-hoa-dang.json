@@ -46,7 +46,19 @@
         {
           "text": "Cháu thả hoa đăng xuống nước!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Our village floats bright flower lanterns on the river on festival night, {name}!",
+          "Tap to release the lanterns away from the water hyacinths so they drift far."
+        ],
+        "choices": [
+          {
+            "text": "I'll set a lantern afloat!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Thả trôi êm ả mười hai đóa hoa đăng lung linh trên mặt nước nhé!",
       "game": "hoa-dang",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Floating lanterns",
+        "prompt": "Float 12 glowing flower lanterns gently down the river!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Dòng sông lấp lánh như dát vàng nhờ bàn tay khéo léo của {name}!"
+      "text": "Dòng sông lấp lánh như dát vàng nhờ bàn tay khéo léo của {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "The river sparkles like gold thanks to {name}'s gentle hands!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mỗi tối trăng rằm, cô lại ngồi dưới gốc đa thả hoa đăng cầu an."
+      "text": "Mỗi tối trăng rằm, cô lại ngồi dưới gốc đa thả hoa đăng cầu an.",
+      "en": {
+        "title": "See you soon",
+        "text": "Every full-moon night, I sit under the banyan tree and float lanterns for good luck."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Float lanterns on the river with Cô Đèn Lồng Sen",
+    "summary": "Tap gently to set each sparkling flower lantern afloat, drifting softly down the cool river."
   }
 }

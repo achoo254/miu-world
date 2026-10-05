@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 2,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Crack the gem code",
+    "howTo": [
+      "The chest is locked with three different gems. {name}, tap gems in the tray to guess.",
+      "Each star means a gem in the right place. Each circle means right colour, wrong place.",
+      "Guess it within eight tries to open the chest and earn a point."
+    ]
+  }
 }

@@ -44,7 +44,20 @@
       ],
       "choices": [
         { "text": "Tớ giúp cậu tìm đồ rồi đuổi theo!", "reply": "Tuyệt! Lúc nãy tớ vấp ở bậc thang khối, chắc đồ rơi quanh đó." }
-      ]
+      ],
+      "en": {
+        "title": "Lính Gỗ left behind",
+        "goTo": "In the corner of the block yard, a toy soldier stands looking lost",
+        "lines": [
+          "Left, right! Left, right… Oh no, I dropped my things and fell behind, and the whole parade has marched off. Without me on the drum, they'll march all out of step!"
+        ],
+        "choices": [
+          {
+            "text": "I'll help you find your things and then we'll catch up!",
+            "reply": "Brilliant! I tripped on the block steps a moment ago, my things must have fallen around there."
+          }
+        ]
+      }
     },
     {
       "id": "tim-do-linh-go",
@@ -162,7 +175,25 @@
           "text": "Nhờ Rô-bốt Thiếc Tí Hon giúp",
           "consequence": "Gấu Bông chỉ tay: Rô-bốt Thiếc đang đứng ở kệ đồ chơi thiếc, bạn ấy chạy nhanh lắm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Catching up with the parade",
+        "prompt": "The parade is already far ahead. How will {name} help Lính Gỗ catch up?",
+        "choices": [
+          {
+            "text": "Find wood and build a little cart",
+            "consequence": "Four round blocks for wheels and a plank for the floor, and Lính Gỗ whizzes along in the cart."
+          },
+          {
+            "text": "Take the shortcut across the block yard",
+            "consequence": "The shortcut runs along the block steps, and soon you can hear the parade's music."
+          },
+          {
+            "text": "Ask Rô-bốt Thiếc Tí Hon for help",
+            "consequence": "Gấu Bông points: Rô-bốt Thiếc is standing by the tin-toy shelf, and he runs really fast!"
+          }
+        ]
+      }
     },
     {
       "id": "nho-ro-bot",
@@ -173,7 +204,19 @@
       "lines": [
         { "speaker": "Rô-bốt Thiếc Tí Hon", "text": "Bíp bíp! Đã nhận lệnh. Lính Gỗ đứng lên vai tớ, tớ bật bánh xe chạy theo đoàn ngay." }
       ],
-      "choices": [{ "text": "Cảm ơn Rô-bốt, mình đi thôi!" }]
+      "choices": [{ "text": "Cảm ơn Rô-bốt, mình đi thôi!" }],
+      "en": {
+        "title": "Ask Rô-bốt Thiếc",
+        "goTo": "Go over to the tin-toy shelf and ask Rô-bốt Thiếc Tí Hon",
+        "lines": [
+          "Beep beep! Order received. Lính Gỗ, climb onto my shoulders and I'll roll my wheels after the parade right away."
+        ],
+        "choices": [
+          {
+            "text": "Thanks, Rô-bốt, let's go!"
+          }
+        ]
+      }
     },
     {
       "id": "ve-duong",
@@ -209,14 +252,22 @@
       "title": "Lính Gỗ dẫn đầu",
       "kind": "reward",
       "target": "vt-ld-linh-go",
-      "text": "Tùng tùng tùng! Lính Gỗ lại đi đầu đoàn diễu hành, cả sân hình khối vỗ tay theo nhịp. Lính Gỗ tặng {name} một chiếc huy hiệu nhỏ làm kỉ niệm."
+      "text": "Tùng tùng tùng! Lính Gỗ lại đi đầu đoàn diễu hành, cả sân hình khối vỗ tay theo nhịp. Lính Gỗ tặng {name} một chiếc huy hiệu nhỏ làm kỉ niệm.",
+      "en": {
+        "title": "Lính Gỗ leads the way",
+        "text": "Rum-tum-tum! Lính Gỗ is back at the front of the parade, and the whole block yard claps along to the beat. Lính Gỗ gives {name} a little badge to remember the day."
+      }
     },
     {
       "id": "mua-roi-buoi-toi",
       "title": "Múa rối buổi tối",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đoàn diễu hành vòng về đại sảnh lâu đài. Lính Gỗ mời {name} tối nay ở lại xem múa rối bên bục múa rối."
+      "text": "Đoàn diễu hành vòng về đại sảnh lâu đài. Lính Gỗ mời {name} tối nay ở lại xem múa rối bên bục múa rối.",
+      "en": {
+        "title": "An evening puppet show",
+        "text": "The parade circles back to the castle's great hall. Lính Gỗ invites {name} to stay tonight and watch the puppet show by the puppet stage."
+      }
     }
   ],
   "reward": {

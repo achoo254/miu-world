@@ -9,5 +9,12 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 4,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Copy on the dot grid",
+    "howTo": [
+      "{name}, look at the sample picture, then drag from dot to dot to draw it again.",
+      "You can also tap one dot, then another, to join them. Draw every line to finish a picture!"
+    ]
+  }
 }

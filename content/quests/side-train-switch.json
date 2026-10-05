@@ -46,7 +46,19 @@
         {
           "text": "Tớ bẻ ghi cho, tàu ơi về ga!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Oh {name}, a cargo train is heading into the port, and the switch operator is away!",
+          "Each train goes to the station of its colour. Tap the arrow at a junction to change its track."
+        ],
+        "choices": [
+          {
+            "text": "I will work the switches, trains go home!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đưa mười lăm đoàn tàu về đúng ga nhé!",
       "game": "train-switch",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Train Track Switches",
+        "prompt": "Guide 15 trains to the right station!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tàu nào cũng về đúng ga, Gấu Mũ Bảo Hộ kéo còi tu tu mừng {name}!"
+      "text": "Tàu nào cũng về đúng ga, Gấu Mũ Bảo Hộ kéo còi tu tu mừng {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Every train reaches its station, and Gấu Mũ Bảo Hộ toots the horn for {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chuyến tàu chiều sắp tới, Gấu Mũ Bảo Hộ chờ cậu ở bãi hàng nhé."
+      "text": "Chuyến tàu chiều sắp tới, Gấu Mũ Bảo Hộ chờ cậu ở bãi hàng nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The afternoon train is due soon, and Gấu Mũ Bảo Hộ will wait for you at the cargo yard."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Switching tracks with Gấu Mũ Bảo Hộ",
+    "summary": "Colourful trains roll into the yard: tap the arrows at each junction so every train reaches the station of its colour."
   }
 }

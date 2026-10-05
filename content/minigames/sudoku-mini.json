@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Fruit Sudoku 4 × 4",
+    "howTo": [
+      "Every row, column and 2 × 2 square needs all 4 kinds of fruit, with no repeats.",
+      "{name} drags fruit from the basket into empty squares (or taps a fruit, then a square).",
+      "A wrong fruit wiggles and hops back to the basket, no problem."
+    ]
+  }
 }

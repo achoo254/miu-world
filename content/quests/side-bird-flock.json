@@ -46,7 +46,19 @@
         {
           "text": "Cả đàn bám sát tớ, cùng bay lượn nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Look up, {name}! The young birds need a leader to fly in a V.",
+          "Move your finger up and down to guide the lead bird through each white cloud ring."
+        ],
+        "choices": [
+          {
+            "text": "Stay close, flock, let's fly!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Dẫn đàn chim lượn qua mười lăm vòng mây trắng nhé!",
       "game": "bird-flock",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "V-formation flock",
+        "prompt": "Lead the flock through 15 white cloud rings!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Trèo Cây vẫy hai tay mừng rỡ: {name} dẫn đường khéo ghê, đàn chim bay đều tăm tắp!"
+      "text": "Gấu Trèo Cây vẫy hai tay mừng rỡ: {name} dẫn đường khéo ghê, đàn chim bay đều tăm tắp!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Trèo Cây waves both paws: {name} leads so well, the flock flies in perfect formation!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đàn chim di cư vẫn tập luyện mỗi ngày, {name} rảnh lại đến gốc đại thụ ngắm chim nhé."
+      "text": "Đàn chim di cư vẫn tập luyện mỗi ngày, {name} rảnh lại đến gốc đại thụ ngắm chim nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The migrating birds practise every day. Come watch them at the big old tree when you're free, {name}."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Lead the V formation with Gấu Trèo Cây",
+    "summary": "Young birds are learning to fly in a V: glide your finger to guide them through the fluffy cloud gates."
   }
 }

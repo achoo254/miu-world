@@ -46,7 +46,19 @@
         {
           "text": "Cháu bật cần gạt bắn bi lên!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The pinball machine with all its flashing lights is so much fun, {name}!",
+          "Tap each side of the screen to flip, and don't let the ball fall in the hole."
+        ],
+        "choices": [
+          {
+            "text": "I'll flip the ball back up!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Điều khiển cần gạt giữ bi nảy đạt ba trăm điểm vang dội nhé!",
       "game": "pinball",
-      "goal": 300
+      "goal": 300,
+      "en": {
+        "title": "Pinball",
+        "prompt": "Keep the ball bouncing to score 300 points!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chuông reo leng keng rực rỡ, {name} giữ bi điệu nghệ tuyệt vời!"
+      "text": "Chuông reo leng keng rực rỡ, {name} giữ bi điệu nghệ tuyệt vời!",
+      "en": {
+        "title": "Reward",
+        "text": "The bells are ringing! {name} keeps that ball flying like a champ!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chiếc máy pinball đèn hoa rực rỡ ở chợ luôn mở nút chờ cháu chơi."
+      "text": "Chiếc máy pinball đèn hoa rực rỡ ở chợ luôn mở nút chờ cháu chơi.",
+      "en": {
+        "title": "See you soon",
+        "text": "The flower-lit pinball machine at the market is always switched on for you."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Fairground pinball with Chú Bán Bánh Kem",
+    "summary": "Flip the left and right flippers to keep the steel ball bouncing into golden bells and star targets."
   }
 }

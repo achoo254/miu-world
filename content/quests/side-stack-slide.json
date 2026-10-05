@@ -46,7 +46,19 @@
         {
           "text": "Mình xây tháp cao vút nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, I want to build a really tall tower of goods, but it keeps leaning.",
+          "When a layer slides right above the one below, tap to drop it. Any overhang gets cut off!"
+        ],
+        "choices": [
+          {
+            "text": "Let's build it sky-high!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Xếp được hai mươi tầng tháp nhé!",
       "game": "stack-slide",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Sliding Tower Stack",
+        "prompt": "Stack 20 tower layers!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tháp cao chót vót, Voi Thủ Kho ngẩng vòi khen {name} giỏi canh!"
+      "text": "Tháp cao chót vót, Voi Thủ Kho ngẩng vòi khen {name} giỏi canh!",
+      "en": {
+        "title": "Reward",
+        "text": "The tower soars, and Voi Thủ Kho lifts his trunk to praise {name}'s perfect timing!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tớ còn nhiều gỗ ở chợ, lúc nào cậu muốn xây nữa thì ghé nhé."
+      "text": "Tớ còn nhiều gỗ ở chợ, lúc nào cậu muốn xây nữa thì ghé nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "I've got plenty more wood at the market. Come build again whenever you like."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Sliding Stack with Voi Thủ Kho",
+    "summary": "Wooden layers slide back and forth on top of the tower; tap at the right moment to drop each one in line with the layer below."
   }
 }

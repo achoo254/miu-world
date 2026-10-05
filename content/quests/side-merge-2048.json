@@ -46,7 +46,19 @@
         {
           "text": "Tớ gộp số lớn lên nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Come play the merging game with me, {name}! The more you merge, the bigger the numbers get!",
+          "Swipe so matching tiles bump together: two and two make four, four and four make eight."
+        ],
+        "choices": [
+          {
+            "text": "Let me grow those numbers!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Gộp số khéo léo tạo ra ô số sáu mươi tư rực rỡ nhé!",
       "game": "merge-2048",
-      "goal": 64
+      "goal": 64,
+      "en": {
+        "title": "Double Merge",
+        "prompt": "Merge cleverly until you make a shining 64 tile!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chú Thợ Điện Nhí reo hò phấn khích khi {name} tạo ra con số mục tiêu ngoạn mục!"
+      "text": "Chú Thợ Điện Nhí reo hò phấn khích khi {name} tạo ra con số mục tiêu ngoạn mục!",
+      "en": {
+        "title": "Reward",
+        "text": "Chú Thợ Điện Nhí whoops with excitement as {name} reaches the target number in style!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Những con số đôi lúc nào cũng cuốn hút, rảnh tay cậu cứ ra quảng trường chơi tiếp."
+      "text": "Những con số đôi lúc nào cũng cuốn hút, rảnh tay cậu cứ ra quảng trường chơi tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "Doubling numbers never gets old, so come play in the square whenever your hands are free."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Doubling numbers with Chú Thợ Điện Nhí",
+    "summary": "Number blocks slide around a square board; merge matching numbers to double their power."
   }
 }

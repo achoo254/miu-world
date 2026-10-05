@@ -10,5 +10,13 @@
   "controls": ["swipe", "tap"],
   "duration": 60,
   "goal": 15,
-  "params": { "gap": 2.5 }
+  "params": { "gap": 2.5 },
+  "en": {
+    "name": "Sink or Float",
+    "howTo": [
+      "Objects ride along the conveyor belt and drop into a tub of water.",
+      "{name} guesses first: swipe up if it floats, down if it sinks (or tap a button).",
+      "A wrong guess is fine; just watch how each object sinks or floats."
+    ]
+  }
 }

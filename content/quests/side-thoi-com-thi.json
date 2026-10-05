@@ -46,7 +46,19 @@
         {
           "text": "Cháu canh nồi cơm thơm dẻo!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The village festival's clay-pot rice contest is in full swing, {name}!",
+          "Add just enough firewood to keep a gentle flame so the rice cooks through."
+        ],
+        "choices": [
+          {
+            "text": "I'll watch over the rice pot!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Canh chừng ngọn lửa nấu chín sáu nồi cơm thơm lừng nhé!",
       "game": "thoi-com-thi",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Rice Cooking Contest",
+        "prompt": "Tend the fire and cook 6 fragrant pots of rice!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nồi cơm trắng dẻo thơm phức mùi gạo mới, {name} nấu khéo quá!"
+      "text": "Nồi cơm trắng dẻo thơm phức mùi gạo mới, {name} nấu khéo quá!",
+      "en": {
+        "title": "Reward",
+        "text": "Soft white rice that smells of the new harvest! {name} cooks so well!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bếp lửa hội làng bên đầm sen luôn đỏ than đợi cháu trổ tài."
+      "text": "Bếp lửa hội làng bên đầm sen luôn đỏ than đợi cháu trổ tài.",
+      "en": {
+        "title": "See you soon",
+        "text": "The festival fire by the lotus pond is always glowing, waiting to see your skills."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Rice-cooking contest with Bác Thổi Cơm Thi",
+    "summary": "Feed the fire stick by stick to keep the flame in the safe zone so the rice cooks soft and fragrant."
   }
 }

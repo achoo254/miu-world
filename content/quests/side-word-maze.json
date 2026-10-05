@@ -46,7 +46,19 @@
         {
           "text": "Con lần theo từng chữ ạ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Greetings, {name}. To get past this stone table, you must find the right path.",
+          "Read the sample rhyme, then slide your finger through each neighbouring word to escape the maze."
+        ],
+        "choices": [
+          {
+            "text": "I will follow the words one by one!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Vượt qua thành công bốn mê cung chữ đồng dao nhé!",
       "game": "word-maze",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Folk Rhyme Maze",
+        "prompt": "Make it through 4 rhyme mazes!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thầy Đố Chữ Hán vuốt chòm râu mỉm cười: {name} thông minh sáng dạ, tìm đường chuẩn lắm!"
+      "text": "Thầy Đố Chữ Hán vuốt chòm râu mỉm cười: {name} thông minh sáng dạ, tìm đường chuẩn lắm!",
+      "en": {
+        "title": "Reward",
+        "text": "Thầy Đố Chữ Hán strokes his beard and smiles: {name} is bright and found the path perfectly!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Kho tàng ca dao đồng dao còn sâu rộng lắm, trò hãy thường xuyên tới phòng đọc dùi mài."
+      "text": "Kho tàng ca dao đồng dao còn sâu rộng lắm, trò hãy thường xuyên tới phòng đọc dùi mài.",
+      "en": {
+        "title": "See you soon",
+        "text": "Our treasure of folk rhymes runs deep, so come to the reading room often to keep learning."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Finding the way through the letter maze with Thầy Đố Chữ Hán",
+    "summary": "Nursery rhymes lead the way through a maze; link each word in turn to walk out the exit."
   }
 }

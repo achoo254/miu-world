@@ -46,7 +46,19 @@
         {
           "text": "Cháu đếm tiền trả vừa đủ ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The market is packed with shoppers today, {name}!",
+          "Look at the price, then put exactly the right notes in the tray."
+        ],
+        "choices": [
+          {
+            "text": "I'll count out the exact money!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đếm tiền chuẩn xác thanh toán trọn vẹn mười món hàng chợ nhé!",
       "game": "pay-exact",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Pay the Exact Price",
+        "prompt": "Pay exactly right for 10 market items!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khay tiền vừa khít không thừa một xu, {name} tính tiền giỏi như người lớn!"
+      "text": "Khay tiền vừa khít không thừa một xu, {name} tính tiền giỏi như người lớn!",
+      "en": {
+        "title": "Reward",
+        "text": "Not a single đồng too much! {name} counts money like a grown-up!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Quầy thu ngân dãy hàng cân đong lúc nào cũng chào đón cháu tới giúp."
+      "text": "Quầy thu ngân dãy hàng cân đong lúc nào cũng chào đón cháu tới giúp.",
+      "en": {
+        "title": "See you soon",
+        "text": "The till by the weighing stalls always welcomes a helper like you."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Pay the exact amount with Bác Thu Ngân Vui Vẻ",
+    "summary": "Choose banknotes of different values for the tray so they add up to exactly the price."
   }
 }

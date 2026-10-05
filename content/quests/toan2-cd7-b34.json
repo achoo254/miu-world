@@ -64,7 +64,26 @@
           "text": "Gấu Bum có đau không?",
           "reply": "Gấu Bum xoa mũi: Không sao, lông tớ dày lắm! Cậu đi nhặt mảnh phông giúp Hươu nha."
         }
-      ]
+      ],
+      "en": {
+        "title": "The backdrop came crashing down",
+        "goTo": "Go to the stage backdrop, where Hươu Cao is clutching her head",
+        "lines": [
+          "{name}, disaster! It took me a whole week to finish the backdrop out of triangles, quadrilaterals, broken lines...",
+          "Bum... I was only trying to carry the ladder for her, then I tripped over my own feet, and CRASH! Bits of backdrop flew all the way into the wings.",
+          "The rehearsal is this afternoon. My neck is tall enough to see the fallen pieces but I can't bend down to pick them up. Will you help?"
+        ],
+        "choices": [
+          {
+            "text": "On it, I'll gather the pieces!",
+            "reply": "Hươu Cao points with her long neck: One triangle piece, one quadrilateral piece, and my ruler too!"
+          },
+          {
+            "text": "Are you hurt, Gấu Bum?",
+            "reply": "Gấu Bum rubs his nose: I'm fine, my fur is really thick! Go help Giraffe pick up the backdrop pieces."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-manh-phong",
@@ -102,7 +121,22 @@
           "text": "Haha, ôn tiếp thôi!",
           "reply": "Hươu Cao lắc cái cổ dài: Bum ơi là Bum! {name} bắt đầu đếm đoạn thẳng giúp tớ nhé."
         }
-      ]
+      ],
+      "en": {
+        "title": "A quick review with Hươu Cao",
+        "goTo": "Bring the backdrop pieces back to the stage backdrop",
+        "lines": [
+          "Quick review: a line segment has two ends, which are two points. Several segments joined end to end make a broken line.",
+          "A shape with 4 sides and 4 corners is a quadrilateral. Three points on the same straight line are called collinear points.",
+          "And four points in a straight line are called... four points queuing up for lunch?"
+        ],
+        "choices": [
+          {
+            "text": "Haha, let's keep reviewing!",
+            "reply": "Hươu Cao shakes her long neck: Oh, Bum! {name}, start counting the line segments for me, please."
+          }
+        ]
+      }
     },
     {
       "id": "dem-doan-thang",
@@ -725,7 +759,26 @@
           "text": "Cứ vẽ tay, sai thì tẩy",
           "reply": "Hươu Cao cười: Tẩy mãi thủng phông mất! Dùng thước cho chắc nhé {name}."
         }
-      ]
+      ],
+      "en": {
+        "title": "Gấu Bum wants to draw segments",
+        "goTo": "Go to the stage steps, where Gấu Bum is holding a giant pencil",
+        "lines": [
+          "To make up for it, I'll draw the border for the backdrop! I'll draw freehand to be quick, bum bum, it'll probably be straight...",
+          "Bum, last time you drew freehand, your straight line turned into... a wriggling worm!",
+          "{name}, how do you think I should draw it?"
+        ],
+        "choices": [
+          {
+            "text": "Use a ruler and dot both ends first",
+            "reply": "Gấu Bum: Ah, dot point A at the 0 mark, then dot a point at the length you need. Clever!"
+          },
+          {
+            "text": "Just draw freehand and rub it out if wrong",
+            "reply": "Hươu Cao laughs: Rub it out too often and you'll wear a hole in the backdrop! Use a ruler to be safe, {name}."
+          }
+        ]
+      }
     },
     {
       "id": "ve-doan-ab",
@@ -1075,14 +1128,22 @@
       "title": "Huy hiệu dựng phông",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Phông nền sáng rực dưới đèn sân khấu. Hươu Cao cúi cái cổ thật dài để gắn cho {name} huy hiệu \"Kiến trúc sư hình phẳng\", còn Gấu Bum hứa từ nay đi đứng cẩn thận."
+      "text": "Phông nền sáng rực dưới đèn sân khấu. Hươu Cao cúi cái cổ thật dài để gắn cho {name} huy hiệu \"Kiến trúc sư hình phẳng\", còn Gấu Bum hứa từ nay đi đứng cẩn thận.",
+      "en": {
+        "title": "Backdrop builder badge",
+        "text": "The backdrop shines bright under the stage lights. Hươu Cao bends her long, long neck to pin the \"Flat Shape Architect\" badge on {name}, and Gấu Bum promises to watch his step from now on."
+      }
     },
     {
       "id": "nuoc-banh-hau-truong",
       "title": "Hậu trường bận rộn",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ hậu trường, Cáo Chấm Bi lon ton chạy ra, ôm khư khư cuốn sổ chi chít chấm tròn: \"Ai giúp tớ cân bánh, đong nước cho buổi diễn với? Món nào đúng cân, đúng lít thì tớ mới chấm một chấm vào sổ!\""
+      "text": "Từ hậu trường, Cáo Chấm Bi lon ton chạy ra, ôm khư khư cuốn sổ chi chít chấm tròn: \"Ai giúp tớ cân bánh, đong nước cho buổi diễn với? Món nào đúng cân, đúng lít thì tớ mới chấm một chấm vào sổ!\"",
+      "en": {
+        "title": "A busy backstage",
+        "text": "Cáo Chấm Bi trots out from backstage, clutching a notebook covered in polka dots: \"Who'll help me weigh the cakes and measure the water for the show? Only when something is the right weight or the right litres do I put a dot in my book!\""
+      }
     }
   ],
   "reward": {

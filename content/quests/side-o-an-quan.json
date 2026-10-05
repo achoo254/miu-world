@@ -46,7 +46,19 @@
         {
           "text": "Ván này tớ đi trước nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, I've just drawn an ô ăn quan board (a pebble-sowing game) in the dirt!",
+          "You take the bottom row. Sow your pebbles left or right, you choose."
+        ],
+        "choices": [
+          {
+            "text": "I'll go first this game!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ăn được bốn mươi lăm điểm sỏi nhé!",
       "game": "o-an-quan",
-      "goal": 45
+      "goal": 45,
+      "en": {
+        "title": "Ô ăn quan (Mandarin Square)",
+        "prompt": "Win 45 pebble points!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ối, {name} ăn được cả quan to, tớ thua tâm phục!"
+      "text": "Ối, {name} ăn được cả quan to, tớ thua tâm phục!",
+      "en": {
+        "title": "Reward",
+        "text": "Whoa, {name} captured the big mandarin square! I lose fair and square!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bàn ô quan vẫn còn kẻ bên bờ ruộng, ván sau tớ phục thù nhé."
+      "text": "Bàn ô quan vẫn còn kẻ bên bờ ruộng, ván sau tớ phục thù nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The board is still drawn by the field. I'll get my revenge next game!"
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Play ô ăn quan with Thỏ Ô Quan",
+    "summary": "Sitting by the rice field, sow pebbles one square at a time; land before an empty square and you capture the next one."
   }
 }

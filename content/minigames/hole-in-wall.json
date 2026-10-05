@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 12,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Hole in the wall",
+    "howTo": [
+      "A foam wall with a person-shaped hole is moving closer.",
+      "{name}, tap the pose that matches the hole to pass through: stand, sit, arms up, star jump…",
+      "Wrong pose and the foam wall gently knocks you over: you lose a heart."
+    ]
+  }
 }

@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 4,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Magic Portal Maze",
+    "howTo": [
+      "{name} drags a finger just ahead of the character to walk along the maze paths.",
+      "Step into a magic door and you come out of the door of the same colour. Which one leads to the treasure?",
+      "Reach the treasure chest for a point and a new maze."
+    ]
+  }
 }

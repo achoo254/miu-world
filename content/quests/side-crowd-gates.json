@@ -46,7 +46,19 @@
         {
           "text": "Cổng nào đông bạn tớ chọn liền!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The tiny snowman team is about to roll downhill, {name}. Lead the way!",
+          "Slide over to the gate with the bigger plus or times to call lots more friends along."
+        ],
+        "choices": [
+          {
+            "text": "I'll pick the gate with the most friends!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Dẫn dắt đoàn bạn đạt tới ba mươi thành viên để đẩy cỗ xe tuyết nhé!",
       "game": "crowd-gates",
-      "goal": 30
+      "goal": 30,
+      "en": {
+        "title": "Growing crowd",
+        "prompt": "Grow your team to 30 members to push the snow sled!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Người Tuyết vẫy đôi tay gỗ: đoàn bạn đông đúc của {name} đã đẩy xe về đích rồi!"
+      "text": "Người Tuyết vẫy đôi tay gỗ: đoàn bạn đông đúc của {name} đã đẩy xe về đích rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Người Tuyết waves his wooden arms: {name}'s big team pushed the sled to the finish!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đỉnh núi vẫn phủ tuyết trắng xóa, Người Tuyết Đếm Bậc đứng chờ {name} quay lại chơi."
+      "text": "Đỉnh núi vẫn phủ tuyết trắng xóa, Người Tuyết Đếm Bậc đứng chờ {name} quay lại chơi.",
+      "en": {
+        "title": "See you soon",
+        "text": "The peak is still covered in white snow. Người Tuyết Đếm Bậc waits for {name} to play again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Crowd Gates with Người Tuyết Đếm Bậc",
+    "summary": "A team of friends runs down the mountainside; weave through the plus and times gates to grow the team pushing the sled."
   }
 }

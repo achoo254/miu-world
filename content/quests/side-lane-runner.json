@@ -46,7 +46,19 @@
         {
           "text": "Tớ chạy đây, đếm sao giúp tớ nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hey {name}, I've just marked out three running lanes on the trail. Want a go?",
+          "Swipe sideways to switch lanes and swipe up to jump the logs. Collect lots of stars!"
+        ],
+        "choices": [
+          {
+            "text": "I'm off! Count my stars for me!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nhặt hai mươi lăm ngôi sao trên đường ba làn nhé!",
       "game": "lane-runner",
-      "goal": 25
+      "goal": 25,
+      "en": {
+        "title": "Three-lane runner",
+        "prompt": "Collect 25 stars on the three-lane track!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thỏ Quét Lá giơ chổi làm cờ: {name} về đích với cả túi sao!"
+      "text": "Thỏ Quét Lá giơ chổi làm cờ: {name} về đích với cả túi sao!",
+      "en": {
+        "title": "Reward",
+        "text": "Thỏ Quét Lá waves the broom like a flag: {name} crossed the finish with a bag full of stars!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Còn nhiều sao rơi trên lối mòn lắm, chạy lại với Thỏ Quét Lá lúc nào cũng được."
+      "text": "Còn nhiều sao rơi trên lối mòn lắm, chạy lại với Thỏ Quét Lá lúc nào cũng được.",
+      "en": {
+        "title": "See you soon",
+        "text": "Plenty of stars still lie on the trail. You can run with Thỏ Quét Lá any time."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Three-lane run with Thỏ Quét Lá",
+    "summary": "The trail has three lanes with logs, barrels and rocks: swipe to switch lanes, jump the logs and collect stars."
   }
 }

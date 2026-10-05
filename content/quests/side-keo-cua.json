@@ -46,7 +46,19 @@
         {
           "text": "Em kéo cưa cùng chị nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "\"Kéo cưa lừa xẻ, ông thợ nào khỏe!\" Saw with me, {name}!",
+          "Drag your finger along with the faint saw shadow, steady from side to side."
+        ],
+        "choices": [
+          {
+            "text": "Let us saw together!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Giữ nhịp kéo cưa xẻ đứt ngọt ngào sáu lóng gỗ thơm nhé!",
       "game": "keo-cua",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Kéo cưa lừa xẻ (sawing song)",
+        "prompt": "Keep the sawing rhythm to cut through 6 sweet-smelling logs!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khúc gỗ xẻ xong tròn xoe mịn màng, {name} dẻo dai khỏe khoắn ghê!"
+      "text": "Khúc gỗ xẻ xong tròn xoe mịn màng, {name} dẻo dai khỏe khoắn ghê!",
+      "en": {
+        "title": "Reward",
+        "text": "The log is cut smooth and round. {name} is so strong and nimble!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tiếng kéo cưa cành cạch vui tai bên hiên đêm trăng đợi em quay lại."
+      "text": "Tiếng kéo cưa cành cạch vui tai bên hiên đêm trăng đợi em quay lại.",
+      "en": {
+        "title": "See you soon",
+        "text": "The cheerful creak of the saw on the moonlit porch is waiting for you to come back."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Kéo cưa lừa xẻ (the sawing game) with Chị Bống Chuyền Que",
+    "summary": "Hold hands and saw back and forth in rhythm with the saw shadow to cut each round log cleanly."
   }
 }

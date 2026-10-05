@@ -46,7 +46,19 @@
         {
           "text": "Tớ sẵn sàng, tay tớ nhanh lắm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Are you quick, {name}? Let's see who taps first once the lantern turns red!",
+          "Tapping before it's red breaks the rules, and don't let the passing butterflies fool you."
+        ],
+        "choices": [
+          {
+            "text": "I'm ready, my hands are lightning fast!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Thắng bốn hiệp thi nhanh tay nhé!",
       "game": "quick-draw",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Who's Quicker?",
+        "prompt": "Win 4 rounds of the quick-hands duel!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cáo Cung Thủ lắc đầu chịu thua: {name} nhanh hơn cả tia chớp!"
+      "text": "Cáo Cung Thủ lắc đầu chịu thua: {name} nhanh hơn cả tia chớp!",
+      "en": {
+        "title": "Reward",
+        "text": "Cáo Cung Thủ shakes his head and gives up: {name} is faster than a lightning bolt!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tớ sẽ tập thêm cho nhanh, hẹn {name} thi lại ở khu luyện tập."
+      "text": "Tớ sẽ tập thêm cho nhanh, hẹn {name} thi lại ở khu luyện tập.",
+      "en": {
+        "title": "See you soon",
+        "text": "I'll keep training to get quicker. Rematch at the training yard, {name}!"
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Quick Hands Contest with Cáo Cung Thủ",
+    "summary": "A lantern hangs between two players; wait for it to glow red, then tap faster than your Cat rival."
   }
 }

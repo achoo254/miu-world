@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 5,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Musical Chairs",
+    "howTo": [
+      "{name} and friends walk around the chairs while the music plays.",
+      "When the music stops, tap an empty chair to sit down, quick!",
+      "Tap while the music is still playing and you trip. Each chair you grab is a point."
+    ]
+  }
 }

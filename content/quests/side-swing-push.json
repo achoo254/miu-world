@@ -46,7 +46,19 @@
         {
           "text": "Tớ nhún đà bay bổng lên trời!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The hill breeze is so cool, {name}! Hop on the swing and fly with me!",
+          "Tap the screen right when the swing is highest at the back to build up speed."
+        ],
+        "choices": [
+          {
+            "text": "Pump hard, up to the sky!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Lấy đà nhún xích đu bay vút chạm năm lần dải lộc đỏ thắm nhé!",
       "game": "swing-push",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Swing High",
+        "prompt": "Swing up and touch the red lucky ribbon 5 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Xích đu vút cao chạm tới trời xanh lộng gió, {name} nhún cừ quá!"
+      "text": "Xích đu vút cao chạm tới trời xanh lộng gió, {name} nhún cừ quá!",
+      "en": {
+        "title": "Reward",
+        "text": "The swing soars into the breezy blue sky. {name} pumps so well!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cây đu gỗ đầu dốc bãi bò vẫn đung đưa đợi cậu đến nhún bay."
+      "text": "Cây đu gỗ đầu dốc bãi bò vẫn đung đưa đợi cậu đến nhún bay.",
+      "en": {
+        "title": "See you soon",
+        "text": "The wooden swing by the cow pasture is still swaying, waiting for you to fly."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Swinging high with Bé Đánh Cù Sơn",
+    "summary": "Tap just as the swing reaches its highest point to build momentum and touch the red lucky ribbon."
   }
 }

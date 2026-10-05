@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 15,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Pick-Up Sticks",
+    "howTo": [
+      "{name} taps the stick on top, with no other stick lying over it, to pull it out.",
+      "Pull a stick that's pinned and the pile wobbles: you lose a heart. Lose three and your turn ends."
+    ]
+  }
 }

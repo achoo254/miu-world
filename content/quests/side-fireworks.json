@@ -46,7 +46,19 @@
         {
           "text": "Tớ muốn bầu trời rực rỡ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "It's nearly New Year's Eve, {name}! Let's set off fireworks for Tết!",
+          "Hold to launch it, then let go in the middle of the gold ring for a BOOM!"
+        ],
+        "choices": [
+          {
+            "text": "I want a dazzling sky!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Làm sáng mười vòng pháo hoa nhé!",
       "game": "fireworks",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Tết fireworks",
+        "prompt": "Light up 10 firework rings!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Trời sáng rực cả cánh đồng, {name} bắn đẹp nhất làng!"
+      "text": "Trời sáng rực cả cánh đồng, {name} bắn đẹp nhất làng!",
+      "en": {
+        "title": "Reward",
+        "text": "The whole field is lit up! {name}'s fireworks are the best in the village!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Năm sau tớ lại để dành pháo hoa chờ cậu bên bờ ruộng."
+      "text": "Năm sau tớ lại để dành pháo hoa chờ cậu bên bờ ruộng.",
+      "en": {
+        "title": "See you soon",
+        "text": "Next year I'll save some fireworks and wait for you by the rice field again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Tết fireworks with Thỏ Ô Quan",
+    "summary": "On New Year's Eve in the fields, hold to send a firework up, then let go right in the middle of the gold ring."
   }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Cháu đi nước cờ gánh đây ông!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Come under the gourd trellis, {name}, and play a game of cờ gánh with Grandpa!",
+          "Move a red piece between two blue ones and you capture the pair."
+        ],
+        "choices": [
+          {
+            "text": "Here comes my move, Grandpa!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Gánh trọn vẹn đổi màu chín quân cờ trên bàn cờ gỗ nhé!",
       "game": "co-ganh",
-      "goal": 9
+      "goal": 9,
+      "en": {
+        "title": "Cờ gánh (capture chess)",
+        "prompt": "Win over 9 pieces on the wooden board!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nước cờ gánh bất ngờ và hiểm hóc quá, {name} làm ông thán phục rồi!"
+      "text": "Nước cờ gánh bất ngờ và hiểm hóc quá, {name} làm ông thán phục rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "What a sneaky, surprising move! {name} has Grandpa truly impressed!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bàn cờ gánh mộc mạc dưới giàn mướp hoa vàng luôn đợi cháu ghé chơi."
+      "text": "Bàn cờ gánh mộc mạc dưới giàn mướp hoa vàng luôn đợi cháu ghé chơi.",
+      "en": {
+        "title": "See you soon",
+        "text": "The simple cờ gánh board under the yellow-flowered gourd vines is always waiting for you."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "The folk game cờ gánh with Ông Bảy Cờ Gánh",
+    "summary": "Slip your piece cleverly between two of the other side's pieces to carry them both over to your team."
   }
 }

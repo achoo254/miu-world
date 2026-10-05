@@ -46,7 +46,19 @@
         {
           "text": "Cháu bắn trúng hết cho xem!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "My game stall is open! Want to have a shot, {name}?",
+          "Hold your finger down to spray. When the water runs out, let go to pump it back up."
+        ],
+        "choices": [
+          {
+            "text": "Watch me hit them all!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ghi đủ hai mươi lăm điểm súng nước nhé!",
       "game": "water-pistol",
-      "goal": 25
+      "goal": 25,
+      "en": {
+        "title": "Fairground Water Pistol",
+        "prompt": "Score 25 points with the water pistol!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Vịt ngã rạp hết rồi, {name} bắn chuẩn ghê!"
+      "text": "Vịt ngã rạp hết rồi, {name} bắn chuẩn ghê!",
+      "en": {
+        "title": "Reward",
+        "text": "Every duck is down! {name} has a sharp aim!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Gian trò chơi mở tới tối, cháu quay lại bắn tiếp nhé."
+      "text": "Gian trò chơi mở tới tối, cháu quay lại bắn tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The game stall stays open till night, so come back for another round."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Fairground water pistols with Uncle Tí",
+    "summary": "The game stall is full of rubber ducks: hold to spray water, knock the ducks over and hit the round targets."
   }
 }

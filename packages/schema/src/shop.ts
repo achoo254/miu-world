@@ -39,6 +39,8 @@ const common = {
   level: z.number().int().min(2).max(60).optional(),
   /** Also shown under "Nổi bật". */
   featured: z.boolean().optional(),
+  /** The name and description in English, for the bilingual display. */
+  en: z.strictObject({ name: Text, description: Text.optional() }).optional(),
 };
 
 /** A booster's help for one minigame round: a heart more (games with hearts) or more seconds. */
@@ -141,6 +143,9 @@ export const ShopItemDto = z.object({
   category: z.enum(SHOP_CATEGORIES),
   name: z.string(),
   description: z.string().nullable(),
+  /** The name and description in English (null: shown in Vietnamese). */
+  nameEn: z.string().nullish(),
+  descriptionEn: z.string().nullish(),
   price: z.number().int(),
   level: z.number().int().nullable(),
   featured: z.boolean(),

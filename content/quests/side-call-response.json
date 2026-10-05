@@ -46,7 +46,19 @@
         {
           "text": "Tai tớ thính lắm, bắt đầu đi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Listen, {name}: whatever rhythm Vẹt the parrot claps, the whole team copies it.",
+          "Listen carefully, then tap each circle right on time, with not one extra tap."
+        ],
+        "choices": [
+          {
+            "text": "I have great ears, let us start!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nhại đúng bảy câu nhịp nhé!",
       "game": "call-response",
-      "goal": 7
+      "goal": 7,
+      "en": {
+        "title": "Copy the clapping",
+        "prompt": "Copy 7 rhythms correctly!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cả đội nhạc vỗ tay theo {name}, Voi Trống Hội khen: nhịp chuẩn từng li!"
+      "text": "Cả đội nhạc vỗ tay theo {name}, Voi Trống Hội khen: nhịp chuẩn từng li!",
+      "en": {
+        "title": "Reward",
+        "text": "The whole band claps along with {name}, and Voi Trống Hội says: spot-on rhythm!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Lần sau bạn Vẹt sẽ vỗ nhịp khó hơn, cậu nhớ ghé thử sức nhé."
+      "text": "Lần sau bạn Vẹt sẽ vỗ nhịp khó hơn, cậu nhớ ghé thử sức nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Next time Vẹt will clap a harder rhythm, so remember to come try it."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Copy the clapping beat with Voi Trống Hội",
+    "summary": "Vẹt claps a rhythm and the dots light up with it: when it is your turn, clap it back exactly."
   }
 }

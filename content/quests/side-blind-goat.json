@@ -46,7 +46,19 @@
         {
           "text": "Buộc khăn cho tớ đi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, the goats next door have sneaked out to play in the meadow!",
+          "Put the blindfold on, listen for the baa-baa, and follow the sound to catch them."
+        ],
+        "choices": [
+          {
+            "text": "Tie the blindfold on me!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Bắt được tám bạn dê dù mắt bị bịt nhé!",
       "game": "blind-goat",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Blindfold goat chase",
+        "prompt": "Catch 8 goats while blindfolded!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bò Chuông Đồng vỗ móng: tai {name} thính hơn cả tai thỏ!"
+      "text": "Bò Chuông Đồng vỗ móng: tai {name} thính hơn cả tai thỏ!",
+      "en": {
+        "title": "Reward",
+        "text": "Bò Chuông Đồng stamps a hoof: {name}'s ears are sharper than a rabbit's!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Lũ dê lại sắp trốn nữa đấy, quay lại đồng cỏ chơi tiếp với tớ nhé."
+      "text": "Lũ dê lại sắp trốn nữa đấy, quay lại đồng cỏ chơi tiếp với tớ nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The goats will sneak off again soon. Come back to the meadow and play with me."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Blindfold Goat Chase in the Meadow",
+    "summary": "The blindfold is tied, and little goats are bleating all over Bò Chuông Đồng's meadow."
   }
 }

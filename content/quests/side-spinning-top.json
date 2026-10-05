@@ -46,7 +46,19 @@
         {
           "text": "Tớ quất cù quay tít ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Look at my polished chinaberry-wood top, {name}!",
+          "Swipe to throw the top into the ring, and when it starts to wobble, flick the string."
+        ],
+        "choices": [
+          {
+            "text": "I will whip it into a spin!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Giữ cho con cù quay tròn tít mù đạt bốn mươi điểm thật đỉnh nhé!",
       "game": "spinning-top",
-      "goal": 40
+      "goal": 40,
+      "en": {
+        "title": "Spinning Top",
+        "prompt": "Keep the top spinning to score 40 awesome points!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Con cù quay tít reo vù vù giữa vòng tròn, {name} đánh cù siêu thật!"
+      "text": "Con cù quay tít reo vù vù giữa vòng tròn, {name} đánh cù siêu thật!",
+      "en": {
+        "title": "Reward",
+        "text": "The top whirs and hums in the middle of the ring. {name} is a top-spinning champ!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bãi thả bò đầu dốc đất phẳng lỳ đón cậu ra thi cù mỗi chiều."
+      "text": "Bãi thả bò đầu dốc đất phẳng lỳ đón cậu ra thi cù mỗi chiều.",
+      "en": {
+        "title": "See you soon",
+        "text": "The flat cow pasture at the top of the slope welcomes you for a top contest every afternoon."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Spinning wooden tops with Bé Đánh Cù Sơn",
+    "summary": "Throw the wooden top hard onto flat ground, then whip the string to keep it spinning like crazy."
   }
 }

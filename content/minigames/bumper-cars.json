@@ -9,5 +9,12 @@
   "controls": ["drag"],
   "duration": 60,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Bumper cars",
+    "howTo": [
+      "{name}'s car follows your finger around the round floor.",
+      "Bump other cars off the floor to score. Knocked out yourself? You're back in two seconds."
+    ]
+  }
 }

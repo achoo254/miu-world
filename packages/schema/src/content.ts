@@ -36,11 +36,30 @@ const stepBase = {
 const Choice = z.strictObject({ id: ContentId, text: Text });
 const ChoiceAnswer = z.strictObject({ choice: ContentId });
 
+// English twins of the text a child reads (the bilingual display, docs/i18n.md). A step's `en` holds the same
+// lines as the step, in the same order; what it leaves out shows in Vietnamese. Textbook wording never has one.
+const enBase = { title: Text.optional(), goTo: Text.optional() };
+const DialogueEn = z.strictObject({ ...enBase, lines: z.array(Text).min(1), choices: z.array(z.strictObject({ text: Text, reply: Text.optional() })).default([]) });
+const SearchEn = z.strictObject(enBase);
+const DecisionEn = z.strictObject({ ...enBase, prompt: Text, choices: z.array(z.strictObject({ text: Text, consequence: Text })).min(2) });
+const FindObjectEn = z.strictObject({ ...enBase, prompt: Text, items: z.array(z.strictObject({ name: Text, clue: Text })).min(1) });
+const ReadEn = z.strictObject({ ...enBase, text: Text.optional(), question: Text, choices: z.array(Text).min(2) });
+const RiddleEn = z.strictObject({ ...enBase, question: Text });
+/** Any challenge: its prompt, and the labels of its choices, items or elements when it shows them. */
+const ChallengeEn = z.strictObject({ ...enBase, prompt: Text, choices: z.array(Text).optional(), items: z.array(Text).optional(), elements: z.array(Text).optional() });
+/** A reward or a closing beat. */
+const BeatEn = z.strictObject({ ...enBase, text: Text });
+/** A quest's own title and summary in English. */
+export const QuestEn = z.strictObject({ title: Text, summary: Text });
+export type QuestEn = z.infer<typeof QuestEn>;
+
 /** Three support layers shared by every learning step (Master Plan §5); only the server hands them out. */
 export const LearningSupport = z.strictObject({
   guide: z.array(Text).min(1),
   hint: Text,
   answer: z.strictObject({ text: Text, explanation: Text }),
+  /** The same three layers in English (as many guide lines). */
+  en: z.strictObject({ guide: z.array(Text).min(1), hint: Text, answer: z.strictObject({ text: Text, explanation: Text }) }).optional(),
 });
 export type LearningSupport = z.infer<typeof LearningSupport>;
 
@@ -70,10 +89,11 @@ const dialogueShape = {
   lines: z.array(z.strictObject({ speaker: Text, text: Text })).min(1),
   /** Story-only choices: every choice leads to the same next step (branching is out of MVP scope). */
   choices: z.array(z.strictObject({ text: Text, reply: Text.optional() })).default([]),
+  en: DialogueEn.optional(),
 };
 
 /** Find every target, in any order. */
-const searchShape = { id: ContentId, title: Text, goTo: GoTo, kind: z.literal('search'), targets: z.array(ContentId).min(1) };
+const searchShape = { id: ContentId, title: Text, goTo: GoTo, kind: z.literal('search'), targets: z.array(ContentId).min(1), en: SearchEn.optional() };
 
 const DecisionChoice = z.strictObject({
   id: ContentId,
@@ -92,6 +112,7 @@ const decisionShape = {
   prompt: Text,
   speaker: Text.optional(),
   choices: z.array(DecisionChoice).min(2),
+  en: DecisionEn.optional(),
 };
 
 const FindObjectItem = z.strictObject({
@@ -111,6 +132,7 @@ const findObjectShape = {
   prompt: Text,
   items: z.array(FindObjectItem).min(1),
   skill: ContentId.optional(),
+  en: FindObjectEn.optional(),
 };
 
 const readShape = {
@@ -124,11 +146,12 @@ const readShape = {
   question: Text,
   choices: z.array(Choice).min(2),
   skill: ContentId,
+  en: ReadEn.optional(),
 };
 
-const riddleShape = { ...stepBase, kind: z.literal('riddle'), question: Text, skill: ContentId };
+const riddleShape = { ...stepBase, kind: z.literal('riddle'), question: Text, skill: ContentId, en: RiddleEn.optional() };
 
-const challengeBase = { ...stepBase, kind: z.literal('challenge'), prompt: Text, skill: ContentId };
+const challengeBase = { ...stepBase, kind: z.literal('challenge'), prompt: Text, skill: ContentId, en: ChallengeEn.optional() };
 
 /** Drag pieces into the container until their values add up to the total; every piece counts. */
 const dragDropShape = {
@@ -230,6 +253,7 @@ const minigameShape = {
   game: ContentId,
   goal: z.number().int().min(1).max(MAX_MINIGAME_SCORE),
   params: MinigameParams.default({}),
+  en: ChallengeEn.optional(),
 };
 
 /**
@@ -271,9 +295,9 @@ const bossShape = {
   turns: z.array(BossTurn).min(2),
 };
 
-const rewardShape = { ...stepBase, kind: z.literal('reward'), text: Text };
+const rewardShape = { ...stepBase, kind: z.literal('reward'), text: Text, en: BeatEn.optional() };
 /** The story beat after the reward: where the adventure goes next. Nothing is locked: every map and quest is open. */
-const nextShape = { ...stepBase, kind: z.literal('next'), text: Text };
+const nextShape = { ...stepBase, kind: z.literal('next'), text: Text, en: BeatEn.optional() };
 
 /** Talk about something (recorded on the device only, never sent); done once the child moves on. */
 const speakShape = {
@@ -292,7 +316,12 @@ const worksheetShape = { ...stepBase, kind: z.literal('worksheet'), lessonId: Co
  * What a character says after an answer. The server rotates through the lines by attempt, so a child
  * retrying never hears the same line twice in a row (content must never feel repeated).
  */
-export const StepFeedback = z.strictObject({ right: z.array(Text).min(3), wrong: z.array(Text).min(3) });
+export const StepFeedback = z.strictObject({
+  right: z.array(Text).min(3),
+  wrong: z.array(Text).min(3),
+  /** The same lines in English, as many of each. */
+  en: z.strictObject({ right: z.array(Text).min(3), wrong: z.array(Text).min(3) }).optional(),
+});
 export type StepFeedback = z.infer<typeof StepFeedback>;
 
 const secret = <A extends z.ZodType>(answer: A) => ({ answer, support: LearningSupport, feedback: StepFeedback.optional() });
@@ -556,6 +585,15 @@ export type QuestText = z.infer<typeof QuestText>;
 
 /** Ids of side quests start with this, so their files sort together (`content/quests/side-*.json`). */
 export const SIDE_QUEST_PREFIX = 'side-';
+/**
+ * Ids of a character's story chapters (`content/quests/yarn-*.json`: a yarn is a told story) start with this. The
+ * quest list follows file order, so it sorts after every lesson id (`toan2-`, `tv2-`, `viec-tot-`, `vuot-ai-`): a
+ * story never takes the place of a map's first lesson. `pnpm content:check` enforces the order.
+ */
+export const STORY_QUEST_PREFIX = 'yarn-';
+/** What a quest is: a lesson (`main`), a minigame played for fun (`side`), or a chapter of a character's story. */
+export const QUEST_CATEGORIES = ['main', 'side', 'story'] as const;
+export type QuestCategoryId = (typeof QUEST_CATEGORIES)[number];
 
 const questFields = {
   id: ContentId,
@@ -566,8 +604,10 @@ const questFields = {
   /**
    * `side`: a minigame played for fun, offered by a character on the map whenever the child talks to it. It
    * never stands for a lesson: the quest list, the HUD tracker and the arrow follow lessons (`main`) only.
+   * `story`: a chapter of a character's own story (content/npcs, `story` arcs): listed after the lessons, under the
+   * character's name; offered by the character when the child talks to it; never counted as a lesson.
    */
-  category: z.enum(['main', 'side']).default('main'),
+  category: z.enum(QUEST_CATEGORIES).default('main'),
   /** Learning content is drafted by AI and must be approved by a teacher before it reaches children. */
   review: z.enum(['teacher-pending', 'teacher-approved']),
   /** The seven design questions every quest must answer (Master Plan §11). */
@@ -604,6 +644,8 @@ const questFields = {
   places: z.record(ContentId, Text).default({}),
   steps: z.array(QuestStep).min(1),
   reward: RewardSpec,
+  /** Title and summary in English (the bilingual display); the steps carry their own `en`. */
+  en: QuestEn.optional(),
 };
 
 /**
@@ -652,9 +694,99 @@ function sideQuestIssues(q: { id: string; lesson?: string | undefined; steps: Qu
   return issues;
 }
 
+/** Step kinds a story chapter may use: the ones the bilingual display covers (no textbook-only kinds). */
+const STORY_STEP_KINDS = new Set(['dialogue', 'search', 'find-object', 'decision', 'read', 'riddle', 'challenge', 'reward', 'next']);
+const STORY_MECHANICS = new Set(['quiz', 'sort', 'logic', 'multi-select', 'minigame']);
+
+/**
+ * A story chapter opens at its character (a dialogue there, the child talks to it to start), walks the child round
+ * named places like a lesson, plays at least two mechanics and ships in both languages.
+ */
+function storyQuestIssues(q: { id: string; lesson?: string | undefined; steps: QuestStep[]; places: Record<string, string>; en?: QuestEn | undefined }): string[] {
+  const issues: string[] = [];
+  if (!q.id.startsWith(STORY_QUEST_PREFIX)) issues.push(`a story chapter id starts with "${STORY_QUEST_PREFIX}"`);
+  if (isTextbookQuest(q.id) || q.lesson) issues.push('a story chapter plays no textbook lesson');
+  const [first] = q.steps;
+  if (first?.kind !== 'dialogue' || first.trigger !== 'interact' || !first.target) issues.push('a story chapter starts with a dialogue at its character, who tells it');
+  for (const step of q.steps) {
+    if (!STORY_STEP_KINDS.has(step.kind) || (step.kind === 'challenge' && !STORY_MECHANICS.has(step.mechanic))) {
+      issues.push(`step ${step.id}: a story chapter uses dialogue, search, find-object, decision, read, riddle, quiz, sort, logic, multi-select, minigame, reward and next steps`);
+    }
+    if ('support' in step && !step.feedback) issues.push(`step ${step.id}: a story chapter's character answers every try (feedback lines)`);
+  }
+  issues.push(...wayfindingIssues(q.steps, q.places));
+  return issues;
+}
+
+/** Whether the English list has as many lines as the Vietnamese one (both absent counts as matching). */
+const sameLength = (en: readonly unknown[] | undefined, vi: readonly unknown[] | undefined): boolean => (en?.length ?? -1) === (vi?.length ?? -1);
+
+/**
+ * A step's English twin says the same lines (`en` mirrors the step), and with `complete` (stories, side quests)
+ * every step, support layer, feedback pool and the quest itself has one.
+ */
+export function englishIssues(q: { steps: QuestStep[]; en?: QuestEn | undefined }, complete = false): string[] {
+  const issues: string[] = [];
+  if (complete && !q.en) issues.push('needs its title and summary in English ("en")');
+  for (const step of q.steps) {
+    const at = `step ${step.id}`;
+    const en = 'en' in step ? step.en : undefined;
+    if (complete && (!en || !en.title)) issues.push(`${at}: needs its English twin ("en") with a title`);
+    if ('support' in step && complete && !step.support.en) issues.push(`${at}: needs its support layers in English (support.en)`);
+    if ('support' in step && step.support.en && step.support.en.guide.length !== step.support.guide.length) issues.push(`${at}: support.en has ${step.support.en.guide.length} guide lines, the step ${step.support.guide.length}`);
+    if ('feedback' in step && step.feedback) {
+      const fb = step.feedback;
+      if (complete && !fb.en) issues.push(`${at}: needs its feedback lines in English (feedback.en)`);
+      if (fb.en && (fb.en.right.length !== fb.right.length || fb.en.wrong.length !== fb.wrong.length)) issues.push(`${at}: feedback.en has other line counts than the feedback`);
+    }
+    if (!en) continue;
+    if ((en.goTo === undefined) !== (step.goTo === undefined)) issues.push(`${at}: en.goTo is there exactly when goTo is`);
+    switch (step.kind) {
+      case 'dialogue': {
+        const twin = en as z.infer<typeof DialogueEn>;
+        if (twin.lines.length !== step.lines.length) issues.push(`${at}: en has ${twin.lines.length} lines, the step ${step.lines.length}`);
+        if (twin.choices.length !== step.choices.length) issues.push(`${at}: en has ${twin.choices.length} choices, the step ${step.choices.length}`);
+        step.choices.forEach((c, i) => {
+          if ((c.reply === undefined) !== (twin.choices[i]?.reply === undefined)) issues.push(`${at}: choice ${i + 1} has a reply in one language only`);
+        });
+        break;
+      }
+      case 'decision':
+      case 'find-object': {
+        const twin = en as { choices?: unknown[]; items?: unknown[] };
+        const [vi, mine] = step.kind === 'decision' ? [step.choices, twin.choices] : [step.items, twin.items];
+        if (!sameLength(mine, vi)) issues.push(`${at}: en lists ${mine?.length ?? 0} ${step.kind === 'decision' ? 'choices' : 'items'}, the step ${vi.length}`);
+        break;
+      }
+      case 'read': {
+        const twin = en as z.infer<typeof ReadEn>;
+        if (twin.choices.length !== step.choices.length) issues.push(`${at}: en has ${twin.choices.length} choices, the step ${step.choices.length}`);
+        if ((twin.text === undefined) !== (step.text === undefined)) issues.push(`${at}: en.text is there exactly when the step has its own text`);
+        break;
+      }
+      case 'challenge': {
+        const twin = en as z.infer<typeof ChallengeEn>;
+        const own = step as { choices?: unknown[]; items?: unknown[]; elements?: unknown[] };
+        for (const key of ['choices', 'items', 'elements'] as const) {
+          // A logic step's elements default to none: an empty list needs no twin.
+          const vi = own[key] && own[key].length > 0 ? own[key] : undefined;
+          if (twin[key] !== undefined && !vi) issues.push(`${at}: en.${key} has no ${key} to translate`);
+          else if (vi && twin[key] !== undefined && !sameLength(twin[key], vi)) issues.push(`${at}: en.${key} has ${twin[key].length} lines, the step ${vi.length}`);
+          else if (vi && twin[key] === undefined && complete && step.mechanic !== 'classify') issues.push(`${at}: en.${key} is missing`);
+        }
+        break;
+      }
+      default:
+        break;
+    }
+  }
+  return issues;
+}
+
 function questIssues(q: {
   id: string;
-  category: 'main' | 'side';
+  category: QuestCategoryId;
+  en?: QuestEn | undefined;
   lesson?: string | undefined;
   phases: Record<(typeof QUEST_PHASES)[number], string>;
   steps: QuestStep[];
@@ -678,11 +810,18 @@ function questIssues(q: {
     if (seen.has(line)) issues.push(`feedback line "${line}" is used twice in the quest`);
     seen.add(line);
   }
+  // A step's English twin always mirrors it; side quests and stories ship with every line in both languages.
+  issues.push(...englishIssues(q, q.category !== 'main'));
   if (q.category === 'side') {
     // Played for fun: its own shape instead of the lesson rules (mechanics, wayfinding).
     issues.push(...sideQuestIssues(q));
   } else if (q.id.startsWith(SIDE_QUEST_PREFIX)) {
     issues.push(`a quest whose id starts with "${SIDE_QUEST_PREFIX}" is a side quest ("category": "side")`);
+  } else if (q.id.startsWith(STORY_QUEST_PREFIX) && q.category !== 'story') {
+    issues.push(`a quest whose id starts with "${STORY_QUEST_PREFIX}" is a story chapter ("category": "story")`);
+  } else if (q.category === 'story') {
+    issues.push(...storyQuestIssues(q));
+    if (new Set(q.steps.map(mechanicOf).filter((m) => m !== null)).size < 2) issues.push('needs at least two mechanics other than multiple choice (search, riddle or an interactive challenge)');
   } else if (isTextbookQuest(q.id)) {
     if (!q.lesson) issues.push('a textbook quest names its lesson ("lesson"), shown with its pages in the quest list');
     for (const step of q.steps) if ('support' in step && !step.feedback) issues.push(`step ${step.id}: a textbook quest step needs feedback lines`);

@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 8,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Sentence Train",
+    "howTo": [
+      "Each carriage carries one word. {name} looks at the picture and taps the carriages in sentence order.",
+      "The first word starts with a capital letter, and the last word has a full stop.",
+      "A wrong tap rolls the train back one carriage. Finish the sentence and the train sets off: one point."
+    ]
+  }
 }

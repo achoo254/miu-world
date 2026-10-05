@@ -46,7 +46,19 @@
         {
           "text": "Tớ mang bình tưới tới đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The veggie garden by the house still has empty beds, {name}. Let's sow some seeds!",
+          "Water the wilting plants, shoo away swooping birds, and pick veggies as soon as they're ripe."
+        ],
+        "choices": [
+          {
+            "text": "I'll bring the watering can!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Hái được hai mươi bó rau xanh nhé!",
       "game": "garden-cycle",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "My vegetable garden",
+        "prompt": "Pick 20 bunches of greens!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thỏ Làm Vườn ôm rổ rau đầy: {name} trồng rau giỏi quá!"
+      "text": "Thỏ Làm Vườn ôm rổ rau đầy: {name} trồng rau giỏi quá!",
+      "en": {
+        "title": "Reward",
+        "text": "Thỏ Làm Vườn hugs a full basket: {name} is a great gardener!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Hạt mới nảy mầm mỗi ngày, Thỏ chờ {name} ra vườn rau chăm tiếp."
+      "text": "Hạt mới nảy mầm mỗi ngày, Thỏ chờ {name} ra vườn rau chăm tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "New seeds sprout every day. Thỏ will wait for {name} in the veggie garden."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Tend the Veggie Patch with Thỏ Làm Vườn",
+    "summary": "Sow seeds in empty beds, water wilting plants, shoo the birds and pick the veggies when they're ripe."
   }
 }

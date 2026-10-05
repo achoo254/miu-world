@@ -46,7 +46,19 @@
         {
           "text": "Chân nhịp nhàng bước, sào khép chẳng lo!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Clack clack boom clack! Can you hear the bamboo poles of the nhảy sạp dance, {name}?",
+          "When the poles open for two beats, hop in, then hop out on the next beat before they close."
+        ],
+        "choices": [
+          {
+            "text": "Steady feet, no fear of the poles!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nhảy sạp khéo léo vượt qua ba mươi nhịp sào nhé!",
       "game": "nhay-sap",
-      "goal": 30
+      "goal": 30,
+      "en": {
+        "title": "Nhảy sạp (Bamboo Dance)",
+        "prompt": "Dance over 30 beats of the bamboo poles!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thỏ Măng Non vỗ tay theo nhịp gõ sào: {name} uyển chuyển như vũ công múa sạp vùng cao!"
+      "text": "Thỏ Măng Non vỗ tay theo nhịp gõ sào: {name} uyển chuyển như vũ công múa sạp vùng cao!",
+      "en": {
+        "title": "Reward",
+        "text": "Thỏ Măng Non claps along: {name} moves as gracefully as a highland bamboo dancer!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Hội diễn văn nghệ sắp tới rồi, {name} nhớ ghé hành lang hội trường múa sạp cùng thỏ nha."
+      "text": "Hội diễn văn nghệ sắp tới rồi, {name} nhớ ghé hành lang hội trường múa sạp cùng thỏ nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "The school concert is coming up, {name}, so come dance with me by the hall."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Nhảy sạp bamboo dance with Thỏ Măng Non",
+    "summary": "The bamboo poles clack out a beat: wait for them to open wide, then nimbly step in and hop out."
   }
 }

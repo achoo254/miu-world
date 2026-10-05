@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Mirror sunbeams",
+    "howTo": [
+      "Mr Sun shines a single sunbeam. When it hits a mirror, it changes direction.",
+      "{name}, tap mirrors to turn them and guide the sunbeam to the flower.",
+      "When the flower blooms, that board is done. Finish three boards to win!"
+    ]
+  }
 }

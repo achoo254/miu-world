@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 45,
   "goal": 150,
-  "params": { "wobble": 1 }
+  "params": { "wobble": 1 },
+  "en": {
+    "name": "Wobbly darts",
+    "howTo": [
+      "The aim mark loops around the board, sometimes far from the bullseye, sometimes close.",
+      "{name}, tap the screen just as the aim mark reaches the middle to throw a dart.",
+      "The bullseye is worth 50 points. You have six darts!"
+    ]
+  }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Tớ vẽ một nét liền xong ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Oh {name}, I designed a house drawn with one single electric wire!",
+          "Run your finger over every edge of the house without lifting it or going over a line twice."
+        ],
+        "choices": [
+          {
+            "text": "I will draw it in one go!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Vẽ hoàn thành sáu ngôi nhà chỉ bằng một nét liền nhé!",
       "game": "one-stroke-house",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "One-Line House",
+        "prompt": "Draw 6 houses using just one unbroken line!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chú Thợ Điện Nhí vỗ tay tán thưởng: nét vẽ của {name} khéo léo và chuẩn xác lạ thường!"
+      "text": "Chú Thợ Điện Nhí vỗ tay tán thưởng: nét vẽ của {name} khéo léo và chuẩn xác lạ thường!",
+      "en": {
+        "title": "Reward",
+        "text": "Chú Thợ Điện Nhí applauds: the line {name} drew is wonderfully skilful and exact!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Còn nhiều hình vẽ một nét hóc búa lắm, hẹn gặp lại cậu ở quảng trường đài phun."
+      "text": "Còn nhiều hình vẽ một nét hóc búa lắm, hẹn gặp lại cậu ở quảng trường đài phun.",
+      "en": {
+        "title": "See you soon",
+        "text": "There are plenty more tricky one-line drawings. See you again at the fountain square."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Drawing a house in one line with Chú Thợ Điện Nhí",
+    "summary": "A house plan sits on grid paper; trace one smooth line over every edge without lifting your finger."
   }
 }

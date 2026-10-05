@@ -46,7 +46,19 @@
         {
           "text": "Mát rượi rồi, mèo con ngủ ngoan nha!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The midday sun is so hot the kitten can't sleep, {name}.",
+          "Drag the sun across the sky so the pine's cool shadow covers the kitten's spot."
+        ],
+        "choices": [
+          {
+            "text": "Nice and cool, sleep tight, kitty!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Che bóng mát cho mèo con đủ mười lần nhé!",
       "game": "shadow-shade",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Shade for the Cat",
+        "prompt": "Shade the kitten 10 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hươu Đốm Rừng Rậm gật đầu êm ái: {name} chu đáo quá, chú mèo con ngủ say sưa rồi kìa!"
+      "text": "Hươu Đốm Rừng Rậm gật đầu êm ái: {name} chu đáo quá, chú mèo con ngủ say sưa rồi kìa!",
+      "en": {
+        "title": "Reward",
+        "text": "Hươu Đốm Rừng Rậm nods gently: {name} is so thoughtful, the kitten is fast asleep!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Trảng cỏ vẫn rợp bóng thông xanh, {name} cứ ghé chơi cùng Hươu Đốm Rừng Rậm lúc ban trưa nhé."
+      "text": "Trảng cỏ vẫn rợp bóng thông xanh, {name} cứ ghé chơi cùng Hươu Đốm Rừng Rậm lúc ban trưa nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The meadow is shady under the pines. Come and play with Hươu Đốm Rừng Rậm around midday, {name}."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Shade the kitten with Hươu Đốm Rừng Rậm",
+    "summary": "A kitten lies sunbathing on the grass: move the sun so the tree's shadow keeps its nap cool."
   }
 }

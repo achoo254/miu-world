@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 6,
-  "params": { "colours": 3 }
+  "params": { "colours": 3 },
+  "en": {
+    "name": "Ball sort tubes",
+    "howTo": [
+      "{name}, tap a tube to lift its top ball, then tap another tube to drop it in.",
+      "Drop only onto the same colour or into an empty tube. Each tube filled with one colour is a point.",
+      "Made a slip? Press the undo button. Wait a while and a hint appears."
+    ]
+  }
 }

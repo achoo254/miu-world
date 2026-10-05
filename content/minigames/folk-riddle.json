@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 7,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Folk riddles",
+    "howTo": [
+      "The riddle appears line by line. {name}, read it, then tap the picture that answers it.",
+      "One pick per riddle; three wrong and the round ends. The quicker you guess, the more you solve!"
+    ]
+  }
 }

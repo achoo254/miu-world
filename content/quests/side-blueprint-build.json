@@ -46,7 +46,19 @@
         {
           "text": "Mình cùng xây nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "I have a blueprint of my dream house, {name}!",
+          "Pick a paint pot and place bricks in the squares. Build it just like the plan and you are done."
+        ],
+        "choices": [
+          {
+            "text": "Let us build together!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Xây xong ba công trình theo bản vẽ nhé!",
       "game": "blueprint-build",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Build the blueprint",
+        "prompt": "Finish 3 buildings from the blueprints!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Giống y như bản vẽ, {name} đúng là kiến trúc sư!"
+      "text": "Giống y như bản vẽ, {name} đúng là kiến trúc sư!",
+      "en": {
+        "title": "Reward",
+        "text": "It matches the plan exactly. {name} is a real architect!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tớ còn cả xấp bản vẽ nữa, rảnh thì ra đồng xây với tớ."
+      "text": "Tớ còn cả xấp bản vẽ nữa, rảnh thì ra đồng xây với tớ.",
+      "en": {
+        "title": "See you soon",
+        "text": "I have a whole pile of blueprints left, so come build with me in the fields when you can."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Building from a blueprint with Gấu Đưa Báo",
+    "summary": "Look at the small blue plan, then lay coloured bricks one by one to match it exactly."
   }
 }

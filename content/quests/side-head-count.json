@@ -46,7 +46,19 @@
         {
           "text": "Cháu đếm đúng số bạn ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Some little ones are playing hide and seek in the house, {name}!",
+          "Watch closely who goes in and who comes out, so you can guess how many are inside."
+        ],
+        "choices": [
+          {
+            "text": "I will count everyone right!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đoán chuẩn số bạn trong nhà sau sáu lần cửa khép lại nhé!",
       "game": "head-count",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Who's in the house?",
+        "prompt": "Guess how many are inside after the door closes 6 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mắt cháu tinh tường như chim sẻ, {name} đếm đâu chuẩn đấy!"
+      "text": "Mắt cháu tinh tường như chim sẻ, {name} đếm đâu chuẩn đấy!",
+      "en": {
+        "title": "Reward",
+        "text": "You have eyes as sharp as a sparrow: {name} counts spot on every time!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Căn nhà nhỏ ngõ Mẩy rộn rã tiếng cười luôn mở cửa đón cháu."
+      "text": "Căn nhà nhỏ ngõ Mẩy rộn rã tiếng cười luôn mở cửa đón cháu.",
+      "en": {
+        "title": "See you soon",
+        "text": "The little house in the lane of Mẩy rings with laughter and its door is always open for you."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "How many are inside? with Bà Năm Kể Chuyện",
+    "summary": "Watch friends run in and out of the house, then pick how many are left inside when the door shuts."
   }
 }

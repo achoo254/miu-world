@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 9,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Cờ gánh (capture chess)",
+    "howTo": [
+      "Tap a red piece, then a green dot, to move one step along the lines.",
+      "Step between two blue pieces to capture them: both become {name}'s.",
+      "Blue pieces boxed in with nowhere to go turn red too. Have more red at the end to win!"
+    ]
+  }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Cháu xếp chỗ ngồi chu đáo ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The feast is about to begin, {name}, and our honoured guests need their seats arranged with care.",
+          "Read the request cards to see who wants to sit near whom and who takes the head, then seat them right."
+        ],
+        "choices": [
+          {
+            "text": "I'll arrange the seats with care!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Sắp xếp chỗ ngồi hoàn hảo cho bốn bàn tiệc yến hoàng gia nhé!",
       "game": "seat-logic",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Royal Feast Seating",
+        "prompt": "Arrange perfect seating for 4 royal banquet tables!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tể Tướng Cờ Vua mỉm cười nâng ly trà, khen ngợi {name} chu toàn và khéo léo sắp đặt yến tiệc!"
+      "text": "Tể Tướng Cờ Vua mỉm cười nâng ly trà, khen ngợi {name} chu toàn và khéo léo sắp đặt yến tiệc!",
+      "en": {
+        "title": "Reward",
+        "text": "Tể Tướng Cờ Vua smiles over his tea and praises {name} for a banquet arranged so thoughtfully!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mỗi mùa lễ hội ta lại có câu đố tiệc mới, đại sảnh ôn tập luôn mong ngóng cháu ghé thăm."
+      "text": "Mỗi mùa lễ hội ta lại có câu đố tiệc mới, đại sảnh ôn tập luôn mong ngóng cháu ghé thăm.",
+      "en": {
+        "title": "See you soon",
+        "text": "Every festival season I have a new party puzzle. The review hall looks forward to your visit."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Seat the Royal Banquet with Tể Tướng Cờ Vua",
+    "summary": "A grand palace banquet; use each guest's wishes to seat everyone in harmony."
   }
 }

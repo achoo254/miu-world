@@ -63,7 +63,26 @@
           "text": "Kho báu ở đâu vậy?",
           "reply": "Bí mật! Ghép đủ bản đồ thì mới biết được."
         }
-      ]
+      ],
+      "en": {
+        "title": "Meet Captain Monkey",
+        "goTo": "Go to the pier, where the sailboat has just landed on the island",
+        "lines": [
+          "Ahoy there, sailor {name}! Welcome to Mystery Island.",
+          "The moment we docked, a big gust of wind snatched my treasure map and tore it into three pieces!",
+          "The pieces landed somewhere on the beach. Will you pick them up for me?"
+        ],
+        "choices": [
+          {
+            "text": "Sailor {name} reporting for duty!",
+            "reply": "Splendid! We'll split the treasure in half... no wait, we'll share it with the whole island!"
+          },
+          {
+            "text": "Where's the treasure?",
+            "reply": "That's a secret! We'll only know once the map is whole again."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-manh-ban-do",
@@ -213,7 +232,22 @@
           "consequence": "Cua Đỏ hào hứng nhận lấy và vui vẻ mở lời thách đố!"
         }
       ],
-      "goTo": "Cua Đỏ đang gõ càng ở vũng nước triều gần đó"
+      "goTo": "Cua Đỏ đang gõ càng ở vũng nước triều gần đó",
+      "en": {
+        "title": "Meet Cua Đỏ the Pinchy Crab",
+        "goTo": "Cua Đỏ is tapping his claws by the tide pool nearby",
+        "choices": [
+          {
+            "text": "Wave a friendly hello and hold up a shiny seashell",
+            "consequence": "Cua Đỏ is delighted and clacks his claws together into a happy little tune!"
+          },
+          {
+            "text": "Offer him a cool, sweet coconut that just fell",
+            "consequence": "Cua Đỏ eagerly takes it and cheerfully throws down a quiz challenge!"
+          }
+        ],
+        "prompt": "Cua Đỏ the red crab is guarding a chest in the sand. How will {name} approach him?"
+      }
     },
     {
       "id": "boss-cua-bien",
@@ -295,7 +329,12 @@
       "kind": "reward",
       "target": "dba-ruong-vui-cat",
       "text": "Rương mở ra lấp lánh: đồng xu vàng, một chiếc la bàn nhỏ, và mảnh cuối của tấm bản đồ! Khỉ Thuyền Trưởng ôm chầm lấy {name}.",
-      "goTo": "Quay lại rương vùi trong cát"
+      "goTo": "Quay lại rương vùi trong cát",
+      "en": {
+        "title": "Open the chest buried in the sand",
+        "goTo": "Go back to the chest buried in the sand",
+        "text": "The chest opens with a sparkle: gold coins, a tiny compass, and the last piece of the map! Captain Monkey gives {name} a big hug."
+      }
     },
     {
       "id": "vao-rung",
@@ -303,7 +342,11 @@
       "kind": "next",
       "trigger": "auto",
       "target": "dba-ruong-vui-cat",
-      "text": "Tấm bản đồ ghép xong vẽ một lối nhỏ băng qua rừng nhiệt đới tới thác nước. Thuyền nhỏ ở bến sẵn sàng đưa {name} đi tiếp!"
+      "text": "Tấm bản đồ ghép xong vẽ một lối nhỏ băng qua rừng nhiệt đới tới thác nước. Thuyền nhỏ ở bến sẵn sàng đưa {name} đi tiếp!",
+      "en": {
+        "title": "The map points into the jungle",
+        "text": "The finished map shows a narrow trail through the rainforest to the waterfall. The little boat at the pier is ready to take {name} onward!"
+      }
     }
   ],
   "reward": {

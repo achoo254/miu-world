@@ -10,5 +10,13 @@
   "controls": ["hold", "tap"],
   "duration": 60,
   "goal": 180,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Ski Jump",
+    "howTo": [
+      "Hold your finger so {name} crouches and zooms down the jump.",
+      "Let go right at the green line on the edge to launch sky-high.",
+      "Just before landing, tap the screen to touch down nicely. Your three jumps add up!"
+    ]
+  }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Cháu đeo tạp dề rồi cô!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, look at this queue! Lend me a hand with the bánh mì, will you?",
+          "Read the order bubble and add the fillings from left to right, in that order."
+        ],
+        "choices": [
+          {
+            "text": "Apron's on, Auntie!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Làm đủ tám ổ bánh mì đúng đơn nhé!",
       "game": "recipe-assembly",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Bánh Mì Orders",
+        "prompt": "Make 8 bánh mì exactly as ordered!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khách nào cũng khen ngon, {name} làm bánh mì chuẩn vị!"
+      "text": "Khách nào cũng khen ngon, {name} làm bánh mì chuẩn vị!",
+      "en": {
+        "title": "Reward",
+        "text": "Every customer says it's delicious. {name} makes a proper bánh mì!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Sạp bánh mì mở từ sáng sớm, cháu ghé phụ cô nữa nhé."
+      "text": "Sạp bánh mì mở từ sáng sớm, cháu ghé phụ cô nữa nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The bánh mì stall opens at dawn, so come and help me again soon."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Bánh mì orders with Auntie Hạnh",
+    "summary": "Customers line up and call out their orders: fill each bánh mì in the order shown in the bubble."
   }
 }

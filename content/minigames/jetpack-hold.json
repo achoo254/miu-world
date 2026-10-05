@@ -10,5 +10,13 @@
   "controls": ["hold"],
   "duration": 60,
   "goal": 40,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Jetpack",
+    "howTo": [
+      "{name} straps on a rocket backpack and flies over the city.",
+      "Hold your finger to rise, let go to sink. Grab lots of coins!",
+      "Avoid thunderclouds: three bumps and your flight is over."
+    ]
+  }
 }

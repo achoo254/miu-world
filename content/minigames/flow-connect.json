@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Connect the colours",
+    "howTo": [
+      "{name}, drag from a dot to the dot of the same colour and shape to lay a pipe.",
+      "Pipes may not cross, and they must fill every square on the board.",
+      "Finish three boards to win!"
+    ]
+  }
 }

@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Colour Flood",
+    "howTo": [
+      "{name}'s colour patch starts in the top corner. Tap a colour to turn the whole patch that colour.",
+      "Touching squares of the same colour join the patch. Make the board one colour before your moves run out!"
+    ]
+  }
 }

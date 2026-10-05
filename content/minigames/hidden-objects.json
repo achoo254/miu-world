@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Hidden objects",
+    "howTo": [
+      "The tray at the bottom shows six items. {name}, find them in the picture!",
+      "Tap the right item and it flies into the tray: one point each.",
+      "Searching for a while? One item will sparkle as a hint."
+    ]
+  }
 }

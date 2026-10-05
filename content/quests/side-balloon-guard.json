@@ -46,7 +46,19 @@
         {
           "text": "Ô đây rồi, tớ che cho bạn liền!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, a little friend is floating up into the sky, but there are pebbles falling everywhere!",
+          "Drag the umbrella over the balloons to knock away anything that falls."
+        ],
+        "choices": [
+          {
+            "text": "Umbrella ready, I'll shield you!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Hộ tống bóng bay lên cao một trăm mét nhé!",
       "game": "balloon-guard",
-      "goal": 100
+      "goal": 100,
+      "en": {
+        "title": "Balloon escort",
+        "prompt": "Escort the balloons 100 metres up!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Sóc Đu Đuôi ngoe nguẩy cái đuôi xù: {name} che ô khéo quá, bóng an toàn rồi!"
+      "text": "Sóc Đu Đuôi ngoe nguẩy cái đuôi xù: {name} che ô khéo quá, bóng an toàn rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Sóc Đu Đuôi swishes its fluffy tail: {name} held the umbrella so well, the balloons are safe!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Khi nào muốn ngắm bóng bay, {name} cứ ghé bãi cỏ hoang tìm Sóc Đu Đuôi nhé."
+      "text": "Khi nào muốn ngắm bóng bay, {name} cứ ghé bãi cỏ hoang tìm Sóc Đu Đuôi nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Whenever you want to watch the balloons, {name}, come to the wild meadow and find Sóc Đu Đuôi."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Guard the balloons with Sóc Đu Đuôi",
+    "summary": "A child floats up with a bunch of balloons: drag the umbrella to shield them from falling leaves and pebbles."
   }
 }

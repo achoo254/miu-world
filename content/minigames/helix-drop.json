@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 60,
   "goal": 20,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Helix tower drop",
+    "howTo": [
+      "The ball bounces on the tower's levels. {name}, drag sideways to spin the tower.",
+      "Turn a gap under the ball so it drops to the level below. Each level is a point.",
+      "Don't let the ball land on a red patch: that costs a heart."
+    ]
+  }
 }

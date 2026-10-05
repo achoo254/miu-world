@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 10,
-  "params": { "speed": 1, "gap": 250 }
+  "params": { "speed": 1, "gap": 250 },
+  "en": {
+    "name": "Bird through the bamboo",
+    "howTo": [
+      "The little bird flies forward by itself and keeps sinking.",
+      "{name}, tap the screen to flap the bird upward through the gap between two bamboo stalks.",
+      "Each gap passed is a point. Hit the bamboo three times and the round ends."
+    ]
+  }
 }

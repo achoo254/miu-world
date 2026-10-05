@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 12,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Peg Jump",
+    "howTo": [
+      "Tap a gem, then the empty hole beyond its neighbour: it jumps over and the middle gem is taken.",
+      "{name} takes as many gems as possible. Two or fewer left is brilliant!",
+      "Stuck? Tap Undo to go back."
+    ]
+  }
 }

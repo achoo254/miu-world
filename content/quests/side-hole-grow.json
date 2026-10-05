@@ -46,7 +46,19 @@
         {
           "text": "Hút sạch đồ vương, sân bãi tinh tươm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "There are so many toys and scraps around the cat statue. Help me tidy up, {name}!",
+          "Steer the hole over small things first so it grows, then gobble up the bigger things."
+        ],
+        "choices": [
+          {
+            "text": "Swallow the mess, sparkling clean!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Hút sạch sẽ ba mươi hai món đồ vương trên quảng trường nhé!",
       "game": "hole-grow",
-      "goal": 32
+      "goal": 32,
+      "en": {
+        "title": "Hungry hole cleanup",
+        "prompt": "Clear 32 stray things from the square!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mèo Xếp Khối cọ đầu mừng rỡ: bờ đài phun nước sạch bong không còn hạt bụi nhờ có {name}!"
+      "text": "Mèo Xếp Khối cọ đầu mừng rỡ: bờ đài phun nước sạch bong không còn hạt bụi nhờ có {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Mèo Xếp Khối nuzzles happily: thanks to {name}, the fountain edge is spotless, not a speck left!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mỗi buổi chiều gió thổi lá rụng, {name} lại ra tượng mèo giúp hố thần kỳ dọn sân nhé."
+      "text": "Mỗi buổi chiều gió thổi lá rụng, {name} lại ra tượng mèo giúp hố thần kỳ dọn sân nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The wind blows leaves down every afternoon, {name}, so come help the magic hole tidy up again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "The tidy-up hole with Mèo Xếp Khối",
+    "summary": "The square is littered with rubbish and dry leaves: steer a magic hole that swallows everything from small to big."
   }
 }

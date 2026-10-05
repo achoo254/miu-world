@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 60,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Catch the Rain",
+    "howTo": [
+      "Rain falls on a banana leaf. {name} drags left and right to tilt the leaf.",
+      "Water runs along the leaf and drips from the low tip. Catch it in the jar with its lid open.",
+      "A full jar is a point, then another jar opens its lid."
+    ]
+  }
 }

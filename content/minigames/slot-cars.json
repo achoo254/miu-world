@@ -10,5 +10,13 @@
   "controls": ["hold"],
   "duration": 60,
   "goal": 3,
-  "params": { "rival": 1 }
+  "params": { "rival": 1 },
+  "en": {
+    "name": "Slot Car Racing",
+    "howTo": [
+      "{name} holds a finger on the screen to go fast and lifts it to slow down.",
+      "Take a bend too fast and the car flies off! Let go before each curve.",
+      "Finish three laps before Fox's car to win."
+    ]
+  }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Em vào giữa đây chị!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "With a moon this bright, jump rope is the best! Come on in, {name}!",
+          "My friend and I will turn the rope. Watch for it reaching your feet, then jump."
+        ],
+        "choices": [
+          {
+            "text": "I am jumping in the middle!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nhảy qua dây hai mươi lăm lần nhé!",
       "game": "jump-rope",
-      "goal": 25
+      "goal": 25,
+      "en": {
+        "title": "Jump rope",
+        "prompt": "Jump over the rope 25 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Dây quay nhanh thế mà {name} vẫn nhảy tót qua, giỏi quá!"
+      "text": "Dây quay nhanh thế mà {name} vẫn nhảy tót qua, giỏi quá!",
+      "en": {
+        "title": "Reward",
+        "text": "The rope spins so fast, yet {name} still hops right over it. Brilliant!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tối nào chị cũng nhảy dây ở đầu ngõ, em ra chơi nữa nhé."
+      "text": "Tối nào chị cũng nhảy dây ở đầu ngõ, em ra chơi nữa nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "I jump rope at the end of the lane every evening, so come play again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Jump rope with Chị Thỏ Nhảy Dây",
+    "summary": "Two friends turn the rope steadily under the moon: jump just as it sweeps toward your feet."
   }
 }

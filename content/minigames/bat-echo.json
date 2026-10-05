@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 4,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Little bat finds the way",
+    "howTo": [
+      "The cave is pitch dark! {name}, tap quickly to make the bat squeak: nearby walls light up for a moment.",
+      "Drag your finger and the bat follows; find the cave mouth with the moonlight.",
+      "Bump into a wall and the bat is dizzy for a second."
+    ]
+  }
 }

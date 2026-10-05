@@ -46,7 +46,19 @@
         {
           "text": "Đua thì đua, tớ không sợ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Who can swim to the red buoy first? Dare to race me, {name}?",
+          "Don't tap wildly or you'll tire out. Follow the rings steadily and you'll be fastest."
+        ],
+        "choices": [
+          {
+            "text": "A race? You're on!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Về nhất hoặc nhì trong ba lượt đua nhé!",
       "game": "swim-race",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Swimming Race",
+        "prompt": "Finish first or second in 3 races!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cua Lướt Sóng chịu thua: {name} bơi đều tay quá, tớ đuổi không kịp!"
+      "text": "Cua Lướt Sóng chịu thua: {name} bơi đều tay quá, tớ đuổi không kịp!",
+      "en": {
+        "title": "Reward",
+        "text": "Cua Lướt Sóng gives up: {name} swims so steadily, I just can't keep up!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Nước biển ấm lắm, lúc nào muốn đua tiếp cứ ra bãi biển tìm Cua."
+      "text": "Nước biển ấm lắm, lúc nào muốn đua tiếp cứ ra bãi biển tìm Cua.",
+      "en": {
+        "title": "See you soon",
+        "text": "The sea is lovely and warm. Whenever you want a rematch, find Cua on the beach."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Swim race along the shore with Cua Lướt Sóng",
+    "summary": "Tap when the gold ring meets the white ring to stroke, and keep a steady rhythm to the finish."
   }
 }

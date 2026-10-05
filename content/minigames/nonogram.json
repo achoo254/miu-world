@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 2,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Number Picture Grid",
+    "howTo": [
+      "The numbers beside each row and above each column tell how many squares in a row get coloured.",
+      "{name} taps squares to colour them. Colour a wrong one and the pen rests for a moment.",
+      "Colour all the right squares and a picture appears!"
+    ]
+  }
 }

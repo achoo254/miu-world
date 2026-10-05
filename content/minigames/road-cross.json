@@ -10,5 +10,13 @@
   "controls": ["tap", "swipe"],
   "duration": 90,
   "goal": 3,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Cross the Road and River",
+    "howTo": [
+      "Help the frog over the road and then the river. {name} taps (or swipes up) to hop forward.",
+      "Swipe left or right to step sideways. On the river, hop onto logs or turtles' backs!",
+      "Reach the far bank for a point."
+    ]
+  }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Cháu đỡ bóng phá sạch gạch!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, the old brick wall in front of the palace yard needs your quick hands!",
+          "Slide the paddle smoothly underneath and keep the ball bouncing high to smash the mossy bricks."
+        ],
+        "choices": [
+          {
+            "text": "I'll bounce the ball and clear every brick!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Phá tan được ba mươi viên gạch hoàng gia kiên cố nhé!",
       "game": "breakout",
-      "goal": 30
+      "goal": 30,
+      "en": {
+        "title": "Brick breaker",
+        "prompt": "Smash 30 sturdy royal bricks!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hiệp Sĩ Gương Soi vỗ tay trầm trồ: đường bóng của {name} chính xác như đường kiếm hiệp sĩ!"
+      "text": "Hiệp Sĩ Gương Soi vỗ tay trầm trồ: đường bóng của {name} chính xác như đường kiếm hiệp sĩ!",
+      "en": {
+        "title": "Reward",
+        "text": "Hiệp Sĩ Gương Soi applauds: {name}'s shots are as precise as a knight's sword strokes!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bức tường hoàng cung đã sạch đẹp, hôm nào cháu lại ghé trước sân hình khối tập luyện."
+      "text": "Bức tường hoàng cung đã sạch đẹp, hôm nào cháu lại ghé trước sân hình khối tập luyện.",
+      "en": {
+        "title": "See you soon",
+        "text": "The palace wall is clean and bright. Come practise again in the shape courtyard some day."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Royal Brick Breaker with Hiệp Sĩ Gương Soi",
+    "summary": "The ancient castle wall needs clearing; move the paddle to bounce the ball and smash row after row of bricks."
   }
 }

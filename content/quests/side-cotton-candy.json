@@ -46,7 +46,19 @@
         {
           "text": "Tớ quấn một cây thật to!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Smells sweet, does it not, {name}? I am making cotton candy!",
+          "Draw even circles around the stick. Spin too fast and the candy flies right off."
+        ],
+        "choices": [
+          {
+            "text": "I will spin a really big one!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Quấn xong sáu cây kẹo bông nhé!",
       "game": "cotton-candy",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Spin the cotton candy",
+        "prompt": "Spin 6 sticks of cotton candy!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Voi Kẹo Bông giơ vòi khen: kẹo của {name} tròn như đám mây hồng!"
+      "text": "Voi Kẹo Bông giơ vòi khen: kẹo của {name} tròn như đám mây hồng!",
+      "en": {
+        "title": "Reward",
+        "text": "Voi Kẹo Bông raises its trunk in praise: the candy {name} made is round as a pink cloud!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Máy kẹo bông chạy cả ngày, cứ tới khu giao dịch tìm Voi Kẹo Bông nhé."
+      "text": "Máy kẹo bông chạy cả ngày, cứ tới khu giao dịch tìm Voi Kẹo Bông nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The candy machine runs all day, so come find Voi Kẹo Bông by the trading area."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Spinning cotton candy with Voi Kẹo Bông",
+    "summary": "The cotton candy machine whirs: draw smooth circles around the stick so the sugar wraps into a round fluffy cloud."
   }
 }

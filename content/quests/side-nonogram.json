@@ -46,7 +46,19 @@
         {
           "text": "Để tớ giải từng ô số nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "I've just made a mystery picture puzzle out of numbers in the snow, {name}!",
+          "Count the squares shown at the start of each row, then tap the right spots to reveal the drawing."
+        ],
+        "choices": [
+          {
+            "text": "Let me solve it square by square!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Tô đúng các ô số để hoàn thành hai bức tranh tuyết bí ẩn nhé!",
       "game": "nonogram",
-      "goal": 2
+      "goal": 2,
+      "en": {
+        "title": "Number Picture Grid",
+        "prompt": "Colour the right squares to finish 2 mystery snow pictures!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cáo Tuyết reo mừng: tranh {name} tô hiện lên rõ nét và sinh động quá!"
+      "text": "Cáo Tuyết reo mừng: tranh {name} tô hiện lên rõ nét và sinh động quá!",
+      "en": {
+        "title": "Reward",
+        "text": "Cáo Tuyết cheers: {name}'s picture comes out clear and so lively!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bảng vẽ giữa làng còn nhiều trang mới, Cáo Tuyết chờ {name} ghé tô tiếp."
+      "text": "Bảng vẽ giữa làng còn nhiều trang mới, Cáo Tuyết chờ {name} ghé tô tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "The village drawing board has plenty of new pages. Cáo Tuyết is waiting for {name} to colour more."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Snow Grid Pictures with Cáo Tuyết Điêu Khắc",
+    "summary": "A grid with number clues; colour in squares so the hidden picture slowly appears."
   }
 }

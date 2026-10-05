@@ -9,5 +9,12 @@
   "controls": ["swipe"],
   "duration": 45,
   "goal": 10,
-  "params": { "keeperSpeed": 1 }
+  "params": { "keeperSpeed": 1 },
+  "en": {
+    "name": "Penalty Kick",
+    "howTo": [
+      "Swipe the ball toward the goal to shoot.",
+      "The goalkeeper runs back and forth: aim for the gap, and every goal is a point."
+    ]
+  }
 }

@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 25,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Jump rope",
+    "howTo": [
+      "Two friends turn the rope with {name} in the middle. When it swings down to your feet, tap to jump!",
+      "Each time the rope sweeps under your feet is a point, and it turns faster and faster.",
+      "Trip on the rope and it stops briefly, then starts again slowly."
+    ]
+  }
 }

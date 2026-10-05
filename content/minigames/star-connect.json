@@ -9,5 +9,12 @@
   "controls": ["tap", "drag"],
   "duration": 60,
   "goal": 3,
-  "params": { "stars": 10 }
+  "params": { "stars": 10 },
+  "en": {
+    "name": "Join the Constellations",
+    "howTo": [
+      "Tap the stars in order 1, 2, 3… up to 10, or drag your finger through them.",
+      "When you finish, a friend appears in the sky. {name}, join lots of constellations!"
+    ]
+  }
 }

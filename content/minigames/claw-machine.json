@@ -10,5 +10,13 @@
   "controls": ["hold"],
   "duration": 75,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Claw machine",
+    "howTo": [
+      "Hold your finger: the claw moves right. Let go: the claw stops.",
+      "Hold again: the claw moves back. Let go: the claw drops to grab a toy.",
+      "{name} has six tries; grab three plush toys to win!"
+    ]
+  }
 }

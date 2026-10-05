@@ -46,7 +46,19 @@
         {
           "text": "Chim ơi, vỗ cánh theo nhịp tớ nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, my little chick is learning to fly through the bamboo grove!",
+          "One tap and the bird flaps its wings. Don't let it bump the bamboo stems!"
+        ],
+        "choices": [
+          {
+            "text": "Flap along to my beat, little bird!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đưa chim bay qua mười khe tre nhé!",
       "game": "flappy-fly",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Bird through the bamboo",
+        "prompt": "Fly the bird through 10 bamboo gaps!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Vẹt Mỏ Cong hót vang cả lối mòn: {name} dạy chim non bay giỏi quá!"
+      "text": "Vẹt Mỏ Cong hót vang cả lối mòn: {name} dạy chim non bay giỏi quá!",
+      "en": {
+        "title": "Reward",
+        "text": "Vẹt Mỏ Cong sings all along the trail: {name} is a wonderful flying teacher!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chim non còn muốn tập nữa, cứ ghé lối mòn phía đông tìm Vẹt Mỏ Cong."
+      "text": "Chim non còn muốn tập nữa, cứ ghé lối mòn phía đông tìm Vẹt Mỏ Cong.",
+      "en": {
+        "title": "See you soon",
+        "text": "The chick wants more practice. Drop by the east trail and find Vẹt Mỏ Cong."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Fly through the bamboo with Vẹt Mỏ Cong",
+    "summary": "The bamboo grows close together: tap to make the bird flap and squeeze through each narrow gap."
   }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Cháu tìm ra các từ ẩn ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "I have a really useful word puzzle here just for you, dear {name}.",
+          "Look at the little pictures beside the grid, then drag across the letters that spell each word."
+        ],
+        "choices": [
+          {
+            "text": "I will find the hidden words!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Tìm đủ sáu từ tiếng Việt ẩn trong bảng chữ nhé!",
       "game": "word-search",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Hidden Word Search",
+        "prompt": "Find 6 Vietnamese words hidden in the grid!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cô Thủ Thư Mai xoa đầu khen ngợi {name} có vốn từ vựng phong phú và đôi mắt tinh tường!"
+      "text": "Cô Thủ Thư Mai xoa đầu khen ngợi {name} có vốn từ vựng phong phú và đôi mắt tinh tường!",
+      "en": {
+        "title": "Reward",
+        "text": "Cô Thủ Thư Mai pats {name} on the head: such a rich vocabulary and such keen eyes!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mỗi tuần cô lại có bảng ô chữ mới, cháu nhớ ghé bàn hướng dẫn cửa thư viện chơi."
+      "text": "Mỗi tuần cô lại có bảng ô chữ mới, cháu nhớ ghé bàn hướng dẫn cửa thư viện chơi.",
+      "en": {
+        "title": "See you soon",
+        "text": "I make a new word grid every week, so drop by the help desk at the library door."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Vietnamese word search with Cô Thủ Thư Mai",
+    "summary": "A square grid of letters hides some dear, familiar words; use your sharp eyes to circle each one."
   }
 }

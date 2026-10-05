@@ -46,7 +46,19 @@
         {
           "text": "Cháu ghìm ga cập bến êm ái!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The ferry's packed with passengers today, {name}. Take the wheel and help me out!",
+          "Drag your finger to steer the ferry slowly up to the wooden edge. Don't bump the pier!"
+        ],
+        "choices": [
+          {
+            "text": "Easy on the throttle, gently in!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Lái phà cập bến an toàn trọn vẹn sáu chuyến hải trình nhé!",
       "game": "ferry-dock",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Dock the ferry",
+        "prompt": "Dock the ferry safely for 6 trips!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bác ngư dân gióng lên tiếng chuông bến: tài lái phà của {name} thật điềm tĩnh và an toàn!"
+      "text": "Bác ngư dân gióng lên tiếng chuông bến: tài lái phà của {name} thật điềm tĩnh và an toàn!",
+      "en": {
+        "title": "Reward",
+        "text": "The fisherman rings the harbour bell: {name} steers the ferry so calmly and safely!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bến tàu luôn tấp nập thuyền bè qua lại, bác hẹn {name} hội ngộ chuyến phà sau."
+      "text": "Bến tàu luôn tấp nập thuyền bè qua lại, bác hẹn {name} hội ngộ chuyến phà sau.",
+      "en": {
+        "title": "See you soon",
+        "text": "The pier is always busy with boats. I'll see {name} for the next ferry run."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Dock the ferry with Bác Quăng Lưới Biển",
+    "summary": "The passenger ferry bobs on the waves: steer it, slow it down and bring it gently alongside the pier."
   }
 }

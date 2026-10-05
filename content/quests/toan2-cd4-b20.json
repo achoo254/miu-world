@@ -69,7 +69,27 @@
           "text": "Xuống đi kẻo ngã đấy!",
           "reply": "Khỉ Ổi lộn một vòng đáp đất: Ngã sao được, tớ leo cây ổi từ bé mà!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Every cart wants to be first",
+        "goTo": "Go to the Farm cart yard, where Khỉ Ổi is swinging from a guava branch",
+        "lines": [
+          "Hey hey! {name}, you're just in time! I'm hitching up a cart train to carry vegetables, corn and pumpkins all over the farm.",
+          "But the carts are so cheeky, every one of them wants to go first, and they keep hiding behind the haystack.",
+          "Ổi, if you keep hanging upside down on that branch, I'll be sitting here in my driver's cap waiting forever for a single cart!",
+          "Hanging upside down is the best way to see where the carts are hiding, Uncle! Okay, I'm coming down, let's go find them."
+        ],
+        "choices": [
+          {
+            "text": "I'll help you find the carts!",
+            "reply": "Khỉ Ổi drops down with a thump: Let's go, quick as a monkey!"
+          },
+          {
+            "text": "Come down before you fall!",
+            "reply": "Khỉ Ổi flips and lands on his feet: Fall? Me? I've been climbing guava trees since I was tiny!"
+          }
+        ]
+      }
     },
     {
       "id": "tim-toa-tau",
@@ -110,7 +130,22 @@
           "text": "Không để rơi số nhớ!",
           "reply": "Khỉ Ổi giơ ngón cái: Xe kéo xuất phát!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Adding two two-digit numbers",
+        "lines": [
+          "Each cart carries a number of produce baskets. Hitching two carts means adding two two-digit numbers, like 17 + 24.",
+          "Ones: 7 + 4 = 11, write 1, carry 1. Tens: 1 + 2 = 3, plus the 1 carried makes 4. So 17 + 24 = 41.",
+          "That carried 1 is like a pumpkin hopping over to the tens cart, isn't it, Ổi?",
+          "Exactly! Just don't let any little pumpkin roll off the cart."
+        ],
+        "choices": [
+          {
+            "text": "Never drop the carried number!",
+            "reply": "Khỉ Ổi gives a thumbs up: The cart train is off!"
+          }
+        ]
+      }
     },
     {
       "id": "hang-len-toa-dau-tien",
@@ -497,7 +532,25 @@
           "text": "So từng đôi tàu một",
           "reply": "Khỉ Ổi: Cũng được, miễn là cuối cùng xếp đúng."
         }
-      ]
+      ],
+      "en": {
+        "title": "Voi Bọt calls the submarines",
+        "goTo": "Go to the fish pond, where Voi Bọt is swishing his trunk in the water looking for toy submarines",
+        "lines": [
+          "Pff pff! I'm Voi Bọt, I look after the farm's fish pond. The children's four toy submarines have sunk out of sight, and however much I swish my trunk, none of them will come up!",
+          "No need to swish! Just work out the sum on each submarine and you'll know which one surfaces first. {name}, do you want to work them all out and then order them, or compare them two at a time?"
+        ],
+        "choices": [
+          {
+            "text": "Work them all out, then order them",
+            "reply": "Voi Bọt sprays a fountain into the sky: As sure as fish swim in a pond!"
+          },
+          {
+            "text": "Compare two submarines at a time",
+            "reply": "Khỉ Ổi: That works too, as long as the order is right at the end."
+          }
+        ]
+      }
     },
     {
       "id": "doi-cho-so-hang",
@@ -1373,14 +1426,22 @@
       "title": "Còi bác tài xe kéo",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Đoàn xe kéo chở đầy rau củ chạy một vòng quanh nông trại, kéo theo cả đàn kiến, đàn cừu và Voi Bọt. Khỉ Ổi trao cho {name} chiếc còi \"Bác tài nhớ một\" kêu bim bim."
+      "text": "Đoàn xe kéo chở đầy rau củ chạy một vòng quanh nông trại, kéo theo cả đàn kiến, đàn cừu và Voi Bọt. Khỉ Ổi trao cho {name} chiếc còi \"Bác tài nhớ một\" kêu bim bim.",
+      "en": {
+        "title": "The cart driver's horn",
+        "text": "The cart train, loaded with vegetables, does a lap of the farm, with the ants, the sheep and Voi Bọt all following along. Khỉ Ổi gives {name} the \"Carry-One Driver\" horn that goes beep beep."
+      }
     },
     {
       "id": "hop-qua-bi-mat",
       "title": "Hộp quà khóa bằng phép tính",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cáo Mía thò đầu ra từ sân trước kho thóc: \"Tớ làm xong một hộp quà bí mật cho hội mùa, nhưng ổ khóa chỉ mở khi giải đúng phép tính. Ai dám thử nào?\""
+      "text": "Cáo Mía thò đầu ra từ sân trước kho thóc: \"Tớ làm xong một hộp quà bí mật cho hội mùa, nhưng ổ khóa chỉ mở khi giải đúng phép tính. Ai dám thử nào?\"",
+      "en": {
+        "title": "A gift box locked with a sum",
+        "text": "Cáo Mía pokes his head out from the yard in front of the granary: \"I've made a secret gift box for the harvest festival, but the lock only opens if you get the sum right. Who dares to try?\""
+      }
     }
   ],
   "reward": {

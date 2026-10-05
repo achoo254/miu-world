@@ -64,7 +64,26 @@
           "text": "Bê Phính ăn bánh mà không mời à?",
           "reply": "Bê Phính phủi vụn bánh trên mõm: Hì, còn đúng một miếng, tớ để dành cho cậu!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Mèo Tam Thể sighs",
+        "goTo": "Go to the display case on the storehouse porch, where Mèo Tam Thể is polishing the glass",
+        "lines": [
+          "Hello {name}. I've polished the glass three times and still haven't put a single toy away, because the shelf numbers jump all over the place.",
+          "That's my fault! I stuck the shelf numbers on while... munching a rice cake, so I stuck them all backwards. And the toys Uncle Sáu carved have rolled all over the porch.",
+          "Never mind, let's stay calm and do one thing at a time. Breathe steadily, a calico cat never hurries."
+        ],
+        "choices": [
+          {
+            "text": "Let's gather the toys first!",
+            "reply": "Mèo Tam Thể nods slowly: That's the right order, just like arranging the case."
+          },
+          {
+            "text": "Bê Phính, eating cake and not sharing?",
+            "reply": "Bê Phính brushes crumbs off her muzzle: Hee, there's exactly one piece left, I saved it for you!"
+          }
+        ]
+      }
     },
     {
       "id": "gom-do-choi",
@@ -102,7 +121,22 @@
           "reply": "Mèo Tam Thể đỡ Bê Phính dậy: Thấy chưa, vội là ngã ngay."
         }
       ],
-      "goTo": "Ôm đồ chơi về tủ kính ở hiên kho, Mèo Tam Thể đang chờ ôn bài"
+      "goTo": "Ôm đồ chơi về tủ kính ở hiên kho, Mèo Tam Thể đang chờ ôn bài",
+      "en": {
+        "title": "Review before arranging",
+        "goTo": "Carry the toys back to the display case on the storehouse porch, where Mèo Tam Thể is waiting to review",
+        "lines": [
+          "Each shelf has a sum on it. Taking away with borrowing: if the ones aren't enough, borrow a ten, then add the carried 1 to the tens.",
+          "For a long sum, just work from left to right, one step at a time, like a cat walking along the top of a wall.",
+          "Like a cat walking along a wall... and me, I walk on banana peels. Whoops!"
+        ],
+        "choices": [
+          {
+            "text": "One step at a time, got it!",
+            "reply": "Mèo Tam Thể helps Bê Phính up: See? Rush and down you go."
+          }
+        ]
+      }
     },
     {
       "id": "ngan-tu-dat-tinh",
@@ -575,7 +609,26 @@
           "reply": "Bê Phính nhảy cẫng lên, suýt húc đổ cả băng chuyền."
         }
       ],
-      "goTo": "Ra băng chuyền đóng bao, Bê Phính ôm khư khư chiếc con quay, Mèo Tam Thể theo sau"
+      "goTo": "Ra băng chuyền đóng bao, Bê Phính ôm khư khư chiếc con quay, Mèo Tam Thể theo sau",
+      "en": {
+        "title": "Which shelf for the spinning top?",
+        "goTo": "Go to the bagging conveyor, where Bê Phính is clutching a spinning top, with Mèo Tam Thể close behind",
+        "lines": [
+          "There's still the spinning top and a few small things. I'd like the top on the middle shelf, but Bê Phính keeps insisting on the top shelf.",
+          "The top shelf, so it looks grand! A top that spins so fast has to stand up highest.",
+          "{name}, you decide. But first let's finish the last review puzzles."
+        ],
+        "choices": [
+          {
+            "text": "The middle shelf, easy to admire",
+            "reply": "Mèo Tam Thể gives a soft little meow, looking very pleased."
+          },
+          {
+            "text": "The top shelf, so it looks grand",
+            "reply": "Bê Phính jumps for joy and nearly knocks over the conveyor belt."
+          }
+        ]
+      }
     },
     {
       "id": "tinh-day-phep-tinh",
@@ -887,14 +940,22 @@
       "title": "Tủ kính lung linh",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tủ kính sáng đèn, món nào cũng đúng ngăn. Mèo Tam Thể tặng {name} chiếc con quay nhỏ sơn ba màu loang lổ như bộ lông của mình, còn Bê Phính mang ra miếng bánh để dành… đã bị chính Bê Phính cắn mất một nửa."
+      "text": "Tủ kính sáng đèn, món nào cũng đúng ngăn. Mèo Tam Thể tặng {name} chiếc con quay nhỏ sơn ba màu loang lổ như bộ lông của mình, còn Bê Phính mang ra miếng bánh để dành… đã bị chính Bê Phính cắn mất một nửa.",
+      "en": {
+        "title": "The sparkling display case",
+        "text": "The display case lights up, with every toy on the right shelf. Mèo Tam Thể gives {name} a little spinning top painted in three patchy colours like her own fur, and Bê Phính brings out the saved piece of cake... which Bê Phính has already bitten in half."
+      }
     },
     {
       "id": "chom-sao-cua-huou",
       "title": "Những chấm sao trên giá vẽ",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ phòng vẽ của Lâu đài, Hươu Cao thò cái cổ dài qua ô cửa sổ kính màu: \"Tớ chấm đầy sao lên giá vẽ lớn rồi mà chưa nối được thành chòm sao nào cả!\""
+      "text": "Từ phòng vẽ của Lâu đài, Hươu Cao thò cái cổ dài qua ô cửa sổ kính màu: \"Tớ chấm đầy sao lên giá vẽ lớn rồi mà chưa nối được thành chòm sao nào cả!\"",
+      "en": {
+        "title": "Star dots on the easel",
+        "text": "From the Castle's painting room, Hươu Cao pokes her long neck through the stained-glass window: \"I've dotted stars all over the big easel, but I haven't managed to join them into a single constellation!\""
+      }
     }
   ],
   "reward": {

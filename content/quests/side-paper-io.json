@@ -46,7 +46,19 @@
         {
           "text": "Tớ mở rộng bãi cỏ ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The animal pens are a bit cramped, {name}. Let's claim some new grassland!",
+          "Drive the tractor in a closed loop back home, and don't let the buffalo cut your trail."
+        ],
+        "choices": [
+          {
+            "text": "I'll widen the pasture now!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Khoanh thêm được năm mươi phần trăm cánh đồng cỏ xanh nhé!",
       "game": "paper-io",
-      "goal": 50
+      "goal": 50,
+      "en": {
+        "title": "Plough and Claim",
+        "prompt": "Claim 50 percent of the green meadow!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chú Chuột Túi Nhảy reo vang, vui mừng vì {name} đã mở được bãi cỏ mênh mông tuyệt đẹp!"
+      "text": "Chú Chuột Túi Nhảy reo vang, vui mừng vì {name} đã mở được bãi cỏ mênh mông tuyệt đẹp!",
+      "en": {
+        "title": "Reward",
+        "text": "Chú Chuột Túi Nhảy cheers, delighted that {name} opened up a huge, beautiful pasture!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bầy thú tha hồ tung tăng gặm cỏ, rảnh rỗi cậu cứ qua khu chăn nuôi dạo chơi nhé."
+      "text": "Bầy thú tha hồ tung tăng gặm cỏ, rảnh rỗi cậu cứ qua khu chăn nuôi dạo chơi nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The animals can graze freely now. Stroll over to the animal yard whenever you like."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Claim Land for the Pens with Chú Chuột Túi",
+    "summary": "Drive the tractor to draw wide loops across the grass and make the pens bigger for the animals."
   }
 }

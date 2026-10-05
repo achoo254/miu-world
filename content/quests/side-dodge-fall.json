@@ -46,7 +46,19 @@
         {
           "text": "Tớ né nhanh lắm, xem đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Careful, {name}! The wind is shaking the trees and pine cones are falling everywhere!",
+          "A round shadow on the ground means something is about to fall. Dodge it and grab the stars for me."
+        ],
+        "choices": [
+          {
+            "text": "I'm super quick, watch this!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nhặt mười ngôi sao mà không bị quả rơi trúng ba lần nhé!",
       "game": "dodge-fall",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Dodge the falling fruit",
+        "prompt": "Grab 10 stars without getting hit three times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Vẹt Mỏ Cong nghiêng đầu khen: mắt {name} tinh, chân {name} nhanh ghê!"
+      "text": "Vẹt Mỏ Cong nghiêng đầu khen: mắt {name} tinh, chân {name} nhanh ghê!",
+      "en": {
+        "title": "Reward",
+        "text": "Vẹt Mỏ Cong tilts its head in praise: {name} has sharp eyes and quick feet!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Hôm nào gió to, Vẹt Mỏ Cong lại rủ cậu ra lối mòn né quả nhé."
+      "text": "Hôm nào gió to, Vẹt Mỏ Cong lại rủ cậu ra lối mòn né quả nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "On the next windy day, Vẹt Mỏ Cong will invite you back to the trail to dodge some more."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Dodge the falling pine cones with Vẹt Mỏ Cong",
+    "summary": "The wind shakes the trees and pine cones and coconuts thud down: watch the shadows, dodge and grab the stars."
   }
 }

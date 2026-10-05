@@ -10,5 +10,13 @@
   "controls": ["tap", "drag"],
   "duration": 90,
   "goal": 8,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Decorate to order",
+    "howTo": [
+      "A customer orders a cake: so many of each topping. {name}, tap a box (or drag) to add it to the cake.",
+      "Too many? Tap a topping on the cake to take it off.",
+      "Get every count exactly right to deliver the cake and earn a point."
+    ]
+  }
 }

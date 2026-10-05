@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Light the windows",
+    "howTo": [
+      "Tap a window: it and the windows just above, below, left and right switch between lit and dark.",
+      "{name}, light up every window in the castle!",
+      "All muddled up? Tap Restart. Wait a bit and a star hint appears."
+    ]
+  }
 }

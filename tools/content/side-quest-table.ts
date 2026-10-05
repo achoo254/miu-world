@@ -58,6 +58,16 @@ const SideGame = z.strictObject({
   /** Seven questions: the child's role, and what the game trains. */
   who: z.string().min(4).max(80),
   learn: z.string().min(4).max(80),
+  /** The same lines in English, for the bilingual display (the prompt with `{goal}` too). */
+  en: z.strictObject({
+    title: Line,
+    summary: Line,
+    lines: z.tuple([Line, Line]),
+    choice: z.string().min(2).max(60),
+    prompt: Line.refine((p) => p.includes('{goal}'), { message: 'the English prompt says the goal too: put {goal} where the number goes' }),
+    reward: Line,
+    next: Line,
+  }),
 });
 export type SideGame = z.infer<typeof SideGame>;
 

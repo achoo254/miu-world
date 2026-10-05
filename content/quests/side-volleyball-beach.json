@@ -46,7 +46,19 @@
         {
           "text": "Tớ đỡ bóng dũng mãnh lắm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The waves are so cool and splashy, {name}! Come play volleyball on the sand with me!",
+          "Watch the landing circle, then tap just as the ball drops over your head to spike it."
+        ],
+        "choices": [
+          {
+            "text": "I'm a fearless defender!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ghi được năm điểm trong trận bóng chuyền bãi cát nhé!",
       "game": "volleyball-beach",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Beach Volleyball",
+        "prompt": "Score 5 points in the beach volleyball match!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hải Cẩu đập hai vây bồm bộp: những pha đập bóng của {name} hiểm hóc quá chừng!"
+      "text": "Hải Cẩu đập hai vây bồm bộp: những pha đập bóng của {name} hiểm hóc quá chừng!",
+      "en": {
+        "title": "Reward",
+        "text": "Hải Cẩu slaps both flippers: {name}'s spikes are so tricky!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Nắng vàng trên biển còn rực rỡ, Hải Cẩu chờ {name} quay lại giao lưu bóng chuyền."
+      "text": "Nắng vàng trên biển còn rực rỡ, Hải Cẩu chờ {name} quay lại giao lưu bóng chuyền.",
+      "en": {
+        "title": "See you soon",
+        "text": "The sun is still shining on the sea. Hải Cẩu is waiting for {name} to come back for a game."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Beach volleyball with Hải Cẩu Bóng Chuyền",
+    "summary": "The ball sails over the net: run to where it lands and jump to spike it into the other court."
   }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Tớ đứng im như tượng luôn!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, our class is playing red light, green light on this paddy bank!",
+          "Hold to walk, let go to stop. If the red ring shows and you are still moving, you go back three steps."
+        ],
+        "choices": [
+          {
+            "text": "I will freeze like a statue!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Bước tới vạch đích với hai mươi lăm điểm nhé!",
       "game": "red-light",
-      "goal": 25
+      "goal": 25,
+      "en": {
+        "title": "Red Light, Green Light",
+        "prompt": "Reach the finish line with 25 points!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mèo Lớp Trưởng ghi tên {name} lên bảng khen: bước khéo, dừng giỏi!"
+      "text": "Mèo Lớp Trưởng ghi tên {name} lên bảng khen: bước khéo, dừng giỏi!",
+      "en": {
+        "title": "Reward",
+        "text": "Mèo Lớp Trưởng writes {name} on the praise board: smart steps, perfect stops!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chiều nào lớp cũng chơi ở bờ ruộng, Mèo Lớp Trưởng chờ cậu đó."
+      "text": "Chiều nào lớp cũng chơi ở bờ ruộng, Mèo Lớp Trưởng chờ cậu đó.",
+      "en": {
+        "title": "See you soon",
+        "text": "The class plays on the paddy bank every afternoon, and Mèo Lớp Trưởng is waiting for you."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Red light, green light with Mèo Lớp Trưởng",
+    "summary": "On the paddy bank, a teddy bear turns away to count: hold to step toward the line, and freeze when it turns back."
   }
 }

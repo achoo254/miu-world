@@ -65,7 +65,26 @@
           "text": "Cáo Lém nghịch quá đi!",
           "reply": "Chíp dậm chân: Nghịch thật! Nhưng tớ thấy Cáo Lém chỉ chạy vòng quanh sân thôi."
         }
-      ]
+      ],
+      "en": {
+        "title": "Chíp is lost on the hopscotch",
+        "goTo": "Go to the hopscotch court, where Gà Con Chíp is hopping all over the place",
+        "lines": [
+          "{name}, help me! I meant to hop into square 4, but I landed right on square 9 and nearly hopped into a flowerpot!",
+          "It's because the numbers on the lines have vanished. I'm a little chick, not a fortune teller, so how can I guess?",
+          "And Cáo Lém ran off with three sticks of chalk, shouting back: whoever finds them gets the numbers back!"
+        ],
+        "choices": [
+          {
+            "text": "I'll go find the chalk!",
+            "reply": "Chíp flaps her wings like mad: Hurry, or I'll hopscotch all the way to the canteen!"
+          },
+          {
+            "text": "That Cáo Lém is so naughty!",
+            "reply": "Chíp stamps her foot: So naughty! But I saw Cáo Lém just running in circles around the yard."
+          }
+        ]
+      }
     },
     {
       "id": "tim-phan",
@@ -102,7 +121,21 @@
           "text": "Tớ hiểu rồi, kẻ số thôi!",
           "reply": "Chíp đưa cục phấn trắng: Cậu kẻ, tớ đứng canh không cho Cáo Lém xóa nữa."
         }
-      ]
+      ],
+      "en": {
+        "title": "What is a number line?",
+        "lines": [
+          "That's all the chalk! This hopscotch path has a proper name: a number line. Zero stands at the start, and each mark is 1 more.",
+          "The number right before another one is called the number just before; it's 1 less. The number right after is called the number just after; it's 1 more.",
+          "For example: just before 10 is 9, just after 10 is 11. Easy as pecking a grain of rice!"
+        ],
+        "choices": [
+          {
+            "text": "Got it, let's write the numbers!",
+            "reply": "Chíp hands over the white chalk: You write, and I'll stand guard so Cáo Lém can't rub them out again."
+          }
+        ]
+      }
     },
     {
       "id": "tia-so-hai-doan",
@@ -758,7 +791,26 @@
           "text": "Nhìn toa bên cạnh rồi thêm, bớt 1",
           "reply": "Gấu Bin: Nhanh như tàu tốc hành luôn!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Gấu Bin's train",
+        "goTo": "Go to the classroom steps, where Gấu Bin is pulling a toy train",
+        "lines": [
+          "Choo choo, chugga chugga! This train has carriages 48 to 53, but I... forgot which carriage goes after which.",
+          "Maybe Cáo Lém unhooked the carriages to tease you again?",
+          "Probably! {name}, do you want to check from the engine, or look at the next carriage and work it out?"
+        ],
+        "choices": [
+          {
+            "text": "Check from the engine, counting each carriage",
+            "reply": "Gấu Bin: That's a sure way, each carriage adds 1."
+          },
+          {
+            "text": "Look at the next carriage, then add or take away 1",
+            "reply": "Gấu Bin: Fast as an express train!"
+          }
+        ]
+      }
     },
     {
       "id": "toa-lien-truoc-lien-sau",
@@ -1163,14 +1215,22 @@
       "title": "Huy hiệu lò cò",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gà Con Chíp nhảy một mạch từ 0 tới 20 không lạc ô nào, rồi gắn cho {name} huy hiệu \"Trọng tài tia số\". Cáo Lém trả nốt cục phấn cuối cùng, mặt hơi tiếc."
+      "text": "Gà Con Chíp nhảy một mạch từ 0 tới 20 không lạc ô nào, rồi gắn cho {name} huy hiệu \"Trọng tài tia số\". Cáo Lém trả nốt cục phấn cuối cùng, mặt hơi tiếc.",
+      "en": {
+        "title": "Hopscotch badge",
+        "text": "Gà Con Chíp hops all the way from 0 to 20 without missing a single square, then pins the \"Number Line Referee\" badge on {name}. Cáo Lém hands back the last stick of chalk, looking a little sorry to part with it."
+      }
     },
     {
       "id": "bien-ten-gio-gio",
       "title": "Tấm biển bay lung tung",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mèo Mun chạy tới, tay ôm một xấp biển tên: \"Số hạng\", \"Tổng\", \"Hiệu\"… gió thổi lẫn hết lên bảng tin rồi, ai giúp tớ với!"
+      "text": "Mèo Mun chạy tới, tay ôm một xấp biển tên: \"Số hạng\", \"Tổng\", \"Hiệu\"… gió thổi lẫn hết lên bảng tin rồi, ai giúp tớ với!",
+      "en": {
+        "title": "Signs flying everywhere",
+        "text": "Mèo Mun runs over holding a stack of name signs: \"Số hạng\", \"Tổng\", \"Hiệu\"... the wind has mixed them all up on the notice board. Can someone help me?"
+      }
     }
   ],
   "reward": {

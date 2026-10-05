@@ -46,7 +46,19 @@
         {
           "text": "Cháu nhớ kỹ rồi cô ạ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The village festival has started! Come play pot-smashing with me, {name}!",
+          "Remember exactly where the pot hangs, because soon you'll be blindfolded."
+        ],
+        "choices": [
+          {
+            "text": "I've got it memorised!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đập vỡ bốn cái niêu nhé!",
       "game": "dap-nieu",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Đập niêu (smash the pot)",
+        "prompt": "Smash 4 clay pots!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bốp! Niêu vỡ tung kẹo, {name} tài quá!"
+      "text": "Bốp! Niêu vỡ tung kẹo, {name} tài quá!",
+      "en": {
+        "title": "Reward",
+        "text": "Crack! The pot bursts and sweets fly out! {name} is amazing!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Năm nào hội làng cũng có đập niêu, cô vẫn đứng ở quảng trường chờ cháu."
+      "text": "Năm nào hội làng cũng có đập niêu, cô vẫn đứng ở quảng trường chờ cháu.",
+      "en": {
+        "title": "See you soon",
+        "text": "There's pot-smashing at the festival every year. I'll be in the village square waiting for you."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Smash the clay pot with Cô Hội Làng",
+    "summary": "Look carefully at where the clay pots hang, then, blindfolded, feel your way there and smash one."
   }
 }

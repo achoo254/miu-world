@@ -87,7 +87,27 @@
           "text": "Diều đang ngắm mây thật hả Vẹt Xanh?",
           "reply": "Vẹt Xanh nói quá đấy! Nhưng nhanh lên, kẻo diều ngủ quên trên ngọn cây mất."
         }
-      ]
+      ],
+      "en": {
+        "title": "A kite stuck in the kapok tree",
+        "goTo": "Climb the windy hill, Khỉ Lanh is bouncing and waving",
+        "lines": [
+          "{name}! One – two – three – let go! I'd just launched my kite when… whoosh, it shot straight into the top of the kapok tree!",
+          "I'm the best branch-swinger in the forest, but this kapok is so tall that three swings still don't get me there.",
+          "Kite in a tree! Kite in a tree! It's sitting up top watching the clouds all by itself!",
+          "The reel of string and the kite flute dropped down the hillside too. Will you help me rescue my kite?"
+        ],
+        "choices": [
+          {
+            "text": "I'll help! You count the beat, Khỉ Lanh, I'll go find the things.",
+            "reply": "Awesome! One – two – three – go! Remember to pick up both the reel and the bamboo flute."
+          },
+          {
+            "text": "Is the kite really cloud-watching, Vẹt Xanh?",
+            "reply": "Vẹt Xanh is exaggerating! But hurry, before the kite dozes off up there."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-do-cua-dieu",
@@ -547,7 +567,30 @@
           "text": "Nhờ Vẹt Xanh bay lên gỡ chỗ dây bị vướng.",
           "reply": "Vẹt Xanh mổ lách tách, sợi dây tuột ra, diều chao một vòng rồi bay vút!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Freeing the kite from the kapok",
+        "goTo": "Go to the foot of the tall kapok tree, the kite is still stuck at the top",
+        "lines": [
+          "We've got the string and the flute. Now how do we free the kite? I'm ready to count: one – two…",
+          "Don't swing up to the top! Don't swing! Those kapok branches are as brittle as rice crackers!",
+          "You choose how, {name}, and I'll do what you say!"
+        ],
+        "choices": [
+          {
+            "text": "Khỉ Lanh tugs the string gently in time, so the wind lifts the kite.",
+            "reply": "One – two – three – tug! Look, the wind is lifting the kite clear of the branches!"
+          },
+          {
+            "text": "Wait for a big gust and then both pull together.",
+            "reply": "Whoosh… here comes the wind! Pull! The kite slips off the branch, light as a leaf."
+          },
+          {
+            "text": "Ask Vẹt Xanh to fly up and untangle the string.",
+            "reply": "Vẹt Xanh pecks peck-peck, the string comes loose, and the kite swoops round once and soars!"
+          }
+        ]
+      }
     },
     {
       "id": "co-duoi-dieu",
@@ -711,7 +754,22 @@
           "text": "Cho mình cầm dây diều một lúc được không?",
           "reply": "Được chứ! Cầm chắc nhé, gió đồi kéo mạnh như chơi kéo co đấy!"
         }
-      ]
+      ],
+      "en": {
+        "title": "The kite flies high again",
+        "goTo": "Go to the most open spot on the windy hill to fly the kite",
+        "lines": [
+          "One – two – three – let go! It's up, higher than the kapok tree!",
+          "The flute is singing so clear! So clear! Just like in the poem!",
+          "Next time I'll fly my kite somewhere open, far from tall trees. Thank you, {name}!"
+        ],
+        "choices": [
+          {
+            "text": "Can I hold the kite string for a bit?",
+            "reply": "Of course! Hold on tight, the hill wind pulls like a game of tug-of-war!"
+          }
+        ]
+      }
     },
     {
       "id": "phieu-viet-bai-21",
@@ -731,14 +789,22 @@
       "title": "Con diều tí hon",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khỉ Lanh tặng {name} một con diều giấy tí hon gắn cây sáo bằng ống sậy: gió thổi qua là kêu u… u… trong veo."
+      "text": "Khỉ Lanh tặng {name} một con diều giấy tí hon gắn cây sáo bằng ống sậy: gió thổi qua là kêu u… u… trong veo.",
+      "en": {
+        "title": "The tiny kite",
+        "text": "Khỉ Lanh gives {name} a tiny paper kite with a reed flute attached: when the wind blows through it, it sings ooo… ooo… sweet and clear."
+      }
     },
     {
       "id": "mo-bai-22",
       "title": "Tiếng oạch dưới chân đồi",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ xưởng đồ chơi gỗ dưới chân đồi vọng lên một tiếng \"Oạch!\" rõ to, rồi tiếng khối gỗ đổ lộp cộp. Lợn Rừng Đốm lại làm sao thế nhỉ?"
+      "text": "Từ xưởng đồ chơi gỗ dưới chân đồi vọng lên một tiếng \"Oạch!\" rõ to, rồi tiếng khối gỗ đổ lộp cộp. Lợn Rừng Đốm lại làm sao thế nhỉ?",
+      "en": {
+        "title": "A thud at the foot of the hill",
+        "text": "From the wooden toy workshop at the foot of the hill comes a loud “Whoops!”, then the clatter of tumbling blocks. What's happened to Lợn Rừng Đốm this time?"
+      }
     }
   ],
   "reward": {

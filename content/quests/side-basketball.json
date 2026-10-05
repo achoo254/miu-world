@@ -46,7 +46,19 @@
         {
           "text": "Xem tớ ném trúng rổ này!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hi {name}! My neck is long, so I hung the hoop a little higher.",
+          "Swipe the ball toward the hoop; a long swipe sends it far. Sink three and the hoop starts moving."
+        ],
+        "choices": [
+          {
+            "text": "Watch me score!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ném vào rổ mười lăm quả nhé!",
       "game": "basketball",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Basketball shots",
+        "prompt": "Sink 15 baskets!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hươu Bóng Rổ cúi cổ đập tay với {name}: ném chuẩn quá!"
+      "text": "Hươu Bóng Rổ cúi cổ đập tay với {name}: ném chuẩn quá!",
+      "en": {
+        "title": "Reward",
+        "text": "Hươu Bóng Rổ bends down for a high five with {name}: what an accurate shot!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Sân bóng rổ lúc nào cũng mở, ghé chơi với Hươu Bóng Rổ nhé."
+      "text": "Sân bóng rổ lúc nào cũng mở, ghé chơi với Hươu Bóng Rổ nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The basketball court is always open, so come play with Hươu Bóng Rổ."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Shooting hoops with Hươu Bóng Rổ",
+    "summary": "The hoop hangs on a tall pole: a long swipe throws hard, a short swipe throws soft, and the hoop even slides about."
   }
 }

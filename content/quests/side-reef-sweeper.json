@@ -46,7 +46,19 @@
         {
           "text": "Cháu cắm cờ cẩn thận từng hòn đá!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The reef by my tent is full of dangerous rocks, {name}. Check the channel for me!",
+          "Tap the sand to see how many rocks are nearby. Where a rock is certain, plant a flag."
+        ],
+        "choices": [
+          {
+            "text": "I'll flag every rock carefully!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Dò sạch đá ngầm an toàn qua ba bãi san hô ven bờ nhé!",
       "game": "reef-sweeper",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Hidden Reef Finder",
+        "prompt": "Clear the hidden rocks from 3 reefs along the shore!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thuyền Trưởng Vẹt Biển vỗ vai khen: nhờ {name} mà thuyền của ta cập bờ êm ru!"
+      "text": "Thuyền Trưởng Vẹt Biển vỗ vai khen: nhờ {name} mà thuyền của ta cập bờ êm ru!",
+      "en": {
+        "title": "Reward",
+        "text": "Captain Vẹt Biển pats your shoulder: thanks to {name}, my ship docked smooth as silk!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Thủy triều xuống để lộ bãi đá mới, thuyền trưởng chờ {name} ra rạn san hô rà soát."
+      "text": "Thủy triều xuống để lộ bãi đá mới, thuyền trưởng chờ {name} ra rạn san hô rà soát.",
+      "en": {
+        "title": "See you soon",
+        "text": "Low tide shows new rocks. The captain is waiting for {name} out at the reef."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Chart the coral reef with Thuyền Trưởng Vẹt Biển",
+    "summary": "The shallows hide sharp rocks: use the number clues to plant warning flags and keep boats safe."
   }
 }

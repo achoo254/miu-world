@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 15,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Feed every chick",
+    "howTo": [
+      "{name}, tap the yard to toss a handful of grain right there.",
+      "Mother hen eats really fast: toss grain near the chicks and far from her!",
+      "A chick that eats five grains is full and goes off to sleep."
+    ]
+  }
 }

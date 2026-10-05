@@ -10,5 +10,13 @@
   "controls": ["tap", "swipe"],
   "duration": 45,
   "goal": 30,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Obstacle Run",
+    "howTo": [
+      "{name} runs forward along the trail all by themselves.",
+      "Tap to jump over rocks and logs, swipe down to duck under branches.",
+      "Collect lots of stars. Three bumps and your turn is over!"
+    ]
+  }
 }

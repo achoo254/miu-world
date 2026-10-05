@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 4,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Music Box",
+    "howTo": [
+      "Listen to the music box play a tune; a pin lights up for each note.",
+      "Tap a square on the drum to put in a pin, one pin per column. High notes go at the top.",
+      "Tap Spin to try it, and fix wrong columns until it matches. Forgot the tune? Tap Listen."
+    ]
+  }
 }

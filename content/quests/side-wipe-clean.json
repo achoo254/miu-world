@@ -46,7 +46,19 @@
         {
           "text": "Đưa khăn đây, tớ lau cho!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The rain got all the toys in the yard muddy, {name}!",
+          "Soap first, rinse next, and finally dry them with a towel."
+        ],
+        "choices": [
+          {
+            "text": "Pass me the towel, I'll wipe!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Lau sạch bóng sáu món đồ nhé!",
       "game": "wipe-clean",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Squeaky Clean",
+        "prompt": "Wipe 6 things sparkling clean!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Bánh Ngọt soi bóng mình trong cái xô: {name} lau sạch như mới!"
+      "text": "Gấu Bánh Ngọt soi bóng mình trong cái xô: {name} lau sạch như mới!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Bánh Ngọt sees his reflection in the bucket: {name} cleaned it like new!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Sân nhà lúc nào cũng có đồ cần lau, Gấu nhờ {name} lần sau nhé."
+      "text": "Sân nhà lúc nào cũng có đồ cần lau, Gấu nhờ {name} lần sau nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The yard always has something to clean. Gấu will ask {name} next time."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Clean the Muddy Toys with Gấu Bánh Ngọt",
+    "summary": "After the rain the toys are muddy; scrub with soap, rinse, then dry each one until it shines."
   }
 }

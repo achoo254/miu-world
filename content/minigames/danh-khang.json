@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 100,
-  "params": { "turns": 6 }
+  "params": { "turns": 6 },
+  "en": {
+    "name": "Đánh khăng (stick tip-cat)",
+    "howTo": [
+      "Tap once to flick the short stick up.",
+      "Tap again right when it's highest to whack it far. {name} has six turns!",
+      "Miss it and that turn scores no metres."
+    ]
+  }
 }

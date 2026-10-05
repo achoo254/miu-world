@@ -10,5 +10,13 @@
   "controls": ["swipe", "tap"],
   "duration": 60,
   "goal": 20,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Greedy crocodile",
+    "howTo": [
+      "The crocodile always eats the plate with more. {name}, swipe the croc toward that plate.",
+      "If both plates are equal, swipe down or tap the equals button.",
+      "Guess wildly and the croc yawns off to sleep, so you wait longer!"
+    ]
+  }
 }

@@ -9,5 +9,12 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 10,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Scratch and Guess",
+    "howTo": [
+      "Rub your finger on the card to scratch off the snow or sand and slowly reveal an animal.",
+      "When {name} knows it, tap that animal's picture. Guess right with little scratched for two points!"
+    ]
+  }
 }

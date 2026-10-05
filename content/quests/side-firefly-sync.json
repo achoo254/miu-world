@@ -46,7 +46,19 @@
         {
           "text": "Nháy sáng lung linh, đom đóm bay theo nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The leaves are twinkling with fireflies, {name}, like a thousand stars!",
+          "Watch the ring shrink, then tap so your lantern flashes in time with the fireflies."
+        ],
+        "choices": [
+          {
+            "text": "Flash and twinkle, fireflies follow me!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chạm đèn nháy đồng nhịp hai mươi lần cùng đom đóm nhé!",
       "game": "firefly-sync",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Fireflies in sync",
+        "prompt": "Flash the lantern in time with the fireflies 20 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Họa Mi Rừng Xanh xòe cánh reo vui: {name} bắt nhịp chuẩn xác, đàn đom đóm vây quanh sáng rực!"
+      "text": "Họa Mi Rừng Xanh xòe cánh reo vui: {name} bắt nhịp chuẩn xác, đàn đom đóm vây quanh sáng rực!",
+      "en": {
+        "title": "Reward",
+        "text": "Họa Mi Rừng Xanh spreads its wings: {name} kept the beat, and the fireflies glow all around!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đêm nào đom đóm cũng mở hội hoa đăng, {name} hãy đến vòm lá xanh hòa nhịp cùng rừng nhé."
+      "text": "Đêm nào đom đóm cũng mở hội hoa đăng, {name} hãy đến vòm lá xanh hòa nhịp cùng rừng nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The fireflies hold a lantern festival every night. Come to the green canopy and keep time with the forest, {name}."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Flash in time with the fireflies with Họa Mi Rừng Xanh",
+    "summary": "Night falls and a thousand fireflies blink in rhythm: tap the lantern just as they light up."
   }
 }

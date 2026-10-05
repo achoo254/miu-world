@@ -75,7 +75,27 @@
           "text": "Thầy chỉ đường cho con với ạ!",
           "reply": "Thầy Sư Tử Vàng chỉ tay về bờ rào: đi thẳng qua cầu trượt rồi rẽ phải, nhớ đừng giẫm vào luống hoa nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Cáo Cọ wringing out her tail",
+        "goTo": "Go to the painting corner on the art-room porch, Cáo Cọ is wiping her paint-smeared tail",
+        "lines": [
+          "Eek, soaking wet! Is that you, {name}? I dipped my tail in the water pot again, I thought it was my paintbrush.",
+          "I'm painting a picture for the school art fair. The trouble is my paint box is empty, all that's left is the colour… of no colour!",
+          "I can't help with paint, all I've got is this golden mane! But the art fair this afternoon must have a picture by Cáo Cọ!",
+          "Along the fence by the playground there are ripe berries, flowers and young leaves. Will you pick some for my paints, {name}?"
+        ],
+        "choices": [
+          {
+            "text": "I'll go and find colours right now!",
+            "reply": "Thank you! Look carefully when you pass the puddle, don't dip your tail like I did."
+          },
+          {
+            "text": "Please show me the way, sir!",
+            "reply": "Sư Tử Vàng points to the fence: straight past the slide, then turn right, and don't step on the flower beds!"
+          }
+        ]
+      }
     },
     {
       "id": "tim-mau-ve",
@@ -994,7 +1014,30 @@
           "text": "Vẽ thầy hiệu trưởng đang đọc thơ",
           "reply": "Thầy Sư Tử Vàng cười khà khà, vuốt bờm thật mượt để ngồi làm mẫu."
         }
-      ]
+      ],
+      "en": {
+        "title": "Which picture for the fair?",
+        "goTo": "Back at the painting corner, Cáo Cọ has mixed all three colours",
+        "lines": [
+          "I've got all my colours: raspberry red, daisy yellow, new-leaf green. But I only have time to paint one picture before the fair.",
+          "Paint me! My mane is already yellow, it'll save paint!",
+          "Help me choose, {name}: which picture will the whole school love most?"
+        ],
+        "choices": [
+          {
+            "text": "A clear blue sea with a red sailboat",
+            "reply": "Nice! I'll dab the red sail with the tip of my tail, nice and bright."
+          },
+          {
+            "text": "The schoolyard with red flame-tree blossoms",
+            "reply": "Good idea! I'll add a cicada singing on a branch."
+          },
+          {
+            "text": "The headteacher reading a poem",
+            "reply": "Sư Tử Vàng chuckles and smooths his mane so he can sit as the model."
+          }
+        ]
+      }
     },
     {
       "id": "ke-chuyen-truong-hoc",
@@ -1030,14 +1073,22 @@
       "title": "Bức tranh nhỏ tặng bạn",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cáo Cọ tặng {name} một bức tranh nhỏ vẽ biển có thuyền buồm đỏ, góc tranh có lời phê “Đẹp lắm!” của thầy Sư Tử Vàng. Cạnh đó là một vệt cam quệt bằng chóp đuôi, chữ kí riêng của hoạ sĩ Cáo Cọ."
+      "text": "Cáo Cọ tặng {name} một bức tranh nhỏ vẽ biển có thuyền buồm đỏ, góc tranh có lời phê “Đẹp lắm!” của thầy Sư Tử Vàng. Cạnh đó là một vệt cam quệt bằng chóp đuôi, chữ kí riêng của hoạ sĩ Cáo Cọ.",
+      "en": {
+        "title": "A little painting for a friend",
+        "text": "Cáo Cọ gives {name} a little painting of the sea with a red sailboat; in the corner is Sư Tử Vàng's comment, “Excellent!”. Beside it is an orange streak swiped with a tail tip: artist Cáo Cọ's own signature."
+      }
     },
     {
       "id": "mo-bai-15",
       "title": "Tiếng rầm ở Thư viện",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ở Thư viện vừa vang lên một tiếng \"rầm\" thật to: cả một kệ sách đổ nhào, sách văng tứ tung, trang mục lục bay đâu mất. Những cuốn sách đang chờ {name} tới xếp lại đấy!"
+      "text": "Ở Thư viện vừa vang lên một tiếng \"rầm\" thật to: cả một kệ sách đổ nhào, sách văng tứ tung, trang mục lục bay đâu mất. Những cuốn sách đang chờ {name} tới xếp lại đấy!",
+      "en": {
+        "title": "A crash in the Library",
+        "text": "A huge “crash” just rang out in the Library: a whole shelf of books toppled over, books flew everywhere and the contents page blew away. The books are waiting for {name} to come and tidy them!"
+      }
     }
   ],
   "reward": {

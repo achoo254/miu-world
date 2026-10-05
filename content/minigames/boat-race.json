@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 2,
-  "params": { "rivals": 1 }
+  "params": { "rivals": 1 },
+  "en": {
+    "name": "Boat race",
+    "howTo": [
+      "{name}, tap the left and then the right side of the screen, one after the other, to pull both oars.",
+      "Row steadily with the drumbeat and the boat shoots ahead. Messy taps slow it down.",
+      "Finish first or second to win!"
+    ]
+  }
 }

@@ -9,5 +9,12 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Domino chain",
+    "howTo": [
+      "Drag along the dotted path and dominoes stand up evenly. Steer around the book piles!",
+      "Build up to the bell, then {name} taps the first domino to push it. A ringing bell scores."
+    ]
+  }
 }

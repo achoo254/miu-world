@@ -46,7 +46,19 @@
         {
           "text": "Tớ xây thành trì thật kiên cố!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The waves are about to roll in, {name}! Let's build a really strong sandcastle!",
+          "Fill the bucket to the green line, then flip it over to make a tower for the castle."
+        ],
+        "choices": [
+          {
+            "text": "I'll build a fortress!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Xây hoàn chỉnh mười hai lâu đài cát tráng lệ với các ngọn tháp cao nhé!",
       "game": "sand-castle",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Build a Sandcastle",
+        "prompt": "Build 12 grand sandcastles with tall towers!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cua Càng giơ càng vẫy mừng: lâu đài của {name} xây đẹp và vững trước ngọn sóng!"
+      "text": "Cua Càng giơ càng vẫy mừng: lâu đài của {name} xây đẹp và vững trước ngọn sóng!",
+      "en": {
+        "title": "Reward",
+        "text": "Cua Càng waves a claw: {name}'s castle is beautiful and stands firm against the waves!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bờ cát mịn màng vẫn còn nhiều chỗ trống, Cua Càng đợi {name} xây thêm thành lũy."
+      "text": "Bờ cát mịn màng vẫn còn nhiều chỗ trống, Cua Càng đợi {name} xây thêm thành lũy.",
+      "en": {
+        "title": "See you soon",
+        "text": "There's still lots of smooth sand left. Cua Càng is waiting for {name} to build more walls."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Build a sandcastle against the waves with Cua Càng Cắp Cua",
+    "summary": "Scoop wet sand up to the mark, then flip it over to build sturdy sand towers on the shore."
   }
 }

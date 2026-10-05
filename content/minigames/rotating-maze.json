@@ -9,5 +9,12 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 4,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Spinning Maze",
+    "howTo": [
+      "Drag in a circle to spin the whole maze. The marble always rolls toward the bottom of the screen.",
+      "{name}, spin it carefully so the marble rolls through the paths and out the gap to the star!"
+    ]
+  }
 }

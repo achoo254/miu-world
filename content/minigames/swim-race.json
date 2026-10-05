@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 50,
   "goal": 3,
-  "params": { "tempo": 1 }
+  "params": { "tempo": 1 },
+  "en": {
+    "name": "Swimming Race",
+    "howTo": [
+      "The yellow ring shrinks. {name} taps right as it touches the white ring to make a stroke.",
+      "Tapping wildly tires you out and slows you down. Keep a steady rhythm!",
+      "Finish first or second to win."
+    ]
+  }
 }

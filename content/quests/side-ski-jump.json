@@ -46,7 +46,19 @@
         {
           "text": "Tớ sẽ bay thật xa!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The ski ramp has fresh snow, {name}. Come fly with me!",
+          "Hold to speed down, then let go at the green line and you'll soar into the air."
+        ],
+        "choices": [
+          {
+            "text": "I'll fly really far!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Cộng ba lượt nhảy được một trăm tám mươi mét nhé!",
       "game": "ski-jump",
-      "goal": 180
+      "goal": 180,
+      "en": {
+        "title": "Ski Jump",
+        "prompt": "Jump a total of 180 metres over three tries!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cáo Tuyết xoay một vòng trên tuyết: {name} bay xa như chim đại bàng!"
+      "text": "Cáo Tuyết xoay một vòng trên tuyết: {name} bay xa như chim đại bàng!",
+      "en": {
+        "title": "Reward",
+        "text": "Cáo Tuyết spins in the snow: {name} flies as far as an eagle!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cầu nhảy luôn mở, Cáo Tuyết sẽ đứng ở chân dốc chờ {name}."
+      "text": "Cầu nhảy luôn mở, Cáo Tuyết sẽ đứng ở chân dốc chờ {name}.",
+      "en": {
+        "title": "See you soon",
+        "text": "The ramp is always open. Cáo Tuyết will wait for {name} at the foot of the slope."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Ski Jump with Cáo Tuyết Nhảy Cầu",
+    "summary": "Crouch and race down the ramp, let go at the green line to soar, then tap to land in style."
   }
 }

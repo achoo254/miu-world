@@ -46,7 +46,19 @@
         {
           "text": "Ra bến thôi, cháu chèo được!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The village boat race is on today, {name}!",
+          "You can borrow my little boat. Paddle left and right in time with the drum."
+        ],
+        "choices": [
+          {
+            "text": "To the landing! I can paddle!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Về đích trong nhóm hai thuyền đầu tiên nhé!",
       "game": "boat-race",
-      "goal": 2
+      "goal": 2,
+      "en": {
+        "title": "Boat race",
+        "prompt": "Finish among the first 2 boats!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thuyền của {name} lao vun vút, cả bến reo hò!"
+      "text": "Thuyền của {name} lao vun vút, cả bến reo hò!",
+      "en": {
+        "title": "Reward",
+        "text": "{name}'s boat shoots ahead, and the whole landing cheers!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mùa hội còn dài, thuyền con vẫn buộc ở bến chờ cháu."
+      "text": "Mùa hội còn dài, thuyền con vẫn buộc ở bến chờ cháu.",
+      "en": {
+        "title": "See you soon",
+        "text": "The festival season is long, and the little boat is still tied up waiting for you."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "River boat race with Uncle Sơn",
+    "summary": "The drums go boom, boom: paddle both sides evenly so the boat glides to the finish."
   }
 }

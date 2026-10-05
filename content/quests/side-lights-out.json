@@ -46,7 +46,19 @@
         {
           "text": "Cháu thắp sáng các ô cửa sổ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, the window lights on the castle tower are all mixed up, some on and some off.",
+          "Tap a window and the ones around it switch too. Make every window shine bright."
+        ],
+        "choices": [
+          {
+            "text": "I'll light up all the windows!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Thắp sáng toàn bộ cửa sổ cho ba tầng tháp canh nhé!",
       "game": "lights-out",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Light the windows",
+        "prompt": "Light every window on 3 watchtower floors!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ngự Lâm Quân Tháp Cao reo mừng: các ngọn đèn đã đồng loạt bừng sáng nhờ tài trí của {name}!"
+      "text": "Ngự Lâm Quân Tháp Cao reo mừng: các ngọn đèn đã đồng loạt bừng sáng nhờ tài trí của {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Ngự Lâm Quân Tháp Cao cheers: all the lamps blaze at once thanks to {name}'s clever thinking!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ánh sáng lâu đài rực rỡ trong đêm, hôm nào rảnh cháu lại ghé tháp góc thành thử sức."
+      "text": "Ánh sáng lâu đài rực rỡ trong đêm, hôm nào rảnh cháu lại ghé tháp góc thành thử sức.",
+      "en": {
+        "title": "See you soon",
+        "text": "The castle glows bright at night. Come test yourself at the corner tower whenever you're free."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Watchtower Windows with Ngự Lâm Quân Tháp Cao",
+    "summary": "The watchtower windows flicker light and dark; work out which to tap so every window is lit."
   }
 }

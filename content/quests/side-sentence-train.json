@@ -46,7 +46,19 @@
         {
           "text": "Toa tàu nối đuôi, câu văn trọn vẹn!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Oh {name}, the word train is about to leave from the trading market.",
+          "Look at the picture, then tap the word carriages in sentence order so the train can roll out."
+        ],
+        "choices": [
+          {
+            "text": "Carriages linked, sentence complete!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ghép đúng thứ tự cho tám đoàn tàu câu nhé!",
       "game": "sentence-train",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Sentence Train",
+        "prompt": "Put 8 sentence trains in the right order!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chú Đố Chữ Quang tấm tắc khen ngợi: {name} ghép câu rành mạch, đoàn tàu tu tu hú còi chạy rồi!"
+      "text": "Chú Đố Chữ Quang tấm tắc khen ngợi: {name} ghép câu rành mạch, đoàn tàu tu tu hú còi chạy rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Chú Đố Chữ Quang is impressed: {name} builds clear sentences, and the train toots away!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Còn nhiều câu văn hay trong kho sách, cháu {name} nhớ ghé chợ giao dịch ghép tàu tiếp nha."
+      "text": "Còn nhiều câu văn hay trong kho sách, cháu {name} nhớ ghé chợ giao dịch ghép tàu tiếp nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "There are many more fine sentences in the book store, {name}, so come build trains at the market."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Sentence train with Chú Đố Chữ Quang",
+    "summary": "A train hauls carriages of loose words: look at the picture and line the words up into a full sentence."
   }
 }

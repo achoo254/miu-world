@@ -46,7 +46,21 @@
       ],
       "choices": [
         { "text": "Đừng lo, tớ giúp cậu ngay!", "reply": "Cảm ơn cậu! Đồ làm tổ hay rơi ở bãi lá khô gần đây đấy." }
-      ]
+      ],
+      "en": {
+        "title": "A baby sparrow lost from the nest",
+        "goTo": "There's cheeping in the grass beside the trail",
+        "lines": [
+          "Cheep cheep… This morning's wind tipped me out of my nest, and my wings are too young to fly back up.",
+          "The wind knocked my nest crooked too. {name}, can you help me rebuild it and take me home?"
+        ],
+        "choices": [
+          {
+            "text": "Don't worry, I'll help you right now!",
+            "reply": "Thank you! Nest-building things often fall in the dry leaves near here."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-do-lam-to",
@@ -164,7 +178,25 @@
           "text": "Nhờ Khỉ Leo Trèo giúp một tay",
           "consequence": "Bác Hải Ly huýt sáo gọi bạn. Khỉ Leo Trèo đang đu trên cành ổi rừng gần đó, sang rủ bạn nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "How to reach the chestnut branch?",
+        "prompt": "Sẻ Con's nest is way up on a high chestnut branch. How will {name} get Sẻ Con back up to the nest?",
+        "choices": [
+          {
+            "text": "Find wood and build a ladder",
+            "consequence": "Uncle Hải Ly hands over some spare planks. Tap tap tap, and a little ladder stands steady by the chestnut tree!"
+          },
+          {
+            "text": "Go round by the slope behind the chestnut tree",
+            "consequence": "The long way round is further but gentle, and from the top of the slope you can reach the branch easily."
+          },
+          {
+            "text": "Ask Khỉ Leo Trèo for a hand",
+            "consequence": "Uncle Hải Ly whistles for his friend. Khỉ Leo Trèo is swinging in a wild guava tree nearby, go and ask him!"
+          }
+        ]
+      }
     },
     {
       "id": "nho-khi-giup",
@@ -175,7 +207,19 @@
       "lines": [
         { "speaker": "Khỉ Leo Trèo", "text": "Leo cây là nghề của tớ! Cậu cứ chuẩn bị tổ dưới gốc, tớ sẽ đỡ Sẻ Con lên cành thật nhẹ nhàng." }
       ],
-      "choices": [{ "text": "Cảm ơn cậu, mình cùng ra gốc dẻ nhé!" }]
+      "choices": [{ "text": "Cảm ơn cậu, mình cùng ra gốc dẻ nhé!" }],
+      "en": {
+        "title": "Ask Khỉ Leo Trèo",
+        "goTo": "Go to the wild guava tree and ask Khỉ Leo Trèo for help",
+        "lines": [
+          "Climbing trees is my job! You get the nest ready at the bottom, and I'll lift Sẻ Con up to the branch nice and gently."
+        ],
+        "choices": [
+          {
+            "text": "Thanks! Let's head to the chestnut tree together!"
+          }
+        ]
+      }
     },
     {
       "id": "lam-lai-to",
@@ -211,14 +255,22 @@
       "title": "Sẻ Con về tổ",
       "kind": "reward",
       "target": "vt-kr-to-chim",
-      "text": "Sẻ Con nằm gọn trong chiếc tổ mới, ló đầu ra hót một khúc cảm ơn {name}. Cả cây dẻ rung rinh như cũng vui lây."
+      "text": "Sẻ Con nằm gọn trong chiếc tổ mới, ló đầu ra hót một khúc cảm ơn {name}. Cả cây dẻ rung rinh như cũng vui lây.",
+      "en": {
+        "title": "Sẻ Con is home",
+        "text": "Sẻ Con snuggles into the new nest, pokes out her head and sings a thank-you song for {name}. The whole chestnut tree seems to sway with joy."
+      }
     },
     {
       "id": "se-me-cam-on",
       "title": "Sẻ Mẹ trở về",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chiều xuống, Sẻ Mẹ ngậm thóc bay về, nghe con kể chuyện liền cảm ơn {name} mãi. Mai Sẻ Mẹ rủ {name} sang rừng bên nghe đàn chim hát."
+      "text": "Chiều xuống, Sẻ Mẹ ngậm thóc bay về, nghe con kể chuyện liền cảm ơn {name} mãi. Mai Sẻ Mẹ rủ {name} sang rừng bên nghe đàn chim hát.",
+      "en": {
+        "title": "Mother Sparrow returns",
+        "text": "As evening falls, Mother Sparrow flies home with grain in her beak, hears her chick's story and thanks {name} over and over. Tomorrow she'll take {name} to the next wood to hear the birds sing."
+      }
     }
   ],
   "reward": {

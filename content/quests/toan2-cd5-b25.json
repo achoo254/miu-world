@@ -64,7 +64,26 @@
           "text": "Cáo Bạch ơi, đuôi cậu còn dính sao kìa!",
           "reply": "Cáo Bạch ngoe nguẩy đuôi: Ối! Thôi, đi tìm đồ vẽ đi rồi tớ tính sổ với chú hươu này sau."
         }
-      ]
+      ],
+      "en": {
+        "title": "A long neck makes wonky dots",
+        "goTo": "Go into the painting room by the shapes courtyard, to the big easel where Hươu Cao stands lost in thought",
+        "lines": [
+          "Oh, {name}! I wanted to paint constellations on the easel, but my neck is so long that every dot I make ends up way off, right up on the domed ceiling of the painting room.",
+          "Yesterday you even dotted a star on my tail by mistake. I've brushed and brushed and it still won't come off!",
+          "Hee hee, sorry, Cáo Bạch. And my box of paper stars and my ruler have rolled off somewhere too."
+        ],
+        "choices": [
+          {
+            "text": "I'll find your art things!",
+            "reply": "Hươu Cao peers about from way up high: I can see far away but not close up, thanks a lot!"
+          },
+          {
+            "text": "Cáo Bạch, there's still a star on your tail!",
+            "reply": "Cáo Bạch flicks his tail: Eek! Fine, go find the art things, and I'll settle up with this giraffe later."
+          }
+        ]
+      }
     },
     {
       "id": "tim-do-ve",
@@ -101,7 +120,21 @@
           "text": "Bắt đầu vẽ thôi!",
           "reply": "Hươu Cao vẩy bút: Tớ vừa chấm vài điểm và kẻ hai đoạn thẳng, cậu xem thử nào."
         }
-      ]
+      ],
+      "en": {
+        "title": "Points and line segments",
+        "lines": [
+          "I've got everything! Each time I dab my pen down, I get a point. Points are named with capital letters: A, B, C...",
+          "Put the ruler from point A to point B and draw one stroke, and you've got line segment AB. The two ends of the segment are the two points.",
+          "So a line segment is short with two ends, and my neck is... long, but still has two ends, hee hee."
+        ],
+        "choices": [
+          {
+            "text": "Let's start drawing!",
+            "reply": "Hươu Cao flicks her pen: I've just dotted a few points and drawn two segments, take a look."
+          }
+        ]
+      }
     },
     {
       "id": "diem-hay-doan-thang",
@@ -538,7 +571,26 @@
           "reply": "Cáo Bạch vẫy cái đuôi trắng muốt: Lượn trái, lượn phải, đúng điệu đường cong rồi!"
         }
       ],
-      "goTo": "Quay lại giá vẽ lớn, Hươu Cao đang pha màu vẽ sao băng"
+      "goTo": "Quay lại giá vẽ lớn, Hươu Cao đang pha màu vẽ sao băng",
+      "en": {
+        "title": "Dead straight or wavy?",
+        "goTo": "Go back to the big easel, where Hươu Cao is mixing paint for shooting stars",
+        "lines": [
+          "Now I want to paint two shooting-star trails. If you extend the ruler forever in both directions, you get a straight line, with no end points!",
+          "And a wavy stroke like a skipping rope is called a curve. I'll name the two curves x and y.",
+          "{name}, which trail would you like to paint first?"
+        ],
+        "choices": [
+          {
+            "text": "A dead-straight trail like a sunbeam!",
+            "reply": "Hươu Cao draws one long, long stroke: Whoosh! All the way to the painting room window."
+          },
+          {
+            "text": "A wavy trail like a wave!",
+            "reply": "Cáo Bạch waves his snow-white tail: Swoop left, swoop right, that's a proper curve!"
+          }
+        ]
+      }
     },
     {
       "id": "duong-thang-duong-cong",
@@ -749,14 +801,22 @@
       "title": "Huy hiệu chòm sao",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bức tranh chòm sao được treo giữa phòng vẽ của lâu đài, sáng nhất là ba ngôi sao thẳng hàng. Hươu Cao cúi thật thấp để cài cho {name} huy hiệu \"Họa sĩ đường thẳng\", Cáo Bạch thì vẫn đang gỡ ngôi sao trên đuôi."
+      "text": "Bức tranh chòm sao được treo giữa phòng vẽ của lâu đài, sáng nhất là ba ngôi sao thẳng hàng. Hươu Cao cúi thật thấp để cài cho {name} huy hiệu \"Họa sĩ đường thẳng\", Cáo Bạch thì vẫn đang gỡ ngôi sao trên đuôi.",
+      "en": {
+        "title": "Constellation badge",
+        "text": "The constellation painting hangs in the middle of the castle's painting room, and the brightest part is three stars in a straight line. Hươu Cao bends way down to pin the \"Straight Line Artist\" badge on {name}, while Cáo Bạch is still picking the star off his tail."
+      }
     },
     {
       "id": "o-kinh-ong-vang",
       "title": "Ô kính màu vo ve",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ong Nhí bay vo ve quanh cửa sổ ghép kính màu bên sân hình khối: lối bay qua các ô kính cứ gãy khúc liên tục, Ong Nhí hoa cả mắt rồi, ai bay cùng với!"
+      "text": "Ong Nhí bay vo ve quanh cửa sổ ghép kính màu bên sân hình khối: lối bay qua các ô kính cứ gãy khúc liên tục, Ong Nhí hoa cả mắt rồi, ai bay cùng với!",
+      "en": {
+        "title": "Buzzing stained glass",
+        "text": "Ong Nhí the little bee is buzzing around the stained-glass window by the shapes courtyard: her flight path through the glass panes keeps zigzagging, she's dizzy already, who'll fly with her?"
+      }
     }
   ],
   "reward": {

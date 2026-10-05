@@ -77,7 +77,27 @@
           "text": "Quả chuối vàng nghe cũng vui mà!",
           "reply": "Hì hì, nhưng cô lại tưởng tớ xin chuối mất. Mình đi tìm ý khác nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Nai Sương can't find a rhyme",
+        "goTo": "Go into class 2A, Nai Sương is chewing her pencil at her desk",
+        "lines": [
+          "{name}! Tomorrow the whole class gives our teacher presents. I want to give her a poem I wrote myself.",
+          "I've got one line so far: “Our teacher is gentle, like… a yellow banana!” Oops, that sounds like I'm hungry.",
+          "My poem notebook is all crossings-out. I'm stuck for rhymes today, my head feels as heavy as a basket of chestnuts.",
+          "Our teacher says if you want poem ideas, go to the jasmine bed in the corridor and look, sniff and listen."
+        ],
+        "choices": [
+          {
+            "text": "Let's go to the jasmine bed and find ideas!",
+            "reply": "Let's go! Remember to sniff the flowers deeply, but don't sneeze on them."
+          },
+          {
+            "text": "The yellow banana sounds fun too!",
+            "reply": "Hee hee, but she might think I'm asking for a banana. Let's find another idea!"
+          }
+        ]
+      }
     },
     {
       "id": "tim-y-tho-vuon-nhai",
@@ -628,7 +648,26 @@
           "text": "Kẹp bài thơ cùng một bông nhài",
           "reply": "Thơ thơm mùi nhài! Cô vừa mở ra là thấy ngay."
         }
-      ]
+      ],
+      "en": {
+        "title": "How to give the poem?",
+        "goTo": "Back in class 2A, Nai Sương is hugging the poem she just finished",
+        "lines": [
+          "The poem's done! But how do I give it to her as a real surprise, {name}?",
+          "Let me have a look! Why not sing it? I'll play the little drum along!",
+          "If you drum along, sir, it'll be louder than the school drum. {name}, you choose for me."
+        ],
+        "choices": [
+          {
+            "text": "Stand up and read it aloud to the class",
+            "reply": "I'll read it really loudly, even if all four legs wobble like grass in the wind."
+          },
+          {
+            "text": "Tuck the poem in with a jasmine flower",
+            "reply": "A poem that smells of jasmine! She'll notice the moment she opens it."
+          }
+        ]
+      }
     },
     {
       "id": "nghe-chuyen-vu-due",
@@ -777,14 +816,22 @@
       "title": "Trang sổ thơ thơm nhài",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nai Sương tặng {name} một trang sổ thơ chép bài thơ “Cô giáo lớp em”, ép kèm một bông nhài. Thầy Sư Tử Vàng đóng lên đó con dấu hình mặt sư tử cười, còn Mèo Sữa hứa chép bài thơ lên bảng cho cả lớp cùng đọc."
+      "text": "Nai Sương tặng {name} một trang sổ thơ chép bài thơ “Cô giáo lớp em”, ép kèm một bông nhài. Thầy Sư Tử Vàng đóng lên đó con dấu hình mặt sư tử cười, còn Mèo Sữa hứa chép bài thơ lên bảng cho cả lớp cùng đọc.",
+      "en": {
+        "title": "A jasmine-scented poem page",
+        "text": "Nai Sương gives {name} a notebook page with the poem “Cô giáo lớp em” copied on it and a jasmine flower pressed inside. Sư Tử Vàng stamps it with a smiling lion face, and Mèo Sữa promises to write the poem on the board for the whole class to read."
+      }
     },
     {
       "id": "mo-bai-10",
       "title": "Ai lục cặp ngoài hành lang?",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ngoài hành lang, ngay trước bảng thời khoá biểu, có tiếng lục cặp loạt xoạt. Hình như Thỏ Vội lại mang nhầm sách, mà hôm nay là thứ mấy ấy nhỉ?"
+      "text": "Ngoài hành lang, ngay trước bảng thời khoá biểu, có tiếng lục cặp loạt xoạt. Hình như Thỏ Vội lại mang nhầm sách, mà hôm nay là thứ mấy ấy nhỉ?",
+      "en": {
+        "title": "Who's rummaging in the corridor?",
+        "text": "Out in the corridor, right by the timetable board, someone is rummaging noisily through a school bag. Looks like Thỏ Vội brought the wrong books again. What day is it today, anyway?"
+      }
     }
   ],
   "reward": {

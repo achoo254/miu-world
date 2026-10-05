@@ -87,7 +87,27 @@
           "text": "Sao cậu không khắc luật lên đá cho chắc?",
           "reply": "Vì khắc đá mỏi móng lắm! Lần sau tớ chép lên lưng Sư Tử Xù, gió nào dám thổi bay."
         }
-      ]
+      ],
+      "en": {
+        "title": "Cáo Tũn invites the whole forest to play",
+        "goTo": "Go to the forest clearing, Cáo Tũn is waving his tail like a feather duster",
+        "lines": [
+          "{name}, perfect timing! I just invited the whole forest to play Rồng rắn lên mây, and… I've completely forgotten the rules!",
+          "Grrr… I'll just watch. If I join the line, the dragon-snake will get so scared it breaks into ten pieces.",
+          "Yesterday I wrote the rules on a big almond leaf. Then the wind went whoosh, tore it into three pieces and blew them into the bushes!",
+          "Without rules, our dragon-snake is just… a line of earthworms out for a stroll."
+        ],
+        "choices": [
+          {
+            "text": "I'll go and fetch the three pieces of the rules!",
+            "reply": "Brilliant! I'll stand here wagging my tail to cheer you on, both ways for extra breeze."
+          },
+          {
+            "text": "Why didn't you carve the rules in stone?",
+            "reply": "Because carving stone makes your claws ache! Next time I'll write them on Sư Tử Xù's back, no wind would dare blow that away."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-manh-luat",
@@ -544,7 +564,30 @@
           "text": "Mình xin làm khúc đuôi, mình né giỏi lắm!",
           "reply": "Khúc đuôi {name} uốn éo né thầy, Cáo Tũn cười đến rụng cả lông đuôi."
         }
-      ]
+      ],
+      "en": {
+        "title": "Giving out the dragon-snake roles",
+        "goTo": "Go back to the clearing, everyone has lined up waiting for their roles",
+        "lines": [
+          "We've got all the rules, now let's pick roles! Who's the doctor, who's the head, who's the wiggly tail?",
+          "Could I… could I be the doctor? But what if I roar once and everyone runs away?",
+          "Hey! Why does the tail have to run the most? Why does the head have to spread its arms?"
+        ],
+        "choices": [
+          {
+            "text": "I'll be the head and spread my arms to shield everyone!",
+            "reply": "Cáo Tũn cheers: the bravest head in the forest! Xíu ducks right behind {name}."
+          },
+          {
+            "text": "Sư Tử Xù, you be the doctor, just smile really kindly!",
+            "reply": "Sư Tử Xù flashes a toothy grin; everyone shrieks and then rolls about laughing. Doctor Lion turns out to be adorable."
+          },
+          {
+            "text": "I'll be the tail, I'm great at dodging!",
+            "reply": "{name}'s tail wiggles away from the doctor, and Cáo Tũn laughs so hard he loses a tail hair."
+          }
+        ]
+      }
     },
     {
       "id": "doan-tranh-hoa",
@@ -774,14 +817,22 @@
       "title": "Quà của Cáo Tũn",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cáo Tũn trao cho {name} chiếc huy hiệu lá bàng khắc chữ \"Người giữ luật rồng rắn\", còn Sư Tử Xù ngượng ngùng tặng thêm một cái vuốt… bằng gỗ, không nhọn tí nào."
+      "text": "Cáo Tũn trao cho {name} chiếc huy hiệu lá bàng khắc chữ \"Người giữ luật rồng rắn\", còn Sư Tử Xù ngượng ngùng tặng thêm một cái vuốt… bằng gỗ, không nhọn tí nào.",
+      "en": {
+        "title": "A gift from Cáo Tũn",
+        "text": "Cáo Tũn gives {name} an almond-leaf badge engraved “Keeper of the Dragon-Snake Rules”, and Sư Tử Xù shyly adds a claw… made of wood, not the least bit sharp."
+      }
     },
     {
       "id": "mo-bai-24",
       "title": "Đất sét bên suối khô cong",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ bờ suối vọng lên tiếng \"cốc, cốc\": Hải Ly Cần đang gõ răng vào cục đất sét cứng như đá. Bạn ấy muốn nặn quà tặng cả nhà, mà đất cứ khô cong mất rồi!"
+      "text": "Từ bờ suối vọng lên tiếng \"cốc, cốc\": Hải Ly Cần đang gõ răng vào cục đất sét cứng như đá. Bạn ấy muốn nặn quà tặng cả nhà, mà đất cứ khô cong mất rồi!",
+      "en": {
+        "title": "Clay dried hard by the stream",
+        "text": "A “tock, tock” rises from the stream bank: Hải Ly Cần is tapping her teeth on a lump of clay as hard as stone. She wants to mould presents for her whole family, but the clay has dried out completely!"
+      }
     }
   ],
   "reward": {

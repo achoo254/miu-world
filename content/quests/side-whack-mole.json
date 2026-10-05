@@ -46,7 +46,19 @@
         {
           "text": "Chuột chũi đâu, ra đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Oh no, {name}, the moles have dug holes all over my corn field!",
+          "Bop each mole as soon as it pops up, but don't bop a bunny by mistake."
+        ],
+        "choices": [
+          {
+            "text": "Come out, moles!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đập được hai mươi lăm điểm chuột chũi nhé!",
       "game": "whack-mole",
-      "goal": 25
+      "goal": 25,
+      "en": {
+        "title": "Whack-a-Mole",
+        "prompt": "Score 25 mole-bopping points!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thỏ Giữ Vườn nhảy cẫng lên: ruộng ngô yên rồi, cảm ơn {name}!"
+      "text": "Thỏ Giữ Vườn nhảy cẫng lên: ruộng ngô yên rồi, cảm ơn {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Thỏ Giữ Vườn leaps for joy: the corn field is safe, thank you {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chuột chũi hay quay lại lắm, cậu nhớ ghé bờ ruộng ngô canh cùng tớ."
+      "text": "Chuột chũi hay quay lại lắm, cậu nhớ ghé bờ ruộng ngô canh cùng tớ.",
+      "en": {
+        "title": "See you soon",
+        "text": "Moles love coming back. Remember to stand guard with me at the edge of the corn field."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Chase the Moles for Thỏ Giữ Vườn",
+    "summary": "Moles are digging all over the corn field; tap them fast when they pop their heads up."
   }
 }

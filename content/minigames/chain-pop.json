@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Jellyfish chain glow",
+    "howTo": [
+      "{name} gets only one tap per level: a ring of light blooms. Tap right in the middle of the jellyfish!",
+      "Jellyfish that touch a glowing ring light up and bloom a new ring. Too few lit up costs a pearl."
+    ]
+  }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Cháu muốn thắng quà!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, land a ring on a duck's neck and you win a prize!",
+          "First tap picks how far, second tap picks the direction. Aim for a duck!"
+        ],
+        "choices": [
+          {
+            "text": "I want that prize!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ném lọt cổ vịt năm vòng nhé!",
       "game": "ring-toss-duck",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Duck Ring Toss",
+        "prompt": "Ring 5 duck necks!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Vòng nào cũng vào, {name} ôm quà về nhé!"
+      "text": "Vòng nào cũng vào, {name} ôm quà về nhé!",
+      "en": {
+        "title": "Reward",
+        "text": "Every ring went on! Take your prizes home, {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Hàng vịt gỗ còn chờ cháu ở phố chợ đấy, ném tiếp nha."
+      "text": "Hàng vịt gỗ còn chờ cháu ở phố chợ đấy, ném tiếp nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "The wooden ducks are waiting for you on the market street. Come toss again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Ring the ducks with Uncle Tí",
+    "summary": "Wooden ducks stand near and far: judge the distance and direction so the ring drops over a duck's neck."
   }
 }

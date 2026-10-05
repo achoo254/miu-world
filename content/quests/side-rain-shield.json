@@ -46,7 +46,19 @@
         {
           "text": "Cháu vẽ mái che mưa liền ạ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Dark clouds are rolling in and rain's coming, {name}. Draw a roof for the puppy!",
+          "Drag one strong curve above its head so the raindrops slide down the slope to the ground."
+        ],
+        "choices": [
+          {
+            "text": "I'll draw the rain roof right away!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Vẽ mái che chắn an toàn qua năm đợt mưa rào cho cún nhỏ nhé!",
       "game": "rain-shield",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Shelter the Puppy",
+        "prompt": "Draw a roof to keep the puppy safe through 5 showers!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ông cụ vuốt chòm râu cười hiền từ: nhờ chiếc mái của {name} mà cún khô ráo ấm áp!"
+      "text": "Ông cụ vuốt chòm râu cười hiền từ: nhờ chiếc mái của {name} mà cún khô ráo ấm áp!",
+      "en": {
+        "title": "Reward",
+        "text": "Grandpa strokes his beard and smiles kindly: thanks to {name}'s roof the puppy is warm and dry!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Vườn rau sau nhà xanh mát lắm, ông cụ đợi {name} ghé chơi và thăm luống cải."
+      "text": "Vườn rau sau nhà xanh mát lắm, ông cụ đợi {name} ghé chơi và thăm luống cải.",
+      "en": {
+        "title": "See you soon",
+        "text": "The veggie garden out back is lush and green. Grandpa is waiting for {name} to visit the mustard greens."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Draw a Rain Roof for the Puppy with Ông Cụ Trông Vườn",
+    "summary": "A sudden shower pours over the garden; draw a curve to keep the puppy from getting wet."
   }
 }

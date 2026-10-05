@@ -46,7 +46,19 @@
         {
           "text": "Cháu cầm cần đây bác ơi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, come and sit down and fish with me for a bit!",
+          "Pull only when the float sinks right under. Pull too early and the fish darts away."
+        ],
+        "choices": [
+          {
+            "text": "I've got the rod, Uncle!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Câu cho bác đủ tám điểm cá nhé!",
       "game": "bobber-fishing",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Float fishing",
+        "prompt": "Catch enough fish for 8 points!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Giỏi quá {name}, giỏ cá của bác đầy ắp rồi!"
+      "text": "Giỏi quá {name}, giỏ cá của bác đầy ắp rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Well done, {name}! My fish basket is full to the brim!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chiều nào bác cũng ngồi ở bến sông, cháu cứ ra câu tiếp nhé."
+      "text": "Chiều nào bác cũng ngồi ở bến sông, cháu cứ ra câu tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "I sit on the river landing every afternoon, so come and fish with me again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Float fishing with Uncle Sơn",
+    "summary": "Sit on the river landing, cast the float near a fish shadow and strike just as the float sinks."
   }
 }

@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 4,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "The Calligrapher's Gift",
+    "howTo": [
+      "The old calligrapher faintly writes a New Year word. {name} traces each stroke, starting at the white dot.",
+      "Move the brush slow and steady for dark ink. Too fast and it's pale; off the line and it smudges.",
+      "Not happy with a stroke? Write it again!"
+    ]
+  }
 }

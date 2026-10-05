@@ -10,5 +10,13 @@
   "controls": ["swipe", "tap"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Push the crates",
+    "howTo": [
+      "{name}, swipe (or tap beside yourself) to walk; walk into a crate to push it.",
+      "Push every crate onto a star square. Crates can only be pushed, never pulled!",
+      "Stuck? Press the restart button. Finish three storerooms to win."
+    ]
+  }
 }

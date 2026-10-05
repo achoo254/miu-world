@@ -4,594 +4,897 @@
     {
       "kind": "wearable",
       "id": "hat-astronaut-galaxy",
-      "price": 140
+      "price": 140,
+      "en": {
+        "name": "Galaxy Astronaut Helmet"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-crown-emerald",
       "price": 200,
       "level": 4,
-      "description": "Vương miện gắn đá xanh lục bảo, sáng rực dưới nắng."
+      "description": "Vương miện gắn đá xanh lục bảo, sáng rực dưới nắng.",
+      "en": {
+        "name": "Emerald Crown",
+        "description": "A crown set with emerald-green stones that glows bright in the sunshine."
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-dragon-ice",
-      "price": 160
+      "price": 160,
+      "en": {
+        "name": "Ice Baby Dragon Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-bow-sunset",
-      "price": 160
+      "price": 160,
+      "en": {
+        "name": "Sunset Bow"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-unicorn-cotton-candy",
-      "price": 160
+      "price": 160,
+      "en": {
+        "name": "Cotton Candy Unicorn Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-witch-galaxy",
       "price": 160,
       "featured": true,
-      "description": "Chiếc mũ phù thủy lấp lánh như bầu trời đêm, hợp với {name} lắm!"
+      "description": "Chiếc mũ phù thủy lấp lánh như bầu trời đêm, hợp với {name} lắm!",
+      "en": {
+        "name": "Galaxy Witch Hat",
+        "description": "A witch hat that twinkles like the night sky. It really suits {name}!"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-ao-dai-galaxy",
-      "price": 250
+      "price": 250,
+      "en": {
+        "name": "Galaxy Áo Dài"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-knight-emerald",
       "price": 250,
-      "level": 5
+      "level": 5,
+      "en": {
+        "name": "Emerald Knight Armour"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-princess-galaxy",
       "price": 280,
       "featured": true,
-      "description": "Váy công chúa tím biếc, chỉ có ở cửa hàng thôi nhé."
+      "description": "Váy công chúa tím biếc, chỉ có ở cửa hàng thôi nhé.",
+      "en": {
+        "name": "Galaxy Princess Dress",
+        "description": "A deep violet princess dress, sold only here in the shop."
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-royal-ocean",
-      "price": 250
+      "price": 250,
+      "en": {
+        "name": "Ocean Royal Robes"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-superhero-sunset",
-      "price": 250
+      "price": 250,
+      "en": {
+        "name": "Sunset Superhero Suit"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-glass-galaxy",
-      "price": 130
+      "price": 130,
+      "en": {
+        "name": "Galaxy Glass Slippers"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-royal-emerald",
-      "price": 130
+      "price": 130,
+      "en": {
+        "name": "Emerald Royal Boots"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-sneaker-cotton-candy",
-      "price": 100
+      "price": 100,
+      "en": {
+        "name": "Cotton Candy Sneakers"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-winged-sunset",
-      "price": 130
+      "price": 130,
+      "en": {
+        "name": "Sunset Winged Shoes"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-astronaut-mint",
       "price": 160,
-      "level": 9
+      "level": 9,
+      "en": {
+        "name": "Mint Astronaut Helmet"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-astronaut-orange",
       "price": 120,
-      "level": 10
+      "level": 10,
+      "en": {
+        "name": "Orange Astronaut Helmet"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-bear-brown",
       "price": 160,
-      "level": 3
+      "level": 3,
+      "en": {
+        "name": "Brown Bear Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-bear-white",
       "price": 180,
-      "level": 4
+      "level": 4,
+      "en": {
+        "name": "White Bear Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-bunny-pink",
       "price": 130,
-      "level": 2
+      "level": 2,
+      "en": {
+        "name": "Pink Bunny Ears Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-cowboy-brown",
       "price": 120,
-      "level": 3
+      "level": 3,
+      "en": {
+        "name": "Brown Cowboy Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-cowboy-pink",
       "price": 120,
-      "level": 4
+      "level": 4,
+      "en": {
+        "name": "Pink Cowboy Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-crown-diamond",
       "price": 120,
-      "level": 7
+      "level": 7,
+      "en": {
+        "name": "Diamond Crown"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-crown-rainbow",
       "price": 130,
-      "level": 8
+      "level": 8,
+      "en": {
+        "name": "Rainbow Crown"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-dragon-gold",
       "price": 130,
-      "level": 7
+      "level": 7,
+      "en": {
+        "name": "Gold Dragon Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-dragon-mint",
       "price": 170,
-      "level": 5
+      "level": 5,
+      "en": {
+        "name": "Mint Baby Dragon Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-dragon-red",
       "price": 160,
-      "level": 6
+      "level": 6,
+      "en": {
+        "name": "Red Baby Dragon Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-graduation-blue",
       "price": 160,
-      "level": 6
+      "level": 6,
+      "en": {
+        "name": "Blue Graduation Cap"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-khan-xep-blue",
       "price": 140,
-      "level": 6
+      "level": 6,
+      "en": {
+        "name": "Blue Khăn Xếp Headwrap"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-khan-xep-red",
       "price": 140,
-      "level": 5
+      "level": 5,
+      "en": {
+        "name": "Red Khăn Xếp Headwrap"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-lantern-mint",
       "price": 130,
-      "level": 7
+      "level": 7,
+      "en": {
+        "name": "Mint Lantern Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-lantern-yellow",
       "price": 170,
-      "level": 8
+      "level": 8,
+      "en": {
+        "name": "Yellow Lantern Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-lion-dance-red",
       "price": 160,
-      "level": 5
+      "level": 5,
+      "en": {
+        "name": "Red Lion Dance Head"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-lion-dance-yellow",
       "price": 140,
-      "level": 6
+      "level": 6,
+      "en": {
+        "name": "Yellow Lion Dance Head"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-octopus-mint",
       "price": 150,
-      "level": 5
+      "level": 5,
+      "en": {
+        "name": "Mint Octopus Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-octopus-purple",
       "price": 150,
-      "level": 6
+      "level": 6,
+      "en": {
+        "name": "Purple Octopus Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-penguin-mint",
       "price": 140,
-      "level": 4
+      "level": 4,
+      "en": {
+        "name": "Mint Penguin Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-penguin",
       "price": 160,
-      "level": 4
+      "level": 4,
+      "en": {
+        "name": "Penguin Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-phoenix-mint",
       "price": 130,
-      "level": 8
+      "level": 8,
+      "en": {
+        "name": "Mint Fire Phoenix Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-pirate-black",
       "price": 150,
-      "level": 7
+      "level": 7,
+      "en": {
+        "name": "Black Pirate Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-pirate-mint",
       "price": 130,
-      "level": 7
+      "level": 7,
+      "en": {
+        "name": "Mint Pirate Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-sailor-navy",
       "price": 120,
-      "level": 2
+      "level": 2,
+      "en": {
+        "name": "Navy Sailor Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-shark-grey",
       "price": 150,
-      "level": 8
+      "level": 8,
+      "en": {
+        "name": "Grey Shark Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-space-band-green",
       "price": 130,
-      "level": 3
+      "level": 3,
+      "en": {
+        "name": "Green Space Headband"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-space-band-mint",
       "price": 170,
-      "level": 3
+      "level": 3,
+      "en": {
+        "name": "Mint Space Headband"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-unicorn-mint",
       "price": 170,
-      "level": 9
+      "level": 9,
+      "en": {
+        "name": "Mint Unicorn Horn Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-unicorn-white",
       "price": 140,
-      "level": 9
+      "level": 9,
+      "en": {
+        "name": "Unicorn Horn Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-viking-gold",
       "price": 140,
-      "level": 10
+      "level": 10,
+      "en": {
+        "name": "Gold Horned Warrior Helmet"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-viking-silver",
       "price": 160,
-      "level": 9
+      "level": 9,
+      "en": {
+        "name": "Silver Horned Warrior Helmet"
+      }
     },
     {
       "kind": "wearable",
       "id": "hat-watermelon",
       "price": 160,
-      "level": 3
+      "level": 3,
+      "en": {
+        "name": "Watermelon Hat"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-ao-dai-blue",
       "price": 220,
-      "level": 9
+      "level": 9,
+      "en": {
+        "name": "Blue Modern Áo Dài"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-ao-dai-yellow",
       "price": 230,
-      "level": 7
+      "level": 7,
+      "en": {
+        "name": "Yellow Modern Áo Dài"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-astronaut-mint",
       "price": 230,
-      "level": 5
+      "level": 5,
+      "en": {
+        "name": "Mint Astronaut Suit"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-astronaut",
       "price": 270,
-      "level": 5
+      "level": 5,
+      "en": {
+        "name": "Astronaut Suit"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-doctor",
       "price": 270,
-      "level": 7
+      "level": 7,
+      "en": {
+        "name": "Doctor's Coat"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-farmer-mint",
       "price": 280,
-      "level": 4
+      "level": 4,
+      "en": {
+        "name": "Mint Áo Bà Ba"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-firefighter",
       "price": 220,
-      "level": 8
+      "level": 8,
+      "en": {
+        "name": "Firefighter Uniform"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-galaxy-pink",
       "price": 220,
-      "level": 8
+      "level": 8,
+      "en": {
+        "name": "Pink Galaxy Outfit"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-jacket-green",
       "price": 260,
-      "level": 3
+      "level": 3,
+      "en": {
+        "name": "Green Jacket"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-knight-mint",
       "price": 250,
-      "level": 6
+      "level": 6,
+      "en": {
+        "name": "Mint Knight Armour"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-overalls-green",
       "price": 250,
-      "level": 2
+      "level": 2,
+      "en": {
+        "name": "Green Overalls"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-pajamas-pink",
       "price": 240,
-      "level": 3
+      "level": 3,
+      "en": {
+        "name": "Pink Star Pyjamas"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-princess-blue",
       "price": 250,
-      "level": 5
+      "level": 5,
+      "en": {
+        "name": "Ice Blue Princess Dress"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-princess-mint",
       "price": 280,
-      "level": 10
+      "level": 10,
+      "en": {
+        "name": "Mint Princess Dress"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-raincoat-blue",
       "price": 260,
-      "level": 4
+      "level": 4,
+      "en": {
+        "name": "Blue Raincoat"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-royal-gold",
       "price": 270,
-      "level": 8
+      "level": 8,
+      "en": {
+        "name": "Gold Royal Robes"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-royal",
       "price": 280,
-      "level": 7
+      "level": 7,
+      "en": {
+        "name": "Purple Royal Robes"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-sports-blue",
       "price": 270,
-      "level": 5
+      "level": 5,
+      "en": {
+        "name": "Blue No. 10 Football Kit"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-sports",
       "price": 270,
-      "level": 4
+      "level": 4,
+      "en": {
+        "name": "Red No. 10 Football Kit"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-superhero-mint",
       "price": 270,
-      "level": 9
+      "level": 9,
+      "en": {
+        "name": "Mint Superhero Suit"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-swimsuit-pink",
       "price": 260,
-      "level": 6
+      "level": 6,
+      "en": {
+        "name": "Pink Striped Swimsuit"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-tshirt-red",
       "price": 250,
-      "level": 2
+      "level": 2,
+      "en": {
+        "name": "Red Heart T-Shirt"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-tuxedo-white",
       "price": 240,
-      "level": 10
+      "level": 10,
+      "en": {
+        "name": "White Suit with Black Bow Tie"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-vest-shorts-green",
       "price": 270,
-      "level": 3
+      "level": 3,
+      "en": {
+        "name": "Green Vest and Shorts"
+      }
     },
     {
       "kind": "wearable",
       "id": "clothes-winter-coat-mint",
       "price": 260,
-      "level": 7
+      "level": 7,
+      "en": {
+        "name": "Mint Puffer Jacket"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-astronaut-mars",
       "price": 90,
-      "level": 9
+      "level": 9,
+      "en": {
+        "name": "Mars Explorer Boots"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-astronaut",
       "price": 110,
-      "level": 7
+      "level": 7,
+      "en": {
+        "name": "Astronaut Boots"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-clogs-red",
       "price": 120,
-      "level": 3
+      "level": 3,
+      "en": {
+        "name": "Red Lacquered Clogs"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-clown-mint",
       "price": 130,
-      "level": 5
+      "level": 5,
+      "en": {
+        "name": "Mint Clown Shoes"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-cowboy-black",
       "price": 120,
-      "level": 7
+      "level": 7,
+      "en": {
+        "name": "Black Cowboy Boots"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-cowboy-mint",
       "price": 130,
-      "level": 4
+      "level": 4,
+      "en": {
+        "name": "Mint Cowboy Boots"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-crocs-yellow",
       "price": 100,
-      "level": 2
+      "level": 2,
+      "en": {
+        "name": "Yellow Rubber Clogs"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-dino-green",
       "price": 130,
-      "level": 4
+      "level": 4,
+      "en": {
+        "name": "Green Dino Slippers"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-dino-purple",
       "price": 140,
-      "level": 6
+      "level": 6,
+      "en": {
+        "name": "Purple Dino Slippers"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-flipflop-red",
       "price": 90,
-      "level": 2
+      "level": 2,
+      "en": {
+        "name": "Red Flip-Flops"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-football-green",
       "price": 140,
-      "level": 5
+      "level": 5,
+      "en": {
+        "name": "Green Football Boots"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-football-orange",
       "price": 110,
-      "level": 3
+      "level": 3,
+      "en": {
+        "name": "Orange Football Boots"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-glass-pink",
       "price": 140,
-      "level": 6
+      "level": 6,
+      "en": {
+        "name": "Pink Glass Slippers"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-hightop-galaxy",
       "price": 110,
-      "level": 10
+      "level": 10,
+      "en": {
+        "name": "Galaxy High-Top Sneakers"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-iceskate-mint",
       "price": 130,
-      "level": 5
+      "level": 5,
+      "en": {
+        "name": "Mint Ice Skates"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-iceskate-white",
       "price": 110,
-      "level": 5
+      "level": 5,
+      "en": {
+        "name": "White Ice Skates"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-neon-mint",
       "price": 90,
-      "level": 9
+      "level": 9,
+      "en": {
+        "name": "Mint Glow Shoes"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-neon-rainbow",
       "price": 100,
-      "level": 8
+      "level": 8,
+      "en": {
+        "name": "Rainbow Glow Shoes"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-rocket-gold",
       "price": 140,
-      "level": 7
+      "level": 7,
+      "en": {
+        "name": "Gold Rocket Shoes"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-rocket-red",
       "price": 90,
-      "level": 9
+      "level": 9,
+      "en": {
+        "name": "Red Rocket Shoes"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-royal-gold",
       "price": 130,
-      "level": 8
+      "level": 8,
+      "en": {
+        "name": "Jewelled Gold Boots"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-royal-red",
       "price": 140,
-      "level": 5
+      "level": 5,
+      "en": {
+        "name": "Red Royal Boots"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-slipper-panda",
       "price": 110,
-      "level": 3
+      "level": 3,
+      "en": {
+        "name": "Panda Slippers"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-socks-rainbow",
       "price": 120,
-      "level": 6
+      "level": 6,
+      "en": {
+        "name": "Rainbow Striped Socks"
+      }
     },
     {
       "kind": "wearable",
       "id": "shoes-winged-mint",
       "price": 140,
-      "level": 8
+      "level": 8,
+      "en": {
+        "name": "Mint Winged Shoes"
+      }
     }
   ]
 }

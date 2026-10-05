@@ -46,7 +46,19 @@
         {
           "text": "Tớ rót cẩn thận lắm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, the grown-ups of the village are coming over for tea!",
+          "Pour right up to the line. Too much and it spills all over the table."
+        ],
+        "choices": [
+          {
+            "text": "I will pour really carefully!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Rót vừa vạch tám cốc trà nhé!",
       "game": "water-pour",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Pour Tea to the Line",
+        "prompt": "Pour 8 cups of tea right to the line!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cốc nào cũng vừa khéo, {name} rót trà như người lớn!"
+      "text": "Cốc nào cũng vừa khéo, {name} rót trà như người lớn!",
+      "en": {
+        "title": "Reward",
+        "text": "Every cup is just right. {name} pours tea like a grown-up!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ấm trà vẫn ấm bên giếng xóm, mai cậu lại rót giúp tớ nhé."
+      "text": "Ấm trà vẫn ấm bên giếng xóm, mai cậu lại rót giúp tớ nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The teapot is still warm by the village well, so come pour for me again tomorrow."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Pouring tea to the line with Mèo Trà Đá",
+    "summary": "Tilt the teapot into a cup and stop when the tea sits neatly between the two green lines."
   }
 }

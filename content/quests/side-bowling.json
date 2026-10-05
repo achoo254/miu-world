@@ -46,7 +46,19 @@
         {
           "text": "Ki ơi, coi chừng nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Ten pins are standing tall, waiting for {name}!",
+          "Drag the ball to pick your spot, then swipe up toward the pins. Knock them all down for a bonus."
+        ],
+        "choices": [
+          {
+            "text": "Watch out, pins!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Làm đổ ki được bốn mươi điểm nhé!",
       "game": "bowling",
-      "goal": 40
+      "goal": 40,
+      "en": {
+        "title": "Bowling",
+        "prompt": "Knock down pins for 40 points!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Rầm rầm! Ki đổ rạp, Voi Kẹo Bông giậm chân khen {name} ném mạnh quá!"
+      "text": "Rầm rầm! Ki đổ rạp, Voi Kẹo Bông giậm chân khen {name} ném mạnh quá!",
+      "en": {
+        "title": "Reward",
+        "text": "Crash! The pins go flying, and Voi Kẹo Bông stomps: {name} throws so hard!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tớ xếp lại ki ngay đây, lúc nào muốn ném tiếp cứ quay lại nhé."
+      "text": "Tớ xếp lại ki ngay đây, lúc nào muốn ném tiếp cứ quay lại nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "I will set the pins back up right away, so come back for another roll any time."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Bowling with Voi Kẹo Bông",
+    "summary": "A shiny lane with ten pins in a triangle: choose where to stand, then swipe to roll the ball and knock them down."
   }
 }

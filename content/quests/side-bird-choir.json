@@ -46,7 +46,19 @@
         {
           "text": "Tai tớ lắng nghe từng nốt nhạc đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, the birds are rehearsing a choir piece to greet the forest sunrise.",
+          "Listen closely to the tune and watch the notes to find the bird singing the wrong one."
+        ],
+        "choices": [
+          {
+            "text": "My ears are on every note!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Tìm đúng mười hai bạn chim hót lệch giọng nhé!",
       "game": "bird-choir",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Bird choir",
+        "prompt": "Find 12 birds singing out of tune!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Họa Mi Rừng Xanh cất tiếng hót véo von: đôi tai {name} thính tuyệt vời, bài ca đã thật hoàn hảo!"
+      "text": "Họa Mi Rừng Xanh cất tiếng hót véo von: đôi tai {name} thính tuyệt vời, bài ca đã thật hoàn hảo!",
+      "en": {
+        "title": "Reward",
+        "text": "Họa Mi Rừng Xanh trills sweetly: {name} has wonderful ears, and the song is perfect now!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Dàn hợp xướng tập hát mỗi sớm mai, {name} nhớ lại ghé vòm lá xanh nghe chim ca nhé."
+      "text": "Dàn hợp xướng tập hát mỗi sớm mai, {name} nhớ lại ghé vòm lá xanh nghe chim ca nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The choir practises every morning. Come back to the green canopy to hear the birds, {name}."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Listen to the bird choir with Họa Mi Rừng Xanh",
+    "summary": "The forest bird choir sings its morning song: listen closely to find the bird singing off the beat."
   }
 }

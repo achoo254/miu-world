@@ -46,7 +46,19 @@
         {
           "text": "Để tớ xếp cho nổ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "My fruit basket is a total mess, {name}! Help!",
+          "Swap them so three of the same line up, and pop, pop, pop!"
+        ],
+        "choices": [
+          {
+            "text": "Let me make them pop!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Làm nổ bốn mươi quả nhé!",
       "game": "match-3",
-      "goal": 40
+      "goal": 40,
+      "en": {
+        "title": "Swap three fruits",
+        "prompt": "Pop 40 fruits!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Lốp bốp lốp bốp, {name} xếp quả giỏi quá!"
+      "text": "Lốp bốp lốp bốp, {name} xếp quả giỏi quá!",
+      "en": {
+        "title": "Reward",
+        "text": "Pop, pop, pop! {name} is great at matching fruit!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Rổ quả lúc nào cũng đầy, ghé chân cầu rồng chơi tiếp nhé."
+      "text": "Rổ quả lúc nào cũng đầy, ghé chân cầu rồng chơi tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The basket is always full. Come play again by the dragon bridge."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Match three fruits with Mèo Gắp Thú",
+    "summary": "Swap two neighbouring fruits to line up three of a kind and make them pop."
   }
 }

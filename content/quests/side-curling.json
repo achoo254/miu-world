@@ -46,7 +46,19 @@
         {
           "text": "Để tớ đẩy viên đầu tiên!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, the frozen lake is smooth as a mirror today!",
+          "I have five round stones. Push them so they stop right in the middle of the rings."
+        ],
+        "choices": [
+          {
+            "text": "Let me throw the first stone!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ghi được sáu điểm trên hồ băng nào!",
       "game": "curling",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Curling on ice",
+        "prompt": "Score 6 points on the ice lake!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cánh Cụt vỗ đôi cánh nhỏ: {name} đẩy đá khéo hơn cả tớ!"
+      "text": "Cánh Cụt vỗ đôi cánh nhỏ: {name} đẩy đá khéo hơn cả tớ!",
+      "en": {
+        "title": "Reward",
+        "text": "Cánh Cụt flaps his little wings: {name} curls better than me!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Hồ băng còn lạnh lâu, Cánh Cụt chờ {name} đẩy thêm ván nữa."
+      "text": "Hồ băng còn lạnh lâu, Cánh Cụt chờ {name} đẩy thêm ván nữa.",
+      "en": {
+        "title": "See you soon",
+        "text": "The lake will stay frozen a long time. Cánh Cụt is waiting for {name} to play another round."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Ice Lake Curling with Cánh Cụt Trượt Băng",
+    "summary": "On the frozen lake, swipe the stone towards the rings and sweep the ice to make it slide farther."
   }
 }

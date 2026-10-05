@@ -72,7 +72,23 @@
           "text": "Để mình giúp các chữ cái làm lành!",
           "reply": "Hay hay! Giỏi giỏi! Mà trước hết phải gom mấy chữ chạy lạc về đã."
         }
-      ]
+      ],
+      "en": {
+        "title": "A quarrel on the alphabet road",
+        "goTo": "Go to the start of the alphabet road, where Vẹt Xanh is standing in the middle of the quarrel",
+        "lines": [
+          "{name}, it's chaos, chaos! The letters are quarrelling, so noisy, so noisy!",
+          "I've got two whole round tummies, so I eat twice as much, which makes me the most important!",
+          "I've got a cool little crossbar like a hat, and none of you do!",
+          "And A is sulking, sitting alone hugging a giant book. My new word today is “tranh cãi” (arguing), and arguing isn't fun at all!"
+        ],
+        "choices": [
+          {
+            "text": "I'll help the letters make up!",
+            "reply": "Great, great! Clever, clever! But first we have to round up the letters that ran off."
+          }
+        ]
+      }
     },
     {
       "id": "gom-chu-chay-lac",
@@ -514,7 +530,29 @@
           "text": "Mình rủ các chữ đi trượt ván trên trang sách!",
           "reply": "Vèo vèo! Chữ C trượt nhanh nhất, chữ E ngã oạch mà vẫn cười toe."
         }
-      ]
+      ],
+      "en": {
+        "title": "The letters make up",
+        "lines": [
+          "Heh, without A, all I can say is “buh… buh…” like a motorbike out of petrol.",
+          "And without you lot, my crossbar hat isn't much use either.",
+          "Friends again, friends again! What fun thing should everyone do now, {name}?"
+        ],
+        "choices": [
+          {
+            "text": "Let's put the letters together into a lovely sentence!",
+            "reply": "Great, great! A goes at the front, and everyone lines up behind like a train."
+          },
+          {
+            "text": "Let's read out the name of every letter!",
+            "reply": "A, B, C, D… Vẹt Xanh shouts along so loudly that one of his feathers falls out."
+          },
+          {
+            "text": "Let's take the letters skateboarding across the book pages!",
+            "reply": "Whoosh! C skates the fastest, E falls flat on his bottom and still grins."
+          }
+        ]
+      }
     },
     {
       "id": "niem-vui-trong-tranh",
@@ -606,14 +644,22 @@
       "title": "Trang sổ có chữ kí",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Vẹt Xanh xé tặng {name} một trang sổ sưu tầm, có chữ kí của cả hai mươi chín chữ cái. Chữ Đ kí to nhất, còn vẽ thêm cái mũ gạch ngang cho oách."
+      "text": "Vẹt Xanh xé tặng {name} một trang sổ sưu tầm, có chữ kí của cả hai mươi chín chữ cái. Chữ Đ kí to nhất, còn vẽ thêm cái mũ gạch ngang cho oách.",
+      "en": {
+        "title": "A page full of autographs",
+        "text": "Vẹt Xanh tears out a page from his collection book for {name}, signed by all twenty-nine letters. Đ signs the biggest, and even draws on the crossbar hat to look extra cool."
+      }
     },
     {
       "id": "mo-bai-20",
       "title": "Tiếng gầm sau bụi gai",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đang vui thì “Grừ!” vang lên từ bụi gai cuối rừng. Sư Tử Xù ló cái bờm ra rồi thụt ngay vào. Hình như bạn ấy muốn làm quen, mà ai cũng chạy mất?"
+      "text": "Đang vui thì “Grừ!” vang lên từ bụi gai cuối rừng. Sư Tử Xù ló cái bờm ra rồi thụt ngay vào. Hình như bạn ấy muốn làm quen, mà ai cũng chạy mất?",
+      "en": {
+        "title": "A roar behind the thorn bush",
+        "text": "In the middle of the fun, a “Grrr!” comes from the thorn bush at the edge of the forest. Sư Tử Xù pokes his mane out, then ducks straight back in. It looks like he wants to make friends, but everyone runs away?"
+      }
     }
   ],
   "reward": {

@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 10,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Sharp Eyes Snap",
+    "howTo": [
+      "Cards flip up one by one. When a new card exactly matches the one before, tap fast!",
+      "Tap before Monkey and {name} wins the whole pile. Tap when the two differ and you lose a card."
+    ]
+  }
 }

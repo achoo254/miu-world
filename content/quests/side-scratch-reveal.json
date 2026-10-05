@@ -46,7 +46,19 @@
         {
           "text": "Cho tớ cào tấm đầu tiên!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "I've hidden animal pictures under the snow on these cards. {name}, have a guess!",
+          "Scratch just a little and guess right away for two points. Only great guessers manage it!"
+        ],
+        "choices": [
+          {
+            "text": "Let me scratch the first card!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đoán đúng để được mười điểm nhé!",
       "game": "scratch-reveal",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Scratch and Guess",
+        "prompt": "Guess right to earn 10 points!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nai Leo Vách tròn mắt: {name} chỉ nhìn một góc mà đã đoán ra!"
+      "text": "Nai Leo Vách tròn mắt: {name} chỉ nhìn một góc mà đã đoán ra!",
+      "en": {
+        "title": "Reward",
+        "text": "Nai Leo Vách's eyes go wide: {name} guessed it from one little corner!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Nai còn cả xấp thẻ phủ tuyết, khi nào rảnh {name} ghé trạm thám hiểm nhé."
+      "text": "Nai còn cả xấp thẻ phủ tuyết, khi nào rảnh {name} ghé trạm thám hiểm nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Nai has a whole stack of snowy cards. Visit the explorer station when you're free, {name}."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Scratch the Snow, Guess the Animal with Nai Leo Vách",
+    "summary": "Rub your finger to scratch the snow off a card, watch the picture appear, and guess the animal."
   }
 }

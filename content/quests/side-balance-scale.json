@@ -46,7 +46,19 @@
         {
           "text": "Để tớ tính nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, my scale keeps tipping to one side!",
+          "Add up the numbers on the weights to match the other pan, and it'll balance."
+        ],
+        "choices": [
+          {
+            "text": "Let me work it out!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Làm cân thăng bằng năm lần nhé!",
       "game": "balance-scale",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Balance the scale",
+        "prompt": "Balance the scale 5 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cân thẳng tắp rồi, {name} tính nhanh như chớp!"
+      "text": "Cân thẳng tắp rồi, {name} tính nhanh như chớp!",
+      "en": {
+        "title": "Reward",
+        "text": "Perfectly level! {name} adds as fast as lightning!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ngày phiên nào cũng có hàng cần cân, tớ chờ cậu ở bến hàng."
+      "text": "Ngày phiên nào cũng có hàng cần cân, tớ chờ cậu ở bến hàng.",
+      "en": {
+        "title": "See you soon",
+        "text": "There's always cargo to weigh on market day. I'll wait for you at the wharf."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Balance the scale with Voi Bốc Hàng",
+    "summary": "The left pan holds numbered weights: pick weights for the right pan so both sides are equal."
   }
 }

@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 4,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Message in the current",
+    "howTo": [
+      "Tap the water to drop a stone (three at most). The current bends aside when it reaches a stone.",
+      "Tap the bottle to set it afloat. {name}, steer the current to carry the letter to the island!"
+    ]
+  }
 }

@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 4,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Freeze a bridge",
+    "howTo": [
+      "{name}, tap a water square to freeze it; each one costs a snowflake.",
+      "Join ice from the left bank to the right so the penguin can cross. Use the ice already there to save flakes!",
+      "Run out of snowflakes before the bridge is done and the ice melts: redo that lake."
+    ]
+  }
 }

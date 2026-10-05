@@ -1,0 +1,209 @@
+{
+  "id": "yarn-fixture-song-1",
+  "region": "khu-rung-bi-mat",
+  "chapter": 2,
+  "title": "Chuyện của Họa Mi, chương 1",
+  "status": "active",
+  "category": "story",
+  "summary": "Chương 1 thử cho {name}.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Họa Mi",
+    "where": "Rừng thử",
+    "goal": "Giúp Họa Mi",
+    "play": "Tìm, đố, chọn",
+    "learn": "Phép cộng",
+    "reward": "XP, xu",
+    "next": "Chương sau"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "tim",
+    "learn": "do",
+    "challenge": "do",
+    "decision": "chon",
+    "finale": "chon",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "places": {
+    "hoa-mi-rung": "Vòm lá",
+    "tim": "Bãi cỏ",
+    "ancient-tree": "Gốc cổ thụ",
+    "animal-beaver": "Bờ suối"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Họa Mi",
+      "goTo": "Tới vòm lá gặp Họa Mi",
+      "kind": "dialogue",
+      "target": "hoa-mi-rung",
+      "lines": [
+        {
+          "speaker": "Họa Mi Rừng Xanh",
+          "text": "{name} ơi, chương 1 bắt đầu rồi!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đi thôi!"
+        }
+      ],
+      "en": {
+        "title": "Meet Họa Mi",
+        "goTo": "Go to the leaf dome to meet Họa Mi",
+        "lines": [
+          "{name}, chapter 1 begins!"
+        ],
+        "choices": [
+          {
+            "text": "Let us go!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim",
+      "title": "Tìm lông vũ",
+      "goTo": "Ra bãi cỏ tìm lông vũ",
+      "kind": "search",
+      "targets": [
+        "st-fixture-feather-1"
+      ],
+      "en": {
+        "title": "Find the feather",
+        "goTo": "Search the meadow for the feather"
+      }
+    },
+    {
+      "id": "do",
+      "title": "Câu đố",
+      "goTo": "Tới gốc cổ thụ giải đố",
+      "kind": "riddle",
+      "target": "ancient-tree",
+      "question": "2 + 3 = ?",
+      "skill": "phep-cong",
+      "answer": {
+        "value": 5
+      },
+      "support": {
+        "guide": [
+          "Đếm thêm ba"
+        ],
+        "hint": "Bắt đầu từ hai",
+        "answer": {
+          "text": "5",
+          "explanation": "2 + 3 = 5"
+        },
+        "en": {
+          "guide": [
+            "Count on three"
+          ],
+          "hint": "Start from two",
+          "answer": {
+            "text": "5",
+            "explanation": "2 + 3 = 5"
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi 1a",
+          "Giỏi quá 1b",
+          "Chuẩn 1c"
+        ],
+        "wrong": [
+          "Thử lại 1a",
+          "Gần rồi 1b",
+          "Đếm lại 1c"
+        ],
+        "en": {
+          "right": [
+            "Right 1a",
+            "Great 1b",
+            "Spot on 1c"
+          ],
+          "wrong": [
+            "Try again 1a",
+            "Close 1b",
+            "Count again 1c"
+          ]
+        }
+      },
+      "en": {
+        "title": "A riddle",
+        "goTo": "Go to the old tree to solve the riddle",
+        "question": "2 + 3 = ?"
+      }
+    },
+    {
+      "id": "chon",
+      "title": "Chọn quà",
+      "goTo": "Ra bờ suối chọn quà",
+      "kind": "decision",
+      "target": "animal-beaver",
+      "prompt": "Tặng gì?",
+      "choices": [
+        {
+          "id": "hoa",
+          "text": "Hoa",
+          "consequence": "Họa Mi cười"
+        },
+        {
+          "id": "la",
+          "text": "Lá",
+          "consequence": "Họa Mi hát"
+        }
+      ],
+      "en": {
+        "title": "Pick a gift",
+        "goTo": "Go to the stream bank to pick a gift",
+        "prompt": "What to give?",
+        "choices": [
+          {
+            "text": "A flower",
+            "consequence": "Họa Mi smiles"
+          },
+          {
+            "text": "A leaf",
+            "consequence": "Họa Mi sings"
+          }
+        ]
+      }
+    },
+    {
+      "id": "thuong",
+      "title": "Phần thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Xong chương 1!",
+      "en": {
+        "title": "Reward",
+        "text": "Chapter 1 done!"
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Tiếp theo",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hẹn chương sau.",
+      "en": {
+        "title": "Next",
+        "text": "See you in the next chapter."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 40,
+    "coin": 10,
+    "skillXp": {
+      "phep-cong": 1
+    }
+  },
+  "en": {
+    "title": "Họa Mi's story, chapter 1",
+    "summary": "Test chapter 1 for {name}."
+  }
+}

@@ -46,7 +46,19 @@
         {
           "text": "Lân ơi, múa thôi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Boom-tak-boom! {name}, do the lion dance with me and liven up the event square!",
+          "When an arrow lands in the circle, swipe that way and the lion will toss its head with you."
+        ],
+        "choices": [
+          {
+            "text": "Come on, lion, let us dance!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Múa lân được ba mươi sáu điểm nhé!",
       "game": "lion-dance-arrows",
-      "goal": 36
+      "goal": 36,
+      "en": {
+        "title": "Lion dance drums",
+        "prompt": "Score 36 points in the lion dance!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Lân Con Rộn Ràng lắc đầu chớp mắt: {name} múa đẹp nhất hội!"
+      "text": "Lân Con Rộn Ràng lắc đầu chớp mắt: {name} múa đẹp nhất hội!",
+      "en": {
+        "title": "Reward",
+        "text": "Lân Con Rộn Ràng shakes its head and blinks: {name} is the best dancer at the festival!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Hội nào cũng có múa lân, cậu cứ tìm Lân Con Rộn Ràng ở khu sự kiện."
+      "text": "Hội nào cũng có múa lân, cậu cứ tìm Lân Con Rộn Ràng ở khu sự kiện.",
+      "en": {
+        "title": "See you soon",
+        "text": "Every festival has a lion dance, so look for Lân Con Rộn Ràng at the event square."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Lion dance to the drums with Lân Con Rộn Ràng",
+    "summary": "The festival drums pound and arrows fly into a circle: swipe the right way on the beat to make the lion dance."
   }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Tớ dám chứ, đi thôi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hey {name}, dare to cross the monkey bridge with me?",
+          "Whichever way you lean, drag your finger the other way and you'll stay steady."
+        ],
+        "choices": [
+          {
+            "text": "Of course I dare, let's go!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đi qua trọn ba cây cầu khỉ nhé!",
       "game": "monkey-bridge",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Monkey Bridge",
+        "prompt": "Cross 3 whole monkey bridges!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chà, {name} đi cầu còn vững hơn cả khỉ tớ!"
+      "text": "Chà, {name} đi cầu còn vững hơn cả khỉ tớ!",
+      "en": {
+        "title": "Reward",
+        "text": "Wow, {name} crosses the bridge steadier than me, and I'm a monkey!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cầu tre còn nhiều nhịp lắm, mai mình lại đi tiếp nha."
+      "text": "Cầu tre còn nhiều nhịp lắm, mai mình lại đi tiếp nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "The bamboo bridge has lots more spans. Let's carry on tomorrow."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Cross the monkey bridge with Khỉ Cầu Tre",
+    "summary": "Wobble across the bamboo bridge over the stream and keep your balance so you don't fall in."
   }
 }

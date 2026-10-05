@@ -46,7 +46,19 @@
         {
           "text": "Để cháu sắp lại cho!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "My fruit crate is such a jumble, {name}!",
+          "Drop the fruit so two of a kind touch, and they'll merge into a bigger one."
+        ],
+        "choices": [
+          {
+            "text": "Let me sort it out!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Gộp quả được một trăm năm mươi điểm nhé!",
       "game": "fruit-merge",
-      "goal": 150
+      "goal": 150,
+      "en": {
+        "title": "Fruit merge",
+        "prompt": "Score 150 points merging fruit!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cả quả dưa hấu to tướng luôn, {name} khéo ghê!"
+      "text": "Cả quả dưa hấu to tướng luôn, {name} khéo ghê!",
+      "en": {
+        "title": "Reward",
+        "text": "A giant watermelon! {name}, you're so clever!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Thùng quả lúc nào cũng đầy ở gian đồ ăn, cháu ghé chơi tiếp nhé."
+      "text": "Thùng quả lúc nào cũng đầy ở gian đồ ăn, cháu ghé chơi tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The crate by the food stall is always full, so drop by and play again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Merge the falling fruit with Auntie Hạnh",
+    "summary": "Drop fruit into the crate: two of the same that touch merge into a bigger one."
   }
 }

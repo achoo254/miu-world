@@ -84,7 +84,27 @@
           "text": "Đốm ơi, cậu không hoa mắt đâu, mình cũng nghe thấy!",
           "reply": "Đốm ngồi phịch xuống, lại làm đổ thêm ba khối nữa. Tí Hon thở dài: lại phải nhặt rồi."
         }
-      ]
+      ],
+      "en": {
+        "title": "The block tower comes crashing down",
+        "goTo": "Run down to the woodshop at the foot of the hill, where the crash just came from",
+        "lines": [
+          "Oink oink… is that you, {name}? I've been stacking blocks since morning to make a castle, but every time it turns into… a heap.",
+          "Just now I put the hundredth block on top and then, crash! Blocks rolled all over the yard.",
+          "Hey! Who just sat on my head? I'm a Lego brick, not a pillow!",
+          "Huh… a wooden block… that talks?! {name}, I'm not seeing things, am I?"
+        ],
+        "choices": [
+          {
+            "text": "Hello, Lego friend! What's your name?",
+            "reply": "Tí Hon dusts off his hat: just call me Tí Hon. Gather up all my brothers and sisters first, then I'll tell you everything!"
+          },
+          {
+            "text": "You're not seeing things, Đốm, I heard it too!",
+            "reply": "Đốm plops down and knocks over three more blocks. Tí Hon sighs: more picking up, then."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-khoi-lan",
@@ -975,7 +995,26 @@
           "text": "Mình lắp xong lâu đài, chụp ảnh lại, rồi tháo ra lắp tàu thuỷ!",
           "reply": "Tí Hon nhảy tưng tưng: đúng là cách chơi lê-gô chuẩn nhất rừng!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Đốm wants to glue the whole castle",
+        "goTo": "Run into the woodshop, Đốm is hugging an enormous pot of glue",
+        "lines": [
+          "What if I glue all the blocks together so the castle never falls down again? Good idea, right?",
+          "No! If you glue me, I can never come apart and be built into anything else!",
+          "{name}, whose side are you on? Mine or Tí Hon's?"
+        ],
+        "choices": [
+          {
+            "text": "Don't glue it, Đốm, just build slowly and patiently.",
+            "reply": "Đốm puts the glue away: all right, slowly does it. But if it falls, help me pick up, {name}!"
+          },
+          {
+            "text": "Let's finish the castle, take a photo, then take it apart and build a ship!",
+            "reply": "Tí Hon bounces up and down: that's the proper way to play Lego, best in the forest!"
+          }
+        ]
+      }
     },
     {
       "id": "chuong-gio-chuon-chuon",
@@ -1236,14 +1275,22 @@
       "title": "Chú lợn gỗ lắp ráp",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Đốm kiên nhẫn ngồi lắp cả buổi chiều, không làm đổ khối nào, rồi tặng {name} một chú lợn rừng gỗ tháo lắp được. Tí Hon đứng gác trên lưng chú lợn như một hiệp sĩ tí hon."
+      "text": "Đốm kiên nhẫn ngồi lắp cả buổi chiều, không làm đổ khối nào, rồi tặng {name} một chú lợn rừng gỗ tháo lắp được. Tí Hon đứng gác trên lưng chú lợn như một hiệp sĩ tí hon.",
+      "en": {
+        "title": "A wooden pig to build",
+        "text": "Đốm sits patiently building all afternoon without knocking over a single block, then gives {name} a wooden wild pig you can take apart and put back together. Tí Hon stands guard on its back like a teeny knight."
+      }
     },
     {
       "id": "mo-bai-23",
       "title": "Trò chơi thiếu luật",
       "kind": "next",
       "trigger": "auto",
-      "text": "Trên bãi đất trống giữa rừng, Cáo Tũn rủ cả bọn chơi rồng rắn lên mây, nhưng vừa xếp hàng xong thì Cáo Tũn gãi đầu: ơ… luật chơi thế nào nhỉ?"
+      "text": "Trên bãi đất trống giữa rừng, Cáo Tũn rủ cả bọn chơi rồng rắn lên mây, nhưng vừa xếp hàng xong thì Cáo Tũn gãi đầu: ơ… luật chơi thế nào nhỉ?",
+      "en": {
+        "title": "A game with no rules",
+        "text": "In the clearing in the middle of the forest, Cáo Tũn invites everyone to play rồng rắn lên mây (the dragon-snake game), but as soon as they've lined up, Cáo Tũn scratches his head: um… how do you play again?"
+      }
     }
   ],
   "reward": {

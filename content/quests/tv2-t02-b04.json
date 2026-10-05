@@ -91,7 +91,27 @@
           "text": "Đếm cũng là một việc có ích mà!",
           "reply": "Ơ… ừ nhỉ, không ai đếm thì sao biết đủ mật cho mùa đông! Nhưng cứ phụ tớ ghi sổ đã nhé."
         }
-      ]
+      ],
+      "en": {
+        "title": "Gấu Nhẩm has no job yet",
+        "goTo": "Head to the beehive flower garden, where Gấu Nhẩm is muttering as he counts bees",
+        "lines": [
+          "One thousand two hundred and three! {name}, perfect timing! I just finished counting the bees in the hive, and every one of them is busy, busy, busy.",
+          "Big-sister bees gather nectar, little bees build the comb, an uncle bee guards the door… and all I get to do is count. My head aches from all the sums!",
+          "Woof! Gấu Nhẩm wants a real job, and that job needs a helper. I ran all the way to the meadow to fetch {name}!",
+          "The queen bee asked me to write down everyone who works around the garden. Will you help me?"
+        ],
+        "choices": [
+          {
+            "text": "I'll help you, no job is too small!",
+            "reply": "Hooray! With you, the bee garden has one thousand two hundred and four workers!"
+          },
+          {
+            "text": "Counting is a useful job too!",
+            "reply": "Oh… right! Without counting, how would we know there's enough honey for winter? But help me fill in the notebook first."
+          }
+        ]
+      }
     },
     {
       "id": "tim-nguoi-lam-viec",
@@ -729,7 +749,30 @@
           "text": "Đi hút thêm mật ở gốc đào vừa nở.",
           "reply": "Mật hoa đào chắc ngọt lắm! Nhưng đường tới gốc đào phải băng qua góc vườn um tùm đấy."
         }
-      ]
+      ],
+      "en": {
+        "title": "One last job before dark",
+        "goTo": "Go out to the beehive garden, Gấu Nhẩm has something to talk over",
+        "lines": [
+          "Let me add it up: I did four jobs today and I'm not one bit tired. How strange!",
+          "Because “làm việc thật là vui”, working is such fun! I've known that line by heart since I heard {name} read the lesson.",
+          "There's one more job before it gets dark. Will you pick it for me, {name}?"
+        ],
+        "choices": [
+          {
+            "text": "Mind the baby bees so Mother Bee can rest a while.",
+            "reply": "Like a kid who plays with a little sibling to help Mum! But first we must clear a corner of the garden so the little ones have room to play."
+          },
+          {
+            "text": "Clear the corner of the garden that's all overgrown.",
+            "reply": "Brilliant! They say there's even a bed lost somewhere in that tall grass. Let's run and look!"
+          },
+          {
+            "text": "Gather more nectar from the peach tree that just bloomed.",
+            "reply": "Peach-blossom honey must be so sweet! But the path to the peach tree cuts right through that overgrown corner."
+          }
+        ]
+      }
     },
     {
       "id": "vat-trong-vuon",
@@ -963,14 +1006,22 @@
       "title": "Huy hiệu sáp ong",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Nhẩm tặng {name} một hũ mật hoa đào bé xíu và chiếc huy hiệu sáp ghi: người phụ việc thứ một nghìn hai trăm lẻ bốn của tổ ong."
+      "text": "Gấu Nhẩm tặng {name} một hũ mật hoa đào bé xíu và chiếc huy hiệu sáp ghi: người phụ việc thứ một nghìn hai trăm lẻ bốn của tổ ong.",
+      "en": {
+        "title": "The beeswax badge",
+        "text": "Gấu Nhẩm gives {name} a tiny jar of peach-blossom honey and a wax badge that reads: helper number one thousand two hundred and four of the beehive."
+      }
     },
     {
       "id": "mo-bai-5",
       "title": "Ai đó soi bóng bên bến sông",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bên bến nước soi bóng, Voi Út, cô em gái bé nhất của Voi Tùng, đang lén gài cành cây khô lên đầu cho giống bạn Hươu. Chuyện gì thế nhỉ?"
+      "text": "Bên bến nước soi bóng, Voi Út, cô em gái bé nhất của Voi Tùng, đang lén gài cành cây khô lên đầu cho giống bạn Hươu. Chuyện gì thế nhỉ?",
+      "en": {
+        "title": "Someone gazing into the river",
+        "text": "By the mirror-still river landing, Voi Út, the youngest sister of Voi Tùng, is secretly sticking dry twigs on her head to look like her friend the deer. What's going on?"
+      }
     }
   ],
   "reward": {

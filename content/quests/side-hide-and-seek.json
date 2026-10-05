@@ -46,7 +46,19 @@
         {
           "text": "Một, hai, ba, tớ đi tìm đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, you be the seeker! My friends and I will go hide!",
+          "If someone peeks out, tap that spot at once, and do not be fooled by leaves rustling in the wind."
+        ],
+        "choices": [
+          {
+            "text": "One, two, three, ready or not!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Tìm ra mười hai lần các bạn trốn nhé!",
       "game": "hide-and-seek",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Hide and seek",
+        "prompt": "Find the hiding friends 12 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ủn ỉn, trốn kỹ thế mà {name} vẫn tìm ra hết!"
+      "text": "Ủn ỉn, trốn kỹ thế mà {name} vẫn tìm ra hết!",
+      "en": {
+        "title": "Reward",
+        "text": "Oink oink! We hid so well, yet {name} found us all!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Gò đất còn nhiều chỗ trốn lắm, ván sau tớ trốn kỹ hơn."
+      "text": "Gò đất còn nhiều chỗ trốn lắm, ván sau tớ trốn kỹ hơn.",
+      "en": {
+        "title": "See you soon",
+        "text": "The hill has lots more hiding spots, and next round I will hide even better."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Hide and seek with Heo Rồng Rắn",
+    "summary": "Friends hide behind trees, bushes and barrels: tap the exact spot where someone just peeked out."
   }
 }

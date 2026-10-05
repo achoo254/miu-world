@@ -46,7 +46,19 @@
         {
           "text": "Cháu vụt thanh khang bay xa tít!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Come to this open yard, {name}. Let's play the traditional game of đánh khăng, stick-flicking!",
+          "Flip the short stick into the air, then swing the bat right on target to send it flying far."
+        ],
+        "choices": [
+          {
+            "text": "I'll whack the stick far away!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đánh thanh khang bay xa đạt một trăm mét ngoài đồng nhé!",
       "game": "danh-khang",
-      "goal": 100
+      "goal": 100,
+      "en": {
+        "title": "Đánh khăng (stick tip-cat)",
+        "prompt": "Hit the stick 100 metres across the field!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ông Lão Pháo Đất vuốt chòm râu bạc, khen {name} tinh mắt đánh trúng thanh khang tít tắp!"
+      "text": "Ông Lão Pháo Đất vuốt chòm râu bạc, khen {name} tinh mắt đánh trúng thanh khang tít tắp!",
+      "en": {
+        "title": "Reward",
+        "text": "Ông Lão Pháo Đất strokes his silver beard: {name} has sharp eyes and hit the stick so far!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Trò chơi dân gian bổ ích lắm, khi nào rảnh rỗi cháu lại tới sân nông trại chơi khang."
+      "text": "Trò chơi dân gian bổ ích lắm, khi nào rảnh rỗi cháu lại tới sân nông trại chơi khang.",
+      "en": {
+        "title": "See you soon",
+        "text": "Folk games are good for you. Whenever you're free, come to the farm yard to play đánh khăng."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Đánh khăng in the Fields with Ông Lão Pháo Đất",
+    "summary": "Two bamboo sticks, one short and one long, in a wide yard; flip the short stick up and whack it far."
   }
 }

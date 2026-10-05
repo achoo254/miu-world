@@ -46,7 +46,19 @@
         {
           "text": "Nắng mưa hòa thuận, cây lớn nhanh nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Young trees in the pine forest need both cool rain and warm sunshine, {name}.",
+          "Drag the cloud to block the sun or let the rain fall, so both gauges stay in the green."
+        ],
+        "choices": [
+          {
+            "text": "Sun and rain together, grow fast!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chăm cây lớn trĩu quả qua năm đợt phát triển nhé!",
       "game": "sun-rain-balance",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Sun and Rain for the Tree",
+        "prompt": "Help the tree grow and bear fruit over 5 growth stages!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hươu Đốm Rừng Rậm reo mừng: cây non trĩu cành xanh tốt nhờ bàn tay chăm chút của {name}!"
+      "text": "Hươu Đốm Rừng Rậm reo mừng: cây non trĩu cành xanh tốt nhờ bàn tay chăm chút của {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Hươu Đốm Rừng Rậm cheers: the young tree is green and laden thanks to {name}'s care!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Rừng thông còn nhiều mầm non cần tưới, {name} nhớ quay lại trảng cỏ chăm cây cùng hươu nha."
+      "text": "Rừng thông còn nhiều mầm non cần tưới, {name} nhớ quay lại trảng cỏ chăm cây cùng hươu nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "Lots of pine seedlings still need watering. Come back to the meadow and tend them with the deer, {name}."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Balance sun and rain with Hươu Đốm Rừng Rậm",
+    "summary": "A young pine seedling is growing: move the clouds to give it just the right sun and rain."
   }
 }

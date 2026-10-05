@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Hidden Word Search",
+    "howTo": [
+      "Six words pictured at the side hide in the letter grid, going across or down.",
+      "{name} drags a finger along a word (or taps its first letter, then its last).",
+      "Each word found is a point. Find them all for a new grid."
+    ]
+  }
 }

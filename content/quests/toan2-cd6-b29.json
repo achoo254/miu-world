@@ -66,7 +66,26 @@
           "text": "Khò dậy đi tìm cùng tớ nào!",
           "reply": "Gấu Trúc Khò lồm cồm bò dậy: Được, nhưng đi chậm thôi nhé, chân tớ còn đang ngủ."
         }
-      ]
+      ],
+      "en": {
+        "title": "Who made the clock nod off?",
+        "goTo": "Go to the foot of the clock tower, where Gấu Trúc Khò is snoring away",
+        "lines": [
+          "Zzz... zzz... Oh, is that you, {name}? What time is it? I only shut my eyes for... three days.",
+          "Only three hours, Khò! But you slept through winding the clock, the tower clock is showing all the wrong times, and the rooster crowed cock-a-doodle-doo at midnight.",
+          "Uncle Tròn told me to do everything slowly and surely, but I went so slowly I... fell asleep. And the two clock hands have fallen onto the grass, too."
+        ],
+        "choices": [
+          {
+            "text": "You sit tight, Khò, I'll find the hands!",
+            "reply": "Gấu Trúc Khò hugs a clump of bamboo and nods: Thanks, I'll sit here... and guard the bamboo."
+          },
+          {
+            "text": "Up you get, Khò, come search with me!",
+            "reply": "Gấu Trúc Khò clambers to his feet: Okay, but let's go slowly, my legs are still asleep."
+          }
+        ]
+      }
     },
     {
       "id": "tim-kim-dong-ho",
@@ -104,7 +123,22 @@
           "text": "Lắp kim rồi đọc giờ thôi!",
           "reply": "Ông Khuê vặn cờ lê lắp kim vào trục: Xong! Giờ nhìn mấy bức tranh trên tường nhé, cháu."
         }
-      ]
+      ],
+      "en": {
+        "title": "How many hours in a day?",
+        "goTo": "Bring the hands up to the clock machine room, where Grandpa Khuê is polishing the gears",
+        "lines": [
+          "The short hand is the hour hand, the long hand is the minute hand. A day has 24 hours, and the hour hand goes all the way round the clock face twice.",
+          "In the afternoon people also say it another way: 1 in the afternoon is 13 o'clock, 4 in the afternoon is 16 o'clock, 8 in the evening is 20 o'clock.",
+          "Twenty-four hours in a day? So if I sleep twenty hours, I still have four hours for... munching bamboo shoots!"
+        ],
+        "choices": [
+          {
+            "text": "Let's fit the hands and read the time!",
+            "reply": "Grandpa Khuê turns his spanner and fits the hands on the spindle: Done! Now look at those pictures on the wall, child."
+          }
+        ]
+      }
     },
     {
       "id": "cau-ca-buoi-chieu",
@@ -423,7 +457,25 @@
           "text": "Vặn từ từ thôi cho chắc",
           "reply": "Gấu Trúc Khò vặn từng nấc một, đếm khe khẽ: một, hai, ba… ơ, ngáp…"
         }
-      ]
+      ],
+      "en": {
+        "title": "How do we wind the clock?",
+        "goTo": "Go back to the clock machine room, where Grandpa Khuê hands you the winding key",
+        "lines": [
+          "Now for the minutes. When the long hand goes all the way round, that's 60 minutes, which is 1 hour. When the long hand points to 3, that's 15 minutes; when it points to 6, that's 30 minutes.",
+          "I'll wind the clock! Do you want me to wind it super fast to catch up, or slowly so the clock doesn't get a fright?"
+        ],
+        "choices": [
+          {
+            "text": "Wind it fast, Khò!",
+            "reply": "Gấu Trúc Khò winds like a whirlwind, then plops down: Phew, that's the fastest I've ever been!"
+          },
+          {
+            "text": "Wind it slowly to be safe",
+            "reply": "Gấu Trúc Khò turns it one click at a time, counting softly: one, two, three... oh, yaaawn..."
+          }
+        ]
+      }
     },
     {
       "id": "viet-hoc-bai-buoi-sang",
@@ -892,14 +944,22 @@
       "title": "Người giữ giờ của tháp",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tháp đồng hồ ngân vang mười hai tiếng boong, vọng xuống tận phòng đọc. Ông Khuê trao cho {name} huy hiệu \"Người giữ giờ\", còn Gấu Trúc Khò hứa từ nay đặt báo thức… ba cái liền."
+      "text": "Tháp đồng hồ ngân vang mười hai tiếng boong, vọng xuống tận phòng đọc. Ông Khuê trao cho {name} huy hiệu \"Người giữ giờ\", còn Gấu Trúc Khò hứa từ nay đặt báo thức… ba cái liền.",
+      "en": {
+        "title": "Keeper of the tower time",
+        "text": "The clock tower rings out twelve booming chimes that echo all the way down to the reading room. Grandpa Khuê gives {name} the \"Timekeeper\" badge, and Gấu Trúc Khò promises from now on to set... three alarms in a row."
+      }
     },
     {
       "id": "to-lich-bi-xe",
       "title": "Tờ lịch thiếu ngày",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ phòng lịch trên tháp, Voi Bảo kêu lên: tờ lịch tháng treo tường bị ai xé mất mấy ngày rồi, thế này thì biết hôm nay ngày bao nhiêu!"
+      "text": "Từ phòng lịch trên tháp, Voi Bảo kêu lên: tờ lịch tháng treo tường bị ai xé mất mấy ngày rồi, thế này thì biết hôm nay ngày bao nhiêu!",
+      "en": {
+        "title": "Days missing from the calendar",
+        "text": "From the calendar room in the tower, Voi Bảo cries out: somebody has torn some days off the wall calendar, so how is anyone supposed to know today's date?"
+      }
     }
   ],
   "reward": {

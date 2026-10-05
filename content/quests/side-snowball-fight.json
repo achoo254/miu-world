@@ -46,7 +46,19 @@
         {
           "text": "Tớ núp kỹ, ném trúng!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The other team has challenged us to a snowball fight, {name}. Into the fort!",
+          "When a snowball flies at you, duck right away, then pop up and throw one back."
+        ],
+        "choices": [
+          {
+            "text": "Duck low, aim true!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ném trúng các bạn mười lăm lần là thắng!",
       "game": "snowball-fight",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Snow Fort Snowball Fight",
+        "prompt": "Hit the other team 15 times to win!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Trắng giơ cao nắm tuyết: đội mình thắng nhờ {name} đấy!"
+      "text": "Gấu Trắng giơ cao nắm tuyết: đội mình thắng nhờ {name} đấy!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Trắng holds up a snowball: our team won thanks to {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Trận ném tuyết sau còn vui hơn, nhớ ghé bãi người tuyết tìm Gấu Trắng nhé."
+      "text": "Trận ném tuyết sau còn vui hơn, nhớ ghé bãi người tuyết tìm Gấu Trắng nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The next snowball fight will be even more fun. Look for Gấu Trắng in the snowman field."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Snowball Fight with Gấu Trắng Lăn Tuyết",
+    "summary": "Friends pop up behind snow forts; tap to throw and hold to duck when snowballs fly your way."
   }
 }

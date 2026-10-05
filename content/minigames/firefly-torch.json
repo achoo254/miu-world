@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 60,
   "goal": 20,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Night firefly hunt",
+    "howTo": [
+      "The night forest is pitch black. {name}, drag your finger to shine the torch.",
+      "Wherever fireflies twinkle, shine the light there, then tap a glowing one to put it in the jar.",
+      "Fireflies outside the light can't be caught yet!"
+    ]
+  }
 }

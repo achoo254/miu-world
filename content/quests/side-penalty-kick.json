@@ -36,7 +36,19 @@
         { "speaker": "Vẹt", "text": "Tớ vừa dựng xong khung thành bằng cành cây đấy {name}!" },
         { "speaker": "Vẹt", "text": "Tớ bắt bóng giỏi lắm, thử sút qua tớ xem nào." }
       ],
-      "choices": [{ "text": "Coi chừng cú sút của tớ!" }]
+      "choices": [{ "text": "Coi chừng cú sút của tớ!" }],
+      "en": {
+        "title": "Vẹt's Challenge",
+        "lines": [
+          "I just finished building a goal out of branches, {name}!",
+          "I'm a brilliant goalkeeper. Go on, try to get one past me."
+        ],
+        "choices": [
+          {
+            "text": "Watch out for my kick!"
+          }
+        ]
+      }
     },
     {
       "id": "kick",
@@ -46,22 +58,38 @@
       "trigger": "auto",
       "prompt": "Ghi tám bàn qua tay Vẹt nhé!",
       "game": "penalty-kick",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Penalty Kick",
+        "prompt": "Score eight goals past Vẹt!"
+      }
     },
     {
       "id": "thanks",
       "title": "Vẹt chịu thua",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Vẹt xòe cánh: {name} sút hay quá, tớ chịu thua!"
+      "text": "Vẹt xòe cánh: {name} sút hay quá, tớ chịu thua!",
+      "en": {
+        "title": "Vẹt Gives Up",
+        "text": "Vẹt spreads his wings: what a kicker you are, {name}, I give up!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn trận sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Vẹt sẽ tập bắt bóng thêm, hẹn {name} trận sau."
+      "text": "Vẹt sẽ tập bắt bóng thêm, hẹn {name} trận sau.",
+      "en": {
+        "title": "Rematch Soon",
+        "text": "Vẹt will practise his saves. See you at the next match, {name}."
+      }
     }
   ],
-  "reward": { "xp": 15, "coin": 5 }
+  "reward": { "xp": 15, "coin": 5 },
+  "en": {
+    "title": "Penalty Kicks with Vẹt",
+    "summary": "Vẹt is in goal between two branch posts: kick the ball into the open space."
+  }
 }

@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 25,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Shape Sorter Box",
+    "howTo": [
+      "A shape slides down toward the box. Only the hole at the top of the lid is under it.",
+      "{name} taps the right side of the box to turn the lid clockwise, the left side to turn it back.",
+      "When the matching hole is on top, the shape drops in: one point."
+    ]
+  }
 }

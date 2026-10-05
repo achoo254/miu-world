@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 16,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Triple Tile Match",
+    "howTo": [
+      "{name} taps a tile with nothing on top of it to send it to the tray (covered tiles look dark).",
+      "Three matching tiles in the tray vanish for a point.",
+      "The tray has only seven spaces: when it fills, the board resets but you keep your points."
+    ]
+  }
 }

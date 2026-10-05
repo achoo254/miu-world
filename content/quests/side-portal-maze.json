@@ -46,7 +46,19 @@
         {
           "text": "Cháu khám phá cổng phép thuật!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, are you brave enough to enter the portal maze under the moat with me?",
+          "Step through a portal and you pop out at the door of the same colour. Plan your way to the golden chest."
+        ],
+        "choices": [
+          {
+            "text": "I'll explore the magic portals!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Tìm đường qua cổng phép mở được bốn rương báu bí mật nhé!",
       "game": "portal-maze",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Magic Portal Maze",
+        "prompt": "Find a path through the portals and open 4 secret chests!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bác Thợ Khóa Thành tấm tắc ngợi khen {name} định hướng không gian cổng phép kỳ tài!"
+      "text": "Bác Thợ Khóa Thành tấm tắc ngợi khen {name} định hướng không gian cổng phép kỳ tài!",
+      "en": {
+        "title": "Reward",
+        "text": "Bác Thợ Khóa Thành is full of praise: {name} finds the way through portals like a genius!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mê cung dưới hào còn nhiều ngóc ngách bí ẩn, lúc nào thích cháu lại ghé cầu đá qua hào."
+      "text": "Mê cung dưới hào còn nhiều ngóc ngách bí ẩn, lúc nào thích cháu lại ghé cầu đá qua hào.",
+      "en": {
+        "title": "See you soon",
+        "text": "The maze under the moat has many mysterious nooks. Come to the stone bridge whenever you like."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Portal Maze with Bác Thợ Khóa Thành",
+    "summary": "A tunnel under the moat has magic portals; pick the right coloured portal to reach the treasure chest."
   }
 }

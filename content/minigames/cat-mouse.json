@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 75,
   "goal": 5,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Cat and mouse",
+    "howTo": [
+      "Friends hold hands in a circle, arms sometimes up (green gap) and sometimes down (red bar).",
+      "{name}, drag the mouse through a gap that's about to close so the chasing cat gets blocked.",
+      "Each time the cat is blocked is a point. If the cat catches the mouse, it goes back to the middle."
+    ]
+  }
 }

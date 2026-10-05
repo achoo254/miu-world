@@ -63,7 +63,26 @@
           "text": "Người tuyết to cỡ nào ạ?",
           "reply": "Cao hơn cả bác cơ, đứng ngay bãi người tuyết đầu làng!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Meet Gấu Băng Tuyết the Polar Bear",
+        "goTo": "Go to the snowy mountain gate with the snowflake flag",
+        "lines": [
+          "Brrr, it's freezing! Hello {name}, welcome up to the snowy mountain.",
+          "The village wanted to build a giant snowman to greet visitors, but the carrot, the wool scarf and the lump of coal for its eyes have all rolled away.",
+          "Could you go down to the village square and find them for me? And keep your ears nice and warm!"
+        ],
+        "choices": [
+          {
+            "text": "I'll go look right away!",
+            "reply": "Great! The snow is deep, so take it slow."
+          },
+          {
+            "text": "How big is the snowman?",
+            "reply": "Taller than me, even! It stands in the snowman field at the edge of the village!"
+          }
+        ]
+      }
     },
     {
       "id": "tim-do-nan-nguoi-tuyet",
@@ -291,7 +310,25 @@
           "text": "Người tuyết có cúc áo ư?",
           "reply": "Có chứ, người tuyết làng mình diện lắm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Meet little Thỏ Bông Bông the Bunny",
+        "goTo": "Bring the things to the snowman field at the edge of the village",
+        "lines": [
+          "I've rolled both snowballs already! {name}, you brought the things just in time.",
+          "But I also want to add pebble buttons, so let's count how many things we need."
+        ],
+        "choices": [
+          {
+            "text": "Let's count together!",
+            "reply": "Two of us counting is the fastest way!"
+          },
+          {
+            "text": "Snowmen have buttons?",
+            "reply": "Of course! Our village snowmen like to dress up!"
+          }
+        ]
+      }
     },
     {
       "id": "cau-do-nguoi-tuyet",
@@ -334,14 +371,23 @@
       "kind": "reward",
       "target": "gau-bang-tuyet",
       "text": "Người tuyết quàng khăn đỏ đứng sừng sững ở bãi đầu làng, đèn làng thắp sáng ấm áp. Gấu Băng Tuyết ôm {name} một cái thật ấm!",
-      "goTo": "Về cổng vào núi tuyết báo tin cho Gấu Băng Tuyết"
+      "goTo": "Về cổng vào núi tuyết báo tin cho Gấu Băng Tuyết",
+      "en": {
+        "title": "The snowman greets visitors",
+        "goTo": "Go back to the snowy mountain gate and tell Gấu Băng Tuyết the news",
+        "text": "The snowman in its red scarf stands tall at the edge of the village, and the village lamps glow warmly. Gấu Băng Tuyết gives {name} a big, cozy hug!"
+      }
     },
     {
       "id": "len-cap-treo",
       "title": "Ga cáp treo mở cửa",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cabin đỏ của ga cáp treo đã sẵn sàng. {name} lên cáp treo ngắm dốc trượt tuyết, hồ băng và đỉnh núi nhé!"
+      "text": "Cabin đỏ của ga cáp treo đã sẵn sàng. {name} lên cáp treo ngắm dốc trượt tuyết, hồ băng và đỉnh núi nhé!",
+      "en": {
+        "title": "The cable car station is open",
+        "text": "The red cable car cabin is ready. Hop on, {name}, and take in the ski slopes, the frozen lake and the mountain peak!"
+      }
     }
   ],
   "reward": {

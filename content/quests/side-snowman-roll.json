@@ -46,7 +46,19 @@
         {
           "text": "Đắp cả một gia đình người tuyết luôn!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "So much fresh snow, {name}! Want to build a snowman with me?",
+          "The farther you roll, the bigger the snowball. When it fits the dashed ring, drop it in."
+        ],
+        "choices": [
+          {
+            "text": "Let's build a whole snow family!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chồng đúng sáu quả tuyết lên người tuyết nhé!",
       "game": "snowman-roll",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Roll a Snowman",
+        "prompt": "Stack 6 snowballs onto snowmen!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Trắng ôm bụng cười: người tuyết của {name} đẹp nhất bãi!"
+      "text": "Gấu Trắng ôm bụng cười: người tuyết của {name} đẹp nhất bãi!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Trắng holds his tummy laughing: {name}'s snowman is the best in the field!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bãi người tuyết lúc nào cũng còn chỗ, Gấu Trắng đợi {name} quay lại."
+      "text": "Bãi người tuyết lúc nào cũng còn chỗ, Gấu Trắng đợi {name} quay lại.",
+      "en": {
+        "title": "See you soon",
+        "text": "There's always room in the snowman field. Gấu Trắng is waiting for {name} to come back."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Snowman Building with Gấu Trắng Lăn Tuyết",
+    "summary": "Roll a snowball round the yard so it grows, then stack a big, a medium and a small one into a snowman."
   }
 }

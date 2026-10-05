@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 15,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Train Track Switches",
+    "howTo": [
+      "Each train must reach the station of its colour (check the picture on the carriage too).",
+      "{name} taps the arrow button at each junction to switch the track and send the train the right way.",
+      "A train at the wrong station loses a point."
+    ]
+  }
 }

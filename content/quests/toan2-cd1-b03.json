@@ -65,7 +65,26 @@
           "text": "Khỉ Tí Toáy đọc nhỏ thôi nào!",
           "reply": "Khỉ Tí Toáy thì thầm: Tổng… tổng… thế này được chưa?"
         }
-      ]
+      ],
+      "en": {
+        "title": "Wind on the notice board",
+        "goTo": "Go to the schoolyard notice board, where Mèo Mun is holding a stack of name signs",
+        "lines": [
+          "Hello {name}. I'm perfectly calm, see... it's just that the wind blew every sign off the notice board.",
+          "Tổng! Tổng! Số hạng! Hiệu! I'm reading them out loud to help, but I have no idea where any of them go!",
+          "You're so loud my whiskers jumped. {name}, will you help me pick up the signs and hang them in the right places?"
+        ],
+        "choices": [
+          {
+            "text": "I'll pick up the signs right away!",
+            "reply": "Mèo Mun strokes her whiskers: Great, the three signs only blew around here."
+          },
+          {
+            "text": "Quieter, please, Khỉ Tí Toáy!",
+            "reply": "Khỉ Tí Toáy whispers: Tổng... tổng... is this better?"
+          }
+        ]
+      }
     },
     {
       "id": "nhat-bien-ten",
@@ -102,7 +121,21 @@
           "text": "Treo biển \"Tổng\" lên thôi!",
           "reply": "Mèo Mun gật gù: Ta bắt đầu với bảng số hạng nhé."
         }
-      ]
+      ],
+      "en": {
+        "title": "Which is the addend, which is the sum?",
+        "lines": [
+          "Look at this sum: 7 + 3 = 10. The two numbers being added, 7 and 3, are the addends (số hạng). The answer, 10, is the sum (tổng).",
+          "So if I add 2 bananas and 3 bananas, the sum is... a full tummy!",
+          "It's 5 bananas, Monkey. And 7 + 3 is also called a sum."
+        ],
+        "choices": [
+          {
+            "text": "Let's hang up the \"Tổng\" sign!",
+            "reply": "Mèo Mun nods: Let's start with the table of addends."
+          }
+        ]
+      }
     },
     {
       "id": "bang-tong-ba-cot",
@@ -399,7 +432,17 @@
           "text": "Bị số trừ lấy bớt đi đấy. Phần còn lại là hiệu. Treo nốt biển \"Hiệu\" nào."
         }
       ],
-      "choices": []
+      "choices": [],
+      "en": {
+        "title": "The three names in a subtraction",
+        "goTo": "Bring the seashells back to the notice board, where Mèo Mun is waiting to hang the subtraction signs",
+        "lines": [
+          "Subtraction has its own name signs too. In 10 – 3 = 7: 10 is the minuend (số bị trừ), 3 is the subtrahend (số trừ), and 7 is the difference (hiệu).",
+          "\"Số bị trừ\" means \"the one being taken from\"... poor thing! Who's taking from it?",
+          "The subtrahend takes some away. What's left is the difference. Let's hang the last sign, \"Hiệu\"."
+        ],
+        "choices": []
+      }
     },
     {
       "id": "goi-ten-phep-tru",
@@ -893,7 +936,26 @@
           "text": "Đếm dây sao trước",
           "reply": "Khỉ Tí Toáy: Từ từ, đếm sao phải để sau màn tách số cơ, tớ là quản trò mà!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Khỉ Tí Toáy has a challenge",
+        "goTo": "Go to the corner of the yard with the wooden train, where Khỉ Tí Toáy is perched on a carriage roof",
+        "lines": [
+          "Now that the notice board's done, come play with me! I've got two trains, and Koala Bơ is keeping the star garland and the secret number card box by the flowerbed.",
+          "Once Khỉ Tí Toáy starts setting puzzles, he goes on till nightfall. {name}, where do you want to start?",
+          "Pick one, pick one! I'm going to quiz you on all of them anyway!"
+        ],
+        "choices": [
+          {
+            "text": "Write numbers as sums first",
+            "reply": "Khỉ Tí Toáy: Splitting numbers? I've got four ready for you!"
+          },
+          {
+            "text": "Count the star garland first",
+            "reply": "Khỉ Tí Toáy: Hold on, star counting comes after the number splitting, I'm the game master here!"
+          }
+        ]
+      }
     },
     {
       "id": "tach-thanh-tong",
@@ -1365,14 +1427,22 @@
       "title": "Huy hiệu bảng tin",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bảng tin treo đủ biển \"Số hạng\", \"Tổng\", \"Số bị trừ\", \"Số trừ\", \"Hiệu\". Mèo Mun trao cho {name} huy hiệu \"Người gọi tên phép tính\", còn Khỉ Tí Toáy hứa từ nay đọc nhỏ hơn… một chút."
+      "text": "Bảng tin treo đủ biển \"Số hạng\", \"Tổng\", \"Số bị trừ\", \"Số trừ\", \"Hiệu\". Mèo Mun trao cho {name} huy hiệu \"Người gọi tên phép tính\", còn Khỉ Tí Toáy hứa từ nay đọc nhỏ hơn… một chút.",
+      "en": {
+        "title": "Notice board badge",
+        "text": "The notice board now has all its signs: \"Số hạng\", \"Tổng\", \"Số bị trừ\", \"Số trừ\", \"Hiệu\". Mèo Mun gives {name} the \"Sum Namer\" badge, and Khỉ Tí Toáy promises to read a bit more quietly from now on... a tiny bit."
+      }
     },
     {
       "id": "bong-dem-tren-duong-chay",
       "title": "Tiếng còi ở đường chạy",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ngoài đường chạy, trọng tài Hươu Lêu Nghêu thổi còi toe toe: hai đội nhặt bóng vừa thi xong mà chẳng ai biết đội nào hơn bao nhiêu quả!"
+      "text": "Ngoài đường chạy, trọng tài Hươu Lêu Nghêu thổi còi toe toe: hai đội nhặt bóng vừa thi xong mà chẳng ai biết đội nào hơn bao nhiêu quả!",
+      "en": {
+        "title": "A whistle on the running track",
+        "text": "Out on the running track, referee Hươu Lêu Nghêu toots his whistle: two ball-collecting teams just finished, and nobody knows which team got more, or by how many!"
+      }
     }
   ],
   "reward": {

@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 5,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Spot the Difference",
+    "howTo": [
+      "Two pictures look almost the same, but five things are different.",
+      "{name} taps a difference in either picture: one point each.",
+      "After five wrong taps, one difference lights up as a hint."
+    ]
+  }
 }

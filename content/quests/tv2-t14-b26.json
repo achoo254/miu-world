@@ -88,7 +88,28 @@
           "text": "Mẹ không quên Mẩy đâu, đừng lo!",
           "reply": "Thật không? Tại sao cậu biết? Thôi, đi tìm ba đầu mối với tớ đã!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Mẩy and the mystery egg",
+        "goTo": "Go to Mẩy's straw nest, where all the cheeping is",
+        "lines": [
+          "{name}! Mum says we're going to have a baby soon. Why “soon”? Why not right now?",
+          "The baby is inside this egg, Mẩy. I have to keep it warm for a few more days.",
+          "Why did the baby get inside an egg? And once the baby's here, will you still remember Mẩy?",
+          "Cock-a-doodle-doo! Oh, it's not morning yet? I'm so excited I crowed at the wrong time.",
+          "Grandpa says the baby comes down from the stars, Uncle Duck says it comes up from the sea. Why does everyone say something different?"
+        ],
+        "choices": [
+          {
+            "text": "Let's find out together, Mẩy!",
+            "reply": "Great! I've already put out three clues around the straw yard, but… I forgot where."
+          },
+          {
+            "text": "Your mum won't forget you, don't worry!",
+            "reply": "Really? How do you know? Never mind, come and find the three clues with me!"
+          }
+        ]
+      }
     },
     {
       "id": "tim-dau-moi",
@@ -1014,7 +1035,31 @@
           "text": "Kể cho em nghe chuyện ba đầu mối",
           "reply": "Mẩy kể say sưa: em không từ sao, không từ biển, em từ yêu thương của nhà mình!"
         }
-      ]
+      ],
+      "en": {
+        "title": "The egg is cracking!",
+        "goTo": "Tap tap! Hurry back to Mẩy's straw nest, the egg is wobbling",
+        "lines": [
+          "Tap… tap… crack!",
+          "It's cracking! Why is it cracking? Oh, it must be because the baby wants to come out and play with me!",
+          "Mẩy, what do you want to do first when you meet the baby?",
+          "{name}, help me choose, my heart is thumping like a lion-dance drum!"
+        ],
+        "choices": [
+          {
+            "text": "Sing the baby the lullaby we just learned",
+            "reply": "Mẩy clears his throat: cheep… cheep… a bit off-key, but the baby listens very carefully."
+          },
+          {
+            "text": "Give the baby the warmest corner of straw",
+            "reply": "Mẩy shuffles aside: the warm corner's for the baby, and I'm warm enough just hugging it."
+          },
+          {
+            "text": "Tell the baby the story of the three clues",
+            "reply": "Mẩy tells it eagerly: you didn't come from the stars or the sea, you came from our family's love!"
+          }
+        ]
+      }
     },
     {
       "id": "em-be-mat-den-lay",
@@ -1149,14 +1194,22 @@
       "title": "Sợi lông tơ đầu tiên",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mẩy tặng {name} sợi lông tơ vàng đầu tiên của em, buộc bằng cọng rơm thắt nơ. Bố Gà Trống gáy chúc mừng, lần này đúng giờ hẳn hoi! Bà Gấu Nâu ở đầu ngõ nghe tin cũng chống gậy sang, dúi cho em gà con một nắm thóc mới thơm phức."
+      "text": "Mẩy tặng {name} sợi lông tơ vàng đầu tiên của em, buộc bằng cọng rơm thắt nơ. Bố Gà Trống gáy chúc mừng, lần này đúng giờ hẳn hoi! Bà Gấu Nâu ở đầu ngõ nghe tin cũng chống gậy sang, dúi cho em gà con một nắm thóc mới thơm phức.",
+      "en": {
+        "title": "The very first fluff",
+        "text": "Mẩy gives {name} the baby's very first golden fluff, tied with a straw bow. Father Rooster crows to celebrate, right on time for once! Granny Gấu Nâu from the end of the lane hears the news and comes over with her walking stick, slipping the chick a handful of fresh, fragrant grain."
+      }
     },
     {
       "id": "mo-bai-27",
       "title": "Tiếng ngáp dưới trăng",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đêm xuống, dưới hiên một ngôi nhà nhỏ cuối xóm vọng lại một tiếng \"Oáp…\" dài thật dài. Trời nóng quá, Koala Na nằm võng mãi không ngủ được, đang nhớ bàn tay mẹ quạt."
+      "text": "Đêm xuống, dưới hiên một ngôi nhà nhỏ cuối xóm vọng lại một tiếng \"Oáp…\" dài thật dài. Trời nóng quá, Koala Na nằm võng mãi không ngủ được, đang nhớ bàn tay mẹ quạt.",
+      "en": {
+        "title": "A yawn under the moon",
+        "text": "Night falls, and from the porch of a little house at the end of the hamlet comes a long, long “Yaaawn…”. It's so hot that Koala Na has been lying in the hammock for ages without falling asleep, missing her mum's hand fanning her."
+      }
     }
   ],
   "reward": {

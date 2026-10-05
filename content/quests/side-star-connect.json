@@ -46,7 +46,19 @@
         {
           "text": "Mình nối sao thôi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Look up at the sky, {name}! The stars are waiting to be joined together!",
+          "Tap the stars in order, 1, 2, 3 all the way to 10, and a fun picture will pop out."
+        ],
+        "choices": [
+          {
+            "text": "Let us join the stars!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nối xong ba chòm sao nhé!",
       "game": "star-connect",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Join the Constellations",
+        "prompt": "Complete 3 star pictures!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bầu trời sáng rực hình mới, Thỏ Ngắm Sao reo: {name} vẽ trời đẹp quá!"
+      "text": "Bầu trời sáng rực hình mới, Thỏ Ngắm Sao reo: {name} vẽ trời đẹp quá!",
+      "en": {
+        "title": "Reward",
+        "text": "A new shape glows across the sky, and Thỏ Ngắm Sao cheers: {name} paints the sky so well!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đêm nào trời trong, tớ cũng ngồi bãi cỏ quanh tháp chờ cậu ngắm sao."
+      "text": "Đêm nào trời trong, tớ cũng ngồi bãi cỏ quanh tháp chờ cậu ngắm sao.",
+      "en": {
+        "title": "See you soon",
+        "text": "Every clear night I sit on the grass by the tower, waiting to stargaze with you."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Joining up the stars with Thỏ Ngắm Sao",
+    "summary": "Night falls around the clock tower; join the stars in number order and a friend appears in the sky."
   }
 }

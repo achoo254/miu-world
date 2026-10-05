@@ -65,7 +65,26 @@
           "text": "Bê Bông nghịch thật đấy!",
           "reply": "Bê Bông lắc cái chuông cổ leng keng: Nghịch mà vẫn đáng yêu mà!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Bò Mẹ Gạo is dizzy from counting",
+        "goTo": "Go to the ox-cart lot, where Bò Mẹ Gạo is counting calves by the straw cart",
+        "lines": [
+          "Moo... one, two, three... oh dear, one just ran out and back in again! {name}, I've been counting since we got to the market and I'm still not done.",
+          "Hee hee, we're playing hide-and-seek, Mama! Three of us are still hiding in the haystack.",
+          "See? One more, then one less. Today I simply must learn how to count on and count back."
+        ],
+        "choices": [
+          {
+            "text": "I'll find the hiding calves!",
+            "reply": "Bê Bông winks: If you find us, we'll come out nice and good!"
+          },
+          {
+            "text": "Bê Bông is such a rascal!",
+            "reply": "Bê Bông jingles the bell on her collar: A rascal, but still adorable!"
+          }
+        ]
+      }
     },
     {
       "id": "tim-be-con",
@@ -103,7 +122,22 @@
           "text": "Cháu nhớ rồi: tóm tắt, bài giải, đáp số!",
           "reply": "Bò Mẹ Gạo vẫy đuôi: Vậy thử ngay với lọ hoa trên xe của cô nhé."
         }
-      ]
+      ],
+      "en": {
+        "title": "More means add, fewer means take away",
+        "goTo": "Lead the three calves back to the ox-cart lot",
+        "lines": [
+          "The three of them are back! So now there are three more calves by the cart. When there are more, we do an addition, right?",
+          "And when I ran off, that's one fewer, so we do a subtraction!",
+          "Clever girl! To solve a word problem, write the Summary first, then the Solution with an answer sentence and the calculation, and finally the Answer."
+        ],
+        "choices": [
+          {
+            "text": "I remember: summary, solution, answer!",
+            "reply": "Bò Mẹ Gạo swishes her tail: Then let's try it right now with the flower vase on my cart."
+          }
+        ]
+      }
     },
     {
       "id": "lo-hoa-cua-viet",
@@ -445,7 +479,25 @@
           "text": "Vừa đi vừa tính cho vui",
           "reply": "Bê Bông nhảy cẫng: Thế thì tính nhanh lên nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Bê Bông wants to go play",
+        "goTo": "Go back to the ox-cart lot, where Bê Bông is tugging Bò Mẹ Gạo's tail, begging to go play",
+        "lines": [
+          "{name}, there are leaf boats floating on the duck pond, it's so much fun, let's go see!",
+          "Hold on, Uncle Lợn Ụt Ịt who sells piglets just asked me to work out a take-away problem. {name}, do you want to finish it first, or work it out on the way?"
+        ],
+        "choices": [
+          {
+            "text": "Finish the take-away problem, then go",
+            "reply": "Bò Mẹ Gạo: What a good child, it's only a short one."
+          },
+          {
+            "text": "Work it out on the way for fun",
+            "reply": "Bê Bông leaps for joy: Then hurry up and work it out!"
+          }
+        ]
+      }
     },
     {
       "id": "dan-lon-nha-an",
@@ -812,14 +864,22 @@
       "title": "Huy hiệu thêm bớt",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bò Mẹ Gạo đeo cho {name} chiếc chuông nhỏ khắc chữ \"Bạn của đàn bê\". Từ hôm nay, bê con chạy ra chạy vào giữa chợ bao nhiêu lần cô cũng đếm được."
+      "text": "Bò Mẹ Gạo đeo cho {name} chiếc chuông nhỏ khắc chữ \"Bạn của đàn bê\". Từ hôm nay, bê con chạy ra chạy vào giữa chợ bao nhiêu lần cô cũng đếm được.",
+      "en": {
+        "title": "More-and-fewer badge",
+        "text": "Bò Mẹ Gạo hangs a little bell engraved \"Friend of the Calves\" around {name}'s neck. From today on, however often the calves run in and out at the market, she can count them all."
+      }
     },
     {
       "id": "dap-da-cua-hai-ly",
       "title": "Con đập đá bên bờ kênh",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ở bờ kênh cạnh chợ, Hải Ly Sậy đang xếp một con đập nhỏ, mỗi viên đá khắc một phép tính. Hải Ly ngoắc đuôi gọi: \"Thiếu người tính giúp tớ rồi!\""
+      "text": "Ở bờ kênh cạnh chợ, Hải Ly Sậy đang xếp một con đập nhỏ, mỗi viên đá khắc một phép tính. Hải Ly ngoắc đuôi gọi: \"Thiếu người tính giúp tớ rồi!\"",
+      "en": {
+        "title": "The stone dam by the canal",
+        "text": "On the canal bank by the market, Hải Ly Sậy is building a little dam, and each stone is carved with a sum. The beaver flicks his tail and calls: \"I need someone to help me work these out!\""
+      }
     }
   ],
   "reward": {

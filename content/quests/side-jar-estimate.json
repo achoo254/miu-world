@@ -46,7 +46,19 @@
         {
           "text": "Cháu ước lượng số kẹo ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, can you guess how many sweets are in this glass jar?",
+          "Take a three-second look, then drag the needle to your guess."
+        ],
+        "choices": [
+          {
+            "text": "I'll make my guess now!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ước lượng gần đúng số kẹo ngọt trong sáu lọ thủy tinh nhé!",
       "game": "jar-estimate",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Guess the candy jar",
+        "prompt": "Guess close to the number of sweets in 6 glass jars!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Đoán sát sạt số kẹo luôn, đôi mắt của {name} ước lượng chuẩn ghê!"
+      "text": "Đoán sát sạt số kẹo luôn, đôi mắt của {name} ước lượng chuẩn ghê!",
+      "en": {
+        "title": "Reward",
+        "text": "So close! {name} has a real eye for numbers!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Những lọ kẹo đủ màu trên kệ cân đong luôn đợi cháu ghé ước lượng."
+      "text": "Những lọ kẹo đủ màu trên kệ cân đong luôn đợi cháu ghé ước lượng.",
+      "en": {
+        "title": "See you soon",
+        "text": "The jars of colourful sweets on the shelf are waiting for your next guess."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Guess the sweets in the jar with Bác Thu Ngân Vui Vẻ",
+    "summary": "Take a quick look, guess how many sweets are in the glass jar, then drag the needle to your best guess."
   }
 }

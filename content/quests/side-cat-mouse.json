@@ -46,7 +46,19 @@
         {
           "text": "Chuột luồn lách nhanh, mèo đừng hòng bắt!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, be the cheeky little mouse in our class game of cat and mouse!",
+          "Slip the mouse through a gap just as the arms come down, so the cat chasing you gets blocked."
+        ],
+        "choices": [
+          {
+            "text": "Quick little mouse, the cat cannot catch me!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Khéo léo lừa bạn mèo kẹt lại năm lần nhé!",
       "game": "cat-mouse",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Cat and mouse",
+        "prompt": "Trick the cat into getting stuck 5 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bé Đội Viên reo vang: chú chuột {name} quá nhanh trí, bạn mèo đành chịu thua rồi!"
+      "text": "Bé Đội Viên reo vang: chú chuột {name} quá nhanh trí, bạn mèo đành chịu thua rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Bé Đội Viên cheers: mouse {name} is so quick-witted that the cat has to give up!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Trò chơi dân gian vui bất tận, {name} ghé sân chơi dưới bóng bàng đuổi bắt tiếp nha."
+      "text": "Trò chơi dân gian vui bất tận, {name} ghé sân chơi dưới bóng bàng đuổi bắt tiếp nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "Folk games are endless fun, {name}, so come chase around under the almond tree again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Cat and mouse with Bé Đội Viên",
+    "summary": "Friends hold hands, raising and lowering them like gates: guide the nimble mouse through and keep the cat out."
   }
 }

@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Harbour Boat Jam",
+    "howTo": [
+      "Each boat can only slide along its own length.",
+      "Drag boats out of the way so the yellow boat carrying {name} reaches the river mouth on the right.",
+      "Really stuck? Tap Undo to take back the last move."
+    ]
+  }
 }

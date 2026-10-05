@@ -10,5 +10,13 @@
   "controls": ["swipe"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Cut the rope",
+    "howTo": [
+      "A candy swings on a rope. A hungry frog waits below!",
+      "{name}, swipe across the rope to cut it just as the candy swings over the frog's mouth.",
+      "If the candy misses, it resets, so keep trying."
+    ]
+  }
 }

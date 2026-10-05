@@ -46,7 +46,19 @@
         {
           "text": "Cháu ném bi sắt sát đích vàng!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The dirt yard in Grandpa's garden is the best pétanque ground in the world, {name}!",
+          "Pull back to aim, then let go so the steel ball rolls right up to the yellow target."
+        ],
+        "choices": [
+          {
+            "text": "Right next to the yellow ball!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ném bi sắt áp sát đích vàng gom đủ ba điểm thắng lợi nhé!",
       "game": "petanque",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Pétanque",
+        "prompt": "Throw close to the yellow target to win 3 points!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bi sắt của {name} dừng ngay sát sạt bi vàng, cú ném xuất thần!"
+      "text": "Bi sắt của {name} dừng ngay sát sạt bi vàng, cú ném xuất thần!",
+      "en": {
+        "title": "Reward",
+        "text": "The ball from {name} stopped right beside the yellow one. A magical throw!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Khoảng sân râm mát cuối vườn giàn mướp luôn đón cháu đến ném bi sắt."
+      "text": "Khoảng sân râm mát cuối vườn giàn mướp luôn đón cháu đến ném bi sắt.",
+      "en": {
+        "title": "See you soon",
+        "text": "The shady yard at the end of the gourd garden always welcomes you for pétanque."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Pétanque with Ông Bảy Cờ Gánh",
+    "summary": "Judge the pull of your throw so the steel ball rolls as close as possible to the little yellow target ball."
   }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Cháu gảy cung đàn ngân vang!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Our village đàn bầu has such a heartfelt sound, {name}!",
+          "Keep your finger on the wavy line of notes so the music rings out."
+        ],
+        "choices": [
+          {
+            "text": "I'll make the string sing!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ngân vang đúng điệu ba mươi khúc nhạc đàn bầu êm dịu nhé!",
       "game": "dan-bau",
-      "goal": 30
+      "goal": 30,
+      "en": {
+        "title": "Đàn bầu (one-string zither)",
+        "prompt": "Play 30 gentle đàn bầu tunes in tune!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tiếng đàn của {name} vang lên trong vắt làm xao xuyến cả làng quê!"
+      "text": "Tiếng đàn của {name} vang lên trong vắt làm xao xuyến cả làng quê!",
+      "en": {
+        "title": "Reward",
+        "text": "{name}'s music rings out so clear, it moves the whole village!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cây đàn bầu mộc mạc vẫn treo bên hiên xưởng đợi tiếng gảy của cháu."
+      "text": "Cây đàn bầu mộc mạc vẫn treo bên hiên xưởng đợi tiếng gảy của cháu.",
+      "en": {
+        "title": "See you soon",
+        "text": "The simple đàn bầu still hangs by the workshop porch, waiting for you to play."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Play the đàn bầu with Nghệ Nhân Múa Rối",
+    "summary": "Slide your finger along the neck of the đàn bầu (a one-string zither) to make sweet, ringing notes."
   }
 }

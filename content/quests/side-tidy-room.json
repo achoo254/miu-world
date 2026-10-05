@@ -46,7 +46,19 @@
         {
           "text": "Tớ sắp xếp ngăn nắp ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The toys are scattered all over the rug. {name}, help me tidy the room!",
+          "Remember where everything was, then drag the teddy, the toy car and the books back to their shelves."
+        ],
+        "choices": [
+          {
+            "text": "I'll tidy everything right away!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Dọn dẹp và cất đúng vị trí mười lăm món đồ chơi trong phòng nhé!",
       "game": "tidy-room",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Everything in Its Place",
+        "prompt": "Put 15 toys back in their right places!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cún Đốm vẫy đuôi mừng rỡ: căn phòng của tụi mình ngăn nắp, tinh tươm nhờ {name}!"
+      "text": "Cún Đốm vẫy đuôi mừng rỡ: căn phòng của tụi mình ngăn nắp, tinh tươm nhờ {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Cún Đốm wags with delight: our room is neat and spotless thanks to {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Góc phòng khách luôn ấm cúng, Cún Đốm chờ {name} cùng chơi đồ chơi lần sau."
+      "text": "Góc phòng khách luôn ấm cúng, Cún Đốm chờ {name} cùng chơi đồ chơi lần sau.",
+      "en": {
+        "title": "See you soon",
+        "text": "The living room corner is always cosy. Cún Đốm will wait for {name} to play again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Toys Back in Place with Cún Đốm Dọn Nhà",
+    "summary": "After playtime things are a mess; remember how the room looked and drag each item back to its spot."
   }
 }

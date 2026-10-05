@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 8,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Alarm clock",
+    "howTo": [
+      "The clock hands spin super fast. The rooster asks for a time, like half past 8.",
+      "{name}, tap to stop the hands at exactly that time. Stop wrong and the hands slip back a bit."
+    ]
+  }
 }

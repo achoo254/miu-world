@@ -46,7 +46,19 @@
         {
           "text": "Để tớ lái cần cẩu!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hi {name}! I am building the tallest tower at the harbour!",
+          "The floor swings on the crane. Tap to drop it when it is right above the tower."
+        ],
+        "choices": [
+          {
+            "text": "Let me drive the crane!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Xếp mười hai tầng nhà lên tháp nhé!",
       "game": "crane-drop",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Crane tower",
+        "prompt": "Stack 12 floors on the tower!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tháp cao vút tới mây, Gấu Mũ Bảo Hộ giơ ngón cái: {name} thả chuẩn từng tầng!"
+      "text": "Tháp cao vút tới mây, Gấu Mũ Bảo Hộ giơ ngón cái: {name} thả chuẩn từng tầng!",
+      "en": {
+        "title": "Reward",
+        "text": "The tower reaches the clouds, and Gấu Mũ Bảo Hộ gives a thumbs up: {name} dropped every floor just right!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bãi cảng còn nhiều tầng nhà lắm, cậu quay lại xây tiếp với tớ nhé."
+      "text": "Bãi cảng còn nhiều tầng nhà lắm, cậu quay lại xây tiếp với tớ nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The harbour yard has plenty more floors, so come back and keep building with me."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Building a tower by crane with Gấu Mũ Bảo Hộ",
+    "summary": "The crane at the harbour yard swings each floor back and forth: tap to drop it neatly onto the tower."
   }
 }

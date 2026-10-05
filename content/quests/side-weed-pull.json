@@ -46,7 +46,19 @@
         {
           "text": "Tớ nhổ sạch cho cậu!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Weeds have crept into my carrot bed, {name}!",
+          "Clover is tough: wiggle it back and forth before pulling, and leave the carrots and flowers alone."
+        ],
+        "choices": [
+          {
+            "text": "I'll pull them all out for you!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nhổ cỏ dại được mười lăm điểm nhé!",
       "game": "weed-pull",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Pull the Weeds",
+        "prompt": "Score 15 points pulling weeds!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thỏ Làm Vườn nhảy cẫng lên: luống cà rốt sạch cỏ rồi, cảm ơn {name}!"
+      "text": "Thỏ Làm Vườn nhảy cẫng lên: luống cà rốt sạch cỏ rồi, cảm ơn {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Thỏ Làm Vườn jumps for joy: the carrot bed is weed-free, thank you {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cỏ dại mọc lại nhanh lắm, {name} nhớ ghé vườn rau với Thỏ nhé."
+      "text": "Cỏ dại mọc lại nhanh lắm, {name} nhớ ghé vườn rau với Thỏ nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Weeds grow back fast. Remember to visit the veggie garden with Thỏ, {name}."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Weed the Carrot Bed with Thỏ Làm Vườn",
+    "summary": "Hold your finger on a weed and pull it up; wiggle the clover loose first and don't pull a carrot by mistake."
   }
 }

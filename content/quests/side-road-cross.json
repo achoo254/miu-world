@@ -46,7 +46,19 @@
         {
           "text": "Ếch ơi, theo tớ nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "My frog friend wants to get to the other bank. Help, {name}!",
+          "Watch the traffic carefully before hopping, and land on the logs to cross the river."
+        ],
+        "choices": [
+          {
+            "text": "Follow me, froggy!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đưa ếch sang bờ bên kia ba lần nhé!",
       "game": "road-cross",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Cross the Road and River",
+        "prompt": "Get the frog to the other bank 3 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ếch con cảm ơn {name} rối rít, ộp ộp!"
+      "text": "Ếch con cảm ơn {name} rối rít, ộp ộp!",
+      "en": {
+        "title": "Reward",
+        "text": "The little frog can't stop thanking {name}. Ribbit, ribbit!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ếch còn nhiều anh em lắm, chúng đợi cậu ở đầu cầu đá đấy."
+      "text": "Ếch còn nhiều anh em lắm, chúng đợi cậu ở đầu cầu đá đấy.",
+      "en": {
+        "title": "See you soon",
+        "text": "The frog has lots of brothers and sisters waiting for you by the stone bridge."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Help the frog across with Khỉ Cầu Tre",
+    "summary": "Guide the frog across the busy road, then hop onto logs and turtle backs to cross the river."
   }
 }

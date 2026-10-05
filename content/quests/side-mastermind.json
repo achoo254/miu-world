@@ -46,7 +46,19 @@
         {
           "text": "Cháu giải mã các viên ngọc quý!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Greetings, {name}! The royal mailbox code needs a sharp mind to crack it.",
+          "Each time you place gems, a gold star means right spot and a circle means right colour. Find the code!"
+        ],
+        "choices": [
+          {
+            "text": "I'll decode the precious gems!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đoán trúng hoàn toàn mật mã của hai hòm thư hoàng gia nhé!",
       "game": "mastermind",
-      "goal": 2
+      "goal": 2,
+      "en": {
+        "title": "Crack the gem code",
+        "prompt": "Crack the code on 2 royal mailboxes!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tể Tướng Cờ Vua vuốt râu khen ngợi: trí tuệ suy đoán của {name} thật đáng khâm phục!"
+      "text": "Tể Tướng Cờ Vua vuốt râu khen ngợi: trí tuệ suy đoán của {name} thật đáng khâm phục!",
+      "en": {
+        "title": "Reward",
+        "text": "Tể Tướng Cờ Vua strokes his beard: {name}'s powers of deduction are truly admirable!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đại sảnh ôn tập nguy nga luôn rộng cửa đón những tài năng sáng suốt như cháu ghé chơi."
+      "text": "Đại sảnh ôn tập nguy nga luôn rộng cửa đón những tài năng sáng suốt như cháu ghé chơi.",
+      "en": {
+        "title": "See you soon",
+        "text": "The grand review hall always welcomes bright talents like you. Do come and visit."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Colour Code Breaker with Tể Tướng Cờ Vua",
+    "summary": "A royal code lock hides beneath a row of gems; reason it out from the star and circle clues."
   }
 }

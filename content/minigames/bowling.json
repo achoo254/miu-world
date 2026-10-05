@@ -10,5 +10,13 @@
   "controls": ["drag", "swipe"],
   "duration": 75,
   "goal": 40,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Bowling",
+    "howTo": [
+      "Drag the ball left or right to choose where to stand.",
+      "Swipe up toward the pins: the ball rolls the way {name} swipes.",
+      "Each pin knocked down is a point; topple all ten for five extra!"
+    ]
+  }
 }

@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 10,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Pay the Exact Price",
+    "howTo": [
+      "Each item has a price. {name} taps the 1, 2, 5 and 10 thousand notes to put them in the tray.",
+      "Pay exactly and you get the item. Pay too much and the shopkeeper hands the whole tray back."
+    ]
+  }
 }

@@ -10,5 +10,13 @@
   "controls": ["swipe", "tap"],
   "duration": 60,
   "goal": 25,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Three-lane runner",
+    "howTo": [
+      "{name} runs along a three-lane road. Swipe left or right (or tap that side) to switch lanes.",
+      "Swipe up to jump over logs. Crates and rocks must be dodged by changing lanes.",
+      "Collect lots of stars! Three crashes and you reach the finish early."
+    ]
+  }
 }

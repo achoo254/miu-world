@@ -46,7 +46,19 @@
         {
           "text": "Cháu bấm mở khóa đúng lúc!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The treasure chest in the corner tower has a stuck spinning lock. Come help open it, {name}!",
+          "When the red needle sweeps onto the gold coin, tap the screen right on time to open each latch."
+        ],
+        "choices": [
+          {
+            "text": "I'll tap at just the right moment!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chạm đúng lúc mở tung bốn ổ khóa cơ quan xoay nhé!",
       "game": "pop-lock",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Pick the Chest Lock",
+        "prompt": "Tap on time to pop open 4 spinning locks!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cạch một tiếng ổ khóa bật mở, Ngự Lâm Quân Tháp Cao khen {name} có phản xạ tuyệt đỉnh!"
+      "text": "Cạch một tiếng ổ khóa bật mở, Ngự Lâm Quân Tháp Cao khen {name} có phản xạ tuyệt đỉnh!",
+      "en": {
+        "title": "Reward",
+        "text": "Click! The lock springs open, and Ngự Lâm Quân Tháp Cao praises {name}'s amazing reflexes!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Kho báu đã an toàn trong tháp, khi nào rảnh cháu cứ ghé tháp góc thành lâu đài chơi."
+      "text": "Kho báu đã an toàn trong tháp, khi nào rảnh cháu cứ ghé tháp góc thành lâu đài chơi.",
+      "en": {
+        "title": "See you soon",
+        "text": "The treasure is safe in the tower. Drop by the castle's corner tower whenever you like."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Spinning Lock with Ngự Lâm Quân Tháp Cao",
+    "summary": "The treasure lock's dial spins round and round; tap just as the needle meets the gold spot to release each latch."
   }
 }

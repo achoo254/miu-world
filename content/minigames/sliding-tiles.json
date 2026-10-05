@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 1,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Sliding Picture Puzzle",
+    "howTo": [
+      "The picture is all mixed up. {name} taps a tile next to the gap to slide it in.",
+      "Put the tiles in order from 1 to 8 to match the sample picture and you're done!"
+    ]
+  }
 }

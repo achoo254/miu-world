@@ -46,7 +46,19 @@
         {
           "text": "Sóng âm dẫn lối, bay ra ánh trăng nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The cave is deep and pitch black, {name}. Help the little bat find its way out!",
+          "Tap to make the bat squeak and light up the walls, then drag your finger to guide it."
+        ],
+        "choices": [
+          {
+            "text": "Echoes, show the way to the moonlight!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đưa dơi con vượt qua bốn khúc hang tối nhé!",
       "game": "bat-echo",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Little bat finds the way",
+        "prompt": "Guide the baby bat through 4 dark stretches of cave!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Dơi Đêm Tai To vỗ cánh tí tách: {name} nhớ đường siêu thật, đã thấy ánh trăng rọi rồi!"
+      "text": "Dơi Đêm Tai To vỗ cánh tí tách: {name} nhớ đường siêu thật, đã thấy ánh trăng rọi rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Dơi Đêm Tai To flutters happily: {name} has a super memory for paths, and there's the moonlight!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Khi nào muốn thám hiểm hang đá kỳ bí, {name} cứ tìm Dơi Đêm Tai To ở cửa hang nha."
+      "text": "Khi nào muốn thám hiểm hang đá kỳ bí, {name} cứ tìm Dơi Đêm Tai To ở cửa hang nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "Whenever you want to explore the mysterious cave, {name}, find Dơi Đêm Tai To at its mouth."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Help the baby bat out of the cave with Dơi Đêm Tai To",
+    "summary": "Deep inside the dark cave: tap to send out a sound wave that lights up the rock walls, then guide the baby bat out."
   }
 }

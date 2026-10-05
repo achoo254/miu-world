@@ -46,7 +46,19 @@
         {
           "text": "Cháu cầm chắc chày gỗ rồi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Come here, {name}! The mortar is full of grain, ready for the two of us to pound together.",
+          "When I pound one beat, you take the next. Don't let our pestles knock together."
+        ],
+        "choices": [
+          {
+            "text": "Got a firm grip on the pestle!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nhịp nhàng giã xong ba mươi lăm cối thóc trắng tinh nhé!",
       "game": "rice-pound",
-      "goal": 35
+      "goal": 35,
+      "en": {
+        "title": "Pound the Rice",
+        "prompt": "Pound 35 mortars of grain to snowy white in rhythm!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bác Nông Dân Thành vỗ vai {name}, tấm tắc khen nhịp chày đôi đều tăm tắp!"
+      "text": "Bác Nông Dân Thành vỗ vai {name}, tấm tắc khen nhịp chày đôi đều tăm tắp!",
+      "en": {
+        "title": "Reward",
+        "text": "Bác Nông Dân Thành pats {name} on the back, praising the perfectly even double beat!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Gạo mới thơm phức rồi, lúc nào muốn nghe tiếng chày giã thì ghé bác chơi."
+      "text": "Gạo mới thơm phức rồi, lúc nào muốn nghe tiếng chày giã thì ghé bác chơi.",
+      "en": {
+        "title": "See you soon",
+        "text": "The new rice smells wonderful. Whenever you want to hear the pestles thump, come visit."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Double Pestle Rice Pounding with Bác Nông Dân Thành",
+    "summary": "By the lively stone mortar, Bác Nông Dân Thành and you take turns pounding each batch of grain until it's white."
   }
 }

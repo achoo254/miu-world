@@ -9,5 +9,12 @@
   "controls": ["drag"],
   "duration": 60,
   "goal": 6,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Spin the cotton candy",
+    "howTo": [
+      "{name}, draw circles around the stick to wind the sugar into cotton candy.",
+      "A big round puff finishes one stick. Spin too fast and it flies off: keep the needle on the green!"
+    ]
+  }
 }

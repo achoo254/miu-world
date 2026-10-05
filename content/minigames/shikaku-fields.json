@@ -9,5 +9,12 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Divide the Fields",
+    "howTo": [
+      "Drag from one square to another to fence in a rectangular plot.",
+      "Each plot has exactly one number, and that many squares. {name}, divide up the whole field!"
+    ]
+  }
 }

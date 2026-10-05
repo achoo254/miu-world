@@ -10,5 +10,13 @@
   "controls": ["hold"],
   "duration": 60,
   "goal": 20,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Drift the corners",
+    "howTo": [
+      "The car drives itself. At a bend, {name} holds a finger to swing the car around the red post.",
+      "When the car's nose points down the new road, let go so it drives straight.",
+      "Each bend cleared is a point. Skid off the road and the car goes back to the start of that stretch."
+    ]
+  }
 }

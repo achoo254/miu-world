@@ -10,5 +10,13 @@
   "controls": ["swipe"],
   "duration": 60,
   "goal": 20,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Flag commands",
+    "howTo": [
+      "{name} holds a red flag on the left and a blue flag on the right. Read the command on the board.",
+      "Swipe up or down on that flag's half of the screen.",
+      "If the command says \"don't\", stay still and don't swipe!"
+    ]
+  }
 }

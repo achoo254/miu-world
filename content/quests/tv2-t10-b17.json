@@ -87,7 +87,23 @@
           "text": "Đi thôi, mình sẽ tìm Thỏ Lúa cho bằng được!",
           "reply": "Cảm ơn cậu! Mình đi về phía mấy bụi cỏ cháy vàng kia nhé. Cậu đi trước một chút, tớ hơi sợ chỗ lạ."
         }
-      ]
+      ],
+      "en": {
+        "title": "Nai Nhung in the dry meadow",
+        "goTo": "Go to the dry meadow at the forest edge to meet Nai Nhung",
+        "lines": [
+          "{name}… the meadow is as crunchy as a rice cracker; however softly I step, it goes crackle-crunch.",
+          "This morning Thỏ Lúa promised to pick fresh grass to share with me. It's way past noon and not a single long ear has popped back.",
+          "Thỏ Lúa? Scatterbrain, scatterbrain! Once she went looking for a carrot that was right there in her paw!",
+          "I've called “Lúa!” so many times that my voice is only a whisper, like wind through the grass. Will you help me find her?"
+        ],
+        "choices": [
+          {
+            "text": "Let's go, we'll find Thỏ Lúa no matter what!",
+            "reply": "Thank you! Let's head towards those scorched yellow tufts. You go a little ahead, I'm a bit scared of strange places."
+          }
+        ]
+      }
     },
     {
       "id": "lan-theo-dau-chan",
@@ -488,7 +504,28 @@
           "text": "Thỏ Lúa nhanh chân lắm, chắc đang chạy về rồi đấy.",
           "reply": "Ừ nhỉ! Biết đâu bạn ấy đang nhảy tưng tưng về phía mình."
         }
-      ]
+      ],
+      "en": {
+        "title": "Nai Nhung sad by the dry stream",
+        "lines": [
+          "Dê Trắng (White Goat) called and called, but his friend never came back. I'm scared I'll have to keep calling like that too.",
+          "Don't worry, don't worry! Thỏ Lúa's ears are so long, if we call loudly she's bound to hear!"
+        ],
+        "choices": [
+          {
+            "text": "Don't be sad, I'm right here with you, and we'll find Thỏ Lúa!",
+            "reply": "With you beside me, my four skinny legs have stopped shaking."
+          },
+          {
+            "text": "Let's call really loudly together: Lúaaaa!",
+            "reply": "Lúaaaa! Whoa, I've never called so loudly, and Vẹt Xanh got such a fright he fell off his branch."
+          },
+          {
+            "text": "Thỏ Lúa is quick on her feet, she's probably running back already.",
+            "reply": "Oh, you're right! Maybe she's hopping towards us right now."
+          }
+        ]
+      }
     },
     {
       "id": "an-ui-de-trang",
@@ -694,7 +731,23 @@
           "text": "Lần sau đi xa, cậu nhớ rủ bạn đi cùng nhé!",
           "reply": "Tớ hứa! Mà cậu nhắc tớ nhé, kẻo tớ quên luôn cả lời hứa."
         }
-      ]
+      ],
+      "en": {
+        "title": "Thỏ Lúa hears the call",
+        "goTo": "Listen! Thỏ Lúa is waving her ears and calling from the hill of fresh grass",
+        "lines": [
+          "Nhung! {name}! I could hear you two chatting all the way from the other side of the hill!",
+          "I was having so much fun picking fresh grass, I spun round once, twice… and forgot which way home was.",
+          "There you are, Lúa! Phew, I won't have to keep calling like the white goat any more!",
+          "Here's the fresh grass, a bundle as big as a conical hat! Oh, and… what was I about to say?"
+        ],
+        "choices": [
+          {
+            "text": "Next time you go far, remember to take a friend along!",
+            "reply": "I promise! But remind me, okay, or I'll forget the promise too."
+          }
+        ]
+      }
     },
     {
       "id": "phieu-viet-bai-17",
@@ -714,14 +767,22 @@
       "title": "Chiếc lục lạc của Nai Nhung",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nai Nhung tặng {name} một chiếc lục lạc kết bằng quả keo khô: lạc nhau ở đâu cứ lắc lách cách là bạn bè tìm thấy. Thỏ Lúa xin một cái, để lắc cho chính mình nhớ đường về."
+      "text": "Nai Nhung tặng {name} một chiếc lục lạc kết bằng quả keo khô: lạc nhau ở đâu cứ lắc lách cách là bạn bè tìm thấy. Thỏ Lúa xin một cái, để lắc cho chính mình nhớ đường về.",
+      "en": {
+        "title": "Nai Nhung's rattle",
+        "text": "Nai Nhung gives {name} a rattle strung from dried acacia pods: if you ever get separated, just shake it clickety-clack and your friends will find you. Thỏ Lúa asks for one too, to shake so she remembers her own way home."
+      }
     },
     {
       "id": "mo-bai-18",
       "title": "Lá thư bên bến hồ",
       "kind": "next",
       "trigger": "auto",
-      "text": "Trên đường về, Thỏ Lúa nhặt được một lá thư lạnh buốt như vừa lấy ra từ tủ đá, dán tem hình bông tuyết, đề gửi Gấu Tuyết Bông ở bến thư bên hồ. Ai ở phương xa gửi thư thế nhỉ?"
+      "text": "Trên đường về, Thỏ Lúa nhặt được một lá thư lạnh buốt như vừa lấy ra từ tủ đá, dán tem hình bông tuyết, đề gửi Gấu Tuyết Bông ở bến thư bên hồ. Ai ở phương xa gửi thư thế nhỉ?",
+      "en": {
+        "title": "A letter at the lakeside post",
+        "text": "On the way home, Thỏ Lúa finds a letter as icy as if it came straight out of a freezer, with a snowflake stamp, addressed to Gấu Tuyết Bông at the lakeside post. Who could be writing from so far away?"
+      }
     }
   ],
   "reward": {

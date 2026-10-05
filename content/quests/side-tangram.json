@@ -46,7 +46,19 @@
         {
           "text": "Cho tớ thử ghép một hình!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Look, {name}! My seven wooden pieces can turn into a cat!",
+          "Tap a piece to turn it, then drag it into the shadow so it fits snugly. Place all seven and you are done."
+        ],
+        "choices": [
+          {
+            "text": "Let me try building a shape!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ghép xong hai hình từ bảy mảnh nhé!",
       "game": "tangram",
-      "goal": 2
+      "goal": 2,
+      "en": {
+        "title": "Seven-Piece Tangram",
+        "prompt": "Build 2 shapes out of the seven pieces!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ôi đẹp quá! Koala Ghép Tranh treo hình của {name} lên cành cây."
+      "text": "Ôi đẹp quá! Koala Ghép Tranh treo hình của {name} lên cành cây.",
+      "en": {
+        "title": "Reward",
+        "text": "How lovely! Koala Ghép Tranh hangs the shape made by {name} up on a branch."
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tớ sẽ nghĩ thêm hình mới, cậu quay lại vườn đọc sách thử tiếp nha."
+      "text": "Tớ sẽ nghĩ thêm hình mới, cậu quay lại vườn đọc sách thử tiếp nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "I will dream up new shapes, so pop back to the reading garden and try again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Seven-piece shapes with Koala Ghép Tranh",
+    "summary": "Seven coloured wooden pieces sit beside some shadow shapes; turn and drag them until the shadow is filled."
   }
 }

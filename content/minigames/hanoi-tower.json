@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 2,
-  "params": { "layers": 3 }
+  "params": { "layers": 3 },
+  "en": {
+    "name": "Move the cake tower",
+    "howTo": [
+      "Tap a plate to lift its top cake layer, then tap another plate to set it down.",
+      "A big cake can never sit on a smaller one.",
+      "{name}, move the whole stack of cakes to the plate with the star!"
+    ]
+  }
 }

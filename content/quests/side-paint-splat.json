@@ -46,7 +46,19 @@
         {
           "text": "Canh màu chuẩn xác, ném trúng mảng tranh!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Look, {name}, this giant paint-splat picture is the most fun game in school!",
+          "Whatever colour the ball at the bottom turns, quickly tap the patch of that colour."
+        ],
+        "choices": [
+          {
+            "text": "Match the colour, splat on target!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Tô kín bức tranh với hai mươi lần ném màu chuẩn nhé!",
       "game": "paint-splat",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Paint Splat Picture",
+        "prompt": "Fill the picture with 20 perfect paint throws!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mèo Vẽ Màu vẫy đuôi thích thú: mảng màu nào của {name} cũng sắc nét, tranh đẹp lung linh!"
+      "text": "Mèo Vẽ Màu vẫy đuôi thích thú: mảng màu nào của {name} cũng sắc nét, tranh đẹp lung linh!",
+      "en": {
+        "title": "Reward",
+        "text": "Mèo Vẽ Màu swishes her tail: every patch {name} painted is crisp, and the picture sparkles!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Còn bao nhiêu bức tranh tường chờ tô, {name} lại ra cửa phòng mĩ thuật ném màu tiếp nhé."
+      "text": "Còn bao nhiêu bức tranh tường chờ tô, {name} lại ra cửa phòng mĩ thuật ném màu tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "So many wall paintings are waiting, {name}, so come splat paint by the art room again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Paint splat with Mèo Vẽ Màu",
+    "summary": "A paint ball keeps changing colour: wait until it matches a patch of the picture, then throw to splash it full."
   }
 }

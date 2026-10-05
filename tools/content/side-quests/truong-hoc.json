@@ -28,7 +28,19 @@
           "reward": "Hổ Còi Vàng thổi một hồi còi dài: {name} là thủ môn xuất sắc nhất trận!",
           "next": "Chiều nào sân bóng cũng có trận, cứ tìm Hổ Còi Vàng ở mép sân nhé.",
           "who": "{name}, thủ môn nhí của đội trường",
-          "learn": "Đoán hướng bóng và phản xạ nhanh"
+          "learn": "Đoán hướng bóng và phản xạ nhanh",
+          "en": {
+            "title": "Playing goalkeeper with Hổ Còi Vàng",
+            "summary": "Gấu Trúc the panda takes ten shots: dive to the side the ball is heading to make the save.",
+            "lines": [
+              "Tweet tweet! {name}, our school team is missing a goalkeeper!",
+              "Whichever way the ball flies, tap that side to dive and block it."
+            ],
+            "choice": "I will guard the goal!",
+            "prompt": "Save {goal} shots!",
+            "reward": "Hổ Còi Vàng blows one long whistle: {name} is the best goalkeeper of the match!",
+            "next": "There is a match on the pitch every afternoon, so find Hổ Còi Vàng at the edge of the field."
+          }
         },
         {
           "game": "da-cau",
@@ -43,7 +55,19 @@
           "reward": "Hổ Còi Vàng đếm không kịp: {name} tâng cầu dẻo quá trời!",
           "next": "Giờ ra chơi nào tớ cũng mang cầu ra sân, rủ cậu tâng tiếp nhé.",
           "who": "{name}, nhà vô địch tâng cầu giờ ra chơi",
-          "learn": "Phối hợp tay mắt và theo dõi hai vật cùng lúc"
+          "learn": "Phối hợp tay mắt và theo dõi hai vật cùng lúc",
+          "en": {
+            "title": "Shuttlecock kicking with Hổ Còi Vàng",
+            "summary": "Colourful feather shuttlecocks keep dropping: tap to kick them back up, and a second one joins halfway through.",
+            "lines": [
+              "Do you know how to play đá cầu, {name}? I have a beautiful feather shuttlecock!",
+              "Wherever the shuttlecock falls, tap to kick it back up. Watch out, a second one is coming."
+            ],
+            "choice": "Kicking shuttlecocks is my thing!",
+            "prompt": "Keep the shuttlecock up for {goal} kicks!",
+            "reward": "Hổ Còi Vàng cannot count fast enough: {name} kicks the shuttlecock so smoothly!",
+            "next": "I bring a shuttlecock out every break time, so come kick it around with me again."
+          }
         }
       ]
     },
@@ -75,7 +99,19 @@
           "reward": "Hươu Bóng Rổ cúi cổ đập tay với {name}: ném chuẩn quá!",
           "next": "Sân bóng rổ lúc nào cũng mở, ghé chơi với Hươu Bóng Rổ nhé.",
           "who": "{name}, cầu thủ bóng rổ tí hon",
-          "learn": "Ước lượng lực ném và đường bay của bóng"
+          "learn": "Ước lượng lực ném và đường bay của bóng",
+          "en": {
+            "title": "Shooting hoops with Hươu Bóng Rổ",
+            "summary": "The hoop hangs on a tall pole: a long swipe throws hard, a short swipe throws soft, and the hoop even slides about.",
+            "lines": [
+              "Hi {name}! My neck is long, so I hung the hoop a little higher.",
+              "Swipe the ball toward the hoop; a long swipe sends it far. Sink three and the hoop starts moving."
+            ],
+            "choice": "Watch me score!",
+            "prompt": "Sink {goal} baskets!",
+            "reward": "Hươu Bóng Rổ bends down for a high five with {name}: what an accurate shot!",
+            "next": "The basketball court is always open, so come play with Hươu Bóng Rổ."
+          }
         },
         {
           "game": "tennis-rally",
@@ -90,7 +126,19 @@
           "reward": "Hươu Bóng Rổ reo lên: cú đánh của {name} làm bạn Khỉ chạy không kịp!",
           "next": "Bạn Khỉ hẹn phục thù đấy, lúc nào rảnh cứ quay lại bàn bóng nhé.",
           "who": "{name}, tay vợt nhỏ của trường",
-          "learn": "Canh thời điểm và chọn hướng đánh"
+          "learn": "Canh thời điểm và chọn hướng đánh",
+          "en": {
+            "title": "Table tennis with Hươu Bóng Rổ",
+            "summary": "A ping-pong table stands by the court: tap when the ball enters the ring around your bat to hit it far past Khỉ.",
+            "lines": [
+              "Hey {name}, Khỉ the monkey is looking for someone to play table tennis with!",
+              "Tap when the ball enters the ring around your bat. Tap on one side and the ball goes that way."
+            ],
+            "choice": "Let me take on Khỉ!",
+            "prompt": "Win {goal} points against Khỉ!",
+            "reward": "Hươu Bóng Rổ cheers: the shot {name} played was too fast for Khỉ to reach!",
+            "next": "Khỉ wants a rematch, so come back to the table whenever you are free."
+          }
         }
       ]
     },
@@ -127,7 +175,19 @@
           "reward": "Voi Trống Hội vẫy vòi theo nhịp: tiếng trống của {name} rộn ràng cả sân!",
           "next": "Sắp có buổi biểu diễn nữa, Voi Trống Hội chờ cậu ở sân khấu sự kiện.",
           "who": "{name}, tay trống của đội nhạc trường",
-          "learn": "Cảm nhịp và phân biệt hai loại nốt"
+          "learn": "Cảm nhịp và phân biệt hai loại nốt",
+          "en": {
+            "title": "Festival drumming with Voi Trống Hội",
+            "summary": "Notes race toward the circle: red notes hit the middle of the drum, blue notes hit the rim.",
+            "lines": [
+              "Boom boom! You came at just the right time, {name}. The drum team needs one more drummer.",
+              "Red notes hit the middle, blue notes hit the rim, and strike as the note enters the circle."
+            ],
+            "choice": "Hand me the sticks, I will drum!",
+            "prompt": "Score {goal} points on the drum!",
+            "reward": "Voi Trống Hội swings its trunk to the beat: the drumming of {name} livens up the whole yard!",
+            "next": "Another show is coming soon, and Voi Trống Hội is waiting for you at the event stage."
+          }
         },
         {
           "game": "call-response",
@@ -142,7 +202,19 @@
           "reward": "Cả đội nhạc vỗ tay theo {name}, Voi Trống Hội khen: nhịp chuẩn từng li!",
           "next": "Lần sau bạn Vẹt sẽ vỗ nhịp khó hơn, cậu nhớ ghé thử sức nhé.",
           "who": "{name}, bạn nhỏ có đôi tai thính",
-          "learn": "Ghi nhớ và lặp lại một chuỗi nhịp"
+          "learn": "Ghi nhớ và lặp lại một chuỗi nhịp",
+          "en": {
+            "title": "Copy the clapping beat with Voi Trống Hội",
+            "summary": "Vẹt claps a rhythm and the dots light up with it: when it is your turn, clap it back exactly.",
+            "lines": [
+              "Listen, {name}: whatever rhythm Vẹt the parrot claps, the whole team copies it.",
+              "Listen carefully, then tap each circle right on time, with not one extra tap."
+            ],
+            "choice": "I have great ears, let us start!",
+            "prompt": "Copy {goal} rhythms correctly!",
+            "reward": "The whole band claps along with {name}, and Voi Trống Hội says: spot-on rhythm!",
+            "next": "Next time Vẹt will clap a harder rhythm, so remember to come try it."
+          }
         },
         {
           "game": "musical-chairs",
@@ -157,7 +229,19 @@
           "reward": "Voi Trống Hội cười khà khà: {name} nhanh như sóc, ghế nào cũng giành được!",
           "next": "Giờ sinh hoạt nào cũng chơi giành ghế, cứ tới sân khấu sự kiện nhé.",
           "who": "{name}, bạn nhỏ nhanh tay nhất lớp",
-          "learn": "Lắng nghe và phản xạ khi âm thanh dừng"
+          "learn": "Lắng nghe và phản xạ khi âm thanh dừng",
+          "en": {
+            "title": "Musical chairs with Voi Trống Hội",
+            "summary": "Friends walk around a row of chairs while the music plays: the moment it stops, tap an empty chair.",
+            "lines": [
+              "Musical chairs is about to start, {name}! Hurry into the circle!",
+              "I will play the drum. When it stops, tap an empty chair at once, but not too early or you will trip."
+            ],
+            "choice": "I am ready to grab a chair!",
+            "prompt": "Grab {goal} chairs!",
+            "reward": "Voi Trống Hội chuckles: {name} is quick as a squirrel and wins every chair!",
+            "next": "We play musical chairs at every club hour, so come along to the event stage."
+          }
         }
       ]
     },
@@ -189,7 +273,19 @@
           "reward": "Gấu Trúc Bút Chì ôm tranh vào lòng: {name} vẽ giống hệt mẫu luôn!",
           "next": "Tớ sẽ nghĩ thêm hình mới, nhớ ra vườn trường vẽ tiếp với tớ.",
           "who": "{name}, họa sĩ nhí của vườn trường",
-          "learn": "Quan sát vị trí và chép lại hình trên lưới"
+          "learn": "Quan sát vị trí và chép lại hình trên lưới",
+          "en": {
+            "title": "Drawing on the dot grid with Gấu Trúc Bút Chì",
+            "summary": "A board has a dot grid with a model picture beside it: join the dots to copy the picture exactly.",
+            "lines": [
+              "Oh {name}, I have some lovely model pictures that nobody has copied yet.",
+              "Look at the model, then drag from one dot to the next until every line is there."
+            ],
+            "choice": "Pass me a pencil!",
+            "prompt": "Copy {goal} model pictures exactly!",
+            "reward": "Gấu Trúc Bút Chì hugs the drawing: {name} copied it perfectly!",
+            "next": "I will think up new pictures, so come draw with me in the school garden again."
+          }
         },
         {
           "game": "scissor-trace",
@@ -204,7 +300,19 @@
           "reward": "Tấm thiệp đẹp quá! Gấu Trúc Bút Chì tặng {name} một hình cắt đầu tiên.",
           "next": "Còn nhiều giấy màu lắm, mai cậu lại ra vườn trường cắt tiếp nhé.",
           "who": "{name}, người thợ cắt giấy khéo tay",
-          "learn": "Đưa tay chậm, đều và chính xác theo nét"
+          "learn": "Đưa tay chậm, đều và chính xác theo nét",
+          "en": {
+            "title": "Cutting along the lines with Gấu Trúc Bút Chì",
+            "summary": "Coloured paper with dotted lines: guide the scissors along each line to cut out the shapes.",
+            "lines": [
+              "I am making cards. Could you help me cut the paper, {name}?",
+              "Put your finger on the scissors and follow the dotted line. Stray too far and they stop."
+            ],
+            "choice": "I will cut really neatly!",
+            "prompt": "Cut out {goal} shapes!",
+            "reward": "What a pretty card! Gấu Trúc Bút Chì gives {name} the very first cut-out shape.",
+            "next": "There is lots more coloured paper, so come back to the school garden tomorrow to cut more."
+          }
         },
         {
           "game": "flow-connect",
@@ -219,7 +327,19 @@
           "reward": "Gấu Trúc Bút Chì gật gù mãi: {name} nghĩ đường đi giỏi thật!",
           "next": "Tớ còn cả tập câu đố nối ống, ghé vườn trường giải cùng tớ nhé.",
           "who": "{name}, nhà giải đố của lớp",
-          "learn": "Lập kế hoạch đường đi và suy luận không gian"
+          "learn": "Lập kế hoạch đường đi và suy luận không gian",
+          "en": {
+            "title": "Connecting colour pipes with Gấu Trúc Bút Chì",
+            "summary": "A square board with coloured dots: join each matching pair so the pipes never cross and every square is filled.",
+            "lines": [
+              "{name}, I bet you cannot join every same-colour pair without the pipes crossing!",
+              "Remember to fill every square on the board too, so think it through before you drag."
+            ],
+            "choice": "Tricky but fun, let me try!",
+            "prompt": "Solve {goal} pipe boards!",
+            "reward": "Gấu Trúc Bút Chì keeps nodding: {name} is so good at planning paths!",
+            "next": "I have a whole book of pipe puzzles, so come solve them with me in the school garden."
+          }
         }
       ]
     },
@@ -255,7 +375,19 @@
           "reward": "Mèo Lớp Trưởng ghi tên {name} lên bảng khen: bước khéo, dừng giỏi!",
           "next": "Chiều nào lớp cũng chơi ở bờ ruộng, Mèo Lớp Trưởng chờ cậu đó.",
           "who": "{name}, bạn nhỏ biết tự giữ bình tĩnh",
-          "learn": "Kiềm chế, dừng lại đúng lúc theo tín hiệu"
+          "learn": "Kiềm chế, dừng lại đúng lúc theo tín hiệu",
+          "en": {
+            "title": "Red light, green light with Mèo Lớp Trưởng",
+            "summary": "On the paddy bank, a teddy bear turns away to count: hold to step toward the line, and freeze when it turns back.",
+            "lines": [
+              "{name}, our class is playing red light, green light on this paddy bank!",
+              "Hold to walk, let go to stop. If the red ring shows and you are still moving, you go back three steps."
+            ],
+            "choice": "I will freeze like a statue!",
+            "prompt": "Reach the finish line with {goal} points!",
+            "reward": "Mèo Lớp Trưởng writes {name} on the praise board: smart steps, perfect stops!",
+            "next": "The class plays on the paddy bank every afternoon, and Mèo Lớp Trưởng is waiting for you."
+          }
         },
         {
           "game": "cuop-co",
@@ -270,7 +402,19 @@
           "reward": "Mèo Lớp Trưởng phất cờ thật cao: đội mình thắng nhờ {name} đấy!",
           "next": "Đội bạn hẹn đấu lại, cậu nhớ ra bờ ruộng sau trường nhé.",
           "who": "{name}, chân chạy nhanh của đội",
-          "learn": "Chú ý tín hiệu và né tránh khéo léo"
+          "learn": "Chú ý tín hiệu và né tránh khéo léo",
+          "en": {
+            "title": "Capture the flag in the fields with Mèo Lớp Trưởng",
+            "summary": "Two teams wait on either side: when your card goes up, run for the flag, dodge Chó and bring it back to the green line.",
+            "lines": [
+              "Our team needs another flag runner, {name}!",
+              "When your card goes up, run! Grab the flag and dodge Chó the dog guarding the middle."
+            ],
+            "choice": "Call my name, I will run at once!",
+            "prompt": "Bring the flag back to the green line {goal} times!",
+            "reward": "Mèo Lớp Trưởng waves the flag high: our team won thanks to {name}!",
+            "next": "The other team wants a rematch, so come to the paddy field behind the school."
+          }
         },
         {
           "game": "co-caro",
@@ -285,7 +429,19 @@
           "reward": "Bạn Cún cúi đầu chịu thua, Mèo Lớp Trưởng khen {name} đi cờ thông minh!",
           "next": "Cún đang luyện thêm nước cờ mới, cậu quay lại đấu tiếp nhé.",
           "who": "{name}, kì thủ nhí của lớp",
-          "learn": "Suy nghĩ trước một nước và biết phòng thủ"
+          "learn": "Suy nghĩ trước một nước và biết phòng thủ",
+          "en": {
+            "title": "Playing cờ caro with Mèo Lớp Trưởng",
+            "summary": "A grid drawn on a wooden board: take turns with Cún, and whoever gets four in a row first wins.",
+            "lines": [
+              "{name}, play four-in-a-row cờ caro with Cún the puppy! Cún is feeling very confident!",
+              "Line up four in a row, and block Cún the moment it is about to get four."
+            ],
+            "choice": "Cún, let us play a round!",
+            "prompt": "Beat Cún at {goal} games of cờ caro!",
+            "reward": "Cún bows in defeat, and Mèo Lớp Trưởng praises the clever moves of {name}!",
+            "next": "Cún is practising new moves, so come back for another match."
+          }
         }
       ]
     },
@@ -317,7 +473,19 @@
           "reward": "Chó Đội Trưởng quẫy đuôi rối rít: {name} tính góc nảy chuẩn quá, bạn Gấu bắt gọn bóng rồi!",
           "next": "Giờ ra chơi nào đội bóng cũng tập ném, {name} cứ ra mép sân trường tìm Chó Đội Trưởng nhé.",
           "who": "{name}, chuyên gia ném bóng bật tường",
-          "learn": "Dự đoán góc phản xạ khi bóng đập tường"
+          "learn": "Dự đoán góc phản xạ khi bóng đập tường",
+          "en": {
+            "title": "Bouncing the ball off the wall with Chó Đội Trưởng",
+            "summary": "Gấu is hiding behind a stack of crates: drag the aim line so the ball bounces off the wall right into his paws.",
+            "lines": [
+              "Woof woof! {name}, Gấu the bear is tucked away in a corner where a straight throw cannot reach.",
+              "Drag the dotted line to set the angle so the ball bounces off the wall into the paws of Gấu."
+            ],
+            "choice": "Off the wall, straight to Gấu!",
+            "prompt": "Bounce the ball off the wall to the target {goal} times!",
+            "reward": "Chó Đội Trưởng wags like crazy: {name} worked out the bounce perfectly, and Gấu caught it!",
+            "next": "The team practises throwing every break time, {name}, so find Chó Đội Trưởng by the court."
+          }
         },
         {
           "game": "lunchbox-pack",
@@ -332,7 +500,19 @@
           "reward": "Chó Đội Trưởng vỗ hai chân trước reo vang: hộp cơm của {name} trông vừa đẹp vừa ngon miệng!",
           "next": "Bếp ăn trưa mai lại đỏ lửa, {name} ghé mép sân trường xếp cơm cùng Chó Đội Trưởng nha.",
           "who": "{name}, đầu bếp dinh dưỡng của trường",
-          "learn": "Phân loại bốn nhóm thực phẩm thiết yếu"
+          "learn": "Phân loại bốn nhóm thực phẩm thiết yếu",
+          "en": {
+            "title": "Packing a balanced lunchbox with Chó Đội Trưởng",
+            "summary": "Food rolls past on a conveyor belt: pick all four food groups to pack a tasty school lunch.",
+            "lines": [
+              "School lunch time is nearly here, {name}! Let us pack a healthy lunchbox together!",
+              "Pick four foods from four different food groups for the box, and do not take the same one twice."
+            ],
+            "choice": "A full meal, packed with goodness!",
+            "prompt": "Pack {goal} balanced lunchboxes!",
+            "reward": "Chó Đội Trưởng claps both front paws: the lunchbox {name} packed looks pretty and delicious!",
+            "next": "The lunch kitchen fires up again tomorrow, {name}, so come pack lunches with Chó Đội Trưởng."
+          }
         },
         {
           "game": "bottle-rocket",
@@ -347,7 +527,19 @@
           "reward": "Chó Đội Trưởng nhảy cẫng lên mừng: tên lửa của {name} bung dù hạ cánh đẹp tuyệt vời!",
           "next": "Sân trường luôn có chỗ cho nhà khoa học nhí, {name} rảnh lại ra bắn tên lửa tiếp nhé.",
           "who": "{name}, nhà du hành vũ trụ nhí",
-          "learn": "Căn chỉnh áp suất và chọn góc phóng thích hợp"
+          "learn": "Căn chỉnh áp suất và chọn góc phóng thích hợp",
+          "en": {
+            "title": "Water rocket launch with Chó Đội Trưởng",
+            "summary": "A rocket made from a soda bottle: swipe to pump in air, then press the button to blast it into the blue sky.",
+            "lines": [
+              "{name}, our school science club just finished building this water rocket launcher!",
+              "Swipe to pump air up to the green line, keep the launch pad straight, then press the button."
+            ],
+            "choice": "Pump it up, rocket fly high!",
+            "prompt": "Launch {goal} water rockets successfully!",
+            "reward": "Chó Đội Trưởng leaps for joy: the rocket of {name} opened its parachute and landed beautifully!",
+            "next": "The schoolyard always has room for young scientists, {name}, so come launch rockets again."
+          }
         }
       ]
     },
@@ -379,7 +571,19 @@
           "reward": "Mèo Vẽ Màu giơ bảng pha màu khen: {name} am hiểu màu sắc ghê, tranh vẽ rực rỡ hẳn lên!",
           "next": "Phòng mĩ thuật luôn mở rộng cửa đón chào, {name} ghé thăm Mèo Vẽ Màu bất cứ lúc nào nha.",
           "who": "{name}, phù thủy pha trộn sắc màu",
-          "learn": "Nguyên lý phối màu từ các màu cơ bản"
+          "learn": "Nguyên lý phối màu từ các màu cơ bản",
+          "en": {
+            "title": "Mixing paints with Mèo Vẽ Màu",
+            "summary": "A bright, colourful palette: tap two basic paint pots to blend them into a brand-new colour.",
+            "lines": [
+              "Meow meow! The flower garden painting is missing lots of bright colours, {name}.",
+              "Tap two paint pots to blend them into exactly the colour the painting needs."
+            ],
+            "choice": "Magic mixing, a blooming picture!",
+            "prompt": "Mix {goal} new colours by the right recipe!",
+            "reward": "Mèo Vẽ Màu holds up the palette: {name} knows colours so well, the painting is glowing!",
+            "next": "The art room door is always open, {name}, so visit Mèo Vẽ Màu any time."
+          }
         },
         {
           "game": "paint-splat",
@@ -394,7 +598,19 @@
           "reward": "Mèo Vẽ Màu vẫy đuôi thích thú: mảng màu nào của {name} cũng sắc nét, tranh đẹp lung linh!",
           "next": "Còn bao nhiêu bức tranh tường chờ tô, {name} lại ra cửa phòng mĩ thuật ném màu tiếp nhé.",
           "who": "{name}, nghệ sĩ ném màu vui nhộn",
-          "learn": "Phân biệt màu nhanh và phản xạ canh nhịp"
+          "learn": "Phân biệt màu nhanh và phản xạ canh nhịp",
+          "en": {
+            "title": "Paint splat with Mèo Vẽ Màu",
+            "summary": "A paint ball keeps changing colour: wait until it matches a patch of the picture, then throw to splash it full.",
+            "lines": [
+              "Look, {name}, this giant paint-splat picture is the most fun game in school!",
+              "Whatever colour the ball at the bottom turns, quickly tap the patch of that colour."
+            ],
+            "choice": "Match the colour, splat on target!",
+            "prompt": "Fill the picture with {goal} perfect paint throws!",
+            "reward": "Mèo Vẽ Màu swishes her tail: every patch {name} painted is crisp, and the picture sparkles!",
+            "next": "So many wall paintings are waiting, {name}, so come splat paint by the art room again."
+          }
         },
         {
           "game": "dots-boxes",
@@ -409,7 +625,19 @@
           "reward": "Mèo Vẽ Màu vỗ tay nồng nhiệt: {name} giăng bẫy quá khéo, chiếm trọn cả góc bàn cờ rồi!",
           "next": "Bạn Cú hẹn ngày mai tái đấu, {name} nhớ ghé phòng mĩ thuật so tài cờ ô vuông tiếp nhé.",
           "who": "{name}, kiện tướng cờ ô vuông",
-          "learn": "Tư duy chiến thuật và tính toán từng bước đi"
+          "learn": "Tư duy chiến thuật và tính toán từng bước đi",
+          "en": {
+            "title": "Dots and boxes with Mèo Vẽ Màu",
+            "summary": "A neat dot grid on drawing paper: take turns drawing one line at a time to claim the squares.",
+            "lines": [
+              "Cú and I are playing dots and boxes. Take my place for a round, {name}!",
+              "Draw a line between two neighbouring dots; whoever closes the fourth side of a box wins it."
+            ],
+            "choice": "Close the corner, claim the box!",
+            "prompt": "Beat Cú the owl at {goal} games of dots and boxes!",
+            "reward": "Mèo Vẽ Màu claps warmly: {name} set clever traps and took a whole corner of the board!",
+            "next": "Cú wants a rematch tomorrow, {name}, so come back to the art room for another game."
+          }
         }
       ]
     },
@@ -441,7 +669,19 @@
           "reward": "Bé Đội Viên nghiêm trang chào kiểu đội viên: {name} tập trung cao độ, động tác dứt khoát!",
           "next": "Buổi sinh hoạt đội tuần tới, {name} nhớ ra sân chơi dưới bóng bàng tập cờ hiệu tiếp nha.",
           "who": "{name}, đội viên gương mẫu cờ hiệu",
-          "learn": "Đọc hiểu nhanh mệnh lệnh và kiềm chế hành động"
+          "learn": "Đọc hiểu nhanh mệnh lệnh và kiềm chế hành động",
+          "en": {
+            "title": "Flag signals with Bé Đội Viên",
+            "summary": "A red flag and a blue flag flutter in the wind: read the command on the board to raise or lower them exactly.",
+            "lines": [
+              "{name}, our school flag team is practising for the opening ceremony.",
+              "Red flag in your left hand, blue in your right. If you see the word \"Don't\", stay perfectly still."
+            ],
+            "choice": "Clear commands, flags flying high!",
+            "prompt": "Follow {goal} flag commands exactly!",
+            "reward": "Bé Đội Viên gives a proper salute: {name} stayed focused and moved crisp and sharp!",
+            "next": "For next week's club meeting, {name}, come back to the playground under the almond tree."
+          }
         },
         {
           "game": "bo-khan",
@@ -456,7 +696,19 @@
           "reward": "Bé Đội Viên cười giòn tan: chân {name} thoăn thoắt, bạn đuổi theo mà không kịp chạm vai!",
           "next": "Giờ ra chơi nào vòng tròn cũng rộn tiếng cười, {name} cứ lại bóng cây bàng chơi cùng lớp nhé.",
           "who": "{name}, chân chạy thoăn thoắt trò bỏ khăn",
-          "learn": "Quan sát cơ hội bất ngờ và bứt tốc khéo léo"
+          "learn": "Quan sát cơ hội bất ngờ và bứt tốc khéo léo",
+          "en": {
+            "title": "Playing bỏ khăn (drop the hanky) with Bé Đội Viên",
+            "summary": "Friends sit in a circle clapping: sneak the hanky behind someone who is not looking, then race back to your spot.",
+            "lines": [
+              "The whole class is playing bỏ khăn on the grass, {name}! Join the circle and run with us!",
+              "Stroll around, drop the hanky behind someone who is not looking, then dash back to the mat."
+            ],
+            "choice": "Sneaky drop, quick dash home!",
+            "prompt": "Drop the hanky and get back safely {goal} times!",
+            "reward": "Bé Đội Viên laughs out loud: {name} is so quick on their feet, no one could tag them!",
+            "next": "The circle is full of laughter every break time, {name}, so come play under the almond tree."
+          }
         },
         {
           "game": "cat-mouse",
@@ -471,7 +723,19 @@
           "reward": "Bé Đội Viên reo vang: chú chuột {name} quá nhanh trí, bạn mèo đành chịu thua rồi!",
           "next": "Trò chơi dân gian vui bất tận, {name} ghé sân chơi dưới bóng bàng đuổi bắt tiếp nha.",
           "who": "{name}, chú chuột lém lỉnh nhanh như cắt",
-          "learn": "Nhận biết thời điểm mở đóng của lối đi"
+          "learn": "Nhận biết thời điểm mở đóng của lối đi",
+          "en": {
+            "title": "Cat and mouse with Bé Đội Viên",
+            "summary": "Friends hold hands, raising and lowering them like gates: guide the nimble mouse through and keep the cat out.",
+            "lines": [
+              "{name}, be the cheeky little mouse in our class game of cat and mouse!",
+              "Slip the mouse through a gap just as the arms come down, so the cat chasing you gets blocked."
+            ],
+            "choice": "Quick little mouse, the cat cannot catch me!",
+            "prompt": "Trick the cat into getting stuck {goal} times!",
+            "reward": "Bé Đội Viên cheers: mouse {name} is so quick-witted that the cat has to give up!",
+            "next": "Folk games are endless fun, {name}, so come chase around under the almond tree again."
+          }
         }
       ]
     },
@@ -503,7 +767,19 @@
           "reward": "Thỏ Măng Non vỗ tay theo nhịp gõ sào: {name} uyển chuyển như vũ công múa sạp vùng cao!",
           "next": "Hội diễn văn nghệ sắp tới rồi, {name} nhớ ghé hành lang hội trường múa sạp cùng thỏ nha.",
           "who": "{name}, bước chân nhịp nhàng nhảy sạp",
-          "learn": "Bắt đúng nhịp phách và phản xạ chân tay"
+          "learn": "Bắt đúng nhịp phách và phản xạ chân tay",
+          "en": {
+            "title": "Nhảy sạp bamboo dance with Thỏ Măng Non",
+            "summary": "The bamboo poles clack out a beat: wait for them to open wide, then nimbly step in and hop out.",
+            "lines": [
+              "Clack clack boom clack! Can you hear the bamboo poles of the nhảy sạp dance, {name}?",
+              "When the poles open for two beats, hop in, then hop out on the next beat before they close."
+            ],
+            "choice": "Steady feet, no fear of the poles!",
+            "prompt": "Dance over {goal} beats of the bamboo poles!",
+            "reward": "Thỏ Măng Non claps along: {name} moves as gracefully as a highland bamboo dancer!",
+            "next": "The school concert is coming up, {name}, so come dance with me by the hall."
+          }
         },
         {
           "game": "oan-tu-xi",
@@ -518,7 +794,19 @@
           "reward": "Thỏ Măng Non lắc tai trầm trồ: đầu óc {name} nhảy số nhanh ghê, chẳng nhầm chữ nào!",
           "next": "Trò oẳn tù tì rèn trí óc siêu vui, {name} quay lại hành lang trước hội trường đấu tiếp nha.",
           "who": "{name}, nhà vô địch oẳn tù tì nhanh trí",
-          "learn": "Đổi ngược tư duy quy tắc linh hoạt"
+          "learn": "Đổi ngược tư duy quy tắc linh hoạt",
+          "en": {
+            "title": "Quick-thinking rock-paper-scissors with Thỏ Măng Non",
+            "summary": "Hands flash scissors, rock and paper: read the win or lose word fast and throw exactly the right hand.",
+            "lines": [
+              "Let us play oẳn tù tì and see who is quicker, {name}. I have a very special rule!",
+              "When the board says Win, pick the hand that beats mine; when it says Lose, pick the hand that loses."
+            ],
+            "choice": "Rock, paper, scissors, ready!",
+            "prompt": "Throw the right hand {goal} rounds in a row!",
+            "reward": "Thỏ Măng Non twitches her ears in awe: {name} thinks so fast and never mixes up a word!",
+            "next": "Oẳn tù tì is a great brain workout, {name}, so come back to the hall corridor for more."
+          }
         },
         {
           "game": "reversi",
@@ -533,7 +821,19 @@
           "reward": "Thỏ Măng Non reo hò phấn khích: bàn cờ trắng tinh màu của {name}, bạn Cú chịu thua rồi!",
           "next": "Bạn Cú đang nghiên cứu nước cờ mới, {name} nhớ quay lại hội trường so tài tiếp nha.",
           "who": "{name}, kỳ thủ cờ lật tài hoa",
-          "learn": "Nhìn bao quát bàn cờ và chiếm cứ điểm góc"
+          "learn": "Nhìn bao quát bàn cờ và chiếm cứ điểm góc",
+          "en": {
+            "title": "Flip-colour board game with Thỏ Măng Non",
+            "summary": "A square board with black-and-white pieces: trap the other side's pieces between yours to flip them all to your colour.",
+            "lines": [
+              "Oh {name}, wise Cú the owl is waiting for someone to play this black-and-white flipping game.",
+              "Place a piece so a row of Cú's pieces is trapped between two of yours to flip them, and grab the corners."
+            ],
+            "choice": "Take the corners, flip them all!",
+            "prompt": "Beat Cú at {goal} games of the flipping board game!",
+            "reward": "Thỏ Măng Non bounces with excitement: the board is all the colour of {name}, and Cú gives up!",
+            "next": "Cú is studying new moves, {name}, so come back to the hall for another round."
+          }
         }
       ]
     },
@@ -565,7 +865,19 @@
           "reward": "Gấu Bó Đũa vỗ bụng cười vang: {name} tính nhẩm siêu tốc, hàng số đã sạch bong rồi!",
           "next": "Mỗi giờ học toán xong, {name} lại ra ghế đá sân sau cùng Gấu Bó Đũa giải đố nha.",
           "who": "{name}, siêu sao tính nhẩm tròn chục",
-          "learn": "Ghi nhớ các cặp số cộng lại bằng 10"
+          "learn": "Ghi nhớ các cặp số cộng lại bằng 10",
+          "en": {
+            "title": "Making ten with Gấu Bó Đũa",
+            "summary": "Number blocks slowly rise up: tap two numbers that add up to ten to make them vanish.",
+            "lines": [
+              "The number blocks are rising so fast, {name}! Help me rescue the rows!",
+              "Tap two number squares that add up to exactly ten to clear them, and keep them off the top line."
+            ],
+            "choice": "Add up to ten, clear the row!",
+            "prompt": "Match {goal} pairs of numbers that add up to ten!",
+            "reward": "Gấu Bó Đũa pats his tummy and laughs: {name} adds super fast, and the rows are spotless!",
+            "next": "After every maths lesson, {name}, come solve puzzles with Gấu Bó Đũa at the stone bench."
+          }
         },
         {
           "game": "tens-bundles",
@@ -580,7 +892,19 @@
           "reward": "Gấu Bó Đũa giơ từng bó que gọn gàng: {name} đếm chục que chuẩn xác, bài toán dễ ợt rồi!",
           "next": "Sắp tới bài đếm trăm, {name} nhớ ghé ghế đá sân sau bó que tính cùng Gấu Bó Đũa nhé.",
           "who": "{name}, thợ bó que tính cẩn thận",
-          "learn": "Hiểu bản chất hàng chục và hàng đơn vị"
+          "learn": "Hiểu bản chất hàng chục và hàng đơn vị",
+          "en": {
+            "title": "Bundling counting sticks into tens with Gấu Bó Đũa",
+            "summary": "Counting sticks are scattered on the desk: circle exactly ten to tie them into a neat bundle of ten.",
+            "lines": [
+              "{name}, I have a whole basket of coloured counting sticks to sort into bundles of ten.",
+              "Draw a loop around exactly ten sticks to tie them up, then count the tens and the ones."
+            ],
+            "choice": "Ten sticks a bundle, count the tens fast!",
+            "prompt": "Tie {goal} bundles of ten counting sticks!",
+            "reward": "Gấu Bó Đũa holds up each tidy bundle: {name} counts tens perfectly, this sum is easy now!",
+            "next": "Counting to a hundred is next, {name}, so come bundle sticks with Gấu Bó Đũa at the stone bench."
+          }
         },
         {
           "game": "hand-span",
@@ -595,7 +919,19 @@
           "reward": "Gấu Bó Đũa gật gù khen ngợi: {name} đo đạc khéo ghê, số gang tay khớp từng centimet!",
           "next": "Sân sau còn bao nhiêu thứ để đo, {name} cứ ra ghế đá dãy lớp tìm Gấu Bó Đũa nha.",
           "who": "{name}, thước đo gang tay chuẩn xác",
-          "learn": "Kỹ năng đo độ dài bằng đơn vị tự quy ước"
+          "learn": "Kỹ năng đo độ dài bằng đơn vị tự quy ước",
+          "en": {
+            "title": "Measuring with hand spans with Gấu Bó Đũa",
+            "summary": "Desks, the blackboard and pencil cases of all lengths: lay hand spans end to end to measure each one.",
+            "lines": [
+              "Today our class is learning to estimate length with hand spans, {name}.",
+              "Lay your hand spans end to end from the left edge, with no gaps or overlaps, then count them."
+            ],
+            "choice": "Span by span, measured just right!",
+            "prompt": "Measure {goal} school things correctly!",
+            "reward": "Gấu Bó Đũa nods with approval: {name} measures so carefully, every span counts just right!",
+            "next": "The back yard has plenty more to measure, {name}, so look for Gấu Bó Đũa at the stone bench."
+          }
         }
       ]
     }

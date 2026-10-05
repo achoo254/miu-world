@@ -46,7 +46,19 @@
         {
           "text": "Cháu xếp đồ lên đò ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, watch me ferry things across the river!",
+          "Plan it so the pairs left on the bank don't cause trouble for each other."
+        ],
+        "choices": [
+          {
+            "text": "I'll load the boat now!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chèo đò chở trọn vẹn hai chuyến hàng sang sông giúp chú nhé!",
       "game": "river-crossing",
-      "goal": 2
+      "goal": 2,
+      "en": {
+        "title": "River Crossing Puzzle",
+        "prompt": "Ferry 2 full loads across the river for me!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chuyến đò nào cũng sang bờ an toàn nhờ tài tính toán của {name}!"
+      "text": "Chuyến đò nào cũng sang bờ an toàn nhờ tài tính toán của {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Every trip reached the bank safely, thanks to {name}'s smart planning!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bến sông quê mình ngày nào cũng nhộn nhịp tiếng đò rẽ sóng."
+      "text": "Bến sông quê mình ngày nào cũng nhộn nhịp tiếng đò rẽ sóng.",
+      "en": {
+        "title": "See you soon",
+        "text": "Our village river landing is busy every day with boats cutting through the water."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Cross the river safely with Chú Lái Đò Ba",
+    "summary": "Load goods and little passengers onto the small boat and row them safely to the other bank."
   }
 }

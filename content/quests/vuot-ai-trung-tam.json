@@ -46,7 +46,21 @@
       ],
       "choices": [
         { "text": "Tớ đi gom đồ diễn cho Cáo!", "reply": "Nhanh chân lên nhé, dãy sạp đồ cũ ở ngay bên trái kia." }
-      ]
+      ],
+      "en": {
+        "title": "Hot news from Bồ Câu",
+        "goTo": "Go to the trading-area gate, Bồ Câu Đưa Tin is waiting",
+        "lines": [
+          "Coo coo, hot news! The Magician Fox just set up a stage in the middle of the trading area; whoever wins the talent quiz gets to open the Fox's prop chest.",
+          "Only, the Fox is very forgetful, and the show props are scattered all along the second-hand stalls. Without all of them, the Fox won't perform."
+        ],
+        "choices": [
+          {
+            "text": "I'll gather the props for the Fox!",
+            "reply": "Be quick, the second-hand stalls are just over there on the left."
+          }
+        ]
+      }
     },
     {
       "id": "tim-do-dien",
@@ -161,7 +175,25 @@
           "text": "Đội chiếc mũ ảo thuật lên đầu",
           "consequence": "Cáo bật cười: trông {name} cũng ra dáng một nhà ảo thuật nhí rồi đấy!"
         }
-      ]
+      ],
+      "en": {
+        "title": "How to take the stage?",
+        "prompt": "The little stage is lit up. How does {name} want to step up and really make an entrance?",
+        "choices": [
+          {
+            "text": "Bow politely to the audience",
+            "consequence": "The audience bursts into applause, and the Magician Fox tips his hat to {name} in return."
+          },
+          {
+            "text": "Wave the seven-colour silk scarf",
+            "consequence": "The scarf flutters like a rainbow, and the whole trading area gasps with delight."
+          },
+          {
+            "text": "Pop the magician's hat on your head",
+            "consequence": "The Fox laughs: {name} looks just like a little magician already!"
+          }
+        ]
+      }
     },
     {
       "id": "tran-trum",
@@ -260,14 +292,22 @@
       "title": "Rương đạo cụ",
       "kind": "reward",
       "target": "trum-tt-ruong-dao-cu",
-      "text": "Cáo Ảo Thuật mở rương đạo cụ, hàng trăm mảnh giấy màu bay lên như pháo hoa. Trong rương là XP, xu và điểm kỹ năng dành cho {name}."
+      "text": "Cáo Ảo Thuật mở rương đạo cụ, hàng trăm mảnh giấy màu bay lên như pháo hoa. Trong rương là XP, xu và điểm kỹ năng dành cho {name}.",
+      "en": {
+        "title": "The prop chest",
+        "text": "The Magician Fox opens the prop chest, and hundreds of coloured paper scraps burst up like fireworks. Inside the chest are XP, coins and skill points for {name}."
+      }
     },
     {
       "id": "cao-len-duong",
       "title": "Cáo Ảo Thuật lên đường",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cáo Ảo Thuật thu dọn sân khấu để đi diễn ở map khác. Mèo Đại Sứ mời {name} qua cổng dịch chuyển, kể cho bạn bè khắp nơi nghe chuyện vừa thắng Cáo."
+      "text": "Cáo Ảo Thuật thu dọn sân khấu để đi diễn ở map khác. Mèo Đại Sứ mời {name} qua cổng dịch chuyển, kể cho bạn bè khắp nơi nghe chuyện vừa thắng Cáo.",
+      "en": {
+        "title": "The Magician Fox hits the road",
+        "text": "The Magician Fox packs up the stage to go and perform on another map. Mèo Đại Sứ invites {name} through the teleport gate to tell friends everywhere about beating the Fox."
+      }
     }
   ],
   "reward": {

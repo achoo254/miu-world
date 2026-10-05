@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Turning gears",
+    "howTo": [
+      "Drag big and small gears onto the yellow pegs.",
+      "Gears turn each other only when their teeth just touch; overlapping gears won't fit.",
+      "{name}, connect the crank to the mill so the millstone turns!"
+    ]
+  }
 }

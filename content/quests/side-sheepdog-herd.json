@@ -46,7 +46,19 @@
         {
           "text": "Đi thôi, mình vòng ra sau nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Woof woof! {name}, the ducks are running all over the pond bank!",
+          "Lead me round behind them. They'll get scared and dash through the fence gap into the pen."
+        ],
+        "choices": [
+          {
+            "text": "Let's go, round the back!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Lùa đủ mười chú vịt vào chuồng nhé!",
       "game": "sheepdog-herd",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Herd the Ducks",
+        "prompt": "Herd 10 ducks into the pen!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chó Lùa Vịt vẫy đuôi tít: {name} chăn vịt cừ quá!"
+      "text": "Chó Lùa Vịt vẫy đuôi tít: {name} chăn vịt cừ quá!",
+      "en": {
+        "title": "Reward",
+        "text": "Chó Lùa Vịt wags his tail like crazy: {name} is an ace duck herder!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chiều nào vịt cũng đi chơi, cậu ghé bờ ao giúp tớ lùa tiếp nhé."
+      "text": "Chiều nào vịt cũng đi chơi, cậu ghé bờ ao giúp tớ lùa tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The ducks wander off every afternoon. Come to the pond bank and help me herd them again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Herd the Ducks Home with Chó Lùa Vịt",
+    "summary": "Ducks have wandered off from the fish pond; lead the dog around behind them to herd them into the pen."
   }
 }

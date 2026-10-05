@@ -46,7 +46,19 @@
         {
           "text": "Chạy trên trần hang vui quá!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The tunnel up to the cable car station has a magic breeze, {name}!",
+          "Just tap and you'll run upside down on the cave ceiling to dodge the rocks below."
+        ],
+        "choices": [
+          {
+            "text": "Running on the ceiling is so fun!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Lướt đi thật an toàn quãng đường bốn trăm hai mươi mét trong hang băng nhé!",
       "game": "gravity-flip",
-      "goal": 420
+      "goal": 420,
+      "en": {
+        "title": "Gravity flip",
+        "prompt": "Glide 420 metres safely through the ice cave!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nai Nhỏ tròn xoe đôi mắt: {name} đảo trần sàn khéo léo chẳng vấp viên đá nào!"
+      "text": "Nai Nhỏ tròn xoe đôi mắt: {name} đảo trần sàn khéo léo chẳng vấp viên đá nào!",
+      "en": {
+        "title": "Reward",
+        "text": "Nai Nhỏ's eyes go round: {name} flips between ceiling and floor without tripping once!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Hang băng luôn sáng ánh pha lê, Nai Nhỏ ngóng {name} quay lại chạy tiếp ván mới."
+      "text": "Hang băng luôn sáng ánh pha lê, Nai Nhỏ ngóng {name} quay lại chạy tiếp ván mới.",
+      "en": {
+        "title": "See you soon",
+        "text": "The ice cave always glows with crystal light. Nai Nhỏ hopes {name} comes back for another run."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Gravity Flip with Nai Nhỏ Vách Đá",
+    "summary": "A magical rock cave; tap to flip and fall up to the ceiling or down to the floor to dodge obstacles."
   }
 }

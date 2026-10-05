@@ -84,7 +84,27 @@
           "text": "Mười bảy câu \"Của chị\" cơ á? Nhiều thế!",
           "reply": "Mười tám rồi, Hồng vừa nói thêm một câu! Mau đi tìm chùm hoa thôi."
         }
-      ]
+      ],
+      "en": {
+        "title": "The bee sisters quarrel",
+        "goTo": "Go to the flower-garden gate, Gấu Hũ the gardener is holding his head because of the bees' quarrel",
+        "lines": [
+          "Oho! {name}, just in time! The two bee sisters in my garden are fighting; I've counted seventeen “It's mine!” already.",
+          "The biggest cluster of flowers is mine! I saw it first, with both my eyes!",
+          "But I flew there first, with all four wings! You never let me have anything.",
+          "This morning the whole bush bloomed exactly one cluster. One… is still one. I've counted three times and there's no more."
+        ],
+        "choices": [
+          {
+            "text": "I'll help, you two will make up, you'll see!",
+            "reply": "Oho, thank you, {name}! First let's go and see the flower that started all this."
+          },
+          {
+            "text": "Seventeen “It's mine!”? That's a lot!",
+            "reply": "Eighteen now, Hồng just said another one! Quick, let's find that flower."
+          }
+        ]
+      }
     },
     {
       "id": "tim-chum-hoa",
@@ -494,7 +514,30 @@
           "text": "Cùng chăm cả bụi hoa để ngày mai nở thêm nhiều chùm.",
           "reply": "Gấu Hũ vỗ bụng bồm bộp: sáng mai cả bụi sẽ đỏ rực, tớ lại có cái để đếm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "The sisters' flower cluster",
+        "goTo": "Run to the flower-garden gate, Gấu Hũ has called both bee sisters back",
+        "lines": [
+          "We're sisters just like Nết and Na, and yet we fought over one flower. I'm sorry, Nụ.",
+          "I'm sorry too. {name}, what should we do with this flower now?",
+          "Oho, I've been counting: eighteen lines of quarrelling and only two of making up. Say another one!"
+        ],
+        "choices": [
+          {
+            "text": "Share the nectar of one cluster, big sister first, little sister next.",
+            "reply": "Hồng laughs: no, you go first, little sister!"
+          },
+          {
+            "text": "The big flower shades the little bud, like sister flowers.",
+            "reply": "Nụ hugs her sister: from now on we're two flowers side by side."
+          },
+          {
+            "text": "Look after the whole bush together so more clusters bloom tomorrow.",
+            "reply": "Gấu Hũ pats his tummy with a thump: tomorrow morning the whole bush will be bright red, and I'll have plenty to count!"
+          }
+        ]
+      }
     },
     {
       "id": "doan-tranh-hai-anh-em",
@@ -673,14 +716,22 @@
       "title": "Giọt mật hoa tỉ muội",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hai chị em ong cùng nhau tặng {name} một giọt mật hoa tỉ muội, đựng trong chiếc lá cuộn tròn. Gấu Hũ đếm kĩ: đúng một giọt, nhưng ngọt bằng mười!"
+      "text": "Hai chị em ong cùng nhau tặng {name} một giọt mật hoa tỉ muội, đựng trong chiếc lá cuộn tròn. Gấu Hũ đếm kĩ: đúng một giọt, nhưng ngọt bằng mười!",
+      "en": {
+        "title": "A drop of sister-flower honey",
+        "text": "The two bee sisters together give {name} a drop of sister-flower honey, held in a rolled-up leaf. Gấu Hũ counts carefully: exactly one drop, but as sweet as ten!"
+      }
     },
     {
       "id": "mo-bai-26",
       "title": "Tiếng chiêm chiếp ở tổ rơm",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ tổ rơm trong ngõ nhỏ vọng lại tiếng chiêm chiếp rộn ràng, xen lẫn một câu hỏi \"Tại sao?\" thật to: nhà Gà Con Mẩy sắp có chuyện vui!"
+      "text": "Từ tổ rơm trong ngõ nhỏ vọng lại tiếng chiêm chiếp rộn ràng, xen lẫn một câu hỏi \"Tại sao?\" thật to: nhà Gà Con Mẩy sắp có chuyện vui!",
+      "en": {
+        "title": "Cheeping in the straw nest",
+        "text": "From the straw nest down the little lane comes a flurry of cheeping and a very loud “Why?”: something happy is about to happen in Gà Con Mẩy's family!"
+      }
     }
   ],
   "reward": {

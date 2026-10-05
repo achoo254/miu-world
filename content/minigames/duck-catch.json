@@ -9,5 +9,12 @@
   "controls": ["drag", "tap"],
   "duration": 60,
   "goal": 10,
-  "params": { "duckSpeed": 1 }
+  "params": { "duckSpeed": 1 },
+  "en": {
+    "name": "Catch the pond ducks",
+    "howTo": [
+      "Hold and drag your finger so {name} wades after the ducks.",
+      "Herd a duck against the fence, then tap to lunge and grab it!"
+    ]
+  }
 }

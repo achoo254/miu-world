@@ -46,7 +46,19 @@
         {
           "text": "Tớ gói chiếc đầu tiên!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Tết is coming, {name}! Let's wrap some perfectly square bánh chưng!",
+          "Lay the rice, beans and pork in the pattern's rows, then fold the leaves along the arrows. Done!"
+        ],
+        "choices": [
+          {
+            "text": "I'll wrap the first one!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Gói được ba chiếc bánh chưng vuông vức nhé!",
       "game": "banh-chung-wrap",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Wrapping bánh chưng",
+        "prompt": "Wrap 3 neat square bánh chưng!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Bánh Ngọt xếp bánh lên mâm: bánh {name} gói vuông như hộp quà!"
+      "text": "Gấu Bánh Ngọt xếp bánh lên mâm: bánh {name} gói vuông như hộp quà!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Bánh Ngọt sets the cakes on a tray: {name}'s bánh chưng are square as gift boxes!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tết nào cũng cần bánh, Gấu Bánh Ngọt hẹn {name} ở sân trước nhà."
+      "text": "Tết nào cũng cần bánh, Gấu Bánh Ngọt hẹn {name} ở sân trước nhà.",
+      "en": {
+        "title": "See you soon",
+        "text": "Every Tết needs rice cakes. Gấu Bánh Ngọt will meet {name} in the front yard."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Wrap Tết bánh chưng with Gấu Bánh Ngọt",
+    "summary": "Out in the yard, lay the leaves, add rice, beans and pork following the pattern, then fold and tie a square rice cake."
   }
 }

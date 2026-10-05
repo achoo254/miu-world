@@ -46,7 +46,19 @@
         {
           "text": "Em chuyền ngói lợp mái ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The roof is nearly done, {name}! Lend me a hand with the tiles!",
+          "Lay each tile so it overlaps the edge of the one below, working from the bottom row up."
+        ],
+        "choices": [
+          {
+            "text": "Pass me the tiles, I will start!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Xếp ngay ngắn khít khao hai mươi bảy viên ngói đỏ tươi lên mái nhà nhé!",
       "game": "roof-tiles",
-      "goal": 27
+      "goal": 27,
+      "en": {
+        "title": "Tile the Roof Before Rain",
+        "prompt": "Lay 27 bright red tiles neatly on the roof!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mái ngói đỏ au phẳng lỳ che mưa gió, {name} làm thợ giỏi quá!"
+      "text": "Mái ngói đỏ au phẳng lỳ che mưa gió, {name} làm thợ giỏi quá!",
+      "en": {
+        "title": "Reward",
+        "text": "The red roof is smooth and keeps out the wind and rain. {name} is a skilled roofer!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Anh thợ sửa mái vẫn ở đầu đường ruộng lúa mì chờ em ghé phụ."
+      "text": "Anh thợ sửa mái vẫn ở đầu đường ruộng lúa mì chờ em ghé phụ.",
+      "en": {
+        "title": "See you soon",
+        "text": "The roofer is still at the end of the wheat-field road, waiting for your help."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Tiling the roof with Anh Thợ Sửa Mái",
+    "summary": "Drag red tiles into straight rows from the bottom up so the roof is snug against sun and rain."
   }
 }

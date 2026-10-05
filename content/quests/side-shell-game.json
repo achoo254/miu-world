@@ -46,7 +46,19 @@
         {
           "text": "Mắt tớ tinh lắm đấy!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, the pearl is hiding under this bowl!",
+          "I shuffle really fast, so keep your eyes glued to it."
+        ],
+        "choices": [
+          {
+            "text": "I've got sharp eyes!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Tìm đúng viên ngọc năm lần nhé!",
       "game": "shell-game",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Find the Pearl",
+        "prompt": "Find the pearl 5 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Không qua được mắt {name}, tớ chịu thua rồi!"
+      "text": "Không qua được mắt {name}, tớ chịu thua rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Nothing gets past {name}! I give up!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tớ sẽ tập đảo bát nhanh hơn, hẹn cậu ở chân cầu nhé."
+      "text": "Tớ sẽ tập đảo bát nhanh hơn, hẹn cậu ở chân cầu nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "I'll practise shuffling faster. See you at the foot of the bridge!"
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Find the pearl with Mèo Gắp Thú",
+    "summary": "Three bowls swap places in a flash: follow the one hiding the pearl and point to it."
   }
 }

@@ -82,7 +82,23 @@
           "text": "Mình giúp cậu viết thư trả lời nhé!",
           "reply": "Thật hả? Vậy tìm giấy bút trước đã, tớ để quên đâu đó quanh bờ hồ lau sậy rồi."
         }
-      ]
+      ],
+      "en": {
+        "title": "A letter with a snowflake stamp",
+        "goTo": "Go to the lakeside post to meet Gấu Tuyết Bông",
+        "lines": [
+          "Phew, phew… {name}, our forest is so hot I have to sit with my feet dangling in the lake to cool off.",
+          "Woof! A letter from the ice lands, with a real snowflake stamp! I ran the whole way and the envelope is still cold.",
+          "It's from Hải Cẩu Bạc, my best friend in the ice lands! Bạc writes: “Bông, I miss you!”",
+          "I want to reply right away, but the moment I pick up a pen my brain melts like an ice lolly at noon."
+        ],
+        "choices": [
+          {
+            "text": "I'll help you write a reply!",
+            "reply": "Really? Then let's find paper and a pen first, I left them somewhere around the reeds by the lake."
+          }
+        ]
+      }
     },
     {
       "id": "tim-giay-but",
@@ -985,7 +1001,28 @@
           "text": "Rủ Bạc mùa đông sang rừng chơi nhé!",
           "reply": "Ý hay! Tớ sẽ dẫn Bạc đi qua nhịp cầu gỗ mới tinh mà Hải Ly Cần vừa đóng xong."
         }
-      ]
+      ],
+      "en": {
+        "title": "Bông writes, then crosses out",
+        "lines": [
+          "I write “Hi Bạc!” and then… cross it out. I write “Dear Bạc!” and then… cross it out again. The paper's as crumpled as a clam shell!",
+          "Just like the little ant in the story. How should I write it so Bạc knows I miss him?"
+        ],
+        "choices": [
+          {
+            "text": "Write it like the ant: “Bạc, I miss you too!”",
+            "reply": "Short, but it warms my whole tummy! I'll write it right now, letter by careful letter."
+          },
+          {
+            "text": "Tell Bạc how hot our forest is!",
+            "reply": "Ha ha, I'll tell him I soak my feet in the lake every afternoon like pickles in a jar."
+          },
+          {
+            "text": "Invite Bạc to visit the forest in winter!",
+            "reply": "Great idea! I'll walk Bạc across the brand-new wooden bridge Hải Ly Cần just finished."
+          }
+        ]
+      }
     },
     {
       "id": "bai-tho-gui-kem",
@@ -1031,14 +1068,22 @@
       "title": "Quả cầu tuyết của Bông",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bông tặng {name} một quả cầu tuyết nhỏ: lắc lên là tuyết bay lả tả quanh hai chú gấu đang ôm nhau. Bông bảo cầm vào là mát lạnh, rừng nóng mấy cũng chịu được!"
+      "text": "Bông tặng {name} một quả cầu tuyết nhỏ: lắc lên là tuyết bay lả tả quanh hai chú gấu đang ôm nhau. Bông bảo cầm vào là mát lạnh, rừng nóng mấy cũng chịu được!",
+      "en": {
+        "title": "Bông's snow globe",
+        "text": "Bông gives {name} a little snow globe: shake it and snow flutters around two hugging bears. Bông says it feels cool in your hand, so you can bear even the hottest forest day!"
+      }
     },
     {
       "id": "mo-bai-19",
       "title": "Ồn ào trên đường chữ cái",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chó Ki chạy về báo tin: trên con đường chữ cái, chữ A và các bạn đang cãi nhau ầm ĩ xem ai quan trọng nhất. Vẹt Xanh đã bay tới… và cãi to nhất!"
+      "text": "Chó Ki chạy về báo tin: trên con đường chữ cái, chữ A và các bạn đang cãi nhau ầm ĩ xem ai quan trọng nhất. Vẹt Xanh đã bay tới… và cãi to nhất!",
+      "en": {
+        "title": "A racket on the alphabet road",
+        "text": "Chó Ki runs back with news: on the alphabet road, the letter A and friends are arguing loudly about who's the most important. Vẹt Xanh has flown over… and is arguing the loudest!"
+      }
     }
   ],
   "reward": {

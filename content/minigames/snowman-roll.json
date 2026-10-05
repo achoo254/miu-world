@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Roll a Snowman",
+    "howTo": [
+      "Drag the snowball around the yard: the further it rolls, the bigger it gets.",
+      "When it fits the dashed ring, it glows green: {name} drops it into that ring.",
+      "Each ball stacked right is a point. Big, medium, small makes one snowman!"
+    ]
+  }
 }

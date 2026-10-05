@@ -46,7 +46,19 @@
         {
           "text": "Đổ bột thôi, thơm quá!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The pan's hot, {name}! Let's pour some sizzling bánh xèo!",
+          "When the pan's rim turns green, the pancake is golden. Tap to flip it before it burns!"
+        ],
+        "choices": [
+          {
+            "text": "Pour the batter, it smells great!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đổ được mười cái bánh xèo vàng giòn nhé!",
       "game": "banh-xeo-flip",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Bánh xèo pancakes",
+        "prompt": "Cook 10 golden, crispy bánh xèo!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Bánh Ngọt hít hà: bánh xèo của {name} giòn tan luôn!"
+      "text": "Gấu Bánh Ngọt hít hà: bánh xèo của {name} giòn tan luôn!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Bánh Ngọt takes a big sniff: {name}'s bánh xèo are super crispy!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bữa sau lại có bánh xèo, {name} ra sân trước nhà phụ Gấu nhé."
+      "text": "Bữa sau lại có bánh xèo, {name} ra sân trước nhà phụ Gấu nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "There'll be bánh xèo again next meal. Come help Gấu in the front yard, {name}."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Crispy bánh xèo with Gấu Bánh Ngọt",
+    "summary": "Pour batter into the pan, flip the pancake when it's golden, then slide it onto a plate before it burns."
   }
 }

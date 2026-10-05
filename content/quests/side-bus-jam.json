@@ -46,7 +46,19 @@
         {
           "text": "Đúng màu lên xe, bến bãi thông thoáng!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hello {name}! Passengers are queuing in a huge crowd at the square bus stop!",
+          "Tap someone with a clear path onto the bus of their colour, and remember the waiting bench has only five seats."
+        ],
+        "choices": [
+          {
+            "text": "Right colour, right bus, clear the stop!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đưa khách lên xe buýt giải tỏa tám chuyến xe nhé!",
       "game": "bus-jam",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "All aboard the bus",
+        "prompt": "Board passengers to clear 8 buses!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bác Lái Xe Hải bấm còi pim pim: cháu {name} điều phối tài tình, bến xe trật tự trở lại rồi!"
+      "text": "Bác Lái Xe Hải bấm còi pim pim: cháu {name} điều phối tài tình, bến xe trật tự trở lại rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Bác Lái Xe Hải beeps the horn: {name} directed everyone brilliantly, and the stop is orderly again!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chuyến xe buýt sau sắp về bến, {name} rảnh lại ra bến xe quảng trường phụ bác nhé."
+      "text": "Chuyến xe buýt sau sắp về bến, {name} rảnh lại ra bến xe quảng trường phụ bác nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The next bus is almost here, {name}. Come help me at the square bus stop when you are free."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Clearing the bus jam with Bác Lái Xe Hải",
+    "summary": "The bus stop is packed at rush hour: send passengers onto the bus of their own colour to clear the jam."
   }
 }

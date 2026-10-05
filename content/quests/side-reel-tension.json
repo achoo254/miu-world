@@ -46,7 +46,19 @@
         {
           "text": "Cháu giữ chặt cần đây ạ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, a big one's on the line! Give me a hand with the rod!",
+          "Hold and the green box rises, let go and it sinks. Just keep the fish inside the box."
+        ],
+        "choices": [
+          {
+            "text": "I've got a tight grip on the rod!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Kéo được năm con cá lớn lên bờ nhé!",
       "game": "reel-tension",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Reel In the Big Fish",
+        "prompt": "Reel 5 big fish onto the rocks!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chú ngư dân Sóng giơ con cá lên: cháu {name} kéo khỏe hơn cả chú!"
+      "text": "Chú ngư dân Sóng giơ con cá lên: cháu {name} kéo khỏe hơn cả chú!",
+      "en": {
+        "title": "Reward",
+        "text": "Uncle Sóng holds up the fish: {name} reels in stronger than I do!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Biển còn nhiều cá lớn lắm, chú Sóng đợi {name} trên bờ đá nhé."
+      "text": "Biển còn nhiều cá lớn lắm, chú Sóng đợi {name} trên bờ đá nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "There are plenty more big fish in the sea. Uncle Sóng will wait for {name} on the rocks."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Reel in the big fish with Uncle Sóng",
+    "summary": "A big fish has bitten: hold and release so the fish stays inside the green box until it's landed."
   }
 }

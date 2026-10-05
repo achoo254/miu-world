@@ -46,7 +46,19 @@
         {
           "text": "Khúc quanh đây rồi, đổi hướng liền tay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, a round wooden ball is zooming along this zigzag trail!",
+          "At every sharp bend, tap quickly to turn the ball or it'll fall off."
+        ],
+        "choices": [
+          {
+            "text": "Here's a bend, turn now!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Dẫn bóng vượt qua bốn mươi khúc quanh zíc zắc nhé!",
       "game": "zigzag-path",
-      "goal": 40
+      "goal": 40,
+      "en": {
+        "title": "Zigzag Road",
+        "prompt": "Roll the ball round 40 zigzag bends!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hươu Đốm Rừng Rậm nhảy chân sáo: phản xạ của {name} thật đáng nể, bóng lăn mượt mà ghê!"
+      "text": "Hươu Đốm Rừng Rậm nhảy chân sáo: phản xạ của {name} thật đáng nể, bóng lăn mượt mà ghê!",
+      "en": {
+        "title": "Reward",
+        "text": "Hươu Đốm Rừng Rậm skips with joy: {name} has amazing reflexes, the ball rolls so smoothly!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đường cua zíc zắc thử thách lòng can đảm, {name} ghé trảng cỏ rừng thông so tài tiếp nha."
+      "text": "Đường cua zíc zắc thử thách lòng can đảm, {name} ghé trảng cỏ rừng thông so tài tiếp nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "The zigzag bends test your nerve. Come to the pine meadow for another try, {name}."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Zigzag ball roll with Hươu Đốm Rừng Rậm",
+    "summary": "A winding wooden path snakes through the forest: tap to turn the wooden ball and collect gems as it rolls."
   }
 }

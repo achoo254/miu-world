@@ -46,7 +46,19 @@
         {
           "text": "Cà kheo bước vững, giữ thẳng người nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, want to climb onto these bouncy bamboo stilts and do a circus act with me?",
+          "Whichever way you lean, tap that side to step and keep your balance so you do not fall."
+        ],
+        "choices": [
+          {
+            "text": "Steady stilts, stand up tall!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Bước cà kheo đi xa được một trăm mét nhé!",
       "game": "stilts-walk",
-      "goal": 100
+      "goal": 100,
+      "en": {
+        "title": "Stilt Walking",
+        "prompt": "Walk 100 metres on stilts!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bé Xiếc Vui Vẻ nhào lộn khen ngợi: {name} giữ thăng bằng cừ thật, bước đi tự tin như nghệ sĩ!"
+      "text": "Bé Xiếc Vui Vẻ nhào lộn khen ngợi: {name} giữ thăng bằng cừ thật, bước đi tự tin như nghệ sĩ!",
+      "en": {
+        "title": "Reward",
+        "text": "Bé Xiếc Vui Vẻ does a somersault: {name} balances so well and walks like a real performer!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Gánh xiếc còn diễn hết mùa lễ hội, {name} ghé sân khấu sự kiện bước cà kheo cùng tớ nha."
+      "text": "Gánh xiếc còn diễn hết mùa lễ hội, {name} ghé sân khấu sự kiện bước cà kheo cùng tớ nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "The circus plays all festival season, {name}, so come stilt-walk with me by the event stage."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Bamboo stilt walking with Bé Xiếc Vui Vẻ",
+    "summary": "A pair of tall, wobbly bamboo stilts: tap the leaning side to keep your balance and take sure, steady steps."
   }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Vẽ đường kết nối, xe chạy khắp nơi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Oh {name}, the city has just opened lots of brand-new bus stops for everyone.",
+          "Drag to join the stops so that every shaped passenger rides to the stop of the same shape."
+        ],
+        "choices": [
+          {
+            "text": "Draw the lines, buses everywhere!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chở đủ bốn mươi hành khách về đúng trạm dừng nhé!",
       "game": "bus-lines",
-      "goal": 40
+      "goal": 40,
+      "en": {
+        "title": "Draw the bus routes",
+        "prompt": "Carry 40 passengers to the right stops!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bác Lái Xe Hải cười sảng khoái: lộ trình {name} vẽ thông minh ghê, ai cũng về nhà an toàn!"
+      "text": "Bác Lái Xe Hải cười sảng khoái: lộ trình {name} vẽ thông minh ghê, ai cũng về nhà an toàn!",
+      "en": {
+        "title": "Reward",
+        "text": "Bác Lái Xe Hải laughs heartily: the routes {name} drew are so smart, everyone got home safe!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Thành phố còn tiếp tục mở rộng, bác Hải hẹn {name} ở quảng trường vẽ tiếp các tuyến xe nha."
+      "text": "Thành phố còn tiếp tục mở rộng, bác Hải hẹn {name} ở quảng trường vẽ tiếp các tuyến xe nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "The city keeps growing, so Uncle Hải will meet {name} at the square to draw more routes."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Drawing bus routes with Bác Lái Xe Hải",
+    "summary": "A city map dotted with shape-stations: drag your finger to link the stations into connected bus lines."
   }
 }

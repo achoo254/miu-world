@@ -78,7 +78,27 @@
           "text": "Ông thử nhặt thật khẽ bằng đầu càng xem?",
           "reply": "Ông Cua Đồng chạm khẽ một cái… roạc! Thôi, cháu nhặt giúp ông vậy, ông bò theo sau."
         }
-      ]
+      ],
+      "en": {
+        "title": "Grandpa Cua Đồng's lost calendar",
+        "goTo": "Find Grandpa Cua Đồng at the silk-cotton tree at the edge of the field",
+        "lines": [
+          "{name}! The morning wind ripped my whole stack of calendar pages off the silk-cotton tree and blew them everywhere!",
+          "Woof! I chased them but only caught the smell of paper: three pages flew three different ways, and each one shows a day that's gone by.",
+          "I remember every day the village sowed rice seedlings and every day it harvested, it's just these claws of mine that are clumsy.",
+          "One pinch of my claws and a calendar page rips right through. And without the calendar, where has yesterday gone, I wonder?"
+        ],
+        "choices": [
+          {
+            "text": "Let me pick up the calendar pages for you!",
+            "reply": "Grandpa Cua Đồng points the way with a claw: one caught in the rose bush, one fell in the rice field, one landed on the study desk. That much I remember clearly!"
+          },
+          {
+            "text": "Why not try picking them up gently with a claw tip?",
+            "reply": "Grandpa Cua Đồng touches one ever so gently... rrrip! Oh well, you pick them up for me, and I'll scuttle along behind."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-to-lich",
@@ -730,7 +750,30 @@
           "text": "Tấm thẻ về bố của một bạn.",
           "reply": "Bố bạn ấy từng bó càng cho ông, hôm ông kẹp nhầm vào một hòn sỏi."
         }
-      ]
+      ],
+      "en": {
+        "title": "The introduction cards",
+        "goTo": "Grandpa Cua Đồng waves a claw, calling {name} back to the silk-cotton tree at the edge of the field",
+        "lines": [
+          "Grandpa Crab, are the friend introduction cards still kept under the silk-cotton tree?",
+          "They are! Only I pinched them by mistake, and every card is torn in two, the first half here and the second half there.",
+          "I remember what every card says, I just can't put them back together. {name}, which card do you want to join first?"
+        ],
+        "choices": [
+          {
+            "text": "The card about Hà.",
+            "reply": "Hà walks to school along my rice field, and every morning she says hello so loudly that all the perch jump."
+          },
+          {
+            "text": "The card about a school.",
+            "reply": "That school has a very, very long name, and yet I remember it perfectly."
+          },
+          {
+            "text": "The card about a friend's dad.",
+            "reply": "That child's dad once bandaged my claw, the day I pinched a pebble by mistake."
+          }
+        ]
+      }
     },
     {
       "id": "noi-the-gioi-thieu",
@@ -856,14 +899,22 @@
       "title": "Tờ lịch của hôm nay",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ông Cua Đồng tặng {name} tờ lịch của hôm nay, khẽ chấm mũi càng vào góc làm chữ kí, lần này không rách tí nào. Cún Lúa ngậm tờ lịch chạy theo, tiễn {name} tới tận cuối bờ ruộng."
+      "text": "Ông Cua Đồng tặng {name} tờ lịch của hôm nay, khẽ chấm mũi càng vào góc làm chữ kí, lần này không rách tí nào. Cún Lúa ngậm tờ lịch chạy theo, tiễn {name} tới tận cuối bờ ruộng.",
+      "en": {
+        "title": "Today's calendar page",
+        "text": "Grandpa Cua Đồng gives {name} today's calendar page, dabbing the tip of his claw in the corner as a signature, and this time it doesn't tear one bit. Cún Lúa carries the page in his mouth and sees {name} off all the way to the end of the field."
+      }
     },
     {
       "id": "mo-bai-3",
       "title": "Cầu vồng sau mưa",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mưa rào vừa tạnh, bãi cỏ ven sông bỗng hiện lên một chiếc cầu vồng bảy màu. Thỏ Bồng Bềnh đứng đó định ước… ước… ơ, bạn ấy quên mất mình định ước gì rồi!"
+      "text": "Mưa rào vừa tạnh, bãi cỏ ven sông bỗng hiện lên một chiếc cầu vồng bảy màu. Thỏ Bồng Bềnh đứng đó định ước… ước… ơ, bạn ấy quên mất mình định ước gì rồi!",
+      "en": {
+        "title": "A rainbow after the rain",
+        "text": "The rain shower has just stopped, and a seven-coloured rainbow appears over the riverside meadow. Thỏ Bồng Bềnh stands there about to make a wish... a wish... oh, she's forgotten what she was going to wish for!"
+      }
     }
   ],
   "reward": {

@@ -46,7 +46,19 @@
         {
           "text": "Cháu bày mâm quả thật trang nghiêm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Tết is coming to our little lane, {name}. Help Grandpa set out the five-fruit tray for the ancestors!",
+          "Place all five kinds of fruit on the tray, and no two neighbouring spots may hold the same fruit."
+        ],
+        "choices": [
+          {
+            "text": "I'll set the fruit tray with care!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Bày biện hoàn chỉnh bốn mâm ngũ quả ngày Tết đủ đầy sum vầy nhé!",
       "game": "five-fruit-tray",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Five-fruit offering tray",
+        "prompt": "Arrange 4 full, festive Tết five-fruit trays!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ông cụ gật đầu khen ngợi: mâm quả cháu {name} bày trông hài hòa, rực rỡ sắc xuân!"
+      "text": "Ông cụ gật đầu khen ngợi: mâm quả cháu {name} bày trông hài hòa, rực rỡ sắc xuân!",
+      "en": {
+        "title": "Reward",
+        "text": "Grandpa nods with approval: the tray {name} set looks balanced and bright with spring!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mùa xuân hoa trái đua nở trong vườn, ông cụ đợi {name} tới ngắm hoa bưởi nở."
+      "text": "Mùa xuân hoa trái đua nở trong vườn, ông cụ đợi {name} tới ngắm hoa bưởi nở.",
+      "en": {
+        "title": "See you soon",
+        "text": "Spring blossoms fill the garden. Grandpa is waiting for {name} to come see the pomelo flowers."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Tết Five-Fruit Tray with Ông Cụ Trông Vườn",
+    "summary": "A five-petal fruit stand; arrange five kinds of fresh fruit without putting two of the same side by side."
   }
 }

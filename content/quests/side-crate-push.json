@@ -46,7 +46,19 @@
         {
           "text": "Tớ đẩy giỏi lắm, để tớ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Oh, {name}! I need someone to push crates to the right spots in the storehouse!",
+          "Crates can only be pushed, never pulled, so plan your route before you push."
+        ],
+        "choices": [
+          {
+            "text": "I'm a great pusher, leave it to me!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Xếp xong ba kho hàng nhé!",
       "game": "crate-push",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Push the crates",
+        "prompt": "Finish sorting 3 storehouses!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Voi Thủ Kho tung vòi reo: kho nào cũng gọn nhờ {name}!"
+      "text": "Voi Thủ Kho tung vòi reo: kho nào cũng gọn nhờ {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Voi Thủ Kho trumpets with joy: every storehouse is tidy thanks to {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chợ dưới chân thành ngày nào cũng có hàng mới, cậu ghé giúp tớ nữa nhé."
+      "text": "Chợ dưới chân thành ngày nào cũng có hàng mới, cậu ghé giúp tớ nữa nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The market below the castle gets new goods every day. Come help me again!"
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Push Crates into the Storehouse with Voi Thủ Kho",
+    "summary": "The storehouse is crammed with wooden crates; walk around them and push each one onto a star square."
   }
 }

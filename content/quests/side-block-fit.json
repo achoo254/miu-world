@@ -46,7 +46,19 @@
         {
           "text": "Tớ xếp gọn gàng nhất!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The lorry's at the wharf! Help me pack the crates, {name}!",
+          "Drag the crates into the gaps. Fill a row and off it goes."
+        ],
+        "choices": [
+          {
+            "text": "I'll pack the neatest load!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Xếp kín tám hàng kiện nhé!",
       "game": "block-fit",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Load the truck",
+        "prompt": "Fill 8 rows of crates!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thùng xe gọn gàng tăm tắp, {name} xếp hàng siêu thật!"
+      "text": "Thùng xe gọn gàng tăm tắp, {name} xếp hàng siêu thật!",
+      "en": {
+        "title": "Reward",
+        "text": "Neat as a pin! {name} is a super packer!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bến kênh xe ra vào liên tục, mai lại xếp hàng với tớ nha."
+      "text": "Bến kênh xe ra vào liên tục, mai lại xếp hàng với tớ nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "Lorries come and go at the canal wharf all day. Pack with me again tomorrow."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Load the lorry with Voi Bốc Hàng",
+    "summary": "Drag each crate onto the lorry and fill a whole row or column so it can drive off."
   }
 }

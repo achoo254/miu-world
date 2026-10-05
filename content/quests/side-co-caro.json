@@ -46,7 +46,19 @@
         {
           "text": "Cún ơi, đấu một ván nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, play four-in-a-row cờ caro with Cún the puppy! Cún is feeling very confident!",
+          "Line up four in a row, and block Cún the moment it is about to get four."
+        ],
+        "choices": [
+          {
+            "text": "Cún, let us play a round!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Thắng bạn Cún một ván cờ caro nhé!",
       "game": "co-caro",
-      "goal": 1
+      "goal": 1,
+      "en": {
+        "title": "Four in a row",
+        "prompt": "Beat Cún at 1 games of cờ caro!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bạn Cún cúi đầu chịu thua, Mèo Lớp Trưởng khen {name} đi cờ thông minh!"
+      "text": "Bạn Cún cúi đầu chịu thua, Mèo Lớp Trưởng khen {name} đi cờ thông minh!",
+      "en": {
+        "title": "Reward",
+        "text": "Cún bows in defeat, and Mèo Lớp Trưởng praises the clever moves of {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cún đang luyện thêm nước cờ mới, cậu quay lại đấu tiếp nhé."
+      "text": "Cún đang luyện thêm nước cờ mới, cậu quay lại đấu tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Cún is practising new moves, so come back for another match."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Playing cờ caro with Mèo Lớp Trưởng",
+    "summary": "A grid drawn on a wooden board: take turns with Cún, and whoever gets four in a row first wins."
   }
 }

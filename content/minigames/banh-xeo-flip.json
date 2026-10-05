@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 10,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Bánh xèo pancakes",
+    "howTo": [
+      "Tap an empty pan to pour batter. When the ring around the pan turns green, the pancake is golden.",
+      "Golden side down? Tap to flip it. Other side golden too? Tap to plate it: one point.",
+      "Leave it too long and it burns. Burn three and {name} has to take a break!"
+    ]
+  }
 }

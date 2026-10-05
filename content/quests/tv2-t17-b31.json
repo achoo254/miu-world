@@ -89,7 +89,27 @@
           "text": "Đom Đóm Nhí ơi, gọi thêm cả nhà cậu tới nhé!",
           "reply": "Đom Đóm Nhí bay vút đi: em đi gọi cả họ hàng, từ cụ đóm tới cháu đóm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Cá Bống hiccups bubbles",
+        "goTo": "Go to the edge of the lotus lake, Cá Bống is hiccupping bubbles from worry",
+        "lines": [
+          "{name}… hic! My mum has a terrible tummy ache… hic! Every time I worry, out comes a string of bubbles.",
+          "I've swum over, slow and steady. But Bống's burrow is as dark as the bottom of a pot, I can't even see where her mum's tummy is.",
+          "Let me! I'll puff my tail up brightest on the lotus lake! Hmm… hmm… why can I only flicker this tiny bit?",
+          "How do we light up the burrow? Hic!"
+        ],
+        "choices": [
+          {
+            "text": "Don't worry, Bống, we'll think of something together!",
+            "reply": "Cá Bống stops hiccupping for a while: with {name} here, my fins have stopped shaking."
+          },
+          {
+            "text": "Đom Đóm Nhí, call your whole family over!",
+            "reply": "Đom Đóm Nhí zooms off: I'll call all my relatives, from great-grandpa firefly to baby firefly!"
+          }
+        ]
+      }
     },
     {
       "id": "tim-do-sang-bong",
@@ -520,7 +540,29 @@
           "text": "Đom đóm xếp thành hình trái tim trên trần hang!",
           "reply": "Mẹ Bống mở mắt, thấy trái tim sáng lấp lánh thì cười, quên cả đau."
         }
-      ]
+      ],
+      "en": {
+        "title": "Lighting up Mother Bống's burrow",
+        "goTo": "Swim to Mother Bống's burrow, the fireflies have reached the entrance",
+        "lines": [
+          "My whole family's here! Twenty-seven glowing tails, and the burrow is still a bit gloomy.",
+          "{name}, it's just like Edison's room. What shall we do with these clam shells?"
+        ],
+        "choices": [
+          {
+            "text": "Stand the shells round the burrow with a firefly right in front of each!",
+            "reply": "Light bounces back and forth between the shells, and the burrow shines bright as a full moon."
+          },
+          {
+            "text": "Put an old mirror behind Doctor Turtle so he can see better!",
+            "reply": "Doctor Turtle squints: ah, there it is! Mother Bống just has a full tummy from eating too much pondweed foam."
+          },
+          {
+            "text": "The fireflies make a heart shape on the burrow ceiling!",
+            "reply": "Mother Bống opens her eyes, sees the twinkling heart and smiles, forgetting all about the pain."
+          }
+        ]
+      }
     },
     {
       "id": "xep-tranh-e-di-xon",
@@ -708,14 +750,22 @@
       "title": "Quà của mẹ Bống",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mẹ Bống tặng {name} chiếc vỏ trai sáng nhất, soi vào thấy cả ánh đom đóm lấp lánh bên trong. Cá Bống thì thôi ấc, thay vào đó là một tràng bong bóng cười."
+      "text": "Mẹ Bống tặng {name} chiếc vỏ trai sáng nhất, soi vào thấy cả ánh đom đóm lấp lánh bên trong. Cá Bống thì thôi ấc, thay vào đó là một tràng bong bóng cười.",
+      "en": {
+        "title": "A gift from Mother Bống",
+        "text": "Mother Bống gives {name} the brightest clam shell; look inside and you can see firefly light twinkling. Cá Bống has stopped hiccupping; instead out comes a stream of giggling bubbles."
+      }
     },
     {
       "id": "mo-bai-32",
       "title": "Chong chóng trên đồng gió",
       "kind": "next",
       "trigger": "auto",
-      "text": "Sáng hôm sau, gió từ cánh đồng sau xóm thổi về mang theo tiếng cãi nhau chí chóe. Thỏ Tí và em trai bé Tẹo đang giành nhau một chiếc chong chóng, chưa ai chịu nhường ai."
+      "text": "Sáng hôm sau, gió từ cánh đồng sau xóm thổi về mang theo tiếng cãi nhau chí chóe. Thỏ Tí và em trai bé Tẹo đang giành nhau một chiếc chong chóng, chưa ai chịu nhường ai.",
+      "en": {
+        "title": "Pinwheels in the windy field",
+        "text": "The next morning, the wind from the field behind the hamlet carries the sound of squabbling. Thỏ Tí and his little brother Tẹo are fighting over a pinwheel, and neither will let go."
+      }
     }
   ],
   "reward": {

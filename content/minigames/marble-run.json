@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 20,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Marble run",
+    "howTo": [
+      "Marbles drop onto wooden chutes and roll toward the lower end.",
+      "{name}, tap a chute to flip its tilt so each marble rolls into the cup of its colour and shape!"
+    ]
+  }
 }

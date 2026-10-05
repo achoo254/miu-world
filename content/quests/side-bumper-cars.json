@@ -46,7 +46,19 @@
         {
           "text": "Em lái xe đụng húc tung sàn!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Come onto the bumper car floor, {name}. It's a real thrill!",
+          "Drag your finger to steer, turn hard, and bump the others to the edge."
+        ],
+        "choices": [
+          {
+            "text": "I'll bump them all off!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Lái xe va chạm húc văng sáu chiếc xe khác ra ngoài sàn nhé!",
       "game": "bumper-cars",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Bumper cars",
+        "prompt": "Bump 6 cars off the floor!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Những cú va chạm nảy lửa giòn giã, tay lái {name} cừ khôi thật!"
+      "text": "Những cú va chạm nảy lửa giòn giã, tay lái {name} cừ khôi thật!",
+      "en": {
+        "title": "Reward",
+        "text": "Bang, bang, crash! {name} is an ace driver!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Sàn xe điện góc quảng trường chợ lúc nào cũng rộn ràng tiếng cười."
+      "text": "Sàn xe điện góc quảng trường chợ lúc nào cũng rộn ràng tiếng cười.",
+      "en": {
+        "title": "See you soon",
+        "text": "The bumper cars in the market square are always full of laughter."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Bumper cars with Anh Lái Xe Đụng",
+    "summary": "Steer your round electric car and bump the other cars off the floor to the cheerful music."
   }
 }

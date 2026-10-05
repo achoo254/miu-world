@@ -28,7 +28,19 @@
           "reward": "Khách nào cũng mát ruột, quán mình đắt hàng nhờ {name}!",
           "next": "Quán trà đá bên giếng mở cả ngày, cậu ghé phụ tớ lúc nào cũng được.",
           "who": "{name}, người phụ quán trà nhanh tay",
-          "learn": "Phản xạ nhanh và để ý nhiều việc cùng lúc"
+          "learn": "Phản xạ nhanh và để ý nhiều việc cùng lúc",
+          "en": {
+            "title": "Roadside iced tea stall with Mèo Trà Đá",
+            "summary": "Customers fill three tables by the well: slide a cool glass of tea to each one and bring the empties back.",
+            "lines": [
+              "It is so hot, {name}, and crowds are coming for iced tea!",
+              "Slide the tea along the table to each customer, and collect the empty glasses or we will run out."
+            ],
+            "choice": "Let me help run the stall!",
+            "prompt": "Serve {goal} glasses of iced tea!",
+            "reward": "Every customer is cooled off, and our stall is a hit thanks to {name}!",
+            "next": "The iced tea stall by the well is open all day, so drop by and help me any time."
+          }
         },
         {
           "game": "water-pour",
@@ -43,7 +55,19 @@
           "reward": "Cốc nào cũng vừa khéo, {name} rót trà như người lớn!",
           "next": "Ấm trà vẫn ấm bên giếng xóm, mai cậu lại rót giúp tớ nhé.",
           "who": "{name}, người rót trà khéo léo",
-          "learn": "Ước lượng lượng nước và dừng đúng lúc"
+          "learn": "Ước lượng lượng nước và dừng đúng lúc",
+          "en": {
+            "title": "Pouring tea to the line with Mèo Trà Đá",
+            "summary": "Tilt the teapot into a cup and stop when the tea sits neatly between the two green lines.",
+            "lines": [
+              "{name}, the grown-ups of the village are coming over for tea!",
+              "Pour right up to the line. Too much and it spills all over the table."
+            ],
+            "choice": "I will pour really carefully!",
+            "prompt": "Pour {goal} cups of tea right to the line!",
+            "reward": "Every cup is just right. {name} pours tea like a grown-up!",
+            "next": "The teapot is still warm by the village well, so come pour for me again tomorrow."
+          }
         }
       ]
     },
@@ -74,7 +98,19 @@
           "reward": "Dây quay nhanh thế mà {name} vẫn nhảy tót qua, giỏi quá!",
           "next": "Tối nào chị cũng nhảy dây ở đầu ngõ, em ra chơi nữa nhé.",
           "who": "{name}, bạn nhảy dây dẻo chân",
-          "learn": "Cảm nhận nhịp và bật nhảy đúng lúc"
+          "learn": "Cảm nhận nhịp và bật nhảy đúng lúc",
+          "en": {
+            "title": "Jump rope with Chị Thỏ Nhảy Dây",
+            "summary": "Two friends turn the rope steadily under the moon: jump just as it sweeps toward your feet.",
+            "lines": [
+              "With a moon this bright, jump rope is the best! Come on in, {name}!",
+              "My friend and I will turn the rope. Watch for it reaching your feet, then jump."
+            ],
+            "choice": "I am jumping in the middle!",
+            "prompt": "Jump over the rope {goal} times!",
+            "reward": "The rope spins so fast, yet {name} still hops right over it. Brilliant!",
+            "next": "I jump rope at the end of the lane every evening, so come play again."
+          }
         },
         {
           "game": "hopscotch",
@@ -89,7 +125,19 @@
           "reward": "Không sai một ô nào, {name} nhảy lò cò siêu thật!",
           "next": "Ô phấn vẫn còn trên ngõ, chị đợi em ra nhảy ván mới.",
           "who": "{name}, bạn nhảy lò cò chăm chỉ",
-          "learn": "Đếm thứ tự và ghi nhớ ô cần bỏ qua"
+          "learn": "Đếm thứ tự và ghi nhớ ô cần bỏ qua",
+          "en": {
+            "title": "Hopscotch with Chị Thỏ Nhảy Dây",
+            "summary": "Toss a pebble into a square, then hop from square one to eight, skipping the square with the pebble.",
+            "lines": [
+              "I just chalked a hopscotch grid. Want to give it a go, {name}?",
+              "Toss the pebble into the square with the yellow border, then hop through in order and skip that square."
+            ],
+            "choice": "Hop, hop, here I go!",
+            "prompt": "Finish {goal} full rounds of hopscotch!",
+            "reward": "Not a single square missed: {name} is a hopscotch superstar!",
+            "next": "The chalk squares are still on the lane, and I am waiting for you to hop a new round."
+          }
         },
         {
           "game": "chuyen",
@@ -104,7 +152,19 @@
           "reward": "Tay em nhanh như cắt, chị phục {name} luôn đấy!",
           "next": "Bộ que chuyền chị cất ở đầu ngõ, lúc nào chơi tiếp cũng được.",
           "who": "{name}, bạn chơi chuyền khéo tay",
-          "learn": "Phối hợp tay mắt và đếm số que"
+          "learn": "Phối hợp tay mắt và đếm số que",
+          "en": {
+            "title": "Playing chuyền (sticks and ball) with Chị Thỏ Nhảy Dây",
+            "summary": "Toss the ball up, scoop sticks off the mat fast, and catch the ball before it lands.",
+            "lines": [
+              "Do you know how to play chuyền, {name}? Let me teach you!",
+              "Round one, pick up one stick; round two, pick up two. Once you have them, catch the ball."
+            ],
+            "choice": "I want to learn chuyền!",
+            "prompt": "Get through {goal} rounds of chuyền!",
+            "reward": "Your hands are lightning fast! I am truly impressed, {name}!",
+            "next": "I keep the chuyền sticks at the end of the lane, so we can play again whenever you like."
+          }
         }
       ]
     },
@@ -135,7 +195,19 @@
           "reward": "Cả xóm có báo đọc rồi, cảm ơn {name} nhé!",
           "next": "Sáng mai báo lại về, tớ chờ cậu ở đầu đường đồng.",
           "who": "{name}, bạn đưa báo của xóm",
-          "learn": "Quan sát trước và ném đúng lúc"
+          "learn": "Quan sát trước và ném đúng lúc",
+          "en": {
+            "title": "Newspaper bike round with Gấu Đưa Báo",
+            "summary": "Ride along the dirt road through the rice fields and toss papers into mailboxes with a red flag up.",
+            "lines": [
+              "So many papers came in this morning, {name}! Help me deliver them!",
+              "A mailbox with its red flag up means the house is waiting. Throw before you ride past."
+            ],
+            "choice": "On the bike, let us deliver!",
+            "prompt": "Deliver papers to {goal} mailboxes!",
+            "reward": "The whole village has something to read now. Thank you, {name}!",
+            "next": "More papers arrive tomorrow morning, so I will wait for you where the field road starts."
+          }
         },
         {
           "game": "trash-sort",
@@ -150,7 +222,19 @@
           "reward": "Đường đồng sạch tinh tươm, {name} là bạn của môi trường!",
           "next": "Mỗi sáng tớ đi nhặt rác, cậu nhập hội với tớ tiếp nhé.",
           "who": "{name}, bạn nhỏ giữ xóm sạch",
-          "learn": "Phân loại đồ vật theo nhóm"
+          "learn": "Phân loại đồ vật theo nhóm",
+          "en": {
+            "title": "Sorting rubbish with Gấu Đưa Báo",
+            "summary": "Rubbish falls by the field road: drag each piece into the right bin, green, blue or grey.",
+            "lines": [
+              "{name}, our village road is much nicer when it is clean!",
+              "Fruit peel goes in the green bin, and paper and cans go in the blue bin."
+            ],
+            "choice": "I can sort it all!",
+            "prompt": "Put {goal} pieces of rubbish in the right bin!",
+            "reward": "The field road is spotless: {name} is a true friend of nature!",
+            "next": "I pick up litter every morning, so join my team again."
+          }
         },
         {
           "game": "blueprint-build",
@@ -165,7 +249,19 @@
           "reward": "Giống y như bản vẽ, {name} đúng là kiến trúc sư!",
           "next": "Tớ còn cả xấp bản vẽ nữa, rảnh thì ra đồng xây với tớ.",
           "who": "{name}, kiến trúc sư tí hon",
-          "learn": "Quan sát kỹ và sao chép theo mẫu"
+          "learn": "Quan sát kỹ và sao chép theo mẫu",
+          "en": {
+            "title": "Building from a blueprint with Gấu Đưa Báo",
+            "summary": "Look at the small blue plan, then lay coloured bricks one by one to match it exactly.",
+            "lines": [
+              "I have a blueprint of my dream house, {name}!",
+              "Pick a paint pot and place bricks in the squares. Build it just like the plan and you are done."
+            ],
+            "choice": "Let us build together!",
+            "prompt": "Finish {goal} buildings from the blueprints!",
+            "reward": "It matches the plan exactly. {name} is a real architect!",
+            "next": "I have a whole pile of blueprints left, so come build with me in the fields when you can."
+          }
         }
       ]
     },
@@ -197,7 +293,19 @@
           "reward": "Bi lăn đâu trúng đó, {name} bắn chuẩn quá trời!",
           "next": "Túi bi của tớ còn đầy, ra bờ hồ sen tỉ thí tiếp nha.",
           "who": "{name}, tay bắn bi của xóm",
-          "learn": "Căn hướng và lực bắn"
+          "learn": "Căn hướng và lực bắn",
+          "en": {
+            "title": "Marbles by the lotus pond with Khỉ Bắn Bi",
+            "summary": "Pull your finger back like a slingshot and let go so your shooter knocks marbles out of the chalk ring.",
+            "lines": [
+              "I bet you cannot shoot marbles as well as me, {name}!",
+              "Pull back away from where you want to shoot, then let go. Knock a marble out of the ring to win it."
+            ],
+            "choice": "Only one way to find out!",
+            "prompt": "Knock {goal} marbles out of the ring!",
+            "reward": "Every marble goes right where it should. {name} has such a perfect aim!",
+            "next": "My marble bag is still full, so meet me at the lotus pond for another contest."
+          }
         },
         {
           "game": "pick-sticks",
@@ -212,7 +320,19 @@
           "reward": "Không một que nào rung, {name} khéo tay hơn cả khỉ!",
           "next": "Đống que vẫn bày bên hồ sen, lúc nào cậu cũng rút được.",
           "who": "{name}, bạn rút que tinh mắt",
-          "learn": "Quan sát lớp chồng và cẩn thận"
+          "learn": "Quan sát lớp chồng và cẩn thận",
+          "en": {
+            "title": "Pick-up sticks with Khỉ Bắn Bi",
+            "summary": "Sticks lie in a crisscross heap: pull out the top one each time without making the pile wobble.",
+            "lines": [
+              "{name}, I just dropped a heap of sticks on the mat!",
+              "Only take a stick lying on top. Pull the wrong one and the whole pile wobbles."
+            ],
+            "choice": "I have very gentle hands!",
+            "prompt": "Pull out {goal} sticks!",
+            "reward": "Not one stick wobbled: {name} is even nimbler than a monkey!",
+            "next": "The sticks are still laid out by the lotus pond, so you can play any time."
+          }
         }
       ]
     },
@@ -248,7 +368,19 @@
           "reward": "Đoàn rồng dài ngoằng luôn, {name} dẫn đầu hay ghê!",
           "next": "Gió trên gò vẫn lộng, tớ chờ cậu chơi rồng rắn ván sau.",
           "who": "{name}, đầu rồng của đoàn",
-          "learn": "Định hướng và tính trước đường đi"
+          "learn": "Định hướng và tính trước đường đi",
+          "en": {
+            "title": "Rồng rắn lên mây (the dragon-snake game) with Heo Rồng Rắn",
+            "summary": "Lead the dragon-snake line on the windy hill, picking up friends at the tail without biting yourself.",
+            "lines": [
+              "\"Rồng rắn lên mây!\" {name}, you be the head of the dragon!",
+              "Swipe to turn and pick up more friends, but never loop into your own line."
+            ],
+            "choice": "Up into the clouds we go!",
+            "prompt": "Pick up {goal} friends to join the line!",
+            "reward": "The dragon is super long now, and {name} leads it so well!",
+            "next": "The hilltop is still breezy, and I will wait for our next dragon game."
+          }
         },
         {
           "game": "hide-and-seek",
@@ -263,7 +395,19 @@
           "reward": "Ủn ỉn, trốn kỹ thế mà {name} vẫn tìm ra hết!",
           "next": "Gò đất còn nhiều chỗ trốn lắm, ván sau tớ trốn kỹ hơn.",
           "who": "{name}, người đi tìm tinh mắt",
-          "learn": "Tập trung quan sát và phản xạ"
+          "learn": "Tập trung quan sát và phản xạ",
+          "en": {
+            "title": "Hide and seek with Heo Rồng Rắn",
+            "summary": "Friends hide behind trees, bushes and barrels: tap the exact spot where someone just peeked out.",
+            "lines": [
+              "{name}, you be the seeker! My friends and I will go hide!",
+              "If someone peeks out, tap that spot at once, and do not be fooled by leaves rustling in the wind."
+            ],
+            "choice": "One, two, three, ready or not!",
+            "prompt": "Find the hiding friends {goal} times!",
+            "reward": "Oink oink! We hid so well, yet {name} found us all!",
+            "next": "The hill has lots more hiding spots, and next round I will hide even better."
+          }
         }
       ]
     },
@@ -295,7 +439,19 @@
           "reward": "Cháu của bà thông minh sắc sảo quá, câu đố nào {name} cũng giải ra!",
           "next": "Mảnh sân trước ngõ nhà Mẩy chiều nào bà cũng ngồi quạt mát đợi cháu.",
           "who": "{name}, bạn nhỏ thông thái giải đố dân gian",
-          "learn": "Tư duy ngôn ngữ và suy luận hình tượng"
+          "learn": "Tư duy ngôn ngữ và suy luận hình tượng",
+          "en": {
+            "title": "Folk riddles with Bà Năm Kể Chuyện",
+            "summary": "Listen to each of Granny Năm's rhyming riddles, then tap the picture that solves it.",
+            "lines": [
+              "Come here, dear {name}, and Granny will read you some old folk riddles!",
+              "Listen closely to the hints in the rhyme, then tap the picture with the right answer."
+            ],
+            "choice": "Let us solve riddles together, Granny!",
+            "prompt": "Crack {goal} of Granny's folk riddles!",
+            "reward": "My grandchild is so clever: {name} solved every single riddle!",
+            "next": "Every afternoon Granny sits fanning herself outside the lane of Mẩy, waiting for you."
+          }
         },
         {
           "game": "word-chain",
@@ -310,7 +466,19 @@
           "reward": "Vốn từ phong phú tuyệt vời, {name} nối thành dải chữ dài thướt tha!",
           "next": "Bà còn cả kho tàng từ ngữ hay muốn dạy cho cháu trước ngõ vườn hoa.",
           "who": "{name}, người nối từ khéo léo của xóm nhỏ",
-          "learn": "Mở rộng vốn từ vựng tiếng Việt phong phú"
+          "learn": "Mở rộng vốn từ vựng tiếng Việt phong phú",
+          "en": {
+            "title": "Vietnamese word chain with Bà Năm Kể Chuyện",
+            "summary": "Find the next word that begins with the last sound of the word before, building a long dragon of words.",
+            "lines": [
+              "The word chain game in our mother tongue is such fun, {name}!",
+              "Pick the word card whose first sound matches the last sound of the word before."
+            ],
+            "choice": "I will add the next word!",
+            "prompt": "Link up a chain of {goal} Vietnamese words!",
+            "reward": "What a wonderful vocabulary: {name} linked a long, flowing ribbon of words!",
+            "next": "Granny has a whole treasure of lovely words to teach you by the flower garden lane."
+          }
         },
         {
           "game": "head-count",
@@ -325,7 +493,19 @@
           "reward": "Mắt cháu tinh tường như chim sẻ, {name} đếm đâu chuẩn đấy!",
           "next": "Căn nhà nhỏ ngõ Mẩy rộn rã tiếng cười luôn mở cửa đón cháu.",
           "who": "{name}, bạn nhỏ đếm số tinh tường chăm chú",
-          "learn": "Theo dõi dòng chuyển động và cộng trừ nhẩm"
+          "learn": "Theo dõi dòng chuyển động và cộng trừ nhẩm",
+          "en": {
+            "title": "How many are inside? with Bà Năm Kể Chuyện",
+            "summary": "Watch friends run in and out of the house, then pick how many are left inside when the door shuts.",
+            "lines": [
+              "Some little ones are playing hide and seek in the house, {name}!",
+              "Watch closely who goes in and who comes out, so you can guess how many are inside."
+            ],
+            "choice": "I will count everyone right!",
+            "prompt": "Guess how many are inside after the door closes {goal} times!",
+            "reward": "You have eyes as sharp as a sparrow: {name} counts spot on every time!",
+            "next": "The little house in the lane of Mẩy rings with laughter and its door is always open for you."
+          }
         }
       ]
     },
@@ -357,7 +537,19 @@
           "reward": "Mái ngói đỏ au phẳng lỳ che mưa gió, {name} làm thợ giỏi quá!",
           "next": "Anh thợ sửa mái vẫn ở đầu đường ruộng lúa mì chờ em ghé phụ.",
           "who": "{name}, thợ xây nhí khéo tay của xóm",
-          "learn": "Xếp lớp theo thứ tự từ dưới lên trên"
+          "learn": "Xếp lớp theo thứ tự từ dưới lên trên",
+          "en": {
+            "title": "Tiling the roof with Anh Thợ Sửa Mái",
+            "summary": "Drag red tiles into straight rows from the bottom up so the roof is snug against sun and rain.",
+            "lines": [
+              "The roof is nearly done, {name}! Lend me a hand with the tiles!",
+              "Lay each tile so it overlaps the edge of the one below, working from the bottom row up."
+            ],
+            "choice": "Pass me the tiles, I will start!",
+            "prompt": "Lay {goal} bright red tiles neatly on the roof!",
+            "reward": "The red roof is smooth and keeps out the wind and rain. {name} is a skilled roofer!",
+            "next": "The roofer is still at the end of the wheat-field road, waiting for your help."
+          }
         },
         {
           "game": "fire-hose",
@@ -372,7 +564,19 @@
           "reward": "Khói tan lửa tắt sạch bong, {name} dũng cảm cứu nguy xóm làng!",
           "next": "Bên ruộng lúa mì luôn có anh em thợ túc trực bảo vệ xóm nhỏ.",
           "who": "{name}, lính cứu hỏa nhí dũng cảm nhanh nhẹn",
-          "learn": "Căn quỹ đạo cong của tia nước để trúng đích"
+          "learn": "Căn quỹ đạo cong của tia nước để trúng đích",
+          "en": {
+            "title": "Fire hose with Anh Thợ Sửa Mái",
+            "summary": "Aim the fire hose so its arc of water puts out the flames flaring up by the windows.",
+            "lines": [
+              "A spark has caught the dry straw at the end of the road, {name}!",
+              "Hold your finger down to aim the arc of water and put the fire out fast."
+            ],
+            "choice": "Hose ready, out goes the fire!",
+            "prompt": "Spray water to put out {goal} fires completely!",
+            "reward": "The smoke is gone and every flame is out. {name} bravely saved the village!",
+            "next": "By the wheat field, the roofers are always on hand to keep our little village safe."
+          }
         },
         {
           "game": "water-jugs",
@@ -387,7 +591,19 @@
           "reward": "Đàn bò uống no nê nước mát, cảm ơn {name} tính toán tuyệt vời!",
           "next": "Bình nước mát bên đầu ruộng lúa mì lúc nào cũng đợi em ghé đong.",
           "who": "{name}, người đong nước tài tình thông minh",
-          "learn": "Tính toán dung tích chất lỏng bằng tư duy logic"
+          "learn": "Tính toán dung tích chất lỏng bằng tư duy logic",
+          "en": {
+            "title": "Measuring water with Anh Thợ Sửa Mái",
+            "summary": "Pour back and forth between water cans to measure exactly the litres needed for the cows' trough.",
+            "lines": [
+              "{name}, the thirsty cows need exactly the right number of litres of cool water!",
+              "Tap to pour water between the two cans until you have just the right amount."
+            ],
+            "choice": "I will measure water for the cows!",
+            "prompt": "Measure the exact amount {goal} times so the cows can drink their fill!",
+            "reward": "The cows drank their fill of cool water. Thank you, {name}, for the brilliant maths!",
+            "next": "The cool water jugs by the wheat field are always waiting for you to measure."
+          }
         }
       ]
     },
@@ -419,7 +635,19 @@
           "reward": "Ngón tay em thoăn thoắt như thoi đưa, chị không kịp bắt {name} đâu!",
           "next": "Hiên nhà ngắm trăng lộng gió mát rượi luôn chờ em ra chơi chi chi.",
           "who": "{name}, bạn nhỏ phản xạ nhanh như chớp",
-          "learn": "Lắng nghe cẩn thận và phản xạ rút tay chớp nhoáng"
+          "learn": "Lắng nghe cẩn thận và phản xạ rút tay chớp nhoáng",
+          "en": {
+            "title": "Chi chi chành chành with Chị Bống Chuyền Que",
+            "summary": "Put a finger in the open palm and snatch it away the moment you hear \"ập\" at the end of the rhyme.",
+            "lines": [
+              "I open my palm and chant the rhyme. Come play chi chi with me, {name}!",
+              "Put your finger in, and the instant you hear \"ập\", pull it right back out."
+            ],
+            "choice": "My finger is in, sister!",
+            "prompt": "Pull your finger back in time for {goal} rounds of the rhyme!",
+            "reward": "Your finger darts like a weaving shuttle. I just cannot catch {name}!",
+            "next": "The breezy moon-watching porch is always waiting for you to play chi chi."
+          }
         },
         {
           "game": "keo-cua",
@@ -434,7 +662,19 @@
           "reward": "Khúc gỗ xẻ xong tròn xoe mịn màng, {name} dẻo dai khỏe khoắn ghê!",
           "next": "Tiếng kéo cưa cành cạch vui tai bên hiên đêm trăng đợi em quay lại.",
           "who": "{name}, bạn nhỏ đồng điệu trong từng nhịp kéo",
-          "learn": "Phối hợp nhịp nhàng theo chuyển động đối xứng"
+          "learn": "Phối hợp nhịp nhàng theo chuyển động đối xứng",
+          "en": {
+            "title": "Kéo cưa lừa xẻ (the sawing game) with Chị Bống Chuyền Que",
+            "summary": "Hold hands and saw back and forth in rhythm with the saw shadow to cut each round log cleanly.",
+            "lines": [
+              "\"Kéo cưa lừa xẻ, ông thợ nào khỏe!\" Saw with me, {name}!",
+              "Drag your finger along with the faint saw shadow, steady from side to side."
+            ],
+            "choice": "Let us saw together!",
+            "prompt": "Keep the sawing rhythm to cut through {goal} sweet-smelling logs!",
+            "reward": "The log is cut smooth and round. {name} is so strong and nimble!",
+            "next": "The cheerful creak of the saw on the moonlit porch is waiting for you to come back."
+          }
         },
         {
           "game": "nu-na-nu-nong",
@@ -449,7 +689,19 @@
           "reward": "Nhịp đồng dao nào em cũng nhẩm đúng boong, {name} tài ghê cơ!",
           "next": "Chiếc chiếu hoa dưới hiên trăng lúc nào cũng trải sẵn chờ em.",
           "who": "{name}, người giữ nhịp đồng dao dí dỏm",
-          "learn": "Đếm nhịp tuần hoàn và dự đoán bước kết thúc"
+          "learn": "Đếm nhịp tuần hoàn và dự đoán bước kết thúc",
+          "en": {
+            "title": "Nu na nu nống with Chị Bống Chuyền Que",
+            "summary": "Count each beat of the familiar rhyme to tap the leg that is about to tuck in.",
+            "lines": [
+              "{name}, stretch your legs out on the mat and let us play nu na nu nống!",
+              "Count along with each word of the rhyme, then tap the leg that will tuck in."
+            ],
+            "choice": "Legs out, ready to play!",
+            "prompt": "Guess the leg that tucks in for {goal} rounds of the rhyme!",
+            "reward": "You kept every beat of the rhyme exactly. {name} is so clever!",
+            "next": "The flowery mat under the moonlit porch is always laid out waiting for you."
+          }
         }
       ]
     },
@@ -481,7 +733,19 @@
           "reward": "Con cù quay tít reo vù vù giữa vòng tròn, {name} đánh cù siêu thật!",
           "next": "Bãi thả bò đầu dốc đất phẳng lỳ đón cậu ra thi cù mỗi chiều.",
           "who": "{name}, cao thủ đánh cù gỗ của xóm đồi",
-          "learn": "Cảm nhận thời điểm tiếp lực cho con quay"
+          "learn": "Cảm nhận thời điểm tiếp lực cho con quay",
+          "en": {
+            "title": "Spinning wooden tops with Bé Đánh Cù Sơn",
+            "summary": "Throw the wooden top hard onto flat ground, then whip the string to keep it spinning like crazy.",
+            "lines": [
+              "Look at my polished chinaberry-wood top, {name}!",
+              "Swipe to throw the top into the ring, and when it starts to wobble, flick the string."
+            ],
+            "choice": "I will whip it into a spin!",
+            "prompt": "Keep the top spinning to score {goal} awesome points!",
+            "reward": "The top whirs and hums in the middle of the ring. {name} is a top-spinning champ!",
+            "next": "The flat cow pasture at the top of the slope welcomes you for a top contest every afternoon."
+          }
         },
         {
           "game": "swing-push",
@@ -496,7 +760,19 @@
           "reward": "Xích đu vút cao chạm tới trời xanh lộng gió, {name} nhún cừ quá!",
           "next": "Cây đu gỗ đầu dốc bãi bò vẫn đung đưa đợi cậu đến nhún bay.",
           "who": "{name}, cánh chim nhỏ bay lượn trên xích đu",
-          "learn": "Nắm bắt chu kỳ con lắc và tiếp sức đúng nhịp"
+          "learn": "Nắm bắt chu kỳ con lắc và tiếp sức đúng nhịp",
+          "en": {
+            "title": "Swinging high with Bé Đánh Cù Sơn",
+            "summary": "Tap just as the swing reaches its highest point to build momentum and touch the red lucky ribbon.",
+            "lines": [
+              "The hill breeze is so cool, {name}! Hop on the swing and fly with me!",
+              "Tap the screen right when the swing is highest at the back to build up speed."
+            ],
+            "choice": "Pump hard, up to the sky!",
+            "prompt": "Swing up and touch the red lucky ribbon {goal} times!",
+            "reward": "The swing soars into the breezy blue sky. {name} pumps so well!",
+            "next": "The wooden swing by the cow pasture is still swaying, waiting for you to fly."
+          }
         },
         {
           "game": "skate-tricks",
@@ -511,7 +787,19 @@
           "reward": "Cú xoay ván trên không đẹp như vũ điệu, {name} thật tài ba!",
           "next": "Con dốc bãi thả bò lúc nào cũng sẵn sàng cho cậu thỏa sức lướt ván.",
           "who": "{name}, tay lướt ván cừ khôi đầy tự tin",
-          "learn": "Phối hợp vuốt hướng nhanh nhạy giữa không trung"
+          "learn": "Phối hợp vuốt hướng nhanh nhạy giữa không trung",
+          "en": {
+            "title": "Skateboard tricks with Bé Đánh Cù Sơn",
+            "summary": "Ride the wooden board over the ramps, then swipe to spin through amazing tricks in mid-air.",
+            "lines": [
+              "{name}, do you love the feeling of skating and flying over the grass?",
+              "Jump off the ramp edge and swipe to spin the board in style before you land."
+            ],
+            "choice": "Watch my skateboard show!",
+            "prompt": "Land {goal} slick skateboard tricks!",
+            "reward": "That mid-air spin was as pretty as a dance. {name} is so talented!",
+            "next": "The slope by the cow pasture is always ready for you to skate to your heart's content."
+          }
         }
       ]
     },
@@ -543,7 +831,19 @@
           "reward": "Nước cờ gánh bất ngờ và hiểm hóc quá, {name} làm ông thán phục rồi!",
           "next": "Bàn cờ gánh mộc mạc dưới giàn mướp hoa vàng luôn đợi cháu ghé chơi.",
           "who": "{name}, kỳ thủ nhí mưu lược trên bàn cờ gánh",
-          "learn": "Tư duy chiến thuật và chớp thời cơ thế cờ"
+          "learn": "Tư duy chiến thuật và chớp thời cơ thế cờ",
+          "en": {
+            "title": "The folk game cờ gánh with Ông Bảy Cờ Gánh",
+            "summary": "Slip your piece cleverly between two of the other side's pieces to carry them both over to your team.",
+            "lines": [
+              "Come under the gourd trellis, {name}, and play a game of cờ gánh with Grandpa!",
+              "Move a red piece between two blue ones and you capture the pair."
+            ],
+            "choice": "Here comes my move, Grandpa!",
+            "prompt": "Win over {goal} pieces on the wooden board!",
+            "reward": "What a sneaky, surprising move! {name} has Grandpa truly impressed!",
+            "next": "The simple cờ gánh board under the yellow-flowered gourd vines is always waiting for you."
+          }
         },
         {
           "game": "domino-match",
@@ -558,7 +858,19 @@
           "reward": "Quân cờ đặt xuống khớp từng nét chấm, {name} quan sát tinh ý lắm!",
           "next": "Hộp cờ domino bằng gỗ ông cất bên chõng tre đợi cháu đến nối tiếp.",
           "who": "{name}, người ghép domino tinh mắt tỉ mỉ",
-          "learn": "Đếm nhanh số chấm và so khớp hai đầu tương ứng"
+          "learn": "Đếm nhanh số chấm và so khớp hai đầu tương ứng",
+          "en": {
+            "title": "Matching dominoes with Ông Bảy Cờ Gánh",
+            "summary": "Find dominoes with matching dots and join them to either end of the chain on the mat.",
+            "lines": [
+              "These spotted dominoes are great for training your memory, {name}!",
+              "Look at the dots on both ends of the row, then place a domino with exactly the same dots."
+            ],
+            "choice": "I will find a domino that fits!",
+            "prompt": "Match the dots on {goal} dominoes into the long chain!",
+            "reward": "Every domino fits dot for dot. {name} has a very sharp eye!",
+            "next": "Grandpa keeps the wooden domino box by the bamboo bed, waiting for you to play on."
+          }
         },
         {
           "game": "petanque",
@@ -573,7 +885,19 @@
           "reward": "Bi sắt của {name} dừng ngay sát sạt bi vàng, cú ném xuất thần!",
           "next": "Khoảng sân râm mát cuối vườn giàn mướp luôn đón cháu đến ném bi sắt.",
           "who": "{name}, tay ném bi sắt cự phách của xóm nhỏ",
-          "learn": "Căn lực tay và ước lượng khoảng cách tới đích"
+          "learn": "Căn lực tay và ước lượng khoảng cách tới đích",
+          "en": {
+            "title": "Pétanque with Ông Bảy Cờ Gánh",
+            "summary": "Judge the pull of your throw so the steel ball rolls as close as possible to the little yellow target ball.",
+            "lines": [
+              "The dirt yard in Grandpa's garden is the best pétanque ground in the world, {name}!",
+              "Pull back to aim, then let go so the steel ball rolls right up to the yellow target."
+            ],
+            "choice": "Right next to the yellow ball!",
+            "prompt": "Throw close to the yellow target to win {goal} points!",
+            "reward": "The ball from {name} stopped right beside the yellow one. A magical throw!",
+            "next": "The shady yard at the end of the gourd garden always welcomes you for pétanque."
+          }
         }
       ]
     }

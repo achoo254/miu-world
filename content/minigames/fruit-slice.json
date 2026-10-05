@@ -9,5 +9,12 @@
   "controls": ["swipe"],
   "duration": 60,
   "goal": 40,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Fruit slicer",
+    "howTo": [
+      "Fruit flies up: {name}, swipe your finger through each one to slice it in half.",
+      "Don't slice the cactus: three cactus hits and the round is over!"
+    ]
+  }
 }

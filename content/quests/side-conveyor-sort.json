@@ -46,7 +46,19 @@
         {
           "text": "Giao cho tớ, tớ chia nhanh lắm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Oink, {name}, perfect timing! The conveyor belt is piled high!",
+          "Check the sign on each basket and flick every item into its own one. If a sign changes, look again."
+        ],
+        "choices": [
+          {
+            "text": "Leave it to me, I'm a fast sorter!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Xếp đúng giỏ ba mươi món đồ nhé!",
       "game": "conveyor-sort",
-      "goal": 30
+      "goal": 30,
+      "en": {
+        "title": "Conveyor sorting",
+        "prompt": "Sort 30 items into the right baskets!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Heo Kho Hàng ủn ỉn vui sướng: kho gọn gàng hết rồi nhờ {name}!"
+      "text": "Heo Kho Hàng ủn ỉn vui sướng: kho gọn gàng hết rồi nhờ {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Heo Kho Hàng oinks with joy: the storehouse is all tidy thanks to {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Băng chuyền chạy suốt ngày, cứ ghé cửa kho nếu cậu muốn chia tiếp."
+      "text": "Băng chuyền chạy suốt ngày, cứ ghé cửa kho nếu cậu muốn chia tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "The belt runs all day. Drop by the storehouse door if you want to sort more."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Conveyor Sorting with Heo Kho Hàng",
+    "summary": "The storehouse conveyor belt rumbles along; flick each item into the basket its sign asks for."
   }
 }

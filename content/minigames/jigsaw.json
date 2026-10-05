@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 15,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Jigsaw puzzle",
+    "howTo": [
+      "Drag each piece into the frame, where the faint picture matches it.",
+      "A piece dropped close to its spot snaps into place: one point each.",
+      "After this picture, {name} moves on to a bigger one!"
+    ]
+  }
 }

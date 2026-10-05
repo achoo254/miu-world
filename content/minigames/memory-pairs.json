@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 6,
-  "params": { "pairs": 6 }
+  "params": { "pairs": 6 },
+  "en": {
+    "name": "Flip and Match",
+    "howTo": [
+      "Tap a card to flip it, then flip one more.",
+      "Two matching pictures make a pair. Remember where each one hides, {name}!",
+      "Find every pair and a new board appears."
+    ]
+  }
 }

@@ -10,5 +10,13 @@
   "controls": ["swipe", "tap"],
   "duration": 90,
   "goal": 4,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Mirror Buddies",
+    "howTo": [
+      "Swipe to move {name} one square. The friend in the mirror moves at the same time, left and right swapped.",
+      "Whoever bumps a rock stays put while the other keeps going.",
+      "Bring both onto their own star. Took a wrong step? Tap Undo."
+    ]
+  }
 }

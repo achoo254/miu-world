@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 50,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Cable car boarding",
+    "howTo": [
+      "Each cabin seats 4. The number on a cabin shows its empty seats.",
+      "When a cabin reaches the lit gate, {name} taps a group that fits the seats to invite them on.",
+      "Every passenger aboard is a point. A group that's too big waits for the next cabin."
+    ]
+  }
 }

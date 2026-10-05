@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 12,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Floating lanterns",
+    "howTo": [
+      "{name}, tap along the riverbank to set a flower lantern afloat. The current carries it up to the bend.",
+      "Boats and water hyacinths drift across. Time it so the lantern slips through a gap!"
+    ]
+  }
 }

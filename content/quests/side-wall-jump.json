@@ -46,7 +46,19 @@
         {
           "text": "Tớ nhún chân bật nhảy liền!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The cliff next to the cable car station is really steep. {name}, let's test our high jumps!",
+          "Tap quickly to spring across to the other side, and stay away from the sharp icicles."
+        ],
+        "choices": [
+          {
+            "text": "Ready, set, spring!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chinh phục độ cao sáu mươi mét trên hẻm núi đá tuyết nhé!",
       "game": "wall-jump",
-      "goal": 60
+      "goal": 60,
+      "en": {
+        "title": "Canyon Wall Jump",
+        "prompt": "Climb 60 metres up the snowy canyon!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nai Nhỏ nhấc cao chân khen ngợi: {name} nhảy thoăn thoắt hệt như sơn dương núi!"
+      "text": "Nai Nhỏ nhấc cao chân khen ngợi: {name} nhảy thoăn thoắt hệt như sơn dương núi!",
+      "en": {
+        "title": "Reward",
+        "text": "Nai Nhỏ lifts a hoof in praise: {name} jumps as nimbly as a mountain goat!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Hẻm núi tuyết vẫn còn gió thổi vi vu, Nai Nhỏ đợi {name} cùng leo vách đá."
+      "text": "Hẻm núi tuyết vẫn còn gió thổi vi vu, Nai Nhỏ đợi {name} cùng leo vách đá.",
+      "en": {
+        "title": "See you soon",
+        "text": "The wind still whistles through the snowy canyon. Nai Nhỏ is waiting for {name} to climb again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Canyon Wall Jump with Nai Nhỏ Vách Đá",
+    "summary": "A canyon rises steep on both sides; tap to bounce back and forth between the sharp rock walls."
   }
 }

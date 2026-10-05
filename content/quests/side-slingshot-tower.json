@@ -46,7 +46,19 @@
         {
           "text": "Căng ná, bắn thôi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, try the slingshot I made myself. Knock down that box tower!",
+          "Pull the sling back, then let go. You only have six stones, so aim carefully."
+        ],
+        "choices": [
+          {
+            "text": "Stretch it back and fire!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Bắn đổ ba tháp hộp nhé!",
       "game": "slingshot-tower",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Slingshot Box Towers",
+        "prompt": "Knock down 3 box towers!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu bông rơi lộp độp, Cáo Cung Thủ khen {name} bắn chuẩn quá!"
+      "text": "Gấu bông rơi lộp độp, Cáo Cung Thủ khen {name} bắn chuẩn quá!",
+      "en": {
+        "title": "Reward",
+        "text": "Teddy bears tumble down, plop-plop, and Cáo Cung Thủ cheers: {name} has perfect aim!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tớ sẽ xếp tháp cao hơn, lần sau cậu lại tới thử tài nhé."
+      "text": "Tớ sẽ xếp tháp cao hơn, lần sau cậu lại tới thử tài nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "I'll stack the towers even higher. Come back and test your skill again!"
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Topple Box Towers with Cáo Cung Thủ",
+    "summary": "Stacked box towers have teddy bears on top; pull the slingshot and fire stones to knock the bears down."
   }
 }

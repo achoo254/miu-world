@@ -83,7 +83,26 @@
           "text": "Hay để mình hát ru cậu ngủ?",
           "reply": "Na bịt tai cười khúc khích: cậu hát… y hệt tiếng ve! Thôi, đi tìm quạt đã."
         }
-      ]
+      ],
+      "en": {
+        "title": "The koala who can't sleep",
+        "goTo": "Go to the hammock on Koala Na's porch, Na has been tossing and turning for ages",
+        "lines": [
+          "{name}… I'm the best sleeper in the whole hamlet, but tonight my eyes are wide open like two marbles.",
+          "It's so hot, children! With my thick fur I might as well be wearing a padded coat in summer!",
+          "Every night Mum sits and fans me, fanning and singing a lullaby. She's gone to look after Grandma, who's poorly, and I miss her so much…"
+        ],
+        "choices": [
+          {
+            "text": "I'll go and find a fan for you!",
+            "reply": "Na rubs her eyes and nods: Mum's bamboo fan is somewhere out in the lane, I dropped it this afternoon."
+          },
+          {
+            "text": "Or shall I sing you to sleep?",
+            "reply": "Na covers her ears and giggles: you sing… just like a cicada! Let's go find the fan first."
+          }
+        ]
+      }
     },
     {
       "id": "tim-quat-nan",
@@ -613,7 +632,29 @@
           "text": "Mai con với bạn sang thăm bà và mẹ nhé!",
           "reply": "Na reo khẽ: hay quá! Mai tớ dậy sớm… à, dậy được thì dậy sớm."
         }
-      ]
+      ],
+      "en": {
+        "title": "A message for Mother Koala",
+        "lines": [
+          "Yaaawn… my eyes are drooping. But I want to send Mum a message before I sleep.",
+          "Long ago, whenever I missed someone, I'd whisper to the wind at the end of the lane. The wind carries words very quickly, dear.",
+          "{name}, what should we tell Mum?"
+        ],
+        "choices": [
+          {
+            "text": "Thank you, Mum, for staying up every night to fan me.",
+            "reply": "A soft breeze drifts towards Grandma's house. Na smiles, her eyes half closed."
+          },
+          {
+            "text": "Mum, I'm sleeping nicely, so don't worry and look after Grandma.",
+            "reply": "Na nods: Mum will be so happy to hear that. Then Na lets out one teeny snore."
+          },
+          {
+            "text": "Tomorrow my friend and I will come and visit you and Grandma!",
+            "reply": "Na cheers softly: yay! I'll get up early tomorrow… well, if I can wake up."
+          }
+        ]
+      }
     },
     {
       "id": "loi-biet-on",
@@ -859,14 +900,22 @@
       "title": "Quạt nan nhỏ của Koala Na",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Sáng hôm sau, Na tặng {name} một chiếc quạt nan bé xíu tự đan, trên cán khắc dòng chữ: \"Ngọn gió nhỏ của bạn tốt\". Bà Gấu Nâu xin mượn ngay, vì bộ lông của bà vẫn nóng hầm hập!"
+      "text": "Sáng hôm sau, Na tặng {name} một chiếc quạt nan bé xíu tự đan, trên cán khắc dòng chữ: \"Ngọn gió nhỏ của bạn tốt\". Bà Gấu Nâu xin mượn ngay, vì bộ lông của bà vẫn nóng hầm hập!",
+      "en": {
+        "title": "Koala Na's little fan",
+        "text": "The next morning, Na gives {name} a tiny bamboo fan she wove herself, with words carved on the handle: “A good friend's little breeze”. Granny Gấu Nâu asks to borrow it straight away, because her fur is still roasting hot!"
+      }
     },
     {
       "id": "mo-bai-28",
       "title": "Sư tử con dỗi bố",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ hang đá ấm ở chân đồi vọng ra tiếng gầm… bé tí: sư tử con Tũn đang dỗi vì bố bận suốt ngày. Hình như bố Sư Tử Bờm đang nghĩ ra một trò chơi bí mật thì phải?"
+      "text": "Từ hang đá ấm ở chân đồi vọng ra tiếng gầm… bé tí: sư tử con Tũn đang dỗi vì bố bận suốt ngày. Hình như bố Sư Tử Bờm đang nghĩ ra một trò chơi bí mật thì phải?",
+      "en": {
+        "title": "The lion cub sulks at Dad",
+        "text": "From the warm stone cave at the foot of the hill comes a roar… a teeny one: lion cub Tũn is sulking because Dad is busy all day long. It seems Father Lion Bờm is cooking up a secret game, though?"
+      }
     }
   ],
   "reward": {

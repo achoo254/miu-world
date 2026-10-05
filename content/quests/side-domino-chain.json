@@ -46,7 +46,19 @@
         {
           "text": "Đổ rạp liên hoàn, chuông reo leng keng!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Meow! {name}, let us set up a domino run around this cool fountain edge!",
+          "Drag along the dotted path to place dominoes around the obstacles, then tap the first one to ring the bell."
+        ],
+        "choices": [
+          {
+            "text": "Down they all go, ding-a-ling!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Dựng và đẩy đổ chuỗi domino rung chuông ba lần nhé!",
       "game": "domino-chain",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Domino chain",
+        "prompt": "Build and topple a domino chain to ring the bell 3 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mèo Xếp Khối vẫy đuôi reo hò: chuỗi domino của {name} đổ đều tăm tắp, tiếng chuông vang lừng!"
+      "text": "Mèo Xếp Khối vẫy đuôi reo hò: chuỗi domino của {name} đổ đều tăm tắp, tiếng chuông vang lừng!",
+      "en": {
+        "title": "Reward",
+        "text": "Mèo Xếp Khối waves her tail: the dominoes of {name} fell perfectly, and the bell rang loud!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Còn bao nhiêu cách xếp hình domino kỳ thú, {name} lại ra đài phun nước chơi cùng mèo nha."
+      "text": "Còn bao nhiêu cách xếp hình domino kỳ thú, {name} lại ra đài phun nước chơi cùng mèo nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "There are so many fun ways to lay dominoes, {name}, so come back to the fountain and play."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Domino chain with Mèo Xếp Khối",
+    "summary": "Dominoes are scattered along the fountain edge: drag to stand a chain of them, then tap to topple them into the bell."
   }
 }

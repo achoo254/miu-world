@@ -66,7 +66,26 @@
           "text": "Hóa đơn tiền cỏ á? Buồn cười quá!",
           "reply": "Chó Mực cười khì: Thầy hiệu trưởng còn định trả giùm luôn đấy."
         }
-      ]
+      ],
+      "en": {
+        "title": "Letters sent to the wrong class",
+        "goTo": "Run out to the school gate, where Chó Mực is hugging a bulging mailbag",
+        "lines": [
+          "Woof! {name}, the postman thought up a new game this morning: the envelopes don't say the class name, they say... a sum!",
+          "I've run ten laps around the school and still delivered them wrong. Class 2A got Class 1C's letter, and the headmaster got... Bò Sữa Mơ's grass bill by mistake.",
+          "And a few envelopes fell out of the bag while I was wagging my tail. Will you help me, woof woof?"
+        ],
+        "choices": [
+          {
+            "text": "I'll pick up the envelopes for you!",
+            "reply": "Chó Mực wags his tail like a propeller: Thanks! They must have fallen near the gate!"
+          },
+          {
+            "text": "A grass bill? That's so funny!",
+            "reply": "Chó Mực chuckles: The headmaster was even going to pay it for her."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-phong-bi",
@@ -103,7 +122,21 @@
           "text": "Tính theo chục, dễ ợt!",
           "reply": "Chó Mực: Gâu! Cậu nói y như bác đưa thư."
         }
-      ]
+      ],
+      "en": {
+        "title": "Envelopes with sums on them",
+        "lines": [
+          "The first envelope says 60 + 40. The postman says: when adding round tens, think in tens to go faster.",
+          "6 tens plus 4 tens is 10 tens, which is 100. And 100 – 20 is 10 tens take away 2 tens, leaving 8 tens, which is 80.",
+          "Sounds like counting bones in a box, doesn't it! Let's try the whole stack of envelopes."
+        ],
+        "choices": [
+          {
+            "text": "Thinking in tens, easy peasy!",
+            "reply": "Chó Mực: Woof! You sound just like the postman."
+          }
+        ]
+      }
     },
     {
       "id": "tinh-nham-so-tron-chuc",
@@ -1216,7 +1249,26 @@
           "text": "Mở giỏ táo trước!",
           "reply": "Cáo Tuyết Mi: Giỏ táo thì chú hề Tò Te đang giữ, cứ đố giỏ cam đã nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Cáo Tuyết Mi drops by",
+        "goTo": "Take the postcards to the Year 2 mailbox, where Cáo Tuyết Mi has just arrived",
+        "lines": [
+          "Oh look, my postcards made it here! I'm so far away that I sent some puzzles along so I'd miss school a little less.",
+          "Mi, the box you sent also has two fruit baskets and a triangle picture.",
+          "{name}, do you want to open the orange basket or the apple basket first? Both have puzzles in them!"
+        ],
+        "choices": [
+          {
+            "text": "The orange basket first!",
+            "reply": "Cáo Tuyết Mi: Oranges from the north are so juicy, here's your puzzle!"
+          },
+          {
+            "text": "The apple basket first!",
+            "reply": "Cáo Tuyết Mi: Tò Te the clown is keeping the apple basket, so let's do the orange basket first!"
+          }
+        ]
+      }
     },
     {
       "id": "gio-cam-phuong-xa",
@@ -1429,14 +1481,22 @@
       "title": "Huy hiệu bưu tá",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chó Mực đội lên đầu {name} chiếc mũ bưu tá và gắn huy hiệu \"Bưu tá phép tính\". Cáo Tuyết Mi hứa lần sau gửi bưu thiếp khó hơn nữa."
+      "text": "Chó Mực đội lên đầu {name} chiếc mũ bưu tá và gắn huy hiệu \"Bưu tá phép tính\". Cáo Tuyết Mi hứa lần sau gửi bưu thiếp khó hơn nữa.",
+      "en": {
+        "title": "Postal worker badge",
+        "text": "Chó Mực pops a postal cap on {name}'s head and pins on the \"Sum Postie\" badge. Cáo Tuyết Mi promises to send even trickier postcards next time."
+      }
     },
     {
       "id": "hoi-cho-so",
       "title": "Lời mời đi hội chợ",
       "kind": "next",
       "trigger": "auto",
-      "text": "Lá thư cuối cùng ghi: \"Mời {name} tới góc trò chơi dân gian, hội chợ số có năm gian đố đang chờ! Kí tên: Cáo Lém (lần này không giấu phấn đâu)\"."
+      "text": "Lá thư cuối cùng ghi: \"Mời {name} tới góc trò chơi dân gian, hội chợ số có năm gian đố đang chờ! Kí tên: Cáo Lém (lần này không giấu phấn đâu)\".",
+      "en": {
+        "title": "An invitation to the fair",
+        "text": "The very last letter says: \"Dear {name}, come to the folk games corner, the number fair has five puzzle stalls waiting! Signed: Cáo Lém (no hidden chalk this time)\"."
+      }
     }
   ],
   "reward": {

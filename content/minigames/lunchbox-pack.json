@@ -10,5 +10,13 @@
   "controls": ["tap", "drag"],
   "duration": 90,
   "goal": 8,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Balanced lunchbox",
+    "howTo": [
+      "A lunchbox needs all four groups: rice and bread, veggies, meat-fish-eggs, and fruit.",
+      "{name}, tap food on the conveyor belt (or drag it up) to put it in the box.",
+      "Four foods from different groups make a balanced box. Two from one group spills it: start a new box."
+    ]
+  }
 }

@@ -9,5 +9,12 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Mini Golf",
+    "howTo": [
+      "{name} touches, pulls back and lets go to hit the ball. The longer the pull, the harder the shot.",
+      "The ball bounces off walls. Roll it into the flag hole, but not too hard or it skips right over!"
+    ]
+  }
 }

@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Follow the Treasure Map",
+    "howTo": [
+      "The map shows steps and arrows, like 3 steps up.",
+      "{name} counts and taps the square you'll land on. Follow the whole map to dig up a prize!"
+    ]
+  }
 }

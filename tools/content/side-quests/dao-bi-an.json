@@ -28,7 +28,19 @@
           "reward": "Cua Lướt Sóng giơ hai càng reo hò: {name} lướt sóng như cá heo!",
           "next": "Ngày nào biển cũng có sóng, Cua chờ {name} ở bãi biển cạnh bến tàu.",
           "who": "{name}, tay lướt sóng của đảo",
-          "learn": "Cảm nhận nhịp lên xuống của sóng"
+          "learn": "Cảm nhận nhịp lên xuống của sóng",
+          "en": {
+            "title": "Surf past the islands with Cua Lướt Sóng",
+            "summary": "On the board, hold to drop down a wave for speed, then let go to fly over the crest.",
+            "lines": [
+              "The waves are just the right height today! Grab your board and come out with me, {name}!",
+              "Hold to speed down the wave, then let go on the way up and whoosh right over."
+            ],
+            "choice": "Grabbing my board now!",
+            "prompt": "Surf past {goal} islands on the waves!",
+            "reward": "Cua Lướt Sóng waves both claws and cheers: {name} surfs like a dolphin!",
+            "next": "There are waves every day. Cua will wait for {name} on the beach by the pier."
+          }
         },
         {
           "game": "swim-race",
@@ -43,7 +55,19 @@
           "reward": "Cua Lướt Sóng chịu thua: {name} bơi đều tay quá, tớ đuổi không kịp!",
           "next": "Nước biển ấm lắm, lúc nào muốn đua tiếp cứ ra bãi biển tìm Cua.",
           "who": "{name}, kình ngư nhỏ của đảo",
-          "learn": "Giữ nhịp đều và kiên nhẫn"
+          "learn": "Giữ nhịp đều và kiên nhẫn",
+          "en": {
+            "title": "Swim race along the shore with Cua Lướt Sóng",
+            "summary": "Tap when the gold ring meets the white ring to stroke, and keep a steady rhythm to the finish.",
+            "lines": [
+              "Who can swim to the red buoy first? Dare to race me, {name}?",
+              "Don't tap wildly or you'll tire out. Follow the rings steadily and you'll be fastest."
+            ],
+            "choice": "A race? You're on!",
+            "prompt": "Finish first or second in {goal} races!",
+            "reward": "Cua Lướt Sóng gives up: {name} swims so steadily, I just can't keep up!",
+            "next": "The sea is lovely and warm. Whenever you want a rematch, find Cua on the beach."
+          }
         }
       ]
     },
@@ -75,7 +99,19 @@
           "reward": "Khỉ Hái Dừa nhảy tưng tưng: đĩa trái cây của {name} ngon tuyệt!",
           "next": "Mai cây lại trĩu quả, Khỉ Hái Dừa hẹn {name} ở lối vào rừng.",
           "who": "{name}, đầu bếp trái cây của rừng",
-          "learn": "Phản xạ nhanh và nhìn kỹ trước khi chém"
+          "learn": "Phản xạ nhanh và nhìn kỹ trước khi chém",
+          "en": {
+            "title": "Slice jungle fruit with Khỉ Hái Dừa",
+            "summary": "Jungle fruit flies into the air: swipe to slice each one in half, and steer clear of the cactus.",
+            "lines": [
+              "I just picked a whole basket of coconuts, mangoes and pineapples, {name}! Let's make a fruit plate!",
+              "I'll toss them up and you swipe to slice them, but don't hit the cactus!"
+            ],
+            "choice": "Toss them up, I'm ready!",
+            "prompt": "Score {goal} points slicing fruit!",
+            "reward": "Khỉ Hái Dừa bounces up and down: {name}'s fruit plate is delicious!",
+            "next": "The trees will be heavy with fruit again tomorrow. Khỉ Hái Dừa will meet {name} at the jungle entrance."
+          }
         },
         {
           "game": "photo-snap",
@@ -90,7 +126,19 @@
           "reward": "Khỉ Hái Dừa ngắm ảnh mãi: {name} chụp đẹp như nhiếp ảnh gia!",
           "next": "Còn nhiều bạn thú chưa ai chụp, {name} quay lại rừng với Khỉ nhé.",
           "who": "{name}, nhiếp ảnh gia thiên nhiên",
-          "learn": "Kiên nhẫn chờ đúng khoảnh khắc"
+          "learn": "Kiên nhẫn chờ đúng khoảnh khắc",
+          "en": {
+            "title": "Photograph jungle animals with Khỉ Hái Dừa",
+            "summary": "Animals hide behind bushes and tree stumps: wait until one steps fully into the frame, then snap.",
+            "lines": [
+              "This jungle is full of shy animals, {name}. Bring the camera and come with me!",
+              "There are only twelve shots on the roll, so wait till an animal is fully out before you snap."
+            ],
+            "choice": "Camera's ready!",
+            "prompt": "Take {goal} sharp photos of the animals!",
+            "reward": "Khỉ Hái Dừa can't stop looking at them: {name} takes photos like a real photographer!",
+            "next": "Lots of animals still haven't had their picture taken. Come back to the jungle with Khỉ, {name}."
+          }
         },
         {
           "game": "bubble-shooter",
@@ -105,7 +153,19 @@
           "reward": "Khỉ Hái Dừa đu cành reo lên: {name} bắn bóng trăm phát trăm trúng!",
           "next": "Gió lại thổi bóng mắc lên cây, {name} ghé rừng chơi tiếp với Khỉ nhé.",
           "who": "{name}, xạ thủ bóng màu",
-          "learn": "Nhóm theo màu và ngắm góc bật"
+          "learn": "Nhóm theo màu và ngắm góc bật",
+          "en": {
+            "title": "Bubble shooter under the palms with Khỉ Hái Dừa",
+            "summary": "Drag your finger to aim along the dotted line and shoot; three bubbles of one colour that touch will pop.",
+            "lines": [
+              "See the coloured bubbles stuck in the palm leaves, {name}? Shoot them down for me!",
+              "Aim so three of the same colour stick together and pop! Don't let the bubbles reach the red line."
+            ],
+            "choice": "Aiming carefully, here goes!",
+            "prompt": "Score {goal} points popping bubbles!",
+            "reward": "Khỉ Hái Dừa swings on a branch and cheers: {name} never misses a shot!",
+            "next": "The wind keeps blowing bubbles into the trees. Come play in the jungle with Khỉ again, {name}."
+          }
         }
       ]
     },
@@ -136,7 +196,19 @@
           "reward": "Chú ngư dân Sóng giơ con cá lên: cháu {name} kéo khỏe hơn cả chú!",
           "next": "Biển còn nhiều cá lớn lắm, chú Sóng đợi {name} trên bờ đá nhé.",
           "who": "{name}, người câu cá ngoài khơi",
-          "learn": "Giữ thăng bằng lực kéo thật đều"
+          "learn": "Giữ thăng bằng lực kéo thật đều",
+          "en": {
+            "title": "Reel in the big fish with Uncle Sóng",
+            "summary": "A big fish has bitten: hold and release so the fish stays inside the green box until it's landed.",
+            "lines": [
+              "{name}, a big one's on the line! Give me a hand with the rod!",
+              "Hold and the green box rises, let go and it sinks. Just keep the fish inside the box."
+            ],
+            "choice": "I've got a tight grip on the rod!",
+            "prompt": "Reel {goal} big fish onto the rocks!",
+            "reward": "Uncle Sóng holds up the fish: {name} reels in stronger than I do!",
+            "next": "There are plenty more big fish in the sea. Uncle Sóng will wait for {name} on the rocks."
+          }
         },
         {
           "game": "package-drop",
@@ -151,7 +223,19 @@
           "reward": "Chú Sóng vẫy mũ: nhà nào cũng nhận quà nhờ {name} đấy!",
           "next": "Chuyến quà sau chú vẫn cần phi công, nhớ ra bờ đá tìm chú Sóng.",
           "who": "{name}, phi công chở quà",
-          "learn": "Đoán trước đường rơi của vật"
+          "learn": "Đoán trước đường rơi của vật",
+          "en": {
+            "title": "Air-drop parcels with Uncle Sóng",
+            "summary": "The plane flies across the sky: tap a little early so each parcel lands in the yellow ring.",
+            "lines": [
+              "The seaside houses are waiting for their parcels, {name}. Fly the plane for me!",
+              "Parcels keep drifting forward a bit, so drop them before you reach the yellow ring."
+            ],
+            "choice": "Ready for take-off!",
+            "prompt": "Drop {goal} parcels right in the ring!",
+            "reward": "Uncle Sóng waves his hat: every house got its parcel thanks to {name}!",
+            "next": "I'll need a pilot for the next delivery too. Come find Uncle Sóng on the rocks."
+          }
         }
       ]
     },
@@ -183,7 +267,19 @@
           "reward": "Gấu Trúc Thám Hiểm ôm rương vàng: {name} có cái mũi tìm kho báu thật!",
           "next": "Bản đồ còn nhiều dấu chéo lắm, {name} quay lại khu di tích đào tiếp nhé.",
           "who": "{name}, nhà thám hiểm tìm kho báu",
-          "learn": "Suy luận từ manh mối gần và xa"
+          "learn": "Suy luận từ manh mối gần và xa",
+          "en": {
+            "title": "Hot-and-cold treasure dig with Gấu Trúc Thám Hiểm",
+            "summary": "Tap a patch of sand to dig: fire means close, snow means far. Find the treasure in eight digs.",
+            "lines": [
+              "The old map says treasure is buried around these ruins, {name}!",
+              "If fire shows up, you're really close; snow means it's still far. Only eight digs, mind!"
+            ],
+            "choice": "Hand me the shovel!",
+            "prompt": "Dig up {goal} treasures from the sand!",
+            "reward": "Gấu Trúc Thám Hiểm hugs the golden chest: {name} has a real nose for treasure!",
+            "next": "The map still has lots of X marks. Come back to the ruins and keep digging, {name}."
+          }
         },
         {
           "game": "dig-tunnel",
@@ -198,7 +294,19 @@
           "reward": "Gấu Trúc Thám Hiểm lau kính reo lên: {name} đào giỏi như chuột chũi!",
           "next": "Dưới đất còn ngọc ngủ say, Gấu Trúc chờ {name} ở cổng khu di tích.",
           "who": "{name}, thợ đào hầm tìm ngọc",
-          "learn": "Lên kế hoạch đường đi an toàn"
+          "learn": "Lên kế hoạch đường đi an toàn",
+          "en": {
+            "title": "Tunnel for gems with Gấu Trúc Thám Hiểm",
+            "summary": "Drag your finger to dig tunnels for gems, carefully, so the boulders above don't fall on you.",
+            "lines": [
+              "There are sparkling gems under the old temple floor, {name}. Let's tunnel down together!",
+              "Dig away the earth under a boulder and it'll fall, so keep well clear."
+            ],
+            "choice": "I'll dig gently!",
+            "prompt": "Collect {goal} gems from underground!",
+            "reward": "Gấu Trúc Thám Hiểm wipes his glasses and cheers: {name} digs like a mole!",
+            "next": "More gems are sleeping underground. Gấu Trúc will wait for {name} at the ruins gate."
+          }
         }
       ]
     },
@@ -230,7 +338,19 @@
           "reward": "Vẹt Biển vỗ cánh phần phật: mắt cháu {name} tinh anh như chim ưng biển vậy!",
           "next": "Kho báu trên đảo hoang còn nhiều vô kể, thuyền trưởng đợi {name} trước lều nhé.",
           "who": "{name}, nhà thám hiểm săn kho báu biển",
-          "learn": "Đọc hướng đi theo mũi tên và đếm bước"
+          "learn": "Đọc hướng đi theo mũi tên và đếm bước",
+          "en": {
+            "title": "Follow the old map with Thuyền Trưởng Vẹt Biển",
+            "summary": "The old map shows a mysterious route: count the steps along each arrow to dig up the golden chest.",
+            "lines": [
+              "Here's my ancient treasure chart, {name}! Quick, count the steps with your captain!",
+              "Look closely at the steps and the arrows, then tap the patch where the treasure is buried."
+            ],
+            "choice": "I'll grab a shovel and dig!",
+            "prompt": "Follow the map to find {goal} precious chests on the island!",
+            "reward": "Vẹt Biển flaps his wings: {name} has eyes as sharp as a sea eagle!",
+            "next": "This desert island holds countless treasures. The captain will wait for {name} by his tent."
+          }
         },
         {
           "game": "reef-sweeper",
@@ -245,7 +365,19 @@
           "reward": "Thuyền Trưởng Vẹt Biển vỗ vai khen: nhờ {name} mà thuyền của ta cập bờ êm ru!",
           "next": "Thủy triều xuống để lộ bãi đá mới, thuyền trưởng chờ {name} ra rạn san hô rà soát.",
           "who": "{name}, hoa tiêu dò đường biển tài ba",
-          "learn": "Suy luận logic và đánh dấu mối nguy"
+          "learn": "Suy luận logic và đánh dấu mối nguy",
+          "en": {
+            "title": "Chart the coral reef with Thuyền Trưởng Vẹt Biển",
+            "summary": "The shallows hide sharp rocks: use the number clues to plant warning flags and keep boats safe.",
+            "lines": [
+              "The reef by my tent is full of dangerous rocks, {name}. Check the channel for me!",
+              "Tap the sand to see how many rocks are nearby. Where a rock is certain, plant a flag."
+            ],
+            "choice": "I'll flag every rock carefully!",
+            "prompt": "Clear the hidden rocks from {goal} reefs along the shore!",
+            "reward": "Captain Vẹt Biển pats your shoulder: thanks to {name}, my ship docked smooth as silk!",
+            "next": "Low tide shows new rocks. The captain is waiting for {name} out at the reef."
+          }
         },
         {
           "game": "unblock-ferry",
@@ -260,7 +392,19 @@
           "reward": "Vẹt Biển kêu to vui sướng: thuyền buồm của ta giương cánh lướt sóng nhờ {name} rồi!",
           "next": "Biển cả còn nhiều chuyến hải trình, thuyền trưởng hẹn {name} hội ngộ trên bờ cát.",
           "who": "{name}, thuyền trưởng tháo gỡ tắc nghẽn",
-          "learn": "Tư duy di chuyển từng bước có trật tự"
+          "learn": "Tư duy di chuyển từng bước có trật tự",
+          "en": {
+            "title": "Free the stuck boat with Thuyền Trưởng Vẹt Biển",
+            "summary": "Rafts are blocking the bay: slide the boats back and forth to get the golden ship out to sea.",
+            "lines": [
+              "My golden sailing ship is stuck between the wooden rafts, {name}! Come to the rescue!",
+              "Slide each boat along its length to clear a way to the river mouth."
+            ],
+            "choice": "I'll clear a way out to sea!",
+            "prompt": "Free the ship from {goal} blocked channels!",
+            "reward": "Vẹt Biển squawks with joy: my ship is sailing the waves again thanks to {name}!",
+            "next": "There are many more voyages ahead. The captain will meet {name} again on the sand."
+          }
         }
       ]
     },
@@ -292,7 +436,19 @@
           "reward": "Hải Cẩu đập hai vây bồm bộp: những pha đập bóng của {name} hiểm hóc quá chừng!",
           "next": "Nắng vàng trên biển còn rực rỡ, Hải Cẩu chờ {name} quay lại giao lưu bóng chuyền.",
           "who": "{name}, vận động viên bóng chuyền bãi biển",
-          "learn": "Đoán vị trí bóng rơi và căn lực đập"
+          "learn": "Đoán vị trí bóng rơi và căn lực đập",
+          "en": {
+            "title": "Beach volleyball with Hải Cẩu Bóng Chuyền",
+            "summary": "The ball sails over the net: run to where it lands and jump to spike it into the other court.",
+            "lines": [
+              "The waves are so cool and splashy, {name}! Come play volleyball on the sand with me!",
+              "Watch the landing circle, then tap just as the ball drops over your head to spike it."
+            ],
+            "choice": "I'm a fearless defender!",
+            "prompt": "Score {goal} points in the beach volleyball match!",
+            "reward": "Hải Cẩu slaps both flippers: {name}'s spikes are so tricky!",
+            "next": "The sun is still shining on the sea. Hải Cẩu is waiting for {name} to come back for a game."
+          }
         },
         {
           "game": "seal-balance",
@@ -307,7 +463,19 @@
           "reward": "Hải Cẩu reo hò phấn khích: {name} khéo léo giữ bóng vững vàng chẳng chao đảo!",
           "next": "Bãi biển lúc nào cũng rộn rã sóng vỗ, Hải Cẩu mong {name} ghé giữ bóng tiếp.",
           "who": "{name}, nghệ sĩ xiếc giữ thăng bằng",
-          "learn": "Điều chỉnh tay nhẹ nhàng theo hướng nghiêng"
+          "learn": "Điều chỉnh tay nhẹ nhàng theo hướng nghiêng",
+          "en": {
+            "title": "Balance the ball with Hải Cẩu Bóng Chuyền",
+            "summary": "The sea breeze keeps gusting: lean left and right to keep the ball balanced.",
+            "lines": [
+              "The sea breeze is playing tricks today, {name}. Help me keep the ball balanced!",
+              "Whichever way the ball leans, move that way to catch it. Don't let it roll off."
+            ],
+            "choice": "I've got great balance!",
+            "prompt": "Keep the ball balanced on your head for {goal} seconds!",
+            "reward": "Hải Cẩu cheers with excitement: {name} kept the ball steady without a wobble!",
+            "next": "The beach is always full of crashing waves. Hải Cẩu hopes {name} will come balance again."
+          }
         },
         {
           "game": "high-dive",
@@ -322,7 +490,19 @@
           "reward": "Hải Cẩu tung bọt nước vỗ tay: cú nhảy lặn của {name} đẹp như một chú cá heo lượn!",
           "next": "Mỏm đá nhìn ra đại dương bao la, Hải Cẩu đứng đón {name} ghé nhảy sóng tiếp.",
           "who": "{name}, kình ngư nhảy cầu dũng cảm",
-          "learn": "Chọn đúng thời điểm chuyển tư thế trên không"
+          "learn": "Chọn đúng thời điểm chuyển tư thế trên không",
+          "en": {
+            "title": "Cliff diving into the waves with Hải Cẩu",
+            "summary": "From the top of a tall rock, jump and flip, then stretch out straight to slice into the water.",
+            "lines": [
+              "Look at that beautiful high cliff over the sea, {name}! Try a dive into the blue water!",
+              "Tap to leap up and tuck, then tap again to stretch out and land softly."
+            ],
+            "choice": "I'll do a spectacular dive!",
+            "prompt": "Make {goal} perfect dives from the cliff!",
+            "reward": "Hải Cẩu splashes and claps: {name}'s dive was as graceful as a dolphin's!",
+            "next": "The cliff looks out over the wide ocean, and Hải Cẩu will be there to welcome {name} back."
+          }
         }
       ]
     },
@@ -354,7 +534,19 @@
           "reward": "Cua Càng gõ hai càng lách cách: {name} cắp cua thoăn thoắt, giỏ đầy ắp rồi!",
           "next": "Thủy triều lại sắp lên xuống theo nhịp, Cua Càng đợi {name} bên mép vũng nước.",
           "who": "{name}, tay bắt cua khéo léo bờ biển",
-          "learn": "Nhanh tay gắp thả và nhớ đậy nắp đồ vật"
+          "learn": "Nhanh tay gắp thả và nhớ đậy nắp đồ vật",
+          "en": {
+            "title": "Catch crabs in the tide pool with Cua Càng Cắp Cua",
+            "summary": "Baby crabs scuttle over the sand: pick each one up quickly, pop it in the basket and close the lid.",
+            "lines": [
+              "The tide has left so many tiny crabs behind, {name}! Help me gather them up!",
+              "Put each crab in the bamboo basket, then tap to close the lid before they climb out."
+            ],
+            "choice": "I'm quick as a flash, watch me!",
+            "prompt": "Get {goal} little crabs in the basket before the lid opens!",
+            "reward": "Cua Càng clicks both claws: {name} is so quick, the basket is full!",
+            "next": "The tide will soon turn again. Cua Càng will wait for {name} by the edge of the pool."
+          }
         },
         {
           "game": "sand-castle",
@@ -369,7 +561,19 @@
           "reward": "Cua Càng giơ càng vẫy mừng: lâu đài của {name} xây đẹp và vững trước ngọn sóng!",
           "next": "Bờ cát mịn màng vẫn còn nhiều chỗ trống, Cua Càng đợi {name} xây thêm thành lũy.",
           "who": "{name}, kiến trúc sư lâu đài cát",
-          "learn": "Đong lượng vừa đủ và ước lượng thể tích"
+          "learn": "Đong lượng vừa đủ và ước lượng thể tích",
+          "en": {
+            "title": "Build a sandcastle against the waves with Cua Càng Cắp Cua",
+            "summary": "Scoop wet sand up to the mark, then flip it over to build sturdy sand towers on the shore.",
+            "lines": [
+              "The waves are about to roll in, {name}! Let's build a really strong sandcastle!",
+              "Fill the bucket to the green line, then flip it over to make a tower for the castle."
+            ],
+            "choice": "I'll build a fortress!",
+            "prompt": "Build {goal} grand sandcastles with tall towers!",
+            "reward": "Cua Càng waves a claw: {name}'s castle is beautiful and stands firm against the waves!",
+            "next": "There's still lots of smooth sand left. Cua Càng is waiting for {name} to build more walls."
+          }
         },
         {
           "game": "three-span-bag",
@@ -384,7 +588,19 @@
           "reward": "Cua Càng vung càng nhảy múa: phép cộng của {name} vừa in, túi bay về trời rồi!",
           "next": "Chim thần sẽ còn chở thêm nhiều túi ngọc, Cua Càng hẹn gặp {name} bờ biển.",
           "who": "{name}, nhà toán học nhí bờ biển",
-          "learn": "Tính nhẩm tổng các số vừa khít số đích"
+          "learn": "Tính nhẩm tổng các số vừa khít số đích",
+          "en": {
+            "title": "Fill the three-span bag with Cua Càng Cắp Cua",
+            "summary": "The magic bag from the old tale holds only the set amount: pick gems that fit it exactly.",
+            "lines": [
+              "The magic bird just dropped off the three-span bag, {name}! Pick gems with me!",
+              "Tap gems until their numbers add up to exactly the number on the bag."
+            ],
+            "choice": "I'll add up every number exactly!",
+            "prompt": "Fill {goal} magic three-span bags exactly!",
+            "reward": "Cua Càng dances with joy: {name}'s sum is spot on, and the bag flies off to the sky!",
+            "next": "The magic bird will bring more bags of gems. Cua Càng will meet {name} on the shore."
+          }
         }
       ]
     },
@@ -416,7 +632,19 @@
           "reward": "Bác Quăng Lưới cười hào sảng: mẻ chài của {name} bung tròn trịa gom trọn đàn cá!",
           "next": "Khoang thuyền còn rộng rãi lắm, bác ngư dân mong {name} ghé cầu tàu ra khơi tiếp.",
           "who": "{name}, ngư dân nhí quăng chài thiện nghệ",
-          "learn": "Ước lượng khoảng cách và đón đầu vật chuyển động"
+          "learn": "Ước lượng khoảng cách và đón đầu vật chuyển động",
+          "en": {
+            "title": "Cast the net at sea with Bác Quăng Lưới Biển",
+            "summary": "From the bow, swipe to throw the round net wide open ahead of the swimming fish.",
+            "lines": [
+              "A school of sardines is swimming past the boat, {name}! Help me cast the net!",
+              "Swipe a long way forward to open the net wide in front of the fish."
+            ],
+            "choice": "I'll cast ahead of the fish!",
+            "prompt": "Cast the net well and catch {goal} fresh fish!",
+            "reward": "Bác Quăng Lưới laughs heartily: {name}'s net spread perfectly round and caught the whole school!",
+            "next": "There's plenty of room in the hold. The old fisherman hopes {name} will sail out again from the pier."
+          }
         },
         {
           "game": "current-drift",
@@ -431,7 +659,19 @@
           "reward": "Bác Quăng Lưới siết chặt tay cháu: thư đã gửi tới nơi trọn vẹn nhờ công {name}!",
           "next": "Biển cả bao la còn nhiều lời nhắn nhủ, bác chờ {name} ở bến tàu đón thuyền.",
           "who": "{name}, người dẫn đường dòng hải lưu",
-          "learn": "Hiểu quy luật đổi dòng của nước khi gặp vật cản"
+          "learn": "Hiểu quy luật đổi dòng của nước khi gặp vật cản",
+          "en": {
+            "title": "Guide the message bottles with Bác Quăng Lưới Biển",
+            "summary": "Water rushes over the rocks: drop pebbles to bend the current and carry each message bottle to shore.",
+            "lines": [
+              "The sailors' message bottles must reach a faraway island, {name}. Help me steer the current!",
+              "Drop pebbles into the stream to bend the flow and push the bottle safely ashore."
+            ],
+            "choice": "I'll steer the bottles ashore!",
+            "prompt": "Guide the current to bring {goal} bottles to the desert island!",
+            "reward": "Bác Quăng Lưới shakes your hand: every letter arrived safely thanks to {name}!",
+            "next": "The wide sea has many more messages to carry. I'll wait for {name} at the pier."
+          }
         },
         {
           "game": "ferry-dock",
@@ -446,7 +686,19 @@
           "reward": "Bác ngư dân gióng lên tiếng chuông bến: tài lái phà của {name} thật điềm tĩnh và an toàn!",
           "next": "Bến tàu luôn tấp nập thuyền bè qua lại, bác hẹn {name} hội ngộ chuyến phà sau.",
           "who": "{name}, thuyền trưởng phà biển khéo léo",
-          "learn": "Kiểm soát tốc độ và căn khoảng cách cập bến"
+          "learn": "Kiểm soát tốc độ và căn khoảng cách cập bến",
+          "en": {
+            "title": "Dock the ferry with Bác Quăng Lưới Biển",
+            "summary": "The passenger ferry bobs on the waves: steer it, slow it down and bring it gently alongside the pier.",
+            "lines": [
+              "The ferry's packed with passengers today, {name}. Take the wheel and help me out!",
+              "Drag your finger to steer the ferry slowly up to the wooden edge. Don't bump the pier!"
+            ],
+            "choice": "Easy on the throttle, gently in!",
+            "prompt": "Dock the ferry safely for {goal} trips!",
+            "reward": "The fisherman rings the harbour bell: {name} steers the ferry so calmly and safely!",
+            "next": "The pier is always busy with boats. I'll see {name} for the next ferry run."
+          }
         }
       ]
     },
@@ -478,7 +730,19 @@
           "reward": "Khỉ con vỗ tay nhảy tưng tưng: {name} lượn cánh dù êm ái trúng phóc hồng tâm luôn!",
           "next": "Gió đại dương vẫn nâng cánh dù lượn, Khỉ con chờ {name} bay thêm vòng nữa.",
           "who": "{name}, phi công nhảy dù đảo hoang",
-          "learn": "Đoán hướng gió và điều chỉnh tay lái"
+          "learn": "Đoán hướng gió và điều chỉnh tay lái",
+          "en": {
+            "title": "Parachute onto the island with Khỉ Nhảy Dù Đảo Cổ",
+            "summary": "The parachute glides through the windy sky: steer around the gusts to land right on the target.",
+            "lines": [
+              "Soaring up from the top of a palm tree is so much fun! Put on a parachute and fly with me, {name}!",
+              "Check which way the wind blows, then pull the chute that way to land in the middle of the circle."
+            ],
+            "choice": "I'm gliding through the sky!",
+            "prompt": "Steer the parachute to land on target {goal} times on the sand!",
+            "reward": "The little monkey claps and bounces: {name} glided down softly, right on the bullseye!",
+            "next": "The ocean wind still lifts the parachutes. The little monkey is waiting for {name} to fly again."
+          }
         },
         {
           "game": "chain-pop",
@@ -493,7 +757,19 @@
           "reward": "Khỉ con đu cành reo to: cả mặt biển sáng bừng lấp lánh như sao nhờ {name} rồi!",
           "next": "Đáy biển đêm nay vẫn lung linh huyền ảo, Khỉ con chờ {name} quay lại chơi tiếp.",
           "who": "{name}, nhà thám hiểm ánh sáng biển sâu",
-          "learn": "Tìm vị trí trung tâm để tạo phản ứng liên hoàn"
+          "learn": "Tìm vị trí trung tâm để tạo phản ứng liên hoàn",
+          "en": {
+            "title": "Light up a chain of pearls with Khỉ Nhảy Dù",
+            "summary": "Jellyfish flicker under the water: tap one starting point to set off a chain reaction of light.",
+            "lines": [
+              "There's a bunch of glowing jellyfish under the coral reef, {name}! Come and look!",
+              "Tap once where they're most crowded, and the burst of light sets off the whole chain."
+            ],
+            "choice": "I'll set off the chain of light!",
+            "prompt": "Start chain reactions that light up {goal} pearl swarms!",
+            "reward": "The little monkey swings and shouts: the whole sea is sparkling like stars thanks to {name}!",
+            "next": "The seabed shimmers magically tonight. The little monkey hopes {name} will come back to play."
+          }
         },
         {
           "game": "mini-golf",
@@ -508,7 +784,19 @@
           "reward": "Khỉ con gãi đầu cười toe: bóng của {name} lăn lượn một đường rồi tụt tọt vào lỗ!",
           "next": "Sân cát bờ biển còn nhiều chướng ngại mới, Khỉ con đợi {name} so tài đường gậy.",
           "who": "{name}, tay gôn cừ khôi bờ biển",
-          "learn": "Ước lượng lực kéo và hướng bóng dội lại"
+          "learn": "Ước lượng lực kéo và hướng bóng dội lại",
+          "en": {
+            "title": "Mini golf on the sand with Khỉ Nhảy Dù Đảo Cổ",
+            "summary": "On a bumpy, winding sand course, pull back to set the power and bank the ball off the walls into the hole.",
+            "lines": [
+              "I just made a mini golf course around the palm tree, {name}! Let's play a round!",
+              "Pull back to wind up, then let go, but not too hard or the ball will jump the hole."
+            ],
+            "choice": "I'm lining up my putt!",
+            "prompt": "Sink the ball and score {goal} brilliant points!",
+            "reward": "The little monkey grins: {name}'s ball curved all the way and dropped right into the hole!",
+            "next": "The beach course has new obstacles. The little monkey is waiting for {name} to play another round."
+          }
         }
       ]
     }

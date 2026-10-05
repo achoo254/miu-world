@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 50,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Plough and Claim",
+    "howTo": [
+      "Hold your finger and {name}'s tractor follows. Outside your own field it leaves a trail.",
+      "Loop back to your field and everything inside the loop becomes yours.",
+      "If a buffalo crosses your trail it breaks and the tractor goes home. Claim half the field!"
+    ]
+  }
 }

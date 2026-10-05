@@ -46,7 +46,19 @@
         {
           "text": "Kéo búa bao sẵn sàng, tớ phản xạ ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Let us play oẳn tù tì and see who is quicker, {name}. I have a very special rule!",
+          "When the board says Win, pick the hand that beats mine; when it says Lose, pick the hand that loses."
+        ],
+        "choices": [
+          {
+            "text": "Rock, paper, scissors, ready!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ra tay chính xác liên tiếp mười hai lượt oẳn tù tì nhé!",
       "game": "oan-tu-xi",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Quick-Witted Rock Paper Scissors",
+        "prompt": "Throw the right hand 12 rounds in a row!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thỏ Măng Non lắc tai trầm trồ: đầu óc {name} nhảy số nhanh ghê, chẳng nhầm chữ nào!"
+      "text": "Thỏ Măng Non lắc tai trầm trồ: đầu óc {name} nhảy số nhanh ghê, chẳng nhầm chữ nào!",
+      "en": {
+        "title": "Reward",
+        "text": "Thỏ Măng Non twitches her ears in awe: {name} thinks so fast and never mixes up a word!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Trò oẳn tù tì rèn trí óc siêu vui, {name} quay lại hành lang trước hội trường đấu tiếp nha."
+      "text": "Trò oẳn tù tì rèn trí óc siêu vui, {name} quay lại hành lang trước hội trường đấu tiếp nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "Oẳn tù tì is a great brain workout, {name}, so come back to the hall corridor for more."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Quick-thinking rock-paper-scissors with Thỏ Măng Non",
+    "summary": "Hands flash scissors, rock and paper: read the win or lose word fast and throw exactly the right hand."
   }
 }

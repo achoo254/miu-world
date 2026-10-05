@@ -9,5 +9,12 @@
   "controls": ["tap", "hold"],
   "duration": 90,
   "goal": 300,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Pinball",
+    "howTo": [
+      "Tap the left half of the screen for the left flipper, the right half for the right one.",
+      "{name} keeps the ball on the table and hits the bells and stars. You have three balls."
+    ]
+  }
 }

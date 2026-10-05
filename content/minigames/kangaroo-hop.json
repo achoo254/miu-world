@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 12,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Kangaroo number-line hops",
+    "howTo": [
+      "The kangaroo hops evenly, each hop exactly the number on the sign.",
+      "{name}, tap the stone where the kangaroo will land to put a carrot there first!"
+    ]
+  }
 }

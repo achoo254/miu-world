@@ -9,5 +9,12 @@
   "controls": ["drag"],
   "duration": 60,
   "goal": 100,
-  "params": { "wind": 1 }
+  "params": { "wind": 1 },
+  "en": {
+    "name": "Fly a kite",
+    "howTo": [
+      "Hold and drag your finger left and right to steer the kite.",
+      "Inside a gust of wind the kite soars. {name}, dodge the branches and birds!"
+    ]
+  }
 }

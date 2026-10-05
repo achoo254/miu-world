@@ -10,5 +10,13 @@
   "controls": ["swipe"],
   "duration": 58,
   "goal": 36,
-  "params": { "tempo": 1 }
+  "params": { "tempo": 1 },
+  "en": {
+    "name": "Lion dance drums",
+    "howTo": [
+      "Arrows rise to the circle: swipe the arrow's way as it enters the circle.",
+      "Swipe on the drumbeat and the lion dances along with {name}!",
+      "Right on the beat is 2 points, slightly off is 1."
+    ]
+  }
 }

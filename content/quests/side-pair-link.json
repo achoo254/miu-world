@@ -46,7 +46,19 @@
         {
           "text": "Tớ tìm ra cặp đầu rồi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Oh look, {name}! My picture board needs someone with sharp eyes to link it up!",
+          "Tap two matching pictures. The link may bend only twice and cannot cross other pictures."
+        ],
+        "choices": [
+          {
+            "text": "I already found the first pair!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nối được mười hai cặp hình giống nhau nhé!",
       "game": "pair-link",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Link the Twins",
+        "prompt": "Link 12 pairs of matching pictures!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bảng hình sạch trơn, Nai Trí Nhớ khen {name} nhìn nhanh như gió!"
+      "text": "Bảng hình sạch trơn, Nai Trí Nhớ khen {name} nhìn nhanh như gió!",
+      "en": {
+        "title": "Reward",
+        "text": "The board is spotless, and Nai Trí Nhớ says {name} spots things as quick as the wind!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cầu đá bên hồ luôn có tớ với bảng hình mới, nhớ quay lại nha."
+      "text": "Cầu đá bên hồ luôn có tớ với bảng hình mới, nhớ quay lại nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "I am always at the stone bridge by the lake with a new board, so do come back."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Linking matching pictures with Nai Trí Nhớ",
+    "summary": "A board is packed with pictures; find two that match and link them with a path that bends only a few times."
   }
 }

@@ -10,5 +10,13 @@
   "controls": ["swipe"],
   "duration": 90,
   "goal": 64,
-  "params": { "size": 4 }
+  "params": { "size": 4 },
+  "en": {
+    "name": "Double Merge",
+    "howTo": [
+      "Swipe up, down, left or right: every number tile slides that way.",
+      "Two equal tiles that bump merge: 2 + 2 = 4, 4 + 4 = 8… Can {name} make a 64 tile?",
+      "When the board fills up, only the biggest tile stays and you keep playing."
+    ]
+  }
 }

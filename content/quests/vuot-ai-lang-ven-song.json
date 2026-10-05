@@ -46,7 +46,21 @@
       ],
       "choices": [
         { "text": "Đố chữ thì tớ không sợ!", "reply": "Giỏi quá! Nhưng nhớ hái sen ở mép đầm trước, hội thả đèn cần sen mà." }
-      ]
+      ],
+      "en": {
+        "title": "Vịt Con tells the tale",
+        "goTo": "Go to the reedy edge of the pond, Vịt Con Lạch Bạch is quacking away",
+        "lines": [
+          "Quack quack! {name}, the village festival's basket of lotus lanterns is sitting beside Trâu Đen the word-riddle buffalo, under the kapok tree.",
+          "He's very gentle but crazy about word riddles; until someone answers all seven, he won't hand over the lantern basket."
+        ],
+        "choices": [
+          {
+            "text": "Word riddles don't scare me!",
+            "reply": "Great! But remember to pick lotus flowers at the edge of the pond first, the lantern festival needs them."
+          }
+        ]
+      }
     },
     {
       "id": "hai-sen",
@@ -162,7 +176,25 @@
           "text": "Khẽ gọi «Bác Trâu ơi!»",
           "consequence": "Trâu Đen dụi mắt: cháu lễ phép quá, bác ra câu đố ngay đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Waking Trâu Đen",
+        "prompt": "Trâu Đen is having an afternoon nap under the kapok tree. How will {name} wake him up?",
+        "choices": [
+          {
+            "text": "Sing a cheerful nursery rhyme",
+            "consequence": "Trâu Đen opens his eyes, flicks his ears to the beat and gives a hearty chuckle."
+          },
+          {
+            "text": "Offer him a bundle of fresh grass",
+            "consequence": "Uncle Buffalo munches the grass happily, wide awake now and ready with his riddles."
+          },
+          {
+            "text": "Softly call «Uncle Buffalo!»",
+            "consequence": "Trâu Đen rubs his eyes: such good manners, I'll give you a riddle right away!"
+          }
+        ]
+      }
     },
     {
       "id": "tran-trum",
@@ -261,14 +293,22 @@
       "title": "Giỏ đèn hoa sen",
       "kind": "reward",
       "target": "trum-lvs-gio-den",
-      "text": "Trâu Đen dùng sừng đẩy giỏ đèn hoa sen tới chân {name}. Đèn nào cũng xinh xắn, đáy giỏ còn có XP, xu và điểm kỹ năng bác gửi tặng."
+      "text": "Trâu Đen dùng sừng đẩy giỏ đèn hoa sen tới chân {name}. Đèn nào cũng xinh xắn, đáy giỏ còn có XP, xu và điểm kỹ năng bác gửi tặng.",
+      "en": {
+        "title": "The lotus lantern basket",
+        "text": "Trâu Đen nudges the lotus lantern basket to {name}'s feet with his horns. Every lantern is lovely, and at the bottom of the basket lie his gifts of XP, coins and skill points."
+      }
     },
     {
       "id": "tha-den-dem-trang",
       "title": "Thả đèn đêm trăng",
       "kind": "next",
       "trigger": "auto",
-      "text": "Trăng lên tròn vành vạnh, cả làng thả đèn hoa sen lung linh khắp đầm. Cún Lúa rủ {name} ra bến đò nghe các bác hò khoan."
+      "text": "Trăng lên tròn vành vạnh, cả làng thả đèn hoa sen lung linh khắp đầm. Cún Lúa rủ {name} ra bến đò nghe các bác hò khoan.",
+      "en": {
+        "title": "Floating lanterns under the moon",
+        "text": "The moon rises round and full, and the whole village floats twinkling lotus lanterns across the pond. Cún Lúa invites {name} down to the ferry landing to hear the boatmen's rowing songs."
+      }
     }
   ],
   "reward": {

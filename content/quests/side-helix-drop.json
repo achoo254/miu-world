@@ -46,7 +46,19 @@
         {
           "text": "Cháu xoay tháp dẫn bóng rơi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hello, {name}! The royal guard is checking the signal path from the top of the spiral tower to the ground.",
+          "Swipe sideways to spin the tower so a gap sits under the ball, and keep the ball off the red strips."
+        ],
+        "choices": [
+          {
+            "text": "I'll spin the tower and drop the ball!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Dẫn bóng rơi an toàn qua hai mươi tầng tháp xoắn ốc nhé!",
       "game": "helix-drop",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Helix tower drop",
+        "prompt": "Guide the ball safely down 20 levels of the spiral tower!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ngự Lâm Quân Tháp Cao giơ giáo chào: {name} xoay tháp vô cùng điệu nghệ và chuẩn xác!"
+      "text": "Ngự Lâm Quân Tháp Cao giơ giáo chào: {name} xoay tháp vô cùng điệu nghệ và chuẩn xác!",
+      "en": {
+        "title": "Reward",
+        "text": "Ngự Lâm Quân Tháp Cao raises his spear: {name} spins the tower with real skill and precision!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tín hiệu tháp canh đã thông suốt, cháu cứ thoải mái ghé chân tháp góc thành lâu đài dạo chơi."
+      "text": "Tín hiệu tháp canh đã thông suốt, cháu cứ thoải mái ghé chân tháp góc thành lâu đài dạo chơi.",
+      "en": {
+        "title": "See you soon",
+        "text": "The watchtower signal runs clear now. Feel free to visit the castle's corner tower any time."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Helix Tower Drop with Ngự Lâm Quân Tháp Cao",
+    "summary": "A many-levelled spiral watchtower; turn it so the gaps line up and the ball drops safely to the bottom."
   }
 }

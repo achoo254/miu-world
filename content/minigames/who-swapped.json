@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 8,
-  "params": { "look": 3 }
+  "params": { "look": 3 },
+  "en": {
+    "name": "Who Swapped Places?",
+    "howTo": [
+      "Look closely at the stall. The curtain drops and rises, and two things have swapped places.",
+      "{name}, tap the two things that swapped."
+    ]
+  }
 }

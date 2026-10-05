@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 4,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Light-Up Circuit",
+    "howTo": [
+      "{name} drags wires from one metal dot to another to connect the battery, switch and bulbs.",
+      "The circuit must loop from + through the bulbs back to −. Tap the switch to close it.",
+      "Leaves don't carry electricity. Light every bulb for a point."
+    ]
+  }
 }

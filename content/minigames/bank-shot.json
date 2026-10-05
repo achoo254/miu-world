@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 60,
   "goal": 8,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Bounce shot",
+    "howTo": [
+      "Bear stands behind a stack of crates, out of reach of a straight throw.",
+      "Drag to aim along the dotted line, let go to throw. Balls bounce off walls, ceiling and crates.",
+      "{name} has 12 balls: bounce them into your friend's paws!"
+    ]
+  }
 }

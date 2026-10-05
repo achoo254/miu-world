@@ -46,7 +46,19 @@
         {
           "text": "Cháu cầm xẻng đào kho báu ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Here's my ancient treasure chart, {name}! Quick, count the steps with your captain!",
+          "Look closely at the steps and the arrows, then tap the patch where the treasure is buried."
+        ],
+        "choices": [
+          {
+            "text": "I'll grab a shovel and dig!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Lần theo bản đồ tìm ra sáu rương báu quý giá trên đảo nhé!",
       "game": "treasure-map-steps",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Follow the Treasure Map",
+        "prompt": "Follow the map to find 6 precious chests on the island!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Vẹt Biển vỗ cánh phần phật: mắt cháu {name} tinh anh như chim ưng biển vậy!"
+      "text": "Vẹt Biển vỗ cánh phần phật: mắt cháu {name} tinh anh như chim ưng biển vậy!",
+      "en": {
+        "title": "Reward",
+        "text": "Vẹt Biển flaps his wings: {name} has eyes as sharp as a sea eagle!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Kho báu trên đảo hoang còn nhiều vô kể, thuyền trưởng đợi {name} trước lều nhé."
+      "text": "Kho báu trên đảo hoang còn nhiều vô kể, thuyền trưởng đợi {name} trước lều nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "This desert island holds countless treasures. The captain will wait for {name} by his tent."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Follow the old map with Thuyền Trưởng Vẹt Biển",
+    "summary": "The old map shows a mysterious route: count the steps along each arrow to dig up the golden chest."
   }
 }

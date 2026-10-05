@@ -46,7 +46,19 @@
         {
           "text": "Trộn màu phép thuật, biến hóa tranh hoa!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Meow meow! The flower garden painting is missing lots of bright colours, {name}.",
+          "Tap two paint pots to blend them into exactly the colour the painting needs."
+        ],
+        "choices": [
+          {
+            "text": "Magic mixing, a blooming picture!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Pha đúng công thức mười màu sắc mới nhé!",
       "game": "color-mix",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Mix the colours",
+        "prompt": "Mix 10 new colours by the right recipe!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mèo Vẽ Màu giơ bảng pha màu khen: {name} am hiểu màu sắc ghê, tranh vẽ rực rỡ hẳn lên!"
+      "text": "Mèo Vẽ Màu giơ bảng pha màu khen: {name} am hiểu màu sắc ghê, tranh vẽ rực rỡ hẳn lên!",
+      "en": {
+        "title": "Reward",
+        "text": "Mèo Vẽ Màu holds up the palette: {name} knows colours so well, the painting is glowing!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Phòng mĩ thuật luôn mở rộng cửa đón chào, {name} ghé thăm Mèo Vẽ Màu bất cứ lúc nào nha."
+      "text": "Phòng mĩ thuật luôn mở rộng cửa đón chào, {name} ghé thăm Mèo Vẽ Màu bất cứ lúc nào nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "The art room door is always open, {name}, so visit Mèo Vẽ Màu any time."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Mixing paints with Mèo Vẽ Màu",
+    "summary": "A bright, colourful palette: tap two basic paint pots to blend them into a brand-new colour."
   }
 }

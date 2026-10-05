@@ -46,7 +46,19 @@
         {
           "text": "Tay tớ nhanh thoăn thoắt này!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "This cup-stacking race is so exciting! {name}, race me with your speedy hands!",
+          "Set the two bottom cups first, then the top cup. When the tower's done, stack it down fast."
+        ],
+        "choices": [
+          {
+            "text": "My hands are super speedy!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Dựng rồi thu gọn nhanh nhẹn hai mươi tư lượt tháp cốc liên tiếp nhé!",
       "game": "cup-stacking",
-      "goal": 24
+      "goal": 24,
+      "en": {
+        "title": "Speed cup stacking",
+        "prompt": "Build and stack down 24 cup towers in a row!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bé Gấp Giấy tròn xoe mắt: những ngón tay của {name} lướt trên cốc nhanh như bay!"
+      "text": "Bé Gấp Giấy tròn xoe mắt: những ngón tay của {name} lướt trên cốc nhanh như bay!",
+      "en": {
+        "title": "Reward",
+        "text": "Bé Gấp Giấy's eyes go round: {name}'s fingers fly across the cups!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bộ cốc nhiều màu vẫn bày trên chiếu, bạn rảnh thì ghé đua xếp cốc với tớ nha."
+      "text": "Bộ cốc nhiều màu vẫn bày trên chiếu, bạn rảnh thì ghé đua xếp cốc với tớ nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "The colourful cups are still on the mat. Drop by for a stacking race when you're free."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Cup Stacking Race with Bé Gấp Giấy Vui",
+    "summary": "Colourful cups sit neatly in rows; tap fast to build a tower, then stack it down without knocking it over."
   }
 }

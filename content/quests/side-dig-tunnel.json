@@ -46,7 +46,19 @@
         {
           "text": "Tớ đào nhẹ tay thôi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "There are sparkling gems under the old temple floor, {name}. Let's tunnel down together!",
+          "Dig away the earth under a boulder and it'll fall, so keep well clear."
+        ],
+        "choices": [
+          {
+            "text": "I'll dig gently!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Lấy được mười viên ngọc dưới lòng đất nhé!",
       "game": "dig-tunnel",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Dig for gems",
+        "prompt": "Collect 10 gems from underground!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Trúc Thám Hiểm lau kính reo lên: {name} đào giỏi như chuột chũi!"
+      "text": "Gấu Trúc Thám Hiểm lau kính reo lên: {name} đào giỏi như chuột chũi!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Trúc Thám Hiểm wipes his glasses and cheers: {name} digs like a mole!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Dưới đất còn ngọc ngủ say, Gấu Trúc chờ {name} ở cổng khu di tích."
+      "text": "Dưới đất còn ngọc ngủ say, Gấu Trúc chờ {name} ở cổng khu di tích.",
+      "en": {
+        "title": "See you soon",
+        "text": "More gems are sleeping underground. Gấu Trúc will wait for {name} at the ruins gate."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Tunnel for gems with Gấu Trúc Thám Hiểm",
+    "summary": "Drag your finger to dig tunnels for gems, carefully, so the boulders above don't fall on you."
   }
 }

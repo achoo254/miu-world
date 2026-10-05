@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 120,
   "goal": 1,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Dots and boxes",
+    "howTo": [
+      "{name} and Owl take turns tapping to join two dots with a line.",
+      "Close a box to claim it and go again. Whoever has more boxes wins the game!"
+    ]
+  }
 }

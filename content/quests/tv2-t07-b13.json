@@ -76,7 +76,27 @@
           "text": "Hồi mới vào lớp, tớ cũng nhớ nhà như cậu.",
           "reply": "Thật hả? Thế tại sao bây giờ cậu cười tươi như hoa thế?"
         }
-      ]
+      ],
+      "en": {
+        "title": "Ri alone at break time",
+        "goTo": "Go to the playground, Gà Con Ri is huddled under the flame tree by the swings",
+        "lines": [
+          "Cheep… {name}, why is break time so long? Why can't Mother Hen be in my class with me?",
+          "Ri only moved to our school on Monday. In one morning she asked “why” forty times.",
+          "Forty-one times! I miss my straw nest at home so much. Why does everyone say they love school?",
+          "The fun at school likes to hide around the playground. Go and find it."
+        ],
+        "choices": [
+          {
+            "text": "Let's go and find the fun together!",
+            "reply": "Okay, let's go! But why does fun have to hide?"
+          },
+          {
+            "text": "When I first started school, I missed home just like you.",
+            "reply": "Really? Then why are you smiling like a flower now?"
+          }
+        ]
+      }
     },
     {
       "id": "tim-niem-vui",
@@ -553,7 +573,26 @@
           "text": "Heo Bột kể chuyện bữa trưa đi!",
           "reply": "Ụt ịt, có ngay! Chuyện về món ăn của biển và của đồi núi đấy."
         }
-      ]
+      ],
+      "en": {
+        "title": "Heo Bột calls everyone to lunch",
+        "goTo": "Follow the smell of rice to the school canteen, Heo Bột is clanging a ladle",
+        "lines": [
+          "Oink oink! The drum says it's lunchtime! Today there are rice balls, braised fish and squash soup; the whole schoolyard smells delicious.",
+          "Why do we have to eat lunch at school? At home, my mum roasts lovely toasty grain.",
+          "Because eating with friends makes every bite twice as tasty! I tested it, I had two whole bowls. Oink oink!"
+        ],
+        "choices": [
+          {
+            "text": "Sit next to me for lunch, Ri!",
+            "reply": "Sitting next to you, okay! But why did Heo Bột eat two bowls?"
+          },
+          {
+            "text": "Tell us a lunchtime story, Heo Bột!",
+            "reply": "Oink oink, coming right up! It's about food from the sea and food from the hills."
+          }
+        ]
+      }
     },
     {
       "id": "xep-tranh-bua-trua",
@@ -727,14 +766,22 @@
       "title": "Chiếc lông tơ vàng của Ri",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ri tặng {name} một chiếc lông tơ vàng làm thẻ kẹp sách, kèm lời hứa: mai tớ đến trường sớm nhất lớp! Heo Bột dúi thêm một nắm cơm, phòng khi {name} đói giữa đường."
+      "text": "Ri tặng {name} một chiếc lông tơ vàng làm thẻ kẹp sách, kèm lời hứa: mai tớ đến trường sớm nhất lớp! Heo Bột dúi thêm một nắm cơm, phòng khi {name} đói giữa đường.",
+      "en": {
+        "title": "Ri's golden fluff feather",
+        "text": "Ri gives {name} a golden fluffy feather to use as a bookmark, with a promise: tomorrow I'll be first to school! Heo Bột slips in a rice ball too, in case {name} gets hungry on the way."
+      }
     },
     {
       "id": "mo-bai-14",
       "title": "Tiếng ối trong phòng mĩ thuật",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ phòng mĩ thuật cạnh sân chơi vọng ra một tiếng \"ối!\": Cáo Cọ lại nhúng nhầm đuôi vào chậu nước rửa cọ. Lần này bạn ấy còn kêu ầm lên rằng hộp màu vẽ trống trơn rồi!"
+      "text": "Từ phòng mĩ thuật cạnh sân chơi vọng ra một tiếng \"ối!\": Cáo Cọ lại nhúng nhầm đuôi vào chậu nước rửa cọ. Lần này bạn ấy còn kêu ầm lên rằng hộp màu vẽ trống trơn rồi!",
+      "en": {
+        "title": "An “eek!” in the art room",
+        "text": "An “eek!” rings out from the art room by the playground: Cáo Cọ has dipped her tail into the brush-washing pot by mistake again. And this time she's wailing that her paint box is completely empty!"
+      }
     }
   ],
   "reward": {

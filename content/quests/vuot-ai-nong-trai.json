@@ -45,7 +45,21 @@
       ],
       "choices": [
         { "text": "Nông sản ở đâu, tớ đi gom ngay!", "reply": "Ở ruộng gặt nhỏ ấy, mọi người gặt dở thì trời đổ mưa nên bỏ lại cả." }
-      ]
+      ],
+      "en": {
+        "title": "Thỏ Trắng is worried",
+        "goTo": "Go to the mustard-green bed, Thỏ Trắng Trồng Rau is gazing towards the haystack",
+        "lines": [
+          "{name}, the Giant Young Rooster has carried the harvest gong up onto the haystack. Until the gong is struck, the harvest festival can't begin!",
+          "He says he'll only give it back to someone who brings enough produce to celebrate and is better at sums than he is."
+        ],
+        "choices": [
+          {
+            "text": "Where's the produce? I'll gather it right now!",
+            "reply": "In the little harvest field; everyone was halfway through reaping when it poured with rain, so they left it all behind."
+          }
+        ]
+      }
     },
     {
       "id": "gom-nong-san",
@@ -162,7 +176,25 @@
           "text": "Gáy thử một tiếng ò ó o",
           "consequence": "Gà Trống cười nghiêng ngả: tiếng gáy của {name} non quá, nhưng gan dạ lắm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Greeting the Young Rooster",
+        "prompt": "The Rooster is puffing out his chest on the haystack, crowing cock-a-doodle-doo. How does {name} greet him?",
+        "choices": [
+          {
+            "text": "Praise his crow as the loudest on the farm",
+            "consequence": "The Rooster is thrilled and spreads his bright red wings: with praise like that, I'll have to give you a proper quiz!"
+          },
+          {
+            "text": "Offer the produce to celebrate the harvest",
+            "consequence": "The Rooster pecks at a grain of rice and nods: this year's rice is nice and plump."
+          },
+          {
+            "text": "Try a cock-a-doodle-doo yourself",
+            "consequence": "The Rooster laughs so hard he wobbles: {name}'s crow is very young, but very brave!"
+          }
+        ]
+      }
     },
     {
       "id": "tran-trum",
@@ -261,14 +293,22 @@
       "title": "Chiêng mùa vang lên",
       "kind": "reward",
       "target": "trum-ntr-ga-trong",
-      "text": "Gà Trống thả chiếc chiêng vào tay {name}. Boong boong! Cả nông trại reo hò, giỏ quà mùa gặt đầy XP, xu và điểm kỹ năng."
+      "text": "Gà Trống thả chiếc chiêng vào tay {name}. Boong boong! Cả nông trại reo hò, giỏ quà mùa gặt đầy XP, xu và điểm kỹ năng.",
+      "en": {
+        "title": "The harvest gong rings",
+        "text": "The Rooster drops the gong into {name}'s hands. Bong bong! The whole farm cheers, and the harvest gift basket is full of XP, coins and skill points."
+      }
     },
     {
       "id": "hoi-gat-bat-dau",
       "title": "Hội gặt bắt đầu",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tiếng chiêng lan khắp cánh đồng, Gà Trống Choai gáy mừng một hồi dài. Bò Sữa Mơ mời {name} ra ruộng gặt lúa và ăn cơm mới cùng cả nông trại."
+      "text": "Tiếng chiêng lan khắp cánh đồng, Gà Trống Choai gáy mừng một hồi dài. Bò Sữa Mơ mời {name} ra ruộng gặt lúa và ăn cơm mới cùng cả nông trại.",
+      "en": {
+        "title": "The harvest festival begins",
+        "text": "The gong's boom spreads across the fields, and the Young Rooster crows a long celebration. Bò Sữa Mơ invites {name} into the paddy to reap rice and eat new-harvest rice with the whole farm."
+      }
     }
   ],
   "reward": {

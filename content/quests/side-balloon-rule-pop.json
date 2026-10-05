@@ -46,7 +46,19 @@
         {
           "text": "Tớ nhìn kỹ bảng rồi mới nổ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Look, {name}! Balloons of every colour are rising into the sky!",
+          "Only pop the colour the sign up top names. Pop the wrong one and you lose points."
+        ],
+        "choices": [
+          {
+            "text": "I will check the sign before popping!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nổ đúng màu được ba mươi điểm nhé!",
       "game": "balloon-rule-pop",
-      "goal": 30
+      "goal": 30,
+      "en": {
+        "title": "Pop on command",
+        "prompt": "Score 30 points popping the right colours!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Lân Con Rộn Ràng tung kim tuyến: mắt {name} tinh quá, chẳng nổ nhầm quả nào!"
+      "text": "Lân Con Rộn Ràng tung kim tuyến: mắt {name} tinh quá, chẳng nổ nhầm quả nào!",
+      "en": {
+        "title": "Reward",
+        "text": "Lân Con Rộn Ràng throws glitter: {name} has such sharp eyes, not one wrong pop!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bóng bay mới vừa thổi xong, quay lại chơi với tớ lúc nào cũng được."
+      "text": "Bóng bay mới vừa thổi xong, quay lại chơi với tớ lúc nào cũng được.",
+      "en": {
+        "title": "See you soon",
+        "text": "I just blew up a fresh batch of balloons, so come play with me any time."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Pop the balloons on command with Lân Con Rộn Ràng",
+    "summary": "Balloons of every colour float up; the sign above says which colour to pop, and it changes every ten seconds."
   }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Tớ lái máy cắt cỏ đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The grass around the garden is way too tall. {name}, take the mower!",
+          "Cover every grass square without going back over a cut one. Plan your path first!"
+        ],
+        "choices": [
+          {
+            "text": "Mower ready, let's go!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Cắt gọn gàng ba bãi cỏ nhé!",
       "game": "lawn-mower",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "One-stroke mowing",
+        "prompt": "Mow 3 lawns nice and neat!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thỏ Làm Vườn lăn tròn trên cỏ: bãi cỏ {name} cắt mượt như thảm!"
+      "text": "Thỏ Làm Vườn lăn tròn trên cỏ: bãi cỏ {name} cắt mượt như thảm!",
+      "en": {
+        "title": "Reward",
+        "text": "Thỏ Làm Vườn rolls on the grass: {name} mowed it smooth as a carpet!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tuần sau cỏ lại cao, Thỏ hẹn {name} ở lối đi cạnh vườn rau."
+      "text": "Tuần sau cỏ lại cao, Thỏ hẹn {name} ở lối đi cạnh vườn rau.",
+      "en": {
+        "title": "See you soon",
+        "text": "The grass will be tall again next week. Thỏ will meet {name} on the path by the veggie garden."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "One-Stroke Mowing with Thỏ Làm Vườn",
+    "summary": "Drive the mower over every square of grass without crossing a square twice, avoiding flower beds and rocks."
   }
 }

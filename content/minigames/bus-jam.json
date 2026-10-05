@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 8,
-  "params": { "bench": 5 }
+  "params": { "bench": 5 },
+  "en": {
+    "name": "All aboard the bus",
+    "howTo": [
+      "Each bus takes only riders of its own colour, three per bus.",
+      "{name}, tap a rider with a clear path upward: they board the bus, or go to a waiting seat if it isn't theirs.",
+      "There are only five waiting seats. Fill them all and the stop starts over."
+    ]
+  }
 }

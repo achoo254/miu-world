@@ -46,7 +46,19 @@
         {
           "text": "Cháu canh mực nước cho!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Look at the terraces, {name}! The stream is flowing down, but the gates aren't opening evenly.",
+          "Tap to open a gate until the water reaches the edge of the young rice, then quickly close it."
+        ],
+        "choices": [
+          {
+            "text": "I'll watch the water level!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Điều tiết đủ nước cho mười hai thửa ruộng bậc thang nhé!",
       "game": "paddy-water",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Terrace Field Gates",
+        "prompt": "Give 12 terraced paddies just the right water!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chú Đào Kênh Dẫn Nước khen {name} giữ mực nước cho cánh đồng chuẩn xác phi thường!"
+      "text": "Chú Đào Kênh Dẫn Nước khen {name} giữ mực nước cho cánh đồng chuẩn xác phi thường!",
+      "en": {
+        "title": "Reward",
+        "text": "Chú Đào Kênh Dẫn Nước praises {name} for keeping the field's water level amazingly exact!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ruộng lúa no nước xanh rờn, hôm nào nước về chú lại đợi cháu dưới cối xay gió."
+      "text": "Ruộng lúa no nước xanh rờn, hôm nào nước về chú lại đợi cháu dưới cối xay gió.",
+      "en": {
+        "title": "See you soon",
+        "text": "The rice is lush with water. When the water comes, I'll wait for you beneath the windmill."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Terrace Water Control with Chú Đào Kênh",
+    "summary": "Winding rice terraces wait for water; open each sluice gate so every step gets just enough."
   }
 }

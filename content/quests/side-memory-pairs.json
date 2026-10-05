@@ -46,7 +46,19 @@
         {
           "text": "Tớ nhớ dai lắm đấy!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hey {name}, I have a set of instrument picture cards lying face down here.",
+          "Flip two cards. If they match, you win a pair; if not, remember where they were for next time."
+        ],
+        "choices": [
+          {
+            "text": "I have a great memory!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Tìm đủ sáu cặp hình giống nhau nhé!",
       "game": "memory-pairs",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Flip and Match",
+        "prompt": "Find 6 matching pairs!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Trúc Đàn Phím gõ một nốt thật vang: trí nhớ của {name} siêu quá!"
+      "text": "Gấu Trúc Đàn Phím gõ một nốt thật vang: trí nhớ của {name} siêu quá!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Trúc Đàn Phím plays one big ringing note: what a memory you have, {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bộ thẻ của tớ còn nhiều hình nữa, lúc nào rảnh lại lật cùng tớ nhé."
+      "text": "Bộ thẻ của tớ còn nhiều hình nữa, lúc nào rảnh lại lật cùng tớ nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "My deck has lots more pictures, so come flip cards with me whenever you are free."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Flip-and-match cards with Gấu Trúc Đàn Phím",
+    "summary": "Cards lie face down on a stone table; flip two at a time and remember where each picture hides to find the pairs."
   }
 }

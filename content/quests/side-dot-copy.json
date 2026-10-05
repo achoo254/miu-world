@@ -46,7 +46,19 @@
         {
           "text": "Đưa tớ bút chì nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Oh {name}, I have some lovely model pictures that nobody has copied yet.",
+          "Look at the model, then drag from one dot to the next until every line is there."
+        ],
+        "choices": [
+          {
+            "text": "Pass me a pencil!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Vẽ lại đúng bốn hình mẫu nhé!",
       "game": "dot-copy",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Copy on the dot grid",
+        "prompt": "Copy 4 model pictures exactly!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Trúc Bút Chì ôm tranh vào lòng: {name} vẽ giống hệt mẫu luôn!"
+      "text": "Gấu Trúc Bút Chì ôm tranh vào lòng: {name} vẽ giống hệt mẫu luôn!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Trúc Bút Chì hugs the drawing: {name} copied it perfectly!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tớ sẽ nghĩ thêm hình mới, nhớ ra vườn trường vẽ tiếp với tớ."
+      "text": "Tớ sẽ nghĩ thêm hình mới, nhớ ra vườn trường vẽ tiếp với tớ.",
+      "en": {
+        "title": "See you soon",
+        "text": "I will think up new pictures, so come draw with me in the school garden again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Drawing on the dot grid with Gấu Trúc Bút Chì",
+    "summary": "A board has a dot grid with a model picture beside it: join the dots to copy the picture exactly."
   }
 }

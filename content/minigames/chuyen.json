@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 5,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Chơi chuyền (ball and sticks)",
+    "howTo": [
+      "Tap the ball to toss it up. While it's in the air, {name} taps sticks on the mat to pick them up.",
+      "Round 1 picks one stick, round 2 picks two… then tap the ball as it comes down to catch it.",
+      "If the ball drops, play that round again!"
+    ]
+  }
 }

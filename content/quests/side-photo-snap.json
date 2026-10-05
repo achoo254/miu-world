@@ -46,7 +46,19 @@
         {
           "text": "Máy ảnh sẵn sàng rồi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "This jungle is full of shy animals, {name}. Bring the camera and come with me!",
+          "There are only twelve shots on the roll, so wait till an animal is fully out before you snap."
+        ],
+        "choices": [
+          {
+            "text": "Camera's ready!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chụp được sáu tấm ảnh thú thật rõ nhé!",
       "game": "photo-snap",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Animal Snapshots",
+        "prompt": "Take 6 sharp photos of the animals!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khỉ Hái Dừa ngắm ảnh mãi: {name} chụp đẹp như nhiếp ảnh gia!"
+      "text": "Khỉ Hái Dừa ngắm ảnh mãi: {name} chụp đẹp như nhiếp ảnh gia!",
+      "en": {
+        "title": "Reward",
+        "text": "Khỉ Hái Dừa can't stop looking at them: {name} takes photos like a real photographer!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Còn nhiều bạn thú chưa ai chụp, {name} quay lại rừng với Khỉ nhé."
+      "text": "Còn nhiều bạn thú chưa ai chụp, {name} quay lại rừng với Khỉ nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Lots of animals still haven't had their picture taken. Come back to the jungle with Khỉ, {name}."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Photograph jungle animals with Khỉ Hái Dừa",
+    "summary": "Animals hide behind bushes and tree stumps: wait until one steps fully into the frame, then snap."
   }
 }

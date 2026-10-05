@@ -10,5 +10,13 @@
   "controls": ["tap", "drag"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Ice sculpture",
+    "howTo": [
+      "The block of ice has a dark blue statue shape inside.",
+      "{name}, tap (or swipe across) the pale ice squares around it to chip them away.",
+      "Chip a dark blue square by mistake and the statue gets a nick. Keep 90% or more for a point."
+    ]
+  }
 }

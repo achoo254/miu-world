@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "The Three-Span Bag",
+    "howTo": [
+      "The magic bird brings the three-span bag. It holds exactly the number written on it.",
+      "{name} taps a gem to put it in the bag, and taps the bag to take the last one out.",
+      "Fill it exactly and the bird flies off: one point. Overfill it and the gems spill out."
+    ]
+  }
 }

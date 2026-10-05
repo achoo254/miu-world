@@ -46,7 +46,19 @@
         {
           "text": "Để tớ chỉnh nốt cho hộp nhạc!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Meow meow, hi {name}! My music box lost a few of its gentle note pins.",
+          "Listen to the sample tune, then set pins on the spinning drum at just the right pitch."
+        ],
+        "choices": [
+          {
+            "text": "Let me tune the music box!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Cắm đúng nốt hoàn thành bốn giai điệu hộp nhạc du dương nhé!",
       "game": "music-box",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Music Box",
+        "prompt": "Pin the right notes to finish 4 sweet music-box tunes!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mèo Hộp Nhạc vẫy đuôi kêu meo meo, khen {name} có đôi tai cảm thụ âm nhạc tuyệt vời!"
+      "text": "Mèo Hộp Nhạc vẫy đuôi kêu meo meo, khen {name} có đôi tai cảm thụ âm nhạc tuyệt vời!",
+      "en": {
+        "title": "Reward",
+        "text": "Mèo Hộp Nhạc swishes her tail and meows: {name} has a wonderful ear for music!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Giai điệu mùa thu ngân vang khắp nơi, cậu ghé bục gỗ sân lễ hội lá vàng nghe đàn nhé."
+      "text": "Giai điệu mùa thu ngân vang khắp nơi, cậu ghé bục gỗ sân lễ hội lá vàng nghe đàn nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Autumn tunes ring out everywhere. Visit the wooden stage at the golden-leaf festival to listen."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "The spinning fairy-tale music box with Mèo Hộp Nhạc",
+    "summary": "A wooden box plays a sweet tune; set each pin on the right note so the box sings."
   }
 }

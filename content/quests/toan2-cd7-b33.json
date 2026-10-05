@@ -71,7 +71,27 @@
           "text": "Lóc Cóc có sao không?",
           "reply": "Lóc Cóc rút mào ra kêu \"bụp\": Không sao, chỉ hơi méo một tí thôi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Every ticket is a sum",
+        "goTo": "Go up onto the great hall stage, where Mr Quang is testing the microphone",
+        "lines": [
+          "Testing, testing... EEEEE! Whoa, the microphone's squealing so loud the curtains are wobbling.",
+          "This afternoon the whole castle is rehearsing the end-of-term show in the great hall. I printed the seat tickets as sums for fun, so you only know your seat number if you work it out.",
+          "But sir, that gust of wind just now blew three stacks of tickets under the seats! I crawled in and got my comb stuck.",
+          "{name}, please pick up the tickets for me. Today is the biggest review of the term, adding and taking away within 20 and then up to 100!"
+        ],
+        "choices": [
+          {
+            "text": "I'll pick up the tickets right away!",
+            "reply": "Mr Quang gives a thumbs up, and the microphone squeals eeee again."
+          },
+          {
+            "text": "Are you all right, Lóc Cóc?",
+            "reply": "Lóc Cóc pops his comb free with a \"pop\": I'm fine, it's just a tiny bit squashed!"
+          }
+        ]
+      }
     },
     {
       "id": "tim-xap-ve",
@@ -988,7 +1008,26 @@
           "text": "Đặt tính thẳng hàng cho chắc",
           "reply": "Gấu Bum: Đơn vị thẳng đơn vị, chục thẳng chục, tớ ghi nhớ rồi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "The prop train",
+        "goTo": "Go to the great hall doors, where Gấu Bum is pushing the prop train",
+        "lines": [
+          "Bum bum! I made a five-carriage prop train for the finale, but I accidentally stuck sums on all the carriages.",
+          "Out in the car park in front of the great hall, every guest's car has a sum on it too. I'm so clumsy, the more I work out the more muddled I get!",
+          "These sums go up to 100. {name}, do you want to work them out in tens in your head, or set them out in columns to be safe?"
+        ],
+        "choices": [
+          {
+            "text": "Work them out in tens, it is faster",
+            "reply": "Gấu Bum: 80 – 20 is 8 tens take away 2 tens, oh, that's easy!"
+          },
+          {
+            "text": "Line them up in columns to be safe",
+            "reply": "Gấu Bum: Ones under ones, tens under tens, I've got it now!"
+          }
+        ]
+      }
     },
     {
       "id": "ket-qua-cac-toa",
@@ -1958,14 +1997,22 @@
       "title": "Huy hiệu tổng duyệt",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Màn nhung kéo lên, cả đại sảnh vỗ tay rào rào. Thầy Quang cài cho {name} huy hiệu \"Người giữ vé vàng\" và thì thầm: lần sau thầy sẽ thử micro nhỏ tiếng hơn."
+      "text": "Màn nhung kéo lên, cả đại sảnh vỗ tay rào rào. Thầy Quang cài cho {name} huy hiệu \"Người giữ vé vàng\" và thì thầm: lần sau thầy sẽ thử micro nhỏ tiếng hơn.",
+      "en": {
+        "title": "Rehearsal badge",
+        "text": "The velvet curtain rises and the whole great hall bursts into applause. Mr Quang pins the \"Golden Ticket Keeper\" badge on {name} and whispers: next time I'll test the microphone more quietly."
+      }
     },
     {
       "id": "phong-nen-hinh-khoi",
       "title": "Phông nền còn trống",
       "kind": "next",
       "trigger": "auto",
-      "text": "Hươu Cao ló đầu qua tấm phông trắng toát sau sân khấu: hình tròn, hình vuông, hình tứ giác bay tứ tung cả rồi, ai dựng phông với tớ đây?"
+      "text": "Hươu Cao ló đầu qua tấm phông trắng toát sau sân khấu: hình tròn, hình vuông, hình tứ giác bay tứ tung cả rồi, ai dựng phông với tớ đây?",
+      "en": {
+        "title": "The backdrop is still blank",
+        "text": "Hươu Cao pokes her head round the snow-white backdrop behind the stage: circles, squares and quadrilaterals have gone flying everywhere, who'll help me build the backdrop?"
+      }
     }
   ],
   "reward": {

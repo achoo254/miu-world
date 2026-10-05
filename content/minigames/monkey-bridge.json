@@ -9,5 +9,12 @@
   "controls": ["drag"],
   "duration": 60,
   "goal": 3,
-  "params": { "wind": 1 }
+  "params": { "wind": 1 },
+  "en": {
+    "name": "Monkey Bridge",
+    "howTo": [
+      "{name} walks across the bamboo bridge alone. Leaning one way? Drag your finger the other way.",
+      "Keep the needle in the green zone so you don't tumble into the stream!"
+    ]
+  }
 }

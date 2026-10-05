@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 8,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Float fishing",
+    "howTo": [
+      "Tap the water to cast your float; close to a fish shadow, the fish bites sooner.",
+      "A small wobble means the fish is just nibbling. When the float sinks, {name}, tap right away to strike!",
+      "Strike too early and the fish swims off. Colourful fish are worth two points."
+    ]
+  }
 }

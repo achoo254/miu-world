@@ -46,7 +46,19 @@
         {
           "text": "Cháu xoay đĩa cho bi lăn ra!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "I've just built a very fine spinning-disc maze lock, {name}.",
+          "Turn the whole maze with your hand so the key marble rolls along the grooves and out."
+        ],
+        "choices": [
+          {
+            "text": "I'll spin the disc and roll it out!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Xoay mê cung dẫn chìa khóa thoát ra bốn lần nhé!",
       "game": "rotating-maze",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Spinning Maze",
+        "prompt": "Turn the maze and roll the key out 4 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bác Thợ Khóa Thành vỗ đùi tấm tắc: bi lăn trơn tru ra ngoài rồi, {name} xoay khéo léo ghê!"
+      "text": "Bác Thợ Khóa Thành vỗ đùi tấm tắc: bi lăn trơn tru ra ngoài rồi, {name} xoay khéo léo ghê!",
+      "en": {
+        "title": "Reward",
+        "text": "Bác Thợ Khóa Thành slaps his knee: the marble rolled right out, {name} turns it so skilfully!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bờ hào nước cạnh cầu đá luôn có nhiều ổ khóa kỳ lạ chờ cháu tới khám phá tiếp đấy."
+      "text": "Bờ hào nước cạnh cầu đá luôn có nhiều ổ khóa kỳ lạ chờ cháu tới khám phá tiếp đấy.",
+      "en": {
+        "title": "See you soon",
+        "text": "The moat bank by the stone bridge always has strange locks waiting for you to explore."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Turn the Maze for the Key with Bác Thợ Khóa Thành",
+    "summary": "Hold a round maze and tilt its rim so the key marble rolls to the star."
   }
 }

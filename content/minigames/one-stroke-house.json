@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "One-Line House",
+    "howTo": [
+      "{name} puts a finger on a dot and drags along the lines, from dot to dot.",
+      "Trace every line exactly once without lifting your finger.",
+      "Lift too soon and the drawing fades, so start again. The glowing dot is a good place to begin."
+    ]
+  }
 }

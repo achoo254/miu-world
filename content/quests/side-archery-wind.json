@@ -46,7 +46,19 @@
         {
           "text": "Đưa cây cung cho tớ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hi {name}! The pine-forest wind is strong today, so archery is tricky.",
+          "Watch the wind arrow and aim the opposite way. Eight arrows, and the bullseye is worth ten!"
+        ],
+        "choices": [
+          {
+            "text": "Hand me the bow!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Bắn được bốn mươi điểm trên bia nhé!",
       "game": "archery-wind",
-      "goal": 40
+      "goal": 40,
+      "en": {
+        "title": "Archery in the wind",
+        "prompt": "Score 40 points on the target!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cáo Cung Thủ giơ cung chào: {name} bắn trúng hồng tâm như hiệp sĩ!"
+      "text": "Cáo Cung Thủ giơ cung chào: {name} bắn trúng hồng tâm như hiệp sĩ!",
+      "en": {
+        "title": "Reward",
+        "text": "Cáo Cung Thủ raises his bow in salute: {name} hit the bullseye like a true knight!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tớ luyện cung ở khu luyện tập mỗi sáng, cậu ghé bắn thêm nhé."
+      "text": "Tớ luyện cung ở khu luyện tập mỗi sáng, cậu ghé bắn thêm nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "I practise archery in the training yard every morning. Drop by for more shots!"
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Archery in the Wind with Cáo Cung Thủ",
+    "summary": "Wooden targets stand on the range by the training yard; the wind pushes arrows aside, so aim against it to hit the centre."
   }
 }

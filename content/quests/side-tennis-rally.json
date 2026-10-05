@@ -46,7 +46,19 @@
         {
           "text": "Để tớ đánh với bạn Khỉ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hey {name}, Khỉ the monkey is looking for someone to play table tennis with!",
+          "Tap when the ball enters the ring around your bat. Tap on one side and the ball goes that way."
+        ],
+        "choices": [
+          {
+            "text": "Let me take on Khỉ!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ghi năm điểm qua bạn Khỉ nhé!",
       "game": "tennis-rally",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Table Tennis Rally",
+        "prompt": "Win 5 points against Khỉ!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hươu Bóng Rổ reo lên: cú đánh của {name} làm bạn Khỉ chạy không kịp!"
+      "text": "Hươu Bóng Rổ reo lên: cú đánh của {name} làm bạn Khỉ chạy không kịp!",
+      "en": {
+        "title": "Reward",
+        "text": "Hươu Bóng Rổ cheers: the shot {name} played was too fast for Khỉ to reach!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bạn Khỉ hẹn phục thù đấy, lúc nào rảnh cứ quay lại bàn bóng nhé."
+      "text": "Bạn Khỉ hẹn phục thù đấy, lúc nào rảnh cứ quay lại bàn bóng nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Khỉ wants a rematch, so come back to the table whenever you are free."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Table tennis with Hươu Bóng Rổ",
+    "summary": "A ping-pong table stands by the court: tap when the ball enters the ring around your bat to hit it far past Khỉ."
   }
 }

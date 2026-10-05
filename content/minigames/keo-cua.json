@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 60,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Kéo cưa lừa xẻ (sawing song)",
+    "howTo": [
+      "{name} and Bear saw together. The faint saw shows where Bear is pulling to.",
+      "Hold your finger and drag back and forth to match the faint saw: a green saw means you're in rhythm.",
+      "Pull against the rhythm and the saw sticks. Each log sawn through is a point."
+    ]
+  }
 }

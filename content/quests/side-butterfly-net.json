@@ -46,7 +46,19 @@
         {
           "text": "Tớ nhón chân nhẹ lắm, chụp ngay đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Look, {name}, rainbow butterflies are resting on the bright wildflowers.",
+          "Move the net very gently, line it up where a butterfly sits, then lift to scoop."
+        ],
+        "choices": [
+          {
+            "text": "I'll tiptoe in and scoop!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chụp nhẹ nhàng được mười chú bướm hoa nhé!",
       "game": "butterfly-net",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Tiptoe butterfly catch",
+        "prompt": "Gently catch 10 flower butterflies!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Sóc Đu Đuôi vỗ hai tay tấm tắc: {name} rón rén thật tài, đàn bướm chẳng hề giật mình!"
+      "text": "Sóc Đu Đuôi vỗ hai tay tấm tắc: {name} rón rén thật tài, đàn bướm chẳng hề giật mình!",
+      "en": {
+        "title": "Reward",
+        "text": "Sóc Đu Đuôi claps both paws: {name} crept up so softly, not one butterfly got a fright!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mỗi sớm hoa nở bướm lại bay về, {name} nhớ quay lại bìa rừng ngắm bướm cùng sóc nhé."
+      "text": "Mỗi sớm hoa nở bướm lại bay về, {name} nhớ quay lại bìa rừng ngắm bướm cùng sóc nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Butterflies come back every morning when the flowers open. Come watch them with the squirrel, {name}."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Tiptoe butterfly catching with Sóc Đu Đuôi",
+    "summary": "Bright butterflies flutter around the flowers: move the net gently closer, then lift and scoop softly."
   }
 }

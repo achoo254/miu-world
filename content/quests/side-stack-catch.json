@@ -46,7 +46,19 @@
         {
           "text": "Cháu đỡ được hết!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "A fresh batch of bánh bò just came out of the oven. Catch them for me, {name}!",
+          "Move the plate gently, dear. Jerk it and the whole stack tips over."
+        ],
+        "choices": [
+          {
+            "text": "I'll catch every one!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Xếp chồng bánh cao mười hai tầng nhé!",
       "game": "stack-catch",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Pancake Stack Catch",
+        "prompt": "Stack the cakes 12 layers high!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chồng bánh cao chót vót, {name} giữ tay vững thật!"
+      "text": "Chồng bánh cao chót vót, {name} giữ tay vững thật!",
+      "en": {
+        "title": "Reward",
+        "text": "That stack is sky-high! {name} has such steady hands!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ngày nào cô cũng nướng bánh, mẻ sau lại nhờ cháu đỡ nhé."
+      "text": "Ngày nào cô cũng nướng bánh, mẻ sau lại nhờ cháu đỡ nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "I bake every single day, so I'll need your steady hands for the next batch."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Catch the cake stack with Auntie Hạnh",
+    "summary": "Cakes drop from above: slide the plate smoothly so the stack grows tall without toppling."
   }
 }

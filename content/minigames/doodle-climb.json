@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 60,
   "goal": 80,
-  "params": { "gap": 1 }
+  "params": { "gap": 1 },
+  "en": {
+    "name": "Frog jumps to the clouds",
+    "howTo": [
+      "The frog bounces on leaves and clouds by itself. {name}, drag left and right to steer it.",
+      "Land on higher pads to climb up. Red mushrooms bounce you extra high!",
+      "Fall? The frog goes back to the nearest pad, no problem."
+    ]
+  }
 }

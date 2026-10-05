@@ -64,7 +64,26 @@
           "text": "Mình cùng làm thiệp thật đẹp!",
           "reply": "Gấu Nút cười híp cả hai mắt: Ừ, nhưng trước tiên phải tìm đủ đồ đã."
         }
-      ]
+      ],
+      "en": {
+        "title": "The crooked paper",
+        "goTo": "Go to the craft table in the painting room, where Hổ Con Đậu is scratching his head with his paw",
+        "lines": [
+          "{name}, I want to fold a thank-you card for Miss Hằng, but however I fold it, the paper goes as wobbly as a rice cracker dunked in water!",
+          "That's because you fold with... your claws, Đậu. And then you sneezed and sent the scissors and glue flying all over the painting room.",
+          "My claws are very nimble, thank you! Oh but... it's true, everything has flown off somewhere."
+        ],
+        "choices": [
+          {
+            "text": "Let me pick up the things!",
+            "reply": "Đậu wags his striped tail like mad: Thank you! Remember to hold the scissors by the handle."
+          },
+          {
+            "text": "Let's make a really lovely card together!",
+            "reply": "Gấu Nút smiles till both eyes crinkle shut: Yes, but first we have to find all our things."
+          }
+        ]
+      }
     },
     {
       "id": "tim-do-thu-cong",
@@ -102,7 +121,22 @@
           "reply": "Đậu giơ hai chân trước lên reo: Phần gấp cắt giấy thật thì mình mang phiếu về nhà làm cùng bố mẹ nhé."
         }
       ],
-      "goTo": "Sang kệ giấy màu, Gấu Nút đang gấp thử một tờ giấy chữ nhật"
+      "goTo": "Sang kệ giấy màu, Gấu Nút đang gấp thử một tờ giấy chữ nhật",
+      "en": {
+        "title": "Gấu Nút shows how",
+        "goTo": "Go to the coloured paper shelf, where Gấu Nút is test-folding a rectangle of paper",
+        "lines": [
+          "Fold one corner of a rectangle of paper diagonally so the two edges line up, cut off the extra bit, and you've got a square. Nice and flat!",
+          "And to draw a line segment 5 cm long, dot one point at the 0 mark of the ruler, another at the 5 mark, then join them.",
+          "Oh, so you don't fold with your claws. I've learnt it now!"
+        ],
+        "choices": [
+          {
+            "text": "Let's get making!",
+            "reply": "Đậu raises both front paws and cheers: For the real folding and cutting, let's take the worksheet home to do with Mum and Dad."
+          }
+        ]
+      }
     },
     {
       "id": "phieu-gap-cat-ghep",
@@ -372,7 +406,26 @@
           "reply": "Bác Thìn: Que nào cũng phải đo xong mới dán được, nhưng kẻ viền nhanh lắm, làm trước đi!"
         }
       ],
-      "goTo": "Sang bàn thước thần, Bác Thìn lau cây thước biết hiện số đo"
+      "goTo": "Sang bàn thước thần, Bác Thìn lau cây thước biết hiện số đo",
+      "en": {
+        "title": "Draw the border or measure the sticks?",
+        "goTo": "Go to the magic ruler table, where Uncle Thìn is polishing a ruler that shows measurements",
+        "lines": [
+          "The card has its shapes now, so it needs a border and some decorating sticks glued on. My magic ruler even shows the measurements!",
+          "A magic ruler? I thought there were only magic wands.",
+          "{name}, do you want to draw the card border first, or measure the decorating sticks first?"
+        ],
+        "choices": [
+          {
+            "text": "Draw the card border first",
+            "reply": "Đậu: Keep your hand steady, don't wobble like my claws!"
+          },
+          {
+            "text": "Measure the decorating sticks first",
+            "reply": "Uncle Thìn: Every stick has to be measured before it's glued, but the border is quick, do that first!"
+          }
+        ]
+      }
     },
     {
       "id": "ke-vien-thiep",
@@ -836,14 +889,22 @@
       "title": "Huy hiệu thủ công",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Tấm thiệp có tam giác lớn, hình vuông vức và năm que trang trí thẳng tắp. Đậu ôm thiệp chạy lon ton đi tặng cô Hằng, còn Gấu Nút cài cho {name} huy hiệu \"Đôi tay khéo léo\"."
+      "text": "Tấm thiệp có tam giác lớn, hình vuông vức và năm que trang trí thẳng tắp. Đậu ôm thiệp chạy lon ton đi tặng cô Hằng, còn Gấu Nút cài cho {name} huy hiệu \"Đôi tay khéo léo\".",
+      "en": {
+        "title": "Craft badge",
+        "text": "The card has a big triangle, a neat square and five dead-straight decorating sticks. Đậu hugs the card and trots off to give it to Miss Hằng, and Gấu Nút pins the \"Clever Hands\" badge on {name}."
+      }
     },
     {
       "id": "tranh-treo-nguoc",
       "title": "Phòng tranh lộn ngược",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ phòng trưng bày tranh vọng ra tiếng Sâu Tòn Ten: \"Treo mình ngược thế này nhìn tranh mới đẹp!\" — ấy thế mà bức nào Sâu cũng treo lộn ngược cả."
+      "text": "Từ phòng trưng bày tranh vọng ra tiếng Sâu Tòn Ten: \"Treo mình ngược thế này nhìn tranh mới đẹp!\" — ấy thế mà bức nào Sâu cũng treo lộn ngược cả.",
+      "en": {
+        "title": "The upside-down gallery",
+        "text": "From the picture gallery comes Sâu Tòn Ten's voice: \"Paintings look best when you hang upside down like this!\" And sure enough, every painting the caterpillar hung is upside down."
+      }
     }
   ],
   "reward": {

@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 30,
-  "params": { "traffic": 1 }
+  "params": { "traffic": 1 },
+  "en": {
+    "name": "Crossroads Traffic Cop",
+    "howTo": [
+      "Be the traffic police! Cars stop at the line; tap a car to wave it through.",
+      "Cars going up and down and cars going across can't be in the crossing together, or they crash.",
+      "Each car {name} lets through is a point. Cars kept waiting too long honk and then drive off recklessly!"
+    ]
+  }
 }

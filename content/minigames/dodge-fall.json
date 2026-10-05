@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 45,
   "goal": 10,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Dodge the falling fruit",
+    "howTo": [
+      "Pine cones and coconuts drop from the trees! Round shadows on the ground show where they'll land.",
+      "{name}, drag your finger to dodge, and pick up stars that fall to the ground.",
+      "Get hit three times by falling fruit and your turn is over."
+    ]
+  }
 }

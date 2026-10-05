@@ -45,7 +45,21 @@
       ],
       "choices": [
         { "text": "Ngọc rơi ở đâu hả Thỏ?", "reply": "Hình như lăn xuống bãi cỏ chân thành ấy, cậu ra xem thử." }
-      ]
+      ],
+      "en": {
+        "title": "Thỏ Lính Kèn brings news",
+        "goTo": "Go to the moat boat landing, the Royal Trumpeter Rabbit is sounding his trumpet",
+        "lines": [
+          "Ta-ra ta-ra! {name}, the Stone Knight of the Bridge just woke up, and he's gripping the drawbridge ropes and won't let it come down for the opening!",
+          "The three jewels on his shield have gone missing, and it's made him so sad. Find the jewels, then come and talk to him."
+        ],
+        "choices": [
+          {
+            "text": "Where did the jewels fall, Thỏ?",
+            "reply": "I think they rolled down to the grass at the foot of the castle wall; go and have a look."
+          }
+        ]
+      }
     },
     {
       "id": "tim-ngoc-cho-khien",
@@ -155,7 +169,25 @@
           "text": "Phủi rêu trên áo giáp giúp bác",
           "consequence": "Áo giáp sạch bóng, Hiệp Sĩ Đá cười khà: nhẹ cả người, ra đề thôi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Greeting the Stone Knight",
+        "prompt": "The Stone Knight towers at the end of the bridge, his armour covered in green moss. How does {name} greet him?",
+        "choices": [
+          {
+            "text": "Fix the three jewels back on his shield",
+            "consequence": "The shield glows in three colours, and the Stone Knight bows his thanks in a voice that rumbles like rolling rocks."
+          },
+          {
+            "text": "Hand on heart, bow like a knight",
+            "consequence": "The Stone Knight raises his wooden sword in salute: it's been ages since I met someone with such fine manners."
+          },
+          {
+            "text": "Brush the moss off his armour",
+            "consequence": "His armour gleaming, the Stone Knight chuckles: I feel so much lighter, let's have the riddles!"
+          }
+        ]
+      }
     },
     {
       "id": "tran-trum",
@@ -254,14 +286,22 @@
       "title": "Cầu treo hạ xuống",
       "kind": "reward",
       "target": "trum-ld-hiep-si-da",
-      "text": "Kẽo kẹt, cầu treo từ từ hạ xuống bắc qua hào nước. Hiệp Sĩ Đá phong {name} làm hiệp sĩ danh dự, kèm XP, xu và điểm kỹ năng."
+      "text": "Kẽo kẹt, cầu treo từ từ hạ xuống bắc qua hào nước. Hiệp Sĩ Đá phong {name} làm hiệp sĩ danh dự, kèm XP, xu và điểm kỹ năng.",
+      "en": {
+        "title": "The drawbridge comes down",
+        "text": "Creak, creak, the drawbridge slowly lowers across the moat. The Stone Knight dubs {name} an honorary knight, with XP, coins and skill points besides."
+      }
     },
     {
       "id": "tiec-khanh-thanh",
       "title": "Tiệc khánh thành",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đoàn người vui vẻ qua cầu vào thành, kèn trống rộn ràng. Hươu Cao mời {name} vào đại sảnh dự tiệc khánh thành cùng nhà vua."
+      "text": "Đoàn người vui vẻ qua cầu vào thành, kèn trống rộn ràng. Hươu Cao mời {name} vào đại sảnh dự tiệc khánh thành cùng nhà vua.",
+      "en": {
+        "title": "The opening feast",
+        "text": "Crowds cross the bridge into the castle to merry trumpets and drums. Hươu Cao invites {name} into the great hall for the opening feast with the king."
+      }
     }
   ],
   "reward": {

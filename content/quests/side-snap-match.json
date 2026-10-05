@@ -46,7 +46,19 @@
         {
           "text": "Tay tớ nhanh như chớp!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Let us see who has the quicker eyes and hands, {name}! Who reacts faster?",
+          "As each card flips, if it is exactly like the one before, tap it as fast as you can."
+        ],
+        "choices": [
+          {
+            "text": "My hands are lightning fast!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Bắt đúng mười lần hình ảnh trùng nhau liên tiếp nhé!",
       "game": "snap-match",
-      "goal": 10
+      "goal": 10,
+      "en": {
+        "title": "Sharp Eyes Snap",
+        "prompt": "Snap 10 matching pictures!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mèo Hộp Nhạc chịu thua tâm phục khẩu phục: mắt {name} sáng và tay nhanh hơn cả mèo!"
+      "text": "Mèo Hộp Nhạc chịu thua tâm phục khẩu phục: mắt {name} sáng và tay nhanh hơn cả mèo!",
+      "en": {
+        "title": "Reward",
+        "text": "Mèo Hộp Nhạc admits defeat: {name} has sharper eyes and quicker paws than a cat!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Hội lá vàng lúc nào cũng rộn ràng, có dịp cậu lại ghé bục gỗ so tài với tớ nhé."
+      "text": "Hội lá vàng lúc nào cũng rộn ràng, có dịp cậu lại ghé bục gỗ so tài với tớ nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The golden-leaf festival is always buzzing, so come to the wooden stage for a rematch."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Snap when the pictures match with Mèo Hộp Nhạc",
+    "summary": "Picture cards flip over one after another; stay focused and tap the moment two in a row are the same."
   }
 }

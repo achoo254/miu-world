@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 90,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Plinko Drop",
+    "howTo": [
+      "Tap where {name} wants to drop the coin; it bounces off the pegs into a slot.",
+      "The middle slot scores the most. Hit the gift box for twenty-five extra points!",
+      "You have eight coins, so drop them carefully."
+    ]
+  }
 }

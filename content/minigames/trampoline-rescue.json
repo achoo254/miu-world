@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 60,
   "goal": 15,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Trampoline Rescue",
+    "howTo": [
+      "Friends jump from the building. {name} drags the trampoline left and right to catch them.",
+      "Each friend bounces three times on the trampoline, then flies into the fire truck.",
+      "Watch the shadows on the ground to see where they'll land. Miss three and your turn is over."
+    ]
+  }
 }

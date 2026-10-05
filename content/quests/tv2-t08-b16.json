@@ -88,7 +88,27 @@
           "text": "Sách mà biết mọc cỏ à? Thích quá!",
           "reply": "Thích thật! Nhưng lỡ trang sau mọc ra một con voi thì tảng đá chật ních mất."
         }
-      ]
+      ],
+      "en": {
+        "title": "The book that sprouts grass",
+        "goTo": "Go to the purple myrtle bush in the reading garden, Nai Mơ is hugging a book",
+        "lines": [
+          "{name}! I just opened the book Gấu Me lent me and… pop! A sprig of wild grass shot right up out of the page!",
+          "I walk slowly, so I saw it clearly: a bird's feather floated off the page and drifted lazily over my head.",
+          "Then the wind flipped a page and a paper sail went zooming off too. I meant to write a poem, but all four of my legs are shaking like leaves.",
+          "Will you help me gather those things back, and then we'll read the poem in the book together?"
+        ],
+        "choices": [
+          {
+            "text": "Come on, I'll pick them all up for you!",
+            "reply": "They flew towards the wild grass around the big rock. Tread softly so you don't squash my rhymes!"
+          },
+          {
+            "text": "A book that sprouts grass? That's amazing!",
+            "reply": "It really is! But if the next page sprouts an elephant, this rock will get awfully crowded."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-do-bay-khoi-trang",
@@ -1218,7 +1238,26 @@
           "text": "Trả đúng hẹn rồi mượn cuốn khác, cũng thần kì không kém!",
           "reply": "Đúng thế, kệ của Gấu Me còn bao nhiêu trang sách đang chờ mở ra."
         }
-      ]
+      ],
+      "en": {
+        "title": "Nai Mơ can't bear to give the book back",
+        "goTo": "Go back to the purple myrtle, Nai Mơ is hugging the book and won't let go",
+        "lines": [
+          "This book is so good, {name}. I want to hug it while I sleep, while I eat, while I write poems, forever and ever.",
+          "Just a gentle reminder, little one: today is the day you promised to return the book to Gấu Me.",
+          "Oh, right… So how can I give it back and still remember all the lovely things inside?"
+        ],
+        "choices": [
+          {
+            "text": "Let's write them down on a reading card!",
+            "reply": "A reading card? Brilliant, and afterwards I'll read it back like a poem."
+          },
+          {
+            "text": "Return it on time and borrow another one, that's just as magical!",
+            "reply": "That's right, Gấu Me's shelves have so many more pages waiting to be opened."
+          }
+        ]
+      }
     },
     {
       "id": "phieu-doc-sach-cua-nam",
@@ -1338,14 +1377,22 @@
       "title": "Kẹp sách lá phong",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nai Mơ tặng {name} một chiếc kẹp sách bằng lá phong có chép bài thơ tí hon, còn Gấu Me đóng lên phiếu đọc sách một dấu móng gấu thơm mùi me. Cánh Cụt Phao vẫy cánh chào rồi lạch bạch trở về trang sách."
+      "text": "Nai Mơ tặng {name} một chiếc kẹp sách bằng lá phong có chép bài thơ tí hon, còn Gấu Me đóng lên phiếu đọc sách một dấu móng gấu thơm mùi me. Cánh Cụt Phao vẫy cánh chào rồi lạch bạch trở về trang sách.",
+      "en": {
+        "title": "A maple-leaf bookmark",
+        "text": "Nai Mơ gives {name} a maple-leaf bookmark with a teeny poem written on it, and Gấu Me stamps the reading card with a bear-paw print that smells of tamarind. Cánh Cụt Phao waves a flipper goodbye and waddles back into the book."
+      }
     },
     {
       "id": "nhu-le-hoi-la-vang",
       "title": "Lá vàng rơi đầy lối",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bác Gấu Trúc Tròn chậm rãi treo tấm biển trước cửa thư viện: sân lễ hội lá vàng sắp mở hội thi giữa kì, mỗi trạm một thử thách! Bác dặn thong thả: ai muốn chơi thì cứ từ từ mà tới."
+      "text": "Bác Gấu Trúc Tròn chậm rãi treo tấm biển trước cửa thư viện: sân lễ hội lá vàng sắp mở hội thi giữa kì, mỗi trạm một thử thách! Bác dặn thong thả: ai muốn chơi thì cứ từ từ mà tới.",
+      "en": {
+        "title": "Golden leaves fill the path",
+        "text": "Gấu Trúc Tròn slowly hangs a sign by the library door: the golden-leaf festival is opening its mid-term contest, with a challenge at every stall! He adds, unhurried: whoever wants to play, just take your time coming over."
+      }
     }
   ],
   "reward": {

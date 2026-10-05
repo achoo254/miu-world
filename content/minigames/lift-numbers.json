@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 15,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Number lift",
+    "howTo": [
+      "A rider holding a card like \"4 chục 7\" (4 tens 7) wants to go to floor 47.",
+      "{name}, tap a floor to send the lift there; tap Lobby to pick up more riders.",
+      "Each rider dropped at the right floor is a point. The lift carries 4 riders."
+    ]
+  }
 }

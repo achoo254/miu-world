@@ -46,7 +46,19 @@
         {
           "text": "Cháu kể lại chuyện qua tranh!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Oh {name}, the wind blew this folk-tale picture book all over the reading table.",
+          "Look carefully at each picture and place them in boxes one to four, from start to finish."
+        ],
+        "choices": [
+          {
+            "text": "I will retell the story in pictures!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Sắp xếp đúng thứ tự cho sáu bộ tranh truyện nhé!",
       "game": "story-order",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Story Picture Order",
+        "prompt": "Put 6 picture stories in the right order!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cô Thủ Thư Mai gật đầu hài lòng, khen {name} nắm bắt nội dung câu chuyện rất sâu sắc!"
+      "text": "Cô Thủ Thư Mai gật đầu hài lòng, khen {name} nắm bắt nội dung câu chuyện rất sâu sắc!",
+      "en": {
+        "title": "Reward",
+        "text": "Cô Thủ Thư Mai nods happily: {name} really understands what the story is about!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Còn nhiều truyện cổ tích kỳ thú lắm, cháu nhớ ghé thư viện đọc sách cùng cô nhé."
+      "text": "Còn nhiều truyện cổ tích kỳ thú lắm, cháu nhớ ghé thư viện đọc sách cùng cô nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "There are so many wonderful fairy tales left, so come read with me at the library."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Ordering the story pictures with Cô Thủ Thư Mai",
+    "summary": "Four fairy-tale pictures are out of order; follow what happens to put the story back in sequence."
   }
 }

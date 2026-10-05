@@ -46,7 +46,19 @@
         {
           "text": "Tư thế chuẩn khít, lọt qua dễ dàng!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The foam-wall game is drawing a big crowd of kids at the market corner, {name}!",
+          "Look at the shape cut into the wall, then pick the matching pose button to squeeze through."
+        ],
+        "choices": [
+          {
+            "text": "Perfect pose, straight through!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Tạo đúng dáng vượt qua mười hai bức tường xốp nhé!",
       "game": "hole-in-wall",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Hole in the wall",
+        "prompt": "Strike the right pose to pass 12 foam walls!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chú Đố Chữ Quang vỗ tay tán thưởng: cháu {name} uốn mình nhanh nhẹn, dáng nào cũng chuẩn!"
+      "text": "Chú Đố Chữ Quang vỗ tay tán thưởng: cháu {name} uốn mình nhanh nhẹn, dáng nào cũng chuẩn!",
+      "en": {
+        "title": "Reward",
+        "text": "Chú Đố Chữ Quang applauds: {name} twists so quickly, and every pose is spot on!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bức tường tiếp theo sắp tiến vào, {name} rảnh lại ghé góc chợ giao dịch so tài uốn dáng nhé."
+      "text": "Bức tường tiếp theo sắp tiến vào, {name} rảnh lại ghé góc chợ giao dịch so tài uốn dáng nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The next wall is on its way, {name}. Come test your poses at the market corner again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Hole in the wall with Chú Đố Chữ Quang",
+    "summary": "A foam wall with funny-shaped holes slides closer: pick the right pose to slip through safely."
   }
 }

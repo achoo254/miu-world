@@ -65,7 +65,26 @@
           "text": "Thầy ơi, bờm thầy đang dựng đứng kìa!",
           "reply": "Thầy Sư Tử đỏ mặt vuốt bờm: Kệ bờm thầy, cứu bảng số trước đã!"
         }
-      ]
+      ],
+      "en": {
+        "title": "The number board blew away",
+        "goTo": "Go to the flagpole in the middle of the schoolyard, where Sư Tử Vàng is waiting",
+        "lines": [
+          "ROAR... I mean, hello {name}! The wind this morning was so strong it blew away the class number board, and... my magnificent mane.",
+          "I found counting sticks and carrots at the foot of the flagpole. One carrot is a bit... nibbled, but it wasn't me!",
+          "If the bell rings and the number board is still blank, the headmaster will be so embarrassed. {name}, will you help me put it back together?"
+        ],
+        "choices": [
+          {
+            "text": "I'll help right now!",
+            "reply": "Splendid! Let me smooth my mane first, then we'll start with the bundles of counting sticks."
+          },
+          {
+            "text": "Sir, your mane is sticking straight up!",
+            "reply": "Headmaster Lion blushes and pats his mane: Never mind my mane, let's rescue the number board first!"
+          }
+        ]
+      }
     },
     {
       "id": "bang-que-tinh",
@@ -730,7 +749,25 @@
           "text": "Cháu thổi còi giúp thầy luôn ạ!",
           "reply": "Hì, còi để thầy giữ, cháu lo xếp hàng là được rồi."
         }
-      ]
+      ],
+      "en": {
+        "title": "The football team lines up",
+        "goTo": "Run to the football pitch, where Coach Nai Phi is calling the team to line up",
+        "lines": [
+          "Peep peep! The Year Two team is about to salute the flag, and four players keep jostling like ducks fighting over bread!",
+          "I've blown my whistle till I'm out of breath. {name}, line them up for me this first round; next round, captain Gấu Đô is waiting at the goal."
+        ],
+        "choices": [
+          {
+            "text": "Let me line them up!",
+            "reply": "Coach Nai Phi bounces on the chalk line: Look closely at the numbers on their shirts, not their faces!"
+          },
+          {
+            "text": "I'll blow the whistle for you too!",
+            "reply": "Heh, I'll keep the whistle; you just handle the line-up."
+          }
+        ]
+      }
     },
     {
       "id": "ao-be-den-lon",
@@ -1531,14 +1568,22 @@
       "title": "Huy hiệu bảng số",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thầy Sư Tử Vàng (bờm đã gọn gàng) cài lên áo {name} huy hiệu \"Người giữ bảng số\" đầu tiên của Trường học, rồi gầm một tiếng thật to làm cả sân vỗ tay."
+      "text": "Thầy Sư Tử Vàng (bờm đã gọn gàng) cài lên áo {name} huy hiệu \"Người giữ bảng số\" đầu tiên của Trường học, rồi gầm một tiếng thật to làm cả sân vỗ tay.",
+      "en": {
+        "title": "Number board badge",
+        "text": "Headmaster Sư Tử Vàng (mane now neat and tidy) pins the school's very first \"Number Board Keeper\" badge on {name}'s shirt, then gives a mighty roar and the whole yard claps."
+      }
     },
     {
       "id": "mo-tia-so",
       "title": "Vạch kẻ trên sân",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ sân nhảy lò cò vọng sang tiếng Gà Con Chíp: \"Ối, ối! Các vạch kẻ mất hết số rồi, tớ lại nhảy nhầm ô!\""
+      "text": "Từ sân nhảy lò cò vọng sang tiếng Gà Con Chíp: \"Ối, ối! Các vạch kẻ mất hết số rồi, tớ lại nhảy nhầm ô!\"",
+      "en": {
+        "title": "Lines on the playground",
+        "text": "From the hopscotch court comes Gà Con Chíp's voice: \"Oh no, oh no! All the numbers on the lines are gone, and I keep hopping into the wrong square!\""
+      }
     }
   ],
   "reward": {

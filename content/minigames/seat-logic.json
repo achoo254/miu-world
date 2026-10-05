@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 4,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Royal Feast Seating",
+    "howTo": [
+      "Heart card: two friends sit side by side. Cross: not side by side. Crown: the head seat.",
+      "{name} drags friends into seats (or taps a friend, then a seat) so every card is right.",
+      "Fill every seat with all cards right for a point. A card flashing red isn't right yet."
+    ]
+  }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Ngồi vững, xuất phát!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "I've planted red and blue flags down the slope. {name}, steer the sled through!",
+          "Drag left and right so the sled passes between two flags, and watch out for pine trees."
+        ],
+        "choices": [
+          {
+            "text": "Sit tight, here we go!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Lái qua mười lăm cổng cờ trên dốc tuyết nhé!",
       "game": "sled-slalom",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Sled Slalom",
+        "prompt": "Steer through 15 flag gates on the snowy slope!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cáo Tuyết vẫy cờ rối rít: {name} lái xe trượt khéo ghê!"
+      "text": "Cáo Tuyết vẫy cờ rối rít: {name} lái xe trượt khéo ghê!",
+      "en": {
+        "title": "Reward",
+        "text": "Cáo Tuyết waves the flags wildly: {name} steers the sled so well!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mai Cáo Tuyết cắm thêm cờ mới, {name} lại xuống dốc chơi nhé."
+      "text": "Mai Cáo Tuyết cắm thêm cờ mới, {name} lại xuống dốc chơi nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Tomorrow Cáo Tuyết will plant new flags. Come down the slope and play again, {name}."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Sled Slalom with Cáo Tuyết",
+    "summary": "Riding a sled downhill, drag your finger to steer between each pair of flags and dodge the pine trees."
   }
 }

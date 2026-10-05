@@ -87,7 +87,28 @@
           "text": "Hai bạn thôi giằng co đi, gió nghe thấy đấy!",
           "reply": "Bé Tẹo sụt sịt: em hết giằng rồi, {name} giúp em tìm cánh chong chóng nhé?"
         }
-      ]
+      ],
+      "en": {
+        "title": "Two brothers tug on a pinwheel",
+        "goTo": "Run to the windy field, where Thỏ Tí and little Tẹo are tugging back and forth",
+        "lines": [
+          "{name}, help! Tẹo's clinging to the stick and I'm holding the sails, the pinwheel's about to snap in half!",
+          "It's mine! Tí had it all morning, now it's my turn!",
+          "But I've only… huh, what was I going to say? Oh yes: I've only run ninety-nine laps!",
+          "Whoooosh… Pop! A big gust rips off all four paper sails and blows them up onto the mound.",
+          "Waaah! My pinwheel… I mean, our pinwheel… it's blown away!"
+        ],
+        "choices": [
+          {
+            "text": "Don't cry, I'll go and pick them up right now!",
+            "reply": "Thỏ Tí scratches his ear: the red sail flew towards the mound… or was it the blue one? Let's just pick them all up!"
+          },
+          {
+            "text": "Stop tugging, you two, the wind can hear you!",
+            "reply": "Tẹo sniffles: I've stopped tugging. {name}, will you help me find the pinwheel sails?"
+          }
+        ]
+      }
     },
     {
       "id": "nhat-manh-chong-chong",
@@ -1021,7 +1042,26 @@
           "text": "Tẹo cầm, anh Tí phùng má thổi giúp như anh An",
           "reply": "Thỏ Tí phồng má to như hai quả đào: phùùù… chong chóng quay tít!"
         }
-      ]
+      ],
+      "en": {
+        "title": "How do we share?",
+        "goTo": "Back in the windy field, the pinwheel is all neatly put back together",
+        "lines": [
+          "The pinwheel's fixed! Now… huh, what was I going to say? Oh, who gets to hold it first?",
+          "I'm the littlest, I go first! … Actually, never mind, I know Tí loves it too.",
+          "{name}, help us pick a way to play so nobody ends up sad like little Mai!"
+        ],
+        "choices": [
+          {
+            "text": "Take turns, one lap each",
+            "reply": "Thỏ Tí counts: lap one is Tẹo's, lap two is mine, lap three is… whose again?"
+          },
+          {
+            "text": "Tẹo holds it, and Tí puffs his cheeks to blow like An did",
+            "reply": "Thỏ Tí puffs his cheeks up as big as two peaches: phooo… the pinwheel spins like mad!"
+          }
+        ]
+      }
     },
     {
       "id": "neu-em-la-mai",
@@ -1128,14 +1168,22 @@
       "title": "Chong chóng ba chữ",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hai anh em thỏ tặng {name} một chiếc chong chóng có ba cánh ghi “thương”, “nhường”, “chơi chung”. Còn cánh thứ tư ghi gì thì… Thỏ Tí quên mất rồi, {name} tự nghĩ nhé!"
+      "text": "Hai anh em thỏ tặng {name} một chiếc chong chóng có ba cánh ghi “thương”, “nhường”, “chơi chung”. Còn cánh thứ tư ghi gì thì… Thỏ Tí quên mất rồi, {name} tự nghĩ nhé!",
+      "en": {
+        "title": "The three-word pinwheel",
+        "text": "The rabbit brothers give {name} a pinwheel whose three sails say “love”, “give way” and “play together”. As for what the fourth sail says… Thỏ Tí has forgotten, so {name} can decide!"
+      }
     },
     {
       "id": "mo-on-cuoi-ki",
       "title": "Tiếng kèn ở Lâu đài",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ phía Lâu đài vọng lại tiếng kèn rộn ràng: cây cầu treo trước cổng thành sắp khánh thành! Muốn cắt băng, {name} sẽ vượt từng nhịp cầu bằng một thử thách ôn tập cuối học kì 1."
+      "text": "Từ phía Lâu đài vọng lại tiếng kèn rộn ràng: cây cầu treo trước cổng thành sắp khánh thành! Muốn cắt băng, {name} sẽ vượt từng nhịp cầu bằng một thử thách ôn tập cuối học kì 1.",
+      "en": {
+        "title": "Trumpets at the Castle",
+        "text": "Trumpets ring out from the Castle: the suspension bridge before the castle gate is about to open! To cut the ribbon, {name} will cross each span of the bridge with an end-of-term-1 review challenge."
+      }
     }
   ],
   "reward": {

@@ -75,7 +75,27 @@
           "text": "Không sao đâu, ba đứa mình nhặt một loáng là xong.",
           "reply": "Gấu Me cười hiền, ngón tay đặt lên môi: một loáng thôi, nhưng nhặt khẽ khàng nhé."
         }
-      ]
+      ],
+      "en": {
+        "title": "Who knocked over the shelf?",
+        "goTo": "Step into the reading room, Gấu Me is standing frozen by the cushion corner",
+        "lines": [
+          "It wasn't me! Well… actually it was. I was bouncing on the cushions to reach the top book, and then… crash!",
+          "Shh… quietly now. Books flew right out into the aisle between the shelves, and the contents page of the new book has blown away too.",
+          "{name}, what's a contents page anyway? Can you eat it? I'm asking so I know what to look for.",
+          "You can't eat it, Lò Xo. Bring the books back here, and then I'll let you both read a lesson all about it."
+        ],
+        "choices": [
+          {
+            "text": "Thỏ Lò Xo, next time ask me to get the book for you!",
+            "reply": "Thỏ Lò Xo's ears go pink: okay, next time I'll ask, but bouncing is so much fun!"
+          },
+          {
+            "text": "Don't worry, the three of us will pick them up in a flash.",
+            "reply": "Gấu Me smiles kindly, finger to her lips: in a flash, yes, but pick them up quietly."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-sach-van-ra",
@@ -792,7 +812,27 @@
           "text": "Bác ơi, sao lúc nào bác cũng làm chậm thế ạ?",
           "reply": "Bác Gấu Trúc Tròn cười hiền: vì làm chậm thì không đánh rơi trang nào, cháu ạ."
         }
-      ]
+      ],
+      "en": {
+        "title": "The librarian carries down a storybook",
+        "goTo": "Go to the librarian's desk, Gấu Trúc Tròn has just brought a storybook down from the loft",
+        "lines": [
+          "Here I come… one step… at a time. Slow and steady, and the storybook “Hoạ mi, vẹt và quạ” (The Nightingale, the Parrot and the Crow) is still safe in my paws.",
+          "Tell it now! Tell it fast, fast, my ears are standing straight up!",
+          "I tell stories slowly, slow telling means long remembering. But you just landed on the four pictures tucked in the book, and now they're all jumbled.",
+          "Shh, stand still, Lò Xo! {name}, would you like to put the pictures in order first, and then Gấu Trúc will tell the story?"
+        ],
+        "choices": [
+          {
+            "text": "Yes! I'll sort the pictures, then you tell the story.",
+            "reply": "Gấu Trúc Tròn nods once, very slowly: all right, take your time, I'll wait."
+          },
+          {
+            "text": "Why do you always do things so slowly?",
+            "reply": "Gấu Trúc Tròn smiles gently: because when you go slowly, you never drop a page, little one."
+          }
+        ]
+      }
     },
     {
       "id": "xep-tranh-hoa-mi",
@@ -973,14 +1013,22 @@
       "title": "Thẻ kẹp sách hình lá me",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Me tặng {name} một chiếc thẻ kẹp sách cắt từ lá me khô, một mặt in chữ \"mục lục\", mặt kia in dấu móng vuốt của cô trông phòng đọc. Bác Gấu Trúc Tròn đóng thêm con dấu tròn của thư viện, ấn thật chậm cho thật rõ."
+      "text": "Gấu Me tặng {name} một chiếc thẻ kẹp sách cắt từ lá me khô, một mặt in chữ \"mục lục\", mặt kia in dấu móng vuốt của cô trông phòng đọc. Bác Gấu Trúc Tròn đóng thêm con dấu tròn của thư viện, ấn thật chậm cho thật rõ.",
+      "en": {
+        "title": "A tamarind-leaf bookmark",
+        "text": "Gấu Me gives {name} a bookmark cut from a dried tamarind leaf; one side says “mục lục” (contents), the other carries the reading-room keeper's paw print. Gấu Trúc Tròn adds the library's round stamp, pressed very slowly so it comes out nice and clear."
+      }
     },
     {
       "id": "mo-bai-16",
       "title": "Trang sách hoá thành cảnh thật",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ngoài vườn đọc sách, trên tảng đá phẳng bên suối nhỏ, Nai Mơ vừa lật một trang sách thì lá cây, cánh chim, giọt mưa trong sách bỗng bay ra lượn quanh. Cảnh gì mà kì lạ thế này?"
+      "text": "Ngoài vườn đọc sách, trên tảng đá phẳng bên suối nhỏ, Nai Mơ vừa lật một trang sách thì lá cây, cánh chim, giọt mưa trong sách bỗng bay ra lượn quanh. Cảnh gì mà kì lạ thế này?",
+      "en": {
+        "title": "Book pages come to life",
+        "text": "In the reading garden, on the flat rock by the little stream, Nai Mơ turned a page and the leaves, birds' wings and raindrops in the book flew out and swirled around. What a strange sight!"
+      }
     }
   ],
   "reward": {

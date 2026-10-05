@@ -36,7 +36,19 @@
         { "speaker": "Vẹt", "text": "{name} ơi, sao băng rơi đầy đường mòn kìa!" },
         { "speaker": "Vẹt", "text": "Chạy nhặt sao với tớ nhé, nhớ nhảy qua đá và cúi qua cành cây." }
       ],
-      "choices": [{ "text": "Chạy thôi!" }]
+      "choices": [{ "text": "Chạy thôi!" }],
+      "en": {
+        "title": "Vẹt Wants to Race",
+        "lines": [
+          "{name}, shooting stars have landed all over the trail!",
+          "Come collect stars with me! Jump over the rocks and duck under the branches."
+        ],
+        "choices": [
+          {
+            "text": "Let's run!"
+          }
+        ]
+      }
     },
     {
       "id": "run",
@@ -46,22 +58,38 @@
       "trigger": "auto",
       "prompt": "Nhặt hai mươi lăm ngôi sao trên đường mòn nhé!",
       "game": "runner",
-      "goal": 25
+      "goal": 25,
+      "en": {
+        "title": "Star Dash",
+        "prompt": "Collect twenty-five stars along the trail!"
+      }
     },
     {
       "id": "thanks",
       "title": "Vẹt reo hò",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Vẹt vỗ cánh: {name} chạy nhanh như gió!"
+      "text": "Vẹt vỗ cánh: {name} chạy nhanh như gió!",
+      "en": {
+        "title": "Vẹt Cheers",
+        "text": "Vẹt flaps his wings: {name} runs as fast as the wind!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn chạy tiếp",
       "kind": "next",
       "trigger": "auto",
-      "text": "Lúc nào muốn chạy nữa, cứ tìm Vẹt ở gốc cây nhé."
+      "text": "Lúc nào muốn chạy nữa, cứ tìm Vẹt ở gốc cây nhé.",
+      "en": {
+        "title": "Run Again Soon",
+        "text": "Whenever you fancy another run, just look for Vẹt by his tree."
+      }
     }
   ],
-  "reward": { "xp": 15, "coin": 5 }
+  "reward": { "xp": 15, "coin": 5 },
+  "en": {
+    "title": "Star Run with Vẹt",
+    "summary": "Race along the forest trail, jump over rocks, duck under branches and grab the fallen stars."
+  }
 }

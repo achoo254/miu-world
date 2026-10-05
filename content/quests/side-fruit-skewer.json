@@ -46,7 +46,19 @@
         {
           "text": "Cháu xiên hoa quả đúng quy luật!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Don't these rainbow fruit skewers look yummy, {name}?",
+          "Look at the pattern of the fruit so far, then pick the one that comes next."
+        ],
+        "choices": [
+          {
+            "text": "I'll follow the fruit pattern!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Xâu nối tiếp đúng quy luật hoàn thành tám xiên hoa quả ngọt nhé!",
       "game": "fruit-skewer",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Skewer the pattern",
+        "prompt": "Follow the pattern to finish 8 sweet fruit skewers!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Xiên hoa quả đủ màu đẹp như tranh, {name} nhận biết mẫu giỏi ghê!"
+      "text": "Xiên hoa quả đủ màu đẹp như tranh, {name} nhận biết mẫu giỏi ghê!",
+      "en": {
+        "title": "Reward",
+        "text": "Colourful as a painting! {name} is great at spotting patterns!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Khay hoa quả tươi rói của chú lúc nào cũng sẵn sàng đón cháu phụ."
+      "text": "Khay hoa quả tươi rói của chú lúc nào cũng sẵn sàng đón cháu phụ.",
+      "en": {
+        "title": "See you soon",
+        "text": "My tray of fresh fruit is always ready whenever you want to help."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Fruit skewers with Chú Bán Bánh Kem",
+    "summary": "Pick the right fresh fruit off the conveyor belt to follow the repeating colour pattern on the skewer."
   }
 }

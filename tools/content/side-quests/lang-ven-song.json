@@ -28,7 +28,19 @@
           "reward": "Giỏi quá {name}, giỏ cá của bác đầy ắp rồi!",
           "next": "Chiều nào bác cũng ngồi ở bến sông, cháu cứ ra câu tiếp nhé.",
           "who": "{name}, cần thủ nhỏ của bến sông",
-          "learn": "Kiên nhẫn chờ và giật đúng thời điểm"
+          "learn": "Kiên nhẫn chờ và giật đúng thời điểm",
+          "en": {
+            "title": "Float fishing with Uncle Sơn",
+            "summary": "Sit on the river landing, cast the float near a fish shadow and strike just as the float sinks.",
+            "lines": [
+              "{name}, come and sit down and fish with me for a bit!",
+              "Pull only when the float sinks right under. Pull too early and the fish darts away."
+            ],
+            "choice": "I've got the rod, Uncle!",
+            "prompt": "Catch enough fish for {goal} points!",
+            "reward": "Well done, {name}! My fish basket is full to the brim!",
+            "next": "I sit on the river landing every afternoon, so come and fish with me again."
+          }
         },
         {
           "game": "boat-race",
@@ -43,7 +55,19 @@
           "reward": "Thuyền của {name} lao vun vút, cả bến reo hò!",
           "next": "Mùa hội còn dài, thuyền con vẫn buộc ở bến chờ cháu.",
           "who": "{name}, tay chèo nhỏ tuổi nhất hội đua",
-          "learn": "Giữ nhịp đều theo tiếng trống"
+          "learn": "Giữ nhịp đều theo tiếng trống",
+          "en": {
+            "title": "River boat race with Uncle Sơn",
+            "summary": "The drums go boom, boom: paddle both sides evenly so the boat glides to the finish.",
+            "lines": [
+              "The village boat race is on today, {name}!",
+              "You can borrow my little boat. Paddle left and right in time with the drum."
+            ],
+            "choice": "To the landing! I can paddle!",
+            "prompt": "Finish among the first {goal} boats!",
+            "reward": "{name}'s boat shoots ahead, and the whole landing cheers!",
+            "next": "The festival season is long, and the little boat is still tied up waiting for you."
+          }
         }
       ]
     },
@@ -75,7 +99,19 @@
           "reward": "Chà, {name} đi cầu còn vững hơn cả khỉ tớ!",
           "next": "Cầu tre còn nhiều nhịp lắm, mai mình lại đi tiếp nha.",
           "who": "{name}, bạn đi cầu khỉ gan dạ",
-          "learn": "Giữ thăng bằng và bình tĩnh"
+          "learn": "Giữ thăng bằng và bình tĩnh",
+          "en": {
+            "title": "Cross the monkey bridge with Khỉ Cầu Tre",
+            "summary": "Wobble across the bamboo bridge over the stream and keep your balance so you don't fall in.",
+            "lines": [
+              "Hey {name}, dare to cross the monkey bridge with me?",
+              "Whichever way you lean, drag your finger the other way and you'll stay steady."
+            ],
+            "choice": "Of course I dare, let's go!",
+            "prompt": "Cross {goal} whole monkey bridges!",
+            "reward": "Wow, {name} crosses the bridge steadier than me, and I'm a monkey!",
+            "next": "The bamboo bridge has lots more spans. Let's carry on tomorrow."
+          }
         },
         {
           "game": "stick-bridge",
@@ -90,7 +126,19 @@
           "reward": "Tuyệt cú mèo, cầu của {name} vừa khít luôn!",
           "next": "Còn mấy con suối nữa ở đầu cầu đá, lúc nào rảnh ghé tớ nhé.",
           "who": "{name}, người bắc cầu khéo tay",
-          "learn": "Ước lượng độ dài bằng mắt"
+          "learn": "Ước lượng độ dài bằng mắt",
+          "en": {
+            "title": "Bamboo bridges over the stream with Khỉ Cầu Tre",
+            "summary": "Hold so the bamboo grows just long enough, then drop it as a bridge between two stone pillars.",
+            "lines": [
+              "{name}, this stream has so many gaps, I can't get across!",
+              "Grow the bamboo just long enough to reach the stone pillar on the other side for me."
+            ],
+            "choice": "Let me judge the length!",
+            "prompt": "Bridge {goal} gaps in the stream!",
+            "reward": "Brilliant! {name}'s bridge is a perfect fit!",
+            "next": "There are more streams by the stone bridge. Visit me whenever you're free."
+          }
         },
         {
           "game": "road-cross",
@@ -105,7 +153,19 @@
           "reward": "Ếch con cảm ơn {name} rối rít, ộp ộp!",
           "next": "Ếch còn nhiều anh em lắm, chúng đợi cậu ở đầu cầu đá đấy.",
           "who": "{name}, người dẫn đường cho ếch con",
-          "learn": "Quan sát và chọn lúc an toàn để đi"
+          "learn": "Quan sát và chọn lúc an toàn để đi",
+          "en": {
+            "title": "Help the frog across with Khỉ Cầu Tre",
+            "summary": "Guide the frog across the busy road, then hop onto logs and turtle backs to cross the river.",
+            "lines": [
+              "My frog friend wants to get to the other bank. Help, {name}!",
+              "Watch the traffic carefully before hopping, and land on the logs to cross the river."
+            ],
+            "choice": "Follow me, froggy!",
+            "prompt": "Get the frog to the other bank {goal} times!",
+            "reward": "The little frog can't stop thanking {name}. Ribbit, ribbit!",
+            "next": "The frog has lots of brothers and sisters waiting for you by the stone bridge."
+          }
         }
       ]
     },
@@ -136,7 +196,19 @@
           "reward": "Meo, đàn vịt về đủ rồi, cảm ơn {name} nhiều!",
           "next": "Đàn vịt nghịch lắm, mai thế nào cũng xổng nữa, cậu ghé bờ đầm nhé.",
           "who": "{name}, bạn lùa vịt nhanh nhẹn",
-          "learn": "Đoán hướng chạy và dồn đúng góc"
+          "learn": "Đoán hướng chạy và dồn đúng góc",
+          "en": {
+            "title": "Round up the ducks with Mèo Đầm Sen",
+            "summary": "Wade into the pond, herd the ducks against the fence, then pounce and grab them one by one.",
+            "lines": [
+              "Oh no, {name}! The ducks got out and they're swimming everywhere!",
+              "Wade after them and herd them to the fence. I really don't like water."
+            ],
+            "choice": "I'll wade in and catch them!",
+            "prompt": "Catch {goal} ducks!",
+            "reward": "Meow, all the ducks are back! Thank you so much, {name}!",
+            "next": "Those ducks are so naughty, they'll surely escape again tomorrow. Come by the pond."
+          }
         },
         {
           "game": "pipe-connect",
@@ -151,7 +223,19 @@
           "reward": "Nước mát chảy róc rách rồi, {name} giỏi ghê!",
           "next": "Ruộng ven đầm còn khát nước lắm, hôm khác lại giúp tớ nha.",
           "who": "{name}, thợ sửa ống nước nhí",
-          "learn": "Suy nghĩ đường đi và xoay hình"
+          "learn": "Suy nghĩ đường đi và xoay hình",
+          "en": {
+            "title": "Connect the water pipes with Mèo Đầm Sen",
+            "summary": "Turn each pipe piece so water flows all the way from the well to the field.",
+            "lines": [
+              "Look, {name}, the pipes to the field have been turned every which way!",
+              "Tap each piece to turn it. Wherever the water reaches, the pipe turns blue."
+            ],
+            "choice": "I'll give it a try!",
+            "prompt": "Get water to the field {goal} times!",
+            "reward": "Cool water is trickling through now! {name} is so clever!",
+            "next": "The fields by the pond are still thirsty. Help me again another day."
+          }
         }
       ]
     },
@@ -187,7 +271,19 @@
           "reward": "Bốp! Niêu vỡ tung kẹo, {name} tài quá!",
           "next": "Năm nào hội làng cũng có đập niêu, cô vẫn đứng ở quảng trường chờ cháu.",
           "who": "{name}, người chơi hội làng tinh mắt",
-          "learn": "Ghi nhớ vị trí và định hướng"
+          "learn": "Ghi nhớ vị trí và định hướng",
+          "en": {
+            "title": "Smash the clay pot with Cô Hội Làng",
+            "summary": "Look carefully at where the clay pots hang, then, blindfolded, feel your way there and smash one.",
+            "lines": [
+              "The village festival has started! Come play pot-smashing with me, {name}!",
+              "Remember exactly where the pot hangs, because soon you'll be blindfolded."
+            ],
+            "choice": "I've got it memorised!",
+            "prompt": "Smash {goal} clay pots!",
+            "reward": "Crack! The pot bursts and sweets fly out! {name} is amazing!",
+            "next": "There's pot-smashing at the festival every year. I'll be in the village square waiting for you."
+          }
         },
         {
           "game": "nem-con",
@@ -202,7 +298,19 @@
           "reward": "Còn bay qua vòng đẹp quá, cả hội vỗ tay cho {name}!",
           "next": "Cột còn vẫn dựng giữa quảng trường, lúc nào cháu cũng ném được.",
           "who": "{name}, tay ném còn của làng",
-          "learn": "Căn lực ném và ngắm đích cao"
+          "learn": "Căn lực ném và ngắm đích cao",
+          "en": {
+            "title": "Throw the còn ball with Cô Hội Làng",
+            "summary": "Pull back and let go so the còn ball (a tasselled cloth ball) flies through the ring atop the bamboo pole.",
+            "lines": [
+              "Here are some colourful còn balls, {name}. Try throwing one!",
+              "Pull back further to throw further. Aim for the ring at the top of the bamboo pole."
+            ],
+            "choice": "Pass me a còn ball!",
+            "prompt": "Throw through the ring {goal} times!",
+            "reward": "The còn sailed right through! The whole festival claps for {name}!",
+            "next": "The còn pole still stands in the middle of the square, so you can throw any time."
+          }
         },
         {
           "game": "tug-of-war",
@@ -217,7 +325,19 @@
           "reward": "Đội mình thắng rồi! {name} khỏe như voi con!",
           "next": "Đội bên kia hẹn kéo lại trận nữa, cô chờ cháu ở quảng trường.",
           "who": "{name}, thành viên đội kéo co",
-          "learn": "Phối hợp theo nhịp và bền tay"
+          "learn": "Phối hợp theo nhịp và bền tay",
+          "en": {
+            "title": "Tug of war with Cô Hội Làng's team",
+            "summary": "Two teams grip the rope: tap fast in time with the shout to pull the red ribbon to your side.",
+            "lines": [
+              "My team is one person short, {name}. Join the tug of war!",
+              "When the drum calls 'heave-ho', pull twice as hard."
+            ],
+            "choice": "Heave-ho! I'm in!",
+            "prompt": "Win {goal} rounds of tug of war!",
+            "reward": "We won! {name} is as strong as a baby elephant!",
+            "next": "The other team wants a rematch. I'll wait for you in the square."
+          }
         }
       ]
     },
@@ -248,7 +368,19 @@
           "reward": "Ối, {name} ăn được cả quan to, tớ thua tâm phục!",
           "next": "Bàn ô quan vẫn còn kẻ bên bờ ruộng, ván sau tớ phục thù nhé.",
           "who": "{name}, kỳ thủ ô quan nhỏ",
-          "learn": "Đếm, tính trước và lập kế hoạch"
+          "learn": "Đếm, tính trước và lập kế hoạch",
+          "en": {
+            "title": "Play ô ăn quan with Thỏ Ô Quan",
+            "summary": "Sitting by the rice field, sow pebbles one square at a time; land before an empty square and you capture the next one.",
+            "lines": [
+              "{name}, I've just drawn an ô ăn quan board (a pebble-sowing game) in the dirt!",
+              "You take the bottom row. Sow your pebbles left or right, you choose."
+            ],
+            "choice": "I'll go first this game!",
+            "prompt": "Win {goal} pebble points!",
+            "reward": "Whoa, {name} captured the big mandarin square! I lose fair and square!",
+            "next": "The board is still drawn by the field. I'll get my revenge next game!"
+          }
         },
         {
           "game": "fireworks",
@@ -263,7 +395,19 @@
           "reward": "Trời sáng rực cả cánh đồng, {name} bắn đẹp nhất làng!",
           "next": "Năm sau tớ lại để dành pháo hoa chờ cậu bên bờ ruộng.",
           "who": "{name}, người thắp sáng trời đêm",
-          "learn": "Canh thời điểm thả tay chính xác"
+          "learn": "Canh thời điểm thả tay chính xác",
+          "en": {
+            "title": "Tết fireworks with Thỏ Ô Quan",
+            "summary": "On New Year's Eve in the fields, hold to send a firework up, then let go right in the middle of the gold ring.",
+            "lines": [
+              "It's nearly New Year's Eve, {name}! Let's set off fireworks for Tết!",
+              "Hold to launch it, then let go in the middle of the gold ring for a BOOM!"
+            ],
+            "choice": "I want a dazzling sky!",
+            "prompt": "Light up {goal} firework rings!",
+            "reward": "The whole field is lit up! {name}'s fireworks are the best in the village!",
+            "next": "Next year I'll save some fireworks and wait for you by the rice field again."
+          }
         }
       ]
     },
@@ -295,7 +439,19 @@
           "reward": "Hay lắm {name}, đàn cá chép đã hóa rồng bay vút lên trời rồi!",
           "next": "Chú lái đò vẫn neo ở bãi cỏ ven sông đón cháu ghé chơi tiếp.",
           "who": "{name}, bạn nhỏ đồng hành cùng cá chép",
-          "learn": "Canh đúng thời điểm nước êm để hành động"
+          "learn": "Canh đúng thời điểm nước êm để hành động",
+          "en": {
+            "title": "Carp leap the Vũ Môn falls with Chú Lái Đò Ba",
+            "summary": "Tap gently to make the carp leap up each step of the rushing waterfall to the high rocks.",
+            "lines": [
+              "{name}, the carp are setting off together to leap the Vũ Môn waterfall!",
+              "Wait for the water to calm, then tap to send the carp leaping up."
+            ],
+            "choice": "I'll help the carp jump!",
+            "prompt": "Help the carp leap {goal} steps of the waterfall!",
+            "reward": "Wonderful, {name}! The carp have turned into dragons and soared into the sky!",
+            "next": "The ferryman is still moored at the riverside meadow, waiting for you to visit."
+          }
         },
         {
           "game": "river-crossing",
@@ -310,7 +466,19 @@
           "reward": "Chuyến đò nào cũng sang bờ an toàn nhờ tài tính toán của {name}!",
           "next": "Bến sông quê mình ngày nào cũng nhộn nhịp tiếng đò rẽ sóng.",
           "who": "{name}, hoa tiêu nhí thông minh của bến đò",
-          "learn": "Suy nghĩ logic và xếp thứ tự hợp lý"
+          "learn": "Suy nghĩ logic và xếp thứ tự hợp lý",
+          "en": {
+            "title": "Cross the river safely with Chú Lái Đò Ba",
+            "summary": "Load goods and little passengers onto the small boat and row them safely to the other bank.",
+            "lines": [
+              "{name}, watch me ferry things across the river!",
+              "Plan it so the pairs left on the bank don't cause trouble for each other."
+            ],
+            "choice": "I'll load the boat now!",
+            "prompt": "Ferry {goal} full loads across the river for me!",
+            "reward": "Every trip reached the bank safely, thanks to {name}'s smart planning!",
+            "next": "Our village river landing is busy every day with boats cutting through the water."
+          }
         },
         {
           "game": "sail-wind",
@@ -325,7 +493,19 @@
           "reward": "Thuyền chạy nhanh tựa chim bay, {name} cầm lái buồm cừ lắm!",
           "next": "Khi nào gió chiều nổi lên, chú cháu mình lại giương buồm ra xa.",
           "who": "{name}, thuyền trưởng nhí lướt sóng gió",
-          "learn": "Căn chỉnh hướng buồm theo chiều gió"
+          "learn": "Căn chỉnh hướng buồm theo chiều gió",
+          "en": {
+            "title": "Catch the wind with Chú Lái Đò Ba",
+            "summary": "Turn the white sail to catch the south wind so the boat speeds past the marker buoys.",
+            "lines": [
+              "The river wind is blowing strong, {name}!",
+              "Pull the sail so the wind fills it, and the boat glides along smoothly."
+            ],
+            "choice": "I'm raising the sail!",
+            "prompt": "Catch the wind and sail past {goal} flower buoys on the river!",
+            "reward": "The boat flies like a bird! {name} handles the sail like a pro!",
+            "next": "When the evening wind picks up, you and I will hoist the sail and head out again."
+          }
         }
       ]
     },
@@ -357,7 +537,19 @@
           "reward": "Khán giả vỗ tay reo hò râm ran vì điệu múa tuyệt vời của {name}!",
           "next": "Hiên xưởng thủ công lúc nào cũng mở cửa đón cháu vào luyện múa rối.",
           "who": "{name}, nghệ sĩ tí hon của phường rối nước",
-          "learn": "Uốn lượn ngón tay uyển chuyển theo nhịp"
+          "learn": "Uốn lượn ngón tay uyển chuyển theo nhịp",
+          "en": {
+            "title": "Water puppetry with Nghệ Nhân Múa Rối",
+            "summary": "Steer the Chú Tễu puppet so it sways in rhythm along the faint shadow on the water.",
+            "lines": [
+              "The water stage is all lit up, {name}!",
+              "Move the Chú Tễu puppet so it dances along the round shadow on the water."
+            ],
+            "choice": "I'll make Chú Tễu dance!",
+            "prompt": "Match the puppet to the shadow for {goal} lively beats!",
+            "reward": "The audience claps and cheers for {name}'s wonderful puppet dance!",
+            "next": "The craft workshop porch is always open for you to practise puppetry."
+          }
         },
         {
           "game": "dan-bau",
@@ -372,7 +564,19 @@
           "reward": "Tiếng đàn của {name} vang lên trong vắt làm xao xuyến cả làng quê!",
           "next": "Cây đàn bầu mộc mạc vẫn treo bên hiên xưởng đợi tiếng gảy của cháu.",
           "who": "{name}, nhạc công nhỏ gảy đàn thánh thót",
-          "learn": "Lắng nghe cao độ và giữ tay nhịp nhàng"
+          "learn": "Lắng nghe cao độ và giữ tay nhịp nhàng",
+          "en": {
+            "title": "Play the đàn bầu with Nghệ Nhân Múa Rối",
+            "summary": "Slide your finger along the neck of the đàn bầu (a one-string zither) to make sweet, ringing notes.",
+            "lines": [
+              "Our village đàn bầu has such a heartfelt sound, {name}!",
+              "Keep your finger on the wavy line of notes so the music rings out."
+            ],
+            "choice": "I'll make the string sing!",
+            "prompt": "Play {goal} gentle đàn bầu tunes in tune!",
+            "reward": "{name}'s music rings out so clear, it moves the whole village!",
+            "next": "The simple đàn bầu still hangs by the workshop porch, waiting for you to play."
+          }
         },
         {
           "game": "hold-notes",
@@ -387,7 +591,19 @@
           "reward": "Nốt sáo của {name} bay vút lên chín tầng mây thật du dương!",
           "next": "Gió đồng vẫn vi vu thổi sáo quanh hiên xưởng thủ công mỗi chiều.",
           "who": "{name}, người thổi sáo diều ngân vang",
-          "learn": "Cảm nhận thời gian ngân dài của âm thanh"
+          "learn": "Cảm nhận thời gian ngân dài của âm thanh",
+          "en": {
+            "title": "Hold the long notes with Nghệ Nhân Múa Rối",
+            "summary": "Tap and hold each sweet flute note for exactly as long as it soars across the blue sky.",
+            "lines": [
+              "{name}, can you hear the kite flutes humming over the fields?",
+              "Hold your finger so the note rings long, then lift right at the red line."
+            ],
+            "choice": "I'll hold the humming note!",
+            "prompt": "Hold {goal} soaring flute notes in time!",
+            "reward": "{name}'s flute notes float high above the clouds, so sweet!",
+            "next": "The field breeze plays its flute around the workshop porch every afternoon."
+          }
         }
       ]
     },
@@ -419,7 +635,19 @@
           "reward": "Dòng sông lấp lánh như dát vàng nhờ bàn tay khéo léo của {name}!",
           "next": "Mỗi tối trăng rằm, cô lại ngồi dưới gốc đa thả hoa đăng cầu an.",
           "who": "{name}, người thắp sáng dòng sông trăng",
-          "learn": "Canh khe hở giữa dòng nước chảy xuôi"
+          "learn": "Canh khe hở giữa dòng nước chảy xuôi",
+          "en": {
+            "title": "Float lanterns on the river with Cô Đèn Lồng Sen",
+            "summary": "Tap gently to set each sparkling flower lantern afloat, drifting softly down the cool river.",
+            "lines": [
+              "Our village floats bright flower lanterns on the river on festival night, {name}!",
+              "Tap to release the lanterns away from the water hyacinths so they drift far."
+            ],
+            "choice": "I'll set a lantern afloat!",
+            "prompt": "Float {goal} glowing flower lanterns gently down the river!",
+            "reward": "The river sparkles like gold thanks to {name}'s gentle hands!",
+            "next": "Every full-moon night, I sit under the banyan tree and float lanterns for good luck."
+          }
         },
         {
           "game": "lantern-light",
@@ -434,7 +662,19 @@
           "reward": "Cả xóm làng bừng sáng ấm áp muôn màu dưới bàn tay của {name}!",
           "next": "Hàng đèn lồng sen đầu làng vẫn treo lung linh chờ cháu ghé thắp.",
           "who": "{name}, người giữ lửa đèn lồng rực rỡ",
-          "learn": "Phản xạ nhanh tay thắp đều các ngọn đèn"
+          "learn": "Phản xạ nhanh tay thắp đều các ngọn đèn",
+          "en": {
+            "title": "Light the lanterns with Cô Đèn Lồng Sen",
+            "summary": "Relight the flickering lotus lanterns so the whole village road glows with colour.",
+            "lines": [
+              "The breeze is making the candles in the lanterns flicker, {name}!",
+              "Tap the lanterns quickly to light the way for the people walking by."
+            ],
+            "choice": "I'll light the lanterns now!",
+            "prompt": "Keep the lights on for {goal} groups at the lantern festival!",
+            "reward": "The whole village glows warm and colourful, thanks to {name}!",
+            "next": "The row of lotus lanterns at the village gate is still glowing, waiting for you to light it."
+          }
         },
         {
           "game": "rain-barrel",
@@ -449,7 +689,19 @@
           "reward": "Những chum nước mưa đã đầy ắp nước ngọt mát lành rồi {name} ơi!",
           "next": "Bóng cây đa đầu làng luôn mát rượi đón cháu đến hứng nước mưa.",
           "who": "{name}, bạn nhỏ chắt chiu từng giọt mưa lành",
-          "learn": "Khéo léo điều chỉnh độ nghiêng tàu lá"
+          "learn": "Khéo léo điều chỉnh độ nghiêng tàu lá",
+          "en": {
+            "title": "Catch rainwater in jars with Cô Đèn Lồng Sen",
+            "summary": "Tilt the green banana leaf to guide clear rainwater into the clay jars until they're full.",
+            "lines": [
+              "A summer shower is pouring fresh water into the garden, {name}!",
+              "Tilt the banana leaf to guide the water into the mouth of the jar."
+            ],
+            "choice": "I'll tilt the leaf to catch it!",
+            "prompt": "Fill {goal} clay jars to the brim with cool rainwater!",
+            "reward": "The rain jars are brimming with fresh, cool water, {name}!",
+            "next": "The banyan tree at the village gate is always cool and shady, waiting for you to catch rain."
+          }
         }
       ]
     },
@@ -481,7 +733,19 @@
           "reward": "Nồi cơm trắng dẻo thơm phức mùi gạo mới, {name} nấu khéo quá!",
           "next": "Bếp lửa hội làng bên đầm sen luôn đỏ than đợi cháu trổ tài.",
           "who": "{name}, đầu bếp nhí thổi cơm thi hội làng",
-          "learn": "Giữ ngọn lửa cháy đều và kiên nhẫn"
+          "learn": "Giữ ngọn lửa cháy đều và kiên nhẫn",
+          "en": {
+            "title": "Rice-cooking contest with Bác Thổi Cơm Thi",
+            "summary": "Feed the fire stick by stick to keep the flame in the safe zone so the rice cooks soft and fragrant.",
+            "lines": [
+              "The village festival's clay-pot rice contest is in full swing, {name}!",
+              "Add just enough firewood to keep a gentle flame so the rice cooks through."
+            ],
+            "choice": "I'll watch over the rice pot!",
+            "prompt": "Tend the fire and cook {goal} fragrant pots of rice!",
+            "reward": "Soft white rice that smells of the new harvest! {name} cooks so well!",
+            "next": "The festival fire by the lotus pond is always glowing, waiting to see your skills."
+          }
         },
         {
           "game": "bat-trach",
@@ -496,7 +760,19 @@
           "reward": "Bắt được chạch trơn tuột không hề dễ mà {name} làm được, giỏi lắm!",
           "next": "Trò bắt chạch hội làng vui vẻ vẫn mở bên góc sân đầm sen.",
           "who": "{name}, tay bắt chạch nhanh nhẹn hội thi",
-          "learn": "Bám đuổi mục tiêu di chuyển nhanh và êm"
+          "learn": "Bám đuổi mục tiêu di chuyển nhanh và êm",
+          "en": {
+            "title": "Catch the loach with Bác Thổi Cơm Thi",
+            "summary": "Follow the slippery field loach with your hand as it wriggles through the cool water in the clay jar.",
+            "lines": [
+              "{name}, look at that slippery loach darting around the jar!",
+              "Drag your finger to follow the loach's head carefully, or it'll dive out of sight."
+            ],
+            "choice": "I'll catch that loach right away!",
+            "prompt": "Catch {goal} slippery loaches in the jar!",
+            "reward": "Catching a slippery loach isn't easy, but {name} did it! Great job!",
+            "next": "The fun loach-catching game is still running by the pitch near the lotus pond."
+          }
         },
         {
           "game": "croc-compare",
@@ -511,7 +787,19 @@
           "reward": "Cá sấu vỗ bụng cười khà khà vì được {name} cho ăn no căng!",
           "next": "Bác vẫn để bàn tính bên sân bóng đầm sen đón cháu ra so tài số học.",
           "who": "{name}, bạn nhỏ so sánh số nhanh chuẩn xác",
-          "learn": "So sánh độ lớn và chọn số lớn hơn"
+          "learn": "So sánh độ lớn và chọn số lớn hơn",
+          "en": {
+            "title": "The crocodile eats the bigger number with Bác Thổi Cơm Thi",
+            "summary": "Compare the two plates of food, then swipe to open the crocodile's mouth towards the one with more.",
+            "lines": [
+              "This greedy crocodile only likes the plate with the bigger number, {name}!",
+              "Compare them carefully, then swipe to turn the crocodile towards the bigger plate."
+            ],
+            "choice": "I'll show the croc the bigger plate!",
+            "prompt": "Point the crocodile to the bigger plate {goal} times to fill its tummy!",
+            "reward": "The crocodile pats its belly and chuckles. {name} fed it till it's stuffed!",
+            "next": "I keep my counting table by the pitch near the lotus pond, ready for a maths contest."
+          }
         }
       ]
     },
@@ -543,7 +831,19 @@
           "reward": "Đá nảy tung bọt trắng xóa liên hồi, {name} ném cừ khôi thật đấy!",
           "next": "Bờ kênh chợ làng còn nhiều đá cuội dẹt, mai cậu lại ra lia thia nha.",
           "who": "{name}, tay ném lia thia siêu đẳng trên kênh",
-          "learn": "Căn lực vuốt thẳng và lướt nhanh ngang mặt nước"
+          "learn": "Căn lực vuốt thẳng và lướt nhanh ngang mặt nước",
+          "en": {
+            "title": "Skim stones with Bé Ném Lia Thia",
+            "summary": "Swipe fast to skim a flat pebble low over the water so it bounces across the blue ripples.",
+            "lines": [
+              "{name}, these flat canal pebbles are perfect for skimming!",
+              "Swipe fast and straight across the water so the stone skips a long way."
+            ],
+            "choice": "Here goes, skimming across!",
+            "prompt": "Skim stones onto the targets and collect {goal} star points on the water!",
+            "reward": "The stone bounces again and again in white splashes! {name} throws brilliantly!",
+            "next": "There are plenty of flat pebbles by the market canal. Come skim again tomorrow."
+          }
         },
         {
           "game": "sink-float",
@@ -558,7 +858,19 @@
           "reward": "Cậu đoán món nào trúng phóc món đó, {name} tinh ý quá chừng!",
           "next": "Chậu nước thí nghiệm vẫn để bên bờ kênh chợ, rảnh thì ghé tớ chơi tiếp.",
           "who": "{name}, nhà khoa học nhí khám phá tự nhiên",
-          "learn": "Nhận biết đặc tính nặng nhẹ của vật thể"
+          "learn": "Nhận biết đặc tính nặng nhẹ của vật thể",
+          "en": {
+            "title": "Sink or float with Bé Ném Lia Thia",
+            "summary": "Watch each object drop into the water and guess whether it will sink or float.",
+            "lines": [
+              "Lots of interesting things are about to drop into the water tub, {name}!",
+              "Guess which ones float and swipe up, and which ones sink and swipe down."
+            ],
+            "choice": "I'm great at guessing sink or float!",
+            "prompt": "Correctly guess sink or float for {goal} objects!",
+            "reward": "Every guess spot on! {name} is so observant!",
+            "next": "The experiment tub is still by the market canal. Come and play when you're free."
+          }
         },
         {
           "game": "rising-water",
@@ -573,7 +885,19 @@
           "reward": "Mái nhà đứng vững vàng trên đỉnh đồi khô ráo, {name} cừ ghê!",
           "next": "Góc kênh chợ nhỏ lúc nào cũng đón cậu ghé chơi đắp đồi ngăn lũ.",
           "who": "{name}, dũng sĩ dâng đồi che chở làng quê",
-          "learn": "Quan sát mực nước dâng để kịp thời nâng đồi"
+          "learn": "Quan sát mực nước dâng để kịp thời nâng đồi",
+          "en": {
+            "title": "Rising water with Bé Ném Lia Thia",
+            "summary": "Hold to build the hill up higher than the rushing floodwater so the roof stays dry.",
+            "lines": [
+              "The tide is rising right up to the edge of the canal, {name}!",
+              "Hold your finger on the hill to raise the ground above the water."
+            ],
+            "choice": "I'll build the hill up and keep the house dry!",
+            "prompt": "Raise the hill above {goal} waves of floodwater!",
+            "reward": "The house stands safe and dry on top of the hill! {name} is brilliant!",
+            "next": "The little market canal corner is always ready for you to build hills against the flood."
+          }
         }
       ]
     }

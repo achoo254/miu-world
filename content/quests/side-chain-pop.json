@@ -46,7 +46,19 @@
         {
           "text": "Tớ kích nổ chuỗi sáng liền!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "There's a bunch of glowing jellyfish under the coral reef, {name}! Come and look!",
+          "Tap once where they're most crowded, and the burst of light sets off the whole chain."
+        ],
+        "choices": [
+          {
+            "text": "I'll set off the chain of light!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Tạo phản ứng dây chuyền làm sáng bừng sáu đàn ngọc trai biển nhé!",
       "game": "chain-pop",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "Jellyfish chain glow",
+        "prompt": "Start chain reactions that light up 6 pearl swarms!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khỉ con đu cành reo to: cả mặt biển sáng bừng lấp lánh như sao nhờ {name} rồi!"
+      "text": "Khỉ con đu cành reo to: cả mặt biển sáng bừng lấp lánh như sao nhờ {name} rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "The little monkey swings and shouts: the whole sea is sparkling like stars thanks to {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đáy biển đêm nay vẫn lung linh huyền ảo, Khỉ con chờ {name} quay lại chơi tiếp."
+      "text": "Đáy biển đêm nay vẫn lung linh huyền ảo, Khỉ con chờ {name} quay lại chơi tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "The seabed shimmers magically tonight. The little monkey hopes {name} will come back to play."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Light up a chain of pearls with Khỉ Nhảy Dù",
+    "summary": "Jellyfish flicker under the water: tap one starting point to set off a chain reaction of light."
   }
 }

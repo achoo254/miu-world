@@ -46,7 +46,19 @@
         {
           "text": "Tớ nhảy bao bố siêu nhanh!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, the animal yard's sack race is about to start!",
+          "Climb into the sack and tap when your feet hit the ground to spring towards the finish."
+        ],
+        "choices": [
+          {
+            "text": "I'm a super-fast sack hopper!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nhảy bao bố về đích trong ba lượt đua hào hứng nhé!",
       "game": "sack-race",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Sack Race",
+        "prompt": "Hop to the finish in 3 exciting races!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chú Chuột Túi Nhảy trao vòng nguyệt quế rực rỡ, reo vang chúc mừng {name} vô địch!"
+      "text": "Chú Chuột Túi Nhảy trao vòng nguyệt quế rực rỡ, reo vang chúc mừng {name} vô địch!",
+      "en": {
+        "title": "Reward",
+        "text": "Chú Chuột Túi Nhảy hands over a bright laurel wreath and cheers {name} the champion!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đường đua nông trang vui ơi là vui, có dịp cậu lại ghé sân cỏ nhảy bao bố tiếp."
+      "text": "Đường đua nông trang vui ơi là vui, có dịp cậu lại ghé sân cỏ nhảy bao bố tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "The farm race track is so much fun. Come hop in sacks on the lawn again some time."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Farm Sack Race with Chú Chuột Túi",
+    "summary": "Burlap sacks hop along the grassy track; bounce in rhythm to reach the finish first."
   }
 }

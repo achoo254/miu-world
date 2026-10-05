@@ -46,7 +46,19 @@
         {
           "text": "Tớ cắm cọc rào giữ gà lại!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Help, {name}! These cheeky chicks keep trying to dash out onto the grass!",
+          "Each time the chicks take a step, put up a fence post, until they're safely circled in."
+        ],
+        "choices": [
+          {
+            "text": "I'll put up the fence posts!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Khoanh rào quây giữ an toàn bốn chú gà con nhé!",
       "game": "circle-chick",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Fence in the chick",
+        "prompt": "Fence in 4 chicks safe and sound!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bé Chăn Gà Con ôm chú gà nhỏ vào lòng, cảm ơn {name} đã cắm rào thật nhanh tay!"
+      "text": "Bé Chăn Gà Con ôm chú gà nhỏ vào lòng, cảm ơn {name} đã cắm rào thật nhanh tay!",
+      "en": {
+        "title": "Reward",
+        "text": "Bé Chăn Gà Con cuddles a little chick and thanks {name} for fencing so fast!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Gà con ngoan ngoãn rồi, lúc nào rảnh cậu ghé mép rào chuồng gà nông trại chơi nhé."
+      "text": "Gà con ngoan ngoãn rồi, lúc nào rảnh cậu ghé mép rào chuồng gà nông trại chơi nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The chicks are behaving now. Visit the chicken coop fence whenever you're free."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Fence in the Chicks with Bé Chăn Gà",
+    "summary": "Yellow chicks hop all over the path; put up fences to stop them running off."
   }
 }

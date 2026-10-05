@@ -28,7 +28,19 @@
           "reward": "Cánh Cụt vỗ đôi cánh nhỏ: {name} đẩy đá khéo hơn cả tớ!",
           "next": "Hồ băng còn lạnh lâu, Cánh Cụt chờ {name} đẩy thêm ván nữa.",
           "who": "{name}, tay đẩy bi đá trên hồ băng",
-          "learn": "Ước lượng lực đẩy và khoảng cách"
+          "learn": "Ước lượng lực đẩy và khoảng cách",
+          "en": {
+            "title": "Ice Lake Curling with Cánh Cụt Trượt Băng",
+            "summary": "On the frozen lake, swipe the stone towards the rings and sweep the ice to make it slide farther.",
+            "lines": [
+              "{name}, the frozen lake is smooth as a mirror today!",
+              "I have five round stones. Push them so they stop right in the middle of the rings."
+            ],
+            "choice": "Let me throw the first stone!",
+            "prompt": "Score {goal} points on the ice lake!",
+            "reward": "Cánh Cụt flaps his little wings: {name} curls better than me!",
+            "next": "The lake will stay frozen a long time. Cánh Cụt is waiting for {name} to play another round."
+          }
         },
         {
           "game": "ice-slide",
@@ -43,7 +55,19 @@
           "reward": "Cả nhà cánh cụt reo lên: cảm ơn {name} đã dẫn đường giỏi thế!",
           "next": "Lúc nào băng đóng dày, cứ ra bờ hồ tìm Cánh Cụt nhé.",
           "who": "{name}, người dẫn đường trên băng",
-          "learn": "Tính trước nhiều bước đi"
+          "learn": "Tính trước nhiều bước đi",
+          "en": {
+            "title": "Slide the Penguin Home Through the Ice Maze",
+            "summary": "The penguin slides until it hits a rock; swipe the right way to bring it home.",
+            "lines": [
+              "My cousin slid off and got lost in the ice maze. {name}, help!",
+              "It slides all the way until it bumps a rock, so think hard before you swipe."
+            ],
+            "choice": "I'll find the way home for it!",
+            "prompt": "Bring the penguin home through {goal} mazes!",
+            "reward": "The whole penguin family cheers: thank you, {name}, for leading the way so well!",
+            "next": "Whenever the ice is thick, come find Cánh Cụt at the lakeside."
+          }
         }
       ]
     },
@@ -74,7 +98,19 @@
           "reward": "Gấu Trắng ôm bụng cười: người tuyết của {name} đẹp nhất bãi!",
           "next": "Bãi người tuyết lúc nào cũng còn chỗ, Gấu Trắng đợi {name} quay lại.",
           "who": "{name}, nghệ nhân đắp người tuyết",
-          "learn": "So sánh to, vừa, nhỏ"
+          "learn": "So sánh to, vừa, nhỏ",
+          "en": {
+            "title": "Snowman Building with Gấu Trắng Lăn Tuyết",
+            "summary": "Roll a snowball round the yard so it grows, then stack a big, a medium and a small one into a snowman.",
+            "lines": [
+              "So much fresh snow, {name}! Want to build a snowman with me?",
+              "The farther you roll, the bigger the snowball. When it fits the dashed ring, drop it in."
+            ],
+            "choice": "Let's build a whole snow family!",
+            "prompt": "Stack {goal} snowballs onto snowmen!",
+            "reward": "Gấu Trắng holds his tummy laughing: {name}'s snowman is the best in the field!",
+            "next": "There's always room in the snowman field. Gấu Trắng is waiting for {name} to come back."
+          }
         },
         {
           "game": "snowball-fight",
@@ -89,7 +125,19 @@
           "reward": "Gấu Trắng giơ cao nắm tuyết: đội mình thắng nhờ {name} đấy!",
           "next": "Trận ném tuyết sau còn vui hơn, nhớ ghé bãi người tuyết tìm Gấu Trắng nhé.",
           "who": "{name}, chiến binh ném tuyết",
-          "learn": "Phản xạ: lúc nào núp, lúc nào ném"
+          "learn": "Phản xạ: lúc nào núp, lúc nào ném",
+          "en": {
+            "title": "Snowball Fight with Gấu Trắng Lăn Tuyết",
+            "summary": "Friends pop up behind snow forts; tap to throw and hold to duck when snowballs fly your way.",
+            "lines": [
+              "The other team has challenged us to a snowball fight, {name}. Into the fort!",
+              "When a snowball flies at you, duck right away, then pop up and throw one back."
+            ],
+            "choice": "Duck low, aim true!",
+            "prompt": "Hit the other team {goal} times to win!",
+            "reward": "Gấu Trắng holds up a snowball: our team won thanks to {name}!",
+            "next": "The next snowball fight will be even more fun. Look for Gấu Trắng in the snowman field."
+          }
         }
       ]
     },
@@ -120,7 +168,19 @@
           "reward": "Cáo Tuyết xoay một vòng trên tuyết: {name} bay xa như chim đại bàng!",
           "next": "Cầu nhảy luôn mở, Cáo Tuyết sẽ đứng ở chân dốc chờ {name}.",
           "who": "{name}, vận động viên nhảy cầu",
-          "learn": "Chọn đúng thời điểm bật nhảy"
+          "learn": "Chọn đúng thời điểm bật nhảy",
+          "en": {
+            "title": "Ski Jump with Cáo Tuyết Nhảy Cầu",
+            "summary": "Crouch and race down the ramp, let go at the green line to soar, then tap to land in style.",
+            "lines": [
+              "The ski ramp has fresh snow, {name}. Come fly with me!",
+              "Hold to speed down, then let go at the green line and you'll soar into the air."
+            ],
+            "choice": "I'll fly really far!",
+            "prompt": "Jump a total of {goal} metres over three tries!",
+            "reward": "Cáo Tuyết spins in the snow: {name} flies as far as an eagle!",
+            "next": "The ramp is always open. Cáo Tuyết will wait for {name} at the foot of the slope."
+          }
         },
         {
           "game": "sled-slalom",
@@ -135,7 +195,19 @@
           "reward": "Cáo Tuyết vẫy cờ rối rít: {name} lái xe trượt khéo ghê!",
           "next": "Mai Cáo Tuyết cắm thêm cờ mới, {name} lại xuống dốc chơi nhé.",
           "who": "{name}, tay lái xe trượt tuyết",
-          "learn": "Lái khéo và nhìn trước đường đi"
+          "learn": "Lái khéo và nhìn trước đường đi",
+          "en": {
+            "title": "Sled Slalom with Cáo Tuyết",
+            "summary": "Riding a sled downhill, drag your finger to steer between each pair of flags and dodge the pine trees.",
+            "lines": [
+              "I've planted red and blue flags down the slope. {name}, steer the sled through!",
+              "Drag left and right so the sled passes between two flags, and watch out for pine trees."
+            ],
+            "choice": "Sit tight, here we go!",
+            "prompt": "Steer through {goal} flag gates on the snowy slope!",
+            "reward": "Cáo Tuyết waves the flags wildly: {name} steers the sled so well!",
+            "next": "Tomorrow Cáo Tuyết will plant new flags. Come down the slope and play again, {name}."
+          }
         }
       ]
     },
@@ -167,7 +239,19 @@
           "reward": "Nai Leo Vách gật gù: {name} leo nhanh như sóc núi vậy!",
           "next": "Vách đá vẫn đứng đó, Nai Leo Vách hẹn {name} lần sau leo cao hơn.",
           "who": "{name}, nhà leo núi nhí",
-          "learn": "Phản xạ nhanh và quan sát nguy hiểm"
+          "learn": "Phản xạ nhanh và quan sát nguy hiểm",
+          "en": {
+            "title": "Icy Rock Climb with Nai Leo Vách",
+            "summary": "Tap the glowing holds to climb the wall, hurry past cracked holds and dodge falling rocks.",
+            "lines": [
+              "The cliff behind the explorer station is really high, {name}. Let's race to the top!",
+              "Cracked holds fall after two seconds. See an exclamation mark? Dodge sideways fast."
+            ],
+            "choice": "I've got a good grip, let's climb!",
+            "prompt": "Climb {goal} metres up the cliff!",
+            "reward": "Nai Leo Vách nods: {name} climbs as fast as a mountain squirrel!",
+            "next": "The cliff isn't going anywhere. Nai Leo Vách hopes {name} climbs even higher next time."
+          }
         },
         {
           "game": "scratch-reveal",
@@ -182,7 +266,19 @@
           "reward": "Nai Leo Vách tròn mắt: {name} chỉ nhìn một góc mà đã đoán ra!",
           "next": "Nai còn cả xấp thẻ phủ tuyết, khi nào rảnh {name} ghé trạm thám hiểm nhé.",
           "who": "{name}, thám tử đoán hình",
-          "learn": "Nhận ra cả hình từ một phần nhỏ"
+          "learn": "Nhận ra cả hình từ một phần nhỏ",
+          "en": {
+            "title": "Scratch the Snow, Guess the Animal with Nai Leo Vách",
+            "summary": "Rub your finger to scratch the snow off a card, watch the picture appear, and guess the animal.",
+            "lines": [
+              "I've hidden animal pictures under the snow on these cards. {name}, have a guess!",
+              "Scratch just a little and guess right away for two points. Only great guessers manage it!"
+            ],
+            "choice": "Let me scratch the first card!",
+            "prompt": "Guess right to earn {goal} points!",
+            "reward": "Nai Leo Vách's eyes go wide: {name} guessed it from one little corner!",
+            "next": "Nai has a whole stack of snowy cards. Visit the explorer station when you're free, {name}."
+          }
         }
       ]
     },
@@ -214,7 +310,19 @@
           "reward": "Cánh Cụt vỗ cánh ríu rít: những đường gạt đĩa của {name} hiểm hóc quá!",
           "next": "Sân băng luôn sẵn sàng, Cánh Cụt đón {name} thi thêm trận nữa nhé.",
           "who": "{name}, tuyển thủ khúc côn cầu trên băng",
-          "learn": "Phản xạ nhanh và chọn góc gạt đĩa"
+          "learn": "Phản xạ nhanh và chọn góc gạt đĩa",
+          "en": {
+            "title": "Ice Hockey with Cánh Cụt Khúc Côn Cầu",
+            "summary": "Slide your paddle across the smooth ice to push the puck into your rival's net.",
+            "lines": [
+              "{name}, the natural ice rink is slippery and smooth today, perfect!",
+              "Take the paddle on this side and let's battle with the puck."
+            ],
+            "choice": "In position to block the puck!",
+            "prompt": "Score {goal} goals against your rival!",
+            "reward": "Cánh Cụt flaps and chirps: {name}'s shots are so tricky!",
+            "next": "The rink is always ready. Cánh Cụt welcomes {name} for another match."
+          }
         },
         {
           "game": "drift-corner",
@@ -229,7 +337,19 @@
           "reward": "Cánh Cụt nhảy múa cổ vũ: {name} ôm cua ngọt ngào chẳng trượt ra ngoài!",
           "next": "Đường đua hồ băng còn dài, Cánh Cụt chờ {name} tiếp tục so tài tốc độ.",
           "who": "{name}, tay đua cừ khôi trên tuyết",
-          "learn": "Canh đúng lúc giữ và thả tay lái"
+          "learn": "Canh đúng lúc giữ và thả tay lái",
+          "en": {
+            "title": "Drift Corners on the Ice Track with Cánh Cụt",
+            "summary": "The car speeds over slippery snow; hold to hug the post round the bend, then let go to drive straight.",
+            "lines": [
+              "The track around the frozen lake is super slippery. {name}, take the wheel!",
+              "At each bend, hold tight around the flag post, and only let go after the turn."
+            ],
+            "choice": "Hands steady on the wheel!",
+            "prompt": "Drift skilfully through {goal} icy bends!",
+            "reward": "Cánh Cụt dances and cheers: {name} takes the corners smoothly without sliding off!",
+            "next": "The lake track goes on and on. Cánh Cụt is waiting for {name} to race again."
+          }
         },
         {
           "game": "ice-bridge",
@@ -244,7 +364,19 @@
           "reward": "Cánh Cụt chạy ào sang bờ: nhờ chiếc cầu của {name} mà đàn chim về tổ an toàn!",
           "next": "Mùa đông còn lạnh giá, Cánh Cụt đợi {name} ghé chơi và bắc thêm cầu băng.",
           "who": "{name}, người xây cầu băng khéo léo",
-          "learn": "Tiết kiệm lượt đi và nối đường thẳng hàng"
+          "learn": "Tiết kiệm lượt đi và nối đường thẳng hàng",
+          "en": {
+            "title": "Ice Bridge Across the Lake with Cánh Cụt Khúc Côn Cầu",
+            "summary": "The lake is full of deep holes; use a magic snowflake to freeze the water and make a safe path.",
+            "lines": [
+              "The ice has cracked in lots of dangerous spots. {name}, help me build a bridge to the other side!",
+              "Tap a water square to freeze it into a solid block of ice you can walk on."
+            ],
+            "choice": "I'll build a sturdy ice bridge!",
+            "prompt": "Freeze {goal} ice bridges across the lake!",
+            "reward": "Cánh Cụt dashes across: thanks to {name}'s bridge, the birds got home safely!",
+            "next": "Winter is still freezing. Cánh Cụt is waiting for {name} to build more ice bridges."
+          }
         }
       ]
     },
@@ -276,7 +408,19 @@
           "reward": "Gấu Bắc Cực cười xòa: xô cá đầy ắp nhờ đôi mắt tinh tường của cháu {name}!",
           "next": "Dưới lòng hồ còn cá ngon, bác Gấu đợi {name} ghé trạm thám hiểm câu tiếp.",
           "who": "{name}, tay câu kiên nhẫn bên hố băng",
-          "learn": "Đoán trước hướng bơi của đàn cá"
+          "learn": "Đoán trước hướng bơi của đàn cá",
+          "en": {
+            "title": "Ice Fishing with Gấu Bắc Cực Câu Cá",
+            "summary": "The lake is covered with thick ice; watch the fish shadows glide by and drop your line into the hole.",
+            "lines": [
+              "The cold wind outside the cave is blowing snow about. {name}, sit and fish with me!",
+              "Watch the fish shadows under the ice and drop the bait one beat early so they bite."
+            ],
+            "choice": "Fishing rod at the ready!",
+            "prompt": "Reel in {goal} fresh fish from under the ice!",
+            "reward": "Gấu Bắc Cực laughs: the bucket is full thanks to {name}'s sharp eyes!",
+            "next": "There are more tasty fish in the lake. Gấu Bắc Cực is waiting for {name} at the explorer station."
+          }
         },
         {
           "game": "penguin-share",
@@ -291,7 +435,19 @@
           "reward": "Bác Gấu xoa đầu khen ngợi: cháu {name} chia phần chu đáo, bạn nào cũng no bụng!",
           "next": "Đàn cánh cụt lại sắp tới giờ ăn trưa, bác Gấu đợi {name} quay lại trổ tài.",
           "who": "{name}, người chia cá công bằng",
-          "learn": "Phép chia đều và kiểm tra số lượng"
+          "learn": "Phép chia đều và kiểm tra số lượng",
+          "en": {
+            "title": "Share Fish Fairly with Gấu Bắc Cực",
+            "summary": "Hungry penguins wait in line; share out the fish so every friend gets the same amount.",
+            "lines": [
+              "These baby penguins have hunted all morning and they're worn out. {name}, help me share the fish!",
+              "Tap each penguin to give it fish, and count so everyone gets the same number."
+            ],
+            "choice": "I'll share fairly with everyone!",
+            "prompt": "Share the fish evenly among {goal} groups of tiny penguins!",
+            "reward": "Gấu Bắc Cực pats {name}'s head: such careful sharing, every penguin is full!",
+            "next": "It's almost the penguins' lunchtime again. Gấu Bắc Cực is waiting for {name} to come back."
+          }
         },
         {
           "game": "melting-floes",
@@ -306,7 +462,19 @@
           "reward": "Gấu Bắc Cực vỗ vai khen: chân cháu {name} nhanh thoăn thoắt, nhảy chuẩn từng bước!",
           "next": "Dòng nước lạnh vẫn còn trôi dạt, bác Gấu chờ {name} ở cửa hang băng.",
           "who": "{name}, nhà thám hiểm băng trôi dũng cảm",
-          "learn": "Quyết định dứt khoát trước tình huống vội"
+          "learn": "Quyết định dứt khoát trước tình huống vội",
+          "en": {
+            "title": "Hop the Drifting Ice with Gấu Bắc Cực Câu Cá",
+            "summary": "Bobbing ice floes are about to sink; lead your little friend to hop quickly onto steady ones and grab the fish.",
+            "lines": [
+              "The lake is sweeping the ice away so fast! {name}, let's cross the water together!",
+              "When a floe cracks, jump to the next one right away, or you'll slip and get soaked."
+            ],
+            "choice": "I'll hop over lightly!",
+            "prompt": "Collect {goal} fresh fish from the drifting ice!",
+            "reward": "Gấu Bắc Cực claps {name} on the back: such quick feet, every jump just right!",
+            "next": "The cold water is still drifting. Gấu Bắc Cực is waiting for {name} at the ice cave entrance."
+          }
         }
       ]
     },
@@ -338,7 +506,19 @@
           "reward": "Cáo Tuyết phe phẩy chiếc đuôi trắng: tượng của {name} tạc lấp lánh như pha lê!",
           "next": "Còn nhiều khối băng mới đưa về làng, Cáo Tuyết hẹn {name} gọt tượng tiếp.",
           "who": "{name}, nghệ nhân điêu khắc băng tuyết",
-          "learn": "Phân biệt đường nét hình vẽ và rèn sự khéo tay"
+          "learn": "Phân biệt đường nét hình vẽ và rèn sự khéo tay",
+          "en": {
+            "title": "Ice Sculpting with Cáo Tuyết Điêu Khắc",
+            "summary": "A clear block of ice hides a statue inside; gently tap away the extra ice around it.",
+            "lines": [
+              "There are crystal-clear ice blocks in the middle of the square. {name}, let's carve statues!",
+              "Swipe gently to chip away the pale outer edge and keep the blue statue shape inside."
+            ],
+            "choice": "I'm great at carving!",
+            "prompt": "Carve {goal} beautiful ice statues!",
+            "reward": "Cáo Tuyết swishes a fluffy white tail: {name}'s statue sparkles like crystal!",
+            "next": "More new ice blocks are coming to the village. Cáo Tuyết hopes {name} will carve again."
+          }
         },
         {
           "game": "snow-tracks",
@@ -353,7 +533,19 @@
           "reward": "Cáo Tuyết nghiêng đầu thán phục: tài thám tử của {name} chẳng thua ai ở xứ tuyết!",
           "next": "Tuyết mới lại rơi phủ lối, Cáo Tuyết chờ {name} ra quảng trường soi dấu chân.",
           "who": "{name}, thám tử dò dấu vết rừng tuyết",
-          "learn": "Nhận biết hình dạng bước chân động vật"
+          "learn": "Nhận biết hình dạng bước chân động vật",
+          "en": {
+            "title": "Tracks in the Snow with Cáo Tuyết Điêu Khắc",
+            "summary": "Strange footprints are pressed into the snow; study the tracks to work out which forest animal made them.",
+            "lines": [
+              "So many animals went for a walk around the snow village last night, {name}!",
+              "Look at the footprints in the white snow, then point to the right animal's name."
+            ],
+            "choice": "I can spot those footprints!",
+            "prompt": "Name {goal} animals from their tracks in the snow!",
+            "reward": "Cáo Tuyết tilts a head in awe: {name} is the best detective in snow country!",
+            "next": "Fresh snow covers the paths again. Cáo Tuyết is waiting for {name} at the square to read tracks."
+          }
         },
         {
           "game": "nonogram",
@@ -368,7 +560,19 @@
           "reward": "Cáo Tuyết reo mừng: tranh {name} tô hiện lên rõ nét và sinh động quá!",
           "next": "Bảng vẽ giữa làng còn nhiều trang mới, Cáo Tuyết chờ {name} ghé tô tiếp.",
           "who": "{name}, họa sĩ tranh ô tuyết",
-          "learn": "Tư duy logic theo hàng ngang và hàng dọc"
+          "learn": "Tư duy logic theo hàng ngang và hàng dọc",
+          "en": {
+            "title": "Snow Grid Pictures with Cáo Tuyết Điêu Khắc",
+            "summary": "A grid with number clues; colour in squares so the hidden picture slowly appears.",
+            "lines": [
+              "I've just made a mystery picture puzzle out of numbers in the snow, {name}!",
+              "Count the squares shown at the start of each row, then tap the right spots to reveal the drawing."
+            ],
+            "choice": "Let me solve it square by square!",
+            "prompt": "Colour the right squares to finish {goal} mystery snow pictures!",
+            "reward": "Cáo Tuyết cheers: {name}'s picture comes out clear and so lively!",
+            "next": "The village drawing board has plenty of new pages. Cáo Tuyết is waiting for {name} to colour more."
+          }
         }
       ]
     },
@@ -400,7 +604,19 @@
           "reward": "Nai Nhỏ nhấc cao chân khen ngợi: {name} nhảy thoăn thoắt hệt như sơn dương núi!",
           "next": "Hẻm núi tuyết vẫn còn gió thổi vi vu, Nai Nhỏ đợi {name} cùng leo vách đá.",
           "who": "{name}, nhà leo vách đá cừ khôi",
-          "learn": "Canh thời gian bật nhảy nhịp nhàng"
+          "learn": "Canh thời gian bật nhảy nhịp nhàng",
+          "en": {
+            "title": "Canyon Wall Jump with Nai Nhỏ Vách Đá",
+            "summary": "A canyon rises steep on both sides; tap to bounce back and forth between the sharp rock walls.",
+            "lines": [
+              "The cliff next to the cable car station is really steep. {name}, let's test our high jumps!",
+              "Tap quickly to spring across to the other side, and stay away from the sharp icicles."
+            ],
+            "choice": "Ready, set, spring!",
+            "prompt": "Climb {goal} metres up the snowy canyon!",
+            "reward": "Nai Nhỏ lifts a hoof in praise: {name} jumps as nimbly as a mountain goat!",
+            "next": "The wind still whistles through the snowy canyon. Nai Nhỏ is waiting for {name} to climb again."
+          }
         },
         {
           "game": "gravity-flip",
@@ -415,7 +631,19 @@
           "reward": "Nai Nhỏ tròn xoe đôi mắt: {name} đảo trần sàn khéo léo chẳng vấp viên đá nào!",
           "next": "Hang băng luôn sáng ánh pha lê, Nai Nhỏ ngóng {name} quay lại chạy tiếp ván mới.",
           "who": "{name}, tay lướt trọng lực tài ba",
-          "learn": "Phản xạ chuyển đổi vị trí tức thì"
+          "learn": "Phản xạ chuyển đổi vị trí tức thì",
+          "en": {
+            "title": "Gravity Flip with Nai Nhỏ Vách Đá",
+            "summary": "A magical rock cave; tap to flip and fall up to the ceiling or down to the floor to dodge obstacles.",
+            "lines": [
+              "The tunnel up to the cable car station has a magic breeze, {name}!",
+              "Just tap and you'll run upside down on the cave ceiling to dodge the rocks below."
+            ],
+            "choice": "Running on the ceiling is so fun!",
+            "prompt": "Glide {goal} metres safely through the ice cave!",
+            "reward": "Nai Nhỏ's eyes go round: {name} flips between ceiling and floor without tripping once!",
+            "next": "The ice cave always glows with crystal light. Nai Nhỏ hopes {name} comes back for another run."
+          }
         },
         {
           "game": "cable-car",
@@ -430,7 +658,19 @@
           "reward": "Nai Nhỏ rung cặp gạc xinh xắn: cabin nào cháu {name} xếp cũng vừa khít chỗ!",
           "next": "Tuyến cáp treo vẫn rộn rã chuông reo, Nai Nhỏ hẹn gặp {name} ở cửa ga làng.",
           "who": "{name}, người điều phối cáp treo chu đáo",
-          "learn": "Phép cộng gộp vừa đủ số lượng cho trước"
+          "learn": "Phép cộng gộp vừa đủ số lượng cho trước",
+          "en": {
+            "title": "Board the Cable Car with Nai Nhỏ Vách Đá",
+            "summary": "Cable cars glide into the station one by one; invite in the group that fits the empty seats.",
+            "lines": [
+              "Lots of visitors are queuing to ride up and see the snow. {name}, help me check tickets!",
+              "Each cabin only fits four. Pick the group whose size matches the empty seats."
+            ],
+            "choice": "I'll board just the right number!",
+            "prompt": "Board {goal} groups of passengers safely onto the cable car!",
+            "reward": "Nai Nhỏ shakes a pair of pretty antlers: every cabin {name} fills fits perfectly!",
+            "next": "The cable car line still rings with bells. Nai Nhỏ will see {name} at the village station."
+          }
         }
       ]
     },
@@ -462,7 +702,19 @@
           "reward": "Người Tuyết Đếm Bậc xoay tròn vui sướng: {name} có đôi tai cảm âm thật tuyệt vời!",
           "next": "Gió núi vẫn gảy từng bản nhạc trong trẻo, Người Tuyết đón {name} lên đài nghe tiếp.",
           "who": "{name}, nhà thẩm âm trên đỉnh núi",
-          "learn": "So sánh cao độ âm thanh trầm bổng"
+          "learn": "So sánh cao độ âm thanh trầm bổng",
+          "en": {
+            "title": "Musical Stairs with Người Tuyết Đếm Bậc",
+            "summary": "Falling ice drops ring out like musical notes; listen to tell if the next note is higher or lower.",
+            "lines": [
+              "The mountain wind is ringing the ice bells, {name}. Listen with me!",
+              "If the next sound is higher, choose the up arrow; if it's lower, press the down arrow."
+            ],
+            "choice": "My ears hear really well!",
+            "prompt": "Listen closely to climb {goal} musical steps!",
+            "reward": "Người Tuyết Đếm Bậc spins with joy: {name} has a wonderful ear for music!",
+            "next": "The mountain wind keeps playing clear tunes. Người Tuyết welcomes {name} back to listen."
+          }
         },
         {
           "game": "block-count",
@@ -477,7 +729,19 @@
           "reward": "Người Tuyết gật gù thán phục: mắt {name} sáng như sao, khối ẩn nào cũng thấy!",
           "next": "Tháp tuyết trên đỉnh còn nhiều hình mới, Người Tuyết mong {name} ghé đếm cùng.",
           "who": "{name}, chuyên gia đếm khối hình không gian",
-          "learn": "Tưởng tượng và đếm khối lập phương bị khuất"
+          "learn": "Tưởng tượng và đếm khối lập phương bị khuất",
+          "en": {
+            "title": "Count Snow Blocks with Người Tuyết Đếm Bậc",
+            "summary": "Snow blocks are stacked unevenly; count even the hidden ones at the back to find the total.",
+            "lines": [
+              "I've just stacked these square snow blocks into a tower, {name}. Guess how many there are?",
+              "Don't forget to count the hidden blocks holding up the rows below."
+            ],
+            "choice": "I'll count each layer carefully!",
+            "prompt": "Count the blocks exactly in {goal} snowy stacks!",
+            "reward": "Người Tuyết nods in awe: {name}'s eyes shine like stars, spotting every hidden block!",
+            "next": "The summit tower has lots of new shapes. Người Tuyết hopes {name} will come count again."
+          }
         },
         {
           "game": "crowd-gates",
@@ -492,7 +756,19 @@
           "reward": "Người Tuyết vẫy đôi tay gỗ: đoàn bạn đông đúc của {name} đã đẩy xe về đích rồi!",
           "next": "Đỉnh núi vẫn phủ tuyết trắng xóa, Người Tuyết Đếm Bậc đứng chờ {name} quay lại chơi.",
           "who": "{name}, đội trưởng dẫn đường đoàn người tuyết",
-          "learn": "So sánh kết quả phép tính nhanh chóng"
+          "learn": "So sánh kết quả phép tính nhanh chóng",
+          "en": {
+            "title": "Crowd Gates with Người Tuyết Đếm Bậc",
+            "summary": "A team of friends runs down the mountainside; weave through the plus and times gates to grow the team pushing the sled.",
+            "lines": [
+              "The tiny snowman team is about to roll downhill, {name}. Lead the way!",
+              "Slide over to the gate with the bigger plus or times to call lots more friends along."
+            ],
+            "choice": "I'll pick the gate with the most friends!",
+            "prompt": "Grow your team to {goal} members to push the snow sled!",
+            "reward": "Người Tuyết waves his wooden arms: {name}'s big team pushed the sled to the finish!",
+            "next": "The peak is still covered in white snow. Người Tuyết Đếm Bậc waits for {name} to play again."
+          }
         }
       ]
     }

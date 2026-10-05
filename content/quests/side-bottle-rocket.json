@@ -46,7 +46,19 @@
         {
           "text": "Bơm căng khí nén, tên lửa bay cao nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, our school science club just finished building this water rocket launcher!",
+          "Swipe to pump air up to the green line, keep the launch pad straight, then press the button."
+        ],
+        "choices": [
+          {
+            "text": "Pump it up, rocket fly high!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Phóng thành công năm quả tên lửa nước nhé!",
       "game": "bottle-rocket",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Water rocket",
+        "prompt": "Launch 5 water rockets successfully!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chó Đội Trưởng nhảy cẫng lên mừng: tên lửa của {name} bung dù hạ cánh đẹp tuyệt vời!"
+      "text": "Chó Đội Trưởng nhảy cẫng lên mừng: tên lửa của {name} bung dù hạ cánh đẹp tuyệt vời!",
+      "en": {
+        "title": "Reward",
+        "text": "Chó Đội Trưởng leaps for joy: the rocket of {name} opened its parachute and landed beautifully!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Sân trường luôn có chỗ cho nhà khoa học nhí, {name} rảnh lại ra bắn tên lửa tiếp nhé."
+      "text": "Sân trường luôn có chỗ cho nhà khoa học nhí, {name} rảnh lại ra bắn tên lửa tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The schoolyard always has room for young scientists, {name}, so come launch rockets again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Water rocket launch with Chó Đội Trưởng",
+    "summary": "A rocket made from a soda bottle: swipe to pump in air, then press the button to blast it into the blue sky."
   }
 }

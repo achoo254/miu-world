@@ -88,7 +88,27 @@
           "text": "Cậu đừng gặm nữa, răng còn để xây cầu chứ!",
           "reply": "Hải Ly che miệng cười khì: ừ nhỉ, cầu gỗ mà thiếu răng thì ai gặm khúc gỗ đây?"
         }
-      ]
+      ],
+      "en": {
+        "title": "Clay as hard as stone",
+        "goTo": "Go down to the clay bank of the stream, Hải Ly Cần is tapping her teeth tock-tock",
+        "lines": [
+          "{name}, help! I wanted to mould presents for my whole family, but this lump of clay is as hard as a pebble.",
+          "I tried chewing it soft and nearly chipped my two front teeth, the finest teeth in the forest!",
+          "Dry clay needs water. Wrap it in banana leaves.",
+          "Mèo Bùn says little but always hits the nail on the head! But where did I put the water scoop and the banana leaves…"
+        ],
+        "choices": [
+          {
+            "text": "I'll go and find water and banana leaves!",
+            "reply": "Hải Ly writes it carefully in her notebook: one scoop of water, one banana leaf, one hard-working {name}."
+          },
+          {
+            "text": "Stop chewing, you need those teeth to build bridges!",
+            "reply": "Hải Ly covers her mouth and giggles: oh right, without teeth, who would gnaw the logs for a wooden bridge?"
+          }
+        ]
+      }
     },
     {
       "id": "tim-do-u-dat",
@@ -1136,7 +1156,31 @@
           "text": "Tặng Đốm cho bạn ấy đỡ buồn vì không được sờ!",
           "reply": "Đốm sướng quá nhảy cẫng lên, suýt nữa thì ngồi đè lên chú cá đất."
         }
-      ]
+      ],
+      "en": {
+        "title": "The first clay present",
+        "goTo": "Go back to the clay bank of the stream, the first batch of models has dried",
+        "lines": [
+          "Done! I made a teeny bridge, a little fish and a wonky bowl… I mean, a new-style bowl.",
+          "Let me touch the bridge, just for a sec!",
+          "Don't touch. Still drying.",
+          "{name}, who should I give this little bridge to first?"
+        ],
+        "choices": [
+          {
+            "text": "Give it to your mum and dad, they taught you to build bridges!",
+            "reply": "Hải Ly blushes and nods: yes, tonight I'll give it to them and recite the whole poem too."
+          },
+          {
+            "text": "Give it to Mèo Bùn, she showed you how to soften the clay!",
+            "reply": "Mèo Bùn takes the bridge, is quiet for a moment, then says softly: thank you. Her tail wags three times."
+          },
+          {
+            "text": "Give it to Đốm so he's not sad about not touching!",
+            "reply": "Đốm is so happy he leaps in the air and nearly sits on the clay fish."
+          }
+        ]
+      }
     },
     {
       "id": "do-choi-cua-em",
@@ -1188,14 +1232,22 @@
       "title": "Quà đất sét của Hải Ly",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hải Ly Cần tặng {name} một chú hải ly đất sét bé bằng ngón tay, răng cửa to đúng như thật, kèm lời dặn của Mèo Bùn: đừng sờ, còn đang phơi."
+      "text": "Hải Ly Cần tặng {name} một chú hải ly đất sét bé bằng ngón tay, răng cửa to đúng như thật, kèm lời dặn của Mèo Bùn: đừng sờ, còn đang phơi.",
+      "en": {
+        "title": "Hải Ly's clay present",
+        "text": "Hải Ly Cần gives {name} a clay beaver as small as a finger, with front teeth big just like the real thing, along with Mèo Bùn's warning: don't touch, still drying."
+      }
     },
     {
       "id": "mo-bai-25",
       "title": "Hai chị em ong giận nhau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Gió mang về một tin từ Xóm Mái Ấm: bên bụi hoa tỉ muội trong vườn, hai chị em ong Hồng và Nụ đang vo ve cãi cọ, giành nhau một bông hoa, chẳng ai chịu ai. Ai sẽ làm lành cho hai chị em đây?"
+      "text": "Gió mang về một tin từ Xóm Mái Ấm: bên bụi hoa tỉ muội trong vườn, hai chị em ong Hồng và Nụ đang vo ve cãi cọ, giành nhau một bông hoa, chẳng ai chịu ai. Ai sẽ làm lành cho hai chị em đây?",
+      "en": {
+        "title": "Two bee sisters fall out",
+        "text": "The wind brings news from Xóm Mái Ấm: by the sister-flower bush in the garden, bee sisters Hồng and Nụ are buzzing and bickering over a single flower, and neither will give in. Who'll help the sisters make up?"
+      }
     }
   ],
   "reward": {

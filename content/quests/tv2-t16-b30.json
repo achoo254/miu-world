@@ -92,7 +92,27 @@
           "text": "Cún Vừng ơi, mình chia nhau đi tìm nào!",
           "reply": "Cún Vừng vẫy đuôi tít mù: tớ đánh hơi, cậu nhìn kĩ. Ra bụi tre ven dốc thôi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Cún Vừng barking at the bottom of the slope",
+        "goTo": "Run to the bottom of the slope, Cún Vừng is barking loudly for someone to help Grandpa",
+        "lines": [
+          "Woof! {name}, thank goodness! My grandpa's leg hurts; he's plonked down at the bottom of the slope and won't admit it hurts.",
+          "Hurts? Nonsense! When I was young I ran up this slope faster than the wind, and the wind had to beg me to slow down.",
+          "Then why have you been sitting here since morning, Grandpa?",
+          "I'm… I'm resting so the wind can catch up. Besides, my walking stick, my glasses and my straw hat have rolled off somewhere."
+        ],
+        "choices": [
+          {
+            "text": "You rest, Grandpa, I'll go find your things!",
+            "reply": "Grandpa Vện strokes his beard: what a good child. Find the stick first, it's my wooden horse."
+          },
+          {
+            "text": "Cún Vừng, let's split up and search!",
+            "reply": "Cún Vừng wags his tail like mad: I'll sniff, you look carefully. To the bamboo by the slope!"
+          }
+        ]
+      }
     },
     {
       "id": "tim-do-ong-ven",
@@ -977,7 +997,29 @@
           "text": "Cháu kể chuyện vui cho ông quên đau nhé!",
           "reply": "Nghe chuyện con gà trống choai gáy \"O…o!\", ông cười rung cả râu và bước lên lúc nào chẳng biết."
         }
-      ]
+      ],
+      "en": {
+        "title": "The very last step",
+        "goTo": "Help Grandpa Vện home to his doorstep",
+        "lines": [
+          "We've reached the doorstep! But has this step grown taller today, or have my legs got shorter?",
+          "{name}, it's exactly like the poem. What can we do to help Grandpa now?"
+        ],
+        "choices": [
+          {
+            "text": "Lean on my shoulder and Cún Vừng's, one of us on each side!",
+            "reply": "One, two, three… up! Grandpa Vện is on the step; he tosses his stick and ruffles both their heads."
+          },
+          {
+            "text": "I'll hold your stick, Grandpa, just take it really slowly.",
+            "reply": "Grandpa takes one step at a time, counting aloud like he did at army drill. At the top he chuckles heartily."
+          },
+          {
+            "text": "I'll tell you a funny story so you forget the pain!",
+            "reply": "Hearing about the young rooster crowing “O…o!”, Grandpa laughs so hard his beard shakes, and he's up the step before he knows it."
+          }
+        ]
+      }
     },
     {
       "id": "ke-viec-cung-nguoi-than",
@@ -1069,14 +1111,22 @@
       "title": "Quà của ông Vện",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ông Vện tặng {name} một khúc tre nhỏ ông tự gọt thành chiếc còi, thổi lên kêu \"toe toe\" như tiếng gió hồi ông còn trẻ. Cún Vừng thì tặng một cái vẫy đuôi dài nhất từ trước tới nay."
+      "text": "Ông Vện tặng {name} một khúc tre nhỏ ông tự gọt thành chiếc còi, thổi lên kêu \"toe toe\" như tiếng gió hồi ông còn trẻ. Cún Vừng thì tặng một cái vẫy đuôi dài nhất từ trước tới nay.",
+      "en": {
+        "title": "A gift from Grandpa Vện",
+        "text": "Grandpa Vện gives {name} a little piece of bamboo he whittled into a whistle; blow it and it goes “toot toot” like the wind when he was young. Cún Vừng gives the longest tail wag ever."
+      }
     },
     {
       "id": "mo-bai-31",
       "title": "Đom đóm bay về hồ",
       "kind": "next",
       "trigger": "auto",
-      "text": "Hoàng hôn buông xuống hồ sen cuối xóm. Một đàn đom đóm bay ngang, rủ nhau đi soi đường cho Cá Bống: mẹ của Bống ốm rồi, cần tìm thuốc gấp."
+      "text": "Hoàng hôn buông xuống hồ sen cuối xóm. Một đàn đom đóm bay ngang, rủ nhau đi soi đường cho Cá Bống: mẹ của Bống ốm rồi, cần tìm thuốc gấp.",
+      "en": {
+        "title": "Fireflies fly to the lake",
+        "text": "Dusk settles over the lotus lake at the end of the hamlet. A swarm of fireflies flits past, off to light the way for Cá Bống: Bống's mum is ill and needs medicine fast."
+      }
     }
   ],
   "reward": {

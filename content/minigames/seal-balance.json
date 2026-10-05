@@ -9,5 +9,12 @@
   "controls": ["drag"],
   "duration": 60,
   "goal": 35,
-  "params": { "wind": 1 }
+  "params": { "wind": 1 },
+  "en": {
+    "name": "Seal Ball Balance",
+    "howTo": [
+      "A ball sits on the seal's nose. Drag the seal left and right to keep it from falling.",
+      "Whichever way the ball leans, {name} drags the seal that way. The longer it stays up, the higher the score."
+    ]
+  }
 }

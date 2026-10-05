@@ -10,5 +10,13 @@
   "controls": ["swipe"],
   "duration": 60,
   "goal": 5,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Winnow Rice for Tấm",
+    "howTo": [
+      "Swipe up to toss the rice from the tray. The wind blows the husks away and the rice falls back.",
+      "Not too high, {name}: toss too high and the rice blows away too!",
+      "When the tray has no husks left, that tray is done."
+    ]
+  }
 }

@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Picture Crossword",
+    "howTo": [
+      "Each picture is a word: across words start to the right of it, down words start below it.",
+      "{name} drags letters into the boxes, or taps a letter then a box. Crossing words share a letter.",
+      "A wrong letter pops out; rest a moment and try again."
+    ]
+  }
 }

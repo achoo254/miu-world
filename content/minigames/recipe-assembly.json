@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 8,
-  "params": { "patience": 1 }
+  "params": { "patience": 1 },
+  "en": {
+    "name": "Bánh Mì Orders",
+    "howTo": [
+      "A customer orders: read the pictures in the bubble, left to right.",
+      "{name} drags each filling into the bánh mì in the right order (or taps the tray).",
+      "Customers who wait too long walk away: lose three and your turn is over."
+    ]
+  }
 }

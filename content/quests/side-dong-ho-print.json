@@ -46,7 +46,19 @@
         {
           "text": "Cháu dập khuôn in tranh Đông Hồ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, would you like to print the bright yin-yang pig picture yourself?",
+          "When the paper slides under the glowing block, tap to press the print."
+        ],
+        "choices": [
+          {
+            "text": "I'll press a Đông Hồ print!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "In chuẩn xác từng lớp màu hoàn thành ba mươi bức tranh Đông Hồ nhé!",
       "game": "dong-ho-print",
-      "goal": 30
+      "goal": 30,
+      "en": {
+        "title": "Đông Hồ woodblock prints",
+        "prompt": "Print each colour layer just right to finish 30 Đông Hồ pictures!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Màu sắc tranh Đông Hồ tươi rói óng ánh, {name} in tranh đẹp tuyệt vời!"
+      "text": "Màu sắc tranh Đông Hồ tươi rói óng ánh, {name} in tranh đẹp tuyệt vời!",
+      "en": {
+        "title": "Reward",
+        "text": "Bright, shimmering Đông Hồ colours! {name} prints beautifully!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Xấp giấy điệp trắng ngần đầu dãy sạp hoa vẫn chờ cháu đến in tranh."
+      "text": "Xấp giấy điệp trắng ngần đầu dãy sạp hoa vẫn chờ cháu đến in tranh.",
+      "en": {
+        "title": "See you soon",
+        "text": "A stack of pearly paper at the flower stall is waiting for your prints."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Đông Hồ printing with Cô Nặn Tò He",
+    "summary": "Press the carved woodblock onto the shimmering paper at just the right moment so the folk picture shows clearly."
   }
 }

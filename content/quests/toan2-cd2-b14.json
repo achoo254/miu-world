@@ -65,7 +65,26 @@
           "text": "Pin kĩ tính ghê!",
           "reply": "Cánh Cụt Pin ưỡn ngực: Kĩ tính thì cân mới đúng, câu đố mới chuẩn chứ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Cánh Cụt Pin guards the door",
+        "goTo": "Go to the greenhouse door, where Cánh Cụt Pin is standing straight as a signpost, hugging a notebook",
+        "lines": [
+          "Halt! The seedling greenhouse only opens when every puzzle has been checked correct. I'm Pin, keeper of the market scales, and I notice the tiniest mistake.",
+          "Only... this morning I took my bunch of keys out and counted them three times, then dropped three little ones around here.",
+          "{name}, find my three keys, then I'll set puzzles, you solve them, and I'll check. Deal?"
+        ],
+        "choices": [
+          {
+            "text": "Deal! I'll solve any puzzle",
+            "reply": "Cánh Cụt Pin gives one very serious nod: Good. I'll write every question in my notebook."
+          },
+          {
+            "text": "You're so careful, Pin!",
+            "reply": "Cánh Cụt Pin puffs out his chest: Careful makes the scales right and the puzzles correct!"
+          }
+        ]
+      }
     },
     {
       "id": "tim-chia-khoa",
@@ -98,7 +117,20 @@
           "text": "Nhớ rồi, đố đi Pin!",
           "reply": "Cánh Cụt Pin mở sổ, hắng giọng: Câu đố thứ nhất, nghe cho kĩ đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Pin reviews step by step",
+        "lines": [
+          "One, two, three: all the keys are here, I counted twice. Now let's review: adding past 10, make 10 first, for example 8 + 6 = 8 + 2 + 4 = 14.",
+          "Taking away past 10, get down to 10 first: 14 – 6 = 14 – 4 – 2 = 8. I've checked it, correct at every step."
+        ],
+        "choices": [
+          {
+            "text": "Got it, quiz me, Pin!",
+            "reply": "Cánh Cụt Pin opens his notebook and clears his throat: Puzzle number one, listen carefully!"
+          }
+        ]
+      }
     },
     {
       "id": "nham-hai-cot",
@@ -615,7 +647,25 @@
           "text": "Câu bẫy trước cho vui!",
           "reply": "Cánh Cụt Pin: Muốn gỡ bẫy thì phải qua tính nhẩm trước đã. Làm đúng thứ tự mới được!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Easy puzzles or hard ones?",
+        "goTo": "Go back to the greenhouse door, where Cánh Cụt Pin is jingling his keys",
+        "lines": [
+          "All correct, I've checked! The greenhouse door is half open now. Just one more half to go.",
+          "Do you want the super-speed mental maths next, or my tricky True-or-False questions first?"
+        ],
+        "choices": [
+          {
+            "text": "Super-speed mental maths first!",
+            "reply": "Cánh Cụt Pin: Super speed means I'll start the stopwatch! Ready... go!"
+          },
+          {
+            "text": "The tricky ones first for fun!",
+            "reply": "Cánh Cụt Pin: To get past the traps you must do the mental maths first. Everything in the right order!"
+          }
+        ]
+      }
     },
     {
       "id": "nham-sieu-toc",
@@ -1542,14 +1592,22 @@
       "title": "Nhà kính mở cửa",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cửa nhà kính mở toang, hương cây giống ùa ra. Cánh Cụt Pin đeo cho {name} huy hiệu \"Phá cửa ải câu đố\" và nghiêm trang ghi tên cậu vào sổ của chợ."
+      "text": "Cửa nhà kính mở toang, hương cây giống ùa ra. Cánh Cụt Pin đeo cho {name} huy hiệu \"Phá cửa ải câu đố\" và nghiêm trang ghi tên cậu vào sổ của chợ.",
+      "en": {
+        "title": "The greenhouse opens",
+        "text": "The greenhouse door swings wide and the smell of seedlings rushes out. Cánh Cụt Pin gives {name} the \"Puzzle Gate Breaker\" badge and solemnly writes their name in the market ledger."
+      }
     },
     {
       "id": "can-dia-lech",
       "title": "Chiếc cân đĩa lệch",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ dãy hàng cân đong của Chợ phiên vọng sang tiếng kêu: chiếc cân đĩa ở quầy cân lệch hẳn một bên. Cánh Cụt Pin vội lạch bạch chạy sang, chưa biết cân lại các túi hàng thế nào."
+      "text": "Từ dãy hàng cân đong của Chợ phiên vọng sang tiếng kêu: chiếc cân đĩa ở quầy cân lệch hẳn một bên. Cánh Cụt Pin vội lạch bạch chạy sang, chưa biết cân lại các túi hàng thế nào.",
+      "en": {
+        "title": "The lopsided balance scale",
+        "text": "A cry comes from the weighing row of the market: the balance scale at the weighing counter is tipped right over to one side. Cánh Cụt Pin waddles over in a hurry, with no idea how to reweigh all the bags."
+      }
     }
   ],
   "reward": {

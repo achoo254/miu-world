@@ -45,7 +45,21 @@
       ],
       "choices": [
         { "text": "Bác nghỉ đi ạ, để cháu lo!", "reply": "Giỏi quá! Nhớ đọc sổ tay của bác trước khi cho ăn nhé." }
-      ]
+      ],
+      "en": {
+        "title": "Uncle Ba's bad back",
+        "goTo": "Drop by Uncle Ba's porch, he's sitting rubbing his back",
+        "lines": [
+          "Oh, my back! I twisted it carrying sacks of grain this morning, and the chickens, the pigs and the cow are all shouting that they're hungry.",
+          "Could you do my jobs for one morning? Their food is in the corner of the drying yard."
+        ],
+        "choices": [
+          {
+            "text": "You rest, Uncle, leave it to me!",
+            "reply": "Wonderful! Remember to read my notebook before you feed them."
+          }
+        ]
+      }
     },
     {
       "id": "gom-thuc-an",
@@ -157,7 +171,25 @@
           "text": "Nhờ Anh Nông Dân Tú giúp một tay",
           "consequence": "Lu Lu chạy vụt đi báo. Anh Tú đang cày ở ruộng cày xới, ra nhờ anh ấy nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Carrying heavy loads",
+        "prompt": "The water buckets and grain sacks are really heavy. How will {name} get them to the pens?",
+        "choices": [
+          {
+            "text": "Find wood and build a wheelbarrow",
+            "consequence": "A few planks and an old wheel, and there's a wheelbarrow rolling the load along in no time."
+          },
+          {
+            "text": "Split the grain into small bags and make lots of trips",
+            "consequence": "Every trip is light as a feather, a few trips and it's done, and your back doesn't ache at all."
+          },
+          {
+            "text": "Ask young farmer Tú to lend a hand",
+            "consequence": "Lu Lu dashes off to tell him. Tú is ploughing in the tilled field, go and ask him!"
+          }
+        ]
+      }
     },
     {
       "id": "nho-anh-tu",
@@ -168,7 +200,19 @@
       "lines": [
         { "speaker": "Anh Nông Dân Tú", "text": "Làm thay bác Ba à? Giỏi đấy! Anh vác bao thóc cho, em xách xô nước nhẹ hơn thôi nhé." }
       ],
-      "choices": [{ "text": "Dạ, mình cùng làm nhanh lên anh!" }]
+      "choices": [{ "text": "Dạ, mình cùng làm nhanh lên anh!" }],
+      "en": {
+        "title": "Ask Tú for help",
+        "goTo": "Go to the tilled field and ask young farmer Tú",
+        "lines": [
+          "Doing Uncle Ba's jobs, are you? Good for you! I'll carry the grain sacks; you take the lighter water bucket."
+        ],
+        "choices": [
+          {
+            "text": "Okay, let's get it done quickly together!"
+          }
+        ]
+      }
     },
     {
       "id": "chia-thuc-an",
@@ -213,14 +257,22 @@
       "title": "Bác Ba cảm ơn",
       "kind": "reward",
       "target": "vt-ntr-bac-ba",
-      "text": "Bác Ba cười khà khà: có cháu giúp, lưng bác đỡ hẳn. Bác biếu {name} rổ trứng gà tươi, cả nông trại cũng khen nức nở."
+      "text": "Bác Ba cười khà khà: có cháu giúp, lưng bác đỡ hẳn. Bác biếu {name} rổ trứng gà tươi, cả nông trại cũng khen nức nở.",
+      "en": {
+        "title": "Uncle Ba says thank you",
+        "text": "Uncle Ba chuckles: with your help, my back feels much better. He gives {name} a basket of fresh eggs, and the whole farm sings their praises."
+      }
     },
     {
       "id": "xem-ca-dop-moi",
       "title": "Xem cá đớp mồi",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chiều mát, bác Ba đã đi lại được. Bác rủ {name} ra ao cá xem đàn cá chép đớp mồi, nghe kể chuyện ngày xưa làm ruộng."
+      "text": "Chiều mát, bác Ba đã đi lại được. Bác rủ {name} ra ao cá xem đàn cá chép đớp mồi, nghe kể chuyện ngày xưa làm ruộng.",
+      "en": {
+        "title": "Watching the fish feed",
+        "text": "In the cool of the afternoon, Uncle Ba can walk again. He invites {name} to the fish pond to watch the carp snap up their food and hear stories of farming in the old days."
+      }
     }
   ],
   "reward": {

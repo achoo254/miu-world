@@ -82,7 +82,27 @@
           "text": "Cầu vồng đẹp thế, cậu ước một điều thôi!",
           "reply": "Một điều thôi á? Khó quá! Để tớ vừa đi nhặt đồ vừa nghĩ."
         }
-      ]
+      ],
+      "en": {
+        "title": "Thỏ Bồng Bềnh and the rainbow",
+        "goTo": "Go to the riverside meadow, where Thỏ Bồng Bềnh is gazing up at the rainbow",
+        "lines": [
+          "{name}, look! A rainbow! I have to make a wish right now, lots of wishes!",
+          "I wish for a carrot as big as a tree, a pair of red boots, and a... a... oh, what was I going to wish for?",
+          "Woof! The villagers say there's a pot of gold at the end of the rainbow! I've sniffed and sniffed, but all I smell is wet grass.",
+          "I ran all the way to the end of the rainbow, didn't see any gold, and dropped my things along the way too."
+        ],
+        "choices": [
+          {
+            "text": "Let's pick up your things first!",
+            "reply": "Thỏ Bồng Bềnh nods like mad: yes, yes! I dropped my... oh, you just look, and when you find them I'll remember!"
+          },
+          {
+            "text": "Such a lovely rainbow, make just one wish!",
+            "reply": "Just one? That's so hard! I'll think while we pick up my things."
+          }
+        ]
+      }
     },
     {
       "id": "tim-do-tho-ti",
@@ -517,7 +537,30 @@
           "text": "Vẽ tặng Cún Lúa một chú cún chạy bên sông!",
           "reply": "Cún Lúa sướng quá chạy vòng vòng đuổi theo đuôi mình. Thỏ Bồng Bềnh cười lăn ra cỏ."
         }
-      ]
+      ],
+      "en": {
+        "title": "Who will Thỏ Bồng Bềnh draw for?",
+        "goTo": "Thỏ Bồng Bềnh waves both ears, calling {name} back to the riverside meadow",
+        "lines": [
+          "Bi and Bống didn't need a pot of gold and they were still so happy. I want to draw a picture for... for... oh, for who?",
+          "Draw me a picture of the bridge! I've just tied the second bamboo span, and the rainbow is still arching over it.",
+          "I'd love a picture of a puppy running along the riverbank! {name}, tell Thỏ Bồng Bềnh who to draw for!"
+        ],
+        "choices": [
+          {
+            "text": "Draw Hải Ly Đinh the bridge under the rainbow!",
+            "reply": "Thỏ Bồng Bềnh picks up her crayons: a yellow bamboo bridge, a seven-coloured rainbow... and Hải Ly hugging a bundle of bamboo too!"
+          },
+          {
+            "text": "Draw a pinwheel for your little sibling at home!",
+            "reply": "Oh, that's right, I have a little sibling and I forgot! They're crazy about pinwheels."
+          },
+          {
+            "text": "Draw Cún Lúa a puppy running by the river!",
+            "reply": "Cún Lúa is so happy he runs in circles chasing his own tail. Thỏ Bồng Bềnh rolls in the grass laughing."
+          }
+        ]
+      }
     },
     {
       "id": "xep-tranh-phoi",
@@ -816,14 +859,22 @@
       "title": "Bức tranh cầu vồng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thỏ Bồng Bềnh tặng {name} bức tranh cầu vồng bảy màu tự tay vẽ, đựng trong chiếc hũ sành nhặt được. Góc tranh còn trống vì Thỏ Bồng Bềnh lại quên ghi tên người tặng!"
+      "text": "Thỏ Bồng Bềnh tặng {name} bức tranh cầu vồng bảy màu tự tay vẽ, đựng trong chiếc hũ sành nhặt được. Góc tranh còn trống vì Thỏ Bồng Bềnh lại quên ghi tên người tặng!",
+      "en": {
+        "title": "The rainbow picture",
+        "text": "Thỏ Bồng Bềnh gives {name} a seven-coloured rainbow picture she drew herself, tucked inside a clay pot she found. The corner of the picture is still blank, because Thỏ Bồng Bềnh forgot to sign her name again!"
+      }
     },
     {
       "id": "mo-bai-4",
       "title": "Tiếng vo ve trong vườn hoa",
       "kind": "next",
       "trigger": "auto",
-      "text": "Vo ve… vo ve… Từ vườn hoa có tổ ong cạnh bãi cỏ vọng ra tiếng đếm: một nghìn lẻ một, một nghìn lẻ hai… Gấu Nhẩm đang cần người phụ một việc nhỏ đấy!"
+      "text": "Vo ve… vo ve… Từ vườn hoa có tổ ong cạnh bãi cỏ vọng ra tiếng đếm: một nghìn lẻ một, một nghìn lẻ hai… Gấu Nhẩm đang cần người phụ một việc nhỏ đấy!",
+      "en": {
+        "title": "Buzzing in the flower garden",
+        "text": "Bzzz... bzzz... From the flower garden with the beehive by the meadow comes the sound of counting: one thousand and one, one thousand and two... Gấu Nhẩm needs a hand with a little job!"
+      }
     }
   ],
   "reward": {

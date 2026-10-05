@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 90,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Story Picture Order",
+    "howTo": [
+      "Four pictures from a story are all jumbled up.",
+      "{name} drags them into boxes 1, 2, 3, 4 in order (or taps the picture that happens first).",
+      "Put one in the wrong place and it wiggles back, so choose again."
+    ]
+  }
 }

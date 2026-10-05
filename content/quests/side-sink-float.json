@@ -46,7 +46,19 @@
         {
           "text": "Tớ đoán chìm nổi chuẩn lắm!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Lots of interesting things are about to drop into the water tub, {name}!",
+          "Guess which ones float and swipe up, and which ones sink and swipe down."
+        ],
+        "choices": [
+          {
+            "text": "I'm great at guessing sink or float!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đoán trúng trạng thái chìm hay nổi của mười lăm đồ vật nhé!",
       "game": "sink-float",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Sink or Float",
+        "prompt": "Correctly guess sink or float for 15 objects!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cậu đoán món nào trúng phóc món đó, {name} tinh ý quá chừng!"
+      "text": "Cậu đoán món nào trúng phóc món đó, {name} tinh ý quá chừng!",
+      "en": {
+        "title": "Reward",
+        "text": "Every guess spot on! {name} is so observant!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chậu nước thí nghiệm vẫn để bên bờ kênh chợ, rảnh thì ghé tớ chơi tiếp."
+      "text": "Chậu nước thí nghiệm vẫn để bên bờ kênh chợ, rảnh thì ghé tớ chơi tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "The experiment tub is still by the market canal. Come and play when you're free."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Sink or float with Bé Ném Lia Thia",
+    "summary": "Watch each object drop into the water and guess whether it will sink or float."
   }
 }

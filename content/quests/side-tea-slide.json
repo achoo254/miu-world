@@ -46,7 +46,19 @@
         {
           "text": "Để tớ phụ quán nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "It is so hot, {name}, and crowds are coming for iced tea!",
+          "Slide the tea along the table to each customer, and collect the empty glasses or we will run out."
+        ],
+        "choices": [
+          {
+            "text": "Let me help run the stall!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Phục vụ đủ hai mươi ly trà đá nhé!",
       "game": "tea-slide",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Street Iced Tea",
+        "prompt": "Serve 20 glasses of iced tea!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khách nào cũng mát ruột, quán mình đắt hàng nhờ {name}!"
+      "text": "Khách nào cũng mát ruột, quán mình đắt hàng nhờ {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "Every customer is cooled off, and our stall is a hit thanks to {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Quán trà đá bên giếng mở cả ngày, cậu ghé phụ tớ lúc nào cũng được."
+      "text": "Quán trà đá bên giếng mở cả ngày, cậu ghé phụ tớ lúc nào cũng được.",
+      "en": {
+        "title": "See you soon",
+        "text": "The iced tea stall by the well is open all day, so drop by and help me any time."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Roadside iced tea stall with Mèo Trà Đá",
+    "summary": "Customers fill three tables by the well: slide a cool glass of tea to each one and bring the empties back."
   }
 }

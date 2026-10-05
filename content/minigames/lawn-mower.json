@@ -10,5 +10,13 @@
   "controls": ["drag", "swipe"],
   "duration": 90,
   "goal": 3,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "One-stroke mowing",
+    "howTo": [
+      "{name}, drag (or swipe) to steer the mower across each patch of grass.",
+      "Mow every grass square without going over one you've already cut. Avoid flower beds and rocks.",
+      "Stuck? Tap Restart. Mow three lawns to win!"
+    ]
+  }
 }

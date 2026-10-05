@@ -46,7 +46,19 @@
         {
           "text": "Tớ tay nhanh như chớp!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The tide has left so many tiny crabs behind, {name}! Help me gather them up!",
+          "Put each crab in the bamboo basket, then tap to close the lid before they climb out."
+        ],
+        "choices": [
+          {
+            "text": "I'm quick as a flash, watch me!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Bỏ giỏ gọn gàng được mười hai chú cua nhỏ trước khi nắp mở nhé!",
       "game": "cap-cua",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Crabs in the basket",
+        "prompt": "Get 12 little crabs in the basket before the lid opens!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Cua Càng gõ hai càng lách cách: {name} cắp cua thoăn thoắt, giỏ đầy ắp rồi!"
+      "text": "Cua Càng gõ hai càng lách cách: {name} cắp cua thoăn thoắt, giỏ đầy ắp rồi!",
+      "en": {
+        "title": "Reward",
+        "text": "Cua Càng clicks both claws: {name} is so quick, the basket is full!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Thủy triều lại sắp lên xuống theo nhịp, Cua Càng đợi {name} bên mép vũng nước."
+      "text": "Thủy triều lại sắp lên xuống theo nhịp, Cua Càng đợi {name} bên mép vũng nước.",
+      "en": {
+        "title": "See you soon",
+        "text": "The tide will soon turn again. Cua Càng will wait for {name} by the edge of the pool."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Catch crabs in the tide pool with Cua Càng Cắp Cua",
+    "summary": "Baby crabs scuttle over the sand: pick each one up quickly, pop it in the basket and close the lid."
   }
 }

@@ -10,5 +10,13 @@
   "controls": ["hold", "drag"],
   "duration": 60,
   "goal": 25,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Fairground Water Pistol",
+    "howTo": [
+      "Hold your finger on the screen and the water jet follows {name}'s finger.",
+      "Squirt a duck until it falls over. Round targets are worth three points!",
+      "Out of water? Lift your finger for a moment to pump it full again."
+    ]
+  }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Em đặt ngón tay vào đây chị!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "I open my palm and chant the rhyme. Come play chi chi with me, {name}!",
+          "Put your finger in, and the instant you hear \"ập\", pull it right back out."
+        ],
+        "choices": [
+          {
+            "text": "My finger is in, sister!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Rút tay kịp lúc tránh tiếng ập trọn bảy lượt đồng dao nhé!",
       "game": "chi-chi",
-      "goal": 7
+      "goal": 7,
+      "en": {
+        "title": "Chi chi chành chành",
+        "prompt": "Pull your finger back in time for 7 rounds of the rhyme!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ngón tay em thoăn thoắt như thoi đưa, chị không kịp bắt {name} đâu!"
+      "text": "Ngón tay em thoăn thoắt như thoi đưa, chị không kịp bắt {name} đâu!",
+      "en": {
+        "title": "Reward",
+        "text": "Your finger darts like a weaving shuttle. I just cannot catch {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Hiên nhà ngắm trăng lộng gió mát rượi luôn chờ em ra chơi chi chi."
+      "text": "Hiên nhà ngắm trăng lộng gió mát rượi luôn chờ em ra chơi chi chi.",
+      "en": {
+        "title": "See you soon",
+        "text": "The breezy moon-watching porch is always waiting for you to play chi chi."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Chi chi chành chành with Chị Bống Chuyền Que",
+    "summary": "Put a finger in the open palm and snatch it away the moment you hear \"ập\" at the end of the rhyme."
   }
 }

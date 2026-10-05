@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 10,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Who Walked Here?",
+    "howTo": [
+      "Footprints slowly appear in the snow. {name} taps the friend who left them.",
+      "Rabbits hop in fours, foxes walk in a line, birds hop on two feet, penguins waddle and drag their tails.",
+      "Only a right guess on the first try scores."
+    ]
+  }
 }

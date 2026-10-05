@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 20,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Make ten",
+    "howTo": [
+      "Tap two number tiles that add up to 10 to make them disappear.",
+      "The tiles keep rising from below. {name}, don't let them touch the top line!",
+      "Do well and the numbers become tens: now pairs must add up to 100."
+    ]
+  }
 }

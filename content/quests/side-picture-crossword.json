@@ -46,7 +46,19 @@
         {
           "text": "Con giải hết các ô chữ ạ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "I have a one-of-a-kind puzzle board of folk drawings waiting for you, {name}.",
+          "Each drawing hints at a name. Fill in the letters across and down so the words cross neatly."
+        ],
+        "choices": [
+          {
+            "text": "I will solve every square!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Điền đúng tất cả các ô của ba bảng đố chữ hình ảnh nhé!",
       "game": "picture-crossword",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Picture Crossword",
+        "prompt": "Fill every square of 3 picture crosswords!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thầy Đố Chữ Hán tấm tắc khen {name} học sâu hiểu rộng, suy đoán như thần đồng!"
+      "text": "Thầy Đố Chữ Hán tấm tắc khen {name} học sâu hiểu rộng, suy đoán như thần đồng!",
+      "en": {
+        "title": "Reward",
+        "text": "Thầy Đố Chữ Hán is amazed: {name} knows so much and guesses like a little genius!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Học chữ qua tranh thật thú vị phải không, rảnh rỗi trò lại ghé phòng đọc đối ẩm."
+      "text": "Học chữ qua tranh thật thú vị phải không, rảnh rỗi trò lại ghé phòng đọc đối ẩm.",
+      "en": {
+        "title": "See you soon",
+        "text": "Learning words through pictures is fun, is it not? Come by the reading room any time."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Picture crossword with Thầy Đố Chữ Hán",
+    "summary": "A criss-cross word grid comes with simple drawings as clues; fill in the letters to finish it."
   }
 }

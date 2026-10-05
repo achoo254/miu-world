@@ -46,7 +46,19 @@
         {
           "text": "Cháu xuống ruộng cấy mạ ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hello, {name}! The paddy is harrowed smooth and waiting for your little hands to plant.",
+          "Step back evenly and press each young seedling in, straight along the line."
+        ],
+        "choices": [
+          {
+            "text": "Into the paddy to plant!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Cấy thẳng hàng được bốn mươi khóm mạ xanh tươi nhé!",
       "game": "rice-plant",
-      "goal": 40
+      "goal": 40,
+      "en": {
+        "title": "Plant Rice in Rows",
+        "prompt": "Plant 40 clumps of seedlings in straight rows!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bác Nông Dân Thành khen {name} cấy lúa khéo tay chẳng kém gì người lớn!"
+      "text": "Bác Nông Dân Thành khen {name} cấy lúa khéo tay chẳng kém gì người lớn!",
+      "en": {
+        "title": "Reward",
+        "text": "Bác Nông Dân Thành says {name} plants rice as skilfully as any grown-up!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Khi nào lúa trổ bông vàng ruộm, cháu nhớ ghé thăm bờ ruộng khu trồng trọt nhé."
+      "text": "Khi nào lúa trổ bông vàng ruộm, cháu nhớ ghé thăm bờ ruộng khu trồng trọt nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "When the rice turns golden, remember to visit the paddy bank in the growing fields."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Plant Rice in Rows with Bác Nông Dân Thành",
+    "summary": "Bác Nông Dân Thành takes you out to the muddy paddy to plant fresh green seedlings in straight lines."
   }
 }

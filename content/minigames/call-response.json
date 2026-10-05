@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 55,
   "goal": 7,
-  "params": { "tempo": 1 }
+  "params": { "tempo": 1 },
+  "en": {
+    "name": "Copy the clapping",
+    "howTo": [
+      "The parrot claps a rhythm, and the big dots light up with each clap.",
+      "Your turn, {name}: tap the screen right on each circle, no extra taps and none missed.",
+      "Copy seven out of ten rhythms correctly to win!"
+    ]
+  }
 }

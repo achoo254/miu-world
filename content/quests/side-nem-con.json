@@ -46,7 +46,19 @@
         {
           "text": "Cô đưa cháu quả còn!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Here are some colourful còn balls, {name}. Try throwing one!",
+          "Pull back further to throw further. Aim for the ring at the top of the bamboo pole."
+        ],
+        "choices": [
+          {
+            "text": "Pass me a còn ball!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ném lọt vòng năm lần nhé!",
       "game": "nem-con",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Ném còn (Ball Toss)",
+        "prompt": "Throw through the ring 5 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Còn bay qua vòng đẹp quá, cả hội vỗ tay cho {name}!"
+      "text": "Còn bay qua vòng đẹp quá, cả hội vỗ tay cho {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "The còn sailed right through! The whole festival claps for {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cột còn vẫn dựng giữa quảng trường, lúc nào cháu cũng ném được."
+      "text": "Cột còn vẫn dựng giữa quảng trường, lúc nào cháu cũng ném được.",
+      "en": {
+        "title": "See you soon",
+        "text": "The còn pole still stands in the middle of the square, so you can throw any time."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Throw the còn ball with Cô Hội Làng",
+    "summary": "Pull back and let go so the còn ball (a tasselled cloth ball) flies through the ring atop the bamboo pole."
   }
 }

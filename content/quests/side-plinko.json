@@ -46,7 +46,19 @@
         {
           "text": "Thả xu nào, lách cách lách cách!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hey {name}, I have eight coins for you to drop into this peg board!",
+          "Tap where you want to drop it, and the coin will clink through the pegs. The middle slot scores the most."
+        ],
+        "choices": [
+          {
+            "text": "Drop the coin, clink clink clink!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Gom được chín mươi điểm từ tám đồng xu nhé!",
       "game": "plinko",
-      "goal": 90
+      "goal": 90,
+      "en": {
+        "title": "Plinko Drop",
+        "prompt": "Collect 90 points with eight coins!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Xu nào của {name} cũng rơi vào ô đẹp, Voi Kẹo Bông thổi kèn mừng!"
+      "text": "Xu nào của {name} cũng rơi vào ô đẹp, Voi Kẹo Bông thổi kèn mừng!",
+      "en": {
+        "title": "Reward",
+        "text": "Every coin from {name} lands in a great slot, and Voi Kẹo Bông trumpets with joy!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bảng đinh vẫn đứng trước cửa hàng, cậu ghé thả xu tiếp nhé."
+      "text": "Bảng đinh vẫn đứng trước cửa hàng, cậu ghé thả xu tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The peg board is still standing outside the shop, so drop by for another go."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Dropping coins through pegs with Voi Kẹo Bông",
+    "summary": "A tall peg board stands outside the shop: pick where to drop each coin so it bounces to the middle or into a gift box."
   }
 }

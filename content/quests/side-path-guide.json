@@ -46,7 +46,19 @@
         {
           "text": "Để tớ vẽ đường cho!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The ducklings have lost their way back to the coop, {name}!",
+          "Draw a path for each one to the coop of its colour, and don't let two of them bump."
+        ],
+        "choices": [
+          {
+            "text": "Let me draw the paths!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đưa mười hai bạn vịt con về chuồng nhé!",
       "game": "path-guide",
-      "goal": 12
+      "goal": 12,
+      "en": {
+        "title": "Guide the Ducklings",
+        "prompt": "Guide 12 ducklings home to their coops!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chó Giữ Ao sủa vui: vịt con nào cũng về nhà nhờ {name} đấy!"
+      "text": "Chó Giữ Ao sủa vui: vịt con nào cũng về nhà nhờ {name} đấy!",
+      "en": {
+        "title": "Reward",
+        "text": "Chó Giữ Ao barks happily: every duckling is home thanks to {name}!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Vịt con mải chơi lắm, khi nào lạc Chó Giữ Ao lại gọi {name}."
+      "text": "Vịt con mải chơi lắm, khi nào lạc Chó Giữ Ao lại gọi {name}.",
+      "en": {
+        "title": "See you soon",
+        "text": "Ducklings love to play. When they get lost, Chó Giữ Ao will call {name} again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Draw the Ducklings Home with Chó Giữ Ao",
+    "summary": "The ducklings are lost; drag your finger to draw each one a path to the coop of its colour without any bumping."
   }
 }

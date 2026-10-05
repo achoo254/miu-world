@@ -47,7 +47,25 @@
       "choices": [
         { "text": "Đồ thi đấu để ở đâu thế?", "reply": "Hôm qua các bạn chơi xong để quanh cầu trượt, cậu ra đó tìm nhé." },
         { "text": "Tớ nhận lời, lớp mình sẽ thắng!", "reply": "Cả lớp tin cậu! Ra quanh cầu trượt tìm đồ thi đấu trước đã." }
-      ]
+      ],
+      "en": {
+        "title": "Class monitor Chim Sâu calls",
+        "goTo": "Go to the games corner, Chim Sâu Lớp Trưởng is flapping and calling",
+        "lines": [
+          "{name}, Voi Tính Nhẩm is sitting smack in the middle of the playground! He says Year Two Sports Day can't open until someone wins his maths quiz.",
+          "And to get onto the field, you need all the sports kit too. Our whole class is counting on you!"
+        ],
+        "choices": [
+          {
+            "text": "Where's the sports kit?",
+            "reply": "Yesterday everyone left it around the slide after playing; go and look there."
+          },
+          {
+            "text": "I'm in, our class is going to win!",
+            "reply": "The whole class believes in you! Go and find the sports kit around the slide first."
+          }
+        ]
+      }
     },
     {
       "id": "tim-do-thi-dau",
@@ -157,7 +175,25 @@
           "text": "Đếm nhẩm từ 1 tới 20 cho nóng máy",
           "consequence": "Mười tám, mười chín, hai mươi! Cái đầu đã sẵn sàng tính nhẩm thật nhanh."
         }
-      ]
+      ],
+      "en": {
+        "title": "Warming up before the match",
+        "prompt": "It's almost time for the battle of brains. How will {name} warm up and get the mind nice and sharp?",
+        "choices": [
+          {
+            "text": "Jog one slow lap of the field",
+            "consequence": "A cool breeze blows past, {name} breathes steadily and feels much lighter."
+          },
+          {
+            "text": "Roll your wrists and ankles really well",
+            "consequence": "Hươu Trọng Tài counts one, two, three, four, and {name}'s arms and legs feel loose and bendy."
+          },
+          {
+            "text": "Count from 1 to 20 in your head to warm up",
+            "consequence": "Eighteen, nineteen, twenty! The brain is all set for some speedy mental maths."
+          }
+        ]
+      }
     },
     {
       "id": "tran-trum",
@@ -256,14 +292,22 @@
       "title": "Ngôi sao thi đua",
       "kind": "reward",
       "target": "trum-th-ngoi-sao",
-      "text": "Voi Tính Nhẩm dùng vòi gắn ngôi sao thi đua lên ngực áo {name}. Cả lớp Hai reo vang, túi quà của Voi đầy XP, xu và điểm kỹ năng."
+      "text": "Voi Tính Nhẩm dùng vòi gắn ngôi sao thi đua lên ngực áo {name}. Cả lớp Hai reo vang, túi quà của Voi đầy XP, xu và điểm kỹ năng.",
+      "en": {
+        "title": "The champion's star",
+        "text": "Voi Tính Nhẩm uses his trunk to pin the champion's star on {name}'s shirt. All of Year Two cheers, and Voi's gift bag is packed with XP, coins and skill points."
+      }
     },
     {
       "id": "hoi-khoe-khai-mac",
       "title": "Hội khỏe khai mạc",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tiếng trống khai mạc vang lên, Voi Tính Nhẩm xin vào đội chạy tiếp sức. Sư Tử Vàng mời {name} ghé vườn trường xem các bạn vừa trồng cây mới."
+      "text": "Tiếng trống khai mạc vang lên, Voi Tính Nhẩm xin vào đội chạy tiếp sức. Sư Tử Vàng mời {name} ghé vườn trường xem các bạn vừa trồng cây mới.",
+      "en": {
+        "title": "Sports Day opens",
+        "text": "The opening drum sounds, and Voi Tính Nhẩm asks to join the relay team. Sư Tử Vàng invites {name} to the school garden to see the trees the children have just planted."
+      }
     }
   ],
   "reward": {

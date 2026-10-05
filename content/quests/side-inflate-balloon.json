@@ -46,7 +46,19 @@
         {
           "text": "Cháu bơm vừa khéo luôn!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The kids are begging for balloons! Pump some up for me, {name}?",
+          "Hold to pump and let go when it fits the green ring, or it'll go POP."
+        ],
+        "choices": [
+          {
+            "text": "I'll pump them just right!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Bơm vừa vặn tám quả bóng nhé!",
       "game": "inflate-balloon",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Blow up balloons",
+        "prompt": "Pump up 8 balloons to just the right size!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bóng bay đủ màu bay lượn, {name} bơm khéo quá!"
+      "text": "Bóng bay đủ màu bay lượn, {name} bơm khéo quá!",
+      "en": {
+        "title": "Reward",
+        "text": "Balloons of every colour, floating everywhere! {name} pumps like a pro!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ngày phiên nào chú cũng bán bóng bay, cháu tới phụ tiếp nhé."
+      "text": "Ngày phiên nào chú cũng bán bóng bay, cháu tới phụ tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "I sell balloons every market day, so come and help me again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Blow up balloons to sell with Uncle Tí",
+    "summary": "Pump each balloon to fit the green ring to sell to the little ones. Too much and it pops!"
   }
 }

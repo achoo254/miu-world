@@ -46,7 +46,19 @@
         {
           "text": "Con đặt dấu thanh ngay ngắn ạ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Look, {name}, the words a young pupil just copied are missing their tone marks.",
+          "Read each word out loud, then drag its tone mark onto the right letter so it means what it should."
+        ],
+        "choices": [
+          {
+            "text": "I will place the tone marks neatly!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đặt chuẩn xác mười lăm dấu thanh lên các con chữ nhé!",
       "game": "tone-mark",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Magic Tone Mark Hats",
+        "prompt": "Place 15 tone marks exactly right!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thầy Đố Chữ Hán khen {name} đặt dấu thanh đúng chỗ, câu từ chuẩn xác và nắn nót!"
+      "text": "Thầy Đố Chữ Hán khen {name} đặt dấu thanh đúng chỗ, câu từ chuẩn xác và nắn nót!",
+      "en": {
+        "title": "Reward",
+        "text": "Thầy Đố Chữ Hán praises {name}: every tone mark is in place, neat and correct!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chữ nghĩa ngay ngắn là nết người đẹp đẽ, lần sau con lại ghé bàn gỗ lớn đàm đạo."
+      "text": "Chữ nghĩa ngay ngắn là nết người đẹp đẽ, lần sau con lại ghé bàn gỗ lớn đàm đạo.",
+      "en": {
+        "title": "See you soon",
+        "text": "Tidy writing shows a tidy heart. Come back to the big wooden table and chat with me again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Tone marks in the right place with Thầy Đố Chữ Hán",
+    "summary": "The little tone-mark hats fell off the letters; lift each mark and set it neatly on its vowel."
   }
 }

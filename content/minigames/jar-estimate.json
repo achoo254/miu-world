@@ -10,5 +10,13 @@
   "controls": ["drag", "tap"],
   "duration": 100,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Guess the candy jar",
+    "howTo": [
+      "The candy jar shows for only three seconds, so look fast, {name}.",
+      "Drag the pointer on the ruler to your guess, then tap Done.",
+      "The candies pour out in groups of ten to be counted. A close guess wins!"
+    ]
+  }
 }

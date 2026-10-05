@@ -45,7 +45,21 @@
       ],
       "choices": [
         { "text": "Để tớ nhặt, cậu dựng xe lại đi!", "reply": "Cảm ơn cậu! Sách bay ra tận thảm lá ven đường đấy." }
-      ]
+      ],
+      "en": {
+        "title": "The book cart tips over",
+        "goTo": "There was a crash by the travelling book cart, run over and see",
+        "lines": [
+          "Oh no, the wheel hit a tree root and my books went flying everywhere! This afternoon I still have to take books to friends who live far away.",
+          "{name}, will you pick up the books for me? My trunk is so big, thin books keep slipping out of it."
+        ],
+        "choices": [
+          {
+            "text": "Let me pick them up, you stand the cart back up!",
+            "reply": "Thank you! Books flew all the way onto the carpet of leaves by the road."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-sach-roi",
@@ -163,7 +177,25 @@
           "text": "Nhờ Bồ Nông bay đưa sách đi",
           "consequence": "Hươu chỉ lên mái lều: Bồ Nông Đưa Sách đang nghỉ ở đó, sang nhờ bạn ấy nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Books for friends far away",
+        "prompt": "Some little ones who live far away can't come to the festival. What will {name} do so they have books to read too?",
+        "choices": [
+          {
+            "text": "Help Voi take the books right to their homes",
+            "consequence": "The travelling book cart rolls down every little lane, and every child rushes out to choose a book."
+          },
+          {
+            "text": "Open a shared reading corner at the edge of the village",
+            "consequence": "The little reading corner under the tree becomes the place where friends meet every afternoon."
+          },
+          {
+            "text": "Ask Bồ Nông to fly the books over",
+            "consequence": "Hươu points to the hut roof: Bồ Nông Đưa Sách is resting up there, go and ask her!"
+          }
+        ]
+      }
     },
     {
       "id": "nho-bo-nong",
@@ -174,7 +206,19 @@
       "lines": [
         { "speaker": "Bồ Nông Đưa Sách", "text": "Cái túi dưới mỏ tớ đựng được cả chục cuốn sách đấy! Xếp sách gọn gàng rồi đưa đây, tớ bay một mạch tới nhà các bạn." }
       ],
-      "choices": [{ "text": "Tớ xếp sách ngay, chờ chút nhé!" }]
+      "choices": [{ "text": "Tớ xếp sách ngay, chờ chút nhé!" }],
+      "en": {
+        "title": "Ask Bồ Nông to deliver the books",
+        "goTo": "Go over to the pelican's hut roof and ask Bồ Nông Đưa Sách",
+        "lines": [
+          "The pouch under my beak holds a dozen books! Stack them neatly and pass them here, and I'll fly straight to their homes."
+        ],
+        "choices": [
+          {
+            "text": "I'll stack the books right now, wait a sec!"
+          }
+        ]
+      }
     },
     {
       "id": "xep-sach",
@@ -210,14 +254,22 @@
       "title": "Xe sách lăn bánh",
       "kind": "reward",
       "target": "vt-tv-voi-cho-sach",
-      "text": "Xe sách rong đứng vững trở lại, sách xếp gọn gàng theo thứ tự. Voi tặng {name} một chiếc kẹp sách hình chiếc lá vàng cùng lời cảm ơn thật to."
+      "text": "Xe sách rong đứng vững trở lại, sách xếp gọn gàng theo thứ tự. Voi tặng {name} một chiếc kẹp sách hình chiếc lá vàng cùng lời cảm ơn thật to.",
+      "en": {
+        "title": "The book cart rolls again",
+        "text": "The travelling book cart is steady on its wheels again, with the books neatly in order. Voi gives {name} a golden-leaf bookmark and a great big thank-you."
+      }
     },
     {
       "id": "hen-phat-sach",
       "title": "Hẹn đi phát sách",
       "kind": "next",
       "trigger": "auto",
-      "text": "Voi rung chuông xe leng keng chào lễ hội, hẹn tuần sau {name} cùng đi phát sách cho các bạn ở bên kia hồ."
+      "text": "Voi rung chuông xe leng keng chào lễ hội, hẹn tuần sau {name} cùng đi phát sách cho các bạn ở bên kia hồ.",
+      "en": {
+        "title": "A date to hand out books",
+        "text": "Voi rings the cart bell ting-a-ling to greet the festival, and invites {name} along next week to bring books to friends across the lake."
+      }
     }
   ],
   "reward": {

@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 45,
   "goal": 3,
-  "params": { "length": 100 }
+  "params": { "length": 100 },
+  "en": {
+    "name": "Sack Race",
+    "howTo": [
+      "Tap to hop. Tap again right as the sack lands to hop on even faster.",
+      "Tap while still in the air and you tumble! {name} wins by finishing first or second."
+    ]
+  }
 }

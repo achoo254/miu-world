@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 20,
-  "params": { "window": 0.16 }
+  "params": { "window": 0.16 },
+  "en": {
+    "name": "Fireflies in sync",
+    "howTo": [
+      "The fireflies blink together in one rhythm; a shrinking ring shows when the next blink comes.",
+      "{name}, tap to blink your lantern with the swarm: a firefly will follow you.",
+      "Blink off the beat and they get startled, so none follow on the next blink."
+    ]
+  }
 }

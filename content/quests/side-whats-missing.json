@@ -46,7 +46,19 @@
         {
           "text": "Tớ nhìn kỹ rồi, tắt đèn đi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Did you come to play with me, {name}? I have a tray of things that love to hide!",
+          "Study the tray closely, and when the light comes back, point to the thing that vanished."
+        ],
+        "choices": [
+          {
+            "text": "I have looked closely, lights out!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đoán đúng sáu lượt món đồ biến mất nhé!",
       "game": "whats-missing",
-      "goal": 6
+      "goal": 6,
+      "en": {
+        "title": "What's Missing?",
+        "prompt": "Spot the missing object 6 times!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nai Trí Nhớ dụi mũi vào tay {name}: cậu tinh mắt thật!"
+      "text": "Nai Trí Nhớ dụi mũi vào tay {name}: cậu tinh mắt thật!",
+      "en": {
+        "title": "Reward",
+        "text": "Nai Trí Nhớ nuzzles the hand of {name}: you have sharp eyes!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Khay đồ của tớ đổi món mỗi ngày, cậu ghé đầu cầu đá chơi tiếp nhé."
+      "text": "Khay đồ của tớ đổi món mỗi ngày, cậu ghé đầu cầu đá chơi tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "My tray gets new things every day, so visit the stone bridge and play some more."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "What went missing? with Nai Trí Nhớ",
+    "summary": "A tray holds lots of objects; the light goes out for a moment, and when it comes back you spot what disappeared."
   }
 }

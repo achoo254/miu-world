@@ -46,7 +46,19 @@
         {
           "text": "Cháu nhảy đổi màu khối hộp ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The little horse is learning to climb the cube pyramid, {name}. Come give it a hand!",
+          "Tap a neighbouring cube to hop over and change its colour, and dodge the rolling balls."
+        ],
+        "choices": [
+          {
+            "text": "I'll hop and change the colours now!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nhảy đổi màu thành công ba mươi lăm khối hộp kim tự tháp nhé!",
       "game": "cube-hop",
-      "goal": 35
+      "goal": 35,
+      "en": {
+        "title": "Pyramid colour hop",
+        "prompt": "Change the colour of 35 pyramid cubes!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Quản Mã Hoàng Gia vỗ tay khen ngợi: {name} bật nhảy nhanh nhẹn và thông minh tuyệt vời!"
+      "text": "Quản Mã Hoàng Gia vỗ tay khen ngợi: {name} bật nhảy nhanh nhẹn và thông minh tuyệt vời!",
+      "en": {
+        "title": "Reward",
+        "text": "Quản Mã Hoàng Gia claps: {name} hops quick as a flash and smart as can be!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Kim tự tháp đã khoác áo mới lộng lẫy, lúc nào thích nhảy cháu cứ ra đầu cầu treo nhé."
+      "text": "Kim tự tháp đã khoác áo mới lộng lẫy, lúc nào thích nhảy cháu cứ ra đầu cầu treo nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The pyramid wears a shiny new coat. Whenever you feel like hopping, come to the drawbridge."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Speedy Cube Hop with Quản Mã Hoàng Gia",
+    "summary": "A pyramid of bright cubes; hop from cube to cube to change their colour without falling off the edge."
   }
 }

@@ -66,7 +66,26 @@
           "text": "Gom đủ 10 là sao hả Ong Vàng?",
           "reply": "Ong Vàng chúm chím: Cứ tìm que tính về đây, tớ bày cho cậu xem tận mắt."
         }
-      ]
+      ],
+      "en": {
+        "title": "Ong Vàng counts too many",
+        "goTo": "Go to the sunflower stall, where Ong Vàng is buzzing around the bunches of flowers",
+        "lines": [
+          "Bzzz bzzz! {name}, our new hive hangs under the market tent roof and has lots of cells, and each cell needs ten sunflowers to look its best.",
+          "But I fly so fast that I counted 9 flowers, added 6 more... and then forgot where I'd got to. I'm so dizzy!",
+          "Auntie Thơm at the daisy stall told me: make 10 first, then add what's left over. There are counting sticks around the stall to try it with."
+        ],
+        "choices": [
+          {
+            "text": "I'll go get the counting sticks!",
+            "reply": "Ong Vàng does a twirl: Quick, quick, the counting sticks are scattered around the flower stall!"
+          },
+          {
+            "text": "What does making 10 mean, Ong Vàng?",
+            "reply": "Ong Vàng smiles sweetly: Just bring the counting sticks back here, and I'll show you with your own eyes."
+          }
+        ]
+      }
     },
     {
       "id": "tim-que-tinh-vuon",
@@ -1240,7 +1259,26 @@
           "text": "Đếm tiếp từ số lớn",
           "reply": "Cô Thơm: Cũng được, nhưng sơ đồ thì vẫn phải điền tách số đấy nha!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Auntie Thơm calls you over",
+        "goTo": "Go to the daisy stall, where Auntie Thơm is waving you over",
+        "lines": [
+          "Oh, there you are, {name}! I laid out counting sticks to teach my little Mai to count, but the wind scattered them, and now all I have are empty number-splitting diagrams.",
+          "I'll fly over and count them! Oh... but I've forgotten which number to split first again.",
+          "{name}, choose for me: split the second number to make a ten, or count on from the bigger number?"
+        ],
+        "choices": [
+          {
+            "text": "Split the second number to make a ten",
+            "reply": "Auntie Thơm: That's the surest way, let's do one diagram at a time."
+          },
+          {
+            "text": "Count on from the bigger number",
+            "reply": "Auntie Thơm: That works too, but you still have to fill in the splitting diagrams, okay!"
+          }
+        ]
+      }
     },
     {
       "id": "so-do-tach-cua-bo",
@@ -2692,14 +2730,22 @@
       "title": "Huy hiệu gom chục",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Ong Vàng tặng {name} một hũ mật nhỏ có dán nhãn \"Bậc thầy gom đủ chục\". Cô Thơm thì tặng thêm một bông hướng dương to bằng cái mũ."
+      "text": "Ong Vàng tặng {name} một hũ mật nhỏ có dán nhãn \"Bậc thầy gom đủ chục\". Cô Thơm thì tặng thêm một bông hướng dương to bằng cái mũ.",
+      "en": {
+        "title": "Make-a-ten badge",
+        "text": "Ong Vàng gives {name} a little jar of honey labelled \"Master of Making Ten\". Auntie Thơm adds a sunflower as big as a hat."
+      }
     },
     {
       "id": "qua-bau-roi-lop-bop",
       "title": "Quả bầu rơi lộp bộp",
       "kind": "next",
       "trigger": "auto",
-      "text": "Lộp bộp! Ở giàn bầu bán giống cuối dãy, mấy quả bầu khắc bảng cộng rụng xuống đất. Khỉ Lủng Lẳng đu cành tụt xuống, mặt mếu máo: \"Bảng cộng của tớ lăn mất rồi!\""
+      "text": "Lộp bộp! Ở giàn bầu bán giống cuối dãy, mấy quả bầu khắc bảng cộng rụng xuống đất. Khỉ Lủng Lẳng đu cành tụt xuống, mặt mếu máo: \"Bảng cộng của tớ lăn mất rồi!\"",
+      "en": {
+        "title": "Gourds come tumbling down",
+        "text": "Thud, thud! At the seed-gourd trellis at the end of the row, gourds carved with addition tables tumble to the ground. Khỉ Lủng Lẳng swings down from a branch, his face crumpling: \"My addition tables have rolled away!\""
+      }
     }
   ],
   "reward": {

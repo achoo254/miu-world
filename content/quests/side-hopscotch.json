@@ -46,7 +46,19 @@
         {
           "text": "Lò cò lò cò, em nhảy đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "I just chalked a hopscotch grid. Want to give it a go, {name}?",
+          "Toss the pebble into the square with the yellow border, then hop through in order and skip that square."
+        ],
+        "choices": [
+          {
+            "text": "Hop, hop, here I go!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nhảy xong trọn tám lượt lò cò nhé!",
       "game": "hopscotch",
-      "goal": 8
+      "goal": 8,
+      "en": {
+        "title": "Hopscotch",
+        "prompt": "Finish 8 full rounds of hopscotch!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Không sai một ô nào, {name} nhảy lò cò siêu thật!"
+      "text": "Không sai một ô nào, {name} nhảy lò cò siêu thật!",
+      "en": {
+        "title": "Reward",
+        "text": "Not a single square missed: {name} is a hopscotch superstar!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Ô phấn vẫn còn trên ngõ, chị đợi em ra nhảy ván mới."
+      "text": "Ô phấn vẫn còn trên ngõ, chị đợi em ra nhảy ván mới.",
+      "en": {
+        "title": "See you soon",
+        "text": "The chalk squares are still on the lane, and I am waiting for you to hop a new round."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Hopscotch with Chị Thỏ Nhảy Dây",
+    "summary": "Toss a pebble into a square, then hop from square one to eight, skipping the square with the pebble."
   }
 }

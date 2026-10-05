@@ -46,7 +46,19 @@
         {
           "text": "Xoay gương, đón nắng nào!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Meow, {name}, the flower in the corner of the garden gets no sun, so it can't bloom.",
+          "Tap a mirror to turn it. The sunbeam bends when it hits a mirror, so steer it to the flower."
+        ],
+        "choices": [
+          {
+            "text": "Turn the mirrors, catch the sun!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Làm nở hoa ở ba bàn gương nhé!",
       "game": "light-mirrors",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Mirror sunbeams",
+        "prompt": "Make the flower bloom on 3 mirror boards!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hoa nở rực rỡ, Mèo Gương Thần cài một bông lên tai {name}!"
+      "text": "Hoa nở rực rỡ, Mèo Gương Thần cài một bông lên tai {name}!",
+      "en": {
+        "title": "Reward",
+        "text": "The flower bursts into bloom, and Mèo Gương Thần tucks a blossom behind {name}'s ear!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Vườn còn nhiều góc khuất, cậu quay lại lối hoa giúp tớ dẫn nắng nhé."
+      "text": "Vườn còn nhiều góc khuất, cậu quay lại lối hoa giúp tớ dẫn nắng nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The garden has plenty of shady corners. Come back to the flower path and help me bring in light."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Guide the Sunbeam with Mèo Gương Thần",
+    "summary": "A sunbeam shines into the royal garden; turn the mirrors to lead the light to a flower that hasn't bloomed yet."
   }
 }

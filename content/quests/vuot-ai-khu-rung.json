@@ -47,7 +47,25 @@
       "choices": [
         { "text": "Để tớ mang chuông gió về!", "reply": "Hay quá! Ngài mê quà của rừng lắm, cậu ra bãi cỏ dưới tán dẻ tìm thử nhé." },
         { "text": "Thần Rừng có đáng sợ không?", "reply": "Không đâu, ngài chỉ ham đố vui thôi. Cứ ra bãi cỏ dưới tán dẻ tìm quà trước đã." }
-      ]
+      ],
+      "en": {
+        "title": "Thỏ Kèn Lá brings news",
+        "goTo": "Go to the hollow oak, Thỏ Kèn Lá is blowing a leaf horn to call for friends",
+        "lines": [
+          "{name}, the Mischievous Forest Spirit just hooked the forest festival's wind chime on his antlers and darted off into the moonlit glade!",
+          "He says he'll only give it back to someone who brings a gift and wins his quiz. Without the chime, the animals won't know when the festival starts tonight."
+        ],
+        "choices": [
+          {
+            "text": "I'll bring the wind chime back!",
+            "reply": "Wonderful! He adores forest gifts; try looking in the grass under the chestnut trees."
+          },
+          {
+            "text": "Is the Forest Spirit scary?",
+            "reply": "Not at all, he just loves quizzes. Go and find a gift in the grass under the chestnut trees first."
+          }
+        ]
+      }
     },
     {
       "id": "tim-qua-moi",
@@ -168,7 +186,25 @@
           "text": "Quay lại rủ Thỏ Kèn Lá đi cùng",
           "consequence": "Gấu Trúc gật gù: có bạn cổ vũ thì vững dạ hơn. Chạy về gốc sồi rỗng gọi Thỏ nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "How to greet the Forest Spirit",
+        "prompt": "The moonlit glade is just ahead. How does {name} want to greet the Forest Spirit?",
+        "choices": [
+          {
+            "text": "Play a greeting tune on a bamboo flute",
+            "consequence": "The flute echoes deep into the forest; the Forest Spirit pricks up his ears, nods, and waits for {name}."
+          },
+          {
+            "text": "Set down a pot of honey as a welcome gift",
+            "consequence": "The Forest Spirit sniffs the sweet honey, and his antlers quiver with delight."
+          },
+          {
+            "text": "Go back and ask Thỏ Kèn Lá to come along",
+            "consequence": "Gấu Trúc nods: with a friend cheering you on, you'll feel braver. Run back to the hollow oak and fetch Thỏ!"
+          }
+        ]
+      }
     },
     {
       "id": "ru-tho-di-cung",
@@ -179,7 +215,19 @@
       "lines": [
         { "speaker": "Thỏ Kèn Lá", "text": "Cậu quay lại rủ tớ thật à? Vui quá! Mỗi lần cậu trả lời đúng, tớ sẽ thổi một hồi kèn lá thật to." }
       ],
-      "choices": [{ "text": "Mình cùng tới khoảng rừng trăng nào!" }]
+      "choices": [{ "text": "Mình cùng tới khoảng rừng trăng nào!" }],
+      "en": {
+        "title": "Bring Thỏ Kèn Lá along",
+        "goTo": "Go back to the hollow oak and ask Thỏ Kèn Lá to come with you",
+        "lines": [
+          "You really came back for me? Hooray! Every time you get an answer right, I'll blow a great big blast on my leaf horn."
+        ],
+        "choices": [
+          {
+            "text": "Let's head to the moonlit glade together!"
+          }
+        ]
+      }
     },
     {
       "id": "tran-trum",
@@ -278,14 +326,22 @@
       "title": "Chuông gió trở về",
       "kind": "reward",
       "target": "trum-kr-chuong-gio",
-      "text": "Thần Rừng gỡ chuông gió khỏi bộ gạc, treo lại cho {name} gõ thử. Leng keng! Muông thú ùa ra reo hò, túi quà của ngài rơi ra đầy XP, xu và điểm kỹ năng."
+      "text": "Thần Rừng gỡ chuông gió khỏi bộ gạc, treo lại cho {name} gõ thử. Leng keng! Muông thú ùa ra reo hò, túi quà của ngài rơi ra đầy XP, xu và điểm kỹ năng.",
+      "en": {
+        "title": "The wind chime comes home",
+        "text": "The Forest Spirit unhooks the wind chime from his antlers and hangs it back for {name} to try. Ting-a-ling! The animals pour out cheering, and his gift bag spills over with XP, coins and skill points."
+      }
     },
     {
       "id": "hoi-rung-mo-man",
       "title": "Hội rừng mở màn",
       "kind": "next",
       "trigger": "auto",
-      "text": "Chuông gió ngân vang khắp khu rừng bí mật. Thần Rừng hẹn {name} hôm nào quay lại đố tiếp, còn Vẹt Xanh đang chờ ở cửa rừng để kể chuyện ngày hội."
+      "text": "Chuông gió ngân vang khắp khu rừng bí mật. Thần Rừng hẹn {name} hôm nào quay lại đố tiếp, còn Vẹt Xanh đang chờ ở cửa rừng để kể chuyện ngày hội.",
+      "en": {
+        "title": "The forest festival begins",
+        "text": "The wind chime rings out across the Secret Forest. The Forest Spirit asks {name} to come back for another quiz someday, and Vẹt Xanh is waiting at the forest gate to chatter about the festival."
+      }
     }
   ],
   "reward": {

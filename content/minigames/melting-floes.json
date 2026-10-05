@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 10,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Melting Ice Floes",
+    "howTo": [
+      "The ice cracks and slowly sinks. {name} taps the floe right next door so the penguin hops over.",
+      "Hop onto floes with fish to pick them up, one point per fish.",
+      "Stay on a sinking floe and you splash into the water, losing a heart."
+    ]
+  }
 }

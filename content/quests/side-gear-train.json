@@ -46,7 +46,19 @@
         {
           "text": "Cháu lắp bánh răng truyền động!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hello, {name}! The stone bridge lift is missing its drive gears, so it can't be raised.",
+          "Fit the big and small gears onto the pegs so they mesh and pass the turning along."
+        ],
+        "choices": [
+          {
+            "text": "I'll fit the gears together!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nối ăn khớp bánh răng vận hành ba cỗ máy chuyển động nhé!",
       "game": "gear-train",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Turning gears",
+        "prompt": "Mesh the gears to run 3 machines!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bác Thợ Khóa Thành cười khà khà: bánh răng quay tít đều tăm tắp, {name} khéo tay quá đi thôi!"
+      "text": "Bác Thợ Khóa Thành cười khà khà: bánh răng quay tít đều tăm tắp, {name} khéo tay quá đi thôi!",
+      "en": {
+        "title": "Reward",
+        "text": "Bác Thợ Khóa Thành chuckles: the gears spin smoothly, {name} has such clever hands!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cầu đá qua hào đã hoạt động êm ái, cháu rảnh cứ qua bờ hào nước ngắm nghía đồ cơ khí."
+      "text": "Cầu đá qua hào đã hoạt động êm ái, cháu rảnh cứ qua bờ hào nước ngắm nghía đồ cơ khí.",
+      "en": {
+        "title": "See you soon",
+        "text": "The bridge over the moat runs smoothly now. Visit the moat bank any time to look at the machines."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Gear Train with Bác Thợ Khóa Thành",
+    "summary": "Brass gears big and small lie scattered; fit them on the pegs so the turning crank drives the mill."
   }
 }

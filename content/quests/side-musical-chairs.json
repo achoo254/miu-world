@@ -46,7 +46,19 @@
         {
           "text": "Tớ sẵn sàng giành ghế!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Musical chairs is about to start, {name}! Hurry into the circle!",
+          "I will play the drum. When it stops, tap an empty chair at once, but not too early or you will trip."
+        ],
+        "choices": [
+          {
+            "text": "I am ready to grab a chair!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Giành được năm cái ghế nhé!",
       "game": "musical-chairs",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Musical Chairs",
+        "prompt": "Grab 5 chairs!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Voi Trống Hội cười khà khà: {name} nhanh như sóc, ghế nào cũng giành được!"
+      "text": "Voi Trống Hội cười khà khà: {name} nhanh như sóc, ghế nào cũng giành được!",
+      "en": {
+        "title": "Reward",
+        "text": "Voi Trống Hội chuckles: {name} is quick as a squirrel and wins every chair!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Giờ sinh hoạt nào cũng chơi giành ghế, cứ tới sân khấu sự kiện nhé."
+      "text": "Giờ sinh hoạt nào cũng chơi giành ghế, cứ tới sân khấu sự kiện nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "We play musical chairs at every club hour, so come along to the event stage."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Musical chairs with Voi Trống Hội",
+    "summary": "Friends walk around a row of chairs while the music plays: the moment it stops, tap an empty chair."
   }
 }

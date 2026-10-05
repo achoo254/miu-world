@@ -46,7 +46,19 @@
         {
           "text": "Tớ không sợ lạc đâu!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, do you dare enter the king's flower maze?",
+          "Drag your finger along the little paths, pick up the stars in the dead ends, then find your way home."
+        ],
+        "choices": [
+          {
+            "text": "I'm not afraid of getting lost!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Ghi đủ năm điểm trong mê cung nhé!",
       "game": "maze-trace",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Maze Back Home",
+        "prompt": "Score 5 points in the maze!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mèo Gương Thần ra tận cửa đón: {name} tìm đường tài quá!"
+      "text": "Mèo Gương Thần ra tận cửa đón: {name} tìm đường tài quá!",
+      "en": {
+        "title": "Reward",
+        "text": "Mèo Gương Thần waits at the gate: {name} is brilliant at finding the way!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mê cung hoa mỗi mùa một kiểu, cậu nhớ ghé lối hoa đi thử nhé."
+      "text": "Mê cung hoa mỗi mùa một kiểu, cậu nhớ ghé lối hoa đi thử nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "The flower maze changes every season. Remember to stop by the flower path and try it!"
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Find the Way Home with Mèo Gương Thần",
+    "summary": "The royal garden's hedge maze hides stars in its dead ends; trace a path with your finger, grab the stars, then head home."
   }
 }

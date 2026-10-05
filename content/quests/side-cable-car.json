@@ -46,7 +46,19 @@
         {
           "text": "Cháu mời đúng số khách lên xe!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Lots of visitors are queuing to ride up and see the snow. {name}, help me check tickets!",
+          "Each cabin only fits four. Pick the group whose size matches the empty seats."
+        ],
+        "choices": [
+          {
+            "text": "I'll board just the right number!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Sắp xếp cho năm mươi lượt hành khách lên cabin cáp treo an toàn nhé!",
       "game": "cable-car",
-      "goal": 50
+      "goal": 50,
+      "en": {
+        "title": "Cable car boarding",
+        "prompt": "Board 50 groups of passengers safely onto the cable car!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Nai Nhỏ rung cặp gạc xinh xắn: cabin nào cháu {name} xếp cũng vừa khít chỗ!"
+      "text": "Nai Nhỏ rung cặp gạc xinh xắn: cabin nào cháu {name} xếp cũng vừa khít chỗ!",
+      "en": {
+        "title": "Reward",
+        "text": "Nai Nhỏ shakes a pair of pretty antlers: every cabin {name} fills fits perfectly!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tuyến cáp treo vẫn rộn rã chuông reo, Nai Nhỏ hẹn gặp {name} ở cửa ga làng."
+      "text": "Tuyến cáp treo vẫn rộn rã chuông reo, Nai Nhỏ hẹn gặp {name} ở cửa ga làng.",
+      "en": {
+        "title": "See you soon",
+        "text": "The cable car line still rings with bells. Nai Nhỏ will see {name} at the village station."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Board the Cable Car with Nai Nhỏ Vách Đá",
+    "summary": "Cable cars glide into the station one by one; invite in the group that fits the empty seats."
   }
 }

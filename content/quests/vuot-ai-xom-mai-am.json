@@ -47,7 +47,25 @@
       "choices": [
         { "text": "Mình dọn bữa dã ngoại trước nhé!", "reply": "Ừ, đồ để cả trên bãi cỏ cánh đồng gió, gió thổi bay tứ tung." },
         { "text": "Diều Hâu đố khó lắm không?", "reply": "Khó mà vui! Nhưng dọn bữa dã ngoại trên bãi cỏ đã nhé." }
-      ]
+      ],
+      "en": {
+        "title": "Heo Con is about to cry",
+        "goTo": "Go to the wildflower hedge, Heo Con Ủn Ỉn is on the verge of tears",
+        "lines": [
+          "Oink oink… {name}, the Whirlwind Hawk just swooped down, snatched our family photo frame and flew up to the windy hill!",
+          "He's not bad, he just loves quizzes about families. But the picnic isn't packed up yet, please help me!"
+        ],
+        "choices": [
+          {
+            "text": "Let's tidy up the picnic first!",
+            "reply": "Okay, the things are all over the grass in the windy field, the wind blew them everywhere."
+          },
+          {
+            "text": "Are the Hawk's riddles really hard?",
+            "reply": "Hard but fun! But let's clear up the picnic on the grass first."
+          }
+        ]
+      }
     },
     {
       "id": "chuan-bi-da-ngoai",
@@ -163,7 +181,25 @@
           "text": "Mời bác một miếng bánh bông lan",
           "consequence": "Diều Hâu ăn ngon lành rồi vỗ cánh phành phạch, sẵn sàng ra đề."
         }
-      ]
+      ],
+      "en": {
+        "title": "Talking to the Hawk",
+        "prompt": "The Hawk is perched on the hill, clutching the photo frame tight. How will {name} start the conversation?",
+        "choices": [
+          {
+            "text": "Politely ask him to give back the frame",
+            "consequence": "The Hawk spreads his wings and nods: with manners like that, I'll give you a chance at my quiz."
+          },
+          {
+            "text": "Tell him about your own family",
+            "consequence": "The Hawk listens, spellbound, eyes misty: I miss my own nest so much too."
+          },
+          {
+            "text": "Offer him a slice of sponge cake",
+            "consequence": "The Hawk gobbles it up, then flaps his wings flap-flap, ready to set the riddles."
+          }
+        ]
+      }
     },
     {
       "id": "tran-trum",
@@ -262,14 +298,22 @@
       "title": "Khung ảnh về tay",
       "kind": "reward",
       "target": "trum-xma-khung-anh",
-      "text": "Diều Hâu đặt khung ảnh vào tay {name}, còn xin đứng chung một tấm cho vui. Trong khung kẹp sẵn quà của bác: XP, xu và điểm kỹ năng."
+      "text": "Diều Hâu đặt khung ảnh vào tay {name}, còn xin đứng chung một tấm cho vui. Trong khung kẹp sẵn quà của bác: XP, xu và điểm kỹ năng.",
+      "en": {
+        "title": "The photo frame is back",
+        "text": "The Hawk places the photo frame in {name}'s hands and even asks to be in a picture for fun. Tucked inside the frame are his gifts: XP, coins and skill points."
+      }
     },
     {
       "id": "anh-ca-xom",
       "title": "Tấm ảnh cả xóm",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đúng năm giờ, cả xóm đứng sát vào nhau cười thật tươi. Bà Gấu Nâu mời {name} về hiên nhà ăn chè đỗ đen."
+      "text": "Đúng năm giờ, cả xóm đứng sát vào nhau cười thật tươi. Bà Gấu Nâu mời {name} về hiên nhà ăn chè đỗ đen.",
+      "en": {
+        "title": "A photo of the whole hamlet",
+        "text": "At five o'clock sharp, the whole hamlet squeezes together and smiles their biggest smiles. Granny Gấu Nâu invites {name} back to her porch for sweet black-bean soup."
+      }
     }
   ],
   "reward": {

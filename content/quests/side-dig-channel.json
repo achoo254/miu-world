@@ -46,7 +46,19 @@
         {
           "text": "Cháu vạch đường mương ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "Hello, {name}! The vegetable beds are parched because no cool water reaches them.",
+          "Scrape away the dirt to open up the ditch, and go around the big rocks so the stream can flow."
+        ],
+        "choices": [
+          {
+            "text": "I'll dig the channel now!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đào xong bốn mương dẫn dòng nước mát nhé!",
       "game": "dig-channel",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Dig a water channel",
+        "prompt": "Dig 4 channels to bring in cool water!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chú Đào Kênh Dẫn Nước reo vui khi thấy {name} khơi thông dòng chảy tài tình!"
+      "text": "Chú Đào Kênh Dẫn Nước reo vui khi thấy {name} khơi thông dòng chảy tài tình!",
+      "en": {
+        "title": "Reward",
+        "text": "Chú Đào Kênh Dẫn Nước cheers to see {name} clear the stream so cleverly!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Dưới chân cối xay gió luôn cần thợ giỏi, rảnh rỗi cháu lại ghé giúp chú đào kênh."
+      "text": "Dưới chân cối xay gió luôn cần thợ giỏi, rảnh rỗi cháu lại ghé giúp chú đào kênh.",
+      "en": {
+        "title": "See you soon",
+        "text": "The windmill always needs good diggers. When you're free, come help me dig channels."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Dig a Water Channel with Chú Đào Kênh",
+    "summary": "A dry dirt ditch lies below the windmill; trace a path to bring cool water down to the fields."
   }
 }

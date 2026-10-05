@@ -9,5 +9,12 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 6,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Zigzag Paths",
+    "howTo": [
+      "Drag from the snail across the stones to the veggies. Each segment shows its length.",
+      "Add up the segments: {name} finds the zigzag path exactly as many centimetres long as the sign says!"
+    ]
+  }
 }

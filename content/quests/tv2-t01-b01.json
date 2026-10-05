@@ -91,7 +91,27 @@
           "text": "Để mình vuốt tai giúp cậu trước nhé!",
           "reply": "Một bên, hai bên… phẳng phiu rồi! Giờ chỉ thiếu mỗi chiếc giày thôi."
         }
-      ]
+      ],
+      "en": {
+        "title": "Meet Thỏ Hạt Tiêu at the village gate",
+        "goTo": "Go to the village gate, where Thỏ Hạt Tiêu is hopping about waiting for {name}",
+        "lines": [
+          "{name}! Today I start Year Two at the village school, and my two long ears won't stop trembling!",
+          "Woof! Thỏ Hạt Tiêu has been dashing past the village gate since the first rooster crowed, I chased after her till I was out of breath!",
+          "I hopped so fast I dropped a shoe, my school bag and my pencil case along the dirt road.",
+          "Will you stay with me? With you here, maybe my ears will stop trembling... on one side at least."
+        ],
+        "choices": [
+          {
+            "text": "Of course, let's go pick up your things!",
+            "reply": "Hooray! My ears have stopped trembling... well, the tips are still wobbling a little."
+          },
+          {
+            "text": "Let me smooth your ears first!",
+            "reply": "One side, two sides... all smooth! Now all that's missing is my shoe."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-do-sau-xanh",
@@ -630,7 +650,30 @@
           "text": "Thỏ Hạt Tiêu và mình sẽ dắt cậu tới tận cửa lớp.",
           "reply": "Thỏ Hạt Tiêu chìa ra bàn tay lông xù mềm mại. Tíu bật cười, thôi không níu mẹ nữa."
         }
-      ]
+      ],
+      "en": {
+        "title": "Gà Con Tíu won't go into class",
+        "goTo": "Go to the village well, where Gà Con Tíu is hiding under her mother's wing",
+        "lines": [
+          "Cheep... Why is Year One so crowded? Why do my legs keep wanting to run home?",
+          "Tíu has just started Year One, and she's clinging to her mum's wing just like the little ones in the reading.",
+          "{name}, what can we say to help Tíu feel less scared?"
+        ],
+        "choices": [
+          {
+            "text": "Hi Tíu! Last year I was just as shaky as you.",
+            "reply": "Tíu peeks out from under her mum's wing: Really? Then why aren't you shaky now?"
+          },
+          {
+            "text": "Tíu, class is so much fun, there's even a school drum!",
+            "reply": "Tíu tilts her head: Why does the drum go boom boom? Okay, I'll go in and see!"
+          },
+          {
+            "text": "Thỏ Hạt Tiêu and I will walk you right to the classroom door.",
+            "reply": "Thỏ Hạt Tiêu holds out a soft, fluffy paw. Tíu laughs and lets go of her mum."
+          }
+        ]
+      }
     },
     {
       "id": "tap-noi-loi-chao",
@@ -708,14 +751,22 @@
       "title": "Quà của Thỏ Hạt Tiêu",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Thỏ Hạt Tiêu tặng {name} một củ cà rốt non buộc nơ cỏ may, rồi hứa sẽ ăn thật nhiều rau để mau lớn bổng như bạn nhỏ trong bài."
+      "text": "Thỏ Hạt Tiêu tặng {name} một củ cà rốt non buộc nơ cỏ may, rồi hứa sẽ ăn thật nhiều rau để mau lớn bổng như bạn nhỏ trong bài.",
+      "en": {
+        "title": "Thỏ Hạt Tiêu's gift",
+        "text": "Thỏ Hạt Tiêu gives {name} a baby carrot tied with a grass bow, and promises to eat lots of vegetables to grow tall fast, like the child in the reading."
+      }
     },
     {
       "id": "mo-bai-2",
       "title": "Tờ lịch bay đi",
       "kind": "next",
       "trigger": "auto",
-      "text": "Vù… một cơn gió thổi xấp lịch bay tung về phía ruộng lúa. Dưới gốc gạo đầu bờ, ông Cua Đồng giơ đôi càng lên trời mà không dám kẹp, vì kẹp vào là rách: ngày hôm qua đâu rồi?"
+      "text": "Vù… một cơn gió thổi xấp lịch bay tung về phía ruộng lúa. Dưới gốc gạo đầu bờ, ông Cua Đồng giơ đôi càng lên trời mà không dám kẹp, vì kẹp vào là rách: ngày hôm qua đâu rồi?",
+      "en": {
+        "title": "The calendar blows away",
+        "text": "Whoosh... a gust of wind sends a stack of calendar pages flying towards the rice field. Under the silk-cotton tree at the edge of the field, Grandpa Cua Đồng the paddy crab holds his claws up high but daren't pinch, because a pinch would tear them: \"Ngày hôm qua đâu rồi?\" (Where has yesterday gone?)"
+      }
     }
   ],
   "reward": {

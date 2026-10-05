@@ -46,7 +46,19 @@
         {
           "text": "Vèo vèo, tớ về nhất cho xem!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The mini race track is open, {name}! Hop in!",
+          "The kart follows your finger. Drive two laps without wandering onto the grass."
+        ],
+        "choices": [
+          {
+            "text": "Zoom zoom, watch me win!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đua xong với bốn điểm, về trong ba hạng đầu nhé!",
       "game": "kart-race",
-      "goal": 4
+      "goal": 4,
+      "en": {
+        "title": "Mini kart race",
+        "prompt": "Finish the race with 4 points in the top three!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Chó Cảnh Sát Còi phất cờ ca rô: {name} lái xe giỏi mà vẫn an toàn!"
+      "text": "Chó Cảnh Sát Còi phất cờ ca rô: {name} lái xe giỏi mà vẫn an toàn!",
+      "en": {
+        "title": "Reward",
+        "text": "Chó Cảnh Sát Còi waves the chequered flag: {name} drives fast and still drives safe!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Đường đua vẫn chờ cậu dưới tháp đồng hồ, chạy lại lúc nào cũng được."
+      "text": "Đường đua vẫn chờ cậu dưới tháp đồng hồ, chạy lại lúc nào cũng được.",
+      "en": {
+        "title": "See you soon",
+        "text": "The track is still waiting under the clock tower, so race again whenever you like."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Mini kart race with Chó Cảnh Sát Còi",
+    "summary": "A track loops around the clock tower: hold your finger down to steer, stay off the grass, and finish in the top three."
   }
 }

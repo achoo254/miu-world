@@ -77,7 +77,26 @@
           "text": "Sư tử con ơi, bố cậu đang chuẩn bị bất ngờ đấy!",
           "reply": "Sư tử con vểnh tai lên nghe ngóng, cái đuôi bắt đầu ve vẩy dù miệng vẫn còn phụng phịu."
         }
-      ]
+      ],
+      "en": {
+        "title": "The lion cub turns his back on Dad",
+        "goTo": "Go to the warm stone cave, the lion cub is sitting with his back to his dad, sulking",
+        "lines": [
+          "Hmph! Dad's busy fixing the cave roof, busy patrolling the hamlet, busy hauling stones to pave the path up the slope… nobody plays with me!",
+          "Oh dear, that's my fault. {name}, give me a hand: I want to set up a “feast” game like Hường's dad in the story.",
+          "But my tray, bowls and chopsticks… I think I put them out on the rocky patch and then forgot all about them. That's how busy I am!"
+        ],
+        "choices": [
+          {
+            "text": "I'll go and find the tray and bowls right away, wait here!",
+            "reply": "The lion cub turns his head a little, whiskers twitching: really? Then… I'll wait, but only a tiny bit."
+          },
+          {
+            "text": "Little lion, your dad is preparing a surprise!",
+            "reply": "The lion cub pricks up his ears to listen, and his tail starts swishing even though he's still pouting."
+          }
+        ]
+      }
     },
     {
       "id": "tim-mam-bat",
@@ -828,7 +847,30 @@
           "text": "Bố con mình kể chuyện cho nhau nghe nhé!",
           "reply": "Hai bố con nằm sát bên nhau, sư tử con đòi nghe chuyện ngay, không đợi đến tối."
         }
-      ]
+      ],
+      "en": {
+        "title": "Lion father and son make up",
+        "goTo": "Go into the warm stone cave, father and son lion are sitting snuggled together",
+        "lines": [
+          "Dad… I'm not sulking any more. But what if you're busy again tomorrow?",
+          "I promise you one game every evening, however busy I am, I won't forget. So what game would you like to play?",
+          "If the game has food, don't forget to invite me! Quack quack!"
+        ],
+        "choices": [
+          {
+            "text": "Play the feast game again tomorrow and invite the whole hamlet!",
+            "reply": "The lion cub cheers, his tail whirling like a pinwheel: I'll hold the bowl so nicely with both paws!"
+          },
+          {
+            "text": "Play shop: Dad's the customer, the cub runs the noodle stall!",
+            "reply": "Father Bờm bows very low: “Dạ, xin bác bát miến ạ.” (One bowl of noodles, please.) The lion cub laughs until he can't stop."
+          },
+          {
+            "text": "Let's tell each other stories, father and son!",
+            "reply": "Father and son lie snuggled up, and the cub wants a story right now, not later tonight."
+          }
+        ]
+      }
     },
     {
       "id": "ke-ve-ai",
@@ -998,14 +1040,22 @@
       "title": "Quà của hai bố con sư tử",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hai bố con sư tử tặng {name} một chiếc bát gỗ nhỏ khắc hình hai bàn tay đỡ bát, kèm lời mời: \"Mời bác xơi!\" Vịt Bầu thì tặng một… lời hứa không ăn vụng nữa."
+      "text": "Hai bố con sư tử tặng {name} một chiếc bát gỗ nhỏ khắc hình hai bàn tay đỡ bát, kèm lời mời: \"Mời bác xơi!\" Vịt Bầu thì tặng một… lời hứa không ăn vụng nữa.",
+      "en": {
+        "title": "A gift from the lion father and son",
+        "text": "The lion father and son give {name} a small wooden bowl carved with two paws holding a bowl, and an invitation: “Mời bác xơi!” (Please, do eat!). Vịt Bầu gives… a promise not to sneak snacks any more."
+      }
     },
     {
       "id": "mo-bai-29",
       "title": "Vết khắc trên cánh cửa",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bên căn chòi cũ ven bờ hồ sen, Cua Kềnh bò ngang bò dọc tìm vết khắc chiều cao bà đã đánh dấu năm nào. Cánh cửa cũ ấy còn giữ bao nhiêu kỉ niệm về bà nhỉ?"
+      "text": "Bên căn chòi cũ ven bờ hồ sen, Cua Kềnh bò ngang bò dọc tìm vết khắc chiều cao bà đã đánh dấu năm nào. Cánh cửa cũ ấy còn giữ bao nhiêu kỉ niệm về bà nhỉ?",
+      "en": {
+        "title": "Marks on the door",
+        "text": "By the old hut on the lotus-lake shore, Cua Kềnh scuttles this way and that, looking for the height marks Grandma carved years ago. How many memories of Grandma does that old door still hold?"
+      }
     }
   ],
   "reward": {

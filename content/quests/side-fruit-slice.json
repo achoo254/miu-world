@@ -46,7 +46,19 @@
         {
           "text": "Tung lên đi, tớ chém liền!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "I just picked a whole basket of coconuts, mangoes and pineapples, {name}! Let's make a fruit plate!",
+          "I'll toss them up and you swipe to slice them, but don't hit the cactus!"
+        ],
+        "choices": [
+          {
+            "text": "Toss them up, I'm ready!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Chém được bốn mươi điểm trái cây nhé!",
       "game": "fruit-slice",
-      "goal": 40
+      "goal": 40,
+      "en": {
+        "title": "Fruit slicer",
+        "prompt": "Score 40 points slicing fruit!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khỉ Hái Dừa nhảy tưng tưng: đĩa trái cây của {name} ngon tuyệt!"
+      "text": "Khỉ Hái Dừa nhảy tưng tưng: đĩa trái cây của {name} ngon tuyệt!",
+      "en": {
+        "title": "Reward",
+        "text": "Khỉ Hái Dừa bounces up and down: {name}'s fruit plate is delicious!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mai cây lại trĩu quả, Khỉ Hái Dừa hẹn {name} ở lối vào rừng."
+      "text": "Mai cây lại trĩu quả, Khỉ Hái Dừa hẹn {name} ở lối vào rừng.",
+      "en": {
+        "title": "See you soon",
+        "text": "The trees will be heavy with fruit again tomorrow. Khỉ Hái Dừa will meet {name} at the jungle entrance."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Slice jungle fruit with Khỉ Hái Dừa",
+    "summary": "Jungle fruit flies into the air: swipe to slice each one in half, and steer clear of the cactus."
   }
 }

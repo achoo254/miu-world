@@ -46,7 +46,19 @@
         {
           "text": "Tớ muốn gắp con gấu!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The new claw machine just arrived! Grab one, {name}!",
+          "Hold to move the claw, let go to stop. Line it up right above a toy."
+        ],
+        "choices": [
+          {
+            "text": "I want the teddy bear!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Gắp được ba con thú bông nhé!",
       "game": "claw-machine",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Claw machine",
+        "prompt": "Grab 3 soft toys!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Meo meo, {name} gắp toàn trúng, tài thế!"
+      "text": "Meo meo, {name} gắp toàn trúng, tài thế!",
+      "en": {
+        "title": "Reward",
+        "text": "Meow! {name} never misses. What a talent!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Máy gắp vẫn đặt ở chân cầu rồng, cậu tới gắp nữa nha."
+      "text": "Máy gắp vẫn đặt ở chân cầu rồng, cậu tới gắp nữa nha.",
+      "en": {
+        "title": "See you soon",
+        "text": "The claw machine stays at the foot of the dragon bridge. Come grab some more."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Claw machine with Mèo Gắp Thú",
+    "summary": "Move the claw right, then back, then drop it to grab the soft toy you want."
   }
 }

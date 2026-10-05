@@ -9,5 +9,12 @@
   "controls": ["swipe"],
   "duration": 90,
   "goal": 15,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Rồng rắn lên mây (Dragon Line)",
+    "howTo": [
+      "Swipe to turn {name}, picking up friends who join the tail of the line.",
+      "Don't run into your own line, or the friends at the back let go and run off!"
+    ]
+  }
 }

@@ -46,7 +46,19 @@
         {
           "text": "Em đong nước giúp đàn bò ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, the thirsty cows need exactly the right number of litres of cool water!",
+          "Tap to pour water between the two cans until you have just the right amount."
+        ],
+        "choices": [
+          {
+            "text": "I will measure water for the cows!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Đong chuẩn xác dung tích ba lần cho đàn bò uống thỏa thích nhé!",
       "game": "water-jugs",
-      "goal": 3
+      "goal": 3,
+      "en": {
+        "title": "Measure the Water",
+        "prompt": "Measure the exact amount 3 times so the cows can drink their fill!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Đàn bò uống no nê nước mát, cảm ơn {name} tính toán tuyệt vời!"
+      "text": "Đàn bò uống no nê nước mát, cảm ơn {name} tính toán tuyệt vời!",
+      "en": {
+        "title": "Reward",
+        "text": "The cows drank their fill of cool water. Thank you, {name}, for the brilliant maths!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bình nước mát bên đầu ruộng lúa mì lúc nào cũng đợi em ghé đong."
+      "text": "Bình nước mát bên đầu ruộng lúa mì lúc nào cũng đợi em ghé đong.",
+      "en": {
+        "title": "See you soon",
+        "text": "The cool water jugs by the wheat field are always waiting for you to measure."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Measuring water with Anh Thợ Sửa Mái",
+    "summary": "Pour back and forth between water cans to measure exactly the litres needed for the cows' trough."
   }
 }

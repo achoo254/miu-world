@@ -46,7 +46,19 @@
         {
           "text": "Tớ bắt nhịp yo-yo siêu chuẩn!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "My sparkly yo-yo spins like crazy. {name}, want to try the up-and-down?",
+          "Swipe to let the string drop, then tap just as the glowing ring hits the bottom to wind it back up."
+        ],
+        "choices": [
+          {
+            "text": "My yo-yo timing is spot on!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Biểu diễn xuất sắc được hai mươi cú tung nhả yo-yo điệu nghệ nhé!",
       "game": "yo-yo",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Yo-Yo Tricks",
+        "prompt": "Perform 20 slick yo-yo throws!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bé Gấp Giấy nhảy cẫng lên mừng rỡ: {name} làm xiếc với yo-yo trông ngầu quá đi thôi!"
+      "text": "Bé Gấp Giấy nhảy cẫng lên mừng rỡ: {name} làm xiếc với yo-yo trông ngầu quá đi thôi!",
+      "en": {
+        "title": "Reward",
+        "text": "Bé Gấp Giấy jumps for joy: {name} does yo-yo tricks like a circus star!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Sợi dây yo-yo vẫn sẵn sàng trên chiếu, tớ đợi {name} trổ tài biểu diễn tiếp."
+      "text": "Sợi dây yo-yo vẫn sẵn sàng trên chiếu, tớ đợi {name} trổ tài biểu diễn tiếp.",
+      "en": {
+        "title": "See you soon",
+        "text": "The yo-yo string is ready on the mat. I'm waiting for {name} to show off again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Yo-Yo Tricks with Bé Gấp Giấy Vui",
+    "summary": "The yo-yo spins down on its long string; tap the moment it hits the bottom to whip it back up."
   }
 }

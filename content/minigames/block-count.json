@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 10,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Count the blocks",
+    "howTo": [
+      "Count how many blocks are in the stack, then tap the right number.",
+      "Some blocks hide behind and under others. Look carefully, {name}!",
+      "Pick wrong and the stack turns all the way round so {name} can see the back."
+    ]
+  }
 }

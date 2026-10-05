@@ -46,7 +46,19 @@
         {
           "text": "Để tớ soi thật kỹ!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "{name}, look at the two paintings on the dungeon wall. Are they the same?",
+          "Actually, there are five differences. Tap a difference on either picture."
+        ],
+        "choices": [
+          {
+            "text": "Let me look really closely!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Tìm ra năm chỗ khác nhau nhé!",
       "game": "spot-diff",
-      "goal": 5
+      "goal": 5,
+      "en": {
+        "title": "Spot the Difference",
+        "prompt": "Find 5 differences!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Gác Hầm tròn mắt: {name} tìm ra hết rồi, giỏi thật!"
+      "text": "Gấu Gác Hầm tròn mắt: {name} tìm ra hết rồi, giỏi thật!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Gác Hầm's eyes go wide: {name} found them all, how clever!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Tớ sẽ treo thêm tranh mới, cậu quay lại lối xuống hầm tìm tiếp nhé."
+      "text": "Tớ sẽ treo thêm tranh mới, cậu quay lại lối xuống hầm tìm tiếp nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "I'll hang some new paintings. Come back down the dungeon steps to search again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Spot the Difference with Gấu Gác Hầm",
+    "summary": "Two paintings on the dungeon wall look almost the same; find the five differences."
   }
 }

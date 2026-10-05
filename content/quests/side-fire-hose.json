@@ -46,7 +46,19 @@
         {
           "text": "Em giữ vòi rồng dập lửa ngay!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "A spark has caught the dry straw at the end of the road, {name}!",
+          "Hold your finger down to aim the arc of water and put the fire out fast."
+        ],
+        "choices": [
+          {
+            "text": "Hose ready, out goes the fire!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Phun nước dập tắt hoàn toàn mười lăm đám lửa bùng lên nhé!",
       "game": "fire-hose",
-      "goal": 15
+      "goal": 15,
+      "en": {
+        "title": "Little firefighter",
+        "prompt": "Spray water to put out 15 fires completely!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Khói tan lửa tắt sạch bong, {name} dũng cảm cứu nguy xóm làng!"
+      "text": "Khói tan lửa tắt sạch bong, {name} dũng cảm cứu nguy xóm làng!",
+      "en": {
+        "title": "Reward",
+        "text": "The smoke is gone and every flame is out. {name} bravely saved the village!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Bên ruộng lúa mì luôn có anh em thợ túc trực bảo vệ xóm nhỏ."
+      "text": "Bên ruộng lúa mì luôn có anh em thợ túc trực bảo vệ xóm nhỏ.",
+      "en": {
+        "title": "See you soon",
+        "text": "By the wheat field, the roofers are always on hand to keep our little village safe."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Fire hose with Anh Thợ Sửa Mái",
+    "summary": "Aim the fire hose so its arc of water puts out the flames flaring up by the windows."
   }
 }

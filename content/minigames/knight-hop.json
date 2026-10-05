@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 17,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Knight seeks the stars",
+    "howTo": [
+      "The horse moves in an L: two squares one way, then one to the side.",
+      "Squares glowing green are where the horse can jump. Tap one to hop there.",
+      "{name}, help the horse collect every star on the castle floor!"
+    ]
+  }
 }

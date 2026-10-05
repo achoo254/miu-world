@@ -10,5 +10,13 @@
   "controls": ["drag"],
   "duration": 90,
   "goal": 5,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Air hockey",
+    "howTo": [
+      "{name} drags the paddle on their half of the table to hit the puck into the penguin's goal.",
+      "Block the puck so it doesn't fly into your own goal!",
+      "Every goal is a point. When the penguin scores, it slows down a little."
+    ]
+  }
 }

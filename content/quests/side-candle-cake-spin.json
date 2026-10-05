@@ -46,7 +46,19 @@
         {
           "text": "Để tớ cắm nến cho!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "It's Cat's birthday today, {name}. Help me put the candles on!",
+          "The cake keeps spinning, so wait for a gap before shooting, or you'll hit a candle."
+        ],
+        "choices": [
+          {
+            "text": "Let me do the candles!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Cắm nến được hai mươi điểm nhé!",
       "game": "candle-cake-spin",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Candles on a spinning cake",
+        "prompt": "Score 20 points with the candles!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Gấu Bánh Ngọt hát mừng sinh nhật: nến {name} cắm đều tăm tắp!"
+      "text": "Gấu Bánh Ngọt hát mừng sinh nhật: nến {name} cắm đều tăm tắp!",
+      "en": {
+        "title": "Reward",
+        "text": "Gấu Bánh Ngọt sings happy birthday: {name}'s candles are perfectly even!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Còn nhiều bạn sắp sinh nhật lắm, Gấu Bánh Ngọt lại nhờ {name} nhé."
+      "text": "Còn nhiều bạn sắp sinh nhật lắm, Gấu Bánh Ngọt lại nhờ {name} nhé.",
+      "en": {
+        "title": "See you soon",
+        "text": "Lots of friends have birthdays coming up. Gấu Bánh Ngọt will ask {name} again."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Candles on a Spinning Cake with Gấu Bánh Ngọt",
+    "summary": "A birthday cake spins round; tap to shoot candles into its edge without hitting the old ones."
   }
 }

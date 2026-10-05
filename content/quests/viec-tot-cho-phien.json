@@ -46,7 +46,24 @@
       "choices": [
         { "text": "Nín đi Mi, mình cùng tìm mẹ nhé!", "reply": "Thật hả? Đồ của Mi rơi ở lối giữa các sạp ấy." },
         { "text": "Mi còn nhớ mẹ mặc áo gì không?", "reply": "Mẹ mặc áo hoa, tay xách giỏ cá. Nhưng nhặt đồ của Mi trước đã nhé." }
-      ]
+      ],
+      "en": {
+        "title": "Little Mi is crying",
+        "goTo": "A little one is sniffling on the steps of the fountain",
+        "lines": [
+          "Boo hoo… Mi was busy looking at the balloons, and when she turned round, Mum was gone. And Mi dropped her things while running too."
+        ],
+        "choices": [
+          {
+            "text": "Don't cry, Mi, let's find your mum together!",
+            "reply": "Really? Mi's things fell in the aisle between the stalls."
+          },
+          {
+            "text": "Do you remember what your mum was wearing, Mi?",
+            "reply": "Mum's wearing a flowery top and carrying a fish basket. But let's pick up Mi's things first."
+          }
+        ]
+      }
     },
     {
       "id": "nhat-do-cua-mi",
@@ -169,7 +186,25 @@
           "text": "Hỏi cô bán hoa đã thấy mẹ chưa",
           "consequence": "Chú bảo vệ gật đầu: cô bán hoa ly ngồi đây cả ngày, chắc biết đấy. Sang hỏi cô nhé!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Finding Mi's mum",
+        "prompt": "The market is so crowded. How does {name} want to find Mi's mum?",
+        "choices": [
+          {
+            "text": "Ask the guard to make an announcement",
+            "consequence": "The loudspeaker rings across the market: «Would little Gấu Mi's mum please come to the market hall!» Mi stops crying at once."
+          },
+          {
+            "text": "Stay put somewhere easy to spot",
+            "consequence": "{name} lifts Mi onto their shoulders, and her yellow balloon flutters like a flag above the market."
+          },
+          {
+            "text": "Ask the flower seller if she's seen Mum",
+            "consequence": "The guard nods: the lily seller sits here all day, she's sure to know. Go and ask her!"
+          }
+        ]
+      }
     },
     {
       "id": "hoi-co-ban-hoa",
@@ -180,7 +215,19 @@
       "lines": [
         { "speaker": "Cô Bán Hoa Ly", "text": "Mẹ bé Mi mặc áo hoa phải không? Cô thấy chị ấy vừa đi vội về phía nhà lồng chợ, vừa đi vừa gọi tên con." }
       ],
-      "choices": [{ "text": "Cảm ơn cô, cháu đưa Mi qua đó ngay!" }]
+      "choices": [{ "text": "Cảm ơn cô, cháu đưa Mi qua đó ngay!" }],
+      "en": {
+        "title": "Ask the flower seller",
+        "goTo": "Go to the lily stall and ask the Lily Seller",
+        "lines": [
+          "Mi's mum is wearing a flowery top, right? I just saw her hurrying towards the market hall, calling her little one's name."
+        ],
+        "choices": [
+          {
+            "text": "Thank you, I'll take Mi there right away!"
+          }
+        ]
+      }
     },
     {
       "id": "cam-hoa-cam-on",
@@ -217,14 +264,22 @@
       "title": "Mẹ con đoàn tụ",
       "kind": "reward",
       "target": "vt-cp-me-gau",
-      "text": "Mi sà vào lòng mẹ cười tít mắt. Mẹ Gấu Hoa cảm ơn {name} mãi, cả chợ vỗ tay khen bạn nhỏ tốt bụng."
+      "text": "Mi sà vào lòng mẹ cười tít mắt. Mẹ Gấu Hoa cảm ơn {name} mãi, cả chợ vỗ tay khen bạn nhỏ tốt bụng.",
+      "en": {
+        "title": "Mum and Mi together again",
+        "text": "Mi runs into her mum's arms, smiling from ear to ear. Mother Gấu Hoa thanks {name} again and again, and the whole market applauds the kind-hearted helper."
+      }
     },
     {
       "id": "banh-ran-cuoi-phien",
       "title": "Bánh rán cuối phiên",
       "kind": "next",
       "trigger": "auto",
-      "text": "Mẹ con Mi rủ {name} ghé gian hàng đồ ăn ăn bánh rán nóng giòn, còn hẹn phiên sau đi chợ cùng nhau."
+      "text": "Mẹ con Mi rủ {name} ghé gian hàng đồ ăn ăn bánh rán nóng giòn, còn hẹn phiên sau đi chợ cùng nhau.",
+      "en": {
+        "title": "Doughnuts at the end of market day",
+        "text": "Mi and her mum invite {name} to the food stall for hot, crispy sesame doughnuts, and promise to go to market together next time."
+      }
     }
   ],
   "reward": {

@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 90,
   "goal": 8,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Measure in hand spans",
+    "howTo": [
+      "{name}, tap along the object to lay hand spans end to end, starting from the left.",
+      "Gaps or overlaps turn the span red, and the measurement will be off.",
+      "Lay them snugly, then tap the right number of spans for a point."
+    ]
+  }
 }

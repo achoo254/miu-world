@@ -18,12 +18,13 @@ function sideQuest() {
     sevenQuestions: { who: 'Bạn của Vẹt', where: 'Gốc cây', goal: 'Hứng trứng', play: 'Hứng trứng', learn: 'Phản xạ', reward: 'XP, xu', next: 'Chơi lại' },
     phases: { hook: 'ask', explore: 'ask', learn: 'ask', challenge: 'play', decision: 'play', finale: 'play', reward: 'thanks', next: 'bye' },
     steps: [
-      { id: 'ask', title: 'Vẹt nhờ', kind: 'dialogue', target: 'parrot-guide', lines: [{ speaker: 'Vẹt', text: 'Giúp tớ hứng trứng nhé {name}!' }] },
-      { id: 'play', title: 'Hứng trứng', kind: 'challenge', mechanic: 'minigame', trigger: 'auto', prompt: 'Hứng mười quả trứng!', game: 'egg-catch', goal: 10 },
-      { id: 'thanks', title: 'Cảm ơn', kind: 'reward', trigger: 'auto', text: 'Cảm ơn {name}!' },
-      { id: 'bye', title: 'Hẹn gặp lại', kind: 'next', trigger: 'auto', text: 'Lúc nào rảnh lại chơi nhé.' },
+      { id: 'ask', title: 'Vẹt nhờ', kind: 'dialogue', target: 'parrot-guide', lines: [{ speaker: 'Vẹt', text: 'Giúp tớ hứng trứng nhé {name}!' }], en: { title: 'Vẹt asks', lines: ['Help me catch the eggs, {name}!'] } },
+      { id: 'play', title: 'Hứng trứng', kind: 'challenge', mechanic: 'minigame', trigger: 'auto', prompt: 'Hứng mười quả trứng!', game: 'egg-catch', goal: 10, en: { title: 'Egg catch', prompt: 'Catch ten eggs!' } },
+      { id: 'thanks', title: 'Cảm ơn', kind: 'reward', trigger: 'auto', text: 'Cảm ơn {name}!', en: { title: 'Thanks', text: 'Thank you, {name}!' } },
+      { id: 'bye', title: 'Hẹn gặp lại', kind: 'next', trigger: 'auto', text: 'Lúc nào rảnh lại chơi nhé.', en: { title: 'See you', text: 'Come and play again some time.' } },
     ],
     reward: { xp: 20, coin: 5 },
+    en: { title: 'Catch the eggs for Vẹt', summary: 'Catch the eggs falling from a high nest' },
   } as Record<string, unknown> & { steps: Record<string, unknown>[] };
 }
 

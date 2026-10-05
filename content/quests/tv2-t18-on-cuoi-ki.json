@@ -92,7 +92,27 @@
           "text": "Hươu Cao ơi, câu đố có khó không?",
           "reply": "Hươu Cao nghiêng cái cổ dài: Từ trên này tớ nhìn thấy cả học kì, câu nào cũng vừa sức cậu thôi!"
         }
-      ]
+      ],
+      "en": {
+        "title": "A bridge built all term long",
+        "goTo": "Go to the end of the suspension bridge before the castle gate, the whole castle is waiting for the opening",
+        "lines": [
+          "{name}'s here! I'm Hải Ly Mầm. Eighteen weeks, eighteen planks, and I measured every one three times before nailing it down.",
+          "Ladies and gentlemen of the castle! I'm the tallest, so I'm hosting; even those at the far end of the moat can see me. The bridge opening is about to begin!",
+          "Wait, Hươu Cao! The last plank isn't on yet. This morning it fell under the bridge, along with the red ribbon and the hammer.",
+          "Then I'll draw a review map: each span of the bridge has a revision riddle, and you only cross if you answer it!"
+        ],
+        "choices": [
+          {
+            "text": "I'll go under the bridge and get the plank right now!",
+            "reply": "Hải Ly Mầm slaps her tail with a thwack: carry the plank nice and straight, I just polished it with my tail."
+          },
+          {
+            "text": "Hươu Cao, are the riddles hard?",
+            "reply": "Hươu Cao tilts his long neck: from up here I can see the whole term, and every question is just right for you!"
+          }
+        ]
+      }
     },
     {
       "id": "tim-van-cuoi",
@@ -1085,7 +1105,30 @@
           "text": "Cả lâu đài cùng đếm một, hai, ba rồi mình cắt chung!",
           "reply": "Một! Hai! Ba! Cả chiếc cầu treo như rung lên vì tiếng reo của cả lâu đài."
         }
-      ]
+      ],
+      "en": {
+        "title": "Who cuts the ribbon?",
+        "goTo": "Carry the red ribbon to the middle of the bridge, the whole castle has gathered",
+        "lines": [
+          "Let me cut the ribbon! I'm the tallest, so even someone way up on the watchtower will see it!",
+          "But my teeth have been gnawing wood all term; I could cut this ribbon in a single snip.",
+          "{name}, you crossed all three spans, you choose!"
+        ],
+        "choices": [
+          {
+            "text": "Cut it together, one with scissors, one with teeth!",
+            "reply": "Snip! The ribbon falls in two, the whole castle claps and cheers, and the sound echoes across the moat."
+          },
+          {
+            "text": "Let Hải Ly Mầm cut it, she built the whole bridge!",
+            "reply": "Hải Ly Mầm blushes as she cuts the ribbon, and Hươu Cao stretches his neck to shout “It's open!” all the way to the top of the watchtower."
+          },
+          {
+            "text": "The whole castle counts one, two, three, and we all cut it together!",
+            "reply": "One! Two! Three! The whole suspension bridge seems to tremble with the castle's cheering."
+          }
+        ]
+      }
     },
     {
       "id": "doc-dan-mua-con",
@@ -1603,14 +1646,22 @@
       "title": "Tấm ván khắc tên",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Hải Ly Mầm khắc tên {name} lên tấm ván cuối cùng của cầu treo, ngay cạnh dấu răng của mình. Hươu Cao tặng thêm tấm bản đồ lâu đài có vẽ chiếc cầu mới, \"để học kì hai không bao giờ lạc đường\"."
+      "text": "Hải Ly Mầm khắc tên {name} lên tấm ván cuối cùng của cầu treo, ngay cạnh dấu răng của mình. Hươu Cao tặng thêm tấm bản đồ lâu đài có vẽ chiếc cầu mới, \"để học kì hai không bao giờ lạc đường\".",
+      "en": {
+        "title": "A plank with your name on it",
+        "text": "Hải Ly Mầm carves {name}'s name on the last plank of the suspension bridge, right next to her own tooth marks. Hươu Cao adds a map of the castle with the new bridge drawn on it, “so you never get lost in term two”."
+      }
     },
     {
       "id": "hen-hoc-ki-hai",
       "title": "Bên kia cầu treo",
       "kind": "next",
       "trigger": "auto",
-      "text": "Cầu treo hạ xuống, sương sớm tan dần trên hào nước. Hươu Cao vươn cổ nhìn thật xa và thì thầm: Tiếng Việt 2 tập một khép lại rồi, học kì hai, tập hai đang chờ mình ở phía trước!"
+      "text": "Cầu treo hạ xuống, sương sớm tan dần trên hào nước. Hươu Cao vươn cổ nhìn thật xa và thì thầm: Tiếng Việt 2 tập một khép lại rồi, học kì hai, tập hai đang chờ mình ở phía trước!",
+      "en": {
+        "title": "Across the suspension bridge",
+        "text": "The bridge comes down and the morning mist melts off the moat. Hươu Cao stretches his neck to look far away and whispers: Tiếng Việt 2, book one, is finished; term two and book two are waiting up ahead!"
+      }
     }
   ],
   "reward": {

@@ -10,5 +10,13 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 20,
-  "params": { "speed": 1 }
+  "params": { "speed": 1 },
+  "en": {
+    "name": "Candles on a spinning cake",
+    "howTo": [
+      "The birthday cake is spinning. {name}, tap to shoot a candle into the edge of the cake.",
+      "Don't let a new candle hit an old one, or you'll have to redo that cake!",
+      "Fill the cake with candles to finish it: a point per candle, plus three bonus points."
+    ]
+  }
 }

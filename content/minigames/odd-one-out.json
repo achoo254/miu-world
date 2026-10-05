@@ -9,5 +9,12 @@
   "controls": ["tap"],
   "duration": 60,
   "goal": 15,
-  "params": { "items": 5 }
+  "params": { "items": 5 },
+  "en": {
+    "name": "Which One Is Different?",
+    "howTo": [
+      "Five pictures are dancing, and one doesn't belong with the others.",
+      "{name}, tap the odd one out. Pick wrong and you wait a moment before choosing again."
+    ]
+  }
 }

@@ -64,7 +64,26 @@
           "text": "Cậu cứ bơi chậm thôi nhé!",
           "reply": "Cá Lia Thia: Chậm thì tớ ngủ quên mất. Nhanh lên giùm tớ với!"
         }
-      ]
+      ],
+      "en": {
+        "title": "The fish tank is half empty",
+        "goTo": "Go to the fish tank at the water stall, where Cá Lia Thia is coming up for air, puffing hard",
+        "lines": [
+          "Blub blub! {name}, my tank has lost half its water! Every lap I swim, my tummy scrapes the bottom.",
+          "This morning Heo Ủn scooped out water to cook sweet soup, scooping and scooping... and nobody counted how much.",
+          "We have to pour back enough litres. But what's a \"litre\"? All I know is swimming!"
+        ],
+        "choices": [
+          {
+            "text": "I'll go find a jug!",
+            "reply": "Cá Lia Thia flicks her tail and splashes water on {name}'s face: Oops, sorry, I'm just so happy!"
+          },
+          {
+            "text": "Swim slowly for now!",
+            "reply": "Cá Lia Thia: If I swim slowly I'll fall asleep. Please hurry!"
+          }
+        ]
+      }
     },
     {
       "id": "tim-do-dong-nuoc",
@@ -106,7 +125,23 @@
           "text": "Bắt đầu đong thôi!",
           "reply": "Cá Lia Thia há miệng chờ sẵn: Rót vào đây, rót vào đây!"
         }
-      ]
+      ],
+      "en": {
+        "title": "What is a litre, Auntie Thoa?",
+        "goTo": "Bring the jug, bottle and cup back to the fish tank at the water stall",
+        "lines": [
+          "A litre is a unit for measuring water, milk, oil... in jugs, bottles and cans. Litre is written l.",
+          "This jug holds exactly 1 l of water when it's full. A small cup holds less, and the big can holds more.",
+          "So my tank must hold... a trillion litres!",
+          "Not quite that much, Lia Thia. We'll measure it bit by bit."
+        ],
+        "choices": [
+          {
+            "text": "Let's start measuring!",
+            "reply": "Cá Lia Thia opens her mouth wide and waits: Pour it here, pour it here!"
+          }
+        ]
+      }
     },
     {
       "id": "chai-va-ca-mot-lit",
@@ -555,7 +590,24 @@
           "text": "Đổ từng can, vừa đổ vừa đếm",
           "reply": "Cá Lia Thia: Đếm to lên nhé, tớ đếm theo bằng bong bóng."
         }
-      ]
+      ],
+      "en": {
+        "title": "Auntie Thoa's pouring rules",
+        "lines": [
+          "Now for filling the tank. My rule: no pouring in a rush, rush it and it spills on the floor, and someone slips for sure.",
+          "But if you pour slowly I'll dry out! {name}, pick a way!"
+        ],
+        "choices": [
+          {
+            "text": "Add up all the litres first, then pour",
+            "reply": "Auntie Thoa: Work it out first, pour after. Nice and careful!"
+          },
+          {
+            "text": "Pour can by can, counting as I go",
+            "reply": "Cá Lia Thia: Count out loud, and I'll count along in bubbles."
+          }
+        ]
+      }
     },
     {
       "id": "gop-can-xo-ca",
@@ -952,14 +1004,22 @@
       "title": "Chiếc vảy bạc của Cá Lia Thia",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Bể nước trong veo, đầy tới miệng. Cá Lia Thia tặng {name} một chiếc vảy bạc lấp lánh và hứa từ nay sẽ đếm từng lít Heo Ủn múc đi."
+      "text": "Bể nước trong veo, đầy tới miệng. Cá Lia Thia tặng {name} một chiếc vảy bạc lấp lánh và hứa từ nay sẽ đếm từng lít Heo Ủn múc đi.",
+      "en": {
+        "title": "Cá Lia Thia's silver scale",
+        "text": "The tank is crystal clear and full to the brim. Cá Lia Thia gives {name} a sparkly silver scale and promises to count every litre Heo Ủn scoops out from now on."
+      }
     },
     {
       "id": "mui-che-thom-phuc",
       "title": "Mùi chè thơm phức",
       "kind": "next",
       "trigger": "auto",
-      "text": "Từ bếp chè giữa chợ bay ra mùi đậu xanh thơm lừng. Heo Ủn đội mũ đầu bếp gọi ầm lên: nồi chè cho cả phiên chợ cần đúng ki-lô-gam đường, đúng lít nước, ai phụ tớ với!"
+      "text": "Từ bếp chè giữa chợ bay ra mùi đậu xanh thơm lừng. Heo Ủn đội mũ đầu bếp gọi ầm lên: nồi chè cho cả phiên chợ cần đúng ki-lô-gam đường, đúng lít nước, ai phụ tớ với!",
+      "en": {
+        "title": "The sweet smell of chè",
+        "text": "The smell of mung beans drifts from the chè (sweet soup) kitchen in the middle of the market. Heo Ủn, in his chef's hat, calls out: the pot of chè for the whole market needs exactly the right kilograms of sugar and litres of water, who'll help me?"
+      }
     }
   ],
   "reward": {

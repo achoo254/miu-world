@@ -10,5 +10,13 @@
   "controls": ["swipe", "tap"],
   "duration": 90,
   "goal": 4,
-  "params": {}
+  "params": {},
+  "en": {
+    "name": "Pull the Pins",
+    "howTo": [
+      "Coloured balls and mud are held back by pins. Swipe (or tap) a pin to pull it out.",
+      "{name} pulls the pins in order so the balls drop into the cup. Mud goes in the bin, never with the balls.",
+      "If mud gets into the cup or mixes with the balls, that board starts over."
+    ]
+  }
 }

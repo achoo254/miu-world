@@ -46,7 +46,19 @@
         {
           "text": "Tớ đắp đồi cao giữ nhà khô!"
         }
-      ]
+      ],
+      "en": {
+        "title": "Invitation",
+        "lines": [
+          "The tide is rising right up to the edge of the canal, {name}!",
+          "Hold your finger on the hill to raise the ground above the water."
+        ],
+        "choices": [
+          {
+            "text": "I'll build the hill up and keep the house dry!"
+          }
+        ]
+      }
     },
     {
       "id": "play",
@@ -56,25 +68,41 @@
       "trigger": "auto",
       "prompt": "Nâng cao đất đồi vượt qua hai mươi đợt nước lũ dâng nhé!",
       "game": "rising-water",
-      "goal": 20
+      "goal": 20,
+      "en": {
+        "title": "Sơn Tinh Raises the Hills",
+        "prompt": "Raise the hill above 20 waves of floodwater!"
+      }
     },
     {
       "id": "thanks",
       "title": "Phần thưởng",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mái nhà đứng vững vàng trên đỉnh đồi khô ráo, {name} cừ ghê!"
+      "text": "Mái nhà đứng vững vàng trên đỉnh đồi khô ráo, {name} cừ ghê!",
+      "en": {
+        "title": "Reward",
+        "text": "The house stands safe and dry on top of the hill! {name} is brilliant!"
+      }
     },
     {
       "id": "bye",
       "title": "Hẹn lần sau",
       "kind": "next",
       "trigger": "auto",
-      "text": "Góc kênh chợ nhỏ lúc nào cũng đón cậu ghé chơi đắp đồi ngăn lũ."
+      "text": "Góc kênh chợ nhỏ lúc nào cũng đón cậu ghé chơi đắp đồi ngăn lũ.",
+      "en": {
+        "title": "See you soon",
+        "text": "The little market canal corner is always ready for you to build hills against the flood."
+      }
     }
   ],
   "reward": {
     "xp": 15,
     "coin": 5
+  },
+  "en": {
+    "title": "Rising water with Bé Ném Lia Thia",
+    "summary": "Hold to build the hill up higher than the rushing floodwater so the roof stays dry."
   }
 }
