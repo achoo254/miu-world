@@ -11,7 +11,7 @@ created: 2026-10-05
 
 # Thú cưng sống động
 
-**Trạng thái:** xong phần tự động cả 6 pha (06/10/2026), chờ duyệt và deploy (migration `0020_pet-bonds`); report `plans/dattqh/reports/pets-alive-261006.md` · **Tier:** L
+**Trạng thái:** xong phần tự động cả 6 pha (06/10/2026), đã deploy production bản `cfe3a173` ngày 06/10/2026 (migration `0020_pet-bonds`); report `plans/dattqh/reports/pets-alive-261006.md` · **Tier:** L
 **Nguồn:** người sở hữu (05/10/2026, ảnh bảng chăm sóc): "các tính năng, hoạt cảnh, hấp dẫn liên quan thú cưng còn đơn giản không có thu hút". Lỗi câu "chưa thấy gì lạ" khi chạm thú cưng đã sửa (commit `bc16c8c2`). Quyết định: Jev (`reports/jev-261005-2305-pets-{input,output}.json`).
 
 ## Hiện trạng (05/10/2026)
