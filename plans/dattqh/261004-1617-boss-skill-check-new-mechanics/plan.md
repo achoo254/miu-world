@@ -1,6 +1,6 @@
 # Trùm vui, Skill Check và các cơ chế chơi còn thiếu
 
-**Trạng thái:** pha 1–3 xong; pha 4 xong ở server (còn nối giao diện cổng); pha 5 xong 05/10/2026 (12 trận trùm, mỗi map một; 20 bài dùng `decision`, 20 `find-object`, 20 `logic`; report `reports/boss-content-261005.md`); pha 6 chưa làm · **Tier:** L · **Nhánh:** `main` · **Ngày:** 04/10/2026
+**Trạng thái:** pha 1–3 xong; pha 4 xong (server và bảng Cổng tri thức trong game, 05/10/2026, `reports/skills-journey-achievements-261005.md`; còn 2 rương có cổng chưa đặt trên map: `ruong-go-bi-mat`, `ruong-do-choi-nha-be`); pha 5 xong 05/10/2026 (12 trận trùm, mỗi map một; 20 bài dùng `decision`, 20 `find-object`, 20 `logic`; report `reports/boss-content-261005.md`); pha 6 chưa làm · **Tier:** L · **Nhánh:** `main` · **Ngày:** 04/10/2026
 **Nguồn:** Master Plan §5 (bảng "Cơ chế tương tác": Lựa chọn hành động, Skill Check, Boss), §6 (V1: Lựa chọn hành động M2.7/M3.8, Skill Check M3.9, Boss M3.10, English Challenge, Logic puzzle, Tìm đồ vật).
 
 ## Kết quả mong muốn
