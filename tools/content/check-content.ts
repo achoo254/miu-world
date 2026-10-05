@@ -512,7 +512,7 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
   const notes: string[] = [];
   const warnings: string[] = [];
   try {
-    const catalog = loadContentCatalog({ dir });
+    const catalog = loadContentCatalog({ dir, requireEveryMap: true });
     const regions = RegionCatalog.safeParse(JSON.parse(readFileSync(path.join(dir, REGIONS_FILE), 'utf8')));
     const targets = regions.success ? checkQuestTargets(catalog.quests.values(), undefined, regions.data) : { issues: [], notes: [] };
     issues.push(...targets.issues);
