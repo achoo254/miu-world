@@ -1536,6 +1536,33 @@ export const BUILTIN_OBJECT_INTERACTIONS: readonly ObjectInteractionDef[] = [
     ],
   },
   {
+    // Her pet's bed at home (the decor slot `pet-bed`): tucking it in sends her pet there for a nap (game.ts).
+    id: 'pet-bed-nap',
+    category: 'pet',
+    nameVi: 'Ổ thú cưng',
+    nameEn: 'Pet Bed',
+    verbVi: 'Cho thú cưng ngủ',
+    verbEn: 'Tuck your pet in',
+    match: {
+      modelRegex: /^ncb-pet-bed-/i,
+      keywords: ['pet-bed'],
+    },
+    pose: 'pet',
+    duration: 2,
+    effect: { kind: 'symbols', glyph: 'zzz' },
+    emoji: '🐾',
+    dialoguesVi: [
+      'Đệm êm đã sẵn, ngủ ngon nhé bạn nhỏ!',
+      'Kéo chăn cho thú cưng, chúc giấc mơ thật đẹp.',
+      'Ổ ấm áp ghê, chợp mắt một chút thôi nào.',
+    ],
+    dialoguesEn: [
+      'The cushion is ready, sleep tight little one!',
+      'Tucking your pet in, sweet dreams.',
+      'Such a cosy bed, time for a little nap.',
+    ],
+  },
+  {
     id: 'pet-brush',
     category: 'pet',
     nameVi: 'Lược chải lông thú cưng',

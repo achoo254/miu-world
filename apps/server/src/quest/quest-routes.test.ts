@@ -654,9 +654,9 @@ describe('the shipped forest chapter 1', () => {
 describe('character', () => {
   it('reads and updates name and equipment within the catalogue', async () => {
     const { agent } = await playingChild();
-    expect((await agent.get('/api/character').expect(200)).body).toEqual({ species: 'cat', name: 'Miu', equipped: [], pet: null });
+    expect((await agent.get('/api/character').expect(200)).body).toEqual({ species: 'cat', name: 'Miu', equipped: [], pet: null, petGear: [] });
     const updated = await agent.put('/api/character').send({ name: 'Mochi', equipped: ['hat-witch-pink', 'backpack-brown'] }).expect(200);
-    expect(updated.body).toEqual({ species: 'cat', name: 'Mochi', equipped: ['hat-witch-pink', 'backpack-brown'], pet: null });
+    expect(updated.body).toEqual({ species: 'cat', name: 'Mochi', equipped: ['hat-witch-pink', 'backpack-brown'], pet: null, petGear: [] });
   });
 
   it('rejects free-text names, unknown or doubled-up equipment, and species outside content', async () => {

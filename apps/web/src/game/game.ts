@@ -1212,6 +1212,8 @@ export class Game {
       } else if (interact && promptObject) {
         objectInteractions.interact(promptObject, controller, multiplayer);
         overlay.stats.lastObject = promptObject.def.id;
+        // Tucking her pet in at its bed: it comes and naps there.
+        if (promptObject.def.id === 'pet-bed-nap') petLife?.care('nap');
         if (promptObject.def.id.includes('stove') || promptObject.def.id.includes('kitchen') || promptObject.def.id.includes('bep')) {
           store.emit({ type: 'interaction', targetId: 'cooking' });
         }
