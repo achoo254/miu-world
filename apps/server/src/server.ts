@@ -14,6 +14,7 @@ import { MultiplayerHub } from './multiplayer/multiplayer-hub';
 import { dbMultiplayerStore, sessionAuthenticator } from './multiplayer/multiplayer-store';
 import { CoopService } from './coop/coop-service';
 import { dbCoopRewards } from './reward/coop-reward';
+import { PartyQuestService, type PartyQuestHooks } from './coop/party-quest';
 
 const config = loadConfig();
 const pgliteDir = config.pgliteDir === null ? undefined : (config.pgliteDir ?? DEV_PGLITE_DIR);
@@ -29,7 +30,13 @@ const online: OnlineLookup = {
   player: (childId) => hub?.whereIsPlayer(childId) ?? null,
   bot: (botId) => hub?.whereIsBot(botId) ?? null,
 };
-const app = createApp({ config, db, content, characterEvents, playerEvents, online });
+/** Quests played as a party, once the hub runs (until then every step is solo play). */
+let partyQuestService: PartyQuestService | null = null;
+const partyQuests: PartyQuestHooks = {
+  gate: async (...args) => (partyQuestService ? partyQuestService.gate(...args) : 'ok'),
+  recorded: async (...args) => partyQuestService?.recorded(...args),
+};
+const app = createApp({ config, db, content, characterEvents, playerEvents, online, partyQuests });
 
 /** Which database this run uses, so a dev who suddenly sees no accounts knows whether it is a new one. */
 async function describeDatabase(database: Db): Promise<string> {
@@ -69,4 +76,7 @@ const coop = new CoopService({
   bots: botRunner.coopDriver(),
 });
 multiplayer.setCoop(coop);
+// Any lesson or story chapter played by a party: shared exploring, each member's own answers, team bosses.
+partyQuestService = new PartyQuestService({ db, content, host: multiplayer.coopHost() });
+multiplayer.setPartyQuests(partyQuestService);
 console.log('multiplayer hub and companion bot runner active');

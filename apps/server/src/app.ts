@@ -24,6 +24,7 @@ import { homeObjectRoutes } from './home/home-object-routes';
 import { HttpError } from './http-error';
 import { playerPositionRoutes } from './player-position/player-position-routes';
 import { questRoutes } from './quest/quest-routes';
+import type { PartyQuestHooks } from './coop/party-quest';
 import { collectionRoutes } from './collection/collection-routes';
 import { loadRegionRewards } from './region-reward/region-reward-catalog';
 import { regionRewardRoutes } from './region-reward/region-reward-routes';
@@ -58,6 +59,8 @@ export interface AppDeps {
   playerEvents?: PlayerEvents;
   /** Who is in a room now, for the friends lists (the multiplayer hub). */
   online?: OnlineLookup;
+  /** Quests played as a party (the multiplayer hub): when a member may go on, and what her steps move for the others. */
+  partyQuests?: PartyQuestHooks;
 }
 
 /** Body-parser errors carry an HTTP status and a `type`; everything else is an internal error. */
@@ -85,7 +88,7 @@ const errorHandler: ErrorRequestHandler = (err: unknown, _req, res, _next) => {
 };
 
 /** Builds the Express app without listening, so tests can drive it through supertest. */
-export function createApp({ config, db, content = loadContentCatalog(), worksheets = loadWorksheets(), clock = () => new Date(), fetchImpl, characterEvents, playerEvents, online }: AppDeps): express.Express {
+export function createApp({ config, db, content = loadContentCatalog(), worksheets = loadWorksheets(), clock = () => new Date(), fetchImpl, characterEvents, playerEvents, online, partyQuests }: AppDeps): express.Express {
   const app = express();
   app.disable('x-powered-by');
   // The API listens on loopback only and is reached through the web dev/preview proxy (or a reverse
@@ -110,7 +113,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(friendRoutes({ db, content, clock, events: playerEvents, online }));
   api.use(characterRoutes({ db, content, events: characterEvents }));
   api.use(playerPositionRoutes({ db, content, clock }));
-  api.use(questRoutes({ db, content, clock }));
+  api.use(questRoutes({ db, content, clock, partyQuests }));
   api.use(timetableRoutes({ db, content, clock, defaultTimetable: loadDefaultTimetable(config.timetableDefaultFile) }));
   const decor = loadDecorCatalog();
   const shop = loadShopCatalog(content.accessories, decor);

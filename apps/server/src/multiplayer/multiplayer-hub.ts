@@ -31,7 +31,8 @@ import type { CharacterDto } from '@miu/schema/game';
 import type { Authenticate, MultiplayerStore } from './multiplayer-store';
 import { PartyService, type PartyError } from './party-service';
 import { FriendRequestLimiter } from '../friend/friend-limiter';
-import type { CoopHost, CoopService } from '../coop/coop-service';
+import type { CoopService } from '../coop/coop-service';
+import type { PartyQuestHost, PartyQuestService } from '../coop/party-quest';
 import type { FriendStore, RequestOutcome } from '../friend/friend-store';
 
 export interface RoomMember {
@@ -230,6 +231,8 @@ export class MultiplayerHub {
   private homeHooks: HomeRoomHooks | null = null;
   /** Co-op challenges of parties and lone players (set once the server runs them). */
   private coop: CoopService | null = null;
+  /** Quests played as a party (set once the server runs them). */
+  private partyQuests: PartyQuestService | null = null;
   private readonly store: MultiplayerStore | null;
   private readonly authenticate: Authenticate | null;
   private readonly allowedOrigins: ReadonlySet<string>;
@@ -276,9 +279,15 @@ export class MultiplayerHub {
     this.coop = coop;
   }
 
+  /** Any quest played as a party: its messages go there, and it hears of party changes and returns. */
+  setPartyQuests(partyQuests: PartyQuestService): void {
+    this.partyQuests = partyQuests;
+  }
+
   /** What the co-op service reads of the hub: delivering, parties, who someone is, switches, where she stands. */
-  coopHost(): CoopHost {
+  coopHost(): PartyQuestHost {
     return {
+      publicIdOf: (childId) => this.publicIds.get(childId) ?? null,
       send: (id, message) => this.deliver(id, message),
       notice: (id, code) => this.notice(id, code),
       party: (id) => {
@@ -599,7 +608,7 @@ export class MultiplayerHub {
       case 'party-reply':
         return this.answerPartyInvite(self, message.from, message.accept);
       case 'party-leave': {
-        this.coop?.leftParty(self);
+        this.leftParty(self);
         const left = this.parties.leave(self);
         this.pushParty(left);
         return this.recheckHomes([self, ...left]);
@@ -608,7 +617,7 @@ export class MultiplayerHub {
       case 'party-promote': {
         const result = message.type === 'party-kick' ? this.parties.kick(self, message.id) : this.parties.promote(self, message.id);
         if (!result.ok) return this.notice(self, PARTY_NOTICE[result.error], message.id);
-        if (message.type === 'party-kick') this.coop?.leftParty(message.id);
+        if (message.type === 'party-kick') this.leftParty(message.id);
         this.pushParty(result.value);
         if (message.type === 'party-kick') this.recheckHomes([self, message.id, ...result.value]);
         return;
@@ -640,6 +649,11 @@ export class MultiplayerHub {
       case 'coop-act':
       case 'coop-help':
         this.coop?.message(self, message);
+        return;
+      case 'party-quest-start':
+      case 'party-quest-join':
+      case 'party-quest-leave':
+        this.partyQuests?.message(self, message);
         return;
     }
   }
@@ -726,6 +740,7 @@ export class MultiplayerHub {
     else player.transport.send({ type: 'party-state', party: null });
     // Back in a room: her co-op challenge (or her team's lobby) carries on where it was.
     this.coop?.back(player.publicId);
+    this.partyQuests?.back(player.publicId);
   }
 
   private leaveRoom(player: OnlinePlayer): void {
@@ -970,7 +985,7 @@ export class MultiplayerHub {
     }
     this.parties.dropInvites(self, id);
     if (this.parties.partyOf(self)?.members.includes(id)) {
-      this.coop?.leftParty(self);
+      this.leftParty(self);
       this.pushParty(this.parties.leave(self));
     }
     this.notice(self, 'blocked', id);
@@ -995,6 +1010,12 @@ export class MultiplayerHub {
       return this.notice(self, 'failed', id);
     }
     this.notice(self, 'reported', id);
+  }
+
+  /** She left her party, was removed or blocked someone in it: out of the party's co-op challenge and quest. */
+  private leftParty(id: string): void {
+    this.coop?.leftParty(id);
+    this.partyQuests?.leftParty(id);
   }
 
   private hide(viewer: string, other: string): void {
@@ -1047,5 +1068,6 @@ export class MultiplayerHub {
       this.deliver(id, { type: 'party-state', party: view });
     }
     this.coop?.partyChanged(ids);
+    this.partyQuests?.partyChanged(ids);
   }
 }

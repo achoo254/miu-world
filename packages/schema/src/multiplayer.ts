@@ -8,6 +8,7 @@ import { z } from 'zod';
 import { ContentId } from './content';
 import { CoopClientMessages, CoopServerMessages } from './coop';
 import { FriendPerson } from './friends';
+import { PartyQuestClientMessages, PartyQuestServerMessages } from './party-quest';
 
 export const SAFE_CANNED_CHATS = [
   'Xin chào bạn!',
@@ -158,6 +159,7 @@ export const ClientWsMessage = z.discriminatedUnion('type', [
   z.strictObject({ type: z.literal('party-travel'), region: ContentId }),
   z.strictObject({ type: z.literal('leave') }),
   ...CoopClientMessages,
+  ...PartyQuestClientMessages,
 ]);
 export type ClientWsMessage = z.infer<typeof ClientWsMessage>;
 
@@ -191,5 +193,6 @@ export const ServerWsMessage = z.discriminatedUnion('type', [
   z.strictObject({ type: z.literal('party-goto'), id: PlayerId, mapId: ContentId, x: Coordinate, y: Coordinate, z: Coordinate, host: PlayerId.optional() }),
   z.strictObject({ type: z.literal('party-travel'), from: PlayerId, displayName: z.string().min(1).max(32), region: ContentId }),
   ...CoopServerMessages,
+  ...PartyQuestServerMessages,
 ]);
 export type ServerWsMessage = z.infer<typeof ServerWsMessage>;
