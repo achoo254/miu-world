@@ -1,0 +1,69 @@
+{
+  "state": {
+    "project": "Miu World: a 3D voxel learn-while-playing game (web now, a real mobile app later), built 100% by AI. Today only the owner and one child play.",
+    "today": "2026-10-05",
+    "owner_requirement": "The game is for all ages: children and adults both play and learn. It is an online game like Minecraft. It is not only for children, so it does not require parental supervision; parents are responsible for their children playing.",
+    "facts": [
+      "Account model today: a Google sign-in owner account (called 'parent'), up to 3 child profiles picked from a fixed display-name list, a parent area to create/rename/delete profiles, download data and delete the account, and a consent policy (version v2) accepted before profiles can be made.",
+      "Just shipped: the parent PIN is now optional. With no PIN the parent area is always open; a PIN can be set later from the parent area. A fresh Google sign-in now goes straight to the consent screen.",
+      "Review found: the parent area still says 'Two steps: create a profile, then lock this area and hand the device to the child' and its button reads 'Done, lock the parent area', but with no PIN locking does nothing.",
+      "Review found: the sign-in title is 'Parent sign-in' and the consent button is 'I am a parent and I agree', which excludes adults who play for themselves.",
+      "Review found: the privacy policy says deleting a profile or the account 'needs the parent PIN', and the consent text says the PIN is stored; both are now only true when a PIN was set. Changing consent text requires bumping the policy version, which makes every account accept again; the privacy page can change without re-consent.",
+      "Review found: once set, a PIN can never be changed or removed (only a fresh Google re-login bypasses it), so 'optional' is one-way.",
+      "Removing child profiles entirely (one player per account, adults sign in for themselves) needs a database migration of every game table keyed by profile id, a rewrite of the profile picker, and new handling for children under the age Google allows; it is a large change.",
+      "A stale review screenshot of the removed set-PIN step is still in the generated review assets and manifest."
+    ]
+  },
+  "questions": {
+    "lock_wording": {
+      "stakes": "low",
+      "instructions": "How should the parent area's 'lock this area and hand over the device' step read now that the PIN is optional?",
+      "criteria": {
+        "adapt_to_pin": "Show lock wording only when a PIN is set; without a PIN the step says 'Done, go play' and just returns to the profile picker.",
+        "keep_as_is": "Leave the current lock wording for every account."
+      }
+    },
+    "audience_wording": {
+      "stakes": "medium",
+      "instructions": "Should the sign-in title, consent button and similar 'parent' wording on shared screens be changed for an all-ages audience?",
+      "criteria": {
+        "neutral_now": "Change now to neutral wording ('Sign in', 'I agree', 'account owner area'), adding a line that a parent who lets a child play is responsible for them.",
+        "keep_parent": "Keep the parent wording until the account model itself changes."
+      }
+    },
+    "legal_text": {
+      "stakes": "high",
+      "instructions": "How should the consent and privacy texts be brought in line with the optional PIN and the all-ages, parents-responsible requirement?",
+      "criteria": {
+        "privacy_now_consent_later": "Fix the privacy page now (PIN only if set; parents responsible); leave the consent text at v2 and bundle its change with the next account-model change so players accept only once.",
+        "both_now_bump_v3": "Rewrite both now and bump consent to v3, so every account re-accepts immediately.",
+        "defer_all": "Change neither until a lawyer reviews."
+      }
+    },
+    "pin_management": {
+      "stakes": "low",
+      "instructions": "Should the account owner be able to change or remove the optional PIN?",
+      "criteria": {
+        "add_now": "Add change/remove PIN in the parent area now, allowed only while the area is unlocked.",
+        "defer": "Leave it; a fresh Google re-login already bypasses a forgotten PIN."
+      }
+    },
+    "account_model": {
+      "stakes": "high",
+      "instructions": "What should happen next with the account model for an all-ages online game with a mobile app later?",
+      "criteria": {
+        "plan_single_player": "Write a plan now to move to one player per signed-in account (profiles become optional extra players on a shared device), to be built after the plan is reviewed.",
+        "keep_profiles": "Keep the owner account with up to 3 player profiles as the long-term model, only renaming 'child profile' to 'player'.",
+        "defer": "Do nothing until multiplayer or the mobile app work starts."
+      }
+    },
+    "stale_screenshot": {
+      "stakes": "low",
+      "instructions": "What to do with the stale set-PIN review screenshot?",
+      "criteria": {
+        "remove_now": "Delete it and regenerate the asset manifest now.",
+        "leave": "Leave it until the next E2E run regenerates review shots."
+      }
+    }
+  }
+}

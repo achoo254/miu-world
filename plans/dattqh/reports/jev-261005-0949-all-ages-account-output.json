@@ -1,0 +1,71 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1459,
+    "output_tokens": 238
+  },
+  "results": {
+    "lock_wording": {
+      "stakes": "low",
+      "choice": "adapt_to_pin",
+      "confidence": 1.0,
+      "probabilities": {
+        "adapt_to_pin": 1.0,
+        "keep_as_is": 0.0
+      },
+      "decision": "auto"
+    },
+    "audience_wording": {
+      "stakes": "medium",
+      "choice": "neutral_now",
+      "confidence": 0.91,
+      "probabilities": {
+        "keep_parent": 0.05,
+        "neutral_now": 0.95
+      },
+      "decision": "auto"
+    },
+    "legal_text": {
+      "stakes": "high",
+      "choice": "privacy_now_consent_later",
+      "confidence": 0.88,
+      "probabilities": {
+        "privacy_now_consent_later": 0.92,
+        "both_now_bump_v3": 0.08,
+        "defer_all": 0.0
+      },
+      "decision": "escalate"
+    },
+    "pin_management": {
+      "stakes": "low",
+      "choice": "add_now",
+      "confidence": 0.98,
+      "probabilities": {
+        "add_now": 0.99,
+        "defer": 0.01
+      },
+      "decision": "auto"
+    },
+    "account_model": {
+      "stakes": "high",
+      "choice": "plan_single_player",
+      "confidence": 0.84,
+      "probabilities": {
+        "keep_profiles": 0.1,
+        "plan_single_player": 0.9,
+        "defer": 0.0
+      },
+      "decision": "escalate"
+    },
+    "stale_screenshot": {
+      "stakes": "low",
+      "choice": "remove_now",
+      "confidence": 0.96,
+      "probabilities": {
+        "leave": 0.02,
+        "remove_now": 0.98
+      },
+      "decision": "auto"
+    }
+  }
+}
