@@ -1,7 +1,7 @@
 ---
 title: "Nói chuyện bằng giọng với bạn bè, tổ đội và bạn máy"
 description: "Voice giữa bạn bè và trong tổ đội qua WebRTC, bạn máy nói bằng giọng riêng theo tính cách; không ghi âm, không lưu."
-status: pending
+status: completed
 priority: P1
 tier: L
 branch: main
@@ -11,7 +11,9 @@ created: 2026-10-05
 
 # Nói chuyện bằng giọng với bạn bè, tổ đội và bạn máy
 
-**Trạng thái:** xong phần tự động cả 6 pha (06/10/2026), mọi gate và E2E liên quan xanh, kể cả lượt buộc đi qua TURN thật; chưa deploy (không có migration; trước `release` chạy `tools/deploy/production/deploy.sh turn` để ghi khóa TURN vào env production; người sở hữu đã cho phép deploy, 05/10/2026); report `plans/dattqh/reports/voice-chat-261006.md` · **Tier:** L
+**Trạng thái:** xong phần tự động cả 6 pha (06/10/2026), mọi gate và E2E liên quan xanh, kể cả lượt buộc đi qua TURN thật; đã deploy production bản `129efbcb` ngày 06/10/2026 (không có migration; đã chạy `deploy.sh turn`, server xin được credential TURN); report `plans/dattqh/reports/voice-chat-261006.md` · **Tier:** L
+
+**IP giữa thành viên đội chưa là bạn bè (06/10/2026):** kênh đội nối thẳng nên các trình duyệt biết IP công khai của nhau. Giữ như hiện tại vì chỉ người sở hữu và bé chơi, khớp quyết định đường truyền của Jev; khi có người ngoài chơi thì buộc đi qua TURN với thành viên không phải bạn bè, làm cùng đợt kiểm duyệt (`moderation-safety`).
 **Nguồn:** người sở hữu (05/10/2026): "khi kết bạn và tổ đội có thể voice được với nhau. bot máy voice được". Thay cho dòng "không chat tự do" của Master Plan §9 theo định hướng mọi lứa tuổi (`.claude/rules/product-audience.md`). Quyết định: Jev (`reports/jev-261005-2335-voice-{input,output}.json`).
 
 ## Hiện trạng (05/10/2026)
