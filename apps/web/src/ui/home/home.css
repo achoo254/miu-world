@@ -47,6 +47,9 @@
 @media (min-width: 64rem) {
   .home-main { grid-template-columns: auto minmax(0, 1fr) clamp(16rem, 22vw, 22rem); grid-template-areas: 'rail stage today'; }
   .home-rail { flex-direction: column; align-self: center; }
+  /* A fixed column width: a longer label (Hành trình, Thành tích) wraps instead of widening the rail and
+     narrowing the island, whose region cards would then overlap. */
+  .home-rail-item { width: 5.5rem; text-align: center; overflow-wrap: anywhere; }
 }
 
 /* The child's character waves from the empty sky at the stage's lower left, as in the mock. The render has
