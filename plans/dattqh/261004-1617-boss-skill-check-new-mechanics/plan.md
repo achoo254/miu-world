@@ -1,6 +1,6 @@
 # Trùm vui, Skill Check và các cơ chế chơi còn thiếu
 
-**Trạng thái:** pha 1–3 xong; pha 4 xong ở server (còn nối giao diện cổng); pha 5 đang làm (trùm ở 3 quest: Đảo bí ẩn, Nhà của bé, Thần Rừng bản nháp); pha 6 chưa làm (rà lại 05/10/2026) · **Tier:** L · **Nhánh:** `main` · **Ngày:** 04/10/2026
+**Trạng thái:** pha 1–3 xong; pha 4 xong ở server (còn nối giao diện cổng); pha 5 xong 05/10/2026 (12 trận trùm, mỗi map một; 20 bài dùng `decision`, 20 `find-object`, 20 `logic`; report `reports/boss-content-261005.md`); pha 6 chưa làm · **Tier:** L · **Nhánh:** `main` · **Ngày:** 04/10/2026
 **Nguồn:** Master Plan §5 (bảng "Cơ chế tương tác": Lựa chọn hành động, Skill Check, Boss), §6 (V1: Lựa chọn hành động M2.7/M3.8, Skill Check M3.9, Boss M3.10, English Challenge, Logic puzzle, Tìm đồ vật).
 
 ## Kết quả mong muốn
@@ -29,7 +29,7 @@
 | 2 | M | Cơ chế `logic` (quy luật dãy, mê cung ngắn, ghép hình) và rà `ghép câu` có đủ bằng cơ chế hiện có; giao diện theo mock cảnh (không cửa sổ trắng), có Hướng dẫn/Gợi ý/Đáp án như mọi thử thách | `apps/web/src/ui/challenge/**` |
 | 3 | L | Trùm: schema `boss` (HP, danh sách đòn = câu hỏi theo kỹ năng, số lượt, lời thoại thắng/thua), runtime ở server (HP là trạng thái phiên, thưởng tính ở server, chơi lại đủ thưởng theo quyết định "thưởng mỗi lần chơi lại"), màn trùm theo mock M3.10, âm thanh nhẹ | `packages/schema`, `apps/server/src/quest`, `apps/web/src/ui/challenge/boss/**` |
 | 4 | M | Skill Check: bảng điều kiện `{kỹ năng, cấp}` trên cổng/rương (dữ liệu trong `entities`/`targets`), server kiểm cấp thật, thiếu thì mở quest luyện gần nhất; thêm kiểm `content:check` cho điều kiện tham chiếu kỹ năng có thật | `apps/server/src/quest`, `content/world/targets.json`, giao diện cổng |
-| 5 | L | Nội dung: 12 trận trùm (mỗi map một, nhân vật và lời thoại riêng, không lặp), ≥ 20 bài dùng `decision`, ≥ 20 `find-object`, ≥ 20 `logic` rải trên các map; sinh lại map liên quan + 3 audit | `content/quests/**`, `content/world/**`, generator map |
+| 5 | L | Nội dung: 12 trận trùm (mỗi map một, nhân vật và lời thoại riêng, không lặp), ≥ 20 bài dùng `decision`, ≥ 20 `find-object`, ≥ 20 `logic` rải trên các map; sinh lại map liên quan + 3 audit. **Xong 05/10/2026:** 10 quest trùm mới `vuot-ai-<map>` (chương cuối của mỗi map, Trung tâm và Núi tuyết mở thêm chương 2; 7 lượt × 80 HP trên 500 HP; thay bản nháp `boss-than-rung`) cộng 2 trùm có sẵn ở Đảo bí ẩn và Nhà của bé; 8 quest việc tốt `viec-tot-<map>` (nhánh `decision` có `nextStepId`); mỗi quest mới có đủ `find-object`, `logic`, `decision`; 10 map sinh lại, 3 audit sạch | `content/quests/**`, `content/world/**`, generator map |
 | 6 | S | Tài liệu: `docs/` mô tả cơ chế mới, mục trang review | `docs/`, `apps/web/review.html` |
 
 ## Phụ thuộc và file dùng chung
