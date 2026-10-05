@@ -23,7 +23,7 @@ import { NotebookCard } from './notebook-card';
 import { useSideQuests } from './side-quests';
 import { GateOpenedBanner, SkillCheckModal } from './skill-check-modal';
 import { StepDraftScope } from './step-draft';
-import { useQuestController } from './use-quest-controller';
+import { useQuestController, type PartyPlay } from './use-quest-controller';
 
 export function QuestLayer({
   store,
@@ -36,6 +36,7 @@ export function QuestLayer({
   onPlayQuest,
   openAt = null,
   claimCoop,
+  party,
 }: {
   store: GameStore;
   data: PlayerData;
@@ -53,6 +54,8 @@ export function QuestLayer({
   openAt?: string | null;
   /** A touched host of a co-op challenge opens its lobby (true when it did). */
   claimCoop?: (targetId: string) => boolean;
+  /** The quest played with the party (none: alone). */
+  party?: PartyPlay;
 }) {
   // The notebook card and a side quest's screens cover the game too: all of them are reported together.
   const questCovers = useRef(false);
@@ -89,7 +92,7 @@ export function QuestLayer({
   );
   // The lesson comes first; a character with nothing for it shows its card (a profiled one) or offers its games.
   const claimTarget = useCallback((target: string) => (claimCoop?.(target) ?? false) || npcs.claim(target) || side.claim(target), [npcs, side, claimCoop]);
-  const quest = useQuestController({ store, data, questId, onResponse: answered, onOverlayChange: reportCover, draftOwner, onSideTarget: claimTarget, openAt });
+  const quest = useQuestController({ store, data, questId, onResponse: answered, onOverlayChange: reportCover, draftOwner, onSideTarget: claimTarget, openAt, party });
   useEffect(() => {
     resume.current = quest.resumeAt;
   }, [quest.resumeAt]);

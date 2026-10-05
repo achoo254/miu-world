@@ -148,3 +148,19 @@ describe('a quest played by a party', () => {
     expect(a.last('party-quest-progress')?.progress.run).toBe(2);
   });
 });
+
+describe('a member out of the party', () => {
+  it('holds nobody back once the party lets her go', async () => {
+    const { a, b, agentA } = await party();
+    a.send({ type: 'party-quest-start', questId: QUEST.id });
+    await vi.waitFor(() => expect(b.last('party-quest')?.quest).not.toBeNull());
+    b.send({ type: 'party-quest-join', questId: QUEST.id });
+    await vi.waitFor(() => expect(a.last('party-quest')?.quest?.members.every((m) => m.joined)).toBe(true));
+    await step(agentA, 'gap').expect(200);
+    await step(agentA, 'do', { answer: { value: 7 } }).expect(200);
+    expect((await step(agentA, 'sau').expect(409)).body).toEqual({ error: 'party-waiting' });
+    // B drops out: while she is away she holds nobody back.
+    b.conn.close();
+    await step(agentA, 'sau').expect(200);
+  });
+});

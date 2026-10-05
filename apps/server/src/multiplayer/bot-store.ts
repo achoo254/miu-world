@@ -80,7 +80,7 @@ export function dbBotStore(db: Db): BotStore {
         const [row] = await tx.select().from(questionStats).where(eq(questionStats.questionKey, key)).for('update');
         await tx
           .update(questionStats)
-          .set({ answers: (row?.answers ?? 0) + 1, rights: (row?.rights ?? 0) + (right ? 1 : 0), times: withTime(row?.times ?? [], seconds), updatedAt: sql`now()` })
+          .set({ answers: (row?.answers ?? 0) + 1, rights: (row?.rights ?? 0) + (right ? 1 : 0), times: withTime(row?.times ?? [], seconds) })
           .where(eq(questionStats.questionKey, key));
       });
     },

@@ -28,7 +28,7 @@ describe('what bots keep in the database', () => {
     expect(medianMs(numbers?.times ?? [])).toBe(3_500);
     expect(difficultyOf(numbers)).toBe(0.35);
     const [row] = await app.db.select().from(questionStats).where(eq(questionStats.questionKey, 'with-x/t1'));
-    expect(Object.keys(row ?? {}).sort()).toEqual(['answers', 'questionKey', 'rights', 'times', 'updatedAt']);
+    expect(Object.keys(row ?? {}).sort()).toEqual(['answers', 'questionKey', 'rights', 'times']);
   });
 
   it('remembers whom a bot won with, and forgets her with her player', async () => {

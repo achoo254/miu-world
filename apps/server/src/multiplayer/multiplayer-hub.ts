@@ -988,6 +988,7 @@ export class MultiplayerHub {
       this.leftParty(self);
       this.pushParty(this.parties.leave(self));
     }
+    this.coop?.blocked(self, id);
     this.notice(self, 'blocked', id);
     this.recheckHomes([self, id]);
   }

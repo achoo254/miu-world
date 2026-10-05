@@ -1,0 +1,1 @@
+ALTER TABLE "question_stats" DROP COLUMN "updated_at";

@@ -63,7 +63,17 @@ export interface QuestController {
   resumeAt: (targetId: string) => void;
 }
 
+/** The quest played with the party: a push of her progress by the server, and whether a teammate's answer is awaited. */
+export interface PartyPlay {
+  /** Bumped each time the server moved her progress for the party (a step a teammate did for everyone). */
+  progressSeq: number;
+  /** A teammate still has to answer a question before the party goes on. */
+  waiting: boolean;
+}
+
 interface Options {
+  /** Played with the party (none: alone). */
+  party?: PartyPlay;
   store: GameStore;
   data: PlayerData;
   questId: string | null;
@@ -85,7 +95,7 @@ interface Options {
   openAt?: string | null;
 }
 
-export function useQuestController({ store, data, questId, onResponse, onOverlayChange, draftOwner = null, onSideTarget, openAt = null }: Options): QuestController {
+export function useQuestController({ store, data, questId, onResponse, onOverlayChange, draftOwner = null, onSideTarget, openAt = null, party }: Options): QuestController {
   const [overlay, setOverlayState] = useState<QuestOverlay>(null);
   const [finished, setFinished] = useState<FinishedQuest | null>(null);
   const [busy, setBusy] = useState(false);
@@ -146,8 +156,6 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   const pickers = useRef(new Map<string, FreshPicker<Bilingual>>());
   // `submit` starts the next auto step, and `startStep` submits: the ref breaks the cycle.
   const startRef = useRef<(step: QuestStepPublic) => void>(() => undefined);
-  /** The progress her own last step returned: any other change came from her party playing for her. */
-  const ownProgress = useRef<unknown>(null);
   const submitRef = useRef<(step: QuestStepPublic, body?: StepCompleteRequest) => Promise<unknown>>(async () => null);
   const lineFrom = useCallback((key: string, pool: readonly Bilingual[]): Bilingual => {
     let picker = pickers.current.get(key);
@@ -186,7 +194,6 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
         const response = await api('POST', `/quests/${active.quest.id}/steps/${step.id}/complete`, StepCompleteResponse, sent);
         setRetry(null);
         cover('retry', false);
-        ownProgress.current = response.quest;
         latest.current.onResponse(response);
         syncWorld(active.quest, response.quest);
         const opened = response.gates ?? [];
@@ -258,22 +265,50 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
     submitRef.current = submit;
   }, [startStep, submit]);
 
-  // A party member moved her on (talked, found, landed a boss blow for everyone): the world follows, a screen of a
-  // step now done closes, and a step that starts by itself starts. Her own steps already did all that.
-  const progressNow = data.quests.find((q) => q.quest.id === questId)?.progress ?? null;
-  const seenProgress = useRef(progressNow);
-  useEffect(() => {
-    if (!progressNow || progressNow === seenProgress.current) return;
-    seenProgress.current = progressNow;
-    if (progressNow === ownProgress.current) return;
+  /** The party went on while a step was on its way: the step that starts by itself starts once it is back. */
+  const resumeWhenFree = useRef(false);
+  const resumeAuto = useCallback((): void => {
     const active = activeQuest();
     if (!active) return;
-    syncWorld(active.quest, progressNow);
+    const next = autoStep(active.quest, active.progress);
+    if (next && !latest.current.overlay) startRef.current(next);
+  }, [activeQuest]);
+  useEffect(() => {
+    if (busy || !resumeWhenFree.current) return;
+    resumeWhenFree.current = false;
+    resumeAuto();
+  }, [busy, resumeAuto]);
+  // A party member moved her on (talked, found, landed a boss blow for everyone): the world follows, a screen of a
+  // step now done closes, and a step that starts by itself starts. Only the server's pushes count: a reload of her
+  // data (after a reward, a quest switch) is not news from the party.
+  const pushed = party?.progressSeq ?? 0;
+  const pushedSeen = useRef(pushed);
+  useEffect(() => {
+    if (pushed === pushedSeen.current) return;
+    pushedSeen.current = pushed;
+    const active = activeQuest();
+    if (!active) return;
+    syncWorld(active.quest, active.progress);
     const open = latest.current.overlay?.step;
-    if (open && progressNow.completedSteps.includes(open.id)) setOverlay(null);
-    const next = autoStep(active.quest, progressNow);
-    if (next && !latest.current.busy) startRef.current(next);
-  }, [progressNow, activeQuest, syncWorld, setOverlay]);
+    if (open && active.progress.completedSteps.includes(open.id)) setOverlay(null);
+    const next = autoStep(active.quest, active.progress);
+    if (next && !latest.current.busy && !latest.current.overlay) startRef.current(next);
+  }, [pushed, activeQuest, syncWorld, setOverlay]);
+  // The party waited for a teammate's answer and now goes on: a step that starts by itself (refused while waiting)
+  // starts now.
+  const waiting = party?.waiting ?? false;
+  const wasWaiting = useRef(waiting);
+  useEffect(() => {
+    const was = wasWaiting.current;
+    wasWaiting.current = waiting;
+    if (!was || waiting) return;
+    // A step still on its way (the refusal itself, say): go on once it is back.
+    if (busy) {
+      resumeWhenFree.current = true;
+      return;
+    }
+    resumeAuto();
+  }, [waiting, busy, resumeAuto]);
 
   const onInteraction = useCallback(
     (targetId: string, who: string, kind: InteractableKind): void => {

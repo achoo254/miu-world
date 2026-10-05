@@ -132,6 +132,15 @@ describe('playing a co-op challenge', () => {
     expect(document.querySelector('[data-id="coop-greeting-bot-tt-1@c1"]')?.textContent).toContain('cùng thắng 2 lần, lần trước là «Dựng cầu tre»');
   });
 
+  it('shows a help layer only under the question it is for', () => {
+    const { social } = setup();
+    const shared = { ...PIECES, pieces: PIECES.pieces.map((p) => ({ ...p, shared: true, text: p.text ?? 'Bờ bên kia 7 m' })) };
+    act(() => social.update({ coopState: { state: shared, at: Date.now() }, coopHelp: { task: 't1', layer: 'hint', text: 'Cộng hai bờ lại nhé', textEn: null, explanation: null, explanationEn: null } }));
+    expect(screen.getByText('Cộng hai bờ lại nhé')).toBeTruthy();
+    act(() => social.update({ coopState: { state: { ...shared, task: { id: 't2', prompt: 'Câu khác?', choices: [{ id: 'a', text: '1' }, { id: 'b', text: '2' }] } }, at: Date.now() } }));
+    expect(screen.queryByText('Cộng hai bờ lại nhé')).toBeNull();
+  });
+
   it('says who the team waits for, shows the boss HP, and steps out only after a confirmation', () => {
     const { social, sent } = setup();
     const boss: CoopStateView = { ...PIECES, mode: 'team-boss', pieces: [], turn: 'bot-tt-1@c1', boss: { name: 'Rồng Giấy', nameEn: null, hp: 300, maxHp: 500 }, status: 'paused', waitingFor: { id: 'p-x', displayName: 'Tôm', msLeft: 45_000 } };

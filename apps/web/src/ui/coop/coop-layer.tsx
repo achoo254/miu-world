@@ -369,7 +369,8 @@ function Play({ social, state, at, quest, fill, titleOfQuest }: { social: Social
         <div className="coop-last" data-id="coop-last" data-kind={last.kind}>
           {line ? (
             <p>
-              <strong>{nameOf(last.by)}</strong> ·{' '}
+              <strong>{nameOf(last.by)}</strong>
+              {state.seats.some((seat) => (seat.id === last.by && seat.isBot) || seat.standIn?.id === last.by) ? <BotBadge /> : null} ·{' '}
               <span className="coop-line">
                 <Say text={line} fill={fill} />
               </span>
@@ -390,7 +391,7 @@ function Play({ social, state, at, quest, fill, titleOfQuest }: { social: Social
           ) : null}
         </div>
       ) : null}
-      {help ? (
+      {help && (help.task === state.task?.id || state.tasks.some((x) => x.task?.id === help.task)) ? (
         <div className="coop-help parchment" data-id={`coop-help-${help.layer}`}>
           <p>
             <Say text={twin(help.text, help.textEn)} fill={fill} />

@@ -244,3 +244,50 @@ describe('dropping out, stepping out, blocking', () => {
     expect(h.paid.map((p) => p.child)).toEqual(['child-a']);
   });
 });
+
+describe('a full team, a lobby left behind, a block after the party is gone', () => {
+  it('takes no more players than the challenge has places: the last one in is told the team is full', async () => {
+    const h = setup();
+    const [a, b, c, d] = await party(h, 'child-a', 'child-b', 'child-c', 'child-d');
+    if (!a || !b || !c || !d) throw new Error('no party');
+    a.send({ type: 'coop-open', questId: 'with-test-pieces' });
+    for (const m of [b, c, d]) m.send({ type: 'coop-ready', ready: true });
+    await startAndWait(h, a);
+    expect(state(a)?.seats.map((s) => s.id)).toEqual([a.id, b.id, c.id]);
+    expect(d.last('notice')).toMatchObject({ code: 'party-full' });
+    expect(d.all('coop-state')).toHaveLength(0);
+  });
+
+  it('closes the lobby of a leader who drops out, so it never comes back later', async () => {
+    const h = setup();
+    const a = await h.joined('child-a');
+    await settle();
+    a.send({ type: 'coop-open', questId: 'with-test-pieces' });
+    a.conn.close();
+    const back = await h.joined('child-a');
+    await settle();
+    expect(back.all('coop-lobby').filter((m) => m.lobby !== null)).toHaveLength(0);
+  });
+
+  it('takes a player out of a challenge when she blocks a teammate, even after their party is gone', async () => {
+    const h = setup();
+    h.db.settings.set('child-a', { botsEnabled: false });
+    h.db.settings.set('child-b', { botsEnabled: false });
+    const [a, b] = await party(h, 'child-a', 'child-b');
+    if (!a || !b) throw new Error('no party');
+    a.send({ type: 'coop-open', questId: 'with-test-team-boss' });
+    b.send({ type: 'coop-ready', ready: true });
+    await startAndWait(h, a);
+    // B drops out long enough for the party to let her go; she comes back to her place in the challenge.
+    b.conn.close();
+    h.clock.now += 31_000;
+    await vi.advanceTimersByTimeAsync(31_000);
+    expect(a.last('party-state')?.party).toBeNull();
+    const back = await h.joined('child-b');
+    await settle();
+    expect(state(back)?.status).toBe('playing');
+    back.send({ type: 'block', id: a.id });
+    await settle();
+    expect(back.last('coop-end')).toMatchObject({ reason: 'left' });
+  });
+});

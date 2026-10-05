@@ -42,6 +42,23 @@ export const isSharedStep = (step: QuestStep): boolean => SHARED_KINDS.has(step.
 /** Steps every member answers herself before the party goes on (a boss is answered together, in turns). */
 export const isQuestionStep = (step: QuestStep): boolean => 'support' in step || step.kind === 'decision' || step.kind === 'challenge' || step.kind === 'boss';
 
+/**
+ * Steps a decision's branch may skip: each member walks her own branch (a member who skipped them must not push
+ * another member past them, and the other way round).
+ */
+export function branchSteps(quest: ActiveQuest): Set<string> {
+  const ids = quest.steps.map((s) => s.id);
+  const out = new Set<string>();
+  quest.steps.forEach((step, i) => {
+    if (step.kind !== 'decision') return;
+    for (const choice of step.choices) {
+      const to = choice.nextStepId ? ids.indexOf(choice.nextStepId) : -1;
+      for (let k = i + 1; k < to; k++) out.add(ids[k] ?? '');
+    }
+  });
+  return out;
+}
+
 interface Member {
   publicId: string;
   childId: string;
@@ -177,11 +194,21 @@ export class PartyQuestService implements PartyQuestHooks {
     for (const run of this.runs.values()) if (run.members.has(id) || run.invited.has(id)) this.drop(run, id);
   }
 
-  /** Parties changed: a quest whose party is gone ends. */
+  /**
+   * Parties changed: a quest whose leader's party is gone ends; a member no longer in the party (left, removed, or
+   * let go after dropping out) is out of its quest; a player who joined the party since is asked too.
+   */
   partyChanged(ids: readonly string[]): void {
     for (const run of [...this.runs.values()]) {
-      if (this.host.party(run.leader)?.id !== run.partyId) this.end(run);
-      else if (ids.some((id) => run.members.has(id) || run.invited.has(id))) void this.push(run);
+      const party = this.host.party(run.leader);
+      if (party?.id !== run.partyId) {
+        this.end(run);
+        continue;
+      }
+      for (const id of [...run.members.keys(), ...run.invited]) if (!party.members.includes(id)) this.drop(run, id);
+      if (this.runs.get(run.partyId) !== run) continue;
+      for (const id of party.members) if (!run.members.has(id) && !run.invited.has(id) && this.host.childIdOf(id) !== null) run.invited.add(id);
+      if (ids.some((id) => party.members.includes(id))) void this.push(run);
     }
   }
 
@@ -218,7 +245,8 @@ export class PartyQuestService implements PartyQuestHooks {
   /** At a boss: the blows the party has landed, and the member whose blow is next. */
   private bossTurn(run: Run, step: Extract<QuestStep, { kind: 'boss' }>, states: Map<string, MemberState>): { landed: Set<string>; owner: string | null } {
     const landed = new Set([...states.values()].flatMap((s) => s.found[step.id] ?? []));
-    const order = [...run.members.keys()];
+    // Blows go round the members playing now: one who dropped out takes no turn until she is back.
+    const order = [...run.members.keys()].filter((id) => this.host.online(id));
     return { landed, owner: order.length > 0 ? (order[landed.size % order.length] ?? null) : null };
   }
 
@@ -238,7 +266,8 @@ export class PartyQuestService implements PartyQuestHooks {
     for (const [id, other] of states) {
       if (id === member.publicId) continue;
       const otherMember = run.members.get(id);
-      if (otherMember?.finished) continue;
+      // A member who finished her run, or dropped out, holds nobody back.
+      if (otherMember?.finished || !this.host.online(id)) continue;
       for (const earlier of quest.steps.slice(0, Math.max(0, index))) if (isQuestionStep(earlier) && !other.done.has(earlier.id)) return 'party-waiting';
     }
     return 'ok';
@@ -260,6 +289,7 @@ export class PartyQuestService implements PartyQuestHooks {
    */
   private async catchUp(run: Run): Promise<void> {
     const steps = run.quest.steps;
+    const ownBranch = branchSteps(run.quest);
     const moved = new Set<string>();
     for (const member of run.members.values()) {
       for (let guard = 0; guard < steps.length * 4; guard++) {
@@ -273,7 +303,7 @@ export class PartyQuestService implements PartyQuestHooks {
           const { landed } = this.bossTurn(run, next, states);
           const missing = next.turns.find((t) => landed.has(t.id) && !(mine.found[next.id] ?? []).includes(t.id));
           if (missing) input = { answer: { turnId: missing.id, choice: missing.answer.choice } };
-        } else if (isSharedStep(next)) {
+        } else if (isSharedStep(next) && !ownBranch.has(next.id)) {
           const doer = [...states].find(([id, s]) => id !== member.publicId && s.done.has(next.id));
           if (doer) {
             const theirs = doer[1].found[next.id] ?? [];
@@ -327,7 +357,7 @@ export class PartyQuestService implements PartyQuestHooks {
         displayName: person?.displayName ?? '…',
         joined,
         done: state?.done.size ?? 0,
-        waiting: !!state && !finished && steps.slice(0, front).some((s) => isQuestionStep(s) && !state.done.has(s.id)),
+        waiting: !!state && !finished && this.host.online(id) && steps.slice(0, front).some((s) => isQuestionStep(s) && !state.done.has(s.id)),
         finished,
       };
     };

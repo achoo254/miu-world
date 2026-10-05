@@ -95,6 +95,8 @@ interface Running {
   switches: Map<string, boolean>;
   /** The players' anonymous numbers for its questions, read when it began. */
   numbers: Map<string, QuestionNumbers>;
+  /** Questions whose answer a player asked to see (`<player>|<question>`): her answer to them is not counted. */
+  revealed: Set<string>;
 }
 
 /** The co-op step of a co-op challenge. */
@@ -290,7 +292,12 @@ export class CoopService {
     const step = quest ? coopStepOf(quest) : null;
     const members = this.lobbyMembers(lobby);
     if (!quest || !step || !this.host.online(lobby.leader) || this.running.has(lobby.key)) return this.closeLobby(lobby);
-    const takers = members.filter((m) => this.isBot(m) || ((m === lobby.leader || lobby.ready.has(m)) && this.host.online(m) && !this.playing.has(m)));
+    // The challenge's places: the leader first, then the players in the order they said they are in, then the party's
+    // bots; a full team leaves the rest out (told so), so everyone in it has a part to play.
+    const eligible = (m: string): boolean => this.host.online(m) && !this.playing.has(m) && members.includes(m);
+    const ordered = [lobby.leader, ...[...lobby.ready].filter((m) => m !== lobby.leader), ...members.filter((m) => this.isBot(m))];
+    const takers = [...new Set(ordered)].filter((m) => this.isBot(m) || eligible(m)).slice(0, step.seats);
+    for (const m of members) if (!this.isBot(m) && lobby.ready.has(m) && !takers.includes(m)) this.host.notice(m, 'party-full');
     const fill = this.botsFill(takers, step.seats);
     const mapId = this.host.mapOf(lobby.leader);
     this.seq += 1;
@@ -311,11 +318,15 @@ export class CoopService {
       bots: new Set(people.filter((p) => p.isBot).map((p) => p.id)),
       switches: new Map(people.filter((p) => !p.isBot).map((p) => [p.id, this.host.botsOn(p.id)])),
       numbers: new Map(),
+      revealed: new Set(),
     };
     this.running.set(run.key, run);
     for (const p of people) this.playing.set(p.id, run.key);
     run.session.markShown(this.now());
-    void this.prepare(run).finally(() => this.push(run));
+    void this.prepare(run).finally(() => {
+      // Ended meanwhile (everyone left): nothing more to show.
+      if (this.running.get(run.key) === run) this.push(run);
+    });
   }
 
   /** What the bots need before they play: the questions' anonymous numbers, and the players they remember. */
@@ -373,7 +384,7 @@ export class CoopService {
     if (say) run.session.say(actor, say);
     // A player's answer counts in the question's anonymous numbers (right or not, how long it took; never who).
     const store = this.options.store;
-    if (store && action.kind === 'answer' && shown !== null && !this.isBot(actor) && this.host.childIdOf(actor)) {
+    if (store && action.kind === 'answer' && shown !== null && !this.isBot(actor) && this.host.childIdOf(actor) && !run.revealed.has(`${actor}|${action.task}`)) {
       const view = run.session.view(actor, now);
       const right = view.last?.by === actor && (view.last.kind === 'right' || view.last.kind === 'won' || view.last.kind === 'round');
       void store.recordAnswer(`${run.quest.id}/${action.task}`, right, (now - shown) / 1000).catch((err: unknown) => {
@@ -387,7 +398,9 @@ export class CoopService {
   private help(id: string, task: string, layer: 'hint' | 'answer'): void {
     const run = this.running.get(this.playing.get(id) ?? '');
     const help = run?.session.help(id, task, layer);
-    if (help) this.host.send(id, { type: 'coop-help', task, layer, ...help });
+    if (!run || !help) return;
+    if (layer === 'answer') run.revealed.add(`${id}|${task}`);
+    this.host.send(id, { type: 'coop-help', task, layer, ...help });
   }
 
   private changed(run: Running): void {
@@ -402,6 +415,7 @@ export class CoopService {
 
   /** Everyone in it gets her view; each bot plays from its own. A pause wakes the team when it runs out. */
   private push(run: Running): void {
+    if (this.running.get(run.key) !== run) return;
     const now = this.now();
     if (run.timer) clearTimeout(run.timer);
     run.timer = null;
@@ -486,7 +500,7 @@ export class CoopService {
 
   private stepOut(run: Running, id: string): void {
     if (!run.session.has(id)) return;
-    run.session.leave(id, this.standIn(run));
+    run.session.leave(id, run.session.standInOf(id) ?? this.standIn(run));
     this.playing.delete(id);
     this.host.send(id, { type: 'coop-end', questId: run.quest.id, reason: 'left', result: null });
     this.changed(run);
@@ -497,8 +511,18 @@ export class CoopService {
   /** She lost her connection: a bot plays her place, or the team waits for her a minute. */
   dropped(id: string): void {
     const run = this.running.get(this.playing.get(id) ?? '');
-    if (!run || !run.session.has(id)) return;
-    run.session.away(id, this.now(), this.standIn(run));
+    if (!run || !run.session.has(id)) {
+      // Not playing: a lobby she leads closes, one she is in goes on without her (she says she is in again).
+      const lobby = this.lobbyOf(id);
+      if (lobby?.leader === id) this.closeLobby(lobby);
+      else if (lobby) {
+        lobby.ready.delete(id);
+        this.cancelCountdown(lobby);
+        this.pushLobby(lobby);
+      }
+      return;
+    }
+    run.session.away(id, this.now(), run.session.standInOf(id) ?? this.standIn(run));
     this.changed(run);
   }
 
@@ -527,6 +551,13 @@ export class CoopService {
   leftParty(id: string): void {
     const run = this.running.get(this.playing.get(id) ?? '');
     if (run?.partyId) this.stepOut(run, id);
+  }
+
+  /** She blocked another player: if both play one challenge, she steps out of it (gently, like leaving). */
+  blocked(id: string, other: string): void {
+    const key = this.playing.get(id);
+    const run = key ? this.running.get(key) : undefined;
+    if (run && this.playing.get(other) === key) this.stepOut(run, id);
   }
 
   /** Parties changed for these players: lobbies follow their party (a leader out of it closes hers). */

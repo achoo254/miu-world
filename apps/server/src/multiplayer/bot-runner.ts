@@ -412,6 +412,8 @@ interface CoopTurn {
   timer: NodeJS.Timeout | null;
   /** When the pending move is due (ms). */
   dueAt: number;
+  /** When it got the state it sees (the holds' time left counts from then). */
+  receivedAt: number;
   /** Its answers in this challenge (it tires a little with each). */
   answers: number;
   /** Its lines, each kind from its own voice, never the same twice in a row. */
@@ -487,13 +489,14 @@ export class BotRunner {
         if (turn) {
           turn.state = state;
           turn.moves = moves;
+          turn.receivedAt = Date.now();
           // A far wake-up (waiting to pull again) gives way to news: it thinks again now. A move it is already
           // thinking over stays, so a busy team never keeps it from answering.
           if (turn.timer && turn.dueAt - Date.now() > 2 * (this.coopThinkMs ?? BOT_COOP_THINK_MS)) {
             clearTimeout(turn.timer);
             turn.timer = null;
           }
-        } else this.coop.set(botId, { state, moves, timer: null, dueAt: 0, answers: 0, lines: new Map() });
+        } else this.coop.set(botId, { state, moves, timer: null, dueAt: 0, receivedAt: Date.now(), answers: 0, lines: new Map() });
         this.coopThink(botId, this.moveMs(botId, state, moves));
       },
       forget: (ids) => {
@@ -601,11 +604,13 @@ export class BotRunner {
     }
     if (state.mode !== 'together') return;
     const places = state.seats.filter((s) => s.id === self || s.standIn?.id === self).map((s) => s.id);
-    const holds = state.holds.filter((h) => places.includes(h.seat));
-    if (holds.length === 0) return;
-    if (holds.some((h) => h.msLeft < BOT_REHOLD_MS)) return turn.moves.act({ kind: 'hold' }, this.lineFor(botId, turn, 'hold'));
+    // Time left of its holds now, not when the state came.
+    const since = Date.now() - turn.receivedAt;
+    const left = state.holds.filter((h) => places.includes(h.seat)).map((h) => Math.max(0, h.msLeft - since));
+    if (left.length === 0) return;
+    if (left.some((ms) => ms < BOT_REHOLD_MS)) return turn.moves.act({ kind: 'hold' }, this.lineFor(botId, turn, 'hold'));
     // Held: it pulls again just before letting go, while the others answer.
-    this.coopThink(botId, Math.min(...holds.map((h) => h.msLeft)) - BOT_REHOLD_MS + 100);
+    this.coopThink(botId, Math.min(...left) - BOT_REHOLD_MS + 100);
   }
 
   /** A bot of `profile` in `room`, wired to this runner. */

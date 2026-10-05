@@ -406,7 +406,8 @@ export const botSkills = pgTable(
 
 /**
  * Anonymous numbers per co-op question: how many answers, how many right, and answer times counted in buckets of
- * whole seconds (`times[i]`: answers that took i seconds, the last bucket everything longer). Never who answered.
+ * whole seconds (`times[i]`: answers that took i seconds, the last bucket everything longer). Never who answered,
+ * nor when (no time of the last answer: with few players it could point to one).
  */
 export const questionStats = pgTable('question_stats', {
   /** `<quest id>/<question id>`. */
@@ -414,7 +415,6 @@ export const questionStats = pgTable('question_stats', {
   answers: integer('answers').notNull().default(0),
   rights: integer('rights').notNull().default(0),
   times: jsonb('times').$type<number[]>().notNull().default(sql`'[]'::jsonb`),
-  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
 });
 
 /** A companion bot remembers a player it won a co-op challenge with: how often, and the last challenge (no words). */

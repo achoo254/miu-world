@@ -1,7 +1,7 @@
 // M3.2 (gameplay 3D): Khu rừng bí mật. The game owns canvas, loop, joystick and Run/Jump; React
 // owns the HUD (badge, quest tracker, menu buttons, Interact), the interaction label (content and
 // visibility from game-bridge), Pause (the game stops rendering while it is open) and the offline retry.
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import { Link, useLocation, useNavigate, useSearchParams } from 'react-router';
 import { rememberPlay } from '../system/back-to-game';
 import type { PlayerPosition } from '@miu/schema/player-position';
@@ -43,6 +43,17 @@ import { PartyQuestCard } from '../coop/party-quest-card';
 import { useCoopChallenges } from '../coop/use-coop';
 
 const HOME_PATH = '/home';
+
+/**
+ * A quest's progress from the server: the step route's response and the party's pushes may arrive out of order, so
+ * within one run the one with more steps done wins (a newer run always does).
+ */
+export function withProgress(summary: QuestSummary, progress: QuestSummary['progress']): QuestSummary {
+  const kept = summary.progress;
+  const older = progress.run === kept.run && progress.completedSteps.length < kept.completedSteps.length && progress.completed === kept.completed;
+  if (older || (progress.run ?? 1) < (kept.run ?? 1)) return summary;
+  return { ...summary, progress, state: progress.completed ? 'completed' : 'in-progress' };
+}
 /** How often the child's spot is saved while playing; hiding or leaving the page saves it at once. */
 const SAVE_SPOT_MS = 10_000;
 
@@ -196,6 +207,10 @@ export function PlayScreen() {
   /** A co-op lobby, challenge or its end is on screen (it covers the game). */
   const coopOpen = useSocial(social, (s) => s.coopLobby !== null || s.coopState !== null || s.coopEnd !== null);
   const coop = useCoopChallenges(social);
+  // The quest played with the party: the server's pushes of her progress, and whether a teammate's answer is awaited.
+  const partyProgressSeq = useSocial(social, (s) => s.partyProgress?.seq ?? 0);
+  const partyWaiting = useSocial(social, (s) => (s.partyQuest?.members ?? []).some((m) => m.joined && m.waiting && m.id !== s.selfId));
+  const partyPlay = useMemo(() => ({ progressSeq: partyProgressSeq, waiting: partyWaiting }), [partyProgressSeq, partyWaiting]);
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const here = useLocation();
@@ -295,7 +310,7 @@ export function PlayScreen() {
       if (!pushed || pushed.seq === seen) return;
       seen = pushed.seq;
       const moved = pushed.progress;
-      setData((prev) => prev && { ...prev, quests: prev.quests.map((q) => (q.quest.id === moved.questId ? { ...q, progress: moved, state: moved.completed ? 'completed' : 'in-progress' } : q)) });
+      setData((prev) => prev && { ...prev, quests: prev.quests.map((q) => (q.quest.id === moved.questId ? withProgress(q, moved) : q)) });
     });
   }, [social]);
   /** The server paid a co-op challenge: her XP, coins and quests are read again. */
@@ -308,9 +323,7 @@ export function PlayScreen() {
       prev && {
         ...prev,
         progress: response.progress,
-        quests: prev.quests.map((q) =>
-          q.quest.id === response.quest.questId ? { ...q, progress: response.quest, state: response.quest.completed ? 'completed' : 'in-progress' } : q,
-        ),
+        quests: prev.quests.map((q) => (q.quest.id === response.quest.questId ? withProgress(q, response.quest) : q)),
       },
     );
     if (response.completion) void loadPlayer().then(setData, () => undefined);
@@ -509,6 +522,7 @@ export function PlayScreen() {
               if (next) switchQuest(next, false, from);
             }}
             claimCoop={coop.claim}
+            party={partyPlay}
           />
         ) : null}
         {data ? <CoopLayer social={social} quests={coop.quests} data={data} onPaid={refreshPlayer} onMap={(id) => navigate(`/region/${id}`)} /> : null}
