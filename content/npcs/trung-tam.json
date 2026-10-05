@@ -1,0 +1,249 @@
+{
+  "version": 1,
+  "region": "trung-tam",
+  "climate": "mild",
+  "npcs": [
+    {
+      "id": "bac-lai-xe-hai",
+      "name": "Bác Lái Xe Hải",
+      "role": { "vi": "Bác tài xe buýt của quảng trường, lái chiếc xe Vàng Ươm đi khắp các trạm suốt mười hai năm nay.", "en": "The square's bus driver, who has steered the yellow bus Vàng Ươm round every stop for twelve years." },
+      "personality": { "vi": "Đúng giờ tới từng phút, xởi lởi, nhớ mặt từng hành khách và cả món đồ họ hay xách theo.", "en": "Punctual to the minute and openhearted; he remembers every passenger's face and what they usually carry." },
+      "voice": { "vi": "Nói như đọc loa trên xe: «Trạm kế tiếp…», «Kính coong!», hay gọi người chơi là «hành khách {name}».", "en": "Talks like the bus speaker, “Next stop…”, “Ding-dong!”, and likes to call the player “passenger {name}”." },
+      "fear": { "vi": "Sợ đường hầm tối: mỗi lần xe chui qua gầm cầu là bác hát thật to cho đỡ run.", "en": "Afraid of dark tunnels: whenever the bus passes under the bridge he sings at the top of his voice to stop his knees knocking." },
+      "dream": { "vi": "Lái một chuyến xe đón mỗi nơi một người bạn về quảng trường, rồi cả xe ngồi ăn chung một bữa thật dài.", "en": "To drive one route that picks up a friend from every corner of the world and brings them to the square for one long shared meal." },
+      "secret": { "vi": "Bác còn giữ chiếc vé xe buýt từ năm bảy tuổi, chuyến đầu tiên bác được đi một mình; vé đã phai nhưng năm nào bác cũng tự bấm thêm một lỗ vào đúng ngày ấy.", "en": "He still keeps the ticket from his first bus ride alone, at seven; it has faded, but every year on that day he punches one more hole in it." },
+      "habit": { "vi": "Lau chiếc chuông xe ba lần mỗi sáng, lần nào cũng thử kêu «kính coong» một tiếng.", "en": "Polishes the bus bell three times every morning, giving it one test “ding-dong” each time." },
+      "likes": ["ve-xe-buyt-sao", "chuong-xe-dap", "banh-mi-sua"],
+      "lines": [
+        { "when": "morning", "vi": "Kính coong! Chuyến sáu giờ rưỡi xuất bến. Hành khách {name} lên xe chưa, ghế đầu còn trống đấy!", "en": "Ding-dong! The half past six is leaving. On board yet, passenger {name}? The front seat is free!" },
+        { "when": "afternoon", "vi": "Trưa nắng thế này hành khách ngủ gật cả xe. Bác lái chậm lại một chút cho ai cũng có giấc ngon.", "en": "In the midday heat the whole bus nods off. I drive a little slower so everyone gets a good nap." },
+        { "when": "evening", "vi": "Chuyến chiều tối đông nhất, ai cũng vội về ăn cơm. Bác thuộc lòng nhà nào lên đèn sớm nhất.", "en": "The evening run is the busiest; everyone hurries home for dinner. I know by heart which houses light up first." },
+        { "when": "night", "vi": "Chuyến cuối đã về bến. Bác đếm ghế, nhặt đồ để quên, rồi chúc xe Vàng Ươm ngủ ngon.", "en": "The last run is back at the depot. I count the seats, collect forgotten things and wish Vàng Ươm good night." },
+        { "weather": "rain", "vi": "Mưa rồi, cần gạt nước chạy qua chạy lại như đang vẫy chào cả phố. Hành khách nhớ cụp ô trước khi lên xe nhé.", "en": "Rain! The wipers swing back and forth like they're waving at the whole street. Fold your umbrella before boarding, please." },
+        { "weather": "fine", "vi": "Trời trong vắt thế này, bác mở hết cửa sổ xe. Gió lùa vào thơm mùi bánh mì nướng từ góc phố.", "en": "Clear skies like this mean every window open. The breeze drifts in smelling of toasted bread from the corner." },
+        { "hearts": 2, "vi": "Bác kể cháu nghe: có hôm bác chạy trọn một vòng mới biết mình bỏ quên… chính cái mũ của bác ở bến.", "en": "Here's one for you: once I drove a whole loop before noticing I'd left… my own cap at the stop." },
+        { "hearts": 3, "vi": "Ghế thứ hai bên cửa sổ là ghế đẹp nhất xe. Từ nay bác giữ nó cho {name}, ai hỏi cứ bảo ghế đã có người đặt.", "en": "The second seat by the window is the best on the bus. From now on it's yours, {name}; if anyone asks, it's reserved." },
+        { "hearts": 5, "vi": "{name} là hành khách thân nhất của bác rồi. Lúc nào buồn, cháu cứ lên xe ngồi một vòng, bác không thu vé đâu.", "en": "You're my dearest passenger now, {name}. Whenever you're sad, ride a loop with me. No ticket needed." },
+        { "about": "su-tu-vang", "vi": "Sư Tử Vàng với bác ngồi chung bàn hồi lớp Hai. Giờ cậu ấy làm thầy hiệu trưởng, sáng nào bác cũng chở học trò tới cổng trường cậu ấy.", "en": "Sư Tử Vàng and I shared a desk in second grade. Now he's the headmaster, and every morning I drive pupils to his school gate." },
+        { "about": "cho-canh-sat-coi", "vi": "Chó Cảnh Sát Còi thổi còi cho xe bác qua ngã tư mỗi ngày. Bác bóp kèn chào lại, hai đứa nói chuyện bằng còi với kèn.", "en": "Chó Cảnh Sát Còi whistles my bus through the crossroads every day. I honk back; we talk in whistles and horns." },
+        { "vi": "Bánh mì bơ sữa ăn lúc ngồi chờ khách là ngon nhất. Ai tặng bác một ổ, bác dành ghế đầu cho cả tuần.", "en": "Butter-milk bread eaten while waiting for passengers tastes best. Bring me a loaf and the front seat is yours all week." },
+        { "vi": "Lái xe buýt cũng như kể chuyện: trạm nào cũng có người lên, người xuống, mỗi người mang theo một chuyện riêng.", "en": "Driving a bus is like telling a story: at every stop someone gets on, someone gets off, and each carries a tale of their own." },
+        { "vi": "{name} thích ngồi ghế đầu hay ghế cuối? Ghế đầu nhìn đường rõ, ghế cuối thì xóc vui hơn.", "en": "Front seat or back seat, {name}? Up front you see the road; at the back the bumps are more fun." },
+        { "vi": "Biết không, đèn giao thông bao giờ cũng đặt đèn đỏ trên cùng, để người đứng xa vẫn thấy điều quan trọng nhất.", "en": "Did you know traffic lights always put red on top, so even people far away see the most important colour first?" }
+      ]
+    },
+    {
+      "id": "lan-con-ron-rang",
+      "name": "Lân Con Rộn Ràng",
+      "role": { "vi": "Chú lân con múa ở khu sự kiện theo mùa; mùa nào có hội là mùa ấy Lân bận nhất quảng trường.", "en": "The lion cub dancer of the seasonal events area; whenever there's a festival, Lân is the busiest creature on the square." },
+      "personality": { "vi": "Hiếu động, ồn ào, tốt bụng, nghĩ gì làm nấy và hay nhảy trước rồi mới nghĩ sau.", "en": "Restless, loud and kind-hearted; acts on every idea and usually leaps before thinking." },
+      "voice": { "vi": "Câu nào cũng chêm tiếng trống «tùng cắc tùng!», nói nhanh như trống dồn, cười ha ha rung cả bờm.", "en": "Peppers every sentence with drumbeats, “boom-tak-boom!”, talks as fast as a drumroll and laughs till the mane shakes." },
+      "fear": { "vi": "Sợ im lặng: tiếng trống mà ngừng là chân Lân run lẩy bẩy, chẳng nhớ nổi bước múa nào.", "en": "Afraid of silence: when the drums stop, Lân's legs shake and every dance step vanishes from memory." },
+      "dream": { "vi": "Được múa mở màn đêm hội Trung thu ở quảng trường, cả đoàn lân lớn múa theo sau.", "en": "To open the Mid-Autumn festival on the square, with the whole troupe of big lions dancing behind." },
+      "secret": { "vi": "Lân Con chưa từng múa trọn một bài mà không vấp; lần nào vấp, Lân cũng lộn một vòng thật đẹp cho ai cũng tưởng là cố ý.", "en": "Lân has never danced a whole routine without tripping; each time, the stumble becomes a perfect somersault so everyone thinks it was planned." },
+      "habit": { "vi": "Gãi tai trái mỗi khi nghĩ, rồi lắc bờm ba cái khi nghĩ ra.", "en": "Scratches the left ear when thinking, and shakes the mane three times when an idea arrives." },
+      "likes": ["bong-bong-bay-mau", "ve-xem-xiec", "to-he-rong"],
+      "lines": [
+        { "when": "morning", "vi": "Tùng cắc tùng! Sáng nào Lân cũng tập bước chào mặt trời. Mặt trời chưa chào lại, nhưng Lân không giận.", "en": "Boom-tak-boom! Every morning I practise the sun salute. The sun hasn't saluted back yet, but I'm not offended." },
+        { "when": "afternoon", "vi": "Trưa rồi mà Lân chưa muốn nghỉ. {name} vỗ tay làm trống cho Lân múa thêm một bài nhé?", "en": "It's midday and I don't feel like resting. Clap a beat for me, {name}, and I'll dance one more?" },
+        { "when": "evening", "vi": "Chiều xuống, đèn lồng khu sự kiện bật sáng từng chùm. Giờ này Lân múa đẹp nhất, bóng Lân in dài trên sân.", "en": "Evening falls and the lanterns of the events area light up in bunches. This is when I dance best, my shadow stretching across the ground." },
+        { "when": "night", "vi": "Đêm rồi, Lân phải ngủ… nhưng tai Lân vẫn nghe tiếng trống trong mơ. Tùng… cắc… khò…", "en": "Night already, I should sleep… but my ears still hear drums in my dreams. Boom… tak… snore…" },
+        { "weather": "rain", "vi": "Mưa rơi lộp độp lên mái sân khấu như trống con. Ai bảo mưa là buồn? Mưa cũng biết đánh nhịp đấy!", "en": "Rain pitter-patters on the stage roof like a tiny drum. Who says rain is gloomy? Rain keeps a beat too!" },
+        { "weather": "fine", "vi": "Nắng đẹp thế này phải phơi bờm cho xù thật xù. Bờm xù thì múa mới oai, {name} ạ.", "en": "Sunshine like this is perfect for fluffing my mane. A fluffy mane makes a mighty dance, {name}." },
+        { "hearts": 2, "vi": "Lân kể nhỏ thôi nhé: đuôi Lân có gắn chuông, nên Lân chưa bao giờ chơi trốn tìm thắng được ai.", "en": "Just between us: my tail has a bell on it, so I've never once won at hide-and-seek." },
+        { "hearts": 3, "vi": "{name} là khán giả Lân thích nhất. Mỗi lần thấy {name} đứng xem, Lân nhảy cao thêm được một gang tay.", "en": "You're my favourite audience, {name}. Whenever I see you watching, I jump a hand-span higher." },
+        { "hearts": 4, "vi": "Lân tin {name} nên mới kể: có những đêm Lân tập múa một mình trên sân khấu vắng, tự đếm nhịp cho khỏi sợ.", "en": "I trust you, so I'll tell you: some nights I practise alone on the empty stage, counting beats out loud so I'm not scared." },
+        { "about": "voi-trong-hoi", "vi": "Voi Trống Hội ở trường học đánh trống to nhất Lân từng nghe. Lân mơ một lần được múa theo trống của Voi.", "en": "Voi Trống Hội at the school plays the loudest drum I've ever heard. I dream of dancing to that drum one day." },
+        { "about": "voi-keo-bong", "vi": "Múa xong là Lân chạy ngay sang chỗ Voi Kẹo Bông. Voi bảo kẹo bông giống bờm Lân, nên Lân ăn mà hơi ngượng.", "en": "After every dance I dash over to Voi Kẹo Bông. Voi says cotton candy looks like my mane, which makes eating it a bit awkward." },
+        { "vi": "Ai tặng Lân một chú tò he hình rồng, Lân đặt lên đầu múa cùng luôn. Rồng với lân là anh em mà!", "en": "Give me a dragon tò he figure and I'll balance it on my head while dancing. Dragons and lions are cousins, after all!" },
+        { "vi": "Múa lân có ba bước khó nhất: bật lên, đứng vững, và nháy mắt với khán giả. Bước thứ ba Lân giỏi nhất.", "en": "Lion dancing has three hardest moves: the leap, the balance and the wink at the crowd. I'm best at the third." },
+        { "vi": "{name} biết vì sao đầu lân có chiếc gương nhỏ trên trán không? Người ta bảo gương soi cho điều xui sợ mà chạy mất.", "en": "Do you know why a lion head has a little mirror on its forehead, {name}? They say it scares bad luck away." },
+        { "vi": "Lân đếm rồi: một bài múa có hai trăm mười bốn tiếng trống. Lân không đếm nhầm đâu. Chắc thế.", "en": "I counted: one dance has two hundred and fourteen drumbeats. I didn't miscount. Probably." }
+      ]
+    },
+    {
+      "id": "voi-keo-bong",
+      "name": "Voi Kẹo Bông",
+      "role": { "vi": "Người bán kẹo bông ở lối vào khu cửa hàng, quấn kẹo bằng vòi và tặng kèm một câu chuyện cho mỗi que.", "en": "The cotton candy seller at the entrance to the shops, who spins candy with her trunk and adds a story to every stick." },
+      "personality": { "vi": "Ngọt ngào, mơ mộng, hay tưởng tượng mây trên trời là những que kẹo bông khổng lồ chưa ai ăn.", "en": "Sweet and dreamy, always imagining the clouds are giant cotton candies nobody has eaten yet." },
+      "voice": { "vi": "Nói chậm và mềm, hay kéo dài chữ như sợi đường đang quấn, cuối câu thích hỏi «ngọt chưa?».", "en": "Speaks slowly and softly, stretching her words like spun sugar, and likes ending with “sweet enough?”" },
+      "fear": { "vi": "Sợ gió to: một cơn gió là bay mất cả que kẹo, có lần Voi đuổi theo kẹo tới tận đầu cầu.", "en": "Afraid of strong wind: one gust steals a whole stick of candy, and once she chased one all the way to the bridge." },
+      "dream": { "vi": "Quấn một que kẹo bông to bằng đám mây thật, đủ cho cả quảng trường mỗi người một nắm.", "en": "To spin a cotton candy as big as a real cloud, enough for a handful each for everyone on the square." },
+      "secret": { "vi": "Voi không ăn được nhiều đồ ngọt, hai que là đau răng; kẹo Voi làm ra, Voi chỉ ngửi cho vui.", "en": "She can't eat much sugar, two sticks and her teeth ache; the candy she makes, she only sniffs for fun." },
+      "habit": { "vi": "Lau vòi bằng khăn ẩm sau mỗi mẻ kẹo, rồi thổi phù một cái cho sợi đường cuối bay đi.", "en": "Wipes her trunk with a damp cloth after every batch, then blows a puff to send the last sugar thread flying." },
+      "likes": ["kem-oc-que", "bong-bong-bay-mau", "dia-banh-ran"],
+      "lines": [
+        { "when": "morning", "vi": "Sáng sớm đường còn nguội, Voi quấn mấy que đầu cho các bạn đi học. Ngọt chưa, {name}?", "en": "Early on the sugar's still cool, so I spin the first sticks for kids on their way to school. Sweet enough, {name}?" },
+        { "when": "afternoon", "vi": "Trưa nắng thì kẹo bông dễ chảy lắm, Voi phải quấn nhanh như gió… à mà Voi lại sợ gió.", "en": "Midday sun melts cotton candy fast, so I have to spin quick as the wind… though I'm afraid of wind." },
+        { "when": "evening", "vi": "Chiều là giờ các gia đình dắt nhau ra quảng trường, Voi quấn kẹo không kịp thở. Vui ơi là vui!", "en": "Evening is when families stroll onto the square, and I spin without catching my breath. Such fun!" },
+        { "when": "night", "vi": "Đêm rồi, Voi rửa nồi đường, để dành một sợi kẹo cuối cho mặt trăng. Trăng chưa xuống lấy lần nào.", "en": "It's night. I wash the sugar pot and save the last thread for the moon. The moon has never come down for it." },
+        { "weather": "rain", "vi": "Mưa là kẹo bông ỉu ngay, Voi đành đóng nắp máy, ngồi đếm giọt mưa trên mái hiên cửa hàng.", "en": "Rain turns cotton candy soggy at once, so I close the machine and count raindrops on the shop awning." },
+        { "weather": "fine", "vi": "Trời đẹp, mây trắng phau như kẹo bông chưa nhuộm. Voi đang nghĩ nên nhuộm đám kia màu hồng hay màu tím.", "en": "Fine weather and snow-white clouds like undyed candy floss. I'm deciding whether that one should be pink or purple." },
+        { "hearts": 2, "vi": "Voi thú thật nhé: mỗi lần quấn hỏng một que, Voi gọi nó là «kẹo nghệ thuật» và bán rẻ hơn một xu.", "en": "A confession: whenever I spin a wonky stick, I call it “art candy” and sell it a coin cheaper." },
+        { "hearts": 3, "vi": "Que kẹo xoắn hình ngôi sao chỉ dành cho bạn thân thôi. {name} là người thứ ba Voi làm cho đấy.", "en": "The star-twisted stick is only for close friends. You're the third one I've ever made it for, {name}." },
+        { "hearts": 4, "vi": "Voi biết {name} giữ bí mật được. Mùi đường nóng làm Voi nhớ nhà, nên ngày nào Voi cũng quấn kẹo cho đỡ nhớ.", "en": "I know you can keep a secret, {name}. The smell of warm sugar reminds me of home, so I spin every day to miss it less." },
+        { "about": "gau-banh-ngot", "vi": "Gấu Bánh Ngọt viết thư bảo bánh rán mật ong ngon hơn kẹo bông. Voi viết lại một lá dài gấp đôi để cãi.", "en": "Gấu Bánh Ngọt wrote that honey doughnuts beat cotton candy. I wrote back a letter twice as long to argue." },
+        { "about": "lan-con-ron-rang", "vi": "Lân Con Rộn Ràng múa ngang qua là kẹo bông của Voi rung rinh theo nhịp trống. Kẹo cũng mê múa lân đấy.", "en": "When Lân Con Rộn Ràng dances past, my cotton candy wobbles to the drumbeat. Even candy loves a lion dance." },
+        { "vi": "Gấu gửi sang một đĩa bánh rán mật ong, Voi nếm một miếng rồi để dành ngửi. Ai tặng Voi đĩa nữa, Voi cảm ơn mãi.", "en": "Gấu sent me a plate of honey doughnuts; I tasted one bite and kept the rest to sniff. Bring me another plate and I'll thank you forever." },
+        { "vi": "Biết không, một thìa đường nhỏ quấn ra được cả một đám mây kẹo, vì kẹo bông phần lớn là… không khí!", "en": "Did you know one small spoon of sugar spins into a whole candy cloud? Cotton candy is mostly… air!" },
+        { "vi": "{name} thích kẹo bông màu hồng, màu xanh hay màu vàng chanh? Voi pha màu theo ý khách mà.", "en": "Pink, blue or lemon yellow, {name}? I mix the colour to order." },
+        { "vi": "Que kẹo bông cao nhất Voi từng làm cao tới tai Voi. Nó đổ trúng mũ một bác bảo vệ, bác cười cả buổi.", "en": "The tallest stick I ever spun reached my ears. It toppled onto a guard's cap, and he laughed all afternoon." }
+      ]
+    },
+    {
+      "id": "cho-canh-sat-coi",
+      "name": "Chó Cảnh Sát Còi",
+      "role": { "vi": "Chú cảnh sát giao thông của ngã tư dưới tháp đồng hồ, thổi còi cho xe, người và cả đàn vịt qua đường.", "en": "The traffic officer of the crossroads under the clock tower, whistling cars, people and even ducks safely across." },
+      "personality": { "vi": "Nghiêm túc, tận tụy, tin rằng mọi chuyện trên đời đều ổn nếu ai cũng chịu xếp hàng.", "en": "Serious and devoted, convinced the world would be fine if everyone simply queued." },
+      "voice": { "vi": "Câu nào cũng ngắn như tiếng còi: «Dừng! Nhìn! Đi!», nói xong hay vẫy đuôi một cái cho đỡ nghiêm.", "en": "Speaks in whistle-short bursts, “Stop! Look! Go!”, then wags his tail once to soften it." },
+      "fear": { "vi": "Sợ đánh rơi còi: Chó đeo ba chiếc còi dự phòng trong túi áo, đi đâu cũng kêu leng keng.", "en": "Afraid of dropping his whistle: he carries three spares in his pocket, jingling with every step." },
+      "dream": { "vi": "Một ngày quảng trường không có vụ kẹt xe nào, để Chó được ngồi ăn trưa trọn một bữa.", "en": "One day on the square without a single traffic jam, so he can sit down and eat a whole lunch." },
+      "secret": { "vi": "Chó không phân biệt được màu đỏ với màu xanh lá; Chó nhớ đèn giao thông theo vị trí, đèn trên cùng là dừng.", "en": "He can't tell red from green; he remembers traffic lights by position: the top one means stop." },
+      "habit": { "vi": "Cứ mỗi giờ đúng, khi tháp đồng hồ điểm chuông, Chó lại thổi một tiếng còi dài đáp lại.", "en": "On every hour, when the clock tower chimes, he answers with one long whistle." },
+      "likes": ["chuong-xe-dap", "ve-xe-buyt-sao", "dong-tien-co"],
+      "lines": [
+        { "when": "morning", "vi": "Tuýt! Giờ cao điểm sáng. Xe buýt trước, xe đạp sau, các bạn nhỏ đi trên vạch kẻ. {name} nhìn trái, nhìn phải chưa?", "en": "Tweet! Morning rush. Buses first, bikes after, little ones on the crossing. Looked left and right yet, {name}?" },
+        { "when": "afternoon", "vi": "Trưa vắng xe, Chó tranh thủ chỉ đường cho khách lạ. Hôm nay đã có mười một người hỏi đường ra cảng.", "en": "Quiet noon, so I give directions to visitors. Eleven people have asked the way to the harbour today." },
+        { "when": "evening", "vi": "Chiều tan tầm, ngã tư đông như hội. Chó thổi còi đến khản cả giọng, nhưng chưa ai va vào ai.", "en": "Evening rush, and the crossroads is packed like a fair. I've whistled myself hoarse, but nobody has bumped anybody." },
+        { "when": "night", "vi": "Đêm rồi, đèn vàng nhấp nháy canh ngã tư thay Chó. Chó về ngủ, mà ngủ cũng đeo còi.", "en": "Night now; the blinking amber light minds the crossroads for me. I go to bed, still wearing my whistle." },
+        { "weather": "rain", "vi": "Mưa trơn đường: phanh sớm, đi chậm! {name} mặc áo mưa sáng màu cho xe dễ nhìn thấy nhé.", "en": "Rain makes roads slippery: brake early, go slow! Wear a bright raincoat so drivers can see you, {name}." },
+        { "weather": "fine", "vi": "Nắng ráo, đường khô, mọi thứ chạy đều như kim đồng hồ trên tháp. Đúng ý Chó!", "en": "Sunny and dry, everything runs as smoothly as the hands on the tower clock. Just how I like it!" },
+        { "hearts": 2, "vi": "Chó kể nhé: có lần Chó thổi còi dừng một đàn vịt, cả đàn đứng nghiêm chào lại. Từ đó Chó quý vịt lắm.", "en": "True story: once I whistled a line of ducks to a stop, and they all stood to attention. I've adored ducks ever since." },
+        { "hearts": 3, "vi": "Với {name} thì Chó nói thật: tiếng còi to thế thôi chứ Chó hiền lắm, chưa phạt ai bao giờ.", "en": "With you I'll be honest, {name}: my whistle is loud, but I'm a softie. Never fined anyone in my life." },
+        { "hearts": 4, "vi": "Chó tặng {name} một chiếc còi dự phòng. Lúc nào lạc đường cứ thổi, Chó nghe tiếng là chạy tới ngay.", "en": "Here's one of my spare whistles, {name}. If you're ever lost, blow it, and I'll come running." },
+        { "about": "bac-thu-ngan-vui-ve", "vi": "Chủ nhật nào Chó cũng ra chợ phiên giúp Bác Thu Ngân Vui Vẻ xếp hàng người mua. Bác trả công bằng một đồng xu cổ.", "en": "Every Sunday I go to the fair market to help Bác Thu Ngân Vui Vẻ line up customers. He pays me in old coins." },
+        { "about": "bac-lai-xe-hai", "vi": "Bác Lái Xe Hải bóp kèn hai tiếng mỗi lần qua ngã tư, Chó thổi một tiếng còi dài đáp lại. Thế là đủ hiểu nhau.", "en": "Bác Lái Xe Hải honks twice whenever he passes, and I answer with one long whistle. That's all we need to understand each other." },
+        { "vi": "Ai tặng Chó một chiếc chuông xe đạp, Chó gắn lên mũ. Còi cho xe, chuông cho người đi bộ, công bằng!", "en": "Give me a bicycle bell and I'll fix it to my cap. Whistle for cars, bell for walkers, fair's fair!" },
+        { "vi": "Biết không, vạch kẻ đường cho người đi bộ có sọc trắng to để người lái nhìn thấy từ rất xa, cả lúc trời mưa.", "en": "Did you know zebra crossings have wide white stripes so drivers can see them from far away, even in the rain?" },
+        { "vi": "{name} biết qua đường phải nhìn bên nào trước không? Nhìn trái, nhìn phải, rồi nhìn trái lần nữa. Ba lần mới chắc!", "en": "Do you know which way to look before crossing, {name}? Left, right, then left again. Three looks to be sure!" },
+        { "vi": "Hôm nay Chó đếm được bốn trăm hai mươi xe qua ngã tư. Chiếc thứ bốn trăm hai mươi mốt là… một chiếc xe đẩy em bé.", "en": "Today I counted four hundred and twenty vehicles through the crossroads. Number four hundred and twenty-one was… a pram." }
+      ]
+    },
+    {
+      "id": "meo-xep-khoi",
+      "name": "Mèo Xếp Khối",
+      "role": { "vi": "Chú mèo kiến trúc sư của đài phun nước tượng mèo, xếp domino, chồng khối và lát gạch màu quanh bờ đài.", "en": "The architect cat of the cat-statue fountain, who lines up dominoes, stacks blocks and tiles colourful patterns round the rim." },
+      "personality": { "vi": "Tỉ mỉ, kiên nhẫn, hơi kiêu một chút, coi mỗi chuỗi domino là một công trình thế kỷ.", "en": "Meticulous, patient and a little proud, treating every domino chain like the building of the century." },
+      "voice": { "vi": "Nói chậm, rõ từng chữ như đặt từng viên gạch, hay mở đầu bằng «Meo. Nghe này…».", "en": "Speaks slowly, placing each word like a brick, often beginning with “Meow. Listen…”" },
+      "fear": { "vi": "Sợ hắt hơi: một cái hắt xì không đúng lúc là cả chuỗi domino ba trăm viên đổ sạch.", "en": "Afraid of sneezing: one badly timed sneeze and a three-hundred-domino chain topples." },
+      "dream": { "vi": "Xây một tòa tháp khối cao bằng tượng mèo giữa đài phun, để hai con mèo nhìn thẳng vào mắt nhau.", "en": "To build a block tower as tall as the fountain's cat statue, so the two cats can look each other in the eye." },
+      "secret": { "vi": "Bức tượng mèo giữa đài phun được tạc theo hình ông cố của Mèo, nhưng Mèo chưa kể với ai vì sợ bị bảo là khoe.", "en": "The fountain's cat statue was carved in the likeness of his great-grandfather, but he's never told anyone for fear of seeming boastful." },
+      "habit": { "vi": "Trước khi đặt viên đầu tiên, Mèo luôn đo khoảng cách bằng chính bộ ria của mình.", "en": "Before placing the first piece, he always measures the gap with his own whiskers." },
+      "likes": ["bang-pha-mau", "hop-qua-trung-tam", "nguoi-tuyet-mini"],
+      "lines": [
+        { "when": "morning", "vi": "Meo. Sáng sớm gió lặng, nước đài phun yên, là giờ vàng để xếp domino. {name} rón rén thôi nhé.", "en": "Meow. Early morning, no wind, calm fountain: golden hour for dominoes. Tiptoe please, {name}." },
+        { "when": "afternoon", "vi": "Trưa nắng, gạch men nóng ran. Mèo chuyển sang xếp khối dưới bóng tượng, công trình không được nghỉ.", "en": "Midday sun makes the tiles scorching, so I build blocks in the statue's shade. Construction never stops." },
+        { "when": "evening", "vi": "Chiều nào Mèo cũng cho đổ một chuỗi domino cho các bạn nhỏ xem. Tách tách tách, vui như mưa rơi.", "en": "Every evening I topple one domino chain for the children. Tick-tick-tick, cheerful as falling rain." },
+        { "when": "night", "vi": "Đêm, đài phun tắt nước. Mèo ngồi bên tượng vẽ bản thiết kế cho công trình ngày mai dưới ánh đèn đường.", "en": "At night the fountain switches off. I sit by the statue and sketch tomorrow's design under the streetlamp." },
+        { "weather": "rain", "vi": "Mưa thì domino trơn, khối gỗ ướt. Mèo trú dưới mái hiên vẽ thiết kế, kiến trúc sư chẳng bao giờ ngồi không.", "en": "Rain makes dominoes slippery and blocks soggy. I shelter under the eaves drawing plans; an architect never sits idle." },
+        { "weather": "fine", "vi": "Nắng đẹp, bóng tượng in rõ trên sân gạch. Mèo đo bóng để biết tượng cao bao nhiêu, mẹo của thợ xây đấy.", "en": "Fine sun puts a crisp statue shadow on the tiles. I measure it to work out the statue's height, a builder's trick." },
+        { "hearts": 2, "vi": "Meo, kể {name} nghe: chuỗi domino dài nhất của Mèo đổ trước khi xong, chỉ vì một chú bồ câu đậu nhầm.", "en": "Meow, here's a story: my longest domino chain fell before I finished, all because a pigeon landed on it." },
+        { "hearts": 3, "vi": "{name} là người duy nhất Mèo cho đặt viên domino cuối cùng. Viên cuối là viên quan trọng nhất.", "en": "You're the only one I let place the last domino, {name}. The last one matters most." },
+        { "hearts": 4, "vi": "Mèo tin {name}: tối nào Mèo cũng chúc tượng mèo ngủ ngon. Nghe hơi lạ, nhưng tượng có vẻ thích.", "en": "I trust you, {name}: every night I wish the cat statue good night. Sounds odd, but it seems to like it." },
+        { "about": "cao-tuyet-dieu-khac", "vi": "Cáo Tuyết Điêu Khắc trên núi gửi tranh tượng băng cho Mèo xem. Tượng băng đẹp thật, nhưng tan mất; khối của Mèo thì ở lại.", "en": "Cáo Tuyết Điêu Khắc up the mountain sends me drawings of his ice sculptures. Lovely, but ice melts; my blocks stay." },
+        { "about": "voi-keo-bong", "vi": "Voi Kẹo Bông hay mang kẹo sang. Mèo ăn xong rửa tay ba lần, tay dính kẹo là domino dính theo.", "en": "Voi Kẹo Bông often brings candy over. I eat it and wash my paws three times; sticky paws make sticky dominoes." },
+        { "vi": "Ai tặng Mèo một người tuyết nhỏ, Mèo sẽ xây cho nó một ngôi nhà khối có mái che nắng.", "en": "Give me a little snowman and I'll build it a block house with a sunshade roof." },
+        { "vi": "Biết không, một viên domino đổ được viên to hơn nó một chút. Xếp khéo thì viên tí hon cũng làm đổ được viên khổng lồ.", "en": "Did you know a domino can topple one slightly bigger than itself? Line them up right and a tiny one can fell a giant." },
+        { "vi": "{name} thích tháp cao chót vót hay cầu dài thật dài? Mèo đang phân vân công trình tuần sau.", "en": "Tall towers or long bridges, {name}? I can't decide next week's project." },
+        { "vi": "Xếp khối dạy Mèo một điều: viên dưới cùng chẳng ai nhìn thấy, nhưng thiếu nó thì cả tháp đổ.", "en": "Stacking blocks taught me one thing: nobody sees the bottom piece, but without it the whole tower falls." }
+      ]
+    }
+  ],
+  "relations": [
+    { "a": "bac-lai-xe-hai", "b": "cho-canh-sat-coi", "kind": "friend", "note": { "vi": "Ngày nào Chó cũng thổi còi cho xe Vàng Ươm qua ngã tư, còn Bác Hải bóp kèn hai tiếng chào lại.", "en": "Every day Chó whistles Vàng Ươm through the crossroads, and Bác Hải honks twice in reply." } },
+    { "a": "lan-con-ron-rang", "b": "voi-keo-bong", "kind": "friend", "note": { "vi": "Múa xong bài nào, Lân Con cũng sang chỗ Voi Kẹo Bông nhận một que kẹo thưởng.", "en": "After every dance Lân Con trots over to Voi Kẹo Bông for a reward stick of candy." } },
+    { "a": "meo-xep-khoi", "b": "lan-con-ron-rang", "kind": "rival", "note": { "vi": "Lân múa ngang qua là chuỗi domino của Mèo đổ sớm; hai bên giận nhau đúng năm phút rồi lại chơi.", "en": "When Lân dances past, Mèo's dominoes topple early; they sulk for exactly five minutes and then play again." } },
+    { "a": "voi-keo-bong", "b": "meo-xep-khoi", "kind": "neighbour", "note": { "vi": "Quầy kẹo của Voi nhìn thẳng ra đài phun nước của Mèo; sáng nào hai bên cũng vẫy chào nhau qua làn nước.", "en": "Voi's candy stall faces Mèo's fountain, and every morning they wave to each other across the spray." } },
+    { "a": "bac-lai-xe-hai", "b": "lan-con-ron-rang", "kind": "friend", "note": { "vi": "Mùa hội nào xe Vàng Ươm cũng chở đoàn lân của Lân Con đi biểu diễn khắp các trạm.", "en": "Every festival season, Vàng Ươm carries Lân Con's troupe to perform at every stop." } },
+    { "a": "bac-lai-xe-hai", "b": "su-tu-vang", "kind": "friend", "note": { "vi": "Hai người ngồi chung bàn hồi lớp Hai; giờ Sư Tử Vàng làm thầy hiệu trưởng, còn Bác Hải sáng nào cũng chở học trò tới cổng trường.", "en": "They shared a desk in second grade; now Sư Tử Vàng is headmaster, and Bác Hải drives pupils to his school gate every morning." } },
+    { "a": "cho-canh-sat-coi", "b": "bac-thu-ngan-vui-ve", "kind": "friend", "note": { "vi": "Chủ nhật nào Chó cũng ra chợ phiên giúp Bác Thu Ngân xếp hàng người mua; hai người cùng mê sự ngăn nắp.", "en": "Every Sunday Chó helps Bác Thu Ngân line up customers at the fair market; both adore good order." } }
+  ],
+  "arcs": [
+    {
+      "id": "bac-hai-xe-vang-uom",
+      "npc": "bac-lai-xe-hai",
+      "title": { "vi": "Chuyến cuối của xe Vàng Ươm", "en": "Vàng Ươm's Last Run" },
+      "teaser": { "vi": "Xe Vàng Ươm sắp về hưu rồi, {name} ạ. Bác muốn chuyến cuối của nó thật đáng nhớ.", "en": "Vàng Ươm is about to retire, {name}. I want its last run to be one to remember." },
+      "chapters": [
+        {
+          "quest": "yarn-bac-hai-xe-vang-uom-1",
+          "hearts": 0,
+          "letter": {
+            "from": "bac-lai-xe-hai",
+            "title": { "vi": "Kính coong từ bến xe", "en": "Ding-dong from the depot" },
+            "body": { "vi": "Hành khách {name} thân mến, tối nay bác ngồi trong xe Vàng Ươm thêm một lúc lâu. Mười hai năm, nó chưa trễ chuyến nào. Cảm ơn cháu đã trả đồ giúp bác, mai mình bàn chuyện chuyến cuối nhé.", "en": "Dear passenger {name}, I sat in Vàng Ươm a long while tonight. Twelve years and never once late. Thank you for returning the lost things; tomorrow let's plan its last run." },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-bac-hai-xe-vang-uom-2",
+          "hearts": 1,
+          "letter": {
+            "from": "su-tu-vang",
+            "title": { "vi": "Thư của thầy hiệu trưởng", "en": "From the headmaster" },
+            "body": { "vi": "Chào {name}, thầy là Sư Tử Vàng. Bác Hải là bạn cùng bàn của thầy hồi lớp Hai, hồi ấy bạn ấy đã mê xe buýt lắm rồi. Nghe nói có chuyến xe cuối, cả trường thầy xin góp một tràng vỗ tay thật to!", "en": "Hello {name}, this is Sư Tử Vàng. Bác Hải shared my desk in second grade, and even then he was mad about buses. I hear there's a last run; my whole school would like to give it a big round of applause!" },
+            "reward": { "coins": 20, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-bac-hai-xe-vang-uom-3",
+          "hearts": 2,
+          "letter": {
+            "from": "cho-canh-sat-coi",
+            "title": { "vi": "Báo cáo từ ngã tư", "en": "Report from the crossroads" },
+            "body": { "vi": "{name}, Chó giữ bí mật kỹ như giữ còi. Bác Hải hỏi sao ngã tư nhiều ruy băng thế, Chó bảo «đang tập huấn». Thứ Bảy này Chó sẽ thổi tiếng còi dài nhất đời cho xe Vàng Ươm.", "en": "{name}, I've kept the secret as tightly as my whistle. Bác Hải asked why the crossroads had so many ribbons; I said “training exercise”. This Saturday I'll blow the longest whistle of my life for Vàng Ươm." },
+            "reward": { "coins": 20, "xp": 20, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-bac-hai-xe-vang-uom-4",
+          "hearts": 3,
+          "letter": {
+            "from": "bac-lai-xe-hai",
+            "title": { "vi": "Chiếc vé vàng không hết hạn", "en": "A golden ticket that never expires" },
+            "body": { "vi": "{name} ơi, xe Vàng Ươm giờ là chòi chờ đẹp nhất quảng trường, ai ngồi cũng khen êm. Bác gửi cháu một chiếc vé vàng: đi xe mới của bác bao nhiêu chuyến cũng được, không bao giờ hết hạn.", "en": "{name}, Vàng Ươm is now the finest waiting shelter on the square, and everyone says its seats are comfy. Here's a golden ticket: ride my new bus as often as you like; it never expires." },
+            "reward": { "coins": 25, "xp": 25, "items": { "ve-xe-buyt-sao": 1 } }
+          }
+        }
+      ]
+    },
+    {
+      "id": "lan-con-dau-lan-giay",
+      "npc": "lan-con-ron-rang",
+      "title": { "vi": "Chiếc đầu lân giấy bồi", "en": "The Papier-Mâché Lion Head" },
+      "teaser": { "vi": "Tùng cắc tùng! Lân muốn múa mở màn đêm hội, mà đầu lân của đoàn nặng quá. {name} giúp Lân nghĩ cách nhé?", "en": "Boom-tak-boom! I want to open the festival, but the troupe's lion head is far too heavy. Will you help me think of something, {name}?" },
+      "chapters": [
+        {
+          "quest": "yarn-lan-con-dau-lan-giay-1",
+          "hearts": 0,
+          "letter": {
+            "from": "lan-con-ron-rang",
+            "title": { "vi": "Lân tập thêm một trăm lần", "en": "A hundred more practice leaps" },
+            "body": { "vi": "{name} ơi, tối nay Lân tập thêm một trăm lần bước bật, ngã có chín mươi chín lần thôi! Bác Trống bảo đợi năm sau, nhưng Lân không đợi được. Mai {name} ghé khu sự kiện nhé, Lân có ý này hay lắm.", "en": "{name}, I practised the leap a hundred more times tonight and only fell ninety-nine! Bác Trống says wait till next year, but I can't. Come to the events area tomorrow; I've got a brilliant idea." },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-lan-con-dau-lan-giay-2",
+          "hearts": 1,
+          "letter": {
+            "from": "voi-trong-hoi",
+            "title": { "vi": "Thư từ người đánh trống", "en": "From a fellow drummer" },
+            "body": { "vi": "Chào {name}, tớ là Voi Trống Hội ở trường. Nghe tin Lân Con tự làm đầu lân bằng giấy, tớ mừng rơn. Nhắn Lân giúp tớ: cứ múa theo nhịp tim mình, trống sẽ tự theo kịp!", "en": "Hello {name}, I'm Voi Trống Hội from the school. I was thrilled to hear Lân Con made a paper lion head. Tell Lân for me: dance to your own heartbeat, and the drum will catch up!" },
+            "reward": { "coins": 20, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-lan-con-dau-lan-giay-3",
+          "hearts": 2,
+          "letter": {
+            "from": "lan-con-ron-rang",
+            "title": { "vi": "Lân đã múa mở màn!", "en": "I opened the festival!" },
+            "body": { "vi": "{name} ơi! Đêm qua Lân múa mở màn, cả quảng trường vỗ tay thành trống. Có một lúc Lân hụt chân, nhưng tiếng vỗ tay vẫn giữ nhịp, Lân cười rồi múa tiếp. Lân gửi {name} quả bóng bay của đêm hội.", "en": "{name}! Last night I opened the festival and the whole square clapped like one big drum. I missed a step once, but the clapping kept the beat, so I laughed and danced on. Here's a balloon from the festival for you." },
+            "reward": { "coins": 25, "xp": 25, "items": { "bong-bong-bay-mau": 1 } }
+          }
+        }
+      ]
+    }
+  ]
+}

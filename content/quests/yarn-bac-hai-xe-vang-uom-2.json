@@ -1,0 +1,209 @@
+{
+  "id": "yarn-bac-hai-xe-vang-uom-2",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Chuyện của Bác Lái Xe Hải, chương 2: Ai lên chuyến cuối?",
+  "status": "active",
+  "category": "story",
+  "summary": "Bác Hải muốn chuyến cuối của xe Vàng Ươm chở đầy khách. {name} dán thông báo quanh quảng trường, vẽ tuyến xe, chọn các nhóm khách vừa đủ hai mươi ghế, rồi nghe Cô Vé Tóc Xoăn thì thầm một kế hoạch bí mật.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bác Lái Xe Hải, Cô Vé Tóc Xoăn",
+    "where": "Quảng trường: bến xe buýt, quanh quảng trường, chòi chờ tổ đội, quầy bán vé",
+    "goal": "Chuẩn bị chuyến cuối của xe Vàng Ươm: báo tin, vẽ tuyến và xếp đủ khách",
+    "play": "Dán thông báo ở ba bảng tin; vẽ tuyến xe buýt; chọn các nhóm khách vừa đủ 20 ghế; nghe kế hoạch của Cô Vé; quyết định giữ bí mật",
+    "learn": "Cộng nhiều số để được đúng một tổng",
+    "reward": "65 XP, 16 Xu, Skill XP Phép cộng",
+    "next": "Bí mật trang trí xe Vàng Ươm cho ngày chia tay"
+  },
+  "phases": {
+    "hook": "chuyen-cuoi-can-khach",
+    "explore": "dan-thong-bao",
+    "learn": "ve-tuyen-xe",
+    "challenge": "du-hai-muoi-ghe",
+    "decision": "giu-bi-mat",
+    "finale": "giu-bi-mat",
+    "reward": "ve-tuyen-xong",
+    "next": "ke-hoach-bi-mat"
+  },
+  "places": {
+    "bac-lai-xe-hai": "Bến xe buýt",
+    "dan-thong-bao": "Quanh quảng trường",
+    "st-bac-hai-xe-vang-uom-ban-do-tuyen": "Chòi chờ tổ đội",
+    "st-bac-hai-xe-vang-uom-hom-dang-ky": "Chòi chờ tổ đội",
+    "st-bac-hai-xe-vang-uom-co-ve": "Quầy bán vé"
+  },
+  "steps": [
+    {
+      "id": "chuyen-cuoi-can-khach",
+      "title": "Chuyến cuối cần khách",
+      "goTo": "Bác Lái Xe Hải đang cầm xấp giấy ở bến xe buýt",
+      "kind": "dialogue",
+      "target": "bac-lai-xe-hai",
+      "lines": [
+        { "speaker": "Bác Lái Xe Hải", "text": "Trạm kế tiếp: kế hoạch! Bác viết xong thông báo rồi, chuyến cuối của Vàng Ươm chạy sáng thứ Bảy." },
+        { "speaker": "Bác Lái Xe Hải", "text": "Bác chỉ sợ một điều: xe chạy chuyến cuối mà ghế trống trơn thì buồn lắm. {name} dán thông báo giúp bác nhé?" }
+      ],
+      "choices": [
+        { "text": "Cháu dán khắp quảng trường luôn!", "reply": "Kính coong! Ba bảng tin là đủ, ở đó ai đi qua cũng dừng lại đọc." },
+        { "text": "Chắc chắn sẽ đông khách lắm bác ạ.", "reply": "Mong là vậy. Mười hai năm rồi, bác chưa từng mời ai lên xe bằng thư cả." }
+      ],
+      "en": {
+        "title": "The last run needs passengers",
+        "goTo": "Bác Lái Xe Hải is holding a stack of papers at the bus stop",
+        "lines": [
+          "Next stop: planning! I've written the notices; Vàng Ươm's last run leaves on Saturday morning.",
+          "I'm only afraid of one thing: a last run with empty seats would be so sad. Will you put up the notices for me, {name}?"
+        ],
+        "choices": [
+          { "text": "I'll cover the whole square!", "reply": "Ding-dong! Three notice boards will do; everyone passing stops to read them." },
+          { "text": "I'm sure it'll be packed, Bác.", "reply": "I hope so. In twelve years I've never invited anyone aboard by letter." }
+        ]
+      }
+    },
+    {
+      "id": "dan-thong-bao",
+      "title": "Dán thông báo chuyến cuối",
+      "goTo": "Đi quanh quảng trường, dán thông báo lên ba bảng tin",
+      "kind": "search",
+      "targets": ["st-bac-hai-xe-vang-uom-tin-thap", "st-bac-hai-xe-vang-uom-tin-cau", "st-bac-hai-xe-vang-uom-tin-cua-hang"],
+      "en": {
+        "title": "Posting the last-run notices",
+        "goTo": "Walk around the square and pin the notice on three notice boards"
+      }
+    },
+    {
+      "id": "ve-tuyen-xe",
+      "title": "Vẽ tuyến cho chuyến cuối",
+      "goTo": "Tới chòi chờ tổ đội, trải tấm bản đồ tuyến xe ra bàn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-bac-hai-xe-vang-uom-ban-do-tuyen",
+      "prompt": "Vẽ tuyến cho xe Vàng Ươm đón khách ở mọi trạm, ghi được ba mươi điểm nhé!",
+      "game": "bus-lines",
+      "goal": 30,
+      "en": {
+        "title": "Mapping the last route",
+        "goTo": "Go to the team shelter and spread the route map on the table",
+        "prompt": "Draw Vàng Ươm's routes so it picks up passengers at every stop, and score thirty points!"
+      }
+    },
+    {
+      "id": "du-hai-muoi-ghe",
+      "title": "Vừa đủ hai mươi ghế",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-bac-hai-xe-vang-uom-hom-dang-ky",
+      "skill": "phep-cong",
+      "prompt": "Hòm phiếu có bốn nhóm xin lên chuyến cuối. Xe Vàng Ươm có đúng 20 ghế, bác Hải muốn ghế nào cũng có người mà không ai phải đứng. Chọn những nhóm cộng lại vừa đủ 20 người:",
+      "choices": [
+        { "id": "mua-lan", "text": "Lớp múa lân nhí: 8 người" },
+        { "id": "trong-hoi", "text": "Đội trống hội: 5 người" },
+        { "id": "ba-di-cho", "text": "Hội các bà đi chợ sớm: 7 người" },
+        { "id": "xiec-nhi", "text": "Đoàn xiếc nhí: 9 người" }
+      ],
+      "answer": { "choices": ["mua-lan", "trong-hoi", "ba-di-cho"] },
+      "support": {
+        "guide": ["Thử cộng từng cặp, từng bộ ba nhóm.", "Tổng phải đúng 20: thiếu thì ghế trống, thừa thì có người phải đứng."],
+        "hint": "8 + 5 + 7 = ?",
+        "answer": { "text": "Ba nhóm: múa lân, trống hội và các bà đi chợ", "explanation": "8 + 5 + 7 = 20, vừa đủ hai mươi ghế. Nếu có đoàn xiếc 9 người thì tổng luôn khác 20." },
+        "en": {
+          "guide": ["Try adding pairs and groups of three.", "The total must be exactly 20: too few leaves seats empty, too many leaves someone standing."],
+          "hint": "8 + 5 + 7 = ?",
+          "answer": { "text": "Three groups: lion dance, festival drums and the market grannies", "explanation": "8 + 5 + 7 = 20, exactly twenty seats. Any choice with the 9-person circus never makes 20." }
+        }
+      },
+      "feedback": {
+        "right": ["Hai mươi ghế, hai mươi người, không ai đứng, không ghế nào trống!", "{name} cộng khéo như người bán vé lâu năm.", "Kính coong! Danh sách khách chuyến cuối đã đủ."],
+        "wrong": ["Ối, thế thì có bạn phải đứng suốt đường mất, {name} cộng lại nhé.", "Còn ghế trống kìa, thêm một nhóm nữa xem nào.", "Thử bỏ đoàn xiếc ra rồi cộng ba nhóm còn lại xem có tròn hai mươi không."],
+        "en": {
+          "right": ["Twenty seats, twenty people, nobody standing and no seat empty!", "You add like a ticket seller with years on the job, {name}.", "Ding-dong! The passenger list for the last run is full."],
+          "wrong": ["Oops, someone would have to stand the whole way, {name}; add again.", "There are still empty seats; try adding one more group.", "Leave out the circus and add the other three; do they make exactly twenty?"]
+        }
+      },
+      "en": {
+        "title": "Exactly twenty seats",
+        "prompt": "Four groups put their names in the box for the last run. Vàng Ươm has exactly 20 seats, and Bác Hải wants every seat filled with nobody standing. Pick the groups that add up to exactly 20 people:",
+        "choices": ["Junior lion dancers: 8 people", "Festival drum team: 5 people", "Early-market grannies: 7 people", "Junior circus troupe: 9 people"]
+      }
+    },
+    {
+      "id": "co-ve-thi-tham",
+      "title": "Cô Vé thì thầm",
+      "goTo": "Cô Vé Tóc Xoăn vẫy {name} ra quầy bán vé",
+      "kind": "dialogue",
+      "target": "st-bac-hai-xe-vang-uom-co-ve",
+      "lines": [
+        { "speaker": "Cô Vé Tóc Xoăn", "text": "Suỵt, lại đây! Cả quảng trường đang bàn nhau làm một bữa chia tay thật to cho xe Vàng Ươm." },
+        { "speaker": "Cô Vé Tóc Xoăn", "text": "Ruy băng, bóng bay, băng rôn, đủ cả. Có điều bác Hải không được biết trước đâu nhé!" }
+      ],
+      "choices": [
+        { "text": "Hay quá! Cháu giúp được gì ạ?", "reply": "Nhiều lắm! Nhưng việc đầu tiên là giữ kín miệng đã." }
+      ],
+      "en": {
+        "title": "Cô Vé whispers",
+        "goTo": "Cô Vé Tóc Xoăn waves {name} over to the ticket counter",
+        "lines": [
+          "Psst, come here! The whole square is planning a big farewell party for Vàng Ươm.",
+          "Ribbons, balloons, banners, the lot. But Bác Hải mustn't find out beforehand!"
+        ],
+        "choices": [
+          { "text": "Brilliant! How can I help?", "reply": "In lots of ways! But the first job is keeping your lips sealed." }
+        ]
+      }
+    },
+    {
+      "id": "giu-bi-mat",
+      "title": "Giữ bí mật hay không?",
+      "kind": "decision",
+      "target": "st-bac-hai-xe-vang-uom-co-ve",
+      "speaker": "Cô Vé Tóc Xoăn",
+      "prompt": "Cô Vé nhìn {name} chờ đợi: «Cháu hứa giữ bí mật tới thứ Bảy chứ?»",
+      "choices": [
+        { "id": "giu-kin", "text": "Cháu hứa, kín như két sắt!", "consequence": "Cô Vé đập tay với {name}: «Từ giờ cháu là thành viên đội bí mật số một.»" },
+        { "id": "mat-ma", "text": "Mình đặt một mật mã cho đội đi cô", "consequence": "Cô Vé nghĩ một lúc rồi cười: «Mật mã là «kính coong ngược»: coong kính! Ai nói đúng là người trong đội.»" },
+        { "id": "lo-lo", "text": "Cháu sợ lỡ miệng mất, cháu hay cười lắm", "consequence": "Cô Vé dúi cho {name} một viên kẹo: «Ngậm kẹo vào là khỏi lỡ miệng. Cô tin cháu làm được.»" }
+      ],
+      "en": {
+        "title": "Keep the secret or not?",
+        "prompt": "Cô Vé looks at {name} expectantly: “Do you promise to keep it secret until Saturday?”",
+        "choices": [
+          { "text": "I promise, sealed like a safe!", "consequence": "Cô Vé high-fives {name}: “From now on you're secret agent number one.”" },
+          { "text": "Let's give the team a password", "consequence": "Cô Vé thinks, then grins: “The password is ding-dong backwards: dong-ding! Whoever says it is on the team.”" },
+          { "text": "I'm afraid I'll blurt it out; I giggle a lot", "consequence": "Cô Vé slips {name} a sweet: “Keep a sweet in your mouth and you can't blurt. I know you can do it.”" }
+        ]
+      }
+    },
+    {
+      "id": "ve-tuyen-xong",
+      "title": "Tuyến xe đã vẽ xong",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tấm bản đồ tuyến chuyến cuối dán ngay ngắn trong chòi chờ. Bác Hải không hay biết gì, chỉ khen {name} vẽ tuyến đẹp như tranh.",
+      "en": {
+        "title": "The route is drawn",
+        "text": "The last-run route map hangs neatly in the shelter. Bác Hải suspects nothing and just praises {name} for drawing routes as pretty as a picture."
+      }
+    },
+    {
+      "id": "ke-hoach-bi-mat",
+      "title": "Kế hoạch bí mật",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đội bí mật của Cô Vé cần người gom đồ trang trí và trang hoàng xe Vàng Ươm mà không để bác Hải phát hiện. {name} đã sẵn sàng làm điệp viên chưa?",
+      "en": {
+        "title": "The secret plan",
+        "text": "Cô Vé's secret team needs someone to gather decorations and dress up Vàng Ươm without Bác Hải noticing. Ready to be a secret agent, {name}?"
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": { "phep-cong": 1 }
+  },
+  "en": {
+    "title": "Bác Lái Xe Hải's story, chapter 2: Who rides the last run?",
+    "summary": "Bác Hải wants Vàng Ươm's last run to be full. {name} posts notices round the square, maps the route, picks passenger groups that fill exactly twenty seats, and then hears Cô Vé Tóc Xoăn whisper a secret plan."
+  }
+}

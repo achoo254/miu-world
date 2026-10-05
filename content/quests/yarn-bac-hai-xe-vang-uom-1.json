@@ -1,0 +1,251 @@
+{
+  "id": "yarn-bac-hai-xe-vang-uom-1",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Chuyện của Bác Lái Xe Hải, chương 1: Hộp đồ để quên",
+  "status": "active",
+  "category": "story",
+  "summary": "Hộp đồ để quên trên xe Vàng Ươm đã đầy ắp. {name} tìm ba món đồ, đọc sổ ghi chuyến của bác Hải để biết của ai, xếp các trạm theo giờ xe chạy rồi mang trả. Ở tháp đồng hồ, một bà cụ kể một tin khiến bác Hải lặng đi.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bác Lái Xe Hải, Bà Cụ Đội Nón Lá",
+    "where": "Quảng trường: bến xe buýt, xe Vàng Ươm, bảng giờ xe, tháp đồng hồ",
+    "goal": "Trả đồ để quên về đúng chủ và biết chuyện xe Vàng Ươm sắp về hưu",
+    "play": "Tìm đồ để quên trên xe; đọc sổ ghi chuyến; xếp các trạm theo giờ; trả quạt cho bà cụ; chọn cách động viên bác Hải",
+    "learn": "Đọc hiểu ghi chép, so sánh và sắp xếp giờ",
+    "reward": "60 XP, 15 Xu, Skill XP Đọc hiểu, Xem đồng hồ",
+    "next": "Lên kế hoạch cho chuyến cuối của xe Vàng Ươm"
+  },
+  "phases": {
+    "hook": "hop-do-day-ap",
+    "explore": "tim-do-tren-xe",
+    "learn": "so-ghi-chuyen",
+    "challenge": "xep-tram-theo-gio",
+    "decision": "tin-ve-huu",
+    "finale": "tin-ve-huu",
+    "reward": "kinh-coong-cam-on",
+    "next": "len-ke-hoach"
+  },
+  "places": {
+    "bac-lai-xe-hai": "Bến xe buýt",
+    "tim-do-tren-xe": "Xe Vàng Ươm",
+    "st-bac-hai-xe-vang-uom-quat-giay": "Xe Vàng Ươm",
+    "st-bac-hai-xe-vang-uom-khan-len": "Xe Vàng Ươm",
+    "st-bac-hai-xe-vang-uom-bong-ro": "Xe Vàng Ươm",
+    "st-bac-hai-xe-vang-uom-so-ghi-chuyen": "Xe Vàng Ươm",
+    "st-bac-hai-xe-vang-uom-bang-gio": "Bảng giờ xe",
+    "st-bac-hai-xe-vang-uom-ba-cu-non": "Tháp đồng hồ"
+  },
+  "steps": [
+    {
+      "id": "hop-do-day-ap",
+      "title": "Hộp đồ để quên đầy ắp",
+      "goTo": "Ra bến xe buýt bên quảng trường gặp Bác Lái Xe Hải",
+      "kind": "dialogue",
+      "target": "bac-lai-xe-hai",
+      "lines": [
+        { "speaker": "Bác Lái Xe Hải", "text": "Kính coong! Chào hành khách {name}. Tuần này khách để quên nhiều đồ quá, hộp trên xe Vàng Ươm sắp tràn ra rồi." },
+        { "speaker": "Bác Lái Xe Hải", "text": "Bác phải chạy chuyến, không kịp đi trả. Cháu lên xe tìm giúp bác mấy món, sổ ghi chuyến để ngay ghế lái đấy." }
+      ],
+      "choices": [
+        { "text": "Cháu lên xe ngay ạ!", "reply": "Tốt lắm. Nhớ nhìn cả dưới gầm ghế, đồ hay lăn xuống đó lắm." },
+        { "text": "Sao bác nhớ được khách nào ngồi đâu?", "reply": "Mười hai năm lái xe, nhìn chiếc mũ là bác đoán ra cả nhà người ta!" }
+      ],
+      "en": {
+        "title": "An overflowing lost-property box",
+        "goTo": "Go to the bus stop by the square to meet Bác Lái Xe Hải",
+        "lines": [
+          "Ding-dong! Hello, passenger {name}. People forgot so many things this week that the box on Vàng Ươm is about to overflow.",
+          "I have runs to drive and no time to return them. Hop on and find a few for me; the trip log is right on the driver's seat."
+        ],
+        "choices": [
+          { "text": "I'll hop on right away!", "reply": "Good. Look under the seats too; things love to roll down there." },
+          { "text": "How do you remember who sat where?", "reply": "Twelve years of driving: show me a hat and I'll guess the whole family!" }
+        ]
+      }
+    },
+    {
+      "id": "tim-do-tren-xe",
+      "title": "Đồ để quên trên xe",
+      "goTo": "Lên xe Vàng Ươm đỗ cạnh bến, tìm đồ khách để quên",
+      "kind": "find-object",
+      "prompt": "Đọc lời tả của bác Hải rồi tìm từng món đồ để quên:",
+      "skill": "doc-hieu",
+      "items": [
+        { "id": "quat-giay", "name": "Chiếc quạt giấy hoa đào", "clue": "Gấp lại thì bằng bàn tay, mở ra thấy cả một cành hoa đào hồng.", "target": "st-bac-hai-xe-vang-uom-quat-giay" },
+        { "id": "khan-len", "name": "Chiếc khăn len đỏ", "clue": "Mềm, dài, đỏ như quả ớt chín, còn thơm mùi nước xả vải.", "target": "st-bac-hai-xe-vang-uom-khan-len" },
+        { "id": "bong-ro", "name": "Quả bóng rổ nhỏ", "clue": "Tròn, màu cam, có những đường kẻ đen, lăn tít dưới ghế cuối.", "target": "st-bac-hai-xe-vang-uom-bong-ro" }
+      ],
+      "en": {
+        "title": "Things left on the bus",
+        "goTo": "Board Vàng Ươm, parked by the stop, and look for what passengers left behind",
+        "prompt": "Read Bác Hải's descriptions and find each forgotten thing:",
+        "items": [
+          { "name": "The peach-blossom paper fan", "clue": "Folded it's the size of a hand; open it and a whole pink peach branch appears." },
+          { "name": "The red woolly scarf", "clue": "Soft, long and red as a ripe chilli, still smelling of fabric softener." },
+          { "name": "The little basketball", "clue": "Round and orange with black lines, rolled all the way under the back seat." }
+        ]
+      }
+    },
+    {
+      "id": "so-ghi-chuyen",
+      "title": "Sổ ghi chuyến của bác Hải",
+      "kind": "read",
+      "target": "st-bac-hai-xe-vang-uom-so-ghi-chuyen",
+      "skill": "doc-hieu",
+      "text": "Thứ Hai\n– Chuyến 7 giờ: bà cụ đội nón lá ngồi ghế đầu, phe phẩy quạt suốt đường, xuống ở trạm tháp đồng hồ.\n– Chuyến 9 giờ: cậu bé ôm bóng rổ ngủ quên ở ghế cuối, xuống ở trạm đầu cầu.\n– Chuyến 5 giờ chiều: cô quàng khăn len đỏ, xuống ở trạm cổng dịch chuyển.",
+      "question": "Theo sổ ghi chuyến, chiếc quạt giấy là của ai?",
+      "choices": [
+        { "id": "a", "text": "Bà cụ đội nón lá" },
+        { "id": "b", "text": "Cậu bé ôm bóng rổ" },
+        { "id": "c", "text": "Cô quàng khăn len đỏ" }
+      ],
+      "answer": { "choice": "a" },
+      "support": {
+        "guide": ["Tìm dòng có chữ «quạt».", "Dòng ấy nói về người nào?"],
+        "hint": "Người này ngồi ghế đầu trên chuyến sớm nhất.",
+        "answer": { "text": "Của bà cụ ngồi ghế đầu chuyến 7 giờ", "explanation": "Sổ ghi: chuyến 7 giờ, bà cụ đội nón lá phe phẩy quạt suốt đường rồi xuống ở trạm tháp đồng hồ." },
+        "en": {
+          "guide": ["Find the line with the word “fan”.", "Which person is that line about?"],
+          "hint": "This person sat in the front seat on the earliest run.",
+          "answer": { "text": "The front-seat lady from the 7 o'clock run", "explanation": "The log says: on the 7 o'clock run, the old lady in the conical hat fanned herself all the way and got off at the clock tower stop." }
+        }
+      },
+      "feedback": {
+        "right": ["Kính coong! Quạt của bà cụ, trả ở trạm tháp đồng hồ là chuẩn.", "{name} đọc sổ còn nhanh hơn bác đọc biển trạm.", "Đúng người đúng đồ, bác Hải gật gù hài lòng."],
+        "wrong": ["Cậu bé ấy ôm bóng chứ đâu cầm quạt, {name} đọc lại dòng chuyến 9 giờ nhé.", "Cô quàng khăn để quên khăn, còn quạt là của người khác cơ.", "Tìm chữ «quạt» trong sổ trước, rồi xem câu ấy kể về ai."],
+        "en": {
+          "right": ["Ding-dong! The fan belongs to the old lady; the clock tower stop it is.", "You read my log faster than I read stop signs, {name}.", "Right person, right thing, and Bác Hải nods with satisfaction."],
+          "wrong": ["That boy was hugging a ball, not a fan, {name}; reread the 9 o'clock line.", "The scarf lady forgot her scarf; the fan belongs to someone else.", "Find the word “fan” in the log first, then see who that line is about."]
+        }
+      },
+      "en": {
+        "title": "Bác Hải's trip log",
+        "text": "Monday\n– 7 o'clock run: an old lady in a conical hat sat in the front seat, fanning herself all the way, and got off at the clock tower stop.\n– 9 o'clock run: a boy hugging a basketball fell asleep on the back seat and got off at the bridge stop.\n– 5 o'clock in the afternoon: a lady in a red woolly scarf got off at the gateway stop.",
+        "question": "According to the trip log, who owns the paper fan?",
+        "choices": ["The old lady in the conical hat", "The boy hugging a basketball", "The lady in the red woolly scarf"]
+      }
+    },
+    {
+      "id": "xep-tram-theo-gio",
+      "title": "Xếp trạm theo giờ xe chạy",
+      "goTo": "Tới bảng giờ xe cạnh bến để lên lộ trình trả đồ",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-bac-hai-xe-vang-uom-bang-gio",
+      "skill": "xem-dong-ho",
+      "prompt": "Mình sẽ đi theo đúng đường xe Vàng Ươm chạy buổi sáng. Xếp các trạm theo giờ xe tới, từ sớm nhất đến muộn nhất:",
+      "items": [
+        { "id": "tram-cau", "label": "Trạm đầu cầu: 7 giờ 30" },
+        { "id": "ben", "label": "Bến quảng trường: 7 giờ" },
+        { "id": "tram-cong", "label": "Trạm cổng dịch chuyển: 7 giờ 45" },
+        { "id": "tram-thap", "label": "Trạm tháp đồng hồ: 7 giờ 15" }
+      ],
+      "answer": { "order": ["ben", "tram-thap", "tram-cau", "tram-cong"] },
+      "support": {
+        "guide": ["Các trạm đều trong giờ thứ bảy, nên chỉ cần so số phút.", "Trạm nào 0 phút là sớm nhất, 45 phút là muộn nhất."],
+        "hint": "7 giờ → 7 giờ 15 → 7 giờ 30 → 7 giờ 45.",
+        "answer": { "text": "Bến quảng trường → tháp đồng hồ → đầu cầu → cổng dịch chuyển", "explanation": "Cùng là 7 giờ, so số phút: 0 < 15 < 30 < 45, nên xe qua bến, rồi tháp đồng hồ, đầu cầu, cuối cùng là cổng dịch chuyển." },
+        "en": {
+          "guide": ["Every stop is within the 7 o'clock hour, so just compare the minutes.", "The stop at 0 minutes is earliest, the one at 45 is latest."],
+          "hint": "7:00 → 7:15 → 7:30 → 7:45.",
+          "answer": { "text": "Square depot → clock tower → bridge → gateway", "explanation": "All in the 7 o'clock hour, so compare minutes: 0 < 15 < 30 < 45. The bus passes the depot, then the clock tower, the bridge and finally the gateway." }
+        }
+      },
+      "feedback": {
+        "right": ["Trạm kế tiếp… đúng như bảng giờ! Bác Hải chắc khen cháu làm phụ xe được rồi.", "{name} xếp giờ gọn gàng như kim đồng hồ chạy vòng.", "Lộ trình chuẩn chỉnh, không phải chạy lòng vòng tốn sức."],
+        "wrong": ["Xe Vàng Ươm không chạy lùi đâu, {name} so lại số phút nhé.", "Bảy giờ đúng là sớm hơn bảy giờ mười lăm đấy.", "Thử xếp trạm có ít phút nhất lên đầu, nhiều phút nhất xuống cuối xem."],
+        "en": {
+          "right": ["Next stop… exactly as the timetable says! Bác Hải would hire you as his conductor.", "You ordered those times as neatly as a clock hand going round, {name}.", "A perfect route, no wasted loops around the square."],
+          "wrong": ["Vàng Ươm never drives backwards, {name}; compare the minutes again.", "Seven o'clock sharp comes before a quarter past seven.", "Try putting the stop with the fewest minutes first and the most minutes last."]
+        }
+      },
+      "en": {
+        "title": "Ordering stops by time",
+        "goTo": "Go to the bus timetable by the stop to plan the return route",
+        "prompt": "We'll follow the route Vàng Ươm drives each morning. Put the stops in order of arrival, earliest to latest:",
+        "items": ["Bridge stop: 7:30", "Square depot: 7:00", "Gateway stop: 7:45", "Clock tower stop: 7:15"]
+      }
+    },
+    {
+      "id": "tra-quat-ba-cu",
+      "title": "Trả quạt cho bà cụ",
+      "goTo": "Mang chiếc quạt tới tháp đồng hồ, bà cụ đội nón lá đang ngồi nghỉ",
+      "kind": "dialogue",
+      "target": "st-bac-hai-xe-vang-uom-ba-cu-non",
+      "lines": [
+        { "speaker": "Bà Cụ Đội Nón Lá", "text": "Ôi cái quạt của bà! Cảm ơn cháu, bà tưởng nó theo gió bay tận đâu rồi." },
+        { "speaker": "Bà Cụ Đội Nón Lá", "text": "Mà cháu ơi, bà nghe phong thanh cuối tuần này xe Vàng Ươm về hưu đấy. Bác Hải chắc buồn lắm, bà đi xe ấy từ hồi nó còn mới tinh." }
+      ],
+      "choices": [
+        { "text": "Xe Vàng Ươm về hưu ạ? Cháu chưa nghe bác kể!", "reply": "Bác ấy thương xe như con, chắc không nỡ nói ra. Cháu về hỏi khéo xem." }
+      ],
+      "en": {
+        "title": "Returning the old lady's fan",
+        "goTo": "Take the fan to the clock tower, where the old lady in the conical hat is resting",
+        "lines": [
+          "Oh, my fan! Thank you, dear, I thought the wind had carried it off for good.",
+          "But listen, I heard that Vàng Ươm is retiring this weekend. Bác Hải must be heartbroken; I've ridden that bus since it was brand new."
+        ],
+        "choices": [
+          { "text": "Vàng Ươm is retiring? He never told me!", "reply": "He loves that bus like his own child, so he can't bring himself to say it. Ask him gently." }
+        ]
+      }
+    },
+    {
+      "id": "tin-ve-huu",
+      "title": "Tin xe Vàng Ươm về hưu",
+      "goTo": "Quay về bến xe buýt hỏi chuyện bác Hải",
+      "kind": "decision",
+      "target": "bac-lai-xe-hai",
+      "speaker": "Bác Lái Xe Hải",
+      "prompt": "Bác Hải lấy trong túi ra lá thư báo tin, cười mà mắt đỏ hoe: «Ừ, thứ Bảy này Vàng Ươm nghỉ. Thành phố cấp cho bác xe mới.» {name} nói gì với bác?",
+      "choices": [
+        { "id": "ke-chuyen", "text": "Kể cháu nghe chuyến đầu tiên của Vàng Ươm đi bác", "consequence": "Bác Hải kể say sưa: chuyến đầu chỉ có ba hành khách, một bà cụ, một con gà và một chiếc đàn bầu. Kể xong bác cười thành tiếng." },
+        { "id": "chuyen-cuoi", "text": "Mình làm cho chuyến cuối thật đáng nhớ nhé!", "consequence": "Bác Hải gõ tay lên vô lăng: «Phải đấy! Không buồn nữa, ta lên kế hoạch thôi.»" },
+        { "id": "om-xe", "text": "Cháu ra vỗ vào mũi xe chào Vàng Ươm một cái", "consequence": "Cháu vỗ nhẹ lên mũi xe vàng, bác Hải bấm còi «bíp» một tiếng như xe đang đáp lời. Hai bác cháu cùng bật cười." }
+      ],
+      "en": {
+        "title": "News of Vàng Ươm's retirement",
+        "goTo": "Head back to the bus stop and ask Bác Hải about it",
+        "prompt": "Bác Hải pulls the notice from his pocket, smiling with reddened eyes: “Yes, Vàng Ươm stops this Saturday. The city is giving me a new bus.” What do you say?",
+        "choices": [
+          { "text": "Tell me about Vàng Ươm's very first run", "consequence": "Bác Hải tells it with relish: the first run had only three passengers, an old lady, a hen and a one-stringed zither. By the end he's laughing out loud." },
+          { "text": "Let's make the last run truly memorable!", "consequence": "Bác Hải drums on the steering wheel: “Quite right! No more moping; let's start planning.”" },
+          { "text": "Go and pat Vàng Ươm's nose to say hello", "consequence": "You pat the yellow bonnet, and Bác Hải taps the horn, “beep”, as if the bus were answering. You both burst out laughing." }
+        ]
+      }
+    },
+    {
+      "id": "kinh-coong-cam-on",
+      "title": "Kính coong cảm ơn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác Hải bấm vé cho {name} một lỗ hình ngôi sao: «Hành khách danh dự của xe Vàng Ươm, đi chuyến nào cũng được.»",
+      "en": {
+        "title": "A thank-you ding-dong",
+        "text": "Bác Hải punches a star-shaped hole in {name}'s ticket: “Honorary passenger of Vàng Ươm, welcome on any run.”"
+      }
+    },
+    {
+      "id": "len-ke-hoach",
+      "title": "Kế hoạch cho chuyến cuối",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Còn mấy ngày nữa là tới thứ Bảy. Mai {name} giúp bác Hải báo tin cho cả quảng trường và vẽ tuyến đường cho chuyến cuối của xe Vàng Ươm.",
+      "en": {
+        "title": "Planning the last run",
+        "text": "Saturday is only a few days away. Tomorrow {name} helps Bác Hải tell the whole square and map the route for Vàng Ươm's last run."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": { "doc-hieu": 1, "xem-dong-ho": 1 }
+  },
+  "en": {
+    "title": "Bác Lái Xe Hải's story, chapter 1: The lost-property box",
+    "summary": "The lost-property box on Vàng Ươm is overflowing. {name} finds three forgotten things, reads Bác Hải's trip log to learn whose they are, orders the stops by time and returns them. At the clock tower, an old lady shares news that leaves Bác Hải quiet."
+  }
+}

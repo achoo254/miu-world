@@ -1,0 +1,228 @@
+{
+  "id": "yarn-bac-hai-xe-vang-uom-3",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Chuyện của Bác Lái Xe Hải, chương 3: Điệp viên trang trí",
+  "status": "active",
+  "category": "story",
+  "summary": "Đội bí mật của Cô Vé bắt tay vào việc. {name} gom ruy băng, bóng bay và màu vẽ, treo dây bóng lên xe Vàng Ươm theo đúng quy luật, tính số năm cho tấm băng rôn, và phải nghĩ nhanh khi bác Hải suýt phát hiện.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bác Lái Xe Hải, Cô Vé Tóc Xoăn",
+    "where": "Quảng trường: bến xe buýt, trước cửa hàng, xe Vàng Ươm, quầy bán vé",
+    "goal": "Bí mật trang trí xe Vàng Ươm cho ngày chia tay mà bác Hải không hay biết",
+    "play": "Tìm đồ trang trí; treo dây bóng theo quy luật; tính số năm bác Hải lái xe; chọn cách đánh lạc hướng bác Hải",
+    "learn": "Tìm quy luật lặp lại, phép trừ trong phạm vi 20",
+    "reward": "70 XP, 18 Xu, Skill XP Logic, Phép trừ",
+    "next": "Chuyến cuối của xe Vàng Ươm sáng thứ Bảy"
+  },
+  "phases": {
+    "hook": "bac-hai-di-rua-xe",
+    "explore": "gom-do-trang-tri",
+    "learn": "day-bong-quy-luat",
+    "challenge": "so-nam-bac-lai",
+    "decision": "suyt-lo-bi-mat",
+    "finale": "suyt-lo-bi-mat",
+    "reward": "xe-vang-lung-linh",
+    "next": "sang-thu-bay"
+  },
+  "places": {
+    "bac-lai-xe-hai": "Bến xe buýt",
+    "gom-do-trang-tri": "Trước cửa hàng",
+    "st-bac-hai-xe-vang-uom-ruy-bang": "Trước cửa hàng",
+    "st-bac-hai-xe-vang-uom-bong-bay": "Trước cửa hàng",
+    "st-bac-hai-xe-vang-uom-hop-mau": "Trước cửa hàng",
+    "st-bac-hai-xe-vang-uom-day-co": "Xe Vàng Ươm",
+    "st-bac-hai-xe-vang-uom-co-ve": "Quầy bán vé"
+  },
+  "steps": [
+    {
+      "id": "bac-hai-di-rua-xe",
+      "title": "Bác Hải định rửa xe",
+      "goTo": "Ghé bến xe buýt, bác Hải đang xắn tay áo",
+      "kind": "dialogue",
+      "target": "bac-lai-xe-hai",
+      "lines": [
+        { "speaker": "Bác Lái Xe Hải", "text": "Chào hành khách {name}! Chiều nay bác định rửa xe Vàng Ươm thật sạch, kỳ cả bánh xe cho bóng loáng." },
+        { "speaker": "Bác Lái Xe Hải", "text": "Mà lạ nhỉ, sáng giờ ai gặp bác cũng cười tủm tỉm. Mặt bác dính mực à?" }
+      ],
+      "choices": [
+        { "text": "Mặt bác sạch mà! Chắc tại trời đẹp thôi ạ.", "reply": "Ừ nhỉ, trời đẹp thật. Thôi bác đi lấy xô nước đây." },
+        { "text": "Bác cứ nghỉ trưa đã, rửa xe để lát nữa!", "reply": "Cháu nói phải, bác chợp mắt mười phút. Mười phút thôi đấy!" }
+      ],
+      "en": {
+        "title": "Bác Hải plans a car wash",
+        "goTo": "Stop by the bus stop, where Bác Hải is rolling up his sleeves",
+        "lines": [
+          "Hello, passenger {name}! This afternoon I'll wash Vàng Ươm spotless, scrub the wheels till they shine.",
+          "Funny thing, though: everyone I've met today is smirking. Have I got ink on my face?"
+        ],
+        "choices": [
+          { "text": "Your face is clean! It must be the lovely weather.", "reply": "Ah, true, it is lovely. Right, off to fetch a bucket." },
+          { "text": "Take a nap first and wash the bus later!", "reply": "Good thinking, I'll shut my eyes for ten minutes. Just ten, mind!" }
+        ]
+      }
+    },
+    {
+      "id": "gom-do-trang-tri",
+      "title": "Gom đồ trang trí",
+      "goTo": "Chạy ra trước cửa hàng lấy đồ trang trí Cô Vé gửi sẵn",
+      "kind": "find-object",
+      "prompt": "Cô Vé để đồ ở trước cửa hàng, mỗi món một chỗ. Đọc lời dặn rồi tìm từng món:",
+      "skill": "doc-hieu",
+      "items": [
+        { "id": "ruy-bang", "name": "Cuộn ruy băng vàng", "clue": "Vàng như màu xe Vàng Ươm, cuộn tròn lại to bằng nắm tay.", "target": "st-bac-hai-xe-vang-uom-ruy-bang" },
+        { "id": "bong-bay", "name": "Chùm bóng bay xanh", "clue": "Buộc chung một dây, cứ chực bay lên mái hiên cửa hàng.", "target": "st-bac-hai-xe-vang-uom-bong-bay" },
+        { "id": "hop-mau", "name": "Hộp màu vẽ băng rôn", "clue": "Có lỗ xỏ ngón tay cái và những vệt màu loang như cầu vồng.", "target": "st-bac-hai-xe-vang-uom-hop-mau" }
+      ],
+      "en": {
+        "title": "Gathering decorations",
+        "goTo": "Hurry to the shop front for the decorations Cô Vé left ready",
+        "prompt": "Cô Vé left each thing in a different spot in front of the shops. Read her notes and find them:",
+        "items": [
+          { "name": "The roll of yellow ribbon", "clue": "Yellow as Vàng Ươm itself, rolled up the size of a fist." },
+          { "name": "The bunch of blue balloons", "clue": "Tied on one string and always trying to float up to the shop awning." },
+          { "name": "The banner paint palette", "clue": "It has a thumb hole and smudges of colour like a rainbow." }
+        ]
+      }
+    },
+    {
+      "id": "day-bong-quy-luat",
+      "title": "Dây bóng theo quy luật",
+      "goTo": "Lẻn ra xe Vàng Ươm treo dây bóng quanh cửa sổ",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "st-bac-hai-xe-vang-uom-day-co",
+      "skill": "logic",
+      "prompt": "Cô Vé đã treo được một đoạn dây bóng. Quả tiếp theo phải màu gì để dây bóng giữ đúng quy luật?",
+      "elements": [
+        { "id": "q1", "label": "Bóng đỏ" },
+        { "id": "q2", "label": "Bóng xanh" },
+        { "id": "q3", "label": "Bóng xanh" },
+        { "id": "q4", "label": "Bóng đỏ" },
+        { "id": "q5", "label": "Bóng xanh" },
+        { "id": "q6", "label": "Bóng xanh" }
+      ],
+      "choices": [
+        { "id": "do", "text": "Bóng đỏ" },
+        { "id": "xanh", "text": "Bóng xanh" },
+        { "id": "vang", "text": "Bóng vàng" }
+      ],
+      "answer": { "choice": "do" },
+      "support": {
+        "guide": ["Tìm nhóm màu lặp đi lặp lại.", "Mỗi nhóm có mấy quả, bắt đầu bằng màu gì?"],
+        "hint": "Cứ một đỏ, hai xanh, rồi lại từ đầu.",
+        "answer": { "text": "Quả tiếp theo màu đỏ", "explanation": "Dây bóng lặp lại nhóm «đỏ, xanh, xanh». Đã đủ hai nhóm, nên quả tiếp theo bắt đầu nhóm mới: màu đỏ." },
+        "en": {
+          "guide": ["Find the group of colours that repeats.", "How many balloons are in each group, and which colour starts it?"],
+          "hint": "One red, two blue, then start again.",
+          "answer": { "text": "The next one is red", "explanation": "The string repeats “red, blue, blue”. Two full groups are done, so the next balloon starts a new group: red." }
+        }
+      },
+      "feedback": {
+        "right": ["Dây bóng đỏ xanh nhảy múa quanh cửa sổ, xe Vàng Ươm như đang cười.", "{name} nhìn ra nhịp lặp nhanh như điệp viên lão luyện.", "Chuẩn quy luật! Cô Vé giơ ngón cái từ xa."],
+        "wrong": ["Thêm quả này là dây bóng lệch nhịp mất, {name} đếm lại từng nhóm nhé.", "Bóng vàng chưa có trong dây đâu, quy luật chỉ có hai màu thôi.", "Nhóm cũ đã đủ hai quả xanh rồi, nhóm mới bắt đầu bằng màu gì?"],
+        "en": {
+          "right": ["The red and blue balloons dance round the windows, and Vàng Ươm seems to smile.", "You spotted the repeat as fast as a seasoned agent, {name}.", "Pattern perfect! Cô Vé gives a thumbs up from afar."],
+          "wrong": ["That one would throw the string off its rhythm, {name}; count each group again.", "There are no yellow balloons in this string; the pattern uses only two colours.", "The last group already has its two blues, so what colour starts the next one?"]
+        }
+      },
+      "en": {
+        "title": "A balloon string with a pattern",
+        "goTo": "Sneak over to Vàng Ươm and hang the balloon string around the windows",
+        "prompt": "Cô Vé has hung part of the balloon string. What colour must the next balloon be to keep the pattern?",
+        "elements": ["Red balloon", "Blue balloon", "Blue balloon", "Red balloon", "Blue balloon", "Blue balloon"],
+        "choices": ["Red balloon", "Blue balloon", "Yellow balloon"]
+      }
+    },
+    {
+      "id": "so-nam-bac-lai",
+      "title": "Băng rôn ghi bao nhiêu năm?",
+      "goTo": "Mang hộp màu tới quầy bán vé, Cô Vé đang kẻ băng rôn",
+      "kind": "riddle",
+      "target": "st-bac-hai-xe-vang-uom-co-ve",
+      "skill": "phep-tru",
+      "question": "Cô Vé hỏi: «Xe Vàng Ươm chạy được 20 năm. Bác Hải bắt đầu lái nó khi xe đã chạy 8 năm. Băng rôn phải ghi bác Hải lái xe Vàng Ươm bao nhiêu năm?»",
+      "answer": { "value": 12 },
+      "support": {
+        "guide": ["Xe chạy tất cả 20 năm.", "8 năm đầu là người khác lái, phần còn lại là bác Hải."],
+        "hint": "20 − 8 = ?",
+        "answer": { "text": "Bác Hải lái được 12 năm", "explanation": "20 năm xe chạy trừ 8 năm trước khi bác Hải nhận xe: 20 − 8 = 12 năm." },
+        "en": {
+          "guide": ["The bus has run for 20 years in all.", "Someone else drove for the first 8; the rest are Bác Hải's."],
+          "hint": "20 − 8 = ?",
+          "answer": { "text": "Bác Hải has driven it for 12 years", "explanation": "Take the 8 years before Bác Hải took over from the bus's 20 years: 20 − 8 = 12." }
+        }
+      },
+      "feedback": {
+        "right": ["Cô Vé tô chữ thật to: «MƯỜI HAI NĂM CÙNG BÁC HẢI».", "Mười hai năm, đúng như bác Hải vẫn hay khoe!", "{name} tính nhẩm nhanh hơn cả máy bấm vé."],
+        "wrong": ["Ấy, thế là tính cả mấy năm bác Hải chưa lái rồi, {name} trừ lại nhé.", "Phải bớt đi tám năm đầu cơ, thử lại xem.", "Đếm lùi từ 20, bớt từng năm một cho đủ tám lần xem còn mấy."],
+        "en": {
+          "right": ["Cô Vé paints it in huge letters: “TWELVE YEARS WITH BÁC HẢI”.", "Twelve years, just as Bác Hải always boasts!", "You did that sum faster than the ticket punch, {name}."],
+          "wrong": ["Oops, that counts the years before Bác Hải drove, {name}; subtract again.", "You need to take away the first eight years; try again.", "Count back from 20, one year at a time, eight times, and see what's left."]
+        }
+      },
+      "en": {
+        "title": "How many years on the banner?",
+        "goTo": "Take the paint to the ticket counter, where Cô Vé is lettering the banner",
+        "question": "Cô Vé asks: “Vàng Ươm has run for 20 years. Bác Hải started driving it when it had already run for 8. How many years has Bác Hải driven Vàng Ươm, for the banner?”"
+      }
+    },
+    {
+      "id": "suyt-lo-bi-mat",
+      "title": "Suýt lộ bí mật",
+      "goTo": "Bác Hải dậy rồi! Chạy về bến xe buýt trước khi bác ra xe",
+      "kind": "decision",
+      "target": "bac-lai-xe-hai",
+      "speaker": "Bác Lái Xe Hải",
+      "prompt": "Bác Hải dụi mắt nhìn {name}: «Ơ, sao tay cháu dính toàn sơn với ruy băng thế kia?» Phải nghĩ nhanh thôi!",
+      "choices": [
+        { "id": "tap-buoc-no", "text": "Cháu đang tập buộc nơ ạ!", "consequence": "Bác Hải gật gù: «Buộc nơ khó đấy, bác tập ba năm chưa xong.» Bác quên luôn chuyện ra xe." },
+        { "id": "mai-se-biet", "text": "Bí mật ạ, thứ Bảy bác sẽ biết", "consequence": "Bác Hải nheo mắt rồi cười khà: «Được, bác không hỏi nữa. Bác thích bất ngờ lắm.»" },
+        { "id": "hoi-chuyen-khac", "text": "Bác kể cháu nghe chuyện chiếc vé đầu tiên đi", "consequence": "Bác Hải ngồi xuống kể một mạch, mắt sáng rỡ. Trong lúc ấy Cô Vé lén kéo tấm băng rôn đi giấu." }
+      ],
+      "en": {
+        "title": "The secret nearly slips",
+        "goTo": "Bác Hải is awake! Dash back to the bus stop before he reaches the bus",
+        "prompt": "Bác Hải rubs his eyes and looks at {name}: “Eh, why are your hands covered in paint and ribbon?” Think fast!",
+        "choices": [
+          { "text": "I'm practising tying bows!", "consequence": "Bác Hải nods: “Bows are tricky; I've practised for three years and still can't.” He forgets all about the bus." },
+          { "text": "It's a secret; you'll find out on Saturday", "consequence": "Bác Hải squints, then chuckles: “Fine, no more questions. I love a surprise.”" },
+          { "text": "Tell me the story of your very first ticket", "consequence": "Bác Hải sits down and tells it in one go, eyes shining. Meanwhile Cô Vé sneaks the banner away to hide it." }
+        ]
+      }
+    },
+    {
+      "id": "xe-vang-lung-linh",
+      "title": "Xe Vàng Ươm lung linh",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tối đó, xe Vàng Ươm đỗ trong góc bến, khoác dây bóng đỏ xanh và tấm băng rôn mười hai năm. Cô Vé tặng {name} huy hiệu «điệp viên số một».",
+      "en": {
+        "title": "Vàng Ươm all aglow",
+        "text": "That night Vàng Ươm waits in a corner of the depot, wearing red and blue balloons and the twelve-year banner. Cô Vé pins a “secret agent number one” badge on {name}."
+      }
+    },
+    {
+      "id": "sang-thu-bay",
+      "title": "Sáng thứ Bảy",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sáng thứ Bảy, cả quảng trường sẽ đợi sẵn ở bến. Bác Hải chưa biết gì, chỉ dặn {name} tới sớm cho kịp chuyến cuối.",
+      "en": {
+        "title": "Saturday morning",
+        "text": "On Saturday morning the whole square will be waiting at the stop. Bác Hải still knows nothing and just tells {name} to come early for the last run."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": { "logic": 1, "phep-tru": 1 }
+  },
+  "en": {
+    "title": "Bác Lái Xe Hải's story, chapter 3: Decoration agent",
+    "summary": "Cô Vé's secret team gets to work. {name} gathers ribbon, balloons and paint, hangs a balloon string on Vàng Ươm in the right pattern, works out the years for the banner, and has to think fast when Bác Hải nearly finds out."
+  }
+}

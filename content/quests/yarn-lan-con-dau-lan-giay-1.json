@@ -1,0 +1,235 @@
+{
+  "id": "yarn-lan-con-dau-lan-giay-1",
+  "region": "trung-tam",
+  "chapter": 3,
+  "title": "Chuyện của Lân Con Rộn Ràng, chương 1: Đầu lân nặng trịch",
+  "status": "active",
+  "category": "story",
+  "summary": "Lân Con muốn múa mở màn đêm hội. {name} gom lại đạo cụ rơi trên sân khấu, nghe Bác Trống Râu Bạc nói đầu lân của đoàn quá nặng, cùng Lân tập nhịp trống dưới tháp đồng hồ rồi đứng trước chiếc hòm đựng đầu lân lớn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Lân Con Rộn Ràng, Bác Trống Râu Bạc",
+    "where": "Quảng trường: khu sự kiện, sân khấu, tháp đồng hồ, kho đạo cụ",
+    "goal": "Giúp Lân Con tập múa để được múa mở màn đêm hội",
+    "play": "Tìm đạo cụ múa lân; nghe Bác Trống; tìm quy luật nhịp trống; múa lân theo trống; chọn cách với chiếc đầu lân lớn",
+    "learn": "Tìm quy luật lặp lại, nghe nhịp và phản xạ theo nhịp",
+    "reward": "60 XP, 15 Xu, Skill XP Logic, Đọc hiểu",
+    "next": "Tự làm một chiếc đầu lân vừa sức Lân"
+  },
+  "phases": {
+    "hook": "lan-muon-mo-man",
+    "explore": "dao-cu-san-khau",
+    "learn": "nhip-trong-cai",
+    "challenge": "mua-theo-trong",
+    "decision": "hom-dau-lan-lon",
+    "finale": "hom-dau-lan-lon",
+    "reward": "bom-xu-oai-phong",
+    "next": "y-tuong-moi"
+  },
+  "places": {
+    "lan-con-ron-rang": "Khu sự kiện",
+    "dao-cu-san-khau": "Sân khấu",
+    "st-lan-con-dau-lan-giay-luc-lac": "Sân khấu",
+    "st-lan-con-dau-lan-giay-dai-lua": "Sân khấu",
+    "st-lan-con-dau-lan-giay-dui-trong": "Sân khấu",
+    "st-lan-con-dau-lan-giay-bac-trong": "Sân khấu",
+    "st-lan-con-dau-lan-giay-trong-cai": "Tháp đồng hồ",
+    "st-lan-con-dau-lan-giay-hom-dau-lan": "Kho đạo cụ"
+  },
+  "steps": [
+    {
+      "id": "lan-muon-mo-man",
+      "title": "Lân muốn múa mở màn",
+      "goTo": "Tới khu sự kiện theo mùa, Lân Con đang nhảy tưng tưng",
+      "kind": "dialogue",
+      "target": "lan-con-ron-rang",
+      "lines": [
+        { "speaker": "Lân Con Rộn Ràng", "text": "Tùng cắc tùng! {name} ơi, đêm hội sắp tới rồi, đoàn lân đang tìm người múa mở màn!" },
+        { "speaker": "Lân Con Rộn Ràng", "text": "Lân muốn lắm, muốn tới mức đêm qua mơ thấy mình bay. Nhưng buổi tập vừa rồi Lân làm rơi hết đạo cụ trên sân khấu…" }
+      ],
+      "choices": [
+        { "text": "Để tớ nhặt giúp, cậu cứ tập tiếp đi!", "reply": "Cảm ơn {name}! Lân tập bước bật thêm mười lần, à không, hai mươi lần!" },
+        { "text": "Mơ thấy bay là điềm lành đấy.", "reply": "Thật hả? Thế thì Lân càng phải thử! Tùng cắc tùng!" }
+      ],
+      "en": {
+        "title": "Lân wants to open the show",
+        "goTo": "Go to the seasonal events area, where Lân Con is bouncing about",
+        "lines": [
+          "Boom-tak-boom! {name}, the festival is coming and the troupe is looking for someone to open the show!",
+          "I want it so much I dreamt I was flying last night. But at practice just now I dropped every prop on the stage…"
+        ],
+        "choices": [
+          { "text": "I'll pick them up; you keep practising!", "reply": "Thanks, {name}! I'll do ten more leaps, no, twenty!" },
+          { "text": "Dreaming of flying is a good sign.", "reply": "Really? Then I've got to try! Boom-tak-boom!" }
+        ]
+      }
+    },
+    {
+      "id": "dao-cu-san-khau",
+      "title": "Đạo cụ rơi trên sân khấu",
+      "goTo": "Lên sân khấu sự kiện nhặt đạo cụ múa lân",
+      "kind": "find-object",
+      "prompt": "Đọc lời Lân tả rồi tìm từng món đạo cụ:",
+      "skill": "doc-hieu",
+      "items": [
+        { "id": "luc-lac", "name": "Chùm lục lạc của lân", "clue": "Lắc nhẹ là kêu leng keng, treo ở cổ lân cho mỗi bước nhảy thêm vui tai.", "target": "st-lan-con-dau-lan-giay-luc-lac" },
+        { "id": "dai-lua", "name": "Dải lụa đỏ quấn đuôi lân", "clue": "Mềm mượt, đỏ rực, dài hơn cả Lân khi trải thẳng ra.", "target": "st-lan-con-dau-lan-giay-dai-lua" },
+        { "id": "dui-trong", "name": "Đôi dùi trống gỗ", "clue": "Hai que gỗ nâu bằng nhau, đầu tròn, cầm vào còn ấm tay người vừa gõ.", "target": "st-lan-con-dau-lan-giay-dui-trong" }
+      ],
+      "en": {
+        "title": "Props dropped on the stage",
+        "goTo": "Go up on the events stage and pick up the lion dance props",
+        "prompt": "Read Lân's descriptions and find each prop:",
+        "items": [
+          { "name": "The lion's string of bells", "clue": "Shake it gently and it jingles; it hangs at the lion's neck so every leap sounds merry." },
+          { "name": "The red silk tail sash", "clue": "Smooth, bright red and longer than Lân when laid out straight." },
+          { "name": "The pair of wooden drumsticks", "clue": "Two equal brown sticks with round tips, still warm from the last drummer's hands." }
+        ]
+      }
+    },
+    {
+      "id": "bac-trong-noi",
+      "title": "Bác Trống Râu Bạc lắc đầu",
+      "kind": "dialogue",
+      "target": "st-lan-con-dau-lan-giay-bac-trong",
+      "lines": [
+        { "speaker": "Bác Trống Râu Bạc", "text": "Cảm ơn cháu nhặt đồ. Lân Con múa có hồn lắm, bác biết. Nhưng đầu lân của đoàn nặng bằng cả một bao gạo." },
+        { "speaker": "Bác Trống Râu Bạc", "text": "Lân còn nhỏ, đội vào là chúi mũi ngay. Bác bảo đợi năm sau, mà nó cứ như pháo, không chịu ngồi yên." }
+      ],
+      "choices": [
+        { "text": "Cháu sẽ giúp Lân tập cho khỏe hơn ạ.", "reply": "Tập thì tốt. Trước hết phải thuộc nhịp trống đã, ra dưới tháp đồng hồ mà nghe." }
+      ],
+      "en": {
+        "title": "Bác Trống Râu Bạc shakes his head",
+        "lines": [
+          "Thank you for picking those up. Lân Con dances with real spirit, I know. But the troupe's lion head weighs as much as a sack of rice.",
+          "Lân is still small and would topple nose-first. I said wait till next year, but that cub is like a firecracker, never sits still."
+        ],
+        "choices": [
+          { "text": "I'll help Lân train and get stronger.", "reply": "Training is good. But first learn the drum rhythm; go and listen under the clock tower." }
+        ]
+      }
+    },
+    {
+      "id": "nhip-trong-cai",
+      "title": "Nhịp trống dưới tháp đồng hồ",
+      "goTo": "Tới tháp đồng hồ, nơi chiếc trống cái sơn đỏ đặt sẵn để tập",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "st-lan-con-dau-lan-giay-trong-cai",
+      "skill": "logic",
+      "prompt": "Bác Trống gõ một đoạn nhịp mẫu. Tiếng trống tiếp theo là gì?",
+      "elements": [
+        { "id": "n1", "label": "Tùng" },
+        { "id": "n2", "label": "Tùng" },
+        { "id": "n3", "label": "Cắc" },
+        { "id": "n4", "label": "Tùng" },
+        { "id": "n5", "label": "Tùng" },
+        { "id": "n6", "label": "Cắc" },
+        { "id": "n7", "label": "Tùng" },
+        { "id": "n8", "label": "Tùng" }
+      ],
+      "choices": [
+        { "id": "tung", "text": "Tùng" },
+        { "id": "cac", "text": "Cắc" },
+        { "id": "xeng", "text": "Xèng" }
+      ],
+      "answer": { "choice": "cac" },
+      "support": {
+        "guide": ["Tìm nhóm tiếng trống lặp lại.", "Mỗi nhóm có mấy tiếng, tiếng cuối nhóm là gì?"],
+        "hint": "Cứ hai tiếng «tùng» lại đến một tiếng «cắc».",
+        "answer": { "text": "Tiếng tiếp theo là «cắc»", "explanation": "Nhịp lặp lại nhóm «tùng, tùng, cắc». Nhóm thứ ba đã có hai tiếng «tùng», nên tiếp theo là «cắc»." },
+        "en": {
+          "guide": ["Find the group of beats that repeats.", "How many beats are in each group, and what ends it?"],
+          "hint": "Every two “boom”s come before one “tak”.",
+          "answer": { "text": "The next beat is “tak”", "explanation": "The rhythm repeats “boom, boom, tak”. The third group already has its two booms, so “tak” comes next." }
+        }
+      },
+      "feedback": {
+        "right": ["Tùng tùng cắc! Lân lắc bờm ba cái: thuộc nhịp rồi!", "{name} nghe nhịp tinh như tai người đánh trống lâu năm.", "Đúng tiếng cắc, Bác Trống ở xa cũng gật gù."],
+        "wrong": ["Thêm tiếng ấy là nhịp bị hẫng mất, {name} đếm lại từng nhóm nhé.", "Đoạn nhịp này không có tiếng xèng nào đâu.", "Nhóm cuối đã đủ hai tiếng tùng rồi, tiếng nào kết nhóm?"],
+        "en": {
+          "right": ["Boom-boom-tak! Lân shakes the mane three times: rhythm learnt!", "You hear rhythm as keenly as a veteran drummer, {name}.", "A perfect “tak”, and even Bác Trống nods from afar."],
+          "wrong": ["That beat would make the rhythm stumble, {name}; count each group again.", "There's no cymbal clash anywhere in this rhythm.", "The last group already has two booms; which beat ends a group?"]
+        }
+      },
+      "en": {
+        "title": "Drum rhythm under the clock tower",
+        "goTo": "Go to the clock tower, where the red festival drum is set up for practice",
+        "prompt": "Bác Trống plays a sample rhythm. What is the next beat?",
+        "elements": ["Boom", "Boom", "Tak", "Boom", "Boom", "Tak", "Boom", "Boom"],
+        "choices": ["Boom", "Tak", "Clash"]
+      }
+    },
+    {
+      "id": "mua-theo-trong",
+      "title": "Lân múa theo nhịp trống cái",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Thuộc nhịp rồi, giờ múa cùng Lân nào: theo tiếng trống mà bước cho đủ hai mươi tư nhịp nhé!",
+      "game": "lion-dance-arrows",
+      "goal": 24,
+      "en": {
+        "title": "Dancing to the drum",
+        "prompt": "Rhythm learnt, now dance with Lân: step in time with the drum for twenty-four beats!"
+      }
+    },
+    {
+      "id": "hom-dau-lan-lon",
+      "title": "Chiếc hòm đựng đầu lân lớn",
+      "goTo": "Theo Lân vào kho đạo cụ, nơi cất đầu lân lớn của đoàn",
+      "kind": "decision",
+      "target": "st-lan-con-dau-lan-giay-hom-dau-lan",
+      "speaker": "Lân Con Rộn Ràng",
+      "prompt": "Lân mở hòm, nhấc thử đầu lân lớn lên, lảo đảo ba bước rồi ngồi phịch xuống. «Nặng thật… nhưng Lân không muốn đợi năm sau!» {name} nói gì?",
+      "choices": [
+        { "id": "tap-khoe", "text": "Ngày nào mình cũng tập nhấc cho khỏe dần", "consequence": "Lân gật lia lịa rồi nhấc thêm hai lần, lần nào cũng ngã. «Có khi phải tới năm sau thật…» Lân thở dài, rồi chợt sáng mắt." },
+        { "id": "dau-lan-nho", "text": "Hay mình làm một chiếc đầu lân nhỏ hơn?", "consequence": "Lân lắc bờm ba cái: «Ý hay! Một chiếc đầu lân vừa với Lân, nhẹ như giấy!»" },
+        { "id": "hoi-bac", "text": "Hỏi Bác Trống xem hồi xưa bác bắt đầu thế nào", "consequence": "Lân chạy đi hỏi rồi chạy về: «Bác bảo hồi bé bác múa bằng đầu lân làm từ giấy báo!» Mắt Lân sáng rực." }
+      ],
+      "en": {
+        "title": "The chest with the big lion head",
+        "goTo": "Follow Lân into the prop store, where the troupe's big lion head is kept",
+        "prompt": "Lân opens the chest, lifts the big lion head, wobbles three steps and plops down. “It's heavy… but I don't want to wait a whole year!” What do you say?",
+        "choices": [
+          { "text": "Let's practise lifting it every day until you're stronger", "consequence": "Lân nods eagerly and tries twice more, falling both times. “Maybe it really has to be next year…” Lân sighs, then suddenly brightens." },
+          { "text": "Why not make a smaller lion head?", "consequence": "Lân shakes the mane three times: “Great idea! A lion head that fits me, light as paper!”" },
+          { "text": "Ask Bác Trống how he started long ago", "consequence": "Lân runs off and runs back: “He says as a boy he danced with a head made of old newspapers!” Lân's eyes light up." }
+        ]
+      }
+    },
+    {
+      "id": "bom-xu-oai-phong",
+      "title": "Bờm xù oai phong",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Lân Con cột dải lụa đỏ vào đuôi, múa tặng {name} một vòng chào. Lần này Lân không vấp bước nào, hoặc là vấp khéo đến mức chẳng ai thấy.",
+      "en": {
+        "title": "A mighty fluffy mane",
+        "text": "Lân Con ties the red sash to the tail and dances a thank-you circle for {name}. Not a single stumble this time, or one so smooth nobody noticed."
+      }
+    },
+    {
+      "id": "y-tuong-moi",
+      "title": "Một ý tưởng mới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Lân Con có ý tưởng rồi: tự làm một chiếc đầu lân bằng giấy bồi, nhẹ mà vẫn oai. Mai {name} cùng Lân đi gom giấy báo và hồ dán nhé!",
+      "en": {
+        "title": "A new idea",
+        "text": "Lân Con has an idea: build a papier-mâché lion head, light but still mighty. Tomorrow {name} and Lân go hunting for old newspapers and glue!"
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": { "logic": 1, "doc-hieu": 1 }
+  },
+  "en": {
+    "title": "Lân Con Rộn Ràng's story, chapter 1: A head too heavy",
+    "summary": "Lân Con wants to open the festival. {name} gathers the props dropped on stage, hears Bác Trống Râu Bạc say the troupe's lion head is far too heavy, practises drum rhythms with Lân under the clock tower and then stands before the chest that holds the big lion head."
+  }
+}

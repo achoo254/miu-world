@@ -4851,6 +4851,246 @@
    "height": 0.5,
    "kind": "object",
    "label": "Xem"
+  },
+  "st-bac-hai-xe-vang-uom-quat-giay": {
+   "model": "generated/props/hand-fan.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-bac-hai-xe-vang-uom-khan-len": {
+   "model": "generated/props/scarf.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-bac-hai-xe-vang-uom-bong-ro": {
+   "model": "generated/props/basketball.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-bac-hai-xe-vang-uom-so-ghi-chuyen": {
+   "model": "generated/props/notebook.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#e8c040"
+  },
+  "st-bac-hai-xe-vang-uom-bang-gio": {
+   "model": "generated/props/placard.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-bac-hai-xe-vang-uom-ba-cu-non": {
+   "model": "packs/kenney-blocky-characters/2.0/character-a.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#c8a878"
+  },
+  "st-bac-hai-xe-vang-uom-tin-thap": {
+   "model": "packs/kenney-survival-kit/2.0/signpost-single.glb",
+   "height": 1.6,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-bac-hai-xe-vang-uom-tin-cau": {
+   "model": "packs/kenney-nature-kit/2.1/sign.glb",
+   "height": 1.4,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-bac-hai-xe-vang-uom-tin-cua-hang": {
+   "model": "generated/props/placard-blue.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-bac-hai-xe-vang-uom-ban-do-tuyen": {
+   "model": "generated/props/scroll.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-bac-hai-xe-vang-uom-hom-dang-ky": {
+   "model": "packs/kenney-survival-kit/2.0/box.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Mở hộp",
+   "tint": "#e8c040"
+  },
+  "st-bac-hai-xe-vang-uom-co-ve": {
+   "model": "packs/kenney-blocky-characters/2.0/character-c.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#d87898"
+  },
+  "st-bac-hai-xe-vang-uom-ruy-bang": {
+   "model": "generated/props/ribbon.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#f0c838"
+  },
+  "st-bac-hai-xe-vang-uom-bong-bay": {
+   "model": "generated/props/balloon-blue.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-bac-hai-xe-vang-uom-hop-mau": {
+   "model": "generated/props/artist-palette.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-bac-hai-xe-vang-uom-day-co": {
+   "model": "generated/props/balloon.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#d84848"
+  },
+  "st-bac-hai-xe-vang-uom-tram-thap": {
+   "model": "packs/kenney-survival-kit/2.0/signpost-single.glb",
+   "height": 1.6,
+   "kind": "object",
+   "label": "Đọc bảng",
+   "tint": "#e8c040"
+  },
+  "st-bac-hai-xe-vang-uom-tram-cau": {
+   "model": "packs/kenney-survival-kit/2.0/signpost-single.glb",
+   "height": 1.6,
+   "kind": "object",
+   "label": "Đọc bảng",
+   "tint": "#68a8d8"
+  },
+  "st-bac-hai-xe-vang-uom-tram-cong": {
+   "model": "packs/kenney-survival-kit/2.0/signpost-single.glb",
+   "height": 1.6,
+   "kind": "object",
+   "label": "Đọc bảng",
+   "tint": "#a878c8"
+  },
+  "st-bac-hai-xe-vang-uom-thung-chan": {
+   "model": "packs/kenney-survival-kit/2.0/box-large.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#e88838"
+  },
+  "st-bac-hai-xe-vang-uom-thu-thanh-pho": {
+   "model": "generated/props/envelope-yellow.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Mở thư"
+  },
+  "st-lan-con-dau-lan-giay-luc-lac": {
+   "model": "generated/props/wind-chime.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-lan-con-dau-lan-giay-dai-lua": {
+   "model": "generated/props/ribbon.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#d83838"
+  },
+  "st-lan-con-dau-lan-giay-dui-trong": {
+   "model": "generated/props/chopsticks.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#a07040"
+  },
+  "st-lan-con-dau-lan-giay-bac-trong": {
+   "model": "packs/kenney-blocky-characters/2.0/character-l.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#b8b8c8"
+  },
+  "st-lan-con-dau-lan-giay-trong-cai": {
+   "model": "packs/kenney-survival-kit/2.0/barrel.glb",
+   "height": 1.1,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c83c3c"
+  },
+  "st-lan-con-dau-lan-giay-hom-dau-lan": {
+   "model": "packs/kenney-survival-kit/2.0/box-large.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#d8a838"
+  },
+  "st-lan-con-dau-lan-giay-bao-cu": {
+   "model": "generated/props/page-red.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-lan-con-dau-lan-giay-ho-dan": {
+   "model": "packs/kenney-food-kit/2.0/bowl.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#f0e8d0"
+  },
+  "st-lan-con-dau-lan-giay-khung-tre": {
+   "model": "packs/kenney-nature-kit/2.1/crops_bambooStageA.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-lan-con-dau-lan-giay-co-boi": {
+   "model": "packs/kenney-blocky-characters/2.0/character-h.glb",
+   "height": 1.9,
+   "kind": "npc",
+   "label": "Nói chuyện",
+   "animation": "idle",
+   "tint": "#78b8a8"
+  },
+  "st-lan-con-dau-lan-giay-guong-nho": {
+   "model": "generated/props/mirror.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-lan-con-dau-lan-giay-dong-ho-thap": {
+   "model": "generated/props/mantelpiece-clock.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem đồng hồ"
+  },
+  "st-lan-con-dau-lan-giay-den-ong-sao": {
+   "model": "generated/props/glowing-star.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#e84838"
+  },
+  "st-lan-con-dau-lan-giay-den-ca-chep": {
+   "model": "generated/props/tropical-fish.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#f0b030"
+  },
+  "st-lan-con-dau-lan-giay-den-long-tron": {
+   "model": "generated/props/balloon.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#e04030"
   }
  }
 }

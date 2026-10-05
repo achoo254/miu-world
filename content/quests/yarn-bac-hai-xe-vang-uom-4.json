@@ -1,0 +1,237 @@
+{
+  "id": "yarn-bac-hai-xe-vang-uom-4",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Chuyện của Bác Lái Xe Hải, chương 4: Chuyến cuối, bến mới",
+  "status": "active",
+  "category": "story",
+  "summary": "Sáng thứ Bảy, cả quảng trường đón bác Hải bằng một bữa chia tay bất ngờ. {name} giúp khách lên xe, bấm chuông ở từng trạm, tìm đường vòng qua chỗ sửa đường và đọc lá thư của thành phố: xe Vàng Ươm sẽ không đi đâu cả.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bác Lái Xe Hải",
+    "where": "Quảng trường: bến xe buýt, các trạm dừng, cầu trung tâm, tháp đồng hồ",
+    "goal": "Cùng bác Hải chạy trọn chuyến cuối của xe Vàng Ươm",
+    "play": "Đưa khách lên xe; bấm chuông ở ba trạm; tìm đường tránh chỗ sửa đường; đọc thư của thành phố; chọn chỗ cho chiếc chuông cũ",
+    "learn": "Tìm đường đi trên lưới ô, đọc hiểu một lá thư",
+    "reward": "80 XP, 22 Xu, Skill XP Logic, Đọc hiểu",
+    "next": "Xe Vàng Ươm thành chòi chờ, bác Hải lái chuyến xe mới"
+  },
+  "phases": {
+    "hook": "bat-ngo-o-ben",
+    "explore": "don-khach-len-xe",
+    "learn": "bam-chuong-tung-tram",
+    "challenge": "vong-qua-cho-sua",
+    "decision": "chiec-chuong-cu",
+    "finale": "chiec-chuong-cu",
+    "reward": "chuyen-cuoi-tron-ven",
+    "next": "ben-moi"
+  },
+  "places": {
+    "bac-lai-xe-hai": "Bến xe buýt",
+    "bam-chuong-tung-tram": "Các trạm dừng",
+    "st-bac-hai-xe-vang-uom-tram-thap": "Các trạm dừng",
+    "st-bac-hai-xe-vang-uom-tram-cau": "Các trạm dừng",
+    "st-bac-hai-xe-vang-uom-tram-cong": "Các trạm dừng",
+    "st-bac-hai-xe-vang-uom-thung-chan": "Cầu trung tâm",
+    "st-bac-hai-xe-vang-uom-thu-thanh-pho": "Tháp đồng hồ"
+  },
+  "steps": [
+    {
+      "id": "bat-ngo-o-ben",
+      "title": "Bất ngờ ở bến xe",
+      "goTo": "Tới bến xe buýt thật sớm, cả quảng trường đang nấp sau xe Vàng Ươm",
+      "kind": "dialogue",
+      "target": "bac-lai-xe-hai",
+      "lines": [
+        { "speaker": "Bác Lái Xe Hải", "text": "Ơ… bóng bay? Băng rôn? «Mười hai năm cùng bác Hải»? Ai… ai làm thế này?" },
+        { "speaker": "Bác Lái Xe Hải", "text": "Thì ra cháu cũng ở trong đội bí mật! Bác cảm động quá, mắt bác bị bụi bay vào hay sao ấy." },
+        { "speaker": "Bác Lái Xe Hải", "text": "Thôi, kính coong! Chuyến cuối của Vàng Ươm xuất bến. {name} làm phụ xe cho bác nhé!" }
+      ],
+      "choices": [
+        { "text": "Phụ xe {name} xin có mặt!", "reply": "Tốt lắm! Việc đầu tiên: đưa khách lên xe thật nhanh mà không ai bị chen." },
+        { "text": "Bác khóc à?", "reply": "Không, không! Bụi thôi. Bụi vui." }
+      ],
+      "en": {
+        "title": "A surprise at the stop",
+        "goTo": "Get to the bus stop early; the whole square is hiding behind Vàng Ươm",
+        "lines": [
+          "Eh… balloons? A banner? “Twelve years with Bác Hải”? Who… who did all this?",
+          "So you were on the secret team too! I'm so touched; I think some dust got in my eyes.",
+          "Right then, ding-dong! Vàng Ươm's last run is leaving. Be my conductor, {name}!"
+        ],
+        "choices": [
+          { "text": "Conductor {name}, reporting for duty!", "reply": "Excellent! First job: get everyone aboard quickly, with no shoving." },
+          { "text": "Are you crying, Bác?", "reply": "No, no! Just dust. Happy dust." }
+        ]
+      }
+    },
+    {
+      "id": "don-khach-len-xe",
+      "title": "Đón khách lên xe",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đưa đủ tám nhóm khách lên xe Vàng Ươm cho chuyến cuối nhé!",
+      "game": "bus-jam",
+      "goal": 8,
+      "en": {
+        "title": "Boarding the passengers",
+        "prompt": "Get eight groups of passengers aboard Vàng Ươm for its last run!"
+      }
+    },
+    {
+      "id": "bam-chuong-tung-tram",
+      "title": "Bấm chuông ở từng trạm",
+      "goTo": "Xe chạy qua các trạm dừng quen thuộc: tới mỗi biển trạm, bấm chuông chào một tiếng",
+      "kind": "search",
+      "targets": ["st-bac-hai-xe-vang-uom-tram-thap", "st-bac-hai-xe-vang-uom-tram-cau", "st-bac-hai-xe-vang-uom-tram-cong"],
+      "en": {
+        "title": "Ringing the bell at every stop",
+        "goTo": "The bus passes its familiar stops: at each stop sign, ring the bell once to say hello"
+      }
+    },
+    {
+      "id": "vong-qua-cho-sua",
+      "title": "Vòng qua chỗ sửa đường",
+      "goTo": "Tới cầu trung tâm thì gặp thùng chắn sửa đường, phải tìm lối khác",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "maze",
+      "target": "st-bac-hai-xe-vang-uom-thung-chan",
+      "skill": "logic",
+      "prompt": "Đường qua cầu đang sửa. Ô chú mèo là xe Vàng Ươm, ô ngôi sao là trạm cuối, ô gạch là thùng chắn. Dãy bước nào đưa xe tới nơi? (→ sang phải, ↓ đi xuống)",
+      "grid": [
+        ["S", ".", ".", ".", "#"],
+        ["#", "#", "#", ".", "."],
+        [".", ".", "#", "#", "."],
+        ["#", ".", ".", ".", "G"]
+      ],
+      "choices": [
+        { "id": "a", "text": "→ → → ↓ → ↓ ↓" },
+        { "id": "b", "text": "→ → ↓ → → ↓ ↓" },
+        { "id": "c", "text": "↓ → → → → ↓ ↓" }
+      ],
+      "answer": { "choice": "a" },
+      "support": {
+        "guide": ["Đặt ngón tay lên ô chú mèo.", "Đi thử từng dãy, chạm ô gạch là dãy đó bị chắn.", "Dãy đúng đưa xe tới ô ngôi sao."],
+        "hint": "Cả hàng thứ hai chỉ có hai ô trống ở phía bên phải.",
+        "answer": { "text": "Ba ô sang phải, xuống, sang phải, rồi xuống hai ô", "explanation": "Dãy → → → ↓ → ↓ ↓ đi hết hàng trên tới ô thứ tư, xuống, sang phải, rồi xuống hai lần tới trạm cuối mà không chạm thùng chắn nào." },
+        "en": {
+          "guide": ["Put your finger on the cat square.", "Try each sequence; touch a brick and that route is blocked.", "The right one brings the bus to the star square."],
+          "hint": "The whole second row has only two open squares, on the right.",
+          "answer": { "text": "Three right, one down, one right, then two down", "explanation": "→ → → ↓ → ↓ ↓ runs along the top row to the fourth square, goes down, right, then down twice to the last stop without hitting a barrier." }
+        }
+      },
+      "feedback": {
+        "right": ["Bác Hải đánh lái nhẹ nhàng: «Phụ xe giỏi quá, đường vòng mà êm như ru!»", "{name} dò đường không sai một ô, xe Vàng Ươm lướt qua êm ru.", "Tránh hết thùng chắn rồi, khách trên xe vỗ tay rào rào!"],
+        "wrong": ["Rầm, suýt húc vào thùng chắn! {name} dò lại từng bước nhé.", "Hàng thứ hai gần như kín hết, phải đi xa hơn mới xuống được.", "Bước đầu tiên đi xuống là vướng thùng chắn ngay, thử dãy khác xem."],
+        "en": {
+          "right": ["Bác Hải steers smoothly: “Brilliant conductor, a detour as gentle as a lullaby!”", "You traced the route without a single wrong square, and Vàng Ươm glides through, {name}.", "Every barrier avoided, and the passengers burst into applause!"],
+          "wrong": ["Crash, nearly hit a barrier! Trace each step again, {name}.", "The second row is almost all blocked; go further along before turning down.", "Going down first hits a barrier straight away; try another sequence."]
+        }
+      },
+      "en": {
+        "title": "Detour round the roadworks",
+        "goTo": "At the central bridge, barriers block the road for repairs; find another way",
+        "prompt": "The bridge road is under repair. The cat square is Vàng Ươm, the star square is the last stop, and brick squares are barriers. Which steps get the bus there? (→ right, ↓ down)",
+        "choices": ["→ → → ↓ → ↓ ↓", "→ → ↓ → → ↓ ↓", "↓ → → → → ↓ ↓"]
+      }
+    },
+    {
+      "id": "thu-thanh-pho",
+      "title": "Lá thư của thành phố",
+      "goTo": "Ở trạm tháp đồng hồ, một lá thư dán trên cột đang chờ bác Hải",
+      "kind": "read",
+      "target": "st-bac-hai-xe-vang-uom-thu-thanh-pho",
+      "skill": "doc-hieu",
+      "text": "Gửi bác Hải và xe Vàng Ươm,\nĐọc lá thư của bà con quảng trường, thành phố đổi ý: xe Vàng Ươm không về bãi phế liệu nữa. Xe sẽ đỗ lại bên bến xe, làm chòi chờ cho mọi người ngồi nghỉ, đọc sách, trú mưa. Bác Hải nhận xe mới và vẫn chạy tuyến cũ.\nBan giao thông thành phố",
+      "question": "Theo lá thư, xe Vàng Ươm sẽ ra sao?",
+      "choices": [
+        { "id": "a", "text": "Về bãi phế liệu" },
+        { "id": "b", "text": "Ở lại bên bến làm chòi chờ" },
+        { "id": "c", "text": "Chạy sang một thành phố khác" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm câu có chữ «không về bãi phế liệu».", "Câu tiếp theo nói xe sẽ đỗ ở đâu, để làm gì?"],
+        "hint": "Mọi người vẫn được ngồi trên những chiếc ghế quen thuộc của xe.",
+        "answer": { "text": "Xe đỗ bên bến cho mọi người ngồi chờ", "explanation": "Lá thư ghi: xe Vàng Ươm sẽ đỗ lại bên bến xe, làm chòi chờ cho mọi người ngồi nghỉ, đọc sách, trú mưa." },
+        "en": {
+          "guide": ["Find the sentence with “no longer go to the scrapyard”.", "Where does the next sentence say the bus will park, and what for?"],
+          "hint": "Everyone still gets to sit on the bus's familiar seats.",
+          "answer": { "text": "It parks by the stop as a place to wait", "explanation": "The letter says Vàng Ươm will park beside the bus stop as a shelter where people can rest, read and keep out of the rain." }
+        }
+      },
+      "feedback": {
+        "right": ["Cả xe reo hò, bác Hải ôm chầm lấy vô lăng: «Vàng Ươm ơi, mình vẫn gặp nhau mỗi ngày!»", "{name} đọc to lá thư, giọng run run mà rõ từng chữ.", "Không phải chia tay nữa, chỉ là đổi chỗ đỗ thôi!"],
+        "wrong": ["Lá thư bảo «không về bãi phế liệu» cơ mà, {name} đọc lại nhé.", "Xe không đi đâu xa cả, tìm câu nói xe sẽ đỗ ở đâu xem.", "Đọc chậm câu thứ hai, có chữ «chòi chờ» đấy."],
+        "en": {
+          "right": ["The whole bus cheers, and Bác Hải hugs the steering wheel: “Vàng Ươm, we'll still see each other every day!”", "You read the letter aloud, {name}, voice trembling but every word clear.", "No goodbye after all, just a new parking spot!"],
+          "wrong": ["The letter says “no longer go to the scrapyard”, {name}; read it again.", "The bus isn't going anywhere far; find the sentence that says where it will park.", "Read the second sentence slowly; the word “shelter” is in there."]
+        }
+      },
+      "en": {
+        "title": "The city's letter",
+        "goTo": "At the clock tower stop, a letter pinned to the post is waiting for Bác Hải",
+        "text": "To Bác Hải and Vàng Ươm,\nHaving read the letter from the people of the square, the city has changed its mind: Vàng Ươm will no longer go to the scrapyard. It will park beside the bus stop as a shelter where people can rest, read and keep out of the rain. Bác Hải gets a new bus and keeps his old route.\nCity Transport Office",
+        "question": "According to the letter, what will happen to Vàng Ươm?",
+        "choices": ["It goes to the scrapyard", "It stays by the stop as a shelter", "It moves to another city"]
+      }
+    },
+    {
+      "id": "chiec-chuong-cu",
+      "title": "Chiếc chuông cũ của xe",
+      "goTo": "Xe về lại bến xe buýt, bác Hải tháo chiếc chuông cũ cầm trên tay",
+      "kind": "decision",
+      "target": "bac-lai-xe-hai",
+      "speaker": "Bác Lái Xe Hải",
+      "prompt": "Bác Hải lau chiếc chuông đồng lần cuối: «Mười hai năm nó kêu kính coong cho cả quảng trường. Cháu bảo bác nên để nó ở đâu?»",
+      "choices": [
+        { "id": "treo-choi-cho", "text": "Treo ở cửa chòi chờ Vàng Ươm", "consequence": "Từ đó ai bước vào chòi chờ cũng gõ chuông một cái. Kính coong! Như xe vẫn đang chào khách." },
+        { "id": "gan-xe-moi", "text": "Gắn lên xe buýt mới của bác", "consequence": "Bác Hải gắn chuông lên xe mới, cười: «Xe mới, tiếng cũ. Khách quen nghe là nhận ra bác ngay.»" },
+        { "id": "chia-doi", "text": "Rung một tiếng cho cả quảng trường cùng nghe", "consequence": "Bác Hải giơ chuông lên rung thật to. Cả quảng trường đồng thanh: «Kính coong!» Chó Cảnh Sát Còi thổi theo một hồi còi dài." }
+      ],
+      "en": {
+        "title": "The bus's old bell",
+        "goTo": "Back at the bus stop, Bác Hải has taken off the old bell and holds it in his hands",
+        "prompt": "Bác Hải polishes the brass bell one last time: “For twelve years it rang ding-dong for the whole square. Where do you think I should keep it?”",
+        "choices": [
+          { "text": "Hang it at the door of the Vàng Ươm shelter", "consequence": "From then on, everyone entering the shelter taps the bell once. Ding-dong! As if the bus were still greeting its passengers." },
+          { "text": "Fix it on your new bus", "consequence": "Bác Hải fixes the bell to his new bus and smiles: “New bus, old voice. Regulars will know me at once.”" },
+          { "text": "Ring it once for the whole square to hear", "consequence": "Bác Hải lifts the bell and rings it loud. The whole square answers together: “Ding-dong!” Chó Cảnh Sát Còi adds a long whistle." }
+        ]
+      }
+    },
+    {
+      "id": "chuyen-cuoi-tron-ven",
+      "title": "Chuyến cuối trọn vẹn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Xe Vàng Ươm đỗ bên bến, ghế nào cũng có người ngồi kể chuyện. Bác Hải bắt tay {name} như bắt tay một đồng nghiệp: «Phụ xe giỏi nhất bác từng có.»",
+      "en": {
+        "title": "A last run to remember",
+        "text": "Vàng Ươm rests beside the stop, every seat filled with someone telling stories. Bác Hải shakes {name}'s hand like a colleague's: “The best conductor I've ever had.”"
+      }
+    },
+    {
+      "id": "ben-moi",
+      "title": "Bến mới, chuyến mới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Từ mai bác Hải lái xe mới, còn Vàng Ươm thành chòi chờ ấm áp nhất quảng trường. Bác bảo giấc mơ tiếp theo là một chuyến xe đón bạn bè từ mọi miền về đây ăn chung một bữa, và chỗ ngồi đầu tiên dành cho {name}.",
+      "en": {
+        "title": "A new stop, a new run",
+        "text": "From tomorrow Bác Hải drives his new bus, and Vàng Ươm becomes the cosiest shelter on the square. His next dream, he says, is a run that brings friends from every corner to share one meal here, and the first seat is saved for {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 22,
+    "skillXp": { "logic": 1, "doc-hieu": 1 }
+  },
+  "en": {
+    "title": "Bác Lái Xe Hải's story, chapter 4: Last run, new stop",
+    "summary": "On Saturday morning the whole square greets Bác Hải with a surprise farewell. {name} helps passengers board, rings the bell at every stop, finds a detour round the roadworks and reads the city's letter: Vàng Ươm isn't going anywhere."
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "id": "yarn-lan-con-dau-lan-giay-3",
+  "region": "trung-tam",
+  "chapter": 3,
+  "title": "Chuyện của Lân Con Rộn Ràng, chương 3: Đêm hội của Lân",
+  "status": "active",
+  "category": "story",
+  "summary": "Đêm hội đã tới. {name} tính giờ cho tiết mục của Lân, cùng đoàn rước đèn quanh quảng trường, thắp đèn dọc đường rước. Đúng lúc Lân múa mở màn thì mặt trống thủng, tiếng trống im bặt: điều Lân sợ nhất đã tới.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Lân Con Rộn Ràng, Bác Trống Râu Bạc",
+    "where": "Quảng trường: khu sự kiện, tháp đồng hồ, đường rước đèn, sân khấu",
+    "goal": "Giúp Lân Con múa mở màn đêm hội trọn vẹn",
+    "play": "Tính giờ tiết mục; rước đèn ông sao; thắp ba chiếc đèn dọc đường rước; chọn cách giữ nhịp khi trống im",
+    "learn": "Xem giờ và cộng phút, tìm đồ vật theo tên",
+    "reward": "80 XP, 22 Xu, Skill XP Xem đồng hồ",
+    "next": "Lân Con được mời múa cùng đoàn lân lớn mùa hội tới"
+  },
+  "phases": {
+    "hook": "dem-hoi-toi-roi",
+    "explore": "tinh-gio-tiet-muc",
+    "learn": "tinh-gio-tiet-muc",
+    "challenge": "ruoc-den",
+    "decision": "trong-im-bat",
+    "finale": "trong-im-bat",
+    "reward": "lan-mo-man",
+    "next": "mua-hoi-toi"
+  },
+  "places": {
+    "lan-con-ron-rang": "Khu sự kiện",
+    "st-lan-con-dau-lan-giay-dong-ho-thap": "Tháp đồng hồ",
+    "thap-den-duong-ruoc": "Đường rước đèn",
+    "st-lan-con-dau-lan-giay-den-ong-sao": "Đường rước đèn",
+    "st-lan-con-dau-lan-giay-den-ca-chep": "Đường rước đèn",
+    "st-lan-con-dau-lan-giay-den-long-tron": "Đường rước đèn",
+    "st-lan-con-dau-lan-giay-bac-trong": "Sân khấu"
+  },
+  "steps": [
+    {
+      "id": "dem-hoi-toi-roi",
+      "title": "Đêm hội tới rồi",
+      "goTo": "Khu sự kiện đã treo đèn kín lối, Lân Con đội đầu lân giấy đứng đợi",
+      "kind": "dialogue",
+      "target": "lan-con-ron-rang",
+      "lines": [
+        { "speaker": "Lân Con Rộn Ràng", "text": "{name} tới rồi! Tim Lân đập tùng tùng như trống cái. Bác Trống bảo Lân được múa mở màn đấy!" },
+        { "speaker": "Lân Con Rộn Ràng", "text": "Lân chỉ lo một chuyện: lỡ trống ngừng giữa chừng thì Lân quên hết bước mất. Lúc đó {name} ở gần Lân nhé?" }
+      ],
+      "choices": [
+        { "text": "Tớ đứng hàng đầu, không rời mắt khỏi cậu!", "reply": "Thế thì Lân yên tâm rồi. Tùng cắc tùng, lên đường!" },
+        { "text": "Trống nào dám ngừng khi cậu đang múa chứ!", "reply": "Ha ha, {name} nói đúng! Trống mà ngừng, Lân lườm cho một cái." }
+      ],
+      "en": {
+        "title": "Festival night is here",
+        "goTo": "The events area is strung with lanterns, and Lân Con waits wearing the paper lion head",
+        "lines": [
+          "You're here, {name}! My heart is booming like the big drum. Bác Trống says I get to open the show!",
+          "I only worry about one thing: if the drum stops halfway, I'll forget every step. Will you stay close if that happens?"
+        ],
+        "choices": [
+          { "text": "I'll be in the front row, eyes on you the whole time!", "reply": "Then I'm not worried. Boom-tak-boom, let's go!" },
+          { "text": "No drum would dare stop while you're dancing!", "reply": "Ha ha, quite right! If it stops, I'll give it a good glare." }
+        ]
+      }
+    },
+    {
+      "id": "tinh-gio-tiet-muc",
+      "title": "Tính giờ cho tiết mục",
+      "goTo": "Tới tháp đồng hồ xem giờ, đêm hội bắt đầu đúng bảy giờ",
+      "kind": "riddle",
+      "target": "st-lan-con-dau-lan-giay-dong-ho-thap",
+      "skill": "xem-dong-ho",
+      "question": "Đêm hội bắt đầu lúc 7 giờ. Lân múa liền 3 bài, mỗi bài 10 phút. Lân múa xong lúc 7 giờ bao nhiêu phút?",
+      "answer": { "value": 30 },
+      "support": {
+        "guide": ["Mỗi bài múa kéo dài 10 phút.", "Ba bài là 10 + 10 + 10 phút, tính từ lúc 7 giờ."],
+        "hint": "Kim phút đi từ số 12 tới số 6 là đúng 30 phút.",
+        "answer": { "text": "7 giờ 30 phút thì Lân múa xong", "explanation": "10 + 10 + 10 = 30 phút. Bắt đầu lúc 7 giờ, múa 30 phút thì xong lúc 7 giờ 30 phút." },
+        "en": {
+          "guide": ["Each dance lasts 10 minutes.", "Three dances are 10 + 10 + 10 minutes, counted from 7 o'clock."],
+          "hint": "The minute hand going from 12 to 6 is exactly 30 minutes.",
+          "answer": { "text": "Lân finishes at 7:30", "explanation": "10 + 10 + 10 = 30 minutes. Starting at 7 o'clock and dancing 30 minutes ends at 7:30." }
+        }
+      },
+      "feedback": {
+        "right": ["Bảy giờ rưỡi! Lân ghi lên lòng bàn tay cho khỏi quên.", "{name} tính giờ chuẩn như chính chiếc đồng hồ trên tháp.", "Đúng ba mươi phút, vừa kịp cho đoàn rước đèn nối tiếp."],
+        "wrong": ["Ba bài chứ không phải một bài đâu, {name} cộng đủ cả ba nhé.", "Mỗi bài mười phút, đếm mười, hai mươi… tiếp đi nào.", "Nhìn kim phút trên tháp: đi hết ba bài thì kim chỉ vào số mấy?"],
+        "en": {
+          "right": ["Half past seven! Lân writes it on a paw so as not to forget.", "You timed that as precisely as the tower clock itself, {name}.", "Exactly thirty minutes, just in time for the lantern parade to follow."],
+          "wrong": ["It's three dances, not one, {name}; add all three.", "Ten minutes each, so count ten, twenty… keep going.", "Look at the tower's minute hand: after three dances, which number does it point to?"]
+        }
+      },
+      "en": {
+        "title": "Timing the act",
+        "goTo": "Go to the clock tower to check the time; the festival starts at exactly seven",
+        "question": "The festival starts at 7 o'clock. Lân dances 3 routines back to back, 10 minutes each. At how many minutes past 7 does Lân finish?"
+      }
+    },
+    {
+      "id": "ruoc-den",
+      "title": "Rước đèn quanh quảng trường",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Cầm đèn ông sao đi theo đoàn rước, giữ cho tám chiếc đèn luôn sáng nhé!",
+      "game": "lantern-parade",
+      "goal": 8,
+      "en": {
+        "title": "Lantern parade round the square",
+        "prompt": "Carry a star lantern with the parade and keep eight lanterns glowing!"
+      }
+    },
+    {
+      "id": "thap-den-duong-ruoc",
+      "title": "Thắp đèn dọc đường rước",
+      "goTo": "Dọc đường rước đèn còn ba chiếc đèn chưa sáng, tìm và thắp lên",
+      "kind": "search",
+      "targets": ["st-lan-con-dau-lan-giay-den-ong-sao", "st-lan-con-dau-lan-giay-den-ca-chep", "st-lan-con-dau-lan-giay-den-long-tron"],
+      "en": {
+        "title": "Lighting the parade route",
+        "goTo": "Three lanterns along the parade route are still dark; find them and light them"
+      }
+    },
+    {
+      "id": "trong-im-bat",
+      "title": "Tiếng trống im bặt",
+      "goTo": "Chạy lên sân khấu, Lân vừa múa thì mặt trống cái thủng mất",
+      "kind": "decision",
+      "target": "st-lan-con-dau-lan-giay-bac-trong",
+      "speaker": "Bác Trống Râu Bạc",
+      "prompt": "Bục! Mặt trống thủng, cả quảng trường im phăng phắc. Lân đứng sững, chân bắt đầu run. Bác Trống nhìn {name}: «Cháu có cách nào không?»",
+      "choices": [
+        { "id": "vo-tay", "text": "Rủ cả quảng trường vỗ tay làm trống", "consequence": "{name} vỗ tay «bốp bốp chát», rồi trăm bàn tay vỗ theo. Lân nghe nhịp, lắc bờm ba cái và múa tiếp, đẹp hơn cả lúc tập." },
+        { "id": "go-cot-den", "text": "Gõ nhịp «tùng tùng cắc» vào cột đèn", "consequence": "Tiếng gõ boong boong vang lên, Bác Trống gõ theo vào thành trống. Lân nhận ra nhịp quen, chân hết run, bước nào cũng trúng." },
+        { "id": "nhip-tim", "text": "Bảo Lân nghe nhịp tim mình mà múa", "consequence": "Lân nhắm mắt, nghe tim mình đập thình thịch, rồi múa theo đúng nhịp ấy. Cả quảng trường nín thở, rồi vỡ òa vỗ tay." }
+      ],
+      "en": {
+        "title": "The drum falls silent",
+        "goTo": "Rush up to the stage: just as Lân starts dancing, the big drum's skin splits",
+        "prompt": "Thwump! The drumskin splits and the whole square falls silent. Lân freezes, legs starting to shake. Bác Trống looks at {name}: “Any ideas?”",
+        "choices": [
+          { "text": "Get the whole square clapping like a drum", "consequence": "{name} claps “clap-clap-slap”, and a hundred hands join in. Lân hears the beat, shakes the mane three times and dances on, better than in practice." },
+          { "text": "Tap “boom-boom-tak” on a lamp post", "consequence": "The post rings out “bong-bong”, and Bác Trống taps along on the drum's rim. Lân recognises the rhythm, the shaking stops, and every step lands true." },
+          { "text": "Tell Lân to dance to the heartbeat inside", "consequence": "Lân closes both eyes, listens to that thumping heart and dances to it. The square holds its breath, then bursts into applause." }
+        ]
+      }
+    },
+    {
+      "id": "lan-mo-man",
+      "title": "Lân Con mở màn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bài múa kết thúc trong tiếng hò reo. Bác Trống xoa đầu Lân: «Năm sau, đoàn lân lớn sẽ múa theo sau cháu.» Lân tặng {name} chùm lục lạc của mình.",
+      "en": {
+        "title": "Lân Con opens the show",
+        "text": "The dance ends in cheers. Bác Trống pats Lân's head: “Next year, the big lions will dance behind you.” Lân gives {name} the string of bells as a thank-you."
+      }
+    },
+    {
+      "id": "mua-hoi-toi",
+      "title": "Mùa hội tới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Từ đêm ấy, Lân Con không còn sợ im lặng nữa: im lặng chỉ là lúc chờ một nhịp mới. Mùa hội tới, Lân sẽ dẫn đầu đoàn lân lớn, và Lân đã giữ sẵn một chỗ đứng hàng đầu cho {name}.",
+      "en": {
+        "title": "Next festival season",
+        "text": "Since that night Lân Con no longer fears silence: silence is just the wait before a new beat. Next festival, Lân will lead the big lion troupe, with a front-row spot already saved for {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 22,
+    "skillXp": { "xem-dong-ho": 1 }
+  },
+  "en": {
+    "title": "Lân Con Rộn Ràng's story, chapter 3: Lân's festival night",
+    "summary": "Festival night has come. {name} times Lân's act, joins the lantern parade round the square and lights lanterns along the route. Just as Lân opens the show, the drumskin splits and the beat falls silent: Lân's greatest fear has arrived."
+  }
+}

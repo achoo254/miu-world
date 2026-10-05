@@ -1,0 +1,211 @@
+{
+  "id": "yarn-lan-con-dau-lan-giay-2",
+  "region": "trung-tam",
+  "chapter": 3,
+  "title": "Chuyện của Lân Con Rộn Ràng, chương 2: Giấy báo, hồ dán và nan tre",
+  "status": "active",
+  "category": "story",
+  "summary": "Lân Con quyết tự làm một chiếc đầu lân bằng giấy bồi. {name} gom vật liệu quanh tháp đồng hồ, học Cô Bồi Giấy Mắt Kính các bước bồi giấy, chọn vật liệu thật nhẹ và giúp Lân chọn chiếc gương cho trán lân.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Lân Con Rộn Ràng, Cô Bồi Giấy Mắt Kính",
+    "where": "Quảng trường: khu sự kiện, quanh tháp đồng hồ, góc thủ công, trước cửa hàng",
+    "goal": "Làm một chiếc đầu lân nhẹ, vừa sức Lân Con",
+    "play": "Gom giấy báo, hồ dán, nan tre; xếp các bước bồi giấy; chọn vật liệu nhẹ; chọn gương cho đầu lân",
+    "learn": "Sắp xếp trình tự công việc, so sánh nặng nhẹ",
+    "reward": "70 XP, 18 Xu, Skill XP Kể chuyện, Logic",
+    "next": "Đêm hội: Lân Con múa mở màn với chiếc đầu lân của mình"
+  },
+  "phases": {
+    "hook": "lan-co-y-tuong",
+    "explore": "gom-vat-lieu",
+    "learn": "cac-buoc-boi-giay",
+    "challenge": "vat-lieu-that-nhe",
+    "decision": "guong-cho-tran-lan",
+    "finale": "guong-cho-tran-lan",
+    "reward": "dau-lan-dau-tien",
+    "next": "dem-hoi-sap-toi"
+  },
+  "places": {
+    "lan-con-ron-rang": "Khu sự kiện",
+    "gom-vat-lieu": "Quanh tháp đồng hồ",
+    "st-lan-con-dau-lan-giay-co-boi": "Góc thủ công",
+    "st-lan-con-dau-lan-giay-guong-nho": "Trước cửa hàng"
+  },
+  "steps": [
+    {
+      "id": "lan-co-y-tuong",
+      "title": "Lân có ý tưởng",
+      "goTo": "Lân Con đang vẽ nguệch ngoạc ở khu sự kiện",
+      "kind": "dialogue",
+      "target": "lan-con-ron-rang",
+      "lines": [
+        { "speaker": "Lân Con Rộn Ràng", "text": "Nhìn này {name}! Lân vẽ bản thiết kế đầu lân giấy: mắt to, sừng tròn, râu bông trắng phau!" },
+        { "speaker": "Lân Con Rộn Ràng", "text": "Bác Trống bảo làm bằng giấy bồi thì nhẹ tênh. Cần giấy báo cũ, hồ dán với nan tre, mà Lân chẳng biết bắt đầu từ đâu." }
+      ],
+      "choices": [
+        { "text": "Mình đi gom vật liệu trước đã!", "reply": "Tùng cắc tùng, xuất phát! Quanh tháp đồng hồ hay có người để giấy báo cũ lắm." },
+        { "text": "Sừng tròn trông dễ thương ghê.", "reply": "Lân muốn lân của Lân vừa oai vừa dễ thương. Được cả hai mới thích!" }
+      ],
+      "en": {
+        "title": "Lân has an idea",
+        "goTo": "Lân Con is scribbling away in the events area",
+        "lines": [
+          "Look, {name}! I've drawn a paper lion head: big eyes, round horns, a fluffy snow-white beard!",
+          "Bác Trống says papier-mâché is light as a feather. We need old newspapers, glue and bamboo strips, but I don't know where to start."
+        ],
+        "choices": [
+          { "text": "Let's gather the materials first!", "reply": "Boom-tak-boom, off we go! People often leave old newspapers round the clock tower." },
+          { "text": "Round horns look so cute.", "reply": "I want my lion mighty and cute at once. Both is best!" }
+        ]
+      }
+    },
+    {
+      "id": "gom-vat-lieu",
+      "title": "Gom vật liệu làm đầu lân",
+      "goTo": "Đi quanh tháp đồng hồ tìm giấy báo, hồ dán và nan tre",
+      "kind": "search",
+      "targets": ["st-lan-con-dau-lan-giay-bao-cu", "st-lan-con-dau-lan-giay-ho-dan", "st-lan-con-dau-lan-giay-khung-tre"],
+      "en": {
+        "title": "Gathering lion head materials",
+        "goTo": "Walk round the clock tower looking for newspapers, glue and bamboo strips"
+      }
+    },
+    {
+      "id": "cac-buoc-boi-giay",
+      "title": "Các bước bồi giấy",
+      "goTo": "Mang vật liệu tới góc thủ công, Cô Bồi Giấy Mắt Kính đang đợi",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-lan-con-dau-lan-giay-co-boi",
+      "skill": "ke-chuyen",
+      "prompt": "Cô Bồi Giấy kể cách làm đầu lân giấy bồi. Xếp các bước theo đúng thứ tự:",
+      "items": [
+        { "id": "phoi-kho", "label": "Phơi thật khô rồi tháo quả bóng ra" },
+        { "id": "ve-mat", "label": "Vẽ mặt lân, gắn gương và râu" },
+        { "id": "thoi-bong", "label": "Thổi một quả bóng thật to làm khuôn" },
+        { "id": "dan-giay", "label": "Phết hồ, dán từng lớp giấy báo lên bóng" }
+      ],
+      "answer": { "order": ["thoi-bong", "dan-giay", "phoi-kho", "ve-mat"] },
+      "support": {
+        "guide": ["Phải có khuôn trước thì mới dán giấy lên được.", "Giấy còn ướt thì chưa tháo khuôn được.", "Vẽ và trang trí là việc cuối cùng."],
+        "hint": "Khuôn → dán → phơi → vẽ.",
+        "answer": { "text": "Thổi bóng → dán giấy → phơi khô, tháo bóng → vẽ mặt, gắn gương", "explanation": "Quả bóng làm khuôn, giấy dán quanh khuôn, phải khô cứng mới tháo bóng ra được, sau cùng mới vẽ và trang trí." },
+        "en": {
+          "guide": ["You need a mould before you can stick paper on it.", "Wet paper can't come off the mould yet.", "Painting and decorating come last."],
+          "hint": "Mould → paste → dry → paint.",
+          "answer": { "text": "Blow up the balloon → paste paper → dry and remove the balloon → paint the face, add the mirror", "explanation": "The balloon is the mould, the paper is pasted round it, it must dry hard before the balloon comes out, and only then do you paint and decorate." }
+        }
+      },
+      "feedback": {
+        "right": ["Cô Bồi đẩy gọng kính lên: «Chuẩn từng bước, cháu làm thợ thủ công được đấy!»", "Đúng trình tự, đầu lân sẽ tròn mà không bẹp chỗ nào.", "{name} xếp việc khéo, Lân Con nhảy cẫng lên vỗ tay."],
+        "wrong": ["Vẽ lên khi giấy còn chưa dán thì vẽ vào đâu bây giờ, {name}?", "Tháo bóng lúc giấy còn ướt là đầu lân xẹp như bánh đa nhúng nước mất.", "Không có khuôn thì giấy dán vào đâu? Xếp lại từ việc đầu tiên nhé."],
+        "en": {
+          "right": ["Cô Bồi pushes up her glasses: “Every step right, you'd make a fine craftsperson!”", "Right order, so the lion head will be round without a single dent.", "You ordered the jobs so neatly, {name}, that Lân Con leaps up clapping."],
+          "wrong": ["Painting before the paper is on? What would you paint on, {name}?", "Pull the balloon out while the paper's wet and the head collapses like a soggy cracker.", "No mould, nothing to paste onto. Start again from the first job."]
+        }
+      },
+      "en": {
+        "title": "Papier-mâché steps",
+        "goTo": "Take the materials to the craft corner, where Cô Bồi Giấy Mắt Kính is waiting",
+        "prompt": "Cô Bồi Giấy explains how to make a papier-mâché lion head. Put the steps in order:",
+        "items": ["Dry it completely, then take the balloon out", "Paint the lion's face, add the mirror and beard", "Blow up a big balloon as a mould", "Brush on glue and paste layers of newspaper over the balloon"]
+      }
+    },
+    {
+      "id": "vat-lieu-that-nhe",
+      "title": "Vật liệu thật nhẹ",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-lan-con-dau-lan-giay-co-boi",
+      "skill": "logic",
+      "prompt": "Đầu lân phải nhẹ để Lân đội múa trọn cả bài. Chọn tất cả những vật liệu nhẹ dùng được:",
+      "choices": [
+        { "id": "giay-bao", "text": "Giấy báo cũ" },
+        { "id": "nan-tre", "text": "Nan tre mỏng" },
+        { "id": "go-lim", "text": "Tấm gỗ lim dày" },
+        { "id": "tam-sat", "text": "Miếng tôn sắt" },
+        { "id": "bong-gon", "text": "Bông gòn làm râu" }
+      ],
+      "answer": { "choices": ["giay-bao", "nan-tre", "bong-gon"] },
+      "support": {
+        "guide": ["Tưởng tượng cầm từng thứ trên tay: thứ nào nhấc lên dễ dàng?", "Gỗ dày và sắt thì chắc nhưng nặng."],
+        "hint": "Có ba thứ nhẹ: một thứ để dán, một thứ làm khung, một thứ làm râu.",
+        "answer": { "text": "Ba thứ nhẹ: giấy báo, nan tre và bông gòn", "explanation": "Giấy báo, nan tre mỏng và bông gòn đều nhẹ, vừa đủ làm vỏ, khung và râu. Gỗ lim dày và tôn sắt quá nặng cho một chú lân con." },
+        "en": {
+          "guide": ["Imagine holding each one: which lifts easily?", "Thick wood and metal are sturdy but heavy."],
+          "hint": "Three are light: one for pasting, one for the frame, one for the beard.",
+          "answer": { "text": "Three light ones: newspaper, bamboo strips and cotton wool", "explanation": "Newspaper, thin bamboo strips and cotton wool are all light, enough for the shell, the frame and the beard. Thick ironwood and sheet metal are far too heavy for a lion cub." }
+        }
+      },
+      "feedback": {
+        "right": ["Lân nhấc thử đống vật liệu bằng một tay: «Nhẹ như đuôi mèo!»", "{name} chọn đúng cả ba, đầu lân giấy sẽ nhẹ tênh.", "Giấy, tre, bông, toàn thứ nhẹ mà vẫn làm nên một chú lân oai phong."],
+        "wrong": ["Thêm thứ ấy vào thì Lân lại chúi mũi như hôm qua mất, {name}.", "Còn một vật liệu nhẹ chưa chọn, nhìn lại phần râu lân xem.", "Gỗ lim với tôn sắt để làm cổng thì được, làm đầu lân thì nặng lắm."],
+        "en": {
+          "right": ["Lân lifts the pile with one paw: “Light as a cat's tail!”", "You picked all three, {name}; the paper lion head will weigh next to nothing.", "Paper, bamboo and cotton, all light, yet they'll make a mighty lion."],
+          "wrong": ["Add that and Lân would topple nose-first like yesterday, {name}.", "One light material is still unpicked; think about the lion's beard.", "Ironwood and sheet metal are fine for a gate, but far too heavy for a lion head."]
+        }
+      },
+      "en": {
+        "title": "Feather-light materials",
+        "prompt": "The lion head must be light enough for Lân to dance a whole routine. Pick every light material that will work:",
+        "choices": ["Old newspaper", "Thin strips of bamboo", "A thick board of ironwood", "A sheet of tin", "Cotton wool for the beard"]
+      }
+    },
+    {
+      "id": "guong-cho-tran-lan",
+      "title": "Chiếc gương cho trán lân",
+      "goTo": "Ra trước cửa hàng chọn chiếc gương tròn nhỏ cho trán lân",
+      "kind": "decision",
+      "target": "st-lan-con-dau-lan-giay-guong-nho",
+      "speaker": "Lân Con Rộn Ràng",
+      "prompt": "Đầu lân đã khô, chỉ còn thiếu chiếc gương trên trán. Ở quầy có ba chiếc gương nhỏ. Lân hỏi: «{name} chọn chiếc nào cho Lân?»",
+      "choices": [
+        { "id": "guong-tron", "text": "Chiếc gương tròn sáng loáng", "consequence": "Gương bắt nắng lóe lên một cái, Lân reo: «Điều xui nào thấy cũng phải chạy mất dép!»" },
+        { "id": "guong-hoa", "text": "Chiếc gương viền hoa sen", "consequence": "Viền hoa sen làm đầu lân trông hiền hẳn. Lân ngắm mãi: «Oai mà vẫn dễ thương, đúng như Lân muốn.»" },
+        { "id": "guong-nho", "text": "Chiếc gương bé nhất, nhẹ nhất", "consequence": "Lân gật gù: «Nhẹ thêm tí nào hay tí ấy!» Gắn xong, đầu lân vẫn nhẹ như một chiếc lá." }
+      ],
+      "en": {
+        "title": "A mirror for the lion's forehead",
+        "goTo": "Go to the shop front to choose a little round mirror for the lion's forehead",
+        "prompt": "The lion head is dry; only the forehead mirror is missing. The stall has three small mirrors. Lân asks: “Which one would you choose for me, {name}?”",
+        "choices": [
+          { "text": "The gleaming round mirror", "consequence": "The mirror flashes in the sun and Lân cheers: “Any bad luck that sees this will run for its life!”" },
+          { "text": "The mirror with a lotus rim", "consequence": "The lotus rim makes the lion look gentler. Lân admires it: “Mighty yet cute, just how I wanted.”" },
+          { "text": "The smallest, lightest mirror", "consequence": "Lân nods: “Every bit lighter helps!” Once fixed on, the head is still light as a leaf." }
+        ]
+      }
+    },
+    {
+      "id": "dau-lan-dau-tien",
+      "title": "Chiếc đầu lân đầu tiên của Lân",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Lân đội chiếc đầu lân giấy lên, xoay một vòng, không chúi mũi chút nào. Cô Bồi Giấy tặng {name} một con lân giấy tí hon làm kỷ niệm.",
+      "en": {
+        "title": "Lân's very own lion head",
+        "text": "Lân puts on the paper lion head, spins round, and doesn't topple one bit. Cô Bồi Giấy gives {name} a tiny paper lion as a keepsake."
+      }
+    },
+    {
+      "id": "dem-hoi-sap-toi",
+      "title": "Đêm hội sắp tới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chỉ còn một đêm nữa là tới hội. Lân Con hồi hộp đến mức tập múa cả trong mơ. {name} nhớ tới sớm, Lân cần người vỗ tay đầu tiên!",
+      "en": {
+        "title": "The festival draws near",
+        "text": "Just one night until the festival. Lân Con is so nervous there's dancing even in dreams. Come early, {name}; Lân needs the very first clap!"
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": { "ke-chuyen": 1, "logic": 1 }
+  },
+  "en": {
+    "title": "Lân Con Rộn Ràng's story, chapter 2: Newspaper, glue and bamboo",
+    "summary": "Lân Con decides to make a papier-mâché lion head. {name} gathers materials round the clock tower, learns the papier-mâché steps from Cô Bồi Giấy Mắt Kính, picks feather-light materials and helps Lân choose a mirror for the lion's forehead."
+  }
+}
