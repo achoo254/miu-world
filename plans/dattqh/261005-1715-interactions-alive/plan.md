@@ -11,7 +11,7 @@ created: 2026-10-05
 
 # Mọi tương tác đều có hoạt cảnh, đúng chỗ và đồ vật phản hồi
 
-**Trạng thái:** đã lập (05/10/2026), chờ phiên kết bạn/nhà riêng commit rồi thi công · **Tier:** L · **Nhánh:** `main`
+**Trạng thái:** pha 1–5 xong phần tự động (05/10/2026), chờ người duyệt và deploy (migration `0015` bảng `home_objects`); report `plans/dattqh/reports/interactions-alive-261005.md` · **Tier:** L · **Nhánh:** `main`
 **Nguồn:** người sở hữu (05/10/2026): "không muốn bất kỳ hành động tương tác nào mà nhân vật bị đơ hoặc không có hoạt cảnh"; cửa chính sai chỗ, tivi/đèn không đổi, ngồi lọt vào ghế, xích đu phải ngồi và đung đưa. Chẩn đoán và quyết định của Jev: `reports/debug-261005-1700-home-door-objects-seat.md`.
 
 ## Hiện trạng đo được (05/10/2026)
@@ -54,3 +54,16 @@ created: 2026-10-05
 ## Phụ thuộc
 
 - Chờ plan `261004-1617-parent-area-friends` (nhà riêng, trang trí nhà) commit: cùng đụng nhà của bé và lưu ở server.
+
+## Kết quả (05/10/2026)
+
+| Pha | Kết quả |
+| --- | --- |
+| 1 Động tác | Xong: 23 tư thế, mỗi tư thế một động tác (`player-actions.ts`), bảng `interaction-poses.ts`; 73 kiểu (65 cũ gán lại, 8 mới); khớp model theo từ nguyên vẹn |
+| 2 Chỗ ngồi, nằm, đu | Xong: `seats`/`lie`/`front`/`screen` trong `models.json`; thân trên mặt ghế/nệm/ván, controller ở chỗ trống, "Đứng dậy"; xích đu con lắc, tắt khi giảm chuyển động |
+| 3 Hiệu ứng | Xong: `effect`/`noEffect` mỗi kiểu; hào quang, màn hình, bản lề, quay, đu, nước, hơi, hình bay; một đèn thật (không ở `low`); nhà riêng lưu server (`/api/home-objects`, migration `0015`) |
+| 4 Cửa nhà | Xong: cửa đôi trong vòm tự mở/đóng, tủ gầm cầu thang nửa chiều cao; sinh lại map, 3 audit sạch, `assets:manifest` |
+| 5 Kiểm tra máy | Xong: test danh mục, `pnpm world:interactions`, E2E project `interactions` (một ca `@smoke`) |
+
+Thêm giữa đợt (người sở hữu, 05/10/2026): bỏ công tắc tắt online, game luôn online (migration `0016`), giữ công tắc bạn máy.
+
