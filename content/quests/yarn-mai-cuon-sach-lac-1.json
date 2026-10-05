@@ -1,0 +1,338 @@
+{
+  "id": "yarn-mai-cuon-sach-lac-1",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Chuyện của Cô Thủ Thư Mai, chương 1: Cuốn sách trả muộn",
+  "status": "active",
+  "category": "story",
+  "summary": "Hộp trả sách đêm có một cuốn sách sờn hết chữ, kèm lời xin lỗi vì trả muộn. {name} đọc mẩu giấy gấp tư, lục kho sách tìm chỗ của cuốn sách, tính tuổi người mượn năm xưa và giúp Cô Thủ Thư Mai quyết định đặt nó ở đâu.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cô Thủ Thư Mai",
+    "where": "Thư viện: bàn hướng dẫn, quầy trả sách, kho sách, bàn đọc sách",
+    "goal": "Tìm hiểu cuốn sách lạ vừa được trả qua hộp trả sách đêm",
+    "play": "Đọc lời nhắn của người trả sách, tìm ba manh mối trong kho sách, giải bài tính tuổi, chọn chỗ đặt sách, xếp lại giá sách",
+    "learn": "Đọc hiểu lời nhắn, phép trừ các số tròn chục",
+    "reward": "60 XP, 15 Xu, Skill XP Đọc hiểu, Phép trừ",
+    "next": "Đi tìm người đọc chậm đã giữ cuốn sách suốt ba mươi năm"
+  },
+  "phases": {
+    "hook": "mai-sach-la",
+    "explore": "doc-loi-nhan",
+    "learn": "doc-loi-nhan",
+    "challenge": "tuoi-ban-mai",
+    "decision": "dat-sach-o-dau",
+    "finale": "xep-lai-gia-sach",
+    "reward": "sach-ve-nha",
+    "next": "ban-mai-lop-hai"
+  },
+  "places": {
+    "co-thu-thu-mai": "Bàn hướng dẫn",
+    "st-mai-cuon-sach-lac-loi-nhan": "Quầy trả sách",
+    "tim-cho-cuon-sach": "Kho sách",
+    "st-mai-cuon-sach-lac-the-muon-cu": "Bàn đọc sách"
+  },
+  "steps": [
+    {
+      "id": "mai-sach-la",
+      "title": "Cuốn sách lạ",
+      "goTo": "Tới bàn hướng dẫn, Cô Thủ Thư Mai đang cầm một cuốn sách lạ",
+      "kind": "dialogue",
+      "target": "co-thu-thu-mai",
+      "lines": [
+        {
+          "speaker": "Cô Thủ Thư Mai",
+          "text": "Suỵt… chào cháu {name}. Sáng nay hộp trả sách đêm có một cuốn sách lạ lắm: bìa sờn hết chữ, gáy dán băng keo tới ba lớp."
+        },
+        {
+          "speaker": "Cô Thủ Thư Mai",
+          "text": "Cô tra sổ mãi mà chẳng thấy ai đang mượn nó. Kèm theo chỉ có một mẩu giấy gấp tư, cô để ở quầy trả sách."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đọc mẩu giấy giúp cô nhé!",
+          "reply": "Cảm ơn cháu. Đọc chậm thôi, chữ người viết run run lắm."
+        },
+        {
+          "text": "Sách đi lạc cũng biết đường về à cô?",
+          "reply": "Sách tốt thì biết đấy. Có cuốn đi vòng quanh cả thế giới rồi mới về."
+        }
+      ],
+      "en": {
+        "title": "The strange book",
+        "goTo": "Go to the help desk, where Cô Thủ Thư Mai is holding a strange book",
+        "lines": [
+          "Shh… hello, {name}. This morning the night-return box held a very odd book: the cover is worn blank and the spine is taped three times over.",
+          "I've checked the records again and again, and no one has it on loan. All that came with it was a note folded in four, which I left at the returns counter."
+        ],
+        "choices": [
+          {
+            "text": "Let me read the note for you!",
+            "reply": "Thank you, dear. Read it slowly; the handwriting is very shaky."
+          },
+          {
+            "text": "Can a lost book find its way home?",
+            "reply": "Good books can. Some travel right round the world before they come back."
+          }
+        ]
+      }
+    },
+    {
+      "id": "doc-loi-nhan",
+      "title": "Mẩu giấy gấp tư",
+      "goTo": "Ra quầy trả sách mở mẩu giấy gấp tư",
+      "kind": "read",
+      "target": "st-mai-cuon-sach-lac-loi-nhan",
+      "skill": "doc-hieu",
+      "text": "Gửi thư viện,\nTôi nhặt được cuốn sách này trên chuyến xe buýt số 7, đã lâu lắm rồi. Các cháu tôi thuộc lòng từng trang. Năm nay mắt kém, đeo kính mới tôi mới đọc ra dấu của thư viện ở trang cuối. Xin lỗi vì trả muộn.\nMột người đọc chậm.",
+      "question": "Người viết thư nhặt được cuốn sách ở đâu?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Trong hộp trả sách đêm"
+        },
+        {
+          "id": "b",
+          "text": "Trên chuyến xe buýt số 7"
+        },
+        {
+          "id": "c",
+          "text": "Ở trang cuối cuốn sách"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Tìm câu có chữ «nhặt được».",
+          "Câu ấy kể nơi người viết thấy cuốn sách."
+        ],
+        "hint": "Đó là một chuyến xe có đánh số.",
+        "answer": {
+          "text": "Trên xe buýt số 7",
+          "explanation": "Lời nhắn viết: tôi nhặt được cuốn sách này trên chuyến xe buýt số 7. Hộp trả sách đêm chỉ là nơi người ấy gửi trả."
+        },
+        "en": {
+          "guide": [
+            "Find the sentence with the word «found».",
+            "That sentence tells where the writer came across the book."
+          ],
+          "hint": "It's a vehicle with a number.",
+          "answer": {
+            "text": "On bus number 7",
+            "explanation": "The note says: I found this book on the number 7 bus. The night-return box is only where they sent it back."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Xe buýt số 7! Cô Mai khẽ đặt tay lên ngực.",
+          "{name} đọc trúng câu then chốt của lá thư rồi.",
+          "Phải, cuốn sách đã đi xe buýt trước khi về đây."
+        ],
+        "wrong": [
+          "Hộp trả sách đêm là nơi người ấy trả, chứ không phải nơi nhặt.",
+          "Trang cuối chỉ có dấu thư viện thôi, đọc lại mấy câu đầu nhé.",
+          "Tìm chữ «nhặt được» rồi đọc nốt câu ấy xem nào."
+        ],
+        "en": {
+          "right": [
+            "Bus number 7! Cô Mai quietly lays a hand on her heart.",
+            "{name} found the key sentence of the letter.",
+            "Yes, the book rode a bus before it came here."
+          ],
+          "wrong": [
+            "The night-return box is where it came back, not where it was found.",
+            "The last page only has the library stamp. Read the first lines again.",
+            "Look for the word «found» and read the rest of that sentence."
+          ]
+        }
+      },
+      "en": {
+        "title": "The folded note",
+        "goTo": "Go to the returns counter and unfold the note",
+        "text": "To the library,\nI found this book on the number 7 bus, a very long time ago. My grandchildren know every page by heart. My eyes are weak these days, and only with my new glasses could I read the library stamp on the last page. Sorry it is late.\nA slow reader.",
+        "question": "Where did the letter writer find the book?",
+        "choices": [
+          "In the night-return box",
+          "On the number 7 bus",
+          "On the last page of the book"
+        ]
+      }
+    },
+    {
+      "id": "tim-cho-cuon-sach",
+      "title": "Chỗ của cuốn sách",
+      "goTo": "Vào kho sách tìm chỗ của cuốn sách đi lạc",
+      "kind": "search",
+      "targets": [
+        "st-mai-cuon-sach-lac-hop-phieu",
+        "st-mai-cuon-sach-lac-ngan-ke-trong",
+        "st-mai-cuon-sach-lac-so-muon-cu"
+      ],
+      "en": {
+        "title": "Where the book belongs",
+        "goTo": "Go into the stacks and find where the stray book belongs"
+      }
+    },
+    {
+      "id": "tuoi-ban-mai",
+      "title": "Tấm thẻ mượn cũ",
+      "goTo": "Mang sổ mượn ra bàn đọc sách so với tấm thẻ cũ",
+      "kind": "riddle",
+      "target": "st-mai-cuon-sach-lac-the-muon-cu",
+      "skill": "phep-tru",
+      "question": "Dòng cuối trên tấm thẻ mượn ghi: «Mai, lớp Hai». Sách trả muộn đúng 30 năm. Cô Thủ Thư Mai năm nay 38 tuổi. Nếu bạn Mai ấy chính là cô, thì hồi mượn sách cô mấy tuổi?",
+      "answer": {
+        "value": 8
+      },
+      "support": {
+        "guide": [
+          "Ba mươi năm trước, cô ít hơn bây giờ 30 tuổi.",
+          "Lấy tuổi bây giờ trừ đi 30."
+        ],
+        "hint": "38 − 30 = ?",
+        "answer": {
+          "text": "8 tuổi",
+          "explanation": "38 − 30 = 8. Tám tuổi là đúng tuổi học lớp Hai, khớp với dòng ghi trên thẻ."
+        },
+        "en": {
+          "guide": [
+            "Thirty years ago she was 30 years younger than now.",
+            "Take her age now and subtract 30."
+          ],
+          "hint": "38 − 30 = ?",
+          "answer": {
+            "text": "8 years old",
+            "explanation": "38 − 30 = 8. Eight is just the right age for second grade, which matches the card."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tám tuổi… Cô Mai lặng đi một lúc, rồi mỉm cười rất khẽ.",
+          "{name} trừ nhanh quá, mà đúng tới từng tuổi.",
+          "Đúng tuổi học lớp Hai, tấm thẻ không nói dối đâu."
+        ],
+        "wrong": [
+          "Nhớ là lấy tuổi bây giờ trừ đi ba mươi nhé.",
+          "Nhỏ thế thì chưa đi học được đâu, tính lại xem.",
+          "Tách 38 thành 30 và 8 rồi bỏ phần 30 đi thử."
+        ],
+        "en": {
+          "right": [
+            "Eight… Cô Mai goes quiet for a moment, then smiles very softly.",
+            "{name} subtracted fast, and got every year right.",
+            "Just the age for second grade: the card isn't lying."
+          ],
+          "wrong": [
+            "Remember: take her age now and subtract thirty.",
+            "She couldn't have been at school that young. Work it out again.",
+            "Split 38 into 30 and 8, then take away the 30."
+          ]
+        }
+      },
+      "en": {
+        "title": "The old loan card",
+        "goTo": "Take the loan register to the reading table and compare it with the old card",
+        "question": "The last line on the loan card says: «Mai, second grade». The book is exactly 30 years late. Cô Thủ Thư Mai is 38 this year. If that Mai is her, how old was she when she borrowed it?"
+      }
+    },
+    {
+      "id": "dat-sach-o-dau",
+      "title": "Đặt sách ở đâu?",
+      "goTo": "Về bàn hướng dẫn kể cho Cô Thủ Thư Mai nghe",
+      "kind": "decision",
+      "target": "co-thu-thu-mai",
+      "speaker": "Cô Thủ Thư Mai",
+      "prompt": "Cô Mai ôm cuốn sách vào lòng: «Giờ để nó ở đâu đây cháu?»",
+      "choices": [
+        {
+          "id": "tra-ke",
+          "text": "Đặt lại vào ngăn kệ còn trống",
+          "consequence": "Cuốn sách trượt vào ngăn kệ khít như chưa từng đi đâu. Cô Mai vuốt gáy sách ba lần."
+        },
+        {
+          "id": "tu-kinh",
+          "text": "Bày vào tủ kính cạnh cửa cho ai cũng thấy",
+          "consequence": "Cô Mai viết tấm biển nhỏ: «Cuốn sách đi lạc ba mươi năm». Bạn đọc nào đi qua cũng dừng lại ngó."
+        },
+        {
+          "id": "giu-o-quay",
+          "text": "Giữ ở bàn hướng dẫn cho tới khi tìm ra người đọc chậm",
+          "consequence": "Cô Mai gật đầu: «Phải cảm ơn người ta tận mặt đã.» Cuốn sách nằm cạnh lọ hoa, chờ."
+        }
+      ],
+      "en": {
+        "title": "Where should it go?",
+        "goTo": "Go back to the help desk and tell Cô Thủ Thư Mai everything",
+        "prompt": "Cô Mai hugs the book: «Where should it go now, dear?»",
+        "choices": [
+          {
+            "text": "Put it back in the empty slot on the shelf",
+            "consequence": "The book slides into its slot as if it had never been away. Cô Mai strokes its spine three times."
+          },
+          {
+            "text": "Put it in the glass case by the door for everyone to see",
+            "consequence": "Cô Mai writes a little sign: «The book that was lost for thirty years». Every reader who passes stops to look."
+          },
+          {
+            "text": "Keep it at the desk until we find the slow reader",
+            "consequence": "Cô Mai nods: «We must thank them face to face first.» The book sits beside the flower vase, waiting."
+          }
+        ]
+      }
+    },
+    {
+      "id": "xep-lai-gia-sach",
+      "title": "Xếp lại giá sách",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "prompt": "Cô Mai bối rối quá, cháu xếp giúp cô giá sách cho đủ mười lăm điểm nhé!",
+      "game": "book-shelf-order",
+      "goal": 15,
+      "trigger": "auto",
+      "en": {
+        "title": "Tidy the shelf",
+        "prompt": "Cô Mai is all in a flutter. Help her sort the shelf and score fifteen points!"
+      }
+    },
+    {
+      "id": "sach-ve-nha",
+      "title": "Sách đã về nhà",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cô Mai đóng dấu «Đã về» lên trang cuối cuốn sách, rồi đóng thêm một dấu bé xíu lên mu bàn tay {name} cho vui.",
+      "en": {
+        "title": "The book is home",
+        "text": "Cô Mai stamps «Returned» on the last page of the book, then stamps a tiny one on the back of {name}'s hand for fun."
+      }
+    },
+    {
+      "id": "ban-mai-lop-hai",
+      "title": "Bạn Mai lớp Hai",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Lúc đóng cửa, cô Mai thì thầm: «Bạn Mai lớp Hai ấy là cô đấy. Cô đánh rơi cuốn sách trên xe buýt năm tám tuổi, và chưa từng kể với ai.» Cô muốn tìm cho ra người đọc chậm kia.",
+      "en": {
+        "title": "The second-grader called Mai",
+        "text": "At closing time, Cô Mai whispers: «That second-grader called Mai was me. I dropped the book on a bus when I was eight, and I've never told anyone.» She wants to find the slow reader."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 1,
+      "phep-tru": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Cô Thủ Thư Mai's story, chapter 1: The late book",
+    "summary": "The night-return box holds a book worn blank, with an apology for bringing it back late. {name} reads the folded note, searches the stacks for the book's place, works out how old its borrower was long ago and helps Cô Thủ Thư Mai decide where it should go."
+  }
+}

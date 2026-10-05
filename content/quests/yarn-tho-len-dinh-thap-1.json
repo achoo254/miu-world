@@ -1,0 +1,375 @@
+{
+  "id": "yarn-tho-len-dinh-thap-1",
+  "region": "thu-vien",
+  "chapter": 3,
+  "title": "Chuyện của Thỏ Ngắm Sao, chương 1: Chiếu nghỉ đầu tiên",
+  "status": "active",
+  "category": "story",
+  "summary": "Ba đêm nữa có mưa sao băng, mà chỗ ngắm đẹp nhất là đỉnh tháp đồng hồ, nơi Thỏ Ngắm Sao sợ độ cao chưa bao giờ dám lên. {name} đọc lịch sao, tính giờ ngủ cho Thỏ, sửa soạn chiếu nghỉ và giúp Thỏ bước những bậc thang đầu tiên.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Thỏ Ngắm Sao",
+    "where": "Thư viện: bãi cỏ bên tháp, dưới chân tháp đồng hồ, chân cầu thang xoắn, chiếu nghỉ cầu thang xoắn",
+    "goal": "Giúp Thỏ Ngắm Sao leo được tới chiếu nghỉ đầu tiên của tháp đồng hồ",
+    "play": "Đọc lịch mưa sao băng, tính số tiếng ngủ, tìm ba món làm chiếu nghỉ đỡ đáng sợ, chọn cách leo, nối chòm sao",
+    "learn": "Đọc hiểu một tờ lịch, tính khoảng thời gian qua nửa đêm",
+    "reward": "55 XP, 14 Xu, Skill XP Đọc hiểu, Xem đồng hồ",
+    "next": "Đi qua gác chuông, nơi quả chuông lớn điểm giờ"
+  },
+  "phases": {
+    "hook": "tho-ngap-ngu",
+    "explore": "doc-lich-sao",
+    "learn": "doc-lich-sao",
+    "challenge": "gio-ngu-cua-tho",
+    "decision": "cach-leo-dau-tien",
+    "finale": "tap-noi-chom-sao",
+    "reward": "huy-hieu-dan-duong",
+    "next": "nhin-len-gac-chuong"
+  },
+  "places": {
+    "tho-ngam-sao": "Bãi cỏ bên tháp",
+    "st-tho-len-dinh-thap-lich-sao": "Chân tháp",
+    "st-tho-len-dinh-thap-dong-ho-bao-thuc": "Chân thang xoắn",
+    "do-cho-chieu-nghi": "Chiếu nghỉ đầu tiên"
+  },
+  "steps": [
+    {
+      "id": "tho-ngap-ngu",
+      "title": "Thỏ Ngắm Sao ngáp ngủ",
+      "goTo": "Ra bãi cỏ bên tháp, Thỏ Ngắm Sao đang ngáp ngủ",
+      "kind": "dialogue",
+      "target": "tho-ngam-sao",
+      "lines": [
+        {
+          "speaker": "Thỏ Ngắm Sao",
+          "text": "{name}… ba đêm nữa có mưa sao băng đấy… Cả năm tớ chỉ chờ mỗi đêm ấy thôi."
+        },
+        {
+          "speaker": "Thỏ Ngắm Sao",
+          "text": "Nhưng ở bãi cỏ này cây với đèn che mất nửa trời. Chỗ đẹp nhất là đỉnh tháp đồng hồ… mà tớ sợ cao lắm, chưa từng leo quá chiếu nghỉ đầu tiên."
+        },
+        {
+          "speaker": "Thỏ Ngắm Sao",
+          "text": "Cậu xem giúp tớ cuốn lịch sao để dưới chân tháp đồng hồ trước nhé…"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình leo từng chút một, được không?",
+          "reply": "Từng chút một… ừ, nghe cũng không đáng sợ lắm."
+        },
+        {
+          "text": "Sao băng là sao rơi thật à?",
+          "reply": "Không đâu, đó là những hạt bụi đá cháy sáng khi lao vào bầu trời. Nhưng tớ vẫn thích gọi là sao rơi…"
+        }
+      ],
+      "en": {
+        "title": "A sleepy Thỏ Ngắm Sao",
+        "goTo": "Go to the lawn by the tower, where Thỏ Ngắm Sao is yawning",
+        "lines": [
+          "{name}… in three nights there's a meteor shower… It's the one night I wait for all year.",
+          "But down on this lawn, trees and lamps hide half the sky. The best spot is the top of the clock tower… and I'm scared of heights. I've never been past the first landing.",
+          "Could you check my star calendar at the foot of the clock tower first…"
+        ],
+        "choices": [
+          {
+            "text": "We'll climb a little at a time, okay?",
+            "reply": "A little at a time… yes, that doesn't sound so scary."
+          },
+          {
+            "text": "Is a shooting star a real star falling?",
+            "reply": "No, it's specks of space dust burning bright as they rush into the sky. But I still like calling them falling stars…"
+          }
+        ]
+      }
+    },
+    {
+      "id": "doc-lich-sao",
+      "title": "Cuốn lịch sao",
+      "goTo": "Tới dưới chân tháp đồng hồ đọc cuốn lịch sao của Thỏ",
+      "kind": "read",
+      "target": "st-tho-len-dinh-thap-lich-sao",
+      "skill": "doc-hieu",
+      "text": "MƯA SAO BĂNG THÁNG MƯỜI\nĐêm thứ bảy này, sao băng rơi nhiều nhất từ 2 giờ tới 4 giờ sáng.\nHãy nhìn về phía đông, nơi không có đèn và cây che.\nMang theo chăn, vì gần sáng trời rất lạnh.",
+      "question": "Muốn ngắm nhiều sao băng nhất, Thỏ phải nhìn về hướng nào?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Phía tây"
+        },
+        {
+          "id": "b",
+          "text": "Phía đông"
+        },
+        {
+          "id": "c",
+          "text": "Phía bắc"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Tìm câu có chữ «nhìn về».",
+          "Câu đó chỉ một hướng."
+        ],
+        "hint": "Đó cũng là hướng mặt trời mọc.",
+        "answer": {
+          "text": "Nhìn về phía đông",
+          "explanation": "Lịch sao viết: hãy nhìn về phía đông, nơi không có đèn và cây che."
+        },
+        "en": {
+          "guide": [
+            "Find the sentence with the word «look».",
+            "That sentence names a direction."
+          ],
+          "hint": "It's also where the sun rises.",
+          "answer": {
+            "text": "Look east",
+            "explanation": "The star calendar says: look towards the east, where no lamps or trees are in the way."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Phía đông! Thỏ vểnh tai lên, đôi mắt sáng hẳn.",
+          "{name} đọc lịch sao còn nhanh hơn sao băng.",
+          "Đúng hướng mặt trời mọc, cũng là hướng sao băng đêm ấy."
+        ],
+        "wrong": [
+          "Lịch không nhắc tới hướng ấy đâu, đọc lại dòng thứ ba nhé.",
+          "Tìm chữ «nhìn về» trong lịch xem chỉ hướng nào.",
+          "Hướng cần tìm là nơi mặt trời mọc mỗi sáng đấy."
+        ],
+        "en": {
+          "right": [
+            "East! Thỏ's ears shoot up and his eyes light up.",
+            "{name} reads a star calendar faster than a shooting star.",
+            "The way the sun rises is the way the stars fall that night."
+          ],
+          "wrong": [
+            "The calendar never mentions that direction. Read the third line again.",
+            "Find the word «look» and see which way it points.",
+            "The direction you want is where the sun comes up each morning."
+          ]
+        }
+      },
+      "en": {
+        "title": "The star calendar",
+        "goTo": "Go to the foot of the clock tower and read Thỏ's star calendar",
+        "text": "OCTOBER METEOR SHOWER\nThis Saturday night, the most shooting stars fall between 2 and 4 in the morning.\nLook towards the east, where no lamps or trees are in the way.\nBring a blanket: it gets very cold before dawn.",
+        "question": "To see the most shooting stars, which way should Thỏ look?",
+        "choices": [
+          "West",
+          "East",
+          "North"
+        ]
+      }
+    },
+    {
+      "id": "gio-ngu-cua-tho",
+      "title": "Thỏ ngủ được mấy tiếng?",
+      "goTo": "Tới chân thang xoắn, đồng hồ báo thức của Thỏ đang kêu tích tắc",
+      "kind": "riddle",
+      "target": "st-tho-len-dinh-thap-dong-ho-bao-thuc",
+      "skill": "xem-dong-ho",
+      "question": "Thỏ đi ngủ lúc 8 giờ tối và hẹn đồng hồ reo lúc 2 giờ sáng để kịp xem sao băng. Thỏ được ngủ mấy tiếng?",
+      "answer": {
+        "value": 6
+      },
+      "support": {
+        "guide": [
+          "Từ 8 giờ tối tới 12 giờ đêm là mấy tiếng?",
+          "Rồi đếm tiếp từ 12 giờ đêm tới 2 giờ sáng."
+        ],
+        "hint": "Từ 8 giờ tới 12 giờ là 4 tiếng.",
+        "answer": {
+          "text": "6 tiếng",
+          "explanation": "Từ 8 giờ tối tới 12 giờ đêm là 4 tiếng, từ 12 giờ đêm tới 2 giờ sáng là 2 tiếng nữa: 4 + 2 = 6 tiếng."
+        },
+        "en": {
+          "guide": [
+            "How many hours from 8 in the evening to midnight?",
+            "Then count on from midnight to 2 in the morning."
+          ],
+          "hint": "From 8 to 12 is 4 hours.",
+          "answer": {
+            "text": "6 hours",
+            "explanation": "From 8 in the evening to midnight is 4 hours, and from midnight to 2 in the morning is 2 more: 4 + 2 = 6 hours."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sáu tiếng! Đủ để Thỏ mơ thấy ba giấc mơ toàn sao.",
+          "{name} đếm giờ qua nửa đêm mà không vấp chút nào.",
+          "Bốn tiếng trước nửa đêm, hai tiếng sau, chuẩn rồi."
+        ],
+        "wrong": [
+          "Nhớ đếm qua cả mốc 12 giờ đêm nhé.",
+          "2 giờ sáng là sau nửa đêm, không phải 2 giờ chiều đâu.",
+          "Đếm từng tiếng trên ngón tay: chín, mười, mười một…"
+        ],
+        "en": {
+          "right": [
+            "Six hours! Enough for Thỏ to have three dreams full of stars.",
+            "{name} counted past midnight without a stumble.",
+            "Four hours before midnight, two after. Spot on."
+          ],
+          "wrong": [
+            "Remember to count past midnight.",
+            "2 in the morning is after midnight, not 2 in the afternoon.",
+            "Count each hour on your fingers: nine, ten, eleven…"
+          ]
+        }
+      },
+      "en": {
+        "title": "How long can Thỏ sleep?",
+        "goTo": "Go to the foot of the spiral stair, where Thỏ's alarm clock is ticking",
+        "question": "Thỏ goes to bed at 8 in the evening and sets the alarm for 2 in the morning to catch the shooting stars. How many hours of sleep does Thỏ get?"
+      }
+    },
+    {
+      "id": "do-cho-chieu-nghi",
+      "title": "Sửa soạn chiếu nghỉ",
+      "goTo": "Leo lên chiếu nghỉ đầu tiên của cầu thang xoắn, tìm đồ cho chỗ dừng chân",
+      "kind": "find-object",
+      "prompt": "Làm chiếu nghỉ đỡ đáng sợ cho Thỏ cần ba thứ. Đọc lời tả rồi tìm:",
+      "items": [
+        {
+          "id": "sao",
+          "name": "Ngôi sao dạ quang",
+          "clue": "Ban ngày trông nhợt nhạt, tắt đèn là sáng xanh mờ mờ, dán lên bậc thang để chân biết đường.",
+          "target": "st-tho-len-dinh-thap-sao-da-quang"
+        },
+        {
+          "id": "dem",
+          "name": "Tấm đệm ngồi",
+          "clue": "Cuộn tròn như cái bánh cuốn, trải ra là thành chỗ ngồi êm cho ai mỏi chân.",
+          "target": "st-tho-len-dinh-thap-dem-ngoi"
+        },
+        {
+          "id": "day",
+          "name": "Sợi dây vịn",
+          "clue": "Bện chắc như bím tóc, buộc dọc tường để tay có chỗ bám.",
+          "target": "st-tho-len-dinh-thap-day-vin"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Getting the landing ready",
+        "goTo": "Climb to the landing of the spiral stair and find things for the resting spot",
+        "prompt": "Three things will make the landing less scary for Thỏ. Read the descriptions and find them:",
+        "items": [
+          {
+            "name": "Glow-in-the-dark star",
+            "clue": "Pale by day, but in the dark it glows a soft green; stick it on the steps so feet can find their way."
+          },
+          {
+            "name": "Sitting cushion",
+            "clue": "Rolled up like a pancake roll; unroll it and there is a soft seat for tired legs."
+          },
+          {
+            "name": "Handrail rope",
+            "clue": "Braided tight like a plait, tied along the wall so hands have something to hold."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cach-leo-dau-tien",
+      "title": "Leo thế nào bây giờ?",
+      "goTo": "Quay xuống bãi cỏ bên tháp đón Thỏ Ngắm Sao",
+      "kind": "decision",
+      "target": "tho-ngam-sao",
+      "speaker": "Thỏ Ngắm Sao",
+      "prompt": "Chiếu nghỉ đã sẵn sàng. Thỏ đứng trước bậc đầu tiên, tai cụp xuống: «Leo thế nào bây giờ…?»",
+      "choices": [
+        {
+          "id": "dem-bac",
+          "text": "Cùng đếm to từng bậc",
+          "consequence": "«Một… hai… ba…» Tới bậc thứ mười hai thì Thỏ quên mất là mình đang sợ."
+        },
+        {
+          "id": "nhin-sao-dan",
+          "text": "Chỉ nhìn những ngôi sao dạ quang dưới chân",
+          "consequence": "Thỏ dò theo từng ngôi sao xanh, như đi trên một con đường sao bé tí."
+        },
+        {
+          "id": "nam-tay",
+          "text": "Nắm tay nhau, Thỏ nhắm mắt cũng được",
+          "consequence": "Thỏ nắm chặt tay {name}, hé một mắt ở bậc cuối rồi reo lên: tới rồi!"
+        }
+      ],
+      "en": {
+        "title": "How do we climb?",
+        "goTo": "Go back down to the lawn by the tower to fetch Thỏ Ngắm Sao",
+        "prompt": "The landing is ready. Thỏ stands before the first step, ears drooping: «How do I do this…?»",
+        "choices": [
+          {
+            "text": "Count every step out loud together",
+            "consequence": "«One… two… three…» By step twelve Thỏ has forgotten he's scared."
+          },
+          {
+            "text": "Look only at the glowing stars under your feet",
+            "consequence": "Thỏ follows each little green star, as if walking a tiny starry road."
+          },
+          {
+            "text": "Hold paws; Thỏ can keep his eyes shut",
+            "consequence": "Thỏ grips {name}'s hand, peeks with one eye on the last step and cheers: we made it!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tap-noi-chom-sao",
+      "title": "Tập nối chòm sao",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "prompt": "Ngồi trên chiếu nghỉ, cùng Thỏ nối ba chòm sao để tập nhìn trời nhé!",
+      "game": "star-connect",
+      "goal": 3,
+      "trigger": "auto",
+      "en": {
+        "title": "Constellation practice",
+        "prompt": "Sit on the landing and join three constellations with Thỏ for practice!"
+      }
+    },
+    {
+      "id": "huy-hieu-dan-duong",
+      "title": "Huy hiệu người dẫn đường",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Lần đầu tiên Thỏ Ngắm Sao ngồi trên chiếu nghỉ mà không run. Cậu ấy bóc một ngôi sao dạ quang dán lên vai áo {name}: «Huy hiệu người dẫn đường.»",
+      "en": {
+        "title": "The guide's badge",
+        "text": "For the first time, Thỏ Ngắm Sao sits on the landing without trembling. He peels off a glow star and sticks it on {name}'s shoulder: «Guide's badge.»"
+      }
+    },
+    {
+      "id": "nhin-len-gac-chuong",
+      "title": "Nhìn lên gác chuông",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Từ chiếu nghỉ, Thỏ ngước nhìn lên gác chuông. «Mai mình lên tiếp nhé… nhưng quả chuông to kia mà kêu thì tai tớ rụng mất…»",
+      "en": {
+        "title": "Looking up at the bells",
+        "text": "«Let's go higher tomorrow…» says Thỏ, gazing up from the landing at the bell gallery. «But if that big bell rings, my ears will fall off…»"
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": {
+      "doc-hieu": 1,
+      "xem-dong-ho": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Thỏ Ngắm Sao's story, chapter 1: The first landing",
+    "summary": "In three nights there's a meteor shower, and the best place to watch is the top of the clock tower, where Thỏ Ngắm Sao, scared of heights, has never dared go. {name} reads the star calendar, works out Thỏ's sleep, gets the landing ready and helps Thỏ take the first steps."
+  }
+}

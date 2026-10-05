@@ -1,0 +1,353 @@
+{
+  "id": "yarn-mai-cuon-sach-lac-4",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Chuyện của Cô Thủ Thư Mai, chương 4: Những cuốn sách đi lạc",
+  "status": "active",
+  "category": "story",
+  "summary": "Cô Thủ Thư Mai bắt tay viết cuốn sách đầu tiên của đời mình. {name} gom phiếu kể chuyện của bạn đọc, chọn những chuyện hợp với sách, giải câu đố đếm trang của Cụ Gấu Kính Lão, đặt tên cho cuốn sách và xếp tranh minh họa.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cô Thủ Thư Mai, Cụ Gấu Kính Lão",
+    "where": "Thư viện: bàn hướng dẫn, khu đọc sách, bàn đọc sách, ban công tầng 2",
+    "goal": "Giúp Cô Thủ Thư Mai viết xong cuốn sách đầu tiên",
+    "play": "Gom ba phiếu kể chuyện, chọn các phiếu kể về sách đi lạc rồi trở về, đếm số trang bản thảo, đặt tên sách, xếp tranh minh họa",
+    "learn": "Đọc hiểu và chọn ý đúng chủ đề, cộng nhiều số",
+    "reward": "80 XP, 25 Xu, Thẻ mượn sách vàng, Skill XP Đọc hiểu, Phép cộng",
+    "next": "Hòm gỗ đón sách đi lạc và cuốn sách thứ hai của cô Mai"
+  },
+  "phases": {
+    "hook": "mai-viet-sach",
+    "explore": "gom-phieu-ke-chuyen",
+    "learn": "chon-chuyen-hop-sach",
+    "challenge": "dem-trang-sach",
+    "decision": "dat-ten-sach",
+    "finale": "tranh-minh-hoa",
+    "reward": "nguoi-doc-dau-tien",
+    "next": "hom-sach-di-lac"
+  },
+  "places": {
+    "co-thu-thu-mai": "Bàn hướng dẫn",
+    "gom-phieu-ke-chuyen": "Khu đọc sách",
+    "st-mai-cuon-sach-lac-hom-phieu": "Bàn đọc sách",
+    "st-mai-cuon-sach-lac-cu-gau": "Ban công tầng 2"
+  },
+  "steps": [
+    {
+      "id": "mai-viet-sach",
+      "title": "Cô Mai viết sách",
+      "goTo": "Tới bàn hướng dẫn, Cô Thủ Thư Mai đang ôm cuốn sổ trắng",
+      "kind": "dialogue",
+      "target": "co-thu-thu-mai",
+      "lines": [
+        {
+          "speaker": "Cô Thủ Thư Mai",
+          "text": "Cháu {name}, cô quyết rồi: cô sẽ viết sách! Một cuốn kể chuyện những cuốn sách từng đi lạc rồi tìm được đường về."
+        },
+        {
+          "speaker": "Cô Thủ Thư Mai",
+          "text": "Cô đặt hòm phiếu ở khu đọc sách rồi, bạn đọc nào có chuyện thì viết vào phiếu. Cháu gom giúp cô với."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cô viết sách thì cháu xin đọc đầu tiên!",
+          "reply": "Được, cháu sẽ là người đọc đầu tiên, và cô không bắt cháu trả hạn đâu."
+        },
+        {
+          "text": "Sao cô không viết từ trước?",
+          "reply": "Vì cô cứ nghĩ thủ thư chỉ giữ sách của người khác. Hóa ra ai cũng có một cuốn sách trong lòng."
+        }
+      ],
+      "en": {
+        "title": "Cô Mai writes a book",
+        "goTo": "Go to the help desk, where Cô Thủ Thư Mai is hugging her blank notebook",
+        "lines": [
+          "{name}, I've decided: I'm going to write a book! One about books that got lost and found their way home.",
+          "I've put a slip box in the reading area, and any reader with a story can write it on a slip. Could you collect them for me?"
+        ],
+        "choices": [
+          {
+            "text": "If you write a book, I want to read it first!",
+            "reply": "Done. You'll be my first reader, and I won't even give you a due date."
+          },
+          {
+            "text": "Why didn't you write one before?",
+            "reply": "Because I thought librarians only look after other people's books. Turns out everyone has a book inside them."
+          }
+        ]
+      }
+    },
+    {
+      "id": "gom-phieu-ke-chuyen",
+      "title": "Gom phiếu kể chuyện",
+      "goTo": "Gom phiếu kể chuyện bạn đọc để quanh khu đọc sách",
+      "kind": "search",
+      "targets": [
+        "st-mai-cuon-sach-lac-phieu-hong",
+        "st-mai-cuon-sach-lac-phieu-xanh",
+        "st-mai-cuon-sach-lac-phieu-do"
+      ],
+      "en": {
+        "title": "Collecting story slips",
+        "goTo": "Collect the story slips readers left round the reading area"
+      }
+    },
+    {
+      "id": "chon-chuyen-hop-sach",
+      "title": "Chuyện nào hợp với sách?",
+      "goTo": "Mang phiếu tới bàn đọc sách, mở hòm phiếu ra đọc",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-mai-cuon-sach-lac-hom-phieu",
+      "skill": "doc-hieu",
+      "prompt": "Sách của cô Mai chỉ kể về những cuốn sách đi lạc rồi trở về. Chọn tất cả các phiếu hợp với cuốn sách:",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Cuốn truyện tranh rơi xuống ao, được vịt đẩy vào bờ trả lại."
+        },
+        {
+          "id": "b",
+          "text": "Tớ đọc xong một cuốn sách rất hay chỉ trong một đêm."
+        },
+        {
+          "id": "c",
+          "text": "Cuốn từ điển bị gió cuốn ra sân, hôm sau bác lao công mang về quầy."
+        },
+        {
+          "id": "d",
+          "text": "Bố tớ vừa mua cho tớ một giá sách mới."
+        },
+        {
+          "id": "e",
+          "text": "Cuốn sách nấu ăn theo chủ đi biển, hai năm sau gửi bưu điện về."
+        }
+      ],
+      "answer": {
+        "choices": [
+          "a",
+          "c",
+          "e"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Mỗi phiếu cần có hai điều: sách bị lạc, và sách quay về.",
+          "Phiếu nào chỉ kể chuyện đọc sách hay mua sách thì bỏ qua."
+        ],
+        "hint": "Có ba phiếu kể về sách đi lạc rồi trở về.",
+        "answer": {
+          "text": "Phiếu cái ao, phiếu cơn gió và phiếu chuyến đi biển",
+          "explanation": "Truyện tranh rơi ao rồi về bờ, từ điển bị gió cuốn rồi về quầy, sách nấu ăn đi biển rồi gửi về: cả ba đều đi lạc rồi trở về. Hai phiếu kia không có cuốn sách nào đi lạc."
+        },
+        "en": {
+          "guide": [
+            "Each slip needs two things: the book gets lost, and the book comes back.",
+            "Skip any slip that is only about reading or buying books."
+          ],
+          "hint": "Three slips tell of books that got lost and came back.",
+          "answer": {
+            "text": "The pond slip, the wind slip and the sea slip",
+            "explanation": "The comic fell in the pond and came back to the bank, the dictionary blew away and came back to the desk, the cookbook went to sea and came back by post: all three were lost and returned. The other two have no lost book at all."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba chuyện đi lạc rồi về nhà, cô Mai dán ngay vào sổ.",
+          "{name} chọn chuẩn như một biên tập viên thực thụ.",
+          "Không lẫn phiếu nào lạc đề, cuốn sách gọn gàng ghê."
+        ],
+        "wrong": [
+          "Có một phiếu chẳng có cuốn sách nào đi lạc cả, xem lại nhé.",
+          "Còn một chuyện sách đi xa rồi về mà cậu bỏ sót đấy.",
+          "Hỏi từng phiếu: sách có lạc không, có về không?"
+        ],
+        "en": {
+          "right": [
+            "Three tales of books that wandered off and came home: Cô Mai glues them straight in.",
+            "{name} picks like a real editor.",
+            "Not one slip off the topic; the book is shaping up nicely."
+          ],
+          "wrong": [
+            "One slip has no lost book in it at all. Have another look.",
+            "There's still a book that travelled far and came back that you've missed.",
+            "Ask each slip: was the book lost, and did it come back?"
+          ]
+        }
+      },
+      "en": {
+        "title": "Which stories fit?",
+        "goTo": "Take the slips to the reading table and open the slip box",
+        "prompt": "Cô Mai's book is only about books that got lost and came back. Pick every slip that fits:",
+        "choices": [
+          "A comic fell in a pond, and a duck nudged it back to the bank.",
+          "I read a brilliant book in just one night.",
+          "A dictionary blew out into the yard, and the caretaker carried it back to the desk next day.",
+          "My dad has just bought me a new bookshelf.",
+          "A cookbook went to sea with its reader and came back by post two years later."
+        ]
+      }
+    },
+    {
+      "id": "dem-trang-sach",
+      "title": "Bản thảo có mấy trang?",
+      "goTo": "Lên ban công tầng 2 nhờ Cụ Gấu Kính Lão đọc thử bản thảo",
+      "kind": "riddle",
+      "target": "st-mai-cuon-sach-lac-cu-gau",
+      "skill": "phep-cong",
+      "question": "Cụ Gấu Kính Lão lật bản thảo: «Sách có 3 chương, mỗi chương 4 trang. Thêm 1 trang bìa và 1 trang lời cảm ơn gửi người đọc chậm. Cháu đếm giúp ta: tất cả mấy trang?»",
+      "answer": {
+        "value": 14
+      },
+      "support": {
+        "guide": [
+          "Ba chương, mỗi chương 4 trang: 4 + 4 + 4.",
+          "Rồi cộng thêm trang bìa và trang cảm ơn."
+        ],
+        "hint": "Ba chương được 12 trang.",
+        "answer": {
+          "text": "14 trang",
+          "explanation": "4 + 4 + 4 = 12 trang của ba chương, thêm 1 trang bìa và 1 trang cảm ơn là 12 + 2 = 14 trang."
+        },
+        "en": {
+          "guide": [
+            "Three chapters of 4 pages: 4 + 4 + 4.",
+            "Then add the cover and the thank-you page."
+          ],
+          "hint": "The three chapters make 12 pages.",
+          "answer": {
+            "text": "14 pages",
+            "explanation": "4 + 4 + 4 = 12 pages of chapters, plus 1 cover and 1 thank-you page makes 12 + 2 = 14."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười bốn trang! Cụ Gấu gõ gậy xuống sàn hai cái khen.",
+          "{name} không quên trang cảm ơn, cụ cảm động lắm.",
+          "Đếm đủ cả bìa lẫn lời cảm ơn, chuẩn rồi."
+        ],
+        "wrong": [
+          "Đừng quên trang bìa và trang lời cảm ơn nhé.",
+          "Mỗi chương bốn trang, có những ba chương cơ.",
+          "Viết ra 4 + 4 + 4 rồi cộng thêm hai trang nữa xem."
+        ],
+        "en": {
+          "right": [
+            "Fourteen pages! Cụ Gấu taps his stick on the floor twice in praise.",
+            "{name} didn't forget the thank-you page, and the old bear is touched.",
+            "Cover and thanks both counted. Spot on."
+          ],
+          "wrong": [
+            "Don't forget the cover and the thank-you page.",
+            "Four pages a chapter, and there are three chapters.",
+            "Write out 4 + 4 + 4, then add two more pages."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many pages?",
+        "goTo": "Go up to the upstairs balcony and ask Cụ Gấu Kính Lão to read the draft",
+        "question": "Cụ Gấu Kính Lão leafs through the draft: «The book has 3 chapters of 4 pages each, plus 1 cover page and 1 page of thanks to the slow reader. Count for me: how many pages altogether?»"
+      }
+    },
+    {
+      "id": "dat-ten-sach",
+      "title": "Đặt tên cho sách",
+      "goTo": "Về bàn hướng dẫn giúp Cô Thủ Thư Mai đặt tên sách",
+      "kind": "decision",
+      "target": "co-thu-thu-mai",
+      "speaker": "Cô Thủ Thư Mai",
+      "prompt": "Bản thảo xong rồi, chỉ còn thiếu cái tên. Cô Mai hỏi {name}: đặt tên sách là gì?",
+      "choices": [
+        {
+          "id": "duong-ve",
+          "text": "«Đường về của những cuốn sách»",
+          "consequence": "Cô Mai viết cái tên lên bìa bằng mực tím, nắn nót tới mức lâu ơi là lâu."
+        },
+        {
+          "id": "nguoi-doc-cham",
+          "text": "«Gửi người đọc chậm»",
+          "consequence": "Cụ Gấu Kính Lão nghe xong thì lau kính mãi, bảo tại bụi bay vào."
+        },
+        {
+          "id": "xe-buyt-so-7",
+          "text": "«Chuyến xe buýt số 7»",
+          "consequence": "Gấu Con reo lên: cái tên nghe như có bánh xe, đọc là muốn đi ngay."
+        }
+      ],
+      "en": {
+        "title": "Naming the book",
+        "goTo": "Go back to the help desk and help Cô Thủ Thư Mai name her book",
+        "prompt": "The draft is done; it just needs a title. Cô Mai asks {name}: what shall we call the book?",
+        "choices": [
+          {
+            "text": "«The Way Home for Books»",
+            "consequence": "Cô Mai writes the title on the cover in purple ink, so carefully it takes ages."
+          },
+          {
+            "text": "«To the Slow Reader»",
+            "consequence": "When Cụ Gấu Kính Lão hears it he keeps polishing his glasses, blaming the dust."
+          },
+          {
+            "text": "«The Number 7 Bus»",
+            "consequence": "Gấu Con cheers: the title sounds like it has wheels, and reading it makes you want to set off."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tranh-minh-hoa",
+      "title": "Tranh minh họa",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "prompt": "Xếp tranh minh họa cho đúng đầu đuôi câu chuyện, được năm điểm là sách in được!",
+      "game": "story-order",
+      "goal": 5,
+      "trigger": "auto",
+      "en": {
+        "title": "The pictures",
+        "prompt": "Put the pictures in story order. Five points and the book is ready to print!"
+      }
+    },
+    {
+      "id": "nguoi-doc-dau-tien",
+      "title": "Người đọc đầu tiên",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cuốn sách đầu tiên của cô Mai nằm trên kệ, gáy sách ghi tên cô. Cô tặng {name} tấm thẻ mượn sách vàng, mặt sau viết: «Người đọc đầu tiên.»",
+      "en": {
+        "title": "The first reader",
+        "text": "Cô Mai's first book sits on the shelf with her name on the spine. She gives {name} a golden library card; on the back it says: «First reader.»"
+      }
+    },
+    {
+      "id": "hom-sach-di-lac",
+      "title": "Hòm gỗ cho sách đi lạc",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cô Mai đặt một chiếc hòm gỗ cạnh hộp trả sách đêm, ghi: «Sách đi lạc xin gửi vào đây, không phạt, chỉ cần kể chuyện.» Cô bảo cuốn thứ hai đã bắt đầu, và trang đầu có tên {name}.",
+      "en": {
+        "title": "A chest for stray books",
+        "text": "Cô Mai sets a wooden chest beside the night-return box, labelled: «Lost books welcome here. No fines, just tell us the story.» She says her second book has already begun, and {name}'s name is on the first page."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 25,
+    "skillXp": {
+      "doc-hieu": 1,
+      "phep-cong": 1
+    },
+    "items": {
+      "the-muon-sach-vang": 1
+    }
+  },
+  "en": {
+    "title": "Cô Thủ Thư Mai's story, chapter 4: The books that went astray",
+    "summary": "Cô Thủ Thư Mai starts writing the first book of her life. {name} collects readers' story slips, picks the ones that fit, solves Cụ Gấu Kính Lão's page-counting riddle, names the book and puts the pictures in order."
+  }
+}

@@ -1,0 +1,379 @@
+{
+  "id": "yarn-tho-len-dinh-thap-3",
+  "region": "thu-vien",
+  "chapter": 3,
+  "title": "Chuyện của Thỏ Ngắm Sao, chương 3: Đêm mưa sao băng",
+  "status": "active",
+  "category": "story",
+  "summary": "Đêm mưa sao băng đã tới. {name} cùng Thỏ Ngắm Sao leo qua chiếu nghỉ thứ hai, gom đồ ở ban công mặt đồng hồ, xếp các chòm sao trên tấm bản đồ, ước một điều và nối sao trên lan can đỉnh tháp, nơi Thỏ chưa từng dám tới.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Thỏ Ngắm Sao",
+    "where": "Thư viện: bãi cỏ bên tháp, chiếu nghỉ thứ hai, ban công mặt đồng hồ, lan can đỉnh tháp",
+    "goal": "Cùng Thỏ Ngắm Sao ngắm mưa sao băng từ đỉnh tháp đồng hồ",
+    "play": "Tính số bậc còn lại, tìm ba món Thỏ để quên, xếp chòm sao từ ít tới nhiều sao, ước dưới sao băng, nối chòm sao",
+    "learn": "Phép trừ số tròn chục, so sánh và sắp xếp số",
+    "reward": "75 XP, 22 Xu, Đèn đọc sách, Skill XP Phép trừ, Đọc hiểu, So sánh số",
+    "next": "Đêm nào trời trong, Thỏ cũng lên đỉnh tháp và giữ một chỗ cho bạn"
+  },
+  "phases": {
+    "hook": "hai-gio-sang",
+    "explore": "bac-thang-con-lai",
+    "learn": "bac-thang-con-lai",
+    "challenge": "xep-chom-sao",
+    "decision": "dieu-uoc-sao-bang",
+    "finale": "noi-sao-tren-dinh",
+    "reward": "bon-muoi-bay-sao-bang",
+    "next": "cho-danh-cho-ban"
+  },
+  "places": {
+    "tho-ngam-sao": "Bãi cỏ bên tháp",
+    "st-tho-len-dinh-thap-cot-dem-bac": "Chiếu nghỉ thứ hai",
+    "do-o-ban-cong": "Sau mặt đồng hồ",
+    "st-tho-len-dinh-thap-ban-do-sao": "Đỉnh tháp"
+  },
+  "steps": [
+    {
+      "id": "hai-gio-sang",
+      "title": "Hai giờ sáng",
+      "goTo": "Hai giờ sáng, ra bãi cỏ bên tháp gặp Thỏ Ngắm Sao đã đeo ba lô",
+      "kind": "dialogue",
+      "target": "tho-ngam-sao",
+      "lines": [
+        {
+          "speaker": "Thỏ Ngắm Sao",
+          "text": "Dậy rồi hả {name}? Tớ chẳng ngủ được tí nào, tai cứ vểnh lên nghe trời."
+        },
+        {
+          "speaker": "Thỏ Ngắm Sao",
+          "text": "Tối nay mình lên tận đỉnh. Tớ sợ thật đấy… nhưng tớ sợ bỏ lỡ sao băng còn hơn."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đi thôi, tớ đi ngay sau cậu.",
+          "reply": "Cậu đi sau thì tớ không quay đầu được nữa… tốt, thế là chỉ còn đường đi lên thôi."
+        },
+        {
+          "text": "Cậu mang theo những gì thế?",
+          "reply": "Đủ cả… trừ mấy thứ tớ để quên trên ban công mặt đồng hồ hôm qua…"
+        }
+      ],
+      "en": {
+        "title": "Two in the morning",
+        "goTo": "At two in the morning, go to the lawn by the tower, where Thỏ Ngắm Sao has his backpack on",
+        "lines": [
+          "You're up, {name}? I couldn't sleep a wink; my ears kept pricking up to listen to the sky.",
+          "Tonight we go all the way to the top. I really am scared… but I'm more scared of missing the shooting stars."
+        ],
+        "choices": [
+          {
+            "text": "Let's go, I'll be right behind you.",
+            "reply": "If you're behind me I can't turn back… good, then up is the only way."
+          },
+          {
+            "text": "What have you packed?",
+            "reply": "Everything we need… except what I left on the clock-face balcony yesterday…"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bac-thang-con-lai",
+      "title": "Còn bao nhiêu bậc?",
+      "goTo": "Leo tới chiếu nghỉ thứ hai, cột đếm bậc ghi số bậc đã leo",
+      "kind": "riddle",
+      "target": "st-tho-len-dinh-thap-cot-dem-bac",
+      "skill": "phep-tru",
+      "question": "Cầu thang xoắn có tất cả 48 bậc. Cột đếm bậc ở chiếu nghỉ thứ hai ghi: «Đã leo 30 bậc». Còn bao nhiêu bậc nữa mới tới đỉnh?",
+      "answer": {
+        "value": 18
+      },
+      "support": {
+        "guide": [
+          "Lấy cả cầu thang trừ đi phần đã leo xong.",
+          "Trừ hàng chục trước rồi xem hàng đơn vị."
+        ],
+        "hint": "48 − 30 = ?",
+        "answer": {
+          "text": "18 bậc",
+          "explanation": "48 − 30 = 18. Còn 18 bậc nữa là Thỏ đứng trên đỉnh tháp."
+        },
+        "en": {
+          "guide": [
+            "Take the total steps and subtract the steps climbed.",
+            "Subtract the tens first, then look at the ones."
+          ],
+          "hint": "48 − 30 = ?",
+          "answer": {
+            "text": "18 steps",
+            "explanation": "48 − 30 = 18. Eighteen more steps and Thỏ is standing on top of the tower."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười tám bậc! Thỏ hít một hơi: còn chưa tới một nửa.",
+          "{name} trừ gọn hàng chục, chẳng tốn một giây.",
+          "Còn mười tám bậc thôi, sao băng đang đợi."
+        ],
+        "wrong": [
+          "Đó là số bậc đã leo, mình cần số bậc còn lại cơ.",
+          "Thử bớt 3 chục từ 4 chục xem còn mấy chục.",
+          "Hàng đơn vị giữ nguyên số 8, chỉ trừ hàng chục thôi."
+        ],
+        "en": {
+          "right": [
+            "Eighteen steps! Thỏ takes a breath: less than half to go.",
+            "{name} took the tens away in no time.",
+            "Only eighteen steps left, and the shooting stars are waiting."
+          ],
+          "wrong": [
+            "That's the steps already climbed; we need the steps left.",
+            "Try taking 3 tens away from 4 tens and see what is left.",
+            "The ones stay as 8; only subtract the tens."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many steps to go?",
+        "goTo": "Climb to the second landing, where the step post shows how far you have come",
+        "question": "The spiral stair has 48 steps in all. The step post on the second landing reads: «30 steps climbed». How many more steps to the top?"
+      }
+    },
+    {
+      "id": "do-o-ban-cong",
+      "title": "Đồ để quên trên ban công",
+      "goTo": "Ra ban công sau mặt đồng hồ lấy đồ Thỏ để quên",
+      "kind": "find-object",
+      "prompt": "Thỏ để quên ba thứ trên ban công. Đọc lời tả rồi tìm:",
+      "items": [
+        {
+          "id": "chan",
+          "name": "Tấm chăn len đỏ",
+          "clue": "Mềm, ấm, gấp làm tư, có thêu một vầng trăng khuyết ở góc.",
+          "target": "st-tho-len-dinh-thap-chan-len-do"
+        },
+        {
+          "id": "ca-cao",
+          "name": "Cốc ca cao nóng",
+          "clue": "Bốc khói thơm lừng, cầm vào ấm cả hai tay, nhớ đậy nắp kẻo nguội.",
+          "target": "st-tho-len-dinh-thap-coc-ca-cao"
+        },
+        {
+          "id": "ong-nhom",
+          "name": "Chiếc ống nhòm",
+          "clue": "Hai ống tròn dính liền nhau như hai chú cú, nhìn vào thấy trăng to bằng cái mâm.",
+          "target": "st-tho-len-dinh-thap-ong-nhom"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Things left on the balcony",
+        "goTo": "Go out onto the clock-face balcony and fetch what Thỏ left behind",
+        "prompt": "Thỏ left three things on the balcony. Read the descriptions and find them:",
+        "items": [
+          {
+            "name": "Red woolly blanket",
+            "clue": "Soft and warm, folded in four, with a crescent moon stitched in one corner."
+          },
+          {
+            "name": "Mug of hot cocoa",
+            "clue": "Steaming and fragrant, it warms both hands; keep the lid on so it stays hot."
+          },
+          {
+            "name": "Pair of binoculars",
+            "clue": "Two round tubes joined like a pair of owls; look through and the moon looks as big as a tray."
+          }
+        ]
+      }
+    },
+    {
+      "id": "xep-chom-sao",
+      "title": "Xếp chòm sao",
+      "goTo": "Lên lan can đỉnh tháp trải tấm bản đồ sao",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-tho-len-dinh-thap-ban-do-sao",
+      "skill": "so-sanh-so",
+      "prompt": "Thỏ muốn tìm các chòm sao theo thứ tự từ ít sao tới nhiều sao. Xếp lại:",
+      "items": [
+        {
+          "id": "bac-dau",
+          "label": "Chòm Bắc Đẩu hình cái gáo: 7 ngôi"
+        },
+        {
+          "id": "tho-dat",
+          "label": "Ngôi sao Thỏ tự đặt: 1 ngôi"
+        },
+        {
+          "id": "thien-hau",
+          "label": "Chòm Thiên Hậu hình chữ W: 5 ngôi"
+        },
+        {
+          "id": "sao-cay",
+          "label": "Sao Cày ba ngôi thẳng hàng: 3 ngôi"
+        }
+      ],
+      "answer": {
+        "order": [
+          "tho-dat",
+          "sao-cay",
+          "thien-hau",
+          "bac-dau"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Đọc số ngôi sao ở cuối mỗi dòng.",
+          "Xếp các số từ bé tới lớn."
+        ],
+        "hint": "Chòm ít sao nhất chỉ có đúng một ngôi.",
+        "answer": {
+          "text": "Sao của Thỏ, Sao Cày, Thiên Hậu, Bắc Đẩu",
+          "explanation": "1 < 3 < 5 < 7: ngôi sao Thỏ tự đặt, rồi Sao Cày, Thiên Hậu, cuối cùng là Bắc Đẩu."
+        },
+        "en": {
+          "guide": [
+            "Read the number of stars at the end of each line.",
+            "Put the numbers in order from smallest to biggest."
+          ],
+          "hint": "The smallest group has exactly one star.",
+          "answer": {
+            "text": "Thỏ's star, Orion's belt, Cassiopeia, the Big Dipper",
+            "explanation": "1 < 3 < 5 < 7: Thỏ's made-up star, then Orion's belt, Cassiopeia and finally the Big Dipper."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Một, ba, năm, bảy: các chòm sao xếp hàng như bậc thang lên trời.",
+          "{name} xếp nhanh tới mức sao băng chưa kịp rơi.",
+          "Ngôi sao bịa của Thỏ đứng đầu hàng, oai chưa!"
+        ],
+        "wrong": [
+          "Chòm đứng đầu chưa phải chòm ít sao nhất đâu.",
+          "So từng cặp số một, số bé đứng trước.",
+          "Đọc kỹ số ngôi ở cuối mỗi dòng nhé."
+        ],
+        "en": {
+          "right": [
+            "One, three, five, seven: the constellations line up like a stairway to the sky.",
+            "{name} sorted them before a single star could fall.",
+            "Thỏ's made-up star leads the line. How grand!"
+          ],
+          "wrong": [
+            "The first one isn't the group with the fewest stars yet.",
+            "Compare the numbers two at a time; the smaller goes first.",
+            "Read the star count at the end of each line carefully."
+          ]
+        }
+      },
+      "en": {
+        "title": "Sorting the constellations",
+        "goTo": "Climb to the top railing and spread out the star map",
+        "prompt": "Thỏ wants to find the constellations in order, from fewest stars to most. Sort them:",
+        "items": [
+          "The Big Dipper, shaped like a ladle: 7 stars",
+          "Thỏ's own made-up star: 1 star",
+          "Cassiopeia, shaped like a W: 5 stars",
+          "Orion's belt, three in a row: 3 stars"
+        ]
+      }
+    },
+    {
+      "id": "dieu-uoc-sao-bang",
+      "title": "Điều ước dưới sao băng",
+      "kind": "decision",
+      "target": "st-tho-len-dinh-thap-ban-do-sao",
+      "prompt": "Vút! Ngôi sao băng đầu tiên vạch một đường sáng qua trời đông. Thỏ nắm tay {name}: «Ước nhanh lên!» {name} ước điều gì?",
+      "choices": [
+        {
+          "id": "het-so",
+          "text": "Ước Thỏ không bao giờ sợ độ cao nữa",
+          "consequence": "Thỏ cười khúc khích: «Tớ đang đứng trên đỉnh tháp đây này, điều ước thành thật rồi còn gì.»"
+        },
+        {
+          "id": "ca-thu-vien",
+          "text": "Ước năm sau cả thư viện cùng lên ngắm",
+          "consequence": "Thỏ gật đầu lia lịa: năm sau phải mang thêm nhiều chăn, và thật nhiều ca cao."
+        },
+        {
+          "id": "sao-bia-co-that",
+          "text": "Ước ngôi sao Thỏ bịa ra hiện lên thật",
+          "consequence": "Đúng lúc ấy, ở góc trời trống trải, một đốm sáng nhỏ chớp lên. Có thể là vệ tinh, có thể là phép màu; Thỏ chọn tin là phép màu."
+        }
+      ],
+      "en": {
+        "title": "A wish on a falling star",
+        "prompt": "Whoosh! The first shooting star draws a bright line across the eastern sky. Thỏ grabs {name}'s hand: «Quick, make a wish!» What does {name} wish for?",
+        "choices": [
+          {
+            "text": "Wish that Thỏ will never fear heights again",
+            "consequence": "Thỏ giggles: «I'm standing on top of the tower right now, so your wish has already come true.»"
+          },
+          {
+            "text": "Wish that next year the whole library comes up to watch",
+            "consequence": "Thỏ nods hard: next year they'll need more blankets, and lots more cocoa."
+          },
+          {
+            "text": "Wish that Thỏ's made-up star appears for real",
+            "consequence": "Right then, in the empty corner of the sky, a tiny light blinks. Maybe a satellite, maybe magic; Thỏ chooses magic."
+          }
+        ]
+      }
+    },
+    {
+      "id": "noi-sao-tren-dinh",
+      "title": "Nối sao trên đỉnh tháp",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "prompt": "Sao băng rơi như mưa! Cùng Thỏ nối ba chòm sao trên lan can đỉnh tháp nào!",
+      "game": "star-connect",
+      "goal": 3,
+      "trigger": "auto",
+      "en": {
+        "title": "Joining stars at the top",
+        "prompt": "Shooting stars are falling like rain! Join three constellations with Thỏ on the top railing!"
+      }
+    },
+    {
+      "id": "bon-muoi-bay-sao-bang",
+      "title": "Bốn mươi bảy ngôi sao băng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thỏ Ngắm Sao đếm được bốn mươi bảy ngôi sao băng, nhiều nhất từ trước tới giờ. Cậu ấy tặng {name} chiếc đèn đọc sách nhỏ để mang lên tháp những đêm sau.",
+      "en": {
+        "title": "Forty-seven shooting stars",
+        "text": "Thỏ Ngắm Sao counts forty-seven shooting stars, more than ever before. He gives {name} a little reading lamp to bring up the tower on nights to come."
+      }
+    },
+    {
+      "id": "cho-danh-cho-ban",
+      "title": "Một chỗ dành cho bạn",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Lúc trời hửng sáng, Thỏ ngồi trên lan can, tai vểnh, chẳng còn run. «Từ giờ đêm nào trời trong tớ cũng lên đây,» cậu ấy nói, «và lúc nào cũng chừa một chỗ cho {name}.»",
+      "en": {
+        "title": "A spot saved for a friend",
+        "text": "As dawn breaks, Thỏ sits on the railing, ears up, not trembling at all. «From now on I'll come up here every clear night,» he says, «and I'll always save a spot for {name}.»"
+      }
+    }
+  ],
+  "reward": {
+    "xp": 75,
+    "coin": 22,
+    "skillXp": {
+      "phep-tru": 1,
+      "doc-hieu": 1,
+      "so-sanh-so": 1
+    },
+    "items": {
+      "den-doc-sach": 1
+    }
+  },
+  "en": {
+    "title": "Thỏ Ngắm Sao's story, chapter 3: The night of falling stars",
+    "summary": "The night of the meteor shower has come. {name} and Thỏ Ngắm Sao climb past the second landing, collect things from the clock-face balcony, sort the constellations on the map, make a wish and join stars at the top railing, where Thỏ has never dared to go."
+  }
+}

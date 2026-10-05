@@ -1,0 +1,361 @@
+{
+  "id": "yarn-tho-len-dinh-thap-2",
+  "region": "thu-vien",
+  "chapter": 3,
+  "title": "Chuyện của Thỏ Ngắm Sao, chương 2: Quả chuông lớn",
+  "status": "active",
+  "category": "story",
+  "summary": "Muốn lên đỉnh tháp phải đi qua gác chuông, mà quả chuông lớn điểm giờ vang tới mức Thỏ Ngắm Sao sợ rụng tai. {name} cùng Chị Kéo Chuông tính giờ đi qua cho êm, đếm sao qua ô cửa sổ tròn, giúp Thỏ làm quen với tiếng chuông và nghe Thỏ kể bí mật trên tấm bản đồ sao.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Thỏ Ngắm Sao, Chị Kéo Chuông",
+    "where": "Thư viện: bãi cỏ bên tháp, gác chuông, ô cửa sổ tròn trên tháp, dưới quả chuông lớn",
+    "goal": "Giúp Thỏ Ngắm Sao đi qua gác chuông mà không sợ",
+    "play": "Chọn giờ đi qua gác chuông để không gặp tiếng chuông, đếm sao hai hàng qua cửa sổ, chọn cách làm quen với quả chuông, nghe Thỏ tâm sự",
+    "learn": "Tính khoảng thời gian trên đồng hồ, bài toán nhiều hơn",
+    "reward": "60 XP, 15 Xu, Bản đồ sao đêm, Skill XP Xem đồng hồ, Nhiều hơn ít hơn",
+    "next": "Đêm mưa sao băng trên lan can đỉnh tháp"
+  },
+  "phases": {
+    "hook": "tho-bit-tai",
+    "explore": "gio-di-qua-chuong",
+    "learn": "gio-di-qua-chuong",
+    "challenge": "dem-sao-cua-so",
+    "decision": "lam-quen-tieng-chuong",
+    "finale": "ban-do-sao-bi-mat",
+    "reward": "goc-ban-do-sao",
+    "next": "mot-dem-nua"
+  },
+  "places": {
+    "tho-ngam-sao": "Bãi cỏ bên tháp",
+    "st-tho-len-dinh-thap-chi-keo-chuong": "Gác chuông",
+    "st-tho-len-dinh-thap-cua-so-tron": "Ô cửa sổ tròn",
+    "st-tho-len-dinh-thap-qua-chuong-lon": "Gầm chuông lớn"
+  },
+  "steps": [
+    {
+      "id": "tho-bit-tai",
+      "title": "Thỏ bịt tai",
+      "goTo": "Ra bãi cỏ bên tháp, Thỏ Ngắm Sao đang bịt hai tai bằng hai tay",
+      "kind": "dialogue",
+      "target": "tho-ngam-sao",
+      "lines": [
+        {
+          "speaker": "Thỏ Ngắm Sao",
+          "text": "Hôm qua tớ lên được chiếu nghỉ rồi đấy {name}… Nhưng cao hơn là gác chuông. Quả chuông ấy điểm giờ to như sấm."
+        },
+        {
+          "speaker": "Thỏ Ngắm Sao",
+          "text": "Chị Kéo Chuông trên ấy biết giờ chuông điểm. Cậu lên hỏi giúp tớ lúc nào đi qua mà chuông không kêu nhé…"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ lên hỏi chị ấy ngay.",
+          "reply": "Cảm ơn cậu… tớ ở dưới này giữ hai tai cho chắc."
+        },
+        {
+          "text": "Tai thỏ dài thế mà sợ tiếng to à?",
+          "reply": "Tai dài nên nghe to gấp đôi đấy… Cậu thử làm thỏ một hôm là biết…"
+        }
+      ],
+      "en": {
+        "title": "Thỏ covers his ears",
+        "goTo": "Go to the lawn by the tower, where Thỏ Ngắm Sao is holding both ears shut",
+        "lines": [
+          "Yesterday I made it to the landing, {name}… But next comes the bell gallery. That bell strikes the hours as loud as thunder.",
+          "Chị Kéo Chuông up there knows when the bell strikes. Could you ask her when we can pass without it ringing…"
+        ],
+        "choices": [
+          {
+            "text": "I'll go up and ask her now.",
+            "reply": "Thank you… I'll stay down here and keep a tight hold of my ears."
+          },
+          {
+            "text": "Ears that long, and you're scared of loud noises?",
+            "reply": "Long ears hear twice as loud… Try being a rabbit for a day and you'll see…"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gio-di-qua-chuong",
+      "title": "Giờ nào chuông im?",
+      "goTo": "Leo lên gác chuông hỏi Chị Kéo Chuông",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-tho-len-dinh-thap-chi-keo-chuong",
+      "skill": "xem-dong-ho",
+      "prompt": "Chị Kéo Chuông dặn: chuông chỉ điểm vào đúng giờ tròn (8 giờ, 9 giờ, 10 giờ…). Đi qua gác chuông mất 10 phút. Thỏ nên bắt đầu đi qua lúc nào để không gặp tiếng chuông?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "8 giờ 55 phút"
+        },
+        {
+          "id": "b",
+          "text": "9 giờ 5 phút"
+        },
+        {
+          "id": "c",
+          "text": "9 giờ 52 phút"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Với mỗi giờ bắt đầu, cộng thêm 10 phút để biết lúc đi qua xong.",
+          "Nếu khoảng thời gian ấy có một giờ tròn thì sẽ gặp tiếng chuông."
+        ],
+        "hint": "Bắt đầu lúc 8 giờ 55 thì đúng 9 giờ vẫn đang ở gác chuông.",
+        "answer": {
+          "text": "Lúc 9 giờ 5 phút",
+          "explanation": "Bắt đầu lúc 9 giờ 5 phút thì 9 giờ 15 phút đã đi qua xong, trong lúc ấy không có giờ tròn nào. Bắt đầu lúc 8 giờ 55 sẽ gặp chuông 9 giờ, bắt đầu lúc 9 giờ 52 sẽ gặp chuông 10 giờ."
+        },
+        "en": {
+          "guide": [
+            "For each start time, add 10 minutes to see when the crossing ends.",
+            "If that stretch of time includes an exact hour, the bell will ring."
+          ],
+          "hint": "Start at 8:55 and you'll still be in the gallery at 9 o'clock.",
+          "answer": {
+            "text": "At five past nine",
+            "explanation": "Start at 9:05 and you're across by 9:15, with no exact hour in between. Starting at 8:55 meets the 9 o'clock bell, and starting at 9:52 meets the 10 o'clock bell."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chín giờ năm phút! Chị Kéo Chuông giơ ngón cái: chuông vừa điểm xong, đang nghỉ.",
+          "{name} canh giờ khéo như người giữ tháp.",
+          "Mười phút êm ru, không một tiếng boong nào."
+        ],
+        "wrong": [
+          "Bắt đầu giờ ấy thì đi được nửa đường là chuông điểm mất rồi.",
+          "Cộng thêm 10 phút vào giờ bắt đầu xem có chạm giờ tròn không.",
+          "Thử vẽ mặt đồng hồ rồi quay kim phút thêm mười phút nhé."
+        ],
+        "en": {
+          "right": [
+            "Five past nine! Chị Kéo Chuông gives a thumbs-up: the bell has just rung and is resting.",
+            "{name} times it like a real tower keeper.",
+            "Ten quiet minutes, not a single bong."
+          ],
+          "wrong": [
+            "Start then and the bell strikes when you are halfway across.",
+            "Add 10 minutes to the start time and see if you hit an exact hour.",
+            "Try drawing a clock face and moving the minute hand on ten minutes."
+          ]
+        }
+      },
+      "en": {
+        "title": "When is the bell quiet?",
+        "goTo": "Climb up to the bell gallery and ask Chị Kéo Chuông",
+        "prompt": "Chị Kéo Chuông explains: the bell only strikes on the hour (8 o'clock, 9 o'clock, 10 o'clock…). Crossing the bell gallery takes 10 minutes. When should Thỏ start crossing so he never hears the bell?",
+        "choices": [
+          "8:55",
+          "9:05",
+          "9:52"
+        ]
+      }
+    },
+    {
+      "id": "dem-sao-cua-so",
+      "title": "Sao qua ô cửa sổ",
+      "goTo": "Ghé ô cửa sổ tròn trên tháp nhìn trời",
+      "kind": "riddle",
+      "target": "st-tho-len-dinh-thap-cua-so-tron",
+      "skill": "hon-kem",
+      "question": "Qua ô cửa sổ tròn, hàng sao trên có 5 ngôi, hàng sao dưới nhiều hơn hàng trên 3 ngôi. Cả hai hàng có tất cả mấy ngôi sao?",
+      "answer": {
+        "value": 13
+      },
+      "support": {
+        "guide": [
+          "Tìm số sao hàng dưới trước: 5 thêm 3.",
+          "Rồi cộng số sao hai hàng lại."
+        ],
+        "hint": "Hàng dưới có 8 ngôi.",
+        "answer": {
+          "text": "13 ngôi sao",
+          "explanation": "Hàng dưới: 5 + 3 = 8 ngôi. Cả hai hàng: 5 + 8 = 13 ngôi sao."
+        },
+        "en": {
+          "guide": [
+            "Find the bottom row first: 5 plus 3.",
+            "Then add both rows together."
+          ],
+          "hint": "The bottom row has 8 stars.",
+          "answer": {
+            "text": "13 stars",
+            "explanation": "Bottom row: 5 + 3 = 8 stars. Both rows: 5 + 8 = 13 stars."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười ba ngôi! Thỏ mà ở đây chắc đã đặt tên cho từng ngôi.",
+          "{name} không quên cộng cả hàng trên, giỏi lắm.",
+          "Tám ngôi dưới, năm ngôi trên, bầu trời đủ cả."
+        ],
+        "wrong": [
+          "Đó mới là hàng dưới thôi, còn hàng trên nữa.",
+          "«Nhiều hơn 3» nghĩa là cộng thêm 3 vào hàng trên đấy.",
+          "Tính hàng dưới trước, rồi gộp hai hàng lại xem."
+        ],
+        "en": {
+          "right": [
+            "Thirteen! If Thỏ were here he'd have named every one.",
+            "{name} remembered to add the top row too. Well done.",
+            "Eight below, five above: the whole sky counted."
+          ],
+          "wrong": [
+            "That's only the bottom row. There's the top row too.",
+            "«3 more» means add 3 to the top row.",
+            "Work out the bottom row first, then put both rows together."
+          ]
+        }
+      },
+      "en": {
+        "title": "Stars through the window",
+        "goTo": "Stop at the round window in the tower and look at the sky",
+        "question": "Through the round window, the top row has 5 stars and the bottom row has 3 more than the top. How many stars are there in both rows?"
+      }
+    },
+    {
+      "id": "lam-quen-tieng-chuong",
+      "title": "Làm quen với quả chuông",
+      "goTo": "Đứng dưới gầm chuông lớn, Chị Kéo Chuông có một ý",
+      "kind": "decision",
+      "target": "st-tho-len-dinh-thap-qua-chuong-lon",
+      "speaker": "Chị Kéo Chuông",
+      "prompt": "Chị Kéo Chuông bảo: «Sợ cái gì thì làm quen với nó.» {name} muốn giúp Thỏ làm quen với quả chuông thế nào?",
+      "choices": [
+        {
+          "id": "go-nhe",
+          "text": "Rủ Thỏ gõ nhẹ vào chuông bằng một ngón tay",
+          "consequence": "Ting… quả chuông to thế mà kêu khẽ như mèo con. Thỏ tròn mắt: hóa ra nó cũng biết nói nhỏ."
+        },
+        {
+          "id": "dat-ten",
+          "text": "Đặt cho quả chuông một cái tên thân thương",
+          "consequence": "Từ nay quả chuông tên là Bác Boong. Đã có tên rồi thì chẳng ai sợ một bác chuông hiền nữa."
+        },
+        {
+          "id": "nghe-tu-xa",
+          "text": "Nghe chuông điểm từ xa rồi lại gần dần",
+          "consequence": "Mỗi giờ Thỏ bước lên thêm vài bậc. Tới tối, tiếng boong chỉ còn như tiếng tim đập to."
+        }
+      ],
+      "en": {
+        "title": "Making friends with the bell",
+        "goTo": "Stand under the big bell: Chị Kéo Chuông has an idea",
+        "prompt": "Chị Kéo Chuông says: «If something scares you, make friends with it.» How will {name} help Thỏ make friends with the bell?",
+        "choices": [
+          {
+            "text": "Get Thỏ to tap the bell gently with one finger",
+            "consequence": "Ting… such a big bell, yet it squeaks like a kitten. Thỏ's eyes go round: so it can whisper too."
+          },
+          {
+            "text": "Give the bell a friendly name",
+            "consequence": "From now on the bell is called Uncle Bong. Once it has a name, nobody's scared of a kind old bell."
+          },
+          {
+            "text": "Listen to it strike from far away, then move a little closer each time",
+            "consequence": "Every hour Thỏ climbs a few steps higher. By evening the bong sounds no worse than a loud heartbeat."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ban-do-sao-bi-mat",
+      "title": "Bí mật trên bản đồ sao",
+      "goTo": "Xuống bãi cỏ bên tháp kể cho Thỏ Ngắm Sao nghe",
+      "kind": "dialogue",
+      "target": "tho-ngam-sao",
+      "lines": [
+        {
+          "speaker": "Thỏ Ngắm Sao",
+          "text": "Tớ qua được gác chuông rồi, {name}! Chuông không ăn thịt thỏ thật…"
+        },
+        {
+          "speaker": "Thỏ Ngắm Sao",
+          "text": "Để cảm ơn, tớ cho cậu xem bản đồ sao tớ tự vẽ. Có một ngôi ở góc này… là tớ bịa ra đấy."
+        },
+        {
+          "speaker": "Thỏ Ngắm Sao",
+          "text": "Chỗ trời ấy trống trơn, trông cô đơn quá, nên tớ vẽ thêm một ngôi. Cậu đừng kể với ai nhé…"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Biết đâu đêm mưa sao băng nó hiện ra thật.",
+          "reply": "Nếu nó hiện ra thật… tớ sẽ đặt tên nó theo tên cậu…"
+        },
+        {
+          "text": "Bí mật này tớ giữ kỹ.",
+          "reply": "Cảm ơn {name}… giờ có hai người biết ngôi sao bịa ấy, nó đỡ cô đơn hẳn."
+        }
+      ],
+      "en": {
+        "title": "The secret on the star map",
+        "goTo": "Go down to the lawn by the tower and tell Thỏ Ngắm Sao",
+        "lines": [
+          "I got past the bell gallery, {name}! The bell really doesn't eat rabbits…",
+          "To say thank you, I'll show you the star map I drew myself. There's one star in this corner… that I made up.",
+          "That patch of sky was so empty it looked lonely, so I drew one more. Please don't tell anyone…"
+        ],
+        "choices": [
+          {
+            "text": "Maybe it'll really appear on the meteor night.",
+            "reply": "If it really appears… I'll name it after you…"
+          },
+          {
+            "text": "Your secret's safe with me.",
+            "reply": "Thank you, {name}… now two of us know about the made-up star, so it's much less lonely."
+          }
+        ]
+      }
+    },
+    {
+      "id": "goc-ban-do-sao",
+      "title": "Một góc bản đồ sao",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thỏ Ngắm Sao tặng {name} một góc bản đồ sao đêm cậu ấy vẽ lại, có cả gác chuông bé xíu ở mép giấy.",
+      "en": {
+        "title": "A corner of the star map",
+        "text": "Thỏ Ngắm Sao gives {name} a corner of his night-sky map, redrawn, with a tiny bell gallery sketched at the edge."
+      }
+    },
+    {
+      "id": "mot-dem-nua",
+      "title": "Chỉ còn một đêm",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Còn một đoạn cuối lên lan can đỉnh tháp, và chỉ một đêm nữa là mưa sao băng. Thỏ bắt đầu gói chăn, nhưng tai vẫn hơi run.",
+      "en": {
+        "title": "Just one night left",
+        "text": "Only the last stretch to the top railing is left, and the meteor shower is just one night away. Thỏ starts packing his blanket, though his ears still tremble a little."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": {
+      "xem-dong-ho": 1,
+      "hon-kem": 1
+    },
+    "items": {
+      "ban-do-sao-dem": 1
+    }
+  },
+  "en": {
+    "title": "Thỏ Ngắm Sao's story, chapter 2: The big bell",
+    "summary": "The way to the top runs through the bell gallery, and the big bell strikes the hours so loudly that Thỏ Ngắm Sao fears his ears will drop off. {name} works out a quiet time to cross with Chị Kéo Chuông, counts stars through the round window, helps Thỏ make friends with the bell and hears the secret on his star map."
+  }
+}

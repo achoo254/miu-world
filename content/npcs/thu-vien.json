@@ -1,0 +1,799 @@
+{
+  "version": 1,
+  "region": "thu-vien",
+  "climate": "mild",
+  "npcs": [
+    {
+      "id": "co-thu-thu-mai",
+      "name": "Cô Thủ Thư Mai",
+      "role": {
+        "vi": "Thủ thư ngồi bàn hướng dẫn ngay cửa thư viện",
+        "en": "The librarian at the help desk just inside the library door"
+      },
+      "personality": {
+        "vi": "Dịu dàng, ngăn nắp tới từng tấm phiếu, nhớ cuốn sách nào nằm ở đâu như nhớ tên người quen.",
+        "en": "Gentle and tidy down to the last index card; she remembers where every book lives the way you remember a friend's name."
+      },
+      "voice": {
+        "vi": "Nói khẽ, hay mở đầu bằng «suỵt…», gọi người chơi là «cháu», kể gì cũng như đang đọc truyện cho ai nghe.",
+        "en": "Speaks softly, often begins with «shh…», calls the player «dear», and tells everything as if reading a story aloud."
+      },
+      "fear": {
+        "vi": "Sợ có một cuốn sách đi mãi không về, để lại một khe trống trên kệ.",
+        "en": "Afraid that some book will wander off and never come back, leaving a gap on the shelf forever."
+      },
+      "dream": {
+        "vi": "Viết một cuốn sách của riêng mình, gom những câu chuyện bạn đọc kể cho cô nghe.",
+        "en": "To write a book of her own, gathering the stories readers tell her."
+      },
+      "secret": {
+        "vi": "Dưới quầy, cô giấu một cuốn sổ chép tay những câu hay nhất mà bạn đọc gạch chân rồi quên trong sách.",
+        "en": "Under the desk she hides a notebook of the best lines readers underlined and left behind in returned books."
+      },
+      "habit": {
+        "vi": "Ngửi từng cuốn sách được trả: sách đọc ở biển thơm mùi muối, sách đọc trên giường thơm mùi gối.",
+        "en": "Sniffs every returned book: books read by the sea smell of salt, books read in bed smell of pillows."
+      },
+      "likes": [
+        "the-muon-sach-vang",
+        "tem-sach-co",
+        "thu-niem-phong"
+      ],
+      "lines": [
+        {
+          "vi": "Suỵt… chào buổi sáng {name}. Sáng nay hộp trả sách đầy ắp, cô ngửi được ba cuốn thơm mùi biển.",
+          "en": "Shh… good morning, {name}. The return box was full this morning, and three books smelled of the sea.",
+          "when": "morning"
+        },
+        {
+          "vi": "Buổi chiều là giờ các bạn nhỏ tới đọc truyện tranh. Cô chỉ nhắc khẽ một câu: muốn cười to thì cười vào gối nhé.",
+          "en": "Afternoons are comic-book time for the little ones. I only whisper one rule: if you must laugh out loud, laugh into a cushion.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Sắp đóng cửa rồi cháu. Cô đi một vòng tắt đèn, chúc từng kệ sách ngủ ngon; kệ truyện cổ tích bao giờ cũng thức khuya nhất.",
+          "en": "Nearly closing time, dear. I go round switching off lamps and wishing every shelf goodnight; the fairy-tale shelf always stays up latest.",
+          "when": "evening"
+        },
+        {
+          "vi": "Khuya thế này cháu còn đi dạo à? Cô ở lại dán gáy mấy cuốn sách rách, dưới ánh đèn bàn thì sách nào cũng hiền.",
+          "en": "Out walking this late, dear? I stayed to mend a few torn spines. Under a desk lamp, every book is gentle.",
+          "when": "night"
+        },
+        {
+          "vi": "Trời mưa là thư viện đông nhất. Ai cũng chạy vào trú, rồi lỡ tay mượn về một cuốn.",
+          "en": "Rainy days are our busiest. Everyone runs in for shelter and somehow leaves with a book.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Nắng đẹp thế này cô mở hết cửa sổ cho sách được thở. Sách cũng cần phơi nắng như chăn bông.",
+          "en": "On a sunny day like this I open every window so the books can breathe. Books need airing just like quilts.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Cháu biết không, năm nào cô cũng tự bỏ một đồng xu vào heo đất của thư viện. Coi như tiền phạt cho một lần trả sách muộn hồi bé.",
+          "en": "Do you know, every year I drop a coin into the library's piggy bank myself. A fine for a book I returned late as a child.",
+          "hearts": 2
+        },
+        {
+          "vi": "Lúc mới làm thủ thư, cô xếp nhầm cả một kệ truyện ma vào khu thiếu nhi. Tuần ấy các bạn nhỏ mượn sách nhiều chưa từng thấy.",
+          "en": "When I first became a librarian, I shelved a whole row of ghost stories in the children's section by mistake. The little ones borrowed more books that week than ever.",
+          "hearts": 3
+        },
+        {
+          "vi": "Cô sợ nhất là khe trống trên kệ, chỗ một cuốn sách đi mãi không về. Khe trống nào cũng như một cái răng sún vậy.",
+          "en": "What I fear most is a gap on the shelf where a book has gone and never come back. Every gap is like a missing tooth.",
+          "hearts": 4
+        },
+        {
+          "vi": "{name}, nếu một ngày cô viết sách, trang đầu tiên sẽ có tên cháu. Cô hứa bằng cả con dấu «Đã về» của cô.",
+          "en": "{name}, if I ever write a book, your name will be on the first page. I promise on my «Returned» stamp.",
+          "hearts": 5
+        },
+        {
+          "vi": "Hươu Cao ở Lâu đài gửi cô những lá thư niêm phong bằng sáp đỏ. Cổ dài thế nên Hươu Cao lấy được sách ở kệ cao nhất kho sách hoàng gia.",
+          "en": "Hươu Cao at the Castle sends me letters sealed with red wax. With a neck that long, Hươu Cao can reach the top shelf of the royal library.",
+          "about": "huou-cao"
+        },
+        {
+          "vi": "Bác Gấu Trúc Tròn dạy cô nghề thủ thư. Bác đọc chậm tới mức một bài thơ bốn câu đọc xong là hết giờ nghỉ trưa.",
+          "en": "Gấu Trúc Tròn taught me to be a librarian. He reads so slowly that a four-line poem lasts the whole lunch break.",
+          "about": "gau-truc"
+        },
+        {
+          "vi": "Đố cháu: nhà gì đầy cửa sổ mà chẳng có bức tường nào? Cuốn sách đấy! Mỗi trang là một ô cửa sổ.",
+          "en": "Riddle, dear: what house is full of windows but has no walls? A book! Every page is a window."
+        },
+        {
+          "vi": "Thẻ mượn sách của cháu còn trống mấy ô đấy. Hôm nay mượn thử một cuốn về rồng không? Kệ ấy đang nóng hổi.",
+          "en": "Your library card still has empty boxes, you know. Fancy a dragon book today? That shelf is red-hot."
+        },
+        {
+          "vi": "Sách trả muộn cô không phạt đâu, chỉ cần kể cô nghe cháu thích trang nào nhất.",
+          "en": "I don't fine late books. Just tell me which page you liked best."
+        }
+      ]
+    },
+    {
+      "id": "tho-ngam-sao",
+      "name": "Thỏ Ngắm Sao",
+      "role": {
+        "vi": "Người ngắm sao sống trên bãi cỏ quanh tháp đồng hồ",
+        "en": "The stargazer who lives on the lawn round the clock tower"
+      },
+      "personality": {
+        "vi": "Mơ màng, cú đêm chính hiệu, ban ngày ngáp liên tục, đêm xuống thì mắt sáng như hai ngọn đèn.",
+        "en": "Dreamy and a true night owl; he yawns all day, but when night falls his eyes shine like two lamps."
+      },
+      "voice": {
+        "vi": "Nói chậm, khe khẽ, câu nào cũng bỏ lửng bằng dấu ba chấm, hay đặt tên sao theo món ăn.",
+        "en": "Speaks slowly and softly, trails off at the end of every sentence, and names stars after food."
+      },
+      "fear": {
+        "vi": "Sợ độ cao: chưa từng leo quá chiếu nghỉ đầu tiên của cầu thang xoắn.",
+        "en": "Afraid of heights: he had never climbed past the first landing of the spiral stair."
+      },
+      "dream": {
+        "vi": "Ngắm mưa sao băng từ lan can đỉnh tháp đồng hồ, nơi không cây nào che trời.",
+        "en": "To watch a meteor shower from the railing at the top of the clock tower, where no tree hides the sky."
+      },
+      "secret": {
+        "vi": "Trên tấm bản đồ sao tự vẽ có một ngôi sao cậu ấy bịa ra, vì góc trời ấy trống trải trông cô đơn quá.",
+        "en": "On his hand-drawn star map is one star he made up, because that corner of the sky looked too empty and lonely."
+      },
+      "habit": {
+        "vi": "Ngủ trưa trên bãi cỏ, buộc hai tai trùm xuống mắt làm khăn che nắng.",
+        "en": "Naps on the lawn at midday with his ears tied down over his eyes as a sun mask."
+      },
+      "likes": [
+        "ban-do-sao-dem",
+        "den-doc-sach",
+        "dong-xu-uoc-nguyen"
+      ],
+      "lines": [
+        {
+          "vi": "Sáng rồi à… {name} cứ đi chơi trước đi, tớ mới ngủ được hai tiếng… sao Mai vừa tắt là tớ tắt theo…",
+          "en": "Morning already… go and play, {name}, I've only slept two hours… when the morning star goes out, so do I…",
+          "when": "morning"
+        },
+        {
+          "vi": "Tớ buộc tai che mắt ngủ trưa đây… Nếu thấy tớ ngáy thì cứ coi như tiếng gió nhé…",
+          "en": "I'm tying my ears over my eyes for a nap… If I snore, just pretend it's the wind…",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Ngôi sao đầu tiên mọc rồi kìa {name}… tớ gọi nó là sao Bánh Bao, vì nó tròn và hiền…",
+          "en": "There's the first star, {name}… I call it the Dumpling Star, because it's round and kind…",
+          "when": "evening"
+        },
+        {
+          "vi": "Suỵt… đêm nay trời trong lắm… Cậu nằm xuống cỏ đi, đếm tới một trăm ngôi thì tớ kể cậu nghe một chuyện nhỏ…",
+          "en": "Shh… the sky's so clear tonight… Lie down on the grass; when you've counted a hundred stars I'll tell you a little story…",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa thì chẳng thấy sao đâu… nhưng giọt mưa trên lá cỏ lấp lánh như sao rơi xuống đất ngủ nhờ…",
+          "en": "No stars when it rains… but raindrops on the grass twinkle like stars that came down to sleep over…",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời quang thế này đêm nay chắc thấy cả dải Ngân Hà… Tớ phải ngủ bù ngay bây giờ mới được…",
+          "en": "A sky this clear means we might see the whole Milky Way tonight… I'd better catch up on sleep right now…",
+          "weather": "fine"
+        },
+        {
+          "vi": "Tớ đặt tên sao theo đồ ăn: sao Bánh Bao, sao Quả Quýt, chòm Bát Phở… Đói bụng mà nhìn trời là thấy no hơn…",
+          "en": "I name stars after food: the Dumpling Star, the Tangerine Star, the Noodle Bowl constellation… When I'm hungry, looking up makes me feel fuller…",
+          "hearts": 2
+        },
+        {
+          "vi": "Hồi nhỏ tớ trèo lên nóc chuồng rồi không dám xuống, phải ngủ trên đó cả đêm. Từ đó tớ sợ cao… mà cũng từ đó tớ mê sao…",
+          "en": "As a kit I got stuck on the hutch roof and slept up there all night. That's when heights started scaring me… and when I fell for the stars…",
+          "hearts": 3
+        },
+        {
+          "vi": "Cậu biết không… tớ đã đặt tên một ngôi sao mờ theo tên cậu. Nó nhỏ thôi, nhưng không bao giờ tắt…",
+          "en": "You know… I've named a faint star after you. It's small, but it never goes out…",
+          "hearts": 4
+        },
+        {
+          "vi": "Có {name} ở cạnh thì tháp cao mấy tớ cũng thấy chỉ như cái thang bắc ra vườn…",
+          "en": "With you beside me, {name}, any tower feels no taller than a ladder into the garden…",
+          "hearts": 5
+        },
+        {
+          "vi": "Người Tuyết Đếm Bậc trên Núi tuyết dạy tớ: leo cao thì đừng nhìn xuống, cứ đếm bậc… Bạn ấy đếm tới chín nghìn bậc rồi đấy…",
+          "en": "Người Tuyết Đếm Bậc on Snowy Mountain taught me: when you climb, don't look down, just count the steps… He's counted nine thousand already…",
+          "about": "nguoi-tuyet-dem-bac"
+        },
+        {
+          "vi": "Mèo Hộp Nhạc hay mang hộp nhạc ra bãi cỏ, lên dây cho nó hát lúc tớ ngắm sao… Tới đoạn điệp khúc là tớ ngủ mất…",
+          "en": "Mèo Hộp Nhạc often brings his music box out to the lawn and winds it up while I watch the stars… I always fall asleep by the chorus…",
+          "about": "meo-hop-nhac"
+        },
+        {
+          "vi": "Đồng xu ước nguyện ở Trung tâm ấy… tớ thích lắm. Ước với sao xong mà có đồng xu giữ hộ điều ước thì chắc ăn hơn…",
+          "en": "Those wishing coins from the Town Centre… I love them. After you wish on a star, a coin to keep the wish safe makes it surer…"
+        },
+        {
+          "vi": "Ánh sáng từ một ngôi sao phải đi rất nhiều năm mới tới mắt mình đấy… Nghĩa là mình đang nhìn thấy một lời chào gửi từ xưa lắm…",
+          "en": "Starlight travels for years and years before it reaches our eyes… So we're seeing a hello sent a very long time ago…"
+        },
+        {
+          "vi": "Đố {name}: cái gì càng tối càng nhìn rõ? Sao trên trời đấy… và cả đèn đọc sách của cô Mai nữa…",
+          "en": "Riddle, {name}: what can you see better the darker it gets? The stars… and Cô Mai's reading lamp too…"
+        }
+      ]
+    },
+    {
+      "id": "gau-truc",
+      "name": "Gấu Trúc Tròn",
+      "role": {
+        "vi": "Bác thủ thư lớn tuổi nhất, giữ phòng đọc và dẫn đường cho người mới tới thư viện",
+        "en": "The oldest librarian, keeper of the reading room and guide for newcomers to the library"
+      },
+      "personality": {
+        "vi": "Chậm rãi, hiền như cục bông, tai nghe vần thơ tinh hơn ai hết, chẳng bao giờ vội việc gì.",
+        "en": "Slow and soft as a cotton ball, with an ear for rhyme sharper than anyone's; he is never in a hurry."
+      },
+      "voice": {
+        "vi": "Kéo dài từng chữ, hay ngắt câu giữa chừng để nhai một mẩu măng, thích nói có vần.",
+        "en": "Stretches every word, pauses mid-sentence to munch a bit of bamboo shoot, and loves speaking in rhyme."
+      },
+      "fear": {
+        "vi": "Sợ nấc cụt giữa lúc đang đọc thơ to trước đông người.",
+        "en": "Afraid of getting hiccups halfway through reading a poem aloud to a crowd."
+      },
+      "dream": {
+        "vi": "Đọc hết mọi cuốn sách trong thư viện trước khi nghỉ hưu; bác đã đọc được hơn chín nghìn cuốn.",
+        "en": "To read every book in the library before he retires; he's past nine thousand so far."
+      },
+      "secret": {
+        "vi": "Có lần bác ngủ quên trong phòng đọc, bị khóa cửa cả đêm, và đó là đêm vui nhất đời bác.",
+        "en": "Once he fell asleep in the reading room and got locked in all night, and it was the best night of his life."
+      },
+      "habit": {
+        "vi": "Gặm đầu cây bút chì bằng tre mỗi khi nghĩ, nên bút của bác cây nào cũng ngắn cũn.",
+        "en": "Nibbles the end of his bamboo pencil whenever he thinks, so all his pencils are stubby."
+      },
+      "likes": [
+        "kinh-doc-sach",
+        "lo-muc-tau",
+        "trong-truong-nho"
+      ],
+      "lines": [
+        {
+          "vi": "Chàoooo {name}… sáng nay bác đọc được ba trang… à không, ba dòng. Sáng sớm chữ còn ngái ngủ lắm.",
+          "en": "Hellooo, {name}… this morning I read three pages… well, three lines. Words are still sleepy so early.",
+          "when": "morning"
+        },
+        {
+          "vi": "Chiều nắng xiên vào phòng đọc, chữ trên trang sáng lên vàng óng. Lúc ấy bác đọc thơ hay nhất.",
+          "en": "In the afternoon the sun slants into the reading room and the words glow gold. That is when I read poems best.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều tà, thư viện vãn người… bác kê ghế thẳng hàng, tiếng ghế kéo nghe cũng thành có vần.",
+          "en": "Evening, and the library empties… I line up the chairs, and even their scraping sounds like a rhyme.",
+          "when": "evening"
+        },
+        {
+          "vi": "Đêm khuya… sách ngủ, đèn ngủ, chỉ có bác với cuốn sách thứ chín nghìn tám trăm là còn thức.",
+          "en": "Late night… the books sleep, the lamps sleep, only I and book number nine thousand eight hundred are awake.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa rơi lộp độp trên mái, bác nghe thành thơ: «Mưa rơi trên ngói đỏ, ai ngồi đọc sách đó…»",
+          "en": "Rain patters on the roof and I hear a poem: «Rain on the roof so red, who is reading there instead…»",
+          "weather": "rain"
+        },
+        {
+          "vi": "Nắng đẹp thế này, bác mang sách ra vườn đọc. Gió lật trang hộ, đỡ mỏi tay.",
+          "en": "Sunshine like this, I take my book out to the garden. The wind turns the pages for me, which saves my paws.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Gấu Trúc Khò là cháu bác đấy, ngủ còn giỏi hơn bác. Có lần nó ngủ quên lên dây cót, cả tháp đồng hồ chạy lung tung.",
+          "en": "Gấu Trúc Khò is my grand-nephew, and he sleeps even better than I do. Once he napped instead of winding the clock, and the whole tower went haywire.",
+          "hearts": 2
+        },
+        {
+          "vi": "Bác sợ nhất là nấc cụt giữa lúc đọc thơ trước đông người. Lần nào bác cũng ngậm sẵn một ngụm nước, phồng má như cá vàng.",
+          "en": "What I fear most is hiccups halfway through reading a poem to a crowd. I always keep a sip of water in my mouth first, cheeks puffed like a goldfish.",
+          "hearts": 3
+        },
+        {
+          "vi": "Cô Mai hồi bé hay ngồi ở góc phòng đọc này, đọc một cuốn sách mãi không chịu về. Bác chưa kể với cô là bác vẫn còn nhớ đâu.",
+          "en": "When Cô Mai was little she used to sit in this very corner of the reading room, reading one book for hours. I never told her I still remember.",
+          "hearts": 4,
+          "about": "co-thu-thu-mai"
+        },
+        {
+          "vi": "{name} ơi, bác đã đọc hơn chín nghìn cuốn sách, nhưng chuyện về cháu là chuyện bác thích kể nhất.",
+          "en": "{name}, I've read over nine thousand books, but stories about you are the ones I like telling most.",
+          "hearts": 5
+        },
+        {
+          "vi": "Voi Trống Hội bên Trường học gõ trống cho bác đọc thơ. Bác đọc một câu, cậu ấy gõ một tiếng, chậm mà khớp lắm.",
+          "en": "Voi Trống Hội over at the School drums while I read poems. I read a line, he strikes a beat; slow, but perfectly matched.",
+          "about": "voi-trong-hoi"
+        },
+        {
+          "vi": "Một cây tre làm được bao nhiêu cây bút chì nhỉ? Bác chưa đếm bao giờ, vì bác lỡ ăn mất nửa cây rồi.",
+          "en": "How many pencils can one bamboo cane make? I've never counted, because I've already eaten half of it."
+        },
+        {
+          "vi": "Cháu thích thơ có vần hay không vần? Bác thì thích có vần, vần giúp chữ nắm tay nhau đi cho khỏi lạc.",
+          "en": "Do you like poems that rhyme or not? I like rhymes: they help the words hold hands so they do not get lost."
+        },
+        {
+          "vi": "Thỏi mực tàu của bác đã dùng ba mươi năm. Mực cạn bác lại mài, thỏi mực mòn dần như bánh xà phòng.",
+          "en": "My ink stick has lasted thirty years. When the ink runs dry I grind more, and the stick wears down like a bar of soap."
+        },
+        {
+          "vi": "Đi chậm thì thấy nhiều, {name} ạ. Bác đi từ cửa vào phòng đọc mất năm phút, mà gặp được mười cuốn sách hay.",
+          "en": "Go slowly and you see more, {name}. It takes me five minutes to walk from the door to the reading room, and I meet ten good books on the way."
+        }
+      ]
+    },
+    {
+      "id": "koala-ghep-tranh",
+      "name": "Koala Ghép Tranh",
+      "role": {
+        "vi": "Người mê ghép hình ở lối vào vườn đọc sách",
+        "en": "The jigsaw lover at the entrance to the reading garden"
+      },
+      "personality": {
+        "vi": "Kiên nhẫn vô tận, buồn ngủ suốt ngày nhưng hễ thấy mảnh ghép là tỉnh như sáo.",
+        "en": "Endlessly patient; sleepy all day long, yet wide awake the moment he sees a puzzle piece."
+      },
+      "voice": {
+        "vi": "Nói nhỏ, ngắt quãng, hay ví mọi thứ với tranh ghép: «Chuyện này thiếu một góc».",
+        "en": "Speaks quietly in little bursts and compares everything to jigsaws: «This story is missing a corner»."
+      },
+      "fear": {
+        "vi": "Sợ ghép tới mảnh cuối cùng thì phát hiện bị thiếu.",
+        "en": "Afraid of reaching the last piece and finding it is missing."
+      },
+      "dream": {
+        "vi": "Ghép một bức tranh một nghìn mảnh vẽ toàn bộ thư viện, có cả từng ô cửa sổ.",
+        "en": "To build a thousand-piece puzzle of the whole library, every window included."
+      },
+      "secret": {
+        "vi": "Bức tranh nào ghép xong, cậu ấy cũng lén giữ lại một mảnh làm kỷ niệm, nên tranh nào của cậu ấy cũng thiếu một mảnh.",
+        "en": "From every finished puzzle he secretly keeps one piece as a keepsake, which is why all his puzzles are missing a piece."
+      },
+      "habit": {
+        "vi": "Làm gì cũng làm phần viền trước, kể cả ăn bánh mì.",
+        "en": "Does the edges first in everything, even eating a sandwich."
+      },
+      "likes": [
+        "kinh-lup-bac",
+        "cuon-giay-coi",
+        "canh-thong-tuyet"
+      ],
+      "lines": [
+        {
+          "vi": "Ưm… sáng rồi à. Tớ ghép được mảnh trời xanh cuối cùng đúng lúc mặt trời mọc, chuẩn màu luôn.",
+          "en": "Mm… morning already. I fitted the last piece of blue sky just as the sun rose, exactly the right colour.",
+          "when": "morning"
+        },
+        {
+          "vi": "Giữa trưa nắng chiếu vào mặt bàn, mảnh nào cũng bóng loáng khó phân biệt. Tớ ngủ một giấc rồi ghép tiếp.",
+          "en": "At midday the sun hits the table and every piece shines so much they all look alike. I'll nap, then carry on.",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều tối gió lùa vào vườn đọc sách. Tớ đặt đá lên từng góc tranh, kẻo bức tranh bay mất như hôm trước.",
+          "en": "In the evening the breeze sweeps through the reading garden. I put pebbles on each corner, or the picture blows away like last time.",
+          "when": "evening"
+        },
+        {
+          "vi": "Khuya rồi… tớ đang ghép tranh dưới đèn pin. Mảnh màu đen khó nhất, vì cả đêm cũng màu đen.",
+          "en": "It's late… I'm puzzling by torchlight. The black pieces are the hardest, because the whole night is black too.",
+          "when": "night"
+        },
+        {
+          "vi": "Mưa thì tớ mang tranh vào hiên. Một giọt nước rơi trúng mảnh ghép là nó phồng lên như bánh đa nhúng nước.",
+          "en": "When it rains I carry the puzzle onto the porch. One drop on a piece and it puffs up like a rice cracker dipped in water.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời đẹp quá, mình ra bãi cỏ ghép tranh to đi {name}. Cậu làm viền, tớ làm phần giữa.",
+          "en": "Such lovely weather, let's do a big puzzle on the grass, {name}. You do the edges, I'll do the middle.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Ăn bánh mì tớ cũng ăn phần viền trước. Mẹ tớ bảo tớ là koala duy nhất ăn bánh theo kiểu ghép tranh.",
+          "en": "Even with a sandwich I eat the crust first. My mum says I'm the only koala who eats bread like a jigsaw.",
+          "hearts": 2
+        },
+        {
+          "vi": "Cậu biết vì sao koala ngủ nhiều không? Để mơ thấy mảnh ghép còn thiếu nằm ở đâu. Tớ tìm ra mấy mảnh nhờ mơ rồi đấy.",
+          "en": "Do you know why koalas sleep so much? To dream where the missing piece is. I've found a few that way.",
+          "hearts": 3
+        },
+        {
+          "vi": "Tớ sợ nhất là ghép tới mảnh cuối thì không thấy đâu. Như đọc truyện tới trang cuối thì bị xé mất.",
+          "en": "What I fear most is reaching the last piece and finding it gone. Like reaching the last page of a story and finding it torn out.",
+          "hearts": 4
+        },
+        {
+          "vi": "{name}, bức tranh một nghìn mảnh của tớ mà ghép xong, mảnh cuối cùng tớ để dành cho cậu đặt vào.",
+          "en": "{name}, when my thousand-piece puzzle is done, I'm saving the very last piece for you to put in.",
+          "hearts": 5
+        },
+        {
+          "vi": "Nai Leo Vách trên Núi tuyết gửi tớ ảnh những vách đá bạn ấy leo. Tớ cắt thành tranh ghép, ghép xong mới biết bạn ấy liều cỡ nào.",
+          "en": "Nai Leo Vách on Snowy Mountain sends me photos of the cliffs Nai climbs. I cut them into jigsaws, and only when they are done do I see how daring Nai is.",
+          "about": "nai-leo-vach"
+        },
+        {
+          "vi": "Mèo Hộp Nhạc với tớ hay thi lật bài. Cậu ấy nhanh tay, còn tớ thì nhanh… ngủ.",
+          "en": "Mèo Hộp Nhạc and I race at snap. He's quick with his paws, and I'm quick to… nod off.",
+          "about": "meo-hop-nhac"
+        },
+        {
+          "vi": "Cành thông tuyết ở Núi tuyết thơm mát lắm, tớ đặt cạnh bàn ghép tranh cho tỉnh ngủ.",
+          "en": "Snowy pine sprigs from Snowy Mountain smell so fresh; I keep one by my puzzle table to stay awake."
+        },
+        {
+          "vi": "Đời cũng như tranh ghép, {name} ạ: mảnh nào trông kỳ cục nhất lại hay là mảnh nối hai nửa với nhau.",
+          "en": "Life's like a jigsaw, {name}: the oddest-looking piece is often the one that joins the two halves."
+        },
+        {
+          "vi": "Tớ có kính lúp bạc để soi màu từng mảnh. Hai mảnh xanh trông giống nhau, soi kỹ mới thấy một mảnh là lá, một mảnh là ếch.",
+          "en": "I've a silver magnifying glass for checking each piece. Two green pieces may look the same, but up close one's a leaf and one's a frog."
+        }
+      ]
+    },
+    {
+      "id": "meo-hop-nhac",
+      "name": "Mèo Hộp Nhạc",
+      "role": {
+        "vi": "Người giữ hộp nhạc trên bục gỗ sân lễ hội lá vàng",
+        "en": "Keeper of the music box on the wooden stage of the golden-leaf festival yard"
+      },
+      "personality": {
+        "vi": "Hoài cổ, nhẹ nhàng, mê mọi thứ có dây cót và tiếng lách cách.",
+        "en": "Nostalgic and gentle, fond of anything with a winding key and a tick-tick-click."
+      },
+      "voice": {
+        "vi": "Vừa nói vừa ngân nga, hay chen «tinh tang» vào giữa câu.",
+        "en": "Hums while he talks and slips a «ting-a-ling» into the middle of his sentences."
+      },
+      "fear": {
+        "vi": "Sợ lên dây cót quá tay làm đứt lò xo hộp nhạc.",
+        "en": "Afraid of over-winding and snapping the music box spring."
+      },
+      "dream": {
+        "vi": "Làm một chiếc hộp nhạc chơi được bài hát yêu thích của từng bạn đọc trong thư viện.",
+        "en": "To build a music box that can play every library reader's favourite song."
+      },
+      "secret": {
+        "vi": "Cậu ấy hát lạc giọng kinh khủng, nên mới mê hộp nhạc: hộp nhạc hát hộ mà chẳng bao giờ lạc.",
+        "en": "He sings terribly out of tune, which is why he loves music boxes: they sing for him and never go off key."
+      },
+      "habit": {
+        "vi": "Xoay đuôi một vòng như lên dây cót trước khi bắt đầu việc gì.",
+        "en": "Twirls his tail once, like winding a key, before starting anything."
+      },
+      "likes": [
+        "kep-sach-ruy-bang",
+        "chuong-gio-truc",
+        "tem-sach-co"
+      ],
+      "lines": [
+        {
+          "vi": "Tinh tang… chào buổi sáng {name}. Tớ vừa lên dây cót cho hộp nhạc, nó đang hát bài chào ngày mới đây.",
+          "en": "Ting-a-ling… good morning, {name}. I've just wound the music box, and it's singing the good-morning song.",
+          "when": "morning"
+        },
+        {
+          "vi": "Buổi chiều lá vàng rụng trên bục gỗ, rơi đúng nhịp ba như điệu valse. Cậu nghe thấy không?",
+          "en": "In the afternoon gold leaves fall on the wooden stage, right in three-four time like a waltz. Can you hear it?",
+          "when": "afternoon"
+        },
+        {
+          "vi": "Chiều tối tớ lau từng chiếc chốt nhạc bằng khăn mềm. Chốt nào bóng nhất thì hát hay nhất.",
+          "en": "In the evening I polish each music pin with a soft cloth. The shiniest pins sing the sweetest.",
+          "when": "evening"
+        },
+        {
+          "vi": "Đêm rồi, hộp nhạc chỉ được hát khe khẽ thôi. Tớ chỉnh cho nó ru Thỏ Ngắm Sao đang ngủ quên trên bãi cỏ.",
+          "en": "It's night, so the music box may only sing softly. I've set it to lull Thỏ Ngắm Sao, asleep on the lawn.",
+          "when": "night",
+          "about": "tho-ngam-sao"
+        },
+        {
+          "vi": "Mưa rơi lên bục gỗ lộp bộp như ai gõ hộp nhạc bằng ngón tay. Tớ ngồi trú, đếm nhịp mưa.",
+          "en": "Rain drums on the wooden stage like someone playing a music box with their fingers. I shelter and count the rain's beat.",
+          "weather": "rain"
+        },
+        {
+          "vi": "Trời đẹp, tớ mở nắp hộp nhạc cho tiếng nhạc bay xa. Hôm qua có chú chim sẻ đậu xuống nghe hết bài.",
+          "en": "Fine weather, so I open the music box lid and let the tune fly far. Yesterday a sparrow perched and listened to the whole song.",
+          "weather": "fine"
+        },
+        {
+          "vi": "Tớ xoay đuôi một vòng trước khi làm việc gì, như lên dây cót cho chính mình. Quên xoay là cả ngày chạy chậm.",
+          "en": "I twirl my tail once before doing anything, like winding myself up. If I forget, I run slow all day.",
+          "hearts": 2
+        },
+        {
+          "vi": "Lần đầu lên dây cót, tớ vặn quá tay làm hộp nhạc của bà kêu «tưng» một tiếng rồi im luôn. Từ đó tớ vặn chậm lắm.",
+          "en": "The first time I wound Grandma's music box, I overdid it; it went «twang» and fell silent. Since then I wind very slowly.",
+          "hearts": 3
+        },
+        {
+          "vi": "Tớ mơ làm một hộp nhạc chơi được bài hát của từng bạn đọc. Bài của {name} là bài gì? Ngân thử tớ nghe đi.",
+          "en": "I dream of a music box that plays every reader's song. What's your song, {name}? Hum it for me.",
+          "hearts": 4
+        },
+        {
+          "vi": "{name} có muốn biết tên hộp nhạc của tớ không? Nó tên là Bạn Thân. Giờ thì tớ có hai Bạn Thân rồi.",
+          "en": "Want to know my music box's name, {name}? It's called Best Friend. Now I have two Best Friends.",
+          "hearts": 5
+        },
+        {
+          "vi": "Khỉ Chuyền Cành trong Khu rừng bí mật gửi tớ tiếng chim rừng ghi trong vỏ ốc. Tớ đang chép nó thành chốt nhạc.",
+          "en": "Khỉ Chuyền Cành in the Secret Forest sent me forest birdsong recorded in a seashell. I am turning it into music pins.",
+          "about": "khi-chuyen-canh"
+        },
+        {
+          "vi": "Chuông gió ống tre ở Làng Ven Sông kêu đúng nốt Đô cao, tớ mượn tiếng ấy làm nốt mở đầu cho hộp nhạc.",
+          "en": "The bamboo wind chimes from Riverside Village ring a perfect high C; I borrowed that note to open my music box tune."
+        },
+        {
+          "vi": "Đố {name}: hộp gì không biết hát mà mở ra là có nhạc? Hộp nhạc chứ còn gì… à, cái bụng đói của tớ cũng thế.",
+          "en": "Riddle, {name}: what box cannot sing but plays music when you open it? A music box, of course… oh, and my hungry tummy too."
+        },
+        {
+          "vi": "Một hộp nhạc nhỏ có mười tám chiếc răng lược thép. Mỗi răng một nốt, gảy đúng lúc là thành bài.",
+          "en": "A little music box has eighteen steel comb teeth. Each tooth is a note; pluck them at the right moment and you get a song."
+        },
+        {
+          "vi": "Tớ thích tem sách cổ vì hoa văn trên đó giống khuông nhạc. Nhìn lâu là nghe ra cả giai điệu.",
+          "en": "I love old book stamps because their patterns look like music staves. Stare long enough and you can hear a tune."
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "a": "gau-truc",
+      "b": "co-thu-thu-mai",
+      "kind": "mentor",
+      "note": {
+        "vi": "Bác Gấu Trúc Tròn dạy cô Mai nghề thủ thư, từ cách đóng dấu tới cách nói thật khẽ.",
+        "en": "Gấu Trúc Tròn taught Cô Mai to be a librarian, from stamping books to speaking very softly."
+      }
+    },
+    {
+      "a": "co-thu-thu-mai",
+      "b": "tho-ngam-sao",
+      "kind": "friend",
+      "note": {
+        "vi": "Cô Mai để dành cho Thỏ Ngắm Sao mọi cuốn sách về sao; lần nào Thỏ trả sách cũng dính vài cọng cỏ.",
+        "en": "Cô Mai saves every star book for Thỏ Ngắm Sao, and he always returns them with a few blades of grass inside."
+      }
+    },
+    {
+      "a": "tho-ngam-sao",
+      "b": "meo-hop-nhac",
+      "kind": "friend",
+      "note": {
+        "vi": "Mèo Hộp Nhạc lên dây hộp nhạc hát ru cho Thỏ Ngắm Sao những đêm ngắm sao trên bãi cỏ.",
+        "en": "Mèo Hộp Nhạc winds up his music box to sing to Thỏ Ngắm Sao on stargazing nights on the lawn."
+      }
+    },
+    {
+      "a": "koala-ghep-tranh",
+      "b": "gau-truc",
+      "kind": "neighbour",
+      "note": {
+        "vi": "Koala Ghép Tranh ngủ trưa ở vườn đọc sách ngay dưới cửa sổ phòng đọc; chiều nào Gấu Trúc Tròn cũng gọi cậu ấy dậy trước giờ đóng cửa.",
+        "en": "Koala Ghép Tranh naps in the reading garden right under the reading-room window, and every afternoon Gấu Trúc Tròn wakes him before closing time."
+      }
+    },
+    {
+      "a": "koala-ghep-tranh",
+      "b": "meo-hop-nhac",
+      "kind": "friend",
+      "note": {
+        "vi": "Hai bạn thi lật bài mỗi tối; Mèo thắng về tốc độ, Koala thắng về kiên nhẫn.",
+        "en": "The two race at snap every evening; Mèo wins on speed, Koala wins on patience."
+      }
+    },
+    {
+      "a": "co-thu-thu-mai",
+      "b": "huou-cao",
+      "kind": "pen-pal",
+      "note": {
+        "vi": "Cô Mai và Hươu Cao viết thư cho nhau đã hai mươi năm, gửi kèm những cuốn sách quý qua lại giữa thư viện và kho sách hoàng gia.",
+        "en": "Cô Mai and Hươu Cao have written to each other for twenty years, sending rare books back and forth between the library and the royal book store."
+      }
+    },
+    {
+      "a": "koala-ghep-tranh",
+      "b": "nai-leo-vach",
+      "kind": "pen-pal",
+      "note": {
+        "vi": "Nai Leo Vách gửi ảnh những vách đá mình vừa leo; Koala Ghép Tranh cắt thành tranh ghép rồi gửi lại cho bạn ghép.",
+        "en": "Nai Leo Vách sends photos of freshly climbed cliffs, and Koala Ghép Tranh cuts them into jigsaws and posts them back to be solved."
+      }
+    }
+  ],
+  "arcs": [
+    {
+      "id": "mai-cuon-sach-lac",
+      "npc": "co-thu-thu-mai",
+      "title": {
+        "vi": "Cuốn sách đi lạc",
+        "en": "The book that went astray"
+      },
+      "teaser": {
+        "vi": "Suỵt… cháu {name}, sáng nay có một cuốn sách tự tìm đường về thư viện. Cô có cảm giác nó đã đi xa lắm.",
+        "en": "Shh… {name}, this morning a book found its own way back to the library. I have a feeling it has travelled very far."
+      },
+      "chapters": [
+        {
+          "quest": "yarn-mai-cuon-sach-lac-1",
+          "hearts": 0,
+          "letter": {
+            "from": "co-thu-thu-mai",
+            "title": {
+              "vi": "Dấu «Đã về»",
+              "en": "The «Returned» stamp"
+            },
+            "body": {
+              "vi": "Cháu {name}, hôm nay cô đóng không biết bao nhiêu con dấu, nhưng dấu «Đã về» trên cuốn sách ấy làm tay cô run nhất. Cảm ơn cháu đã đọc giúp cô lá thư. Cô gửi cháu ít xu, nhớ ghé thư viện nghe truyện nhé.",
+              "en": "{name}, I stamped goodness knows how many books today, but the «Returned» stamp on that one made my hand shake the most. Thank you for reading the letter for me. Here are a few coins; do drop by the library for a story."
+            },
+            "reward": {
+              "coins": 15,
+              "xp": 15,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-mai-cuon-sach-lac-2",
+          "hearts": 1,
+          "letter": {
+            "from": "huou-cao",
+            "title": {
+              "vi": "Thư từ kho sách hoàng gia",
+              "en": "A letter from the royal library"
+            },
+            "body": {
+              "vi": "Chào {name}, ta là Hươu Cao ở Lâu đài, bạn thư của cô Mai đã hai mươi năm. Cô ấy chưa bao giờ kể chuyện cuốn sách đi lạc, vậy mà tuần này viết cho ta bốn trang liền, trang nào cũng nhắc tên cháu. Ta gửi cháu một con tem sách cổ trong kho sách hoàng gia.",
+              "en": "Hello {name}, I am Hươu Cao at the Castle, Cô Mai's pen friend for twenty years. She had never told me about the lost book, yet this week she wrote me four whole pages, and every one mentions you. I am sending you an old book stamp from the royal library."
+            },
+            "reward": {
+              "coins": 10,
+              "xp": 20,
+              "items": {
+                "tem-sach-co": 1
+              }
+            }
+          }
+        },
+        {
+          "quest": "yarn-mai-cuon-sach-lac-3",
+          "hearts": 2,
+          "letter": {
+            "from": "co-thu-thu-mai",
+            "title": {
+              "vi": "Lời cảm ơn cuối cùng cũng nói ra",
+              "en": "The thank-you, said at last"
+            },
+            "body": {
+              "vi": "Cháu {name}, cô nói được câu cảm ơn rồi, không thành «suỵt» như cô sợ. Cụ Gấu bảo tuần nào cũng sẽ dắt cháu nội tới mượn sách. Hóa ra cuốn sách đi lạc ba mươi năm là để dẫn về cho thư viện thêm hai bạn đọc.",
+              "en": "{name}, I managed my thank-you, and it did not come out as «shh» like I feared. Cụ Gấu says he will bring his grandson to borrow books every week. It turns out the book wandered for thirty years just to bring the library two new readers."
+            },
+            "reward": {
+              "coins": 20,
+              "xp": 25,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-mai-cuon-sach-lac-4",
+          "hearts": 3,
+          "letter": {
+            "from": "huou-cao",
+            "title": {
+              "vi": "Sách của cô Mai đã tới",
+              "en": "Cô Mai's book has arrived"
+            },
+            "body": {
+              "vi": "{name} thân mến, cuốn sách của cô Mai vừa tới bằng xe ngựa. Ta đọc hết trong một đêm rồi đặt nó lên kệ cao nhất của kho sách hoàng gia, chỗ chỉ cổ ta với tới. Nghe nói người đọc đầu tiên là cháu, thật đáng ghen tị.",
+              "en": "Dear {name}, Cô Mai's book has just arrived by horse cart. I read it in one night and put it on the highest shelf of the royal library, where only my neck can reach. I hear you were its first reader, which I envy very much."
+            },
+            "reward": {
+              "coins": 25,
+              "xp": 30,
+              "items": {}
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "tho-len-dinh-thap",
+      "npc": "tho-ngam-sao",
+      "title": {
+        "vi": "Lên đỉnh tháp ngắm sao",
+        "en": "Up the tower for the stars"
+      },
+      "teaser": {
+        "vi": "Ba đêm nữa có mưa sao băng… mà tớ chưa từng leo quá chiếu nghỉ đầu tiên, {name} ạ…",
+        "en": "In three nights there's a meteor shower… and I've never climbed past the first landing, {name}…"
+      },
+      "chapters": [
+        {
+          "quest": "yarn-tho-len-dinh-thap-1",
+          "hearts": 0,
+          "letter": {
+            "from": "tho-ngam-sao",
+            "title": {
+              "vi": "Từ chiếu nghỉ đầu tiên",
+              "en": "From the first landing"
+            },
+            "body": {
+              "vi": "{name} ơi… tối nay tớ lại lên chiếu nghỉ một mình, ngồi trên tấm đệm, đếm được hai mươi ngôi sao qua khe tường. Một mình mà không sợ lắm. Cảm ơn cậu đã dán sao cho tớ…",
+              "en": "{name}… tonight I went up to the landing again by myself, sat on the cushion and counted twenty stars through a gap in the wall. Alone, and not too scared. Thank you for sticking up the stars for me…"
+            },
+            "reward": {
+              "coins": 12,
+              "xp": 15,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-tho-len-dinh-thap-2",
+          "hearts": 1,
+          "letter": {
+            "from": "nguoi-tuyet-dem-bac",
+            "title": {
+              "vi": "Thư của người đếm bậc",
+              "en": "A letter from the step counter"
+            },
+            "body": {
+              "vi": "Chào {name}, tớ là Người Tuyết Đếm Bậc trên Núi tuyết. Thỏ Ngắm Sao viết thư hỏi tớ cách leo cao mà không sợ. Tớ bảo: đừng nhìn xuống, cứ đếm bậc, mỗi bậc là một người bạn mới. Nghe nói cậu là người đếm cùng Thỏ, tớ gửi cậu chút quà.",
+              "en": "Hello {name}, I am Người Tuyết Đếm Bậc on Snowy Mountain. Thỏ Ngắm Sao wrote to ask me how to climb high without being scared. I told him: don't look down, just count the steps, and every step is a new friend. I hear you are the one counting with him, so here is a little gift."
+            },
+            "reward": {
+              "coins": 15,
+              "xp": 20,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-tho-len-dinh-thap-3",
+          "hearts": 2,
+          "letter": {
+            "from": "tho-ngam-sao",
+            "title": {
+              "vi": "Bốn mươi bảy ngôi sao băng",
+              "en": "Forty-seven falling stars"
+            },
+            "body": {
+              "vi": "{name}, tớ đã ghi tên cậu vào sổ ngắm sao, ngay dòng đêm mưa sao băng. Tớ còn vẽ lại ngôi sao bịa trên bản đồ, lần này có thêm một ngôi nhỏ đứng cạnh cho đỡ cô đơn. Ngôi ấy là cậu đấy…",
+              "en": "{name}, I've written your name in my stargazing log, right on the line for the meteor night. I've redrawn the made-up star on my map too, and this time there's a little star beside it so it isn't lonely. That one is you…"
+            },
+            "reward": {
+              "coins": 20,
+              "xp": 25,
+              "items": {}
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

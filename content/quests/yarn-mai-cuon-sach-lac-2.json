@@ -1,0 +1,401 @@
+{
+  "id": "yarn-mai-cuon-sach-lac-2",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Chuyện của Cô Thủ Thư Mai, chương 2: Người đọc chậm",
+  "status": "active",
+  "category": "story",
+  "summary": "Cô Thủ Thư Mai muốn cảm ơn người đã giữ cuốn sách của cô suốt ba mươi năm. {name} tìm những món kẹp trong sách, đọc sổ trực đêm, cùng Chú Bảo Vệ Đèn Pin đoán ra người đọc chậm và chọn cách gửi lời cảm ơn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cô Thủ Thư Mai, Chú Bảo Vệ Đèn Pin",
+    "where": "Thư viện: bàn hướng dẫn, khu đọc sách, sảnh chính, hộp trả sách đêm",
+    "goal": "Tìm ra người đọc chậm đã trả cuốn sách đi lạc",
+    "play": "Tìm ba món kẹp trong sách theo lời tả, đọc sổ trực đêm, loại trừ để đoán ra người trả sách, chọn cách cảm ơn",
+    "learn": "Đọc hiểu lời tả và sổ ghi chép, suy luận loại trừ",
+    "reward": "60 XP, 18 Xu, Skill XP Đọc hiểu, Logic",
+    "next": "Gặp Cụ Gấu Kính Lão trên ban công tầng 2"
+  },
+  "phases": {
+    "hook": "mai-ke-chuyen-cu",
+    "explore": "do-kep-trong-sach",
+    "learn": "so-truc-dem",
+    "challenge": "doan-nguoi-doc-cham",
+    "decision": "cach-cam-on",
+    "finale": "cach-cam-on",
+    "reward": "da-tim-ra",
+    "next": "gap-cu-gau"
+  },
+  "places": {
+    "co-thu-thu-mai": "Bàn hướng dẫn",
+    "do-kep-trong-sach": "Khu đọc sách",
+    "st-mai-cuon-sach-lac-so-truc-dem": "Sảnh chính",
+    "st-mai-cuon-sach-lac-bao-ve": "Hộp trả sách đêm"
+  },
+  "steps": [
+    {
+      "id": "mai-ke-chuyen-cu",
+      "title": "Chuyện năm tám tuổi",
+      "goTo": "Tới bàn hướng dẫn, Cô Thủ Thư Mai đang lật từng trang cuốn sách đi lạc",
+      "kind": "dialogue",
+      "target": "co-thu-thu-mai",
+      "lines": [
+        {
+          "speaker": "Cô Thủ Thư Mai",
+          "text": "Cháu {name}, cô có chuyện muốn kể. Hồi tám tuổi, cô mượn cuốn này rồi đánh rơi trên xe buýt. Cô khóc cả tuần, chẳng dám nói với ai."
+        },
+        {
+          "speaker": "Cô Thủ Thư Mai",
+          "text": "Vì thế cô mới làm thủ thư, để không cuốn sách nào phải đi lạc như nó. Giờ cô muốn cảm ơn người đã giữ nó cẩn thận."
+        },
+        {
+          "speaker": "Cô Thủ Thư Mai",
+          "text": "Trong sách có mấy thứ kẹp giữa các trang, cô bày ở khu đọc sách rồi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình sẽ tìm ra người đó, cô ạ!",
+          "reply": "Cô tin cháu. Mắt cháu tinh hơn cặp kính của cô nhiều."
+        },
+        {
+          "text": "Ngày xưa cô có bị phạt không?",
+          "reply": "Không ai biết để mà phạt. Nhưng năm nào cô cũng tự bỏ một đồng xu vào heo đất của thư viện."
+        }
+      ],
+      "en": {
+        "title": "When she was eight",
+        "goTo": "Go to the help desk, where Cô Thủ Thư Mai is turning the pages of the stray book",
+        "lines": [
+          "{name}, there's something I want to tell you. When I was eight I borrowed this book and dropped it on a bus. I cried for a week and never dared tell anyone.",
+          "That's why I became a librarian, so no book would ever be lost like that again. Now I want to thank whoever looked after it so well.",
+          "There were a few things tucked between the pages. I've laid them out in the reading area."
+        ],
+        "choices": [
+          {
+            "text": "We'll find them, I promise!",
+            "reply": "I believe you. Your eyes are much sharper than my glasses."
+          },
+          {
+            "text": "Did you get punished back then?",
+            "reply": "Nobody knew, so nobody could. But every year I drop a coin into the library's piggy bank myself."
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-kep-trong-sach",
+      "title": "Những món kẹp trong sách",
+      "goTo": "Ra khu đọc sách xem những món kẹp trong cuốn sách",
+      "kind": "find-object",
+      "prompt": "Trong cuốn sách có ba món kẹp lại. Đọc lời tả và tìm từng món:",
+      "items": [
+        {
+          "id": "thiep",
+          "name": "Tấm thiệp vẽ ông cháu",
+          "clue": "Nét bút sáp nguệch ngoạc: một ông gấu to đeo kính, ngồi đọc sách cho hai chú gấu con.",
+          "target": "st-mai-cuon-sach-lac-thiep-ong-chau"
+        },
+        {
+          "id": "ve",
+          "name": "Vé xe buýt số 7",
+          "clue": "Mảnh giấy nhỏ ố vàng, in một con số to, góc bị bấm thủng một lỗ tròn.",
+          "target": "st-mai-cuon-sach-lac-ve-xe-buyt"
+        },
+        {
+          "id": "la",
+          "name": "Chiếc lá ép khô",
+          "clue": "Mỏng như giấy pơ-luya, vẫn xòe năm cánh như một bàn tay.",
+          "target": "st-mai-cuon-sach-lac-la-ep"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Things tucked in the book",
+        "goTo": "Go to the reading area and look at the things from inside the book",
+        "prompt": "Three things were tucked inside the book. Read the descriptions and find each one:",
+        "items": [
+          {
+            "name": "Card with a grandpa and grandchildren",
+            "clue": "Wobbly crayon lines: a big old bear in glasses reading to two bear cubs."
+          },
+          {
+            "name": "Number 7 bus ticket",
+            "clue": "A small yellowed slip with one big number and a round hole punched in the corner."
+          },
+          {
+            "name": "Pressed dry leaf",
+            "clue": "Thin as tissue paper, still spread out like a five-fingered hand."
+          }
+        ]
+      }
+    },
+    {
+      "id": "so-truc-dem",
+      "title": "Sổ trực đêm",
+      "goTo": "Ra sảnh chính đọc sổ trực đêm",
+      "kind": "read",
+      "target": "st-mai-cuon-sach-lac-so-truc-dem",
+      "skill": "doc-hieu",
+      "text": "SỔ TRỰC ĐÊM\nTối thứ hai: yên tĩnh, chỉ có mèo hoang ghé.\nTối thứ ba, chín giờ: một người chống gậy, đội mũ len xanh, bỏ sách vào hộp trả sách đêm. Đi rất chậm, đứng lại vẫy tay chào tôi.\nTối thứ tư: mưa, không ai qua.",
+      "question": "Người trả sách đến vào tối nào?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Tối thứ hai"
+        },
+        {
+          "id": "b",
+          "text": "Tối thứ ba"
+        },
+        {
+          "id": "c",
+          "text": "Tối thứ tư"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Tìm dòng có nhắc tới hộp trả sách đêm.",
+          "Xem dòng ấy viết về tối nào."
+        ],
+        "hint": "Đó là tối có người đội mũ len xanh.",
+        "answer": {
+          "text": "Tối thứ ba lúc chín giờ",
+          "explanation": "Sổ ghi: tối thứ ba, chín giờ, một người chống gậy bỏ sách vào hộp trả sách đêm. Tối thứ hai chỉ có mèo, tối thứ tư mưa không ai qua."
+        },
+        "en": {
+          "guide": [
+            "Find the line that mentions the night-return box.",
+            "See which night that line is about."
+          ],
+          "hint": "It's the night of the green woolly hat.",
+          "answer": {
+            "text": "Tuesday night at nine o'clock",
+            "explanation": "The log says: Tuesday night, nine o'clock, someone with a walking stick put a book in the night-return box. Monday only had a cat, and nobody passed on rainy Wednesday."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tối thứ ba! Giờ mình biết người ấy đội mũ len xanh và chống gậy.",
+          "{name} đọc sổ trực kỹ như một thám tử.",
+          "Đúng rồi, chín giờ tối thứ ba, cuốn sách về nhà."
+        ],
+        "wrong": [
+          "Tối hôm ấy chỉ có mèo hoang thôi, đọc dòng tiếp theo nhé.",
+          "Tối đó trời mưa, chẳng ai qua cả.",
+          "Tìm dòng có chữ «hộp trả sách đêm» trong sổ."
+        ],
+        "en": {
+          "right": [
+            "Tuesday night! Now we know they wear a green woolly hat and use a stick.",
+            "{name} reads a log like a real detective.",
+            "That's it: nine o'clock on Tuesday, the book came home."
+          ],
+          "wrong": [
+            "That night only had a stray cat. Read the next line.",
+            "It rained that night and nobody came by.",
+            "Look for the words «night-return box» in the log."
+          ]
+        }
+      },
+      "en": {
+        "title": "The night watch log",
+        "goTo": "Go to the main hall and read the night watch log",
+        "text": "NIGHT WATCH LOG\nMonday night: quiet, only a stray cat came by.\nTuesday night, nine o'clock: someone with a walking stick and a green woolly hat put a book in the night-return box. Walked very slowly, stopped to wave at me.\nWednesday night: rain, nobody passed.",
+        "question": "Which night did the book's returner come?",
+        "choices": [
+          "Monday night",
+          "Tuesday night",
+          "Wednesday night"
+        ]
+      }
+    },
+    {
+      "id": "doan-nguoi-doc-cham",
+      "title": "Ai là người đọc chậm?",
+      "goTo": "Tới hộp trả sách đêm, Chú Bảo Vệ Đèn Pin đang trực",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-mai-cuon-sach-lac-bao-ve",
+      "skill": "logic",
+      "prompt": "Chú Bảo Vệ Đèn Pin đưa danh sách bạn đọc hay mượn sách buổi tối. Người trả sách chống gậy, đi rất chậm và đội mũ len xanh. Đó là ai?",
+      "elements": [
+        {
+          "id": "ba-co",
+          "label": "Bà Cò đọc báo: chống gậy, đội mũ len đỏ"
+        },
+        {
+          "id": "cu-gau",
+          "label": "Cụ Gấu Kính Lão: chống gậy, đội mũ len xanh, đi chậm"
+        },
+        {
+          "id": "anh-huou",
+          "label": "Anh Hươu chạy bộ: đội mũ len xanh, đi nhanh như gió"
+        }
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "Bà Cò đọc báo"
+        },
+        {
+          "id": "b",
+          "text": "Cụ Gấu Kính Lão"
+        },
+        {
+          "id": "c",
+          "text": "Anh Hươu chạy bộ"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Người ấy phải khớp cả ba điều: chống gậy, đi chậm, mũ len xanh.",
+          "Gạch đi người nào sai dù chỉ một điều."
+        ],
+        "hint": "Bà Cò đội mũ màu khác, còn Anh Hươu thì đi quá nhanh.",
+        "answer": {
+          "text": "Cụ Gấu Kính Lão ạ",
+          "explanation": "Chỉ Cụ Gấu Kính Lão vừa chống gậy, vừa đi chậm, vừa đội mũ len xanh. Bà Cò đội mũ đỏ, Anh Hươu đi nhanh như gió."
+        },
+        "en": {
+          "guide": [
+            "The person must match all three things: stick, slow walk, green woolly hat.",
+            "Cross out anyone who gets even one thing wrong."
+          ],
+          "hint": "Granny Stork's hat is another colour, and the deer walks far too fast.",
+          "answer": {
+            "text": "It is Cụ Gấu Kính Lão",
+            "explanation": "Only Cụ Gấu Kính Lão has a stick, a slow walk and a green woolly hat. Granny Stork's hat is red and the deer is fast as the wind."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cụ Gấu Kính Lão! Chú Bảo Vệ vỗ đùi: «Chiều nào cụ cũng ngồi trên ban công tầng 2!»",
+          "{name} loại trừ gọn từng người, đúng kiểu thám tử.",
+          "Khớp cả ba điều, không thể là ai khác."
+        ],
+        "wrong": [
+          "Người này sai mất một điều rồi, so lại với sổ trực nhé.",
+          "Nhớ là mũ len màu xanh, không phải màu khác.",
+          "Người trả sách đi rất chậm, ai đi nhanh thì gạch đi."
+        ],
+        "en": {
+          "right": [
+            "Cụ Gấu Kính Lão! Chú Bảo Vệ slaps his knee: «He sits on the upstairs balcony every afternoon!»",
+            "{name} ruled them out one by one, like a true detective.",
+            "All three clues fit; it can't be anyone else."
+          ],
+          "wrong": [
+            "This one gets one thing wrong. Check against the log again.",
+            "Remember, the woolly hat is green, not any other colour.",
+            "The returner walks very slowly, so cross out anyone fast."
+          ]
+        }
+      },
+      "en": {
+        "title": "Who is the slow reader?",
+        "goTo": "Go to the night-return box, where Chú Bảo Vệ Đèn Pin is on watch",
+        "elements": [
+          "Granny Stork, the newspaper reader: walking stick, red woolly hat",
+          "Cụ Gấu Kính Lão: walking stick, green woolly hat, walks slowly",
+          "Brother Deer, the jogger: green woolly hat, fast as the wind"
+        ],
+        "prompt": "Chú Bảo Vệ Đèn Pin hands over the list of readers who often borrow in the evening. The returner uses a stick, walks very slowly and wears a green woolly hat. Who is it?",
+        "choices": [
+          "Granny Stork, the newspaper reader",
+          "Cụ Gấu Kính Lão",
+          "Brother Deer, the jogger"
+        ]
+      }
+    },
+    {
+      "id": "cach-cam-on",
+      "title": "Cảm ơn thế nào?",
+      "goTo": "Về bàn hướng dẫn báo tin cho Cô Thủ Thư Mai",
+      "kind": "decision",
+      "target": "co-thu-thu-mai",
+      "speaker": "Cô Thủ Thư Mai",
+      "prompt": "«Cụ Gấu Kính Lão à…» Cô Mai đỏ mặt. «Cô nên cảm ơn cụ thế nào đây {name}?»",
+      "choices": [
+        {
+          "id": "viet-thu",
+          "text": "Viết một lá thư cảm ơn thật nắn nót",
+          "consequence": "Cô Mai viết ba lần mới ưng, lần nào cũng bắt đầu bằng «Kính gửi người đọc chậm»."
+        },
+        {
+          "id": "the-vang",
+          "text": "Làm cho cụ một tấm thẻ mượn sách vàng",
+          "consequence": "Tấm thẻ vàng óng ghi: «Được mượn sách bao lâu tùy thích». Cô Mai bật cười vì chính cô cũng muốn có một tấm."
+        },
+        {
+          "id": "gap-mat",
+          "text": "Mời cụ tới thư viện gặp mặt",
+          "consequence": "Cô Mai hít một hơi thật sâu: «Ba mươi năm rồi, cô sẽ nói cảm ơn tận mặt.»"
+        }
+      ],
+      "en": {
+        "title": "How to say thank you?",
+        "goTo": "Go back to the help desk with the news for Cô Thủ Thư Mai",
+        "prompt": "«Cụ Gấu Kính Lão…» Cô Mai turns pink. «How should I thank him, {name}?»",
+        "choices": [
+          {
+            "text": "Write a thank-you letter in her neatest hand",
+            "consequence": "Cô Mai writes it three times before she's happy, and each one begins «Dear slow reader»."
+          },
+          {
+            "text": "Make him a golden library card",
+            "consequence": "The shiny gold card says: «Borrow for as long as you like». Cô Mai laughs, because she'd like one herself."
+          },
+          {
+            "text": "Invite him to the library to meet",
+            "consequence": "Cô Mai takes a deep breath: «After thirty years, I'll say thank you face to face.»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "da-tim-ra",
+      "title": "Đã tìm ra người đọc chậm",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cô Mai cài chiếc lá ép khô lên tóc, rồi dúi cho {name} một nắm xu: «Tiền thưởng cho thám tử nhỏ của thư viện.»",
+      "en": {
+        "title": "The slow reader found",
+        "text": "Cô Mai tucks the pressed leaf into her hair, then presses a handful of coins into {name}'s hand: «A reward for the library's little detective.»"
+      }
+    },
+    {
+      "id": "gap-cu-gau",
+      "title": "Trên ban công tầng 2",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chú Bảo Vệ bảo chiều nào Cụ Gấu Kính Lão cũng lên ban công tầng 2 đọc sách với cháu nội. Cô Mai sửa tóc ba lần mà vẫn chưa dám đi.",
+      "en": {
+        "title": "Up on the balcony",
+        "text": "Chú Bảo Vệ says Cụ Gấu Kính Lão reads with his grandson on the upstairs balcony every afternoon. Cô Mai fixes her hair three times and still doesn't dare go."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 18,
+    "skillXp": {
+      "doc-hieu": 1,
+      "logic": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Cô Thủ Thư Mai's story, chapter 2: The slow reader",
+    "summary": "Cô Thủ Thư Mai wants to thank whoever kept her book safe for thirty years. {name} finds the things tucked inside it, reads the night watch log, works out the slow reader with Chú Bảo Vệ Đèn Pin and chooses how to say thank you."
+  }
+}

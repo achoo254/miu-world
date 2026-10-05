@@ -1,0 +1,374 @@
+{
+  "id": "yarn-mai-cuon-sach-lac-3",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Chuyện của Cô Thủ Thư Mai, chương 3: Ba mươi năm đọc chậm",
+  "status": "active",
+  "category": "story",
+  "summary": "Cô Thủ Thư Mai sắp gặp người đã giữ cuốn sách của mình. {name} giải câu đố của Gấu Con Thuộc Truyện, nghe Cụ Gấu Kính Lão kể chuyện chuyến xe buýt số 7, xếp lại hành trình của cuốn sách và giúp cô Mai quyết định cuốn sách sẽ ở với ai.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cô Thủ Thư Mai, Gấu Con Thuộc Truyện, Cụ Gấu Kính Lão",
+    "where": "Thư viện: bàn hướng dẫn, bậc cầu thang gác sách, ban công tầng 2, phòng đọc",
+    "goal": "Đưa Cô Thủ Thư Mai gặp người đã giữ cuốn sách của cô",
+    "play": "Giải câu đố đọc truyện quay vòng, nghe Cụ Gấu kể chuyện, xếp hành trình của cuốn sách theo thứ tự, chọn nơi cuốn sách ở lại",
+    "learn": "Suy luận dãy quay vòng, sắp xếp trình tự sự việc khi kể chuyện",
+    "reward": "70 XP, 18 Xu, Kính lúp bạc, Skill XP Logic, Kể chuyện",
+    "next": "Cô Thủ Thư Mai bắt đầu viết cuốn sách của riêng mình"
+  },
+  "phases": {
+    "hook": "mai-hoi-hop",
+    "explore": "do-cua-gau-con",
+    "learn": "do-cua-gau-con",
+    "challenge": "hanh-trinh-cuon-sach",
+    "decision": "so-phan-cuon-sach",
+    "finale": "so-phan-cuon-sach",
+    "reward": "kinh-lup-cua-cu",
+    "next": "cuon-so-trang"
+  },
+  "places": {
+    "co-thu-thu-mai": "Bàn hướng dẫn",
+    "st-mai-cuon-sach-lac-gau-con": "Thang gác sách",
+    "st-mai-cuon-sach-lac-cu-gau": "Ban công tầng 2",
+    "st-mai-cuon-sach-lac-cuon-sach-di-lac": "Phòng đọc"
+  },
+  "steps": [
+    {
+      "id": "mai-hoi-hop",
+      "title": "Cô Mai hồi hộp",
+      "goTo": "Tới bàn hướng dẫn, Cô Thủ Thư Mai đã chải tóc tới lần thứ tư",
+      "kind": "dialogue",
+      "target": "co-thu-thu-mai",
+      "lines": [
+        {
+          "speaker": "Cô Thủ Thư Mai",
+          "text": "Cháu {name} đi cùng cô nhé? Cô từng đọc truyện cho cả trăm đứa trẻ, vậy mà sắp gặp một cụ già lại run tay."
+        },
+        {
+          "speaker": "Cô Thủ Thư Mai",
+          "text": "Cháu lên trước dò đường đi. Nghe nói cháu nội của cụ ngồi ở bậc cầu thang gác sách, hay đố khách lạ lắm."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Có cháu đi cùng, cô cứ yên tâm.",
+          "reply": "Ừ. Cô sẽ mang theo cuốn sách, để nó đi nốt vòng của nó."
+        },
+        {
+          "text": "Cô định nói gì đầu tiên?",
+          "reply": "Cô tập cả đêm câu «cảm ơn cụ», mà sợ lúc gặp lại nói thành «suỵt»."
+        }
+      ],
+      "en": {
+        "title": "Cô Mai is nervous",
+        "goTo": "Go to the help desk, where Cô Thủ Thư Mai has brushed her hair for the fourth time",
+        "lines": [
+          "Will you come with me, {name}? I've read stories to hundreds of children, yet meeting one old gentleman makes my hands shake.",
+          "Go up ahead and scout the way. They say his grandson sits on the stairs to the book loft and loves quizzing strangers."
+        ],
+        "choices": [
+          {
+            "text": "I'm right here with you, don't worry.",
+            "reply": "All right. I'll bring the book, so it can finish its journey."
+          },
+          {
+            "text": "What will you say first?",
+            "reply": "I practised «thank you» all night, but I'm afraid it'll come out as «shh»."
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-cua-gau-con",
+      "title": "Câu đố trên cầu thang",
+      "goTo": "Lên thang gác sách, Gấu Con Thuộc Truyện đang ngồi chặn lối",
+      "kind": "riddle",
+      "target": "st-mai-cuon-sach-lac-gau-con",
+      "skill": "logic",
+      "question": "Gấu Con Thuộc Truyện khoanh tay: «Sách của ông có 9 truyện. Tối nào ông cũng đọc 1 truyện, hết truyện số 9 thì quay lại truyện số 1. Tối nay ông đọc truyện số 8. Tối ngày kia ông đọc truyện số mấy?»",
+      "answer": {
+        "value": 1
+      },
+      "support": {
+        "guide": [
+          "Tối nay là truyện số 8, tối mai là truyện tiếp theo.",
+          "Sau truyện số 9 thì quay về truyện số 1."
+        ],
+        "hint": "Tối mai đọc truyện số 9, vậy tối ngày kia thì sao?",
+        "answer": {
+          "text": "Truyện số 1",
+          "explanation": "Tối nay truyện 8, tối mai truyện 9, hết sách nên tối ngày kia quay lại truyện số 1."
+        },
+        "en": {
+          "guide": [
+            "Tonight is story 8; tomorrow night is the next one.",
+            "After story 9 he goes back to story 1."
+          ],
+          "hint": "Tomorrow night is story 9, so what about the night after?",
+          "answer": {
+            "text": "Story 1",
+            "explanation": "Tonight story 8, tomorrow story 9, then the book runs out, so the night after tomorrow it is back to story 1."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Truyện số 1! Gấu Con tránh sang một bên, cười tít mắt.",
+          "{name} không mắc bẫy quay vòng, giỏi thật.",
+          "Hết sách thì đọc lại từ đầu, đúng như ông vẫn làm."
+        ],
+        "wrong": [
+          "Không có truyện số 10 đâu, sách chỉ có chín truyện thôi.",
+          "Đếm từng tối một: tối mai trước, rồi mới tới tối ngày kia.",
+          "Sau truyện số 9, ông mở lại trang đầu tiên đấy."
+        ],
+        "en": {
+          "right": [
+            "Story 1! Gấu Con steps aside, beaming.",
+            "{name} didn't fall into the loop trap. Clever!",
+            "When the book runs out you start again, just like Grandpa does."
+          ],
+          "wrong": [
+            "There's no story 10; the book only has nine.",
+            "Count one night at a time: tomorrow first, then the night after.",
+            "After story 9, Grandpa turns back to the very first page."
+          ]
+        }
+      },
+      "en": {
+        "title": "The riddle on the stairs",
+        "goTo": "Climb the stairs to the book loft, where Gấu Con Thuộc Truyện is blocking the way",
+        "question": "Gấu Con Thuộc Truyện folds his arms: «Grandpa's book has 9 stories. Every night he reads 1, and after story 9 he goes back to story 1. Tonight he reads story 8. Which story will he read the night after tomorrow?»"
+      }
+    },
+    {
+      "id": "cu-gau-ke-chuyen",
+      "title": "Chuyến xe buýt số 7",
+      "goTo": "Ra ban công tầng 2, Cụ Gấu Kính Lão đang ngồi đọc sách",
+      "kind": "dialogue",
+      "target": "st-mai-cuon-sach-lac-cu-gau",
+      "lines": [
+        {
+          "speaker": "Cụ Gấu Kính Lão",
+          "text": "Ha ha, cháu là bạn của cô thủ thư à? Ba mươi năm trước ta nhặt được cuốn sách ấy dưới ghế xe buýt số 7."
+        },
+        {
+          "speaker": "Cụ Gấu Kính Lão",
+          "text": "Ta định đem trả, nhưng cháu nội ta khóc đòi nghe tiếp. Rồi đứa này lớn, đứa kia ra đời, cứ thế mà đọc."
+        },
+        {
+          "speaker": "Cụ Gấu Kính Lão",
+          "text": "Ta đọc chậm lắm, mỗi tối một truyện. Tới khi đeo kính mới, ta mới thấy cái dấu thư viện bé tẹo ở trang cuối."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cô thủ thư chính là cô bé làm rơi cuốn sách đấy ạ.",
+          "reply": "Thật sao? Thế thì ta phải xin lỗi cô bé ấy, à không, cô ấy, một trăm lần."
+        }
+      ],
+      "en": {
+        "title": "The number 7 bus",
+        "goTo": "Go out to the upstairs balcony, where Cụ Gấu Kính Lão sits reading",
+        "lines": [
+          "Ha ha, you're the librarian's friend? Thirty years ago I found that book under a seat on the number 7 bus.",
+          "I meant to return it, but my grandson cried for the next story. Then one grew up, another was born, and on we read.",
+          "I read very slowly, one story a night. Only when I got new glasses did I spot the tiny library stamp on the last page."
+        ],
+        "choices": [
+          {
+            "text": "The librarian is the little girl who dropped it!",
+            "reply": "Really? Then I must apologise to that little girl, I mean, that lady, a hundred times."
+          }
+        ]
+      }
+    },
+    {
+      "id": "hanh-trinh-cuon-sach",
+      "title": "Hành trình của cuốn sách",
+      "goTo": "Vào phòng đọc ghi lại hành trình của cuốn sách",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-mai-cuon-sach-lac-cuon-sach-di-lac",
+      "skill": "ke-chuyen",
+      "prompt": "Cô Mai muốn ghi hành trình của cuốn sách vào sổ. Xếp các việc theo đúng thứ tự đã xảy ra:",
+      "items": [
+        {
+          "id": "kinh",
+          "label": "Cụ Gấu đeo kính mới, thấy dấu thư viện"
+        },
+        {
+          "id": "muon",
+          "label": "Bé Mai tám tuổi mượn cuốn sách"
+        },
+        {
+          "id": "doc",
+          "label": "Cụ Gấu đọc sách cho các cháu suốt nhiều năm"
+        },
+        {
+          "id": "tra",
+          "label": "Cuốn sách nằm trong hộp trả sách đêm"
+        },
+        {
+          "id": "roi",
+          "label": "Cuốn sách rơi dưới ghế xe buýt số 7"
+        },
+        {
+          "id": "nhat",
+          "label": "Cụ Gấu nhặt được cuốn sách"
+        }
+      ],
+      "answer": {
+        "order": [
+          "muon",
+          "roi",
+          "nhat",
+          "doc",
+          "kinh",
+          "tra"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Câu chuyện bắt đầu từ lúc cuốn sách rời thư viện.",
+          "Phải rơi rồi mới có người nhặt, phải đeo kính mới rồi mới thấy dấu."
+        ],
+        "hint": "Việc đầu tiên là bé Mai mượn sách, việc cuối là sách về hộp trả sách.",
+        "answer": {
+          "text": "Mượn, rơi, nhặt, đọc, đeo kính, trả",
+          "explanation": "Bé Mai mượn sách rồi đánh rơi trên xe buýt; Cụ Gấu nhặt được, đọc cho các cháu nhiều năm; đeo kính mới cụ thấy dấu thư viện nên đem trả vào hộp trả sách đêm."
+        },
+        "en": {
+          "guide": [
+            "The story starts when the book leaves the library.",
+            "It has to fall before someone finds it, and the new glasses come before the stamp is seen."
+          ],
+          "hint": "First little Mai borrows it; last, it arrives in the return box.",
+          "answer": {
+            "text": "Borrowed, dropped, found, read, glasses, returned",
+            "explanation": "Little Mai borrowed the book and dropped it on the bus; Cụ Gấu found it and read it to his grandchildren for years; with new glasses he saw the stamp, so he returned it through the night box."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba mươi năm nằm gọn trong sáu dòng, cô Mai chép lại không sót chữ nào.",
+          "{name} kể chuyện theo thứ tự rành mạch như người dẫn truyện.",
+          "Đầu đuôi đủ cả, cuốn sách chắc cũng thấy vui."
+        ],
+        "wrong": [
+          "Cuốn sách chưa rơi thì chưa ai nhặt được đâu, xem lại nhé.",
+          "Cụ đeo kính mới rồi mới thấy dấu thư viện, sau đó mới trả.",
+          "Bắt đầu từ lúc bé Mai mượn sách, rồi đi dần từng bước."
+        ],
+        "en": {
+          "right": [
+            "Thirty years fit neatly into six lines, and Cô Mai copies every word.",
+            "{name} tells the story in order like a real storyteller.",
+            "Beginning to end, all there. The book must be pleased too."
+          ],
+          "wrong": [
+            "No one can find the book before it's dropped. Check again.",
+            "The new glasses come first, then the stamp, then the return.",
+            "Start when little Mai borrows the book and go step by step."
+          ]
+        }
+      },
+      "en": {
+        "title": "The book's journey",
+        "goTo": "Go into the reading room and write down the book's journey",
+        "prompt": "Cô Mai wants to write the book's journey in her notebook. Put the events in the order they happened:",
+        "items": [
+          "Cụ Gấu gets new glasses and sees the library stamp",
+          "Eight-year-old Mai borrows the book",
+          "Cụ Gấu reads the book to his grandchildren for years",
+          "The book lands in the night-return box",
+          "The book falls under a seat on the number 7 bus",
+          "Cụ Gấu finds the book"
+        ]
+      }
+    },
+    {
+      "id": "so-phan-cuon-sach",
+      "title": "Cuốn sách ở với ai?",
+      "goTo": "Về bàn hướng dẫn, Cô Thủ Thư Mai đang chờ tin",
+      "kind": "decision",
+      "target": "co-thu-thu-mai",
+      "speaker": "Cô Thủ Thư Mai",
+      "prompt": "Cụ Gấu xuống chào, hai bên cúi đầu cảm ơn nhau mãi. Rồi cô Mai hỏi {name}: «Cuốn sách nên ở với ai bây giờ?»",
+      "choices": [
+        {
+          "id": "tang-cu",
+          "text": "Tặng lại nhà Cụ Gấu, thư viện mua cuốn mới",
+          "consequence": "Gấu Con ôm cuốn sách nhảy cẫng. Cô Mai ghi vào sổ: «Sách cũ đã có nhà mới.»"
+        },
+        {
+          "id": "ke-co-chuyen",
+          "text": "Đặt lên kệ «Sách có chuyện» kèm tấm thiệp ông cháu",
+          "consequence": "Kệ mới chỉ có một cuốn, nhưng bạn đọc nào cũng muốn nghe chuyện của nó."
+        },
+        {
+          "id": "the-gau-con",
+          "text": "Làm cho Gấu Con tấm thẻ mượn sách đầu tiên",
+          "consequence": "Gấu Con ký tên ngoằn ngoèo lên thẻ. Lần này cuốn sách đi đâu cũng có tên người mượn."
+        }
+      ],
+      "en": {
+        "title": "Who keeps the book?",
+        "goTo": "Go back to the help desk, where Cô Thủ Thư Mai is waiting for news",
+        "prompt": "Cụ Gấu comes down to say hello, and the two of them keep bowing and thanking each other. Then Cô Mai asks {name}: «Who should the book stay with now?»",
+        "choices": [
+          {
+            "text": "Give it to Cụ Gấu's family and buy the library a new copy",
+            "consequence": "Gấu Con hugs the book and jumps for joy. Cô Mai writes in her notebook: «Old book has found a new home.»"
+          },
+          {
+            "text": "Put it on a «Books with a story» shelf with the grandpa card",
+            "consequence": "The new shelf holds only one book, but every reader wants to hear its story."
+          },
+          {
+            "text": "Make Gấu Con his very first library card",
+            "consequence": "Gấu Con signs the card in squiggles. This time, wherever the book goes, it carries a borrower's name."
+          }
+        ]
+      }
+    },
+    {
+      "id": "kinh-lup-cua-cu",
+      "title": "Kính lúp của Cụ Gấu",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cụ Gấu Kính Lão tặng {name} chiếc kính lúp bạc cụ dùng đọc chữ nhỏ suốt ba mươi năm: «Để cháu tìm những thứ bé tí mà quý.»",
+      "en": {
+        "title": "Cụ Gấu's magnifying glass",
+        "text": "Cụ Gấu Kính Lão gives {name} the silver magnifying glass he has used for small print for thirty years: «So you can find tiny, precious things.»"
+      }
+    },
+    {
+      "id": "cuon-so-trang",
+      "title": "Cuốn sổ trắng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối đó cô Mai không ngủ được. Cô lấy một cuốn sổ trắng, viết lên trang đầu: «Những cuốn sách đi lạc». Cô định viết một cuốn sách thật, và cần {name} giúp.",
+      "en": {
+        "title": "The blank notebook",
+        "text": "That night Cô Mai can't sleep. She takes a blank notebook and writes on the first page: «The Books That Went Astray». She means to write a real book, and she needs {name}'s help."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "logic": 1,
+      "ke-chuyen": 1
+    },
+    "items": {
+      "kinh-lup-bac": 1
+    }
+  },
+  "en": {
+    "title": "Cô Thủ Thư Mai's story, chapter 3: Thirty years of slow reading",
+    "summary": "Cô Thủ Thư Mai is about to meet the one who kept her book. {name} solves Gấu Con Thuộc Truyện's riddle, hears Cụ Gấu Kính Lão tell of the number 7 bus, puts the book's journey in order and helps Cô Mai decide who the book should stay with."
+  }
+}
