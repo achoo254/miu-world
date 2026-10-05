@@ -3,7 +3,7 @@
 import { expect, test as setup } from '@playwright/test';
 import { PARENT_STATE } from '../playwright.config';
 
-setup('account with its primary player selected', async ({ request, baseURL }) => {
+setup('account with its primary player selected', { tag: '@smoke' }, async ({ request, baseURL }) => {
   const headers = { Origin: new URL(baseURL ?? '').origin };
   const email = `e2e-${Date.now()}@example.vn`;
   const register = await request.post('/api/auth/register', { headers, data: { email, ['password']: 'test-password-e2e', pin: '2468' } });

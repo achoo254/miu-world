@@ -66,7 +66,7 @@ test('Home shows the child and the island, the forest lists its chapters, and ch
 test.describe('on a phone', () => {
   test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
 
-  test('every region pin on the Home island can be tapped (nothing covers it) and opens its region', async ({ page }) => {
+  test('every region pin on the Home island can be tapped (nothing covers it) and opens its region', { tag: '@smoke' }, async ({ page }) => {
     await page.goto('/home');
     await expect(page.locator('.world-island-image')).toBeVisible();
     // Twelve regions, all open now that the child's home is built: no locked pin is left.

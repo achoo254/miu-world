@@ -16,7 +16,7 @@ const SHOTS = fileURLToPath(new URL('../../../.data/celebration/', import.meta.u
 // Its own parent and child: quest progress must start empty and never leak into other projects.
 test.use({ storageState: { cookies: [], origins: [] } });
 
-test('meet the parrot, follow the arrow, find the three clues, and the letter opens by itself', async ({ page, baseURL }) => {
+test('meet the parrot, follow the arrow, find the three clues, and the letter opens by itself', { tag: '@smoke' }, async ({ page, baseURL }) => {
   const pageErrors: string[] = [];
   page.on('pageerror', (err) => pageErrors.push(err.message));
   await freshChild(page, baseURL ?? '');

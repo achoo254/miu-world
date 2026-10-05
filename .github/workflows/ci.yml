@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
   pull_request:
+  # Nightly (02:00 Asia/Saigon) and on demand: the E2E job also opens every map and rides every map's
+  # longest ride (E2E_ALL_MAPS); pushes only sample them.
+  schedule:
+    - cron: '0 19 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -69,8 +74,14 @@ jobs:
 
   e2e:
     # Every journey except perf, against the production build + in-memory PGlite. A new spec with its
-    # own project in playwright.config.ts joins this job without a workflow change.
+    # own project in playwright.config.ts joins this job without a workflow change. The run is split
+    # over four GitHub runners (one worker each); raise `total` when one shard nears its time budget.
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
+        total: [4]
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -82,12 +93,14 @@ jobs:
       - name: Install Chromium
         run: pnpm --filter @miu/web exec playwright install --with-deps chromium
       - name: E2E (all projects except perf)
-        run: pnpm --filter @miu/web e2e:ci
+        env:
+          E2E_ALL_MAPS: ${{ github.event_name != 'push' && github.event_name != 'pull_request' && '1' || '' }}
+        run: pnpm --filter @miu/web e2e:ci --shard=${{ matrix.shard }}/${{ matrix.total }}
       - name: Keep Playwright traces of failed runs
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-traces
+          name: playwright-traces-${{ matrix.shard }}
           path: apps/web/test-results/
           retention-days: 7
 

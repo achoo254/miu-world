@@ -19,8 +19,8 @@ export default defineConfig({
   // worker on purpose: parallel browsers freeze the dev machine (shard on CI instead, never locally).
   timeout: DEFAULT_TEST_TIMEOUT_MS,
   workers: 1,
-  // Long journeys on software-GL CI runners: one retry, and a trace only for the runs that failed.
-  retries: process.env.CI ? 1 : 0,
+  // No retry (CI included, see playwright.ci.config.ts); a trace only for the runs that failed.
+  retries: 0,
   reporter: [['list'], ['./e2e/time-budget-reporter.ts']],
   use: {
     baseURL: BASE_URL,
@@ -61,7 +61,8 @@ export default defineConfig({
       timeout: 120_000,
     },
     {
-      command: 'pnpm build && pnpm preview --host 127.0.0.1',
+      // vite build only: the typecheck is its own gate (pnpm typecheck), and tsc doubled the build's time and memory.
+      command: 'pnpm exec vite build && pnpm preview --host 127.0.0.1',
       url: BASE_URL,
       reuseExistingServer: false,
       timeout: 240_000,

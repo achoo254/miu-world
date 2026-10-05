@@ -110,7 +110,7 @@ test('a new profile creates its character first, sees outfit changes live, then 
 
 // A new item in every slot, the clothes and a vehicle included (owner, 03/10/2026: "các phụ kiện mới được thêm
 // khi bé chọn xong thì vào màn không thấy hiển thị"): the server keeps all nine and the game wears them.
-test('one new item in each of the nine slots is kept and worn in the game', async ({ page, baseURL }) => {
+test('one new item in each of the nine slots is kept and worn in the game', { tag: '@smoke' }, async ({ page, baseURL }) => {
   await freshChild(page, baseURL ?? '');
   // Items open from level 1 (a fresh child is level 1).
   const outfit = ['hat-bunny-white', 'glasses-3d', 'scarf-bell-red', 'back-bunny-white', 'wings-cloud-white', 'shoes-ballet-pink', 'hand-banh-mi', 'clothes-dress', 'vehicle-duck-car-yellow'];

@@ -5,6 +5,7 @@ import { readStats, waitReady } from './stats';
 const DRAW_CALL_BUDGET = 150;
 const TRIANGLE_BUDGET = 150_000;
 
+// Not @smoke: the draw-call count depends on the GPU (a Mac draws more than CI's software GL), so it runs on CI only.
 test('loads /play cleanly within the desktop budget and only talks to its own origin', async ({ page, baseURL }) => {
   const consoleErrors: string[] = [];
   const foreign: string[] = [];
@@ -203,7 +204,7 @@ const TARGETS = [
 ] as const;
 
 for (const target of TARGETS) {
-  test(`standing by ${target.id} shows its prompt, and interacting reports that target`, async ({ page }) => {
+  test(`standing by ${target.id} shows its prompt, and interacting reports that target`, { tag: target.id === 'parrot-guide' ? '@smoke' : [] }, async ({ page }) => {
     await page.goto(`/play?quality=low&spawnAt=${target.id}`);
     await waitReady(page);
     const label = page.locator(`.npc-label[data-target="${target.id}"]`);
@@ -288,7 +289,7 @@ test('a lost WebGL context stops the game and offers a reload instead of breakin
   expect(pageErrors).toEqual([]);
 });
 
-test('the build serves only runtime assets and nothing outside the manifest', async ({ request }) => {
+test('the build serves only runtime assets and nothing outside the manifest', { tag: '@smoke' }, async ({ request }) => {
   expect((await request.get('/game-assets/manifest.json')).ok()).toBe(true);
   expect((await request.get('/game-assets/packs/kenney-cube-pets/2.0/animal-parrot.glb')).ok()).toBe(true);
   // URLs carry a content version (?v=…, src/asset-versions.ts): the file is served all the same.

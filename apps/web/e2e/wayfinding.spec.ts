@@ -61,7 +61,7 @@ test('the tracker says where to go, the arrow points there, and both move on whe
   await expect.poll(async () => (await readStats(page)).hintTarget).toMatch(new RegExp(`^(${searchTargets.join('|')})$`));
 });
 
-test('the region list names each lesson with its printed pages, and every lesson is open from the start', async ({ page, baseURL }) => {
+test('the region list names each lesson with its printed pages, and every lesson is open from the start', { tag: '@smoke' }, async ({ page, baseURL }) => {
   await freshChild(page, baseURL ?? '');
   await page.goto('/region/lang-ven-song');
   const row = page.locator('[data-id="region-quest-tv2-t01-b01"]');

@@ -26,10 +26,12 @@ async function printSheet(page: Page, lessonId: string, file: string): Promise<v
   await page.getByRole('link', { name: 'Danh sách phiếu' }).click();
 }
 
-test('the parent unlocks the gate, lists the sheets by book and prints one of each to A4', async ({ page, baseURL }) => {
+test('the parent unlocks the gate, lists the sheets by book and prints one of each to A4', { tag: '@smoke' }, async ({ page, baseURL }) => {
   const pageErrors: string[] = [];
   page.on('pageerror', (err) => pageErrors.push(err.message));
   await freshChild(page, baseURL ?? '');
+  // Signing up leaves the area open for a while; lock it so the sheets show only after the PIN.
+  expect((await page.context().request.post('/api/parent-gate/lock', { headers: { Origin: new URL(baseURL ?? '').origin } })).status()).toBe(200);
 
   await page.goto('/parent/worksheets');
   await page.getByLabel('Nhập mã PIN tài khoản').fill('2468');

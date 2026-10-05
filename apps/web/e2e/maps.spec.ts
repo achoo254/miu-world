@@ -25,9 +25,15 @@ const lessonWithGuide = (region: string, guide: string) => quests.find((q) => q.
 const firstLesson = (region: string) => quests.find((q) => q.region === region && q.status === 'active');
 
 const THEME_MAPS = ['lang-ven-song', 'xom-mai-am', 'cho-phien', 'nong-trai', 'thu-vien', 'lau-dai', 'trung-tam', 'nui-tuyet', 'dao-bi-an', 'nha-cua-be'];
+/**
+ * E2E samples the maps (docs/code-standards.md: checks that grow with content live in Node): the hub, the
+ * small home map and the busiest castle on every run; every map with E2E_ALL_MAPS=1 (the nightly CI run).
+ */
+const ALL_MAPS = process.env.E2E_ALL_MAPS === '1';
+const SAMPLE_MAPS = new Set(['trung-tam', 'nha-cua-be', 'lau-dai']);
 
-for (const id of THEME_MAPS) {
-  test(`${id} opens beside its guide (or its first character) within the draw-call budget`, async ({ page, baseURL }) => {
+for (const id of THEME_MAPS.filter((m) => ALL_MAPS || SAMPLE_MAPS.has(m))) {
+  test(`${id} opens beside its guide (or its first character) within the draw-call budget`, { tag: id === 'trung-tam' ? '@smoke' : [] }, async ({ page, baseURL }) => {
     // The guide where a lesson has the child meet it (on the farm Bò Sữa Mơ only speaks: its first lesson's first character).
     const guide = regions.find((r) => r.id === id)?.guide;
     const withGuide = guide ? lessonWithGuide(id, guide) : undefined;
@@ -136,6 +142,8 @@ for (const region of withMaps) {
   const kind = RIDE_KIND[map] ?? 'bus';
   const whole = !rideWhole.has(kind);
   rideWhole.add(kind);
+  // One ride of each vehicle on every run (the whole way); every map's longest ride with E2E_ALL_MAPS=1.
+  if (!whole && !ALL_MAPS) continue;
   test(`${region.id}: the longest ride (${stop.id}) carries the child by ${kind} with the land drawn at both ends`, async ({ page, baseURL }) => {
     await freshChild(page, baseURL ?? '');
     const lesson = firstLesson(region.id);
@@ -185,7 +193,7 @@ test('with reduced motion a ride is a short fade to the far stop', async ({ page
 
 // The world map's quick facts (owner, 03/10/2026): under the island, a card per open region names each book
 // its lessons come from and the pages they span, read here from the server's own quest list.
-test('the world map names, for each region, the books and pages of its lessons', async ({ page, baseURL }) => {
+test('the world map names, for each region, the books and pages of its lessons', { tag: '@smoke' }, async ({ page, baseURL }) => {
   await freshChild(page, baseURL ?? '');
   const shots = fileURLToPath(new URL('../../../.data/sgk/review-shots/', import.meta.url));
   type Listed = { quest: { region: string; status: string; textbook?: { book: string; pages: [number, number] } } };
