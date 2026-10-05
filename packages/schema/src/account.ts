@@ -142,6 +142,23 @@ export const AccountExport = z.object({
       timetable: Timetable.nullable(),
       /** The styles the child picked for her home (slot → option); null until her first pick. */
       homeDecor: DecorChoices.nullable(),
+      /** Her online and companion bot switches. */
+      settings: PlayerSettings,
+      /** Seconds played per week (Monday, Vietnam time), for the progress views. */
+      playTime: z.array(z.object({ weekStart: z.string(), seconds: z.number() })),
+      /** In-game letters: which one, whether read and its gift claimed. */
+      mail: z.array(z.object({ templateId: z.string(), category: z.string(), read: z.boolean(), claimed: z.boolean(), claimedAt: Instant.nullable(), createdAt: Instant })),
+      /** Her friends (other players by character name, companion bots labelled). */
+      friends: z.array(z.object({ displayName: z.string(), isBot: z.boolean(), since: Instant })),
+      /** Friend requests waiting: for her, and from her. */
+      friendRequests: z.object({
+        received: z.array(z.object({ displayName: z.string(), isBot: z.boolean(), sentAt: Instant })),
+        sent: z.array(z.object({ displayName: z.string(), sentAt: Instant })),
+      }),
+      /** Players she blocked online. */
+      blocks: z.array(z.object({ displayName: z.string(), since: Instant })),
+      /** Players she reported online: the picked reason and the map, nothing typed. */
+      reports: z.array(z.object({ displayName: z.string(), reason: z.string(), map: z.string().nullable(), createdAt: Instant })),
     }),
   ),
 });

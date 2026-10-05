@@ -84,10 +84,43 @@ describe('account export', () => {
       shop: [{ itemId: 'them-mot-tim', qty: 2 }],
     });
     expect(child?.quests.map((q) => q.questId).sort()).toEqual(['q-done', 'q-open']);
+    expect(child?.settings).toEqual({ onlineEnabled: true, botsEnabled: true });
+    expect(child?.mail).toEqual([{ templateId: 'welcome-gift', category: 'system', read: false, claimed: false, claimedAt: null, createdAt: expect.any(String) }]);
+    expect(child).toMatchObject({ friends: [], friendRequests: { received: [], sent: [] }, blocks: [], reports: [], playTime: [] });
     expect(child?.rewards).toEqual([{ source: 'quest:q-done', xp: 40, coins: 5, skillXp: { 'doc-hieu': 10 }, items: { 'la-than': 1 }, createdAt: expect.any(String) }]);
     const raw = JSON.stringify(res.body);
     expect(raw).not.toMatch(/hash|scrypt|\$/i);
     expect(raw).not.toContain(childId);
+  });
+
+  it('includes each player\'s friends, requests, blocks, reports and weekly play time, others by character name only', async () => {
+    const { agent, childId } = await playedFamily();
+    const other = await parentWithChild(app);
+    await app.db.update(t.characters).set({ name: 'Cáo Cam' }).where(eq(t.characters.childId, other.childId));
+    await app.db.insert(t.friendships).values([
+      { id: randomUUID(), childId, friendChildId: other.childId },
+      { id: randomUUID(), childId, botId: 'bot-tt-1' },
+    ]);
+    await app.db.insert(t.friendRequests).values({ id: randomUUID(), childId: other.childId, fromChildId: childId });
+    await app.db.insert(t.playerBlocks).values({ id: randomUUID(), childId, blockedChildId: other.childId });
+    await app.db.insert(t.playerReports).values({ id: randomUUID(), childId, reportedChildId: other.childId, reason: 'name', mapId: 'trung-tam' });
+    await app.db.insert(t.playTime).values({ childId, weekStart: '2026-09-28', seconds: 900 });
+    const res = await agent.get('/api/account/export').expect(200);
+    const [child] = AccountExport.parse(res.body).players;
+    // Made in one statement: same instant, so no order between them.
+    expect(child?.friends).toHaveLength(2);
+    expect(child?.friends).toEqual(
+      expect.arrayContaining([
+        { displayName: 'Cáo Cam', isBot: false, since: expect.any(String) },
+        { displayName: 'Bé Bông', isBot: true, since: expect.any(String) },
+      ]),
+    );
+    expect(child?.friendRequests.sent).toEqual([{ displayName: 'Cáo Cam', sentAt: expect.any(String) }]);
+    expect(child?.blocks).toEqual([{ displayName: 'Cáo Cam', since: expect.any(String) }]);
+    expect(child?.reports).toEqual([{ displayName: 'Cáo Cam', reason: 'name', map: 'trung-tam', createdAt: expect.any(String) }]);
+    expect(child?.playTime).toEqual([{ weekStart: '2026-09-28', seconds: 900 }]);
+    expect(JSON.stringify(res.body)).not.toContain(other.childId);
+    expect(JSON.stringify(res.body)).not.toContain(other.parent.email);
   });
 
   it('returns no players before the policy is accepted', async () => {

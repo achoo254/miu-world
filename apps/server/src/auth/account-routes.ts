@@ -9,7 +9,10 @@ import {
   consents,
   homeDecor,
   inventoryItems,
+  mail,
   playerPositions,
+  playerReports,
+  playTime,
   parents,
   questProgress,
   rewardLedger,
@@ -19,6 +22,8 @@ import {
   stepAttempts,
   timetables,
 } from '../db/schema';
+import { NOBODY_ONLINE, socialView } from '../friend/friend-store';
+import { DEFAULT_CHARACTER_NAME } from '../player/player-routes';
 import { auth, requireParent, requireParentGate } from './auth-context';
 import { clearSessionCookie } from './session-cookie';
 
@@ -41,7 +46,7 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
   const profiles = await db.select().from(childProfiles).where(eq(childProfiles.parentId, parent.id)).orderBy(childProfiles.createdAt);
   const ids = profiles.map((p) => p.id);
   const ofChildren = <T extends { childId: string }>(rows: Promise<T[]>) => (ids.length ? rows : Promise.resolve([] as T[]));
-  const [consentRows, sessionRows, characterRows, questRows, counterRows, rewardRows, itemRows, skillRows, positionRows, timetableRows, decorRows, shopRows] = await Promise.all([
+  const [consentRows, sessionRows, characterRows, questRows, counterRows, rewardRows, itemRows, skillRows, positionRows, timetableRows, decorRows, shopRows, playRows, mailRows, reportRows] = await Promise.all([
     db.select().from(consents).where(eq(consents.parentId, parent.id)).orderBy(consents.acceptedAt),
     db.select().from(sessions).where(eq(sessions.parentId, parent.id)).orderBy(sessions.createdAt),
     ofChildren(db.select().from(characters).where(inArray(characters.childId, ids))),
@@ -54,7 +59,19 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
     ofChildren(db.select().from(timetables).where(inArray(timetables.childId, ids))),
     ofChildren(db.select().from(homeDecor).where(inArray(homeDecor.childId, ids))),
     ofChildren(db.select().from(shopInventory).where(inArray(shopInventory.childId, ids))),
+    ofChildren(db.select().from(playTime).where(inArray(playTime.childId, ids)).orderBy(playTime.weekStart)),
+    ofChildren(db.select().from(mail).where(inArray(mail.childId, ids)).orderBy(mail.createdAt)),
+    ofChildren(
+      db
+        .select({ childId: playerReports.childId, name: characters.name, reason: playerReports.reason, mapId: playerReports.mapId, createdAt: playerReports.createdAt })
+        .from(playerReports)
+        .leftJoin(characters, eq(characters.childId, playerReports.reportedChildId))
+        .where(inArray(playerReports.childId, ids))
+        .orderBy(playerReports.createdAt),
+    ),
   ]);
+  // Friends, requests and blocks as each player's own lists show them (others by character name only).
+  const social = new Map(await Promise.all(ids.map(async (id) => [id, await socialView(db, id, NOBODY_ONLINE)] as const)));
   const quests = byChild(questRows);
   const counters = byChild(counterRows);
   const rewards = byChild(rewardRows);
@@ -62,6 +79,9 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
   const skills = byChild(skillRows);
   const positions = byChild(positionRows);
   const bought = byChild(shopRows);
+  const played = byChild(playRows);
+  const letters = byChild(mailRows);
+  const reported = byChild(reportRows);
   return {
     exportedAt: iso(now),
     parent: { email: parent.email, signIn: parent.googleSub ? 'google' : 'password', createdAt: iso(parent.createdAt) },
@@ -91,6 +111,23 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
         positions: (positions.get(p.id) ?? []).map((r) => ({ map: r.mapId, position: [r.x, r.y, r.z], facing: r.facing, updatedAt: iso(r.updatedAt) })),
         timetable: timetableRows.find((r) => r.childId === p.id)?.timetable ?? null,
         homeDecor: decorRows.find((r) => r.childId === p.id)?.choices ?? null,
+        settings: { onlineEnabled: p.onlineEnabled, botsEnabled: p.botsEnabled },
+        playTime: (played.get(p.id) ?? []).map(({ weekStart, seconds }) => ({ weekStart, seconds })),
+        mail: (letters.get(p.id) ?? []).map((m) => ({
+          templateId: m.templateId,
+          category: m.category,
+          read: m.read > 0,
+          claimed: m.claimed > 0,
+          claimedAt: m.claimedAt ? iso(m.claimedAt) : null,
+          createdAt: iso(m.createdAt),
+        })),
+        friends: (social.get(p.id)?.friends ?? []).map(({ displayName, isBot, since }) => ({ displayName, isBot, since })),
+        friendRequests: {
+          received: (social.get(p.id)?.incoming ?? []).map(({ displayName, isBot, sentAt }) => ({ displayName, isBot, sentAt })),
+          sent: (social.get(p.id)?.outgoing ?? []).map(({ displayName, sentAt }) => ({ displayName, sentAt })),
+        },
+        blocks: (social.get(p.id)?.blocks ?? []).map(({ displayName, since }) => ({ displayName, since })),
+        reports: (reported.get(p.id) ?? []).map((r) => ({ displayName: r.name ?? DEFAULT_CHARACTER_NAME, reason: r.reason, map: r.mapId, createdAt: iso(r.createdAt) })),
       };
     }),
   };
