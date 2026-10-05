@@ -51,6 +51,40 @@ describe('Home', () => {
     expect(pages.closest('[data-id="home-today-textbook-tv2-t01-b01"]')?.textContent).toBe('Tiếng Việt 2, tập một · Bài 1. Tôi là học sinh lớp 2Trang 10–12');
   });
 
+  it('leads to the journey and the achievements, with how many achievements wait to be claimed', async () => {
+    stubServer(1);
+    const achievement = (id: string, reached: boolean, claimed: boolean) => ({
+      id,
+      category: 'hoc-tap',
+      name: id,
+      description: id,
+      icon: 'books',
+      progress: 1,
+      goal: 1,
+      reached,
+      claimed,
+      reward: { xp: 1, coin: 1, item: null },
+    });
+    vi.mocked(fetch).mockImplementation(async (input) => {
+      const url = String(input);
+      const body =
+        url === '/api/achievements'
+          ? { achievements: [achievement('a', true, false), achievement('b', true, false), achievement('c', true, true), achievement('d', false, false)] }
+          : url === '/api/character'
+            ? CHARACTER
+            : url === '/api/progress'
+              ? PROGRESS
+              : url === '/api/quests'
+                ? questList(1)
+                : null;
+      return new Response(JSON.stringify(body ?? { error: 'not-found' }), { status: body ? 200 : 404 });
+    });
+    renderAt('/home');
+    expect((await screen.findByRole('link', { name: /Hành trình/ })).getAttribute('href')).toBe('/journey');
+    expect(screen.getByRole('link', { name: /Thành tích/ }).getAttribute('href')).toBe('/achievements');
+    expect((await screen.findByLabelText('2 thành tích chờ nhận thưởng')).textContent).toBe('2');
+  });
+
   it('opens the shop from the rail over Home, with the coins of the server', async () => {
     stubServer(1);
     vi.mocked(fetch).mockImplementation(async (input) => {
