@@ -15,7 +15,7 @@
 // Deterministic for a given seed and input.
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { QuestDefinition } from '../../../packages/schema/src/content';
+import { QuestDefinition, stepTargets } from '../../../packages/schema/src/content';
 import { LookCatalog, QuestTargetCatalog, type TargetLook } from '../../../packages/schema/src/world-target';
 import type { Interactable } from '../../../packages/voxel/src/world-entities';
 import { REPO_ROOT } from '../../assets/asset-lib';
@@ -46,7 +46,8 @@ export function targetUses(quests: readonly QuestDefinition[], region: string, o
     const places = 'places' in quest ? (quest.places ?? {}) : {};
     const steps = 'steps' in quest ? quest.steps : [];
     for (const step of steps) {
-      const ids = [...('target' in step && step.target ? [step.target] : []), ...('targets' in step ? step.targets : [])];
+      // Every kind of step (a search's targets, a find-object's items) and a step's own character.
+      const ids = new Set([...('target' in step && step.target ? [step.target] : []), ...stepTargets(step)]);
       for (const id of ids) {
         const list = uses.get(id) ?? [];
         if (!list.some((u) => u.quest === quest.id)) list.push({ quest: quest.id, chapter: quest.chapter, place: places[id] ?? places[step.id] ?? null, side: isSide(quest) });
