@@ -112,6 +112,9 @@ describe('account deletion', () => {
   it('hard-deletes the parent and every row of every table, then signs out', async () => {
     const { agent, childId, parentId } = await playedFamily();
     const second = (await agent.post('/api/players').send({ displayName: 'Thỏ Bông' }).expect(201)).body as { id: string };
+    // Online: one player of the family blocked and reported the other (the rows go with either of them).
+    await app.db.insert(t.playerBlocks).values({ childId, blockedChildId: second.id });
+    await app.db.insert(t.playerReports).values({ id: randomUUID(), childId, reportedChildId: second.id, reason: 'spam', mapId: 'trung-tam' });
     const before = await rowsOf(parentId, [childId, second.id]);
     // Every table holds something of this family, so a table the delete misses fails below.
     expect(Object.entries(before).filter(([, n]) => n === 0)).toEqual([]);

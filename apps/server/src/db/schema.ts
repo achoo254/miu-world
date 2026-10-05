@@ -249,3 +249,45 @@ export const mail = pgTable(
   ],
 );
 
+
+/** A player another player does not want to meet online: neither sees the other in any room, nor can invite her. */
+export const playerBlocks = pgTable(
+  'player_blocks',
+  {
+    /** The player who blocked. */
+    childId: childRef(),
+    blockedChildId: uuid('blocked_child_id')
+      .notNull()
+      .references(() => childProfiles.id, { onDelete: 'cascade' }),
+    createdAt: createdAt(),
+  },
+  (t) => [
+    primaryKey({ columns: [t.childId, t.blockedChildId] }),
+    index('player_blocks_blocked_idx').on(t.blockedChildId),
+    check('player_blocks_not_self', sql`${t.childId} <> ${t.blockedChildId}`),
+  ],
+);
+
+/**
+ * A report of another player, queued for a person to handle (no moderation screen yet). Only ids, a picked
+ * reason and the map: no free text, no record of what anyone said.
+ */
+export const playerReports = pgTable(
+  'player_reports',
+  {
+    id: uuid('id').primaryKey(),
+    /** The player who reported. */
+    childId: childRef(),
+    reportedChildId: uuid('reported_child_id')
+      .notNull()
+      .references(() => childProfiles.id, { onDelete: 'cascade' }),
+    reason: text('reason').notNull(),
+    mapId: text('map_id'),
+    createdAt: createdAt(),
+  },
+  (t) => [
+    index('player_reports_reported_idx').on(t.reportedChildId),
+    index('player_reports_child_idx').on(t.childId),
+    check('player_reports_reason_valid', sql`${t.reason} in ('harassment', 'spam', 'name', 'other')`),
+  ],
+);

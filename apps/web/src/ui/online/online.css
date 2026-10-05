@@ -1,0 +1,77 @@
+/*
+ * Online play over the game (mock designs/multiplayer.png, frames 3, 5 and 7): the interaction menu as a themed
+ * scene, the party frame and the invite cards on parchment. Values from tokens.css only; touch targets ≥ 48px.
+ */
+
+/* Interaction menu: big parchment buttons, the risky ones in the danger colour. */
+.online-menu { display: grid; gap: var(--space-sm); padding: var(--space-md); max-width: 30rem; width: 100%; justify-self: center; }
+.online-menu-note { margin: 0; font-size: var(--text-sm); color: var(--color-parchment-ink); }
+.online-menu-actions, .online-menu-lines { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-sm); }
+.online-menu-lines { grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); }
+.online-menu-action, .online-menu-line {
+  display: flex; align-items: center; gap: var(--space-sm);
+  width: 100%; min-height: 3.25rem; padding: var(--space-xs) var(--space-md);
+  border: 3px solid var(--color-parchment-edge); border-radius: var(--radius-field);
+  background: var(--color-surface); color: var(--color-ink);
+  font-family: var(--font-display); font-weight: 800; font-size: var(--text-body); text-align: left;
+  box-shadow: 0 4px 0 var(--color-parchment-edge); cursor: pointer;
+}
+.online-menu-line { justify-content: center; text-align: center; font-size: var(--text-sm); }
+.online-menu-action:active, .online-menu-line:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--color-parchment-edge); }
+.online-menu-action:focus-visible, .online-menu-line:focus-visible, .online-party-row:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+.online-menu-action--danger { border-color: var(--color-danger-line); background: var(--color-danger-soft); color: var(--color-danger); box-shadow: 0 4px 0 var(--color-danger-line); }
+.online-menu-icon { font-size: var(--text-lg); }
+.online-menu-confirm { display: grid; gap: var(--space-sm); }
+.online-menu-confirm p { margin: 0; font-weight: 700; }
+.online-menu-report { display: grid; gap: var(--space-xs); margin: 0; padding: 0; border: 0; }
+.online-menu-report legend { font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); margin-bottom: var(--space-xs); }
+.online-menu-reason {
+  display: flex; align-items: center; gap: var(--space-sm); min-height: 3rem; padding: 0 var(--space-sm);
+  border-radius: var(--radius-field); background: var(--color-surface-faint); font-weight: 700; cursor: pointer;
+}
+.online-menu-reason input { width: 1.4rem; height: 1.4rem; accent-color: var(--color-danger); }
+
+/* Party frame: in the HUD column under the quest card. */
+.online-party { display: grid; gap: var(--space-xs); width: min(17rem, 44vw); padding: var(--space-sm); border-color: var(--color-leaf); }
+.online-party-title { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: var(--text-sm); color: var(--color-leaf); }
+.online-party-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-xs); }
+.online-party-row {
+  display: flex; align-items: center; gap: var(--space-xs); width: 100%; min-height: 3rem; padding: var(--space-xs);
+  border: 0; border-radius: var(--radius-field); background: var(--color-surface-faint); color: var(--color-ink); text-align: left; cursor: pointer;
+}
+.online-party-row:disabled { cursor: default; opacity: 1; }
+.online-party-member[data-here='true'] .online-party-row { box-shadow: inset 4px 0 0 var(--color-grass); }
+.online-party-portrait { flex-shrink: 0; width: 2.5rem; height: 2.5rem; border-radius: 50%; overflow: hidden; border: 2px solid var(--color-grass); background: var(--color-sky-mid); }
+.online-party-who { display: grid; min-width: 0; flex: 1; }
+.online-party-name { font-weight: 800; font-size: var(--text-sm); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.online-party-crown { margin-left: var(--space-xs); }
+.online-party-place { font-size: var(--text-sm); color: var(--color-ink-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.online-party-pet { flex-shrink: 0; }
+.online-party-arrow {
+  flex-shrink: 0; display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%;
+  background: var(--color-grass); color: var(--color-on-primary); font-weight: 800;
+  transition: transform 0.12s linear;
+}
+.online-party-arrow[hidden] { display: none; }
+.online-party-actions { display: flex; flex-wrap: wrap; gap: var(--space-xs); padding: var(--space-xs) 0; }
+.online-party-bar { display: flex; flex-wrap: wrap; gap: var(--space-xs); justify-content: space-between; }
+.online-party .online-menu-lines { grid-template-columns: 1fr; }
+
+/* Invite and "come along" cards: at the top, over the game, never blocking the stick. */
+.online-cards {
+  position: fixed; z-index: var(--z-overlay);
+  top: calc(var(--space-sm) + env(safe-area-inset-top, 0px)); left: 50%; transform: translateX(-50%);
+  display: grid; gap: var(--space-sm); width: min(24rem, calc(100vw - 2 * var(--space-md)));
+  pointer-events: none;
+}
+.online-card { position: relative; overflow: hidden; display: grid; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); pointer-events: auto; }
+.online-card-text { margin: 0; font-weight: 800; }
+.online-card-actions { display: flex; gap: var(--space-sm); justify-content: flex-end; }
+/* What is left of the invite's minute, shrinking (no React render per frame). */
+.online-card-timer {
+  position: absolute; left: 0; bottom: 0; height: 4px; width: 100%;
+  background: var(--color-grass); transform-origin: left center;
+  animation: online-card-timer linear forwards;
+}
+@keyframes online-card-timer { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+@media (prefers-reduced-motion: reduce) { .online-card-timer { animation: none; } }

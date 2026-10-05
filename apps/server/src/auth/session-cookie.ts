@@ -1,4 +1,5 @@
-import type { CookieOptions, Request, Response } from 'express';
+import type { IncomingMessage } from 'node:http';
+import type { CookieOptions, Response } from 'express';
 import type { ServerConfig } from '../config';
 import { SESSION_ABSOLUTE_MS } from './session-store';
 
@@ -28,8 +29,8 @@ export function clearSessionCookie(res: Response, config: ServerConfig): void {
   res.clearCookie(sessionCookieName(config), cookieOptions(config));
 }
 
-/** Minimal cookie-header read (one cookie needed; avoids a parser dependency). */
-export function readSessionToken(req: Request, config: ServerConfig): string | null {
+/** Minimal cookie-header read (one cookie needed; avoids a parser dependency). Any request: an API call or a WebSocket upgrade. */
+export function readSessionToken(req: Pick<IncomingMessage, 'headers'>, config: ServerConfig): string | null {
   const header = req.headers.cookie;
   if (!header) return null;
   const name = sessionCookieName(config);

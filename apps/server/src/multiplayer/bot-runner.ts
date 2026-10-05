@@ -5,6 +5,7 @@
 import {
   SAFE_CANNED_CHATS,
   type PlayerPresence,
+  type ServerWsMessage,
 } from '@miu/schema/multiplayer';
 import type { MultiplayerHub, MultiplayerRoom } from './multiplayer-hub';
 
@@ -109,16 +110,6 @@ export const BOT_MAP_CONFIGS: Record<string, BotProfile[]> = {
     { id: 'bot-kr-7', displayName: 'Mèo Suối Mát', species: 'cat', outfit: ['clothes-dress-blue', 'hat-cat-mint'], waypoints: [{ x: 30, y: 13, z: 40 }, { x: 45, y: 13, z: 45 }, { x: 40, y: 13, z: 60 }, { x: 25, y: 13, z: 55 }] },
     { id: 'bot-kr-8', displayName: 'Bé Bắt Bướm', species: 'bear', outfit: ['clothes-vest-shorts-navy', 'hat-cap-blue'], waypoints: [{ x: 45, y: 13, z: 35 }, { x: 60, y: 13, z: 40 }, { x: 55, y: 13, z: 55 }, { x: 40, y: 13, z: 50 }] },
   ],
-  'khu-rung-bi-mat': [
-    { id: 'bot-kr-1', displayName: 'Sóc Nhỏ', species: 'fox', outfit: ['clothes-vest-shorts', 'hat-beanie-green'], waypoints: [{ x: 20, y: 13, z: 20 }, { x: 35, y: 13, z: 25 }, { x: 30, y: 13, z: 40 }, { x: 15, y: 13, z: 35 }] },
-    { id: 'bot-kr-2', displayName: 'Bé Hái Nấm', species: 'cat', outfit: ['clothes-dress-mint', 'hat-straw-pink'], waypoints: [{ x: 30, y: 13, z: 25 }, { x: 45, y: 13, z: 30 }, { x: 40, y: 13, z: 45 }, { x: 25, y: 13, z: 40 }] },
-    { id: 'bot-kr-3', displayName: 'Thỏ Rừng', species: 'rabbit', outfit: ['clothes-overalls', 'hat-flower-crown-mint'], waypoints: [{ x: 25, y: 13, z: 35 }, { x: 40, y: 13, z: 40 }, { x: 35, y: 13, z: 55 }, { x: 20, y: 13, z: 50 }] },
-    { id: 'bot-kr-4', displayName: 'Gấu Leo Cây', species: 'bear', outfit: ['clothes-jacket-green', 'hat-beanie-blue'], waypoints: [{ x: 35, y: 13, z: 30 }, { x: 50, y: 13, z: 35 }, { x: 45, y: 13, z: 50 }, { x: 30, y: 13, z: 45 }] },
-    { id: 'bot-kr-5', displayName: 'Họa Mi Rừng', species: 'fox', outfit: ['clothes-dress', 'hat-bow-pink'], waypoints: [{ x: 40, y: 13, z: 20 }, { x: 55, y: 13, z: 25 }, { x: 50, y: 13, z: 40 }, { x: 35, y: 13, z: 35 }] },
-    { id: 'bot-kr-6', displayName: 'Bé Soi Đèn', species: 'rabbit', outfit: ['clothes-overalls-red', 'hat-cap-yellow'], waypoints: [{ x: 20, y: 13, z: 30 }, { x: 35, y: 13, z: 35 }, { x: 30, y: 13, z: 50 }, { x: 15, y: 13, z: 45 }] },
-    { id: 'bot-kr-7', displayName: 'Mèo Suối Mát', species: 'cat', outfit: ['clothes-dress-blue', 'hat-cat-mint'], waypoints: [{ x: 30, y: 13, z: 40 }, { x: 45, y: 13, z: 45 }, { x: 40, y: 13, z: 60 }, { x: 25, y: 13, z: 55 }] },
-    { id: 'bot-kr-8', displayName: 'Bé Bắt Bướm', species: 'bear', outfit: ['clothes-vest-shorts-navy', 'hat-cap-blue'], waypoints: [{ x: 45, y: 13, z: 35 }, { x: 60, y: 13, z: 40 }, { x: 55, y: 13, z: 55 }, { x: 40, y: 13, z: 50 }] },
-  ],
   'thu-vien': [
     { id: 'bot-tv-1', displayName: 'Bé Mọt Sách', species: 'cat', outfit: ['clothes-dress-blue', 'hat-straw-blue'], waypoints: [{ x: 180, y: 13, z: 425 }, { x: 195, y: 13, z: 430 }, { x: 190, y: 13, z: 445 }, { x: 175, y: 13, z: 440 }] },
     { id: 'bot-tv-2', displayName: 'Thỏ Đọc Truyện', species: 'rabbit', outfit: ['clothes-dress', 'hat-bow-pink'], waypoints: [{ x: 190, y: 13, z: 430 }, { x: 205, y: 13, z: 435 }, { x: 200, y: 13, z: 450 }, { x: 185, y: 13, z: 445 }] },
@@ -177,6 +168,9 @@ export const BOT_MAP_CONFIGS: Record<string, BotProfile[]> = {
   ],
 };
 
+/** How long a companion bot takes to answer a party invite. */
+export const BOT_REPLY_MS = 1_500;
+
 class CompanionBotInstance {
   readonly profile: BotProfile;
   readonly room: MultiplayerRoom;
@@ -186,9 +180,13 @@ class CompanionBotInstance {
   private stateTimer = 0;
   private lastGreetTime = 0;
 
-  constructor(profile: BotProfile, room: MultiplayerRoom) {
+  /** What the hub sends the bot (a party invite); the runner decides what the bot does. */
+  private readonly onMessage: (message: ServerWsMessage) => void;
+
+  constructor(profile: BotProfile, room: MultiplayerRoom, onMessage: (message: ServerWsMessage) => void = () => {}) {
     this.profile = profile;
     this.room = room;
+    this.onMessage = onMessage;
     const startWp = profile.waypoints[0] ?? { x: 0, y: 0, z: 0 };
 
     this.presence = {
@@ -213,7 +211,7 @@ class CompanionBotInstance {
     this.room.join({
       id: this.profile.id,
       presence: this.presence,
-      send: () => {}, // Bot consumes no network packets
+      send: (message) => this.onMessage(message),
       isBot: true,
     });
   }
@@ -322,6 +320,8 @@ export class BotRunner {
   private readonly bots = new Map<string, CompanionBotInstance[]>();
   private timer: NodeJS.Timeout | null = null;
   private lastTick = Date.now();
+  /** Answers on their way (a bot takes a moment, as a player would). */
+  private readonly replies = new Set<NodeJS.Timeout>();
 
   constructor(hub: MultiplayerHub) {
     this.hub = hub;
@@ -331,7 +331,7 @@ export class BotRunner {
     // Populate companion bots for configured maps
     for (const [mapId, profiles] of Object.entries(BOT_MAP_CONFIGS)) {
       const room = this.hub.getOrCreateRoom(mapId);
-      const instances = profiles.map((p) => new CompanionBotInstance(p, room));
+      const instances = profiles.map((p) => new CompanionBotInstance(p, room, (message) => this.heard(p.id, message)));
       for (const inst of instances) {
         inst.join();
       }
@@ -358,5 +358,20 @@ export class BotRunner {
       clearInterval(this.timer);
       this.timer = null;
     }
+    for (const reply of this.replies) clearTimeout(reply);
+    this.replies.clear();
+  }
+
+  /**
+   * A companion bot is a full party member: invited, it joins after a moment. Leaving and choosing by character
+   * are the bots' own behaviour, built on this.
+   */
+  private heard(botId: string, message: ServerWsMessage): void {
+    if (message.type !== 'party-invite') return;
+    const reply = setTimeout(() => {
+      this.replies.delete(reply);
+      this.hub.answerPartyInvite(botId, message.from.id, true);
+    }, BOT_REPLY_MS);
+    this.replies.add(reply);
   }
 }

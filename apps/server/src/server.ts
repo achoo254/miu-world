@@ -6,8 +6,10 @@ import { loadConfig } from './config';
 import { loadContentCatalog } from './content/content-catalog';
 import { DEV_PGLITE_DIR, openPglite, openPostgres, type Db } from './db/client';
 import { childProfiles, parents } from './db/schema';
+import { CharacterEvents } from './character/character-events';
 import { BotRunner } from './multiplayer/bot-runner';
 import { MultiplayerHub } from './multiplayer/multiplayer-hub';
+import { dbMultiplayerStore, sessionAuthenticator } from './multiplayer/multiplayer-store';
 
 const config = loadConfig();
 const pgliteDir = config.pgliteDir === null ? undefined : (config.pgliteDir ?? DEV_PGLITE_DIR);
@@ -15,7 +17,8 @@ const pgliteDir = config.pgliteDir === null ? undefined : (config.pgliteDir ?? D
 const freshPglite = !config.databaseUrl && pgliteDir !== undefined && !existsSync(path.join(pgliteDir, 'PG_VERSION'));
 const { db } = config.databaseUrl ? await openPostgres(config.databaseUrl) : await openPglite(pgliteDir);
 const content = loadContentCatalog({ extraQuestDir: config.extraQuestDir ?? undefined });
-const app = createApp({ config, db, content });
+const characterEvents = new CharacterEvents();
+const app = createApp({ config, db, content, characterEvents });
 
 /** Which database this run uses, so a dev who suddenly sees no accounts knows whether it is a new one. */
 async function describeDatabase(database: Db): Promise<string> {
@@ -33,7 +36,12 @@ const server = app.listen(config.port, '127.0.0.1', () => {
   console.log(`miu server listening on :${config.port} (${config.nodeEnv})`);
 });
 
-const hub = new MultiplayerHub(server);
+const hub = new MultiplayerHub(server, {
+  store: dbMultiplayerStore(db),
+  authenticate: sessionAuthenticator(db, config, content.consent.version, () => new Date()),
+  allowedOrigins: config.allowedOrigins,
+});
+characterEvents.on((childId, character) => hub.characterSaved(childId, character));
 const botRunner = new BotRunner(hub);
 botRunner.start();
 console.log('multiplayer hub and companion bot runner active');

@@ -1,0 +1,199 @@
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { SAFE_CANNED_CHATS, type ServerWsMessage } from '@miu/schema/multiplayer';
+import { createGameStore, type GameCommand } from '../../game-bridge/game-store';
+import { createSocialStore } from '../../game-bridge/social-store';
+import { linesOf, setLangMode } from '../../ui/i18n/i18n';
+import type { GuardedGltfLoader } from '../asset-loader';
+import { cannedLine } from './canned-lines';
+import { MultiplayerSession, arrowTurn } from './multiplayer-session';
+
+/** A socket that never touches the network: the test reads what was sent and plays the server. */
+class FakeSocket {
+  static OPEN = 1;
+  static last: FakeSocket | null = null;
+  readyState = 0;
+  sent: unknown[] = [];
+  onopen: (() => void) | null = null;
+  onmessage: ((event: { data: unknown }) => void) | null = null;
+  onclose: ((event: { code: number }) => void) | null = null;
+  constructor(readonly url: string) {
+    FakeSocket.last = this;
+  }
+  send(data: string): void {
+    this.sent.push(JSON.parse(data));
+  }
+  close(): void {
+    this.readyState = 3;
+  }
+  open(): void {
+    this.readyState = FakeSocket.OPEN;
+    this.onopen?.();
+  }
+  receive(message: ServerWsMessage): void {
+    this.onmessage?.({ data: JSON.stringify(message) });
+  }
+}
+
+function socket(): FakeSocket {
+  const ws = FakeSocket.last;
+  if (!ws) throw new Error('no socket');
+  return ws;
+}
+
+beforeEach(() => {
+  vi.stubGlobal('WebSocket', FakeSocket);
+});
+
+afterEach(() => {
+  vi.unstubAllGlobals();
+  setLangMode('vi', false);
+});
+
+function session(mapId = 'trung-tam') {
+  const store = createGameStore();
+  const social = createSocialStore();
+  const commands: GameCommand[] = [];
+  store.onCommand((c) => commands.push(c));
+  /** Where the play screen was asked to travel through a gate (the last time). */
+  const travelledTo = (): string | null => store.getSnapshot().travel?.region ?? null;
+  const said: string[] = [];
+  const online = new MultiplayerSession({
+    // No model is loaded in these tests (no spawn): the loader is never called.
+    loader: {} as unknown as GuardedGltfLoader,
+    ground: (_x, _z, y) => y,
+    shadows: false,
+    start: { mapId, x: 10, y: 5, z: 10, yaw: 0 },
+    store,
+    social,
+    regionOfMap: (id) => (id === 'cho-phien' ? 'cho-phien' : null),
+    say: (text) => said.push(text),
+  });
+  const ws = socket();
+  ws.open();
+  ws.receive({ type: 'welcome', selfId: 'p-me', players: [] });
+  return { online, social, ws, commands, travelledTo, said };
+}
+
+describe('the online session', () => {
+  it('joins with a place only: who she is, the server says', () => {
+    const { ws, online } = session();
+    expect(ws.url).toMatch(/\/api\/ws$/);
+    expect(ws.sent[0]).toEqual({ type: 'join', mapId: 'trung-tam', x: 10, y: 5, z: 10, yaw: 0, riding: false });
+    online.dispose();
+  });
+
+  it('passes the menu actions on as wire messages and closes the menu', () => {
+    const { ws, social, online, said } = session();
+    online.openMenu({ id: 'p-b', name: 'Bông', isBot: false });
+    expect(social.getSnapshot().menu).toEqual({ id: 'p-b', name: 'Bông', isBot: false });
+    social.send({ type: 'wave', to: 'p-b' });
+    social.send({ type: 'say', to: 'p-b', text: 'Cùng chơi nhé!' });
+    social.send({ type: 'invite', to: 'p-b' });
+    social.send({ type: 'report', id: 'p-b', reason: 'name' });
+    social.send({ type: 'block', id: 'p-b' });
+    expect(ws.sent.slice(1)).toEqual([
+      { type: 'emote', emote: 'wave', to: 'p-b' },
+      { type: 'chat', text: 'Cùng chơi nhé!', to: 'p-b' },
+      { type: 'party-invite', to: 'p-b' },
+      { type: 'report', id: 'p-b', reason: 'name' },
+      { type: 'block', id: 'p-b' },
+    ]);
+    expect(said).toEqual(['Cùng chơi nhé!']);
+    expect(social.getSnapshot().menu).toBeNull();
+    online.dispose();
+  });
+
+  it('shows invites, answers them, and keeps the party frame in step with the server', () => {
+    const { ws, social, online } = session();
+    ws.receive({ type: 'party-invite', from: { id: 'bot-tt-1', displayName: 'Bé Bông', isBot: true }, expiresInMs: 60_000 });
+    expect(social.getSnapshot().invites.map((i) => i.from)).toEqual([{ id: 'bot-tt-1', name: 'Bé Bông', isBot: true }]);
+    social.send({ type: 'reply', from: 'bot-tt-1', accept: true });
+    expect(ws.sent.at(-1)).toEqual({ type: 'party-reply', from: 'bot-tt-1', accept: true });
+    expect(social.getSnapshot().invites).toEqual([]);
+    const party = {
+      id: 'party-1',
+      leader: 'p-me',
+      members: [
+        { id: 'p-me', displayName: 'Miu', isBot: false, species: 'cat', pet: null, mapId: 'trung-tam' },
+        { id: 'bot-tt-1', displayName: 'Bé Bông', isBot: true, species: 'rabbit', pet: null, mapId: 'trung-tam' },
+      ],
+    };
+    ws.receive({ type: 'party-state', party });
+    expect(social.getSnapshot().party).toEqual(party);
+    online.dispose();
+  });
+
+  it('asks the party along when the leader goes through a gate, and only then', () => {
+    const { ws, social, online } = session();
+    online.travelled('cho-phien');
+    expect(ws.sent.filter((m) => (m as { type: string }).type === 'party-travel')).toEqual([]);
+    ws.receive({ type: 'party-state', party: { id: 'party-1', leader: 'p-me', members: [{ id: 'p-me', displayName: 'Miu', isBot: false, species: 'cat', pet: null, mapId: 'trung-tam' }] } });
+    online.travelled('cho-phien');
+    expect(ws.sent.at(-1)).toEqual({ type: 'party-travel', region: 'cho-phien' });
+    expect(social.getSnapshot().party?.leader).toBe('p-me');
+    online.dispose();
+  });
+
+  it('follows the leader through the gate when the child says yes', () => {
+    const { ws, social, online, travelledTo } = session();
+    ws.receive({ type: 'party-travel', from: 'p-lead', displayName: 'Tôm', region: 'cho-phien' });
+    expect(social.getSnapshot().travel).toEqual({ from: { id: 'p-lead', name: 'Tôm', isBot: false }, region: 'cho-phien' });
+    social.send({ type: 'travel-answer', accept: true });
+    expect(travelledTo()).toBe('cho-phien');
+    expect(social.getSnapshot().travel).toBeNull();
+    online.dispose();
+  });
+
+  it('"đến chỗ bạn" walks to a member on this map, or goes through the gate to hers', () => {
+    const { ws, online, commands, travelledTo } = session();
+    ws.receive({ type: 'party-goto', id: 'p-b', mapId: 'trung-tam', x: 40, y: 6, z: 50 });
+    expect(commands).toContainEqual({ type: 'autowalk-to', to: { position: [40, 6, 50] } });
+    expect(travelledTo()).toBeNull();
+    ws.receive({ type: 'party-goto', id: 'p-b', mapId: 'cho-phien', x: 1, y: 2, z: 3 });
+    expect(travelledTo()).toBe('cho-phien');
+    online.dispose();
+  });
+
+  it('turns notices and lines aimed at her into toasts', () => {
+    const { ws, social, online } = session();
+    ws.receive({ type: 'notice', code: 'party-full' });
+    expect(social.getSnapshot().toast).toMatchObject({ kind: 'notice', code: 'party-full', name: null });
+    ws.receive({ type: 'party-chat', from: 'p-b', displayName: 'Bông', text: 'Cố lên nào!' });
+    expect(social.getSnapshot().toast).toMatchObject({ kind: 'party-chat', name: 'Bông', text: 'Cố lên nào!' });
+    online.dispose();
+  });
+
+  it('does not reconnect after another tab took over, and leaves the party view', () => {
+    vi.useFakeTimers();
+    try {
+      const { ws, social, online } = session();
+      ws.receive({ type: 'party-state', party: { id: 'party-1', leader: 'p-me', members: [{ id: 'p-me', displayName: 'Miu', isBot: false, species: 'cat', pet: null, mapId: 'trung-tam' }] } });
+      ws.onclose?.({ code: 4001 });
+      vi.advanceTimersByTime(10_000);
+      expect(FakeSocket.last).toBe(ws);
+      expect(social.getSnapshot().party).toBeNull();
+      online.dispose();
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+});
+
+describe('canned lines', () => {
+  it('the locale list is the wire list, line for line (each player reads them in her own language)', () => {
+    expect(linesOf('online.cannedChats').map((l) => l.vi)).toEqual([...SAFE_CANNED_CHATS]);
+    setLangMode('en', false);
+    expect(cannedLine('Xin chào bạn!')).toBe('Hello there!');
+  });
+});
+
+describe('arrows to party members', () => {
+  it('points up for ahead, right for the right, down for behind (camera looking along −z)', () => {
+    const forward = { x: 0, z: -1 };
+    const at = { x: 0, z: 0 };
+    expect(arrowTurn(forward, at, { x: 0, z: -5 })).toBeCloseTo(0);
+    expect(arrowTurn(forward, at, { x: 5, z: 0 })).toBeCloseTo(90);
+    expect(arrowTurn(forward, at, { x: -5, z: 0 })).toBeCloseTo(-90);
+    expect(Math.abs(arrowTurn(forward, at, { x: 0, z: 5 }))).toBeCloseTo(180);
+  });
+});

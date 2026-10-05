@@ -1,164 +1,112 @@
-// Multiplayer WebSocket Client (Master Plan §8 & §8b).
-// Connects to /api/ws, synchronizing position, actions, and canned chats.
-import {
-  ClientWsMessage,
-  ServerWsMessage,
-  type PlayerPresence,
-  type SafeCannedChat,
-  type SafeEmote,
-} from '@miu/schema/multiplayer';
+// Multiplayer WebSocket client (Master Plan §8 & §8b): connects to /api/ws with the session cookie, joins the
+// map's room where the child stands and passes server messages on. Who she is (name, clothes, pet) the server
+// reads from her saved character; she only says where she is and what she does. Single-player goes on as if
+// nothing happened when the server cannot be reached.
+import { ClientWsMessage, ServerWsMessage, type SafeEmote } from '@miu/schema/multiplayer';
+
+/** Close codes after which reconnecting is pointless: another tab took over, or there is no player to play as. */
+const FINAL_CLOSE_CODES = new Set([4001, 4401]);
+const RECONNECT_MS = 3_000;
+/** Movement updates at most ten times a second. */
+const UPDATE_GAP_MS = 95;
+
+export interface MultiplayerStart {
+  mapId: string;
+  x: number;
+  y: number;
+  z: number;
+  yaw: number;
+}
 
 export interface MultiplayerClientHandlers {
-  onWelcome(players: PlayerPresence[]): void;
-  onSpawn(player: PlayerPresence): void;
-  onMove(update: { id: string; x: number; y: number; z: number; yaw: number; speed: number; action?: string; riding?: boolean }): void;
-  onEmote(id: string, emote: SafeEmote): void;
-  onChat(id: string, text: string): void;
-  onDespawn(id: string): void;
+  onMessage(message: ServerWsMessage): void;
+  /** Connected (joined the room) or not; `final` once it will not try again. */
+  onStatus?(connected: boolean, final: boolean): void;
 }
 
 export class MultiplayerClient {
   private ws: WebSocket | null = null;
-  private readonly mapId: string;
-  private readonly selfPresence: Omit<PlayerPresence, 'id'>;
+  private readonly start: MultiplayerStart;
   private readonly handlers: MultiplayerClientHandlers;
+  /** Where she is now: a reconnect joins there, not at the map's start. */
+  private here: Omit<MultiplayerStart, 'mapId'> & { riding: boolean };
   private lastUpdateSent = 0;
   private disposed = false;
+  private retry: number | null = null;
 
-  constructor(
-    mapId: string,
-    selfPresence: Omit<PlayerPresence, 'id'>,
-    handlers: MultiplayerClientHandlers,
-  ) {
-    this.mapId = mapId;
-    this.selfPresence = selfPresence;
+  constructor(start: MultiplayerStart, handlers: MultiplayerClientHandlers) {
+    this.start = start;
+    this.here = { x: start.x, y: start.y, z: start.z, yaw: start.yaw, riding: false };
     this.handlers = handlers;
     this.connect();
   }
 
   private connect(): void {
     if (this.disposed || typeof window === 'undefined') return;
-
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const host = window.location.host;
-    const url = `${protocol}//${host}/api/ws`;
-
+    let ws: WebSocket;
     try {
-      this.ws = new WebSocket(url);
-
-      this.ws.onopen = () => {
-        if (this.disposed) {
-          this.ws?.close();
-          return;
-        }
-        // Send join packet
-        const joinMsg = ClientWsMessage.parse({
-          type: 'join',
-          mapId: this.mapId,
-          presence: this.selfPresence,
-        });
-        this.ws?.send(JSON.stringify(joinMsg));
-      };
-
-      this.ws.onmessage = (event) => {
-        if (this.disposed) return;
-        try {
-          const raw = JSON.parse(event.data);
-          const msg = ServerWsMessage.parse(raw);
-
-          switch (msg.type) {
-            case 'welcome':
-              this.handlers.onWelcome(msg.players);
-              break;
-            case 'spawn':
-              this.handlers.onSpawn(msg.player);
-              break;
-            case 'move':
-              this.handlers.onMove(msg);
-              break;
-            case 'emote':
-              this.handlers.onEmote(msg.id, msg.emote);
-              break;
-            case 'chat':
-              this.handlers.onChat(msg.id, msg.text);
-              break;
-            case 'despawn':
-              this.handlers.onDespawn(msg.id);
-              break;
-          }
-        } catch (err) {
-          console.warn('client failed to parse server ws message', err);
-        }
-      };
-
-      this.ws.onclose = () => {
-        // Auto-reconnect after 3s if not intentionally disposed
-        if (!this.disposed) {
-          setTimeout(() => this.connect(), 3000);
-        }
-      };
+      ws = new WebSocket(`${protocol}//${window.location.host}/api/ws`);
     } catch {
-      // Best-effort connection: single-player continues seamlessly if server offline
+      return; // no WebSocket here: play goes on alone
     }
+    this.ws = ws;
+    ws.onopen = () => {
+      if (this.disposed) {
+        ws.close();
+        return;
+      }
+      this.send({ type: 'join', mapId: this.start.mapId, ...this.here });
+      this.handlers.onStatus?.(true, false);
+    };
+    ws.onmessage = (event: MessageEvent<unknown>) => {
+      if (this.disposed || typeof event.data !== 'string') return;
+      let data: unknown;
+      try {
+        data = JSON.parse(event.data);
+      } catch {
+        return;
+      }
+      const parsed = ServerWsMessage.safeParse(data);
+      if (parsed.success) this.handlers.onMessage(parsed.data);
+      else console.warn('ignored a server message of an unknown shape');
+    };
+    ws.onclose = (event) => {
+      if (this.ws === ws) this.ws = null;
+      if (this.disposed) return;
+      const final = FINAL_CLOSE_CODES.has(event.code);
+      this.handlers.onStatus?.(false, final);
+      if (!final) this.retry = window.setTimeout(() => this.connect(), RECONNECT_MS);
+    };
   }
 
-  sendUpdate(x: number, y: number, z: number, yaw: number, speed: number, action = 'walk', riding = false): void {
-    if (this.disposed || !this.ws || this.ws.readyState !== WebSocket.OPEN) return;
+  /** Sends a message when connected; dropped otherwise (nothing is queued for later). */
+  send(message: ClientWsMessage): void {
+    const ws = this.ws;
+    if (this.disposed || !ws || ws.readyState !== WebSocket.OPEN) return;
+    const parsed = ClientWsMessage.safeParse(message);
+    if (!parsed.success) return;
+    ws.send(JSON.stringify(parsed.data));
+  }
 
+  sendUpdate(x: number, y: number, z: number, yaw: number, speed: number, action: 'idle' | 'walk' | 'sit' = 'walk', riding = false): void {
+    this.here = { x, y, z, yaw, riding };
     const now = Date.now();
-    if (now - this.lastUpdateSent < 95) return; // 10Hz throttle
+    if (now - this.lastUpdateSent < UPDATE_GAP_MS) return;
     this.lastUpdateSent = now;
-
-    try {
-      const updateMsg = ClientWsMessage.parse({
-        type: 'update',
-        x,
-        y,
-        z,
-        yaw,
-        speed,
-        action,
-        riding,
-      });
-      this.ws.send(JSON.stringify(updateMsg));
-    } catch {
-      // Ignore send errors
-    }
+    this.send({ type: 'update', x, y, z, yaw, speed, action, riding });
   }
 
+  /** An emote to everyone around (a cheer at a finished quest, petting an animal). */
   sendEmote(emote: SafeEmote): void {
-    if (!this.ws || this.ws.readyState !== WebSocket.OPEN) return;
-    try {
-      const msg = ClientWsMessage.parse({ type: 'emote', emote });
-      this.ws.send(JSON.stringify(msg));
-    } catch {
-      // Ignore send errors
-    }
-  }
-
-  sendChat(text: SafeCannedChat): void {
-    if (!this.ws || this.ws.readyState !== WebSocket.OPEN) return;
-    try {
-      const msg = ClientWsMessage.parse({ type: 'chat', text });
-      this.ws.send(JSON.stringify(msg));
-    } catch {
-      // Ignore send errors
-    }
+    this.send({ type: 'emote', emote });
   }
 
   dispose(): void {
+    if (this.retry !== null) window.clearTimeout(this.retry);
+    this.send({ type: 'leave' });
     this.disposed = true;
-    if (this.ws) {
-      if (this.ws.readyState === WebSocket.OPEN) {
-        try {
-          const leaveMsg = ClientWsMessage.parse({ type: 'leave' });
-          this.ws.send(JSON.stringify(leaveMsg));
-        } catch {
-          // Ignore
-        }
-      }
-      this.ws.close();
-      this.ws = null;
-    }
+    this.ws?.close();
+    this.ws = null;
   }
 }

@@ -83,8 +83,9 @@ import { createWorldEvents } from './scene/world-events';
 import { HORIZON_REACH } from './world/horizon-mesh';
 import { loadWorldData } from './world/world-data';
 import { createWorldRenderer } from './world/world-renderer';
-import { MultiplayerClient } from './multiplayer/multiplayer-client';
-import { RemotePlayerManager } from './multiplayer/remote-player-manager';
+import { MultiplayerSession } from './multiplayer/multiplayer-session';
+import type { NearPlayer } from './multiplayer/remote-player-manager';
+import type { SocialStore } from '../game-bridge/social-store';
 import './game.css';
 
 
@@ -124,6 +125,8 @@ export interface GameOptions {
   savedSpot?: Pick<PlayerPosition, 'position' | 'facing'> | null;
   /** The child's picks for her home (`GET /api/home-decor`): the map's restyled pieces as she chose them. */
   decor?: Readonly<Record<string, string>>;
+  /** The play screen's online UI (interaction menu on other players, party frame); none leaves it out. */
+  social?: SocialStore;
 }
 
 /** Bytes downloaded so far (compressed transfer size, falling back to body size for cache hits). */
@@ -452,10 +455,6 @@ export class Game {
     props.buildAround(start[0] ?? 0, start[2] ?? 0);
     scene.add(character.root, props.group, life.group, confetti.mesh, ...targets.map((t) => t.root));
 
-    const remotePlayers = new RemotePlayerManager(loader, ground, quality.shadows);
-    scene.add(remotePlayers.group);
-    this.cleanups.push(() => remotePlayers.dispose());
-
     const playerBubble = createSpeechBubble();
     scene.add(playerBubble.sprite);
     this.cleanups.push(() => {
@@ -464,35 +463,21 @@ export class Game {
     });
     const objectInteractions = new ObjectInteractionManager(entities, playerBubble);
 
-    const multiplayer = new MultiplayerClient(
-      mapId,
-      {
-        displayName: this.options.playerName ?? 'bạn',
-        isBot: false,
-        species: this.options.species ?? DEFAULT_SPECIES,
-        outfit,
-        pet: this.options.pet ?? null,
-        x: start[0] ?? 0,
-        y: start[1] ?? 0,
-        z: start[2] ?? 0,
-        yaw: entities.spawn.yaw,
-        speed: 0,
-        action: 'idle',
-        riding: false,
-        bubble: null,
-      },
-      {
-        onWelcome: (players) => {
-          for (const p of players) void remotePlayers.spawn(p);
-        },
-        onSpawn: (p) => void remotePlayers.spawn(p),
-        onMove: (update) => remotePlayers.updateMove(update),
-        onEmote: (id, emote) => remotePlayers.playEmote(id, emote),
-        onChat: (id, text) => remotePlayers.sayChat(id, text),
-        onDespawn: (id) => remotePlayers.despawn(id),
-      },
-    );
-    this.cleanups.push(() => multiplayer.dispose());
+    // Other players and companion bots; who the child is to them the server reads from her saved character.
+    const online = new MultiplayerSession({
+      loader,
+      ground,
+      shadows: quality.shadows,
+      start: { mapId, x: start[0] ?? 0, y: start[1] ?? 0, z: start[2] ?? 0, yaw: entities.spawn.yaw },
+      store,
+      social: this.options.social ?? null,
+      regionOfMap: (id) => REGION_CATALOG.regions.find((r) => r.status === 'open' && r.map === id)?.id ?? null,
+      say: (text) => playerBubble.show(text),
+      onRemotes: (players) => (overlay.stats.remotePlayers = players),
+    });
+    scene.add(online.group);
+    this.cleanups.push(() => online.dispose());
+    const multiplayer = online.client;
     // The minimap (top right, under the menu): the map from above, its gates, the child's home on her map.
     const playerName = this.options.playerName ?? 'bạn';
     const regionName = (id: string): string | undefined => {
@@ -619,6 +604,8 @@ export class Game {
     /** An interactive furniture or prop object in reach (bed, chair, toilet, sink, stove, etc.). */
     let promptObject: CandidateObject | null = null;
     let promptPet = false;
+    /** Another player in reach: the interaction button opens the online menu on her. */
+    let promptPlayer: NearPlayer | null = null;
     let ambientActionTimer = 0;
     let currentAmbientAction: ExtraPlayerAction = null;
     let interactRequested = false;
@@ -671,6 +658,8 @@ export class Game {
     this.cleanups.push(
       store.onCommand((command) => {
         if (command.type === 'interact') interactRequested = true;
+        // Worn at once (the shop's "Mặc"); the others see it from the server when it is saved.
+        if (command.type === 'set-outfit') character.wear(command.equipped);
         if (command.type === 'rescue') rescueRequested = true;
         if (command.type === 'celebrate') celebrateRequested = true;
         if (command.type === 'autowalk-start' && hint?.available) walkTo({ target: hint.def, interactOnArrival: true });
@@ -873,16 +862,18 @@ export class Game {
       store.emit({ type: 'autowalk-available', available: hint?.available === true });
       overlay.stats.hintTarget = arrow.showing ? (hint?.def.id ?? null) : null;
       const nearest = carried ? null : pickNearest(targets, controller.position);
-      // Quest targets always win the prompt; ambient life goes quiet next to them.
-      const nearAmbient = nearest ? null : life.nearest(controller.position);
+      // Another player near (quest targets still win): the online menu.
+      const nearPlayer = nearest || carried ? null : online.nearest(controller.position);
+      // Quest targets always win the prompt; ambient life goes quiet next to them (and next to another player).
+      const nearAmbient = nearest || nearPlayer ? null : life.nearest(controller.position);
       // Object interactions (furniture/props) activate when no quest target or ambient life is near
-      const nearObject = nearest || nearAmbient ? null : objectInteractions.nearest(controller.position);
+      const nearObject = nearest || nearAmbient || nearPlayer ? null : objectInteractions.nearest(controller.position);
       // Check pet companion proximity when child is near her faithful companion
       const petDist = pet && !carried ? Math.hypot(controller.position.x - pet.root.position.x, controller.position.z - pet.root.position.z) : Infinity;
-      const nearPet = !nearest && !nearAmbient && !nearObject && petDist < 2.2;
+      const nearPet = !nearest && !nearAmbient && !nearObject && !nearPlayer && petDist < 2.2;
       // A still review shot gathers the nearest people and animals round what it looks at, not round the child.
       life.update(dt, reviewShot && !reviewShot.live ? reviewShot.target : controller.position, nearest !== null, { calls: renderer.info.render.calls, triangles: renderer.info.render.triangles });
-      remotePlayers.update(dt);
+      online.update(dt, controller.position, camera);
       const currentAction = ride.riding || objectState.poseOverride || currentAmbientAction ? 'sit' : controller.speed > 0.1 ? 'walk' : 'idle';
       multiplayer.sendUpdate(
         controller.position.x,
@@ -893,15 +884,18 @@ export class Game {
         currentAction,
         ride.riding,
       );
-      if (nearest !== promptTarget || nearAmbient !== promptAmbient || nearObject !== promptObject || nearPet !== promptPet) {
+      if (nearest !== promptTarget || nearAmbient !== promptAmbient || nearObject !== promptObject || nearPet !== promptPet || nearPlayer?.id !== promptPlayer?.id) {
         promptTarget = nearest;
         promptAmbient = nearAmbient;
         promptObject = nearObject;
         promptPet = nearPet;
+        promptPlayer = nearPlayer;
         const def = nearest?.def;
         const prompt = def
           ? { targetId: def.id, kind: def.kind, name: def.name, label: def.label }
-          : nearAmbient
+          : nearPlayer
+            ? { targetId: `player:${nearPlayer.id}`, kind: 'player' as const, name: nearPlayer.isBot ? `🤖 [${translate('online.botLabel')}] ${nearPlayer.name}` : nearPlayer.name, label: translate('online.interact') }
+            : nearAmbient
             ? { targetId: nearAmbient.id, kind: 'ambient' as const, name: nearAmbient.name, label: nearAmbient.label }
             : nearObject
               ? objectInteractions.toPrompt(nearObject)
@@ -912,7 +906,9 @@ export class Game {
       }
       const anchorAt = promptTarget
         ? promptTarget.screenAnchor(camera, { width: window.innerWidth, height: window.innerHeight })
-        : promptAmbient
+        : promptPlayer
+          ? online.remote.screenAnchor(promptPlayer.id, camera, { width: window.innerWidth, height: window.innerHeight })
+          : promptAmbient
           ? life.screenAnchor(promptAmbient, camera, { width: window.innerWidth, height: window.innerHeight })
           : promptObject
             ? objectInteractions.screenAnchor(promptObject, camera, { width: window.innerWidth, height: window.innerHeight })
@@ -939,11 +935,14 @@ export class Game {
         }
         overlay.stats.lastInteraction = promptTarget.def.id;
       } else if (interact && promptTarget?.def.travel) {
+        online.travelled(promptTarget.def.travel);
         store.emit({ type: 'travel', region: promptTarget.def.travel });
         overlay.stats.lastInteraction = promptTarget.def.id;
       } else if (interact && promptTarget) {
         store.emit({ type: 'interaction', targetId: promptTarget.def.id });
         overlay.stats.lastInteraction = promptTarget.def.id;
+      } else if (interact && promptPlayer) {
+        online.openMenu(promptPlayer);
       } else if (interact && promptAmbient) {
         life.react(promptAmbient.id);
         const isAnimal = promptAmbient.label === 'Vuốt ve';

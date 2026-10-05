@@ -2,7 +2,7 @@
 // the Quests / Map / Backpack / Menu buttons, and the Interact button next to Run and Jump. Nothing
 // here changes per frame: the prompt arrives as a discrete bridge event.
 import { Link } from 'react-router';
-import { useEffect, useState, type KeyboardEvent } from 'react';
+import { useEffect, useState, type KeyboardEvent, type ReactNode } from 'react';
 import type { QuestSummary } from '@miu/schema/game';
 import type { AutowalkState } from '../../game-bridge/game-store';
 import { useGameState, useGameStore } from '../../game-bridge/use-game-state';
@@ -165,6 +165,7 @@ export function Hud({
   onMenu,
   onQuests,
   onBackpack,
+  children,
 }: {
   data: PlayerData;
   quest: QuestSummary | null;
@@ -174,6 +175,8 @@ export function Hud({
   /** Opens this map's quest board over the game: every quest can be taken from there. */
   onQuests: () => void;
   onBackpack: () => void;
+  /** More of the left column under the quest card (the online party frame). */
+  children?: ReactNode;
 }) {
   const { t } = useT();
   return (
@@ -181,6 +184,7 @@ export function Hud({
       <div className="hud-top-left">
         <PlayerBadge character={data.character} progress={data.progress} />
         <QuestTracker quest={quest} data={data} />
+        {children}
       </div>
       <nav className="hud-top-right" aria-label={t('hud.menuLabel')}>
         <button type="button" className={buttonClass('secondary', { small: true })} data-id="hud-quests" onClick={onQuests}>

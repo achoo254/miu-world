@@ -2,7 +2,7 @@ import type { Express } from 'express';
 import request from 'supertest';
 import type { RegisterRequest } from '@miu/schema/account';
 import { fileURLToPath } from 'node:url';
-import { createApp } from '../src/app';
+import { createApp, type AppDeps } from '../src/app';
 import { loadContentCatalog } from '../src/content/content-catalog';
 import { loadConfig, type ServerConfig } from '../src/config';
 import { createTestDb, type Db, type DbHandle } from '../src/db/client';
@@ -35,12 +35,13 @@ export async function createTestApp(
   overrides: Partial<ServerConfig> = {},
   fetchImpl?: typeof fetch,
   content: typeof FIXTURE_CONTENT = FIXTURE_CONTENT,
+  deps: Pick<AppDeps, 'characterEvents'> = {},
 ): Promise<TestApp> {
   const handle = await createTestDb();
   // Every test agent shares one loopback IP, so the per-IP register cap is lifted; its own test lowers it.
   const config = { ...loadConfig(env), scrypt: FAST_SCRYPT, registerLimitPerHour: 10_000, googleLimitPer15Min: 10_000, passwordLogin: true, ...overrides };
   let offset = 0;
-  const app = createApp({ config, db: handle.db, content, worksheets: FIXTURE_WORKSHEETS, clock: () => new Date(Date.now() + offset), fetchImpl });
+  const app = createApp({ config, db: handle.db, content, worksheets: FIXTURE_WORKSHEETS, clock: () => new Date(Date.now() + offset), fetchImpl, ...deps });
   return {
     app,
     db: handle.db,

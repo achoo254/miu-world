@@ -67,19 +67,27 @@ export function requireParentGate(clock: () => Date): RequestHandler {
   };
 }
 
+export type ActivePlayer = { ok: true; childId: string } | { ok: false; code: 'no-active-child' | 'consent-required' };
+
 /**
- * Game routes act on the selected player. The player is re-checked against the account so a stale or
- * forged session pointer can never reach another account's data, and play stops as soon as the
- * consent policy version changes (not only at the next player pick).
+ * The player a session plays as. The player is re-checked against the account so a stale or forged session
+ * pointer can never reach another account's data, and play stops as soon as the consent policy version
+ * changes (not only at the next player pick). Shared by the game routes and the multiplayer connection.
  */
-export async function activePlayerId(db: Db, res: Response, policyVersion: string): Promise<string> {
-  const { session, parent } = auth(res);
-  if (!session.activeChildId) throw new HttpError(401, 'no-active-child');
+export async function findActivePlayer(db: Db, session: SessionRow, policyVersion: string): Promise<ActivePlayer> {
+  if (!session.activeChildId) return { ok: false, code: 'no-active-child' };
   const [child] = await db
     .select({ id: childProfiles.id })
     .from(childProfiles)
-    .where(and(eq(childProfiles.id, session.activeChildId), eq(childProfiles.parentId, parent.id)));
-  if (!child) throw new HttpError(401, 'no-active-child');
-  if (!(await hasCurrentConsent(db, parent.id, policyVersion))) throw new HttpError(403, 'consent-required');
-  return child.id;
+    .where(and(eq(childProfiles.id, session.activeChildId), eq(childProfiles.parentId, session.parentId)));
+  if (!child) return { ok: false, code: 'no-active-child' };
+  if (!(await hasCurrentConsent(db, session.parentId, policyVersion))) return { ok: false, code: 'consent-required' };
+  return { ok: true, childId: child.id };
+}
+
+/** Game routes act on the selected player (see `findActivePlayer`). */
+export async function activePlayerId(db: Db, res: Response, policyVersion: string): Promise<string> {
+  const player = await findActivePlayer(db, auth(res).session, policyVersion);
+  if (!player.ok) throw new HttpError(player.code === 'consent-required' ? 403 : 401, player.code);
+  return player.childId;
 }

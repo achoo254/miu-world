@@ -8,6 +8,7 @@ import { authRoutes } from './auth/auth-routes';
 import { googleAuthRoutes } from './auth/google-auth-routes';
 import { requireAllowedOrigin } from './auth/origin-check';
 import { HashQueueFullError } from './auth/secret-hashing';
+import type { CharacterEvents } from './character/character-events';
 import { characterRoutes } from './character/character-routes';
 import { playerRoutes } from './player/player-routes';
 import type { ServerConfig } from './config';
@@ -44,6 +45,8 @@ export interface AppDeps {
   clock?: () => Date;
   /** Google token endpoint call; tests inject a fake so Google is never contacted. */
   fetchImpl?: typeof fetch;
+  /** Told when a player saves her character (the multiplayer hub redresses her for the others). */
+  characterEvents?: CharacterEvents;
 }
 
 /** Body-parser errors carry an HTTP status and a `type`; everything else is an internal error. */
@@ -71,7 +74,7 @@ const errorHandler: ErrorRequestHandler = (err: unknown, _req, res, _next) => {
 };
 
 /** Builds the Express app without listening, so tests can drive it through supertest. */
-export function createApp({ config, db, content = loadContentCatalog(), worksheets = loadWorksheets(), clock = () => new Date(), fetchImpl }: AppDeps): express.Express {
+export function createApp({ config, db, content = loadContentCatalog(), worksheets = loadWorksheets(), clock = () => new Date(), fetchImpl, characterEvents }: AppDeps): express.Express {
   const app = express();
   app.disable('x-powered-by');
   // The API listens on loopback only and is reached through the web dev/preview proxy (or a reverse
@@ -91,7 +94,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(googleAuthRoutes({ db, config, clock, fetchImpl }));
   api.use(accountRoutes({ db, config, clock }));
   api.use(playerRoutes({ db, content, clock }));
-  api.use(characterRoutes({ db, content }));
+  api.use(characterRoutes({ db, content, events: characterEvents }));
   api.use(playerPositionRoutes({ db, content, clock }));
   api.use(questRoutes({ db, content, clock }));
   api.use(timetableRoutes({ db, content, clock, defaultTimetable: loadDefaultTimetable(config.timetableDefaultFile) }));

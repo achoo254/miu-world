@@ -1,8 +1,8 @@
 // The child's character (the model of its species) + accessories, blending idle/walk/sprint by speed.
-import { AnimationMixer, MathUtils, type AnimationAction, type Object3D } from 'three';
+import { AnimationMixer, MathUtils, SkinnedMesh, type AnimationAction, type Object3D } from 'three';
 import { clone as cloneModel } from 'three/examples/jsm/utils/SkeletonUtils.js';
 import type { GuardedGltfLoader } from '../asset-loader';
-import { dressCharacter } from '../character/character-accessories';
+import { dressCharacter, undressCharacter } from '../character/character-accessories';
 import { wornPose } from '../character/worn-pose';
 import { withOwnClothes } from '../character/character-clothes';
 import { characterForSpecies, type CharacterModel } from '../content/characters';
@@ -31,7 +31,9 @@ export type ExtraPlayerAction = 'lay' | 'eat' | 'drink' | 'fish' | 'pet' | 'wave
 export interface PlayerCharacter {
   root: Object3D;
   /** Accessory entries actually attached (bad entries are skipped). */
-  outfit: string[];
+  readonly outfit: string[];
+  /** Swaps what she wears where she stands (the shop's "Mặc", another player's new clothes): no new model. */
+  wear(outfit: readonly string[]): void;
   /**
    * `seated`: hold that pose (riding) instead of idle / walk / sprint.
    * `inWater`: tilt the model forward and add a bob, giving a swimming feel (no extra clip needed).
@@ -57,7 +59,8 @@ export async function loadPlayerCharacter(loader: GuardedGltfLoader, species: st
     o.castShadow = true;
     o.frustumCulled = false; // skinned bounds lag the animated pose
   });
-  const worn = dressCharacter(root, withOwnClothes(outfit, model.clothes), accessoryScaler(model), true);
+  let worn = dressCharacter(root, withOwnClothes(outfit, model.clothes), accessoryScaler(model), true);
+  let chosen: readonly string[] = outfit;
   // Scale the character and all attached accessories proportionally.
   root.scale.setScalar(PLAYER_SCALE);
   // A bad ?outfit= must not block the game.
@@ -111,7 +114,21 @@ export async function loadPlayerCharacter(loader: GuardedGltfLoader, species: st
   return {
     root,
     // What the child chose: her species' own clothes, worn when she chose none, are not listed.
-    outfit: worn.entries.filter((entry) => outfit.includes(entry)),
+    get outfit() {
+      return worn.entries.filter((entry) => chosen.includes(entry));
+    },
+    wear(next) {
+      // Accessories attach in the bind pose: reset the skeleton, swap; the next animation update poses her again.
+      root.traverse((o) => {
+        if (o instanceof SkinnedMesh) o.skeleton.pose();
+      });
+      root.updateMatrixWorld(true);
+      undressCharacter(worn);
+      worn = dressCharacter(root, withOwnClothes(next, model.clothes), accessoryScaler(model), true);
+      chosen = [...next];
+      for (const { entry, error } of worn.skipped) console.warn(`skipping outfit entry "${entry}"`, error);
+      pose.wear(worn.entries);
+    },
     update(dt, speed, onGround, seated = null, inWater = false, action = null) {
       const moving: Locomotion = speed > (WALK_SPEED + RUN_SPEED) / 2 ? 'sprint' : speed > 0.4 ? 'walk' : 'idle';
       // While in water or doing an action she stays in locomotion/idle, never freezes mid-air.

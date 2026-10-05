@@ -11,8 +11,11 @@ export type { InteractableKind };
 
 export interface InteractionPrompt {
   targetId: string;
-  /** `ambient`: a villager or animal of the map's everyday life, handled in the game (no quest step). */
-  kind: InteractableKind | 'ambient';
+  /**
+   * `ambient`: a villager or animal of the map's everyday life, handled in the game (no quest step); `player`:
+   * another player or a companion bot (the online menu).
+   */
+  kind: InteractableKind | 'ambient' | 'player';
   /** Display name of the target (e.g. "Vẹt"). */
   name: string;
   /** Action label (e.g. "Nói chuyện"). */

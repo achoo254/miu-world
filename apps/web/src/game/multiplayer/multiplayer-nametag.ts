@@ -1,12 +1,14 @@
 // Nametag sprite rendered over remote players and companion bots.
-// Always clearly renders "[Bạn máy]" badge for bots per Jev 03/10/2026.
+// Always clearly renders "[Bạn máy]" badge for bots per Jev 03/10/2026; members of the child's party get a star and a
+// party-coloured edge, so she finds them in a crowd.
 import { CanvasTexture, SRGBColorSpace, Sprite, SpriteMaterial } from 'three';
+import { t } from '../../ui/i18n/i18n';
 
 const WIDTH = 384;
 const HEIGHT = 96;
 const WORLD_WIDTH = 2.2;
 
-export function createNametag(name: string, isBot: boolean): Sprite {
+export function createNametag(name: string, isBot: boolean, partyMate = false): Sprite {
   const canvas = document.createElement('canvas');
   canvas.width = WIDTH;
   canvas.height = HEIGHT;
@@ -15,7 +17,8 @@ export function createNametag(name: string, isBot: boolean): Sprite {
   if (ctx) {
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
 
-    const text = isBot ? `🤖 [Bạn máy] ${name}` : name;
+    const label = isBot ? `🤖 [${t('online.botLabel')}] ${name}` : name;
+    const text = partyMate ? `⭐ ${label}` : label;
     ctx.font = '700 36px "Baloo 2", "Nunito", sans-serif';
     const textWidth = Math.min(WIDTH - 40, ctx.measureText(text).width);
     const cardWidth = textWidth + 40;
@@ -30,7 +33,12 @@ export function createNametag(name: string, isBot: boolean): Sprite {
     ctx.fill();
 
     // Background pill
-    if (isBot) {
+    if (partyMate) {
+      // The party colour, as on the party frame (--color-grass of the UI tokens; a canvas cannot read CSS).
+      ctx.fillStyle = '#2b2140';
+      ctx.strokeStyle = '#7ed36b';
+      ctx.lineWidth = 6;
+    } else if (isBot) {
       // Warm friendly mint/amber badge for companion bots
       ctx.fillStyle = '#2d6a4f';
       ctx.strokeStyle = '#b7e4c7';

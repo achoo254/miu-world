@@ -6,6 +6,7 @@ import { Link, useLocation, useSearchParams } from 'react-router';
 import { rememberPlay } from '../system/back-to-game';
 import type { PlayerPosition } from '@miu/schema/player-position';
 import { createGameStore, type GameSnapshot, type GameStore } from '../../game-bridge/game-store';
+import { createSocialStore, type SocialStore } from '../../game-bridge/social-store';
 import { GameStoreContext, useGameState, useGameStore } from '../../game-bridge/use-game-state';
 import { Game } from '../../game/game';
 import { ApiError, errorMessage } from '../api-client';
@@ -31,6 +32,8 @@ import { PetCarePanel } from '../pet-care/pet-care-panel';
 import { CookingPanel } from '../cooking/cooking-panel';
 import { TimetablePanel } from '../timetable/timetable-panel';
 import { TIMETABLE_TARGETS, type TimetableFocus } from '../timetable/timetable-targets';
+import { PartyFrame, SocialLayer } from '../online/social-layer';
+import { useSocial } from '../online/use-social';
 import { createPositionSaver, loadPlayerPositions } from './player-position';
 
 const HOME_PATH = '/home';
@@ -96,6 +99,7 @@ function GameStatus() {
 
 function GameView({
   store,
+  social,
   playerName,
   species,
   pet,
@@ -109,6 +113,8 @@ function GameView({
   onSpotReader,
 }: {
   store: GameStore;
+  /** The online UI's store; it outlives each game (the party frame stays while the next map loads). */
+  social: SocialStore;
   playerName: string;
   species: string;
   /** Pet that follows the character (`content/pets.json`), or none. */
@@ -134,7 +140,7 @@ function GameView({
   useEffect(() => {
     if (!host.current) return;
     const picks = decorKey ? (JSON.parse(decorKey) as Record<string, string>) : undefined;
-    const instance = new Game(host.current, { store, search: window.location.search, playerName, species, pet, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region, quest, savedSpot, decor: picks });
+    const instance = new Game(host.current, { store, social, search: window.location.search, playerName, species, pet, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region, quest, savedSpot, decor: picks });
     game.current = instance;
     onSpotReader(() => instance.currentSpot());
     void instance.start();
@@ -157,7 +163,7 @@ function GameView({
       if (game.current === instance) game.current = null;
       onSpotReader(null);
     };
-  }, [store, playerName, species, pet, outfitKey, chapter, region, quest, savedSpot, decorKey, onSpotReader]);
+  }, [store, social, playerName, species, pet, outfitKey, chapter, region, quest, savedSpot, decorKey, onSpotReader]);
   // Full-screen screens stop rendering (Master Plan §12); React only calls stop/resume.
   useEffect(() => {
     if (paused) game.current?.stop();
@@ -170,6 +176,9 @@ export function PlayScreen() {
   const { refresh, state: account } = useAccount();
   const draftOwner = account.status === 'signed-in' ? account.me.activePlayerId : null;
   const [store] = useState(createGameStore);
+  const [social] = useState(createSocialStore);
+  /** The online menu on another player is open (it covers the game like the other screens). */
+  const onlineMenu = useSocial(social, (s) => s.menu !== null);
   const [params] = useSearchParams();
   const here = useLocation();
   // The way back to this game from Home, the map and the other screens.
@@ -274,7 +283,7 @@ export function PlayScreen() {
   const region = quest?.quest.region ?? DEFAULT_REGION;
   // An element of `positions` (set once), so the same object on every render: the game is not rebuilt.
   const savedSpot = positions?.find((p) => p.map === regionMap(region)) ?? null;
-  const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null || decorOpen || shopOpen || petCareOpen || cookingOpen;
+  const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null || decorOpen || shopOpen || petCareOpen || cookingOpen || onlineMenu;
   const atHome = data !== null && regionMap(region) === regionMap(HOME_REGION);
   // Her home is built in her picks: they are read first (a failed read builds the house as it comes).
   useEffect(() => {
@@ -353,7 +362,7 @@ export function PlayScreen() {
     <GameStoreContext.Provider value={store}>
       <main data-id="play">
         {data && positions && (!atHome || decor !== null) ? (
-          <GameView store={store} playerName={data.character.name} species={data.character.species} pet={data.character.pet} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={region} quest={quest?.quest.id} savedSpot={savedSpot} decor={atHome ? (decor ?? undefined) : undefined} paused={covered} onSpotReader={onSpotReader} />
+          <GameView store={store} social={social} playerName={data.character.name} species={data.character.species} pet={data.character.pet} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={region} quest={quest?.quest.id} savedSpot={savedSpot} decor={atHome ? (decor ?? undefined) : undefined} paused={covered} onSpotReader={onSpotReader} />
         ) : null}
         {loadError ? (
           <div className="play-message" role="alert">
@@ -370,7 +379,12 @@ export function PlayScreen() {
         {/* The in-world label and Interact would show through a screen's backdrop: only while playing. */}
         {covered ? null : <InteractionLabel />}
         <GameStatus />
-        {data && status !== 'error' ? <Hud data={data} quest={quest} covered={covered} onMenu={() => setPaused(true)} onQuests={() => setQuestsOpen(true)} onBackpack={() => setBackpackOpen(true)} /> : null}
+        {data && status !== 'error' ? (
+          <Hud data={data} quest={quest} covered={covered} onMenu={() => setPaused(true)} onQuests={() => setQuestsOpen(true)} onBackpack={() => setBackpackOpen(true)}>
+            <PartyFrame social={social} fill={(text) => say(text, data.character)} />
+          </Hud>
+        ) : null}
+        {data ? <SocialLayer social={social} covered={covered && !onlineMenu} fill={(text) => say(text, data.character)} /> : null}
         {data && backpackOpen ? (
           <Modal title={<T k="common.backpack" />} onClose={() => setBackpackOpen(false)} dataId="play-backpack" size="wide">
             <BackpackPanel data={data} region={region} />

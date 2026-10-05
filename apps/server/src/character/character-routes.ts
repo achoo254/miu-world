@@ -8,6 +8,7 @@ import { activePlayerId, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { characters } from '../db/schema';
+import type { CharacterEvents } from './character-events';
 import { HttpError, parseInput } from '../http-error';
 import { completedQuestIds } from '../quest/quest-access';
 import { totalXp } from '../reward/reward-ledger';
@@ -16,9 +17,11 @@ import { ownedItems } from '../shop/shop-routes';
 export interface CharacterRouteDeps {
   db: Db;
   content: ContentCatalog;
+  /** Told after every save (other players see the new look). */
+  events?: CharacterEvents;
 }
 
-export function characterRoutes({ db, content }: CharacterRouteDeps): Router {
+export function characterRoutes({ db, content, events }: CharacterRouteDeps): Router {
   const router = Router();
 
   async function load(childId: string): Promise<CharacterDto> {
@@ -75,7 +78,9 @@ export function characterRoutes({ db, content }: CharacterRouteDeps): Router {
         ...(input.pet === undefined ? {} : { pet: input.pet }),
       })
       .where(eq(characters.childId, childId));
-    res.json(await load(childId));
+    const saved = await load(childId);
+    events?.emit(childId, saved);
+    res.json(saved);
   });
 
   return router;
