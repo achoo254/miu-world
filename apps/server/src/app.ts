@@ -106,7 +106,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(olympiadRoutes({ db, content, clock }));
   api.use(mailRoutes({ db, content, clock }));
   api.use(skillTreeRoutes({ db, content }));
-  api.use(journeyRoutes({ db, content }));
+  api.use(journeyRoutes({ db, content, shopNames: new Map(shop.items.map((item) => [item.id, item.name])) }));
   api.use(achievementRoutes({ db, content, clock }));
   api.use(worksheetRoutes({ worksheets, clock, fontDir: config.handwritingFontDir }));
   app.use('/api', api);

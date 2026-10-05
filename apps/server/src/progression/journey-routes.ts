@@ -15,10 +15,12 @@ import { loadPlayerRecord, playerFacts, regionQuests, type LedgerRow, type Playe
 export interface JourneyRouteDeps {
   db: Db;
   content: ContentCatalog;
+  /** Names of what the shop sells (boosters, home styles), for the things bought. */
+  shopNames?: ReadonlyMap<string, string>;
 }
 
 type EventBase = Omit<JourneyEvent, 'at' | 'xp' | 'coin'>;
-const none: Pick<JourneyEvent, 'ref' | 'label' | 'itemId' | 'level'> = { ref: null, label: null, itemId: null, level: null };
+const none: Pick<JourneyEvent, 'ref' | 'label' | 'itemId' | 'itemName' | 'level'> = { ref: null, label: null, itemId: null, itemName: null, level: null };
 
 /** The first thing a ledger row holds (a drop, a chest's wearable, something bought). */
 const firstItem = (row: LedgerRow): string | null => Object.entries(row.items).find(([, qty]) => qty > 0)?.[0] ?? null;
@@ -55,14 +57,15 @@ function skillName(content: ContentCatalog, skillId: string): string | null {
  * The timeline from the ledger, newest first: each paid row as what it was, and the level-ups and skill-ups its
  * XP reached (replayed from the running totals, so no extra record is needed). At most `JOURNEY_EVENT_LIMIT`.
  */
-export function journeyEvents(content: ContentCatalog, ledger: readonly LedgerRow[]): JourneyEvent[] {
+export function journeyEvents(content: ContentCatalog, ledger: readonly LedgerRow[], shopNames: ReadonlyMap<string, string> = new Map()): JourneyEvent[] {
   const events: JourneyEvent[] = [];
+  const nameOf = (itemId: string | null): string | null => (itemId ? (content.accessories.get(itemId)?.name ?? shopNames.get(itemId) ?? null) : null);
   let xp = 0;
   const skillXp = new Map<string, number>();
   for (const row of ledger) {
     const at = row.createdAt.toISOString();
     const base = eventOf(content, row);
-    if (base) events.push({ ...base, at, xp: row.xp, coin: row.coins });
+    if (base) events.push({ ...base, itemName: nameOf(base.itemId), at, xp: row.xp, coin: row.coins });
     const levelBefore = levelFromXp(xp, content.levelCurve).level;
     xp += Math.max(0, row.xp);
     const levelAfter = levelFromXp(xp, content.levelCurve).level;
@@ -102,12 +105,12 @@ export function journeyRegions(content: ContentCatalog, record: PlayerRecord): J
 }
 
 /** The journey of the selected player (mock "Hành trình"): `GET /journey`, read only. */
-export function journeyRoutes({ db, content }: JourneyRouteDeps): Router {
+export function journeyRoutes({ db, content, shopNames }: JourneyRouteDeps): Router {
   const router = Router();
   router.get('/journey', requireParent, async (_req, res) => {
     const childId = await activePlayerId(db, res, content.consent.version);
     const record = await loadPlayerRecord(db, childId);
-    const body: JourneyResponse = { regions: journeyRegions(content, record), events: journeyEvents(content, record.ledger) };
+    const body: JourneyResponse = { regions: journeyRegions(content, record), events: journeyEvents(content, record.ledger, shopNames) };
     res.json(body);
   });
   return router;

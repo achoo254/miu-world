@@ -1,5 +1,6 @@
 // M1.1 (Trang chủ): the world stage with its regions, the child's character standing in it, a side rail
-// (Về nhà, Nhiệm vụ, Bản đồ, Ba lô, Cửa hàng: the shop of mock panel 7 over Home), today's quests, and the
+// (Về nhà, Nhiệm vụ, Bản đồ, Ba lô, Cửa hàng: the shop of mock panel 7 over Home; Hành trình and Thành tích, the
+// latter with how many achievements wait to be claimed), today's quests, and the
 // child's level, XP and coins, with the title of her latest region chest and a "Nhận thưởng" badge over each
 // region with a chest tier to open. Home is a React screen
 // over a pre-rendered island image, not a second 3D scene (validation decision `home_scene`). Not in the
@@ -23,6 +24,7 @@ import { OlympiadBanner } from '../event/olympiad-banner';
 import { OlympiadPanel } from '../event/olympiad-panel';
 import { fetchMailList } from '../mail/mail-api';
 import { MailPanel } from '../mail/mail-panel';
+import { loadAchievements } from '../progression/progression-api';
 import './home.css';
 
 export function HomeScreen() {
@@ -36,6 +38,20 @@ export function HomeScreen() {
   const [olympiadOpen, setOlympiadOpen] = useState(false);
   const [mailOpen, setMailOpen] = useState(false);
   const [unreadMail, setUnreadMail] = useState(0);
+  /** Achievements reached and not claimed yet: a badge on the rail's "Thành tích". */
+  const [achievementsReady, setAchievementsReady] = useState(0);
+
+  useEffect(() => {
+    let alive = true;
+    void loadAchievements()
+      .then((res) => {
+        if (alive) setAchievementsReady(res.achievements.filter((a) => a.reached && !a.claimed).length);
+      })
+      .catch(() => undefined);
+    return () => {
+      alive = false;
+    };
+  }, []);
 
   useEffect(() => {
     let alive = true;
@@ -117,6 +133,19 @@ export function HomeScreen() {
                   <Icon name="coin" size={40} />
                   <T k="common.shop" />
                 </button>
+                <Link to="/journey" className="home-rail-item" data-id="home-nav-journey">
+                  <Icon name="map" size={40} />
+                  <T k="home.journey" />
+                </Link>
+                <Link to="/achievements" className="home-rail-item" data-id="home-nav-achievements" style={{ position: 'relative' }}>
+                  <Icon name="trophy" size={40} />
+                  {achievementsReady > 0 ? (
+                    <span className="mail-rail-badge" data-id="home-achievements-ready" aria-label={t('achievements.ready', { count: achievementsReady })}>
+                      {achievementsReady}
+                    </span>
+                  ) : null}
+                  <T k="home.achievements" />
+                </Link>
                 <button type="button" className="home-rail-item" data-id="home-nav-olympiad" onClick={() => setOlympiadOpen(true)}>
                   <Icon name="trophy" size={40} />
                   <T k="olympiad.rail" />

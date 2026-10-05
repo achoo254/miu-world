@@ -78,6 +78,7 @@ describe('journey timeline', () => {
     const events = journeyEvents(FIXTURE_CONTENT, ledger);
     expect(events).toHaveLength(60);
     expect(events[0]).toMatchObject({ kind: 'item', itemId: 'them-mot-tim', coin: -50 });
+    expect(journeyEvents(FIXTURE_CONTENT, ledger, new Map([['them-mot-tim', 'Thêm một tim']]))[0]?.itemName).toBe('Thêm một tim');
     expect(events.every((e) => e.kind === 'item')).toBe(true);
   });
 
@@ -88,6 +89,7 @@ describe('journey timeline', () => {
       row('gate:dba-ruong-vui-cat@quest:kho-bau-dao-ch1#3', 3),
       row('olympiad:exam:80:gold:abc', 4),
     ]);
+    expect(events.find((e) => e.kind === 'chest')?.itemName).toBe(FIXTURE_CONTENT.accessories.get('hat-ruong-khu-rung-bi-mat')?.name);
     expect(events.map((e) => [e.kind, e.ref, e.itemId])).toEqual([
       ['olympiad', null, null],
       ['gate', 'dba-ruong-vui-cat', null],

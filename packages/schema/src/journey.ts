@@ -38,6 +38,8 @@ export const JourneyEvent = z.object({
   label: z.string().nullable(),
   /** A thing received (a collectible, a wearable, something bought). */
   itemId: ContentId.nullable(),
+  /** Its name when the server knows it (a wearable, something from the shop); the screen names collectibles. */
+  itemName: z.string().nullable(),
   /** The level reached, for a level-up, a skill-up or a skill gift. */
   level: z.number().int().min(1).nullable(),
   xp: z.number().int(),
