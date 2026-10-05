@@ -46,7 +46,7 @@ Cách làm: single-player vertical slice trước (Home Base + Khu rừng bí m�
 
 ## Luồng tài khoản (§9, §11)
 
-Chủ tài khoản (người lớn hoặc phụ huynh) đăng nhập Google → đồng ý chính sách dữ liệu trước khi tạo hồ sơ → tạo tối đa 3 hồ sơ trẻ (chỉ tên hiển thị chọn từ danh sách; không tên thật, email, trường, tuổi, lớp) → chọn hồ sơ để chơi → mỗi hồ sơ có một nhân vật; mọi dữ liệu game (tiến độ quest, thưởng, túi đồ, kỹ năng) gắn với hồ sơ, không gắn với phụ huynh. Khu phụ huynh (tạo, sửa, xóa hồ sơ) mở thẳng; PIN là tùy chọn, đặt từ chính khu đó nếu muốn khóa (05/10/2026). Xóa hồ sơ là xóa hẳn mọi dữ liệu của hồ sơ đó.
+Chủ tài khoản (người lớn hoặc phụ huynh) đăng nhập Google → đồng ý chính sách dữ liệu trước khi tạo hồ sơ → tạo tối đa 3 hồ sơ trẻ (chỉ tên hiển thị chọn từ danh sách; không tên thật, email, trường, tuổi, lớp) → chọn hồ sơ để chơi → mỗi hồ sơ có một nhân vật; mọi dữ liệu game (tiến độ quest, thưởng, túi đồ, kỹ năng) gắn với hồ sơ, không gắn với phụ huynh. Mục Quản lý tài khoản (tạo, sửa, xóa hồ sơ; trước đây gọi là Khu phụ huynh) mở thẳng; PIN là tùy chọn, đặt, đổi hoặc gỡ từ chính mục đó (05/10/2026). Xóa hồ sơ là xóa hẳn mọi dữ liệu của hồ sơ đó.
 
 ## Quyết định còn mở
 
