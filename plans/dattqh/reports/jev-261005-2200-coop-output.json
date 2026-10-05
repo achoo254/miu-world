@@ -1,0 +1,30 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 754,
+    "output_tokens": 93
+  },
+  "results": {
+    "coop_audience": {
+      "stakes": "high",
+      "choice": "any_party",
+      "confidence": 0.33,
+      "probabilities": {
+        "wait_for_moderation": 0.08,
+        "any_party": 0.55,
+        "friends_only": 0.37
+      },
+      "decision": "escalate"
+    },
+    "solo_with_bots": {
+      "stakes": "low",
+      "choice": "fill_with_bots_if_switch_on",
+      "confidence": 0.93,
+      "probabilities": {
+        "fill_with_bots_if_switch_on": 0.96,
+        "never_fill": 0.04
+      },
+      "decision": "auto"
+    }
+  }
+}

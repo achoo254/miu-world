@@ -1,0 +1,31 @@
+{
+  "state": {
+    "project": "Miu World: a 3D voxel learn-while-playing online game for all ages, like Minecraft; web now, mobile later. Built 100% by AI. Online is always on (owner removed the off switch). Friends work like normal online games (request + accept, bots too). Only the owner and one child play today; moderation work is parked until outsiders play.",
+    "today": "2026-10-05",
+    "plan": "Co-op quests: a party of 2-4 (players or labelled companion bots) does one shared challenge (each holds a piece of the answer, hold a door/bridge together, team boss with shared HP); rewards per player computed by the server; no competitive scores; lessons stay playable solo.",
+    "facts": [
+      "Parties (2-4, across maps), friends, blocks, reports and canned lines (no free text) already exist online.",
+      "The old plan said co-op stays closed to players outside the family until a moderation system is built; that predates the all-ages, always-online direction.",
+      "The companion-bots switch is now each player's own setting, on by default."
+    ]
+  },
+  "questions": {
+    "coop_audience": {
+      "stakes": "high",
+      "instructions": "Who can be in a co-op challenge together before moderation exists?",
+      "criteria": {
+        "any_party": "Any party can start co-op (parties already need an accepted invite; there is no free text and players can block and report); build moderation before any public matchmaking with strangers.",
+        "friends_only": "Only parties whose members are all friends with the leader (or bots) until moderation exists.",
+        "wait_for_moderation": "Keep co-op closed to non-family players until moderation is built."
+      }
+    },
+    "solo_with_bots": {
+      "stakes": "low",
+      "instructions": "If a player starts a co-op challenge alone, what happens?",
+      "criteria": {
+        "fill_with_bots_if_switch_on": "Fill the free places with companion bots when the player's own bots switch is on (default on); otherwise ask her to invite friends.",
+        "never_fill": "Never auto-fill; co-op needs other members invited."
+      }
+    }
+  }
+}
