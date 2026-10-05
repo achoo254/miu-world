@@ -49,3 +49,7 @@
 .coop-last p { margin: 0; }
 .coop-last[data-kind='wrong'] { border: 3px solid var(--color-danger-line); }
 .coop-copy { margin-top: var(--space-xs); font-size: var(--text-sm); }
+
+.party-quest-card { width: min(17rem, calc(100vw - 2 * var(--space-sm))); }
+.party-quest-start { justify-self: start; }
+.party-quest-members { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-xs); font-size: var(--text-sm); font-weight: 700; }

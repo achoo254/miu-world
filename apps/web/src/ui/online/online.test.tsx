@@ -1,6 +1,6 @@
 import { act, cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import type { PartyView } from '@miu/schema/multiplayer';
+import { SAFE_CANNED_CHATS, type PartyView } from '@miu/schema/multiplayer';
 import { createSocialStore, type SocialCommand } from '../../game-bridge/social-store';
 import { PartyFrame, SocialLayer, toastText } from './social-layer';
 
@@ -31,7 +31,7 @@ describe('the interaction menu on another player', () => {
 
     fireEvent.click(within(menu).getByRole('button', { name: /Câu có sẵn/ }));
     const lines = within(menu).getAllByRole('button').filter((b) => b.dataset.id?.startsWith('online-menu-lines-'));
-    expect(lines).toHaveLength(8);
+    expect(lines).toHaveLength(SAFE_CANNED_CHATS.length);
     expect(within(menu).queryByRole('textbox')).toBeNull();
     fireEvent.click(within(menu).getByRole('button', { name: 'Cùng chơi nhé!' }));
     expect(sent.at(-1)).toEqual({ type: 'say', to: 'p-b', text: 'Cùng chơi nhé!' });

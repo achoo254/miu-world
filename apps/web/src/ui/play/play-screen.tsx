@@ -39,6 +39,7 @@ import { FriendsButton, FriendsDialog, useFriendsPrefetch } from '../friends/fri
 import { useSocial } from '../online/use-social';
 import { createPositionSaver, loadPlayerPositions } from './player-position';
 import { CoopLayer } from '../coop/coop-layer';
+import { PartyQuestCard } from '../coop/party-quest-card';
 import { useCoopChallenges } from '../coop/use-coop';
 
 const HOME_PATH = '/home';
@@ -286,6 +287,17 @@ export function PlayScreen() {
     return () => window.removeEventListener('keydown', onKey);
   }, [status, paused]);
 
+  // A party member did a shared step of the party's quest for her: her own progress on it moves (from the server).
+  useEffect(() => {
+    let seen = social.getSnapshot().partyProgress?.seq ?? 0;
+    return social.subscribe(() => {
+      const pushed = social.getSnapshot().partyProgress;
+      if (!pushed || pushed.seq === seen) return;
+      seen = pushed.seq;
+      const moved = pushed.progress;
+      setData((prev) => prev && { ...prev, quests: prev.quests.map((q) => (q.quest.id === moved.questId ? { ...q, progress: moved, state: moved.completed ? 'completed' : 'in-progress' } : q)) });
+    });
+  }, [social]);
   /** The server paid a co-op challenge: her XP, coins and quests are read again. */
   const refreshPlayer = useCallback((): void => {
     void loadPlayer().then(setData, () => undefined);
@@ -416,6 +428,17 @@ export function PlayScreen() {
             <FriendsButton social={social} onOpen={() => setFriendsOpen(true)} />
             {/* Out of the way while a screen (the friends list…) covers the game: the two never overlap. */}
             {covered ? null : <PartyFrame social={social} fill={(text) => say(text, data.character)} />}
+            {covered ? null : (
+              <PartyQuestCard
+                social={social}
+                data={data}
+                questId={questId}
+                onPlay={(id) => {
+                  const next = data.quests.find((q) => q.quest.id === id);
+                  if (next && id !== questId) switchQuest(next, next.quest.region !== region);
+                }}
+              />
+            )}
           </Hud>
         ) : null}
         {data ? <SocialLayer social={social} covered={covered && !onlineMenu} fill={(text) => say(text, data.character)} /> : null}

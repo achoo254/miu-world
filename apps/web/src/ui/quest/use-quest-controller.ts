@@ -146,6 +146,8 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   const pickers = useRef(new Map<string, FreshPicker<Bilingual>>());
   // `submit` starts the next auto step, and `startStep` submits: the ref breaks the cycle.
   const startRef = useRef<(step: QuestStepPublic) => void>(() => undefined);
+  /** The progress her own last step returned: any other change came from her party playing for her. */
+  const ownProgress = useRef<unknown>(null);
   const submitRef = useRef<(step: QuestStepPublic, body?: StepCompleteRequest) => Promise<unknown>>(async () => null);
   const lineFrom = useCallback((key: string, pool: readonly Bilingual[]): Bilingual => {
     let picker = pickers.current.get(key);
@@ -184,6 +186,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
         const response = await api('POST', `/quests/${active.quest.id}/steps/${step.id}/complete`, StepCompleteResponse, sent);
         setRetry(null);
         cover('retry', false);
+        ownProgress.current = response.quest;
         latest.current.onResponse(response);
         syncWorld(active.quest, response.quest);
         const opened = response.gates ?? [];
@@ -214,6 +217,12 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
         }
         return response;
       } catch (err) {
+        // Played as a party: the others still answer this question, or the boss blow is another member's.
+        if (err instanceof ApiError && (err.code === 'party-waiting' || err.code === 'not-your-turn')) {
+          setToast(pairOf(err.code === 'party-waiting' ? 'quest.partyWaiting' : 'quest.notYourTurn'));
+          if (latest.current.overlay?.step.id === step.id && err.code === 'party-waiting') setOverlay(null);
+          return null;
+        }
         if (err instanceof ApiError && err.code === 'network') {
           setRetry(() => async () => {
             await submitRef.current(step, body);
@@ -248,6 +257,23 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
     startRef.current = startStep;
     submitRef.current = submit;
   }, [startStep, submit]);
+
+  // A party member moved her on (talked, found, landed a boss blow for everyone): the world follows, a screen of a
+  // step now done closes, and a step that starts by itself starts. Her own steps already did all that.
+  const progressNow = data.quests.find((q) => q.quest.id === questId)?.progress ?? null;
+  const seenProgress = useRef(progressNow);
+  useEffect(() => {
+    if (!progressNow || progressNow === seenProgress.current) return;
+    seenProgress.current = progressNow;
+    if (progressNow === ownProgress.current) return;
+    const active = activeQuest();
+    if (!active) return;
+    syncWorld(active.quest, progressNow);
+    const open = latest.current.overlay?.step;
+    if (open && progressNow.completedSteps.includes(open.id)) setOverlay(null);
+    const next = autoStep(active.quest, progressNow);
+    if (next && !latest.current.busy) startRef.current(next);
+  }, [progressNow, activeQuest, syncWorld, setOverlay]);
 
   const onInteraction = useCallback(
     (targetId: string, who: string, kind: InteractableKind): void => {

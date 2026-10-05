@@ -19,6 +19,8 @@ export const SAFE_CANNED_CHATS = [
   'Cố lên nào!',
   'Đẹp quá đi!',
   'Hoan hô bạn!',
+  /** A nudge towards the help layers, never an answer (a party playing a quest together). */
+  'Thử bấm Gợi ý xem!',
 ] as const;
 export type SafeCannedChat = (typeof SAFE_CANNED_CHATS)[number];
 export const CannedChat = z.enum(SAFE_CANNED_CHATS);

@@ -3,6 +3,8 @@
 // party members are written by the game straight into DOM anchors React registers. The store outlives a game
 // (it is the play screen's), so the party frame stays put while the next map loads.
 import type { CoopEndReason, CoopHelpLayer, CoopLobbyView, CoopResult, CoopStateView } from '@miu/schema/coop';
+import type { QuestProgressDto } from '@miu/schema/game';
+import type { PartyQuestView } from '@miu/schema/party-quest';
 import type { ClientWsMessage, MpNotice, PartyView, ReportReason, SafeCannedChat } from '@miu/schema/multiplayer';
 
 /** Another player as the menus show her. */
@@ -58,10 +60,16 @@ export interface SocialSnapshot {
   coopEnd: { questId: string; reason: CoopEndReason; result: CoopResult | null } | null;
   /** A support layer she asked for in the challenge. */
   coopHelp: { task: string; layer: CoopHelpLayer; text: string; textEn: string | null; explanation: string | null; explanationEn: string | null } | null;
+  /** The quest her party plays together (she is in it or asked to join), null: none. */
+  partyQuest: PartyQuestView | null;
+  /** Her own progress on the party's quest, moved by a step a party member did for everyone (newest first seen). */
+  partyProgress: { progress: QuestProgressDto; seq: number } | null;
 }
 
 /** A co-op message from the UI to the server (the lobby, a move, help). */
 export type CoopMessage = Extract<ClientWsMessage, { type: `coop-${string}` }>;
+/** A party-quest message from the UI to the server (start, join, leave). */
+export type PartyQuestMessage = Extract<ClientWsMessage, { type: `party-quest-${string}` }>;
 
 /** Commands from React to the game's online session. Dropped while no game runs (between maps). */
 export type SocialCommand =
@@ -79,7 +87,8 @@ export type SocialCommand =
   | { type: 'party-say'; text: SafeCannedChat }
   | { type: 'goto'; id: string }
   | { type: 'travel-answer'; accept: boolean }
-  | { type: 'coop'; message: CoopMessage };
+  | { type: 'coop'; message: CoopMessage }
+  | { type: 'party-quest'; message: PartyQuestMessage };
 
 export interface SocialStore {
   subscribe(listener: () => void): () => void;
@@ -112,6 +121,8 @@ export const INITIAL_SOCIAL: SocialSnapshot = {
   coopState: null,
   coopEnd: null,
   coopHelp: null,
+  partyQuest: null,
+  partyProgress: null,
 };
 
 export function createSocialStore(): SocialStore {

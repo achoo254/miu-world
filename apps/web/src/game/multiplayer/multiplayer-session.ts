@@ -77,7 +77,7 @@ export class MultiplayerSession {
         if (!final) return;
         this.remote.dispose();
         this.roster.clear();
-        this.social?.update({ party: null, invites: [], travel: null, room: [], coopLobby: null, coopState: null, coopHelp: null });
+        this.social?.update({ party: null, invites: [], travel: null, room: [], coopLobby: null, coopState: null, coopHelp: null, partyQuest: null });
       },
     });
   }
@@ -236,6 +236,12 @@ export class MultiplayerSession {
       case 'coop-end':
         social?.update({ coopState: null, coopHelp: null, coopEnd: { questId: message.questId, reason: message.reason, result: message.result } });
         return;
+      case 'party-quest':
+        social?.update({ partyQuest: message.quest });
+        return;
+      case 'party-quest-progress':
+        social?.update((s) => ({ partyProgress: { progress: message.progress, seq: (s.partyProgress?.seq ?? 0) + 1 } }));
+        return;
       case 'coop-help': {
         const { type: _type, ...help } = message;
         social?.update({ coopHelp: help });
@@ -296,6 +302,7 @@ export class MultiplayerSession {
         client.send({ type: 'party-goto', id: command.id });
         return;
       case 'coop':
+      case 'party-quest':
         client.send(command.message);
         return;
       case 'travel-answer': {
