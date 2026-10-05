@@ -1,0 +1,42 @@
+/* Learning progress (Hồ sơ, Quản lý tài khoản): parchment blocks like the skill tree; values from tokens.css only. */
+.progress-view { display: grid; gap: var(--space-md); }
+.progress-counts, .progress-chips, .progress-subjects, .progress-suggestions, .progress-weeks { list-style: none; margin: 0; padding: 0; }
+.progress-counts { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+.progress-count, .progress-chip {
+  display: inline-flex; align-items: center; gap: var(--space-xs);
+  min-height: 2.5rem; padding: 0 var(--space-sm);
+  border-radius: var(--radius-pill); background: var(--color-surface-glass); color: var(--color-ink);
+  font-weight: 700; font-size: var(--text-sm);
+}
+.progress-block {
+  display: grid; gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  border: 3px solid var(--color-parchment-edge); border-radius: var(--radius-field);
+  background: linear-gradient(180deg, var(--color-parchment), var(--color-parchment-deep));
+  box-shadow: var(--shadow-material); color: var(--color-parchment-ink);
+}
+.progress-block-title { display: flex; align-items: center; gap: var(--space-xs); margin: 0; font-family: var(--font-display); font-size: var(--text-lg); }
+.progress-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: var(--space-md); }
+.progress-chips { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+.progress-chip-level { font-family: var(--font-display); font-weight: 800; color: var(--color-wood-edge); }
+.progress-subjects { display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: var(--space-sm); }
+.progress-subject { display: grid; gap: var(--space-xs); }
+.progress-subject-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-sm); }
+.progress-subject .progress-fill { background: linear-gradient(180deg, var(--color-grass) 0%, var(--color-leaf) 100%); }
+.progress-suggestions { display: grid; gap: var(--space-xs); }
+.progress-suggestion {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm);
+  min-height: 3rem; padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-field); background: var(--color-surface-faint);
+}
+.progress-suggestion-text { display: grid; min-width: 0; }
+/* Four weeks as bars: the fill scales with the minutes (the busiest week fills the track). */
+.progress-weeks { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-sm); align-items: end; }
+.progress-week { display: grid; justify-items: center; gap: var(--space-xs); font-size: var(--text-sm); }
+.progress-week-value { font-weight: 800; }
+.progress-week-track {
+  position: relative; display: block; width: 2.5rem; height: 5rem; overflow: hidden;
+  border-radius: var(--radius-field); background: var(--color-surface-faint);
+}
+.progress-week-fill { position: absolute; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, var(--color-grass) 0%, var(--color-leaf) 100%); }
+.progress-week-label { color: var(--color-ink-soft); text-align: center; }

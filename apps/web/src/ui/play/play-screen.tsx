@@ -33,6 +33,7 @@ import { CookingPanel } from '../cooking/cooking-panel';
 import { TimetablePanel } from '../timetable/timetable-panel';
 import { TIMETABLE_TARGETS, type TimetableFocus } from '../timetable/timetable-targets';
 import { PartyFrame, SocialLayer } from '../online/social-layer';
+import { usePlayTime } from './play-time';
 import { useSocial } from '../online/use-social';
 import { createPositionSaver, loadPlayerPositions } from './player-position';
 
@@ -285,6 +286,8 @@ export function PlayScreen() {
   const savedSpot = positions?.find((p) => p.map === regionMap(region)) ?? null;
   const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null || decorOpen || shopOpen || petCareOpen || cookingOpen || onlineMenu;
   const atHome = data !== null && regionMap(region) === regionMap(HOME_REGION);
+  // Weekly play time for the progress views: counted while the game runs, not while paused.
+  usePlayTime(data !== null && status === 'ready' && !paused);
   // Her home is built in her picks: they are read first (a failed read builds the house as it comes).
   useEffect(() => {
     if (!atHome || decor !== null) return;

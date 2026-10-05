@@ -1,0 +1,10 @@
+/* The account owner's card per player (Quản lý tài khoản): values from tokens.css only; touch targets ≥ 48px. */
+.player-care-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-md); }
+.player-care {
+  display: grid; gap: var(--space-sm); padding: var(--space-md);
+  border: 3px solid var(--color-field-line); border-radius: var(--radius-tile); background: var(--color-field);
+}
+.player-care-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md); }
+.player-care-head .profile-tile { width: 4rem; height: 4rem; border-radius: var(--radius-field); border-width: 3px; box-shadow: none; }
+.player-care-name { flex: 1 1 8rem; margin: 0; font-family: var(--font-display); font-weight: 800; font-size: var(--text-lg); }
+.player-care .tabs-tab { min-height: 3rem; }

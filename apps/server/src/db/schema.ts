@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm';
-import { boolean, check, doublePrecision, index, integer, jsonb, pgTable, primaryKey, smallint, text, timestamp, unique, uniqueIndex, uuid } from 'drizzle-orm/pg-core';
+import { boolean, check, date, doublePrecision, index, integer, jsonb, pgTable, primaryKey, smallint, text, timestamp, unique, uniqueIndex, uuid } from 'drizzle-orm/pg-core';
 import type { DecorChoices } from '@miu/schema/home-decor';
 import type { Timetable } from '@miu/schema/timetable';
 
@@ -173,6 +173,23 @@ export const skillProgress = pgTable(
     xp: integer('xp').notNull(),
   },
   (t) => [primaryKey({ columns: [t.childId, t.skillId] })],
+);
+
+/**
+ * Time spent playing, one total per player and week (Monday, Vietnam time), for the weekly play time in the
+ * progress views. A plain sum: no per-session or per-event rows. Weeks older than the progress views show are
+ * deleted as new time comes in.
+ */
+export const playTime = pgTable(
+  'play_time',
+  {
+    childId: childRef(),
+    weekStart: date('week_start').notNull(),
+    seconds: integer('seconds').notNull().default(0),
+    /** The last report, so reports closer together than the beat count only once. */
+    updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [primaryKey({ columns: [t.childId, t.weekStart] }), check('play_time_seconds_not_negative', sql`${t.seconds} >= 0`)],
 );
 
 /** Where the child last stood on each map (a safe spot on dry ground), so the next visit starts there. */

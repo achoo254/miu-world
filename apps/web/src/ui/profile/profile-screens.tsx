@@ -1,4 +1,4 @@
-// M1.7 (part): Hồ sơ — the skill tree (`skill-tree.tsx`: skills by subject, a leaf per level, the gift of each
+// M1.7 (part): Hồ sơ — the learning progress (`progress-panel.tsx`, NEW SCREEN), the skill tree (`skill-tree.tsx`: skills by subject, a leaf per level, the gift of each
 // level), titles, the Collection (every catalogue item, owned ones lit, the others locked), and the way to the
 // Backpack, the Journey and the Achievements. Numbers are the server's.
 import { Link } from 'react-router';
@@ -11,6 +11,7 @@ import { SkyScene } from '../kit/sky-scene';
 import { PlayerBadge } from '../player/player-badge';
 import { say, usePlayer, type PlayerData } from '../player/player-data';
 import { useRegionRewardList } from '../region/region-rewards';
+import { OwnProgressPanel } from './progress-panel';
 import { SkillTreePanel } from './skill-tree';
 import '../region/region.css';
 import '../rewards/rewards.css';
@@ -77,6 +78,7 @@ export function ProfileScreen() {
         const owned = player.progress.items;
         return (
           <>
+            <OwnProgressPanel />
             <SkillTreePanel name={player.character.name} />
             {titles.length > 0 ? (
               <section className="panel" aria-labelledby="titles-title" data-id="profile-titles">

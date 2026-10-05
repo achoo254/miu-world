@@ -11,6 +11,7 @@ import { MiuOnIsland, SkyScene } from '../kit/sky-scene';
 import { bindLangProfile, type TextKey } from '../i18n/i18n';
 import { T, useT } from '../i18n/use-t';
 import { AccountDataPanel } from './account-data-panel';
+import { AccountPlayersPanel } from './account-players-panel';
 import { useAccount } from './account-context';
 import { ParentGate } from './parent-gate';
 import { MAX_PROFILES, tileClass, useProfiles } from './profile-screens';
@@ -303,6 +304,8 @@ export function ParentAreaScreen() {
             ) : null}
           </div>
         </section>
+
+        {profiles ? <AccountPlayersPanel players={profiles} /> : null}
 
         <p className="parent-more-title"><T k="parent.moreTitle" /></p>
         <div className="parent-columns">

@@ -2,13 +2,14 @@ import { randomUUID } from 'node:crypto';
 import { and, asc, count, eq } from 'drizzle-orm';
 import { Router } from 'express';
 import { z } from 'zod';
-import { Id, PlayerDto, PlayerInput, PlayerLanguage } from '@miu/schema/account';
+import { PlayerDto, PlayerInput, PlayerLanguage } from '@miu/schema/account';
 import { hasCurrentConsent } from '../auth/consent-store';
 import { auth, requireParent, requireParentGate } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { characters, childProfiles, consents, parents, sessions } from '../db/schema';
 import { HttpError, parseInput } from '../http-error';
+import { idParam, ownedPlayer, type PlayerRow } from './owned-player';
 
 /** The primary player plus up to two extra players on a shared device. */
 export const MAX_PLAYERS = 3;
@@ -23,19 +24,11 @@ const PlayerPatchInput = z.object({
 });
 
 type Tx = Parameters<Parameters<Db['transaction']>[0]>[0];
-type PlayerRow = typeof childProfiles.$inferSelect;
 
 export interface PlayerRouteDeps {
   db: Db;
   content: ContentCatalog;
   clock: () => Date;
-}
-
-/** Non-uuid ids are simply "not found": same answer as another account's player. */
-function playerId(raw: unknown): string {
-  const parsed = Id.safeParse(raw);
-  if (!parsed.success) throw new HttpError(404, 'not-found');
-  return parsed.data;
 }
 
 const toDto = (row: PlayerRow, species: string) => PlayerDto.parse({ ...row, primary: row.isPrimary, species });
@@ -90,16 +83,6 @@ export function playerRoutes({ db, content, clock }: PlayerRouteDeps): Router {
   const router = Router();
   const gate = requireParentGate(clock);
 
-  /** Every lookup is scoped by account: another account's player is indistinguishable from a missing one. */
-  async function ownedPlayer(parentId: string, id: string) {
-    const [row] = await db
-      .select()
-      .from(childProfiles)
-      .where(and(eq(childProfiles.id, id), eq(childProfiles.parentId, parentId)));
-    if (!row) throw new HttpError(404, 'not-found');
-    return row;
-  }
-
   /** Every player has a character (created with it); the fallback only covers a row being deleted. */
   async function speciesOf(id: string): Promise<string> {
     const [row] = await db.select({ species: characters.species }).from(characters).where(eq(characters.childId, id));
@@ -136,7 +119,7 @@ export function playerRoutes({ db, content, clock }: PlayerRouteDeps): Router {
 
   router.patch('/players/:id', requireParent, gate, async (req, res) => {
     const { parent } = auth(res);
-    const id = playerId(req.params.id);
+    const id = idParam(req.params.id);
     const patch = parseInput(PlayerPatchInput, req.body);
     if (patch.displayName !== undefined && !content.childDisplayNames.has(patch.displayName)) {
       throw new HttpError(400, 'invalid-display-name');
@@ -157,7 +140,7 @@ export function playerRoutes({ db, content, clock }: PlayerRouteDeps): Router {
   /** Changing language is a player's own setting: no gate, only authentication and ownership. */
   router.patch('/players/:id/language', requireParent, async (req, res) => {
     const { parent } = auth(res);
-    const id = playerId(req.params.id);
+    const id = idParam(req.params.id);
     const { language } = parseInput(PlayerLanguageUpdate, req.body);
     const [row] = await db
       .update(childProfiles)
@@ -174,8 +157,8 @@ export function playerRoutes({ db, content, clock }: PlayerRouteDeps): Router {
    */
   router.delete('/players/:id', requireParent, gate, async (req, res) => {
     const { parent } = auth(res);
-    const id = playerId(req.params.id);
-    const row = await ownedPlayer(parent.id, id);
+    const id = idParam(req.params.id);
+    const row = await ownedPlayer(db, parent.id, id);
     if (row.isPrimary) throw new HttpError(409, 'primary-player');
     await db.delete(childProfiles).where(and(eq(childProfiles.id, id), eq(childProfiles.parentId, parent.id), eq(childProfiles.isPrimary, false)));
     console.info('extra player deleted', id);
@@ -188,8 +171,8 @@ export function playerRoutes({ db, content, clock }: PlayerRouteDeps): Router {
    */
   router.post('/players/:id/select', requireParent, async (req, res) => {
     const { parent, session } = auth(res);
-    const id = playerId(req.params.id);
-    await ownedPlayer(parent.id, id);
+    const id = idParam(req.params.id);
+    await ownedPlayer(db, parent.id, id);
     if (!(await hasCurrentConsent(db, parent.id, content.consent.version))) throw new HttpError(403, 'consent-required');
     await db.update(sessions).set({ activeChildId: id, parentGateUntil: null }).where(eq(sessions.id, session.id));
     res.json({ activePlayerId: id });

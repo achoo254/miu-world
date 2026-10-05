@@ -11,6 +11,7 @@ import { HashQueueFullError } from './auth/secret-hashing';
 import type { CharacterEvents } from './character/character-events';
 import { characterRoutes } from './character/character-routes';
 import { playerRoutes } from './player/player-routes';
+import { progressRoutes } from './player/progress-routes';
 import type { ServerConfig } from './config';
 import { loadContentCatalog, type ContentCatalog } from './content/content-catalog';
 import type { Db } from './db/client';
@@ -94,6 +95,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(googleAuthRoutes({ db, config, clock, fetchImpl }));
   api.use(accountRoutes({ db, config, clock }));
   api.use(playerRoutes({ db, content, clock }));
+  api.use(progressRoutes({ db, content, clock }));
   api.use(characterRoutes({ db, content, events: characterEvents }));
   api.use(playerPositionRoutes({ db, content, clock }));
   api.use(questRoutes({ db, content, clock }));
