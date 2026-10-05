@@ -38,7 +38,6 @@ export function useLoaded<T>(load: () => Promise<T>): Loaded<T> {
   const [attempt, setAttempt] = useState(0);
   useEffect(() => {
     let alive = true;
-    setFailed(false);
     load()
       .then((body) => {
         if (alive) setData(body);
@@ -50,6 +49,9 @@ export function useLoaded<T>(load: () => Promise<T>): Loaded<T> {
       alive = false;
     };
   }, [load, attempt]);
-  const retry = useCallback(() => setAttempt((n) => n + 1), []);
+  const retry = useCallback(() => {
+    setFailed(false);
+    setAttempt((n) => n + 1);
+  }, []);
   return { data, failed, retry, set: setData };
 }
