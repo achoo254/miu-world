@@ -1,1 +1,1 @@
-- [Worktree review is a moving target](project-review-worktree-moving-target.md) — author edits/runs E2E during review; snapshot mtimes, use review shots, tsx scratch checks
+- [Worktree review is a moving target](project-review-worktree-moving-target.md) — author edits/commits during review; check range-end..HEAD; new quest category → check server regionQuests

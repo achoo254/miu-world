@@ -9,7 +9,9 @@ Reviews of Miu World feature worktrees (e.g. `../miu-world-life`) are requested 
 
 **Why:** during the 2026-09-30 forest-ambient-life review, entities.json, game.ts and review-shots.ts changed mid-review (character models swapped, new `solidAt` param), and `.data/life/review-shots/` was being rewritten by a live E2E run.
 
-Same on `main`: during the 2026-10-05 skills/journey/achievements review, HEAD gained docs + test commits mid-review; also tests run on PGlite (single connection), so "racing" tests do not prove real Postgres concurrency (prod uses node-postgres pool) — reason about locks instead. 2026-10-06 pets review: HEAD again gained a docs commit (501f92cf) mid-review; review the given commit range, not HEAD.
+Same on `main`: during the 2026-10-05 skills/journey/achievements review, HEAD gained docs + test commits mid-review; also tests run on PGlite (single connection), so "racing" tests do not prove real Postgres concurrency (prod uses node-postgres pool) — reason about locks instead. 2026-10-06 pets review: HEAD again gained a docs commit (501f92cf) mid-review; review the given commit range, not HEAD. 2026-10-06 bosses review: HEAD gained a feat(web) fix + review shots (e7cffba0, ef9ee4fc) mid-review — check `git log <range-end>..HEAD` before reporting, a finding may already be fixed.
+
+Recurring defect class: a new quest `category` gets excluded in web helpers but not in server `regionQuests` (apps/server/src/progression/player-facts.ts), which buckets every non-story/non-coop quest as a lesson; grep every `category ===` exclusion list when a category is added.
 
 A scout-block hook denies any Bash/Read path containing `node_modules` (e.g. checking drizzle driver internals): reason from existing repo usage instead (e.g. `date()` columns already exported as strings).
 
