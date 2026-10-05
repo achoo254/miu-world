@@ -32,7 +32,7 @@ test.afterAll(() => {
   if (REVIEW_SHOTS) execFileSync('pnpm', ['-s', 'assets:manifest'], { cwd: REPO_ROOT, stdio: 'inherit', shell: true });
 });
 
-test('Google sign-in → set PIN → consent → create profile → pick profile → create character → Home → map → forest → play → meet the parrot', async ({ page }) => {
+test('Google sign-in → consent → create profile → pick profile → create character → Home → map → forest → play → meet the parrot', async ({ page }) => {
   const consoleErrors: string[] = [];
   page.on('pageerror', (err) => consoleErrors.push(err.message));
 
@@ -45,13 +45,7 @@ test('Google sign-in → set PIN → consent → create profile → pick profile
   await shot(page, '01-login');
   await page.getByRole('link', { name: 'Đăng nhập bằng Google' }).click();
 
-  // Fake Google signs in a new account and redirects back; the first sign-in asks for the PIN.
-  await expect(page.getByRole('heading', { name: 'Đặt mã PIN phụ huynh' })).toBeVisible();
-  await page.locator('[data-id="set-pin-pin"]').fill('2468');
-  await page.locator('[data-id="set-pin-again"]').fill('2468');
-  await shot(page, '02-set-pin');
-  await page.getByRole('button', { name: 'Lưu mã PIN' }).click();
-
+  // Fake Google signs in a new account and redirects back; no PIN is asked: the parent area is open.
   await expect(page.locator('[data-id="consent-text"]')).toBeVisible();
   await expect(page.locator('[data-id="consent-draft"]')).toHaveCount(0); // the shipped consent is final
   await expect(page.locator('[data-id="consent-privacy"]')).toBeVisible();

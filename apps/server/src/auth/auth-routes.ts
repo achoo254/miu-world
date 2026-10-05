@@ -122,14 +122,10 @@ export function authRoutes({ db, config, content, clock }: AuthRouteDeps): Route
     res.status(201).json(await summary(ctx));
   });
 
-  /** First Google sign-in: the parent sets the PIN before anything else (the gate is open from sign-in). */
+  /** Optional PIN for the parent area, set from there; with no PIN the gate stays open. */
   router.post('/auth/pin', requireParent, pinLimit, async (req, res) => {
     const { pin } = parseInput(SetPinRequest, req.body);
     const ctx = auth(res);
-    // Only within the window opened by the sign-in itself: a tab left open later cannot be used by a
-    // child to set their own PIN (signing in with Google again reopens the window).
-    const window = ctx.session.parentGateUntil;
-    if (!window || window.getTime() <= clock().getTime()) throw new HttpError(403, 'parent-gate-closed');
     const pinHash = await hashSecret(pin, config.scrypt);
     // Only when no PIN exists: changing a PIN is a parent-area action for later, never a silent reset.
     const [parent] = await db
@@ -138,7 +134,13 @@ export function authRoutes({ db, config, content, clock }: AuthRouteDeps): Route
       .where(and(eq(parents.id, ctx.parent.id), isNull(parents.pinHash)))
       .returning();
     if (!parent) throw new HttpError(409, 'pin-already-set');
-    res.json(await summary({ parent, session: ctx.session }));
+    // The one who just chose the PIN knows it: keep the parent area open for this session's window.
+    const [session] = await db
+      .update(sessions)
+      .set({ parentGateUntil: new Date(clock().getTime() + PARENT_GATE_MS) })
+      .where(eq(sessions.id, ctx.session.id))
+      .returning();
+    res.json(await summary({ parent, session: session ?? ctx.session }));
   });
 
   router.post('/parent-gate/unlock', requireParent, pinLimit, async (req, res) => {

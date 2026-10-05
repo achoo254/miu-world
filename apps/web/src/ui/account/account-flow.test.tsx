@@ -89,13 +89,24 @@ describe('account flow', () => {
     expect(calls.map((c) => c.key)).toEqual(['GET /api/auth/me']);
   });
 
-  it('makes a parent fresh from Google set the PIN before anything else', async () => {
+  it('takes a parent fresh from Google straight to the consent, without asking for a PIN', async () => {
     const calls = stubApi({
-      'GET /api/auth/me': () => ({ status: 200, body: me({ pinSet: false, consentAccepted: false, parentGateOpen: false }) }),
-      'POST /api/auth/pin': () => ({ status: 200, body: me({ consentAccepted: false, parentGateOpen: true }) }),
+      'GET /api/auth/me': () => ({ status: 200, body: me({ pinSet: false, consentAccepted: false, parentGateOpen: true }) }),
       'GET /api/consents/policy': () => ({ status: 200, body: { version: 'draft-2', requiresLegalReview: true, title: 'Đồng ý', paragraphs: ['x'] } }),
     });
     renderAt('/profiles');
+    expect(await screen.findByRole('button', { name: 'Tôi là phụ huynh và đồng ý' })).toBeTruthy();
+    expect(screen.queryByLabelText('Mã PIN (4–6 số)')).toBeNull();
+    expect(calls.some((c) => c.key === 'POST /api/auth/pin')).toBe(false);
+  });
+
+  it('lets a parent set the optional PIN from the parent area', async () => {
+    const calls = stubApi({
+      'GET /api/auth/me': () => ({ status: 200, body: me({ pinSet: false, parentGateOpen: true }) }),
+      'POST /api/auth/pin': () => ({ status: 200, body: me({ pinSet: true, parentGateOpen: true }) }),
+      'GET /api/children': () => ({ status: 200, body: [] }),
+    });
+    renderAt('/set-pin');
     const pin = (await screen.findByLabelText('Mã PIN (4–6 số)')) as HTMLInputElement;
     fireEvent.change(pin, { target: { value: '2468' } });
     fireEvent.change(screen.getByLabelText('Nhập lại mã PIN'), { target: { value: '1357' } });
@@ -103,7 +114,7 @@ describe('account flow', () => {
     expect((await screen.findByRole('alert')).textContent).toContain('chưa khớp');
     fireEvent.change(screen.getByLabelText('Nhập lại mã PIN'), { target: { value: '2468' } });
     fireEvent.click(screen.getByRole('button', { name: 'Lưu mã PIN' }));
-    expect(await screen.findByRole('button', { name: 'Tôi là phụ huynh và đồng ý' })).toBeTruthy();
+    expect(await screen.findByRole('heading', { name: /Tạo hồ sơ cho bé/ })).toBeTruthy();
     expect(calls.find((c) => c.key === 'POST /api/auth/pin')?.body).toEqual({ pin: '2468' });
   });
 

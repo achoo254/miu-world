@@ -111,7 +111,6 @@ const MVP_STEPS: Record<string, string> = {
 };
 const UI_STEPS: Record<string, string> = {
   '01-login': 'Đăng nhập phụ huynh: chỉ nút Google',
-  '02-set-pin': 'Sau khi đăng nhập Google lần đầu: đặt PIN phụ huynh',
   '03-consent': 'Đồng ý của phụ huynh',
   '04-parent-area': 'Khu phụ huynh: tạo hồ sơ từ danh sách tên',
   '05-profiles': 'Đưa máy cho bé: bé chọn hồ sơ',

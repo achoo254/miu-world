@@ -16,4 +16,4 @@ Người sở hữu (05/10/2026): game dành cho mọi lứa tuổi, vừa chơi
 
 ## Còn lại từ thiết kế cũ
 
-Luồng "phụ huynh là chủ tài khoản, trẻ là hồ sơ con, PIN phụ huynh, đồng ý chính sách trước khi tạo hồ sơ" (`docs/project-overview-pdr.md`) và mục "An toàn trẻ em" trong `server-and-child-safety.md` ra đời trước định hướng này. Chúng vẫn là hành vi đang chạy; không tự gỡ hay viết lại. Việc đổi mô hình tài khoản (đăng ký trực tiếp, tuổi, đồng ý chính sách, pháp lý) ảnh hưởng dữ liệu người dùng nên phải hỏi người sở hữu trước khi làm.
+Đã đổi (05/10/2026): PIN phụ huynh là tùy chọn, không đặt thì Khu phụ huynh luôn mở và không còn bước đặt PIN bắt buộc sau lần đăng nhập đầu. Phần còn lại của luồng "phụ huynh là chủ tài khoản, trẻ là hồ sơ con, đồng ý chính sách trước khi tạo hồ sơ" (`docs/project-overview-pdr.md`) và mục "An toàn trẻ em" trong `server-and-child-safety.md` ra đời trước định hướng này. Chúng vẫn là hành vi đang chạy; không tự gỡ hay viết lại. Việc đổi tiếp mô hình tài khoản (bỏ hồ sơ con, tuổi, nội dung đồng ý chính sách, pháp lý) ảnh hưởng dữ liệu người dùng nên phải hỏi người sở hữu trước khi làm.

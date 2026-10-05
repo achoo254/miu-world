@@ -101,11 +101,11 @@ describe('Google sign-in', () => {
     expect(body?.get('grant_type')).toBe('authorization_code');
 
     const me = (await agent.get('/api/auth/me').expect(200)).body;
-    expect(me).toMatchObject({ parent: { email: user.email }, pinSet: false, parentGateOpen: false });
+    expect(me).toMatchObject({ parent: { email: user.email }, pinSet: false, parentGateOpen: true });
     const [row] = await app.db.select().from(t.parents).where(eq(t.parents.email, user.email as string));
     expect(row).toMatchObject({ googleSub: user.sub, passwordHash: null, pinHash: null });
 
-    await agent.post('/api/consents').send({ policyVersion: app.content.consent.version }).expect(403, { error: 'parent-gate-closed' });
+    // No PIN yet: the parent area is open, so consent works straight after sign-in.
     const withPin = await agent.post('/api/auth/pin').send({ pin: TEST_PIN }).expect(200);
     expect(withPin.body).toMatchObject({ pinSet: true, parentGateOpen: true });
     await agent.post('/api/auth/pin').send({ pin: '9999' }).expect(409, { error: 'pin-already-set' });
@@ -166,11 +166,13 @@ describe('Google sign-in', () => {
     expect((await agent.get('/api/auth/me').expect(200)).body).toMatchObject({ pinLocked: false, parentGateOpen: true });
   });
 
-  it('lets the first PIN be set only within 15 minutes of signing in', async () => {
+  it('lets a PIN be set any time while none exists, and locks the parent area behind it afterwards', async () => {
     const agent = app.agent();
     await signInWithGoogle(agent, googleUser());
     app.advance(16 * 60 * 1000);
-    await agent.post('/api/auth/pin').send({ pin: TEST_PIN }).expect(403, { error: 'parent-gate-closed' });
+    await agent.post('/api/auth/pin').send({ pin: TEST_PIN }).expect(200);
+    app.advance(16 * 60 * 1000);
+    expect((await agent.get('/api/auth/me').expect(200)).body).toMatchObject({ pinSet: true, parentGateOpen: false });
   });
 
   it.each([

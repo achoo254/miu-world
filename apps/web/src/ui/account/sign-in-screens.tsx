@@ -1,7 +1,7 @@
-// NEW SCREEN (Master Plan §6, Tài khoản): đăng nhập / tạo tài khoản phụ huynh bằng Google, đặt PIN lần đầu.
+// NEW SCREEN (Master Plan §6, Tài khoản): đăng nhập / tạo tài khoản phụ huynh bằng Google; PIN phụ huynh là tùy chọn.
 // Chưa có mock riêng; theo visual language M1–M3, hướng A (đảo mây kẹo hồng).
 import { useState, type ReactNode } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router';
+import { Link, Navigate, useNavigate, useSearchParams } from 'react-router';
 import { MeResponse, ParentPin } from '@miu/schema/account';
 import { api } from '../api-client';
 import { Icon } from '../kit/art';
@@ -82,18 +82,19 @@ export function RegisterScreen() {
   );
 }
 
-/** First Google sign-in: the PIN that guards the parent area, set before anything else. */
+/** Optional PIN that locks the parent area; reached from there, skipping keeps the area open. */
 export function SetPinScreen() {
-  const { setMe } = useAccount();
+  const { state, setMe } = useAccount();
   const navigate = useNavigate();
   const [pin, setPin] = useState('');
   const [pinAgain, setPinAgain] = useState('');
   const [touched, setTouched] = useState(false);
   const form = useSubmit(async () => {
     setMe(await api('POST', '/auth/pin', MeResponse, { pin }));
-    navigate('/');
+    navigate('/parent');
   });
   const clientError = !ParentPin.safeParse(pin).success ? 'Mã PIN gồm 4 đến 6 chữ số.' : pin !== pinAgain ? t('auth.pinMismatch') : null;
+  if (state.status === 'signed-in' && state.me.pinSet) return <Navigate to="/parent" replace />;
   return (
     <SkyScene hero>
       <main className="panel" data-id="set-pin">
@@ -126,12 +127,9 @@ export function SetPinScreen() {
           <button className={buttonClass('primary', { block: true })} data-id="set-pin-submit" type="submit" disabled={form.busy}>
             <T k="auth.savePin" />
           </button>
-          <p className="hint">
-            Mã PIN chỉ đặt được trong 15 phút sau khi đăng nhập. Quá thời gian?{' '}
-            <a href={GOOGLE_SIGN_IN} data-id="set-pin-relogin">
-              <T k="auth.googleSignIn" />
-            </a>
-          </p>
+          <Link to="/parent" className={buttonClass('ghost', { block: true })} data-id="set-pin-skip">
+            <T k="auth.skipPin" />
+          </Link>
         </form>
       </main>
     </SkyScene>

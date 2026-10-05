@@ -273,6 +273,19 @@ export function ParentAreaScreen() {
           </button>
         </section>
 
+        {state.me.pinSet ? null : (
+          <section className="panel" data-id="parent-pin-optional" aria-labelledby="parent-pin-title">
+            <div className="panel-title">
+              <Icon name="key" size={40} />
+              <h2 id="parent-pin-title"><T k="parent.pinOptionalTitle" /></h2>
+            </div>
+            <p className="hint"><T k="parent.pinOptionalHint" /></p>
+            <Link to="/set-pin" className={buttonClass('secondary', { block: true })} data-id="parent-pin-set">
+              <T k="parent.pinOptionalButton" />
+            </Link>
+          </section>
+        )}
+
         <p className="parent-more-title"><T k="parent.moreTitle" /></p>
         <div className="parent-columns">
           <section className="panel" aria-labelledby="parent-worksheets-title">

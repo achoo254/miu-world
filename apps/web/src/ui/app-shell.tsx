@@ -74,17 +74,12 @@ function ServerDown() {
   );
 }
 
-/**
- * Signed-in routes. A parent fresh from the first Google sign-in sets the PIN first, then consents;
- * only then do profiles and play open.
- */
-function RequireParent({ children, needsConsent = true, needsPin = true }: { children: ReactNode; needsConsent?: boolean; needsPin?: boolean }) {
+/** Signed-in routes. A new account accepts the policy first; only then do profiles and play open. The PIN is optional. */
+function RequireParent({ children, needsConsent = true }: { children: ReactNode; needsConsent?: boolean }) {
   const { state } = useAccount();
   if (state.status === 'loading') return <Loading />;
   if (state.status === 'error') return <ServerDown />;
   if (state.status === 'signed-out') return <Navigate to="/login" replace />;
-  if (needsPin && !state.me.pinSet) return <Navigate to="/set-pin" replace />;
-  if (!needsPin && state.me.pinSet) return <Navigate to="/" replace />;
   if (needsConsent && !state.me.consentAccepted) return <Navigate to="/consent" replace />;
   return children;
 }
@@ -125,7 +120,7 @@ export function AppRoutes() {
         <Route path="/login" element={<WithMusic mood="home"><SignedOutOnly><LoginScreen /></SignedOutOnly></WithMusic>} />
         <Route path="/register" element={<WithMusic mood="home"><SignedOutOnly><RegisterScreen /></SignedOutOnly></WithMusic>} />
         <Route path="/privacy" element={<PrivacyScreen />} />
-        <Route path="/set-pin" element={<RequireParent needsPin={false} needsConsent={false}><SetPinScreen /></RequireParent>} />
+        <Route path="/set-pin" element={<RequireParent needsConsent={false}><SetPinScreen /></RequireParent>} />
         <Route path="/consent" element={<RequireParent needsConsent={false}><ConsentScreen /></RequireParent>} />
         <Route path="/profiles" element={<WithMusic mood="home"><RequireParent><ProfilePickerScreen /></RequireParent></WithMusic>} />
         <Route path="/parent" element={<RequireParent><ParentAreaScreen /></RequireParent>} />

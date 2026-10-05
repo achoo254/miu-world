@@ -1,5 +1,5 @@
 // The whole MVP loop through the real UI on the reference iPad viewport with touch (Master Plan §13,
-// §16): Google sign-in (local fake) → PIN → consent → profile → Character Creator (change the hat) →
+// §16): Google sign-in (local fake) → consent → profile → Character Creator (change the hat) →
 // Home → Khu rừng bí mật ch1 → parrot → three clues → the letter → three Math challenges (no answer
 // layer) → the ancient tree → 100 XP, Level Up 1 → 2 → the Lá thần in the Backpack.
 // Along the way: nothing leaves the origin, CSP is on every page, and no API response except the
@@ -97,13 +97,10 @@ test('one child plays the whole MVP loop by touch, from Google sign-in to the L�
     expect(await page.locator('meta[http-equiv="Content-Security-Policy"]').getAttribute('content')).toContain("default-src 'self'");
   };
 
-  // Parent: Google sign-in (local fake), PIN, consent, a profile, then hand the device over.
+  // Parent: Google sign-in (local fake), consent, a profile, then hand the device over.
   await page.goto('/');
   await checkCsp();
   await page.getByRole('link', { name: 'Đăng nhập bằng Google' }).tap();
-  await page.locator('[data-id="set-pin-pin"]').fill('2468');
-  await page.locator('[data-id="set-pin-again"]').fill('2468');
-  await page.getByRole('button', { name: 'Lưu mã PIN' }).tap();
   await page.getByRole('button', { name: 'Tôi là phụ huynh và đồng ý' }).tap();
   await page.locator('[data-id="parent-create-name"]').selectOption('Gấu Mật');
   await page.getByRole('button', { name: 'Tạo hồ sơ' }).tap();
