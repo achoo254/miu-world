@@ -153,7 +153,7 @@ describe('quest controller', () => {
     await touch('clue-box', 'Chiếc hộp', 'object');
     await vi.waitFor(() => expect(posts).toHaveLength(2));
     expect(posts[1]).toEqual({ url: '/api/quests/forest-ch1/steps/find-clues/complete', body: { target: 'clue-box', run: 1 } });
-    await vi.waitFor(() => expect(commands).toContainEqual({ type: 'set-world-state', state: { 'clue-box': 'found' } }));
+    await vi.waitFor(() => expect(commands).toContainEqual({ type: 'set-world-state', state: { 'clue-box': 'hidden' } }));
     expect(screen.getByRole('status').textContent).toContain('Chiếc hộp');
   });
 

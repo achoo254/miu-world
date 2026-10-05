@@ -65,9 +65,11 @@ describe('quest flow', () => {
   });
 
   it('turns progress into the world look, and counts clues from the server list', () => {
-    expect(worldState(quest, progress(['meet-parrot'], { 'find-clues': ['clue-box'] }))).toEqual({ 'clue-box': 'found' });
+    // The box is picked up (no later step needs it); the letter stays for the step that reads it.
+    expect(worldState(quest, progress(['meet-parrot'], { 'find-clues': ['clue-box'] }))).toEqual({ 'clue-box': 'hidden' });
+    expect(worldState(quest, progress(['meet-parrot'], { 'find-clues': ['clue-letter'] }))).toEqual({ 'clue-letter': 'found' });
     const nearlyDone = progress(['meet-parrot', 'find-clues', 'read-letter', 'open-chest'], { 'find-clues': ['clue-box', 'clue-letter'] });
-    expect(worldState(quest, nearlyDone)).toEqual({ 'clue-box': 'found', 'clue-letter': 'found', chest: 'open' });
+    expect(worldState(quest, nearlyDone)).toEqual({ 'clue-box': 'hidden', 'clue-letter': 'found', chest: 'open' });
     const search = steps[1];
     if (!search) throw new Error('missing step');
     expect(searchCount(search, progress(['meet-parrot'], { 'find-clues': ['clue-letter'] }))).toEqual({ found: 1, total: 2 });

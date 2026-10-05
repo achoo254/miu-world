@@ -1,7 +1,7 @@
 // Pure quest rules the play screen needs between two server responses: which step a touched
 // target belongs to, which step starts on its own, where the direction arrow points, and how the
 // world should look. Progress always comes from the server; nothing here grants anything.
-import type { QuestStepPublic } from '@miu/schema/content';
+import { stepTargets, type QuestStepPublic } from '@miu/schema/content';
 import type { QuestProgressDto, QuestView } from '@miu/schema/game';
 import type { WorldState } from '../../game-bridge/game-store';
 
@@ -62,11 +62,14 @@ export function hintTarget(quest: ActiveQuestView, progress: QuestProgressDto): 
 
 /** Found clues show as found; the chest and gate open once their step is done. */
 export function worldState(quest: ActiveQuestView, progress: QuestProgressDto): WorldState {
-  const state: Record<string, 'found' | 'open'> = {};
+  const state: Record<string, 'found' | 'open' | 'hidden'> = {};
   const done = new Set(progress.completedSteps);
-  for (const step of quest.steps) {
+  for (const [i, step] of quest.steps.entries()) {
     if (step.kind === 'search' || step.kind === 'find-object') {
-      for (const t of progress.found[step.id] ?? []) state[t] = 'found';
+      // A thing found and needed by no later step is picked up: gone from the world (a new run puts it back),
+      // so it no longer offers "Nhặt lên" and the child looks for the rest. One a later step uses stays in place.
+      const later = new Set(quest.steps.slice(i + 1).flatMap((s) => [...stepTargets(s), stepTarget(s) ?? '']));
+      for (const t of progress.found[step.id] ?? []) state[t] = later.has(t) ? 'found' : 'hidden';
     }
     const target = stepTarget(step);
     if ((step.kind === 'reward' || step.kind === 'next') && target && done.has(step.id)) state[target] = 'open';
