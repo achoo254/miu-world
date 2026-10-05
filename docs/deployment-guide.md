@@ -30,6 +30,7 @@ Mọi credential nằm **ngoài repo**, trong iCloud của người phụ trách
 | `service == "postgresql"`, `used_by` bắt đầu bằng `miu-world staging` | Role và database `miu` trên Postgres của 176 | `DATABASE_URL` trong `/etc/miu/staging.env` |
 | `account == "miu-staging-176"` (tunelo) | Token cho tunnel `miu-staging` | `TUNELO_KEY` trong `/etc/miu/tunnel.env` |
 | `service == "api.cloudflare.com"` | DNS zone `hoandat.com` (§4). Đây là token toàn quyền của cả account, nên chỉ dùng cho zone này | Không lưu trên máy chủ |
+| `service == "rtc.live.cloudflare.com (TURN)"` (`token.key_id`, `token.api_token`) | Khóa TURN `miu-world-voice` (Cloudflare Realtime): server xin credential ngắn hạn cho voice chat (`POST https://rtc.live.cloudflare.com/v1/turn/keys/<key_id>/credentials/generate-ice-servers`, Bearer token, `{"ttl": 14400}`) và trao cho người chơi đã đăng nhập (`GET /api/voice/ice-servers`); token này chỉ xin được credential TURN, không quản lý được gì khác | `CF_TURN_KEY_ID`, `CF_TURN_API_TOKEN` trong `/etc/miu/production.env` (.65). Staging chưa đặt: voice ở đó chỉ dùng STUN |
 
 Thêm một entry mới thì làm theo `_meta.entry_schema`. Trước khi sửa, sao lưu tệp thành `access-tokens.backup-<yyyymmdd>.json` cùng thư mục. Token tunelo được cấp bằng `create-access-token.mjs` trong `/var/www/tunelo` trên .65; token chỉ hiện một lần, nên lưu thẳng vào tệp này.
 
@@ -162,12 +163,13 @@ Chạy tại `https://miu.hoandat.com` trên .65 (dựng ngày 30/09/2026). Cấ
 tools/deploy/production/deploy.sh setup     # máy mới, đổi unit/nginx/secret. Chạy lại được an toàn.
 tools/deploy/production/deploy.sh fonts     # tải font chữ mẫu của phiếu viết (ngoài git) lên /opt/miu/fonts
 tools/deploy/production/deploy.sh timetable # tải thời khóa biểu mặc định (ngoài git) lên /opt/miu/config; release sau đó áp dụng
+tools/deploy/production/deploy.sh turn      # ghi (hoặc thay) hai dòng CF_TURN_* của khóa TURN vào /etc/miu/production.env; release sau đó áp dụng
 tools/deploy/production/deploy.sh release   # build, security:dist, backup DB, upload, switch, health, tự rollback
 ```
 
 - Bản build: production dùng `pnpm --filter @miu/web build:release` (`vite build --mode release`): chỉ có game, không có `review.html`, `preview.html` hay ảnh review (chỉ giữ ảnh chân dung nhân vật mà UI dùng), khoảng 8,6 MB thay vì 19 MB. `release` dừng nếu `dist` vẫn còn trang review. Staging, E2E và bản review chạy local dùng `build` thường, vẫn có trang review cho người duyệt.
 
-- Secret: entry `service == "postgresql"`, `used_by` bắt đầu bằng `miu-world production` trong `access-tokens.json` (mật khẩu role `miu`); Google client dùng chung entry của staging. `setup` ghi `/etc/miu/production.env` (640 `root:miu`).
+- Secret: entry `service == "postgresql"`, `used_by` bắt đầu bằng `miu-world production` trong `access-tokens.json` (mật khẩu role `miu`); Google client dùng chung entry của staging; khóa TURN của voice chat từ entry `rtc.live.cloudflare.com (TURN)` (§2.2). `setup` ghi `/etc/miu/production.env` (640 `root:miu`), gồm cả hai dòng `CF_TURN_*`; `turn` chỉ thay hai dòng đó, giữ nguyên các dòng khác (chạy lại được), qua ssh stdin, không in giá trị. Thiếu entry thì `turn` dừng, không ghi dòng rỗng (dòng rỗng coi như chưa đặt). Không có khóa thì voice vẫn chạy với STUN (đa số mạng nhà nối thẳng được), chỉ mạng chặt mới cần TURN. Đổi khóa: tạo khóa mới trên Cloudflare (Realtime → TURN), sửa entry trong `access-tokens.json`, chạy `turn` rồi `release` (hoặc restart). Kiểm sau release: đăng nhập, mở `/api/voice/ice-servers` phải có một mục `turn:`; log lỗi chỉ ghi `voice relay credentials failed` kèm mã trạng thái.
 - Working tree phải sạch; nếu chỉ còn file chưa track không thuộc bản build thì đặt `MIU_RELEASE_REV=$(git rev-parse --short HEAD)` sau khi kiểm `git diff --quiet HEAD`.
 - Nghiệm thu: `curl -s https://miu.hoandat.com/api/health` trả `{"status":"ok"}`; revision đang chạy ở `/opt/miu/current/apps/server/dist/server/REVISION` trên .65.
 - Log: `journalctl --namespace=miu -u miu-server` (.65; không có `--namespace` thì không thấy); request ở `/var/log/nginx/miu.hoandat.com.{access,error}.log`.
