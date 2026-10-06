@@ -1,6 +1,6 @@
 # Hoàn thiện Master Plan v3: bản đồ các plan còn thiếu và thứ tự làm
 
-**Trạng thái:** đã duyệt thứ tự (04/10/2026); đang thi công, rà tiến độ 05/10/2026 (cột Tình trạng) · **Tier:** XL (tổng) · **Nhánh:** `main` · **Ngày:** 04/10/2026
+**Trạng thái:** đã duyệt thứ tự (04/10/2026); đang thi công, rà tiến độ 06/10/2026 theo dòng trạng thái của từng plan và `docs/project-roadmap.md` (cột Tình trạng) · **Tier:** XL (tổng) · **Nhánh:** `main` · **Ngày:** 04/10/2026
 
 ## Kết quả mong muốn
 
@@ -16,26 +16,28 @@ Mọi hạng mục của Master Plan v3 (§5, §6, §8, §8b, §8c, §9, §13, �
 
 | Hạng mục Master Plan | Plan chủ | Tình trạng |
 | --- | --- | --- |
-| §5 Quest, mechanic kéo thả, sắp xếp, trắc nghiệm, đố vật thể, hỗ trợ học | `260929-2141-vertical-slice-mvp` | Xong |
-| §4, §6 Các map, Home, nhà của bé, xe, nhà to | các plan 261001–261003 | Xong phần tự động |
-| §5 Phần thưởng: Xu, cửa hàng, đồ sưu tầm, thú cưng, bếp, cây kỹ năng, Hành trình, Thành tích | `261003-1602-coins-items-skills-uses`, `261004-1035-life-expansion` | Cửa hàng, sưu tập, thú cưng, bếp xong; còn cây kỹ năng, Hành trình, Thành tích |
-| §8c Song ngữ S2 | `261003-2330-bilingual-npc-stories-bots` | S1, S3 xong; S2 chưa |
-| §8b Chuyện riêng NPC (N1–N3), bot | `261003-2330-bilingual-npc-stories-bots` | Bạn máy B1 xong; N1–N3, B0, B2, B3 chưa |
-| §8 Bậc 1: diện mạo, tương tác, tổ đội | `261004-1540-online-appearance-interact-party` | Chưa thi công |
+| §5 Quest, mechanic kéo thả, sắp xếp, trắc nghiệm, đố vật thể, hỗ trợ học | `260929-2141-vertical-slice-mvp` | Xong, đang chạy production |
+| §4, §6 Các map, Home, nhà của bé, xe, nhà to | các plan 261001–261003 | Xong phần tự động, đang chạy production |
+| §5 Phần thưởng: Xu, cửa hàng, đồ sưu tầm, thú cưng, bếp, cây kỹ năng, Hành trình, Thành tích | `261003-1602-coins-items-skills-uses`, `261004-1035-life-expansion` | Xong cả 6 pha (05/10/2026), đang chạy production |
+| §8c Song ngữ S1–S3 | `261003-2330-bilingual-npc-stories-bots` | Xong S1, S2, S3 (05/10/2026), đang chạy production |
+| §8b Chuyện riêng NPC (N1–N3), bot | `261003-2330-bilingual-npc-stories-bots`; tính cách bạn máy ở `261004-1617-coop-quests` | N1, N3 xong; N2 đợt 1 (2 mạch mỗi map) đang chạy production, còn đợt sau tới ≥ 6 mạch mỗi map; B1 xong, tính cách bạn máy (một phần B3) xong ở co-op; còn B0, B2, phần tự training của B3 |
+| §8 Bậc 1: diện mạo, tương tác, tổ đội | `261004-1540-online-appearance-interact-party` | P1–P3 xong, đang chạy production; màn kiểm duyệt báo cáo nằm ở `moderation-safety` (hoãn) |
 | Nội dung SGK tập 2 | `261002-1139-sgk-lop2-tap2-content` | Hoãn (người sở hữu 05/10/2026: làm sau) |
-| **§5, §6 Trùm, Skill Check, cơ chế còn thiếu (lựa chọn hành động, logic, tìm đồ vật, ghép câu)** | `261004-1617-boss-skill-check-new-mechanics` | Cơ chế xong; nội dung (pha 5) và tài liệu còn |
-| **§5 Môn English (mới có 1 kỹ năng, 0 quest)** | `261004-1617-english-subject-content` | Nguồn đã chốt (Tiếng Anh 2 Global Success, bản mẫu), chưa thi công |
-| **§6, §9 Tiến bộ học, kết bạn trong game (cả với bạn máy), bật/tắt online** (thiết kế lại 05/10/2026: người nhận đồng ý, không mã, không cần phụ huynh duyệt) | `261004-1617-parent-area-friends` | Chưa thi công |
-| **§9 (MP) Kiểm duyệt, token ngắn hạn, tắt khẩn cấp, đo tải (không chống cheat)** | `261004-1617-moderation-safety` | **Mới** |
-| **§8 Bậc 2: co-op quest 2–4 bạn** | `261004-1617-coop-quests` | **Mới** |
-| **§8 Bậc 3, §6 Live: sự kiện có thời hạn (Cổng TIMO), bảng xếp hạng nhóm** | `261004-1617-live-world-events` | **Mới** |
-| **§6 Hộp thư, Skill Up, chuỗi ngày** | `261004-1617-system-screens-v1` | Xong (chuỗi ngày bỏ theo Jev); còn cập nhật `docs/` |
-| **§12, §13, §16 Nghiệm thu MVP, hiệu năng, đồng bộ tài liệu** | `261004-1617-mvp-gate-launch-readiness` | **Mới** |
+| **§5, §6 Trùm, Skill Check, cơ chế còn thiếu (lựa chọn hành động, logic, tìm đồ vật, ghép câu)** | `261004-1617-boss-skill-check-new-mechanics`; trùm canh khu ở `261005-2315-zone-guardians` | Pha 1–5 xong, đang chạy production (12 trùm lớn, 42 trùm canh khu có ba lớp hỗ trợ); còn pha 6 (tài liệu) và 2 rương có cổng chưa đặt trên map |
+| **§5 Môn English (mới có 1 kỹ năng, 0 quest)** | `261004-1617-english-subject-content` | Hoãn (người sở hữu 05/10/2026: làm sau); nguồn đã chốt (Tiếng Anh 2 Global Success) |
+| **§6, §9 Tiến bộ học, kết bạn trong game (cả với bạn máy), luôn online** (thiết kế lại 05/10/2026: người nhận đồng ý, không mã, không cần phụ huynh duyệt) | `261004-1617-parent-area-friends` | Pha 1–6 xong, đang chạy production |
+| **§9 (MP) Kiểm duyệt, token ngắn hạn, tắt khẩn cấp, đo tải (không chống cheat)** | `261004-1617-moderation-safety` | Hoãn đến khi có người ngoài gia đình chơi |
+| **§8 Bậc 2: co-op quest 2–4 bạn** | `261004-1617-coop-quests` | Xong pha 1–6 và hai mục mở rộng (mọi nhiệm vụ chơi theo đội, bạn máy có cá tính), đang chạy production (bản `48f86ff9`, 06/10/2026) |
+| **§8 Bậc 3, §6 Live: sự kiện có thời hạn (Thử thách Olympic Toán), bảng xếp hạng nhóm** | `261004-1617-live-world-events` | Pha 0 (luyện thi Olympic Toán) xong; pha 1–4, 6, 6b đang thi công (06/10/2026); pha 5 (bảng xếp hạng nhóm) và 7 (đo tải) chờ `moderation-safety` |
+| **§6 Hộp thư, Skill Up, chuỗi ngày** | `261004-1617-system-screens-v1` | Xong, đang chạy production (chuỗi ngày bỏ theo Jev); còn cập nhật `docs/` |
+| **§12, §13, §16 Nghiệm thu MVP, hiệu năng, đồng bộ tài liệu** | `261004-1617-mvp-gate-launch-readiness` | Chưa thi công (chạy xuyên suốt, chốt cuối) |
+
+Plan mở sau ngày lập bản đồ, đều đã lên production (06/10/2026): `261005-0949-single-player-account` (một người chơi chính mỗi tài khoản), `261005-1715-interactions-alive` (tương tác với đồ vật), `261005-2246-loading-and-birds` (tải nhanh, chim vỗ cánh), `261005-2305-pets-alive` (thú cưng sống động), `261005-2315-zone-guardians` (trùm canh khu có ba lớp hỗ trợ), `261005-2335-voice-chat` (nói chuyện bằng giọng trong tổ đội và với bạn bè).
 
 ## Thứ tự và phụ thuộc
 
 ```text
-(đang chạy ở phiên khác) 1602 / life-expansion / bilingual-bots / 1540 online
+(đã xong) 1602 / life-expansion / bilingual-bots / 1540 online
         │
         ├─ system-screens-v1 ──────────────┐  (độc lập, nhỏ, làm sớm)
         ├─ boss-skill-check-new-mechanics ─┼─► coop-quests ─► live-world-events
