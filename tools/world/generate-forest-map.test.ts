@@ -6,12 +6,13 @@ import { QUEST_CLEARANCE } from './forest-life';
 import { generateForest } from './generate-forest-map';
 import { expectCommittedOutput, expectStandsOnGround, expectTargetsReachable } from './map-checks';
 
-// The 800-block forest is generated once for its checks (some 20 s, the walk search more).
+// The 800-block forest is generated once for its checks. That alone takes some 55 s on a dev machine and 90–150 s on a
+// GitHub runner (07/10/2026), so the limit guards against a hang, not against the generator's own pace.
 describe('forest generator', () => {
   let map: Awaited<ReturnType<typeof generateForest>>;
   beforeAll(async () => {
     map = await generateForest();
-  }, 120_000);
+  }, 240_000);
 
   it('matches the committed output (run `pnpm world:forest` after changing it)', async () => {
     await expectCommittedOutput(map);
