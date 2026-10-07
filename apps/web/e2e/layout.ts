@@ -56,7 +56,14 @@ export function layoutFacts(page: Page): Promise<LayoutFacts> {
       const r = el.getBoundingClientRect();
       return r.width > 1 && r.height > 1 && getComputedStyle(el).visibility !== 'hidden';
     });
-    const missingClose = panels.filter((p) => ![...p.querySelectorAll(closers)].some(shown) && !p.closest('[role="dialog"]')?.querySelector(closers)).map(name);
+    // A close counts when it is drawn somewhere on the page (inside the screen, not hidden), even if the panel has
+    // scrolled it under something: a close that is in the DOM but hidden does not.
+    const drawn = (el: Element): boolean => {
+      const r = el.getBoundingClientRect();
+      const style = getComputedStyle(el);
+      return r.width >= 1 && r.height >= 1 && style.visibility !== 'hidden' && style.display !== 'none' && Number(style.opacity) > 0;
+    };
+    const missingClose = panels.filter((p) => ![...p.querySelectorAll(closers)].some(drawn)).map(name);
     const clipped: string[] = [];
     for (const el of document.querySelectorAll('body *')) {
       if (clipped.length >= 20) break;
