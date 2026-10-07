@@ -1,0 +1,39 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 773,
+    "output_tokens": 131
+  },
+  "results": {
+    "bots_join_player_runs": {
+      "stakes": "medium",
+      "choice": "yes_join",
+      "confidence": 0.52,
+      "probabilities": {
+        "yes_join": 0.76,
+        "only_bot_proposed": 0.24
+      },
+      "decision": "escalate"
+    },
+    "party_card_with_bot": {
+      "stakes": "low",
+      "choice": "keep_two_humans",
+      "confidence": 0.46,
+      "probabilities": {
+        "keep_two_humans": 0.73,
+        "show_with_bot": 0.27
+      },
+      "decision": "escalate"
+    },
+    "d11_new_quest": {
+      "stakes": "low",
+      "choice": "any_quest_she_starts",
+      "confidence": 0.3,
+      "probabilities": {
+        "party_quest_or_coop_only": 0.35,
+        "any_quest_she_starts": 0.65
+      },
+      "decision": "escalate"
+    }
+  }
+}

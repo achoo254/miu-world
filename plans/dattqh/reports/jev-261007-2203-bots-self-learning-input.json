@@ -1,0 +1,61 @@
+{
+  "state": {
+    "owner_request_verbatim": "đừng quan tâm đường đi của bé nhé. Vì có nhiều người chơi thì bot biết đi theo ai? bot nên có đường đi tự học của chính nó, tự biết ra quyết định nên đi đâu và tự training chính nó",
+    "earlier_owner_request": "Bots keep moving and doing quests; on meeting a player randomly chat or befriend, form a party to do quests; bots simulate real players.",
+    "verified_facts": [
+      "Production ships content/ and the server bundle, not assets/; the server cannot read voxel map files at runtime today.",
+      "A tool already loads each map's walkable grid offline (loadMapGrid in tools/world); maps are up to 800x800 core.",
+      "Precomputed route network files exist (commit 8376ca24, not deployed) built with the child's auto-walk search; owner now rejects given paths.",
+      "Production bots currently follow a player's walked trail (gather); owner rejects following players.",
+      "Bots already persist per-bot learning (skill XP) in the DB via bot-store; the server ticks bots at 10 Hz; hundreds of bots must stay cheap.",
+      "Only owner and child play now; rewards are server-computed; bots never write player progress."
+    ]
+  },
+  "questions": {
+    "sensing": {
+      "stakes": "medium",
+      "instructions": "What does a bot perceive of the world so it cannot walk through walls without being given paths?",
+      "criteria": {
+        "walk_grid_in_content": "Ship a compact per-map walkability grid (stand heights, step rules) in content/world/walk/; bots move cell by cell and only see cells within a sight radius",
+        "server_reads_voxels": "Ship voxel region files to the server and compute walkability at runtime",
+        "no_sensing": "No sensing; bots walk straight lines"
+      }
+    },
+    "learning": {
+      "stakes": "medium",
+      "instructions": "How does each bot learn its own paths and where to go?",
+      "criteria": {
+        "memory_graph_rl": "Each bot builds its own place graph while exploring (places it found, links it walked and their cost, shortcuts it discovers); chooses destinations with reinforcement learning (Q-values per place updated from rewards: quest done, met a player, novelty, minus walk cost), exploration rate from its persona",
+        "neural_policy": "Train a neural network policy (e.g. PPO) offline in simulation and run it on the server",
+        "scripted_utility": "Hand-written utility scores, no learning"
+      }
+    },
+    "training": {
+      "stakes": "medium",
+      "instructions": "How does a bot train itself?",
+      "criteria": {
+        "online_persisted_plus_sim": "Learns online all the time while the server runs, memory persisted per bot in the DB; plus an offline simulation command that runs many bot-hours on a map to warm up new bots",
+        "online_only": "Only online learning, persisted; new bots start knowing nothing",
+        "offline_only": "Only offline training; frozen on the server"
+      }
+    },
+    "route_data_8376ca24": {
+      "stakes": "low",
+      "instructions": "What to do with the precomputed route network commit (not deployed)?",
+      "criteria": {
+        "revert_keep_grid_loader": "Revert the route files and their test; keep the grid-loading refactor for the walk grid export",
+        "keep_as_eval": "Keep routes only as a hidden benchmark to measure how well bots learned",
+        "keep_as_is": "Keep routes and use them for movement"
+      }
+    },
+    "players": {
+      "stakes": "medium",
+      "instructions": "How do bots relate to players while moving?",
+      "criteria": {
+        "perceive_and_choose": "Bots never follow anyone; they notice players within sight and may choose to go meet one as a learned option (meeting is a reward), then return to their own plans",
+        "attract_to_players": "Bots are always pulled to the nearest player",
+        "ignore_players": "Bots ignore players unless bumped into"
+      }
+    }
+  }
+}

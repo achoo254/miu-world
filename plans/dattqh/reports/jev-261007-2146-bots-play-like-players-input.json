@@ -1,0 +1,27 @@
+{
+  "state": {
+    "owner_request": "Bots keep moving and doing quests; on meeting a player they randomly chat or proactively befriend and form a party to do quests together; goal: bots simulate real players. Owner north star: lively, never boring; only owner and child play now; rewards always server-computed; content lines must not repeat.",
+    "verified_facts": [
+      "Client already has a road-aware route search (apps/web/src/game/nav/route-search.ts, walk-grid.ts) used by auto-walk.",
+      "Production release ships content/ but not assets/; the server cannot read voxel map files at runtime.",
+      "Current bots walk straight lines between hardcoded waypoints; latest release makes up to 3 bots wander the player's walked trail near her.",
+      "PartyService.reply() makes the inviter the party leader; PartyQuestService treats bots as absent and never lets them play party quests.",
+      "Existing UI: party invite card and friend request flows exist; PlayerPresence is a strict schema used by open tabs.",
+      "Another session is editing game.ts, ui/quest/**, boss/duel files; plan avoids them."
+    ]
+  },
+  "questions": {
+    "D1": {"stakes": "medium", "instructions": "Where should bots walk to reach quest spots across a whole map?", "criteria": {"precomputed_routes": "Routes generated offline per map with the client's auto-walk route search; server runs Dijkstra over a few hundred stops", "player_trails": "Only on players' walked trails", "server_voxel": "Server path-finds on voxels at runtime", "handwritten": "Hand-written routes in each map generator"}},
+    "D2": {"stakes": "medium", "instructions": "Where do the route files live?", "criteria": {"content_dir": "content/world/bot-routes/<map>.json (already shipped to the server)", "assets_dir": "assets/ plus changing deploy scripts to ship it", "built_at_start": "Server builds them at start"}},
+    "D3": {"stakes": "medium", "instructions": "How do players see that a bot is doing a quest?", "criteria": {"bot_doing_message": "New bot-doing ws message plus a scroll mark on its nametag", "gesture_only": "Only an interact gesture", "presence_field": "New field in PlayerPresence (breaks tabs that have not reloaded)"}},
+    "D4": {"stakes": "medium", "instructions": "How do bots talk?", "criteria": {"bot_say_pools": "bot-say message: 10 line kinds x 12 variants, text in locale files, rotated without repeats", "widen_canned": "Widen SAFE_CANNED_CHATS"}},
+    "D5": {"stakes": "low", "instructions": "Invite card for a bot asking to play a quest together", "criteria": {"two_step_reuse": "Two steps reusing the existing party invite and party quest UI", "new_combined_card": "One new combined card"}},
+    "D6": {"stakes": "medium", "instructions": "Who leads a party a bot proposed?", "criteria": {"player_leads": "The player is always party leader; the bot is the quest's proposer", "server_starts": "Server starts the quest itself", "bot_leads": "The bot is leader"}},
+    "D7": {"stakes": "low", "instructions": "Which quest does a bot propose?", "criteria": {"player_first_chain": "The quest she has in progress on this map, else the one the bot is doing, else her unfinished quest with the lowest chapter, else a replay", "bot_quest": "Always the bot's own quest", "random": "Random"}},
+    "D8": {"stakes": "medium", "instructions": "What does a bot do inside a party quest?", "criteria": {"own_part": "Answers its own questions, follows the player on shared steps, its boss hits count for the team", "does_shared": "Also does shared steps for the team", "watch_only": "Only watches"}},
+    "D9": {"stakes": "medium", "instructions": "Social cadence of bots", "criteria": {"balanced": "Each bot talks to a player at most every 25 s, all bots together every 6 s; party invites at most 1 per 5 min, 3 per hour, 15 min pause after decline or expiry; friend ask 70% after a shared quest, 35% from the 2nd meeting", "quieter": "About twice as sparse", "livelier": "About twice as frequent"}},
+    "D10": {"stakes": "low", "instructions": "How does E2E check bot invites?", "criteria": {"eager_map_knob": "A test-only knob BOT_EAGER_MAP", "server_integration_only": "Only server integration tests", "own_playwright_project": "A separate Playwright project"}},
+    "D11": {"stakes": "low", "instructions": "After a shared quest, what does the bot do?", "criteria": {"wave_and_leave": "Says goodbye and leaves the party after 5-10 s; leaves at once if she changes map", "stay_until_she_leaves": "Stays until she leaves", "leave_at_once": "Leaves at once"}},
+    "D12": {"stakes": "low", "instructions": "Where on the map does a bot spend its time?", "criteria": {"home_area_70": "Has a home area; 70% of its quests around it; still comes near players", "whole_map": "Roams the whole map", "home_only": "Only its home area"}}
+  }
+}

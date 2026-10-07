@@ -1,0 +1,14 @@
+{"state":{"owner_wish":"Bots learn their own paths, decide where to go and train themselves; maps lively, never boring.",
+"verified_facts":[
+"Deterministic sim on truong-hoc (6 bots from zero, 2 h): places known 80% (cap 200, criterion >=60%) PASS; shortcuts 57-193 per bot (>=1) PASS; stuck 1.5% team-wide (per bot 0.2-3.3%, criterion <2%) PASS team / FAIL some bots.",
+"Criterion 2 as written (path efficiency last 30 min >= 1.3x first 30 min) FAILS: 0.90 on the main seed; across 4 seeds 0.90-1.47.",
+"Criterion 3 as written (third trip between the same pair of places <= 80% of first, on >=50% of pairs) FAILS: 0 of 1 pair; the in-sight A* is already near optimal on a first trip, so repeated trips have nothing to learn.",
+"Alternative measure: trips to a quest spot visited before are 2.13x straighter than the first trip to it (1.67-2.56 across 4 seeds).",
+"Ablation: turning off remembered links changes trip efficiency inconsistently across seeds; remembered links mainly cut stuck time.",
+"Some bots on some seeds do few quest steps (5-26 in 2 h) because they never find targets behind fences.",
+"CPU with brain: 500 bots mean 2.76 ms/tick (budget 2), p99 6.31 ms (budget 8); planning dominates; phase 9 is the performance phase."]},
+"questions":{"criteria":{"stakes":"medium","instructions":"What to do with the two learning criteria that fail as written?",
+"criteria":{
+"replace_with_revisit":"Replace criteria 2 and 3 by 'trips to a known quest spot >= 1.3x straighter than the first trip' (measured 2.13x), and count stuck time team-wide; record the change and the measured numbers in the plan",
+"keep_and_improve":"Keep criteria as written and improve the brain before going on: plan across sight windows with the remembered graph (long routes from memory), learn to get round fences to hidden targets, so late-session trips really get faster; then re-measure",
+"keep_report_only":"Keep criteria as written but report-only (not asserted), go on to phase 4"}}}}

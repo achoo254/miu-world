@@ -1,0 +1,9 @@
+{"state":{"verified_facts":[
+"Bot memories persist per bot and map in a new table; restored memory equals the saved one (places, Q, links, fastest route to every place, hourly marks) in a DB round-trip test; after restart bots keep learning (real server run: known places 1,645 -> 2,008).",
+"Plan criterion: 'first trip after restart not more than 10% slower than the last trip before shutdown'. Single trips go to different places of different quests (seed: 0.918 before vs 0.326 after), so trip-vs-trip is not meaningful.",
+"Hour-level comparison: first hour after restart vs the same bot running on without restart: 0.69-1.57x across 7 seed pairs (mean 1.16; test seed 0.80): too noisy to assert.",
+"Alternative asserted now: knowledge after restart identical (fastest route to every known place not more expensive) AND first hour after restart >= 1.1x straighter than a bot starting from zero (7 seed pairs 1.11-2.10)."]},
+"questions":{"restart_criterion":{"stakes":"medium","instructions":"Which restart criterion should the plan keep?","criteria":{
+"replace_with_knowledge_and_vs_fresh":"Replace with: restored knowledge identical (fastest routes not more expensive) plus first hour after restart >= 1.1x straighter than a bot starting from zero; record numbers",
+"keep_original_report_only":"Keep the original trip-vs-trip criterion, printed but not asserted",
+"hour_vs_continuous_asserted":"Assert first hour after restart >= 0.9x the same bot running on without restart (fails on some seeds)"}}}}

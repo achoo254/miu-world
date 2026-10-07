@@ -1,0 +1,64 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1188,
+    "output_tokens": 243
+  },
+  "results": {
+    "sensing": {
+      "stakes": "medium",
+      "choice": "walk_grid_in_content",
+      "confidence": 0.67,
+      "probabilities": {
+        "no_sensing": 0.2,
+        "server_reads_voxels": 0.02,
+        "walk_grid_in_content": 0.78
+      },
+      "decision": "escalate"
+    },
+    "learning": {
+      "stakes": "medium",
+      "choice": "memory_graph_rl",
+      "confidence": 0.91,
+      "probabilities": {
+        "memory_graph_rl": 0.94,
+        "scripted_utility": 0.05,
+        "neural_policy": 0.01
+      },
+      "decision": "auto"
+    },
+    "training": {
+      "stakes": "medium",
+      "choice": "online_only",
+      "confidence": 0.31,
+      "probabilities": {
+        "online_only": 0.54,
+        "offline_only": 0.01,
+        "online_persisted_plus_sim": 0.45
+      },
+      "decision": "escalate"
+    },
+    "route_data_8376ca24": {
+      "stakes": "low",
+      "choice": "revert_keep_grid_loader",
+      "confidence": 0.46,
+      "probabilities": {
+        "keep_as_eval": 0.34,
+        "keep_as_is": 0.02,
+        "revert_keep_grid_loader": 0.64
+      },
+      "decision": "escalate"
+    },
+    "players": {
+      "stakes": "medium",
+      "choice": "perceive_and_choose",
+      "confidence": 0.92,
+      "probabilities": {
+        "perceive_and_choose": 0.95,
+        "attract_to_players": 0.0,
+        "ignore_players": 0.05
+      },
+      "decision": "auto"
+    }
+  }
+}

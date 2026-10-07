@@ -1,0 +1,11 @@
+{"state":{"verified_facts":[
+"Bots now play party quests: they answer their own questions (thinking 4-12 s, up to ~22 s per question with retries), follow on shared steps, take boss turns; players must wait for every member's answer before passing a question.",
+"Player rewards are proven identical with or without a bot in the party; bots never write progress.",
+"Implementation choice: a bot in a party also joins a party quest opened by the player (old behaviour: bots never played party quests), so players who invited a bot now wait for its answers.",
+"The web party card still shows 'play together as a party' only with >= 2 human players, so a party of the child plus a bot only gets quests the bot proposes.",
+"D11: the bot waves and leaves the party 5-10 s after the quest ends unless she starts a new quest; open: does a quest she plays alone count as 'new quest'?",
+"Owner wish: bots simulate real players; lively never boring."]},
+"questions":{
+"bots_join_player_runs":{"stakes":"medium","instructions":"Should a bot in the party also play a party quest the player opens?","criteria":{"yes_join":"Yes: a bot member joins every party quest of its party (players wait for its answers like for a human)","only_bot_proposed":"No: bots only play the quests they proposed; in player-opened runs they are absent as before"}},
+"party_card_with_bot":{"stakes":"low","instructions":"Should the party card offer 'play together' when the party is the child plus bots only?","criteria":{"show_with_bot":"Yes: a party with at least one human and one bot can start a party quest","keep_two_humans":"No: keep the button only with two or more human players"}},
+"d11_new_quest":{"stakes":"low","instructions":"During the 5-10 s goodbye wait, what keeps the bot in the party?","criteria":{"party_quest_or_coop_only":"Only a new party quest or co-op the party plays together","any_quest_she_starts":"Any quest she starts, including one she plays alone"}}}}

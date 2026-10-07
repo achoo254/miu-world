@@ -1,0 +1,20 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 857,
+    "output_tokens": 51
+  },
+  "results": {
+    "criteria": {
+      "stakes": "medium",
+      "choice": "replace_with_revisit",
+      "confidence": 0.95,
+      "probabilities": {
+        "keep_report_only": 0.0,
+        "keep_and_improve": 0.03,
+        "replace_with_revisit": 0.97
+      },
+      "decision": "auto"
+    }
+  }
+}

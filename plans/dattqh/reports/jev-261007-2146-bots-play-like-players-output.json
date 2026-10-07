@@ -1,0 +1,140 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1690,
+    "output_tokens": 534
+  },
+  "results": {
+    "D1": {
+      "stakes": "medium",
+      "choice": "precomputed_routes",
+      "confidence": 0.95,
+      "probabilities": {
+        "precomputed_routes": 0.96,
+        "server_voxel": 0.0,
+        "player_trails": 0.03,
+        "handwritten": 0.01
+      },
+      "decision": "auto"
+    },
+    "D2": {
+      "stakes": "medium",
+      "choice": "content_dir",
+      "confidence": 0.23,
+      "probabilities": {
+        "content_dir": 0.49,
+        "assets_dir": 0.15,
+        "built_at_start": 0.36
+      },
+      "decision": "escalate"
+    },
+    "D3": {
+      "stakes": "medium",
+      "choice": "bot_doing_message",
+      "confidence": 0.3,
+      "probabilities": {
+        "bot_doing_message": 0.53,
+        "gesture_only": 0.17,
+        "presence_field": 0.3
+      },
+      "decision": "escalate"
+    },
+    "D4": {
+      "stakes": "medium",
+      "choice": "bot_say_pools",
+      "confidence": 0.84,
+      "probabilities": {
+        "widen_canned": 0.08,
+        "bot_say_pools": 0.92
+      },
+      "decision": "auto"
+    },
+    "D5": {
+      "stakes": "low",
+      "choice": "two_step_reuse",
+      "confidence": 0.78,
+      "probabilities": {
+        "two_step_reuse": 0.89,
+        "new_combined_card": 0.11
+      },
+      "decision": "auto"
+    },
+    "D6": {
+      "stakes": "medium",
+      "choice": "player_leads",
+      "confidence": 0.92,
+      "probabilities": {
+        "player_leads": 0.95,
+        "server_starts": 0.0,
+        "bot_leads": 0.05
+      },
+      "decision": "auto"
+    },
+    "D7": {
+      "stakes": "low",
+      "choice": "random",
+      "confidence": 0.27,
+      "probabilities": {
+        "bot_quest": 0.04,
+        "player_first_chain": 0.45,
+        "random": 0.51
+      },
+      "decision": "escalate"
+    },
+    "D8": {
+      "stakes": "medium",
+      "choice": "watch_only",
+      "confidence": 0.79,
+      "probabilities": {
+        "watch_only": 0.86,
+        "own_part": 0.09,
+        "does_shared": 0.05
+      },
+      "decision": "escalate"
+    },
+    "D9": {
+      "stakes": "medium",
+      "choice": "balanced",
+      "confidence": 0.64,
+      "probabilities": {
+        "balanced": 0.76,
+        "quieter": 0.02,
+        "livelier": 0.22
+      },
+      "decision": "escalate"
+    },
+    "D10": {
+      "stakes": "low",
+      "choice": "server_integration_only",
+      "confidence": 0.61,
+      "probabilities": {
+        "server_integration_only": 0.74,
+        "eager_map_knob": 0.08,
+        "own_playwright_project": 0.18
+      },
+      "decision": "auto"
+    },
+    "D11": {
+      "stakes": "low",
+      "choice": "wave_and_leave",
+      "confidence": 0.49,
+      "probabilities": {
+        "leave_at_once": 0.23,
+        "wave_and_leave": 0.66,
+        "stay_until_she_leaves": 0.11
+      },
+      "decision": "escalate"
+    },
+    "D12": {
+      "stakes": "low",
+      "choice": "home_area_70",
+      "confidence": 0.34,
+      "probabilities": {
+        "whole_map": 0.3,
+        "home_only": 0.14,
+        "home_area_70": 0.56
+      },
+      "decision": "escalate"
+    }
+  }
+}
