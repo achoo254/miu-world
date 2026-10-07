@@ -1,11 +1,14 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { PARTY_INVITE_TTL_MS, type ServerWsMessage } from '@miu/schema/multiplayer';
 import { hubHarness, settle, type Client } from '../../test/hub-harness';
-import { BOT_TEAM_LEAVE_MS, BotRunner } from './bot-runner';
+import { PARTY_QUEST } from '../coop/party-quest-fixtures';
+import type { PartyQuestBotMoves } from '../coop/bot-party-quest';
+import { BOT_QUEST_PROPOSE_MS, BOT_TEAM_LEAVE_MS, BotRunner } from './bot-runner';
 import { BOT_MAP_CONFIGS } from './bot-profiles';
 import { PartyService } from './party-service';
 import { INVITE_LAPSE_MS } from './bot-social';
 import { WalkStore } from './bot-brain/walk-store';
+import { memoryBotStore, type BotStore } from './bot-store';
 
 let h: ReturnType<typeof hubHarness>;
 let runner: BotRunner | null = null;
@@ -133,11 +136,11 @@ describe('companion bots inviting players they keep meeting, with their runner',
    * The castle's bots on their feet (seeded dice), with a quest of the castle to play together; its step's place is
    * not on their walk grid, so they do not play it on their own (nor cheer at finishing it all the time).
    */
-  function startBots(): void {
+  function startBots(store?: BotStore): void {
     let seed = 11;
     const random = (): number => ((seed = (seed * 16_807) % 2_147_483_647) - 1) / 2_147_483_646;
     const quests = [{ id: 'thu-thach-lau-dai', steps: [{ id: 's1', targets: ['noi-khong-co'], question: false }] }];
-    runner = new BotRunner(h.hub, { random, walk: { get: (mapId) => (mapId === CASTLE ? walk.get(mapId) : null) }, quests: { questsOn: (mapId) => (mapId === CASTLE ? quests : []) } });
+    runner = new BotRunner(h.hub, { random, store, walk: { get: (mapId) => (mapId === CASTLE ? walk.get(mapId) : null) }, quests: { questsOn: (mapId) => (mapId === CASTLE ? quests : []) } });
     runner.start();
   }
 
@@ -259,5 +262,46 @@ describe('companion bots inviting players they keep meeting, with their runner',
     h.hub.settingsChanged('child-b', { botsEnabled: false });
     await vi.advanceTimersByTimeAsync(1_500);
     expect(h.hub.parties.partyOf(second)).toBeNull();
+  });
+
+  it('asks the party to play a quest of its map a moment after she said yes; played through, remembers her, and waves goodbye unless she starts another', { timeout: 30_000 }, async () => {
+    const store = memoryBotStore();
+    startBots(store);
+    const a = await player();
+    const inviter = await untilInvited(a);
+    const propose = vi.spyOn(h.hub, 'botProposeQuest');
+    a.send({ type: 'party-reply', from: inviter, accept: true });
+    await vi.advanceTimersByTimeAsync(BOT_QUEST_PROPOSE_MS - 10);
+    expect(propose).not.toHaveBeenCalled();
+    await vi.advanceTimersByTimeAsync(BOT_QUEST_PROPOSE_MS + 20);
+    expect(propose).toHaveBeenCalledTimes(1);
+    expect(propose).toHaveBeenCalledWith(inviter, a.id, 'thu-thach-lau-dai');
+
+    // The party plays a quest (the party quests' service shows it to its bot): it heads for the quest's places and
+    // shows the quest it is on.
+    const driver = runner?.partyQuestDriver();
+    const moves: PartyQuestBotMoves = { done: vi.fn(), blow: vi.fn(), question: () => null };
+    const play = (): void => driver?.play(inviter, { quest: PARTY_QUEST, front: 0, done: new Set(), blow: null }, moves);
+    play();
+    expect(a.all('bot-doing').some((d) => d.id === inviter && d.quest === PARTY_QUEST.id)).toBe(true);
+    // She finished it with the bot: it remembers her, and is to wave goodbye in 5 to 10 seconds; but she starts
+    // another quest with it before that, so it stays.
+    driver?.finished(inviter, PARTY_QUEST.id, [a.id]);
+    await vi.advanceTimersByTimeAsync(0);
+    expect(store.memories.get(`${inviter}|child-a`)).toEqual({ runs: 1, lastQuestId: PARTY_QUEST.id });
+    await vi.advanceTimersByTimeAsync(BOT_TEAM_LEAVE_MS - 100);
+    expect(h.hub.parties.partyOf(inviter)?.leader).toBe(a.id);
+    play();
+    await vi.advanceTimersByTimeAsync(BOT_TEAM_LEAVE_MS + 200);
+    expect(h.hub.parties.partyOf(inviter)?.leader).toBe(a.id);
+    expect(lines(a, 'bye')).toEqual([]);
+    // That one ends (she leaves it, say): 5 to 10 seconds later it waves goodbye and leaves.
+    driver?.forget([inviter]);
+    await vi.advanceTimersByTimeAsync(BOT_TEAM_LEAVE_MS - 100);
+    expect(h.hub.parties.partyOf(inviter)).not.toBeNull();
+    await vi.advanceTimersByTimeAsync(BOT_TEAM_LEAVE_MS + 200);
+    expect(h.hub.parties.partyOf(inviter)).toBeNull();
+    expect(lines(a, 'bye').map((l) => l.id)).toEqual([inviter]);
+    expect(a.all('emote').some((e) => e.id === inviter && e.emote === 'wave')).toBe(true);
   });
 });

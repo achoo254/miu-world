@@ -185,6 +185,34 @@ describe('companion bots meeting a player', () => {
     expect(asks.filter((a) => a.line !== undefined).every((a) => a.line === 'friend')).toBe(true);
   });
 
+  it('after playing a party\'s quest through with her: ask to be friends 70% of the time within the same pace, then greet her as known', async () => {
+    let asks = 0;
+    for (let i = 0; i < 2_000; i++) {
+      // The store knew nothing of her before: what it says later does not undo the quest just played.
+      const { s } = social(`played-${i}`, async () => false);
+      const action = s.playedWith('bot-a', 'p-1', ctx());
+      if (action?.friendAsk) {
+        asks += 1;
+        expect(action).toMatchObject({ say: { key: 'friend' }, emote: null, partyInvite: false });
+      }
+    }
+    expect(asks / 2_000).toBeCloseTo(FRIEND_ASK_KNOWN_CHANCE, 1);
+
+    const { s, clock } = social(0.1, async () => false);
+    expect(s.playedWith('bot-a', 'p-1', ctx())?.friendAsk).toBe(true);
+    // Within ten minutes of an ask no other bot asks her, a friend is never asked.
+    clock.now = FRIEND_ASK_GAP_MS - 1;
+    expect(s.playedWith('bot-b', 'p-1', ctx())).toBeNull();
+    clock.now = FRIEND_ASK_GAP_MS;
+    expect(s.playedWith('bot-c', 'p-1', ctx({ friend: true }))).toBeNull();
+    // Its recall of her, still on its way as they finish, does not undo the quest just played: she is greeted as a
+    // player it knows, never with "hello", though it is their first meeting.
+    expect(s.meet('bot-d', 'p-2', ctx({ friend: true }))).toBeNull();
+    expect(s.playedWith('bot-d', 'p-2', ctx({ friend: true }))).toBeNull();
+    await settle();
+    expect(s.meet('bot-d', 'p-2', ctx({ friend: true }))?.say?.key).toBe('again');
+  });
+
   it('cheer to a player who sees it when it finds or finishes its quest, at the same pace', () => {
     const { s, clock } = social(0.5);
     expect(s.cheer('bot-a', 'p-1', 'found', ctx())?.key).toBe('found');

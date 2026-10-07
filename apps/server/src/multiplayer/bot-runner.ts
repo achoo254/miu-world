@@ -5,8 +5,11 @@
 // its own (its name tag shows the quest mark), a player it sees and chooses to go and meet. A player within its reach
 // it turns to, waves at and talks to in its own lines, now and then asking her to be friends (bot-social.ts, at a
 // pace that never talks her over); it visits friends, answers invites and plays co-op challenges. A player it keeps
-// meeting it now and then asks into a party: she leads it, the bot still goes its own way, and it waves goodbye and
-// leaves a little after the party's challenge ends, at once when she goes to another map. What it learnt of each
+// meeting it now and then asks into a party: she leads it, the bot still goes its own way, asks the party to play a
+// quest of its map and plays its own part in it (coop/bot-party-quest.ts: it heads for each step's place by what it
+// learnt, answers its own questions, strikes the boss on its turn; nothing of it recorded or paid), remembers her when
+// they played it through, and waves goodbye and leaves a little after the party's quest or challenge ends, at once
+// when she goes to another map. What it learnt of each
 // map is kept in the database (bot-brain/memory-keeper.ts), so it goes on learning after a restart. All bots are
 // clearly labeled "[Bạn máy]".
 import { HOME_MAP_ID, INTERACT_RANGE, type PartyView, type PlayerPresence, type ServerWsMessage } from '@miu/schema/multiplayer';
@@ -15,7 +18,8 @@ import { COOP_BOT_LINE_VARIANTS, type CoopAction, type CoopBotLine, type CoopBot
 import { VOICE_BOT_LINE_VARIANTS, type VoiceBotLineKey, type VoiceChannel } from '@miu/schema/voice';
 import { freshPicker, type FreshPicker } from '@miu/quest/pick-fresh';
 import type { CoopBotDriver, CoopBotMoves, CoopHost } from '../coop/coop-service';
-import { botAnswerXp, botSkillLevel, fatigueAfter, moodAt, personaOf, rightChance, talkChance, thinkMs, VOICES, type BotPersona, type Bounds } from './bot-persona';
+import { BotPartyQuestPlayer, chooseBotPartyQuest, type PartyQuestBotDriver } from '../coop/bot-party-quest';
+import { botAnswerXp, botSkillLevel, fatigueAfter, moodAt, personaOf, rightChance, talkChance, thinkMs, VOICES, type BotPersona, type Bounds, type QuestionInfo } from './bot-persona';
 import { BOT_MAP_CONFIGS, findBot, HOME_SNAP, type BotProfile } from './bot-profiles';
 import type { BotStore } from './bot-store';
 import { BotSocial, type MeetAction, type MeetContext, type PendingInvite } from './bot-social';
@@ -78,8 +82,12 @@ const GREET_S = 3.5;
 const SOCIAL_SWEEP_MS = 5_000;
 /** How often a bot in a party it asked a player into checks she is still on its map (ms). */
 const TEAM_CHECK_MS = 1_000;
-/** After the party's challenge, it waves goodbye and leaves this long later (and up to twice as long). */
+/** After the party's challenge or quest, it waves goodbye and leaves this long later (and up to twice as long). */
 export const BOT_TEAM_LEAVE_MS = 5_000;
+/** In the party it asked her into, it asks the party to play a quest this long after she said yes (up to twice as long). */
+export const BOT_QUEST_PROPOSE_MS = 1_000;
+/** A question of a party's quest with no skill to it (a choice of the story's way): an ordinary one to think over. */
+const PLAIN_QUESTION: QuestionInfo = { skill: '', subject: null, difficulty: 0.35, medianMs: 8_000 };
 
 class CompanionBotInstance {
   readonly profile: BotProfile;
@@ -299,6 +307,8 @@ export class BotRunner {
   /** Bots in a party with the player they asked into it (by the bot's instance id), and their goodbye on its way. */
   private readonly teams = new Map<string, { inst: CompanionBotInstance; player: string; leaving: NodeJS.Timeout | null }>();
   private teamsCheckedAt = Date.now();
+  /** Bots playing their part in party quests. */
+  private readonly partyPlayer: BotPartyQuestPlayer;
 
   constructor(hub: MultiplayerHub, options: BotRunnerOptions = {}) {
     this.hub = hub;
@@ -324,6 +334,26 @@ export class BotRunner {
         return Boolean(store && child && (await store.recall(botProfileId(botId), child)));
       },
     });
+    this.partyPlayer = new BotPartyQuestPlayer({
+      random: this.random,
+      thinkMs: (botId, info, answers) => thinkMs(personaOf(botId), info ?? PLAIN_QUESTION, fatigueAfter(answers), this.random()),
+      chance: (botId, info, answers) => this.chanceOf(botId, info, answers),
+      learnt: (botId, info, right) => this.learnt(botId, info, right),
+      share: (botId, goal) => this.instanceOf(botId)?.brain?.share(goal),
+      finished: (botId, questId, players) => this.playedThrough(botId, questId, players),
+      ended: (botId) => {
+        // The quest of a party it asked her into is over: it says goodbye and leaves.
+        if (this.teams.has(botId)) this.waveAndLeave(botId);
+      },
+    });
+  }
+
+  /**
+   * Companion bots in party quests: each bot of the party plays its own part (coop/bot-party-quest.ts), as its
+   * persona, skill and mood have it; what it learns from its answers goes to its own skills.
+   */
+  partyQuestDriver(): PartyQuestBotDriver {
+    return this.partyPlayer;
   }
 
   /**
@@ -442,26 +472,36 @@ export class BotRunner {
     return { key, variant: picker.next() };
   }
 
+  /** The chance its answer is right now: as its skill, the question, its mood and tiredness (after `answers`) make it. */
+  private async chanceOf(botId: string, info: QuestionInfo | null, answers: number): Promise<number> {
+    const persona = personaOf(botId);
+    const skills = await this.skillsOf(botId);
+    const level = botSkillLevel(info ? (skills[info.skill] ?? 0) : 0);
+    return info ? rightChance(persona, info, level, moodAt(botId, persona, this.clock()), fatigueAfter(answers), this.bounds) : this.bounds.max;
+  }
+
+  /** It learns from its own answer only (more from a right one), kept for the next challenge or quest. */
+  private learnt(botId: string, info: QuestionInfo | null, right: boolean): void {
+    if (!info?.skill) return;
+    const gained = botAnswerXp(right);
+    void this.skillsOf(botId).then((skills) => {
+      skills[info.skill] = (skills[info.skill] ?? 0) + gained;
+    });
+    void this.store?.addSkillXp(botProfileId(botId), info.skill, gained).catch((err: unknown) => {
+      console.error('bot skill failed', err instanceof Error ? err.name : typeof err);
+    });
+  }
+
   /** Its answer: right as often as its skill, the question, its mood and tiredness make it; it learns from it. */
   private async coopAnswer(botId: string, task: CoopTaskView, turn: CoopTurn): Promise<{ action: CoopAction; right: boolean }> {
     const right = turn.moves.answerOf(task.id);
     const info = turn.moves.question(task.id);
-    const persona = personaOf(botId);
-    const skills = await this.skillsOf(botId);
-    const level = botSkillLevel(info ? (skills[info.skill] ?? 0) : 0);
-    const chance = info ? rightChance(persona, info, level, moodAt(botId, persona, this.clock()), fatigueAfter(turn.answers), this.bounds) : this.bounds.max;
+    const chance = await this.chanceOf(botId, info, turn.answers);
     const others = task.choices.filter((c) => c.id !== right);
     const wrong = others[Math.floor(this.random() * others.length)];
     const isRight = right !== null && (this.random() < chance || !wrong);
     turn.answers += 1;
-    if (info) {
-      // It learns from its own answer only (more from a right one), kept for the next challenge.
-      const gained = botAnswerXp(isRight);
-      skills[info.skill] = (skills[info.skill] ?? 0) + gained;
-      void this.store?.addSkillXp(botProfileId(botId), info.skill, gained).catch((err: unknown) => {
-        console.error('bot skill failed', err instanceof Error ? err.name : typeof err);
-      });
-    }
+    this.learnt(botId, info, isRight);
     const choice = isRight ? (right ?? '') : (wrong?.id ?? task.choices[0]?.id ?? '');
     return { action: { kind: 'answer', task: task.id, choice }, right: isRight };
   }
@@ -567,6 +607,9 @@ export class BotRunner {
       },
     });
 
+    // Its bots play their part in the party quests they are in.
+    this.hub.setPartyQuestBots(this.partyPlayer);
+
     // Run tick loop at 10Hz (100ms)
     this.lastTick = Date.now();
     this.timer = setInterval(() => this.tick(), 100);
@@ -649,7 +692,7 @@ export class BotRunner {
    */
   private mayInvite(bot: CompanionBotInstance, playerId: string): boolean {
     const id = bot.profile.id;
-    if (!bot.brain || this.coop.has(id) || this.social.inviting(id) !== null || !this.hub.botMayInvite(id, playerId)) return false;
+    if (!bot.brain || this.coop.has(id) || this.partyPlayer.plays(id) || this.social.inviting(id) !== null || !this.hub.botMayInvite(id, playerId)) return false;
     return this.quests.questsOn(bot.room.mapId, this.clock()).length > 0;
   }
 
@@ -703,6 +746,8 @@ export class BotRunner {
     this.replies.clear();
     for (const turn of this.coop.values()) if (turn.timer) clearTimeout(turn.timer);
     this.coop.clear();
+    this.partyPlayer.stop();
+    this.hub.setPartyQuestBots(null);
     for (const talk of this.talks.values()) if (talk.timer) clearTimeout(talk.timer);
     this.talks.clear();
     this.teams.clear();
@@ -756,6 +801,39 @@ export class BotRunner {
     if (!accepted || !inst) return;
     this.teams.set(botId, { inst, player: asked, leaving: null });
     this.answerTo(botId, asked, 'yay', 'cheer');
+    this.later(BOT_QUEST_PROPOSE_MS * (1 + this.random()), () => this.proposeQuest(botId));
+  }
+
+  /**
+   * A moment after she said yes, it asks the party to play a quest of its map (Jev D7: any of them, each as likely),
+   * unless the party plays one or a challenge already.
+   */
+  private proposeQuest(botId: string): void {
+    const team = this.teams.get(botId);
+    if (!team || this.coop.has(botId) || this.partyPlayer.plays(botId)) return;
+    const questId = chooseBotPartyQuest(this.quests, team.inst.room.mapId, this.clock(), this.random);
+    if (questId) this.hub.botProposeQuest(botId, team.player, questId);
+  }
+
+  /**
+   * It played a party's quest through with these players: it remembers each of them (kept in its store, so it knows
+   * her after a restart too) and may ask her to be friends now (more likely than when they only meet).
+   */
+  private playedThrough(botId: string, questId: string, players: readonly string[]): void {
+    const inst = this.instanceOf(botId);
+    for (const playerId of players) {
+      const child = this.host.childIdOf(playerId);
+      if (child && this.store) {
+        void this.store.remember(botProfileId(botId), child, questId, this.clock()).catch((err: unknown) => {
+          console.error('bot memory failed', err instanceof Error ? err.name : typeof err);
+        });
+      }
+      if (!inst?.room.members.has(botId)) continue;
+      const action = this.social.playedWith(botProfileId(botId), playerId, this.meetContext(inst, playerId));
+      if (!action) continue;
+      if (action.say) inst.say(action.say, playerId);
+      void this.hub.botFriendRequest(botId, playerId);
+    }
   }
 
   /** She said no to a bot's invite, or let it lapse: no hard feelings, it goes back to what it was doing. */
@@ -776,13 +854,14 @@ export class BotRunner {
     }
   }
 
-  /** In a moment it waves goodbye and leaves the party, unless she starts a challenge with it meanwhile. */
+  /** In a moment it waves goodbye and leaves the party, unless she starts a challenge or a quest with it meanwhile. */
   private waveAndLeave(botId: string): void {
     const team = this.teams.get(botId);
     if (!team || team.leaving) return;
     team.leaving = this.later(BOT_TEAM_LEAVE_MS * (1 + this.random()), () => {
       team.leaving = null;
-      if (this.teams.get(botId) !== team || this.coop.has(botId)) return;
+      // She started a challenge or another quest with it meanwhile: it stays.
+      if (this.teams.get(botId) !== team || this.coop.has(botId) || this.partyPlayer.plays(botId)) return;
       this.answerTo(botId, team.player, 'bye', 'wave');
       this.leaveTeam(botId);
     });

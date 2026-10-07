@@ -33,6 +33,7 @@ import { PartyService, type PartyError } from './party-service';
 import { FriendRequestLimiter } from '../friend/friend-limiter';
 import type { CoopService } from '../coop/coop-service';
 import type { PartyQuestHost, PartyQuestService } from '../coop/party-quest';
+import type { PartyQuestBotDriver } from '../coop/bot-party-quest';
 import type { FriendStore, RequestOutcome } from '../friend/friend-store';
 import { VOICE_SIGNAL_MAX_BYTES, type VoiceBotLine } from '@miu/schema/voice';
 import { VoiceService, type VoiceHost } from './voice-service';
@@ -249,6 +250,8 @@ export class MultiplayerHub {
   private coop: CoopService | null = null;
   /** Quests played as a party (set once the server runs them). */
   private partyQuests: PartyQuestService | null = null;
+  /** How companion bots play party quests (set by the bot runner). */
+  private partyQuestBots: PartyQuestBotDriver | null = null;
   private readonly store: MultiplayerStore | null;
   private readonly authenticate: Authenticate | null;
   private readonly allowedOrigins: ReadonlySet<string>;
@@ -302,6 +305,11 @@ export class MultiplayerHub {
     this.partyQuests = partyQuests;
   }
 
+  /** The bot runner plays its bots' part in party quests (null: it stopped). */
+  setPartyQuestBots(driver: PartyQuestBotDriver | null): void {
+    this.partyQuestBots = driver;
+  }
+
   /** What the co-op service reads of the hub: delivering, parties, who someone is, switches, where she stands. */
   coopHost(): PartyQuestHost {
     return {
@@ -320,6 +328,8 @@ export class MultiplayerHub {
       botsOn: (id) => this.players.get(id)?.bots ?? false,
       online: (id) => this.players.has(id),
       mapOf: (id) => this.locate(id)?.room.mapId ?? null,
+      present: (id) => (this.isBot(id) ? this.locate(id) !== null : this.players.has(id)),
+      bots: () => this.partyQuestBots,
     };
   }
 
@@ -1040,6 +1050,14 @@ export class MultiplayerHub {
     if (!this.parties.invite(botId, publicId).ok) return false;
     player.transport.send({ type: 'party-invite', from: { id: botId, displayName: bot.presence.displayName, isBot: true }, expiresInMs: PARTY_INVITE_TTL_MS });
     return true;
+  }
+
+  /**
+   * A companion bot asks its party to play `questId` (its runner chose one of its map) with player `publicId` in it.
+   * False when it may not (no party quests run, the party plays one already, she is not in its party).
+   */
+  botProposeQuest(botId: string, publicId: string, questId: string): boolean {
+    return this.isBot(botId) && (this.partyQuests?.propose(botId, publicId, questId) ?? false);
   }
 
   /** A companion bot leaves its party (its runner decides when), as a player does. */

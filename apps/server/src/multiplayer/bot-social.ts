@@ -2,8 +2,8 @@
 // ngẫu nhiên chat hoặc chủ động kết bạn"). Whether it walked over to her or only passes by, it turns to her and waves;
 // it says hello the first time, "good to see you again" to a player it met or played with before, now and then what it
 // is busy with, and cheers to a player in sight when it finds what its quest needs or finishes it. It sometimes asks
-// her to be friends: more likely when they won a challenge together, never more often than FRIEND_ASK_GAP_MS for her
-// (all bots together), never once they are friends.
+// her to be friends: more likely when they won a challenge or played a party's quest through together (and right as
+// that quest ends), never more often than FRIEND_ASK_GAP_MS for her (all bots together), never once they are friends.
 //
 // A bot that keeps meeting a player who has been around a while sometimes asks her into a party (its `invite` line,
 // then the invite card a player gets from a player). Rarely (Jev D9, "balanced"): from their second meeting, once a
@@ -232,6 +232,24 @@ export class BotSocial {
     return this.fresh(botId, this.playerOf(playerId), key, voice, this.options.now());
   }
 
+  /**
+   * It played a quest through with player `playerId` (her party's quest): from now it knows her as one it played
+   * with, and it may ask her to be friends now, as likely as after a challenge won together and within the same pace
+   * (none while another ask to her is recent, never once they are friends). The ask with its `friend` line (a line
+   * only when another bot did not just speak to her), or null when it does not ask.
+   */
+  playedWith(botId: string, playerId: string, ctx: MeetContext): MeetAction | null {
+    const now = this.options.now();
+    const who = this.playerOf(playerId);
+    const pair = this.pairOf(who, botId);
+    pair.knows = true;
+    if (!this.asks(who, pair, ctx, true, now)) return null;
+    who.lastFriendAskAt = now;
+    pair.asked = true;
+    pair.lastAt = now;
+    return { say: this.line(botId, who, 'friend', ctx.voice, now), emote: null, friendAsk: true, partyInvite: false };
+  }
+
   /** It found what its quest needs (`found`) or finished it (`done`), and player `playerId` sees it: a cheer to her, or null. */
   cheer(botId: string, playerId: string, kind: 'found' | 'done', ctx: MeetContext): BotLine | null {
     const now = this.options.now();
@@ -302,13 +320,14 @@ export class BotSocial {
       return false;
     }
     pair.knows = 'asking';
+    // A quest played through meanwhile (`playedWith`) is not undone by what the store knew before it.
     recall(botId, playerId).then(
       (known) => {
-        pair.knows = known;
+        if (pair.knows === 'asking') pair.knows = known;
       },
       (err: unknown) => {
         console.error('bot recall failed', err instanceof Error ? err.name : typeof err);
-        pair.knows = false;
+        if (pair.knows === 'asking') pair.knows = false;
       },
     );
     return null;
