@@ -36,6 +36,7 @@ import { checkCurriculumLinks } from './curriculum-links';
 import { checkLocales } from './check-locales';
 import { modelSwatches } from './pet-swatches';
 import { questSpread } from './quest-spread';
+import { auditQuestTargets, formatFinding } from '../world/quest-target-audit';
 
 /** Content files the server catalogue reads (a trailing slash means the `.json` files directly in that folder). */
 const CATALOGUE_FILES = [
@@ -716,10 +717,12 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
   return { issues, warnings: [...warnings, ...curriculum.warnings], notes, fileCount: files.length };
 }
 
-function main(): void {
+async function main(): Promise<void> {
   const report = checkContent();
   // The web app's bilingual dictionaries: every Vietnamese line has its English twin.
   report.issues.push(...checkLocales());
+  // Every quest target on the committed maps, played step by step: reachable, its own prompt, shown, in sight.
+  report.issues.push(...(await auditQuestTargets()).map(formatFinding));
   for (const note of report.notes) console.log(`note: ${note}`);
   for (const warning of report.warnings) console.log(`warning: ${warning}`);
   if (report.issues.length > 0) {
@@ -731,5 +734,5 @@ function main(): void {
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  main();
+  await main();
 }

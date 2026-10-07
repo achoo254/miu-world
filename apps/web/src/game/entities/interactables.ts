@@ -122,27 +122,36 @@ function npcAnimator(mixer: AnimationMixer, clips: readonly AnimationClip[], ran
 
 /**
  * Nearest available target whose radius contains the player, or null. The quest step's own target (`preferred`)
- * wins whenever she is within its radius, so a prop standing beside it never takes its prompt. Pure: unit-tested.
+ * wins whenever she is within its radius, so a prop standing beside it never takes its prompt; next, the nearest
+ * of the other things the step still takes (`stepTargets`: the clues of a search not found yet), so a character
+ * standing beside the second clue never takes its prompt either. Pure: unit-tested.
  */
 export function pickNearest<T extends { readonly available: boolean; readonly def: { id: string; position: readonly number[]; radius: number } }>(
   targets: readonly T[],
   player: { x: number; y: number; z: number },
   preferred: string | null = null,
+  stepTargets: readonly string[] = [],
 ): T | null {
   let best: T | null = null;
   let bestDistance = Infinity;
+  let bestOfStep: T | null = null;
+  let bestOfStepDistance = Infinity;
   for (const target of targets) {
     if (!target.available) continue;
     const [x = 0, y = 0, z = 0] = target.def.position;
     const distance = Math.hypot(x - player.x, y - player.y, z - player.z);
     if (distance > target.def.radius) continue;
     if (preferred !== null && target.def.id === preferred) return target;
+    if (distance < bestOfStepDistance && stepTargets.includes(target.def.id)) {
+      bestOfStep = target;
+      bestOfStepDistance = distance;
+    }
     if (distance < bestDistance) {
       best = target;
       bestDistance = distance;
     }
   }
-  return best;
+  return bestOfStep ?? best;
 }
 
 /** Envelope drawn in code (no pack has one): a thin box with a painted face, one draw call. */

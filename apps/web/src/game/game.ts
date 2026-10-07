@@ -817,7 +817,7 @@ export class Game {
     this.cleanups.push(() => store.emit({ type: 'pet-scene', scene: null }));
     this.cleanups.push(() => store.emit({ type: 'pet-sniff', available: false, wait: 0 }));
     overlay.stats.petGear = [...(pet?.gear ?? [])];
-    /** The clues of the step under way still to find; the pet sniffs toward the nearest one on this map. */
+    /** The clues of the step under way still to find: the pet sniffs toward the nearest one on this map, and they win the Interact prompt. */
     let sniffTargets: readonly string[] = [];
     let petName = petSpec?.name ?? '';
     const sniffPlaces = (): Array<readonly [number, number, number]> => sniffTargets.flatMap((id) => {
@@ -1223,7 +1223,7 @@ export class Game {
       overlay.stats.hintTarget = arrow.showing ? (hint?.def.id ?? null) : null;
       // While she is on a seat, a bed or before a screen, the only prompt is to get up.
       const held = objectInteractions.holding;
-      const nearest = carried || held ? null : pickNearest(targets, controller.position, hint?.def.id ?? null);
+      const nearest = carried || held ? null : pickNearest(targets, controller.position, hint?.def.id ?? null, sniffTargets);
       // Another player near (quest targets still win): the online menu.
       const nearPlayer = nearest || carried || held ? null : online.nearest(controller.position);
       // Quest targets always win the prompt; ambient life goes quiet next to them (and next to another player).

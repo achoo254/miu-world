@@ -47,6 +47,7 @@
     "world:nha-cua-be": "tsx tools/world/generate-nha-cua-be-map.ts",
     "world:overview": "tsx tools/world/generate-world-overview.ts",
     "world:interactions": "tsx tools/world/interaction-coverage.ts",
+    "world:quest-targets": "tsx tools/world/quest-target-audit.ts",
     "world:bot-routes": "tsx tools/world/bot-routes.ts"
   },
   "devDependencies": {

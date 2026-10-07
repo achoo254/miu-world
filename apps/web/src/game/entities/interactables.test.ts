@@ -32,6 +32,16 @@ describe('pickNearest', () => {
     expect(pickNearest([parrot, target('clue-box', [12, 0, 10], 2, false)], { x: 11.9, y: 0, z: 10 }, 'clue-box')?.def.id).toBe('parrot-guide');
   });
 
+  it("gives the prompt to the step's other clues over a character standing beside them", () => {
+    const clue = target('second-clue', [20, 0, 10], 2.5);
+    const dog = target('dog', [21, 0, 10], 3);
+    // Nearer the dog, by the second clue of the search: the clue the step still takes wins.
+    expect(pickNearest([parrot, clue, dog], { x: 20.8, y: 0, z: 10 }, 'first-clue', ['first-clue', 'second-clue'])?.def.id).toBe('second-clue');
+    // The arrow's own target still comes first; outside every step target's radius the nearest wins.
+    expect(pickNearest([clue, dog, target('first-clue', [21.5, 0, 10], 2)], { x: 21, y: 0, z: 10 }, 'first-clue', ['first-clue', 'second-clue'])?.def.id).toBe('first-clue');
+    expect(pickNearest([clue, dog], { x: 23.5, y: 0, z: 10 }, null, ['second-clue'])?.def.id).toBe('dog');
+  });
+
   it('counts height, so a target on a ledge above is out of reach', () => {
     expect(pickNearest([box], { x: 12, y: 3, z: 10 })).toBeNull();
   });

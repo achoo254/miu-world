@@ -39,12 +39,17 @@ export async function loadMapGrid(map: string): Promise<MapGrid> {
   }
   // The child's home with every style she may pick standing at once: no pick may wall a target off.
   const cells = await propCells(everyDecorProp(e));
+  // The walk search asks for millions of cells: the props' cells by a numeric index, no string per lookup.
+  const [, sy, sz] = world.size;
+  const index = (x: number, y: number, z: number): number => (x * sy + y) * sz + z;
+  const propAt = new Map<number, number>();
+  for (const [key, traversal] of cells) {
+    const [x = 0, y = 0, z = 0] = key.split(',').map(Number);
+    propAt.set(index(x, y, z), traversal === 'blocking' ? -2 : -1);
+  }
   const grid = {
     size: world.size,
-    get: (x: number, y: number, z: number): number => {
-      const p = cells.get(cellKey(x, y, z));
-      return p === 'blocking' ? -2 : p ? -1 : world.get(x, y, z);
-    },
+    get: (x: number, y: number, z: number): number => propAt.get(index(x, y, z)) ?? world.get(x, y, z),
   };
   return { entities: e, world, cells, grid };
 }

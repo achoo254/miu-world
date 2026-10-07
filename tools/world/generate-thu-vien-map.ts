@@ -731,7 +731,11 @@ function buildGrounds(ctx: ZoneMapContext, c: ZoneMapContext, kit: Kit): void {
   // behind it, the purple myrtle, benches, a sandy beach on the stream.
   const stone = { x: 184, z: 555 };
   box(stone.x - 2, BASE, stone.z - 1, stone.x + 2, BASE, stone.z + 1, 'stone');
-  for (const [dx, dz] of [[-5, -2], [5, 1], [-3, 4]] as const) c.prop(M.rock, stone.x + dx, stone.z + dz, dx * 40);
+  for (const [dx, dz] of [[-5, -2], [5, 1], [-3, 4]] as const) {
+    c.prop(M.rock, stone.x + dx, stone.z + dz, dx * 40);
+    // A large rock fills some six blocks round its centre: no quest thing may stand in it.
+    c.keepOut(stone.x + dx - 3, stone.z + dz - 3, stone.x + dx + 3, stone.z + dz + 3);
+  }
   for (let i = 0; i < 14; i++) {
     const a = (i / 14) * Math.PI * 2;
     c.prop(i % 3 === 0 ? M.flowerPurple : M.grass, Math.round(stone.x + Math.cos(a) * 5), Math.round(stone.z + Math.sin(a) * 4), i * 25);
