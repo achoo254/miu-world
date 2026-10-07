@@ -1,0 +1,26 @@
+{
+  "state": {
+    "task": "Release the new boss duel (commit d7f85f7f, exported tree) to production. The owner said: when it is fixed, deploy it.",
+    "facts": [
+      "CI run 37639125935 on d7f85f7f: unit-test job green for the first time since 01/10; integration and SAST green; E2E 21 failures that are standing failures from before, plus 4 not in the earlier lists.",
+      "bosses.spec 233 and 245 (draw-call budget during a boss): fail waiting for more than 24-27 rendered frames within 10 s on CI's software GPU (got 22-25); the draw-call value is never reached. These tests had never run on CI before, because the shard always stopped at maxFailures 10.",
+      "coop.spec 160 (team boss support layers): timed out at 150 s with two pages rendering at about 2-4 frames per second on CI.",
+      "autowalk.spec 58 (vehicle autowalk): timed out clicking the quest card; it passed in the previous CI run on the same code path.",
+      "A debugger agent proved with A/B runs that the boss code does not slow the game (CI frame rate during a fight 3.7-3.9 fps, same as normal play 4.3-4.9) and found no product bug; all boss and coop E2E tests pass on the dev machine, including under SwiftShader emulation as on CI.",
+      "Dev-machine gates on the boss work: typecheck 0 errors, lint 0 warnings, 318 unit tests passing, E2E bosses and coop passing; draw calls during a fight measured 108 vs 114 before on a real GPU.",
+      "A separate plan is already replacing broad E2E with a small always-green smoke set, a Node audit and screenshot review, because the owner judged the current E2E useless.",
+      "The release script backs up the database, waits for health and rolls back automatically; no database migration in this release.",
+      "Production now runs f6a266ca plus three UI fixes; d7f85f7f contains all of them plus the boss duel."
+    ]
+  },
+  "questions": {
+    "release": {
+      "stakes": "medium",
+      "instructions": "Should the boss duel be released to production now?",
+      "criteria": {
+        "release-now": "Release d7f85f7f now: the remaining E2E failures are CI slowness in new or already flaky tests, with no product bug found; then check health, revision and logs.",
+        "fix-tests-first": "First rewrite the 4 tests so they pass on CI, wait for another CI run, then release."
+      }
+    }
+  }
+}
