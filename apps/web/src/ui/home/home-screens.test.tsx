@@ -304,14 +304,16 @@ describe('HUD', () => {
     // Loading steps and repeated identical prompts (what moving around produces) cause no HUD work.
     act(() => {
       for (let i = 0; i < 20; i += 1) store.emit({ type: 'loading-progress', done: i, total: 20 });
-      store.emit({ type: 'ready' });
     });
     expect(trackerRenders).toBe(before);
+    // The map being up is one change: the card starts counting down to folding.
+    act(() => store.emit({ type: 'ready' }));
+    expect(trackerRenders).toBe(before + 1);
     const prompt = { targetId: 'parrot-guide', kind: 'npc', name: 'Vẹt', label: 'Nói chuyện' } as const;
     act(() => {
       for (let i = 0; i < 20; i += 1) store.emit({ type: 'interaction-prompt', prompt: { ...prompt } });
     });
-    expect(trackerRenders).toBe(before + 1); // one change: the Interact button appears
+    expect(trackerRenders).toBe(before + 2); // one more change: the Interact button appears
     fireEvent.click(screen.getByRole('button', { name: /Tương tác/ }));
     expect(sent).toEqual(['interact']);
   });

@@ -28,7 +28,10 @@ const AUTOWALK_LINE: Record<AutowalkState, TextKey> = {
   failed: 'hud.autowalk.failed',
 };
 
-/** The card folds itself away after this long without a touch (owner, 03/10/2026: "10–15 s"). */
+/**
+ * The card folds itself away after this long without a touch (owner, 03/10/2026: "10–15 s"), counted from when the
+ * map is up (owner, 07/10/2026): on a slow device the loading screen would otherwise eat most of it.
+ */
 export const TRACKER_FOLD_MS = 12_000;
 
 /**
@@ -41,6 +44,7 @@ export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data
   const store = useGameStore();
   const { t } = useT();
   const available = useGameState((s) => s.autowalkAvailable);
+  const ready = useGameState((s) => s.status === 'ready');
   const autowalk = useGameState((s) => s.autowalk);
   const stepKey = quest ? `${quest.quest.id}:${nextStep(quest)?.id ?? 'done'}` : null;
   /** The step the card was folded at: folded only while the quest is still on that step, so a new step shows it again. */
@@ -50,10 +54,10 @@ export function QuestTracker({ quest, data }: { quest: QuestSummary | null; data
   /** Bumped by every touch on the card: restarts the countdown to folding. */
   const [touched, setTouched] = useState(0);
   useEffect(() => {
-    if (folded || !stepKey) return;
+    if (folded || !stepKey || !ready) return;
     const timer = window.setTimeout(() => setFoldedAt(stepKey), TRACKER_FOLD_MS);
     return () => window.clearTimeout(timer);
-  }, [folded, stepKey, touched]);
+  }, [folded, stepKey, touched, ready]);
   if (!quest) return null;
   const step = nextStep(quest);
   const { done, total } = stepProgress(quest);

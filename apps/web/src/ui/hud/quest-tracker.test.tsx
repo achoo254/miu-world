@@ -13,7 +13,7 @@ const quest = (done: number) => {
   return first;
 };
 
-function show(done = 0) {
+function show(done = 0, { loaded = true } = {}) {
   const store = createGameStore();
   const sent = vi.fn();
   store.onCommand(sent);
@@ -23,6 +23,7 @@ function show(done = 0) {
     </GameStoreContext.Provider>
   );
   const utils = render(view(done));
+  if (loaded) act(() => store.emit({ type: 'ready' }));
   return { store, sent, rerender: (n: number) => utils.rerender(view(n)) };
 }
 
@@ -52,6 +53,17 @@ describe('QuestTracker folding', () => {
     act(() => void vi.advanceTimersByTime(1500));
     expect(screen.queryByText('Nhiệm vụ hiện tại')).toBeNull();
     expect(screen.getByText('Nhiệm vụ')).toBeTruthy();
+  });
+
+  it('counts the quiet time from when the map is up, not while it loads', () => {
+    const { store } = show(0, { loaded: false });
+    act(() => void vi.advanceTimersByTime(TRACKER_FOLD_MS * 2));
+    expect(screen.getByText('Nhiệm vụ hiện tại')).toBeTruthy();
+    act(() => store.emit({ type: 'ready' }));
+    act(() => void vi.advanceTimersByTime(TRACKER_FOLD_MS - 1000));
+    expect(screen.getByText('Nhiệm vụ hiện tại')).toBeTruthy();
+    act(() => void vi.advanceTimersByTime(1500));
+    expect(screen.queryByText('Nhiệm vụ hiện tại')).toBeNull();
   });
 
   it('opens by itself when the quest moves on to its next step', () => {
