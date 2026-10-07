@@ -66,4 +66,33 @@ describe('a quest played by the party', () => {
       { type: 'party-say', text: 'Thử bấm Gợi ý xem!' },
     ]);
   });
+
+  it('shows a companion bot\'s ask and its place in the party\'s play, labelled as a bot', () => {
+    const social = createSocialStore();
+    social.update({
+      party: {
+        ...PARTY,
+        members: [
+          { id: 'p-me', displayName: 'Mochi', isBot: false, species: 'cat', pet: null, mapId: 'forest-ch1' },
+          { id: 'bot-tt-1', displayName: 'Bé Bông', isBot: true, species: 'rabbit', pet: null, mapId: 'forest-ch1' },
+        ],
+      },
+      selfId: 'p-me',
+    });
+    render(<PartyQuestCard social={social} data={DATA} questId={QUEST} onPlay={vi.fn()} />);
+    act(() =>
+      social.update({
+        partyQuest: { questId: QUEST, leader: 'bot-tt-1', turn: null, members: [{ id: 'bot-tt-1', displayName: 'Bé Bông', joined: true, done: 0, waiting: false, finished: false }, { id: 'p-me', displayName: 'Mochi', joined: false, done: 0, waiting: false, finished: false }] },
+      }),
+    );
+    expect(screen.getByRole('alertdialog').textContent).toMatch(/🤖 Bé Bông rủ cả đội chơi/);
+    act(() =>
+      social.update({
+        partyQuest: { questId: QUEST, leader: 'bot-tt-1', turn: 'bot-tt-1', members: [{ id: 'bot-tt-1', displayName: 'Bé Bông', joined: true, done: 2, waiting: true, finished: false }, { id: 'p-me', displayName: 'Mochi', joined: true, done: 3, waiting: false, finished: false }] },
+      }),
+    );
+    expect(screen.getByText('Chờ 🤖 Bé Bông trả lời')).toBeTruthy();
+    expect(screen.getByText('Lượt đánh trùm: 🤖 Bé Bông')).toBeTruthy();
+    expect(document.querySelector('[data-id="party-quest-member-bot-tt-1"]')?.textContent).toMatch(/^🤖 Bé Bông/);
+  });
 });

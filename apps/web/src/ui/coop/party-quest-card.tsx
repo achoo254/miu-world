@@ -1,7 +1,8 @@
 // NEW SCREEN, after mock `designs/multiplayer.png` frames 3 and 5: a quest played by the party, under the party frame.
 // The leader asks the party to play the quest on screen; a member gets the ask and joins (the map of that quest
 // loads) or not now; while the party plays, who it waits for, whose boss blow it is, a cheer or a nudge towards the
-// help layers (never an answer), and stepping out. Each member plays on her own screen, with her own progress.
+// help layers (never an answer), and stepping out. Each member plays on her own screen, with her own progress. A
+// companion bot of the party may ask the party to play and plays along; its name always shows it is a bot.
 import type { SocialStore } from '../../game-bridge/social-store';
 import { same } from '../i18n/i18n';
 import { T, useT } from '../i18n/use-t';
@@ -38,7 +39,9 @@ export function PartyQuestCard({ social, data, questId, onPlay }: { social: Soci
     );
   }
   const title = questName(data, run.questId, inline);
-  const leaderName = party.members.find((m) => m.id === run.leader)?.displayName ?? '…';
+  // A companion bot is always labelled as one.
+  const nameOf = (id: string, displayName: string): string => (party.members.find((m) => m.id === id)?.isBot ? `🤖 ${displayName}` : displayName);
+  const leaderName = nameOf(run.leader, party.members.find((m) => m.id === run.leader)?.displayName ?? '…');
   if (!me.joined) {
     return (
       <section className="online-card parchment party-quest-card" data-id="party-quest-invite" role="alertdialog" aria-live="polite">
@@ -76,19 +79,19 @@ export function PartyQuestCard({ social, data, questId, onPlay }: { social: Soci
           .filter((m) => m.joined)
           .map((m) => (
             <li key={m.id} data-id={`party-quest-member-${m.id}`} data-waiting={m.waiting}>
-              {m.id === selfId ? t('coop.you') : m.displayName} · <T k="partyQuest.done" params={{ done: m.done }} />
+              {m.id === selfId ? t('coop.you') : nameOf(m.id, m.displayName)} · <T k="partyQuest.done" params={{ done: m.done }} />
               {m.waiting ? ' ⏳' : ''}
             </li>
           ))}
       </ul>
       {waiting.length > 0 ? (
         <p className="coop-note" data-id="party-quest-waiting">
-          <T k="partyQuest.waiting" params={{ who: same(waiting.map((m) => m.displayName).join(', ')) }} />
+          <T k="partyQuest.waiting" params={{ who: same(waiting.map((m) => nameOf(m.id, m.displayName)).join(', ')) }} />
         </p>
       ) : null}
       {turn ? (
         <p className="coop-note" data-id="party-quest-turn">
-          {turn.id === selfId ? <T k="partyQuest.yourTurn" /> : <T k="partyQuest.turn" params={{ who: same(turn.displayName) }} />}
+          {turn.id === selfId ? <T k="partyQuest.yourTurn" /> : <T k="partyQuest.turn" params={{ who: same(nameOf(turn.id, turn.displayName)) }} />}
         </p>
       ) : null}
       <div className="online-card-actions">
