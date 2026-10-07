@@ -1,0 +1,734 @@
+{
+  "id": "wonder-olympic-shapes",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Ngăn Hình học",
+  "status": "active",
+  "category": "event",
+  "summary": "Tìm thước tam giác cho Hươu Thước Kẻ, nối điểm thành hình, đếm khối lập phương và xếp hình theo số cạnh.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Hươu Thước Kẻ",
+    "where": "Cổng Olympic Toán, Khu rừng bí mật",
+    "goal": "Mở ngăn Hình học",
+    "play": "Tìm đồ, nối điểm, đếm khối, xếp hình, đấu trí",
+    "learn": "Đoạn thẳng, hình tam giác, hình vuông, hình chữ nhật, khối lập phương",
+    "reward": "XP, xu, kỹ năng Hình phẳng; đủ năm ngăn thì được Mũ nhà toán học",
+    "next": "Các ngăn còn lại của cổng"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "tim",
+    "learn": "noi-diem",
+    "challenge": "dem-khoi",
+    "decision": "chon",
+    "finale": "thu-thach",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "places": {
+    "ev-olympic-huou": "Cột đèn lồng bên đường mòn",
+    "tim": "Dốc đường mòn xuống suối",
+    "ev-olympic-bang": "Bảng đề",
+    "ev-olympic-vom": "Vòm cổng hoa"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Hươu Thước Kẻ",
+      "goTo": "Tới cột đèn lồng bên đường mòn gặp Hươu Thước Kẻ",
+      "kind": "dialogue",
+      "target": "ev-olympic-huou",
+      "lines": [
+        {
+          "speaker": "Hươu Thước Kẻ",
+          "text": "Hươu Thước Kẻ chào bạn! Ngăn Hình học có đoạn thẳng, hình tam giác và cả những khối vuông vức."
+        },
+        {
+          "speaker": "Hươu Thước Kẻ",
+          "text": "Gió vừa cuốn mất chiếc thước tam giác của mình. Bạn tìm giúp mình nhé!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình đi tìm thước đây!"
+        }
+      ],
+      "en": {
+        "title": "Meet Ruler Deer",
+        "goTo": "Go to the lantern post by the trail to meet Ruler Deer",
+        "lines": [
+          "Ruler Deer says hello! The Shapes room has segments, triangles and neat square blocks.",
+          "The wind just blew my set square away. Will you find it for me?"
+        ],
+        "choices": [
+          {
+            "text": "I'll find your set square!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim",
+      "title": "Tìm đồ thất lạc",
+      "goTo": "Tìm thước tam giác ở dốc đường mòn xuống suối",
+      "kind": "find-object",
+      "prompt": "Tìm chiếc thước tam giác mà gió đã cuốn đi.",
+      "items": [
+        {
+          "id": "thuoc-tam-giac",
+          "name": "Thước tam giác",
+          "clue": "Gió thổi nó về bãi cỏ phía nam, chỗ đường mòn bắt đầu xuôi về phía suối.",
+          "target": "ev-olympic-thuoc"
+        }
+      ],
+      "skill": "hinh-phang",
+      "en": {
+        "title": "Find it",
+        "goTo": "Find the set square where the trail slopes to the stream",
+        "prompt": "Find the set square the wind carried off.",
+        "items": [
+          {
+            "name": "Set square",
+            "clue": "The wind blew it to the grass in the south, where the trail starts down toward the stream."
+          }
+        ]
+      }
+    },
+    {
+      "id": "noi-diem",
+      "title": "Nối thành tam giác",
+      "kind": "challenge",
+      "mechanic": "connect",
+      "trigger": "interact",
+      "prompt": "Nối ba điểm A, B, C để được một hình tam giác.",
+      "skill": "hinh-phang",
+      "points": [
+        {
+          "id": "a",
+          "x": 0,
+          "y": 0,
+          "label": "A"
+        },
+        {
+          "id": "b",
+          "x": 4,
+          "y": 0,
+          "label": "B"
+        },
+        {
+          "id": "c",
+          "x": 2,
+          "y": 3,
+          "label": "C"
+        }
+      ],
+      "answer": {
+        "edges": [
+          [
+            "a",
+            "b"
+          ],
+          [
+            "b",
+            "c"
+          ],
+          [
+            "c",
+            "a"
+          ]
+        ]
+      },
+      "support": {
+        "guide": [
+          "Một hình tam giác có ba cạnh nối ba điểm với nhau.",
+          "Nối A với B, B với C, rồi nối C về A."
+        ],
+        "hint": "Đừng quên nối điểm cuối trở về điểm A.",
+        "answer": {
+          "text": "AB, BC và CA",
+          "explanation": "Ba đoạn thẳng AB, BC, CA khép kín thành một hình tam giác."
+        },
+        "en": {
+          "guide": [
+            "A triangle has three sides joining three points.",
+            "Join A to B, B to C, then C back to A."
+          ],
+          "hint": "Remember to join the last point back to A.",
+          "answer": {
+            "text": "AB, BC and CA",
+            "explanation": "The three segments AB, BC and CA close up into a triangle."
+          }
+        }
+      },
+      "en": {
+        "title": "Join a triangle",
+        "prompt": "Join the three points A, B and C to make a triangle.",
+        "goTo": "Go to the question board to join the points"
+      },
+      "target": "ev-olympic-bang",
+      "goTo": "Tới bảng đề nối điểm thành hình"
+    },
+    {
+      "id": "dem-khoi",
+      "title": "Đếm khối ba tầng",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "trigger": "auto",
+      "prompt": "Một khối hình có tầng dưới 5 khối lập phương, tầng giữa 3 khối và tầng trên 1 khối. Có tất cả bao nhiêu khối?",
+      "skill": "hinh-phang",
+      "logicType": "puzzle",
+      "elements": [
+        {
+          "id": "tang-duoi",
+          "label": "Tầng dưới: 5"
+        },
+        {
+          "id": "tang-giua",
+          "label": "Tầng giữa: 3"
+        },
+        {
+          "id": "tang-tren",
+          "label": "Tầng trên: 1"
+        }
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "8"
+        },
+        {
+          "id": "b",
+          "text": "9"
+        },
+        {
+          "id": "c",
+          "text": "10"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Đếm số khối ở từng tầng.",
+          "Cộng số khối của cả ba tầng lại."
+        ],
+        "hint": "5 + 3 = 8, rồi thêm tầng trên cùng.",
+        "answer": {
+          "text": "9",
+          "explanation": "5 + 3 + 1 = 9 khối lập phương."
+        },
+        "en": {
+          "guide": [
+            "Count the cubes on each layer.",
+            "Add the cubes of all three layers."
+          ],
+          "hint": "5 + 3 = 8, then add the top layer.",
+          "answer": {
+            "text": "9",
+            "explanation": "5 + 3 + 1 = 9 cubes."
+          }
+        }
+      },
+      "en": {
+        "title": "Count three layers of cubes",
+        "prompt": "A stack has 5 cubes on the bottom layer, 3 in the middle and 1 on top. How many cubes are there?",
+        "elements": [
+          "Bottom layer: 5",
+          "Middle layer: 3",
+          "Top layer: 1"
+        ],
+        "choices": [
+          "8",
+          "9",
+          "10"
+        ]
+      }
+    },
+    {
+      "id": "so-canh",
+      "title": "Hình nhiều cạnh nhất",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "trigger": "interact",
+      "prompt": "Xếp các hình theo số cạnh, từ ít cạnh nhất đến nhiều cạnh nhất.",
+      "skill": "hinh-phang",
+      "items": [
+        {
+          "id": "vuong",
+          "label": "Hình vuông"
+        },
+        {
+          "id": "tam-giac",
+          "label": "Hình tam giác"
+        },
+        {
+          "id": "nam-canh",
+          "label": "Hình năm cạnh"
+        }
+      ],
+      "answer": {
+        "order": [
+          "tam-giac",
+          "vuong",
+          "nam-canh"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Đếm cạnh của mỗi hình một lượt.",
+          "Hình có ít cạnh nhất đứng đầu hàng."
+        ],
+        "hint": "Hình tam giác có 3 cạnh.",
+        "answer": {
+          "text": "Hình tam giác, hình vuông, hình năm cạnh",
+          "explanation": "Tam giác có 3 cạnh, hình vuông 4 cạnh, hình năm cạnh có 5 cạnh: 3 < 4 < 5."
+        },
+        "en": {
+          "guide": [
+            "Count the sides of each shape.",
+            "The shape with the fewest sides goes first."
+          ],
+          "hint": "A triangle has 3 sides.",
+          "answer": {
+            "text": "Triangle, square, five-sided shape",
+            "explanation": "A triangle has 3 sides, a square 4 and a five-sided shape 5: 3 < 4 < 5."
+          }
+        }
+      },
+      "en": {
+        "title": "The most sides",
+        "prompt": "Order the shapes by their number of sides, from fewest to most.",
+        "items": [
+          "Square",
+          "Triangle",
+          "Five-sided shape"
+        ],
+        "goTo": "Go to the flower arch to order shapes by their sides"
+      },
+      "target": "ev-olympic-vom",
+      "goTo": "Đến vòm cổng hoa xếp hình theo số cạnh"
+    },
+    {
+      "id": "chon",
+      "title": "Chọn cách làm",
+      "kind": "decision",
+      "trigger": "auto",
+      "prompt": "Hươu Thước Kẻ hỏi: mình dùng thước tam giác vào việc gì trước đây?",
+      "speaker": "Hươu Thước Kẻ",
+      "choices": [
+        {
+          "id": "ke-vom",
+          "text": "Kẻ lại vạch trên vòm cổng",
+          "consequence": "Những vạch thẳng tắp hiện lên, vòm cổng gọn gàng hẳn ra."
+        },
+        {
+          "id": "do-cay",
+          "text": "Đo xem cây non cao bao nhiêu",
+          "consequence": "Cây non cao đúng một gang tay, Hươu ghi ngay vào sổ."
+        }
+      ],
+      "en": {
+        "title": "Your choice",
+        "prompt": "Ruler Deer asks: what shall we use the set square for first?",
+        "choices": [
+          {
+            "text": "Redraw the lines on the gate's arch",
+            "consequence": "Straight lines appear and the arch looks neat and tidy."
+          },
+          {
+            "text": "Measure how tall the sapling is",
+            "consequence": "The sapling is exactly one hand-span tall, and Deer notes it down."
+          }
+        ]
+      }
+    },
+    {
+      "id": "thu-thach",
+      "title": "Thử thách cuối",
+      "goTo": "Về cột đèn lồng bên đường mòn đấu với Hươu",
+      "kind": "boss",
+      "target": "ev-olympic-huou",
+      "bossId": "ev-olympic-huou",
+      "bossName": "Hươu Thước Kẻ",
+      "introDialogue": "Thử thách cuối của ngăn Hình học! Câu nào đúng, sừng mình lại mọc thêm một nhánh sáng.",
+      "winDialogue": "Sừng mình sáng lấp lánh rồi! Mắt nhìn hình của {name} thật tinh.",
+      "maxHp": 480,
+      "damagePerTurn": 80,
+      "turns": [
+        {
+          "id": "canh-vuong",
+          "prompt": "Hình vuông có mấy cạnh dài bằng nhau?",
+          "skill": "hinh-phang",
+          "choices": [
+            {
+              "id": "a",
+              "text": "3 cạnh"
+            },
+            {
+              "id": "b",
+              "text": "4 cạnh"
+            },
+            {
+              "id": "c",
+              "text": "5 cạnh"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "How many equal sides does a square have?",
+            "choices": [
+              "3 sides",
+              "4 sides",
+              "5 sides"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Hình vuông có các cạnh dài bằng nhau; hãy đếm các cạnh."
+            ],
+            "hint": "Hình vuông có bốn góc, mỗi góc nối hai cạnh.",
+            "answer": {
+              "text": "4 cạnh",
+              "explanation": "Hình vuông có 4 cạnh và cả 4 cạnh dài bằng nhau."
+            },
+            "en": {
+              "guide": [
+                "A square's sides are all the same length; count them."
+              ],
+              "hint": "A square has four corners, each joining two sides.",
+              "answer": {
+                "text": "4 sides",
+                "explanation": "A square has 4 sides, all 4 the same length."
+              }
+            }
+          }
+        },
+        {
+          "id": "ba-diem",
+          "prompt": "Trên một đường thẳng có 3 điểm A, B, C theo thứ tự. Có bao nhiêu đoạn thẳng?",
+          "skill": "hinh-phang",
+          "choices": [
+            {
+              "id": "a",
+              "text": "2 đoạn"
+            },
+            {
+              "id": "b",
+              "text": "3 đoạn"
+            },
+            {
+              "id": "c",
+              "text": "4 đoạn"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "Three points A, B, C sit in order on a line. How many segments are there?",
+            "choices": [
+              "2",
+              "3",
+              "4"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Đếm hai đoạn ngắn trước, rồi đoạn dài nhất."
+            ],
+            "hint": "AB, BC, và đoạn đi từ A tới C.",
+            "answer": {
+              "text": "3 đoạn",
+              "explanation": "Có AB, BC và AC: 3 đoạn thẳng."
+            },
+            "en": {
+              "guide": [
+                "Count the two short segments, then the longest."
+              ],
+              "hint": "AB, BC, and the one from A to C.",
+              "answer": {
+                "text": "3",
+                "explanation": "AB, BC and AC: 3 segments."
+              }
+            }
+          }
+        },
+        {
+          "id": "hai-tang-khoi",
+          "prompt": "Xếp 2 hàng, mỗi hàng 3 khối lập phương, rồi chồng thêm một tầng y hệt lên trên. Có bao nhiêu khối?",
+          "skill": "hinh-phang",
+          "choices": [
+            {
+              "id": "a",
+              "text": "9 khối"
+            },
+            {
+              "id": "b",
+              "text": "12 khối"
+            },
+            {
+              "id": "c",
+              "text": "6 khối"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "Make 2 rows of 3 cubes, then stack one more layer just like it on top. How many cubes?",
+            "choices": [
+              "9",
+              "12",
+              "6"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Đếm số khối ở một tầng trước."
+            ],
+            "hint": "Một tầng có 2 hàng × 3 khối = 6 khối.",
+            "answer": {
+              "text": "12 khối",
+              "explanation": "Mỗi tầng 6 khối, hai tầng có 6 + 6 = 12 khối."
+            },
+            "en": {
+              "guide": [
+                "Count the cubes in one layer first."
+              ],
+              "hint": "One layer is 2 rows × 3 cubes = 6 cubes.",
+              "answer": {
+                "text": "12",
+                "explanation": "Each layer has 6 cubes, so two layers have 6 + 6 = 12."
+              }
+            }
+          }
+        },
+        {
+          "id": "canh-dai",
+          "prompt": "Một hình chữ nhật dài 5 cm, rộng 3 cm. Hai cạnh dài cộng lại dài bao nhiêu?",
+          "skill": "hinh-phang",
+          "choices": [
+            {
+              "id": "a",
+              "text": "8 cm"
+            },
+            {
+              "id": "b",
+              "text": "10 cm"
+            },
+            {
+              "id": "c",
+              "text": "16 cm"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "A rectangle is 5 cm long and 3 cm wide. How long are its two long sides together?",
+            "choices": [
+              "8 cm",
+              "10 cm",
+              "16 cm"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Hình chữ nhật có hai cạnh dài bằng nhau."
+            ],
+            "hint": "Mỗi cạnh dài là 5 cm.",
+            "answer": {
+              "text": "10 cm",
+              "explanation": "5 cm + 5 cm = 10 cm."
+            },
+            "en": {
+              "guide": [
+                "A rectangle has two equal long sides."
+              ],
+              "hint": "Each long side is 5 cm.",
+              "answer": {
+                "text": "10 cm",
+                "explanation": "Two long sides: 5 cm + 5 cm = 10 cm."
+              }
+            }
+          }
+        },
+        {
+          "id": "ghep-o-vuong",
+          "prompt": "Ghép 4 ô vuông nhỏ bằng nhau thành 2 hàng, mỗi hàng 2 ô. Ta được hình gì?",
+          "skill": "hinh-phang",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Hình vuông lớn"
+            },
+            {
+              "id": "b",
+              "text": "Hình tam giác"
+            },
+            {
+              "id": "c",
+              "text": "Hình tròn"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "Put 4 equal small squares into 2 rows of 2. What shape do you get?",
+            "choices": [
+              "A big square",
+              "A triangle",
+              "A circle"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Tưởng tượng 4 ô xếp sát nhau thành một khung."
+            ],
+            "hint": "Hình mới có 4 cạnh bằng nhau.",
+            "answer": {
+              "text": "Hình vuông lớn",
+              "explanation": "4 ô vuông xếp 2 × 2 thành một hình vuông lớn."
+            },
+            "en": {
+              "guide": [
+                "Picture the 4 squares pushed together into one frame."
+              ],
+              "hint": "The new shape has 4 equal sides.",
+              "answer": {
+                "text": "A big square",
+                "explanation": "4 squares in a 2 × 2 make one big square."
+              }
+            }
+          }
+        },
+        {
+          "id": "tong-canh",
+          "prompt": "Một hình tam giác và một hình vuông có tất cả bao nhiêu cạnh?",
+          "skill": "hinh-phang",
+          "choices": [
+            {
+              "id": "a",
+              "text": "6 cạnh"
+            },
+            {
+              "id": "b",
+              "text": "7 cạnh"
+            },
+            {
+              "id": "c",
+              "text": "8 cạnh"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "How many sides do a triangle and a square have altogether?",
+            "choices": [
+              "6",
+              "7",
+              "8"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Đếm cạnh của từng hình rồi cộng lại."
+            ],
+            "hint": "Tam giác 3 cạnh, hình vuông 4 cạnh.",
+            "answer": {
+              "text": "7 cạnh",
+              "explanation": "3 + 4 = 7 cạnh."
+            },
+            "en": {
+              "guide": [
+                "Count each shape's sides, then add."
+              ],
+              "hint": "A triangle has 3 sides, a square 4.",
+              "answer": {
+                "text": "7",
+                "explanation": "3 + 4 = 7 sides."
+              }
+            }
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Đúng như thước kẻ! Thêm một nhánh sừng sáng.",
+          "Bạn nhìn hình chuẩn từng li!",
+          "Tuyệt! Hươu Thước Kẻ gật gù khen mãi."
+        ],
+        "wrong": [
+          "Chưa đúng; thử vẽ hình ra giấy nháp xem.",
+          "Đếm lại từng cạnh, từng khối thật chậm nhé.",
+          "Không sao, hình học chỉ cần nhìn kỹ thêm chút."
+        ],
+        "en": {
+          "right": [
+            "Ruler-straight! Another antler branch shines.",
+            "You see shapes to the very millimetre!",
+            "Brilliant! Ruler Deer nods and nods."
+          ],
+          "wrong": [
+            "Not yet; try sketching it on scrap paper.",
+            "Count each side and each cube again, slowly.",
+            "No worries, shapes just need a closer look."
+          ]
+        }
+      },
+      "en": {
+        "title": "Final trial",
+        "goTo": "Back to the lantern post for Deer's trial",
+        "bossName": "Ruler Deer",
+        "introDialogue": "The Shapes room's final trial! Every right answer grows a shining new branch on my antlers.",
+        "winDialogue": "My antlers are sparkling! {name}, you have a sharp eye for shapes."
+      }
+    },
+    {
+      "id": "thuong",
+      "title": "Nhận thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ngăn Hình học mở toang! Hươu Thước Kẻ trao bạn phần thưởng gói vuông vắn.",
+      "en": {
+        "title": "Your reward",
+        "text": "The Shapes room swings open! Ruler Deer hands you a neatly squared reward."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Đi tiếp",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Quanh cổng vẫn còn những ngăn chưa mở; người giữ ngăn nào cũng mong gặp bạn.",
+      "en": {
+        "title": "Onward",
+        "text": "Some rooms round the gate are still closed, and their keepers hope to see you."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 120,
+    "coin": 40,
+    "skillXp": {
+      "hinh-phang": 25
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "The Shapes room",
+    "summary": "Find Ruler Deer's set square, join points into a shape, count stacked cubes and order shapes by their sides."
+  }
+}

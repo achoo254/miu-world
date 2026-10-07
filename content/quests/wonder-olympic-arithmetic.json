@@ -1,0 +1,729 @@
+{
+  "id": "wonder-olympic-arithmetic",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Ngăn Số học",
+  "status": "active",
+  "category": "event",
+  "summary": "Tìm bàn tính gỗ cho Thỏ Bàn Tính, gom túi hạt cho đủ, chạy ngược cỗ máy số và vượt thử thách tính nhanh.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Thỏ Bàn Tính",
+    "where": "Cổng Olympic Toán, Khu rừng bí mật",
+    "goal": "Mở ngăn Số học",
+    "play": "Tìm đồ, kéo thả cho đủ tổng, giải cỗ máy số, xếp phép tính, đấu trí",
+    "learn": "Cộng trừ có nhớ, tính nhanh, tìm số chưa biết",
+    "reward": "XP, xu, kỹ năng Phép cộng; đủ năm ngăn thì được Mũ nhà toán học",
+    "next": "Các ngăn còn lại của cổng"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "tim",
+    "learn": "gom-hat",
+    "challenge": "co-may",
+    "decision": "chon",
+    "finale": "thu-thach",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "places": {
+    "ev-olympic-tho": "Trước vòm cổng hoa",
+    "tim": "Mép đường dưới cột đèn",
+    "ev-olympic-bang": "Bảng đề",
+    "ev-olympic-vom": "Vòm cổng hoa"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Thỏ Bàn Tính",
+      "goTo": "Tới trước vòm cổng hoa gặp Thỏ Bàn Tính",
+      "kind": "dialogue",
+      "target": "ev-olympic-tho",
+      "lines": [
+        {
+          "speaker": "Thỏ Bàn Tính",
+          "text": "Thỏ Bàn Tính đây! Ngăn Số học toàn những phép tính nhảy nhót tưng bừng."
+        },
+        {
+          "speaker": "Thỏ Bàn Tính",
+          "text": "Bàn tính gỗ của mình rơi ở đâu đó ngoài sân rồi. Tìm giúp mình với nhé!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để mình tìm cho!"
+        }
+      ],
+      "en": {
+        "title": "Meet Abacus Rabbit",
+        "goTo": "Go to the front of the flower arch to meet Abacus Rabbit",
+        "lines": [
+          "Abacus Rabbit here! The Arithmetic room is full of hopping, skipping sums.",
+          "My wooden abacus fell somewhere out in the yard. Please help me find it!"
+        ],
+        "choices": [
+          {
+            "text": "Leave it to me!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim",
+      "title": "Tìm đồ thất lạc",
+      "goTo": "Tìm bàn tính gỗ ở mép đường dưới cột đèn",
+      "kind": "find-object",
+      "prompt": "Theo lời Thỏ dặn, tìm chiếc bàn tính gỗ.",
+      "items": [
+        {
+          "id": "ban-tinh",
+          "name": "Bàn tính gỗ",
+          "clue": "Nó nằm sát mép đường mòn, ngay dưới cột đèn lồng gần cổng hoa.",
+          "target": "ev-olympic-ban-tinh"
+        }
+      ],
+      "skill": "phep-cong",
+      "en": {
+        "title": "Find it",
+        "goTo": "Look for the wooden abacus at the trail edge under the lantern",
+        "prompt": "Follow Rabbit's directions and find the wooden abacus.",
+        "items": [
+          {
+            "name": "Wooden abacus",
+            "clue": "It lies right at the edge of the trail, under the lantern post near the flower gate."
+          }
+        ]
+      }
+    },
+    {
+      "id": "gom-hat",
+      "title": "Gom đủ năm mươi hạt",
+      "kind": "challenge",
+      "mechanic": "drag-drop",
+      "trigger": "interact",
+      "prompt": "Kéo các túi hạt vào giỏ sao cho trong giỏ có đúng 50 hạt.",
+      "skill": "phep-cong",
+      "container": "Giỏ hạt",
+      "pieces": [
+        {
+          "id": "tui-20",
+          "label": "20 hạt",
+          "value": 20
+        },
+        {
+          "id": "tui-25",
+          "label": "25 hạt",
+          "value": 25
+        },
+        {
+          "id": "tui-15",
+          "label": "15 hạt",
+          "value": 15
+        },
+        {
+          "id": "tui-10",
+          "label": "10 hạt",
+          "value": 10
+        }
+      ],
+      "answer": {
+        "total": 50
+      },
+      "support": {
+        "guide": [
+          "Cộng thử hai túi lớn nhất rồi xem còn thiếu bao nhiêu.",
+          "Thêm một túi vừa đúng phần còn thiếu."
+        ],
+        "hint": "25 + 15 = 40; cần thêm mấy hạt nữa?",
+        "answer": {
+          "text": "Túi 25, túi 15 và túi 10",
+          "explanation": "25 + 15 + 10 = 50 hạt, vừa đủ cả giỏ."
+        },
+        "en": {
+          "guide": [
+            "Add the two biggest bags, then see how many are missing.",
+            "Add one bag that fills exactly what is missing."
+          ],
+          "hint": "25 + 15 = 40; how many more seeds are needed?",
+          "answer": {
+            "text": "The 25, 15 and 10 bags",
+            "explanation": "25 + 15 + 10 = 50 seeds, a full basket exactly."
+          }
+        }
+      },
+      "en": {
+        "title": "Fifty seeds exactly",
+        "prompt": "Drag seed bags into the basket so it holds exactly 50 seeds.",
+        "goTo": "Go to the question board to gather seed bags with Rabbit"
+      },
+      "target": "ev-olympic-bang",
+      "goTo": "Tới bảng đề gom túi hạt cùng Thỏ"
+    },
+    {
+      "id": "co-may",
+      "title": "Cỗ máy chạy ngược",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "trigger": "auto",
+      "prompt": "Một số đi qua cỗ máy: cộng 7, rồi trừ 3, thì ra số 19. Số đã đi vào là số nào?",
+      "skill": "thanh-phan-phep-tinh",
+      "logicType": "puzzle",
+      "elements": [
+        {
+          "id": "vao",
+          "label": "?"
+        },
+        {
+          "id": "cong",
+          "label": "+ 7"
+        },
+        {
+          "id": "tru",
+          "label": "− 3"
+        },
+        {
+          "id": "ra",
+          "label": "19"
+        }
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "15"
+        },
+        {
+          "id": "b",
+          "text": "13"
+        },
+        {
+          "id": "c",
+          "text": "16"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Đi ngược từ số ra: phép trừ thành phép cộng, phép cộng thành phép trừ.",
+          "Thử lại bằng cách cho số tìm được chạy xuôi qua máy."
+        ],
+        "hint": "19 + 3 = 22, rồi lấy 22 − 7.",
+        "answer": {
+          "text": "15",
+          "explanation": "Đi ngược: 19 + 3 = 22, 22 − 7 = 15. Thử lại: 15 + 7 − 3 = 19."
+        },
+        "en": {
+          "guide": [
+            "Work back from what came out: minus turns into plus, and plus into minus.",
+            "Check it by running your number forwards through the machine."
+          ],
+          "hint": "19 + 3 = 22, then 22 − 7.",
+          "answer": {
+            "text": "15",
+            "explanation": "Backwards: 19 + 3 = 22 and 22 − 7 = 15. Check: 15 + 7 − 3 = 19."
+          }
+        }
+      },
+      "en": {
+        "title": "Run the machine backwards",
+        "prompt": "A number goes through the machine: plus 7, then minus 3, and 19 comes out. Which number went in?",
+        "elements": [
+          "?",
+          "+ 7",
+          "− 3",
+          "19"
+        ],
+        "choices": [
+          "15",
+          "13",
+          "16"
+        ]
+      }
+    },
+    {
+      "id": "xep-phep-tinh",
+      "title": "Phép tính nào nhỏ nhất",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "trigger": "interact",
+      "prompt": "Xếp các phép tính theo kết quả, từ bé đến lớn.",
+      "skill": "so-sanh-so",
+      "items": [
+        {
+          "id": "ba-muoi",
+          "label": "30 + 25"
+        },
+        {
+          "id": "muoi-tam",
+          "label": "18 + 9"
+        },
+        {
+          "id": "bay-muoi",
+          "label": "70 − 28"
+        }
+      ],
+      "answer": {
+        "order": [
+          "muoi-tam",
+          "bay-muoi",
+          "ba-muoi"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Tính kết quả của từng phép tính trước.",
+          "So sánh ba kết quả rồi xếp từ bé đến lớn."
+        ],
+        "hint": "18 + 9 = 27 là kết quả bé nhất.",
+        "answer": {
+          "text": "18 + 9, rồi 70 − 28, rồi 30 + 25",
+          "explanation": "18 + 9 = 27, 70 − 28 = 42, 30 + 25 = 55, và 27 < 42 < 55."
+        },
+        "en": {
+          "guide": [
+            "Work out each sum's answer first.",
+            "Compare the three answers and put them smallest first."
+          ],
+          "hint": "18 + 9 = 27 is the smallest answer.",
+          "answer": {
+            "text": "18 + 9, then 70 − 28, then 30 + 25",
+            "explanation": "18 + 9 = 27, 70 − 28 = 42, 30 + 25 = 55, and 27 < 42 < 55."
+          }
+        }
+      },
+      "en": {
+        "title": "Which sum is smallest",
+        "prompt": "Order the sums by their answers, from smallest to largest.",
+        "items": [
+          "30 + 25",
+          "18 + 9",
+          "70 − 28"
+        ],
+        "goTo": "Go out to the flower arch to order the sums"
+      },
+      "target": "ev-olympic-vom",
+      "goTo": "Ra vòm cổng hoa xếp các phép tính"
+    },
+    {
+      "id": "chon",
+      "title": "Chọn cách làm",
+      "kind": "decision",
+      "trigger": "auto",
+      "prompt": "Thỏ Bàn Tính băn khoăn: để bàn tính ở đâu cho mọi người cùng dùng?",
+      "speaker": "Thỏ Bàn Tính",
+      "choices": [
+        {
+          "id": "ke-ban-go",
+          "text": "Kê lên bàn gỗ trước ngăn",
+          "consequence": "Bạn bè đi ngang dừng lại gảy thử vài hạt tính, cười khúc khích."
+        },
+        {
+          "id": "de-tho-giu",
+          "text": "Để Thỏ Bàn Tính giữ",
+          "consequence": "Thỏ ôm bàn tính vào lòng và hứa ai cần cũng cho mượn."
+        }
+      ],
+      "en": {
+        "title": "Your choice",
+        "prompt": "Abacus Rabbit wonders: where should the abacus go so everyone can use it?",
+        "choices": [
+          {
+            "text": "Put it on the wooden table by the room",
+            "consequence": "Friends passing by stop to flick a few beads and giggle."
+          },
+          {
+            "text": "Let Abacus Rabbit keep it",
+            "consequence": "Rabbit hugs the abacus and promises to lend it to anyone who asks."
+          }
+        ]
+      }
+    },
+    {
+      "id": "thu-thach",
+      "title": "Thử thách cuối",
+      "goTo": "Về trước vòm cổng hoa nhận thử thách của Thỏ",
+      "kind": "boss",
+      "target": "ev-olympic-tho",
+      "bossId": "ev-olympic-tho",
+      "bossName": "Thỏ Bàn Tính",
+      "introDialogue": "Thử thách cuối của ngăn Số học đây! Mỗi phép tính đúng làm một hạt tính sáng lên.",
+      "winDialogue": "Hạt tính nào cũng sáng cả rồi! {name} tính nhanh thật đấy.",
+      "maxHp": 480,
+      "damagePerTurn": 80,
+      "turns": [
+        {
+          "id": "cong-co-nho",
+          "prompt": "36 + 47 = ?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "73"
+            },
+            {
+              "id": "b",
+              "text": "83"
+            },
+            {
+              "id": "c",
+              "text": "81"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "36 + 47 = ?",
+            "choices": [
+              "73",
+              "83",
+              "81"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Cộng hàng đơn vị trước: 6 + 7 = 13, viết 3 nhớ 1."
+            ],
+            "hint": "Hàng chục: 3 + 4 rồi thêm 1 đã nhớ.",
+            "answer": {
+              "text": "83",
+              "explanation": "6 + 7 = 13, viết 3 nhớ 1; 3 + 4 + 1 = 8. Vậy 36 + 47 = 83."
+            },
+            "en": {
+              "guide": [
+                "Add the ones first: 6 + 7 = 13, write 3 and carry 1."
+              ],
+              "hint": "Tens: 3 + 4, plus the 1 you carried.",
+              "answer": {
+                "text": "83",
+                "explanation": "6 + 7 = 13, write 3 carry 1; 3 + 4 + 1 = 8. So 36 + 47 = 83."
+              }
+            }
+          }
+        },
+        {
+          "id": "tru-co-nho",
+          "prompt": "90 − 46 = ?",
+          "skill": "phep-tru",
+          "choices": [
+            {
+              "id": "a",
+              "text": "44"
+            },
+            {
+              "id": "b",
+              "text": "54"
+            },
+            {
+              "id": "c",
+              "text": "46"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "90 − 46 = ?",
+            "choices": [
+              "44",
+              "54",
+              "46"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "0 không trừ được 6, mượn 1 chục: 10 − 6."
+            ],
+            "hint": "10 − 6 = 4 là hàng đơn vị.",
+            "answer": {
+              "text": "44",
+              "explanation": "10 − 6 = 4; 9 bớt 1 còn 8, 8 − 4 = 4. Vậy 90 − 46 = 44."
+            },
+            "en": {
+              "guide": [
+                "0 can't take 6, so borrow a ten: 10 − 6."
+              ],
+              "hint": "10 − 6 = 4 gives the ones.",
+              "answer": {
+                "text": "44",
+                "explanation": "10 − 6 = 4; 9 becomes 8, and 8 − 4 = 4. So 90 − 46 = 44."
+              }
+            }
+          }
+        },
+        {
+          "id": "so-con-thieu",
+          "prompt": "Điền số còn thiếu: 25 + ? = 60",
+          "skill": "thanh-phan-phep-tinh",
+          "choices": [
+            {
+              "id": "a",
+              "text": "35"
+            },
+            {
+              "id": "b",
+              "text": "45"
+            },
+            {
+              "id": "c",
+              "text": "25"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "Fill in the missing number: 25 + ? = 60",
+            "choices": [
+              "35",
+              "45",
+              "25"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Số còn thiếu bằng tổng trừ đi số đã biết."
+            ],
+            "hint": "Lấy 60 − 25.",
+            "answer": {
+              "text": "35",
+              "explanation": "? = 60 − 25 = 35."
+            },
+            "en": {
+              "guide": [
+                "The missing number is the total minus the number you know."
+              ],
+              "hint": "Work out 60 − 25.",
+              "answer": {
+                "text": "35",
+                "explanation": "The missing number is 60 − 25 = 35."
+              }
+            }
+          }
+        },
+        {
+          "id": "tinh-nhanh",
+          "prompt": "Tính nhanh: 17 + 26 + 13 + 4 = ?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "60"
+            },
+            {
+              "id": "b",
+              "text": "58"
+            },
+            {
+              "id": "c",
+              "text": "70"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "Quick sum: 17 + 26 + 13 + 4 = ?",
+            "choices": [
+              "60",
+              "58",
+              "70"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Ghép hai số có hàng đơn vị cộng lại tròn chục."
+            ],
+            "hint": "17 + 13 = 30 và 26 + 4 = 30.",
+            "answer": {
+              "text": "60",
+              "explanation": "(17 + 13) + (26 + 4) = 30 + 30 = 60."
+            },
+            "en": {
+              "guide": [
+                "Pair numbers whose ones make a ten."
+              ],
+              "hint": "17 + 13 = 30 and 26 + 4 = 30.",
+              "answer": {
+                "text": "60",
+                "explanation": "Paired up: (17 + 13) + (26 + 4) = 30 + 30 = 60."
+              }
+            }
+          }
+        },
+        {
+          "id": "trung-con-lai",
+          "prompt": "Có 45 quả trứng, đã bán 18 quả. Còn lại bao nhiêu quả trứng?",
+          "skill": "bai-toan-loi-van",
+          "choices": [
+            {
+              "id": "a",
+              "text": "27 quả"
+            },
+            {
+              "id": "b",
+              "text": "33 quả"
+            },
+            {
+              "id": "c",
+              "text": "37 quả"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "There were 45 eggs and 18 were sold. How many eggs are left?",
+            "choices": [
+              "27",
+              "33",
+              "37"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Muốn tìm số còn lại, lấy số ban đầu trừ số đã bán."
+            ],
+            "hint": "Tính 45 − 18.",
+            "answer": {
+              "text": "27 quả",
+              "explanation": "45 − 18 = 27 quả trứng."
+            },
+            "en": {
+              "guide": [
+                "To find what is left, take what was sold from what there was."
+              ],
+              "hint": "Work out 45 − 18.",
+              "answer": {
+                "text": "27",
+                "explanation": "45 − 18 = 27 eggs."
+              }
+            }
+          }
+        },
+        {
+          "id": "cong-chinh-no",
+          "prompt": "Số nào cộng với chính nó thì được 34?",
+          "skill": "phep-cong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "16"
+            },
+            {
+              "id": "b",
+              "text": "17"
+            },
+            {
+              "id": "c",
+              "text": "18"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "Which number added to itself makes 34?",
+            "choices": [
+              "16",
+              "17",
+              "18"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Hai số giống nhau cộng lại bằng 34."
+            ],
+            "hint": "Chia đôi 34.",
+            "answer": {
+              "text": "17",
+              "explanation": "17 + 17 = 34, nên số đó là 17."
+            },
+            "en": {
+              "guide": [
+                "Two equal numbers add up to 34."
+              ],
+              "hint": "Halve 34.",
+              "answer": {
+                "text": "17",
+                "explanation": "17 + 17 = 34, so the number is 17."
+              }
+            }
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Hạt tính kêu tách một cái, đúng rồi!",
+          "Phép tính gọn ghê, bạn nhẩm giỏi quá!",
+          "Chính xác! Thỏ Bàn Tính nhảy cẫng lên."
+        ],
+        "wrong": [
+          "Kết quả chưa khớp; thử đặt tính ra nháp xem.",
+          "Gần đúng rồi đó, kiểm lại hàng đơn vị nhé.",
+          "Không vội đâu, tính lại lần lượt từng hàng."
+        ],
+        "en": {
+          "right": [
+            "Click goes a bead: that's right!",
+            "What a tidy sum, you're great at mental maths!",
+            "Exactly! Abacus Rabbit leaps for joy."
+          ],
+          "wrong": [
+            "The answer doesn't match yet; try writing it out.",
+            "Almost! Check the ones again.",
+            "No rush; work it out one column at a time."
+          ]
+        }
+      },
+      "en": {
+        "title": "Final trial",
+        "goTo": "Back to the front of the arch for Rabbit's trial",
+        "bossName": "Abacus Rabbit",
+        "introDialogue": "Here comes the Arithmetic room's final trial! Each right sum lights up one bead.",
+        "winDialogue": "Every bead is shining! {name}, you are quick with numbers."
+      }
+    },
+    {
+      "id": "thuong",
+      "title": "Nhận thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ngăn Số học bừng sáng! Thỏ Bàn Tính đếm phần thưởng trao tận tay bạn.",
+      "en": {
+        "title": "Your reward",
+        "text": "The Arithmetic room lights up! Abacus Rabbit counts out your reward."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Đi tiếp",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Các ngăn khác của cổng vẫn đang chờ những phép tính của bạn.",
+      "en": {
+        "title": "Onward",
+        "text": "The gate's other rooms are still waiting for your sums."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 120,
+    "coin": 40,
+    "skillXp": {
+      "phep-cong": 25
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "The Arithmetic room",
+    "summary": "Find Abacus Rabbit's wooden abacus, gather seed bags to the right total, run a number machine backwards and pass the quick-sums trial."
+  }
+}

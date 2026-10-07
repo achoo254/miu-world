@@ -1,0 +1,739 @@
+{
+  "id": "wonder-olympic-logic",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Ngăn Tư duy logic",
+  "status": "active",
+  "category": "event",
+  "summary": "Tìm cái cân đồng cho Cáo Mắt Sáng, xếp hộp theo cân nặng, tìm quy luật rồi qua thử thách suy luận để mở ngăn đầu tiên của cổng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cáo Mắt Sáng",
+    "where": "Cổng Olympic Toán, Khu rừng bí mật",
+    "goal": "Mở ngăn Tư duy logic",
+    "play": "Tìm đồ, xếp thứ tự, tìm quy luật, cân thăng bằng, đấu trí với người giữ ngăn",
+    "learn": "Suy luận so sánh, dãy lặp, cái cân, ngày trong tuần, tuổi",
+    "reward": "XP, xu, kỹ năng Logic; đủ năm ngăn thì được Mũ nhà toán học",
+    "next": "Bốn ngăn còn lại của cổng"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "tim",
+    "learn": "xep-hop",
+    "challenge": "quy-luat",
+    "decision": "chon",
+    "finale": "thu-thach",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "places": {
+    "ev-olympic-cao": "Cột cờ phía bắc cổng hoa",
+    "tim": "Đá xám cạnh lửa trại",
+    "ev-olympic-bang": "Bảng đề",
+    "ev-olympic-vom": "Vòm cổng hoa"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp người giữ ngăn",
+      "goTo": "Tới cột cờ phía bắc cổng hoa gặp Cáo Mắt Sáng",
+      "kind": "dialogue",
+      "target": "ev-olympic-cao",
+      "lines": [
+        {
+          "speaker": "Cáo Mắt Sáng",
+          "text": "Chào {name}! Mình là Cáo Mắt Sáng, người giữ ngăn Tư duy logic của Cổng Olympic Toán."
+        },
+        {
+          "speaker": "Cáo Mắt Sáng",
+          "text": "Cái cân đồng của ngăn này lăn đâu mất rồi. Bạn tìm giúp mình trên sân trước cổng nhé?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình đi tìm ngay!"
+        }
+      ],
+      "en": {
+        "title": "Meet the keeper",
+        "goTo": "Go to the flagpole north of the flower gate to meet Bright-Eyes Fox",
+        "lines": [
+          "Hello {name}! I am Bright-Eyes Fox, keeper of the Olympic Math Gate's Logical Thinking room.",
+          "The room's brass balance has rolled off somewhere. Could you look for it in the yard before the gate?"
+        ],
+        "choices": [
+          {
+            "text": "I'll go and look!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim",
+      "title": "Tìm đồ thất lạc",
+      "goTo": "Tìm cái cân đồng ở đá xám cạnh lửa trại",
+      "kind": "find-object",
+      "prompt": "Đọc lời gợi ý của Cáo rồi tìm cái cân đồng.",
+      "items": [
+        {
+          "id": "can-dong",
+          "name": "Cái cân đồng",
+          "clue": "Nó nằm cạnh mấy hòn đá xám phủ rêu, gần bếp lửa trại.",
+          "target": "ev-olympic-can-dong"
+        }
+      ],
+      "skill": "logic",
+      "en": {
+        "title": "Find it",
+        "goTo": "Look for the brass balance at the grey stones by the campfire",
+        "prompt": "Read Fox's clue, then find the brass balance.",
+        "items": [
+          {
+            "name": "Brass balance",
+            "clue": "It lies by the mossy grey stones, near the campfire."
+          }
+        ]
+      }
+    },
+    {
+      "id": "xep-hop",
+      "title": "Xếp hộp từ nhẹ đến nặng",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "trigger": "interact",
+      "prompt": "Cân cho biết: hộp đỏ nặng hơn hộp xanh, còn hộp vàng nhẹ hơn hộp xanh. Xếp ba hộp từ nhẹ nhất đến nặng nhất.",
+      "skill": "logic",
+      "items": [
+        {
+          "id": "do",
+          "label": "Hộp đỏ"
+        },
+        {
+          "id": "vang",
+          "label": "Hộp vàng"
+        },
+        {
+          "id": "xanh",
+          "label": "Hộp xanh"
+        }
+      ],
+      "answer": {
+        "order": [
+          "vang",
+          "xanh",
+          "do"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Hộp vàng nhẹ hơn hộp xanh, nên vàng đứng trước xanh.",
+          "Hộp đỏ nặng hơn hộp xanh, nên đỏ đứng sau xanh."
+        ],
+        "hint": "Hộp nhẹ nhất là hộp không nặng hơn hộp nào cả.",
+        "answer": {
+          "text": "Hộp vàng, hộp xanh, hộp đỏ",
+          "explanation": "Vàng nhẹ hơn xanh, xanh nhẹ hơn đỏ, nên từ nhẹ đến nặng là vàng, xanh, đỏ."
+        },
+        "en": {
+          "guide": [
+            "The yellow box is lighter than the blue one, so yellow comes before blue.",
+            "The red box is heavier than the blue one, so red comes after blue."
+          ],
+          "hint": "The lightest box is heavier than none of the others.",
+          "answer": {
+            "text": "Yellow box, blue box, red box",
+            "explanation": "Yellow is lighter than blue and blue is lighter than red, so from lightest it is yellow, blue, red."
+          }
+        }
+      },
+      "en": {
+        "title": "Boxes from light to heavy",
+        "prompt": "The balance shows the red box is heavier than the blue box, and the yellow box is lighter than the blue one. Order the three boxes from lightest to heaviest.",
+        "items": [
+          "Red box",
+          "Yellow box",
+          "Blue box"
+        ],
+        "goTo": "Go to the question board to read Fox's box puzzle"
+      },
+      "target": "ev-olympic-bang",
+      "goTo": "Tới bảng đề đọc bài xếp hộp của Cáo"
+    },
+    {
+      "id": "quy-luat",
+      "title": "Hình nào tiếp theo",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "trigger": "auto",
+      "prompt": "Các hình lặp lại theo thứ tự: tròn, vuông, tam giác, tròn, vuông, ... Hình tiếp theo là hình gì?",
+      "skill": "logic",
+      "logicType": "pattern",
+      "elements": [
+        {
+          "id": "h1",
+          "label": "Tròn"
+        },
+        {
+          "id": "h2",
+          "label": "Vuông"
+        },
+        {
+          "id": "h3",
+          "label": "Tam giác"
+        },
+        {
+          "id": "h4",
+          "label": "Tròn"
+        },
+        {
+          "id": "h5",
+          "label": "Vuông"
+        },
+        {
+          "id": "h6",
+          "label": "?"
+        }
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "Hình tròn"
+        },
+        {
+          "id": "b",
+          "text": "Hình vuông"
+        },
+        {
+          "id": "c",
+          "text": "Hình tam giác"
+        }
+      ],
+      "answer": {
+        "choice": "c"
+      },
+      "support": {
+        "guide": [
+          "Tìm nhóm hình cứ lặp đi lặp lại.",
+          "Nhóm có ba hình; xem hình nào còn thiếu ở nhóm thứ hai."
+        ],
+        "hint": "Sau tròn, vuông luôn là hình thứ ba của nhóm.",
+        "answer": {
+          "text": "Hình tam giác",
+          "explanation": "Nhóm tròn, vuông, tam giác lặp lại, nên sau tròn, vuông là tam giác."
+        },
+        "en": {
+          "guide": [
+            "Find the group of shapes that keeps repeating.",
+            "The group has three shapes; see which one the second group is missing."
+          ],
+          "hint": "After circle, square always comes the group's third shape.",
+          "answer": {
+            "text": "A triangle",
+            "explanation": "Circle, square, triangle repeats, so after circle and square comes a triangle."
+          }
+        }
+      },
+      "en": {
+        "title": "Which shape comes next",
+        "prompt": "The shapes repeat in order: circle, square, triangle, circle, square, ... Which shape comes next?",
+        "elements": [
+          "Circle",
+          "Square",
+          "Triangle",
+          "Circle",
+          "Square",
+          "?"
+        ],
+        "choices": [
+          "A circle",
+          "A square",
+          "A triangle"
+        ]
+      }
+    },
+    {
+      "id": "can-bi",
+      "title": "Cân quả bí",
+      "kind": "challenge",
+      "mechanic": "drag-drop",
+      "trigger": "interact",
+      "prompt": "Đĩa cân bên trái có quả bí nặng 12 kg. Kéo quả cân vào đĩa phải cho cân thăng bằng.",
+      "skill": "khoi-luong",
+      "container": "Đĩa cân bên phải",
+      "pieces": [
+        {
+          "id": "nam",
+          "label": "5 kg",
+          "value": 5
+        },
+        {
+          "id": "bon",
+          "label": "4 kg",
+          "value": 4
+        },
+        {
+          "id": "ba",
+          "label": "3 kg",
+          "value": 3
+        },
+        {
+          "id": "hai",
+          "label": "2 kg",
+          "value": 2
+        }
+      ],
+      "answer": {
+        "total": 12
+      },
+      "support": {
+        "guide": [
+          "Cân thăng bằng khi đĩa phải cũng nặng đúng 12 kg.",
+          "Thêm từng quả cân và cộng dồn cho tới khi đủ 12."
+        ],
+        "hint": "5 + 4 = 9; còn thiếu mấy ki-lô-gam nữa?",
+        "answer": {
+          "text": "5 kg, 4 kg và 3 kg",
+          "explanation": "5 + 4 + 3 = 12, nặng đúng bằng quả bí 12 kg ở đĩa trái."
+        },
+        "en": {
+          "guide": [
+            "The scale balances when the right pan weighs exactly 12 kg too.",
+            "Add the weights one by one until they make 12."
+          ],
+          "hint": "5 + 4 = 9; how many more kilograms are missing?",
+          "answer": {
+            "text": "5 kg, 4 kg and 3 kg",
+            "explanation": "5 + 4 + 3 = 12, just as heavy as the 12 kg pumpkin on the left."
+          }
+        }
+      },
+      "en": {
+        "title": "Balance the pumpkin",
+        "prompt": "The left pan holds a 12 kg pumpkin. Drag weights onto the right pan until the scale balances.",
+        "goTo": "Walk to the flower arch to weigh the pumpkin"
+      },
+      "target": "ev-olympic-vom",
+      "goTo": "Đi qua vòm cổng hoa để cân quả bí"
+    },
+    {
+      "id": "chon",
+      "title": "Chọn cách làm",
+      "kind": "decision",
+      "trigger": "auto",
+      "prompt": "Cáo Mắt Sáng hỏi: mình đặt cái cân đồng ở đâu bây giờ?",
+      "speaker": "Cáo Mắt Sáng",
+      "choices": [
+        {
+          "id": "dat-canh-cong",
+          "text": "Đặt lại cạnh cổng hoa",
+          "consequence": "Cái cân đứng vững cạnh cổng, ai đi qua cũng dừng lại cân thử."
+        },
+        {
+          "id": "trao-cao",
+          "text": "Trao tận tay Cáo Mắt Sáng",
+          "consequence": "Cáo lau cái cân sáng bóng rồi treo lên vòm ngăn logic."
+        }
+      ],
+      "en": {
+        "title": "Your choice",
+        "prompt": "Bright-Eyes Fox asks: where shall we put the brass balance now?",
+        "choices": [
+          {
+            "text": "Set it back by the flower gate",
+            "consequence": "The balance stands firm by the gate, and everyone passing stops to weigh something."
+          },
+          {
+            "text": "Hand it to Bright-Eyes Fox",
+            "consequence": "Fox polishes the balance until it shines and hangs it over the logic room."
+          }
+        ]
+      }
+    },
+    {
+      "id": "thu-thach",
+      "title": "Thử thách cuối",
+      "goTo": "Quay về cột cờ phía bắc cổng hoa, đấu trí với Cáo",
+      "kind": "boss",
+      "target": "ev-olympic-cao",
+      "bossId": "ev-olympic-cao",
+      "bossName": "Cáo Mắt Sáng",
+      "introDialogue": "Giờ là thử thách cuối của ngăn Tư duy logic. Mỗi câu đúng làm vòm ngăn sáng thêm một chút!",
+      "winDialogue": "Vòm ngăn logic sáng rực rồi! Bạn suy luận thật giỏi, {name}.",
+      "maxHp": 480,
+      "damagePerTurn": 80,
+      "turns": [
+        {
+          "id": "ngay-thu",
+          "prompt": "Hôm nay là thứ Bảy. Ba ngày nữa là thứ mấy?",
+          "skill": "xem-lich",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Thứ Hai"
+            },
+            {
+              "id": "b",
+              "text": "Thứ Ba"
+            },
+            {
+              "id": "c",
+              "text": "Chủ nhật"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "Today is Saturday. What day is it in three days?",
+            "choices": [
+              "Monday",
+              "Tuesday",
+              "Sunday"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Đếm lần lượt từng ngày sau thứ Bảy."
+            ],
+            "hint": "Ngày ngay sau thứ Bảy là Chủ nhật.",
+            "answer": {
+              "text": "Thứ Ba",
+              "explanation": "Chủ nhật, thứ Hai, thứ Ba: ba ngày sau thứ Bảy là thứ Ba."
+            },
+            "en": {
+              "guide": [
+                "Count the days after Saturday one by one."
+              ],
+              "hint": "The day right after Saturday is Sunday.",
+              "answer": {
+                "text": "Tuesday",
+                "explanation": "Sunday, Monday, Tuesday: three days after Saturday is Tuesday."
+              }
+            }
+          }
+        },
+        {
+          "id": "tuoi-anh",
+          "prompt": "Anh hơn em 4 tuổi. Năm nay em 6 tuổi. Hai năm nữa anh bao nhiêu tuổi?",
+          "skill": "logic",
+          "choices": [
+            {
+              "id": "a",
+              "text": "10 tuổi"
+            },
+            {
+              "id": "b",
+              "text": "12 tuổi"
+            },
+            {
+              "id": "c",
+              "text": "8 tuổi"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "A big brother is 4 years older than his sister, who is 6 this year. How old will he be in two years?",
+            "choices": [
+              "10",
+              "12",
+              "8"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Tìm tuổi anh năm nay trước, rồi cộng thêm hai năm."
+            ],
+            "hint": "Năm nay anh 6 + 4 = 10 tuổi.",
+            "answer": {
+              "text": "12 tuổi",
+              "explanation": "Anh năm nay 6 + 4 = 10 tuổi; hai năm nữa anh 10 + 2 = 12 tuổi."
+            },
+            "en": {
+              "guide": [
+                "Find his age this year first, then add two years."
+              ],
+              "hint": "This year he is 6 + 4 = 10.",
+              "answer": {
+                "text": "12",
+                "explanation": "He is 6 + 4 = 10 now, so in two years he will be 10 + 2 = 12."
+              }
+            }
+          }
+        },
+        {
+          "id": "dua-chanh",
+          "prompt": "1 quả dứa nặng bằng 3 quả chanh. 2 quả dứa nặng bằng bao nhiêu quả chanh?",
+          "skill": "khoi-luong",
+          "choices": [
+            {
+              "id": "a",
+              "text": "5 quả chanh"
+            },
+            {
+              "id": "b",
+              "text": "6 quả chanh"
+            },
+            {
+              "id": "c",
+              "text": "9 quả chanh"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "1 pineapple weighs as much as 3 lemons. How many lemons weigh as much as 2 pineapples?",
+            "choices": [
+              "5 lemons",
+              "6 lemons",
+              "9 lemons"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Mỗi quả dứa đổi được 3 quả chanh."
+            ],
+            "hint": "Hai lần 3 quả chanh.",
+            "answer": {
+              "text": "6 quả chanh",
+              "explanation": "2 quả dứa = 3 + 3 = 6 quả chanh."
+            },
+            "en": {
+              "guide": [
+                "Each pineapple swaps for 3 lemons."
+              ],
+              "hint": "Two lots of 3 lemons.",
+              "answer": {
+                "text": "6 lemons",
+                "explanation": "2 pineapples = 3 + 3 = 6 lemons."
+              }
+            }
+          }
+        },
+        {
+          "id": "day-so",
+          "prompt": "Dãy số: 1, 4, 7, 10, ... Số tiếp theo là số nào?",
+          "skill": "logic",
+          "choices": [
+            {
+              "id": "a",
+              "text": "12"
+            },
+            {
+              "id": "b",
+              "text": "13"
+            },
+            {
+              "id": "c",
+              "text": "14"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "The row goes 1, 4, 7, 10, ... Which number comes next?",
+            "choices": [
+              "12",
+              "13",
+              "14"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Tìm xem mỗi lần dãy tăng thêm bao nhiêu."
+            ],
+            "hint": "Mỗi số sau hơn số trước 3 đơn vị.",
+            "answer": {
+              "text": "13",
+              "explanation": "Dãy tăng đều 3: 10 + 3 = 13."
+            },
+            "en": {
+              "guide": [
+                "Find how much the row grows each time."
+              ],
+              "hint": "Each number is 3 more than the one before.",
+              "answer": {
+                "text": "13",
+                "explanation": "The row grows by 3: 10 + 3 = 13."
+              }
+            }
+          }
+        },
+        {
+          "id": "xep-hang",
+          "prompt": "Trong một hàng, Gấu đứng trước Thỏ, Thỏ đứng trước Sóc. Ai đứng cuối hàng?",
+          "skill": "logic",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Gấu"
+            },
+            {
+              "id": "b",
+              "text": "Thỏ"
+            },
+            {
+              "id": "c",
+              "text": "Sóc"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "In a line, Bear stands before Rabbit and Rabbit before Squirrel. Who is at the back?",
+            "choices": [
+              "Bear",
+              "Rabbit",
+              "Squirrel"
+            ]
+          },
+          "answer": {
+            "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Sắp ba bạn theo thứ tự từ đầu hàng."
+            ],
+            "hint": "Gấu, rồi Thỏ, rồi tới ai?",
+            "answer": {
+              "text": "Sóc",
+              "explanation": "Thứ tự từ đầu là Gấu, Thỏ, Sóc, nên Sóc đứng cuối hàng."
+            },
+            "en": {
+              "guide": [
+                "Put the three friends in order from the front."
+              ],
+              "hint": "Bear, then Rabbit, then who?",
+              "answer": {
+                "text": "Squirrel",
+                "explanation": "From the front it is Bear, Rabbit, Squirrel, so Squirrel is at the back."
+              }
+            }
+          }
+        },
+        {
+          "id": "dong-ho",
+          "prompt": "Đồng hồ đang chỉ 7 giờ. 5 giờ nữa đồng hồ chỉ mấy giờ?",
+          "skill": "xem-dong-ho",
+          "choices": [
+            {
+              "id": "a",
+              "text": "11 giờ"
+            },
+            {
+              "id": "b",
+              "text": "12 giờ"
+            },
+            {
+              "id": "c",
+              "text": "1 giờ"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "The clock shows 7 o'clock. What will it show in 5 hours?",
+            "choices": [
+              "11 o'clock",
+              "12 o'clock",
+              "1 o'clock"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Đếm thêm từng giờ một từ 7 giờ."
+            ],
+            "hint": "8, 9, 10, 11, rồi giờ tiếp theo.",
+            "answer": {
+              "text": "12 giờ",
+              "explanation": "7 + 5 = 12, nên 5 giờ nữa đồng hồ chỉ 12 giờ."
+            },
+            "en": {
+              "guide": [
+                "Count on one hour at a time from 7."
+              ],
+              "hint": "8, 9, 10, 11, then the next hour.",
+              "answer": {
+                "text": "12 o'clock",
+                "explanation": "7 + 5 = 12, so in 5 hours the clock shows 12 o'clock."
+              }
+            }
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Chuẩn rồi! Vòm ngăn sáng thêm một nấc.",
+          "Suy luận gọn gàng, mình phục bạn đấy!",
+          "Đúng luôn! Cáo Mắt Sáng vẫy đuôi tít mù."
+        ],
+        "wrong": [
+          "Chưa đúng, nhưng không sao. Đọc lại đề thật chậm nhé.",
+          "Gần tới rồi! Thử nghĩ lần lượt từng bước xem.",
+          "Câu này hơi lắt léo, xem Gợi ý cũng được mà."
+        ],
+        "en": {
+          "right": [
+            "Spot on! The arch glows one notch brighter.",
+            "Neat reasoning, I'm impressed!",
+            "Right again! Bright-Eyes Fox wags its tail like mad."
+          ],
+          "wrong": [
+            "Not quite, and that's fine. Read it again slowly.",
+            "Nearly there! Try thinking one step at a time.",
+            "This one is tricky; a peek at the hint is fine."
+          ]
+        }
+      },
+      "en": {
+        "title": "Final trial",
+        "goTo": "Head back to the north flagpole for Fox's trial",
+        "bossName": "Bright-Eyes Fox",
+        "introDialogue": "Now for the Logical Thinking room's final trial. Each right answer makes the arch glow a little brighter!",
+        "winDialogue": "The logic room's arch is blazing! Great reasoning, {name}."
+      }
+    },
+    {
+      "id": "thuong",
+      "title": "Nhận thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ngăn Tư duy logic đã mở! Cáo Mắt Sáng gửi bạn phần thưởng của ngăn.",
+      "en": {
+        "title": "Your reward",
+        "text": "The Logical Thinking room is open! Bright-Eyes Fox hands you the room's reward."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Đi tiếp",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bốn ngăn khác vẫn sáng đèn quanh Cổng Olympic Toán; ghé ngăn nào trước cũng được.",
+      "en": {
+        "title": "Onward",
+        "text": "Four more rooms are lit round the Olympic Math Gate; start with whichever you like."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 120,
+    "coin": 40,
+    "skillXp": {
+      "logic": 25
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "The Logical Thinking room",
+    "summary": "Find Bright-Eyes Fox's brass balance, order boxes by weight, spot a pattern and pass the reasoning trial to open the gate's first room."
+  }
+}

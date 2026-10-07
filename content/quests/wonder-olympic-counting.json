@@ -1,0 +1,729 @@
+{
+  "id": "wonder-olympic-counting",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Ngăn Tổ hợp",
+  "status": "active",
+  "category": "event",
+  "summary": "Tìm bộ búp bê lồng nhau cho Khỉ Đếm Cách, chọn số theo điều kiện, xếp thẻ thành số lớn nhất và đếm cách chọn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Khỉ Đếm Cách",
+    "where": "Cổng Olympic Toán, Khu rừng bí mật",
+    "goal": "Mở ngăn Tổ hợp",
+    "play": "Tìm đồ, chọn nhiều đáp án, xếp thẻ số, đếm cách chọn, đấu trí",
+    "learn": "Lập số từ chữ số, đếm cách chọn, chia nhóm",
+    "reward": "XP, xu, kỹ năng Logic; đủ năm ngăn thì được Mũ nhà toán học",
+    "next": "Các ngăn còn lại và bài thi thử"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "tim",
+    "learn": "lon-hon-40",
+    "challenge": "so-lon-nhat",
+    "decision": "chon",
+    "finale": "thu-thach",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "places": {
+    "ev-olympic-khi": "Bãi cỏ phía đông đường mòn",
+    "tim": "Chân khinh khí cầu",
+    "ev-olympic-bang": "Bảng đề",
+    "ev-olympic-vom": "Vòm cổng hoa"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Khỉ Đếm Cách",
+      "goTo": "Tới bãi cỏ phía đông đường mòn gặp Khỉ Đếm Cách",
+      "kind": "dialogue",
+      "target": "ev-olympic-khi",
+      "lines": [
+        {
+          "speaker": "Khỉ Đếm Cách",
+          "text": "Khỉ Đếm Cách đây! Ngăn Tổ hợp luôn hỏi một câu: có bao nhiêu cách để làm việc này?"
+        },
+        {
+          "speaker": "Khỉ Đếm Cách",
+          "text": "Bộ búp bê lồng nhau của mình bị lạc ngoài sân. Bạn tìm giúp mình nhé!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đi tìm thôi!"
+        }
+      ],
+      "en": {
+        "title": "Meet Counting Monkey",
+        "goTo": "Go to the grass east of the trail to meet Counting Monkey",
+        "lines": [
+          "Counting Monkey here! The Counting Ways room always asks one thing: how many ways can it be done?",
+          "My nesting dolls wandered off into the yard. Please help me find them!"
+        ],
+        "choices": [
+          {
+            "text": "Let's go find them!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim",
+      "title": "Tìm đồ thất lạc",
+      "goTo": "Tìm búp bê gỗ ở chân khinh khí cầu",
+      "kind": "find-object",
+      "prompt": "Nghe Khỉ tả lại rồi tìm bộ búp bê lồng nhau.",
+      "items": [
+        {
+          "id": "bup-be",
+          "name": "Năm búp bê gỗ của Khỉ",
+          "clue": "Chúng đứng trên bãi cỏ phía đông đường mòn, gần chiếc khinh khí cầu cầu vồng.",
+          "target": "ev-olympic-bup-be"
+        }
+      ],
+      "skill": "logic",
+      "en": {
+        "title": "Find it",
+        "goTo": "Find the wooden dolls at the foot of the balloon",
+        "prompt": "Listen to Monkey's description, then find the nesting dolls.",
+        "items": [
+          {
+            "name": "Monkey's five wooden dolls",
+            "clue": "They stand on the grass east of the trail, near the rainbow balloon."
+          }
+        ]
+      }
+    },
+    {
+      "id": "lon-hon-40",
+      "title": "Số lớn hơn bốn mươi",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "trigger": "interact",
+      "prompt": "Các số dưới đây lập từ hai trong ba chữ số 1, 4, 6. Chọn mọi số lớn hơn 40.",
+      "skill": "so-sanh-so",
+      "choices": [
+        {
+          "id": "a",
+          "text": "14"
+        },
+        {
+          "id": "b",
+          "text": "41"
+        },
+        {
+          "id": "c",
+          "text": "46"
+        },
+        {
+          "id": "d",
+          "text": "61"
+        },
+        {
+          "id": "e",
+          "text": "16"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "b",
+          "c",
+          "d"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Một số có hai chữ số lớn hơn 40 khi hàng chục là 4 trở lên (và không phải đúng 40).",
+          "Xem hàng chục của từng số."
+        ],
+        "hint": "14 và 16 có hàng chục là 1 nên nhỏ hơn 40.",
+        "answer": {
+          "text": "41, 46, 61",
+          "explanation": "41 và 46 có hàng chục 4 nên lớn hơn 40; 61 có hàng chục 6; còn 14 và 16 nhỏ hơn 40."
+        },
+        "en": {
+          "guide": [
+            "A two-digit number is bigger than 40 when its tens digit is 4 or more (and it isn't exactly 40).",
+            "Look at each number's tens digit."
+          ],
+          "hint": "14 and 16 have 1 ten, so they are less than 40.",
+          "answer": {
+            "text": "41, 46, 61",
+            "explanation": "41 and 46 have 4 tens, so they are above 40; 61 has 6 tens; 14 and 16 are below 40."
+          }
+        }
+      },
+      "en": {
+        "title": "Numbers above forty",
+        "prompt": "These numbers are made from two of the digits 1, 4 and 6. Pick every number bigger than 40.",
+        "choices": [
+          "14",
+          "41",
+          "46",
+          "61",
+          "16"
+        ],
+        "goTo": "Go to the question board to pick numbers with Monkey"
+      },
+      "target": "ev-olympic-bang",
+      "goTo": "Tới bảng đề chọn số cùng Khỉ"
+    },
+    {
+      "id": "so-lon-nhat",
+      "title": "Ghép số lớn nhất",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "trigger": "auto",
+      "prompt": "Xếp ba thẻ chữ số để được số lớn nhất có ba chữ số.",
+      "skill": "so-sanh-so",
+      "items": [
+        {
+          "id": "the-5",
+          "label": "5"
+        },
+        {
+          "id": "the-2",
+          "label": "2"
+        },
+        {
+          "id": "the-8",
+          "label": "8"
+        }
+      ],
+      "answer": {
+        "order": [
+          "the-8",
+          "the-5",
+          "the-2"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Chữ số lớn nhất đặt ở hàng trăm.",
+          "Chữ số lớn thứ hai đặt ở hàng chục."
+        ],
+        "hint": "Thẻ số 8 đứng đầu.",
+        "answer": {
+          "text": "852",
+          "explanation": "Xếp chữ số từ lớn đến bé: 8, 5, 2, được số lớn nhất là 852."
+        },
+        "en": {
+          "guide": [
+            "Put the biggest digit in the hundreds place.",
+            "Put the next biggest in the tens place."
+          ],
+          "hint": "The 8 card goes first.",
+          "answer": {
+            "text": "852",
+            "explanation": "Digits from biggest to smallest, 8, 5, 2, make the biggest number: 852."
+          }
+        }
+      },
+      "en": {
+        "title": "Build the biggest number",
+        "prompt": "Arrange the three digit cards to make the biggest three-digit number.",
+        "items": [
+          "5",
+          "2",
+          "8"
+        ]
+      }
+    },
+    {
+      "id": "chuoi-xoai",
+      "title": "Chuối và xoài",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "trigger": "interact",
+      "prompt": "Khỉ có 4 quả chuối và 2 quả xoài. Khỉ chọn 1 quả chuối và 1 quả xoài để ăn. Có bao nhiêu cách chọn?",
+      "skill": "logic",
+      "logicType": "puzzle",
+      "elements": [
+        {
+          "id": "chuoi",
+          "label": "4 quả chuối"
+        },
+        {
+          "id": "xoai",
+          "label": "2 quả xoài"
+        }
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "6"
+        },
+        {
+          "id": "b",
+          "text": "8"
+        },
+        {
+          "id": "c",
+          "text": "10"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Mỗi quả chuối ghép được với từng quả xoài.",
+          "Đếm số cách cho một quả chuối rồi nhân với số quả chuối."
+        ],
+        "hint": "Mỗi quả chuối có 2 cách ghép với xoài.",
+        "answer": {
+          "text": "8",
+          "explanation": "4 quả chuối, mỗi quả có 2 cách chọn xoài: 4 × 2 = 8 cách."
+        },
+        "en": {
+          "guide": [
+            "Each banana can go with each mango.",
+            "Count the ways for one banana, then times by the number of bananas."
+          ],
+          "hint": "Each banana has 2 ways to pair with a mango.",
+          "answer": {
+            "text": "8",
+            "explanation": "4 bananas, each with 2 mango choices: 4 × 2 = 8 ways."
+          }
+        }
+      },
+      "en": {
+        "title": "Bananas and mangoes",
+        "prompt": "Monkey has 4 bananas and 2 mangoes and picks 1 banana and 1 mango to eat. How many ways can Monkey choose?",
+        "elements": [
+          "4 bananas",
+          "2 mangoes"
+        ],
+        "choices": [
+          "6",
+          "8",
+          "10"
+        ],
+        "goTo": "Stop at the flower arch to count fruit choices"
+      },
+      "target": "ev-olympic-vom",
+      "goTo": "Ghé vòm cổng hoa đếm cách chọn trái cây"
+    },
+    {
+      "id": "chon",
+      "title": "Chọn cách làm",
+      "kind": "decision",
+      "trigger": "auto",
+      "prompt": "Khỉ Đếm Cách hỏi: mình bày bộ búp bê theo cách nào đây?",
+      "speaker": "Khỉ Đếm Cách",
+      "choices": [
+        {
+          "id": "to-den-nho",
+          "text": "Xếp hàng từ to đến nhỏ",
+          "consequence": "Năm búp bê đứng thành hàng, trông như một chiếc cầu thang xinh."
+        },
+        {
+          "id": "long-het",
+          "text": "Lồng hết vào nhau",
+          "consequence": "Búp bê to nhất ôm trọn cả bốn búp bê còn lại vào lòng."
+        }
+      ],
+      "en": {
+        "title": "Your choice",
+        "prompt": "Counting Monkey asks: how shall we set out the dolls?",
+        "choices": [
+          {
+            "text": "Line them up from biggest to smallest",
+            "consequence": "Five dolls stand in a row like a little staircase."
+          },
+          {
+            "text": "Nest them all together",
+            "consequence": "The biggest doll holds all four others inside."
+          }
+        ]
+      }
+    },
+    {
+      "id": "thu-thach",
+      "title": "Thử thách cuối",
+      "goTo": "Quay lại bãi cỏ phía đông đường mòn đấu với Khỉ",
+      "kind": "boss",
+      "target": "ev-olympic-khi",
+      "bossId": "ev-olympic-khi",
+      "bossName": "Khỉ Đếm Cách",
+      "introDialogue": "Thử thách cuối của ngăn Tổ hợp! Đếm đúng mỗi câu là mình đu thêm một cành sáng.",
+      "winDialogue": "Cành nào cũng sáng rồi! {name} đếm cách khéo nhất rừng.",
+      "maxHp": 480,
+      "damagePerTurn": 80,
+      "turns": [
+        {
+          "id": "ba-chu-so",
+          "prompt": "Từ ba chữ số 1, 3, 5, lập được bao nhiêu số có hai chữ số khác nhau?",
+          "skill": "logic",
+          "choices": [
+            {
+              "id": "a",
+              "text": "3 số"
+            },
+            {
+              "id": "b",
+              "text": "6 số"
+            },
+            {
+              "id": "c",
+              "text": "9 số"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "From the digits 1, 3 and 5, how many two-digit numbers with different digits can you make?",
+            "choices": [
+              "3",
+              "6",
+              "9"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Chọn hàng chục trước, rồi chọn hàng đơn vị trong hai chữ số còn lại."
+            ],
+            "hint": "Hàng chục là 1 thì có 13 và 15.",
+            "answer": {
+              "text": "6 số",
+              "explanation": "13, 15, 31, 35, 51, 53: có 6 số."
+            },
+            "en": {
+              "guide": [
+                "Choose the tens digit first, then the ones from the two left."
+              ],
+              "hint": "With 1 in the tens you get 13 and 15.",
+              "answer": {
+                "text": "6",
+                "explanation": "13, 15, 31, 35, 51, 53: there are 6."
+              }
+            }
+          }
+        },
+        {
+          "id": "gui-thiep",
+          "prompt": "Ba bạn, mỗi bạn gửi cho mỗi bạn kia một tấm thiệp. Có tất cả bao nhiêu tấm thiệp?",
+          "skill": "logic",
+          "choices": [
+            {
+              "id": "a",
+              "text": "3 tấm"
+            },
+            {
+              "id": "b",
+              "text": "6 tấm"
+            },
+            {
+              "id": "c",
+              "text": "9 tấm"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "Three friends each send a card to each of the others. How many cards are sent?",
+            "choices": [
+              "3",
+              "6",
+              "9"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Mỗi bạn gửi cho hai bạn còn lại."
+            ],
+            "hint": "Mỗi bạn gửi 2 tấm, có 3 bạn.",
+            "answer": {
+              "text": "6 tấm",
+              "explanation": "3 bạn, mỗi bạn gửi 2 tấm: 3 × 2 = 6 tấm thiệp."
+            },
+            "en": {
+              "guide": [
+                "Each friend sends to the two others."
+              ],
+              "hint": "Each sends 2 cards, and there are 3 friends.",
+              "answer": {
+                "text": "6",
+                "explanation": "3 friends sending 2 cards each: 3 × 2 = 6 cards."
+              }
+            }
+          }
+        },
+        {
+          "id": "chia-tao",
+          "prompt": "Chia 6 quả táo vào 2 đĩa, đĩa nào cũng có ít nhất 1 quả. Có bao nhiêu cách chia?",
+          "skill": "logic",
+          "choices": [
+            {
+              "id": "a",
+              "text": "4 cách"
+            },
+            {
+              "id": "b",
+              "text": "5 cách"
+            },
+            {
+              "id": "c",
+              "text": "6 cách"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "Put 6 apples on 2 plates with at least 1 on each. How many ways?",
+            "choices": [
+              "4",
+              "5",
+              "6"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Thử lần lượt số táo ở đĩa thứ nhất."
+            ],
+            "hint": "Đĩa thứ nhất có thể có 1, 2, 3, 4 hoặc 5 quả.",
+            "answer": {
+              "text": "5 cách",
+              "explanation": "(1, 5), (2, 4), (3, 3), (4, 2), (5, 1): có 5 cách."
+            },
+            "en": {
+              "guide": [
+                "Try each number of apples for the first plate."
+              ],
+              "hint": "The first plate can have 1, 2, 3, 4 or 5.",
+              "answer": {
+                "text": "5",
+                "explanation": "(1, 5), (2, 4), (3, 3), (4, 2), (5, 1): 5 ways."
+              }
+            }
+          }
+        },
+        {
+          "id": "hai-so-giong",
+          "prompt": "Có bao nhiêu số có hai chữ số mà hai chữ số giống nhau?",
+          "skill": "logic",
+          "choices": [
+            {
+              "id": "a",
+              "text": "9 số"
+            },
+            {
+              "id": "b",
+              "text": "10 số"
+            },
+            {
+              "id": "c",
+              "text": "11 số"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "How many two-digit numbers have both digits the same?",
+            "choices": [
+              "9",
+              "10",
+              "11"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Liệt kê: 11, 22, 33, ..."
+            ],
+            "hint": "Số đầu là 11, số cuối là 99.",
+            "answer": {
+              "text": "9 số",
+              "explanation": "11, 22, 33, 44, 55, 66, 77, 88, 99: có 9 số."
+            },
+            "en": {
+              "guide": [
+                "List them: 11, 22, 33, ..."
+              ],
+              "hint": "The first is 11 and the last is 99.",
+              "answer": {
+                "text": "9",
+                "explanation": "11, 22, 33, 44, 55, 66, 77, 88, 99: there are 9."
+              }
+            }
+          }
+        },
+        {
+          "id": "banh-kep",
+          "prompt": "Một chiếc bánh kẹp có 1 loại nhân (gà hoặc trứng) và 1 loại rau (xà lách, dưa chuột hoặc cà chua). Có bao nhiêu kiểu bánh?",
+          "skill": "logic",
+          "choices": [
+            {
+              "id": "a",
+              "text": "5 kiểu"
+            },
+            {
+              "id": "b",
+              "text": "6 kiểu"
+            },
+            {
+              "id": "c",
+              "text": "8 kiểu"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "A sandwich has 1 filling (chicken or egg) and 1 salad (lettuce, cucumber or tomato). How many kinds of sandwich?",
+            "choices": [
+              "5",
+              "6",
+              "8"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Mỗi loại nhân đi được với cả ba loại rau."
+            ],
+            "hint": "Nhân gà có 3 kiểu, nhân trứng cũng có 3 kiểu.",
+            "answer": {
+              "text": "6 kiểu",
+              "explanation": "2 loại nhân × 3 loại rau = 6 kiểu bánh."
+            },
+            "en": {
+              "guide": [
+                "Each filling goes with all three salads."
+              ],
+              "hint": "Chicken makes 3 kinds, and egg makes 3 too.",
+              "answer": {
+                "text": "6",
+                "explanation": "2 fillings × 3 salads = 6 kinds."
+              }
+            }
+          }
+        },
+        {
+          "id": "hai-ghe",
+          "prompt": "Xếp hai bạn Na và Bi ngồi vào hai chiếc ghế. Có bao nhiêu cách?",
+          "skill": "logic",
+          "choices": [
+            {
+              "id": "a",
+              "text": "1 cách"
+            },
+            {
+              "id": "b",
+              "text": "2 cách"
+            },
+            {
+              "id": "c",
+              "text": "4 cách"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "Seat Na and Bi on two chairs. How many ways?",
+            "choices": [
+              "1",
+              "2",
+              "4"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Thử cho Na ngồi ghế thứ nhất, rồi đổi chỗ."
+            ],
+            "hint": "Na trước Bi, hoặc Bi trước Na.",
+            "answer": {
+              "text": "2 cách",
+              "explanation": "Na – Bi hoặc Bi – Na: có 2 cách."
+            },
+            "en": {
+              "guide": [
+                "Put Na on the first chair, then swap."
+              ],
+              "hint": "Na then Bi, or Bi then Na.",
+              "answer": {
+                "text": "2",
+                "explanation": "Na – Bi or Bi – Na: 2 ways."
+              }
+            }
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Đếm chuẩn! Mình đu thêm một cành sáng.",
+          "Bạn không bỏ sót cách nào, giỏi ghê!",
+          "Đúng rồi! Khỉ Đếm Cách lộn một vòng mừng."
+        ],
+        "wrong": [
+          "Hình như còn sót một cách; liệt kê lại xem.",
+          "Thử viết ra từng cặp cho khỏi đếm trùng.",
+          "Chưa đúng đâu, mình cùng đếm chậm lại nhé."
+        ],
+        "en": {
+          "right": [
+            "Counted right! I swing onto another shining branch.",
+            "You didn't miss a single way, brilliant!",
+            "Correct! Counting Monkey turns a happy somersault."
+          ],
+          "wrong": [
+            "Looks like one way is missing; list them again.",
+            "Try writing each pair down so none is counted twice.",
+            "Not yet; let's count more slowly together."
+          ]
+        }
+      },
+      "en": {
+        "title": "Final trial",
+        "goTo": "Back to the grass east of the trail for Monkey's trial",
+        "bossName": "Counting Monkey",
+        "introDialogue": "The Counting Ways room's final trial! For every right count I swing onto another shining branch.",
+        "winDialogue": "Every branch is shining! {name}, you count ways better than anyone in the forest."
+      }
+    },
+    {
+      "id": "thuong",
+      "title": "Nhận thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ngăn Tổ hợp đã mở! Khỉ Đếm Cách đếm lại phần thưởng ba lần rồi mới trao bạn.",
+      "en": {
+        "title": "Your reward",
+        "text": "The Counting Ways room is open! Counting Monkey counts your reward three times before handing it over."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Đi tiếp",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mở đủ năm ngăn rồi thì thử sức với bài thi thử 25 câu trên trang sự kiện nhé.",
+      "en": {
+        "title": "Onward",
+        "text": "Once all five rooms are open, try the 25-question mock exam on the event page."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 120,
+    "coin": 40,
+    "skillXp": {
+      "logic": 25
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "The Counting Ways room",
+    "summary": "Find Counting Monkey's nesting dolls, pick numbers that fit a rule, arrange cards into the biggest number and count the ways to choose."
+  }
+}

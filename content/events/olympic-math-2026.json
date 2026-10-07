@@ -1,0 +1,393 @@
+{
+  "version": 1,
+  "id": "olympic-math-2026",
+  "name": {
+    "vi": "Thử thách Olympic Toán",
+    "en": "Olympic Math Challenge"
+  },
+  "tagline": {
+    "vi": "Cổng Olympic Toán đã mở ở Khu rừng bí mật",
+    "en": "The Olympic Math Gate is open in the Secret Forest"
+  },
+  "description": {
+    "vi": "Cổng có năm ngăn, mỗi ngăn một chủ đề: tư duy logic, số học, lý thuyết số, hình học và tổ hợp. Mở đủ năm ngăn để nhận Mũ nhà toán học; làm bài thi thử 25 câu để nhận huy hiệu theo điểm của chính mình. Chơi lại lúc nào cũng có thưởng.",
+    "en": "The gate has five rooms, one per topic: logical thinking, arithmetic, number sense, shapes and counting ways. Open all five to earn the Mathematician's Hat; take the 25-question mock exam to earn a badge for your own score. Every replay pays too."
+  },
+  "greeting": {
+    "vi": "Chào {name}! Năm người giữ ngăn đang chờ ở Cổng Olympic Toán, ngay cạnh đường mòn đầu rừng.",
+    "en": "Hello {name}! Five room keepers are waiting at the Olympic Math Gate, right by the trail at the edge of the forest."
+  },
+  "icon": "trophy",
+  "region": "khu-rung-bi-mat",
+  "announceDays": 7,
+  "windows": [
+    {
+      "kind": "live",
+      "startsAt": "2026-10-06T00:00:00+07:00",
+      "endsAt": "2026-11-01T00:00:00+07:00"
+    },
+    {
+      "kind": "commemorative",
+      "startsAt": "2027-09-01T00:00:00+07:00",
+      "endsAt": "2027-10-01T00:00:00+07:00"
+    }
+  ],
+  "quests": [
+    "wonder-olympic-logic",
+    "wonder-olympic-arithmetic",
+    "wonder-olympic-number",
+    "wonder-olympic-shapes",
+    "wonder-olympic-counting"
+  ],
+  "practice": "olympic-math",
+  "rewards": [
+    {
+      "id": "mu-nha-toan-hoc",
+      "kind": "wearable",
+      "item": "hat-olympic-toan",
+      "commemorativeItem": "hat-olympic-toan-ky-niem",
+      "name": {
+        "vi": "Mũ nhà toán học Olympic",
+        "en": "Olympic Mathematician's Hat"
+      },
+      "goal": {
+        "kind": "quests"
+      }
+    },
+    {
+      "id": "huy-hieu-khuyen-khich",
+      "kind": "badge",
+      "item": "huy-hieu-olympic-khuyen-khich",
+      "commemorativeItem": "huy-hieu-olympic-khuyen-khich-ky-niem",
+      "name": {
+        "vi": "Huy hiệu Khuyến khích",
+        "en": "Merit badge"
+      },
+      "goal": {
+        "kind": "exam-score",
+        "score": 20
+      }
+    },
+    {
+      "id": "huy-hieu-dong",
+      "kind": "badge",
+      "item": "huy-hieu-olympic-dong",
+      "commemorativeItem": "huy-hieu-olympic-dong-ky-niem",
+      "name": {
+        "vi": "Huy hiệu Đồng",
+        "en": "Bronze badge"
+      },
+      "goal": {
+        "kind": "exam-score",
+        "score": 40
+      }
+    },
+    {
+      "id": "huy-hieu-bac",
+      "kind": "badge",
+      "item": "huy-hieu-olympic-bac",
+      "commemorativeItem": "huy-hieu-olympic-bac-ky-niem",
+      "name": {
+        "vi": "Huy hiệu Bạc",
+        "en": "Silver badge"
+      },
+      "goal": {
+        "kind": "exam-score",
+        "score": 60
+      }
+    },
+    {
+      "id": "huy-hieu-vang",
+      "kind": "badge",
+      "item": "huy-hieu-olympic-vang",
+      "commemorativeItem": "huy-hieu-olympic-vang-ky-niem",
+      "name": {
+        "vi": "Huy hiệu Vàng",
+        "en": "Gold badge"
+      },
+      "goal": {
+        "kind": "exam-score",
+        "score": 80
+      }
+    }
+  ],
+  "scene": {
+    "characters": [
+      {
+        "id": "ev-olympic-cao",
+        "kind": "npc",
+        "name": "Cáo Mắt Sáng",
+        "nameEn": "Bright-Eyes Fox",
+        "label": "Nói chuyện",
+        "position": [
+          15.5,
+          13,
+          20.5
+        ],
+        "yaw": 90,
+        "radius": 3,
+        "model": "packs/kenney-cube-pets/2.0/animal-fox.glb",
+        "scale": 0.6671,
+        "animation": "idle"
+      },
+      {
+        "id": "ev-olympic-tho",
+        "kind": "npc",
+        "name": "Thỏ Bàn Tính",
+        "nameEn": "Abacus Rabbit",
+        "label": "Nói chuyện",
+        "position": [
+          16.5,
+          13,
+          22.5
+        ],
+        "yaw": 90,
+        "radius": 3,
+        "model": "packs/kenney-cube-pets/2.0/animal-bunny.glb",
+        "scale": 0.4975,
+        "animation": "idle"
+      },
+      {
+        "id": "ev-olympic-nhim",
+        "kind": "npc",
+        "name": "Nhím Chẵn Lẻ",
+        "nameEn": "Odd-Even Hedgehog",
+        "label": "Nói chuyện",
+        "position": [
+          17.5,
+          13,
+          24.5
+        ],
+        "yaw": 90,
+        "radius": 3,
+        "model": "packs/kenney-cube-pets/2.0/animal-hog.glb",
+        "scale": 0.7421,
+        "animation": "idle"
+      },
+      {
+        "id": "ev-olympic-huou",
+        "kind": "npc",
+        "name": "Hươu Thước Kẻ",
+        "nameEn": "Ruler Deer",
+        "label": "Nói chuyện",
+        "position": [
+          23.5,
+          13,
+          19.5
+        ],
+        "yaw": 270,
+        "radius": 3,
+        "model": "packs/kenney-cube-pets/2.0/animal-deer.glb",
+        "scale": 0.7527,
+        "animation": "idle"
+      },
+      {
+        "id": "ev-olympic-khi",
+        "kind": "npc",
+        "name": "Khỉ Đếm Cách",
+        "nameEn": "Counting Monkey",
+        "label": "Nói chuyện",
+        "position": [
+          25.5,
+          13,
+          22.5
+        ],
+        "yaw": 270,
+        "radius": 3,
+        "model": "packs/kenney-cube-pets/2.0/animal-monkey.glb",
+        "scale": 0.6988,
+        "animation": "idle"
+      },
+      {
+        "id": "ev-olympic-can-dong",
+        "kind": "object",
+        "name": "Cái cân đồng",
+        "nameEn": "Brass balance",
+        "label": "Nhặt lên",
+        "position": [
+          11.5,
+          13,
+          19.5
+        ],
+        "yaw": 0,
+        "radius": 2.5,
+        "model": "generated/props/balance-scale.glb",
+        "scale": 0.0563,
+        "quest": "wonder-olympic-logic"
+      },
+      {
+        "id": "ev-olympic-ban-tinh",
+        "kind": "object",
+        "name": "Bàn tính gỗ",
+        "nameEn": "Wooden abacus",
+        "label": "Nhặt lên",
+        "position": [
+          19.5,
+          13,
+          22.5
+        ],
+        "yaw": 0,
+        "radius": 2.5,
+        "model": "generated/props/abacus.glb",
+        "scale": 0.05,
+        "quest": "wonder-olympic-arithmetic"
+      },
+      {
+        "id": "ev-olympic-manh-ghep",
+        "kind": "object",
+        "name": "Mảnh ghép số đỏ",
+        "nameEn": "Red number piece",
+        "label": "Nhặt lên",
+        "position": [
+          19.5,
+          13,
+          27.5
+        ],
+        "yaw": 0,
+        "radius": 2.5,
+        "model": "generated/props/puzzle-red.glb",
+        "scale": 0.0375,
+        "quest": "wonder-olympic-number"
+      },
+      {
+        "id": "ev-olympic-thuoc",
+        "kind": "object",
+        "name": "Thước tam giác",
+        "nameEn": "Set square",
+        "label": "Nhặt lên",
+        "position": [
+          21.5,
+          13,
+          28.5
+        ],
+        "yaw": 0,
+        "radius": 2.5,
+        "model": "generated/props/triangle-ruler.glb",
+        "scale": 0.0375,
+        "quest": "wonder-olympic-shapes"
+      },
+      {
+        "id": "ev-olympic-bang",
+        "kind": "object",
+        "name": "Bảng đề của cổng",
+        "nameEn": "The gate's question board",
+        "label": "Đọc bảng",
+        "position": [
+          22.5,
+          13,
+          17.5
+        ],
+        "yaw": 180,
+        "radius": 2.5,
+        "model": "generated/box-props/kr-map-board.glb",
+        "scale": 1
+      },
+      {
+        "id": "ev-olympic-vom",
+        "kind": "object",
+        "name": "Vòm Cổng Olympic Toán",
+        "nameEn": "The Olympic Math Gate's arch",
+        "label": "Xem vòm",
+        "position": [
+          12.5,
+          13,
+          22.5
+        ],
+        "yaw": 90,
+        "radius": 3,
+        "model": "generated/box-props/ld-rose-arch.glb",
+        "scale": 1
+      },
+      {
+        "id": "ev-olympic-bup-be",
+        "kind": "object",
+        "name": "Năm búp bê gỗ của Khỉ",
+        "nameEn": "Monkey's five wooden dolls",
+        "label": "Nhặt lên",
+        "position": [
+          27.5,
+          13,
+          25.5
+        ],
+        "yaw": 0,
+        "radius": 2.5,
+        "model": "generated/props/nesting-dolls.glb",
+        "scale": 0.05,
+        "quest": "wonder-olympic-counting"
+      }
+    ],
+    "decorations": [
+      {
+        "model": "generated/box-props/ncb-flag-star.glb",
+        "position": [
+          12.5,
+          13,
+          20.5
+        ],
+        "yaw": 90,
+        "scale": 1
+      },
+      {
+        "model": "generated/box-props/ncb-flag-star.glb",
+        "position": [
+          12.5,
+          13,
+          24.5
+        ],
+        "yaw": 90,
+        "scale": 1
+      },
+      {
+        "model": "generated/box-props/kr-lantern-pole.glb",
+        "position": [
+          20.5,
+          13,
+          18.5
+        ],
+        "yaw": 0,
+        "scale": 1
+      },
+      {
+        "model": "generated/box-props/kr-lantern-pole.glb",
+        "position": [
+          18.5,
+          13,
+          21.5
+        ],
+        "yaw": 0,
+        "scale": 1
+      },
+      {
+        "model": "generated/box-props/kr-lantern-pole.glb",
+        "position": [
+          25.5,
+          13,
+          24.5
+        ],
+        "yaw": 0,
+        "scale": 1
+      },
+      {
+        "model": "generated/box-props/tt-balloon-rainbow.glb",
+        "position": [
+          30.5,
+          13,
+          25.5
+        ],
+        "yaw": 0,
+        "scale": 1
+      },
+      {
+        "model": "packs/kenney-nature-kit/2.1/tent_detailedOpen.glb",
+        "position": [
+          29.5,
+          13,
+          20.5
+        ],
+        "yaw": 270,
+        "scale": 4.6335
+      }
+    ],
+    "meetAt": "ev-olympic-cao"
+  }
+}

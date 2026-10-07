@@ -1,0 +1,747 @@
+{
+  "id": "wonder-olympic-number",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Ngăn Lý thuyết số",
+  "status": "active",
+  "category": "event",
+  "summary": "Tìm mảnh ghép số cho Nhím Chẵn Lẻ, chia số vào đội chẵn và đội lẻ, chọn số chia đều được và xếp số từ bé đến lớn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Nhím Chẵn Lẻ",
+    "where": "Cổng Olympic Toán, Khu rừng bí mật",
+    "goal": "Mở ngăn Lý thuyết số",
+    "play": "Tìm đồ, phân loại chẵn lẻ, chọn nhiều đáp án, xếp thứ tự, đấu trí",
+    "learn": "Số chẵn, số lẻ, chia đều, so sánh và cấu tạo số",
+    "reward": "XP, xu, kỹ năng Số đến 100; đủ năm ngăn thì được Mũ nhà toán học",
+    "next": "Các ngăn còn lại của cổng"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "tim",
+    "learn": "chan-le",
+    "challenge": "chia-ba",
+    "decision": "chon",
+    "finale": "thu-thach",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "places": {
+    "ev-olympic-nhim": "Cột cờ phía nam cổng hoa",
+    "tim": "Bãi cỏ tây đường mòn",
+    "ev-olympic-bang": "Bảng đề",
+    "ev-olympic-vom": "Vòm cổng hoa"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Nhím Chẵn Lẻ",
+      "goTo": "Tới cột cờ phía nam cổng hoa gặp Nhím Chẵn Lẻ",
+      "kind": "dialogue",
+      "target": "ev-olympic-nhim",
+      "lines": [
+        {
+          "speaker": "Nhím Chẵn Lẻ",
+          "text": "Nhím Chẵn Lẻ xin chào! Ở ngăn Lý thuyết số, mọi con số đều thuộc một trong hai đội: chẵn hoặc lẻ."
+        },
+        {
+          "speaker": "Nhím Chẵn Lẻ",
+          "text": "Mảnh ghép số màu đỏ của mình lạc mất rồi. Bạn tìm giúp mình nhé?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình giúp ngay đây!"
+        }
+      ],
+      "en": {
+        "title": "Meet Odd-Even Hedgehog",
+        "goTo": "Go to the flagpole south of the flower gate to meet Odd-Even Hedgehog",
+        "lines": [
+          "Hello from Odd-Even Hedgehog! In the Number Sense room, every number is on one of two teams: odd or even.",
+          "My red number piece has gone missing. Will you help me find it?"
+        ],
+        "choices": [
+          {
+            "text": "Happy to help!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim",
+      "title": "Tìm đồ thất lạc",
+      "goTo": "Tìm mảnh ghép số đỏ trên bãi cỏ tây đường mòn",
+      "kind": "find-object",
+      "prompt": "Lần theo lời Nhím kể để tìm mảnh ghép số màu đỏ.",
+      "items": [
+        {
+          "id": "manh-ghep",
+          "name": "Mảnh ghép số đỏ",
+          "clue": "Nó nằm trên bãi cỏ phía tây đường mòn, xa cổng hoa thêm vài bước.",
+          "target": "ev-olympic-manh-ghep"
+        }
+      ],
+      "skill": "so-den-100",
+      "en": {
+        "title": "Find it",
+        "goTo": "Find the red number piece on the grass west of the trail",
+        "prompt": "Follow Hedgehog's description to find the red number piece.",
+        "items": [
+          {
+            "name": "Red number piece",
+            "clue": "It lies on the grass west of the trail, a few steps past the flower gate."
+          }
+        ]
+      }
+    },
+    {
+      "id": "chan-le",
+      "title": "Hai đội chẵn và lẻ",
+      "kind": "challenge",
+      "mechanic": "classify",
+      "trigger": "interact",
+      "prompt": "Đưa mỗi số về đúng đội của nó: đội số chẵn hay đội số lẻ.",
+      "skill": "so-den-100",
+      "groups": [
+        {
+          "id": "chan",
+          "label": "Số chẵn"
+        },
+        {
+          "id": "le",
+          "label": "Số lẻ"
+        }
+      ],
+      "items": [
+        {
+          "id": "n14",
+          "label": "14"
+        },
+        {
+          "id": "n27",
+          "label": "27"
+        },
+        {
+          "id": "n30",
+          "label": "30"
+        },
+        {
+          "id": "n41",
+          "label": "41"
+        },
+        {
+          "id": "n58",
+          "label": "58"
+        },
+        {
+          "id": "n63",
+          "label": "63"
+        }
+      ],
+      "answer": {
+        "assignment": {
+          "n14": "chan",
+          "n27": "le",
+          "n30": "chan",
+          "n41": "le",
+          "n58": "chan",
+          "n63": "le"
+        }
+      },
+      "support": {
+        "guide": [
+          "Nhìn chữ số hàng đơn vị của từng số.",
+          "Tận cùng là 0, 2, 4, 6, 8 thì vào đội chẵn; còn lại vào đội lẻ."
+        ],
+        "hint": "14 tận cùng là 4 nên vào đội chẵn.",
+        "answer": {
+          "text": "Chẵn: 14, 30, 58. Lẻ: 27, 41, 63.",
+          "explanation": "Các số tận cùng 4, 0, 8 là số chẵn; các số tận cùng 7, 1, 3 là số lẻ."
+        },
+        "en": {
+          "guide": [
+            "Look at the ones digit of each number.",
+            "Ending in 0, 2, 4, 6 or 8 means the even team; the rest go to the odd team."
+          ],
+          "hint": "14 ends in 4, so it joins the even team.",
+          "answer": {
+            "text": "Even: 14, 30, 58. Odd: 27, 41, 63.",
+            "explanation": "Numbers ending in 4, 0 and 8 are even; those ending in 7, 1 and 3 are odd."
+          }
+        }
+      },
+      "en": {
+        "title": "Odd team and even team",
+        "prompt": "Send each number to its team: the even team or the odd team.",
+        "items": [
+          "14",
+          "27",
+          "30",
+          "41",
+          "58",
+          "63"
+        ],
+        "goTo": "Go to the question board to sort numbers into teams"
+      },
+      "target": "ev-olympic-bang",
+      "goTo": "Tới bảng đề chia số vào hai đội"
+    },
+    {
+      "id": "chia-ba",
+      "title": "Chia đều cho ba bạn",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "trigger": "auto",
+      "prompt": "Chọn mọi số kẹo chia đều được cho 3 bạn mà không thừa chiếc nào.",
+      "skill": "so-den-100",
+      "choices": [
+        {
+          "id": "a",
+          "text": "12"
+        },
+        {
+          "id": "b",
+          "text": "14"
+        },
+        {
+          "id": "c",
+          "text": "15"
+        },
+        {
+          "id": "d",
+          "text": "20"
+        },
+        {
+          "id": "e",
+          "text": "21"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "a",
+          "c",
+          "e"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Một số chia đều cho 3 bạn khi nó có trong dãy đếm thêm 3.",
+          "Đếm thêm 3: 3, 6, 9, 12, 15, 18, 21."
+        ],
+        "hint": "14 và 20 không có trong dãy đếm thêm 3.",
+        "answer": {
+          "text": "12, 15, 21",
+          "explanation": "12 = 3 × 4, 15 = 3 × 5, 21 = 3 × 7; còn 14 và 20 chia cho 3 bạn thì thừa kẹo."
+        },
+        "en": {
+          "guide": [
+            "A number shares equally among 3 when it is in the count-by-threes.",
+            "Count in threes: 3, 6, 9, 12, 15, 18, 21."
+          ],
+          "hint": "14 and 20 are not in the count-by-threes.",
+          "answer": {
+            "text": "12, 15, 21",
+            "explanation": "12 = 3 × 4, 15 = 3 × 5, 21 = 3 × 7; 14 and 20 leave sweets over."
+          }
+        }
+      },
+      "en": {
+        "title": "Sharing among three",
+        "prompt": "Pick every number of sweets that three friends can share equally with none left over.",
+        "choices": [
+          "12",
+          "14",
+          "15",
+          "20",
+          "21"
+        ]
+      }
+    },
+    {
+      "id": "xep-so",
+      "title": "Số nào đứng trước",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "trigger": "interact",
+      "prompt": "Xếp các số từ bé đến lớn.",
+      "skill": "so-sanh-so",
+      "items": [
+        {
+          "id": "s68",
+          "label": "68"
+        },
+        {
+          "id": "s86",
+          "label": "86"
+        },
+        {
+          "id": "s59",
+          "label": "59"
+        },
+        {
+          "id": "s95",
+          "label": "95"
+        }
+      ],
+      "answer": {
+        "order": [
+          "s59",
+          "s68",
+          "s86",
+          "s95"
+        ]
+      },
+      "support": {
+        "guide": [
+          "So hàng chục trước; hàng chục bằng nhau mới so tới hàng đơn vị.",
+          "Số có hàng chục bé hơn thì bé hơn."
+        ],
+        "hint": "59 có hàng chục là 5, bé nhất trong bốn số.",
+        "answer": {
+          "text": "59, 68, 86, 95",
+          "explanation": "So hàng chục: 5 < 6 < 8 < 9, nên 59 < 68 < 86 < 95."
+        },
+        "en": {
+          "guide": [
+            "Compare the tens first; only when they match compare the ones.",
+            "The number with fewer tens is smaller."
+          ],
+          "hint": "59 has 5 tens, the fewest of the four.",
+          "answer": {
+            "text": "59, 68, 86, 95",
+            "explanation": "Tens: 5 < 6 < 8 < 9, so 59 < 68 < 86 < 95."
+          }
+        }
+      },
+      "en": {
+        "title": "Which number comes first",
+        "prompt": "Put the numbers in order from smallest to largest.",
+        "items": [
+          "68",
+          "86",
+          "59",
+          "95"
+        ],
+        "goTo": "Cross to the flower arch to put numbers in order"
+      },
+      "target": "ev-olympic-vom",
+      "goTo": "Sang vòm cổng hoa xếp số từ bé đến lớn"
+    },
+    {
+      "id": "chon",
+      "title": "Chọn cách làm",
+      "kind": "decision",
+      "trigger": "auto",
+      "prompt": "Mảnh ghép tìm thấy rồi! Bạn muốn gắn nó lên cột nào?",
+      "speaker": "Nhím Chẵn Lẻ",
+      "choices": [
+        {
+          "id": "cot-chan",
+          "text": "Gắn vào cột số chẵn",
+          "consequence": "Cột chẵn đủ năm mảnh, kêu leng keng thật vui tai."
+        },
+        {
+          "id": "cot-le",
+          "text": "Gắn vào cột số lẻ",
+          "consequence": "Cột lẻ sáng lên rồi đọc thật to: một, ba, năm, bảy, chín."
+        }
+      ],
+      "en": {
+        "title": "Your choice",
+        "prompt": "The piece is found! Which post would you like to fix it on?",
+        "choices": [
+          {
+            "text": "Fix it on the even post",
+            "consequence": "The even post is complete and jingles merrily."
+          },
+          {
+            "text": "Fix it on the odd post",
+            "consequence": "The odd post lights up and calls out: one, three, five, seven, nine."
+          }
+        ]
+      }
+    },
+    {
+      "id": "thu-thach",
+      "title": "Thử thách cuối",
+      "goTo": "Trở lại cột cờ phía nam cổng hoa đấu với Nhím",
+      "kind": "boss",
+      "target": "ev-olympic-nhim",
+      "bossId": "ev-olympic-nhim",
+      "bossName": "Nhím Chẵn Lẻ",
+      "introDialogue": "Thử thách cuối của ngăn Lý thuyết số! Trả lời đúng để gai mình hóa thành những ngôi sao nhỏ.",
+      "winDialogue": "Gai nào cũng thành sao rồi! {name} hiểu các con số lắm đó.",
+      "maxHp": 480,
+      "damagePerTurn": 80,
+      "turns": [
+        {
+          "id": "so-le",
+          "prompt": "Số nào là số lẻ?",
+          "skill": "so-den-100",
+          "choices": [
+            {
+              "id": "a",
+              "text": "46"
+            },
+            {
+              "id": "b",
+              "text": "70"
+            },
+            {
+              "id": "c",
+              "text": "83"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "Which number is odd?",
+            "choices": [
+              "46",
+              "70",
+              "83"
+            ]
+          },
+          "answer": {
+            "choice": "c"
+          },
+          "support": {
+            "guide": [
+              "Số lẻ tận cùng là 1, 3, 5, 7 hoặc 9."
+            ],
+            "hint": "Xem chữ số cuối của ba số.",
+            "answer": {
+              "text": "83",
+              "explanation": "83 tận cùng là 3 nên là số lẻ; 46 và 70 là số chẵn."
+            },
+            "en": {
+              "guide": [
+                "Odd numbers end in 1, 3, 5, 7 or 9."
+              ],
+              "hint": "Look at the last digit of each.",
+              "answer": {
+                "text": "83",
+                "explanation": "83 ends in 3, so it is odd; 46 and 70 are even."
+              }
+            }
+          }
+        },
+        {
+          "id": "chia-banh",
+          "prompt": "Có 16 cái bánh chia đều cho 2 bạn. Mỗi bạn được mấy cái?",
+          "skill": "so-den-100",
+          "choices": [
+            {
+              "id": "a",
+              "text": "6 cái"
+            },
+            {
+              "id": "b",
+              "text": "8 cái"
+            },
+            {
+              "id": "c",
+              "text": "9 cái"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "16 cakes are shared equally by 2 friends. How many does each get?",
+            "choices": [
+              "6",
+              "8",
+              "9"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Chia đều cho 2 bạn là chia đôi."
+            ],
+            "hint": "Mấy cộng với chính nó bằng 16?",
+            "answer": {
+              "text": "8 cái",
+              "explanation": "16 : 2 = 8, mỗi bạn được 8 cái bánh."
+            },
+            "en": {
+              "guide": [
+                "Sharing between 2 means halving."
+              ],
+              "hint": "What added to itself makes 16?",
+              "answer": {
+                "text": "8",
+                "explanation": "16 ÷ 2 = 8, so each friend gets 8 cakes."
+              }
+            }
+          }
+        },
+        {
+          "id": "chan-lien-sau",
+          "prompt": "Số chẵn liền sau số 37 là số nào?",
+          "skill": "so-den-100",
+          "choices": [
+            {
+              "id": "a",
+              "text": "38"
+            },
+            {
+              "id": "b",
+              "text": "39"
+            },
+            {
+              "id": "c",
+              "text": "40"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "Which even number comes right after 37?",
+            "choices": [
+              "38",
+              "39",
+              "40"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Đếm tiếp từ 37 và dừng ở số chẵn đầu tiên."
+            ],
+            "hint": "Số ngay sau 37 là 38.",
+            "answer": {
+              "text": "38",
+              "explanation": "Sau 37 là 38, và 38 là số chẵn."
+            },
+            "en": {
+              "guide": [
+                "Count on from 37 and stop at the first even number."
+              ],
+              "hint": "The number right after 37 is 38.",
+              "answer": {
+                "text": "38",
+                "explanation": "After 37 comes 38, and 38 is even."
+              }
+            }
+          }
+        },
+        {
+          "id": "hai-chu-so-giong",
+          "prompt": "Số lớn nhất có hai chữ số giống nhau là số nào?",
+          "skill": "so-den-100",
+          "choices": [
+            {
+              "id": "a",
+              "text": "88"
+            },
+            {
+              "id": "b",
+              "text": "99"
+            },
+            {
+              "id": "c",
+              "text": "98"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "What is the largest two-digit number with both digits the same?",
+            "choices": [
+              "88",
+              "99",
+              "98"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Hai chữ số giống nhau và lớn nhất có thể."
+            ],
+            "hint": "Chữ số lớn nhất là 9.",
+            "answer": {
+              "text": "99",
+              "explanation": "Hai chữ số đều là 9 cho ta số 99, lớn nhất."
+            },
+            "en": {
+              "guide": [
+                "Both digits the same, and as big as can be."
+              ],
+              "hint": "The biggest digit is 9.",
+              "answer": {
+                "text": "99",
+                "explanation": "Both digits 9 make 99, the largest."
+              }
+            }
+          }
+        },
+        {
+          "id": "chan-cong-le",
+          "prompt": "Lấy một số chẵn cộng một số lẻ thì được số chẵn hay số lẻ?",
+          "skill": "so-den-100",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Số chẵn"
+            },
+            {
+              "id": "b",
+              "text": "Số lẻ"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "An even number plus an odd number: is the answer even or odd?",
+            "choices": [
+              "Even",
+              "Odd"
+            ]
+          },
+          "answer": {
+            "choice": "b"
+          },
+          "support": {
+            "guide": [
+              "Thử vài ví dụ: 2 + 3, 4 + 5, 10 + 1."
+            ],
+            "hint": "2 + 3 = 5 là số gì?",
+            "answer": {
+              "text": "Số lẻ",
+              "explanation": "Chẵn cộng lẻ luôn ra số lẻ, như 2 + 3 = 5, 4 + 5 = 9."
+            },
+            "en": {
+              "guide": [
+                "Try a few: 2 + 3, 4 + 5, 10 + 1."
+              ],
+              "hint": "Is 2 + 3 = 5 even or odd?",
+              "answer": {
+                "text": "Odd",
+                "explanation": "Even plus odd is always odd, like 2 + 3 = 5 and 4 + 5 = 9."
+              }
+            }
+          }
+        },
+        {
+          "id": "cau-tao-so",
+          "prompt": "Số 47 gồm mấy chục và mấy đơn vị?",
+          "skill": "so-den-100",
+          "choices": [
+            {
+              "id": "a",
+              "text": "4 chục và 7 đơn vị"
+            },
+            {
+              "id": "b",
+              "text": "7 chục và 4 đơn vị"
+            },
+            {
+              "id": "c",
+              "text": "47 chục"
+            }
+          ],
+          "damage": 80,
+          "en": {
+            "prompt": "How many tens and ones make 47?",
+            "choices": [
+              "4 tens and 7 ones",
+              "7 tens and 4 ones",
+              "47 tens"
+            ]
+          },
+          "answer": {
+            "choice": "a"
+          },
+          "support": {
+            "guide": [
+              "Chữ số bên trái là hàng chục, chữ số bên phải là hàng đơn vị."
+            ],
+            "hint": "Số 4 đứng ở hàng chục.",
+            "answer": {
+              "text": "4 chục và 7 đơn vị",
+              "explanation": "47 = 40 + 7: gồm 4 chục và 7 đơn vị."
+            },
+            "en": {
+              "guide": [
+                "The left digit is the tens, the right digit the ones."
+              ],
+              "hint": "The 4 is in the tens place.",
+              "answer": {
+                "text": "4 tens and 7 ones",
+                "explanation": "47 = 40 + 7: 4 tens and 7 ones."
+              }
+            }
+          }
+        }
+      ],
+      "feedback": {
+        "right": [
+          "Chuẩn! Thêm một chiếc gai hóa thành sao.",
+          "Bạn nhìn số tinh mắt ghê!",
+          "Đúng rồi, cả đội chẵn lẻ vỗ tay rào rào."
+        ],
+        "wrong": [
+          "Chưa phải đâu; nhìn kỹ chữ số cuối xem.",
+          "Suýt đúng! Thử đếm thêm từng bước.",
+          "Không sao cả, mình cùng thử lại nhé."
+        ],
+        "en": {
+          "right": [
+            "Correct! Another spine turns into a star.",
+            "What sharp eyes for numbers!",
+            "Right! Both teams cheer and clap."
+          ],
+          "wrong": [
+            "Not that one; look closely at the last digit.",
+            "So close! Try counting on step by step.",
+            "That's all right, let's try again together."
+          ]
+        }
+      },
+      "en": {
+        "title": "Final trial",
+        "goTo": "Return to the south flagpole for Hedgehog's trial",
+        "bossName": "Odd-Even Hedgehog",
+        "introDialogue": "The Number Sense room's final trial! Answer right and my spines turn into tiny stars.",
+        "winDialogue": "Every spine is a star! {name}, you really know your numbers."
+      }
+    },
+    {
+      "id": "thuong",
+      "title": "Nhận thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ngăn Lý thuyết số đã mở! Nhím Chẵn Lẻ chia phần thưởng thật đều cho bạn.",
+      "en": {
+        "title": "Your reward",
+        "text": "The Number Sense room is open! Odd-Even Hedgehog shares out your reward evenly."
+      }
+    },
+    {
+      "id": "tiep",
+      "title": "Đi tiếp",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Còn những ngăn khác quanh cổng; ngăn nào cũng có một người giữ cửa đang đợi.",
+      "en": {
+        "title": "Onward",
+        "text": "More rooms stand round the gate, each with a keeper waiting."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 120,
+    "coin": 40,
+    "skillXp": {
+      "so-den-100": 25
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "The Number Sense room",
+    "summary": "Find Odd-Even Hedgehog's number piece, sort numbers into odd and even teams, pick numbers that share equally and put numbers in order."
+  }
+}
