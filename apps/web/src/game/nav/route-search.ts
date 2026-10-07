@@ -6,6 +6,7 @@
 // the ways and leaves them only for the last stretch to the target. The route comes back as a few
 // waypoints: straight runs on one level are merged where the body fits all along them.
 import { REGION_BLOCKS } from '@miu/voxel/region-format';
+import { canStep } from '@miu/voxel/traversal';
 import { Ground, MAX_LEVELS, slotOf, type RegionWalk } from './walk-grid';
 
 /** What a step onto each kind of ground costs: a road detour up to this many times longer still wins. */
@@ -14,8 +15,6 @@ const STEP_COST: Readonly<Record<number, number>> = { [Ground.road]: 1, [Ground.
 const EDGE_COST = 0.6;
 const CLIMB_COST = 0.6;
 const DROP_COST = 0.2;
-const MAX_CLIMB = 2;
-const MAX_DROP = 3;
 /** Search budget (spots taken off the open list); a map's core has well under this many. */
 const MAX_EXPANSIONS = 1_500_000;
 /** No spot within reach of the target: the route may end this much further out (the child walks the rest). */
@@ -264,11 +263,8 @@ export function findRoute(grid: WalkGrid, query: RouteQuery): RouteResult {
       for (let j = grid.start[nc] ?? 0; j < (grid.start[nc + 1] ?? 0); j++) {
         if (closed[j]) continue;
         const ny = grid.feet[j] ?? 0;
+        if (!canStep(y, room, ny, grid.clear[j] ?? 0)) continue;
         const rise = ny - y;
-        // Up: room over the current spot for the body to rise. Down: open blocks all the way from her feet.
-        if (rise > MAX_CLIMB || -rise > MAX_DROP) continue;
-        if (rise > 0 && room < rise + 2) continue;
-        if (rise < 0 && (grid.clear[j] ?? 0) < 2 - rise) continue;
         const step =
           (STEP_COST[grid.ground[j] ?? Ground.plain] ?? 1) +
           (grid.edge[j] ? EDGE_COST : 0) +
