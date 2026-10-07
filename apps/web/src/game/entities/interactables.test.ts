@@ -26,6 +26,12 @@ describe('pickNearest', () => {
     expect(pickNearest([parrot, hiddenBox], { x: 11.6, y: 0, z: 10 })?.def.id).toBe('parrot-guide');
   });
 
+  it('gives the prompt to the quest step\'s own target whenever she is within its radius', () => {
+    expect(pickNearest([parrot, box], { x: 11.6, y: 0, z: 10 }, 'parrot-guide')?.def.id).toBe('parrot-guide');
+    expect(pickNearest([parrot, box], { x: 13.5, y: 0, z: 10 }, 'parrot-guide')?.def.id).toBe('clue-box');
+    expect(pickNearest([parrot, target('clue-box', [12, 0, 10], 2, false)], { x: 11.9, y: 0, z: 10 }, 'clue-box')?.def.id).toBe('parrot-guide');
+  });
+
   it('counts height, so a target on a ledge above is out of reach', () => {
     expect(pickNearest([box], { x: 12, y: 3, z: 10 })).toBeNull();
   });

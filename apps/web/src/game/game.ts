@@ -1223,7 +1223,7 @@ export class Game {
       overlay.stats.hintTarget = arrow.showing ? (hint?.def.id ?? null) : null;
       // While she is on a seat, a bed or before a screen, the only prompt is to get up.
       const held = objectInteractions.holding;
-      const nearest = carried || held ? null : pickNearest(targets, controller.position);
+      const nearest = carried || held ? null : pickNearest(targets, controller.position, hint?.def.id ?? null);
       // Another player near (quest targets still win): the online menu.
       const nearPlayer = nearest || carried || held ? null : online.nearest(controller.position);
       // Quest targets always win the prompt; ambient life goes quiet next to them (and next to another player).
