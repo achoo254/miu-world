@@ -102,7 +102,7 @@ describe('a quest played by a party', () => {
     // A talks to the parrot: B's own progress moves too.
     await step(agentA, 'gap').expect(200);
     await vi.waitFor(async () => expect(await doneOf(childB)).toEqual(['gap']));
-    expect(b.last('party-quest-progress')?.progress.completedSteps).toEqual(['gap']);
+    await vi.waitFor(() => expect(b.last('party-quest-progress')?.progress.completedSteps).toEqual(['gap']));
 
     // A answers the riddle; she may not go on before B has answered it too.
     await step(agentA, 'do', { answer: { value: 7 } }).expect(200);
@@ -153,7 +153,8 @@ describe('a quest played by a party', () => {
     // B talks: A's second run starts with it.
     await step(agentB, 'gap').expect(200);
     await vi.waitFor(async () => expect(await doneOf(childA)).toEqual(['gap']));
-    expect(a.last('party-quest-progress')?.progress.run).toBe(2);
+    // The progress goes out once the catch-up has run through (after the step is saved): wait for it too.
+    await vi.waitFor(() => expect(a.last('party-quest-progress')?.progress.run).toBe(2));
   });
 });
 
