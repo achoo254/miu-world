@@ -304,8 +304,11 @@ export class BotRunner {
   /** What the bots learnt of their maps, read and written (none without a store). */
   private readonly memories: MemoryKeeper | null;
   private readonly host: CoopHost;
-  /** Bots in a party with the player they asked into it (by the bot's instance id), and their goodbye on its way. */
-  private readonly teams = new Map<string, { inst: CompanionBotInstance; player: string; leaving: NodeJS.Timeout | null }>();
+  /**
+   * Bots in a party with the player they asked into it (by the bot's instance id), their goodbye on its way, and
+   * whether she started a quest of her own while it was on its way (the bot stays until she finishes it).
+   */
+  private readonly teams = new Map<string, { inst: CompanionBotInstance; player: string; leaving: NodeJS.Timeout | null; alone: boolean }>();
   private teamsCheckedAt = Date.now();
   /** Bots playing their part in party quests. */
   private readonly partyPlayer: BotPartyQuestPlayer;
@@ -345,6 +348,7 @@ export class BotRunner {
         // The quest of a party it asked her into is over: it says goodbye and leaves.
         if (this.teams.has(botId)) this.waveAndLeave(botId);
       },
+      playedAlone: (playerId, finished) => this.playedAlone(playerId, finished),
     });
   }
 
@@ -799,7 +803,7 @@ export class BotRunner {
     this.social.answered(botId, accepted);
     const inst = this.instanceOf(botId);
     if (!accepted || !inst) return;
-    this.teams.set(botId, { inst, player: asked, leaving: null });
+    this.teams.set(botId, { inst, player: asked, leaving: null, alone: false });
     this.answerTo(botId, asked, 'yay', 'cheer');
     this.later(BOT_QUEST_PROPOSE_MS * (1 + this.random()), () => this.proposeQuest(botId));
   }
@@ -854,17 +858,36 @@ export class BotRunner {
     }
   }
 
-  /** In a moment it waves goodbye and leaves the party, unless she starts a challenge or a quest with it meanwhile. */
+  /**
+   * In a moment it waves goodbye and leaves the party, unless she starts a quest meanwhile (Jev: any quest she starts,
+   * a challenge or quest with it or one she plays on her own).
+   */
   private waveAndLeave(botId: string): void {
     const team = this.teams.get(botId);
     if (!team || team.leaving) return;
     team.leaving = this.later(BOT_TEAM_LEAVE_MS * (1 + this.random()), () => {
       team.leaving = null;
-      // She started a challenge or another quest with it meanwhile: it stays.
-      if (this.teams.get(botId) !== team || this.coop.has(botId) || this.partyPlayer.plays(botId)) return;
+      // She started a challenge or another quest meanwhile: it stays.
+      if (this.teams.get(botId) !== team || team.alone || this.coop.has(botId) || this.partyPlayer.plays(botId)) return;
       this.answerTo(botId, team.player, 'bye', 'wave');
       this.leaveTeam(botId);
     });
+  }
+
+  /**
+   * Its party mate plays a quest on her own. A step of it tried while its goodbye is on its way: it stays while she
+   * plays. That quest finished: it waves goodbye and leaves a little later, as after the party's own quest.
+   */
+  private playedAlone(playerId: string, finished: boolean): void {
+    for (const [botId, team] of this.teams) {
+      if (team.player !== playerId) continue;
+      if (!finished) {
+        if (team.leaving) team.alone = true;
+      } else if (team.alone) {
+        team.alone = false;
+        this.waveAndLeave(botId);
+      }
+    }
   }
 
   private leaveTeam(botId: string): void {

@@ -199,7 +199,7 @@ export function questRoutes(deps: QuestRouteDeps): Router {
     const party = deps.partyQuests ? await deps.partyQuests.gate(childId, quest, stepId, input.data) : 'ok';
     if (party !== 'ok') throw new HttpError(409, party);
     const outcome = await recordStep({ db, content, clock }, childId, quest, stepId, input.data);
-    if (deps.partyQuests && outcome.correct && !outcome.repeated) void deps.partyQuests.recorded(childId, quest, stepId, input.data);
+    if (deps.partyQuests && outcome.correct && !outcome.repeated) void deps.partyQuests.recorded(childId, quest, stepId, input.data, outcome.completion !== null);
     res.json(
       StepCompleteResponse.parse({
         correct: outcome.correct,

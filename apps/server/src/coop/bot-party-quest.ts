@@ -50,6 +50,11 @@ export interface PartyQuestBotDriver {
   finished(botId: string, questId: string, players: readonly string[]): void;
   /** Out of the run (it ended, or the bot left it): it forgets what it was about to do. */
   forget(botIds: readonly string[]): void;
+  /**
+   * Player `playerId`, in a party, played a quest on her own (in no party run of it): tried a step of it (`finished`
+   * false), or finished her run of it (true).
+   */
+  playedAlone(playerId: string, finished: boolean): void;
 }
 
 /** The quest a bot asks the party to play (Jev D7 `random`): any quest bots play on the map, each as likely (null: none). */
@@ -72,6 +77,7 @@ export interface BotPartyQuestPlayerOptions {
   finished(botId: string, questId: string, players: readonly string[]): void;
   /** Its part in a run is over (the players finished it, or it ended). */
   ended(botId: string): void;
+  playedAlone(playerId: string, finished: boolean): void;
 }
 
 interface Playing {
@@ -138,6 +144,10 @@ export class BotPartyQuestPlayer implements PartyQuestBotDriver {
       // Told even when the run ended before the bot saw it.
       this.options.ended(id);
     }
+  }
+
+  playedAlone(playerId: string, finished: boolean): void {
+    this.options.playedAlone(playerId, finished);
   }
 
   /** It stops playing a run (true: it was playing one), back to its own quest. */

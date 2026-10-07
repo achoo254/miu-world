@@ -130,17 +130,19 @@ function scriptedBots() {
   const seen = new Map<string, { situation: PartyQuestBotSituation; moves: PartyQuestBotMoves }>();
   const finished: Array<{ bot: string; quest: string; players: readonly string[] }> = [];
   const forgot: string[] = [];
+  const alone: Array<{ player: string; finished: boolean }> = [];
   const driver: PartyQuestBotDriver = {
     play: (bot, situation, moves) => void seen.set(bot, { situation, moves }),
     finished: (bot, quest, players) => void finished.push({ bot, quest, players }),
     forget: (ids) => void forgot.push(...ids),
+    playedAlone: (player, done) => void alone.push({ player, finished: done }),
   };
   const of = (bot: string): { situation: PartyQuestBotSituation; moves: PartyQuestBotMoves } => {
     const last = seen.get(bot);
     if (!last) throw new Error(`${bot} was shown nothing`);
     return last;
   };
-  return { driver, seen, finished, forgot, of };
+  return { driver, seen, finished, forgot, alone, of };
 }
 
 /** A player on the map with a companion bot beside her that asked her into its party; she said yes and leads it. */
@@ -286,6 +288,16 @@ describe('a quest a companion bot asks its party to play', () => {
     h.hub.botLeaveParty(BOT);
     await vi.waitFor(() => expect(a.last('party-quest')?.quest).toBeNull());
     expect(bots.forgot).toEqual([BOT, BOT]);
+  });
+
+  it('tells the party\'s bots of a quest she plays on her own: each step she tries, and once when she finishes it', async () => {
+    const { a, agentA, bots } = await withBot();
+    await playAlone(agentA);
+    await vi.waitFor(() => expect(bots.alone.filter((t) => t.finished)).toEqual([{ player: a.id, finished: true }]));
+    // Every step tried (the boss twice), then the finish; nothing played as a party.
+    expect(bots.alone).toHaveLength(QUEST.steps.length + 2);
+    expect(bots.alone.slice(0, -1).every((t) => t.player === a.id && !t.finished)).toBe(true);
+    expect(bots.seen.size).toBe(0);
   });
 
   it('has the party\'s bots play along in a quest a player starts', async () => {

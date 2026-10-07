@@ -304,4 +304,41 @@ describe('companion bots inviting players they keep meeting, with their runner',
     expect(lines(a, 'bye').map((l) => l.id)).toEqual([inviter]);
     expect(a.all('emote').some((e) => e.id === inviter && e.emote === 'wave')).toBe(true);
   });
+
+  it('stays while she plays a quest of her own started during its goodbye, and waves goodbye once she finishes it', { timeout: 30_000 }, async () => {
+    startBots();
+    const a = await player();
+    const inviter = await untilInvited(a);
+    a.send({ type: 'party-reply', from: inviter, accept: true });
+    await vi.advanceTimersByTimeAsync(500);
+    const driver = runner?.partyQuestDriver();
+    const moves: PartyQuestBotMoves = { done: vi.fn(), blow: vi.fn(), question: () => null };
+    driver?.play(inviter, { quest: PARTY_QUEST, front: 0, done: new Set(), blow: null }, moves);
+    // A quest of her own tried while it plays the party's quest (no goodbye on its way) keeps it nowhere.
+    driver?.playedAlone(a.id, false);
+    driver?.forget([inviter]);
+    await vi.advanceTimersByTimeAsync(2 * BOT_TEAM_LEAVE_MS + 100);
+    expect(h.hub.parties.partyOf(inviter)).toBeNull();
+    expect(lines(a, 'bye').map((l) => l.id)).toEqual([inviter]);
+
+    // Another bot, another party: its quest ends, and during the goodbye she starts a quest on her own.
+    const b = await h.joined('child-b', [600, 17, 600], CASTLE);
+    h.friends.bots.set('child-b', new Set(castleBots));
+    const second = await untilInvited(b);
+    b.send({ type: 'party-reply', from: second, accept: true });
+    await vi.advanceTimersByTimeAsync(500);
+    driver?.forget([second]);
+    await vi.advanceTimersByTimeAsync(BOT_TEAM_LEAVE_MS - 100);
+    driver?.playedAlone(b.id, false);
+    await vi.advanceTimersByTimeAsync(4 * BOT_TEAM_LEAVE_MS);
+    expect(h.hub.parties.partyOf(second)?.leader).toBe(b.id);
+    expect(lines(b, 'bye')).toEqual([]);
+    // She finishes it: 5 to 10 seconds later it waves goodbye and leaves.
+    driver?.playedAlone(b.id, true);
+    await vi.advanceTimersByTimeAsync(BOT_TEAM_LEAVE_MS - 100);
+    expect(h.hub.parties.partyOf(second)).not.toBeNull();
+    await vi.advanceTimersByTimeAsync(BOT_TEAM_LEAVE_MS + 200);
+    expect(h.hub.parties.partyOf(second)).toBeNull();
+    expect(lines(b, 'bye').map((l) => l.id)).toEqual([second]);
+  });
 });

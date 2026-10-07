@@ -36,8 +36,11 @@ export type PartyGate = 'ok' | 'party-waiting' | 'not-your-turn';
 /** What the step route asks of a party's quest. */
 export interface PartyQuestHooks {
   gate(childId: string, quest: ActiveQuest, stepId: string, input: StepCompleteRequest): Promise<PartyGate>;
-  /** A step of hers was recorded: the party's shared steps and boss blows follow for the others. */
-  recorded(childId: string, quest: ActiveQuest, stepId: string, input: StepCompleteRequest): Promise<void>;
+  /**
+   * A step of hers was recorded (`finished`: it finished her run of the quest): the party's shared steps and boss
+   * blows follow for the others.
+   */
+  recorded(childId: string, quest: ActiveQuest, stepId: string, input: StepCompleteRequest, finished: boolean): Promise<void>;
 }
 
 /**
@@ -304,6 +307,12 @@ export class PartyQuestService implements PartyQuestHooks {
     if (run) void this.push(run);
   }
 
+  /** She plays a quest on her own while in a party: its bots hear of it (one about to leave stays while she plays). */
+  private playedAlone(childId: string, finished: boolean): void {
+    const publicId = this.host.publicIdOf(childId);
+    if (publicId && this.host.party(publicId)) this.host.bots()?.playedAlone(publicId, finished);
+  }
+
   // ---- progress ----
 
   /** Her steps done in her current run, and what her searches and boss found (a bot's: kept in memory). */
@@ -339,6 +348,7 @@ export class PartyQuestService implements PartyQuestHooks {
 
   async gate(childId: string, quest: ActiveQuest, stepId: string, input: StepCompleteRequest): Promise<PartyGate> {
     const found = this.runOfChild(childId, quest.id);
+    if (!found) this.playedAlone(childId, false);
     if (!found || found.run.members.size < 2) return 'ok';
     const { run, member } = found;
     const index = quest.steps.findIndex((s) => s.id === stepId);
@@ -360,9 +370,12 @@ export class PartyQuestService implements PartyQuestHooks {
     return 'ok';
   }
 
-  async recorded(childId: string, quest: ActiveQuest, _stepId: string, _input: StepCompleteRequest): Promise<void> {
+  async recorded(childId: string, quest: ActiveQuest, _stepId: string, _input: StepCompleteRequest, finished: boolean): Promise<void> {
     const found = this.runOfChild(childId, quest.id);
-    if (!found) return;
+    if (!found) {
+      if (finished) this.playedAlone(childId, true);
+      return;
+    }
     const { run } = found;
     run.queue = run.queue.then(() => this.catchUp(run)).catch((err: unknown) => {
       console.error('party quest catch-up failed', err instanceof Error ? err.name : typeof err);

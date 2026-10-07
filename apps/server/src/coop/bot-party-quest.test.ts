@@ -38,6 +38,7 @@ function harness(options: { think?: number; chance?: number } = {}) {
     share: (_bot, goal) => shares.push(goal),
     finished: (bot, quest, players) => finished.push([bot, quest, players]),
     ended: (bot) => ended.push(bot),
+    playedAlone: () => {},
   });
   const moves = { done: vi.fn<(stepId: string) => void>(), blow: vi.fn<(stepId: string, turnId: string) => void>(), question: vi.fn(() => INFO) };
   const play = (done: readonly string[], front: number, blow: PartyQuestBotSituation['blow'] = null): void =>
