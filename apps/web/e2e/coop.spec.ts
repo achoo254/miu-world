@@ -4,7 +4,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { expect, test, type Browser, type Locator, type Page } from '@playwright/test';
-import { freshChild, playAt } from './quest-api';
+import { answerBoss, copied, freshChild, playAt, skipBossBeat } from './quest-api';
 import { waitReady } from './stats';
 
 const QUEST = 'with-ban-do-la-rung';
@@ -16,6 +16,14 @@ const ANSWERS: ReadonlyMap<string, string> = (() => {
   const quest = JSON.parse(readFileSync(file, 'utf8')) as { steps: Array<{ kind: string; rounds?: Array<{ task: { id: string; answer: { choice: string } } }> }> };
   const rounds = quest.steps.find((s) => s.kind === 'coop')?.rounds ?? [];
   return new Map(rounds.map((r) => [r.task.id, r.task.answer.choice]));
+})();
+
+/** The zone guardian the party fights, and the right choice of its first question (from the content). */
+const WARD = 'ward-khu-rung-trang-tay-bac';
+const WARD_FIRST_ANSWER: string = (() => {
+  const file = fileURLToPath(new URL(`../../../content/quests/${WARD}.json`, import.meta.url));
+  const quest = JSON.parse(readFileSync(file, 'utf8')) as { steps: Array<{ kind: string; turns?: Array<{ answer: { choice: string } }> }> };
+  return quest.steps.find((s) => s.kind === 'boss')?.turns?.[0]?.answer.choice ?? '';
 })();
 
 async function player(browser: Browser, baseURL: string, name: string, bots: boolean): Promise<Page> {
@@ -153,7 +161,7 @@ test("the party fights a zone guardian: each member has every question's Hướn
   // Two game loads, both at the guardian again for its quest, then the party's shared talk and the fight opening.
   test.setTimeout(90_000);
   const [a, b] = await partyOfTwo(browser, baseURL ?? '');
-  const atGuardian = '/play?quality=low&region=khu-rung-bi-mat&quest=ward-khu-rung-trang-tay-bac&spawnAt=nai-gac-dong-co';
+  const atGuardian = `/play?quality=low&region=khu-rung-bi-mat&quest=${WARD}&spawnAt=nai-gac-dong-co`;
   await b.goto(atGuardian);
   await waitReady(b);
   await b.locator('[data-id="party-quest-start"]').click();
@@ -167,7 +175,7 @@ test("the party fights a zone guardian: each member has every question's Hướn
   await expect(b.locator('[data-id="boss-battle"]')).toBeVisible({ timeout: 10_000 });
   // A's talk was done with B's: her fight opens by itself or when she turns to the guardian.
   await expect
-    .poll(async () => ((await (await a.context().request.get('/api/quests/ward-khu-rung-trang-tay-bac')).json()) as { progress: { completedSteps: string[] } }).progress.completedSteps, { timeout: 10_000 })
+    .poll(async () => ((await (await a.context().request.get(`/api/quests/${WARD}`)).json()) as { progress: { completedSteps: string[] } }).progress.completedSteps, { timeout: 10_000 })
     .toContain('gap');
   const fightA = a.locator('[data-id="boss-battle"]');
   await fightA.waitFor({ timeout: 5_000 }).catch(() => a.keyboard.press('KeyE'));
@@ -176,7 +184,19 @@ test("the party fights a zone guardian: each member has every question's Hướn
   for (const page of [a, b]) {
     await page.locator('[data-id="boss-bar"] [data-id="support-guide"]').click();
     await expect(page.locator('[data-id="support-guide-steps"] li').first()).not.toBeEmpty();
+    await page.locator('[data-id="support-close"]').click();
   }
+  // One blow at a time: the member whose blow it is not has the answers locked and reads whose it is; the other's
+  // blow takes the boss's HP down on both screens.
+  const locked = async (page: Page): Promise<boolean> => (await page.locator('[data-id="boss-move"] .duel-target:enabled').count()) === 0;
+  await expect.poll(async () => [await locked(a), await locked(b)].filter(Boolean).length, { timeout: 10_000 }).toBe(1);
+  const [striker, watcher] = (await locked(a)) ? [b, a] : [a, b];
+  await expect(watcher.locator('[data-id="boss-move-guide"]')).toContainText('Lượt của');
+  const hpBefore = (await watcher.locator('[data-id="boss-hp"]').textContent()) ?? '';
+  await answerBoss(striker, WARD_FIRST_ANSWER);
+  await skipBossBeat(striker);
+  await copied(striker);
+  await expect(watcher.locator('[data-id="boss-hp"]')).not.toHaveText(hpBefore, { timeout: 10_000 });
   await a.context().close();
   await b.context().close();
 });

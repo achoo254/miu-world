@@ -113,9 +113,13 @@ const BOSS_SHOTS: Record<string, string> = {
   '0-trum-canh-khu-tren-map': 'Trùm canh khu Cánh Cụt Đưa Thư đứng cạnh phố làng, nút Thách đấu (chất lượng cao)',
   '1-ban-do-cac-trum': 'Bản đồ lớn: nhóm Trùm (vương miện), trùm lớn và bốn trùm canh khu trong danh sách',
   '2-gap-trum-canh-khu': 'Nói chuyện với trùm canh khu: trận đấu của nó bắt đầu ngay',
-  '3-dau-tri': 'Đấu trí: HP của trùm, lời mở đầu, câu hỏi theo kỹ năng của khu',
+  '3-dau-tri': 'Đấu trí trong thế giới đang chạy: trùm thật đứng trước bé, tên và HP ở trên, đáp án là khiên quanh trùm, câu hỏi ở thẻ dưới',
   '3b-ho-tro-dap-an': 'Mỗi câu của trùm có Hướng dẫn, Gợi ý, Đáp án kèm giải thích; Đáp án mở sau hai lần trượt câu đó, đòn vẫn đánh được',
-  '4-sau-mot-don': 'Sau một đòn trúng: HP giảm, trùm nói câu mới',
+  '4-sau-mot-don': 'Sau một đòn trúng: HP giảm, trùm nói câu mới, câu sau đổi động tác chơi',
+  '6-cau-dai-lau-dai-360x740': 'Điện thoại dọc 360 × 740: câu hỏi dài nhất của trùm canh khu (105 ký tự, Lâu đài), đích chạm ≥ 48 px',
+  '6-cau-dai-dao-bi-an-360x740': 'Điện thoại dọc 360 × 740: đáp án dài (32 ký tự, Đảo bí ẩn), nạp chiêu',
+  '6-cau-dai-lau-dai-820x1180': 'iPad dọc 820 × 1180: câu hỏi dài nhất của trùm canh khu (Lâu đài)',
+  '6-cau-dai-dao-bi-an-820x1180': 'iPad dọc 820 × 1180: đáp án dài (Đảo bí ẩn)',
   '5-chep-vao-vo': 'Thắng: mọi câu của trận để chép vào vở, rồi phần thưởng do server tính',
 };
 const PET_SCENES: Record<string, string> = {

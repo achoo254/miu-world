@@ -1,6 +1,7 @@
 // E2E helpers: a fresh account with its primary player, and chapter 1 steps played through the API to reach a
 // later step quickly. Answers are the chapter 1 content's; tests that check a screen play it in the UI.
 import { expect, type Page } from '@playwright/test';
+import { tap } from './touch';
 
 export async function freshChild(page: Page, baseURL: string, name = 'Mochi'): Promise<void> {
   const headers = { Origin: new URL(baseURL).origin };
@@ -54,4 +55,38 @@ export async function notebookPage(page: Page, count: number): Promise<void> {
   await expect(page.getByRole('dialog', { name: 'Chép vào vở nhé!' })).toBeVisible({ timeout: 15_000 });
   await expect(page.locator('[data-id="notebook-lines"] li')).toHaveCount(count);
   await page.locator('[data-id="completion-next"]').click();
+}
+
+/**
+ * Answers the boss question on screen with its play move: taps the target carrying `choiceId` (a shield, an orb, a
+ * slot), three times for a rune to charge. A blow that lands in the world plays a moment before its vở card: the tap
+ * that skips it is left to the caller (`skipBossBeat`).
+ */
+export async function answerBoss(page: Page, choiceId: string): Promise<void> {
+  const move = await page.locator('[data-id="boss-move"]').getAttribute('data-move');
+  const target = `[data-id="boss-move"] [data-id="choice-${choiceId}"]`;
+  await expect(page.locator(target)).toBeEnabled();
+  // A touch screen taps; a mouse clicks where the target is now (an orb drifts: no wait for it to stand still).
+  const touch = await page.evaluate(() => navigator.maxTouchPoints > 0);
+  for (let i = 0; i < (move === 'charge' ? 3 : 1); i += 1) {
+    if (touch) {
+      await tap(page, target);
+      continue;
+    }
+    const box = await page.locator(target).boundingBox();
+    if (!box) throw new Error(`${target} not visible`);
+    await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+  }
+}
+
+/**
+ * After a right blow: skips the moment it plays in the world before its vở card (a tap anywhere). On the card, or with
+ * less motion, there is no such moment and nothing is waited for.
+ */
+export async function skipBossBeat(page: Page): Promise<void> {
+  const field = page.locator('[data-id="boss-move"]');
+  if ((await field.count()) === 0 || (await field.getAttribute('data-mode')) !== 'stage' || (await field.getAttribute('data-calm')) === '1') return;
+  const skip = page.locator('[data-id="boss-beat-skip"]');
+  await skip.waitFor({ state: 'visible', timeout: 5_000 });
+  await skip.click();
 }
