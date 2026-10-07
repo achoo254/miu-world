@@ -28,6 +28,8 @@ import {
   temperature,
   type Bandits,
 } from './learner';
+import { Avoidance } from './avoidance';
+import { pickArea } from './explore-areas';
 import { AREA_SIDE, MemoryGraph, pointsOf, UNKNOWN_WAY, walksStraight, type Reach } from './memory-graph';
 import { QuestPlan, type BotQuest } from './quest-plan';
 import { seePlaces } from './sight';
@@ -40,34 +42,11 @@ const PERCEIVE_S = 0.5;
 const CHAIN_MAX = 1_500;
 /** Exploring ends after this long, the square it was heading for then counted as one it cannot get to for a while. */
 const EXPLORE_MAX_S = 120;
-/**
- * Stuck on the way somewhere, it keeps away from there a while, twice as long each time it gets stuck there again
- * (up to AVOID_MAX_MS): a place it found no way to (unless it knows a way there), or the squares around a square
- * it could not get to (a long fence stops it at the next square along just the same).
- */
-const PLACE_AVOID_MS = 5 * 60_000;
-const AREA_AVOID_MS = 15 * 60_000;
-const AVOID_MAX_MS = 2 * 3_600_000;
-const AREA_AVOID_AROUND = 2;
-/**
- * Where it got stuck heading some way, it remembers a wall: a way it does not know that passes this close to the spot
- * heading the same way is not tried for BARRIER_MS (a fence stops it the same way for every place behind it).
- */
-const BARRIER_MS = 30 * 60_000;
-const BARRIER_NEAR = 6;
-const BARRIER_HEADING = 0.3;
-const BARRIERS_KEPT = 48;
 /** Exploring, it looks around this long while it finds a way (at most EXPLORE_LOOK_MAX_S)… */
 const EXPLORE_LOOK_S = 0.3;
 const EXPLORE_LOOK_MAX_S = 3;
 /** …one that gets it at least this much nearer the square it explores towards. */
 const EXPLORE_MIN_GAIN = 4;
-/** Squares it weighs for exploring, best first (the first not past a wall it met is taken)… */
-const EXPLORE_CANDIDATES = 12;
-/** …looked for within this many squares of it and of its home first. */
-const EXPLORE_BOX = 10;
-/** Squares with fewer standing columns than this are not worth exploring. */
-const AREA_MIN_SPOTS = 24;
 /**
  * Heading somewhere by a way it does not know and not a block nearer for this long: it is stuck (a wall it walks
  * along), gives up and remembers the wall. Three plans' time, as its feet count stuck (stepper.ts), but nearer to
@@ -213,54 +192,9 @@ interface Current {
   reward: number;
 }
 
-interface Avoid {
-  until: number;
-  strikes: number;
-  /** Stuck on a way it knew, too: not even along a way it knows. */
-  always?: boolean;
-}
-
-/** Marks `key` to keep away from: longer each time. */
-function strike<K>(list: Map<K, Avoid>, key: K, base: number, now: number, always = false): void {
-  const known = list.get(key);
-  const strikes = (known?.strikes ?? 0) + 1;
-  list.set(key, { until: now + Math.min(AVOID_MAX_MS, base * 2 ** (strikes - 1)), strikes, always: always || (known?.always === true && known.until > now) });
-}
-
-const avoiding = (avoid: Avoid | undefined, now: number): boolean => avoid !== undefined && avoid.until > now;
-
-/** A spot it got stuck at, heading (dx, dz). */
-interface Barrier {
-  readonly x: number;
-  readonly z: number;
-  readonly dx: number;
-  readonly dz: number;
-  readonly until: number;
-}
-
 interface PlaceRef {
   readonly id: string;
   readonly place: WalkPlace;
-}
-
-/** Per map: how many standing columns each coarse square has. */
-const areaSpots = new WeakMap<WalkMap, Uint16Array>();
-
-function spotsPerArea(map: WalkMap): Uint16Array {
-  const known = areaSpots.get(map);
-  if (known) return known;
-  const ax = Math.ceil(map.sx / AREA_SIDE);
-  const counts = new Uint16Array(ax * Math.ceil(map.sz / AREA_SIDE));
-  for (let z = 0; z < map.sz; z++) {
-    for (let x = 0; x < map.sx; x++) {
-      if (map.spot(x, z, 0) !== 0) {
-        const i = Math.floor(x / AREA_SIDE) + Math.floor(z / AREA_SIDE) * ax;
-        counts[i] = (counts[i] ?? 0) + 1;
-      }
-    }
-  }
-  areaSpots.set(map, counts);
-  return counts;
 }
 
 const between = (random: () => number, min: number, max: number): number => min + (max - min) * random();
@@ -304,10 +238,8 @@ export class Brain implements GoalChooser {
   private scouted: { end: Spot; reaches: boolean } | null | undefined = undefined;
   /** How near it got to each square it explores towards (it gives one up when a stretch gets it no nearer). */
   private readonly exploreBest = new Map<number, number>();
-  /** Squares and places it could not get to lately: until when, and how many times it got stuck on the way. */
-  private readonly shunned = new Map<number, Avoid>();
-  private readonly avoided = new Map<string, Avoid>();
-  private barriers: Barrier[] = [];
+  /** Places and squares it could not get to lately, and the walls it met. */
+  private readonly avoid: Avoidance;
   /** When it last did something at each person or thing. */
   private readonly workedAt = new Map<string, number>();
   /** Players met lately (public id → times met and when last): only counts, never kept beyond a few minutes. */
@@ -332,6 +264,7 @@ export class Brain implements GoalChooser {
     const quests = options.quests.map((q) => ({ ...q, steps: q.steps.filter((s) => s.targets.every((t) => known.has(t))) }));
     this.quests = new QuestPlan(quests, options.random);
     this.memory = new MemoryGraph(options.map, (id) => this.keeps(id));
+    this.avoid = new Avoidance(this.memory.areaSide);
     this.bandits = startValues(options.persona.curious);
     this.tau = temperature(options.persona.curious);
     const now = options.now();
@@ -395,14 +328,14 @@ export class Brain implements GoalChooser {
     if (current) {
       const { option, area, place, routed } = current;
       current.reward += REWARD.stuck;
-      if (option === 'explore') {
-        this.shunArea(area, now);
-        const [ax] = this.memory.areaSide;
-        this.addBarrier(view.at, ((area % ax) + 0.5) * AREA_SIDE, (Math.floor(area / ax) + 0.5) * AREA_SIDE, now);
+      if (option === 'explore' && area >= 0) {
+        this.avoid.shunAround(area, now);
+        const middle = this.avoid.areaMiddle(area);
+        this.avoid.addWall(view.at, middle.x, middle.z, now);
       }
       if (option === 'place' && place) {
-        strike(this.avoided, place.id, PLACE_AVOID_MS, now, routed);
-        if (!routed) this.addBarrier(view.at, place.place.at[0], place.place.at[2], now);
+        this.avoid.strikePlace(place.id, now, routed);
+        if (!routed) this.avoid.addWall(view.at, place.place.at[0], place.place.at[2], now);
       }
     }
     this.finish();
@@ -470,36 +403,9 @@ export class Brain implements GoalChooser {
     known.thirdRouted = routed;
   }
 
-  private addBarrier(at: Spot, toX: number, toZ: number, now: number): void {
-    const x = at.x + 0.5;
-    const z = at.z + 0.5;
-    const length = Math.hypot(toX - x, toZ - z);
-    if (length < 1) return;
-    this.barriers = this.barriers.filter((b) => b.until > now);
-    if (this.barriers.length >= BARRIERS_KEPT) this.barriers.shift();
-    this.barriers.push({ x, z, dx: (toX - x) / length, dz: (toZ - z) / length, until: now + BARRIER_MS });
-  }
-
-  /** Whether going straight from `at` to (x, z) heads into a wall it met. */
-  private walled(at: Spot, x: number, z: number, now: number): boolean {
-    const ax = at.x + 0.5;
-    const az = at.z + 0.5;
-    const length = Math.hypot(x - ax, z - az);
-    if (length < 1) return false;
-    const ux = (x - ax) / length;
-    const uz = (z - az) / length;
-    for (const b of this.barriers) {
-      if (b.until <= now || ux * b.dx + uz * b.dz < BARRIER_HEADING) continue;
-      const along = (b.x - ax) * ux + (b.z - az) * uz;
-      const aside = Math.abs((b.x - ax) * uz - (b.z - az) * ux);
-      if (along >= -BARRIER_NEAR / 2 && along <= length && aside <= BARRIER_NEAR) return true;
-    }
-    return false;
-  }
-
   /** Whether it knows where place `id` is and has not got stuck going there lately. */
   private goable(id: string, now: number): boolean {
-    return this.memory.places.has(id) && !avoiding(this.avoided.get(id), now);
+    return this.memory.places.has(id) && !this.avoid.avoidsPlace(id, now);
   }
 
   /** A stretch towards square `area` ended at `at`: no nearer than the stretches before, it gives the square up a while. */
@@ -510,32 +416,11 @@ export class Brain implements GoalChooser {
     const best = this.exploreBest.get(area) ?? Infinity;
     if (away > best - EXPLORE_MIN_GAIN / 2) {
       this.exploreBest.delete(area);
-      this.shunArea(area, now);
+      this.avoid.shunAround(area, now);
       return;
     }
     if (this.exploreBest.size >= 64) this.exploreBest.clear();
     this.exploreBest.set(area, away);
-  }
-
-  /** It could not get to square `area`: it keeps away from it and the squares around it a while. */
-  private shunArea(area: number, now: number): void {
-    if (area < 0) return;
-    strike(this.shunned, area, AREA_AVOID_MS, now);
-    const until = this.shunned.get(area)?.until ?? now;
-    const [ax, az] = this.memory.areaSide;
-    const x = area % ax;
-    const z = Math.floor(area / ax);
-    for (let dz = -AREA_AVOID_AROUND; dz <= AREA_AVOID_AROUND; dz++) {
-      for (let dx = -AREA_AVOID_AROUND; dx <= AREA_AVOID_AROUND; dx++) {
-        const nx = x + dx;
-        const nz = z + dz;
-        if ((dx || dz) && nx >= 0 && nz >= 0 && nx < ax && nz < az) {
-          const near = nx + nz * ax;
-          const known = this.shunned.get(near);
-          this.shunned.set(near, { until: Math.max(until, known?.until ?? 0), strikes: known?.strikes ?? 0 });
-        }
-      }
-    }
   }
 
   /** The known place it stands at (within reach), if any. */
@@ -721,10 +606,9 @@ export class Brain implements GoalChooser {
       // A way it knows when that is quicker than finding one over what it sees (its own guess, learnt as it goes).
       const known = reached.get(place.id);
       const guess = (this.detour * straight) / speed;
-      const avoid = this.avoided.get(place.id);
       // A place it got stuck going to, or one past a wall it met: only along a way it knows, for a while.
-      const direct = !avoiding(avoid, now) && !this.walled(at, place.at[0], place.at[2], now);
-      const routed = known?.link && (!direct || known.cost < guess) && !(avoiding(avoid, now) && avoid?.always === true) ? known : null;
+      const direct = !this.avoid.avoidsPlace(place.id, now) && !this.avoid.walled(at, place.at[0], place.at[2], now);
+      const routed = known?.link && (!direct || known.cost < guess) && !this.avoid.avoidsPlace(place.id, now, true) ? known : null;
       if (!routed && !direct) continue;
       const cost = routed ? routed.cost : guess;
       const goal = remaining.includes(place.id) ? GOAL_BONUS : 0;
@@ -735,7 +619,8 @@ export class Brain implements GoalChooser {
       offer(place.q + goal + nearHome - spent - LAMBDA * cost, () => this.goPlace(place.id, routed ? reached : null, at, now));
     }
 
-    const area = this.exploreArea(at, now);
+    const { avoid } = this;
+    const area = pickArea({ map, memory: this.memory, at, home, random, avoids: (i) => avoid.avoidsArea(i, now), walled: (x, z) => avoid.walled(at, x, z, now) });
     if (area >= 0) offer(this.bandits.explore + (seeking ? SEEK_BONUS : 0), () => this.explore(area, seeking, at, now));
 
     for (const player of this.options.players?.(at, persona.sight) ?? []) {
@@ -795,62 +680,6 @@ export class Brain implements GoalChooser {
   }
 
   /**
-   * The square to explore: one it has not walked next to one it has (so likely one it can get to), near its home and
-   * near where it is, more so among others it has not walked: it knows the map outwards from its home (nearest to
-   * where it stands only, a curious bot drifted to the map's far edge for its whole run; heading for the place its
-   * quest needs fixes it on the fence in front of that place). -1: none left.
-   */
-  private exploreArea(at: Spot, now: number): number {
-    const spots = spotsPerArea(this.options.map);
-    const [ax, az] = this.memory.areaSide;
-    const { home } = this.options;
-    // The best few, nearest first; the first one not past a wall it met is taken.
-    const top: Array<{ area: number; score: number }> = [];
-    const jitter = this.options.random() * AREA_SIDE;
-    const consider = (x: number, z: number): void => {
-      const i = x + z * ax;
-      if ((spots[i] ?? 0) < AREA_MIN_SPOTS || this.memory.visited(i) || avoiding(this.shunned.get(i), now)) return;
-      let fresh = 0;
-      let walked = 0;
-      for (let dz = -1; dz <= 1; dz++) {
-        for (let dx = -1; dx <= 1; dx++) {
-          const nx = x + dx;
-          const nz = z + dz;
-          if (!(dx || dz) || nx < 0 || nz < 0 || nx >= ax || nz >= az) continue;
-          if (this.memory.visited(nx + nz * ax)) walked += 1;
-          else fresh += 1;
-        }
-      }
-      if (walked === 0) return;
-      const cx = (x + 0.5) * AREA_SIDE;
-      const cz = (z + 0.5) * AREA_SIDE;
-      const score = Math.hypot(cx - at.x, cz - at.z) / 2 + Math.hypot(cx - home.x, cz - home.z) - 4 * fresh + (jitter * ((i * 2_654_435_761) % 7)) / 7;
-      if (top.length < EXPLORE_CANDIDATES || score < (top.at(-1)?.score ?? Infinity)) {
-        top.push({ area: i, score });
-        top.sort((p, q) => p.score - q.score);
-        if (top.length > EXPLORE_CANDIDATES) top.pop();
-      }
-    };
-    // The squares around it and around its home first (where the best ones are); the whole map only if none is left.
-    const boxes = [
-      [Math.floor(at.x / AREA_SIDE), Math.floor(at.z / AREA_SIDE)],
-      [Math.floor(home.x / AREA_SIDE), Math.floor(home.z / AREA_SIDE)],
-    ] as const;
-    const inBox = (b: readonly [number, number], x: number, z: number): boolean => Math.abs(x - b[0]) <= EXPLORE_BOX && Math.abs(z - b[1]) <= EXPLORE_BOX;
-    boxes.forEach((box, k) => {
-      for (let z = Math.max(0, box[1] - EXPLORE_BOX); z <= Math.min(az - 1, box[1] + EXPLORE_BOX); z++) {
-        for (let x = Math.max(0, box[0] - EXPLORE_BOX); x <= Math.min(ax - 1, box[0] + EXPLORE_BOX); x++) {
-          if (k === 1 && inBox(boxes[0], x, z)) continue;
-          consider(x, z);
-        }
-      }
-    });
-    if (top.length === 0) for (let z = 0; z < az; z++) for (let x = 0; x < ax; x++) if (!inBox(boxes[0], x, z) && !inBox(boxes[1], x, z)) consider(x, z);
-    const open = top.find((c) => !this.walled(at, ((c.area % ax) + 0.5) * AREA_SIDE, (Math.floor(c.area / ax) + 0.5) * AREA_SIDE, now));
-    return open?.area ?? -1;
-  }
-
-  /**
    * Explores towards square `area` a stretch at a time. It first looks for a way that gets it nearer over what it sees
    * (a plan in the server's queue, while it stands looking around a moment), then walks to where that way ends,
    * deciding again there. No such way: the square is one it cannot get to from here for a while.
@@ -890,10 +719,10 @@ export class Brain implements GoalChooser {
     const place = current.place?.place;
     if (!scouted) {
       // Only that square (it walked into nothing to find out; its neighbours may well have a way).
-      if (current.option === 'explore') strike(this.shunned, current.area, AREA_AVOID_MS, now);
+      if (current.option === 'explore') this.avoid.strikeArea(current.area, now);
       if (place && current.place) {
-        strike(this.avoided, current.place.id, PLACE_AVOID_MS, now);
-        this.addBarrier(view.at, place.at[0], place.at[2], now);
+        this.avoid.strikePlace(current.place.id, now);
+        this.avoid.addWall(view.at, place.at[0], place.at[2], now);
       }
       this.finish();
       return this.decide(view, now);
@@ -974,7 +803,7 @@ export class Brain implements GoalChooser {
       // The target its quest needs came into sight while it looked for it: it goes there instead.
       if (current.pursues && this.quests.remaining.some((t) => this.goable(t, now))) return true;
       if ((now - current.startedAt) / 1000 > EXPLORE_MAX_S) {
-        this.shunArea(current.area, now);
+        this.avoid.shunAround(current.area, now);
         return true;
       }
     }
