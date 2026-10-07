@@ -31,6 +31,8 @@ export interface EventDecor {
   blocked(): ReadonlyMap<string, Exclude<Traversal, 'walk-through'>>;
   /** Whether a target belongs to an event that is not open now (it stays hidden whatever the quest says). */
   hides(targetId: string): boolean;
+  /** Whether a target is one of the events' characters (drawn only within the view distance, like the decorations). */
+  owns(targetId: string): boolean;
   setOpen(open: ReadonlySet<string>): void;
   setViewDistance(distance: number): void;
   buildAround(x: number, z: number): void;
@@ -60,6 +62,7 @@ export async function loadEventDecor(loader: GuardedGltfLoader, entities: WorldE
   return {
     groups: fields.map(({ field }) => field.group),
     blocked: () => cells,
+    owns: (targetId) => owner.has(targetId),
     hides: (targetId) => {
       const event = owner.get(targetId);
       return event !== undefined && !open.has(event);

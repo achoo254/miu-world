@@ -28,7 +28,7 @@
   },
   "places": {
     "ev-olympic-cao": "Cột cờ phía bắc cổng hoa",
-    "tim": "Đá xám cạnh lửa trại",
+    "tim": "Trước lều cắm trại",
     "ev-olympic-bang": "Bảng đề",
     "ev-olympic-vom": "Vòm cổng hoa"
   },
@@ -71,26 +71,26 @@
     {
       "id": "tim",
       "title": "Tìm đồ thất lạc",
-      "goTo": "Tìm cái cân đồng ở đá xám cạnh lửa trại",
+      "goTo": "Tìm cái cân đồng trước lều cắm trại",
       "kind": "find-object",
       "prompt": "Đọc lời gợi ý của Cáo rồi tìm cái cân đồng.",
       "items": [
         {
           "id": "can-dong",
           "name": "Cái cân đồng",
-          "clue": "Nó nằm cạnh mấy hòn đá xám phủ rêu, gần bếp lửa trại.",
+          "clue": "Nó nằm trên bãi cỏ phía đông đường mòn, ngay trước chiếc lều cắm trại.",
           "target": "ev-olympic-can-dong"
         }
       ],
       "skill": "logic",
       "en": {
         "title": "Find it",
-        "goTo": "Look for the brass balance at the grey stones by the campfire",
+        "goTo": "Look for the brass balance in front of the camping tent",
         "prompt": "Read Fox's clue, then find the brass balance.",
         "items": [
           {
             "name": "Brass balance",
-            "clue": "It lies by the mossy grey stones, near the campfire."
+            "clue": "It lies on the grass east of the trail, right in front of the camping tent."
           }
         ]
       }

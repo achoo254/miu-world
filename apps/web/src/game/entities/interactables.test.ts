@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { Interactable } from '@miu/voxel/world-entities';
-import { namedForPlayer, pickNearest, spinsInPlace } from './interactables';
+import type { GuardedGltfLoader } from '../asset-loader';
+import { loadInteractables, namedForPlayer, pickNearest, spinsInPlace } from './interactables';
 
 const target = (id: string, position: [number, number, number], radius: number, available = true) => ({
   available,
@@ -54,5 +55,25 @@ describe('spinsInPlace', () => {
     expect(spinsInPlace({ model: 'generated/props/automobile.glb' })).toBe(true);
     expect(spinsInPlace({ model: 'packs/kenney-cube-pets/animal-cat.glb' })).toBe(false);
     expect(spinsInPlace({})).toBe(false);
+  });
+});
+
+describe('drawing a target only near the child', () => {
+  it('stops drawing a far target yet keeps it available, and a hidden one stays hidden when drawn again', async () => {
+    // A terrain-drawn target (no model, no shape) needs no model loader.
+    const def = { id: 'far-host', kind: 'object', name: 'Bảng', label: 'Xem', position: [5, 5, 5], yaw: 0, radius: 2 } as Interactable;
+    const entities = { interactables: [def] } as unknown as Parameters<typeof loadInteractables>[1];
+    const [target] = await loadInteractables({} as GuardedGltfLoader, entities, false);
+    if (!target) throw new Error('no target');
+    target.setDrawn(false);
+    expect(target.root.visible).toBe(false);
+    expect(target.available).toBe(true);
+    target.setDrawn(true);
+    expect(target.root.visible).toBe(true);
+    target.setState('hidden');
+    target.setDrawn(false);
+    target.setDrawn(true);
+    expect(target.root.visible).toBe(false);
+    expect(target.available).toBe(false);
   });
 });

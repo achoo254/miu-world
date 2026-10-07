@@ -28,7 +28,7 @@
   },
   "places": {
     "ev-olympic-huou": "Cột đèn lồng bên đường mòn",
-    "tim": "Dốc đường mòn xuống suối",
+    "tim": "Bãi cỏ phía nam cổng hoa",
     "ev-olympic-bang": "Bảng đề",
     "ev-olympic-vom": "Vòm cổng hoa"
   },
@@ -71,26 +71,26 @@
     {
       "id": "tim",
       "title": "Tìm đồ thất lạc",
-      "goTo": "Tìm thước tam giác ở dốc đường mòn xuống suối",
+      "goTo": "Tìm thước tam giác trên bãi cỏ phía nam cổng hoa",
       "kind": "find-object",
       "prompt": "Tìm chiếc thước tam giác mà gió đã cuốn đi.",
       "items": [
         {
           "id": "thuoc-tam-giac",
           "name": "Thước tam giác",
-          "clue": "Gió thổi nó về bãi cỏ phía nam, chỗ đường mòn bắt đầu xuôi về phía suối.",
+          "clue": "Gió thổi nó về bãi cỏ phía nam cổng hoa, sát mép đường mòn.",
           "target": "ev-olympic-thuoc"
         }
       ],
       "skill": "hinh-phang",
       "en": {
         "title": "Find it",
-        "goTo": "Find the set square where the trail slopes to the stream",
+        "goTo": "Find the set square on the grass south of the flower arch",
         "prompt": "Find the set square the wind carried off.",
         "items": [
           {
             "name": "Set square",
-            "clue": "The wind blew it to the grass in the south, where the trail starts down toward the stream."
+            "clue": "The wind blew it to the grass south of the flower arch, right by the trail."
           }
         ]
       }

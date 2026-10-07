@@ -44,7 +44,7 @@ Phần lớn mã do agent trước viết. Phiên này kiểm từng phần vớ
 ### Pha 6: sự kiện đầu "Thử thách Olympic Toán" ở Khu rừng
 
 - File `content/events/olympic-math-2026.json`: cửa sổ live từ 06/10 đến hết 31/10/2026, mở lại bản kỷ niệm từ 01/09 đến hết 30/09/2027.
-- Cảnh có năm người giữ ngăn, vòm cổng, bảng đề, cờ, đèn, khinh khí cầu và lều, đặt cạnh đường mòn gần chỗ xuất hiện.
+- Cảnh có năm người giữ ngăn, vòm cổng, bảng đề, cờ, đèn, khinh khí cầu và lều, đặt hai bên đường mòn phía nam bến tàu "bãi rừng 1" (đã dời khỏi chỗ xuất hiện, xem mục "Sửa E2E hỏng do cảnh sự kiện").
 - Năm quest `wonder-olympic-{logic,arithmetic,number,shapes,counting}`, mỗi quest 10 câu tự viết. Chúng dùng các cơ chế find-object, sort, drag-drop, logic, classify, multi-select, connect, cùng một bước decision và một boss 6 câu.
 - Phần thưởng: mở đủ năm ngăn thì được mũ nhà toán học. Bài thi thử đạt 20/40/60/80 điểm thì được bốn huy hiệu tương ứng. Mỗi phần thưởng có bản kỷ niệm (8 huy hiệu, 2 mũ; ảnh mũ sinh bằng `render-accessory-art.ts`, đã có trong manifest).
 - Không có chữ "TIMO" trong nội dung hay giao diện. Test `olympiad-catalog.test.ts` chặn chữ này, và `grep` cũng không tìm thấy trong `content`, `apps`, `packages`, `tools`. Dòng "cổng TIMO" trong `docs/project-roadmap.md` đã đổi thành "cổng Olympic Toán".
@@ -147,9 +147,104 @@ Test server cho các tiêu chí của plan, tất cả trong `event-routes.test.
 - Mở lại bản kỷ niệm: trả bản kỷ niệm.
 - Thưởng giới hạn trả một lần, kể cả khi gọi đồng thời. Phần thưởng của mỗi người chơi là của riêng người đó.
 
+## Sửa E2E hỏng do cảnh sự kiện (07/10/2026, sau CI 37612032356 trên 2143e67f)
+
+### Kết luận
+
+Cảnh sự kiện cũ đặt đè lên trại ngay chỗ xuất hiện của Khu rừng. Nhân vật `ev-olympic-can-dong` ở (11.5, 13, 19.5) cách bà bếp `bac-nau-an` (12.5, 13, 19.5) đúng 1 khối, và con cáo cách chỗ xuất hiện (16.5, 13, 16.5) khoảng 4 khối. Như vậy mọi trang `/play` mở ở chỗ xuất hiện hay ở trại đều vẽ thêm cả cảnh.
+
+Không có nhân vật nào lấy mất lượt Tương tác: nhân vật sự kiện gần nhất ở rất xa mục tiêu của các test hỏng (bảng dưới), trong khi bán kính tương tác chỉ từ 2 đến 3 khối.
+
+### Đã chứng minh
+
+Phép thử A/B dùng cùng mã, chỉ đổi dữ liệu sự kiện. Để giấu sự kiện, tôi tạm dời ngày mở sang 30/10 (ngoài `announceDays`), đo xong thì trả lại 06/10. Số đo trên máy dev, CI không chặn cứng ở đây:
+
+| Chỗ đo (quality high) | GPU máy dev: cảnh cũ / không có sự kiện / sau khi sửa | SwiftShader trên máy dev: cảnh cũ / sau khi sửa |
+| --- | --- | --- |
+| `play.spec.ts:8`, chỗ xuất hiện | 202 / 182 / 181 draw call. Tam giác: 158.187 với cảnh cũ (vượt 150.000) | 196 / 180. Tam giác: 154.767 với cảnh cũ (vượt) |
+| `forest-life.spec.ts` rain-rainbow (trại) | (CI: 152) / 184 / 184 | 197 / 182 |
+| `forest-life.spec.ts` fireflies (vườn) | (CI: 162) / 193 / 194 | 202 / 181 |
+| `forest-life.spec.ts` 10 nhân vật | (CI: hỏng do hết giờ) / 179 / 178 | 192 / 175 |
+
+Cảnh cũ cộng thêm 15–21 draw call ở chỗ xuất hiện và ở trại, vừa đủ đẩy CI qua ngưỡng 150 (154, 152, 162). Ở chỗ xuất hiện, nó còn làm số tam giác vượt 150.000. Lỗi tam giác này trước đây bị che vì CI dừng ngay ở lỗi draw call. Sau khi sửa, các số về bằng mức không có sự kiện (chênh ±1).
+
+Số tuyệt đối trên máy dev cao hơn CI chừng 25–45, kể cả khi chạy SwiftShader (luật đo ở `e2e/stats.ts`). Vì vậy tôi so chênh lệch giữa các trạng thái, không so với ngưỡng 150.
+
+**Các test hỏng vì quá thời gian trên CI** (`quest-flow.spec.ts:19`, `:79`; `challenges.spec.ts:11`; `autowalk.spec.ts:16`; `hud-layout.spec.ts:112` phone):
+
+- **Không do lấy lượt Tương tác.** Khoảng cách tới nhân vật sự kiện gần nhất trong cảnh cũ:
+  - Rương `chest` ở (69.5, 83.5): 71,6 khối.
+  - Đá qua suối `stream-stones` ở (64.5, 38.5): 39,2 khối.
+  - `clue-box`, `clue-letter`, `clue-mushroom`: 8,5 / 9,5 / 14,9 khối. Hai nhân vật gần nhất là đồ vật của quest, chỉ hiện khi quest sự kiện đang chơi.
+- **Không tái hiện được trên máy dev.** Cả các test này lẫn 12 test của 4 project đó đều pass trên máy dev, với cảnh cũ lẫn sau khi sửa, cả GPU lẫn SwiftShader.
+- **Trên CI, các test hỏng ở bước bấm hoặc chờ.** Lượt click `hud-interact` hết 45 giây sau "element is visible, enabled and stable". `challenges` báo "session closed". Thời gian của các shard là 486 s, 531 s, 675 s và 832 s, đều vượt ngân sách 480 s. Đây là dấu hiệu trình duyệt trên CI bị nghẽn khi vẽ thêm cảnh bằng SwiftShader trên CPU, không phải sai luồng.
+- **`autowalk.spec.ts` chạy ở Trường học,** map không có cảnh sự kiện. Test `autowalk.spec.ts:43` đã hỏng sẵn ở lượt 37408448385, trước khi có sự kiện. Thay đổi duy nhất ở trang đó là thêm một lời gọi `GET /api/events`.
+
+Kết luận: phần draw call và tam giác đã chứng minh được. Phần quá thời gian là suy luận từ log CI. Cần một lượt CI để xác nhận.
+
+### Cách sửa
+
+Giữ nguyên cảnh, không nâng ngân sách, không sửa test cho xanh.
+
+1. **Dời cảnh** (`content/events/olympic-math-2026.json`) tới bên đường mòn chạy về phía nam bến tàu "bãi rừng 1", tức chỗ bắt đầu chương 2. Hai bến tàu ở chỗ xuất hiện (`ben-tau-rung-1`) và ở bãi rừng (`ben-tau-rung-5`) nối với nhau.
+   - Các mốc khoảng cách:
+     - Cổng ở khoảng (221–234, 320–337), cách chỗ xuất hiện khoảng 380 khối.
+     - Cách các mục tiêu và nhân vật khác của map ít nhất 19 khối, và cách mục tiêu quest gần nhất (`tv2-t10-b18-tho-suong`) 59 khối.
+     - Ô prop của cảnh không nằm chung ô 128 × 128 với chỗ xuất hiện. Nó chỉ được dựng khi bé tới gần trong tầm nhìn: 110 khối ở quality high.
+   - Bố cục:
+     - Phía tây đường mòn: vòm cổng hoa, cờ phía bắc và phía nam cổng, cáo, thỏ, nhím, bảng đề.
+     - Phía đông: cột đèn, hươu, khỉ, khinh khí cầu, lều.
+     - Đồ vật của từng quest đặt cạnh mốc được nhắc trong lời quest.
+2. **Chỉ vẽ nhân vật sự kiện trong tầm nhìn.** `apps/web/src/game/game.ts` và `event/event-layer.ts` (`owns`) gọi `setDrawn` mới của `entities/interactables.ts`. Ngoài tầm nhìn, nhân vật không được vẽ nhưng vẫn `available`, nên mũi tên chỉ đường và tự đi vẫn tìm được, giống các ô đồ trang trí. Trước đây, khi bản đồ có vùng ngoài, camera nhìn rất xa, nên nhân vật ở xa vẫn được vẽ.
+3. **Sửa lời chỉ đường cho khớp chỗ mới.**
+   - Lời chào của sự kiện: "đi tàu rừng tới bãi rừng 1, rồi theo đường mòn về phía nam".
+   - `wonder-olympic-logic`: cái cân đồng ở "trước lều cắm trại", thay cho "đá xám cạnh lửa trại".
+   - `wonder-olympic-shapes`: thước tam giác ở "bãi cỏ phía nam cổng hoa", thay cho "dốc đường mòn xuống suối".
+   - Bản tiếng Anh sửa theo. Các mốc còn lại (cổng hoa, cột cờ bắc/nam, cột đèn, khinh khí cầu, đông/tây đường mòn) đều khớp chỗ mới.
+4. **Test mới:** `apps/web/src/game/entities/interactables.test.ts` thêm "drawing a target only near the child": thôi vẽ nhưng vẫn `available`; mục tiêu đang ẩn thì vẫn ẩn khi được vẽ lại.
+
+Tôi không thêm "ưu tiên mục tiêu của quest đang theo dõi" khi chọn đối tượng tương tác, vì đã chứng minh không có tranh chấp lượt Tương tác, và chỗ mới cách mọi mục tiêu khác ít nhất 19 khối.
+
+Draw call tại chính cổng mới (SwiftShader trên máy dev, quality high): 142 khi có sự kiện, 123 khi không, tức thêm 19. Ở bến tàu bãi rừng 1 là 143 so với 132. Riêng vùng này, số tam giác đã vượt 150.000 ngay cả khi không có sự kiện (163.165 ở cổng, 174.261 ở bến). Đây là chuyện sẵn có của map, không có test đo ở đó.
+
+### Bằng chứng sau khi sửa
+
+- **E2E** (máy dev, 1 worker, chạy lần lượt; cổng 8787 và 4173 trống trước và sau mỗi lượt):
+  - GPU:
+    - `--project setup --project play`: 23 passed.
+    - `forest-life`: 9 passed, 1 skipped (chỉ dành cho ảnh review).
+    - `quest-flow` + `challenges` + `autowalk` + `hud-layout`: 12 passed.
+  - SwiftShader (cấu hình tạm, đã xóa): `play` + `forest-life` + `quest-flow` + `challenges`: 36 passed.
+- **Audit map:**
+  - `scenery-audit.ts forest-ch1`: `0 trees on a way, 0 solid props in a lane, 0 places off the ways, 0 places on ways cut off from the spawn's`.
+  - `reach-audit.ts forest-ch1`: `every target reached; starts clear`.
+  - `room-audit.ts forest-ch1`: `8 roofed spaces, 0 short`.
+- **Gate:**
+  - `pnpm assets:check`: OK, 16 packs, 4628 files.
+  - `pnpm content:check`: OK, 2038 files.
+  - `pnpm typecheck`: exit 0.
+  - `pnpm lint`: exit 0, 0 warning.
+  - `pnpm --filter @miu/web build`: `✓ built in 2.60s`. Vẫn còn cảnh báo chunk `accessories` 1.253,09 kB như trước.
+  - `pnpm security:dist`: OK.
+- **Vitest:**
+
+  | File | Kết quả |
+  | --- | --- |
+  | `tools/world/event-scenes.test.ts` | 1 |
+  | `tools/content/check-content.test.ts` | 22 |
+  | `packages/voxel/src/event-layer.test.ts` | 3 |
+  | `apps/web/src/game/entities/interactables.test.ts` | 8 (1 mới) |
+  | `apps/web/src/ui/event/event-screens.test.tsx` | 12 |
+  | `apps/server/src/event/event-routes.test.ts` | 8 |
+  | `apps/server/src/event/event-catalog.test.ts` | 5 |
+
+  Tất cả pass.
+- **File sửa trong lượt này:** `content/events/olympic-math-2026.json`, `content/quests/wonder-olympic-{logic,shapes}.json`, `apps/web/src/game/game.ts`, `apps/web/src/game/event/event-layer.ts`, `apps/web/src/game/entities/interactables.ts`, `apps/web/src/game/entities/interactables.test.ts`, và report này.
+- **Commit đề xuất:** `fix(events): move the Olympic Math gate off the forest spawn and draw event characters only within view`.
+
 ## Không chạy, và lý do
 
-- E2E (`e2e:smoke`, project sự kiện, `e2e:ci`): người sở hữu chỉ cho chạy khi họ yêu cầu.
+- E2E: lượt đầu không chạy, vì người sở hữu chỉ cho chạy khi được yêu cầu. Lượt sửa lỗi sau CI 37612032356 chỉ chạy các project được cho phép (xem mục trên). `e2e:ci` đầy đủ chưa chạy lại.
 - Toàn bộ `pnpm test`: cùng lý do. Gate CI ghi 5 lệnh, ở đây lệnh test được thay bằng 28 file liên quan ở trên.
 - Project `perf`: không được yêu cầu đo hiệu năng.
 - Semgrep và `pnpm audit`: chạy trên CI.
@@ -160,8 +255,8 @@ Không có.
 
 ## Câu hỏi còn mở
 
-1. **E2E gần chỗ xuất hiện ở Khu rừng.** Cảnh sự kiện đứng sát chỗ xuất hiện: con cáo cách khoảng 4 khối, bảng đề cách khoảng 6 khối. Trong cửa sổ live 06/10–31/10, bản chơi và E2E đều thấy cảnh này. Audit xác nhận lối đi và chỗ xuất hiện còn trống. Tuy vậy, E2E nào nhấn "Tương tác" ngay ở chỗ xuất hiện có thể gặp lời nhắc của nhân vật sự kiện. Nên chạy `e2e:smoke` và các project của Khu rừng trước khi deploy.
-2. **Draw call.** Cảnh thêm 12 model và 7 đồ trang trí gần chỗ xuất hiện, chưa đo. Luật runtime yêu cầu ghi số đo vào trang review khi draw call tăng. Trang `apps/web/review.html` chưa cập nhật cho đợt này vì nằm ngoài danh sách file được sửa.
+1. **E2E và draw call của cảnh sự kiện.** Đã xử lý ở mục "Sửa E2E hỏng do cảnh sự kiện" bên dưới. Lượt CI đầy đủ chưa chạy lại; các E2E đã chạy trên máy dev đều pass.
+2. **Trang review.** Trang `apps/web/review.html` chưa ghi số draw call của cảnh, vì trang này nằm ngoài danh sách file được sửa. Số đo nằm trong report này.
 3. **Quét đáp án trong bản build.** Nên mở rộng `tools/security/scan-dist.ts` để quét cả `content/olympiad` (lời giải, gợi ý). File này nằm ngoài danh sách được sửa nên tôi chưa đụng.
 4. **Ngày của sự kiện** (06/10–31/10/2026, kỷ niệm 09/2027) do agent trước chọn. Đổi ngày chỉ cần sửa dữ liệu.
 5. **Thưởng thi thử khi 0 điểm.** Mỗi lượt thi thử trả ít nhất 100 XP và 20 xu, kể cả khi được 0 điểm. Điều này theo luật "mỗi lượt chơi đều có thưởng", nhưng gửi bài trống liên tục thì được XP nhanh (giới hạn 20 lượt mỗi phút).

@@ -771,6 +771,9 @@ export class Game {
     // A closed event's characters stay out of sight whatever the quest's world state says.
     let lastWorldState: WorldState = {};
     for (const [id, target] of byId) if (eventDecor.hides(id)) target.setState('hidden');
+    // The events' characters are drawn only within the view distance, like their decorations' tiles: from afar the
+    // scene adds nothing to the frame (the arrow and the walk still find them).
+    const eventTargets = targets.filter((t) => eventDecor.owns(t.def.id));
     // Her pet's life round her: care scenes, tricks, sniffing toward clues, and its own reactions (pet/pet-life.ts).
     const petBubble = createSpeechBubble();
     scene.add(petBubble.sprite);
@@ -1151,6 +1154,10 @@ export class Game {
       props.update(camera.position);
       eventDecor.update(camera.position);
 
+      for (const target of eventTargets) {
+        const [tx, , tz] = target.def.position;
+        target.setDrawn(Math.hypot(tx - controller.position.x, tz - controller.position.z) <= quality.viewDistance);
+      }
       for (const target of targets) target.update(dt, controller.position, camera.position);
       arrow.update(dt, controller.position, hint?.available ? hint.def : null);
       const questPlace = hint?.available ? hint.def : null;

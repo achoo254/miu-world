@@ -40,6 +40,8 @@ export interface InteractableObject {
   setState(state: TargetState | undefined): void;
   /** False while the same character stands at another place of the story (castHidden). */
   setPresent(present: boolean): void;
+  /** False while it is too far to be seen (it is not drawn, yet stays available: the arrow and the walk still find it). */
+  setDrawn(drawn: boolean): void;
   /** Screen position (CSS px) of the point above the target, for the prompt anchor. */
   screenAnchor(camera: Camera, viewport: { width: number; height: number }): { x: number; y: number };
 }
@@ -258,8 +260,9 @@ export async function loadInteractables(
       }
       let state: TargetState | undefined;
       let present = true;
+      let drawn = true;
       const show = (): void => {
-        holder.visible = present && state !== 'hidden';
+        holder.visible = present && drawn && state !== 'hidden';
       };
       let time = 0;
       let gateSink = 0;
@@ -293,6 +296,11 @@ export async function loadInteractables(
         },
         setPresent(next) {
           present = next;
+          show();
+        },
+        setDrawn(next) {
+          if (next === drawn) return;
+          drawn = next;
           show();
         },
         screenAnchor(camera, viewport) {
