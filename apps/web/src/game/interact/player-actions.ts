@@ -29,6 +29,8 @@ export const PLAYER_ACTIONS = [
   'sweep',
   'cheer',
   'wave',
+  'throw',
+  'dodge',
 ] as const;
 export type PlayerAction = (typeof PLAYER_ACTIONS)[number];
 
@@ -214,6 +216,25 @@ export function poseAction(rig: ActionRig, action: PlayerAction, t: number): Act
       arms(D(-45), D(-45));
       if (armRight) armRight.rotation.y = sweep;
       if (armLeft) armLeft.rotation.y = sweep;
+      break;
+    }
+    case 'throw': {
+      // A boss fight's blow: the right arm winds back over her shoulder, then swings through toward the boss.
+      const wind = Math.min(1, t / 0.18);
+      const swing = t > 0.18 ? Math.min(1, (t - 0.18) / 0.16) : 0;
+      if (armRight) armRight.rotation.x = D(-160) * wind + D(110) * swing;
+      if (armLeft) armLeft.rotation.x = D(-30) * wind;
+      body.pitch = -0.08 * wind + 0.2 * swing;
+      body.roll = 0.05 * wind;
+      break;
+    }
+    case 'dodge': {
+      // A playful miss bounces back at her: she ducks and leans aside, then comes back up.
+      const k = Math.sin(Math.min(1, t / 0.5) * Math.PI);
+      body.roll = 0.32 * k;
+      body.lift = -0.08 * k;
+      arms(D(-40) * k, D(-70) * k);
+      if (head) head.rotation.z = -0.15 * k;
       break;
     }
     case 'cheer':

@@ -80,6 +80,9 @@ export interface MiuStats {
   pose: PoseSample | null;
   /** Her body overlaps a solid block where she stands (never meant to happen, seated or not). */
   embedded: boolean;
+  /** A boss fight's stage in the world (duel/duel-stage.ts), and how far over to its view the camera is (0…1). */
+  duel: 'staged' | 'unavailable' | null;
+  duelView: number;
 }
 
 export interface RemoteSummary {
@@ -108,7 +111,7 @@ export class StatsOverlay {
   readonly stats: MiuStats;
 
   constructor(private readonly el: HTMLElement, quality: string) {
-    this.stats = { quality, fpsAvg: 0, fpsP5: 0, calls: 0, triangles: 0, frames: 0, loadMs: 0, boot: {}, meshMs: 0, worker: true, firstAreaBytes: 0, ready: false, player: [0, 0, 0], onGround: false, speed: 0, riding: false, journey: null, patches: 0, portals: 0, nearTarget: null, lastInteraction: null, hintTarget: null, autowalk: 'idle', castHidden: [], cameraInsideBlock: false, cameraYaw: 0, outfit: [], ambientVisible: 0, ambientReactions: 0, ambientCelebrations: 0, confetti: false, worldEvent: null, worldEvents: 0, pet: null, petClip: null, petScene: null, petMood: null, petMotion: null, petGear: [], petAt: null, petScenes: [], ambientLine: null, remotePlayers: [], lastObject: null, nearObject: null, objects: null, pose: null, embedded: false };
+    this.stats = { quality, fpsAvg: 0, fpsP5: 0, calls: 0, triangles: 0, frames: 0, loadMs: 0, boot: {}, meshMs: 0, worker: true, firstAreaBytes: 0, ready: false, player: [0, 0, 0], onGround: false, speed: 0, riding: false, journey: null, patches: 0, portals: 0, nearTarget: null, lastInteraction: null, hintTarget: null, autowalk: 'idle', castHidden: [], cameraInsideBlock: false, cameraYaw: 0, outfit: [], ambientVisible: 0, ambientReactions: 0, ambientCelebrations: 0, confetti: false, worldEvent: null, worldEvents: 0, pet: null, petClip: null, petScene: null, petMood: null, petMotion: null, petGear: [], petAt: null, petScenes: [], ambientLine: null, remotePlayers: [], lastObject: null, nearObject: null, objects: null, pose: null, embedded: false, duel: null, duelView: 0 };
     window.__miuStats = this.stats;
   }
 

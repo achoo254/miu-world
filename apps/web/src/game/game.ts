@@ -77,8 +77,9 @@ import { PlayerController, WALK_SPEED, type MoveIntent } from './player/player-c
 import { RescueWatch } from './player/rescue';
 import { createRideControl } from './player/vehicle-ride';
 import { createRideJourney } from './ride/ride-journey';
-import { EMBEDDED_LIFT_S, isEmbedded, nearestUsableSpot } from './player/saved-spot';
+import { EMBEDDED_LIFT_S, isEmbedded, nearestUsableSpot, usableSpot } from './player/saved-spot';
 import { standBeside } from './player/stand-beside';
+import { DuelStage } from './duel/duel-stage';
 import { readQuality } from './quality';
 import { disposeSceneGraph } from './scene/dispose-scene';
 import { SKY_HORIZON, createSky, skyColours } from './scene/sky';
@@ -874,8 +875,56 @@ export class Game {
     };
     this.cleanups.push(() => store.emit({ type: 'autowalk', state: 'idle' }));
     this.cleanups.push(() => store.emit({ type: 'autowalk-available', available: false }));
+    // A boss fight played out here, by the boss on this map (duel/duel-stage.ts); her controls rest meanwhile.
+    const duel = new DuelStage({
+      camera,
+      viewport: () => ({ width: window.innerWidth, height: window.innerHeight }),
+      ready: () => overlay.stats.ready,
+      findBoss: (id) => byId.get(id) ?? null,
+      standSpot: (boss) =>
+        usableSpot(standBeside(boss.def, entities.interactables.filter((t) => t.id !== boss.def.id), solid, liquid, data.bounds, data.world.height), solid, liquid, data.bounds, data.world.height),
+      player: controller,
+      place: (spot, facing) => {
+        objectInteractions.cancel();
+        controller.teleport(spot);
+        controller.facing = facing;
+        rescue.reset();
+      },
+      solid,
+      view: (view, snap, behind) => {
+        rig.yaw = behind;
+        rig.setOverride(view, snap);
+      },
+      shake: (seconds, size) => rig.shake(seconds, size),
+      act: (action, seconds) => {
+        currentAmbientAction = action;
+        ambientActionTimer = seconds;
+      },
+      spawn: (particle) => objectEffects.spawn(particle),
+      anchors: () => store.getDuelAnchors(),
+      emit: (state) => {
+        overlay.stats.duel = state;
+        store.emit({ type: 'duel', state });
+      },
+      controls: (on) => {
+        walker.stop();
+        // Put away for the fight and given back as they were (a review shot keeps them hidden).
+        if (!on) duelHid = [dom.joystick, dom.run.parentElement, minimap.root].filter((el): el is HTMLElement => el !== null && !el.hidden);
+        for (const el of duelHid) el.hidden = !on;
+      },
+    });
+    let duelHid: HTMLElement[] = [];
+    this.cleanups.push(() => duel.close());
+    window.addEventListener('resize', duel.reframe);
+    this.cleanups.push(() => window.removeEventListener('resize', duel.reframe));
     this.cleanups.push(
       store.onCommand((command) => {
+        if (command.type === 'duel-open') duel.open(command.targetId, command.calm);
+        if (command.type === 'duel-cue') {
+          if (command.cue === 'aim') duel.cue('aim', command.to);
+          else duel.cue(command.cue);
+        }
+        if (command.type === 'duel-close') duel.close();
         if (command.type === 'interact') interactRequested = true;
         // Worn at once (the shop's "Mặc"); the others see it from the server when it is saved.
         if (command.type === 'set-outfit') {
@@ -967,6 +1016,11 @@ export class Game {
         // The ride drives her: the stick and the buttons wait (read, so nothing is left over for after).
         input.read();
         intent = { dirX: 0, dirZ: 0, run: false, jump: false };
+      } else if (duel.active) {
+        // A boss fight: she stands facing the boss while the child answers on the screen; the stick and buttons wait.
+        input.read();
+        intent = { dirX: 0, dirZ: 0, run: false, jump: false };
+        interact = false;
       } else if (autopilot) {
         intent = autopilot.intent(dt, controller.position);
         rig.follow(controller.facing, dt);
@@ -1098,6 +1152,9 @@ export class Game {
         wasHeld = body !== null;
         rig.update(dt, controller.position);
       }
+      // The fight's blows and poses, and where the boss and her hand are on screen (after the camera moved).
+      duel.update(dt);
+      overlay.stats.duelView = rig.blend;
       // Underwater overlay: toggle CSS class for the blue tint + bubble effect.
       dom.root.classList.toggle('swimming', controller.inWater && !carried);
       // With the camera inside Miu (nowhere left to back off to), hide her rather than show her insides.

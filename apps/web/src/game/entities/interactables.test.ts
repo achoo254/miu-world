@@ -77,3 +77,27 @@ describe('drawing a target only near the child', () => {
     expect(target.available).toBe(false);
   });
 });
+
+describe('a boss in a fight', () => {
+  it('turns to face the child and plays its pose, then goes back to its own ways', async () => {
+    const def = { id: 'trum-thu', kind: 'npc', name: 'Trùm', label: 'Thách đấu', position: [0, 5, 0], yaw: 0, radius: 2 } as Interactable;
+    const entities = { interactables: [def] } as unknown as Parameters<typeof loadInteractables>[1];
+    const [boss] = await loadInteractables({} as GuardedGltfLoader, entities, false);
+    if (!boss) throw new Error('no boss');
+    const model = boss.root.children[0];
+    if (!model) throw new Error('no model');
+    // The child stands to its east (+x): facing her is a quarter turn.
+    boss.duelPose('hit');
+    for (let i = 0; i < 12; i++) boss.update(1 / 60, { x: 4, z: 0 });
+    expect(boss.root.rotation.y).toBeGreaterThan(0.3);
+    // Staggered by the blow: leaning back and lifted a little.
+    expect(model.rotation.x).toBeLessThan(0);
+    expect(model.position.y).toBeGreaterThan(0);
+    for (let i = 0; i < 180; i++) boss.update(1 / 60, { x: 4, z: 0 });
+    expect(boss.root.rotation.y).toBeCloseTo(Math.PI / 2, 2);
+    boss.duelPose(null);
+    expect(model.rotation.x).toBe(0);
+    expect(model.position.y).toBe(0);
+    expect(boss.height).toBeGreaterThan(0);
+  });
+});

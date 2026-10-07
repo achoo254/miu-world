@@ -2,6 +2,8 @@
 // its way (owner, 02/10/2026: no occlusion fade, walls and trees draw as they are): when a wall, a roof or a
 // solid prop would come between it and the child, the camera comes in to just in front of it, and eases back
 // out once the way is clear. Plants (trees' leaves, bushes, crops) are not solid and never move it.
+// A boss fight sets a view of its own (`setOverride`: the child and the boss framed together): the camera eases over
+// to it, and back behind her when it is cleared (or jumps, for less motion).
 import { MathUtils, Vector3, type PerspectiveCamera } from 'three';
 import { raycastGrid, type SolidAt } from '@miu/voxel/grid-collision';
 
@@ -38,6 +40,14 @@ export const DEFAULT_DISTANCE = 7;
 let chosenDistance = DEFAULT_DISTANCE;
 /** The child moved this far in one frame (a ride, a rescue, a saved spot): the camera jumps with her instead of gliding over the gap. */
 const JUMP = 8;
+/** Seconds the camera takes to ease over to a set view, and back. */
+const OVERRIDE_EASE_S = 0.6;
+
+/** A view set from outside the follow (a boss fight's): where the camera stands and the point it looks at. */
+export interface CameraView {
+  position: Vector3;
+  target: Vector3;
+}
 
 export class CameraRig {
   yaw: number;
@@ -48,6 +58,13 @@ export class CameraRig {
   private initialised = false;
   /** Camera-to-aim distance after the last update (shorter than `distance` where a wall is in the way). */
   viewDistance = this.distance;
+  /** How far over to the set view the camera is: 0 follows her, 1 stands at the view (eased in between). */
+  blend = 0;
+  private override = false;
+  private readonly view = { position: new Vector3(), target: new Vector3() };
+  private readonly look = new Vector3();
+  private shakeLeft = 0;
+  private shakeSize = 0;
 
   constructor(private readonly camera: PerspectiveCamera, private readonly solid: SolidAt, yaw: number) {
     this.yaw = yaw;
@@ -85,6 +102,22 @@ export class CameraRig {
     this.yaw += diff * Math.min(1, dt * FOLLOW_EASE * strength);
   }
 
+  /** Eases the camera over to `view` (null: back behind her); `snap` goes there at once (less motion). */
+  setOverride(view: CameraView | null, snap = false): void {
+    this.override = view !== null;
+    if (view) {
+      this.view.position.copy(view.position);
+      this.view.target.copy(view.target);
+    }
+    if (snap) this.blend = this.override ? 1 : 0;
+  }
+
+  /** A short shake of the view (a playful blow bouncing back), `size` blocks either way. */
+  shake(seconds: number, size: number): void {
+    this.shakeLeft = seconds;
+    this.shakeSize = size;
+  }
+
   update(dt: number, player: Vector3): void {
     // Aim at the head, but never inside a block (low canopies sit 2 blocks above the ground).
     let aimHeight = TARGET_HEIGHT;
@@ -100,7 +133,22 @@ export class CameraRig {
     const clear = hit === null ? this.distance : Math.max(NEAREST, hit - WALL_PAD);
     this.viewDistance = clear < this.viewDistance ? clear : this.viewDistance + (clear - this.viewDistance) * Math.min(1, dt * OUT_EASE);
     this.camera.position.copy(this.smoothed).addScaledVector(dir, this.viewDistance);
-    this.camera.lookAt(this.smoothed);
+    const step = dt / OVERRIDE_EASE_S;
+    this.blend = this.override ? Math.min(1, this.blend + step) : Math.max(0, this.blend - step);
+    if (this.blend <= 0) {
+      this.camera.lookAt(this.smoothed);
+    } else {
+      // Smoothstep between the follow view and the set one: no jolt at either end.
+      const k = this.blend * this.blend * (3 - 2 * this.blend);
+      this.camera.position.lerp(this.view.position, k);
+      this.camera.lookAt(this.look.copy(this.smoothed).lerp(this.view.target, k));
+    }
+    if (this.shakeLeft > 0) {
+      this.shakeLeft = Math.max(0, this.shakeLeft - dt);
+      const size = this.shakeSize * (this.shakeLeft > 0 ? 1 : 0);
+      this.camera.position.x += Math.sin(this.shakeLeft * 90) * size;
+      this.camera.position.y += Math.cos(this.shakeLeft * 70) * size * 0.6;
+    }
   }
 
   private direction(pitch: number): Vector3 {

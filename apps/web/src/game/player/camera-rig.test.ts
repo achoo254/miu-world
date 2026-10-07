@@ -100,3 +100,51 @@ describe('camera follow', () => {
     expect(rig.distance).toBeCloseTo(DEFAULT_DISTANCE, 5);
   });
 });
+
+describe('a view set from outside (a boss fight)', () => {
+  const open = (_x: number, y: number): boolean => y < 1;
+  const view = { position: new Vector3(9, 4, 2), target: new Vector3(7, 1.5, 8) };
+
+  it('eases over to the set view, then back behind her once it is cleared', () => {
+    const camera = new PerspectiveCamera();
+    const rig = new CameraRig(camera, open, 0);
+    settle(rig);
+    const behind = camera.position.clone();
+    rig.setOverride(view);
+    rig.update(1 / 60, miu);
+    // Under way: not there yet, already off the follow view.
+    expect(camera.position.distanceTo(view.position)).toBeGreaterThan(0.5);
+    expect(camera.position.distanceTo(behind)).toBeGreaterThan(0);
+    settle(rig);
+    expect(rig.blend).toBe(1);
+    expect(camera.position.distanceTo(view.position)).toBeLessThan(1e-6);
+    rig.setOverride(null);
+    settle(rig);
+    expect(rig.blend).toBe(0);
+    expect(camera.position.distanceTo(behind)).toBeLessThan(1e-6);
+  });
+
+  it('goes there at once for less motion', () => {
+    const camera = new PerspectiveCamera();
+    const rig = new CameraRig(camera, open, 0);
+    settle(rig);
+    rig.setOverride(view, true);
+    rig.update(1 / 60, miu);
+    expect(rig.blend).toBe(1);
+    expect(camera.position.distanceTo(view.position)).toBeLessThan(1e-6);
+  });
+
+  it('shakes a little for a moment, then stands still where it was', () => {
+    const camera = new PerspectiveCamera();
+    const rig = new CameraRig(camera, open, 0);
+    rig.setOverride(view, true);
+    rig.update(1 / 60, miu);
+    rig.shake(0.15, 0.05);
+    rig.update(1 / 60, miu);
+    const shaken = camera.position.distanceTo(view.position);
+    expect(shaken).toBeGreaterThan(0);
+    expect(shaken).toBeLessThan(0.1);
+    for (let i = 0; i < 20; i++) rig.update(1 / 60, miu);
+    expect(camera.position.distanceTo(view.position)).toBeLessThan(1e-6);
+  });
+});

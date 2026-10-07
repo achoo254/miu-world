@@ -25,7 +25,8 @@ import { fillPlayerName } from '@miu/quest/player-name';
 import type { Interactable, WorldEntities } from '@miu/voxel/world-entities';
 import type { TargetState } from '../../game-bridge/game-store';
 import type { GuardedGltfLoader } from '../asset-loader';
-import { NpcBehavior, type NpcClip } from './npc-behavior';
+import { NpcBehavior, angleDelta, type NpcClip } from './npc-behavior';
+import { duelPoseFrame, type DuelClip, type DuelPose } from '../duel/duel-poses';
 import { mergeParts } from '../ambient/merge-parts';
 import { createRiddleBoard } from './riddle-board';
 import { seededRandom } from './seeded-random';
@@ -44,6 +45,13 @@ export interface InteractableObject {
   setDrawn(drawn: boolean): void;
   /** Screen position (CSS px) of the point above the target, for the prompt anchor. */
   screenAnchor(camera: Camera, viewport: { width: number; height: number }): { x: number; y: number };
+  /** Height of its top over its feet (blocks): where a boss is hit, where its head is. */
+  readonly height: number;
+  /**
+   * A boss fight's pose (duel/duel-poses.ts): while set, it turns to face the child and plays the pose instead of its
+   * everyday behaviour; null gives it back its own ways. A new pose starts from its beginning.
+   */
+  duelPose(pose: DuelPose | null): void;
 }
 
 /** Clues bob gently until found so a child notices them. */
@@ -60,7 +68,9 @@ export function spinsInPlace(def: Pick<Interactable, 'model'>): boolean {
 const GATE_OPEN_SECONDS = 1.2;
 /** NPC clips blend into each other over this many seconds instead of snapping. */
 const NPC_FADE_SECONDS = 0.3;
-const NPC_CLIPS: readonly NpcClip[] = ['idle', 'walk', 'eat', 'dance', 'gesture-positive'];
+const NPC_CLIPS: readonly DuelClip[] = ['idle', 'walk', 'eat', 'dance', 'gesture-positive', 'gesture-negative'];
+/** How fast a boss in a fight turns to face the child (share of the gap a second). */
+const DUEL_TURN = 6;
 
 /**
  * Plays the behaviour's clip on the model: each clip change cross-fades, and the idle loop starts at
@@ -70,17 +80,19 @@ const NPC_CLIPS: readonly NpcClip[] = ['idle', 'walk', 'eat', 'dance', 'gesture-
  * Model clips that play each NPC action: a Cube Pet animal has them under these names; a chibi character
  * from the character library (the player's rig) waves to greet, cheers for a dance and picks up to eat.
  */
-const NPC_CLIP_NAMES: Readonly<Record<NpcClip, readonly string[]>> = {
+const NPC_CLIP_NAMES: Readonly<Record<DuelClip, readonly string[]>> = {
   idle: ['idle'],
   walk: ['walk'],
   eat: ['eat', 'pick-up'],
   dance: ['dance', 'cheer'],
-  'gesture-positive': ['gesture-positive', 'wave'],
+  'gesture-positive': ['gesture-positive', 'wave', 'emote-yes'],
+  // Only a boss fight plays it (a taunt, a blow that lands): a Cube Pet's head shake, a blocky character's "no".
+  'gesture-negative': ['gesture-negative', 'emote-no'],
 };
 
-function npcAnimator(mixer: AnimationMixer, clips: readonly AnimationClip[], random: () => number): { seconds: Partial<Record<NpcClip, number>>; play(clip: NpcClip): void } {
-  const actions = new Map<NpcClip, AnimationAction>();
-  const seconds: Partial<Record<NpcClip, number>> = {};
+function npcAnimator(mixer: AnimationMixer, clips: readonly AnimationClip[], random: () => number): { seconds: Partial<Record<NpcClip, number>>; play(clip: DuelClip): void } {
+  const actions = new Map<DuelClip, AnimationAction>();
+  const seconds: Partial<Record<DuelClip, number>> = {};
   for (const name of NPC_CLIPS) {
     const clip = NPC_CLIP_NAMES[name].map((n) => clips.find((c) => c.name === n)).find((c) => c !== undefined);
     if (!clip) continue;
@@ -93,7 +105,7 @@ function npcAnimator(mixer: AnimationMixer, clips: readonly AnimationClip[], ran
     idle.timeScale = 0.9 + random() * 0.2;
     idle.play();
   }
-  let current: NpcClip = 'idle';
+  let current: DuelClip = 'idle';
   return {
     seconds,
     play(clip) {
@@ -245,7 +257,7 @@ export async function loadInteractables(
 
       const bobs = def.kind === 'object' && (def.model !== undefined || def.shape !== undefined);
       const spins = spinsInPlace(def);
-      let npc: { behavior: NpcBehavior; play(clip: NpcClip): void } | null = null;
+      let npc: { behavior: NpcBehavior; play(clip: DuelClip): void } | null = null;
       if (def.kind === 'npc' && mixer) {
         const random = seededRandom(def.id);
         const animator = npcAnimator(mixer, clips, random);
@@ -266,6 +278,10 @@ export async function loadInteractables(
       };
       let time = 0;
       let gateSink = 0;
+      /** The boss fight's pose and how long it has played (null: its own ways). */
+      let duel: { pose: DuelPose; t: number } | null = null;
+      /** The model's own lean and height, which a pose adds to and gives back. */
+      const rest = { pitch: root.rotation.x, roll: root.rotation.z, lift: root.position.y };
       const anchor = new Vector3();
       return {
         def,
@@ -276,7 +292,20 @@ export async function loadInteractables(
         update(dt, player) {
           time += dt;
           if (spins && state === undefined) holder.rotation.y += dt * SPIN_SPEED;
-          if (npc && holder.visible) {
+          if (duel) {
+            // In a fight it faces the child and plays its pose; the everyday behaviour keeps turning to her meanwhile,
+            // so nothing snaps when the fight ends.
+            duel.t += dt;
+            const dx = player.x - holder.position.x;
+            const dz = player.z - holder.position.z;
+            npc?.behavior.step(dt, { dx, dz });
+            holder.rotation.y += angleDelta(holder.rotation.y, Math.atan2(dx, dz)) * Math.min(1, dt * DUEL_TURN);
+            const frame = duelPoseFrame(duel.pose, duel.t);
+            root.rotation.x = rest.pitch + frame.pitch;
+            root.rotation.z = rest.roll + frame.roll;
+            root.position.y = rest.lift + frame.lift;
+            npc?.play(frame.clip);
+          } else if (npc && holder.visible) {
             const frame = npc.behavior.step(dt, { dx: player.x - holder.position.x, dz: player.z - holder.position.z });
             holder.rotation.y = frame.yaw;
             npc.play(frame.clip);
@@ -302,6 +331,19 @@ export async function loadInteractables(
           if (next === drawn) return;
           drawn = next;
           show();
+        },
+        height: labelHeight - 0.3,
+        duelPose(pose) {
+          if (pose === null) {
+            if (!duel) return;
+            duel = null;
+            root.rotation.x = rest.pitch;
+            root.rotation.z = rest.roll;
+            root.position.y = rest.lift;
+            npc?.play('idle');
+            return;
+          }
+          duel = { pose, t: 0 };
         },
         screenAnchor(camera, viewport) {
           anchor.copy(holder.position).setY(holder.position.y + labelHeight).project(camera);
