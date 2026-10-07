@@ -1,5 +1,5 @@
-/* Home (M1.1): values from tokens.css only. Wide screens: rail | world stage | today's quests, like the
-   mock; narrower ones stack the stage, today's quests and the rail (as a row) so the island stays big. */
+/* Home (M1.1): values from tokens.css only. Wide screens: the world stage over the rail (a row), today's quests
+   beside them; narrower ones stack the stage, today's quests and the rail so the island stays big. */
 .home {
   position: relative;
   z-index: 1;
@@ -39,17 +39,18 @@
   grid-template-columns: minmax(0, 1fr);
   grid-template-areas: 'stage' 'today' 'rail';
   gap: var(--space-md);
-  align-items: end;
+  align-items: start;
 }
 .home-main .world-stage { grid-area: stage; }
 .home-today { grid-area: today; }
 .home-rail { grid-area: rail; }
 @media (min-width: 64rem) {
-  .home-main { grid-template-columns: auto minmax(0, 1fr) clamp(16rem, 22vw, 22rem); grid-template-areas: 'rail stage today'; }
-  .home-rail { flex-direction: column; align-self: center; }
-  /* A fixed column width: a longer label (Hành trình, Thành tích) wraps instead of widening the rail and
-     narrowing the island, whose region cards would then overlap. */
-  .home-rail-item { width: 5.5rem; text-align: center; overflow-wrap: anywhere; }
+  /* The island first and as wide as the row allows, the rail as a row of buttons under it, today's quests beside
+     both. A rail down the left grew with every new button (eleven by October) and pushed the island below the
+     fold or, in two columns, narrowed it until its region cards shrank to pins (owner 07/10/2026). */
+  .home-main { grid-template-columns: minmax(0, 1fr) clamp(16rem, 22vw, 22rem); grid-template-rows: auto 1fr; grid-template-areas: 'stage today' 'rail today'; }
+  /* A fixed width: a longer label (Hành trình, Thành tích) wraps instead of widening its button. */
+  .home-main .home-rail-item { width: 5.5rem; min-height: 4.75rem; padding: var(--space-xs); font-size: var(--text-sm); text-align: center; overflow-wrap: anywhere; }
 }
 
 /* The child's character waves from the empty sky at the stage's lower left, as in the mock. The render has
@@ -63,7 +64,7 @@
   .home-top, .home-today, .home-rail { margin-inline: var(--space-sm); }
 }
 
-.home-rail { display: flex; justify-content: center; gap: var(--space-sm); }
+.home-rail { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); }
 .home-rail-item {
   display: flex;
   flex-direction: column;

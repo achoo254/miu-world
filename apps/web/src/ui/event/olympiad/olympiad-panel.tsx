@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { fillPlayerName } from '@miu/quest/player-name';
 import type { ExamSubmitResponse, OlympiadQuestionPublic, OlympiadStatusResponse, OlympiadTopicId, PracticeFinishResponse } from '@miu/schema/olympiad';
 import { errorMessage } from '../../api-client';
-import { Bi, T } from '../../i18n/use-t';
+import { Bi, T, useT } from '../../i18n/use-t';
 import { buttonClass } from '../../kit/button';
 import { Modal } from '../../kit/modal';
 import { ExamResult } from './exam-result';
@@ -28,13 +28,14 @@ export function OlympiadPanel({ name, onClose, onProgress }: { name: string; onC
   const [status, setStatus] = useState<OlympiadStatusResponse | null>(null);
   const [view, setView] = useState<View>({ kind: 'hub' });
   const [error, setError] = useState<string | null>(null);
+  const { t } = useT();
   const fill = useCallback((text: string) => fillPlayerName(text, name), [name]);
   const refresh = useCallback(() => {
     loadStatus().then(setStatus, (err: unknown) => setError(errorMessage(err)));
   }, []);
   useEffect(refresh, [refresh]);
 
-  const topicOf = (id: OlympiadTopicId) => status?.topics.find((t) => t.id === id);
+  const topicOf = (id: OlympiadTopicId) => status?.topics.find((topic) => topic.id === id);
   const topicName = (id: OlympiadTopicId) => topicOf(id)?.name ?? { vi: id, en: id };
   const practise = (topic: OlympiadTopicId): void => {
     setError(null);
@@ -50,7 +51,13 @@ export function OlympiadPanel({ name, onClose, onProgress }: { name: string; onC
   };
 
   return (
-    <Modal title={status ? <Bi {...status.title} /> : <T k="olympiad.rail" />} onClose={onClose} dataId="olympiad-panel" variant="scene" size="wide" className="olympiad-modal">
+    <Modal title={status ? <Bi {...status.title} /> : <T k="olympiad.rail" />} onClose={onClose} dataId="olympiad-panel" variant="scene" size="wide" className="olympiad-modal scene-sheet">
+      {/* A run and the exam put their own back arrow in this corner (back to the topics). */}
+      {view.kind !== 'practice' && view.kind !== 'exam' ? (
+        <button type="button" className="scene-close" data-id="olympiad-panel-close" aria-label={t('common.close')} onClick={onClose}>
+          ✕
+        </button>
+      ) : null}
       {error ? (
         <p role="alert" className="error">
           {error}

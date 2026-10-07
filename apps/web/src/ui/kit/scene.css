@@ -157,6 +157,29 @@
 }
 .scene-close:focus-visible { box-shadow: var(--focus-ring); outline: none; }
 
+/*
+ * A scene opened over Home rather than over a paused game (the event page, Olympic practice): nothing behind it is
+ * worth seeing, so its content sits on one frosted board, and its close button stays in the corner while the board
+ * scrolls (owner 07/10/2026: Home showed through, no way out).
+ */
+.scene-sheet {
+  padding: var(--space-md);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-panel);
+}
+.scene-sheet > .ribbon { max-width: calc(100% - 7rem); }
+.scene-sheet > .scene-close {
+  order: -1;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  justify-self: end;
+  margin-bottom: calc(-3rem - var(--space-md));
+}
+
 /* Materials the mechanics share. */
 .scene-modal .choice {
   border: 3px solid var(--color-parchment-edge);

@@ -51,11 +51,11 @@ function serve(event: LiveEventDto) {
   );
 }
 
-function renderPanel(onPractice = vi.fn()) {
+function renderPanel(onPractice = vi.fn(), onClose = vi.fn()) {
   return render(
     <MemoryRouter initialEntries={['/home']}>
       <Routes>
-        <Route path="/home" element={<EventPanel eventId={EVENT.id} name="Mochi" onClose={() => undefined} onPractice={onPractice} />} />
+        <Route path="/home" element={<EventPanel eventId={EVENT.id} name="Mochi" onClose={onClose} onPractice={onPractice} />} />
         <Route path="/play" element={<p data-id="playing">Trong game</p>} />
       </Routes>
     </MemoryRouter>,
@@ -107,6 +107,23 @@ describe('event page', () => {
     renderPanel(practice);
     fireEvent.click(await screen.findByText('Vào luyện tập'));
     expect(practice).toHaveBeenCalledOnce();
+  });
+
+  it('has a way out: the close button in the corner, while loading and once loaded', async () => {
+    serve(EVENT);
+    const close = vi.fn();
+    renderPanel(vi.fn(), close);
+    fireEvent.click(screen.getByLabelText('Đóng'));
+    await screen.findByText('Chào Mochi, hội chợ mở rồi.');
+    fireEvent.click(screen.getByLabelText('Đóng'));
+    expect(close).toHaveBeenCalledTimes(2);
+  });
+
+  it('asks to play a room in one short word, the keeper named once beside it', async () => {
+    serve(EVENT);
+    renderPanel();
+    await screen.findByText('Chào Mochi, hội chợ mở rồi.');
+    expect(document.querySelector('[data-id="event-play-wonder-b"]')?.textContent).toBe('Chơi');
   });
 
   it('before it opens: says when, offers no way to play', async () => {

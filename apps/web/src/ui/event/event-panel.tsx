@@ -8,7 +8,7 @@ import { fillPlayerName } from '@miu/quest/player-name';
 import type { EventRewardDto, LiveEventDto } from '@miu/schema/live-event';
 import { errorMessage } from '../api-client';
 import { mapBoth, pairOf } from '../i18n/i18n';
-import { Bi, T } from '../i18n/use-t';
+import { Bi, T, useT } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
@@ -54,6 +54,7 @@ export function EventPanel({ eventId, name, onClose, onPractice }: { eventId: st
   const [event, setEvent] = useState<LiveEventDto | null>(null);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
+  const { t } = useT();
   useEffect(() => {
     let alive = true;
     loadEvent(eventId).then(
@@ -73,7 +74,10 @@ export function EventPanel({ eventId, name, onClose, onPractice }: { eventId: st
     navigate(`/play?region=${encodeURIComponent(event.region)}&quest=${encodeURIComponent(questId)}`);
   };
   return (
-    <Modal title={event ? <Bi {...event.name} /> : <T k="event.rail" />} onClose={onClose} dataId="event-panel" variant="scene" size="wide">
+    <Modal title={event ? <Bi {...event.name} /> : <T k="event.rail" />} onClose={onClose} dataId="event-panel" variant="scene" size="wide" className="scene-sheet">
+      <button type="button" className="scene-close" data-id="event-panel-close" aria-label={t('common.close')} onClick={onClose}>
+        ✕
+      </button>
       {error ? (
         <p role="alert" className="error">
           {error}
@@ -133,7 +137,7 @@ export function EventPanel({ eventId, name, onClose, onPractice }: { eventId: st
                     </span>
                     {open ? (
                       <button type="button" className={buttonClass('secondary', { small: true })} data-id={`event-play-${q.id}`} onClick={() => play(q.id)}>
-                        {q.done ? <T k="event.questDone" /> : <T k="event.questAt" params={{ keeper: q.keeper }} />}
+                        {q.done ? <T k="event.questDone" /> : <T k="event.questPlay" />}
                       </button>
                     ) : null}
                   </li>

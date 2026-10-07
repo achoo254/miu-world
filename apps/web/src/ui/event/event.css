@@ -63,6 +63,11 @@
 .event-section h3 { margin: 0; font-family: var(--font-display); color: var(--color-wood-edge); }
 .event-quest-list, .event-reward-rows { display: grid; gap: var(--space-xs); margin: 0; padding: 0; list-style: none; }
 .event-quest, .event-reward-row { display: flex; align-items: center; gap: var(--space-sm); }
+.event-quest { padding: var(--space-xs) 0; border-bottom: 2px dashed var(--color-parchment-edge); }
+.event-quest:last-child { border-bottom: 0; }
+.event-quest .btn { flex-shrink: 0; }
+/* The bar under a limited reward: a slim line, not a field the size of a button. */
+.event-reward-row .progress { height: 0.75rem; border-width: 2px; box-shadow: none; }
 .event-quest-text, .event-reward-text { display: grid; flex: 1; min-width: 0; gap: 2px; }
 .event-quest[data-done='true'] .event-quest-text strong { color: var(--color-leaf); }
 .event-reward-done { display: inline-flex; align-items: center; gap: var(--space-xs); color: var(--color-leaf); font-weight: 800; }
