@@ -19,6 +19,7 @@ function harness(map: WalkMap, home: Spot, options: Partial<BrainOptions> = {}) 
   const planner = new LocalPlanner();
   const doing: Array<string | null> = [];
   const gestures: Gesture[] = [];
+  const news: Array<'found' | 'done'> = [];
   const persona = { sight: 16, walk: 3, curious: 0.5 };
   const brain = new Brain({
     map,
@@ -29,7 +30,7 @@ function harness(map: WalkMap, home: Spot, options: Partial<BrainOptions> = {}) 
     now: () => clock,
     planner,
     requestPlan: (run) => queue.request('way', run),
-    events: { doing: (quest) => doing.push(quest), gesture: (emote) => gestures.push(emote) },
+    events: { doing: (quest) => doing.push(quest), gesture: (emote) => gestures.push(emote), news: (kind) => news.push(kind) },
     ...options,
   });
   const body = new BotBody({ map, home, pace: { speed: persona.walk, sight: persona.sight }, chooser: brain, planner, requestPlan: (run) => queue.request('feet', run), now: () => clock });
@@ -42,7 +43,7 @@ function harness(map: WalkMap, home: Spot, options: Partial<BrainOptions> = {}) 
       queue.drain();
     }
   };
-  return { brain, body, doing, gestures, walked, run, now: () => clock };
+  return { brain, body, doing, gestures, news, walked, run, now: () => clock };
 }
 
 describe("a bot's mind", () => {
@@ -74,6 +75,8 @@ describe("a bot's mind", () => {
     // question and at the end of the quest.
     expect(bot.gestures.filter((g) => g === 'wave').length).toBeGreaterThanOrEqual(2);
     expect(bot.gestures.filter((g) => g === 'cheer').length).toBeGreaterThanOrEqual(2);
+    // News for a player who sees it: the two steps done where it had to go, then the quest finished.
+    expect(bot.news).toEqual(['found', 'found', 'done']);
     // The quest done, it starts it again (the only one there is) and says so.
     expect(bot.doing.at(-1)).toBe('bai-hoc');
     expect(bot.brain.metrics.questsDone).toBe(1);
@@ -98,6 +101,11 @@ describe("a bot's mind", () => {
     const bot = harness(map, { x: 5, y: 1, z: 5 }, { players: (at, sight) => (player && Math.hypot(player.x - at.x, player.z - at.z) <= sight ? [player] : []) });
     // It values meeting highly here (a bot learns that from meetings that paid).
     bot.brain.bandits.meet = 5;
+    bot.run(60, () => bot.brain.approaching !== null);
+    expect(bot.brain.approaching).toBe('p-1');
+    // Greeted while it walks over to meet her: that meeting is paid once, when it ends.
+    bot.brain.metPlayer('p-1');
+    expect(bot.brain.metrics.meets).toBe(0);
     bot.run(60, () => bot.brain.metrics.meets > 0);
     expect(bot.brain.metrics.meets).toBe(1);
     const at = bot.body.stepper.spot;
@@ -107,6 +115,9 @@ describe("a bot's mind", () => {
     bot.brain.bandits.meet = -5;
     bot.run(20);
     expect(Math.hypot(bot.body.stepper.x - 75.5, bot.body.stepper.z - 75.5)).toBeGreaterThan(20);
+    // A player it greets in passing is a meeting too.
+    bot.brain.metPlayer('p-2');
+    expect(bot.brain.metrics.meets).toBe(2);
   });
 
   it('keeps away from where it got stuck, and stuck for good is put back at a place it knows', { timeout: 20_000 }, () => {

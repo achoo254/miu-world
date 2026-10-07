@@ -89,6 +89,8 @@ export interface BrainEvents {
   doing(quest: string | null): void;
   /** What it does shows: a wave at a person, a jump at a thing, a cheer when a question or a quest is done. */
   gesture(emote: Gesture): void;
+  /** Something worth telling a player who sees it: a step of its quest done where it had to go, or the quest finished. */
+  news(kind: 'found' | 'done'): void;
 }
 
 export interface BrainOptions {
@@ -320,6 +322,33 @@ export class Brain implements GoalChooser {
     return this.quests.quest?.id ?? null;
   }
 
+  /** The player it is walking over to meet (null: none); it greets her once it is there. */
+  get approaching(): string | null {
+    const current = this.current;
+    return current?.option === 'meet' && current.phase === 'go' ? current.player : null;
+  }
+
+  /**
+   * It greeted a player within its reach (a wave, a line): a meeting, paid to what it does now, less each time it met
+   * her lately. Walking over to meet her is paid when that choice ends.
+   */
+  metPlayer(id: string): void {
+    const current = this.current;
+    if (current?.option === 'meet' && current.player === id) return;
+    const reward = this.meeting(id, this.options.now());
+    if (current) current.reward += reward;
+  }
+
+  /** What one more meeting with player `id` is worth now; counted as met. */
+  private meeting(id: string, now: number): number {
+    const seen = this.met.get(id);
+    const times = seen && now - seen.at < MEET_FORGET_MS ? seen.times : 0;
+    this.met.set(id, { times: times + 1, at: now });
+    this.metrics.meets += 1;
+    if (this.met.size > 64) for (const [player, m] of this.met) if (now - m.at >= MEET_FORGET_MS) this.met.delete(player);
+    return meetReward(times);
+  }
+
   private keeps(id: string): boolean {
     if (this.quests.remaining.includes(id)) return true;
     const place = this.memory.places.get(id);
@@ -496,11 +525,7 @@ export class Brain implements GoalChooser {
         this.workedAt.set(id, now);
       }
     } else if (current?.phase === 'meet' && current.player) {
-      const seen = this.met.get(current.player);
-      current.reward += meetReward(seen && now - seen.at < MEET_FORGET_MS ? seen.times : 0);
-      this.met.set(current.player, { times: (seen && now - seen.at < MEET_FORGET_MS ? seen.times : 0) + 1, at: now });
-      this.metrics.meets += 1;
-      if (this.met.size > 64) for (const [player, m] of this.met) if (now - m.at >= MEET_FORGET_MS) this.met.delete(player);
+      current.reward += this.meeting(current.player, now);
     }
     this.finish();
     return this.decide(view, now);
@@ -515,8 +540,9 @@ export class Brain implements GoalChooser {
     if (this.quests.questChanged) {
       this.metrics.questsDone += 1;
       if (!question) this.emit('gesture', 'cheer');
+      this.emit('news', 'done');
       this.emit('doing', this.questId);
-    }
+    } else if (target !== null) this.emit('news', 'found');
   }
 
   /** It sets out for its step's targets (once per target). */

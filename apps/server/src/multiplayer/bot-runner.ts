@@ -2,23 +2,21 @@
 // Runs companion bots across game maps, each one like a player of its own: it walks the map on its own feet (no
 // route given, nobody followed), sees only what is around it, finds its way over what it sees, and decides where
 // to go next by what it learnt (bot-brain/): the places it found, the ways it walked, the map's quests it plays on
-// its own (its name tag shows the quest mark), a player it sees and chooses to go and meet. It waves and says hello
-// when a player comes up to it, visits friends, answers invites and plays co-op challenges. What it learnt of each
+// its own (its name tag shows the quest mark), a player it sees and chooses to go and meet. A player within its reach
+// it turns to, waves at and talks to in its own lines, now and then asking her to be friends (bot-social.ts, at a
+// pace that never talks her over); it visits friends, answers invites and plays co-op challenges. What it learnt of each
 // map is kept in the database (bot-brain/memory-keeper.ts), so it goes on learning after a restart. All bots are
 // clearly labeled "[Bạn máy]".
-import {
-  HOME_MAP_ID,
-  SAFE_CANNED_CHATS,
-  type PlayerPresence,
-  type ServerWsMessage,
-} from '@miu/schema/multiplayer';
+import { HOME_MAP_ID, INTERACT_RANGE, type PlayerPresence, type ServerWsMessage } from '@miu/schema/multiplayer';
+import type { BotLine } from '@miu/schema/bot-lines';
 import { COOP_BOT_LINE_VARIANTS, type CoopAction, type CoopBotLine, type CoopBotLineKey, type CoopStateView, type CoopTaskView } from '@miu/schema/coop';
 import { VOICE_BOT_LINE_VARIANTS, type VoiceBotLineKey, type VoiceChannel } from '@miu/schema/voice';
 import { freshPicker, type FreshPicker } from '@miu/quest/pick-fresh';
 import type { CoopBotDriver, CoopBotMoves } from '../coop/coop-service';
-import { botAnswerXp, botSkillLevel, fatigueAfter, moodAt, personaOf, rightChance, thinkMs, VOICES, type Bounds } from './bot-persona';
+import { botAnswerXp, botSkillLevel, fatigueAfter, moodAt, personaOf, rightChance, talkChance, thinkMs, VOICES, type BotPersona, type Bounds } from './bot-persona';
 import { BOT_MAP_CONFIGS, findBot, HOME_SNAP, type BotProfile } from './bot-profiles';
 import type { BotStore } from './bot-store';
+import { BotSocial, type MeetAction, type MeetContext } from './bot-social';
 import type { CoopPerson } from '../coop/coop-session';
 import { botProfileId, homeBotId, type MultiplayerHub, type MultiplayerRoom } from './multiplayer-hub';
 import { BotBody } from './bot-brain/body';
@@ -35,10 +33,8 @@ export const BOT_REPLY_MS = 1_500;
 export const BOT_FRIEND_REPLY_MS = 2_000;
 /** Most friend requests a companion bot accepts; now and then it is "busy" and says not now. */
 export const BOT_FRIEND_ACCEPT = 0.85;
-/** Meeting the same player this many times, a companion bot may ask her to be friends (once per server run). */
-const BOT_ASKS_AFTER_GREETS = 2;
-const BOT_ASK_CHANCE = 0.5;
-const MAX_GREET_PAIRS = 10_000;
+/** Parties' voices followed at most: a crowded server forgets the oldest rather than growing without end. */
+const MAX_TALKS = 10_000;
 /** However sharp or tired, a companion bot answers a co-op question right at least, and at most, this often. */
 export const BOT_COOP_ACCURACY_MIN = 0.35;
 export const BOT_COOP_ACCURACY_MAX = 0.95;
@@ -62,11 +58,9 @@ export const BOT_VOICE_GAP_MS = 4_000;
 const SHORT_TURN_MS = 1_500;
 const LONG_TURN_MS = 4_500;
 
-/** What a bot asks of its runner: the hub's messages, meeting a player, and its friends in the room. */
+/** What a bot asks of its runner: the hub's messages, and its friends in the room. */
 interface BotHooks {
   onMessage(message: ServerWsMessage): void;
-  /** It greeted a player (by public id). */
-  onGreet(playerId: string): void;
   /** Public ids of the players in its room who are friends with it. */
   friendsHere(): readonly string[];
   random(): number;
@@ -74,12 +68,12 @@ interface BotHooks {
   awake(): boolean;
 }
 
-const NO_HOOKS: BotHooks = { onMessage: () => {}, onGreet: () => {}, friendsHere: () => [], random: Math.random, awake: () => true };
+const NO_HOOKS: BotHooks = { onMessage: () => {}, friendsHere: () => [], random: Math.random, awake: () => true };
 
-/** A player this close (blocks) is greeted. */
-const GREET_RANGE = 4.5;
-const GREET_GAP_MS = 15_000;
+/** Turned to a player to wave at her, it stands this long (s). */
 const GREET_S = 3.5;
+/** How often the runner forgets the players no longer in any room with bots (ms). */
+const SOCIAL_SWEEP_MS = 5_000;
 
 class CompanionBotInstance {
   readonly profile: BotProfile;
@@ -88,10 +82,9 @@ class CompanionBotInstance {
   /** Its feet on the map and its mind (null: the map has no walk grid, and it stays at its home). */
   readonly body: BotBody | null;
   readonly brain: Brain | null;
+  readonly persona: BotPersona;
   private greetLeft = 0;
-  private lastGreetTime = 0;
   private readonly hooks: BotHooks;
-  private readonly walkSpeed: number;
 
   constructor(profile: BotProfile, room: MultiplayerRoom, body: BotBody | null, brain: Brain | null, hooks: Partial<BotHooks> = {}) {
     this.profile = profile;
@@ -99,7 +92,7 @@ class CompanionBotInstance {
     this.body = body;
     this.brain = brain;
     this.hooks = { ...NO_HOOKS, ...hooks };
-    this.walkSpeed = personaOf(profile.id).walk;
+    this.persona = personaOf(profile.id);
     const at = body?.stepper ?? profile.home;
 
     this.presence = {
@@ -163,24 +156,27 @@ class CompanionBotInstance {
     }
   }
 
-  /** A player came up to it: it turns to her, waves and says hello (not again for a while). */
-  private greet(now: number): boolean {
-    if (now - this.lastGreetTime <= GREET_GAP_MS) return false;
-    const player = seePlayers(this.room, this.presence.id, this.presence, GREET_RANGE)[0];
-    if (!player) return false;
-    this.greetLeft = GREET_S;
-    this.lastGreetTime = now;
-    this.presence.yaw = Math.atan2(player.presence.x - this.presence.x, player.presence.z - this.presence.z);
-    this.presence.speed = 0;
-    this.presence.action = 'wave';
-    this.room.updatePresence(this.presence.id, { x: this.presence.x, y: this.presence.y, z: this.presence.z, yaw: this.presence.yaw, speed: 0, action: 'wave' });
-    this.room.broadcastEmote(this.presence.id, 'wave');
-    // A greeting, never the nudge towards a quest's hints (that one is for a party at a question).
-    const greetings = SAFE_CANNED_CHATS.filter((line) => line !== 'Thử bấm Gợi ý xem!');
-    const chatChoice = greetings[Math.floor(this.hooks.random() * greetings.length)] ?? 'Xin chào bạn!';
-    this.room.broadcastChat(this.presence.id, chatChoice);
-    this.hooks.onGreet(player.id);
-    return true;
+  /** Whether it is free to turn to a player (not standing to wave at one already). */
+  get free(): boolean {
+    return this.greetLeft <= 0;
+  }
+
+  /** It does towards player `to` what it chose: turns to her and waves (standing a moment), says its line. */
+  interact(to: PlayerPresence, action: MeetAction): void {
+    if (action.emote) {
+      this.greetLeft = GREET_S;
+      const p = this.presence;
+      p.yaw = Math.atan2(to.x - p.x, to.z - p.z);
+      this.room.updatePresence(p.id, { x: p.x, y: p.y, z: p.z, yaw: p.yaw, speed: 0, action: action.emote });
+      this.room.broadcastEmote(p.id, action.emote);
+    }
+    if (action.say) this.say(action.say, to.id);
+  }
+
+  /** A line of its own (to player `to`: she gets it as said to her), to everyone in the room who sees it. */
+  say(line: BotLine, to?: string): void {
+    const id = this.profile.id;
+    this.room.broadcast({ type: 'bot-say', id, key: line.key, variant: line.variant, ...(to ? { to } : {}) }, id, to);
   }
 
   tick(dt: number): void {
@@ -188,7 +184,6 @@ class CompanionBotInstance {
       this.greetLeft -= dt;
       return;
     }
-    if (this.greet(Date.now())) return;
     const body = this.body;
     if (!body || !this.hooks.awake()) return;
     const before = body.mode;
@@ -206,7 +201,7 @@ class CompanionBotInstance {
   private show(body: BotBody): void {
     const { stepper } = body;
     const moving = stepper.moving;
-    const speed = moving ? this.walkSpeed : 0;
+    const speed = moving ? this.persona.walk : 0;
     const action = moving ? 'walk' : 'idle';
     const p = this.presence;
     if (p.x === stepper.x && p.y === stepper.y && p.z === stepper.z && p.speed === speed && p.action === action && p.riding === stepper.riding) return;
@@ -277,9 +272,9 @@ export class BotRunner {
   private lastTick = Date.now();
   /** Answers on their way (a bot takes a moment, as a player would). */
   private readonly replies = new Set<NodeJS.Timeout>();
-  /** Greetings per bot and player, and the pairs a bot already asked to be friends. */
-  private readonly greets = new Map<string, number>();
-  private readonly asked = new Set<string>();
+  /** How the bots behave with the players they meet (what they keep of each player, in memory only). */
+  private readonly social: BotSocial;
+  private socialSweptAt = Date.now();
   /** Bots playing a co-op challenge: what each sees and the move it is thinking over. */
   private readonly coop = new Map<string, CoopTurn>();
   private readonly bounds: Bounds;
@@ -307,6 +302,17 @@ export class BotRunner {
     this.walk = options.walk ?? null;
     this.quests = options.quests ?? contentQuestBook();
     this.plans = new PathQueue(options.planBudgetMs ?? PLAN_BUDGET_MS);
+    const host = hub.coopHost();
+    const store = this.store;
+    this.social = new BotSocial({
+      now: () => Date.now(),
+      random: this.random,
+      // A bot remembers the players it won a challenge with (its own id; never an instance in a home).
+      recall: async (botId, playerId) => {
+        const child = host.childIdOf(playerId);
+        return Boolean(store && child && (await store.recall(botProfileId(botId), child)));
+      },
+    });
   }
 
   /**
@@ -499,6 +505,9 @@ export class BotRunner {
             events: {
               doing: () => inst?.showDoing(),
               gesture: (emote) => inst?.gesture(emote),
+              news: (kind) => {
+                if (inst) this.cheer(inst, kind);
+              },
             },
           })
         : null;
@@ -517,7 +526,6 @@ export class BotRunner {
     inst = new CompanionBotInstance(profile, room, body, brain, {
       // A player who comes in learns what quest it is on.
       onMessage: (message) => (message.type === 'spawn' ? inst?.welcome(message.player) : this.heard(profile.id, message)),
-      onGreet: (playerId) => this.greeted(profile.id, playerId),
       friendsHere: () => this.hub.friendsOfBot(botProfileId(profile.id)).filter((id) => room.members.has(id)),
       random: this.random,
       awake: () => this.memories?.ready(key) ?? true,
@@ -584,13 +592,65 @@ export class BotRunner {
     const now = Date.now();
     const dt = Math.min((now - this.lastTick) / 1000, 0.2);
     this.lastTick = now;
+    const sweep = now - this.socialSweptAt >= SOCIAL_SWEEP_MS;
+    const present = new Set<string>();
     for (const list of this.bots.values()) {
+      // The room's players, once a tick (a room with none has nobody to meet).
+      const room = list[0]?.room;
+      const players = room ? [...room.members.values()].filter((m) => !m.isBot).map((m) => m.presence) : [];
+      if (sweep) for (const p of players) present.add(p.id);
       for (const bot of list) {
         bot.tick(dt);
+        if (players.length > 0) this.meetPlayers(bot, players);
       }
+    }
+    if (sweep) {
+      this.socialSweptAt = now;
+      this.social.keepOnly(present);
     }
     this.plans.drain();
     this.memories?.tick();
+  }
+
+  /** What a bot is and does now, for the players it meets. */
+  private meetContext(bot: CompanionBotInstance, playerId: string): MeetContext {
+    const { persona } = bot;
+    return { voice: persona.voice, chat: persona.chat, quest: bot.brain?.questId ?? null, friend: this.hub.botFriendsOf(playerId).includes(botProfileId(bot.profile.id)) };
+  }
+
+  /**
+   * The players within a bot's reach who see it, nearest first: it turns to the first one it has something for (one
+   * a tick), and its mind counts the meeting. A player it walks over to meet is greeted once it is there.
+   */
+  private meetPlayers(bot: CompanionBotInstance, players: readonly PlayerPresence[]): void {
+    if (!bot.free) return;
+    const at = bot.presence;
+    const near: Array<{ p: PlayerPresence; away: number }> = [];
+    for (const p of players) {
+      const away = Math.hypot(p.x - at.x, p.y - at.y, p.z - at.z);
+      if (away <= INTERACT_RANGE && bot.room.canSee(p.id, at.id) && bot.brain?.approaching !== p.id) near.push({ p, away });
+    }
+    near.sort((a, b) => a.away - b.away);
+    for (const { p } of near) {
+      const action = this.social.meet(botProfileId(at.id), p.id, this.meetContext(bot, p.id));
+      if (!action) continue;
+      bot.interact(p, action);
+      if (action.friendAsk) void this.hub.botFriendRequest(at.id, p.id);
+      bot.brain?.metPlayer(p.id);
+      return;
+    }
+  }
+
+  /** A bot found what its quest needs or finished it: it cheers to the nearest player who sees it and may be told now. */
+  private cheer(bot: CompanionBotInstance, kind: 'found' | 'done'): void {
+    const id = bot.profile.id;
+    if (!bot.room.members.has(id)) return;
+    for (const seen of seePlayers(bot.room, id, bot.presence, bot.persona.sight)) {
+      const line = this.social.cheer(botProfileId(id), seen.id, kind, this.meetContext(bot, seen.id));
+      if (!line) continue;
+      bot.say(line, seen.id);
+      return;
+    }
   }
 
   /** Writes out what every bot learnt since it was last written (the server stopping), and waits for it. */
@@ -654,7 +714,7 @@ export class BotRunner {
     }
     if (!talk) {
       // Only voices with players in them are followed: a crowded server forgets the oldest rather than growing.
-      if (this.talks.size >= MAX_GREET_PAIRS) {
+      if (this.talks.size >= MAX_TALKS) {
         for (const old of this.talks.values()) if (old.timer) clearTimeout(old.timer);
         this.talks.clear();
       }
@@ -713,7 +773,7 @@ export class BotRunner {
     const bots = party.members.filter((m) => m.startsWith('bot-')).sort((a, b) => (talk.spoke.get(a) ?? 0) - (talk.spoke.get(b) ?? 0));
     const bot = bots[0];
     if (!bot) return;
-    if (key !== 'hello' && this.random() >= 0.35 + 0.6 * personaOf(bot).chat) return;
+    if (key !== 'hello' && this.random() >= talkChance(personaOf(bot))) return;
     talk.lastLineAt = now;
     talk.spoke.set(bot, now);
     this.hub.voiceBotSay(bot, { key, variant: this.voiceVariant(bot, key) });
@@ -732,21 +792,5 @@ export class BotRunner {
       this.voiceLines.set(id, picker);
     }
     return picker.next();
-  }
-
-  /** Meeting a player again and again, a bot may ask her to be friends (once). */
-  private greeted(botId: string, playerId: string): void {
-    const pair = `${botId}>${playerId}`;
-    if (this.asked.has(pair)) return;
-    const count = (this.greets.get(pair) ?? 0) + 1;
-    // Only a memory of who met whom: a crowded server forgets it rather than growing without end.
-    if (this.greets.size >= MAX_GREET_PAIRS) this.greets.clear();
-    this.greets.set(pair, count);
-    if (count < BOT_ASKS_AFTER_GREETS || this.random() >= BOT_ASK_CHANCE) return;
-    // A record of asks, not a log: a crowded server forgets it (at worst a bot asks again).
-    if (this.asked.size >= MAX_GREET_PAIRS) this.asked.clear();
-    this.asked.add(pair);
-    this.greets.delete(pair);
-    void this.hub.botFriendRequest(botId, playerId);
   }
 }
