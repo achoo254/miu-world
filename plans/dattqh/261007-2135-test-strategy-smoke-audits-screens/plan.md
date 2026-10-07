@@ -1,7 +1,7 @@
 ---
 title: "Đổi chiến lược kiểm thử: smoke chặn deploy, audit mục tiêu quest, ảnh màn hình AI duyệt"
 description: "Thu E2E về khoảng 10 luồng chính luôn xanh và chặn deploy, thêm audit Node bắt mục tiêu quest bị chiếm nút Tương tác hay bị ẩn, và chụp các màn chính ở điện thoại dọc và iPad cho AI duyệt trước mỗi lần deploy."
-status: pending
+status: completed
 priority: P1
 tier: L
 effort: L
@@ -12,7 +12,7 @@ created: 2026-10-07
 
 # Đổi chiến lược kiểm thử: smoke chặn deploy, audit mục tiêu quest, ảnh màn hình AI duyệt
 
-**Trạng thái:** chờ bắt đầu · **Tier:** L · **Nhánh:** `main` (không tạo nhánh, không worktree) · **Ngày:** 07/10/2026
+**Trạng thái:** xong (07/10/2026), report `plans/dattqh/reports/test-strategy-261007.md` · **Tier:** L · **Nhánh:** `main` (không tạo nhánh, không worktree) · **Ngày:** 07/10/2026
 
 ## Kết quả mong muốn
 

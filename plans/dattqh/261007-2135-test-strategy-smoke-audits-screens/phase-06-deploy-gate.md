@@ -1,6 +1,6 @@
 # Pha 6: Cổng deploy: CI xanh và ảnh đã duyệt
 
-**Tier:** S · **Phụ thuộc:** pha 4 (job `e2e` là bộ smoke), pha 5 (`review.json`); phiên `miu-world-03` đã deploy xong · **Trạng thái:** pending
+**Tier:** S · **Phụ thuộc:** pha 4 (job `e2e` là bộ smoke), pha 5 (`review.json`); phiên `miu-world-03` đã deploy xong · **Trạng thái:** completed
 
 ## Bối cảnh
 
@@ -51,9 +51,14 @@ Không deploy thật trong pha này. Chạy `deploy.sh gate` (không chạm máy
 - `gh` chưa đăng nhập hay mất mạng: cổng chặn và in cách khắc phục (`gh auth status`); không tự cho qua.
 - Hoàn tác: revert; hoặc dùng `MIU_RELEASE_FORCE` cho một lần.
 
+## Lệch so với plan
+
+- Trường hợp "commit đổi code sau lúc chụp" thử bằng cách sửa tạm `capturedFrom` về một commit cũ (377bf69a) thay vì tạo commit rồi `git reset`, vì phiên này không được reset.
+- Trường hợp "CI đỏ" dùng 471ac689 (lượt 37630093033) vì 5e543f4f không có lượt CI riêng; thử trong cây export không có `.git` để cổng đi thẳng tới bước hỏi CI.
+
 ## Todo
 
-- [ ] `tools/deploy/release-gate.sh`
-- [ ] Hai `deploy.sh` gọi cổng và có lệnh `gate`
-- [ ] `docs/deployment-guide.md`, `CLAUDE.md`
-- [ ] Thử bốn trường hợp của `deploy.sh gate`
+- [x] `tools/deploy/release-gate.sh`
+- [x] Hai `deploy.sh` gọi cổng và có lệnh `gate`
+- [x] `docs/deployment-guide.md`, `CLAUDE.md`
+- [x] Thử bốn trường hợp của `deploy.sh gate`

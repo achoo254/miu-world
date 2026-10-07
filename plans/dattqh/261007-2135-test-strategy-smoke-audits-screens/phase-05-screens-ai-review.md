@@ -1,6 +1,6 @@
 # Pha 5: Ảnh các màn chính ở điện thoại dọc và iPad, agent xem ảnh
 
-**Tier:** M · **Phụ thuộc:** pha 4 (cùng sửa `apps/web/playwright.config.ts`, `apps/web/playwright.ci.config.ts`, `apps/web/package.json`) · **Trạng thái:** pending
+**Tier:** M · **Phụ thuộc:** pha 4 (cùng sửa `apps/web/playwright.config.ts`, `apps/web/playwright.ci.config.ts`, `apps/web/package.json`) · **Trạng thái:** completed
 
 ## Bối cảnh
 
@@ -109,11 +109,18 @@ Mới: `apps/web/e2e/screens.spec.ts`, `apps/web/e2e/layout.ts`, `docs/screen-re
 - Ảnh lộ dữ liệu: chỉ tài khoản giả trong PGlite RAM, tên nhân vật giả; không dùng `.data/pglite` thật.
 - Hoàn tác: revert; xóa thư mục `assets/generated/review/screens/` rồi `pnpm assets:manifest`.
 
+## Lệch so với plan
+
+- Dữ kiện DOM ghi theo khổ ở `screens/<khổ>/shots.json` (một tệp mỗi khổ) thay vì một `shots.json` chung; thêm trường `uncommitted`.
+- Ảnh chuẩn chụp từ cây export sạch (`git archive`, `MIU_SCREENS_COMMIT`) vì thư mục làm việc có code dở của phiên khác.
+- Bốn lỗi UI mức chặn tìm qua ảnh được sửa trong pha này (creator, toast, nút "Quay lại game", tiêu đề scene); khung tổ đội che nhãn trong thế giới hạ xuống `note` kèm lý do trong `review.json`.
+- Ảnh khoảng 9,3 MB mỗi lần chụp (plan ước vài MB).
+
 ## Todo
 
-- [ ] `layout.ts` thu dữ kiện DOM
-- [ ] `screens.spec.ts` 19 màn × 2 khổ, chụp được từ cây export
-- [ ] Project `screens`, script `screens`, glob trong `generated.json`
-- [ ] Mục "Màn hình trước deploy" trên trang review
-- [ ] `docs/screen-review.md`
-- [ ] Chụp, duyệt, sửa phát hiện block, commit ảnh và `review.json`
+- [x] `layout.ts` thu dữ kiện DOM
+- [x] `screens.spec.ts` 19 màn × 2 khổ, chụp được từ cây export
+- [x] Project `screens`, script `screens`, glob trong `generated.json`
+- [x] Mục "Màn hình trước deploy" trên trang review
+- [x] `docs/screen-review.md`
+- [x] Chụp, duyệt, sửa phát hiện block, commit ảnh và `review.json`

@@ -1,6 +1,6 @@
 # Pha 7: Kiểm chứng, hiệu chỉnh việc xem ảnh, cập nhật roadmap và trang review
 
-**Tier:** S · **Phụ thuộc:** pha 3, 4, 5, 6 · **Trạng thái:** pending
+**Tier:** S · **Phụ thuộc:** pha 3, 4, 5, 6 · **Trạng thái:** completed
 
 ## Việc
 
@@ -26,9 +26,9 @@ CI có thể đỏ vì nguyên nhân ngoài plan (một phiên khác push lỗi)
 
 ## Todo
 
-- [ ] CI xanh 3 lượt liền
-- [ ] Thử đột biến audit trên máy
-- [ ] Hiệu chỉnh việc agent xem ảnh với 3 lỗi cài sẵn
-- [ ] Chép kết quả cổng deploy
-- [ ] Report `plans/dattqh/reports/test-strategy-261007.md`
-- [ ] Roadmap và trang review
+- [x] CI xanh 3 lượt liền
+- [x] Thử đột biến audit trên máy
+- [x] Hiệu chỉnh việc agent xem ảnh với 3 lỗi cài sẵn
+- [x] Chép kết quả cổng deploy
+- [x] Report `plans/dattqh/reports/test-strategy-261007.md`
+- [x] Roadmap và trang review
