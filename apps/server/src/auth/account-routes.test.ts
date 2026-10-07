@@ -43,8 +43,8 @@ async function playedFamily() {
   return { ...family, parentId: me.parent.id };
 }
 
-/** Tables that hold nothing about a player: a bot's own skills, anonymous numbers per question. */
-const NOT_ABOUT_PLAYERS = new Set(['bot_skills', 'question_stats']);
+/** Tables that hold nothing about a player: a bot's own skills, what a bot learnt of a map, anonymous numbers per question. */
+const NOT_ABOUT_PLAYERS = new Set(['bot_skills', 'bot_world_memories', 'question_stats']);
 
 /** Rows in every table that belong to this parent or its children. */
 async function rowsOf(parentId: string, childIds: string[]): Promise<Record<string, number>> {
