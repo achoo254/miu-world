@@ -162,6 +162,9 @@ for (const viewport of VIEWPORTS) {
       await page.locator('[data-id="hud-interact"]').click();
       await notebookPage(page, 5);
       await expect(page.getByRole('dialog', { name: 'Hoàn thành nhiệm vụ!' })).toBeVisible();
+      // The XP counts up on screen: pictured once it reaches what the server paid.
+      const xp = page.locator('[data-id="reward-xp"]');
+      await expect(xp.locator('span[aria-hidden="true"]')).toHaveText(`+${(await xp.getAttribute('data-value')) ?? ''} XP`);
     });
     await capture(page, '12-event-panel', async () => {
       await page.goto('/home');
@@ -200,6 +203,8 @@ for (const viewport of VIEWPORTS) {
       await gameSettled(page);
       await page.locator('[data-id="hud-pet"]').click();
       await expect(page.locator('[data-id="play-pet-care"]')).toBeVisible();
+      // The board, not its "calling the pet" line.
+      await expect(page.locator('[data-id="pet-care-name"]')).toBeVisible();
     });
     // A second player invites her into a party by the forest's spawn.
     const friend = await newPlayer(browser, base, viewport, 'Bông');
