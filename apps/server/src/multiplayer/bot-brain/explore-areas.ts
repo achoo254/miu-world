@@ -52,27 +52,29 @@ export function pickArea({ map, memory, at, home, random, avoids, walled }: Area
   const jitter = random() * AREA_SIDE;
   const consider = (x: number, z: number): void => {
     const i = x + z * ax;
-    if ((spots[i] ?? 0) < MIN_SPOTS || memory.visited(i) || avoids(i)) return;
+    // Only a square next to one it walked: likely one it can get to.
+    if (!memory.besideVisited(i) || (spots[i] ?? 0) < MIN_SPOTS || memory.visited(i) || avoids(i)) return;
+    const cx = (x + 0.5) * AREA_SIDE;
+    const cz = (z + 0.5) * AREA_SIDE;
+    const away = Math.hypot(cx - at.x, cz - at.z) / 2 + Math.hypot(cx - home.x, cz - home.z);
+    // Not on the list even with every square around it unwalked (the jitter only adds): no need to count them.
+    if (top.length >= CANDIDATES && away - 4 * 8 >= (top.at(-1)?.score ?? Infinity)) return;
     let fresh = 0;
-    let walked = 0;
     for (let dz = -1; dz <= 1; dz++) {
       for (let dx = -1; dx <= 1; dx++) {
         const nx = x + dx;
         const nz = z + dz;
         if (!(dx || dz) || nx < 0 || nz < 0 || nx >= ax || nz >= az) continue;
-        if (memory.visited(nx + nz * ax)) walked += 1;
-        else fresh += 1;
+        if (!memory.visited(nx + nz * ax)) fresh += 1;
       }
     }
-    if (walked === 0) return;
-    const cx = (x + 0.5) * AREA_SIDE;
-    const cz = (z + 0.5) * AREA_SIDE;
-    const score = Math.hypot(cx - at.x, cz - at.z) / 2 + Math.hypot(cx - home.x, cz - home.z) - 4 * fresh + (jitter * ((i * 2_654_435_761) % 7)) / 7;
-    if (top.length < CANDIDATES || score < (top.at(-1)?.score ?? Infinity)) {
-      top.push({ area: i, score });
-      top.sort((p, q) => p.score - q.score);
-      if (top.length > CANDIDATES) top.pop();
-    }
+    const score = away - 4 * fresh + (jitter * ((i * 2_654_435_761) % 7)) / 7;
+    if (top.length >= CANDIDATES && score >= (top.at(-1)?.score ?? Infinity)) return;
+    // Into its place among the best (after those that score the same: the earlier one first).
+    let slot = top.length;
+    while (slot > 0 && (top[slot - 1]?.score ?? -Infinity) > score) slot -= 1;
+    top.splice(slot, 0, { area: i, score });
+    if (top.length > CANDIDATES) top.pop();
   };
   const boxes = [
     [Math.floor(at.x / AREA_SIDE), Math.floor(at.z / AREA_SIDE)],

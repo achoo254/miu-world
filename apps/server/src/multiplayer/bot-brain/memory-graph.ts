@@ -170,6 +170,8 @@ export class MemoryGraph {
   /** Ways leaving each place. */
   private readonly out = new Map<string, LinkMemory[]>();
   private readonly areaBits: Uint8Array;
+  /** One bit per square: whether one of the eight squares around it was walked (kept in step with `areaBits`). */
+  private readonly besideBits: Uint8Array;
   readonly areaSide: readonly [number, number];
   private pointCount = 0;
   areasVisited = 0;
@@ -182,6 +184,7 @@ export class MemoryGraph {
   constructor(mapSize: { sx: number; sz: number }, keep: (id: string) => boolean = () => false) {
     this.areaSide = [Math.ceil(mapSize.sx / AREA_SIDE), Math.ceil(mapSize.sz / AREA_SIDE)];
     this.areaBits = new Uint8Array(Math.ceil((this.areaSide[0] * this.areaSide[1]) / 8));
+    this.besideBits = new Uint8Array(this.areaBits.length);
     this.keep = keep;
   }
 
@@ -207,7 +210,28 @@ export class MemoryGraph {
     if (area < 0 || this.visited(area)) return false;
     this.areaBits[area >> 3] = (this.areaBits[area >> 3] ?? 0) | (1 << (area & 7));
     this.areasVisited += 1;
+    this.markBeside(area);
     return true;
+  }
+
+  /** Whether one of the eight squares around `area` was walked (so it is likely one it can get to). */
+  besideVisited(area: number): boolean {
+    return area >= 0 && ((this.besideBits[area >> 3] ?? 0) & (1 << (area & 7))) !== 0;
+  }
+
+  private markBeside(area: number): void {
+    const [ax, az] = this.areaSide;
+    const x = area % ax;
+    const z = Math.floor(area / ax);
+    for (let dz = -1; dz <= 1; dz++) {
+      for (let dx = -1; dx <= 1; dx++) {
+        const nx = x + dx;
+        const nz = z + dz;
+        if (!(dx || dz) || nx < 0 || nz < 0 || nx >= ax || nz >= az) continue;
+        const near = nx + nz * ax;
+        this.besideBits[near >> 3] = (this.besideBits[near >> 3] ?? 0) | (1 << (near & 7));
+      }
+    }
   }
 
   /**
@@ -457,6 +481,9 @@ export class MemoryGraph {
     if (saved.areas.length === this.areaBits.length) this.areaBits.set(saved.areas);
     this.areasVisited = 0;
     for (const byte of this.areaBits) for (let b = byte; b > 0; b &= b - 1) this.areasVisited += 1;
+    this.besideBits.fill(0);
+    const areas = this.areaSide[0] * this.areaSide[1];
+    for (let area = 0; area < areas; area++) if (this.visited(area)) this.markBeside(area);
     this.shortcuts = saved.shortcuts;
     this.seenWays = saved.seenWays;
   }

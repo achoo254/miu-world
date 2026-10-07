@@ -9,10 +9,16 @@
 // many bots planning at once never stall the tick: a bot whose plan waits keeps walking its last one, or stands.
 import { canStep } from '@miu/voxel/traversal';
 import { WALK_GROUND, WALK_LEVELS } from '@miu/voxel/walk-cells';
-import { clearOf, edgeOf, feetOf, groundOf, type PackedSpot, type Spot, type WalkMap } from './walk-store';
+import { clearOf, edgeOf, feetOf, groundOf, type Spot, type WalkMap } from './walk-store';
 
 /** What a step onto each kind of ground costs (the client's auto-walk counts the same). */
 const STEP_COST: Readonly<Record<number, number>> = { [WALK_GROUND.road]: 1, [WALK_GROUND.plain]: 3.5, [WALK_GROUND.water]: 150 };
+/** STEP_COST by ground code (2 bits), for the search: ground of no known kind costs as plain… */
+const SEARCH_COST = [0, 1, 2, 3].map((ground) => STEP_COST[ground] ?? STEP_COST[WALK_GROUND.plain] ?? 1);
+/** …and for merging straight runs: ground of no known kind is never walked straight over. */
+const RUN_COST = [0, 1, 2, 3].map((ground) => STEP_COST[ground] ?? Infinity);
+/** Nothing in the way (the plan's default). */
+const NOTHING_BLOCKED = (): boolean => false;
 const EDGE_COST = 0.6;
 const CLIMB_COST = 0.6;
 const DROP_COST = 0.2;
@@ -32,6 +38,9 @@ const SIDES = [
   [0, 1],
   [0, -1],
 ] as const;
+/** SIDES as two lists, for the search's inner loop. */
+const SIDE_X = SIDES.map(([dx]) => dx);
+const SIDE_Z = SIDES.map(([, dz]) => dz);
 
 export interface PathGoal {
   readonly x: number;
@@ -59,25 +68,27 @@ export interface LocalPlan {
   readonly expansions: number;
 }
 
-/** A tiny binary heap of node ids by priority. */
+/** Entries the open list ever holds in one plan: one per step considered (each expansion considers at most 4 × levels). */
+const OPEN_MAX = MAX_EXPANSIONS * SIDES.length * WALK_LEVELS + 1;
+
+/** A tiny binary heap of node ids by priority, in memory kept from plan to plan. */
 class OpenList {
-  private ids: number[] = [];
-  private keys: number[] = [];
+  private readonly ids = new Int32Array(OPEN_MAX);
+  private readonly keys = new Float64Array(OPEN_MAX);
+  private n = 0;
 
   get size(): number {
-    return this.ids.length;
+    return this.n;
   }
 
   clear(): void {
-    this.ids.length = 0;
-    this.keys.length = 0;
+    this.n = 0;
   }
 
   push(id: number, key: number): void {
     const { ids, keys } = this;
-    let i = ids.length;
-    ids.push(id);
-    keys.push(key);
+    let i = this.n;
+    this.n += 1;
     while (i > 0) {
       const up = (i - 1) >> 1;
       if ((keys[up] ?? 0) <= key) break;
@@ -91,11 +102,13 @@ class OpenList {
 
   pop(): number {
     const { ids, keys } = this;
+    if (this.n === 0) return -1;
     const top = ids[0] ?? -1;
-    const lastId = ids.pop() ?? 0;
-    const lastKey = keys.pop() ?? 0;
-    const n = ids.length;
+    this.n -= 1;
+    const n = this.n;
     if (n === 0) return top;
+    const lastId = ids[n] ?? 0;
+    const lastKey = keys[n] ?? 0;
     let i = 0;
     for (;;) {
       const l = 2 * i + 1;
@@ -114,7 +127,8 @@ class OpenList {
 }
 
 const SIDE = 2 * MAX_SIGHT + 1;
-const NODES = SIDE * SIDE * WALK_LEVELS;
+const COLUMNS = SIDE * SIDE;
+const NODES = COLUMNS * WALK_LEVELS;
 
 /**
  * Plans with reused scratch memory (one per server: plans run one at a time in the queue). Node ids are
@@ -125,6 +139,9 @@ export class LocalPlanner {
   private readonly parent = new Int32Array(NODES);
   private readonly seen = new Uint32Array(NODES);
   private readonly done = new Uint32Array(NODES);
+  /** Each column's straight distance to the goal, worked out once a plan (`awaySeen` stamps it). */
+  private readonly away = new Float64Array(COLUMNS);
+  private readonly awaySeen = new Uint32Array(COLUMNS);
   private readonly open = new OpenList();
   private stamp = 0;
 
@@ -132,7 +149,7 @@ export class LocalPlanner {
    * The way from `from` (a standing spot) towards `goal` within `sight` of it, avoiding columns `blocked` says no
    * to; null when it stands nowhere, or nothing in the window gets it any nearer.
    */
-  plan(map: WalkMap, from: Spot, goal: PathGoal, sight: number, blocked: (x: number, z: number) => boolean = () => false): LocalPlan | null {
+  plan(map: WalkMap, from: Spot, goal: PathGoal, sight: number, blocked: (x: number, z: number) => boolean = NOTHING_BLOCKED): LocalPlan | null {
     const startLevel = map.levelAt(from.x, from.y, from.z);
     if (startLevel < 0) return null;
     const r = Math.max(1, Math.min(MAX_SIGHT, Math.floor(sight)));
@@ -144,96 +161,114 @@ export class LocalPlanner {
     if (this.stamp === 0xffffffff) {
       this.seen.fill(0);
       this.done.fill(0);
+      this.awaySeen.fill(0);
       this.stamp = 1;
     }
     const stamp = this.stamp;
     const { g, parent, seen, done, open } = this;
     open.clear();
-
-    const columnOf = (id: number): number => Math.floor(id / WALK_LEVELS);
-    const xOf = (id: number): number => x0 + (columnOf(id) % side);
-    const zOf = (id: number): number => z0 + Math.floor(columnOf(id) / side);
-    const spotOf = (id: number): PackedSpot => map.spot(xOf(id), zOf(id), id % WALK_LEVELS);
-    const away = (id: number): number => Math.hypot(xOf(id) + 0.5 - goal.x, zOf(id) + 0.5 - goal.z);
-    const estimate = goalInside ? (id: number): number => Math.max(0, away(id) - goal.reach) : away;
-    const isGoal = goalInside
-      ? (id: number): boolean => away(id) <= goal.reach && (goal.y === null || Math.abs(feetOf(spotOf(id)) - goal.y) <= GOAL_HEIGHT)
-      : (id: number): boolean => Math.max(Math.abs(xOf(id) - from.x), Math.abs(zOf(id) - from.z)) === r;
+    const { reach } = goal;
+    const goalY = goal.y;
 
     const first = (r + r * side) * WALK_LEVELS + startLevel;
     g[first] = 0;
     parent[first] = -1;
     seen[first] = stamp;
-    open.push(first, estimate(first));
+    const firstLeft = this.left(r + r * side, x0, z0, side, goal, goalInside);
+    open.push(first, firstLeft);
     let end = -1;
     let nearest = first;
-    let nearestLeft = estimate(first);
+    let nearestLeft = firstLeft;
     let expansions = 0;
     while (open.size > 0 && expansions < MAX_EXPANSIONS) {
       const id = open.pop();
       if (done[id] === stamp) continue;
       done[id] = stamp;
       expansions++;
-      if (isGoal(id)) {
+      const column = Math.floor(id / WALK_LEVELS);
+      const lx = column % side;
+      const lz = Math.floor(column / side);
+      const here = map.spot(x0 + lx, z0 + lz, id % WALK_LEVELS);
+      const isGoal = goalInside
+        ? this.awayOf(column, x0, z0, side, goal) <= reach && (goalY === null || Math.abs(feetOf(here) - goalY) <= GOAL_HEIGHT)
+        : Math.max(Math.abs(x0 + lx - from.x), Math.abs(z0 + lz - from.z)) === r;
+      if (isGoal) {
         end = id;
         break;
       }
-      const left = estimate(id);
+      const left = this.left(column, x0, z0, side, goal, goalInside);
       if (left < nearestLeft) {
         nearest = id;
         nearestLeft = left;
       }
-      const here = spotOf(id);
       const feet = feetOf(here);
       const room = clearOf(here);
-      const column = columnOf(id);
-      const lx = column % side;
-      const lz = Math.floor(column / side);
-      for (const [dx, dz] of SIDES) {
-        const nx = lx + dx;
-        const nz = lz + dz;
+      const gHere = g[id] ?? 0;
+      for (let k = 0; k < SIDES.length; k++) {
+        const nx = lx + (SIDE_X[k] ?? 0);
+        const nz = lz + (SIDE_Z[k] ?? 0);
         if (nx < 0 || nz < 0 || nx >= side || nz >= side || blocked(x0 + nx, z0 + nz)) continue;
+        const nextColumn = nx + nz * side;
         for (let level = 0; level < WALK_LEVELS; level++) {
           const there = map.spot(x0 + nx, z0 + nz, level);
           if (there === 0) break;
-          const next = (nx + nz * side) * WALK_LEVELS + level;
+          const next = nextColumn * WALK_LEVELS + level;
           if (done[next] === stamp) continue;
           const nextFeet = feetOf(there);
           if (!canStep(feet, room, nextFeet, clearOf(there))) continue;
           const rise = nextFeet - feet;
-          const cost =
-            (g[id] ?? 0) +
-            (STEP_COST[groundOf(there)] ?? STEP_COST[WALK_GROUND.plain] ?? 1) +
-            (edgeOf(there) ? EDGE_COST : 0) +
-            (rise > 0 ? rise * CLIMB_COST : -rise * DROP_COST);
+          const cost = gHere + (SEARCH_COST[groundOf(there)] ?? 1) + (edgeOf(there) ? EDGE_COST : 0) + (rise > 0 ? rise * CLIMB_COST : -rise * DROP_COST);
           if (seen[next] === stamp && cost >= (g[next] ?? Infinity)) continue;
           seen[next] = stamp;
           g[next] = cost;
           parent[next] = id;
-          open.push(next, cost + estimate(next));
+          open.push(next, cost + this.left(nextColumn, x0, z0, side, goal, goalInside));
         }
       }
     }
     const reachesGoal = end >= 0 && goalInside;
     // No goal spot (or edge spot) found: as near as it got, if that is a block nearer than where it stands.
     if (end < 0) {
-      if (nearest === first || nearestLeft > estimate(first) - 1) return null;
+      if (nearest === first || nearestLeft > firstLeft - 1) return null;
       end = nearest;
     }
     const cells: Spot[] = [];
-    for (let id = end; id !== first && id >= 0; id = parent[id] ?? -1) cells.push({ x: xOf(id), y: feetOf(spotOf(id)), z: zOf(id) });
+    for (let id = end; id !== first && id >= 0; id = parent[id] ?? -1) {
+      const column = Math.floor(id / WALK_LEVELS);
+      const x = x0 + (column % side);
+      const z = z0 + Math.floor(column / side);
+      cells.push({ x, y: feetOf(map.spot(x, z, id % WALK_LEVELS)), z });
+    }
     cells.reverse();
     return { points: mergeRuns(map, from, cells, blocked), cells, reachesGoal, expansions };
   }
+
+  /** Column `column` of the window's straight distance to the goal (worked out once a plan). */
+  private awayOf(column: number, x0: number, z0: number, side: number, goal: PathGoal): number {
+    if (this.awaySeen[column] === this.stamp) return this.away[column] ?? 0;
+    const d = Math.hypot(x0 + (column % side) + 0.5 - goal.x, z0 + Math.floor(column / side) + 0.5 - goal.z);
+    this.awaySeen[column] = this.stamp;
+    this.away[column] = d;
+    return d;
+  }
+
+  /** The search's estimate of what is left from column `column`: to within the goal's reach, or to the goal beyond the window. */
+  private left(column: number, x0: number, z0: number, side: number, goal: PathGoal, goalInside: boolean): number {
+    const away = this.awayOf(column, x0, z0, side, goal);
+    return goalInside ? Math.max(0, away - goal.reach) : away;
+  }
 }
 
-/** The columns a straight line from (ax, az) to (bx, bz) crosses, both sides of a corner it passes through included. */
-export function lineColumns(ax: number, az: number, bx: number, bz: number): Array<[number, number]> {
+/**
+ * Each column a straight line from (ax, az) to (bx, bz) crosses, in order, both sides of a corner it passes through
+ * included, handed to `visit` until it says false (then false).
+ */
+function eachLineColumn(ax: number, az: number, bx: number, bz: number, visit: (x: number, z: number) => boolean): boolean {
   let x = Math.floor(ax);
   let z = Math.floor(az);
   const ex = Math.floor(bx);
   const ez = Math.floor(bz);
-  const out: Array<[number, number]> = [[x, z]];
+  if (!visit(x, z)) return false;
   const dx = bx - ax;
   const dz = bz - az;
   const stepX = Math.sign(dx);
@@ -245,7 +280,7 @@ export function lineColumns(ax: number, az: number, bx: number, bz: number): Arr
   for (let guard = 0; (x !== ex || z !== ez) && guard < 4_096; guard++) {
     if (Math.abs(tMaxX - tMaxZ) < 1e-9) {
       // Through a corner: the body brushes both columns beside it.
-      out.push([x + stepX, z], [x, z + stepZ]);
+      if (!visit(x + stepX, z) || !visit(x, z + stepZ)) return false;
       x += stepX;
       z += stepZ;
       tMaxX += tDeltaX;
@@ -257,8 +292,18 @@ export function lineColumns(ax: number, az: number, bx: number, bz: number): Arr
       z += stepZ;
       tMaxZ += tDeltaZ;
     }
-    out.push([x, z]);
+    if (!visit(x, z)) return false;
   }
+  return true;
+}
+
+/** The columns a straight line from (ax, az) to (bx, bz) crosses, both sides of a corner it passes through included. */
+export function lineColumns(ax: number, az: number, bx: number, bz: number): Array<[number, number]> {
+  const out: Array<[number, number]> = [];
+  eachLineColumn(ax, az, bx, bz, (x, z) => {
+    out.push([x, z]);
+    return true;
+  });
   return out;
 }
 
@@ -270,17 +315,36 @@ function straightRun(map: WalkMap, a: Spot, b: Spot, worst: number, blocked: (x:
   const bz = b.z + 0.5;
   const fits = (x: number, z: number): boolean => {
     const spot = map.standAt(x, a.y, z);
-    return spot !== 0 && clearOf(spot) >= 2 && (STEP_COST[groundOf(spot)] ?? Infinity) <= worst && !blocked(x, z);
+    return spot !== 0 && clearOf(spot) >= 2 && (RUN_COST[groundOf(spot)] ?? Infinity) <= worst && !blocked(x, z);
   };
-  for (const [x, z] of lineColumns(ax, az, bx, bz)) if (!fits(x, z)) return false;
+  if (!eachLineColumn(ax, az, bx, bz, fits)) return false;
   const length = Math.hypot(bx - ax, bz - az);
   const sideX = -(bz - az) / length;
   const sideZ = (bx - ax) / length;
   const samples = Math.max(1, Math.ceil(length / 0.25));
+  // Samples a quarter block apart mostly fall in the column the one before fell in on the same side: each column is
+  // looked at once per run of samples in it.
+  let leftX = NaN;
+  let leftZ = NaN;
+  let rightX = NaN;
+  let rightZ = NaN;
   for (let s = 0; s <= samples; s++) {
     const t = s / samples;
-    for (const side of [-BODY_SIDE, BODY_SIDE]) {
-      if (!fits(Math.floor(ax + (bx - ax) * t + sideX * side), Math.floor(az + (bz - az) * t + sideZ * side))) return false;
+    const x = ax + (bx - ax) * t;
+    const z = az + (bz - az) * t;
+    const lx = Math.floor(x + sideX * -BODY_SIDE);
+    const lz = Math.floor(z + sideZ * -BODY_SIDE);
+    if (lx !== leftX || lz !== leftZ) {
+      if (!fits(lx, lz)) return false;
+      leftX = lx;
+      leftZ = lz;
+    }
+    const rx = Math.floor(x + sideX * BODY_SIDE);
+    const rz = Math.floor(z + sideZ * BODY_SIDE);
+    if (rx !== rightX || rz !== rightZ) {
+      if (!fits(rx, rz)) return false;
+      rightX = rx;
+      rightZ = rz;
     }
   }
   return true;
@@ -292,14 +356,25 @@ function mergeRuns(map: WalkMap, from: Spot, cells: readonly Spot[], blocked: (x
   const centre = (c: Spot): PathPoint => ({ x: c.x + 0.5, y: c.y, z: c.z + 0.5 });
   let at = from;
   let i = 0;
+  // The worst ground up to each cell looked ahead at (its own step cost being the run's limit).
+  const worstUpTo: number[] = [];
   while (i < cells.length) {
     let b = i;
     let worst = STEP_COST[groundOf(map.standAt(at.x, at.y, at.z))] ?? 1;
+    worstUpTo.length = 0;
     for (let k = i; k < Math.min(cells.length, i + MERGE_LOOKAHEAD); k++) {
       const cell = cells[k];
       if (!cell || cell.y !== at.y) break;
       worst = Math.max(worst, STEP_COST[groundOf(map.standAt(cell.x, cell.y, cell.z))] ?? 1);
-      if (k > i && straightRun(map, at, cell, worst, blocked)) b = k;
+      worstUpTo.push(worst);
+    }
+    // The furthest cell it walks straight to (looked for from the furthest back: the first that holds is the one).
+    for (let k = i + worstUpTo.length - 1; k > i; k--) {
+      const cell = cells[k];
+      if (cell && straightRun(map, at, cell, worstUpTo[k - i] ?? 1, blocked)) {
+        b = k;
+        break;
+      }
     }
     const end = cells[b];
     if (!end) break;

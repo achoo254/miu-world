@@ -26,8 +26,25 @@ export interface SeenRoom {
 
 /** The map's places within `sight` of `at`, nearest first. */
 export function seePlaces(map: WalkMap, at: Here, sight: number): WalkPlace[] {
-  const away = (p: WalkPlace): number => Math.hypot(p.at[0] - at.x, p.at[2] - at.z);
-  return map.placesNear(at.x, at.z, sight).sort((a, b) => away(a) - away(b));
+  const places = map.placesNear(at.x, at.z, sight);
+  const away = places.map((p) => Math.hypot(p.at[0] - at.x, p.at[2] - at.z));
+  // A handful at a time: sorted in place by insertion, each distance worked out once (of two as far, the first first).
+  for (let i = 1; i < places.length; i++) {
+    const place = places[i];
+    const d = away[i] ?? 0;
+    if (!place) continue;
+    let j = i;
+    for (; j > 0; j--) {
+      const before = places[j - 1];
+      const beforeAway = away[j - 1] ?? 0;
+      if (!before || beforeAway <= d) break;
+      places[j] = before;
+      away[j] = beforeAway;
+    }
+    places[j] = place;
+    away[j] = d;
+  }
+  return places;
 }
 
 /** The players in its room within `sight` of `at` who see bot `self`, nearest first. */

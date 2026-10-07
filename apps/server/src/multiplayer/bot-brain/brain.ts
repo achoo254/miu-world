@@ -707,11 +707,15 @@ export class Brain implements GoalChooser {
     // Places it knows: by the ways it knows from the places around it, or a guess.
     const speed = persona.walk;
     const starts: Array<{ id: string; cost: number }> = [];
+    // The known place it stands at, looked up once (undefined: not yet).
+    let standsAt: string | null | undefined;
     for (const place of seePlaces(map, at, persona.sight)) {
       if (!this.memory.places.has(place.id)) continue;
       // A way it knows starts at a place it can walk straight to from here (one it sees may be past a fence).
       const spot = map.snap({ x: place.at[0], y: place.at[1], z: place.at[2] }, PLACE_REACH);
-      if (spot && (place.id === this.placeAt(at) || walksStraight(map, at, spot))) starts.push({ id: place.id, cost: Math.hypot(place.at[0] - at.x, place.at[2] - at.z) / speed });
+      if (!spot) continue;
+      if (standsAt === undefined) standsAt = this.placeAt(at);
+      if (place.id === standsAt || walksStraight(map, at, spot)) starts.push({ id: place.id, cost: Math.hypot(place.at[0] - at.x, place.at[2] - at.z) / speed });
     }
     const reached = this.options.ways === false ? new Map<string, Reach>() : this.memory.reach(starts);
     const { home } = this.options;

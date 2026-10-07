@@ -181,7 +181,8 @@ export class Stepper {
     const current = this.legs[0];
     const from = this.origin();
     this.plannedFrom = from;
-    const found = planner.plan(this.map, from, goal, this.sight, this.blocked);
+    // No column banned: nothing to look up at every step of the search.
+    const found = planner.plan(this.map, from, goal, this.sight, this.banned.size > 0 ? this.blocked : undefined);
     this.legs = current ? [current, ...(found?.points ?? [])] : [...(found?.points ?? [])];
     this.planReaches = found?.reachesGoal ?? false;
     const end = found?.cells.at(-1) ?? from;

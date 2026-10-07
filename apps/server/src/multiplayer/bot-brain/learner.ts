@@ -91,7 +91,16 @@ export const meetReward = (times: number): number => REWARD.meet / (1 + Math.max
  */
 export function softmaxPick(utilities: readonly number[], tau: number, random: () => number): number {
   if (utilities.length === 0) return -1;
-  const order = utilities.map((_, i) => i).sort((a, b) => (utilities[b] ?? 0) - (utilities[a] ?? 0)).slice(0, SHORTLIST);
+  // The SHORTLIST best, best first (of two alike, the one offered first): picked out in one pass, not a whole sort.
+  const order: number[] = [];
+  for (let i = 0; i < utilities.length; i++) {
+    const u = utilities[i] ?? 0;
+    if (order.length === SHORTLIST && !(u > (utilities[order[SHORTLIST - 1] ?? 0] ?? 0))) continue;
+    let slot = order.length;
+    while (slot > 0 && u > (utilities[order[slot - 1] ?? 0] ?? 0)) slot -= 1;
+    order.splice(slot, 0, i);
+    if (order.length > SHORTLIST) order.pop();
+  }
   const top = utilities[order[0] ?? 0] ?? 0;
   const weights = order.map((i) => Math.exp(((utilities[i] ?? 0) - top) / tau));
   const total = weights.reduce((a, b) => a + b, 0);
