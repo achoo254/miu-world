@@ -80,6 +80,8 @@ const ASSET_TOOL_FILES = [
   'blocks.json', 'characters.json', 'palette.json', 'species.json', 'character-bases.json', 'outfit-rules.json', 'character-parts/', 'outfits/', 'faces/', 'animations/',
   // Box props of one map (build-box-props.ts) and the views of the owner's detail mocks (render-preview.ts).
   'world/box-props/', 'world/mock-views/',
+  // The companion bots' ways of each map (tools/world/bot-routes.ts writes them; its test parses each against the map).
+  'world/bot-routes/',
 ];
 /** Content only the web app reads; validated here. */
 const REGIONS_FILE = 'world/regions.json';

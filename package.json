@@ -46,7 +46,8 @@
     "world:dao-bi-an": "tsx tools/world/generate-dao-bi-an-map.ts",
     "world:nha-cua-be": "tsx tools/world/generate-nha-cua-be-map.ts",
     "world:overview": "tsx tools/world/generate-world-overview.ts",
-    "world:interactions": "tsx tools/world/interaction-coverage.ts"
+    "world:interactions": "tsx tools/world/interaction-coverage.ts",
+    "world:bot-routes": "tsx tools/world/bot-routes.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

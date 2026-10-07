@@ -16,7 +16,19 @@ import { everyDecorProp } from '../../packages/voxel/src/home-decor';
 import { withEventLayers } from '../../packages/voxel/src/event-layer';
 import { eventLayersOf } from './event-layers';
 
-export async function auditReach(map: string): Promise<{ stranded: string[]; covered: string[] }> {
+/** A generated map as the audits walk it: its blocks, its solid props, and the two over one another. */
+export interface MapGrid {
+  /** entities.json with the scenes of its limited-time events on it. */
+  entities: WorldEntities;
+  world: VoxelWorld;
+  /** Cells (`cellKey`) the solid props fill, with their traversal (every style of the home's pieces at once). */
+  cells: Map<string, 'auto-step' | 'blocking'>;
+  /** The blocks with the props over them: -1 for a prop to step onto, -2 for one never stood on. */
+  grid: { size: readonly [number, number, number]; get(x: number, y: number, z: number): number };
+}
+
+/** Reads a map's committed regions and entities, with its events' scenes and its solid props over the blocks. */
+export async function loadMapGrid(map: string): Promise<MapGrid> {
   const dir = path.join(ASSETS_DIR, 'generated/world', map);
   // With the scenes of its limited-time events on it, as the game draws it while one is open.
   const e = withEventLayers(JSON.parse(await readFile(path.join(dir, 'entities.json'), 'utf8')) as WorldEntities, await eventLayersOf(map));
@@ -27,7 +39,6 @@ export async function auditReach(map: string): Promise<{ stranded: string[]; cov
   }
   // The child's home with every style she may pick standing at once: no pick may wall a target off.
   const cells = await propCells(everyDecorProp(e));
-  const [solid, blocking] = [await walkSolid(), await walkBlocking()];
   const grid = {
     size: world.size,
     get: (x: number, y: number, z: number): number => {
@@ -35,6 +46,12 @@ export async function auditReach(map: string): Promise<{ stranded: string[]; cov
       return p === 'blocking' ? -2 : p ? -1 : world.get(x, y, z);
     },
   };
+  return { entities: e, world, cells, grid };
+}
+
+export async function auditReach(map: string): Promise<{ stranded: string[]; covered: string[] }> {
+  const { entities: e, cells, grid } = await loadMapGrid(map);
+  const [solid, blocking] = [await walkSolid(), await walkBlocking()];
   const spots = reachable(grid, e.spawn.position, (id) => id < 0 || solid(id), undefined, (id) => id === -2 || blocking(id));
   const columns = new Set([...spots].map((k) => {
     const [x, , z] = k.split(',');
