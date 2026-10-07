@@ -114,6 +114,8 @@ export type GameCommand =
   /** The pet beside the character in the creator preview (`content/pets.json`), or none. */
   | { type: 'set-pet'; pet: string | null }
   | { type: 'set-world-state'; state: WorldState }
+  /** The limited-time events open now (the server's word): the others' characters and decorations leave the map. */
+  | { type: 'set-event-open'; open: readonly string[] }
   /** Target the quest tracker points at (direction arrow), or none. */
   | { type: 'set-target-hint'; targetId: string | null }
   /** Put Miu back where she last stood safely (the "Quay lại" button, the pause menu). */

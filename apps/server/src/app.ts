@@ -36,6 +36,7 @@ import { worksheetRoutes } from './worksheet/worksheet-routes';
 import { petCareRoutes } from './pet-care/pet-care-routes';
 import { cookingRoutes } from './cooking/cooking-routes';
 import { olympiadRoutes } from './olympiad/olympiad-routes';
+import { eventRoutes } from './event/event-routes';
 import { mailRoutes } from './mail/mail-routes';
 import { npcRoutes } from './npc/npc-routes';
 import { achievementRoutes } from './progression/achievement-routes';
@@ -129,6 +130,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(petCareRoutes({ db, content, clock, events: characterEvents }));
   api.use(cookingRoutes({ db, content, clock }));
   api.use(olympiadRoutes({ db, content, clock }));
+  api.use(eventRoutes({ db, content, clock }));
   api.use(mailRoutes({ db, content, clock }));
   api.use(npcRoutes({ db, content, clock }));
   api.use(skillTreeRoutes({ db, content }));

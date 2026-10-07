@@ -25,7 +25,9 @@ import { loadRegionRewards, questsByRegion } from '../../apps/server/src/region-
 import { loadShopCatalog } from '../../apps/server/src/shop/shop-catalog';
 import { ACCESSORY_SLOTS, MIN_OPEN_ITEMS, openItemsInSlot, type AccessoryItem } from '../../packages/voxel/src/accessory-schema';
 import { modelCatalogSchema } from '../../packages/voxel/src/model-catalog';
-import { entitiesForChapter, worldEntitiesSchema } from '../../packages/voxel/src/world-entities';
+import { entitiesForChapter, worldEntitiesSchema, type Interactable } from '../../packages/voxel/src/world-entities';
+import { eventInteractable } from '../../packages/voxel/src/event-layer';
+import type { LiveEvent } from '../../packages/schema/src/live-event';
 import { ASSETS_DIR } from '../assets/asset-lib';
 import { CURRICULUM_FOLDERS, checkCurriculum } from './check-curriculum';
 import { percentCovered, sumGaps } from './content-gaps';
@@ -64,8 +66,10 @@ const CATALOGUE_FILES = [
   'region-rewards.json',
   // Recipes for home cooking at nha-cua-be.
   'recipes.json',
-  // Olympic Math Challenge (Phase 0).
+  // Olympic Math practice: topics, practice questions, the mock exam (apps/server/src/olympiad).
   'olympiad/',
+  // Limited-time events: windows, quests, limited rewards, the scene on their map (apps/server/src/event).
+  'events/',
   // Mail templates (apps/server/src/mail).
   'mail/',
   // Each map's characters, their everyday lines, relations and stories (apps/server/src/npc).
@@ -100,6 +104,7 @@ export function checkQuestTargets(
   quests: Iterable<QuestDefinition>,
   worldDir: string = path.join(ASSETS_DIR, 'generated/world'),
   regions: RegionCatalog = RegionCatalog.parse(JSON.parse(readFileSync(path.join(CONTENT_DIR, REGIONS_FILE), 'utf8'))),
+  events: ReadonlyMap<string, LiveEvent> = new Map(),
 ): { issues: string[]; notes: string[] } {
   const issues: string[] = [];
   const notes: string[] = [];
@@ -124,8 +129,13 @@ export function checkQuestTargets(
       issues.push(`map ${mapId}: entities.json is not a valid version 2 world entities file`);
       continue;
     }
-    const everywhere = new Set(parsed.data.interactables.map((t) => t.id));
-    const onMap = new Map(entitiesForChapter(parsed.data, quest.chapter, quest.id).interactables.map((t) => [t.id, t]));
+    // An event quest also meets the characters its event puts on the map while it is on (a runtime layer).
+    const eventLayer = quest.category === 'event' ? (events.get(quest.id)?.scene.characters ?? []).filter((c) => !c.quest || c.quest === quest.id) : [];
+    const everywhere = new Set([...parsed.data.interactables.map((t) => t.id), ...eventLayer.map((c) => c.id)]);
+    const onMap = new Map<string, Interactable>([
+      ...entitiesForChapter(parsed.data, quest.chapter, quest.id).interactables.map((t) => [t.id, t] as const),
+      ...eventLayer.map((c) => [c.id, eventInteractable(c)] as const),
+    ]);
     // One character in one place at a time: entries that share a name must be one character (`character`).
     const castOf = new Map<string, string>();
     for (const t of onMap.values()) {
@@ -142,7 +152,7 @@ export function checkQuestTargets(
       }
       // A side quest's giver offers its game, a storyteller its next chapter, a co-op host its team's lobby, a zone
       // guardian its fight, whatever lesson is played: it is in the world in every chapter.
-      const opens = quest.category === 'side' || quest.category === 'story' || quest.category === 'coop' || quest.category === 'guardian';
+      const opens = quest.category === 'side' || quest.category === 'story' || quest.category === 'coop' || quest.category === 'guardian' || quest.category === 'event';
       const giver = opens && step === quest.steps[0] && step.kind === 'dialogue' ? onMap.get(step.target ?? '') : undefined;
       if (giver && (giver.chapter !== undefined || giver.chapters !== undefined || giver.quest !== undefined)) {
         issues.push(`quest ${quest.id}: its giver ${giver.id} is only on map ${mapId} in some chapters or quests; the character a side quest or a story opens at is always in the world`);
@@ -155,6 +165,37 @@ export function checkQuestTargets(
     }
   }
   return { issues, notes };
+}
+
+/**
+ * Each event's scene on its map: its characters' ids are not the map's own (the prompt tells them apart), and every
+ * character and decoration stands inside the map's core.
+ */
+export function checkEventScenes(
+  events: Iterable<LiveEvent>,
+  worldDir: string = path.join(ASSETS_DIR, 'generated/world'),
+  regions: RegionCatalog = RegionCatalog.parse(JSON.parse(readFileSync(path.join(CONTENT_DIR, REGIONS_FILE), 'utf8'))),
+): string[] {
+  const issues: string[] = [];
+  for (const event of events) {
+    const mapId = mapForRegion(regions, event.region);
+    const file = path.join(worldDir, mapId, 'entities.json');
+    if (!existsSync(file)) {
+      issues.push(`event ${event.id}: region ${event.region} has no generated map for its scene`);
+      continue;
+    }
+    const parsed = worldEntitiesSchema.safeParse(JSON.parse(readFileSync(file, 'utf8')));
+    if (!parsed.success) continue; // reported by the quest target check
+    const ids = new Set([...parsed.data.interactables.map((t) => t.id), ...(parsed.data.ambients ?? []).map((a) => a.id)]);
+    const [sx, , sz] = parsed.data.size;
+    const inside = (p: readonly number[]): boolean => (p[0] ?? -1) >= 0 && (p[2] ?? -1) >= 0 && (p[0] ?? sx) < sx && (p[2] ?? sz) < sz;
+    for (const c of event.scene.characters) {
+      if (ids.has(c.id)) issues.push(`event ${event.id}: scene character ${c.id} has the id of a target of map ${mapId}`);
+      if (!inside(c.position)) issues.push(`event ${event.id}: scene character ${c.id} stands outside map ${mapId}`);
+    }
+    for (const d of event.scene.decorations) if (!inside(d.position)) issues.push(`event ${event.id}: a decoration (${d.model}) stands outside map ${mapId}`);
+  }
+  return issues;
 }
 
 /** Every string in a quest (titles, lines, prompts, support) must address the player as `{name}`. */
@@ -550,10 +591,11 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
   const notes: string[] = [];
   const warnings: string[] = [];
   try {
-    const catalog = loadContentCatalog({ dir, requireEveryMap: true });
+    const catalog = loadContentCatalog({ dir, requireEveryMap: true, icons: new Set(Object.keys(UI_ICONS)) });
     const regions = RegionCatalog.safeParse(JSON.parse(readFileSync(path.join(dir, REGIONS_FILE), 'utf8')));
-    const targets = regions.success ? checkQuestTargets(catalog.quests.values(), undefined, regions.data) : { issues: [], notes: [] };
+    const targets = regions.success ? checkQuestTargets(catalog.quests.values(), undefined, regions.data, catalog.events.eventOfQuest) : { issues: [], notes: [] };
     issues.push(...targets.issues);
+    if (regions.success) issues.push(...checkEventScenes(catalog.events.events.values(), undefined, regions.data));
     // Drafts become game text too, so the player's name rule covers every quest file.
     issues.push(...checkPlayerText(readQuestDefinitions(path.join(dir, 'quests'))));
     const regionIds = new Set(regions.success ? regions.data.regions.map((r) => r.id) : []);

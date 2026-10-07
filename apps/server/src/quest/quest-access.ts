@@ -1,6 +1,7 @@
 import { and, eq, isNotNull } from 'drizzle-orm';
 import type { ActiveQuest, PlayableQuest } from '@miu/schema/content';
 import type { QuestProgressDto, QuestState } from '@miu/schema/game';
+import { isEventOpen } from '@miu/quest/live-event';
 import { bossStateOf } from '@miu/quest/quest-progress';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
@@ -61,12 +62,26 @@ export function questState(row: ProgressRow | undefined): QuestState {
   return started ? 'in-progress' : 'open';
 }
 
-/** The quest a child may act on now: known and not a "coming soon" stub (every quest is open, none is locked). */
-export function playableQuest(content: ContentCatalog, questId: string): ActiveQuest {
+/**
+ * Whether a quest is open at `now` on the server's clock: every quest is, but an event quest only while its event's
+ * live or commemorative window is open (whatever the player's device says the time is).
+ */
+export function questOpenAt(content: ContentCatalog, quest: PlayableQuest, now: Date): boolean {
+  if (quest.status !== 'active' || quest.category !== 'event') return true;
+  const event = content.events.eventOfQuest.get(quest.id);
+  return event !== undefined && isEventOpen(event, now);
+}
+
+/**
+ * The quest a child may act on now: known, not a "coming soon" stub (every quest is open, none is locked), and, for an
+ * event quest, while its event is on (409 `event-closed` before it opens and after it ends).
+ */
+export function playableQuest(content: ContentCatalog, questId: string, now: Date): ActiveQuest {
   const quest = content.quests.get(questId);
   if (!quest) throw new HttpError(404, 'quest-not-found');
   if (quest.status !== 'active') throw new HttpError(409, 'quest-coming-soon');
   // A co-op challenge is played by its team over the multiplayer hub, never step by step here (nor paid here).
   if (quest.category === 'coop') throw new HttpError(404, 'quest-not-found');
+  if (!questOpenAt(content, quest, now)) throw new HttpError(409, 'event-closed');
   return quest;
 }

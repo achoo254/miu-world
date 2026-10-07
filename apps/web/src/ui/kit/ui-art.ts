@@ -49,6 +49,8 @@ export const UI_ICONS = {
   fan: `${FLUENT_PROPS}/folding-hand-fan.png`,
   farmer: `${FLUENT_MINI}/farmer.png`,
   firstMedal: `${FLUENT_PROPS}/1st-place-medal.png`,
+  secondMedal: `${FLUENT_PROPS}/2nd-place-medal.png`,
+  thirdMedal: `${FLUENT_PROPS}/3rd-place-medal.png`,
   flute: `${FLUENT_PROPS}/flute.png`,
   fountainPen: `${FLUENT_PROPS}/fountain-pen.png`,
   fox: `${FLUENT_MINI}/fox.png`,
@@ -209,6 +211,9 @@ export const REGION_CHEST = REGION_CHEST_ICON;
 export const PETS: ReadonlyArray<Pet & { art: string }> = (pets as { pets: Pet[] }).pets.map((p) => ({ ...p, art: petArtPath(p.id) }));
 
 export type UiIcon = keyof typeof UI_ICONS;
+
+/** Whether a key from content (an event's icon) names a UI icon the app ships. */
+export const isUiIcon = (key: string): key is UiIcon => key in UI_ICONS;
 
 export const UI_ART_PATHS: readonly string[] = [
   ...Object.values(UI_ICONS),

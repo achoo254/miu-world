@@ -11,9 +11,12 @@ export const isStory = (summary: QuestSummary): boolean => summary.quest.status 
 /** A zone guardian's fight (listed after the lessons under the zone guardians, never counted as a lesson). */
 export const isGuardian = (summary: QuestSummary): boolean => summary.quest.status === 'active' && summary.quest.category === 'guardian';
 
-/** Finished lessons out of the region's real ones ("Hoàn thành: 4/12"); stubs, story chapters and guardians are not counted. */
+/** A quest of a limited-time event on now (listed under the event, never counted as a lesson). */
+export const isEvent = (summary: QuestSummary): boolean => summary.quest.status === 'active' && summary.quest.category === 'event';
+
+/** Finished lessons out of the region's real ones ("Hoàn thành: 4/12"); stubs, story chapters, guardians and event quests are not counted. */
 export function regionProgress(quests: readonly QuestSummary[]): { done: number; total: number } {
-  const real = quests.filter((q) => q.quest.status !== 'stub' && !isStory(q) && !isGuardian(q));
+  const real = quests.filter((q) => q.quest.status !== 'stub' && !isStory(q) && !isGuardian(q) && !isEvent(q));
   return { done: real.filter((q) => q.state === 'completed').length, total: real.length };
 }
 
@@ -24,7 +27,7 @@ export function regionProgress(quests: readonly QuestSummary[]): { done: number;
 export function recommendedQuest(quests: readonly QuestSummary[]): QuestSummary | null {
   // The lessons first; a story chapter only once every lesson is finished (its character offers it in the game). A
   // zone guardian is never recommended: the child meets it in its zone, or picks it on the board.
-  const playable = [...quests.filter((q) => isPlayable(q) && !isStory(q) && !isGuardian(q)), ...quests.filter(isStory)];
+  const playable = [...quests.filter((q) => isPlayable(q) && !isStory(q) && !isGuardian(q) && !isEvent(q)), ...quests.filter(isStory)];
   return (
     playable.find((q) => q.state === 'in-progress' && !isStory(q)) ??
     playable.find((q) => q.state !== 'completed') ??

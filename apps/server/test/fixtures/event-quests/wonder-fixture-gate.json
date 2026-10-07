@@ -1,0 +1,98 @@
+{
+  "id": "wonder-fixture-gate",
+  "region": "khu-rung-bi-mat",
+  "chapter": 1,
+  "title": "Cổng thử của hội chợ",
+  "status": "active",
+  "category": "event",
+  "summary": "Ngăn thử của hội chợ cho {name}.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cáo Gác Cổng",
+    "where": "Cổng hội chợ thử",
+    "goal": "Qua ngăn thử",
+    "play": "Nói chuyện, xếp thứ tự, trả lời",
+    "learn": "Phép cộng",
+    "reward": "XP, xu",
+    "next": "Ngăn sau"
+  },
+  "phases": {
+    "hook": "gap",
+    "explore": "xep",
+    "learn": "xep",
+    "challenge": "hoi",
+    "decision": "hoi",
+    "finale": "hoi",
+    "reward": "thuong",
+    "next": "tiep"
+  },
+  "places": {
+    "fixture-fair-fox": "Cổng hội chợ"
+  },
+  "steps": [
+    {
+      "id": "gap",
+      "title": "Gặp Cáo Gác Cổng",
+      "goTo": "Tới cổng hội chợ gặp Cáo Gác Cổng",
+      "kind": "dialogue",
+      "target": "fixture-fair-fox",
+      "lines": [{ "speaker": "Cáo Gác Cổng", "text": "{name} ơi, ngăn thử mở rồi!" }],
+      "choices": [{ "text": "Vào thôi!" }],
+      "en": { "title": "Meet the Gate Fox", "goTo": "Go to the fair gate to meet the Gate Fox", "lines": ["{name}, the trial room is open!"], "choices": [{ "text": "Let us go in!" }] }
+    },
+    {
+      "id": "xep",
+      "title": "Xếp số",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "trigger": "auto",
+      "prompt": "Xếp từ bé đến lớn",
+      "skill": "phep-cong",
+      "items": [{ "id": "ba", "label": "3" }, { "id": "mot", "label": "1" }, { "id": "hai", "label": "2" }],
+      "answer": { "order": ["mot", "hai", "ba"] },
+      "support": {
+        "guide": ["Tìm số bé nhất trước"],
+        "hint": "Số 1 đứng đầu",
+        "answer": { "text": "1, 2, 3", "explanation": "1 < 2 < 3" },
+        "en": { "guide": ["Find the smallest first"], "hint": "1 comes first", "answer": { "text": "1, 2, 3", "explanation": "1 < 2 < 3" } }
+      },
+      "en": { "title": "Order the numbers", "prompt": "Order from smallest to largest", "items": ["3", "1", "2"] }
+    },
+    {
+      "id": "hoi",
+      "title": "Câu hỏi",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "trigger": "auto",
+      "prompt": "2, 4, 6, ?",
+      "skill": "phep-cong",
+      "choices": [{ "id": "a", "text": "7" }, { "id": "b", "text": "8" }],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Mỗi lần thêm hai"],
+        "hint": "6 + 2",
+        "answer": { "text": "8", "explanation": "6 + 2 = 8" },
+        "en": { "guide": ["Add two each time"], "hint": "6 + 2", "answer": { "text": "8", "explanation": "6 + 2 = 8" } }
+      },
+      "en": { "title": "A question", "prompt": "2, 4, 6, ?", "choices": ["7", "8"] }
+    },
+    {
+      "id": "thuong",
+      "title": "Nhận thưởng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ngăn thử đã qua!",
+      "en": { "title": "Reward", "text": "The trial room is done!" }
+    },
+    {
+      "id": "tiep",
+      "title": "Đi tiếp",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hẹn ở ngăn sau.",
+      "en": { "title": "Next", "text": "See you in the next room." }
+    }
+  ],
+  "reward": { "xp": 40, "coin": 10, "skillXp": { "phep-cong": 10 } },
+  "en": { "title": "The fair's trial gate", "summary": "The fair's trial room for {name}." }
+}

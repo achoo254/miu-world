@@ -58,6 +58,8 @@ export function nextStep(summary: QuestSummary): QuestStepPublic | null {
 const isStoryChapter = (q: QuestSummary): boolean => q.quest.status === 'active' && q.quest.category === 'story';
 /** A zone guardian's fight: started by talking to the guardian (or from the board), never "the quest to play next". */
 export const isGuardianFight = (q: QuestSummary): boolean => q.quest.status === 'active' && q.quest.category === 'guardian';
+/** A limited-time event's quest: started at the event's character (or from the event page), never "the quest to play next". */
+export const isEventQuest = (q: QuestSummary): boolean => q.quest.status === 'active' && q.quest.category === 'event';
 
 /** The quest under way, else the first one not finished yet, among `playable`. */
 const nextOf = (playable: readonly QuestSummary[]): QuestSummary | null => playable.find((q) => q.state === 'in-progress') ?? playable.find((q) => q.state === 'open') ?? null;
@@ -67,13 +69,13 @@ const nextOf = (playable: readonly QuestSummary[]): QuestSummary | null => playa
  * lesson is left (a story never takes a lesson's place: its character offers it when talked to).
  */
 export function currentQuest(quests: readonly QuestSummary[]): QuestSummary | null {
-  const playable = quests.filter((q) => q.quest.status === 'active' && !isGuardianFight(q));
+  const playable = quests.filter((q) => q.quest.status === 'active' && !isGuardianFight(q) && !isEventQuest(q));
   return nextOf(playable.filter((q) => !isStoryChapter(q))) ?? nextOf(playable.filter(isStoryChapter));
 }
 
 /** The lesson a gate into `region` leads to: the one under way there, else its first not finished, else its first. */
 export function questForRegion(quests: readonly QuestSummary[], region: string): QuestSummary | null {
-  const here = quests.filter((q) => q.quest.status === 'active' && q.quest.region === region && !isGuardianFight(q));
+  const here = quests.filter((q) => q.quest.status === 'active' && q.quest.region === region && !isGuardianFight(q) && !isEventQuest(q));
   return currentQuest(here) ?? here.find((q) => !isStoryChapter(q)) ?? here[0] ?? null;
 }
 

@@ -1,0 +1,74 @@
+/*
+ * Live events (M1.1 banner, M1.6 event page, Event Reward): a parchment card with a wooden title over Home, and the
+ * event page as a quest scene. Values from tokens.css only; touch targets ≥ 48px.
+ */
+.event-banner {
+  display: grid;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border: 3px solid var(--color-wood-edge);
+  border-radius: var(--radius-panel);
+  background: linear-gradient(180deg, var(--color-parchment), var(--color-parchment-deep));
+  box-shadow: var(--shadow-material);
+  color: var(--color-parchment-ink);
+}
+.event-banner-head { display: flex; align-items: center; gap: var(--space-sm); flex-wrap: wrap; }
+.event-banner-text { flex: 1; min-width: 10rem; }
+.event-banner-title { margin: 0; font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-wood-edge); }
+.event-banner-line { margin: 0; font-size: var(--text-sm); }
+.event-banner-rewards { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin: 0; padding: 0; list-style: none; }
+.event-banner-rewards li {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-key);
+  background: var(--color-surface-glass);
+}
+.event-banner-rewards li[data-earned='true'] { outline: 3px solid var(--color-leaf); }
+.event-banner-cta {
+  min-height: 48px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(180deg, var(--color-primary-top), var(--color-primary));
+  box-shadow: var(--shadow-primary);
+  color: var(--color-on-primary);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 800;
+  cursor: pointer;
+}
+.event-banner-cta:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+
+.event-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-weight: 800;
+  font-size: var(--text-sm);
+  white-space: nowrap;
+}
+
+.event-page { display: grid; gap: var(--space-md); padding: var(--space-sm); }
+.event-page-top { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm); }
+.event-host-icon { display: grid; place-items: center; width: 4rem; height: 4rem; border-radius: 50%; background: var(--color-surface-glass); }
+.event-description { margin: 0; padding: var(--space-sm) var(--space-md); border-radius: var(--radius-field); background: var(--color-surface-glass); color: var(--color-ink); }
+.event-not-open { margin: 0; padding: var(--space-sm) var(--space-md); font-weight: 800; }
+.event-columns { display: grid; gap: var(--space-md); grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); }
+.event-section { display: grid; gap: var(--space-sm); align-content: start; padding: var(--space-md); }
+.event-section h3 { margin: 0; font-family: var(--font-display); color: var(--color-wood-edge); }
+.event-quest-list, .event-reward-rows { display: grid; gap: var(--space-xs); margin: 0; padding: 0; list-style: none; }
+.event-quest, .event-reward-row { display: flex; align-items: center; gap: var(--space-sm); }
+.event-quest-text, .event-reward-text { display: grid; flex: 1; min-width: 0; gap: 2px; }
+.event-quest[data-done='true'] .event-quest-text strong { color: var(--color-leaf); }
+.event-reward-done { display: inline-flex; align-items: center; gap: var(--space-xs); color: var(--color-leaf); font-weight: 800; }
+.event-reward-art { image-rendering: pixelated; }
+
+.event-reward-card { display: grid; gap: var(--space-sm); padding: var(--space-md); }
+.event-reward-heading { margin: 0; font-family: var(--font-display); color: var(--color-wood-edge); }
+.event-reward-list { display: grid; gap: var(--space-sm); margin: 0; padding: 0; list-style: none; }
+.event-reward-item { display: flex; align-items: center; gap: var(--space-sm); }

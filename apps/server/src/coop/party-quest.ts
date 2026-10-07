@@ -17,7 +17,7 @@ import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { questProgress } from '../db/schema';
 import { paidRuns } from '../reward/reward-ledger';
-import { progressDto, runFinished } from '../quest/quest-access';
+import { progressDto, questOpenAt, runFinished } from '../quest/quest-access';
 import { recordStep } from '../quest/step-record';
 import type { CoopHost } from './coop-service';
 
@@ -119,9 +119,10 @@ export class PartyQuestService implements PartyQuestHooks {
 
   private playable(questId: string): ActiveQuest | null {
     const quest = this.content.quests.get(questId);
-    // Lessons, story chapters and zone guardians (a team boss); a minigame side quest and a co-op challenge have their
-    // own ways of playing.
-    return quest?.status === 'active' && (quest.category === 'main' || quest.category === 'story' || quest.category === 'guardian') ? quest : null;
+    // Lessons, story chapters, zone guardians (a team boss) and the quests of an event on now; a minigame side quest and
+    // a co-op challenge have their own ways of playing.
+    const kinds = quest?.status === 'active' && (quest.category === 'main' || quest.category === 'story' || quest.category === 'guardian' || quest.category === 'event');
+    return kinds && questOpenAt(this.content, quest, this.clock()) ? quest : null;
   }
 
   private start(id: string, questId: string): void {

@@ -759,13 +759,20 @@ export const COOP_QUEST_PREFIX = 'with-';
  * chapters and co-op challenges, they sort after every lesson of their map (`pnpm content:check` enforces the order).
  */
 export const GUARDIAN_QUEST_PREFIX = 'ward-';
+/**
+ * Ids of a limited-time event's quests (`content/quests/wonder-*.json`: a wonder of the living world, content/events)
+ * start with this, so, like story chapters and zone guardians, they sort after every lesson of their map
+ * (`pnpm content:check` enforces the order). They are played only while their event is on (the server's clock).
+ */
+export const EVENT_QUEST_PREFIX = 'wonder-';
 /** A zone guardian's fight is short: this many questions at least, and at most. */
 export const GUARDIAN_TURNS = { min: 4, max: 5 } as const;
 /**
  * What a quest is: a lesson (`main`), a minigame played for fun (`side`), a chapter of a character's story, a co-op
- * challenge played by a team (`coop`), or a zone guardian's short boss fight (`guardian`).
+ * challenge played by a team (`coop`), a zone guardian's short boss fight (`guardian`), or a quest of a limited-time
+ * event (`event`, content/events), open only while the event is on.
  */
-export const QUEST_CATEGORIES = ['main', 'side', 'story', 'coop', 'guardian'] as const;
+export const QUEST_CATEGORIES = ['main', 'side', 'story', 'coop', 'guardian', 'event'] as const;
 export type QuestCategoryId = (typeof QUEST_CATEGORIES)[number];
 
 const questFields = {
@@ -781,6 +788,8 @@ const questFields = {
    * character's name; offered by the character when the child talks to it; never counted as a lesson.
    * `guardian`: a zone guardian's short boss fight (its questions from the skills of that zone's lessons), started by
    * talking to the guardian, always open and never counted as a lesson; nothing waits for it.
+   * `event`: a quest of a limited-time event (content/events), started by talking to the event's character on the
+   * map; listed and playable only while the event is on, never counted as a lesson.
    */
   category: z.enum(QUEST_CATEGORIES).default('main'),
   /** Learning content is drafted by AI and must be approved by a teacher before it reaches children. */
@@ -942,6 +951,30 @@ function guardianQuestIssues(q: { id: string; lesson?: string | undefined; steps
   return issues;
 }
 
+/** Step kinds an event quest may use: a story's, and a boss (the keeper's trial). */
+const EVENT_STEP_KINDS = new Set([...STORY_STEP_KINDS, 'boss']);
+
+/**
+ * An event quest opens at the event's character (a dialogue there: the child talks to it to start), walks the child
+ * round named places like a lesson, plays at least two mechanics, ships in both languages, and its boss, when it has
+ * one, answers every blow and every miss.
+ */
+function eventQuestIssues(q: { id: string; lesson?: string | undefined; steps: QuestStep[]; places: Record<string, string> }): string[] {
+  const issues: string[] = [];
+  if (!q.id.startsWith(EVENT_QUEST_PREFIX)) issues.push(`an event quest id starts with "${EVENT_QUEST_PREFIX}"`);
+  if (isTextbookQuest(q.id) || q.lesson) issues.push('an event quest plays no textbook lesson');
+  const [first] = q.steps;
+  if (first?.kind !== 'dialogue' || first.trigger !== 'interact' || !first.target) issues.push("an event quest starts with a dialogue at the event's character, who opens it");
+  for (const step of q.steps) {
+    if (!EVENT_STEP_KINDS.has(step.kind) || (step.kind === 'challenge' && step.mechanic === 'minigame')) {
+      issues.push(`step ${step.id}: an event quest uses dialogue, search, find-object, decision, read, riddle, challenge (no minigame), boss, reward and next steps`);
+    }
+    if (step.kind === 'boss' && !step.feedback) issues.push(`step ${step.id}: the keeper answers every blow and every miss (feedback lines)`);
+  }
+  issues.push(...wayfindingIssues(q.steps, q.places));
+  return issues;
+}
+
 /** Whether the English list has as many lines as the Vietnamese one (both absent counts as matching). */
 const sameLength = (en: readonly unknown[] | undefined, vi: readonly unknown[] | undefined): boolean => (en?.length ?? -1) === (vi?.length ?? -1);
 
@@ -1065,6 +1098,11 @@ function questIssues(q: {
     issues.push(...guardianQuestIssues(q));
   } else if (q.id.startsWith(GUARDIAN_QUEST_PREFIX)) {
     issues.push(`a quest whose id starts with "${GUARDIAN_QUEST_PREFIX}" is a zone guardian ("category": "guardian")`);
+  } else if (q.category === 'event') {
+    issues.push(...eventQuestIssues(q));
+    if (new Set(q.steps.map(mechanicOf).filter((m) => m !== null)).size < 2) issues.push('needs at least two mechanics other than multiple choice (search, riddle or an interactive challenge)');
+  } else if (q.id.startsWith(EVENT_QUEST_PREFIX)) {
+    issues.push(`a quest whose id starts with "${EVENT_QUEST_PREFIX}" is an event quest ("category": "event")`);
   } else if (q.id.startsWith(STORY_QUEST_PREFIX) && q.category !== 'story') {
     issues.push(`a quest whose id starts with "${STORY_QUEST_PREFIX}" is a story chapter ("category": "story")`);
   } else if (q.category === 'story') {

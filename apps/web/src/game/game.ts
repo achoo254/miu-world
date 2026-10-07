@@ -22,7 +22,7 @@ import { castHidden, entitiesForChapter } from '@miu/voxel/world-entities';
 import { onLangModeChange, t as translate, writeText, type TextKey } from '../ui/i18n/i18n';
 import { PETS, UI_ICONS, assetUrl } from '../ui/kit/ui-art';
 import { readReduceMotion } from '../ui/system/display-setting';
-import type { GameStore } from '../game-bridge/game-store';
+import type { GameStore, WorldState } from '../game-bridge/game-store';
 import { loadAmbientLife, preloadAmbientModels, type AmbientTarget } from './ambient/ambient-life';
 import { createConfetti } from './scene/confetti';
 import { createSpeechBubble } from './ambient/speech-bubble';
@@ -40,6 +40,7 @@ import { AssetRegistry, GAME_MODELS, GuardedGltfLoader } from './asset-loader';
 import { createReviewShot, parseViewShot } from './debug/review-shots';
 import { StatsOverlay } from './debug/stats-overlay';
 import { loadInteractables, namedForPlayer, pickNearest, type InteractableObject } from './entities/interactables';
+import { loadEventDecor, withEventCharacters, type EventLayerOption } from './event/event-layer';
 import { createTargetArrow } from './entities/target-arrow';
 import { createMinimap } from './hud/minimap';
 import { bossMarkers, minimapMarkers, sideGiverMarkers, type MapBoss } from './hud/minimap-model';
@@ -152,6 +153,8 @@ export interface GameOptions {
   social?: SocialStore;
   /** The bosses of this map (its big boss and zone guardians, from the quest list): always marked on the minimap. */
   bosses?: readonly MapBoss[];
+  /** Limited-time events' scenes on this map (open or about to open); the play screen says when one opens or closes. */
+  events?: readonly EventLayerOption[];
 }
 
 /** Bytes downloaded so far (compressed transfer size, falling back to body size for cache hits). */
@@ -384,7 +387,8 @@ export class Game {
     this.cleanups.push(() => data.regions.dispose());
     if (this.disposed) return;
     lap('worldData');
-    const chapterEntities = entitiesForChapter(data.entities, this.options.chapter ?? 1, this.options.quest);
+    const eventLayers = this.options.events ?? [];
+    const chapterEntities = entitiesForChapter(withEventCharacters(data.entities, eventLayers), this.options.chapter ?? 1, this.options.quest);
     const entities = { ...chapterEntities, interactables: namedForPlayer(chapterEntities.interactables, this.options.playerName ?? 'bạn') };
     // Where the child starts (a URL spot, next to a target, where she left off, else the spawn): its
     // regions and the patches in view are loaded and drawn before the first frame.
@@ -422,6 +426,7 @@ export class Game {
     // front of walls and roofs instead (camera-rig.ts), plants simply show.
     // Props whose interaction turns them whole (a globe) are drawn on their own; moving parts always are.
     const propsPending = early(timed('props', loadProps(loader, entities, quality.shadows, undefined, spinningProps(entities.props))));
+    const eventDecorPending = early(loadEventDecor(loader, entities, eventLayers, quality.shadows));
     const petPending = petSpec
       ? early(
           timed(
@@ -509,7 +514,13 @@ export class Game {
     loader.onProgress(null);
     if (this.disposed) return;
     lap('models');
-    propCells = props.blocked;
+    const eventDecor = await eventDecorPending;
+    this.cleanups.push(() => eventDecor.dispose());
+    // The map's solid props and the open events' decorations, again whenever an event opens or closes.
+    const mergeCells = (): void => {
+      propCells = eventDecor.blocked().size === 0 ? props.blocked : new Map([...props.blocked, ...eventDecor.blocked()]);
+    };
+    mergeCells();
     const confetti = createConfetti();
     // The portals' sparks swirl and drift out (fewer on the low quality, still for less motion).
     const portalSparks = createPortalSparks(entities.props, { perPortal: quality.level === 'low' ? 12 : 28, still: reducedMotion });
@@ -543,7 +554,9 @@ export class Game {
     if (heldMood === 'dusk' || heldMood === 'night' || heldMood === 'cave') events.holdMood(heldMood);
     props.setViewDistance(quality.viewDistance);
     props.buildAround(start[0] ?? 0, start[2] ?? 0);
-    scene.add(character.root, props.group, life.group, confetti.mesh, ...targets.map((t) => t.root));
+    eventDecor.setViewDistance(quality.viewDistance);
+    eventDecor.buildAround(start[0] ?? 0, start[2] ?? 0);
+    scene.add(character.root, props.group, ...eventDecor.groups, life.group, confetti.mesh, ...targets.map((t) => t.root));
 
     const playerBubble = createSpeechBubble();
     scene.add(playerBubble.sprite);
@@ -755,6 +768,9 @@ export class Game {
     let rescueRequested = false;
     let celebrateRequested = false;
     const byId = new Map(targets.map((t) => [t.def.id, t]));
+    // A closed event's characters stay out of sight whatever the quest's world state says.
+    let lastWorldState: WorldState = {};
+    for (const [id, target] of byId) if (eventDecor.hides(id)) target.setState('hidden');
     // Her pet's life round her: care scenes, tricks, sniffing toward clues, and its own reactions (pet/pet-life.ts).
     const petBubble = createSpeechBubble();
     scene.add(petBubble.sprite);
@@ -898,7 +914,15 @@ export class Game {
           }
         }
         // Server-backed target states; a target missing from the map returns to its initial look.
-        if (command.type === 'set-world-state') for (const [id, target] of byId) target.setState(command.state[id]);
+        if (command.type === 'set-world-state') {
+          lastWorldState = command.state;
+          for (const [id, target] of byId) target.setState(eventDecor.hides(id) ? 'hidden' : command.state[id]);
+        }
+        if (command.type === 'set-event-open') {
+          eventDecor.setOpen(new Set(command.open));
+          mergeCells();
+          for (const [id, target] of byId) target.setState(eventDecor.hides(id) ? 'hidden' : lastWorldState[id]);
+        }
       }),
     );
     this.cleanups.push(() => store.emit({ type: 'interaction-prompt', prompt: null }));
@@ -1125,6 +1149,7 @@ export class Game {
       // No occlusion fade: walls, roofs and trees always draw as they are.
       world.update(camera);
       props.update(camera.position);
+      eventDecor.update(camera.position);
 
       for (const target of targets) target.update(dt, controller.position, camera.position);
       arrow.update(dt, controller.position, hint?.available ? hint.def : null);

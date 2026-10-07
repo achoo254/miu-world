@@ -13,10 +13,13 @@ import { ASSETS_DIR } from '../assets/asset-lib';
 import { propCells } from './prop-cells';
 import { reachable, walkBlocking, walkSolid } from './walkable';
 import { everyDecorProp } from '../../packages/voxel/src/home-decor';
+import { withEventLayers } from '../../packages/voxel/src/event-layer';
+import { eventLayersOf } from './event-layers';
 
 export async function auditReach(map: string): Promise<{ stranded: string[]; covered: string[] }> {
   const dir = path.join(ASSETS_DIR, 'generated/world', map);
-  const e = JSON.parse(await readFile(path.join(dir, 'entities.json'), 'utf8')) as WorldEntities;
+  // With the scenes of its limited-time events on it, as the game draws it while one is open.
+  const e = withEventLayers(JSON.parse(await readFile(path.join(dir, 'entities.json'), 'utf8')) as WorldEntities, await eventLayersOf(map));
   const world = new VoxelWorld([e.size[0] / 16, e.size[1] / 16, e.size[2] / 16]);
   for (const f of await readdir(path.join(dir, 'regions'))) {
     const m = /^r(-?\d+)-(-?\d+)\.bin$/.exec(f);

@@ -1,11 +1,16 @@
+// The Olympic Math practice (content/olympiad/olympic-math.json): loading it, the shapes the client may see, and the
+// grading of a mock exam. Answers and support layers never leave the server except in a graded result or a support
+// layer asked for.
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import {
   awardTierFromScore,
-  awardTitleFromTier,
+  EXAM_POINTS,
+  OLYMPIAD_TOPIC_IDS,
   OlympiadCatalog,
   type OlympiadAwardTier,
-  type OlympiadExamQuestionPublic,
+  type OlympiadQuestion,
+  type OlympiadQuestionPublic,
   type OlympiadTopicId,
   type QuestionReviewItem,
   type TopicBreakdown,
@@ -16,107 +21,58 @@ const OLYMPIAD_FILE = 'olympiad/olympic-math.json';
 
 export function loadOlympiadCatalog(dir: string = CONTENT_DIR): OlympiadCatalog {
   const filePath = path.join(dir, OLYMPIAD_FILE);
-  const raw = JSON.parse(readFileSync(filePath, 'utf8'));
+  const raw: unknown = JSON.parse(readFileSync(filePath, 'utf8'));
   const parsed = OlympiadCatalog.safeParse(raw);
-  if (!parsed.success) {
-    throw new Error(`invalid olympiad content ${filePath}: ${parsed.error.message}`);
-  }
+  if (!parsed.success) throw new Error(`invalid olympiad content ${filePath}: ${parsed.error.message}`);
   return parsed.data;
 }
 
-/**
- * Public exam questions for the web client.
- * Drops correctAnswer and explanation so answers NEVER leak to client bundles!
- */
-export function getPublicExamQuestions(catalog: OlympiadCatalog): OlympiadExamQuestionPublic[] {
-  return catalog.examQuestions.map((q) => ({
-    id: q.id,
-    number: q.number,
-    topicId: q.topicId,
-    prompt: q.prompt,
-    visualType: q.visualType,
-    visualData: q.visualData,
-    choices: q.choices,
-  }));
+/** A question as the client may see it before answering: no answer, no guide, hint or explanation. */
+export function publicQuestion(q: OlympiadQuestion): OlympiadQuestionPublic {
+  return { id: q.id, topicId: q.topicId, title: q.title, prompt: q.prompt, ...(q.visual ? { visual: q.visual } : {}), choices: q.choices };
 }
 
-export interface ExamGradingResult {
+/** XP and coins a mock exam run pays by its award (every run pays: owner, 03/10/2026). */
+const EXAM_REWARD: Readonly<Record<OlympiadAwardTier | 'none', { xp: number; coin: number }>> = {
+  gold: { xp: 300, coin: 60 },
+  silver: { xp: 200, coin: 40 },
+  bronze: { xp: 150, coin: 30 },
+  consolation: { xp: 100, coin: 20 },
+  none: { xp: 100, coin: 20 },
+};
+
+export interface ExamGrading {
   score: number;
-  totalScore: 100;
   correctCount: number;
-  totalCount: 25;
   award: OlympiadAwardTier | null;
-  awardTitle: string | null;
-  breakdown: Record<OlympiadTopicId, TopicBreakdown>;
+  breakdown: TopicBreakdown[];
+  weakest: OlympiadTopicId;
   rewards: { xp: number; coin: number };
   review: QuestionReviewItem[];
 }
 
-export function gradeExam(catalog: OlympiadCatalog, answers: Record<string, string>): ExamGradingResult {
-  const topicMap = new Map(catalog.topics.map((t) => [t.id, t.name]));
-  const breakdown: Record<OlympiadTopicId, TopicBreakdown> = {
-    logic: { topicId: 'logic', topicName: topicMap.get('logic') ?? 'Tư duy logic', correct: 0, total: 0, score: 0 },
-    arithmetic: { topicId: 'arithmetic', topicName: topicMap.get('arithmetic') ?? 'Số học', correct: 0, total: 0, score: 0 },
-    'number-theory': { topicId: 'number-theory', topicName: topicMap.get('number-theory') ?? 'Lý thuyết số', correct: 0, total: 0, score: 0 },
-    geometry: { topicId: 'geometry', topicName: topicMap.get('geometry') ?? 'Hình học', correct: 0, total: 0, score: 0 },
-    combinatorics: { topicId: 'combinatorics', topicName: topicMap.get('combinatorics') ?? 'Tổ hợp', correct: 0, total: 0, score: 0 },
-  };
-
-  const review: QuestionReviewItem[] = [];
-  let correctCount = 0;
-
-  for (const q of catalog.examQuestions) {
-    breakdown[q.topicId].total += 1;
-    const chosen = answers[q.id] ?? null;
-    const isCorrect = chosen !== null && chosen.toUpperCase() === q.correctAnswer.toUpperCase();
-    if (isCorrect) {
-      correctCount += 1;
-      breakdown[q.topicId].correct += 1;
-      breakdown[q.topicId].score += 4;
+/** Grades a mock exam: 4 points a right answer, nothing taken off for a wrong or empty one. */
+export function gradeExam(catalog: OlympiadCatalog, answers: Readonly<Record<string, string>>): ExamGrading {
+  const byTopic = new Map<OlympiadTopicId, { correct: number; total: number }>(OLYMPIAD_TOPIC_IDS.map((t) => [t, { correct: 0, total: 0 }]));
+  const review: QuestionReviewItem[] = catalog.examQuestions.map((q) => {
+    const tally = byTopic.get(q.topicId);
+    const chosen = answers[q.id];
+    const pick = q.choices.find((c) => c.id === chosen)?.id ?? null;
+    const correct = pick === q.answer;
+    if (tally) {
+      tally.total += 1;
+      if (correct) tally.correct += 1;
     }
-    review.push({
-      id: q.id,
-      number: q.number,
-      topicId: q.topicId,
-      prompt: q.prompt,
-      choices: q.choices,
-      chosenAnswer: chosen,
-      correctAnswer: q.correctAnswer,
-      isCorrect,
-      explanation: q.explanation,
-    });
-  }
-
-  const score = correctCount * 4;
+    return { ...publicQuestion(q), chosen: pick, answer: q.answer, correct, guide: q.guide, hint: q.hint, explanation: q.explanation };
+  });
+  const correctCount = review.filter((r) => r.correct).length;
+  const score = correctCount * EXAM_POINTS;
   const award = awardTierFromScore(score);
-  const awardTitle = awardTitleFromTier(award);
-
-  // Rewards based on achievement
-  let xp = 100;
-  let coin = 20;
-  if (award === 'gold') {
-    xp = 300;
-    coin = 60;
-  } else if (award === 'silver') {
-    xp = 200;
-    coin = 40;
-  } else if (award === 'bronze') {
-    xp = 150;
-    coin = 30;
-  } else if (award === 'consolation') {
-    xp = 100;
-    coin = 20;
-  }
-
-  return {
-    score,
-    totalScore: 100,
-    correctCount,
-    totalCount: 25,
-    award,
-    awardTitle,
-    breakdown,
-    rewards: { xp, coin },
-    review,
-  };
+  const breakdown = OLYMPIAD_TOPIC_IDS.map((topicId) => {
+    const t = byTopic.get(topicId) ?? { correct: 0, total: 0 };
+    return { topicId, correct: t.correct, total: t.total, score: t.correct * EXAM_POINTS };
+  });
+  // The topic with the fewest right answers, the first in syllabus order on a tie.
+  const weakest = breakdown.reduce((low, b) => (b.total - b.correct > low.total - low.correct ? b : low)).topicId;
+  return { score, correctCount, award, breakdown, weakest, rewards: EXAM_REWARD[award ?? 'none'], review };
 }

@@ -17,6 +17,8 @@ import type { WorldEntities } from '../../packages/voxel/src/world-entities';
 import { ASSETS_DIR, REPO_ROOT } from '../assets/asset-lib';
 import { auditRooms } from './room-audit';
 import { everyDecorProp } from '../../packages/voxel/src/home-decor';
+import { withEventLayers } from '../../packages/voxel/src/event-layer';
+import { eventLayersOf } from './event-layers';
 
 /** Surfaces that are ways: what a tree must not grow out of (it stands beside them, or in earth or a bed). */
 export const WAY_BLOCKS = ['path', 'trail', 'cobble', 'cobble-grey', 'paver', 'asphalt'] as const;
@@ -99,8 +101,15 @@ export function wayChecks(world: VoxelWorld, way: ReadonlySet<number>): Record<'
   return { paved, pavedUnder, inLane };
 }
 
+/**
+ * A map with the scenes of its limited-time events standing on it (as the game draws it while one is open): their
+ * decorations are props like the map's own, their characters places the ways must reach.
+ */
 export async function auditScenery(map: string): Promise<SceneryFinding[]> {
-  const { e, world } = await readGeneratedMap(map);
+  const generated = await readGeneratedMap(map);
+  const layers = await eventLayersOf(map);
+  const e = withEventLayers(generated.e, layers);
+  const { world } = generated;
   const [SX, SY, SZ] = e.size;
   const { idsOf, nameOf } = await blockIds();
   const [way, trunk, leaf] = [idsOf(WAY_BLOCKS), idsOf(TRUNK_BLOCKS), idsOf(LEAF_BLOCKS)];
@@ -153,7 +162,9 @@ export async function auditScenery(map: string): Promise<SceneryFinding[]> {
   // The characters who offer minigames stand where the child passes: by a way of the spawn's network.
   const givers = await sideGiverIds(map);
   const giverPlaces = e.interactables.filter((t) => givers.has(t.id)).map((t) => ({ name: `side quest giver ${t.id}`, at: t.position, reach: ON_WAY }));
-  findings.push(...wayNetwork(world, e, idsOf(NETWORK_BLOCKS), [...doors, ...giverPlaces]));
+  // An event's characters stand where the child passes too.
+  const eventPlaces = layers.flatMap((l) => l.characters.map((c) => ({ name: `event character ${c.id}`, at: c.position, reach: ON_WAY })));
+  findings.push(...wayNetwork(world, e, idsOf(NETWORK_BLOCKS), [...doors, ...giverPlaces, ...eventPlaces]));
   return findings;
 }
 

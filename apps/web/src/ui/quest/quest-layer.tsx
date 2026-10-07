@@ -25,11 +25,14 @@ import { GateOpenedBanner, SkillCheckModal } from './skill-check-modal';
 import { StepDraftScope } from './step-draft';
 import { useQuestController, type PartyPlay } from './use-quest-controller';
 
-/** The zone guardian's fight that opens at a target (its first step's character), if that target is a guardian. */
+/**
+ * The quest that opens at a target met in place (its first step's character): a zone guardian's fight, or the quest of
+ * an event on now that starts at the event's character.
+ */
 export function guardianFightAt(quests: readonly QuestSummary[], target: string): QuestSummary | null {
   return (
     quests.find((q) => {
-      if (q.quest.status !== 'active' || q.quest.category !== 'guardian') return false;
+      if (q.quest.status !== 'active' || (q.quest.category !== 'guardian' && q.quest.category !== 'event')) return false;
       const first = q.quest.steps[0];
       return first !== undefined && 'target' in first && first.target === target;
     }) ?? null
@@ -101,7 +104,8 @@ export function QuestLayer({
     },
     [onResponse, refreshNpcs],
   );
-  // A zone guardian touched while another quest is played: its fight is played here (the guardian's lines open at once).
+  // A zone guardian (or an event's character) touched while another quest is played: its quest is played here (its lines
+  // open at once).
   const claimGuardian = useCallback(
     (target: string): boolean => {
       const fight = guardianFightAt(data.quests, target);

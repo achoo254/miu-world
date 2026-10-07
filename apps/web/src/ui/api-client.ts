@@ -53,6 +53,7 @@ const MESSAGES: Readonly<Record<string, TextKey>> = {
   'profile-limit': 'errors.profileLimit',
   'invalid-display-name': 'errors.invalidDisplayName',
   'not-found': 'errors.notFound',
+  'event-closed': 'errors.eventClosed',
   'pin-not-set': 'errors.pinNotSet',
   'equipment-locked': 'errors.equipmentLocked',
   'pet-locked': 'errors.petLocked',

@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "id": "fixture-fair",
+  "name": { "vi": "Hội chợ thử", "en": "Trial fair" },
+  "tagline": { "vi": "Một sự kiện để kiểm tra", "en": "An event to test with" },
+  "description": { "vi": "Hội chợ thử mở một ngăn và một bài thi thử.", "en": "The trial fair opens one room and a mock exam." },
+  "greeting": { "vi": "Chào {name}, hội chợ thử mở rồi.", "en": "Hello {name}, the trial fair is open." },
+  "icon": "trophy",
+  "region": "khu-rung-bi-mat",
+  "announceDays": 7,
+  "windows": [
+    { "kind": "live", "startsAt": "2030-01-01T00:00:00+07:00", "endsAt": "2030-02-01T00:00:00+07:00" },
+    { "kind": "commemorative", "startsAt": "2031-01-01T00:00:00+07:00", "endsAt": "2031-02-01T00:00:00+07:00" }
+  ],
+  "quests": ["wonder-fixture-gate"],
+  "practice": "olympic-math",
+  "rewards": [
+    { "id": "huy-hieu-cong", "kind": "badge", "item": "ban-do-sao-dem", "commemorativeItem": "bang-pha-mau", "name": { "vi": "Huy hiệu cổng thử", "en": "Trial gate badge" }, "goal": { "kind": "quests" } },
+    { "id": "huy-hieu-thi", "kind": "badge", "item": "banh-com-xanh", "commemorativeItem": "banh-donut-ngot", "name": { "vi": "Huy hiệu thi thử", "en": "Mock exam badge" }, "goal": { "kind": "exam-score", "score": 20 } },
+    { "id": "mu-hoi-cho", "kind": "wearable", "item": "back-thanh-tich-ten-lua", "commemorativeItem": "back-thanh-tich-ngoi-sao", "name": { "vi": "Balo hội chợ", "en": "Fair backpack" }, "goal": { "kind": "quests" } }
+  ],
+  "scene": {
+    "characters": [
+      { "id": "fixture-fair-fox", "kind": "npc", "name": "Cáo Gác Cổng", "nameEn": "Gate Fox", "label": "Nói chuyện", "position": [20.5, 13, 22.5], "yaw": 90, "radius": 3, "model": "packs/kenney-cube-pets/2.0/animal-fox.glb", "scale": 0.59, "animation": "idle" }
+    ],
+    "decorations": [],
+    "meetAt": "fixture-fair-fox"
+  }
+}

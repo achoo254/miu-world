@@ -34,7 +34,8 @@ function eventOf(content: ContentCatalog, row: LedgerRow): EventBase | null {
     const quest = content.quests.get(questId);
     return { ...none, kind: quest?.status === 'active' && quest.category === 'side' ? 'minigame' : 'quest', ref: questId, label: quest?.title ?? null };
   }
-  if (source.startsWith('drop:') || source.startsWith('shop:')) return { ...none, kind: 'item', itemId: firstItem(row) };
+  // A collectible dropped, something bought, or an event's limited reward (a badge or a wearable).
+  if (source.startsWith('drop:') || source.startsWith('shop:') || source.startsWith('event:')) return { ...none, kind: 'item', itemId: firstItem(row) };
   const region = regionRewardOfSource(source);
   if (region) return { ...none, kind: 'chest', ref: region.region, itemId: firstItem(row) };
   const set = collectionOfSource(source);

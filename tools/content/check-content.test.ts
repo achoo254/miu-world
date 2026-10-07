@@ -4,7 +4,7 @@ import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { CONTENT_DIR, loadContentCatalog } from '../../apps/server/src/content/content-catalog';
 import { ASSETS_DIR } from '../assets/asset-lib';
-import { LOOK_CAP, checkAccessories, checkContent, checkEmojiProps, checkLessonLooks, checkQuestTargets, checkTargetCatalogues } from './check-content';
+import { LOOK_CAP, checkAccessories, checkContent, checkEmojiProps, checkEventScenes, checkLessonLooks, checkQuestTargets, checkTargetCatalogues } from './check-content';
 
 let dir: string;
 beforeEach(() => {
@@ -113,6 +113,8 @@ describe('content:check', () => {
 
   describe('quest map targets', () => {
     const quests = () => loadContentCatalog().quests;
+    // An event's quests meet the characters its scene puts on the map (content/events).
+    const events = () => loadContentCatalog().events.eventOfQuest;
     const forest = path.join(ASSETS_DIR, 'generated/world/forest-ch1/entities.json');
     const writeMap = (mutate: (entities: { interactables: Array<{ id: string }> }) => void): string => {
       const worldDir = path.join(dir, 'world');
@@ -124,12 +126,12 @@ describe('content:check', () => {
     };
 
     it('finds every target of the active chapter 1 quest on the generated forest map', () => {
-      expect(checkQuestTargets(quests().values())).toEqual({ issues: [], notes: [] });
+      expect(checkQuestTargets(quests().values(), undefined, undefined, events())).toEqual({ issues: [], notes: [] });
     });
 
     it('flags a target the map does not place', () => {
       const worldDir = writeMap((e) => (e.interactables = e.interactables.filter((t) => t.id !== 'clue-letter')));
-      expect(checkQuestTargets(quests().values(), worldDir).issues).toEqual([
+      expect(checkQuestTargets(quests().values(), worldDir, undefined, events()).issues).toEqual([
         'quest forest-ch1 step find-clues targets clue-letter, which map forest-ch1 does not place',
         'quest forest-ch1 step read-letter targets clue-letter, which map forest-ch1 does not place',
       ]);
@@ -140,7 +142,7 @@ describe('content:check', () => {
         const tree = (e.interactables as Array<{ id: string; board?: string }>).find((t) => t.id === 'ancient-tree');
         if (tree) tree.board = '7 + 6 = ?';
       });
-      expect(checkQuestTargets(quests().values(), worldDir).issues).toEqual([
+      expect(checkQuestTargets(quests().values(), worldDir, undefined, events()).issues).toEqual([
         'quest forest-ch1 step tree-riddle: the board on ancient-tree reads "7 + 6 = ?", which the question does not contain',
       ]);
     });
@@ -149,7 +151,7 @@ describe('content:check', () => {
       const worldDir = writeMap((e) => {
         for (const t of e.interactables as Array<{ id: string; character?: string }>) if (t.id === 'tv2-t12-cay-gao-cao') delete t.character;
       });
-      expect(checkQuestTargets(quests().values(), worldDir).issues).toContainEqual(
+      expect(checkQuestTargets(quests().values(), worldDir, undefined, events()).issues).toContainEqual(
         expect.stringMatching(/^quest tv2-t12-b21: Khỉ Lanh stands in the world twice \((khi-lanh, tv2-t12-cay-gao-cao|tv2-t12-cay-gao-cao, khi-lanh)\); name one as the other's "character"/),
       );
     });
@@ -159,17 +161,34 @@ describe('content:check', () => {
         const parrot = (e.interactables as Array<{ id: string; chapters?: number[] }>).find((t) => t.id === 'parrot-guide');
         if (parrot) parrot.chapters = [1, 2];
       });
-      const issues = checkQuestTargets(quests().values(), worldDir).issues;
+      const issues = checkQuestTargets(quests().values(), worldDir, undefined, events()).issues;
       for (const quest of ['side-runner', 'side-penalty-kick']) {
         expect(issues).toContain(`quest ${quest}: its giver parrot-guide is only on map forest-ch1 in some chapters or quests; the character a side quest or a story opens at is always in the world`);
       }
     });
 
     it('notes, without failing, an active quest whose map is not generated yet; stubs are skipped', () => {
-      const report = checkQuestTargets(quests().values(), path.join(dir, 'no-maps'));
+      const report = checkQuestTargets(quests().values(), path.join(dir, 'no-maps'), undefined, events());
       expect(report.issues).toEqual([]);
       expect(report.notes).toContain('quest forest-ch1: map targets not checked, region khu-rung-bi-mat chapter 1 has no generated map');
       expect(report.notes).toContain('quest toan2-cd1-b01: map targets not checked, region truong-hoc chapter 1 has no generated map');
+    });
+
+    it("flags an event scene that takes a map target's id, stands off the map, or has no map", () => {
+      const [shipped] = loadContentCatalog().events.events.values();
+      if (!shipped) throw new Error('no shipped event');
+      const [first, ...others] = shipped.scene.characters;
+      if (!first) throw new Error('an event scene has a character');
+      const event = {
+        ...shipped,
+        scene: { ...shipped.scene, characters: [{ ...first, id: 'parrot-guide' }, ...others.map((c, i) => (i === 0 ? { ...c, position: [-4, 13, 20] as [number, number, number] } : c))] },
+      };
+      expect(checkEventScenes([shipped])).toEqual([]);
+      expect(checkEventScenes([event])).toEqual([
+        `event ${shipped.id}: scene character parrot-guide has the id of a target of map forest-ch1`,
+        `event ${shipped.id}: scene character ${others[0]?.id ?? ''} stands outside map forest-ch1`,
+      ]);
+      expect(checkEventScenes([shipped], path.join(dir, 'no-maps'))).toEqual([`event ${shipped.id}: region khu-rung-bi-mat has no generated map for its scene`]);
     });
   });
 

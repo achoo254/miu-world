@@ -24,7 +24,7 @@ import { inventoryItems, questProgress } from '../db/schema';
 import { HttpError } from '../http-error';
 import { ipKey, limiter } from '../rate-limit';
 import { paidRunsByQuest, progressSummary } from '../reward/reward-ledger';
-import { playableQuest, progressDto, questState, runFinished } from './quest-access';
+import { playableQuest, progressDto, questOpenAt, questState, runFinished } from './quest-access';
 import { skillLevel } from './knowledge-gate';
 import { countAttempt } from './step-attempts';
 import { recordStep } from './step-record';
@@ -96,8 +96,10 @@ export function questRoutes(deps: QuestRouteDeps): Router {
     const rows = await db.select().from(questProgress).where(eq(questProgress.childId, childId));
     const byQuest = new Map(rows.map((r) => [r.questId, r]));
     const runs = await paidRunsByQuest(db, childId);
+    // An event quest is listed only while its event is on (the server's clock).
+    const now = clock();
     return new Map(
-      [...content.quests.values()].map((quest) => {
+      [...content.quests.values()].filter((quest) => questOpenAt(content, quest, now)).map((quest) => {
         const row = byQuest.get(quest.id);
         const summary = {
           quest: QuestView.parse({ ...quest, textbook: content.textbooks.get(quest.id), story: storyOf(content, quest.id) }),
@@ -123,17 +125,17 @@ export function questRoutes(deps: QuestRouteDeps): Router {
     res.json(InventoryResponse.parse({ items: rows }));
   });
 
-  // The quest list by default: the lessons, then the story chapters and the zone guardians (their ids sort after every
-  // lesson, so the first lesson stays the one to play next). `?category=side` lists the minigame side quests instead, so
-  // a side quest never shows up where the lessons are counted, listed or picked; `?category=main`, `story` or `guardian`
-  // one kind only.
+  // The quest list by default: the lessons, then the story chapters, the zone guardians and the quests of the events on
+  // now (their ids sort after every lesson, so the first lesson stays the one to play next). `?category=side` lists the
+  // minigame side quests instead, so a side quest never shows up where the lessons are counted, listed or picked;
+  // `?category=main`, `story`, `guardian` or `event` one kind only.
   router.get('/quests', requireParent, async (req, res) => {
     const childId = await activePlayerId(db, res, content.consent.version);
     const region = req.query.region === undefined ? undefined : ContentId.safeParse(req.query.region);
     if (region && !region.success) throw new HttpError(400, 'invalid-region');
     const category = req.query.category === undefined ? undefined : QuestCategory.safeParse(req.query.category);
     if (category && !category.success) throw new HttpError(400, 'invalid-category');
-    const listed = new Set<string>(category ? [category.data] : ['main', 'story', 'guardian']);
+    const listed = new Set<string>(category ? [category.data] : ['main', 'story', 'guardian', 'event']);
     const quests = [...(await summaries(childId)).values()].filter(
       (s) => (!region || s.quest.region === region.data) && listed.has(s.quest.status === 'active' ? (s.quest.category ?? 'main') : 'main'),
     );
@@ -190,7 +192,7 @@ export function questRoutes(deps: QuestRouteDeps): Router {
     const stepId = contentId(req.params.stepId, 'step-not-found');
     const input = StepCompleteRequest.safeParse(req.body ?? {});
     if (!input.success) throw new HttpError(400, 'invalid-step-input');
-    const quest = playableQuest(content, questId);
+    const quest = playableQuest(content, questId, clock());
     const stepDef = quest.steps.find((s) => s.id === stepId);
 
     // In a party's run of this quest, the party decides when she may go on (everyone answers each question).
@@ -221,7 +223,7 @@ export function questRoutes(deps: QuestRouteDeps): Router {
     const stepId = contentId(req.params.stepId, 'step-not-found');
     const body = SupportRequest.safeParse(req.body ?? {});
     if (!body.success) throw new HttpError(400, 'invalid-support-layer');
-    const quest = playableQuest(content, questId);
+    const quest = playableQuest(content, questId, clock());
     const index = quest.steps.findIndex((s) => s.id === stepId);
     const step = quest.steps[index];
     if (!step) throw new HttpError(404, 'step-not-found');

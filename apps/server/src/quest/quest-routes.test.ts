@@ -220,7 +220,7 @@ describe('quest progress and rewards (server is the source of truth)', () => {
     const dir = mkdtempSync(path.join(tmpdir(), 'miu-new-quest-'));
     const fixture = JSON.parse(readFileSync(new URL('../../test/fixtures/quests/quest-c.json', import.meta.url), 'utf8')) as object;
     writeFileSync(path.join(dir, 'lake.json'), JSON.stringify({ ...fixture, id: 'lake-walk', title: 'Dạo hồ', reward: { xp: 7, coin: 3 } }));
-    const content = loadContentCatalog({ questDir: dir, npcsDir: null });
+    const content = loadContentCatalog({ questDir: dir, npcsDir: null, eventsDir: null });
     const { parent, childId } = await parentWithChild(app);
     const agent = await app.agentFor(createApp({ config: app.config, db: app.db, content }));
     await agent.post('/api/auth/login').send(parent).expect(200);

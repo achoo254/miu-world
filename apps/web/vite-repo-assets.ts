@@ -1,7 +1,7 @@
 // Serves repo `assets/` under /game-assets/ (dev + preview) and copies into the build only the files
 // the runtime actually loads. Anything outside the license-gated manifest is refused (404).
 import { createReadStream } from 'node:fs';
-import { copyFile, mkdir, readFile, stat } from 'node:fs/promises';
+import { copyFile, mkdir, readdir, readFile, stat } from 'node:fs/promises';
 import type { ServerResponse } from 'node:http';
 import path from 'node:path';
 import type { Plugin } from 'vite';
@@ -95,6 +95,8 @@ export async function runtimeAssetPaths(
     const outland = entities.outland as { models?: Record<string, unknown> } | undefined;
     for (const model of Object.keys(outland?.models ?? {})) models.add(model);
   }
+  // The limited-time events' scenes (content/events) stand on a map while an event is open: their models ship too.
+  for (const model of await eventSceneModels(path.join(assetsDir, '..', 'content', 'events'))) models.add(model);
   for (const model of models) {
     wanted.add(model);
     for (const dep of await glbDependencies(assetsDir, model)) wanted.add(dep);
@@ -102,6 +104,17 @@ export async function runtimeAssetPaths(
   const missing = [...wanted].filter((p) => !allowed.has(p));
   if (missing.length > 0) throw new Error(`runtime assets missing from manifest: ${missing.join(', ')}`);
   return [...wanted].sort();
+}
+
+/** Every model the events' scenes place (characters and decorations); none without the folder. */
+async function eventSceneModels(eventsDir: string): Promise<string[]> {
+  const files = await readdir(eventsDir).catch(() => [] as string[]);
+  const models: string[] = [];
+  for (const file of files.filter((f) => f.endsWith('.json'))) {
+    const event = JSON.parse(await readFile(path.join(eventsDir, file), 'utf8')) as { scene?: { characters?: Array<{ model?: unknown }>; decorations?: Array<{ model?: unknown }> } };
+    for (const item of [...(event.scene?.characters ?? []), ...(event.scene?.decorations ?? [])]) if (typeof item.model === 'string') models.push(item.model);
+  }
+  return models;
 }
 
 export function repoAssets(assetsDir: string, appDir: string, uiPaths: readonly string[] = [], options: { review?: boolean } = {}): Plugin {

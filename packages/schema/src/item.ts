@@ -3,8 +3,11 @@
 import { z } from 'zod';
 import { ContentId } from './content';
 
-/** `quest`: story items (Lá thần); `collectible`: a thing of a region's set (content/collectibles.json); `material`: everything else. */
-export const ItemKind = z.enum(['quest', 'material', 'collectible']);
+/**
+ * `quest`: story items (Lá thần); `collectible`: a thing of a region's set (content/collectibles.json); `badge`: a limited
+ * reward of an event (content/events), kept for good; `material`: everything else.
+ */
+export const ItemKind = z.enum(['quest', 'material', 'collectible', 'badge']);
 
 export const Item = z.strictObject({
   id: ContentId,

@@ -10,6 +10,7 @@ import type { NotebookLine, QuestCompletion, StepCompleteResponse } from '@miu/s
 import type { SkillGiftDto } from '@miu/schema/progression';
 import { ITEMS, itemIcon } from '../backpack/items';
 import { CollectibleDropNote } from '../collection/collectible-drop';
+import { EventRewardCard } from '../event/event-reward-card';
 import { lastSpeakerOf, NpcPortrait } from '../dialogue/npc-portrait';
 import { pairOf, type TextKey } from '../i18n/i18n';
 import { Bi, T, useT } from '../i18n/use-t';
@@ -32,7 +33,7 @@ import './rewards.css';
 const STAR_GAP_MS = 400;
 const COUNT_MS = 900;
 
-type Screen = 'notebook' | 'reward' | 'level' | 'skill';
+type Screen = 'notebook' | 'reward' | 'event' | 'level' | 'skill';
 /** What the finishing step paid (server). */
 export type GrantedReward = NonNullable<StepCompleteResponse['reward']>;
 
@@ -51,6 +52,8 @@ export function completionScreens(completion: QuestCompletion, notebook = 0): Sc
   return [
     ...(notebook > 0 ? (['notebook'] as const) : []),
     'reward',
+    // An event quest's run that reached the event's limited rewards (Event Reward).
+    ...((completion.eventRewards?.length ?? 0) > 0 ? (['event'] as const) : []),
     ...(hasLevelUp ? (['level'] as const) : []),
     ...(hasSkillUp ? (['skill'] as const) : []),
   ];
@@ -270,7 +273,9 @@ export function CompletionSequence({
       ? 'completion.notebookTitle'
       : screen === 'reward'
         ? 'completion.rewardTitle'
-        : screen === 'level'
+        : screen === 'event'
+          ? 'event.rewardTitle'
+          : screen === 'level'
           ? 'completion.levelTitle'
           : 'completion.skillTitle';
 
@@ -285,6 +290,11 @@ export function CompletionSequence({
         </div>
       ) : screen === 'reward' ? (
         <RewardScreen completion={completion} reward={reward} quest={quest} data={data} />
+      ) : screen === 'event' ? (
+        <div className="reward-body" data-id="event-reward">
+          <MiuPortrait pose="cheer" size="7rem" species={data.character.species} />
+          <EventRewardCard grants={completion.eventRewards ?? []} name={data.character.name} />
+        </div>
       ) : screen === 'level' ? (
         <div className="reward-body" data-id="level-up">
           <MiuPortrait pose="cheer" size="9rem" species={data.character.species} />

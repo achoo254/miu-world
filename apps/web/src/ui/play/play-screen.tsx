@@ -47,6 +47,8 @@ import { CoopLayer } from '../coop/coop-layer';
 import type { MapBoss } from '../../game/hud/minimap-model';
 import { PartyQuestCard } from '../coop/party-quest-card';
 import { useCoopChallenges } from '../coop/use-coop';
+import { useMapEvents } from '../event/use-map-events';
+import type { EventLayerOption } from '../../game/event/event-layer';
 
 const HOME_PATH = '/home';
 /** A pet wearing nothing (a stable value: the game is not rebuilt for it). */
@@ -156,6 +158,7 @@ function GameView({
   paused,
   onSpotReader,
   bosses,
+  events,
 }: {
   store: GameStore;
   /** The online UI's store; it outlives each game (the party frame stays while the next map loads). */
@@ -182,6 +185,8 @@ function GameView({
   onSpotReader: (read: (() => PlayerPosition | null) | null) => void;
   /** The map's bosses for the minimap; read when the game is (re)built, never rebuilding it. */
   bosses: readonly MapBoss[];
+  /** Limited-time events' scenes on this map; read when the game is (re)built (their opening and closing are commands). */
+  events: readonly EventLayerOption[];
 }) {
   const host = useRef<HTMLDivElement>(null);
   const game = useRef<Game | null>(null);
@@ -201,10 +206,14 @@ function GameView({
   useEffect(() => {
     bossesRef.current = bosses;
   }, [bosses]);
+  const eventsRef = useRef(events);
+  useEffect(() => {
+    eventsRef.current = events;
+  }, [events]);
   useEffect(() => {
     if (!host.current) return;
     const picks = decorKey ? (JSON.parse(decorKey) as Record<string, string>) : undefined;
-    const instance = new Game(host.current, { store, social, search: window.location.search, playerName, species, pet, petGear: petGearRef.current, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region, quest, savedSpot, decor: picks, objectStates: objectsRef.current, bosses: bossesRef.current });
+    const instance = new Game(host.current, { store, social, search: window.location.search, playerName, species, pet, petGear: petGearRef.current, outfit: outfitKey ? outfitKey.split(',') : [], chapter, region, quest, savedSpot, decor: picks, objectStates: objectsRef.current, bosses: bossesRef.current, events: eventsRef.current });
     game.current = instance;
     onSpotReader(() => instance.currentSpot());
     void instance.start();
@@ -396,6 +405,8 @@ export function PlayScreen() {
     [store],
   );
   const atHome = data !== null && regionMap(region) === regionMap(HOME_REGION);
+  // The scenes of the events on this map (read before it is built; their opening and closing reach the game as commands).
+  const mapEvents = useMapEvents(region, store);
   // The friends list is read in the background once the game is up, so it opens at once.
   useFriendsPrefetch(social, draftOwner, status === 'ready');
   // Weekly play time for the progress views: counted while the game runs, not while paused.
@@ -538,8 +549,8 @@ export function PlayScreen() {
   return (
     <GameStoreContext.Provider value={store}>
       <main data-id="play">
-        {data && positions && (!atHome || (decor !== null && homeObjects !== null)) ? (
-          <GameView store={store} social={social} playerName={data.character.name} species={data.character.species} pet={data.character.pet} petGear={data.character.petGear ?? NO_GEAR} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={region} quest={quest?.quest.id} savedSpot={savedSpot} decor={atHome ? (decor ?? undefined) : undefined} objectStates={atHome ? (homeObjects ?? undefined) : undefined} paused={covered} onSpotReader={onSpotReader} bosses={bosses} />
+        {data && positions && mapEvents && (!atHome || (decor !== null && homeObjects !== null)) ? (
+          <GameView store={store} social={social} playerName={data.character.name} species={data.character.species} pet={data.character.pet} petGear={data.character.petGear ?? NO_GEAR} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={region} quest={quest?.quest.id} savedSpot={savedSpot} decor={atHome ? (decor ?? undefined) : undefined} objectStates={atHome ? (homeObjects ?? undefined) : undefined} paused={covered} onSpotReader={onSpotReader} bosses={bosses} events={mapEvents} />
         ) : null}
         {loadError ? (
           <div className="play-message" role="alert">

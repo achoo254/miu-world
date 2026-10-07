@@ -18,6 +18,7 @@ import { SkillGiftCatalog, skillGiftIssues } from '@miu/schema/progression';
 import { z } from 'zod';
 import { readCurriculum } from '../worksheet/curriculum-books';
 import { EMPTY_NPC_CATALOG, buildNpcCatalog, npcCatalogIssues, readNpcFiles, type NpcCatalog } from '../npc/npc-catalog';
+import { EMPTY_EVENT_CATALOG, loadEvents, type EventCatalog } from '../event/event-catalog';
 import { CONTENT_DIR } from './content-dir';
 
 /** Repo `content/` directory; validated once at startup so bad content fails the boot, not a request. */
@@ -65,6 +66,8 @@ export interface ContentCatalog {
   npcs: NpcCatalog;
   /** content/items by id: what the backpack shows, what a character may be given. */
   items: ReadonlyMap<string, Item>;
+  /** Limited-time events (content/events): their windows, quests, limited rewards and scenes. */
+  events: EventCatalog;
 }
 
 /** Every item of content/items, by id (a missing folder: none). */
@@ -135,6 +138,10 @@ export interface ContentOptions {
   requireEveryMap?: boolean;
   /** The characters' folder; defaults to `<dir>/npcs`. Null: no characters (tests on fixture quests). */
   npcsDir?: string | null;
+  /** The events' parent folder (its `events/`); defaults to `dir`. Null: no events (tests on fixture quests). */
+  eventsDir?: string | null;
+  /** UI icon keys of the web app: `pnpm content:check` checks an event's icon against them. */
+  icons?: ReadonlySet<string>;
 }
 
 export function readContentJson<S extends z.ZodType>(schema: S, file: string): z.infer<S> {
@@ -199,7 +206,7 @@ export function questTextbooks(quests: Iterable<PlayableQuest>, curriculumDir: s
   );
 }
 
-export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir, requireEveryMap = false, npcsDir }: ContentOptions = {}): ContentCatalog {
+export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir, requireEveryMap = false, npcsDir, eventsDir, icons }: ContentOptions = {}): ContentCatalog {
   const catalog = readContentJson(SkillCatalog, path.join(dir, 'learning/skills.json'));
   const skillIds = new Set(catalog.subjects.flatMap((s) => s.skills.map((k) => k.id)));
   const minigames = readMinigames(path.join(dir, 'minigames'));
@@ -212,8 +219,18 @@ export function loadContentCatalog({ dir = CONTENT_DIR, questDir, extraQuestDir,
     : new Map<string, QuestTarget>();
   const items = readItems(dir);
   const openRegions = new Set(regions.regions.filter((r) => r.status === 'open').map((r) => r.id));
+  const events =
+    eventsDir === null
+      ? EMPTY_EVENT_CATALOG
+      : loadEvents(eventsDir ?? dir, quests.values(), {
+          items: new Set(items.keys()),
+          wearables: new Map([...accessories.values()].map((item) => [item.id, { award: item.unlock?.award === true }])),
+          regions: new Set(regions.regions.map((r) => r.id)),
+          icons,
+        });
   return {
     items,
+    events,
     npcs: npcsDir === null ? EMPTY_NPC_CATALOG : loadNpcs(dir, { targets, items, quests: quests.values(), openRegions, requireEveryMap, npcsDir }),
     childDisplayNames: new Set(readContentJson(NameList, path.join(dir, 'names/child-display-names.json')).names),
     characterNames: new Set(readContentJson(NameList, path.join(dir, 'names/character-names.json')).names),

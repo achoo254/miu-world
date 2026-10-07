@@ -20,7 +20,7 @@ import { StarRating } from '../kit/star-rating';
 import { assetUrl, REGION_BACKDROPS } from '../kit/ui-art';
 import { chapters, playPath, say, stepProgress, type PlayerData } from '../player/player-data';
 import { TextbookRef, textbookOf } from '../player/textbook-ref';
-import { boardStories, isGuardian, isPlayable, isStory, recommendedQuest, regionProgress } from './region-board';
+import { boardStories, isEvent, isGuardian, isPlayable, isStory, recommendedQuest, regionProgress } from './region-board';
 import { RegionRewardPanel } from './region-reward-panel';
 import './region.css';
 
@@ -158,14 +158,15 @@ function chapterNamedByQuest(list: readonly QuestSummary[], chapter: number, reg
 
 export function QuestBoard({ region, quests, data, pick }: { region: Region; quests: readonly QuestSummary[]; data: PlayerData; pick?: BoardPick }) {
   const { t } = useT();
-  // The zone guardians: fought any time, never a lesson.
+  // The zone guardians: fought any time, never a lesson. The quests of an event on now: under the event.
   const guardians = quests.filter((q) => isGuardian(q) && q.quest.region === region.id);
+  const eventQuests = quests.filter((q) => isEvent(q) && q.quest.region === region.id);
   return (
     <section className="parchment quest-board" aria-labelledby="quest-board-title" data-id="region-board">
       <h2 id="quest-board-title" className="quest-board-title">
         <T k="region.board" />
       </h2>
-      {chapters(quests.filter((q) => !isStory(q) && !isGuardian(q)), region.id).map(({ chapter, quests: list }) => (
+      {chapters(quests.filter((q) => !isStory(q) && !isGuardian(q) && !isEvent(q)), region.id).map(({ chapter, quests: list }) => (
         <section key={chapter} className="board-chapter" aria-label={t('region.chapter', { chapter })} data-id={`region-chapter-${chapter}`}>
           {/* A chapter of one quest titled "Chương N…" needs no caption on screen (screen readers keep it). */}
           <h3 className={chapterNamedByQuest(list, chapter, region, data) ? 'visually-hidden' : 'board-chapter-title'}>
@@ -190,6 +191,18 @@ export function QuestBoard({ region, quests, data, pick }: { region: Region; que
           </ul>
         </section>
       ))}
+      {eventQuests.length > 0 ? (
+        <section className="board-chapter" aria-label={t('event.questsTitle')} data-id="region-event-quests">
+          <h3 className="board-chapter-title">
+            <T k="event.questsTitle" />
+          </h3>
+          <ul className="board-list">
+            {eventQuests.map((q) => (
+              <BoardRow key={q.quest.id} summary={q} region={region} data={data} pick={pick} />
+            ))}
+          </ul>
+        </section>
+      ) : null}
       {guardians.length > 0 ? (
         <section className="board-chapter" aria-label={t('region.guardians')} data-id="region-guardians">
           <h3 className="board-chapter-title">

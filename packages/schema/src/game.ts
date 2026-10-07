@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { ContentId, MAX_MINIGAME_SCORE, QUEST_CATEGORIES, QuestEn, QuestStepPublic, RewardSpec, WEEKDAYS } from './content';
 import { SkillGiftDto } from './progression';
+import { EventRewardGrant } from './live-event';
 
 // Game DTOs for the active child profile. Diamonds are intentionally absent (not used in the MVP).
 
@@ -119,6 +120,8 @@ export const QuestCompletion = z.object({
    * mailbox (sent on the first finish).
    */
   story: z.object({ npc: ContentId, npcName: z.string(), heartsBefore: z.number().int().min(0), heartsAfter: z.number().int().min(0), letter: z.boolean() }).optional(),
+  /** Limited event rewards this run earned (an event quest finished while its event is on), for the Event Reward screen. */
+  eventRewards: z.array(EventRewardGrant).optional(),
 });
 export type QuestCompletion = z.infer<typeof QuestCompletion>;
 

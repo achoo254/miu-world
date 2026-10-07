@@ -9,6 +9,7 @@ import { notebookLines } from '@miu/quest/notebook';
 import { questScore } from '@miu/quest/quest-score';
 import type { ContentCatalog } from '../content/content-catalog';
 import { inventoryItems, mail, questProgress, skillProgress } from '../db/schema';
+import { grantEventRewards } from '../event/event-rewards';
 import { letterTemplateId } from '../npc/npc-catalog';
 import { chapterHearts } from '../npc/npc-friendship';
 import { grantSkillGifts } from '../progression/skill-gifts';
@@ -77,6 +78,8 @@ export async function finishQuest(tx: Tx, content: ContentCatalog, childId: stri
     .where(and(eq(questProgress.childId, childId), eq(questProgress.questId, quest.id)));
 
   const story = quest.category === 'story' ? await finishChapter(tx, content, childId, quest.id, run === 1, now) : undefined;
+  // A run of an event quest may reach the event's limited rewards (all its quests done in this window).
+  const eventRewards = granted && quest.category === 'event' ? await grantEventRewards(tx, content, childId, now) : [];
   const paid = granted ? reward : null;
   const level = (xp: number) => levelFromXp(xp, content.levelCurve).level;
   const skillLevel = (xp: number) => levelFromXp(xp, content.skillCurve).level;
@@ -98,6 +101,7 @@ export async function finishQuest(tx: Tx, content: ContentCatalog, childId: stri
       collectible,
       skillGifts,
       ...(story ? { story } : {}),
+      ...(eventRewards.length > 0 ? { eventRewards } : {}),
     },
   };
 }

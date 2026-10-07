@@ -4,8 +4,9 @@
 // child's level, XP and coins, with the title of her latest region chest and a "Nhận thưởng" badge over each
 // region with a chest tier to open. Home is a React screen
 // over a pre-rendered island image, not a second 3D scene (validation decision `home_scene`). Not in the
-// MVP, so not shown: diamonds (Master Plan §15 #6), the daily streak (`streak_in_mvp` = defer_v1), the
-// "Sự kiện" rail entry and the TIMO event card (Live World).
+// MVP, so not shown: diamonds (Master Plan §15 #6), the daily streak (`streak_in_mvp` = defer_v1). Live World: the
+// banner of each event the server shows now (gone once it closes) with its page, a "Sự kiện" rail entry while one is
+// shown, and "Luyện Olympic" for the Olympic Math practice, which stays open between events.
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { Icon, MiuPortrait } from '../kit/art';
@@ -20,8 +21,12 @@ import { T, useT } from '../i18n/use-t';
 import { SettingsDialog } from '../system/settings-dialog';
 import { WorldStage } from '../world/world-stage';
 import { TodayQuests } from './today-quests';
-import { OlympiadBanner } from '../event/olympiad-banner';
-import { OlympiadPanel } from '../event/olympiad-panel';
+import { ProgressResponse } from '@miu/schema/game';
+import { api } from '../api-client';
+import { useLiveEvents } from '../event/event-api';
+import { EventBanner } from '../event/event-banner';
+import { EventPanel } from '../event/event-panel';
+import { OlympiadPanel } from '../event/olympiad/olympiad-panel';
 import { fetchMailList } from '../mail/mail-api';
 import { MailPanel } from '../mail/mail-panel';
 import { loadAchievements } from '../progression/progression-api';
@@ -36,6 +41,10 @@ export function HomeScreen() {
   const [settings, setSettings] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
   const [olympiadOpen, setOlympiadOpen] = useState(false);
+  /** The event whose page is open. */
+  const [eventOpen, setEventOpen] = useState<string | null>(null);
+  const live = useLiveEvents();
+  const shownEvents = live.events ?? [];
   const [mailOpen, setMailOpen] = useState(false);
   const [unreadMail, setUnreadMail] = useState(0);
   /** Achievements reached and not claimed yet: a badge on the rail's "Thành tích". */
@@ -67,6 +76,13 @@ export function HomeScreen() {
 
   /** Coins after a purchase here (the badge shows the server's balance). */
   const [coins, setCoins] = useState<number | null>(null);
+  /** After a practice run or a mock exam: the server's new balance, and the events' progress. */
+  const refreshAfterPractice = (): void => {
+    void api('GET', '/progress', ProgressResponse)
+      .then((p) => setCoins(p.coins))
+      .catch(() => undefined);
+    live.refresh();
+  };
   const quest = data ? currentQuest(data.quests) : null;
   // "Về nhà": straight into the child's home, arriving at its front gate.
   const home = data ? questForRegion(data.quests, HOME_REGION) : null;
@@ -150,8 +166,14 @@ export function HomeScreen() {
                   ) : null}
                   <T k="home.achievements" />
                 </Link>
+                {shownEvents[0] ? (
+                  <button type="button" className="home-rail-item" data-id="home-nav-event" onClick={() => setEventOpen(shownEvents[0]?.id ?? null)}>
+                    <Icon name="trophy" size={40} />
+                    <T k="event.rail" />
+                  </button>
+                ) : null}
                 <button type="button" className="home-rail-item" data-id="home-nav-olympiad" onClick={() => setOlympiadOpen(true)}>
-                  <Icon name="trophy" size={40} />
+                  <Icon name="abacus" size={40} />
                   <T k="olympiad.rail" />
                 </button>
                 <button type="button" className="home-rail-item" data-id="home-nav-mail" style={{ position: 'relative' }} onClick={() => setMailOpen(true)}>
@@ -161,13 +183,26 @@ export function HomeScreen() {
                 </button>
               </nav>
               <div style={{ gridArea: 'today', display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
-                <OlympiadBanner onOpen={() => setOlympiadOpen(true)} />
+                {shownEvents.map((event) => (
+                  <EventBanner key={event.id} event={event} onOpen={() => setEventOpen(event.id)} />
+                ))}
                 <TodayQuests data={data} />
               </div>
             </div>
             {settings ? <SettingsDialog onClose={() => setSettings(false)} /> : null}
             {shopOpen ? <ShopPanel onClose={() => setShopOpen(false)} onCoins={setCoins} /> : null}
-            {olympiadOpen ? <OlympiadPanel onClose={() => setOlympiadOpen(false)} onCoinsUpdated={setCoins} /> : null}
+            {eventOpen ? (
+              <EventPanel
+                eventId={eventOpen}
+                name={data.character.name}
+                onClose={() => setEventOpen(null)}
+                onPractice={() => {
+                  setEventOpen(null);
+                  setOlympiadOpen(true);
+                }}
+              />
+            ) : null}
+            {olympiadOpen ? <OlympiadPanel name={data.character.name} onClose={() => setOlympiadOpen(false)} onProgress={refreshAfterPractice} /> : null}
             {mailOpen ? <MailPanel onClose={() => setMailOpen(false)} onCoinsUpdated={setCoins} /> : null}
           </>
         ) : null}
