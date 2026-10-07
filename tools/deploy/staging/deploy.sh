@@ -2,7 +2,8 @@
 # Staging deploy for Miu World, run from a dev machine at the repo root.
 #   tools/deploy/staging/deploy.sh setup     one-time/idempotent: lab host, secrets, DB role, edge nginx
 #   tools/deploy/staging/deploy.sh fonts     upload the worksheet handwriting font (kept out of git)
-#   tools/deploy/staging/deploy.sh release   build, back up the DB, upload, switch, health-check
+#   tools/deploy/staging/deploy.sh gate      check the release gate only (tools/deploy/release-gate.sh), touching no server
+#   tools/deploy/staging/deploy.sh release   release gate, build, back up the DB, upload, switch, health-check
 # Credentials come from $ALL_IN_ONE_STAGING_DEV and the access-tokens.json beside it (see
 # docs/deployment-guide.md). No value is printed; secrets travel over ssh stdin only.
 set -euo pipefail
@@ -13,6 +14,15 @@ DOMAIN=miu-staging.hoandat.com
 HERE="$(cd "$(dirname "$0")" && pwd)"
 # macOS tar: no AppleDouble or xattr entries (GNU tar on the box warns about them).
 export COPYFILE_DISABLE=1
+# shellcheck source-path=SCRIPTDIR source=../release-gate.sh
+. "$HERE/../release-gate.sh"
+
+# The gate alone needs no credentials: checked before they are asked for.
+if [ "${1:-}" = gate ]; then
+  cd "$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
+  release_gate
+  exit $?
+fi
 
 : "${ALL_IN_ONE_STAGING_DEV:?set ALL_IN_ONE_STAGING_DEV (docs/deployment-guide.md)}"
 TOKENS="$(dirname "$ALL_IN_ONE_STAGING_DEV")/access-tokens.json"
@@ -87,6 +97,7 @@ release() {
     [ -z "$(git status --porcelain)" ] || { echo "working tree not clean: commit first, or set MIU_RELEASE_REV for an exported tree" >&2; exit 1; }
     rev="$(git rev-parse --short HEAD)"
   fi
+  release_gate || exit 1
   local id; id="$(date +%y%m%d-%H%M%S)-$rev"
 
   echo "== build $id"
@@ -98,6 +109,9 @@ release() {
 
   echo "== upload"
   echo "$rev" > apps/server/dist/server/REVISION
+  # A release let through the gate by MIU_RELEASE_FORCE keeps the reason on the host, beside REVISION.
+  rm -f apps/server/dist/server/RELEASE_FORCED
+  [ -z "$RELEASE_FORCED" ] || printf '%s\n' "$RELEASE_FORCED" > apps/server/dist/server/RELEASE_FORCED
   tar --no-xattrs -cf - apps/web/dist apps/server/dist/server apps/server/drizzle content \
     | lab "mkdir -p /opt/miu/releases/$id && tar --no-same-owner -xf - -C /opt/miu/releases/$id"
 
@@ -122,5 +136,5 @@ case "${1:-}" in
   setup) setup ;;
   fonts) fonts ;;
   release) release ;;
-  *) echo "usage: $0 setup|fonts|release" >&2; exit 2 ;;
+  *) echo "usage: $0 setup|fonts|gate|release" >&2; exit 2 ;;
 esac

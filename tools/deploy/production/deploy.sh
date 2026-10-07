@@ -5,7 +5,8 @@
 #   tools/deploy/production/deploy.sh fonts     upload the worksheet handwriting font (kept out of git)
 #   tools/deploy/production/deploy.sh timetable upload the default class timetable (kept out of git); restart to apply
 #   tools/deploy/production/deploy.sh turn      write the voice relay (Cloudflare TURN) key into the env file; restart to apply
-#   tools/deploy/production/deploy.sh release   build, back up the DB, upload, switch, health-check
+#   tools/deploy/production/deploy.sh gate      check the release gate only (tools/deploy/release-gate.sh), touching no server
+#   tools/deploy/production/deploy.sh release   release gate, build, back up the DB, upload, switch, health-check
 # Production holds real children's data and .65 is shared: ask the owner before EVERY run
 # (docs/deployment-guide.md §1). Credentials come from $ALL_IN_ONE_STAGING_DEV (the .65 entry
 # SSH_SERVER_STAGING lives there) and the access-tokens.json beside it. No value is printed; secrets
@@ -17,6 +18,15 @@ DOMAIN=miu.hoandat.com
 PORT=8797
 HERE="$(cd "$(dirname "$0")" && pwd)"
 export COPYFILE_DISABLE=1
+# shellcheck source-path=SCRIPTDIR source=../release-gate.sh
+. "$HERE/../release-gate.sh"
+
+# The gate alone needs no credentials: checked before they are asked for.
+if [ "${1:-}" = gate ]; then
+  cd "$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
+  release_gate
+  exit $?
+fi
 
 : "${ALL_IN_ONE_STAGING_DEV:?set ALL_IN_ONE_STAGING_DEV (docs/deployment-guide.md)}"
 TOKENS="$(dirname "$ALL_IN_ONE_STAGING_DEV")/access-tokens.json"
@@ -118,6 +128,7 @@ release() {
     [ -z "$(git status --porcelain)" ] || { echo "working tree not clean: commit first, or set MIU_RELEASE_REV for an exported tree" >&2; exit 1; }
     rev="$(git rev-parse --short HEAD)"
   fi
+  release_gate || exit 1
   local id; id="$(date +%y%m%d-%H%M%S)-$rev"
 
   echo "== build $id"
@@ -135,6 +146,9 @@ release() {
 
   echo "== upload"
   echo "$rev" > apps/server/dist/server/REVISION
+  # A release let through the gate by MIU_RELEASE_FORCE keeps the reason on the host, beside REVISION.
+  rm -f apps/server/dist/server/RELEASE_FORCED
+  [ -z "$RELEASE_FORCED" ] || printf '%s\n' "$RELEASE_FORCED" > apps/server/dist/server/RELEASE_FORCED
   tar --no-xattrs -cf - apps/web/dist apps/server/dist/server apps/server/drizzle content \
     | prod "mkdir -p /opt/miu/releases/$id && tar --no-same-owner -xf - -C /opt/miu/releases/$id"
 
@@ -161,5 +175,5 @@ case "${1:-}" in
   timetable) timetable ;;
   turn) turn ;;
   release) release ;;
-  *) echo "usage: $0 setup|fonts|timetable|turn|release" >&2; exit 2 ;;
+  *) echo "usage: $0 setup|fonts|timetable|turn|gate|release" >&2; exit 2 ;;
 esac

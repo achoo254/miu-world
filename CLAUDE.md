@@ -56,4 +56,5 @@ Gom lại, hỏi một lần: thay đổi cách thu thập/chia sẻ dữ liệu
 - Commit: conventional commits tiếng Anh (`feat(assets):`, `feat(poc):`, `docs(plans):`, `build:`); không nhắc AI; không ghi mã plan/phase trong code, tên test, commit.
 - Thêm dependency mới: ghi vào trang review của đợt đó để người duyệt thấy.
 - Tiến độ backlog và việc đã xong: `docs/project-roadmap.md` — cập nhật khi một task Master Plan đổi trạng thái.
+- Deploy (staging và production) đi qua cổng release `tools/deploy/release-gate.sh`: CI của commit xanh và ảnh các màn chính đã chụp, đã duyệt theo `docs/screen-review.md`; thứ tự và `MIU_RELEASE_FORCE` ở `docs/deployment-guide.md` §5.
 - SSH vào lab/máy chủ và credential SSH: [`docs/STAG-DEV-README.md`](docs/STAG-DEV-README.md); máy staging/production và cách deploy: [`docs/deployment-guide.md`](docs/deployment-guide.md). Deploy, migration, restart ở production phải hỏi người trước mỗi lần.

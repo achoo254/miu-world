@@ -96,8 +96,18 @@ Lệnh chạy từ gốc repo trên máy dev. Script đọc credential theo §2 
 ```sh
 tools/deploy/staging/deploy.sh setup     # máy mới, đổi unit/nginx, đổi secret. Chạy lại được an toàn.
 tools/deploy/staging/deploy.sh fonts     # font chữ mẫu của phiếu viết (ngoài git) lên /opt/miu/fonts của 176
+tools/deploy/staging/deploy.sh gate      # chỉ kiểm cổng release, không chạm máy chủ
 tools/deploy/staging/deploy.sh release   # mỗi lần deploy
 ```
+
+**Thứ tự một lần deploy** (staging và production như nhau):
+
+1. Gate 5 lệnh trong `CLAUDE.md`, build web; commit; push; CI của commit đó xanh.
+2. Chụp các màn chính từ cây sạch của commit đó và cho agent duyệt theo [`screen-review.md`](screen-review.md); phát hiện `block` thì sửa và quay lại bước 1.
+3. Commit ảnh, `review.json`, manifest (`chore(review): screens before release`), push.
+4. `deploy.sh gate` phải in "được", rồi (production: hỏi người trước) `deploy.sh release`.
+
+**Cổng release** (`tools/deploy/release-gate.sh`, `release` tự chạy trước khi build; `gate` chạy riêng): chặn khi chưa có `assets/generated/review/screens/review.json`, khi lần duyệt còn phát hiện `block` chưa sửa, khi ảnh hai khổ không cùng chụp ở commit của lần duyệt hay lúc chụp còn code chưa commit, khi từ commit đã chụp tới `HEAD` có đổi gì ngoài ảnh, manifest, `plans/`, `docs/` (ảnh đã cũ), và khi CI (`gh run list --commit`) của commit đã chụp chưa xanh. Hỏi CI của commit đã chụp, không phải của `HEAD`, nên commit chỉ thêm ảnh không phải chờ CI. `gh` chưa đăng nhập hay mất mạng thì cổng chặn và in cách khắc phục. Cây export (không có `.git`): `MIU_RELEASE_REV` phải là sha (đầu) của commit đã chụp. Bản vá gấp khi CI hỏng vì nguyên nhân ngoài code: `MIU_RELEASE_FORCE="<lý do>"` cho qua, in lý do và ghi nó vào `RELEASE_FORCED` cạnh `REVISION` trong bản release trên máy chủ.
 
 **Trước khi `release`:** chạy đủ gate trong `CLAUDE.md`. Script từ chối chạy khi working tree còn thay đổi chưa commit, vì mã release lấy từ commit. Khi cần deploy một cây đã export (`git archive`) thay vì checkout, đặt `MIU_RELEASE_REV=<nhãn>` và chạy từ gốc cây đó.
 
@@ -164,12 +174,14 @@ tools/deploy/production/deploy.sh setup     # máy mới, đổi unit/nginx/secr
 tools/deploy/production/deploy.sh fonts     # tải font chữ mẫu của phiếu viết (ngoài git) lên /opt/miu/fonts
 tools/deploy/production/deploy.sh timetable # tải thời khóa biểu mặc định (ngoài git) lên /opt/miu/config; release sau đó áp dụng
 tools/deploy/production/deploy.sh turn      # ghi (hoặc thay) hai dòng CF_TURN_* của khóa TURN vào /etc/miu/production.env; release sau đó áp dụng
-tools/deploy/production/deploy.sh release   # build, security:dist, backup DB, upload, switch, health, tự rollback
+tools/deploy/production/deploy.sh gate      # chỉ kiểm cổng release (§5), không chạm máy chủ
+tools/deploy/production/deploy.sh release   # cổng release, build, security:dist, backup DB, upload, switch, health, tự rollback
 ```
 
 - Bản build: production dùng `pnpm --filter @miu/web build:release` (`vite build --mode release`): chỉ có game, không có `review.html`, `preview.html` hay ảnh review (chỉ giữ ảnh chân dung nhân vật mà UI dùng), khoảng 8,6 MB thay vì 19 MB. `release` dừng nếu `dist` vẫn còn trang review. Staging, E2E và bản review chạy local dùng `build` thường, vẫn có trang review cho người duyệt.
 
 - Secret: entry `service == "postgresql"`, `used_by` bắt đầu bằng `miu-world production` trong `access-tokens.json` (mật khẩu role `miu`); Google client dùng chung entry của staging; khóa TURN của voice chat từ entry `rtc.live.cloudflare.com (TURN)` (§2.2). `setup` ghi `/etc/miu/production.env` (640 `root:miu`), gồm cả hai dòng `CF_TURN_*`; `turn` chỉ thay hai dòng đó, giữ nguyên các dòng khác (chạy lại được), qua ssh stdin, không in giá trị. Thiếu entry thì `turn` dừng, không ghi dòng rỗng (dòng rỗng coi như chưa đặt). Không có khóa thì voice vẫn chạy với STUN (đa số mạng nhà nối thẳng được), chỉ mạng chặt mới cần TURN. Đổi khóa: tạo khóa mới trên Cloudflare (Realtime → TURN), sửa entry trong `access-tokens.json`, chạy `turn` rồi `release` (hoặc restart). Kiểm sau release: đăng nhập, mở `/api/voice/ice-servers` phải có một mục `turn:`; log lỗi chỉ ghi `voice relay credentials failed` kèm mã trạng thái.
+- Cổng release và thứ tự deploy như staging (§5): ảnh màn hình đã duyệt, CI của commit đã chụp xanh; `MIU_RELEASE_FORCE` chỉ cho bản vá gấp, và vẫn phải hỏi người trước.
 - Working tree phải sạch; nếu chỉ còn file chưa track không thuộc bản build thì đặt `MIU_RELEASE_REV=$(git rev-parse --short HEAD)` sau khi kiểm `git diff --quiet HEAD`.
 - Nghiệm thu: `curl -s https://miu.hoandat.com/api/health` trả `{"status":"ok"}`; revision đang chạy ở `/opt/miu/current/apps/server/dist/server/REVISION` trên .65.
 - Log: `journalctl --namespace=miu -u miu-server` (.65; không có `--namespace` thì không thấy); request ở `/var/log/nginx/miu.hoandat.com.{access,error}.log`.
