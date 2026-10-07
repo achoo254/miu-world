@@ -156,6 +156,8 @@
   box-shadow: var(--shadow-material);
 }
 .scene-close:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+/* A scene with a corner close keeps its title clear of it: a long title on a phone wraps instead of running under ✕. */
+.scene-modal:has(> .scene-close) > .ribbon { max-width: calc(100% - 7rem); }
 
 /*
  * A scene opened over Home rather than over a paused game (the event page, Olympic practice): nothing behind it is
