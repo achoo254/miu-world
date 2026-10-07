@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { loadContentCatalog } from '../content/content-catalog';
-import type { PlayerPresence } from '@miu/schema/multiplayer';
+import type { PlayerPresence, ServerWsMessage } from '@miu/schema/multiplayer';
 import { BOT_REPLY_MS, BotRunner } from './bot-runner';
 import { BOT_MAP_CONFIGS } from './bot-profiles';
 import { WalkStore, type Spot } from './bot-brain/walk-store';
@@ -154,6 +154,40 @@ describe('companion bots walk on their own', () => {
     }
     const near = [...room.members.values()].filter((m) => m.isBot && Math.hypot(m.presence.x - me.x, m.presence.z - me.z) <= 45);
     expect(near).toEqual([]);
+    bots.stop();
+    await hub.close();
+  });
+
+  it('tell the players what quest they are on: after their spawn, as it changes, and to a player who comes in', async () => {
+    vi.useFakeTimers();
+    const hub = new MultiplayerHub();
+    // One short quest of the castle's, done where a bot stands (a step without a target).
+    const quests = { questsOn: (mapId: string) => (mapId === 'lau-dai' ? [{ id: 'thu-thach-lau-dai', steps: [{ id: 's1', targets: [], question: false }] }] : []) };
+    const bots = new BotRunner(hub, { random: () => 0.5, walk: castleOnly, quests });
+    const room = hub.getOrCreateRoom('lau-dai');
+    const first: ServerWsMessage[] = [];
+    const me = player('child-1');
+    room.join({ id: me.id, presence: me, send: (m) => first.push(m), isBot: false });
+    bots.start();
+    const castleBots = (BOT_MAP_CONFIGS['lau-dai'] ?? []).map((b) => b.id);
+    expect(castleBots.length).toBeGreaterThan(0);
+    for (const id of castleBots) {
+      const spawn = first.findIndex((m) => m.type === 'spawn' && m.player.id === id);
+      const doing = first.findIndex((m) => m.type === 'bot-doing' && m.id === id);
+      expect(spawn).toBeGreaterThanOrEqual(0);
+      expect(doing).toBeGreaterThan(spawn);
+      expect(first[doing]).toEqual({ type: 'bot-doing', id, quest: 'thu-thach-lau-dai' });
+    }
+    // Doing its step, a bot finishes the quest and takes it up again: told again.
+    first.length = 0;
+    await vi.advanceTimersByTimeAsync(30_000);
+    expect(first.some((m) => m.type === 'bot-doing' && castleBots.includes(m.id))).toBe(true);
+    // A player who comes in later is told each bot's quest, after the room's welcome.
+    const later: ServerWsMessage[] = [];
+    const her = player('child-2');
+    room.join({ id: her.id, presence: her, send: (m) => later.push(m), isBot: false });
+    expect(later[0]?.type).toBe('welcome');
+    expect(new Set(later.filter((m) => m.type === 'bot-doing').map((m) => (m.type === 'bot-doing' ? m.id : '')))).toEqual(new Set(castleBots));
     bots.stop();
     await hub.close();
   });

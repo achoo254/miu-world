@@ -106,6 +106,28 @@ export class Stepper {
     this.stuckNow = false;
   }
 
+  /**
+   * Aims at `goal` instead while walking on (the legs it has stay until its next plan, which heads for `goal`): the
+   * next point of a way it knows came into sight.
+   */
+  retarget(goal: PathGoal, now: number): void {
+    this.goal = goal;
+    this.planReaches = false;
+    this.cellsSincePlan = REPLAN_CELLS;
+    this.bestLeft = Infinity;
+    this.noHeadway = 0;
+    this.headwayAt = now;
+    this.stuckNow = false;
+  }
+
+  /** Put down at `spot` (stuck for good): no legs, no goal. */
+  reset(spot: Spot): void {
+    if (this.map.standAt(spot.x, spot.y, spot.z) === 0) return;
+    this.ride = null;
+    this.stuckNow = false;
+    this.place(spot);
+  }
+
   /** Stops where it is once the leg it is on ends (a leg always ends at a column's centre). */
   halt(): void {
     this.goal = null;

@@ -12,15 +12,21 @@ export type Outcome =
   | { kind: 'start' }
   | { kind: 'arrived'; place: WalkPlace | null }
   | { kind: 'rested' }
-  | { kind: 'stuck' }
-  | { kind: 'rode'; stop: WalkPlace };
+  /** `seconds`: from its last headway to giving up, as its feet count it. */
+  | { kind: 'stuck'; seconds?: number }
+  | { kind: 'rode'; stop: WalkPlace }
+  /** Its chooser ended what it was doing (`GoalChooser.sense`). */
+  | { kind: 'enough' };
 
 /** What it does next. */
 export type Choice =
-  | { kind: 'go'; goal: PathGoal; place: WalkPlace | null }
+  /** `via`: a way it knows, walked point by point on the way to `goal` (each point a column it stood on). */
+  | { kind: 'go'; goal: PathGoal; place: WalkPlace | null; via?: readonly Spot[] }
   /** Busy at a place (`work`) or idling (`rest`) for a while. */
   | { kind: 'work' | 'rest'; seconds: number }
-  | { kind: 'ride'; stop: WalkPlace; to: Spot };
+  | { kind: 'ride'; stop: WalkPlace; to: Spot }
+  /** Stuck for good: put back at `to` (a standing spot it knows). */
+  | { kind: 'reset'; to: Spot };
 
 /** What a chooser knows of the bot: where it is and what it sees, never the whole map. */
 export interface BotView {
@@ -32,6 +38,11 @@ export interface BotView {
 
 export interface GoalChooser {
   next(view: BotView, last: Outcome): Choice;
+  /**
+   * Told every tick what the bot walked (columns, in order) over `dt` seconds and whether it is on its way somewhere;
+   * true ends what it is doing now (`next` is then asked with `enough`).
+   */
+  sense?(view: BotView, walked: readonly Spot[], dt: number, walking: boolean): boolean;
 }
 
 /** A place this close counts as reached (every quest target has a standing spot this near, walk-export test). */

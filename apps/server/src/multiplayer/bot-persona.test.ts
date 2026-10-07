@@ -17,6 +17,20 @@ describe('a companion bot is a player of its own', () => {
     expect(personaOf('bot-tt-1@c7')).toEqual(personaOf('bot-tt-1'));
   });
 
+  it('is curious or settled in a way of its own (0 … 1), the same wherever it plays, its other traits untouched', () => {
+    const personas = Array.from({ length: 200 }, (_, i) => personaOf(`bot-x-${i}`));
+    for (const p of personas) {
+      expect(p.curious).toBeGreaterThanOrEqual(0);
+      expect(p.curious).toBeLessThanOrEqual(1);
+    }
+    expect(Math.min(...personas.map((p) => p.curious))).toBeLessThan(0.1);
+    expect(Math.max(...personas.map((p) => p.curious))).toBeGreaterThan(0.9);
+    expect(personaOf('bot-tt-1@c7').curious).toBe(personaOf('bot-tt-1').curious);
+    // Drawn from a stream of its own: the traits a bot had before keep their values (bot-tt-1's, as they were).
+    const { curious: _curious, ...rest } = personaOf('bot-tt-1');
+    expect(rest).toEqual({ strong: 'toan', weak: 'tieng-viet', speed: 1.53, care: 0.97, chat: 0.34, peakHour: 10, swing: 0.1, voice: 0, sight: 21, walk: 2.7 });
+  });
+
   it('differs from bot to bot: a hundred bots make a hundred characters', () => {
     const personas = Array.from({ length: 100 }, (_, i) => personaOf(`bot-x-${i}`));
     expect(new Set(personas.map((p) => JSON.stringify(p))).size).toBe(100);

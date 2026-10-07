@@ -1,8 +1,10 @@
 // Bot Runner (Master Plan §8b, Jev 03/10/2026).
 // Runs companion bots across game maps, each one like a player of its own: it walks the map on its own feet (no
 // route given, nobody followed), sees only what is around it, finds its way over what it sees, and decides where
-// to go next (bot-brain/); it waves and says hello when a player comes up to it, visits friends, answers invites
-// and plays co-op challenges. All bots are clearly labeled "[Bạn máy]".
+// to go next by what it learnt (bot-brain/): the places it found, the ways it walked, the map's quests it plays on
+// its own (its name tag shows the quest mark), a player it sees and chooses to go and meet. It waves and says hello
+// when a player comes up to it, visits friends, answers invites and plays co-op challenges. All bots are clearly
+// labeled "[Bạn máy]".
 import {
   HOME_MAP_ID,
   SAFE_CANNED_CHATS,
@@ -19,13 +21,11 @@ import type { BotStore } from './bot-store';
 import type { CoopPerson } from '../coop/coop-session';
 import { botProfileId, homeBotId, type MultiplayerHub, type MultiplayerRoom } from './multiplayer-hub';
 import { BotBody } from './bot-brain/body';
+import { Brain, type SeenPlayer } from './bot-brain/brain';
 import { LocalPlanner, PathQueue } from './bot-brain/local-path';
+import { contentQuestBook, type QuestBook } from './bot-brain/quest-plan';
 import { seePlayers } from './bot-brain/sight';
-import { wanderChooser, type GoalChooser } from './bot-brain/wander';
 import type { WalkMap } from './bot-brain/walk-store';
-
-// The friends lists look a bot up here (the profiles themselves live in bot-profiles.ts).
-export { findBot };
 
 /** How long a companion bot takes to answer a party invite. */
 export const BOT_REPLY_MS = 1_500;
@@ -81,17 +81,19 @@ class CompanionBotInstance {
   readonly profile: BotProfile;
   readonly room: MultiplayerRoom;
   readonly presence: PlayerPresence;
-  /** Its feet on the map (null: the map has no walk grid, and it stays at its home). */
+  /** Its feet on the map and its mind (null: the map has no walk grid, and it stays at its home). */
   readonly body: BotBody | null;
+  readonly brain: Brain | null;
   private greetLeft = 0;
   private lastGreetTime = 0;
   private readonly hooks: BotHooks;
   private readonly walkSpeed: number;
 
-  constructor(profile: BotProfile, room: MultiplayerRoom, body: BotBody | null, hooks: Partial<BotHooks> = {}) {
+  constructor(profile: BotProfile, room: MultiplayerRoom, body: BotBody | null, brain: Brain | null, hooks: Partial<BotHooks> = {}) {
     this.profile = profile;
     this.room = room;
     this.body = body;
+    this.brain = brain;
     this.hooks = { ...NO_HOOKS, ...hooks };
     this.walkSpeed = personaOf(profile.id).walk;
     const at = body?.stepper ?? profile.home;
@@ -122,6 +124,22 @@ class CompanionBotInstance {
       send: (message) => this.hooks.onMessage(message),
       isBot: true,
     });
+    // After its spawn, the players learn what quest it is on.
+    this.showDoing();
+  }
+
+  /** The quest it is busy with, to everyone in the room who sees it. */
+  showDoing(): void {
+    const id = this.profile.id;
+    if (this.room.members.has(id)) this.room.broadcast({ type: 'bot-doing', id, quest: this.brain?.questId ?? null }, id);
+  }
+
+  /** Someone came into its room: a player is told the quest it is on (nothing to tell when it is on none). */
+  welcome(who: PlayerPresence): void {
+    const quest = this.brain?.questId ?? null;
+    const member = this.room.members.get(who.id);
+    if (quest === null || who.isBot || !member || !this.room.canSee(who.id, this.profile.id)) return;
+    member.send({ type: 'bot-doing', id: this.profile.id, quest });
   }
 
   leave(): void {
@@ -175,6 +193,11 @@ class CompanionBotInstance {
     this.show(body);
   }
 
+  /** It shows what it does: a wave at a person, a jump at a thing, a cheer when done. */
+  gesture(emote: 'wave' | 'jump' | 'cheer'): void {
+    this.room.broadcastEmote(this.profile.id, emote);
+  }
+
   /** Tells the room where it is now, when anything about it changed. */
   private show(body: BotBody): void {
     const { stepper } = body;
@@ -203,8 +226,8 @@ export interface BotRunnerOptions {
   clock?: () => Date;
   /** The maps' walk grids (bot-brain/walk-store.ts); without them, or for a map without one, its bots stay at home. */
   walk?: { get(mapId: string): WalkMap | null };
-  /** Where a bot goes next; the wandering chooser when not given (one chooser per bot). */
-  chooser?: (botId: string) => GoalChooser;
+  /** The quests bots play on their own on each map (default: the content directory's, read when first needed). */
+  quests?: QuestBook;
   /** Time each tick may spend planning bots' ways (ms). */
   planBudgetMs?: number;
 }
@@ -242,7 +265,7 @@ export class BotRunner {
   private readonly random: () => number;
   private readonly bots = new Map<string, CompanionBotInstance[]>();
   private readonly walk: { get(mapId: string): WalkMap | null } | null;
-  private readonly chooser: (botId: string) => GoalChooser;
+  private readonly quests: QuestBook;
   private readonly planner = new LocalPlanner();
   /** Every bot's plans, worked through each tick within the budget. */
   readonly plans: PathQueue;
@@ -275,7 +298,7 @@ export class BotRunner {
     this.store = options.store ?? null;
     this.clock = options.clock ?? (() => new Date());
     this.walk = options.walk ?? null;
-    this.chooser = options.chooser ?? (() => wanderChooser(this.random));
+    this.quests = options.quests ?? contentQuestBook();
     this.plans = new PathQueue(options.planBudgetMs ?? PLAN_BUDGET_MS);
   }
 
@@ -442,30 +465,55 @@ export class BotRunner {
     this.coopThink(botId, Math.min(...left) - BOT_REHOLD_MS + 100);
   }
 
-  /** A bot of `profile` in `room`, wired to this runner, on its own feet when the map has a walk grid. */
+  /**
+   * A bot of `profile` in `room`, wired to this runner: on its own feet and with a mind of its own when the map has
+   * a walk grid. It starts knowing nothing of the map.
+   */
   private instance(profile: BotProfile, room: MultiplayerRoom): CompanionBotInstance {
     const map = this.walk?.get(room.mapId) ?? null;
     const home = map?.snap(profile.home, HOME_SNAP) ?? null;
     const persona = personaOf(profile.id);
     const key = this.planKey(room, profile.id);
-    const body =
+    let inst: CompanionBotInstance | null = null;
+    const brain =
       map && home
+        ? new Brain({
+            map,
+            home,
+            persona,
+            quests: this.quests.questsOn(room.mapId, this.clock()),
+            random: this.random,
+            now: () => Date.now(),
+            planner: this.planner,
+            requestPlan: (run) => this.plans.request(`${key}|way`, run),
+            players: (at, sight) =>
+              seePlayers(room, profile.id, { x: at.x + 0.5, z: at.z + 0.5 }, sight).map((m): SeenPlayer => ({ id: m.id, x: m.presence.x, y: m.presence.y, z: m.presence.z })),
+            events: {
+              doing: () => inst?.showDoing(),
+              gesture: (emote) => inst?.gesture(emote),
+            },
+          })
+        : null;
+    const body =
+      map && home && brain
         ? new BotBody({
             map,
             home,
             pace: { speed: persona.walk, sight: persona.sight },
-            chooser: this.chooser(profile.id),
+            chooser: brain,
             planner: this.planner,
             requestPlan: (run) => this.plans.request(key, run),
             now: () => Date.now(),
           })
         : null;
-    return new CompanionBotInstance(profile, room, body, {
-      onMessage: (message) => this.heard(profile.id, message),
+    inst = new CompanionBotInstance(profile, room, body, brain, {
+      // A player who comes in learns what quest it is on.
+      onMessage: (message) => (message.type === 'spawn' ? inst?.welcome(message.player) : this.heard(profile.id, message)),
       onGreet: (playerId) => this.greeted(profile.id, playerId),
       friendsHere: () => this.hub.friendsOfBot(botProfileId(profile.id)).filter((id) => room.members.has(id)),
       random: this.random,
     });
+    return inst;
   }
 
   start(): void {
@@ -480,6 +528,7 @@ export class BotRunner {
         for (const bot of this.bots.get(room.key) ?? []) {
           bot.leave();
           this.plans.cancel(this.planKey(room, bot.profile.id));
+          this.plans.cancel(`${this.planKey(room, bot.profile.id)}|way`);
         }
         this.bots.delete(room.key);
       },

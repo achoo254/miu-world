@@ -29,6 +29,8 @@ export interface BotPersona {
   sight: number;
   /** Its walking pace (blocks per second). */
   walk: number;
+  /** How curious it is (0 … 1): a curious bot explores more and picks less surely among what it knows. */
+  curious: number;
 }
 
 /** The range of a bot's sight and walking pace (blocks, blocks per second). */
@@ -77,8 +79,9 @@ export function personaOf(botId: string): BotPersona {
     peakHour: 7 + Math.floor(rng() * 14),
     swing: round2(0.04 + 0.11 * rng()),
     voice: Math.floor(rng() * VOICES),
-    // Drawn from a stream of their own, so the traits above stay what they were before a bot had a body.
+    // Drawn from streams of their own, so the traits above stay what they were before a bot had a body or a mind.
     ...bodyOf(botId),
+    curious: round2(seeded(hashOf(`mind:${botProfileId(botId)}`))()),
   };
 }
 

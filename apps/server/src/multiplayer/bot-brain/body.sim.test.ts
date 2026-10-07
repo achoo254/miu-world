@@ -46,7 +46,7 @@ describe('bots wandering on their own feet', () => {
         body.tick(TICK_S);
         // Its body is over a spot of the column under it, at that spot's height.
         expect(map.standAt(Math.floor(stepper.x), stepper.y, Math.floor(stepper.z))).not.toBe(0);
-        const trace = stepper.takeTrace();
+        const trace = body.walkedNow;
         // A ride puts it down elsewhere: its way starts again from there.
         if (wasRiding && !stepper.riding) walked[i] = [stepper.spot];
         walked[i]?.push(...trace);
