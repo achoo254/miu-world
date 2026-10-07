@@ -1,7 +1,8 @@
 // Bot Runner (Master Plan §8b, Jev 03/10/2026).
-// Runs companion bots across game maps. Bots behave naturally like grade 2 children:
-// patrolling roads, visiting sights, pausing to explore, and waving/saying hello
-// when a human child approaches. All bots are clearly labeled "[Bạn máy]".
+// Runs companion bots across game maps, each one like a player of its own: it walks the map on its own feet (no
+// route given, nobody followed), sees only what is around it, finds its way over what it sees, and decides where
+// to go next (bot-brain/); it waves and says hello when a player comes up to it, visits friends, answers invites
+// and plays co-op challenges. All bots are clearly labeled "[Bạn máy]".
 import {
   HOME_MAP_ID,
   SAFE_CANNED_CHATS,
@@ -13,180 +14,18 @@ import { VOICE_BOT_LINE_VARIANTS, type VoiceBotLineKey, type VoiceChannel } from
 import { freshPicker, type FreshPicker } from '@miu/quest/pick-fresh';
 import type { CoopBotDriver, CoopBotMoves } from '../coop/coop-service';
 import { botAnswerXp, botSkillLevel, fatigueAfter, moodAt, personaOf, rightChance, thinkMs, VOICES, type Bounds } from './bot-persona';
+import { BOT_MAP_CONFIGS, findBot, HOME_SNAP, type BotProfile } from './bot-profiles';
 import type { BotStore } from './bot-store';
 import type { CoopPerson } from '../coop/coop-session';
 import { botProfileId, homeBotId, type MultiplayerHub, type MultiplayerRoom } from './multiplayer-hub';
+import { BotBody } from './bot-brain/body';
+import { LocalPlanner, PathQueue } from './bot-brain/local-path';
+import { seePlayers } from './bot-brain/sight';
+import { wanderChooser, type GoalChooser } from './bot-brain/wander';
+import type { WalkMap } from './bot-brain/walk-store';
 
-export interface Waypoint {
-  x: number;
-  y: number;
-  z: number;
-}
-
-const distance = (a: Waypoint, b: Waypoint): number => Math.hypot(a.x - b.x, a.z - b.z);
-
-export interface BotProfile {
-  id: string;
-  displayName: string;
-  species: string;
-  outfit: string[];
-  waypoints: Waypoint[];
-}
-
-/** Pre-configured bot routes across core maps (using genuine roads & landmarks). */
-export const BOT_MAP_CONFIGS: Record<string, BotProfile[]> = {
-  'trung-tam': [
-    // 8 bots around Fountain Plaza & central crossroads
-    { id: 'bot-tt-1', displayName: 'Bé Bông', species: 'rabbit', outfit: ['clothes-dress', 'hat-bow-pink'], waypoints: [{ x: 395, y: 13, z: 420 }, { x: 405, y: 13, z: 420 }, { x: 405, y: 13, z: 435 }, { x: 395, y: 13, z: 435 }] },
-    { id: 'bot-tt-2', displayName: 'Mèo Miu', species: 'cat', outfit: ['clothes-overalls-green', 'hat-cat-mint'], waypoints: [{ x: 385, y: 13, z: 440 }, { x: 395, y: 13, z: 455 }, { x: 385, y: 13, z: 465 }, { x: 375, y: 13, z: 450 }] },
-    { id: 'bot-tt-3', displayName: 'Gấu Béo', species: 'bear', outfit: ['clothes-vest-shorts-navy', 'hat-beanie-blue'], waypoints: [{ x: 415, y: 13, z: 435 }, { x: 425, y: 13, z: 445 }, { x: 415, y: 13, z: 460 }, { x: 405, y: 13, z: 450 }] },
-    { id: 'bot-tt-4', displayName: 'Cáo Cam', species: 'fox', outfit: ['clothes-jacket-red', 'hat-cap-blue'], waypoints: [{ x: 390, y: 13, z: 430 }, { x: 410, y: 13, z: 430 }, { x: 410, y: 13, z: 450 }, { x: 390, y: 13, z: 450 }] },
-    { id: 'bot-tt-5', displayName: 'Bé Bi', species: 'rabbit', outfit: ['clothes-dress-mint', 'hat-flower-crown-mint'], waypoints: [{ x: 400, y: 13, z: 425 }, { x: 420, y: 13, z: 435 }, { x: 410, y: 13, z: 455 }, { x: 395, y: 13, z: 440 }] },
-    { id: 'bot-tt-6', displayName: 'Bé Bo', species: 'cat', outfit: ['clothes-vest-shorts', 'hat-beanie-green'], waypoints: [{ x: 380, y: 13, z: 435 }, { x: 400, y: 13, z: 435 }, { x: 400, y: 13, z: 455 }, { x: 380, y: 13, z: 455 }] },
-    { id: 'bot-tt-7', displayName: 'Thỏ Trắng', species: 'rabbit', outfit: ['clothes-overalls-red', 'hat-bow-pink'], waypoints: [{ x: 405, y: 13, z: 440 }, { x: 415, y: 13, z: 450 }, { x: 405, y: 13, z: 465 }, { x: 395, y: 13, z: 455 }] },
-    { id: 'bot-tt-8', displayName: 'Bé Nấm', species: 'bear', outfit: ['clothes-jacket-green', 'hat-cap-yellow'], waypoints: [{ x: 390, y: 13, z: 445 }, { x: 400, y: 13, z: 460 }, { x: 390, y: 13, z: 470 }, { x: 380, y: 13, z: 455 }] },
-    // 6 bots in front of Shop and west shopping street
-    { id: 'bot-tt-9', displayName: 'Bé Mít', species: 'cat', outfit: ['clothes-dress-blue', 'hat-straw-blue'], waypoints: [{ x: 365, y: 13, z: 425 }, { x: 375, y: 13, z: 425 }, { x: 375, y: 13, z: 445 }, { x: 365, y: 13, z: 445 }] },
-    { id: 'bot-tt-10', displayName: 'Cáo Nhỏ', species: 'fox', outfit: ['clothes-overalls', 'hat-beanie-red'], waypoints: [{ x: 360, y: 13, z: 430 }, { x: 370, y: 13, z: 435 }, { x: 370, y: 13, z: 450 }, { x: 360, y: 13, z: 445 }] },
-    { id: 'bot-tt-11', displayName: 'Gấu Con', species: 'bear', outfit: ['clothes-jacket-red', 'hat-beanie-blue'], waypoints: [{ x: 370, y: 13, z: 420 }, { x: 380, y: 13, z: 425 }, { x: 375, y: 13, z: 440 }, { x: 365, y: 13, z: 435 }] },
-    { id: 'bot-tt-12', displayName: 'Bé Dâu', species: 'rabbit', outfit: ['clothes-dress', 'hat-flower-crown'], waypoints: [{ x: 362, y: 13, z: 440 }, { x: 372, y: 13, z: 445 }, { x: 372, y: 13, z: 458 }, { x: 362, y: 13, z: 452 }] },
-    { id: 'bot-tt-13', displayName: 'Mèo Vàng', species: 'cat', outfit: ['clothes-overalls-green', 'hat-cat-mint'], waypoints: [{ x: 375, y: 13, z: 430 }, { x: 382, y: 13, z: 440 }, { x: 378, y: 13, z: 455 }, { x: 370, y: 13, z: 445 }] },
-    { id: 'bot-tt-14', displayName: 'Bé Sóc', species: 'fox', outfit: ['clothes-vest-shorts-navy', 'hat-cap-blue'], waypoints: [{ x: 368, y: 13, z: 415 }, { x: 376, y: 13, z: 425 }, { x: 368, y: 13, z: 435 }, { x: 360, y: 13, z: 425 }] },
-    // 4 bots in Chợ Giao Dịch
-    { id: 'bot-tt-15', displayName: 'Bé Cam', species: 'bear', outfit: ['clothes-jacket-green', 'hat-cap-yellow'], waypoints: [{ x: 240, y: 13, z: 435 }, { x: 260, y: 13, z: 435 }, { x: 260, y: 13, z: 455 }, { x: 240, y: 13, z: 455 }] },
-    { id: 'bot-tt-16', displayName: 'Thỏ Hồng', species: 'rabbit', outfit: ['clothes-dress-mint', 'hat-bow-pink'], waypoints: [{ x: 250, y: 13, z: 440 }, { x: 270, y: 13, z: 445 }, { x: 265, y: 13, z: 465 }, { x: 245, y: 13, z: 460 }] },
-    { id: 'bot-tt-17', displayName: 'Cáo Đốm', species: 'fox', outfit: ['clothes-vest-shorts', 'hat-beanie-green'], waypoints: [{ x: 260, y: 13, z: 430 }, { x: 275, y: 13, z: 440 }, { x: 270, y: 13, z: 455 }, { x: 255, y: 13, z: 445 }] },
-    { id: 'bot-tt-18', displayName: 'Bé Khoai', species: 'cat', outfit: ['clothes-overalls-red', 'hat-straw-pink'], waypoints: [{ x: 235, y: 13, z: 445 }, { x: 250, y: 13, z: 450 }, { x: 245, y: 13, z: 465 }, { x: 230, y: 13, z: 460 }] },
-    // 4 bots in Khu Sự Kiện
-    { id: 'bot-tt-19', displayName: 'Bé Bắp', species: 'rabbit', outfit: ['clothes-dress-blue', 'hat-flower-crown'], waypoints: [{ x: 520, y: 13, z: 430 }, { x: 540, y: 13, z: 430 }, { x: 540, y: 13, z: 450 }, { x: 520, y: 13, z: 450 }] },
-    { id: 'bot-tt-20', displayName: 'Mèo Mun', species: 'cat', outfit: ['clothes-jacket-red', 'hat-beanie-red'], waypoints: [{ x: 530, y: 13, z: 440 }, { x: 550, y: 13, z: 445 }, { x: 545, y: 13, z: 465 }, { x: 525, y: 13, z: 460 }] },
-    { id: 'bot-tt-21', displayName: 'Gấu Trúc', species: 'bear', outfit: ['clothes-overalls-green', 'hat-cat-mint'], waypoints: [{ x: 515, y: 13, z: 445 }, { x: 535, y: 13, z: 450 }, { x: 530, y: 13, z: 470 }, { x: 510, y: 13, z: 465 }] },
-    { id: 'bot-tt-22', displayName: 'Cáo Nâu', species: 'fox', outfit: ['clothes-vest-shorts-navy', 'hat-cap-blue'], waypoints: [{ x: 535, y: 13, z: 435 }, { x: 555, y: 13, z: 440 }, { x: 550, y: 13, z: 460 }, { x: 530, y: 13, z: 455 }] },
-    // 2 bots near Cổng & Bến xe
-    { id: 'bot-tt-23', displayName: 'Bé Tí', species: 'rabbit', outfit: ['clothes-dress', 'hat-bow-pink'], waypoints: [{ x: 395, y: 13, z: 510 }, { x: 410, y: 13, z: 515 }, { x: 405, y: 13, z: 530 }, { x: 390, y: 13, z: 525 }] },
-    { id: 'bot-tt-24', displayName: 'Bé Su', species: 'cat', outfit: ['clothes-overalls', 'hat-beanie-blue'], waypoints: [{ x: 400, y: 13, z: 500 }, { x: 415, y: 13, z: 510 }, { x: 410, y: 13, z: 525 }, { x: 395, y: 13, z: 515 }] },
-  ],
-  'truong-hoc': [
-    { id: 'bot-th-1', displayName: 'Cáo Nhanh Trí', species: 'fox', outfit: ['clothes-jacket-red', 'hat-cap-blue'], waypoints: [{ x: 390, y: 13, z: 310 }, { x: 410, y: 13, z: 310 }, { x: 410, y: 13, z: 330 }, { x: 390, y: 13, z: 330 }] },
-    { id: 'bot-th-2', displayName: 'Thỏ Măng Non', species: 'rabbit', outfit: ['clothes-dress', 'hat-flower-crown'], waypoints: [{ x: 385, y: 13, z: 320 }, { x: 400, y: 13, z: 335 }, { x: 395, y: 13, z: 350 }, { x: 380, y: 13, z: 335 }] },
-    { id: 'bot-th-3', displayName: 'Mèo Chăm Học', species: 'cat', outfit: ['clothes-dress-mint', 'hat-cat-mint'], waypoints: [{ x: 410, y: 13, z: 320 }, { x: 425, y: 13, z: 330 }, { x: 420, y: 13, z: 345 }, { x: 405, y: 13, z: 335 }] },
-    { id: 'bot-th-4', displayName: 'Gấu Ngoan', species: 'bear', outfit: ['clothes-vest-shorts-navy', 'hat-beanie-blue'], waypoints: [{ x: 395, y: 13, z: 340 }, { x: 415, y: 13, z: 345 }, { x: 410, y: 13, z: 365 }, { x: 390, y: 13, z: 360 }] },
-    { id: 'bot-th-5', displayName: 'Bé Hạt Dẻ', species: 'fox', outfit: ['clothes-overalls-green', 'hat-beanie-green'], waypoints: [{ x: 415, y: 13, z: 335 }, { x: 435, y: 13, z: 340 }, { x: 430, y: 13, z: 360 }, { x: 410, y: 13, z: 355 }] },
-    { id: 'bot-th-6', displayName: 'Thỏ Nhí', species: 'rabbit', outfit: ['clothes-overalls-red', 'hat-bow-pink'], waypoints: [{ x: 380, y: 13, z: 330 }, { x: 395, y: 13, z: 340 }, { x: 390, y: 13, z: 360 }, { x: 375, y: 13, z: 350 }] },
-    { id: 'bot-th-7', displayName: 'Bé Gạo', species: 'cat', outfit: ['clothes-dress-blue', 'hat-straw-blue'], waypoints: [{ x: 400, y: 13, z: 350 }, { x: 420, y: 13, z: 355 }, { x: 415, y: 13, z: 375 }, { x: 395, y: 13, z: 370 }] },
-    { id: 'bot-th-8', displayName: 'Bé Bơ', species: 'bear', outfit: ['clothes-jacket-green', 'hat-cap-yellow'], waypoints: [{ x: 425, y: 13, z: 345 }, { x: 445, y: 13, z: 350 }, { x: 440, y: 13, z: 370 }, { x: 420, y: 13, z: 365 }] },
-    { id: 'bot-th-9', displayName: 'Bé Mây', species: 'rabbit', outfit: ['clothes-dress', 'hat-flower-crown-mint'], waypoints: [{ x: 385, y: 13, z: 355 }, { x: 405, y: 13, z: 360 }, { x: 400, y: 13, z: 380 }, { x: 380, y: 13, z: 375 }] },
-    { id: 'bot-th-10', displayName: 'Cáo Vui Vẻ', species: 'fox', outfit: ['clothes-vest-shorts', 'hat-beanie-red'], waypoints: [{ x: 405, y: 13, z: 360 }, { x: 425, y: 13, z: 365 }, { x: 420, y: 13, z: 385 }, { x: 400, y: 13, z: 380 }] },
-  ],
-  'cho-phien': [
-    { id: 'bot-cp-1', displayName: 'Cún Đốm', species: 'bear', outfit: ['clothes-jacket-green', 'hat-cap-yellow'], waypoints: [{ x: 215, y: 13, z: 255 }, { x: 230, y: 13, z: 260 }, { x: 225, y: 13, z: 275 }, { x: 210, y: 13, z: 270 }] },
-    { id: 'bot-cp-2', displayName: 'Thỏ Bán Hoa', species: 'rabbit', outfit: ['clothes-dress-mint', 'hat-flower-crown'], waypoints: [{ x: 225, y: 13, z: 260 }, { x: 240, y: 13, z: 265 }, { x: 235, y: 13, z: 280 }, { x: 220, y: 13, z: 275 }] },
-    { id: 'bot-cp-3', displayName: 'Mèo Mua Sắm', species: 'cat', outfit: ['clothes-dress-blue', 'hat-straw-pink'], waypoints: [{ x: 210, y: 13, z: 265 }, { x: 225, y: 13, z: 270 }, { x: 220, y: 13, z: 285 }, { x: 205, y: 13, z: 280 }] },
-    { id: 'bot-cp-4', displayName: 'Cáo Nhí Nhảnh', species: 'fox', outfit: ['clothes-overalls-green', 'hat-cap-blue'], waypoints: [{ x: 230, y: 13, z: 250 }, { x: 245, y: 13, z: 255 }, { x: 240, y: 13, z: 270 }, { x: 225, y: 13, z: 265 }] },
-    { id: 'bot-cp-5', displayName: 'Bé Đậu', species: 'rabbit', outfit: ['clothes-dress', 'hat-bow-pink'], waypoints: [{ x: 235, y: 13, z: 265 }, { x: 250, y: 13, z: 270 }, { x: 245, y: 13, z: 285 }, { x: 230, y: 13, z: 280 }] },
-    { id: 'bot-cp-6', displayName: 'Gấu Mũ Rơm', species: 'bear', outfit: ['clothes-overalls', 'hat-straw-blue'], waypoints: [{ x: 215, y: 13, z: 275 }, { x: 230, y: 13, z: 280 }, { x: 225, y: 13, z: 295 }, { x: 210, y: 13, z: 290 }] },
-    { id: 'bot-cp-7', displayName: 'Mèo Kẹo Bông', species: 'cat', outfit: ['clothes-vest-shorts-navy', 'hat-cat-mint'], waypoints: [{ x: 225, y: 13, z: 280 }, { x: 240, y: 13, z: 285 }, { x: 235, y: 13, z: 300 }, { x: 220, y: 13, z: 295 }] },
-    { id: 'bot-cp-8', displayName: 'Bé Bống', species: 'rabbit', outfit: ['clothes-overalls-red', 'hat-flower-crown-mint'], waypoints: [{ x: 240, y: 13, z: 260 }, { x: 255, y: 13, z: 265 }, { x: 250, y: 13, z: 280 }, { x: 235, y: 13, z: 275 }] },
-    { id: 'bot-cp-9', displayName: 'Cáo Tạp Hóa', species: 'fox', outfit: ['clothes-jacket-red', 'hat-beanie-green'], waypoints: [{ x: 220, y: 13, z: 245 }, { x: 235, y: 13, z: 250 }, { x: 230, y: 13, z: 265 }, { x: 215, y: 13, z: 260 }] },
-    { id: 'bot-cp-10', displayName: 'Bé Thóc', species: 'bear', outfit: ['clothes-vest-shorts', 'hat-beanie-blue'], waypoints: [{ x: 230, y: 13, z: 275 }, { x: 245, y: 13, z: 280 }, { x: 240, y: 13, z: 295 }, { x: 225, y: 13, z: 290 }] },
-  ],
-  'lang-ven-song': [
-    { id: 'bot-lvs-1', displayName: 'Bé Na', species: 'cat', outfit: ['clothes-dress-mint', 'hat-flower-crown-mint'], waypoints: [{ x: 60, y: 13, z: 75 }, { x: 75, y: 13, z: 85 }, { x: 70, y: 13, z: 105 }, { x: 55, y: 13, z: 95 }] },
-    { id: 'bot-lvs-2', displayName: 'Họa Mi', species: 'rabbit', outfit: ['clothes-overalls', 'hat-straw-pink'], waypoints: [{ x: 70, y: 13, z: 90 }, { x: 85, y: 13, z: 100 }, { x: 80, y: 13, z: 120 }, { x: 65, y: 13, z: 110 }] },
-    { id: 'bot-lvs-3', displayName: 'Gấu Bến Đò', species: 'bear', outfit: ['clothes-vest-shorts-navy', 'hat-beanie-blue'], waypoints: [{ x: 80, y: 13, z: 110 }, { x: 95, y: 13, z: 120 }, { x: 90, y: 13, z: 140 }, { x: 75, y: 13, z: 130 }] },
-    { id: 'bot-lvs-4', displayName: 'Cáo Thả Thuyền', species: 'fox', outfit: ['clothes-jacket-red', 'hat-cap-blue'], waypoints: [{ x: 65, y: 13, z: 120 }, { x: 80, y: 13, z: 130 }, { x: 75, y: 13, z: 150 }, { x: 60, y: 13, z: 140 }] },
-    { id: 'bot-lvs-5', displayName: 'Bé Hoa Đăng', species: 'rabbit', outfit: ['clothes-dress-blue', 'hat-straw-blue'], waypoints: [{ x: 90, y: 13, z: 130 }, { x: 105, y: 13, z: 140 }, { x: 100, y: 13, z: 160 }, { x: 85, y: 13, z: 150 }] },
-    { id: 'bot-lvs-6', displayName: 'Mèo Sen', species: 'cat', outfit: ['clothes-overalls-green', 'hat-cat-mint'], waypoints: [{ x: 100, y: 13, z: 150 }, { x: 115, y: 13, z: 160 }, { x: 110, y: 13, z: 180 }, { x: 95, y: 13, z: 170 }] },
-    { id: 'bot-lvs-7', displayName: 'Bé Lia Thia', species: 'bear', outfit: ['clothes-jacket-green', 'hat-cap-yellow'], waypoints: [{ x: 110, y: 13, z: 170 }, { x: 125, y: 13, z: 180 }, { x: 120, y: 13, z: 200 }, { x: 105, y: 13, z: 190 }] },
-    { id: 'bot-lvs-8', displayName: 'Thỏ Cầu Kiều', species: 'rabbit', outfit: ['clothes-dress', 'hat-bow-pink'], waypoints: [{ x: 75, y: 13, z: 80 }, { x: 90, y: 13, z: 90 }, { x: 85, y: 13, z: 110 }, { x: 70, y: 13, z: 100 }] },
-  ],
-  'nong-trai': [
-    { id: 'bot-nt-1', displayName: 'Bác Nông Dân Nhí', species: 'bear', outfit: ['clothes-overalls-green', 'hat-straw-blue'], waypoints: [{ x: 395, y: 13, z: 320 }, { x: 410, y: 13, z: 325 }, { x: 405, y: 13, z: 340 }, { x: 390, y: 13, z: 335 }] },
-    { id: 'bot-nt-2', displayName: 'Bé Gặt Lúa', species: 'cat', outfit: ['clothes-dress-blue', 'hat-straw-pink'], waypoints: [{ x: 405, y: 13, z: 330 }, { x: 420, y: 13, z: 335 }, { x: 415, y: 13, z: 350 }, { x: 400, y: 13, z: 345 }] },
-    { id: 'bot-nt-3', displayName: 'Thỏ Trồng Cà Rốt', species: 'rabbit', outfit: ['clothes-overalls', 'hat-flower-crown'], waypoints: [{ x: 385, y: 13, z: 325 }, { x: 400, y: 13, z: 330 }, { x: 395, y: 13, z: 345 }, { x: 380, y: 13, z: 340 }] },
-    { id: 'bot-nt-4', displayName: 'Cáo Chăn Gà', species: 'fox', outfit: ['clothes-jacket-red', 'hat-cap-blue'], waypoints: [{ x: 410, y: 13, z: 315 }, { x: 425, y: 13, z: 320 }, { x: 420, y: 13, z: 335 }, { x: 405, y: 13, z: 330 }] },
-    { id: 'bot-nt-5', displayName: 'Bé Nhặt Trứng', species: 'rabbit', outfit: ['clothes-dress-mint', 'hat-bow-pink'], waypoints: [{ x: 390, y: 13, z: 340 }, { x: 405, y: 13, z: 345 }, { x: 400, y: 13, z: 360 }, { x: 385, y: 13, z: 355 }] },
-    { id: 'bot-nt-6', displayName: 'Gấu Cối Xay', species: 'bear', outfit: ['clothes-vest-shorts-navy', 'hat-beanie-blue'], waypoints: [{ x: 415, y: 13, z: 335 }, { x: 430, y: 13, z: 340 }, { x: 425, y: 13, z: 355 }, { x: 410, y: 13, z: 350 }] },
-    { id: 'bot-nt-7', displayName: 'Mèo Tưới Rau', species: 'cat', outfit: ['clothes-overalls-red', 'hat-cat-mint'], waypoints: [{ x: 380, y: 13, z: 335 }, { x: 395, y: 13, z: 340 }, { x: 390, y: 13, z: 355 }, { x: 375, y: 13, z: 350 }] },
-    { id: 'bot-nt-8', displayName: 'Bé Ngô Vàng', species: 'fox', outfit: ['clothes-vest-shorts', 'hat-cap-yellow'], waypoints: [{ x: 400, y: 13, z: 310 }, { x: 415, y: 13, z: 315 }, { x: 410, y: 13, z: 330 }, { x: 395, y: 13, z: 325 }] },
-  ],
-  'forest-ch1': [
-    { id: 'bot-kr-1', displayName: 'Sóc Nhỏ', species: 'fox', outfit: ['clothes-vest-shorts', 'hat-beanie-green'], waypoints: [{ x: 20, y: 13, z: 20 }, { x: 35, y: 13, z: 25 }, { x: 30, y: 13, z: 40 }, { x: 15, y: 13, z: 35 }] },
-    { id: 'bot-kr-2', displayName: 'Bé Hái Nấm', species: 'cat', outfit: ['clothes-dress-mint', 'hat-straw-pink'], waypoints: [{ x: 30, y: 13, z: 25 }, { x: 45, y: 13, z: 30 }, { x: 40, y: 13, z: 45 }, { x: 25, y: 13, z: 40 }] },
-    { id: 'bot-kr-3', displayName: 'Thỏ Rừng', species: 'rabbit', outfit: ['clothes-overalls', 'hat-flower-crown-mint'], waypoints: [{ x: 25, y: 13, z: 35 }, { x: 40, y: 13, z: 40 }, { x: 35, y: 13, z: 55 }, { x: 20, y: 13, z: 50 }] },
-    { id: 'bot-kr-4', displayName: 'Gấu Leo Cây', species: 'bear', outfit: ['clothes-jacket-green', 'hat-beanie-blue'], waypoints: [{ x: 35, y: 13, z: 30 }, { x: 50, y: 13, z: 35 }, { x: 45, y: 13, z: 50 }, { x: 30, y: 13, z: 45 }] },
-    { id: 'bot-kr-5', displayName: 'Họa Mi Rừng', species: 'fox', outfit: ['clothes-dress', 'hat-bow-pink'], waypoints: [{ x: 40, y: 13, z: 20 }, { x: 55, y: 13, z: 25 }, { x: 50, y: 13, z: 40 }, { x: 35, y: 13, z: 35 }] },
-    { id: 'bot-kr-6', displayName: 'Bé Soi Đèn', species: 'rabbit', outfit: ['clothes-overalls-red', 'hat-cap-yellow'], waypoints: [{ x: 20, y: 13, z: 30 }, { x: 35, y: 13, z: 35 }, { x: 30, y: 13, z: 50 }, { x: 15, y: 13, z: 45 }] },
-    { id: 'bot-kr-7', displayName: 'Mèo Suối Mát', species: 'cat', outfit: ['clothes-dress-blue', 'hat-cat-mint'], waypoints: [{ x: 30, y: 13, z: 40 }, { x: 45, y: 13, z: 45 }, { x: 40, y: 13, z: 60 }, { x: 25, y: 13, z: 55 }] },
-    { id: 'bot-kr-8', displayName: 'Bé Bắt Bướm', species: 'bear', outfit: ['clothes-vest-shorts-navy', 'hat-cap-blue'], waypoints: [{ x: 45, y: 13, z: 35 }, { x: 60, y: 13, z: 40 }, { x: 55, y: 13, z: 55 }, { x: 40, y: 13, z: 50 }] },
-  ],
-  'thu-vien': [
-    { id: 'bot-tv-1', displayName: 'Bé Mọt Sách', species: 'cat', outfit: ['clothes-dress-blue', 'hat-straw-blue'], waypoints: [{ x: 180, y: 13, z: 425 }, { x: 195, y: 13, z: 430 }, { x: 190, y: 13, z: 445 }, { x: 175, y: 13, z: 440 }] },
-    { id: 'bot-tv-2', displayName: 'Thỏ Đọc Truyện', species: 'rabbit', outfit: ['clothes-dress', 'hat-bow-pink'], waypoints: [{ x: 190, y: 13, z: 430 }, { x: 205, y: 13, z: 435 }, { x: 200, y: 13, z: 450 }, { x: 185, y: 13, z: 445 }] },
-    { id: 'bot-tv-3', displayName: 'Cáo Xếp Sách', species: 'fox', outfit: ['clothes-overalls-green', 'hat-cap-blue'], waypoints: [{ x: 175, y: 13, z: 435 }, { x: 190, y: 13, z: 440 }, { x: 185, y: 13, z: 455 }, { x: 170, y: 13, z: 450 }] },
-    { id: 'bot-tv-4', displayName: 'Gấu Đố Chữ', species: 'bear', outfit: ['clothes-jacket-red', 'hat-beanie-blue'], waypoints: [{ x: 195, y: 13, z: 420 }, { x: 210, y: 13, z: 425 }, { x: 205, y: 13, z: 440 }, { x: 190, y: 13, z: 435 }] },
-    { id: 'bot-tv-5', displayName: 'Bé Tháp Chuông', species: 'rabbit', outfit: ['clothes-overalls', 'hat-flower-crown'], waypoints: [{ x: 185, y: 13, z: 440 }, { x: 200, y: 13, z: 445 }, { x: 195, y: 13, z: 460 }, { x: 180, y: 13, z: 455 }] },
-    { id: 'bot-tv-6', displayName: 'Mèo Kính Cận', species: 'cat', outfit: ['clothes-vest-shorts-navy', 'hat-cat-mint'], waypoints: [{ x: 200, y: 13, z: 435 }, { x: 215, y: 13, z: 440 }, { x: 210, y: 13, z: 455 }, { x: 195, y: 13, z: 450 }] },
-    { id: 'bot-tv-7', displayName: 'Bé Thơ Ca', species: 'fox', outfit: ['clothes-dress-mint', 'hat-straw-pink'], waypoints: [{ x: 170, y: 13, z: 430 }, { x: 185, y: 13, z: 435 }, { x: 180, y: 13, z: 450 }, { x: 165, y: 13, z: 445 }] },
-    { id: 'bot-tv-8', displayName: 'Bé Hộp Nhạc', species: 'bear', outfit: ['clothes-vest-shorts', 'hat-beanie-green'], waypoints: [{ x: 185, y: 13, z: 415 }, { x: 200, y: 13, z: 420 }, { x: 195, y: 13, z: 435 }, { x: 180, y: 13, z: 430 }] },
-  ],
-  'lau-dai': [
-    { id: 'bot-ld-1', displayName: 'Hiệp Sĩ Mèo', species: 'cat', outfit: ['clothes-jacket-red', 'hat-cap-blue'], waypoints: [{ x: 55, y: 17, z: 340 }, { x: 70, y: 17, z: 345 }, { x: 65, y: 17, z: 360 }, { x: 50, y: 17, z: 355 }] },
-    { id: 'bot-ld-2', displayName: 'Thỏ Cung Đình', species: 'rabbit', outfit: ['clothes-dress', 'hat-bow-pink'], waypoints: [{ x: 65, y: 17, z: 345 }, { x: 80, y: 17, z: 350 }, { x: 75, y: 17, z: 365 }, { x: 60, y: 17, z: 360 }] },
-    { id: 'bot-ld-3', displayName: 'Gấu Lính Gác', species: 'bear', outfit: ['clothes-vest-shorts-navy', 'hat-beanie-blue'], waypoints: [{ x: 75, y: 17, z: 335 }, { x: 90, y: 17, z: 340 }, { x: 85, y: 17, z: 355 }, { x: 70, y: 17, z: 350 }] },
-    { id: 'bot-ld-4', displayName: 'Cáo Hoàng Gia', species: 'fox', outfit: ['clothes-overalls-green', 'hat-cap-yellow'], waypoints: [{ x: 50, y: 17, z: 350 }, { x: 65, y: 17, z: 355 }, { x: 60, y: 17, z: 370 }, { x: 45, y: 17, z: 365 }] },
-    { id: 'bot-ld-5', displayName: 'Bé Cờ Vua', species: 'cat', outfit: ['clothes-dress-blue', 'hat-cat-mint'], waypoints: [{ x: 80, y: 17, z: 345 }, { x: 95, y: 17, z: 350 }, { x: 90, y: 17, z: 365 }, { x: 75, y: 17, z: 360 }] },
-    { id: 'bot-ld-6', displayName: 'Thỏ Cầu Treo', species: 'rabbit', outfit: ['clothes-overalls-red', 'hat-flower-crown-mint'], waypoints: [{ x: 60, y: 17, z: 335 }, { x: 75, y: 17, z: 340 }, { x: 70, y: 17, z: 355 }, { x: 55, y: 17, z: 350 }] },
-    { id: 'bot-ld-7', displayName: 'Bé Gương Soi', species: 'fox', outfit: ['clothes-dress-mint', 'hat-straw-pink'], waypoints: [{ x: 70, y: 17, z: 355 }, { x: 85, y: 17, z: 360 }, { x: 80, y: 17, z: 375 }, { x: 65, y: 17, z: 370 }] },
-    { id: 'bot-ld-8', displayName: 'Gấu Tháp Cao', species: 'bear', outfit: ['clothes-jacket-green', 'hat-cap-yellow'], waypoints: [{ x: 85, y: 17, z: 340 }, { x: 100, y: 17, z: 345 }, { x: 95, y: 17, z: 360 }, { x: 80, y: 17, z: 355 }] },
-  ],
-  'xom-mai-am': [
-    { id: 'bot-xma-1', displayName: 'Bé Xóm Mới', species: 'rabbit', outfit: ['clothes-dress', 'hat-flower-crown'], waypoints: [{ x: 105, y: 13, z: 105 }, { x: 120, y: 13, z: 110 }, { x: 115, y: 13, z: 125 }, { x: 100, y: 13, z: 120 }] },
-    { id: 'bot-xma-2', displayName: 'Mèo Mái Ngói', species: 'cat', outfit: ['clothes-overalls-green', 'hat-cat-mint'], waypoints: [{ x: 115, y: 13, z: 110 }, { x: 130, y: 13, z: 115 }, { x: 125, y: 13, z: 130 }, { x: 110, y: 13, z: 125 }] },
-    { id: 'bot-xma-3', displayName: 'Cáo Thả Diều', species: 'fox', outfit: ['clothes-jacket-red', 'hat-cap-blue'], waypoints: [{ x: 100, y: 13, z: 115 }, { x: 115, y: 13, z: 120 }, { x: 110, y: 13, z: 135 }, { x: 95, y: 13, z: 130 }] },
-    { id: 'bot-xma-4', displayName: 'Gấu Chuyền Cầu', species: 'bear', outfit: ['clothes-vest-shorts-navy', 'hat-beanie-blue'], waypoints: [{ x: 125, y: 13, z: 105 }, { x: 140, y: 13, z: 110 }, { x: 135, y: 13, z: 125 }, { x: 120, y: 13, z: 120 }] },
-    { id: 'bot-xma-5', displayName: 'Bé Đánh Cù', species: 'rabbit', outfit: ['clothes-overalls-red', 'hat-cap-yellow'], waypoints: [{ x: 110, y: 13, z: 120 }, { x: 125, y: 13, z: 125 }, { x: 120, y: 13, z: 140 }, { x: 105, y: 13, z: 135 }] },
-    { id: 'bot-xma-6', displayName: 'Mèo Ngắm Trăng', species: 'cat', outfit: ['clothes-dress-mint', 'hat-straw-pink'], waypoints: [{ x: 120, y: 13, z: 115 }, { x: 135, y: 13, z: 120 }, { x: 130, y: 13, z: 135 }, { x: 115, y: 13, z: 130 }] },
-    { id: 'bot-xma-7', displayName: 'Bé Giàn Mướp', species: 'fox', outfit: ['clothes-vest-shorts', 'hat-beanie-green'], waypoints: [{ x: 95, y: 13, z: 110 }, { x: 110, y: 13, z: 115 }, { x: 105, y: 13, z: 130 }, { x: 90, y: 13, z: 125 }] },
-    { id: 'bot-xma-8', displayName: 'Bé Kể Chuyện', species: 'bear', outfit: ['clothes-dress-blue', 'hat-bow-pink'], waypoints: [{ x: 130, y: 13, z: 115 }, { x: 145, y: 13, z: 120 }, { x: 140, y: 13, z: 135 }, { x: 125, y: 13, z: 130 }] },
-  ],
-  'nui-tuyet': [
-    { id: 'bot-ntu-1', displayName: 'Cánh Cụt Nhí', species: 'cat', outfit: ['clothes-jacket-red', 'hat-beanie-blue'], waypoints: [{ x: 395, y: 17, z: 720 }, { x: 410, y: 17, z: 725 }, { x: 405, y: 17, z: 740 }, { x: 390, y: 17, z: 735 }] },
-    { id: 'bot-ntu-2', displayName: 'Gấu Bắc Cực', species: 'bear', outfit: ['clothes-vest-shorts-navy', 'hat-beanie-red'], waypoints: [{ x: 405, y: 17, z: 725 }, { x: 420, y: 17, z: 730 }, { x: 415, y: 17, z: 745 }, { x: 400, y: 17, z: 740 }] },
-    { id: 'bot-ntu-3', displayName: 'Cáo Tuyết', species: 'fox', outfit: ['clothes-overalls-green', 'hat-cat-mint'], waypoints: [{ x: 390, y: 17, z: 715 }, { x: 405, y: 17, z: 720 }, { x: 400, y: 17, z: 735 }, { x: 385, y: 17, z: 730 }] },
-    { id: 'bot-ntu-4', displayName: 'Thỏ Trượt Băng', species: 'rabbit', outfit: ['clothes-dress', 'hat-bow-pink'], waypoints: [{ x: 410, y: 17, z: 715 }, { x: 425, y: 17, z: 720 }, { x: 420, y: 17, z: 735 }, { x: 405, y: 17, z: 730 }] },
-    { id: 'bot-ntu-5', displayName: 'Bé Đắp Người Tuyết', species: 'cat', outfit: ['clothes-dress-blue', 'hat-flower-crown-mint'], waypoints: [{ x: 385, y: 17, z: 725 }, { x: 400, y: 17, z: 730 }, { x: 395, y: 17, z: 745 }, { x: 380, y: 17, z: 740 }] },
-    { id: 'bot-ntu-6', displayName: 'Bé Cáp Treo', species: 'fox', outfit: ['clothes-overalls', 'hat-cap-blue'], waypoints: [{ x: 400, y: 17, z: 735 }, { x: 415, y: 17, z: 740 }, { x: 410, y: 17, z: 755 }, { x: 395, y: 17, z: 750 }] },
-    { id: 'bot-ntu-7', displayName: 'Nai Nhỏ', species: 'bear', outfit: ['clothes-jacket-green', 'hat-cap-yellow'], waypoints: [{ x: 415, y: 17, z: 720 }, { x: 430, y: 17, z: 725 }, { x: 425, y: 17, z: 740 }, { x: 410, y: 17, z: 735 }] },
-    { id: 'bot-ntu-8', displayName: 'Bé Bông Tuyết', species: 'rabbit', outfit: ['clothes-dress-mint', 'hat-straw-blue'], waypoints: [{ x: 395, y: 17, z: 710 }, { x: 410, y: 17, z: 715 }, { x: 405, y: 17, z: 730 }, { x: 390, y: 17, z: 725 }] },
-  ],
-  'dao-bi-an': [
-    { id: 'bot-dba-1', displayName: 'Thủy Thủ Nhí', species: 'cat', outfit: ['clothes-overalls-green', 'hat-straw-blue'], waypoints: [{ x: 385, y: 13, z: 605 }, { x: 400, y: 13, z: 610 }, { x: 395, y: 13, z: 625 }, { x: 380, y: 13, z: 620 }] },
-    { id: 'bot-dba-2', displayName: 'Thỏ Vỏ Ốc', species: 'rabbit', outfit: ['clothes-dress', 'hat-flower-crown'], waypoints: [{ x: 395, y: 13, z: 610 }, { x: 410, y: 13, z: 615 }, { x: 405, y: 13, z: 630 }, { x: 390, y: 13, z: 625 }] },
-    { id: 'bot-dba-3', displayName: 'Cáo Lâu Đài Cát', species: 'fox', outfit: ['clothes-jacket-red', 'hat-cap-blue'], waypoints: [{ x: 380, y: 13, z: 615 }, { x: 395, y: 13, z: 620 }, { x: 390, y: 13, z: 635 }, { x: 375, y: 13, z: 630 }] },
-    { id: 'bot-dba-4', displayName: 'Gấu Nhảy Sóng', species: 'bear', outfit: ['clothes-vest-shorts-navy', 'hat-beanie-blue'], waypoints: [{ x: 400, y: 13, z: 600 }, { x: 415, y: 13, z: 605 }, { x: 410, y: 13, z: 620 }, { x: 395, y: 13, z: 615 }] },
-    { id: 'bot-dba-5', displayName: 'Bé Cây Dừa', species: 'rabbit', outfit: ['clothes-dress-mint', 'hat-straw-pink'], waypoints: [{ x: 390, y: 13, z: 620 }, { x: 405, y: 13, z: 625 }, { x: 400, y: 13, z: 640 }, { x: 385, y: 13, z: 635 }] },
-    { id: 'bot-dba-6', displayName: 'Mèo Kho Báu', species: 'cat', outfit: ['clothes-vest-shorts', 'hat-cat-mint'], waypoints: [{ x: 405, y: 13, z: 615 }, { x: 420, y: 13, z: 620 }, { x: 415, y: 13, z: 635 }, { x: 400, y: 13, z: 630 }] },
-    { id: 'bot-dba-7', displayName: 'Bé San Hô', species: 'fox', outfit: ['clothes-dress-blue', 'hat-bow-pink'], waypoints: [{ x: 375, y: 13, z: 610 }, { x: 390, y: 13, z: 615 }, { x: 385, y: 13, z: 630 }, { x: 370, y: 13, z: 625 }] },
-    { id: 'bot-dba-8', displayName: 'Bé Hải Âu', species: 'bear', outfit: ['clothes-overalls-red', 'hat-cap-yellow'], waypoints: [{ x: 385, y: 13, z: 595 }, { x: 400, y: 13, z: 600 }, { x: 395, y: 13, z: 615 }, { x: 380, y: 13, z: 610 }] },
-  ],
-  'nha-cua-be': [
-    { id: 'bot-ncb-1', displayName: 'Bạn Hàng Xóm', species: 'rabbit', outfit: ['clothes-dress', 'hat-bow-pink'], waypoints: [{ x: 75, y: 13, z: 20 }, { x: 85, y: 13, z: 25 }, { x: 80, y: 13, z: 35 }, { x: 70, y: 13, z: 30 }] },
-    { id: 'bot-ncb-2', displayName: 'Bé Tưới Hoa', species: 'cat', outfit: ['clothes-overalls-green', 'hat-straw-pink'], waypoints: [{ x: 82, y: 13, z: 22 }, { x: 90, y: 13, z: 30 }, { x: 85, y: 13, z: 40 }, { x: 76, y: 13, z: 32 }] },
-    { id: 'bot-ncb-3', displayName: 'Cún Vui Vẻ', species: 'bear', outfit: ['clothes-vest-shorts-navy', 'hat-beanie-blue'], waypoints: [{ x: 72, y: 13, z: 28 }, { x: 80, y: 13, z: 35 }, { x: 75, y: 13, z: 45 }, { x: 68, y: 13, z: 38 }] },
-    { id: 'bot-ncb-4', displayName: 'Cáo Giao Thư', species: 'fox', outfit: ['clothes-jacket-red', 'hat-cap-blue'], waypoints: [{ x: 78, y: 13, z: 18 }, { x: 88, y: 13, z: 24 }, { x: 84, y: 13, z: 32 }, { x: 74, y: 13, z: 26 }] },
-  ],
-};
-
-/** Every companion bot by id, with the map it lives on. */
-const BOTS_BY_ID: ReadonlyMap<string, { profile: BotProfile; mapId: string }> = new Map(
-  Object.entries(BOT_MAP_CONFIGS).flatMap(([mapId, profiles]) => profiles.map((profile) => [profile.id, { profile, mapId }] as const)),
-);
-
-/** A companion bot by id (null: no such bot), for the friends lists. */
-export function findBot(id: string): { profile: BotProfile; mapId: string } | null {
-  return BOTS_BY_ID.get(id) ?? null;
-}
+// The friends lists look a bot up here (the profiles themselves live in bot-profiles.ts).
+export { findBot };
 
 /** How long a companion bot takes to answer a party invite. */
 export const BOT_REPLY_MS = 1_500;
@@ -212,25 +51,6 @@ const VISIT_RANGE = 20;
 const VISIT_STOP = 2.5;
 const VISIT_CHANCE = 0.6;
 /** In a party's voice a bot answers this long after a player stops talking (and up to twice as long)… */
-/** Bots of a map that come over to play near each player when fewer than this are already around her. */
-export const BOTS_NEAR_PLAYER = 3;
-/** A bot this close to a player (blocks) is one she can see around her. */
-export const BOT_SEEN_RANGE = 45;
-/** Where a bot that comes over appears: a spot she walked, this far from her (out of her close view). */
-const ARRIVE_MIN = 22;
-const ARRIVE_MAX = 40;
-/** Her walked trail: a point each time she has gone this far, the latest so many. */
-export const TRAIL_STEP = 4;
-const TRAIL_POINTS = 48;
-/** A bot keeps to trail spots this close to her. */
-const WANDER_RANGE = 30;
-/** Trail points a bot walks on from one stop to the next (one straight step stays on her own way). */
-const TRAIL_HOP = 2;
-/** She rode or flew this far off: the bots with her come again near her. */
-const LOST_RANGE = 90;
-/** How often the runner looks where the players are (s). */
-const GATHER_EVERY_S = 1;
-
 export const BOT_VOICE_REPLY_MS = 700;
 /** …greets a player who comes into the voice after this long… */
 export const BOT_VOICE_HELLO_MS = 1_200;
@@ -252,25 +72,29 @@ interface BotHooks {
 
 const NO_HOOKS: BotHooks = { onMessage: () => {}, onGreet: () => {}, friendsHere: () => [], random: Math.random };
 
+/** A player this close (blocks) is greeted. */
+const GREET_RANGE = 4.5;
+const GREET_GAP_MS = 15_000;
+const GREET_S = 3.5;
+
 class CompanionBotInstance {
   readonly profile: BotProfile;
   readonly room: MultiplayerRoom;
   readonly presence: PlayerPresence;
-  private currentWaypointIdx = 0;
-  private state: 'walk' | 'idle' | 'greet' = 'walk';
-  private stateTimer = 0;
+  /** Its feet on the map (null: the map has no walk grid, and it stays at its home). */
+  readonly body: BotBody | null;
+  private greetLeft = 0;
   private lastGreetTime = 0;
-  /** A friend it walks over to, before going on along its way. */
-  private detour: Waypoint | null = null;
-  /** The player it came over to and her walked trail, which it wanders on (null: it keeps to its own patch). */
-  private escort: { playerId: string; trail: readonly Waypoint[] } | null = null;
   private readonly hooks: BotHooks;
+  private readonly walkSpeed: number;
 
-  constructor(profile: BotProfile, room: MultiplayerRoom, hooks: Partial<BotHooks> = {}) {
+  constructor(profile: BotProfile, room: MultiplayerRoom, body: BotBody | null, hooks: Partial<BotHooks> = {}) {
     this.profile = profile;
     this.room = room;
+    this.body = body;
     this.hooks = { ...NO_HOOKS, ...hooks };
-    const startWp = profile.waypoints[0] ?? { x: 0, y: 0, z: 0 };
+    this.walkSpeed = personaOf(profile.id).walk;
+    const at = body?.stepper ?? profile.home;
 
     this.presence = {
       id: profile.id,
@@ -280,9 +104,9 @@ class CompanionBotInstance {
       outfit: profile.outfit,
       pet: null,
       petGear: [],
-      x: startWp.x,
-      y: startWp.y,
-      z: startWp.z,
+      x: at.x,
+      y: at.y,
+      z: at.z,
       yaw: 0,
       speed: 0,
       action: 'idle',
@@ -304,195 +128,62 @@ class CompanionBotInstance {
     this.room.leave(this.profile.id);
   }
 
-  /** The player it came over to (null: none). */
-  get escorting(): string | null {
-    return this.escort?.playerId ?? null;
-  }
-
-  /** Waving at someone: not the moment to leave. */
-  get greeting(): boolean {
-    return this.state === 'greet';
-  }
-
-  /**
-   * Comes over to play near a player: it appears at `at`, a spot she walked out of her close view, and from there
-   * walks on her trail — every point of it is ground she stood on, so its way never runs through a wall.
-   */
-  joinPlayer(playerId: string, trail: readonly Waypoint[], at: Waypoint): void {
-    this.escort = { playerId, trail };
-    this.place(at);
-  }
-
-  /** Back to its own patch (no player is near either place when the runner sends it). */
-  goHome(): void {
-    this.escort = null;
-    this.currentWaypointIdx = 0;
-    this.place(this.profile.waypoints[0] ?? this.presence);
-  }
-
-  private place(at: Waypoint): void {
-    this.detour = null;
-    this.state = 'idle';
-    this.stateTimer = 1 + this.hooks.random() * 2;
-    this.presence.x = at.x;
-    this.presence.y = at.y;
-    this.presence.z = at.z;
-    this.presence.speed = 0;
-    this.presence.action = 'idle';
-    this.room.updatePresence(this.presence.id, { x: at.x, y: at.y, z: at.z, yaw: this.presence.yaw, speed: 0, action: 'idle' });
-  }
-
-  /** Its next stop on her trail: a point or two along from where it stands, among those near her. */
-  private nextOnTrail(): Waypoint | null {
-    if (!this.escort) return null;
-    const { trail, playerId } = this.escort;
-    const her = this.room.members.get(playerId)?.presence;
-    if (!her || trail.length < 2) return null;
-    let at = 0;
-    let best = Infinity;
-    trail.forEach((p, i) => {
-      const d = Math.hypot(p.x - this.presence.x, p.z - this.presence.z);
-      if (d < best) {
-        best = d;
-        at = i;
-      }
-    });
-    const options: number[] = [];
-    for (let i = Math.max(0, at - TRAIL_HOP); i <= Math.min(trail.length - 1, at + TRAIL_HOP); i++) {
-      const p = trail[i];
-      if (i !== at && p && Math.hypot(p.x - her.x, p.z - her.z) <= WANDER_RANGE) options.push(i);
-    }
-    // Every spot around it is far from her (she walked on): it follows her way towards where she is now.
-    const pick = options.length > 0 ? options[Math.floor(this.hooks.random() * options.length)] : Math.min(trail.length - 1, at + 1);
-    const next = pick === undefined ? undefined : trail[pick];
-    return next ? { x: next.x, y: next.y, z: next.z } : null;
-  }
-
-  /** Sometimes, after a pause, it walks over to a friend in its room (friends meet it more often). */
-  private visitFriend(): void {
+  /** Sometimes, as it sets off somewhere, it walks over to a friend in its room instead (friends meet it more often). */
+  private visitFriend(body: BotBody): void {
     if (this.hooks.random() >= VISIT_CHANCE) return;
     for (const id of this.hooks.friendsHere()) {
       const friend = this.room.members.get(id)?.presence;
       if (!friend) continue;
-      const dx = friend.x - this.presence.x;
-      const dz = friend.z - this.presence.z;
-      const dist = Math.hypot(dx, dz);
+      const dist = Math.hypot(friend.x - this.presence.x, friend.z - this.presence.z);
       if (dist > VISIT_RANGE || dist <= VISIT_STOP) continue;
-      const k = (dist - VISIT_STOP) / dist;
-      this.detour = { x: this.presence.x + dx * k, y: friend.y, z: this.presence.z + dz * k };
+      body.goTo({ x: friend.x, y: null, z: friend.z, reach: VISIT_STOP });
       return;
     }
   }
 
+  /** A player came up to it: it turns to her, waves and says hello (not again for a while). */
+  private greet(now: number): boolean {
+    if (now - this.lastGreetTime <= GREET_GAP_MS) return false;
+    const player = seePlayers(this.room, this.presence.id, this.presence, GREET_RANGE)[0];
+    if (!player) return false;
+    this.greetLeft = GREET_S;
+    this.lastGreetTime = now;
+    this.presence.yaw = Math.atan2(player.presence.x - this.presence.x, player.presence.z - this.presence.z);
+    this.presence.speed = 0;
+    this.presence.action = 'wave';
+    this.room.updatePresence(this.presence.id, { x: this.presence.x, y: this.presence.y, z: this.presence.z, yaw: this.presence.yaw, speed: 0, action: 'wave' });
+    this.room.broadcastEmote(this.presence.id, 'wave');
+    // A greeting, never the nudge towards a quest's hints (that one is for a party at a question).
+    const greetings = SAFE_CANNED_CHATS.filter((line) => line !== 'Thử bấm Gợi ý xem!');
+    const chatChoice = greetings[Math.floor(this.hooks.random() * greetings.length)] ?? 'Xin chào bạn!';
+    this.room.broadcastChat(this.presence.id, chatChoice);
+    this.hooks.onGreet(player.id);
+    return true;
+  }
+
   tick(dt: number): void {
-    this.stateTimer -= dt;
-
-    // Check if any human player is nearby (< 4.5 units) to greet them
-    const now = Date.now();
-    if (this.state !== 'greet' && now - this.lastGreetTime > 15000) {
-      for (const member of this.room.members.values()) {
-        if (!member.isBot) {
-          const dx = member.presence.x - this.presence.x;
-          const dz = member.presence.z - this.presence.z;
-          const dist = Math.hypot(dx, dz);
-          if (dist < 4.5) {
-            this.state = 'greet';
-            this.stateTimer = 3.5;
-            this.lastGreetTime = now;
-            this.presence.yaw = Math.atan2(dx, dz);
-            this.presence.speed = 0;
-            this.presence.action = 'wave';
-            this.room.updatePresence(this.presence.id, {
-              x: this.presence.x,
-              y: this.presence.y,
-              z: this.presence.z,
-              yaw: this.presence.yaw,
-              speed: 0,
-              action: 'wave',
-            });
-            this.room.broadcastEmote(this.presence.id, 'wave');
-            // A greeting, never the nudge towards a quest's hints (that one is for a party at a question).
-            const greetings = SAFE_CANNED_CHATS.filter((line) => line !== 'Thử bấm Gợi ý xem!');
-            const chatChoice = greetings[Math.floor(this.hooks.random() * greetings.length)] ?? 'Xin chào bạn!';
-            this.room.broadcastChat(this.presence.id, chatChoice);
-            this.hooks.onGreet(member.id);
-            return;
-          }
-        }
-      }
-    }
-
-    if (this.state === 'greet') {
-      if (this.stateTimer <= 0) {
-        this.state = 'walk';
-        this.stateTimer = 0;
-      }
+    if (this.greetLeft > 0) {
+      this.greetLeft -= dt;
       return;
     }
+    if (this.greet(Date.now())) return;
+    const body = this.body;
+    if (!body) return;
+    const before = body.mode;
+    body.tick(dt);
+    if ((before === 'rest' || before === 'work') && body.mode === 'walk') this.visitFriend(body);
+    this.show(body);
+  }
 
-    if (this.state === 'idle') {
-      if (this.stateTimer <= 0) {
-        this.state = 'walk';
-        if (this.escort) {
-          this.detour = this.nextOnTrail();
-          if (!this.detour) {
-            this.state = 'idle';
-            this.stateTimer = 1.5;
-          }
-        } else {
-          this.currentWaypointIdx = (this.currentWaypointIdx + 1) % this.profile.waypoints.length;
-          this.visitFriend();
-        }
-      }
-      return;
-    }
-
-    // Walking towards a friend it visits, or its current waypoint
-    const targetWp = this.detour ?? this.profile.waypoints[this.currentWaypointIdx];
-    if (!targetWp) return;
-
-    const dx = targetWp.x - this.presence.x;
-    const dz = targetWp.z - this.presence.z;
-    const dist = Math.hypot(dx, dz);
-
-    if (dist < 0.6) {
-      // Reached waypoint: switch to idle
-      this.detour = null;
-      this.state = 'idle';
-      this.stateTimer = 2.5 + this.hooks.random() * 3.5; // 2.5 - 6s pause
-      this.presence.speed = 0;
-      this.presence.action = 'idle';
-      this.room.updatePresence(this.presence.id, {
-        x: targetWp.x,
-        y: targetWp.y,
-        z: targetWp.z,
-        yaw: this.presence.yaw,
-        speed: 0,
-        action: 'idle',
-      });
-      return;
-    }
-
-    // Move smoothly
-    const speed = 1.8; // blocks per second
-    const moveStep = Math.min(speed * dt, dist);
-    const angle = Math.atan2(dx, dz);
-
-    this.presence.x += Math.sin(angle) * moveStep;
-    this.presence.z += Math.cos(angle) * moveStep;
-    this.presence.y = targetWp.y;
-    this.presence.yaw = angle;
-    this.presence.speed = speed;
-    this.presence.action = 'walk';
-
-    this.room.updatePresence(this.presence.id, {
-      x: this.presence.x,
-      y: this.presence.y,
-      z: this.presence.z,
-      yaw: this.presence.yaw,
-      speed: this.presence.speed,
-      action: 'walk',
-    });
+  /** Tells the room where it is now, when anything about it changed. */
+  private show(body: BotBody): void {
+    const { stepper } = body;
+    const moving = stepper.moving;
+    const speed = moving ? this.walkSpeed : 0;
+    const action = moving ? 'walk' : 'idle';
+    const p = this.presence;
+    if (p.x === stepper.x && p.y === stepper.y && p.z === stepper.z && p.speed === speed && p.action === action && p.riding === stepper.riding) return;
+    this.room.updatePresence(p.id, { x: stepper.x, y: stepper.y, z: stepper.z, yaw: stepper.yaw, speed, action, riding: stepper.riding });
   }
 }
 
@@ -510,7 +201,16 @@ export interface BotRunnerOptions {
   store?: BotStore;
   /** The time of day (a bot's mood follows the hour). */
   clock?: () => Date;
+  /** The maps' walk grids (bot-brain/walk-store.ts); without them, or for a map without one, its bots stay at home. */
+  walk?: { get(mapId: string): WalkMap | null };
+  /** Where a bot goes next; the wandering chooser when not given (one chooser per bot). */
+  chooser?: (botId: string) => GoalChooser;
+  /** Time each tick may spend planning bots' ways (ms). */
+  planBudgetMs?: number;
 }
+
+/** Time each tick may spend planning bots' ways, for the whole server (ms). */
+export const PLAN_BUDGET_MS = 4;
 
 interface CoopTurn {
   state: CoopStateView;
@@ -541,9 +241,11 @@ export class BotRunner {
   private readonly hub: MultiplayerHub;
   private readonly random: () => number;
   private readonly bots = new Map<string, CompanionBotInstance[]>();
-  /** Each player's walked trail on a shared map, by room key and player (the bots that come over walk on it). */
-  private readonly trails = new Map<string, Waypoint[]>();
-  private gatherIn = 0;
+  private readonly walk: { get(mapId: string): WalkMap | null } | null;
+  private readonly chooser: (botId: string) => GoalChooser;
+  private readonly planner = new LocalPlanner();
+  /** Every bot's plans, worked through each tick within the budget. */
+  readonly plans: PathQueue;
   private timer: NodeJS.Timeout | null = null;
   private lastTick = Date.now();
   /** Answers on their way (a bot takes a moment, as a player would). */
@@ -572,6 +274,9 @@ export class BotRunner {
     this.coopThinkMs = options.coopThinkMs ?? null;
     this.store = options.store ?? null;
     this.clock = options.clock ?? (() => new Date());
+    this.walk = options.walk ?? null;
+    this.chooser = options.chooser ?? (() => wanderChooser(this.random));
+    this.plans = new PathQueue(options.planBudgetMs ?? PLAN_BUDGET_MS);
   }
 
   /**
@@ -737,9 +442,25 @@ export class BotRunner {
     this.coopThink(botId, Math.min(...left) - BOT_REHOLD_MS + 100);
   }
 
-  /** A bot of `profile` in `room`, wired to this runner. */
+  /** A bot of `profile` in `room`, wired to this runner, on its own feet when the map has a walk grid. */
   private instance(profile: BotProfile, room: MultiplayerRoom): CompanionBotInstance {
-    return new CompanionBotInstance(profile, room, {
+    const map = this.walk?.get(room.mapId) ?? null;
+    const home = map?.snap(profile.home, HOME_SNAP) ?? null;
+    const persona = personaOf(profile.id);
+    const key = this.planKey(room, profile.id);
+    const body =
+      map && home
+        ? new BotBody({
+            map,
+            home,
+            pace: { speed: persona.walk, sight: persona.sight },
+            chooser: this.chooser(profile.id),
+            planner: this.planner,
+            requestPlan: (run) => this.plans.request(key, run),
+            now: () => Date.now(),
+          })
+        : null;
+    return new CompanionBotInstance(profile, room, body, {
       onMessage: (message) => this.heard(profile.id, message),
       onGreet: (playerId) => this.greeted(profile.id, playerId),
       friendsHere: () => this.hub.friendsOfBot(botProfileId(profile.id)).filter((id) => room.members.has(id)),
@@ -756,7 +477,10 @@ export class BotRunner {
     this.hub.setHomeRoomHooks({
       opened: (room) => this.fill(room, this.homeBots(room), room.host),
       closed: (room) => {
-        for (const bot of this.bots.get(room.key) ?? []) bot.leave();
+        for (const bot of this.bots.get(room.key) ?? []) {
+          bot.leave();
+          this.plans.cancel(this.planKey(room, bot.profile.id));
+        }
         this.bots.delete(room.key);
       },
     });
@@ -764,6 +488,10 @@ export class BotRunner {
     // Run tick loop at 10Hz (100ms)
     this.lastTick = Date.now();
     this.timer = setInterval(() => this.tick(), 100);
+  }
+
+  private planKey(room: MultiplayerRoom, botId: string): string {
+    return `${room.key}|${botId}`;
   }
 
   /** Bots of `profiles` into `room`; in a home (`host`), each as its own instance there. */
@@ -774,8 +502,8 @@ export class BotRunner {
   }
 
   /**
-   * A home's bots: the neighbours of the home map, and up to two of its owner's bot friends come to visit (along
-   * the neighbours' ways), so friends turn up more often.
+   * A home's bots: the neighbours of the home map, and up to two of its owner's bot friends come to visit (setting
+   * out from a neighbour's home), so friends turn up more often.
    */
   private homeBots(room: MultiplayerRoom): BotProfile[] {
     const neighbours = BOT_MAP_CONFIGS[HOME_MAP_ID] ?? [];
@@ -784,78 +512,23 @@ export class BotRunner {
       .slice(0, HOME_VISITORS)
       .flatMap((id, i): BotProfile[] => {
         const friend = findBot(id)?.profile;
-        const way = neighbours[i % Math.max(1, neighbours.length)]?.waypoints;
-        return friend && way ? [{ ...friend, waypoints: way }] : [];
+        const home = neighbours[i % Math.max(1, neighbours.length)]?.home;
+        return friend && home ? [{ ...friend, home }] : [];
       });
     return [...neighbours, ...visitors];
   }
 
-  /** Moves every bot on by the time since the last tick (at most a fifth of a second, after a stall). */
+  /** Moves every bot on by the time since the last tick (at most a fifth of a second, after a stall), then plans. */
   tick(): void {
     const now = Date.now();
     const dt = Math.min((now - this.lastTick) / 1000, 0.2);
     this.lastTick = now;
-    this.gatherIn -= dt;
-    if (this.gatherIn <= 0) {
-      this.gatherIn = GATHER_EVERY_S;
-      this.gather();
-    }
     for (const list of this.bots.values()) {
       for (const bot of list) {
         bot.tick(dt);
       }
     }
-  }
-
-  /**
-   * A map is 800 blocks wide and its bots live in one patch of it, so a player away on a quest met none (owner
-   * 07/10/2026). Wherever she plays, up to three bots are around her: the ones already near, else free bots that no
-   * player sees come over along her own way. A home keeps its neighbours, who live by its front gate.
-   */
-  private gather(): void {
-    for (const list of this.bots.values()) {
-      const room = list[0]?.room;
-      if (!room || room.host !== null) continue;
-      const humans = [...room.members.values()].filter((m) => !m.isBot);
-      const here = new Set(humans.map((h) => h.id));
-      for (const key of this.trails.keys()) if (key.startsWith(`${room.key}|`) && !here.has(key.slice(room.key.length + 1))) this.trails.delete(key);
-      const seenByAnyone = (at: Waypoint): boolean => humans.some((h) => distance(h.presence, at) <= BOT_SEEN_RANGE);
-      for (const bot of list) {
-        const id = bot.escorting;
-        if (id !== null && !here.has(id) && !seenByAnyone(bot.presence)) bot.goHome();
-      }
-      for (const human of humans) {
-        const her = human.presence;
-        const trail = this.walked(`${room.key}|${human.id}`, her);
-        const spots = trail.filter((p) => {
-          const d = distance(p, her);
-          return d >= ARRIVE_MIN && d <= ARRIVE_MAX;
-        });
-        if (spots.length === 0) continue;
-        const spot = (): Waypoint => spots[Math.floor(this.random() * spots.length)] ?? her;
-        // She rode off: her bots catch up with her by her way, out of her sight.
-        for (const bot of list) if (bot.escorting === human.id && distance(bot.presence, her) > LOST_RANGE) bot.joinPlayer(human.id, trail, spot());
-        let need = BOTS_NEAR_PLAYER - list.filter((bot) => distance(bot.presence, her) <= BOT_SEEN_RANGE).length;
-        const free = list.filter((bot) => bot.escorting === null && !bot.greeting && !this.hub.parties.partyOf(bot.presence.id) && !seenByAnyone(bot.presence));
-        while (need > 0 && free.length > 0) {
-          const [bot] = free.splice(Math.floor(this.random() * free.length), 1);
-          bot?.joinPlayer(human.id, trail, spot());
-          need -= 1;
-        }
-      }
-    }
-  }
-
-  /** Her trail with where she is now added (a point each `TRAIL_STEP` blocks, the latest `TRAIL_POINTS`). */
-  private walked(key: string, her: PlayerPresence): Waypoint[] {
-    const trail = this.trails.get(key) ?? [];
-    this.trails.set(key, trail);
-    const last = trail[trail.length - 1];
-    if (!her.riding && (!last || distance(last, her) >= TRAIL_STEP)) {
-      trail.push({ x: her.x, y: her.y, z: her.z });
-      if (trail.length > TRAIL_POINTS) trail.shift();
-    }
-    return trail;
+    this.plans.drain();
   }
 
   stop(): void {
@@ -869,6 +542,7 @@ export class BotRunner {
     this.coop.clear();
     for (const talk of this.talks.values()) if (talk.timer) clearTimeout(talk.timer);
     this.talks.clear();
+    this.plans.clear();
   }
 
   private later(ms: number, run: () => void): void {

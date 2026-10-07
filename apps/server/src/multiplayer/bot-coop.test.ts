@@ -1,7 +1,8 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { CoopAction, CoopStateView } from '@miu/schema/coop';
 import { hubHarness } from '../../test/hub-harness';
-import { BOT_MAP_CONFIGS, BotRunner } from './bot-runner';
+import { BotRunner } from './bot-runner';
+import { BOT_MAP_CONFIGS } from './bot-profiles';
 
 beforeEach(() => {
   vi.useFakeTimers();

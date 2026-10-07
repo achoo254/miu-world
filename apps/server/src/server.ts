@@ -10,6 +10,7 @@ import { CharacterEvents } from './character/character-events';
 import { PlayerEvents } from './player/player-events';
 import { dbFriendStore, type OnlineLookup } from './friend/friend-store';
 import { BotRunner } from './multiplayer/bot-runner';
+import { WalkStore } from './multiplayer/bot-brain/walk-store';
 import { MultiplayerHub } from './multiplayer/multiplayer-hub';
 import { dbMultiplayerStore, sessionAuthenticator } from './multiplayer/multiplayer-store';
 import { CoopService } from './coop/coop-service';
@@ -66,7 +67,8 @@ characterEvents.on((childId, character) => multiplayer.characterSaved(childId, c
 playerEvents.on((event) => multiplayer.playerEvent(event));
 // Bots keep their own skills, the questions' anonymous numbers and whom they won with.
 const botStore = dbBotStore(db);
-const botRunner = new BotRunner(multiplayer, { store: botStore });
+// They walk each map on its standing spots (content/world/walk/), read when a map's first bot comes in.
+const botRunner = new BotRunner(multiplayer, { store: botStore, walk: new WalkStore() });
 botRunner.start();
 // Co-op challenges: parties (or a player with companion bots) play them over the hub; the server pays each player.
 const coop = new CoopService({

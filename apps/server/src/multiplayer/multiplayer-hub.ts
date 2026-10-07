@@ -74,6 +74,11 @@ export class MultiplayerRoom {
     this.sees = sees;
   }
 
+  /** Whether `viewer` may see `other` here (a blocked pair, or a bot to a player who switched bots off, may not). */
+  canSee(viewer: string, other: string): boolean {
+    return this.sees(viewer, other);
+  }
+
   join(member: RoomMember): void {
     const existing = [...this.members.values()].filter((m) => this.sees(member.id, m.id)).map((m) => m.presence);
     member.send({ type: 'welcome', selfId: member.id, players: existing });

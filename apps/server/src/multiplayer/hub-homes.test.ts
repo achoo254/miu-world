@@ -1,7 +1,8 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { HOME_MAP_ID } from '@miu/schema/multiplayer';
 import { hubHarness, settle, type Client } from '../../test/hub-harness';
-import { BOT_MAP_CONFIGS, BotRunner } from './bot-runner';
+import { BotRunner } from './bot-runner';
+import { BOT_MAP_CONFIGS } from './bot-profiles';
 import { homeBotId } from './multiplayer-hub';
 
 let h: ReturnType<typeof hubHarness>;

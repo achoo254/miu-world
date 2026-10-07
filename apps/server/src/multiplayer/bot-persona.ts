@@ -25,7 +25,17 @@ export interface BotPersona {
   swing: number;
   /** Which of the bots' lines it uses (two bots of one team never share a voice). */
   voice: number;
+  /** How far it sees around itself (blocks): the places and players it can notice, and the stretch it plans a way over. */
+  sight: number;
+  /** Its walking pace (blocks per second). */
+  walk: number;
 }
+
+/** The range of a bot's sight and walking pace (blocks, blocks per second). */
+export const SIGHT_MIN = 16;
+export const SIGHT_MAX = 28;
+export const WALK_MIN = 2.4;
+export const WALK_MAX = 3.6;
 
 /** Voices of the bots' lines: a voice uses every `VOICES`-th variant of each line, from its own offset. */
 export const VOICES = 3;
@@ -67,6 +77,16 @@ export function personaOf(botId: string): BotPersona {
     peakHour: 7 + Math.floor(rng() * 14),
     swing: round2(0.04 + 0.11 * rng()),
     voice: Math.floor(rng() * VOICES),
+    // Drawn from a stream of their own, so the traits above stay what they were before a bot had a body.
+    ...bodyOf(botId),
+  };
+}
+
+function bodyOf(botId: string): Pick<BotPersona, 'sight' | 'walk'> {
+  const rng = seeded(hashOf(`body:${botProfileId(botId)}`));
+  return {
+    sight: SIGHT_MIN + Math.floor(rng() * (SIGHT_MAX - SIGHT_MIN + 1)),
+    walk: round2(WALK_MIN + (WALK_MAX - WALK_MIN) * rng()),
   };
 }
 

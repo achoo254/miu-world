@@ -1,7 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { loadContentCatalog } from '../content/content-catalog';
 import type { PlayerPresence } from '@miu/schema/multiplayer';
-import { BOT_MAP_CONFIGS, BOT_REPLY_MS, BOT_SEEN_RANGE, BOTS_NEAR_PLAYER, BotRunner, TRAIL_STEP } from './bot-runner';
+import { BOT_REPLY_MS, BotRunner } from './bot-runner';
+import { BOT_MAP_CONFIGS } from './bot-profiles';
+import { WalkStore, type Spot } from './bot-brain/walk-store';
 import { MultiplayerHub } from './multiplayer-hub';
 
 describe('MultiplayerHub and BotRunner', () => {
@@ -87,70 +89,86 @@ describe('companion bots in parties', () => {
   });
 });
 
-describe('companion bots come to where a player plays', () => {
+describe('companion bots walk on their own', () => {
   afterEach(() => {
     vi.useRealTimers();
   });
 
-  /** A player walking a quest's way far from the castle's bot patch (as the owner did, 07/10/2026). */
-  function player(id: string): PlayerPresence {
-    return { id, displayName: 'Bé', isBot: false, species: 'fox', outfit: [], pet: null, petGear: [], x: 140, y: 17, z: 220, yaw: 0, speed: 0, action: 'idle', riding: false, bubble: null };
-  }
-  const near = (room: ReturnType<MultiplayerHub['getOrCreateRoom']>, at: PlayerPresence): number =>
-    [...room.members.values()].filter((m) => m.isBot && Math.hypot(m.presence.x - at.x, m.presence.z - at.z) <= BOT_SEEN_RANGE).length;
+  const store = new WalkStore();
+  /** Only the castle has its grid here: one map's bots are enough, and the others stay at home. */
+  const castleOnly = { get: (mapId: string) => (mapId === 'lau-dai' ? store.get(mapId) : null) };
 
-  it('brings bots onto her own walked way once she has walked a little, and sends them home when she leaves', async () => {
+  function player(id: string): PlayerPresence {
+    return { id, displayName: 'Bé', isBot: false, species: 'fox', outfit: [], pet: null, petGear: [], x: 600, y: 17, z: 600, yaw: 0, speed: 0, action: 'idle', riding: false, bubble: null };
+  }
+
+  it('walk the map on their own feet: every step one the child could take, never through a wall', async () => {
     vi.useFakeTimers();
+    const map = store.get('lau-dai');
+    if (!map) throw new Error('no walk grid for lau-dai');
     const hub = new MultiplayerHub();
-    const bots = new BotRunner(hub, { random: () => 0.3 });
+    let seed = 7;
+    const random = (): number => ((seed = (seed * 16_807) % 2_147_483_647) - 1) / 2_147_483_646;
+    const bots = new BotRunner(hub, { random, walk: castleOnly });
     bots.start();
     const room = hub.getOrCreateRoom('lau-dai');
-    const me = player('child-1');
-    room.join({ id: me.id, presence: me, send: () => {}, isBot: false });
-    expect(near(room, me)).toBe(0);
-    // She walks 60 blocks along the road, a step each half second.
-    const walked: Array<{ x: number; z: number }> = [];
-    for (let x = 140; x <= 200; x += 2) {
-      room.updatePresence(me.id, { x, y: 17, z: 220, yaw: 0, speed: 4, action: 'walk' });
-      walked.push({ x, z: 220 });
-      await vi.advanceTimersByTimeAsync(500);
+    const last = new Map<string, Spot>();
+    const start = new Map<string, Spot>();
+    let steps = 0;
+    for (let t = 0; t < 600; t++) {
+      await vi.advanceTimersByTimeAsync(100);
+      for (const m of room.members.values()) {
+        const at = { x: Math.floor(m.presence.x), y: m.presence.y, z: Math.floor(m.presence.z) };
+        expect(map.standAt(at.x, at.y, at.z), `${m.id} at ${at.x},${at.y},${at.z}`).not.toBe(0);
+        const before = last.get(m.id);
+        if (!start.has(m.id)) start.set(m.id, at);
+        if (before && (before.x !== at.x || before.z !== at.z) && !m.presence.riding && Math.max(Math.abs(before.x - at.x), Math.abs(before.z - at.z)) <= 1) {
+          expect(map.steps(before, at), `${m.id} ${before.x},${before.y},${before.z} -> ${at.x},${at.y},${at.z}`).toBe(true);
+          steps += 1;
+        }
+        last.set(m.id, at);
+      }
     }
-    expect(near(room, me)).toBeGreaterThanOrEqual(BOTS_NEAR_PLAYER);
-    // Each one stands on her way (a straight step between two points of it), never somewhere she has not been.
-    for (const m of room.members.values()) {
-      if (!m.isBot || Math.hypot(m.presence.x - me.x, m.presence.z - me.z) > BOT_SEEN_RANGE) continue;
-      expect(Math.abs(m.presence.z - 220)).toBeLessThan(0.01);
-      expect(m.presence.x).toBeGreaterThanOrEqual(140 - TRAIL_STEP);
-    }
-    room.leave(me.id);
-    await vi.advanceTimersByTimeAsync(2_000);
-    const patch = BOT_MAP_CONFIGS['lau-dai'] ?? [];
-    for (const m of room.members.values()) {
-      const home = patch.find((p) => p.id === m.id)?.waypoints;
-      const xs = home?.map((w) => w.x) ?? [];
-      expect(m.presence.x, m.id).toBeGreaterThanOrEqual(Math.min(...xs) - 1);
-      expect(m.presence.x, m.id).toBeLessThanOrEqual(Math.max(...xs) + 1);
-    }
+    expect(steps).toBeGreaterThan(200);
+    const wandered = [...room.members.values()].filter((m) => {
+      const from = start.get(m.id);
+      return from && Math.hypot(m.presence.x - from.x, m.presence.z - from.z) > 5;
+    });
+    expect(wandered.length).toBeGreaterThanOrEqual(Math.ceil((BOT_MAP_CONFIGS['lau-dai']?.length ?? 0) / 2));
     bots.stop();
     await hub.close();
   });
 
-  it('leaves a player who already has bots around her as she is', async () => {
+  it('follow nobody: a player far from them keeps to herself however long she walks', async () => {
     vi.useFakeTimers();
     const hub = new MultiplayerHub();
-    const bots = new BotRunner(hub, { random: () => 0.3 });
+    const bots = new BotRunner(hub, { random: () => 0.3, walk: castleOnly });
     bots.start();
     const room = hub.getOrCreateRoom('lau-dai');
-    const first = BOT_MAP_CONFIGS['lau-dai']?.[0]?.waypoints[0] ?? { x: 0, z: 0 };
-    const me = { ...player('child-2'), x: first.x, z: first.z };
+    const me = player('child-1');
     room.join({ id: me.id, presence: me, send: () => {}, isBot: false });
-    const before = new Map([...room.members.values()].filter((m) => m.isBot).map((m) => [m.id, Math.hypot(m.presence.x - me.x, m.presence.z - me.z)]));
-    for (let i = 0; i < 6; i++) {
-      room.updatePresence(me.id, { x: me.x + (i % 2) * TRAIL_STEP, y: 17, z: me.z, yaw: 0, speed: 0, action: 'idle' });
+    // Across the castle grounds from the bots' homes (around x 65, z 345).
+    for (let x = 600; x <= 660; x += 2) {
+      room.updatePresence(me.id, { x, y: 17, z: 600, yaw: 0, speed: 4, action: 'walk' });
       await vi.advanceTimersByTimeAsync(1_000);
     }
-    // Nobody was brought over from afar: every bot is about as far from her as it was.
-    for (const m of room.members.values()) if (m.isBot) expect(Math.abs(Math.hypot(m.presence.x - me.x, m.presence.z - me.z) - (before.get(m.id) ?? 0))).toBeLessThan(20);
+    const near = [...room.members.values()].filter((m) => m.isBot && Math.hypot(m.presence.x - me.x, m.presence.z - me.z) <= 45);
+    expect(near).toEqual([]);
+    bots.stop();
+    await hub.close();
+  });
+
+  it('stay at their homes on a map without a walk grid', async () => {
+    vi.useFakeTimers();
+    const hub = new MultiplayerHub();
+    const bots = new BotRunner(hub, { walk: { get: () => null } });
+    bots.start();
+    await vi.advanceTimersByTimeAsync(3_000);
+    const room = hub.getOrCreateRoom('lau-dai');
+    for (const profile of BOT_MAP_CONFIGS['lau-dai'] ?? []) {
+      const at = room.members.get(profile.id)?.presence;
+      expect(at && { x: at.x, y: at.y, z: at.z }).toEqual(profile.home);
+    }
     bots.stop();
     await hub.close();
   });
