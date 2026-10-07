@@ -1,0 +1,79 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1347,
+    "output_tokens": 257
+  },
+  "results": {
+    "audit-place": {
+      "stakes": "low",
+      "choice": "in-content-check",
+      "confidence": 0.88,
+      "probabilities": {
+        "in-content-check": 0.94,
+        "separate-step": 0.06
+      },
+      "decision": "auto"
+    },
+    "commit-screens": {
+      "stakes": "low",
+      "choice": "commit-overwrite",
+      "confidence": 0.48,
+      "probabilities": {
+        "artifact-only": 0.26,
+        "commit-overwrite": 0.74
+      },
+      "decision": "escalate"
+    },
+    "gate-staging": {
+      "stakes": "low",
+      "choice": "both",
+      "confidence": 0.56,
+      "probabilities": {
+        "both": 0.78,
+        "production-only": 0.22
+      },
+      "decision": "escalate"
+    },
+    "smoke-size": {
+      "stakes": "low",
+      "choice": "nine-flows",
+      "confidence": 0.64,
+      "probabilities": {
+        "eleven-flows": 0.18,
+        "nine-flows": 0.82
+      },
+      "decision": "auto"
+    },
+    "drop-pets-voice": {
+      "stakes": "low",
+      "choice": "drop",
+      "confidence": 0.72,
+      "probabilities": {
+        "drop": 0.86,
+        "keep": 0.14
+      },
+      "decision": "auto"
+    },
+    "real-bugs-in-dropped": {
+      "stakes": "medium",
+      "choice": "log-fix-if-smoke",
+      "confidence": 0.2,
+      "probabilities": {
+        "fix-all": 0.4,
+        "log-fix-if-smoke": 0.6
+      },
+      "decision": "escalate"
+    },
+    "nightly-all-maps": {
+      "stakes": "low",
+      "choice": "keep",
+      "confidence": 0.38,
+      "probabilities": {
+        "keep": 0.69,
+        "remove": 0.31
+      },
+      "decision": "escalate"
+    }
+  }
+}

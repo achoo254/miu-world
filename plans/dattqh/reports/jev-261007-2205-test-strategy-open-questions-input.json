@@ -1,0 +1,73 @@
+{
+  "state": {
+    "context": "Miu World (online 3D learning game, 100% AI-built, owner only plays and reports bugs) is changing its testing: about 10 always-green E2E core flows that block deploy, a fast Node audit that every quest step target is reachable and not shadowed by another interactable, and phone/iPad screenshots of main screens reviewed by AI vision before each deploy. The plan has 7 phases; these are its open technical questions.",
+    "facts": [
+      "reach-audit takes about 3.8 s per map; there are 12 maps; content:check runs on every push and before each deploy.",
+      "26 E2E specs, 114 tests; 60 CI runs on main red in a row; one shard always stopped at maxFailures 10 so 8 tests never ran.",
+      "The proposed smoke set: 11 flows, 13 tests (sign in, open a map, interact, finish a quest, fight a boss, buy, print a worksheet, plus build safety (public repo, no quest answers in the bundle), textbook exercise types by touch, online party play, Home on a phone). A leaner option is 9 flows, 11 tests.",
+      "Pets, voice chat and voice messages have server-side Node tests already.",
+      "Screenshots go into assets/generated/review/ and must be listed in the manifest; the repo is public on GitHub.",
+      "Staging exists (lab machine) and production (shared server); both deploy with their own deploy.sh.",
+      "A nightly CI run opens every map in E2E (E2E_ALL_MAPS=1); the new Node audit would check every map on every push.",
+      "Owner north star: lively, never boring; the owner wants bugs caught before they play, not long waits."
+    ]
+  },
+  "questions": {
+    "audit-place": {
+      "stakes": "low",
+      "instructions": "Where should the quest target audit run?",
+      "criteria": {
+        "in-content-check": "Inside pnpm content:check when the whole audit runs in 30 s or less; split it into its own step only if slower.",
+        "separate-step": "Always its own CI step and gate command, outside content:check."
+      }
+    },
+    "commit-screens": {
+      "stakes": "low",
+      "instructions": "Should the phone/iPad screenshots be committed at each deploy?",
+      "criteria": {
+        "commit-overwrite": "Yes: overwrite the same file names each time, captured at device scale 1, listed in the manifest, so the review page shows the latest.",
+        "artifact-only": "No: keep them as CI artifacts and in the scratch folder, never committed."
+      }
+    },
+    "gate-staging": {
+      "stakes": "low",
+      "instructions": "Should the new deploy gate (green CI for the commit, screenshots reviewed, no code change since) apply to staging too?",
+      "criteria": {
+        "both": "Yes: one release-gate script used by both staging and production deploy.sh, with a force variable for urgent hotfixes.",
+        "production-only": "Only production; staging deploys freely."
+      }
+    },
+    "smoke-size": {
+      "stakes": "low",
+      "instructions": "How large should the deploy-blocking E2E smoke set be?",
+      "criteria": {
+        "eleven-flows": "11 flows, 13 tests as proposed.",
+        "nine-flows": "9 flows, 11 tests (drop build safety E2E, kept by the security:dist script, and Home on a phone, covered by the screenshot review)."
+      }
+    },
+    "drop-pets-voice": {
+      "stakes": "low",
+      "instructions": "Should pets, voice chat and voice messages leave the deploy-blocking E2E set?",
+      "criteria": {
+        "drop": "Yes: their server logic already has Node tests; the screenshot review covers their screens.",
+        "keep": "No: keep one E2E each in the blocking set."
+      }
+    },
+    "real-bugs-in-dropped": {
+      "stakes": "medium",
+      "instructions": "When triage finds a real bug inside a test that is being dropped, what should this delivery do?",
+      "criteria": {
+        "log-fix-if-smoke": "Record it on the roadmap and review page; fix it in this plan only if it lies on a smoke flow.",
+        "fix-all": "Fix every real bug found during triage inside this plan, whatever flow it is on."
+      }
+    },
+    "nightly-all-maps": {
+      "stakes": "low",
+      "instructions": "Should the nightly E2E that opens every map be removed?",
+      "criteria": {
+        "remove": "Yes: the Node audit checks every map on every push.",
+        "keep": "No: keep the nightly all-maps E2E as an extra net."
+      }
+    }
+  }
+}
