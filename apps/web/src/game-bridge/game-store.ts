@@ -48,6 +48,22 @@ export interface VehicleState {
 }
 export type WorldState = Readonly<Record<string, TargetState>>;
 
+/**
+ * A boss fight played out in the running world: `staged` (the child faces the boss, the camera frames them both, the
+ * game writes their screen spots into the duel anchors each frame), `unavailable` (the boss is not on screen, hidden
+ * behind a wall or the game is not up: the fight shows as a card over the paused game), or none.
+ */
+export type DuelState = 'staged' | 'unavailable' | null;
+
+/** What happened to a blow, as the server said (`ally-hit`: a party member's; `fizzle`: no answer came back). */
+export type DuelOutcome = 'hit' | 'miss' | 'win' | 'ally-hit' | 'fizzle';
+
+/** The elements the game keeps over the boss's head and the child's hand, each frame (`transform`), while staged. */
+export interface DuelAnchors {
+  boss: HTMLElement | null;
+  player: HTMLElement | null;
+}
+
 export type GameEvent =
   /** A game starts loading (the first, or the next map's after a gate): everything about the last one is gone. */
   | { type: 'loading' }
@@ -75,7 +91,9 @@ export type GameEvent =
   /** The pet's scene playing now (`care:feed`, `trick:spin`, `sniff`…), or none: the care screen folds away meanwhile. */
   | { type: 'pet-scene'; scene: string | null }
   /** Whether the pet can sniff toward a clue of this step (a pet along, clues left on this map), and the seconds before it may again. */
-  | { type: 'pet-sniff'; available: boolean; wait: number };
+  | { type: 'pet-sniff'; available: boolean; wait: number }
+  /** The boss fight's stage: set up in the world, not possible here, or closed. */
+  | { type: 'duel'; state: DuelState };
 
 export interface GameSnapshot {
   status: 'loading' | 'ready' | 'error';
@@ -103,6 +121,8 @@ export interface GameSnapshot {
   petScene: string | null;
   /** The HUD's "Đánh hơi": shown while available, waiting `wait` seconds after each sniff. */
   petSniff: { available: boolean; wait: number };
+  /** The boss fight's stage in the world (null: no fight staged or asked for). */
+  duel: DuelState;
 }
 
 /** Commands from React to the game. The game ignores commands it does not handle yet. */
@@ -141,7 +161,18 @@ export type GameCommand =
   /** The clues of the step under way still to find (search and find-object steps); empty: none. */
   | { type: 'pet-sniff-targets'; targets: readonly string[] }
   /** "Đánh hơi": the pet runs a few steps toward the nearest of them. */
-  | { type: 'pet-sniff' };
+  | { type: 'pet-sniff' }
+  /**
+   * A boss fight opens: the child faces the boss (the map's target `targetId`), the camera frames them both and her
+   * controls rest. `calm`: less motion (no camera flight or shake, few sparks). The game answers with a `duel` event.
+   */
+  | { type: 'duel-open'; targetId: string; calm: boolean }
+  /** She let go of a blow: it leaves her hand toward the screen point `to` (the answer she picked) and waits there. */
+  | { type: 'duel-cue'; cue: 'aim'; to: { x: number; y: number } }
+  /** The server's word on the blow in the air (or a party member's that landed). */
+  | { type: 'duel-cue'; cue: DuelOutcome }
+  /** The fight is over or put away: the camera goes back behind her, the boss to its own ways, her controls back. */
+  | { type: 'duel-close' };
 
 export interface GameStore {
   subscribe(listener: () => void): () => void;
@@ -150,6 +181,9 @@ export interface GameStore {
   /** React registers (or clears) the element the game positions under the active prompt each frame. */
   setPromptAnchor(el: HTMLElement | null): void;
   getPromptAnchor(): HTMLElement | null;
+  /** React registers (or clears) the boss fight's anchors; the game positions them each frame while staged. */
+  setDuelAnchors(anchors: DuelAnchors | null): void;
+  getDuelAnchors(): DuelAnchors | null;
   send(command: GameCommand): void;
   onCommand(handler: (command: GameCommand) => void): () => void;
 }
@@ -170,6 +204,7 @@ export const INITIAL_SNAPSHOT: GameSnapshot = {
   raining: false,
   petScene: null,
   petSniff: { available: false, wait: 0 },
+  duel: null,
 };
 
 function samePrompt(a: InteractionPrompt | null, b: InteractionPrompt | null): boolean {
@@ -184,7 +219,7 @@ export function reduce(state: GameSnapshot, event: GameEvent): GameSnapshot {
     case 'loading':
       // A new map loads: the loading screen shows again, and "ready" will be news to every listener (the quest
       // sends its target to the new game then, so the card can walk her there).
-      return { ...state, status: 'loading', error: null, loading: { done: 0, total: state.loading.total }, prompt: null, stuck: false, autowalkAvailable: false, autowalk: 'idle', vehicle: null, objectStates: null, raining: false, petScene: null, petSniff: { available: false, wait: 0 } };
+      return { ...state, status: 'loading', error: null, loading: { done: 0, total: state.loading.total }, prompt: null, stuck: false, autowalkAvailable: false, autowalk: 'idle', vehicle: null, objectStates: null, raining: false, petScene: null, petSniff: { available: false, wait: 0 }, duel: null };
     case 'ready':
       return state.status === 'ready' ? state : { ...state, status: 'ready', error: null };
     case 'error':
@@ -223,12 +258,15 @@ export function reduce(state: GameSnapshot, event: GameEvent): GameSnapshot {
       return state.petScene === event.scene ? state : { ...state, petScene: event.scene };
     case 'pet-sniff':
       return state.petSniff.available === event.available && state.petSniff.wait === event.wait ? state : { ...state, petSniff: { available: event.available, wait: event.wait } };
+    case 'duel':
+      return state.duel === event.state ? state : { ...state, duel: event.state };
   }
 }
 
 export function createGameStore(): GameStore {
   let snapshot = INITIAL_SNAPSHOT;
   let anchor: HTMLElement | null = null;
+  let duelAnchors: DuelAnchors | null = null;
   const listeners = new Set<() => void>();
   const commandHandlers = new Set<(command: GameCommand) => void>();
   return {
@@ -247,6 +285,10 @@ export function createGameStore(): GameStore {
       anchor = el;
     },
     getPromptAnchor: () => anchor,
+    setDuelAnchors(next) {
+      duelAnchors = next;
+    },
+    getDuelAnchors: () => duelAnchors,
     send(command) {
       for (const handler of [...commandHandlers]) handler(command);
     },

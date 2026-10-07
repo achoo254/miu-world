@@ -66,6 +66,32 @@ describe('game store', () => {
     expect(reduce(riding, { type: 'loading' }).vehicle).toBeNull();
   });
 
+  it("keeps the boss fight's stage, tells listeners only of a change, and forgets it when the next map loads", () => {
+    const store = createGameStore();
+    const listener = vi.fn();
+    store.subscribe(listener);
+    expect(store.getSnapshot().duel).toBeNull();
+    store.emit({ type: 'duel', state: 'staged' });
+    store.emit({ type: 'duel', state: 'staged' });
+    expect(store.getSnapshot().duel).toBe('staged');
+    expect(listener).toHaveBeenCalledTimes(1);
+    store.emit({ type: 'duel', state: 'unavailable' });
+    expect(store.getSnapshot().duel).toBe('unavailable');
+    store.emit({ type: 'loading' });
+    expect(store.getSnapshot().duel).toBeNull();
+  });
+
+  it("hands the game the boss fight's anchors React registered, and none once cleared", () => {
+    const store = createGameStore();
+    expect(store.getDuelAnchors()).toBeNull();
+    const boss = document.createElement('div');
+    const player = document.createElement('div');
+    store.setDuelAnchors({ boss, player });
+    expect(store.getDuelAnchors()).toEqual({ boss, player });
+    store.setDuelAnchors(null);
+    expect(store.getDuelAnchors()).toBeNull();
+  });
+
   it('tracks loading progress, clamped to the total and unchanged on repeats', () => {
     const one = reduce(INITIAL_SNAPSHOT, { type: 'loading-progress', done: 1, total: 5 });
     expect(one.loading).toEqual({ done: 1, total: 5 });
