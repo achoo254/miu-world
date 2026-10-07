@@ -6,9 +6,19 @@ import type { Bilingual } from '../i18n/i18n';
 import { Bi } from '../i18n/use-t';
 import './toast.css';
 
-export function Toast({ message, onDone, ms = 3200 }: { message: string | Bilingual; onDone: () => void; ms?: number }) {
+/**
+ * The owner's update that clears `shown` only while it is still the line on screen. A line's timer can fire after the
+ * owner has set the next line but before the screen has drawn it (a busy page): clearing whatever is current then
+ * would drop the new line unseen.
+ */
+export function clearShown<T>(shown: T): (current: T | null) => T | null {
+  return (current) => (current === shown ? null : current);
+}
+
+/** `onDone` gets the line whose time ran out; clear it with `clearShown`, never by setting nothing. */
+export function Toast<T extends string | Bilingual>({ message, onDone, ms = 3200 }: { message: T; onDone: (shown: T) => void; ms?: number }) {
   useEffect(() => {
-    const timer = window.setTimeout(onDone, ms);
+    const timer = window.setTimeout(() => onDone(message), ms);
     return () => window.clearTimeout(timer);
   }, [message, onDone, ms]);
   return (

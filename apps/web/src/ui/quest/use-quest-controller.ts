@@ -10,6 +10,7 @@ import { ApiError, api, errorMessage } from '../api-client';
 import { mapBoth, pairOf, type Bilingual } from '../i18n/i18n';
 import { twin } from './content-text';
 import { say, type PlayerData } from '../player/player-data';
+import { clearShown } from '../kit/toast';
 import { TIMETABLE_TARGETS } from '../timetable/timetable-targets';
 import { DONE_LINES, FOUND_LINES, NOT_NOW_LINES, fillLine } from './loop-lines';
 import { autoStep, currentStep, hintTarget, runFor, sniffTargets, stepForTarget, worldState, type ActiveQuestView } from './quest-flow';
@@ -38,7 +39,8 @@ export interface QuestController {
   busy: boolean;
   /** A short line over the game: the content's own words (Vietnamese) or a UI line in both languages. */
   toast: Bilingual | null;
-  clearToast: () => void;
+  /** Clears the line whose time ran out (`Toast`'s `onDone`), never one set since. */
+  clearToast: (shown: Bilingual) => void;
   /** Right answers to learning steps so far; each new one shows a burst of stars over the world. */
   cheers: number;
   /** Set while a call failed for lack of network; retrying re-sends exactly that call. */
@@ -416,7 +418,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
     busy,
     toast,
     cheers,
-    clearToast: useCallback(() => setToast(null), []),
+    clearToast: useCallback((shown: Bilingual) => setToast(clearShown(shown)), []),
     retry,
     error,
     submit,

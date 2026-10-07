@@ -9,6 +9,8 @@ import { tap, touchDrag } from './touch';
 test.use({ storageState: { cookies: [], origins: [] }, viewport: { width: 820, height: 1180 }, hasTouch: true, isMobile: false });
 
 test('drag ten apples by touch, a wrong candy answer then the right one, and the stones by tap-to-select', async ({ page, baseURL }) => {
+  // Two loads of the forest and three challenges by touch: some 35-50 s on CI's software rendering.
+  test.setTimeout(90_000);
   await freshChild(page, baseURL ?? '');
   await playUntil(page, baseURL ?? '', 'apples-for-beaver');
   await page.goto(playAt('animal-beaver'));
@@ -71,6 +73,8 @@ test('drag ten apples by touch, a wrong candy answer then the right one, and the
 });
 
 test('the riddle with the Answer layer still finishes the chapter, for 90 XP instead of 100', async ({ page, baseURL }) => {
+  // Two loads of the forest and a riddle by touch: some 25-40 s on CI's software rendering.
+  test.setTimeout(90_000);
   await freshChild(page, baseURL ?? '');
   await playUntil(page, baseURL ?? '', 'tree-riddle');
   await page.goto(playAt('ancient-tree'));

@@ -12,7 +12,7 @@ import { DialogueScreen } from '../dialogue/dialogue-screen';
 import { NpcPortrait } from '../dialogue/npc-portrait';
 import { Modal } from '../kit/modal';
 import { StarRating } from '../kit/star-rating';
-import { Toast } from '../kit/toast';
+import { Toast, clearShown } from '../kit/toast';
 import { MinigameOverlay, type WinOutcome } from '../minigame/minigame-overlay';
 import { MINIGAME_SPECS } from '../minigame/registry';
 import { mapBoth, pairOf, type Bilingual } from '../i18n/i18n';
@@ -201,7 +201,7 @@ export function useSideQuests({ region, data, onResponse }: { region: string; da
     screens: (
       <>
         {body}
-        {toast ? <Toast message={toast} onDone={() => setToast(null)} /> : null}
+        {toast ? <Toast message={toast} onDone={(shown) => setToast(clearShown(shown))} /> : null}
       </>
     ),
   };
