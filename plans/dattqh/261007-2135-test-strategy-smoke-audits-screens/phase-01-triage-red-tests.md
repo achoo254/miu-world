@@ -1,6 +1,6 @@
 # Pha 1: Phân loại test đỏ thường trực
 
-**Tier:** S · **Phụ thuộc:** — · **Trạng thái:** pending
+**Tier:** S · **Phụ thuộc:** — · **Trạng thái:** completed
 
 ## Bối cảnh
 
@@ -27,3 +27,11 @@ Mới: `plans/dattqh/reports/test-triage-<yymmdd-hhmm>.md` (bảng phân loại)
 ## Rủi ro, hoàn tác
 
 Phân loại sai một lỗi thật thành `test cũ` thì pha 4 xóa nó: giảm bằng cách bắt buộc bằng chứng cho từng dòng và để lỗi thật ngoài smoke hiện trên trang review. Pha này chỉ thêm một report, không cần hoàn tác.
+
+## Todo
+
+- [x] Tải log và trace các lượt CI đỏ
+- [x] Phân loại từng E2E đỏ (lỗi thật, test cũ, môi trường CI, chập chờn) kèm bằng chứng
+- [x] Ghi 8 test did not run và 4 unit test đỏ
+- [x] Chạy lại đúng test khi trace chưa đủ (sgk-mechanics:129, home:112)
+- [x] Report `plans/dattqh/reports/test-triage-261007-2221.md`

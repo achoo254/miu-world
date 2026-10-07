@@ -1,6 +1,6 @@
 # Pha 4: Bộ smoke 9 luồng, 11 test, luôn xanh, chặn deploy
 
-**Tier:** L · **Phụ thuộc:** pha 1 (bảng phân loại), pha 2 (đã commit `.github/workflows/ci.yml`); agent debug màn boss đã commit `bosses`/`coop`/`pets`/`quest-api.ts`/`play.spec.ts` · **Trạng thái:** pending
+**Tier:** L · **Phụ thuộc:** pha 1 (bảng phân loại), pha 2 (đã commit `.github/workflows/ci.yml`); agent debug màn boss đã commit `bosses`/`coop`/`pets`/`quest-api.ts`/`play.spec.ts` · **Trạng thái:** completed
 
 ## Bối cảnh
 
@@ -86,3 +86,16 @@ Sửa: `apps/web/e2e/{play,maps,quest-flow,sgk-mechanics,bosses,coop}.spec.ts` (
 - Test smoke giữ lại vẫn chập chờn trên CI: sửa nguyên nhân (chờ tín hiệu sẵn sàng của game thay vì `waitForTimeout`); nếu sau hai lần sửa vẫn chập chờn, chuyển phần kiểm sang Node và bỏ test khỏi smoke, ghi vào bảng. Không bật `retries`.
 - Va chạm với agent debug: chỉ bắt đầu các file `bosses`, `coop`, `pets`, `quest-api.ts`, `play.spec.ts` khi `git status` sạch cho chúng.
 - Hoàn tác: revert các commit của pha; CI về 4 shard như cũ.
+
+## Lệch so với plan
+
+Theo Validation Log: 9 luồng, 11 test (bỏ E2E an toàn bản build và Home trên điện thoại); giữ lượt hằng đêm mở mọi map nên test mở map còn logic `E2E_ALL_MAPS` (push chỉ mở Trung tâm).
+
+## Todo
+
+- [x] Viết `shop.spec.ts`
+- [x] Cắt và xóa spec theo bảng, bỏ tag `@smoke`
+- [x] Cấu hình Playwright: 2 shard, ngân sách 240 s, bỏ `maxFailures`
+- [x] CI job e2e 2 shard, giữ lượt hằng đêm mở mọi map
+- [x] Cập nhật `docs/code-standards.md`, `CLAUDE.md`
+- [x] Bộ smoke xanh trên máy dev và trên CI

@@ -1,6 +1,6 @@
 # Pha 3: Audit mục tiêu quest (tới được, không bị chiếm nút, không bị ẩn hay che)
 
-**Tier:** M · **Phụ thuộc:** — (chạy song song pha 1, 2) · **Trạng thái:** pending
+**Tier:** M · **Phụ thuộc:** — (chạy song song pha 1, 2) · **Trạng thái:** completed
 
 ## Bối cảnh
 
@@ -53,3 +53,18 @@ Mới: `tools/world/quest-target-audit.ts`, `tools/world/quest-target-audit.test
 - Luật "mọi ô đứng trong bán kính" có thể báo cả những ô sát mép bán kính mà trẻ ít đứng. Nếu số phát hiện kiểu đó lớn và vô hại, đổi luật thành "mọi ô đứng trong bán kính và gần mục tiêu hơn mọi interactable khác không thuộc bước" chỉ sau khi đếm thật; không tự nới trước khi có số liệu.
 - Nhân vật sự kiện chỉ có khi sự kiện mở; audit coi mọi sự kiện đang mở nên chặt hơn game, đúng ý (sự kiện kỷ niệm mở lại hằng năm).
 - Hoàn tác: revert commit; `check-content.ts` trở về đồng bộ; nội dung đã dời giữ nguyên được vì không phụ thuộc audit.
+
+## Lệch so với plan
+
+- Không cần tách hàm mới: `loadMapGrid` đã có (phiên `miu-world-03` tách ở 8376ca24); audit dùng lại nó, chỉ đổi bên trong (ô prop tra bằng chỉ số số) cho nhanh.
+- 12 phát hiện "đồ thứ hai, thứ ba của bước tìm bị nhân vật đứng cạnh chiếm nút" được sửa ở luật game (`pickNearest` ưu tiên mọi đồ bước còn chờ, `game.ts` truyền danh sách đó) thay vì dời 12 món trên 5 map; audit vẫn gọi đúng hàm của game.
+- Hai món trong tảng đá ở Thư viện: sửa generator (`keepOut` quanh đá) và sinh lại map Thư viện cùng route bot của map đó (phiên `miu-world-03` đồng ý).
+
+## Todo
+
+- [x] Lõi audit gọi hàm của game (pickNearest, hintTarget, stepForTarget, worldState, castHidden, entitiesForChapter)
+- [x] Dùng lại `loadMapGrid`, tăng tốc lưới
+- [x] Gọi trong `content:check`, script `world:quest-targets`
+- [x] Sửa phát hiện: luật chọn nút ưu tiên đồ bước tìm, sinh lại map Thư viện
+- [x] Test lưới dựng tay và thử đột biến trên map rừng
+- [x] Thêm dòng kiểm vào `.claude/rules/world-scenery.md`

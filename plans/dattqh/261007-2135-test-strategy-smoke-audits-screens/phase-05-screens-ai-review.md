@@ -108,3 +108,12 @@ Mới: `apps/web/e2e/screens.spec.ts`, `apps/web/e2e/layout.ts`, `docs/screen-re
 - Cảnh 3D chưa vẽ xong lúc chụp: chờ `window.__miuStats.ready` (`apps/web/src/game/debug/stats-overlay.ts:115`); chụp lại riêng màn đó nếu dữ kiện cho thấy cảnh trống.
 - Ảnh lộ dữ liệu: chỉ tài khoản giả trong PGlite RAM, tên nhân vật giả; không dùng `.data/pglite` thật.
 - Hoàn tác: revert; xóa thư mục `assets/generated/review/screens/` rồi `pnpm assets:manifest`.
+
+## Todo
+
+- [ ] `layout.ts` thu dữ kiện DOM
+- [ ] `screens.spec.ts` 19 màn × 2 khổ, chụp được từ cây export
+- [ ] Project `screens`, script `screens`, glob trong `generated.json`
+- [ ] Mục "Màn hình trước deploy" trên trang review
+- [ ] `docs/screen-review.md`
+- [ ] Chụp, duyệt, sửa phát hiện block, commit ảnh và `review.json`

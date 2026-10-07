@@ -50,3 +50,10 @@ Không deploy thật trong pha này. Chạy `deploy.sh gate` (không chạm máy
 
 - `gh` chưa đăng nhập hay mất mạng: cổng chặn và in cách khắc phục (`gh auth status`); không tự cho qua.
 - Hoàn tác: revert; hoặc dùng `MIU_RELEASE_FORCE` cho một lần.
+
+## Todo
+
+- [ ] `tools/deploy/release-gate.sh`
+- [ ] Hai `deploy.sh` gọi cổng và có lệnh `gate`
+- [ ] `docs/deployment-guide.md`, `CLAUDE.md`
+- [ ] Thử bốn trường hợp của `deploy.sh gate`

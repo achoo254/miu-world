@@ -23,3 +23,12 @@ Mới: report trong `plans/dattqh/reports/`. Sửa: `docs/project-roadmap.md`, `
 ## Rủi ro, hoàn tác
 
 CI có thể đỏ vì nguyên nhân ngoài plan (một phiên khác push lỗi): ghi lại, báo phiên đó, không tính lượt đó vào ba lượt xanh. Pha này không đổi hành vi nên không cần hoàn tác.
+
+## Todo
+
+- [ ] CI xanh 3 lượt liền
+- [ ] Thử đột biến audit trên máy
+- [ ] Hiệu chỉnh việc agent xem ảnh với 3 lỗi cài sẵn
+- [ ] Chép kết quả cổng deploy
+- [ ] Report `plans/dattqh/reports/test-strategy-261007.md`
+- [ ] Roadmap và trang review

@@ -1,6 +1,6 @@
 # Pha 2: Job `check` xanh
 
-**Tier:** M · **Phụ thuộc:** — (chạy song song pha 1, 3) · **Trạng thái:** pending
+**Tier:** M · **Phụ thuộc:** — (chạy song song pha 1, 3) · **Trạng thái:** completed
 
 ## Bối cảnh
 
@@ -32,3 +32,15 @@ Sửa: `packages/voxel/src/outland-plan.test.ts`, `apps/web/src/ui/minigame/test
 ## Rủi ro, hoàn tác
 
 Job `maps` thêm một máy CI mỗi lần push (repo công khai, phút runner chuẩn miễn phí). Nếu job `maps` vẫn vượt 120 s ở `beforeAll`, chia nó thành hai job theo nhóm map thay vì nâng giới hạn. Hoàn tác: revert commit; `pnpm test` trên máy dev không đổi hành vi nên không ảnh hưởng phiên khác.
+
+## Lệch so với plan
+
+Job `maps` đã chạy một mình và từng file một (`--no-file-parallelism`), nhưng sinh rừng vẫn mất 89–146 s trên máy CI (54 s trên máy dev khi chạy một mình), nên chia job không giúp được. Giới hạn `beforeAll` của riêng test rừng nâng từ 120 s lên 240 s, comment ghi số đo (commit 7220a27d). Đây là chặn treo, không phải ngân sách hiệu năng; không test nào khác đổi giới hạn.
+
+## Todo
+
+- [x] outland-plan đo lần nhanh nhất trong 5 lần
+- [x] describe-minigame khai timeout 20 s cho test vẽ
+- [x] Project vitest `maps`, job CI `maps` chạy từng file
+- [x] Job check chạy `--project node --project web`
+- [x] Job check xanh trên CI
