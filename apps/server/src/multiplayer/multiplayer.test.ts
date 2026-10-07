@@ -117,12 +117,16 @@ describe('companion bots walk on their own', () => {
     const bots = new BotRunner(hub, { random, walk: castleOnly });
     bots.start();
     const room = hub.getOrCreateRoom('lau-dai');
+    // A player far off watches (in a room nobody is in, they move on only once a second).
+    const watcher = player('child-far');
+    room.join({ id: watcher.id, presence: watcher, send: () => {}, isBot: false });
     const last = new Map<string, Spot>();
     const start = new Map<string, Spot>();
     let steps = 0;
     for (let t = 0; t < 600; t++) {
       await vi.advanceTimersByTimeAsync(100);
       for (const m of room.members.values()) {
+        if (!m.isBot) continue;
         const at = { x: Math.floor(m.presence.x), y: m.presence.y, z: Math.floor(m.presence.z) };
         expect(map.standAt(at.x, at.y, at.z), `${m.id} at ${at.x},${at.y},${at.z}`).not.toBe(0);
         const before = last.get(m.id);
@@ -136,6 +140,7 @@ describe('companion bots walk on their own', () => {
     }
     expect(steps).toBeGreaterThan(200);
     const wandered = [...room.members.values()].filter((m) => {
+      if (!m.isBot) return false;
       const from = start.get(m.id);
       return from && Math.hypot(m.presence.x - from.x, m.presence.z - from.z) > 5;
     });

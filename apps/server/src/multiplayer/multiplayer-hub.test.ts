@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import type { PlayerAppearanceInput, ServerWsMessage } from '@miu/schema/multiplayer';
-import { MultiplayerHub, WS_CLOSE, type Connection } from './multiplayer-hub';
+import type { PlayerAppearanceInput, PlayerPresence, ServerWsMessage } from '@miu/schema/multiplayer';
+import { FAR_MOVE_MS, MultiplayerHub, MultiplayerRoom, NEAR_MOVE_RANGE, WS_CLOSE, type Connection } from './multiplayer-hub';
 import type { MultiplayerStore } from './multiplayer-store';
 import { PartyService } from './party-service';
 
@@ -373,5 +373,68 @@ describe('parties', () => {
     expect(a.last('party-state')?.party?.members.map((m) => m.id)).toEqual([a.id, b.id]);
     a.send({ type: 'party-invite', to: c.id });
     expect(a.last('notice')).toEqual({ type: 'notice', code: 'not-here', id: c.id });
+  });
+});
+
+describe('moves in a room', () => {
+  it("tells a player every move of a bot near her, a far one's only now and then or when what it does changes, and a bot nobody's", () => {
+    let clock = 0;
+    const room = new MultiplayerRoom('trung-tam', () => true, null, () => clock);
+    const presence = (id: string, isBot: boolean, x: number): PlayerPresence => ({
+      id,
+      displayName: id,
+      isBot,
+      species: 'fox',
+      outfit: [],
+      pet: null,
+      petGear: [],
+      x,
+      y: 5,
+      z: 0,
+      yaw: 0,
+      speed: 0,
+      action: 'idle',
+      riding: false,
+      bubble: null,
+    });
+    const inbox = new Map<string, ServerWsMessage[]>();
+    const join = (id: string, isBot: boolean, x: number): void => {
+      inbox.set(id, []);
+      room.join({ id, isBot, presence: presence(id, isBot, x), send: (m) => inbox.get(id)?.push(m) });
+    };
+    join('p-1', false, 0);
+    join('bot-near', true, NEAR_MOVE_RANGE - 1);
+    join('bot-far', true, NEAR_MOVE_RANGE + 50);
+    const movesOf = (to: string, id: string): number => (inbox.get(to) ?? []).filter((m) => m.type === 'move' && m.id === id).length;
+    const walk = (id: string, x: number, action: 'walk' | 'idle' = 'walk'): void => room.updatePresence(id, { x, y: 5, z: 0, yaw: 0, speed: action === 'walk' ? 3 : 0, action });
+
+    // Ten ticks of walking: the near bot's ten moves, the far bot's first one only.
+    for (let t = 0; t < 10; t++) {
+      clock += 100;
+      walk('bot-near', NEAR_MOVE_RANGE - 1 - t * 0.3);
+      walk('bot-far', NEAR_MOVE_RANGE + 50 + t * 0.3);
+    }
+    expect(movesOf('p-1', 'bot-near')).toBe(10);
+    expect(movesOf('p-1', 'bot-far')).toBe(1);
+    // It stops: she is told at once (never left walking on the spot), then FAR_MOVE_MS after the last one.
+    clock += 100;
+    walk('bot-far', NEAR_MOVE_RANGE + 53, 'idle');
+    expect(movesOf('p-1', 'bot-far')).toBe(2);
+    clock += FAR_MOVE_MS - 100;
+    walk('bot-far', NEAR_MOVE_RANGE + 53, 'idle');
+    expect(movesOf('p-1', 'bot-far')).toBe(2);
+    clock += 100;
+    walk('bot-far', NEAR_MOVE_RANGE + 53, 'idle');
+    expect(movesOf('p-1', 'bot-far')).toBe(3);
+    // Its presence is the latest either way.
+    expect(room.members.get('bot-far')?.presence.x).toBe(NEAR_MOVE_RANGE + 53);
+    // No bot is told of anyone's move, a player's included.
+    walk('p-1', 1);
+    expect([...inbox.entries()].filter(([id]) => id.startsWith('bot-')).flatMap(([, list]) => list.filter((m) => m.type === 'move'))).toEqual([]);
+    // She leaves and comes back: what she was told is forgotten, the far bot's next move reaches her.
+    room.leave('p-1');
+    join('p-1', false, 0);
+    walk('bot-far', NEAR_MOVE_RANGE + 53, 'idle');
+    expect(movesOf('p-1', 'bot-far')).toBe(1);
   });
 });

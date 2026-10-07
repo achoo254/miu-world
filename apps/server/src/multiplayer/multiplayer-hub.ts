@@ -57,6 +57,22 @@ type Sees = (viewer: string, other: string) => boolean;
 export const homeBotId = (botId: string, host: string): string => `${botId}@${host}`;
 export const botProfileId = (id: string): string => id.split('@')[0] ?? id;
 
+/** A companion bot's moves reach a player within this many blocks (horizontally) of it every time… */
+export const NEAR_MOVE_RANGE = 64;
+/**
+ * …and a player further off at most this often (ms), or as soon as it starts or stops walking, gets on or off a ride
+ * or shows a gesture (she never sees a far bot walk on the spot).
+ */
+export const FAR_MOVE_MS = 2_000;
+
+/** What a player was last told of a far bot's moves: when, and what it was doing. */
+interface FarMove {
+  at: number;
+  speed: number;
+  action: PlayerPresence['action'];
+  riding: boolean;
+}
+
 /** One room per map, and on the home map one per player (`host`, her public id): her home. */
 export const roomKey = (mapId: string, host: string | null): string => (host ? `${mapId}#${host}` : mapId);
 
@@ -66,13 +82,19 @@ export class MultiplayerRoom {
   readonly host: string | null;
   readonly key: string;
   readonly members = new Map<string, RoomMember>();
+  /** The members who are players (not companion bots): the only ones told of moves. */
+  readonly people = new Map<string, RoomMember>();
+  /** By player, then by bot: what she was last told of each far bot's moves. */
+  private readonly farMoves = new Map<string, Map<string, FarMove>>();
   private readonly sees: Sees;
+  private readonly now: () => number;
 
-  constructor(mapId: string, sees: Sees = () => true, host: string | null = null) {
+  constructor(mapId: string, sees: Sees = () => true, host: string | null = null, now: () => number = Date.now) {
     this.mapId = mapId;
     this.host = host;
     this.key = roomKey(mapId, host);
     this.sees = sees;
+    this.now = now;
   }
 
   /** Whether `viewer` may see `other` here (a blocked pair, or a bot to a player who switched bots off, may not). */
@@ -84,6 +106,8 @@ export class MultiplayerRoom {
     const existing = [...this.members.values()].filter((m) => this.sees(member.id, m.id)).map((m) => m.presence);
     member.send({ type: 'welcome', selfId: member.id, players: existing });
     this.members.set(member.id, member);
+    if (member.isBot) this.people.delete(member.id);
+    else this.people.set(member.id, member);
     this.broadcast({ type: 'spawn', player: member.presence }, member.id);
   }
 
@@ -98,7 +122,32 @@ export class MultiplayerRoom {
     presence.speed = update.speed;
     if (update.action !== undefined) presence.action = update.action;
     if (update.riding !== undefined) presence.riding = update.riding;
-    this.broadcast({ type: 'move', id, x: update.x, y: update.y, z: update.z, yaw: update.yaw, speed: update.speed, action: update.action, riding: update.riding }, id);
+    const message: ServerWsMessage = { type: 'move', id, x: update.x, y: update.y, z: update.z, yaw: update.yaw, speed: update.speed, action: update.action, riding: update.riding };
+    // Only players are told: a bot reads the room's presences when it looks around.
+    for (const [to, person] of this.people) {
+      if (to === id || !this.sees(to, id)) continue;
+      if (member.isBot && !this.tellsFar(person, member)) continue;
+      person.send(message);
+    }
+  }
+
+  /**
+   * Whether player `person` is told of bot `bot`'s move now: always within NEAR_MOVE_RANGE; further off once every
+   * FAR_MOVE_MS, or when what it does changed since she was last told.
+   */
+  private tellsFar(person: RoomMember, bot: RoomMember): boolean {
+    const p = bot.presence;
+    if (Math.hypot(p.x - person.presence.x, p.z - person.presence.z) <= NEAR_MOVE_RANGE) return true;
+    let told = this.farMoves.get(person.id);
+    if (!told) {
+      told = new Map();
+      this.farMoves.set(person.id, told);
+    }
+    const last = told.get(bot.id);
+    const now = this.now();
+    if (last && now - last.at < FAR_MOVE_MS && last.speed === p.speed && last.action === p.action && last.riding === p.riding) return false;
+    told.set(bot.id, { at: now, speed: p.speed, action: p.action, riding: p.riding });
+    return true;
   }
 
   broadcastEmote(id: string, emote: SafeEmote, to?: string): void {
@@ -115,6 +164,10 @@ export class MultiplayerRoom {
 
   leave(id: string): void {
     if (!this.members.delete(id)) return;
+    this.people.delete(id);
+    // What she was told of far bots, and what anyone was told of it, goes with it.
+    this.farMoves.delete(id);
+    for (const told of this.farMoves.values()) told.delete(id);
     this.broadcast({ type: 'despawn', id }, id);
   }
 
@@ -283,7 +336,7 @@ export class MultiplayerHub {
     const key = roomKey(mapId, host);
     let room = this.rooms.get(key);
     if (!room) {
-      room = new MultiplayerRoom(mapId, this.roomSees, host);
+      room = new MultiplayerRoom(mapId, this.roomSees, host, this.now);
       this.rooms.set(key, room);
       if (host) this.homeHooks?.opened(room);
     }

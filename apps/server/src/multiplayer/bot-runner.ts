@@ -82,6 +82,12 @@ const GREET_S = 3.5;
 const SOCIAL_SWEEP_MS = 5_000;
 /** How often a bot in a party it asked a player into checks she is still on its map (ms). */
 const TEAM_CHECK_MS = 1_000;
+/** The runner ticks this often (ms): a room with players in it moves its bots on at every tick… */
+export const TICK_MS = 100;
+/** …one with none, this often (s; its bots still learn, and nobody is told). */
+export const EMPTY_ROOM_STEP_S = 1;
+/** However long a stall, a bot where players are moves on at most this far at once (s). */
+const STEP_MAX_S = 0.2;
 /** After the party's challenge or quest, it waves goodbye and leaves this long later (and up to twice as long). */
 export const BOT_TEAM_LEAVE_MS = 5_000;
 /** In the party it asked her into, it asks the party to play a quest this long after she said yes (up to twice as long). */
@@ -243,6 +249,8 @@ export interface BotRunnerOptions {
   quests?: QuestBook;
   /** Time each tick may spend planning bots' ways (ms). */
   planBudgetMs?: number;
+  /** The bots of each map (default: every companion bot, `BOT_MAP_CONFIGS`; others only to measure load). */
+  profiles?: Readonly<Record<string, readonly BotProfile[]>>;
 }
 
 /** Time each tick may spend planning bots' ways, for the whole server (ms). */
@@ -284,6 +292,8 @@ export class BotRunner {
   readonly plans: PathQueue;
   private timer: NodeJS.Timeout | null = null;
   private lastTick = Date.now();
+  /** The time of the tick running now (null: none runs): read once a tick for every bot, not by each one. */
+  private tickAt: number | null = null;
   /** Answers on their way (a bot takes a moment, as a player would). */
   private readonly replies = new Set<NodeJS.Timeout>();
   /** How the bots behave with the players they meet (what they keep of each player, in memory only). */
@@ -312,6 +322,9 @@ export class BotRunner {
   private teamsCheckedAt = Date.now();
   /** Bots playing their part in party quests. */
   private readonly partyPlayer: BotPartyQuestPlayer;
+  private readonly profiles: Readonly<Record<string, readonly BotProfile[]>>;
+  /** Time gone by since the bots of each room with no player in it last moved on (s, by room key). */
+  private readonly unwatched = new Map<string, number>();
 
   constructor(hub: MultiplayerHub, options: BotRunnerOptions = {}) {
     this.hub = hub;
@@ -325,11 +338,12 @@ export class BotRunner {
     this.walk = options.walk ?? null;
     this.quests = options.quests ?? contentQuestBook();
     this.plans = new PathQueue(options.planBudgetMs ?? PLAN_BUDGET_MS);
+    this.profiles = options.profiles ?? BOT_MAP_CONFIGS;
     const host = hub.coopHost();
     this.host = host;
     const store = this.store;
     this.social = new BotSocial({
-      now: () => Date.now(),
+      now: () => this.now(),
       random: this.random,
       // A bot remembers the players it won a challenge with (its own id; never an instance in a home).
       recall: async (botId, playerId) => {
@@ -554,7 +568,7 @@ export class BotRunner {
             persona,
             quests: this.quests.questsOn(room.mapId, this.clock()),
             random: this.random,
-            now: () => Date.now(),
+            now: () => this.now(),
             planner: this.planner,
             requestPlan: (run) => this.plans.request(`${key}|way`, run),
             players: (at, sight) =>
@@ -577,7 +591,7 @@ export class BotRunner {
             chooser: brain,
             planner: this.planner,
             requestPlan: (run) => this.plans.request(key, run),
-            now: () => Date.now(),
+            now: () => this.now(),
           })
         : null;
     inst = new CompanionBotInstance(profile, room, body, brain, {
@@ -593,7 +607,7 @@ export class BotRunner {
 
   start(): void {
     // Populate companion bots for configured maps; each home gets its own while a player is in it.
-    for (const [mapId, profiles] of Object.entries(BOT_MAP_CONFIGS)) {
+    for (const [mapId, profiles] of Object.entries(this.profiles)) {
       if (mapId === HOME_MAP_ID) continue;
       this.fill(this.hub.getOrCreateRoom(mapId), profiles);
     }
@@ -608,15 +622,15 @@ export class BotRunner {
           void this.memories?.detach(this.planKey(room, bot.profile.id));
         }
         this.bots.delete(room.key);
+        this.unwatched.delete(room.key);
       },
     });
 
     // Its bots play their part in the party quests they are in.
     this.hub.setPartyQuestBots(this.partyPlayer);
 
-    // Run tick loop at 10Hz (100ms)
     this.lastTick = Date.now();
-    this.timer = setInterval(() => this.tick(), 100);
+    this.timer = setInterval(() => this.tick(), TICK_MS);
   }
 
   private planKey(room: MultiplayerRoom, botId: string): string {
@@ -635,7 +649,7 @@ export class BotRunner {
    * out from a neighbour's home), so friends turn up more often.
    */
   private homeBots(room: MultiplayerRoom): BotProfile[] {
-    const neighbours = BOT_MAP_CONFIGS[HOME_MAP_ID] ?? [];
+    const neighbours = this.profiles[HOME_MAP_ID] ?? [];
     const visitors = (room.host ? this.hub.botFriendsOf(room.host) : [])
       .filter((id) => !neighbours.some((n) => n.id === id))
       .slice(0, HOME_VISITORS)
@@ -647,21 +661,52 @@ export class BotRunner {
     return [...neighbours, ...visitors];
   }
 
-  /** Moves every bot on by the time since the last tick (at most a fifth of a second, after a stall), then plans. */
+  /**
+   * Moves every bot on by the time since the last tick, then plans. Where players are, ten times a second (at most a
+   * fifth of a second at once, after a stall); in a room with none, nobody sees them walk: once a second (at most a
+   * second at once), still learning, nothing to tell anyone.
+   */
   tick(): void {
     const now = Date.now();
-    const dt = Math.min((now - this.lastTick) / 1000, 0.2);
+    this.tickAt = now;
+    try {
+      this.moveOn(now);
+    } finally {
+      this.tickAt = null;
+    }
+  }
+
+  /** The time now: the tick's while one runs. */
+  private now(): number {
+    return this.tickAt ?? Date.now();
+  }
+
+  private moveOn(now: number): void {
+    const gone = Math.max(0, (now - this.lastTick) / 1000);
     this.lastTick = now;
     const sweep = now - this.socialSweptAt >= SOCIAL_SWEEP_MS;
     const present = new Set<string>();
-    for (const list of this.bots.values()) {
+    for (const [key, list] of this.bots) {
       // The room's players, once a tick (a room with none has nobody to meet).
       const room = list[0]?.room;
-      const players = room ? [...room.members.values()].filter((m) => !m.isBot).map((m) => m.presence) : [];
+      const players = room ? [...room.people.values()].map((m) => m.presence) : [];
+      if (players.length === 0) {
+        const waited = (this.unwatched.get(key) ?? 0) + gone;
+        if (waited < EMPTY_ROOM_STEP_S) {
+          this.unwatched.set(key, waited);
+          continue;
+        }
+        this.unwatched.set(key, 0);
+        const dt = Math.min(waited, EMPTY_ROOM_STEP_S);
+        for (const bot of list) bot.tick(dt);
+        continue;
+      }
+      this.unwatched.delete(key);
+      const dt = Math.min(gone, STEP_MAX_S);
       if (sweep) for (const p of players) present.add(p.id);
       for (const bot of list) {
         bot.tick(dt);
-        if (players.length > 0) this.meetPlayers(bot, players);
+        this.meetPlayers(bot, players);
       }
     }
     if (sweep) {
