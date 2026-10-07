@@ -7,7 +7,7 @@ import type { ProgressResponse } from '@miu/schema/game';
 import { T } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
-import { SkyScene } from '../kit/sky-scene';
+import { PageLoading, SkyScene } from '../kit/sky-scene';
 import '../kit/scene.css';
 import { PlayerBadge } from '../player/player-badge';
 import { usePlayer, type PlayerData } from '../player/player-data';
@@ -43,9 +43,7 @@ function Frame({
           </Link>
         </p>
       ) : null}
-      {!data && !error ? <p role="status">
-          <T k="common.loading" />
-        </p> : null}
+      {!data && !error ? <PageLoading /> : null}
       {data ? (
         <>
           <header className="region-top">

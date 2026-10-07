@@ -79,6 +79,21 @@ function SkyDecor() {
 }
 
 /**
+ * A screen waiting for its data: the island with the player's character (Miu while it is not known) in the middle
+ * of the sky, the line under it on a cloud-white pill, instead of bare text in the corner (owner 07/10/2026).
+ */
+export function PageLoading({ dataId, species }: { dataId?: string; species?: string }) {
+  return (
+    <div className="page-loading" data-id={dataId}>
+      <MiuOnIsland pose="idle" size="10rem" species={species} />
+      <p role="status" className="page-loading-text">
+        <T k="common.loading" />
+      </p>
+    </div>
+  );
+}
+
+/**
  * Miu on the island, bobbing in the air; with `altPose`, Miu hops and switches pose now and then. `species`: the
  * player's own animal instead of Miu; `bare`: the island alone, while the player's character is not known yet.
  */

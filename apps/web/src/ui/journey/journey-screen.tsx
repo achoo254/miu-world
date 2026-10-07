@@ -17,6 +17,7 @@ import { say, type PlayerData } from '../player/player-data';
 import { loadJourney, useLoaded } from '../progression/progression-api';
 import { REGIONS } from '../region/regions';
 import { ProgressShell } from './progress-shell';
+import { PageLoading } from '../kit/sky-scene';
 
 const KIND_ICON: Readonly<Record<JourneyEventKind, UiIcon>> = {
   quest: 'scroll',
@@ -143,9 +144,7 @@ function JourneyBody({ player }: { player: PlayerData }) {
   }
   if (!journey.data) {
     return (
-      <p role="status">
-        <T k="common.loading" />
-      </p>
+      <PageLoading />
     );
   }
   // The regions in the world's order (content/world/regions.json).

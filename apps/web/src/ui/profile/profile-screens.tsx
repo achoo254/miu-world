@@ -7,7 +7,7 @@ import { ITEMS, itemIcon } from '../backpack/items';
 import { T, useT } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
-import { SkyScene } from '../kit/sky-scene';
+import { PageLoading, SkyScene } from '../kit/sky-scene';
 import { PlayerBadge } from '../player/player-badge';
 import { say, usePlayer, type PlayerData } from '../player/player-data';
 import { useRegionRewardList } from '../region/region-rewards';
@@ -29,9 +29,7 @@ function Page({ children, data, error }: { children: (data: PlayerData) => React
           </p>
         ) : null}
         {!data && !error ? (
-          <p role="status">
-            <T k="common.loading" />
-          </p>
+          <PageLoading />
         ) : null}
         {data ? (
           <>

@@ -11,7 +11,7 @@ import { ParentAreaScreen } from './account/parent-area-screen';
 import { PlayStartScreen, ProfilePickerScreen } from './account/profile-screens';
 import { LoginScreen, RegisterScreen, SetPinScreen } from './account/sign-in-screens';
 import { PrivacyScreen } from './legal/privacy-screen';
-import { Logo, MiuOnIsland, SkyScene } from './kit/sky-scene';
+import { Logo, PageLoading, SkyScene } from './kit/sky-scene';
 import type { MusicMood } from './sound/music';
 import { useMusicMood } from './sound/music-player';
 // three.js is only needed on /play: keep it out of the sign-in and profile bundle.
@@ -55,10 +55,7 @@ function Loading() {
   return (
     <SkyScene>
       <main className="scene-content" data-id="shell-loading">
-        <MiuOnIsland pose="idle" size="10rem" />
-        <p role="status" className="tagline">
-          <T k="common.loading" />
-        </p>
+        <PageLoading />
       </main>
     </SkyScene>
   );

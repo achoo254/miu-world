@@ -19,6 +19,7 @@ import { claimAchievement, loadAchievements, useLoaded } from '../progression/pr
 import { rewardItemArt } from '../region/region-rewards';
 import { playCue } from '../sound/sfx';
 import { ProgressShell } from './progress-shell';
+import { PageLoading } from '../kit/sky-scene';
 
 type Tab = 'all' | AchievementCategory;
 const TAB_KEYS: Readonly<Record<Tab, TextKey>> = {
@@ -175,9 +176,7 @@ function AchievementsBody({ player, onCoins }: { player: PlayerData; onCoins: (c
   }
   if (!list.data) {
     return (
-      <p role="status">
-        <T k="common.loading" />
-      </p>
+      <PageLoading />
     );
   }
   const all = list.data.achievements;

@@ -6,7 +6,7 @@ import { Link, NavLink } from 'react-router';
 import { T, useT } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
-import { SkyScene } from '../kit/sky-scene';
+import { PageLoading, SkyScene } from '../kit/sky-scene';
 import { PlayerBadge } from '../player/player-badge';
 import { usePlayer, type PlayerData } from '../player/player-data';
 import { ShopPanel } from '../shop/shop-panel';
@@ -30,9 +30,7 @@ export function ProgressShell({ dataId, children }: { dataId: string; children: 
           </p>
         ) : null}
         {!data && !error ? (
-          <p role="status">
-            <T k="common.loading" />
-          </p>
+          <PageLoading />
         ) : null}
         {data ? (
           <>

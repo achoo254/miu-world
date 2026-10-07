@@ -10,7 +10,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { Icon, MiuPortrait } from '../kit/art';
-import { SkyScene } from '../kit/sky-scene';
+import { PageLoading, SkyScene } from '../kit/sky-scene';
 import { PlayerBadge } from '../player/player-badge';
 import { currentQuest, playPath, questForRegion, usePlayer } from '../player/player-data';
 import { ShopPanel } from '../shop/shop-panel';
@@ -97,9 +97,7 @@ export function HomeScreen() {
             </Link>
           </p>
         ) : null}
-        {!data && !error ? <p role="status">
-            <T k="common.loading" />
-          </p> : null}
+        {!data && !error ? <PageLoading /> : null}
         {data ? (
           <>
             <header className="home-top">
