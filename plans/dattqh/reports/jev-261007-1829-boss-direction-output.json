@@ -1,0 +1,20 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1139,
+    "output_tokens": 63
+  },
+  "results": {
+    "direction": {
+      "stakes": "medium",
+      "choice": "hybrid-duel-with-play-moves",
+      "confidence": 0.77,
+      "probabilities": {
+        "live-3d-duel": 0.14,
+        "action-minigame": 0.01,
+        "hybrid-duel-with-play-moves": 0.85
+      },
+      "decision": "escalate"
+    }
+  }
+}

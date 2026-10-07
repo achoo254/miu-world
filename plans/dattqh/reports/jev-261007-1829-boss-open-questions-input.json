@@ -1,0 +1,66 @@
+{
+  "state": {
+    "product": "Miu World: online Minecraft-like 3D voxel learning game for all ages, web on phones/iPads today, mobile app later. North star: lively, never boring.",
+    "decision_already_made": "Boss fights become a duel in the running 3D world: the real boss model faces the child, the camera frames both, the question is a compact card; each turn the child answers through a varied play move (fling a charm at the right shield, tap the right floating orb, drag a gem onto the right answer, tap to charge a combo). Right answer: the child's attack lands, boss staggers, HP drains. Wrong: harmless boss counter, child dodges. No timer. The server still judges every pick, HP and rewards. Support layers (guide, hint after 1 wrong, answer after 2 wrong) and the copy-into-notebook card after each right answer stay.",
+    "facts": [
+      "59 boss fights with 290 questions: 12 big bosses, 42 zone guardians, 5 Olympic Math event bosses. 58 bosses are Cube Pets models with idle/dance/nod/shake clips; one is a stone knight with its own clips. No new assets needed.",
+      "Two co-op flows exist: a boss fight played in a party (shared HP, players take turns) will use the new duel screen. Separately, 3 co-op challenges of kind team-boss (quests with-*) run on their own co-op board UI.",
+      "The plan keeps the server API unchanged: the client sends {turnId, choice}.",
+      "The current learning rule: wrong tries count toward a small score penalty; support layers open after wrong tries.",
+      "6 sound cues already exist in the game.",
+      "On page reload mid-fight the child may be far from the boss; the game has standBeside and teleport helpers.",
+      "The old BossScreen component would be replaced by the new BossDuel; keeping both means two screens to maintain.",
+      "Owner rule: content must be varied and never repetitive; data-driven content is checked by content:check."
+    ]
+  },
+  "questions": {
+    "coop-team-boss": {
+      "stakes": "medium",
+      "instructions": "The 3 co-op team-boss challenges (quests with-*) run on their own co-op board. What should this delivery do with them?",
+      "criteria": {
+        "keep-as-is": "Leave them on their current co-op board this delivery; only boss fights inside quests (solo and party) get the new duel.",
+        "convert-now": "Also move the 3 team-boss challenges onto the new duel screen in this delivery, adding scope to the co-op board flow."
+      }
+    },
+    "move-assignment": {
+      "stakes": "low",
+      "instructions": "How should the play move for each boss turn be chosen?",
+      "criteria": {
+        "pure-function": "A pure tested function duelMoveFor(bossId, run, turnIndex) rotates the four moves so two turns in a row never repeat and a 4-5 turn fight uses all four; no new content fields.",
+        "content-field": "Each boss turn declares its move in the content JSON, checked by content:check; authors pick moves by hand for 290 questions."
+      }
+    },
+    "dim-wrong": {
+      "stakes": "low",
+      "instructions": "After a wrong pick in a turn, should that wrong answer target be dimmed or removed for the rest of the turn?",
+      "criteria": {
+        "keep-visible": "No: the wrong target bounces the throw off and stays, keeping the current learning rule where the child must reason again.",
+        "dim-it": "Yes: dim the wrong target so the next try is easier."
+      }
+    },
+    "sound": {
+      "stakes": "low",
+      "instructions": "Sound for the duel?",
+      "criteria": {
+        "reuse-cues": "Reuse the 6 existing sound cues, no new audio assets this delivery.",
+        "new-audio": "Add new duel sound effects through the asset pipeline."
+      }
+    },
+    "reload-mid-fight": {
+      "stakes": "low",
+      "instructions": "On page reload mid-fight when the child is far from the boss, what happens?",
+      "criteria": {
+        "teleport-beside": "Move the child beside the boss with standBeside + teleport and resume the duel; if no place to stand, fall back to a static duel card.",
+        "static-card": "Always show the static duel card after a reload, no teleport."
+      }
+    },
+    "old-screen": {
+      "stakes": "low",
+      "instructions": "What to do with the old BossScreen component?",
+      "criteria": {
+        "replace": "Replace it with the new BossDuel (git mv), one screen to maintain; the static fallback lives inside BossDuel.",
+        "keep-both": "Keep the old screen beside the new one behind a switch."
+      }
+    }
+  }
+}

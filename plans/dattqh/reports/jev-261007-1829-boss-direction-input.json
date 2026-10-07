@@ -1,0 +1,32 @@
+{
+  "state": {
+    "product": "Miu World: online Minecraft-like 3D voxel learning game for all ages (children and adults), web today on phones/iPads, mobile app later. North star from the owner: lively, never boring. Quests teach Vietnamese grade-2 textbook content.",
+    "owner_request": "The owner looked at the boss fight on a phone and said: the boss fight should be interactive play instead of feeling like doing a main quest step. The owner told the team to let Jev choose the direction and then build it.",
+    "current_boss_fight": [
+      "A modal over the paused 3D world, same frame as every other quest challenge: banner title, HP bar (e.g. 400/500), a 2D emoji/illustration avatar with a speech bubble and progress dots, a text multiple-choice question card with 3 answer buttons, and a support panel (Guide, Hint after 1 wrong, Answer after 2 wrong, 'Solve (-100 HP)').",
+      "Data: each boss has maxHp and 4-6 turns; each turn is a multiple-choice question with server-side right/wrong feedback lines and support layers. 12 big bosses and 42 zone guardians (about 260 questions) already written.",
+      "The server judges answers, HP and rewards; the client must not decide rewards. A co-op team-boss mode shares HP across up to 4 players taking turns.",
+      "The 3D boss is not shown during the fight; there is no attack, hit or dodge animation.",
+      "A separate minigame framework exists (15+ real-time Canvas 2D games with taps/swipes, e.g. paper-io, unblock-ferry) but it is not used for bosses."
+    ],
+    "constraints": [
+      "Keep the learning content and the server as source of truth for right/wrong, HP and rewards; reuse the 260 written questions without rewriting them.",
+      "Keep the support layers and the 'copy the question and answer into the notebook after each right answer' feature (the owner's top outcome).",
+      "Young children must be able to read calmly: no losing because a timer ran out; adults should still find it fun.",
+      "Touch-first: must work on a phone in portrait and on iPad.",
+      "Content must stay varied, never repetitive.",
+      "Must keep within the 3D draw-call budget on iPad."
+    ]
+  },
+  "questions": {
+    "direction": {
+      "stakes": "medium",
+      "instructions": "Which direction should the boss fight redesign take so it feels like interactive play rather than a quest step, given the constraints?",
+      "criteria": {
+        "live-3d-duel": "Keep the 3D world running with the real boss model facing the child; the camera frames both, the question becomes a compact card at the bottom. A right answer plays the child's attack (projectile, hit flash, boss staggers, HP bar drains with numbers); a wrong answer plays the boss's harmless counter (child dodges, light shake); the boss has idle/taunt/defeat animations. Answering is still tapping a choice. Turn-based, no timer.",
+        "action-minigame": "Turn each boss into a real-time arcade minigame on the existing Canvas 2D framework: the boss throws answer bubbles or obstacles, the child dodges and catches or shoots the right answer before it disappears; HP drains on hits. The 3D world stays paused behind it.",
+        "hybrid-duel-with-play-moves": "Live 3D duel as above, plus each turn the child answers through a varied, gentle play move instead of a plain button: aim and fling a charm at the shield bearing the right answer, tap the right answer orb as it floats around the boss, drag a power gem onto the right answer, or charge a combo by tapping. Moves rotate between turns and between bosses for variety; no timer, wrong picks bounce off harmlessly; the server still judges each pick."
+      }
+    }
+  }
+}

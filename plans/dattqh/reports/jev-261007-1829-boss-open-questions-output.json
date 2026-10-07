@@ -1,0 +1,69 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1358,
+    "output_tokens": 212
+  },
+  "results": {
+    "coop-team-boss": {
+      "stakes": "medium",
+      "choice": "keep-as-is",
+      "confidence": 1.0,
+      "probabilities": {
+        "keep-as-is": 1.0,
+        "convert-now": 0.0
+      },
+      "decision": "auto"
+    },
+    "move-assignment": {
+      "stakes": "low",
+      "choice": "content-field",
+      "confidence": 0.1,
+      "probabilities": {
+        "pure-function": 0.45,
+        "content-field": 0.55
+      },
+      "decision": "escalate"
+    },
+    "dim-wrong": {
+      "stakes": "low",
+      "choice": "keep-visible",
+      "confidence": 0.68,
+      "probabilities": {
+        "dim-it": 0.16,
+        "keep-visible": 0.84
+      },
+      "decision": "auto"
+    },
+    "sound": {
+      "stakes": "low",
+      "choice": "reuse-cues",
+      "confidence": 0.9,
+      "probabilities": {
+        "new-audio": 0.05,
+        "reuse-cues": 0.95
+      },
+      "decision": "auto"
+    },
+    "reload-mid-fight": {
+      "stakes": "low",
+      "choice": "teleport-beside",
+      "confidence": 1.0,
+      "probabilities": {
+        "static-card": 0.0,
+        "teleport-beside": 1.0
+      },
+      "decision": "auto"
+    },
+    "old-screen": {
+      "stakes": "low",
+      "choice": "replace",
+      "confidence": 1.0,
+      "probabilities": {
+        "replace": 1.0,
+        "keep-both": 0.0
+      },
+      "decision": "auto"
+    }
+  }
+}
