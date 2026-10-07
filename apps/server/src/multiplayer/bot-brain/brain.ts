@@ -8,6 +8,8 @@
 // and getting stuck) and learns from it. It plays the map's quests on its own (quest-plan.ts): it looks for a step's
 // target until it finds it, then goes straight there the next time, along the ways it remembers and the shortcuts
 // it found. A player it meets is never followed: it walks over once, stays a moment, and goes back to its own plans.
+// In a party it may be given the party's goal (`share`): the targets of the step the party is on, which it then
+// heads for instead of its own quest's, finding its way there by what it learnt, never by following anyone.
 import type { WalkPlace } from '@miu/voxel/walk-cells';
 import type { LocalPlanner, PathGoal } from './local-path';
 import {
@@ -83,6 +85,12 @@ export interface SeenPlayer {
 }
 
 export type Gesture = 'wave' | 'jump' | 'cheer';
+
+/** Its party's goal: the quest the party plays and the places of the step it is on. */
+export interface SharedGoal {
+  readonly quest: string;
+  readonly targets: readonly string[];
+}
 
 export interface BrainEvents {
   /** The quest it is busy with changed (null: none). */
@@ -273,6 +281,10 @@ export class Brain implements GoalChooser {
   detour = UNKNOWN_WAY;
   /** Goes up each time it learns something (a choice paid, a place, a way or a square found, an hour marked). */
   private changes = 0;
+  /** Its party's goal instead of its own quest (null: none), and the targets it reached so far. */
+  private shared: { quest: string; targets: readonly string[]; reached: Set<string> } | null = null;
+  /** Whatever it does now ends at the next look, for it to decide again (its goal changed). */
+  private redecide = false;
 
   constructor(options: BrainOptions) {
     this.options = options;
@@ -317,9 +329,35 @@ export class Brain implements GoalChooser {
     this.changes += 1;
   }
 
-  /** The quest it is busy with (null: none). */
+  /** The quest it is busy with (null: none): its party's, or its own. */
   get questId(): string | null {
-    return this.quests.quest?.id ?? null;
+    return this.shared?.quest ?? this.quests.quest?.id ?? null;
+  }
+
+  /**
+   * Its party's goal from now (null: back to its own quest, where it left it). It drops what it does and heads for
+   * the goal's targets it knows of, or looks for them; reaching one is paid as a step. Targets not on its map are
+   * left out.
+   */
+  share(goal: SharedGoal | null): void {
+    const now = this.options.now();
+    this.shared = goal ? { quest: goal.quest, targets: goal.targets.filter((t) => this.placeById.has(t)), reached: new Set() } : null;
+    this.redecide = true;
+    this.stepSince = now;
+    this.trip = { from: null, seconds: 0, since: 0 };
+    this.emit('doing', this.questId);
+  }
+
+  /** Its party's goal, as far as it got (null: none). */
+  get goal(): { quest: string; targets: readonly string[]; reached: readonly string[] } | null {
+    const shared = this.shared;
+    return shared ? { quest: shared.quest, targets: shared.targets, reached: [...shared.reached] } : null;
+  }
+
+  /** The targets it still heads for: its party's goal's, or its own quest step's. */
+  private get remaining(): readonly string[] {
+    const shared = this.shared;
+    return shared ? shared.targets.filter((t) => !shared.reached.has(t)) : this.quests.remaining;
   }
 
   /** The player it is walking over to meet (null: none); it greets her once it is there. */
@@ -350,7 +388,7 @@ export class Brain implements GoalChooser {
   }
 
   private keeps(id: string): boolean {
-    if (this.quests.remaining.includes(id)) return true;
+    if (this.remaining.includes(id)) return true;
     const place = this.memory.places.get(id);
     const { home } = this.options;
     return place !== undefined && Math.hypot(place.at[0] - home.x, place.at[2] - home.z) <= PLACE_REACH * 4;
@@ -441,11 +479,11 @@ export class Brain implements GoalChooser {
       this.detour += DETOUR_ALPHA * (took - this.detour);
     }
     const random = this.options.random;
-    if (this.quests.remaining.includes(id)) {
+    if (this.remaining.includes(id)) {
       this.endTrip(place, firstVisit, now);
       current.phase = 'work';
       current.forStep = true;
-      current.question = this.quests.step?.question ?? false;
+      current.question = this.shared ? false : (this.quests.step?.question ?? false);
       if (current.question) return { kind: 'work', seconds: between(random, 6, 12) };
       return this.workAt(place);
     }
@@ -532,6 +570,15 @@ export class Brain implements GoalChooser {
   }
 
   private stepDone(target: string | null, question: boolean, now: number): void {
+    if (this.shared) {
+      // At a target of its party's step: what the step asks of it there is the party's business.
+      if (target === null || !this.remaining.includes(target)) return;
+      this.shared.reached.add(target);
+      this.metrics.stepsDone += 1;
+      this.stepSince = now;
+      this.trip = { from: null, seconds: 0, since: 0 };
+      return;
+    }
     if (!this.quests.did(target)) return;
     this.metrics.stepsDone += 1;
     if (question) this.emit('gesture', 'cheer');
@@ -633,15 +680,15 @@ export class Brain implements GoalChooser {
   private decide(view: BotView, now: number): Choice {
     const { map, persona, random } = this.options;
     const at = view.at;
-    // Its step to do where it stands (no target), or a step whose target it never found.
-    const step = this.quests.step;
+    // Its step to do where it stands (no target), or a step whose target it never found (its own quest's only).
+    const step = this.shared ? null : this.quests.step;
     if (step && step.targets.length === 0) {
       this.current = { option: 'here', phase: 'work', place: null, forStep: true, question: step.question, area: -1, player: null, startedAt: now, walkS: 0, reward: 0 };
       return { kind: 'work', seconds: step.question ? between(random, 6, 12) : between(random, 2, 4) };
     }
-    const remaining = this.quests.remaining;
+    const remaining = this.remaining;
     const seeking = remaining.length > 0 && !remaining.some((t) => this.goable(t, now));
-    if (seeking && now - this.stepSince > SEEK_GIVE_UP_MS) {
+    if (seeking && !this.shared && now - this.stepSince > SEEK_GIVE_UP_MS) {
       this.quests.skip();
       this.metrics.skipped += 1;
       this.stepSince = now;
@@ -720,7 +767,7 @@ export class Brain implements GoalChooser {
     const place = this.placeById.get(id);
     if (!place) return { kind: 'rest', seconds: 1 };
     const via = reached ? this.memory.route(reached, id).flatMap((link) => pointsOf(link.points)) : [];
-    const pursues = this.quests.remaining.includes(id);
+    const pursues = this.remaining.includes(id);
     if (pursues) this.setOut(at, now);
     const straight = Math.hypot(place.at[0] - (at.x + 0.5), place.at[2] - (at.z + 0.5));
     const from = this.placeAt(at);
@@ -854,6 +901,11 @@ export class Brain implements GoalChooser {
       return true;
     }
     const current = this.current;
+    // Its goal changed: it decides again now (not off a bus or a boat, though).
+    if (this.redecide && current?.option !== 'ride') {
+      this.redecide = false;
+      return true;
+    }
     if (!current || current.phase !== 'go') return false;
     const heading = current.heading;
     if (heading && walking) {
@@ -869,7 +921,7 @@ export class Brain implements GoalChooser {
     if (current.option === 'explore') {
       if (this.memory.areaOf(at.x, at.z) === current.area) return true;
       // The target its quest needs came into sight while it looked for it: it goes there instead.
-      if (current.pursues && this.quests.remaining.some((t) => this.goable(t, now))) return true;
+      if (current.pursues && this.remaining.some((t) => this.goable(t, now))) return true;
       if ((now - current.startedAt) / 1000 > EXPLORE_MAX_S) {
         this.avoid.shunAround(current.area, now);
         return true;
@@ -892,7 +944,7 @@ export class Brain implements GoalChooser {
       if (current) current.reward += REWARD.newArea;
     }
     const seen = seePlaces(map, at, persona.sight);
-    const needed = this.quests.remaining;
+    const needed = this.remaining;
     for (const place of seen) {
       if (!this.memory.see(place, now, needed.includes(place.id))) continue;
       this.changes += 1;

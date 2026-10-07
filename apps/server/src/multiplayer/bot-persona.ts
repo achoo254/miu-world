@@ -108,6 +108,9 @@ export function moodAt(botId: string, persona: BotPersona, at: Date): number {
 /** The chance it says something when it may (a quiet bot still talks now and then, a chatty one most times). */
 export const talkChance = (persona: Pick<BotPersona, 'chat'>): number => 0.35 + 0.6 * persona.chat;
 
+/** How likely a bot asks a player it keeps meeting into a party, when everything else lets it (Jev D9). */
+export const inviteChance = (persona: Pick<BotPersona, 'chat'>): number => 0.25 + 0.5 * persona.chat;
+
 /** Tiredness after `answers` answers in one challenge. */
 export const fatigueAfter = (answers: number): number => Math.min(0.15, answers * 0.012);
 

@@ -496,8 +496,10 @@ export class MultiplayerHub {
 
   /** A member answers a party invite: a player through her connection, a companion bot through its runner. */
   answerPartyInvite(memberId: string, from: string, accept: boolean): void {
-    // An inviter who has left the game (not just changing maps) has no party to join.
-    if (accept && this.childIds.has(from) && !this.players.has(from) && !this.parties.partyOf(from)) {
+    // An inviter who has left the game (not just changing maps), or a companion bot no longer on any map, has no
+    // party to join.
+    const gone = this.childIds.has(from) ? !this.players.has(from) && !this.parties.partyOf(from) : !this.locate(from);
+    if (accept && gone) {
       this.parties.dropInvites(memberId, from);
       this.notice(memberId, 'invite-expired', from);
       return;
@@ -671,12 +673,8 @@ export class MultiplayerHub {
         return;
       case 'party-reply':
         return this.answerPartyInvite(self, message.from, message.accept);
-      case 'party-leave': {
-        this.leftParty(self);
-        const left = this.parties.leave(self);
-        this.pushParty(left);
-        return this.recheckHomes([self, ...left]);
-      }
+      case 'party-leave':
+        return this.leaveParty(self);
       case 'party-kick':
       case 'party-promote': {
         const result = message.type === 'party-kick' ? this.parties.kick(self, message.id) : this.parties.promote(self, message.id);
@@ -1016,6 +1014,44 @@ export class MultiplayerHub {
     }
   }
 
+  /**
+   * Whether companion bot `botId` may ask player `publicId` into a party now, as a player near her could: both in
+   * one room, within reach, she sees it (bots switched on, nothing hidden), she is not riding, neither is in a
+   * party, and no invite waits for her answer.
+   */
+  botMayInvite(botId: string, publicId: string): boolean {
+    const player = this.players.get(publicId);
+    const room = player?.room;
+    const self = room?.members.get(publicId);
+    const bot = room?.members.get(botId);
+    if (!player?.bots || !self || !bot?.isBot || !this.roomSees(publicId, botId)) return false;
+    if (self.presence.riding || !near(self.presence, bot.presence)) return false;
+    return !this.parties.partyOf(publicId) && !this.parties.partyOf(botId) && !this.parties.invitedTo(publicId);
+  }
+
+  /**
+   * A companion bot asks a player near it into a party (its runner decides when): she gets the same invite card as
+   * from a player, labelled as a bot's. Accepted, she leads the party. False when it may not, or the invite failed.
+   */
+  botPartyInvite(botId: string, publicId: string): boolean {
+    const player = this.players.get(publicId);
+    const bot = player?.room?.members.get(botId);
+    if (!player || !bot || !this.botMayInvite(botId, publicId)) return false;
+    if (!this.parties.invite(botId, publicId).ok) return false;
+    player.transport.send({ type: 'party-invite', from: { id: botId, displayName: bot.presence.displayName, isBot: true }, expiresInMs: PARTY_INVITE_TTL_MS });
+    return true;
+  }
+
+  /** A companion bot leaves its party (its runner decides when), as a player does. */
+  botLeaveParty(botId: string): void {
+    if (this.isBot(botId)) this.leaveParty(botId);
+  }
+
+  /** The room a player or a companion bot stands in now (its key), null while in none. */
+  roomKeyOf(id: string): string | null {
+    return this.locate(id)?.room.key ?? null;
+  }
+
   /** The players online who are friends with a companion bot. */
   friendsOfBot(botId: string): string[] {
     return [...this.players.values()].filter((p) => p.botFriends.has(botId) && p.bots).map((p) => p.publicId);
@@ -1090,6 +1126,14 @@ export class MultiplayerHub {
       return this.notice(self, 'failed', id);
     }
     this.notice(self, 'reported', id);
+  }
+
+  /** A member leaves her party: everyone in it is told, and visitors of their homes who may no longer stay go home. */
+  private leaveParty(id: string): void {
+    this.leftParty(id);
+    const left = this.parties.leave(id);
+    this.pushParty(left);
+    this.recheckHomes([id, ...left]);
   }
 
   /** She left her party, was removed or blocked someone in it: out of the party's co-op challenge and quest. */

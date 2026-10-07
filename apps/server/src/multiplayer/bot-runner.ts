@@ -4,19 +4,21 @@
 // to go next by what it learnt (bot-brain/): the places it found, the ways it walked, the map's quests it plays on
 // its own (its name tag shows the quest mark), a player it sees and chooses to go and meet. A player within its reach
 // it turns to, waves at and talks to in its own lines, now and then asking her to be friends (bot-social.ts, at a
-// pace that never talks her over); it visits friends, answers invites and plays co-op challenges. What it learnt of each
+// pace that never talks her over); it visits friends, answers invites and plays co-op challenges. A player it keeps
+// meeting it now and then asks into a party: she leads it, the bot still goes its own way, and it waves goodbye and
+// leaves a little after the party's challenge ends, at once when she goes to another map. What it learnt of each
 // map is kept in the database (bot-brain/memory-keeper.ts), so it goes on learning after a restart. All bots are
 // clearly labeled "[Bạn máy]".
-import { HOME_MAP_ID, INTERACT_RANGE, type PlayerPresence, type ServerWsMessage } from '@miu/schema/multiplayer';
-import type { BotLine } from '@miu/schema/bot-lines';
+import { HOME_MAP_ID, INTERACT_RANGE, type PartyView, type PlayerPresence, type ServerWsMessage } from '@miu/schema/multiplayer';
+import type { BotLine, BotLineKey } from '@miu/schema/bot-lines';
 import { COOP_BOT_LINE_VARIANTS, type CoopAction, type CoopBotLine, type CoopBotLineKey, type CoopStateView, type CoopTaskView } from '@miu/schema/coop';
 import { VOICE_BOT_LINE_VARIANTS, type VoiceBotLineKey, type VoiceChannel } from '@miu/schema/voice';
 import { freshPicker, type FreshPicker } from '@miu/quest/pick-fresh';
-import type { CoopBotDriver, CoopBotMoves } from '../coop/coop-service';
+import type { CoopBotDriver, CoopBotMoves, CoopHost } from '../coop/coop-service';
 import { botAnswerXp, botSkillLevel, fatigueAfter, moodAt, personaOf, rightChance, talkChance, thinkMs, VOICES, type BotPersona, type Bounds } from './bot-persona';
 import { BOT_MAP_CONFIGS, findBot, HOME_SNAP, type BotProfile } from './bot-profiles';
 import type { BotStore } from './bot-store';
-import { BotSocial, type MeetAction, type MeetContext } from './bot-social';
+import { BotSocial, type MeetAction, type MeetContext, type PendingInvite } from './bot-social';
 import type { CoopPerson } from '../coop/coop-session';
 import { botProfileId, homeBotId, type MultiplayerHub, type MultiplayerRoom } from './multiplayer-hub';
 import { BotBody } from './bot-brain/body';
@@ -74,6 +76,10 @@ const NO_HOOKS: BotHooks = { onMessage: () => {}, friendsHere: () => [], random:
 const GREET_S = 3.5;
 /** How often the runner forgets the players no longer in any room with bots (ms). */
 const SOCIAL_SWEEP_MS = 5_000;
+/** How often a bot in a party it asked a player into checks she is still on its map (ms). */
+const TEAM_CHECK_MS = 1_000;
+/** After the party's challenge, it waves goodbye and leaves this long later (and up to twice as long). */
+export const BOT_TEAM_LEAVE_MS = 5_000;
 
 class CompanionBotInstance {
   readonly profile: BotProfile;
@@ -289,6 +295,10 @@ export class BotRunner {
   private readonly voiceLines = new Map<string, FreshPicker<number>>();
   /** What the bots learnt of their maps, read and written (none without a store). */
   private readonly memories: MemoryKeeper | null;
+  private readonly host: CoopHost;
+  /** Bots in a party with the player they asked into it (by the bot's instance id), and their goodbye on its way. */
+  private readonly teams = new Map<string, { inst: CompanionBotInstance; player: string; leaving: NodeJS.Timeout | null }>();
+  private teamsCheckedAt = Date.now();
 
   constructor(hub: MultiplayerHub, options: BotRunnerOptions = {}) {
     this.hub = hub;
@@ -303,6 +313,7 @@ export class BotRunner {
     this.quests = options.quests ?? contentQuestBook();
     this.plans = new PathQueue(options.planBudgetMs ?? PLAN_BUDGET_MS);
     const host = hub.coopHost();
+    this.host = host;
     const store = this.store;
     this.social = new BotSocial({
       now: () => Date.now(),
@@ -369,6 +380,8 @@ export class BotRunner {
           const turn = this.coop.get(id);
           if (turn?.timer) clearTimeout(turn.timer);
           this.coop.delete(id);
+          // The challenge of a party it asked her into is over: it says goodbye and leaves.
+          if (this.teams.has(id)) this.waveAndLeave(id);
         }
       },
     };
@@ -608,6 +621,11 @@ export class BotRunner {
       this.socialSweptAt = now;
       this.social.keepOnly(present);
     }
+    for (const lapse of this.social.lapsed()) this.inviteLapsed(lapse);
+    if (now - this.teamsCheckedAt >= TEAM_CHECK_MS) {
+      this.teamsCheckedAt = now;
+      this.checkTeams();
+    }
     this.plans.drain();
     this.memories?.tick();
   }
@@ -615,7 +633,24 @@ export class BotRunner {
   /** What a bot is and does now, for the players it meets. */
   private meetContext(bot: CompanionBotInstance, playerId: string): MeetContext {
     const { persona } = bot;
-    return { voice: persona.voice, chat: persona.chat, quest: bot.brain?.questId ?? null, friend: this.hub.botFriendsOf(playerId).includes(botProfileId(bot.profile.id)) };
+    return {
+      voice: persona.voice,
+      chat: persona.chat,
+      quest: bot.brain?.questId ?? null,
+      friend: this.hub.botFriendsOf(playerId).includes(botProfileId(bot.profile.id)),
+      mayInvite: () => this.mayInvite(bot, playerId),
+    };
+  }
+
+  /**
+   * Whether a bot may ask player `playerId` into a party now: it walks the map with a mind of its own, plays no
+   * challenge, waits for no answer to another invite, the hub lets it (see `botMayInvite`), and the map has quests
+   * to play together.
+   */
+  private mayInvite(bot: CompanionBotInstance, playerId: string): boolean {
+    const id = bot.profile.id;
+    if (!bot.brain || this.coop.has(id) || this.social.inviting(id) !== null || !this.hub.botMayInvite(id, playerId)) return false;
+    return this.quests.questsOn(bot.room.mapId, this.clock()).length > 0;
   }
 
   /**
@@ -636,6 +671,7 @@ export class BotRunner {
       if (!action) continue;
       bot.interact(p, action);
       if (action.friendAsk) void this.hub.botFriendRequest(at.id, p.id);
+      if (action.partyInvite && this.hub.botPartyInvite(at.id, p.id)) this.social.invited(at.id, p.id);
       bot.brain?.metPlayer(p.id);
       return;
     }
@@ -669,15 +705,102 @@ export class BotRunner {
     this.coop.clear();
     for (const talk of this.talks.values()) if (talk.timer) clearTimeout(talk.timer);
     this.talks.clear();
+    this.teams.clear();
     this.plans.clear();
   }
 
-  private later(ms: number, run: () => void): void {
+  private later(ms: number, run: () => void): NodeJS.Timeout {
     const reply = setTimeout(() => {
       this.replies.delete(reply);
       run();
     }, ms);
     this.replies.add(reply);
+    return reply;
+  }
+
+  /** The bot instance with `id`, wherever it stands (null: none now). */
+  private instanceOf(id: string): CompanionBotInstance | null {
+    for (const list of this.bots.values()) {
+      const inst = list.find((b) => b.profile.id === id);
+      if (inst) return inst;
+    }
+    return null;
+  }
+
+  /** A bot answers what player `playerId` did in a line of its own (and a gesture), if it is still on its map. */
+  private answerTo(botId: string, playerId: string, key: BotLineKey, emote: 'wave' | 'cheer' | null): void {
+    const inst = this.instanceOf(botId);
+    if (!inst?.room.members.has(botId)) return;
+    if (emote) inst.gesture(emote);
+    const line = this.social.answer(botProfileId(botId), playerId, key, inst.persona.voice);
+    if (line) inst.say(line, playerId);
+  }
+
+  /**
+   * A bot's party changed. Its invite answered with a yes (she leads the party now): it cheers and keeps her as its
+   * party mate. Its invite void (it joined another party meanwhile): as if she said no, without a word. Its party
+   * mate gone from its party: it lets her go.
+   */
+  private partyChanged(botId: string, party: PartyView | null): void {
+    const members = party?.members.map((m) => m.id) ?? [];
+    const team = this.teams.get(botId);
+    if (team) {
+      if (!members.includes(botId) || !members.includes(team.player)) this.dropTeam(botId);
+      return;
+    }
+    const asked = this.social.inviting(botId);
+    if (asked === null || !members.includes(botId)) return;
+    const accepted = members.includes(asked);
+    this.social.answered(botId, accepted);
+    const inst = this.instanceOf(botId);
+    if (!accepted || !inst) return;
+    this.teams.set(botId, { inst, player: asked, leaving: null });
+    this.answerTo(botId, asked, 'yay', 'cheer');
+  }
+
+  /** She said no to a bot's invite, or let it lapse: no hard feelings, it goes back to what it was doing. */
+  private inviteLapsed({ botId, playerId }: PendingInvite): void {
+    this.answerTo(botId, playerId, 'later', null);
+  }
+
+  /**
+   * Every second: a bot whose party mate went to another map (or another home), switched bots off, or who is no
+   * longer on its map itself, leaves the party at once.
+   */
+  private checkTeams(): void {
+    for (const [botId, team] of this.teams) {
+      const room = team.inst.room;
+      const there = this.hub.roomKeyOf(team.player);
+      const elsewhere = there !== null && (there !== room.key || !this.host.botsOn(team.player));
+      if (elsewhere || !room.members.has(botId)) this.leaveTeam(botId);
+    }
+  }
+
+  /** In a moment it waves goodbye and leaves the party, unless she starts a challenge with it meanwhile. */
+  private waveAndLeave(botId: string): void {
+    const team = this.teams.get(botId);
+    if (!team || team.leaving) return;
+    team.leaving = this.later(BOT_TEAM_LEAVE_MS * (1 + this.random()), () => {
+      team.leaving = null;
+      if (this.teams.get(botId) !== team || this.coop.has(botId)) return;
+      this.answerTo(botId, team.player, 'bye', 'wave');
+      this.leaveTeam(botId);
+    });
+  }
+
+  private leaveTeam(botId: string): void {
+    this.dropTeam(botId);
+    this.hub.botLeaveParty(botId);
+  }
+
+  private dropTeam(botId: string): void {
+    const team = this.teams.get(botId);
+    if (!team) return;
+    if (team.leaving) {
+      clearTimeout(team.leaving);
+      this.replies.delete(team.leaving);
+    }
+    this.teams.delete(botId);
   }
 
   /**
@@ -692,6 +815,12 @@ export class BotRunner {
     if (message.type === 'friend-request') {
       const accept = this.random() < BOT_FRIEND_ACCEPT;
       this.later(BOT_FRIEND_REPLY_MS * (1 + this.random()), () => void this.hub.answerBotFriendRequest(botId, message.request.id, accept));
+      return;
+    }
+    if (message.type === 'party-state') return this.partyChanged(botId, message.party);
+    if (message.type === 'notice' && message.code === 'invite-declined') {
+      const player = this.social.answered(botId, false);
+      if (player) this.answerTo(botId, player, 'later', null);
       return;
     }
     if (message.type === 'voice-state') return this.voiceState(botId, message.channel);

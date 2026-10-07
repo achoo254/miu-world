@@ -152,6 +152,35 @@ describe('PartyService', () => {
     expect(t.parties.kick('p-d', 'bot-3').ok).toBe(true);
   });
 
+  it('makes the player who says yes to a bot\'s invite the leader, and the bot a member', () => {
+    const t = service();
+    expect(t.parties.invite('bot-1', 'p-a').ok).toBe(true);
+    expect(t.parties.invitedTo('p-a')).toBe(true);
+    expect(t.parties.reply('p-a', 'bot-1', true)).toEqual({ ok: true, value: ['p-a', 'bot-1'] });
+    expect(t.parties.invitedTo('p-a')).toBe(false);
+    const party = t.parties.partyOf('bot-1');
+    expect(party?.leader).toBe('p-a');
+    expect(party?.members).toEqual(['p-a', 'bot-1']);
+    expect(t.parties.partyOf('p-a')).toBe(party);
+    // In her party the bot never leads: it cannot invite anyone, she can.
+    t.advance(2_000);
+    expect(t.parties.invite('bot-1', 'p-b')).toEqual({ ok: false, error: 'not-leader' });
+    expect(t.parties.invite('p-a', 'p-b').ok).toBe(true);
+  });
+
+  it('voids a bot\'s own invite once it joins another party, and tells how long an invite waits', () => {
+    const t = service();
+    expect(t.parties.invite('bot-1', 'p-a').ok).toBe(true);
+    expect(t.parties.invite('p-b', 'bot-1').ok).toBe(true);
+    expect(t.parties.reply('bot-1', 'p-b', true).ok).toBe(true);
+    expect(t.parties.reply('p-a', 'bot-1', true)).toEqual({ ok: false, error: 'invite-expired' });
+    expect(t.parties.invitedTo('p-a')).toBe(false);
+    t.advance(2_000);
+    expect(t.parties.invite('p-c', 'p-d').ok).toBe(true);
+    t.advance(60_001);
+    expect(t.parties.invitedTo('p-d')).toBe(false);
+  });
+
   it('keeps the party whatever map its members are on: it knows no rooms', () => {
     const t = service();
     join(t, 'p-a', 'bot-tt-1');

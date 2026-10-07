@@ -7,6 +7,7 @@ import { decodeMemory } from './bot-brain/memory-codec';
 import { WalkStore, type Spot } from './bot-brain/walk-store';
 import { memoryBotStore } from './bot-store';
 import { MultiplayerHub } from './multiplayer-hub';
+import { hubHarness } from '../../test/hub-harness';
 
 describe('MultiplayerHub and BotRunner', () => {
   let hub: MultiplayerHub;
@@ -70,22 +71,24 @@ describe('MultiplayerHub and BotRunner', () => {
 describe('companion bots in parties', () => {
   it('a bot invited to a party joins it after a moment', async () => {
     vi.useFakeTimers();
-    const hub = new MultiplayerHub();
-    const bots = new BotRunner(hub);
+    const h = hubHarness();
+    const bots = new BotRunner(h.hub);
     try {
       bots.start();
-      const room = hub.getOrCreateRoom('trung-tam');
+      const room = h.hub.getOrCreateRoom('trung-tam');
       const bot = [...room.members.values()][0];
       if (!bot) throw new Error('no bot');
-      // The hub delivers an invite to the bot as it would to a player.
-      expect(hub.parties.invite('p-someone', bot.id).ok).toBe(true);
-      bot.send({ type: 'party-invite', from: { id: 'p-someone', displayName: 'Bạn', isBot: false }, expiresInMs: 60_000 });
-      expect(hub.parties.partyOf(bot.id)).toBeNull();
+      // A player beside it invites it, as she would a player.
+      const a = await h.joined('child-a', [bot.presence.x + 1, bot.presence.y, bot.presence.z]);
+      a.send({ type: 'party-invite', to: bot.id });
+      expect(a.last('notice')?.code).toBe('invite-sent');
+      expect(h.hub.parties.partyOf(bot.id)).toBeNull();
       await vi.advanceTimersByTimeAsync(BOT_REPLY_MS);
-      expect(hub.parties.partyOf(bot.id)?.members).toEqual(['p-someone', bot.id]);
+      expect(h.hub.parties.partyOf(bot.id)?.members).toEqual([a.id, bot.id]);
+      expect(h.hub.parties.partyOf(bot.id)?.leader).toBe(a.id);
     } finally {
       bots.stop();
-      await hub.close();
+      await h.hub.close();
       vi.useRealTimers();
     }
   });

@@ -7,6 +7,10 @@ import {
   FRIEND_ASK_CHANCE,
   FRIEND_ASK_GAP_MS,
   FRIEND_ASK_KNOWN_CHANCE,
+  INVITE_AROUND_MS,
+  INVITE_GAP_MS,
+  INVITE_LAPSE_MS,
+  INVITE_PAUSE_MS,
   PAIR_GAP_MS,
   PLAYER_LINE_GAP_MS,
   RECENT_LINES,
@@ -199,5 +203,124 @@ describe('companion bots meeting a player', () => {
     expect(s.playersKept).toBe(1);
     // Back later, she is met anew.
     expect(s.meet('bot-a', 'p-1', ctx())?.say?.key).toBe('hello');
+  });
+});
+
+describe('companion bots asking a player into a party', () => {
+  const MIN = 60_000;
+  /** A friend already (no friend request in the way), and the runner and the hub letting it ask. */
+  const asking = (over: Partial<MeetContext> = {}): MeetContext => ctx({ friend: true, mayInvite: () => true, ...over });
+
+  it('ask only from their second meeting, once she has been around bots three minutes, and the hub lets them', () => {
+    // Dice at zero: whenever it may ask, it does.
+    const { s, clock } = social(0);
+    s.keepOnly(new Set(['p-1']));
+    let hubAsked = 0;
+    const counted = asking({ mayInvite: () => (hubAsked += 1) > 0 });
+    // Their first meeting, however long she has been around: a greeting, never an invite.
+    clock.now = 4 * MIN;
+    expect(s.meet('bot-a', 'p-1', counted)).toMatchObject({ say: { key: 'hello' }, partyInvite: false });
+    clock.now += PAIR_GAP_MS + 1;
+    expect(s.meet('bot-a', 'p-1', counted)).toBeNull();
+    expect(hubAsked).toBe(0);
+    // The second meeting: it asks her, with its line and a wave.
+    clock.now += APART_MS + 1;
+    expect(s.meet('bot-a', 'p-1', counted)).toEqual({ say: { key: 'invite', variant: expect.any(Number) }, emote: 'wave', friendAsk: false, partyInvite: true });
+    expect(hubAsked).toBe(1);
+
+    // Around bots less than three minutes: no invite yet, until she has been (still in the same meeting).
+    const fresh = social(0);
+    fresh.s.meet('bot-a', 'p-2', asking());
+    fresh.clock.now = APART_MS + 1;
+    expect(fresh.s.meet('bot-a', 'p-2', asking())?.partyInvite).toBe(false);
+    fresh.clock.now = INVITE_AROUND_MS;
+    expect(fresh.s.meet('bot-a', 'p-2', asking())?.partyInvite).toBe(true);
+
+    // The runner or the hub says no (it plays a challenge, she is riding): no invite, and no dice rolled for it.
+    const busy = social(0);
+    busy.s.meet('bot-a', 'p-3', asking());
+    busy.clock.now = INVITE_AROUND_MS;
+    expect(busy.s.meet('bot-a', 'p-3', asking({ mayInvite: () => false }))?.partyInvite).toBe(false);
+    expect(busy.s.meet('bot-a', 'p-3', ctx({ friend: true }))).toBeNull();
+  });
+
+  it('ask as often as their persona says: a quarter of the chances for the quietest, three quarters for the chattiest', () => {
+    const rate = (chat: number): number => {
+      let invites = 0;
+      for (let i = 0; i < 2_000; i++) {
+        const { s, clock } = social(`invite-${chat}-${i}`);
+        s.meet('bot-a', 'p-1', asking({ chat }));
+        clock.now = INVITE_AROUND_MS;
+        if (s.meet('bot-a', 'p-1', asking({ chat }))?.partyInvite) invites += 1;
+      }
+      return invites / 2_000;
+    };
+    expect(rate(0)).toBeCloseTo(0.25, 1);
+    expect(rate(1)).toBeCloseTo(0.75, 1);
+  });
+
+  it('one invite from any bot to a player every 5 minutes, 3 an hour, none for 15 minutes after a no or a lapse', () => {
+    const { s, clock } = social(0);
+    const bots = ['bot-a', 'bot-b', 'bot-c', 'bot-d', 'bot-e'];
+    // Each bot met her once in her first minute.
+    bots.forEach((bot, i) => {
+      clock.now = i * 10_000;
+      s.meet(bot, 'p-1', asking());
+    });
+    /** Bot `bot` comes by anew at `t` (each bot away more than a minute since it was last by): does it ask her? */
+    const asks = (bot: string, t: number): boolean => {
+      clock.now = t;
+      return s.meet(bot, 'p-1', asking())?.partyInvite ?? false;
+    };
+    const T = 4 * MIN;
+    expect(asks('bot-a', T)).toBe(true);
+    s.invited('bot-a', 'p-1');
+    expect(s.inviting('bot-a')).toBe('p-1');
+    expect(s.answered('bot-a', true)).toBe('p-1');
+    expect(s.inviting('bot-a')).toBeNull();
+    expect(asks('bot-b', T + MIN)).toBe(false);
+    expect(asks('bot-b', T + INVITE_GAP_MS)).toBe(true);
+    expect(asks('bot-c', T + 2 * INVITE_GAP_MS)).toBe(true);
+    // A fourth within the hour: no.
+    expect(asks('bot-d', T + 3 * INVITE_GAP_MS)).toBe(false);
+    expect(asks('bot-d', T + 60 * MIN + 1)).toBe(true);
+
+    // She says no: no bot asks her for 15 minutes (a bot greeting her just before waits its turn after that line).
+    s.invited('bot-d', 'p-1');
+    clock.now = T + 61 * MIN;
+    expect(s.answered('bot-d', false)).toBe('p-1');
+    expect(asks('bot-e', T + 61 * MIN + INVITE_PAUSE_MS - PLAYER_LINE_GAP_MS)).toBe(false);
+    expect(asks('bot-a', T + 61 * MIN + INVITE_PAUSE_MS)).toBe(true);
+
+    // She lets it lapse: told once, a second after the card's time; then 15 minutes again.
+    const sent = T + 61 * MIN + INVITE_PAUSE_MS;
+    s.invited('bot-a', 'p-1');
+    clock.now = sent + INVITE_LAPSE_MS - 1;
+    expect(s.lapsed()).toEqual([]);
+    clock.now = sent + INVITE_LAPSE_MS;
+    expect(s.lapsed()).toEqual([{ botId: 'bot-a', playerId: 'p-1' }]);
+    expect(s.lapsed()).toEqual([]);
+    expect(s.inviting('bot-a')).toBeNull();
+    expect(asks('bot-b', sent + INVITE_LAPSE_MS + INVITE_PAUSE_MS - PLAYER_LINE_GAP_MS)).toBe(false);
+    expect(asks('bot-c', sent + INVITE_LAPSE_MS + INVITE_PAUSE_MS)).toBe(true);
+    // An answer to an invite no longer waiting changes nothing.
+    expect(s.answered('bot-a', false)).toBeNull();
+  });
+
+  it('answer her yes, no or goodbye in fresh lines of their own voice, whatever the pace', () => {
+    const { s, clock } = social('answers');
+    const said: string[] = [];
+    for (let i = 0; i < 6; i++) {
+      clock.now = i * 1_000;
+      for (const key of ['yay', 'later'] as const) {
+        const line = s.answer('bot-b', 'p-1', key, 1);
+        if (!line) continue;
+        expect(line.variant % BOT_LINE_VOICES).toBe(1);
+        said.push(`${line.key}:${line.variant}`);
+      }
+    }
+    // Four wordings of each kind in its voice, none twice among her last 12 lines: then it only waves.
+    expect(said).toHaveLength(8);
+    expect(new Set(said).size).toBe(8);
   });
 });

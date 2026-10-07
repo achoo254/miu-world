@@ -120,6 +120,31 @@ describe("a bot's mind", () => {
     expect(bot.brain.metrics.meets).toBe(2);
   });
 
+  it('in a party, heads for the targets of the party\'s step by its own way instead of its quest, then goes back to it', { timeout: 20_000 }, () => {
+    const bot = harness(map, { x: 5, y: 1, z: 5 }, { quests: [quest] });
+    bot.run(30);
+    const ownStep = bot.brain.quests.step?.id;
+    const ownDone = bot.brain.metrics.stepsDone;
+    // The party plays another quest: its step's people are the guard (past the wall) and a place not on this map.
+    bot.brain.share({ quest: 'nhom-hoc', targets: ['bac-bao-ve', 'khong-co'] });
+    expect(bot.brain.questId).toBe('nhom-hoc');
+    expect(bot.doing.at(-1)).toBe('nhom-hoc');
+    expect(bot.brain.goal).toEqual({ quest: 'nhom-hoc', targets: ['bac-bao-ve'], reached: [] });
+    bot.run(30 * 60, () => (bot.brain.goal?.reached.length ?? 0) > 0);
+    expect(bot.brain.goal?.reached).toEqual(['bac-bao-ve']);
+    // It got there on its own feet, by ways the child could walk, and was paid as for a step.
+    const at = bot.body.stepper.spot;
+    expect(Math.hypot(at.x + 0.5 - 12.5, at.z + 0.5 - 70.5)).toBeLessThanOrEqual(4);
+    expect(walksAlong(map, bot.walked)).toBe(true);
+    expect(bot.brain.metrics.stepsDone).toBe(ownDone + 1);
+    // Its own quest waited where it was, and it goes back to it once the party's goal is gone.
+    expect(bot.brain.quests.step?.id).toBe(ownStep);
+    bot.brain.share(null);
+    expect(bot.brain.questId).toBe('bai-hoc');
+    expect(bot.doing.at(-1)).toBe('bai-hoc');
+    expect(bot.brain.goal).toBeNull();
+  });
+
   it('keeps away from where it got stuck, and stuck for good is put back at a place it knows', { timeout: 20_000 }, () => {
     // A pocket walled in all round, the bot inside: a place it sees outside it cannot get to.
     const pocket = Array.from({ length: 30 }, (_, z) => Array.from({ length: 30 }, (_, x) => ((x === 4 || x === 10) && z >= 4 && z <= 10) || ((z === 4 || z === 10) && x >= 4 && x <= 10) ? '#' : 'a').join(''));

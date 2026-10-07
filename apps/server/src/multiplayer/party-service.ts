@@ -85,8 +85,9 @@ export class PartyService {
   }
 
   /**
-   * Answers `from`'s invite. Accepted, `to` joins the inviter's party (a new one led by the inviter when she has
-   * none); returns the members whose party changed (none when declined).
+   * Answers `from`'s invite. Accepted, `to` joins the inviter's party; when the inviter has none, a new one is made,
+   * led by the inviter, or by `to` when the inviter is a companion bot (bots never lead). Returns the members whose
+   * party changed (none when declined).
    */
   reply(to: string, from: string, accept: boolean): PartyResult<string[]> {
     this.prune();
@@ -97,12 +98,19 @@ export class PartyService {
     if (this.partyOf(to)) return fail('in-party');
     const existing = this.partyOf(from);
     if (existing && existing.members.length >= this.max) return fail('party-full');
-    const party = existing ?? this.create(from);
-    party.members.push(to);
-    this.partyIdOf.set(to, party.id);
-    // In a party now: the other invites she had are void.
-    this.invites = this.invites.filter((i) => i.to !== to);
+    const party = existing ?? this.create(this.isPlayer(from) ? from : to);
+    const joining = party.members.includes(to) ? from : to;
+    party.members.push(joining);
+    this.partyIdOf.set(joining, party.id);
+    // In a party now: the other invites to either of them are void, and so are a bot's own (it never leads).
+    this.invites = this.invites.filter((i) => i.to !== to && i.to !== joining && (this.isPlayer(i.from) || !party.members.includes(i.from)));
     return ok([...party.members]);
+  }
+
+  /** Whether an invite to `member` waits for her answer. */
+  invitedTo(member: string): boolean {
+    this.prune();
+    return this.invites.some((i) => i.to === member);
   }
 
   /**
