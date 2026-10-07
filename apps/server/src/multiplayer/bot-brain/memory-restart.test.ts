@@ -8,7 +8,7 @@
 // 0.69–1.57 times as direct as the hour without one, 1.16 on average; 0.80 with these), as learning.sim.test.ts
 // found for its windows. The same seeds
 // each time; nothing is kept after the test.
-import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import { createTestDb, type DbHandle } from '../../db/client';
 import { personaOf } from '../bot-persona';
 import { dbBotStore } from '../bot-store';
@@ -35,6 +35,12 @@ async function live(fleet: Fleet, keeper: MemoryKeeper, minutes: number): Promis
   }
 }
 
+/** Until every bot's memory is read: a few event-loop turns in-process (PGlite), a network round trip on Postgres. */
+const allRead = (keeper: MemoryKeeper, fleet: Fleet): Promise<void> =>
+  vi.waitFor(() => {
+    for (const bot of fleet.bots) expect(keeper.ready(bot.id), bot.id).toBe(true);
+  }, { timeout: 10_000, interval: 5 });
+
 const keepAll = (keeper: MemoryKeeper, fleet: Fleet): void => {
   for (const bot of fleet.bots) keeper.attach({ key: bot.id, botId: bot.id, mapId: SCHOOL, map: schoolMap().map, brain: bot.brain, shared: false });
 };
@@ -56,7 +62,7 @@ describe('bots kept across a server restart', () => {
     const before = schoolFleet(6);
     const keeper = new MemoryKeeper(store, before.now);
     keepAll(keeper, before);
-    await settle();
+    await allRead(keeper, before);
     await live(before, keeper, MINUTES);
     // The server stops: whatever each learnt since its last write is written out.
     await keeper.flush();
@@ -66,7 +72,7 @@ describe('bots kept across a server restart', () => {
     const after = schoolFleet(6, { startAt: stoppedAt, seed: 'after' });
     const restarted = new MemoryKeeper(store, after.now);
     keepAll(restarted, after);
-    await settle();
+    await allRead(restarted, after);
     for (const [i, bot] of after.bots.entries()) {
       const was = before.bots[i]?.brain;
       if (!was) throw new Error('no bot before');
