@@ -55,7 +55,8 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - name: Map generation tests
-        run: pnpm vitest run --project maps
+        # One file at a time: a whole map's generation then has the runner's cores to itself.
+        run: pnpm vitest run --project maps --no-file-parallelism
 
   integration:
     # Same server test files as `check`, against real Postgres instead of PGlite.
