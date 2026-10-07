@@ -77,6 +77,7 @@
           "id": "me-quat",
           "prompt": "Đêm hè nóng, mẹ thức canh cho em ngủ. Từ nào chỉ hoạt động của mẹ?",
           "skill": "tu-ngu",
+          "move": "fling",
           "choices": [
             {
               "id": "a",
@@ -130,6 +131,7 @@
           "id": "biet-on-ba",
           "prompt": "Em được bà tặng quà. Câu nào nói lời biết ơn?",
           "skill": "cau",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",
@@ -183,6 +185,7 @@
           "id": "l-n-noi",
           "prompt": "Điền l hay n: «…ồi cơm mẹ nấu thơm phức»?",
           "skill": "chinh-ta",
+          "move": "gem",
           "choices": [
             {
               "id": "a",
@@ -231,6 +234,7 @@
           "id": "ao-au",
           "prompt": "Vần ao hay au: «bố dùng con d… gọt quả cho em»?",
           "skill": "chinh-ta",
+          "move": "charge",
           "choices": [
             {
               "id": "a",

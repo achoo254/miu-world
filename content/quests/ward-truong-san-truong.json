@@ -77,6 +77,7 @@
           "id": "bay-chuc-bon",
           "prompt": "Hươu Đếm Cờ có 7 chục lá cờ và 4 lá cờ lẻ. Hươu có tất cả bao nhiêu lá cờ?",
           "skill": "so-den-100",
+          "move": "gem",
           "choices": [
             {
               "id": "a",
@@ -130,6 +131,7 @@
           "id": "lien-sau-59",
           "prompt": "Trên tia số dọc hàng rào sân trường, số liền sau của 59 là số nào?",
           "skill": "tia-so",
+          "move": "charge",
           "choices": [
             {
               "id": "a",
@@ -183,6 +185,7 @@
           "id": "ten-tong",
           "prompt": "Hươu viết lên bảng: 35 + 12 = 47. Số 47 trong phép tính này gọi là gì?",
           "skill": "thanh-phan-phep-tinh",
+          "move": "fling",
           "choices": [
             {
               "id": "a",
@@ -236,6 +239,7 @@
           "id": "nhieu-hon",
           "prompt": "Lớp 2A có 32 bạn, lớp 2B có 28 bạn. Lớp 2A nhiều hơn lớp 2B mấy bạn?",
           "skill": "hon-kem",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",

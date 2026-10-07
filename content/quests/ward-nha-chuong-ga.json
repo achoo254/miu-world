@@ -77,6 +77,7 @@
           "id": "trung-hai-ngay",
           "prompt": "Gà Mơ đẻ 5 quả trứng hôm qua và 9 quả hôm nay. Có tất cả bao nhiêu quả trứng?",
           "skill": "phep-cong",
+          "move": "gem",
           "choices": [
             {
               "id": "a",
@@ -130,6 +131,7 @@
           "id": "o-lon-nhat",
           "prompt": "Ba ổ rơm đánh số 48, 84 và 80. Ổ mang số lớn nhất là số mấy?",
           "skill": "so-sanh-so",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",
@@ -183,6 +185,7 @@
           "id": "vat-nuoi",
           "prompt": "Từ nào gọi tên một con vật được nuôi trong nhà?",
           "skill": "tu-ngu",
+          "move": "fling",
           "choices": [
             {
               "id": "a",
@@ -236,6 +239,7 @@
           "id": "dong-cua-chuong",
           "prompt": "Bà dặn: «Nhặt trứng xong nhớ đóng cửa chuồng». Nhặt trứng xong bé làm gì?",
           "skill": "doc-hieu",
+          "move": "charge",
           "choices": [
             {
               "id": "a",
@@ -289,6 +293,7 @@
           "id": "hat-thoc",
           "prompt": "Bé có 12 hạt thóc, bà cho thêm 7 hạt để rắc cho gà. Bé có bao nhiêu hạt thóc?",
           "skill": "phep-cong",
+          "move": "gem",
           "choices": [
             {
               "id": "a",

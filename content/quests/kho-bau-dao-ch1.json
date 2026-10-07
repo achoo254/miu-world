@@ -264,6 +264,7 @@
         {
           "id": "c1",
           "skill": "so-sanh-so",
+          "move": "charge",
           "prompt": "So sánh hai xô sò biển: Xô A có 28 con sò, xô B có 35 con sò. Xô nào nhiều hơn?",
           "damage": 100,
           "choices": [
@@ -298,6 +299,7 @@
         {
           "id": "c2",
           "skill": "phep-cong",
+          "move": "gem",
           "prompt": "Trên bãi cát có 14 chú còng gió, 5 chú nữa chạy lại. Có tất cả bao nhiêu chú? (14 + 5 = ?)",
           "damage": 100,
           "choices": [
@@ -332,6 +334,7 @@
         {
           "id": "c3",
           "skill": "phep-tru",
+          "move": "orbs",
           "prompt": "Có 20 quả dừa trên cây, gió làm rụng 8 quả. Còn lại bao nhiêu quả dừa? (20 - 8 = ?)",
           "damage": 100,
           "choices": [
@@ -366,6 +369,7 @@
         {
           "id": "c4",
           "skill": "logic",
+          "move": "fling",
           "prompt": "Dãy số sóng biển: 10, 20, 30, 40, ... Con số tiếp theo là số mấy?",
           "damage": 100,
           "choices": [
@@ -400,6 +404,7 @@
         {
           "id": "c5",
           "skill": "doc-hieu",
+          "move": "charge",
           "prompt": "Ai là thuyền trưởng dũng cảm của con tàu thám hiểm Đảo bí ẩn?",
           "damage": 100,
           "choices": [

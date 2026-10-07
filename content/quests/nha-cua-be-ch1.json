@@ -263,6 +263,7 @@
         {
           "id": "b1",
           "skill": "phep-cong",
+          "move": "charge",
           "prompt": "Trong bếp có 9 quả trứng gà, Mẹ nhặt thêm 7 quả nữa. Có tất cả bao nhiêu quả trứng? (9 + 7 = ?)",
           "damage": 100,
           "choices": [
@@ -297,6 +298,7 @@
         {
           "id": "b2",
           "skill": "phep-tru",
+          "move": "gem",
           "prompt": "Trong xô có 18 con cá rô, Mẹ mang 6 con đi nấu canh. Còn lại bao nhiêu con cá? (18 - 6 = ?)",
           "damage": 100,
           "choices": [
@@ -331,6 +333,7 @@
         {
           "id": "b3",
           "skill": "so-sanh-so",
+          "move": "orbs",
           "prompt": "So sánh hai giỏ hoa quả: Giỏ A có 65 quả dâu, giỏ B có 56 quả dâu. Giỏ nào nhiều hơn?",
           "damage": 100,
           "choices": [
@@ -365,6 +368,7 @@
         {
           "id": "b4",
           "skill": "logic",
+          "move": "fling",
           "prompt": "Dãy số lùi đếm bước: 20, 18, 16, 14, ... Số tiếp theo là số mấy?",
           "damage": 100,
           "choices": [
@@ -399,6 +403,7 @@
         {
           "id": "b5",
           "skill": "doc-hieu",
+          "move": "charge",
           "prompt": "Chiều nay cả nhà cùng quây quần bên nhau chuẩn bị bữa gì?",
           "damage": 100,
           "choices": [

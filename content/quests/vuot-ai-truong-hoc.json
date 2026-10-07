@@ -211,6 +211,7 @@
         {
           "id": "chuc-don-vi",
           "skill": "so-den-100",
+          "move": "fling",
           "prompt": "Số 58 gồm mấy chục và mấy đơn vị?",
           "choices": [
             { "id": "a", "text": "5 chục và 8 đơn vị" },
@@ -244,6 +245,7 @@
         {
           "id": "lien-sau",
           "skill": "tia-so",
+          "move": "orbs",
           "prompt": "Trên tia số, số liền sau của 69 là số nào?",
           "choices": [
             { "id": "a", "text": "68" },
@@ -277,6 +279,7 @@
         {
           "id": "ten-tong",
           "skill": "thanh-phan-phep-tinh",
+          "move": "gem",
           "prompt": "Trong phép cộng 32 + 15 = 47, số 47 được gọi là gì?",
           "choices": [
             { "id": "a", "text": "Số hạng" },
@@ -310,6 +313,7 @@
         {
           "id": "tim-hieu",
           "skill": "phep-tru",
+          "move": "charge",
           "prompt": "Hiệu của 86 và 34 là bao nhiêu?",
           "choices": [
             { "id": "a", "text": "52" },
@@ -343,6 +347,7 @@
         {
           "id": "nhieu-hon",
           "skill": "hon-kem",
+          "move": "fling",
           "prompt": "Đội Thỏ ghi 27 điểm, đội Sóc ghi 23 điểm. Đội Thỏ nhiều hơn đội Sóc bao nhiêu điểm?",
           "choices": [
             { "id": "a", "text": "4 điểm" },
@@ -376,6 +381,7 @@
         {
           "id": "lon-nhat",
           "skill": "so-sanh-so",
+          "move": "orbs",
           "prompt": "Ba chiếc áo số 67, 76 và 69. Áo nào mang số lớn nhất?",
           "choices": [
             { "id": "a", "text": "Áo số 67" },
@@ -409,6 +415,7 @@
         {
           "id": "cong-nham",
           "skill": "phep-cong",
+          "move": "gem",
           "prompt": "Câu cuối cùng: 41 + 37 bằng bao nhiêu?",
           "choices": [
             { "id": "a", "text": "68" },

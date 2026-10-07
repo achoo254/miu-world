@@ -50,8 +50,8 @@ const QUEST = QuestDefinition.parse({
       maxHp: 200,
       damagePerTurn: 100,
       turns: [
-        { id: 't1', prompt: 'Một?', skill: 'phep-cong', damage: 100, choices: [{ id: 'a', text: '1' }, { id: 'b', text: '2' }], answer: { choice: 'a' }, support: support('1') },
-        { id: 't2', prompt: 'Hai?', skill: 'phep-cong', damage: 100, choices: [{ id: 'a', text: '1' }, { id: 'b', text: '2' }], answer: { choice: 'b' }, support: support('2') },
+        { id: 't1', prompt: 'Một?', skill: 'phep-cong', move: 'fling', damage: 100, choices: [{ id: 'a', text: '1' }, { id: 'b', text: '2' }], answer: { choice: 'a' }, support: support('1') },
+        { id: 't2', prompt: 'Hai?', skill: 'phep-cong', move: 'orbs', damage: 100, choices: [{ id: 'a', text: '1' }, { id: 'b', text: '2' }], answer: { choice: 'b' }, support: support('2') },
       ],
     },
     { id: 'thuong', title: 'Thưởng', kind: 'reward', trigger: 'auto', text: 'Thưởng.' },

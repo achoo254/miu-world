@@ -59,6 +59,7 @@ describe('varietyIssues', () => {
         id: `q${n}`,
         prompt: `Câu đố thứ ${n} của ${tag}`,
         skill: 'cau',
+        move: n === 1 ? 'gem' : 'charge',
         choices: [{ id: 'a', text: label(n) }, { id: 'b', text: `Khu rừng ${tag} rất yên tĩnh ${n}` }],
         answer: { choice: 'a' },
         support: {

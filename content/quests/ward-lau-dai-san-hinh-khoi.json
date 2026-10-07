@@ -77,6 +77,7 @@
           "id": "tu-giac",
           "prompt": "Hổ Xanh vẽ một hình có 4 cạnh và 4 đỉnh. Đó là hình gì?",
           "skill": "hinh-phang",
+          "move": "gem",
           "choices": [
             {
               "id": "a",
@@ -130,6 +131,7 @@
           "id": "gap-khuc",
           "prompt": "Đường gấp khúc gồm ba đoạn dài 2 cm, 3 cm và 4 cm. Đường gấp khúc dài bao nhiêu?",
           "skill": "hinh-phang",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",
@@ -183,6 +185,7 @@
           "id": "thang-hang",
           "prompt": "Ba điểm cùng nằm trên một đường thẳng thì gọi là gì?",
           "skill": "hinh-phang",
+          "move": "fling",
           "choices": [
             {
               "id": "a",
@@ -236,6 +239,7 @@
           "id": "duong-cong",
           "prompt": "Trong mép thước kẻ, vành chiếc đĩa và cạnh bàn, đâu là một đường cong?",
           "skill": "hinh-phang",
+          "move": "charge",
           "choices": [
             {
               "id": "a",

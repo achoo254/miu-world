@@ -77,6 +77,7 @@
           "id": "buoi-it-hon",
           "prompt": "Cây cam có 45 quả, cây bưởi có ít hơn cây cam 18 quả. Cây bưởi có bao nhiêu quả?",
           "skill": "bai-toan-loi-van",
+          "move": "gem",
           "choices": [
             {
               "id": "a",
@@ -130,6 +131,7 @@
           "id": "hai-lan",
           "prompt": "Khỉ hái 29 quả cam rồi hái thêm 29 quả nữa. Khỉ hái tất cả bao nhiêu quả?",
           "skill": "phep-cong",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",
@@ -183,6 +185,7 @@
           "id": "chan-ga",
           "prompt": "Mỗi con gà có 2 chân. Ba con gà đứng dưới gốc cam có tất cả mấy chân?",
           "skill": "logic",
+          "move": "fling",
           "choices": [
             {
               "id": "a",
@@ -236,6 +239,7 @@
           "id": "ro-trung",
           "prompt": "Rổ có 90 quả trứng, đã bán 47 quả. Rổ còn lại bao nhiêu quả trứng?",
           "skill": "phep-tru",
+          "move": "charge",
           "choices": [
             {
               "id": "a",
@@ -289,6 +293,7 @@
           "id": "day-cay",
           "prompt": "Số trên các hàng cây: 12, 22, 32, 42, … Hàng tiếp theo mang số mấy?",
           "skill": "logic",
+          "move": "gem",
           "choices": [
             {
               "id": "a",

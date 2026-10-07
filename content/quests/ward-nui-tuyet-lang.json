@@ -77,6 +77,7 @@
           "id": "mang-gang",
           "prompt": "Thư ghi: «Mai trời có tuyết, các bạn nhớ mang găng tay». Ngày mai các bạn cần mang gì?",
           "skill": "doc-hieu",
+          "move": "charge",
           "choices": [
             {
               "id": "a",
@@ -130,6 +131,7 @@
           "id": "khan-len",
           "prompt": "Từ nào gọi tên một đồ dùng giữ ấm ở núi tuyết?",
           "skill": "tu-ngu",
+          "move": "fling",
           "choices": [
             {
               "id": "a",
@@ -183,6 +185,7 @@
           "id": "them-thu",
           "prompt": "Cánh Cụt có 8 lá thư, nhận thêm 6 lá nữa. Cánh Cụt có tất cả mấy lá thư?",
           "skill": "phep-cong",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",
@@ -236,6 +239,7 @@
           "id": "so-nha",
           "prompt": "Nhà số 47 và nhà số 74 cùng chờ thư. Nhà nào mang số lớn hơn?",
           "skill": "so-sanh-so",
+          "move": "gem",
           "choices": [
             {
               "id": "a",

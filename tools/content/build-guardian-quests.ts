@@ -12,6 +12,7 @@ import { CONTENT_DIR } from '../../apps/server/src/content/content-catalog';
 import { withLooks } from './build-side-quests';
 import { readGuardianTables, type Guardian, type GuardianTable } from './guardian-table';
 import { readSideQuestTables, type SideQuestTable } from './side-quest-table';
+import { duelMovesFor } from './duel-moves';
 
 /** HP each right answer takes: the guardian falls on its last question. */
 export const GUARDIAN_DAMAGE = 100;
@@ -47,6 +48,8 @@ export function guardianQuestOf(table: GuardianTable, g: Guardian): QuestDefinit
   const en = g.en;
   const skills = [...new Set(g.turns.map((t) => t.skill))];
   const xp = GUARDIAN_XP_PER_TURN * g.turns.length;
+  // Each question answered with a play move, rotating so two in a row differ and the fight uses every move.
+  const moves = duelMovesFor(g.id, g.turns.length);
   const quest = {
     id: g.quest,
     region: table.region,
@@ -88,7 +91,7 @@ export function guardianQuestOf(table: GuardianTable, g: Guardian): QuestDefinit
         winDialogue: g.win,
         maxHp: GUARDIAN_DAMAGE * g.turns.length,
         damagePerTurn: GUARDIAN_DAMAGE,
-        turns: g.turns.map((t) => {
+        turns: g.turns.map((t, i) => {
           // Shown in a shuffled order; ids follow the shown order, the English labels the same order.
           const order = choiceOrder(`${g.quest}/${t.id}`, t.choices.length);
           const idAt = (shown: number): string => CHOICE_IDS[shown] ?? `c${shown}`;
@@ -96,6 +99,7 @@ export function guardianQuestOf(table: GuardianTable, g: Guardian): QuestDefinit
             id: t.id,
             prompt: t.prompt,
             skill: t.skill,
+            move: moves[i],
             choices: order.map((from, shown) => ({ id: idAt(shown), text: t.choices[from] ?? '' })),
             damage: GUARDIAN_DAMAGE,
             en: { prompt: t.en.prompt, choices: order.map((from) => t.en.choices[from] ?? '') },

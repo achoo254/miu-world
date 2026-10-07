@@ -77,6 +77,7 @@
           "id": "vit-boi-toi",
           "prompt": "Ao có 9 con vịt, thêm 8 con nữa bơi tới. Ao có tất cả bao nhiêu con vịt?",
           "skill": "phep-cong",
+          "move": "fling",
           "choices": [
             {
               "id": "a",
@@ -130,6 +131,7 @@
           "id": "dau-39-93",
           "prompt": "Hai chiếc phao ghi 39 và 93. Điền dấu vào 39 … 93.",
           "skill": "so-sanh-so",
+          "move": "charge",
           "choices": [
             {
               "id": "a",
@@ -183,6 +185,7 @@
           "id": "can-cau",
           "prompt": "Từ nào gọi tên một đồ vật người ta mang ra cầu tàu?",
           "skill": "tu-ngu",
+          "move": "gem",
           "choices": [
             {
               "id": "a",
@@ -236,6 +239,7 @@
           "id": "khong-chay",
           "prompt": "Tấm biển ở cầu tàu ghi: «Không chạy nhảy trên cầu». Vì sao phải nhớ điều đó?",
           "skill": "doc-hieu",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",

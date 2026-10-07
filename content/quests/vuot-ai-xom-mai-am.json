@@ -217,6 +217,7 @@
         {
           "id": "ba-noi",
           "skill": "tu-ngu",
+          "move": "fling",
           "prompt": "Mẹ của bố em, em gọi là gì?",
           "choices": [
             { "id": "a", "text": "Bà ngoại" },
@@ -250,6 +251,7 @@
         {
           "id": "tinh-cam-gia-dinh",
           "skill": "tu-ngu",
+          "move": "charge",
           "prompt": "Từ nào nói về tình cảm giữa những người trong nhà?",
           "choices": [
             { "id": "a", "text": "yêu thương" },
@@ -283,6 +285,7 @@
         {
           "id": "cau-dac-diem",
           "skill": "cau",
+          "move": "gem",
           "prompt": "Câu nào nêu đặc điểm của một người?",
           "choices": [
             { "id": "a", "text": "Mái tóc của bà đã bạc trắng." },
@@ -316,6 +319,7 @@
         {
           "id": "dau-phay",
           "skill": "dau-cau",
+          "move": "orbs",
           "prompt": "Câu nào đặt dấu phẩy đúng chỗ?",
           "choices": [
             { "id": "a", "text": "Em, yêu ông bà bố mẹ." },
@@ -349,6 +353,7 @@
         {
           "id": "lam-gi",
           "skill": "cau",
+          "move": "fling",
           "prompt": "Trong câu «Ông tưới cây ngoài vườn», bộ phận nào trả lời câu hỏi «Làm gì?»",
           "choices": [
             { "id": "a", "text": "Ông" },
@@ -382,6 +387,7 @@
         {
           "id": "ai-doc-truyen",
           "skill": "doc-hieu",
+          "move": "charge",
           "prompt": "Đọc câu: «Tối nào bố cũng đọc truyện cho em nghe rồi mới tắt đèn.» Ai đọc truyện cho em?",
           "choices": [
             { "id": "a", "text": "Mẹ" },
@@ -415,6 +421,7 @@
         {
           "id": "lam-chong-chong",
           "skill": "ke-chuyen",
+          "move": "gem",
           "prompt": "Kể lại cách làm chong chóng: gấp tờ giấy vuông, cắt bốn đường chéo, rồi gắn vào que. Việc nào làm sau cùng?",
           "choices": [
             { "id": "a", "text": "Gấp tờ giấy vuông" },

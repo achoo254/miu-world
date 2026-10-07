@@ -361,6 +361,7 @@
           "id": "canh-vuong",
           "prompt": "Hình vuông có mấy cạnh dài bằng nhau?",
           "skill": "hinh-phang",
+          "move": "fling",
           "choices": [
             {
               "id": "a",
@@ -412,6 +413,7 @@
           "id": "ba-diem",
           "prompt": "Trên một đường thẳng có 3 điểm A, B, C theo thứ tự. Có bao nhiêu đoạn thẳng?",
           "skill": "hinh-phang",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",
@@ -463,6 +465,7 @@
           "id": "hai-tang-khoi",
           "prompt": "Xếp 2 hàng, mỗi hàng 3 khối lập phương, rồi chồng thêm một tầng y hệt lên trên. Có bao nhiêu khối?",
           "skill": "hinh-phang",
+          "move": "gem",
           "choices": [
             {
               "id": "a",
@@ -514,6 +517,7 @@
           "id": "canh-dai",
           "prompt": "Một hình chữ nhật dài 5 cm, rộng 3 cm. Hai cạnh dài cộng lại dài bao nhiêu?",
           "skill": "hinh-phang",
+          "move": "charge",
           "choices": [
             {
               "id": "a",
@@ -565,6 +569,7 @@
           "id": "ghep-o-vuong",
           "prompt": "Ghép 4 ô vuông nhỏ bằng nhau thành 2 hàng, mỗi hàng 2 ô. Ta được hình gì?",
           "skill": "hinh-phang",
+          "move": "fling",
           "choices": [
             {
               "id": "a",
@@ -616,6 +621,7 @@
           "id": "tong-canh",
           "prompt": "Một hình tam giác và một hình vuông có tất cả bao nhiêu cạnh?",
           "skill": "hinh-phang",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",

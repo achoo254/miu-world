@@ -356,6 +356,7 @@
           "id": "ba-chu-so",
           "prompt": "Từ ba chữ số 1, 3, 5, lập được bao nhiêu số có hai chữ số khác nhau?",
           "skill": "logic",
+          "move": "charge",
           "choices": [
             {
               "id": "a",
@@ -407,6 +408,7 @@
           "id": "gui-thiep",
           "prompt": "Ba bạn, mỗi bạn gửi cho mỗi bạn kia một tấm thiệp. Có tất cả bao nhiêu tấm thiệp?",
           "skill": "logic",
+          "move": "gem",
           "choices": [
             {
               "id": "a",
@@ -458,6 +460,7 @@
           "id": "chia-tao",
           "prompt": "Chia 6 quả táo vào 2 đĩa, đĩa nào cũng có ít nhất 1 quả. Có bao nhiêu cách chia?",
           "skill": "logic",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",
@@ -509,6 +512,7 @@
           "id": "hai-so-giong",
           "prompt": "Có bao nhiêu số có hai chữ số mà hai chữ số giống nhau?",
           "skill": "logic",
+          "move": "fling",
           "choices": [
             {
               "id": "a",
@@ -560,6 +564,7 @@
           "id": "banh-kep",
           "prompt": "Một chiếc bánh kẹp có 1 loại nhân (gà hoặc trứng) và 1 loại rau (xà lách, dưa chuột hoặc cà chua). Có bao nhiêu kiểu bánh?",
           "skill": "logic",
+          "move": "charge",
           "choices": [
             {
               "id": "a",
@@ -611,6 +616,7 @@
           "id": "hai-ghe",
           "prompt": "Xếp hai bạn Na và Bi ngồi vào hai chiếc ghế. Có bao nhiêu cách?",
           "skill": "logic",
+          "move": "gem",
           "choices": [
             {
               "id": "a",

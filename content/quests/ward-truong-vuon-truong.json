@@ -77,6 +77,7 @@
           "id": "vat-nhu-nguoi",
           "prompt": "Câu «Chiếc trống nằm ngủ say suốt mùa hè» nói về đồ vật như nói về người. Từ nào cho thấy điều đó?",
           "skill": "tu-ngu",
+          "move": "fling",
           "choices": [
             {
               "id": "a",
@@ -130,6 +131,7 @@
           "id": "ten-dau-tien",
           "prompt": "Danh sách lớp xếp theo bảng chữ cái. Trong ba bạn An, Chi, Bảo, bạn nào đứng đầu?",
           "skill": "bang-chu-cai",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",
@@ -183,6 +185,7 @@
           "id": "dau-hoi-nga",
           "prompt": "Gà Trống muốn viết «kì nghỉ hè». Cách viết nào đúng dấu?",
           "skill": "chinh-ta",
+          "move": "gem",
           "choices": [
             {
               "id": "a",
@@ -231,6 +234,7 @@
           "id": "s-x-xoai",
           "prompt": "Điền s hay x: «quả …oài chín vàng trong vườn trường»?",
           "skill": "chinh-ta",
+          "move": "charge",
           "choices": [
             {
               "id": "a",

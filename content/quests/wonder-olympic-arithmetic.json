@@ -356,6 +356,7 @@
           "id": "cong-co-nho",
           "prompt": "36 + 47 = ?",
           "skill": "phep-cong",
+          "move": "fling",
           "choices": [
             {
               "id": "a",
@@ -407,6 +408,7 @@
           "id": "tru-co-nho",
           "prompt": "90 − 46 = ?",
           "skill": "phep-tru",
+          "move": "charge",
           "choices": [
             {
               "id": "a",
@@ -458,6 +460,7 @@
           "id": "so-con-thieu",
           "prompt": "Điền số còn thiếu: 25 + ? = 60",
           "skill": "thanh-phan-phep-tinh",
+          "move": "gem",
           "choices": [
             {
               "id": "a",
@@ -509,6 +512,7 @@
           "id": "tinh-nhanh",
           "prompt": "Tính nhanh: 17 + 26 + 13 + 4 = ?",
           "skill": "phep-cong",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",
@@ -560,6 +564,7 @@
           "id": "trung-con-lai",
           "prompt": "Có 45 quả trứng, đã bán 18 quả. Còn lại bao nhiêu quả trứng?",
           "skill": "bai-toan-loi-van",
+          "move": "fling",
           "choices": [
             {
               "id": "a",
@@ -611,6 +616,7 @@
           "id": "cong-chinh-no",
           "prompt": "Số nào cộng với chính nó thì được 34?",
           "skill": "phep-cong",
+          "move": "charge",
           "choices": [
             {
               "id": "a",

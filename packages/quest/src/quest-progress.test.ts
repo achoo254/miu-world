@@ -262,6 +262,7 @@ describe('a boss battle step', () => {
             id: 'turn-1',
             prompt: '1 + 1 = ?',
             skill: 'toan',
+            move: 'fling',
             choices: [
               { id: 'c1', text: '2' },
               { id: 'c2', text: '3' },
@@ -279,6 +280,7 @@ describe('a boss battle step', () => {
             id: 'turn-2',
             prompt: '2 + 2 = ?',
             skill: 'toan',
+            move: 'orbs',
             choices: [
               { id: 'c3', text: '4' },
               { id: 'c4', text: '5' },

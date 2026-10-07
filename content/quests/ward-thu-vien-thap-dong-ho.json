@@ -77,6 +77,7 @@
           "id": "mot-ngay",
           "prompt": "Gà Vàng Báo Giờ hỏi: một ngày có tất cả bao nhiêu giờ?",
           "skill": "xem-dong-ho",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",
@@ -130,6 +131,7 @@
           "id": "mot-gio",
           "prompt": "Gà nhắc bạn nhỏ: 1 giờ bằng bao nhiêu phút?",
           "skill": "xem-dong-ho",
+          "move": "gem",
           "choices": [
             {
               "id": "a",
@@ -183,6 +185,7 @@
           "id": "muoi-lam-gio",
           "prompt": "Chuông tháp điểm 15 giờ. 15 giờ còn gọi là mấy giờ chiều?",
           "skill": "xem-dong-ho",
+          "move": "charge",
           "choices": [
             {
               "id": "a",
@@ -236,6 +239,7 @@
           "id": "ngay-mai",
           "prompt": "Tờ lịch hôm nay ghi thứ Tư ngày 10. Ngày 11 là thứ mấy?",
           "skill": "xem-lich",
+          "move": "fling",
           "choices": [
             {
               "id": "a",
@@ -289,6 +293,7 @@
           "id": "cuoi-thang",
           "prompt": "Tháng Mười có 31 ngày. Ngày cuối cùng của tháng Mười là ngày mấy?",
           "skill": "xem-lich",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",

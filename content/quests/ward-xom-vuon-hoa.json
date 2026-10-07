@@ -77,6 +77,7 @@
           "id": "ta-em-be",
           "prompt": "Ong Chúa ghé thăm em bé nhà bên. Từ nào tả em bé?",
           "skill": "tu-ngu",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",
@@ -130,6 +131,7 @@
           "id": "ong-ngoai",
           "prompt": "Bố của mẹ em được gọi là gì?",
           "skill": "tu-ngu",
+          "move": "gem",
           "choices": [
             {
               "id": "a",
@@ -183,6 +185,7 @@
           "id": "d-r-ruc-ro",
           "prompt": "Điền d hay r vào chỗ trống: «vườn hoa nở …ực rỡ»?",
           "skill": "chinh-ta",
+          "move": "charge",
           "choices": [
             {
               "id": "a",
@@ -231,6 +234,7 @@
           "id": "uyen",
           "prompt": "Vần nào điền vào «con th…» để thành tên chiếc ghe đi trên sông?",
           "skill": "chinh-ta",
+          "move": "fling",
           "choices": [
             {
               "id": "a",

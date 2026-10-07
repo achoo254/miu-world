@@ -212,6 +212,7 @@
         {
           "id": "ba-tam-cong-hai-lam",
           "skill": "phep-cong",
+          "move": "orbs",
           "prompt": "Gà Trống hỏi: 38 + 25 bằng bao nhiêu?",
           "choices": [
             { "id": "a", "text": "53" },
@@ -245,6 +246,7 @@
         {
           "id": "bay-hai-tru-muoi-tam",
           "skill": "phep-tru",
+          "move": "gem",
           "prompt": "Tính nhẩm cho nhanh: 72 − 18 bằng bao nhiêu?",
           "choices": [
             { "id": "a", "text": "54" },
@@ -278,6 +280,7 @@
         {
           "id": "dat-tinh-cong",
           "skill": "phep-cong",
+          "move": "charge",
           "prompt": "Đặt tính rồi tính 46 + 37. Kết quả là bao nhiêu?",
           "choices": [
             { "id": "a", "text": "73" },
@@ -311,6 +314,7 @@
         {
           "id": "chin-muoi-tru",
           "skill": "phep-tru",
+          "move": "fling",
           "prompt": "Đặt tính rồi tính 90 − 45. Kết quả là bao nhiêu?",
           "choices": [
             { "id": "a", "text": "45" },
@@ -344,6 +348,7 @@
         {
           "id": "chuong-ga",
           "skill": "bai-toan-loi-van",
+          "move": "orbs",
           "prompt": "Chuồng có 35 con gà mái và 27 con gà trống. Chuồng có tất cả bao nhiêu con gà?",
           "choices": [
             { "id": "a", "text": "52 con" },
@@ -377,6 +382,7 @@
         {
           "id": "ban-trung",
           "skill": "bai-toan-loi-van",
+          "move": "gem",
           "prompt": "Nông trại thu được 64 quả trứng, đã bán 29 quả. Còn lại bao nhiêu quả trứng?",
           "choices": [
             { "id": "a", "text": "35 quả" },
@@ -410,6 +416,7 @@
         {
           "id": "so-sanh-tong",
           "skill": "so-sanh-so",
+          "move": "charge",
           "prompt": "So sánh 47 + 8 với 56. Câu nào đúng?",
           "choices": [
             { "id": "a", "text": "47 + 8 lớn hơn 56" },

@@ -205,6 +205,7 @@
         {
           "id": "tu-giac",
           "skill": "hinh-phang",
+          "move": "fling",
           "prompt": "Hình có 4 cạnh và 4 đỉnh gọi là hình gì?",
           "choices": [
             { "id": "a", "text": "Hình tam giác" },
@@ -226,6 +227,7 @@
         {
           "id": "duong-cong",
           "skill": "hinh-phang",
+          "move": "orbs",
           "prompt": "Chiếc cầu vồng uốn trên bầu trời gợi cho em hình ảnh đường gì?",
           "choices": [
             { "id": "a", "text": "Đường cong" },
@@ -247,6 +249,7 @@
         {
           "id": "gap-khuc-abcd",
           "skill": "hinh-phang",
+          "move": "gem",
           "prompt": "Đường gấp khúc ABCD gồm mấy đoạn thẳng?",
           "choices": [
             { "id": "a", "text": "2 đoạn" },
@@ -268,6 +271,7 @@
         {
           "id": "bay-chuc-bon",
           "skill": "so-den-100",
+          "move": "charge",
           "prompt": "Số gồm 7 chục và 4 đơn vị là số nào?",
           "choices": [
             { "id": "a", "text": "47" },
@@ -289,6 +293,7 @@
         {
           "id": "co-khanh-thanh",
           "skill": "phep-cong",
+          "move": "fling",
           "prompt": "Lễ khánh thành treo 48 lá cờ đỏ và 36 lá cờ vàng. Có tất cả bao nhiêu lá cờ?",
           "choices": [
             { "id": "a", "text": "74 lá" },
@@ -310,6 +315,7 @@
         {
           "id": "tram-tru",
           "skill": "phep-tru",
+          "move": "orbs",
           "prompt": "Hiệp Sĩ có 100 viên đá xây cầu, đã dùng 35 viên. Còn lại bao nhiêu viên đá?",
           "choices": [
             { "id": "a", "text": "65 viên" },
@@ -331,6 +337,7 @@
         {
           "id": "thang-hang",
           "skill": "hinh-phang",
+          "move": "gem",
           "prompt": "Ba điểm thẳng hàng là ba điểm như thế nào?",
           "choices": [
             { "id": "a", "text": "Cùng nằm trên một đường thẳng" },

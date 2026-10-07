@@ -379,6 +379,7 @@
           "id": "so-le",
           "prompt": "Số nào là số lẻ?",
           "skill": "so-den-100",
+          "move": "charge",
           "choices": [
             {
               "id": "a",
@@ -430,6 +431,7 @@
           "id": "chia-banh",
           "prompt": "Có 16 cái bánh chia đều cho 2 bạn. Mỗi bạn được mấy cái?",
           "skill": "so-den-100",
+          "move": "gem",
           "choices": [
             {
               "id": "a",
@@ -481,6 +483,7 @@
           "id": "chan-lien-sau",
           "prompt": "Số chẵn liền sau số 37 là số nào?",
           "skill": "so-den-100",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",
@@ -532,6 +535,7 @@
           "id": "hai-chu-so-giong",
           "prompt": "Số lớn nhất có hai chữ số giống nhau là số nào?",
           "skill": "so-den-100",
+          "move": "fling",
           "choices": [
             {
               "id": "a",
@@ -583,6 +587,7 @@
           "id": "chan-cong-le",
           "prompt": "Lấy một số chẵn cộng một số lẻ thì được số chẵn hay số lẻ?",
           "skill": "so-den-100",
+          "move": "charge",
           "choices": [
             {
               "id": "a",
@@ -629,6 +634,7 @@
           "id": "cau-tao-so",
           "prompt": "Số 47 gồm mấy chục và mấy đơn vị?",
           "skill": "so-den-100",
+          "move": "gem",
           "choices": [
             {
               "id": "a",

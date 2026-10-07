@@ -77,6 +77,7 @@
           "id": "chi-nguoi",
           "prompt": "Trong các từ «hiệp sĩ, cây cầu, chạy nhảy», từ nào chỉ người?",
           "skill": "tu-ngu",
+          "move": "fling",
           "choices": [
             {
               "id": "a",
@@ -130,6 +131,7 @@
           "id": "ngoi-yen",
           "prompt": "Điền iên hay yên vào chỗ trống: «cả đoàn ngồi … nghe kể chuyện»?",
           "skill": "chinh-ta",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",
@@ -178,6 +180,7 @@
           "id": "cham-than",
           "prompt": "Câu «Ôi, cây cầu treo đẹp quá» nên kết thúc bằng dấu gì?",
           "skill": "dau-cau",
+          "move": "gem",
           "choices": [
             {
               "id": "a",
@@ -231,6 +234,7 @@
           "id": "canh-gac",
           "prompt": "Từ nào chỉ hoạt động của người lính gác bên cổng thành?",
           "skill": "tu-ngu",
+          "move": "charge",
           "choices": [
             {
               "id": "a",
@@ -284,6 +288,7 @@
           "id": "sua-cau",
           "prompt": "Nghe chuyện: «Gió làm cầu treo lung lay, bác thợ cùng dân làng buộc lại từng sợi dây.» Ai đã sửa cây cầu?",
           "skill": "doc-hieu",
+          "move": "fling",
           "choices": [
             {
               "id": "a",

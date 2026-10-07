@@ -261,6 +261,33 @@ const minigameShape = {
 };
 
 /**
+ * How a boss question is answered in the fight, a play move instead of a button: `fling` a charm at the shield that
+ * carries the answer, tap the answer among the `orbs` circling the boss, drag a `gem` onto the answer's slot, or
+ * `charge` the answer with taps until it fires. Not secret (the client shows it). Two questions in a row never share
+ * a move, and a fight of four questions or more uses every move (`duelMoveIssues`, run by `pnpm content:check`).
+ */
+export const DUEL_MOVES = ['fling', 'orbs', 'gem', 'charge'] as const;
+export const DuelMove = z.enum(DUEL_MOVES);
+export type DuelMove = z.infer<typeof DuelMove>;
+
+/** A boss fight of this many questions or more uses every move. */
+export const DUEL_ALL_MOVES_FROM = 4;
+
+/** What is wrong with the moves of a boss's questions, in play order: a move twice in a row, or a long fight short of one. */
+export function duelMoveIssues(turns: ReadonlyArray<{ id: string; move: DuelMove }>): string[] {
+  const issues: string[] = [];
+  turns.forEach((turn, i) => {
+    const before = turns[i - 1];
+    if (before && before.move === turn.move) issues.push(`turn ${turn.id}: the same move (${turn.move}) as turn ${before.id} before it`);
+  });
+  if (turns.length >= DUEL_ALL_MOVES_FROM) {
+    const missing = DUEL_MOVES.filter((m) => !turns.some((t) => t.move === m));
+    if (missing.length > 0) issues.push(`a fight of ${turns.length} questions uses every move; missing ${missing.join(', ')}`);
+  }
+  return issues;
+}
+
+/**
  * A single turn/question within a boss battle, as the client sees it: not strict, so parsing a turn with
  * its answer (`BossTurnWithSecret`, the authoring shape) drops the answer instead of failing.
  */
@@ -268,6 +295,11 @@ export const BossTurn = z.object({
   id: ContentId,
   prompt: Text,
   skill: ContentId,
+  /**
+   * How it is answered in the fight (a play move). Every authored question has one (`BossTurnWithSecret`,
+   * `content:check`); optional here only so a web build newer than its server still reads the quest during a deploy.
+   */
+  move: DuelMove.optional(),
   choices: z.array(Choice).min(2),
   damage: z.number().int().positive().default(80),
   illustration: IllustrationRef.optional(),
@@ -279,6 +311,7 @@ export const BossTurnWithSecret = z.strictObject({
   id: ContentId,
   prompt: Text,
   skill: ContentId,
+  move: DuelMove,
   choices: z.array(Choice).min(2),
   damage: z.number().int().positive().default(80),
   illustration: IllustrationRef.optional(),
@@ -713,6 +746,7 @@ function stepIssues(step: QuestStep, texts: Readonly<Record<string, unknown>>, a
       if (turn.en && turn.en.choices.length !== turn.choices.length) issues.push(`turn ${turn.id}: en has ${turn.en.choices.length} choices, the turn ${turn.choices.length}`);
       if ('support' in turn) issues.push(...bossTurnSupportIssues(turn).map((m) => `turn ${turn.id}: ${m}`));
     }
+    issues.push(...duelMoveIssues(step.turns));
     // Every turn answered right must beat the boss, or the fight could never be won.
     if (bossDamage(step) < step.maxHp) issues.push(`the turns take ${bossDamage(step)} HP in all, less than the boss's ${step.maxHp}`);
   }

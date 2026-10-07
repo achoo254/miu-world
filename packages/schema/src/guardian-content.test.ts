@@ -1,10 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { QuestDefinition, QuestStepPublic } from './content';
+import { DUEL_MOVES, QuestDefinition, QuestStepPublic, duelMoveIssues } from './content';
+
+/** Turn `tN` is answered with the Nth move round the rotation, so a fight of t1… never repeats one in a row. */
+const moveOf = (id: string) => DUEL_MOVES[(Number(id.slice(1)) - 1) % DUEL_MOVES.length] ?? 'fling';
 
 const turn = (id: string, damage = 100) => ({
   id,
   prompt: `Câu đố ${id} của trùm?`,
   skill: 'cong-tru',
+  move: moveOf(id),
   choices: [
     { id: 'a', text: 'Đúng' },
     { id: 'b', text: 'Sai' },
@@ -120,6 +124,21 @@ describe('zone guardians as content', () => {
     expect(issues(quest({}, { ...bossStep, turns: [turn('t1'), turn('t2'), turn('t3'), { ...turn('t4'), en: { prompt: 'Q?', choices: ['Only one', 'Two', 'Three'] } }] }))).toContain('step dau-trum: turn t4: en has 3 choices, the turn 2');
     expect(issues(quest({}, { ...bossStep, feedback: { right: feedback.right, wrong: feedback.wrong } }))).toContain('step dau-trum: needs its feedback lines in English (feedback.en)');
     expect(issues(quest({ en: undefined }))).toContain('needs its title and summary in English ("en")');
+  });
+
+  it('answers each question with a play move: never the same twice in a row, every move in a fight of four or more', () => {
+    const missing = QuestDefinition.safeParse(quest({}, { ...bossStep, turns: [{ ...turn('t1'), move: undefined }, turn('t2'), turn('t3'), turn('t4')] }));
+    expect(missing.success ? [] : missing.error.issues.map((i) => i.path.join('.'))).toContain('steps.1.turns.0.move');
+    expect(issues(quest({}, { ...bossStep, turns: [turn('t1'), { ...turn('t2'), move: 'fling' }, turn('t3'), turn('t4')] }))).toContain('step dau-trum: turn t2: the same move (fling) as turn t1 before it');
+    expect(issues(quest({}, { ...bossStep, turns: [turn('t1'), turn('t2'), turn('t3'), { ...turn('t4'), move: 'orbs' }] }))).toContain('step dau-trum: a fight of 4 questions uses every move; missing charge');
+    expect(issues(quest())).toEqual([]);
+    // A short fight (a big boss of two or three questions) needs no more than a change of move each question.
+    expect(duelMoveIssues([{ id: 'a', move: 'gem' }, { id: 'b', move: 'charge' }, { id: 'c', move: 'gem' }])).toEqual([]);
+  });
+
+  it('shows the client how each question is answered (the move is not secret)', () => {
+    const view = QuestStepPublic.parse(bossStep);
+    expect(view.kind === 'boss' && view.turns.map((t) => t.move)).toEqual(['fling', 'orbs', 'gem', 'charge']);
   });
 
   it('says a feedback line once in the quest', () => {

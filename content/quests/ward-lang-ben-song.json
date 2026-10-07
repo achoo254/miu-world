@@ -77,6 +77,7 @@
           "id": "hoat-dong-thuyen",
           "prompt": "Từ nào chỉ hoạt động của con đò trên sông?",
           "skill": "tu-ngu",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",
@@ -130,6 +131,7 @@
           "id": "sau-chu-u",
           "prompt": "Trong bảng chữ cái tiếng Việt, chữ nào đứng ngay sau chữ U?",
           "skill": "bang-chu-cai",
+          "move": "gem",
           "choices": [
             {
               "id": "a",
@@ -183,6 +185,7 @@
           "id": "dap-loi-khen",
           "prompt": "Bạn khen: «Cậu vẽ con cua đẹp quá!». Đáp lại thế nào cho lịch sự?",
           "skill": "tu-ngu",
+          "move": "charge",
           "choices": [
             {
               "id": "a",
@@ -236,6 +239,7 @@
           "id": "xep-cau-ben",
           "prompt": "Xếp các từ «em, ra, bến sông, chơi» thành câu. Câu nào đúng?",
           "skill": "ghep-cau",
+          "move": "fling",
           "choices": [
             {
               "id": "a",

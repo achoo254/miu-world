@@ -77,6 +77,7 @@
           "id": "dia-thap",
           "prompt": "Quả dưa hấu nặng hơn quả cam. Đặt hai quả lên cân đĩa, đĩa nào thấp xuống?",
           "skill": "khoi-luong",
+          "move": "gem",
           "choices": [
             {
               "id": "a",
@@ -130,6 +131,7 @@
           "id": "duong-muoi",
           "prompt": "Bao đường nặng 5 kg, bao muối nặng 3 kg. Cả hai bao nặng bao nhiêu?",
           "skill": "khoi-luong",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",
@@ -183,6 +185,7 @@
           "id": "can-dau",
           "prompt": "Can dầu có 10 l, Voi rót ra 4 l. Can còn lại bao nhiêu lít?",
           "skill": "dung-tich",
+          "move": "fling",
           "choices": [
             {
               "id": "a",
@@ -236,6 +239,7 @@
           "id": "don-vi-lit",
           "prompt": "Muốn biết trong xô có bao nhiêu nước, ta dùng đơn vị đo nào?",
           "skill": "dung-tich",
+          "move": "charge",
           "choices": [
             {
               "id": "a",
@@ -289,6 +293,7 @@
           "id": "tui-dau",
           "prompt": "Túi gạo nặng 12 kg, túi đậu nhẹ hơn túi gạo 4 kg. Túi đậu nặng bao nhiêu?",
           "skill": "khoi-luong",
+          "move": "gem",
           "choices": [
             {
               "id": "a",

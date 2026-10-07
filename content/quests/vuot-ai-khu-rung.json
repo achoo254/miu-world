@@ -245,6 +245,7 @@
         {
           "id": "chu-sau-a",
           "skill": "bang-chu-cai",
+          "move": "orbs",
           "prompt": "Trong bảng chữ cái tiếng Việt, chữ nào đứng ngay sau chữ A?",
           "choices": [
             { "id": "a", "text": "Ă" },
@@ -272,6 +273,7 @@
         {
           "id": "do-choi",
           "skill": "tu-ngu",
+          "move": "fling",
           "prompt": "Từ nào gọi tên một món đồ chơi của các bạn nhỏ trong rừng?",
           "choices": [
             { "id": "a", "text": "dòng suối" },
@@ -299,6 +301,7 @@
         {
           "id": "ng-ngh",
           "skill": "chinh-ta",
+          "move": "charge",
           "prompt": "Thần Rừng viết ba lần mà chỉ một lần đúng. Từ nào viết đúng chính tả?",
           "choices": [
             { "id": "a", "text": "ngỉ ngơi" },
@@ -326,6 +329,7 @@
         {
           "id": "dau-hoi",
           "skill": "dau-cau",
+          "move": "gem",
           "prompt": "Cuối câu «Bạn có muốn cùng tớ thả diều không» phải đặt dấu gì?",
           "choices": [
             { "id": "a", "text": "Dấu chấm" },
@@ -353,6 +357,7 @@
         {
           "id": "cau-hoat-dong",
           "skill": "cau",
+          "move": "orbs",
           "prompt": "Câu nào kể về một hoạt động đang diễn ra?",
           "choices": [
             { "id": "a", "text": "Chú nhím có bộ lông nâu sẫm." },
@@ -380,6 +385,7 @@
         {
           "id": "tinh-ban",
           "skill": "tu-ngu",
+          "move": "fling",
           "prompt": "Từ nào nói về tình cảm giữa hai người bạn?",
           "choices": [
             { "id": "a", "text": "lấp lánh" },
@@ -407,6 +413,7 @@
         {
           "id": "do-dieu",
           "skill": "doc-hieu",
+          "move": "charge",
           "prompt": "Đố vui: thân mỏng và nhẹ, đuôi dài phấp phới, bay cao nhờ gió, sợi dây nằm trong tay bạn nhỏ. Đó là gì?",
           "choices": [
             { "id": "a", "text": "Chiếc lá khô" },

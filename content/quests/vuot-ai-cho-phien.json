@@ -205,6 +205,7 @@
         {
           "id": "chin-cong-nam",
           "skill": "phep-cong",
+          "move": "orbs",
           "prompt": "Heo Đất hỏi nhanh: 9 + 5 bằng bao nhiêu?",
           "choices": [
             { "id": "a", "text": "13" },
@@ -238,6 +239,7 @@
         {
           "id": "muoi-bay-tru-chin",
           "skill": "phep-tru",
+          "move": "gem",
           "prompt": "Còn câu này thì sao: 17 − 9 bằng bao nhiêu?",
           "choices": [
             { "id": "a", "text": "7" },
@@ -271,6 +273,7 @@
         {
           "id": "them-buoi",
           "skill": "bai-toan-loi-van",
+          "move": "charge",
           "prompt": "Sạp có 8 quả bưởi, bác bán hàng mang thêm 6 quả nữa. Sạp có tất cả bao nhiêu quả bưởi?",
           "choices": [
             { "id": "a", "text": "2 quả" },
@@ -304,6 +307,7 @@
         {
           "id": "bot-trung",
           "skill": "bai-toan-loi-van",
+          "move": "fling",
           "prompt": "Rổ có 16 quả trứng, cô bán hàng đã bán 9 quả. Rổ còn lại mấy quả trứng?",
           "choices": [
             { "id": "a", "text": "7 quả" },
@@ -337,6 +341,7 @@
         {
           "id": "gao-va-duong",
           "skill": "khoi-luong",
+          "move": "orbs",
           "prompt": "Túi gạo nặng 5 kg, túi đường nặng 2 kg. Cả hai túi nặng bao nhiêu ki-lô-gam?",
           "choices": [
             { "id": "a", "text": "3 kg" },
@@ -370,6 +375,7 @@
         {
           "id": "can-nuoc-mam",
           "skill": "dung-tich",
+          "move": "gem",
           "prompt": "Can nước mắm có 10 lít, bác rót ra 4 lít để bán. Can còn lại bao nhiêu lít?",
           "choices": [
             { "id": "a", "text": "6 lít" },
@@ -403,6 +409,7 @@
         {
           "id": "dua-va-bi",
           "skill": "khoi-luong",
+          "move": "charge",
           "prompt": "Quả dưa hấu nặng 3 kg, quả bí ngô nặng 5 kg. Quả nào nặng hơn?",
           "choices": [
             { "id": "a", "text": "Quả dưa hấu" },

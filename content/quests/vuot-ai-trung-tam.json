@@ -211,6 +211,7 @@
         {
           "id": "the-cat",
           "skill": "tu-vung",
+          "move": "gem",
           "prompt": "Cáo rút ra tấm thẻ ghi chữ «cat». Từ tiếng Anh này nghĩa là gì?",
           "choices": [
             { "id": "a", "text": "Con mèo" },
@@ -244,6 +245,7 @@
         {
           "id": "qua-tao",
           "skill": "tu-vung",
+          "move": "charge",
           "prompt": "Cáo biến ra một quả táo đỏ. Quả táo trong tiếng Anh gọi là gì?",
           "choices": [
             { "id": "a", "text": "banana" },
@@ -277,6 +279,7 @@
         {
           "id": "dong-ho-bon-gio",
           "skill": "xem-dong-ho",
+          "move": "fling",
           "prompt": "Trên đồng hồ của Cáo, kim ngắn chỉ số 4, kim dài chỉ số 12. Đồng hồ chỉ mấy giờ?",
           "choices": [
             { "id": "a", "text": "12 giờ" },
@@ -310,6 +313,7 @@
         {
           "id": "day-so-mu",
           "skill": "logic",
+          "move": "orbs",
           "prompt": "Những con số bay ra từ chiếc mũ: 3, 6, 9, 12, … Số tiếp theo là số nào?",
           "choices": [
             { "id": "a", "text": "13" },
@@ -343,6 +347,7 @@
         {
           "id": "hai-tui-xu",
           "skill": "so-sanh-so",
+          "move": "gem",
           "prompt": "Túi bên trái có 45 đồng xu, túi bên phải có 54 đồng xu. Túi nào nhiều xu hơn?",
           "choices": [
             { "id": "a", "text": "Túi bên trái" },
@@ -376,6 +381,7 @@
         {
           "id": "con-vat-dua-thu",
           "skill": "doc-hieu",
+          "move": "charge",
           "prompt": "Đọc câu: «Chú chim trắng ngậm lá thư bay qua quảng trường, đậu xuống mái cửa hàng.» Câu này kể về con vật nào?",
           "choices": [
             { "id": "a", "text": "Chim bồ câu đưa thư" },
@@ -409,6 +415,7 @@
         {
           "id": "bong-bay",
           "skill": "phep-tru",
+          "move": "fling",
           "prompt": "Cáo có 18 quả bóng bay, tặng các bạn nhỏ 9 quả. Cáo còn lại bao nhiêu quả bóng bay?",
           "choices": [
             { "id": "a", "text": "8 quả" },

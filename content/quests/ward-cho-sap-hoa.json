@@ -77,6 +77,7 @@
           "id": "trung-tam-them",
           "prompt": "Gà Mái có 8 quả trứng, đẻ thêm 5 quả. Gà có tất cả bao nhiêu quả trứng?",
           "skill": "phep-cong",
+          "move": "gem",
           "choices": [
             {
               "id": "a",
@@ -130,6 +131,7 @@
           "id": "hong-cuc",
           "prompt": "Sạp hoa có 9 bông hồng và 6 bông cúc. Sạp có tất cả bao nhiêu bông hoa?",
           "skill": "phep-cong",
+          "move": "charge",
           "choices": [
             {
               "id": "a",
@@ -183,6 +185,7 @@
           "id": "so-con-thieu",
           "prompt": "Số nào điền vào chỗ trống để có 7 + … = 12?",
           "skill": "phep-cong",
+          "move": "fling",
           "choices": [
             {
               "id": "a",
@@ -236,6 +239,7 @@
           "id": "so-tong",
           "prompt": "Gà Mái so hai rổ trứng: 8 + 7 và 14. Điền dấu vào 8 + 7 … 14.",
           "skill": "so-sanh-so",
+          "move": "orbs",
           "choices": [
             {
               "id": "a",

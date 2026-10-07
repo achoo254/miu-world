@@ -212,6 +212,7 @@
         {
           "id": "c-hay-k",
           "skill": "chinh-ta",
+          "move": "fling",
           "prompt": "Chữ còn thiếu trong «…on kiến» là chữ gì?",
           "choices": [
             { "id": "a", "text": "c" },
@@ -239,6 +240,7 @@
         {
           "id": "g-hay-gh",
           "skill": "chinh-ta",
+          "move": "orbs",
           "prompt": "Đường làng sau mưa lồi lõm. Từ nào viết đúng chính tả?",
           "choices": [
             { "id": "a", "text": "gồ ghề" },
@@ -266,6 +268,7 @@
         {
           "id": "thu-tu-ten",
           "skill": "bang-chu-cai",
+          "move": "gem",
           "prompt": "Xếp ba tên Hoa, Bình, Lan theo thứ tự bảng chữ cái. Tên nào đứng đầu?",
           "choices": [
             { "id": "a", "text": "Hoa" },
@@ -293,6 +296,7 @@
         {
           "id": "tu-hoat-dong",
           "skill": "tu-ngu",
+          "move": "charge",
           "prompt": "Trong ba từ sau, từ nào chỉ hoạt động?",
           "choices": [
             { "id": "a", "text": "con trâu" },
@@ -320,6 +324,7 @@
         {
           "id": "cau-gioi-thieu",
           "skill": "cau",
+          "move": "fling",
           "prompt": "Câu nào là câu giới thiệu?",
           "choices": [
             { "id": "a", "text": "Tôi là Trâu Đen, nhà ở đầm sen." },
@@ -347,6 +352,7 @@
         {
           "id": "dau-cham",
           "skill": "dau-cau",
+          "move": "orbs",
           "prompt": "Câu kể «Đầm sen làng em nở hoa thơm ngát» cần đặt dấu gì ở cuối?",
           "choices": [
             { "id": "a", "text": "Dấu chấm hỏi" },
@@ -374,6 +380,7 @@
         {
           "id": "vit-boi",
           "skill": "doc-hieu",
+          "move": "gem",
           "prompt": "Đọc câu: «Chiều nay, Vịt Con bơi quanh đầm sen tìm chiếc lá to nhất.» Vịt Con bơi ở đâu?",
           "choices": [
             { "id": "a", "text": "Quanh đầm sen" },

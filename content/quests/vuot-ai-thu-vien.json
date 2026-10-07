@@ -205,6 +205,7 @@
         {
           "id": "chin-ruoi",
           "skill": "xem-dong-ho",
+          "move": "orbs",
           "prompt": "Kim ngắn chỉ giữa số 9 và số 10, kim dài chỉ số 6. Đồng hồ chỉ mấy giờ?",
           "choices": [
             { "id": "a", "text": "9 giờ 30 phút" },
@@ -226,6 +227,7 @@
         {
           "id": "mot-ngay",
           "skill": "xem-dong-ho",
+          "move": "gem",
           "prompt": "Từ nửa đêm hôm nay tới nửa đêm hôm sau là trọn một ngày. Một ngày có bao nhiêu giờ?",
           "choices": [
             { "id": "a", "text": "12 giờ" },
@@ -247,6 +249,7 @@
         {
           "id": "mot-gio",
           "skill": "xem-dong-ho",
+          "move": "charge",
           "prompt": "Một giờ bằng bao nhiêu phút?",
           "choices": [
             { "id": "a", "text": "30 phút" },
@@ -268,6 +271,7 @@
         {
           "id": "thang-muoi",
           "skill": "xem-lich",
+          "move": "fling",
           "prompt": "Tháng 10 có bao nhiêu ngày?",
           "choices": [
             { "id": "a", "text": "30 ngày" },
@@ -289,6 +293,7 @@
         {
           "id": "ngay-mai",
           "skill": "xem-lich",
+          "move": "orbs",
           "prompt": "Ngày 15 tháng 10 là thứ Ba. Ngày 16 tháng 10 là thứ mấy?",
           "choices": [
             { "id": "a", "text": "Thứ Hai" },
@@ -310,6 +315,7 @@
         {
           "id": "muoi-lam-gio",
           "skill": "xem-dong-ho",
+          "move": "gem",
           "prompt": "Đồng hồ điện tử hiện 15:00. Lúc đó là mấy giờ chiều?",
           "choices": [
             { "id": "a", "text": "3 giờ chiều" },
@@ -331,6 +337,7 @@
         {
           "id": "sach-ban-hien",
           "skill": "doc-hieu",
+          "move": "charge",
           "prompt": "Sâu đọc câu: «Mỗi cuốn sách là một người bạn hiền.» Câu này so sánh cuốn sách với gì?",
           "choices": [
             { "id": "a", "text": "Một người bạn hiền" },
