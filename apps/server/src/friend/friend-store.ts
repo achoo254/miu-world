@@ -6,7 +6,7 @@ import { and, asc, count, eq, inArray, isNotNull, or } from 'drizzle-orm';
 import { FRIEND_PENDING_MAX, FRIENDS_MAX, type BlockDto, type FriendDto, type FriendRequestDto, type SocialView } from '@miu/schema/friends';
 import type { Db } from '../db/client';
 import { characters, childProfiles, friendRequests, friendships, playerBlocks } from '../db/schema';
-import { findBot } from '../multiplayer/bot-runner';
+import { findBot } from '../multiplayer/bot-profiles';
 import { DEFAULT_CHARACTER_NAME } from '../player/player-routes';
 
 type Tx = Parameters<Parameters<Db['transaction']>[0]>[0];
