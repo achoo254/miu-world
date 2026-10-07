@@ -29,7 +29,7 @@ Mỗi file component giữ dưới ~200 dòng; bốn động tác chỉ khác c�
 
 ## Hành vi
 
-- **Động tác:** `duelMoveFor(step.bossId, progress.run ?? 1, index của câu hiện tại trong step.turns)`; `data-move` trên lớp động tác cho test. Câu hướng dẫn của động tác lấy bằng `freshPicker` từ 3 biến thể, không lặp liền.
+- **Động tác:** `turn.move` của câu hiện tại (trường nội dung, pha 1); `data-move` trên lớp động tác cho test. Câu hướng dẫn của động tác lấy bằng `freshPicker` từ 3 biến thể, không lặp liền.
 - **Chọn = gửi:** `onPick` → `store.send({ type: 'duel-cue', cue: 'aim', to })` (chỉ ở dạng sân 3D) → `onAnswer({ turnId, choice })`. Khóa mọi đích khi `context.busy`. Không có nút "Giải đố"; không có đồng hồ nào gửi hay đổi trạng thái.
 - **Kết quả theo server** (LearningStep đã có response): đúng → `duel-cue hit` (hoặc `win` khi `bossState` báo hết HP / đủ câu), số "−{damage}" bay lên từ thanh HP, HP lấy từ `bossState` mới; sai → `miss`, đích bật lại (lắc nhẹ, không đổi màu đỏ gắt), lời boss từ `feedback`; response `null` → `fizzle`.
 - **Nhịp trúng:** 1,0–1,2 s ở sân 3D (chạm bất kỳ để bỏ qua), 0 s ở thẻ tĩnh và bản nhẹ; xong thì `onBeatDone` → LearningStep gọi `onRight(copy)` (thẻ chép vở như hiện nay).
@@ -41,7 +41,7 @@ Mỗi file component giữ dưới ~200 dòng; bốn động tác chỉ khác c�
 
 ## Test viết trước (`boss-duel.test.tsx`, `learning-step.test.tsx`)
 
-- Dạng thẻ tĩnh (không có store `staged`): render tên, HP, lời mở, câu 1; `data-move` đúng `duelMoveFor`.
+- Dạng thẻ tĩnh (không có store `staged`): render tên, HP, lời mở, câu 1; `data-move` đúng `turn.move`.
 - Mỗi động tác: đường chạm/click và bàn phím (Tab tới đích, Enter) gửi đúng `{ turnId, choice }` một lần; `charge` cần đủ 3 lần chạm mới gửi; kéo (pointer events giả) với `fling` và `gem` gửi đúng đích thả.
 - `busy` khóa mọi đích; tiến giả lập 10 phút không gửi gì.
 - Response sai: không đổi HP, đích bật lại, Gợi ý mở sau 1 lần sai câu đó, Đáp án sau 2 (giữ test cũ `boss-screen.test.tsx:127`).
@@ -58,3 +58,7 @@ Mỗi file component giữ dưới ~200 dòng; bốn động tác chỉ khác c�
 - Kéo thả trên iOS: dùng Pointer Events + `setPointerCapture`, `touch-action: none` trên lớp động tác; thử E2E kéo thật ở pha 5.
 - Chữ dài trên cầu/khiên: cho xuống 2–3 dòng, cỡ chữ tối thiểu theo token; ảnh review ở pha 5 với câu và lựa chọn dài nhất.
 - Hoàn tác: revert commit (kèm pha 4 nếu đã có).
+
+## Trạng thái
+
+Đã xong (07/10/2026). Động tác đọc từ `turn.move`. Nút ✕ `boss-close` thêm vào màn đấu (trước đây chỉ Esc). Thẻ ở sân 3D tắt hiệu ứng trượt vào (transform làm phần tử fixed bị giữ trong thẻ). Kéo bùa/ngọc ghi style thẳng vào phần tử, không render React theo từng lần di ngón tay.

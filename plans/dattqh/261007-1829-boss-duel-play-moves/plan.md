@@ -1,7 +1,7 @@
 ---
 title: "Màn đấu boss thành trận đấu chơi được"
 description: "Đấu boss trong thế giới 3D đang chạy, boss thật đứng trước mặt, mỗi lượt trả lời bằng một động tác chơi đổi liên tục; server vẫn chấm đúng/sai, HP và thưởng."
-status: pending
+status: completed
 priority: P2
 tier: L
 branch: main
@@ -13,7 +13,7 @@ created: 2026-10-07
 
 # Màn đấu boss thành trận đấu chơi được
 
-**Trạng thái:** chờ làm · **Tier:** L · **Nhánh:** `main` (không tạo nhánh, không worktree) · **Ngày:** 07/10/2026
+**Trạng thái:** xong phần tự động 07/10/2026, chờ commit và người duyệt (report `plans/dattqh/reports/boss-duel-261007.md`) · **Tier:** L · **Nhánh:** `main` (không tạo nhánh, không worktree) · **Ngày:** 07/10/2026
 **Nguồn:** người sở hữu (07/10/2026), kèm ảnh màn "Đấu trí với Voi Gác Sân Trước" trên điện thoại: "màn đấu boss mong muốn là tương tác chơi thay vì giống như làm nhiệm vụ chính", rồi "cứ để Jev chọn hướng rồi làm luôn".
 
 ## Kết quả mong muốn
@@ -31,7 +31,7 @@ created: 2026-10-07
   - **Đích trả lời là phần tử DOM** neo theo vị trí màn hình của boss (game ghi vị trí vào phần tử neo mỗi khung, đúng luật `.claude/rules/web-ui.md`), không phải vật 3D: chữ tiếng Việt nét, chạm chính xác, có bàn phím và trình đọc màn hình, không tốn draw call. 3D chỉ lo boss, bé, camera, vật bay và hạt sáng.
   - **Vật bay và chớp sáng dùng lớp hạt có sẵn** (`createEffectLayers`, 2 draw call cho cả map, `apps/web/src/game/interact/effect-particles.ts:293`), không đổi material của boss (model GLB dùng chung material giữa các bản sao, chớp material sẽ chớp mọi con voi trên map).
   - **Không đổi server, schema API, DB, nội dung câu hỏi.** Câu trả lời vẫn gửi `{ turnId, choice }` (`packages/schema/src/game.ts:161`).
-  - **Động tác của mỗi lượt tính bằng hàm thuần** trong `packages/quest` từ `bossId`, lượt chơi (`run`) và thứ tự câu; không thêm trường nội dung (nên không cần sửa 59 file quest hay generator trùm canh).
+  - **Động tác của mỗi lượt là trường nội dung `move`** (Jev chốt ở câu hỏi mở 2, xem Validation Log; thay cho bản nháp "hàm thuần `duelMoveFor`"): sinh một lần bằng `tools/content/duel-moves.ts`, generator trùm canh ghi luôn, `content:check` kiểm.
 
 ## Hiện trạng đo được (07/10/2026)
 
@@ -74,7 +74,7 @@ created: 2026-10-07
 ## Luồng dữ liệu
 
 1. Server → web: `QuestSummary` (bước `boss` công khai, không đáp án) và `progress.bossState[step] = { hp, answered }`; khi chơi tổ đội thêm lượt (`party.run.turn`) qua đẩy `party-quest-progress`.
-2. Web tính động tác lượt này: `duelMoveFor(bossId, run, turnIndex)` (thuần, `packages/quest`).
+2. Web đọc động tác lượt này từ `move` của câu trong `QuestView` (không bí mật).
 3. React → game: `duel-open { targetId, calm }`; game đáp `duel { state: 'staged' | 'unavailable' }`, mỗi khung ghi vị trí màn hình của boss và tay bé vào hai phần tử neo React đăng ký.
 4. Bé làm động tác → React gửi `duel-cue { cue: 'aim', from, to }` (vật bay đi) và gửi `POST …/steps/:step` với `{ turnId, choice }`.
 5. Server trả `correct`, `feedback`, `copy`, `quest.bossState` mới. React gửi `duel-cue 'hit' | 'miss' | 'win'`; HP và lời boss hiện theo response. Đòn đúng: sau nhịp trúng (≤ 1,2 s, chạm để bỏ qua; ngay lập tức ở bản tĩnh) thẻ chép vở hiện; đòn thắng: nhịp thua của boss rồi thẻ vở và màn hoàn thành.

@@ -48,3 +48,7 @@ vitest từng file trên, `pnpm typecheck`, `pnpm lint`, `pnpm --filter @miu/web
 
 - Tia kiểm che quá chặt làm nhiều boss rơi về thẻ tĩnh: ghi số boss `unavailable` khi chạy ảnh review lấy mẫu; nới bằng cách cho camera đổi bên trái/phải trước khi chịu thua.
 - Hoàn tác: revert commit; không có pha 3–4 thì không ai gửi `duel-open`.
+
+## Trạng thái
+
+Đã xong (07/10/2026). Lệch so với bản nháp: không thêm clip `run` (không dáng nào dùng); khi đưa bé tới cạnh trùm thì rắc hạt lấp lánh ở chỗ đứng thay cho chớp mờ màn hình; camera lệch 40° và lùi tối thiểu 5,5 khối (25°/3 khối làm lưng bé che trùm trong ảnh thử), khung chừa 1/8 trên cho thanh tên; thêm `reframe` khi đổi cỡ màn hình; `__miuStats.duelView` (0…1) cho E2E bản nhẹ.

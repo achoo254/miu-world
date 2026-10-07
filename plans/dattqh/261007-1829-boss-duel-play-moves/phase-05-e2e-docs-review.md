@@ -16,7 +16,7 @@ Cập nhật hai spec E2E đang chạm màn boss cho cách trả lời mới, th
 | `apps/web/e2e/bosses.spec.ts` (test mới) | `page.emulateMedia({ reducedMotion: 'reduce' })`: lớp động tác `data-calm="1"`, camera không bay (vị trí camera trong `__miuStats` ổn định sau 1 khung), chơi được câu đầu |
 | `apps/web/e2e/coop.spec.ts` | `:155-181`: thêm kiểm người không tới lượt thấy đích `disabled` và "Lượt của …"; người tới lượt đánh một đòn bằng `answerBoss`, màn người kia thấy HP giảm |
 | `apps/web/review.html` | Mục `review-bosses` (`:56-60`): đoạn mô tả trận đấu mới, ảnh 4 động tác, ảnh trúng/trượt, ảnh dọc 360 × 740 và iPad 820 × 1180 với câu dài nhất, số draw call trong trận |
-| `docs/system-architecture.md` | Dòng "Trùm trên bản đồ, trùm canh khu" (dòng 29): thay `boss-screen.tsx` bằng `boss-duel.tsx`, thêm `game/duel/**`, lệnh `duel-*`, `duelMoveFor`; ghi vào sổ quyết định: đích trả lời là DOM neo theo boss, vật bay là hạt dùng chung |
+| `docs/system-architecture.md` | Dòng "Trùm trên bản đồ, trùm canh khu" (dòng 29): thay `boss-screen.tsx` bằng `boss-duel.tsx`, thêm `game/duel/**`, lệnh `duel-*`, trường nội dung `move` (`tools/content/duel-moves.ts`); ghi vào sổ quyết định: đích trả lời là DOM neo theo boss, vật bay là hạt dùng chung |
 | `docs/project-roadmap.md` | Ghi việc xong |
 | `docs/design-guidelines.md` | Một mục ngắn: động tác chơi trong trận đấu, đích chạm ≥ 48 px, bản nhẹ |
 | mới `plans/dattqh/reports/boss-duel-play-moves-2610xx.md` | Report: số đo, gate, ảnh, phát hiện review, việc người còn làm |
@@ -48,3 +48,7 @@ Ghi số liệu cụ thể trong report (số test, số lỗi/cảnh báo, draw
 
 - Draw call CI vượt do GPU giả lập khác máy dev: dev chỉ ghi chú (`expectDrawCalls`), CI đỏ thì xem lại số hạt, không nâng ngân sách.
 - Hoàn tác: revert commit pha 5 không đổi hành vi người chơi; spec cũ sẽ gãy nếu chỉ revert pha 5 mà giữ pha 3–4, nên revert theo thứ tự ngược.
+
+## Trạng thái
+
+Đã xong (07/10/2026). E2E bosses 8/8 (gồm 2 test ảnh REVIEW_SHOTS), coop 5/5 trên máy dev. Report `plans/dattqh/reports/boss-duel-261007.md`. Chưa chụp: trùm lâu đài Hiệp Sĩ Đá (đáp án 39 ký tự) và trùm sự kiện Olympic (câu 122 ký tự).

@@ -43,6 +43,13 @@ Nguồn: Master Plan v3 §2 (art direction, quy tắc bám mock), §10 (phong c�
 - Số và chữ trên vật thể (viên đá số, thẻ chữ) vẽ lúc chạy bằng canvas texture.
 - Âm thanh, VFX: pack Kenney (CC0). "Nghe lại" dùng Web Speech API.
 
+## Trận đấu trùm: động tác chơi
+
+- Mỗi câu của trùm trả lời bằng một động tác chơi (khai ở `move` của câu): **ném bùa** (kéo lùi bùa ở tay như ná rồi thả về phía tấm khiên có đáp án, thả thẳng lên khiên, hoặc chạm khiên), **chạm cầu** (các quả cầu đáp án lượn quanh trùm, một vòng 12 s, đặt ngón tay xuống là dừng), **kéo ngọc** (mang viên ngọc vào ô đáp án dưới chân trùm, hoặc chạm ô), **nạp chiêu** (chạm một đáp án ba lần, hoặc nút "Nạp chiêu", vòng sáng đầy thì tự bắn; không tụt theo thời gian). Không đồng hồ, không mất lượt.
+- Mọi đích là nút thật: chạm, chuột và bàn phím (Tab, Enter) đều chọn được; ≥ 48 × 48 px (khiên, ô, chữ rune 108 px rộng, cầu 104 px), cách nhau ≥ 8 px; chữ đáp án xuống dòng, không cắt. Khiên, cầu, ngọc, bùa vẽ bằng CSS và token (`moves/moves.css`), không ảnh.
+- Trận diễn trong thế giới đang chạy: thanh tên + HP ở trên, thẻ câu hỏi ở dưới (khoảng nửa màn hình dọc, một phần ba màn hình ngang), đích neo quanh trùm trong phần giữa; game ghi vị trí trùm vào phần tử neo, CSS kẹp trong vùng trống. Sai: đích lắc nhẹ, không đổi màu đỏ gắt; đúng: số HP trừ bay lên từ thanh.
+- Bản nhẹ (`prefers-reduced-motion` hoặc `?quality=low`): cầu đứng yên, không vệt ngắm, số trừ chỉ hiện rồi mờ, camera nhảy thẳng, không rung. Chữ hướng dẫn động tác trung tính cho mọi lứa tuổi, xoay vòng không lặp liền.
+
 ## Hạn chế đã chấp nhận
 
 Asset từ nhiều pack (Kenney, Fluent Emoji, KayKit sau này) có thể lệch phong cách và kém chi tiết hơn mock. Giảm bằng bảng màu chung, flat shading, UI thống nhất bằng token; stakeholder xác nhận chất lượng ở gate POC.

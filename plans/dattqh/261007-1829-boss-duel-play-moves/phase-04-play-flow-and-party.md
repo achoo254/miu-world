@@ -49,3 +49,7 @@ vitest từng file đã chạm (`quest-layer`, `play-screen`, `party-play`, `lea
 
 - Đổi điều kiện `covered` có thể làm màn khác (thẻ vở, offline, skill check) để game chạy: `duelLive` chỉ đúng khi bước hiện là boss **và** không có thẻ nào khác che; test bao các tổ hợp.
 - Hoàn tác: revert commit; màn đấu tự về dạng thẻ tĩnh, game dừng như cũ.
+
+## Trạng thái
+
+Đã xong (07/10/2026). Vòng đời sân đấu nằm ở `use-duel-lifecycle.ts` (gọi từ `quest-layer.tsx`), không ở `boss-duel.tsx`, để thẻ chép vở giữa các đòn không đóng sân đấu. HUD giữ mounted và ẩn (`hud-layer`). Sửa thêm: HP trong màn đấu đọc từ tiến độ của quest (cập nhật cả khi bạn tổ đội đánh), câu trả lời gửi lại từ banner mất mạng vẫn hiện thẻ chép vở và đóng trận thắng.
