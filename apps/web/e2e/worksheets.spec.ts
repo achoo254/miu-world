@@ -26,7 +26,7 @@ async function printSheet(page: Page, lessonId: string, file: string): Promise<v
   await page.getByRole('link', { name: 'Danh sách phiếu' }).click();
 }
 
-test('the parent unlocks the gate, lists the sheets by book and prints one of each to A4', { tag: '@smoke' }, async ({ page, baseURL }) => {
+test('the parent unlocks the gate, lists the sheets by book and prints one of each to A4', async ({ page, baseURL }) => {
   const pageErrors: string[] = [];
   page.on('pageerror', (err) => pageErrors.push(err.message));
   await freshChild(page, baseURL ?? '');

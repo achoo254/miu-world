@@ -109,7 +109,7 @@
   },
   {
     "glob": "generated/review/mvp/*.png",
-    "generator": "apps/web/e2e/mvp-loop.spec.ts",
+    "generator": "apps/web/e2e/mvp-loop.spec.ts (removed when E2E became the smoke suite; git log -- apps/web/e2e/mvp-loop.spec.ts)",
     "derivedFrom": [
       "kenney-blocky-characters",
       "kenney-cube-pets",
@@ -139,7 +139,7 @@
   },
   {
     "glob": "generated/review/pet-scenes/*.png",
-    "generator": "apps/web/e2e/pets.spec.ts",
+    "generator": "apps/web/e2e/pets.spec.ts (removed when E2E became the smoke suite; git log -- apps/web/e2e/pets.spec.ts)",
     "derivedFrom": [
       "kenney-blocky-characters",
       "kenney-cube-pets",
@@ -155,7 +155,7 @@
   },
   {
     "glob": "generated/review/props/*.png",
-    "generator": "apps/web/e2e/sgk-content.spec.ts",
+    "generator": "apps/web/e2e/sgk-content.spec.ts (removed when E2E became the smoke suite; git log -- apps/web/e2e/sgk-content.spec.ts)",
     "derivedFrom": [
       "kenney-blocky-characters",
       "kenney-cube-pets",

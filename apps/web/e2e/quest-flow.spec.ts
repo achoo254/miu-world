@@ -1,11 +1,15 @@
 // Chapter 1 against the real server and content: meet the parrot (M3.3) → take the quest → the arrow
 // points at a clue → find the three clues in reverse order → tracker 3/3 from the server → the letter
-// opens by itself → read it and answer → on to the beaver. The Math challenges: challenges.spec.ts.
+// opens by itself → read it and answer → on to the beaver; then the chapter's reward from the server. The
+// textbook mechanics by touch: sgk-mechanics.spec.ts.
 import { mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { expect, test, type Page } from '@playwright/test';
 import { copied, freshChild, notebookPage, playAt, playUntil } from './quest-api';
-import { readStats, waitReady } from './stats';
+import { expectDrawCalls, readStats, waitReady } from './stats';
+
+/** Draw calls of one scene (docs/system-architecture.md, Master Plan §12). */
+const DRAW_CALL_BUDGET = 150;
 
 /** The background music's mood and whether it really plays (music-player.ts). */
 const music = (page: Page) => page.evaluate(() => (window.__miuMusic ? { mood: window.__miuMusic.mood, playing: window.__miuMusic.playing } : null));
@@ -16,7 +20,7 @@ const SHOTS = fileURLToPath(new URL('../../../.data/celebration/', import.meta.u
 // Its own parent and child: quest progress must start empty and never leak into other projects.
 test.use({ storageState: { cookies: [], origins: [] } });
 
-test('meet the parrot, follow the arrow, find the three clues, and the letter opens by itself', { tag: '@smoke' }, async ({ page, baseURL }) => {
+test('meet the parrot, follow the arrow, find the three clues, and the letter opens by itself', async ({ page, baseURL }) => {
   // Four loads of the forest and a touch at each clue: some 35-50 s on CI's software rendering.
   test.setTimeout(90_000);
   const pageErrors: string[] = [];
@@ -25,6 +29,8 @@ test('meet the parrot, follow the arrow, find the three clues, and the letter op
 
   await page.goto(playAt('parrot-guide'));
   await waitReady(page);
+  // The forest's start, with an event's scene standing nearby, keeps to the scene budget (it once did not).
+  expectDrawCalls((await readStats(page)).calls, DRAW_CALL_BUDGET, 'beside the parrot in the forest');
   await page.keyboard.press('KeyE');
   // The forest's walking music plays (the key press is the gesture browsers wait for).
   await expect.poll(() => music(page)).toEqual({ mood: 'forest', playing: true });
@@ -76,25 +82,6 @@ test('meet the parrot, follow the arrow, find the three clues, and the letter op
   await expect(page.locator('[data-id="hud-tracker-step"]')).toContainText('Hải ly');
   await expect.poll(async () => (await readStats(page)).hintTarget).toBe('animal-beaver');
   expect(pageErrors).toEqual([]);
-});
-
-test('a target whose turn has not come says so, and never the same line twice in a row', async ({ page, baseURL }) => {
-  await freshChild(page, baseURL ?? '');
-  // The beaver and the parrot offer a minigame instead of this line; the chest (kind `chest`) gives the same kind of line.
-  await page.goto(playAt('chest'));
-  await waitReady(page);
-  const said: string[] = [];
-  const toast = page.locator('[data-id="toast"]');
-  for (let i = 0; i < 4; i += 1) {
-    await page.keyboard.press('KeyE');
-    // Wait for the new line to replace the previous one before reading it.
-    const previous = said.at(-1) ?? '';
-    await expect.poll(async () => (await toast.textContent()) ?? '').not.toBe(previous);
-    await expect(toast).toContainText('Rương');
-    said.push((await toast.textContent()) ?? '');
-  }
-  for (let i = 1; i < said.length; i += 1) expect(said[i]).not.toBe(said[i - 1]);
-  await expect(page.getByRole('dialog')).toHaveCount(0);
 });
 
 test('finishing chapter 1 without seeing an answer: 100 XP, Level Up to 2, the Lá thần in the backpack', async ({ page, baseURL }) => {

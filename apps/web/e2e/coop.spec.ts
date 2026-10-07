@@ -1,10 +1,11 @@
 // Co-op challenges: two players form a party, the leader opens the forest's leaf-map challenge at its host, the other
 // says she is in, and after the countdown each shares her clues and answers her turns; both are paid once by the
-// server. A player alone with her bot switch on gets companion bots in the free places, who play their part.
+// server. Bots, lessons played as a party and party fights are checked on the server (apps/server/src/coop/*.test.ts,
+// apps/server/src/multiplayer/bot-coop.test.ts).
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { expect, test, type Browser, type Locator, type Page } from '@playwright/test';
-import { answerBoss, copied, freshChild, playAt, skipBossBeat } from './quest-api';
+import { freshChild } from './quest-api';
 import { waitReady } from './stats';
 
 const QUEST = 'with-ban-do-la-rung';
@@ -16,14 +17,6 @@ const ANSWERS: ReadonlyMap<string, string> = (() => {
   const quest = JSON.parse(readFileSync(file, 'utf8')) as { steps: Array<{ kind: string; rounds?: Array<{ task: { id: string; answer: { choice: string } } }> }> };
   const rounds = quest.steps.find((s) => s.kind === 'coop')?.rounds ?? [];
   return new Map(rounds.map((r) => [r.task.id, r.task.answer.choice]));
-})();
-
-/** The zone guardian the party fights, and the right choice of its first question (from the content). */
-const WARD = 'ward-khu-rung-trang-tay-bac';
-const WARD_FIRST_ANSWER: string = (() => {
-  const file = fileURLToPath(new URL(`../../../content/quests/${WARD}.json`, import.meta.url));
-  const quest = JSON.parse(readFileSync(file, 'utf8')) as { steps: Array<{ kind: string; turns?: Array<{ answer: { choice: string } }> }> };
-  return quest.steps.find((s) => s.kind === 'boss')?.turns?.[0]?.answer.choice ?? '';
 })();
 
 async function player(browser: Browser, baseURL: string, name: string, bots: boolean): Promise<Page> {
@@ -114,91 +107,3 @@ test('two players in a party play a co-op challenge together and are each paid o
   await b.context().close();
 });
 
-test('a player alone gets companion bots in the free places, and they play their part', async ({ browser, baseURL }) => {
-  // The bots think like players over their clues and turns (a few seconds each, now and then a wrong try).
-  test.setTimeout(120_000);
-  const page = await player(browser, baseURL ?? '', 'Mochi', true);
-  const before = await standing(page);
-  await page.goto(`/play?quality=low&spawnAt=${HOST}`);
-  await waitReady(page);
-  await page.keyboard.press('KeyE');
-  await expect(page.locator('[data-id="coop-lobby-bots"]')).toBeVisible({ timeout: 10_000 });
-  await page.locator('[data-id="coop-lobby-start"]').click();
-  await expect(page.locator('[data-id="coop-play"]')).toBeVisible({ timeout: 10_000 });
-  // Three places: hers and two bots, always labelled.
-  await expect(page.locator('[data-id^="coop-seat-"]')).toHaveCount(3);
-  await expect(page.locator('[data-id^="coop-seat-"] [aria-label="Bạn máy"]')).toHaveCount(2);
-  await playToTheEnd([page], Date.now() + 120_000);
-  const after = await standing(page);
-  expect(after).toMatchObject({ done: true, run: 1 });
-  expect(after.coins - before.coins).toBeGreaterThanOrEqual(25);
-  await page.context().close();
-});
-
-test('the party plays a lesson together: the leader asks, the other joins, a talk of one moves both on', async ({ browser, baseURL }) => {
-  // Two game loads, a reload of the leader at the parrot, and the round trips of the party's quest.
-  test.setTimeout(90_000);
-  const [a, b] = await partyOfTwo(browser, baseURL ?? '');
-  await b.locator('[data-id="party-quest-start"]').click();
-  await a.locator('[data-id="party-quest-join"]').click({ timeout: 10_000 });
-  for (const page of [a, b]) await expect(page.locator('[data-id="party-quest"]')).toBeVisible({ timeout: 10_000 });
-  // B talks to the parrot: A's own progress on the lesson moves too, from the server.
-  await b.goto(playAt('parrot-guide'));
-  await waitReady(b);
-  await b.keyboard.press('KeyE');
-  await b.getByRole('button', { name: 'Tiếp' }).click();
-  await b.getByRole('button', { name: 'Tiếp' }).click();
-  await b.getByRole('button', { name: 'Tớ sẽ giúp!' }).click();
-  await b.getByRole('button', { name: 'Tiếp tục' }).click();
-  await expect
-    .poll(async () => ((await (await a.context().request.get('/api/quests/forest-ch1')).json()) as { progress: { completedSteps: string[] } }).progress.completedSteps, { timeout: 10_000 })
-    .toContain('meet-parrot');
-  await a.context().close();
-  await b.context().close();
-});
-
-test("the party fights a zone guardian: each member has every question's Hướng dẫn, Gợi ý and Đáp án on her own screen", async ({ browser, baseURL }) => {
-  // Two game loads, both at the guardian again for its quest, then the party's shared talk and the fight opening (some
-  // 70 s on a CI runner drawing with a software GPU). The fight plays in the running world on both screens, so each step
-  // after that waits for a frame of two games drawing at once: about 25 steps of 1 to 5 s there.
-  test.setTimeout(150_000);
-  const [a, b] = await partyOfTwo(browser, baseURL ?? '');
-  const atGuardian = `/play?quality=low&region=khu-rung-bi-mat&quest=${WARD}&spawnAt=nai-gac-dong-co`;
-  await b.goto(atGuardian);
-  await waitReady(b);
-  await b.locator('[data-id="party-quest-start"]').click();
-  await a.locator('[data-id="party-quest-join"]').click({ timeout: 10_000 });
-  await a.goto(atGuardian);
-  await waitReady(a);
-  // B greets the guardian for both; her fight opens by itself.
-  await b.keyboard.press('KeyE');
-  await b.locator('[data-id="dialogue-next"]').click({ timeout: 15_000 });
-  await b.locator('[data-id="dialogue-choice-0"]').click();
-  await expect(b.locator('[data-id="boss-battle"]')).toBeVisible({ timeout: 10_000 });
-  // A's talk was done with B's: her fight opens by itself or when she turns to the guardian.
-  await expect
-    .poll(async () => ((await (await a.context().request.get(`/api/quests/${WARD}`)).json()) as { progress: { completedSteps: string[] } }).progress.completedSteps, { timeout: 10_000 })
-    .toContain('gap');
-  const fightA = a.locator('[data-id="boss-battle"]');
-  await fightA.waitFor({ timeout: 5_000 }).catch(() => a.keyboard.press('KeyE'));
-  await expect(fightA).toBeVisible({ timeout: 10_000 });
-  // Whoever's blow it is, each member reads the question's guide on her own screen, from the server.
-  for (const page of [a, b]) {
-    await page.locator('[data-id="boss-bar"] [data-id="support-guide"]').click();
-    await expect(page.locator('[data-id="support-guide-steps"] li').first()).not.toBeEmpty();
-    await page.locator('[data-id="support-close"]').click();
-  }
-  // One blow at a time: the member whose blow it is not has the answers locked and reads whose it is; the other's
-  // blow takes the boss's HP down on both screens.
-  const locked = async (page: Page): Promise<boolean> => (await page.locator('[data-id="boss-move"] .duel-target:enabled').count()) === 0;
-  await expect.poll(async () => [await locked(a), await locked(b)].filter(Boolean).length, { timeout: 10_000 }).toBe(1);
-  const [striker, watcher] = (await locked(a)) ? [b, a] : [a, b];
-  await expect(watcher.locator('[data-id="boss-move-guide"]')).toContainText('Lượt của');
-  const hpBefore = (await watcher.locator('[data-id="boss-hp"]').textContent()) ?? '';
-  await answerBoss(striker, WARD_FIRST_ANSWER);
-  await skipBossBeat(striker);
-  await copied(striker);
-  await expect(watcher.locator('[data-id="boss-hp"]')).not.toHaveText(hpBefore, { timeout: 10_000 });
-  await a.context().close();
-  await b.context().close();
-});
