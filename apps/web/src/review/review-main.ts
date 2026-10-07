@@ -379,6 +379,158 @@ async function renderCoverage(generated: readonly string[]): Promise<void> {
   }
 }
 
+/** The fleet's numbers at one moment of the measuring simulation (tools/bots/learning-report.ts; means are per bot). */
+interface BotsLearningSample {
+  minute: number;
+  placesKnown: number;
+  shortcuts: number;
+  firstTripDirectness: number | null;
+  againTripDirectness: number | null;
+  firstTrips: number;
+  againTrips: number;
+  stuckShare: number;
+  stepsDone: number;
+}
+interface BotsLearningReport {
+  settings: { bots: number; minutes: number; sampleMinutes: number; tickS: number; seed: string };
+  maps: Array<{ map: string; bots: number; places: number; quests: number; samples: BotsLearningSample[]; badSteps: number }>;
+}
+
+const LEARNING_MAP_NAMES: Record<string, string> = { 'truong-hoc': 'Trường học', 'trung-tam': 'Trung tâm', 'forest-ch1': 'Khu rừng bí mật' };
+const LEARNING_COLORS = ['#e0559a', '#3a7fd0', '#2f9e5b', '#c77800'];
+
+/** A number the Vietnamese way (decimal comma). */
+const vn = (n: number, digits = 1): string => n.toFixed(digits).replace('.', ',');
+
+interface ChartSeries {
+  label: string;
+  color: string;
+  dashed?: boolean;
+  /** [minute, value]; null: nothing measured yet (the line starts later). */
+  points: ReadonlyArray<readonly [number, number | null]>;
+}
+
+function svg<K extends keyof SVGElementTagNameMap>(tag: K, attrs: Record<string, string | number>, children: Array<Node | string> = []): SVGElementTagNameMap[K] {
+  const node = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const [key, value] of Object.entries(attrs)) node.setAttribute(key, String(value));
+  node.append(...children);
+  return node;
+}
+
+/** A line chart over the simulated time (plain SVG): one line per series, a legend under it. */
+function lineChart(title: string, series: readonly ChartSeries[], minutes: number, format: (v: number) => string): HTMLElement {
+  const width = 480;
+  const height = 240;
+  const pad = { left: 48, right: 12, top: 12, bottom: 30 };
+  const values = series.flatMap((s) => s.points.flatMap(([, v]) => (v === null ? [] : [v])));
+  // A round top just above the highest value (a power of ten times one of these).
+  const highest = Math.max(...values, 0) * 1.05 || 1;
+  const step = 10 ** Math.floor(Math.log10(highest));
+  const yMax = [1, 1.2, 1.6, 2, 2.4, 3, 4, 5, 6, 8, 10].map((m) => m * step).find((m) => m >= highest) ?? highest;
+  const x = (minute: number): number => pad.left + (minute / minutes) * (width - pad.left - pad.right);
+  const y = (v: number): number => height - pad.bottom - (v / yMax) * (height - pad.top - pad.bottom);
+  const chart = svg('svg', { viewBox: `0 0 ${width} ${height}`, role: 'img', 'aria-label': title, style: 'width:100%;height:auto;display:block' });
+  for (let i = 0; i <= 4; i++) {
+    const v = (yMax * i) / 4;
+    chart.append(
+      svg('line', { x1: pad.left, x2: width - pad.right, y1: y(v), y2: y(v), stroke: '#e2e6f0' }),
+      svg('text', { x: pad.left - 6, y: y(v) + 4, 'text-anchor': 'end', 'font-size': 11, fill: '#6b6480' }, [format(v)]),
+    );
+  }
+  for (let m = 0; m <= minutes; m += 30) {
+    const label = m === 0 ? '0' : `${vn(m / 60, m % 60 === 0 ? 0 : 1)} giờ`;
+    chart.append(svg('text', { x: x(m), y: height - 10, 'text-anchor': 'middle', 'font-size': 11, fill: '#6b6480' }, [label]));
+  }
+  for (const s of series) {
+    // Unbroken runs of measured points, each drawn as one line.
+    const runs: Array<Array<readonly [number, number]>> = [[]];
+    for (const [m, v] of s.points) {
+      if (v === null) runs.push([]);
+      else runs.at(-1)?.push([m, v]);
+    }
+    for (const run of runs.filter((r) => r.length > 0)) {
+      const points = run.map(([m, v]) => `${x(m).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+      chart.append(svg('polyline', { points, fill: 'none', stroke: s.color, 'stroke-width': 2.5, 'stroke-linejoin': 'round', ...(s.dashed ? { 'stroke-dasharray': '6 4' } : {}) }));
+    }
+  }
+  const legend = el(
+    'figcaption',
+    {},
+    series.map((s) => {
+      const key = svg('svg', { viewBox: '0 0 24 8', width: 24, height: 8, style: 'margin:0 4px 0 12px;vertical-align:middle' }, [
+        svg('line', { x1: 0, x2: 24, y1: 4, y2: 4, stroke: s.color, 'stroke-width': 3, ...(s.dashed ? { 'stroke-dasharray': '6 4' } : {}) }),
+      ]);
+      return el('span', {}, [key, s.label]);
+    }),
+  );
+  return el('figure', {}, [el('h3', { textContent: title }), chart, legend]);
+}
+
+/**
+ * How companion bots learn a map on their own (assets/generated/review/bots-learning.json, from `pnpm bots:learning`):
+ * three charts over a measuring simulation and a table of first and last numbers.
+ */
+async function renderBotsLearning(generated: readonly string[]): Promise<void> {
+  const file = 'generated/review/bots-learning.json';
+  const head = byId('bots-learning-head');
+  if (!generated.includes(file)) {
+    head.textContent = 'Chưa có số liệu: chạy `pnpm bots:learning` rồi `pnpm assets:manifest`.';
+    return;
+  }
+  const report = (await (await fetch(assetHref(file))).json()) as BotsLearningReport;
+  const { settings } = report;
+  head.textContent =
+    `Mô phỏng đo tất định (seed "${settings.seed}"): mỗi map ${settings.bots} bạn máy bắt đầu từ trí nhớ trống, sống ${vn(settings.minutes / 60, 0)} giờ với đúng bộ não của server ` +
+    `trên lưới chỗ đứng và nhiệm vụ thật của map, mỗi bước ${vn(settings.tickS)} s, không có người chơi; số liệu lấy mỗi ${settings.sampleMinutes} phút. ` +
+    'Đây là đo, không phải huấn luyện: không ghi gì vào database, bạn máy trong game không bắt đầu từ kết quả này.';
+  const named = report.maps.map((m, i) => ({ ...m, name: LEARNING_MAP_NAMES[m.map] ?? m.map, color: LEARNING_COLORS[i % LEARNING_COLORS.length] ?? '#2b2140' }));
+  const line = (m: (typeof named)[number], label: string, pick: (s: BotsLearningSample) => number | null, dashed = false): ChartSeries => ({
+    label,
+    color: m.color,
+    dashed,
+    points: m.samples.map((s) => [s.minute, pick(s)] as const),
+  });
+  const charts = byId('bots-learning');
+  charts.append(
+    lineChart('Số nơi đã biết (trung bình mỗi bạn máy)', named.map((m) => line(m, `${m.name} (map có ${m.places} nơi)`, (s) => s.placesKnown)), settings.minutes, (v) => vn(v, 0)),
+    lineChart(
+      'Độ thẳng của chuyến tới điểm nhiệm vụ (khoảng cách thẳng ÷ quãng đã đi)',
+      named.flatMap((m) => [line(m, `${m.name}: tới nơi đã từng tới`, (s) => s.againTripDirectness), line(m, `${m.name}: lần đầu tới nơi đó`, (s) => s.firstTripDirectness, true)]),
+      settings.minutes,
+      (v) => vn(v, 2),
+    ),
+    lineChart('Đường tắt tự tìm ra (cộng dồn, trung bình mỗi bạn máy)', named.map((m) => line(m, m.name, (s) => s.shortcuts)), settings.minutes, (v) => vn(v, 0)),
+  );
+
+  const table = el('table');
+  const columns = ['Map', 'Bạn máy', 'Nơi đã biết', 'Chuyến đầu', 'Chuyến đi lại', 'Thẳng hơn', 'Đường tắt', 'Kẹt', 'Bước nhiệm vụ', 'Sai luật'];
+  table.append(el('thead', {}, [el('tr', {}, columns.map((h) => el('th', { textContent: h })))]));
+  const body = el('tbody');
+  for (const m of named) {
+    const first = m.samples[0];
+    const last = m.samples.at(-1);
+    if (!first || !last) continue;
+    const gain = last.firstTripDirectness && last.againTripDirectness ? last.againTripDirectness / last.firstTripDirectness : null;
+    const trips = (d: number | null, n: number): string => (d === null ? '—' : `${vn(d, 2)} (${n})`);
+    body.append(
+      el('tr', {}, [
+        el('td', { textContent: m.name }),
+        el('td', { textContent: String(m.bots) }),
+        el('td', { textContent: `${vn(first.placesKnown)} → ${vn(last.placesKnown)} / ${m.places}` }),
+        el('td', { textContent: trips(last.firstTripDirectness, last.firstTrips) }),
+        el('td', { textContent: trips(last.againTripDirectness, last.againTrips) }),
+        el('td', {}, [gain === null ? '—' : badge(gain >= 1.3, `×${vn(gain, 2)}`)]),
+        el('td', { textContent: vn(last.shortcuts) }),
+        el('td', {}, [badge(last.stuckShare < 0.02, `${vn(last.stuckShare * 100)}%`)]),
+        el('td', { textContent: String(last.stepsDone) }),
+        el('td', {}, [badge(m.badSteps === 0, String(m.badSteps))]),
+      ]),
+    );
+  }
+  table.append(body);
+  byId('bots-learning-table').append(table);
+}
+
 /** One review of the screens before a release (assets/generated/review/screens/review.json, docs/screen-review.md). */
 interface ScreenReview {
   capturedFrom: string;
@@ -459,6 +611,7 @@ async function main(): Promise<void> {
   versions = manifestVersions([...manifest.files, ...manifest.generated]);
   const generated = manifest.generated.map((g) => g.path);
   await renderCoverage(generated);
+  await renderBotsLearning(generated);
   await renderScreens(generated);
   renderGallery(generated);
   renderPalette();

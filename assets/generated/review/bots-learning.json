@@ -1,0 +1,633 @@
+{
+ "source": "simulation",
+ "settings": {
+  "bots": 6,
+  "minutes": 180,
+  "sampleMinutes": 10,
+  "tickS": 0.5,
+  "seed": "learn"
+ },
+ "maps": [
+  {
+   "map": "truong-hoc",
+   "bots": 6,
+   "places": 250,
+   "quests": 25,
+   "samples": [
+    {
+     "minute": 10,
+     "placesKnown": 114.7,
+     "shortcuts": 15.2,
+     "firstTripDirectness": 0.486,
+     "againTripDirectness": 0.948,
+     "firstTrips": 28,
+     "againTrips": 24,
+     "stuckShare": 0.0063,
+     "stepsDone": 67
+    },
+    {
+     "minute": 20,
+     "placesKnown": 171.8,
+     "shortcuts": 22.2,
+     "firstTripDirectness": 0.305,
+     "againTripDirectness": 0.952,
+     "firstTrips": 35,
+     "againTrips": 39,
+     "stuckShare": 0.0172,
+     "stepsDone": 98
+    },
+    {
+     "minute": 30,
+     "placesKnown": 175.5,
+     "shortcuts": 29.7,
+     "firstTripDirectness": 0.297,
+     "againTripDirectness": 0.942,
+     "firstTrips": 41,
+     "againTrips": 43,
+     "stuckShare": 0.0131,
+     "stepsDone": 111
+    },
+    {
+     "minute": 40,
+     "placesKnown": 196,
+     "shortcuts": 33.3,
+     "firstTripDirectness": 0.317,
+     "againTripDirectness": 0.942,
+     "firstTrips": 44,
+     "againTrips": 44,
+     "stuckShare": 0.0171,
+     "stepsDone": 118
+    },
+    {
+     "minute": 50,
+     "placesKnown": 197.8,
+     "shortcuts": 40.7,
+     "firstTripDirectness": 0.239,
+     "againTripDirectness": 0.932,
+     "firstTrips": 50,
+     "againTrips": 48,
+     "stuckShare": 0.0167,
+     "stepsDone": 136
+    },
+    {
+     "minute": 60,
+     "placesKnown": 200,
+     "shortcuts": 47.2,
+     "firstTripDirectness": 0.268,
+     "againTripDirectness": 0.678,
+     "firstTrips": 57,
+     "againTrips": 59,
+     "stuckShare": 0.0154,
+     "stepsDone": 166
+    },
+    {
+     "minute": 70,
+     "placesKnown": 200,
+     "shortcuts": 57.2,
+     "firstTripDirectness": 0.273,
+     "againTripDirectness": 0.703,
+     "firstTrips": 84,
+     "againTrips": 75,
+     "stuckShare": 0.016,
+     "stepsDone": 227
+    },
+    {
+     "minute": 80,
+     "placesKnown": 200,
+     "shortcuts": 68.7,
+     "firstTripDirectness": 0.316,
+     "againTripDirectness": 0.736,
+     "firstTrips": 107,
+     "againTrips": 93,
+     "stuckShare": 0.0148,
+     "stepsDone": 277
+    },
+    {
+     "minute": 90,
+     "placesKnown": 200,
+     "shortcuts": 76.2,
+     "firstTripDirectness": 0.331,
+     "againTripDirectness": 0.746,
+     "firstTrips": 118,
+     "againTrips": 103,
+     "stuckShare": 0.0139,
+     "stepsDone": 307
+    },
+    {
+     "minute": 100,
+     "placesKnown": 200,
+     "shortcuts": 87.3,
+     "firstTripDirectness": 0.358,
+     "againTripDirectness": 0.652,
+     "firstTrips": 136,
+     "againTrips": 114,
+     "stuckShare": 0.0133,
+     "stepsDone": 352
+    },
+    {
+     "minute": 110,
+     "placesKnown": 200,
+     "shortcuts": 97.5,
+     "firstTripDirectness": 0.388,
+     "againTripDirectness": 0.698,
+     "firstTrips": 163,
+     "againTrips": 147,
+     "stuckShare": 0.0127,
+     "stepsDone": 431
+    },
+    {
+     "minute": 120,
+     "placesKnown": 200,
+     "shortcuts": 106,
+     "firstTripDirectness": 0.333,
+     "againTripDirectness": 0.685,
+     "firstTrips": 183,
+     "againTrips": 163,
+     "stuckShare": 0.0133,
+     "stepsDone": 479
+    },
+    {
+     "minute": 130,
+     "placesKnown": 200,
+     "shortcuts": 112.7,
+     "firstTripDirectness": 0.338,
+     "againTripDirectness": 0.658,
+     "firstTrips": 190,
+     "againTrips": 175,
+     "stuckShare": 0.0137,
+     "stepsDone": 504
+    },
+    {
+     "minute": 140,
+     "placesKnown": 200,
+     "shortcuts": 120.3,
+     "firstTripDirectness": 0.326,
+     "againTripDirectness": 0.671,
+     "firstTrips": 209,
+     "againTrips": 195,
+     "stuckShare": 0.0148,
+     "stepsDone": 557
+    },
+    {
+     "minute": 150,
+     "placesKnown": 200,
+     "shortcuts": 125.5,
+     "firstTripDirectness": 0.307,
+     "againTripDirectness": 0.679,
+     "firstTrips": 219,
+     "againTrips": 204,
+     "stuckShare": 0.0155,
+     "stepsDone": 582
+    },
+    {
+     "minute": 160,
+     "placesKnown": 200,
+     "shortcuts": 130.3,
+     "firstTripDirectness": 0.301,
+     "againTripDirectness": 0.574,
+     "firstTrips": 229,
+     "againTrips": 212,
+     "stuckShare": 0.0149,
+     "stepsDone": 606
+    },
+    {
+     "minute": 170,
+     "placesKnown": 200,
+     "shortcuts": 140.3,
+     "firstTripDirectness": 0.309,
+     "againTripDirectness": 0.586,
+     "firstTrips": 245,
+     "againTrips": 228,
+     "stuckShare": 0.0142,
+     "stepsDone": 647
+    },
+    {
+     "minute": 180,
+     "placesKnown": 200,
+     "shortcuts": 149,
+     "firstTripDirectness": 0.321,
+     "againTripDirectness": 0.592,
+     "firstTrips": 262,
+     "againTrips": 235,
+     "stuckShare": 0.0136,
+     "stepsDone": 681
+    }
+   ],
+   "badSteps": 0
+  },
+  {
+   "map": "trung-tam",
+   "bots": 6,
+   "places": 128,
+   "quests": 13,
+   "samples": [
+    {
+     "minute": 10,
+     "placesKnown": 62.3,
+     "shortcuts": 5.2,
+     "firstTripDirectness": 0.244,
+     "againTripDirectness": 0.922,
+     "firstTrips": 17,
+     "againTrips": 4,
+     "stuckShare": 0.0033,
+     "stepsDone": 34
+    },
+    {
+     "minute": 20,
+     "placesKnown": 84.8,
+     "shortcuts": 7.3,
+     "firstTripDirectness": 0.192,
+     "againTripDirectness": 0.935,
+     "firstTrips": 33,
+     "againTrips": 8,
+     "stuckShare": 0.0017,
+     "stepsDone": 63
+    },
+    {
+     "minute": 30,
+     "placesKnown": 96.7,
+     "shortcuts": 9.2,
+     "firstTripDirectness": 0.222,
+     "againTripDirectness": 0.794,
+     "firstTrips": 41,
+     "againTrips": 9,
+     "stuckShare": 0.0033,
+     "stepsDone": 72
+    },
+    {
+     "minute": 40,
+     "placesKnown": 105.8,
+     "shortcuts": 9.7,
+     "firstTripDirectness": 0.171,
+     "againTripDirectness": 0.843,
+     "firstTrips": 47,
+     "againTrips": 13,
+     "stuckShare": 0.0033,
+     "stepsDone": 89
+    },
+    {
+     "minute": 50,
+     "placesKnown": 110.8,
+     "shortcuts": 15.2,
+     "firstTripDirectness": 0.238,
+     "againTripDirectness": 0.841,
+     "firstTrips": 68,
+     "againTrips": 20,
+     "stuckShare": 0.004,
+     "stepsDone": 134
+    },
+    {
+     "minute": 60,
+     "placesKnown": 114,
+     "shortcuts": 21.8,
+     "firstTripDirectness": 0.289,
+     "againTripDirectness": 0.815,
+     "firstTrips": 117,
+     "againTrips": 35,
+     "stuckShare": 0.0036,
+     "stepsDone": 229
+    },
+    {
+     "minute": 70,
+     "placesKnown": 115.2,
+     "shortcuts": 26.5,
+     "firstTripDirectness": 0.319,
+     "againTripDirectness": 0.802,
+     "firstTrips": 145,
+     "againTrips": 54,
+     "stuckShare": 0.0045,
+     "stepsDone": 300
+    },
+    {
+     "minute": 80,
+     "placesKnown": 115.8,
+     "shortcuts": 29.5,
+     "firstTripDirectness": 0.33,
+     "againTripDirectness": 0.814,
+     "firstTrips": 154,
+     "againTrips": 62,
+     "stuckShare": 0.0058,
+     "stepsDone": 325
+    },
+    {
+     "minute": 90,
+     "placesKnown": 117,
+     "shortcuts": 31,
+     "firstTripDirectness": 0.32,
+     "againTripDirectness": 0.81,
+     "firstTrips": 158,
+     "againTrips": 63,
+     "stuckShare": 0.0063,
+     "stepsDone": 333
+    },
+    {
+     "minute": 100,
+     "placesKnown": 118,
+     "shortcuts": 33.2,
+     "firstTripDirectness": 0.299,
+     "againTripDirectness": 0.813,
+     "firstTrips": 162,
+     "againTrips": 66,
+     "stuckShare": 0.0058,
+     "stepsDone": 344
+    },
+    {
+     "minute": 110,
+     "placesKnown": 118.2,
+     "shortcuts": 37.2,
+     "firstTripDirectness": 0.284,
+     "againTripDirectness": 0.826,
+     "firstTrips": 177,
+     "againTrips": 81,
+     "stuckShare": 0.0057,
+     "stepsDone": 386
+    },
+    {
+     "minute": 120,
+     "placesKnown": 118.2,
+     "shortcuts": 41.5,
+     "firstTripDirectness": 0.308,
+     "againTripDirectness": 0.813,
+     "firstTrips": 201,
+     "againTrips": 100,
+     "stuckShare": 0.0057,
+     "stepsDone": 441
+    },
+    {
+     "minute": 130,
+     "placesKnown": 118.2,
+     "shortcuts": 46.2,
+     "firstTripDirectness": 0.32,
+     "againTripDirectness": 0.82,
+     "firstTrips": 213,
+     "againTrips": 139,
+     "stuckShare": 0.0059,
+     "stepsDone": 528
+    },
+    {
+     "minute": 140,
+     "placesKnown": 118.2,
+     "shortcuts": 52.2,
+     "firstTripDirectness": 0.332,
+     "againTripDirectness": 0.83,
+     "firstTrips": 228,
+     "againTrips": 198,
+     "stuckShare": 0.0064,
+     "stepsDone": 630
+    },
+    {
+     "minute": 150,
+     "placesKnown": 118.2,
+     "shortcuts": 57.8,
+     "firstTripDirectness": 0.333,
+     "againTripDirectness": 0.828,
+     "firstTrips": 231,
+     "againTrips": 268,
+     "stuckShare": 0.0062,
+     "stepsDone": 737
+    },
+    {
+     "minute": 160,
+     "placesKnown": 118.2,
+     "shortcuts": 60.7,
+     "firstTripDirectness": 0.333,
+     "againTripDirectness": 0.84,
+     "firstTrips": 231,
+     "againTrips": 328,
+     "stuckShare": 0.0061,
+     "stepsDone": 819
+    },
+    {
+     "minute": 170,
+     "placesKnown": 118.2,
+     "shortcuts": 66.2,
+     "firstTripDirectness": 0.324,
+     "againTripDirectness": 0.831,
+     "firstTrips": 234,
+     "againTrips": 357,
+     "stuckShare": 0.0061,
+     "stepsDone": 858
+    },
+    {
+     "minute": 180,
+     "placesKnown": 118.2,
+     "shortcuts": 69.2,
+     "firstTripDirectness": 0.324,
+     "againTripDirectness": 0.833,
+     "firstTrips": 234,
+     "againTrips": 388,
+     "stuckShare": 0.0062,
+     "stepsDone": 901
+    }
+   ],
+   "badSteps": 0
+  },
+  {
+   "map": "forest-ch1",
+   "bots": 6,
+   "places": 178,
+   "quests": 27,
+   "samples": [
+    {
+     "minute": 10,
+     "placesKnown": 31.2,
+     "shortcuts": 3.3,
+     "firstTripDirectness": null,
+     "againTripDirectness": null,
+     "firstTrips": 0,
+     "againTrips": 0,
+     "stuckShare": 0.005,
+     "stepsDone": 0
+    },
+    {
+     "minute": 20,
+     "placesKnown": 32,
+     "shortcuts": 6.2,
+     "firstTripDirectness": null,
+     "againTripDirectness": null,
+     "firstTrips": 0,
+     "againTrips": 0,
+     "stuckShare": 0.0086,
+     "stepsDone": 0
+    },
+    {
+     "minute": 30,
+     "placesKnown": 34.8,
+     "shortcuts": 9.7,
+     "firstTripDirectness": null,
+     "againTripDirectness": null,
+     "firstTrips": 0,
+     "againTrips": 0,
+     "stuckShare": 0.0085,
+     "stepsDone": 0
+    },
+    {
+     "minute": 40,
+     "placesKnown": 46.2,
+     "shortcuts": 11.7,
+     "firstTripDirectness": 0.122,
+     "againTripDirectness": 1.011,
+     "firstTrips": 4,
+     "againTrips": 3,
+     "stuckShare": 0.0064,
+     "stepsDone": 10
+    },
+    {
+     "minute": 50,
+     "placesKnown": 51.3,
+     "shortcuts": 13.8,
+     "firstTripDirectness": 0.122,
+     "againTripDirectness": 1.011,
+     "firstTrips": 4,
+     "againTrips": 3,
+     "stuckShare": 0.0079,
+     "stepsDone": 10
+    },
+    {
+     "minute": 60,
+     "placesKnown": 54.3,
+     "shortcuts": 15.5,
+     "firstTripDirectness": 0.122,
+     "againTripDirectness": 1.011,
+     "firstTrips": 4,
+     "againTrips": 3,
+     "stuckShare": 0.0077,
+     "stepsDone": 10
+    },
+    {
+     "minute": 70,
+     "placesKnown": 60.7,
+     "shortcuts": 16.7,
+     "firstTripDirectness": 0.11,
+     "againTripDirectness": 1.024,
+     "firstTrips": 6,
+     "againTrips": 4,
+     "stuckShare": 0.008,
+     "stepsDone": 18
+    },
+    {
+     "minute": 80,
+     "placesKnown": 64.3,
+     "shortcuts": 17.3,
+     "firstTripDirectness": 0.11,
+     "againTripDirectness": 1.024,
+     "firstTrips": 6,
+     "againTrips": 4,
+     "stuckShare": 0.0074,
+     "stepsDone": 18
+    },
+    {
+     "minute": 90,
+     "placesKnown": 66,
+     "shortcuts": 17.8,
+     "firstTripDirectness": 0.11,
+     "againTripDirectness": 1.024,
+     "firstTrips": 6,
+     "againTrips": 4,
+     "stuckShare": 0.0077,
+     "stepsDone": 19
+    },
+    {
+     "minute": 100,
+     "placesKnown": 71,
+     "shortcuts": 19.2,
+     "firstTripDirectness": 0.121,
+     "againTripDirectness": 1.024,
+     "firstTrips": 7,
+     "againTrips": 4,
+     "stuckShare": 0.0079,
+     "stepsDone": 22
+    },
+    {
+     "minute": 110,
+     "placesKnown": 72.2,
+     "shortcuts": 20.3,
+     "firstTripDirectness": 0.121,
+     "againTripDirectness": 1.024,
+     "firstTrips": 7,
+     "againTrips": 4,
+     "stuckShare": 0.0072,
+     "stepsDone": 24
+    },
+    {
+     "minute": 120,
+     "placesKnown": 74.2,
+     "shortcuts": 22,
+     "firstTripDirectness": 0.121,
+     "againTripDirectness": 1.024,
+     "firstTrips": 7,
+     "againTrips": 4,
+     "stuckShare": 0.007,
+     "stepsDone": 24
+    },
+    {
+     "minute": 130,
+     "placesKnown": 77.7,
+     "shortcuts": 24.7,
+     "firstTripDirectness": 0.121,
+     "againTripDirectness": 1.024,
+     "firstTrips": 7,
+     "againTrips": 4,
+     "stuckShare": 0.0069,
+     "stepsDone": 24
+    },
+    {
+     "minute": 140,
+     "placesKnown": 82.8,
+     "shortcuts": 26,
+     "firstTripDirectness": 0.121,
+     "againTripDirectness": 1.024,
+     "firstTrips": 7,
+     "againTrips": 4,
+     "stuckShare": 0.0065,
+     "stepsDone": 24
+    },
+    {
+     "minute": 150,
+     "placesKnown": 90.2,
+     "shortcuts": 27.2,
+     "firstTripDirectness": 0.121,
+     "againTripDirectness": 1.024,
+     "firstTrips": 7,
+     "againTrips": 4,
+     "stuckShare": 0.0062,
+     "stepsDone": 24
+    },
+    {
+     "minute": 160,
+     "placesKnown": 91.7,
+     "shortcuts": 27.8,
+     "firstTripDirectness": 0.121,
+     "againTripDirectness": 1.024,
+     "firstTrips": 7,
+     "againTrips": 4,
+     "stuckShare": 0.0059,
+     "stepsDone": 24
+    },
+    {
+     "minute": 170,
+     "placesKnown": 95.7,
+     "shortcuts": 28.5,
+     "firstTripDirectness": 0.121,
+     "againTripDirectness": 0.773,
+     "firstTrips": 7,
+     "againTrips": 7,
+     "stuckShare": 0.0058,
+     "stepsDone": 36
+    },
+    {
+     "minute": 180,
+     "placesKnown": 97.3,
+     "shortcuts": 30,
+     "firstTripDirectness": 0.121,
+     "againTripDirectness": 0.773,
+     "firstTrips": 7,
+     "againTrips": 7,
+     "stuckShare": 0.0057,
+     "stepsDone": 36
+    }
+   ],
+   "badSteps": 0
+  }
+ ]
+}

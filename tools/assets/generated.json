@@ -269,6 +269,12 @@
     "license": "CC0-1.0"
   },
   {
+    "glob": "generated/review/bots-learning.json",
+    "generator": "tools/bots/learning-report.ts",
+    "derivedFrom": [],
+    "license": "CC0-1.0"
+  },
+  {
     "glob": "generated/props/*.glb",
     "generator": "tools/assets/build-emoji-props.ts",
     "derivedFrom": [

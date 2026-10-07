@@ -48,7 +48,8 @@
     "world:overview": "tsx tools/world/generate-world-overview.ts",
     "world:interactions": "tsx tools/world/interaction-coverage.ts",
     "world:quest-targets": "tsx tools/world/quest-target-audit.ts",
-    "world:walk": "tsx tools/world/walk-export.ts"
+    "world:walk": "tsx tools/world/walk-export.ts",
+    "bots:learning": "tsx tools/bots/learning-report.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
