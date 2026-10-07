@@ -31,6 +31,13 @@
         <div id="decisions"></div>
       </section>
 
+      <section data-id="review-screens">
+        <h2>Màn hình trước deploy</h2>
+        <p class="sub">Trước mỗi lần deploy, các màn chính được chụp ở điện thoại dọc 360 × 740 và iPad dọc 820 × 1180 (<code>pnpm --filter @miu/web screens</code>, tài khoản giả), một agent xem từng ảnh theo checklist ở <code>docs/screen-review.md</code> (nút đóng, chồng lấn, chữ bị cắt, ra ngoài màn, bị đẩy lệch, cảnh 3D trống, khóa chữ lọt ra màn) cùng dữ kiện đo từ DOM lúc chụp. Phát hiện mức <b>chặn</b> phải sửa trước khi deploy; mức <b>ghi chú</b> để người duyệt xem. Deploy staging và production từ chối chạy khi ảnh cũ, chưa duyệt hay CI của commit đã chụp chưa xanh.</p>
+        <p class="sub" id="screens-head"></p>
+        <div id="screens" class="screens"></div>
+      </section>
+
       <section data-id="review-mvp">
         <h2>Vòng MVP: tạo nhân vật → Home → khu rừng → thưởng</h2>
         <p class="sub">Ảnh chụp tự động từ E2E <code>mvp-loop</code> trên khung iPad Gen 10 (820×1180) có cảm ứng, dữ liệu giả; cả vòng chạy bằng chạm và kéo thật. Bám mock M1.1–M1.4, M2.4–M2.9, M3.2–M3.5; màn Tạm dừng, Đang tải, Mất mạng, Lên cấp, Mở khóa là NEW SCREEN.</p>

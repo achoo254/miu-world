@@ -108,6 +108,22 @@
     "license": "CC0-1.0"
   },
   {
+    "glob": "generated/review/screens/**",
+    "generator": "apps/web/e2e/screens.spec.ts",
+    "derivedFrom": [
+      "kenney-blocky-characters",
+      "kenney-cube-pets",
+      "kenney-voxel-pack",
+      "kenney-nature-kit",
+      "kenney-survival-kit",
+      "kenney-food-kit",
+      "kenney-castle-kit",
+      "kenney-furniture-kit",
+      "fluent-emoji"
+    ],
+    "license": "CC0-1.0"
+  },
+  {
     "glob": "generated/review/mvp/*.png",
     "generator": "apps/web/e2e/mvp-loop.spec.ts (removed when E2E became the smoke suite; git log -- apps/web/e2e/mvp-loop.spec.ts)",
     "derivedFrom": [

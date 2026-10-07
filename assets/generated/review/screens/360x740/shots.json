@@ -1,0 +1,342 @@
+{
+  "viewport": "360x740",
+  "capturedFrom": "df9b35a2a32913c6fbc65a50209436b61f1f7938",
+  "dirty": true,
+  "capturedAt": "2026-10-07T22:38:54+07:00",
+  "shots": [
+    {
+      "shot": "360x740/01-login.png",
+      "screen": "01-login",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [
+          "span.visually-hidden \"Miu World\" shows 1×1 of 220×62"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/02-players.png",
+      "screen": "02-players",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/03-creator.png",
+      "screen": "03-creator",
+      "status": "ok",
+      "facts": {
+        "offScreen": [
+          "[data-id=\"creator-species-rabbit\"] at 54,569–306,811"
+        ],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/04-home.png",
+      "screen": "04-home",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [
+          "[data-id=\"home-region-khu-rung-bi-mat\"] × [data-id=\"home-region-nong-trai\"]",
+          "[data-id=\"home-region-khu-rung-bi-mat\"] × [data-id=\"home-region-nui-tuyet\"]",
+          "[data-id=\"home-region-lang-ven-song\"] × [data-id=\"home-region-xom-mai-am\"]",
+          "[data-id=\"home-region-trung-tam\"] × [data-id=\"home-region-cho-phien\"]"
+        ],
+        "missingClose": [],
+        "clipped": [
+          "h1.visually-hidden \"Trang chủ\" shows 1×1 of 143×43"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/05-world-map.png",
+      "screen": "05-world-map",
+      "status": "ok",
+      "facts": {
+        "offScreen": [
+          "[data-id=\"map-books-lang-ven-song\"] at 18,647–342,759"
+        ],
+        "overlaps": [
+          "[data-id=\"map-region-khu-rung-bi-mat\"] × [data-id=\"map-region-nong-trai\"]",
+          "[data-id=\"map-region-khu-rung-bi-mat\"] × [data-id=\"map-region-nui-tuyet\"]",
+          "[data-id=\"map-region-lang-ven-song\"] × [data-id=\"map-region-xom-mai-am\"]",
+          "[data-id=\"map-region-trung-tam\"] × [data-id=\"map-region-cho-phien\"]"
+        ],
+        "missingClose": [],
+        "clipped": [],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/06-region.png",
+      "screen": "06-region",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [
+          "h3.visually-hidden \"Chương 1\" shows 1×1 of 94×32"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/07-play-hud.png",
+      "screen": "07-play-hud",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [
+          "[data-id=\"hud-tracker-quest\"] shows 224×23 of 245×23",
+          "span.hud-btn-label \"Bạn bè\" shows 1×1 of 56×23",
+          "span.hud-btn-label \"Nhiệm vụ\" shows 1×1 of 64×20",
+          "span.hud-btn-label \"Bản đồ\" shows 1×1 of 47×20",
+          "span.hud-btn-label \"Ba lô\" shows 1×1 of 34×20",
+          "span.hud-btn-label \"Menu\" shows 1×1 of 38×20"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/08-play-prompt.png",
+      "screen": "08-play-prompt",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [
+          "[data-id=\"hud-tracker-quest\"] shows 224×23 of 245×23",
+          "span.hud-btn-label \"Bạn bè\" shows 1×1 of 56×23",
+          "span.hud-btn-label \"Nhiệm vụ\" shows 1×1 of 64×20",
+          "span.hud-btn-label \"Bản đồ\" shows 1×1 of 47×20",
+          "span.hud-btn-label \"Ba lô\" shows 1×1 of 34×20",
+          "span.hud-btn-label \"Menu\" shows 1×1 of 38×20"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/09-dialogue.png",
+      "screen": "09-dialogue",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [
+          "[data-id=\"hud-tracker-quest\"] shows 224×23 of 245×23",
+          "span.hud-btn-label \"Bạn bè\" shows 1×1 of 56×23",
+          "span.hud-btn-label \"Nhiệm vụ\" shows 1×1 of 64×20",
+          "span.hud-btn-label \"Bản đồ\" shows 1×1 of 47×20",
+          "span.hud-btn-label \"Ba lô\" shows 1×1 of 34×20",
+          "span.hud-btn-label \"Menu\" shows 1×1 of 38×20"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/10-question.png",
+      "screen": "10-question",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [
+          "[data-id=\"hud-tracker-quest\"] shows 224×23 of 245×23",
+          "span.hud-btn-label \"Bạn bè\" shows 1×1 of 56×23",
+          "span.hud-btn-label \"Nhiệm vụ\" shows 1×1 of 64×20",
+          "span.hud-btn-label \"Bản đồ\" shows 1×1 of 47×20",
+          "span.hud-btn-label \"Ba lô\" shows 1×1 of 34×20",
+          "span.hud-btn-label \"Menu\" shows 1×1 of 38×20",
+          "[data-id=\"challenge-position\"] shows 1×1 of 83×27"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/11-reward.png",
+      "screen": "11-reward",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [
+          "[data-id=\"hud-tracker-quest\"] shows 224×23 of 245×23",
+          "span.hud-btn-label \"Bạn bè\" shows 1×1 of 56×23",
+          "span.hud-btn-label \"Nhiệm vụ\" shows 1×1 of 64×20",
+          "span.hud-btn-label \"Bản đồ\" shows 1×1 of 47×20",
+          "span.hud-btn-label \"Ba lô\" shows 1×1 of 34×20",
+          "span.hud-btn-label \"Menu\" shows 1×1 of 38×20",
+          "span.visually-hidden \"+100 XP\" shows 1×1 of 88×33",
+          "span.visually-hidden \"+20 Xu\" shows 1×1 of 73×33"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/12-event-panel.png",
+      "screen": "12-event-panel",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [
+          "h1.visually-hidden \"Trang chủ\" shows 1×1 of 143×43"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/13-olympiad-practice.png",
+      "screen": "13-olympiad-practice",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [
+          "h1.visually-hidden \"Trang chủ\" shows 1×1 of 143×43"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/14-boss.png",
+      "screen": "14-boss",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [
+          "h2.ribbon \"Đấu trí với Chó Bạc Canh Hào\" shows 65×9 of 430×43"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/15-shop.png",
+      "screen": "15-shop",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [
+          "[data-id=\"shop-item-goi-sieu-tang-luc\"] × [data-id=\"back-to-game\"]"
+        ],
+        "missingClose": [],
+        "clipped": [
+          "h1.visually-hidden \"Trang chủ\" shows 1×1 of 143×43"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/16-backpack.png",
+      "screen": "16-backpack",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/17-pet-care.png",
+      "screen": "17-pet-care",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [
+          "[data-id=\"hud-tracker-quest\"] shows 224×23 of 310×23",
+          "span.hud-btn-label \"Bạn bè\" shows 1×1 of 56×23",
+          "span.hud-btn-label \"Nhiệm vụ\" shows 1×1 of 64×20",
+          "span.hud-btn-label \"Bản đồ\" shows 1×1 of 47×20",
+          "span.hud-btn-label \"Ba lô\" shows 1×1 of 34×20",
+          "span.hud-btn-label \"Menu\" shows 1×1 of 38×20"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/18-party.png",
+      "screen": "18-party",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [
+          "[data-id=\"play-prompt-player:p-39de432696bf\"] × [data-id=\"online-party-expand\"]"
+        ],
+        "missingClose": [],
+        "clipped": [
+          "[data-id=\"hud-tracker-quest\"] shows 224×23 of 245×23",
+          "span.hud-btn-label \"Bạn bè\" shows 1×1 of 56×23",
+          "span.hud-btn-label \"Mèo xám\" shows 1×1 of 73×23",
+          "span.hud-btn-label \"Nhiệm vụ\" shows 1×1 of 64×20",
+          "span.hud-btn-label \"Bản đồ\" shows 1×1 of 47×20",
+          "span.hud-btn-label \"Ba lô\" shows 1×1 of 34×20",
+          "span.hud-btn-label \"Menu\" shows 1×1 of 38×20"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/19-worksheets.png",
+      "screen": "19-worksheets",
+      "status": "ok",
+      "facts": {
+        "offScreen": [
+          "[data-id=\"worksheet-link-tv2-t1-b03\"] at 54,691–306,835"
+        ],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [],
+        "rawText": [],
+        "small": []
+      }
+    }
+  ]
+}

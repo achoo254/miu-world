@@ -379,12 +379,87 @@ async function renderCoverage(generated: readonly string[]): Promise<void> {
   }
 }
 
+/** One review of the screens before a release (assets/generated/review/screens/review.json, docs/screen-review.md). */
+interface ScreenReview {
+  capturedFrom: string;
+  capturedAt: string;
+  reviewedAt: string;
+  reviewer: string;
+  verdict: 'pass' | 'fail';
+  findings: Array<{ shot: string; kind: string; severity: 'block' | 'note'; text: string; fixedIn: string | null }>;
+}
+interface ScreenShots {
+  viewport: string;
+  capturedFrom: string;
+  capturedAt: string;
+  shots: Array<{ shot: string; screen: string; status: 'ok' | 'missing'; reason?: string }>;
+}
+
+const SCREEN_SIZES = ['360x740', '820x1180'] as const;
+const SCREEN_NAMES: Record<string, string> = {
+  '01-login': 'Đăng nhập',
+  '02-players': 'Chọn người chơi',
+  '03-creator': 'Tạo nhân vật',
+  '04-home': 'Home',
+  '05-world-map': 'Bản đồ thế giới',
+  '06-region': 'Chi tiết vùng',
+  '07-play-hud': 'Chơi: HUD ở chỗ xuất hiện',
+  '08-play-prompt': 'Chơi: nhãn Tương tác cạnh mục tiêu',
+  '09-dialogue': 'Lời thoại',
+  '10-question': 'Câu hỏi (Hướng dẫn, Gợi ý, Đáp án)',
+  '11-reward': 'Màn thưởng',
+  '12-event-panel': 'Panel sự kiện Olympic',
+  '13-olympiad-practice': 'Luyện tập Olympic',
+  '14-boss': 'Trận trùm (câu hỏi dài)',
+  '15-shop': 'Cửa hàng',
+  '16-backpack': 'Ba lô',
+  '17-pet-care': 'Chăm thú cưng',
+  '18-party': 'Tổ đội',
+  '19-worksheets': 'Phiếu viết (khu phụ huynh)',
+};
+
+/** The screens pictured before a release, phone and iPad side by side, with the agent's findings under each. */
+async function renderScreens(generated: readonly string[]): Promise<void> {
+  const fetchJson = async <T>(p: string): Promise<T | null> => (generated.includes(p) ? ((await (await fetch(assetHref(p))).json()) as T) : null);
+  const review = await fetchJson<ScreenReview>('generated/review/screens/review.json');
+  const sizes = await Promise.all(SCREEN_SIZES.map((size) => fetchJson<ScreenShots>(`generated/review/screens/${size}/shots.json`)));
+  const head = byId('screens-head');
+  if (sizes.every((s) => s === null)) {
+    head.textContent = 'Chưa có ảnh: chạy `pnpm --filter @miu/web screens`.';
+    return;
+  }
+  const first = sizes.find((s) => s !== null);
+  head.append(
+    `Chụp ở commit ${first?.capturedFrom.slice(0, 8) ?? '?'} lúc ${first?.capturedAt ?? '?'}. `,
+    review ? badge(review.verdict === 'pass', review.verdict === 'pass' ? 'Duyệt: đạt' : 'Duyệt: còn lỗi chặn') : badge(false, 'Chưa duyệt'),
+    review ? ` ${review.reviewer}, ${review.reviewedAt}${review.capturedFrom === first?.capturedFrom ? '' : ` (lần duyệt ứng với commit ${review.capturedFrom.slice(0, 8)})`}.` : '',
+  );
+  for (const screen of Object.keys(SCREEN_NAMES)) {
+    const row = el('div', { className: 'screen-row' }, [el('h3', { textContent: `${screen} · ${SCREEN_NAMES[screen] ?? screen}` })]);
+    for (const [i, size] of SCREEN_SIZES.entries()) {
+      const shot = `${size}/${screen}.png`;
+      const entry = sizes[i]?.shots.find((s) => s.shot === shot);
+      const findings = (review?.findings ?? []).filter((f) => f.shot === shot);
+      const list = el(
+        'ul',
+        { className: 'findings' },
+        findings.map((f) => el('li', { className: f.fixedIn ? 'fixed' : f.severity }, [`${f.fixedIn ? `đã sửa ở ${f.fixedIn.slice(0, 8)} · ` : ''}${f.severity === 'block' ? 'chặn' : 'ghi chú'} · ${f.kind}: ${f.text}`])),
+      );
+      const path = `generated/review/screens/${shot}`;
+      const picture = entry?.status === 'ok' && generated.includes(path) ? figure(path, size) : el('p', { className: 'sub', textContent: `${size}: chưa chụp được${entry?.reason ? ` (${entry.reason})` : ''}` });
+      row.append(el('div', {}, [picture, list]));
+    }
+    byId('screens').append(row);
+  }
+}
+
 async function main(): Promise<void> {
   renderDecisions();
   const manifest = (await (await fetch(versioned(`${ASSET_PREFIX}manifest.json`, MANIFEST_VERSION))).json()) as ManifestJson;
   versions = manifestVersions([...manifest.files, ...manifest.generated]);
   const generated = manifest.generated.map((g) => g.path);
   await renderCoverage(generated);
+  await renderScreens(generated);
   renderGallery(generated);
   renderPalette();
   renderLicenses(manifest);

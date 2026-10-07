@@ -83,3 +83,14 @@ output { margin-left: var(--space-sm); color: var(--ok); }
 .pair img { width: 100%; height: auto; border-radius: 8px; display: block; }
 .map-block { margin-block: 20px 28px; }
 .map-block h3 { margin: 0 0 4px; }
+
+/* Screens before a release: the phone and the iPad picture of a screen side by side, the findings under them. */
+.screens { display: grid; gap: var(--space-lg); }
+.screen-row { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 820px); gap: var(--space-md); align-items: start; }
+.screen-row img { width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; display: block; }
+.screen-row h3 { grid-column: 1 / -1; margin: 0; }
+.findings { list-style: none; margin: var(--space-xs) 0 0; padding: 0; font-size: 0.85rem; }
+.findings li { padding: 2px var(--space-sm); border-radius: 6px; margin-top: 2px; }
+.findings .block { background: #fbe6e4; color: var(--bad); }
+.findings .note { background: #fff1d6; color: var(--warn); }
+.findings .fixed { background: #e3f6ea; color: var(--ok); }

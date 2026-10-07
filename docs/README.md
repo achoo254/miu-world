@@ -12,6 +12,7 @@ Bản đồ tài liệu. Nguồn quyết định sản phẩm là [Master Plan v
 | [project-roadmap.md](project-roadmap.md) | Giai đoạn, gate, trạng thái backlog (ý định, không phải hành vi đã giao) |
 | [STAG-DEV-README.md](STAG-DEV-README.md) | SSH vào lab 176 và .65: quyền hạn, bản đồ lab, tệp credential, lệnh SSH không in secret, đường dẫn và log trên máy |
 | [deployment-guide.md](deployment-guide.md) | Staging và production chạy trên máy nào, secret ứng dụng, DNS, deploy và rollback |
+| [screen-review.md](screen-review.md) | Chụp các màn chính trước deploy, cách agent xem ảnh, checklist và định dạng `review.json` |
 
 Quy tắc hành vi cho agent: [`CLAUDE.md`](../CLAUDE.md) và [`.claude/rules/`](../.claude/rules/).
 

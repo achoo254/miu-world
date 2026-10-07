@@ -76,5 +76,7 @@ export default defineConfig({
     { name: 'account', testMatch: 'account-flow.spec.ts' },
     ...SIGNED_IN.map((name) => ({ name, testMatch: `${name}.spec.ts`, dependencies: ['setup'], use: { storageState: PARENT_STATE } })),
     { name: 'perf', testMatch: 'perf.spec.ts', dependencies: ['setup'], use: { storageState: PARENT_STATE }, timeout: 30 * 60_000 },
+    // Pictures of the main screens before a release (docs/screen-review.md), run by hand: never on CI.
+    { name: 'screens', testMatch: 'screens.spec.ts', dependencies: ['setup'] },
   ],
 });
