@@ -1,0 +1,233 @@
+{
+  "capturedFrom": "e13d7281e44d0bad7b24b4c8275f7ffb3c8895ea",
+  "capturedAt": "2026-10-07T23:07:14+07:00",
+  "reviewedAt": "2026-10-07T23:12:00+07:00",
+  "reviewer": "agent:general-purpose (6 lượt xem ảnh, phiên test-strategy gộp)",
+  "verdict": "pass",
+  "findings": [
+    {
+      "shot": "360x740/03-creator.png",
+      "kind": "missing-close",
+      "severity": "block",
+      "text": "Bước chọn nhân vật khi đổi nhân vật không có nút quay lại hay hủy; chỉ thoát bằng nút Back của máy hoặc phải chọn một con vật.",
+      "fixedIn": "817af222"
+    },
+    {
+      "shot": "820x1180/03-creator.png",
+      "kind": "missing-close",
+      "severity": "block",
+      "text": "Panel 'Chọn nhân vật của bé' không có đường về Home khi đang đổi nhân vật.",
+      "fixedIn": "817af222"
+    },
+    {
+      "shot": "360x740/11-reward.png",
+      "kind": "overlap",
+      "severity": "block",
+      "text": "Bong bóng lời kể 'Cổng đá sau cây cổ thụ mở ra…' nằm giữa panel thưởng, che chữ thẻ kỹ năng, dòng 'Mới!' và thanh tiến độ rương.",
+      "fixedIn": "817af222"
+    },
+    {
+      "shot": "820x1180/11-reward.png",
+      "kind": "overlap",
+      "severity": "block",
+      "text": "Bong bóng lời kể đè lên nút hồng 'Tiếp' ở đáy panel thưởng, không còn thấy nhãn nút.",
+      "fixedIn": "817af222"
+    },
+    {
+      "shot": "360x740/12-event-panel.png",
+      "kind": "overlap",
+      "severity": "block",
+      "text": "Nút nổi 'Quay lại game' che tiêu đề thẻ 'Nhiệm vụ sự kiện 0/5 ngăn đã mở'.",
+      "fixedIn": "817af222"
+    },
+    {
+      "shot": "360x740/13-olympiad-practice.png",
+      "kind": "overlap",
+      "severity": "block",
+      "text": "Nút nổi 'Quay lại game' đè lên nút 'Kiểm tra' của màn luyện tập.",
+      "fixedIn": "817af222"
+    },
+    {
+      "shot": "360x740/15-shop.png",
+      "kind": "overlap",
+      "severity": "block",
+      "text": "Nút nổi 'Quay lại game' che giá và vùng chạm của thẻ 'Gói siêu trợ thủ'.",
+      "fixedIn": "817af222"
+    },
+    {
+      "shot": "360x740/17-pet-care.png",
+      "kind": "overlap",
+      "severity": "block",
+      "text": "Nút đóng ✕ đè lên cuối dải tiêu đề, che chữ cuối của 'Chăm sóc Mèo xám'.",
+      "fixedIn": "377bf69a"
+    },
+    {
+      "shot": "360x740/18-party.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "Khung đội thu gọn (2/4) che phần tên trong nhãn 'Bông · Tương tác' trên đầu nhân vật. Hạ từ block xuống note: nhãn gắn theo vị trí trong thế giới 3D, trôi theo camera và đi qua dưới HUD; nút Tương tác của HUD vẫn hiện và chạm được.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/10-question.png",
+      "kind": "clipped",
+      "severity": "note",
+      "text": "Bàn phím số chỉ thấy 3 hàng; hàng thứ tư (Xóa, 0, Xóa hết) bị khung xén, phải cuộn mới bấm được số 0 (đã ghi vào roadmap).",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/17-pet-care.png",
+      "kind": "off-screen",
+      "severity": "note",
+      "text": "Tiêu đề hai dòng đẩy bảng xuống, hàng nút Ném bóng, Ngủ trưa quá mép dưới khoảng 4 px; nút vẫn đọc đủ, bảng cuộn được.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/09-dialogue.png",
+      "kind": "missing-close",
+      "severity": "note",
+      "text": "Hộp thoại NPC không có nút đóng hay bỏ qua; chỉ có 'Nghe lại' và 'Tiếp', bấm 'Tiếp' hết các câu mới ra (không kẹt).",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/09-dialogue.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "Nút 'Tiếp' và 'Nghe lại' nằm trên nút Nhảy, Chạy của HUD phía sau màn mờ; chữ 'Chạy', 'ảy' lộ quanh hai nút, trông rối.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/07-play-hud.png",
+      "kind": "clipped",
+      "severity": "note",
+      "text": "Tiêu đề thẻ nhiệm vụ bị cắt 'Khu rừng bí mật – Chương 1: Lá…' trên khổ điện thoại (cũng ở 08, 09, 10, 11, 17, 18 khổ 360).",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/08-play-prompt.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Vẹt đứng ngay sau lưng nhân vật nên gần như bị che; nhãn 'Vẹt · Nói chuyện' nổi trên đầu nhân vật.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/10-question.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "Thẻ nhiệm vụ HUD lộ sau thanh tiêu đề câu đố, chữ tên chương bị cắt ngang; lớp HUD nằm dưới, trông rối.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/11-reward.png",
+      "kind": "off-screen",
+      "severity": "note",
+      "text": "Panel thưởng cao hơn màn điện thoại: ảnh thấy nửa dưới, tiêu đề và thẻ +XP/+Xu ở phía trên, phải cuộn.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/11-reward.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "Băng tiêu đề 'Hoàn thành nhiệm vụ!' đè ngang dòng tên chương của thẻ nhiệm vụ HUD phía sau.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/06-region.png",
+      "kind": "shifted",
+      "severity": "note",
+      "text": "Trên điện thoại, khung đầu toàn thẻ phần thưởng; nút 'Khám phá ngay' và danh sách nhiệm vụ nằm dưới mép, phải cuộn.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/02-players.png",
+      "kind": "off-screen",
+      "severity": "note",
+      "text": "Nút 'Quản lý tài khoản' và 'Đăng xuất' nằm dưới khung đầu, phải cuộn mới thấy.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/04-home.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "Nhãn khu trên đảo Home chạm mép nhau và che gần hết đảo 3D trên điện thoại; chữ vẫn đọc được.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/04-home.png",
+      "kind": "off-screen",
+      "severity": "note",
+      "text": "Thẻ Olympic chiếm giữa màn nên 'Nhiệm vụ hôm nay', nút 'Bắt đầu' và thanh điều hướng nằm dưới khung đầu.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/05-world-map.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "Nhãn khu trên bản đồ thế giới chồng mép nhau như ở Home; chữ vẫn đọc được.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/03-creator.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Tiêu đề 'Chọn nhân vật của bé' và câu mô tả gọi người chơi là 'bé' trong khi game dành cho mọi lứa tuổi.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/03-creator.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Liên kết mới 'Về trang chủ' chỉ là chữ đậm nhỏ, khó nhận ra là nút.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/12-event-panel.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Nền panel Olympic trong mờ, tên map và thẻ của Home hiện mờ phía sau bong bóng thoại; chữ chính vẫn đọc được.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/13-olympiad-practice.png",
+      "kind": "off-screen",
+      "severity": "note",
+      "text": "Ảnh chụp lúc panel luyện tập đã cuộn: tiêu đề và nút ← ở trên mép màn, phải cuộn lên.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/13-olympiad-practice.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Panel luyện tập là tấm giữa màn, Home vẫn hiện rõ ở trên và dưới.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/14-boss.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Thẻ máu trùm xuống dòng vụng: tên 'Chó Bạc Canh / Hào' và '100 / 500 / HP' tách hai dòng.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/15-shop.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Đầu panel cửa hàng không che hết Home: '+80 XP', nhãn thanh điều hướng lộ ra quanh ảnh bìa.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/17-pet-care.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "HUD phía sau lộ quanh bảng chăm thú (thẻ nhiệm vụ, nút góc phải, Chạy/Nhảy mờ), không che vùng chạm của bảng.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/19-worksheets.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Chip 'Tuần N' bám mép trên, tên bài căn giữa dòng nên cột tên bài không thẳng.",
+      "fixedIn": null
+    }
+  ]
+}

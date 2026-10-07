@@ -1,8 +1,8 @@
 {
   "viewport": "360x740",
-  "capturedFrom": "df9b35a2a32913c6fbc65a50209436b61f1f7938",
-  "dirty": true,
-  "capturedAt": "2026-10-07T22:38:54+07:00",
+  "capturedFrom": "e13d7281e44d0bad7b24b4c8275f7ffb3c8895ea",
+  "uncommitted": [],
+  "capturedAt": "2026-10-07T23:07:14+07:00",
   "shots": [
     {
       "shot": "360x740/01-login.png",
@@ -38,7 +38,7 @@
       "status": "ok",
       "facts": {
         "offScreen": [
-          "[data-id=\"creator-species-rabbit\"] at 54,569–306,811"
+          "[data-id=\"creator-species-rabbit\"] at 54,629–306,871"
         ],
         "overlaps": [],
         "missingClose": [],
@@ -256,9 +256,7 @@
       "status": "ok",
       "facts": {
         "offScreen": [],
-        "overlaps": [
-          "[data-id=\"shop-item-goi-sieu-tang-luc\"] × [data-id=\"back-to-game\"]"
-        ],
+        "overlaps": [],
         "missingClose": [],
         "clipped": [
           "h1.visually-hidden \"Trang chủ\" shows 1×1 of 143×43"
@@ -285,7 +283,10 @@
       "screen": "17-pet-care",
       "status": "ok",
       "facts": {
-        "offScreen": [],
+        "offScreen": [
+          "[data-id=\"pet-action-play\"] at 32,656–125,744",
+          "[data-id=\"pet-action-nap\"] at 133,656–227,744"
+        ],
         "overlaps": [],
         "missingClose": [],
         "clipped": [
@@ -307,7 +308,7 @@
       "facts": {
         "offScreen": [],
         "overlaps": [
-          "[data-id=\"play-prompt-player:p-39de432696bf\"] × [data-id=\"online-party-expand\"]"
+          "[data-id=\"play-prompt-player:p-430f74de7273\"] × [data-id=\"online-party-expand\"]"
         ],
         "missingClose": [],
         "clipped": [
