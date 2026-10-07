@@ -29,10 +29,18 @@ interface Shot {
 /** The fight with the longest question a zone guardian asks, at that question (content/quests). */
 const LONG_FIGHT = { quest: 'ward-lau-dai-cau-treo', region: 'lau-dai', target: 'cho-bac-canh-hao', turn: 4 };
 const OLYMPIC = 'olympic-math-2026';
+/** A terminal colour code in an error message (ESC [ … m). */
+const TERMINAL_COLOUR = new RegExp(`${String.fromCharCode(27)}\\[[0-9;]*m`, 'g');
 
 const git = (...args: string[]): string => execFileSync('git', args, { cwd: REPO_ROOT, encoding: 'utf8' }).trim();
+/**
+ * The commit pictured. A clean tree exported from a commit (`git archive`, no .git: the way to picture a commit while
+ * another session has work in progress in the working tree) names it in MIU_SCREENS_COMMIT.
+ */
+const EXPORTED_FROM = process.env.MIU_SCREENS_COMMIT;
+const picturedCommit = (): string => EXPORTED_FROM ?? git('rev-parse', 'HEAD');
 /** Tracked files changed since the last commit when the pictures were taken (they are in the pictures, not in the commit). */
-const uncommittedFiles = (): string[] => git('diff', '--name-only', 'HEAD').split('\n').filter(Boolean);
+const uncommittedFiles = (): string[] => (EXPORTED_FROM ? [] : git('diff', '--name-only', 'HEAD').split('\n').filter(Boolean));
 /** Now as an ISO time in Asia/Saigon (+07:00). */
 const saigonNow = (): string => `${new Date(Date.now() + 7 * 3_600_000).toISOString().slice(0, 19)}+07:00`;
 
@@ -87,7 +95,7 @@ for (const viewport of VIEWPORTS) {
         shots.push({ shot, screen, status: 'ok', facts: await layoutFacts(page) });
       } catch (err) {
         // The first line of the error, without the terminal's colour codes.
-        const reason = ((err instanceof Error ? err.message : String(err)).split('\n')[0] ?? 'unknown').replace(/\u001b\[[0-9;]*m/g, '');
+        const reason = ((err instanceof Error ? err.message : String(err)).split('\n')[0] ?? 'unknown').replace(TERMINAL_COLOUR, '');
         shots.push({ shot, screen, status: 'missing', reason });
         // What the screen showed instead, outside the repo, for whoever looks into it.
         await page.screenshot({ path: test.info().outputPath(`${size}-${screen}-missing.png`) }).catch(() => undefined);
@@ -219,7 +227,7 @@ for (const viewport of VIEWPORTS) {
 
     writeFileSync(
       path.join(dir, 'shots.json'),
-      `${JSON.stringify({ viewport: size, capturedFrom: git('rev-parse', 'HEAD'), uncommitted: uncommittedFiles(), capturedAt: saigonNow(), shots }, null, 2)}\n`,
+      `${JSON.stringify({ viewport: size, capturedFrom: picturedCommit(), uncommitted: uncommittedFiles(), capturedAt: saigonNow(), shots }, null, 2)}\n`,
     );
     test.info().annotations.push({ type: 'screens', description: `${shots.filter((s) => s.status === 'ok').length} of ${shots.length} pictured on ${size}` });
   });

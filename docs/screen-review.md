@@ -8,6 +8,7 @@ Lỗi người chơi gặp nhiều nhất là lỗi nhìn thấy được: panel
 pnpm --filter @miu/web screens
 ```
 
+- Ảnh dùng để duyệt trước deploy chụp từ một cây sạch của commit sẽ deploy, không từ thư mục làm việc khi phiên khác có code dở: `git archive <commit> | tar -x -C <thư mục mới>`, `pnpm install --frozen-lockfile --prefer-offline`, rồi trong cây đó `MIU_SCREENS_COMMIT=<sha đầy đủ> pnpm --filter @miu/web screens`, và chép `assets/generated/review/screens/` về repo rồi `pnpm assets:manifest`.
 - Chạy trên máy dev, 1 worker, cùng server E2E (PGlite trong RAM, tài khoản giả): kiểm tải máy và cổng 4173/8787/8788 trước. Khoảng 1–2 phút.
 - Spec: [`apps/web/e2e/screens.spec.ts`](../apps/web/e2e/screens.spec.ts); project `screens` không chạy trên CI.
 - Khổ màn: 360 × 740 và 820 × 1180, `deviceScaleFactor: 1`, có cảm ứng. Mười chín màn mỗi khổ, tên cố định (`01-login` … `19-worksheets`), ghi đè mỗi lần chụp ở `assets/generated/review/screens/<rộng>x<cao>/<tên>.png`.
