@@ -73,9 +73,15 @@ function SpeciesStep({ current, switching, onPick }: { current: string; switchin
         <T k="creator.pickSpecies" />
       </h1>
       {switching ? (
-        <p className="hint" data-id="creator-keeps-progress">
-          <T k="creator.keepsProgress" />
-        </p>
+        <>
+          <p className="hint" data-id="creator-keeps-progress">
+            <T k="creator.keepsProgress" />
+          </p>
+          {/* Changing her animal is a choice, not a step she must finish: the way back Home stays in sight. */}
+          <Link to="/home" className={`${buttonClass('ghost', { small: true })} creator-species-back`} data-id="creator-species-home">
+            <T k="common.backHome" />
+          </Link>
+        </>
       ) : null}
       <ul className="species-grid">
         {SPECIES.map((s) => (

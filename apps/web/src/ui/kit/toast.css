@@ -18,3 +18,8 @@
   box-shadow: var(--shadow-label);
   pointer-events: none;
 }
+/* Over a dialog or a reward screen the bottom holds its main button: the line shows at the top instead. */
+body:has(.modal-backdrop) .toast {
+  bottom: auto;
+  top: calc(var(--space-sm) + env(safe-area-inset-top, 0px));
+}

@@ -18,3 +18,5 @@
   box-shadow: var(--shadow-tile);
 }
 .back-to-game:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+/* A panel or scene open over the screen has its own close: the floating button would only cover its content. */
+body:has(.modal-backdrop) .back-to-game { display: none; }

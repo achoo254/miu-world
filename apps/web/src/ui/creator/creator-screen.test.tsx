@@ -33,7 +33,7 @@ vi.mock('../../game/preview/character-preview', () => ({
 }));
 
 const puts: unknown[] = [];
-function stubApi({ level = 1, completed = [] as string[], pet = null as string | null, owned = {} as Record<string, number> } = {}) {
+function stubApi({ level = 1, completed = [] as string[], pet = null as string | null, owned = {} as Record<string, number>, name = 'Miu' } = {}) {
   vi.stubGlobal(
     'fetch',
     vi.fn(async (url: string, init?: RequestInit) => {
@@ -43,7 +43,7 @@ function stubApi({ level = 1, completed = [] as string[], pet = null as string |
         puts.push(body);
         return json({ species: 'cat', ...body });
       }
-      if (url === '/api/character') return json({ species: 'cat', name: 'Miu', equipped: [], pet });
+      if (url === '/api/character') return json({ species: 'cat', name, equipped: [], pet });
       if (url === '/api/progress') {
         return json({
           quests: completed.map((questId) => ({ questId, completedSteps: [], completed: true, found: {}, stars: 3 })),
@@ -99,6 +99,18 @@ describe('Character Creator', () => {
     expect(screen.getByRole('button', { name: /Mèo/ }).getAttribute('aria-pressed')).toBe('true');
     expect(screen.getByRole('button', { name: /Cáo/ }).getAttribute('aria-pressed')).toBe('false');
     expect(screen.queryByText('Sắp có')).toBeNull();
+  });
+
+  it('lets a player who already has a character go back Home from the choice of animal; a new one picks first', async () => {
+    stubApi({ name: 'Mochi' });
+    renderCreator();
+    const home = await screen.findByRole('link', { name: 'Về trang chủ' });
+    expect(home.getAttribute('href')).toBe('/home');
+    cleanup();
+    stubApi();
+    renderCreator();
+    expect(await screen.findByRole('button', { name: /Mèo/ })).toBeTruthy();
+    expect(screen.queryByRole('link', { name: 'Về trang chủ' })).toBeNull();
   });
 
   it('previews the picked animal, keeps name and outfit when going back to pick another, and saves the species', async () => {
