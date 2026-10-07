@@ -1,0 +1,29 @@
+{
+  "state": {
+    "product": "Miu World: online Minecraft-like 3D learning game for all ages, built 100% by AI agents; the owner only plays and reports problems. Web on phones/iPads today, mobile app later. North star: lively, never boring.",
+    "owner_feedback": "The owner says E2E runs look useless: the owner keeps finding bugs by playing and asking for fixes, while E2E runs produce nothing.",
+    "facts": [
+      "26 Playwright E2E spec files; CI runs them in 4 shards on every push to main.",
+      "The last 40 CI runs on main are all red; the last green run was on 01/10/2026, six days ago.",
+      "Every run carries about 24 already-failing E2E tests, so red CI no longer signals a regression; agents diff failure lists by hand.",
+      "One shard always stops at maxFailures 10, so about 8 tests (bosses, pets) never ran on CI before today.",
+      "Today agents spent about 2.5 hours on 4 E2E failures that turned out to be timing races on a slow CI machine; fixed E2E port contention between sessions delayed deploys.",
+      "In this delivery E2E did catch 3 real bugs: a toast line lost when the previous one timed out, a team boss HP bar not dropping on a teammate's screen, and an event scene near the spawn pushing iPad draw calls over budget.",
+      "Bugs the owner found by playing that E2E cannot catch: a quest board whose Interact prompt was taken by an arch standing 2 blocks away (no test checks interactable shadowing per quest step); Home map pushed down and Olympic panel missing a close button (layout on a phone screen); the boss fight felt like a quiz instead of play (game feel).",
+      "Owner rules: run E2E only when the owner asks; the dev Mac is shared and has 16 GB, one test worker; Node-side content checks scale with content, E2E only samples.",
+      "The game is played on phones in portrait and iPads."
+    ]
+  },
+  "questions": {
+    "test-strategy": {
+      "stakes": "medium",
+      "instructions": "How should the project change its automated testing so it catches the bugs that matter and stops wasting time?",
+      "criteria": {
+        "smoke-plus-audits-and-screens": "Both: (1) cut E2E to about 10 core flows (sign in, open a map, interact, finish a quest, fight a boss, buy, print a worksheet) that must stay green and block deploy, deleting flaky tests or moving their checks to fast Node tests, so CI is green and red means something; (2) add what catches the owner's kind of bugs: a seconds-long Node content audit that every quest step's target on every map is reachable, not shadowed by another interactable within its radius and not hidden, plus phone-portrait and iPad screenshots of the main screens before each deploy, reviewed by AI vision for overlap, missing close buttons, clipped text or shifted layout, shown on the review page.",
+        "smoke-only": "Only cut E2E to about 10 green core flows that block deploy; no new audits or screenshot review.",
+        "audits-and-screens-only": "Keep E2E as it is and add the Node interaction audit and the screenshot review.",
+        "keep-as-is": "Keep testing as it is today."
+      }
+    }
+  }
+}

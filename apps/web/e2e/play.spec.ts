@@ -125,11 +125,15 @@ test.describe('a child of its own', () => {
     await page.waitForTimeout(500);
     const left = (await readStats(page)).player;
 
-    // Leaving /play saves the spot; the next visit starts there.
-    const saved = page.waitForResponse((r) => r.url().endsWith('/api/player-positions') && r.request().method() === 'PUT');
+    // Leaving /play saves the spot, unless the save every 10 s already sent this very spot (on a slow runner the walk
+    // above can take that long): the server holds it either way, and the next visit starts there.
     await page.getByRole('button', { name: /Menu/ }).click();
     await page.getByRole('link', { name: /Về trang chủ/ }).click();
-    expect((await saved).status()).toBe(204);
+    const nearestSaved = async (): Promise<number> => {
+      const { positions } = (await (await page.context().request.get('/api/player-positions')).json()) as { positions: Array<{ position: number[] }> };
+      return Math.min(...positions.map((p) => from(p.position, left)));
+    };
+    await expect.poll(nearestSaved, { timeout: 10_000 }).toBeLessThan(1.5);
     await page.goto('/play?quality=low');
     await waitReady(page);
     expect(from((await readStats(page)).player, left)).toBeLessThan(1.5);

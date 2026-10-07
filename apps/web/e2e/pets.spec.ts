@@ -126,9 +126,13 @@ test('sniffs a few steps toward a clue still to find, then waits before the next
 });
 
 test('a care scene at the high quality stays in the draw-call budget', async ({ page, baseURL }) => {
+  // The greeting plays in game time (its run up, at most 4 s, then 1.6 s of hello), and a frame steps the game 0.1 s at
+  // most: on a CI runner drawing the home at high quality with a software GPU (about 2.5 frames a second) it ends 12 to
+  // 23 s after the map is up.
+  test.setTimeout(60_000);
   await withPet(page, baseURL ?? '', `${HOME}&quality=high`);
   // Settled at the spawn after its greeting: the frame without a scene.
-  await expect.poll(async () => (await readStats(page)).petScene, { timeout: 10_000 }).toBeNull();
+  await expect.poll(async () => (await readStats(page)).petScene, { timeout: 30_000 }).toBeNull();
   const idle = (await readStats(page)).calls;
   await openBoard(page);
   await page.locator('[data-id="pet-action-bath"]').click();

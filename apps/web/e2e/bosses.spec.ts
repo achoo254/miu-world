@@ -85,7 +85,30 @@ test('the full map marks every boss, and the big boss walks her into its quest',
   expect(pageErrors).toEqual([]);
 });
 
-test('a zone guardian is fought from a chat to its reward', async ({ page, baseURL }) => {
+// A fight in the world keeps the game drawing, and each round trip to the page waits for a frame: on a CI runner drawing
+// with a software GPU (2 to 5 frames a second) a step takes about a second, a tap or a click up to four. The fight is
+// played in three tests of some 25 to 35 such steps each, with room for that: its opening and a right blow, the support
+// layers of a question, the questions after the first to the reward.
+const FIGHT_TIMEOUT_MS = 90_000;
+
+/** The guardian's fight, its talk and its first `answered` questions done through the API, opened by the guardian. */
+async function fightUnderWay(page: Page, baseURL: string, answered: number): Promise<void> {
+  await freshChild(page, baseURL);
+  const headers = { Origin: new URL(baseURL).origin };
+  expect((await page.context().request.post(`/api/quests/${FIGHT}/steps/gap/complete`, { headers, data: {} })).status()).toBe(200);
+  for (const turn of TURNS.slice(0, answered)) {
+    const res = await page.context().request.post(`/api/quests/${FIGHT}/steps/dau/complete`, { headers, data: { answer: { turnId: turn.id, choice: turn.answer.choice } } });
+    expect(res.status(), await res.text()).toBe(200);
+  }
+  await page.goto(`/play?quality=low&region=${REGION}&quest=${FIGHT}&spawnAt=${GUARDIAN}`);
+  await waitReady(page);
+  await expect(page.locator(`[data-id="turn-${TURNS[answered]?.id ?? ''}"]`)).toBeVisible({ timeout: 15_000 });
+  await expect.poll(async () => (await readStats(page)).duel, { timeout: 10_000 }).toBe('staged');
+}
+
+test('a zone guardian fought from a chat: the fight opens in the running world and a right blow lands', async ({ page, baseURL }) => {
+  // About 30 steps with the game drawing on (see FIGHT_TIMEOUT_MS).
+  test.setTimeout(FIGHT_TIMEOUT_MS);
   const pageErrors: string[] = [];
   page.on('pageerror', (err) => pageErrors.push(err.message));
   await freshChild(page, baseURL ?? '');
@@ -120,35 +143,67 @@ test('a zone guardian is fought from a chat to its reward', async ({ page, baseU
   expect(Math.hypot(now[0] - stood[0], now[2] - stood[2])).toBeLessThan(0.05);
   await expect(page.locator('[data-id="boss-hp"]')).toHaveText(`${TURNS.length * 100} / ${TURNS.length * 100} HP`);
   await shot(page, '3-dau-tri');
-  // Each question its move, as the content says (two in a row never the same, every move in the fight).
-  const moves: string[] = [];
+
+  const [first] = TURNS;
+  if (!first) throw new Error('no question');
+  await expect(page.locator(`[data-id="turn-${first.id}"]`)).toBeVisible();
+  await expect(page.locator('[data-id="boss-move"]')).toHaveAttribute('data-move', first.move);
+
+  // The right answer lands: its vở card, then the fight opens again by itself, one blow down and the guardian's line said.
+  await answerBoss(page, first.answer.choice);
+  await skipBossBeat(page);
+  await copied(page);
+  await expect(page.locator('[data-id="boss-hp"]')).toHaveText(`${(TURNS.length - 1) * 100} / ${TURNS.length * 100} HP`);
+  await expect(page.locator('[data-id="boss-dialogue"]')).not.toBeEmpty();
+  await shot(page, '4-sau-mot-don');
+  expect(pageErrors).toEqual([]);
+});
+
+test('a question of a zone guardian in the world has its three support layers, and a miss bounces off', async ({ page, baseURL }) => {
+  // About 25 steps with the game drawing on (see FIGHT_TIMEOUT_MS).
+  test.setTimeout(FIGHT_TIMEOUT_MS);
+  const pageErrors: string[] = [];
+  page.on('pageerror', (err) => pageErrors.push(err.message));
+  await fightUnderWay(page, baseURL ?? '', 0);
+  const [first] = TURNS;
+  if (!first) throw new Error('no question');
+  // Every question has the three support layers: the guide from the start, the hint after a miss, the explained answer
+  // after two; seeing the answer never stops the fight.
+  const support = page.locator('[data-id="boss-bar"]');
+  await support.locator('[data-id="support-guide"]').click();
+  await expect(page.locator('[data-id="support-guide-steps"] li').first()).not.toBeEmpty();
+  await page.locator('[data-id="support-close"]').click();
+  const wrong = first.choices.find((c) => c.id !== first.answer.choice)?.id ?? '';
+  for (const tab of ['support-hint', 'support-answer']) {
+    await answerBoss(page, wrong);
+    await expect(support.locator(`[data-id="${tab}"]`)).toBeVisible();
+  }
+  // A miss bounces off: the HP stays as the server has it.
+  await expect(page.locator('[data-id="boss-hp"]')).toHaveText(`${TURNS.length * 100} / ${TURNS.length * 100} HP`);
+  await support.locator('[data-id="support-hint"]').click();
+  await expect(page.locator('[data-id="support-hint-text"]')).not.toBeEmpty();
+  await page.locator('[data-id="support-close"]').click();
+  await support.locator('[data-id="support-answer"]').click();
+  await expect(page.locator('[data-id="support-answer-text"]')).not.toBeEmpty();
+  await shot(page, '3b-ho-tro-dap-an');
+  await page.locator('[data-id="support-close"]').click();
+  expect(pageErrors).toEqual([]);
+});
+
+test('a zone guardian is fought to its reward, each question with its own play move', async ({ page, baseURL }) => {
+  // About 35 steps with the game drawing on (see FIGHT_TIMEOUT_MS).
+  test.setTimeout(FIGHT_TIMEOUT_MS);
+  const pageErrors: string[] = [];
+  page.on('pageerror', (err) => pageErrors.push(err.message));
+  // Its first question is played in the first test.
+  await fightUnderWay(page, baseURL ?? '', 1);
+  const rest = TURNS.slice(1);
+
+  // Each question its move, as the content says (the content check holds every fight to a new move each question).
   let dragged = false;
-  for (const [i, turn] of TURNS.entries()) {
+  for (const [i, turn] of rest.entries()) {
     await expect(page.locator(`[data-id="turn-${turn.id}"]`)).toBeVisible();
     await expect(page.locator('[data-id="boss-move"]')).toHaveAttribute('data-move', turn.move);
-    moves.push(turn.move);
-    if (i === 0) {
-      // Every question has the three support layers: the guide from the start, the hint after a miss, the explained
-      // answer after two; seeing the answer never stops the fight.
-      const support = page.locator('[data-id="boss-bar"]');
-      await support.locator('[data-id="support-guide"]').click();
-      await expect(page.locator('[data-id="support-guide-steps"] li').first()).not.toBeEmpty();
-      await page.locator('[data-id="support-close"]').click();
-      const wrong = turn.choices.find((c) => c.id !== turn.answer.choice)?.id ?? '';
-      for (const tab of ['support-hint', 'support-answer']) {
-        await answerBoss(page, wrong);
-        await expect(support.locator(`[data-id="${tab}"]`)).toBeVisible();
-      }
-      // A miss bounces off: the HP stays as the server has it.
-      await expect(page.locator('[data-id="boss-hp"]')).toHaveText(`${TURNS.length * 100} / ${TURNS.length * 100} HP`);
-      await support.locator('[data-id="support-hint"]').click();
-      await expect(page.locator('[data-id="support-hint-text"]')).not.toBeEmpty();
-      await page.locator('[data-id="support-close"]').click();
-      await support.locator('[data-id="support-answer"]').click();
-      await expect(page.locator('[data-id="support-answer-text"]')).not.toBeEmpty();
-      await shot(page, '3b-ho-tro-dap-an');
-      await page.locator('[data-id="support-close"]').click();
-    }
     const piece = turn.move === 'fling' ? 'boss-charm' : turn.move === 'gem' ? 'boss-gem' : null;
     if (piece && !dragged) {
       // A real drag of the charm or the gem onto the answer, by touch.
@@ -159,15 +214,11 @@ test('a zone guardian is fought from a chat to its reward', async ({ page, baseU
     }
     await skipBossBeat(page);
     await copied(page);
-    if (i < TURNS.length - 1) {
-      // The fight opens again by itself, the guardian's HP down by one blow and its line said.
-      await expect(page.locator('[data-id="boss-hp"]')).toHaveText(`${(TURNS.length - i - 1) * 100} / ${TURNS.length * 100} HP`);
-      await expect(page.locator('[data-id="boss-dialogue"]')).not.toBeEmpty();
-      if (i === 0) await shot(page, '4-sau-mot-don');
+    if (i < rest.length - 1) {
+      // The fight opens again by itself, the guardian's HP down by one blow.
+      await expect(page.locator('[data-id="boss-hp"]')).toHaveText(`${(rest.length - i - 1) * 100} / ${TURNS.length * 100} HP`);
     }
   }
-  expect(new Set(moves).size).toBe(Math.min(4, TURNS.length));
-  expect(moves.every((m, i) => i === 0 || m !== moves[i - 1])).toBe(true);
   expect(dragged).toBe(true);
   // The last blow wins: every question of the fight to copy, then what the server paid.
   await expect(page.getByRole('dialog', { name: 'Chép vào vở nhé!' })).toBeVisible({ timeout: 15_000 });

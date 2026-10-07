@@ -1,0 +1,21 @@
+{
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1045,
+    "output_tokens": 75
+  },
+  "results": {
+    "test-strategy": {
+      "stakes": "medium",
+      "choice": "smoke-plus-audits-and-screens",
+      "confidence": 1.0,
+      "probabilities": {
+        "audits-and-screens-only": 0.0,
+        "keep-as-is": 0.0,
+        "smoke-only": 0.0,
+        "smoke-plus-audits-and-screens": 1.0
+      },
+      "decision": "auto"
+    }
+  }
+}

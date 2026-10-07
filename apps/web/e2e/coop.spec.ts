@@ -158,8 +158,10 @@ test('the party plays a lesson together: the leader asks, the other joins, a tal
 });
 
 test("the party fights a zone guardian: each member has every question's Hướng dẫn, Gợi ý and Đáp án on her own screen", async ({ browser, baseURL }) => {
-  // Two game loads, both at the guardian again for its quest, then the party's shared talk and the fight opening.
-  test.setTimeout(90_000);
+  // Two game loads, both at the guardian again for its quest, then the party's shared talk and the fight opening (some
+  // 70 s on a CI runner drawing with a software GPU). The fight plays in the running world on both screens, so each step
+  // after that waits for a frame of two games drawing at once: about 25 steps of 1 to 5 s there.
+  test.setTimeout(150_000);
   const [a, b] = await partyOfTwo(browser, baseURL ?? '');
   const atGuardian = `/play?quality=low&region=khu-rung-bi-mat&quest=${WARD}&spawnAt=nai-gac-dong-co`;
   await b.goto(atGuardian);
