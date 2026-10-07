@@ -22,7 +22,8 @@ const config = loadConfig();
 const pgliteDir = config.pgliteDir === null ? undefined : (config.pgliteDir ?? DEV_PGLITE_DIR);
 // PG_VERSION is written when PGlite creates a data directory: its absence means a brand-new, empty database.
 const freshPglite = !config.databaseUrl && pgliteDir !== undefined && !existsSync(path.join(pgliteDir, 'PG_VERSION'));
-const { db } = config.databaseUrl ? await openPostgres(config.databaseUrl) : await openPglite(pgliteDir);
+const database = config.databaseUrl ? await openPostgres(config.databaseUrl) : await openPglite(pgliteDir);
+const { db } = database;
 const content = loadContentCatalog({ extraQuestDir: config.extraQuestDir ?? undefined });
 const characterEvents = new CharacterEvents();
 const playerEvents = new PlayerEvents();
@@ -65,7 +66,7 @@ const multiplayer = new MultiplayerHub(server, {
 hub = multiplayer;
 characterEvents.on((childId, character) => multiplayer.characterSaved(childId, character));
 playerEvents.on((event) => multiplayer.playerEvent(event));
-// Bots keep their own skills, the questions' anonymous numbers and whom they won with.
+// Bots keep their own skills, the questions' anonymous numbers, whom they won with and what they learnt of each map.
 const botStore = dbBotStore(db);
 // They walk each map on its standing spots (content/world/walk/), read when a map's first bot comes in.
 const botRunner = new BotRunner(multiplayer, { store: botStore, walk: new WalkStore() });
@@ -87,3 +88,28 @@ multiplayer.setCoop(coop);
 partyQuestService = new PartyQuestService({ db, content, host: multiplayer.coopHost() });
 multiplayer.setPartyQuests(partyQuestService);
 console.log('multiplayer hub and companion bot runner active');
+
+/** Stopping (systemd sends SIGTERM on a restart or a release), the bots' memories are written out within this long. */
+const SHUTDOWN_WRITE_MS = 3_000;
+let stopping = false;
+
+async function shutdown(signal: NodeJS.Signals): Promise<void> {
+  // A second signal while writing: stop now.
+  if (stopping) process.exit(1);
+  stopping = true;
+  console.log(`${signal}: writing out what the companion bots learnt`);
+  botRunner.stop();
+  const timeout = new Promise<false>((resolve) => setTimeout(() => resolve(false), SHUTDOWN_WRITE_MS).unref());
+  const written = (async (): Promise<true> => {
+    await botRunner.flush();
+    await database.close();
+    return true;
+  })();
+  const done = await Promise.race([written, timeout]).catch((err: unknown) => {
+    console.error('shutdown failed', err instanceof Error ? err.name : typeof err);
+    return false;
+  });
+  if (!done) console.warn(`companion bots' memories not all written within ${SHUTDOWN_WRITE_MS} ms`);
+  process.exit(done ? 0 : 1);
+}
+for (const signal of ['SIGTERM', 'SIGINT'] as const) process.on(signal, () => void shutdown(signal));

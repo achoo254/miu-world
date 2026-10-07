@@ -1,8 +1,11 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { HOME_MAP_ID } from '@miu/schema/multiplayer';
 import { hubHarness, settle, type Client } from '../../test/hub-harness';
+import { decodeMemory } from './bot-brain/memory-codec';
+import { WalkStore } from './bot-brain/walk-store';
 import { BotRunner } from './bot-runner';
 import { BOT_MAP_CONFIGS } from './bot-profiles';
+import { memoryBotStore } from './bot-store';
 import { homeBotId } from './multiplayer-hub';
 
 let h: ReturnType<typeof hubHarness>;
@@ -142,6 +145,31 @@ describe('the bots of a home', () => {
     await vi.advanceTimersByTimeAsync(5_000);
     expect(a.last('friend-news')?.kind).toBe('added');
     expect(h.friends.bots.get('child-a')).toEqual(new Set(['bot-ncb-1']));
+    runner.stop();
+  });
+
+  it("learn the home map together: each home's instance of a bot writes into that bot's own memory as the home closes", async () => {
+    const store = memoryBotStore();
+    const walk = new WalkStore();
+    const runner = new BotRunner(h.hub, { random: () => 0.99, store, walk: { get: (mapId) => (mapId === HOME_MAP_ID ? walk.get(mapId) : null) } });
+    runner.start();
+    const a = await h.connect('child-a');
+    const b = await h.connect('child-b');
+    await home(a);
+    await home(b);
+    await vi.advanceTimersByTimeAsync(60_000);
+    a.conn.close();
+    b.conn.close();
+    await vi.advanceTimersByTimeAsync(100);
+    await runner.flush();
+    // One memory per bot, under its own id: never a home's instance, nothing of the players.
+    const neighbours = (BOT_MAP_CONFIGS[HOME_MAP_ID] ?? []).map((n) => n.id);
+    expect([...store.worlds.keys()].sort()).toEqual(neighbours.map((id) => `${id}|${HOME_MAP_ID}`).sort());
+    for (const id of neighbours) {
+      const row = store.worlds.get(`${id}|${HOME_MAP_ID}`);
+      expect(row?.gridVersion).toBe(walk.get(HOME_MAP_ID)?.sources);
+      expect(decodeMemory(JSON.parse(row?.memory ?? 'null')).graph.places.length).toBeGreaterThan(0);
+    }
     runner.stop();
   });
 });

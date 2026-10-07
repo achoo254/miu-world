@@ -1,9 +1,11 @@
 // What companion bots keep between server runs: their own skill XP (they learn from their own answers), anonymous
-// numbers per co-op question (how many answers, how many right, how long they took: never who answered), and
-// which players they won a challenge with (how often, and the last challenge; no words, deleted with the player).
+// numbers per co-op question (how many answers, how many right, how long they took: never who answered), which
+// players they won a challenge with (how often, and the last challenge; no words, deleted with the player), and what
+// each learnt of each map it walks (bot-brain/memory-codec.ts: places, ways and counts, nothing of a player).
 import { and, eq, inArray, sql } from 'drizzle-orm';
 import type { Db } from '../db/client';
-import { botMemories, botSkills, questionStats } from '../db/schema';
+import { botMemories, botSkills, botWorldMemories, questionStats } from '../db/schema';
+import type { StoredMemory } from './bot-brain/memory-codec';
 
 /** Answer times are kept in whole-second buckets: 0 … 29 seconds, and the last bucket for 30 seconds or more. */
 export const TIME_BUCKETS = 31;
@@ -20,6 +22,12 @@ export interface BotMemory {
   lastQuestId: string;
 }
 
+/** A bot's memory of a map as stored: the walk grid it learnt on (its `sources`) and the memory, unchecked. */
+export interface WorldMemoryRow {
+  gridVersion: string;
+  memory: unknown;
+}
+
 export interface BotStore {
   /** A bot's XP per skill. */
   skills(botId: string): Promise<Record<string, number>>;
@@ -30,6 +38,10 @@ export interface BotStore {
   recordAnswer(key: string, right: boolean, seconds: number): Promise<void>;
   recall(botId: string, childId: string): Promise<BotMemory | null>;
   remember(botId: string, childId: string, questId: string, at: Date): Promise<void>;
+  /** What a bot (its own id, never an instance in a home) learnt of a map, or null when it has not walked it yet. */
+  worldMemory(botId: string, mapId: string): Promise<WorldMemoryRow | null>;
+  /** Writes what a bot learnt of a map in place of what was there. */
+  saveWorldMemory(botId: string, mapId: string, gridVersion: string, memory: StoredMemory): Promise<void>;
 }
 
 /** The bucket of an answer time. */
@@ -94,18 +106,39 @@ export function dbBotStore(db: Db): BotStore {
         .values({ botId, childId, runs: 1, lastQuestId: questId, lastPlayedAt: at })
         .onConflictDoUpdate({ target: [botMemories.botId, botMemories.childId], set: { runs: sql`${botMemories.runs} + 1`, lastQuestId: questId, lastPlayedAt: at } });
     },
+    async worldMemory(botId, mapId) {
+      const [row] = await db
+        .select({ gridVersion: botWorldMemories.gridVersion, memory: botWorldMemories.memory })
+        .from(botWorldMemories)
+        .where(and(eq(botWorldMemories.botId, botId), eq(botWorldMemories.mapId, mapId)));
+      return row ?? null;
+    },
+    async saveWorldMemory(botId, mapId, gridVersion, memory) {
+      await db
+        .insert(botWorldMemories)
+        .values({ botId, mapId, gridVersion, memory })
+        .onConflictDoUpdate({ target: [botWorldMemories.botId, botWorldMemories.mapId], set: { gridVersion, memory, updatedAt: sql`now()` } });
+    },
   };
 }
 
 /** The same store in memory, for tests and for a server without a database. */
-export function memoryBotStore(): BotStore & { stats: Map<string, QuestionNumbers>; xp: Map<string, Record<string, number>>; memories: Map<string, BotMemory> } {
+export function memoryBotStore(): BotStore & {
+  stats: Map<string, QuestionNumbers>;
+  xp: Map<string, Record<string, number>>;
+  memories: Map<string, BotMemory>;
+  /** By `<bot>|<map>`, as JSON text (what a database would hand back is a fresh copy too). */
+  worlds: Map<string, { gridVersion: string; memory: string }>;
+} {
   const stats = new Map<string, QuestionNumbers>();
   const xp = new Map<string, Record<string, number>>();
   const memories = new Map<string, BotMemory>();
+  const worlds = new Map<string, { gridVersion: string; memory: string }>();
   return {
     stats,
     xp,
     memories,
+    worlds,
     skills: async (botId) => ({ ...(xp.get(botId) ?? {}) }),
     async addSkillXp(botId, skillId, gained) {
       const own = xp.get(botId) ?? {};
@@ -121,6 +154,13 @@ export function memoryBotStore(): BotStore & { stats: Map<string, QuestionNumber
     async remember(botId, childId, questId) {
       const key = `${botId}|${childId}`;
       memories.set(key, { runs: (memories.get(key)?.runs ?? 0) + 1, lastQuestId: questId });
+    },
+    async worldMemory(botId, mapId) {
+      const row = worlds.get(`${botId}|${mapId}`);
+      return row ? { gridVersion: row.gridVersion, memory: JSON.parse(row.memory) as unknown } : null;
+    },
+    async saveWorldMemory(botId, mapId, gridVersion, memory) {
+      worlds.set(`${botId}|${mapId}`, { gridVersion, memory: JSON.stringify(memory) });
     },
   };
 }

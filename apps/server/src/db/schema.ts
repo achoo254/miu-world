@@ -460,3 +460,21 @@ export const botMemories = pgTable(
   },
   (t) => [primaryKey({ columns: [t.botId, t.childId] }), index('bot_memories_child_idx').on(t.childId)],
 );
+
+/**
+ * What a companion bot learnt of one map by walking it (places it found, ways it walked, what going where was
+ * worth, its hourly numbers), compact (multiplayer/bot-brain/memory-codec.ts) so it goes on learning after a
+ * restart. One row per bot (its own id: the instances of it in players' homes share it) and map; `grid_version` is
+ * the walk grid it learnt on (a new grid keeps its places, not its ways). Nothing here is about a player.
+ */
+export const botWorldMemories = pgTable(
+  'bot_world_memories',
+  {
+    botId: text('bot_id').notNull(),
+    mapId: text('map_id').notNull(),
+    gridVersion: text('grid_version').notNull(),
+    memory: jsonb('memory').notNull(),
+    updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [primaryKey({ columns: [t.botId, t.mapId] }), check('bot_world_memories_size', sql`octet_length(${t.memory}::text) <= 65536`)],
+);

@@ -30,7 +30,7 @@ import {
 } from './learner';
 import { Avoidance } from './avoidance';
 import { pickArea } from './explore-areas';
-import { AREA_SIDE, MemoryGraph, pointsOf, UNKNOWN_WAY, walksStraight, type Reach } from './memory-graph';
+import { AREA_SIDE, MemoryGraph, pointsOf, UNKNOWN_WAY, walksStraight, type Reach, type SavedGraph } from './memory-graph';
 import { QuestPlan, type BotQuest } from './quest-plan';
 import { seePlaces } from './sight';
 import { PLACE_REACH, type BotView, type Choice, type GoalChooser, type Outcome } from './wander';
@@ -65,9 +65,9 @@ const DETOUR_ALPHA = 0.2;
 const DETOUR_MAX = 4;
 /** Trips to a quest target shorter than this (blocks, straight) say nothing of how well it knows the way. */
 const TRIP_MIN = 12;
-const TRIPS_KEPT = 50;
+export const TRIPS_KEPT = 50;
 const PAIRS_KEPT = 200;
-const HISTORY_KEPT = 72;
+export const HISTORY_KEPT = 72;
 /** A place it sees this far off, with no way to it known, gets a way planned over what it sees… */
 const SEEN_WAY_MIN = 6;
 /** …while fewer ways than this leave the place it stands at (the ways it walks come first). */
@@ -125,6 +125,8 @@ export interface Trip {
 /** Its numbers at the end of an hour. */
 export interface HourMark {
   readonly hour: number;
+  /** When the hour ended (ms). */
+  readonly at: number;
   readonly placesKnown: number;
   readonly linksKnown: number;
   readonly shortcuts: number;
@@ -162,6 +164,18 @@ export interface BrainMetrics {
   rewardThisHour: number;
   rewardPerHour: number;
   history: HourMark[];
+}
+
+/**
+ * What it learnt, as kept between server runs (memory-codec.ts): its map of places, its values, its guess of a
+ * detour and its numbers. Only counts and places, never a player (whom it met lately stays in RAM). The pairs of
+ * places it measures trips between are left out: they only measure (learning.sim.test.ts), it does not go by them.
+ */
+export interface BrainSnapshot {
+  graph: SavedGraph;
+  bandits: Bandits;
+  detour: number;
+  metrics: Omit<BrainMetrics, 'pairs'>;
 }
 
 type Option = 'place' | 'explore' | 'meet' | 'rest' | 'ride' | 'here';
@@ -255,6 +269,8 @@ export class Brain implements GoalChooser {
    * from UNKNOWN_WAY): where finding its way over what it sees goes well, it seldom takes the long way it knows.
    */
   detour = UNKNOWN_WAY;
+  /** Goes up each time it learns something (a choice paid, a place, a way or a square found, an hour marked). */
+  private changes = 0;
 
   constructor(options: BrainOptions) {
     this.options = options;
@@ -272,6 +288,31 @@ export class Brain implements GoalChooser {
     this.stepSince = now;
     this.nextHourAt = now + 3_600_000;
     this.lastFadeAt = now;
+  }
+
+  /** Changes when what it learnt changes: what it knows needs writing out again. */
+  get revision(): number {
+    return this.changes;
+  }
+
+  /** A copy of what it learnt, to write out. */
+  snapshot(): BrainSnapshot {
+    const { pairs: _pairs, trips, history, ...counts } = this.metrics;
+    return { graph: this.memory.saved(), bandits: { ...this.bandits }, detour: this.detour, metrics: { ...counts, trips: [...trips], history: [...history] } };
+  }
+
+  /**
+   * Takes up what it learnt in an earlier run (places no longer on the map let go of) and goes on learning from
+   * there: its hours count on from the last one it marked.
+   */
+  restore(snapshot: BrainSnapshot): void {
+    this.memory.restore(snapshot.graph, (id) => this.placeById.get(id));
+    Object.assign(this.bandits, snapshot.bandits);
+    this.detour = snapshot.detour;
+    const { trips, history, ...counts } = snapshot.metrics;
+    Object.assign(this.metrics, counts, { trips: [...trips], history: [...history] });
+    this.hour = history.at(-1)?.hour ?? 0;
+    this.changes += 1;
   }
 
   /** The quest it is busy with (null: none). */
@@ -505,6 +546,7 @@ export class Brain implements GoalChooser {
     const current = this.current;
     this.current = null;
     if (!current) return;
+    this.changes += 1;
     const reward = current.reward - LAMBDA * current.walkS;
     this.metrics.rewardThisHour += reward;
     switch (current.option) {
@@ -819,10 +861,17 @@ export class Brain implements GoalChooser {
     const { map, persona } = this.options;
     const at = view.at;
     const current = this.current;
-    if (this.memory.visitArea(at.x, at.z) && current) current.reward += REWARD.newArea;
+    if (this.memory.visitArea(at.x, at.z)) {
+      this.changes += 1;
+      if (current) current.reward += REWARD.newArea;
+    }
     const seen = seePlaces(map, at, persona.sight);
     const needed = this.quests.remaining;
-    for (const place of seen) if (this.memory.see(place, now, needed.includes(place.id)) && current) current.reward += REWARD.newPlace;
+    for (const place of seen) {
+      if (!this.memory.see(place, now, needed.includes(place.id))) continue;
+      this.changes += 1;
+      if (current) current.reward += REWARD.newPlace;
+    }
     const here = seen.find((p) => Math.hypot(p.at[0] - (at.x + 0.5), p.at[2] - (at.z + 0.5)) <= PLACE_REACH && this.memory.places.has(p.id));
     if (!here) return;
     if (here.id === this.lastPlace) {
@@ -831,7 +880,7 @@ export class Brain implements GoalChooser {
       this.chainS = 0;
       return;
     }
-    if (this.lastPlace) this.memory.recordWalk(map, this.lastPlace, here.id, this.chain, this.chainS);
+    if (this.lastPlace && this.memory.recordWalk(map, this.lastPlace, here.id, this.chain, this.chainS) !== 'rejected') this.changes += 1;
     this.lastPlace = here.id;
     this.chain = [at];
     this.chainS = 0;
@@ -846,7 +895,7 @@ export class Brain implements GoalChooser {
     const { map, persona, planner } = this.options;
     this.options.requestPlan(() => {
       const plan = planner.plan(map, at, { x: target.at[0], y: target.at[1], z: target.at[2], reach: PLACE_REACH }, persona.sight);
-      if (plan?.reachesGoal) this.memory.recordSeenWay(map, from, target.id, [at, ...plan.cells], persona.walk);
+      if (plan?.reachesGoal && this.memory.recordSeenWay(map, from, target.id, [at, ...plan.cells], persona.walk)) this.changes += 1;
     });
   }
 
@@ -855,8 +904,10 @@ export class Brain implements GoalChooser {
     const speed = this.options.persona.walk;
     const efficiency = hourTrips.length > 0 ? hourTrips.reduce((s, t) => s + t.straight / (t.seconds * speed), 0) / hourTrips.length : 0;
     this.metrics.rewardPerHour = this.metrics.rewardThisHour;
+    this.changes += 1;
     this.metrics.history.push({
       hour: ++this.hour,
+      at: now,
       placesKnown: this.memory.places.size,
       linksKnown: this.memory.links.size,
       shortcuts: this.memory.shortcuts,

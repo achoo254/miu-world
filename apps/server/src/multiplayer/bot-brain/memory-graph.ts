@@ -4,7 +4,7 @@
 // again, and which coarse squares of the map it has set foot in. How far one place is from another is the cheapest
 // chain of known ways (Dijkstra); without one it is a guess from the straight distance, dearer than a known way.
 // Bounded: at most MAX_PLACES places, MAX_LINKS ways and MAX_POINTS polyline points (a few tens of KB), plain data
-// that can be written out as it is.
+// written out between server runs (memory-codec.ts) and taken up again after a restart.
 import { canStep } from '@miu/voxel/traversal';
 import { WALK_LEVELS, type WalkPlace } from '@miu/voxel/walk-cells';
 import { lineColumns } from './local-path';
@@ -55,12 +55,27 @@ export interface LinkMemory {
   thirdS: number | null;
 }
 
-/** A plain copy of a memory, for writing out and for measuring its size. */
-export interface MemoryData {
-  places: Array<Omit<PlaceMemory, 'at'> & { at: number[] }>;
-  links: Array<Omit<LinkMemory, 'points'> & { points: number[] }>;
+/**
+ * What it keeps of a place between server runs: what the place is and where it stands come from the map's grid, so
+ * a place no longer on the map is let go of.
+ */
+export interface SavedPlace {
+  id: string;
+  firstSeenAt: number;
+  visits: number;
+  q: number;
+  lastReward: number;
+}
+
+/** What it keeps of a way between server runs: its polyline as x, feet, z per point. */
+export type SavedLink = Omit<LinkMemory, 'points'> & { points: number[] };
+
+/** A plain copy of a memory, as it is written out (memory-codec.ts) and taken up again (`restore`). */
+export interface SavedGraph {
+  places: SavedPlace[];
+  links: SavedLink[];
+  /** The bytes of the bitset of squares walked. */
   areas: number[];
-  areaSide: [number, number];
   shortcuts: number;
   seenWays: number;
 }
@@ -398,15 +413,58 @@ export class MemoryGraph {
     return this.places.size * 48 + this.links.size * 32 + this.pointCount * 6 + this.areaBits.byteLength;
   }
 
-  /** A plain copy (typed arrays as numbers), as it would be written out. */
-  data(): MemoryData {
+  /** A plain copy (typed arrays as numbers), as it is written out. */
+  saved(): SavedGraph {
     return {
-      places: [...this.places.values()].map((p) => ({ ...p, at: [...p.at] })),
+      places: [...this.places.values()].map(({ id, firstSeenAt, visits, q, lastReward }) => ({ id, firstSeenAt, visits, q, lastReward })),
       links: [...this.links.values()].map((l) => ({ ...l, points: Array.from(l.points) })),
       areas: Array.from(this.areaBits),
-      areaSide: [this.areaSide[0], this.areaSide[1]],
       shortcuts: this.shortcuts,
       seenWays: this.seenWays,
     };
   }
+
+  /**
+   * Takes up what it kept from an earlier run in place of what it knows now: the places still on the map (`placeOf`
+   * gives what each is and where it stands), the ways between two of them, and the squares it walked when the map
+   * is as large as it was. Over its bounds (memories of several homes merged), what stays is what would stay when
+   * space runs out: the places it keeps and the most visited, the most walked ways, the longest ways thinned.
+   */
+  restore(saved: SavedGraph, placeOf: (id: string) => WalkPlace | undefined): void {
+    this.places.clear();
+    this.links.clear();
+    this.out.clear();
+    this.pointCount = 0;
+    this.areaBits.fill(0);
+    const onMap = saved.places.filter((p) => placeOf(p.id) !== undefined);
+    const keptPlaces = keepBest(onMap, MAX_PLACES, (a, b) => Number(this.keep(b.id)) - Number(this.keep(a.id)) || b.visits - a.visits || b.q - a.q);
+    for (const p of keptPlaces) {
+      const place = placeOf(p.id);
+      if (!place) continue;
+      this.places.set(p.id, { id: p.id, kind: place.kind, at: [place.at[0], place.at[1], place.at[2]], firstSeenAt: p.firstSeenAt, visits: p.visits, q: p.q, lastReward: p.lastReward });
+    }
+    const usable = saved.links.filter((l) => l.a !== l.b && this.places.has(l.a) && this.places.has(l.b) && l.points.length >= 6 && l.points.length % 3 === 0 && l.points.length <= LINK_POINTS * 3);
+    for (const l of keepBest(usable, MAX_LINKS, (a, b) => b.walks - a.walks || a.cost - b.cost)) {
+      if (this.links.has(linkKey(l.a, l.b))) continue;
+      const link: LinkMemory = { ...l, points: Int16Array.from(l.points) };
+      this.links.set(linkKey(l.a, l.b), link);
+      const from = this.out.get(l.a);
+      if (from) from.push(link);
+      else this.out.set(l.a, [link]);
+      this.pointCount += link.points.length / 3;
+    }
+    this.fitPoints();
+    if (saved.areas.length === this.areaBits.length) this.areaBits.set(saved.areas);
+    this.areasVisited = 0;
+    for (const byte of this.areaBits) for (let b = byte; b > 0; b &= b - 1) this.areasVisited += 1;
+    this.shortcuts = saved.shortcuts;
+    this.seenWays = saved.seenWays;
+  }
+}
+
+/** The `max` best of `list` by `better` (it first), in the order they came; all of them when they fit. */
+function keepBest<T>(list: readonly T[], max: number, better: (a: T, b: T) => number): T[] {
+  if (list.length <= max) return [...list];
+  const kept = new Set([...list].sort(better).slice(0, max));
+  return list.filter((item) => kept.has(item));
 }

@@ -3,7 +3,9 @@ import { loadContentCatalog } from '../content/content-catalog';
 import type { PlayerPresence, ServerWsMessage } from '@miu/schema/multiplayer';
 import { BOT_REPLY_MS, BotRunner } from './bot-runner';
 import { BOT_MAP_CONFIGS } from './bot-profiles';
+import { decodeMemory } from './bot-brain/memory-codec';
 import { WalkStore, type Spot } from './bot-brain/walk-store';
+import { memoryBotStore } from './bot-store';
 import { MultiplayerHub } from './multiplayer-hub';
 
 describe('MultiplayerHub and BotRunner', () => {
@@ -190,6 +192,44 @@ describe('companion bots walk on their own', () => {
     expect(new Set(later.filter((m) => m.type === 'bot-doing').map((m) => (m.type === 'bot-doing' ? m.id : '')))).toEqual(new Set(castleBots));
     bots.stop();
     await hub.close();
+  });
+
+  it('keep what they learnt across a restart of the server, and go on learning from there', async () => {
+    vi.useFakeTimers();
+    const map = store.get('lau-dai');
+    const store2 = memoryBotStore();
+    let seed = 11;
+    const random = (): number => ((seed = (seed * 16_807) % 2_147_483_647) - 1) / 2_147_483_646;
+    const castle = (BOT_MAP_CONFIGS['lau-dai'] ?? []).map((b) => b.id);
+    const memoryOf = (id: string) => decodeMemory(JSON.parse(store2.worlds.get(`${id}|lau-dai`)?.memory ?? 'null'));
+
+    const hub = new MultiplayerHub();
+    const bots = new BotRunner(hub, { random, walk: castleOnly, store: store2 });
+    bots.start();
+    await vi.advanceTimersByTimeAsync(3 * 60_000);
+    // The server stops: what each learnt since its last write is written out.
+    bots.stop();
+    await bots.flush();
+    await hub.close();
+    expect([...store2.worlds.keys()].sort()).toEqual(castle.map((id) => `${id}|lau-dai`).sort());
+    const before = new Map(castle.map((id) => [id, memoryOf(id)]));
+    for (const memory of before.values()) expect(memory.graph.places.length).toBeGreaterThan(0);
+    for (const row of store2.worlds.values()) expect(row.gridVersion).toBe(map?.sources);
+
+    // The next run takes it up: after a minute more, each knows at least what it knew, and its counts went on.
+    const hub2 = new MultiplayerHub();
+    const bots2 = new BotRunner(hub2, { random, walk: castleOnly, store: store2 });
+    bots2.start();
+    await vi.advanceTimersByTimeAsync(60_000);
+    bots2.stop();
+    await bots2.flush();
+    for (const id of castle) {
+      const was = before.get(id);
+      const now = memoryOf(id);
+      for (const p of was?.graph.places ?? []) expect(now.graph.places.some((q) => q.id === p.id)).toBe(true);
+      expect(now.metrics.stepsDone + now.metrics.tripsTotal + now.graph.places.length).toBeGreaterThanOrEqual((was?.metrics.stepsDone ?? 0) + (was?.metrics.tripsTotal ?? 0) + (was?.graph.places.length ?? 0));
+    }
+    await hub2.close();
   });
 
   it('stay at their homes on a map without a walk grid', async () => {

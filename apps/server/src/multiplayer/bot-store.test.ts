@@ -1,7 +1,9 @@
-import { eq } from 'drizzle-orm';
+import { and, eq, sql } from 'drizzle-orm';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { createTestApp, parentWithChild, type TestApp } from '../../test/test-app';
-import { botMemories, childProfiles, questionStats } from '../db/schema';
+import { botMemories, botWorldMemories, childProfiles, questionStats } from '../db/schema';
+import { decodeMemory, encodeMemory, MEMORY_BYTES_MAX } from './bot-brain/memory-codec';
+import { schoolFleet } from './bot-brain/school-fleet';
 import { dbBotStore, difficultyOf, medianMs } from './bot-store';
 
 let app: TestApp;
@@ -39,5 +41,40 @@ describe('what bots keep in the database', () => {
     expect(await store.recall('bot-db-2', childId)).toEqual({ runs: 2, lastQuestId: 'with-b' });
     await app.db.delete(childProfiles).where(eq(childProfiles.id, childId));
     expect(await app.db.select().from(botMemories).where(eq(botMemories.childId, childId))).toEqual([]);
+  });
+
+  it("keeps what a bot learnt of each map, one row per bot and map, written over each time", async () => {
+    const store = dbBotStore(app.db);
+    expect(await store.worldMemory('bot-db-3', 'truong-hoc')).toBeNull();
+    const fleet = schoolFleet(1);
+    fleet.run(20);
+    const brain = fleet.bots[0]?.brain;
+    if (!brain) throw new Error('no bot');
+    const first = encodeMemory(brain.snapshot());
+    await store.saveWorldMemory('bot-db-3', 'truong-hoc', 'grid-1', first);
+    fleet.run(10);
+    const second = encodeMemory(brain.snapshot());
+    await store.saveWorldMemory('bot-db-3', 'truong-hoc', 'grid-2', second);
+    await store.saveWorldMemory('bot-db-3', 'lau-dai', 'grid-1', first);
+    const row = await store.worldMemory('bot-db-3', 'truong-hoc');
+    expect(row?.gridVersion).toBe('grid-2');
+    expect(row?.memory).toEqual(second);
+    expect(decodeMemory(row?.memory).graph.places.length).toBe(brain.memory.places.size);
+    expect((await store.worldMemory('bot-db-3', 'lau-dai'))?.memory).toEqual(first);
+    // Stored, it is as small as it was written (jsonb's text adds a space or two).
+    const [size] = await app.db
+      .select({ bytes: sql<number>`octet_length(${botWorldMemories.memory}::text)` })
+      .from(botWorldMemories)
+      .where(and(eq(botWorldMemories.botId, 'bot-db-3'), eq(botWorldMemories.mapId, 'truong-hoc')));
+    expect(size?.bytes).toBeLessThanOrEqual(MEMORY_BYTES_MAX + 16);
+    // Only the bot, the map, the grid, the memory and when.
+    const [stored] = await app.db.select().from(botWorldMemories).where(eq(botWorldMemories.botId, 'bot-db-3')).limit(1);
+    expect(Object.keys(stored ?? {}).sort()).toEqual(['botId', 'gridVersion', 'mapId', 'memory', 'updatedAt']);
+  });
+
+  it('refuses a memory larger than 64 KB', async () => {
+    const store = dbBotStore(app.db);
+    await expect(store.saveWorldMemory('bot-db-4', 'truong-hoc', 'grid-1', { v: 1, z: 'A'.repeat(70_000) })).rejects.toThrow();
+    expect(await store.worldMemory('bot-db-4', 'truong-hoc')).toBeNull();
   });
 });

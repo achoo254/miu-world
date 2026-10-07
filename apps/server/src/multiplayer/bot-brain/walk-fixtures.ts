@@ -11,8 +11,14 @@ export interface DrawnSpot {
   edge: boolean;
 }
 
-/** A map from rows of columns; `extra` adds spots over a column (a floor above) and `clear` caps the open blocks. */
-export function drawnMap(rows: readonly string[], options: { places?: WalkPlace[]; clear?: (x: number, z: number) => number; extra?: (x: number, z: number) => DrawnSpot[] } = {}): WalkMap {
+/**
+ * A map from rows of columns; `extra` adds spots over a column (a floor above), `clear` caps the open blocks, and
+ * `sources` stands for what the grid was made from.
+ */
+export function drawnMap(
+  rows: readonly string[],
+  options: { places?: WalkPlace[]; clear?: (x: number, z: number) => number; extra?: (x: number, z: number) => DrawnSpot[]; sources?: string } = {},
+): WalkMap {
   const sz = rows.length;
   const sx = Math.max(...rows.map((r) => r.length));
   const spotsAt = (x: number, z: number): DrawnSpot[] => {
@@ -24,7 +30,7 @@ export function drawnMap(rows: readonly string[], options: { places?: WalkPlace[
     if (/[a-i]/.test(ch)) return [{ feet: ch.charCodeAt(0) - 96, clear, ground: WALK_GROUND.road, edge: false }, ...extra];
     return extra;
   };
-  return new WalkMap('drawn', [sx, sz], spotsAt, options.places ?? []);
+  return new WalkMap('drawn', [sx, sz], spotsAt, options.places ?? [], options.sources ?? '');
 }
 
 /** An open square of road at height 1. */

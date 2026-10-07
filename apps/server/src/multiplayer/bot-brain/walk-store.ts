@@ -35,6 +35,8 @@ export class WalkMap {
   readonly sx: number;
   readonly sz: number;
   readonly places: readonly WalkPlace[];
+  /** The hash of what the grid was made from (its `sources`): a bot's memory of ways holds only on the same grid. */
+  readonly sources: string;
   private readonly ground: Uint16Array;
   /** One bit per column: whether it has spots above its lowest. */
   private readonly hasUpper: Uint8Array;
@@ -43,8 +45,15 @@ export class WalkMap {
   private readonly upperSpots: Uint16Array[];
   private readonly placeCells = new Map<number, WalkPlace[]>();
 
-  constructor(mapId: string, size: readonly [number, number], spotsAt: (x: number, z: number) => ReadonlyArray<{ feet: number; clear: number; ground: number; edge: boolean }>, places: readonly WalkPlace[]) {
+  constructor(
+    mapId: string,
+    size: readonly [number, number],
+    spotsAt: (x: number, z: number) => ReadonlyArray<{ feet: number; clear: number; ground: number; edge: boolean }>,
+    places: readonly WalkPlace[],
+    sources = '',
+  ) {
     this.mapId = mapId;
+    this.sources = sources;
     [this.sx, this.sz] = size;
     const n = this.sx * this.sz;
     this.ground = new Uint16Array(n);
@@ -189,7 +198,7 @@ export function readWalkMap(dir: string, mapId: string): WalkMap {
   const info = walkInfoSchema.parse(JSON.parse(readFileSync(`${base}.json`, 'utf8')));
   if (info.map !== mapId) throw new Error(`walk grid: ${mapId}.json is for ${info.map}`);
   const cells = decodeWalkCells(new Uint8Array(inflateRawSync(readFileSync(`${base}.bin`))), info.size);
-  return new WalkMap(mapId, info.size, cells.spotsAt, info.places);
+  return new WalkMap(mapId, info.size, cells.spotsAt, info.places, info.sources);
 }
 
 /** Every map's grid, read when first asked for and kept; a map whose grid cannot be read is null (logged once). */

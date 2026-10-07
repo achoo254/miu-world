@@ -146,8 +146,8 @@ describe("a bot's own map of places", () => {
     expect(graph.points).toBeLessThanOrEqual(MAX_POINTS);
     for (const link of graph.links.values()) expect(link.points.length / 3).toBeLessThanOrEqual(LINK_POINTS);
     expect(graph.bytes).toBeLessThanOrEqual(64 * 1024);
-    // A plain copy as it would be written out.
-    const data = graph.data();
+    // A plain copy as it is written out.
+    const data = graph.saved();
     expect(data.places).toHaveLength(MAX_PLACES);
     expect(JSON.stringify(data).length).toBeGreaterThan(0);
   });

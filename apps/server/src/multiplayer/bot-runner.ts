@@ -3,8 +3,9 @@
 // route given, nobody followed), sees only what is around it, finds its way over what it sees, and decides where
 // to go next by what it learnt (bot-brain/): the places it found, the ways it walked, the map's quests it plays on
 // its own (its name tag shows the quest mark), a player it sees and chooses to go and meet. It waves and says hello
-// when a player comes up to it, visits friends, answers invites and plays co-op challenges. All bots are clearly
-// labeled "[Bạn máy]".
+// when a player comes up to it, visits friends, answers invites and plays co-op challenges. What it learnt of each
+// map is kept in the database (bot-brain/memory-keeper.ts), so it goes on learning after a restart. All bots are
+// clearly labeled "[Bạn máy]".
 import {
   HOME_MAP_ID,
   SAFE_CANNED_CHATS,
@@ -23,6 +24,7 @@ import { botProfileId, homeBotId, type MultiplayerHub, type MultiplayerRoom } fr
 import { BotBody } from './bot-brain/body';
 import { Brain, type SeenPlayer } from './bot-brain/brain';
 import { LocalPlanner, PathQueue } from './bot-brain/local-path';
+import { MemoryKeeper } from './bot-brain/memory-keeper';
 import { contentQuestBook, type QuestBook } from './bot-brain/quest-plan';
 import { seePlayers } from './bot-brain/sight';
 import type { WalkMap } from './bot-brain/walk-store';
@@ -68,9 +70,11 @@ interface BotHooks {
   /** Public ids of the players in its room who are friends with it. */
   friendsHere(): readonly string[];
   random(): number;
+  /** Whether it may walk yet (what it learnt before is still being read). */
+  awake(): boolean;
 }
 
-const NO_HOOKS: BotHooks = { onMessage: () => {}, onGreet: () => {}, friendsHere: () => [], random: Math.random };
+const NO_HOOKS: BotHooks = { onMessage: () => {}, onGreet: () => {}, friendsHere: () => [], random: Math.random, awake: () => true };
 
 /** A player this close (blocks) is greeted. */
 const GREET_RANGE = 4.5;
@@ -186,7 +190,7 @@ class CompanionBotInstance {
     }
     if (this.greet(Date.now())) return;
     const body = this.body;
-    if (!body) return;
+    if (!body || !this.hooks.awake()) return;
     const before = body.mode;
     body.tick(dt);
     if ((before === 'rest' || before === 'work') && body.mode === 'walk') this.visitFriend(body);
@@ -220,7 +224,7 @@ export interface BotRunnerOptions {
   coopAccuracyMax?: number;
   /** How long a bot thinks before a co-op move, fixed (ms, up to twice as long; tests). Without it, its persona decides. */
   coopThinkMs?: number;
-  /** Bots' own skill XP (they learn from their own answers); none: they learn only while the server runs. */
+  /** Bots' own skill XP and what they learnt of each map; none: they learn only while the server runs. */
   store?: BotStore;
   /** The time of day (a bot's mood follows the hour). */
   clock?: () => Date;
@@ -288,6 +292,8 @@ export class BotRunner {
   private readonly talks = new Map<string, VoiceTalk>();
   /** Each bot's voice lines per kind, from its own voice, never the same twice in a row. */
   private readonly voiceLines = new Map<string, FreshPicker<number>>();
+  /** What the bots learnt of their maps, read and written (none without a store). */
+  private readonly memories: MemoryKeeper | null;
 
   constructor(hub: MultiplayerHub, options: BotRunnerOptions = {}) {
     this.hub = hub;
@@ -296,6 +302,7 @@ export class BotRunner {
     this.bounds = fixed === null ? { min: options.coopAccuracyMin ?? BOT_COOP_ACCURACY_MIN, max: options.coopAccuracyMax ?? BOT_COOP_ACCURACY_MAX } : { min: fixed, max: fixed };
     this.coopThinkMs = options.coopThinkMs ?? null;
     this.store = options.store ?? null;
+    this.memories = this.store ? new MemoryKeeper(this.store) : null;
     this.clock = options.clock ?? (() => new Date());
     this.walk = options.walk ?? null;
     this.quests = options.quests ?? contentQuestBook();
@@ -467,7 +474,8 @@ export class BotRunner {
 
   /**
    * A bot of `profile` in `room`, wired to this runner: on its own feet and with a mind of its own when the map has
-   * a walk grid. It starts knowing nothing of the map.
+   * a walk grid. It takes up what it learnt of the map before (in a home, what all its instances in homes learnt),
+   * or starts knowing nothing of it.
    */
   private instance(profile: BotProfile, room: MultiplayerRoom): CompanionBotInstance {
     const map = this.walk?.get(room.mapId) ?? null;
@@ -512,7 +520,9 @@ export class BotRunner {
       onGreet: (playerId) => this.greeted(profile.id, playerId),
       friendsHere: () => this.hub.friendsOfBot(botProfileId(profile.id)).filter((id) => room.members.has(id)),
       random: this.random,
+      awake: () => this.memories?.ready(key) ?? true,
     });
+    if (map && brain) this.memories?.attach({ key, botId: botProfileId(profile.id), mapId: room.mapId, map, brain, shared: room.host !== null });
     return inst;
   }
 
@@ -529,6 +539,8 @@ export class BotRunner {
           bot.leave();
           this.plans.cancel(this.planKey(room, bot.profile.id));
           this.plans.cancel(`${this.planKey(room, bot.profile.id)}|way`);
+          // What it learnt in her home joins its memory of homes.
+          void this.memories?.detach(this.planKey(room, bot.profile.id));
         }
         this.bots.delete(room.key);
       },
@@ -578,6 +590,12 @@ export class BotRunner {
       }
     }
     this.plans.drain();
+    this.memories?.tick();
+  }
+
+  /** Writes out what every bot learnt since it was last written (the server stopping), and waits for it. */
+  async flush(): Promise<void> {
+    await this.memories?.flush();
   }
 
   stop(): void {
