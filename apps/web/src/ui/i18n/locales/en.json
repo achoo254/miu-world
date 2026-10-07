@@ -205,7 +205,34 @@
   "boss.turns": "Turns so far",
   "boss.turn": "Turn {n}",
   "boss.victory": "You beat the friendly boss!",
-  "boss.attack": "Answer (-{damage} HP)",
+  "boss.turnOf": "{who}'s turn",
+  "boss.charge": "Charge",
+  "boss.charged": "Charged {n}/{max}",
+  "boss.damage": "−{damage}",
+  "boss.charm": "Charm: pull back and let go to throw",
+  "boss.gem": "Power gem: drag onto an answer slot",
+  "boss.answers": "The answers",
+  "boss.skip": "Tap to go on",
+  "boss.move.fling": [
+    "Pull the charm back and let go toward the shield with the right answer, or tap the shield.",
+    "{name} draws the charm like a slingshot: pull back, aim at the right shield, let go.",
+    "Pick the shield with the right answer and launch the charm at it."
+  ],
+  "boss.move.orbs": [
+    "The answer orbs circle the boss: tap the right one.",
+    "Put a finger down and the ring stops; {name} taps the orb with the right answer.",
+    "Catch the orb carrying the right answer as it circles the boss."
+  ],
+  "boss.move.gem": [
+    "Drag the gem onto the slot with the right answer under the boss, or tap the slot.",
+    "{name} drops the power gem into the right answer's slot.",
+    "Set the gem in the slot with the right answer to strike."
+  ],
+  "boss.move.charge": [
+    "Tap the right answer three times to fill its ring and fire.",
+    "{name} picks an answer and keeps tapping until the ring fills and the blow flies.",
+    "Charge the right answer: three taps are enough."
+  ],
   "challenge.step": "Step {index}/{total}",
   "challenge.xpWhenDone": " when the quest is done",
   "challenge.reset": "Start over",

@@ -205,7 +205,34 @@
   "boss.turns": "Tiến độ lượt chơi",
   "boss.turn": "Lượt {n}",
   "boss.victory": "Đã vượt qua thử thách trùm vui!",
-  "boss.attack": "Giải đố (-{damage} HP)",
+  "boss.turnOf": "Lượt của {who}",
+  "boss.charge": "Nạp chiêu",
+  "boss.charged": "Đã nạp {n}/{max}",
+  "boss.damage": "−{damage}",
+  "boss.charm": "Bùa: kéo lùi rồi thả để ném",
+  "boss.gem": "Ngọc sức mạnh: kéo vào ô đáp án",
+  "boss.answers": "Các đáp án",
+  "boss.skip": "Chạm để tiếp tục",
+  "boss.move.fling": [
+    "Kéo bùa lùi lại rồi thả về phía tấm khiên có đáp án đúng, hoặc chạm thẳng vào khiên.",
+    "{name} giương bùa như ná: kéo ngược, nhắm khiên đúng rồi buông tay.",
+    "Chọn tấm khiên mang đáp án đúng rồi phóng bùa vào đó."
+  ],
+  "boss.move.orbs": [
+    "Các quả cầu đáp án đang bay quanh trùm: chạm vào quả cầu đúng.",
+    "Đặt ngón tay xuống là vòng cầu dừng lại; {name} chạm quả cầu có đáp án đúng.",
+    "Bắt lấy quả cầu mang đáp án đúng đang lượn quanh trùm."
+  ],
+  "boss.move.gem": [
+    "Kéo viên ngọc vào ô có đáp án đúng dưới chân trùm, hoặc chạm vào ô đó.",
+    "{name} thả viên ngọc sức mạnh vào ô đáp án đúng.",
+    "Đặt ngọc vào ô mang đáp án đúng để tung chiêu."
+  ],
+  "boss.move.charge": [
+    "Chạm đáp án đúng ba lần để nạp đầy vòng sáng rồi bắn.",
+    "{name} chọn một đáp án, chạm tiếp cho vòng sáng đầy là chiêu tự bay.",
+    "Nạp chiêu vào đáp án đúng: ba lần chạm là đủ."
+  ],
   "challenge.step": "Bước {index}/{total}",
   "challenge.xpWhenDone": " khi xong nhiệm vụ",
   "challenge.reset": "Làm lại",

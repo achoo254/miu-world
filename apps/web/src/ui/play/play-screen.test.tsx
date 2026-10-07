@@ -14,11 +14,11 @@ const SCHOOL_SPOT = { map: 'truong-hoc', position: [60, 9, 70], facing: 0.5 };
 const FOREST_SPOT = { map: 'forest-ch1', position: [40, 12, 88], facing: -1 };
 
 /** The reads /play makes, answered like the server; `character` may fail to simulate the network. */
-function playApi(character: () => Response = () => json({ species: 'cat', name: 'Mochi', equipped: [], pet: null })) {
+function playApi(character: () => Response = () => json({ species: 'cat', name: 'Mochi', equipped: [], pet: null }), quests: unknown = questList(1)) {
   return vi.fn(async (url: string, init?: RequestInit) => {
     if (url === '/api/character') return character();
     if (url === '/api/progress') return json(PROGRESS);
-    if (url === '/api/quests') return json(questList(1));
+    if (url === '/api/quests') return json(quests);
     if (url === '/api/player-positions' && init?.method === 'GET') return json({ positions: [SCHOOL_SPOT, FOREST_SPOT] });
     if (url === '/api/player-positions' && init?.method === 'PUT') return new Response(null, { status: 204 });
     if (url === '/api/timetable') return json(emptyTimetable());
@@ -28,7 +28,7 @@ function playApi(character: () => Response = () => json({ species: 'cat', name: 
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status });
 
 // jsdom has no WebGL; the runtime itself is covered by Playwright. Here: lifecycle under StrictMode.
-const games = vi.hoisted(() => ({ live: 0, started: 0, stops: 0, resumes: 0, savedSpot: undefined as unknown, decor: undefined as unknown, spot: null as unknown, store: null as GameStore | null }));
+const games = vi.hoisted(() => ({ live: 0, started: 0, stops: 0, resumes: 0, paused: false, duel: 'unavailable' as 'staged' | 'unavailable', savedSpot: undefined as unknown, decor: undefined as unknown, spot: null as unknown, store: null as GameStore | null }));
 vi.mock('../../game/game', () => ({
   Game: class {
     private alive = true;
@@ -38,6 +38,11 @@ vi.mock('../../game/game', () => ({
       games.savedSpot = options.savedSpot;
       games.decor = options.decor;
       games.store = options.store;
+      // A boss fight asked for: staged in the world, or not possible here (the test says which).
+      options.store.onCommand((command) => {
+        if (command.type === 'duel-open') options.store.emit({ type: 'duel', state: games.duel });
+        if (command.type === 'duel-close') options.store.emit({ type: 'duel', state: null });
+      });
     }
     currentSpot() {
       return this.alive ? games.spot : null;
@@ -49,9 +54,11 @@ vi.mock('../../game/game', () => ({
     }
     stop() {
       games.stops += 1;
+      games.paused = true;
     }
     resume() {
       games.resumes += 1;
+      games.paused = false;
     }
     dispose() {
       if (this.alive && games.started > 0) games.live -= 1;
@@ -122,6 +129,53 @@ describe('PlayScreen under React StrictMode', () => {
     // Esc opens it again.
     fireEvent.keyDown(window, { key: 'Escape' });
     expect(screen.getByRole('dialog', { name: 'Tạm dừng' })).toBeTruthy();
+  });
+
+  it('keeps the game running through a boss fight staged in the world, the HUD out of the way, and pauses it for a card', async () => {
+    const list = questList(1);
+    const [lesson] = list.quests;
+    if (!lesson || lesson.quest.status !== 'active') throw new Error('fixture');
+    const boss = QuestStepPublic.parse({
+      id: 'dau',
+      title: 'Đấu trí',
+      kind: 'boss',
+      trigger: 'auto',
+      target: 'rai-ca',
+      bossId: 'rai-ca',
+      bossName: 'Rái Cá',
+      introDialogue: 'Đấu nào!',
+      winDialogue: 'Ta thua rồi!',
+      maxHp: 200,
+      damagePerTurn: 100,
+      turns: [
+        { id: 't1', prompt: 'Một cộng một?', skill: 'phep-cong', move: 'gem', choices: [{ id: 'a', text: '2' }, { id: 'b', text: '3' }] },
+        { id: 't2', prompt: 'Hai cộng hai?', skill: 'phep-cong', move: 'charge', choices: [{ id: 'a', text: '4' }, { id: 'b', text: '5' }] },
+      ],
+    });
+    const fight = { ...lesson, quest: { ...lesson.quest, id: 'ward-thu', category: 'guardian' as const, steps: [boss] }, progress: { ...lesson.progress, questId: 'ward-thu' } };
+    for (const answer of ['staged', 'unavailable'] as const) {
+      games.duel = answer;
+      vi.stubGlobal('fetch', playApi(undefined, { ...list, quests: [fight, ...list.quests] }));
+      render(
+        <MemoryRouter initialEntries={['/play?quest=ward-thu']}>
+          <AccountProvider>
+            <PlayScreen />
+          </AccountProvider>
+        </MemoryRouter>,
+      );
+      expect(await screen.findByText('Một cộng một?')).toBeTruthy();
+      const mode = (): string | undefined => (document.querySelector('[data-id="boss-move"]') as HTMLElement | null)?.dataset.mode;
+      if (answer === 'staged') {
+        await vi.waitFor(() => expect(mode()).toBe('stage'));
+        await vi.waitFor(() => expect(games.paused).toBe(false));
+        expect((document.querySelector('[data-id="hud-layer"]') as HTMLElement).hidden).toBe(true);
+      } else {
+        expect(mode()).toBe('card');
+        expect(games.paused).toBe(true);
+      }
+      cleanup();
+    }
+    games.duel = 'unavailable';
   });
 
   it('opens the timetable board from the timetable on the wall and from the uniform calendar, and only from them', async () => {
@@ -257,7 +311,7 @@ describe('the bosses on the minimap', () => {
     if (!lesson || lesson.quest.status !== 'active') throw new Error('fixture');
     const base = lesson.quest;
     const boss = (target: string, name: string) =>
-      QuestStepPublic.parse({ id: 'dau', title: 'Đấu', kind: 'boss', trigger: 'auto', target, bossId: target, bossName: name, introDialogue: 'Nào!', winDialogue: 'Thua!', turns: [{ id: 'a', prompt: '?', skill: 'logic', choices: [{ id: 'x', text: 'X' }, { id: 'y', text: 'Y' }] }, { id: 'b', prompt: '?', skill: 'logic', choices: [{ id: 'x', text: 'X' }, { id: 'y', text: 'Y' }] }] });
+      QuestStepPublic.parse({ id: 'dau', title: 'Đấu', kind: 'boss', trigger: 'auto', target, bossId: target, bossName: name, introDialogue: 'Nào!', winDialogue: 'Thua!', turns: [{ id: 'a', prompt: '?', skill: 'logic', move: 'fling', choices: [{ id: 'x', text: 'X' }, { id: 'y', text: 'Y' }] }, { id: 'b', prompt: '?', skill: 'logic', move: 'orbs', choices: [{ id: 'x', text: 'X' }, { id: 'y', text: 'Y' }] }] });
     const quest = (id: string, category: 'main' | 'guardian' | 'story', steps: QuestStepPublic[], region = base.region): QuestSummary => ({ ...lesson, quest: { ...base, id, region, category, title: `Bài ${id}`, steps } });
     const quests = [
       lesson,

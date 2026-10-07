@@ -260,7 +260,15 @@ export function PlayScreen() {
   // The quest played with the party: the server's pushes of her progress, and whether a teammate's answer is awaited.
   const partyProgressSeq = useSocial(social, (s) => s.partyProgress?.seq ?? 0);
   const partyWaiting = useSocial(social, (s) => (s.partyQuest?.members ?? []).some((m) => m.joined && m.waiting && m.id !== s.selfId));
-  const partyPlay = useMemo(() => ({ progressSeq: partyProgressSeq, waiting: partyWaiting }), [partyProgressSeq, partyWaiting]);
+  // At a team boss: whose blow it is (her own, or a teammate's by name).
+  const partyTurnId = useSocial(social, (s) => s.partyQuest?.turn ?? null);
+  const partyTurnQuest = useSocial(social, (s) => s.partyQuest?.questId ?? '');
+  const partyTurnMine = useSocial(social, (s) => s.partyQuest?.turn != null && s.partyQuest.turn === s.selfId);
+  const partyTurnWho = useSocial(social, (s) => s.partyQuest?.members.find((m) => m.id === s.partyQuest?.turn)?.displayName ?? '');
+  const partyPlay = useMemo(
+    () => ({ progressSeq: partyProgressSeq, waiting: partyWaiting, turn: partyTurnId ? { quest: partyTurnQuest, mine: partyTurnMine, who: partyTurnWho } : null }),
+    [partyProgressSeq, partyWaiting, partyTurnId, partyTurnQuest, partyTurnMine, partyTurnWho],
+  );
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const here = useLocation();
@@ -283,6 +291,8 @@ export function PlayScreen() {
   const [offline, setOffline] = useState(false);
   const [paused, setPaused] = useState(false);
   const [questOpen, setQuestOpen] = useState(false);
+  /** A boss fight played out in the running world: the game runs on, only the HUD steps aside. */
+  const [duelOpen, setDuelOpen] = useState(false);
   const [backpackOpen, setBackpackOpen] = useState(false);
   const [questsOpen, setQuestsOpen] = useState(false);
   /** The timetable board in the child's home, opened at the timetable or at the uniform calendar. */
@@ -391,8 +401,8 @@ export function PlayScreen() {
   // An element of `positions` (set once), so the same object on every render: the game is not rebuilt.
   const savedSpot = positions?.find((p) => p.map === regionMap(region)) ?? null;
   const covered = paused || questOpen || backpackOpen || questsOpen || timetable !== null || decorOpen || shopOpen || cookingOpen || friendsOpen || onlineMenu || coopOpen;
-  // The pet's care board leaves the game running (its scenes play in the world), only the HUD steps aside.
-  const hudCovered = covered || petCareOpen;
+  // The pet's care board and a boss fight in the world leave the game running, only the HUD steps aside.
+  const hudCovered = covered || petCareOpen || duelOpen;
   /** The name picked for her pet on the care board this visit (undefined: none picked yet), for the HUD's button. */
   const [petRenamed, setPetRenamed] = useState<string | null | undefined>(undefined);
   const closePetCare = useCallback((): void => setPetCareOpen(false), []);
@@ -567,27 +577,31 @@ export function PlayScreen() {
         {/* The in-world label and Interact would show through a screen's backdrop: only while playing. */}
         {hudCovered ? null : <InteractionLabel />}
         <GameStatus />
+        {/* A boss fight in the world has the screen to itself: its own header over the top, its card at the bottom. The
+            HUD stays mounted meanwhile (out of sight), so each vở card between blows does not build it again. */}
         {data && status !== 'error' ? (
-          <Hud data={data} quest={quest} covered={hudCovered} onMenu={() => setPaused(true)} onQuests={() => setQuestsOpen(true)} onBackpack={() => setBackpackOpen(true)}>
-            <div className="hud-row">
-              <FriendsButton social={social} onOpen={() => setFriendsOpen(true)} />
-              <PetHud petId={data.character.pet} renamed={petRenamed} hidden={hudCovered} onOpen={() => setPetCareOpen(true)} />
-            </div>
-            {/* Out of the way while a screen (the friends list…) covers the game: the two never overlap. */}
-            {covered ? null : <PartyFrame social={social} voice={voice} fill={(text) => say(text, data.character)} />}
-            {covered ? null : <CallBar voice={voice} social={social} />}
-            {covered ? null : (
-              <PartyQuestCard
-                social={social}
-                data={data}
-                questId={questId}
-                onPlay={(id) => {
-                  const next = data.quests.find((q) => q.quest.id === id);
-                  if (next && id !== questId) switchQuest(next, next.quest.region !== region);
-                }}
-              />
-            )}
-          </Hud>
+          <div className="hud-layer" data-id="hud-layer" hidden={duelOpen} style={{ display: duelOpen ? 'none' : 'contents' }}>
+            <Hud data={data} quest={quest} covered={hudCovered} onMenu={() => setPaused(true)} onQuests={() => setQuestsOpen(true)} onBackpack={() => setBackpackOpen(true)}>
+              <div className="hud-row">
+                <FriendsButton social={social} onOpen={() => setFriendsOpen(true)} />
+                <PetHud petId={data.character.pet} renamed={petRenamed} hidden={hudCovered} onOpen={() => setPetCareOpen(true)} />
+              </div>
+              {/* Out of the way while a screen (the friends list…) covers the game: the two never overlap. */}
+              {covered ? null : <PartyFrame social={social} voice={voice} fill={(text) => say(text, data.character)} />}
+              {covered ? null : <CallBar voice={voice} social={social} />}
+              {covered ? null : (
+                <PartyQuestCard
+                  social={social}
+                  data={data}
+                  questId={questId}
+                  onPlay={(id) => {
+                    const next = data.quests.find((q) => q.quest.id === id);
+                    if (next && id !== questId) switchQuest(next, next.quest.region !== region);
+                  }}
+                />
+              )}
+            </Hud>
+          </div>
         ) : null}
         {data ? <SocialLayer social={social} voice={voice} covered={covered && !onlineMenu} fill={(text) => say(text, data.character)} /> : null}
         {data && backpackOpen ? (
@@ -639,6 +653,7 @@ export function PlayScreen() {
             region={region}
             onResponse={onResponse}
             onOverlayChange={setQuestOpen}
+            onDuelChange={setDuelOpen}
             draftOwner={draftOwner}
             openAt={openAt}
             onPlayQuest={(id, from) => {

@@ -1,0 +1,219 @@
+/*
+ * The boss fight's play moves (moves/*.tsx): shields, orbs, slots and runes carrying the answers, the charm and the gem
+ * in the child's hand, drawn with CSS and tokens only (no picture assets). Staged in the running world they sit round
+ * two anchors the game moves each frame (`--duel-x`, `--duel-y`: the boss, her hand), kept inside the part of the
+ * screen the card leaves free; on the card they lie still in a row. Touch targets ≥ 48px, 8px apart or more.
+ */
+.duel-field {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ── On the card ─────────────────────────────────────────────────────────── */
+.duel-field--card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.duel-field--card .duel-anchor--boss {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
+  width: 100%;
+}
+.duel-field--card .duel-ring,
+.duel-field--card .duel-orbit,
+.duel-field--card .duel-orbit-upright { display: contents; }
+.duel-field--card .duel-target { flex: 1 1 8rem; max-width: 14rem; }
+
+/* ── In the running world ────────────────────────────────────────────────── */
+.duel-field--stage {
+  /* The free part of the screen above the card (boss-duel.css keeps the card to the rest). */
+  --duel-free: 55vh;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+@media (orientation: landscape) {
+  .duel-field--stage { --duel-free: 65vh; }
+}
+.duel-field--stage .duel-anchor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  pointer-events: auto;
+}
+/* Room for an answer each side of the boss and one under it, below the header, above the card. */
+.duel-field--stage .duel-anchor--boss {
+  transform: translate(clamp(170px, var(--duel-x, 50vw), calc(100vw - 170px)), clamp(190px, var(--duel-y, 30vh), calc(var(--duel-free) - 135px)));
+}
+.duel-field--stage .duel-anchor--player {
+  transform: translate(clamp(56px, var(--duel-x, 30vw), calc(100vw - 56px)), clamp(120px, var(--duel-y, 45vh), calc(var(--duel-free) - 40px)));
+}
+.duel-field--stage .duel-target {
+  position: absolute;
+  left: var(--slot-x);
+  top: var(--slot-y);
+  width: 108px;
+  transform: translate(-50%, -50%);
+}
+.duel-field--stage .duel-piece {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: -28px 0 0 -28px;
+}
+.duel-field--stage [data-id='boss-charge'] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  translate: -50% -50%;
+  white-space: nowrap;
+}
+
+/* ── An answer to play at ───────────────────────────────────────────────── */
+.duel-target {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  min-height: 56px;
+  padding: var(--space-xs) var(--space-sm);
+  border: 3px solid var(--color-wood-edge);
+  border-radius: var(--radius-tile);
+  background: var(--color-parchment);
+  box-shadow: var(--shadow-tile);
+  color: var(--color-ink);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: center;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.duel-target:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.duel-target-text { position: relative; }
+
+/* A shield: wooden rim, rounded to a point at the bottom. */
+.duel-target--shield {
+  border-radius: var(--radius-tile) var(--radius-tile) 50% 50% / var(--radius-tile) var(--radius-tile) 40% 40%;
+  background: linear-gradient(var(--color-parchment), var(--color-wood-top));
+  padding-bottom: var(--space-sm);
+}
+/* An orb: a round bubble of water light. */
+.duel-target--orb {
+  border-color: var(--color-water);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--color-on-primary), var(--color-water-light) 45%, var(--color-water));
+}
+.duel-field--stage .duel-target--orb { width: 104px; min-height: 104px; }
+/* A slot for the gem: a dashed socket. */
+.duel-target--slot {
+  border-style: dashed;
+  border-color: var(--color-primary-edge);
+  background: var(--color-surface-glass);
+}
+/* A rune: its ring fills a third with each tap. */
+.duel-target--rune {
+  border-color: var(--color-stone-edge);
+  border-radius: var(--radius-panel);
+  background: linear-gradient(var(--color-stone-top), var(--color-stone));
+}
+.duel-charge-ring {
+  position: absolute;
+  inset: -7px;
+  border-radius: inherit;
+  background: conic-gradient(var(--color-star) calc(var(--charge, 0) * 360deg), transparent 0);
+  -webkit-mask: linear-gradient(var(--color-ink) 0 0) content-box exclude, linear-gradient(var(--color-ink) 0 0);
+  mask: linear-gradient(var(--color-ink) 0 0) content-box exclude, linear-gradient(var(--color-ink) 0 0);
+  padding: 4px;
+  pointer-events: none;
+}
+
+.duel-target--aimed { border-color: var(--color-star); box-shadow: 0 0 0 4px var(--color-star), var(--shadow-tile); }
+.duel-target--bounced { animation: duel-wobble 0.45s ease-in-out; }
+.duel-target--locked { opacity: 0.75; cursor: default; }
+@keyframes duel-wobble {
+  0%, 100% { rotate: 0deg; }
+  25% { rotate: -6deg; }
+  75% { rotate: 6deg; }
+}
+
+/* ── The orbs' ring: a lap in 12 s, each orb kept upright; still with less motion or while a finger is down ── */
+.duel-field--stage .duel-ring {
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: duel-spin 12s linear infinite;
+}
+.duel-field--stage .duel-orbit { position: absolute; width: 0; height: 0; }
+.duel-field--stage .duel-orbit-upright {
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: duel-spin 12s linear infinite reverse;
+}
+.duel-field[data-held='1'] .duel-ring,
+.duel-field[data-held='1'] .duel-orbit-upright { animation-play-state: paused; }
+.duel-field[data-calm='1'] .duel-ring,
+.duel-field[data-calm='1'] .duel-orbit-upright,
+.duel-field[data-calm='1'] .duel-target--bounced { animation: none; }
+@keyframes duel-spin {
+  to { rotate: 360deg; }
+}
+
+/* ── In her hand: the charm (a slingshot) and the power gem ─────────────── */
+.duel-piece {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border: 3px solid var(--color-wood-edge);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--color-on-primary), var(--color-star) 50%, var(--color-wood-top));
+  box-shadow: var(--shadow-tile);
+  touch-action: none;
+  cursor: grab;
+}
+/* The gem: a diamond drawn on a square that is not turned itself, so it follows the finger straight. */
+.duel-piece--gem {
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+.duel-piece--gem::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  rotate: 45deg;
+  border: 3px solid var(--color-primary-edge);
+  border-radius: var(--radius-tile);
+  background: radial-gradient(circle at 35% 30%, var(--color-on-primary), var(--color-badge) 35%, var(--color-primary));
+  box-shadow: var(--shadow-tile);
+}
+.duel-piece--carried { cursor: grabbing; }
+.duel-piece--locked { opacity: 0.6; cursor: default; }
+.duel-field--card .duel-piece { margin-top: var(--space-xs); }
+/* The aim: dots from the charm the way it would fly. */
+.duel-aim {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 0;
+  border-top: 5px dotted var(--color-star);
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .duel-ring,
+  .duel-orbit-upright,
+  .duel-target--bounced { animation: none; }
+}

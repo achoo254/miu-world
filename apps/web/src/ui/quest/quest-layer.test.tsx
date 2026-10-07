@@ -244,7 +244,8 @@ describe('quest controller', () => {
     expect(screen.queryByRole('status')).toBeNull();
   });
 
-  it("keeps a boss's screen open between blows, its line in its bubble, and closes it on the blow that wins", async () => {
+  /** A zone guardian's fight of two blows, its server answering each blow in turn (the second wins). */
+  function guardianFight(copy: { question: string; answer: string } | null = null, extra: { reward?: boolean; offlineFirst?: boolean } = {}) {
     const boss = QuestStepPublic.parse({
       id: 'dau',
       title: 'Đấu trí',
@@ -258,25 +259,53 @@ describe('quest controller', () => {
       maxHp: 200,
       damagePerTurn: 100,
       turns: [
-        { id: 't1', prompt: 'Một cộng một?', skill: 'phep-cong', damage: 100, choices: [{ id: 'a', text: '2' }, { id: 'b', text: '3' }] },
-        { id: 't2', prompt: 'Hai cộng hai?', skill: 'phep-cong', damage: 100, choices: [{ id: 'a', text: '4' }, { id: 'b', text: '5' }] },
+        { id: 't1', prompt: 'Một cộng một?', skill: 'phep-cong', move: 'fling', damage: 100, choices: [{ id: 'a', text: '2' }, { id: 'b', text: '3' }] },
+        { id: 't2', prompt: 'Hai cộng hai?', skill: 'phep-cong', move: 'orbs', damage: 100, choices: [{ id: 'a', text: '4' }, { id: 'b', text: '5' }] },
       ],
     });
     const [lesson] = questList(0).quests;
     if (!lesson || lesson.quest.status !== 'active') throw new Error('fixture');
-    const fight = { ...lesson, quest: { ...lesson.quest, id: 'ward-thu', category: 'guardian' as const, steps: [boss] }, progress: { ...lesson.progress, questId: 'ward-thu' } };
+    const gift = QuestStepPublic.parse({ id: 'qua', title: 'Quà', kind: 'reward', trigger: 'auto', text: 'Quà của Rái Cá.' });
+    const fight = { ...lesson, quest: { ...lesson.quest, id: 'ward-thu', category: 'guardian' as const, steps: extra.reward ? [boss, gift] : [boss] }, progress: { ...lesson.progress, questId: 'ward-thu' } };
     let blows = 0;
+    const calls = { reward: 0 };
+    let offline = extra.offlineFirst ?? false;
     vi.stubGlobal(
       'fetch',
       vi.fn(async (url: string) => {
         if (url.startsWith('/api/npcs')) return json({ npcs: [] });
+        if (url.includes('/steps/qua/complete')) {
+          calls.reward += 1;
+          return json({ ...response([]), quest: { questId: 'ward-thu', completedSteps: ['dau', 'qua'], completed: true, found: {}, stars: null } });
+        }
         if (!url.includes('/steps/dau/complete')) return json({ quests: [] });
+        if (offline) {
+          offline = false;
+          throw new TypeError('offline');
+        }
         blows += 1;
         const won = blows === 2;
         const progress = { questId: 'ward-thu', completedSteps: won ? ['dau'] : [], completed: won, found: { dau: won ? ['t1', 't2'] : ['t1'] }, stars: null };
-        return json({ ...response([]), quest: progress, feedback: won ? 'Ta thua rồi!' : 'Úi, trúng rồi!', feedbackEn: null, copy: null });
+        return json({ ...response([]), quest: progress, feedback: won ? 'Ta thua rồi!' : 'Úi, trúng rồi!', feedbackEn: null, copy: copy ? { step: 'dau', ...copy } : null });
       }),
     );
+    return { fight, calls };
+  }
+
+  /** A game that stages every fight asked for (or cannot: `unavailable`), as the running world answers. */
+  function gameThatStages(answer: 'staged' | 'unavailable') {
+    const store = createGameStore();
+    const sent: GameCommand[] = [];
+    store.onCommand((command) => {
+      sent.push(command);
+      if (command.type === 'duel-open') store.emit({ type: 'duel', state: answer });
+      if (command.type === 'duel-close') store.emit({ type: 'duel', state: null });
+    });
+    return { store, sent };
+  }
+
+  it("keeps a boss's screen open between blows, its line in its bubble, and closes it on the blow that wins", async () => {
+    const { fight } = guardianFight();
     const store = createGameStore();
     render(
       <MemoryRouter>
@@ -285,16 +314,112 @@ describe('quest controller', () => {
     );
     act(() => store.emit({ type: 'ready' }));
     await screen.findByText('Một cộng một?');
-    fireEvent.click(screen.getByRole('radio', { name: '2' }));
-    fireEvent.click(screen.getByRole('button', { name: /Giải đố/ }));
+    // Each blow is a play move: tapping the shield with "2" throws the charm at it.
+    fireEvent.click(screen.getByRole('button', { name: '2' }));
     // Still in the fight: the line is in the boss's bubble, not a toast over the question.
     expect(await screen.findByText('Úi, trúng rồi!')).toBeTruthy();
     expect(screen.queryByRole('status')).toBeNull();
     expect(document.querySelector('[data-id="boss-battle"]')).not.toBeNull();
-    fireEvent.click(screen.getByRole('radio', { name: '2' }));
-    fireEvent.click(screen.getByRole('button', { name: /Giải đố/ }));
+    await vi.waitFor(() => expect((screen.getByRole('button', { name: '2' }) as HTMLButtonElement).disabled).toBe(false));
+    fireEvent.click(screen.getByRole('button', { name: '2' }));
     // The winning blow: the fight closes and its win line is said over the world.
     await vi.waitFor(() => expect(document.querySelector('[data-id="boss-battle"]')).toBeNull());
     expect(screen.getByRole('status').textContent).toContain('Ta thua rồi!');
+  });
+
+  it('plays the fight out in the running world when the game stages it: the screen covers nothing, the HUD steps aside', async () => {
+    for (const answer of ['staged', 'unavailable'] as const) {
+      const { fight } = guardianFight();
+      const { store, sent } = gameThatStages(answer);
+      const onOverlayChange = vi.fn();
+      const onDuelChange = vi.fn();
+      const { unmount } = render(
+        <MemoryRouter>
+          <QuestLayer store={store} data={{ character: CHARACTER, progress: PROGRESS, quests: [fight] }} questId="ward-thu" region="khu-rung-bi-mat" onResponse={() => undefined} onOverlayChange={onOverlayChange} onDuelChange={onDuelChange} />
+        </MemoryRouter>,
+      );
+      act(() => store.emit({ type: 'ready' }));
+      await screen.findByText('Một cộng một?');
+      expect(sent).toContainEqual({ type: 'duel-open', targetId: 'rai-ca', calm: false });
+      // Staged: the game runs on (nothing covers it), the HUD steps aside. Unavailable: a card over the paused game.
+      expect(onOverlayChange).toHaveBeenLastCalledWith(answer === 'unavailable');
+      expect(onDuelChange).toHaveBeenLastCalledWith(answer === 'staged');
+      expect((document.querySelector('[data-id="boss-move"]') as HTMLElement).dataset.mode).toBe(answer === 'staged' ? 'stage' : 'card');
+      unmount();
+      expect(sent.at(-1)).toEqual({ type: 'duel-close' });
+      cleanup();
+    }
+  });
+
+  it('in the world, lands a right blow before its vở card (the card covers the game a moment), and lets a won boss bow out first', async () => {
+    const { fight } = guardianFight({ question: 'Một cộng một?', answer: '2' });
+    const { store, sent } = gameThatStages('staged');
+    const onOverlayChange = vi.fn();
+    render(
+      <MemoryRouter>
+        <QuestLayer store={store} data={{ character: CHARACTER, progress: PROGRESS, quests: [fight] }} questId="ward-thu" region="khu-rung-bi-mat" onResponse={() => undefined} onOverlayChange={onOverlayChange} />
+      </MemoryRouter>,
+    );
+    act(() => store.emit({ type: 'ready' }));
+    await screen.findByText('Một cộng một?');
+    fireEvent.click(screen.getByRole('button', { name: '2' }));
+    await vi.waitFor(() => expect(sent).toContainEqual({ type: 'duel-cue', cue: 'hit' }));
+    // The blow lands first: no vở card yet, the fight still up.
+    expect(screen.queryByRole('dialog', { name: 'Chép vào vở' })).toBeNull();
+    fireEvent.click(screen.getByLabelText('Chạm để tiếp tục'));
+    expect(await screen.findByRole('dialog', { name: 'Chép vào vở' })).toBeTruthy();
+    expect(onOverlayChange).toHaveBeenLastCalledWith(true);
+    // The card does not end the fight in the world: it is staged still, and back once the card is put away.
+    expect(sent.filter((c) => c.type === 'duel-close')).toEqual([]);
+    fireEvent.click(document.querySelector('[data-id="notebook-done"]') as HTMLElement);
+    await screen.findByText('Một cộng một?');
+    expect(onOverlayChange).toHaveBeenLastCalledWith(false);
+    // The winning blow: the boss bows out on its screen (its line in its bubble, no toast), then the quest goes on.
+    fireEvent.click(screen.getByRole('button', { name: '2' }));
+    await vi.waitFor(() => expect(sent).toContainEqual({ type: 'duel-cue', cue: 'win' }));
+    expect(document.querySelector('[data-id="boss-battle"]')).not.toBeNull();
+    expect(screen.queryByRole('status')).toBeNull();
+    fireEvent.click(screen.getByLabelText('Chạm để tiếp tục'));
+    await vi.waitFor(() => expect(document.querySelector('[data-id="boss-battle"]')).toBeNull());
+    expect(sent.at(-1)).toEqual({ type: 'duel-close' });
+  });
+
+  it('goes on to the reward exactly once after a boss bows out in the world, closed with ✕ before the end of its bow', async () => {
+    const { fight, calls } = guardianFight(null, { reward: true });
+    const { store, sent } = gameThatStages('staged');
+    render(
+      <MemoryRouter>
+        <QuestLayer store={store} data={{ character: CHARACTER, progress: PROGRESS, quests: [fight] }} questId="ward-thu" region="khu-rung-bi-mat" onResponse={() => undefined} onOverlayChange={() => undefined} />
+      </MemoryRouter>,
+    );
+    act(() => store.emit({ type: 'ready' }));
+    await screen.findByText('Một cộng một?');
+    fireEvent.click(screen.getByRole('button', { name: '2' }));
+    await vi.waitFor(() => expect(sent).toContainEqual({ type: 'duel-cue', cue: 'hit' }));
+    fireEvent.click(screen.getByLabelText('Chạm để tiếp tục'));
+    await vi.waitFor(() => expect((screen.getByRole('button', { name: '2' }) as HTMLButtonElement).disabled).toBe(false));
+    fireEvent.click(screen.getByRole('button', { name: '2' }));
+    await vi.waitFor(() => expect(sent).toContainEqual({ type: 'duel-cue', cue: 'win' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Đóng' }));
+    await vi.waitFor(() => expect(calls.reward).toBe(1));
+    expect(document.querySelector('[data-id="boss-battle"]')).toBeNull();
+    await new Promise((r) => setTimeout(r, 50));
+    expect(calls.reward).toBe(1);
+  });
+
+  it('shows the vở card for a right blow sent again from the offline banner', async () => {
+    const { fight } = guardianFight({ question: 'Một cộng một?', answer: '2' }, { offlineFirst: true });
+    const store = createGameStore();
+    render(
+      <MemoryRouter>
+        <QuestLayer store={store} data={{ character: CHARACTER, progress: PROGRESS, quests: [fight] }} questId="ward-thu" region="khu-rung-bi-mat" onResponse={() => undefined} onOverlayChange={() => undefined} />
+      </MemoryRouter>,
+    );
+    act(() => store.emit({ type: 'ready' }));
+    await screen.findByText('Một cộng một?');
+    fireEvent.click(screen.getByRole('button', { name: '2' }));
+    await vi.waitFor(() => expect(document.querySelector('[data-id="offline-retry"]')).not.toBeNull());
+    fireEvent.click(document.querySelector('[data-id="offline-retry"]') as HTMLElement);
+    expect(await screen.findByRole('dialog', { name: 'Chép vào vở' })).toBeTruthy();
   });
 });

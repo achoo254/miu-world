@@ -214,16 +214,42 @@ describe('support panel', () => {
       maxHp: 160,
       damagePerTurn: 80,
       turns: [
-        { id: 'q1', prompt: '2 + 2 = ?', skill: 'phep-cong', choices: [{ id: 'a', text: '4' }, { id: 'b', text: '5' }] },
-        { id: 'q2', prompt: '3 + 3 = ?', skill: 'phep-cong', choices: [{ id: 'a', text: '6' }, { id: 'b', text: '7' }] },
+        { id: 'q1', prompt: '2 + 2 = ?', skill: 'phep-cong', move: 'orbs', choices: [{ id: 'a', text: '4' }, { id: 'b', text: '5' }] },
+        { id: 'q2', prompt: '3 + 3 = ?', skill: 'phep-cong', move: 'gem', choices: [{ id: 'a', text: '6' }, { id: 'b', text: '7' }] },
       ],
     });
     const submit = renderStep(boss, vi.fn(async () => answerResponse(false, null)));
     expect(screen.getAllByRole('tab').map((t) => t.textContent)).toEqual(['Hướng dẫn']);
-    fireEvent.click(screen.getByRole('radio', { name: '5' }));
-    await act(async () => fireEvent.click(screen.getByRole('button', { name: /Giải đố/ })));
+    // The question is answered with its play move: tapping the orb carrying "5" sends the blow at once.
+    await act(async () => fireEvent.click(screen.getByRole('button', { name: '5' })));
     expect(sentAnswer(submit)).toEqual({ turnId: 'q1', choice: 'b' });
     expect(screen.getAllByRole('tab').map((t) => t.textContent)).toEqual(['Hướng dẫn', 'Gợi ý']);
+  });
+
+  it("at a boss, a right blow hands its question on to the vở once it has landed (at once on the card)", async () => {
+    const boss = QuestStepPublic.parse({
+      id: 'trum',
+      title: 'Đấu trí',
+      kind: 'boss',
+      trigger: 'auto',
+      bossId: 'than-rung',
+      bossName: 'Thần Rừng',
+      introDialogue: 'Đố {name} nhé!',
+      winDialogue: 'Ta chịu thua!',
+      maxHp: 160,
+      damagePerTurn: 80,
+      turns: [
+        { id: 'q1', prompt: '2 + 2 = ?', skill: 'phep-cong', move: 'fling', choices: [{ id: 'a', text: '4' }, { id: 'b', text: '5' }] },
+        { id: 'q2', prompt: '3 + 3 = ?', skill: 'phep-cong', move: 'gem', choices: [{ id: 'a', text: '6' }, { id: 'b', text: '7' }] },
+      ],
+    });
+    const copy = { step: 'trum', question: '2 + 2 = ?', answer: '4' };
+    const onRight = vi.fn();
+    const submit = vi.fn(async () => ({ ...answerResponse(true, null), copy }));
+    render(<LearningStep step={boss} quest={quest} data={DATA} busy={false} submit={submit} onClose={() => undefined} onRight={onRight} />);
+    await act(async () => fireEvent.click(screen.getByRole('button', { name: '4' })));
+    expect(sentAnswer(submit)).toEqual({ turnId: 'q1', choice: 'a' });
+    expect(onRight).toHaveBeenCalledWith(copy);
   });
 
   it('asks the server for each layer once, and the answer layer still lets the child finish', async () => {

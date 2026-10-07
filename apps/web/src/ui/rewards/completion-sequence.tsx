@@ -27,6 +27,7 @@ import { findRegion } from '../region/regions';
 import { playCue } from '../sound/sfx';
 import { Say, titleOf } from '../quest/content-text';
 import { Hearts } from '../npc/hearts';
+import { prefersReducedMotion } from '../kit/reduced-motion';
 import './rewards.css';
 
 /** Time between two stars lighting up; the counters start once the last star is lit. */
@@ -65,10 +66,6 @@ export function countUpValue(target: number, elapsedMs: number, durationMs: numb
   if (elapsedMs >= durationMs) return target;
   const t = elapsedMs / durationMs;
   return Math.round(target * (1 - (1 - t) ** 3));
-}
-
-function prefersReducedMotion(): boolean {
-  return window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 }
 
 /** Counts up to `target` after `delayMs`; shows `target` straight away under reduced motion. */

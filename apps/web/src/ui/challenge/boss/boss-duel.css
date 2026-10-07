@@ -1,0 +1,240 @@
+/*
+ * Friendly boss fight (boss-duel.tsx): joyful, no violence. As a card over the paused game, the boss's header, its
+ * portrait and bubble, the question and its answers in the flow; staged in the running world, the header stands over
+ * the top of the screen and the card keeps to the bottom (about half a tall screen, a third of a wide one) so the
+ * boss and the child show between them. Values from tokens.css only; touch targets ≥ 48px.
+ */
+.boss-screen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+.boss-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-field);
+  background: var(--color-surface-faint);
+  box-shadow: var(--shadow-tile);
+}
+
+.boss-header-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  font-weight: 800;
+  font-size: var(--text-lg);
+  color: var(--color-ink);
+}
+
+.boss-hp-bar {
+  position: relative;
+  width: 100%;
+  height: 24px;
+  background: var(--color-field-edge);
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--color-primary-edge);
+}
+
+.boss-hp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-danger), var(--color-primary), var(--color-star));
+  border-radius: var(--radius-pill);
+  transition: width 0.4s var(--ease-pop);
+}
+
+.boss-hp-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-sm);
+  font-weight: 800;
+  color: var(--color-on-primary);
+}
+
+/* The HP a blow took floats up from the bar and fades (it just shows, with less motion). */
+.boss-damage {
+  position: absolute;
+  right: var(--space-sm);
+  top: -0.25rem;
+  font-size: var(--text-lg);
+  font-weight: 900;
+  color: var(--color-danger);
+  pointer-events: none;
+  animation: boss-damage-float 1s ease-out forwards;
+}
+.boss-damage--still { animation: boss-damage-fade 1.6s linear forwards; }
+@keyframes boss-damage-float {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-2rem); opacity: 0; }
+}
+@keyframes boss-damage-fade {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.boss-stage {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm);
+  background: var(--color-surface);
+  border-radius: var(--radius-field);
+}
+
+.boss-avatar-wrap {
+  flex-shrink: 0;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--color-tile-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-tile);
+  animation: boss-float 3s ease-in-out infinite alternate;
+}
+@keyframes boss-float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-6px); }
+}
+
+.boss-avatar-icon { font-size: 52px; }
+
+.boss-bubble {
+  flex: 1;
+  margin: 0;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-field);
+  background: var(--color-surface-faint);
+  border: 2px solid var(--color-field-edge);
+  font-weight: 700;
+  font-size: var(--text-body);
+  color: var(--color-ink);
+  line-height: 1.4;
+}
+
+.boss-turn-tracker {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.boss-turn-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-field-edge);
+}
+.boss-turn-dot--done { background: var(--color-secondary); }
+.boss-turn-dot--active {
+  background: var(--color-primary-top);
+  box-shadow: 0 0 0 2px var(--color-primary-edge);
+}
+
+.boss-turn-area {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.boss-question-card {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-field);
+  background: var(--color-surface);
+  border: 2px solid var(--color-field-edge);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-ink);
+}
+.boss-question-card p { margin: 0; }
+
+.boss-move-guide {
+  margin: 0;
+  text-align: center;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-ink-soft);
+}
+
+.boss-victory-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  border-radius: var(--radius-field);
+  background: var(--color-tile-1);
+  text-align: center;
+}
+.boss-victory-title {
+  margin: 0;
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--color-ink);
+}
+
+/* A blow landing in the world: a tap anywhere goes on at once. */
+.boss-beat-skip {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Staged in the running world: the card keeps to the bottom, the header over the top of the screen. */
+.boss-duel--stage {
+  --duel-card: 45vh;
+  max-height: var(--duel-card);
+  padding-inline: var(--space-sm);
+  border-radius: var(--radius-panel) var(--radius-panel) 0 0;
+  background: var(--color-surface-glass);
+  box-shadow: var(--shadow-panel);
+}
+@media (orientation: landscape) {
+  .boss-duel--stage { --duel-card: 35vh; }
+}
+/* No slide-in here: a transform on the card, even for a moment, would hold the header and the answers (fixed to the
+   screen) inside it instead of over the world. */
+.boss-duel--stage.scene-modal { animation: none; }
+/* Its title stays for screen readers; on screen the boss's own header says who it is. */
+.boss-duel--stage > .ribbon {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.boss-duel--stage .boss-screen { gap: var(--space-sm); }
+.boss-duel--stage .boss-header {
+  position: fixed;
+  top: var(--space-sm);
+  left: 50%;
+  z-index: 2;
+  /* Room for the close button in the corner, on either side alike. */
+  width: min(calc(100vw - 8rem), 30rem);
+  transform: translateX(-50%);
+  padding: var(--space-xs) var(--space-md);
+  background: var(--color-surface-glass);
+}
+.boss-duel--stage .boss-header-title { font-size: var(--text-body); }
+.boss-duel--stage .boss-hp-bar { height: 18px; }
+.boss-duel--stage .boss-stage { padding: 0; background: none; }
+.boss-duel--stage .boss-bubble { padding: var(--space-xs) var(--space-sm); font-size: var(--text-sm); }
+.boss-duel--stage .boss-question-card { font-size: clamp(var(--text-sm), 2.4vh, var(--text-lg)); }
+/* Out of the fight: over the top right corner of the screen while staged in the world. */
+.boss-duel--stage .boss-close {
+  position: fixed;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  z-index: 2;
+}

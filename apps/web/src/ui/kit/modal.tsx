@@ -1,7 +1,8 @@
 // Modal dialog: dimmed backdrop over the game, focus moved in and kept inside (Tab cycles), Esc
 // closes, focus returns to what was focused before. Screens: Pause, Offline, Backpack. The `scene`
 // variant is for quest screens: no white panel, the paused game stays visible behind a light scrim,
-// and the title sits on a banner (mock "quest screens").
+// and the title sits on a banner (mock "quest screens"). Without a scrim (`scrim={false}`, a boss fight played out in
+// the running world) nothing dims the game and a touch beside the dialog goes through to it; focus and Esc stay.
 import { useEffect, useId, useRef, type ReactNode } from 'react';
 import './modal.css';
 import './scene.css';
@@ -18,6 +19,7 @@ export function Modal({
   variant = 'panel',
   titleClass,
   className,
+  scrim = true,
 }: {
   /** Text, or `<T>` / `<Bi>` for the bilingual display. */
   title: ReactNode;
@@ -34,6 +36,8 @@ export function Modal({
   titleClass?: string;
   /** Extra class of the dialog (a layout of its own, as the challenge scene's pinned header and bar). */
   className?: string;
+  /** False: no dimming backdrop and no blocking of touches beside the dialog (the game shows and plays on). */
+  scrim?: boolean;
 }) {
   const dialog = useRef<HTMLDivElement>(null);
   const titleId = useId();
@@ -78,7 +82,7 @@ export function Modal({
   }, []);
 
   return (
-    <div className={`modal-backdrop modal-backdrop--${placement}${variant === 'scene' ? ' modal-backdrop--scene' : ''}`} data-id={dataId ? `${dataId}-backdrop` : undefined}>
+    <div className={`modal-backdrop modal-backdrop--${placement}${variant === 'scene' ? ' modal-backdrop--scene' : ''}${scrim ? '' : ' modal-backdrop--clear'}`} data-id={dataId ? `${dataId}-backdrop` : undefined}>
       <div
         ref={dialog}
         className={`${variant === 'scene' ? `modal scene-modal modal--${size}` : `panel modal modal--${size}`}${className ? ` ${className}` : ''}`}

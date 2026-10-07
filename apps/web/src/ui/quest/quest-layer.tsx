@@ -3,8 +3,10 @@
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { NotebookLine, QuestSummary, StepCompleteResponse } from '@miu/schema/game';
 import type { GameStore } from '../../game-bridge/game-store';
+import { GameStoreContext } from '../../game-bridge/use-game-state';
 import { AnswerBurst } from '../challenge/answer-burst';
 import { LearningStep, hasLearningScreen } from '../challenge/learning-step';
+import { useDuelLifecycle } from '../challenge/boss/use-duel-lifecycle';
 import { DialogueScreen } from '../dialogue/dialogue-screen';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
@@ -46,6 +48,7 @@ export function QuestLayer({
   region,
   onResponse,
   onOverlayChange,
+  onDuelChange,
   draftOwner = null,
   onPlayQuest,
   openAt = null,
@@ -60,6 +63,11 @@ export function QuestLayer({
   onResponse: (response: StepCompleteResponse) => void;
   /** True while a screen covers the game (it stops rendering meanwhile). */
   onOverlayChange: (open: boolean) => void;
+  /**
+   * True while a boss fight is played out in the running world: no screen covers the game then (it keeps running),
+   * only the HUD steps aside.
+   */
+  onDuelChange?: (open: boolean) => void;
   /** The child whose step drafts are kept (a reload resumes the step on screen where it was); none: not kept. */
   draftOwner?: string | null;
   /** A character offered a chapter of its story: play that quest (the child stands at `targetId`). */
@@ -117,13 +125,21 @@ export function QuestLayer({
   );
   // The lesson comes first; a character with nothing for it shows its card (a profiled one) or offers its games.
   const claimTarget = useCallback((target: string) => (claimCoop?.(target) ?? false) || claimGuardian(target) || npcs.claim(target) || side.claim(target), [npcs, side, claimCoop, claimGuardian]);
-  const quest = useQuestController({ store, data, questId, onResponse: answered, onOverlayChange: reportCover, draftOwner, onSideTarget: claimTarget, openAt, party });
+  // A boss step's screen stages its fight by the boss in the running world (the step and the game decide whether it can).
+  const [overlayStep, setOverlayStep] = useState<QuestStepPublic | null>(null);
+  const duel = useDuelLifecycle(store, overlayStep?.kind === 'boss' ? { step: overlayStep.id, target: overlayStep.target } : null);
+  // Played out in the world, the fight covers nothing: the game runs on (the vở card still covers it a moment).
+  const duelLive = duel === 'staged' && copy === null;
+  const quest = useQuestController({ store, data, questId, onResponse: answered, onRetriedRight: setCopy, onOverlayChange: reportCover, draftOwner, onSideTarget: claimTarget, openAt, party, overlayLive: duelLive });
   useEffect(() => {
     resume.current = quest.resumeAt;
   }, [quest.resumeAt]);
   const navigate = useNavigate();
   const summary = data.quests.find((q) => q.quest.id === questId);
   const step = quest.overlay?.step ?? null;
+  if (step !== overlayStep) setOverlayStep(step);
+  useEffect(() => onDuelChange?.(duelLive), [duelLive, onDuelChange]);
+  useEffect(() => () => onDuelChange?.(false), [onDuelChange]);
   // The burst of the last right answer, until it has played.
   const [burstShown, setBurstShown] = useState(0);
   const learning = step !== null && step.kind !== 'dialogue';
@@ -143,7 +159,18 @@ export function QuestLayer({
         onClose={quest.close}
       />
     ) : summary?.quest.status === 'active' && hasLearningScreen(shown) ? (
-      <LearningStep key={shown.id} step={shown} quest={summary.quest} data={data} busy={quest.busy} submit={quest.submit} onClose={quest.close} onRight={onRight} />
+      <LearningStep
+        key={shown.id}
+        step={shown}
+        quest={summary.quest}
+        data={data}
+        busy={quest.busy}
+        submit={quest.submit}
+        onClose={quest.close}
+        onRight={onRight}
+        onBossWon={quest.finishBoss}
+        partyTurn={party?.turn?.quest === questId ? party.turn : null}
+      />
     ) : (
       // Mechanics that have no screen yet (textbook ones arrive with their own plan).
       <Modal title={<Say text={stepTitleOf(shown)} fill={(line) => say(line, data.character)} />} onClose={quest.close} dataId="quest-step">
@@ -156,7 +183,8 @@ export function QuestLayer({
       </Modal>
     );
   return (
-    <>
+    // The step screens read the game's state (a boss fight staged in the world) from this store.
+    <GameStoreContext.Provider value={store}>
       {/* The next step waits behind the notebook card: one screen at a time. */}
       {step && questId && !copy ? (
         <StepDraftScope owner={draftOwner} quest={questId} step={step.id}>
@@ -197,6 +225,6 @@ export function QuestLayer({
       {quest.retry ? <OfflineBanner onRetry={quest.retry} /> : null}
       {quest.toast ? <Toast message={quest.toast} onDone={quest.clearToast} /> : null}
       {quest.cheers > burstShown ? <AnswerBurst key={quest.cheers} onDone={endBurst} /> : null}
-    </>
+    </GameStoreContext.Provider>
   );
 }

@@ -21,3 +21,6 @@
 .modal-backdrop--bottom { place-items: end center; background: var(--color-backdrop-light); }
 .modal-backdrop--bottom .modal { width: min(100%, 44rem); }
 .modal--wide { width: min(100%, 52rem); }
+/* No scrim: the game shows untouched and gets the touches beside the dialog (the dialog itself still takes its own). */
+.modal-backdrop.modal-backdrop--clear { background: none; pointer-events: none; }
+.modal-backdrop--clear > .modal { pointer-events: auto; }

@@ -4,7 +4,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { freshPicker, type FreshPicker } from '@miu/quest/pick-fresh';
 import type { QuestStepPublic } from '@miu/schema/content';
-import { SkillCheckResult, StepCompleteResponse, type QuestCompletion, type StepCompleteRequest } from '@miu/schema/game';
+import { SkillCheckResult, StepCompleteResponse, type NotebookLine, type QuestCompletion, type StepCompleteRequest } from '@miu/schema/game';
 import type { GameStore, InteractableKind } from '../../game-bridge/game-store';
 import { ApiError, api, errorMessage } from '../api-client';
 import { mapBoth, pairOf, type Bilingual } from '../i18n/i18n';
@@ -63,6 +63,11 @@ export interface QuestController {
    * step at that character opens, else the arrow points at the step's place and a line says so.
    */
   resumeAt: (targetId: string) => void;
+  /**
+   * A boss beaten in a fight played out in the world: its screen stayed up for the boss to bow out; now it closes and
+   * the quest goes on (its reward). Nothing happens when no beaten boss's screen is up.
+   */
+  finishBoss: () => void;
 }
 
 /** The quest played with the party: a push of her progress by the server, and whether a teammate's answer is awaited. */
@@ -71,6 +76,8 @@ export interface PartyPlay {
   progressSeq: number;
   /** A teammate still has to answer a question before the party goes on. */
   waiting: boolean;
+  /** At a team boss of the party's quest `quest`: whose blow it is (`mine`: hers), by name; null when none is under way. */
+  turn?: { quest: string; mine: boolean; who: string } | null;
 }
 
 interface Options {
@@ -81,8 +88,15 @@ interface Options {
   questId: string | null;
   /** Called with every server response so the screen can show the new numbers. */
   onResponse: (response: StepCompleteResponse) => void;
+  /**
+   * A right answer sent again from the offline banner: its line to copy into the vở (the step's screen that sent it
+   * first was told nothing came back, so it cannot show the card itself).
+   */
+  onRetriedRight?: (copy: NotebookLine) => void;
   /** True while a dialogue or step screen covers the game. */
   onOverlayChange?: (open: boolean) => void;
+  /** The step's screen is up but the game runs on behind it (a boss fight played out in the world): it covers nothing. */
+  overlayLive?: boolean;
   /** The child whose step drafts are kept (step-draft.tsx); none: a reload starts the step afresh. */
   draftOwner?: string | null;
   /**
@@ -97,7 +111,7 @@ interface Options {
   openAt?: string | null;
 }
 
-export function useQuestController({ store, data, questId, onResponse, onOverlayChange, draftOwner = null, onSideTarget, openAt = null, party }: Options): QuestController {
+export function useQuestController({ store, data, questId, onResponse, onRetriedRight, onOverlayChange, overlayLive = false, draftOwner = null, onSideTarget, openAt = null, party }: Options): QuestController {
   const [overlay, setOverlayState] = useState<QuestOverlay>(null);
   const [finished, setFinished] = useState<FinishedQuest | null>(null);
   const [busy, setBusy] = useState(false);
@@ -114,14 +128,16 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   const gatesShown = useRef(new Set<string>());
 
   // Latest values for store callbacks, which outlive a render.
-  const latest = useRef({ data, questId, overlay, busy, onResponse, onOverlayChange, draftOwner, onSideTarget });
+  const latest = useRef({ data, questId, overlay, busy, onResponse, onRetriedRight, onOverlayChange, overlayLive, draftOwner, onSideTarget });
   useEffect(() => {
-    latest.current = { data, questId, overlay, busy, onResponse, onOverlayChange, draftOwner, onSideTarget };
+    latest.current = { data, questId, overlay, busy, onResponse, onRetriedRight, onOverlayChange, overlayLive, draftOwner, onSideTarget };
   });
   /** The character the quest was taken from, until its first line has opened. */
   const openAtRef = useRef(openAt);
   /** The pending switch from the world's cheer to the reward screens. */
   const celebration = useRef<number | null>(null);
+  /** A boss beaten in the world, bowing out on its screen: the step and the progress the server returned with the win. */
+  const bowing = useRef<{ step: string; quest: ActiveQuestView; progress: PlayerData['quests'][number]['progress'] } | null>(null);
   useEffect(
     () => () => {
       if (celebration.current !== null) window.clearTimeout(celebration.current);
@@ -133,8 +149,14 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   const cover = useCallback((part: 'overlay' | 'retry' | 'finished' | 'skillCheck', on: boolean): void => {
     covers.current[part] = on;
     const c = covers.current;
-    latest.current.onOverlayChange?.(c.overlay || c.retry || c.finished || c.skillCheck);
+    latest.current.onOverlayChange?.((c.overlay && !latest.current.overlayLive) || c.retry || c.finished || c.skillCheck);
   }, []);
+  // A step screen over the running game (a boss fight in the world) stops covering it, and covers it again after.
+  useEffect(() => {
+    latest.current.overlayLive = overlayLive;
+    const c = covers.current;
+    latest.current.onOverlayChange?.((c.overlay && !overlayLive) || c.retry || c.finished || c.skillCheck);
+  }, [overlayLive]);
   const closeSkillCheck = useCallback((): (() => void) | null => {
     setSkillCheck(null);
     cover('skillCheck', false);
@@ -158,7 +180,8 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
   const pickers = useRef(new Map<string, FreshPicker<Bilingual>>());
   // `submit` starts the next auto step, and `startStep` submits: the ref breaks the cycle.
   const startRef = useRef<(step: QuestStepPublic) => void>(() => undefined);
-  const submitRef = useRef<(step: QuestStepPublic, body?: StepCompleteRequest) => Promise<unknown>>(async () => null);
+  const submitRef = useRef<(step: QuestStepPublic, body?: StepCompleteRequest) => Promise<StepCompleteResponse | null>>(async () => null);
+  const finishBossRef = useRef<() => void>(() => undefined);
   const lineFrom = useCallback((key: string, pool: readonly Bilingual[]): Bilingual => {
     let picker = pickers.current.get(key);
     if (!picker) {
@@ -216,16 +239,21 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
         // A wrong answer's line shows inside the step screen; only a right one becomes a toast. A boss says its line in
         // its own bubble while the fight goes on; only the blow that wins it is a toast too.
         const bossGoesOn = step.kind === 'boss' && !response.quest.completedSteps.includes(step.id);
-        if (response.feedback && response.correct && !bossGoesOn) setToast(mapBoth(twin(response.feedback, response.feedbackEn), (line) => say(line, latest.current.data.character)));
+        // Beaten in a fight played out in the world, the boss bows out on its screen first (it says its winning line
+        // there): the screen stays until the fight calls finishBoss.
+        const bowsOut = step.kind === 'boss' && !bossGoesOn && response.correct && latest.current.overlay?.step.id === step.id && store.getSnapshot().duel === 'staged';
+        const stays = bossGoesOn || bowsOut;
+        if (bowsOut) bowing.current = { step: step.id, quest: active.quest, progress: response.quest };
+        if (response.feedback && response.correct && !stays) setToast(mapBoth(twin(response.feedback, response.feedbackEn), (line) => say(line, latest.current.data.character)));
         // A right answer to a learning step gets a burst of stars over the world as its screen closes.
         if (response.correct && (step.kind === 'read' || step.kind === 'riddle' || step.kind === 'challenge')) setCheers((n) => n + 1);
         if (response.correct) {
           // A boss's screen stays open until it is beaten: the next blow follows (after the vở card) without a new tap.
-          if (latest.current.overlay?.step.id === step.id && !bossGoesOn) setOverlay(null);
+          if (latest.current.overlay?.step.id === step.id && !stays) setOverlay(null);
           // Done: what was kept of the step is no longer needed (a boss still fighting keeps its last line).
-          if (latest.current.draftOwner && !bossGoesOn) clearDraft(latest.current.draftOwner, active.quest.id);
+          if (latest.current.draftOwner && !stays) clearDraft(latest.current.draftOwner, active.quest.id);
           // The next step may start by itself (read the letter, open the gate after the chest).
-          const next = bossGoesOn ? null : autoStep(active.quest, response.quest);
+          const next = stays ? null : autoStep(active.quest, response.quest);
           if (next) window.setTimeout(() => startRef.current(next), 0);
         }
         return response;
@@ -238,7 +266,11 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
         }
         if (err instanceof ApiError && err.code === 'network') {
           setRetry(() => async () => {
-            await submitRef.current(step, body);
+            const again = await submitRef.current(step, body);
+            if (!again?.correct) return;
+            if (again.copy) latest.current.onRetriedRight?.(again.copy);
+            // A boss beaten by the blow sent again: no fight is waiting to see it bow out, the quest goes on now.
+            if (bowing.current?.step === step.id) finishBossRef.current();
           });
           cover('retry', true);
         } else {
@@ -296,7 +328,11 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
     if (!active) return;
     syncWorld(active.quest, active.progress);
     const open = latest.current.overlay?.step;
-    if (open && active.progress.completedSteps.includes(open.id)) setOverlay(null);
+    if (open && active.progress.completedSteps.includes(open.id)) {
+      // The party went on past it (a boss bowing out on her screen included): the screen closes here.
+      if (bowing.current?.step === open.id) bowing.current = null;
+      setOverlay(null);
+    }
     const next = autoStep(active.quest, active.progress);
     if (next && !latest.current.busy && !latest.current.overlay) startRef.current(next);
   }, [pushed, activeQuest, syncWorld, setOverlay]);
@@ -408,6 +444,19 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
     });
   }, [store, activeQuest, syncWorld, startStep, onInteraction]);
 
+  const finishBoss = useCallback((): void => {
+    const won = bowing.current;
+    bowing.current = null;
+    if (!won) return;
+    if (latest.current.overlay?.step.id === won.step) setOverlay(null);
+    if (latest.current.draftOwner) clearDraft(latest.current.draftOwner, won.quest.id);
+    const next = autoStep(won.quest, won.progress);
+    if (next) window.setTimeout(() => startRef.current(next), 0);
+  }, [setOverlay]);
+  useEffect(() => {
+    finishBossRef.current = finishBoss;
+  }, [finishBoss]);
+
   return {
     overlay,
     finished,
@@ -422,7 +471,8 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
     retry,
     error,
     submit,
-    close: useCallback(() => setOverlay(null), [setOverlay]),
+    // Closing a boss that is bowing out goes on with the quest, as its "Tiếp tục" does.
+    close: useCallback(() => (bowing.current ? finishBoss() : setOverlay(null)), [finishBoss, setOverlay]),
     skillCheck,
     goOnFromSkillCheck,
     closeSkillCheck: useCallback(() => {
@@ -430,6 +480,7 @@ export function useQuestController({ store, data, questId, onResponse, onOverlay
     }, [closeSkillCheck]),
     gatesOpened,
     clearGatesOpened: useCallback(() => setGatesOpened(null), []),
+    finishBoss,
     resumeAt: useCallback(
       (targetId: string) => {
         const active = activeQuest();

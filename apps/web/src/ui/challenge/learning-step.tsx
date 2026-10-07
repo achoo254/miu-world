@@ -1,7 +1,8 @@
 // Picks the screen for a learning step (read, riddle, every challenge mechanic, a minigame) or a textbook task
 // without grading (speak, worksheet) and sends the answer. A wrong answer keeps the screen open with a
 // kind line (the server's feedback, else a rotating pool) and a soft tone; a right one plays a cheerful
-// sound and closes it (the controller moves on and bursts stars over the world).
+// sound and closes it (the controller moves on and bursts stars over the world). A boss fight stays open blow after
+// blow: each right blow plays out on the boss before its "copy into the vở" card (boss/boss-duel.tsx).
 import { useRef, useState, type ReactElement } from 'react';
 import { freshPicker } from '@miu/quest/pick-fresh';
 import type { QuestStepPublic } from '@miu/schema/content';
@@ -29,7 +30,7 @@ import { MultiSelectChallenge } from './mechanics/multi-select-challenge';
 import { SpeakStepScreen } from './mechanics/speak-step';
 import { WorksheetStepScreen } from './mechanics/worksheet-step';
 import { DecisionScreen } from './decision-screen';
-import { BossScreen } from './boss/boss-screen';
+import { BossDuel, type BossBlow } from './boss/boss-duel';
 import { isCount, useDraftState } from '../quest/step-draft';
 import { MinigameOverlay } from '../minigame/minigame-overlay';
 
@@ -60,6 +61,8 @@ export function LearningStep({
   submit,
   onClose,
   onRight,
+  onBossWon,
+  partyTurn = null,
 }: {
   step: QuestStepPublic;
   quest: ActiveQuestView;
@@ -69,6 +72,10 @@ export function LearningStep({
   onClose: () => void;
   /** A right answer: the server's line (the question and the book's answer) to copy into the vở. */
   onRight?: (copy: NotebookLine) => void;
+  /** A boss beaten in the world has bowed out: the quest goes on. */
+  onBossWon?: () => void;
+  /** Played with the party, at a team boss: whose blow it is. */
+  partyTurn?: { mine: boolean; who: string } | null;
 }): ReactElement | null {
   const [tryAgain, setTryAgain] = useState<Bilingual | null>(null);
   /**
@@ -83,11 +90,11 @@ export function LearningStep({
   const fallback = useRef(freshPicker(TRY_AGAIN_LINES));
   const fill = (text: string): string => say(text, data.character);
 
-  async function onAnswer(answer: StepAnswer) {
+  /** Sends an answer and shows what the server said (sound, lines, support layers opening); the response, or null. */
+  async function answerWith(answer: StepAnswer): Promise<StepCompleteResponse | null> {
     const response = await submit(step, { answer });
-    if (!response) return;
+    if (!response) return null;
     playCue(response.correct ? 'right' : 'wrong');
-    if (response.correct && response.copy) onRight?.(response.copy);
     if (step.kind === 'boss') setBossLine(response.feedback ? twin(response.feedback, response.feedbackEn) : null);
     if (!response.correct) {
       setTryAgain(response.feedback ? mapBoth(twin(response.feedback, response.feedbackEn), fill) : mapBoth(fallback.current.next(), fill));
@@ -97,6 +104,19 @@ export function LearningStep({
         setTurnTries((tries) => ({ ...tries, [turn]: (tries[turn] ?? 0) + 1 }));
       }
     }
+    return response;
+  }
+
+  async function onAnswer(answer: StepAnswer): Promise<void> {
+    const response = await answerWith(answer);
+    if (response?.correct && response.copy) onRight?.(response.copy);
+  }
+
+  /** A boss blow: the fight plays it out on the boss, then hands the vở line on itself. */
+  async function bossBlow(answer: StepAnswer): Promise<BossBlow | null> {
+    const response = await answerWith(answer);
+    if (!response) return null;
+    return { correct: response.correct, won: response.quest.completedSteps.includes(step.id), copy: response.copy ?? null };
   }
 
   const context: ChallengeContext = {
@@ -118,9 +138,11 @@ export function LearningStep({
   const answer = (a: StepAnswer) => void onAnswer(a);
   if (step.kind === 'decision') return <DecisionScreen step={step} data={data} busy={busy} onAnswer={answer} onClose={onClose} />;
   if (step.kind === 'boss') {
-    const questProgress = data.progress.quests.find((q) => q.questId === quest.id);
-    const bossState = questProgress?.bossState?.[step.id];
-    return <BossScreen step={step} context={context} bossState={bossState} line={bossLine} turnTries={turnTries} onAnswer={answer} onClose={onClose} />;
+    // The quest's own progress moves with her answers and with the party's pushes (a teammate's blow); the overall
+    // progress only with her answers.
+    const summary = data.quests.find((q) => q.quest.id === quest.id);
+    const bossState = summary?.progress.bossState?.[step.id] ?? data.progress.quests.find((q) => q.questId === quest.id)?.bossState?.[step.id];
+    return <BossDuel step={step} context={context} bossState={bossState} line={bossLine} turnTries={turnTries} onAnswer={bossBlow} onRight={onRight} onWon={onBossWon} turnOf={partyTurn} onClose={onClose} />;
   }
   if (step.kind === 'read') return <ReadStepScreen step={step} context={context} texts={quest.texts} onAnswer={answer} />;
   if (step.kind === 'riddle') return <RiddleStepScreen step={step} context={context} onAnswer={answer} />;
