@@ -23,6 +23,8 @@ export interface Waypoint {
   z: number;
 }
 
+const distance = (a: Waypoint, b: Waypoint): number => Math.hypot(a.x - b.x, a.z - b.z);
+
 export interface BotProfile {
   id: string;
   displayName: string;
@@ -210,6 +212,25 @@ const VISIT_RANGE = 20;
 const VISIT_STOP = 2.5;
 const VISIT_CHANCE = 0.6;
 /** In a party's voice a bot answers this long after a player stops talking (and up to twice as long)… */
+/** Bots of a map that come over to play near each player when fewer than this are already around her. */
+export const BOTS_NEAR_PLAYER = 3;
+/** A bot this close to a player (blocks) is one she can see around her. */
+export const BOT_SEEN_RANGE = 45;
+/** Where a bot that comes over appears: a spot she walked, this far from her (out of her close view). */
+const ARRIVE_MIN = 22;
+const ARRIVE_MAX = 40;
+/** Her walked trail: a point each time she has gone this far, the latest so many. */
+export const TRAIL_STEP = 4;
+const TRAIL_POINTS = 48;
+/** A bot keeps to trail spots this close to her. */
+const WANDER_RANGE = 30;
+/** Trail points a bot walks on from one stop to the next (one straight step stays on her own way). */
+const TRAIL_HOP = 2;
+/** She rode or flew this far off: the bots with her come again near her. */
+const LOST_RANGE = 90;
+/** How often the runner looks where the players are (s). */
+const GATHER_EVERY_S = 1;
+
 export const BOT_VOICE_REPLY_MS = 700;
 /** …greets a player who comes into the voice after this long… */
 export const BOT_VOICE_HELLO_MS = 1_200;
@@ -241,6 +262,8 @@ class CompanionBotInstance {
   private lastGreetTime = 0;
   /** A friend it walks over to, before going on along its way. */
   private detour: Waypoint | null = null;
+  /** The player it came over to and her walked trail, which it wanders on (null: it keeps to its own patch). */
+  private escort: { playerId: string; trail: readonly Waypoint[] } | null = null;
   private readonly hooks: BotHooks;
 
   constructor(profile: BotProfile, room: MultiplayerRoom, hooks: Partial<BotHooks> = {}) {
@@ -279,6 +302,70 @@ class CompanionBotInstance {
 
   leave(): void {
     this.room.leave(this.profile.id);
+  }
+
+  /** The player it came over to (null: none). */
+  get escorting(): string | null {
+    return this.escort?.playerId ?? null;
+  }
+
+  /** Waving at someone: not the moment to leave. */
+  get greeting(): boolean {
+    return this.state === 'greet';
+  }
+
+  /**
+   * Comes over to play near a player: it appears at `at`, a spot she walked out of her close view, and from there
+   * walks on her trail — every point of it is ground she stood on, so its way never runs through a wall.
+   */
+  joinPlayer(playerId: string, trail: readonly Waypoint[], at: Waypoint): void {
+    this.escort = { playerId, trail };
+    this.place(at);
+  }
+
+  /** Back to its own patch (no player is near either place when the runner sends it). */
+  goHome(): void {
+    this.escort = null;
+    this.currentWaypointIdx = 0;
+    this.place(this.profile.waypoints[0] ?? this.presence);
+  }
+
+  private place(at: Waypoint): void {
+    this.detour = null;
+    this.state = 'idle';
+    this.stateTimer = 1 + this.hooks.random() * 2;
+    this.presence.x = at.x;
+    this.presence.y = at.y;
+    this.presence.z = at.z;
+    this.presence.speed = 0;
+    this.presence.action = 'idle';
+    this.room.updatePresence(this.presence.id, { x: at.x, y: at.y, z: at.z, yaw: this.presence.yaw, speed: 0, action: 'idle' });
+  }
+
+  /** Its next stop on her trail: a point or two along from where it stands, among those near her. */
+  private nextOnTrail(): Waypoint | null {
+    if (!this.escort) return null;
+    const { trail, playerId } = this.escort;
+    const her = this.room.members.get(playerId)?.presence;
+    if (!her || trail.length < 2) return null;
+    let at = 0;
+    let best = Infinity;
+    trail.forEach((p, i) => {
+      const d = Math.hypot(p.x - this.presence.x, p.z - this.presence.z);
+      if (d < best) {
+        best = d;
+        at = i;
+      }
+    });
+    const options: number[] = [];
+    for (let i = Math.max(0, at - TRAIL_HOP); i <= Math.min(trail.length - 1, at + TRAIL_HOP); i++) {
+      const p = trail[i];
+      if (i !== at && p && Math.hypot(p.x - her.x, p.z - her.z) <= WANDER_RANGE) options.push(i);
+    }
+    // Every spot around it is far from her (she walked on): it follows her way towards where she is now.
+    const pick = options.length > 0 ? options[Math.floor(this.hooks.random() * options.length)] : Math.min(trail.length - 1, at + 1);
+    const next = pick === undefined ? undefined : trail[pick];
+    return next ? { x: next.x, y: next.y, z: next.z } : null;
   }
 
   /** Sometimes, after a pause, it walks over to a friend in its room (friends meet it more often). */
@@ -346,8 +433,16 @@ class CompanionBotInstance {
     if (this.state === 'idle') {
       if (this.stateTimer <= 0) {
         this.state = 'walk';
-        this.currentWaypointIdx = (this.currentWaypointIdx + 1) % this.profile.waypoints.length;
-        this.visitFriend();
+        if (this.escort) {
+          this.detour = this.nextOnTrail();
+          if (!this.detour) {
+            this.state = 'idle';
+            this.stateTimer = 1.5;
+          }
+        } else {
+          this.currentWaypointIdx = (this.currentWaypointIdx + 1) % this.profile.waypoints.length;
+          this.visitFriend();
+        }
       }
       return;
     }
@@ -446,6 +541,9 @@ export class BotRunner {
   private readonly hub: MultiplayerHub;
   private readonly random: () => number;
   private readonly bots = new Map<string, CompanionBotInstance[]>();
+  /** Each player's walked trail on a shared map, by room key and player (the bots that come over walk on it). */
+  private readonly trails = new Map<string, Waypoint[]>();
+  private gatherIn = 0;
   private timer: NodeJS.Timeout | null = null;
   private lastTick = Date.now();
   /** Answers on their way (a bot takes a moment, as a player would). */
@@ -697,11 +795,67 @@ export class BotRunner {
     const now = Date.now();
     const dt = Math.min((now - this.lastTick) / 1000, 0.2);
     this.lastTick = now;
+    this.gatherIn -= dt;
+    if (this.gatherIn <= 0) {
+      this.gatherIn = GATHER_EVERY_S;
+      this.gather();
+    }
     for (const list of this.bots.values()) {
       for (const bot of list) {
         bot.tick(dt);
       }
     }
+  }
+
+  /**
+   * A map is 800 blocks wide and its bots live in one patch of it, so a player away on a quest met none (owner
+   * 07/10/2026). Wherever she plays, up to three bots are around her: the ones already near, else free bots that no
+   * player sees come over along her own way. A home keeps its neighbours, who live by its front gate.
+   */
+  private gather(): void {
+    for (const list of this.bots.values()) {
+      const room = list[0]?.room;
+      if (!room || room.host !== null) continue;
+      const humans = [...room.members.values()].filter((m) => !m.isBot);
+      const here = new Set(humans.map((h) => h.id));
+      for (const key of this.trails.keys()) if (key.startsWith(`${room.key}|`) && !here.has(key.slice(room.key.length + 1))) this.trails.delete(key);
+      const seenByAnyone = (at: Waypoint): boolean => humans.some((h) => distance(h.presence, at) <= BOT_SEEN_RANGE);
+      for (const bot of list) {
+        const id = bot.escorting;
+        if (id !== null && !here.has(id) && !seenByAnyone(bot.presence)) bot.goHome();
+      }
+      for (const human of humans) {
+        const her = human.presence;
+        const trail = this.walked(`${room.key}|${human.id}`, her);
+        const spots = trail.filter((p) => {
+          const d = distance(p, her);
+          return d >= ARRIVE_MIN && d <= ARRIVE_MAX;
+        });
+        if (spots.length === 0) continue;
+        const spot = (): Waypoint => spots[Math.floor(this.random() * spots.length)] ?? her;
+        // She rode off: her bots catch up with her by her way, out of her sight.
+        for (const bot of list) if (bot.escorting === human.id && distance(bot.presence, her) > LOST_RANGE) bot.joinPlayer(human.id, trail, spot());
+        let need = BOTS_NEAR_PLAYER - list.filter((bot) => distance(bot.presence, her) <= BOT_SEEN_RANGE).length;
+        const free = list.filter((bot) => bot.escorting === null && !bot.greeting && !this.hub.parties.partyOf(bot.presence.id) && !seenByAnyone(bot.presence));
+        while (need > 0 && free.length > 0) {
+          const [bot] = free.splice(Math.floor(this.random() * free.length), 1);
+          bot?.joinPlayer(human.id, trail, spot());
+          need -= 1;
+        }
+      }
+    }
+  }
+
+  /** Her trail with where she is now added (a point each `TRAIL_STEP` blocks, the latest `TRAIL_POINTS`). */
+  private walked(key: string, her: PlayerPresence): Waypoint[] {
+    const trail = this.trails.get(key) ?? [];
+    this.trails.set(key, trail);
+    const last = trail[trail.length - 1];
+    if (!her.riding && (!last || distance(last, her) >= TRAIL_STEP)) {
+      trail.push({ x: her.x, y: her.y, z: her.z });
+      if (trail.length > TRAIL_POINTS) trail.shift();
+    }
+    return trail;
   }
 
   stop(): void {

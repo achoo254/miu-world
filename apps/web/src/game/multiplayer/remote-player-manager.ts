@@ -21,6 +21,12 @@ export function isAirborne(y: number, ground: number): boolean {
   return y - ground > AIRBORNE_ABOVE;
 }
 
+/**
+ * A move this long in one update is a jump to another place (a portal, a ride, a bot coming over to play near her):
+ * drawn there at once, not slid across the map in a streak.
+ */
+export const REMOTE_SNAP_DISTANCE = 12;
+
 /** Close enough to the child for the interaction button (blocks); the server allows a little more for lag. */
 export const PLAYER_PROMPT_RADIUS = 2.6;
 /** Heights over her feet in the model's own units (the character root is scaled). */
@@ -383,8 +389,9 @@ export class RemotePlayerManager {
     for (const entity of this.entities.values()) {
       const root = entity.character.root;
 
-      // Smooth interpolation (lerp)
-      root.position.lerp(entity.targetPos, Math.min(1, dt * (entity.airborne ? 18 : 10)));
+      // Smooth interpolation (lerp); a jump to another place is drawn there at once.
+      if (root.position.distanceToSquared(entity.targetPos) > REMOTE_SNAP_DISTANCE ** 2) root.position.copy(entity.targetPos);
+      else root.position.lerp(entity.targetPos, Math.min(1, dt * (entity.airborne ? 18 : 10)));
       root.rotation.y = MathUtils.lerp(root.rotation.y, entity.targetYaw, Math.min(1, dt * 10));
 
       // On her vehicle she holds its seated pose (a board: her idle), as the child herself does.
