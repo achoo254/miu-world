@@ -8,6 +8,8 @@ import type { BotContext, BotMove } from '../types';
 import { nullContext, playRound, testDrawView } from './play-round';
 
 const SEEDS = [1, 2, 3, 4, 5];
+/** Limit for drawing every state of a round on the three reference screens (the node project's test limit). */
+const DRAW_TIMEOUT_MS = 20_000;
 
 export interface MinigameTestOptions {
   /** A player that must lose, when doing nothing at all would win this game (default: idle). */
@@ -55,6 +57,8 @@ export function describeMinigame(id: string, options: MinigameTestOptions = {}):
       expect(Number.isInteger(a.score) && a.score >= 0).toBe(true);
     });
 
+    // Draws every frame of a whole round on each reference screen: some games pass the 5 s default
+    // under a full parallel run, so this test gets the node project's test limit.
     it('draws every state of a round', async () => {
       if (!spec) throw new Error(`no content/minigames/${id}.json`);
       const game = await loadMinigame(id);
@@ -63,6 +67,6 @@ export function describeMinigame(id: string, options: MinigameTestOptions = {}):
         const { arena } = arenaFor(screen.width, screen.height);
         playRound(game, spec, { arena, seed: 7, player: 'bot', onStep: (round) => round.game.draw(ctx, testDrawView(arena, round.elapsed)) });
       }
-    });
+    }, DRAW_TIMEOUT_MS);
   });
 }
