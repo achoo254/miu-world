@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createNametag } from './multiplayer-nametag';
+import { createNametag, nametagText } from './multiplayer-nametag';
 
 describe('multiplayer nametags', () => {
   it('creates 3D nametag sprite with proper render order and scale', () => {
@@ -9,6 +9,13 @@ describe('multiplayer nametags', () => {
 
     const playerNametag = createNametag('Mèo Mây', false);
     expect(playerNametag.renderOrder).toBe(12);
+  });
+
+  it('always labels a bot, and marks one busy with a quest and a party member before the name', () => {
+    expect(nametagText('Bé Bông', true)).toBe('🤖 [Bạn máy] Bé Bông');
+    expect(nametagText('Bé Bông', true, false, true)).toBe('📜 🤖 [Bạn máy] Bé Bông');
+    expect(nametagText('Bé Bông', true, true, true)).toBe('⭐ 📜 🤖 [Bạn máy] Bé Bông');
+    expect(nametagText('Mèo Mây', false, true)).toBe('⭐ Mèo Mây');
   });
 });
 

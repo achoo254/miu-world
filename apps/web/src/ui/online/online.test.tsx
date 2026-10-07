@@ -196,5 +196,6 @@ describe('toasts', () => {
     expect(toastText({ kind: 'notice', code: 'not-here', name: null, seq: 1 })).toEqual({ vi: 'Không còn ở gần bạn ấy nữa.', en: 'Not near them any more.' });
     expect(toastText({ kind: 'waved', name: 'Bông', seq: 1 }).en).toBe('Bông waves at you');
     expect(toastText({ kind: 'said', name: 'Bông', text: 'Xin chào bạn!', seq: 1 })).toEqual({ vi: 'Bông: Xin chào bạn!', en: 'Bông: Hello there!' });
+    expect(toastText({ kind: 'bot-said', name: 'Bé Bông', line: { vi: 'Chào bạn!', en: 'Hi there!' }, seq: 1 })).toEqual({ vi: '🤖 Bé Bông: Chào bạn!', en: '🤖 Bé Bông: Hi there!' });
   });
 });

@@ -1,6 +1,6 @@
 // Nametag sprite rendered over remote players and companion bots.
 // Always clearly renders "[Bạn máy]" badge for bots per Jev 03/10/2026; members of the child's party get a star and a
-// party-coloured edge, so she finds them in a crowd.
+// party-coloured edge, so she finds them in a crowd; a bot busy with a quest of the map shows a scroll before its name.
 import { CanvasTexture, SRGBColorSpace, Sprite, SpriteMaterial } from 'three';
 import { t } from '../../ui/i18n/i18n';
 
@@ -8,7 +8,14 @@ const WIDTH = 384;
 const HEIGHT = 96;
 const WORLD_WIDTH = 2.2;
 
-export function createNametag(name: string, isBot: boolean, partyMate = false): Sprite {
+/** The words on a name tag: the party star, the quest scroll, the bot badge, then the name. */
+export function nametagText(name: string, isBot: boolean, partyMate = false, busy = false): string {
+  const label = isBot ? `🤖 [${t('online.botLabel')}] ${name}` : name;
+  const doing = busy ? `📜 ${label}` : label;
+  return partyMate ? `⭐ ${doing}` : doing;
+}
+
+export function createNametag(name: string, isBot: boolean, partyMate = false, busy = false): Sprite {
   const canvas = document.createElement('canvas');
   canvas.width = WIDTH;
   canvas.height = HEIGHT;
@@ -17,8 +24,7 @@ export function createNametag(name: string, isBot: boolean, partyMate = false): 
   if (ctx) {
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
 
-    const label = isBot ? `🤖 [${t('online.botLabel')}] ${name}` : name;
-    const text = partyMate ? `⭐ ${label}` : label;
+    const text = nametagText(name, isBot, partyMate, busy);
     ctx.font = '700 36px "Baloo 2", "Nunito", sans-serif';
     const textWidth = Math.min(WIDTH - 40, ctx.measureText(text).width);
     const cardWidth = textWidth + 40;

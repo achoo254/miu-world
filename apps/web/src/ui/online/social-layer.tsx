@@ -64,6 +64,8 @@ export function toastText(toast: OnlineToast): Bilingual {
       return pairOf('online.waved', { who: same(toast.name) });
     case 'said':
       return pairOf('online.said', { who: same(toast.name), line: cannedPair(toast.text) });
+    case 'bot-said':
+      return pairOf('online.said', { who: same(`🤖 ${toast.name}`), line: toast.line });
     case 'party-chat':
       return pairOf('online.partyChat', { who: same(toast.name), line: cannedPair(toast.text) });
     case 'friend':

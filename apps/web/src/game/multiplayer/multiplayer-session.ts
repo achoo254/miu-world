@@ -7,7 +7,7 @@ import type { GameStore } from '../../game-bridge/game-store';
 import type { SocialCommand, SocialStore } from '../../game-bridge/social-store';
 import type { GuardedGltfLoader } from '../asset-loader';
 import type { RemoteSummary } from '../debug/stats-overlay';
-import { cannedLine } from './canned-lines';
+import { botLinePair, cannedLine } from './canned-lines';
 import { MultiplayerClient, type MultiplayerStart } from './multiplayer-client';
 import { RemotePlayerManager, type NearPlayer } from './remote-player-manager';
 
@@ -189,6 +189,17 @@ export class MultiplayerSession {
         if (message.to === this.selfId && name) social?.toast({ kind: 'said', name, text: message.text });
         return;
       }
+      case 'bot-say': {
+        const line = botLinePair(message.key, message.variant);
+        if (!line) return;
+        remote.sayLine(message.id, line);
+        const name = this.nameOf(message.id);
+        if (message.to === this.selfId && name) social?.toast({ kind: 'bot-said', name, line });
+        return;
+      }
+      case 'bot-doing':
+        remote.setBusy(message.id, message.quest !== null);
+        return;
       case 'appearance': {
         remote.applyAppearance(message.id, message.appearance);
         const known = this.roster.get(message.id);

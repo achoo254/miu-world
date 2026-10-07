@@ -21,6 +21,8 @@ export type OnlineToast =
   | { kind: 'notice'; code: MpNotice; name: string | null; seq: number }
   | { kind: 'waved'; name: string; seq: number }
   | { kind: 'said'; name: string; text: SafeCannedChat; seq: number }
+  /** A companion bot's own line said to her (both languages, from the locale files). */
+  | { kind: 'bot-said'; name: string; line: { vi: string; en: string }; seq: number }
   | { kind: 'party-chat'; name: string; text: SafeCannedChat; seq: number }
   /** A friend request of hers was answered (or both asked: friends at once). */
   | { kind: 'friend'; added: boolean; name: string; isBot: boolean; seq: number }

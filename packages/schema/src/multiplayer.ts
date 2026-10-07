@@ -6,6 +6,7 @@
 // Identity is the server's: a player's name, species, outfit and pet are read from her saved character when she
 // joins, never taken from the client, so nobody can show up as someone else or in someone else's clothes.
 import { z } from 'zod';
+import { BotLineKey, BotLineVariant } from './bot-lines';
 import { ContentId } from './content';
 import { CoopClientMessages, CoopServerMessages } from './coop';
 import { FriendPerson } from './friends';
@@ -89,6 +90,8 @@ export type MpNotice = z.infer<typeof MpNotice>;
 const Coordinate = z.number();
 /** An id on the wire: a player's public id (`p-…`, never her account or profile id) or a bot id (`bot-…`). */
 const PlayerId = z.string().min(1).max(40);
+/** A companion bot's id: only bots speak the bots' lines or show what quest they are on. */
+const BotId = PlayerId.regex(/^bot-/);
 
 export const PlayerPresence = z.strictObject({
   /** Public player id or bot id (`bot-...`). */
@@ -201,6 +204,16 @@ export const ServerWsMessage = z.discriminatedUnion('type', [
   /** Where a party member or friend is; `host`: on the home map, whose home it is. */
   z.strictObject({ type: z.literal('party-goto'), id: PlayerId, mapId: ContentId, x: Coordinate, y: Coordinate, z: Coordinate, host: PlayerId.optional() }),
   z.strictObject({ type: z.literal('party-travel'), from: PlayerId, displayName: z.string().min(1).max(32), region: ContentId }),
+  /**
+   * A companion bot says one of the bots' lines (`bot-lines.ts`), shown over it in each player's own language;
+   * `to`: said to that player (she is told).
+   */
+  z.strictObject({ type: z.literal('bot-say'), id: BotId, key: BotLineKey, variant: BotLineVariant, to: PlayerId.optional() }),
+  /**
+   * What a companion bot is busy with: a quest of the map (its name tag shows the quest mark) or nothing (null).
+   * Sent when it changes, and to a player who joins the room.
+   */
+  z.strictObject({ type: z.literal('bot-doing'), id: BotId, quest: ContentId.nullable() }),
   ...CoopServerMessages,
   ...PartyQuestServerMessages,
   ...VoiceServerMessages,

@@ -1,11 +1,12 @@
 // Other players and companion bots in the 3D scene, built from what the server says about them: their saved
 // character (species, clothes, vehicle, pet), redressed in place when they save new clothes. Bots always carry the
-// "[Bạn máy]" label (Jev 03/10/2026); members of the child's party wear a party badge over their name.
+// "[Bạn máy]" label (Jev 03/10/2026); members of the child's party wear a party badge over their name, and a bot busy
+// with a quest of the map a quest scroll.
 import { Group, MathUtils, Vector3, type Camera, type Mesh, type Sprite } from 'three';
 import type { PlayerAppearance, PlayerPresence, SafeEmote } from '@miu/schema/multiplayer';
 import type { GuardedGltfLoader } from '../asset-loader';
 import type { RemoteSummary } from '../debug/stats-overlay';
-import { t, type TextKey } from '../../ui/i18n/i18n';
+import { getLangMode, inline, t, type Bilingual, type TextKey } from '../../ui/i18n/i18n';
 import { PETS } from '../../ui/kit/ui-art';
 import { loadPetCompanion, type PetCompanion } from '../entities/pet-companion';
 import { gearLooks } from '../pet/pet-gear-catalog';
@@ -89,6 +90,8 @@ export class RemotePlayerManager {
   private partyIds: ReadonlySet<string> = new Set();
   /** Who talks in the child's voice now. */
   private speakingIds: ReadonlySet<string> = new Set();
+  /** Bots busy with a quest of the map (kept for one still loading too, shown once it is up). */
+  private readonly busyIds = new Set<string>();
   private readonly shadows: boolean;
   private readonly changed: (players: RemoteSummary[]) => void;
 
@@ -143,7 +146,7 @@ export class RemotePlayerManager {
 
   private setNametag(entity: RemoteEntity): void {
     disposeSprite(entity.nametag);
-    entity.nametag = createNametag(entity.presence.displayName, entity.presence.isBot, entity.partyMate);
+    entity.nametag = createNametag(entity.presence.displayName, entity.presence.isBot, entity.partyMate, this.busyIds.has(entity.presence.id));
     entity.nametag.position.y = NAMETAG_HEIGHT;
     entity.character.root.add(entity.nametag);
   }
@@ -170,7 +173,7 @@ export class RemotePlayerManager {
       root.rotation.y = now.yaw;
 
       const partyMate = this.partyIds.has(now.id);
-      const nametag = createNametag(presence.displayName, now.isBot, partyMate);
+      const nametag = createNametag(presence.displayName, now.isBot, partyMate, this.busyIds.has(now.id));
       nametag.position.y = NAMETAG_HEIGHT;
       root.add(nametag);
       const speakingMark = createSpeakingMark();
@@ -238,7 +241,7 @@ export class RemotePlayerManager {
     const before = entity.presence;
     const presence: PlayerPresence = { ...before, ...appearance, x: entity.targetPos.x, z: entity.targetPos.z, y: entity.targetPos.y - entity.lift, riding: entity.riding };
     if (appearance.species !== before.species) {
-      this.despawn(id);
+      this.remove(id);
       void this.spawn(presence);
       return;
     }
@@ -300,6 +303,15 @@ export class RemotePlayerManager {
     if (changed) this.report();
   }
 
+  /** A bot started a quest of the map (its name tag shows the quest scroll) or is done with it. */
+  setBusy(id: string, busy: boolean): void {
+    if (busy === this.busyIds.has(id)) return;
+    if (busy) this.busyIds.add(id);
+    else this.busyIds.delete(id);
+    const entity = this.entities.get(id);
+    if (entity) this.setNametag(entity);
+  }
+
   updateMove(update: { id: string; x: number; y: number; z: number; yaw: number; speed: number; riding?: boolean; action?: PlayerPresence['action'] }): void {
     const pending = this.latest.get(update.id);
     if (pending) {
@@ -326,6 +338,11 @@ export class RemotePlayerManager {
 
   sayChat(id: string, text: string): void {
     this.entities.get(id)?.bubble.show(cannedLine(text));
+  }
+
+  /** A line in both languages over a player (a bot's own line), in the current display language. */
+  sayLine(id: string, line: Bilingual): void {
+    this.entities.get(id)?.bubble.show(inline(line, getLangMode()));
   }
 
   /** Who she is to the menus (null: not here). */
@@ -362,7 +379,14 @@ export class RemotePlayerManager {
     return { x: ((v.x + 1) / 2) * viewport.width, y: ((1 - v.y) / 2) * viewport.height };
   }
 
+  /** She left the room: gone from the scene, with what she was busy with. */
   despawn(id: string): void {
+    this.busyIds.delete(id);
+    this.remove(id);
+  }
+
+  /** Takes one player out of the scene (a new species brings her back at once). */
+  private remove(id: string): void {
     this.pendingSpawns.delete(id);
     this.latest.delete(id);
     const entity = this.entities.get(id);
@@ -408,6 +432,7 @@ export class RemotePlayerManager {
     this.entities.clear();
     this.pendingSpawns.clear();
     this.latest.clear();
+    this.busyIds.clear();
     this.report();
   }
 }

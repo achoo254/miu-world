@@ -297,6 +297,43 @@ describe('canned lines', () => {
   });
 });
 
+describe('companion bots in the online session', () => {
+  const party = {
+    id: 'party-1',
+    leader: 'p-me',
+    members: [
+      { id: 'p-me', displayName: 'Miu', isBot: false, species: 'cat', pet: null, mapId: 'trung-tam' },
+      { id: 'bot-tt-1', displayName: 'Bé Bông', isBot: true, species: 'rabbit', pet: null, mapId: 'trung-tam' },
+    ],
+  };
+
+  it('shows a bot’s line over it, and tells her when it was said to her', () => {
+    const { ws, social, online } = session();
+    const sayLine = vi.spyOn(online.remote, 'sayLine');
+    ws.receive({ type: 'party-state', party });
+    ws.receive({ type: 'bot-say', id: 'bot-tt-1', key: 'hello', variant: 4 });
+    expect(sayLine).toHaveBeenLastCalledWith('bot-tt-1', linesOf('online.botLines.hello')[4]);
+    expect(social.getSnapshot().toast).toBeNull();
+    ws.receive({ type: 'bot-say', id: 'bot-tt-1', key: 'invite', variant: 11, to: 'p-me' });
+    const line = linesOf('online.botLines.invite')[11];
+    expect(sayLine).toHaveBeenLastCalledWith('bot-tt-1', line);
+    expect(social.getSnapshot().toast).toMatchObject({ kind: 'bot-said', name: 'Bé Bông', line });
+    online.dispose();
+  });
+
+  it('marks a bot busy with a quest, and unmarks it when it has none', () => {
+    const { ws, online } = session();
+    const setBusy = vi.spyOn(online.remote, 'setBusy');
+    ws.receive({ type: 'bot-doing', id: 'bot-tt-1', quest: 'tv-bai-1-ngay-hom-qua' });
+    ws.receive({ type: 'bot-doing', id: 'bot-tt-1', quest: null });
+    expect(setBusy.mock.calls).toEqual([
+      ['bot-tt-1', true],
+      ['bot-tt-1', false],
+    ]);
+    online.dispose();
+  });
+});
+
 describe('arrows to party members', () => {
   it('points up for ahead, right for the right, down for behind (camera looking along −z)', () => {
     const forward = { x: 0, z: -1 };
