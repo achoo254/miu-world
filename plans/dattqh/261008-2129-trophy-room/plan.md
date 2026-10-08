@@ -1,6 +1,6 @@
 # Phòng truyền thống ở Nhà của bé
 
-Trạng thái: xong phần tự động (08/10/2026), chưa commit · Độ lớn: L · Nhánh: `main`
+Trạng thái: đã deploy production 08/10/2026 (revision `3179dbca`) · Độ lớn: L · Nhánh: `main`
 
 ## Kết quả mong muốn
 
