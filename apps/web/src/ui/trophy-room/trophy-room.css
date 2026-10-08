@@ -1,0 +1,43 @@
+/*
+ * The trophy room's list (NEW SCREEN): three sections of cards (badges, cups, plaques) on parchment. Values from
+ * tokens.css only; a piece not earned yet is faded; the cards wrap to the screen (two across on a phone).
+ */
+.trophy-modal > * { min-width: 0; }
+
+.trophy-board {
+  display: grid;
+  gap: var(--space-md);
+  padding: var(--space-md);
+}
+.trophy-summary {
+  margin: 0;
+  color: var(--color-ink);
+  font: 800 var(--text-body) var(--font-display);
+}
+.trophy-section { display: grid; gap: var(--space-xs); }
+.trophy-section h3 {
+  margin: 0;
+  color: var(--color-ink);
+  font: 800 var(--text-title) var(--font-display);
+}
+.trophy-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  gap: var(--space-xs);
+}
+.trophy-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  border: 3px solid var(--color-parchment-edge);
+  border-radius: var(--radius-tile);
+  background: var(--color-surface-faint);
+  color: var(--color-ink);
+}
+.trophy-card--missing { opacity: 0.55; filter: grayscale(1); }
+.trophy-card-name { font: 800 var(--text-body) var(--font-display); }
+.trophy-card-how, .trophy-card-when { display: block; font-size: var(--text-sm); }
+.trophy-stars { display: inline-flex; gap: 2px; }
+.trophy-star--off { opacity: 0.3; filter: grayscale(1); }

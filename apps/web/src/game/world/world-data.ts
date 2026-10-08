@@ -7,6 +7,7 @@
 import { NearestFilter, LinearMipmapLinearFilter, SRGBColorSpace, TextureLoader, type Texture } from 'three';
 import { atlasSchema, type Atlas } from '@miu/voxel/block-table';
 import { decorated, recolourArea, recolourHorizon, type DecorPicks } from '@miu/voxel/home-decor';
+import { withTrophies } from '@miu/voxel/trophy-display';
 import { VoxelWorld } from '@miu/voxel/chunk-format';
 import { OUTLAND_BOUNDS, type WorldBounds } from '@miu/voxel/outland';
 import { outlandEntities } from '@miu/voxel/outland-life';
@@ -146,8 +147,10 @@ function plannedOutland(mapId: string, spec: NonNullable<WorldEntities['outland'
  * `withOutland` false: only the core is loaded, even on a map with outer land (still pictures of the whole
  * core, which have no child walking away from it). `decor`: the child's picks for her home (home-decor.ts),
  * whose props stand in place of the map's own and whose colours are painted on each region as it arrives.
+ * `trophies`: the display keys of her trophy room she earned (trophy-display.ts; `all`: every piece, for review
+ * shots); the other spots show their empty stands.
  */
-export async function loadWorldData(registry: AssetRegistry, mapId: string, options: { withOutland?: boolean; decor?: DecorPicks } = {}): Promise<WorldData> {
+export async function loadWorldData(registry: AssetRegistry, mapId: string, options: { withOutland?: boolean; decor?: DecorPicks; trophies?: ReadonlySet<string> | 'all' } = {}): Promise<WorldData> {
   const base = `generated/world/${mapId}`;
   // The atlas picture comes in alongside the map's files.
   const atlasPicture = new TextureLoader(registry.createLoadingManager()).loadAsync(registry.url('generated/atlas/atlas.png'));
@@ -162,7 +165,9 @@ export async function loadWorldData(registry: AssetRegistry, mapId: string, opti
   const horizonBytes = new Uint8Array(await horizonRes.arrayBuffer());
   const atlasText = await atlasRes.text();
   const atlas = atlasSchema.parse(JSON.parse(atlasText));
-  const { entities: parsed, recolours } = decorated(worldEntitiesSchema.parse(JSON.parse(entitiesText)), options.decor ?? {});
+  const { entities: picked, recolours } = decorated(worldEntitiesSchema.parse(JSON.parse(entitiesText)), options.decor ?? {});
+  const earned = options.trophies === 'all' ? new Set((picked.trophies ?? []).map((t) => t.key)) : (options.trophies ?? new Set<string>());
+  const parsed = withTrophies(picked, earned);
   const atlasTexture = await atlasPicture;
   atlasTexture.colorSpace = SRGBColorSpace;
   atlasTexture.flipY = false;

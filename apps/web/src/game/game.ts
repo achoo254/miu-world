@@ -126,7 +126,7 @@ const PET_SCENE_FOLLOW = 0.6;
 
 export interface GameOptions {
   store: GameStore;
-  /** Query string with dev/review switches: quality, stats, autopilot, spawnAt (`npc`, a target id, `x,y,z`, or `spawn` for the map's spawn point), face (camera yaw in degrees), shot, outfit, life (`0`: no villagers or animals), decor (`slot:option,…`: the home in other styles), minimap (`1`: kept in review shots), objects (`1`: `window.__miuObjects` lists the map's interactable objects and puts her beside one, for tests). */
+  /** Query string with dev/review switches: quality, stats, autopilot, spawnAt (`npc`, a target id, `x,y,z`, or `spawn` for the map's spawn point), face (camera yaw in degrees), shot, outfit, life (`0`: no villagers or animals), decor (`slot:option,…`: the home in other styles), trophies (`all`: every piece of the trophy room in place), minimap (`1`: kept in review shots), objects (`1`: `window.__miuObjects` lists the map's interactable objects and puts her beside one, for tests). */
   search: string;
   /** Equipped accessory ids (`id` or `id:variant`), normally from `GET /api/character`. */
   outfit: string[];
@@ -148,6 +148,8 @@ export interface GameOptions {
   savedSpot?: Pick<PlayerPosition, 'position' | 'facing'> | null;
   /** The child's picks for her home (`GET /api/home-decor`): the map's restyled pieces as she chose them. */
   decor?: Readonly<Record<string, string>>;
+  /** The display keys of her trophy room's pieces she earned (`GET /api/trophies`); the others' spots show empty stands. */
+  trophies?: readonly string[];
   /** What she left switched on in her home (`GET /api/home-objects`); with it the game reports changes (`object-states`). */
   objectStates?: Readonly<Record<string, boolean>>;
   /** The play screen's online UI (interaction menu on other players, party frame); none leaves it out. */
@@ -384,7 +386,8 @@ export class Game {
     const mapId = mapForRegion(REGION_CATALOG, this.options.region ?? '');
     // A still picture of the whole core (a review shot without `view=`) needs no outer land round it.
     const wholeCoreShot = params.has('shot') && !(Number(params.get('view')) > 0);
-    const data = await loadWorldData(registry, mapId, { withOutland: !wholeCoreShot, decor: this.options.decor ?? decorFromSearch(params) });
+    const trophies = params.get('trophies') === 'all' ? 'all' : new Set(this.options.trophies ?? []);
+    const data = await loadWorldData(registry, mapId, { withOutland: !wholeCoreShot, decor: this.options.decor ?? decorFromSearch(params), trophies });
     this.cleanups.push(() => data.regions.dispose());
     if (this.disposed) return;
     lap('worldData');
