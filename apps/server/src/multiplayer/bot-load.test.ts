@@ -18,6 +18,7 @@ import { MIN_PLAN_GAP_MS } from './bot-brain/stepper';
 import { decodeMemory, encodeMemory } from './bot-brain/memory-codec';
 import { AREA_SIDE, MAX_LINKS, MAX_PLACES } from './bot-brain/memory-graph';
 import type { BotQuest } from './bot-brain/quest-plan';
+import { LocalPlanner } from './bot-brain/local-path';
 import { WalkMap, type Spot } from './bot-brain/walk-store';
 
 const TOWN = 'load-town';
@@ -114,7 +115,7 @@ interface Watch {
   ticks: number[];
   /** How long each plan waited in the queue (ms, the test's clock). */
   waits: number[];
-  /** When each bot's own walking plan ran (by plan key; the test's clock). */
+  /** When each bot's own walking plan searched a way (by plan key; the test's clock). */
   plannedAt: Map<string, number[]>;
   /** When each memory was written (by bot; the test's clock). */
   writes: Map<string, number[]>;
@@ -139,6 +140,9 @@ function watched(hub: MultiplayerHub, bots: Record<string, readonly BotProfile[]
   });
   const plans = runner.plans;
   const request = plans.request.bind(plans);
+  // A plan counts once it searches a way: a bot that stopped (to meet someone) while its plan waited in the queue
+  // has no goal when its turn comes, so nothing is planned, and its next goal is planned as soon as it is set.
+  const search = vi.spyOn(LocalPlanner.prototype, 'plan');
   const asked = new Map<string, number>();
   plans.request = (key, run) => {
     if (!asked.has(key)) asked.set(key, Date.now());
@@ -146,12 +150,13 @@ function watched(hub: MultiplayerHub, bots: Record<string, readonly BotProfile[]
       const since = asked.get(key) ?? Date.now();
       asked.delete(key);
       watch.waits.push(Date.now() - since);
-      if (!key.endsWith('|way')) {
+      const searched = search.mock.calls.length;
+      run();
+      if (!key.endsWith('|way') && search.mock.calls.length > searched) {
         const list = watch.plannedAt.get(key) ?? [];
         list.push(Date.now());
         watch.plannedAt.set(key, list);
       }
-      run();
     });
   };
   const tick = runner.tick.bind(runner);
@@ -214,6 +219,7 @@ afterEach(async () => {
   runner = null;
   await hub.close();
   vi.useRealTimers();
+  vi.restoreAllMocks();
 });
 
 /** The budget's checks on a minute of 500 bots in the town with four players, and 20 more in a room nobody is in. */
@@ -256,6 +262,7 @@ async function townMinute(store = memoryBotStore()): Promise<void> {
   const stretchMeans = Array.from({ length: Math.floor(watch.ticks.length / stretch) }, (_, i) => stats(watch.ticks.slice(i * stretch, (i + 1) * stretch)).mean);
   expect(Math.min(...stretchMeans)).toBeLessThan(10);
   // A bot's own way is planned at most once in 2 s, and nobody waits long for one.
+  expect(watch.plannedAt.size, 'bots whose plans were watched').toBeGreaterThan(bots.length / 2);
   for (const [key, times] of watch.plannedAt) for (let i = 1; i < times.length; i++) expect((times[i] ?? 0) - (times[i - 1] ?? 0), key).toBeGreaterThanOrEqual(MIN_PLAN_GAP_MS);
   expect(wait.p95).toBeLessThanOrEqual(2_000);
   // Memories written at most once in 120 s each (each bot at its own moment): within the minute, once at most, and
