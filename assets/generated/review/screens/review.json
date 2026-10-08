@@ -1,15 +1,15 @@
 {
-  "capturedFrom": "34c71a43ba481aad1cbbe2089e8426eb84b8b834",
-  "capturedAt": "2026-10-08T21:53:50+07:00",
-  "reviewedAt": "2026-10-08T21:56:25+07:00",
-  "reviewer": "agent:general-purpose ×4 (360x740 01–10, 11–19; 820x1180 01–10, 11–19), gộp bởi phiên chính",
+  "capturedFrom": "3179dbcaba8035814acb68dff7d880bbcbce898f",
+  "capturedAt": "2026-10-08T22:16:37+07:00",
+  "reviewedAt": "2026-10-08T23:04:06+07:00",
+  "reviewer": "agent:general-purpose ×2 (24 ảnh khác lần trước); 14 ảnh trùng từng byte với lần duyệt 34c71a43 giữ phát hiện cũ, gộp bởi phiên chính",
   "verdict": "pass",
   "findings": [
     {
       "shot": "360x740/07-play-hud.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Tên chương trong thẻ nhiệm vụ bị cắt thành \"Khu rừng bí mật – Chương 1: Lá…\" (cũng ở 08). Đã có từ trước.",
+      "text": "Tên chương trong thẻ nhiệm vụ bị cắt thành \"Khu rừng bí mật – Chương 1: Lá…\" (cũng ở 08, 09). Giống lần trước.",
       "fixedIn": null
     },
     {
@@ -27,10 +27,31 @@
       "fixedIn": null
     },
     {
+      "shot": "360x740/11-reward.png",
+      "kind": "shifted",
+      "severity": "note",
+      "text": "Vật sưu tập mới đổi ngẫu nhiên (Bướm rừng lam) nên bảng thưởng cao thấp khác, nút Tiếp thấp hơn khoảng 7 px; nút vẫn trọn trong màn, đủ lớn.",
+      "fixedIn": null
+    },
+    {
       "shot": "360x740/12-event-panel.png",
       "kind": "overlap",
       "severity": "note",
       "text": "Bong bóng lời Cáo Mắt Sáng che phần đầu thẻ sự kiện; chữ trong bóng đọc được, nút X không bị che. Giống lần trước.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/13-olympiad-practice.png",
+      "kind": "shifted",
+      "severity": "note",
+      "text": "Ảnh chụp lúc panel đã cuộn xuống (lần trước ở đầu panel); bố cục không đổi, đáp án A–D và nút Kiểm tra thấy đủ.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/13-olympiad-practice.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "Nền panel trong mờ để lộ nhãn bản đồ Home phía sau; không che chữ của đề hay vùng chạm.",
       "fixedIn": null
     },
     {
@@ -45,6 +66,13 @@
       "kind": "overlap",
       "severity": "note",
       "text": "Thẻ đội 2/4 che phần đầu nhãn Tương tác của bạn chơi cùng; nút Tương tác của HUD vẫn rõ. Giống lần trước.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/18-party.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Mèo xám đi theo đứng trước nhân vật trong cảnh 3D, che nửa dưới nhân vật; không che nút hay chữ của HUD.",
       "fixedIn": null
     },
     {
