@@ -40,6 +40,7 @@ import { eventRoutes } from './event/event-routes';
 import { mailRoutes } from './mail/mail-routes';
 import { npcRoutes } from './npc/npc-routes';
 import { achievementRoutes } from './progression/achievement-routes';
+import { trophyRoomRoutes } from './progression/trophy-room-routes';
 import { journeyRoutes } from './progression/journey-routes';
 import { skillTreeRoutes } from './progression/skill-tree-routes';
 import { IceServerSource } from './voice/ice-servers';
@@ -136,6 +137,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(skillTreeRoutes({ db, content }));
   api.use(journeyRoutes({ db, content, shopNames: new Map(shop.items.map((item) => [item.id, item.name])) }));
   api.use(achievementRoutes({ db, content, clock }));
+  api.use(trophyRoomRoutes({ db, content }));
   api.use(worksheetRoutes({ worksheets, clock, fontDir: config.handwritingFontDir }));
   const now = (): number => clock().getTime();
   api.use(voiceRoutes({ db, content, ice: new IceServerSource({ turn: config.turn, fetchImpl: turnFetch, now }), now }));
