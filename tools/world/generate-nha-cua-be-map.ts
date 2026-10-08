@@ -9,7 +9,9 @@
 // as the mock's rooms: the living room round its rug (the cream sofa, the television, armchairs, the reading
 // nook under the gallery); the wooden staircase with its balusters, handrail, newel lanterns and runner up
 // to the gallery; the kitchen (fridge, counters, plate rack) and the dining table laid with cake and fruit;
-// the storeroom of shelves, sacks and garden tools; upstairs the study (the desk under the timetable, tall
+// the storeroom of shelves, sacks and garden tools, and the bathroom at its end behind a double door (the
+// toilet, the washbasin and the mirror, the shower the child steps into, the washing machine, the bath mat);
+// upstairs the study (the desk under the timetable, tall
 // bookcases, drawings pinned up), the bedroom (the pink polka-dot bed with its bunny pillow, the night lamp,
 // the cat rug, the wardrobe with the uniform calendar beside it, the dressing table, pink curtains) and the
 // toy corner. East of the house the fenced vegetable garden (carrot and cabbage beds, sunflowers, the little
@@ -96,6 +98,8 @@ const H = {
   railing: `${BX}/ncb-railing.glb`,
   doorLeft: `${BX}/ncb-door-left.glb`,
   doorRight: `${BX}/ncb-door-right.glb`,
+  bathDoorLeft: `${BX}/ncb-bath-door-left.glb`,
+  bathDoorRight: `${BX}/ncb-bath-door-right.glb`,
   mailbox: `${BX}/ncb-cat-mailbox.glb`,
   wateringCan: `${BX}/ncb-watering-can.glb`,
   stairRailRise: `${BX}/ncb-stair-rail-rise.glb`,
@@ -183,6 +187,12 @@ const K = {
   puzzle: `${PACK.props}/puzzle-red.glb`,
   cabinet: `${F}/kitchenCabinet.glb`,
   sink: `${F}/kitchenSink.glb`,
+  toilet: `${F}/toilet.glb`,
+  washbasin: `${F}/bathroomSinkSquare.glb`,
+  shower: `${F}/shower.glb`,
+  mirror: `${F}/bathroomMirror.glb`,
+  washer: `${F}/washer.glb`,
+  bathMat: `${F}/rugDoormat.glb`,
   cake: `${PACK.food}/cake.glb`,
   apple: `${PACK.food}/apple.glb`,
   banana: `${PACK.food}/banana.glb`,
@@ -585,6 +595,8 @@ function buildHome(ctx: ZoneMapContext, decor: HomeDecorCatalog): void {
   }
   ctx.keepOut(MILL.x - 9, MILL.z - 6, MILL.x + 9, MILL.z + 6);
   ctx.landmark('coi-xay-gio', 'Cối xay gió', MILL.x, MILL.z - 7);
+  // The bathroom is a place too, named after the grounds' (the review pictures the map's first fourteen).
+  ctx.landmark('nha-ve-sinh', 'Nhà vệ sinh', home.bathroom.x0 + 3, home.bathroom.z0 + 2, home.groundY);
 }
 
 /**
@@ -604,7 +616,7 @@ function fenceRun(ctx: ZoneMapContext, place: (x: number, z: number, along: 'x' 
 
 /** The rooms of the mock (panels 2–7): furniture against the walls and round rugs, the ways between doors left clear. */
 function furnish(ctx: ZoneMapContext, home: HomeLayout): void {
-  const { living, kitchen, dining, storeroom, study, bedroom, toyCorner, wall } = home;
+  const { living, kitchen, dining, storeroom, bathroom, study, bedroom, toyCorner, wall } = home;
   const g = home.groundY;
   const u = home.upperY;
   /** Faces of the walls each room backs onto (the first open cell's edge). */
@@ -733,26 +745,41 @@ function furnish(ctx: ZoneMapContext, home: HomeLayout): void {
   lantern(dining.x1 + 1, g + 2.4, 71.5, 90);
   ctx.landmark('bep-an', 'Bếp và bàn ăn', 89, dining.z0 - 1, g);
 
-  // The storeroom (panel 7): shelves of jars on both long walls, crates and sacks, the garden tools on their
-  // rack, barrels, lanterns; the way from the living room through to the back door runs down its middle.
-  for (const x of [68, 71]) ctx.propAt(H.jarShelf, [x, g, south - 0.3], 0);
+  // The storeroom (panel 7): shelves of jars on the back wall, crates and sacks, the garden tools on their rack,
+  // a barrel, lanterns; the way from the living room through to the back door runs down its west side, past the
+  // bathroom's door.
   ctx.propAt(H.jarShelf, [80.5, g, south - 0.3], 0);
-  for (const x of [69, 71.5]) ctx.propAt(H.jarShelfLow, [x, g, storeroom.z0 + 0.25], 180);
+  ctx.propAt(H.jarShelfLow, [77.9, g, south - 0.25], 0);
   ctx.propAt(K.crate, [78.5, g, storeroom.z0 + 0.5], 0);
   ctx.propAt(K.box, [78.5, g + 0.9, storeroom.z0 + 0.5], 20);
   ctx.propAt(K.crate, [80.6, g, storeroom.z0 + 0.5], 10);
-  for (const [model, z] of [[H.riceSack, 73.5], [H.cornSack, 74.4], [H.beanSack, 75.3]] as const) ctx.propAt(model, [storeroom.x0 + 0.4, g, z], 0);
-  ctx.propAt(H.flourSacks, [storeroom.x0 + 1.6, g, south - 0.6], 0);
+  ctx.propAt(H.riceSack, [77.45, g, storeroom.z0 + 0.4], 0);
+  ctx.propAt(H.cornSack, [79.55, g, storeroom.z0 + 0.4], 0);
   ctx.propAt(H.toolRack, [partX - 0.15, g + 0.5, 74], 90);
   ctx.propAt(K.shovel, [partX - 0.4, g, 75.6], 90);
   ctx.propAt(K.hoe, [partX - 0.4, g, 72.6], 90);
   ctx.propAt(K.barrel, [partX - 0.5, g, south - 0.5], 0);
   ctx.propAt(H.smallLantern, [75.5, u - 1 - 0.75, 74.5], 0);
-  ctx.propAt(H.smallLantern, [69.5, u - 1 - 0.75, 74.5], 0);
-  ctx.propAt(H.ladder, [storeroom.x0 + 0.06, g, 72.6], 270);
   ctx.propAt(H.brooms, [partX - 0.4, g, storeroom.z0 + 0.4], 270);
-  for (const [model, x] of [[H.onion, 68.5], [H.garlic, 70.5], [H.chilli, 80.5]] as const) ctx.propAt(model, [x, u - 1 - 1, 73.5], 0);
+  for (const [model, x] of [[H.onion, 78], [H.garlic, 79.3], [H.chilli, 80.5]] as const) ctx.propAt(model, [x, u - 1 - 1, 73.5], 0);
   ctx.landmark('nha-kho', 'Nhà kho', 75, 74, g);
+
+  // The bathroom behind its double door (the leaves open inward as the child comes near and close behind her):
+  // the shower in the far corner, its glass doors toward the room, where she steps in under the water; the
+  // toilet against the back wall; the washbasin by the door, for her hands on the way out, the mirror on the
+  // wall beside it; the washing machine under the window; the bath mat in the middle of the floor; a plant, a
+  // lantern. Each stands apart from the others, so the one she walks up to is the one she uses.
+  const bd = home.bathDoor;
+  ctx.propAt(H.bathDoorLeft, [bd.x + 0.5, g, bd.z0], 270);
+  ctx.propAt(H.bathDoorRight, [bd.x + 0.5, g, bd.z0 + bd.width], 270);
+  ctx.centredAt(K.shower, [west + 0.7, g, south - 0.7], 180);
+  ctx.centredAt(K.toilet, [69.5, g, south - 0.5], 180);
+  ctx.centredAt(K.washbasin, [bathroom.x1 - 1.5, g, bathroom.z0 + 0.25], 0);
+  ctx.centredAt(K.mirror, [bathroom.x1 - 0.25, g + 1, bathroom.z0 + 0.15], 0);
+  ctx.centredAt(K.washer, [west + 0.45, g, bathroom.z0 + 1.3], 90);
+  ctx.centredAt(K.bathMat, [68.6, g, 73.8], 0);
+  ctx.centredAt(K.smallPlant, [west + 0.5, g, bathroom.z0 + 0.5], 0);
+  ctx.propAt(H.smallLantern, [69.5, u - 1 - 0.75, 74.5], 0);
 
   // Upstairs, the gallery's study corner (panel 4): the desk under the timetable board on the back wall, its
   // chair, lamp, globe and books; bookcases to the ceiling either side of it and on the west wall; the

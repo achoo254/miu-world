@@ -5,7 +5,8 @@
 // rooms papered pink: on the ground floor the living room open to the roof, its wooden staircase climbing the
 // west wall to the gallery (three wide, a step a block, a landing half way under its own window, a log
 // stringer down its open side where the balusters and the handrail stand), the kitchen east of it and the
-// dining room behind the kitchen, the storeroom at the back with a door out to the animal pen; upstairs the
+// dining room behind the kitchen, the storeroom at the back with a door out to the animal pen and the bathroom
+// at its west end (its double door on the way to the back door); upstairs the
 // gallery behind its railing, where the study corner is, the bedroom over the kitchen and the toy corner
 // behind it.
 // Writes blocks only (its front toward -z) and returns where every room, door and fitting is; the map file
@@ -75,6 +76,9 @@ export interface HomeLayout {
   kitchen: Room;
   dining: Room;
   storeroom: Room;
+  /** The bathroom at the storeroom's west end, and its doorway in the wall between them (the wall's x, its first row, width). */
+  bathroom: Room;
+  bathDoor: { x: number; z0: number; width: number };
   study: Room;
   bedroom: Room;
   toyCorner: Room;
@@ -123,6 +127,9 @@ export function placeHomeCottage(world: WorldWriter, x0: number, z0: number, gro
   const splitZ = z0 + 12;
   const doorX0 = x0 + 15;
   const backX0 = x0 + 10;
+  /** The wall between the bathroom and the storeroom, beside the way to the back door; its doorway three wide. */
+  const bathX = x0 + 9;
+  const bathDoorZ0 = partZ + 2;
   /** Three walking columns against the west wall, the stringer beside them. */
   const stairX0 = ix0;
   const stairX1 = ix0 + 2;
@@ -230,7 +237,8 @@ export function placeHomeCottage(world: WorldWriter, x0: number, z0: number, gro
     return wallFace(x, y);
   };
   // Partitions: between the living room and the kitchen up both storeys (a doorway on each floor), between
-  // the living room and the storeroom on the ground floor (a doorway in line with the back door).
+  // the living room and the storeroom on the ground floor (a doorway in line with the back door), and across
+  // the storeroom's west end, closing off the bathroom (its doorway beside the way to the back door).
   for (let z = iz0; z <= iz1; z++) {
     for (let y = groundY; y <= top; y++) {
       const ground = z >= iz0 + 3 && z <= iz0 + 5 && y <= groundY + 3;
@@ -242,6 +250,12 @@ export function placeHomeCottage(world: WorldWriter, x0: number, z0: number, gro
     for (let y = groundY; y < slab; y++) {
       const doorway = x >= backX0 && x < backX0 + 3 && y <= groundY + 3;
       put(world, x, y, partZ, doorway ? 0 : partitionBlock(x - ix0, x, y));
+    }
+  }
+  for (let z = partZ + 1; z <= iz1; z++) {
+    for (let y = groundY; y < slab; y++) {
+      const doorway = z >= bathDoorZ0 && z < bathDoorZ0 + 3 && y <= groundY + 3;
+      put(world, bathX, y, z, doorway ? 0 : partitionBlock(z - iz0, bathX, y));
     }
   }
 
@@ -346,7 +360,9 @@ export function placeHomeCottage(world: WorldWriter, x0: number, z0: number, gro
     living: { x0: ix0, z0: iz0, x1: partX - 1, z1: partZ - 1, floorY: groundY },
     kitchen: { x0: partX + 1, z0: iz0, x1: ix1, z1: splitZ - 1, floorY: groundY },
     dining: { x0: partX + 1, z0: splitZ + 1, x1: ix1, z1: iz1, floorY: groundY },
-    storeroom: { x0: ix0, z0: partZ + 1, x1: partX - 1, z1: iz1, floorY: groundY },
+    storeroom: { x0: bathX + 1, z0: partZ + 1, x1: partX - 1, z1: iz1, floorY: groundY },
+    bathroom: { x0: ix0, z0: partZ + 1, x1: bathX - 1, z1: iz1, floorY: groundY },
+    bathDoor: { x: bathX, z0: bathDoorZ0, width: 3 },
     study: { x0: ix0, z0: voidZ1 + 1, x1: partX - 1, z1: iz1, floorY: upperY },
     bedroom: { x0: partX + 1, z0: iz0, x1: ix1, z1: splitZ - 1, floorY: upperY },
     toyCorner: { x0: partX + 1, z0: splitZ + 1, x1: ix1, z1: iz1, floorY: upperY },
