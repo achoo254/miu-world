@@ -12,6 +12,7 @@ export const PLAYER_ACTIONS = [
   'swing',
   'watch',
   'wash',
+  'shower',
   'cook',
   'study',
   'stretch',
@@ -105,6 +106,16 @@ export function poseAction(rig: ActionRig, action: PlayerAction, t: number): Act
       if (armLeft) armLeft.rotation.z = -0.28 + rub;
       if (head) head.rotation.x = D(22);
       body.pitch = 0.06;
+      break;
+    }
+    case 'shower': {
+      // Under the shower: both hands up scrubbing her hair, face tipped up into the water, a little sway.
+      const scrub = Math.sin(t * 8) * 0.2;
+      arms(D(-160) + scrub, D(-160) - scrub);
+      if (armRight) armRight.rotation.z = D(35);
+      if (armLeft) armLeft.rotation.z = D(-35);
+      if (head) head.rotation.x = D(-18) + Math.sin(t * 3) * 0.05;
+      body.roll = Math.sin(t * 2.2) * 0.04;
       break;
     }
     case 'cook':

@@ -61,6 +61,7 @@ export function needsOf(prop: Prop, catalog: ModelCatalog, parts: (model: string
   const name = `${def.id} on ${prop.model}`;
   if (place === 'seat' && !entry?.seats) out.push(`${name}: no seats`);
   if (place === 'lie' && !entry?.lie) out.push(`${name}: no mattress (lie)`);
+  if (place === 'inside' && !entry?.stand) out.push(`${name}: no standing spot (stand)`);
   if ((place === 'front' || def.effect?.kind === 'screen') && !entry?.screen) out.push(`${name}: no screen`);
   const kind = def.effect?.kind;
   if (kind === 'open' || kind === 'door' || kind === 'sway') {

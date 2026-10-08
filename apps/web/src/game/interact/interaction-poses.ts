@@ -5,9 +5,10 @@ import type { PlayerAction } from './player-actions';
 
 /**
  * Where she goes: `seat` her hips on its seat (a chair, a bench, a swing), `lie` on its mattress, `front` on
- * the floor in front of it facing it (a television), `face` where she stands, turned toward it.
+ * the floor in front of it facing it (a television), `inside` standing on its floor (a shower's tray) for the
+ * pose's while, `face` where she stands, turned toward it.
  */
-export type PosePlacement = 'seat' | 'lie' | 'front' | 'face';
+export type PosePlacement = 'seat' | 'lie' | 'front' | 'inside' | 'face';
 
 export interface PoseBehaviour {
   action: PlayerAction;
@@ -25,6 +26,7 @@ export const POSE_BEHAVIOURS: Readonly<Record<InteractionPose, PoseBehaviour>> =
   swing: { action: 'swing', seated: 'sit', place: 'seat' },
   watch: { action: 'watch', seated: 'sit', place: 'front' },
   wash: stand('wash'),
+  shower: { action: 'shower', seated: null, place: 'inside' },
   cook: stand('cook'),
   study: stand('study'),
   stretch: stand('stretch'),

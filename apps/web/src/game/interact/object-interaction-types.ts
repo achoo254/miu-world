@@ -16,8 +16,8 @@ export type InteractionCategory =
   | 'dining';
 
 /**
- * What the child does: `sit`, `lay`, `sleep`, `swing` and `watch` put her on (or in front of) the object; the
- * others are gestures where she stands, turned toward it. interaction-poses.ts maps each to her gesture.
+ * What the child does: `sit`, `lay`, `sleep`, `swing` and `watch` put her on (or in front of) the object,
+ * `shower` stands her inside it; the others are gestures where she stands, turned toward it. interaction-poses.ts maps each to her gesture.
  */
 export const INTERACTION_POSES = [
   'sit',
@@ -26,6 +26,7 @@ export const INTERACTION_POSES = [
   'swing',
   'watch',
   'wash',
+  'shower',
   'cook',
   'study',
   'stretch',

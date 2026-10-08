@@ -24,6 +24,10 @@ describe('matching furniture and props', () => {
     expect(matchInteraction(`${BX}ncb-desk-oak.glb`, 'desk')?.id).toBe('desk-study');
     expect(matchInteraction(`${K}televisionVintage.glb`)?.id).toBe('tv-watch');
     expect(matchInteraction(`${BX}ncb-door-left.glb`)?.id).toBe('front-door');
+    expect(matchInteraction(`${BX}ncb-bath-door-left.glb`)?.id).toBe('bathroom-door');
+    expect(matchInteraction(`${BX}ncb-bath-door-right.glb`)?.id).toBe('bathroom-door');
+    expect(matchInteraction(`${K}shower.glb`)?.id).toBe('shower-take');
+    expect(matchInteraction(`${K}bathroomSinkSquare.glb`)?.id).toBe('sink-wash-hands');
     expect(matchInteraction(`${BX}ncb-under-stair-door.glb`)?.id).toBe('stair-cupboard-open');
     expect(matchInteraction(`${BX}swing-set.glb`)?.id).toBe('swing-play');
   });
@@ -106,6 +110,7 @@ const CATALOG: Record<string, CatalogModel> = {
   [`${BX}ncb-sofa.glb`]: { height: 1, front: 180, seats: [{ at: [-0.6, 0.55, -0.05] }, { at: [0.6, 0.55, -0.05] }] },
   [`${BX}ncb-bed-pink.glb`]: { height: 2.56, lie: { at: [0, 0.7, 0.3], feet: 180 } },
   [`${K}televisionVintage.glb`]: { height: 0.55, screen: { at: [0.2, 0.13, 0], size: [0.3, 0.2] } },
+  [`${K}shower.glb`]: { height: 2.4, stand: { at: [-0.28, 0.12, -0.24] } },
   [`${BX}swing-set.glb`]: { height: 3.06, seats: [{ at: [-1.2, 0.62, 0], part: 'seat-a', pivot: [-1.2, 2.97, 0] }] },
 };
 
@@ -270,6 +275,31 @@ describe('ObjectInteractionManager', () => {
     m.interact(sink, fakeController([5.5, 10, 5.5]));
     expect(fx.played).toEqual(['sink-wash-hands']);
     expect(m.update(0.1, fakeController([5.5, 10, 5.5]), false).action).toBe('wash');
+  });
+
+  it('stands her inside the shower under the running water, facing out, then she steps out in front of it', () => {
+    const fx = effects();
+    const m = manager([{ model: `${K}shower.glb`, position: [30, 10, 30], yaw: 180, scale: 2 }], { fx });
+    const shower = m.objects[0];
+    if (!shower) throw new Error('no shower');
+    const c = fakeController([30.6, 10, 28.5]);
+    m.interact(shower, c);
+    expect(fx.played).toEqual(['shower-take']);
+    const frame = m.update(0.1, c, false);
+    expect(frame.action).toBe('shower');
+    // Standing (no seated clip) on the tray, inside the shower's footprint (turned 180°: x 30..31.1, z 30..31.1).
+    expect(frame.poseOverride).toBeNull();
+    expect(frame.body?.position[0]).toBeCloseTo(30.56);
+    expect(frame.body?.position[1]).toBeCloseTo(10.24);
+    expect(frame.body?.position[2]).toBeCloseTo(30.48);
+    // Facing out of its glass doors (−z), the controller waiting on the floor in front of them.
+    expect(Math.cos(frame.body?.facing ?? 0)).toBeCloseTo(-1);
+    expect(c.position.z).toBeLessThan(30);
+    expect(c.position.y).toBe(10);
+    expect(m.toPrompt(shower).label).toBe('Bước ra');
+    // The shower lasts its while, then she is out where she waited.
+    m.update(10, c, false);
+    expect(m.isInteracting).toBe(false);
   });
 
   it('opens the front door as she comes near and closes it a moment after she leaves; shut by hand, it stays shut until she leaves', () => {

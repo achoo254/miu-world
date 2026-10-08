@@ -23,6 +23,7 @@ import {
   nearestSeat,
   seatBody,
   seatsOf,
+  standBody,
   standUpSpot,
   stateKey,
   swingAngle,
@@ -79,8 +80,9 @@ const MAX_SPOT_REACH = 4.5;
 const MOMENT_SECONDS = 3;
 
 const isToggle = (def: ObjectInteractionDef): boolean => def.effect?.toggle === true;
-/** The prompt while she sits, lies or watches. */
+/** The prompt while she sits, lies or watches; while she stands inside something (a shower). */
 const GET_UP = { vi: 'Đứng dậy', en: 'Get up' };
+const STEP_OUT = { vi: 'Bước ra', en: 'Step out' };
 
 export class ObjectInteractionManager {
   private readonly candidates: CandidateObject[] = [];
@@ -164,8 +166,9 @@ export class ObjectInteractionManager {
   toPrompt(obj: CandidateObject): InteractionPrompt {
     const { def } = obj;
     const on = isToggle(def) && this.states.isOn(obj.stateKey);
+    const getUp = POSE_BEHAVIOURS[def.pose].place === 'inside' ? STEP_OUT : GET_UP;
     const label =
-      this.holding === obj ? GET_UP : on && def.offVi && def.offEn ? { vi: def.offVi, en: def.offEn } : { vi: def.verbVi, en: def.verbEn };
+      this.holding === obj ? getUp : on && def.offVi && def.offEn ? { vi: def.offVi, en: def.offEn } : { vi: def.verbVi, en: def.verbEn };
     return { targetId: obj.id, kind: 'object', name: obj.name, label: inline(label, getLangMode()) };
   }
 
@@ -227,6 +230,14 @@ export class ObjectInteractionManager {
       body = seatBody(placed, seat, entry?.front ?? 0);
       standAt = open(standUpSpot(placed, body)) ?? standAt;
       if (seat.part && seat.pivot) swing = { part: seat.part, pivot: toWorld(placed, seat.pivot), seat: body.position, yaw: obj.yaw };
+    } else if (place === 'inside') {
+      if (entry?.stand) {
+        body = standBody(placed, entry.stand, entry.front ?? 0);
+        standAt = open(standUpSpot(placed, body)) ?? standAt;
+      } else {
+        // No floor of its own in the catalogue: she uses it standing where she is, turned to it.
+        place = 'face';
+      }
     } else if (place === 'lie') {
       body = lieBody(placed, lieOf(entry, bounds));
     } else if (place === 'front') {
@@ -256,8 +267,9 @@ export class ObjectInteractionManager {
       def,
       object: obj,
       elapsed: 0,
-      // A switch flipped or a screen turned off is a short gesture; sitting down to watch lasts until she gets up.
-      duration: body ? 0 : (def.duration ?? 0) > 0 ? (def.duration ?? 0) : 1.2,
+      // A switch flipped or a screen turned off is a short gesture; sitting down to watch lasts until she gets up;
+      // standing inside something (a shower) lasts its while, then she steps out.
+      duration: body && place !== 'inside' ? 0 : (def.duration ?? 0) > 0 ? (def.duration ?? 0) : 1.2,
       bubbleText: line,
       body,
       swing,

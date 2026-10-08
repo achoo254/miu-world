@@ -90,6 +90,11 @@ export function seatBody(placed: Placed, seat: CatalogSeat, front: number): Body
   return { position: [x, y - HIPS_ABOVE_FEET, z], facing: worldFacing(placed, seat.facing ?? front), pitch: 0 };
 }
 
+/** Her body standing inside it (a shower's tray): her feet on its floor, facing out of it. */
+export function standBody(placed: Placed, stand: NonNullable<CatalogModel['stand']>, front: number): BodyPlacement {
+  return { position: toWorld(placed, stand.at), facing: worldFacing(placed, stand.facing ?? front), pitch: 0 };
+}
+
 /** Her body lying on a mattress: feet toward its foot, her back on its top (the gesture lays her down). */
 export function lieBody(placed: Placed, lie: NonNullable<CatalogModel['lie']>): BodyPlacement {
   const facing = worldFacing(placed, lie.feet);

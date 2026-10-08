@@ -35,6 +35,8 @@ export const catalogModelSchema = z.strictObject({
     .array(z.strictObject({ at: modelPoint, facing: modelHeading.optional(), part: z.string().regex(/^[a-z0-9-]+$/).optional(), pivot: modelPoint.optional() }))
     .min(1)
     .optional(),
+  /** Where a child stands inside it (a shower's tray), facing its `front` unless it says otherwise. */
+  stand: z.strictObject({ at: modelPoint, facing: modelHeading.optional() }).optional(),
   /** Where a child lies on it: the middle of the mattress's top, and which way her feet point. */
   lie: z.strictObject({ at: modelPoint, feet: modelHeading }).optional(),
   /** Its screen (a television, a computer): the middle of the glass and its width and height, facing `front`. */
