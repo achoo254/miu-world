@@ -57,6 +57,19 @@ export interface PartyQuestHost extends CoopHost {
 
 /** A bot's thinking time on a question nobody's numbers tell (party quests keep no anonymous numbers). */
 const BOT_QUESTION_MEDIAN_MS = 8_000;
+/** A bot's move that failed (the database did not answer) is tried again this many times, this long apart. */
+export const BOT_MOVE_TRIES = 3;
+export const BOT_MOVE_RETRY_MS = 1_000;
+
+/**
+ * An error's kind for the log, with a database error's SQLSTATE code (on its `cause`): never its message, which
+ * may hold a player's values.
+ */
+function errorKind(err: unknown): string {
+  if (!(err instanceof Error)) return typeof err;
+  const code = (err.cause as { code?: unknown } | undefined)?.code;
+  return typeof code === 'string' ? `${err.name} ${code}` : err.name;
+}
 
 /** Steps one member does for all. */
 const SHARED_KINDS = new Set<QuestStep['kind']>(['dialogue', 'search', 'find-object', 'speak', 'worksheet']);
@@ -125,6 +138,8 @@ export interface PartyQuestOptions {
   content: ContentCatalog;
   clock?: () => Date;
   host: PartyQuestHost;
+  /** How long a bot waits before trying a failed move again (ms; tests make it short). */
+  botMoveRetryMs?: number;
 }
 
 export class PartyQuestService implements PartyQuestHooks {
@@ -132,6 +147,7 @@ export class PartyQuestService implements PartyQuestHooks {
   private readonly content: ContentCatalog;
   private readonly clock: () => Date;
   private readonly host: PartyQuestHost;
+  private readonly botMoveRetryMs: number;
   private readonly runs = new Map<string, Run>();
 
   constructor(options: PartyQuestOptions) {
@@ -139,6 +155,7 @@ export class PartyQuestService implements PartyQuestHooks {
     this.content = options.content;
     this.clock = options.clock ?? (() => new Date());
     this.host = options.host;
+    this.botMoveRetryMs = options.botMoveRetryMs ?? BOT_MOVE_RETRY_MS;
   }
 
   /** A member's party-quest message (validated by the wire schema). */
@@ -378,7 +395,7 @@ export class PartyQuestService implements PartyQuestHooks {
     }
     const { run } = found;
     run.queue = run.queue.then(() => this.catchUp(run)).catch((err: unknown) => {
-      console.error('party quest catch-up failed', err instanceof Error ? err.name : typeof err);
+      console.error('party quest catch-up failed', errorKind(err));
     });
     await run.queue;
   }
@@ -417,7 +434,7 @@ export class PartyQuestService implements PartyQuestHooks {
           const result = await recordStep({ db: this.db, content: this.content, clock: this.clock }, member.childId, run.quest, next.id, input, true);
           if (!result.correct || result.repeated) break;
         } catch (err) {
-          console.error('party quest step failed', err instanceof Error ? err.name : typeof err);
+          console.error('party quest step failed', errorKind(err));
           break;
         }
         moved.add(member.publicId);
@@ -460,12 +477,20 @@ export class PartyQuestService implements PartyQuestHooks {
 
   /**
    * A bot's move (its answer to its next question, or its boss blow on its turn), checked against the run as it is
-   * once the records before it are through; then the party moves on as after a player's step.
+   * once the records before it are through; then the party moves on as after a player's step. A move that failed
+   * (a read the database did not answer) is tried again a moment later: the party waits on it (at a boss, its turn),
+   * so one failure must not leave the run stuck. Being checked again, a move is never counted twice.
    */
-  private botMove(run: Run, bot: BotMember, stepId: string, turnId: string | null): void {
+  private botMove(run: Run, bot: BotMember, stepId: string, turnId: string | null, tries = 1): void {
     run.queue = run.queue
       .then(async () => {
         if (this.runs.get(run.partyId) !== run || run.members.get(bot.publicId) !== bot) return;
+        // Tried again after the party's catch-up failed: the move is in already, the party still has to move on.
+        const made = turnId === null ? bot.own.done.has(stepId) : (bot.own.found[stepId] ?? []).includes(turnId);
+        if (made) {
+          if (tries > 1) await this.catchUp(run);
+          return;
+        }
         const steps = run.quest.steps;
         const index = steps.findIndex((s) => !bot.own.done.has(s.id));
         const step = steps[index];
@@ -483,7 +508,9 @@ export class PartyQuestService implements PartyQuestHooks {
         await this.catchUp(run);
       })
       .catch((err: unknown) => {
-        console.error('party quest bot move failed', err instanceof Error ? err.name : typeof err);
+        console.error('party quest bot move failed', errorKind(err), `try ${tries} of ${BOT_MOVE_TRIES}`);
+        if (tries >= BOT_MOVE_TRIES) return;
+        setTimeout(() => this.botMove(run, bot, stepId, turnId, tries + 1), this.botMoveRetryMs).unref();
       });
   }
 

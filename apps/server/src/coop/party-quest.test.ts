@@ -5,7 +5,7 @@ import { hubHarness, type Client } from '../../test/hub-harness';
 import { questProgress, rewardLedger } from '../db/schema';
 import { paidRuns } from '../reward/reward-ledger';
 import type { PartyQuestBotDriver, PartyQuestBotMoves, PartyQuestBotSituation } from './bot-party-quest';
-import { PartyQuestService, type PartyQuestHooks } from './party-quest';
+import { BOT_MOVE_TRIES, PartyQuestService, type PartyQuestHooks, type PartyQuestOptions } from './party-quest';
 import { PARTY_QUEST as QUEST } from './party-quest-fixtures';
 
 const CONTENT = { ...FIXTURE_CONTENT, quests: new Map([...FIXTURE_CONTENT.quests, [QUEST.id, QUEST]]) };
@@ -146,9 +146,9 @@ function scriptedBots() {
 }
 
 /** A player on the map with a companion bot beside her that asked her into its party; she said yes and leads it. */
-async function withBot() {
+async function withBot(options: Pick<PartyQuestOptions, 'botMoveRetryMs'> = {}) {
   const h = hubHarness();
-  service = new PartyQuestService({ db: app.db, content: CONTENT, host: h.hub.coopHost() });
+  service = new PartyQuestService({ db: app.db, content: CONTENT, host: h.hub.coopHost(), ...options });
   h.hub.setPartyQuests(service);
   const bots = scriptedBots();
   h.hub.setPartyQuestBots(bots.driver);
@@ -264,6 +264,30 @@ describe('a quest a companion bot asks its party to play', () => {
     const after = await rowCounts();
     expect(after.progress - before.progress).toBe(1);
     expect(after.ledger - before.ledger).toBe(withTheBot.ledger.length);
+  });
+
+  it('strikes the boss again after a database read failed, so one failure never leaves the party stuck on its turn', async () => {
+    const { h, a, agentA, bots } = await withBot({ botMoveRetryMs: 20 });
+    expect(h.hub.botProposeQuest(BOT, a.id, QUEST.id)).toBe(true);
+    a.send({ type: 'party-quest-join', questId: QUEST.id });
+    await vi.waitFor(() => expect(a.last('party-quest')?.quest?.members.every((m) => m.joined)).toBe(true));
+    await step(agentA, 'gap').expect(200);
+    await step(agentA, 'do', { answer: { value: 7 } }).expect(200);
+    await vi.waitFor(() => expect(memberOf(a, BOT)?.waiting).toBe(true));
+    bots.of(BOT).moves.done('do');
+    await vi.waitFor(() => expect(memberOf(a, BOT)?.waiting).toBe(false));
+    await step(agentA, 'sau').expect(200);
+    await vi.waitFor(() => expect(bots.of(BOT).situation.blow).toEqual({ stepId: 'trum', turnId: 't1' }));
+
+    // The database does not answer the read its blow makes, once.
+    const logged = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    const states = vi.spyOn(service as unknown as { states: (run: unknown) => Promise<unknown> }, 'states').mockRejectedValueOnce(new Error('connection lost'));
+    bots.of(BOT).moves.blow('trum', 't1');
+    await vi.waitFor(() => expect(a.last('party-quest-progress')?.progress.bossState?.trum?.hp).toBe(100));
+    expect(logged).toHaveBeenCalledWith('party quest bot move failed', 'Error', `try 1 of ${BOT_MOVE_TRIES}`);
+    await vi.waitFor(() => expect(a.last('party-quest')?.quest?.turn).toBe(a.id));
+    states.mockRestore();
+    logged.mockRestore();
   });
 
   it('ends when she says "later", and a bot gone from the map holds nobody back', async () => {
