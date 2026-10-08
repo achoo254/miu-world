@@ -82,6 +82,18 @@ export interface ZoneMapContext {
   decorSpot: (slot: string, at: readonly [number, number, number], yaw: number) => void;
   /** The boxes of each part a block slot paints (role → boxes, inclusive): every other style's colours go there. */
   decorBlocks: (slot: string, roles: Readonly<Record<string, ReadonlyArray<readonly [number, number, number, number, number, number]>>>) => void;
+  /**
+   * A display spot of the trophy room (packages/schema trophy-room.ts): `shown` stands there once the player
+   * earned `key`, `empty` (an empty stand) until then; the game picks one when it is built.
+   */
+  trophySpot: (key: string, shown: TrophyPiece, empty?: TrophyPiece) => void;
+}
+
+/** A model at a fixed point (feet), turned `yaw` degrees. */
+export interface TrophyPiece {
+  model: string;
+  at: readonly [number, number, number];
+  yaw: number;
 }
 
 export interface MapTarget {
@@ -304,6 +316,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
   const ownTargets: MapTarget[] = [];
   const decorSpots: Array<{ slot: string; at: readonly [number, number, number]; yaw: number }> = [];
   const decorBlocks: NonNullable<WorldEntities['decorBlocks']> = [];
+  const trophySpots: Array<{ key: string; shown: TrophyPiece; empty?: TrophyPiece }> = [];
   const decorSlot = (id: string): HomeDecorCatalog['slots'][number] => {
     const slot = spec.decor?.slots.find((s) => s.id === id);
     if (!slot) throw new Error(`${spec.mapId}: decor slot ${id} is not in the catalogue`);
@@ -333,6 +346,10 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     decorSpot: (slot, at, yaw) => {
       if (!decorSlot(slot).options.every((o) => o.models)) throw new Error(`${spec.mapId}: decor slot ${slot} paints blocks, it has no spots`);
       decorSpots.push({ slot, at, yaw });
+    },
+    trophySpot: (key, shown, empty) => {
+      if (trophySpots.some((t) => t.key === key)) throw new Error(`${spec.mapId}: trophy spot ${key} is placed twice`);
+      trophySpots.push({ key, shown, ...(empty ? { empty } : {}) });
     },
     decorBlocks: (slotId, roles) => {
       const slot = decorSlot(slotId);
@@ -399,6 +416,8 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
       for (const model of option.models ?? []) decorModels.push({ slot: slot.id, option: option.id, model, scale: models.scaleOf(model), offset: models.offsetOf(model), turn: option.turn ?? 0 });
     }
   }
+  const piece = (p: TrophyPiece) => ({ model: p.model, position: [p.at[0], p.at[1], p.at[2]] as [number, number, number], yaw: p.yaw + 0, scale: models.scaleOf(p.model) });
+  const trophies: NonNullable<WorldEntities['trophies']> = trophySpots.map((t) => ({ key: t.key, shown: piece(t.shown), ...(t.empty ? { empty: piece(t.empty) } : {}) }));
   // A signpost at the corner of each zone nearest the spawn, naming it.
   for (const zn of zones) {
     const cx = zn.x + Math.sign(spec.spawn.x - zn.x) * (zn.hx - 1);
@@ -618,6 +637,7 @@ export async function generateZoneMap(spec: ZoneMapSpec): Promise<{ world: Voxel
     ...(spec.moods && spec.moods.length > 0 ? { moods: spec.moods } : {}),
     ...(decorSpots.length > 0 ? { decorAnchors: decorSpots.map((d) => ({ slot: d.slot, position: [d.at[0], d.at[1], d.at[2]] as [number, number, number], yaw: d.yaw + 0 })), decorModels } : {}),
     ...(decorBlocks.length > 0 ? { decorBlocks } : {}),
+    ...(trophies.length > 0 ? { trophies } : {}),
   };
   return { world, entities };
 }

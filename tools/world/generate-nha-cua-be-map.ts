@@ -20,6 +20,7 @@
 // timetable and uniform days in the game: `nha-thoi-khoa-bieu` and `nha-lich-dong-phuc`; the notebook on
 // the living room's sideboard opens her decorating (`nha-trang-tri`, mock panels 11 and 12): every piece she
 // may restyle is a slot of content/home/decor.json, written here in all its styles (her pet's bed among them).
+// Behind the garden, on the side lane, her trophy room (structures/nha-cua-be-trophy-hall.ts, `nha-truyen-thong`).
 // Output: assets/generated/world/nha-cua-be/{regions/, horizon.bin, entities.json}
 import path from 'node:path';
 import { HomeDecorCatalog } from '../../packages/schema/src/home-decor';
@@ -27,6 +28,7 @@ import { REPO_ROOT, readJson } from '../assets/asset-lib';
 import { PACK, runIfMain } from './map-kit';
 import { placeWindmill } from './structures/countryside';
 import { placeHomeCottage, HOME_SIZE, type HomeLayout } from './structures/nha-cua-be-house';
+import { TROPHY_HALL, TROPHY_SIZES, buildTrophyHall, readTrophyContent, type TrophyContent } from './structures/nha-cua-be-trophy-hall';
 import { distanceToPath, type Point } from './structures/path';
 import { placeTree } from './structures/tree';
 import { put } from './structures/world-writer';
@@ -79,7 +81,9 @@ const SIDE_LANE: Point[] = [[110, 48], [110, 88], [75, 88]];
 const BACK: Point[] = [[75, HOME_Z1 + 1], [75, 112]];
 const TO_SHED: Point[] = [[128, SHED.z0 + 2], [SHED.x0 - 1, SHED.z0 + 2]];
 const TO_MILL: Point[] = [[128, GARDEN.z1 - 2], [128, MILL.z - 7], [MILL.x, MILL.z - 7]];
-const ROUTES: Point[][] = [LANE, SPUR, WALK, CROSS, TO_POND, TO_GARDEN, SIDE_LANE, BACK, TO_SHED, TO_MILL];
+/** From the side lane's corner down to the trophy room's door. */
+const TO_HALL: Point[] = [[110, 88], [110, TROPHY_HALL.z0 - 1]];
+const ROUTES: Point[][] = [LANE, SPUR, WALK, CROSS, TO_POND, TO_GARDEN, SIDE_LANE, BACK, TO_SHED, TO_MILL, TO_HALL];
 
 const inEllipse = (e: { x: number; z: number; rx: number; rz: number }, x: number, z: number): boolean => ((x - e.x) / e.rx) ** 2 + ((z - e.z) / e.rz) ** 2 < 1;
 const inWater = (x: number, z: number): boolean => inEllipse(POND, x, z) || distanceToPath(STREAM, x, z) < 1.7;
@@ -268,6 +272,7 @@ function decorBlock(catalog: HomeDecorCatalog, slotId: string, role: string): st
 
 export async function generateNhaCuaBe() {
   const decor = await readDecorCatalog();
+  const trophies = await readTrophyContent();
   return generateZoneMap({
     mapId: MAP_ID,
     region: 'nha-cua-be',
@@ -289,16 +294,18 @@ export async function generateNhaCuaBe() {
     dressing: { models: [...K.flowers, K.grass, K.bush], spacing: 9 },
     life: homeLife,
     decor,
+    sizes: TROPHY_SIZES,
     // Lamplight indoors, a golden afternoon round the house (the mock's warm evening light).
     moods: [
       { mood: 'warm', x0: HOME.x0 + 1, z0: HOME.z0 + 1, x1: HOME_X1 - 1, z1: HOME_Z1 - 1 },
+      { mood: 'warm', x0: TROPHY_HALL.x0 + 1, z0: TROPHY_HALL.z0 + 1, x1: TROPHY_HALL.x0 + TROPHY_HALL.w - 2, z1: TROPHY_HALL.z0 + TROPHY_HALL.d - 2 },
       { mood: 'golden', x0: 0, z0: 0, x1: SIZE - 1, z1: SIZE - 1 },
     ],
-    build: (ctx) => buildHome(ctx, decor),
+    build: (ctx) => buildHome(ctx, decor, trophies),
   });
 }
 
-function buildHome(ctx: ZoneMapContext, decor: HomeDecorCatalog): void {
+function buildHome(ctx: ZoneMapContext, decor: HomeDecorCatalog, trophies: TrophyContent): void {
   const { world, block } = ctx;
   const look = (slot: string, role: string): number => block(decorBlock(decor, slot, role));
   const B = {
@@ -361,7 +368,9 @@ function buildHome(ctx: ZoneMapContext, decor: HomeDecorCatalog): void {
   ctx.propAt(H.doorLeft, [home.door.x0, STAND, HOME.z0 + 0.5], 0);
   ctx.propAt(H.doorRight, [home.door.x0 + home.door.width, STAND, HOME.z0 + 0.5], 0);
   furnish(ctx, home);
-  // The house's own colours (panel 12): its roof, ridge, walls up and down, with the hen house's and the shed's roofs.
+  // The trophy room, in the house's colours (its walls the upper storey's plaster, its roof the house's tiles).
+  const hall = buildTrophyHall(ctx, { wall: B.upper, roof: B.roof, ridge: B.ridge, trim: B.log, beam: B.log, plinth: B.stone, glass: B.glass, gable: B.upper, lantern: B.lantern, floor: B.planks }, trophies, STAND);
+  // The house's own colours (panel 12): its roof, ridge, walls up and down, with the hen house's, the shed's and the trophy room's roofs.
   const { x0: hx0, z0: hz0 } = HOME;
   const top = home.upperY + 3;
   const hen = [HEN_HOUSE.x0 - 1, STAND + 3, HEN_HOUSE.z0 - 1, HEN_HOUSE.x0 + 5, STAND + 5, HEN_HOUSE.z0 + 4] as const;
@@ -374,9 +383,9 @@ function buildHome(ctx: ZoneMapContext, decor: HomeDecorCatalog): void {
   ];
   const roofBox = [hx0 - 1, top + 1, hz0 - 1, HOME_X1 + 1, home.roofTop, HOME_Z1 + 1] as const;
   ctx.decorBlocks('house', {
-    roof: [roofBox, hen, shed],
-    ridge: [roofBox, hen, shed],
-    upper: [...ring(home.upperY - 1, home.roofTop), [hx0 + 5, top + 3, hz0, HOME_X1 - 4, home.roofTop, hz0 + 1]],
+    roof: [roofBox, hen, shed, hall.roof],
+    ridge: [roofBox, hen, shed, hall.roof],
+    upper: [...ring(home.upperY - 1, home.roofTop), [hx0 + 5, top + 3, hz0, HOME_X1 - 4, home.roofTop, hz0 + 1], hall.walls, hall.roof],
     lower: ring(STAND, home.upperY - 2),
   });
 

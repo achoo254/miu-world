@@ -179,6 +179,19 @@ export const worldEntitiesSchema = z
     decorModels: z
       .array(z.object({ slot: id, option: id, model: z.string(), scale: z.number().positive(), offset: z.tuple([z.number(), z.number()]), turn: z.number() }))
       .optional(),
+    /**
+     * The trophy room's display spots (packages/schema trophy-room.ts, trophy-display.ts): the piece standing at a
+     * spot when its key is among what the player earned, and its empty stand otherwise (none: the spot stays bare).
+     */
+    trophies: z
+      .array(
+        z.object({
+          key: z.string().regex(/^[a-z]+(:[a-z0-9-]+)+$/),
+          shown: z.object({ model: z.string(), position: vec3, yaw: z.number(), scale: z.number().positive() }),
+          empty: z.object({ model: z.string(), position: vec3, yaw: z.number(), scale: z.number().positive() }).optional(),
+        }),
+      )
+      .optional(),
     /** Every style but the default one of each block slot: block `from` becomes `to` inside each box (inclusive). */
     decorBlocks: z
       .array(z.object({ slot: id, option: id, from: z.number().int().min(1), to: z.number().int().min(1), boxes: z.array(z.tuple([z.number().int(), z.number().int(), z.number().int(), z.number().int(), z.number().int(), z.number().int()])).min(1) }))

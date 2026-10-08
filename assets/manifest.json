@@ -10108,6 +10108,14 @@
       "bytes": 27856
     },
     {
+      "path": "packs/fluent-emoji/1ffb34c752ec/props/trophy.png",
+      "pack": "fluent-emoji",
+      "license": "MIT",
+      "sourceUrl": "https://github.com/microsoft/fluentui-emoji",
+      "sha256": "7c4a9805f354eb2aec35063a95a4043306efc726324c0d128883f24497857bbc",
+      "bytes": 31910
+    },
+    {
       "path": "packs/fluent-emoji/1ffb34c752ec/props/tropical-fish.png",
       "pack": "fluent-emoji",
       "license": "MIT",
@@ -21594,6 +21602,22 @@
       "bytes": 18156
     },
     {
+      "path": "generated/box-props/ncb-cup-ghost.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "edd7cb1cd248543742c0f7be62071cbdb957926a7b5f9546d76da0acefee1292",
+      "bytes": 4764
+    },
+    {
+      "path": "generated/box-props/ncb-cup-pedestal.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "0b9041797b36a4e9cf1682433fd2afac2df946ea16106841dd79a823374c5fe4",
+      "bytes": 3996
+    },
+    {
       "path": "generated/box-props/ncb-curtains-blue.glb",
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
@@ -21866,6 +21890,14 @@
       "bytes": 9916
     },
     {
+      "path": "generated/box-props/ncb-medal-ghost.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "5057aa0c6a067059566b17c9afdef57b3c34c121da173f0200267599412b14d8",
+      "bytes": 3280
+    },
+    {
       "path": "generated/box-props/ncb-newel.glb",
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
@@ -21968,6 +22000,46 @@
       "derivedFrom": [],
       "sha256": "fdcf53e84cf199b7b69d500a4d8bf69c37ed4ff372b217b3309bdb106755242f",
       "bytes": 11424
+    },
+    {
+      "path": "generated/box-props/ncb-plaque-hoc-tap.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "baf123fde475482178fde02cfe86c1e1890880aa5d0fbbe42f15d03edb2e18e3",
+      "bytes": 4012
+    },
+    {
+      "path": "generated/box-props/ncb-plaque-kham-pha.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "caf0a6e1979f5ed627f61eff7729087d0342544a085cd1071e1cb314ea15c8a0",
+      "bytes": 4012
+    },
+    {
+      "path": "generated/box-props/ncb-plaque-minigame.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "af1893154f5084826f7790c0362645a5790a14c550869510f714ca1013d594e3",
+      "bytes": 4012
+    },
+    {
+      "path": "generated/box-props/ncb-plaque-su-kien.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "230a215e5b11d55131875e5f7aa12fda099f9d4598e63cca2d0623ad9ef1a473",
+      "bytes": 4012
+    },
+    {
+      "path": "generated/box-props/ncb-plaque-suu-tam.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "3a067193668441740cbf5a9c28066c784c21ee93f96c0c80d48ca9aba1d66a8f",
+      "bytes": 4012
     },
     {
       "path": "generated/box-props/ncb-plate-rack.glb",
@@ -22138,6 +22210,14 @@
       "bytes": 9196
     },
     {
+      "path": "generated/box-props/ncb-star-socket.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "839f911b1880d38d3d02f1eb66a26def790c33556aee5db2582e643b20c6a3f6",
+      "bytes": 3256
+    },
+    {
       "path": "generated/box-props/ncb-tea-table.glb",
       "license": "CC0-1.0",
       "generator": "tools/assets/build-box-props.ts",
@@ -22152,6 +22232,14 @@
       "derivedFrom": [],
       "sha256": "9e789d431b4ed2c40a26663ee322d5f613e1104bdb47acf3dcbc54a4d7e3c1a0",
       "bytes": 120096
+    },
+    {
+      "path": "generated/box-props/ncb-trophy-cabinet.glb",
+      "license": "CC0-1.0",
+      "generator": "tools/assets/build-box-props.ts",
+      "derivedFrom": [],
+      "sha256": "48adc5694acc52817fdcbfb859271117dcfd51e072a099ccee2c5935bd9468b0",
+      "bytes": 9940
     },
     {
       "path": "generated/box-props/ncb-under-stair-door.glb",
@@ -26288,6 +26376,16 @@
       ],
       "sha256": "a22cc8c51ec71472e38758367998d2511f4db8e8885b8be110fc89e40e7e2c03",
       "bytes": 51912
+    },
+    {
+      "path": "generated/props/trophy.glb",
+      "license": "MIT",
+      "generator": "tools/assets/build-emoji-props.ts",
+      "derivedFrom": [
+        "fluent-emoji"
+      ],
+      "sha256": "97af249c112795ed8cd6ea656b22b0db367d93387ab3d5c0f594ffd6709a8e39",
+      "bytes": 63848
     },
     {
       "path": "generated/props/tropical-fish.glb",
@@ -42720,48 +42818,48 @@
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nha-cua-be-map.ts",
       "derivedFrom": [],
-      "sha256": "192d4833fef35afa106953e6903835e09ef8c465ee977a40d50f6c57263f79aa",
-      "bytes": 214807
+      "sha256": "88c7fc3a62b51e7c98d9a2586d1a1a34480ba4d141cdb5b343b20136c6d85f58",
+      "bytes": 226685
     },
     {
       "path": "generated/world/nha-cua-be/horizon.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nha-cua-be-map.ts",
       "derivedFrom": [],
-      "sha256": "effe9f97199ad42af10e689f685ea47a5513449c58ac3e42a7e13885e029f2b4",
-      "bytes": 1370
+      "sha256": "509deae0d900a23c5175cebc757c7a401c3a7b54a79f8df4459057f8020bb959",
+      "bytes": 1473
     },
     {
       "path": "generated/world/nha-cua-be/regions/r0-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nha-cua-be-map.ts",
       "derivedFrom": [],
-      "sha256": "1ca5e1aba0b1b41500f1ecc9aab06043d52459e8f1c342e5134a4fa18ec42f89",
-      "bytes": 19602
+      "sha256": "4d6456b97430028fa3464486f175350379be1707c701db546f5d910a45e65839",
+      "bytes": 21520
     },
     {
       "path": "generated/world/nha-cua-be/regions/r0-1.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nha-cua-be-map.ts",
       "derivedFrom": [],
-      "sha256": "f5274ab3f365c6a8ad3a246ba1ae21d0b3bab4ba939f4b4ff0ca0c4e669b0e2d",
-      "bytes": 2067
+      "sha256": "4ff2a64317f6cf94bda175d9ca3930b943faed316150f704f0a76a5a51b70654",
+      "bytes": 3472
     },
     {
       "path": "generated/world/nha-cua-be/regions/r1-0.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nha-cua-be-map.ts",
       "derivedFrom": [],
-      "sha256": "da965de63a2af57dea0b3ead9bb0ed426092f088ca04526db8c377ae4dc4d945",
-      "bytes": 3178
+      "sha256": "50bf62c97799cc81a4ca1d16f89b0db51fe0a31a77da8669e8f29e8a93bc5bb5",
+      "bytes": 2785
     },
     {
       "path": "generated/world/nha-cua-be/regions/r1-1.bin",
       "license": "CC0-1.0",
       "generator": "tools/world/generate-nha-cua-be-map.ts",
       "derivedFrom": [],
-      "sha256": "b48b11f84582ab01946427def4da8a2421e27c93048d30d6ff1f3167449e2010",
-      "bytes": 880
+      "sha256": "bfc83194b64d6182121433c17ee19c451c39a60d4703b2366ea2d2d6dfd781a1",
+      "bytes": 806
     },
     {
       "path": "generated/world/nong-trai/entities.json",

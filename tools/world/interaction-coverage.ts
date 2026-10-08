@@ -29,6 +29,7 @@ export const NOT_INTERACTIVE: Readonly<Record<string, string>> = {
   kitchenCabinetUpper: 'a wall cupboard out of her reach',
   cabinetBed: 'a bedside table: the bed beside it is what she uses',
   cabinetTelevision: 'the television stand: the television on it is what she uses',
+  'ncb-trophy-cabinet': 'the display cabinet of the trophy room: its list opens before it (an interactable of its own)',
   'xma-hanging-lantern': 'a lantern hung out of her reach',
   'nt-hanging-lantern': 'a lantern hung out of her reach',
   'tt-lantern-string': 'a string of lanterns over the square, out of reach',

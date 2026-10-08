@@ -85,8 +85,10 @@ export async function runtimeAssetPaths(
     for (const list of Object.values(entities)) {
       if (!Array.isArray(list)) continue;
       for (const item of list) {
-        const { model, held } = item as { model?: unknown; held?: unknown };
+        const { model, held, shown, empty } = item as { model?: unknown; held?: unknown; shown?: { model?: unknown }; empty?: { model?: unknown } };
         if (typeof model === 'string') models.add(model);
+        // A trophy room's display spot (world-entities.ts `trophies`): its piece and its empty stand.
+        for (const piece of [shown?.model, empty?.model]) if (typeof piece === 'string') models.add(piece);
         // What ambient villagers hold (axe, hoe…); `built:` items are made in code, not loaded.
         if (Array.isArray(held)) for (const h of held) if (typeof h === 'string' && !h.startsWith('built:')) models.add(h);
       }
