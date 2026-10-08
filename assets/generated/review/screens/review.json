@@ -1,85 +1,15 @@
 {
-  "capturedFrom": "b0ba2330aeadfde23637dad5ca763ed56b7f4713",
-  "capturedAt": "2026-10-08T06:12:42+07:00",
-  "reviewedAt": "2026-10-08T06:16:54+07:00",
+  "capturedFrom": "5ff4dccf3e0b9edcee9819aabb5d43af793991c8",
+  "capturedAt": "2026-10-08T20:39:16+07:00",
+  "reviewedAt": "2026-10-08T20:42:13+07:00",
   "reviewer": "agent:general-purpose ×4 (360x740 01–10, 11–19; 820x1180 01–10, 11–19), gộp bởi phiên chính",
   "verdict": "pass",
   "findings": [
     {
-      "shot": "360x740/18-party.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Thẻ đội thu gọn (2/4) che phần tên trong nhãn Tương tác trên đầu người chơi đứng gần. Giữ mức note như lần duyệt trước: nhãn gắn theo vị trí trong thế giới 3D, trôi theo camera và đi qua dưới HUD; nút Tương tác của HUD vẫn hiện và chạm được.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/17-pet-care.png",
-      "kind": "off-screen",
-      "severity": "note",
-      "text": "Hàng nút thứ hai (Ném bóng, Ngủ trưa) tràn quá mép dưới khoảng 4 px; nút vẫn bấm được.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/17-pet-care.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Bảng chăm sóc nằm chồng lên nút Chạy, Nhảy và cần điều khiển của HUD; HUD phía trên lộ ra quanh băng tiêu đề.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/10-question.png",
-      "kind": "off-screen",
-      "severity": "note",
-      "text": "Hàng phím số thứ tư (có số 0) bị thanh Hướng dẫn/Làm lại/Kiểm tra che, phải cuộn mới bấm được (đã ghi roadmap).",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/10-question.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Thẻ hồ sơ và thẻ nhiệm vụ của HUD lộ qua phía sau tiêu đề và đề bài màn câu đố.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/10-question.png",
-      "kind": "clipped",
-      "severity": "note",
-      "text": "Phép tính trong đề bị tách dòng: \"(8\" cuối dòng và \"+ 5 = ?)\" đầu dòng sau.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/07-play-hud.png",
-      "kind": "clipped",
-      "severity": "note",
-      "text": "Tiêu đề thẻ nhiệm vụ bị cắt \"Khu rừng bí mật – Chương 1: Lá…\" (cũng ở 08, 09, 18).",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/08-play-prompt.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Nhân vật đứng chắn gần hết NPC Vẹt; nhãn \"Vẹt · Nói chuyện\" lơ lửng.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/09-dialogue.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Nút Nghe lại và Tiếp của hộp thoại nằm trên cần điều khiển và nút Chạy, Nhảy đã làm mờ.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/09-dialogue.png",
-      "kind": "missing-close",
-      "severity": "note",
-      "text": "Hộp thoại không có nút đóng hay bỏ qua; chỉ có Tiếp (đủ lớn, bấm được).",
-      "fixedIn": null
-    },
-    {
       "shot": "360x740/03-creator.png",
       "kind": "other",
       "severity": "note",
-      "text": "Liên kết \"Về trang chủ\" là chữ trần, khó nhận ra là nút; danh sách nhân vật tụt xuống khoảng 60 px vì có liên kết này.",
+      "text": "Liên kết \"Về trang chủ\" là chữ trần, khó nhận ra là nút; thẻ Thỏ nằm dưới mép màn trong danh sách cuộn được.",
       "fixedIn": null
     },
     {
@@ -93,147 +23,105 @@
       "shot": "360x740/05-world-map.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Nhãn khu vực trên bản đồ chồng sát nhau; ô xu đè lên góc phải thẻ hồ sơ.",
+      "text": "Nhãn khu vực trên bản đồ chồng sát nhau như ở Home; ô xu đè góc phải thẻ hồ sơ.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/07-play-hud.png",
+      "kind": "clipped",
+      "severity": "note",
+      "text": "Tiêu đề thẻ nhiệm vụ bị cắt \"Khu rừng bí mật – Chương 1: Lá…\" (cũng ở 08, 09).",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/08-play-prompt.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Nhân vật đứng chắn gần hết NPC Vẹt, nhãn \"Vẹt · Nói chuyện\" lơ lửng; nút Tương tác rõ, không đè.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/09-dialogue.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "Nút Nghe lại và Tiếp của hộp thoại nằm trên cần điều khiển và nút Chạy, Nhảy (đã làm mờ).",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/09-dialogue.png",
+      "kind": "missing-close",
+      "severity": "note",
+      "text": "Hộp thoại không có nút đóng hay bỏ qua, chỉ có nút Tiếp (đủ lớn, bấm được).",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/10-question.png",
+      "kind": "off-screen",
+      "severity": "note",
+      "text": "Hàng phím số thứ tư (có số 0) bị thanh Hướng dẫn/Làm lại/Kiểm tra che, phải cuộn mới bấm được (đã ghi roadmap).",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/10-question.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "Thẻ hồ sơ và thẻ nhiệm vụ của HUD lộ ra phía sau tiêu đề và đề bài của màn câu đố.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/10-question.png",
+      "kind": "clipped",
+      "severity": "note",
+      "text": "Phép tính trong đề bị tách dòng: \"(8\" cuối dòng và \"+ 5 = ?)\" đầu dòng sau.",
       "fixedIn": null
     },
     {
       "shot": "360x740/11-reward.png",
-      "kind": "clipped",
+      "kind": "shifted",
       "severity": "note",
-      "text": "Ảnh chụp lúc bảng thưởng đã cuộn, hàng thẻ trên cùng bị mép trên cắt biểu tượng; chữ vẫn đọc được.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/12-event-panel.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Bong bóng thoại của Cáo che gần hết tiêu đề thẻ cúp; nền panel trong mờ để lộ nhãn bản đồ phía sau.",
+      "text": "Bảng thưởng và nút Tiếp thấp hơn lần trước khoảng 8 px (có thể chụp khi hiệu ứng trượt chưa xong); nút vẫn trọn trong màn và đủ lớn.",
       "fixedIn": null
     },
     {
       "shot": "360x740/13-olympiad-practice.png",
-      "kind": "other",
+      "kind": "shifted",
       "severity": "note",
-      "text": "Ảnh chụp lúc bảng đã cuộn: nút đóng ở đầu bảng không thấy trong khung, dòng đầu đề bị xén; nền trong mờ lộ nhãn bản đồ sau hình cái cân.",
+      "text": "Ảnh chụp ở đầu bảng (lần trước ở cuối bảng); bố cục không đổi, đáp án C, D và nút Kiểm tra phải cuộn mới thấy.",
       "fixedIn": null
     },
     {
-      "shot": "360x740/14-boss.png",
-      "kind": "clipped",
+      "shot": "360x740/17-pet-care.png",
+      "kind": "off-screen",
       "severity": "note",
-      "text": "Dải tiêu đề \"Đấu trí với…\" gần như bị ẩn (65×9 px); tên boss vẫn có ở thẻ máu, thẻ máu xuống dòng vụng.",
+      "text": "Hàng nút Ném bóng, Ngủ trưa tràn quá mép dưới khoảng 4 px; nút vẫn bấm được. Giống lần trước.",
       "fixedIn": null
     },
     {
-      "shot": "360x740/15-shop.png",
+      "shot": "360x740/18-party.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Bảng cửa hàng không che kín Home: +80 XP, dòng nhiệm vụ và nhãn điều hướng lộ ra quanh băng tiêu đề.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/16-backpack.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Con vẹt linh vật đè lên mép trái nút Trang chủ; bảng Ba lô dịch xuống khoảng 14 px.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/03-creator.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Liên kết \"Về trang chủ\" trông như chữ thường; tiêu đề \"Chọn nhân vật của bé\" dùng giọng riêng cho trẻ nhỏ.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/07-play-hud.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Tên nhiệm vụ xuống dòng làm chữ \"thần\" nằm một mình.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/08-play-prompt.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Nhân vật che gần hết NPC Vẹt.",
+      "text": "Thẻ đội thu gọn (2/4) che phần đầu nhãn Tương tác trên đầu bạn chơi cùng; nhãn trôi theo cảnh 3D, nút Tương tác của HUD vẫn chạm được. Giống lần trước.",
       "fixedIn": null
     },
     {
       "shot": "820x1180/09-dialogue.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Hộp thoại chồng lên cần điều khiển và nút Chạy, Nhảy; chữ \"ảy\" lòi ra.",
+      "text": "Hộp thoại và nút Nghe lại/Tiếp chồng lên cần điều khiển và nút Chạy, Nhảy (đang mờ); chữ \"ảy\" của nút Nhảy lòi ra cạnh nút Tiếp. Giống lần trước.",
       "fixedIn": null
     },
     {
       "shot": "820x1180/10-question.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Băng tiêu đề câu đố đè lên thẻ nhiệm vụ HUD phía sau; ảnh cây che một phần nút Bạn bè.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/11-reward.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Dải \"Hoàn thành nhiệm vụ!\" đè lên thẻ nhiệm vụ HUD phía sau.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/12-event-panel.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Panel sự kiện hơi trong, lộ chữ trang chủ phía sau.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/13-olympiad-practice.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Panel luyện thi trong, nhãn bản đồ lộ qua giữa các hàng cái cân; nút Bắt đầu của trang chủ hiện rõ phía dưới.",
+      "text": "Băng tiêu đề \"Giải câu đố của cây\" đè lên thẻ nhiệm vụ của HUD phía sau; nút đóng vẫn rõ và đủ lớn. Giống lần trước.",
       "fixedIn": null
     },
     {
       "shot": "820x1180/14-boss.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Dải tiêu đề boss bị ẩn; khung câu hỏi cắt phẳng ở đáy; bùa nằm trên mặt nhân vật, khiên \"cơn gió\" đè tai nhân vật.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/15-shop.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Dải Cửa hàng đè nhãn Trung tâm phía sau; ba món dùng chung một biểu tượng lấp lánh.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/16-backpack.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Khoảng trống lớn dưới panel Ba lô với một khối cỏ nhỏ lơ lửng.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/17-pet-care.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Mũi tên chỉ đường lòi ra sau tab Chăm sóc; con mèo ngoài cảnh bị panel che.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/18-party.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Nhãn \"Bông · Tương tác\" chồng mép bảng tên; mô hình Bông đứng trùng chỗ nhân vật.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/19-worksheets.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Chip \"Tuần N\" dính mép trên hàng; tên bài lệch cột vài px.",
+      "text": "Băng rôn tiêu đề trận đấu trùm không thấy trên ảnh (DOM đo 65×9 trên 430×43); tên trùm vẫn đủ ở thanh HP, lần trước cũng vậy.",
       "fixedIn": null
     }
   ]
