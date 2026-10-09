@@ -1,85 +1,71 @@
 {
-  "capturedFrom": "7bab68a59ad1586fe9a452ccdf28b682d975ede6",
-  "capturedAt": "2026-10-09T22:50:41+07:00",
-  "reviewedAt": "2026-10-09T22:54:17+07:00",
-  "reviewer": "agent:general-purpose ×3 (26 ảnh khác lần trước); 12 ảnh trùng từng byte với lần duyệt 3179dbca giữ phát hiện cũ, gộp bởi phiên chính",
+  "capturedFrom": "f9535fe9706a982dbc9481a2747cd938773d7321",
+  "capturedAt": "2026-10-10T06:06:22+07:00",
+  "reviewedAt": "2026-10-10T06:07:33+07:00",
+  "reviewer": "agent:general-purpose ×3 duyệt 29 ảnh chụp ở a87c9779 khác lần trước; sửa block ở f9535fe9 rồi chụp lại: phiên chính so từng điểm ảnh với lần a87c9779 (chỉ khác ≤ 1,7% trong cảnh 3D: pháo giấy, thú, nhân vật) và xem lại 17-pet-care; 9 ảnh trùng lần duyệt 7bab68a5 giữ phát hiện cũ",
   "verdict": "pass",
   "findings": [
     {
       "shot": "360x740/04-home.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Các nhãn vùng trên đảo đứng sát và chạm mép nhau; chữ chưa bị che. Giống lần trước.",
+      "text": "Các nhãn vùng trên đảo chạm mép nhau, chữ vẫn đọc được. Giống lần trước.",
       "fixedIn": null
     },
     {
       "shot": "360x740/07-play-hud.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Tên chương trong thẻ nhiệm vụ bị cắt thành \"Khu rừng bí mật – Chương 1: Lá…\" (cũng ở 08). Giống lần trước.",
+      "text": "Tên chương trên thẻ nhiệm vụ cắt bằng dấu ba chấm \"…Chương 1: Lá…\" (cả ở 08). Giống lần trước.",
       "fixedIn": null
     },
     {
       "shot": "360x740/09-dialogue.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Ảnh vẹt, nút Nghe lại và Tiếp nằm trên cần điều khiển và nút Chạy, Nhảy; không che chữ, nút vẫn chạm được. Giống lần trước.",
+      "text": "Khung thoại, nút Nghe lại và Tiếp nằm trên cần điều khiển và nút Chạy, Nhảy đã làm mờ; chữ và nút vẫn rõ. Giống lần trước.",
       "fixedIn": null
     },
     {
       "shot": "360x740/10-question.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Hàng phím có số 0 lộ mép trên, phải cuộn khung phím mới bấm; HUD phía sau lộ qua nền mờ. Giống lần trước.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/11-reward.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Nút Tiếp nằm trên cần điều khiển và nút Chạy, Nhảy; bảng thưởng chụp khi đã cuộn. Giống lần trước.",
+      "text": "Hàng phím có số 0 bị thanh Hướng dẫn/Kiểm tra che gần hết, phải cuộn khung phím. Giống lần trước.",
       "fixedIn": null
     },
     {
       "shot": "360x740/12-event-panel.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Bong bóng lời Cáo Mắt Sáng che tiêu đề thẻ sự kiện bên dưới; nút ✕ thấy rõ, chữ trong bóng đọc được. Agent đợt này đề nghị block; ảnh trùng từng điểm ảnh với lần duyệt trước (note), giữ note.",
+      "text": "Bong bóng lời Cáo Mắt Sáng che tiêu đề thẻ sự kiện bên dưới; nút ✕ thấy rõ. Giống lần trước.",
       "fixedIn": null
     },
     {
       "shot": "360x740/13-olympiad-practice.png",
       "kind": "shifted",
       "severity": "note",
-      "text": "Ảnh chụp lúc panel đã cuộn xuống nên nút quay lại ở đầu panel ngoài khung (khổ 820x1180 thấy nút ←). Agent đợt này đề nghị block missing-close; ảnh trùng từng điểm ảnh với lần duyệt trước (note), giữ note.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/13-olympiad-practice.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Nền panel trong mờ để lộ nhãn bản đồ Home phía sau; không che chữ của đề hay vùng chạm. Giống lần trước.",
+      "text": "Ảnh chụp lúc panel đã cuộn xuống nên nút quay lại ở đầu panel ngoài khung (khổ 820x1180 thấy nút ←); nền trong mờ lộ nhãn bản đồ Home. Giống lần trước.",
       "fixedIn": null
     },
     {
       "shot": "360x740/14-boss.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Thanh máu trùm ngắt dòng: chữ \"Hào\" và \"HP\" rớt xuống dòng riêng; vẫn đọc được, không che nút. Giống lần trước.",
+      "text": "Thanh máu trùm ngắt dòng: \"Hào\" và \"HP\" rớt xuống dòng riêng; vẫn đọc được. Giống lần trước.",
       "fixedIn": null
     },
     {
       "shot": "360x740/17-pet-care.png",
       "kind": "off-screen",
       "severity": "note",
-      "text": "Hàng nút thứ hai của bảng chăm sóc (Ném bóng, Ngủ trưa) bị mép dưới cắt khoảng 4 px; vẫn bấm được. Giống lần trước.",
+      "text": "Hàng nút thứ hai của bảng chăm sóc bị mép dưới cắt vài px; vẫn bấm được. Giống lần trước.",
       "fixedIn": null
     },
     {
       "shot": "360x740/17-pet-care.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Ảnh Mèo xám và thẻ thông tin đè lên thẻ nhiệm vụ và bản đồ nhỏ của HUD phía sau (HUD không mờ). Giống lần trước.",
+      "text": "Ảnh Mèo xám và thẻ thông tin đè lên thẻ nhiệm vụ và bản đồ nhỏ của HUD phía sau. Giống lần trước.",
       "fixedIn": null
     },
     {
@@ -90,39 +76,32 @@
       "fixedIn": null
     },
     {
+      "shot": "820x1180/04-home.png",
+      "kind": "off-screen",
+      "severity": "note",
+      "text": "Thẻ mới \"Bài hôm nay\" đẩy khối \"Nhiệm vụ hôm nay\" và nút Bắt đầu xuống dưới màn đầu, phải cuộn trang mới thấy; thẻ mới không đè, không cắt chữ.",
+      "fixedIn": null
+    },
+    {
       "shot": "820x1180/09-dialogue.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Khung thoại che cần điều khiển và nút Chạy, nút Tiếp đè lên nút Nhảy. Giống lần trước.",
+      "text": "Nút Tiếp che gần hết nút Nhảy, khung thoại đè lên cần điều khiển và nút Chạy. Giống lần trước.",
       "fixedIn": null
     },
     {
-      "shot": "820x1180/10-question.png",
+      "shot": "820x1180/15-shop.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Dải tiêu đề và hàng lá tiến độ nằm trên thẻ nhiệm vụ, khung câu hỏi che nửa nút Bạn bè. Giống lần trước.",
+      "text": "Sau bảng Cửa hàng, thẻ sự kiện Olympic của trang chủ lộ ra và bị dải \"Cửa hàng\" đè chữ; bảng Cửa hàng không dịch, không cắt.",
       "fixedIn": null
     },
     {
-      "shot": "820x1180/11-reward.png",
+      "shot": "820x1180/17-pet-care.png",
       "kind": "overlap",
-      "severity": "note",
-      "text": "Dải \"Hoàn thành nhiệm vụ!\" che tiêu đề thẻ nhiệm vụ phía sau; nút Tiếp gần chạm cần điều khiển. Giống lần trước.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/13-olympiad-practice.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Bảng luyện thi hơi trong suốt nên chữ trang chủ phía sau lộ ra giữa các hàng. Giống lần trước.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/18-party.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Mochi và bạn Bông đứng chồng lên nhau, nhãn \"Bông · Tương tác\" sát bảng tên. Giống lần trước.",
-      "fixedIn": null
+      "severity": "block",
+      "text": "Chip mới \"Bài hôm nay\" vẫn hiện khi mở bảng Chăm sóc thú cưng và bị ảnh thú cưng che chữ và vùng chạm (chip ẩn theo covered thay vì hudCovered). Đã sửa: chip ẩn theo hudCovered, ảnh chụp lại không còn chip.",
+      "fixedIn": "f9535fe9"
     }
   ]
 }

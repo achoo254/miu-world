@@ -1,8 +1,8 @@
 {
   "viewport": "820x1180",
-  "capturedFrom": "7bab68a59ad1586fe9a452ccdf28b682d975ede6",
+  "capturedFrom": "f9535fe9706a982dbc9481a2747cd938773d7321",
   "uncommitted": [],
-  "capturedAt": "2026-10-09T22:51:11+07:00",
+  "capturedAt": "2026-10-10T06:06:52+07:00",
   "shots": [
     {
       "shot": "820x1180/01-login.png",
@@ -50,7 +50,9 @@
       "screen": "04-home",
       "status": "ok",
       "facts": {
-        "offScreen": [],
+        "offScreen": [
+          "a.today-row-link \"Khu rừng bí mật – Chương 1: Lá\" at 85,1156–735,1253"
+        ],
         "overlaps": [],
         "missingClose": [],
         "clipped": [
@@ -81,9 +83,7 @@
       "screen": "06-region",
       "status": "ok",
       "facts": {
-        "offScreen": [
-          "[data-id=\"region-play-tv2-t10-b18\"] at 698,1173–746,1221"
-        ],
+        "offScreen": [],
         "overlaps": [],
         "missingClose": [],
         "clipped": [
