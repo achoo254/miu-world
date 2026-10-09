@@ -1,0 +1,207 @@
+{
+  "id": "yarn-voi-keo-mat-ong-1",
+  "region": "trung-tam",
+  "chapter": 2,
+  "title": "Chuyện của Voi Kẹo Bông, chương 1: Lời thách trong phong bì",
+  "status": "active",
+  "category": "story",
+  "summary": "Gấu Bánh Ngọt viết thư sang cá rằng chẳng ai gửi nổi một que kẹo bông còn nguyên tới Nhà của {name}. {name} nhờ Chú Đố Chữ Quang đọc những chữ dính bột, ra quảng trường nhận bó que tre của Bác Lái Xe Hải, quấn thử kẹo rồi mang sang Mèo Xếp Khối xem que kẹo có chịu nổi một chuyến đi xa không.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Voi Kẹo Bông, Chú Đố Chữ Quang, Bác Lái Xe Hải, Mèo Xếp Khối (và lá thư của Gấu Bánh Ngọt)",
+    "where": "Trung tâm: quầy kẹo bông, chợ giao dịch, quảng trường, đài phun nước",
+    "goal": "Giúp Voi tìm cách gửi một que kẹo bông còn nguyên tới Gấu Bánh Ngọt",
+    "play": "Đọc thư của Gấu; tính số que tre còn trong bó; quấn kẹo bông; thử đóng hộp kẹo cùng Mèo rồi chọn cách làm tiếp",
+    "learn": "Đọc hiểu một lá thư, phép trừ có nhớ trong phạm vi 100",
+    "reward": "60 XP, 15 Xu, Skill XP Đọc hiểu, Phép trừ",
+    "next": "Đổi công thức với Gấu để làm kẹo bông mật ong"
+  },
+  "phases": {
+    "hook": "voi-nhan-thu",
+    "explore": "thu-cua-gau",
+    "learn": "que-tre-con-lai",
+    "challenge": "quan-keo-thu",
+    "decision": "hop-cua-meo",
+    "finale": "hop-cua-meo",
+    "reward": "que-keo-hai-mau",
+    "next": "doi-cong-thuc"
+  },
+  "places": {
+    "voi-keo-bong": "Quầy kẹo bông",
+    "chu-do-chu-quang": "Chợ giao dịch",
+    "bac-lai-xe-hai": "Quảng trường",
+    "meo-xep-khoi": "Đài phun nước"
+  },
+  "steps": [
+    {
+      "id": "voi-nhan-thu",
+      "title": "Voi nhận thư của Gấu",
+      "goTo": "Tới quầy kẹo bông ở lối vào khu cửa hàng, Voi Kẹo Bông đang vẫy vẫy một lá thư",
+      "kind": "dialogue",
+      "target": "voi-keo-bong",
+      "lines": [
+        { "speaker": "Voi Kẹo Bông", "text": "{name} ơi, lại đây xem này… Gấu Bánh Ngọt ở Nhà của {name} vừa gửi thư sang. Lần này là thư thách đố hẳn hoi." },
+        { "speaker": "Voi Kẹo Bông", "text": "Khổ nỗi thư dính bột, mấy chữ nhòe hết cả. {name} mang sang Chú Đố Chữ Quang ở chợ giao dịch đọc giúp nhé, chữ khó mấy chú cũng đoán ra. Ngọt chưa?" }
+      ],
+      "choices": [
+        { "text": "Để tớ mang sang ngay!", "reply": "Cầm nhẹ tay thôi nhé, bột mà rơi hết là mất luôn chữ đấy." },
+        { "text": "Hai bạn cãi nhau qua thư lâu chưa?", "reply": "Từ hồi Voi mới mở quầy. Thư qua thư lại dày bằng cuốn sổ rồi mà chưa ai chịu thua ai." }
+      ],
+      "en": {
+        "title": "A letter from Gấu",
+        "goTo": "Go to the cotton candy stall at the shops entrance, where Voi Kẹo Bông is waving a letter about",
+        "lines": [
+          "{name}, come and look… Gấu Bánh Ngọt from {name}'s home has just written. This time it's a proper dare.",
+          "Trouble is, the letter's floury and some words are smudged. Take it to Chú Đố Chữ Quang at the trading market; he can puzzle out any word. Sweet enough?"
+        ],
+        "choices": [
+          { "text": "I'll take it over right away!", "reply": "Carry it gently; if the flour falls off, the words go with it." },
+          { "text": "How long have you two been arguing by letter?", "reply": "Since I first opened this stall. Our letters make a pile as thick as a notebook, and neither of us has given in." }
+        ]
+      }
+    },
+    {
+      "id": "thu-cua-gau",
+      "title": "Lá thư dính bột",
+      "goTo": "Mang thư sang chợ giao dịch, nhờ Chú Đố Chữ Quang đọc giúp những chữ dính bột",
+      "kind": "read",
+      "target": "chu-do-chu-quang",
+      "skill": "doc-hieu",
+      "text": "Voi Kẹo Bông thân mến,\nGấu gửi Voi một bí quyết để đổi lấy một bí quyết: mật ong đun lửa riu riu thì thơm mà không đắng.\nCòn kẹo bông của Voi ấy à? Bỏ vào phong bì đi một ngày đường, tới Nhà của {name} chỉ còn một cục đường bằng hạt đậu.\nGấu cá là chẳng ai gửi nổi một que kẹo bông còn nguyên tới đây!\nThơm chưa nào? Thơm rồi!\nGấu Bánh Ngọt",
+      "question": "Gấu cá với Voi điều gì?",
+      "choices": [
+        { "id": "a", "text": "Chẳng ai gửi nổi một que kẹo bông còn nguyên tới chỗ Gấu" },
+        { "id": "b", "text": "Mật ong của Gấu ngọt hơn mọi loại đường" },
+        { "id": "c", "text": "Voi không quấn nổi một que kẹo to bằng hạt đậu" }
+      ],
+      "answer": { "choice": "a" },
+      "support": {
+        "guide": ["Tìm câu có chữ «Gấu cá».", "Đọc hết câu ấy, xem Gấu bảo chẳng ai làm nổi việc gì."],
+        "hint": "Điều Gấu cá nằm ở dòng ngay trước câu «Thơm chưa nào?».",
+        "answer": { "text": "Gấu cá rằng không ai gửi được que kẹo bông nào tới nơi mà còn nguyên", "explanation": "Thư viết: «Gấu cá là chẳng ai gửi nổi một que kẹo bông còn nguyên tới đây!», mà «đây» là nhà của {name}, nơi Gấu đang ở." },
+        "en": {
+          "guide": ["Find the sentence with “I bet”.", "Read the whole sentence: what does Gấu say nobody can do?"],
+          "hint": "The bet is on the line just before “Smell that?”.",
+          "answer": { "text": "Gấu bets no stick of cotton candy can reach her without falling apart", "explanation": "The letter says: “I bet nobody can send a stick of cotton candy here in one piece!”, and “here” is {name}'s home, where Gấu lives." }
+        }
+      },
+      "feedback": {
+        "right": ["Đúng điều Gấu cá! Chú Quang gõ nắp bút xuống bàn: «Chữ nhòe mà ý rõ mồn một.»", "{name} đọc thư tinh mắt hơn cả người viết ra nó.", "Chuẩn rồi, về kể cho Voi nghe thôi: thách thì nhận!"],
+        "wrong": ["Gấu có khen mật ong thật, nhưng điều Gấu cá nằm ở một câu khác cơ.", "Hạt đậu là cục đường còn sót lại, chứ không phải que kẹo Voi quấn đâu, {name} đọc lại nhé.", "Tìm chữ «cá» trong thư, điều Gấu cá đứng ngay sau đó."],
+        "en": {
+          "right": ["That's the bet! Chú Quang taps his pen cap on the table: “Smudged words, crystal-clear meaning.”", "You read that letter more sharply than the one who wrote it, {name}.", "Exactly. Back to Voi with the news: a dare is a dare!"],
+          "wrong": ["Gấu does praise her honey, but the bet is in another sentence.", "The pea is the lump of sugar left over, not a stick Voi spins, {name}. Read it again.", "Look for the word “bet” in the letter; what Gấu bets comes right after it."]
+        }
+      },
+      "en": {
+        "title": "A floury letter",
+        "goTo": "Take the letter to the trading market and ask Chú Đố Chữ Quang to read the floury words",
+        "text": "Dear Voi Kẹo Bông,\nHere's a secret in exchange for a secret: honey heated on the lowest flame smells lovely and never turns bitter.\nAnd your cotton candy? Put it in an envelope for a day's journey and it reaches {name}'s home as a lump of sugar the size of a pea.\nI bet nobody can send a stick of cotton candy here in one piece!\nSmell that? Smells done!\nGấu Bánh Ngọt",
+        "question": "What does Gấu bet Voi?",
+        "choices": ["Nobody can send a stick of cotton candy to Gấu in one piece", "Gấu's honey is sweeter than any sugar", "Voi can't spin a candy as big as a pea"]
+      }
+    },
+    {
+      "id": "que-tre-con-lai",
+      "title": "Bó que tre của Voi",
+      "goTo": "Ra quảng trường nhận bó que tre Bác Lái Xe Hải chở về cho Voi",
+      "kind": "riddle",
+      "target": "bac-lai-xe-hai",
+      "skill": "phep-tru",
+      "question": "Bác Hải chở về cho Voi một bó 40 que tre. Dọc đường, bác cho Mèo Xếp Khối mượn 16 que để xếp hình. Bó que còn lại bao nhiêu que?",
+      "answer": { "value": 24 },
+      "support": {
+        "guide": ["Lúc đầu bó có 40 que, Mèo mượn đi 16 que.", "Lấy số que lúc đầu trừ đi số que Mèo mượn: 40 − 16."],
+        "hint": "Đặt tính 40 − 16: hàng đơn vị 0 không trừ được 6 thì mượn một chục nhé.",
+        "answer": { "text": "24 que tre", "explanation": "40 − 16 = 24: 0 không trừ được 6, lấy 10 trừ 6 bằng 4, viết 4 nhớ 1; 1 thêm 1 bằng 2, 4 trừ 2 bằng 2. Bó còn 24 que." },
+        "en": {
+          "guide": ["The bundle started with 40 sticks, and Mèo borrowed 16.", "Take the borrowed sticks away from the sticks at the start: 40 − 16."],
+          "hint": "Write 40 − 16 in columns: you can't take 6 from 0 in the ones, so borrow a ten.",
+          "answer": { "text": "24 bamboo sticks", "explanation": "40 − 16 = 24: you can't take 6 from 0, so 10 take away 6 is 4, write 4 and carry 1; 1 plus 1 is 2, and 4 take away 2 is 2. The bundle has 24 sticks left." }
+        }
+      },
+      "feedback": {
+        "right": ["Hai mươi tư que! Bác Hải buộc lại bó que bằng sợi dây hồng cho Voi.", "{name} trừ có nhớ gọn như Voi quấn sợi đường.", "Đủ que để thử cả buổi chiều, bác Hải bóp kèn hai tiếng chúc may mắn."],
+        "wrong": ["Mèo mượn bớt đi rồi, số que còn lại phải ít hơn 40 chứ.", "Hàng đơn vị 0 không trừ được 6, nhớ mượn một chục nhé, {name}.", "Que Mèo mượn đang nằm ở đài phun nước, đâu còn trong bó mà cộng thêm."],
+        "en": {
+          "right": ["Twenty-four sticks! Bác Hải ties the bundle up again with pink string for Voi.", "You subtracted with borrowing as neatly as Voi winds sugar, {name}.", "Enough sticks to experiment all afternoon; Bác Hải honks twice for luck."],
+          "wrong": ["Mèo borrowed some, so fewer than 40 must be left.", "You can't take 6 from 0 in the ones, so remember to borrow a ten, {name}.", "The sticks Mèo borrowed are over at the fountain, not in the bundle to add back."]
+        }
+      },
+      "en": {
+        "title": "Voi's bundle of sticks",
+        "goTo": "Go to the square to collect the bamboo sticks Bác Lái Xe Hải brought for Voi",
+        "question": "Bác Hải brought Voi a bundle of 40 bamboo sticks. On the way he lent Mèo Xếp Khối 16 sticks for building shapes. How many sticks are left in the bundle?"
+      }
+    },
+    {
+      "id": "quan-keo-thu",
+      "title": "Quấn thử kẹo gửi Gấu",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Có que rồi, quấn thử năm que kẹo bông cho Voi nào: tay đều, đừng vội, kẻo sợi đường văng đi mất!",
+      "game": "cotton-candy",
+      "goal": 5,
+      "en": {
+        "title": "Test candy for Gấu",
+        "prompt": "Sticks in hand, spin five trial sticks for Voi: keep your hand steady and unhurried, or the sugar threads will fly away!"
+      }
+    },
+    {
+      "id": "hop-cua-meo",
+      "title": "Chiếc hộp của Mèo",
+      "goTo": "Mang que kẹo vừa quấn sang đài phun nước, nhờ Mèo Xếp Khối đóng thử vào hộp",
+      "kind": "decision",
+      "target": "meo-xep-khoi",
+      "speaker": "Mèo Xếp Khối",
+      "prompt": "Mèo đặt que kẹo vào chiếc hộp gỗ, đậy nắp, đếm đủ năm mươi rồi mở ra: kẹo đã xẹp, chỉ còn bằng nắm tay. Mèo vẫy đuôi: «Gấu nói đúng được một nửa rồi đấy. {name} tính sao?»",
+      "choices": [
+        { "id": "them-mat-ong", "text": "Trộn mật ong của Gấu vào đường cho sợi kẹo dẻo hơn", "consequence": "Mèo gật gù: «Sợi đường có mật thì dẻo, ít xẹp hơn.» Voi reo lên: một que kẹo có cả đường của Voi lẫn mật của Gấu, xem Gấu còn cãi được không!" },
+        { "id": "hop-cao-hon", "text": "Xếp một chiếc hộp cao hơn để nắp không đè lên kẹo", "consequence": "Mèo xếp ngay một chiếc hộp cao gấp đôi. Kẹo không bị đè nữa, nhưng đếm xong năm mươi vẫn ỉu đi một chút. «Cái hộp mới lo được một nửa,» Mèo bảo, «nửa kia nằm ở sợi đường.»" },
+        { "id": "viet-hoi-gau", "text": "Viết thư hỏi Gấu xem bánh rán đi đường xa bằng cách nào", "consequence": "Voi rút bút ra ngay: «Hỏi đối thủ cũng là một cách thắng mà.» Mèo cười khúc khích, nhắc thêm: «Xin luôn cách nấu mật ong của Gấu nhé.»" }
+      ],
+      "en": {
+        "title": "Mèo's box",
+        "goTo": "Take the fresh candy over to the fountain and ask Mèo Xếp Khối to test it in a box",
+        "prompt": "Mèo sets the candy in a wooden box, closes the lid, counts to fifty and opens it: the candy has shrunk to the size of a fist. Mèo flicks a tail: “Gấu is half right already. What do you think, {name}?”",
+        "choices": [
+          { "text": "Mix Gấu's honey into the sugar so the threads stay springy", "consequence": "Mèo nods: “Honeyed sugar stays supple and shrinks less.” Voi cheers: a candy made of my sugar and Gấu's honey; let's see Gấu argue with that!" },
+          { "text": "Stack a taller box so the lid doesn't squash the candy", "consequence": "Mèo stacks a box twice as tall at once. Nothing presses on the candy now, but after fifty it has still drooped a little. “The box only solves half,” says Mèo, “the other half is in the sugar.”" },
+          { "text": "Write and ask Gấu how her doughnuts survive long trips", "consequence": "Voi pulls out a pen at once: “Asking your rival is a way of winning too.” Mèo giggles and adds: “Ask for her honey recipe while you're at it.”" }
+        ]
+      }
+    },
+    {
+      "id": "que-keo-hai-mau",
+      "title": "Que kẹo hai màu",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Voi Kẹo Bông quấn tặng {name} một que kẹo xoắn hai màu, hồng và vàng mật ong, rồi lau vòi, thổi phù một cái cho sợi đường cuối bay theo gió nhẹ.",
+      "en": {
+        "title": "A two-tone stick",
+        "text": "Voi Kẹo Bông spins {name} a twisted two-tone stick, pink and honey gold, then wipes her trunk and puffs the last sugar thread off on a gentle breeze."
+      }
+    },
+    {
+      "id": "doi-cong-thuc",
+      "title": "Đổi công thức",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối nay Voi viết thư cho Gấu: đổi cách quấn kẹo bông lấy cách nấu đường mật ong, nhưng nhất định không nói để làm gì. Mai {name} ghé quầy kẹo nhé, có khi thư trả lời của Gấu đã tới!",
+      "en": {
+        "title": "A recipe swap",
+        "text": "Tonight Voi writes to Gấu: her cotton candy method in exchange for Gấu's honey sugar recipe, without saying what it's for. Drop by the candy stall tomorrow, {name}; Gấu's reply may have arrived!"
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": { "doc-hieu": 1, "phep-tru": 1 }
+  },
+  "en": {
+    "title": "Voi Kẹo Bông's story, chapter 1: A dare in an envelope",
+    "summary": "Gấu Bánh Ngọt writes to bet that nobody can send a stick of cotton candy to {name}'s home in one piece. {name} has Chú Đố Chữ Quang read the floury words, collects Bác Lái Xe Hải's bundle of bamboo sticks on the square, spins some trial candy and takes it to Mèo Xếp Khối to see whether it could survive a long journey."
+  }
+}

@@ -1,0 +1,248 @@
+{
+  "id": "yarn-voi-keo-mat-ong-3",
+  "region": "trung-tam",
+  "chapter": 2,
+  "title": "Chuyện của Voi Kẹo Bông, chương 3: Thùng kẹo bay về Nhà của {name}",
+  "status": "active",
+  "category": "story",
+  "summary": "Thùng kẹo bông mật ong đã sẵn sàng. {name} nhờ Mèo Xếp Khối đọc thử lá thư Voi viết kèm cho Gấu, cùng Khỉ Tính Nhanh đếm que kẹo trong thùng, cùng Cáo Phi Công tính sức chở của máy bay, tập thả quà cho trúng đích rồi giúp Voi vượt qua cơn gió trước giờ cất cánh.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Voi Kẹo Bông, Mèo Xếp Khối, Khỉ Tính Nhanh, Cáo Phi Công (và Gấu Bánh Ngọt)",
+    "where": "Trung tâm: quầy kẹo bông, đài phun nước, sân trước, khu học tập",
+    "goal": "Gửi thùng kẹo bông mật ong tới Gấu Bánh Ngọt còn nguyên vẹn",
+    "play": "Đọc thư Voi gửi Gấu; đếm que kẹo trong thùng; tính sức chở máy bay; tập thả quà trúng vòng; chọn cách tiễn thùng kẹo lên đường",
+    "learn": "Đọc hiểu một lá thư, phép cộng có nhớ trong phạm vi 100, suy luận về khối lượng",
+    "reward": "80 XP, 22 Xu, Skill XP Đọc hiểu, Phép cộng, Logic",
+    "next": "Về Nhà của {name} xem Gấu Bánh Ngọt mở thùng kẹo"
+  },
+  "phases": {
+    "hook": "thung-keo-san-sang",
+    "explore": "thu-voi-gui-gau",
+    "learn": "dem-que-trong-thung",
+    "challenge": "suc-cho-may-bay",
+    "decision": "gio-truoc-gio-bay",
+    "finale": "gio-truoc-gio-bay",
+    "reward": "thung-keo-cat-canh",
+    "next": "ve-nha-xem-gau"
+  },
+  "places": {
+    "voi-keo-bong": "Quầy kẹo bông",
+    "meo-xep-khoi": "Đài phun nước",
+    "khi-tinh-nhanh": "Sân trước",
+    "cao-phi-cong": "Khu học tập"
+  },
+  "steps": [
+    {
+      "id": "thung-keo-san-sang",
+      "title": "Thùng kẹo đã buộc nơ",
+      "goTo": "Tới quầy kẹo bông, Voi Kẹo Bông đang ngồi cạnh một thùng giấy buộc nơ",
+      "kind": "dialogue",
+      "target": "voi-keo-bong",
+      "lines": [
+        { "speaker": "Voi Kẹo Bông", "text": "{name} tới đúng lúc! Thùng kẹo bông mật ong xong rồi, Voi buộc nơ ba lần mới vừa ý." },
+        { "speaker": "Voi Kẹo Bông", "text": "Mai là sinh nhật Gấu. Gấu nhớ sinh nhật của cả nhà, mà năm nào cũng quên mỗi ngày của chính mình. Lần này Voi nhớ hộ!" },
+        { "speaker": "Voi Kẹo Bông", "text": "Voi viết kèm một lá thư, mà đọc lại thấy ngượng ghê. {name} mang sang đài phun nước nhờ Mèo đọc thử giúp Voi nhé?" }
+      ],
+      "choices": [
+        { "text": "Gấu chắc sẽ bất ngờ lắm!", "reply": "Bất ngờ tới mức quên luôn chuyện cãi nhau với Voi ấy chứ. Ngọt chưa?" },
+        { "text": "Thùng to thế này gửi bằng gì đây?", "reply": "Voi tính rồi: nhờ Cáo Phi Công ở khu học tập bay một chuyến. Nhưng thư phải xong trước đã." }
+      ],
+      "en": {
+        "title": "A box tied with a bow",
+        "goTo": "Go to the cotton candy stall, where Voi Kẹo Bông sits beside a cardboard box tied with a bow",
+        "lines": [
+          "Perfect timing, {name}! The honey cotton candy box is done; I tied the bow three times before I liked it.",
+          "Tomorrow is Gấu's birthday. Gấu remembers everyone's birthday at home but forgets her own every year. This time I'm remembering for her!",
+          "I wrote a letter to go with it, and rereading it makes me blush. Would you take it to the fountain and ask Mèo to read it for me?"
+        ],
+        "choices": [
+          { "text": "Gấu will be so surprised!", "reply": "So surprised she'll forget to argue with me. Sweet enough?" },
+          { "text": "How do you send a box this big?", "reply": "I've worked it out: Cáo Phi Công at the learning area can fly it over. But the letter comes first." }
+        ]
+      }
+    },
+    {
+      "id": "thu-voi-gui-gau",
+      "title": "Lá thư kèm thùng kẹo",
+      "goTo": "Mang lá thư của Voi sang đài phun nước cho Mèo Xếp Khối đọc thử",
+      "kind": "read",
+      "target": "meo-xep-khoi",
+      "skill": "doc-hieu",
+      "text": "Gấu Bánh Ngọt thân mến,\nVoi nhận thua một nửa: kẹo bông bỏ phong bì thì xẹp thật.\nNhưng Voi đã trộn mật ong của Gấu vào đường của Voi, quấn thành kẹo bông mật ong. Kẹo này không phải của Voi, cũng không phải của Gấu, mà là của cả hai.\nChúc mừng sinh nhật Gấu! Phần ăn Voi để cả cho Gấu, Voi chỉ ngửi thôi.\nVoi Kẹo Bông",
+      "question": "Vì sao Voi viết rằng que kẹo là «của cả hai»?",
+      "choices": [
+        { "id": "a", "text": "Vì Voi và Gấu cùng ngồi quấn kẹo với nhau" },
+        { "id": "b", "text": "Vì kẹo có đường của Voi trộn với mật ong của Gấu" },
+        { "id": "c", "text": "Vì que kẹo to gấp đôi que kẹo thường" }
+      ],
+      "answer": { "choice": "b" },
+      "support": {
+        "guide": ["Tìm câu có chữ «của cả hai».", "Đọc câu đứng ngay trước nó: Voi đã trộn gì với gì?"],
+        "hint": "Một thứ là của Voi, một thứ Gấu gửi sang trong thư.",
+        "answer": { "text": "Mỗi que kẹo có phần đường của Voi và phần mật của Gấu", "explanation": "Thư kể Voi trộn mật ong của Gấu vào đường của Voi, nên que kẹo có phần của cả hai bạn." },
+        "en": {
+          "guide": ["Find the words “belongs to both of us”.", "Read the sentence just before: what did Voi mix with what?"],
+          "hint": "One thing is Voi's, the other came from Gấu by letter.",
+          "answer": { "text": "Every stick holds some of Voi's sugar and some of Gấu's honey", "explanation": "The letter says Voi mixed Gấu's honey into her own sugar, so each stick has a share from both friends." }
+        }
+      },
+      "feedback": {
+        "right": ["Đúng thế, đường một nửa, mật một nửa, chẳng ai thắng mà cả hai cùng vui.", "{name} hiểu thư của Voi còn nhanh hơn Voi viết.", "Mèo nheo mắt cười: «Ngọt vừa đủ, không phải bớt chữ nào.»"],
+        "wrong": ["Gấu ở xa lắm, đâu có sang quầy quấn kẹo cùng Voi được.", "Thư không nhắc gì tới cỡ que kẹo, đọc lại câu trước chữ «của cả hai» xem.", "Gần đúng rồi, {name} tìm xem Voi đã trộn hai thứ gì."],
+        "en": {
+          "right": ["That's it: half sugar, half honey; nobody wins and both are happy.", "You understood Voi's letter faster than she wrote it, {name}.", "Mèo smiles with narrowed eyes: “Just sweet enough; not a word to cut.”"],
+          "wrong": ["Gấu lives far away; she couldn't come and spin at the stall.", "The letter says nothing about the size of the sticks; reread the sentence before “both of us”.", "Nearly there, {name}: find the two things Voi mixed."]
+        }
+      },
+      "en": {
+        "title": "The letter in the box",
+        "goTo": "Take Voi's letter to the fountain for Mèo Xếp Khối to read",
+        "text": "Dear Gấu Bánh Ngọt,\nI admit I'm half beaten: cotton candy in an envelope really does shrink.\nBut I mixed your honey into my sugar and spun it into honey cotton candy. This candy isn't mine and it isn't yours; it belongs to both of us.\nHappy birthday, Gấu! The eating is all for you; I'll only sniff.\nVoi Kẹo Bông",
+        "question": "Why does Voi write that the candy “belongs to both of us”?",
+        "choices": ["Because Voi and Gấu sat and spun the candy together", "Because the candy mixes Voi's sugar with Gấu's honey", "Because each stick is twice the usual size"]
+      }
+    },
+    {
+      "id": "dem-que-trong-thung",
+      "title": "Đếm que kẹo trong thùng",
+      "goTo": "Ôm thùng kẹo ra sân trước, nhờ Khỉ Tính Nhanh đếm lại số que",
+      "kind": "riddle",
+      "target": "khi-tinh-nhanh",
+      "skill": "phep-cong",
+      "question": "Thùng quà có hai ngăn. Ngăn trên xếp 18 que kẹo bông mật ong, ngăn dưới xếp 15 que kẹo bông hồng. Cả thùng có bao nhiêu que kẹo?",
+      "answer": { "value": 33 },
+      "support": {
+        "guide": ["Lấy số que ngăn trên cộng số que ngăn dưới.", "Đặt tính 18 + 15, cộng từ hàng đơn vị."],
+        "hint": "8 cộng 5 bằng 13, viết 3 nhớ 1 sang hàng chục.",
+        "answer": { "text": "33 que kẹo", "explanation": "18 + 15 = 33: 8 cộng 5 bằng 13, viết 3 nhớ 1; 1 cộng 1 bằng 2, thêm 1 là 3. Cả thùng có 33 que." },
+        "en": {
+          "guide": ["Add the sticks in the top layer to the sticks in the bottom layer.", "Write 18 + 15 in columns and start with the ones."],
+          "hint": "8 plus 5 is 13: write 3 and carry 1 to the tens.",
+          "answer": { "text": "33 sticks of candy", "explanation": "18 + 15 = 33: 8 plus 5 is 13, write 3 and carry 1; 1 plus 1 is 2, plus the 1 carried is 3. The box holds 33 sticks." }
+        }
+      },
+      "feedback": {
+        "right": ["Ba mươi ba que! Khỉ Tính Nhanh viết số ấy lên nắp thùng bằng phấn hồng.", "{name} cộng có nhớ không sót que nào.", "Đủ cho Gấu ăn dần cả tháng, mà chắc Gấu lại chia cho cả nhà mất thôi."],
+        "wrong": ["Đừng quên số nhớ sang hàng chục nhé, {name}.", "Hai ngăn gộp lại thì phải nhiều hơn mỗi ngăn chứ.", "Hàng đơn vị 8 với 5 được mười mấy? Bắt đầu từ đó nào."],
+        "en": {
+          "right": ["Thirty-three! Khỉ Tính Nhanh writes the number on the lid in pink chalk.", "You added with carrying and didn't miss a single stick, {name}.", "Enough for Gấu to nibble all month, though she'll probably share them with the whole house."],
+          "wrong": ["Don't forget the ten you carry, {name}.", "Both layers together must be more than either layer alone.", "8 and 5 in the ones make ten-something; start from there."]
+        }
+      },
+      "en": {
+        "title": "Counting the sticks in the box",
+        "goTo": "Carry the candy box to the front yard and ask Khỉ Tính Nhanh to count the sticks again",
+        "question": "The gift box has two layers. The top layer holds 18 sticks of honey cotton candy and the bottom layer holds 15 sticks of pink cotton candy. How many sticks are in the whole box?"
+      }
+    },
+    {
+      "id": "suc-cho-may-bay",
+      "title": "Sức chở của máy bay",
+      "goTo": "Từ sân trước, mang thùng kẹo tới khu học tập tìm Cáo Phi Công",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "cao-phi-cong",
+      "skill": "logic",
+      "prompt": "Máy bay của Cáo chở được nhiều nhất 10 kg. Túi thư trên máy bay nặng 6 kg, thùng kẹo của Voi nặng 3 kg. Voi muốn gửi kèm vài hũ đường mật, mỗi hũ nặng 1 kg. Voi gửi thêm được nhiều nhất mấy hũ?",
+      "choices": [
+        { "id": "a", "text": "1 hũ" },
+        { "id": "b", "text": "2 hũ" },
+        { "id": "c", "text": "4 hũ" }
+      ],
+      "answer": { "choice": "a" },
+      "support": {
+        "guide": ["Tính xem túi thư và thùng kẹo đã nặng bao nhiêu: 6 + 3.", "Máy bay còn chở thêm được bao nhiêu ki-lô-gam nữa mà không quá 10 kg?"],
+        "hint": "6 + 3 = 9, mà máy bay chở được nhiều nhất 10 kg.",
+        "answer": { "text": "Chỉ thêm được đúng một hũ", "explanation": "Túi thư và thùng kẹo nặng 6 + 3 = 9 kg. Máy bay chở được 10 kg nên chỉ còn chỗ cho 10 − 9 = 1 kg, tức là 1 hũ." },
+        "en": {
+          "guide": ["Work out what the mailbag and the candy box weigh together: 6 + 3.", "How many more kilograms can the plane take without going over 10 kg?"],
+          "hint": "6 + 3 = 9, and the plane carries at most 10 kg.",
+          "answer": { "text": "Room for exactly one more jar", "explanation": "The mailbag and the candy box weigh 6 + 3 = 9 kg. The plane carries 10 kg, so there's only room for 10 − 9 = 1 kg, which is 1 jar." }
+        }
+      },
+      "feedback": {
+        "right": ["Một hũ là vừa khít mười ki-lô-gam, Cáo giơ ngón cái.", "{name} tính sức chở chuẩn như kỹ sư sân bay.", "Máy bay không quá tải, mà Voi vẫn gửi kịp một hũ đường mật cho Gấu."],
+        "wrong": ["Còn thùng kẹo ba ki-lô-gam nữa chứ, {name} quên cân nó rồi.", "Thử cộng hết lại xem, máy bay có quá mười ki-lô-gam không?", "Túi thư sáu, thùng kẹo ba, còn trống bao nhiêu nào?"],
+        "en": {
+          "right": ["One jar fits exactly to ten kilograms; Cáo gives a thumbs-up.", "You worked out the load like an airport engineer, {name}.", "The plane isn't overloaded, and Voi still sends Gấu a jar of honey sugar."],
+          "wrong": ["There's the three-kilogram candy box too, {name}; you forgot to weigh it.", "Add everything up: does the plane go over ten kilograms?", "Mailbag six, candy box three, so how much room is left?"]
+        }
+      },
+      "en": {
+        "title": "The plane's load",
+        "goTo": "From the front yard, carry the candy box to the learning area to find Cáo Phi Công",
+        "prompt": "Cáo's plane carries at most 10 kg. The mailbag on board weighs 6 kg and Voi's candy box weighs 3 kg. Voi wants to add some jars of honey sugar, 1 kg each. What is the most jars she can send?",
+        "choices": ["1 jar", "2 jars", "4 jars"]
+      }
+    },
+    {
+      "id": "tap-tha-qua",
+      "title": "Tập thả quà trúng đích",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Cáo cho {name} ngồi ghế phụ bay một vòng tập. Thả hộp quà thử trúng vòng vàng sáu lần thì Cáo mới yên tâm chở thùng kẹo thật!",
+      "game": "package-drop",
+      "goal": 6,
+      "en": {
+        "title": "Practice drops",
+        "prompt": "Cáo lets {name} ride in the co-pilot's seat for a practice loop. Land six test parcels in the yellow ring and Cáo will happily carry the real candy box!"
+      }
+    },
+    {
+      "id": "gio-truoc-gio-bay",
+      "title": "Gió trước giờ cất cánh",
+      "kind": "decision",
+      "target": "cao-phi-cong",
+      "speaker": "Cáo Phi Công",
+      "prompt": "Máy bay vừa nổ máy thì gió từ cánh quạt thổi tung đôi tai Voi. Voi lùi một bước, rồi lại bước lên: «Voi… Voi muốn tự tay đặt thùng kẹo lên máy bay.» Cáo quay sang {name}: «Cháu thấy sao?»",
+      "choices": [
+        { "id": "bay-thu-mot-vong", "text": "Rủ Voi bay thử một vòng quanh quảng trường cho quen gió", "consequence": "Voi nhắm tịt mắt lúc cất cánh, mở mắt ra đã thấy mây trắng phau ngay ngoài cửa sổ. «Toàn kẹo bông chưa ai ăn!» Hạ cánh xong, Voi tự tay đặt thùng kẹo lên máy bay, chẳng run chút nào." },
+        { "id": "buoc-them-no", "text": "Cùng Voi buộc thêm một vòng nơ thật chắc rồi đưa thùng lên", "consequence": "Voi thắt thêm một chiếc nơ hồng thật chặt, {name} giữ một đầu dây. Gió vẫn thổi, nhưng tay Voi bận buộc nơ nên quên mất phải sợ." },
+        { "id": "viet-them-dong", "text": "Để Voi viết thêm một dòng vào thư cho bình tĩnh lại", "consequence": "Voi viết thêm: «Tái bút: kẹo bông vẫn ngon hơn bánh rán một chút xíu.» Viết xong Voi cười khúc khích, gió thổi bay cả nắp bút mà Voi chẳng còn sợ nữa." }
+      ],
+      "en": {
+        "title": "Wind before take-off",
+        "prompt": "The moment the engine starts, the propeller's wind blows Voi's ears inside out. Voi steps back, then steps forward again: “I… I want to put the box on the plane myself.” Cáo turns to {name}: “What do you think?”",
+        "choices": [
+          { "text": "Invite Voi for a trial loop round the square to get used to the wind", "consequence": "Voi squeezes her eyes shut at take-off and opens them to snow-white clouds right outside the window. “Cotton candy nobody's eaten!” Back on the ground, she lifts the box onto the plane herself, without a tremble." },
+          { "text": "Tie one more bow round the box with Voi, then load it", "consequence": "Voi ties another tight pink bow while {name} holds one end of the ribbon. The wind still blows, but Voi is so busy with the bow she forgets to be scared." },
+          { "text": "Let Voi add one more line to the letter to calm down", "consequence": "Voi adds: “P.S. Cotton candy is still a tiny bit better than doughnuts.” Then she giggles; the wind blows her pen cap away, and she isn't scared any more." }
+        ]
+      }
+    },
+    {
+      "id": "thung-keo-cat-canh",
+      "title": "Thùng kẹo cất cánh",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Máy bay của Cáo vút lên, bay về phía nhà của {name}, để lại một vệt khói trắng như sợi kẹo bông. Voi quấn tặng {name} que kẹo bông mật ong cuối cùng của mẻ: «Phần của người đứng cạnh Voi suốt chuyện này.»",
+      "en": {
+        "title": "The candy takes off",
+        "text": "Cáo's plane zooms up towards {name}'s home, leaving a white trail like a thread of cotton candy. Voi spins {name} the last stick of honey cotton candy from the batch: “For the one who stood by me through all of this.”"
+      }
+    },
+    {
+      "id": "ve-nha-xem-gau",
+      "title": "Về nhà xem Gấu mở quà",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sáng mai Gấu sẽ mở thùng kẹo ở Nhà của {name}. {name} về nhà xem Gấu nếm thử nhé! Chắc chắn Gấu sẽ viết một lá thư dài ba trang, có điều lần này là ba trang cảm ơn.",
+      "en": {
+        "title": "Home to watch Gấu open it",
+        "text": "Tomorrow morning Gấu opens the candy box at {name}'s home. Go home and watch her take the first bite, {name}! She's sure to write a three-page letter back, only this time it'll be three pages of thank-yous."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 22,
+    "skillXp": { "doc-hieu": 1, "phep-cong": 1, "logic": 1 }
+  },
+  "en": {
+    "title": "Voi Kẹo Bông's story, chapter 3: The candy box flies to {name}'s home",
+    "summary": "The honey cotton candy box is ready. {name} has Mèo Xếp Khối read the letter Voi wrote for Gấu, counts the sticks with Khỉ Tính Nhanh, works out the plane's load with Cáo Phi Công, practises dropping parcels on target and helps Voi past the wind before take-off."
+  }
+}

@@ -1,0 +1,442 @@
+{
+  "id": "yarn-vit-go-dau-dan-3",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Chuyện của Chó Lùa Vịt, chương 3: Bến lội chờ ông",
+  "status": "active",
+  "category": "story",
+  "summary": "Biết Ông Cụ Trông Vườn chưa từng dám xuống nước, Chó Lùa Vịt muốn làm một bến lội thật nông, thật an toàn ở ao cá rồi mời ông sang. {name} so độ sâu bốn góc ao, tính xem nước thấp hơn đầu gối ông bao nhiêu, chọn luật cho tấm biển bến lội cùng Bác Nông Dân Thành, chọn quà kèm thiệp mời với Heo Kho Hàng và dẫn đàn vịt tập đi qua bến.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Chó Lùa Vịt, Chú Đào Kênh Dẫn Nước, Bác Nông Dân Thành, Heo Kho Hàng",
+    "where": "Nông trại: ao cá, cối xay gió, khu trồng trọt, kho chế biến",
+    "goal": "Làm một bến lội nông và an toàn rồi gửi thiệp mời Ông Cụ Trông Vườn sang lội cùng đàn vịt",
+    "play": "So sánh độ sâu bốn góc ao, giải bài toán gang tay, chọn luật an toàn dưới nước, chọn quà kèm thiệp mời, vẽ đường cho đàn vịt",
+    "learn": "So sánh số, bài toán có lời văn (cộng, trừ có nhớ), an toàn khi chơi gần nước",
+    "reward": "75 XP, 20 Xu, Skill XP So sánh số, Bài toán có lời văn, Đọc hiểu",
+    "next": "Ngay sau vịt gỗ, đàn vịt chừa một chỗ trống chờ ngày Ông Cụ sang lội"
+  },
+  "phases": {
+    "hook": "y-tuong-ben-loi",
+    "explore": "goc-ao-nong-nhat",
+    "learn": "nuoc-toi-dau-chan-ong",
+    "challenge": "bien-luat-ben-loi",
+    "decision": "qua-kem-thiep-moi",
+    "finale": "dan-vit-tap-qua-ben",
+    "reward": "ben-loi-goc-cat",
+    "next": "cho-trong-sau-vit-go"
+  },
+  "places": {
+    "cho-lua-vit": "Ao cá",
+    "chu-dao-kenh-nuoc": "Cối xay gió",
+    "bac-nong-dan-thanh": "Khu trồng trọt",
+    "heo-kho-hang": "Kho chế biến"
+  },
+  "steps": [
+    {
+      "id": "y-tuong-ben-loi",
+      "title": "Ý tưởng của Chó",
+      "kind": "dialogue",
+      "target": "cho-lua-vit",
+      "goTo": "Ra ao cá, Chó Lùa Vịt đang đi đi lại lại trên bờ",
+      "lines": [
+        {
+          "speaker": "Chó Lùa Vịt",
+          "text": "{name} ơi, đêm qua tớ nằm nghĩ mãi về chiếc phao còn nhãn giá của Ông Cụ."
+        },
+        {
+          "speaker": "Chó Lùa Vịt",
+          "text": "Nước sâu thì ai chẳng phải dè chừng. Nhưng ao này có một góc nước nông chỉ tới mắt cá. Mình làm ở đó một bến lội thật an toàn, rồi mời ông sang lội cùng đàn vịt nhé!"
+        },
+        {
+          "speaker": "Chó Lùa Vịt",
+          "text": "Không cần bơi đâu, chỉ lội vài bước sau vịt gỗ thôi. Tớ hứa hôm ấy sẽ không sủa to."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Ý hay quá, làm ngay thôi!",
+          "reply": "Hàng một! Tiến! ...À xin lỗi, tớ quen miệng mất rồi."
+        },
+        {
+          "text": "Lỡ ông không muốn sang thì sao?",
+          "reply": "Thì bến lội vẫn ở đây chờ ông. Mời là để ông biết có bạn đang nghĩ tới ông, chứ không phải để ép."
+        }
+      ],
+      "en": {
+        "title": "Chó's idea",
+        "goTo": "Go to the fishpond, where Chó Lùa Vịt is pacing up and down the bank",
+        "lines": [
+          "{name}, I lay awake all night thinking about Ông Cụ’s float with the price tag still on.",
+          "Anyone is careful around deep water. But this pond has a corner only ankle-deep. Let’s make a really safe wading spot there and invite him over to paddle with the ducks!",
+          "No swimming needed, just a few steps behind the wooden duck. I promise not to bark loudly that day."
+        ],
+        "choices": [
+          {
+            "text": "Great idea, let's start now!",
+            "reply": "Single file! Forward! ...Oh, sorry, force of habit."
+          },
+          {
+            "text": "What if he doesn't want to come?",
+            "reply": "Then the wading spot just waits here for him. Inviting him is to show a friend is thinking of him, not to push him."
+          }
+        ]
+      }
+    },
+    {
+      "id": "goc-ao-nong-nhat",
+      "title": "Góc ao nông nhất",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "cho-lua-vit",
+      "skill": "so-sanh-so",
+      "prompt": "Chó cắm cọc tre đo nước ở bốn góc ao: Góc Cầu sâu 45 cm, Góc Sen sâu 28 cm, Góc Chuối sâu 52 cm, Góc Cát sâu 19 cm. Bến lội phải ở góc nông nhất. Chọn góc nào?",
+      "choices": [
+        {
+          "id": "cau",
+          "text": "Góc Cầu"
+        },
+        {
+          "id": "sen",
+          "text": "Góc Sen"
+        },
+        {
+          "id": "chuoi",
+          "text": "Góc Chuối"
+        },
+        {
+          "id": "cat",
+          "text": "Góc Cát"
+        }
+      ],
+      "answer": {
+        "choice": "cat"
+      },
+      "support": {
+        "guide": [
+          "Nông nhất là chỗ có số xăng-ti-mét bé nhất.",
+          "So hàng chục trước: 4 chục, 2 chục, 5 chục, 1 chục."
+        ],
+        "hint": "Số nào chỉ có 1 chục?",
+        "answer": {
+          "text": "Góc Cát, sâu 19 cm",
+          "explanation": "So các số 45, 28, 52, 19: số 19 bé nhất vì chỉ có 1 chục. Góc Cát nông nhất."
+        },
+        "en": {
+          "guide": [
+            "The shallowest corner has the smallest number of centimetres.",
+            "Compare the tens first: 4 tens, 2 tens, 5 tens, 1 ten."
+          ],
+          "hint": "Which number has only 1 ten?",
+          "answer": {
+            "text": "Sand Corner, 19 cm deep",
+            "explanation": "Compare 45, 28, 52 and 19: 19 is the smallest because it has only 1 ten. Sand Corner is the shallowest."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Góc Cát! Chó nhúng chân thử: nước mát, chỉ tới mắt cá.",
+          "{name} so hàng chục nhanh như đếm vịt.",
+          "Mười chín xăng-ti-mét, ông lội chỗ này chẳng ướt gối."
+        ],
+        "wrong": [
+          "Góc ấy còn sâu hơn một góc khác đấy.",
+          "So hàng chục trước, số nào ít chục nhất?",
+          "Ông cần chỗ nông nhất, chứ không phải chỗ sâu nhất."
+        ],
+        "en": {
+          "right": [
+            "Sand Corner! Chó dips a paw in: cool water, only ankle-deep.",
+            "{name} compares tens as quickly as counting ducks.",
+            "Nineteen centimetres: he could wade here without wetting his knees."
+          ],
+          "wrong": [
+            "That corner is deeper than another one.",
+            "Compare the tens first: which has the fewest?",
+            "He needs the shallowest spot, not the deepest."
+          ]
+        }
+      },
+      "en": {
+        "title": "The shallowest corner",
+        "prompt": "Chó has measured the water at the four corners of the pond with a bamboo stake: Bridge Corner 45 cm, Lotus Corner 28 cm, Banana Corner 52 cm, Sand Corner 19 cm. The wading spot must be the shallowest corner. Which one?",
+        "choices": [
+          "Bridge Corner",
+          "Lotus Corner",
+          "Banana Corner",
+          "Sand Corner"
+        ]
+      }
+    },
+    {
+      "id": "nuoc-toi-dau-chan-ong",
+      "title": "Nước tới đâu chân ông?",
+      "kind": "riddle",
+      "target": "chu-dao-kenh-nuoc",
+      "goTo": "Ra cối xay gió nhờ Chú Đào Kênh Dẫn Nước tính giúp",
+      "skill": "bai-toan-loi-van",
+      "question": "Ông Cụ đo gì cũng bằng gang tay: đầu gối ông cao ba gang tay, mỗi gang tay dài 15 cm. Nước ở Góc Cát sâu 19 cm. Mặt nước thấp hơn đầu gối ông bao nhiêu xăng-ti-mét?",
+      "answer": {
+        "value": 26
+      },
+      "support": {
+        "guide": [
+          "Tính chiều cao đầu gối trước: 15 + 15 + 15.",
+          "Rồi lấy chiều cao đầu gối trừ đi độ sâu của nước."
+        ],
+        "hint": "Đầu gối ông cao 45 cm.",
+        "answer": {
+          "text": "26 cm",
+          "explanation": "15 + 15 + 15 = 45 cm, rồi 45 − 19 = 26 cm. Mặt nước thấp hơn đầu gối ông tới 26 cm."
+        },
+        "en": {
+          "guide": [
+            "Work out the knee height first: 15 + 15 + 15.",
+            "Then take the water depth away from the knee height."
+          ],
+          "hint": "His knee is 45 cm high.",
+          "answer": {
+            "text": "26 cm",
+            "explanation": "15 + 15 + 15 = 45 cm, then 45 − 19 = 26 cm. The water stays 26 cm below his knee."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chú Đào Kênh dựng cây thước đo nước: «Đúng 26 phân, yên tâm!»",
+          "{name} tính hai bước gọn gàng, gang tay của ông hóa ra dễ đo ghê.",
+          "Nước còn cách đầu gối ông cả một quãng dài, Chó thở phào."
+        ],
+        "wrong": [
+          "Nhớ cộng đủ ba gang tay trước đã nhé.",
+          "45 bớt 19: thử bớt 10 trước, rồi bớt tiếp 9.",
+          "Câu hỏi cần khoảng cách giữa mặt nước và đầu gối cơ."
+        ],
+        "en": {
+          "right": [
+            "Chú Đào Kênh stands up his measuring pole: «Exactly 26 centimetres. Nothing to worry about!»",
+            "{name} solves it neatly in two steps; Ông Cụ’s hand-spans turn out easy to measure.",
+            "The water stays well below his knee. Chó breathes out."
+          ],
+          "wrong": [
+            "Add up all three hand-spans first.",
+            "45 take away 19: try taking away 10 first, then 9.",
+            "The question asks for the gap between the water and his knee."
+          ]
+        }
+      },
+      "en": {
+        "title": "How high would the water come?",
+        "goTo": "Go to the windmill and ask Chú Đào Kênh Dẫn Nước to help work it out",
+        "question": "Ông Cụ measures everything in hand-spans: his knee is three hand-spans high, and each hand-span is 15 cm. The water at Sand Corner is 19 cm deep. How many centimetres below his knee is the water?"
+      }
+    },
+    {
+      "id": "bien-luat-ben-loi",
+      "title": "Tấm biển luật bến lội",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "bac-nong-dan-thanh",
+      "goTo": "Sang khu trồng trọt xin phép Bác Nông Dân Thành",
+      "skill": "doc-hieu",
+      "prompt": "Bác Nông Dân Thành cho làm bến lội nhưng muốn cắm một tấm biển luật: «Ấy thế mà nước nông cũng phải có luật!» Chọn tất cả những điều nên viết lên biển:",
+      "choices": [
+        {
+          "id": "nguoi-lon",
+          "text": "Luôn có người lớn đứng trên bờ trông chừng"
+        },
+        {
+          "id": "mot-minh",
+          "text": "Xuống nước một mình lúc trời chạng vạng"
+        },
+        {
+          "id": "vong-day",
+          "text": "Chỉ lội trong vòng dây chăng, không ra xa"
+        },
+        {
+          "id": "day-ban",
+          "text": "Đùa đẩy bạn ngã xuống ao"
+        },
+        {
+          "id": "mac-phao",
+          "text": "Mặc phao trước khi xuống nước"
+        },
+        {
+          "id": "nhay-um",
+          "text": "Nhảy ùm từ cầu ao xuống cho mát"
+        },
+        {
+          "id": "co-sam",
+          "text": "Nghe tiếng sấm là lên bờ ngay"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "nguoi-lon",
+          "vong-day",
+          "mac-phao",
+          "co-sam"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Luật đúng giúp người lội không ngã, không ra chỗ sâu, không ở dưới nước khi trời nguy hiểm.",
+          "Loại những việc làm một mình, đùa nghịch, hay nhảy ào xuống nước."
+        ],
+        "hint": "Có bốn điều nên viết lên biển.",
+        "answer": {
+          "text": "Người lớn trông, lội trong dây, mặc phao, có sấm lên bờ",
+          "explanation": "Xuống nước phải có người lớn trông, chỉ lội trong vòng dây, mặc phao, và lên bờ ngay khi có sấm. Đi một mình lúc tối, đẩy bạn hay nhảy từ cầu đều rất nguy hiểm."
+        },
+        "en": {
+          "guide": [
+            "Good rules keep waders from falling, from deep water, and out of the water when the weather turns dangerous.",
+            "Rule out anything done alone, rough play, or jumping into the water."
+          ],
+          "hint": "Four things belong on the sign.",
+          "answer": {
+            "text": "A grown-up watching, inside the rope, a float on, out at thunder",
+            "explanation": "In the water there must be a grown-up watching from the bank; wade only inside the rope, wear a float, and get out at once when thunder rumbles. Going in alone at dusk, pushing friends or jumping off the bridge are all very dangerous."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bác Thành đọc to tấm biển rồi gật gù: «Ấy thế mà đủ cả!»",
+          "{name} nghĩ tới đủ chuyện, cả chuyện sấm sét mà Chó sợ nhất.",
+          "Biển luật rõ ràng thế này, ai lội cũng yên tâm."
+        ],
+        "wrong": [
+          "Ối, việc ấy mà viết lên biển thì nguy hiểm lắm!",
+          "Còn thiếu hoặc thừa một điều, đọc lại từng dòng nhé.",
+          "Hỏi mình: làm thế có giữ cho người lội an toàn không?"
+        ],
+        "en": {
+          "right": [
+            "Bác Thành reads the sign aloud and nods: «Well now, that covers everything!»",
+            "{name} thought of it all, even the thunder Chó fears most.",
+            "With rules this clear, anyone can wade without worry."
+          ],
+          "wrong": [
+            "Whoa, putting that on the sign would be dangerous!",
+            "One rule too many or too few: check each line again.",
+            "Ask yourself: does that keep a wader safe?"
+          ]
+        }
+      },
+      "en": {
+        "title": "The wading-spot rules",
+        "goTo": "Go to the crop fields to ask Bác Nông Dân Thành’s permission",
+        "prompt": "Bác Nông Dân Thành agrees to the wading spot but wants a sign with rules: «Well now, even shallow water needs rules!» Pick everything that belongs on the sign:",
+        "choices": [
+          "A grown-up always watches from the bank",
+          "Going into the water alone at dusk",
+          "Wading only inside the rope, never further out",
+          "Pushing a friend into the pond for fun",
+          "Putting on a float before going in",
+          "Jumping off the pond bridge to cool down",
+          "Getting out at once when thunder rumbles"
+        ]
+      }
+    },
+    {
+      "id": "qua-kem-thiep-moi",
+      "title": "Quà kèm thiệp mời",
+      "kind": "decision",
+      "target": "heo-kho-hang",
+      "goTo": "Sang kho chế biến nhờ Heo Kho Hàng viết thiệp mời",
+      "speaker": "Heo Kho Hàng",
+      "prompt": "Heo Kho Hàng nắn nót viết: «Ủn ỉn, mục số một: kính mời Ông Cụ Trông Vườn sang lội ở bến Góc Cát.» Rồi Heo hỏi {name} gửi gì kèm thiệp?",
+      "choices": [
+        {
+          "id": "ban-ve",
+          "text": "Bản vẽ bến lội, ghi rõ nước sâu 19 cm",
+          "consequence": "Heo dán nhãn «Nước nông, yên tâm» lên bản vẽ. Ông Cụ mở thư là biết ngay chỗ ấy hiền lành cỡ nào."
+        },
+        {
+          "id": "long-vit",
+          "text": "Một chiếc lông vịt trắng muốt",
+          "consequence": "Chiếc lông nhẹ tênh nằm trong phong bì. Heo ghi: «Mục số hai: lông vịt, nghĩa là cả đàn đang chờ ông.»"
+        },
+        {
+          "id": "loi-hua",
+          "text": "Lời hứa cả đàn vịt sẽ lội cùng ông",
+          "consequence": "Chó ấn dấu chân xuống cuối thiệp thay chữ ký. Heo đếm: mười hai vịt, một chó, một vịt gỗ, đủ mười bốn lời hứa."
+        }
+      ],
+      "en": {
+        "title": "A gift with the invitation",
+        "goTo": "Go to the processing barn and ask Heo Kho Hàng to write the invitation",
+        "prompt": "Heo Kho Hàng writes in his neatest hand: «Oink, item one: Ông Cụ Trông Vườn is warmly invited to wade at Sand Corner.» Then Heo asks {name} what to send with it.",
+        "choices": [
+          {
+            "text": "A drawing of the wading spot, marked 19 cm deep",
+            "consequence": "Heo sticks a «Shallow, no worries» label on the drawing. The moment Ông Cụ opens it, he’ll see how gentle the spot is."
+          },
+          {
+            "text": "A snow-white duck feather",
+            "consequence": "The feather lies light as air in the envelope. Heo writes: «Item two: a duck feather, meaning the whole flock is waiting for you.»"
+          },
+          {
+            "text": "A promise that the whole flock will wade with him",
+            "consequence": "Chó presses a paw print at the bottom as his signature. Heo counts: twelve ducks, one dog, one wooden duck, fourteen promises in all."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dan-vit-tap-qua-ben",
+      "title": "Đàn vịt tập qua bến",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "cho-lua-vit",
+      "goTo": "Về ao cá dựng bến lội ở Góc Cát",
+      "prompt": "Bến lội xong rồi! Giờ mình tập cho đàn vịt đi qua bến thật ngay ngắn, để hôm ông sang cả đàn đã thuộc đường. Vẽ đường giúp tớ nhé!",
+      "game": "path-guide",
+      "goal": 12,
+      "en": {
+        "title": "The ducks practise crossing",
+        "goTo": "Back to the fishpond to set up the wading spot at Sand Corner",
+        "prompt": "The wading spot is ready! Now let’s teach the ducks to cross it neatly, so the whole flock knows the way when he comes. Draw their paths for me!"
+      }
+    },
+    {
+      "id": "ben-loi-goc-cat",
+      "title": "Bến lội Góc Cát",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hai cọc tre, một sợi dây gai chăng ngang, nước trong veo chỉ tới mắt cá. Vịt gỗ dẫn đàn lội qua bến, và Chó cẩn thận chừa một chỗ trống ngay sau vịt gỗ.",
+      "en": {
+        "title": "The Sand Corner wading spot",
+        "text": "Two bamboo stakes, a rope of twine across, and clear water only ankle-deep. The wooden duck leads the flock across, and Chó carefully leaves one empty place right behind it."
+      }
+    },
+    {
+      "id": "cho-trong-sau-vit-go",
+      "title": "Chỗ trống sau vịt gỗ",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Thiệp mời đã gửi đi. Chiều nào Chó cũng ngồi canh bến lội, mắt ngó ra đường lớn. Chỗ trống sau vịt gỗ vẫn để dành, cho tới ngày có một chiếc mũ rơm và một chiếc phao không còn nhãn giá ghé qua.",
+      "en": {
+        "title": "The place behind the wooden duck",
+        "text": "The invitation is on its way. Every afternoon Chó sits by the wading spot, watching the main road. The place behind the wooden duck stays empty, saved for the day a straw hat and a float without a price tag come by."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 75,
+    "coin": 20,
+    "skillXp": {
+      "so-sanh-so": 1,
+      "bai-toan-loi-van": 1,
+      "doc-hieu": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Chó Lùa Vịt's story, chapter 3: A wading spot waiting for him",
+    "summary": "Knowing Ông Cụ Trông Vườn has never dared go into the water, Chó Lùa Vịt wants to make a shallow, safe wading spot at the fishpond and invite him over. {name} compares the depth of four corners, works out how far below his knee the water stays, picks the rules for the sign with Bác Nông Dân Thành, chooses a gift for the invitation with Heo Kho Hàng and guides the ducks across the new spot."
+  }
+}

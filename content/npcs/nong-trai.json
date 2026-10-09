@@ -461,6 +461,15 @@
           "vi": "Nếu tớ được đi thi đàn vịt thẳng hàng, cậu đi cùng nhé. Cậu sẽ là con vịt thứ mười ba, con quan trọng nhất.",
           "en": "If I ever get to the duck-line contest, come with me. You’ll be duck number thirteen, the most important one.",
           "hearts": 5
+        },
+        {
+          "vi": "Ông Cụ Trông Vườn là bạn già của tớ. Ông đẽo cho tớ con vịt gỗ dẫn đầu đàn, từ hồi tớ còn chưa biết sủa cho ra tiếng.",
+          "en": "Ông Cụ Trông Vườn is my old friend. He carved me the wooden duck that leads my flock, back when I couldn’t even bark properly.",
+          "about": "ong-cu-trong-vuon"
+        },
+        {
+          "vi": "Tối nào tớ cũng chúc vịt gỗ ngủ ngon, như Ông Cụ sáng nào cũng gõ ba cái chào cái cối xay gió của ông.",
+          "en": "Every night I wish the wooden duck goodnight, just as Ông Cụ knocks three times to greet his windmill every morning."
         }
       ]
     },
@@ -644,6 +653,15 @@
         "vi": "Thỏ Làm Vườn gửi cây cho Chó trồng cạnh chuồng vịt, Chó gửi lại phân vịt ủ hoai cho vườn của Thỏ.",
         "en": "Thỏ Làm Vườn sends plants for Chó to grow by the duck coop, and Chó sends back well-rotted duck manure for Thỏ’s garden."
       }
+    },
+    {
+      "a": "cho-lua-vit",
+      "b": "ong-cu-trong-vuon",
+      "kind": "friend",
+      "note": {
+        "vi": "Ông Cụ đẽo cho Chó con vịt gỗ dẫn đầu đàn từ hồi Chó còn là cún con; hai bạn già vẫn viết thư hỏi nhau chuyện vịt, chuyện vườn.",
+        "en": "Ông Cụ carved Chó the wooden duck that leads his flock when Chó was still a puppy; the two old friends still write to each other about ducks and gardens."
+      }
     }
   ],
   "arcs": [
@@ -811,6 +829,82 @@
             "body": {
               "vi": "Chào {name}! Chiều qua đang bán kẹo bông ở quảng trường, tớ nghe tiếng leng keng từ trên mây vọng xuống. Ngẩng lên thấy một con diều tít tắp. Bò Chuông Đồng viết thư bảo có cậu giúp. Cảm ơn nhé, cả quảng trường đã ngẩng đầu mỉm cười đấy!",
               "en": "Hi {name}! Yesterday afternoon, while I was selling cotton candy in the square, I heard a jingle drifting down from the clouds. I looked up and saw a kite way, way up. Bò Chuông Đồng wrote that you helped. Thank you: the whole square looked up and smiled!"
+            },
+            "reward": {
+              "coins": 20,
+              "xp": 25,
+              "items": {}
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "vit-go-dau-dan",
+      "npc": "cho-lua-vit",
+      "title": {
+        "vi": "Con vịt gỗ dẫn đàn",
+        "en": "The wooden lead duck"
+      },
+      "teaser": {
+        "vi": "Gâu! Cậu có thấy con vịt nào bằng gỗ trôi qua đây không? Mười hai con thật thì đủ, mà con quan trọng nhất lại mất rồi!",
+        "en": "Woof! Have you seen a duck made of wood float past? All twelve real ones are here, but the most important one is gone!"
+      },
+      "chapters": [
+        {
+          "quest": "yarn-vit-go-dau-dan-1",
+          "hearts": 0,
+          "letter": {
+            "from": "cho-lua-vit",
+            "title": {
+              "vi": "Mười ba cái bóng",
+              "en": "Thirteen shadows"
+            },
+            "body": {
+              "vi": "Gâu, {name}! Sáng nay tớ đếm bóng trên mặt ao: mười hai bóng vịt thật, một bóng vịt gỗ, đủ mười ba. Vịt gỗ còn nứt bụng nên tớ buộc nó ở cọc cầu cho nó đứng xem đàn bơi. Cảm ơn cậu nhiều... à xin lỗi, tớ viết to quá.",
+              "en": "Woof, {name}! This morning I counted the shadows on the pond: twelve real ducks and one wooden duck, thirteen in all. The wooden one still has a cracked belly, so I tied it to the bridge post to watch the others swim. Thank you so much... oh, sorry, I wrote that too loudly."
+            },
+            "reward": {
+              "coins": 12,
+              "xp": 15,
+              "items": {}
+            }
+          }
+        },
+        {
+          "quest": "yarn-vit-go-dau-dan-2",
+          "hearts": 1,
+          "letter": {
+            "from": "tho-lam-vuon",
+            "title": {
+              "vi": "Ông cười cả buổi chiều",
+              "en": "He smiled all afternoon"
+            },
+            "body": {
+              "vi": "Chào {name}! Ông Cụ đọc thư Chó kể chuyện vịt gỗ nổi thẳng băng thì cười móm mém cả buổi chiều, rồi lôi khúc gỗ xoan ra đẽo tiếp. Ông dặn tớ gửi cậu chậu sen đá nhỏ này, bảo người khéo tay thì nên có một chậu cây xanh bên cạnh.",
+              "en": "Hi {name}! When Ông Cụ read Chó’s letter about the wooden duck floating perfectly straight, he smiled a toothless smile all afternoon, then took out a block of xoan wood and started carving again. He asked me to send you this little succulent: clever hands, he says, deserve a green plant beside them."
+            },
+            "reward": {
+              "coins": 12,
+              "xp": 20,
+              "items": {
+                "chau-sen-da": 1
+              }
+            }
+          }
+        },
+        {
+          "quest": "yarn-vit-go-dau-dan-3",
+          "hearts": 2,
+          "letter": {
+            "from": "ong-cu-trong-vuon",
+            "title": {
+              "vi": "Cái nhãn giá",
+              "en": "The price tag"
+            },
+            "body": {
+              "vi": "Ờ thì, cháu {name} này, thiệp mời của Chó tới rồi. Sáng nay ông lấy kéo cắt cái nhãn giá trên chiếc phao, hai mươi năm treo đấy cũng đủ lâu. Hè này ông sang bến lội Góc Cát, lội tới mắt cá thôi, đi sau con vịt gỗ. Cháu sang thì đứng trên bờ cổ vũ ông một tiếng nhé.",
+              "en": "Well now, young {name}, Chó’s invitation has arrived. This morning I took the scissors to the price tag on my float; twenty years hanging there is long enough. This summer I’ll go over to the Sand Corner wading spot, only ankle-deep, walking behind the wooden duck. If you come, stand on the bank and give me a cheer, will you?"
             },
             "reward": {
               "coins": 20,

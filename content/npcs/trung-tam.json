@@ -87,7 +87,9 @@
         { "vi": "Gấu gửi sang một đĩa bánh rán mật ong, Voi nếm một miếng rồi để dành ngửi. Ai tặng Voi đĩa nữa, Voi cảm ơn mãi.", "en": "Gấu sent me a plate of honey doughnuts; I tasted one bite and kept the rest to sniff. Bring me another plate and I'll thank you forever." },
         { "vi": "Biết không, một thìa đường nhỏ quấn ra được cả một đám mây kẹo, vì kẹo bông phần lớn là… không khí!", "en": "Did you know one small spoon of sugar spins into a whole candy cloud? Cotton candy is mostly… air!" },
         { "vi": "{name} thích kẹo bông màu hồng, màu xanh hay màu vàng chanh? Voi pha màu theo ý khách mà.", "en": "Pink, blue or lemon yellow, {name}? I mix the colour to order." },
-        { "vi": "Que kẹo bông cao nhất Voi từng làm cao tới tai Voi. Nó đổ trúng mũ một bác bảo vệ, bác cười cả buổi.", "en": "The tallest stick I ever spun reached my ears. It toppled onto a guard's cap, and he laughed all afternoon." }
+        { "vi": "Que kẹo bông cao nhất Voi từng làm cao tới tai Voi. Nó đổ trúng mũ một bác bảo vệ, bác cười cả buổi.", "en": "The tallest stick I ever spun reached my ears. It toppled onto a guard's cap, and he laughed all afternoon." },
+        { "vi": "Voi với Gấu đổi công thức qua thư lâu lắm rồi: Voi gửi cách quấn kẹo, Gấu gửi cách nấu mật. Chỉ riêng chuyện món nào ngon hơn thì chưa ai chịu nhường.", "en": "Gấu and I have swapped recipes by letter for ages: I send spinning tips, she sends honey tricks. Which treat is better, though, neither of us will ever concede." },
+        { "vi": "Hũ mật ong Gấu gửi sang, Voi đặt trên quầy cho thơm. Khách nào hỏi, Voi bảo: «Mật của một cô bạn ở Nhà của {name} đấy.»", "en": "I keep the honey jar Gấu sent on my counter for the smell. When customers ask, I say: “That's from a friend at {name}'s home.”" }
       ]
     },
     {
@@ -241,6 +243,44 @@
             "title": { "vi": "Lân đã múa mở màn!", "en": "I opened the festival!" },
             "body": { "vi": "{name} ơi! Đêm qua Lân múa mở màn, cả quảng trường vỗ tay thành trống. Có một lúc Lân hụt chân, nhưng tiếng vỗ tay vẫn giữ nhịp, Lân cười rồi múa tiếp. Lân gửi {name} quả bóng bay của đêm hội.", "en": "{name}! Last night I opened the festival and the whole square clapped like one big drum. I missed a step once, but the clapping kept the beat, so I laughed and danced on. Here's a balloon from the festival for you." },
             "reward": { "coins": 25, "xp": 25, "items": { "bong-bong-bay-mau": 1 } }
+          }
+        }
+      ]
+    },
+    {
+      "id": "voi-keo-mat-ong",
+      "npc": "voi-keo-bong",
+      "title": { "vi": "Kẹo bông gửi Gấu", "en": "Cotton Candy for Gấu" },
+      "teaser": { "vi": "Gấu Bánh Ngọt cá rằng chẳng ai gửi nổi một que kẹo bông còn nguyên tới Nhà của {name}. Voi muốn cãi lại bằng một món quà… {name} giúp Voi nhé, ngọt chưa?", "en": "Gấu Bánh Ngọt bet that nobody could send a stick of cotton candy to {name}'s home in one piece. I want to answer her with a present… will you help, {name}? Sweet enough?" },
+      "chapters": [
+        {
+          "quest": "yarn-voi-keo-mat-ong-1",
+          "hearts": 0,
+          "letter": {
+            "from": "voi-keo-bong",
+            "title": { "vi": "Thư đổi công thức đã gửi", "en": "The recipe swap is posted" },
+            "body": { "vi": "{name} ơi, tối nay Voi đã gửi thư cho Gấu: đổi cách quấn kẹo bông lấy cách nấu đường mật ong. Voi không kể mình định làm gì đâu, {name} cũng giữ bí mật giúp Voi nhé. Ngọt chưa? Chưa ngọt bằng một bí mật!", "en": "{name}, tonight I posted my letter to Gấu: my cotton candy method for her honey sugar recipe. I didn't say what it's for, so please keep the secret too. Sweet enough? Not as sweet as a secret!" },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-voi-keo-mat-ong-2",
+          "hearts": 1,
+          "letter": {
+            "from": "gau-banh-ngot",
+            "title": { "vi": "Gấu nghi lắm nhé", "en": "Gấu is suspicious" },
+            "body": { "vi": "{name} ơi, Voi xin công thức đường mật mà nhất định không nói để làm gì. Gấu đoán Voi định rán bánh thi với Gấu! {name} ở quảng trường thì để ý giúp Gấu nhé. Thơm chưa nào? Thơm rồi, mà Gấu vẫn lo.", "en": "{name}, Voi asked for my honey sugar recipe and simply won't say what it's for. I bet she's planning to out-bake me! Keep an eye out for me on the square. Smell that? Smells done, but I'm still worried." },
+            "reward": { "coins": 20, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-voi-keo-mat-ong-3",
+          "hearts": 2,
+          "letter": {
+            "from": "gau-banh-ngot",
+            "title": { "vi": "Một món ngọt ăn hết sạch", "en": "A treat eaten to the last bite" },
+            "body": { "vi": "{name} ơi, thùng kẹo tới đúng sáng sinh nhật Gấu, que nào cũng còn xốp! Lần đầu tiên Gấu ăn hết một món ngọt mà chẳng muốn sửa công thức gì cả. Gấu vẫn bảo bánh rán ngon hơn, nhưng chỉ hơn một chút xíu thôi. Gấu gửi {name} chiếc hộp quà nhỏ này để cảm ơn.", "en": "{name}, the candy box arrived on my birthday morning and every stick was still fluffy! For the first time ever I ate a whole treat without wanting to fix the recipe. I still say doughnuts are better, but only a tiny bit. Here's a little gift box to say thank you." },
+            "reward": { "coins": 25, "xp": 25, "items": { "hop-qua-trung-tam": 1 } }
           }
         }
       ]

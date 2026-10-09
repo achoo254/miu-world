@@ -1,0 +1,415 @@
+{
+  "id": "yarn-vit-go-dau-dan-2",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Chuyện của Chó Lùa Vịt, chương 2: Thư của ông bạn già",
+  "status": "active",
+  "category": "story",
+  "summary": "Ông Cụ Trông Vườn gửi thư chỉ cách chữa vết nứt dưới bụng vịt gỗ. {name} đọc thư cho Chó Lùa Vịt nghe, tính xem hũ nhựa thông của Heo Kho Hàng còn bao nhiêu, xếp các bước trám vịt cùng Ông Lão Pháo Đất, chọn cách làm đẹp vịt gỗ và thả thử nó ở máng nước khu chăn nuôi.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Chó Lùa Vịt, Heo Kho Hàng, Ông Lão Pháo Đất, Chú Chuột Túi Nhảy",
+    "where": "Nông trại: ao cá, kho chế biến, sân nông trại, khu chăn nuôi",
+    "goal": "Chữa vết nứt cho vịt gỗ theo lời dặn trong thư của Ông Cụ Trông Vườn",
+    "play": "Đọc thư, giải bài toán hũ nhựa thông, xếp các bước trám vịt, chọn cách làm đẹp vịt gỗ, chơi đoán chìm nổi",
+    "learn": "Đọc hiểu thư, bài toán có lời văn (phép trừ có nhớ), sắp xếp trình tự",
+    "reward": "65 XP, 16 Xu, Skill XP Đọc hiểu, Bài toán có lời văn, Kể chuyện",
+    "next": "Mặt sau lá thư, Ông Cụ kể chiếc phao còn nguyên nhãn giá và con vịt gỗ bơi thay ông"
+  },
+  "phases": {
+    "hook": "thu-tu-ong-ban-gia",
+    "explore": "doc-thu-ong-cu",
+    "learn": "hu-nhua-thong-con-bao-nhieu",
+    "challenge": "tram-bung-vit-go",
+    "decision": "lam-dep-vit-go",
+    "finale": "chim-hay-noi-o-mang-nuoc",
+    "reward": "vit-go-noi-thang-bang",
+    "next": "dong-tai-but"
+  },
+  "places": {
+    "cho-lua-vit": "Ao cá",
+    "heo-kho-hang": "Kho chế biến",
+    "ong-lao-phao-dat": "Sân nông trại",
+    "chu-chuot-tui-nhay": "Khu chăn nuôi"
+  },
+  "steps": [
+    {
+      "id": "thu-tu-ong-ban-gia",
+      "title": "Thư tới rồi!",
+      "kind": "dialogue",
+      "target": "cho-lua-vit",
+      "goTo": "Ra ao cá, Chó Lùa Vịt vừa nhận được thư",
+      "lines": [
+        {
+          "speaker": "Chó Lùa Vịt",
+          "text": "Gâu! Thư tới! Thư của Ông Cụ Trông Vườn! À xin lỗi, to quá, nhưng tớ mừng thật mà."
+        },
+        {
+          "speaker": "Chó Lùa Vịt",
+          "text": "Tớ hồi hộp tới mức chữ trên giấy cứ nhảy múa. {name} đọc giúp tớ nhé, chậm thôi, từng dòng một."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đưa đây, mình đọc cho!",
+          "reply": "Đây! Mép thư còn thơm mùi vỏ bào gỗ, đúng là thư của ông rồi."
+        },
+        {
+          "text": "Cậu quen Ông Cụ lâu chưa?",
+          "reply": "Từ hồi tớ còn là cún con. Ông dạy tớ gõ ba cái vào cọc cầu ao trước khi đếm vịt, cho vịt biết mà xếp hàng."
+        }
+      ],
+      "en": {
+        "title": "A letter has come!",
+        "goTo": "Go to the fishpond: Chó Lùa Vịt has just got a letter",
+        "lines": [
+          "Woof! A letter! A letter from Ông Cụ Trông Vườn! Oh, sorry, too loud, but I really am that happy.",
+          "I’m so nervous the words keep dancing on the page. Read it for me, {name}, slowly, one line at a time."
+        ],
+        "choices": [
+          {
+            "text": "Hand it over, I'll read it!",
+            "reply": "Here! The edge still smells of wood shavings. It’s his letter all right."
+          },
+          {
+            "text": "Have you known Ông Cụ long?",
+            "reply": "Since I was a puppy. He taught me to knock three times on the bridge post before counting, so the ducks know to line up."
+          }
+        ]
+      }
+    },
+    {
+      "id": "doc-thu-ong-cu",
+      "title": "Đọc thư Ông Cụ",
+      "kind": "read",
+      "target": "cho-lua-vit",
+      "skill": "doc-hieu",
+      "text": "Chó thân mến,\nỜ thì, vịt gỗ nứt bụng cũng như ông già đau lưng, chữa được cả. Con vịt ấy ông đẽo bằng gỗ xoan: gỗ xoan nhẹ nên nổi êm, còn gỗ lim nặng, thả xuống là chìm nghỉm.\nCháu làm thế này: cạo sạch bùn trong vết nứt, miết nhựa thông cho kín, gõ nhẹ bằng dùi gỗ cho nhựa bám chặt, chờ nhựa nguội cứng rồi hẵng thả xuống nước. Nhựa thông thì xin Heo Kho Hàng, còn việc trám vá thì nhờ người khéo tay.\nÔng bạn già của cháu,\nÔng Cụ Trông Vườn",
+      "question": "Theo thư của Ông Cụ, vì sao con vịt gỗ nổi được trên mặt ao?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Vì ông sơn nó màu vàng"
+        },
+        {
+          "id": "b",
+          "text": "Vì nó được đẽo bằng gỗ xoan nhẹ"
+        },
+        {
+          "id": "c",
+          "text": "Vì trong bụng nó có nhựa thông"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Tìm câu trong thư nói về loại gỗ.",
+          "Thư so sánh hai loại gỗ: loại nào nổi, loại nào chìm."
+        ],
+        "hint": "Gỗ nặng thì chìm, gỗ nhẹ thì sao?",
+        "answer": {
+          "text": "Gỗ xoan nhẹ nên vịt nổi",
+          "explanation": "Thư viết: «gỗ xoan nhẹ nên nổi êm, còn gỗ lim nặng, thả xuống là chìm nghỉm». Màu sơn và nhựa thông không làm vịt nổi."
+        },
+        "en": {
+          "guide": [
+            "Find the sentence in the letter about the kind of wood.",
+            "The letter compares two woods: which one floats, which one sinks."
+          ],
+          "hint": "Heavy wood sinks; what about light wood?",
+          "answer": {
+            "text": "Light xoan wood makes it float",
+            "explanation": "The letter says: «xoan wood is light so it floats gently, but lim wood is heavy and sinks like a stone». Paint and resin don’t make a duck float."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chó gật gù: «Gỗ xoan! Thảo nào nó nhẹ như chiếc lá.»",
+          "{name} đọc thư rõ ràng, Chó nghe không sót chữ nào.",
+          "Đúng thế, chọn gỗ nhẹ là bí quyết đẽo vịt của Ông Cụ."
+        ],
+        "wrong": [
+          "Màu sơn có làm gỗ nhẹ đi đâu, đọc lại nhé.",
+          "Nhựa thông là để trám vết nứt cơ mà.",
+          "Tìm dòng thư có hai chữ «gỗ xoan» ấy."
+        ],
+        "en": {
+          "right": [
+            "Chó nods: «Xoan wood! No wonder it’s as light as a leaf.»",
+            "{name} reads so clearly that Chó doesn’t miss a word.",
+            "Right: light wood is the secret of Ông Cụ’s ducks."
+          ],
+          "wrong": [
+            "Paint doesn’t make wood lighter. Read it again.",
+            "The resin is for filling the crack, remember.",
+            "Find the line with the words «xoan wood»."
+          ]
+        }
+      },
+      "en": {
+        "title": "Reading Ông Cụ's letter",
+        "text": "Dear Chó,\nWell now, a wooden duck with a cracked belly is like an old man with a sore back: both can be mended. I carved that duck from xoan wood. Xoan is light, so it floats gently; lim wood is heavy and sinks like a stone.\nHere is what to do: scrape the mud out of the crack, press resin in until it is sealed, tap it gently with a wooden mallet so the resin grips, and wait until the resin is cool and hard before it goes back in the water. Ask Heo Kho Hàng for the resin, and ask someone with clever hands to help with the filling.\nYour old friend,\nÔng Cụ Trông Vườn",
+        "question": "According to Ông Cụ's letter, why does the wooden duck float on the pond?",
+        "choices": [
+          "Because he painted it yellow",
+          "Because it is carved from light xoan wood",
+          "Because there is resin inside it"
+        ]
+      }
+    },
+    {
+      "id": "hu-nhua-thong-con-bao-nhieu",
+      "title": "Hũ nhựa thông còn bao nhiêu?",
+      "kind": "riddle",
+      "target": "heo-kho-hang",
+      "goTo": "Sang kho chế biến xin nhựa thông của Heo Kho Hàng",
+      "skill": "bai-toan-loi-van",
+      "question": "Heo Kho Hàng đọc sổ: «Ủn ỉn, mục số bảy: hũ nhựa thông, lúc đầu có 50 thìa. Bác Thợ Hàn Nồi đã xin 18 thìa để vá chuông cho Bò.» Trong hũ còn lại bao nhiêu thìa nhựa thông?",
+      "answer": {
+        "value": 32
+      },
+      "support": {
+        "guide": [
+          "Lấy bớt đi thì làm phép trừ: 50 − 18.",
+          "Trừ 10 trước, rồi trừ tiếp 8."
+        ],
+        "hint": "50 − 10 = 40.",
+        "answer": {
+          "text": "32 thìa",
+          "explanation": "50 − 18 = 32 (50 − 10 = 40, 40 − 8 = 32). Trám vịt gỗ chỉ cần vài thìa, hũ còn dư nhiều."
+        },
+        "en": {
+          "guide": [
+            "Taking some away means subtracting: 50 − 18.",
+            "Take away 10 first, then 8 more."
+          ],
+          "hint": "50 − 10 = 40.",
+          "answer": {
+            "text": "32 spoonfuls",
+            "explanation": "50 − 18 = 32 (50 − 10 = 40, 40 − 8 = 32). Filling the duck needs only a few spoonfuls, so there is plenty left."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Heo ghi ngay: «Mục số tám: còn 32 thìa, {name} tính hộ.»",
+          "Ba mươi hai thìa, đủ trám cả chục con vịt gỗ!",
+          "Heo ủn ỉn khen: phép trừ có nhớ mà cậu làm gọn ơ."
+        ],
+        "wrong": [
+          "Bác thợ lấy bớt đi, nên số thìa phải ít hơn 50 chứ.",
+          "Thử trừ 10 trước, rồi trừ nốt 8 xem sao.",
+          "40 bớt 8 nữa là còn bao nhiêu nhỉ?"
+        ],
+        "en": {
+          "right": [
+            "Heo writes it down at once: «Item eight: 32 spoonfuls left, worked out by {name}.»",
+            "Thirty-two spoonfuls: enough to fill a dozen wooden ducks!",
+            "Heo oinks in praise: a subtraction with borrowing, done neatly."
+          ],
+          "wrong": [
+            "The tinker took some away, so it must be fewer than 50.",
+            "Try taking away 10 first, then the last 8.",
+            "40 take away 8 more leaves how many?"
+          ]
+        }
+      },
+      "en": {
+        "title": "How much resin is left?",
+        "goTo": "Go to the processing barn and ask Heo Kho Hàng for resin",
+        "question": "Heo Kho Hàng reads from the ledger: «Oink, item seven: one pot of pine resin, 50 spoonfuls at the start. The tinker took 18 spoonfuls to mend Bò’s bell.» How many spoonfuls of resin are left in the pot?"
+      }
+    },
+    {
+      "id": "tram-bung-vit-go",
+      "title": "Trám bụng vịt gỗ",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "ong-lao-phao-dat",
+      "goTo": "Mang nhựa thông ra sân nông trại nhờ Ông Lão Pháo Đất khéo tay",
+      "skill": "ke-chuyen",
+      "prompt": "Ông Lão Pháo Đất hơ ấm hũ nhựa thông bên bếp than, rồi bảo {name} xếp các bước trám vịt gỗ đúng như thư Ông Cụ dặn:",
+      "items": [
+        {
+          "id": "go-cho-bam",
+          "label": "Gõ nhẹ dùi gỗ cho nhựa bám chặt"
+        },
+        {
+          "id": "cho-nguoi",
+          "label": "Chờ nhựa nguội và cứng lại"
+        },
+        {
+          "id": "cao-bun",
+          "label": "Cạo sạch bùn trong vết nứt"
+        },
+        {
+          "id": "miet-nhua",
+          "label": "Miết nhựa thông lấp kín vết nứt"
+        }
+      ],
+      "answer": {
+        "order": [
+          "cao-bun",
+          "miet-nhua",
+          "go-cho-bam",
+          "cho-nguoi"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Vết nứt phải sạch bùn thì nhựa mới dính.",
+          "Nhựa có trong vết nứt rồi mới gõ cho bám, và chờ nguội là việc cuối."
+        ],
+        "hint": "Cạo, miết, gõ, chờ.",
+        "answer": {
+          "text": "Cạo bùn, miết nhựa, gõ dùi, chờ nguội",
+          "explanation": "Cạo sạch bùn để nhựa bám được, miết nhựa thông lấp vết nứt, gõ nhẹ cho nhựa ăn chặt vào gỗ, rồi chờ nhựa nguội cứng mới thả xuống nước."
+        },
+        "en": {
+          "guide": [
+            "The crack must be free of mud or the resin won’t stick.",
+            "The resin must be in the crack before tapping, and waiting for it to cool comes last."
+          ],
+          "hint": "Scrape, press, tap, wait.",
+          "answer": {
+            "text": "Scrape the mud, press in resin, tap, let it cool",
+            "explanation": "Scrape out the mud so the resin can stick, press resin into the crack, tap it so it grips the wood, then wait until it is cool and hard before it touches water."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ông Lão Pháo Đất xoa đầu {name}: «Tay này làm thợ được!»",
+          "Vết nứt liền tăm tắp, sờ vào chỉ thấy nhẵn bóng.",
+          "Đúng từng bước như trong thư, Ông Cụ mà biết chắc vui lắm."
+        ],
+        "wrong": [
+          "Còn bùn trong khe thì nhựa thông chẳng chịu dính đâu.",
+          "Chưa có nhựa mà đã gõ thì gõ vào đâu nhỉ?",
+          "Đọc lại thứ tự trong thư của Ông Cụ nhé."
+        ],
+        "en": {
+          "right": [
+            "Ông Lão Pháo Đất pats {name} on the head: «These hands could be a craftsman’s!»",
+            "The crack has closed up perfectly; it feels smooth to the touch.",
+            "Step by step, just as the letter said. Ông Cụ would be so pleased."
+          ],
+          "wrong": [
+            "With mud still in the crack, the resin won’t stick.",
+            "Tapping before there’s any resin? Tapping what?",
+            "Read the order in Ông Cụ’s letter again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Filling the duck's belly",
+        "goTo": "Take the resin to the farmyard and ask clever-handed Ông Lão Pháo Đất",
+        "prompt": "Ông Lão Pháo Đất warms the pot of resin by his charcoal stove, then asks {name} to put the filling steps in order, just as Ông Cụ’s letter says:",
+        "items": [
+          "Tap gently with the mallet so the resin grips",
+          "Wait for the resin to cool and harden",
+          "Scrape the mud out of the crack",
+          "Press resin in to fill the crack"
+        ]
+      }
+    },
+    {
+      "id": "lam-dep-vit-go",
+      "title": "Làm đẹp vịt gỗ",
+      "kind": "decision",
+      "target": "ong-lao-phao-dat",
+      "speaker": "Ông Lão Pháo Đất",
+      "prompt": "Vết nứt đã liền. Ông Lão Pháo Đất còn ít màu vẽ và một nhúm len đỏ: «Cháu muốn làm đẹp cho con vịt gỗ thế nào?»",
+      "choices": [
+        {
+          "id": "to-mo",
+          "text": "Tô lại cái mỏ vàng cho tươi",
+          "consequence": "Mỏ vịt vàng óng như hoa mướp. Ông Lão cười: «Thế này đứng cuối bờ ao cũng nhìn thấy.»"
+        },
+        {
+          "id": "no-do",
+          "text": "Thắt một chiếc nơ đỏ ở cổ",
+          "consequence": "Chiếc nơ đỏ phấp phới. Đàn vịt sẽ nhận ra con đầu đàn từ tít đằng xa."
+        },
+        {
+          "id": "giu-nguyen",
+          "text": "Để nguyên màu gỗ như ông đẽo",
+          "consequence": "Ông Lão gật gù: «Nét dao khéo thế này, để nguyên mới là đẹp nhất.»"
+        }
+      ],
+      "en": {
+        "title": "Making the duck pretty",
+        "prompt": "The crack has closed. Ông Lão Pháo Đất has a little paint left and a tuft of red wool: «How would you like to brighten up the wooden duck?»",
+        "choices": [
+          {
+            "text": "Repaint the yellow beak so it shines",
+            "consequence": "The beak glows yellow as a gourd flower. Ông Lão laughs: «Now you could spot it from the far end of the pond.»"
+          },
+          {
+            "text": "Tie a red bow round its neck",
+            "consequence": "The red bow flutters. The ducks will know their leader from a long way off."
+          },
+          {
+            "text": "Leave the bare wood, just as it was carved",
+            "consequence": "Ông Lão nods: «Knife work this fine is prettiest left alone.»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "chim-hay-noi-o-mang-nuoc",
+      "title": "Chìm hay nổi ở máng nước",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "chu-chuot-tui-nhay",
+      "goTo": "Tới khu chăn nuôi thả thử vịt gỗ ở máng nước của Chú Chuột Túi Nhảy",
+      "prompt": "Xin chào {name}! Máng nước của tớ to lắm, thả vịt gỗ vào thử đi. Trong lúc chờ nó nổi, mình chơi đoán chìm hay nổi nhé!",
+      "game": "sink-float",
+      "goal": 10,
+      "en": {
+        "title": "Sink or float at the trough",
+        "goTo": "Go to the livestock area and test the duck in Chú Chuột Túi Nhảy’s water trough",
+        "prompt": "Hello, {name}! My water trough is huge, so put the wooden duck in. While we watch it, let’s play guess whether things sink or float!"
+      }
+    },
+    {
+      "id": "vit-go-noi-thang-bang",
+      "title": "Vịt gỗ nổi thẳng băng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Vịt gỗ nổi thẳng băng trên máng nước, không nghiêng chút nào. Chó Lùa Vịt sủa một tiếng thật to vì sướng, rồi vội xin lỗi cả khu chăn nuôi.",
+      "en": {
+        "title": "Floating perfectly straight",
+        "text": "The wooden duck floats perfectly level in the trough, not leaning one bit. Chó Lùa Vịt lets out an enormous happy bark, then hurries to apologise to the whole livestock area."
+      }
+    },
+    {
+      "id": "dong-tai-but",
+      "title": "Dòng tái bút",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối ấy Chó lật mặt sau lá thư, thấy thêm mấy dòng chữ run run: «Cháu {name} có ở đó thì đọc cho cháu nghe luôn: ông đẽo con vịt ấy vào cái hè ông mua chiếc phao để tập bơi. Ông chưa tập buổi nào, phao vẫn treo trong kho, nhãn giá còn nguyên. Hai mươi năm nay, vịt gỗ bơi thay ông đấy.» Chó ngồi im bên bờ ao rất lâu.",
+      "en": {
+        "title": "A postscript",
+        "text": "That night Chó turns the letter over and finds a few more shaky lines: «If young {name} is there, read this part out too: I carved that duck the summer I bought a float to learn to swim. I never went to a single lesson; the float still hangs in my shed with its price tag on. For twenty years the wooden duck has swum for me.» Chó sits very still by the pond for a long time."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "doc-hieu": 1,
+      "bai-toan-loi-van": 1,
+      "ke-chuyen": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Chó Lùa Vịt's story, chapter 2: A letter from an old friend",
+    "summary": "Ông Cụ Trông Vườn writes back with how to mend the crack under the wooden duck. {name} reads the letter to Chó Lùa Vịt, works out how much resin is left in Heo Kho Hàng’s pot, puts the filling steps in order with Ông Lão Pháo Đất, chooses how to brighten the duck and tests it in the livestock area’s water trough."
+  }
+}

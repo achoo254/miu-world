@@ -1,0 +1,415 @@
+{
+  "id": "yarn-vit-go-dau-dan-1",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Chuyện của Chó Lùa Vịt, chương 1: Vịt gỗ đi lạc",
+  "status": "active",
+  "category": "story",
+  "summary": "Sau trận mưa giông, con vịt gỗ dẫn đầu đàn vịt của Chó Lùa Vịt trôi mất. {name} đếm lại hàng vịt, đọc sổ mương của Chú Đào Kênh Dẫn Nước, nhận ra con vịt gỗ do Ông Cụ Trông Vườn đẽo giữa bốn con Bác Nông Dân Thành vớt được, rồi lùa đàn vịt lạc ở chuồng gà về.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Chó Lùa Vịt, Chú Đào Kênh Dẫn Nước, Bác Nông Dân Thành, Bé Chăn Gà Con",
+    "where": "Nông trại: ao cá, cối xay gió, khu trồng trọt, chuồng gà",
+    "goal": "Tìm lại con vịt gỗ dẫn đầu đàn mà Ông Cụ Trông Vườn đẽo tặng Chó",
+    "play": "Đếm hàng vịt theo vị trí, đọc sổ mương đoán đường trôi, nhận vịt gỗ theo lời tả, chọn cách trả đồ chơi thất lạc, lùa vịt về chuồng",
+    "learn": "Suy luận vị trí trong hàng, đọc hiểu và đối chiếu lời tả",
+    "reward": "60 XP, 15 Xu, Skill XP Logic, Đọc hiểu",
+    "next": "Vịt gỗ có một vết nứt dưới bụng, Chó viết thư nhờ Ông Cụ Trông Vườn chỉ cách chữa"
+  },
+  "phases": {
+    "hook": "vit-go-mat-tich",
+    "explore": "so-muong-dem-qua",
+    "learn": "so-muong-dem-qua",
+    "challenge": "vit-go-nao-cua-cho",
+    "decision": "ba-con-vit-con-lai",
+    "finale": "vit-lac-sang-chuong-ga",
+    "reward": "doan-vit-ve-ao",
+    "next": "vet-nut-duoi-bung"
+  },
+  "places": {
+    "cho-lua-vit": "Ao cá",
+    "chu-dao-kenh-nuoc": "Cối xay gió",
+    "bac-nong-dan-thanh": "Khu trồng trọt",
+    "be-chan-ga-con": "Chuồng gà"
+  },
+  "steps": [
+    {
+      "id": "vit-go-mat-tich",
+      "title": "Vịt gỗ mất tích",
+      "kind": "dialogue",
+      "target": "cho-lua-vit",
+      "goTo": "Ra ao cá gặp Chó Lùa Vịt đang chạy quanh bờ",
+      "lines": [
+        {
+          "speaker": "Chó Lùa Vịt",
+          "text": "Gâu! {name}! Hàng một... à xin lỗi, tớ rối quá. Con vịt gỗ dẫn đầu đàn của tớ biến mất rồi!"
+        },
+        {
+          "speaker": "Chó Lùa Vịt",
+          "text": "Nó do Ông Cụ Trông Vườn đẽo tặng tớ từ hồi tớ mới tập lùa vịt. Ông bảo vịt chỉ chịu nối đuôi vịt, ít khi chịu đi sau một con chó."
+        },
+        {
+          "speaker": "Chó Lùa Vịt",
+          "text": "Đêm qua trời gầm, tớ chui gầm cầu ao nên chẳng thấy gì. Sáng ra sợi dây buộc vịt gỗ đứt phựt, còn đàn vịt bơi tứ tung như nồi bánh trôi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đừng lo, mình đi tìm vịt gỗ ngay!",
+          "reply": "Cảm ơn cậu! Nhưng trước hết tớ phải chắc là không mất con vịt thật nào đã."
+        },
+        {
+          "text": "Sao vịt lại chịu đi theo vịt gỗ?",
+          "reply": "Thấy một bạn bơi phía trước là vịt cứ thế nối đuôi theo. Vịt gỗ chẳng bao giờ rẽ bậy, nên hàng nào cũng thẳng tắp."
+        }
+      ],
+      "en": {
+        "title": "The wooden duck is missing",
+        "goTo": "Go to the fishpond, where Chó Lùa Vịt is running round the bank",
+        "lines": [
+          "Woof! {name}! Single file... oh, sorry, I’m all in a muddle. The wooden duck that leads my flock has vanished!",
+          "Ông Cụ Trông Vườn carved it for me back when I was learning to herd. He says ducks will follow a duck, but hardly ever a dog.",
+          "Last night the sky rumbled and I hid under the pond bridge, so I saw nothing. This morning its string had snapped and the ducks were swimming every which way, like dumplings in a pot."
+        ],
+        "choices": [
+          {
+            "text": "Don't worry, let's go and find it!",
+            "reply": "Thank you! But first I have to make sure none of my real ducks is missing."
+          },
+          {
+            "text": "Why do ducks follow a wooden duck?",
+            "reply": "When ducks see a friend swimming in front, they just fall in behind. The wooden duck never wanders off, so the line stays dead straight."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dem-hang-vit",
+      "title": "Đủ vịt thật chưa?",
+      "kind": "riddle",
+      "target": "cho-lua-vit",
+      "skill": "logic",
+      "question": "Chó cho đàn vịt đi qua cầu ao thành một hàng. Vịt Mỏ Cam đi thứ tư tính từ đầu hàng, và cũng là con thứ chín tính từ cuối hàng. Hàng vịt có tất cả bao nhiêu con?",
+      "answer": {
+        "value": 12
+      },
+      "support": {
+        "guide": [
+          "Từ đầu hàng tới Mỏ Cam có 4 con, tính cả Mỏ Cam.",
+          "Từ Mỏ Cam tới cuối hàng có 9 con, cũng tính cả Mỏ Cam."
+        ],
+        "hint": "Mỏ Cam bị đếm hai lần, nhớ bớt đi 1.",
+        "answer": {
+          "text": "12 con vịt",
+          "explanation": "4 + 9 = 13, nhưng Mỏ Cam được đếm hai lần nên 13 − 1 = 12. Đủ mười hai vịt thật, chỉ thiếu vịt gỗ."
+        },
+        "en": {
+          "guide": [
+            "From the front of the line to Mỏ Cam there are 4 ducks, counting Mỏ Cam.",
+            "From Mỏ Cam to the back there are 9 ducks, counting Mỏ Cam again."
+          ],
+          "hint": "Mỏ Cam is counted twice, so take 1 away.",
+          "answer": {
+            "text": "12 ducks",
+            "explanation": "4 + 9 = 13, but Mỏ Cam was counted twice, so 13 − 1 = 12. All twelve real ducks are there; only the wooden one is missing."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười hai! Chó vẫy đuôi tít mù: không thiếu con vịt thật nào.",
+          "{name} nhớ bớt Mỏ Cam đi một lần, tinh ý ghê.",
+          "Đúng mười hai, cả đàn cạc cạc như đang vỗ tay cho cậu."
+        ],
+        "wrong": [
+          "Ơ, Mỏ Cam đang bị đếm tới hai lần đấy.",
+          "Thử xếp sỏi thành một hàng rồi đếm từ hai đầu xem.",
+          "Cộng hai số lại, rồi bớt chính Mỏ Cam ra nhé."
+        ],
+        "en": {
+          "right": [
+            "Twelve! Chó wags his tail in a blur: not one real duck is missing.",
+            "{name} remembered to count Mỏ Cam only once. Sharp!",
+            "Twelve exactly, and the whole flock quacks as if clapping for you."
+          ],
+          "wrong": [
+            "Oops, Mỏ Cam is being counted twice.",
+            "Try lining up pebbles and counting from both ends.",
+            "Add the two numbers, then take Mỏ Cam out once."
+          ]
+        }
+      },
+      "en": {
+        "title": "Are the real ducks all here?",
+        "question": "Chó walks his ducks over the pond bridge in a single line. Mỏ Cam is fourth from the front and also ninth from the back. How many ducks are in the line?"
+      }
+    },
+    {
+      "id": "so-muong-dem-qua",
+      "title": "Sổ mương đêm qua",
+      "kind": "read",
+      "target": "chu-dao-kenh-nuoc",
+      "goTo": "Ra cối xay gió hỏi Chú Đào Kênh Dẫn Nước",
+      "skill": "doc-hieu",
+      "text": "Sổ mương của Chú Đào Kênh, đêm mưa giông:\nMương Sen: từ ao cá chảy vào đầm sen. Cửa mương đóng từ chiều, nước đứng yên.\nMương Gió: từ ao cá chảy về cối xay gió. Đầu mương có tấm lưới tre, rác nổi không lọt qua.\nMương Lúa: từ ao cá chảy ra khu trồng trọt. Mười giờ đêm mở cửa cho nước vào ruộng, nước chảy mạnh, không có lưới.",
+      "question": "Vịt gỗ nổi trên mặt nước. Đêm qua nó đã trôi theo mương nào?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Mương Sen"
+        },
+        {
+          "id": "b",
+          "text": "Mương Gió"
+        },
+        {
+          "id": "c",
+          "text": "Mương Lúa"
+        }
+      ],
+      "answer": {
+        "choice": "c"
+      },
+      "support": {
+        "guide": [
+          "Vịt gỗ chỉ trôi theo dòng nước đang chảy.",
+          "Đồ nổi gặp lưới thì bị giữ lại, không đi tiếp được."
+        ],
+        "hint": "Mương nào nước chảy mạnh mà lại không có lưới?",
+        "answer": {
+          "text": "Mương Lúa, ra khu trồng trọt",
+          "explanation": "Mương Sen nước đứng yên, Mương Gió có lưới chắn đồ nổi. Chỉ Mương Lúa mở cửa, nước chảy mạnh và không có lưới, nên vịt gỗ trôi ra khu trồng trọt."
+        },
+        "en": {
+          "guide": [
+            "A floating duck only drifts where the water is moving.",
+            "Anything floating that meets a net gets stopped there."
+          ],
+          "hint": "Which ditch had fast water and no net?",
+          "answer": {
+            "text": "The Rice Ditch, out to the crop fields",
+            "explanation": "The Lotus Ditch was still and the Wind Ditch has a net that stops floating things. Only the Rice Ditch was open, flowing fast with no net, so the wooden duck drifted to the crop fields."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chú Đào Kênh gõ cán xẻng: «Chuẩn! Mương Lúa mở đêm qua.»",
+          "{name} đọc sổ mương kỹ như người giữ nước lâu năm.",
+          "Đúng rồi, giờ chỉ việc xuôi theo mương lúa thôi."
+        ],
+        "wrong": [
+          "Mương ấy nước có chảy đâu, vịt gỗ trôi sao được?",
+          "Đọc lại dòng nói về tấm lưới tre nhé.",
+          "Tìm mương vừa mở cửa, vừa không có gì chắn."
+        ],
+        "en": {
+          "right": [
+            "Chú Đào Kênh taps his spade handle: «Spot on! The Rice Ditch was open last night.»",
+            "{name} reads a ditch log like an old water keeper.",
+            "That’s it: now we just follow the rice ditch."
+          ],
+          "wrong": [
+            "That water wasn’t moving; how could the duck drift?",
+            "Read the line about the bamboo net again.",
+            "Look for the ditch that was open with nothing in the way."
+          ]
+        }
+      },
+      "en": {
+        "title": "Last night's ditch log",
+        "goTo": "Go to the windmill and ask Chú Đào Kênh Dẫn Nước",
+        "text": "Chú Đào Kênh’s ditch log, the night of the storm:\nLotus Ditch: from the fishpond to the lotus marsh. Gate shut since the afternoon, the water still.\nWind Ditch: from the fishpond to the windmill. A bamboo net at its mouth stops anything floating.\nRice Ditch: from the fishpond out to the crop fields. Gate opened at ten at night to water the paddies; fast water, no net.",
+        "question": "The wooden duck floats. Which ditch did it drift down last night?",
+        "choices": [
+          "The Lotus Ditch",
+          "The Wind Ditch",
+          "The Rice Ditch"
+        ]
+      }
+    },
+    {
+      "id": "vit-go-nao-cua-cho",
+      "title": "Con nào là vịt của Chó?",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "bac-nong-dan-thanh",
+      "goTo": "Xuôi theo mương lúa tới khu trồng trọt gặp Bác Nông Dân Thành",
+      "skill": "doc-hieu",
+      "prompt": "Bác Nông Dân Thành vớt được bốn con vịt gỗ ở bờ ruộng: «Ấy thế mà mưa cuốn cả đồ chơi của trẻ trong xóm.» Chó nhớ vịt Ông Cụ đẽo có mỏ vàng, đuôi vểnh, dưới bụng khắc ba vạch. Con nào là vịt của Chó?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Vịt mỏ đỏ, đuôi vểnh, khắc ba vạch"
+        },
+        {
+          "id": "b",
+          "text": "Vịt mỏ vàng, đuôi cụp, khắc ba vạch"
+        },
+        {
+          "id": "c",
+          "text": "Vịt mỏ vàng, đuôi vểnh, khắc hai vạch"
+        },
+        {
+          "id": "d",
+          "text": "Vịt mỏ vàng, đuôi vểnh, khắc ba vạch"
+        }
+      ],
+      "answer": {
+        "choice": "d"
+      },
+      "support": {
+        "guide": [
+          "Chó nhớ ba dấu hiệu: mỏ vàng, đuôi vểnh, ba vạch.",
+          "Loại dần con nào sai dù chỉ một dấu hiệu."
+        ],
+        "hint": "Con mỏ đỏ và con đuôi cụp đều bị loại ngay.",
+        "answer": {
+          "text": "Con thứ tư, đủ cả ba dấu hiệu",
+          "explanation": "Con thứ nhất mỏ đỏ, con thứ hai đuôi cụp, con thứ ba chỉ có hai vạch. Chỉ con thứ tư có mỏ vàng, đuôi vểnh và ba vạch."
+        },
+        "en": {
+          "guide": [
+            "Chó remembers three marks: yellow beak, upturned tail, three notches.",
+            "Rule out every duck that misses even one mark."
+          ],
+          "hint": "The red-beaked one and the droopy-tailed one are out straight away.",
+          "answer": {
+            "text": "The fourth duck, with all three marks",
+            "explanation": "The first has a red beak, the second a drooping tail, the third only two notches. Only the fourth has a yellow beak, an upturned tail and three notches."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chó ôm chầm vịt gỗ: «Đúng nó rồi, ba vạch của ông đây!»",
+          "Bác Thành gật gù: «Ấy thế mà cháu nhìn còn tinh hơn bác.»",
+          "{name} soát từng dấu hiệu một, không bỏ sót chi tiết nào."
+        ],
+        "wrong": [
+          "Đếm lại số vạch dưới bụng con vịt ấy xem.",
+          "Con này lệch mất một dấu hiệu rồi, so lại nhé.",
+          "Cần đủ cả ba: mỏ vàng, đuôi vểnh, ba vạch."
+        ],
+        "en": {
+          "right": [
+            "Chó hugs the wooden duck: «That’s him, there are Ông Cụ’s three notches!»",
+            "Bác Thành nods: «Well now, your eyes are sharper than mine.»",
+            "{name} checked each mark one by one and missed nothing."
+          ],
+          "wrong": [
+            "Count the notches under that duck’s belly again.",
+            "That one misses a mark. Compare again.",
+            "It needs all three: yellow beak, upturned tail, three notches."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which one is Chó's duck?",
+        "goTo": "Follow the rice ditch to the crop fields and meet Bác Nông Dân Thành",
+        "prompt": "Bác Nông Dân Thành has fished four wooden ducks out of the paddy edge: «Well now, the rain swept away the village children’s toys too.» Chó remembers that Ông Cụ’s duck has a yellow beak, an upturned tail and three notches under its belly. Which one is Chó’s?",
+        "choices": [
+          "Red beak, upturned tail, three notches",
+          "Yellow beak, drooping tail, three notches",
+          "Yellow beak, upturned tail, two notches",
+          "Yellow beak, upturned tail, three notches"
+        ]
+      }
+    },
+    {
+      "id": "ba-con-vit-con-lai",
+      "title": "Ba con vịt gỗ còn lại",
+      "kind": "decision",
+      "target": "bac-nong-dan-thanh",
+      "speaker": "Bác Nông Dân Thành",
+      "prompt": "Bác Thành lau bùn trên ba con vịt gỗ còn lại: «Chắc của bọn trẻ trong xóm, đứa nào mất đồ chơi cũng buồn lắm.» {name} tính trả chúng thế nào?",
+      "choices": [
+        {
+          "id": "bien-hoi",
+          "text": "Cắm tấm biển «Ai mất vịt gỗ?» ở bờ ruộng",
+          "consequence": "Bác Thành gật gù: «Ấy thế mà hay! Chiều nay đứa nào đi học về cũng đọc được.»"
+        },
+        {
+          "id": "xep-them",
+          "text": "Rửa sạch rồi xếp lên bậc thềm cho khô",
+          "consequence": "Ba con vịt gỗ ngồi phơi nắng thành hàng trên thềm, trông như đang chờ chủ tới đón."
+        },
+        {
+          "id": "so-that-lac",
+          "text": "Nhờ Heo Kho Hàng ghi vào sổ đồ thất lạc",
+          "consequence": "Bác Thành cười: «Heo dán nhãn cả cái chổi, thì ba con vịt này chẳng lạc thêm được bước nào.»"
+        }
+      ],
+      "en": {
+        "title": "The three other wooden ducks",
+        "prompt": "Bác Thành wipes the mud off the other three wooden ducks: «They must belong to the village children. Losing a toy makes anyone sad.» How will {name} get them home?",
+        "choices": [
+          {
+            "text": "Put up a «Lost a wooden duck?» sign at the paddy edge",
+            "consequence": "Bác Thành nods: «Well now, that’s clever! Every child walking home from school this afternoon will read it.»"
+          },
+          {
+            "text": "Wash them and set them on the steps to dry",
+            "consequence": "The three wooden ducks sunbathe in a row on the steps, as if waiting to be collected."
+          },
+          {
+            "text": "Ask Heo Kho Hàng to write them in the lost-property book",
+            "consequence": "Bác Thành laughs: «Heo labels even the broom. These ducks won’t get lost one step further.»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "vit-lac-sang-chuong-ga",
+      "title": "Vịt lạc sang chuồng gà",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "be-chan-ga-con",
+      "goTo": "Sang chuồng gà, Bé Chăn Gà Con đang gọi ầm lên",
+      "prompt": "Cậu biết không? Không có vịt gỗ dẫn đường, đàn vịt của Chó lạc sang tận chuồng gà của tớ! Cậu lùa giúp chúng về chuồng vịt nhé.",
+      "game": "sheepdog-herd",
+      "goal": 10,
+      "en": {
+        "title": "Ducks in the henhouse",
+        "goTo": "Go to the henhouse, where Bé Chăn Gà Con is calling for help",
+        "prompt": "You know what? With no wooden duck to lead them, Chó’s ducks wandered all the way into my henhouse! Help me herd them back to their own pen."
+      }
+    },
+    {
+      "id": "doan-vit-ve-ao",
+      "title": "Cả đàn về ao",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Vịt gỗ về lại ao cá, mười hai chú vịt thật lạch bạch nối đuôi phía sau. Chó Lùa Vịt đếm hai lượt, đủ cả, rồi nằm phịch xuống bờ ao thở phào.",
+      "en": {
+        "title": "The whole flock home",
+        "text": "The wooden duck is back on the fishpond, with twelve real ducks waddling in line behind it. Chó Lùa Vịt counts twice, finds them all, and flops down on the bank with a sigh of relief."
+      }
+    },
+    {
+      "id": "vet-nut-duoi-bung",
+      "title": "Vết nứt dưới bụng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối đó Chó lau vịt gỗ và thấy một vết nứt dài dưới bụng. Thả xuống ao, nó cứ nghiêng hẳn sang một bên. «Chỉ ông bạn già của tớ, Ông Cụ Trông Vườn, mới biết chữa. Mai tớ viết thư cho ông!»",
+      "en": {
+        "title": "A crack underneath",
+        "text": "That evening Chó dries the wooden duck and finds a long crack under its belly. On the water it keeps leaning to one side. «Only my old friend Ông Cụ Trông Vườn knows how to mend it. Tomorrow I’ll write to him!»"
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": {
+      "logic": 1,
+      "doc-hieu": 1
+    },
+    "items": {}
+  },
+  "en": {
+    "title": "Chó Lùa Vịt's story, chapter 1: The wooden duck goes astray",
+    "summary": "After a thunderstorm, the wooden duck that leads Chó Lùa Vịt’s flock has drifted away. {name} checks the line of ducks, reads Chú Đào Kênh Dẫn Nước’s ditch log, picks out the duck Ông Cụ Trông Vườn carved among four that Bác Nông Dân Thành fished out, and herds the stray ducks home from the henhouse."
+  }
+}
