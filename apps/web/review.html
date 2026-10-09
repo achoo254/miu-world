@@ -45,6 +45,14 @@
         <div id="mvp-flow" class="grid grid-4"></div>
       </section>
 
+      <section data-id="review-home-pulls">
+        <h2>Nhà của bé rủ bé sang các map khác (10/10/2026)</h2>
+        <p class="sub">Người sở hữu (09/10/2026): "bé rất thích map nhà của bé. Nên bé ngày nào cũng chơi map đó chứ ko chơi ở các map khác". Nhà của bé giữ nguyên như bé đang thích; bốn thứ kéo bé ra ngoài, không bớt thưởng ở nhà:</p>
+        <p class="sub"><b>Đồ lưu niệm cho nhà:</b> mỗi map khác (11 map) trao một kiểu trang trí nhà riêng khi mở rương nửa đường của map đó (thảm Lá rừng xanh, rèm Sóng sông xanh, cờ tháp đồng hồ, bàn lớp học, giường Trời sao Thư viện, tủ Lâu đài, rào Ngói Xóm Mái Ấm, lồng đèn chợ phiên, đèn bí ngô, thảm Bông tuyết, cờ mỏ neo). Trong "Trang trí nhà" kiểu chưa có hiện khóa kèm tên map và nút tới đó; server trả 403 <code>decor-locked</code> khi chọn kiểu chưa có. Kiểu đang miễn phí vẫn miễn phí. <b>Bài hôm nay:</b> mỗi ngày (giờ Việt Nam) một bài SGK ở map khác, bài đang dở trước, rồi các map lần lượt; thẻ ở màn Home và chip trên HUD khi bé ở nhà, nút "Đi ngay"; không thưởng thêm. <b>Thú cưng rủ đi chơi:</b> ở nhà, thú cưng thỉnh thoảng nói muốn tới map của bài hôm nay.</p>
+        <p class="sub"><b>Chuyện của bạn ở nhà tiếp ở map khác:</b> "Kẹo bông gửi Gấu" ở Trung tâm (Voi Kẹo Bông, bạn thư của Gấu Bánh Ngọt; 3 chương: thư thách của Gấu, kẹo mật ong chống gió, thùng kẹo bay về nhà làm quà sinh nhật Gấu) và "Con vịt gỗ dẫn đàn" ở Nông trại (Chó Lùa Vịt, bạn già của Ông Cụ Trông Vườn; 3 chương: tìm con vịt gỗ ông đẽo, đọc thư ông và sửa vịt, làm bến lội cạn mời ông — người chưa từng biết bơi). Mỗi chương có bước học (đọc hiểu, cộng trừ, so sánh số, kể chuyện, logic), đi qua 4 nơi, có thư gửi về hộp thư. Ở nhà, Gấu và Ông Cụ có câu rủ bé sang thăm bạn. Hai chuyện chỉ dùng nhân vật đã đứng sẵn trên map, không sinh lại map.</p>
+        <p class="sub"><b>Kiểm tra:</b> <code>assets:check</code>, <code>content:check</code> (gồm audit mục tiêu quest mọi map), <code>typecheck</code>, <code>lint</code>, 13 tệp test liên quan (108 test), build web, <code>security:dist</code>: đạt. Không chạy toàn bộ <code>pnpm test</code> và E2E (người sở hữu: chỉ chạy khi yêu cầu). <b>Không thêm dependency.</b> Chưa deploy.</p>
+      </section>
+
       <section data-id="review-voice">
         <h2>Nói chuyện bằng giọng với tổ đội, bạn bè và bạn máy (06/10/2026)</h2>
         <p class="sub">Người sở hữu (05/10/2026): "khi kết bạn và tổ đội có thể voice được với nhau. bot máy voice được". Trong tổ đội, khung đội có nút <b>🎙️ Nói chuyện</b>: ai bấm thì vào kênh của đội với micro bật; bấm lại để tắt micro, <b>Rời trò chuyện</b> để ra. Ngoài tổ đội, danh sách bạn bè có nút <b>📞 Gọi</b> cho bạn đang chơi; bạn nhận thấy thẻ "… gọi cho bạn" (Nghe máy / Để sau, chuông 30 giây). Không bao giờ nói với người lạ hay người đứng gần không phải bạn; chặn nhau thì không nghe được nhau. Micro tắt tới khi bấm, tắt khi ẩn tab, nhả hẳn khi rời đội hay kết thúc cuộc gọi. Ai đang nói có vòng sáng 🔊 cạnh tên trên nhân vật và quanh ảnh trong khung đội; mỗi người có nút tắt tiếng và thanh âm lượng riêng; nhạc nền nhỏ lại khi có người nói. Cài đặt (song ngữ): bật/tắt nói chuyện bằng giọng, <b>Bấm giữ để nói</b>, âm lượng giọng nói.</p>
@@ -245,7 +253,7 @@
 
       <section data-id="review-deps">
         <h2>Dependency mới của đợt</h2>
-        <p class="sub">Đợt nói chuyện bằng giọng (06/10/2026) <b>không thêm dependency</b> (WebRTC, Web Audio, đọc giọng đều là API của trình duyệt). Đợt vertical slice <b>không thêm dependency</b> (chỉ thêm script <code>assets:home</code>, <code>security:dist</code>, <code>e2e:ci</code>). Bảng dưới là dependency của đợt Foundation. Khóa phiên bản trong <code>pnpm-lock.yaml</code>; <code>pnpm audit --prod</code> chạy trong CI.</p>
+        <p class="sub">Đợt Nhà của bé rủ bé sang các map khác (10/10/2026) <b>không thêm dependency</b>. Đợt nói chuyện bằng giọng (06/10/2026) <b>không thêm dependency</b> (WebRTC, Web Audio, đọc giọng đều là API của trình duyệt). Đợt vertical slice <b>không thêm dependency</b> (chỉ thêm script <code>assets:home</code>, <code>security:dist</code>, <code>e2e:ci</code>). Bảng dưới là dependency của đợt Foundation. Khóa phiên bản trong <code>pnpm-lock.yaml</code>; <code>pnpm audit --prod</code> chạy trong CI.</p>
         <div class="table-wrap"><table>
           <thead><tr><th>Gói</th><th>Dùng ở</th><th>Để làm gì</th><th>License</th></tr></thead>
           <tbody>

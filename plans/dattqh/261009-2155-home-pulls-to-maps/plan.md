@@ -1,6 +1,6 @@
 # Nhà của bé kéo bé sang các map khác
 
-Trạng thái: đang làm · Độ lớn: L · Nhánh: `main`
+Trạng thái: hoàn thành phần tự động (10/10/2026), chờ người sở hữu duyệt và yêu cầu deploy · Độ lớn: L · Nhánh: `main`
 
 ## Kết quả mong muốn
 
@@ -44,3 +44,7 @@ Bốn phần, giữ nguyên Nhà của bé như bé đang thích:
 ## Phối hợp
 
 Hai phiên khác trên `main` (09/10): `miu-world-ad` sửa bot memory, schema.test, docs hệ thống, unit backup; `miu-world-05` điều tra lỗi Nhà của bé ở `apps/web/src/ui/quest/*` và `play-screen.tsx`, giữ cổng 8787/5173. Chỉ `git add` tệp của plan này.
+
+## Kết quả (10/10/2026)
+
+Pha 1–7 xong. Pha 5: "Kẹo bông gửi Gấu" (`yarn-voi-keo-mat-ong-1..3`, Trung tâm) và "Con vịt gỗ dẫn đàn" (`yarn-vit-go-dau-dan-1..3`, Nông trại; người kể Chó Lùa Vịt do Jev chọn, 0,93). Hai chuyện chỉ dùng nhân vật đứng sẵn: vật `st-*`/`vt-*` gắn với một quest chỉ hiện trong quest đó. Gate: `assets:check`, `content:check`, `typecheck`, `lint`, 13 tệp test liên quan (108 test), build web, `security:dist` đạt; không chạy toàn bộ `pnpm test` và E2E. Chưa deploy.
