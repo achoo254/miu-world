@@ -8,8 +8,8 @@
   "summary": "Biết Ông Cụ Trông Vườn chưa từng dám xuống nước, Chó Lùa Vịt muốn làm một bến lội thật nông, thật an toàn ở ao cá rồi mời ông sang. {name} so độ sâu bốn góc ao, tính xem nước thấp hơn đầu gối ông bao nhiêu, chọn luật cho tấm biển bến lội cùng Bác Nông Dân Thành, chọn quà kèm thiệp mời với Heo Kho Hàng và dẫn đàn vịt tập đi qua bến.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "{name}, Chó Lùa Vịt, Chú Đào Kênh Dẫn Nước, Bác Nông Dân Thành, Heo Kho Hàng",
-    "where": "Nông trại: ao cá, cối xay gió, khu trồng trọt, kho chế biến",
+    "who": "{name}, Chó Lùa Vịt; nhắc tới Chú Đào Kênh Dẫn Nước, Bác Nông Dân Thành, Heo Kho Hàng",
+    "where": "Nông trại: ao cá, cối xay gió, khu trồng trọt, chuồng lợn",
     "goal": "Làm một bến lội nông và an toàn rồi gửi thiệp mời Ông Cụ Trông Vườn sang lội cùng đàn vịt",
     "play": "So sánh độ sâu bốn góc ao, giải bài toán gang tay, chọn luật an toàn dưới nước, chọn quà kèm thiệp mời, vẽ đường cho đàn vịt",
     "learn": "So sánh số, bài toán có lời văn (cộng, trừ có nhớ), an toàn khi chơi gần nước",
@@ -28,9 +28,11 @@
   },
   "places": {
     "cho-lua-vit": "Ao cá",
-    "chu-dao-kenh-nuoc": "Cối xay gió",
-    "bac-nong-dan-thanh": "Khu trồng trọt",
-    "heo-kho-hang": "Kho chế biến"
+    "st-vit-go-dau-dan-coc-do-nuoc": "Ao cá",
+    "st-vit-go-dau-dan-thuoc-do-nuoc": "Cối xay gió",
+    "st-vit-go-dau-dan-bien-luat": "Khu trồng trọt",
+    "st-vit-go-dau-dan-thiep-moi": "Chuồng lợn",
+    "st-vit-go-dau-dan-ben-loi": "Ao cá"
   },
   "steps": [
     {
@@ -89,7 +91,7 @@
       "kind": "challenge",
       "mechanic": "logic",
       "logicType": "puzzle",
-      "target": "cho-lua-vit",
+      "target": "st-vit-go-dau-dan-coc-do-nuoc",
       "skill": "so-sanh-so",
       "prompt": "Chó cắm cọc tre đo nước ở bốn góc ao: Góc Cầu sâu 45 cm, Góc Sen sâu 28 cm, Góc Chuối sâu 52 cm, Góc Cát sâu 19 cm. Bến lội phải ở góc nông nhất. Chọn góc nào?",
       "choices": [
@@ -174,8 +176,8 @@
       "id": "nuoc-toi-dau-chan-ong",
       "title": "Nước tới đâu chân ông?",
       "kind": "riddle",
-      "target": "chu-dao-kenh-nuoc",
-      "goTo": "Ra cối xay gió nhờ Chú Đào Kênh Dẫn Nước tính giúp",
+      "target": "st-vit-go-dau-dan-thuoc-do-nuoc",
+      "goTo": "Ra cối xay gió mượn thước đo nước của Chú Đào Kênh Dẫn Nước",
       "skill": "bai-toan-loi-van",
       "question": "Ông Cụ đo gì cũng bằng gang tay: đầu gối ông cao ba gang tay, mỗi gang tay dài 15 cm. Nước ở Góc Cát sâu 19 cm. Mặt nước thấp hơn đầu gối ông bao nhiêu xăng-ti-mét?",
       "answer": {
@@ -229,7 +231,7 @@
       },
       "en": {
         "title": "How high would the water come?",
-        "goTo": "Go to the windmill and ask Chú Đào Kênh Dẫn Nước to help work it out",
+        "goTo": "Go to the windmill and borrow Chú Đào Kênh Dẫn Nước’s measuring pole",
         "question": "Ông Cụ measures everything in hand-spans: his knee is three hand-spans high, and each hand-span is 15 cm. The water at Sand Corner is 19 cm deep. How many centimetres below his knee is the water?"
       }
     },
@@ -238,8 +240,8 @@
       "title": "Tấm biển luật bến lội",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "bac-nong-dan-thanh",
-      "goTo": "Sang khu trồng trọt xin phép Bác Nông Dân Thành",
+      "target": "st-vit-go-dau-dan-bien-luat",
+      "goTo": "Sang khu trồng trọt viết tấm biển luật cùng Bác Nông Dân Thành",
       "skill": "doc-hieu",
       "prompt": "Bác Nông Dân Thành cho làm bến lội nhưng muốn cắm một tấm biển luật: «Ấy thế mà nước nông cũng phải có luật!» Chọn tất cả những điều nên viết lên biển:",
       "choices": [
@@ -328,7 +330,7 @@
       },
       "en": {
         "title": "The wading-spot rules",
-        "goTo": "Go to the crop fields to ask Bác Nông Dân Thành’s permission",
+        "goTo": "Go to the crop fields to write the rules sign with Bác Nông Dân Thành",
         "prompt": "Bác Nông Dân Thành agrees to the wading spot but wants a sign with rules: «Well now, even shallow water needs rules!» Pick everything that belongs on the sign:",
         "choices": [
           "A grown-up always watches from the bank",
@@ -345,8 +347,8 @@
       "id": "qua-kem-thiep-moi",
       "title": "Quà kèm thiệp mời",
       "kind": "decision",
-      "target": "heo-kho-hang",
-      "goTo": "Sang kho chế biến nhờ Heo Kho Hàng viết thiệp mời",
+      "target": "st-vit-go-dau-dan-thiep-moi",
+      "goTo": "Sang chuồng lợn, Heo Kho Hàng đang chờ viết thiệp mời",
       "speaker": "Heo Kho Hàng",
       "prompt": "Heo Kho Hàng nắn nót viết: «Ủn ỉn, mục số một: kính mời Ông Cụ Trông Vườn sang lội ở bến Góc Cát.» Rồi Heo hỏi {name} gửi gì kèm thiệp?",
       "choices": [
@@ -368,7 +370,7 @@
       ],
       "en": {
         "title": "A gift with the invitation",
-        "goTo": "Go to the processing barn and ask Heo Kho Hàng to write the invitation",
+        "goTo": "Go to the pigsty, where Heo Kho Hàng is waiting to write the invitation",
         "prompt": "Heo Kho Hàng writes in his neatest hand: «Oink, item one: Ông Cụ Trông Vườn is warmly invited to wade at Sand Corner.» Then Heo asks {name} what to send with it.",
         "choices": [
           {
@@ -391,7 +393,7 @@
       "title": "Đàn vịt tập qua bến",
       "kind": "challenge",
       "mechanic": "minigame",
-      "target": "cho-lua-vit",
+      "target": "st-vit-go-dau-dan-ben-loi",
       "goTo": "Về ao cá dựng bến lội ở Góc Cát",
       "prompt": "Bến lội xong rồi! Giờ mình tập cho đàn vịt đi qua bến thật ngay ngắn, để hôm ông sang cả đàn đã thuộc đường. Vẽ đường giúp tớ nhé!",
       "game": "path-guide",

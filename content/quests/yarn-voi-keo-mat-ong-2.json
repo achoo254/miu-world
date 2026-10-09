@@ -5,13 +5,13 @@
   "title": "Chuyện của Voi Kẹo Bông, chương 2: Đường mật và cơn gió lạc",
   "status": "active",
   "category": "story",
-  "summary": "Thư trả lời của Gấu mang sang công thức nấu đường mật ong. {name} cùng Chú Đố Chữ Quang xếp lại các bước làm kẹo bông mật ong, ra tháp đồng hồ hỏi Chó Cảnh Sát Còi giờ gió lặng, học Lân Con Rộn Ràng cách gói đồ cho khô ráo, rồi đứng cạnh Voi khi một cơn gió lạc ùa qua quầy.",
+  "summary": "Thư trả lời của Gấu mang sang công thức nấu đường mật ong. {name} xếp lại các bước làm kẹo bông mật ong ở bảng tin chợ, xem cột báo gió để biết giờ gió lặng, chọn đồ gói kẹo cho khô ráo ở sạp đồ khô, rồi đứng cạnh Voi dưới mái hiên chợ khi một cơn gió lạc ùa qua.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "{name}, Voi Kẹo Bông, Chú Đố Chữ Quang, Chó Cảnh Sát Còi, Lân Con Rộn Ràng (và công thức của Gấu Bánh Ngọt)",
-    "where": "Trung tâm: quầy kẹo bông, chợ giao dịch, tháp đồng hồ, khu sự kiện",
+    "who": "{name}, Voi Kẹo Bông (và công thức của Gấu Bánh Ngọt)",
+    "where": "Trung tâm, khu giao dịch: quầy kẹo bông, bảng tin chợ, cột báo gió, sạp đồ khô, mái hiên chợ",
     "goal": "Làm mẻ kẹo bông mật ong đầu tiên và gói sao cho kẹo đi đường xa vẫn xốp",
-    "play": "Xếp các bước làm kẹo bông mật ong cùng Chú Quang; tính giờ gió lặng; chọn đồ gói kẹo cùng Lân Con; chọn cách ở bên Voi khi gió nổi",
+    "play": "Xếp các bước làm kẹo bông mật ong; tính giờ gió lặng; chọn đồ gói kẹo; chọn cách ở bên Voi khi gió nổi",
     "learn": "Sắp xếp trình tự công việc, xem giờ và cộng giờ, suy luận chọn vật phù hợp",
     "reward": "70 XP, 18 Xu, Skill XP Kể chuyện, Xem đồng hồ, Logic",
     "next": "Đóng thùng kẹo và nhờ Cáo Phi Công bay tới Nhà của {name}"
@@ -28,9 +28,10 @@
   },
   "places": {
     "voi-keo-bong": "Quầy kẹo bông",
-    "chu-do-chu-quang": "Chợ giao dịch",
-    "cho-canh-sat-coi": "Tháp đồng hồ",
-    "lan-con-ron-rang": "Khu sự kiện"
+    "st-voi-keo-mat-ong-cong-thuc": "Bảng tin chợ",
+    "st-voi-keo-mat-ong-bang-bao-gio": "Cột báo gió",
+    "st-voi-keo-mat-ong-gio-do-goi": "Sạp đồ khô",
+    "st-voi-keo-mat-ong-may-quay-keo": "Mái hiên chợ"
   },
   "steps": [
     {
@@ -41,7 +42,7 @@
       "target": "voi-keo-bong",
       "lines": [
         { "speaker": "Voi Kẹo Bông", "text": "{name}! Thư của Gấu tới rồi, kèm cả hũ mật ong bé bằng nắm tay. Gấu dặn: «Công thức đổi công thức, không ai được ăn gian.»" },
-        { "speaker": "Voi Kẹo Bông", "text": "Gấu chép cách làm ra một mảnh giấy, mà các bước lộn xộn hết cả, chắc vừa viết vừa đếm thìa bột. Chú Đố Chữ Quang mê gỡ chữ rối lắm, {name} mang sang chú xếp cùng nhé." },
+        { "speaker": "Voi Kẹo Bông", "text": "Voi ghim mảnh giấy công thức lên bảng tin chợ cho khỏi bay, mà các bước Gấu chép lộn xộn hết cả, chắc vừa viết vừa đếm thìa bột. {name} ra xếp lại giúp Voi nhé." },
         { "speaker": "Voi Kẹo Bông", "text": "Chỉ có điều… hôm nay trời nhiều gió. Nghe gió rít một cái là vòi Voi run, sợi đường rối tung lên." }
       ],
       "choices": [
@@ -53,7 +54,7 @@
         "goTo": "Head back to the cotton candy stall, where Voi Kẹo Bông is hugging a little jar of honey",
         "lines": [
           "{name}! Gấu's letter came, with a honey jar no bigger than a fist. She writes: “Recipe for recipe, and no cheating.”",
-          "Gấu copied the method onto a scrap of paper, but the steps are all jumbled; she must have been counting spoons of flour as she wrote. Chú Đố Chữ Quang loves untangling muddled words, so take it to him and sort it out together.",
+          "I pinned the recipe scrap to the market noticeboard so it wouldn't blow away, but Gấu copied the steps all jumbled; she must have been counting spoons of flour as she wrote. Would you go and sort it out for me?",
           "Only… it's very windy today. One whistle of wind and my trunk shakes and the sugar threads tangle."
         ],
         "choices": [
@@ -65,10 +66,10 @@
     {
       "id": "cong-thuc-duong-mat",
       "title": "Công thức kẹo bông mật ong",
-      "goTo": "Mang mảnh giấy sang chợ giao dịch, xếp lại cùng Chú Đố Chữ Quang",
+      "goTo": "Ra bảng tin chợ, xếp lại mảnh giấy công thức của Gấu",
       "kind": "challenge",
       "mechanic": "sort",
-      "target": "chu-do-chu-quang",
+      "target": "st-voi-keo-mat-ong-cong-thuc",
       "skill": "ke-chuyen",
       "prompt": "Mảnh giấy của Gấu ghi các bước làm kẹo bông mật ong, nhưng xếp lộn xộn. Xếp lại theo đúng thứ tự:",
       "items": [
@@ -89,16 +90,16 @@
         }
       },
       "feedback": {
-        "right": ["Đúng từng bước! Chú Quang vỗ đùi: «Gấu viết lộn chứ không viết sai.»", "{name} xếp việc mạch lạc như một đầu bếp lâu năm.", "Xong công thức rồi, giờ chỉ còn ông gió là khó chiều."],
+        "right": ["Đúng từng bước! Hóa ra Gấu chỉ viết lộn chứ đâu có viết sai.", "{name} xếp việc mạch lạc như một đầu bếp lâu năm.", "Xong công thức rồi, giờ chỉ còn ông gió là khó chiều."],
         "wrong": ["Máy chưa có đường thì quấn que vào đâu cho ra kẹo, {name}?", "Lau vòi trước khi làm kẹo thì lát nữa vòi lại dính đường thôi.", "Mật với đường chưa trộn thì lấy gì đổ vào máy? Thử lại từ việc đầu tiên."],
         "en": {
-          "right": ["Every step right! Chú Quang slaps his knee: “Gấu wrote it jumbled, not wrong.”", "You ordered the jobs as clearly as a seasoned cook, {name}.", "The recipe's sorted; now only Mister Wind is hard to please."],
+          "right": ["Every step right! Turns out Gấu only wrote it jumbled, not wrong.", "You ordered the jobs as clearly as a seasoned cook, {name}.", "The recipe's sorted; now only Mister Wind is hard to please."],
           "wrong": ["With no sugar in the machine, what would the stick wind up, {name}?", "Wipe the trunk before making candy and it'll just get sticky again.", "If the honey and sugar aren't mixed, what goes into the machine? Start again from the first job."]
         }
       },
       "en": {
         "title": "Honey cotton candy recipe",
-        "goTo": "Take the scrap of paper to the trading market and sort it out with Chú Đố Chữ Quang",
+        "goTo": "Go to the market noticeboard and sort out Gấu's recipe scrap",
         "prompt": "Gấu's scrap of paper lists the steps for honey cotton candy, but they're jumbled. Put them back in order:",
         "items": ["Pour the honey sugar into the hot spinning machine", "Stand the candy in the rack, wipe the trunk and give a puff", "Mix honey with sugar and dry it until it's loose", "Circle a bamboo stick round the machine, winding the threads into a cloud"]
       }
@@ -106,11 +107,11 @@
     {
       "id": "gio-lang-luc-nao",
       "title": "Bao giờ gió lặng?",
-      "goTo": "Ra tháp đồng hồ hỏi Chó Cảnh Sát Còi xem bao giờ gió lặng",
+      "goTo": "Tới cột báo gió của chợ, xem bảng báo gió để biết bao giờ gió lặng",
       "kind": "riddle",
-      "target": "cho-canh-sat-coi",
+      "target": "st-voi-keo-mat-ong-bang-bao-gio",
       "skill": "xem-dong-ho",
-      "question": "Chó Cảnh Sát Còi bảo: «Gió bắt đầu thổi mạnh từ 3 giờ chiều, thổi thêm 2 giờ nữa mới lặng.» Mấy giờ chiều thì gió lặng?",
+      "question": "Bảng báo gió của chợ ghi: «Gió bắt đầu thổi mạnh từ 3 giờ chiều, thổi thêm 2 giờ nữa mới lặng.» Mấy giờ chiều thì gió lặng?",
       "answer": { "value": 5 },
       "support": {
         "guide": ["Gió bắt đầu thổi mạnh lúc 3 giờ chiều.", "Thổi thêm 2 giờ nữa: đếm tiếp từ 3, thêm hai giờ."],
@@ -123,28 +124,28 @@
         }
       },
       "feedback": {
-        "right": ["Năm giờ chiều! Chó thổi một tiếng còi ngắn: «Chuẩn giờ!»", "{name} đếm giờ đều như kim đồng hồ trên tháp.", "Gió lặng đúng lúc quảng trường đông khách nhất, Voi mừng lắm đây."],
+        "right": ["Năm giờ chiều! {name} khoanh tròn số 5 trên bảng bằng phấn trắng.", "Đếm giờ đều như kim đồng hồ, chẳng lệch phút nào.", "Gió lặng đúng lúc quảng trường đông khách nhất, Voi mừng lắm đây."],
         "wrong": ["Gió thổi thêm chứ đâu có bớt, giờ lặng phải muộn hơn 3 giờ chứ.", "Nhích kim giờ từng số một: 3 rồi tới 4, rồi tới…?", "Chỉ hai giờ nữa thôi, {name}, đừng đếm lố sang tận tối."],
         "en": {
-          "right": ["Five in the afternoon! Chó gives a short blast of the whistle: “Right on time!”", "You count the hours as steadily as the hands on the tower, {name}.", "The wind drops just when the square is busiest; Voi will be delighted."],
+          "right": ["Five in the afternoon! {name} circles the 5 on the board in white chalk.", "You counted the hours as steadily as a clock's hands, not a minute out.", "The wind drops just when the square is busiest; Voi will be delighted."],
           "wrong": ["The wind blows on, not back, so it must drop later than 3.", "Move the hour hand one number at a time: 3, then 4, then…?", "Only two more hours, {name}; don't count all the way into the night."]
         }
       },
       "en": {
         "title": "When will the wind drop?",
-        "goTo": "Go to the clock tower and ask Chó Cảnh Sát Còi when the wind will drop",
-        "question": "Chó Cảnh Sát Còi says: “The strong wind started at 3 in the afternoon and will blow for 2 more hours before it drops.” At what time in the afternoon does the wind drop?"
+        "goTo": "Go to the market's wind post and read the board to find out when the wind will drop",
+        "question": "The market's wind board says: “Strong wind from 3 in the afternoon, blowing 2 more hours before it drops.” At what time in the afternoon does the wind drop?"
       }
     },
     {
       "id": "goi-keo-cho-kho",
       "title": "Gói kẹo cho khô ráo",
-      "goTo": "Sang khu sự kiện hỏi Lân Con Rộn Ràng cách cất đồ cho khỏi ẩm",
+      "goTo": "Sang sạp đồ khô, nơi Voi để giỏ đồ gói kẹo",
       "kind": "challenge",
       "mechanic": "multi-select",
-      "target": "lan-con-ron-rang",
+      "target": "st-voi-keo-mat-ong-gio-do-goi",
       "skill": "logic",
-      "prompt": "Lân Con cất đầu lân giấy kỹ lắm, vì giấy cũng sợ ẩm như kẹo. Kẹo bông gặp hơi ẩm là xẹp, gặp gió là bay. Chọn tất cả những thứ giúp que kẹo đi đường xa vẫn xốp:",
+      "prompt": "Trong giỏ có năm thứ. Kẹo bông gặp hơi ẩm là xẹp, gặp gió là bay. Chọn tất cả những thứ giúp que kẹo đi đường xa vẫn xốp:",
       "choices": [
         { "id": "tui-buoc-kin", "text": "Túi nhựa trong, buộc chặt miệng" },
         { "id": "khan-uot", "text": "Chiếc khăn ướt phủ lên kẹo" },
@@ -164,26 +165,26 @@
         }
       },
       "feedback": {
-        "right": ["Lân lắc bờm ba cái: «Gói thế này thì kẹo kín như đầu lân nằm trong hòm!»", "Khô ráo, kín gió, {name} chọn đúng cả ba rồi.", "Gói thế này thì kẹo đi tới đâu cũng còn bông xốp."],
+        "right": ["Túi trong, hộp kín, giấy nến khô: gói thế này thì kẹo kín như nhà có mái.", "Khô ráo, kín gió, {name} chọn đúng cả ba rồi.", "Gói thế này thì kẹo đi tới đâu cũng còn bông xốp."],
         "wrong": ["Khăn ướt đắp lên là kẹo chảy thành nước đường mất, {name}.", "Rổ thưa thì gió chui qua như chơi, kẹo bay mất thôi.", "Còn một thứ khô ráo chưa chọn, nhìn kỹ dưới đáy hộp xem."],
         "en": {
-          "right": ["Lân shakes the mane three times: “Packed like that, the candy is as snug as a lion head in its chest!”", "Dry and windproof: you picked all three, {name}.", "Packed like this, the candy will stay fluffy wherever it goes."],
+          "right": ["Clear bag, closed box, dry paper: packed like that, the candy is as snug as a house with a roof.", "Dry and windproof: you picked all three, {name}.", "Packed like this, the candy will stay fluffy wherever it goes."],
           "wrong": ["Lay a wet cloth on it and the candy melts into syrup, {name}.", "Wind slips straight through an open basket; the candy would blow away.", "One dry thing is still unpicked; look closely at the bottom of the box."]
         }
       },
       "en": {
         "title": "Packing the candy dry",
-        "goTo": "Go to the events area and ask Lân Con Rộn Ràng how to keep things from getting damp",
-        "prompt": "Lân Con stores the paper lion head with great care, because paper fears damp just like candy. Cotton candy shrinks in damp air and flies off in the wind. Pick everything that keeps a stick fluffy on a long journey:",
+        "goTo": "Go to the dry-goods stall, where Voi left the basket of packing things",
+        "prompt": "There are five things in the basket. Cotton candy shrinks in damp air and flies off in the wind. Pick everything that keeps a stick fluffy on a long journey:",
         "choices": ["A clear plastic bag, tied tight at the top", "A wet cloth laid over the candy", "A stiff paper box with a lid", "An open bamboo basket with gaps", "Dry baking paper lining the box"]
       }
     },
     {
       "id": "con-gio-lac",
       "title": "Cơn gió lạc",
-      "goTo": "Về quầy kẹo bông lúc năm giờ, Voi đã bày máy quay kẹo sẵn",
+      "goTo": "Lúc năm giờ, tới mái hiên chợ, Voi đã dời máy quay kẹo vào đó cho khuất gió",
       "kind": "decision",
-      "target": "voi-keo-bong",
+      "target": "st-voi-keo-mat-ong-may-quay-keo",
       "speaker": "Voi Kẹo Bông",
       "prompt": "Đúng năm giờ, gió đã lặng. Voi vừa quấn xong hai que kẹo bông mật ong thì một cơn gió lạc ùa qua, cuốn một que bay vút về phía quảng trường. Voi đứng sững, vòi run run: «{name} ơi…»",
       "choices": [
@@ -193,7 +194,7 @@
       ],
       "en": {
         "title": "A stray gust",
-        "goTo": "Back to the cotton candy stall at five, where Voi has her spinning machine ready",
+        "goTo": "At five, go to the market awning, where Voi has moved her spinning machine out of the wind",
         "prompt": "At five on the dot the wind has dropped. Voi has just finished two sticks of honey cotton candy when a stray gust sweeps past and whisks one off towards the square. Voi freezes, trunk trembling: “{name}…”",
         "choices": [
           { "text": "Run after the candy and bring it back", "consequence": "{name} chases it all the way to the flowerbed, where it's already covered in petals. Voi laughs out loud: “That one's a present for the flowerbed, then. The other goes in the bag right now!”" },
@@ -207,10 +208,10 @@
       "title": "Mẻ kẹo mật đầu tiên",
       "kind": "reward",
       "trigger": "auto",
-      "text": "Mẻ kẹo bông mật ong đầu tiên vàng óng, thơm lừng cả quầy kẹo bông. Voi chỉ hít một hơi thật sâu rồi gói hết lại: «Phần ăn để dành cho Gấu.»",
+      "text": "Mẻ kẹo bông mật ong đầu tiên vàng óng, thơm lừng cả mái hiên chợ. Voi chỉ hít một hơi thật sâu rồi gói hết lại: «Phần ăn để dành cho Gấu.»",
       "en": {
         "title": "The first honey batch",
-        "text": "The first batch of honey cotton candy glows golden and fills the whole stall with its scent. Voi takes one deep sniff and packs it all away: “The eating is saved for Gấu.”"
+        "text": "The first batch of honey cotton candy glows golden and fills the market awning with its scent. Voi takes one deep sniff and packs it all away: “The eating is saved for Gấu.”"
       }
     },
     {
@@ -218,10 +219,10 @@
       "title": "Ai chở kẹo đi xa?",
       "kind": "next",
       "trigger": "auto",
-      "text": "Kẹo đã gói xong, nhưng Nhà của {name} ở xa lắm. Voi nghe nói ở khu học tập có bạn Cáo biết lái máy bay. Mai {name} cùng Voi đi hỏi nhé!",
+      "text": "Kẹo đã gói xong, nhưng Nhà của {name} ở xa lắm. Voi nghe nói Cáo Phi Công hay đậu máy bay chở thư ở bãi đất trống cạnh chợ. Mai {name} cùng Voi ra hỏi nhé!",
       "en": {
         "title": "Who will carry the candy?",
-        "text": "The candy is packed, but {name}'s home is a long way off. Voi has heard there's a fox at the learning area who flies a plane. Tomorrow {name} and Voi go and ask!"
+        "text": "The candy is packed, but {name}'s home is a long way off. Voi has heard that Cáo Phi Công often parks the mail plane on the open ground beside the market. Tomorrow {name} and Voi go and ask!"
       }
     }
   ],
@@ -232,6 +233,6 @@
   },
   "en": {
     "title": "Voi Kẹo Bông's story, chapter 2: Honey sugar and a stray gust",
-    "summary": "Gấu's reply brings her honey sugar recipe. {name} sorts the honey cotton candy steps with Chú Đố Chữ Quang, asks Chó Cảnh Sát Còi at the clock tower when the wind will drop, learns dry packing from Lân Con Rộn Ràng, and stands beside Voi when a stray gust sweeps past the stall."
+    "summary": "Gấu's reply brings her honey sugar recipe. {name} sorts the honey cotton candy steps at the market noticeboard, reads the wind board to learn when the wind drops, picks dry packing at the dry-goods stall, and stands beside Voi under the market awning when a stray gust sweeps past."
   }
 }

@@ -8,7 +8,7 @@
   "summary": "Sau trận mưa giông, con vịt gỗ dẫn đầu đàn vịt của Chó Lùa Vịt trôi mất. {name} đếm lại hàng vịt, đọc sổ mương của Chú Đào Kênh Dẫn Nước, nhận ra con vịt gỗ do Ông Cụ Trông Vườn đẽo giữa bốn con Bác Nông Dân Thành vớt được, rồi lùa đàn vịt lạc ở chuồng gà về.",
   "review": "teacher-pending",
   "sevenQuestions": {
-    "who": "{name}, Chó Lùa Vịt, Chú Đào Kênh Dẫn Nước, Bác Nông Dân Thành, Bé Chăn Gà Con",
+    "who": "{name}, Chó Lùa Vịt, Vịt Mỏ Cam; nhắc tới Chú Đào Kênh Dẫn Nước, Bác Nông Dân Thành",
     "where": "Nông trại: ao cá, cối xay gió, khu trồng trọt, chuồng gà",
     "goal": "Tìm lại con vịt gỗ dẫn đầu đàn mà Ông Cụ Trông Vườn đẽo tặng Chó",
     "play": "Đếm hàng vịt theo vị trí, đọc sổ mương đoán đường trôi, nhận vịt gỗ theo lời tả, chọn cách trả đồ chơi thất lạc, lùa vịt về chuồng",
@@ -28,9 +28,10 @@
   },
   "places": {
     "cho-lua-vit": "Ao cá",
-    "chu-dao-kenh-nuoc": "Cối xay gió",
-    "bac-nong-dan-thanh": "Khu trồng trọt",
-    "be-chan-ga-con": "Chuồng gà"
+    "st-vit-go-dau-dan-day-dut": "Ao cá",
+    "st-vit-go-dau-dan-so-muong": "Cối xay gió",
+    "st-vit-go-dau-dan-bon-vit-go": "Khu trồng trọt",
+    "st-vit-go-dau-dan-vit-mo-cam": "Chuồng gà"
   },
   "steps": [
     {
@@ -87,9 +88,9 @@
       "id": "dem-hang-vit",
       "title": "Đủ vịt thật chưa?",
       "kind": "riddle",
-      "target": "cho-lua-vit",
+      "target": "st-vit-go-dau-dan-day-dut",
       "skill": "logic",
-      "question": "Chó cho đàn vịt đi qua cầu ao thành một hàng. Vịt Mỏ Cam đi thứ tư tính từ đầu hàng, và cũng là con thứ chín tính từ cuối hàng. Hàng vịt có tất cả bao nhiêu con?",
+      "question": "Ngay chỗ sợi dây đứt, Chó lùa đàn vịt qua cầu ao thành một hàng. Vịt Mỏ Cam đi thứ tư tính từ đầu hàng, và cũng là con thứ chín tính từ cuối hàng. Hàng vịt có tất cả bao nhiêu con?",
       "answer": {
         "value": 12
       },
@@ -141,15 +142,15 @@
       },
       "en": {
         "title": "Are the real ducks all here?",
-        "question": "Chó walks his ducks over the pond bridge in a single line. Mỏ Cam is fourth from the front and also ninth from the back. How many ducks are in the line?"
+        "question": "Right by the snapped string, Chó walks his ducks over the pond bridge in a single line. Mỏ Cam is fourth from the front and also ninth from the back. How many ducks are in the line?"
       }
     },
     {
       "id": "so-muong-dem-qua",
       "title": "Sổ mương đêm qua",
       "kind": "read",
-      "target": "chu-dao-kenh-nuoc",
-      "goTo": "Ra cối xay gió hỏi Chú Đào Kênh Dẫn Nước",
+      "target": "st-vit-go-dau-dan-so-muong",
+      "goTo": "Ra cối xay gió đọc sổ mương của Chú Đào Kênh Dẫn Nước",
       "skill": "doc-hieu",
       "text": "Sổ mương của Chú Đào Kênh, đêm mưa giông:\nMương Sen: từ ao cá chảy vào đầm sen. Cửa mương đóng từ chiều, nước đứng yên.\nMương Gió: từ ao cá chảy về cối xay gió. Đầu mương có tấm lưới tre, rác nổi không lọt qua.\nMương Lúa: từ ao cá chảy ra khu trồng trọt. Mười giờ đêm mở cửa cho nước vào ruộng, nước chảy mạnh, không có lưới.",
       "question": "Vịt gỗ nổi trên mặt nước. Đêm qua nó đã trôi theo mương nào?",
@@ -218,7 +219,7 @@
       },
       "en": {
         "title": "Last night's ditch log",
-        "goTo": "Go to the windmill and ask Chú Đào Kênh Dẫn Nước",
+        "goTo": "Go to the windmill and read Chú Đào Kênh Dẫn Nước’s ditch log",
         "text": "Chú Đào Kênh’s ditch log, the night of the storm:\nLotus Ditch: from the fishpond to the lotus marsh. Gate shut since the afternoon, the water still.\nWind Ditch: from the fishpond to the windmill. A bamboo net at its mouth stops anything floating.\nRice Ditch: from the fishpond out to the crop fields. Gate opened at ten at night to water the paddies; fast water, no net.",
         "question": "The wooden duck floats. Which ditch did it drift down last night?",
         "choices": [
@@ -234,8 +235,8 @@
       "kind": "challenge",
       "mechanic": "logic",
       "logicType": "puzzle",
-      "target": "bac-nong-dan-thanh",
-      "goTo": "Xuôi theo mương lúa tới khu trồng trọt gặp Bác Nông Dân Thành",
+      "target": "st-vit-go-dau-dan-bon-vit-go",
+      "goTo": "Xuôi theo mương lúa tới khu trồng trọt, chỗ Bác Nông Dân Thành phơi bốn con vịt gỗ",
       "skill": "doc-hieu",
       "prompt": "Bác Nông Dân Thành vớt được bốn con vịt gỗ ở bờ ruộng: «Ấy thế mà mưa cuốn cả đồ chơi của trẻ trong xóm.» Chó nhớ vịt Ông Cụ đẽo có mỏ vàng, đuôi vểnh, dưới bụng khắc ba vạch. Con nào là vịt của Chó?",
       "choices": [
@@ -307,7 +308,7 @@
       },
       "en": {
         "title": "Which one is Chó's duck?",
-        "goTo": "Follow the rice ditch to the crop fields and meet Bác Nông Dân Thành",
+        "goTo": "Follow the rice ditch to the crop fields, where Bác Nông Dân Thành has laid out four wooden ducks",
         "prompt": "Bác Nông Dân Thành has fished four wooden ducks out of the paddy edge: «Well now, the rain swept away the village children’s toys too.» Chó remembers that Ông Cụ’s duck has a yellow beak, an upturned tail and three notches under its belly. Which one is Chó’s?",
         "choices": [
           "Red beak, upturned tail, three notches",
@@ -321,7 +322,7 @@
       "id": "ba-con-vit-con-lai",
       "title": "Ba con vịt gỗ còn lại",
       "kind": "decision",
-      "target": "bac-nong-dan-thanh",
+      "target": "st-vit-go-dau-dan-bon-vit-go",
       "speaker": "Bác Nông Dân Thành",
       "prompt": "Bác Thành lau bùn trên ba con vịt gỗ còn lại: «Chắc của bọn trẻ trong xóm, đứa nào mất đồ chơi cũng buồn lắm.» {name} tính trả chúng thế nào?",
       "choices": [
@@ -365,15 +366,15 @@
       "title": "Vịt lạc sang chuồng gà",
       "kind": "challenge",
       "mechanic": "minigame",
-      "target": "be-chan-ga-con",
-      "goTo": "Sang chuồng gà, Bé Chăn Gà Con đang gọi ầm lên",
-      "prompt": "Cậu biết không? Không có vịt gỗ dẫn đường, đàn vịt của Chó lạc sang tận chuồng gà của tớ! Cậu lùa giúp chúng về chuồng vịt nhé.",
+      "target": "st-vit-go-dau-dan-vit-mo-cam",
+      "goTo": "Sang chuồng gà, Vịt Mỏ Cam đang kêu cạc cạc gọi bạn",
+      "prompt": "Cạc cạc! Không có vịt gỗ dẫn đường, cả đàn tụi tớ lạc sang tận chuồng gà rồi. {name} lùa tụi tớ về chuồng vịt giúp nhé!",
       "game": "sheepdog-herd",
       "goal": 10,
       "en": {
         "title": "Ducks in the henhouse",
-        "goTo": "Go to the henhouse, where Bé Chăn Gà Con is calling for help",
-        "prompt": "You know what? With no wooden duck to lead them, Chó’s ducks wandered all the way into my henhouse! Help me herd them back to their own pen."
+        "goTo": "Go to the henhouse, where Vịt Mỏ Cam is quacking for her friends",
+        "prompt": "Quack quack! With no wooden duck to lead us, the whole flock wandered into the henhouse. {name}, please herd us back to the duck pen!"
       }
     },
     {
