@@ -74,3 +74,21 @@ describe('QuestTracker folding', () => {
     expect(screen.getByText('Nhiệm vụ hiện tại')).toBeTruthy();
   });
 });
+
+describe('QuestTracker on a finished quest played again', () => {
+  it('shows the step of the new run and offers the walk, not "done"', () => {
+    const finished = quest(2);
+    const replayed = { ...finished, progress: { ...finished.progress, completedSteps: finished.progress.completedSteps.slice(0, 1), run: 2 } };
+    const store = createGameStore();
+    render(
+      <GameStoreContext.Provider value={store}>
+        <QuestTracker quest={replayed} data={DATA} />
+      </GameStoreContext.Provider>,
+    );
+    act(() => store.emit({ type: 'ready' }));
+    act(() => store.emit({ type: 'autowalk-available', available: true }));
+    expect(screen.queryByText('Đã hoàn thành')).toBeNull();
+    expect(screen.getByText('1/2')).toBeTruthy();
+    expect(screen.getByText('Chạm để tự đi tới')).toBeTruthy();
+  });
+});

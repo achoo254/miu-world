@@ -47,9 +47,12 @@ export function stepProgress(summary: QuestSummary): { done: number; total: numb
   return { done: summary.progress.completedSteps.filter((id) => steps.has(id)).length, total: steps.size };
 }
 
-/** The step the child is on: the first one not completed yet. */
+/**
+ * The step the child is on: the first one not completed yet. A finished quest played again stays `completed` while its
+ * new run is under way, so the steps tell, not the state.
+ */
 export function nextStep(summary: QuestSummary): QuestStepPublic | null {
-  if (summary.quest.status !== 'active' || summary.state === 'completed') return null;
+  if (summary.quest.status !== 'active') return null;
   const done = new Set(summary.progress.completedSteps);
   return summary.quest.steps.find((s) => !done.has(s.id)) ?? null;
 }

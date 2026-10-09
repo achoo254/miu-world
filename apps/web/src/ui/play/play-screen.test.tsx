@@ -8,7 +8,7 @@ import { AccountProvider } from '../account/account-context';
 import { PROGRESS, questList } from '../player/test-fixtures';
 import { QuestStepPublic } from '@miu/schema/content';
 import type { QuestSummary } from '@miu/schema/game';
-import { PlayScreen, mapBossesOf } from './play-screen';
+import { PlayScreen, mapBossesOf, withReloaded } from './play-screen';
 
 const SCHOOL_SPOT = { map: 'truong-hoc', position: [60, 9, 70], facing: 0.5 };
 const FOREST_SPOT = { map: 'forest-ch1', position: [40, 12, 88], facing: -1 };
@@ -324,5 +324,27 @@ describe('the bosses on the minimap', () => {
       { questId: 'vuot-ai-thu', targetId: 'than-rung', name: 'Thần Rừng của Mochi', title: 'Bài vuot-ai-thu', big: true },
       { questId: 'ward-thu', targetId: 'rai-ca', name: 'Rái Cá', title: 'Bài ward-thu', big: false },
     ]);
+  });
+});
+
+describe('her data read again after a finished quest', () => {
+  const character = { species: 'cat', name: 'Mochi', equipped: [], pet: null };
+  const data = (quests: QuestSummary[]) => ({ character, progress: PROGRESS, quests });
+  const [finished, stub] = questList(2).quests;
+  if (!finished || !stub) throw new Error('fixture');
+  const replayed: QuestSummary = { ...finished, progress: { ...finished.progress, completedSteps: ['hello'], run: 2 } };
+
+  it('keeps a run she started while the read was on its way, and takes the rest from the read', () => {
+    const late = { ...finished, progress: { ...finished.progress, run: 1 } };
+    const read = data([late, { ...stub, state: 'in-progress' as const }]);
+    const merged = withReloaded(data([replayed, stub]), read);
+    expect(merged.quests[0]?.progress).toEqual(replayed.progress);
+    expect(merged.quests[1]?.state).toBe('in-progress');
+  });
+
+  it('takes the read when it is as new or newer', () => {
+    const newer: QuestSummary = { ...finished, progress: { ...finished.progress, completedSteps: ['hello', 'find'], run: 2 } };
+    expect(withReloaded(data([replayed, stub]), data([newer, stub])).quests[0]).toEqual(newer);
+    expect(withReloaded(null, data([newer, stub])).quests[0]).toEqual(newer);
   });
 });

@@ -67,6 +67,22 @@ export function withProgress(summary: QuestSummary, progress: QuestSummary['prog
   if (older || (progress.run ?? 1) < (kept.run ?? 1)) return summary;
   return { ...summary, progress, state: progress.completed ? 'completed' : 'in-progress' };
 }
+
+/**
+ * Her data read again (a quest just finished, a co-op challenge paid): the read can land after a newer step response
+ * (she starts the finished quest again at once), so a quest whose progress here is newer keeps it.
+ */
+export function withReloaded(prev: PlayerData | null, next: PlayerData): PlayerData {
+  if (!prev) return next;
+  const here = new Map(prev.quests.map((q) => [q.quest.id, q]));
+  return {
+    ...next,
+    quests: next.quests.map((q) => {
+      const was = here.get(q.quest.id);
+      return was && withProgress(was, q.progress) === was ? { ...q, progress: was.progress, state: was.state } : q;
+    }),
+  };
+}
 /**
  * The bosses of a region's map for the minimap: each quest's boss (a lesson's big boss, a zone guardian), named in
  * Vietnamese like the map's other markers, `{name}` filled.
@@ -393,7 +409,7 @@ export function PlayScreen() {
   }, [social]);
   /** The server paid a co-op challenge: her XP, coins and quests are read again. */
   const refreshPlayer = useCallback((): void => {
-    void loadPlayer().then(setData, () => undefined);
+    void loadPlayer().then((next) => setData((prev) => withReloaded(prev, next)), () => undefined);
   }, []);
   // Server numbers after each step: progress, this quest's state; a finished quest can open others.
   const onResponse = useCallback((response: StepCompleteResponse): void => {
@@ -404,7 +420,7 @@ export function PlayScreen() {
         quests: prev.quests.map((q) => (q.quest.id === response.quest.questId ? withProgress(q, response.quest) : q)),
       },
     );
-    if (response.completion) void loadPlayer().then(setData, () => undefined);
+    if (response.completion) void loadPlayer().then((next) => setData((prev) => withReloaded(prev, next)), () => undefined);
   }, []);
 
   const quest = data?.quests.find((q) => q.quest.id === questId) ?? null;
