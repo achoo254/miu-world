@@ -47,6 +47,7 @@ id miu >/dev/null 2>&1 || useradd --system --home-dir /opt/miu --shell /sbin/nol
 install -d -m 755 /opt/miu /opt/miu/releases
 install -d -m 750 -o root -g miu /etc/miu
 install -d -m 700 -o postgres -g postgres /var/backups/miu
+install -d -m 700 -o postgres -g postgres /var/backups/miu/bots
 # Worksheet handwriting font: no open license, so it never goes through git or a release; `deploy.sh
 # fonts` uploads it here, outside /opt/miu/current so a release does not replace it.
 install -d -m 750 -o root -g miu /opt/miu/fonts

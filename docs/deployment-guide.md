@@ -40,7 +40,7 @@ Thêm một entry mới thì làm theo `_meta.entry_schema`. Trước khi sửa,
 | --- | --- | --- |
 | Máy | Lab **176** (entry `dattqh_ubuntu_192.168.122.176_MONGO`) | **.65** (entry `SSH_SERVER_STAGING`, group `SERVER STAGING .65`) |
 | Server | systemd `miu-server`, cổng loopback 8787 | systemd `miu-server`, cổng loopback **8797** (8787 của dự án khác), Node 22 ở `/opt/node22` (tách nvm của pm2) |
-| Database | Postgres 16 trên 176 | Postgres 16 trên .65, chỉ loopback; backup hằng ngày 03:15 (`miu-backup.timer`, giữ 14 bản `daily-*.dump`) + trước mỗi release; mọi bản dump quá 14 ngày bị xóa |
+| Database | Postgres 16 trên 176 | Postgres 16 trên .65, chỉ loopback; backup hằng ngày 03:15 (`miu-backup.timer`, giữ 14 bản `daily-*.dump`) + trước mỗi release; mọi bản dump quá 14 ngày bị xóa; riêng dữ liệu học của bạn máy (`bot_world_memories`, `bot_skills`) có thêm bản `bots/bots-*.dump` giữ 90 ngày |
 | Hệ điều hành | Ubuntu 24.04 | CentOS Stream 9 |
 | Đường vào | Cloudflare → nginx trên .65 → tunelo → nginx trên 176 → server | Cloudflare → nginx trên .65 (`conf.d/miu.conf`, phục vụ web tĩnh, proxy `/api/`) → server ở loopback của .65 |
 | Dùng chung với | MongoDB và các agent của OneDash staging | Nhiều dự án khác; xem bằng `pm2 jlist` và `ls /etc/nginx/conf.d` |
@@ -163,7 +163,7 @@ Chạy tại `https://miu.hoandat.com` trên .65 (dựng ngày 30/09/2026). Cấ
 
 | Nơi | Cách giữ 14 ngày |
 |---|---|
-| Bản sao lưu `/var/backups/miu/` | `miu-backup.service` giữ 14 bản `daily-*.dump` và xóa mọi `*.dump` (cả `before-<id>`) quá 14 ngày |
+| Bản sao lưu `/var/backups/miu/` | `miu-backup.service` giữ 14 bản `daily-*.dump` và xóa mọi `*.dump` (cả `before-<id>`) quá 14 ngày. Ngoại lệ duy nhất: `/var/backups/miu/bots/bots-*.dump` chỉ gồm `bot_world_memories` và `bot_skills` (điều bạn máy tự học, không có id hay dữ liệu người chơi) và giữ 90 ngày, để mất dữ liệu học phát hiện muộn vẫn khôi phục được. Không thêm bảng có dữ liệu người chơi vào bản này (kể cả `bot_memories`) |
 | Log server | journal riêng `LogNamespace=miu`, `/etc/systemd/journald@miu.conf`: `MaxRetentionSec=14day`, mỗi file một ngày |
 | Log nginx của `miu.hoandat.com` | quy tắc có sẵn của host `/etc/logrotate.d/nginx` (hằng ngày, giữ 10). `setup` cảnh báo nếu quy tắc đó đổi |
 
@@ -186,6 +186,7 @@ tools/deploy/production/deploy.sh release   # cổng release, build, security:di
 - Nghiệm thu: `curl -s https://miu.hoandat.com/api/health` trả `{"status":"ok"}`; revision đang chạy ở `/opt/miu/current/apps/server/dist/server/REVISION` trên .65.
 - Log: `journalctl --namespace=miu -u miu-server` (.65; không có `--namespace` thì không thấy); request ở `/var/log/nginx/miu.hoandat.com.{access,error}.log`.
 - Rollback: như staging (§5) nhưng trên .65; backup ở `/var/backups/miu/` (`before-<id>.dump`, `daily-<ngày>.dump`).
+- Khôi phục riêng dữ liệu học của bạn máy (thao tác ghi, hỏi người trước): dừng `miu-server` (nếu không, lần ghi kế tiếp của bạn máy sẽ đè lên), rồi `cd /tmp && sudo -u postgres psql -d miu -c 'truncate bot_world_memories, bot_skills' && sudo -u postgres pg_restore --data-only -d miu /var/backups/miu/bots/bots-<ngày>.dump`, rồi chạy lại server. Lệnh này chưa chạy thử.
 - Thời khóa biểu mặc định (lớp của bé nhà người sở hữu: có tên trường, tên và điện thoại cô giáo) không nằm trong git. Mọi hồ sơ chưa tự lưu thời khóa biểu thấy bản này (`TIMETABLE_DEFAULT_FILE`); không đặt biến thì là mẫu trống. Nguồn ở iCloud (`timetable/timetable-default.json`, kê trong `tools/private/private-files.json`), `pnpm private:sync` chép vào `.data/private/`; `pnpm dev` tự dùng nếu có. Trên .65 tệp nằm ở `/opt/miu/config/timetable-default.json` (`root:miu`, 640); `deploy.sh timetable` tải lên qua ssh và thêm dòng biến vào `/etc/miu/production.env` nếu chưa có. Đổi lịch mặc định: sửa tệp trong iCloud, cập nhật sha256 trong `private-files.json`, chạy `timetable` rồi `release`.
 - Font chữ mẫu tiểu học HP001 của phiếu viết (`chu-mau-tieu-hoc.woff2`, `chu-mau-tieu-hoc-dam.woff2`) không có giấy phép mở nên không nằm trong git. Trên .65 font nằm ở `/opt/miu/fonts` (ngoài `/opt/miu/current`, thư mục đó thay mỗi lần release; `root:miu`, 750). `setup` tạo thư mục và ghi `HANDWRITING_FONT_DIR=/opt/miu/fonts` vào `/etc/miu/production.env`. `tools/deploy/production/deploy.sh fonts` tải hai tệp lên qua ssh, không qua git; nguồn là `$MIU_FONT_DIR`, mặc định `.data/fonts/` của checkout đang chạy lệnh. Thiếu font thì phiếu vẫn in nhưng không có chữ mẫu. Máy dev lấy hai tệp (cùng PDF SGK gốc) từ iCloud bằng `pnpm private:sync`, vào `.data/fonts/`.
 
