@@ -49,6 +49,11 @@ export interface PetLifeOptions {
   playerAction: (action: ExtraPlayerAction, seconds: number) => void;
   /** A scene starts (its name) or ends (null). */
   onScene: (scene: PetSceneName | null) => void;
+  /**
+   * At home, the map of today's lesson away from it: greeting her there, the pet says it wants to go (owner,
+   * 09/10/2026: the child plays only at home). None elsewhere.
+   */
+  outing?: string | null;
   gentle: boolean;
   lite: boolean;
   shadows: boolean;
@@ -104,6 +109,7 @@ const LINES = {
   sniff: 'pet.say.sniff',
   greet: 'pet.say.greet',
   cheer: 'pet.say.cheer',
+  outing: 'pet.say.outing',
 } as const satisfies Record<string, LinesKey>;
 type LinePool = keyof typeof LINES;
 
@@ -121,10 +127,13 @@ export function createPetLife(options: PetLifeOptions): PetLife {
   const { pet, scene, spawn, ground, standable, gentle, lite } = options;
   const density = (lite ? 0.5 : 1) * (gentle ? 0.5 : 1);
   const pickers = new Map<LinePool, FreshPicker<Bilingual>>();
+  /** A fresh line of the pool, `{map}` filled with the outing's map. */
   const say = (pool: LinePool): void => {
     let picker = pickers.get(pool);
     if (!picker) pickers.set(pool, (picker = freshPicker(linesOf(LINES[pool]))));
-    const line = picker.next();
+    const map = options.outing ?? '';
+    const raw = picker.next();
+    const line = { vi: raw.vi.replaceAll('{map}', map), en: raw.en.replaceAll('{map}', map) };
     const mode = getLangMode();
     if (mode === 'en') options.say(line.en, null);
     else options.say(line.vi, mode === 'both' && line.en !== line.vi ? line.en : null);
@@ -554,7 +563,7 @@ export function createPetLife(options: PetLifeOptions): PetLife {
           phase = 'hello';
           t = 0;
           pet.perform('greet', gentle);
-          say('greet');
+          say(options.outing ? 'outing' : 'greet');
           burst(3, () => ({ shape: 'heart', at: headAt(), velocity: [jitter(0.3), 0.8, jitter(0.3)], life: 1.3, size: [0.22, 0.34], sway: 0.6 }));
         } else if (phase === 'hello' && t > MOTION_SECONDS.greet) return true;
         return false;

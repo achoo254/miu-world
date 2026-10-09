@@ -1,0 +1,21 @@
+/* "Bài hôm nay" over the game at home: a chip under the quest card, dressed like it, glowing gold to be noticed. */
+.daily-chip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  max-width: 16rem;
+  min-height: 3rem;
+  padding: var(--space-xs) var(--space-md);
+  border: 0;
+  border-radius: var(--radius-field);
+  background: var(--color-badge);
+  color: var(--color-badge-ink);
+  box-shadow: var(--shadow-tile);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.daily-chip:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+.daily-chip-text { display: flex; flex-direction: column; font-family: var(--font-display); font-weight: 800; line-height: 1.2; }
+.daily-chip-label { font-size: var(--text-sm); font-weight: 700; }

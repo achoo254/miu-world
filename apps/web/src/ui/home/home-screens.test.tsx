@@ -44,11 +44,13 @@ afterEach(() => {
 });
 
 describe('Home', () => {
-  it("names the textbook lesson and its printed pages in today's quests", async () => {
+  it("names the textbook lesson and its printed pages in today's quests, and offers it as today's lesson away from home", async () => {
     stubServer(0, questListWithLesson);
     renderAt('/home');
-    const pages = await screen.findByText('Trang 10–12');
-    expect(pages.closest('[data-id="home-today-textbook-tv2-t01-b01"]')?.textContent).toBe('Tiếng Việt 2, tập một · Bài 1. Tôi là học sinh lớp 2Trang 10–12');
+    const [daily, row] = await screen.findAllByText('Trang 10–12');
+    expect(row?.closest('[data-id="home-today-textbook-tv2-t01-b01"]')?.textContent).toBe('Tiếng Việt 2, tập một · Bài 1. Tôi là học sinh lớp 2Trang 10–12');
+    expect(daily?.closest('[data-id="home-daily"]')).toBeTruthy();
+    expect(document.querySelector('[data-id="home-daily-go"]')?.getAttribute('href')).toBe('/play?region=khu-rung-bi-mat&quest=tv2-t01-b01');
   });
 
   it('leads to the journey and the achievements, with how many achievements wait to be claimed', async () => {

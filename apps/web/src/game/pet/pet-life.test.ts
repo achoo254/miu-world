@@ -27,7 +27,7 @@ async function testPet(): Promise<PetCompanion> {
 
 const flat = { x: 0, y: 1, z: 0, facing: 0, speed: 0, seated: null, riding: false } satisfies PetPlayer;
 
-async function life(options: { gentle?: boolean; bed?: { x: number; y: number; z: number } } = {}) {
+async function life(options: { gentle?: boolean; bed?: { x: number; y: number; z: number }; outing?: string } = {}) {
   const pet = await testPet();
   const scene = new Scene();
   const particles: ParticleSpawn[] = [];
@@ -44,6 +44,7 @@ async function life(options: { gentle?: boolean; bed?: { x: number; y: number; z
     say: (text) => said.push(text),
     playerAction: (action) => actions.push(String(action)),
     onScene: (name) => scenes.push(name),
+    outing: options.outing ?? null,
     gentle: options.gentle ?? false,
     lite: false,
     shadows: false,
@@ -171,6 +172,19 @@ describe('reactions to her', () => {
     petLife.greet();
     run(0.1);
     expect(scenes.filter((s) => s !== null)).toEqual(['celebrate', 'greet']);
+  });
+
+  it("greets her at home wanting to go to today's lesson map, and only there", async () => {
+    const home = await life({ outing: 'Chợ phiên' });
+    home.petLife.greet();
+    home.run(3);
+    expect(home.said).toHaveLength(1);
+    expect(home.said[0]).toContain('Chợ phiên');
+    const away = await life();
+    away.petLife.greet();
+    away.run(3);
+    expect(away.said).toHaveLength(1);
+    expect(away.said[0]).not.toContain('{map}');
   });
 
   it('sits by her seat and naps by her bed', async () => {

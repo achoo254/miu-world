@@ -112,6 +112,10 @@
   "home.nav": "Navigation",
   "home.goHome": "Go home",
   "home.today": "Today's quests",
+  "daily.title": "Today's lesson",
+  "daily.at": "In {map}",
+  "daily.resumeAt": "Carry on in {map}",
+  "daily.go": "Go to {map}",
   "home.continue": "Keep playing",
   "home.start": "Start",
   "home.allDone": "{name} has finished every quest for now. New quests are coming!",
@@ -539,6 +543,14 @@
     "Let's celebrate!",
     "We did it!",
     "Awesome!"
+  ],
+  "pet.say.outing": [
+    "Let's go to {map}!",
+    "I'd love to visit {map}!",
+    "Shall we stop by {map} today?",
+    "There's a new lesson in {map}, coming?",
+    "Take me to {map}, please!",
+    "{map} sounds like fun, let's go!"
   ],
   "petCare.title": "Caring for {pet}",
   "petCare.loading": "Calling your pet…",

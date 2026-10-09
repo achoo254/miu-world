@@ -144,6 +144,8 @@ export interface GameOptions {
   pet?: string | null;
   /** What the pet wears (`content/pet-gear.json`), from her saved character. */
   petGear?: readonly string[];
+  /** At home, the map of today's lesson away from it: the pet greets her wanting to go there. */
+  outing?: string | null;
   /** Where the child last stood on this map (`GET /api/player-positions`); the spawn point when absent or no longer open ground. */
   savedSpot?: Pick<PlayerPosition, 'position' | 'facing'> | null;
   /** The child's picks for her home (`GET /api/home-decor`): the map's restyled pieces as she chose them. */
@@ -811,6 +813,7 @@ export class Game {
             overlay.stats.petScene = name;
             if (name) overlay.stats.petScenes = [...overlay.stats.petScenes, name];
           },
+          outing: this.options.outing ?? null,
           gentle: reducedMotion,
           lite: quality.level === 'low',
           shadows: quality.shadows,

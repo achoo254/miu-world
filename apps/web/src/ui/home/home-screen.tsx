@@ -1,7 +1,7 @@
 // M1.1 (Trang chủ): the world stage with its regions, the child's character standing in it, a side rail
 // (Về nhà, Nhiệm vụ, Bản đồ, Ba lô, Cửa hàng: the shop of mock panel 7 over Home; Hành trình and Thành tích, the
-// latter with how many achievements wait to be claimed), today's quests, and the
-// child's level, XP and coins, with the title of her latest region chest and a "Nhận thưởng" badge over each
+// latter with how many achievements wait to be claimed), today's quests under "Bài hôm nay" (one lesson on another
+// map each day), and the child's level, XP and coins, with the title of her latest region chest and a "Nhận thưởng" badge over each
 // region with a chest tier to open. Home is a React screen
 // over a pre-rendered island image, not a second 3D scene (validation decision `home_scene`). Not in the
 // MVP, so not shown: diamonds (Master Plan §15 #6), the daily streak (`streak_in_mvp` = defer_v1). Live World: the
@@ -20,6 +20,7 @@ import { HOME_REGION } from '../region/regions';
 import { T, useT } from '../i18n/use-t';
 import { SettingsDialog } from '../system/settings-dialog';
 import { WorldStage } from '../world/world-stage';
+import { DailyLessonCard } from './daily-lesson';
 import { TodayQuests } from './today-quests';
 import { ProgressResponse } from '@miu/schema/game';
 import { api } from '../api-client';
@@ -184,6 +185,7 @@ export function HomeScreen() {
                 {shownEvents.map((event) => (
                   <EventBanner key={event.id} event={event} onOpen={() => setEventOpen(event.id)} />
                 ))}
+                <DailyLessonCard data={data} />
                 <TodayQuests data={data} />
               </div>
             </div>

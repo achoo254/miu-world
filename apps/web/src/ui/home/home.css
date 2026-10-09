@@ -108,3 +108,8 @@ button.home-rail-item { border: 0; font-size: inherit; cursor: pointer; touch-ac
 .today-row-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs) var(--space-sm); }
 .today-xp { padding: 0 var(--space-sm); border-radius: var(--radius-pill); background: var(--color-surface); font-family: var(--font-display); font-weight: 800; color: var(--color-ink); }
 .today-chevron { flex-shrink: 0; font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl); line-height: 1; color: var(--color-ink-soft); }
+
+/* "Bài hôm nay": one lesson on another map each day, above today's quests. */
+.home-daily { display: flex; flex-direction: column; gap: var(--space-sm); padding: var(--space-lg); }
+.home-daily-where { display: flex; align-items: center; gap: var(--space-xs); margin: 0; color: var(--color-ink-soft); font-size: var(--text-sm); }
+.home-daily-lesson { font-family: var(--font-display); font-weight: 800; line-height: 1.2; }
