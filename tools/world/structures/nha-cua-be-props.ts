@@ -159,6 +159,9 @@ const MARKS: Readonly<Record<string, readonly string[]>> = {
   bunny: ['.#...#.', '.#...#.', '.#...#.', '.#####.', '#######', '#.###.#', '.#####.'],
   leaf: ['....##.', '...###.', '..####.', '.####..', '.###...', '.#.....', '#......'],
   moon: ['..###..', '.##....', '##.....', '##.....', '##.....', '.##....', '..###..'],
+  snowflake: ['#..#..#', '.#.#.#.', '..###..', '#######', '..###..', '.#.#.#.', '#..#..#'],
+  anchor: ['...#...', '..#.#..', '...#...', '.#####.', '...#...', '#..#..#', '.#####.'],
+  tower: ['#.#.#.#', '#######', '.#####.', '.##.##.', '.#####.', '.##.##.', '.#####.'],
 };
 
 /** A mark's cells: `at(i, j)` is true where it is drawn. */
@@ -248,6 +251,8 @@ const BEDS: Readonly<Record<string, BedStyle>> = {
   'ncb-bed-lilac': { quilt: '#cdb4f0', pattern: 'hearts', mark: PINK.deep, pillow: 'bunny', frame: WHITE, head: '#f0e6fa' },
   'ncb-bed-red': { quilt: '#e2584f', pattern: 'checks', mark: WHITE, pillow: 'bear', frame: WOOD.mid, head: WOOD.dark },
   'ncb-bed-rainbow': { quilt: WHITE, pattern: 'rainbow', mark: '#5aa6e8', pillow: 'cat', frame: WOOD.light, head: WOOD.mid },
+  // Keepsakes of other maps (content/home/decor.json `souvenir`): the Library's night-sky quilt.
+  'ncb-bed-library': { quilt: '#3d3270', pattern: 'stars', mark: '#ffe066', pillow: 'bear', frame: WOOD.dark, head: '#5c3c22' },
 };
 
 /** The study desk (panel 4) in a colour: a top 1.6 x 0.8 at 0.78, a cabinet of drawers on the left, legs on the right. */
@@ -269,6 +274,8 @@ const DESKS: Readonly<Record<string, [string, string, string]>> = {
   'ncb-desk-blue': ['#dcecfb', '#7fb6ea', WHITE],
   'ncb-desk-mint': ['#e2f6ec', '#8fd4b4', WHITE],
   'ncb-desk-yellow': ['#fff3cf', '#f6c945', WOOD.dark],
+  // Keepsake of the School: a classroom desk, its top the green of the blackboard.
+  'ncb-desk-school': ['#3f7d4f', WOOD.light, '#e2b13c'],
 };
 
 /**
@@ -311,6 +318,8 @@ const WARDROBES: Readonly<Record<string, [string, string, string, string]>> = {
   'ncb-wardrobe-mint': ['#7cc9a6', '#b8ead2', WHITE, PINK.deep],
   'ncb-wardrobe-lilac': ['#b49ae0', '#dccaf4', WHITE, PINK.deep],
   'ncb-wardrobe-yellow': ['#f2c14e', '#fde7a2', WOOD.mid, '#ef6f6c'],
+  // Keepsake of the Castle: royal purple with a gold crown.
+  'ncb-wardrobe-castle': ['#5e3f9a', '#a68ad6', '#e2b13c', '#ffe066'],
 };
 
 /** Side of a rug's picture cell: sixteen across make a rug about three blocks wide, a room's centre. */
@@ -341,6 +350,9 @@ const RUGS: Readonly<Record<string, () => Box[]>> = {
   'ncb-rug-flower': () => pictureRug('#e8f6d6', '#6fc27a', rugMark('flower', '#f08a5d')),
   'ncb-rug-leaf': () => pictureRug('#fff3cf', '#5fae5a', rugMark('leaf', '#5fae5a')),
   'ncb-rug-checks': () => pictureRug(WHITE, '#d9342b', (u, v) => ((Math.floor((u + 0.5) * 6) + Math.floor((v + 0.5) * 6)) % 2 === 0 ? '#ef7f78' : null)),
+  // Keepsakes: the Secret Forest's moss with a fern leaf; the Snowy Mountain's snowflake on ice.
+  'ncb-rug-forest': () => pictureRug('#2f6b3a', '#8a5a32', rugMark('leaf', '#9fe07a')),
+  'ncb-rug-snow': () => pictureRug('#dff1fb', '#5aa6e8', rugMark('snowflake', '#4f86d9')),
 };
 
 /** Curtains (panels 2, 3) in colours: a rod, two drawn panels tied back, a scalloped valance; for a window two wide. */
@@ -366,6 +378,8 @@ const CURTAINS: Readonly<Record<string, [string, string, string]>> = {
   'ncb-curtains-lilac': ['#cdb4f0', '#8a5fd0', '#f0e6fa'],
   'ncb-curtains-lace': [WHITE, '#d9cbb4', '#f6efe2'],
   'ncb-curtains-red': ['#e2584f', '#a8322b', '#f8d0cc'],
+  // Keepsake of the Riverside Village: river teal.
+  'ncb-curtains-river': ['#5fc4d6', '#2a8aa8', '#d6f2f6'],
 };
 
 /** A floor lamp's pole and foot (in `colour`), `height` high. */
@@ -401,6 +415,14 @@ const FLOOR_LAMPS: Readonly<Record<string, () => Box[]>> = {
     box([-0.2, 1.3, -0.2], [0.2, 1.62, 0.2], PINK.mid, true),
     ...[-0.14, 0, 0.14].map((x) => box([x - 0.05, 1.62, -0.06], [x + 0.05, 1.74, 0.06], PINK.deep, true)),
   ],
+  // Keepsake of the Farm: a pumpkin glowing on a short stand, its ribs darker, a green stalk and leaf.
+  'ncb-lamp-pumpkin': () => [
+    ...lampPole(0.7, WOOD.dark),
+    box([-0.34, 0.7, -0.3], [0.34, 1.16, 0.3], '#f5933a', true),
+    ...[-0.17, 0, 0.17].map((x) => box([x - 0.03, 0.72, -0.32], [x + 0.03, 1.14, -0.3], '#d9701f', true)),
+    box([-0.05, 1.16, -0.05], [0.05, 1.3, 0.05], '#4f7d3a'),
+    box([0.05, 1.2, -0.03], [0.26, 1.26, 0.03], '#5fbf6a'),
+  ],
 };
 
 /** A picket fence two blocks long in a colour: pointed pales on two rails, deep enough to stop the child. */
@@ -421,6 +443,8 @@ const PICKETS: Readonly<Record<string, [string, string]>> = {
   'ncb-picket-yellow': ['#fff0b8', '#f2c14e'],
   'ncb-picket-wood': [WOOD.light, WOOD.mid],
   'ncb-picket-mint': ['#d8f3e6', '#8fd4b4'],
+  // Keepsake of Cosy Roofs Hamlet: the terracotta of its tiles.
+  'ncb-picket-tile': ['#f2c9a8', '#c4643c'],
 };
 
 /** A clipped hedge two blocks long with flowers in it, as high and deep as the fences. */
@@ -447,6 +471,17 @@ const GARDEN_LAMPS: Readonly<Record<string, () => Box[]>> = {
     box([-0.42, 1.2, -0.04], [-0.06, 1.32, 0.04], '#5fbf6a'),
     box([-0.28, 1.9, -0.28], [0.28, 2.35, 0.28], PINK.mid, true),
     ...[-0.2, 0, 0.2].map((x) => box([x - 0.07, 2.35, -0.08], [x + 0.07, 2.52, 0.08], PINK.deep, true)),
+  ],
+  // Keepsake of the Fair Market: a red silk lantern with gold bands and a tassel, hung from a bracket.
+  'ncb-garden-lamp-market': () => [
+    box([-0.3, 0, -0.3], [0.3, 0.1, 0.3], WOOD.dark),
+    box([-0.07, 0.1, -0.07], [0.07, 2.5, 0.07], WOOD.dark),
+    box([-0.07, 2.42, -0.07], [0.5, 2.5, 0.07], WOOD.dark),
+    box([0.42, 2.3, -0.03], [0.48, 2.42, 0.03], '#e2b13c'),
+    box([0.2, 1.75, -0.22], [0.7, 2.3, 0.22], '#d9342b', true),
+    box([0.25, 1.68, -0.18], [0.65, 1.75, 0.18], '#e2b13c'),
+    box([0.25, 2.3, -0.18], [0.65, 2.36, 0.18], '#e2b13c'),
+    box([0.42, 1.48, -0.03], [0.48, 1.68, 0.03], '#e2b13c'),
   ],
   // A white globe on a black post, stacked boxes round as a ball.
   'ncb-garden-lamp-globe': () => [
@@ -513,6 +548,9 @@ const FLAGS: Readonly<Record<string, [string, keyof typeof MARKS, string]>> = {
   'ncb-flag-star': ['#3f5f9e', 'star', '#ffe066'],
   'ncb-flag-heart': [WHITE, 'heart', '#e2584f'],
   'ncb-flag-flower': ['#9fe0c4', 'flower', '#f08a5d'],
+  // Keepsakes: the Central Square's orange banner with its clock tower; the Mystery Island's anchor on the sea.
+  'ncb-flag-square': ['#f5a742', 'tower', WHITE],
+  'ncb-flag-island': ['#2a8aa8', 'anchor', '#ffe066'],
 };
 
 // ——— The staircase (panel 2): balusters and handrail on the stringer, newel posts with lanterns, a runner. ———

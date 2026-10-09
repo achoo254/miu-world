@@ -673,9 +673,10 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     if (decor.success) loadShopCatalog(catalog, decor.data, dir, new Set([...Object.keys(UI_ICONS), ...Object.keys(SPRITE_PATHS)]));
     // A pet's gear shows its picture on the shop card and in the care screen: a UI icon of the web app.
     for (const gear of catalog.petGear.values()) if (!(gear.icon in UI_ICONS)) issues.push(`pet gear ${gear.id}: unknown picture ${gear.icon}`);
-    // Every open region has a chest of its own wearables, and lessons to earn it with.
+    // Every open region has a chest of its own wearables, and lessons to earn it with; every open region but the
+    // home brings a souvenir home style halfway.
     const lessons = new Map([...questsByRegion(catalog.quests.values(), 'main')].map(([region, ids]) => [region, ids.length]));
-    loadRegionRewards(catalog.accessories, dir, lessons);
+    loadRegionRewards(catalog.accessories, dir, lessons, decor.success ? decor.data : undefined);
     issues.push(...checkProgression(dir, catalog, lessons, targetCatalog?.targets ?? {}));
     const privacy: unknown = JSON.parse(readFileSync(path.join(dir, PRIVACY_FILE), 'utf8'));
     issues.push(...checkPrivacy(privacy, catalog.consent.version));

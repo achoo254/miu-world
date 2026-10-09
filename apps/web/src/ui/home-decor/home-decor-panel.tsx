@@ -3,9 +3,12 @@
 // wardrobe, ornaments, rug, curtains, lamps; the house's colours, fence, gate, garden lights, flowers, path,
 // name board, flag); each piece's styles as cards with their colours. "Lưu" keeps her picks on the server for
 // this child, and the house is shown in them. The fancier styles are sold in the shop: until bought they show
-// locked with their price. Opened from the decorating notebook in the living room.
+// locked with their price. Each other map brings one keepsake style home from its halfway chest: until then it
+// shows locked with the map's name, and tapping it offers the way there. Opened from the decorating notebook in
+// the living room.
 import type { DecorSide, DecorSlot } from '@miu/schema/home-decor';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router';
 import { errorMessage } from '../api-client';
 import { mapBoth, pairOf, type Bilingual } from '../i18n/i18n';
 import { Bi, T, useT } from '../i18n/use-t';
@@ -14,29 +17,36 @@ import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
 import { Tabs } from '../kit/tabs';
 import { loadShop, shopErrorMessage } from '../shop/shop-api';
+import { findRegion } from '../region/regions';
 import { DECOR_CATALOG, SIDE_LABELS, changedPicks, swatchStyle } from './decor-catalog';
 import { loadHomeDecor, saveHomeDecor } from './home-decor-api';
 import './home-decor.css';
 
+/** Why a style is not hers to pick yet: sold in the shop at a price, or a keepsake of another map's chest. */
+export type DecorLock = { kind: 'price'; price: number } | { kind: 'souvenir'; region: string };
+
+/** The name a map goes by (its `{name}` left for the caller to fill), or its id when unknown. */
+const regionNameOf = (region: string): string => findRegion(region)?.name ?? region;
+
 /**
- * `priceOf`: the shop's price of a style she cannot pick yet (sold and not bought), or null when she can. A locked
- * style shows its price and a lock; tapping it says where to get it.
+ * `lockOf`: why she cannot pick a style yet, or null when she can. A locked style shows a lock with its price or
+ * its map's name; tapping it says where to get it.
  */
-function SlotPicker({ slot, picked, priceOf, onPick, onLocked }: { slot: DecorSlot; picked: string; priceOf: (option: string) => number | null; onPick: (option: string) => void; onLocked: (price: number) => void }) {
+function SlotPicker({ slot, picked, lockOf, onPick, onLocked }: { slot: DecorSlot; picked: string; lockOf: (option: string) => DecorLock | null; onPick: (option: string) => void; onLocked: (lock: DecorLock) => void }) {
   const { t } = useT();
   return (
     <div className="decor-options" role="group" aria-label={t('decor.styleOf', { slot: slot.name.toLocaleLowerCase('vi') })} data-id={`decor-options-${slot.id}`}>
       {slot.options.map((option) => {
         const on = option.id === picked;
-        const price = priceOf(option.id);
+        const lock = lockOf(option.id);
         return (
           <button
             key={option.id}
             type="button"
-            className={`decor-card${price === null ? '' : ' decor-card--locked'}`}
+            className={`decor-card${lock === null ? '' : ' decor-card--locked'}`}
             aria-pressed={on}
             data-id={`decor-option-${option.id}`}
-            onClick={() => (price === null ? onPick(option.id) : onLocked(price))}
+            onClick={() => (lock === null ? onPick(option.id) : onLocked(lock))}
           >
             <span className="decor-swatch" style={swatchStyle(option.swatch)} aria-hidden="true" />
             <span className="decor-card-name">{option.name}</span>
@@ -45,13 +55,19 @@ function SlotPicker({ slot, picked, priceOf, onPick, onLocked }: { slot: DecorSl
                 <T k="decor.default" />
               </span>
             ) : null}
-            {price === null ? null : (
+            {lock?.kind === 'price' ? (
               <span className="decor-card-price" data-id={`decor-price-${option.id}`}>
                 <Icon name="locked" size={20} />
                 <Icon name="coin" size={20} />
-                {price}
+                {lock.price}
               </span>
-            )}
+            ) : null}
+            {lock?.kind === 'souvenir' ? (
+              <span className="decor-card-price decor-card-souvenir" data-id={`decor-souvenir-${option.id}`}>
+                <Icon name="locked" size={20} />
+                {regionNameOf(lock.region)}
+              </span>
+            ) : null}
             {on ? (
               <span className="decor-card-tick">
                 <Icon name="checkMark" size={32} />
@@ -78,7 +94,7 @@ export function HomeDecorPanel({ onClose, onSaved }: { onClose: () => void; /** 
   const [saveError, setSaveError] = useState<string | null>(null);
   /** The shop's styles: price of each, and those she owns (unknown until the shop answers: none locked). */
   const [shop, setShop] = useState<{ prices: ReadonlyMap<string, number>; owned: ReadonlySet<string> } | null>(null);
-  const [lockNote, setLockNote] = useState<Bilingual | null>(null);
+  const [lockNote, setLockNote] = useState<{ text: Bilingual; region: string | null } | null>(null);
   const { t } = useT();
 
   useEffect(() => {
@@ -131,10 +147,16 @@ export function HomeDecorPanel({ onClose, onSaved }: { onClose: () => void; /** 
   const slots = DECOR_CATALOG.slots.filter((s) => s.side === side);
   const slot = slots.find((s) => s.id === slotId[side]) ?? slots[0];
   const dirty = saved !== null && Object.keys(changedPicks(saved, draft)).length > 0;
-  /** A style is hers to pick unless the shop sells it and she has neither bought it nor already got it saved. */
-  const priceOf = (slotId: string, option: string): number | null => {
-    const price = shop?.prices.get(option);
-    return price === undefined || shop?.owned.has(option) || saved?.[slotId] === option ? null : price;
+  /**
+   * A style is hers to pick unless the shop sells it or a map's chest brings it, and she has neither got it nor
+   * already saved it.
+   */
+  const lockOf = (slot: DecorSlot, option: string): DecorLock | null => {
+    if (shop === null || shop.owned.has(option) || saved?.[slot.id] === option) return null;
+    const price = shop.prices.get(option);
+    if (price !== undefined) return { kind: 'price', price };
+    const souvenir = slot.options.find((o) => o.id === option)?.souvenir;
+    return souvenir === undefined ? null : { kind: 'souvenir', region: souvenir };
   };
 
   return (
@@ -180,18 +202,29 @@ export function HomeDecorPanel({ onClose, onSaved }: { onClose: () => void; /** 
               <SlotPicker
                 slot={slot}
                 picked={draft[slot.id] ?? slot.default}
-                priceOf={(option) => priceOf(slot.id, option)}
+                lockOf={(option) => lockOf(slot, option)}
                 onPick={(option) => {
                   setLockNote(null);
                   setDraft((now) => ({ ...now, [slot.id]: option }));
                 }}
-                onLocked={(price) => setLockNote(pairOf('decor.locked', { price }))}
+                onLocked={(lock) =>
+                  setLockNote(
+                    lock.kind === 'price'
+                      ? { text: pairOf('decor.locked', { price: lock.price }), region: null }
+                      : { text: pairOf('decor.souvenir', { map: regionNameOf(lock.region) }), region: lock.region },
+                  )
+                }
               />
             ) : null}
           </Tabs>
           <p className="decor-hint" data-id="decor-hint" aria-live="polite">
-            <Bi {...(lockNote ?? pairOf('decor.hint'))} />
+            <Bi {...(lockNote?.text ?? pairOf('decor.hint'))} />
           </p>
+          {lockNote?.region ? (
+            <Link to={`/region/${lockNote.region}`} className={buttonClass('secondary')} data-id="decor-souvenir-go">
+              <T k="decor.souvenirGo" params={{ map: regionNameOf(lockNote.region) }} />
+            </Link>
+          ) : null}
         </section>
       )}
       {saveError ? (

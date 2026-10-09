@@ -171,6 +171,10 @@
 .region-tier-ask { font-size: var(--text-sm); color: var(--color-ink-soft); font-weight: 700; }
 .region-tier-gives { display: flex; align-items: center; flex-wrap: wrap; gap: 0 var(--space-xs); font-size: var(--text-sm); font-weight: 800; }
 .region-tier-item { width: 1.75rem; height: 1.75rem; border-radius: var(--radius-key); background: var(--color-surface); }
+/* The souvenir home style a tier brings: its colours in a round chip and its name. */
+.region-tier-decor { display: inline-flex; align-items: center; gap: var(--space-xs); }
+.region-swatch { display: inline-block; flex: none; width: 1.5rem; height: 1.5rem; border: 2px solid var(--color-surface); border-radius: var(--radius-pill); box-shadow: var(--shadow-tile); }
+.region-claim-swatch { width: 5rem; height: 5rem; border-width: 4px; }
 .region-tier-done { display: inline-flex; align-items: center; gap: var(--space-xs); font-weight: 800; font-size: var(--text-sm); color: var(--color-ink-soft); white-space: nowrap; }
 
 /* "Chúc mừng!" (on the scene parchment of `.reward-body`): the chest opens, then what it gave slides in one by one. */

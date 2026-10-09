@@ -3,6 +3,7 @@ import { Router } from 'express';
 import { levelFromXp } from '@miu/quest/level';
 import { regionTiers, tierReward, type RegionFacts } from '@miu/quest/region-reward';
 import { ContentId } from '@miu/schema/content';
+import type { HomeDecorCatalog } from '@miu/schema/home-decor';
 import {
   RegionRewardClaimRequest,
   regionRewardOfSource,
@@ -27,6 +28,8 @@ export interface RegionRewardRouteDeps {
   content: ContentCatalog;
   clock: () => Date;
   rewards: RegionRewards;
+  /** The home styles, for the souvenir a half tier brings (its name, piece of the house, colours). */
+  decor: HomeDecorCatalog;
 }
 
 /** What the server knows of one child for every region's chest: her lessons, side-quest runs and claims. */
@@ -70,8 +73,9 @@ async function childRecord(db: Db | Tx, childId: string): Promise<ChildRecord> {
  * `GET /regions/:regionId/rewards` one region; `POST /regions/:regionId/rewards/claim {tier}` pays a reached
  * tier once, computed here from her progress (the client names the tier only).
  */
-export function regionRewardRoutes({ db, content, clock, rewards }: RegionRewardRouteDeps): Router {
+export function regionRewardRoutes({ db, content, clock, rewards, decor }: RegionRewardRouteDeps): Router {
   const router = Router();
+  const styles = new Map(decor.slots.flatMap((slot) => slot.options.map((option) => [option.id, { id: option.id, name: option.name, slot: slot.name, swatch: option.swatch }] as const)));
   const lessons = questsByRegion(content.quests.values(), 'main');
   const sideQuests = questsByRegion(content.quests.values(), 'side');
 
@@ -90,7 +94,8 @@ export function regionRewardRoutes({ db, content, clock, rewards }: RegionReward
     const tiers = regionTiers(known, rewards.minigameGoal, record.claimed.get(entry.region) ?? new Set()).map((state) => {
       const reward = tierReward(entry, state.tier);
       const item = reward.item ? content.accessories.get(reward.item) : undefined;
-      return { ...state, coin: reward.coin, xp: reward.xp, item: item ? { id: item.id, name: item.name, slot: item.slot } : null, title: reward.title };
+      const style = reward.decor ? styles.get(reward.decor) : undefined;
+      return { ...state, coin: reward.coin, xp: reward.xp, item: item ? { id: item.id, name: item.name, slot: item.slot } : null, decor: style ?? null, title: reward.title };
     });
     return { region: entry.region, title: entry.title, ...known, tiers };
   }
@@ -120,7 +125,8 @@ export function regionRewardRoutes({ db, content, clock, rewards }: RegionReward
 
   /**
    * Pays one reached tier: a ledger row `region:<id>:<tier>` (coins, XP, the item) and, for an item, the
-   * wearable into her cupboard, in one transaction under her profile lock. The (child, source) key pays a
+   * wearable into her cupboard or the souvenir style among her home styles, in one transaction under her
+   * profile lock. The (child, source) key pays a
    * tier once: claiming it again answers with `granted: false` and pays nothing. Refused: unknown region
    * (404), a tier not reached yet (409 `tier-not-reached`).
    */
@@ -135,7 +141,8 @@ export function regionRewardRoutes({ db, content, clock, rewards }: RegionReward
       if (state?.claimed) return { granted: false, xpBefore, xp: 0 };
       if (!state?.reached) throw new HttpError(409, 'tier-not-reached');
       const reward = tierReward(entry, tier);
-      if (!(await grantAward(tx, childId, regionRewardSource(entry.region, tier), reward, clock()))) return { granted: false, xpBefore, xp: 0 };
+      const award = { coin: reward.coin, xp: reward.xp, item: reward.item ?? reward.decor };
+      if (!(await grantAward(tx, childId, regionRewardSource(entry.region, tier), award, clock()))) return { granted: false, xpBefore, xp: 0 };
       return { granted: true, xpBefore, xp: reward.xp };
     });
     const level = (xp: number): number => levelFromXp(xp, content.levelCurve).level;

@@ -87,8 +87,8 @@ export interface ShopContext {
   wearables: ReadonlyMap<string, { shopOnly: boolean }>;
   /** Every piece of pet gear by id (left out: none, and any on sale is refused). */
   petGear?: ReadonlySet<string>;
-  /** Every home style by option id; `isDefault`: the house is built with it (always free). */
-  decor: ReadonlyMap<string, { isDefault: boolean }>;
+  /** Every home style by option id; `isDefault`: the house is built with it (always free); `souvenir`: earned in another map's chest, never sold. */
+  decor: ReadonlyMap<string, { isDefault: boolean; souvenir?: boolean }>;
   /** Pictures a booster or bundle may name; left out, they are not checked. */
   icons?: ReadonlySet<string>;
 }
@@ -122,6 +122,7 @@ export function buildShopCatalog(files: readonly ShopFile[], context: ShopContex
       const style = context.decor.get(listing.id);
       if (!style) issues.push(`shop item ${listing.id} is not a style of content/home/decor.json`);
       else if (style.isDefault) issues.push(`shop item ${listing.id} is a slot's default style, which stays free`);
+      else if (style.souvenir) issues.push(`shop item ${listing.id} is a souvenir, earned in its map's chest and never sold`);
     } else {
       if (context.icons && !context.icons.has(listing.icon)) issues.push(`shop item ${listing.id}: unknown picture ${listing.icon}`);
       if (listing.kind === 'bundle') {

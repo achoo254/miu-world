@@ -11,6 +11,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { solution } from '../../test/quest-solution';
 import { TEST_PIN, createTestApp, parentWithChild, type Agent, type TestApp, signedInWithoutPlayer } from '../../test/test-app';
 import { CONTENT_DIR } from '../content/content-dir';
+import { loadDecorCatalog } from '../home/home-decor-routes';
 import { childProfiles, questProgress, rewardLedger, shopInventory } from '../db/schema';
 import { loadRegionRewards, type RegionRewards } from './region-reward-catalog';
 
@@ -82,8 +83,15 @@ describe('region rewards', () => {
     expect(await state(agent)).toMatchObject({ lessonsDone: 1 });
   });
 
-  it('pays the half tier once half the lessons are done, at its own price whatever the client sends', async () => {
+  it('pays the half tier once half the lessons are done, at its own price whatever the client sends, and brings the souvenir home', async () => {
     const { agent, childId } = await playingChild();
+    const souvenir = forest.half.decor;
+    if (!souvenir) throw new Error('the forest brings no souvenir home');
+    const slot = loadDecorCatalog().slots.find((s) => s.options.some((o) => o.id === souvenir));
+    if (!slot) throw new Error(`no slot has ${souvenir}`);
+    const pick = () => agent.put('/api/home-decor').send({ choices: { [slot.id]: souvenir } });
+    expect(tier(await state(agent), 'half')?.decor).toMatchObject({ id: souvenir, slot: slot.name });
+    expect((await pick().expect(403)).body).toEqual({ error: 'decor-locked' });
     await finish(childId, ['quest-a']);
     expect((await claim(agent, 'half').expect(409)).body).toEqual({ error: 'tier-not-reached' });
     await finish(childId, ['quest-b'], 1);
@@ -93,7 +101,10 @@ describe('region rewards', () => {
     expect(res.progress.coins).toBe(forest.half.coin);
     expect(res.progress.xp).toBe(forest.half.xp);
     const rows = await app.db.select().from(rewardLedger).where(and(eq(rewardLedger.childId, childId), like(rewardLedger.source, 'region:%')));
-    expect(rows.map((r) => ({ source: r.source, coins: r.coins, xp: r.xp, items: r.items }))).toEqual([{ source: `region:${FOREST}:half`, coins: forest.half.coin, xp: forest.half.xp, items: {} }]);
+    expect(rows.map((r) => ({ source: r.source, coins: r.coins, xp: r.xp, items: r.items }))).toEqual([{ source: `region:${FOREST}:half`, coins: forest.half.coin, xp: forest.half.xp, items: { [souvenir]: 1 } }]);
+    // The souvenir is hers now: it is among the things she keeps, and her home takes it.
+    expect(await app.db.select({ itemId: shopInventory.itemId, qty: shopInventory.qty }).from(shopInventory).where(eq(shopInventory.childId, childId))).toEqual([{ itemId: souvenir, qty: 1 }]);
+    expect((await pick().expect(200)).body).toMatchObject({ choices: { [slot.id]: souvenir } });
     // Not the chest yet: one lesson is missing.
     expect((await claim(agent, 'full').expect(409)).body).toEqual({ error: 'tier-not-reached' });
   });
@@ -230,6 +241,18 @@ describe('region reward catalogue', () => {
     expect(() => loadRegionRewards(app.content.accessories, contentWith({ ...shipped, regions: [swapped, second, ...rest] }))).toThrow(/must say "unlock": \{ "region"/);
     expect(() => loadRegionRewards(app.content.accessories, contentWith({ ...shipped, regions: [second, ...rest] }))).toThrow(new RegExp(`open region ${first.region} has no chest`));
     expect(() => loadRegionRewards(app.content.accessories, contentWith({ ...shipped, regions: [{ ...first, full: { ...first.full, coin: 9000 } }, second, ...rest] }))).toThrow(/invalid content file/);
+  });
+
+  it('brings one souvenir of its own home from every open region but the home, given by its chest only', () => {
+    const decor = loadDecorCatalog();
+    expect(() => loadRegionRewards(app.content.accessories, CONTENT_DIR, undefined, decor)).not.toThrow();
+    const [first, second, ...rest] = shipped.regions.filter((r) => r.half.decor !== undefined);
+    if (!first || !second) throw new Error('fewer than two regions bring a souvenir');
+    const others = shipped.regions.filter((r) => r.half.decor === undefined);
+    const load = (regions: RegionRewardEntry[]) => () => loadRegionRewards(app.content.accessories, contentWith({ ...shipped, regions }), undefined, decor);
+    expect(load([{ ...first, half: { coin: first.half.coin, xp: first.half.xp } }, second, ...rest, ...others])).toThrow(new RegExp(`region ${first.region} brings nothing home`));
+    expect(load([{ ...first, half: { ...first.half, decor: second.half.decor } }, { ...second, half: { coin: 1, xp: 1 } }, ...rest, ...others])).toThrow(/the style must say "souvenir"/);
+    expect(load([{ ...first, half: { ...first.half, decor: 'bed-pink' } }, second, ...rest, ...others])).toThrow(/is not a souvenir style/);
   });
 
   it('refuses a chest for a region without a lesson when lessons are counted', () => {

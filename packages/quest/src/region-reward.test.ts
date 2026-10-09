@@ -55,16 +55,16 @@ describe('tier rewards', () => {
   const entry: RegionRewardEntry = {
     region: 'nui-tuyet',
     title: 'Bạn của tuyết',
-    half: { coin: 40, xp: 50 },
+    half: { coin: 40, xp: 50, decor: 'rug-snowflake' },
     full: { coin: 150, xp: 200, item: 'hat-ruong-nui-tuyet' },
     stars: { coin: 100, xp: 100, item: 'wings-ruong-nui-tuyet' },
     minigames: { coin: 50, xp: 40 },
   };
 
-  it('gives the title with the chest and the items with the chest and the stars', () => {
-    expect(tierReward(entry, 'full')).toEqual({ coin: 150, xp: 200, item: 'hat-ruong-nui-tuyet', title: 'Bạn của tuyết' });
-    expect(tierReward(entry, 'stars')).toEqual({ coin: 100, xp: 100, item: 'wings-ruong-nui-tuyet', title: null });
-    expect(tierReward(entry, 'half')).toEqual({ coin: 40, xp: 50, item: null, title: null });
-    expect(tierReward(entry, 'minigames')).toEqual({ coin: 50, xp: 40, item: null, title: null });
+  it('gives the title with the chest, the items with the chest and the stars, the souvenir halfway', () => {
+    expect(tierReward(entry, 'full')).toEqual({ coin: 150, xp: 200, item: 'hat-ruong-nui-tuyet', decor: null, title: 'Bạn của tuyết' });
+    expect(tierReward(entry, 'stars')).toEqual({ coin: 100, xp: 100, item: 'wings-ruong-nui-tuyet', decor: null, title: null });
+    expect(tierReward(entry, 'half')).toEqual({ coin: 40, xp: 50, item: null, decor: 'rug-snowflake', title: null });
+    expect(tierReward(entry, 'minigames')).toEqual({ coin: 50, xp: 40, item: null, decor: null, title: null });
   });
 });

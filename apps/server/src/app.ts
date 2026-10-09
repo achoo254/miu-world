@@ -126,7 +126,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(homeDecorRoutes({ db, content, clock, catalog: decor, shop }));
   api.use(homeObjectRoutes({ db, content, clock }));
   api.use(shopRoutes({ db, content, clock, shop }));
-  api.use(regionRewardRoutes({ db, content, clock, rewards: loadRegionRewards(content.accessories) }));
+  api.use(regionRewardRoutes({ db, content, clock, rewards: loadRegionRewards(content.accessories, undefined, undefined, decor), decor }));
   api.use(collectionRoutes({ db, content, clock }));
   api.use(petCareRoutes({ db, content, clock, events: characterEvents }));
   api.use(cookingRoutes({ db, content, clock }));

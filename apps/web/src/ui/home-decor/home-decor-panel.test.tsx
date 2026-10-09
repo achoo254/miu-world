@@ -1,4 +1,5 @@
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { resolveDecor } from '@miu/schema/home-decor';
 import { DECOR_CATALOG, changedPicks } from './decor-catalog';
@@ -108,7 +109,7 @@ describe('HomeDecorPanel', () => {
   });
 
   it('shows the styles sold in the shop locked with their price until bought; a saved one stays hers', async () => {
-    const bed = DECOR_CATALOG.slots.find((s) => s.id === 'bed')?.options ?? [];
+    const bed = DECOR_CATALOG.slots.find((s) => s.id === 'bed')?.options.filter((o) => o.souvenir === undefined) ?? [];
     const [sold, bought, kept] = bed.slice(-3).map((o) => o.id);
     if (!sold || !bought || !kept) throw new Error('the bed needs three styles');
     const { puts } = decorApi({ ...DEFAULTS, bed: kept }, { prices: { [sold]: 120, [bought]: 100, [kept]: 80 }, owned: [bought] });
@@ -123,6 +124,39 @@ describe('HomeDecorPanel', () => {
     fireEvent.click(byId(`decor-option-${bought}`));
     fireEvent.click(byId('decor-save'));
     await vi.waitFor(() => expect(puts).toEqual([{ choices: { bed: bought } }]));
+  });
+
+  it("shows another map's souvenir locked with the map's name until brought home, and the way there", async () => {
+    const slot = DECOR_CATALOG.slots.find((s) => s.side === 'inside' && s.options.some((o) => o.souvenir !== undefined));
+    const souvenir = slot?.options.find((o) => o.souvenir !== undefined);
+    if (!slot || !souvenir?.souvenir) throw new Error('no inside piece has a souvenir');
+    decorApi(DEFAULTS, { prices: {}, owned: [] });
+    render(
+      <MemoryRouter>
+        <HomeDecorPanel onClose={() => undefined} onSaved={() => undefined} />
+      </MemoryRouter>,
+    );
+    await screen.findByText('Giường');
+    fireEvent.click(byId(`decor-slot-${slot.id}`));
+    await vi.waitFor(() => expect(document.querySelector(`[data-id="decor-souvenir-${souvenir.id}"]`)).toBeTruthy());
+    fireEvent.click(byId(`decor-option-${souvenir.id}`));
+    expect(byId(`decor-option-${souvenir.id}`).getAttribute('aria-pressed')).toBe('false');
+    expect(byId('decor-hint').textContent).toContain('rương nửa đường');
+    expect(byId('decor-souvenir-go').getAttribute('href')).toBe(`/region/${souvenir.souvenir}`);
+  });
+
+  it('lets her pick a souvenir she brought home', async () => {
+    const slot = DECOR_CATALOG.slots.find((s) => s.side === 'inside' && s.options.some((o) => o.souvenir !== undefined));
+    const souvenir = slot?.options.find((o) => o.souvenir !== undefined);
+    if (!slot || !souvenir) throw new Error('no inside piece has a souvenir');
+    const { puts } = decorApi(DEFAULTS, { prices: {}, owned: [souvenir.id] });
+    render(<HomeDecorPanel onClose={() => undefined} onSaved={() => undefined} />);
+    await screen.findByText('Giường');
+    fireEvent.click(byId(`decor-slot-${slot.id}`));
+    await vi.waitFor(() => expect(document.querySelector(`[data-id="decor-souvenir-${souvenir.id}"]`)).toBeNull());
+    fireEvent.click(byId(`decor-option-${souvenir.id}`));
+    fireEvent.click(byId('decor-save'));
+    await vi.waitFor(() => expect(puts).toEqual([{ choices: { [slot.id]: souvenir.id } }]));
   });
 
   it('offers a retry when the picks cannot be read', async () => {

@@ -1,5 +1,7 @@
 import path from 'node:path';
 import type { PlayableQuest } from '@miu/schema/content';
+import { decorSouvenirs, type HomeDecorCatalog } from '@miu/schema/home-decor';
+import { HOME_MAP_ID } from '@miu/schema/multiplayer';
 import { RegionCatalog } from '@miu/schema/region';
 import { RegionRewardCatalog, regionRewardIssues, type RegionRewardEntry } from '@miu/schema/region-reward';
 import type { AccessoryItem } from '@miu/voxel/accessory-schema';
@@ -27,17 +29,24 @@ export function questsByRegion(quests: Iterable<PlayableQuest>, category: 'main'
 }
 
 /**
- * The chests checked against the regions and the wearables they give. A catalogue that does not fit the
- * content fails the boot (and `pnpm content:check`), never a request. `lessons`: lesson quests per region,
- * checked when given (the content check passes the shipped quests; the server's tests play fixture quests).
+ * The chests checked against the regions, the wearables and the souvenir home styles they give. A catalogue that
+ * does not fit the content fails the boot (and `pnpm content:check`), never a request. `lessons`: lesson quests
+ * per region, checked when given (the content check passes the shipped quests; the server's tests play fixture
+ * quests); `decor`: the home styles, whose souvenirs are checked when given.
  */
-export function loadRegionRewards(accessories: ReadonlyMap<string, AccessoryItem>, dir: string = CONTENT_DIR, lessons?: ReadonlyMap<string, number>): RegionRewards {
+export function loadRegionRewards(
+  accessories: ReadonlyMap<string, AccessoryItem>,
+  dir: string = CONTENT_DIR,
+  lessons?: ReadonlyMap<string, number>,
+  decor?: HomeDecorCatalog,
+): RegionRewards {
   const catalog = readContentJson(RegionRewardCatalog, path.join(dir, 'region-rewards.json'));
   const regions = readContentJson(RegionCatalog, path.join(dir, 'world/regions.json'));
   const issues = regionRewardIssues(catalog, {
     regions: new Map(regions.regions.map((r) => [r.id, { open: r.status === 'open' }])),
     wearables: new Map([...accessories.values()].map((item) => [item.id, { region: item.unlock?.region }])),
     lessons,
+    souvenirs: decor ? { styles: decorSouvenirs(decor), home: HOME_MAP_ID } : undefined,
   });
   if (issues.length > 0) throw new Error(`invalid region rewards: ${issues.join('; ')}`);
   return { minigameGoal: catalog.minigameGoal, entries: new Map(catalog.regions.map((entry) => [entry.region, entry])) };

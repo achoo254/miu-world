@@ -79,7 +79,7 @@
   box-shadow: var(--shadow-primary);
 }
 .decor-card-name { overflow-wrap: anywhere; }
-/* Sold in the shop and not bought yet: dimmed colours, the lock and the price. */
+/* Sold in the shop and not bought yet, or a keepsake not brought home yet: dimmed colours and the lock. */
 .decor-card--locked { background: var(--color-surface-faint); }
 .decor-card--locked .decor-swatch { opacity: 0.55; }
 .decor-card-price {
@@ -92,6 +92,8 @@
   color: var(--color-warning-ink);
   font: 800 var(--text-sm) var(--font-display);
 }
+/* A keepsake of another map not brought home yet: the lock and the map's name, in the water colours of the maps. */
+.decor-card-souvenir { background: var(--color-water-light); color: var(--color-ink); }
 /* The house's own style, marked so the child can always go back to it. */
 .decor-card-own { font-size: var(--text-sm); color: var(--color-ink-soft); }
 .decor-card-tick {

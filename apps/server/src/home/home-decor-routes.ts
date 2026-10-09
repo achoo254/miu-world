@@ -1,7 +1,7 @@
 import path from 'node:path';
 import { eq } from 'drizzle-orm';
 import { Router } from 'express';
-import { HomeDecor, HomeDecorCatalog, decorIssues, resolveDecor } from '@miu/schema/home-decor';
+import { HomeDecor, HomeDecorCatalog, decorIssues, decorSouvenirs, resolveDecor } from '@miu/schema/home-decor';
 import { activePlayerId, requireParent } from '../auth/auth-context';
 import { CONTENT_DIR } from '../content/content-dir';
 import { readContentJson, type ContentCatalog } from '../content/content-catalog';
@@ -29,11 +29,13 @@ export function loadDecorCatalog(dir: string = CONTENT_DIR): HomeDecorCatalog {
 /**
  * The selected child's home decor (mock panels 11 and 12): which style of each piece she picked. Picking is
  * play, done in the game with the same signed-in session, not behind the parent PIN. Only ids the catalogue
- * lists are kept, and a style sold in the shop only once she owns it (a style already saved stays hers); the
- * answer always names every slot (her pick, or the house's own style).
+ * lists are kept, and a style sold in the shop or a souvenir of another map's chest only once she owns it (a
+ * style already saved stays hers); the answer always names every slot (her pick, or the house's own style).
  */
 export function homeDecorRoutes({ db, content, clock, catalog = loadDecorCatalog(), shop }: HomeDecorRouteDeps): Router {
   const router = Router();
+  const souvenirs = decorSouvenirs(catalog);
+  const earned = (option: string): boolean => shop.paidDecor.has(option) || souvenirs.has(option);
 
   router.get('/home-decor', requireParent, async (_req, res) => {
     const childId = await activePlayerId(db, res, content.consent.version);
@@ -48,7 +50,7 @@ export function homeDecorRoutes({ db, content, clock, catalog = loadDecorCatalog
     const { choices } = parseInput(HomeDecor, req.body);
     if (decorIssues(catalog, choices).length > 0) throw new HttpError(400, 'invalid-input');
     const [row] = await db.select().from(homeDecor).where(eq(homeDecor.childId, childId));
-    const paid = Object.entries(choices).filter(([slot, option]) => shop.paidDecor.has(option) && row?.choices[slot] !== option);
+    const paid = Object.entries(choices).filter(([slot, option]) => earned(option) && row?.choices[slot] !== option);
     if (paid.length > 0) {
       const owned = await ownedItems(db, childId);
       if (paid.some(([, option]) => !owned.has(option))) throw new HttpError(403, 'decor-locked');

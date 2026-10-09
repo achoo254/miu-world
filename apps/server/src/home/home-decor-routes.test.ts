@@ -5,16 +5,16 @@ import { eq } from 'drizzle-orm';
 import { resolveDecor } from '@miu/schema/home-decor';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { createTestApp, parentWithChild, type Agent, type TestApp, signedInWithoutPlayer } from '../../test/test-app';
-import { homeDecor } from '../db/schema';
+import { homeDecor, shopInventory } from '../db/schema';
 import { loadDecorCatalog } from './home-decor-routes';
 
 const catalog = loadDecorCatalog();
 /** The house as built: every slot at its default. */
 const DEFAULTS = resolveDecor(catalog);
-/** A slot's options other than its default (the catalogue ships at least two per slot). */
+/** A slot's options other than its default and its souvenirs (the catalogue ships at least two per slot). */
 const other = (slotId: string, k = 0): string => {
   const slot = catalog.slots.find((s) => s.id === slotId);
-  const option = slot?.options.filter((o) => o.id !== slot.default)[k];
+  const option = slot?.options.filter((o) => o.id !== slot.default && o.souvenir === undefined)[k];
   if (!option) throw new Error(`no other option for ${slotId}`);
   return option.id;
 };
@@ -83,6 +83,20 @@ describe('home decor', () => {
     for (const body of bad) expect((await agent.put('/api/home-decor').send(body as object).expect(400)).body).toEqual({ error: 'invalid-input' });
     expect(await app.db.select().from(homeDecor).where(eq(homeDecor.childId, childId))).toEqual([]);
     expect((await agent.get('/api/home-decor').expect(200)).body).toEqual({ choices: DEFAULTS });
+  });
+
+  it("takes a souvenir of another map's chest only once she has it, and keeps it saved", async () => {
+    const slot = catalog.slots.find((s) => s.options.some((o) => o.souvenir !== undefined));
+    const souvenir = slot?.options.find((o) => o.souvenir !== undefined)?.id;
+    if (!slot || !souvenir) throw new Error('the catalogue has no souvenir');
+    const { agent, childId } = await playingChild();
+    expect((await agent.put('/api/home-decor').send({ choices: { [slot.id]: souvenir } }).expect(403)).body).toEqual({ error: 'decor-locked' });
+    expect(await app.db.select().from(homeDecor).where(eq(homeDecor.childId, childId))).toEqual([]);
+    await app.db.insert(shopInventory).values({ childId, itemId: souvenir, qty: 1 });
+    expect((await agent.put('/api/home-decor').send({ choices: { [slot.id]: souvenir } }).expect(200)).body).toEqual({ choices: { ...DEFAULTS, [slot.id]: souvenir } });
+    // Saving another slot later keeps it without asking again.
+    const another = slot.id === 'house' ? 'fence' : 'house';
+    expect((await agent.put('/api/home-decor').send({ choices: { [slot.id]: souvenir, [another]: other(another) } }).expect(200)).body).toMatchObject({ choices: { [slot.id]: souvenir } });
   });
 
   it('answers a saved pick the catalogue dropped since with the slot default', async () => {

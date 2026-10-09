@@ -9,6 +9,7 @@ import type { RegionRewardClaimResponse, RegionRewardsDto, RegionRewardTier, Reg
 import { mapBoth } from '../i18n/i18n';
 import { Bi, T, useT } from '../i18n/use-t';
 import { Icon } from '../kit/art';
+import { swatchStyle } from '../home-decor/decor-catalog';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
 import { ProgressBar, progressPercent } from '../kit/progress-bar';
@@ -57,6 +58,12 @@ function TierRow({ tier, busy, onClaim }: { tier: RegionRewardTierDto; busy: boo
           <Icon name="sparkles" size={20} />
           {tier.xp} XP
           {tier.item ? <img className="region-tier-item" src={rewardItemArt(tier.item.id)} alt={tier.item.name} title={tier.item.name} width={28} height={28} /> : null}
+          {tier.decor ? (
+            <span className="region-tier-decor" data-id={`region-tier-decor-${tier.tier}`} title={tier.decor.name}>
+              <span className="region-swatch" style={swatchStyle(tier.decor.swatch)} aria-hidden="true" />
+              <T k="reward.souvenir" params={{ name: tier.decor.name }} />
+            </span>
+          ) : null}
         </span>
       </div>
       {state === 'ready' ? (
@@ -98,6 +105,28 @@ export function ClaimCelebration({ claim, name, onClose }: { claim: RegionReward
             <strong>{tier.item.name}</strong>
             <span className="hint">
               <T k="reward.inWardrobe" />
+            </span>
+          </span>
+        </>
+      ),
+    });
+  }
+  if (tier.decor) {
+    rows.push({
+      id: 'decor',
+      className: 'region-claim-item',
+      content: (
+        <>
+          <span className="region-swatch region-claim-swatch" style={swatchStyle(tier.decor.swatch)} aria-hidden="true" />
+          <span>
+            <span className="badge">
+              <T k="reward.souvenirBadge" />
+            </span>
+            <strong>
+              {tier.decor.name} · {tier.decor.slot}
+            </strong>
+            <span className="hint">
+              <T k="reward.souvenirHint" />
             </span>
           </span>
         </>

@@ -34,12 +34,17 @@ const Text = z.string().trim().min(1).max(40);
 const TierReward = z.strictObject({ coin: z.number().int().min(0).max(500), xp: z.number().int().min(0).max(1000) });
 /** A tier with an exclusive wearable: an item of content/accessories marked `"unlock": { "region": <this region> }`. */
 const ItemTierReward = TierReward.extend({ item: ContentId });
+/**
+ * Half the lessons done also brings home a keepsake of the map (owner, 09/10/2026: the child plays only at home,
+ * so the other maps bring things home): a style of content/home/decor.json marked `"souvenir": <this region>`.
+ */
+const HalfTierReward = TierReward.extend({ decor: ContentId.optional() });
 
 export const RegionRewardEntry = z.strictObject({
   region: ContentId,
   /** The title the chest gives ("Nhà thám hiểm rừng xanh"), shown on Home and the region screen. */
   title: Text,
-  half: TierReward,
+  half: HalfTierReward,
   full: ItemTierReward,
   stars: ItemTierReward,
   minigames: TierReward,
@@ -64,12 +69,18 @@ export interface RegionRewardContext {
   wearables: ReadonlyMap<string, { region: string | undefined }>;
   /** Lesson quests per region; left out, not checked (the server's tests play fixture quests). */
   lessons?: ReadonlyMap<string, number>;
+  /**
+   * Souvenir home styles (option id → the region it is a keepsake of) and the home region, which needs none;
+   * left out, souvenirs are not checked.
+   */
+  souvenirs?: { styles: ReadonlyMap<string, string>; home: string };
 }
 
 /**
  * Problems of the catalogue against the content: every open region has a chest and only regions do; each
  * item is a wearable of its own region, given once; every region's wearable is given by its region's chest;
- * and, when lesson counts are known, every region has a lesson to play for it.
+ * when lesson counts are known, every region has a lesson to play for it; and, when souvenirs are known, every
+ * open region but the home brings one souvenir style of its own home, each given by its region's chest only.
  */
 export function regionRewardIssues(catalog: RegionRewardCatalog, context: RegionRewardContext): string[] {
   const issues: string[] = [];
@@ -87,6 +98,25 @@ export function regionRewardIssues(catalog: RegionRewardCatalog, context: Region
       given.set(item, entry.region);
     }
   }
+  if (context.souvenirs) {
+    const { styles, home } = context.souvenirs;
+    const brought = new Map<string, string>();
+    for (const entry of catalog.regions) {
+      const decor = entry.half.decor;
+      const open = context.regions.get(entry.region)?.open === true;
+      if (decor === undefined) {
+        if (open && entry.region !== home) issues.push(`region ${entry.region} brings nothing home: give its half tier a "decor" souvenir`);
+        continue;
+      }
+      if (entry.region === home) issues.push(`region ${entry.region} is the home itself and brings no souvenir`);
+      const of = styles.get(decor);
+      if (of === undefined) issues.push(`region ${entry.region} brings home ${decor}, which is not a souvenir style of content/home/decor.json`);
+      else if (of !== entry.region) issues.push(`region ${entry.region} brings home ${decor}: the style must say "souvenir": "${entry.region}"`);
+      if (brought.has(decor)) issues.push(`${decor} is brought home by two chests (${brought.get(decor) ?? ''}, ${entry.region})`);
+      brought.set(decor, entry.region);
+    }
+    for (const [id, region] of styles) if (brought.get(id) !== region) issues.push(`souvenir ${id} of ${region} is given by no chest of ${region}`);
+  }
   const listed = new Set(catalog.regions.map((r) => r.region));
   for (const [id, region] of context.regions) if (region.open && !listed.has(id)) issues.push(`open region ${id} has no chest in content/region-rewards.json`);
   for (const [id, wearable] of context.wearables) {
@@ -98,6 +128,10 @@ export function regionRewardIssues(catalog: RegionRewardCatalog, context: Region
 export const RegionRewardItemDto = z.object({ id: ContentId, name: z.string(), slot: z.string() });
 export type RegionRewardItemDto = z.infer<typeof RegionRewardItemDto>;
 
+/** A souvenir home style a tier brings: its name and the piece of the house it restyles (names as decor.json gives them). */
+export const RegionRewardDecorDto = z.object({ id: ContentId, name: z.string(), slot: z.string(), swatch: z.array(z.string()) });
+export type RegionRewardDecorDto = z.infer<typeof RegionRewardDecorDto>;
+
 /** One tier as the region screen shows it: what it asks (`goal`), how far she is, and what it gives. */
 export const RegionRewardTierDto = z.object({
   tier: RegionRewardTier,
@@ -108,6 +142,8 @@ export const RegionRewardTierDto = z.object({
   coin: z.number().int().min(0),
   xp: z.number().int().min(0),
   item: RegionRewardItemDto.nullable(),
+  /** The souvenir home style it brings (half tier). */
+  decor: RegionRewardDecorDto.nullable(),
   /** The full chest's title. */
   title: z.string().nullable(),
 });

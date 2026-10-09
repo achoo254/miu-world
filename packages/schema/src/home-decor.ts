@@ -28,6 +28,12 @@ export const DecorOption = z
     turn: z.number().optional(),
     /** Block names it paints the slot's parts with (role → block), for the house's own blocks. */
     blocks: z.record(Id, Id).optional(),
+    /**
+     * A keepsake of another map (owner, 09/10/2026: the child plays only at home, so the other maps bring
+     * things home): the region whose chest gives it (content/region-rewards.json `half.decor`). Picked only
+     * once earned; never sold, never a slot's default.
+     */
+    souvenir: Id.optional(),
   })
   .refine((o) => (o.models === undefined) !== (o.blocks === undefined), { message: 'an option places models or paints blocks, not both' });
 export type DecorOption = z.infer<typeof DecorOption>;
@@ -46,6 +52,7 @@ export const DecorSlot = z
     const ids = slot.options.map((o) => o.id);
     if (new Set(ids).size !== ids.length) ctx.addIssue({ code: 'custom', message: `slot ${slot.id}: option ids repeat` });
     if (!ids.includes(slot.default)) ctx.addIssue({ code: 'custom', message: `slot ${slot.id}: default ${slot.default} is not one of its options` });
+    if (slot.options.some((o) => o.id === slot.default && o.souvenir !== undefined)) ctx.addIssue({ code: 'custom', message: `slot ${slot.id}: default ${slot.default} is a souvenir, which must be earned` });
     const kinds = new Set(slot.options.map((o) => (o.models ? 'models' : 'blocks')));
     if (kinds.size > 1) ctx.addIssue({ code: 'custom', message: `slot ${slot.id}: every option places models, or every option paints blocks` });
     if (kinds.has('blocks')) {
@@ -66,6 +73,13 @@ export const HomeDecorCatalog = z
     if (new Set(ids).size !== ids.length) ctx.addIssue({ code: 'custom', message: 'slot ids repeat' });
   });
 export type HomeDecorCatalog = z.infer<typeof HomeDecorCatalog>;
+
+/** Every souvenir style of the catalogue: option id → the region whose chest gives it. */
+export function decorSouvenirs(catalog: HomeDecorCatalog): Map<string, string> {
+  const out = new Map<string, string>();
+  for (const slot of catalog.slots) for (const option of slot.options) if (option.souvenir !== undefined) out.set(option.id, option.souvenir);
+  return out;
+}
 
 /** A child's picks: slot id → option id. Slots left out keep the house's own style. */
 export const DecorChoices = z.record(Id, Id).refine((c) => Object.keys(c).length <= MAX_DECOR_SLOTS, { message: 'too many slots' });

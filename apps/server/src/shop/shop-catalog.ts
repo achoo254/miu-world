@@ -46,7 +46,7 @@ export function loadShopCatalog({ accessories, petGear }: ShopContent, decor: Ho
   const styles = new Map(decor.slots.flatMap((slot) => slot.options.map((option) => [option.id, { slot, option }] as const)));
   const { listings, issues } = buildShopCatalog(readShopFiles(dir), {
     wearables: new Map([...accessories.values()].map((item) => [item.id, { shopOnly: item.unlock?.shop === true }])),
-    decor: new Map([...styles].map(([id, { slot }]) => [id, { isDefault: slot.default === id }])),
+    decor: new Map([...styles].map(([id, { slot, option }]) => [id, { isDefault: slot.default === id, souvenir: option.souvenir !== undefined }])),
     petGear: new Set(petGear.keys()),
     icons,
   });

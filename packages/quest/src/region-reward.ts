@@ -57,16 +57,26 @@ export function regionTiers(facts: RegionFacts, minigameGoal: number, claimed: R
   });
 }
 
-/** The tier's reward in the catalogue: coins, XP, and the item and title it gives (if any). */
-export function tierReward(entry: RegionRewardEntry, tier: RegionRewardTier): { coin: number; xp: number; item: string | null; title: string | null } {
+/** What a tier pays: coins, XP, the wearable, the souvenir home style and the title it gives (if any). */
+export interface TierReward {
+  coin: number;
+  xp: number;
+  item: string | null;
+  decor: string | null;
+  title: string | null;
+}
+
+/** The tier's reward in the catalogue. */
+export function tierReward(entry: RegionRewardEntry, tier: RegionRewardTier): TierReward {
   switch (tier) {
     case 'full':
-      return { coin: entry.full.coin, xp: entry.full.xp, item: entry.full.item, title: entry.title };
+      return { coin: entry.full.coin, xp: entry.full.xp, item: entry.full.item, decor: null, title: entry.title };
     case 'stars':
-      return { coin: entry.stars.coin, xp: entry.stars.xp, item: entry.stars.item, title: null };
+      return { coin: entry.stars.coin, xp: entry.stars.xp, item: entry.stars.item, decor: null, title: null };
     case 'half':
+      return { coin: entry.half.coin, xp: entry.half.xp, item: null, decor: entry.half.decor ?? null, title: null };
     case 'minigames':
-      return { coin: entry[tier].coin, xp: entry[tier].xp, item: null, title: null };
+      return { coin: entry.minigames.coin, xp: entry.minigames.xp, item: null, decor: null, title: null };
   }
 }
 

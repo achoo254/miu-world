@@ -27,6 +27,7 @@ function forest(done: number, claimed: RegionRewardTier[] = [], stars = 0, sideR
     coin: 50,
     xp: 60,
     item: null,
+    decor: null,
     title: null,
     ...extra,
   });
@@ -38,13 +39,16 @@ function forest(done: number, claimed: RegionRewardTier[] = [], stars = 0, sideR
     lessonsThreeStar: stars,
     sideRuns,
     tiers: [
-      tier('half', 5, done),
+      tier('half', 5, done, { decor: RUG }),
       tier('full', 9, done, { coin: 170, xp: 235, item: HAT, title: 'Nhà thám hiểm rừng xanh' }),
       tier('stars', 9, stars, { item: WINGS }),
       tier('minigames', 10, sideRuns),
     ],
   };
 }
+
+/** The forest's souvenir home style, brought home by its halfway tier. */
+const RUG = { id: 'rug-forest', name: 'Lá rừng xanh', slot: 'Thảm', swatch: ['#2f6b3a', '#9fe07a'] };
 
 function stubServer(routes: Record<string, unknown>) {
   const fetchMock = vi.fn(async (input: string | URL | Request, init?: RequestInit) => {
@@ -119,6 +123,18 @@ describe('the region chest', () => {
     expect(document.querySelector('[data-id="region-tier-full"]')?.getAttribute('data-state')).toBe('claimed');
     expect(document.querySelector('[data-id="region-title"]')?.textContent).toBe('Nhà thám hiểm rừng xanh');
     expect(screen.queryByRole('button', { name: 'Mở rương khu vực' })).toBeNull();
+  });
+
+  it('shows the souvenir the halfway tier brings home, and where to put it once claimed', async () => {
+    const after = forest(5, ['half']);
+    const claim: RegionRewardClaimResponse = { ...after, claimed: 'half', granted: true, levelBefore: 1, levelAfter: 1, progress: PROGRESS };
+    stubServer({ [`GET /api/regions/${FOREST}/rewards`]: forest(5), [`POST /api/regions/${FOREST}/rewards/claim`]: claim });
+    renderAt(`/region/${FOREST}`);
+    expect((await screen.findByText('Quà cho nhà: Lá rừng xanh')).closest('[data-id="region-tier-decor-half"]')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Nhận thưởng' }));
+    const card = await screen.findByRole('dialog', { name: 'Chúc mừng!' });
+    expect(card.querySelector('[data-id="region-claim-decor"]')?.textContent).toContain('Lá rừng xanh · Thảm');
+    expect(card.querySelector('[data-id="region-claim-decor"]')?.textContent).toContain('Trang trí nhà');
   });
 
   it('says so kindly when the chest cannot be opened, and keeps the tiers', async () => {
