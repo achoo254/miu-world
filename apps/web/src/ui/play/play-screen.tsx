@@ -657,7 +657,7 @@ export function PlayScreen() {
                   }}
                 />
               )}
-              {covered || !atHome || !daily ? null : <DailyLessonChip lesson={daily} onGo={(next) => switchQuest(next, true)} />}
+              {hudCovered || !atHome || !daily ? null : <DailyLessonChip lesson={daily} onGo={(next) => switchQuest(next, true)} />}
             </Hud>
           </div>
         ) : null}
