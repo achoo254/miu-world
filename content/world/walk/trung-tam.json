@@ -4,7 +4,7 @@
   "size": [800,800],
   "height": 48,
   "levels": 3,
-  "sources": "90e955802d8b202dd439cf7db376366f6a7fa3e3dacc4431218446f09958925a",
+  "sources": "9917fe621af111e21ee9b975e6fc09871fb5e20738e2334c6bd2141e9899acd8",
   "places": [
     {"id":"arrival-ben-xe-1","kind":"arrival","at":[261.5,13,475.5]},
     {"id":"arrival-ben-xe-10","kind":"arrival","at":[404.5,13,526.5]},
@@ -45,7 +45,7 @@
     {"id":"cho-giao-dich","kind":"landmark","at":[260.5,13,450.5]},
     {"id":"cho-to-doi","kind":"landmark","at":[421.5,13,461.5]},
     {"id":"chu-dieu-hanh-le-hoi","kind":"npc","at":[398.5,13,461.5]},
-    {"id":"chu-do-chu-quang","kind":"npc","at":[260.5,13,450.5]},
+    {"id":"chu-do-chu-quang","kind":"npc","at":[259.5,13,445.5]},
     {"id":"cong-cho-phien","kind":"gate","at":[358.5,13,418.5]},
     {"id":"cong-dao-bi-an","kind":"gate","at":[442.5,13,418.5]},
     {"id":"cong-dich-chuyen","kind":"landmark","at":[404.5,13,421.5]},
@@ -63,7 +63,7 @@
     {"id":"dai-phun-san-truoc","kind":"landmark","at":[372.5,13,368.5]},
     {"id":"gau-mu-bao-ho","kind":"npc","at":[675.5,13,528.5]},
     {"id":"gau-truc-le-hoi","kind":"npc","at":[543.5,13,440.5]},
-    {"id":"heo-thu-ngan","kind":"npc","at":[255.5,13,446.5]},
+    {"id":"heo-thu-ngan","kind":"npc","at":[262.5,13,455.5]},
     {"id":"khi-tinh-nhanh","kind":"npc","at":[398.5,13,362.5]},
     {"id":"khu-giao-dich","kind":"landmark","at":[260.5,13,448.5]},
     {"id":"khu-hoc-tap","kind":"landmark","at":[210.5,13,632.5]},
@@ -113,6 +113,17 @@
     {"id":"st-lan-con-dau-lan-giay-khung-tre","kind":"object","at":[567.5,13,459.5]},
     {"id":"st-lan-con-dau-lan-giay-luc-lac","kind":"object","at":[508.5,13,417.5]},
     {"id":"st-lan-con-dau-lan-giay-trong-cai","kind":"object","at":[529.5,13,437.5]},
+    {"id":"st-voi-keo-mat-ong-bang-bao-gio","kind":"object","at":[283.5,13,430.5]},
+    {"id":"st-voi-keo-mat-ong-bo-que","kind":"object","at":[258.5,13,432.5]},
+    {"id":"st-voi-keo-mat-ong-can-hang","kind":"object","at":[283.5,13,467.5]},
+    {"id":"st-voi-keo-mat-ong-cong-thuc","kind":"object","at":[264.5,13,449.5]},
+    {"id":"st-voi-keo-mat-ong-gio-do-goi","kind":"object","at":[263.5,13,422.5]},
+    {"id":"st-voi-keo-mat-ong-hop-thu-keo","kind":"object","at":[294.5,13,429.5]},
+    {"id":"st-voi-keo-mat-ong-may-bay","kind":"object","at":[278.5,13,448.5]},
+    {"id":"st-voi-keo-mat-ong-may-quay-keo","kind":"object","at":[250.5,13,423.5]},
+    {"id":"st-voi-keo-mat-ong-thu-gau","kind":"object","at":[257.5,13,451.5]},
+    {"id":"st-voi-keo-mat-ong-thu-voi","kind":"object","at":[296.5,13,459.5]},
+    {"id":"st-voi-keo-mat-ong-thung-keo","kind":"object","at":[280.5,13,429.5]},
     {"id":"thap-dong-ho","kind":"landmark","at":[484.5,13,422.5]},
     {"id":"thu-vien","kind":"landmark","at":[592.5,13,322.5]},
     {"id":"trum-tt-ap-phich","kind":"object","at":[263.5,13,422.5]},
@@ -133,6 +144,6 @@
     {"id":"tt-tho-doi-truong","kind":"npc","at":[419.5,13,462.5]},
     {"id":"tt-ve-ngay-hoi","kind":"object","at":[385.5,13,457.5]},
     {"id":"voi-gac-san-truoc","kind":"npc","at":[372.5,13,369.5]},
-    {"id":"voi-keo-bong","kind":"npc","at":[254.5,13,452.5]}
+    {"id":"voi-keo-bong","kind":"npc","at":[253.5,13,446.5]}
   ]
 }
