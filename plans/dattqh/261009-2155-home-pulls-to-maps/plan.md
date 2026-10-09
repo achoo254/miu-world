@@ -1,6 +1,6 @@
 # Nhà của bé kéo bé sang các map khác
 
-Trạng thái: hoàn thành phần tự động (10/10/2026), chờ người sở hữu duyệt và yêu cầu deploy · Độ lớn: L · Nhánh: `main`
+Trạng thái: hoàn thành, đã lên production `20ccca23` (10/10/2026, người sở hữu yêu cầu) · Độ lớn: L · Nhánh: `main`
 
 ## Kết quả mong muốn
 
@@ -47,4 +47,4 @@ Hai phiên khác trên `main` (09/10): `miu-world-ad` sửa bot memory, schema.t
 
 ## Kết quả (10/10/2026)
 
-Pha 1–7 xong. Pha 5: "Kẹo bông gửi Gấu" (`yarn-voi-keo-mat-ong-1..3`, Trung tâm) và "Con vịt gỗ dẫn đàn" (`yarn-vit-go-dau-dan-1..3`, Nông trại; người kể Chó Lùa Vịt do Jev chọn, 0,93). CI lần đầu đỏ: các bước sau của hai chuyện chỉ vào nhân vật mời minigame, generator gắn chương và dời họ; sửa theo mẫu sẵn có (Jev 0,95): bước sau dùng đồ vật riêng của chuyện, sinh lại Trung tâm và Nông trại. Đồ lưu niệm thêm 11 model mà chưa sinh lại lưới chỗ đứng: đã chạy `pnpm world:walk` cho 12 map. Gate: `assets:check`, `content:check`, `typecheck`, `lint`, 13 tệp test liên quan (108 test), build web, `security:dist` đạt; không chạy toàn bộ `pnpm test` và E2E. Chưa deploy.
+Pha 1–7 xong. Pha 5: "Kẹo bông gửi Gấu" (`yarn-voi-keo-mat-ong-1..3`, Trung tâm) và "Con vịt gỗ dẫn đàn" (`yarn-vit-go-dau-dan-1..3`, Nông trại; người kể Chó Lùa Vịt do Jev chọn, 0,93). CI lần đầu đỏ: các bước sau của hai chuyện chỉ vào nhân vật mời minigame, generator gắn chương và dời họ; sửa theo mẫu sẵn có (Jev 0,95): bước sau dùng đồ vật riêng của chuyện, sinh lại Trung tâm và Nông trại. Đồ lưu niệm thêm 11 model mà chưa sinh lại lưới chỗ đứng: đã chạy `pnpm world:walk` cho 12 map. Gate: `assets:check`, `content:check`, `typecheck`, `lint`, 13 tệp test liên quan (108 test), build web, `security:dist` đạt; không chạy toàn bộ `pnpm test` và E2E. Deploy production `20ccca23` ngày 10/10/2026 theo yêu cầu người sở hữu: health ok, backup `before-261010-064025-20ccca23`.
