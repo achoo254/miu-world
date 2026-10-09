@@ -1,7 +1,8 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { memoryBotStore } from '../bot-store';
 import { decodeMemory, encodeMemory } from './memory-codec';
-import { MemoryKeeper, SAVE_EVERY_MS } from './memory-keeper';
+import { forGrid, MemoryKeeper, SAVE_EVERY_MS } from './memory-keeper';
+import type { WalkMap } from './walk-store';
 import { SCHOOL, schoolFleet, schoolMap, type Fleet, type FleetBot } from './school-fleet';
 
 /** Lets the store's promises settle (reads and writes are async, even in memory). */
@@ -83,7 +84,7 @@ describe("keeping a bot's memory of a map", () => {
     expect(bot.brain.memory.places.size).toBeGreaterThan(0);
   });
 
-  it('takes up a memory learnt on another walk grid with its places and values, not its ways', async () => {
+  it('takes up a memory learnt on another walk grid with its places, values and every way it still walks', async () => {
     const store = memoryBotStore();
     const before = schoolFleet(1);
     before.run(20);
@@ -97,18 +98,51 @@ describe("keeping a bot's memory of a map", () => {
     await settle();
     expect([...bot.brain.memory.places.keys()]).toEqual([...learnt.brain.memory.places.keys()]);
     for (const [id, p] of learnt.brain.memory.places) expect(bot.brain.memory.places.get(id)?.q).toBeCloseTo(p.q, 4);
-    expect(bot.brain.memory.links.size).toBe(0);
-    expect(bot.brain.memory.areasVisited).toBe(0);
+    // The map made again the same way: no way of it is broken, so none goes.
+    expect([...bot.brain.memory.links.keys()].sort()).toEqual([...learnt.brain.memory.links.keys()].sort());
+    expect(bot.brain.memory.areasVisited).toBe(learnt.brain.memory.areasVisited);
     expect(bot.brain.metrics.stepsDone).toBe(learnt.brain.metrics.stepsDone);
     // Written again, it is a memory of this grid.
     await live(after, keeper, 5);
     expect(store.worlds.get(`${bot.id}|${SCHOOL}`)?.gridVersion).toBe(schoolMap().map.sources);
   });
 
-  it('starts afresh from a memory it cannot read, logs only what went wrong, and its next write replaces it', async () => {
+  it('lets go of only the ways a map made again broke: a spot of it gone, or one of its places moved away', () => {
+    const fleet = schoolFleet(1);
+    fleet.run(20);
+    const snapshot = (fleet.bots[0] as FleetBot).brain.snapshot();
+    const links = snapshot.graph.links;
+    expect(links.length).toBeGreaterThan(3);
+    const map = schoolMap().map;
+    const [walledOff, moved] = links;
+    if (!walledOff || !moved) throw new Error('no ways learnt');
+    // A wall now stands on the middle point of one way, and the place another way ends at is now far off.
+    const at = Math.floor(walledOff.points.length / 6) * 3;
+    const wall = { x: walledOff.points[at], y: walledOff.points[at + 1], z: walledOff.points[at + 2] };
+    const remade = Object.create(map) as WalkMap;
+    Object.defineProperties(remade, {
+      sources: { value: 'a-grid-made-after' },
+      standAt: { value: (x: number, y: number, z: number) => (x === wall.x && y === wall.y && z === wall.z ? 0 : map.standAt(x, y, z)) },
+      places: { value: map.places.map((p) => (p.id === moved.b ? { ...p, at: [p.at[0] + 40, p.at[1], p.at[2] + 40] } : p)) },
+    });
+    const kept = forGrid(snapshot, map.sources, remade).graph.links;
+    const gone = links.filter((l) => !kept.includes(l));
+    expect(gone).toContain(walledOff);
+    expect(gone).toContain(moved);
+    for (const l of gone) {
+      const touchesWall = Array.from({ length: l.points.length / 3 }, (_, k) => k * 3).some((i) => l.points[i] === wall.x && l.points[i + 1] === wall.y && l.points[i + 2] === wall.z);
+      expect(touchesWall || l.a === moved.b || l.b === moved.b).toBe(true);
+    }
+    expect(kept.length).toBeGreaterThan(0);
+    // The same grid: everything as it was stored.
+    expect(forGrid(snapshot, map.sources, map)).toBe(snapshot);
+  });
+
+  it('learns afresh beside a memory it cannot read, logs only what went wrong, and never writes over it', async () => {
     const store = memoryBotStore();
     const secret = 'p-0123456789ab';
-    store.worlds.set(`bot-th-1|${SCHOOL}`, { gridVersion: 'x', memory: JSON.stringify({ v: 1, z: secret }) });
+    const unreadable = { gridVersion: 'x', memory: JSON.stringify({ v: 1, z: secret }) };
+    store.worlds.set(`bot-th-1|${SCHOOL}`, unreadable);
     const errors = vi.spyOn(console, 'error').mockImplementation(() => {});
     const fleet = schoolFleet(1);
     const bot = fleet.bots[0] as FleetBot;
@@ -118,12 +152,30 @@ describe("keeping a bot's memory of a map", () => {
     await settle();
     expect(keeper.ready(bot.id)).toBe(true);
     expect(bot.brain.memory.places.size).toBe(0);
-    expect(errors).toHaveBeenCalledWith('bot memory unreadable, starting afresh', bot.id, SCHOOL, expect.any(String));
+    expect(errors).toHaveBeenCalledWith('bot memory unreadable, kept as stored; this run is not written', bot.id, SCHOOL, expect.any(String));
     expect(JSON.stringify(errors.mock.calls)).not.toContain(secret);
     await live(fleet, keeper, 3);
+    expect(bot.brain.memory.places.size).toBeGreaterThan(0);
     await keeper.flush();
-    const row = store.worlds.get(`${bot.id}|${SCHOOL}`);
-    expect(decodeMemory(JSON.parse(row?.memory ?? 'null')).graph.places.length).toBe(bot.brain.memory.places.size);
+    await keeper.detach(bot.id);
+    expect(store.worlds.get(`${bot.id}|${SCHOOL}`)).toEqual(unreadable);
+  });
+
+  it('never writes over a memory another instance stored that it cannot read when it merges', async () => {
+    const store = memoryBotStore();
+    const fleet = schoolFleet(1);
+    const bot = fleet.bots[0] as FleetBot;
+    const key = `${SCHOOL}#p-aaaaaaaaaaaa|${bot.id}@p-aaaaaaaaaaaa`;
+    const keeper = new MemoryKeeper(store, fleet.now);
+    keep(keeper, bot, key, true);
+    await settle();
+    // Something this server cannot decode lands in the row while the bot walks; its merge leaves it as it is.
+    const unreadable = { gridVersion: 'x', memory: JSON.stringify({ v: 2, z: '' }) };
+    store.worlds.set(`${bot.id}|${SCHOOL}`, unreadable);
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+    fleet.run(5);
+    await keeper.detach(key);
+    expect(store.worlds.get(`${bot.id}|${SCHOOL}`)).toEqual(unreadable);
   });
 
   it("merges a bot's instances in two homes into one memory, each counted once, under the bot's own id", async () => {

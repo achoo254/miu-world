@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { eq, getTableColumns, sql } from 'drizzle-orm';
 import { emptyTimetable } from '@miu/schema/timetable';
@@ -120,5 +120,28 @@ describe('database schema', () => {
       const rows = await db.select().from(table).where(eq(table.parentId, parentId));
       expect(rows).toHaveLength(0);
     }
+  });
+});
+
+/** What the companion bots learnt: kept for good, so no migration may take any of it away. */
+const BOT_LEARNING_TABLES = ['bot_world_memories', 'bot_skills'];
+
+/** The statements of a migration that touch a bot-learning table and are not one of the few that only add. */
+function takingAway(migration: string): string[] {
+  return migration
+    .split(/--> statement-breakpoint|;/)
+    .map((statement) => statement.trim())
+    .filter((statement) => BOT_LEARNING_TABLES.some((table) => statement.includes(`"${table}"`)))
+    .filter((statement) => !/^(CREATE TABLE|CREATE (UNIQUE )?INDEX|ALTER TABLE "[a-z_]+" ADD (CONSTRAINT|COLUMN) )/i.test(statement));
+}
+
+describe('migrations', () => {
+  it('never drop, empty, rewrite or narrow what the companion bots learnt', () => {
+    expect(takingAway('DELETE FROM "bot_world_memories"')).toHaveLength(1);
+    expect(takingAway('ALTER TABLE "bot_skills" DROP COLUMN "xp"')).toHaveLength(1);
+    const folder = new URL('../../drizzle/', import.meta.url);
+    const files = readdirSync(folder).filter((name) => name.endsWith('.sql'));
+    expect(files.length).toBeGreaterThan(20);
+    for (const name of files) expect([name, takingAway(readFileSync(new URL(name, folder), 'utf8'))]).toEqual([name, []]);
   });
 });

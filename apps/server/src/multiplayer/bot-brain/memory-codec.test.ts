@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { deflateRawSync, inflateRawSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
 import { hashOf, personaOf, seeded } from '../bot-persona';
@@ -176,5 +177,16 @@ describe("a bot's memory written out and read back", () => {
     ];
     for (const raw of broken) expect(() => decodeMemory(raw)).toThrow();
     expect(() => decodeMemory(storedWith(columns))).not.toThrow();
+  });
+
+  it('still reads a memory stored in the first format, so no change to the codec makes what the bots learnt unreadable', () => {
+    // Frozen on purpose: a bot of the school after 20 simulated minutes, as stored. Never regenerate it; a new format
+    // gets its own file beside this one, and every older one must keep decoding.
+    const stored: unknown = JSON.parse(readFileSync(new URL('../../../test/fixtures/bot-memory-format-1.json', import.meta.url), 'utf8'));
+    const memory = decodeMemory(stored);
+    expect(memory.graph.places.length).toBe(200);
+    expect(memory.graph.links.length).toBe(200);
+    expect(memory.metrics.stepsDone).toBe(21);
+    expect(memory.metrics.tripsTotal).toBe(18);
   });
 });

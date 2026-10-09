@@ -1,15 +1,19 @@
 // Keeps what each companion bot learnt of each map in the database, so it goes on learning after a restart: read
 // when its instance comes in (it stands still until then), written at most every SAVE_EVERY_MS while it learns (each
 // bot at its own moment in that period, so they never all write at once), when its home closes, and once more when
-// the server stops (`flush`). A memory learnt on another walk grid keeps its places, values and numbers, not its
-// ways (the map changed: it finds its ways again). The instances of one bot in players' homes share one memory and
+// the server stops (`flush`). A memory learnt on another walk grid (the map was made again) keeps its places, values,
+// numbers and squares walked, and every way the new map still lets it walk; only a way the new map broke goes. The instances of one bot in players' homes share one memory and
 // merge into it (memory-merge.ts); so does a bot whose memory could not be read (nothing it writes replaces what is
-// there unread). A failed write is tried again at the next turn and never holds up the bots.
+// there unread). A stored memory that cannot be decoded (broken, or of a format this server no longer reads) is never
+// written over: the bot learns afresh in this run only, and what was stored waits as it is for a server that reads it.
+// A failed write is tried again at the next turn and never holds up the bots.
 import { hashOf } from '../bot-persona';
 import type { BotStore } from '../bot-store';
 import type { Brain, BrainSnapshot } from './brain';
 import { decodeMemory, encodeMemory } from './memory-codec';
 import { EMPTY_TALLY, mergeMemories, tallyOf, type MemoryTally } from './memory-merge';
+import type { SavedLink } from './memory-graph';
+import { PLACE_REACH } from './wander';
 import type { WalkMap } from './walk-store';
 
 /** A bot's memory is written at most this often (ms). */
@@ -32,6 +36,8 @@ interface Entry extends KeptBot {
   /** Its memory was read (or there was none): it may begin, and what it writes replaces the stored one. */
   ready: boolean;
   read: boolean;
+  /** Its stored memory could not be decoded: nothing it learns is written, so what is stored is never lost. */
+  keepsStored: boolean;
   savedRevision: number;
   /** Its counts as last written or read (merging adds only what it learnt since). */
   since: MemoryTally;
@@ -41,10 +47,26 @@ interface Entry extends KeptBot {
 
 const errorName = (err: unknown): string => (err instanceof Error ? err.name : typeof err);
 
-/** A memory stored for `gridVersion`, fitted to `map`: from another walk grid, its ways and squares walked go. */
+/**
+ * Whether a way learnt on another walk grid still goes on `map`: it still starts and ends at its two places (within
+ * reach of where they are now) and every point of it is still a spot to stand on.
+ */
+export function stillWalks(link: SavedLink, map: WalkMap): boolean {
+  const near = (id: string, x: number, z: number): boolean => {
+    const place = map.places.find((p) => p.id === id);
+    return place !== undefined && Math.hypot(place.at[0] - (x + 0.5), place.at[2] - (z + 0.5)) <= PLACE_REACH + 1;
+  };
+  const p = link.points;
+  const last = p.length - 3;
+  if (p.length < 6 || !near(link.a, p[0] ?? 0, p[2] ?? 0) || !near(link.b, p[last] ?? 0, p[last + 2] ?? 0)) return false;
+  for (let i = 0; i + 2 < p.length; i += 3) if (map.standAt(p[i] ?? 0, p[i + 1] ?? 0, p[i + 2] ?? 0) === 0) return false;
+  return true;
+}
+
+/** A memory stored for `gridVersion`, fitted to `map`: from another walk grid, only the ways it broke go. */
 export function forGrid(snapshot: BrainSnapshot, gridVersion: string, map: WalkMap): BrainSnapshot {
   if (gridVersion === map.sources) return snapshot;
-  return { ...snapshot, graph: { ...snapshot.graph, links: [], areas: [] } };
+  return { ...snapshot, graph: { ...snapshot.graph, links: snapshot.graph.links.filter((link) => stillWalks(link, map)) } };
 }
 
 export class MemoryKeeper {
@@ -65,6 +87,7 @@ export class MemoryKeeper {
       ...bot,
       ready: false,
       read: false,
+      keepsStored: false,
       savedRevision: bot.brain.revision,
       since: EMPTY_TALLY,
       nextSaveAt: this.now() + (hashOf(bot.key) % SAVE_EVERY_MS),
@@ -108,16 +131,16 @@ export class MemoryKeeper {
     return `${bot.botId}|${bot.mapId}`;
   }
 
-  /** The stored memory of the bot's map, fitted to the grid; null when there is none or it cannot be read. */
-  private async stored(bot: KeptBot): Promise<BrainSnapshot | null> {
+  /** The stored memory of the bot's map, fitted to the grid; null when there is none, 'unreadable' when it cannot be decoded. */
+  private async stored(bot: KeptBot): Promise<BrainSnapshot | null | 'unreadable'> {
     const row = await this.store.worldMemory(bot.botId, bot.mapId);
     if (!row) return null;
     try {
       return forGrid(decodeMemory(row.memory), row.gridVersion, bot.map);
     } catch (err) {
-      // Never its content in the log: the bot starts afresh, and its next write replaces it.
-      console.error('bot memory unreadable, starting afresh', bot.botId, bot.mapId, errorName(err));
-      return null;
+      // Never its content in the log.
+      console.error('bot memory unreadable, kept as stored; this run is not written', bot.botId, bot.mapId, errorName(err));
+      return 'unreadable';
     }
   }
 
@@ -125,7 +148,8 @@ export class MemoryKeeper {
     try {
       const stored = await this.stored(entry);
       if (this.entries.get(entry.key) !== entry) return;
-      if (stored) entry.brain.restore(stored);
+      if (stored === 'unreadable') entry.keepsStored = true;
+      else if (stored) entry.brain.restore(stored);
       entry.read = true;
       entry.since = tallyOf(entry.brain.snapshot());
     } catch (err) {
@@ -138,6 +162,7 @@ export class MemoryKeeper {
   }
 
   private save(entry: Entry): Promise<void> {
+    if (entry.keepsStored) return Promise.resolve();
     entry.saving = true;
     const revision = entry.brain.revision;
     const mine = entry.brain.snapshot();
@@ -146,6 +171,10 @@ export class MemoryKeeper {
       let memory = mine;
       if (entry.shared || !entry.read) {
         const stored = await this.stored(entry);
+        if (stored === 'unreadable') {
+          entry.keepsStored = true;
+          return;
+        }
         if (stored) memory = mergeMemories(stored, mine, entry.since, entry.map);
       }
       await this.store.saveWorldMemory(entry.botId, entry.mapId, entry.map.sources, encodeMemory(memory));
