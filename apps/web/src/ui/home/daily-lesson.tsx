@@ -47,7 +47,7 @@ export function DailyLessonCard({ data }: { data: PlayerData }) {
         <strong className="home-daily-lesson" data-id="home-daily-lesson">
           <Say text={titleOf(lesson.quest)} fill={fill} />
         </strong>
-        {textbook ? <TextbookRef textbook={textbook} dataId="home-daily-textbook" compact /> : null}
+        {textbook ? <TextbookRef textbook={textbook} dataId="home-daily-textbook" /> : null}
       </div>
       <Link to={playPath(lesson)} className={buttonClass('primary')} data-id="home-daily-go">
         <T k="daily.go" params={{ map: mapOf(lesson) }} />
