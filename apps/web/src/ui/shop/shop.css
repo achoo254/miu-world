@@ -3,7 +3,7 @@
  * grid of item cards with their prices, the close-up of one item. Values from tokens.css only; touch targets
  * ≥ 48px; four or five cards across on an iPad, two or three on a phone; the close-up stacks on a narrow screen.
  */
-.shop-modal { width: min(100%, 60rem); }
+.shop-modal { width: min(100%, 60rem); padding: var(--space-sm); border-radius: var(--radius-panel); background: var(--color-surface); box-shadow: var(--shadow-panel); }
 .shop-modal > * { min-width: 0; }
 
 .shop-hero {

@@ -80,6 +80,11 @@
 }
 @container (max-width: 30rem) {
   .world-marker--open .icon { display: none; }
+  /* A phone's island holds twelve names: smaller cards so neighbours never touch, each still taking a 44 px touch
+     through an invisible margin round it. */
+  .world-marker { min-height: 2rem; padding: 0.125rem var(--space-xs); font-size: 0.8125rem; line-height: 1.1; }
+  .world-marker--open { max-width: 4.75rem; }
+  .world-marker::after { content: ''; position: absolute; inset: -0.375rem; }
 }
 
 /* Wide island: every region is a two-line card like the mock (name, then subject or lock state). */

@@ -35,19 +35,21 @@ export function DailyLessonCard({ data }: { data: PlayerData }) {
   const textbook = textbookOf(lesson);
   return (
     <section className="panel home-daily" data-id="home-daily" aria-labelledby="home-daily-title">
-      <h2 id="home-daily-title" className="panel-title">
-        <Icon name="glowingStar" size={36} />
-        <T k="daily.title" />
-      </h2>
-      <p className="home-daily-where" data-id="home-daily-map">
-        <Icon name="map" size={24} />
-        <T k={lesson.state === 'in-progress' ? 'daily.resumeAt' : 'daily.at'} params={{ map: mapOf(lesson) }} />
-      </p>
-      {textbook ? <TextbookRef textbook={textbook} dataId="home-daily-textbook" /> : null}
-      <strong className="home-daily-lesson" data-id="home-daily-lesson">
-        <Say text={titleOf(lesson.quest)} fill={fill} />
-      </strong>
-      <Link to={playPath(lesson)} className={buttonClass('primary', { block: true })} data-id="home-daily-go">
+      {/* One row: what and where on the left, the way there on the right (it wraps under on a narrow phone). */}
+      <div className="home-daily-text">
+        <h2 id="home-daily-title" className="home-daily-title">
+          <Icon name="glowingStar" size={28} />
+          <T k="daily.title" />
+          <span className="home-daily-where" data-id="home-daily-map">
+            <T k={lesson.state === 'in-progress' ? 'daily.resumeAt' : 'daily.at'} params={{ map: mapOf(lesson) }} />
+          </span>
+        </h2>
+        <strong className="home-daily-lesson" data-id="home-daily-lesson">
+          <Say text={titleOf(lesson.quest)} fill={fill} />
+        </strong>
+        {textbook ? <TextbookRef textbook={textbook} dataId="home-daily-textbook" compact /> : null}
+      </div>
+      <Link to={playPath(lesson)} className={buttonClass('primary')} data-id="home-daily-go">
         <T k="daily.go" params={{ map: mapOf(lesson) }} />
       </Link>
     </section>

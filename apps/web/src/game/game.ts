@@ -760,6 +760,18 @@ export class Game {
     // Interaction prompt: React renders the label; the game reports which target is near (discrete)
     // and moves the anchor React registered (per frame, no React render).
     let promptTarget: InteractableObject | null = null;
+    /**
+     * Whether the label, its bottom centre at `at`, keeps clear of every HUD panel React registered. Read each frame
+     * a label shows (two boxes; moving the label by transform leaves layout clean), so a panel that just grew counts.
+     */
+    const labelClearOfHud = (at: { x: number; y: number }, width: number, height: number): boolean => {
+      const left = at.x - width / 2;
+      const top = at.y - height;
+      return store.getPromptAvoid().every((el) => {
+        const b = el.getBoundingClientRect();
+        return b.width === 0 || left > b.right || left + width < b.left || top > b.bottom || top + height < b.top;
+      });
+    };
     /** A villager or animal in reach when no quest target is: the child may chat with it or pet it. */
     let promptAmbient: AmbientTarget | null = null;
     /** An interactive furniture or prop object in reach (bed, chair, toilet, sink, stove, etc.). */
@@ -1299,7 +1311,9 @@ export class Game {
         const anchor = store.getPromptAnchor();
         if (anchor) {
           anchor.style.transform = `translate(-50%, -100%) translate(${anchorAt.x}px, ${anchorAt.y}px)`;
-          anchor.style.visibility = 'visible'; // hidden until first positioned: no flash at 0,0
+          // Hidden until first positioned (no flash at 0,0), and while it would sit under a HUD panel: the
+          // Interact button does the same, so the label never covers a panel's buttons nor hides under them.
+          anchor.style.visibility = labelClearOfHud(anchorAt, anchor.offsetWidth, anchor.offsetHeight) ? 'visible' : 'hidden';
         }
       }
       if (interact && promptTarget?.def.ride) {

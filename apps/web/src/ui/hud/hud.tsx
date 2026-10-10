@@ -174,7 +174,7 @@ export function Hud({
 }: {
   data: PlayerData;
   quest: QuestSummary | null;
-  /** A screen covers the paused game: Interact would only show through its backdrop. */
+  /** A screen covers the game: the whole HUD steps aside, so nothing of it shows through or under that screen. */
   covered?: boolean;
   onMenu: () => void;
   /** Opens this map's quest board over the game: every quest can be taken from there. */
@@ -184,14 +184,21 @@ export function Hud({
   children?: ReactNode;
 }) {
   const { t } = useT();
+  const store = useGameStore();
+  if (covered) return null;
+  // The prompt label over the world hides while it would sit under these panels (the game reads their boxes).
+  const avoid = (key: string) => (el: HTMLElement | null) => {
+    store.setPromptAvoid(key, el);
+    return () => store.setPromptAvoid(key, null);
+  };
   return (
     <>
-      <div className="hud-top-left">
+      <div className="hud-top-left" ref={avoid('hud-left')}>
         <PlayerBadge character={data.character} progress={data.progress} />
         <QuestTracker quest={quest} data={data} />
         {children}
       </div>
-      <nav className="hud-top-right" aria-label={t('hud.menuLabel')}>
+      <nav className="hud-top-right" aria-label={t('hud.menuLabel')} ref={avoid('hud-right')}>
         <button type="button" className={buttonClass('secondary', { small: true })} data-id="hud-quests" onClick={onQuests}>
           <Icon name="scroll" size={28} />
           <span className="hud-btn-label">
@@ -217,9 +224,9 @@ export function Hud({
           </span>
         </button>
       </nav>
-      {covered ? null : <InteractButton />}
-      {covered ? null : <RescueButton />}
-      {covered ? null : <RideButton />}
+      <InteractButton />
+      <RescueButton />
+      <RideButton />
     </>
   );
 }

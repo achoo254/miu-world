@@ -177,6 +177,7 @@ function GameView({
   trophies,
   objectStates,
   paused,
+  controlsHidden,
   onSpotReader,
   bosses,
   events,
@@ -205,6 +206,8 @@ function GameView({
   /** What she left switched on in her home (its map only); read when the game is (re)built, never rebuilding it. */
   objectStates?: Readonly<Record<string, true>>;
   paused: boolean;
+  /** A screen lies over the game (paused, or a board over the running game): its joystick, Run/Jump and minimap step aside. */
+  controlsHidden: boolean;
   /** Hands over a reader of where the child stands in the running game (null once it is gone), so a quest switch on the same map keeps the spot. */
   onSpotReader: (read: (() => PlayerPosition | null) | null) => void;
   /** The map's bosses for the minimap; read when the game is (re)built, never rebuilding it. */
@@ -273,7 +276,7 @@ function GameView({
     if (paused) game.current?.stop();
     else game.current?.resume();
   }, [paused]);
-  return <div ref={host} data-id="play-host" />;
+  return <div ref={host} data-id="play-host" data-covered={controlsHidden ? '' : undefined} />;
 }
 
 export function PlayScreen() {
@@ -617,7 +620,7 @@ export function PlayScreen() {
     <GameStoreContext.Provider value={store}>
       <main data-id="play">
         {data && positions && mapEvents && (!atHome || (decor !== null && homeObjects !== null && trophies !== null)) ? (
-          <GameView store={store} social={social} playerName={data.character.name} species={data.character.species} pet={data.character.pet} petGear={data.character.petGear ?? NO_GEAR} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={region} quest={quest?.quest.id} savedSpot={savedSpot} decor={atHome ? (decor ?? undefined) : undefined} trophies={atHome ? (trophies ?? undefined) : undefined} objectStates={atHome ? (homeObjects ?? undefined) : undefined} paused={covered} onSpotReader={onSpotReader} bosses={bosses} events={mapEvents} outing={atHome && daily ? (findRegion(daily.quest.region)?.name ?? null) : null} />
+          <GameView store={store} social={social} playerName={data.character.name} species={data.character.species} pet={data.character.pet} petGear={data.character.petGear ?? NO_GEAR} outfit={data.character.equipped} chapter={quest?.quest.chapter ?? 1} region={region} quest={quest?.quest.id} savedSpot={savedSpot} decor={atHome ? (decor ?? undefined) : undefined} trophies={atHome ? (trophies ?? undefined) : undefined} objectStates={atHome ? (homeObjects ?? undefined) : undefined} paused={covered} controlsHidden={covered || petCareOpen} onSpotReader={onSpotReader} bosses={bosses} events={mapEvents} outing={atHome && daily ? (findRegion(daily.quest.region)?.name ?? null) : null} />
         ) : null}
         {loadError ? (
           <div className="play-message" role="alert">

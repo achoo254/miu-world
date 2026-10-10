@@ -110,6 +110,9 @@ button.home-rail-item { border: 0; font-size: inherit; cursor: pointer; touch-ac
 .today-chevron { flex-shrink: 0; font-family: var(--font-display); font-weight: 800; font-size: var(--text-xl); line-height: 1; color: var(--color-ink-soft); }
 
 /* "Bài hôm nay": one lesson on another map each day, above today's quests. */
-.home-daily { display: flex; flex-direction: column; gap: var(--space-sm); padding: var(--space-lg); }
-.home-daily-where { display: flex; align-items: center; gap: var(--space-xs); margin: 0; color: var(--color-ink-soft); font-size: var(--text-sm); }
+.home-daily { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: var(--space-sm) var(--space-md); padding: var(--space-md) var(--space-lg); }
+.home-daily-text { display: flex; flex: 1 1 14rem; flex-direction: column; gap: var(--space-xs); min-width: 0; }
+.home-daily-title { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs) var(--space-sm); margin: 0; font-family: var(--font-display); font-size: var(--text-lg); font-weight: 800; }
+.home-daily-where { color: var(--color-ink-soft); font-family: var(--font-body); font-size: var(--text-sm); font-weight: 600; }
 .home-daily-lesson { font-family: var(--font-display); font-weight: 800; line-height: 1.2; }
+.home-daily > a { flex: 0 0 auto; }

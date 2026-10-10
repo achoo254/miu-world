@@ -181,6 +181,9 @@ export interface GameStore {
   /** React registers (or clears) the element the game positions under the active prompt each frame. */
   setPromptAnchor(el: HTMLElement | null): void;
   getPromptAnchor(): HTMLElement | null;
+  /** React registers (or clears, with null) a HUD panel by key; the prompt label hides while it would sit over one. */
+  setPromptAvoid(key: string, el: HTMLElement | null): void;
+  getPromptAvoid(): readonly HTMLElement[];
   /** React registers (or clears) the boss fight's anchors; the game positions them each frame while staged. */
   setDuelAnchors(anchors: DuelAnchors | null): void;
   getDuelAnchors(): DuelAnchors | null;
@@ -266,6 +269,7 @@ export function reduce(state: GameSnapshot, event: GameEvent): GameSnapshot {
 export function createGameStore(): GameStore {
   let snapshot = INITIAL_SNAPSHOT;
   let anchor: HTMLElement | null = null;
+  const avoid = new Map<string, HTMLElement>();
   let duelAnchors: DuelAnchors | null = null;
   const listeners = new Set<() => void>();
   const commandHandlers = new Set<(command: GameCommand) => void>();
@@ -285,6 +289,11 @@ export function createGameStore(): GameStore {
       anchor = el;
     },
     getPromptAnchor: () => anchor,
+    setPromptAvoid(key, el) {
+      if (el) avoid.set(key, el);
+      else avoid.delete(key);
+    },
+    getPromptAvoid: () => [...avoid.values()],
     setDuelAnchors(next) {
       duelAnchors = next;
     },

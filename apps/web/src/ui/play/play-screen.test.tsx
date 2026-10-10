@@ -233,9 +233,12 @@ describe('PlayScreen under React StrictMode', () => {
     expect(games.stops).toBeGreaterThan(stops);
     fireEvent.click(await screen.findByText('Thêm một tim'));
     fireEvent.click(screen.getByRole('button', { name: 'Mua ngay' }));
-    await vi.waitFor(() => expect(document.querySelector('[data-id="player-coins"]')?.textContent).toContain('70'));
+    await vi.waitFor(() => expect(screen.getByRole('dialog', { name: 'Cửa hàng' }).textContent).toContain('70'));
+    // The HUD steps aside under the shop and is back once it closes, with the coins left.
+    expect(document.querySelector('[data-id="player-coins"]')).toBeNull();
     fireEvent.click(screen.getByRole('button', { name: 'Đóng cửa hàng' }));
     expect(screen.queryByRole('dialog', { name: 'Cửa hàng' })).toBeNull();
+    expect(document.querySelector('[data-id="player-coins"]')?.textContent).toContain('70');
   });
 
   it("builds the child's home in her picks, opens the decorating screen from the notebook and rebuilds where she stands", async () => {

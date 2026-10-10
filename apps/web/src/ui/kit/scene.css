@@ -9,6 +9,9 @@
   align-items: center;
 }
 .modal-backdrop--scene.modal-backdrop--bottom { place-items: end center; }
+/* A centred scene (a question, an event, a shop) blurs what is behind it: the game or Home still shows, but no text or
+   button of the page underneath reads through the scene's own. A dialogue at the bottom keeps the world sharp. */
+.modal-backdrop--scene:not(.modal-backdrop--bottom) { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 
 .scene-modal {
   position: relative;
@@ -167,7 +170,8 @@
 .scene-sheet {
   padding: var(--space-md);
   border-radius: var(--radius-panel);
-  background: var(--color-surface-glass);
+  /* Solid: through a see-through board Home's names and cards read as part of the scene's own. */
+  background: var(--color-surface);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   box-shadow: var(--shadow-panel);
@@ -457,4 +461,11 @@
   from { transform: translate(0, 0) scale(0.4) rotate(0deg); opacity: 1; }
   70% { opacity: 1; }
   to { transform: translate(var(--burst-x), var(--burst-y)) scale(1.1) rotate(var(--burst-turn)); opacity: 0; }
+}
+
+/* A phone's short screen: the riddle's plaque and keys shrink (keys stay ≥ 44 px) so all four rows, 0 included,
+   show above the Hướng dẫn / Kiểm tra bar without scrolling. */
+@media (max-height: 800px) {
+  .scene-modal .riddle-plaque { padding: var(--space-sm) var(--space-lg); font-size: var(--text-title); }
+  .scene-modal .pin-key { min-height: 3.25rem; }
 }

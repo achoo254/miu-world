@@ -214,3 +214,9 @@
   80%  { opacity: 1; }
   100% { background-position: 12% 20%,  28% 30%,  44% 10%,  58% 25%,  70% 15%,  82% 22%,  35% 28%,  62% 18%;  opacity: 0; }
 }
+
+/* A screen lies over the game (a dialogue, a question, a board): the touch controls and the minimap step aside, so
+   nothing of the game shows under that screen's buttons. */
+[data-covered] #joystick,
+[data-covered] #actions,
+[data-covered] .minimap { display: none; }
