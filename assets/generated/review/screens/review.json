@@ -1,107 +1,72 @@
 {
-  "capturedFrom": "20ccca23562169dc5bf0bf1b1c2e478c0259296e",
-  "capturedAt": "2026-10-10T06:33:49+07:00",
-  "reviewedAt": "2026-10-10T06:34:39+07:00",
-  "reviewer": "phiên chính: so từng điểm ảnh với lần duyệt f9535fe9 (chỉ đổi nội dung chuyện và lưới chỗ đứng, không đổi giao diện); 360x740/11-reward và 16-backpack khác 16–20% do món sưu tập ngẫu nhiên (Tổ ong mật), đã xem lại: nút Tiếp, Quay lại game rõ, không đè, không cắt; các ảnh khác ≤ 1,8% trong cảnh 3D. Phát hiện giữ từ lần f9535fe9 (3 agent duyệt ở a87c9779)",
+  "capturedFrom": "d5bbb24caa9b7f4030555db2b624307523494041",
+  "capturedAt": "2026-10-10T07:57:53+07:00",
+  "reviewedAt": "2026-10-10T07:58:54+07:00",
+  "reviewer": "agent:general-purpose ×4 duyệt đủ 38 ảnh chụp ở 2eb76abf; sửa tên sách ở d5bbb24c rồi chụp lại: phiên chính so từng điểm ảnh (chỉ Home đổi như ý, còn lại ≤ 3,5% trong cảnh 3D; ba lô 360 đổi do món sưu tập ngẫu nhiên) và xem lại Home 820",
   "verdict": "pass",
   "findings": [
-    {
-      "shot": "360x740/04-home.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Các nhãn vùng trên đảo chạm mép nhau, chữ vẫn đọc được. Giống lần trước.",
-      "fixedIn": null
-    },
     {
       "shot": "360x740/07-play-hud.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Tên chương trên thẻ nhiệm vụ cắt bằng dấu ba chấm \"…Chương 1: Lá…\" (cả ở 08). Giống lần trước.",
+      "text": "Tên nhiệm vụ trên thẻ \"Nhiệm vụ hiện tại\" bị cắt thành \"Khu rừng bí mật – Chương 1: Lá…\" ở khổ 360 px (giống bản trước, không phải lỗi mới).",
       "fixedIn": null
     },
     {
-      "shot": "360x740/09-dialogue.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Khung thoại, nút Nghe lại và Tiếp nằm trên cần điều khiển và nút Chạy, Nhảy đã làm mờ; chữ và nút vẫn rõ. Giống lần trước.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/10-question.png",
+      "shot": "360x740/08-play-prompt.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Hàng phím có số 0 bị thanh Hướng dẫn/Kiểm tra che gần hết, phải cuộn khung phím. Giống lần trước.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/12-event-panel.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Bong bóng lời Cáo Mắt Sáng che tiêu đề thẻ sự kiện bên dưới; nút ✕ thấy rõ. Giống lần trước.",
+      "text": "Tên nhiệm vụ trên thẻ \"Nhiệm vụ hiện tại\" bị cắt thành \"Khu rừng bí mật – Chương 1: Lá…\" ở khổ 360 px (giống bản trước, không phải lỗi mới).",
       "fixedIn": null
     },
     {
       "shot": "360x740/13-olympiad-practice.png",
-      "kind": "shifted",
+      "kind": "missing-close",
       "severity": "note",
-      "text": "Ảnh chụp lúc panel đã cuộn xuống nên nút quay lại ở đầu panel ngoài khung (khổ 820x1180 thấy nút ←); nền trong mờ lộ nhãn bản đồ Home. Giống lần trước.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/14-boss.png",
-      "kind": "clipped",
-      "severity": "note",
-      "text": "Thanh máu trùm ngắt dòng: \"Hào\" và \"HP\" rớt xuống dòng riêng; vẫn đọc được. Giống lần trước.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/17-pet-care.png",
-      "kind": "off-screen",
-      "severity": "note",
-      "text": "Hàng nút thứ hai của bảng chăm sóc bị mép dưới cắt vài px; vẫn bấm được. Giống lần trước.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/17-pet-care.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Ảnh Mèo xám và thẻ thông tin đè lên thẻ nhiệm vụ và bản đồ nhỏ của HUD phía sau. Giống lần trước.",
+      "text": "Ảnh chụp lúc bảng thi thử đã cuộn xuống nên không thấy nút đóng; ảnh bảng sự kiện cùng cỡ màn vẫn có nút X ở góc trên, ảnh trước cũng chụp như vậy.",
       "fixedIn": null
     },
     {
       "shot": "360x740/18-party.png",
-      "kind": "overlap",
+      "kind": "clipped",
       "severity": "note",
-      "text": "Thẻ nhóm \"2/4\" che nửa trái nhãn \"Bông · Tương tác\"; nút Tương tác thật không bị che. Giống lần trước.",
+      "text": "Tên chương trên thẻ nhiệm vụ bị cắt bằng dấu ba chấm (\"Khu rừng bí mật – Chương 1: Lá...\"), giống ảnh trước; bấm nút ▲ thì xem được đầy đủ.",
       "fixedIn": null
     },
     {
       "shot": "820x1180/04-home.png",
-      "kind": "off-screen",
+      "kind": "other",
       "severity": "note",
-      "text": "Thẻ mới \"Bài hôm nay\" đẩy khối \"Nhiệm vụ hôm nay\" và nút Bắt đầu xuống dưới màn đầu, phải cuộn trang mới thấy; thẻ mới không đè, không cắt chữ.",
+      "text": "Thẻ \"Bài hôm nay\" giờ gọn trên một hàng như dự định, nhưng dòng sách mất tên sách \"Toán 2, tập một\" (chỉ còn \"Bài 1. Ôn tập các số đến 100\" và \"Trang 6–9\"), nên người chơi không biết bài này thuộc sách nào; nếu không cố ý bỏ thì nên giữ tên sách. Đã sửa: thẻ hiện lại dòng sách đầy đủ.",
+      "fixedIn": "d5bbb24c"
+    },
+    {
+      "shot": "820x1180/03-creator.png",
+      "kind": "missing-close",
+      "severity": "note",
+      "text": "Nút quay lại \"Về trang chủ\" chỉ là dòng chữ nhỏ không có nền nút, vùng chạm trông thấp hơn khoảng 44 px; lỗi này đã có từ bản trước, không phải do lần sửa này.",
       "fixedIn": null
     },
     {
-      "shot": "820x1180/09-dialogue.png",
+      "shot": "820x1180/11-reward.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Nút Tiếp che gần hết nút Nhảy, khung thoại đè lên cần điều khiển và nút Chạy. Giống lần trước.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/15-shop.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Sau bảng Cửa hàng, thẻ sự kiện Olympic của trang chủ lộ ra và bị dải \"Cửa hàng\" đè chữ; bảng Cửa hàng không dịch, không cắt.",
+      "text": "Vòng tròn ảnh Mèo chạm vào dòng chữ \"Khu rừng bí mật – Chương 1: Lá thần\" ngay chữ \"Chương\" làm chữ khó đọc; ảnh lần trước cũng bị vậy.",
       "fixedIn": null
     },
     {
       "shot": "820x1180/17-pet-care.png",
       "kind": "overlap",
-      "severity": "block",
-      "text": "Chip mới \"Bài hôm nay\" vẫn hiện khi mở bảng Chăm sóc thú cưng và bị ảnh thú cưng che chữ và vùng chạm (chip ẩn theo covered thay vì hudCovered). Đã sửa: chip ẩn theo hudCovered, ảnh chụp lại không còn chip.",
-      "fixedIn": "f9535fe9"
+      "severity": "note",
+      "text": "Hàng tab và hàng nút đá che gần hết con Mèo xám 3D ở giữa màn hình, và mũi tên chỉ đường màu vàng lòi ra sau tab \"Chăm sóc\"; ảnh lần trước cũng vậy.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/18-party.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "Nhãn \"Bông · Tương tác\" đè nhẹ lên mép trên bảng tên \"★ Bông\" phía trên đầu nhân vật; ảnh lần trước cũng vậy.",
+      "fixedIn": null
     }
   ]
 }

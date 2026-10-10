@@ -1,8 +1,8 @@
 {
   "viewport": "360x740",
-  "capturedFrom": "20ccca23562169dc5bf0bf1b1c2e478c0259296e",
+  "capturedFrom": "d5bbb24caa9b7f4030555db2b624307523494041",
   "uncommitted": [],
-  "capturedAt": "2026-10-10T06:33:49+07:00",
+  "capturedAt": "2026-10-10T07:57:53+07:00",
   "shots": [
     {
       "shot": "360x740/01-login.png",
@@ -53,12 +53,7 @@
       "status": "ok",
       "facts": {
         "offScreen": [],
-        "overlaps": [
-          "[data-id=\"home-region-khu-rung-bi-mat\"] × [data-id=\"home-region-nong-trai\"]",
-          "[data-id=\"home-region-khu-rung-bi-mat\"] × [data-id=\"home-region-nui-tuyet\"]",
-          "[data-id=\"home-region-lang-ven-song\"] × [data-id=\"home-region-xom-mai-am\"]",
-          "[data-id=\"home-region-trung-tam\"] × [data-id=\"home-region-cho-phien\"]"
-        ],
+        "overlaps": [],
         "missingClose": [],
         "clipped": [
           "h1.visually-hidden \"Trang chủ\" shows 1×1 of 143×43"
@@ -75,12 +70,7 @@
         "offScreen": [
           "[data-id=\"map-books-lang-ven-song\"] at 18,647–342,759"
         ],
-        "overlaps": [
-          "[data-id=\"map-region-khu-rung-bi-mat\"] × [data-id=\"map-region-nong-trai\"]",
-          "[data-id=\"map-region-khu-rung-bi-mat\"] × [data-id=\"map-region-nui-tuyet\"]",
-          "[data-id=\"map-region-lang-ven-song\"] × [data-id=\"map-region-xom-mai-am\"]",
-          "[data-id=\"map-region-trung-tam\"] × [data-id=\"map-region-cho-phien\"]"
-        ],
+        "overlaps": [],
         "missingClose": [],
         "clipped": [],
         "rawText": [],
@@ -150,14 +140,7 @@
         "offScreen": [],
         "overlaps": [],
         "missingClose": [],
-        "clipped": [
-          "[data-id=\"hud-tracker-quest\"] shows 224×23 of 245×23",
-          "span.hud-btn-label \"Bạn bè\" shows 1×1 of 56×23",
-          "span.hud-btn-label \"Nhiệm vụ\" shows 1×1 of 64×20",
-          "span.hud-btn-label \"Bản đồ\" shows 1×1 of 47×20",
-          "span.hud-btn-label \"Ba lô\" shows 1×1 of 34×20",
-          "span.hud-btn-label \"Menu\" shows 1×1 of 38×20"
-        ],
+        "clipped": [],
         "rawText": [],
         "small": []
       }
@@ -171,12 +154,6 @@
         "overlaps": [],
         "missingClose": [],
         "clipped": [
-          "[data-id=\"hud-tracker-quest\"] shows 224×23 of 245×23",
-          "span.hud-btn-label \"Bạn bè\" shows 1×1 of 56×23",
-          "span.hud-btn-label \"Nhiệm vụ\" shows 1×1 of 64×20",
-          "span.hud-btn-label \"Bản đồ\" shows 1×1 of 47×20",
-          "span.hud-btn-label \"Ba lô\" shows 1×1 of 34×20",
-          "span.hud-btn-label \"Menu\" shows 1×1 of 38×20",
           "[data-id=\"challenge-position\"] shows 1×1 of 83×27"
         ],
         "rawText": [],
@@ -192,12 +169,6 @@
         "overlaps": [],
         "missingClose": [],
         "clipped": [
-          "[data-id=\"hud-tracker-quest\"] shows 224×23 of 245×23",
-          "span.hud-btn-label \"Bạn bè\" shows 1×1 of 56×23",
-          "span.hud-btn-label \"Nhiệm vụ\" shows 1×1 of 64×20",
-          "span.hud-btn-label \"Bản đồ\" shows 1×1 of 47×20",
-          "span.hud-btn-label \"Ba lô\" shows 1×1 of 34×20",
-          "span.hud-btn-label \"Menu\" shows 1×1 of 38×20",
           "span.visually-hidden \"+100 XP\" shows 1×1 of 88×33",
           "span.visually-hidden \"+20 Xu\" shows 1×1 of 73×33"
         ],
@@ -283,20 +254,10 @@
       "screen": "17-pet-care",
       "status": "ok",
       "facts": {
-        "offScreen": [
-          "[data-id=\"pet-action-play\"] at 32,656–125,744",
-          "[data-id=\"pet-action-nap\"] at 133,656–227,744"
-        ],
+        "offScreen": [],
         "overlaps": [],
         "missingClose": [],
-        "clipped": [
-          "[data-id=\"hud-tracker-quest\"] shows 224×23 of 310×23",
-          "span.hud-btn-label \"Bạn bè\" shows 1×1 of 56×23",
-          "span.hud-btn-label \"Nhiệm vụ\" shows 1×1 of 64×20",
-          "span.hud-btn-label \"Bản đồ\" shows 1×1 of 47×20",
-          "span.hud-btn-label \"Ba lô\" shows 1×1 of 34×20",
-          "span.hud-btn-label \"Menu\" shows 1×1 of 38×20"
-        ],
+        "clipped": [],
         "rawText": [],
         "small": []
       }
@@ -307,9 +268,7 @@
       "status": "ok",
       "facts": {
         "offScreen": [],
-        "overlaps": [
-          "[data-id=\"play-prompt-player:p-c8fccfb40193\"] × [data-id=\"online-party-expand\"]"
-        ],
+        "overlaps": [],
         "missingClose": [],
         "clipped": [
           "[data-id=\"hud-tracker-quest\"] shows 224×23 of 245×23",
