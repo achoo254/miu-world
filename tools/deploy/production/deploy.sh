@@ -106,7 +106,7 @@ turn() {
 }
 
 # Google Analytics 4: the server sends anonymous usage events with this property and Measurement Protocol secret
-# (docs/deployment-guide.md). Staging never gets them, so its numbers never mix with production's.
+# (docs/deployment-guide.md). Only production sets them, so dev numbers never mix in.
 GA4_ENTRY='.tokens[] | select(.service == "analytics.google.com" and .used_by == "miu-world production") | .token'
 ga4_from_tokens() {
   local id sec

@@ -12,7 +12,7 @@ HERE="$(cd "$(dirname "$0")" && pwd)"
 NODE_MAJOR=22
 PG_STREAM=16
 
-# PostgreSQL 16 from the AppStream module (same major as staging); nothing else on .65 uses Postgres.
+# PostgreSQL 16 from the AppStream module; nothing else on .65 uses Postgres.
 if ! rpm -q postgresql-server >/dev/null 2>&1; then
   dnf -y -q module reset postgresql
   dnf -y -q module enable "postgresql:$PG_STREAM"

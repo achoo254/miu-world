@@ -1,6 +1,6 @@
 # Xem ảnh màn hình trước deploy
 
-Lỗi người chơi gặp nhiều nhất là lỗi nhìn thấy được: panel thiếu nút đóng, đảo Home bị đẩy xuống, nhãn Tương tác bị thẻ nhiệm vụ đè. E2E kiểm hành vi, không nhìn màn; vì vậy trước mỗi lần deploy (staging và production) các màn chính được chụp ở điện thoại dọc và iPad dọc, và một agent xem từng ảnh theo checklist dưới đây. Cổng deploy (`tools/deploy/release-gate.sh`, xem [`deployment-guide.md`](deployment-guide.md)) chỉ cho chạy khi ảnh mới và đã duyệt, không còn phát hiện mức `block`.
+Lỗi người chơi gặp nhiều nhất là lỗi nhìn thấy được: panel thiếu nút đóng, đảo Home bị đẩy xuống, nhãn Tương tác bị thẻ nhiệm vụ đè. E2E kiểm hành vi, không nhìn màn; vì vậy trước mỗi lần deploy production các màn chính được chụp ở điện thoại dọc và iPad dọc, và một agent xem từng ảnh theo checklist dưới đây. Cổng deploy (`tools/deploy/release-gate.sh`, xem [`deployment-guide.md`](deployment-guide.md)) chỉ cho chạy khi ảnh mới và đã duyệt, không còn phát hiện mức `block`.
 
 ## Chụp
 

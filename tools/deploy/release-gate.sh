@@ -1,4 +1,4 @@
-# Release gate shared by tools/deploy/{production,staging}/deploy.sh (sourced, not run): a release goes out only
+# Release gate sourced by tools/deploy/production/deploy.sh (not run on its own): a release goes out only
 # when the screens pictured before it were reviewed with no blocking finding, the code has not changed since they were
 # pictured, and CI passed on the commit pictured (docs/deployment-guide.md, docs/screen-review.md).
 #   MIU_RELEASE_FORCE="<reason>"  lets an urgent fix through (CI broken for a reason outside the code): the reason is

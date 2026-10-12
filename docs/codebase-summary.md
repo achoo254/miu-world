@@ -41,7 +41,7 @@ Chỉ để định hướng: bắt đầu đọc từ đâu, ai làm chủ vi�
 | E2E, đo hiệu năng | `apps/web/e2e/` | Phiên phụ huynh (`parent-session.setup.ts`), luồng tài khoản (`account-flow`), runtime (`play`), tạo nhân vật (`creator`), Home (`home`), quest (`quest-flow`), thử thách trên iPad (`challenges`), trọn vòng MVP (`mvp-loop`), ma trận CPU × chất lượng (`perf`); helper `quest-api.ts`, `touch.ts` |
 | Test bảo mật | `apps/server/src/security/`, `tools/security/` | Bảng endpoint (mọi route cần phiên trừ danh sách công khai), IDOR theo `:id`, dữ liệu trẻ chỉ là bộ đếm, quét đáp án trong bundle |
 | Hỗ trợ quyết định | `tools/decisions/jev-decide.py` | Gọi TypeSafe Jev, áp ngưỡng tự quyết/chuyển người |
-| Deploy staging | `tools/deploy/staging/`, `apps/server/bundle.ts` | Script setup/release, unit systemd, cấu hình nginx lab và edge; bundle server một file (xem `docs/deployment-guide.md`) |
+| Deploy production | `tools/deploy/production/`, `tools/deploy/release-gate.sh`, `apps/server/bundle.ts` | Script setup/release, unit systemd, cấu hình nginx, cổng release; bundle server một file (xem `docs/deployment-guide.md`) |
 | CI | `.github/workflows/ci.yml` | Bốn gate + `pnpm audit` + Semgrep trên push `main` và PR |
 | App web | `apps/web/src/main.tsx`, `apps/web/src/ui/app-shell.tsx`, `apps/web/vite.config.ts` | Shell React, router, CSP khi build, proxy `/api` |
 | Server | `apps/server/src/app.ts`, `apps/server/src/config.ts` | Express app (tách khỏi `listen` để test), config env validate bằng Zod |
