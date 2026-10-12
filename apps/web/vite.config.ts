@@ -10,6 +10,7 @@ import { SOUND_PATHS } from './src/ui/sound/cues.ts';
 import { MUSIC_PATHS } from './src/ui/sound/music.ts';
 import { UI_ART_PATHS } from './src/ui/kit/ui-art.ts';
 import { MINIGAME_SPRITE_PATHS } from './src/ui/minigame/sprites.ts';
+import { appIcons, APP_ICON_PATHS } from './vite-app-icons.ts';
 import { repoAssets } from './vite-repo-assets.ts';
 
 const APP_DIR = path.dirname(fileURLToPath(import.meta.url));
@@ -78,7 +79,7 @@ const publicHosts = (process.env.MIU_PUBLIC_HOSTS ?? '')
 export default defineConfig(({ mode }) => {
   const review = mode !== 'release';
   return {
-    plugins: [react(), contentSecurityPolicy(), repoAssets(ASSETS_DIR, APP_DIR, UI_PATHS, { review })],
+    plugins: [react(), contentSecurityPolicy(), appIcons(ASSETS_DIR), repoAssets(ASSETS_DIR, APP_DIR, [...UI_PATHS, ...APP_ICON_PATHS], { review })],
     define: assetVersionDefines(),
     publicDir: false,
     server: { proxy: apiProxy, allowedHosts: publicHosts },
