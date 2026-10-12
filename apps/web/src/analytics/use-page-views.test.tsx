@@ -78,4 +78,18 @@ describe('page views', () => {
     });
     expect(paths).toEqual(['/play', '/home']);
   });
+
+  it('counts an invite link as /moi: the code never goes to the server', () => {
+    const paths = stubFetch();
+    render(
+      <MemoryRouter initialEntries={['/moi/AAAAAAAAAAAAAAAAAAAAAA']}>
+        <Tracker />
+        <Navigator />
+      </MemoryRouter>,
+    );
+    act(() => {
+      vi.advanceTimersByTime(PAGE_SETTLE_MS);
+    });
+    expect(paths).toEqual(['/moi']);
+  });
 });

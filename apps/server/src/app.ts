@@ -18,6 +18,7 @@ import { progressRoutes } from './player/progress-routes';
 import type { PlayerEvents } from './player/player-events';
 import { playerSettingsRoutes } from './player/player-settings-routes';
 import { friendRoutes } from './friend/friend-routes';
+import { inviteRoutes } from './invite/invite-routes';
 import type { OnlineLookup } from './friend/friend-store';
 import type { ServerConfig } from './config';
 import { loadContentCatalog, type ContentCatalog } from './content/content-catalog';
@@ -131,6 +132,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(progressRoutes({ db, content, clock }));
   api.use(playerSettingsRoutes({ db, content, clock, events: playerEvents }));
   api.use(friendRoutes({ db, content, clock, events: playerEvents, online }));
+  api.use(inviteRoutes({ db, content, clock, events: playerEvents }));
   api.use(characterRoutes({ db, content, events: characterEvents }));
   api.use(playerPositionRoutes({ db, content, clock }));
   api.use(questRoutes({ db, content, clock, partyQuests }));

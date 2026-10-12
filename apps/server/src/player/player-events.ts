@@ -8,7 +8,7 @@ export type PlayerEvent =
   | { type: 'settings'; childId: string; settings: PlayerSettings }
   /**
    * `childId` (her character `who`) answered a friend request from `fromChildId` (a player, or a companion bot by
-   * `fromBotId`).
+   * `fromBotId`). Using a player's invite link is reported the same way, as accepted: `fromChildId` made the link.
    */
   | { type: 'friend-answered'; childId: string; who: { displayName: string; species: string }; fromChildId: string | null; fromBotId: string | null; accepted: boolean }
   /** A friendship ended (removed by either side, or by the account owner). */

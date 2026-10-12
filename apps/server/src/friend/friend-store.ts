@@ -9,7 +9,7 @@ import { characters, childProfiles, friendRequests, friendships, playerBlocks } 
 import { findBot } from '../multiplayer/bot-profiles';
 import { DEFAULT_CHARACTER_NAME } from '../player/player-routes';
 
-type Tx = Parameters<Parameters<Db['transaction']>[0]>[0];
+export type Tx = Parameters<Parameters<Db['transaction']>[0]>[0];
 
 export type RequestOutcome =
   | { kind: 'sent'; requestId: string }
@@ -46,7 +46,7 @@ const botLook = (botId: string): { displayName: string; species: string } => {
 };
 
 /** Locks both players' rows, in a fixed order, so two requests between the same pair run one after the other. */
-async function lockPlayers(tx: Tx, ids: string[]): Promise<void> {
+export async function lockPlayers(tx: Tx, ids: string[]): Promise<void> {
   for (const id of [...ids].sort()) await tx.select({ id: childProfiles.id }).from(childProfiles).where(eq(childProfiles.id, id)).for('update');
 }
 
@@ -75,6 +75,23 @@ async function befriend(tx: Tx, a: string, b: string): Promise<void> {
   await tx
     .delete(friendRequests)
     .where(or(and(eq(friendRequests.childId, a), eq(friendRequests.fromChildId, b)), and(eq(friendRequests.childId, b), eq(friendRequests.fromChildId, a))));
+}
+
+export type InviteBefriendOutcome = 'befriended' | 'already-friends' | 'blocked' | 'friends-full';
+
+/**
+ * Two players become friends because one used the other's invite link (no request to answer: the link was the
+ * invitation). Under the same locks a request and an answer take; a block either way, or a full friends list on
+ * either side, stops it, and friends already are left as they are, so using a link twice changes nothing. Any request
+ * waiting between the two is answered by it. `a` and `b` are different players.
+ */
+export async function befriendByInvite(tx: Tx, a: string, b: string): Promise<InviteBefriendOutcome> {
+  await lockPlayers(tx, [a, b]);
+  if (await blockedEitherWay(tx, a, b)) return 'blocked';
+  if (await isFriend(tx, a, b)) return 'already-friends';
+  if ((await friendCount(tx, a)) >= FRIENDS_MAX || (await friendCount(tx, b)) >= FRIENDS_MAX) return 'friends-full';
+  await befriend(tx, a, b);
+  return 'befriended';
 }
 
 async function isFriend(tx: Tx | Db, childId: string, friendChildId: string): Promise<boolean> {

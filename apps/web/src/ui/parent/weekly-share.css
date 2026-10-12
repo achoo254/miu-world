@@ -1,0 +1,4 @@
+/* The week's card in its dialog (weekly-share.tsx): the picture fits the dialog; every value comes from tokens.css. */
+.weekly-share-card { display: block; width: 100%; max-width: 26rem; height: auto; margin: 0 auto; border-radius: var(--radius-field); }
+.weekly-share-wait { display: grid; place-items: center; min-height: 12rem; }
+.weekly-share-open { justify-self: start; }

@@ -25,6 +25,7 @@ describe('robots.txt', () => {
     const robots = robotsTxt({ release: true });
     expect(robots).toContain('User-agent: *\nAllow: /\n');
     expect(robots).toContain('Disallow: /api/\n');
+    expect(robots).toContain('Disallow: /moi/\n');
     expect(robots).toContain('Sitemap: https://miu.hoandat.com/sitemap.xml\n');
     expect(robots).not.toMatch(/^Disallow:\s*\/\s*$/m);
   });

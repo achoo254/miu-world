@@ -5,6 +5,7 @@ import { AccountProvider } from './account-context';
 import { AppRoutes } from '../app-shell';
 import { PROGRESS, questList } from '../player/test-fixtures';
 import { playTarget, savePostLoginTarget, takePostLoginTarget } from '../../post-login-target';
+import { holdInvite } from '../friends/accept-invite';
 
 // jsdom has no WebGL: the runtime is covered by Playwright; here only its lifecycle is observed.
 const gameLifecycle = vi.hoisted(() => ({ started: 0, disposed: 0, outfit: [] as string[] }));
@@ -72,6 +73,7 @@ function renderAt(path: string) {
 
 afterEach(() => {
   cleanup();
+  holdInvite(null);
   vi.unstubAllGlobals();
 });
 
@@ -393,5 +395,57 @@ describe('account flow', () => {
     renderAt('/');
     expect(await screen.findByRole('link', { name: 'Bắt đầu' }, { timeout: 10000 })).toBeTruthy();
     expect(window.localStorage.getItem('miu.postLogin')).toBeNull();
+  }, 15000);
+
+  const INVITE = 'AbCdEfGhIjKlMnOpQrStUv';
+  const gameApi = {
+    'GET /api/auth/me': () => ({ status: 200, body: me({ activePlayerId: CHILD }) }),
+    'GET /api/character': () => ({ status: 200, body: { species: 'cat', name: 'Mochi', equipped: [] } }),
+    'GET /api/progress': () => ({ status: 200, body: PROGRESS }),
+    'GET /api/quests': () => ({ status: 200, body: questList() }),
+  };
+
+  it('keeps an invite link’s code through sign-in', async () => {
+    window.localStorage.clear();
+    stubApi({ 'GET /api/auth/me': () => ({ status: 401, body: { error: 'unauthenticated' } }) });
+    renderAt(`/moi/${INVITE}`);
+    fireEvent.click(await screen.findByRole('button', { name: 'Chơi cùng bạn' }));
+    expect(await screen.findByRole('heading', { name: 'Đăng nhập' })).toBeTruthy();
+    expect(takePostLoginTarget()).toEqual({ inviteCode: INVITE });
+  });
+
+  it('says so when an invite link is not a code', async () => {
+    window.localStorage.clear();
+    stubApi({ 'GET /api/auth/me': () => ({ status: 401, body: { error: 'unauthenticated' } }) });
+    renderAt('/moi/short');
+    expect(await screen.findByRole('alert')).toBeTruthy();
+    expect(screen.queryByRole('button', { name: 'Chơi cùng bạn' })).toBeNull();
+    expect(takePostLoginTarget()).toBeNull();
+  });
+
+  it('uses the invite once Home is reached, says who the new friend is, and goes on to the quest saved with it', async () => {
+    window.localStorage.clear();
+    savePostLoginTarget({ next: playTarget('khu-rung-bi-mat', 'forest-ch1'), inviteCode: INVITE });
+    const calls = stubApi({
+      ...gameApi,
+      [`POST /api/invites/${INVITE}/accept`]: () => ({ status: 200, body: { friend: { displayName: 'Cáo Cam', species: 'fox' }, already: false } }),
+    });
+    renderAt('/');
+    expect(await screen.findByText('Bạn và Cáo Cam đã là bạn bè trong Miu World!', {}, { timeout: 10000 })).toBeTruthy();
+    // The quest waits until she has read it.
+    expect(screen.queryByRole('button', { name: /Menu/ })).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'Tiếp tục' }));
+    expect(await screen.findByRole('button', { name: /Menu/ }, { timeout: 10000 })).toBeTruthy();
+    expect(calls.filter((c) => c.key === `POST /api/invites/${INVITE}/accept`)).toHaveLength(1);
+    expect(takePostLoginTarget()).toBeNull();
+  }, 20000);
+
+  it('tells a link that no longer works in one line', async () => {
+    window.localStorage.clear();
+    savePostLoginTarget({ inviteCode: INVITE });
+    stubApi({ ...gameApi, [`POST /api/invites/${INVITE}/accept`]: () => ({ status: 404, body: { error: 'not-found' } }) });
+    renderAt('/');
+    expect(await screen.findByText(/Link mời này không dùng được nữa/, {}, { timeout: 10000 })).toBeTruthy();
+    expect(screen.queryByRole('button', { name: 'Xem bạn bè' })).toBeNull();
   }, 15000);
 });

@@ -12,8 +12,10 @@ export const PAGE_SETTLE_MS = 400;
 export function usePageViews(): void {
   useState(visitAttribution);
   const { pathname } = useLocation();
+  // An invite link's code is for one person: the page is counted as `/moi` and the code never leaves the browser.
+  const counted = pathname.startsWith('/moi/') ? '/moi' : pathname;
   useEffect(() => {
-    const timer = setTimeout(() => trackPageView(pathname), PAGE_SETTLE_MS);
+    const timer = setTimeout(() => trackPageView(counted), PAGE_SETTLE_MS);
     return () => clearTimeout(timer);
-  }, [pathname]);
+  }, [counted]);
 }

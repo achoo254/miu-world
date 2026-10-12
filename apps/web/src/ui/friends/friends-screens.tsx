@@ -62,7 +62,7 @@ export function FriendsDialog({ social, voice = null, fill, player, onClose }: {
       <button type="button" className="scene-close" data-id="play-friends-close" aria-label={t('common.close')} onClick={onClose}>
         ✕
       </button>
-      <FriendsPanel source={OWN_SOCIAL} social={social} voice={voice} fill={fill} onGo={onClose} cacheKey={player ? ownFriendsKey(player) : undefined} />
+      <FriendsPanel source={OWN_SOCIAL} social={social} voice={voice} fill={fill} onGo={onClose} cacheKey={player ? ownFriendsKey(player) : undefined} invites />
     </Modal>
   );
 }
@@ -81,7 +81,7 @@ export function FriendsScreen() {
             <T k="common.back" />
           </Link>
         </header>
-        <FriendsPanel source={OWN_SOCIAL} />
+        <FriendsPanel source={OWN_SOCIAL} invites />
       </main>
     </SkyScene>
   );

@@ -82,3 +82,9 @@
 }
 .reward-skill-gift-coin { display: inline-flex; align-items: center; gap: var(--space-xs); color: var(--color-wood-edge); }
 .reward-skill-gift-item { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs); width: 100%; }
+
+/* "Khoe kết quả" under the stars: a quiet second button; the vở page stays the screen's first job. */
+.share-result { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-xs) var(--space-sm); margin-top: var(--space-sm); }
+.share-result-invite { display: inline-flex; align-items: center; gap: var(--space-xs); min-height: 3rem; font-size: var(--text-sm); }
+.share-result-invite input { width: 1.5rem; height: 1.5rem; }
+.share-result .hint, .share-result .error { flex: 1 1 100%; margin: 0; text-align: center; }

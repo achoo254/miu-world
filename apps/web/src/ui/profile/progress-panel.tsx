@@ -10,6 +10,7 @@ import { T, useT } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { ProgressBar } from '../kit/progress-bar';
+import { WeeklyShare } from '../parent/weekly-share';
 import { useLoaded } from '../progression/progression-api';
 import './progress.css';
 
@@ -61,8 +62,11 @@ function WeekBars({ progress }: { progress: PlayerProgressDto }) {
   );
 }
 
-/** The progress itself; `playable`: the lessons link into the game (the player's own view, not the owner's). */
-export function ProgressView({ progress, playable, dataId }: { progress: PlayerProgressDto; playable: boolean; dataId: string }) {
+/**
+ * The progress itself; `playable`: the lessons link into the game (the player's own view, not the owner's);
+ * `shareWeek`: the account owner can send on the week's card (the owner's view).
+ */
+export function ProgressView({ progress, playable, dataId, shareWeek = false }: { progress: PlayerProgressDto; playable: boolean; dataId: string; shareWeek?: boolean }) {
   const { t } = useT();
   const { counts } = progress;
   return (
@@ -131,13 +135,14 @@ export function ProgressView({ progress, playable, dataId }: { progress: PlayerP
       <section className="progress-block" aria-label={t('progress.time')}>
         <h3 className="progress-block-title"><Icon name="mantelpieceClock" size={24} /> <T k="progress.time" /></h3>
         <WeekBars progress={progress} />
+        {shareWeek ? <WeeklyShare progress={progress} /> : null}
       </section>
     </div>
   );
 }
 
 /** Loads and shows a progress view, with a retry when the read fails. */
-export function ProgressLoader({ load, playable, dataId }: { load: () => Promise<PlayerProgressDto>; playable: boolean; dataId: string }) {
+export function ProgressLoader({ load, playable, dataId, shareWeek = false }: { load: () => Promise<PlayerProgressDto>; playable: boolean; dataId: string; shareWeek?: boolean }) {
   const { data, failed, retry } = useLoaded(load);
   if (failed) {
     return (
@@ -156,7 +161,7 @@ export function ProgressLoader({ load, playable, dataId }: { load: () => Promise
       </p>
     );
   }
-  return <ProgressView progress={data} playable={playable} dataId={dataId} />;
+  return <ProgressView progress={data} playable={playable} dataId={dataId} shareWeek={shareWeek} />;
 }
 
 /** Hồ sơ: the selected player's own progress. */
@@ -175,5 +180,5 @@ export function OwnProgressPanel() {
 /** The account area's view of one player (loaded when opened). */
 export function PlayerProgress({ playerId }: { playerId: string }) {
   const load = useCallback(() => loadPlayerProgress(playerId), [playerId]);
-  return <ProgressLoader load={load} playable={false} dataId={`player-progress-${playerId}`} />;
+  return <ProgressLoader load={load} playable={false} dataId={`player-progress-${playerId}`} shareWeek />;
 }

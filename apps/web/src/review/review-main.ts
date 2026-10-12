@@ -559,7 +559,7 @@ const SCREEN_NAMES: Record<string, string> = {
   '08-play-prompt': 'Chơi: nhãn Tương tác cạnh mục tiêu',
   '09-dialogue': 'Lời thoại',
   '10-question': 'Câu hỏi (Hướng dẫn, Gợi ý, Đáp án)',
-  '11-reward': 'Màn thưởng',
+  '11-reward': 'Màn thưởng (có nút Khoe kết quả)',
   '12-event-panel': 'Panel sự kiện Olympic',
   '13-olympiad-practice': 'Luyện tập Olympic',
   '14-boss': 'Trận trùm (câu hỏi dài)',
@@ -570,6 +570,9 @@ const SCREEN_NAMES: Record<string, string> = {
   '19-worksheets': 'Phiếu viết (khu phụ huynh)',
   '20-landing': 'Giới thiệu (chưa đăng nhập)',
   '21-lesson-page': 'Trang bài học (HTML tĩnh)',
+  '22-friends-invite': 'Bạn bè: tab Mời bạn',
+  '23-invite-page': 'Trang link mời (chưa đăng nhập)',
+  '24-weekly-share': 'Thẻ tổng kết tuần (khu phụ huynh)',
 };
 
 /** The screens pictured before a release, phone and iPad side by side, with the agent's findings under each. */

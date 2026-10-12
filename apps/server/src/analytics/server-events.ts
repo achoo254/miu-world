@@ -1,5 +1,6 @@
 // The usage events only the server emits: an account's first consent (`sign_up`), a player's first quest
-// (`tutorial_complete`) and every quest finished (`level_end`), and the hour's peak of players online (`ccu_peak`).
+// (`tutorial_complete`) and every quest finished (`level_end`), an invite link used (`invite_accepted`), and the
+// hour's peak of players online (`ccu_peak`).
 // Each one goes to the GA user and visit of the web app the account or player last used (its `x-miu-ga` ids, kept in
 // memory); without them it gets a random GA id of its own. Parameters are labels from the catalogue or numbers, never
 // a name or an id of an account or a player. The running server installs one instance at start; with none installed
@@ -72,6 +73,11 @@ export class ServerEvents {
     if (subject) params.subject = subject;
     if (first) this.emit(ids, 'tutorial_complete', params);
     this.emit(ids, 'level_end', params);
+  }
+
+  /** A player used an invite link and became a friend of the one who made it (`childId` is the one who used it). */
+  inviteAccepted(childId: string): void {
+    this.emit(this.sessions.forPlayer(childId), 'invite_accepted', {});
   }
 
   /** The most players (people, not companion bots) online at once in the hour just ended. */

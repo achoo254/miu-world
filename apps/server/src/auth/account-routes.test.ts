@@ -167,6 +167,8 @@ describe('account deletion', () => {
     ]);
     await app.db.insert(t.friendRequests).values({ id: randomUUID(), childId: second.id, fromChildId: childId });
     await app.db.insert(t.playTime).values({ childId, weekStart: '2026-09-28', seconds: 600 });
+    // An invite link one of them made and the other used.
+    await app.db.insert(t.playerInvites).values({ id: randomUUID(), codeHash: randomUUID(), childId, expiresAt: new Date(Date.now() + 86_400_000), acceptedAt: new Date(), acceptedBy: second.id });
     const before = await rowsOf(parentId, [childId, second.id]);
     // Every table holds something of this family, so a table the delete misses fails below.
     expect(Object.entries(before).filter(([, n]) => n === 0)).toEqual([]);

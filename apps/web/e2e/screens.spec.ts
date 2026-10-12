@@ -77,7 +77,7 @@ test.afterAll(() => {
 for (const viewport of VIEWPORTS) {
   const size = `${viewport.width}x${viewport.height}`;
   test(`the main screens on ${size}`, async ({ browser, baseURL }) => {
-    // Twenty-one screens, eight game loads and a second player: several minutes on a dev machine.
+    // Twenty-four screens, eight game loads and a second player: several minutes on a dev machine.
     test.setTimeout(15 * 60_000);
     const base = baseURL ?? '';
     const headers = { Origin: new URL(base).origin };
@@ -121,6 +121,12 @@ for (const viewport of VIEWPORTS) {
       await outPage.goto('/bai/toan-2-bai-1-on-tap-cac-so-den-100/');
       await expect(outPage.getByRole('heading', { level: 1, name: /Trò chơi ôn Bài 1/ })).toBeVisible();
       await expect(outPage.locator('[data-id="lesson-play"]')).toBeVisible();
+    });
+    // An invite link's page: the same for any code of the right shape (the server is asked only after sign-in).
+    await capture(outPage, '23-invite-page', async () => {
+      await outPage.goto('/moi/AbCdEfGhIjKlMnOpQrStUv');
+      await expect(outPage.getByRole('heading', { level: 1, name: 'Bạn được mời chơi Miu World' })).toBeVisible();
+      await expect(outPage.locator('[data-id="invite-play"]')).toBeVisible();
     });
     await out.close();
 
@@ -178,6 +184,8 @@ for (const viewport of VIEWPORTS) {
       // The XP counts up on screen: pictured once it reaches what the server paid.
       const xp = page.locator('[data-id="reward-xp"]');
       await expect(xp.locator('span[aria-hidden="true"]')).toHaveText(`+${(await xp.getAttribute('data-value')) ?? ''} XP`);
+      // Under the stars, the quiet second button: the vở page came first, this one only offers to show the result off.
+      await expect(page.locator('[data-id="share-result-button"]')).toBeVisible();
     });
     await capture(page, '12-event-panel', async () => {
       await page.goto('/home');
@@ -240,6 +248,24 @@ for (const viewport of VIEWPORTS) {
       await page.getByLabel('Nhập mã PIN tài khoản').fill('2468');
       await page.getByLabel('Nhập mã PIN tài khoản').press('Enter');
       await expect(page.getByRole('heading', { name: 'Tiếng Việt 2, tập một' })).toBeVisible();
+    });
+    await capture(page, '22-friends-invite', async () => {
+      await page.goto('/friends');
+      await page.getByRole('tab', { name: 'Mời bạn' }).click();
+      await page.locator('[data-id="invite-create"]').click();
+      // The link just made, in its field, with the way to send it.
+      await expect(page.locator('[data-id^="invite-link-"]')).toBeVisible();
+      await expect(page.locator('[data-id^="invite-share-"]')).toBeVisible();
+    });
+    await capture(page, '24-weekly-share', async () => {
+      // The parents' area is still open from the worksheets (the PIN window); the card is the player's week.
+      const me = (await (await page.context().request.get('/api/auth/me')).json()) as { activePlayerId: string };
+      await page.goto('/parent');
+      await page.locator(`[data-id="player-care-toggle-${me.activePlayerId}"]`).click();
+      await page.locator('[data-id="weekly-share-open"]').click();
+      await expect(page.locator('[data-id="weekly-share-card"]')).toBeVisible();
+      // The card is drawn before the screen is pictured.
+      await expect.poll(() => page.locator('[data-id="weekly-share-card"]').evaluate((img) => (img as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
     });
     await context.close();
 

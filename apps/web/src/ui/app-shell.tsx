@@ -11,6 +11,8 @@ import { bindLangProfile } from './i18n/i18n';
 import { T } from './i18n/use-t';
 import { ParentAreaScreen } from './account/parent-area-screen';
 import { PlayStartScreen, ProfilePickerScreen } from './account/profile-screens';
+import { AcceptInvite, holdInvite, useHeldInvite } from './friends/accept-invite';
+import { InviteScreen } from './friends/invite-screen';
 import { LoginScreen, RegisterScreen, SetPinScreen } from './account/sign-in-screens';
 import { LandingScreen } from './landing/landing-screen';
 import { PrivacyScreen } from './legal/privacy-screen';
@@ -107,18 +109,30 @@ function LandingOrStart() {
 }
 
 /**
- * A visitor who left a page outside the game to play (a lesson page's "Chơi bài này") is taken there once Home is
- * reached: by then they are signed in, have given consent and made their character, as the way to Home requires.
+ * A visitor who left a page outside the game to play (a lesson page's "Chơi bài này", an invite link) is taken there once
+ * Home is reached: by then they are signed in, have given consent and made their character, as the way to Home requires.
+ * An invite link is used first and says how it went; the quest, if they came for one, opens when they go on.
  */
 function ResumePostLoginTarget() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const invite = useHeldInvite();
   useEffect(() => {
     if (pathname !== '/home') return;
     const target = takePostLoginTarget();
-    if (target?.next) navigate(target.next, { replace: true });
+    if (target?.inviteCode) holdInvite({ code: target.inviteCode, ...(target.next ? { next: target.next } : {}) });
+    else if (target?.next) navigate(target.next, { replace: true });
   }, [pathname, navigate]);
-  return null;
+  if (!invite) return null;
+  return (
+    <AcceptInvite
+      code={invite.code}
+      onClose={() => {
+        holdInvite(null);
+        if (invite.next) navigate(invite.next, { replace: true });
+      }}
+    />
+  );
 }
 
 /** Play needs a selected player; otherwise the start picks one (or shows the picker on a shared device). */
@@ -162,6 +176,7 @@ export function AppRoutes() {
         <Route path="/login" element={<WithMusic mood="home"><SignedOutOnly><LoginScreen /></SignedOutOnly></WithMusic>} />
         <Route path="/register" element={<WithMusic mood="home"><SignedOutOnly><RegisterScreen /></SignedOutOnly></WithMusic>} />
         <Route path="/privacy" element={<PrivacyScreen />} />
+        <Route path="/moi/:code" element={<WithMusic mood="home"><InviteScreen /></WithMusic>} />
         <Route path="/set-pin" element={<RequireParent needsConsent={false}><SetPinScreen /></RequireParent>} />
         <Route path="/consent" element={<RequireParent needsConsent={false}><ConsentScreen /></RequireParent>} />
         <Route path="/profiles" element={<WithMusic mood="home"><RequireParent><ProfilePickerScreen /></RequireParent></WithMusic>} />

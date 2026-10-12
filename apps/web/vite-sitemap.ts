@@ -59,7 +59,8 @@ export function updateLedger(ledger: LastmodLedger, pages: readonly SitemapPage[
 
 export function robotsTxt({ release }: { release: boolean }): string {
   if (!release) return 'User-agent: *\nDisallow: /\n';
-  return `User-agent: *\nAllow: /\nDisallow: /api/\n\nSitemap: ${absoluteUrl('/sitemap.xml')}\n`;
+  // An invite link (`/moi/<code>`) is for one person: crawlers leave it out, as the API.
+  return `User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /moi/\n\nSitemap: ${absoluteUrl('/sitemap.xml')}\n`;
 }
 
 export function sitemapXml(pages: readonly SitemapPage[], ledger: LastmodLedger): string {

@@ -148,6 +148,26 @@ describe('completion screens', () => {
   });
 });
 
+describe('showing the result off', () => {
+  const LESSON_QUEST: ActiveQuestView = { ...QUEST, textbook: { book: 'Toán 2, tập một', lesson: 'Bài 1. Ôn tập các số đến 100', pages: [6, 8] } };
+  const LINES = [{ step: 'a', question: 'Câu hỏi?', answer: 'Đáp án' }];
+
+  it('comes second: the vở page stays first, and the share button waits on the reward screen', () => {
+    render(<CompletionSequence notebook={LINES} completion={completion({ levelAfter: 1 })} reward={REWARD} quest={LESSON_QUEST} data={DATA} onMap={() => undefined} onExplore={() => undefined} />);
+    expect(document.querySelector('[data-id="completion-notebook-page"]')).toBeTruthy();
+    expect(screen.queryByRole('button', { name: /Khoe kết quả/ })).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'Con chép xong rồi' }));
+    expect(screen.getByRole('button', { name: /Khoe kết quả/ })).toBeTruthy();
+    // The way on is still the primary button.
+    expect(screen.getByRole('button', { name: /Về bản đồ/ })).toBeTruthy();
+  });
+
+  it('is there for a quest with no textbook lesson too', () => {
+    render(<CompletionSequence completion={completion({ levelAfter: 1 })} reward={REWARD} quest={QUEST} data={DATA} onMap={() => undefined} onExplore={() => undefined} />);
+    expect(screen.getByRole('button', { name: /Khoe kết quả/ })).toBeTruthy();
+  });
+});
+
 describe('the reward moment unfolds in order', () => {
   it('counts up from zero, easing out, and lands exactly on the server\'s number', () => {
     expect(countUpValue(100, 0, 900)).toBe(0);

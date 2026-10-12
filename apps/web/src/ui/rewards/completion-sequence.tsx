@@ -21,6 +21,7 @@ import { ProgressBar } from '../kit/progress-bar';
 import { assetUrl, REGION_CHEST } from '../kit/ui-art';
 import { say, type PlayerData } from '../player/player-data';
 import { NotebookLines } from '../quest/notebook-card';
+import { ShareResult } from '../quest/share-result';
 import type { ActiveQuestView } from '../quest/quest-flow';
 import { regionGoalLine, rewardItemArt, useRegionRewards } from '../region/region-rewards';
 import { findRegion } from '../region/regions';
@@ -286,7 +287,10 @@ export function CompletionSequence({
           <NotebookLines lines={notebook} character={data.character} />
         </div>
       ) : screen === 'reward' ? (
-        <RewardScreen completion={completion} reward={reward} quest={quest} data={data} />
+        <>
+          <RewardScreen completion={completion} reward={reward} quest={quest} data={data} />
+          <ShareResult textbook={quest.textbook} />
+        </>
       ) : screen === 'event' ? (
         <div className="reward-body" data-id="event-reward">
           <MiuPortrait pose="cheer" size="7rem" species={data.character.species} />

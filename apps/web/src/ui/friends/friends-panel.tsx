@@ -16,11 +16,12 @@ import { BotBadge, placeOfMap } from '../online/social-layer';
 import { useSocial } from '../online/use-social';
 import type { SocialSource } from './friends-api';
 import { useFriendsList } from './friends-cache';
+import { InvitePanel } from './invite-panel';
 import { FriendCallButton } from '../voice/voice-controls';
 import type { VoiceManager } from '../voice/voice-manager';
 import './friends.css';
 
-type FriendsTab = 'friends' | 'requests' | 'room' | 'blocks';
+type FriendsTab = 'friends' | 'requests' | 'room' | 'invite' | 'blocks';
 
 /** Fills the player's name into content text (region names like "Nhà của {name}"). */
 type Fill = (text: string) => string;
@@ -146,6 +147,7 @@ export function FriendsPanel({
   onGo,
   dataId = 'friends',
   cacheKey,
+  invites = false,
 }: {
   source: SocialSource;
   /** The game's online session (in the game only): "Cùng phòng" and going to a friend. */
@@ -161,12 +163,21 @@ export function FriendsPanel({
    * one the list is this panel's own.
    */
   cacheKey?: string;
+  /** The player's own list: she can bring friends in by invite links (not on the account owner's view of a player). */
+  invites?: boolean;
 }) {
   const { t } = useT();
   const own = useId();
   const { view, failed, retry } = useFriendsList(cacheKey ?? `panel:${own}`, source.load);
   const [error, setError] = useState<string | null>(null);
   const [tab, setTab] = useState<FriendsTab>('friends');
+  /** The codes of the invite links made while this list is open (a link's code is told once, when it is made). */
+  const [inviteCodes, setInviteCodes] = useState<Record<string, string>>({});
+  const rememberInviteCode = (id: string, code: string | null): void =>
+    setInviteCodes((codes) => {
+      const { [id]: _gone, ...rest } = codes;
+      return code ? { ...rest, [id]: code } : rest;
+    });
   // A friend made or a request answered while the list is open: read it again.
   useEffect(() => {
     if (!social) return;
@@ -208,6 +219,7 @@ export function FriendsPanel({
     { key: 'friends', label: <T k="friends.tab.friends" params={{ count: view.friends.length, max: view.max }} /> },
     { key: 'requests', label: <T k="friends.tab.requests" params={{ count: requests }} /> },
     ...(social ? [{ key: 'room' as const, label: <T k="friends.tab.room" /> }] : []),
+    ...(invites ? [{ key: 'invite' as const, label: <T k="friends.tab.invite" /> }] : []),
     { key: 'blocks', label: <T k="friends.tab.blocks" /> },
   ];
   const { answer, cancel } = source;
@@ -286,6 +298,7 @@ export function FriendsPanel({
           </div>
         ) : null}
         {tab === 'room' && social ? <RoomList social={social} friends={view.friends} /> : null}
+        {tab === 'invite' && invites ? <InvitePanel codes={inviteCodes} onCode={rememberInviteCode} /> : null}
         {tab === 'blocks' ? (
           view.blocks.length > 0 ? (
             <ul className="friend-list" data-id={`${dataId}-blocks`}>

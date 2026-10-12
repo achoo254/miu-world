@@ -1,0 +1,4 @@
+/* The page an invite link opens (invite-screen.tsx): one centred panel; every value comes from tokens.css. */
+.invite-page { max-width: 36rem; }
+.invite-page-panel { display: flex; flex-direction: column; gap: var(--space-md); }
+.invite-page-panel h1 { font-size: var(--text-xl); line-height: 1.2; }

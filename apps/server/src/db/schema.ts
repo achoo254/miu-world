@@ -421,6 +421,28 @@ export const friendRequests = pgTable(
 );
 
 /**
+ * A link a player made to bring a friend in (`/moi/<code>`): one use, good for seven days, withdrawn by her any time.
+ * Only the SHA-256 of the random code is kept, so a database read never yields a usable link; the code itself is
+ * shown to her once, when she makes it. The row is named by its own id (to withdraw it), never by a profile id.
+ */
+export const playerInvites = pgTable(
+  'player_invites',
+  {
+    id: uuid('id').primaryKey(),
+    codeHash: text('code_hash').notNull().unique(),
+    /** The player who made the link: the one who becomes a friend. */
+    childId: childRef(),
+    createdAt: createdAt(),
+    expiresAt: timestamp('expires_at', { withTimezone: true }).notNull(),
+    acceptedAt: timestamp('accepted_at', { withTimezone: true }),
+    /** The player who used it; gone when that player is deleted. */
+    acceptedBy: uuid('accepted_by').references(() => childProfiles.id, { onDelete: 'set null' }),
+    revokedAt: timestamp('revoked_at', { withTimezone: true }),
+  },
+  (t) => [index('player_invites_child_idx').on(t.childId)],
+);
+
+/**
  * A companion bot's own skill XP (it learns from its own play, like a player): one row per bot and skill. Bots have
  * no profile; nothing here is about a player.
  */
