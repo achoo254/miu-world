@@ -9,7 +9,7 @@ Group=miu
 # TUNELO_KEY only (written by deploy.sh setup). The key must come from the environment: tunelo
 # under a service manager does not read ~/.tunelo/config.json and would report "online" with no tunnel.
 EnvironmentFile=/etc/miu/tunnel.env
-Environment=TUNELO_SERVER=wss://tunnel.inetdev.io.vn
+Environment=TUNELO_SERVER=wss://tunnel.hoandat.com
 # tunelo writes run records under $HOME/.tunelo; the miu home (/opt/miu) is root-owned.
 StateDirectory=miu-tunnel
 Environment=HOME=/var/lib/miu-tunnel

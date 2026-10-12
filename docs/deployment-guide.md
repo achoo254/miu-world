@@ -6,7 +6,7 @@
 
 | Môi trường | Chạy ở đâu | Domain |
 | --- | --- | --- |
-| Dev | Máy dev, mở ra ngoài bằng `tunelo http <cổng>:miu` (cách chạy trong `CLAUDE.md`, mục duyệt qua tunnel) | `miu.tunnel.inetdev.io.vn` |
+| Dev | Máy dev, mở ra ngoài bằng `tunelo http <cổng>:miu` (cách chạy trong `CLAUDE.md`, mục duyệt qua tunnel) | `miu.tunnel.hoandat.com` |
 | Staging | Lab 176, qua edge .65 | `miu-staging.hoandat.com` |
 | Production | .65 | `miu.hoandat.com` |
 
@@ -77,7 +77,7 @@ Kiểm tra: `dig +short A <domain> @1.1.1.1` phải trả IP của Cloudflare. D
 
 **Cấu hình từng chặng** nằm trong `tools/deploy/staging/`; lý do của từng dòng ghi ngay trong file:
 
-- `nginx-edge.conf` → `/etc/nginx/conf.d/miu-staging.conf` trên .65. Tệp này chép theo server block `cloudpanel-dev.inet.vn` trong `server-tools.conf`: chứng chỉ gốc sẵn có, và `proxy_pass` tới tunelo server ở `:3001` với `Host: miu-staging.tunnel.inetdev.io.vn`. Vì vậy staging cũng mở được ở `https://miu-staging.tunnel.inetdev.io.vn`.
+- `nginx-edge.conf` → `/etc/nginx/conf.d/miu-staging.conf` trên .65. Tệp này chép theo server block `cloudpanel-dev.inet.vn` trong `server-tools.conf`: chứng chỉ gốc sẵn có, và `proxy_pass` tới tunelo server ở `:3001` với `Host: miu-staging.tunnel.hoandat.com`. Vì vậy staging cũng mở được ở `https://miu-staging.tunnel.hoandat.com`.
 - `miu-tunnel.service` trên 176: tunelo client chạy `8090:miu-staging`.
 - `nginx-lab.conf` trên 176: nghe `127.0.0.1:8090`, phục vụ `apps/web/dist` và proxy `/api/` tới server ở `127.0.0.1:8787`.
 - `miu-server.service` trên 176: chạy bundle server bằng Node 22 ở `/opt/node22`, tách khỏi Node 20 của hệ thống.
@@ -150,7 +150,7 @@ tools/deploy/staging/deploy.sh release   # mỗi lần deploy
 - **tunelo server trên .65 cũng có cache riêng** (Redis, khoá theo subdomain, đường dẫn và `Accept-Encoding`; header `x-tunelo-cache`). Nó cache file tĩnh 24 giờ khi tên file trông giống có hash, ví dụ `forest-ch1-tree.png`, kể cả khi origin không gửi `Cache-Control`. Purge Cloudflare không xoá được cache này: Cloudflare tải lại và lại nhận bản cũ. Đã đo ngày 01/10/2026: bản cũ chỉ xuất hiện khi request có `gzip, br`, đúng header Cloudflare luôn gửi.
   - Vì vậy `nginx-lab.conf` gửi `Cache-Control: max-age=0, s-maxage=14400` cho `/game-assets/`. tunelo bỏ qua file có `max-age=0`; Cloudflare vẫn giữ ở edge 4 giờ theo `s-maxage`, và trình duyệt vẫn nhận `max-age=14400` theo Browser Cache TTL của zone.
   - tunelo chỉ xoá cache của subdomain khi tunnel đăng ký lại từ đầu. Nối lại trong 5 giây grace thì cache được giữ, nên `setup` dừng tunnel, chờ 7 giây rồi mới chạy lại.
-  - Nghi một tầng giữ bản cũ thì so sha256 lần lượt ở nginx lab (`127.0.0.1:8090`), tunnel (`https://miu-staging.tunnel.inetdev.io.vn`, gửi kèm `-H 'Accept-Encoding: gzip, br'`), rồi Cloudflare.
+  - Nghi một tầng giữ bản cũ thì so sha256 lần lượt ở nginx lab (`127.0.0.1:8090`), tunnel (`https://miu-staging.tunnel.hoandat.com`, gửi kèm `-H 'Accept-Encoding: gzip, br'`), rồi Cloudflare.
 - **Cổng 8787 trên .65 đã có dịch vụ khác giữ** (loopback). Production phải đặt `PORT` khác; kiểm bằng `ss -ltnp`. Quy tắc "cổng cố định 8787" trong `CLAUDE.md` chỉ áp cho máy dev.
 - **Nginx trên .65 (CentOS) đọc cấu hình từ `/etc/nginx/conf.d/`**, không có `sites-enabled`. `setup` chỉ ghi tệp `miu-staging.conf` và gỡ nó ra nếu `nginx -t` báo lỗi.
 - **Server chỉ nghe trên `127.0.0.1`** và chỉ tin `X-Forwarded-For` từ loopback (`app.set('trust proxy', …)` trong `apps/server/src/app.ts`). Reverse proxy ngay trước server vì vậy phải chạy trên cùng máy với server.
