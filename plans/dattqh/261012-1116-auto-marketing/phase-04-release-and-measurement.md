@@ -1,7 +1,7 @@
 ---
 phase: 4
 title: "Release, cài GA, nộp sitemap, tài liệu"
-status: pending
+status: completed
 tier: S
 dependsOn: [1, 2, 3]
 ---
@@ -24,6 +24,15 @@ dependsOn: [1, 2, 3]
    - `curl` sitemap, robots, một trang bài, một đường dẫn lạ dưới `/bai/` (404); `og:image` trả 200 qua domain; dán link vào trình kiểm tra thẻ xem trước của Facebook.
    - Không sự kiện nào có tham số ngoài danh sách (kiểm bằng lệnh debug MP).
 7. Tài liệu: `docs/system-architecture.md` (analytics, trang tĩnh, lời mời), `docs/deployment-guide.md` (env GA4, `deploy.sh analytics`, `setup` giữ GA4), `docs/project-roadmap.md`, trang review (SEO, analytics, lời mời; dependency mới: không có, nếu đúng vậy).
+
+## Kết quả (12/10/2026)
+
+- Release `459596aa` (cây export của `47a4eec9`): backup DB, migration `player_invites`, `healthy`, health qua domain OK.
+- `setup`: `nginx -t` sạch, 9/9 tiến trình pm2 của dự án khác vẫn online, `/bai/` 404 thật và MIME `.webmanifest` đã vào, env giữ đủ dòng.
+- `analytics` + restart: 2 dòng `GA4_`, log `usage analytics: sent to Google Analytics`, 0 dòng lỗi.
+- Qua Cloudflare: `robots.txt`, `sitemap.xml` (73 địa chỉ), trang bài và trang môn 200, `/bai/<lạ>/` 404, `og:image` 200, chính sách v4.
+- GA4 Realtime nhận `page_view` từ một lượt xem thật; 6 custom dimension đã đăng ký; GA đã liên kết Search Console `https://miu.hoandat.com/`.
+- Còn lại: người sở hữu nộp `sitemap.xml` trong Search Console (theo yêu cầu của người sở hữu, AI chỉ hướng dẫn).
 
 ## Kiểm
 

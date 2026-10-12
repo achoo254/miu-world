@@ -1,7 +1,7 @@
 ---
 phase: 2
 title: "Trang SEO: giới thiệu, trang theo bài, sitemap, thẻ xem trước"
-status: pending
+status: completed
 tier: L
 dependsOn: [1]
 ---

@@ -1,7 +1,7 @@
 ---
 phase: 1
 title: "Privacy và GA4 phía server"
-status: pending
+status: completed
 tier: M
 dependsOn: []
 ---

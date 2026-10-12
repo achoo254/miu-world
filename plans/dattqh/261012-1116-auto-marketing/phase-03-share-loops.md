@@ -1,7 +1,7 @@
 ---
 phase: 3
 title: "Lan truyền trong game: link mời bạn, thẻ khoe kết quả, tổng kết tuần"
-status: pending
+status: completed
 tier: L
 dependsOn: [1, 2]
 ---
