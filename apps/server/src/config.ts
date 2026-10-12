@@ -103,8 +103,10 @@ export interface ServerConfig {
   turn: TurnConfig | null;
   /** Usage events go to this GA4 property; null: none is sent. */
   ga4: Ga4Config | null;
-  /** Analytics events the web app may post per minute per IP. */
+  /** Analytics events the web app may post per minute per IP: wide, a school's pupils share one address. */
   analyticsLimitPerMinute: number;
+  /** Analytics events per minute per GA client id (one browser): the narrow cap that stops one browser flooding. */
+  analyticsClientLimitPerMinute: number;
 }
 
 /** Validates env once at startup; throws with the offending key so the process fails fast. */
@@ -175,6 +177,7 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
     timetableDefaultFile: e.TIMETABLE_DEFAULT_FILE ?? null,
     turn: e.CF_TURN_KEY_ID && e.CF_TURN_API_TOKEN ? { keyId: e.CF_TURN_KEY_ID, apiToken: e.CF_TURN_API_TOKEN } : null,
     ga4: e.GA4_MEASUREMENT_ID && e.GA4_API_SECRET ? { measurementId: e.GA4_MEASUREMENT_ID, apiSecret: e.GA4_API_SECRET } : null,
-    analyticsLimitPerMinute: 60,
+    analyticsLimitPerMinute: 600,
+    analyticsClientLimitPerMinute: 60,
   };
 }

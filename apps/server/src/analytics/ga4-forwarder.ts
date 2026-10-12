@@ -3,14 +3,24 @@
 // player's request never waits on Google and an outage of Google never fails one. Without a GA4 property configured
 // (dev, test, E2E, staging) nothing is queued or sent. Failures log the HTTP status or the error class only: the URL
 // carries the secret.
-import type { Ga4Hit } from '@miu/schema/analytics';
+import { WEB_EVENTS, type Ga4Hit } from '@miu/schema/analytics';
 import type { Ga4Config } from '../config';
 
 export const GA4_COLLECT_URL = 'https://www.google-analytics.com/mp/collect';
 /** Google's validation endpoint: answers what is wrong with each event instead of recording it. */
 export const GA4_DEBUG_URL = 'https://www.google-analytics.com/debug/mp/collect';
-/** Queued events at most; when full the oldest is dropped. */
+/**
+ * Queued events at most. The public endpoint feeds the web events, so they get only part of the room (`WEB_QUEUE_MAX`)
+ * and a flood of them can only push out older web events; a server event (sign-up, quest, peak) is always taken, and
+ * when the queue is full it pushes out the oldest web event first, the oldest of all only if none is left.
+ */
 export const QUEUE_MAX = 1_000;
+/** Web events waiting at most; when full the oldest web event is dropped. */
+export const WEB_QUEUE_MAX = 700;
+/** Requests to Google in flight at once while the queue drains (one per GA user, so many users do not wait in line). */
+export const SEND_CONCURRENCY = 8;
+/** On close the queue is given this long to leave; the server's own shutdown steps do not wait on Google beyond it. */
+export const CLOSE_DEADLINE_MS = 1_500;
 /** Events per request at most (the Measurement Protocol's own limit). */
 export const BATCH_MAX = 25;
 /** How long an event waits for others to leave with it. */
@@ -30,7 +40,10 @@ export interface Ga4ForwarderOptions {
   flushMs?: number;
   timeoutMs?: number;
   queueMax?: number;
+  webQueueMax?: number;
 }
+
+const isWebEvent = (hit: Ga4Hit): boolean => (WEB_EVENTS as readonly string[]).includes(hit.event.name);
 
 /**
  * One Measurement Protocol request body: one GA user, up to 25 events. No IP, user agent or user id is ever added;
@@ -54,6 +67,7 @@ export class Ga4Forwarder implements EventSink {
   private readonly flushMs: number;
   private readonly timeoutMs: number;
   private readonly queueMax: number;
+  private readonly webQueueMax: number;
 
   constructor(options: Ga4ForwarderOptions) {
     this.config = options.config;
@@ -61,6 +75,7 @@ export class Ga4Forwarder implements EventSink {
     this.flushMs = options.flushMs ?? FLUSH_MS;
     this.timeoutMs = options.timeoutMs ?? SEND_TIMEOUT_MS;
     this.queueMax = options.queueMax ?? QUEUE_MAX;
+    this.webQueueMax = options.webQueueMax ?? WEB_QUEUE_MAX;
   }
 
   /** Events waiting to leave. */
@@ -71,8 +86,9 @@ export class Ga4Forwarder implements EventSink {
   /** Queues an event; returns at once. Nothing happens without a GA4 property or after `close`. */
   send(hit: Ga4Hit): void {
     if (!this.config || this.closed) return;
+    if (isWebEvent(hit) && this.queue.filter(isWebEvent).length >= this.webQueueMax) this.dropOldest(true);
     this.queue.push(hit);
-    if (this.queue.length > this.queueMax) this.queue.shift();
+    if (this.queue.length > this.queueMax && !this.dropOldest(true)) this.dropOldest(false);
     if (this.queue.length >= BATCH_MAX) void this.flush();
     else this.schedule();
   }
@@ -86,12 +102,21 @@ export class Ga4Forwarder implements EventSink {
     return this.flushing;
   }
 
-  /** Sends what is left and stops taking events (the server is stopping). */
-  async close(): Promise<void> {
+  /**
+   * Sends what is left and stops taking events (the server is stopping). Gives up waiting after `deadlineMs`, so a slow
+   * Google cannot hold up what the server still has to close.
+   */
+  async close(deadlineMs = CLOSE_DEADLINE_MS): Promise<void> {
     this.closed = true;
     if (this.timer) clearTimeout(this.timer);
     this.timer = null;
-    await this.flush();
+    let deadline: NodeJS.Timeout | undefined;
+    const expired = new Promise<void>((resolve) => {
+      deadline = setTimeout(resolve, deadlineMs);
+      deadline.unref();
+    });
+    await Promise.race([this.flush(), expired]);
+    clearTimeout(deadline);
   }
 
   /** Posts `hits` to Google's validation endpoint and returns its answer (the dev check of the events' shape). */
@@ -111,17 +136,30 @@ export class Ga4Forwarder implements EventSink {
     this.timer.unref();
   }
 
+  /** Drops the oldest queued event (the oldest web event when `webOnly`); false when there was none to drop. */
+  private dropOldest(webOnly: boolean): boolean {
+    const at = webOnly ? this.queue.findIndex(isWebEvent) : 0;
+    if (at < 0 || this.queue.length === 0) return false;
+    this.queue.splice(at, 1);
+    return true;
+  }
+
+  /** Sends every queued batch, up to `SEND_CONCURRENCY` requests at a time. */
   private async drain(): Promise<void> {
-    while (this.queue.length > 0) {
-      const batch = this.takeBatch();
-      const first = batch[0];
-      if (!first) return;
-      try {
-        const res = await this.post(GA4_COLLECT_URL, requestBody(first.clientId, batch));
-        if (!res.ok) console.warn('analytics events not accepted', res.status);
-      } catch (err) {
-        console.warn('analytics events not sent', err instanceof Error ? err.name : typeof err);
-      }
+    const lane = async (): Promise<void> => {
+      for (let batch = this.takeBatch(); batch.length > 0; batch = this.takeBatch()) await this.sendBatch(batch);
+    };
+    await Promise.all(Array.from({ length: SEND_CONCURRENCY }, lane));
+  }
+
+  private async sendBatch(batch: readonly Ga4Hit[]): Promise<void> {
+    const first = batch[0];
+    if (!first) return;
+    try {
+      const res = await this.post(GA4_COLLECT_URL, requestBody(first.clientId, batch));
+      if (!res.ok) console.warn('analytics events not accepted', res.status);
+    } catch (err) {
+      console.warn('analytics events not sent', err instanceof Error ? err.name : typeof err);
     }
   }
 

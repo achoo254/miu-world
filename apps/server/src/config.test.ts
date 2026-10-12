@@ -31,6 +31,12 @@ describe('loadConfig', () => {
     expect(() => loadConfig({ ...production, REGISTER_LIMIT_PER_HOUR: '1000' })).toThrow(/REGISTER_LIMIT_PER_HOUR is test-only/);
   });
 
+  it('lets a school share one address for analytics but caps one browser', () => {
+    const config = loadConfig({});
+    expect(config.analyticsLimitPerMinute).toBe(600);
+    expect(config.analyticsClientLimitPerMinute).toBe(60);
+  });
+
   it('takes the TURN key only as a pair, and never echoes its values', () => {
     expect(loadConfig({}).turn).toBeNull();
     expect(loadConfig({ CF_TURN_KEY_ID: '', CF_TURN_API_TOKEN: '' }).turn).toBeNull();

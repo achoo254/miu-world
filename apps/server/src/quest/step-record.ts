@@ -22,6 +22,7 @@ import { paidRuns, questSource, recordedReward } from "../reward/reward-ledger";
 import { runFinished } from "./quest-access";
 import { openGates, type OpenedGate } from "./knowledge-gate";
 import { finishQuest } from "./quest-completion";
+import { commitQueue } from "./quest-usage";
 import { countAttempt, wrongAnswers } from "./step-attempts";
 import type { RewardSpec } from "@miu/schema/content";
 
@@ -111,7 +112,8 @@ export async function recordStep(
     eq(questProgress.childId, childId),
     eq(questProgress.questId, questId),
   );
-  return db.transaction(async (tx) => {
+  const queue = commitQueue();
+  const recorded = await db.transaction(async (tx) => {
     // Create-then-lock the progress row so concurrent calls for the same quest run one after another.
     await tx
       .insert(questProgress)
@@ -233,7 +235,7 @@ export async function recordStep(
         completion: null,
         gates,
       };
-    const finished = await finishQuest(tx, content, childId, quest, now, run);
+    const finished = await finishQuest(tx, content, childId, quest, now, run, queue);
     const [scored] = await tx
       .select()
       .from(questProgress)
@@ -249,4 +251,7 @@ export async function recordStep(
       gates,
     };
   });
+  // The usage events of a finished quest leave only once its payment has committed.
+  queue.run();
+  return recorded;
 }

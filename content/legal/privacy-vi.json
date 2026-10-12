@@ -54,7 +54,7 @@
       "paragraphs": [
         "Để biết trò chơi có ích không và người chơi tìm đến từ đâu, máy chủ Miu gửi tới Google Analytics các sự kiện sau: một trang chính được mở (trang chủ, đăng nhập, chơi, nhà, một vùng, trang mời bạn, trang bài học, trang này), kèm nguồn đến của lượt truy cập (tên miền trang đã dẫn tới, nhãn chiến dịch của link); một tài khoản mới đồng ý chính sách lần đầu; một người chơi xong nhiệm vụ đầu tiên, và mỗi lần xong một nhiệm vụ (mã bài học trong sách và môn học); một lượt chia sẻ (cách chia sẻ và thứ được chia sẻ: link mời, thẻ kết quả, tổng kết tuần); một link mời bạn được dùng; số người chơi cùng lúc cao nhất mỗi giờ (không tính bạn máy).",
         "Mỗi sự kiện chỉ kèm mã ngẫu nhiên của trình duyệt và mã lượt truy cập (mục Chúng tôi không lưu gì); sự kiện do máy chủ tự gửi mà không biết hai mã đó thì dùng một mã ngẫu nhiên mới. Không bao giờ gửi email, tên hiển thị, tên nhân vật, mã tài khoản hay mã người chơi, mã trong link mời, địa chỉ IP hay thông tin trình duyệt (user agent) của người chơi. Địa chỉ trang chỉ là một trong các trang chính kể trên, không có phần sau dấu ?.",
-        "Trình duyệt không gửi gì cho Google: nó gửi hai loại sự kiện (mở trang và chia sẻ) về máy chủ Miu, máy chủ kiểm từng giá trị rồi mới chuyển tiếp. Vì Google chỉ thấy máy chủ Miu, vị trí Google suy ra là vị trí của máy chủ, không phải của người chơi. Google Analytics của Miu tắt Google Signals, tắt quảng cáo và chia sẻ dữ liệu với Google, và giữ số liệu 2 tháng."
+        "Trình duyệt không gửi gì cho Google: nó gửi hai loại sự kiện (mở trang và chia sẻ) về máy chủ Miu, máy chủ kiểm từng giá trị rồi mới chuyển tiếp. Vì Google chỉ thấy máy chủ Miu, vị trí Google suy ra là vị trí của máy chủ, không phải của người chơi. Google Analytics của Miu tắt Google Signals, tắt quảng cáo và chia sẻ dữ liệu với Google, và giữ dữ liệu theo từng sự kiện 2 tháng; Google có thể giữ lâu hơn các báo cáo tổng hợp, trong đó không có mã nào của người chơi. Máy chủ Miu giữ tạm trong bộ nhớ, không ghi vào cơ sở dữ liệu hay nhật ký, sự liên kết giữa mã ngẫu nhiên của trình duyệt và phiên đăng nhập, chỉ để gom các sự kiện của cùng một người; liên kết này mất sau nửa giờ không dùng hoặc khi máy chủ khởi động lại."
       ]
     },
     {
@@ -70,7 +70,7 @@
       "paragraphs": [
         "Dữ liệu tài khoản và người chơi được giữ cho đến khi bạn xóa. Xóa một người chơi phụ thì mọi tiến độ của người chơi đó mất hẳn; xóa tài khoản thì mọi người chơi, tiến độ, phiên đăng nhập và email đều bị xóa ngay trên máy chủ, không khôi phục được.",
         "Bản sao lưu cơ sở dữ liệu được tạo mỗi ngày để phòng sự cố, và tự xóa sau tối đa 14 ngày. Riêng những gì các bạn máy tự học (nơi chốn, lối đi trên map và điểm kỹ năng của chính bạn máy, không có thông tin nào về người chơi) được sao lưu thêm và giữ 90 ngày. Nhật ký máy chủ (địa chỉ IP, trang đã mở, lỗi kỹ thuật; không có email) cũng tự xóa sau tối đa 14 ngày. Vì vậy sau khi bạn xóa, chậm nhất 14 ngày sau dữ liệu không còn ở bất cứ đâu trên máy chủ.",
-        "Số liệu sử dụng ẩn danh ở Google Analytics được giữ 2 tháng rồi tự xóa (cài đặt lưu giữ của Google Analytics). Số liệu này không gắn với email hay tài khoản nên không xóa theo tài khoản được; dữ liệu trên máy chủ Miu vẫn theo các mốc ở trên (sao lưu và nhật ký tối đa 14 ngày)."
+        "Dữ liệu theo từng sự kiện của số liệu sử dụng ẩn danh ở Google Analytics được giữ 2 tháng rồi tự xóa (cài đặt lưu giữ của Google Analytics); Google có thể giữ lâu hơn các báo cáo tổng hợp, không kèm mã nào của người chơi. Số liệu này không gắn với email hay tài khoản nên không xóa theo tài khoản được; dữ liệu trên máy chủ Miu vẫn theo các mốc ở trên (sao lưu và nhật ký tối đa 14 ngày)."
       ]
     },
     {
@@ -79,7 +79,7 @@
         "Xem và tải dữ liệu: trong mục Quản lý tài khoản, bấm \"Tải dữ liệu của tôi\" để nhận một tệp JSON chứa toàn bộ những gì chúng tôi lưu về tài khoản và các người chơi (trừ mã PIN đã mã hóa), kể cả thời gian chơi theo tuần, thư, cài đặt bạn máy, bạn bè, lời mời kết bạn, người đã chặn và báo cáo đã gửi. Người chơi khác trong tệp chỉ hiện bằng tên nhân vật. Chủ tài khoản cũng xem được tiến bộ học của từng người chơi ngay trong mục này.",
         "Sửa: đổi tên hiển thị của người chơi trong mục Quản lý tài khoản; đổi tên và trang phục nhân vật, sửa hoặc xóa thời khóa biểu, lịch mặc đồng phục, cách trang trí nhà và đồ vật bật trong nhà ngay trong trò chơi; bật hay tắt bạn máy và nói chuyện bằng giọng trong Cài đặt; xóa bạn, hủy lời mời và bỏ chặn trong danh sách bạn bè.",
         "Xóa: xóa từng người chơi phụ, hoặc bấm \"Xóa tài khoản\" để xóa tất cả. Nếu tài khoản có đặt mã PIN thì cần nhập mã trước.",
-        "Rút lại đồng ý: xóa tài khoản là cách rút lại đồng ý; chúng tôi không giữ lại gì để tiếp tục dùng (số liệu ẩn danh đã gửi Google Analytics không gắn với tài khoản và tự xóa sau 2 tháng)."
+        "Rút lại đồng ý: xóa tài khoản là cách rút lại đồng ý; chúng tôi không giữ lại gì để tiếp tục dùng (số liệu ẩn danh đã gửi Google Analytics không gắn với tài khoản; dữ liệu theo từng sự kiện tự xóa sau 2 tháng)."
       ]
     },
     {

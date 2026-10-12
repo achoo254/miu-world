@@ -114,7 +114,8 @@ async function shutdown(signal: NodeJS.Signals): Promise<void> {
   botRunner.stop();
   const timeout = new Promise<false>((resolve) => setTimeout(() => resolve(false), SHUTDOWN_WRITE_MS).unref());
   const written = (async (): Promise<true> => {
-    // The usage events still queued leave too (each request gives up well within the window).
+    // The usage events still queued leave too, within their own shorter deadline (`CLOSE_DEADLINE_MS`), so a slow
+    // Google never keeps the database from closing.
     await Promise.all([botRunner.flush(), analyticsSink.close()]);
     await database.close();
     return true;

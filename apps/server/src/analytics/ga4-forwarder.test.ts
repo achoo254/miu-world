@@ -1,9 +1,10 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { Ga4Hit } from '@miu/schema/analytics';
-import { BATCH_MAX, GA4_COLLECT_URL, GA4_DEBUG_URL, Ga4Forwarder } from './ga4-forwarder';
+import { BATCH_MAX, GA4_COLLECT_URL, GA4_DEBUG_URL, Ga4Forwarder, SEND_CONCURRENCY } from './ga4-forwarder';
 
 const CONFIG = { measurementId: 'G-TEST123456', apiSecret: 'test-ga-secret-0123456789' };
 
+const serverHit = (name: 'sign_up' | 'level_end', clientId: string): Ga4Hit => ({ clientId, event: { name, params: { session_id: 1_760_000_000, engagement_time_msec: 1 } } });
 const hit = (n: number, clientId = '1234567890.1760000000'): Ga4Hit => ({ clientId, event: { name: 'page_view', params: { session_id: 1_760_000_000, engagement_time_msec: 1, page_location: `https://miu.example/play?n=${n}` } } });
 
 interface Call {
@@ -79,6 +80,76 @@ describe('GA4 forwarder', () => {
     expect(forwarder.pending).toBe(3);
     await forwarder.flush();
     expect(google.calls.map((c) => c.body.client_id)).toEqual(['1000000002.1760000000', '1000000003.1760000000', '1000000004.1760000000']);
+  });
+
+  it('keeps the server events when web events flood the queue, dropping the oldest web events first', async () => {
+    const google = fakeGoogle();
+    const forwarder = new Ga4Forwarder({ config: CONFIG, fetchImpl: google.impl, flushMs: 60_000, queueMax: 6, webQueueMax: 4 });
+    const user = (n: number): string => `${1_000_000_000 + n}.1760000000`;
+    forwarder.send(serverHit('sign_up', user(0)));
+    // Web events from many users: they never hold more than 4 places, the oldest of them go first.
+    for (let n = 1; n <= 10; n += 1) forwarder.send(hit(n, user(n)));
+    expect(forwarder.pending).toBe(5);
+    // Server events are taken even with the queue full of web events, each pushing the oldest web event out.
+    forwarder.send(serverHit('level_end', user(20)));
+    forwarder.send(serverHit('level_end', user(21)));
+    expect(forwarder.pending).toBe(6);
+    forwarder.send(serverHit('level_end', user(22)));
+    expect(forwarder.pending).toBe(6);
+    await forwarder.flush();
+    const names = google.calls.flatMap((c) => c.body.events.map((e) => `${e.name}:${c.body.client_id}`));
+    expect(names.filter((n) => !n.startsWith('page_view'))).toEqual([`sign_up:${user(0)}`, `level_end:${user(20)}`, `level_end:${user(21)}`, `level_end:${user(22)}`]);
+    // Of the web events only the newest two are left (one pushed out by each server event beyond the cap).
+    expect(names.filter((n) => n.startsWith('page_view'))).toEqual([`page_view:${user(9)}`, `page_view:${user(10)}`]);
+  });
+
+  it('keeps the oldest server events only when no web event is left to drop', async () => {
+    const google = fakeGoogle();
+    const forwarder = new Ga4Forwarder({ config: CONFIG, fetchImpl: google.impl, flushMs: 60_000, queueMax: 3, webQueueMax: 2 });
+    for (let n = 0; n < 5; n += 1) forwarder.send(serverHit('level_end', `${1_000_000_000 + n}.1760000000`));
+    expect(forwarder.pending).toBe(3);
+    await forwarder.flush();
+    expect(google.calls.map((c) => c.body.client_id)).toEqual(['1000000002.1760000000', '1000000003.1760000000', '1000000004.1760000000']);
+  });
+
+  it('sends the batches of many GA users in parallel, not one after the other', async () => {
+    let inFlight = 0;
+    let peak = 0;
+    const google = fakeGoogle(async () => {
+      inFlight += 1;
+      peak = Math.max(peak, inFlight);
+      await new Promise((resolve) => setTimeout(resolve, 20));
+      inFlight -= 1;
+      return new Response(null, { status: 204 });
+    });
+    const forwarder = new Ga4Forwarder({ config: CONFIG, fetchImpl: google.impl, flushMs: 60_000 });
+    for (let n = 0; n < 40; n += 1) forwarder.send(hit(n, `${1_000_000_000 + n}.1760000000`));
+    await forwarder.flush();
+    expect(google.calls).toHaveLength(40);
+    expect(peak).toBe(SEND_CONCURRENCY);
+    expect(forwarder.pending).toBe(0);
+  });
+
+  it('gives up on a slow Google at its own deadline when closing, and leaves nothing queued', async () => {
+    vi.useFakeTimers();
+    const google = fakeGoogle(() => new Promise<Response>(() => undefined));
+    const forwarder = new Ga4Forwarder({ config: CONFIG, fetchImpl: google.impl, flushMs: 60_000, timeoutMs: 60_000 });
+    for (let n = 0; n < 12; n += 1) forwarder.send(hit(n, `${1_000_000_000 + n}.1760000000`));
+    let closed = false;
+    const closing = forwarder.close(1_500).then(() => {
+      closed = true;
+    });
+    await vi.advanceTimersByTimeAsync(1_499);
+    expect(closed).toBe(false);
+    await vi.advanceTimersByTimeAsync(1);
+    await closing;
+    expect(closed).toBe(true);
+    // Every request went out at once (up to the parallel cap), none waited for another.
+    expect(google.calls.length).toBeGreaterThanOrEqual(SEND_CONCURRENCY);
+    // The 8 requests hang on; the other 4 batches are still queued, and a closed forwarder takes no more.
+    expect(forwarder.pending).toBe(12 - SEND_CONCURRENCY);
+    forwarder.send(hit(99));
+    expect(forwarder.pending).toBe(12 - SEND_CONCURRENCY);
   });
 
   it('sends a full batch at once', async () => {

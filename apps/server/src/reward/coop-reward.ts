@@ -8,6 +8,7 @@ import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { questProgress } from '../db/schema';
 import { finishQuest } from '../quest/quest-completion';
+import { commitQueue } from '../quest/quest-usage';
 import type { CoopRewards } from '../coop/coop-service';
 import { paidRuns } from './reward-ledger';
 
@@ -16,7 +17,8 @@ export function dbCoopRewards(db: Db, content: ContentCatalog, clock: () => Date
     async pay(childId: string, quest: ActiveQuest): Promise<CoopResult> {
       const now = clock();
       const row = and(eq(questProgress.childId, childId), eq(questProgress.questId, quest.id));
-      return db.transaction(async (tx) => {
+      const queue = commitQueue();
+      const paid = await db.transaction(async (tx): Promise<CoopResult> => {
         // Create-then-lock her progress row: two payments for her run one after the other, each its own run.
         await tx.insert(questProgress).values({ childId, questId: quest.id }).onConflictDoNothing();
         const [current] = await tx.select().from(questProgress).where(row).for('update');
@@ -25,9 +27,11 @@ export function dbCoopRewards(db: Db, content: ContentCatalog, clock: () => Date
           .update(questProgress)
           .set({ completedSteps: quest.steps.map((s) => s.id), found: {}, completedAt: current?.completedAt ?? now })
           .where(row);
-        const finished = await finishQuest(tx, content, childId, quest, now, run);
+        const finished = await finishQuest(tx, content, childId, quest, now, run, queue);
         return { reward: finished.reward, completion: finished.completion, unpaid: finished.reward ? null : 'failed' };
       });
+      queue.run();
+      return paid;
     },
   };
 }

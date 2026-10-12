@@ -13,7 +13,7 @@ const sent: Ga4Hit[] = [];
 const sink = { send: (hit: Ga4Hit) => void sent.push(hit) };
 
 beforeAll(async () => {
-  app = await createTestApp(undefined, { analyticsLimitPerMinute: 5 }, undefined, undefined, { analytics: { sink, sessions: new AnalyticsSessions() } });
+  app = await createTestApp(undefined, { analyticsLimitPerMinute: 5, analyticsClientLimitPerMinute: 12 }, undefined, undefined, { analytics: { sink, sessions: new AnalyticsSessions() } });
 });
 afterEach(() => {
   sent.length = 0;
@@ -76,11 +76,21 @@ describe('POST /api/analytics/events', () => {
     expect(sent).toEqual([]);
   });
 
-  it('limits events per minute per IP', async () => {
-    const send = () => app.request().post('/api/analytics/events').set('X-Forwarded-For', '198.51.100.250').set('Origin', ORIGIN).send(pageView);
-    for (let n = 0; n < 5; n += 1) await send().expect(204);
-    await send().expect(429, { error: 'rate-limited' });
+  it('limits events per minute per IP, whoever the browsers are', async () => {
+    const send = (n: number) => app.request().post('/api/analytics/events').set('X-Forwarded-For', '198.51.100.250').set('Origin', ORIGIN).send({ ...pageView, client_id: `${2_000_000_000 + n}.1760000000` });
+    for (let n = 0; n < 5; n += 1) await send(n).expect(204);
+    await send(5).expect(429, { error: 'rate-limited' });
     expect(sent).toHaveLength(5);
+  });
+
+  it('limits events per minute per GA client id, from whatever addresses it comes', async () => {
+    const send = (address: string, clientId: string) => app.request().post('/api/analytics/events').set('X-Forwarded-For', address).set('Origin', ORIGIN).send({ ...pageView, client_id: clientId });
+    const flooder = '3000000001.1760000000';
+    for (let n = 0; n < 12; n += 1) await send(`198.51.${n}.200`, flooder).expect(204);
+    await send('198.51.99.200', flooder).expect(429, { error: 'rate-limited' });
+    // Another browser on the very address the flooder used is not held back.
+    await send('198.51.0.200', '3000000002.1760000000').expect(204);
+    expect(sent).toHaveLength(13);
   });
 });
 

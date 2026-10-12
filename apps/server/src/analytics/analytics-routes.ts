@@ -1,10 +1,11 @@
 // `POST /api/analytics/events`: the web app's page views and shares, on their way to Google Analytics. Open without
 // sign-in (the landing and lesson pages are public) but behind the API's Origin check, a 4 KB body limit (mounted in
-// app.ts ahead of the general parser) and a per-IP rate limit. Only the two web events pass; every value is checked
+// app.ts ahead of the general parser) and two rate limits: a wide one per IP (a school shares one address) and a
+// narrow one per GA client id (one browser). Only the two web events pass; every value is checked
 // and the page address rebuilt by `sanitizeWebEvent`, so nothing the browser makes up reaches Google.
 import path from 'node:path';
-import { Router } from 'express';
-import { WebEventBody, sanitizeWebEvent, type AnalyticsCatalog } from '@miu/schema/analytics';
+import { Router, type Request } from 'express';
+import { GA_CLIENT_ID, WebEventBody, sanitizeWebEvent, type AnalyticsCatalog } from '@miu/schema/analytics';
 import { RegionCatalog } from '@miu/schema/region';
 import { readContentJson, type ContentCatalog } from '../content/content-catalog';
 import { CONTENT_DIR } from '../content/content-dir';
@@ -31,13 +32,22 @@ export interface AnalyticsRouteDeps {
   catalog: AnalyticsCatalog;
   /** Events per minute per IP. */
   limitPerMinute: number;
+  /** Events per minute per GA client id. */
+  clientLimitPerMinute: number;
 }
 
-export function analyticsRoutes({ sink, catalog, limitPerMinute }: AnalyticsRouteDeps): Router {
-  const router = Router();
-  const limit = limiter(60_000, limitPerMinute, ipKey);
+/** The body's GA client id when it has the right shape; the IP otherwise (such a body is refused further on). */
+function clientKey(req: Request): string {
+  const clientId: unknown = (req.body as { client_id?: unknown } | undefined)?.client_id;
+  return typeof clientId === 'string' && GA_CLIENT_ID.test(clientId) ? `client:${clientId}` : `ip:${ipKey(req)}`;
+}
 
-  router.post('/analytics/events', limit, (req, res) => {
+export function analyticsRoutes({ sink, catalog, limitPerMinute, clientLimitPerMinute }: AnalyticsRouteDeps): Router {
+  const router = Router();
+  const limitIp = limiter(60_000, limitPerMinute, ipKey);
+  const limitClient = limiter(60_000, clientLimitPerMinute, clientKey);
+
+  router.post('/analytics/events', limitIp, limitClient, (req, res) => {
     const body = WebEventBody.safeParse(req.body);
     // The Origin check before this route lets only allowed origins through: it is the base of the page address.
     const origin = req.headers.origin;

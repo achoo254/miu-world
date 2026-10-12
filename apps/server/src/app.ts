@@ -123,7 +123,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
     const body: HealthResponse = { status: 'ok' };
     res.json(body);
   });
-  api.use(analyticsRoutes({ sink: analytics.sink, catalog: analyticsCatalog(content), limitPerMinute: config.analyticsLimitPerMinute }));
+  api.use(analyticsRoutes({ sink: analytics.sink, catalog: analyticsCatalog(content), limitPerMinute: config.analyticsLimitPerMinute, clientLimitPerMinute: config.analyticsClientLimitPerMinute }));
   api.use(authRoutes({ db, config, content, clock }));
   api.use(googleAuthRoutes({ db, config, clock, fetchImpl }));
   api.use(accountRoutes({ db, config, clock }));

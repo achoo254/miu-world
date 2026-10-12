@@ -130,9 +130,24 @@ analytics_env() {
   return 1
 }
 
+# Sending usage data to Google is allowed only once production already serves the policy that tells it: the version the
+# public endpoint answers must be the one this checkout holds (content/legal/consent-vi.json). Reads nothing secret.
+policy_is_live() {
+  local want got
+  want="$(jq -er '.version | select(type == "string" and test("^[A-Za-z0-9._-]{1,32}$"))' "$HERE/../../../content/legal/consent-vi.json")" \
+    || { echo "cannot read the policy version in content/legal/consent-vi.json" >&2; return 1; }
+  got="$(curl -fsS --max-time 10 "https://$DOMAIN/api/consents/policy" | jq -er '.version | select(type == "string" and test("^[A-Za-z0-9._-]{1,32}$"))')" \
+    || { echo "cannot read the policy version production serves (https://$DOMAIN/api/consents/policy)" >&2; return 1; }
+  [ "$got" = "$want" ] || {
+    echo "production serves policy $got but this checkout holds $want: release the privacy page first, then run analytics" >&2
+    return 1
+  }
+}
+
 # Puts (or replaces) just the two GA4 lines in /etc/miu/production.env, leaving every other line as it is. Safe to run
-# again; the next release (or a restart) starts sending. Run it only after the privacy page that tells it is live.
+# again; the next release (or a restart) starts sending. Refuses until the privacy page that tells it is live.
 analytics() {
+  policy_is_live || exit 1
   local lines
   lines="$(ga4_from_tokens)"
   printf '%s\n' "$lines" | prod 'set -e
