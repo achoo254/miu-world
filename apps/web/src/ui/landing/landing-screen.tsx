@@ -21,17 +21,18 @@ export function LandingScreen() {
           <div className="landing-text">
             <h1><T k="landing.title" /></h1>
             <p className="hint"><T k="landing.lead" /></p>
-            <ul className="landing-benefits">
-              {BENEFITS.map((key) => (
-                <li key={key}><T k={key} /></li>
-              ))}
-            </ul>
+            {/* Right under the lead: on a phone the button is on the first screen, before the list. */}
             <Link to="/login" className={buttonClass('primary', { block: true })} data-id="landing-play">
               <T k="landing.play" />
             </Link>
             <p className="hint">
               <T k="landing.haveAccount" /> <Link to="/login" data-id="landing-login"><T k="landing.loginLink" /></Link>
             </p>
+            <ul className="landing-benefits">
+              {BENEFITS.map((key) => (
+                <li key={key}><T k={key} /></li>
+              ))}
+            </ul>
           </div>
           <img className="landing-image" src={assetUrl(HOME_ISLAND)} alt={t('landing.imageAlt')} width={1600} height={1000} draggable={false} />
         </div>

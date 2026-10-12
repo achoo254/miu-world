@@ -2,6 +2,7 @@
 // card of the week (minutes played, lessons done) drawn in the browser, to send on by the phone's share sheet or to
 // save as a picture. The card holds no name and no id, and nothing of it is kept on the server or in a public page.
 import { useEffect, useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
 import type { PlayerProgressDto } from '@miu/schema/progress';
 import { pairOf } from '../i18n/i18n';
 import { T, useT } from '../i18n/use-t';
@@ -104,7 +105,9 @@ export function WeeklyShare({ progress }: { progress: PlayerProgressDto }) {
       <button type="button" className={`${buttonClass('secondary', { small: true })} weekly-share-open`} data-id="weekly-share-open" onClick={() => setOpen(true)}>
         <span aria-hidden="true">📣</span> <T k="weeklyShare.button" />
       </button>
-      {open ? <WeeklyCardDialog facts={weeklyFacts(progress)} onClose={() => setOpen(false)} /> : null}
+      {/* On the body: the progress view sits in a sheet with a backdrop filter, which would pin a fixed dialog to the
+          sheet instead of the screen, pushing it out of view once the page scrolls. */}
+      {open ? createPortal(<WeeklyCardDialog facts={weeklyFacts(progress)} onClose={() => setOpen(false)} />, document.body) : null}
     </>
   );
 }
