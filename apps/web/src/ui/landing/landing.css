@@ -34,3 +34,16 @@
 .landing-lessons { display: flex; flex-direction: column; align-items: center; gap: var(--space-sm); text-align: center; }
 .landing-lessons h2 { font-size: var(--text-lg); }
 .landing-lessons ul { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); margin: 0; padding: 0; list-style: none; }
+
+/* Above the sky's floating islands, on their own light card: a decoration drifting over them hid part of the heading. */
+.landing-lessons,
+.landing > .note {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-md);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-glass);
+}
+.landing > .note { padding: var(--space-xs) var(--space-md); }
+/* The privacy link at the foot of the page is a 44 px touch target, clear of the screen edge. */
+.landing > .note a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 var(--space-sm); }

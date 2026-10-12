@@ -4,7 +4,8 @@
  */
 
 .scene.lesson-scene { align-items: start; }
-.scene-content.lesson-page { max-width: 46rem; align-items: stretch; }
+/* Auto margins centre a short lesson page on a tall screen; a long subject page still starts at the top, never cut. */
+.scene-content.lesson-page { max-width: 46rem; align-items: stretch; margin-block: auto; }
 
 .lesson-brand {
   display: flex;

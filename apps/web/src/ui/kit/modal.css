@@ -24,3 +24,5 @@
 /* No scrim: the game shows untouched and gets the touches beside the dialog (the dialog itself still takes its own). */
 .modal-backdrop.modal-backdrop--clear { background: none; pointer-events: none; }
 .modal-backdrop--clear > .modal { pointer-events: auto; }
+/* A ghost button keeps a visible edge on a white dialog, where its usual white border disappears. */
+.modal .btn--ghost { border-color: var(--color-field-edge); }

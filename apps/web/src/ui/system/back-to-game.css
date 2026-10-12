@@ -20,3 +20,5 @@
 .back-to-game:focus-visible { box-shadow: var(--focus-ring); outline: none; }
 /* A panel or scene open over the screen has its own close: the floating button would only cover its content. */
 body:has(.modal-backdrop) .back-to-game { display: none; }
+/* A page under the floating button keeps room for it at the bottom, so its last buttons scroll clear of it. */
+body:has(.back-to-game) .region-page { padding-bottom: calc(3.25rem + var(--space-lg) + env(safe-area-inset-bottom, 0px)); }
