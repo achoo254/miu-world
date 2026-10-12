@@ -39,7 +39,7 @@ Người sở hữu không phải làm gì thường xuyên mà Miu World vẫn 
 | 1 | [Privacy và GA4 phía server](phase-01-privacy-and-server-analytics.md) | M | completed | — |
 | 2 | [Trang SEO: giới thiệu, trang theo bài, sitemap, thẻ xem trước](phase-02-seo-surfaces.md) | L | completed | 1 (sự kiện xem trang) |
 | 3 | [Lan truyền trong game: link mời bạn, thẻ khoe kết quả, tổng kết tuần](phase-03-share-loops.md) | L | completed | 1, 2 (trang khoe dùng thẻ theo bài) |
-| 4 | [Release, nộp sitemap, liên kết GA và Search Console, tài liệu](phase-04-release-and-measurement.md) | S | completed (trừ nộp sitemap: người sở hữu tự nộp) | 1–3 |
+| 4 | [Release, nộp sitemap, liên kết GA và Search Console, tài liệu](phase-04-release-and-measurement.md) | S | completed | 1–3 |
 | 5 | [Agent đăng clip theo lịch lên YouTube và Facebook](phase-05-scheduled-clip-posting.md) | L | blocked | 4; người sở hữu tạo kênh YouTube, Fanpage và cấp quyền một lần |
 
 ## Tiêu chí nghiệm thu chung

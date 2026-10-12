@@ -32,7 +32,8 @@ dependsOn: [1, 2, 3]
 - `analytics` + restart: 2 dòng `GA4_`, log `usage analytics: sent to Google Analytics`, 0 dòng lỗi.
 - Qua Cloudflare: `robots.txt`, `sitemap.xml` (73 địa chỉ), trang bài và trang môn 200, `/bai/<lạ>/` 404, `og:image` 200, chính sách v4.
 - GA4 Realtime nhận `page_view` từ một lượt xem thật; 6 custom dimension đã đăng ký; GA đã liên kết Search Console `https://miu.hoandat.com/`.
-- Còn lại: người sở hữu nộp `sitemap.xml` trong Search Console (theo yêu cầu của người sở hữu, AI chỉ hướng dẫn).
+- Người sở hữu nộp `sitemap.xml` trong Search Console (12/10/2026); Google đọc `robots.txt` và `sitemap.xml` lúc 14:53 (200). Googlebot chưa vào trang `/bai/` nào tại thời điểm ghi; thường mất vài ngày.
+- Release sửa ghi chú nhỏ `0b595602` (CSS: viền nút ghost trong hộp thoại, thẻ sáng ở trang giới thiệu, căn giữa trang bài, chừa chỗ dưới nút "Quay lại game") lên production 16:02, health OK, 0 dòng lỗi.
 
 ## Kiểm
 
