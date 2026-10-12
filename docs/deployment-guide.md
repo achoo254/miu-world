@@ -103,6 +103,8 @@ tools/deploy/production/deploy.sh release   # cổng release, build, security:di
 4. Restart `miu-server` và đợi `/api/health`. Không lên thì tự quay về release trước và in log.
 5. Giữ 5 release mới nhất, rồi gọi `https://miu.hoandat.com/api/health` từ ngoài vào.
 
+**Trang tìm kiếm và ảnh thẻ** (bản release): `release` dừng nếu `robots.txt` chặn toàn bộ hay `sitemap.xml` thiếu trang bài. Thêm hay đổi bài SGK có quest thì chạy `pnpm assets:cards` rồi `pnpm assets:manifest` (ảnh thẻ theo bài; build báo lỗi nếu thiếu), và `pnpm seo:lastmod` khi nội dung trang bài đổi (thiếu thì sitemap bỏ `lastmod`). Sau release lần đầu có sitemap: nộp `https://miu.hoandat.com/sitemap.xml` trong Search Console.
+
 **Nghiệm thu:**
 
 - `curl -s https://miu.hoandat.com/api/health` trả `{"status":"ok"}`.
