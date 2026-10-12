@@ -39,8 +39,13 @@ test('Google sign-in → consent → create character → Home → map → fores
   // The privacy page is public: anyone can read it before signing in.
   await page.goto('/privacy');
   await expect(page.getByRole('heading', { name: 'Quyền riêng tư của Miu World' })).toBeVisible();
+  // Someone who is not signed in meets the introduction at `/`, and "Chơi ngay" leads to the sign-in screen.
   await page.goto('/');
+  await expect(page.getByRole('heading', { level: 1, name: /Phiêu lưu trong thế giới khối/ })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Đăng nhập' })).toHaveCount(0);
+  await page.getByRole('link', { name: 'Chơi ngay' }).click();
   await expect(page.getByRole('heading', { name: 'Đăng nhập' })).toBeVisible();
+  await expect(page).toHaveURL(/\/login$/);
   await expect(page.locator('input[type="password"]')).toHaveCount(0); // no password sign-in in the UI
   await shot(page, '01-login');
   await page.getByRole('link', { name: 'Đăng nhập bằng Google' }).click();

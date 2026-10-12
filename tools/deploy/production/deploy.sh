@@ -199,6 +199,14 @@ release() {
   [ ! -e apps/web/dist/review.html ] && [ ! -e apps/web/dist/preview.html ] \
     && [ -z "$(ls apps/web/dist/game-assets/generated/review 2>/dev/null | grep -vx character)" ] \
     || { echo "release build still carries review material" >&2; exit 1; }
+  # Crawlers are let in, and the sitemap lists the home page and every page under /bai/ (the subject and lesson pages).
+  local pages; pages="$(find apps/web/dist/bai -name index.html 2>/dev/null | wc -l | tr -d ' ')"
+  [ "$pages" -gt 0 ] || { echo "release build has no lesson pages under /bai" >&2; exit 1; }
+  if grep -Eq '^Disallow:[[:space:]]*/[[:space:]]*$' apps/web/dist/robots.txt 2>/dev/null || ! grep -q '^Sitemap: ' apps/web/dist/robots.txt 2>/dev/null; then
+    echo "release build: robots.txt shuts crawlers out or names no sitemap" >&2; exit 1
+  fi
+  [ "$(grep -c '<loc>' apps/web/dist/sitemap.xml 2>/dev/null)" -eq "$((pages + 1))" ] \
+    || { echo "release build: sitemap.xml does not list the home page and the $pages pages under /bai" >&2; exit 1; }
   pnpm --filter @miu/server bundle >/dev/null
   pnpm -s security:dist
 

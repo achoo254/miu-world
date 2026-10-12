@@ -11,10 +11,15 @@ import { MUSIC_PATHS } from './src/ui/sound/music.ts';
 import { UI_ART_PATHS } from './src/ui/kit/ui-art.ts';
 import { MINIGAME_SPRITE_PATHS } from './src/ui/minigame/sprites.ts';
 import { appIcons, APP_ICON_PATHS } from './vite-app-icons.ts';
+import { LESSON_PAGE_ENTRY, buildSite, lessonPageFiles, sitemapPages } from './vite-lesson-pages.ts';
 import { repoAssets } from './vite-repo-assets.ts';
+import { seoMeta } from './vite-seo-meta.ts';
+import { LASTMOD_LEDGER, readLedger, sitemap } from './vite-sitemap.ts';
 
 const APP_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ASSETS_DIR = path.resolve(APP_DIR, '../../assets');
+const CONTENT_DIR = path.resolve(APP_DIR, '../../content');
+const INDEX_HTML = path.join(APP_DIR, 'index.html');
 const API_TARGET = 'http://127.0.0.1:8787';
 /** Files the React UI shows: its icons and art, and the minigames' pictures. */
 const UI_PATHS = [...new Set([...UI_ART_PATHS, ...MINIGAME_SPRITE_PATHS])];
@@ -76,10 +81,19 @@ const publicHosts = (process.env.MIU_PUBLIC_HOSTS ?? '')
  * staging) also carries the review page, the render tool page, the minigame dev page and the review
  * material they show.
  */
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ mode, command }) => {
   const review = mode !== 'release';
+  // The static pages (a page per subject and lesson, robots.txt, the sitemap) are written by the build only.
+  const site = command === 'build' ? buildSite({ contentDir: CONTENT_DIR, assetsDir: ASSETS_DIR, csp: CONTENT_SECURITY_POLICY }) : null;
   return {
-    plugins: [react(), contentSecurityPolicy(), appIcons(ASSETS_DIR), repoAssets(ASSETS_DIR, APP_DIR, [...UI_PATHS, ...APP_ICON_PATHS], { review })],
+    plugins: [
+      react(),
+      contentSecurityPolicy(),
+      appIcons(ASSETS_DIR),
+      seoMeta(ASSETS_DIR),
+      repoAssets(ASSETS_DIR, APP_DIR, [...UI_PATHS, ...APP_ICON_PATHS], { review }),
+      ...(site ? [lessonPageFiles(site), sitemap({ pages: sitemapPages(site, INDEX_HTML), ledger: readLedger(LASTMOD_LEDGER), release: !review })] : []),
+    ],
     define: assetVersionDefines(),
     publicDir: false,
     server: { proxy: apiProxy, allowedHosts: publicHosts },
@@ -89,7 +103,9 @@ export default defineConfig(({ mode }) => {
       target: 'es2022',
       rollupOptions: {
         input: {
-          index: path.join(APP_DIR, 'index.html'),
+          index: INDEX_HTML,
+          // The script of the static lesson pages (page view, destination after sign-in); the build links it into each.
+          [LESSON_PAGE_ENTRY]: path.join(APP_DIR, 'src/seo/lesson-page-entry.ts'),
           // The minigame dev page opens any game without signing in: review builds only, like the render tool.
           ...(review
             ? { preview: path.join(APP_DIR, 'preview.html'), review: path.join(APP_DIR, 'review.html'), minigame: path.join(APP_DIR, 'minigame.html') }

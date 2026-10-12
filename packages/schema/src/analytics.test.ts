@@ -14,7 +14,7 @@ import {
 const CATALOG: AnalyticsCatalog = {
   regions: new Set(['khu-rung-bi-mat', 'trung-tam']),
   lessons: new Set(['toan2-t1-b01']),
-  lessonSlugs: new Set(['toan2-t1-b01']),
+  lessonSlugs: new Set(['toan-2-bai-1-on-tap-cac-so-den-100']),
 };
 const ORIGIN = 'https://miu.example';
 const CLIENT = '1234567890.1760000000';
@@ -51,7 +51,8 @@ describe('page paths', () => {
   it('keeps a region or a lesson page only when it exists', () => {
     expect(normalizePagePath('/region/trung-tam', CATALOG)).toBe('/region/trung-tam');
     expect(normalizePagePath('/region/nowhere', CATALOG)).toBeNull();
-    expect(normalizePagePath('/bai/toan2-t1-b01', CATALOG)).toBe('/bai/toan2-t1-b01');
+    expect(normalizePagePath('/bai/toan-2-bai-1-on-tap-cac-so-den-100/', CATALOG)).toBe('/bai/toan-2-bai-1-on-tap-cac-so-den-100');
+    expect(normalizePagePath('/bai/toan2-t1-b01', CATALOG)).toBeNull(); // a lesson id is not a page name
     expect(normalizePagePath('/bai/made-up', CATALOG)).toBeNull();
     expect(normalizePagePath('/region/trung-tam/more', CATALOG)).toBeNull();
   });

@@ -1,5 +1,6 @@
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
 import type { Ga4Hit } from '@miu/schema/analytics';
+import { loadContentCatalog } from '../content/content-catalog';
 import { ORIGIN, createTestApp, type TestApp } from '../../test/test-app';
 import { AnalyticsSessions } from './analytics-session';
 import { analyticsCatalog } from './analytics-routes';
@@ -99,6 +100,15 @@ describe('analytics catalogue', () => {
     const catalog = analyticsCatalog(app.content);
     expect(catalog.regions.has('trung-tam')).toBe(true);
     expect(catalog.lessons.has('tv2-t1-b01')).toBe(true);
-    expect(catalog.lessonSlugs).toEqual(catalog.lessons);
+    // A lesson page is named by the book's title for the lesson, never by the lesson id.
+    expect(catalog.lessonSlugs).toEqual(new Set(['tieng-viet-2-bai-1-toi-la-hoc-sinh-lop-2']));
+  });
+
+  it('names a lesson page for every textbook lesson the shipped quests play', () => {
+    const { lessons, lessonSlugs } = analyticsCatalog(loadContentCatalog());
+    expect(lessonSlugs.size).toBe(lessons.size);
+    expect(lessonSlugs.has('toan-2-bai-1-on-tap-cac-so-den-100')).toBe(true);
+    expect(lessonSlugs.has('tieng-viet-2-on-tap-giua-hoc-ki-1')).toBe(true);
+    expect(lessonSlugs.has('toan2-t1-b01')).toBe(false);
   });
 });

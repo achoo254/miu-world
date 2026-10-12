@@ -3,17 +3,18 @@
 // (served in dev, emitted into the build). Icon URLs carry their manifest hash so a new logo is fetched past
 // Cloudflare's cache; the files themselves ship through repoAssets like any other runtime asset.
 import { createHash } from 'node:crypto';
-import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import type { Connect, HtmlTagDescriptor, Plugin } from 'vite';
-import { manifestVersions, versioned } from './src/asset-versions.ts';
-import { ASSET_PREFIX } from './vite-repo-assets.ts';
+import { versioned } from './src/asset-versions.ts';
+import { assetUrlResolver } from './vite-asset-url.ts';
 
 const BRAND_DIR = 'generated/brand';
 const FAVICON = `${BRAND_DIR}/miu-logo-32.png`;
 const APPLE_TOUCH_ICON = `${BRAND_DIR}/miu-logo-180.png`;
+/** The logo the static pages show beside the game's name. */
+export const APP_LOGO = `${BRAND_DIR}/miu-logo-192.png`;
 const MANIFEST_ICONS = [
-  { file: `${BRAND_DIR}/miu-logo-192.png`, sizes: '192x192', purpose: 'any' },
+  { file: APP_LOGO, sizes: '192x192', purpose: 'any' },
   { file: `${BRAND_DIR}/miu-logo-512.png`, sizes: '512x512', purpose: 'any' },
   { file: `${BRAND_DIR}/miu-logo-maskable-512.png`, sizes: '512x512', purpose: 'maskable' },
 ];
@@ -26,17 +27,16 @@ const APP_NAME = 'Miu World';
 const THEME_COLOR = '#8fd0ff';
 const BACKGROUND_COLOR = '#cdebff';
 
+/** The favicon and iPhone icon links every page carries (the static lesson pages too); `url` resolves a manifest path. */
+export function iconLinkTags(url: (file: string) => string): HtmlTagDescriptor[] {
+  return [
+    { tag: 'link', attrs: { rel: 'icon', type: 'image/png', sizes: '32x32', href: url(FAVICON) }, injectTo: 'head' },
+    { tag: 'link', attrs: { rel: 'apple-touch-icon', href: url(APPLE_TOUCH_ICON) }, injectTo: 'head' },
+  ];
+}
+
 export function appIcons(assetsDir: string): Plugin {
-  const manifest = JSON.parse(readFileSync(path.join(assetsDir, 'manifest.json'), 'utf8')) as {
-    files: Array<{ path: string; sha256: string }>;
-    generated: Array<{ path: string; sha256: string }>;
-  };
-  const versions = manifestVersions([...manifest.files, ...manifest.generated]);
-  const url = (file: string): string => {
-    const version = versions.get(file);
-    if (!version) throw new Error(`${file} is not in assets/manifest.json: run pnpm assets:logo`);
-    return versioned(`${ASSET_PREFIX}${file}`, version);
-  };
+  const url = assetUrlResolver(assetsDir);
   const webManifest = `${JSON.stringify(
     {
       name: APP_NAME,
@@ -67,10 +67,7 @@ export function appIcons(assetsDir: string): Plugin {
       server.middlewares.use(serveManifest);
     },
     transformIndexHtml(_html, ctx) {
-      const tags: HtmlTagDescriptor[] = [
-        { tag: 'link', attrs: { rel: 'icon', type: 'image/png', sizes: '32x32', href: url(FAVICON) }, injectTo: 'head' },
-        { tag: 'link', attrs: { rel: 'apple-touch-icon', href: url(APPLE_TOUCH_ICON) }, injectTo: 'head' },
-      ];
+      const tags = iconLinkTags(url);
       // Only the game is installable: the review and tool pages keep the favicon alone.
       if (path.basename(ctx.filename) === 'index.html') {
         tags.push(

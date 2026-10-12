@@ -3,10 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Miu World</title>
+    <title>Miu World — game 3D vừa chơi vừa ôn Toán và Tiếng Việt lớp 2</title>
   </head>
   <body>
-    <div id="root"></div>
+    <!--
+      What a visitor sees before the app starts, and all a crawler that runs no script (Cốc Cốc, a chat app's link
+      preview) reads. React replaces it when it mounts; its words are those of the landing screen (landing.* in
+      src/ui/i18n/locales/vi.json, kept in step by vite-seo-meta.test.ts). The pages for each lesson are static
+      files under /bai/, so these are plain links.
+    -->
+    <div id="root">
+      <main>
+        <p>Miu World</p>
+        <h1>Phiêu lưu trong thế giới khối, ôn đúng bài Toán và Tiếng Việt lớp 2</h1>
+        <p>Cùng Miu và bạn bè khám phá các hòn đảo 3D. Mỗi nhiệm vụ ôn một bài trong sách Toán 2 hoặc Tiếng Việt 2, bộ Kết nối tri thức với cuộc sống.</p>
+        <ul>
+          <li>Ôn đúng bài đang học, theo sách Toán 2 và Tiếng Việt 2.</li>
+          <li>Chơi cùng bạn bè: kết bạn và cùng đi làm nhiệm vụ.</li>
+          <li>Chép vào vở: đáp án đúng nào cũng có câu để chép lại.</li>
+          <li>Miễn phí, không quảng cáo.</li>
+        </ul>
+        <p><a href="/login">Chơi ngay</a></p>
+        <p>
+          <a href="/bai/toan-2/">Các bài Toán 2</a>
+          <a href="/bai/tieng-viet-2/">Các bài Tiếng Việt 2</a>
+        </p>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

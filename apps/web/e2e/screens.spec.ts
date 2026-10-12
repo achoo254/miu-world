@@ -77,7 +77,7 @@ test.afterAll(() => {
 for (const viewport of VIEWPORTS) {
   const size = `${viewport.width}x${viewport.height}`;
   test(`the main screens on ${size}`, async ({ browser, baseURL }) => {
-    // Nineteen screens, eight game loads and a second player: several minutes on a dev machine.
+    // Twenty-one screens, eight game loads and a second player: several minutes on a dev machine.
     test.setTimeout(15 * 60_000);
     const base = baseURL ?? '';
     const headers = { Origin: new URL(base).origin };
@@ -102,12 +102,25 @@ for (const viewport of VIEWPORTS) {
       }
     }
 
-    // Signed out: the sign-in screen.
+    // Signed out: the sign-in screen, the introduction and a lesson page.
     const out = await browser.newContext({ baseURL: base, viewport, deviceScaleFactor: 1, hasTouch: true, storageState: { cookies: [], origins: [] } });
     const outPage = await out.newPage();
     await capture(outPage, '01-login', async () => {
       await outPage.goto('/login');
       await expect(outPage.locator('main')).toBeVisible();
+    });
+    // The introduction at `/` and a static lesson page, the two ways in for someone who has not signed in.
+    await capture(outPage, '20-landing', async () => {
+      await outPage.goto('/');
+      await expect(outPage.getByRole('heading', { level: 1, name: /Phiêu lưu trong thế giới khối/ })).toBeVisible();
+      await expect(outPage.locator('[data-id="landing-play"]')).toBeVisible();
+      // The island picture is drawn before the screen is pictured.
+      await expect.poll(() => outPage.locator('.landing-image').evaluate((img) => (img as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+    });
+    await capture(outPage, '21-lesson-page', async () => {
+      await outPage.goto('/bai/toan-2-bai-1-on-tap-cac-so-den-100/');
+      await expect(outPage.getByRole('heading', { level: 1, name: /Trò chơi ôn Bài 1/ })).toBeVisible();
+      await expect(outPage.locator('[data-id="lesson-play"]')).toBeVisible();
     });
     await out.close();
 

@@ -6,11 +6,13 @@
 import path from 'node:path';
 import { Router, type Request } from 'express';
 import { GA_CLIENT_ID, WebEventBody, sanitizeWebEvent, type AnalyticsCatalog } from '@miu/schema/analytics';
+import { lessonPages } from '@miu/schema/lesson-pages';
 import { RegionCatalog } from '@miu/schema/region';
 import { readContentJson, type ContentCatalog } from '../content/content-catalog';
 import { CONTENT_DIR } from '../content/content-dir';
 import { HttpError } from '../http-error';
 import { ipKey, limiter } from '../rate-limit';
+import { readBookTocs } from '../worksheet/curriculum-books';
 import type { EventSink } from './ga4-forwarder';
 import { questLabels } from './server-events';
 
@@ -19,12 +21,13 @@ export const ANALYTICS_BODY_LIMIT = '4kb';
 
 /**
  * Page addresses and lesson ids the analytics may name: the regions of `content/world/regions.json`, the lessons the
- * quests play, and the lesson pages (one per such lesson, its slug the lesson id).
+ * quests play, and the lesson pages (one per such lesson, named as the static pages are: `@miu/schema/lesson-pages`).
  */
 export function analyticsCatalog(content: Pick<ContentCatalog, 'quests' | 'subjects'>, contentDir = CONTENT_DIR): AnalyticsCatalog {
   const regions = readContentJson(RegionCatalog, path.join(contentDir, 'world/regions.json')).regions;
   const { lessons } = questLabels(content);
-  return { regions: new Set(regions.map((r) => r.id)), lessons, lessonSlugs: lessons };
+  const lessonSlugs = new Set(lessonPages(readBookTocs(path.join(contentDir, 'curriculum')), lessons).map((page) => page.slug));
+  return { regions: new Set(regions.map((r) => r.id)), lessons, lessonSlugs };
 }
 
 export interface AnalyticsRouteDeps {

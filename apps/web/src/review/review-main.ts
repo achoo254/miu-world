@@ -568,6 +568,8 @@ const SCREEN_NAMES: Record<string, string> = {
   '17-pet-care': 'Chăm thú cưng',
   '18-party': 'Tổ đội',
   '19-worksheets': 'Phiếu viết (khu phụ huynh)',
+  '20-landing': 'Giới thiệu (chưa đăng nhập)',
+  '21-lesson-page': 'Trang bài học (HTML tĩnh)',
 };
 
 /** The screens pictured before a release, phone and iPad side by side, with the agent's findings under each. */

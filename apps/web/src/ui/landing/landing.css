@@ -1,0 +1,35 @@
+/*
+ * The introduction screen for a visitor who is not signed in (landing-screen.tsx): the text beside the picture of the
+ * islands on wide screens, stacked on narrow ones. Every value comes from tokens.css.
+ */
+
+.landing { max-width: 64rem; }
+
+.landing-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: var(--space-xl);
+}
+@media (max-width: 860px) {
+  .landing-panel { grid-template-columns: minmax(0, 1fr); gap: var(--space-lg); }
+  .landing-image { order: -1; }
+}
+
+.landing-text { display: flex; flex-direction: column; gap: var(--space-md); }
+.landing-text h1 { font-size: var(--text-xl); line-height: 1.2; }
+
+.landing-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: 0;
+  padding-left: var(--space-lg);
+}
+
+/* The overview picture has a transparent background: the panel's white shows through. */
+.landing-image { display: block; width: 100%; height: auto; border-radius: var(--radius-field); }
+
+.landing-lessons { display: flex; flex-direction: column; align-items: center; gap: var(--space-sm); text-align: center; }
+.landing-lessons h2 { font-size: var(--text-lg); }
+.landing-lessons ul { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); margin: 0; padding: 0; list-style: none; }

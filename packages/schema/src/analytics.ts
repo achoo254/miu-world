@@ -3,6 +3,7 @@
 // is emitted by the server. Every parameter is checked against a pattern or a list here, so no free text (a name, an
 // email, an account id, a code from a link) can reach Google; the page address is rebuilt from a fixed route table.
 import { z } from 'zod';
+import { LESSON_PAGES_ROOT, SUBJECT_SLUGS } from './lesson-pages';
 
 /** Events the web app may send. */
 export const WEB_EVENTS = ['page_view', 'share'] as const;
@@ -74,12 +75,12 @@ export interface AnalyticsCatalog {
   regions: ReadonlySet<string>;
   /** Textbook lesson ids a quest plays (`lesson_id`). */
   lessons: ReadonlySet<string>;
-  /** Slugs of the lesson pages (`/bai/<slug>`). */
+  /** Slugs of the lesson pages (`/bai/<slug>`, see lesson-pages.ts). */
   lessonSlugs: ReadonlySet<string>;
 }
 
 /** Paths sent to GA as they are. */
-const FIXED_PAGES = new Set(['/', '/login', '/play', '/home', '/privacy', '/moi', '/bai/toan-2', '/bai/tieng-viet-2']);
+const FIXED_PAGES = new Set(['/', '/login', '/play', '/home', '/privacy', '/moi', ...SUBJECT_SLUGS.map((slug) => `${LESSON_PAGES_ROOT}/${slug}`)]);
 /** An invite link `/moi/<code>`: counted as `/moi`, the code never leaves the server. */
 const INVITE_PAGE = /^\/moi\/[A-Za-z0-9_-]{1,64}$/;
 
@@ -93,7 +94,7 @@ export function normalizePagePath(path: string, catalog: AnalyticsCatalog): stri
   const [, section, id, ...rest] = trimmed.split('/');
   if (rest.length > 0 || !id) return null;
   if (section === 'region' && catalog.regions.has(id)) return trimmed;
-  if (section === 'bai' && catalog.lessonSlugs.has(id)) return trimmed;
+  if (section === LESSON_PAGES_ROOT.slice(1) && catalog.lessonSlugs.has(id)) return trimmed;
   return null;
 }
 

@@ -1,0 +1,52 @@
+/*
+ * The static lesson and subject pages (NEW SCREEN, written by vite-lesson-pages.ts): the sky and panel of the
+ * sign-in screens, with the lesson's activities and a button to play. Every value comes from tokens.css.
+ */
+
+.scene.lesson-scene { align-items: start; }
+.scene-content.lesson-page { max-width: 46rem; align-items: stretch; }
+
+.lesson-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  align-self: flex-start;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  color: var(--color-primary);
+  text-shadow: 0 3px 0 var(--color-surface);
+}
+.lesson-brand img { border-radius: var(--radius-field); box-shadow: var(--shadow-tile); }
+
+.lesson-panel h1 { font-size: var(--text-title); }
+.lesson-panel h2 { margin-top: var(--space-sm); font-size: var(--text-lg); }
+.lesson-panel .btn { align-self: flex-start; text-align: center; }
+
+.lesson-activities,
+.lesson-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lesson-activities li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-field);
+  background: var(--color-field);
+  border: 2px solid var(--color-field-line);
+}
+.lesson-activities h3 { margin: 0; font-family: var(--font-display); font-size: var(--text-lg); line-height: 1.2; }
+.lesson-list { gap: var(--space-sm); }
+.lesson-list a { display: inline-block; padding: var(--space-xs) 0; }
+
+.lesson-nav { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+/* The ghost button is made for the sky; on the white panel it gets the field's tint and line. */
+.lesson-nav .btn--ghost { background: var(--color-field); border: 2px solid var(--color-field-line); }

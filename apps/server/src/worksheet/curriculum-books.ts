@@ -32,6 +32,21 @@ function parseFile<S extends z.ZodType>(schema: S, file: string, issues: string[
   return null;
 }
 
+/**
+ * Only the tables of contents (`book.json`) of the books present, for what needs lesson titles and pages but not the
+ * inventory itself (the lesson pages and their analytics names). A `book.json` that does not parse is an error.
+ */
+export function readBookTocs(dir: string = CURRICULUM_DIR): CurriculumBook[] {
+  const issues: string[] = [];
+  const books = BOOK_IDS.flatMap((id) => {
+    const file = path.join(dir, id, 'book.json');
+    const book = existsSync(file) ? parseFile(CurriculumBook, file, issues) : null;
+    return book ? [book] : [];
+  });
+  if (issues.length > 0) throw new Error(issues.join('; '));
+  return books;
+}
+
 /** Reads every book folder present; the content gate and the server use this same reader. */
 export function readCurriculum(dir: string = CURRICULUM_DIR): CurriculumRead {
   const result: CurriculumRead = { books: [], issues: [] };

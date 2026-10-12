@@ -4,6 +4,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { AccountProvider } from './account-context';
 import { AppRoutes } from '../app-shell';
 import { PROGRESS, questList } from '../player/test-fixtures';
+import { playTarget, savePostLoginTarget, takePostLoginTarget } from '../../post-login-target';
 
 // jsdom has no WebGL: the runtime is covered by Playwright; here only its lifecycle is observed.
 const gameLifecycle = vi.hoisted(() => ({ started: 0, disposed: 0, outfit: [] as string[] }));
@@ -362,5 +363,35 @@ describe('account flow', () => {
     expect(await screen.findByRole('link', { name: 'Bắt đầu' }, { timeout: 10000 })).toBeTruthy();
     expect(screen.queryByRole('heading', { name: 'Ai đang chơi?' })).toBeNull();
     expect(calls.map((c) => c.key)).toContain(`POST /api/players/${CHILD}/select`);
+  }, 15000);
+
+  it('opens the quest a lesson page saved once Home is reached, and only once', async () => {
+    window.localStorage.clear();
+    savePostLoginTarget({ next: playTarget('khu-rung-bi-mat', 'forest-ch1') });
+    const calls = stubApi({
+      'GET /api/auth/me': () => ({ status: 200, body: me({ activePlayerId: CHILD }) }),
+      'GET /api/character': () => ({ status: 200, body: { species: 'cat', name: 'Mochi', equipped: [] } }),
+      'GET /api/progress': () => ({ status: 200, body: PROGRESS }),
+      'GET /api/quests': () => ({ status: 200, body: questList() }),
+    });
+    renderAt('/');
+    // Straight to the game, not to the Home screen's "Bắt đầu".
+    expect(await screen.findByRole('button', { name: /Menu/ }, { timeout: 10000 })).toBeTruthy();
+    await vi.waitFor(() => expect(gameLifecycle.started).toBeGreaterThan(0));
+    expect(takePostLoginTarget()).toBeNull();
+    expect(calls.map((c) => c.key)).toContain('GET /api/quests');
+  }, 15000);
+
+  it('does not open a destination that is not on the allowlist', async () => {
+    window.localStorage.setItem('miu.postLogin', JSON.stringify({ next: '/parent', savedAt: Date.now() }));
+    stubApi({
+      'GET /api/auth/me': () => ({ status: 200, body: me({ activePlayerId: CHILD }) }),
+      'GET /api/character': () => ({ status: 200, body: { species: 'cat', name: 'Mochi', equipped: [] } }),
+      'GET /api/progress': () => ({ status: 200, body: PROGRESS }),
+      'GET /api/quests': () => ({ status: 200, body: questList() }),
+    });
+    renderAt('/');
+    expect(await screen.findByRole('link', { name: 'Bắt đầu' }, { timeout: 10000 })).toBeTruthy();
+    expect(window.localStorage.getItem('miu.postLogin')).toBeNull();
   }, 15000);
 });

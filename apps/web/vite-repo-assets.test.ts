@@ -65,6 +65,14 @@ describe('runtime asset selection for the web build', async () => {
     expect(release).not.toContain('generated/review/perf.json');
   });
 
+  it('ships the link-preview cards in a release, which the pages\' Open Graph tags point at', async () => {
+    const release = await runtimeAssetPaths(ASSETS_DIR, manifest, UI_ART_PATHS, { review: false });
+    const cards = release.filter((p) => p.startsWith('generated/share-cards/'));
+    expect(cards).toContain('generated/share-cards/miu-world.png');
+    expect(cards).toContain('generated/share-cards/toan-2-bai-1-on-tap-cac-so-den-100.png');
+    expect(cards.length).toBeGreaterThanOrEqual(71);
+  });
+
   it('lets the game reach review material only through the UI art list a release keeps', () => {
     // Anything else under src/ that names generated/review/ would load in review builds and 404 in production.
     const SRC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'src');

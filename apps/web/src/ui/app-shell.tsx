@@ -1,7 +1,8 @@
 // Khung ứng dụng và điều hướng theo trạng thái tài khoản (NEW SCREEN, Master Plan §6 Tài khoản).
 import { Suspense, lazy, useEffect, type ReactNode } from 'react';
-import { Navigate, Route, Routes, useLocation } from 'react-router';
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router';
 import { usePageViews } from '../analytics/use-page-views';
+import { takePostLoginTarget } from '../post-login-target';
 import { AccountProvider, useAccount } from './account/account-context';
 import { ConsentScreen } from './account/consent-screen';
 import { stopSpeaking } from './dialogue/speech';
@@ -11,6 +12,7 @@ import { T } from './i18n/use-t';
 import { ParentAreaScreen } from './account/parent-area-screen';
 import { PlayStartScreen, ProfilePickerScreen } from './account/profile-screens';
 import { LoginScreen, RegisterScreen, SetPinScreen } from './account/sign-in-screens';
+import { LandingScreen } from './landing/landing-screen';
 import { PrivacyScreen } from './legal/privacy-screen';
 import { Logo, PageLoading, SkyScene } from './kit/sky-scene';
 import type { MusicMood } from './sound/music';
@@ -93,11 +95,42 @@ function SignedOutOnly({ children }: { children: ReactNode }) {
   return children;
 }
 
+/** `/`: the introduction for a visitor who is not signed in; everyone else goes on into the game. */
+function LandingOrStart() {
+  const { state } = useAccount();
+  if (state.status === 'signed-out') return <LandingScreen />;
+  return (
+    <RequireParent>
+      <PlayStartScreen />
+    </RequireParent>
+  );
+}
+
+/**
+ * A visitor who left a page outside the game to play (a lesson page's "Chơi bài này") is taken there once Home is
+ * reached: by then they are signed in, have given consent and made their character, as the way to Home requires.
+ */
+function ResumePostLoginTarget() {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  useEffect(() => {
+    if (pathname !== '/home') return;
+    const target = takePostLoginTarget();
+    if (target?.next) navigate(target.next, { replace: true });
+  }, [pathname, navigate]);
+  return null;
+}
+
 /** Play needs a selected player; otherwise the start picks one (or shows the picker on a shared device). */
 function RequireActivePlayer({ children }: { children: ReactNode }) {
   const { state } = useAccount();
   if (state.status === 'signed-in' && !state.me.activePlayerId) return <Navigate to="/" replace />;
-  return children;
+  return (
+    <>
+      <ResumePostLoginTarget />
+      {children}
+    </>
+  );
 }
 
 /**
@@ -125,7 +158,7 @@ export function AppRoutes() {
       <LanguageAndSpeech />
       <PageViews />
       <Routes>
-        <Route path="/" element={<WithMusic mood="home"><RequireParent><PlayStartScreen /></RequireParent></WithMusic>} />
+        <Route path="/" element={<WithMusic mood="home"><LandingOrStart /></WithMusic>} />
         <Route path="/login" element={<WithMusic mood="home"><SignedOutOnly><LoginScreen /></SignedOutOnly></WithMusic>} />
         <Route path="/register" element={<WithMusic mood="home"><SignedOutOnly><RegisterScreen /></SignedOutOnly></WithMusic>} />
         <Route path="/privacy" element={<PrivacyScreen />} />
