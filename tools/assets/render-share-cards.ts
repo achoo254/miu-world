@@ -29,10 +29,10 @@ const FONT_FILES = [
 ] as const;
 
 const text = (key: TextKey, params?: Record<string, string>): string => pairOf(key, params).vi;
-const escapeHtml = (value: string): string => value.replace(/[&<>"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[ch] ?? ch);
+export const escapeHtml = (value: string): string => value.replace(/[&<>"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[ch] ?? ch);
 
 /** A custom property of tokens.css (`--color-primary`), so the cards use the UI's own colours. */
-function token(css: string, name: string): string {
+export function token(css: string, name: string): string {
   const match = new RegExp(`${name}:\\s*([^;]+);`).exec(css);
   if (!match?.[1]) throw new Error(`${name} is not in tokens.css`);
   return match[1].trim();
@@ -40,14 +40,16 @@ function token(css: string, name: string): string {
 
 const dataUrl = async (rel: string, mime: string): Promise<string> => `data:${mime};base64,${(await readFile(path.join(ASSETS_DIR, rel))).toString('base64')}`;
 
-interface Look {
+export interface Look {
+  /** The text of tokens.css, for pictures that take more colours from it. */
+  tokens: string;
   css: string;
   logo: string;
   islands: string;
   fontFaces: string;
 }
 
-async function loadLook(): Promise<Look> {
+export async function loadLook(): Promise<Look> {
   const tokens = await readFile(TOKENS_CSS, 'utf8');
   const [skyTop, skyMid, skyBottom] = ['--color-sky-top', '--color-sky-mid', '--color-sky-bottom'].map((name) => token(tokens, name));
   const fontFaces = (
@@ -78,7 +80,7 @@ async function loadLook(): Promise<Look> {
     .islands { position: absolute; right: -40px; top: 40px; width: 720px; height: auto; filter: drop-shadow(0 18px 18px rgba(47, 96, 170, 0.25)); }
     .lesson-logo { position: absolute; right: 64px; bottom: 56px; width: 232px; height: 232px; border-radius: 56px; box-shadow: 0 10px 0 rgba(43, 33, 64, 0.12); }
   `;
-  return { css, logo: await dataUrl(LOGO, 'image/png'), islands: await dataUrl(ISLANDS, 'image/png'), fontFaces };
+  return { tokens, css, logo: await dataUrl(LOGO, 'image/png'), islands: await dataUrl(ISLANDS, 'image/png'), fontFaces };
 }
 
 const page = (look: Look, body: string): string =>
@@ -115,17 +117,20 @@ function lessonCard(look: Look, title: string, subject: string): string {
   );
 }
 
-async function shoot(tab: Page, html: string, file: string): Promise<void> {
+/** Photographs `html` at `size` into the absolute path `target`, once the page has its fonts. */
+export async function photograph(tab: Page, html: string, target: string, size: { width: number; height: number }): Promise<void> {
   await tab.setContent(html, { waitUntil: 'load' });
   // The fonts are data: URLs; wait until the page has them before it is photographed.
   await tab.evaluate(async () => {
     await document.fonts.ready;
     if (!document.fonts.check("800 40px 'Baloo 2'")) throw new Error('the Baloo 2 font did not load');
   });
-  const target = path.join(ASSETS_DIR, file);
   await mkdir(path.dirname(target), { recursive: true });
-  await tab.screenshot({ path: target, type: 'png', animations: 'disabled', clip: { x: 0, y: 0, ...SHARE_CARD_SIZE } });
+  await tab.screenshot({ path: target, type: 'png', animations: 'disabled', clip: { x: 0, y: 0, ...size } });
 }
+
+/** `photograph` into `file`, relative to `assets/` (a share card unless told otherwise). */
+export const shoot = (tab: Page, html: string, file: string, size: { width: number; height: number } = SHARE_CARD_SIZE): Promise<void> => photograph(tab, html, path.join(ASSETS_DIR, file), size);
 
 async function main(): Promise<void> {
   const look = await loadLook();

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Template of the weekly clip timer for the owner's Mac (launchd). NOT installed by anything in the repo.
+  Install by hand, only after a dry run and one private publish went well (docs/marketing-channels.md, step 6):
+    1. Copy it to ~/Library/LaunchAgents/com.miu-world.weekly-clip.plist and replace the three __PLACEHOLDERS__
+       (the repository folder, the access-tokens.json path outside the repo, a folder for the log).
+    2. launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.miu-world.weekly-clip.plist
+  Remove: launchctl bootout gui/$(id -u)/com.miu-world.weekly-clip
+  It runs every Monday 09:00 (the Mac's clock is Vietnam time); a run missed while the Mac sleeps happens on wake.
+  The week is read from the Vietnam date and the posted ledger skips what is already posted, so a second run in a week is harmless.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.miu-world.weekly-clip</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/zsh</string>
+    <string>-lc</string>
+    <string>cd "__REPO_DIR__" &amp;&amp; MIU_MARKETING_TOKEN_FILE="__TOKEN_FILE__" pnpm marketing:weekly -- --publish --privacy public</string>
+  </array>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key>
+    <integer>1</integer>
+    <key>Hour</key>
+    <integer>9</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+  </dict>
+  <key>RunAtLoad</key>
+  <false/>
+  <key>StandardOutPath</key>
+  <string>__LOG_DIR__/weekly-clip.log</string>
+  <key>StandardErrorPath</key>
+  <string>__LOG_DIR__/weekly-clip.log</string>
+</dict>
+</plist>

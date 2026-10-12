@@ -22,6 +22,7 @@ import { buildAccessoryCatalog, type AccessoryItem } from '../../packages/voxel/
 
 const APP_DIR = path.join(REPO_ROOT, 'apps/web');
 const PORT = 5199; // fixed so a stale server is easy to find (lsof -i :5199)
+export const PREVIEW_ORIGIN = `http://127.0.0.1:${PORT}`;
 const REVIEW_DIR = path.join(ASSETS_DIR, 'generated/review');
 
 export interface Shot {
@@ -173,7 +174,7 @@ export const ZONE_MAPS: Record<string, string> = {
 const ZONE_SHOTS = 14;
 
 /** A map's own blocks (its region files; the land round it is generated while playing), region by region as asked. */
-function mapBlocks(map: string): (x: number, y: number, z: number) => Promise<number> {
+export function mapBlocks(map: string): (x: number, y: number, z: number) => Promise<number> {
   const regions = new Map<string, Promise<VoxelWorld | null>>();
   return async (x, y, z) => {
     const [rx, rz] = regionOf(x, z);
@@ -189,11 +190,14 @@ function mapBlocks(map: string): (x: number, y: number, z: number) => Promise<nu
   };
 }
 
-/** Ids of the blocks that are solid (content/blocks.json): walls and roofs, not leaves or water. */
-async function solidBlocks(): Promise<Set<number>> {
+/** Ids of the blocks of content/blocks.json that `keep` accepts. */
+export async function blockIds(keep: (block: ReturnType<typeof blockTableSchema.parse>['blocks'][number]) => boolean): Promise<Set<number>> {
   const table = blockTableSchema.parse(JSON.parse(await readFile(path.join(REPO_ROOT, 'content/blocks.json'), 'utf8')));
-  return new Set(table.blocks.filter((b) => b.solid && !b.liquid).map((b) => b.id));
+  return new Set(table.blocks.filter(keep).map((b) => b.id));
 }
+
+/** Ids of the blocks that are solid (content/blocks.json): walls and roofs, not leaves or water. */
+export const solidBlocks = (): Promise<Set<number>> => blockIds((b) => b.solid && !b.liquid);
 
 /**
  * Where to stand to see a landmark that is inside a building: on the open floor nearest it (a landmark keeps
@@ -359,7 +363,7 @@ async function capture(browser: Browser, shots: Shot[], outDir: string): Promise
   for (const shot of shots) {
     const query = new URLSearchParams(Object.entries(shot.query).map(([k, v]) => [k, String(v)]));
     await page.setViewportSize(shot.viewport ?? { width: 1024, height: 1024 });
-    await page.goto(`http://127.0.0.1:${PORT}/preview.html?${query.toString()}`);
+    await page.goto(`${PREVIEW_ORIGIN}/preview.html?${query.toString()}`);
     await page.waitForFunction(() => document.body.dataset.ready === '1' || document.body.dataset.error !== undefined, null, {
       timeout: 60_000,
     });
@@ -376,7 +380,26 @@ async function capture(browser: Browser, shots: Shot[], outDir: string): Promise
   if (errors.length > 0) throw new Error(`page errors: ${errors.join('; ')}`);
 }
 
-/** Pictures taken on one dev server before a fresh one takes over. */
+/**
+ * The web app's dev server on the fixed port. No file watching and no hot reload: content written meanwhile (other
+ * work, other agents) must not reload the page under a shot and hang the capture; each run starts its own server on
+ * fresh files. The caller closes it.
+ */
+export async function startPreviewServer(): Promise<ViteDevServer> {
+  const server = await createServer({
+    root: APP_DIR,
+    configFile: path.join(APP_DIR, 'vite.config.ts'),
+    server: { port: PORT, strictPort: true, host: '127.0.0.1', watch: null, hmr: false },
+    logLevel: 'warn',
+  });
+  await server.listen();
+  return server;
+}
+
+/**
+ * Pictures taken on one dev server before a fresh one takes over: past some thirty pages the server stops answering a
+ * page's module requests (connections left stuck by the ones each navigation aborts) and the run hangs.
+ */
 const SERVER_SHOTS = 20;
 
 /**
@@ -384,20 +407,6 @@ const SERVER_SHOTS = 20;
  * (the folder is emptied first), then re-hashes the manifest. Shared with render-home-island.ts.
  */
 export async function renderShots(batches: Array<{ outDir: string; label: string; shots: () => Promise<Shot[]> }>): Promise<void> {
-  // A fresh dev server every SERVER_SHOTS pictures: past some thirty pages the server stops answering a
-  // page's module requests (connections left stuck by the ones each navigation aborts) and the run hangs.
-  const startServer = async (): Promise<ViteDevServer> => {
-    const server = await createServer({
-      root: APP_DIR,
-      configFile: path.join(APP_DIR, 'vite.config.ts'),
-      // No file watching and no hot reload: content written meanwhile (other work, other agents) must not
-      // reload the page under a shot and hang the capture; each run starts its own server on fresh files.
-      server: { port: PORT, strictPort: true, host: '127.0.0.1', watch: null, hmr: false },
-      logLevel: 'warn',
-    });
-    await server.listen();
-    return server;
-  };
   let browser: Browser | undefined;
   try {
     browser = await chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
@@ -407,7 +416,7 @@ export async function renderShots(batches: Array<{ outDir: string; label: string
       if (!only) await rm(batch.outDir, { recursive: true, force: true });
       const shots = (await batch.shots()).filter((s) => !only || s.file.includes(only));
       for (let i = 0; i < shots.length; i += SERVER_SHOTS) {
-        const server = await startServer();
+        const server = await startPreviewServer();
         try {
           await capture(browser, shots.slice(i, i + SERVER_SHOTS), batch.outDir);
         } finally {

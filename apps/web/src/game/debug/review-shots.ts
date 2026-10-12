@@ -1,8 +1,10 @@
 // Fixed cameras for review screenshots (?shot=top|iso|island|bridge|tree|npc|life:<ambient id>|view:…):
 // overrides the follow camera, lifts view-distance limits, and flags document.body.dataset.ready after
 // a few frames. A `life:` shot frames one villager or animal and keeps time running (for videos). A
-// `view:ex,ey,ez:tx,ty,tz:fov` shot is any camera on any map, without the player (region backdrops). A `play`
-// shot is a still frame of play where `spawnAt` puts the child: the game's own follow camera and fading.
+// `view:ex,ey,ez:tx,ty,tz:fov` shot is any camera on any map, without the player (region backdrops). A
+// `drive:ex,ey,ez:tx,ty,tz:fov` shot starts like a view and then follows `window.__miuShotCamera` frame by frame (a
+// tool that records a camera flight sets it between screenshots). A `play` shot is a still frame of play where
+// `spawnAt` puts the child: the game's own follow camera and fading.
 import { Vector3, type PerspectiveCamera, type Scene } from 'three';
 import type { WorldEntities } from '@miu/voxel/world-entities';
 
@@ -23,7 +25,7 @@ export interface ReviewShot {
   readonly play: boolean;
 }
 
-/** `view:ex,ey,ez:tx,ty,tz:fov` → the camera it names, or null when the name is not a well-formed view. */
+/** `view:ex,ey,ez:tx,ty,tz:fov` (or `drive:` with the same parts) → the camera it names, or null when the name is not a well-formed view. */
 export function parseViewShot(name: string): { eye: Vector3; target: Vector3; fov: number } | null {
   const [kind, eye, target, fov] = name.split(':');
   const point = (text = ''): Vector3 | null => {
@@ -33,7 +35,25 @@ export function parseViewShot(name: string): { eye: Vector3; target: Vector3; fo
   const e = point(eye);
   const t = point(target);
   const f = Number(fov);
-  return kind === 'view' && e && t && Number.isFinite(f) && f > 0 ? { eye: e, target: t, fov: f } : null;
+  return (kind === 'view' || kind === 'drive') && e && t && Number.isFinite(f) && f > 0 ? { eye: e, target: t, fov: f } : null;
+}
+
+/** The camera a driving tool asks for: eye and target in blocks, vertical field of view in degrees. */
+export interface DrivenCamera {
+  eye: Vector3;
+  target: Vector3;
+  fov: number;
+}
+
+/** The camera a tool left in `window.__miuShotCamera` (`{ eye: [x,y,z], target: [x,y,z], fov }`), or null when it is missing or malformed. */
+export function parseDrivenCamera(value: unknown): DrivenCamera | null {
+  if (typeof value !== 'object' || value === null) return null;
+  const { eye, target, fov } = value as Record<string, unknown>;
+  const point = (p: unknown): Vector3 | null =>
+    Array.isArray(p) && p.length === 3 && p.every((n) => typeof n === 'number' && Number.isFinite(n)) ? new Vector3(p[0] as number, p[1] as number, p[2] as number) : null;
+  const e = point(eye);
+  const t = point(target);
+  return e && t && typeof fov === 'number' && Number.isFinite(fov) && fov > 0 ? { eye: e, target: t, fov } : null;
 }
 
 const SETTLE_FRAMES = 20;
@@ -106,18 +126,20 @@ export function createReviewShot(
     const eye = LIFE_ANGLES.map(around).find(clear) ?? around(LIFE_ANGLES[0] ?? 225);
     views[name] = { eye, target, fov: 50 };
   }
-  const view = name.startsWith('view:') ? parseViewShot(name) : views[name];
+  const driven = name.startsWith('drive:');
+  const view = name.startsWith('view:') || driven ? parseViewShot(name) : views[name];
   if (!view) throw new Error(`unknown review shot ${name}`);
   scene.fog = null;
   let frames = 0;
   return {
     apply(camera) {
-      camera.fov = view.fov;
+      const now = (driven ? parseDrivenCamera((window as { __miuShotCamera?: unknown }).__miuShotCamera) : null) ?? view;
+      camera.fov = now.fov;
       // Far enough for the whole map from wherever the eye is (wide maps are 800 blocks across).
-      camera.far = Math.max(400, view.eye.distanceTo(center) + Math.hypot(sx, sz));
+      camera.far = Math.max(400, now.eye.distanceTo(center) + Math.hypot(sx, sz));
       camera.updateProjectionMatrix();
-      camera.position.copy(view.eye);
-      camera.lookAt(view.target);
+      camera.position.copy(now.eye);
+      camera.lookAt(now.target);
     },
     frameDone() {
       frames++;
@@ -125,7 +147,7 @@ export function createReviewShot(
     },
     backdrop: name === 'island',
     live: ambient !== undefined,
-    hidesPlayer: ambient !== undefined || name.startsWith('view:'),
+    hidesPlayer: ambient !== undefined || name.startsWith('view:') || driven,
     target: view.target.clone(),
     play: false,
     get settled() {

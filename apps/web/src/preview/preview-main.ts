@@ -1,5 +1,6 @@
 // Headless render target for tools/assets/render-preview.ts (no account needed: tooling only).
-// Map shots: ?shot=top|iso|bridge|tree|npc|view:…&quality=…&region=… runs the game with a fixed review camera.
+// Map shots: ?shot=top|iso|bridge|tree|npc|view:…&quality=…&region=… runs the game with a fixed review camera;
+//        &chapter=<n>&quest=<id> shows the world as that quest plays it (its own characters and props).
 // Model shots: ?model=<manifest path>&anim=<clip>&t=<seconds>&yaw=<deg>&pitch=<deg>&size=<px>
 //        &acc=<id[:variant],id[:variant]>&accScale=<node:scale,...>&bg=<css colour | transparent>
 //        (a vehicle among `acc` stands under her, as she rides it)
@@ -178,7 +179,9 @@ function renderMapShot(): void {
   });
   // `region` picks the map, as on /play (the forest when left out).
   const region = params.get('region') ?? undefined;
-  void new Game(document.body, { store, search: window.location.search, outfit: ['hat-witch-pink', 'backpack-brown'], region }).start();
+  const chapter = Number(params.get('chapter'));
+  const quest = params.get('quest') ?? undefined;
+  void new Game(document.body, { store, search: window.location.search, outfit: ['hat-witch-pink', 'backpack-brown'], region, ...(chapter > 0 ? { chapter } : {}), ...(quest ? { quest } : {}) }).start();
 }
 
 const worldMap = params.get('world');
