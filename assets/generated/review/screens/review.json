@@ -1,85 +1,120 @@
 {
-  "capturedFrom": "1295db5ea267b542bcc8eced08784f27d956107a",
-  "capturedAt": "2026-10-12T10:25:51+07:00",
-  "reviewedAt": "2026-10-12T10:28:39+07:00",
-  "reviewer": "agent:general-purpose ×4 duyệt đủ 38 ảnh chụp từ cây sạch của 1295db5e (favicon và icon PWA), so với ảnh lần duyệt trước",
+  "capturedFrom": "459596aaa8106165e42440941d8403e5df164c76",
+  "capturedAt": "2026-10-12T14:29:00+07:00",
+  "reviewedAt": "2026-10-12T14:30:12+07:00",
+  "reviewer": "agent:general-purpose (sonnet) ×4 duyệt đủ 48 ảnh chụp từ cây sạch của 459596aa; lần trước (84b3fcec) tìm ra hộp thoại thẻ tuần trượt khỏi màn, nút Chơi ngay dưới màn đầu trên điện thoại, hàng chia sẻ khó đọc: sửa ở 459596aa rồi chụp và duyệt lại",
   "verdict": "pass",
   "findings": [
     {
       "shot": "360x740/07-play-hud.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Tên nhiệm vụ trên thẻ \"Nhiệm vụ hiện tại\" bị cắt thành \"Khu rừng bí mật – Chương 1: Lá…\" ở khổ 360 px (đã có từ lần trước).",
+      "text": "Tên chương trên thẻ nhiệm vụ cắt bằng \"…\" (\"Khu rừng bí mật – Chương 1: Lá…\"), như các lần trước.",
       "fixedIn": null
     },
     {
-      "shot": "360x740/08-play-prompt.png",
-      "kind": "clipped",
+      "shot": "360x740/09-dialogue.png",
+      "kind": "missing-close",
       "severity": "note",
-      "text": "Tên nhiệm vụ trên thẻ \"Nhiệm vụ hiện tại\" bị cắt thành \"Khu rừng bí mật – Chương 1: Lá…\" ở khổ 360 px (đã có từ lần trước).",
+      "text": "Hộp thoại NPC chỉ có \"Nghe lại\" và \"Tiếp\", không có nút đóng; \"Tiếp\" là lối ra (như các lần trước).",
       "fixedIn": null
     },
     {
       "shot": "360x740/10-question.png",
+      "kind": "clipped",
+      "severity": "note",
+      "text": "Nút \"Nghe\" chen giữa phép tính, tách \"(8\" và \"+ 5 = ?)\" thành hai dòng (như lần trước).",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/11-reward.png",
       "kind": "other",
       "severity": "note",
-      "text": "Phép tính trong đề xuống dòng giữa chừng: \"(8\" cuối dòng trên, \"+ 5 = ?)\" ở dòng dưới cạnh nút Nghe; nên giữ cả phép tính trên một dòng (đã có từ lần trước).",
+      "text": "Hàng \"Khoe kết quả\" mới nay có nền sáng riêng; ô tích vẽ khoảng 28 px nhưng cả dòng nhãn là vùng chạm 44 px. Đầu bảng thưởng cuộn khỏi khung vì nội dung dài hơn; nút \"Tiếp\" vẫn rõ.",
       "fixedIn": null
     },
     {
       "shot": "360x740/13-olympiad-practice.png",
-      "kind": "missing-close",
+      "kind": "clipped",
       "severity": "note",
-      "text": "Ảnh chụp lúc bảng thi thử đã cuộn xuống nên không thấy nút đóng; cùng khổ, bảng sự kiện vẫn có nút X ở góc trên (giống lần trước).",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/15-shop.png",
-      "kind": "off-screen",
-      "severity": "note",
-      "text": "Chữ thưởng bay lên \"+80 XP\" bị mép trên màn và panel Cửa hàng che nửa; là hiệu ứng thoáng qua, không phải nút (ảnh trước cũng vậy).",
+      "text": "Ảnh chụp lúc bảng thi thử đã cuộn: dòng đầu đề bài bị xén, nút đóng nằm ở phần cuộn khuất (như lần trước).",
       "fixedIn": null
     },
     {
       "shot": "360x740/16-backpack.png",
       "kind": "shifted",
       "severity": "note",
-      "text": "Thẻ hồ sơ, nút Trang chủ và panel Ba lô dịch lên khoảng 14 px vì ô \"Cành thông thơm\" xuống 4 dòng làm panel cao thêm (món sưu tập ngẫu nhiên); không gì bị che hay cắt.",
+      "text": "Panel Ba lô lệch khoảng 14 px do món sưu tập ngẫu nhiên đổi số dòng; không gì bị che.",
       "fixedIn": null
     },
     {
       "shot": "360x740/18-party.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Tên chương trên thẻ nhiệm vụ bị cắt bằng dấu ba chấm (\"Khu rừng bí mật – Chương 1: Lá…\"), bấm ▲ thì xem đủ (giống lần trước).",
+      "text": "Tên chương trên thẻ nhiệm vụ cắt bằng \"…\" (như lần trước).",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/22-friends-invite.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "Nút nổi \"Quay lại game\" đè mép dưới panel Bạn bè, sát nút \"Chia sẻ\" và \"Thu hồi\" nhưng không che chữ hay nút.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/24-weekly-share.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Hộp thoại thẻ tuần nay nằm giữa màn; nút \"Đóng\" kiểu ghost trắng trên nền trắng, tương phản yếu.",
       "fixedIn": null
     },
     {
       "shot": "820x1180/03-creator.png",
-      "kind": "missing-close",
+      "kind": "other",
       "severity": "note",
-      "text": "Nút quay lại \"Về trang chủ\" chỉ là dòng chữ nhỏ không có nền nút, vùng chạm trông thấp hơn 44 px (ảnh giống hệt lần trước).",
+      "text": "Lối quay lại \"Về trang chủ\" chỉ là chữ đậm nhỏ, vùng chạm thấp hơn 44 px (như các lần trước).",
       "fixedIn": null
     },
     {
-      "shot": "820x1180/04-home.png",
+      "shot": "820x1180/11-reward.png",
       "kind": "other",
       "severity": "note",
-      "text": "Thẻ \"Bài hôm nay\" với tên sách dài (bài ở Nông trại) làm biểu tượng sách đứng riêng một dòng và chữ \"Toán 2, tập một · Bài 19…\" xuống hai dòng, thẻ cao thêm khoảng 50 px; do nội dung theo ngày.",
+      "text": "Hàng \"Khoe kết quả\": ô tích vẽ khoảng 28 px (dòng nhãn là vùng chạm 44 px), nền hàng kém nổi so với nút \"Tiếp\".",
       "fixedIn": null
     },
     {
-      "shot": "820x1180/08-play-prompt.png",
+      "shot": "820x1180/18-party.png",
       "kind": "other",
       "severity": "note",
-      "text": "Bạn Vẹt đứng ngay sau nhân vật nên bị che gần hết, chỉ thấy nhãn \"Vẹt · Nói chuyện\" và chút cánh (đã có từ lần trước).",
+      "text": "Thú cưng Mèo xám không thấy trong khung lúc chụp dù có nút ở HUD; có thể do thú đứng ngoài khung.",
       "fixedIn": null
     },
     {
-      "shot": "820x1180/15-shop.png",
+      "shot": "820x1180/20-landing.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "Khối cỏ trang trí nền đè một phần chữ \"trong\" của tiêu đề \"Xem các bài có trong game\".",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/21-lesson-page.png",
       "kind": "other",
       "severity": "note",
-      "text": "Dải hẹp giữa mép trên và panel Cửa hàng lộ nhãn khu \"Trường học\", \"Đảo bí ẩn\" bị panel cắt ngang nửa chữ, trông hơi rối; panel giữ nguyên vị trí, nút đóng rõ.",
+      "text": "Trang bài dồn lên nửa trên, nửa dưới chỉ còn nền; đọc rõ, nút \"Chơi bài này\" trong màn.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/22-friends-invite.png",
+      "kind": "clipped",
+      "severity": "note",
+      "text": "Ô link mời cắt cuối link; nút Chia sẻ là đường chính để gửi.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/24-weekly-share.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Nút \"Đóng\" trắng trên nền trắng, không có nút X góc. Chân thẻ in tên máy chụp (127.0.0.1:4173) vì thẻ dùng tên miền đang mở; trên production là miu.hoandat.com.",
       "fixedIn": null
     }
   ]

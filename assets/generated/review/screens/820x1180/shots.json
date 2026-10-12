@@ -1,12 +1,55 @@
 {
   "viewport": "820x1180",
-  "capturedFrom": "1295db5ea267b542bcc8eced08784f27d956107a",
+  "capturedFrom": "459596aaa8106165e42440941d8403e5df164c76",
   "uncommitted": [],
-  "capturedAt": "2026-10-12T10:25:51+07:00",
+  "capturedAt": "2026-10-12T14:27:55+07:00",
   "shots": [
     {
       "shot": "820x1180/01-login.png",
       "screen": "01-login",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [
+          "span.visually-hidden \"Miu World\" shows 1×1 of 263×74"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "820x1180/20-landing.png",
+      "screen": "20-landing",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [
+          "span.visually-hidden \"Miu World\" shows 1×1 of 263×74"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "820x1180/21-lesson-page.png",
+      "screen": "21-lesson-page",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "820x1180/23-invite-page.png",
+      "screen": "23-invite-page",
       "status": "ok",
       "facts": {
         "offScreen": [],
@@ -273,6 +316,35 @@
         "overlaps": [],
         "missingClose": [],
         "clipped": [],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "820x1180/22-friends-invite.png",
+      "screen": "22-friends-invite",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "820x1180/24-weekly-share.png",
+      "screen": "24-weekly-share",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [
+          "span.visually-hidden \"Bước 1, đã xong:\" shows 1×1 of 206×39",
+          "span.visually-hidden \"Bước 2:\" shows 1×1 of 97×39"
+        ],
         "rawText": [],
         "small": []
       }
