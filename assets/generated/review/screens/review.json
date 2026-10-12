@@ -1,71 +1,85 @@
 {
-  "capturedFrom": "d5bbb24caa9b7f4030555db2b624307523494041",
-  "capturedAt": "2026-10-10T07:57:53+07:00",
-  "reviewedAt": "2026-10-10T07:58:54+07:00",
-  "reviewer": "agent:general-purpose ×4 duyệt đủ 38 ảnh chụp ở 2eb76abf; sửa tên sách ở d5bbb24c rồi chụp lại: phiên chính so từng điểm ảnh (chỉ Home đổi như ý, còn lại ≤ 3,5% trong cảnh 3D; ba lô 360 đổi do món sưu tập ngẫu nhiên) và xem lại Home 820",
+  "capturedFrom": "1295db5ea267b542bcc8eced08784f27d956107a",
+  "capturedAt": "2026-10-12T10:25:51+07:00",
+  "reviewedAt": "2026-10-12T10:28:39+07:00",
+  "reviewer": "agent:general-purpose ×4 duyệt đủ 38 ảnh chụp từ cây sạch của 1295db5e (favicon và icon PWA), so với ảnh lần duyệt trước",
   "verdict": "pass",
   "findings": [
     {
       "shot": "360x740/07-play-hud.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Tên nhiệm vụ trên thẻ \"Nhiệm vụ hiện tại\" bị cắt thành \"Khu rừng bí mật – Chương 1: Lá…\" ở khổ 360 px (giống bản trước, không phải lỗi mới).",
+      "text": "Tên nhiệm vụ trên thẻ \"Nhiệm vụ hiện tại\" bị cắt thành \"Khu rừng bí mật – Chương 1: Lá…\" ở khổ 360 px (đã có từ lần trước).",
       "fixedIn": null
     },
     {
       "shot": "360x740/08-play-prompt.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Tên nhiệm vụ trên thẻ \"Nhiệm vụ hiện tại\" bị cắt thành \"Khu rừng bí mật – Chương 1: Lá…\" ở khổ 360 px (giống bản trước, không phải lỗi mới).",
+      "text": "Tên nhiệm vụ trên thẻ \"Nhiệm vụ hiện tại\" bị cắt thành \"Khu rừng bí mật – Chương 1: Lá…\" ở khổ 360 px (đã có từ lần trước).",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/10-question.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Phép tính trong đề xuống dòng giữa chừng: \"(8\" cuối dòng trên, \"+ 5 = ?)\" ở dòng dưới cạnh nút Nghe; nên giữ cả phép tính trên một dòng (đã có từ lần trước).",
       "fixedIn": null
     },
     {
       "shot": "360x740/13-olympiad-practice.png",
       "kind": "missing-close",
       "severity": "note",
-      "text": "Ảnh chụp lúc bảng thi thử đã cuộn xuống nên không thấy nút đóng; ảnh bảng sự kiện cùng cỡ màn vẫn có nút X ở góc trên, ảnh trước cũng chụp như vậy.",
+      "text": "Ảnh chụp lúc bảng thi thử đã cuộn xuống nên không thấy nút đóng; cùng khổ, bảng sự kiện vẫn có nút X ở góc trên (giống lần trước).",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/15-shop.png",
+      "kind": "off-screen",
+      "severity": "note",
+      "text": "Chữ thưởng bay lên \"+80 XP\" bị mép trên màn và panel Cửa hàng che nửa; là hiệu ứng thoáng qua, không phải nút (ảnh trước cũng vậy).",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/16-backpack.png",
+      "kind": "shifted",
+      "severity": "note",
+      "text": "Thẻ hồ sơ, nút Trang chủ và panel Ba lô dịch lên khoảng 14 px vì ô \"Cành thông thơm\" xuống 4 dòng làm panel cao thêm (món sưu tập ngẫu nhiên); không gì bị che hay cắt.",
       "fixedIn": null
     },
     {
       "shot": "360x740/18-party.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Tên chương trên thẻ nhiệm vụ bị cắt bằng dấu ba chấm (\"Khu rừng bí mật – Chương 1: Lá...\"), giống ảnh trước; bấm nút ▲ thì xem được đầy đủ.",
+      "text": "Tên chương trên thẻ nhiệm vụ bị cắt bằng dấu ba chấm (\"Khu rừng bí mật – Chương 1: Lá…\"), bấm ▲ thì xem đủ (giống lần trước).",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/03-creator.png",
+      "kind": "missing-close",
+      "severity": "note",
+      "text": "Nút quay lại \"Về trang chủ\" chỉ là dòng chữ nhỏ không có nền nút, vùng chạm trông thấp hơn 44 px (ảnh giống hệt lần trước).",
       "fixedIn": null
     },
     {
       "shot": "820x1180/04-home.png",
       "kind": "other",
       "severity": "note",
-      "text": "Thẻ \"Bài hôm nay\" giờ gọn trên một hàng như dự định, nhưng dòng sách mất tên sách \"Toán 2, tập một\" (chỉ còn \"Bài 1. Ôn tập các số đến 100\" và \"Trang 6–9\"), nên người chơi không biết bài này thuộc sách nào; nếu không cố ý bỏ thì nên giữ tên sách. Đã sửa: thẻ hiện lại dòng sách đầy đủ.",
-      "fixedIn": "d5bbb24c"
-    },
-    {
-      "shot": "820x1180/03-creator.png",
-      "kind": "missing-close",
-      "severity": "note",
-      "text": "Nút quay lại \"Về trang chủ\" chỉ là dòng chữ nhỏ không có nền nút, vùng chạm trông thấp hơn khoảng 44 px; lỗi này đã có từ bản trước, không phải do lần sửa này.",
+      "text": "Thẻ \"Bài hôm nay\" với tên sách dài (bài ở Nông trại) làm biểu tượng sách đứng riêng một dòng và chữ \"Toán 2, tập một · Bài 19…\" xuống hai dòng, thẻ cao thêm khoảng 50 px; do nội dung theo ngày.",
       "fixedIn": null
     },
     {
-      "shot": "820x1180/11-reward.png",
-      "kind": "overlap",
+      "shot": "820x1180/08-play-prompt.png",
+      "kind": "other",
       "severity": "note",
-      "text": "Vòng tròn ảnh Mèo chạm vào dòng chữ \"Khu rừng bí mật – Chương 1: Lá thần\" ngay chữ \"Chương\" làm chữ khó đọc; ảnh lần trước cũng bị vậy.",
+      "text": "Bạn Vẹt đứng ngay sau nhân vật nên bị che gần hết, chỉ thấy nhãn \"Vẹt · Nói chuyện\" và chút cánh (đã có từ lần trước).",
       "fixedIn": null
     },
     {
-      "shot": "820x1180/17-pet-care.png",
-      "kind": "overlap",
+      "shot": "820x1180/15-shop.png",
+      "kind": "other",
       "severity": "note",
-      "text": "Hàng tab và hàng nút đá che gần hết con Mèo xám 3D ở giữa màn hình, và mũi tên chỉ đường màu vàng lòi ra sau tab \"Chăm sóc\"; ảnh lần trước cũng vậy.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/18-party.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Nhãn \"Bông · Tương tác\" đè nhẹ lên mép trên bảng tên \"★ Bông\" phía trên đầu nhân vật; ảnh lần trước cũng vậy.",
+      "text": "Dải hẹp giữa mép trên và panel Cửa hàng lộ nhãn khu \"Trường học\", \"Đảo bí ẩn\" bị panel cắt ngang nửa chữ, trông hơi rối; panel giữ nguyên vị trí, nút đóng rõ.",
       "fixedIn": null
     }
   ]
