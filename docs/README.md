@@ -13,6 +13,7 @@ Bản đồ tài liệu. Nguồn quyết định sản phẩm là [Master Plan v
 | [STAG-DEV-README.md](STAG-DEV-README.md) | SSH vào lab 176 và .65: quyền hạn, bản đồ lab, tệp credential, lệnh SSH không in secret, đường dẫn và log trên máy |
 | [deployment-guide.md](deployment-guide.md) | Production chạy trên máy nào, secret ứng dụng, DNS, deploy và rollback (staging đã gỡ 12/10/2026) |
 | [screen-review.md](screen-review.md) | Chụp các màn chính trước deploy, cách agent xem ảnh, checklist và định dạng `review.json` |
+| [marketing-channels.md](marketing-channels.md) | Kênh YouTube và Fanpage Facebook: bộ ảnh, lịch clip hằng tuần theo bài, việc người sở hữu làm một lần (tạo kênh, OAuth, token), chạy khô, đăng thử, bật timer |
 
 Quy tắc hành vi cho agent: [`CLAUDE.md`](../CLAUDE.md) và [`.claude/rules/`](../.claude/rules/).
 

@@ -27,6 +27,10 @@ Người sở hữu chỉ có một tài khoản Facebook cá nhân và không m
 - Chỉ đăng lên Fanpage riêng "Miu World" (tài khoản cá nhân chỉ là quản trị ẩn; bài chỉ tới người theo dõi Fanpage). Code đăng kiểm `id` đích là Page id đã cấu hình, khác thì dừng.
 - Không đăng vào Group: Meta đã gỡ API đăng vào nhóm (2024); tự động hóa bằng trình duyệt với tài khoản cá nhân trái điều khoản và dễ bị khóa. Người sở hữu muốn có nhóm cộng đồng thì tạo nhóm do Fanpage làm chủ và đăng tay.
 
+## Đã chuẩn bị trong repo (12/10/2026)
+
+Bộ nhận diện kênh (`content/marketing/channels.json`, ảnh bìa YouTube 2560×1440 và Fanpage 1640×856 ở `assets/generated/channel-kit/`), lịch 18 tuần học kỳ I (`content/marketing/clip-schedule.json`), bộ dựng clip dọc (`pnpm marketing:clip`, ra `.data/marketing/clips/`, đã dựng thử Toán 2 Bài 7: 1080×1920, 19,5 s, có nhạc), caption xoay vòng 7 mẫu, code đăng YouTube và Fanpage (mặc định chạy khô, `--publish` mới đăng, Fanpage chỉ nhận đúng Page id đã cấu hình, từ chối token người dùng), bộ chạy tuần `pnpm marketing:weekly` kèm sổ đã đăng, mẫu launchd (chưa cài), hướng dẫn `docs/marketing-channels.md`. Chưa thử với dịch vụ thật (chưa có tài khoản). Lưu ý: video tải lên qua API từ dự án Google chưa qua kiểm duyệt tuân thủ sẽ bị khóa ở chế độ riêng tư.
+
 ## Việc của người sở hữu (một lần)
 
 - Tạo kênh YouTube và Fanpage "Miu World" (Fanpage tách khỏi trang cá nhân, không mời bạn bè); cấp quyền OAuth cho ứng dụng đăng chỉ với quyền của Page (AI điều khiển Chrome hộ, người bấm đồng ý điều khoản).
