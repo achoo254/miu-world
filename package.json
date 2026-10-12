@@ -26,6 +26,7 @@
     "assets:home": "tsx tools/assets/render-home-island.ts",
     "assets:regions": "tsx tools/assets/render-region-art.ts",
     "assets:pets": "tsx tools/assets/render-pet-art.ts",
+    "assets:logo": "tsx tools/assets/render-brand-logo.ts",
     "assets:accessories": "tsx tools/assets/render-accessory-art.ts",
     "security:dist": "tsx tools/security/scan-dist.ts",
     "assets:atlas": "tsx tools/assets/build-atlas.ts",

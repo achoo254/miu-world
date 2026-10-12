@@ -221,6 +221,14 @@
     "license": "CC0-1.0"
   },
   {
+    "glob": "generated/brand/*.png",
+    "generator": "tools/assets/render-brand-logo.ts",
+    "derivedFrom": [
+      "kenney-blocky-characters"
+    ],
+    "license": "CC0-1.0"
+  },
+  {
     "glob": "generated/accessories/*.png",
     "generator": "tools/assets/render-accessory-art.ts",
     "derivedFrom": [],
