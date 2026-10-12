@@ -16,7 +16,7 @@ dependsOn: [1, 2, 3]
 
 1. Release theo `docs/deployment-guide.md` §5, §7: gate, commit, quét secret, push, CI xanh, chụp và duyệt ảnh từ cây sạch, `deploy.sh gate`, `release` (production: chỉ khi người sở hữu yêu cầu tường minh cho lần đó). Có migration `player_invites`: `release` tự backup DB trước.
 2. nginx (`/bai/` 404, MIME `.webmanifest`): `deploy.sh setup` khi người cho phép; sau đó `nginx -t`, số pm2 online không đổi, `GA4_` vẫn còn trong env.
-3. Chrome — GA4 "Miu World": tắt Google Signals, tắt cá nhân hóa quảng cáo, tắt chia sẻ dữ liệu với sản phẩm Google, đặt giữ dữ liệu 2 tháng; đăng ký custom dimension `source`, `medium`, `campaign`, `lesson_id`, `subject`, `content_type`; liên kết Search Console `https://miu.hoandat.com/`.
+3. Chrome — GA4 "Miu World": **đã xong 12/10/2026** — Google Signals tắt, thu thập dữ liệu do người dùng cung cấp tắt, dữ liệu chi tiết thiết bị/vị trí tắt, cá nhân hóa quảng cáo 0/307 khu vực, giữ dữ liệu sự kiện và người dùng 2 tháng; chia sẻ dữ liệu cấp tài khoản `achoo254` tắt cả 4 mục (người sở hữu đồng ý tắt cho cả tài khoản). Còn lại: đăng ký custom dimension `source`, `medium`, `campaign`, `lesson_id`, `subject`, `content_type`; liên kết Search Console `https://miu.hoandat.com/`.
 4. Sau khi bản có privacy v4 chạy: `deploy.sh analytics` rồi restart (thao tác ghi production, hỏi người nếu chưa có yêu cầu tường minh).
 5. Chrome — Search Console: nộp `https://miu.hoandat.com/sitemap.xml`.
 6. Nghiệm thu:
