@@ -2,7 +2,7 @@
 
 Điểm vào để deploy Miu World; SSH vào máy và credential SSH ở [`STAG-DEV-README.md`](STAG-DEV-README.md). Hướng triển khai đích (static + CDN cho client, server tự host) nằm ở [`system-architecture.md`](system-architecture.md).
 
-**Trạng thái:** staging đang chạy tại `https://miu-staging.hoandat.com` (§5). Production chạy tại `https://miu.hoandat.com` trên .65 từ 30/09/2026 (§7); đăng nhập Google chạy được với test user, chưa xác minh ứng dụng (§7, việc còn lại).
+**Trạng thái:** staging đang chạy tại `https://miu-staging.hoandat.com` (§5). Production chạy tại `https://miu.hoandat.com` trên .65 từ 30/09/2026 (§7); đăng nhập Google mở cho mọi tài khoản từ 12/10/2026 (consent screen ở "In production", §7).
 
 | Môi trường | Chạy ở đâu | Domain |
 | --- | --- | --- |
@@ -144,7 +144,7 @@ tools/deploy/staging/deploy.sh release   # mỗi lần deploy
 - **Không có `NODE_ENV=staging`.** Staging chạy `production`: có Postgres thật, Google OAuth thật và đăng nhập bằng mật khẩu bị tắt. Biến bắt buộc nằm ở `loadConfig` trong `apps/server/src/config.ts`; thiếu biến nào thì server dừng ngay lúc khởi động.
 - **Migration tự chạy khi server mở Postgres** (`openPostgres` trong `apps/server/src/db/client.ts`). Vì vậy `release` luôn backup trước khi restart.
 - **Bundle server phải nằm đúng độ sâu.** Đường dẫn tới migration và `content/` tính từ vị trí file. Lý do nằm trong comment của `apps/server/bundle.ts`; đừng đổi `outfile` mà không đổi hai điểm neo đó.
-- **Google OAuth:** `GOOGLE_REDIRECT_URI` phải khớp đúng một URI đã đăng ký trên Google client, dạng `https://<domain>/api/auth/google/callback`. Consent screen đang ở chế độ Testing, nên chỉ test user mới đăng nhập được.
+- **Google OAuth:** `GOOGLE_REDIRECT_URI` phải khớp đúng một URI đã đăng ký trên Google client, dạng `https://<domain>/api/auth/google/callback`. Consent screen ở "In production" từ 12/10/2026: mọi tài khoản Google đăng nhập được, không còn giới hạn test user. Production và staging dùng chung client nên cả hai cùng mở.
 - **tunelo dưới systemd:** phải truyền `TUNELO_KEY` qua env, vì tunelo không đọc `~/.tunelo/config.json` khi chạy như dịch vụ. Nó cũng cần `$HOME` ghi được để lưu run record. Cả hai đã cấu hình trong `miu-tunnel.service`.
 - **Cloudflare cache tệp tĩnh ở edge khoảng 4 giờ**, kể cả phản hồi sai. Tệp `.js` không tồn tại mà từng trả 200 sẽ bị giữ lại cho tới khi purge (§4). HTML không bị cache, nên sau deploy `index.html` mới trỏ tới chunk mới. Một 404 cũng bị giữ (đã gặp 01/10/2026: chunk của bản build mới bị hỏi trước khi release chuyển xong), nên nginx lab trả 404 của `/assets/` và `/game-assets/` kèm `Cache-Control: no-store`.
 - **tunelo server trên .65 cũng có cache riêng** (Redis, khoá theo subdomain, đường dẫn và `Accept-Encoding`; header `x-tunelo-cache`). Nó cache file tĩnh 24 giờ khi tên file trông giống có hash, ví dụ `forest-ch1-tree.png`, kể cả khi origin không gửi `Cache-Control`. Purge Cloudflare không xoá được cache này: Cloudflare tải lại và lại nhận bản cũ. Đã đo ngày 01/10/2026: bản cũ chỉ xuất hiện khi request có `gzip, br`, đúng header Cloudflare luôn gửi.
@@ -192,6 +192,6 @@ tools/deploy/production/deploy.sh release   # cổng release, build, security:di
 
 **Việc còn lại (của người):**
 
-1. Redirect URI `https://miu.hoandat.com/api/auth/google/callback` đã thêm (30/09/2026). Consent screen còn ở chế độ Testing nên chỉ test user đăng nhập được. Để mở cho mọi người: điền homepage `https://miu.hoandat.com` và privacy policy `https://miu.hoandat.com/privacy`, xác minh `hoandat.com` trong Google Search Console, rồi chuyển Publishing status sang "In production" (scope chỉ `openid email` nên không cần duyệt scope nhạy cảm).
+1. Đã xong: redirect URI `https://miu.hoandat.com/api/auth/google/callback` thêm ngày 30/09/2026; Publishing status chuyển sang "In production" ngày 12/10/2026 (scope chỉ `openid email` nên không cần duyệt scope nhạy cảm). Logo `assets/generated/brand/miu-logo-120.png` đã tải lên Branding và được Google xác minh thương hiệu ngày 12/10/2026 (tên Miu World và logo hiện trên màn đồng ý). Cùng thư mục là favicon và icon cài lên màn hình điện thoại (PWA), do `apps/web/vite-app-icons.ts` gắn vào trang; đổi logo thì chạy `pnpm assets:logo` rồi tải lại bản 120 lên Branding.
 2. Lời đồng ý `v1` và `/privacy` do dự án tự soạn, chưa qua luật sư (trang ghi rõ). Nghị định 13/2023 Điều 20 yêu cầu có cả đồng ý của trẻ từ 7 tuổi: hiện lời đồng ý nhắc phụ huynh hỏi bé, chưa có bước bé tự xác nhận.
 3. Quyết định giữ hay bỏ công tắc dev (`?spawnAt`, `?outfit`, `?stats`).
