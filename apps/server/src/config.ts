@@ -47,6 +47,12 @@ const Env = z.object({
    */
   CF_TURN_KEY_ID: z.preprocess(emptyIsUnset, z.string().regex(/^[A-Za-z0-9]{8,64}$/).optional()),
   CF_TURN_API_TOKEN: z.preprocess(emptyIsUnset, z.string().min(16).max(256).optional()),
+  /**
+   * Google Analytics 4 property and Measurement Protocol secret: the server sends anonymous usage events (see the
+   * deployment guide). Unset (dev, test, E2E, staging): nothing is sent.
+   */
+  GA4_MEASUREMENT_ID: z.preprocess(emptyIsUnset, z.string().regex(/^G-[A-Z0-9]{6,12}$/).optional()),
+  GA4_API_SECRET: z.preprocess(emptyIsUnset, z.string().min(8).max(128).regex(/^\S+$/).optional()),
 });
 
 export interface GoogleConfig {
@@ -55,6 +61,12 @@ export interface GoogleConfig {
   redirectUri: string;
   authUrl: string;
   tokenUrl: string;
+}
+
+/** The GA4 property and secret anonymous usage events are sent with (Measurement Protocol). */
+export interface Ga4Config {
+  measurementId: string;
+  apiSecret: string;
 }
 
 /** The TURN key the server asks short-lived voice relay credentials with. */
@@ -89,6 +101,10 @@ export interface ServerConfig {
   timetableDefaultFile: string | null;
   /** Voice relay credentials come from this key; null: STUN only. */
   turn: TurnConfig | null;
+  /** Usage events go to this GA4 property; null: none is sent. */
+  ga4: Ga4Config | null;
+  /** Analytics events the web app may post per minute per IP. */
+  analyticsLimitPerMinute: number;
 }
 
 /** Validates env once at startup; throws with the offending key so the process fails fast. */
@@ -130,6 +146,9 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
   if (Boolean(e.CF_TURN_KEY_ID) !== Boolean(e.CF_TURN_API_TOKEN)) {
     throw new Error('Invalid server env: CF_TURN_KEY_ID and CF_TURN_API_TOKEN go together');
   }
+  if (Boolean(e.GA4_MEASUREMENT_ID) !== Boolean(e.GA4_API_SECRET)) {
+    throw new Error('Invalid server env: GA4_MEASUREMENT_ID and GA4_API_SECRET go together');
+  }
   return {
     nodeEnv: e.NODE_ENV,
     port: e.PORT,
@@ -155,5 +174,7 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
     handwritingFontDir: e.HANDWRITING_FONT_DIR ?? null,
     timetableDefaultFile: e.TIMETABLE_DEFAULT_FILE ?? null,
     turn: e.CF_TURN_KEY_ID && e.CF_TURN_API_TOKEN ? { keyId: e.CF_TURN_KEY_ID, apiToken: e.CF_TURN_API_TOKEN } : null,
+    ga4: e.GA4_MEASUREMENT_ID && e.GA4_API_SECRET ? { measurementId: e.GA4_MEASUREMENT_ID, apiSecret: e.GA4_API_SECRET } : null,
+    analyticsLimitPerMinute: 60,
   };
 }

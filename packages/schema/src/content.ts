@@ -1207,6 +1207,8 @@ export type NameList = z.infer<typeof NameList>;
  */
 export const ConsentDocument = z.object({
   version: z.string().min(1).max(32),
+  /** Date of the last wording change, `YYYY-MM-DD`. */
+  updatedOn: z.iso.date().optional(),
   requiresLegalReview: z.boolean(),
   title: z.string().min(1),
   paragraphs: z.array(z.string().min(1)).min(1),

@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { and, eq, inArray, sql } from 'drizzle-orm';
+import { and, eq, inArray, like, sql } from 'drizzle-orm';
 import type { ActiveQuest, RewardSpec } from '@miu/schema/content';
 import { collectibleDropSource } from '@miu/schema/collectible';
 import type { CollectibleDrop, QuestCompletion } from '@miu/schema/game';
@@ -7,8 +7,9 @@ import { pickCollectible } from '@miu/quest/collectible-drop';
 import { levelFromXp } from '@miu/quest/level';
 import { notebookLines } from '@miu/quest/notebook';
 import { questScore } from '@miu/quest/quest-score';
+import { serverEvents } from '../analytics/server-events';
 import type { ContentCatalog } from '../content/content-catalog';
-import { inventoryItems, mail, questProgress, skillProgress } from '../db/schema';
+import { inventoryItems, mail, questProgress, rewardLedger, skillProgress } from '../db/schema';
 import { grantEventRewards } from '../event/event-rewards';
 import { letterTemplateId } from '../npc/npc-catalog';
 import { chapterHearts } from '../npc/npc-friendship';
@@ -52,6 +53,15 @@ async function dropCollectible(tx: Tx, content: ContentCatalog, childId: string,
   return granted ? { itemId, mapId: set.mapId, owned: (owned.get(itemId) ?? 0) + 1 } : null;
 }
 
+/** Whether the run just paid is the child's first quest run ever (her ledger holds no other quest payment). */
+async function firstQuestEver(tx: Tx, childId: string): Promise<boolean> {
+  const [row] = await tx
+    .select({ runs: sql<number>`count(*)::int` })
+    .from(rewardLedger)
+    .where(and(eq(rewardLedger.childId, childId), like(rewardLedger.source, 'quest:%')));
+  return row?.runs === 1;
+}
+
 /**
  * Scores and pays a run of a quest whose last step was just recorded, in the caller's transaction. Every
  * run pays the quest's reward (owner, 03/10/2026); `run` names it in the ledger, so a run pays once. Skill
@@ -81,6 +91,8 @@ export async function finishQuest(tx: Tx, content: ContentCatalog, childId: stri
   // A run of an event quest may reach the event's limited rewards (all its quests done in this window).
   const eventRewards = granted && quest.category === 'event' ? await grantEventRewards(tx, content, childId, now) : [];
   const paid = granted ? reward : null;
+  // Usage numbers: every run paid is a quest finished; the first ever is the end of her tutorial.
+  if (granted) serverEvents()?.questFinished(childId, quest, await firstQuestEver(tx, childId));
   const level = (xp: number) => levelFromXp(xp, content.levelCurve).level;
   const skillLevel = (xp: number) => levelFromXp(xp, content.skillCurve).level;
   const skillLevels = skillIds.map((skillId) => {

@@ -438,3 +438,37 @@ describe('moves in a room', () => {
     expect(movesOf('p-1', 'bot-far')).toBe(1);
   });
 });
+
+describe('players online, for the usage numbers', () => {
+  const bot = (id: string): Parameters<MultiplayerRoom['join']>[0] => ({
+    id,
+    isBot: true,
+    send: () => undefined,
+    presence: { id, displayName: id, isBot: true, species: 'fox', outfit: [], pet: null, petGear: [], x: 0, y: 5, z: 0, yaw: 0, speed: 0, action: 'idle', riding: false, bubble: null },
+  });
+
+  it('counts each player once however many tabs she opens, and never a companion bot', async () => {
+    await joined('p-1');
+    await joined('p-1');
+    await joined('p-2');
+    hub.getOrCreateRoom('trung-tam').join(bot('bot-tt-1'));
+    hub.getOrCreateRoom('trung-tam').join(bot('bot-tt-2'));
+    expect(hub.playersOnline()).toBe(2);
+    expect(hub.takePeakPlayers()).toBe(2);
+  });
+
+  it('keeps the peak of the hour after players leave, then starts the next hour from who is online', async () => {
+    const a = await joined('p-1');
+    const b = await joined('p-2');
+    await joined('p-3');
+    a.conn.close();
+    b.conn.close();
+    expect(hub.playersOnline()).toBe(1);
+    expect(hub.takePeakPlayers()).toBe(3);
+    expect(hub.takePeakPlayers()).toBe(1);
+  });
+
+  it('is zero with nobody online', () => {
+    expect(hub.takePeakPlayers()).toBe(0);
+  });
+});

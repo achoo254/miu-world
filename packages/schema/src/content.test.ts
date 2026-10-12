@@ -441,7 +441,8 @@ describe('shipped account content', () => {
   it('ships a final consent that states what is kept and how to delete it', () => {
     const doc = ConsentDocument.parse(load('legal/consent-vi.json'));
     expect(doc.requiresLegalReview).toBe(false);
-    expect(doc.version).toBe('v3');
+    expect(doc.version).toBe('v4');
+    expect(doc.updatedOn).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     const text = doc.paragraphs.join(' ');
     expect(text).toMatch(/thời khóa biểu/);
     expect(text).toMatch(/không lưu nội dung câu trả lời/);
@@ -451,10 +452,40 @@ describe('shipped account content', () => {
     expect(text).toMatch(/bạn là người chịu trách nhiệm/);
   });
 
+  it('asks consent for what the privacy page promised to add, and for the anonymous numbers sent to Google', () => {
+    const text = ConsentDocument.parse(load('legal/consent-vi.json')).paragraphs.join(' ');
+    for (const promised of [/bạn bè/, /người đã chặn/, /báo cáo/, /thời gian chơi/, /giọng nói/, /link mời bạn/]) expect(text).toMatch(promised);
+    expect(text).toMatch(/Google Analytics/);
+    expect(text).toMatch(/2 tháng/);
+    expect(text).toMatch(/không gửi email, tên, mã tài khoản, địa chỉ IP hay thông tin trình duyệt/);
+  });
+
   it('ships a privacy page for the same consent version', () => {
     const page = PrivacyDocument.parse(load('legal/privacy-vi.json'));
     expect(page.consentVersion).toBe(ConsentDocument.parse(load('legal/consent-vi.json')).version);
     expect(page.sections.flatMap((s) => s.paragraphs).join(' ')).toMatch(/tự soạn/);
+  });
+
+  it('tells the anonymous numbers sent to Google Analytics, and nothing the old wording claimed', () => {
+    const page = PrivacyDocument.parse(load('legal/privacy-vi.json'));
+    const privacy = page.sections.flatMap((s) => s.paragraphs).join(' ');
+    const consent = ConsentDocument.parse(load('legal/consent-vi.json')).paragraphs.join(' ');
+    for (const text of [privacy, consent]) {
+      expect(text).not.toMatch(/không theo dõi/i);
+      expect(text).not.toMatch(/hai dịch vụ/i);
+      expect(text).not.toMatch(/chỉ tham gia lúc đăng nhập/i);
+      expect(text).not.toMatch(/lần cập nhật tới/i);
+    }
+    expect(page.sections.map((s) => s.heading)).toContain('Số liệu sử dụng ẩn danh');
+    expect(privacy).toMatch(/Google Analytics/);
+    expect(privacy).toMatch(/localStorage/);
+    expect(privacy).toMatch(/không có cookie quảng cáo/);
+    expect(privacy).toMatch(/Trình duyệt không tải script/);
+    expect(privacy).toMatch(/địa chỉ IP hay thông tin trình duyệt \(user agent\)/);
+    expect(privacy).toMatch(/vị trí của máy chủ/);
+    expect(privacy).toMatch(/giữ 2 tháng/);
+    expect(privacy).toMatch(/14 ngày/);
+    expect(privacy).toMatch(/link mời bạn/);
   });
 });
 

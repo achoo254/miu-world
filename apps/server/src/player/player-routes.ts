@@ -3,6 +3,7 @@ import { and, asc, count, eq } from 'drizzle-orm';
 import { Router } from 'express';
 import { z } from 'zod';
 import { PlayerDto, PlayerInput, PlayerLanguage } from '@miu/schema/account';
+import { serverEvents, type SignUpMethod } from '../analytics/server-events';
 import { hasCurrentConsent } from '../auth/consent-store';
 import { auth, requireParent, requireParentGate } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
@@ -70,13 +71,27 @@ async function ensurePrimaryIn(tx: Tx, content: ContentCatalog, parentId: string
   return row.id;
 }
 
-/** Records the accepted policy version and makes sure the primary player exists, atomically. */
+/**
+ * Records the accepted policy version and makes sure the primary player exists, atomically. The account's very first
+ * consent is its sign-up, reported once the transaction has committed (accepting a new policy version is not).
+ */
 export async function acceptPolicy(db: Db, content: ContentCatalog, parentId: string, now: Date): Promise<string> {
-  return db.transaction(async (tx) => {
+  const { primaryId, signUp } = await db.transaction(async (tx) => {
     await lockAccount(tx, parentId);
-    await tx.insert(consents).values({ id: randomUUID(), parentId, policyVersion: content.consent.version, acceptedAt: now }).onConflictDoNothing();
-    return ensurePrimaryIn(tx, content, parentId, now);
+    // Under the account lock: two concurrent first consents cannot both see none.
+    const [earlier] = await tx.select({ id: consents.id }).from(consents).where(eq(consents.parentId, parentId)).limit(1);
+    const inserted = await tx
+      .insert(consents)
+      .values({ id: randomUUID(), parentId, policyVersion: content.consent.version, acceptedAt: now })
+      .onConflictDoNothing()
+      .returning({ id: consents.id });
+    const firstEver = !earlier && inserted.length > 0;
+    const [account] = firstEver ? await tx.select({ googleSub: parents.googleSub }).from(parents).where(eq(parents.id, parentId)) : [];
+    const signUp: SignUpMethod | null = account ? (account.googleSub ? 'google' : 'password') : null;
+    return { primaryId: await ensurePrimaryIn(tx, content, parentId, now), signUp };
   });
+  if (signUp) serverEvents()?.signUp(parentId, signUp);
+  return primaryId;
 }
 
 export function playerRoutes({ db, content, clock }: PlayerRouteDeps): Router {

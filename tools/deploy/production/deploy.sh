@@ -5,6 +5,8 @@
 #   tools/deploy/production/deploy.sh fonts     upload the worksheet handwriting font (kept out of git)
 #   tools/deploy/production/deploy.sh timetable upload the default class timetable (kept out of git); restart to apply
 #   tools/deploy/production/deploy.sh turn      write the voice relay (Cloudflare TURN) key into the env file; restart to apply
+#   tools/deploy/production/deploy.sh analytics write the Google Analytics (GA4) property and secret into the env file;
+#                                               only after a release with the privacy page that tells it; restart to apply
 #   tools/deploy/production/deploy.sh gate      check the release gate only (tools/deploy/release-gate.sh), touching no server
 #   tools/deploy/production/deploy.sh release   release gate, build, back up the DB, upload, switch, health-check
 # Production holds real children's data and .65 is shared: ask the owner before EVERY run
@@ -59,6 +61,8 @@ setup() {
   local google='.tokens[] | select(.service == "accounts.google.com" and .used_by == "miu-world") | .token'
   # Read before anything is written: a missing TURN entry stops here, with the env file as it was.
   local turn; turn="$(turn_env)"
+  # The GA4 lines `analytics` wrote are kept as they are (both or none); setup never turns analytics on by itself.
+  local ga; ga="$(analytics_env)"
   {
     echo "NODE_ENV=production"
     echo "PORT=$PORT"
@@ -70,6 +74,7 @@ setup() {
     echo "HANDWRITING_FONT_DIR=/opt/miu/fonts"
     echo "TIMETABLE_DEFAULT_FILE=/opt/miu/config/timetable-default.json"
     printf '%s\n' "$turn"
+    [ -z "$ga" ] || printf '%s\n' "$ga"
   } | prod 'install -m 640 -o root -g miu /dev/stdin /etc/miu/production.env'
   echo "setup done"
 }
@@ -98,6 +103,47 @@ turn() {
     cat >> "$t"
     install -m 640 -o root -g miu "$t" "$f"
     grep -c "^CF_TURN_" "$f" | xargs echo TURN lines in env file:'
+}
+
+# Google Analytics 4: the server sends anonymous usage events with this property and Measurement Protocol secret
+# (docs/deployment-guide.md). Staging never gets them, so its numbers never mix with production's.
+GA4_ENTRY='.tokens[] | select(.service == "analytics.google.com" and .used_by == "miu-world production") | .token'
+ga4_from_tokens() {
+  local id sec
+  id="$(secret "$GA4_ENTRY.measurement_id")" && sec="$(secret "$GA4_ENTRY.api_secret")" \
+    || { echo "no GA4 entry (token.measurement_id, token.api_secret) in access-tokens.json (docs/deployment-guide.md)" >&2; return 1; }
+  # The same checks as the server's: a malformed value would stop it at start.
+  [[ "$id" =~ ^G-[A-Z0-9]{6,12}$ ]] || { echo "GA4 measurement id in access-tokens.json is not G-XXXXXXXX" >&2; return 1; }
+  [[ "$sec" =~ ^[^[:space:]]{8,128}$ ]] || { echo "GA4 API secret in access-tokens.json is empty or malformed" >&2; return 1; }
+  printf 'GA4_MEASUREMENT_ID=%s\nGA4_API_SECRET=%s\n' "$id" "$sec"
+}
+
+# The GA4 lines already in /etc/miu/production.env, for `setup` to keep: both, or none. One alone would stop the server.
+analytics_env() {
+  local lines ids secrets
+  lines="$(prod 'f=/etc/miu/production.env; [ ! -f "$f" ] || grep -E "^GA4_(MEASUREMENT_ID|API_SECRET)=.+" "$f" || [ $? -eq 1 ]')"
+  ids="$(printf '%s\n' "$lines" | grep -c '^GA4_MEASUREMENT_ID=' || true)"
+  secrets="$(printf '%s\n' "$lines" | grep -c '^GA4_API_SECRET=' || true)"
+  if [ "$ids" = 0 ] && [ "$secrets" = 0 ]; then return 0; fi
+  if [ "$ids" = 1 ] && [ "$secrets" = 1 ]; then printf '%s\n' "$lines"; return 0; fi
+  echo "env file has $ids GA4_MEASUREMENT_ID and $secrets GA4_API_SECRET lines (needs one of each or none): run analytics" >&2
+  return 1
+}
+
+# Puts (or replaces) just the two GA4 lines in /etc/miu/production.env, leaving every other line as it is. Safe to run
+# again; the next release (or a restart) starts sending. Run it only after the privacy page that tells it is live.
+analytics() {
+  local lines
+  lines="$(ga4_from_tokens)"
+  printf '%s\n' "$lines" | prod 'set -e
+    f=/etc/miu/production.env
+    [ -s "$f" ] || { echo "no $f: run setup first" >&2; exit 1; }
+    t=$(mktemp); trap "rm -f $t" EXIT
+    # grep: 0 lines kept, 1 none kept (only GA4 lines), anything else an error that must not empty the file.
+    grep -Ev "^GA4_(MEASUREMENT_ID|API_SECRET)=" "$f" > "$t" || [ $? -eq 1 ]
+    cat >> "$t"
+    install -m 640 -o root -g miu "$t" "$f"
+    grep -c "^GA4_" "$f" | xargs echo GA4 lines in env file:'
 }
 
 # Worksheet handwriting font (no open license: kept out of git). Uploads the .woff2 files from
@@ -174,6 +220,7 @@ case "${1:-}" in
   fonts) fonts ;;
   timetable) timetable ;;
   turn) turn ;;
+  analytics) analytics ;;
   release) release ;;
-  *) echo "usage: $0 setup|fonts|timetable|turn|gate|release" >&2; exit 2 ;;
+  *) echo "usage: $0 setup|fonts|timetable|turn|analytics|gate|release" >&2; exit 2 ;;
 esac

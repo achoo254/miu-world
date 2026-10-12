@@ -2,6 +2,9 @@ import express, { type ErrorRequestHandler } from 'express';
 import helmet from 'helmet';
 import type { HealthResponse } from '@miu/schema/health';
 import type { Worksheet } from '@miu/schema/worksheet';
+import { AnalyticsSessions, rememberAnalyticsIds } from './analytics/analytics-session';
+import { ANALYTICS_BODY_LIMIT, analyticsCatalog, analyticsRoutes } from './analytics/analytics-routes';
+import type { EventSink } from './analytics/ga4-forwarder';
 import { accountRoutes } from './auth/account-routes';
 import { loadSession } from './auth/auth-context';
 import { authRoutes } from './auth/auth-routes';
@@ -67,7 +70,14 @@ export interface AppDeps {
   online?: OnlineLookup;
   /** Quests played as a party (the multiplayer hub): when a member may go on, and what her steps move for the others. */
   partyQuests?: PartyQuestHooks;
+  /**
+   * Where the web app's analytics events go (the GA4 forwarder), and the GA ids remembered per sign-in session (shared
+   * with the server's own events). Default: events are dropped.
+   */
+  analytics?: { sink: EventSink; sessions: AnalyticsSessions };
 }
+
+const DROP_EVENTS: EventSink = { send: () => undefined };
 
 /** Body-parser errors carry an HTTP status and a `type`; everything else is an internal error. */
 function isClientError(err: unknown): err is { status: number; type?: string } {
@@ -94,22 +104,26 @@ const errorHandler: ErrorRequestHandler = (err: unknown, _req, res, _next) => {
 };
 
 /** Builds the Express app without listening, so tests can drive it through supertest. */
-export function createApp({ config, db, content = loadContentCatalog(), worksheets = loadWorksheets(), clock = () => new Date(), fetchImpl, turnFetch, characterEvents, playerEvents, online, partyQuests }: AppDeps): express.Express {
+export function createApp({ config, db, content = loadContentCatalog(), worksheets = loadWorksheets(), clock = () => new Date(), fetchImpl, turnFetch, characterEvents, playerEvents, online, partyQuests, analytics = { sink: DROP_EVENTS, sessions: new AnalyticsSessions() } }: AppDeps): express.Express {
   const app = express();
   app.disable('x-powered-by');
   // The API listens on loopback only and is reached through the web dev/preview proxy (or a reverse
   // proxy on the same host) that sets X-Forwarded-For; trusting loopback gives rate limits the client IP.
   app.set('trust proxy', 'loopback');
   app.use(helmet());
+  // Analytics events are small and open without sign-in: their own tighter limit, read before the general parser.
+  app.use('/api/analytics', express.json({ limit: ANALYTICS_BODY_LIMIT }));
   app.use(express.json({ limit: '32kb' }));
 
   const api = express.Router();
   api.use(requireAllowedOrigin(config.allowedOrigins));
   api.use(loadSession(db, config, clock));
+  api.use(rememberAnalyticsIds(analytics.sessions));
   api.get('/health', (_req, res) => {
     const body: HealthResponse = { status: 'ok' };
     res.json(body);
   });
+  api.use(analyticsRoutes({ sink: analytics.sink, catalog: analyticsCatalog(content), limitPerMinute: config.analyticsLimitPerMinute }));
   api.use(authRoutes({ db, config, content, clock }));
   api.use(googleAuthRoutes({ db, config, clock, fetchImpl }));
   api.use(accountRoutes({ db, config, clock }));

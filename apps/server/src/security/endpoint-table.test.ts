@@ -14,6 +14,7 @@ const PUBLIC: Record<string, string> = {
   'GET /consents/policy': 'the consent text a parent reads before accepting',
   'GET /auth/google/start': 'starts Google sign-in',
   'GET /auth/google/callback': 'finishes Google sign-in',
+  'POST /analytics/events': 'page views and shares of public pages too; Origin check, 4 KB body, per-IP limit, checked values only',
 };
 
 interface Layer {

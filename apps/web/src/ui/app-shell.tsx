@@ -1,6 +1,7 @@
 // Khung ứng dụng và điều hướng theo trạng thái tài khoản (NEW SCREEN, Master Plan §6 Tài khoản).
 import { Suspense, lazy, useEffect, type ReactNode } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
+import { usePageViews } from '../analytics/use-page-views';
 import { AccountProvider, useAccount } from './account/account-context';
 import { ConsentScreen } from './account/consent-screen';
 import { stopSpeaking } from './dialogue/speech';
@@ -112,10 +113,17 @@ function LanguageAndSpeech() {
   return null;
 }
 
+/** Anonymous page views for the usage numbers (sent to Miu's server, which forwards them to Google Analytics). */
+function PageViews() {
+  usePageViews();
+  return null;
+}
+
 export function AppRoutes() {
   return (
     <>
       <LanguageAndSpeech />
+      <PageViews />
       <Routes>
         <Route path="/" element={<WithMusic mood="home"><RequireParent><PlayStartScreen /></RequireParent></WithMusic>} />
         <Route path="/login" element={<WithMusic mood="home"><SignedOutOnly><LoginScreen /></SignedOutOnly></WithMusic>} />

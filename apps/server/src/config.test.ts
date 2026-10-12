@@ -48,6 +48,27 @@ describe('loadConfig', () => {
     expect(message).not.toContain(apiToken);
   });
 
+  it('takes the GA4 property only as a pair, and never echoes the secret', () => {
+    expect(loadConfig({}).ga4).toBeNull();
+    expect(loadConfig({ GA4_MEASUREMENT_ID: '', GA4_API_SECRET: '' }).ga4).toBeNull();
+    const measurementId = 'G-TEST123456';
+    const apiSecret = 'test-ga-secret-0123456789';
+    expect(loadConfig({ GA4_MEASUREMENT_ID: measurementId, GA4_API_SECRET: apiSecret }).ga4).toEqual({ measurementId, apiSecret });
+    expect(() => loadConfig({ GA4_MEASUREMENT_ID: measurementId })).toThrow(/go together/);
+    expect(() => loadConfig({ GA4_API_SECRET: apiSecret })).toThrow(/go together/);
+    for (const bad of ['UA-12345-1', 'G-abc', 'G-', 'G-TOOLONG1234567']) {
+      expect(() => loadConfig({ GA4_MEASUREMENT_ID: bad, GA4_API_SECRET: apiSecret })).toThrow(/GA4_MEASUREMENT_ID/);
+    }
+    let message = '';
+    try {
+      loadConfig({ GA4_MEASUREMENT_ID: measurementId, GA4_API_SECRET: `${apiSecret} with spaces` });
+    } catch (err) {
+      message = err instanceof Error ? err.message : '';
+    }
+    expect(message).toMatch(/GA4_API_SECRET/);
+    expect(message).not.toContain(apiSecret);
+  });
+
   it('requires a real database in production', () => {
     expect(() => loadConfig({ NODE_ENV: 'production', ALLOWED_ORIGINS: 'https://miu.example' })).toThrow(/DATABASE_URL/);
   });

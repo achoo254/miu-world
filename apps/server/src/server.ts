@@ -2,6 +2,9 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { sql } from 'drizzle-orm';
 import { createApp } from './app';
+import { AnalyticsSessions } from './analytics/analytics-session';
+import { Ga4Forwarder } from './analytics/ga4-forwarder';
+import { ServerEvents, installServerEvents, questLabels } from './analytics/server-events';
 import { loadConfig } from './config';
 import { loadContentCatalog } from './content/content-catalog';
 import { DEV_PGLITE_DIR, openPglite, openPostgres, type Db } from './db/client';
@@ -39,7 +42,12 @@ const partyQuests: PartyQuestHooks = {
   gate: async (...args) => (partyQuestService ? partyQuestService.gate(...args) : 'ok'),
   recorded: async (...args) => partyQuestService?.recorded(...args),
 };
-const app = createApp({ config, db, content, characterEvents, playerEvents, online, partyQuests });
+// Anonymous usage events for Google Analytics, sent from here only; without GA4_* set nothing is queued or sent.
+const analyticsSink = new Ga4Forwarder({ config: config.ga4 });
+const analyticsSessions = new AnalyticsSessions();
+const usage = config.ga4 ? new ServerEvents({ sink: analyticsSink, sessions: analyticsSessions, labels: questLabels(content) }) : null;
+installServerEvents(usage);
+const app = createApp({ config, db, content, characterEvents, playerEvents, online, partyQuests, analytics: { sink: analyticsSink, sessions: analyticsSessions } });
 
 /** Which database this run uses, so a dev who suddenly sees no accounts knows whether it is a new one. */
 async function describeDatabase(database: Db): Promise<string> {
@@ -88,6 +96,11 @@ multiplayer.setCoop(coop);
 partyQuestService = new PartyQuestService({ db, content, host: multiplayer.coopHost() });
 multiplayer.setPartyQuests(partyQuestService);
 console.log('multiplayer hub and companion bot runner active');
+console.log(`usage analytics: ${config.ga4 ? 'sent to Google Analytics' : 'off (GA4_MEASUREMENT_ID unset)'}`);
+
+/** Every hour the most people online at once in it (companion bots never count) goes to the usage numbers. */
+const CCU_PEAK_MS = 60 * 60_000;
+if (usage) setInterval(() => usage.ccuPeak(multiplayer.takePeakPlayers()), CCU_PEAK_MS).unref();
 
 /** Stopping (systemd sends SIGTERM on a restart or a release), the bots' memories are written out within this long. */
 const SHUTDOWN_WRITE_MS = 3_000;
@@ -101,7 +114,8 @@ async function shutdown(signal: NodeJS.Signals): Promise<void> {
   botRunner.stop();
   const timeout = new Promise<false>((resolve) => setTimeout(() => resolve(false), SHUTDOWN_WRITE_MS).unref());
   const written = (async (): Promise<true> => {
-    await botRunner.flush();
+    // The usage events still queued leave too (each request gives up well within the window).
+    await Promise.all([botRunner.flush(), analyticsSink.close()]);
     await database.close();
     return true;
   })();

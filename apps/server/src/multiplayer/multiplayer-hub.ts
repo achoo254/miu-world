@@ -298,6 +298,8 @@ export class MultiplayerHub {
   private readonly botAsks = new Map<string, { publicId: string; botId: string; at: number }>();
   private readonly friends: FriendStore | null;
   private readonly friendLimiter: FriendRequestLimiter;
+  /** The most players online at once since the peak was last taken (usage numbers). */
+  private peakPlayers = 0;
   private homeHooks: HomeRoomHooks | null = null;
   /** Co-op challenges of parties and lone players (set once the server runs them). */
   private coop: CoopService | null = null;
@@ -459,11 +461,24 @@ export class MultiplayerHub {
     this.partyTimers.delete(publicId);
     const player: OnlinePlayer = { publicId, childId, transport, appearance, room: null, bots: settings.botsEnabled, botFriends, joins: 0, tokens: BUCKET_SIZE, refilledAt: this.now(), signalTokens: SIGNAL_BUCKET_SIZE, signalRefilledAt: this.now() };
     this.players.set(publicId, player);
+    this.peakPlayers = Math.max(this.peakPlayers, this.playersOnline());
     return {
       publicId,
       receive: (raw) => this.receive(player, raw),
       close: () => this.disconnect(player),
     };
+  }
+
+  /** People online now: one per player however many tabs she opened; companion bots never count. */
+  playersOnline(): number {
+    return new Set([...this.players.values()].map((player) => player.childId)).size;
+  }
+
+  /** The most people online at once since the last call; the next peak starts from who is online now. */
+  takePeakPlayers(): number {
+    const peak = this.peakPlayers;
+    this.peakPlayers = this.playersOnline();
+    return peak;
   }
 
   /** A player saved her character: the others see the new look where she stands, her party its new pet. */
