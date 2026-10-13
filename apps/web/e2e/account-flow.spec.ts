@@ -33,6 +33,8 @@ test.afterAll(() => {
 });
 
 test('Google sign-in → consent → create character → Home → map → forest → play → parrot → extra player and optional PIN → data and deletion', async ({ page }) => {
+  // The whole journey, with a load of the forest and a second player: 19-31 s on CI's software rendering.
+  test.setTimeout(60_000);
   const consoleErrors: string[] = [];
   page.on('pageerror', (err) => consoleErrors.push(err.message));
 
