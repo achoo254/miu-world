@@ -1,8 +1,8 @@
 {
-  "capturedFrom": "0b595602fd1dda04f29824863af1a69f9f5e791c",
-  "capturedAt": "2026-10-12T15:00:00+07:00",
-  "reviewedAt": "2026-10-12T15:04:05+07:00",
-  "reviewer": "agent:general-purpose (sonnet) ×4 duyệt đủ 48 ảnh chụp từ cây sạch của 0b595602 (sửa ghi chú nhỏ: viền nút ghost trong hộp thoại, thẻ sáng ở trang giới thiệu, căn giữa trang bài, chừa chỗ dưới nút Quay lại game)",
+  "capturedFrom": "4a7382ac8a27b72aaed8af7255ceeaf983773c65",
+  "capturedAt": "2026-10-13T10:39:30+07:00",
+  "reviewedAt": "2026-10-13T10:47:00+07:00",
+  "reviewer": "agent:general-purpose (sonnet) ×4 duyệt đủ 48 ảnh chụp từ cây sạch của 4a7382ac; phiên chính đối chiếu các ghi chú dời bố cục với 0b595602",
   "verdict": "pass",
   "findings": [
     {
@@ -20,17 +20,24 @@
       "fixedIn": null
     },
     {
+      "shot": "360x740/09-dialogue.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Hội thoại NPC nay có nút ✕ ở góc (khoảng 48 px), không che lời thoại hay nút Nghe lại/Tiếp.",
+      "fixedIn": null
+    },
+    {
       "shot": "360x740/10-question.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Nút \"Nghe\" chen giữa phép tính, tách \"(8\" và \"+ 5 = ?)\" thành hai dòng (như lần trước); nút ghost nay có viền xanh rõ.",
+      "text": "Nút \"Nghe\" chen giữa phép tính, tách \"(8\" và \"+ 5 = ?)\" thành hai dòng (như lần trước).",
       "fixedIn": null
     },
     {
       "shot": "360x740/11-reward.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Ảnh chụp lúc bảng thưởng đã cuộn; ô tích \"Kèm lời mời kết bạn\" vẽ khoảng 28 px, cả dòng nhãn là vùng chạm 44 px.",
+      "text": "Ảnh chụp lúc bảng thưởng đã cuộn; ô tích \"Kèm lời mời kết bạn\" vẽ nhỏ, cả dòng nhãn là vùng chạm 44 px (như lần trước).",
       "fixedIn": null
     },
     {
@@ -44,7 +51,7 @@
       "shot": "360x740/16-backpack.png",
       "kind": "shifted",
       "severity": "note",
-      "text": "Trang Ba lô lên cao khoảng 35 px vì chừa chỗ dưới nút nổi \"Quay lại game\", đúng ý commit.",
+      "text": "Trang Ba lô lên khoảng 40 px vì tên một vật phẩm xuống ba dòng và trang chừa chỗ dưới nút Quay lại game; nút vẫn hiện đủ.",
       "fixedIn": null
     },
     {
@@ -58,21 +65,49 @@
       "shot": "360x740/22-friends-invite.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Ô link mời cắt cuối link (ô nhập; nút Chia sẻ là đường chính); nút Chia sẻ, Thu hồi đã ra ngoài vùng nút nổi.",
+      "text": "Ô link mời cắt cuối link; nút Chia sẻ và Thu hồi nằm ngoài nút nổi Quay lại game (như lần trước).",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/02-players.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "Một đám mây trang trí mờ sau mép dưới nút Đăng xuất, không che chữ hay vùng chạm (như lần trước).",
       "fixedIn": null
     },
     {
       "shot": "820x1180/03-creator.png",
       "kind": "other",
       "severity": "note",
-      "text": "Lối quay lại \"Về trang chủ\" chỉ là chữ đậm nhỏ, vùng chạm thấp hơn 44 px (như các lần trước).",
+      "text": "Lối \"Về trang chủ\" là chữ đậm nhỏ, vùng chạm thấp hơn 44 px (như lần trước).",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/09-dialogue.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Hội thoại NPC nay có nút ✕ ở góc (khoảng 48 px), không che lời thoại hay nút Nghe lại/Tiếp.",
       "fixedIn": null
     },
     {
       "shot": "820x1180/11-reward.png",
       "kind": "other",
       "severity": "note",
-      "text": "Ô tích \"Kèm lời mời kết bạn\" vẽ khoảng 28 px (dòng nhãn là vùng chạm 44 px).",
+      "text": "Ô tích \"Kèm lời mời kết bạn\" vẽ khoảng 28 px, cả dòng nhãn là vùng chạm 44 px (như lần trước).",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/14-boss.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Dòng gợi ý dưới câu hỏi khác lần trước (lời gợi ý xoay vòng); không có chữ thô hay tiếng Anh lọt vào.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/16-backpack.png",
+      "kind": "shifted",
+      "severity": "note",
+      "text": "Hồ sơ và bảng Ba lô lên khoảng 38 px: trang chừa chỗ dưới nút Quay lại game từ 0b595602 nên ảnh chụp lúc cuộn lệch; cỡ bảng không đổi.",
       "fixedIn": null
     },
     {
@@ -83,10 +118,31 @@
       "fixedIn": null
     },
     {
-      "shot": "820x1180/20-landing.png",
-      "kind": "other",
+      "shot": "820x1180/18-party.png",
+      "kind": "overlap",
       "severity": "note",
-      "text": "Thẻ \"Xem các bài có trong game\" hơi trong nên một khối cỏ trang trí hiện mờ phía sau mép trên thẻ; không còn đè chữ.",
+      "text": "Bóng thoại \"Chào cậu!\" của Bông bị nhãn \"Bông · Tương tác\" che gần hết; chỉ che chữ phụ, không che nút.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/20-landing.png",
+      "kind": "shifted",
+      "severity": "note",
+      "text": "Khối nội dung xuống khoảng 28 px vì thẻ bài nay nằm trên nền sáng phía trên các đảo (thay đổi của 0b595602).",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/21-lesson-page.png",
+      "kind": "shifted",
+      "severity": "note",
+      "text": "Trang bài nay nằm giữa màn cao theo chiều dọc, đúng ý 0b595602 (\"short lesson page is centred on tall screens\").",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/22-friends-invite.png",
+      "kind": "shifted",
+      "severity": "note",
+      "text": "Tiêu đề Bạn bè, nút Quay lại và bảng lên khoảng 38 px, cùng lý do với Ba lô.",
       "fixedIn": null
     }
   ]
