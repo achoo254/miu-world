@@ -699,9 +699,9 @@ export function PlayScreen() {
         ) : null}
         {petCareOpen && !covered ? <PetCarePanel onClose={closePetCare} onPetGear={(gear) => petGearSaved(gear)} onRename={setPetRenamed} /> : null}
         {cookingOpen ? (
-          <Modal title="Bếp Nhà Nấu Ăn 🍳" onClose={() => setCookingOpen(false)} dataId="play-cooking" size="wide">
+          <Modal title={<T k="cooking.title" />} onClose={() => setCookingOpen(false)} dataId="play-cooking" size="wide">
             <CookingPanel onClose={() => setCookingOpen(false)} />
-            <button type="button" className="scene-close" data-id="play-cooking-close" aria-label="Đóng" onClick={() => setCookingOpen(false)}>
+            <button type="button" className="scene-close" data-id="play-cooking-close" aria-label={t('common.close')} onClick={() => setCookingOpen(false)}>
               ✕
             </button>
           </Modal>

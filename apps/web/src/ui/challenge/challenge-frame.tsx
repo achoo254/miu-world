@@ -133,7 +133,7 @@ export function ChallengeFrame({
           </button>
         </div>
       </div>
-      <button type="button" className="scene-close" data-id="challenge-close" aria-label={t('challenge.close')} onClick={context.onClose}>
+      <button type="button" className="scene-close" data-id="challenge-close" aria-label={t('common.close')} onClick={context.onClose}>
         ✕
       </button>
     </Modal>

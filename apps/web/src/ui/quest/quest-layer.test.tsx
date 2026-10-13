@@ -79,6 +79,15 @@ describe('DialogueScreen', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Tiếp tục' }));
     expect(onDone).toHaveBeenCalledTimes(1);
   });
+
+  it('closes from its own ✕ mid-dialogue without completing the step', () => {
+    const onDone = vi.fn();
+    const onClose = vi.fn();
+    render(<DialogueScreen step={step} character={CHARACTER} questSummary="Mochi đi tìm Lá thần." busy={false} onDone={onDone} onClose={onClose} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Đóng' }));
+    expect(onClose).toHaveBeenCalledTimes(1);
+    expect(onDone).not.toHaveBeenCalled();
+  });
 });
 
 describe('quest controller', () => {

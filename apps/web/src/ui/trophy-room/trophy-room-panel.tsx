@@ -9,7 +9,7 @@ import { errorMessage } from '../api-client';
 import { ITEMS, itemIcon } from '../backpack/items';
 import { BOOK_SETS, itemName } from '../collection/collection-catalog';
 import type { TextKey } from '../i18n/i18n';
-import { Bi, T } from '../i18n/use-t';
+import { Bi, T, useT } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
 import { Modal } from '../kit/modal';
@@ -126,6 +126,7 @@ export function TrophyRoomPanel({ onClose }: { onClose: () => void }) {
   const [room, setRoom] = useState<TrophyRoomResponse | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [loads, setLoads] = useState(0);
+  const { t } = useT();
 
   useEffect(() => {
     let live = true;
@@ -140,6 +141,9 @@ export function TrophyRoomPanel({ onClose }: { onClose: () => void }) {
 
   return (
     <Modal title={<T k="trophy.title" />} onClose={onClose} dataId="trophy" variant="scene" size="wide" className="trophy-modal">
+      <button type="button" className="scene-close" data-id="trophy-close" aria-label={t('common.close')} onClick={onClose}>
+        ✕
+      </button>
       {room ? (
         <Room room={room} />
       ) : loadError ? (

@@ -7,7 +7,7 @@ import { useState } from 'react';
 import type { QuestStepPublic } from '@miu/schema/content';
 import type { CharacterDto } from '@miu/schema/game';
 import { mapBoth, type Bilingual } from '../i18n/i18n';
-import { Bi, T } from '../i18n/use-t';
+import { Bi, T, useT } from '../i18n/use-t';
 import { twin } from '../quest/content-text';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
@@ -46,6 +46,7 @@ export function DialogueScreen({
   onDone: () => void;
   onClose: () => void;
 }) {
+  const { t } = useT();
   const fill = (text: string): string => say(text, character);
   const lines: Line[] = step.lines.map((l, i) => ({ speaker: fill(l.speaker), text: mapBoth(twin(l.text, step.en?.lines[i]), fill) }));
   const summary = typeof questSummary === 'string' ? twin(questSummary, null) : questSummary;
@@ -111,6 +112,9 @@ export function DialogueScreen({
           )}
         </div>
       </div>
+      <button type="button" className="scene-close" data-id="dialogue-close" aria-label={t('common.close')} onClick={onClose}>
+        ✕
+      </button>
     </Modal>
   );
 }

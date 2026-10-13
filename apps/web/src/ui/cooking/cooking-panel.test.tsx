@@ -68,4 +68,16 @@ describe('CookingPanel', () => {
     expect(await screen.findByText('Bé đã nấu thành công món Bánh mì trứng ốp la! ✨🍳')).toBeTruthy();
     expect(onCooked).toHaveBeenCalledWith(sampleRecipes[0]);
   });
+
+  it('says the dish cannot be cooked when the server refuses', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (_input: RequestInfo | URL, init?: RequestInit) =>
+        (init?.method ?? 'GET') === 'GET' ? json({ recipes: sampleRecipes, ingredients: {} }) : json({ error: 'not-enough' }, 400),
+      ),
+    );
+    render(<CookingPanel />);
+    fireEvent.click(await screen.findByRole('button', { name: /Nấu món/i }));
+    expect((await screen.findByText('Chưa thể nấu món này lúc này!')).getAttribute('class')).toBe('cooking-feedback');
+  });
 });

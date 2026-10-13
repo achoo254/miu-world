@@ -1,7 +1,7 @@
 // Phiếu viết: handwriting and paragraph writing happen on paper. The step tells the child to ask a
 // parent to print the lesson's worksheet (parent area); nothing written comes back to the game.
 import type { QuestStepPublic } from '@miu/schema/content';
-import { T } from '../../i18n/use-t';
+import { T, useT } from '../../i18n/use-t';
 import { Icon } from '../../kit/art';
 import { buttonClass } from '../../kit/button';
 import { Modal } from '../../kit/modal';
@@ -22,6 +22,7 @@ export function WorksheetStepScreen({
   onDone: () => void;
   onClose: () => void;
 }) {
+  const { t } = useT();
   return (
     <Modal title={fill(step.title)} onClose={onClose} dataId="worksheet-step" variant="scene">
       <div className="scene-panel">
@@ -36,6 +37,9 @@ export function WorksheetStepScreen({
           <T k="worksheet.ok" />
         </button>
       </div>
+      <button type="button" className="scene-close" data-id="worksheet-step-close" aria-label={t('common.close')} onClick={onClose}>
+        ✕
+      </button>
     </Modal>
   );
 }

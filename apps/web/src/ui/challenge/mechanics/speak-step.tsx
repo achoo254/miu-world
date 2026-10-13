@@ -91,6 +91,9 @@ export function SpeakStepScreen({
           </button>
         </div>
       </div>
+      <button type="button" className="scene-close" data-id="speak-step-close" aria-label={t('common.close')} onClick={onClose}>
+        ✕
+      </button>
     </Modal>
   );
 }

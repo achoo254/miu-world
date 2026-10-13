@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { z } from 'zod';
 import { type Recipe } from '@miu/schema/cooking';
 import { api } from '../api-client';
+import { T } from '../i18n/use-t';
 import { buttonClass } from '../kit/button';
 import './cooking.css';
 
@@ -30,7 +31,8 @@ export function CookingPanel({ onClose, onCooked }: CookingPanelProps) {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [ingredients, setIngredients] = useState<Record<string, number>>({});
   const [cooking, setCooking] = useState<string | null>(null);
-  const [feedback, setFeedback] = useState<string | null>(null);
+  // The server's own line after a dish is cooked, or that it could not be cooked.
+  const [feedback, setFeedback] = useState<{ kind: 'server'; text: string } | { kind: 'failed' } | null>(null);
 
   useEffect(() => {
     let alive = true;
@@ -56,7 +58,7 @@ export function CookingPanel({ onClose, onCooked }: CookingPanelProps) {
     setFeedback(null);
     try {
       const res = await api('POST', '/cooking/cook', CookResult, { recipeId: recipe.id });
-      setFeedback(res.message);
+      setFeedback({ kind: 'server', text: res.message });
       // Deduct client-side preview
       setIngredients((prev) => {
         const next = { ...prev };
@@ -68,14 +70,18 @@ export function CookingPanel({ onClose, onCooked }: CookingPanelProps) {
       });
       onCooked?.(recipe);
     } catch {
-      setFeedback('Chưa thể nấu món này lúc này!');
+      setFeedback({ kind: 'failed' });
     } finally {
       setCooking(null);
     }
   }
 
   if (loading) {
-    return <div className="cooking-loading">Đang chuẩn bị gian bếp nhỏ... 🍳</div>;
+    return (
+      <div className="cooking-loading">
+        <T k="cooking.loading" />
+      </div>
+    );
   }
 
   return (
@@ -83,14 +89,18 @@ export function CookingPanel({ onClose, onCooked }: CookingPanelProps) {
       <header className="cooking-header">
         <span className="cooking-header-icon">🍳</span>
         <div>
-          <h3 className="cooking-header-title">Bếp Nhà Ấm Áp</h3>
-          <p className="cooking-header-sub">Chế biến món ngon từ nông sản tươi để thưởng thức cùng thú cưng!</p>
+          <h3 className="cooking-header-title">
+            <T k="cooking.heading" />
+          </h3>
+          <p className="cooking-header-sub">
+            <T k="cooking.lead" />
+          </p>
         </div>
       </header>
 
       {feedback && (
         <div className="cooking-feedback" data-id="cooking-feedback">
-          {feedback}
+          {feedback.kind === 'server' ? feedback.text : <T k="cooking.failed" />}
         </div>
       )}
 
@@ -105,7 +115,9 @@ export function CookingPanel({ onClose, onCooked }: CookingPanelProps) {
                   <p className="cooking-card-desc">{r.description}</p>
 
                   <div className="cooking-ingredients">
-                    <span className="cooking-ing-title">Nguyên liệu:</span>
+                    <span className="cooking-ing-title">
+                      <T k="cooking.ingredients" />
+                    </span>
                     {r.ingredients.map((ing) => {
                       const owned = ingredients[ing.itemId] ?? 0;
                       const enough = owned >= ing.qty;
@@ -118,8 +130,12 @@ export function CookingPanel({ onClose, onCooked }: CookingPanelProps) {
                   </div>
 
                   <div className="cooking-buffs">
-                    <span className="cooking-buff-tag buff-hunger">🥕 +{r.hungerRestore} No bụng</span>
-                    <span className="cooking-buff-tag buff-happy">💖 +{r.happinessBonus} Vui vẻ</span>
+                    <span className="cooking-buff-tag buff-hunger">
+                      <T k="cooking.hunger" params={{ amount: r.hungerRestore }} />
+                    </span>
+                    <span className="cooking-buff-tag buff-happy">
+                      <T k="cooking.happiness" params={{ amount: r.happinessBonus }} />
+                    </span>
                   </div>
                 </div>
 
@@ -131,7 +147,7 @@ export function CookingPanel({ onClose, onCooked }: CookingPanelProps) {
                     disabled={cooking !== null}
                     onClick={() => handleCook(r)}
                   >
-                    {isCookingThis ? 'Đang nấu... ♨️' : 'Nấu món ✨'}
+                    <T k={isCookingThis ? 'cooking.cooking' : 'cooking.cook'} />
                   </button>
                 </div>
               </div>
@@ -142,7 +158,7 @@ export function CookingPanel({ onClose, onCooked }: CookingPanelProps) {
 
       {onClose && (
         <button type="button" className={buttonClass('secondary', { block: true })} data-id="cooking-close" onClick={onClose}>
-          Đóng gian bếp
+          <T k="cooking.closeKitchen" />
         </button>
       )}
     </div>

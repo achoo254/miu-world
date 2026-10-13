@@ -175,6 +175,28 @@ describe('textbook mechanic screens send the answer the server grades', () => {
     expect(body(write)).toEqual({});
   });
 
+  it('speak, worksheet and decision steps close from their own ✕ without sending anything', () => {
+    const decisionStep: QuestStepPublic = {
+      id: 'decision-1',
+      title: 'Ngã rẽ',
+      goTo: 'Chọn đường',
+      trigger: 'auto',
+      prompt: 'Bạn muốn đi đường nào?',
+      kind: 'decision',
+      choices: [{ id: 'left', text: 'Đường hoa', consequence: 'Bạn đi theo đường hoa.' }],
+    };
+    for (const [step, closeId] of [[stepOf('talk'), 'speak-step-close'], [stepOf('write'), 'worksheet-step-close'], [decisionStep, 'decision-close']] as const) {
+      const submit = vi.fn(async () => response(true));
+      const onClose = vi.fn();
+      render(<LearningStep step={step} quest={quest} data={DATA} busy={false} submit={submit} onClose={onClose} />);
+      expect(byId(closeId).getAttribute('aria-label')).toBe('Đóng');
+      tap(closeId);
+      expect(onClose).toHaveBeenCalledTimes(1);
+      expect(submit).not.toHaveBeenCalled();
+      cleanup();
+    }
+  });
+
   it('logic challenge lets the child pick a rule answer and sends it', () => {
     const logicStep: QuestStepPublic = {
       id: 'pattern-1',

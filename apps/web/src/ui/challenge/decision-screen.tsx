@@ -110,6 +110,9 @@ export function DecisionScreen({
           </div>
         )}
       </div>
+      <button type="button" className="scene-close" data-id="decision-close" aria-label={t('common.close')} onClick={onClose}>
+        ✕
+      </button>
     </Modal>
   );
 }

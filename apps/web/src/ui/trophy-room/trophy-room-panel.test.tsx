@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { TrophyRoomResponse } from '@miu/schema/trophy-room';
 import { BOOK_SETS } from '../collection/collection-catalog';
@@ -51,6 +51,14 @@ describe('TrophyRoomPanel', () => {
     expect(byId('trophy-plaque-when-hoc-tap').textContent).toBe('Nhận ngày 08/10/2026');
     expect(byId('trophy-plaque-stars-hoc-tap').getAttribute('aria-label')).toBe('2/3');
     expect(byId('trophy-plaque-hoc-tap').textContent).toContain('Đã nhận 7/13 thành tích');
+  });
+
+  it('closes from its own close button, not only with Esc', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => json(ROOM)));
+    const onClose = vi.fn();
+    render(<TrophyRoomPanel onClose={onClose} />);
+    fireEvent.click(await screen.findByRole('button', { name: 'Đóng' }));
+    expect(onClose).toHaveBeenCalledTimes(1);
   });
 
   it('says when the room cannot be read and tries again', async () => {
