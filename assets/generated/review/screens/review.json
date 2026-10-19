@@ -1,22 +1,36 @@
 {
-  "capturedFrom": "9755135117b491ce5c49f56e9b2557de91d18f03",
-  "capturedAt": "2026-10-19T09:10:04+07:00",
-  "reviewedAt": "2026-10-19T09:15:00+07:00",
-  "reviewer": "agent:claude (4 subagent, mỗi agent 12 ảnh)",
+  "capturedFrom": "8ee8c73c2876d286f342f20f6d30e19656e0f6f9",
+  "capturedAt": "2026-10-19T09:56:07+07:00",
+  "reviewedAt": "2026-10-19T10:05:00+07:00",
+  "reviewer": "agent:claude (4 subagent duyệt 244ea618; phiên chính duyệt lại màn đổi ở 8ee8c73c)",
   "verdict": "pass",
   "findings": [
-    {
-      "shot": "360x740/11-reward.png",
-      "kind": "shifted",
-      "severity": "note",
-      "text": "Mới: món thưởng lần này có tên dài («Cành thông thơm vào Sổ sưu tập», 3 dòng) nên khối thưởng bị đẩy lên khoảng 27 px, dòng tiêu đề kỹ năng ở mép trên bị cắt nửa chữ. Các nút Tiếp và Khoe kết quả vẫn đủ.",
-      "fixedIn": null
-    },
     {
       "shot": "360x740/13-olympiad-practice.png",
       "kind": "off-screen",
       "severity": "note",
-      "text": "Đã có từ bản trước: nút quay lại (←) nằm ở đầu màn luyện, trôi khỏi khung khi cuộn xuống phần đáp án trên điện thoại; cuộn lên vẫn thấy. Sửa ở đợt sau: thanh đầu màn dính trên cùng.",
+      "text": "Đã có từ bản trước: nút quay lại (←) ở đầu màn luyện trôi khỏi khung khi cuộn tới đáp án trên điện thoại; cuộn lên vẫn thấy. Bản thử cho hàng tiêu đề dính trên cùng (244ea618) che mất câu hỏi nên đã hoàn tác ở 8ee8c73c; cần thiết kế lại hàng tiêu đề gọn hơn.",
+      "fixedIn": "8ee8c73c"
+    },
+    {
+      "shot": "820x1180/13-olympiad-practice.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "Ở 244ea618 nút ← dính đầu màn che số câu «1/10»; đã hoàn tác ở 8ee8c73c, ảnh này đã hiện lại «1/10» và nút ←.",
+      "fixedIn": "8ee8c73c"
+    },
+    {
+      "shot": "360x740/07-play-hud.png",
+      "kind": "clipped",
+      "severity": "note",
+      "text": "Đã có từ bản trước: tên chương trên thẻ nhiệm vụ bị cắt «Chương 1: Lá...».",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/10-question.png",
+      "kind": "clipped",
+      "severity": "note",
+      "text": "Đã có từ bản trước: phép tính trong đề xuống dòng giữa chừng.",
       "fixedIn": null
     },
     {
@@ -34,31 +48,17 @@
       "fixedIn": null
     },
     {
-      "shot": "360x740/07-play-hud.png",
-      "kind": "clipped",
-      "severity": "note",
-      "text": "Đã có từ bản trước: tên chương trên thẻ nhiệm vụ bị cắt «Chương 1: Lá...».",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/10-question.png",
-      "kind": "clipped",
-      "severity": "note",
-      "text": "Đã có từ bản trước: phép tính trong đề xuống dòng giữa chừng.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/18-party.png",
+      "shot": "360x740/22-friends-invite.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Mới: bong bóng «Chào cậu!» chồng sát mép trên nhãn «Bông · Tương tác»; chữ vẫn đọc được, không chạm nút.",
+      "text": "Đã có từ bản trước: nút «Quay lại game» đè góc dưới phải khung Bạn bè, không che chữ hay nút.",
       "fixedIn": null
     },
     {
-      "shot": "820x1180/17-pet-care.png",
-      "kind": "overlap",
+      "shot": "360x740/03-creator.png",
+      "kind": "other",
       "severity": "note",
-      "text": "Đã có từ bản trước: mũi tên vàng ló ra sau khay nút Chăm sóc.",
+      "text": "Đã có từ bản trước: «Về trang chủ» nhỏ, vùng chạm có thể dưới 44 px.",
       "fixedIn": null
     },
     {
@@ -66,13 +66,6 @@
       "kind": "other",
       "severity": "note",
       "text": "Đã có từ bản trước: vệt mờ dưới nút «Đăng xuất».",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/03-creator.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Đã có từ bản trước: «Về trang chủ» nhỏ, vùng chạm có thể dưới 44 px.",
       "fixedIn": null
     },
     {
@@ -94,6 +87,27 @@
       "kind": "other",
       "severity": "note",
       "text": "Đã có từ bản trước: mép dưới bảng sự kiện lộ chữ của màn phía sau.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/17-pet-care.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "Đã có từ bản trước: mũi tên vàng ló ra sau khay nút Chăm sóc.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/18-party.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "Đã có từ bản trước: nhãn «Bông · Tương tác» và bảng tên «Bông» chạm nhau.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/07-play-hud.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Mới, chưa kiểm được: bộ ảnh chưa có thông báo khi tắt online và màn /kiem-duyet (mới trong bản này); cần thêm hai màn này vào bộ chụp.",
       "fixedIn": null
     }
   ]
