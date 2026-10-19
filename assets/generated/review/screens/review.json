@@ -1,64 +1,71 @@
 {
-  "capturedFrom": "8ee8c73c2876d286f342f20f6d30e19656e0f6f9",
-  "capturedAt": "2026-10-19T09:56:07+07:00",
-  "reviewedAt": "2026-10-19T10:05:00+07:00",
-  "reviewer": "agent:claude (4 subagent duyệt 244ea618; phiên chính duyệt lại màn đổi ở 8ee8c73c)",
+  "capturedFrom": "462d9f012a24354a0c8fe15a44358f1062ac7adb",
+  "capturedAt": "2026-10-19T13:59:51+07:00",
+  "reviewedAt": "2026-10-19T14:08:00+07:00",
+  "reviewer": "agent:claude (4 subagent, mỗi agent 12 ảnh)",
   "verdict": "pass",
   "findings": [
     {
-      "shot": "360x740/13-olympiad-practice.png",
-      "kind": "off-screen",
-      "severity": "note",
-      "text": "Đã có từ bản trước: nút quay lại (←) ở đầu màn luyện trôi khỏi khung khi cuộn tới đáp án trên điện thoại; cuộn lên vẫn thấy. Bản thử cho hàng tiêu đề dính trên cùng (244ea618) che mất câu hỏi nên đã hoàn tác ở 8ee8c73c; cần thiết kế lại hàng tiêu đề gọn hơn.",
-      "fixedIn": "8ee8c73c"
-    },
-    {
-      "shot": "820x1180/13-olympiad-practice.png",
+      "shot": "820x1180/18-party.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Ở 244ea618 nút ← dính đầu màn che số câu «1/10»; đã hoàn tác ở 8ee8c73c, ảnh này đã hiện lại «1/10» và nút ←.",
-      "fixedIn": "8ee8c73c"
+      "text": "Mới: bong bóng thoại «Hôm nay đi đâu nhỉ?» trong cảnh 3D bị bảng «Đội của bạn» che chữ đầu, mép dưới chạm nhãn «Bông · Tương tác»; không che nút, nhãn vẫn đọc được.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/16-backpack.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Mới: món «Rêu xanh cổ thụ» dùng cùng biểu tượng chiếc lá với «Lá thần» bên cạnh, khó phân biệt bằng hình.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/14-boss.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Mới: dòng hướng dẫn đổi chữ, đọc rõ; nền 3D có thêm vật của chuỗi truyện NPC sau thanh HP, không che chữ hay vùng chạm.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/16-backpack.png",
+      "kind": "shifted",
+      "severity": "note",
+      "text": "Mới: trang Ba lô lệch khoảng 3 px do món mẫu khác tên; không cắt, không chồng.",
+      "fixedIn": null
+    },
+    {
+      "shot": "360x740/10-question.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Bộ ảnh chưa có màn câu đố hiện khung manh mối, nên phần hiển thị manh mối ở mọi dạng câu đố mới chỉ được kiểm bằng test giao diện; phép tính «(8 + 5 = ?)» xuống dòng đã có từ bản trước.",
+      "fixedIn": null
     },
     {
       "shot": "360x740/07-play-hud.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Đã có từ bản trước: tên chương trên thẻ nhiệm vụ bị cắt «Chương 1: Lá...».",
+      "text": "Đã có từ bản trước: tên chương trên thẻ nhiệm vụ bị cắt «Chương 1: Lá...»; không có vật mới che tầm nhìn.",
       "fixedIn": null
     },
     {
-      "shot": "360x740/10-question.png",
-      "kind": "clipped",
+      "shot": "360x740/13-olympiad-practice.png",
+      "kind": "off-screen",
       "severity": "note",
-      "text": "Đã có từ bản trước: phép tính trong đề xuống dòng giữa chừng.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/14-boss.png",
-      "kind": "clipped",
-      "severity": "note",
-      "text": "Đã có từ bản trước: tên trùm và «100 / 500 HP» xuống dòng, chữ «HP» tách riêng.",
+      "text": "Đã có từ bản trước: nút quay lại trôi khỏi khung khi cuộn trên điện thoại; cần thiết kế lại hàng tiêu đề.",
       "fixedIn": null
     },
     {
       "shot": "360x740/17-pet-care.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Đã có từ bản trước: các bảng chỉ số và hàng nút che gần hết con mèo 3D.",
+      "text": "Đã có từ bản trước: bảng chỉ số và hàng nút che gần hết thú cưng.",
       "fixedIn": null
     },
     {
       "shot": "360x740/22-friends-invite.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Đã có từ bản trước: nút «Quay lại game» đè góc dưới phải khung Bạn bè, không che chữ hay nút.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/03-creator.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Đã có từ bản trước: «Về trang chủ» nhỏ, vùng chạm có thể dưới 44 px.",
+      "text": "Đã có từ bản trước: nút «Quay lại game» đè góc dưới phải khung Bạn bè.",
       "fixedIn": null
     },
     {
@@ -72,7 +79,7 @@
       "shot": "820x1180/08-play-prompt.png",
       "kind": "other",
       "severity": "note",
-      "text": "Đã có từ bản trước: nhãn «Vẹt · Nói chuyện» nằm trên đầu nhân vật, Vẹt bị che.",
+      "text": "Đã có từ bản trước: nhãn «Vẹt · Nói chuyện» nằm trên đầu nhân vật.",
       "fixedIn": null
     },
     {
@@ -83,31 +90,10 @@
       "fixedIn": null
     },
     {
-      "shot": "820x1180/12-event-panel.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Đã có từ bản trước: mép dưới bảng sự kiện lộ chữ của màn phía sau.",
-      "fixedIn": null
-    },
-    {
       "shot": "820x1180/17-pet-care.png",
       "kind": "overlap",
       "severity": "note",
       "text": "Đã có từ bản trước: mũi tên vàng ló ra sau khay nút Chăm sóc.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/18-party.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Đã có từ bản trước: nhãn «Bông · Tương tác» và bảng tên «Bông» chạm nhau.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/07-play-hud.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Mới, chưa kiểm được: bộ ảnh chưa có thông báo khi tắt online và màn /kiem-duyet (mới trong bản này); cần thêm hai màn này vào bộ chụp.",
       "fixedIn": null
     }
   ]
