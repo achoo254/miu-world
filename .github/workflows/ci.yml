@@ -17,9 +17,9 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 24
           cache: pnpm
@@ -47,9 +47,9 @@ jobs:
     # generation does not wait for the cores of hundreds of other test files.
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 24
           cache: pnpm
@@ -79,9 +79,9 @@ jobs:
     env:
       DATABASE_URL: postgres://miu@localhost:5432/miu
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 24
           cache: pnpm
@@ -100,9 +100,9 @@ jobs:
         shard: [1, 2]
         total: [2]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 24
           cache: pnpm
@@ -115,7 +115,7 @@ jobs:
         run: pnpm --filter @miu/web e2e:ci --shard=${{ matrix.shard }}/${{ matrix.total }}
       - name: Keep Playwright traces of failed runs
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: playwright-traces-${{ matrix.shard }}
           path: apps/web/test-results/
@@ -126,6 +126,6 @@ jobs:
     container:
       image: semgrep/semgrep:1.178.0
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Semgrep CE
         run: semgrep scan --config p/typescript --config p/nodejs --error --metrics=off apps packages
