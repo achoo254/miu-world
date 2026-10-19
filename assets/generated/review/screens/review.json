@@ -1,113 +1,99 @@
 {
-  "capturedFrom": "c47a2d4fbf08076a56605fb588ea899b2558b3ab",
-  "capturedAt": "2026-10-19T08:06:05+07:00",
-  "reviewedAt": "2026-10-19T08:08:00+07:00",
+  "capturedFrom": "9755135117b491ce5c49f56e9b2557de91d18f03",
+  "capturedAt": "2026-10-19T09:10:04+07:00",
+  "reviewedAt": "2026-10-19T09:15:00+07:00",
   "reviewer": "agent:claude (4 subagent, mỗi agent 12 ảnh)",
   "verdict": "pass",
   "findings": [
     {
-      "shot": "360x740/07-play-hud.png",
-      "kind": "clipped",
+      "shot": "360x740/11-reward.png",
+      "kind": "shifted",
       "severity": "note",
-      "text": "Tên nhiệm vụ trong thẻ \"Nhiệm vụ hiện tại\" bị cắt thành \"Khu rừng bí mật – Chương 1: Lá...\", người chơi không đọc được tên chương. Lỗi này đã có từ bản trước, không phải lỗi mới.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/08-play-prompt.png",
-      "kind": "clipped",
-      "severity": "note",
-      "text": "Thẻ nhiệm vụ cắt tên chương thành \"Chương 1: Lá...\", giống ảnh 07. Thẻ đè lên mép trên của nút Tương tác nhưng không che chữ hay vùng chạm.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/10-question.png",
-      "kind": "clipped",
-      "severity": "note",
-      "text": "Phép tính trong đề bị xuống dòng giữa chừng: \"(8\" nằm cuối dòng trên, \"+ 5 = ?)\" sang dòng dưới cạnh nút Nghe, khiến bé khó đọc trọn phép tính. Nên giữ cả biểu thức trên một dòng. Lỗi đã có từ bản trước.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/03-creator.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "\"Về trang chủ\" chỉ là dòng chữ nhỏ, không có khung nút, nên khó thấy đây là nút quay lại và vùng chạm có vẻ nhỏ hơn 44px. Bản trước cũng vậy.",
+      "text": "Mới: món thưởng lần này có tên dài («Cành thông thơm vào Sổ sưu tập», 3 dòng) nên khối thưởng bị đẩy lên khoảng 27 px, dòng tiêu đề kỹ năng ở mép trên bị cắt nửa chữ. Các nút Tiếp và Khoe kết quả vẫn đủ.",
       "fixedIn": null
     },
     {
       "shot": "360x740/13-olympiad-practice.png",
       "kind": "off-screen",
       "severity": "note",
-      "text": "Ảnh đang cuộn xuống giữa bài: dòng đầu câu hỏi bị cắt ở mép trên, và trong khung hình không thấy nút đóng hay quay lại. Bản trước cũng y hệt; cần kiểm lại xem nút đóng có còn ở phía trên khi cuộn lên không.",
+      "text": "Đã có từ bản trước: nút quay lại (←) nằm ở đầu màn luyện, trôi khỏi khung khi cuộn xuống phần đáp án trên điện thoại; cuộn lên vẫn thấy. Sửa ở đợt sau: thanh đầu màn dính trên cùng.",
       "fixedIn": null
     },
     {
       "shot": "360x740/14-boss.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Ở thanh máu của boss, tên «Chó Bạc Canh Hào» bị xuống dòng, còn chữ «HP» rơi xuống dòng dưới, tách khỏi «100 / 500». Đọc vẫn hiểu nhưng trông lệch.",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/18-party.png",
-      "kind": "clipped",
-      "severity": "note",
-      "text": "Tên nhiệm vụ trên thẻ «Nhiệm vụ hiện tại» bị cắt bằng dấu ba chấm giữa câu («Chương 1: Lá...»). Bản trước cũng vậy.",
+      "text": "Đã có từ bản trước: tên trùm và «100 / 500 HP» xuống dòng, chữ «HP» tách riêng.",
       "fixedIn": null
     },
     {
       "shot": "360x740/17-pet-care.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Con mèo 3D bị các bảng chỉ số và hàng nút Chăm sóc/Làm trò che gần hết, chỉ còn lộ phần chân. Không che chữ hay vùng chạm nào.",
+      "text": "Đã có từ bản trước: các bảng chỉ số và hàng nút che gần hết con mèo 3D.",
       "fixedIn": null
     },
     {
-      "shot": "820x1180/03-creator.png",
-      "kind": "other",
+      "shot": "360x740/07-play-hud.png",
+      "kind": "clipped",
       "severity": "note",
-      "text": "Nút \"Về trang chủ\" chỉ là dòng chữ nhỏ, không có khung nút, vùng chạm trông thấp hơn 44px nên bé khó bấm trúng trên iPad. Lỗi này đã có từ bản trước.",
+      "text": "Đã có từ bản trước: tên chương trên thẻ nhiệm vụ bị cắt «Chương 1: Lá...».",
       "fixedIn": null
     },
     {
-      "shot": "820x1180/11-reward.png",
-      "kind": "overlap",
+      "shot": "360x740/10-question.png",
+      "kind": "clipped",
       "severity": "note",
-      "text": "Vòng tròn ảnh nhân vật đè nhẹ lên dòng \"Khu rừng bí mật – Chương 1: Lá thần\" ngay bên dưới, mép trên chữ \"Chương\" bị che một phần. Chữ vẫn đọc được.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/08-play-prompt.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Nhãn \"Vẹt · Nói chuyện\" nằm ngay trên đầu nhân vật của bé, còn chính bạn Vẹt bị thân nhân vật che gần hết. Người chơi khó thấy mình đang tương tác với ai.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/02-players.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Ngay dưới nút \"Đăng xuất\" có một mảng trắng mờ như bóng nút thừa, trông giống một nút thứ hai bị lệch. Lỗi này đã có từ bản trước.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/12-event-panel.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Ở mép dưới bảng sự kiện vẫn lộ chữ của màn phía sau, trông như chữ bị cắt. Nút đóng (X) vẫn rõ và bấm được.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/17-pet-care.png",
-      "kind": "overlap",
-      "severity": "note",
-      "text": "Mũi tên chỉ đường màu vàng của cảnh 3D vẫn ló ra ở góc trái, giữa hàng tab và khay nút Cho ăn. Không che chữ hay nút, nhưng trông như một mảnh giao diện bị lạc khi bảng chăm sóc thú cưng đang mở.",
+      "text": "Đã có từ bản trước: phép tính trong đề xuống dòng giữa chừng.",
       "fixedIn": null
     },
     {
       "shot": "820x1180/18-party.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Nhãn tương tác \"Bông · Tương tác\" chạm sát mép trên của bảng tên \"Bông\" trên đầu nhân vật, hai nhãn gần như dính vào nhau. Vẫn đọc được, nhưng nên tăng khoảng cách cho thoáng.",
+      "text": "Mới: bong bóng «Chào cậu!» chồng sát mép trên nhãn «Bông · Tương tác»; chữ vẫn đọc được, không chạm nút.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/17-pet-care.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "Đã có từ bản trước: mũi tên vàng ló ra sau khay nút Chăm sóc.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/02-players.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Đã có từ bản trước: vệt mờ dưới nút «Đăng xuất».",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/03-creator.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Đã có từ bản trước: «Về trang chủ» nhỏ, vùng chạm có thể dưới 44 px.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/08-play-prompt.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Đã có từ bản trước: nhãn «Vẹt · Nói chuyện» nằm trên đầu nhân vật, Vẹt bị che.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/11-reward.png",
+      "kind": "overlap",
+      "severity": "note",
+      "text": "Đã có từ bản trước: ảnh đại diện chạm nhẹ dòng tên chương.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/12-event-panel.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Đã có từ bản trước: mép dưới bảng sự kiện lộ chữ của màn phía sau.",
       "fixedIn": null
     }
   ]
