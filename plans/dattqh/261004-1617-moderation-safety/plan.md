@@ -1,6 +1,6 @@
 # Kiểm duyệt, an toàn kết nối và tắt khẩn cấp cho chơi online (không chống cheat)
 
-**Trạng thái:** **đang thi công** từ 19/10/2026; pha 1–5 xong phần tự động 19/10/2026 (report `plans/dattqh/reports/moderation-safety-261019.md`), pha 6 chưa làm (người sở hữu duyệt mở lại theo tư vấn của Jev 0,87, vì người ngoài gia đình chơi được từ 12/10/2026); hoãn trước đó từ 04/10/2026 · **Tier:** M · **Nhánh:** `main` · **Ngày:** 04/10/2026
+**Trạng thái:** **đang thi công** từ 19/10/2026; pha 1–5 xong và đã lên production `8ee8c73c` ngày 19/10/2026 (người sở hữu duyệt; migration `0023_moderation`; `MODERATOR_ACCOUNTS` đặt một tài khoản) (report `plans/dattqh/reports/moderation-safety-261019.md`), pha 6 chưa làm (người sở hữu duyệt mở lại theo tư vấn của Jev 0,87, vì người ngoài gia đình chơi được từ 12/10/2026); hoãn trước đó từ 04/10/2026 · **Tier:** M · **Nhánh:** `main` · **Ngày:** 04/10/2026
 **Nguồn:** Master Plan §8 (điều kiện mở bậc 2: "có kiểm duyệt và quy trình xử lý báo cáo"; "Khuyến nghị: chưa có đội kiểm duyệt thì dừng ở bậc 1"), §9 (dòng Multiplayer: bắt nạt, kết nối giả mạo), §8b ("công tắc tắt khẩn cấp, giới hạn tải server").
 
 ## Quyết định mở lại (19/10/2026, Jev qua `tools/decisions/jev-decide.py`, người sở hữu duyệt mở plan)
