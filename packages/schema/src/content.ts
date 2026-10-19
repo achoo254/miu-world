@@ -223,17 +223,36 @@ const connectShape = {
   showLengths: z.boolean().optional(),
 };
 
+const LOGIC_TYPES = ['pattern', 'maze', 'puzzle'] as const;
+export type LogicType = (typeof LOGIC_TYPES)[number];
+
 /** Logic challenge (Master Plan §5, §6): patterns, mazes, or puzzle solving. */
 const logicShape = {
   ...challengeBase,
   mechanic: z.literal('logic'),
-  logicType: z.enum(['pattern', 'maze', 'puzzle']).default('pattern'),
+  logicType: z.enum(LOGIC_TYPES).default('pattern'),
   elements: z
     .array(z.strictObject({ id: ContentId, label: Text, image: IllustrationRef.optional() }))
     .default([]),
   choices: z.array(Choice).min(2),
   grid: z.array(z.array(z.string())).optional(),
 };
+
+/**
+ * What the logic challenge screen draws for each kind of step. The screen reads this table and the content check
+ * holds every logic step to it, so a step can never carry clues (elements) or a grid that the player does not see.
+ */
+export const LOGIC_SHOWS: Readonly<Record<LogicType, { readonly elements: boolean; readonly grid: boolean }>> = {
+  pattern: { elements: true, grid: false },
+  maze: { elements: true, grid: true },
+  puzzle: { elements: true, grid: false },
+};
+
+/**
+ * A pattern element that stands for the item asked about ("?", "Trang ?"). The screen draws it as the unknown cell,
+ * and adds its own «?» after the row only when no element does.
+ */
+export const isUnknownElement = (label: string): boolean => label.includes('?');
 
 /** Highest score a minigame round can report; the server refuses anything above it. */
 export const MAX_MINIGAME_SCORE = 9999;

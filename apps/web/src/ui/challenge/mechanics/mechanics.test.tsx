@@ -225,6 +225,43 @@ describe('textbook mechanic screens send the answer the server grades', () => {
     expect(body(submit)).toEqual({ answer: { choice: 'apple' } });
   });
 
+  const logicOf = (logicType: 'pattern' | 'maze' | 'puzzle', labels: string[]): QuestStepPublic => ({
+    id: `${logicType}-clues`,
+    title: 'Ba ghế đầu bàn',
+    goTo: 'Xem sơ đồ',
+    trigger: 'auto',
+    skill: 'logic',
+    prompt: 'Cách xếp nào đúng?',
+    kind: 'challenge',
+    mechanic: 'logic',
+    logicType,
+    elements: labels.map((label, i) => ({ id: `e${i}`, label })),
+    choices: [
+      { id: 'a', text: 'Cách A' },
+      { id: 'b', text: 'Cách B' },
+    ],
+  });
+  const renderLogic = (step: QuestStepPublic) =>
+    render(<LearningStep step={step} quest={quest} data={DATA} busy={false} submit={vi.fn(async () => response(true))} onClose={() => undefined} />);
+
+  it('logic puzzle shows its clues, so it can be solved without the answer layer', () => {
+    renderLogic(logicOf('puzzle', ['Ghế 1 kê sát cây nến to', 'Gấu ngồi kề cây nến to']));
+    const clues = byId('logic-challenge-clues');
+    expect(clues?.textContent).toContain('Ghế 1 kê sát cây nến to');
+    expect(clues?.textContent).toContain('Gấu ngồi kề cây nến to');
+    expect(screen.queryByLabelText('unknown next element')).toBeNull();
+  });
+
+  it('logic pattern adds its own unknown cell only when no element is the unknown one', () => {
+    renderLogic(logicOf('pattern', ['5', '10', '?', '20']));
+    expect(screen.getAllByLabelText(/unknown/)).toHaveLength(1);
+    expect(screen.queryByLabelText('unknown next element')).toBeNull();
+    cleanup();
+    renderLogic(logicOf('pattern', ['5', '10', '15']));
+    expect(screen.getAllByLabelText(/unknown/)).toHaveLength(1);
+    expect(screen.getByLabelText('unknown next element')).not.toBeNull();
+  });
+
   it('decision screen allows picking an action and proceeds', () => {
     const decisionStep: QuestStepPublic = {
       id: 'decision-1',

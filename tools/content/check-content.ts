@@ -32,6 +32,7 @@ import { ASSETS_DIR } from '../assets/asset-lib';
 import { CURRICULUM_FOLDERS, checkCurriculum } from './check-curriculum';
 import { percentCovered, sumGaps } from './content-gaps';
 import { varietyIssues } from './content-variety';
+import { checkLogicSteps } from './logic-steps';
 import { checkCurriculumLinks } from './curriculum-links';
 import { checkLocales } from './check-locales';
 import { modelSwatches } from './pet-swatches';
@@ -707,6 +708,7 @@ export function checkContent(dir: string = CONTENT_DIR): ContentReport {
     const links = checkCurriculumLinks(curriculum.books, quests);
     issues.push(...links.issues);
     issues.push(...varietyIssues(quests, curriculum.books));
+    issues.push(...checkLogicSteps(quests));
     for (const book of curriculum.books) {
       const totals = sumGaps(links.lessons.filter((l) => l.book === book.book.id));
       // Every exercise of a finished inventory must be in the game or on a worksheet (the textbook goal).
