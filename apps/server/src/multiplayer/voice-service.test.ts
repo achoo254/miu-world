@@ -36,7 +36,7 @@ describe('party voice', () => {
     await party(a, b);
     a.send({ type: 'voice-join', mic: false });
     await settle();
-    expect(voiceOf(a)).toEqual({ kind: 'party', joined: true, members: [{ id: a.id, displayName: 'Bạn child-a', isBot: false, mic: false, voice: null }] });
+    expect(voiceOf(a)).toEqual({ kind: 'party', joined: true, members: [{ id: a.id, displayName: 'Bạn child-a', isBot: false, mic: false, voice: null, friend: false }] });
     expect(voiceOf(b)).toMatchObject({ kind: 'party', joined: false, members: [{ id: a.id }] });
     a.send({ type: 'voice-mic', on: true });
     await settle();
@@ -189,6 +189,87 @@ describe('party voice', () => {
     back.conn.close();
     await vi.advanceTimersByTimeAsync(31_000);
     expect(voiceOf(b)?.members.map((m) => m.id) ?? []).not.toContain(back.id);
+  });
+});
+
+describe('who is a friend in party voice', () => {
+  const friendOf = (c: Client, id: string) => voiceOf(c)?.members.find((m) => m.id === id)?.friend;
+
+  it('marks a member a friend only after the database says so; a stranger, herself and bots are not', async () => {
+    const a = await h.joined('child-a');
+    const b = await h.joined('child-b');
+    const s = await h.joined('child-s');
+    h.friends.befriend('child-a', 'child-b');
+    await party(a, b);
+    h.clock.now += 5_000;
+    await party(a, s);
+    for (const x of [a, b, s]) x.send({ type: 'voice-join', mic: true });
+    await settle();
+    expect(friendOf(a, b.id)).toBe(true);
+    expect(friendOf(b, a.id)).toBe(true);
+    expect(friendOf(a, s.id)).toBe(false);
+    expect(friendOf(s, a.id)).toBe(false);
+    expect(friendOf(s, b.id)).toBe(false);
+    expect(friendOf(a, a.id)).toBe(false);
+  });
+
+  it('follows a friendship made or ended while they are in the voice', async () => {
+    const a = await h.joined('child-a');
+    const b = await h.joined('child-b');
+    await party(a, b);
+    for (const x of [a, b]) x.send({ type: 'voice-join', mic: true });
+    await settle();
+    expect(friendOf(a, b.id)).toBe(false);
+    h.friends.befriend('child-a', 'child-b');
+    h.hub.playerEvent({ type: 'friend-answered', childId: 'child-b', who: { displayName: 'Bạn child-b', species: 'cat' }, fromChildId: 'child-a', fromBotId: null, accepted: true });
+    await settle();
+    expect(friendOf(a, b.id)).toBe(true);
+    expect(friendOf(b, a.id)).toBe(true);
+    h.friends.pairs.clear();
+    h.hub.playerEvent({ type: 'unfriended', childId: 'child-a', otherChildId: 'child-b', botId: null });
+    expect(friendOf(a, b.id)).toBe(false);
+    expect(friendOf(b, a.id)).toBe(false);
+  });
+
+  it('never keeps an answer that a friendship ending overtook, nor guesses when the database fails', async () => {
+    const a = await h.joined('child-a');
+    const b = await h.joined('child-b');
+    h.friends.befriend('child-a', 'child-b');
+    await party(a, b);
+    let answer: (friends: boolean) => void = () => {};
+    const spy = vi.spyOn(h.friends.store, 'areFriends').mockImplementationOnce(() => new Promise<boolean>((resolve) => (answer = resolve)));
+    for (const x of [a, b]) x.send({ type: 'voice-join', mic: true });
+    await settle();
+    h.hub.playerEvent({ type: 'unfriended', childId: 'child-a', otherChildId: 'child-b', botId: null });
+    answer(true);
+    await settle();
+    expect(friendOf(a, b.id)).toBe(false);
+
+    // A failed question leaves them strangers; joining again asks again.
+    spy.mockRejectedValueOnce(new Error('db down'));
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+    for (const x of [a, b]) x.send({ type: 'voice-leave' });
+    await settle();
+    for (const x of [a, b]) x.send({ type: 'voice-join', mic: true });
+    await settle();
+    expect(friendOf(a, b.id)).toBe(false);
+    a.send({ type: 'voice-leave' });
+    await settle();
+    a.send({ type: 'voice-join', mic: true });
+    await settle();
+    expect(friendOf(a, b.id)).toBe(true);
+  });
+
+  it('counts the two in a call as friends (a call starts only between friends)', async () => {
+    const a = await h.joined('child-a');
+    const b = await h.joined('child-b', [1, 5, 1], 'cho-phien');
+    h.friends.befriend('child-a', 'child-b');
+    a.send({ type: 'voice-call', to: b.id });
+    await settle();
+    b.send({ type: 'voice-call-reply', from: a.id, accept: true });
+    await settle();
+    expect(friendOf(a, b.id)).toBe(true);
+    expect(friendOf(a, a.id)).toBe(false);
   });
 });
 

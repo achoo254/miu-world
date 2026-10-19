@@ -23,9 +23,9 @@ const VOICE: VoiceChannel = {
   kind: 'party',
   joined: true,
   members: [
-    { id: 'p-a', displayName: 'Mochi', isBot: false, mic: true, voice: null },
-    { id: 'p-b', displayName: 'Bông', isBot: false, mic: false, voice: null },
-    { id: 'bot-tt-1', displayName: 'Bé Bông', isBot: true, mic: true, voice: { pitch: 1.2, rate: 1 } },
+    { id: 'p-a', displayName: 'Mochi', isBot: false, mic: true, voice: null, friend: true },
+    { id: 'p-b', displayName: 'Bông', isBot: false, mic: false, voice: null, friend: true },
+    { id: 'bot-tt-1', displayName: 'Bé Bông', isBot: true, mic: true, voice: { pitch: 1.2, rate: 1 }, friend: false },
   ],
 };
 
@@ -126,7 +126,7 @@ describe('calls', () => {
     act(() =>
       social.voiceIn({
         type: 'voice-state',
-        channel: { kind: 'call', joined: true, members: [{ id: 'p-a', displayName: 'Mochi', isBot: false, mic: true, voice: null }, { id: 'p-c', displayName: 'Cáo', isBot: false, mic: true, voice: null }] },
+        channel: { kind: 'call', joined: true, members: [{ id: 'p-a', displayName: 'Mochi', isBot: false, mic: true, voice: null, friend: true }, { id: 'p-c', displayName: 'Cáo', isBot: false, mic: true, voice: null, friend: true }] },
       }),
     );
     expect(screen.getByText(/Đang nói chuyện với Cáo/)).toBeTruthy();

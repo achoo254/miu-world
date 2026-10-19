@@ -8,6 +8,8 @@
 //   server, for the rings and the bots' turns. Nothing is recorded, stored or turned into text.
 // - Companion bots in the party speak their lines with on-device synthesized voices of their own.
 // - The music steps back while someone talks.
+// - She connects straight only to a friend (the server says who is one). With anyone else the connection goes only
+//   through the relay, so a stranger never learns her address; without a relay server she does not connect to them.
 import { VOICE_CALL_RING_MS, VoiceIceServers, type BotVoice, type VoiceBotLineKey, type VoiceChannel } from '@miu/schema/voice';
 import type { SocialStore, VoiceIn, VoiceOut } from '../../game-bridge/social-store';
 import { api } from '../api-client';
@@ -65,7 +67,7 @@ export interface VoiceDeps {
   createAudioContext?: () => AudioContext | null;
   iceServers?: () => Promise<VoiceIceServers>;
   speak?: typeof speakVoiceLine;
-  /** Every connection through the relay (a dev switch to try TURN). */
+  /** Every connection through the relay, friends' too (a dev switch to try TURN). */
   relayOnly?: boolean;
 }
 
@@ -378,11 +380,20 @@ export class VoiceManager {
     this.syncPeers();
   }
 
+  /** Connects to the other players in her voice: straight to friends, through the relay (or not at all) to others. */
   private syncPeers(): void {
     const self = this.selfId();
     const channel = this.snapshot.channel;
-    const targets = this.snapshot.joined && channel?.joined ? channel.members.filter((m) => !m.isBot && m.id !== self).map((m) => m.id) : [];
+    const others = this.snapshot.joined && channel?.joined ? channel.members.filter((m) => !m.isBot && m.id !== self) : [];
+    const turn = this.hasTurn();
+    const targets = others.filter((m) => m.friend || turn).map((m) => ({ id: m.id, relay: this.relayOnly || !m.friend }));
     this.mesh?.sync(self, targets);
+  }
+
+  /** The servers she has now include a relay (TURN). */
+  private hasTurn(): boolean {
+    const urls = (this.ice?.servers ?? []).flatMap((server) => (Array.isArray(server.urls) ? server.urls : [server.urls]));
+    return urls.some((url) => /^turns?:/i.test(url));
   }
 
   private selfId(): string | null {
@@ -508,6 +519,7 @@ export class VoiceManager {
   }
 
   private async loadIce(): Promise<void> {
+    const hadTurn = this.hasTurn();
     if (!this.ice || Date.now() > this.ice.until) {
       try {
         const got = await this.fetchIce();
@@ -516,7 +528,9 @@ export class VoiceManager {
         this.ice = { servers: STUN_FALLBACK, until: Date.now() + 60_000 };
       }
     }
-    this.mesh?.setConfig({ iceServers: this.ice.servers, iceTransportPolicy: this.relayOnly ? 'relay' : 'all' });
+    this.mesh?.setConfig({ iceServers: this.ice.servers });
+    // A relay server came or went: who she may connect to (those not her friends) changed with it.
+    if (this.hasTurn() !== hadTurn) this.syncPeers();
   }
 
   /** Her sound through the audio output, at her own volume (a muted element starts the stream in Chrome). */

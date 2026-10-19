@@ -1,9 +1,10 @@
-// Voice between friends and in a party (owner, 05/10/2026; Jev): WebRTC straight between at most four players (or
-// through a relay when no direct path works), set up over the game's WebSocket. The server only passes the setup
-// messages on, between members of one party who joined its voice or two friends in an accepted call, never to a
-// stranger or across a block; it never receives, records or stores a sound, and nothing is turned into text.
-// Companion bots in a party speak their own lines from a fixed list, read on each player's device with the bot's own
-// synthesized voice (pitch and rate from its persona).
+// Voice between friends and in a party (owner, 05/10/2026; Jev): WebRTC between at most four players, straight between
+// friends (or through a relay when no direct path works) and always through the relay with a party member who is not
+// a friend, set up over the game's WebSocket. The server only passes the setup messages on, between members of one
+// party who joined its voice or two friends in an accepted call, never to a stranger or across a block; it never
+// receives, records or stores a sound, and nothing is turned into text. Companion bots in a party speak their own
+// lines from a fixed list, read on each player's device with the bot's own synthesized voice (pitch and rate from its
+// persona).
 import { z } from 'zod';
 
 const MemberId = z.string().min(1).max(40);
@@ -44,6 +45,12 @@ export const VoiceMember = z.strictObject({
   mic: z.boolean(),
   /** A companion bot's voice; null for a player. */
   voice: BotVoice.nullable(),
+  /**
+   * She and this player are friends (the server read it from the database; false until it knows, for herself and for
+   * bots). Her client connects to a friend directly and to anyone else only through the relay, so a stranger in her
+   * party never learns her address.
+   */
+  friend: z.boolean(),
 });
 export type VoiceMember = z.infer<typeof VoiceMember>;
 

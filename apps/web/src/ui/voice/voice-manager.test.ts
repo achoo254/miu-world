@@ -76,7 +76,10 @@ class FakePeer {
   }
 }
 
-const member = (id: string, extra: Partial<VoiceMember> = {}): VoiceMember => ({ id, displayName: `Bạn ${id}`, isBot: false, mic: true, voice: null, ...extra });
+const member = (id: string, extra: Partial<VoiceMember> = {}): VoiceMember => ({ id, displayName: `Bạn ${id}`, isBot: false, mic: true, voice: null, friend: true, ...extra });
+const stranger = (id: string): VoiceMember => member(id, { friend: false });
+const TURN = { iceServers: [{ urls: 'stun:stun.example:3478' }, { urls: ['turn:turn.example:3478?transport=udp', 'turns:turn.example:5349'], username: 'u', credential: 'c' }], ttlSeconds: 3600 };
+const peerTo = (sent: VoiceOut[], to: string) => sent.some((m) => m.type === 'voice-signal' && m.to === to && m.signal.kind === 'offer');
 const party = (joined: boolean, ...members: VoiceMember[]): VoiceChannel => ({ kind: 'party', joined, members });
 
 function setup(deps: Partial<VoiceDeps> = {}) {
@@ -251,11 +254,54 @@ describe('the connections', () => {
     expect(FakePeer.all.find((p) => p.remoteDescription?.sdp === 'v=0 from a')?.closed).toBe(true);
   });
 
-  it('goes through the relay only with the dev switch', async () => {
+  it('goes through the relay with a friend only with the dev switch', async () => {
     const { voice, server } = setup({ relayOnly: true });
     await voice.join();
     server({ type: 'voice-state', channel: party(true, member('p-b'), member('p-c')) });
     expect(FakePeer.all[0]?.config.iceTransportPolicy).toBe('relay');
+  });
+
+  it('connects straight to a friend and only through the relay to a party member who is not one', async () => {
+    const { voice, server, sent } = setup({ iceServers: async () => TURN });
+    await voice.join();
+    server({ type: 'voice-state', channel: party(true, member('p-b'), member('p-c'), stranger('p-d')) });
+    await vi.waitFor(() => expect(peerTo(sent, 'p-d')).toBe(true));
+    expect(FakePeer.all).toHaveLength(2);
+    const [friend, other] = FakePeer.all;
+    expect(friend?.config).toMatchObject({ iceTransportPolicy: 'all', iceServers: TURN.iceServers });
+    expect(other?.config).toMatchObject({ iceTransportPolicy: 'relay', iceServers: TURN.iceServers });
+    // The other side's offer is answered under the same rule.
+    server({ type: 'voice-state', channel: party(true, stranger('p-a'), member('p-b'), member('p-c'), stranger('p-d')) });
+    server({ type: 'voice-signal', from: 'p-a', signal: { kind: 'offer', sdp: 'v=0 from a' } });
+    await vi.waitFor(() => expect(FakePeer.all.find((p) => p.remoteDescription?.sdp === 'v=0 from a')?.config.iceTransportPolicy).toBe('relay'));
+  });
+
+  it('sets a connection up anew when a party member becomes or stops being a friend', async () => {
+    const { voice, server } = setup({ iceServers: async () => TURN });
+    await voice.join();
+    server({ type: 'voice-state', channel: party(true, member('p-b'), stranger('p-c')) });
+    expect(FakePeer.all.map((p) => p.config.iceTransportPolicy)).toEqual(['relay']);
+    server({ type: 'voice-state', channel: party(true, member('p-b'), member('p-c')) });
+    expect(FakePeer.all[0]?.closed).toBe(true);
+    expect(FakePeer.all[1]?.config.iceTransportPolicy).toBe('all');
+    server({ type: 'voice-state', channel: party(true, member('p-b'), stranger('p-c')) });
+    expect(FakePeer.all[1]?.closed).toBe(true);
+    expect(FakePeer.all[2]?.config.iceTransportPolicy).toBe('relay');
+  });
+
+  it('without a relay server, does not connect to a party member who is not her friend at all', async () => {
+    const { voice, server, sent } = setup();
+    await voice.join();
+    server({ type: 'voice-state', channel: party(true, member('p-b'), stranger('p-c'), member('p-d')) });
+    await vi.waitFor(() => expect(peerTo(sent, 'p-d')).toBe(true));
+    expect(FakePeer.all).toHaveLength(1);
+    expect(FakePeer.all[0]?.config.iceTransportPolicy).toBe('all');
+    expect(peerTo(sent, 'p-c')).toBe(false);
+    // Her offer is not answered either.
+    server({ type: 'voice-signal', from: 'p-c', signal: { kind: 'offer', sdp: 'v=0 from c' } });
+    await Promise.resolve();
+    expect(FakePeer.all).toHaveLength(1);
+    expect(sent.some((m) => m.type === 'voice-signal' && m.to === 'p-c')).toBe(false);
   });
 });
 

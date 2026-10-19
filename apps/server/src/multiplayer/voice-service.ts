@@ -9,6 +9,10 @@
 //   other. Anything else is dropped. Messages are size-limited by the schema and rate-limited per player.
 // - Leaving the party, a block or no longer being friends takes her out at once; a dropped connection (a map loading)
 //   keeps her place for the party grace.
+// - Each member in her state says whether she and that player are friends, as the database answered (asked when a
+//   player joins a party's voice, again when a friendship is made or ends). Her client connects to anyone who is not a
+//   friend only through the relay, so a stranger in her party never learns her address; until the answer comes the
+//   member counts as not a friend.
 import type { ClientWsMessage, SafeEmote, ServerWsMessage } from '@miu/schema/multiplayer';
 import { VOICE_CALL_RING_MS, type VoiceBotLine, type VoiceBotLineKey, type VoiceCallEnd, type VoiceChannel, type VoiceMember, type VoiceSignal } from '@miu/schema/voice';
 import { distinctVoices } from './bot-persona';
@@ -76,6 +80,9 @@ const CALLS_PER_WINDOW = 10;
 /** The emote a bot shows with each kind of line. */
 const LINE_EMOTE: Record<VoiceBotLineKey, SafeEmote> = { hello: 'wave', yes: 'jump', wow: 'cheer', more: 'heart' };
 
+/** The same key for a pair whichever comes first. */
+const pairKey = (a: string, b: string): string => (a < b ? `${a}\n${b}` : `${b}\n${a}`);
+
 export class VoiceService {
   private readonly host: VoiceHost;
   private readonly now: () => number;
@@ -90,7 +97,12 @@ export class VoiceService {
   private readonly callStarts = new Map<string, number[]>();
   /** The state each player (or bot) was last sent, so an unchanged one is not sent again. */
   private readonly sent = new Map<string, string>();
+  /** Database answers about two players in a party's voice: each player's friends and not-friends among the others. */
+  private readonly friendships = new Map<string, Map<string, boolean>>();
+  /** The question about a pair still out (a newer one, or a friendship made or ended meanwhile, replaces it). */
+  private readonly asking = new Map<string, number>();
   private callSeq = 0;
+  private askSeq = 0;
 
   constructor(options: VoiceOptions) {
     this.host = options.host;
@@ -176,9 +188,21 @@ export class VoiceService {
     this.endCallBetween(a, b);
   }
 
-  /** No longer friends: a call between them ends. */
+  /** No longer friends: a call between them ends, and in a party's voice they connect only through the relay again. */
   unfriended(a: string, b: string): void {
     this.endCallBetween(a, b);
+    this.asking.delete(pairKey(a, b));
+    if (this.speakers.has(a) && this.speakers.has(b)) this.setFriendship(a, b, false);
+    else this.forgetFriendship(a, b);
+    this.pushParties([a, b]);
+  }
+
+  /** Friends now: asked again (never taken on trust), and once the database says so they connect directly. */
+  befriended(a: string, b: string): void {
+    this.asking.delete(pairKey(a, b));
+    this.forgetFriendship(a, b);
+    const speaker = this.speakers.get(a);
+    if (speaker?.place.kind === 'party') this.learnFriends(speaker.place.partyId);
   }
 
   /** A companion bot in a party says a line: every player in the party's voice hears it (and sees its emote). */
@@ -214,6 +238,57 @@ export class VoiceService {
     if (this.callOf.has(id)) this.leave(id);
     this.speakers.set(id, { place: { kind: 'party', partyId: party.id }, mic, speaking: false });
     this.pushParties([id]);
+    this.learnFriends(party.id);
+  }
+
+  /** Asks the database about every pair of players in a party's voice not known yet (or being asked). */
+  private learnFriends(partyId: string): void {
+    const players = this.joinedOf(partyId);
+    for (const [i, a] of players.entries()) {
+      for (const b of players.slice(i + 1)) {
+        if (this.friendships.get(a)?.has(b) || this.asking.has(pairKey(a, b))) continue;
+        void this.askFriends(a, b);
+      }
+    }
+  }
+
+  /** One pair's answer: kept while both are still in a voice; a friendship found shows in their party's state. */
+  private async askFriends(a: string, b: string): Promise<void> {
+    const key = pairKey(a, b);
+    this.askSeq += 1;
+    const ask = this.askSeq;
+    this.asking.set(key, ask);
+    let friends: boolean;
+    try {
+      friends = await this.host.areFriends(a, b);
+    } catch (err) {
+      // Not known: they stay "not friends" (relay only) and the next join asks again.
+      console.error('voice friend check failed', err instanceof Error ? err.name : typeof err);
+      if (this.asking.get(key) === ask) this.asking.delete(key);
+      return;
+    }
+    // A friendship made or ended meanwhile asked again (or settled it): this answer may be out of date.
+    if (this.asking.get(key) !== ask) return;
+    this.asking.delete(key);
+    if (!this.speakers.has(a) || !this.speakers.has(b)) return;
+    this.setFriendship(a, b, friends);
+    if (friends) this.pushParties([a, b]);
+  }
+
+  private setFriendship(a: string, b: string, friends: boolean): void {
+    for (const [x, y] of [
+      [a, b],
+      [b, a],
+    ] as const) {
+      const known = this.friendships.get(x) ?? new Map<string, boolean>();
+      known.set(y, friends);
+      this.friendships.set(x, known);
+    }
+  }
+
+  private forgetFriendship(a: string, b: string): void {
+    this.friendships.get(a)?.delete(b);
+    this.friendships.get(b)?.delete(a);
   }
 
   /** Out of every voice: her call (ringing or under way) ends, and she leaves her party's voice. */
@@ -239,6 +314,9 @@ export class VoiceService {
     if (!speaker) return;
     if (speaker.speaking) this.relaySpeaking(id, speaker, false);
     this.speakers.delete(id);
+    // Asked again when she joins a voice next (a friendship may change while she is out of it).
+    for (const other of this.friendships.get(id)?.keys() ?? []) this.friendships.get(other)?.delete(id);
+    this.friendships.delete(id);
   }
 
   private mic(id: string, on: boolean): void {
@@ -443,7 +521,8 @@ export class VoiceService {
     if (speaker?.place.kind === 'call') {
       const call = this.calls.get(speaker.place.callId);
       if (!call?.active) return null;
-      const members = [call.caller, call.callee].flatMap((m) => this.member(m, null));
+      // A call starts only after the database said they are friends, and ends when they no longer are.
+      const members = [call.caller, call.callee].flatMap((m) => this.member(m, null, m !== id));
       return { kind: 'call', joined: true, members };
     }
     const party = this.host.party(id);
@@ -453,15 +532,16 @@ export class VoiceService {
     const isPlayer = this.host.isPlayer(id);
     const bots = isPlayer && !this.host.botsOn(id) ? [] : party.members.filter((m) => !this.host.isPlayer(m) && this.host.sees(id, m));
     const voices = distinctVoices(bots);
-    const members = [...players.flatMap((p) => this.member(p, null)), ...bots.flatMap((b) => this.member(b, voices.get(b) ?? null))];
+    const known = this.friendships.get(id);
+    const members = [...players.flatMap((p) => this.member(p, null, known?.get(p) === true)), ...bots.flatMap((b) => this.member(b, voices.get(b) ?? null, false))];
     return { kind: 'party', joined: speaker?.place.kind === 'party', members };
   }
 
-  private member(id: string, voice: { pitch: number; rate: number } | null): VoiceMember[] {
+  private member(id: string, voice: { pitch: number; rate: number } | null, friend: boolean): VoiceMember[] {
     const look = this.host.look(id);
     if (!look) return [];
     const isBot = !this.host.isPlayer(id);
-    return [{ id, displayName: look.displayName, isBot, mic: isBot ? true : (this.speakers.get(id)?.mic ?? false), voice: isBot ? voice : null }];
+    return [{ id, displayName: look.displayName, isBot, mic: isBot ? true : (this.speakers.get(id)?.mic ?? false), voice: isBot ? voice : null, friend: !isBot && friend }];
   }
 
   private take(buckets: Map<string, Bucket>, id: string, limit: { size: number; perSecond: number }): boolean {

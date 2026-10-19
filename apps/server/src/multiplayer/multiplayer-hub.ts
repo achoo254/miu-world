@@ -528,6 +528,8 @@ export class MultiplayerHub {
   private friendAnswered(event: Extract<PlayerEvent, { type: 'friend-answered' }>): void {
     if (event.accepted && event.fromBotId) this.onlinePlayer(event.childId)?.botFriends.add(event.fromBotId);
     const sender = event.fromChildId ? this.onlinePlayer(event.fromChildId) : undefined;
+    const answerer = this.publicIds.get(event.childId);
+    if (event.accepted && sender && answerer) this.voice.befriended(answerer, sender.publicId);
     sender?.transport.send({ type: 'friend-news', kind: event.accepted ? 'added' : 'declined', who: { ...event.who, isBot: false } });
   }
 
@@ -1040,6 +1042,7 @@ export class MultiplayerHub {
         this.deliver(to, { type: 'friend-request', request: { id: outcome.requestId, from } });
         return this.notice(self, 'friend-sent', to);
       case 'befriended': {
+        this.voice.befriended(self, to);
         this.deliver(to, { type: 'friend-news', kind: 'added', who: from });
         const look = this.lookOf(to);
         if (look) player.transport.send({ type: 'friend-news', kind: 'added', who: { ...look, isBot: false } });

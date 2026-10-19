@@ -1,8 +1,9 @@
 // The WebRTC mesh of a voice: one connection to each other player in it (at most three: a party holds four), audio
 // only. Of each pair the player with the smaller id makes the offer, so two never offer to each other at once. Setup
 // messages travel over the game's WebSocket; the sound goes straight between the browsers (or through the relay),
-// encrypted, and never through the game's server. A connection that fails is set up again, sooner at first, then
-// less often.
+// encrypted, and never through the game's server. Each connection says on its own whether it may go straight or only
+// through the relay (a party member who is not her friend never learns her address). A connection that fails is set
+// up again, sooner at first, then less often.
 import type { VoiceSignal } from '@miu/schema/voice';
 
 /** At most this many connections (a party of four: the three others). */
@@ -26,6 +27,12 @@ export interface PeerStats {
   relay: boolean;
 }
 
+/** Another player in her voice, and whether her connection to that player may only go through the relay (TURN). */
+export interface MeshTarget {
+  id: string;
+  relay: boolean;
+}
+
 export interface MeshEvents {
   /** A setup message for another player (sent over the game's WebSocket). */
   signal(to: string, signal: VoiceSignal): void;
@@ -40,6 +47,8 @@ interface Peer {
   id: string;
   pc: RTCPeerConnection;
   offerer: boolean;
+  /** Set up through the relay only. */
+  relay: boolean;
   /** Candidates that came before the other side's description. */
   queue: RTCIceCandidateInit[];
   lost: ReturnType<typeof setTimeout> | null;
@@ -56,13 +65,15 @@ export class PeerMesh {
   private config: RTCConfiguration = {};
   private track: MediaStreamTrack | null = null;
   private self: string | null = null;
-  private targets = new Set<string>();
+  /** The players to connect to, each with relay-only or not. */
+  private targets = new Map<string, boolean>();
 
   constructor(create: (config: RTCConfiguration) => RTCPeerConnection, events: MeshEvents) {
     this.create = create;
     this.events = events;
   }
 
+  /** The servers every new connection uses (its transport policy is the target's own). */
   setConfig(config: RTCConfiguration): void {
     this.config = config;
   }
@@ -76,18 +87,21 @@ export class PeerMesh {
     }
   }
 
-  /** Connects to exactly `targets` (the other players in her voice), dropping the rest. */
-  sync(self: string | null, targets: readonly string[]): void {
+  /**
+   * Connects to exactly `targets` (the other players in her voice), dropping the rest. A connection whose relay rule
+   * changed (a friendship made or ended) is set up anew under the new one.
+   */
+  sync(self: string | null, targets: readonly MeshTarget[]): void {
     this.self = self;
-    this.targets = new Set(targets.slice(0, MAX_PEERS));
-    for (const id of [...this.peers.keys()]) if (!this.targets.has(id)) this.drop(id);
+    this.targets = new Map(targets.slice(0, MAX_PEERS).map((t) => [t.id, t.relay]));
+    for (const [id, peer] of [...this.peers]) if (this.targets.get(id) !== peer.relay) this.drop(id);
     for (const [id, timer] of this.retries) {
       if (this.targets.has(id)) continue;
       clearTimeout(timer);
       this.retries.delete(id);
       this.failures.delete(id);
     }
-    for (const id of this.targets) if (!this.peers.has(id) && !this.retries.has(id) && this.offers(id)) void this.offer(id);
+    for (const id of this.targets.keys()) if (!this.peers.has(id) && !this.retries.has(id) && this.offers(id)) void this.offer(id);
   }
 
   /** A setup message from another player in her voice. */
@@ -155,8 +169,10 @@ export class PeerMesh {
   }
 
   private open(id: string, offerer: boolean): Peer {
-    const pc = this.create(this.config);
-    const peer: Peer = { id, pc, offerer, queue: [], lost: null, setup: null };
+    // Unknown to the targets (never for a target): relay only, the safe side.
+    const relay = this.targets.get(id) ?? true;
+    const pc = this.create({ ...this.config, iceTransportPolicy: relay ? 'relay' : 'all' });
+    const peer: Peer = { id, pc, offerer, relay, queue: [], lost: null, setup: null };
     this.peers.set(id, peer);
     peer.setup = setTimeout(() => {
       peer.setup = null;
