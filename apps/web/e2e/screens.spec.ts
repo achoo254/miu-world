@@ -29,6 +29,24 @@ interface Shot {
 /** The fight with the longest question a zone guardian asks, at that question (content/quests). */
 const LONG_FIGHT = { quest: 'ward-lau-dai-cau-treo', region: 'lau-dai', target: 'cho-bac-canh-hao', turn: 4 };
 const OLYMPIC = 'olympic-math-2026';
+/**
+ * A puzzle step that shows its clues (`elements`), with the steps before it as the API takes them (content/quests):
+ * the dialogue, the three things found, the poster read.
+ */
+const PUZZLE = {
+  quest: 'vuot-ai-trung-tam',
+  region: 'trung-tam',
+  target: 'trum-tt-koala',
+  before: [
+    ['gap-bo-cau', {}],
+    ['tim-do-dien', { target: 'trum-tt-mu-ao-thuat' }],
+    ['tim-do-dien', { target: 'trum-tt-bo-bai' }],
+    ['tim-do-dien', { target: 'trum-tt-khan-lua' }],
+    ['doc-ap-phich', { answer: { choice: 'b' } }],
+  ] as ReadonlyArray<[string, object]>,
+};
+/** The fake moderator: the E2E server lists this email in MODERATOR_ACCOUNTS (playwright.config.ts). */
+const MODERATOR = 'moderator-e2e@example.vn';
 /** A terminal colour code in an error message (ESC [ … m). */
 const TERMINAL_COLOUR = new RegExp(`${String.fromCharCode(27)}\\[[0-9;]*m`, 'g');
 
@@ -44,18 +62,45 @@ const uncommittedFiles = (): string[] => (EXPORTED_FROM ? [] : git('diff', '--na
 /** Now as an ISO time in Asia/Saigon (+07:00). */
 const saigonNow = (): string => `${new Date(Date.now() + 7 * 3_600_000).toISOString().slice(0, 19)}+07:00`;
 
-async function newPlayer(browser: Browser, baseURL: string, viewport: { width: number; height: number }, name = 'Mochi'): Promise<{ context: BrowserContext; page: Page }> {
+type Viewport = { width: number; height: number };
+
+/** A signed-out browser at this size, by touch. */
+async function newScreen(browser: Browser, baseURL: string, viewport: Viewport): Promise<{ context: BrowserContext; page: Page }> {
   const context = await browser.newContext({ baseURL, viewport, deviceScaleFactor: 1, hasTouch: true, storageState: { cookies: [], origins: [] } });
   // Every wait is bounded, so a screen that does not come up is noted as missing instead of stalling the run.
   context.setDefaultTimeout(20_000);
   context.setDefaultNavigationTimeout(30_000);
-  const page = await context.newPage();
+  return { context, page: await context.newPage() };
+}
+
+async function newPlayer(browser: Browser, baseURL: string, viewport: Viewport, name = 'Mochi'): Promise<{ context: BrowserContext; page: Page }> {
+  const { context, page } = await newScreen(browser, baseURL, viewport);
   await freshChild(page, baseURL, name);
   // Companion bots stay out of the pictures (her own setting).
   const headers = { Origin: new URL(baseURL).origin };
   expect((await page.context().request.put('/api/player-settings', { headers, data: { botsEnabled: false } })).status()).toBe(200);
   return { context, page };
 }
+
+/** The moderator signed in: signed up (and the policy accepted) on the first size, signed in again on the next. */
+async function newModerator(browser: Browser, baseURL: string, viewport: Viewport): Promise<{ context: BrowserContext; page: Page }> {
+  const { context, page } = await newScreen(browser, baseURL, viewport);
+  const headers = { Origin: new URL(baseURL).origin };
+  const credentials = { email: MODERATOR, ['password']: 'test-password-e2e' };
+  const signUp = await context.request.post('/api/auth/register', { headers, data: { ...credentials, pin: '2468' } });
+  if (signUp.status() === 201) {
+    const { version } = (await (await context.request.get('/api/consents/policy')).json()) as { version: string };
+    expect((await context.request.post('/api/consents', { headers, data: { policyVersion: version } })).status()).toBe(201);
+  } else {
+    expect(signUp.status(), await signUp.text()).toBe(409);
+    const signIn = await context.request.post('/api/auth/login', { headers, data: credentials });
+    expect(signIn.status(), await signIn.text()).toBe(200);
+  }
+  return { context, page };
+}
+
+/** The first line of an error, without the terminal's colour codes. */
+const firstLine = (err: unknown): string => ((err instanceof Error ? err.message : String(err)).split('\n')[0] ?? 'unknown').replace(TERMINAL_COLOUR, '');
 
 /** The game drawn and settled: ready, and a few frames drawn since. */
 async function gameSettled(page: Page): Promise<void> {
@@ -77,7 +122,7 @@ test.afterAll(() => {
 for (const viewport of VIEWPORTS) {
   const size = `${viewport.width}x${viewport.height}`;
   test(`the main screens on ${size}`, async ({ browser, baseURL }) => {
-    // Twenty-four screens, eight game loads and a second player: several minutes on a dev machine.
+    // Twenty-seven screens, ten game loads, a second player and a moderator: several minutes on a dev machine.
     test.setTimeout(15 * 60_000);
     const base = baseURL ?? '';
     const headers = { Origin: new URL(base).origin };
@@ -94,17 +139,14 @@ for (const viewport of VIEWPORTS) {
         await page.screenshot({ path: path.join(dir, `${screen}.png`), animations: 'disabled' });
         shots.push({ shot, screen, status: 'ok', facts: await layoutFacts(page) });
       } catch (err) {
-        // The first line of the error, without the terminal's colour codes.
-        const reason = ((err instanceof Error ? err.message : String(err)).split('\n')[0] ?? 'unknown').replace(TERMINAL_COLOUR, '');
-        shots.push({ shot, screen, status: 'missing', reason });
+        shots.push({ shot, screen, status: 'missing', reason: firstLine(err) });
         // What the screen showed instead, outside the repo, for whoever looks into it.
         await page.screenshot({ path: test.info().outputPath(`${size}-${screen}-missing.png`) }).catch(() => undefined);
       }
     }
 
     // Signed out: the sign-in screen, the introduction and a lesson page.
-    const out = await browser.newContext({ baseURL: base, viewport, deviceScaleFactor: 1, hasTouch: true, storageState: { cookies: [], origins: [] } });
-    const outPage = await out.newPage();
+    const { context: out, page: outPage } = await newScreen(browser, base, viewport);
     await capture(outPage, '01-login', async () => {
       await outPage.goto('/login');
       await expect(outPage.locator('main')).toBeVisible();
@@ -240,6 +282,24 @@ for (const viewport of VIEWPORTS) {
       await page.locator('[data-id="online-invite-accept"]').click();
       await expect(page.locator('[data-id="online-party"]')).toBeVisible();
     });
+    // The friend reports her (made up: reason "other"), so the moderator's queue has something in it. A report that
+    // could not be sent leaves the queue's screen missing, with this reason.
+    const notReported = await (async (): Promise<string | null> => {
+      try {
+        // Her menu through the Interact button while the prompt is hers: the name over her head moves with every frame
+        // drawn under the party bar, too restless for a tap on the phone.
+        await expect(friend.page.locator('[data-kind="player"]')).toBeAttached();
+        await friend.page.locator('[data-id="hud-interact"]').click();
+        await friend.page.locator('[data-id="online-menu-report"]').click();
+        await friend.page.locator('[data-id="online-menu-reason-other"]').check();
+        await friend.page.locator('[data-id="online-menu-report-send"]').click();
+        await expect(friend.page.locator('[data-id="online-menu"]')).toHaveCount(0);
+        return null;
+      } catch (err) {
+        await friend.page.screenshot({ path: test.info().outputPath(`${size}-report-missing.png`) }).catch(() => undefined);
+        return firstLine(err);
+      }
+    })();
     await friend.context.close();
     await capture(page, '19-worksheets', async () => {
       // Signing up leaves the parents' area open for a while: lock it, then open it with the account PIN.
@@ -266,6 +326,39 @@ for (const viewport of VIEWPORTS) {
       await expect(page.locator('[data-id="weekly-share-card"]')).toBeVisible();
       // The card is drawn before the screen is pictured.
       await expect.poll(() => page.locator('[data-id="weekly-share-card"]').evaluate((img) => (img as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+    });
+    // The moderator's emergency switch turns online play off: the game says so in a friendly line. Online is back on
+    // before anything else is pictured, whatever happened.
+    const moderator = await newModerator(browser, base, viewport);
+    const switchOnline = async (mode: 'on' | 'off'): Promise<void> => {
+      const res = await moderator.context.request.put('/api/moderation/online-mode', { headers, data: { mode } });
+      expect(res.status(), await res.text()).toBe(200);
+    };
+    try {
+      await capture(page, '25-online-off', async () => {
+        await switchOnline('off');
+        await page.goto(playAt('spawn'));
+        await gameSettled(page);
+        await expect(page.locator('[data-id="online-pause"]')).toBeVisible();
+      });
+    } finally {
+      await switchOnline('on');
+    }
+    await capture(moderator.page, '26-moderation', async () => {
+      if (notReported) throw new Error(`no report in the queue: ${notReported}`);
+      await moderator.page.goto('/kiem-duyet');
+      await expect(moderator.page.locator('[data-id^="moderation-report-"]').first()).toBeVisible();
+    });
+    await moderator.context.close();
+    await capture(page, '27-puzzle-clues', async () => {
+      for (const [step, body] of PUZZLE.before) {
+        const res = await page.context().request.post(`/api/quests/${PUZZLE.quest}/steps/${step}/complete`, { headers, data: body });
+        expect(res.status(), `${step}: ${await res.text()}`).toBe(200);
+      }
+      await page.goto(`/play?quality=low&region=${PUZZLE.region}&quest=${PUZZLE.quest}&spawnAt=${PUZZLE.target}`);
+      await gameSettled(page);
+      await page.locator('[data-id="hud-interact"]').click();
+      await expect(page.locator('[data-id="logic-challenge-clues"]')).toBeVisible();
     });
     await context.close();
 

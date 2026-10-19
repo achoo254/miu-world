@@ -57,6 +57,9 @@ export default defineConfig({
         GOOGLE_REDIRECT_URI: `${BASE_URL}/api/auth/google/callback`,
         GOOGLE_AUTH_URL: `${FAKE_GOOGLE}/authorize`,
         GOOGLE_TOKEN_URL: `${FAKE_GOOGLE}/token`,
+        // The screens project's fake moderator (screens.spec.ts): no other spec signs up with this email, so to every
+        // other account the moderation routes stay 404 as in production without the setting.
+        MODERATOR_ACCOUNTS: 'moderator-e2e@example.vn',
         // Test-only quests (every textbook mechanic), loaded after the shipped ones.
         EXTRA_QUEST_DIR: fileURLToPath(new URL('./e2e/fixtures/quests', import.meta.url)),
       },

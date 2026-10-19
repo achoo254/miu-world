@@ -574,6 +574,9 @@ const SCREEN_NAMES: Record<string, string> = {
   '22-friends-invite': 'Bạn bè: tab Mời bạn',
   '23-invite-page': 'Trang link mời (chưa đăng nhập)',
   '24-weekly-share': 'Thẻ tổng kết tuần (khu phụ huynh)',
+  '25-online-off': 'Thông báo khi tắt chơi online',
+  '26-moderation': 'Màn kiểm duyệt (có báo cáo giả trong hàng đợi)',
+  '27-puzzle-clues': 'Câu đố logic có manh mối',
 };
 
 /** The screens pictured before a release, phone and iPad side by side, with the agent's findings under each. */
