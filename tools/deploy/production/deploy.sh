@@ -63,6 +63,8 @@ setup() {
   local turn; turn="$(turn_env)"
   # The GA4 lines `analytics` wrote are kept as they are (both or none); setup never turns analytics on by itself.
   local ga; ga="$(analytics_env)"
+  # Lines the owner set by hand (moderators, who sees the default timetable, the emergency switch) stay as they are.
+  local kept; kept="$(owner_env)"
   {
     echo "NODE_ENV=production"
     echo "PORT=$PORT"
@@ -71,10 +73,9 @@ setup() {
     echo "GOOGLE_CLIENT_ID=$(secret "$google.client_id")"
     echo "GOOGLE_CLIENT_SECRET=$(secret "$google.client_secret")"
     echo "GOOGLE_REDIRECT_URI=https://$DOMAIN/api/auth/google/callback"
-    echo "HANDWRITING_FONT_DIR=/opt/miu/fonts"
-    echo "TIMETABLE_DEFAULT_FILE=/opt/miu/config/timetable-default.json"
     printf '%s\n' "$turn"
     [ -z "$ga" ] || printf '%s\n' "$ga"
+    [ -z "$kept" ] || printf '%s\n' "$kept"
   } | prod 'install -m 640 -o root -g miu /dev/stdin /etc/miu/production.env'
   echo "setup done"
 }
@@ -130,6 +131,13 @@ analytics_env() {
   return 1
 }
 
+# The lines the owner set by hand in /etc/miu/production.env, for `setup` to keep (never printed): moderators, the
+# accounts that see the default timetable and its file (only while the owner keeps it on), the emergency online switch.
+OWNER_ENV_KEYS='MODERATOR_ACCOUNTS|TIMETABLE_DEFAULT_ACCOUNTS|TIMETABLE_DEFAULT_FILE|ONLINE_MODE'
+owner_env() {
+  prod "f=/etc/miu/production.env; [ ! -f \"\$f\" ] || grep -E '^($OWNER_ENV_KEYS)=' \"\$f\" || [ \$? -eq 1 ]"
+}
+
 # Sending usage data to Google is allowed only once production already serves the policy that tells it: the version the
 # public endpoint answers must be the one this checkout holds (content/legal/consent-vi.json). Reads nothing secret.
 policy_is_live() {
@@ -177,9 +185,10 @@ fonts() {
 timetable() {
   local file="${MIU_TIMETABLE_FILE:-.data/private/timetable-default.json}"
   [ -f "$file" ] || { echo "no $file: run pnpm private:sync or set MIU_TIMETABLE_FILE" >&2; exit 1; }
+  # Only the accounts in TIMETABLE_DEFAULT_ACCOUNTS see it (the server shows it to nobody in production without them).
   prod 'mkdir -p /opt/miu/config && install -m 640 -o root -g miu /dev/stdin /opt/miu/config/timetable-default.json \
     && (grep -q "^TIMETABLE_DEFAULT_FILE=" /etc/miu/production.env || echo "TIMETABLE_DEFAULT_FILE=/opt/miu/config/timetable-default.json" >> /etc/miu/production.env) \
-    && echo timetable default on host' < "$file"
+    && grep -c "^TIMETABLE_DEFAULT_ACCOUNTS=" /etc/miu/production.env | xargs echo "timetable default on host; TIMETABLE_DEFAULT_ACCOUNTS lines:"' < "$file"
 }
 
 release() {
