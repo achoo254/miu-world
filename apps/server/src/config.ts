@@ -39,6 +39,11 @@ const Env = z.object({
    * because it names a school and a teacher; see the deployment guide). Unset: the blank template.
    */
   TIMETABLE_DEFAULT_FILE: z.string().min(1).optional(),
+  /**
+   * Comma-separated sign-in emails of the accounts that see that timetable (the owner's family). Unset: every account
+   * outside production, none in production, so a stranger never reads a real class.
+   */
+  TIMETABLE_DEFAULT_ACCOUNTS: z.string().optional(),
   /** Test-only cap on password sign-ups per IP per hour (E2E creates a parent per spec); refused in production. */
   REGISTER_LIMIT_PER_HOUR: z.coerce.number().int().min(1).optional(),
   /**
@@ -99,6 +104,8 @@ export interface ServerConfig {
   /** Override for where the handwriting font files live; null uses `.data/fonts` in the repo. */
   handwritingFontDir: string | null;
   timetableDefaultFile: string | null;
+  /** Lower-case emails that get the default timetable; null: every account (never in production). */
+  timetableDefaultAccounts: ReadonlySet<string> | null;
   /** Voice relay credentials come from this key; null: STUN only. */
   turn: TurnConfig | null;
   /** Usage events go to this GA4 property; null: none is sent. */
@@ -110,6 +117,12 @@ export interface ServerConfig {
 }
 
 /** Validates env once at startup; throws with the offending key so the process fails fast. */
+/** The accounts that see the default timetable: the listed emails; unset, everyone in dev and test, nobody in production. */
+function timetableAccounts(list: string | undefined, production: boolean): ReadonlySet<string> | null {
+  if (list === undefined) return production ? new Set() : null;
+  return new Set(list.split(',').map((email) => email.trim().toLowerCase()).filter(Boolean));
+}
+
 export function loadConfig(env: Record<string, string | undefined> = process.env): ServerConfig {
   const parsed = Env.safeParse(env);
   if (!parsed.success) {
@@ -175,6 +188,7 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
     extraQuestDir: production ? null : (e.EXTRA_QUEST_DIR ?? null),
     handwritingFontDir: e.HANDWRITING_FONT_DIR ?? null,
     timetableDefaultFile: e.TIMETABLE_DEFAULT_FILE ?? null,
+    timetableDefaultAccounts: timetableAccounts(e.TIMETABLE_DEFAULT_ACCOUNTS, production),
     turn: e.CF_TURN_KEY_ID && e.CF_TURN_API_TOKEN ? { keyId: e.CF_TURN_KEY_ID, apiToken: e.CF_TURN_API_TOKEN } : null,
     ga4: e.GA4_MEASUREMENT_ID && e.GA4_API_SECRET ? { measurementId: e.GA4_MEASUREMENT_ID, apiSecret: e.GA4_API_SECRET } : null,
     analyticsLimitPerMinute: 600,

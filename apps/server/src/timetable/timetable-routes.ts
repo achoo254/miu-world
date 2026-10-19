@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { eq } from 'drizzle-orm';
 import { Router } from 'express';
 import { Timetable, emptyTimetable } from '@miu/schema/timetable';
-import { activePlayerId, requireParent } from '../auth/auth-context';
+import { activePlayerId, auth, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { timetables } from '../db/schema';
@@ -14,6 +14,8 @@ export interface TimetableRouteDeps {
   clock: () => Date;
   /** What a child sees before her family saves its own timetable (the blank template when none is configured). */
   defaultTimetable?: Timetable;
+  /** Sign-in emails that see the default timetable; null: every account (dev and test only). */
+  defaultAccounts?: ReadonlySet<string> | null;
 }
 
 /**
@@ -34,14 +36,16 @@ export function loadDefaultTimetable(file: string | null): Timetable {
  * The selected child's class timetable and uniform rules. The family types them in the game (the child
  * or a parent beside her), so editing needs the same signed-in session as play, not the parent PIN.
  */
-export function timetableRoutes({ db, content, clock, defaultTimetable }: TimetableRouteDeps): Router {
+export function timetableRoutes({ db, content, clock, defaultTimetable, defaultAccounts = null }: TimetableRouteDeps): Router {
   const router = Router();
 
   router.get('/timetable', requireParent, async (_req, res) => {
     const childId = await activePlayerId(db, res, content.consent.version);
     const [row] = await db.select().from(timetables).where(eq(timetables.childId, childId));
-    // Nothing saved yet: the default timetable (the owner's class) or the blank template, ready to edit.
-    const body: Timetable = row ? Timetable.parse(row.timetable) : (defaultTimetable ?? emptyTimetable());
+    // Nothing saved yet: the default timetable (the owner's class) for the accounts it is meant for, else the blank
+    // template, ready to edit. It names a real school and teacher, so no other account may read it.
+    const sharesDefault = defaultAccounts === null || defaultAccounts.has(auth(res).parent.email);
+    const body: Timetable = row ? Timetable.parse(row.timetable) : ((sharesDefault ? defaultTimetable : undefined) ?? emptyTimetable());
     res.json(body);
   });
 

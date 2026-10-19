@@ -136,7 +136,7 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(characterRoutes({ db, content, events: characterEvents }));
   api.use(playerPositionRoutes({ db, content, clock }));
   api.use(questRoutes({ db, content, clock, partyQuests }));
-  api.use(timetableRoutes({ db, content, clock, defaultTimetable: loadDefaultTimetable(config.timetableDefaultFile) }));
+  api.use(timetableRoutes({ db, content, clock, defaultTimetable: loadDefaultTimetable(config.timetableDefaultFile), defaultAccounts: config.timetableDefaultAccounts }));
   const decor = loadDecorCatalog();
   const shop = loadShopCatalog(content, decor);
   api.use(homeDecorRoutes({ db, content, clock, catalog: decor, shop }));

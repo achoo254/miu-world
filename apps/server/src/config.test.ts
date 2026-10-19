@@ -75,6 +75,13 @@ describe('loadConfig', () => {
     expect(message).not.toContain(apiSecret);
   });
 
+  it('gives the default timetable to every account only outside production', () => {
+    const production = { NODE_ENV: 'production', ALLOWED_ORIGINS: 'https://miu.example', DATABASE_URL: 'postgres://db.local/miu', GOOGLE_CLIENT_ID: 'id', GOOGLE_CLIENT_SECRET: 'test-secret', GOOGLE_REDIRECT_URI: 'https://miu.example/api/auth/google/callback' };
+    expect(loadConfig({}).timetableDefaultAccounts).toBeNull();
+    expect(loadConfig(production).timetableDefaultAccounts).toEqual(new Set());
+    expect(loadConfig({ ...production, TIMETABLE_DEFAULT_ACCOUNTS: 'A@x.vn,,b@x.vn ' }).timetableDefaultAccounts).toEqual(new Set(['a@x.vn', 'b@x.vn']));
+  });
+
   it('requires a real database in production', () => {
     expect(() => loadConfig({ NODE_ENV: 'production', ALLOWED_ORIGINS: 'https://miu.example' })).toThrow(/DATABASE_URL/);
   });

@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { emptyPeriodRow, emptyTimetable, type Timetable } from '@miu/schema/timetable';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { createTestApp, parentWithChild, type Agent, type TestApp, signedInWithoutPlayer } from '../../test/test-app';
+import { createTestApp, fakeParent, parentWithChild, type Agent, type TestApp, signedInWithoutPlayer } from '../../test/test-app';
 import { loadDefaultTimetable } from './timetable-routes';
 
 let app: TestApp;
@@ -106,6 +106,23 @@ describe('default timetable', () => {
       expect((await agent.get('/api/timetable').expect(200)).body).toEqual(own);
     } finally {
       await withDefault.handle.close();
+    }
+  });
+
+  it('shows the configured timetable only to the listed accounts', async () => {
+    const family = { ...fakeParent(), email: 'family@example.vn' };
+    const listed = await createTestApp({
+      NODE_ENV: 'test',
+      TIMETABLE_DEFAULT_FILE: file('listed.json', JSON.stringify(sample())),
+      TIMETABLE_DEFAULT_ACCOUNTS: ' Family@example.vn , other@example.vn',
+    });
+    try {
+      const { agent: own } = await parentWithChild(listed, true, family);
+      expect((await own.get('/api/timetable').expect(200)).body).toEqual(sample());
+      const { agent: stranger } = await parentWithChild(listed);
+      expect((await stranger.get('/api/timetable').expect(200)).body).toEqual(emptyTimetable());
+    } finally {
+      await listed.handle.close();
     }
   });
 

@@ -136,9 +136,8 @@ export function fakeParent(): RegisterRequest {
 }
 
 /** Registers, accepts consent and (optionally) creates one profile. Returns the logged-in agent. */
-export async function parentWithChild(t: TestApp, withChild = true): Promise<{ agent: Agent; parent: RegisterRequest; childId: string }> {
+export async function parentWithChild(t: TestApp, withChild = true, parent = fakeParent()): Promise<{ agent: Agent; parent: RegisterRequest; childId: string }> {
   const agent = t.agent();
-  const parent = fakeParent();
   await agent.post('/api/auth/register').send(parent).expect(201);
   await agent.post('/api/consents').send({ policyVersion: FIXTURE_CONTENT.consent.version }).expect(201);
   // Accepting the policy made the account's own (primary) player and selected it.
