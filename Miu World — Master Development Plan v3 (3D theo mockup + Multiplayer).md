@@ -10,9 +10,9 @@ Plan v3 chốt: game 3D chạy trên web bằng Three.js, phong cách voxel ki�
 | --- | --- | --- |
 | Nguồn chuẩn | 3 file HTML đặc tả bằng chữ | 3 ảnh mock hiện tại (7 + 9 + 11 panel), chỉ làm tham chiếu luồng và bố cục; mock voxel cập nhật sau |
 | Phong cách hình ảnh | Chưa thống nhất (còn dòng 2D lẫn 3D) | Voxel 3D kiểu Minecraft (đã chốt) |
-| Nhân vật | Chỉ Miu (mèo) | Chọn 1 trong 4 loài: Mèo, Thỏ, Cáo, Gấu. MVP chỉ làm Mèo |
-| Tiền tệ hiển thị | XP, Coins | XP, Xu, Kim cương, chuỗi ngày (streak) |
-| Multiplayer | Không có | Giai đoạn riêng sau MVP |
+| Nhân vật | Chỉ Miu (mèo) | Chọn 1 trong 4 loài: Mèo, Thỏ, Cáo, Gấu; cả bốn chơi được từ 30/09/2026 (quyết định 36) |
+| Tiền tệ hiển thị | XP, Coins | XP, Xu; Kim cương không dùng (quyết định 6), không có chuỗi ngày (quyết định 43) |
+| Multiplayer | Không có | Giai đoạn riêng sau MVP; nay game luôn online: thấy nhau, bạn bè, tổ đội, co-op, nói chuyện bằng giọng, bạn máy (mục 8, quyết định 44–49) |
 | Nguồn asset | Chưa rõ | Asset miễn phí có license (CC0, MIT, OFL) cộng với asset sinh bằng code; không tự vẽ, không dùng AI trả phí, không cần voxel artist |
 | Bảo mật, an toàn trẻ em | Chưa có | Zero Trust và child safety xuyên suốt |
 | Hệ kỹ năng | Lẫn Math, Reading, Vietnamese, Logic | Chuẩn hóa Subject → Skill (mục 5) |
@@ -25,9 +25,13 @@ Plan v3 chốt: game 3D chạy trên web bằng Three.js, phong cách voxel ki�
 4. Bản đồ thiết kế sẵn theo khu vực; generator theo seed chỉ là công cụ dựng map.
 5. Tách Subject và Skill; Skill XP là phần thưởng MVP.
 6. Không dùng Kim cương ở MVP.
-7. MVP chỉ có loài Mèo.
-8. Multiplayer mở từ Bậc 1 (thấy nhau), sau MVP.
+7. MVP chỉ có loài Mèo (đã thay: bốn loài từ 30/09/2026, quyết định 36).
+8. Multiplayer mở từ Bậc 1 (thấy nhau), sau MVP (nay đã có bậc 1, bậc 2 và một phần bậc 3, mục 8).
 9. Stack web: Vite + React SPA, bridge tự viết nối Three.js với React, Express + Drizzle + PostgreSQL (mục 7).
+10. Game cho mọi lứa tuổi, không đòi hỏi phụ huynh giám sát; không tính năng nào đặt sau phê duyệt của phụ huynh (quyết định 44).
+11. Không có mở khóa: mọi map, mọi nhiệm vụ mở từ đầu (quyết định 33).
+
+Các quyết định sau đợt Foundation ghi tiếp ở mục 15 (từ số 21).
 
 ## 2. Nguồn chuẩn và art direction
 
@@ -51,7 +55,7 @@ Phong cách hình ảnh đã chốt là voxel 3D kiểu Minecraft; 3 ảnh mock 
 
 - Thế giới, nhân vật, NPC, vật phẩm dựng từ khối vuông; màu tươi, ánh sáng mềm, hợp trẻ em.
 - Thế giới là bản đồ thiết kế sẵn theo khu vực, không sinh ngẫu nhiên vô hạn.
-- Camera third-person; Home Base và World Map dùng chung một cảnh đảo nổi.
+- Camera third-person; Home Base và World Map dùng chung một cảnh đảo nổi (ảnh đảo render sẵn, không phải cảnh 3D; quyết định 21).
 - HUD giữ cấu trúc của M3.2: avatar và thanh XP, nhiệm vụ, bản đồ, ba lô, menu, joystick, nút Tương tác và Chạy.
 
 **Điểm cần lưu ý:**
@@ -77,17 +81,18 @@ Thế giới → Khám phá → Tương tác → Quest → Kỹ năng học → 
 | Nhân vật là trung tâm | Có level, skill, túi đồ, trang phục | M1.7 hồ sơ Miu, M3.5 ba lô |
 | Kiến thức có giá trị gameplay | Skill mở cổng, đánh boss | M3.9 Cổng Tri Thức, M3.10 Boss |
 | Phần thưởng có tác động | Vật phẩm dùng lại ở quest sau | M3.5 Lá thần, Chìa khóa; M2.9 Hạt giống kỳ diệu |
-| Tiến bộ mở thế giới | Level và skill mở khu vực | M1.1 Đảo bí ẩn cần Lv.15, Núi tuyết sắp mở |
+| Tiến bộ làm nhân vật mạnh lên | Level và kỹ năng mở kho báu Cổng tri thức, trang phục, quà; không khóa khu vực hay nhiệm vụ (quyết định 33) | M1.1 Đảo bí ẩn cần Lv.15, Núi tuyết sắp mở (mock cũ; nay mọi map mở từ đầu) |
 | Không bị kẹt vì trả lời sai | Hướng dẫn, gợi ý, đáp án | M2.8 |
 
 ## 4. Thế giới: đảo nổi và các khu vực
 
-Thế giới là một đảo nổi gồm 11 khu vực, 8 khu chơi được và mở từ đầu (quyết định 33, 34); Home Base và World Map là cùng một cảnh (ảnh đảo render sẵn, quyết định `home_scene`). Trường học là map trung tâm, có cổng sang 7 map chủ điểm, mỗi map có cổng về.
+Thế giới là một đảo nổi gồm mười hai khu vực chơi được, mở từ đầu (quyết định 33, 37), cộng với sự kiện có thời hạn diễn ra trên các map. Home Base và World Map là cùng một màn React trên ảnh đảo render sẵn, không phải cảnh 3D (quyết định 21); còn Nhà của bé là một map 3D chơi được như các map khác (quyết định 38). Trung tâm là map trung tâm, có cổng sang mười map và Nhà của bé, là nơi người chơi gặp nhau online; mỗi map có cổng về Trung tâm. Danh sách khu vực và map của từng khu: `content/world/regions.json`.
 
 | Khu vực (theo mock) | Nội dung (bài SGK lớp 2 tập 1) | Vào được | Giai đoạn |
 | --- | --- | --- | --- |
-| Nhà của Miu | Trang trí, bộ sưu tập, ba lô, điểm xuất phát | Khi dựng xong | MVP |
-| Trường học (trung tâm) | Tiếng Việt bài 9–14, Toán chủ đề 1; cổng sang 7 map | Từ đầu | MVP (làm sớm) |
+| Nhà của bé | Nhà hai tầng, sân, vườn, chuồng, ao; trang trí nhà, thời khóa biểu và lịch đồng phục, Phòng truyền thống; "Bài hôm nay" rủ sang map khác (quyết định 38, 50) | Từ đầu | MVP (làm sớm) |
+| Trung tâm | Quảng trường, cổng sang mười map và Nhà của bé, nơi gặp nhau online; quest chào mừng, trùm (quyết định 37) | Từ đầu | V1 (làm sớm) |
+| Trường học | Tiếng Việt bài 9–14, Toán chủ đề 1 | Từ đầu | MVP (làm sớm) |
 | Làng Ven Sông | Tiếng Việt chủ điểm 1 (bài 1–8); sông, đò, bến tàu, hải đăng | Từ đầu | MVP (làm sớm) |
 | Khu rừng bí mật | Chương 1 hướng dẫn + Tiếng Việt chủ điểm 3 (bài 17–24); NPC Vẹt (thay Cú mèo trong mock), Hải ly (thay Sóc) | Từ đầu | MVP |
 | Thư viện | Tiếng Việt bài 15–16 và ôn giữa kì, Toán chủ đề 6 (ngày giờ, lịch) | Từ đầu | V1 (làm sớm) |
@@ -95,25 +100,25 @@ Thế giới là một đảo nổi gồm 11 khu vực, 8 khu chơi được và
 | Chợ phiên | Toán chủ đề 2 và 3 (cộng trừ qua 10, kg, lít) | Từ đầu | V1 (làm sớm) |
 | Nông trại | Toán chủ đề 4 (cộng trừ có nhớ) | Từ đầu | V1 (làm sớm) |
 | Lâu đài | Toán chủ đề 5 và 7 (hình phẳng, ôn học kì), Tiếng Việt ôn cuối kì; thử thách | Từ đầu | V1 (làm sớm) |
-| Núi tuyết | Chưa dựng (Sắp mở) | Từ đầu khi dựng xong | Sau V1 |
-| Đảo bí ẩn | Chưa dựng (Sắp mở) | Từ đầu khi dựng xong | Sau V1 |
-| Khu sự kiện (cổng TIMO) | Sự kiện có thời hạn, hiện đếm ngược "Còn 12 ngày" | Lịch sự kiện | Live World |
+| Núi tuyết | Quest chào mừng và trùm theo mock riêng; bài SGK tập 2 vào sau (quyết định 37) | Từ đầu | V1 (làm sớm) |
+| Đảo bí ẩn | Quest chào mừng (kho báu) có trùm theo mock riêng; bài SGK tập 2 vào sau (quyết định 37) | Từ đầu | V1 (làm sớm) |
+| Khu sự kiện (cổng TIMO) | Sự kiện có thời hạn là lớp cảnh lúc chạy trên một map (Thử thách Olympic Toán ở Khu rừng), banner và trang sự kiện trên Home (quyết định 49) | Theo cửa sổ giờ của sự kiện | Live World (đã có) |
 
-**Mỗi khu vực bắt buộc có:** NPC, quest, tương tác, bộ sưu tập. Khu vực chỉ để trang trí thì không đạt. Không khu nào khóa theo level, kỹ năng hay nhiệm vụ (quyết định 33).
+**Mỗi khu vực bắt buộc có:** NPC, quest, tương tác, bộ sưu tập. Khu vực chỉ để trang trí thì không đạt. Không khu nào khóa theo level, kỹ năng hay nhiệm vụ (quyết định 33). Ngoài bài học, mỗi map nay có quest phụ minigame, chương chuyện của nhân vật, một trùm lớn và các trùm canh khu, một thử thách co-op (quyết định 39, 41, 42, 47).
 
-MVP chỉ dựng **một khu vực nhỏ** (Khu rừng bí mật, chương 1) cộng với Home Base, đúng nguyên tắc vertical slice. Từ 01/10/2026 người sở hữu cho làm sớm cả 8 map để chứa 70 bài SGK đã có (quyết định 34).
+MVP chỉ dựng **một khu vực nhỏ** (Khu rừng bí mật, chương 1) cộng với Home Base, đúng nguyên tắc vertical slice. Từ 01/10/2026 người sở hữu cho làm sớm cả 8 map để chứa 70 bài SGK đã có (quyết định 34); từ 02/10 và 03/10/2026 thêm Trung tâm, Núi tuyết, Đảo bí ẩn và Nhà của bé (quyết định 37, 38).
 
-Mỗi khu vực là một bản đồ voxel thiết kế sẵn (mục 10 và 11), không sinh ngẫu nhiên vô hạn; đảo nổi trong mock sẽ được dựng bằng block. Mỗi map chơi được rộng 5.760 × 5.760 khối (gấp ~52 diện tích lõi; đủ chỗ cho nhiều bé chơi cùng nhau sau này, mục 8): lõi 800 × 800 dựng sẵn (bài học, cổng, xe) và vùng ngoài sinh theo seed của map lúc chơi (làng, ruộng, rừng, sông, đường, bến xe về lõi; quyết định 35); chỉ giữ các vùng gần bé, cảnh xa là một lưới chân trời thô; mỗi quận và mỗi làng có người làm nghề thật và vật nuôi sinh hoạt.
+Mỗi khu vực là một bản đồ voxel thiết kế sẵn (mục 10 và 11), không sinh ngẫu nhiên vô hạn; đảo nổi trong mock sẽ được dựng bằng block. Mỗi map chơi được rộng 5.760 × 5.760 khối (gấp ~52 diện tích lõi; đủ chỗ cho nhiều bé chơi cùng nhau sau này, mục 8): lõi 800 × 800 dựng sẵn (bài học, cổng, xe; Nhà của bé lõi 160 × 160) và vùng ngoài sinh theo seed của map lúc chơi (làng, ruộng, rừng, sông, đường, bến xe về lõi; quyết định 35); chỉ giữ các vùng gần bé, cảnh xa là một lưới chân trời thô; mỗi quận và mỗi làng có người làm nghề thật và vật nuôi sinh hoạt.
 
 ## 5. Hệ thống gameplay
 
-Toàn bộ hệ thống xoay quanh một vòng lặp: quest tạo tình huống, kỹ năng học là công cụ, phần thưởng làm nhân vật mạnh lên và mở khu vực mới.
+Toàn bộ hệ thống xoay quanh một vòng lặp: quest tạo tình huống, kỹ năng học là công cụ, phần thưởng làm nhân vật mạnh lên; không có gì bị khóa, mọi khu và nhiệm vụ mở từ đầu (quyết định 33).
 
 ### Nhân vật và tùy biến
 
 | Thành phần | Theo mock | Ghi chú triển khai |
 | --- | --- | --- |
-| Chọn loài | Mèo, Thỏ, Cáo, Gấu, mỗi loài có tính cách gợi ý (M1.2) | MVP chỉ làm Mèo; ba loài còn lại là V1 vì mỗi loài cần mô hình voxel và bộ trang phục riêng |
+| Chọn loài | Mèo, Thỏ, Cáo, Gấu, mỗi loài có tính cách gợi ý (M1.2) | Cả bốn loài chơi được từ 30/09/2026 (quyết định 36): loài là dữ liệu, thân ghép từ thư viện bộ phận và trang phục dùng chung nên không cần mô hình riêng cho từng loài |
 | Các bước tạo | Thông tin, Ngoại hình, Trang phục, Phụ kiện, Hiệu ứng đặc biệt, Xem trước (M1.3) | Preview 3D ở giữa, đổi đồ thấy ngay |
 | Nhóm đồ | Áo, Mũ, Giày, Balo, Cánh; một số ô khóa | Đồ khóa mở theo level, quest, sự kiện |
 | Hoạt ảnh xem thử | Vẫy tay, Nhảy, Ngáp, Vui mừng | 4 hoạt ảnh bắt buộc (xoay các khối tay, chân, đầu, đuôi) |
@@ -143,10 +148,15 @@ Một quest theo 8 pha: Hook, Explore, Learn, Challenge, Decision, Finale, Rewar
 | Sắp xếp | M2.5, M3.6 | Xếp đá 27, 15, 9, 34 theo thứ tự |
 | Ghép câu | M3.7 | Xếp thẻ từ thành "Chim đang hót trên cành cây." |
 | Trắc nghiệm có hỗ trợ | M2.3, M2.6 | Đọc hiểu, bài toán kẹo |
-| Lựa chọn hành động | M2.7, M3.8 | Tìm gỗ, Đi vòng, Nhờ bạn giúp |
+| Lựa chọn hành động | M2.7, M3.8 | Tìm gỗ, Đi vòng, Nhờ bạn giúp; mỗi lựa chọn có hệ quả trong chuyện và có thể rẽ nhánh (quyết định 42) |
 | Đố vật thể | M3.4 | Cây cổ thụ hiện 8 + 5 = ? |
-| Skill Check | M3.9 | Cổng cần Đọc hiểu Lv.2, Toán Lv.2; thiếu thì dẫn đến khu luyện tập |
-| Boss | M3.10 | Quái vật rừng 500 HP; mỗi kỹ năng trừ 80 HP |
+| Skill Check | M3.9 | Rương hay cửa cần một cấp kỹ năng (Đọc hiểu Lv.2…); đủ cấp thì server trả kho báu, thiếu thì gợi ý quest luyện kỹ năng đó và bài vẫn đi tiếp (quyết định 42) |
+| Boss | M3.10 | Quái vật rừng 500 HP; mỗi câu đúng trừ 80 HP; mỗi map một trùm lớn và các trùm canh khu, trận diễn trong thế giới đang chạy (quyết định 42) |
+| Tìm đồ vật | NEW SCREEN | Đọc gợi ý rồi tìm vật ẩn trong cảnh 3D (quyết định 42) |
+| Logic | NEW SCREEN | Dãy quy luật, mê cung, câu đố (quyết định 42) |
+| Minigame | NEW SCREEN | Trò 30–90 giây do nhân vật trên map mời, ví dụ hứng trứng, sút phạt đền (quyết định 39) |
+
+Cơ chế mới thêm vào quest bằng dữ liệu; nơi khai báo và luật chấm: `docs/system-architecture.md` dòng "Cơ chế quest", minigame: `docs/minigames.md`.
 
 ### Hỗ trợ học tập
 
@@ -157,9 +167,9 @@ Mọi thử thách dùng chung ba lớp hỗ trợ (M2.8): **Hướng dẫn** (C
 | Loại | Nguồn (theo mock) | Công dụng |
 | --- | --- | --- |
 | XP | Hoàn thành quest (+100 XP) | Level nhân vật |
-| Xu | Hoàn thành quest (+20 Xu) | Mua đồ, trang trí (chưa có cửa hàng trong mock, xem NEW SCREEN) |
+| Xu | Hoàn thành quest (+20 Xu) | Mua đồ ở cửa hàng, trang trí nhà (cửa hàng là NEW SCREEN, đã có) |
 | Kim cương | Hiển thị ở thanh trên (12) | Không dùng ở MVP (mục 15 #6): ẩn ô Kim cương trên HUD, không có trong API |
-| Skill XP | "Kỹ năng đọc +1" | Mở Skill Check, đánh boss |
+| Skill XP | "Kỹ năng đọc +1" | Lên cấp kỹ năng (màn Kỹ năng lên cấp, quà mỗi cấp), mở kho báu Cổng tri thức |
 | Vật phẩm | Lá thần, Chìa khóa, Pha lê, Hạt giống kỳ diệu | Dùng ở quest sau |
 | Huy hiệu, sinh vật, địa điểm | Bộ sưu tập (M1.7) | Thu thập, mở khóa đồ đặc biệt |
 
@@ -171,7 +181,7 @@ Phong cách voxel khiến người chơi mong đợi đặt và phá block. Đã
 
 ## 6. Screen map đối chiếu với mock
 
-Có 24 nhóm màn hình đã có mock (hoặc mock một phần) và 26 màn hình là NEW SCREEN; các màn hình NEW cần thiết kế theo đúng visual language của 3 mock trước khi làm.
+Bảng thứ nhất là các màn đã có mock (hoặc mock một phần), bảng thứ hai là NEW SCREEN; các màn hình NEW cần thiết kế theo đúng visual language của 3 mock trước khi làm. Mọi màn của bảng thứ nhất đã dựng; bảng thứ hai ghi trạng thái từng dòng. Giao diện còn chờ designer duyệt theo mock voxel (mục 16).
 
 Ký hiệu mock: M1, M2, M3 là ba ảnh, số sau dấu chấm là số panel.
 
@@ -187,7 +197,7 @@ Mock hiện tại là bản art mượt và sẽ được thay bằng mock voxel
 | Core | Gameplay 3D: HUD, joystick, nút Tương tác, Chạy | M3.2 | Có mock | MVP |
 | Core | Chọn loài nhân vật | M1.2 | Có mock | MVP |
 | Core | Tùy chỉnh trang phục, xem trước, đặt tên | M1.3 | Có mock | MVP |
-| Core | Hồ sơ Miu, Kỹ năng, Bộ sưu tập | M1.7 | Mock một phần (thiếu Hành trình, Túi đồ, Thành tích) | MVP |
+| Core | Hồ sơ Miu, Kỹ năng, Bộ sưu tập | M1.7 | Mock một phần (Hành trình, Thành tích là NEW SCREEN; túi đồ là Ba lô M3.5) | MVP |
 | Core | Ba lô | M3.5 | Có mock | MVP |
 | Gameplay | Mở đầu quest, câu chuyện | M2.2 | Có mock | MVP |
 | Gameplay | Hội thoại NPC | M3.3 | Có mock | MVP |
@@ -208,17 +218,19 @@ Mock hiện tại là bản art mượt và sẽ được thay bằng mock voxel
 
 ### NEW SCREEN: chưa có mock
 
-| Nhóm | Màn hình | Vì sao cần | Giai đoạn |
-| --- | --- | --- | --- |
-| Core | Hành trình (Journey), Thành tích | Có trong menu M1.7 nhưng không có nội dung | V1 |
-| Core | Cửa hàng | Xu cần nơi tiêu | V1 |
-| Gameplay | English Challenge, Logic puzzle, Tìm đồ vật | Có trong spec, không có mock | V1 |
-| Tiến bộ | Level Up, Skill Up | Khoảnh khắc thưởng quan trọng | MVP (Level Up), V1 |
-| Hỗ trợ | Pause, Cài đặt, Hộp thư | Có biểu tượng trong mock nhưng không có màn | MVP (Pause), V1 |
-| Live | Event Quest, Event Reward | Hoàn thiện luồng sự kiện | Live World |
-| Tài khoản | Đăng nhập, chọn hồ sơ trẻ, cổng phụ huynh, đồng ý của phụ huynh, khu vực phụ huynh | Bắt buộc với sản phẩm trẻ em (mục 9) | MVP |
-| Hệ thống | Đang tải khu vực, mất mạng | Streaming asset, mạng yếu | MVP |
-| Multiplayer | Town Hub online, danh sách bạn, phê duyệt bạn của phụ huynh, báo cáo và chặn, phòng chờ co-op | Mục 8 | MP |
+| Nhóm | Màn hình | Vì sao cần | Giai đoạn | Trạng thái |
+| --- | --- | --- | --- | --- |
+| Core | Hành trình (Journey), Thành tích | Có trong menu M1.7 nhưng không có nội dung | V1 | Đã có |
+| Core | Cửa hàng | Xu cần nơi tiêu | V1 | Đã có |
+| Gameplay | English Challenge, Logic puzzle, Tìm đồ vật | Có trong spec, không có mock | V1 | Logic và Tìm đồ vật đã có (quyết định 42); môn English hoãn theo người sở hữu (05/10/2026, plan `plans/dattqh/261004-1617-english-subject-content/`) |
+| Tiến bộ | Level Up, Skill Up | Khoảnh khắc thưởng quan trọng | MVP (Level Up), V1 | Đã có (Skill Up là màn Kỹ năng lên cấp) |
+| Hỗ trợ | Pause, Cài đặt, Hộp thư | Có biểu tượng trong mock nhưng không có màn | MVP (Pause), V1 | Đã có |
+| Live | Event Quest, Event Reward | Hoàn thiện luồng sự kiện | Live World | Đã có (quyết định 49) |
+| Tài khoản | Đăng nhập, chọn hồ sơ trẻ, cổng phụ huynh, đồng ý của phụ huynh, khu vực phụ huynh | Bắt buộc với sản phẩm trẻ em (mục 9) | MVP | Đã có theo mô hình một người chơi mỗi tài khoản (quyết định 45): đồng ý chính sách, chọn người chơi khi có người chơi phụ, PIN tùy chọn, Quản lý tài khoản |
+| Hệ thống | Đang tải khu vực, mất mạng | Streaming asset, mạng yếu | MVP | Đã có |
+| Multiplayer | Town Hub online, danh sách bạn, phê duyệt bạn của phụ huynh, báo cáo và chặn, phòng chờ co-op | Mục 8 | MP | Town Hub là map Trung tâm; danh sách bạn, báo cáo và chặn, phòng chờ co-op đã có; phê duyệt của phụ huynh bỏ (quyết định 46); chưa có màn kiểm duyệt báo cáo (quyết định 53) |
+
+Màn mới ngoài hai bảng (không có trong mock gốc, đã có): Nhà của bé với thời khóa biểu và trang trí nhà, chăm sóc thú cưng, bếp, Bạn bè trong làng, Phòng truyền thống, luyện Olympic Toán, Tiến bộ học, nói chuyện bằng giọng. Nơi ở của từng màn: `docs/codebase-summary.md`.
 
 ## 7. Kiến trúc kỹ thuật
 
@@ -236,7 +248,7 @@ Client chỉ hiển thị và gửi hành động; API tính thưởng, tiến b
 | Va chạm | Kiểm tra theo lưới block (AABB, tự viết); Rapier chỉ khi cần vật thể động | Nếu dùng Rapier (WASM) thì CSP cần `wasm-unsafe-eval` |
 | Tích hợp React và Three.js | Bridge tự viết (đã chốt, mục 15 #18): game phát event → store → React | React không điều khiển game loop, không nhận dữ liệu theo khung hình; không dùng React Three Fiber |
 | Backend | Node.js, Express, TypeScript | API theo miền, dữ liệu do quest quyết định |
-| Realtime | Colyseus hoặc `ws` | Giai đoạn multiplayer |
+| Realtime | `ws` tự viết trên cùng server HTTP (đường `/api/ws`), đã chọn thay Colyseus | Mỗi map một room, nhà của mỗi người chơi một room; giao thức và giới hạn ở `docs/system-architecture.md` dòng "Chơi online" |
 | Dữ liệu | PostgreSQL qua Drizzle ORM (đã chốt, mục 15 #17); PGlite cho dev và test; Redis, object storage khi cần | Migration SQL sinh bằng drizzle-kit, commit và review như code; CI chạy test trên PostgreSQL thật |
 | Triển khai | Client qua static hosting và CDN; server tự host gần người dùng Việt Nam |  |
 
@@ -257,6 +269,8 @@ Luồng dữ liệu: game phát event → `packages/quest` dự đoán ở clien
 
 Multiplayer làm sau MVP, mở theo 3 bậc tăng dần rủi ro, và server phải là nguồn sự thật từ ngày đầu để không phải viết lại.
 
+**Hiện trạng:** bậc 1 và bậc 2 đã có trong bản production (`docs/project-roadmap.md`); bậc 3 có sự kiện có thời hạn, chưa có bảng xếp hạng nhóm và đo tải (quyết định 49). Điều kiện mở trong bảng dưới là thiết kế ban đầu; người sở hữu đã đổi: game cho mọi lứa tuổi và luôn online, không có công tắc của phụ huynh (quyết định 44, 46); co-op mở cho mọi tổ đội trước khi có kiểm duyệt, chỉ ghép ngẫu nhiên với người lạ còn chờ kiểm duyệt (quyết định 47, 53); có nói chuyện bằng giọng với bạn bè và tổ đội (quyết định 48).
+
 Mock hiện chỉ có gameplay một người; toàn bộ màn hình multiplayer là NEW SCREEN (mục 6).
 
 | Bậc | Chế độ | Nội dung | Điều kiện để mở |
@@ -265,7 +279,7 @@ Mock hiện chỉ có gameplay một người; toàn bộ màn hình multiplayer
 | 2 | Co-op quest | 2 đến 4 bạn cùng giải một puzzle hoặc đánh một boss (dùng lại cơ chế M3.10) | Có kiểm duyệt và quy trình xử lý báo cáo |
 | 3 | Sự kiện trực tiếp | Sự kiện TIMO có thời hạn (M1.6), có thể có bảng xếp hạng theo nhóm | Đã chạy ổn bậc 1 và 2, đã load test |
 
-**Khuyến nghị:** chưa có đội kiểm duyệt thì dừng ở bậc 1, chỉ cho thấy nhau, không cho tương tác tự do.
+**Khuyến nghị:** chưa có đội kiểm duyệt thì dừng ở bậc 1, chỉ cho thấy nhau, không cho tương tác tự do. (Người sở hữu đã chọn mở bậc 2 trước khi có kiểm duyệt: quyết định 47, 53.)
 
 **Với voxel:** người chơi sẽ mong muốn xây dựng chung. Nếu sau này cho đặt và phá block ở khu chung thì phải đồng bộ thay đổi block qua server, giới hạn số block mỗi người, và kiểm duyệt nội dung xây dựng (hình vẽ, chữ, ký hiệu). Plan mặc định không cho phép.
 
@@ -274,11 +288,11 @@ Mock hiện chỉ có gameplay một người; toàn bộ màn hình multiplayer
 | Thành phần | Đề xuất | Lý do |
 | --- | --- | --- |
 | Game server | Node.js + TypeScript, dùng Colyseus hoặc `ws` tự viết | Cùng stack với backend hiện tại |
-| Giao thức | WebSocket qua server, không dùng P2P hoặc WebRTC trực tiếp | P2P lộ IP của trẻ, khó kiểm soát |
+| Giao thức | WebSocket qua server cho mọi trạng thái game; riêng âm thanh nói chuyện đi WebRTC nối thẳng giữa bạn bè hoặc trong tổ đội (quyết định 48) | P2P lộ IP của trẻ, khó kiểm soát; voice chỉ mở với người đã là bạn hoặc cùng đội |
 | Phân vùng | Mỗi khu vực là một room, giới hạn số người mỗi room | Giảm băng thông, dễ mở rộng |
 | Đồng bộ vị trí | Tick 10 đến 20 lần mỗi giây, dự đoán phía client cho bản thân, nội suy cho người khác | Mạng di động không ổn định |
 | Trạng thái quest và tiến độ học | Theo từng hồ sơ, lưu ở server, không chia sẻ | Tiến độ học là của từng bé |
-| Trạng thái chia sẻ | Chỉ vị trí, emote, trang phục đang mặc trong room | Giới hạn dữ liệu lộ ra |
+| Trạng thái chia sẻ | Chỉ vị trí, tư thế, emote, câu có sẵn, trang phục, thú cưng và phụ kiện thú đang dùng trong room | Giới hạn dữ liệu lộ ra |
 | Mở rộng | Redis pub/sub, nhiều instance, sticky session | Khi số người dùng tăng |
 | Hạ tầng | Tự host gần người dùng Việt Nam | Độ trễ thấp |
 
@@ -301,17 +315,19 @@ Người sở hữu (03/10/2026): NPC phải có chiều sâu, tính cách, chuy
 ### Bạn máy (bot)
 
 - **Bản chất:** khoảng 100 cư dân ảo điều khiển ở server như một người chơi: đi lại trong 12 map, làm nhiệm vụ và minigame, thấy nhau, lập tổ đội 2–4 để làm việc chung, nói chuyện bằng câu có sẵn và emote (đúng giới hạn bậc 1 và 2 của mục 8).
-- **Quyết định đã chốt (đề xuất, báo người sở hữu):** bot luôn gắn nhãn "bạn máy" hiển thị rõ cho bé và phụ huynh, dù chơi giống người. Không giả làm người thật với trẻ em: rủi ro an toàn và tín nhiệm; phụ huynh bật hoặc tắt được. Bộ đo "giống người" vẫn dùng để cải thiện hành vi.
+- **Quyết định đã chốt (đề xuất, báo người sở hữu):** bot luôn gắn nhãn "bạn máy" hiển thị rõ cho bé và phụ huynh, dù chơi giống người. Không giả làm người thật với trẻ em: rủi ro an toàn và tín nhiệm; người chơi tự bật hoặc tắt trong Cài đặt (mặc định bật, chủ tài khoản đổi được cho người chơi phụ; quyết định 41). Bộ đo "giống người" vẫn dùng để cải thiện hành vi.
 - **Kiến trúc:** dịch vụ `bot-runner` (Node, cùng stack) chạy các "người chơi ảo" qua cùng API và phòng game như người thật (không đường tắt), mỗi bot có tính cách (hay khám phá, thích minigame, ngại giao tiếp), lịch sinh hoạt, mục tiêu theo ngày, bộ lập kế hoạch (chọn nhiệm vụ, đi theo đường đã có, thử minigame với kỹ năng điều chỉnh được), cây hành vi cộng tham số học được.
 - **Tự training:** học từ chính bot (tự chơi, so điểm số và nhịp hành vi) và từ dữ liệu tổng hợp ẩn danh đã có đồng ý của phụ huynh (chỉ số thống kê: thời gian đứng, quãng đường, nhịp bấm); không dùng quỹ đạo thô hay chat của trẻ nếu chưa có đồng ý và pháp lý duyệt.
 - **Chỉ tiêu "giống 90% người thật":** định nghĩa bằng số đo: bộ phân loại trên quỹ đạo, nhịp thao tác và chuỗi hành động không tách được bot khỏi người ở ≥ 90% mẫu so với người chơi thật và người thử nội bộ; cộng điểm đánh giá mù của người duyệt. Đo lại mỗi đợt.
 - **Điều kiện mở:** chạy sau multiplayer bậc 1 (thấy nhau) và hệ báo cáo/chặn; chat chỉ câu có sẵn; giới hạn tải server; công tắc tắt khẩn cấp.
+- **Hiện trạng (quyết định 41):** bạn máy đã chạy, khác thiết kế trên ở ba chỗ: không có đường cho sẵn, bạn máy chỉ thấy quanh mình, tự đi từng ô và tự học nơi nên đến; chỉ học từ chính nó và số liệu gộp ẩn danh theo câu hỏi, không dùng quỹ đạo, chat hay giọng của người chơi; người chơi luôn là trưởng đội, bạn máy không nhận thưởng. Chỉ tiêu "giống 90% người thật" chưa có số đo trong repo; số liệu học của bạn máy ở trang review. Cách làm: `docs/system-architecture.md` dòng "Bạn máy tự đi, tự học".
 
 ## 8c. Song ngữ Việt và Anh
 
 Người sở hữu (03/10/2026): hiển thị tiếng Anh và tiếng Việt, gồm cài đặt, âm thanh và bài nói.
 
-- **Ba chế độ trong Cài đặt:** Tiếng Việt, English, Song ngữ (câu Việt kèm dòng Anh nhỏ bên dưới). Lưu theo hồ sơ bé, mặc định tiếng Việt.
+- **Ba chế độ trong Cài đặt:** Tiếng Việt, English, Song ngữ (câu Việt kèm dòng Anh nhỏ bên dưới). Lưu theo người chơi, mặc định tiếng Việt.
+- **Hiện trạng:** đã có (quyết định 40); cách viết chữ hai thứ tiếng: `docs/i18n.md`.
 - **Phạm vi:** giao diện (nút, menu, thông báo, cửa hàng, nhiệm vụ), lời NPC, tên vật phẩm; nội dung SGK giữ nguyên chữ Việt của sách (quyết định "verbatim"), phần Anh chỉ là dòng dịch kèm bên dưới.
 - **Âm thanh và nói:** đọc to bằng giọng của trình duyệt (vi-VN, en-US) theo ngôn ngữ đang chọn; bài nói có gợi ý song ngữ; bản ghi giọng vẫn chỉ nằm trong trình duyệt (như chính sách hiện nay).
 - **Kỹ thuật:** lớp `t()` với từ điển `locales/vi` và `locales/en`, khóa kiểm bằng `content:check`, thiếu bản dịch thì rơi về tiếng Việt.
@@ -324,17 +340,17 @@ Về pháp lý: cần nhờ pháp chế xác nhận yêu cầu hiện hành theo
 
 | Rủi ro | Yêu cầu | Áp dụng khi |
 | --- | --- | --- |
-| Dữ liệu cá nhân của trẻ | Phụ huynh là chủ tài khoản, trẻ là hồ sơ con; không thu thập tên thật, email, trường của trẻ; đồng ý của phụ huynh trước khi tạo hồ sơ | MVP |
+| Dữ liệu cá nhân của trẻ | Người đăng nhập là người chơi chính và tự đồng ý chính sách; trẻ chưa đủ tuổi có tài khoản Google thì chơi bằng người chơi phụ trong tài khoản người lớn (quyết định 45); không thu tên thật, email, trường của người chơi (ngoại lệ: thời khóa biểu tự gõ, mặc định trống, ghi trong lời đồng ý) | MVP |
 | Gian lận XP, xu, vật phẩm | Server tính và xác thực mọi thưởng, kết quả thử thách, mở khóa; client không được tin | MVP |
 | Truy cập trái quyền (IDOR) | Mọi API kiểm tra quyền theo hồ sơ; test tự động cho từng endpoint | MVP |
 | Tên nhân vật | Lọc từ ngữ, chọn từ danh sách hoặc tự sinh, không hiển thị tên thật | MVP |
-| Kho asset và CDN | Signed URL, CSP chặt (Rapier WASM cần `wasm-unsafe-eval`), không nhúng script hay analytics bên thứ ba, dùng SRI | MVP |
+| Kho asset và CDN | Signed URL, CSP chặt (Rapier WASM cần `wasm-unsafe-eval`), không nhúng script hay analytics bên thứ ba (số liệu sử dụng gửi Google Analytics từ server, quyết định 51), dùng SRI | MVP |
 | Asset 3D từ bên ngoài | Chỉ nhận license CC0, MIT, OFL; manifest ghi nguồn, URL, license, hash; CI chặn file thiếu license; quét file, không chạy script đi kèm; lưu bản tải trong repo, không hotlink | MVP |
 | Chuỗi cung ứng mã nguồn | Khóa phiên bản, `npm audit` và SAST trong CI, AI tự review dependency mới, liệt kê trong trang review để con người duyệt cuối | MVP |
-| Tiếp xúc người lạ | Không chat tự do; chỉ emote và câu có sẵn; kết bạn bằng mã, phụ huynh phê duyệt | MP |
-| Bắt nạt, quấy rối | Chặn và báo cáo trong game, hàng đợi kiểm duyệt, nhật ký hành vi, phụ huynh tắt được multiplayer | MP |
-| Kết nối giả mạo, tấn công | Token ngắn hạn theo phiên và hồ sơ, kiểm tra quyền ở mỗi message, rate limit, giới hạn kích thước message, WAF, tách server game khỏi API nghiệp vụ | MP |
-| Chống hack trong game | Server kiểm tra tốc độ di chuyển, va chạm, cooldown | MP |
+| Tiếp xúc người lạ | Không chat chữ tự do; chỉ emote và câu có sẵn; kết bạn trong game, người nhận đồng ý, không mã, không phụ huynh duyệt (quyết định 46); nói chuyện bằng giọng chỉ với bạn bè và tổ đội (quyết định 48) | MP |
+| Bắt nạt, quấy rối | Chặn và báo cáo trong game (đã có); hàng đợi kiểm duyệt và nhật ký hành vi hoãn (quyết định 53); game luôn online, không có công tắc tắt multiplayer (quyết định 46) | MP |
+| Kết nối giả mạo, tấn công | Token ngắn hạn theo phiên và hồ sơ, kiểm tra quyền ở mỗi message, rate limit, giới hạn kích thước message, WAF, tách server game khỏi API nghiệp vụ. Đã có: cookie phiên kiểm lại định kỳ, kiểm Origin, giới hạn tin và kích thước (`docs/system-architecture.md` dòng "Chơi online"); phần còn lại chờ plan kiểm duyệt (quyết định 53) | MP |
+| Chống hack trong game | Bỏ theo người sở hữu: không kiểm tốc độ di chuyển hay cooldown; thưởng, kết quả thử thách vẫn do server tính (quyết định 53) | MP |
 
 **Nếu sau này cho đặt và phá block:** server kiểm tra và ghi mọi thay đổi block, giới hạn số block và tốc độ đặt, kiểm duyệt nội dung xây dựng ở khu chung (hình vẽ, chữ, ký hiệu), phụ huynh tắt được tính năng; chưa có kiểm duyệt thì không cho xây ở khu vực có người chơi khác.
 
@@ -360,7 +376,7 @@ Toàn bộ asset lấy từ nguồn miễn phí có license rõ ràng hoặc sin
 | UI | Khung, nút, banner bằng CSS và design tokens; ảnh đại diện, thumbnail cửa hàng và khu vực render từ model 3D bằng script | Code | CC, designer duyệt |
 | Font, âm thanh, VFX | Baloo 2 và Nunito (có tiếng Việt, tự host); âm thanh Kenney; nhạc nền 32 bài album "Poupi's Incredible Adventures" của Komiku; Kenney Particle Pack; "Nghe lại" dùng Web Speech API | OFL, CC0 | CC |
 
-Chọn Mèo cho MVP; Thỏ (`animal-bunny`), Cáo (`animal-fox`), Gấu (`animal-polar` hoặc `animal-panda`) dùng lại cách ghép đầu, để V1.
+Chọn Mèo cho MVP; Thỏ (`animal-bunny`), Cáo (`animal-fox`), Gấu (`animal-polar` hoặc `animal-panda`) dùng lại cách ghép đầu, để V1. (Đã thay: bốn loài chơi được từ 30/09/2026, nhân vật ghép từ thư viện bộ phận và trang phục trên rig Blocky; quyết định 36 và sổ quyết định ở `docs/system-architecture.md`.)
 
 ### Quy trình
 
@@ -383,7 +399,7 @@ Quest và nội dung được mô tả bằng dữ liệu, kiểm tra bằng sch
 
 | Miền | Quan hệ | Ghi chú |
 | --- | --- | --- |
-| Tài khoản | Phụ huynh → Hồ sơ trẻ → Nhân vật | Mọi dữ liệu game gắn với hồ sơ, không gắn với phụ huynh |
+| Tài khoản | Tài khoản → Người chơi (một người chơi chính, tối đa hai người chơi phụ) → Nhân vật | Mọi dữ liệu game gắn với người chơi; bảng giữ tên cũ `parents`, `child_profiles` (quyết định 45) |
 | Thế giới | World → Region → Location; mỗi Region là một bản đồ voxel chia thành chunk | Region không khóa (quyết định 33); vật thể tương tác (NPC, rương, cổng) là entity, không phải block |
 | Nhân vật | Nhân vật → Kỹ năng, Trang bị, Túi đồ, Bộ sưu tập | Loài (Mèo, Thỏ, Cáo, Gấu) là thuộc tính |
 | Quest | Quest → Step → Interaction → Challenge | Mỗi Step có trigger và điều kiện |
@@ -463,7 +479,7 @@ Thứ tự dưới đây đặt POC 3D và bảo mật trước gameplay; mỗi 
 8. Data model và API nhân vật. **CC**
 9. Nhân vật Miu ghép từ pack CC0 cùng hoạt ảnh; trang phục MVP là phụ kiện khối sinh bằng code. **CC, Người duyệt cảm quan**
 10. Character Creator (M1.2, M1.3, cập nhật theo mock voxel). **CC**
-11. Home Base và World Map dạng một cảnh voxel cùng HUD (M1.1, M3.1). **CC**
+11. Home Base và World Map dạng một cảnh voxel cùng HUD (M1.1, M3.1). **CC** (Đã đổi: Home là màn React trên ảnh đảo render sẵn, quyết định 21.)
 12. Bản đồ voxel Khu rừng bí mật: dựng map bằng block từ dữ liệu, entity (NPC Vẹt và Hải ly, rương, cổng) từ pack CC0. **CC, Người duyệt cảm quan**
 13. Di chuyển, camera, va chạm, vùng tương tác (M3.2). **CC**
 14. NPC và giao diện hội thoại (M3.3). **CC**
@@ -480,7 +496,7 @@ Thứ tự dưới đây đặt POC 3D và bảo mật trước gameplay; mỗi 
 
 ## 15. Rủi ro và quyết định cần chốt
 
-Mọi quyết định của đợt POC và Foundation đã chốt (2026-09-29).
+Mọi quyết định của đợt POC và Foundation đã chốt (2026-09-29); quyết định sau đó ghi tiếp theo số thứ tự. Một dòng cũ bị quyết định mới thay thì ghi rõ số dòng thay nó.
 
 ### Đã chốt
 
@@ -492,8 +508,8 @@ Mọi quyết định của đợt POC và Foundation đã chốt (2026-09-29).
 | 4 | Cách tạo bản đồ | Thiết kế sẵn theo khu vực | Generator theo seed chỉ là công cụ dựng map, không sinh map lúc chơi |
 | 5 | Subject và Skill | Tách hai tầng (mục 5) | Phần thưởng MVP phải có Skill XP; danh mục Subject → Skill là dữ liệu có schema |
 | 6 | Kim cương | Không dùng ở MVP | Ẩn ô Kim cương trên HUD, không có trong API; muốn dùng lại phải hỏi pháp chế nếu liên quan tiền thật |
-| 7 | Số loài ở MVP | Chỉ Mèo | Thỏ, Cáo, Gấu làm ở V1 |
-| 8 | Bậc multiplayer đầu tiên | Bậc 1 (thấy nhau), sau MVP | Bậc 1 theo mục 8: emote, câu có sẵn, báo cáo và chặn, phụ huynh bật |
+| 7 | Số loài ở MVP | Chỉ Mèo | Thỏ, Cáo, Gấu làm ở V1 (đã thay bằng 36) |
+| 8 | Bậc multiplayer đầu tiên | Bậc 1 (thấy nhau), sau MVP | Bậc 1 theo mục 8: emote, câu có sẵn, báo cáo và chặn, phụ huynh bật (điều kiện phụ huynh bật đã bỏ, xem 44, 46) |
 | 9 | Nguồn asset | CC0 (Kenney, KayKit), MIT (Fluent Emoji), OFL (font) và asset sinh bằng code; không tự vẽ, không AI trả phí | Không cần voxel artist; hình ảnh kém chi tiết hơn mock (mock là ảnh render AI) |
 | 10 | Nhân vật người chơi | Ghép rig và hoạt ảnh Blocky Characters với đầu mèo Cube Pets | POC không đạt thì dựng khối bằng code |
 | 11 | NPC | Vẹt thay Cú mèo, Hải ly thay Sóc | Sửa lời thoại và câu chuyện quest theo loài mới |
@@ -504,14 +520,14 @@ Mọi quyết định của đợt POC và Foundation đã chốt (2026-09-29).
 | 16 | Framework web | Vite + React SPA, React Router (thay Next.js) | Game client-only, static hosting + CDN, CSP chặt không cần nonce; SEO trang public làm site tĩnh riêng nếu cần |
 | 17 | ORM và cơ sở dữ liệu | Drizzle + PostgreSQL; PGlite cho dev và test | Máy dev không cần Docker; CI chạy test trên PostgreSQL thật để bắt khác biệt |
 | 20 | Duyệt đợt Foundation (2026-09-29, Jev quyết theo ủy quyền của người sở hữu) | Miu chibi chọn biến thể A (đầu 1.0×, thân 0.85×, tay chân 0.8×, mặt bằng khối); bảng màu block pastel ấm, chỉnh một vòng làm dịu xanh cỏ và lá; giữ cơ chế co phụ kiện theo nhân vật; giữ luồng tài khoản; chơi trong app web sửa sương mù xa | Chọn A dưới ngưỡng tự quyết (người sở hữu có thể đảo); FPS iPad Gen 10 chưa đo, chuyển DEVICE-01 trước nghiệm thu MVP |
-| 19 | Đăng nhập phụ huynh | Google OAuth (Gmail), chỉ nhận email đã xác minh + mã tài khoản; PIN phụ huynh đặt ở lần đăng nhập đầu | Không lưu mật khẩu; văn bản đồng ý cập nhật (bản nháp draft-2, chờ pháp chế); ứng dụng Google cần xác minh trước khi mở người dùng thật |
+| 19 | Đăng nhập phụ huynh | Google OAuth (Gmail), chỉ nhận email đã xác minh + mã tài khoản; PIN phụ huynh đặt ở lần đăng nhập đầu | Không lưu mật khẩu; văn bản đồng ý cập nhật (bản nháp draft-2, chờ pháp chế); ứng dụng Google cần xác minh trước khi mở người dùng thật (PIN nay tùy chọn, xem 45; ứng dụng đã ở "In production" từ 12/10/2026, xem 52) |
 | 18 | Nối React và Three.js | Bridge tự viết (event → store → `useSyncExternalStore`), không dùng React Three Fiber | Runtime không phụ thuộc React; React không nhận dữ liệu theo khung hình |
 | 21 | Home Base (vertical slice, 2026-09-29, Jev) | Home là màn React trên ảnh đảo render sẵn từ map voxel (`pnpm assets:home`), không phải cảnh 3D dùng chung với World Map; "Bản đồ" là màn chọn khu vực | Lệch mục 4 và task #11 (một cảnh đảo 3D); GPU chỉ dành cho `/play`; dựng cảnh đảo 3D là việc sau MVP |
 | 22 | Slot trang phục MVP (2026-09-29, Jev) | Mũ + Balo, thêm món và biến thể màu (mỗi màu là một món có id, file `variantOf`); Áo, Giày, Cánh hiện ô khóa "Sắp có" | Lệch mục 5 (liệt kê Áo, Giày, Cánh); vẫn đạt tiêu chí 1 của mục 16; đồ mở theo level/quest do server kiểm |
 | 23 | Xem đáp án và sao (2026-09-29, Jev) | Xem lớp Đáp án làm XP quest giảm 10% (100 → 90), Xu/Skill XP/vật phẩm giữ nguyên; sao = 3 trừ xem đáp án và nhiều lần sai, tối thiểu 1; server tính và lưu | Vòng chính không xem đáp án mới lên Lv.2 (ngưỡng 100 XP); UI nói lời khích lệ, không có chữ "phạt" |
 | 24 | Dữ liệu chơi của trẻ (2026-09-29, Jev, stakes cao → phương án thu ít nhất) | Chỉ đếm số lần sai và số lần xem đáp án theo bước; không lưu nội dung trả lời, không nhật ký có dấu thời gian | Văn bản đồng ý draft-3 nêu các bộ đếm; test schema DB chặn cột nội dung trả lời |
-| 25 | Chuỗi ngày (2026-09-29, Jev) | Không có ở MVP, làm ở V1 | Không có UI chuỗi ngày ở Home/HUD |
-| 26 | Bước Decision (2026-09-29, Jev) | Chỉ kể chuyện: mọi lựa chọn dẫn tới cùng bước sau | Rẽ nhánh câu chuyện là việc sau MVP |
+| 25 | Chuỗi ngày (2026-09-29, Jev) | Không có ở MVP, làm ở V1 | Không có UI chuỗi ngày ở Home/HUD (V1 cũng không làm, xem 43) |
+| 26 | Bước Decision (2026-09-29, Jev) | Chỉ kể chuyện: mọi lựa chọn dẫn tới cùng bước sau | Rẽ nhánh câu chuyện là việc sau MVP (đã có: bước `decision` rẽ nhánh được, xem 42) |
 | 27 | Mất mạng (2026-09-29, Jev) | Chặn và cho thử lại đúng thao tác đang chờ; không tính hay xếp hàng cục bộ | Không có chế độ chơi offline như mock "Tiếp tục chơi offline" |
 | 28 | Tính cách nhân vật (2026-09-29, Jev, stakes cao) | Chỉ là nhãn hiển thị "Nhà thám hiểm", không lưu cột nào | Không thêm trường dữ liệu trẻ |
 | 29 | Tên người chơi trong nội dung (2026-09-30, người sở hữu) | "Miu" chỉ là tên game; mọi chữ trong game gọi người chơi bằng tên nhân vật bé đặt (placeholder `{name}`) | `content:check` chặn chữ quest cứng "Miu"; nhân vật mới phải chọn tên |
@@ -519,8 +535,26 @@ Mọi quyết định của đợt POC và Foundation đã chốt (2026-09-29).
 | 31 | Phụ kiện nhân vật mở rộng (2026-10-01, người sở hữu) | 7 loại phụ kiện: Mũ, Kính, Khăn, Balo, Cánh, Giày, Cầm tay; mỗi loại ít nhất 20 món mở ngay từ Lv.1, ô chọn có ảnh từng món; Áo vẫn "Sắp có" vì áo nướng sẵn trong mô hình nhân vật | Thay mục 22 (chỉ Mũ + Balo); `content:check` chặn loại nào dưới 20 món mở từ Lv.1 hoặc thiếu ảnh; đồ khóa theo level/quest vẫn được thêm ngoài 20 món |
 | 32 | Nhạc nền (2026-10-01, người sở hữu; nguồn nhạc do Jev chọn) | 32 bài thu sẵn CC0 của Komiku, phát ngẫu nhiên không lặp liền theo cảnh: nhà/menu, đi dạo rừng, đi dạo trường, đang làm nhiệm vụ, bài học, hoàn thành nhiệm vụ; nén AAC 96 kbps | Jev chọn nhạc thu sẵn (66%) thay vì nhạc sinh bằng code; pack gốc 77 MB (tổng packs 108/150 MB), bản phát 23 MB; nhạc theo nút Âm thanh, tắt khi ghi âm, nhỏ lại khi đọc to |
 | 33 | Không có mở khóa (2026-10-01, người sở hữu) | Bỏ hẳn khái niệm hoàn thành nhiệm vụ để mở chương hay khu tiếp: bé vào được mọi map đã dựng và làm được mọi nhiệm vụ ngay từ đầu; map chưa dựng hiện "Sắp có", không khóa theo level | Thay mục 4 (cột mở khóa), mục 5 (pha Unlock thành Next, câu "mở khóa gì" thành "tiếp theo đi đâu") và tiêu chí 8 của mục 16; schema quest không còn `unlock`, server không còn trạng thái `locked`, màn hoàn thành không còn màn "Mở khóa!"; trang phục mở theo level/quest vẫn giữ vì là phần thưởng |
-| 34 | Tám map rộng (2026-10-01, người sở hữu; chi tiết do Jev quyết) | 70 bài SGK chia trên 8 map theo chủ điểm của sách, mỗi map 6–12 bài; Trường học là map trung tâm có cổng sang 7 map; mỗi map 800 × 800 khối, tải lười theo vùng; mỗi map đông người và vật nuôi sinh hoạt như đời thật, dựng theo mock của người sở hữu (`designs/the-gioi/`, `designs/<map>/`) | Thay câu "MVP chỉ dựng một khu vực" ở mục 4 cho phần nội dung đã có; id quest giữ nguyên nên tiến độ của bé không mất; plan `plans/dattqh/261001-2106-more-maps-lesson-regroup/`, Jev: `plans/dattqh/reports/jev-261001-2315-map-mocks.md`, `jev-261001-2345-wide-maps.md` |
+| 34 | Tám map rộng (2026-10-01, người sở hữu; chi tiết do Jev quyết) | 70 bài SGK chia trên 8 map theo chủ điểm của sách, mỗi map 6–12 bài; Trường học là map trung tâm có cổng sang 7 map (nay là Trung tâm, xem 37); mỗi map 800 × 800 khối, tải lười theo vùng; mỗi map đông người và vật nuôi sinh hoạt như đời thật, dựng theo mock của người sở hữu (`designs/the-gioi/`, `designs/<map>/`) | Thay câu "MVP chỉ dựng một khu vực" ở mục 4 cho phần nội dung đã có; id quest giữ nguyên nên tiến độ của bé không mất; plan `plans/dattqh/261001-2106-more-maps-lesson-regroup/`, Jev: `plans/dattqh/reports/jev-261001-2315-map-mocks.md`, `jev-261001-2345-wide-maps.md` |
 | 35 | Map gấp 50 (2026-10-02, người sở hữu; cách làm do Jev quyết) | Mỗi map gấp ~50 diện tích (5.760 × 5.760): lõi 800 × 800 giữ nguyên tọa độ, vùng ngoài sinh lúc chơi theo seed (không file trong git), bài học vẫn ở lõi; vùng ngoài có làng, người, vật nuôi, ruộng, sông, đường và bến xe | Jev: `plans/dattqh/reports/jev-261002-0606-maps-x50.md`; plan `plans/dattqh/261002-0606-maps-x50-outland/` |
+| 36 | Bốn loài từ MVP (2026-09-30, người sở hữu) | Mèo, Thỏ, Cáo, Gấu đều chơi được; nhân vật ghép từ thư viện thân gốc, bộ phận, trang phục và bảng màu dùng chung trên rig Blocky | Thay 7; loài mới chỉ là dữ liệu; `docs/project-roadmap.md` task #10, plan `plans/dattqh/260930-1639-character-library-species/` |
+| 37 | Mười hai map chơi được (2026-10-02 và 2026-10-03, người sở hữu; chi tiết do Jev quyết) | Thêm Trung tâm (map riêng ở giữa màn chọn map, cổng sang mười map và Nhà của bé, nơi người chơi gặp nhau online), Núi tuyết, Đảo bí ẩn (mỗi map mở ngay với một quest chào mừng, bài SGK tập 2 vào sau) và Nhà của bé (38); mọi map có vùng ngoài theo 35 | Thay câu "Trường học là map trung tâm có cổng sang 7 map" của 34 và mục 4; plan `plans/dattqh/261002-1619-nui-tuyet-dao-bi-an-maps/`, Jev `plans/dattqh/reports/jev-261002-1619-open-snow-island.md` |
+| 38 | Nhà của bé (2026-10-03, người sở hữu; chi tiết do Jev quyết) | Map `nha-cua-be` (lõi 160 × 160): nhà hai tầng, sân, vườn, chuồng, ao; thời khóa biểu và lịch đồng phục theo từng người chơi, sửa trong game, mặc định trống; tùy biến nội, ngoại thất; mỗi người chơi một room nhà riêng, bạn bè hoặc cùng tổ đội vào thăm được (2026-10-05); mỗi map khác trao một kiểu trang trí lưu niệm và "Bài hôm nay" rủ sang map khác (2026-10-10) | Thay dòng "Nhà của Miu, khi dựng xong" ở mục 4; thời khóa biểu là ngoại lệ duy nhất của quy tắc không thu chữ người chơi tự gõ, ghi trong lời đồng ý từ v2; không đưa dữ liệu thật vào repo; plan `plans/dattqh/261003-1320-home-timetable-vehicles/`, `plans/dattqh/261009-2155-home-pulls-to-maps/`, Jev `plans/dattqh/reports/jev-261003-1340-timetable-consent.md` |
+| 39 | Minigame là nhiệm vụ phụ (2026-10-03, người sở hữu) | Nhân vật trên map mời một trò 30–90 giây; thắng là được XP và Xu, mỗi lần thắng đều thưởng, chơi lại vẫn thưởng không giới hạn (áp cả cho bài học), một lượt chơi trả một lần | Server chấm điểm đạt mục tiêu và tính thưởng, client chỉ gửi điểm; thêm trò bằng một thư mục và một file dữ liệu (`docs/minigames.md`); plan `plans/dattqh/261003-1549-minigames-home-polish/` |
+| 40 | Song ngữ Việt và Anh (2026-10-03, người sở hữu) | Ba chế độ Tiếng Việt, English, Song ngữ trong Cài đặt, lưu theo người chơi; chữ nội dung có bản `en` đặt cạnh chữ Việt; chữ SGK giữ nguyên tiếng Việt; đọc to bằng giọng trên máy | Mục 8c; schema kiểm `en` soi gương từng dòng; `docs/i18n.md`; plan `plans/dattqh/261003-2330-bilingual-npc-stories-bots/` |
+| 41 | Bạn máy (2026-10-03 đến 2026-10-08, người sở hữu; chi tiết do Jev quyết) | Bạn máy do server điều khiển, luôn gắn nhãn; công tắc là cài đặt của người chơi (mặc định bật); không tuyến cho sẵn, chỉ thấy quanh mình, tự đi và tự học, trí nhớ lưu ở server và không bao giờ bị xóa; kết bạn, rủ tổ đội, cùng làm nhiệm vụ, nói bằng giọng tổng hợp trên máy; người chơi luôn là trưởng đội, bạn máy không nhận thưởng | Thay phần "phụ huynh bật hoặc tắt", "đi theo đường đã có" và "tự training từ dữ liệu người chơi" ở mục 8b; `docs/system-architecture.md` dòng "Bạn máy tự đi, tự học"; plan `plans/dattqh/261007-2122-bots-play-like-players/` |
+| 42 | Trùm, Skill Check và cơ chế mới (2026-10-04 đến 2026-10-07; số trùm do người sở hữu chọn) | Bước `decision` (mỗi lựa chọn có hệ quả, rẽ nhánh được), `find-object`, thử thách `logic`, bước `boss`; mỗi map một trùm lớn và 3–4 trùm canh khu, mọi trùm hiện trên bản đồ; trận trùm diễn trong thế giới đang chạy, mỗi câu trả lời bằng một động tác chơi; không giới hạn thời gian; Skill Check trên rương, cửa chỉ giữ kho báu: thiếu cấp thì gợi ý quest luyện và bài vẫn đi tiếp | Thay 26; không cổng nào chặn quest (33); `docs/system-architecture.md` dòng "Cơ chế quest" và "Trùm trên bản đồ"; plan `plans/dattqh/261004-1617-boss-skill-check-new-mechanics/`, `plans/dattqh/261005-2315-zone-guardians/`, `plans/dattqh/261007-1829-boss-duel-play-moves/` |
+| 43 | Màn hệ thống V1, không có chuỗi ngày (2026-10-04, Jev) | Cài đặt gom một màn, Hộp thư (người chơi chỉ nhận, quà nhận một lần), màn Kỹ năng lên cấp; chuỗi ngày không làm | Thay 25 và cột tiền tệ ở mục 1; tránh áp lực phải chơi mỗi ngày; Jev `plans/dattqh/reports/jev-261004-1648-open-questions.md`, plan `plans/dattqh/261004-1617-system-screens-v1/` |
+| 44 | Đối tượng mọi lứa tuổi (2026-10-05, người sở hữu) | Game online kiểu Minecraft cho cả trẻ em và người lớn, sau này có mobile app; không đòi hỏi phụ huynh giám sát, phụ huynh tự chịu trách nhiệm; không tính năng nào đặt sau phê duyệt của phụ huynh | Thay các điều kiện "phụ huynh bật" ở mục 8 và 9; server vẫn tính thưởng; `.claude/rules/product-audience.md` |
+| 45 | Một người chơi mỗi tài khoản (2026-10-05, người sở hữu; chi tiết do Jev quyết) | Người đăng nhập Google là người chơi chính, tối đa hai người chơi phụ cho máy dùng chung, PIN tài khoản tùy chọn; lời đồng ý v3 không hỏi tuổi; trẻ chưa đủ tuổi có tài khoản Google thì chơi bằng người chơi phụ trong tài khoản người lớn | Thay dòng dữ liệu cá nhân ở mục 9, mục 11 và PIN bắt buộc ở 19; code gọi là "player", bảng giữ tên cũ; plan `plans/dattqh/261005-0949-single-player-account/` |
+| 46 | Bạn bè như game online, luôn online (2026-10-05, người sở hữu; chi tiết do Jev quyết) | Kết bạn trong game, người nhận đồng ý, không mã, không phụ huynh duyệt; kết bạn được với bạn máy; danh sách bạn, lời mời, chặn; game luôn online, bỏ công tắc tắt online | Thay "kết bạn bằng mã, phụ huynh phê duyệt" ở mục 9, "phê duyệt bạn của phụ huynh" ở mục 6 và điều kiện "phụ huynh bật" ở 8; Jev `plans/dattqh/reports/jev-261005-1330-friends-rescope-output.json`, plan `plans/dattqh/261004-1617-parent-area-friends/` |
+| 47 | Co-op cho mọi tổ đội (2026-10-05, Jev; đã lên production 2026-10-06) | Mỗi map một thử thách co-op (mỗi người một mảnh, cùng giữ nhịp, trùm đội) có phòng chờ, bạn máy vào chỗ trống; mọi bài học và chương chuyện chơi theo đội; tiến độ và thưởng của ai người nấy, server tính; ghép đội ngẫu nhiên với người lạ chờ kiểm duyệt | Thay điều kiện "có kiểm duyệt" của bậc 2 ở mục 8; Jev `plans/dattqh/reports/jev-261005-2200-coop-output.json`, plan `plans/dattqh/261004-1617-coop-quests/` |
+| 48 | Nói chuyện bằng giọng (2026-10-05, người sở hữu; xong 2026-10-06) | Kênh voice của tổ đội và gọi một bạn bè đang online; WebRTC nối thẳng tối đa 4 người, TURN của Cloudflare dự phòng; micro tắt tới khi bấm; bạn máy nói bằng giọng trên máy; không ghi, không lưu, không chuyển thành chữ; không bao giờ với người lạ | Thay "không P2P/WebRTC" ở mục 8 cho riêng âm thanh và "không chat tự do" ở mục 9 chỉ còn áp cho chữ; kênh đội nối thẳng nên các trình duyệt trong đội biết IP công khai của nhau, buộc đi qua TURN với thành viên chưa là bạn là việc của đợt kiểm duyệt (53); plan `plans/dattqh/261005-2335-voice-chat/`, Jev `plans/dattqh/reports/jev-261005-2335-voice-output.json` |
+| 49 | Sự kiện có thời hạn (2026-10-04 đến 2026-10-07) | Sự kiện là dữ liệu (`content/events/`), server quyết mở, đóng theo đồng hồ của nó; thưởng giới hạn có bản kỷ niệm, đồ đã nhận giữ mãi; cảnh sự kiện là lớp lúc chạy trên map; sự kiện đầu "Thử thách Olympic Toán" ở Khu rừng kèm màn luyện đề | Bậc 3 của mục 8 mới một phần: bảng xếp hạng nhóm và đo tải bỏ, chờ kiểm duyệt; plan `plans/dattqh/261004-1617-live-world-events/`, report `plans/dattqh/reports/live-world-events-261007.md` |
+| 50 | Phòng truyền thống (2026-10-08, người sở hữu; vị trí do Jev chọn) | Nhà nhỏ riêng trong khuôn viên Nhà của bé trưng huy hiệu sự kiện, cúp bộ sưu tập, bảng thành tích; chỗ chưa có hiện mờ; thăm nhà bạn thì thấy đồ của chính người xem | Đọc từ sổ thưởng và túi đồ, không thêm bảng; plan `plans/dattqh/261008-2129-trophy-room/` |
+| 51 | Marketing tự chạy (2026-10-12, người sở hữu) | Google Analytics 4 gửi từ server (Measurement Protocol), sự kiện ẩn danh, không script hay cookie bên thứ ba trong trình duyệt; trang công khai theo từng bài SGK, sitemap; link mời bạn một lần, thu hồi được; thẻ khoe kết quả; clip hằng tuần lên kênh YouTube và Fanpage riêng của Miu World, mặc định chạy khô tới khi người sở hữu tạo kênh; không đăng lên trang cá nhân | Quyền riêng tư và lời đồng ý lên v4 trước sự kiện đầu tiên; plan `plans/dattqh/261012-1116-auto-marketing/`, `docs/marketing-channels.md` |
+| 52 | Mở cho người chơi ngoài gia đình (2026-10-12, người sở hữu) | Ứng dụng Google OAuth chuyển "In production", thương hiệu đã xác minh: ai có tài khoản Google cũng đăng ký được | Trước đó chỉ người sở hữu và bé chơi; trả lời câu hỏi mở 1 của plan `plans/dattqh/261004-1617-mvp-gate-launch-readiness/`; `docs/project-roadmap.md` (gate Marketing tự chạy) |
+| 53 | Kiểm duyệt hoãn, không chống cheat (2026-10-04 và 2026-10-12, người sở hữu) | Chưa làm hàng đợi kiểm duyệt, màn xử lý báo cáo, tắt khẩn cấp; báo cáo và chặn vẫn có, báo cáo được lưu. Không kiểm tốc độ di chuyển hay cooldown; thưởng vẫn do server tính. Khi mở đăng ký cho mọi người (52), người sở hữu giữ plan kiểm duyệt ở trạng thái làm sau | Lệch khuyến nghị và điều kiện mở bậc 2 ở mục 8, các dòng MP của mục 9; plan `plans/dattqh/261004-1617-moderation-safety/` mở lại khi người sở hữu yêu cầu |
 
 ### Còn cần bạn chốt
 
@@ -539,28 +573,28 @@ Không còn.
 | Nhầm lẫn với Minecraft (bản quyền, nhận diện) | Trung bình | Không dùng tên, texture, asset của Minecraft; chỉ dùng pack CC0 đã kiểm và asset sinh bằng code; nhờ pháp chế xem |
 | Game biến thành bài kiểm tra | Trung bình | Mỗi quest phải qua 7 câu hỏi và có cơ chế ngoài trắc nghiệm |
 | Hard-code nội dung | Trung bình | Quest bằng dữ liệu, có schema và validator |
-| Rủi ro an toàn trẻ em | Cao | Mục 9, duyệt bảo mật, chưa mở tương tác nếu chưa có kiểm duyệt |
+| Rủi ro an toàn trẻ em | Cao | Mục 9, duyệt bảo mật; người sở hữu đã mở tương tác (bạn bè, tổ đội, co-op, voice) trước khi có kiểm duyệt và mở đăng ký cho mọi người từ 12/10/2026 (quyết định 44, 46, 52, 53); plan kiểm duyệt mở lại khi người sở hữu yêu cầu |
 | Claude Code đi lệch kiến trúc qua nhiều phiên | Trung bình | `CLAUDE.md`, task nhỏ, acceptance test, AI tự review, con người duyệt cuối trên trang review |
 
 ## 16. Tiêu chí nghiệm thu MVP
 
 MVP đạt khi một bé chơi trọn một quest trong Khu rừng bí mật và thấy việc học làm nhân vật mạnh lên, trên điện thoại thật.
 
-Ô đã đánh dấu có bằng chứng tự động trên CI (cập nhật 2026-10-01); ô còn trống chờ người hoặc chờ quyết định.
+Ô đã đánh dấu có bằng chứng tự động chạy trên CI (bộ smoke mười luồng, test server, `content:check`; rà lại ngày 19/10/2026 theo các test đang có); ô còn trống chờ người. Việc của người và cách gửi kết quả: mục "Việc cần người" trên trang review (`apps/web/review.html`).
 
-- [x] Chọn Mèo, đặt tên, đổi trang phục và thấy thay đổi ngay trên nhân vật voxel, rồi vào thế giới — E2E `creator`, `mvp-loop`
-- [x] Di chuyển tự do bằng joystick và bàn phím, va chạm đúng, camera không xuyên khối — E2E `play`, `hud-layout`
-- [x] Tương tác được với NPC và ít nhất 3 vật thể — E2E `mvp-loop`, `play`
-- [x] Quest có câu chuyện và vòng lặp đầy đủ, dùng ít nhất 2 cơ chế khác trắc nghiệm — E2E `mvp-loop`, `challenges` (kéo thả, sắp xếp)
-- [x] Một kiến thức học được dùng để giải một vấn đề trong game (ví dụ đố 8 + 5 = ? trên cây cổ thụ) — E2E `mvp-loop`
-- [x] Hướng dẫn, gợi ý, đáp án hoạt động và không khóa tiến trình — E2E `challenges`
-- [x] XP, xu, skill, mở khóa do server tính; sửa dữ liệu ở client không đổi được kết quả — test server `quest-routes`, `endpoint-table`
-- [x] Bé vào được mọi map đã dựng và làm được mọi nhiệm vụ ngay từ đầu, không nhiệm vụ nào chờ nhiệm vụ khác (thay tiêu chí "hoàn thành quest mở khóa chương tiếp", quyết định 33) — test server `quest-routes`, `content-catalog`; E2E `maps` (vào 7 map chủ điểm, đi cổng trung tâm ↔ Chợ phiên)
-- [x] Test IDOR và CSP đạt; không có script hay analytics bên thứ ba — test server `quest-routes` (IDOR), E2E `mvp-loop` (CSP, không request ngoài origin)
-- [ ] Đạt mục tiêu khung hình đã chốt sau POC trên máy chuẩn iPad Gen 10 — chờ DEVICE-01
-- [ ] Giao diện đúng luồng và chức năng theo mock voxel mới nhất của các màn hình MVP — đã dựng theo mock, chờ designer duyệt
-- [ ] Một bé chơi thử hoàn thành một quest (có phụ huynh đồng ý) — việc của người (task #24)
-- [x] Thêm quest mới chỉ bằng dữ liệu, không sửa code — 70 bài SGK thêm bằng `content/quests/` + `content/world/targets.json`, `pnpm content:check`
+- [x] Chọn nhân vật (bốn loài), đặt tên, đổi trang phục và thấy thay đổi ngay trên nhân vật voxel, rồi vào thế giới — E2E `account` (đăng nhập → đồng ý → tạo nhân vật → Home → map → chơi), `shop` (mua đồ và mặc)
+- [x] Di chuyển tự do bằng joystick và bàn phím, va chạm đúng, camera không xuyên khối — E2E `play`; va chạm vật theo `traversal` ở test `packages/voxel/src/prop-collision.test.ts`
+- [x] Tương tác được với NPC và ít nhất 3 vật thể — E2E `play`, `quest-flow` (Vẹt, ba manh mối, lá thư); audit `pnpm world:quest-targets` trong `content:check` (mọi mục tiêu quest trên 12 map)
+- [x] Quest có câu chuyện và vòng lặp đầy đủ, dùng ít nhất 2 cơ chế khác trắc nghiệm — E2E `quest-flow`, `sgk-mechanics` (phân loại, điền chỗ trống, chọn nhiều, đồng hồ, lịch, nối, tranh, nói, phiếu viết), `bosses`
+- [x] Một kiến thức học được dùng để giải một vấn đề trong game (ví dụ đố 8 + 5 = ? trên cây cổ thụ) — E2E `quest-flow`, `bosses` (đòn trùm là câu hỏi theo kỹ năng)
+- [x] Hướng dẫn, gợi ý, đáp án hoạt động và không khóa tiến trình — test server `quest-routes`, `olympiad-routes` (từng lớp hỗ trợ theo yêu cầu), `coop-session`
+- [x] XP, xu, skill do server tính; sửa dữ liệu ở client không đổi được kết quả — test server `quest-routes`, `endpoint-table`, `coop-reward`; quét bảo mật 19/10/2026 (`plans/dattqh/reports/security-sweep-261019.md`)
+- [x] Bé vào được mọi map đã dựng và làm được mọi nhiệm vụ ngay từ đầu, không nhiệm vụ nào chờ nhiệm vụ khác (thay tiêu chí "hoàn thành quest mở khóa chương tiếp", quyết định 33) — test server `quest-routes`, `content-catalog`; E2E `maps` (Trung tâm mỗi lần, cả mười hai map ở lượt hằng đêm; cổng Trung tâm ↔ Đảo bí ẩn)
+- [x] Test IDOR và CSP đạt; không có script hay analytics bên thứ ba — test server `endpoint-table` và test IDOR của từng route; `pnpm security:dist` (CSP của trang bài, không có đáp án trong bundle); GA4 gửi từ server, trình duyệt không tải script Google
+- [ ] Đạt mục tiêu khung hình đã chốt sau POC trên máy chuẩn iPad Gen 10 — chờ DEVICE-01 (gói đo trên trang review). Giả lập 19/10/2026: mức Vừa trong ngân sách draw call ở cả mười hai map, tam giác vượt 2% ở một điểm; mức Cao vượt ở 13 điểm (`plans/dattqh/reports/map-budget-261019.md`)
+- [ ] Giao diện đúng luồng và chức năng theo mock voxel mới nhất của các màn hình MVP — đã dựng theo mock, ảnh màn chính được AI duyệt trước mỗi lần deploy (`docs/screen-review.md`); chờ designer duyệt
+- [ ] Một bé chơi thử hoàn thành một quest (có phụ huynh đồng ý) — bé đã chơi từ 01/10/2026; chờ người sở hữu xác nhận (task #24)
+- [x] Thêm quest mới chỉ bằng dữ liệu, không sửa code — 70 bài SGK và các quest trùm, việc tốt thêm bằng `content/quests/` + `content/world/targets.json`, `pnpm content:check`
 
 ## 17. Phân vai Claude Code và quy trình
 

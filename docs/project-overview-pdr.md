@@ -6,7 +6,7 @@ Chi tiết đầy đủ: Master Plan v3 (gốc repo) §1–§6, §13, §16. File
 
 Miu World là game phiêu lưu 3D voxel online kiểu Minecraft, chạy trên web (sau này có mobile app), dành cho mọi lứa tuổi: trẻ em chơi được, người lớn cũng chơi được, vừa chơi vừa học. Game không đòi hỏi phụ huynh giám sát; phụ huynh tự chịu trách nhiệm việc trẻ chơi (người sở hữu, 05/10/2026). Kiến thức là công cụ để tiến lên, không phải LMS có thêm avatar. Vòng lặp: thế giới → khám phá → quest → dùng kỹ năng học → thử thách → phần thưởng → nhân vật mạnh lên → mở khu vực mới.
 
-Cách làm: single-player vertical slice trước (Home Base + Khu rừng bí mật chương 1), multiplayer là giai đoạn riêng sau MVP nhưng server làm nguồn sự thật ngay từ MVP để không phải viết lại.
+Cách làm: single-player vertical slice trước (Home Base + Khu rừng bí mật chương 1), server làm nguồn sự thật ngay từ MVP để thêm chơi online chỉ là thêm lớp realtime. Slice đã xong; game nay có mười hai map, chơi online luôn bật (thấy nhau, bạn bè, tổ đội, co-op, bạn máy, nói chuyện bằng giọng) và chờ người duyệt nghiệm thu MVP (Master Plan §15 #36–#53, §16).
 
 ## Không làm (hiện tại)
 
@@ -14,10 +14,9 @@ Cách làm: single-player vertical slice trước (Home Base + Khu rừng bí m�
 - Không khớp từng pixel với mock hiện tại (mock là ảnh render AI mượt; chỉ bám luồng và chức năng).
 - Không đặt/phá block ở thế giới chính và khu chung (§15 #3).
 - Không dùng Kim cương ở MVP; ô Kim cương ẩn trên HUD (§15 #6).
-- Không chat tự do; không P2P/WebRTC giữa người chơi.
+- Không chat chữ tự do: chữ trên dây chỉ là câu có sẵn và emote. Nói chuyện bằng giọng chỉ với bạn bè và tổ đội, WebRTC nối thẳng chỉ cho âm thanh, không ghi, không lưu (§15 #48); trạng thái game vẫn đi qua WebSocket của server.
 - Không dùng tên, texture, asset của Minecraft.
-- MVP chỉ có loài Mèo; Thỏ, Cáo, Gấu để V1 (§15 #7).
-- Multiplayer sau MVP, mở từ Bậc 1 (thấy nhau) (§15 #8).
+- Chưa có kiểm duyệt và hàng đợi xử lý báo cáo (người sở hữu hoãn; báo cáo và chặn đã có), không chống cheat (§15 #53).
 
 ## Ràng buộc không suy ra được từ code
 
@@ -30,7 +29,7 @@ Cách làm: single-player vertical slice trước (Home Base + Khu rừng bí m�
 
 | Từ | Nghĩa |
 | --- | --- |
-| Miu | Nhân vật người chơi (Mèo) ở MVP; cũng là tên game |
+| Miu | Tên game; chữ trong game gọi người chơi bằng tên nhân vật họ đặt (`{name}`, §15 #29) |
 | M1, M2, M3 (`M3.2`…) | Ba ảnh mock trong `designs/` và số panel; dùng để trỏ màn hình |
 | Mock voxel | Bộ mock mới sẽ thay mock hiện tại theo từng màn hình; mock mới ghi đè mock cũ của màn đó |
 | NEW SCREEN | Màn hình cần có nhưng chưa có mock (Master Plan §6) |
@@ -46,7 +45,7 @@ Cách làm: single-player vertical slice trước (Home Base + Khu rừng bí m�
 
 ## Luồng tài khoản (§9, §11)
 
-Đăng nhập Google → đồng ý chính sách (v3) → server tạo **người chơi chính** của tài khoản (tên đầu tiên còn trống trong danh sách) và chọn sẵn nó → tạo nhân vật → Home. Mỗi phiên mới chơi bằng người chơi chính; không có màn "Ai đang chơi?" trừ khi chủ tài khoản thêm **người chơi phụ** cho máy dùng chung (tối đa 3 người chơi; tên chọn từ danh sách; không tên thật, tuổi, trường, lớp). Mọi dữ liệu game (tiến độ quest, thưởng, túi đồ, kỹ năng) gắn với từng người chơi. Mục Quản lý tài khoản (thêm, sửa, xóa người chơi phụ; tải dữ liệu; xóa tài khoản) mở thẳng; PIN là tùy chọn, đặt, đổi hoặc gỡ từ chính mục đó. Người chơi chính chỉ xóa cùng tài khoản; xóa người chơi phụ là xóa hẳn mọi dữ liệu của người chơi đó (05/10/2026).
+Đăng nhập Google → đồng ý chính sách (phiên bản hiện hành ở `content/legal/consent-vi.json`) → server tạo **người chơi chính** của tài khoản (tên đầu tiên còn trống trong danh sách) và chọn sẵn nó → tạo nhân vật → Home. Mỗi phiên mới chơi bằng người chơi chính; không có màn "Ai đang chơi?" trừ khi chủ tài khoản thêm **người chơi phụ** cho máy dùng chung (tối đa 3 người chơi; tên chọn từ danh sách; không tên thật, tuổi, trường, lớp). Mọi dữ liệu game (tiến độ quest, thưởng, túi đồ, kỹ năng) gắn với từng người chơi. Mục Quản lý tài khoản (thêm, sửa, xóa người chơi phụ; tải dữ liệu; xóa tài khoản) mở thẳng; PIN là tùy chọn, đặt, đổi hoặc gỡ từ chính mục đó. Người chơi chính chỉ xóa cùng tài khoản; xóa người chơi phụ là xóa hẳn mọi dữ liệu của người chơi đó (05/10/2026).
 
 ## Quyết định còn mở
 

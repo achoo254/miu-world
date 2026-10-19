@@ -1,6 +1,6 @@
 # Miu World
 
-Game phiêu lưu 3D voxel trên web cho trẻ em, nơi kiến thức là công cụ để tiến lên. Repo đang ở giai đoạn Foundation (sau gate POC): có pipeline asset có kiểm license, thư viện voxel, app web (Vite + React, runtime three.js), server (Express + Drizzle) với tài khoản phụ huynh, hồ sơ trẻ và API nhân vật/tiến độ/thưởng theo [Master Plan v3](<Miu World — Master Development Plan v3 (3D theo mockup + Multiplayer).md>) §7.
+Game phiêu lưu 3D voxel online trên web cho mọi lứa tuổi, nơi kiến thức là công cụ để tiến lên. Vertical slice MVP đã xong và game đang chạy production: mười hai map chơi được với nội dung SGK lớp 2 tập 1, chơi online cùng bạn bè, tổ đội và bạn máy; đang chờ người duyệt nghiệm thu MVP ([Master Plan v3](<Miu World — Master Development Plan v3 (3D theo mockup + Multiplayer).md>) §16). Repo gồm pipeline asset có kiểm license, thư viện voxel, app web (Vite + React, runtime three.js) và server (Express + Drizzle) là nguồn sự thật cho tiến độ và thưởng (Master Plan §7).
 
 - Kế hoạch tổng: [Master Plan v3](<Miu World — Master Development Plan v3 (3D theo mockup + Multiplayer).md>)
 - Tài liệu: [`docs/`](docs/README.md)
@@ -18,9 +18,9 @@ pnpm test && pnpm typecheck && pnpm lint
 pnpm dev                                           # API 127.0.0.1:8787 (PGlite trong .data/) + web http://localhost:5173 (proxy /api)
 ```
 
-`pnpm dev` lấy Google OAuth client cho đăng nhập phụ huynh từ `access-tokens.json` trong iCloud Drive của người phụ trách (đặt `MIU_TOKEN_FILE` hoặc `MIU_ICLOUD_DIR` nếu nằm chỗ khác). Không có file đó thì game vẫn mở nhưng không đăng nhập được. Chạy riêng từng phần: `pnpm --filter @miu/server dev` và `pnpm --filter @miu/web dev`.
+`pnpm dev` lấy Google OAuth client cho đăng nhập từ `access-tokens.json` trong iCloud Drive của người phụ trách (đặt `MIU_TOKEN_FILE` hoặc `MIU_ICLOUD_DIR` nếu nằm chỗ khác). Không có file đó thì game vẫn mở nhưng không đăng nhập được. Chạy riêng từng phần: `pnpm --filter @miu/server dev` và `pnpm --filter @miu/web dev`.
 
-Trang duyệt cuối: chạy server, rồi `pnpm --filter @miu/web build` và `pnpm --filter @miu/web preview`, mở `/review.html` ở cổng 4173. E2E: `pnpm --filter @miu/web e2e --project setup --project account --project play`.
+Trang duyệt cuối: chạy server, rồi `pnpm --filter @miu/web build` và `pnpm --filter @miu/web preview`, mở `/review.html` ở cổng 4173. E2E (bộ smoke chặn deploy, danh sách luồng ở [`docs/code-standards.md`](docs/code-standards.md)): `pnpm --filter @miu/web e2e:smoke`, hoặc một luồng: `pnpm --filter @miu/web e2e --project setup --project <tên>`.
 
 ## License asset
 
