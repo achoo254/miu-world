@@ -31,6 +31,28 @@ function plan(theme: OutlandTheme = 'river', seed = 1234): OutlandPlan {
 
 const sample = (): ColumnSample => ({ ground: 0, deck: -1, flags: 0 });
 
+/** The fastest of three timed runs: the first runs warm the JIT, and a busy machine only ever makes a run slower. */
+function fastestMs(run: () => void): number {
+  let best = Infinity;
+  for (let r = 0; r < 3; r++) {
+    const t0 = performance.now();
+    run();
+    best = Math.min(best, performance.now() - t0);
+  }
+  return best;
+}
+
+/** Hashing and float maths of about the same kind as a column lookup: the yardstick for this machine's speed. */
+function referenceWorkload(n: number): number {
+  let h = 0x9e3779b9;
+  let acc = 0;
+  for (let i = 0; i < n; i++) {
+    h = Math.imul(h ^ (h >>> 15), 0x85ebca6b) ^ i;
+    acc += Math.sin(h & 1023) * Math.floor((h >>> 8) / 7);
+  }
+  return acc;
+}
+
 /** The layout as plain data (arrays of numbers), for comparing two plans. */
 function layout(p: OutlandPlan): unknown {
   return {
@@ -199,12 +221,13 @@ describe('outland plan', () => {
 
   it('answers ground and skyline lookups fast enough for the far horizon', () => {
     const p = plan('forest');
-    const t0 = performance.now();
     let sum = 0;
-    for (let i = 0; i < 200_000; i++) sum += outlandSkyline(p, -2400 + (i % 450) * 12, -2400 + Math.floor(i / 450) * 12).y;
-    const ms = performance.now() - t0;
+    const skyline = fastestMs(() => {
+      for (let i = 0; i < 200_000; i++) sum += outlandSkyline(p, -2400 + (i % 450) * 12, -2400 + Math.floor(i / 450) * 12).y;
+    });
     expect(sum).toBeGreaterThan(0);
-    // About 0.3 s on a dev machine; twice that and more is a regression.
-    expect(ms).toBeLessThan(1500);
+    // Measured against a fixed workload on the same machine in the same run, so a slow CI runner does not fail
+    // it: about 8 times the reference on a dev machine, past 30 when other jobs fight for the CPU; over 40 times is a regression.
+    expect(skyline / fastestMs(() => referenceWorkload(2_000_000))).toBeLessThan(40);
   });
 });
