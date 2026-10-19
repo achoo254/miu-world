@@ -1,0 +1,431 @@
+{
+  "id": "yarn-khi-mua-dua-lon-2",
+  "region": "dao-bi-an",
+  "chapter": 2,
+  "title": "Chuyện của Khỉ Hái Dừa, chương 2: Giỏ dừa cho làng chài",
+  "status": "active",
+  "category": "story",
+  "summary": "Khỉ Hái Dừa muốn gửi dừa cho làng chài ven biển. {name} dò lối qua cây đổ ven suối, tìm đồ Khỉ đánh rơi dọc đường, đọc mảnh giấy làng chài để ở chòi canh và chọn cách chia số dừa còn dư.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Khỉ Hái Dừa",
+    "where": "Rừng nhiệt đới: ngọn dừa Khỉ, lối mòn ven suối, phiến đá rêu, chòi canh bìa rừng, ngã ba lối mòn",
+    "goal": "Đưa giỏ dừa từ rừng tới chòi canh cho làng chài",
+    "play": "Dò đường qua cây đổ; tìm đồ đánh rơi theo lời tả; đọc mảnh giấy của làng chài; chọn cách chia dừa dư; đu dây qua suối",
+    "learn": "Tìm đường trên lưới ô, đọc hiểu một mẩu tin ngắn",
+    "reward": "65 XP, 17 Xu, Skill XP Tư duy logic, Đọc hiểu",
+    "next": "Hội dừa của cả đảo"
+  },
+  "phases": {
+    "hook": "gio-dua-lang-chai",
+    "explore": "cay-do-chan-loi",
+    "learn": "do-roi-doc-duong",
+    "challenge": "manh-giay-cho-canh",
+    "decision": "chia-dua-con-du",
+    "finale": "du-day-qua-suoi",
+    "reward": "chieu-ca-kho",
+    "next": "hoi-dua-ca-dao"
+  },
+  "places": {
+    "khi-hai-dua": "Ngọn dừa Khỉ",
+    "st-khi-mua-dua-lon-cay-do-chan-loi": "Lối mòn ven suối",
+    "do-roi-doc-duong": "Phiến đá rêu",
+    "st-khi-mua-dua-lon-mu-la-co": "Phiến đá rêu",
+    "st-khi-mua-dua-lon-cuon-day-leo": "Phiến đá rêu",
+    "st-khi-mua-dua-lon-gio-may-nho": "Phiến đá rêu",
+    "st-khi-mua-dua-lon-manh-giay-lang-chai": "Chòi canh bìa rừng",
+    "st-khi-mua-dua-lon-xe-cut-kit-dua": "Ngã ba lối mòn"
+  },
+  "steps": [
+    {
+      "id": "gio-dua-lang-chai",
+      "title": "Dừa đi xa",
+      "goTo": "Về ngọn dừa Khỉ, cậu đang buộc những giỏ dừa to thành hàng",
+      "kind": "dialogue",
+      "target": "khi-hai-dua",
+      "lines": [
+        {
+          "speaker": "Khỉ Hái Dừa",
+          "text": "{name} ơi, tớ nghĩ cả đêm rồi! Làng chài ven biển mùa này thuyền về muộn, ai cũng khát khô cổ. Mình mang dừa ra cho họ nhé!"
+        },
+        {
+          "speaker": "Khỉ Hái Dừa",
+          "text": "Họ hẹn lấy dừa ở chòi canh bìa rừng. Đường tới đó tớ thuộc lắm, nhưng sáng nay có cây đổ chắn ngang lối mòn ven suối."
+        },
+        {
+          "speaker": "Khỉ Hái Dừa",
+          "text": "Mà ban nãy tớ chuyền cành vội quá, đánh rơi mấy món đồ dọc đường. Úp úp, vừa đi vừa nhặt luôn!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đi thôi, khát nước là khó chịu lắm!",
+          "reply": "Chuẩn! Tớ giữ lời hứa với làng chài từ năm ngoái: mùa dừa lớn nào cũng có phần cho họ."
+        },
+        {
+          "text": "Cây đổ thì mình đi đường vòng nhé.",
+          "reply": "Đường vòng thì nhiều ngả lắm, đi sai một ngả là lạc vào bụi gai. Cậu dò giúp tớ nha!"
+        }
+      ],
+      "en": {
+        "title": "Coconuts on a journey",
+        "goTo": "Go back to Khỉ's palm top, where he is tying big baskets of coconuts in a row",
+        "lines": [
+          "{name}, I thought about it all night! This season the fishing boats come home late and everyone in the village is parched. Let's take them coconuts!",
+          "They said they'd collect the coconuts at the lookout hut on the forest edge. I know the way by heart, but this morning a fallen tree is blocking the streamside trail.",
+          "And earlier I swung along so fast I dropped a few things on the way. Oop oop, we'll pick them up as we go!"
+        ],
+        "choices": [
+          {
+            "text": "Let's go; being thirsty is horrible!",
+            "reply": "Exactly! I've kept my promise to the village since last year: every big season, there's a share for them."
+          },
+          {
+            "text": "If a tree is down, we'll take a detour.",
+            "reply": "Detours have lots of turnings, and one wrong turn lands you in the thorn bushes. Help me find the way!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cay-do-chan-loi",
+      "title": "Cây đổ chắn lối",
+      "goTo": "Ra lối mòn ven suối, chỗ thân cây đổ nằm chắn ngang",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "maze",
+      "target": "st-khi-mua-dua-lon-cay-do-chan-loi",
+      "skill": "logic",
+      "prompt": "Ô chú khỉ là chỗ {name} và Khỉ đứng, ô ngôi sao là chòi canh, ô gạch là cây đổ và bụi gai. Dãy bước nào đưa giỏ dừa tới chòi canh? (→ sang phải, ↓ đi xuống)",
+      "grid": [
+        [
+          "S",
+          ".",
+          "#",
+          ".",
+          "."
+        ],
+        [
+          "#",
+          ".",
+          "#",
+          ".",
+          "#"
+        ],
+        [
+          ".",
+          ".",
+          ".",
+          ".",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "#",
+          ".",
+          "G"
+        ]
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "↓ → → ↓ → → ↓"
+        },
+        {
+          "id": "b",
+          "text": "→ ↓ ↓ → → → ↓"
+        },
+        {
+          "id": "c",
+          "text": "→ ↓ ↓ → → ↓ →"
+        }
+      ],
+      "answer": {
+        "choice": "c"
+      },
+      "support": {
+        "guide": [
+          "Đặt ngón tay lên ô chú khỉ.",
+          "Đi thử từng dãy bước, chạm ô gạch là dãy đó bị chắn.",
+          "Dãy đúng dừng đúng ở ô ngôi sao."
+        ],
+        "hint": "Bước đầu tiên đi xuống là vướng bụi gai ngay. Ở hàng thứ ba, ô cuối bên phải cũng bị chắn.",
+        "answer": {
+          "text": "Sang phải, xuống hai ô, sang phải hai ô, xuống, rồi sang phải",
+          "explanation": "Dãy → ↓ ↓ → → ↓ → đi sang ô thứ hai, xuống hai lần tới hàng thứ ba, sang phải hai ô, xuống hàng cuối rồi sang phải tới chòi canh mà không chạm ô gạch nào."
+        },
+        "en": {
+          "guide": [
+            "Put your finger on the monkey square.",
+            "Try each sequence of steps; touch a brick square and that route is blocked.",
+            "The right one stops exactly on the star square."
+          ],
+          "hint": "Going down first hits the thorns at once. In the third row, the last square on the right is blocked too.",
+          "answer": {
+            "text": "Right, down two, right two, down, then right",
+            "explanation": "→ ↓ ↓ → → ↓ → moves to the second square, goes down twice to the third row, right two squares, down to the bottom row and right to the lookout hut without touching a brick square."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Úp úp! Vòng qua cây đổ mà không bị gai cào sợi lông nào!",
+          "{name} dò đường còn tài hơn cả tớ, mà tớ sống ở rừng này từ bé đấy.",
+          "Giỏ dừa vẫn nguyên, chòi canh ở ngay trước mặt rồi!"
+        ],
+        "wrong": [
+          "Ái da, đi thế là chui vào bụi gai mất, {name} dò lại từng ô nhé.",
+          "Hàng thứ ba đi sang phải quá xa là đụng cây đổ đấy.",
+          "Thử đặt tay lên ô chú khỉ rồi bước chậm từng mũi tên một."
+        ],
+        "en": {
+          "right": [
+            "Oop oop! Round the fallen tree without a single thorn scratch!",
+            "{name} finds the way better than me, and I've lived in this jungle since I was tiny.",
+            "The coconut baskets are fine, and the lookout hut is right ahead!"
+          ],
+          "wrong": [
+            "Ouch, that way goes straight into the thorns, {name}; trace each square again.",
+            "Going too far right along the third row runs into the fallen tree.",
+            "Put your finger on the monkey square and follow one arrow at a time."
+          ]
+        }
+      },
+      "en": {
+        "title": "A fallen tree on the trail",
+        "goTo": "Go to the streamside trail, where the fallen trunk lies across the way",
+        "prompt": "The monkey square is where {name} and Khỉ stand, the star square is the lookout hut, and brick squares are the fallen tree and thorn bushes. Which steps get the coconut baskets to the hut? (→ right, ↓ down)",
+        "choices": [
+          "↓ → → ↓ → → ↓",
+          "→ ↓ ↓ → → → ↓",
+          "→ ↓ ↓ → → ↓ →"
+        ]
+      }
+    },
+    {
+      "id": "do-roi-doc-duong",
+      "title": "Đồ rơi dọc đường",
+      "goTo": "Tới phiến đá rêu, nơi Khỉ đoán mình làm rơi đồ khi chuyền cành",
+      "kind": "find-object",
+      "prompt": "Nghe Khỉ tả rồi tìm từng món đồ cậu đánh rơi quanh phiến đá rêu:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "mu-la-co",
+          "name": "Chiếc mũ lá cọ",
+          "clue": "Đan bằng lá cọ xanh, vành rộng che kín cả hai tai, tớ đội mỗi khi nắng gắt.",
+          "target": "st-khi-mua-dua-lon-mu-la-co"
+        },
+        {
+          "id": "cuon-day-leo",
+          "name": "Cuộn dây leo",
+          "clue": "Dài gấp mấy lần tớ, cuộn tròn như con rắn ngủ, dùng để buộc giỏ dừa cho khỏi xổ.",
+          "target": "st-khi-mua-dua-lon-cuon-day-leo"
+        },
+        {
+          "id": "gio-may-nho",
+          "name": "Giỏ mây nhỏ",
+          "clue": "Đan bằng mây, có quai cong, vừa đủ đựng bốn quả dừa xiêm làm quà.",
+          "target": "st-khi-mua-dua-lon-gio-may-nho"
+        }
+      ],
+      "en": {
+        "title": "Things dropped along the way",
+        "goTo": "Go to the mossy slab, where Khỉ thinks he dropped things while swinging",
+        "prompt": "Listen to Khỉ's descriptions and find each thing he dropped round the mossy slab:",
+        "items": [
+          {
+            "name": "The palm-leaf hat",
+            "clue": "Woven from green palm leaves, with a brim wide enough to cover both ears; I wear it when the sun is fierce."
+          },
+          {
+            "name": "The coil of vine",
+            "clue": "Many times longer than me, curled up like a sleeping snake, for tying the coconut baskets shut."
+          },
+          {
+            "name": "The little rattan basket",
+            "clue": "Woven from rattan, with a curved handle, just big enough for four green coconuts as a gift."
+          }
+        ]
+      }
+    },
+    {
+      "id": "manh-giay-cho-canh",
+      "title": "Mảnh giấy ở chòi canh",
+      "goTo": "Tới chòi canh bìa rừng, có mảnh giấy ghim trên cột tre",
+      "kind": "read",
+      "target": "st-khi-mua-dua-lon-manh-giay-lang-chai",
+      "skill": "doc-hieu",
+      "text": "Gửi người hái dừa của rừng nhiệt đới,\nMùa này thuyền về muộn, cả làng chài khát nước lắm. Nhà bác Cả xin sáu quả, nhà cô Út xin bốn quả, nhà ông Lưới xin năm quả.\nChiều thứ Bảy, làng sẽ mang cá khô lên chòi canh để đổi lấy dừa.\nCảm ơn bạn nhiều!\nLàng chài ven biển",
+      "question": "Theo mảnh giấy, làng chài sẽ mang gì lên chòi canh, và vào lúc nào?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Mang cá khô, vào chiều thứ Bảy"
+        },
+        {
+          "id": "b",
+          "text": "Mang cá khô, vào sáng Chủ nhật"
+        },
+        {
+          "id": "c",
+          "text": "Mang lưới mới, vào chiều thứ Bảy"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Tìm câu có chữ «chòi canh» trong mảnh giấy.",
+          "Câu ấy cho biết cả hai điều: mang gì và vào lúc nào."
+        ],
+        "hint": "Đọc kỹ câu bắt đầu bằng «Chiều thứ Bảy».",
+        "answer": {
+          "text": "Cá khô, vào chiều thứ Bảy",
+          "explanation": "Mảnh giấy viết: «Chiều thứ Bảy, làng sẽ mang cá khô lên chòi canh để đổi lấy dừa.» Không có chữ nào nói về sáng Chủ nhật hay lưới mới."
+        },
+        "en": {
+          "guide": [
+            "Find the sentence with the words «lookout hut» in the note.",
+            "That sentence tells both things: what they'll bring and when."
+          ],
+          "hint": "Read the sentence that begins with «On Saturday afternoon» carefully.",
+          "answer": {
+            "text": "The village brings dried fish on Saturday afternoon",
+            "explanation": "The note says: «On Saturday afternoon the village will bring dried fish up to the lookout hut to swap for coconuts.» Nothing mentions Sunday morning or new nets."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cá khô chiều thứ Bảy! Úp úp, đổi dừa lấy cá là đôi bên cùng vui.",
+          "{name} tìm đúng câu cần tìm nhanh như sóc tìm hạt dẻ.",
+          "Chuẩn rồi! Tớ phải nhớ chiều thứ Bảy mang thêm một giỏ dừa nữa."
+        ],
+        "wrong": [
+          "Mảnh giấy đâu có nhắc tới Chủ nhật, {name} xem lại câu có chữ «chòi canh» nhé.",
+          "Lưới mới thì làng giữ để đi biển chứ, họ mang thứ khác lên cơ.",
+          "Câu cuối trước lời cảm ơn có đủ cả món đồ lẫn ngày giờ đấy."
+        ],
+        "en": {
+          "right": [
+            "Dried fish on Saturday afternoon! Oop oop, coconuts for fish makes everyone happy.",
+            "{name} found the right sentence as fast as a squirrel finds a chestnut.",
+            "Spot on! I must remember to bring one more basket on Saturday afternoon."
+          ],
+          "wrong": [
+            "The note never mentions Sunday, {name}; look again at the sentence with «lookout hut».",
+            "The village keeps its new nets for fishing; they're bringing something else.",
+            "The last sentence before the thank-you has both the thing and the day."
+          ]
+        }
+      },
+      "en": {
+        "title": "The note at the lookout hut",
+        "goTo": "Go to the lookout hut on the forest edge, where a note is pinned to a bamboo post",
+        "text": "To the coconut picker of the tropical forest,\nThis season the boats come home late and the whole fishing village is very thirsty. Uncle Cả's family asks for six, Auntie Út's family for four, and Grandpa Lưới's family for five.\nOn Saturday afternoon the village will bring dried fish up to the lookout hut to swap for coconuts.\nThank you so much!\nThe seaside fishing village",
+        "question": "According to the note, what will the village bring to the lookout hut, and when?",
+        "choices": [
+          "Dried fish, on Saturday afternoon",
+          "Dried fish, on Sunday morning",
+          "New nets, on Saturday afternoon"
+        ]
+      }
+    },
+    {
+      "id": "chia-dua-con-du",
+      "title": "Số dừa còn dư",
+      "goTo": "Quay về ngã ba lối mòn, chiếc xe cút kít còn lại mấy quả dừa",
+      "kind": "decision",
+      "target": "st-khi-mua-dua-lon-xe-cut-kit-dua",
+      "speaker": "Khỉ Hái Dừa",
+      "prompt": "Mỗi nhà làng chài đã có đủ phần, mà xe cút kít vẫn còn mấy quả dừa già. Khỉ đứng không yên, đuôi ngoe nguẩy: «Còn dư nè {name}! Mình làm gì với chỗ này đây?»",
+      "choices": [
+        {
+          "id": "ong-luoi",
+          "text": "Gửi thêm cho ông Lưới, nhà ông đông cháu nhất",
+          "consequence": "Ông Lưới cười móm mém, xoa đầu từng đứa cháu. Lũ trẻ chạy theo xe cút kít, hò reo suốt đoạn đường ra biển."
+        },
+        {
+          "id": "de-hoi",
+          "text": "Để dành cho ngày hội dừa sắp tới",
+          "consequence": "Khỉ xếp mấy quả dừa vào góc lán, phủ lá chuối lên trên. «Phần cho hội đây, không ai được uống trộm, kể cả tớ!»"
+        },
+        {
+          "id": "uom-cho-canh",
+          "text": "Ươm một quả ngay cạnh chòi canh",
+          "consequence": "Mai này chòi canh sẽ có bóng dừa che nắng. Khỉ hứa sẽ kể cho cây dừa con nghe chuyện giỏ dừa đầu tiên đi tới làng chài."
+        }
+      ],
+      "en": {
+        "title": "The leftover coconuts",
+        "goTo": "Go back to the fork in the trail, where the wheelbarrow still holds a few coconuts",
+        "prompt": "Every fishing family has its share, yet the wheelbarrow still holds a few ripe coconuts. Khỉ can't keep still, tail swishing: \"Leftovers, {name}! What shall we do with these?\"",
+        "choices": [
+          {
+            "text": "Send extra to Grandpa Lưới, who has the most grandchildren",
+            "consequence": "Grandpa Lưới smiles a toothless smile and pats each grandchild's head. The children run after the wheelbarrow, cheering all the way to the sea."
+          },
+          {
+            "text": "Save them for the coming coconut festival",
+            "consequence": "Khỉ stacks the coconuts in a corner of the hut under banana leaves. \"The festival's share; nobody sneaks a drink, not even me!\""
+          },
+          {
+            "text": "Plant one right next to the lookout hut",
+            "consequence": "One day the lookout hut will have a palm to shade it. Khỉ promises to tell the little palm about the first basket of coconuts that went to the fishing village."
+          }
+        ]
+      }
+    },
+    {
+      "id": "du-day-qua-suoi",
+      "title": "Đu dây qua suối",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đường về ngắn nhất là đu dây qua suối! Bắt chước Khỉ móc dây, đu lên rồi thả tay thật đúng lúc, qua năm chặng là về tới ngọn dừa!",
+      "game": "rope-swing",
+      "goal": 5,
+      "en": {
+        "title": "Swinging over the stream",
+        "prompt": "The quickest way home is to swing over the stream! Copy Khỉ: hook the vine, swing up and let go at just the right moment; five stretches and you're back at the palm top!"
+      }
+    },
+    {
+      "id": "chieu-ca-kho",
+      "title": "Chiều thứ Bảy thơm mùi cá",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chiều thứ Bảy, làng chài mang cá khô lên chòi canh, còn tặng thêm một chiếc vỏ ốc to biết hát tiếng sóng. Khỉ áp vỏ ốc vào tai {name}: «Nghe nè, biển đang cảm ơn mình đấy!»",
+      "en": {
+        "title": "A Saturday afternoon smelling of fish",
+        "text": "On Saturday afternoon the fishing village brings dried fish to the lookout hut, plus a big shell that sings like the waves. Khỉ holds it to {name}'s ear: \"Listen, that's the sea saying thank you!\""
+      }
+    },
+    {
+      "id": "hoi-dua-ca-dao",
+      "title": "Hội dừa của cả đảo",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Trên đường về, Khỉ bỗng đu ngược trên cành, mắt sáng rỡ: mùa dừa lớn thế này thì phải mở hội dừa cho cả đảo cùng vui! Nhưng mở hội cần lịch, cần trò chơi, cần cả câu đố nữa.",
+      "en": {
+        "title": "A festival for the whole island",
+        "text": "On the way home Khỉ suddenly hangs upside down from a branch, eyes shining: a season this big deserves a coconut festival for the whole island! But a festival needs a schedule, games and riddles too."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 17,
+    "skillXp": {
+      "logic": 1,
+      "doc-hieu": 1
+    }
+  },
+  "en": {
+    "title": "Khỉ Hái Dừa's story, chapter 2: Coconuts for the fishing village",
+    "summary": "Khỉ Hái Dừa wants to send coconuts to the seaside fishing village. {name} finds a way round a fallen tree by the stream, finds the things Khỉ dropped along the trail, reads the village's note at the lookout hut and decides how to share the leftover coconuts."
+  }
+}

@@ -726,6 +726,118 @@
           }
         }
       ]
+    },
+    {
+      "id": "te-tuong-nghin-van-co",
+      "npc": "te-tuong-co-the",
+      "title": { "vi": "Một nghìn ván cờ không ai thua", "en": "A Thousand Games Nobody Loses" },
+      "teaser": { "vi": "Ta là Tể Tướng Cờ Vua. Ta đang soạn cuốn «Một nghìn ván cờ không ai thua», nơi ván nào cũng khép lại bằng một cái bắt tay. Nước đi tiếp theo, {name} ạ, xin mời ngươi.", "en": "I am Tể Tướng Cờ Vua. I am writing «A Thousand Games Nobody Loses», where every game closes with a handshake. The next move, {name}, is yours." },
+      "chapters": [
+        {
+          "quest": "yarn-te-tuong-nghin-van-co-1",
+          "hearts": 0,
+          "letter": {
+            "from": "bac-tho-khoa-thanh",
+            "title": { "vi": "Cạch! Hộp cờ đã đủ quân", "en": "Click! The chess box is full again" },
+            "body": { "vi": "Cạch! {name} à, chiều nay bác mở hộp cờ ra đếm, đủ ba mươi hai quân, không thiếu con nào. Tể Tướng bảo nhờ có cháu. Bác đã gõ ba cái lên nắp hộp để cảm ơn nó, giờ gửi cháu ít xu để cảm ơn cháu. Ván tuần này hai bác đánh tới lúc trăng lên.", "en": "Click! {name}, this afternoon I opened the chess box and counted: all thirty-two pieces, not one missing. The chancellor says it was thanks to you. I tapped the lid three times to thank the box, and here are some coins to thank you. This week our game lasted till the moon came up." },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-te-tuong-nghin-van-co-2",
+          "hearts": 1,
+          "letter": {
+            "from": "meo-dam-sen",
+            "title": { "vi": "Nước cờ gửi từ đầm sen", "en": "A move sent from the lotus pond" },
+            "body": { "vi": "Meo. {name}. Tể Tướng viết thư khoe có người giải giúp mật mã tiệc. Mèo đoán ngay là {name}. Ba năm đánh cờ qua thư, Mèo chưa thắng ván nào. Tể Tướng hứa: Mèo thắng một ván thì được chìa phòng cờ của lâu đài. Tuần này Mèo đi một nước tốt. Chậm. Chắc. Gửi {name} cành sen.", "en": "Meow. {name}. The chancellor wrote to boast that someone cracked his banquet code. I guessed it was {name} at once. Three years of chess by post and I have not won a game. The chancellor promised: win one game and the castle chess room key is mine. This week I moved a pawn. Slow. Sure. Here is a lotus stem for {name}." },
+            "reward": {
+              "coins": 20,
+              "xp": 15,
+              "items": { "canh-sen-hong": 1 }
+            }
+          }
+        },
+        {
+          "quest": "yarn-te-tuong-nghin-van-co-3",
+          "hearts": 2,
+          "letter": {
+            "from": "cao-cung-thu",
+            "title": { "vi": "Một, hai, ba… vút!", "en": "One, two, three… whoosh!" },
+            "body": { "vi": "Vút! Cáo đây. Thầy Tể Tướng đưa cáo tấm thẻ cậu chọn câu. Sáng nay cáo đếm một, hai, ba rồi mới buông dây. Trúng vòng chín! Ván cờ chiều nay cáo trụ được tới nước hai mươi. Chưa thắng, nhưng cáo đòi đấu lại liền. Tặng cậu chiếc lông vũ chim rừng.", "en": "Whoosh! Cáo here. Master chancellor gave me the card you chose the words for. This morning I counted one, two, three before letting go. Ring nine! In this afternoon's chess game I lasted to move twenty. Not a win, but I demanded a rematch right away. Here's a forest feather for you." },
+            "reward": {
+              "coins": 20,
+              "xp": 20,
+              "items": { "long-vu-chim-rung": 1 }
+            }
+          }
+        },
+        {
+          "quest": "yarn-te-tuong-nghin-van-co-4",
+          "hearts": 3,
+          "letter": {
+            "from": "gau-gac-ham",
+            "title": { "vi": "Suỵt! Ai ngủ trong kho đồ thất lạc", "en": "Shh! Who is asleep in the lost-property store" },
+            "body": { "vi": "Suỵt… {name} ơi, sau bữa tiệc gấu xuống kho đồ thất lạc thì thấy chú mèo mướp nằm cuộn tròn ngủ trên chiếc khăn ăn. Bên cạnh còn một quân tốt trắng. Gấu đếm lại hai lượt cho chắc rồi mang quân tốt trả Tể Tướng. Ngài cười, bảo hôm nay là ngày lệch luật vui nhất.", "en": "Shh… {name}, after the banquet I went down to the lost-property store and found the tabby cat curled up asleep on a napkin. Beside it lay a white pawn. I counted twice to be sure, then took the pawn back to the chancellor. He laughed and said it was the happiest rule-breaking day ever." },
+            "reward": { "coins": 20, "xp": 20, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-te-tuong-nghin-van-co-5",
+          "hearts": 4,
+          "letter": {
+            "from": "te-tuong-co-the",
+            "title": { "vi": "Trang cuối của cuốn sách", "en": "The last page of the book" },
+            "body": { "vi": "Gửi {name}, kỳ thủ trẻ của ta. Cuốn «Một nghìn ván cờ không ai thua» đã xong, dù chưa tới một nghìn ván. Ta hiểu ra con số không quan trọng bằng cái bắt tay và lời thật. Ván nào ngươi muốn chơi, bàn cờ đại sảnh luôn có một ghế dành cho ngươi. Chiếu tướng, bằng cả tấm lòng.", "en": "To {name}, my young fellow player. «A Thousand Games Nobody Loses» is finished, though it holds fewer than a thousand games. I have learned the number matters less than the handshake and the truth. Whenever you wish to play, the great hall board always keeps a seat for you. Checkmate, with all my heart." },
+            "reward": {
+              "coins": 25,
+              "xp": 25,
+              "items": { "thu-niem-phong": 1 }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cao-mui-ten-mang-thu",
+      "npc": "cao-cung-thu",
+      "title": { "vi": "Mũi tên mang thư của Cáo", "en": "Cáo's Letter-Arrow" },
+      "teaser": { "vi": "Vút! {name}. Cáo sắp mở một giải bắn trước cổng thành, rồi bắn một mũi tên mang thư thật xa. Một mình thì chậm. Hai người thì trúng phóc. Đi không?", "en": "Whoosh! {name}. I'm about to hold an archery contest before the castle gate, then shoot an arrow carrying a letter far, far away. Alone is slow. Two of us is dead centre. Coming?" },
+      "chapters": [
+        {
+          "quest": "yarn-cao-mui-ten-mang-thu-1",
+          "hearts": 0,
+          "letter": {
+            "from": "huou-cao",
+            "title": { "vi": "Bảng điểm nhìn từ trên cao", "en": "The scoreboard from up high" },
+            "body": { "vi": "Hí hí, {name}! Nhìn từ trên này thì bãi cỏ trước cổng thành giờ như một tấm bản đồ đẹp: ba lá cờ gió, một tấm bia vòng, một bảng điểm do tớ giữ phấn. Cáo khoe với tớ là cậu cộng điểm nhanh hơn tớ kịp đọc số. Tớ gửi cậu ít xu, ngày giải nhớ đứng cạnh tớ, chỗ đó nhìn rõ nhất.", "en": "Hee hee, {name}! From up here, the grass before the castle gate looks like a lovely map now: three wind flags, one ringed target, and a scoreboard where I hold the chalk. Cáo boasted that you add up scores faster than I can read them out. Here are a few coins; on contest day, stand next to me, it's the best view there is." },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-cao-mui-ten-mang-thu-2",
+          "hearts": 1,
+          "letter": {
+            "from": "te-tuong-co-the",
+            "title": { "vi": "Nước đi chậm mà chắc", "en": "A slow, sure move" },
+            "body": { "vi": "Ta, Tể Tướng Cờ Vua, gửi {name}. Cáo Cung Thủ vừa chạy một mạch lên tháp khoe rằng mũi tên buộc thư đã bay qua hào. Ta nghe kể thì biết đó là một nước đi chậm mà chắc: chọn dây cho gọn, đọc gió cho kỹ, rồi mới buông. Ta vẫn dặn cáo như thế mãi mà nay mới thấy cáo làm theo, hẳn là nhờ có {name} đứng bên. Nhận lấy chút quà của ta.", "en": "I, Tể Tướng Cờ Vua, write to {name}. Cáo Cung Thủ has just run all the way up the tower to boast that the letter-arrow flew over the moat. From his account, it was a slow and sure move: thread chosen neatly, wind read carefully, and only then the release. I have told him so a hundred times, and only now does he do it; no doubt because {name} stood beside him. Accept this small gift from me." },
+            "reward": { "coins": 20, "xp": 20, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-cao-mui-ten-mang-thu-3",
+          "hearts": 2,
+          "letter": {
+            "from": "bac-quang-luoi-bien",
+            "title": { "vi": "Thư theo phà ra đảo", "en": "Letters by ferry to the island" },
+            "body": { "vi": "Bác Quăng Lưới Biển gửi {name}. Chuyến phà chiều qua chở ra đảo cả một bó thư buộc trên thân tên, giấy còn thơm mùi cỏ trước cổng thành. Cáo viết rằng có {name} giúp chọn dây, giúp đọc gió. Hôm ấy gió trên sóng êm, lưới bác bung tròn như mặt trăng rằm. Bác để dành cho {name} một chiếc vảy cá bạc. Lần sau qua đảo, ta thi đoán gió nhé: cháu với Cáo đoán bằng tên, bác đoán bằng lưới.", "en": "Bác Quăng Lưới Biển writes to {name}. Yesterday evening's ferry brought a whole bundle of letters tied to an arrow shaft out to the island, the paper still smelling of the grass before the castle gate. Cáo writes that {name} helped choose the thread and read the wind. The wind on the waves was gentle that day, and my net opened as round as a full moon. I've kept a silver fish scale for {name}. Next time you come to the island, let's have a wind-guessing contest: you and Cáo guess with arrows, I'll guess with my net." },
+            "reward": {
+              "coins": 25,
+              "xp": 25,
+              "items": { "vay-ca-bac": 1 }
+            }
+          }
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,433 @@
+{
+  "id": "yarn-canh-cut-xoay-ba-vong-3",
+  "region": "nui-tuyet",
+  "chapter": 3,
+  "title": "Chuyện của Cánh Cụt Trượt Băng, chương 3: Đếm vòng cho cú xoay",
+  "status": "active",
+  "category": "story",
+  "summary": "Cánh Cụt bắt đầu tập cú xoay ba vòng cho hội tuyết. {name} xếp các ô băng theo độ dày như bác Gấu dạy, chọn đồ diễn, tính điểm giám khảo hai lượt tập và chọn những câu nêu đặc điểm cho tờ giới thiệu tiết mục.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cánh Cụt Trượt Băng",
+    "where": "Hồ băng: sân tập xoay, mép hồ đo băng, bảng tin hội tuyết, lều giám khảo, kho đồ diễn hội tuyết",
+    "goal": "Giúp Cánh Cụt chọn chỗ băng chắc và chuẩn bị tiết mục xoay ba vòng",
+    "play": "Xếp ô băng theo độ dày; chọn câu cho tờ giới thiệu; tính điểm hai lượt tập; chọn đồ diễn; đánh quay đếm vòng",
+    "learn": "So sánh số đo độ dài (đề-xi-mét, xăng-ti-mét), bài toán nhiều hơn, câu nêu đặc điểm",
+    "reward": "75 XP, 21 Xu, Skill XP So sánh số, Hơn kém, Bông tuyết pha lê",
+    "next": "Ngày hội tuyết"
+  },
+  "phases": {
+    "hook": "tap-xoay-ba-vong",
+    "explore": "mau-cua-bang",
+    "learn": "to-gioi-thieu-tiet-muc",
+    "challenge": "diem-hai-luot-tap",
+    "decision": "do-dien-hoi-tuyet",
+    "finale": "dem-vong-con-quay",
+    "reward": "vong-xoay-thu-ba",
+    "next": "ngay-hoi-tuyet"
+  },
+  "places": {
+    "canh-cut-truot-bang": "Sân tập xoay",
+    "st-canh-cut-xoay-ba-vong-coc-do-bang": "Mép hồ đo băng",
+    "st-canh-cut-xoay-ba-vong-ruong-do-dien": "Kho đồ diễn hội tuyết",
+    "st-canh-cut-xoay-ba-vong-bang-diem-giam-khao": "Lều giám khảo",
+    "st-canh-cut-xoay-ba-vong-to-gioi-thieu": "Bảng tin hội tuyết"
+  },
+  "steps": [
+    {
+      "id": "tap-xoay-ba-vong",
+      "title": "Một vòng, hai vòng, rồi...",
+      "goTo": "Tới sân tập xoay, Cánh Cụt đang xoay tít rồi loạng choạng dừng lại",
+      "kind": "dialogue",
+      "target": "canh-cut-truot-bang",
+      "lines": [
+        {
+          "speaker": "Cánh Cụt Trượt Băng",
+          "text": "Vèèèo, vèèèo, ối! Chào {name}! Cậu thấy không, tớ xoay được hai vòng rưỡi, rồi cái bụng đòi nằm xuống băng."
+        },
+        {
+          "speaker": "Cánh Cụt Trượt Băng",
+          "text": "Hội tuyết năm nay tớ muốn xoay đủ ba vòng ngay giữa hồ. Mà xoay chỗ nào cũng phải chọn băng thật chắc, bác Gấu dặn thế."
+        },
+        {
+          "speaker": "Cánh Cụt Trượt Băng",
+          "text": "Bác dạy tớ nhìn màu băng: xanh thẫm trong veo là dày, trắng đục là vừa vừa, xám như tro là mỏng, tránh xa. Tớ thuộc lòng rồi, tạo dáng học trò ngoan nè!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Hai vòng rưỡi là giỏi lắm rồi!",
+          "reply": "Thật hả? Vèèèo, tớ vui tới mức muốn xoay thêm nửa vòng nữa! Nhưng ba vòng mới là mục tiêu, tạo dáng quyết tâm đây."
+        },
+        {
+          "text": "Mình đếm vòng giúp cậu nhé!",
+          "reply": "Tuyệt! Tớ xoay nhanh tới mức tự đếm toàn bị lố. Cậu đếm, tớ xoay, chúng ta là một đội!"
+        }
+      ],
+      "en": {
+        "title": "One turn, two turns, then...",
+        "goTo": "Go to the spinning rink, where Cánh Cụt is spinning fast and then wobbling to a stop",
+        "lines": [
+          "Wheeee, wheeee, whoa! Hello, {name}! Did you see? Two and a half turns, and then my belly wanted to lie down on the ice.",
+          "At this year's festival I want to spin three whole turns right in the middle of the lake. But wherever you spin, the ice must be really solid; Uncle Bear says so.",
+          "He taught me to read the ice by colour: clear deep blue is thick, cloudy white is so-so, ash grey is thin, so keep away. I know it by heart; here's my good-student pose!"
+        ],
+        "choices": [
+          {
+            "text": "Two and a half turns is already great!",
+            "reply": "Really? Wheeee, I'm so happy I want to spin another half turn! But three is the goal; here's my determined pose."
+          },
+          {
+            "text": "I'll count your turns for you!",
+            "reply": "Brilliant! I spin so fast that when I count myself I always overshoot. You count, I spin, we're a team!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mau-cua-bang",
+      "title": "Màu của băng",
+      "goTo": "Ra mép hồ đo băng, xem cây cọc đo cắm cạnh bốn ô băng khác màu",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-canh-cut-xoay-ba-vong-coc-do-bang",
+      "skill": "so-sanh-so",
+      "prompt": "Cánh Cụt khoan thử bốn ô băng và ghi độ dày lên cọc đo. Xếp các ô băng từ dày nhất đến mỏng nhất để chọn chỗ xoay (nhớ: 1 dm = 10 cm):",
+      "items": [
+        {
+          "id": "xanh-nhat",
+          "label": "Ô băng xanh nhạt: 25 cm"
+        },
+        {
+          "id": "xam",
+          "label": "Ô băng xám tro: 1 dm"
+        },
+        {
+          "id": "xanh-tham",
+          "label": "Ô băng xanh thẫm: 3 dm"
+        },
+        {
+          "id": "trang-duc",
+          "label": "Ô băng trắng đục: 18 cm"
+        }
+      ],
+      "answer": {
+        "order": [
+          "xanh-tham",
+          "xanh-nhat",
+          "trang-duc",
+          "xam"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Đổi hết về xăng-ti-mét trước: 1 dm = 10 cm.",
+          "3 dm là 30 cm, 1 dm là 10 cm.",
+          "So các số 30, 25, 18, 10 rồi xếp từ lớn đến bé."
+        ],
+        "hint": "Ô xanh thẫm dày 30 cm, ô xám tro chỉ dày 10 cm.",
+        "answer": {
+          "text": "Xanh thẫm, xanh nhạt, trắng đục, xám tro",
+          "explanation": "3 dm = 30 cm và 1 dm = 10 cm. Ta có 30 > 25 > 18 > 10, nên thứ tự là xanh thẫm (30 cm), xanh nhạt (25 cm), trắng đục (18 cm), xám tro (10 cm). Đúng như bác Gấu dạy: băng càng xanh trong càng dày."
+        },
+        "en": {
+          "guide": [
+            "Change everything to centimetres first: 1 dm = 10 cm.",
+            "3 dm is 30 cm, and 1 dm is 10 cm.",
+            "Compare 30, 25, 18 and 10, then order them from biggest to smallest."
+          ],
+          "hint": "The deep blue patch is 30 cm thick; the ash grey one is only 10 cm.",
+          "answer": {
+            "text": "Deep blue, pale blue, cloudy white, ash grey",
+            "explanation": "3 dm = 30 cm and 1 dm = 10 cm. Since 30 > 25 > 18 > 10, the order is deep blue (30 cm), pale blue (25 cm), cloudy white (18 cm), ash grey (10 cm). Just as Uncle Bear taught: the clearer and bluer the ice, the thicker it is."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Xanh thẫm đứng đầu! Tớ sẽ xoay ở đó, chắc như đứng trên đá.",
+          "{name} đổi đề-xi-mét ra xăng-ti-mét nhanh như tớ đổi chân trượt.",
+          "Bác Gấu mà thấy bảng này chắc gật gù cả buổi chiều."
+        ],
+        "wrong": [
+          "3 dm là ba chục xăng-ti-mét đấy {name}, dày nhất hồ luôn.",
+          "Ô xám tro chỉ có 1 dm thôi, mỏng nhất, phải xếp cuối.",
+          "Đổi hết ra xăng-ti-mét rồi hẵng so, kẻo bị con số nhỏ đánh lừa."
+        ],
+        "en": {
+          "right": [
+            "Deep blue comes first! That's where I'll spin, as steady as standing on rock.",
+            "{name} turns decimetres into centimetres as fast as I switch skating feet.",
+            "If Uncle Bear saw this list, he'd nod all afternoon."
+          ],
+          "wrong": [
+            "3 dm is thirty centimetres, {name}, the thickest on the lake.",
+            "The ash grey patch is only 1 dm, the thinnest, so it goes last.",
+            "Change everything to centimetres before comparing, or the small numbers will trick you."
+          ]
+        }
+      },
+      "en": {
+        "title": "The colour of the ice",
+        "goTo": "Go to the ice-measuring edge of the lake and look at the measuring post beside four patches of different-coloured ice",
+        "prompt": "Cánh Cụt drilled four test holes and wrote each thickness on the post. Sort the patches from thickest to thinnest to choose a spinning spot (remember: 1 dm = 10 cm):",
+        "items": [
+          "Pale blue ice: 25 cm",
+          "Ash grey ice: 1 dm",
+          "Deep blue ice: 3 dm",
+          "Cloudy white ice: 18 cm"
+        ]
+      }
+    },
+    {
+      "id": "to-gioi-thieu-tiet-muc",
+      "title": "Tờ giới thiệu tiết mục",
+      "goTo": "Ra bảng tin hội tuyết, đọc tờ giới thiệu tiết mục Cánh Cụt vừa viết nháp",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-canh-cut-xoay-ba-vong-to-gioi-thieu",
+      "skill": "cau",
+      "prompt": "Ban tổ chức chỉ cho đăng những câu nêu đặc điểm (Ai thế nào?). Chọn những câu đó trong tờ nháp của Cánh Cụt:",
+      "choices": [
+        {
+          "id": "nhanh-nhen",
+          "text": "Cánh Cụt Trượt Băng rất nhanh nhẹn."
+        },
+        {
+          "id": "long-den",
+          "text": "Bộ lông của cậu đen bóng."
+        },
+        {
+          "id": "xoay-vong",
+          "text": "Cánh Cụt xoay tròn giữa hồ."
+        },
+        {
+          "id": "tay-truot",
+          "text": "Cánh Cụt là tay trượt băng của bờ hồ."
+        }
+      ],
+      "answer": {
+        "choices": [
+          "nhanh-nhen",
+          "long-den"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Câu nêu đặc điểm trả lời câu hỏi «Ai (cái gì) thế nào?».",
+          "Câu «làm gì?» là câu nêu hoạt động, câu «là gì?» là câu giới thiệu."
+        ],
+        "hint": "Tìm câu có từ tả dáng vẻ, màu sắc như «nhanh nhẹn», «đen bóng».",
+        "answer": {
+          "text": "«Cánh Cụt Trượt Băng rất nhanh nhẹn.» và «Bộ lông của cậu đen bóng.»",
+          "explanation": "Hai câu này cho biết Cánh Cụt và bộ lông thế nào. «Xoay tròn giữa hồ» kể việc cậu làm (câu nêu hoạt động), «là tay trượt băng» giới thiệu cậu là ai (câu giới thiệu)."
+        },
+        "en": {
+          "guide": [
+            "A describing sentence answers \"What is someone (something) like?\".",
+            "A \"what does it do?\" sentence tells an action; an \"is a ...\" sentence introduces someone."
+          ],
+          "hint": "Look for sentences with words about looks or colour, like \"nimble\" or \"glossy black\".",
+          "answer": {
+            "text": "\"Cánh Cụt Trượt Băng is very nimble.\" and \"His feathers are glossy black.\"",
+            "explanation": "These two sentences tell what Cánh Cụt and his feathers are like. \"Spins round in the middle of the lake\" tells what he does (an action sentence), and \"is the lakeshore's skater\" introduces who he is."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Nhanh nhẹn và đen bóng, nghe như đang tả một ngôi sao vậy!",
+          "{name} phân biệt kiểu câu tinh như giám khảo lâu năm.",
+          "Tờ giới thiệu xong rồi! Tớ dán lên bảng tin và tạo dáng chụp ảnh bên cạnh."
+        ],
+        "wrong": [
+          "«Xoay tròn» là việc tớ làm, đó là câu nêu hoạt động mất rồi, {name}.",
+          "Câu có chữ «là» thường dùng để giới thiệu, chưa phải câu tả đặc điểm.",
+          "Còn một câu tả màu lông tớ nữa đấy, tìm thêm đi."
+        ],
+        "en": {
+          "right": [
+            "Nimble and glossy black, it sounds like describing a star!",
+            "{name} tells sentence types apart like a seasoned judge.",
+            "The introduction is done! I pin it on the board and pose for a photo beside it."
+          ],
+          "wrong": [
+            "\"Spins round\" is something I do, so that's an action sentence, {name}.",
+            "A sentence with \"is a\" usually introduces someone; it doesn't describe what they're like.",
+            "There's one more sentence about the colour of my feathers; keep looking."
+          ]
+        }
+      },
+      "en": {
+        "title": "The act introduction",
+        "goTo": "Go to the festival notice board and read the draft act introduction Cánh Cụt has just written",
+        "prompt": "The organisers will only print describing sentences (What is someone like?). Pick those sentences from Cánh Cụt's draft:",
+        "choices": [
+          "Cánh Cụt Trượt Băng is very nimble.",
+          "His feathers are glossy black.",
+          "Cánh Cụt spins round in the middle of the lake.",
+          "Cánh Cụt is the lakeshore's skater."
+        ]
+      }
+    },
+    {
+      "id": "diem-hai-luot-tap",
+      "title": "Điểm của hai lượt tập",
+      "goTo": "Sang lều giám khảo, nơi ba bạn hải âu chấm thử đang ghi điểm lên bảng",
+      "kind": "riddle",
+      "target": "st-canh-cut-xoay-ba-vong-bang-diem-giam-khao",
+      "skill": "hon-kem",
+      "question": "Bảng điểm ghi: lượt tập thứ nhất Cánh Cụt được 45 điểm, lượt tập thứ hai được 52 điểm. Lượt thứ hai được nhiều hơn lượt thứ nhất bao nhiêu điểm?",
+      "answer": {
+        "value": 7
+      },
+      "support": {
+        "guide": [
+          "Hỏi «nhiều hơn bao nhiêu» thì làm phép trừ: điểm lượt hai trừ điểm lượt một.",
+          "Đặt tính 52 − 45: 2 không trừ được 5, lấy 12 trừ 5 bằng 7, viết 7 nhớ 1."
+        ],
+        "hint": "Hàng chục: 4 thêm 1 là 5, rồi 5 trừ 5.",
+        "answer": {
+          "text": "7 điểm",
+          "explanation": "52 − 45: 12 trừ 5 bằng 7, viết 7 nhớ 1; 4 thêm 1 bằng 5, 5 trừ 5 bằng 0. Vậy lượt hai nhiều hơn lượt một 7 điểm."
+        },
+        "en": {
+          "guide": [
+            "\"How many more\" means subtracting: the second score take away the first.",
+            "Set out 52 − 45: you can't take 5 from 2, so take 5 from 12 to get 7, write 7 and carry 1."
+          ],
+          "hint": "Tens: 4 plus the carried 1 is 5, then 5 take away 5.",
+          "answer": {
+            "text": "7 points",
+            "explanation": "52 − 45: 12 minus 5 is 7, write 7 carry 1; 4 plus 1 is 5, and 5 minus 5 is 0. So the second try scored 7 more points than the first."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảy điểm hơn! Vèèèo, tớ tiến bộ thật này, tạo dáng chiến thắng thôi.",
+          "{name} trừ có nhớ gọn gàng như hải âu chấm điểm.",
+          "Đúng rồi! Ba bạn hải âu gật đầu cùng lúc, hiếm lắm đấy."
+        ],
+        "wrong": [
+          "Lấy 52 trừ 45 nhé {name}, đừng cộng vào.",
+          "2 không trừ được 5 đâu, mượn một chục thành 12 đã.",
+          "Nhớ trả 1 vào hàng chục của số trừ rồi mới trừ tiếp."
+        ],
+        "en": {
+          "right": [
+            "Seven more! Wheeee, I really am getting better; time for a victory pose.",
+            "{name} did that take-away with carrying as neatly as a gull scoring.",
+            "Correct! All three gulls nod at once, which hardly ever happens."
+          ],
+          "wrong": [
+            "Take 45 from 52, {name}; don't add them.",
+            "You can't take 5 from 2; borrow a ten to make 12 first.",
+            "Remember to add the carried 1 to the tens you are taking away."
+          ]
+        }
+      },
+      "en": {
+        "title": "Points from two practice tries",
+        "goTo": "Go over to the judges' tent, where three test-judging gulls are writing scores on the board",
+        "question": "The scoreboard says Cánh Cụt scored 45 points on his first practice try and 52 points on his second. How many more points did he score on the second try than the first?"
+      }
+    },
+    {
+      "id": "do-dien-hoi-tuyet",
+      "title": "Đồ diễn cho hội tuyết",
+      "goTo": "Ghé kho đồ diễn hội tuyết, mở cái rương gỗ Cánh Cụt cất đồ biểu diễn",
+      "kind": "decision",
+      "target": "st-canh-cut-xoay-ba-vong-ruong-do-dien",
+      "speaker": "Cánh Cụt Trượt Băng",
+      "prompt": "Rương đồ diễn mở ra, đồ nào cũng lấp lánh. Cánh Cụt ướm thử từng món, tạo dáng trước tấm băng soi như gương: «Cậu chọn giúp tớ, mắt tớ hoa hết cả rồi!»",
+      "choices": [
+        {
+          "id": "khan-do",
+          "text": "Chiếc khăn quàng đỏ dài bay phấp phới",
+          "consequence": "Cánh Cụt xoay thử, chiếc khăn tung thành một vòng đỏ quanh người. «Ai đứng xa cũng đếm được vòng nhờ cái khăn này!» cậu reo."
+        },
+        {
+          "id": "no-bac",
+          "text": "Chiếc nơ cổ màu bạc lấp lánh",
+          "consequence": "Cái nơ bạc bắt nắng sáng lóe mỗi lần Cánh Cụt quay mặt ra phía khán đài. Cậu tạo dáng quý ông, cười tít mắt."
+        },
+        {
+          "id": "mu-bong",
+          "text": "Chiếc mũ len có quả bông xù trên chóp",
+          "consequence": "Quả bông xù nảy tưng tưng theo từng vòng xoay. Đàn con xem thử cười lăn lóc, và Cánh Cụt quyết định giữ luôn tiếng cười ấy cho tiết mục."
+        }
+      ],
+      "en": {
+        "title": "A costume for the festival",
+        "goTo": "Stop by the festival costume store and open the wooden chest where Cánh Cụt keeps his show clothes",
+        "prompt": "The costume chest opens and everything sparkles. Cánh Cụt tries each piece, posing in front of an ice sheet as shiny as a mirror: \"You choose for me, my eyes are dazzled!\"",
+        "choices": [
+          {
+            "text": "The long red scarf that flutters in the wind",
+            "consequence": "Cánh Cụt does a test spin and the scarf flies out in a red ring around him. \"Even people far away can count my turns with this!\" he cheers."
+          },
+          {
+            "text": "The sparkly silver bow tie",
+            "consequence": "The silver bow catches the sun and flashes every time Cánh Cụt faces the stands. He strikes a gentleman's pose, grinning from ear to ear."
+          },
+          {
+            "text": "The woolly hat with a fluffy bobble on top",
+            "consequence": "The bobble bounces with every turn. The chicks watching the try-out roll about laughing, and Cánh Cụt decides to keep that laughter in the act."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dem-vong-con-quay",
+      "title": "Đếm vòng với con quay",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Cánh Cụt muốn xem con quay xoay mãi mà không đổ để học theo. {name} đánh quay giúp cậu, đủ ba mươi điểm là cậu thuộc bí quyết giữ thăng bằng!",
+      "game": "spinning-top",
+      "goal": 30,
+      "en": {
+        "title": "Counting turns with a spinning top",
+        "prompt": "Cánh Cụt wants to watch a top spin on and on without toppling so he can copy it. Spin the top for him, {name}; thirty points and he'll know the secret of staying balanced!"
+      }
+    },
+    {
+      "id": "vong-xoay-thu-ba",
+      "title": "Vòng xoay thứ ba",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Trên ô băng xanh thẫm, Cánh Cụt xoay một, hai, ba vòng rồi mới lảo đảo. {name} đếm to từng vòng. Cậu chưa đứng vững được ở vòng cuối, nhưng vẫn tạo dáng ngôi sao và cười toe: «Ba vòng! Cậu đếm được ba vòng thật mà!»",
+      "en": {
+        "title": "The third turn",
+        "text": "On the deep blue ice, Cánh Cụt spins one, two, three turns before he wobbles. {name} counts each turn out loud. He can't quite hold steady at the end, but he still strikes a star pose and beams: \"Three! You really counted three!\""
+      }
+    },
+    {
+      "id": "ngay-hoi-tuyet",
+      "title": "Ngày hội tuyết",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sáng hội tuyết, cả bờ hồ treo cờ đuôi nheo. Cánh Cụt chạy tới, thở hổn hển: gần đường trượt vừa nứt ra một lỗ băng, nước đen ngòm.",
+      "en": {
+        "title": "Snow festival day",
+        "text": "On festival morning, pennants hang all along the shore. Cánh Cụt rushes over, out of breath: a hole has just cracked open in the ice near the course, the water dark and deep."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 75,
+    "coin": 21,
+    "skillXp": {
+      "so-sanh-so": 1,
+      "hon-kem": 1
+    },
+    "items": {
+      "bong-tuyet-pha-le": 1
+    }
+  },
+  "en": {
+    "title": "Cánh Cụt Trượt Băng's story, chapter 3: Counting turns for the spin",
+    "summary": "Cánh Cụt starts training his triple spin for the snow festival. {name} orders patches of ice by thickness as Uncle Bear taught, picks a costume, works out the judges' points for two practice tries and chooses the describing sentences for the act introduction."
+  }
+}

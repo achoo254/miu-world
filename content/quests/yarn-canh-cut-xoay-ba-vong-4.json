@@ -1,0 +1,370 @@
+{
+  "id": "yarn-canh-cut-xoay-ba-vong-4",
+  "region": "nui-tuyet",
+  "chapter": 3,
+  "title": "Chuyện của Cánh Cụt Trượt Băng, chương 4: Lỗ băng cạnh đường trượt",
+  "status": "active",
+  "category": "story",
+  "summary": "Sáng hội tuyết, một lỗ băng nứt ra cạnh đường trượt và Cánh Cụt kể nỗi sợ nước sâu của mình. {name} đọc lời dặn của bác Gấu, gom đồ rào quanh lỗ băng, tính giờ tiết mục bị lùi và ở bên Cánh Cụt để buổi diễn vẫn tiếp tục.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cánh Cụt Trượt Băng",
+    "where": "Hồ băng: đầu đường trượt, kho dụng cụ ven hồ, chòi sưởi bên đường trượt, cột đồng hồ hội tuyết, mép lỗ băng mới nứt",
+    "goal": "Rào lỗ băng cho an toàn và giúp Cánh Cụt vẫn biểu diễn cú xoay ba vòng",
+    "play": "Tìm đồ rào lỗ băng; đọc lời dặn; tính giờ tiết mục; ở bên Cánh Cụt trước lỗ băng; đóng băng làm cầu cho đàn con",
+    "learn": "Hiểu nghĩa từ trong bài đọc, xem đồng hồ (giờ, giờ rưỡi, buổi chiều)",
+    "reward": "85 XP, 25 Xu, Skill XP Từ vựng, Xem đồng hồ, Hạt dẻ tuyết",
+    "next": "Tập lặn tới đầu gối vào mùa xuân"
+  },
+  "phases": {
+    "hook": "nuoc-den-ngom",
+    "explore": "do-rao-lo-bang",
+    "learn": "loi-dan-cua-bac-gau",
+    "challenge": "gio-tiet-muc-lui",
+    "decision": "dung-truoc-lo-bang",
+    "finale": "cau-bang-cho-dan-con",
+    "reward": "ba-vong-dung-vung",
+    "next": "toi-dau-goi-thoi"
+  },
+  "places": {
+    "canh-cut-truot-bang": "Đầu đường trượt hội tuyết",
+    "st-canh-cut-xoay-ba-vong-giay-dan-bac-gau": "Chòi sưởi bên đường trượt",
+    "do-rao-lo-bang": "Kho dụng cụ",
+    "st-canh-cut-xoay-ba-vong-hop-co-do": "Kho dụng cụ",
+    "st-canh-cut-xoay-ba-vong-xo-cat": "Kho dụng cụ",
+    "st-canh-cut-xoay-ba-vong-coc-da": "Kho dụng cụ",
+    "st-canh-cut-xoay-ba-vong-dong-ho-hoi": "Cột đồng hồ hội tuyết",
+    "st-canh-cut-xoay-ba-vong-lo-bang": "Mép lỗ băng mới nứt"
+  },
+  "steps": [
+    {
+      "id": "nuoc-den-ngom",
+      "title": "Nước đen ngòm",
+      "goTo": "Tới đầu đường trượt hội tuyết, Cánh Cụt đứng im, không trượt vòng nào",
+      "kind": "dialogue",
+      "target": "canh-cut-truot-bang",
+      "lines": [
+        {
+          "speaker": "Cánh Cụt Trượt Băng",
+          "text": "{name}... hôm nay tớ không trượt vòng chào được. Chân tớ cứ dính chặt xuống băng."
+        },
+        {
+          "speaker": "Cánh Cụt Trượt Băng",
+          "text": "Có một lỗ băng mới nứt ngay cạnh đường trượt. Nhìn xuống chỉ thấy nước đen ngòm, sâu hun hút."
+        },
+        {
+          "speaker": "Cánh Cụt Trượt Băng",
+          "text": "Tớ kể cậu nghe nhé: tớ chưa bao giờ lặn quá đầu gối. Cánh cụt gì mà sợ nước sâu, buồn cười lắm phải không? Hôm nay tớ không tạo dáng nổi nữa."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Chẳng buồn cười chút nào. Ai cũng có điều mình sợ.",
+          "reply": "Thật à? Vèèè... à, chỉ được nửa tiếng vèo thôi. Nhưng nghe cậu nói vậy, chân tớ nhúc nhích được một chút rồi."
+        },
+        {
+          "text": "Mình ở đây với cậu. Mình cùng làm cho chỗ đó an toàn nhé.",
+          "reply": "Cùng làm à? Vậy thì đỡ hơn nhiều. Bác Gấu nhắn trong kho dụng cụ ven hồ có sẵn cờ đỏ, xô cát và cọc đá, mình mang ra rào quanh lỗ đi."
+        }
+      ],
+      "en": {
+        "title": "Dark, deep water",
+        "goTo": "Go to the start of the festival course, where Cánh Cụt stands still without skating a single lap",
+        "lines": [
+          "{name}... I can't do my greeting lap today. My feet feel stuck to the ice.",
+          "A new hole has cracked open right beside the course. All you can see down there is dark water, deep as anything.",
+          "Let me tell you something: I've never dived deeper than my knees. A penguin scared of deep water, silly, isn't it? Today I can't even manage a pose."
+        ],
+        "choices": [
+          {
+            "text": "It's not silly at all. Everyone is scared of something.",
+            "reply": "Really? Whee... well, only half a wheeee. But hearing you say that, my feet can wiggle a little now."
+          },
+          {
+            "text": "I'm here with you. Let's make that spot safe together.",
+            "reply": "Together? That makes it much better. Uncle Bear says the lakeside tool store has red flags, a sand bucket and stone posts; let's take them out and fence off the hole."
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-rao-lo-bang",
+      "title": "Đồ rào lỗ băng",
+      "goTo": "Sang kho dụng cụ ven hồ, tìm hộp cờ đỏ, xô cát và cọc đá để rào quanh lỗ băng",
+      "kind": "search",
+      "targets": [
+        "st-canh-cut-xoay-ba-vong-hop-co-do",
+        "st-canh-cut-xoay-ba-vong-xo-cat",
+        "st-canh-cut-xoay-ba-vong-coc-da"
+      ],
+      "en": {
+        "title": "Things to fence off the hole",
+        "goTo": "Go over to the lakeside tool store and find the box of red flags, the bucket of sand and the stone posts to fence off the ice hole"
+      }
+    },
+    {
+      "id": "loi-dan-cua-bac-gau",
+      "title": "Lời dặn của bác Gấu",
+      "goTo": "Rào xong, vào chòi sưởi bên đường trượt đọc mảnh giấy bác Gấu ghim trên cột",
+      "kind": "read",
+      "target": "st-canh-cut-xoay-ba-vong-giay-dan-bac-gau",
+      "skill": "tu-vung",
+      "text": "Cánh Cụt à,\nBác vừa đi một vòng quanh hồ. Băng quanh lỗ thủng mỏng và xám như tro, cháu đừng lại gần. Vòng ngoài đường trượt thì băng xanh thẫm, chắc nịch, cháu cứ yên tâm mà xoay.\nCó hàng rào cờ đỏ rồi, chẳng ai trượt lạc vào chỗ nước sâu ấy được nữa đâu.\nBác Gấu",
+      "question": "Trong mảnh giấy, «chắc nịch» có nghĩa là gì?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Rất chắc, đứng lên không hề lung lay"
+        },
+        {
+          "id": "b",
+          "text": "Trơn bóng, dễ làm người ta trượt ngã"
+        },
+        {
+          "id": "c",
+          "text": "Mỏng manh, dễ vỡ như tờ giấy"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Đọc câu có từ «chắc nịch».",
+          "Bác Gấu bảo ở chỗ đó Cánh Cụt có thể làm gì? Điều đó cho biết băng thế nào."
+        ],
+        "hint": "Chỗ băng ấy, bác bảo cứ yên tâm mà xoay.",
+        "answer": {
+          "text": "Rất chắc, không lung lay",
+          "explanation": "«Chắc nịch» nghĩa là rất chắc chắn. Bác Gấu viết băng xanh thẫm chắc nịch nên Cánh Cụt yên tâm mà xoay; còn băng mỏng, xám như tro mới là chỗ phải tránh."
+        },
+        "en": {
+          "guide": [
+            "Read the sentence with the word \"chắc nịch\" (rock-solid).",
+            "What does Uncle Bear say Cánh Cụt can do there? That tells you what the ice is like."
+          ],
+          "hint": "On that ice, he says, Cánh Cụt can spin without worrying.",
+          "answer": {
+            "text": "Very solid, not wobbly at all",
+            "explanation": "\"Chắc nịch\" means very solid. Uncle Bear writes that the deep blue ice is rock-solid, so Cánh Cụt can spin there safely; the thin, ash grey ice is the part to avoid."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chắc nịch là chắc lắm luôn! Nghe xong tớ thấy chân vững hơn hẳn.",
+          "{name} hiểu ý bác Gấu như thể bác đang đứng đây dặn trực tiếp.",
+          "Đúng rồi! Vòng ngoài băng xanh thẫm, tớ sẽ xoay ở đó."
+        ],
+        "wrong": [
+          "Nếu băng trơn dễ ngã thì bác đâu bảo tớ yên tâm mà xoay, {name}.",
+          "Mỏng như giấy là chỗ quanh lỗ thủng cơ, bác dặn tránh xa mà.",
+          "Đọc lại câu bác bảo «cứ yên tâm mà xoay» rồi đoán nghĩa từ đó nhé."
+        ],
+        "en": {
+          "right": [
+            "Rock-solid means really, really solid! Hearing that, my feet feel much steadier.",
+            "{name} understood Uncle Bear as if he were standing right here telling us.",
+            "Exactly! The outer ring is deep blue ice, so that's where I'll spin."
+          ],
+          "wrong": [
+            "If the ice were slippery and easy to fall on, he wouldn't tell me to spin there without worrying, {name}.",
+            "Paper-thin is the ice round the hole; he said to keep well away from that.",
+            "Reread the line where he says to spin without worrying, then guess the meaning from there."
+          ]
+        }
+      },
+      "en": {
+        "title": "Uncle Bear's note",
+        "goTo": "With the fence up, go into the warming hut by the course and read the note Uncle Bear pinned to the post",
+        "text": "Dear Cánh Cụt,\nI've just been all the way round the lake. The ice round the hole is thin and ash grey, so don't go near it. On the outer ring of the course the ice is deep blue and rock-solid, so you can spin there without worrying.\nOnce the red flag fence is up, nobody can slide into that deep water by mistake.\nUncle Bear",
+        "question": "In the note, what does \"chắc nịch\" (rock-solid) mean?",
+        "choices": [
+          "Very solid, not wobbly at all when you stand on it",
+          "Shiny and slippery, easy to fall over on",
+          "Thin and fragile, as easy to break as paper"
+        ]
+      }
+    },
+    {
+      "id": "gio-tiet-muc-lui",
+      "title": "Tiết mục lùi giờ",
+      "goTo": "Ra cột đồng hồ hội tuyết, ban tổ chức vừa dán tờ báo lùi giờ dưới mặt đồng hồ",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-canh-cut-xoay-ba-vong-dong-ho-hoi",
+      "skill": "xem-dong-ho",
+      "prompt": "Tờ báo ghi: «Hội tuyết mở màn lúc 3 giờ chiều. Tiết mục xoay ba vòng diễn sau giờ mở màn 2 giờ. Vì đang rào lỗ băng, tiết mục lùi thêm nửa giờ.» Cánh Cụt ra sân lúc mấy giờ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "5 giờ chiều (17 giờ)"
+        },
+        {
+          "id": "b",
+          "text": "5 giờ rưỡi chiều (17 giờ 30 phút)"
+        },
+        {
+          "id": "c",
+          "text": "6 giờ rưỡi chiều (18 giờ 30 phút)"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Bắt đầu từ 3 giờ chiều, thêm 2 giờ nữa.",
+          "Sau đó lùi thêm nửa giờ, tức là 30 phút."
+        ],
+        "hint": "3 giờ thêm 2 giờ là 5 giờ chiều, còn phải cộng thêm nửa giờ.",
+        "answer": {
+          "text": "5 giờ rưỡi chiều",
+          "explanation": "3 giờ chiều thêm 2 giờ là 5 giờ chiều (17 giờ). Lùi thêm nửa giờ là 5 giờ rưỡi chiều, tức 17 giờ 30 phút: kim ngắn nằm giữa số 5 và số 6, kim dài chỉ số 6."
+        },
+        "en": {
+          "guide": [
+            "Start at 3 o'clock in the afternoon and add 2 hours.",
+            "Then it is put back by half an hour, which is 30 minutes."
+          ],
+          "hint": "3 o'clock plus 2 hours is 5 in the afternoon, and there's still half an hour to add.",
+          "answer": {
+            "text": "Half past 5 in the afternoon",
+            "explanation": "3 in the afternoon plus 2 hours is 5 in the afternoon (17:00). Half an hour later is half past 5, or 17:30: the short hand sits between 5 and 6 and the long hand points to 6."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Năm giờ rưỡi! Thêm nửa giờ để tớ hít thở cho đủ, vèèèo nhè nhẹ thôi.",
+          "{name} cộng giờ trơn tru như kim dài lướt quanh mặt đồng hồ.",
+          "Chuẩn giờ! Tớ viết 17 giờ 30 lên cánh cho khỏi quên."
+        ],
+        "wrong": [
+          "Năm giờ là giờ cũ, còn chưa tính nửa giờ lùi thêm, {name} ạ.",
+          "Lùi nửa giờ thôi chứ đâu phải lùi hẳn một giờ rưỡi.",
+          "Đi từng bước: cộng 2 giờ trước, rồi mới thêm 30 phút."
+        ],
+        "en": {
+          "right": [
+            "Half past five! An extra half hour for me to breathe properly, just a gentle wheeee.",
+            "{name} adds up time as smoothly as the long hand sweeps round the clock.",
+            "Right on time! I'll write 17:30 on my wing so I don't forget."
+          ],
+          "wrong": [
+            "Five o'clock was the old time; you haven't added the half-hour delay yet, {name}.",
+            "It's put back by half an hour, not by an hour and a half.",
+            "One step at a time: add the 2 hours first, then the 30 minutes."
+          ]
+        }
+      },
+      "en": {
+        "title": "The act is put back",
+        "goTo": "Go to the festival clock post, where the organisers have just pinned a delay notice under the clock face",
+        "prompt": "The notice says: \"The snow festival opens at 3 in the afternoon. The triple-spin act is 2 hours after the opening. Because the ice hole is being fenced off, the act is put back another half hour.\" What time does Cánh Cụt go on?",
+        "choices": [
+          "5 in the afternoon (17:00)",
+          "Half past 5 in the afternoon (17:30)",
+          "Half past 6 in the afternoon (18:30)"
+        ]
+      }
+    },
+    {
+      "id": "dung-truoc-lo-bang",
+      "title": "Đứng trước lỗ băng",
+      "goTo": "Quay lại mép lỗ băng mới nứt, cờ đỏ đã cắm quanh, cát đã rắc kín mép",
+      "kind": "decision",
+      "target": "st-canh-cut-xoay-ba-vong-lo-bang",
+      "speaker": "Cánh Cụt Trượt Băng",
+      "prompt": "Hàng rào cờ đỏ đã dựng xong. Cánh Cụt đứng sau rào, nhìn xuống làn nước sẫm, hai bàn chân run run: «Tớ biết rào rồi là an toàn. Nhưng nhìn nước sâu thế này, tim tớ đập thình thịch. Giờ tớ làm gì đây?»",
+      "choices": [
+        {
+          "id": "dung-cung",
+          "text": "Nắm cánh Cánh Cụt, cùng đứng yên nhìn mặt nước một lúc",
+          "consequence": "Hai bạn đứng im, đếm từ một tới mười. Mặt nước vẫn nằm yên dưới lớp băng. Cánh Cụt thở ra một hơi dài: «Nước ở dưới, tớ ở trên. Thế là được rồi.»"
+        },
+        {
+          "id": "doi-cho-xoay",
+          "text": "Chọn chỗ xoay ở vòng ngoài, chỗ băng xanh thẫm xa lỗ băng",
+          "consequence": "Cánh Cụt trượt ra vòng ngoài, dậm thử mấy cái. Băng chắc nịch như bác Gấu dặn. Cậu khẽ xòe cánh, lần đầu tiên trong ngày tạo được một dáng trượt."
+        },
+        {
+          "id": "dem-to",
+          "text": "Hứa đứng ngay mép rào và đếm thật to từng vòng xoay",
+          "consequence": "«Cậu đếm to nhé, to hơn cả tiếng tim tớ!» Cánh Cụt cười, cái cười đầu tiên từ sáng. Tiếng đếm của {name} sẽ là thứ cậu nghe khi xoay."
+        }
+      ],
+      "en": {
+        "title": "Standing at the ice hole",
+        "goTo": "Go back to the edge of the newly cracked ice hole, now ringed with red flags and sprinkled with sand",
+        "prompt": "The red flag fence is up. Cánh Cụt stands behind it, looking down at the dark water, his feet trembling: \"I know it's safe now it's fenced. But looking at water this deep, my heart goes thump-thump. What do I do now?\"",
+        "choices": [
+          {
+            "text": "Hold Cánh Cụt's wing and stand quietly looking at the water for a while",
+            "consequence": "The two of you stand still and count from one to ten. The water stays calm under the ice. Cánh Cụt lets out a long breath: \"The water's down there, I'm up here. That's fine.\""
+          },
+          {
+            "text": "Pick a spinning spot on the outer ring, on deep blue ice far from the hole",
+            "consequence": "Cánh Cụt skates out to the outer ring and stamps a few times. The ice is rock-solid, just as Uncle Bear said. He opens his wings slightly and, for the first time today, strikes a skating pose."
+          },
+          {
+            "text": "Promise to stand right by the fence and count every turn out loud",
+            "consequence": "\"Count loud, louder than my heartbeat!\" Cánh Cụt laughs, his first laugh of the morning. {name}'s counting will be what he hears as he spins."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cau-bang-cho-dan-con",
+      "title": "Cầu băng cho đàn con",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đàn cánh cụt con cần sang khán đài bên kia mấy rạch nước nhỏ mà không đi gần lỗ băng. {name} đóng băng làm cầu, đủ ba cầu là buổi diễn bắt đầu!",
+      "game": "ice-bridge",
+      "goal": 3,
+      "en": {
+        "title": "Ice bridges for the chicks",
+        "prompt": "The penguin chicks need to cross a few little channels to the stands without going near the ice hole. Freeze bridges for them, {name}; three bridges and the show begins!"
+      }
+    },
+    {
+      "id": "ba-vong-dung-vung",
+      "title": "Ba vòng, đứng vững",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Năm giờ rưỡi chiều, trên vòng băng xanh thẫm, Cánh Cụt xoay một, hai, ba vòng rồi dừng lại, hai chân đứng vững. {name} đếm to tới mức cả khán đài đếm theo. Cậu trượt một vòng quanh {name}, phanh bằng bụng, tạo dáng ngôi sao: «Ba vòng! Và tớ còn đứng gần một lỗ nước sâu nữa chứ!»",
+      "en": {
+        "title": "Three turns, standing tall",
+        "text": "At half past five, on the deep blue ring, Cánh Cụt spins one, two, three turns and stops with both feet steady. {name} counts so loud the whole crowd joins in. He skates a lap round {name}, brakes on his belly and strikes a star pose: \"Three turns! And right near a hole full of deep water, too!\""
+      }
+    },
+    {
+      "id": "toi-dau-goi-thoi",
+      "title": "Tới đầu gối thôi đã",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cánh Cụt rủ {name} mùa xuân tới cùng ra vũng nước nông ven hồ tập lặn. Cậu bảo cứ tới đầu gối thôi đã, rồi mỗi tuần sâu thêm một chút.",
+      "en": {
+        "title": "Just up to the knees for now",
+        "text": "Cánh Cụt asks {name} to come to the shallow pool by the lake next spring to practise diving. Just up to the knees for now, he says, and a little deeper each week."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 85,
+    "coin": 25,
+    "skillXp": {
+      "tu-vung": 1,
+      "xem-dong-ho": 1
+    },
+    "items": {
+      "hat-de-tuyet": 1
+    }
+  },
+  "en": {
+    "title": "Cánh Cụt Trượt Băng's story, chapter 4: The ice hole by the course",
+    "summary": "On snow festival morning a hole cracks open beside the course and Cánh Cụt shares his fear of deep water. {name} reads Uncle Bear's note, gathers what's needed to fence off the hole, works out the delayed show time and stays by Cánh Cụt so the show goes on."
+  }
+}

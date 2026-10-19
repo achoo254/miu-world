@@ -1,0 +1,413 @@
+{
+  "id": "yarn-cao-tuyet-tuong-bay-mau-3",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Chuyện của Cáo Tuyết Điêu Khắc, chương 3: Bảy màu buổi sáng đầu tiên",
+  "status": "active",
+  "category": "story",
+  "summary": "Buổi sáng trời quang đầu tiên đã tới. {name} mượn đồ trưng bày trong nhà dân, dẫn lối cho khách, cộng số khách đang chờ, đặt tên cho bức tượng và giúp tia nắng tìm đường vào ngực thiên nga để bảy màu hiện ra.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cáo Tuyết Điêu Khắc",
+    "where": "Làng núi tuyết: quảng trường, trong nhà dân, đồi ngắm nắng, lối vào triển lãm, góc bảng đếm khách",
+    "goal": "Mở buổi triển lãm nhỏ cho bức tượng thiên nga bảy màu",
+    "play": "Tìm đồ trưng bày theo lời tả; dò lối cho khách; cộng số khách đang chờ; đặt tên tượng; dẫn tia nắng bằng gương",
+    "learn": "Từ chỉ đặc điểm, dò đường, cộng có nhớ trong phạm vi 100",
+    "reward": "85 XP, 25 Xu, Skill XP Phép cộng, Logic, một Bông tuyết pha lê",
+    "next": "Ảnh gửi Mèo Xếp Khối"
+  },
+  "phases": {
+    "hook": "sang-nay-troi-quang",
+    "explore": "muon-do-trung-bay",
+    "learn": "dan-loi-cho-khach",
+    "challenge": "cong-so-khach",
+    "decision": "ten-cho-buc-tuong",
+    "finale": "dan-tia-nang",
+    "reward": "bay-mau-hien-ra",
+    "next": "anh-gui-trung-tam"
+  },
+  "places": {
+    "cao-tuyet-dieu-khac": "Bên tượng băng",
+    "muon-do-trung-bay": "Trong nhà dân",
+    "st-cao-tuyet-tuong-bay-mau-so-ten-khach": "Trong nhà dân",
+    "st-cao-tuyet-tuong-bay-mau-cuon-ruy-bang": "Trong nhà dân",
+    "st-cao-tuyet-tuong-bay-mau-bien-ten-tuong": "Trong nhà dân",
+    "st-cao-tuyet-tuong-bay-mau-tang-da-ngam": "Đồi ngắm nắng",
+    "st-cao-tuyet-tuong-bay-mau-cot-chi-loi": "Lối vào triển lãm",
+    "st-cao-tuyet-tuong-bay-mau-bang-dem-khach": "Góc bảng đếm khách"
+  },
+  "steps": [
+    {
+      "id": "sang-nay-troi-quang",
+      "title": "Sáng nay trời quang",
+      "goTo": "Ra quảng trường, Cáo đứng bên tượng băng thiên nga từ lúc trời còn tím",
+      "kind": "dialogue",
+      "target": "cao-tuyet-dieu-khac",
+      "lines": [
+        {
+          "speaker": "Cáo Tuyết Điêu Khắc",
+          "text": "{name}, nhìn trời kìa. Không một gợn mây, xanh phẳng như tờ giấy mới. Hôm nay nắng sẽ tới."
+        },
+        {
+          "speaker": "Cáo Tuyết Điêu Khắc",
+          "text": "Tớ muốn mở một buổi triển lãm nhỏ, để cả làng cùng chờ bảy màu với mình. Nhưng tớ chưa có sổ ghi tên khách, chưa có ruy băng, chưa có cả biển tên."
+        },
+        {
+          "speaker": "Cáo Tuyết Điêu Khắc",
+          "text": "Người làng bảo cứ vào nhà dân mà mượn. Tớ nói ít, nên cậu hỏi giúp tớ nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ đi mượn đồ ngay!",
+          "reply": "Cảm ơn. Cậu nhanh như một đường chéo, đi thẳng từ góc này sang góc kia."
+        },
+        {
+          "text": "Cáo có hồi hộp không?",
+          "reply": "Có một chút. Tim tớ đập đều như bốn cạnh hình vuông, nhưng đập hơi nhanh."
+        }
+      ],
+      "en": {
+        "title": "A clear sky this morning",
+        "goTo": "Go to the square, where Cáo has stood beside the ice swan since the sky was still violet",
+        "lines": [
+          "{name}, look at the sky. Not a wisp of cloud, blue and flat as a new sheet of paper. The sunshine will come today.",
+          "I want to hold a small exhibition so the whole village can wait for the seven colours with us. But I have no visitors' book, no ribbon, not even a name sign.",
+          "The villagers say we can borrow things from the houses. I don't talk much, so will you ask for me?"
+        ],
+        "choices": [
+          {
+            "text": "I'll go and borrow them right now!",
+            "reply": "Thank you. You're as quick as a diagonal, straight from one corner to the other."
+          },
+          {
+            "text": "Are you nervous, Cáo?",
+            "reply": "A little. My heart beats as evenly as the four sides of a square, just a bit fast."
+          }
+        ]
+      }
+    },
+    {
+      "id": "muon-do-trung-bay",
+      "title": "Mượn đồ trưng bày",
+      "goTo": "Gõ cửa vào trong nhà dân, các bác trong làng đã bày sẵn đồ cho mượn",
+      "kind": "find-object",
+      "prompt": "Trong nhà có rất nhiều đồ. Đọc lời tả của các bác rồi tìm đúng ba thứ Cáo cần:",
+      "items": [
+        {
+          "id": "so-ten",
+          "name": "Sổ ghi tên khách",
+          "clue": "Bìa dày màu xanh rêu, giấy kẻ ô vuông nhỏ, góc sổ hơi quăn.",
+          "target": "st-cao-tuyet-tuong-bay-mau-so-ten-khach"
+        },
+        {
+          "id": "ruy-bang",
+          "name": "Cuộn ruy băng đỏ",
+          "clue": "Mềm mại, đỏ thắm như quả mâm xôi, cuộn tròn như con ốc.",
+          "target": "st-cao-tuyet-tuong-bay-mau-cuon-ruy-bang"
+        },
+        {
+          "id": "bien-ten",
+          "name": "Tấm biển gỗ để trống",
+          "clue": "Gỗ thông nhẵn bóng, hình chữ nhật, chưa có một chữ nào.",
+          "target": "st-cao-tuyet-tuong-bay-mau-bien-ten-tuong"
+        }
+      ],
+      "skill": "tu-ngu",
+      "en": {
+        "title": "Borrowing for the exhibition",
+        "goTo": "Knock and go inside the village house, where the neighbours have laid out things to lend",
+        "prompt": "The house is full of things. Read the neighbours' descriptions and find the three things Cáo needs:",
+        "items": [
+          {
+            "name": "Visitors' book",
+            "clue": "A thick moss-green cover, paper ruled in small squares, one corner a little curled."
+          },
+          {
+            "name": "Roll of red ribbon",
+            "clue": "Soft, as red as a raspberry, rolled up round like a snail shell."
+          },
+          {
+            "name": "Blank wooden sign",
+            "clue": "Smooth, shiny pine, a rectangle without a single letter on it yet."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dan-loi-cho-khach",
+      "title": "Lối nào tới tượng?",
+      "goTo": "Xuống lối vào triển lãm, đống tuyết dọn đêm qua chắn mất mấy ô đường",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "maze",
+      "target": "st-cao-tuyet-tuong-bay-mau-cot-chi-loi",
+      "skill": "logic",
+      "prompt": "Khách sắp tới. Ô chữ S là cột chỉ lối ở đầu đường, ô chữ G là tượng thiên nga, ô dấu # là đống tuyết. Dãy bước nào đưa khách tới tượng mà không phải trèo qua đống tuyết? (→ sang phải, ↓ đi xuống)",
+      "grid": [
+        [
+          "S",
+          ".",
+          "#",
+          ".",
+          "."
+        ],
+        [
+          "#",
+          ".",
+          "#",
+          ".",
+          "#"
+        ],
+        [
+          ".",
+          ".",
+          ".",
+          ".",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "#",
+          ".",
+          "G"
+        ]
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "↓ → → → → ↓ ↓"
+        },
+        {
+          "id": "b",
+          "text": "→ ↓ ↓ → → ↓ →"
+        },
+        {
+          "id": "c",
+          "text": "→ ↓ ↓ → → → ↓"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Đặt ngón tay lên ô S.",
+          "Đi thử từng dãy, gặp ô # là dãy ấy bị chắn.",
+          "Dãy đúng dừng đúng ở ô G."
+        ],
+        "hint": "Ngay dưới ô S là một đống tuyết, và cột bên phải cùng của hàng thứ ba cũng vậy.",
+        "answer": {
+          "text": "Phải một ô, xuống hai ô, phải hai ô, xuống một ô, phải một ô",
+          "explanation": "Dãy → ↓ ↓ → → ↓ → đi qua các ô trống tới hàng thứ ba, sang cột thứ tư, xuống hàng cuối rồi sang phải là tới tượng, không chạm đống tuyết nào."
+        },
+        "en": {
+          "guide": [
+            "Put your finger on the S square.",
+            "Try each sequence; reach a # and that route is blocked.",
+            "The right one stops exactly on the G square."
+          ],
+          "hint": "Right below S is a snow pile, and so is the far-right square of the third row.",
+          "answer": {
+            "text": "One right, two down, two right, one down, one right",
+            "explanation": "→ ↓ ↓ → → ↓ → goes through open squares to the third row, across to the fourth column, down to the bottom row, then right to the statue, touching no snow pile."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Lối đi gấp khúc như một nét chữ chi, mà khách nào cũng tới được tượng.",
+          "{name} dò lối không vấp một đống tuyết nào. Cáo buộc ruy băng đỏ dọc đường ấy.",
+          "Bảy bước, không thừa không thiếu. Gọn như một hình vẽ xong."
+        ],
+        "wrong": [
+          "Đi xuống ngay từ ô đầu là gặp đống tuyết, {name} thử bước khác nhé.",
+          "Dãy ấy rẽ quá xa sang phải ở hàng thứ ba, ô cuối hàng là tuyết.",
+          "Dò chậm từng ô một, ô có dấu # thì khách không đi qua được."
+        ],
+        "en": {
+          "right": [
+            "The path zigzags like a lightning stroke, and every visitor can still reach the statue.",
+            "{name} traced the path without bumping a single snow pile. Cáo ties the red ribbon all along it.",
+            "Seven steps, not one too many or too few. As neat as a finished drawing."
+          ],
+          "wrong": [
+            "Going straight down from the first square hits a snow pile, {name}; try another sequence.",
+            "That route goes too far right along the third row; the last square there is snow.",
+            "Trace one square at a time; visitors can't pass a square marked #."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which way to the statue?",
+        "goTo": "Go down to the exhibition entrance, where snow cleared last night blocks a few squares of the path",
+        "prompt": "Visitors are coming. The S square is the signpost at the start of the path, the G square is the swan statue, and # squares are snow piles. Which sequence brings visitors to the statue without climbing a snow pile? (→ right, ↓ down)",
+        "choices": [
+          "↓ → → → → ↓ ↓",
+          "→ ↓ ↓ → → ↓ →",
+          "→ ↓ ↓ → → → ↓"
+        ]
+      }
+    },
+    {
+      "id": "cong-so-khach",
+      "title": "Bao nhiêu khách đang chờ?",
+      "goTo": "Ghé góc bảng đếm khách, Người Tuyết Đếm Bậc đã kẻ vạch đếm từ sáng sớm",
+      "kind": "riddle",
+      "target": "st-cao-tuyet-tuong-bay-mau-bang-dem-khach",
+      "skill": "phep-cong",
+      "question": "Bảng đếm ghi: từ sớm đã có 37 khách xếp hàng chờ xem tượng, vừa rồi có thêm 45 khách nữa tới. Bây giờ có tất cả bao nhiêu khách đang chờ xem tượng thiên nga?",
+      "answer": {
+        "value": 82
+      },
+      "support": {
+        "guide": [
+          "Gộp khách đến sớm và khách vừa tới thì làm phép cộng.",
+          "Đặt tính thẳng hàng: đơn vị dưới đơn vị, chục dưới chục, rồi cộng từ phải sang trái."
+        ],
+        "hint": "37 + 45: hàng đơn vị 7 + 5 = 12, viết 2 nhớ 1.",
+        "answer": {
+          "text": "82 khách",
+          "explanation": "37 + 45: 7 + 5 = 12, viết 2 nhớ 1; 3 + 4 = 7, thêm 1 là 8. Bây giờ có 82 khách đang chờ xem tượng."
+        },
+        "en": {
+          "guide": [
+            "Putting the early visitors and the new arrivals together means adding.",
+            "Line the numbers up: ones under ones, tens under tens, then add from right to left."
+          ],
+          "hint": "37 + 45: ones 7 + 5 = 12, write 2 and carry 1.",
+          "answer": {
+            "text": "82 visitors",
+            "explanation": "37 + 45: 7 + 5 = 12, write 2 carry 1; 3 + 4 = 7, plus 1 is 8. There are now 82 visitors waiting to see the statue."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tám mươi hai vị khách! Cáo đứng im, chỉ có chóp đuôi khẽ run lên vì vui.",
+          "{name} cộng gọn gàng như những vạch đếm thẳng hàng trên bảng.",
+          "Chưa bức tượng nào của làng có nhiều người xếp hàng chờ đến thế."
+        ],
+        "wrong": [
+          "Bảy cộng năm là mười hai, {name} nhớ một sang hàng chục chưa?",
+          "Ba chục với bốn chục là bảy chục, còn thêm một chục đã nhớ nữa.",
+          "Khách đến sớm và khách vừa tới gộp lại, phải cộng chứ không trừ đâu."
+        ],
+        "en": {
+          "right": [
+            "Eighty-two visitors! Cáo stands quite still; only the tip of his tail trembles with joy.",
+            "{name} added as tidily as the tally marks lined up on the board.",
+            "No statue in the village has ever had such a long queue waiting for it."
+          ],
+          "wrong": [
+            "Seven plus five is twelve, {name}; did you carry one to the tens?",
+            "Three tens and four tens make seven tens, plus the ten you carried.",
+            "Early visitors and new arrivals go together, so add, don't subtract."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many visitors are waiting?",
+        "goTo": "Stop at the visitor tally corner, where Người Tuyết Đếm Bậc has been marking tallies since early morning",
+        "question": "The tally board says 37 visitors were queuing to see the statue early on, and 45 more have just arrived. How many visitors are waiting to see the swan statue now?"
+      }
+    },
+    {
+      "id": "ten-cho-buc-tuong",
+      "title": "Tên cho bức tượng",
+      "goTo": "Trong lúc khách chờ, mang tấm biển lên đồi ngắm nắng, ngồi trên tảng đá phẳng mà nghĩ tên",
+      "kind": "decision",
+      "target": "st-cao-tuyet-tuong-bay-mau-tang-da-ngam",
+      "speaker": "Cáo Tuyết Điêu Khắc",
+      "prompt": "Cáo cầm bút than, đưa cho {name}: «Tớ giỏi gọt hình, nhưng đặt tên thì vụng lắm. Cậu viết giúp tớ được không?»",
+      "choices": [
+        {
+          "id": "thien-nga-bay-sac",
+          "text": "«Thiên nga bảy sắc»",
+          "consequence": "Cáo đọc khẽ hai lần. «Ngắn và tròn trịa như một viên sỏi.» Cậu treo biển lên, ngay ngắn từng li."
+        },
+        {
+          "id": "cau-vong-ngu",
+          "text": "«Cầu vồng ngủ trong băng»",
+          "consequence": "Cáo nhìn tấm biển rất lâu rồi gật đầu: «Ừ. Cầu vồng đang ngủ, chỉ chờ nắng gọi dậy.»"
+        },
+        {
+          "id": "chao-buoi-sang",
+          "text": "«Chào buổi sáng, nắng ơi»",
+          "consequence": "Đuôi Cáo vẽ một hình tròn rất to lên tuyết. «Tên này biết cười,» cậu nói."
+        }
+      ],
+      "en": {
+        "title": "A name for the statue",
+        "goTo": "While the visitors wait, take the sign up to the sun-watching hill and sit on the flat rock to think of a name",
+        "prompt": "Cáo holds out the charcoal pencil to {name}: \"I'm good at carving shapes, but clumsy at naming things. Would you write it for me?\"",
+        "choices": [
+          {
+            "text": "\"Seven-colour Swan\"",
+            "consequence": "Cáo reads it softly twice. \"Short and round as a pebble.\" He hangs the sign up, straight to the last millimetre."
+          },
+          {
+            "text": "\"A Rainbow Asleep in the Ice\"",
+            "consequence": "Cáo looks at the sign for a long time, then nods: \"Yes. The rainbow is sleeping, waiting for the sun to wake it.\""
+          },
+          {
+            "text": "\"Good Morning, Sunshine\"",
+            "consequence": "Cáo's tail draws a very big circle in the snow. \"This name knows how to smile,\" he says."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dan-tia-nang",
+      "title": "Dẫn tia nắng vào ngực thiên nga",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Nắng đã lên nhưng còn chiếu lệch. Xoay mấy tấm gương nhỏ quanh bệ, dẫn tia nắng vào đúng ngực thiên nga ba lần, để bảy màu hiện ra cho cả làng xem!",
+      "game": "light-mirrors",
+      "goal": 3,
+      "en": {
+        "title": "Guide the sunbeam into the swan's chest",
+        "prompt": "The sun is up but shining off to one side. Turn the little mirrors round the plinth and guide the sunbeam right into the swan's chest three times, so the seven colours appear for the whole village!"
+      }
+    },
+    {
+      "id": "bay-mau-hien-ra",
+      "title": "Bảy màu hiện ra",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tia nắng chạm vào ngực thiên nga rồi vỡ ra đỏ, cam, vàng, lục, lam, chàm, tím, rải thành một dải trên tuyết. Cả quảng trường ồ lên. Cáo không nói gì, chỉ đứng sát bên {name}, gần tới mức hai cái bóng chập lại thành một hình.",
+      "en": {
+        "title": "The seven colours appear",
+        "text": "The sunbeam touches the swan's chest and breaks into red, orange, yellow, green, blue, indigo and violet, spread in a band across the snow. The whole square gasps. Cáo says nothing; he just stands close beside {name}, so close their two shadows join into one shape."
+      }
+    },
+    {
+      "id": "anh-gui-trung-tam",
+      "title": "Ảnh gửi Trung tâm",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối đó Cáo chụp một tấm ảnh dải bảy màu, gửi cho Mèo Xếp Khối ở Trung tâm. Theo luật của hai bạn, ai thua sẽ phải gửi bánh. Cáo đặt bức thư lên bậc cửa, ngồi đợi, đuôi vẽ hết hình vuông này tới hình vuông khác.",
+      "en": {
+        "title": "A photo for the Town Centre",
+        "text": "That evening Cáo takes a photo of the seven-colour band and sends it to Mèo Xếp Khối at the Town Centre. By the two friends' rule, whoever loses sends a cake. Cáo sets the letter on the doorstep and waits, his tail drawing one square after another."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 85,
+    "coin": 25,
+    "skillXp": {
+      "phep-cong": 1,
+      "logic": 1
+    },
+    "items": {
+      "bong-tuyet-pha-le": 1
+    }
+  },
+  "en": {
+    "title": "Cáo Tuyết Điêu Khắc's story, chapter 3: Seven colours on the first sunny morning",
+    "summary": "The first clear morning has come. {name} borrows things for the exhibition from a village house, finds a path for the visitors, adds up how many are waiting, names the statue and helps the sunbeam find its way into the swan's chest so the seven colours appear."
+  }
+}

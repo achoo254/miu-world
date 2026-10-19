@@ -1,0 +1,399 @@
+{
+  "id": "yarn-koala-nghin-manh-2",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Chuyện của Koala Ghép Tranh, chương 2: Đi đếm cửa sổ",
+  "status": "active",
+  "category": "story",
+  "summary": "Muốn có bức tranh nghìn mảnh thì phải có bản phác đủ từng ô cửa sổ. {name} cùng Koala đi tìm những ô cửa đặc biệt của thư viện, đọc sổ phác thảo, dò lối giữa các kệ sách lên gác và chọn góc nhìn để vẽ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Koala Ghép Tranh",
+    "where": "Vườn đọc sách, mặt trước thư viện, khu sách quý, lối hẹp giữa kệ sách mới, gác sách",
+    "goal": "Khảo sát thư viện để Koala vẽ bản phác bức tranh nghìn mảnh",
+    "play": "Tìm ba ô cửa đặc biệt; đọc sổ phác thảo; dò lối giữa các kệ; chọn góc vẽ; xếp sách về kệ",
+    "learn": "Đọc hiểu, suy luận tìm đường",
+    "reward": "65 XP, 17 Xu, Skill XP Đọc hiểu, Logic",
+    "next": "Thùng nghìn mảnh tới nơi, phải chia mảnh theo màu"
+  },
+  "phases": {
+    "hook": "ban-phac-con-trang",
+    "explore": "tim-o-cua-dac-biet",
+    "learn": "doc-so-phac-thao",
+    "challenge": "lach-qua-cac-ke",
+    "decision": "goc-nhin-de-ve",
+    "finale": "sach-ve-dung-ke",
+    "reward": "ban-phac-du-cua",
+    "next": "thung-nghin-manh"
+  },
+  "places": {
+    "koala-ghep-tranh": "Vườn đọc sách",
+    "tim-o-cua-dac-biet": "Thư viện",
+    "st-koala-nghin-manh-cua-so-tron-mai": "Thư viện",
+    "st-koala-nghin-manh-cua-so-vom-tang-hai": "Thư viện",
+    "st-koala-nghin-manh-cua-kinh-mau": "Thư viện",
+    "st-koala-nghin-manh-so-phac-thao": "Khu sách quý",
+    "st-koala-nghin-manh-so-do-loi-ke": "Lối hẹp giữa kệ sách mới",
+    "st-koala-nghin-manh-gia-ve-tren-gac": "Gác sách"
+  },
+  "steps": [
+    {
+      "id": "ban-phac-con-trang",
+      "title": "Tờ phác thảo còn trắng",
+      "goTo": "Quay lại vườn đọc sách, Koala ngồi cắn bút trước một tờ giấy to còn trắng tinh",
+      "kind": "dialogue",
+      "target": "koala-ghep-tranh",
+      "lines": [
+        {
+          "speaker": "Koala Ghép Tranh",
+          "text": "{name}… tớ ngồi từ sáng mà tờ giấy vẫn trắng. Vẽ thư viện theo trí nhớ thì… chỗ nào cũng mờ mờ như mảnh chưa lật."
+        },
+        {
+          "speaker": "Koala Ghép Tranh",
+          "text": "Thư viện có những ô cửa đặc biệt lắm. Một ô tròn, một ô vòm, một ô kính nhiều màu. Thiếu ô nào… tranh lệch ngay."
+        },
+        {
+          "speaker": "Koala Ghép Tranh",
+          "text": "Mình đi xem tận nơi nhé. Tớ mang theo sổ… cậu mang theo đôi mắt tinh hơn mắt tớ."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Đi thôi, tớ đếm cửa sổ giỏi lắm!",
+          "reply": "Tốt quá… vì tớ đếm tới mười hai là bắt đầu buồn ngủ."
+        },
+        {
+          "text": "Sao không chụp ảnh cho nhanh?",
+          "reply": "Ảnh thì nhanh… nhưng tự đi xem mới nhớ ô nào nằm cạnh ô nào. Ghép tranh cần cái nhớ ấy."
+        }
+      ],
+      "en": {
+        "title": "The sketch is still blank",
+        "goTo": "Go back to the reading garden, where Koala sits chewing his pencil before a big, blank sheet",
+        "lines": [
+          "{name}… I've sat here since morning and the paper is still blank. Drawing the library from memory… everything's blurry, like pieces not yet turned over.",
+          "The library has some very special windows. A round one, an arched one, one of many-coloured glass. Leave one out… and the picture goes crooked.",
+          "Let's go and look for real. I'll bring my notebook… you bring eyes sharper than mine."
+        ],
+        "choices": [
+          {
+            "text": "Let's go, I'm great at counting windows!",
+            "reply": "Wonderful… because when I count past twelve I start getting sleepy."
+          },
+          {
+            "text": "Why not just take a photo? It's quicker.",
+            "reply": "A photo is quick… but walking round yourself is how you remember which window sits next to which. Puzzles need that memory."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-o-cua-dac-biet",
+      "title": "Ba ô cửa đặc biệt",
+      "goTo": "Ra trước thư viện, ngước nhìn tìm ba ô cửa Koala nhắc tới",
+      "kind": "search",
+      "targets": [
+        "st-koala-nghin-manh-cua-so-tron-mai",
+        "st-koala-nghin-manh-cua-so-vom-tang-hai",
+        "st-koala-nghin-manh-cua-kinh-mau"
+      ],
+      "en": {
+        "title": "Three special windows",
+        "goTo": "Go to the front of the library and look up for the three windows Koala mentioned"
+      }
+    },
+    {
+      "id": "doc-so-phac-thao",
+      "title": "Sổ phác thảo của Koala",
+      "goTo": "Vào khu sách quý, chỗ Koala để quên sổ phác thảo trên giá gỗ",
+      "kind": "read",
+      "target": "st-koala-nghin-manh-so-phac-thao",
+      "skill": "doc-hieu",
+      "text": "Sổ phác thảo của Koala\nMặt trước thư viện có hai tầng. Tầng nào cũng có một dãy cửa sổ vòm.\nTrên đỉnh mái có một ô cửa sổ tròn, trông như mặt trăng ngủ quên.\nBên hông có ô kính màu. Chiều nắng xiên vào, sàn nhà loang đủ bảy màu.\nViệc đầu tiên: vẽ ô cửa sổ tròn, vì nó nằm ở góc trên cùng của tranh. Góc là chỗ tranh bắt đầu.",
+      "question": "Vì sao Koala muốn vẽ ô cửa sổ tròn trước tiên?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Vì nó nằm ở góc trên cùng của tranh"
+        },
+        {
+          "id": "b",
+          "text": "Vì nó trông giống mặt trăng"
+        },
+        {
+          "id": "c",
+          "text": "Vì nắng chiếu vào nó ra bảy màu"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Tìm câu có chữ «Việc đầu tiên».",
+          "Đọc phần đứng sau chữ «vì» trong câu ấy."
+        ],
+        "hint": "Bảy màu là chuyện của ô kính bên hông, không phải ô cửa tròn.",
+        "answer": {
+          "text": "Vì ô cửa tròn nằm ở góc trên cùng của tranh",
+          "explanation": "Sổ ghi: «vẽ ô cửa sổ tròn, vì nó nằm ở góc trên cùng của tranh». Giống mặt trăng chỉ là lời tả, còn bảy màu là của ô kính bên hông."
+        },
+        "en": {
+          "guide": [
+            "Find the line that says \"First job\".",
+            "Read the part after the word \"because\" in that line."
+          ],
+          "hint": "The seven colours belong to the side window of coloured glass, not the round one.",
+          "answer": {
+            "text": "Because the round window sits in the top corner of the picture",
+            "explanation": "The notebook says: \"draw the round window, because it sits in the top corner of the picture\". Looking like the moon is just a description, and the seven colours belong to the glass window on the side."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng… góc là chỗ bắt đầu. Koala gạch chân dòng ấy hai lần.",
+          "{name} đọc ra đúng chữ «vì» quan trọng nhất trang sổ.",
+          "Hay quá… cậu đọc sổ của tớ còn kỹ hơn tớ viết."
+        ],
+        "wrong": [
+          "Mặt trăng ngủ quên chỉ là Koala tả cho vui thôi, {name} đọc tiếp dòng cuối nhé.",
+          "Ô kính màu mới làm sàn loang bảy màu, ô cửa tròn thì không.",
+          "Tìm dòng bắt đầu bằng «Việc đầu tiên» rồi đọc chậm lại."
+        ],
+        "en": {
+          "right": [
+            "Yes… corners are where it starts. Koala underlines that line twice.",
+            "{name} found the most important \"because\" on the whole page.",
+            "Brilliant… you read my notebook more carefully than I wrote it."
+          ],
+          "wrong": [
+            "The sleepy moon is just Koala being playful, {name}; read on to the last line.",
+            "It's the coloured glass that paints the floor in seven colours, not the round window.",
+            "Find the line that starts with \"First job\" and read it slowly."
+          ]
+        }
+      },
+      "en": {
+        "title": "Koala's sketchbook",
+        "goTo": "Go into the rare books area, where Koala left his sketchbook on a wooden stand",
+        "text": "Koala's sketchbook\nThe front of the library has two floors. Each floor has a row of arched windows.\nAt the very top of the roof there is a round window, like a moon that forgot to wake up.\nOn the side there is a window of coloured glass. When the afternoon sun slants in, the floor is splashed with all seven colours.\nFirst job: draw the round window, because it sits in the top corner of the picture. Corners are where a picture begins.",
+        "question": "Why does Koala want to draw the round window first?",
+        "choices": [
+          "Because it sits in the top corner of the picture",
+          "Because it looks like the moon",
+          "Because the sun turns it seven colours"
+        ]
+      }
+    },
+    {
+      "id": "lach-qua-cac-ke",
+      "title": "Lách qua các kệ sách",
+      "goTo": "Vào lối hẹp giữa kệ sách mới, mấy chồng sách vừa về chắn ngang đường lên gác",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "maze",
+      "target": "st-koala-nghin-manh-so-do-loi-ke",
+      "skill": "logic",
+      "prompt": "Muốn nhìn toàn cảnh thì phải lên gác sách. Ô chú mèo là chỗ {name} và Koala đứng, ô ngôi sao là chân cầu thang gác, ô gạch là chồng sách đang chắn lối. Dãy bước nào đi tới nơi? (→ sang phải, ↓ đi xuống)",
+      "grid": [
+        [
+          "S",
+          ".",
+          "#",
+          ".",
+          "."
+        ],
+        [
+          "#",
+          ".",
+          "#",
+          ".",
+          "#"
+        ],
+        [
+          ".",
+          ".",
+          ".",
+          ".",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "#",
+          ".",
+          "G"
+        ]
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "→ ↓ ↓ → → ↓ →"
+        },
+        {
+          "id": "b",
+          "text": "→ → ↓ ↓ → ↓ →"
+        },
+        {
+          "id": "c",
+          "text": "→ ↓ ↓ → → → ↓"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Bắt đầu từ ô chú mèo, mỗi mũi tên là một bước.",
+          "Thử từng dãy một, gặp ô chồng sách là dãy ấy hỏng.",
+          "Dãy nào kết thúc trên ô ngôi sao thì chọn dãy ấy."
+        ],
+        "hint": "Ô thứ ba của hàng trên cùng đã có chồng sách, nên phải xuống sớm.",
+        "answer": {
+          "text": "Dãy → ↓ ↓ → → ↓ →, len qua hàng thứ ba rồi xuống chân cầu thang",
+          "explanation": "Dãy → ↓ ↓ → → ↓ → đi sang một ô, xuống hai ô tới hàng thứ ba, sang phải hai ô, xuống một ô rồi sang phải tới chân cầu thang mà không chạm chồng sách nào."
+        },
+        "en": {
+          "guide": [
+            "Start from the cat square; each arrow is one step.",
+            "Try the sequences one by one; landing on a pile of books ruins that one.",
+            "Choose the sequence that ends on the star square."
+          ],
+          "hint": "The third square of the top row already has a pile of books, so you must go down early.",
+          "answer": {
+            "text": "→ ↓ ↓ → → ↓ →, slipping along the third row and down to the stairs",
+            "explanation": "→ ↓ ↓ → → ↓ → goes one square across, down two to the third row, right two, down one and then right to the foot of the stairs without touching any pile of books."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tới chân cầu thang rồi! Koala thì thầm: «Lối đi cũng là một bức tranh… cậu ghép đúng rồi.»",
+          "{name} dò đường giữa kệ sách êm như mèo đi trên thảm.",
+          "Không đụng chồng sách nào, cô thủ thư chắc chẳng biết mình vừa đi qua."
+        ],
+        "wrong": [
+          "Bịch, suýt xô đổ một chồng sách! {name} thử dãy khác nhé.",
+          "Hàng trên cùng bị chắn ở ô thứ ba, đi thẳng mãi là không được.",
+          "Ô cuối hàng thứ ba cũng có sách, đừng đi quá tay phải."
+        ],
+        "en": {
+          "right": [
+            "We're at the foot of the stairs! Koala whispers: \"A path is a picture too… and you fitted it right.\"",
+            "{name} threaded between the shelves as quietly as a cat on a rug.",
+            "Not one pile of books touched; the librarian will never know we came through."
+          ],
+          "wrong": [
+            "Thump, nearly knocked over a pile of books! Try another sequence, {name}.",
+            "The top row is blocked at the third square; going straight on won't work.",
+            "The last square of the third row has books too; don't go too far right."
+          ]
+        }
+      },
+      "en": {
+        "title": "Weaving between the shelves",
+        "goTo": "Go into the narrow aisle between the new bookshelves, where piles of just-arrived books block the way up to the loft",
+        "prompt": "To see the whole view you have to climb to the book loft. The cat square is where {name} and Koala stand, the star square is the foot of the loft stairs, and brick squares are piles of books in the way. Which steps get you there? (→ right, ↓ down)",
+        "choices": [
+          "→ ↓ ↓ → → ↓ →",
+          "→ → ↓ ↓ → ↓ →",
+          "→ ↓ ↓ → → → ↓"
+        ]
+      }
+    },
+    {
+      "id": "goc-nhin-de-ve",
+      "title": "Vẽ từ góc nào?",
+      "goTo": "Leo lên gác sách, Koala dựng giá vẽ sát lan can nhìn xuống",
+      "kind": "decision",
+      "target": "st-koala-nghin-manh-gia-ve-tren-gac",
+      "speaker": "Koala Ghép Tranh",
+      "prompt": "Từ gác sách nhìn xuống, thư viện hiện ra như một hộp tranh mở nắp. Koala cầm bút chì, mắt sáng rỡ: «Mình vẽ từ góc nào đây, {name}?»",
+      "choices": [
+        {
+          "id": "tu-tren-gac",
+          "text": "Vẽ từ trên gác, thấy được cả mái lẫn kệ sách",
+          "consequence": "Koala vẽ thư viện như chim nhìn xuống. Từng dãy kệ hiện lên thẳng tắp như hàng mảnh ghép xếp chờ."
+        },
+        {
+          "id": "tu-ngoai-vuon",
+          "text": "Ra vườn vẽ mặt trước, đủ cả ba ô cửa đặc biệt",
+          "consequence": "Bản phác có ô cửa tròn ở góc trên, dãy cửa vòm ở giữa, ô kính màu bên hông. Koala bảo: «Đúng là mặt thư viện rồi.»"
+        },
+        {
+          "id": "ghep-hai-goc",
+          "text": "Vẽ cả hai góc rồi ghép thành một bức",
+          "consequence": "Koala vẽ hai tờ, rồi cắt dán cho khớp đường mái. Tờ phác thành ra cũng là một bức tranh ghép nhỏ."
+        }
+      ],
+      "en": {
+        "title": "Which view to draw?",
+        "goTo": "Climb up to the book loft, where Koala has set his easel by the railing looking down",
+        "prompt": "From the loft the library opens out like a puzzle box with its lid off. Koala holds his pencil, eyes shining: \"Which view shall we draw, {name}?\"",
+        "choices": [
+          {
+            "text": "Draw from up here, showing the roof and the shelves",
+            "consequence": "Koala draws the library the way a bird sees it. Every row of shelves comes out straight as pieces lined up and waiting."
+          },
+          {
+            "text": "Go out to the garden and draw the front, with all three special windows",
+            "consequence": "The sketch has the round window in the top corner, the arched windows in the middle and the coloured glass on the side. Koala says: \"That's the library's face.\""
+          },
+          {
+            "text": "Draw both views and join them into one",
+            "consequence": "Koala draws two sheets, then cuts and pastes them so the roofline matches. The sketch turns into a little jigsaw of its own."
+          }
+        ]
+      }
+    },
+    {
+      "id": "sach-ve-dung-ke",
+      "title": "Sách về đúng kệ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Mấy chồng sách chắn lối vẫn chờ lên kệ. Trả từng cuốn về đúng chỗ theo số trên gáy, mười tám điểm là lối đi lại thông thoáng cho cả thư viện!",
+      "game": "book-shelf-order",
+      "goal": 18,
+      "en": {
+        "title": "Books back on the right shelf",
+        "prompt": "The piles that blocked the aisle are still waiting for their shelves. Put each book back in its place by the number on its spine; eighteen points and the aisle is clear for the whole library!"
+      }
+    },
+    {
+      "id": "ban-phac-du-cua",
+      "title": "Bản phác đủ từng ô cửa",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tối đó Koala tô xong bản phác: ô cửa tròn ở góc trên, dãy cửa vòm, ô kính màu. Ở góc dưới, Koala vẽ thêm hai chấm nhỏ đứng cạnh nhau và ghi: «Tớ và {name}».",
+      "en": {
+        "title": "A sketch with every window",
+        "text": "That evening Koala finishes colouring the sketch: the round window up in the corner, the arched windows, the coloured glass. In the bottom corner he adds two tiny dots side by side and writes: \"Me and {name}\"."
+      }
+    },
+    {
+      "id": "thung-nghin-manh",
+      "title": "Thùng nghìn mảnh",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Xưởng in đã in bản phác lên tấm bìa và cắt thành một nghìn mảnh. Chiếc thùng giao tới vườn đọc sách nặng trĩu, mảnh nào cũng nhỏ xíu và lẫn lộn đủ màu.",
+      "en": {
+        "title": "A box of a thousand pieces",
+        "text": "The print shop has printed the sketch on board and cut it into a thousand pieces. The box delivered to the reading garden is heavy, and every piece is tiny and jumbled in every colour."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 17,
+    "skillXp": {
+      "doc-hieu": 1,
+      "logic": 1
+    }
+  },
+  "en": {
+    "title": "Koala Ghép Tranh's story, chapter 2: Counting windows",
+    "summary": "A thousand-piece puzzle needs a sketch with every window in it. {name} and Koala look for the library's special windows, read his sketchbook, find a way between the shelves up to the loft and choose the view to draw."
+  }
+}

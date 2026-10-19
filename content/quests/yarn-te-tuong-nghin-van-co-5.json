@@ -1,0 +1,444 @@
+{
+  "id": "yarn-te-tuong-nghin-van-co-5",
+  "region": "lau-dai",
+  "chapter": 2,
+  "title": "Chuyện của Tể Tướng Cờ Vua, chương 5: Ván cờ kết thúc bằng cái bắt tay",
+  "status": "active",
+  "category": "story",
+  "summary": "Trước ván cờ thứ Bảy, Tể Tướng Cờ Vua kể bí mật: ngài chưa từng thắng Bác Thợ Khóa Thành. {name} đọc cuốn sổ ghi ván, cộng số ván hai mùa, đánh số trang mới và giúp ngài chọn cách nói thật, để cuốn sách khép lại bằng một cái bắt tay.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Tể Tướng Cờ Vua",
+    "where": "Lâu đài: bàn cờ đại sảnh, kho thú bông, góc dựng bục gỗ, gian tia số, giàn hoa giấy",
+    "goal": "Giúp tể tướng nói thật và viết xong cuốn «Một nghìn ván cờ không ai thua»",
+    "play": "Đọc sổ ghi ván; giải bài toán cộng số ván hai mùa; tìm quy luật số trang trên tia số; chọn cách nói thật; thắng một ván cờ lật rồi bắt tay",
+    "learn": "Đọc hiểu, bài toán có lời văn, phép cộng có nhớ trong phạm vi 100, tia số",
+    "reward": "85 XP, 25 Xu, Skill XP Đọc hiểu, Tia số, một chiếc kẹp sách ruy băng",
+    "next": "Ván cờ thứ ba mươi chín với luật mới"
+  },
+  "phases": {
+    "hook": "loi-thu-nhan",
+    "explore": "so-ghi-van-that",
+    "learn": "cong-van-hai-mua",
+    "challenge": "danh-so-trang-moi",
+    "decision": "noi-that-the-nao",
+    "finale": "van-co-bat-tay",
+    "reward": "cuon-sach-tron-ven",
+    "next": "van-thu-ba-muoi-chin"
+  },
+  "places": {
+    "te-tuong-co-the": "Bàn cờ đại sảnh",
+    "st-te-tuong-nghin-van-co-so-ghi-van-giau-kin": "Kho thú bông",
+    "st-te-tuong-nghin-van-co-bang-diem-hai-mua": "Góc dựng bục gỗ",
+    "st-te-tuong-nghin-van-co-trang-sach-danh-so-moi": "Gian tia số",
+    "st-te-tuong-nghin-van-co-cuon-mot-nghin-van-co": "Giàn hoa giấy"
+  },
+  "steps": [
+    {
+      "id": "loi-thu-nhan",
+      "title": "Lời thú nhận trước ván cờ",
+      "goTo": "Tới bàn cờ đại sảnh, Tể Tướng Cờ Vua ngồi một mình, hai tay đặt yên trên bàn cờ chưa bày quân",
+      "kind": "dialogue",
+      "target": "te-tuong-co-the",
+      "lines": [
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "{name}, ngươi đã thấy ta sợ mèo, sợ khách sớm, sợ bánh mì úp bơ. Hôm nay ta muốn đi nước khó nhất đời mình: nói thật."
+        },
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "Ta kể với cả thành rằng ta và Bác Thợ Khóa Thành «ngang tài». Sự thật là ta chưa thắng bác ấy ván nào. Không một ván."
+        },
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "Buồn cười thay, Mèo Đầm Sen ba năm nay cũng chưa thắng ta ván thư nào, và chiếc chìa phòng cờ ta hứa vẫn nằm chờ nàng. Ta với nàng hóa ra cùng một cảnh, chỉ là nàng thật thà hơn ta."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Nói thật mới là nước đi giỏi nhất, thưa ngài.",
+          "reply": "Ta vuốt râu ba lần… và lần đầu tiên không thấy cần vuốt thêm. Đi thôi, ta cho ngươi xem cuốn sổ ta giấu."
+        },
+        {
+          "text": "Thua mãi mà vẫn chơi, ngài kiên trì lắm đấy.",
+          "reply": "Kiên trì ư? Ngươi nhìn ván thua bằng con mắt tử tế hơn ta nhiều. Đi nào, cuốn sổ ở chỗ chẳng ai ngờ."
+        }
+      ],
+      "en": {
+        "title": "A confession before the game",
+        "goTo": "Go to the chessboard in the great hall, where Tể Tướng Cờ Vua sits alone, hands resting on a board with no pieces set out",
+        "lines": [
+          "{name}, you have seen me fear cats, early guests and buttered toast. Today I want to make the hardest move of my life: telling the truth.",
+          "I tell the whole castle that Bác Thợ Khóa Thành and I are «evenly matched». The truth is I have never beaten him. Not once.",
+          "Funny thing: in three years Mèo Đầm Sen has not won a single letter game against me either, and the chess-room key I promised still waits for her. She and I are in the same boat, only she is more honest than I am."
+        ],
+        "choices": [
+          {
+            "text": "Telling the truth is the best move of all, sir.",
+            "reply": "I stroke my beard three times… and for the first time feel no need for more. Come, I will show you the notebook I hid."
+          },
+          {
+            "text": "Losing every time and still playing: that is real perseverance, sir.",
+            "reply": "Perseverance? You see a lost game with far kinder eyes than mine. Come, the notebook is somewhere no one would guess."
+          }
+        ]
+      }
+    },
+    {
+      "id": "so-ghi-van-that",
+      "title": "Cuốn sổ ghi ván thật",
+      "goTo": "Vào kho thú bông, cuốn sổ ghi ván được giấu dưới một chú gấu bông to",
+      "kind": "read",
+      "target": "st-te-tuong-nghin-van-co-so-ghi-van-giau-kin",
+      "skill": "doc-hieu",
+      "text": "Sổ ghi ván cờ thứ Bảy\n– Mùa xuân: Bác Thợ Khóa Thành thắng 28 ván. Tể Tướng thắng: (để trống).\n– Mùa hè: Bác Thợ Khóa Thành thắng 19 ván. Tể Tướng thắng: (để trống).\n– Dòng cuối trang, nét chữ nhỏ xíu: «Kể với mọi người là ngang tài.»",
+      "question": "Theo cuốn sổ, suốt mùa xuân và mùa hè, Tể Tướng thắng Bác Thợ Khóa Thành được mấy ván?",
+      "choices": [
+        {
+          "id": "khong-van",
+          "text": "Không thắng ván nào"
+        },
+        {
+          "id": "hai-tam",
+          "text": "28 ván"
+        },
+        {
+          "id": "muoi-chin",
+          "text": "19 ván"
+        }
+      ],
+      "answer": {
+        "choice": "khong-van"
+      },
+      "support": {
+        "guide": [
+          "Đọc dòng ghi số ván Tể Tướng thắng ở cả hai mùa.",
+          "Các con số 28 và 19 là của ai? Hãy đọc kỹ tên đứng trước chúng."
+        ],
+        "hint": "Chỗ ghi ván thắng của Tể Tướng được «để trống».",
+        "answer": {
+          "text": "Tể Tướng chưa thắng ván nào",
+          "explanation": "Cả hai mùa, dòng «Tể Tướng thắng» đều để trống, nghĩa là ngài chưa thắng ván nào. 28 và 19 là số ván Bác Thợ Khóa Thành thắng."
+        },
+        "en": {
+          "guide": [
+            "Read the lines showing how many games the chancellor won in both seasons.",
+            "Whose numbers are 28 and 19? Read the name in front of them carefully."
+          ],
+          "hint": "The space for the chancellor's wins is «left blank».",
+          "answer": {
+            "text": "The chancellor won none at all",
+            "explanation": "In both seasons the «chancellor won» line is blank, meaning he won no games. 28 and 19 are the games Bác Thợ Khóa Thành won."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Phải, không ván nào. Ngươi đọc ra sự thật mà ta giấu cả năm trời.",
+          "Ngươi đọc kỹ cả chỗ để trống. Người đọc giỏi nhìn thấy cả điều không được viết.",
+          "Tể tướng gật đầu chậm rãi, như vừa đặt quân vua nằm xuống."
+        ],
+        "wrong": [
+          "Con số ấy là của Bác Thợ Khóa Thành, không phải của tể tướng.",
+          "Đọc lại dòng «Tể Tướng thắng» ở mỗi mùa xem ghi gì.",
+          "Chỗ «để trống» cũng là một câu trả lời đấy."
+        ],
+        "en": {
+          "right": [
+            "Yes, not one. You read the truth I hid for a whole year.",
+            "You read even the blank space. A good reader sees what is not written too.",
+            "The chancellor nods slowly, as if laying his king down."
+          ],
+          "wrong": [
+            "That number belongs to Bác Thợ Khóa Thành, not the chancellor.",
+            "Read the «chancellor won» line for each season again and see what it says.",
+            "A space «left blank» is an answer too."
+          ]
+        }
+      },
+      "en": {
+        "title": "The real chess record",
+        "goTo": "Go into the soft-toy store, where the chess record is hidden under a big teddy bear",
+        "text": "Saturday chess record\n– Spring: Bác Thợ Khóa Thành won 28 games. The chancellor won: (left blank).\n– Summer: Bác Thợ Khóa Thành won 19 games. The chancellor won: (left blank).\n– Last line of the page, in tiny writing: «Tell everyone we are evenly matched.»",
+        "question": "According to the notebook, across spring and summer, how many games did the chancellor win against Bác Thợ Khóa Thành?",
+        "choices": [
+          "Not a single game",
+          "28 games",
+          "19 games"
+        ]
+      }
+    },
+    {
+      "id": "cong-van-hai-mua",
+      "title": "Cộng ván thua hai mùa",
+      "goTo": "Ra góc dựng bục gỗ, tể tướng đã dựng bảng điểm cờ hai mùa ở đó",
+      "kind": "riddle",
+      "target": "st-te-tuong-nghin-van-co-bang-diem-hai-mua",
+      "skill": "bai-toan-loi-van",
+      "question": "Mùa xuân Bác Thợ Khóa Thành thắng 28 ván, mùa hè bác thắng 19 ván. Hỏi cả hai mùa, Bác Thợ Khóa Thành thắng tất cả bao nhiêu ván?",
+      "answer": {
+        "value": 47
+      },
+      "support": {
+        "guide": [
+          "Bài hỏi «tất cả», nên ta gộp số ván hai mùa bằng phép cộng.",
+          "Đặt tính 28 + 19, cộng hàng đơn vị trước."
+        ],
+        "hint": "8 cộng 9 bằng 17, viết 7 nhớ 1.",
+        "answer": {
+          "text": "47 ván",
+          "explanation": "28 + 19 = 47: 8 + 9 = 17, viết 7 nhớ 1; 2 + 1 = 3, thêm 1 là 4. Bác Thợ Khóa Thành thắng tất cả 47 ván."
+        },
+        "en": {
+          "guide": [
+            "The question asks «altogether», so we combine both seasons by adding.",
+            "Set out 28 + 19 and add the ones first."
+          ],
+          "hint": "8 plus 9 is 17: write 7, carry 1.",
+          "answer": {
+            "text": "47 games",
+            "explanation": "28 + 19 = 47: 8 + 9 = 17, write 7 and carry 1; 2 + 1 = 3, plus 1 makes 4. Bác Thợ Khóa Thành won 47 games altogether."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn mươi bảy ván. Con số thật, và ta chẳng còn muốn giấu nó nữa.",
+          "Ngươi giải bài toán có lời văn gọn gàng như xếp quân trước ván.",
+          "Ta sẽ viết số này to và rõ lên trang đầu cuốn sổ mới."
+        ],
+        "wrong": [
+          "Chú ý số nhớ: tám cộng chín đã vượt quá mười rồi.",
+          "Bài hỏi tất cả cả hai mùa, nên phải cộng chứ không trừ.",
+          "Thử đặt tính dọc cho thẳng hàng rồi cộng lại từ hàng đơn vị."
+        ],
+        "en": {
+          "right": [
+            "Forty-seven games. The true number, and I no longer wish to hide it.",
+            "You solved the word problem as neatly as setting out pieces before a game.",
+            "I shall write this number large and clear on the first page of a new record."
+          ],
+          "wrong": [
+            "Mind the carry: eight plus nine already goes past ten.",
+            "It asks for both seasons altogether, so add, do not subtract.",
+            "Try writing it in neat columns and adding again from the ones."
+          ]
+        }
+      },
+      "en": {
+        "title": "Adding up two seasons' losses",
+        "goTo": "Go to the corner where the wooden stage is being built; the chancellor has put up the two-season scoreboard there",
+        "question": "In spring Bác Thợ Khóa Thành won 28 games, and in summer he won 19. How many games did Bác Thợ Khóa Thành win altogether across both seasons?"
+      }
+    },
+    {
+      "id": "danh-so-trang-moi",
+      "title": "Đánh số những trang mới",
+      "goTo": "Sang gian tia số, những trang sách mới đang chờ được đánh số",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "st-te-tuong-nghin-van-co-trang-sach-danh-so-moi",
+      "skill": "tia-so",
+      "prompt": "Từ ván thứ ba mươi tám, mỗi ván cờ trong sách chiếm bốn trang. Tể tướng đã đánh số trang mở đầu của mấy ván. Trang mở đầu ván tiếp theo là trang mấy?",
+      "elements": [
+        {
+          "id": "t38",
+          "label": "Trang 38"
+        },
+        {
+          "id": "t42",
+          "label": "Trang 42"
+        },
+        {
+          "id": "t46",
+          "label": "Trang 46"
+        },
+        {
+          "id": "t50",
+          "label": "Trang 50"
+        },
+        {
+          "id": "t-trong",
+          "label": "Trang ?"
+        }
+      ],
+      "choices": [
+        {
+          "id": "so52",
+          "text": "Trang 52"
+        },
+        {
+          "id": "so54",
+          "text": "Trang 54"
+        },
+        {
+          "id": "so60",
+          "text": "Trang 60"
+        }
+      ],
+      "answer": {
+        "choice": "so54"
+      },
+      "support": {
+        "guide": [
+          "Xem các số trang tăng lên thế nào: từ 38 tới 42 cách mấy?",
+          "Mỗi lần nhảy thêm 4 trên tia số."
+        ],
+        "hint": "50 nhảy thêm 4 là bao nhiêu?",
+        "answer": {
+          "text": "Trang 54",
+          "explanation": "38, 42, 46, 50 tăng đều 4 đơn vị, nên số tiếp theo là 50 + 4 = 54."
+        },
+        "en": {
+          "guide": [
+            "See how the page numbers grow: how far is it from 38 to 42?",
+            "Each jump on the number line adds 4."
+          ],
+          "hint": "What is 50 plus a jump of 4?",
+          "answer": {
+            "text": "Page 54",
+            "explanation": "38, 42, 46, 50 go up by 4 each time, so the next is 50 + 4 = 54."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Trang năm mươi tư! Mỗi bước nhảy bốn, đều như nhịp chân lính gác.",
+          "Ngươi nhìn ra quy luật trên tia số nhanh như nhìn ra một thế cờ.",
+          "Trang ấy sẽ dành cho ván cờ của ngày hôm nay."
+        ],
+        "wrong": [
+          "Mỗi bước nhảy là bốn trang, không phải hai trang.",
+          "Đếm khoảng cách giữa hai số trang liền nhau trước đã.",
+          "Nhảy mười trang thì xa quá, quy luật đâu có vậy."
+        ],
+        "en": {
+          "right": [
+            "Page fifty-four! Jumps of four, steady as a sentry's march.",
+            "You spotted the number-line pattern as quickly as a chess position.",
+            "That page will be kept for today's game."
+          ],
+          "wrong": [
+            "Each jump is four pages, not two.",
+            "First count the gap between two neighbouring page numbers.",
+            "Jumping ten pages is too far; that is not the pattern."
+          ]
+        }
+      },
+      "en": {
+        "title": "Numbering the new pages",
+        "goTo": "Go across to the number-line gallery, where the new book pages are waiting to be numbered",
+        "prompt": "From game thirty-eight on, each game in the book takes four pages. The chancellor has numbered the opening pages of a few games. What is the opening page of the next game?",
+        "elements": [
+          "Page 38",
+          "Page 42",
+          "Page 46",
+          "Page 50",
+          "Page ?"
+        ],
+        "choices": [
+          "Page 52",
+          "Page 54",
+          "Page 60"
+        ]
+      }
+    },
+    {
+      "id": "noi-that-the-nao",
+      "title": "Nói thật thế nào?",
+      "goTo": "Ra giàn hoa giấy, nơi tể tướng đặt cuốn sách và chờ Bác Thợ Khóa Thành tới",
+      "kind": "decision",
+      "target": "st-te-tuong-nghin-van-co-cuon-mot-nghin-van-co",
+      "speaker": "Tể Tướng Cờ Vua",
+      "prompt": "Bóng Bác Thợ Khóa Thành đã thấp thoáng cuối lối. Tể tướng vuốt râu ba lần: «Ta sẽ nói thật. Nhưng nói thế nào cho phải, {name}?»",
+      "choices": [
+        {
+          "id": "noi-truoc-van",
+          "text": "Nói ngay khi bác tới, trước khi bày quân",
+          "consequence": "Tể tướng nói một hơi, mặt đỏ như quân xe đỏ. Bác Thợ Khóa Thành cười: «Cạch! Tôi biết từ lâu rồi, và tôi vẫn thích ván cờ thứ Bảy nhất tuần.»"
+        },
+        {
+          "id": "viet-vao-sach",
+          "text": "Viết lời thật lên trang đầu cuốn sách rồi mời bác đọc",
+          "consequence": "Bác Thợ Khóa Thành đọc xong, gõ nhẹ ba cái lên bìa sách như chào một ổ khóa: «Trang này là trang đẹp nhất của cả cuốn.»"
+        },
+        {
+          "id": "noi-khi-bat-tay",
+          "text": "Nói lúc hai người bắt tay sau ván cờ",
+          "consequence": "Hết ván, hai bàn tay nắm lấy nhau và tể tướng nói khẽ lời thật. Bác Thợ Khóa Thành nắm chặt tay hơn: «Ván sau tôi dạy ngài một nước tôi giấu kỹ nhất.»"
+        }
+      ],
+      "en": {
+        "title": "How to tell the truth?",
+        "goTo": "Go to the paper-flower arbour, where the chancellor has set down his book to wait for Bác Thợ Khóa Thành",
+        "prompt": "Bác Thợ Khóa Thành's figure appears at the end of the path. The chancellor strokes his beard three times: «I will tell the truth. But how should I say it, {name}?»",
+        "choices": [
+          {
+            "text": "Say it as soon as he arrives, before setting up",
+            "consequence": "The chancellor says it all in one breath, red as a red rook. Bác Thợ Khóa Thành laughs: «Click! I have known for ages, and the Saturday game is still my favourite part of the week.»"
+          },
+          {
+            "text": "Write the truth on the first page and ask him to read it",
+            "consequence": "Bác Thợ Khóa Thành reads it and taps the cover three times, as if greeting a lock: «This page is the finest in the whole book.»"
+          },
+          {
+            "text": "Say it as they shake hands after the game",
+            "consequence": "At the end, the two hands clasp and the chancellor quietly tells the truth. Bác Thợ Khóa Thành grips tighter: «Next time I will teach you the move I have kept most secret.»"
+          }
+        ]
+      }
+    },
+    {
+      "id": "van-co-bat-tay",
+      "title": "Ván cờ thứ ba mươi tám",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ván thứ ba mươi tám của cuốn sách, tể tướng muốn chơi cùng {name}. Lật quân cho khéo, thắng một ván cờ lật, rồi hai bên đứng dậy bắt tay nhé!",
+      "game": "reversi",
+      "goal": 1,
+      "en": {
+        "title": "Game thirty-eight",
+        "prompt": "For game thirty-eight of the book, the chancellor wants to play with {name}. Flip the pieces cleverly, win one game of reversi, then both stand up and shake hands!"
+      }
+    },
+    {
+      "id": "cuon-sach-tron-ven",
+      "title": "Cuốn sách trọn vẹn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tể tướng viết trang cuối: «Một nghìn ván cờ không ai thua là một nghìn ván mà hai bên đều bắt tay và nói thật.» Ngài gấp sách lại, tuyên bố nó đã xong, và trao {name} một chiếc kẹp sách thắt ruy băng.",
+      "en": {
+        "title": "The book is complete",
+        "text": "The chancellor writes the last page: «A thousand games nobody loses are a thousand games where both players shake hands and tell the truth.» He closes the book, declares it finished, and gives {name} a ribbon bookmark."
+      }
+    },
+    {
+      "id": "van-thu-ba-muoi-chin",
+      "title": "Ván thứ ba mươi chín",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Từ nay ván cờ thứ Bảy có thêm một luật mới: ai thắng cũng phải dạy người kia một nước hay. Tể tướng bảo ván thứ ba mươi chín, ngài sẽ ghi tên {name} làm trọng tài.",
+      "en": {
+        "title": "Game thirty-nine",
+        "text": "From now on the Saturday game has a new rule: the winner must teach the other a good move. The chancellor says that for game thirty-nine he will write {name} down as referee."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 85,
+    "coin": 25,
+    "skillXp": {
+      "doc-hieu": 1,
+      "tia-so": 1
+    },
+    "items": {
+      "kep-sach-ruy-bang": 1
+    }
+  },
+  "en": {
+    "title": "Tể Tướng Cờ Vua's story, chapter 5: A game that ends in a handshake",
+    "summary": "Before the Saturday game, Tể Tướng Cờ Vua shares his secret: he has never beaten Bác Thợ Khóa Thành. {name} reads the chess record, adds up two seasons of games, numbers the new pages and helps him choose how to tell the truth, so the book closes with a handshake."
+  }
+}

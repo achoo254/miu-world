@@ -824,6 +824,112 @@
           }
         }
       ]
+    },
+    {
+      "id": "canh-cut-xoay-ba-vong",
+      "npc": "canh-cut-truot-bang",
+      "title": { "vi": "Ba vòng giữa hồ băng", "en": "Three Turns on the Ice Lake" },
+      "teaser": { "vi": "Vèèèo! {name}! Tớ là Cánh Cụt Trượt Băng, tay trượt nhanh nhất bờ hồ. Tớ có một ước mơ to bằng cả hồ băng: xoay đủ ba vòng trong ngày hội tuyết. Cậu giúp tớ nhé? Tớ tạo dáng chờ cậu đây!", "en": "Wheeee! {name}! I am Cánh Cụt Trượt Băng, the fastest skater on the shore. I have a dream as big as the whole ice lake: three full turns at the snow festival. Will you help me? I am striking a pose while I wait!" },
+      "chapters": [
+        {
+          "quest": "yarn-canh-cut-xoay-ba-vong-1",
+          "hearts": 0,
+          "letter": {
+            "from": "canh-cut-truot-bang",
+            "title": { "vi": "Tám viên bi, tám cái tên", "en": "Eight stones, eight names" },
+            "body": { "vi": "{name} ơi! Vèèèo, tớ viết thư mà cánh vẫn ngứa ngáy muốn tạo dáng. Tối nay bọn nhỏ đặt tên cho cả tám viên bi đá, viên chạy thẳng nhất được gọi là «{name}». Bé nhỏ nhất đòi ôm viên ấy đi ngủ. Mai cậu ghé sân bi nữa nhé!", "en": "{name}! Wheeee, I am writing this and my wings still itch to strike a pose. Tonight the chicks named all eight curling stones, and the one that runs straightest is called \"{name}\". The littlest one insists on cuddling it at bedtime. Come by the rink again tomorrow!" },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-canh-cut-xoay-ba-vong-2",
+          "hearts": 1,
+          "letter": {
+            "from": "bac-nong-dan-thanh",
+            "title": { "vi": "Gạo mới lên núi", "en": "New rice up the mountain" },
+            "body": { "vi": "Bác Nông Dân Thành gửi {name}. Người xưa dặn nhà nông «trông trời, trông đất, trông mây», ấy thế mà mấy hôm nay bác chỉ trông thư Cánh Cụt. Thư kể {name} dắt cả đàn cánh cụt con qua mê cung băng không sót bạn nào. Bác vừa đóng bao gạo mới gửi lên núi, kèm cho {name} một bông lúa vàng. Nhắc Cánh Cụt giùm bác: mùa này nhớ gửi xuống túi hạt dẻ tuyết nhé.", "en": "From Bác Nông Dân Thành to {name}. The old saying tells farmers to watch the sky, the earth and the clouds, yet these past days I have only watched for Cánh Cụt's letters. He writes that {name} led every penguin chick through the ice maze without losing one. I have just packed a sack of new rice to send up the mountain, with a golden rice ear for {name}. Do remind Cánh Cụt for me: this season he must send down a bag of snow chestnuts." },
+            "reward": {
+              "coins": 20,
+              "xp": 20,
+              "items": { "bong-lua-vang": 1 }
+            }
+          }
+        },
+        {
+          "quest": "yarn-canh-cut-xoay-ba-vong-3",
+          "hearts": 2,
+          "letter": {
+            "from": "cao-tuyet-dieu-khac",
+            "title": { "vi": "Bức tượng đã chờ", "en": "The statue was waiting" },
+            "body": { "vi": "{name}. Tớ là Cáo Tuyết Điêu Khắc. Tớ tạc tượng Cánh Cụt xoay ba vòng từ trước khi cậu ấy làm được. Hôm nay nghe tin {name} đếm được ba vòng thật, tớ ra đứng ngắm tượng rất lâu. Ba vòng khép lại tròn trịa, như ba vành trăng chồng lên nhau. Tớ gửi cậu một khối băng xanh, sáu mặt phẳng đều.", "en": "{name}. I am Cáo Tuyết Điêu Khắc. I carved Cánh Cụt doing a triple spin before he could do one. Today, hearing that {name} counted three real turns, I stood and looked at the statue for a long time. Three turns closing perfectly round, like three moon rims stacked together. I am sending you a blue ice block with six evenly flat faces." },
+            "reward": {
+              "coins": 20,
+              "xp": 20,
+              "items": { "khoi-bang-xanh": 1 }
+            }
+          }
+        },
+        {
+          "quest": "yarn-canh-cut-xoay-ba-vong-4",
+          "hearts": 3,
+          "letter": {
+            "from": "gau-bac-cuc-cau-ca",
+            "title": { "vi": "Thư từ lỗ câu bên hang", "en": "A letter from the fishing hole" },
+            "body": { "vi": "Bác Gấu gửi cháu {name}. Bác ngồi bên lỗ câu viết mấy dòng này... khoan, để bác nghe xem cá có cắn câu không... Hồi Cánh Cụt còn bé tí, bác dạy nó nhìn màu băng. Hôm nay nó nhìn đúng, xoay đủ, lại còn dám đứng gần chỗ nước sâu. Bác biết một phần là nhờ cháu đứng cạnh nó. Bác gửi cháu đôi găng tay tuyết, mùa xuân hai đứa ra vũng nước nông cho khỏi cóng tay.", "en": "Uncle Bear to young {name}. I am writing these lines beside my fishing hole... wait, let me listen whether a fish is biting... When Cánh Cụt was a tiny chick, I taught him to read the colour of the ice. Today he read it right, spun all three turns and even dared to stand near deep water. I know part of that is thanks to you standing beside him. Here are some snow gloves, so your hands stay warm when the two of you visit the shallow pool in spring." },
+            "reward": {
+              "coins": 25,
+              "xp": 25,
+              "items": { "gang-tay-tuyet": 1 }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cao-tuyet-tuong-bay-mau",
+      "npc": "cao-tuyet-dieu-khac",
+      "title": { "vi": "Bảy màu trong khối băng", "en": "Seven Colours in the Ice" },
+      "teaser": { "vi": "{name}, cậu đã bao giờ thấy nắng vỡ ra thành bảy màu chưa? Tớ muốn giữ nó trong một khối băng. Nói thì ngắn, làm thì dài như cạnh một hình chữ nhật. Cậu đi cùng tớ nhé?", "en": "{name}, have you ever seen sunlight break into seven colours? I want to keep it inside a block of ice. Short to say, long to do, like the long side of a rectangle. Will you come with me?" },
+      "chapters": [
+        {
+          "quest": "yarn-cao-tuyet-tuong-bay-mau-1",
+          "hearts": 0,
+          "letter": {
+            "from": "cao-tuyet-dieu-khac",
+            "title": { "vi": "Mười hai ngôi sao trong băng", "en": "Twelve stars in the ice" },
+            "body": { "vi": "{name}. Tối nay tớ ngồi cạnh khối băng dáng tháp và đếm được mười hai ngôi sao soi bóng trong đó. Tớ tô lại hình vuông thứ hai trên tuyết cho đậm hơn, để sáng mai cậu tới vẫn còn thấy. Gửi cậu ít xu, mua một cốc sữa ấm cho tròn buổi tối nhé.", "en": "{name}. Tonight I sat by the tower block of ice and counted twelve stars reflected inside it. I went over the second square in the snow to make it darker, so it will still be there when you come tomorrow. Here are a few coins; buy a mug of warm milk to round off the evening." },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-cao-tuyet-tuong-bay-mau-2",
+          "hearts": 1,
+          "letter": {
+            "from": "nguoi-tuyet-dem-bac",
+            "title": { "vi": "Hai mươi bảy tiếng gõ", "en": "Twenty-seven taps" },
+            "body": { "vi": "Một, hai, ba... ổn rồi. {name} ơi, chiều nay tớ đếm được hai mươi bảy tiếng gõ vọng từ xưởng gọt băng sang bãi người tuyết, tiếng nào cũng đều như tiếng tích tắc. Cáo bảo hôm nay có bốn bàn tay cùng nghĩ. Tớ tặng {name} một người tuyết nhỏ, cao đúng một gang tay, mũi cà rốt thẳng tắp.", "en": "One, two, three... all right. {name}, this afternoon I counted twenty-seven taps drifting from the ice workshop over to the snowman field, each as even as a tick-tock. Cáo says four hands were thinking together today. Here is a little snowman for {name}, exactly one hand-span tall, with a perfectly straight carrot nose." },
+            "reward": {
+              "coins": 20,
+              "xp": 20,
+              "items": { "nguoi-tuyet-mini": 1 }
+            }
+          }
+        },
+        {
+          "quest": "yarn-cao-tuyet-tuong-bay-mau-3",
+          "hearts": 2,
+          "letter": {
+            "from": "meo-xep-khoi",
+            "title": { "vi": "Bánh của người thua cuộc", "en": "The loser's cake" },
+            "body": { "vi": "Meo. Nghe này, {name}. Tớ đã xem ảnh dải bảy màu. Xem bốn lần, đem thước đo lại tháp khối của mình, rồi xem thêm lần thứ năm. Mùa này tớ thua. Tớ gửi bánh như luật đã định, một nửa cho Cáo, một nửa cho cậu. Mùa sau tháp của tớ sẽ có một ô cửa để nắng đi qua. Bảo Cáo là tớ chưa chịu thua hẳn đâu.", "en": "Meow. Listen, {name}. I've seen the photo of the seven-colour band. I looked four times, measured my block tower again with a ruler, then looked a fifth time. This season I lose. I'm sending the cake as our rule says, half for Cáo and half for you. Next season my tower will have a window for the sunlight to pass through. Tell Cáo I haven't completely given up." },
+            "reward": {
+              "coins": 25,
+              "xp": 25,
+              "items": { "dia-banh-ran": 1 }
+            }
+          }
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,364 @@
+{
+  "id": "yarn-khi-mua-dua-lon-1",
+  "region": "dao-bi-an",
+  "chapter": 2,
+  "title": "Chuyện của Khỉ Hái Dừa, chương 1: Gõ ba cái, nghe dừa nói",
+  "status": "active",
+  "category": "story",
+  "summary": "Mùa dừa lớn đã về rừng nhiệt đới, và Khỉ Hái Dừa hái không kịp. {name} nhặt dừa rơi trong đêm, cộng số dừa già cả ngày, chọn chữ ghi nhãn cho đống dừa và quyết định số phận một buồng dừa non.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Khỉ Hái Dừa",
+    "where": "Rừng nhiệt đới: ngọn dừa Khỉ, bãi dừa non, lán chứa dừa, bãi phơi dừa, hàng dừa sát suối",
+    "goal": "Giúp Khỉ gom và phân loại vụ dừa đầu mùa",
+    "play": "Tìm dừa rơi; cộng số dừa già; chọn từ chỉ đặc điểm; quyết định buồng dừa non; hứng dừa Khỉ thả",
+    "learn": "Phép cộng có nhớ trong phạm vi 100, từ ngữ chỉ đặc điểm",
+    "reward": "55 XP, 14 Xu, Skill XP Phép cộng, Từ ngữ",
+    "next": "Lối mòn tới làng chài"
+  },
+  "phases": {
+    "hook": "mua-dua-ve",
+    "explore": "nhat-dua-roi-dem",
+    "learn": "cong-dua-ca-ngay",
+    "challenge": "chu-ghi-nhan-dua",
+    "decision": "buong-dua-non",
+    "finale": "hung-dua-tu-ngon",
+    "reward": "lan-day-dua",
+    "next": "loi-mon-lang-chai"
+  },
+  "places": {
+    "khi-hai-dua": "Ngọn dừa Khỉ",
+    "nhat-dua-roi-dem": "Bãi dừa non",
+    "st-khi-mua-dua-lon-dua-lan-bui": "Bãi dừa non",
+    "st-khi-mua-dua-lon-dua-ke-da": "Bãi dừa non",
+    "st-khi-mua-dua-lon-dua-hoc-cay": "Bãi dừa non",
+    "st-khi-mua-dua-lon-gio-may-lan": "Lán chứa dừa",
+    "st-khi-mua-dua-lon-bang-nhan-dua": "Bãi phơi dừa",
+    "st-khi-mua-dua-lon-buong-dua-non": "Hàng dừa sát suối"
+  },
+  "steps": [
+    {
+      "id": "mua-dua-ve",
+      "title": "Mùa dừa về rồi!",
+      "goTo": "Tới ngọn dừa Khỉ, cậu đang chuyền cành nhanh như gió",
+      "kind": "dialogue",
+      "target": "khi-hai-dua",
+      "lines": [
+        {
+          "speaker": "Khỉ Hái Dừa",
+          "text": "Úp úp! {name} tới đúng lúc quá! Mùa dừa lớn về rồi, cây nào cũng trĩu quả, tớ hái từ sáng mà mới xong có ba cây!"
+        },
+        {
+          "speaker": "Khỉ Hái Dừa",
+          "text": "Quả nào tớ cũng gõ ba cái: «bộp bộp bộp» trầm trầm là dừa già, thả xuống được; «cạch cạch» lanh lảnh là dừa non, để lại cho nó lớn."
+        },
+        {
+          "speaker": "Khỉ Hái Dừa",
+          "text": "Đêm qua gió to, mấy quả tự rụng lăn đi đâu mất. Cậu nhặt giúp tớ nhé, tớ còn phải trèo tiếp!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ nhặt, cậu cứ trèo đi!",
+          "reply": "Úp úp, nhanh như tớ luôn! Bãi dừa non ở ngay dưới kia, cỏ cao nên nhìn kỹ nhé."
+        },
+        {
+          "text": "Sao phải gõ những ba cái?",
+          "reply": "Gõ một cái thì nghe nhầm, gõ hai cái thì còn phân vân, gõ ba cái là dừa nói thật! Tớ hứa với cả rừng là không thả nhầm quả non nào."
+        }
+      ],
+      "en": {
+        "title": "Coconut season is here!",
+        "goTo": "Go to Khỉ's palm top, where he swings from branch to branch like the wind",
+        "lines": [
+          "Oop oop! {name}, perfect timing! The big coconut season is here, every palm is heavy with fruit, and I've picked since dawn and only finished three trees!",
+          "I knock every coconut three times: a deep «bop bop bop» means ripe, ready to drop; a bright «clack clack» means young, so I leave it to grow.",
+          "Last night the wind was strong and a few fell by themselves and rolled away. Pick them up for me, will you? I've still got climbing to do!"
+        ],
+        "choices": [
+          {
+            "text": "I'll gather them; you keep climbing!",
+            "reply": "Oop oop, as fast as me! The young-palm patch is right below; the grass is tall, so look carefully."
+          },
+          {
+            "text": "Why knock three whole times?",
+            "reply": "Knock once and you mishear, knock twice and you're still unsure, knock three times and the coconut tells the truth! I promised the whole jungle I'd never drop a young one by mistake."
+          }
+        ]
+      }
+    },
+    {
+      "id": "nhat-dua-roi-dem",
+      "title": "Dừa rụng trong đêm",
+      "goTo": "Xuống bãi dừa non, tìm những quả dừa gió đêm qua thổi rụng",
+      "kind": "search",
+      "targets": [
+        "st-khi-mua-dua-lon-dua-lan-bui",
+        "st-khi-mua-dua-lon-dua-ke-da",
+        "st-khi-mua-dua-lon-dua-hoc-cay"
+      ],
+      "en": {
+        "title": "Coconuts fallen in the night",
+        "goTo": "Go down to the young-palm patch and find the coconuts last night's wind knocked down"
+      }
+    },
+    {
+      "id": "cong-dua-ca-ngay",
+      "title": "Cả ngày được bao nhiêu quả?",
+      "goTo": "Mang dừa vào lán chứa dừa, nơi Khỉ để giỏ mây đếm vụ",
+      "kind": "riddle",
+      "target": "st-khi-mua-dua-lon-gio-may-lan",
+      "skill": "phep-cong",
+      "question": "Buổi sáng Khỉ gõ dừa rồi thả xuống 26 quả dừa già. Buổi chiều Khỉ thả thêm 17 quả dừa già nữa. Cả ngày Khỉ thả xuống tất cả bao nhiêu quả dừa già?",
+      "answer": {
+        "value": 43
+      },
+      "support": {
+        "guide": [
+          "Muốn biết cả ngày được bao nhiêu thì cộng số dừa buổi sáng với số dừa buổi chiều.",
+          "Đặt tính 26 + 17, cộng hàng đơn vị trước."
+        ],
+        "hint": "6 cộng 7 bằng 13, viết 3 nhớ 1 sang hàng chục.",
+        "answer": {
+          "text": "43 quả dừa già",
+          "explanation": "26 + 17: 6 + 7 = 13, viết 3 nhớ 1; 2 + 1 = 3, thêm 1 là 4. Vậy 26 + 17 = 43 quả dừa già."
+        },
+        "en": {
+          "guide": [
+            "To find the whole day's total, add the morning coconuts to the afternoon ones.",
+            "Write 26 + 17 in columns and add the ones first."
+          ],
+          "hint": "6 plus 7 is 13: write 3 and carry 1 to the tens.",
+          "answer": {
+            "text": "43 ripe coconuts",
+            "explanation": "26 + 17: 6 + 7 = 13, write 3 and carry 1; 2 + 1 = 3, plus the carried 1 makes 4. So 26 + 17 = 43 ripe coconuts."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn mươi ba quả! Úp úp, nhiều hơn cả số lá trên ngọn dừa của tớ!",
+          "{name} nhớ sang hàng chục khéo như tớ nhảy sang cành bên.",
+          "Đúng rồi! Tớ khắc ngay một vạch thật to lên cột lán."
+        ],
+        "wrong": [
+          "Ối, sáu với bảy được mười ba cơ, {name} nhớ một sang hàng chục chưa?",
+          "Hai chục với một chục là ba chục, đừng quên số nhớ nhé.",
+          "Cộng hàng đơn vị trước, rồi mới tới hàng chục."
+        ],
+        "en": {
+          "right": [
+            "Forty-three! Oop oop, more than the leaves on my palm top!",
+            "{name} carried to the tens as neatly as I hop to the next branch.",
+            "Right! I'm carving a big notch on the hut post this minute."
+          ],
+          "wrong": [
+            "Oops, six and seven make thirteen, {name}; did you carry the one?",
+            "Two tens and one ten are three tens; don't forget the carried one.",
+            "Add the ones first, then move on to the tens."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many in a whole day?",
+        "goTo": "Carry the coconuts into the coconut hut, where Khỉ keeps his rattan basket for counting",
+        "question": "In the morning Khỉ knocked and dropped 26 ripe coconuts. In the afternoon he dropped 17 more. How many ripe coconuts did Khỉ drop in the whole day?"
+      }
+    },
+    {
+      "id": "chu-ghi-nhan-dua",
+      "title": "Chữ ghi nhãn đống dừa",
+      "goTo": "Ra bãi phơi dừa, Khỉ dựng một tấm bảng nhãn bên đống dừa già",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-khi-mua-dua-lon-bang-nhan-dua",
+      "skill": "tu-ngu",
+      "prompt": "Khỉ muốn ghi lên bảng nhãn những từ tả quả dừa già, tức là từ chỉ đặc điểm. Chọn tất cả các từ chỉ đặc điểm:",
+      "choices": [
+        {
+          "id": "tron",
+          "text": "tròn"
+        },
+        {
+          "id": "go",
+          "text": "gõ"
+        },
+        {
+          "id": "nang",
+          "text": "nặng"
+        },
+        {
+          "id": "cay-dua",
+          "text": "cây dừa"
+        },
+        {
+          "id": "nau-sam",
+          "text": "nâu sẫm"
+        },
+        {
+          "id": "hai",
+          "text": "hái"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "tron",
+          "nang",
+          "nau-sam"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Từ chỉ đặc điểm cho biết sự vật trông thế nào: hình dáng, màu sắc, nặng nhẹ.",
+          "Từ chỉ hoạt động là việc ta làm; từ chỉ sự vật là tên gọi."
+        ],
+        "hint": "«Gõ» và «hái» là việc Khỉ làm, «cây dừa» là tên một sự vật.",
+        "answer": {
+          "text": "tròn, nặng, nâu sẫm",
+          "explanation": "«Tròn» chỉ hình dáng, «nặng» chỉ cân nặng, «nâu sẫm» chỉ màu sắc của quả dừa già. «Gõ», «hái» chỉ hoạt động, «cây dừa» chỉ sự vật."
+        },
+        "en": {
+          "guide": [
+            "A describing word tells what something is like: its shape, colour, how heavy it is.",
+            "An action word is something we do; a naming word is what a thing is called."
+          ],
+          "hint": "«Knock» and «pick» are things Khỉ does; «palm tree» is the name of a thing.",
+          "answer": {
+            "text": "round, heavy, dark brown",
+            "explanation": "«Round» tells the shape, «heavy» the weight and «dark brown» the colour of a ripe coconut. «Knock» and «pick» are actions; «palm tree» names a thing."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tròn, nặng, nâu sẫm: đọc bảng là biết ngay dừa già! Úp úp!",
+          "{name} chọn chữ chuẩn như tớ chọn quả, chẳng nhầm cái nào.",
+          "Bảng nhãn đẹp quá, sóc với kỳ đà đi ngang cũng phải dừng lại ngắm."
+        ],
+        "wrong": [
+          "«Gõ» là việc tớ làm bằng tay mà, đâu phải dáng vẻ của quả dừa.",
+          "«Cây dừa» là tên gọi, {name} tìm từ cho biết quả dừa trông thế nào nhé.",
+          "Còn sót một từ chỉ màu sắc đấy, nhìn kỹ lại xem."
+        ],
+        "en": {
+          "right": [
+            "Round, heavy, dark brown: read the board and you know they're ripe! Oop oop!",
+            "{name} picks words as well as I pick coconuts, not one wrong.",
+            "What a lovely label; even the squirrels and the monitor lizard stop to admire it."
+          ],
+          "wrong": [
+            "«Knock» is what I do with my hands, not what the coconut looks like.",
+            "«Palm tree» is a name, {name}; find words that tell what the coconut is like.",
+            "There's still a colour word left out; look again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Words for the coconut label",
+        "goTo": "Go to the coconut-drying yard, where Khỉ has set up a label board by the pile of ripe coconuts",
+        "prompt": "Khỉ wants to write words on the label that describe a ripe coconut, that is, describing words. Pick every describing word:",
+        "choices": [
+          "round",
+          "knock",
+          "heavy",
+          "palm tree",
+          "dark brown",
+          "pick"
+        ]
+      }
+    },
+    {
+      "id": "buong-dua-non",
+      "title": "Buồng dừa non bị gãy",
+      "goTo": "Ra hàng dừa sát suối, một buồng dừa non vừa gãy cuống treo lủng lẳng",
+      "kind": "decision",
+      "target": "st-khi-mua-dua-lon-buong-dua-non",
+      "speaker": "Khỉ Hái Dừa",
+      "prompt": "Gió đêm làm gãy cuống một buồng dừa non. Khỉ gõ thử ba cái, nghe «cạch cạch cạch». Cậu gãi đầu: «Non quá, mà để trên cây thì nó rơi mất. Làm sao bây giờ, {name}?»",
+      "choices": [
+        {
+          "id": "uong-nuoc",
+          "text": "Hái xuống, lấy nước dừa non mời mọi người uống",
+          "consequence": "Nước dừa non ngọt mát lạ lùng. Cả bãi phơi dừa nghỉ tay một lúc, ai cũng cười tít mắt."
+        },
+        {
+          "id": "buoc-lai",
+          "text": "Lấy dây leo buộc lại cho buồng dừa lớn tiếp",
+          "consequence": "Khỉ quấn dây leo ba vòng, thắt nút thật chặt. Buồng dừa đung đưa yên ổn, như được đeo chiếc võng nhỏ."
+        },
+        {
+          "id": "uom-mam",
+          "text": "Chọn một quả đem ươm thành cây dừa mới",
+          "consequence": "{name} vùi quả dừa xuống đất ẩm bên suối. Khỉ cắm một que nhỏ đánh dấu và hứa ngày nào cũng ghé tưới."
+        }
+      ],
+      "en": {
+        "title": "The broken bunch of young coconuts",
+        "goTo": "Go to the palm row by the stream, where a bunch of young coconuts hangs from a snapped stalk",
+        "prompt": "The night wind snapped the stalk of a bunch of young coconuts. Khỉ knocks three times and hears «clack clack clack». He scratches his head: \"Far too young, but left up there it'll fall. What now, {name}?\"",
+        "choices": [
+          {
+            "text": "Bring it down and share the young coconut water",
+            "consequence": "Young coconut water is wonderfully sweet and cool. The whole drying yard takes a break, everyone grinning ear to ear."
+          },
+          {
+            "text": "Tie it back up with a vine so the bunch keeps growing",
+            "consequence": "Khỉ winds the vine round three times and pulls the knot tight. The bunch sways safely, as if in a little hammock."
+          },
+          {
+            "text": "Pick one coconut to plant as a new palm",
+            "consequence": "{name} buries the coconut in damp earth by the stream. Khỉ pushes in a little stick to mark it and promises to water it every day."
+          }
+        ]
+      }
+    },
+    {
+      "id": "hung-dua-tu-ngon",
+      "title": "Hứng dừa từ ngọn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Khỉ trèo lên ngọn, gõ ba cái rồi thả dừa già xuống. {name} cầm giỏ hứng thật khéo, né mấy viên sỏi rơi theo, đủ hai mươi điểm là xong vụ hôm nay!",
+      "game": "egg-catch",
+      "goal": 20,
+      "en": {
+        "title": "Catching coconuts from the top",
+        "prompt": "Khỉ climbs to the top, knocks three times and drops the ripe coconuts. {name} holds the basket and catches them neatly, dodging the pebbles that fall too; twenty points and today's harvest is done!"
+      }
+    },
+    {
+      "id": "lan-day-dua",
+      "title": "Lán đầy dừa",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Lán chứa dừa đầy ắp tới tận mái. Khỉ nhảy một vòng quanh cột lán, kêu «úp úp» ba lần, rồi dúi vào tay {name} quả dừa tròn nhất vụ.",
+      "en": {
+        "title": "A hut full of coconuts",
+        "text": "The coconut hut is packed right up to the roof. Khỉ hops once round the hut post, calls «oop oop» three times, then presses the roundest coconut of the harvest into {name}'s hands."
+      }
+    },
+    {
+      "id": "loi-mon-lang-chai",
+      "title": "Lối mòn tới làng chài",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Dừa nhiều thế này, một mình Khỉ uống cả năm không hết. Khỉ nghĩ ngay tới làng chài ven biển, nơi thuyền đi xa về hay khát nước, nhưng đường từ rừng ra đó toàn lối mòn ngoằn ngoèo.",
+      "en": {
+        "title": "The trail to the fishing village",
+        "text": "With this many coconuts, Khỉ couldn't drink them all in a year. He thinks at once of the fishing village by the sea, where the boats come home thirsty, but the way out of the jungle is all winding trails."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": {
+      "phep-cong": 1,
+      "tu-ngu": 1
+    }
+  },
+  "en": {
+    "title": "Khỉ Hái Dừa's story, chapter 1: Knock three times and listen",
+    "summary": "The big coconut season has reached the tropical forest, and Khỉ Hái Dừa can't pick fast enough. {name} gathers coconuts fallen in the night, adds up the day's ripe coconuts, chooses words for the coconut label and decides what to do with a bunch of young coconuts."
+  }
+}

@@ -1,0 +1,359 @@
+{
+  "id": "yarn-canh-cut-xoay-ba-vong-1",
+  "region": "nui-tuyet",
+  "chapter": 3,
+  "title": "Chuyện của Cánh Cụt Trượt Băng, chương 1: Ba viên bi đá trốn đi",
+  "status": "active",
+  "category": "story",
+  "summary": "Đàn cánh cụt con háo hức học đẩy bi đá thì ba viên bi trượt mất tăm. {name} tìm bi lạc trong tuyết, cộng điểm hai hiệp, chọn từ chỉ hoạt động trong bài hát cổ vũ và dỗ một chú cánh cụt con đang hờn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cánh Cụt Trượt Băng",
+    "where": "Hồ băng: bờ hồ băng, đồi tuyết nhỏ, sân bi đá, lều sưởi của đàn con",
+    "goal": "Tìm lại bi đá để buổi học bi đá của đàn con được bắt đầu",
+    "play": "Tìm bi đá lạc; cộng điểm hai hiệp; chọn từ trong bài hát cổ vũ; dỗ chú cánh cụt hờn dỗi; đẩy bi đá vào vòng",
+    "learn": "Phép cộng có nhớ trong phạm vi 100, từ chỉ hoạt động",
+    "reward": "55 XP, 14 Xu, Skill XP Phép cộng, Từ ngữ",
+    "next": "Mê cung băng chỉ có một lối ra"
+  },
+  "phases": {
+    "hook": "vong-chao-ba-vien-bi",
+    "explore": "tim-bi-da-lac",
+    "learn": "cong-diem-hai-hiep",
+    "challenge": "bai-hat-co-vu",
+    "decision": "chu-cut-hon-doi",
+    "finale": "day-bi-vao-vong",
+    "reward": "vong-tron-giua-san",
+    "next": "loi-vao-me-cung"
+  },
+  "places": {
+    "canh-cut-truot-bang": "Bờ hồ băng",
+    "tim-bi-da-lac": "Đồi tuyết nhỏ",
+    "st-canh-cut-xoay-ba-vong-bi-do": "Đồi tuyết nhỏ",
+    "st-canh-cut-xoay-ba-vong-bi-vang": "Đồi tuyết nhỏ",
+    "st-canh-cut-xoay-ba-vong-bi-xanh": "Đồi tuyết nhỏ",
+    "st-canh-cut-xoay-ba-vong-bang-diem-bi": "Sân bi đá",
+    "st-canh-cut-xoay-ba-vong-bang-bai-hat": "Lều sưởi của đàn con",
+    "st-canh-cut-xoay-ba-vong-cut-con-hon": "Hồ băng"
+  },
+  "steps": [
+    {
+      "id": "vong-chao-ba-vien-bi",
+      "title": "Một vòng chào và ba viên bi",
+      "goTo": "Ra bờ hồ băng, Cánh Cụt Trượt Băng đang trượt vòng vòng giữa đàn con",
+      "kind": "dialogue",
+      "target": "canh-cut-truot-bang",
+      "lines": [
+        {
+          "speaker": "Cánh Cụt Trượt Băng",
+          "text": "Vèèèo! Một vòng quanh {name} nè, phanh bằng bụng nè, xoẹt! Chào cậu! Tớ xòe cánh tạo dáng luôn đây."
+        },
+        {
+          "speaker": "Cánh Cụt Trượt Băng",
+          "text": "Hôm nay tớ dạy bọn nhỏ đẩy bi đá mà ba viên bi trượt đi đâu mất rồi! Tám viên còn năm, tớ đếm tới đâu cũng thiếu."
+        },
+        {
+          "speaker": "Cánh Cụt Trượt Băng",
+          "text": "Bọn nhỏ đứng xếp hàng chờ, mỏ chu ra hết cả rồi kìa. Cậu tìm giúp tớ nhé? Tớ đứng một chân chờ tin vui!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Bi đá nặng thế mà cũng trốn được à?",
+          "reply": "Trên băng thì cái gì cũng trốn được hết, vèèèo một phát là xa tít! Tớ tạo dáng chỉ tay về phía bãi tuyết luôn."
+        },
+        {
+          "text": "Để mình đi tìm, cậu giữ đàn con nhé!",
+          "reply": "Tuyệt cú mèo, à không, tuyệt cú cánh cụt! Tớ giữ hàng cho, đứa nào chạy lung tung là tớ huýt sáo."
+        }
+      ],
+      "en": {
+        "title": "One greeting lap and three stones",
+        "goTo": "Go to the ice lake shore, where Cánh Cụt Trượt Băng is skating circles among the chicks",
+        "lines": [
+          "Wheeee! One lap round {name}, a belly brake, swoosh! Hello! Let me strike a wings-out pose for you.",
+          "Today I'm teaching the little ones curling and three stones have slid off somewhere! Eight stones down to five, and however I count, some are missing.",
+          "The chicks are lined up waiting with their beaks all pouty. Will you find them for me? I'll wait on one foot for good news!"
+        ],
+        "choices": [
+          {
+            "text": "Heavy curling stones can hide too?",
+            "reply": "On ice anything can hide, one wheeee and it's miles away! Here's my pointing-at-the-snowfield pose."
+          },
+          {
+            "text": "I'll go and look, you keep the chicks together!",
+            "reply": "Totally brilliant, penguin-brilliant even! I'll hold the line, and anyone who wanders gets a whistle."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-bi-da-lac",
+      "title": "Bi đá trốn trong tuyết",
+      "goTo": "Leo lên đồi tuyết nhỏ sau sân bi, tìm ba viên bi đá trượt lạc",
+      "kind": "search",
+      "targets": [
+        "st-canh-cut-xoay-ba-vong-bi-do",
+        "st-canh-cut-xoay-ba-vong-bi-vang",
+        "st-canh-cut-xoay-ba-vong-bi-xanh"
+      ],
+      "en": {
+        "title": "Curling stones hiding in the snow",
+        "goTo": "Climb the little snow hill behind the curling rink and find the three runaway stones"
+      }
+    },
+    {
+      "id": "cong-diem-hai-hiep",
+      "title": "Điểm của hai hiệp",
+      "goTo": "Mang bi về sân bi đá, xem tấm bảng điểm bọn nhỏ vẽ trên băng",
+      "kind": "riddle",
+      "target": "st-canh-cut-xoay-ba-vong-bang-diem-bi",
+      "skill": "phep-cong",
+      "question": "Hôm qua đàn cánh cụt con chơi thử hai hiệp bi đá. Hiệp một cả đàn ghi được 28 điểm, hiệp hai ghi được 35 điểm. Cả hai hiệp, đàn con ghi được bao nhiêu điểm?",
+      "answer": {
+        "value": 63
+      },
+      "support": {
+        "guide": [
+          "Muốn biết cả hai hiệp được bao nhiêu điểm, ta làm phép cộng.",
+          "Đặt tính 28 + 35: cộng hàng đơn vị trước, 8 + 5 = 13, viết 3 nhớ 1."
+        ],
+        "hint": "Hàng chục: 2 + 3 rồi thêm 1 đã nhớ.",
+        "answer": {
+          "text": "63 điểm",
+          "explanation": "28 + 35: 8 cộng 5 bằng 13, viết 3 nhớ 1; 2 cộng 3 bằng 5, thêm 1 bằng 6, viết 6. Vậy cả hai hiệp được 63 điểm."
+        },
+        "en": {
+          "guide": [
+            "To find the points for both rounds, we add.",
+            "Set out 28 + 35: add the ones first, 8 + 5 = 13, write 3 and carry 1."
+          ],
+          "hint": "Tens: 2 + 3, then add the 1 you carried.",
+          "answer": {
+            "text": "63 points",
+            "explanation": "28 + 35: 8 plus 5 is 13, write 3 carry 1; 2 plus 3 is 5, plus 1 is 6, write 6. So both rounds make 63 points."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sáu mươi ba! Vèèèo, tớ trượt một vòng ăn mừng cho con số đẹp này.",
+          "{name} nhớ số 1 khéo như tớ giữ thăng bằng trên một chân.",
+          "Chuẩn không cần chỉnh! Bọn nhỏ vỗ cánh lạch bạch quanh bảng điểm."
+        ],
+        "wrong": [
+          "Hình như {name} quên con số 1 nhớ sang hàng chục rồi.",
+          "8 cộng 5 là mười ba cơ, viết 3 rồi nhớ 1 nhé.",
+          "Cộng hàng đơn vị trước, hàng chục sau, rồi mới thêm phần nhớ."
+        ],
+        "en": {
+          "right": [
+            "Sixty-three! Wheeee, I skate a victory lap for such a fine number.",
+            "{name} carried that 1 as neatly as I balance on one foot.",
+            "Spot on! The chicks flap round the scoreboard in a waddly cheer."
+          ],
+          "wrong": [
+            "Looks like {name} forgot the 1 carried over to the tens.",
+            "8 plus 5 is thirteen, so write 3 and carry 1.",
+            "Add the ones first, then the tens, then the bit you carried."
+          ]
+        }
+      },
+      "en": {
+        "title": "Points from two rounds",
+        "goTo": "Bring the stones back to the curling rink and look at the scoreboard the chicks drew on the ice",
+        "question": "Yesterday the penguin chicks played two practice rounds of curling. In round one the flock scored 28 points, in round two 35 points. How many points did they score in both rounds?"
+      }
+    },
+    {
+      "id": "bai-hat-co-vu",
+      "title": "Bài hát cổ vũ của đàn con",
+      "goTo": "Ghé lều sưởi của đàn con, đọc bài hát cổ vũ dán trên vách lều",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-canh-cut-xoay-ba-vong-bang-bai-hat",
+      "skill": "tu-ngu",
+      "prompt": "Bài hát cổ vũ viết: «Trượt cho êm, đẩy cho đều, băng trơn nhẹ, cả đàn reo!» Chọn những từ chỉ hoạt động trong bài hát:",
+      "choices": [
+        {
+          "id": "truot",
+          "text": "trượt"
+        },
+        {
+          "id": "day",
+          "text": "đẩy"
+        },
+        {
+          "id": "bang",
+          "text": "băng"
+        },
+        {
+          "id": "nhe",
+          "text": "nhẹ"
+        },
+        {
+          "id": "reo",
+          "text": "reo"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "truot",
+          "day",
+          "reo"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Từ chỉ hoạt động cho biết ai đó đang làm gì.",
+          "Thử đặt «đang» trước từ ấy: «đang trượt» nghe hợp thì đó là hoạt động."
+        ],
+        "hint": "«Băng» là tên một sự vật, còn «nhẹ» tả đặc điểm.",
+        "answer": {
+          "text": "trượt, đẩy, reo",
+          "explanation": "Trượt, đẩy và reo là việc đàn con làm, nên là từ chỉ hoạt động. «Băng» gọi tên sự vật, «nhẹ» nói về đặc điểm."
+        },
+        "en": {
+          "guide": [
+            "An action word tells what someone is doing.",
+            "Put \"is\" in front: \"is sliding\" makes sense, so it's an action."
+          ],
+          "hint": "\"Ice\" names a thing, and \"light\" describes a quality.",
+          "answer": {
+            "text": "slide, push, cheer",
+            "explanation": "Sliding, pushing and cheering are things the chicks do, so they are action words. \"Ice\" names a thing and \"light\" tells a quality."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Trượt, đẩy, reo! Bọn nhỏ hát to tới mức tuyết trên mái lều rung rinh.",
+          "{name} lọc từ nhanh như tớ lướt qua ba vòng tròn bi đá.",
+          "Đúng hết luôn! Tớ tạo dáng chim đại bàng để khen cậu, dù tớ là cánh cụt."
+        ],
+        "wrong": [
+          "«Băng» là thứ tớ đang đứng trên đó, đâu phải việc tớ làm, {name} ơi.",
+          "«Nhẹ» tả băng thế nào thôi, thử tìm từ chỉ việc làm xem.",
+          "Còn sót một từ hoạt động ở cuối bài hát đấy, đọc lại câu cuối nhé."
+        ],
+        "en": {
+          "right": [
+            "Slide, push, cheer! The chicks sing so loud the snow on the tent roof trembles.",
+            "{name} picked the words as fast as I glide across three curling rings.",
+            "All correct! I'll strike an eagle pose to praise you, even though I'm a penguin."
+          ],
+          "wrong": [
+            "\"Ice\" is what I'm standing on, not something I do, {name}.",
+            "\"Light\" only tells how the ice feels; look for words that are doings.",
+            "There's one more action word at the end of the song; read the last line again."
+          ]
+        }
+      },
+      "en": {
+        "title": "The chicks' cheering song",
+        "goTo": "Stop by the chicks' warming tent and read the cheering song pinned to the tent wall",
+        "prompt": "The cheering song goes: \"Slide so smooth, push so true, slippery ice is light, the whole flock cheers!\" Pick the action words in the song:",
+        "choices": [
+          "slide",
+          "push",
+          "ice",
+          "light",
+          "cheer"
+        ]
+      }
+    },
+    {
+      "id": "chu-cut-hon-doi",
+      "title": "Chú cánh cụt con hờn dỗi",
+      "goTo": "Ra mặt hồ băng, một chú cánh cụt con đang quay lưng lại cả đàn",
+      "kind": "decision",
+      "target": "st-canh-cut-xoay-ba-vong-cut-con-hon",
+      "speaker": "Cánh Cụt Trượt Băng",
+      "prompt": "Chú cánh cụt nhỏ nhất đẩy bi lần nào cũng trượt ra ngoài vòng, giờ ngồi phụng phịu không chịu chơi nữa. Cánh Cụt thì thầm: «Tớ nói nhanh quá, bé không theo kịp. Cậu giúp tớ với?»",
+      "choices": [
+        {
+          "id": "day-cung",
+          "text": "Ngồi xuống cạnh bé, cùng đặt tay lên viên bi mà đẩy",
+          "consequence": "Hai bàn tay đẩy chung một viên bi. Viên bi chạy chậm rì rì rồi dừng ngay mép vòng xanh. Bé nhảy cẫng lên như vừa vô địch."
+        },
+        {
+          "id": "doi-luat",
+          "text": "Đề nghị cho bé đứng gần vòng tròn hơn một chút",
+          "consequence": "Cánh Cụt kẻ một vạch mới bằng mũi chân, gọi là «vạch của người tập». Bé đẩy lần đầu đã trúng, cả đàn reo rần rần."
+        },
+        {
+          "id": "giao-viec",
+          "text": "Giao cho bé làm người xoa băng phía trước viên bi",
+          "consequence": "Bé cầm cái chổi nhỏ, xoa lấy xoa để. Viên bi của anh chị trượt xa thêm, và bé được khen là người xoa băng giỏi nhất hồ."
+        }
+      ],
+      "en": {
+        "title": "The sulking penguin chick",
+        "goTo": "Go out onto the ice lake, where a penguin chick has turned its back on the flock",
+        "prompt": "The smallest chick's stone slides out of the rings every time, and now it sits pouting and won't play. Cánh Cụt whispers: \"I talk too fast and the little one can't keep up. Will you help?\"",
+        "choices": [
+          {
+            "text": "Sit beside the chick and push the stone together",
+            "consequence": "Two pairs of hands push one stone. It creeps along slowly and stops right on the edge of the blue ring. The chick leaps about as if it had won a championship."
+          },
+          {
+            "text": "Suggest the chick stands a little closer to the rings",
+            "consequence": "Cánh Cụt draws a new line with his toe and calls it \"the learner's line\". The chick hits the rings on the very first push and the whole flock cheers."
+          },
+          {
+            "text": "Make the chick the sweeper in front of the stone",
+            "consequence": "The chick grabs a little broom and sweeps away. The older chicks' stones slide further, and the little one is praised as the best sweeper on the lake."
+          }
+        ]
+      }
+    },
+    {
+      "id": "day-bi-vao-vong",
+      "title": "Đẩy bi vào giữa vòng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tới lượt {name} làm mẫu cho đàn con! Đẩy bi đá trượt vào vòng tròn, đủ năm điểm là bọn nhỏ phục cậu sát đất.",
+      "game": "curling",
+      "goal": 5,
+      "en": {
+        "title": "Stones into the rings",
+        "prompt": "Your turn to show the chicks how, {name}! Slide the stones into the rings; five points and the little ones will think you're a legend."
+      }
+    },
+    {
+      "id": "vong-tron-giua-san",
+      "title": "Vòng tròn giữa sân",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tám viên bi đã đủ, đàn con chơi tới lúc má ửng hồng. Cánh Cụt trượt một vòng quanh {name}, phanh bằng bụng, rồi giơ hai cánh tạo dáng ngôi sao: «Cậu là trợ giảng xịn nhất của tớ!»",
+      "en": {
+        "title": "The circle in the middle of the rink",
+        "text": "All eight stones are back, and the chicks play until their cheeks turn pink. Cánh Cụt skates a lap round {name}, brakes on his belly and throws out both wings in a star pose: \"You're my best assistant coach ever!\""
+      }
+    },
+    {
+      "id": "loi-vao-me-cung",
+      "title": "Lối vào mê cung",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chiều mai Cánh Cụt dắt đàn con vào mê cung băng. Cậu bảo mê cung chỉ có đúng một lối ra, mà dạo này tuyết rơi phủ kín mấy cái mốc chỉ đường.",
+      "en": {
+        "title": "The way into the maze",
+        "text": "Tomorrow afternoon Cánh Cụt is taking the chicks into the ice maze. He says it has exactly one way out, and lately the snow has buried the markers that show the way."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": {
+      "phep-cong": 1,
+      "tu-ngu": 1
+    }
+  },
+  "en": {
+    "title": "Cánh Cụt Trượt Băng's story, chapter 1: Three runaway curling stones",
+    "summary": "The penguin chicks are eager to learn curling, but three stones have slid out of sight. {name} finds them in the snow, adds up two rounds of points, picks the action words in the cheering song and comforts a sulking chick."
+  }
+}

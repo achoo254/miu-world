@@ -1,0 +1,387 @@
+{
+  "id": "yarn-koala-nghin-manh-1",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Chuyện của Koala Ghép Tranh, chương 1: Gió thổi tung hộp mảnh ghép",
+  "status": "active",
+  "category": "story",
+  "summary": "Một cơn gió lật nắp hộp tranh tập ghép của Koala, mảnh bay khắp vườn đọc sách. {name} nhặt mảnh theo lời tả, đếm số mảnh viền còn thiếu, xếp lại câu Koala viết và chọn chỗ ghép tranh mà gió không quấy được.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Koala Ghép Tranh",
+    "where": "Vườn đọc sách: tảng đá phẳng, gốc sim tím, thềm đá ven vườn, bãi cát nhỏ",
+    "goal": "Gom lại hộp tranh tập ghép một trăm mảnh của Koala",
+    "play": "Nhặt mảnh theo lời tả; đếm mảnh viền còn thiếu; xếp câu; chọn chỗ ghép tranh; thổi lá tìm mảnh",
+    "learn": "Phép trừ có nhớ trong phạm vi 100, sắp xếp từ thành câu",
+    "reward": "55 XP, 14 Xu, Skill XP Phép trừ, Ghép câu",
+    "next": "Đi khảo sát thư viện để phác bức tranh nghìn mảnh"
+  },
+  "phases": {
+    "hook": "gio-lat-nap-hop",
+    "explore": "nhat-manh-quanh-da",
+    "learn": "dem-manh-vien-con-thieu",
+    "challenge": "cau-viet-tren-nap",
+    "decision": "cho-ghep-khong-gio",
+    "finale": "thoi-la-tim-manh",
+    "reward": "khung-vien-da-kin",
+    "next": "phac-thao-thu-vien"
+  },
+  "places": {
+    "koala-ghep-tranh": "Vườn đọc sách",
+    "nhat-manh-quanh-da": "Tảng đá phẳng",
+    "st-koala-nghin-manh-manh-goc-mai": "Tảng đá phẳng",
+    "st-koala-nghin-manh-manh-vien-co": "Tảng đá phẳng",
+    "st-koala-nghin-manh-manh-giua-may": "Tảng đá phẳng",
+    "st-koala-nghin-manh-nap-hop-tranh": "Gốc sim tím",
+    "st-koala-nghin-manh-day-chu-giay": "Thềm đá ven vườn",
+    "st-koala-nghin-manh-khung-tranh-tap": "Bãi cát nhỏ"
+  },
+  "steps": [
+    {
+      "id": "gio-lat-nap-hop",
+      "title": "Hộp tranh bay mất nắp",
+      "goTo": "Vào vườn đọc sách, Koala Ghép Tranh đang ôm chiếc hộp rỗng, mắt còn díp lại",
+      "kind": "dialogue",
+      "target": "koala-ghep-tranh",
+      "lines": [
+        {
+          "speaker": "Koala Ghép Tranh",
+          "text": "Ưm… {name} đấy à. Tớ vừa chợp mắt… thì gió lật nắp hộp. Một trăm mảnh… bay như đàn bướm."
+        },
+        {
+          "speaker": "Koala Ghép Tranh",
+          "text": "Đây là tranh tập thôi. Tớ đang luyện tay… để một ngày ghép bức nghìn mảnh vẽ cả thư viện, đủ từng ô cửa sổ."
+        },
+        {
+          "speaker": "Koala Ghép Tranh",
+          "text": "Sáng nay vườn giống một bức tranh thiếu góc. Cậu nhặt giúp tớ nhé… tớ sẽ làm phần viền trước, như mọi khi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cậu đừng ngủ gật nữa, tớ đi nhặt ngay đây!",
+          "reply": "Thấy mảnh ghép là tớ tỉnh liền… cậu xem này, mắt tớ tròn xoe rồi."
+        },
+        {
+          "text": "Sao lúc nào cũng phải làm viền trước?",
+          "reply": "Có viền là có khung… có khung thì mảnh giữa biết đường về nhà."
+        }
+      ],
+      "en": {
+        "title": "The puzzle box loses its lid",
+        "goTo": "Go into the reading garden, where Koala Ghép Tranh is hugging an empty box, eyes still drooping",
+        "lines": [
+          "Mm… is that you, {name}? I'd just dozed off… and the wind flipped the lid. A hundred pieces… flew off like butterflies.",
+          "It's only a practice puzzle. I'm training my paws… so one day I can build the thousand-piece one of the whole library, every window included.",
+          "This morning the garden looks like a picture with a corner missing. Help me gather them… I'll do the edges first, as always."
+        ],
+        "choices": [
+          {
+            "text": "No more nodding off, I'm going to pick them up right now!",
+            "reply": "One look at a piece and I'm wide awake… see, my eyes are big and round now."
+          },
+          {
+            "text": "Why do you always have to do the edges first?",
+            "reply": "Edges make a frame… and with a frame, the middle pieces know the way home."
+          }
+        ]
+      }
+    },
+    {
+      "id": "nhat-manh-quanh-da",
+      "title": "Ba mảnh quanh tảng đá",
+      "goTo": "Ra tảng đá phẳng, gió dồn mấy mảnh tranh vào khe cỏ quanh đó",
+      "kind": "find-object",
+      "prompt": "Koala tả từng mảnh rất kỹ, giọng ngái ngủ mà không sai chi tiết nào. Đọc lời tả rồi nhặt cho đúng:",
+      "items": [
+        {
+          "id": "goc-mai",
+          "name": "Mảnh góc mái ngói",
+          "clue": "Có hai cạnh thẳng gặp nhau như góc quyển vở, trên mặt là một khúc mái ngói đỏ.",
+          "target": "st-koala-nghin-manh-manh-goc-mai"
+        },
+        {
+          "id": "vien-co",
+          "name": "Mảnh viền bãi cỏ",
+          "clue": "Chỉ một cạnh thẳng ở phía dưới, phía trên in mấy ngọn cỏ xanh lơ thơ.",
+          "target": "st-koala-nghin-manh-manh-vien-co"
+        },
+        {
+          "id": "giua-may",
+          "name": "Mảnh mây giữa tranh",
+          "clue": "Không có cạnh thẳng nào, bốn phía đều lồi lõm, giữa in một gợn mây trắng.",
+          "target": "st-koala-nghin-manh-manh-giua-may"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Three pieces round the rock",
+        "goTo": "Go to the flat rock, where the wind has pushed a few pieces into the grass around it",
+        "prompt": "Koala describes each piece in detail; sleepy voice, not one detail wrong. Read the description and pick up the right one:",
+        "items": [
+          {
+            "name": "Roof-tile corner piece",
+            "clue": "Two straight sides meet like the corner of an exercise book, and on top is a strip of red roof tiles."
+          },
+          {
+            "name": "Grass edge piece",
+            "clue": "Just one straight side along the bottom, with a few thin blades of green grass printed above it."
+          },
+          {
+            "name": "Cloud piece from the middle",
+            "clue": "No straight side at all, bumps and dips all round, and a wisp of white cloud in the centre."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dem-manh-vien-con-thieu",
+      "title": "Viền còn thiếu mấy mảnh?",
+      "goTo": "Mang mảnh ghép tới gốc sim tím, Koala đã úp nắp hộp ra đất làm bàn đếm",
+      "kind": "riddle",
+      "target": "st-koala-nghin-manh-nap-hop-tranh",
+      "skill": "phep-tru",
+      "question": "Tranh tập của Koala có tất cả 36 mảnh viền. Koala đã gom được 28 mảnh viền lên nắp hộp. Còn bao nhiêu mảnh viền đang lạc trong vườn?",
+      "answer": {
+        "value": 8
+      },
+      "support": {
+        "guide": [
+          "Muốn biết còn thiếu bao nhiêu, ta lấy số mảnh viền cả tranh trừ đi số mảnh đã gom.",
+          "Đặt tính 36 − 28: hàng đơn vị 6 không trừ được 8, mượn một chục."
+        ],
+        "hint": "16 − 8 = 8, rồi hàng chục còn 2 − 2 = 0.",
+        "answer": {
+          "text": "8 mảnh viền",
+          "explanation": "36 − 28 = 8. Hàng đơn vị: 16 − 8 = 8, nhớ 1. Hàng chục: 3 − 1 − 2 = 0. Vậy còn 8 mảnh viền đang lạc trong vườn."
+        },
+        "en": {
+          "guide": [
+            "To find how many are missing, take the edge pieces of the whole picture and subtract the ones already gathered.",
+            "Work out 36 − 28: in the ones, 6 can't take away 8, so borrow a ten."
+          ],
+          "hint": "16 − 8 = 8, and then the tens leave 2 − 2 = 0.",
+          "answer": {
+            "text": "8 edge pieces",
+            "explanation": "36 − 28 = 8. Ones: 16 − 8 = 8, carry 1. Tens: 3 − 1 − 2 = 0. So 8 edge pieces are still lost in the garden."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tám mảnh… Koala khẽ gật, như vừa thấy khung tranh hiện ra trong đầu.",
+          "{name} mượn chục khéo như lách một mảnh ghép vào khe hẹp.",
+          "Chỉ còn tám thôi à… thế thì khung viền sắp kín rồi."
+        ],
+        "wrong": [
+          "Hàng đơn vị 6 bé hơn 8, {name} nhớ mượn một chục nhé.",
+          "Thiếu bao nhiêu thì phải làm tính trừ, không phải tính cộng đâu.",
+          "Thử đếm thêm từ 28 lên tới 36 xem phải đếm mấy bước."
+        ],
+        "en": {
+          "right": [
+            "Eight pieces… Koala nods softly, as if he can already see the frame in his head.",
+            "{name} borrowed that ten as deftly as slipping a piece into a narrow gap.",
+            "Only eight left… then the edge frame is nearly closed."
+          ],
+          "wrong": [
+            "In the ones, 6 is smaller than 8, {name}; remember to borrow a ten.",
+            "Finding what's missing is a subtraction, not an addition.",
+            "Try counting on from 28 up to 36 and see how many steps it takes."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many edge pieces are missing?",
+        "goTo": "Take the pieces to the purple myrtle tree, where Koala has laid the box lid upside down as a counting table",
+        "question": "Koala's practice puzzle has 36 edge pieces in all. Koala has gathered 28 of them on the box lid. How many edge pieces are still lost in the garden?"
+      }
+    },
+    {
+      "id": "cau-viet-tren-nap",
+      "title": "Câu chữ bị gió xáo",
+      "goTo": "Lên thềm đá ven vườn, mấy dải giấy chữ của Koala vướng ở đó",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-koala-nghin-manh-day-chu-giay",
+      "skill": "ghep-cau",
+      "prompt": "Koala viết câu nhắc mình lên bốn dải giấy, gió thổi lộn thứ tự cả rồi. Xếp các dải giấy thành câu đúng:",
+      "items": [
+        {
+          "id": "phan-vien",
+          "label": "phần viền"
+        },
+        {
+          "id": "truoc-tien",
+          "label": "trước tiên."
+        },
+        {
+          "id": "koala",
+          "label": "Koala"
+        },
+        {
+          "id": "luon-ghep",
+          "label": "luôn ghép"
+        }
+      ],
+      "answer": {
+        "order": [
+          "koala",
+          "luon-ghep",
+          "phan-vien",
+          "truoc-tien"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Câu bắt đầu bằng chữ viết hoa và kết thúc bằng dấu chấm.",
+          "Tìm xem ai làm việc, rồi làm việc gì, làm với cái gì."
+        ],
+        "hint": "Dải có dấu chấm đứng cuối; dải viết hoa đứng đầu.",
+        "answer": {
+          "text": "Koala luôn ghép phần viền trước tiên.",
+          "explanation": "«Koala» viết hoa nên đứng đầu, cho biết ai. «luôn ghép» là việc Koala làm, «phần viền» là cái được ghép, «trước tiên.» có dấu chấm nên đứng cuối câu."
+        },
+        "en": {
+          "guide": [
+            "A sentence starts with a capital letter and ends with a full stop.",
+            "Find who does something, then what they do, then what they do it to."
+          ],
+          "hint": "The strip with the full stop goes last; the strip with the capital goes first.",
+          "answer": {
+            "text": "Koala always puts the edges together first.",
+            "explanation": "\"Koala\" has a capital, so it starts the sentence and says who. \"always puts together\" is what Koala does, \"the edges\" is what gets put together, and \"first.\" has the full stop, so it ends the sentence."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Câu thẳng thớm như một hàng mảnh viền. Koala đọc to, rồi ngáp một cái thật dài.",
+          "{name} ghép chữ chẳng kém gì Koala ghép tranh.",
+          "Đúng rồi… câu này tớ dán lên nắp hộp, cho gió đọc mà biết đường."
+        ],
+        "wrong": [
+          "Dải có dấu chấm thì phải đứng cuối câu, {name} ơi.",
+          "Chữ viết hoa mở đầu câu, thử đưa nó lên đầu xem.",
+          "Đọc lại thành tiếng: nghe có giống lời Koala hay nói không?"
+        ],
+        "en": {
+          "right": [
+            "The sentence is as straight as a row of edge pieces. Koala reads it aloud, then gives a very long yawn.",
+            "{name} fits words together every bit as well as Koala fits puzzles.",
+            "That's it… I'll stick this on the box lid, so the wind can read it and behave."
+          ],
+          "wrong": [
+            "The strip with the full stop belongs at the end, {name}.",
+            "The capital letter opens the sentence; try moving it to the front.",
+            "Read it out loud: does it sound like something Koala would say?"
+          ]
+        }
+      },
+      "en": {
+        "title": "Words shuffled by the wind",
+        "goTo": "Go up to the stone terrace by the garden, where some of Koala's paper word strips are caught",
+        "prompt": "Koala wrote a reminder on four paper strips, and the wind mixed up their order. Put the strips in order to make the sentence:",
+        "items": [
+          "the edges",
+          "first.",
+          "Koala",
+          "always puts together"
+        ]
+      }
+    },
+    {
+      "id": "cho-ghep-khong-gio",
+      "title": "Ghép ở đâu cho gió chịu thua?",
+      "goTo": "Ra bãi cát nhỏ, Koala dựng tạm khung tranh tập ở đó",
+      "kind": "decision",
+      "target": "st-koala-nghin-manh-khung-tranh-tap",
+      "speaker": "Koala Ghép Tranh",
+      "prompt": "Koala dụi mắt nhìn khung tranh: «Gió hôm nay nghịch quá… mình ghép tiếp ở đâu thì mảnh không bay nữa nhỉ?»",
+      "choices": [
+        {
+          "id": "da-chan-goc",
+          "text": "Ghép ngay đây, chặn bốn viên sỏi lên bốn góc",
+          "consequence": "Bốn viên sỏi tròn ngồi chễm chệ ở bốn góc. Gió thổi qua chỉ làm tóc Koala dựng lên, tranh vẫn nằm im."
+        },
+        {
+          "id": "vao-hien",
+          "text": "Mang khung tranh vào hiên, chỗ khuất gió",
+          "consequence": "Trong hiên mát và yên ắng. Koala bảo chỗ này hợp ghép tranh, mà cũng hợp… chợp mắt năm phút."
+        },
+        {
+          "id": "khan-phu",
+          "text": "Phủ khăn mỏng lên phần đã ghép, mở dần từng góc",
+          "consequence": "{name} trải khăn, chỉ chừa một góc nhỏ để ghép. Koala thích lắm: «Như mở từng trang truyện vậy.»"
+        }
+      ],
+      "en": {
+        "title": "Where can we beat the wind?",
+        "goTo": "Go to the little sandy patch, where Koala has set up the practice frame for now",
+        "prompt": "Koala rubs his eyes and looks at the frame: \"The wind is so naughty today… where can we carry on so the pieces stop flying?\"",
+        "choices": [
+          {
+            "text": "Right here, with a pebble holding down each corner",
+            "consequence": "Four round pebbles sit proudly on the four corners. The wind only makes Koala's fur stand up; the puzzle stays put."
+          },
+          {
+            "text": "Carry the frame onto the porch, out of the wind",
+            "consequence": "The porch is cool and quiet. Koala says it's a good spot for puzzles, and also for… a five-minute nap."
+          },
+          {
+            "text": "Cover the finished part with a thin cloth and uncover one corner at a time",
+            "consequence": "{name} spreads the cloth, leaving just one small corner to work on. Koala loves it: \"Like turning a storybook one page at a time.\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "thoi-la-tim-manh",
+      "title": "Thổi lá tìm mảnh",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Lá sim rụng phủ kín mấy mảnh viền cuối cùng! Thổi lá gom vào khung cho sân sạch bóng, mười lăm điểm là tám mảnh viền lộ ra hết.",
+      "game": "leaf-blow",
+      "goal": 15,
+      "en": {
+        "title": "Blowing leaves to find pieces",
+        "prompt": "Fallen myrtle leaves have covered the last edge pieces! Blow the leaves into the frame until the yard is clear; fifteen points and all eight edge pieces come to light."
+      }
+    },
+    {
+      "id": "khung-vien-da-kin",
+      "title": "Khung viền đã kín",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mảnh viền cuối khớp vào, kêu tách một tiếng rất khẽ. Koala ôm khung tranh tập, mắt tỉnh hẳn: «Có khung rồi… phần giữa để mai, giờ tớ ngủ cái đã.» Rồi Koala ngủ thật, tay vẫn đặt lên góc tranh.",
+      "en": {
+        "title": "The edge frame is closed",
+        "text": "The last edge piece clicks in with the softest snap. Koala hugs the practice frame, suddenly wide awake: \"We have a frame… the middle can wait till tomorrow; now I need a nap.\" And he really does nap, one paw still resting on a corner of the puzzle."
+      }
+    },
+    {
+      "id": "phac-thao-thu-vien",
+      "title": "Phác thảo cả thư viện",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tỉnh dậy, Koala nói luôn: tranh tập xong rồi, giờ phải vẽ phác bức tranh nghìn mảnh. Muốn vẽ đủ từng ô cửa sổ thì phải đi đếm cửa sổ của thư viện thật.",
+      "en": {
+        "title": "Sketching the whole library",
+        "text": "As soon as he wakes, Koala says it: the practice puzzle is done, so now he must sketch the thousand-piece picture. To draw every window, someone has to go and count the real library's windows."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": {
+      "phep-tru": 1,
+      "ghep-cau": 1
+    }
+  },
+  "en": {
+    "title": "Koala Ghép Tranh's story, chapter 1: The wind scatters the puzzle box",
+    "summary": "A gust flips the lid of Koala's practice puzzle and the pieces fly all over the reading garden. {name} picks up pieces from Koala's descriptions, works out how many edge pieces are missing, puts Koala's sentence back in order and picks a spot where the wind can't spoil the puzzle."
+  }
+}

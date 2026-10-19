@@ -1,0 +1,394 @@
+{
+  "id": "yarn-meo-hop-nhac-tang-ban-2",
+  "region": "thu-vien",
+  "chapter": 2,
+  "title": "Chuyện của Mèo Hộp Nhạc, chương 2: Phiếu bài hát của bạn đọc",
+  "status": "active",
+  "category": "story",
+  "summary": "Mèo phát phiếu cho bạn đọc ghi tên bài hát yêu thích, nhưng gió cuốn mấy tờ phiếu đi. {name} nhặt phiếu, xếp tên bài theo thứ tự bảng chữ cái, tìm từ chỉ hoạt động trong một lời bài hát, chọn bài khắc trước rồi cắm chốt cho cuộn nhạc mới.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Hộp Nhạc",
+    "where": "Sân lễ hội lá vàng: đường lá vàng, bàn đá dưới cây lá vàng, bể nước tròn, hòm phiếu bạn đọc",
+    "goal": "Gom phiếu bài hát yêu thích và làm cuộn nhạc đầu tiên",
+    "play": "Nhặt phiếu bay; xếp tên bài theo bảng chữ cái; chọn từ chỉ hoạt động; chọn bài làm trước; cắm chốt cuộn nhạc",
+    "learn": "Thứ tự bảng chữ cái, từ chỉ hoạt động",
+    "reward": "70 XP, 19 Xu, Skill XP Bảng chữ cái, Từ ngữ",
+    "next": "Buổi hòa nhạc dưới cây lá vàng"
+  },
+  "phases": {
+    "hook": "phat-phieu",
+    "explore": "nhat-phieu-bay",
+    "learn": "xep-ten-bai",
+    "challenge": "tu-chi-hoat-dong",
+    "decision": "bai-nao-truoc",
+    "finale": "cam-chot-cuon-nhac",
+    "reward": "cuon-nhac-dau-tien",
+    "next": "hen-buoi-hoa-nhac"
+  },
+  "places": {
+    "meo-hop-nhac": "Giữa sân lễ hội",
+    "nhat-phieu-bay": "Đường lá vàng",
+    "st-meo-hop-nhac-tang-ban-phieu-hong": "Đường lá vàng",
+    "st-meo-hop-nhac-tang-ban-phieu-xanh": "Đường lá vàng",
+    "st-meo-hop-nhac-tang-ban-phieu-do": "Đường lá vàng",
+    "st-meo-hop-nhac-tang-ban-hop-the-bai": "Bàn đá gốc cây",
+    "st-meo-hop-nhac-tang-ban-so-loi-bai": "Bể nước tròn",
+    "st-meo-hop-nhac-tang-ban-hom-phieu": "Hòm phiếu bạn đọc"
+  },
+  "steps": [
+    {
+      "id": "phat-phieu",
+      "title": "Mỗi bạn một tờ phiếu",
+      "goTo": "Quay lại giữa sân lễ hội, Mèo đang ôm một xấp phiếu giấy màu",
+      "kind": "dialogue",
+      "target": "meo-hop-nhac",
+      "lines": [
+        {
+          "speaker": "Mèo Hộp Nhạc",
+          "text": "Tinh tang, {name} tới đúng lúc! Tớ phát phiếu cho bạn đọc, mỗi bạn ghi tên một bài hát mình thích nhất."
+        },
+        {
+          "speaker": "Mèo Hộp Nhạc",
+          "text": "Tớ sẽ khắc từng bài thành cuộn nhạc, thế là ai ghé sân lễ hội cũng nghe được bài của riêng mình."
+        },
+        {
+          "speaker": "Mèo Hộp Nhạc",
+          "text": "Có điều… tinh tang… vừa thu được mấy tờ thì gió thổi phăng ra phía đường lá vàng mất rồi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để mình chạy theo nhặt phiếu về!",
+          "reply": "Cảm ơn cậu! Phiếu hồng, phiếu xanh, phiếu đỏ, đừng sót tờ nào nhé."
+        },
+        {
+          "text": "Một bài cho từng người, nghe tuyệt quá!",
+          "reply": "Tinh tang, tớ cũng nghĩ thế. Cả thư viện sẽ thành một dàn nhạc nhỏ."
+        }
+      ],
+      "en": {
+        "title": "A slip for every reader",
+        "goTo": "Go back to the middle of the festival yard, where Mèo is hugging a stack of coloured paper slips",
+        "lines": [
+          "Ting-a-ling, {name}, perfect timing! I'm handing out slips so each reader can write the one song they love best.",
+          "I'll carve every song into a music roll, so anyone who visits the festival yard can hear a song of their very own.",
+          "Only… ting-a-ling… I'd collected just a few when the wind whisked them off towards the golden-leaf path."
+        ],
+        "choices": [
+          {
+            "text": "I'll run after them and bring the slips back!",
+            "reply": "Thank you! A pink one, a blue one, a red one; don't miss a single slip."
+          },
+          {
+            "text": "A song for each person, that sounds wonderful!",
+            "reply": "Ting-a-ling, I think so too. The whole library will become a little orchestra."
+          }
+        ]
+      }
+    },
+    {
+      "id": "nhat-phieu-bay",
+      "title": "Phiếu bay trên đường lá",
+      "goTo": "Chạy dọc đường lá vàng nhặt ba tờ phiếu bị gió cuốn",
+      "kind": "search",
+      "targets": [
+        "st-meo-hop-nhac-tang-ban-phieu-hong",
+        "st-meo-hop-nhac-tang-ban-phieu-xanh",
+        "st-meo-hop-nhac-tang-ban-phieu-do"
+      ],
+      "en": {
+        "title": "Slips on the leafy path",
+        "goTo": "Run along the golden-leaf path and pick up the three slips the wind carried off"
+      }
+    },
+    {
+      "id": "xep-ten-bai",
+      "title": "Xếp tên bài theo chữ cái",
+      "goTo": "Mang phiếu tới bàn đá gốc cây lá vàng, nơi Mèo để hộp thẻ bài hát",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-meo-hop-nhac-tang-ban-hop-the-bai",
+      "skill": "bang-chu-cai",
+      "prompt": "Mèo muốn cắm thẻ bài hát vào hộp theo thứ tự bảng chữ cái của chữ cái đầu tên bài. Xếp các thẻ từ trước ra sau:",
+      "items": [
+        {
+          "id": "dan-ga",
+          "label": "Đàn gà mổ thóc"
+        },
+        {
+          "id": "bong-hoa",
+          "label": "Bông hoa giấy đỏ"
+        },
+        {
+          "id": "dong-song",
+          "label": "Dòng sông lá vàng"
+        },
+        {
+          "id": "anh-nen",
+          "label": "Ánh nến đêm thu"
+        }
+      ],
+      "answer": {
+        "order": [
+          "anh-nen",
+          "bong-hoa",
+          "dong-song",
+          "dan-ga"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Nhìn chữ cái đầu của mỗi tên bài: Đ, B, D, A.",
+          "Nhớ lại bảng chữ cái: a, ă, â, b, c, d, đ, e…"
+        ],
+        "hint": "Chữ D đứng ngay trước chữ Đ trong bảng chữ cái.",
+        "answer": {
+          "text": "Ánh nến đêm thu, Bông hoa giấy đỏ, Dòng sông lá vàng, Đàn gà mổ thóc",
+          "explanation": "Chữ cái đầu lần lượt là A, B, D, Đ. Trong bảng chữ cái, A đứng trước B, B trước D, và D đứng ngay trước Đ."
+        },
+        "en": {
+          "guide": [
+            "Look at the first letter of each title: Đ, B, D, A.",
+            "Recall the Vietnamese alphabet: a, ă, â, b, c, d, đ, e…"
+          ],
+          "hint": "D comes right before Đ in the alphabet.",
+          "answer": {
+            "text": "Candle on an Autumn Night, Red Paper Flower, River of Gold Leaves, Chicks Pecking Rice",
+            "explanation": "The first letters are A, B, D and Đ. In the Vietnamese alphabet A comes before B, B before D, and D just before Đ."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tinh tang! Hộp thẻ ngay ngắn, rút bài nào ra cũng thấy liền.",
+          "{name} phân biệt D với Đ rõ như nốt Đô với nốt Rê.",
+          "Thứ tự chuẩn rồi, các thẻ đứng thẳng hàng như phím đàn."
+        ],
+        "wrong": [
+          "Chữ Đ có thêm một gạch ngang, nó đứng sau chữ D đấy {name}.",
+          "Ánh nến bắt đầu bằng chữ A, nên phải đứng đầu tiên chứ.",
+          "Đọc thầm bảng chữ cái từ đầu, gặp chữ nào thì đặt thẻ ấy."
+        ],
+        "en": {
+          "right": [
+            "Ting-a-ling! The card box is tidy; any song can be found in a flash.",
+            "{name} tells D from Đ as clearly as a C from a D note.",
+            "Perfect order; the cards stand in a line like piano keys."
+          ],
+          "wrong": [
+            "Đ has an extra little crossbar and comes after D, {name}.",
+            "Candle starts with A in Vietnamese, so it goes first.",
+            "Say the alphabet quietly from the start and place each card as you reach its letter."
+          ]
+        }
+      },
+      "en": {
+        "title": "Titles in alphabetical order",
+        "goTo": "Take the slips to the stone table under the golden-leaf tree, where Mèo keeps his box of song cards",
+        "prompt": "Mèo wants to file the song cards by the first letter of each title, in alphabetical order. Sort them from first to last:",
+        "items": [
+          "Đàn gà mổ thóc (Chicks Pecking Rice)",
+          "Bông hoa giấy đỏ (Red Paper Flower)",
+          "Dòng sông lá vàng (River of Gold Leaves)",
+          "Ánh nến đêm thu (Candle on an Autumn Night)"
+        ]
+      }
+    },
+    {
+      "id": "tu-chi-hoat-dong",
+      "title": "Những chữ biết nhảy múa",
+      "goTo": "Ra bể nước tròn, cuốn sổ chép lời bài hát của một bạn đọc để quên trên thành bể",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-meo-hop-nhac-tang-ban-so-loi-bai",
+      "skill": "tu-ngu",
+      "prompt": "Lời bài hát trong sổ viết: «Bạn nhỏ chạy ra sân, nhảy qua đống lá, rồi cười vang dưới tán cây.» Mèo muốn đặt chốt nhạc vui nhất vào đúng những từ chỉ hoạt động. Chọn tất cả các từ chỉ hoạt động:",
+      "choices": [
+        {
+          "id": "chay",
+          "text": "chạy"
+        },
+        {
+          "id": "dong-la",
+          "text": "đống lá"
+        },
+        {
+          "id": "nhay",
+          "text": "nhảy"
+        },
+        {
+          "id": "ban-nho",
+          "text": "bạn nhỏ"
+        },
+        {
+          "id": "cuoi",
+          "text": "cười"
+        },
+        {
+          "id": "tan-cay",
+          "text": "tán cây"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "chay",
+          "nhay",
+          "cuoi"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Từ chỉ hoạt động nói về việc mà người hay con vật đang làm.",
+          "Thử đặt câu hỏi «bạn nhỏ làm gì?» với từng từ."
+        ],
+        "hint": "Có ba từ là việc bạn nhỏ làm, ba từ còn lại là tên người hoặc tên sự vật.",
+        "answer": {
+          "text": "chạy, nhảy, cười",
+          "explanation": "Chạy, nhảy, cười là những việc bạn nhỏ làm nên là từ chỉ hoạt động. Bạn nhỏ, đống lá, tán cây là từ chỉ người và sự vật."
+        },
+        "en": {
+          "guide": [
+            "An action word tells us what someone is doing.",
+            "Ask \"what does the child do?\" for each word."
+          ],
+          "hint": "Three words are things the child does; the other three name a person or a thing.",
+          "answer": {
+            "text": "run, jump, laugh",
+            "explanation": "Run, jump and laugh are things the child does, so they are action words. Child, leaf pile and tree canopy name a person and things."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chạy, nhảy, cười! Ba chốt vui nhất đã tìm được chỗ đứng, tinh tang.",
+          "{name} nghe ra những chữ đang chuyển động trong câu.",
+          "Đúng rồi, bài hát này chắc sẽ rộn ràng như bước chân bạn nhỏ."
+        ],
+        "wrong": [
+          "Đống lá nằm yên một chỗ thôi, nó không làm gì cả {name} ạ.",
+          "Hỏi «bạn nhỏ làm gì?» rồi nghe câu trả lời nhé.",
+          "Còn sót một từ chỉ việc làm đấy, đọc lại cuối câu xem."
+        ],
+        "en": {
+          "right": [
+            "Run, jump, laugh! The three jolliest pins have found their places, ting-a-ling.",
+            "{name} can hear the words that move in a sentence.",
+            "Right, this song will bounce along like the child's footsteps."
+          ],
+          "wrong": [
+            "The leaf pile just lies there; it isn't doing anything, {name}.",
+            "Ask \"what does the child do?\" and listen to the answer.",
+            "One action word is still missing; read the end of the sentence again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Words that dance",
+        "goTo": "Go to the round pool, where a reader left a notebook of song words on the rim",
+        "prompt": "The song words in the notebook say: «The child runs out to the yard, jumps over the leaf pile, then laughs aloud under the tree canopy.» Mèo wants to put the jolliest pins on the action words. Choose every action word:",
+        "choices": [
+          "run",
+          "leaf pile",
+          "jump",
+          "child",
+          "laugh",
+          "tree canopy"
+        ]
+      }
+    },
+    {
+      "id": "bai-nao-truoc",
+      "title": "Khắc bài nào trước?",
+      "goTo": "Tới hòm phiếu bạn đọc, xấp phiếu đã được xếp gọn bên trong",
+      "kind": "decision",
+      "target": "st-meo-hop-nhac-tang-ban-hom-phieu",
+      "speaker": "Mèo Hộp Nhạc",
+      "prompt": "Mèo lật xấp phiếu, ngân nga: «Tinh tang… cuộn nhạc đầu tiên nên là bài của ai đây {name}?»",
+      "choices": [
+        {
+          "id": "ban-be-nhat",
+          "text": "Bài của bạn đọc bé nhất, viết chữ còn nghiêng ngả",
+          "consequence": "Mèo dán tờ phiếu chữ nghiêng lên đầu xấp. «Người bé nhất được nghe trước, công bằng quá còn gì.»"
+        },
+        {
+          "id": "nhieu-phieu",
+          "text": "Bài có nhiều bạn ghi vào phiếu nhất",
+          "consequence": "{name} đếm phiếu, bài «Dòng sông lá vàng» được nhiều bạn chọn nhất. Mèo gật gù: «Một cuộn mà vui được nhiều người.»"
+        },
+        {
+          "id": "tho-ngu",
+          "text": "Bài ru mà Thỏ Ngắm Sao ghi vội trước khi ngủ gật",
+          "consequence": "Mèo phì cười trước dòng chữ đứt quãng của Thỏ. «Tối nay khỏi lo, cậu ấy sẽ có bài ru riêng.»"
+        }
+      ],
+      "en": {
+        "title": "Which song first?",
+        "goTo": "Go to the readers' slip box, where the slips are now neatly stacked inside",
+        "prompt": "Mèo leafs through the slips and hums: \"Ting-a-ling… whose song should the very first roll be, {name}?\"",
+        "choices": [
+          {
+            "text": "The youngest reader's song, written in wobbly letters",
+            "consequence": "Mèo puts the wobbly slip on top. \"The littlest one hears theirs first; that's only fair.\""
+          },
+          {
+            "text": "The song the most readers wrote down",
+            "consequence": "{name} counts the slips: «River of Gold Leaves» got the most votes. Mèo nods: \"One roll that makes many readers happy.\""
+          },
+          {
+            "text": "The lullaby Thỏ Ngắm Sao scribbled before nodding off",
+            "consequence": "Mèo chuckles at Thỏ's trailing handwriting. \"No worries tonight, then; there'll be a lullaby just for Thỏ.\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "cam-chot-cuon-nhac",
+      "title": "Cắm chốt cho cuộn nhạc",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đã chọn được bài! Nghe kỹ câu nhạc rồi cắm chốt lên trống cho đúng từng nốt, để cuộn nhạc đầu tiên hát y như lời bạn đọc ngân.",
+      "game": "music-box",
+      "goal": 4,
+      "en": {
+        "title": "Pinning the music roll",
+        "prompt": "The song is chosen! Listen closely, then set the pins on the drum note by note, so the first roll plays just the way the reader hummed it."
+      }
+    },
+    {
+      "id": "cuon-nhac-dau-tien",
+      "title": "Cuộn nhạc đầu tiên",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cuộn nhạc mới quay tròn, từng chốt gảy lên răng lược kêu lanh canh. Bạn đọc nào cũng nín thở nghe. Mèo xoay đuôi một vòng thật vui rồi cột cuộn nhạc bằng sợi ruy băng vàng, ghi tên {name} ở mép.",
+      "en": {
+        "title": "The first music roll",
+        "text": "The new roll turns, each pin plucking the comb with a bright plink. Every reader holds their breath to listen. Mèo gives his tail a happy twirl, ties the roll with a gold ribbon and writes {name}'s name on the edge."
+      }
+    },
+    {
+      "id": "hen-buoi-hoa-nhac",
+      "title": "Hẹn một buổi hòa nhạc",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Phiếu vẫn còn cả xấp, cuộn nhạc sẽ còn nhiều nữa. Mèo nảy ra ý định mời cả thư viện tới nghe một buổi hòa nhạc hộp nhạc dưới gốc cây lá vàng.",
+      "en": {
+        "title": "Planning a concert",
+        "text": "There's still a whole stack of slips, so many more rolls will follow. Mèo has an idea: invite the whole library to a music-box concert under the golden-leaf tree."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 19,
+    "skillXp": {
+      "bang-chu-cai": 1,
+      "tu-ngu": 1
+    }
+  },
+  "en": {
+    "title": "Mèo Hộp Nhạc's story, chapter 2: The readers' song slips",
+    "summary": "Mèo hands out slips for readers to write their favourite songs, but the wind blows some away. {name} collects them, files the titles in alphabetical order, finds the action words in a song, picks which song to carve first and pins the new music roll."
+  }
+}

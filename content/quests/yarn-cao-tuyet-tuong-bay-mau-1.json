@@ -1,0 +1,387 @@
+{
+  "id": "yarn-cao-tuyet-tuong-bay-mau-1",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Chuyện của Cáo Tuyết Điêu Khắc, chương 1: Khối băng trong nhất",
+  "status": "active",
+  "category": "story",
+  "summary": "Cáo Tuyết Điêu Khắc muốn tạc một bức tượng trong tới mức nắng vào sẽ tách thành bảy màu. {name} tìm những khối băng vừa cắt, cân, đo, rồi cùng Cáo chở khối đẹp nhất về quảng trường.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cáo Tuyết Điêu Khắc",
+    "where": "Làng núi tuyết: bệ tượng giữa quảng trường, chân dốc băng, trạm nhiệm vụ, hiên cửa hàng đồ ấm, cổng làng tuyết",
+    "goal": "Chọn và chở về khối băng trong nhất cho bức tượng bảy màu",
+    "play": "Tìm ba khối băng theo lời tả; cân hai khối; xếp các khối theo cạnh dài; chọn cách chở băng; cân lại cho thăng bằng",
+    "learn": "Ki-lô-gam, xăng-ti-mét và đề-xi-mét, từ chỉ đặc điểm",
+    "reward": "55 XP, 14 Xu, Skill XP Khối lượng, So sánh số",
+    "next": "Phác hình lên tuyết"
+  },
+  "phases": {
+    "hook": "khoi-bang-cho-tuong",
+    "explore": "tim-ba-khoi-bang",
+    "learn": "can-hai-khoi-bang",
+    "challenge": "xep-canh-dai-ngan",
+    "decision": "cho-bang-ve-quang-truong",
+    "finale": "can-lai-cho-chac",
+    "reward": "khoi-bang-da-ve",
+    "next": "phac-hinh-mai-sau"
+  },
+  "places": {
+    "cao-tuyet-dieu-khac": "Bệ tượng Cáo",
+    "tim-ba-khoi-bang": "Chân dốc băng",
+    "st-cao-tuyet-tuong-bay-mau-khoi-trong-vat": "Chân dốc băng",
+    "st-cao-tuyet-tuong-bay-mau-khoi-bot-khi": "Chân dốc băng",
+    "st-cao-tuyet-tuong-bay-mau-khoi-vet-nut": "Chân dốc băng",
+    "st-cao-tuyet-tuong-bay-mau-can-dia": "Trạm nhiệm vụ",
+    "st-cao-tuyet-tuong-bay-mau-thuoc-day": "Hiên cửa hàng đồ ấm",
+    "st-cao-tuyet-tuong-bay-mau-xe-truot-go": "Cổng làng tuyết"
+  },
+  "steps": [
+    {
+      "id": "khoi-bang-cho-tuong",
+      "title": "Một bức tượng có bảy màu",
+      "goTo": "Ra bệ tượng Cáo giữa quảng trường, Cáo Tuyết đang lấy chóp đuôi vẽ hình tròn lên tuyết",
+      "kind": "dialogue",
+      "target": "cao-tuyet-dieu-khac",
+      "lines": [
+        {
+          "speaker": "Cáo Tuyết Điêu Khắc",
+          "text": "Chào {name}. Cậu đến đúng lúc tớ vừa vẽ xong vòng tròn thứ chín. Tròn nhất từ sáng tới giờ."
+        },
+        {
+          "speaker": "Cáo Tuyết Điêu Khắc",
+          "text": "Tớ muốn tạc một bức tượng trong đến mức nắng chui vào sẽ tách ra bảy màu. Muốn thế, khối băng phải trong như một giọt nước đứng yên."
+        },
+        {
+          "speaker": "Cáo Tuyết Điêu Khắc",
+          "text": "Đêm qua người làng cắt băng hồ và để các khối ở chân dốc trượt. Tớ cần một đôi mắt tinh đi chọn cùng."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cho tớ đi chọn băng với!",
+          "reply": "Tốt. Mắt cậu sáng như hai viên bi thủy tinh. Đi thôi."
+        },
+        {
+          "text": "Băng nào chẳng trong hả Cáo?",
+          "reply": "Không đâu. Có khối mờ như sương, có khối nứt như nét bút chì. Nhìn kỹ là thấy."
+        }
+      ],
+      "en": {
+        "title": "A statue with seven colours",
+        "goTo": "Go to Cáo's plinth in the middle of the square, where Cáo Tuyết is drawing circles in the snow with the tip of his tail",
+        "lines": [
+          "Hello, {name}. You've come just as I finished my ninth circle. The roundest one all morning.",
+          "I want to carve a statue so clear that sunlight slipping inside splits into seven colours. For that, the ice must be as clear as a drop of water standing still.",
+          "Last night the villagers cut ice from the lake and left the blocks at the foot of the sledging slope. I need a pair of sharp eyes to choose with me."
+        ],
+        "choices": [
+          {
+            "text": "Let me come and choose the ice!",
+            "reply": "Good. Your eyes shine like two glass marbles. Let's go."
+          },
+          {
+            "text": "Isn't all ice clear, Cáo?",
+            "reply": "Not at all. Some blocks are misty like fog, some are cracked like a pencil line. Look closely and you'll see."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-ba-khoi-bang",
+      "title": "Ba khối băng ở chân dốc",
+      "goTo": "Xuống chân dốc băng ở đầu làng, nơi các khối băng mới cắt nằm xếp hàng",
+      "kind": "find-object",
+      "prompt": "Chân dốc có rất nhiều khối băng. Đọc lời Cáo tả từng khối rồi tìm cho đúng:",
+      "items": [
+        {
+          "id": "trong-vat",
+          "name": "Khối băng trong vắt",
+          "clue": "Trong suốt như ô cửa kính, nhìn xuyên qua thấy cả hàng rào phía sau.",
+          "target": "st-cao-tuyet-tuong-bay-mau-khoi-trong-vat"
+        },
+        {
+          "id": "bot-khi",
+          "name": "Khối băng lấm tấm bọt",
+          "clue": "Hơi đục, bên trong có những bọt khí nhỏ li ti, tròn như hạt cườm.",
+          "target": "st-cao-tuyet-tuong-bay-mau-khoi-bot-khi"
+        },
+        {
+          "id": "vet-nut",
+          "name": "Khối băng có vết nứt",
+          "clue": "Một đường nứt mảnh và thẳng chạy chéo từ góc này sang góc kia.",
+          "target": "st-cao-tuyet-tuong-bay-mau-khoi-vet-nut"
+        }
+      ],
+      "skill": "tu-ngu",
+      "en": {
+        "title": "Three blocks at the foot of the slope",
+        "goTo": "Go down to the foot of the ice-cutting slope at the village edge, where the freshly cut blocks lie in a row",
+        "prompt": "There are lots of ice blocks at the foot of the slope. Read how Cáo describes each one and find the right block:",
+        "items": [
+          {
+            "name": "Crystal-clear block",
+            "clue": "See-through like a window pane; you can see the fence right through it."
+          },
+          {
+            "name": "Speckled block",
+            "clue": "A little cloudy, with tiny air bubbles inside, round as beads."
+          },
+          {
+            "name": "Cracked block",
+            "clue": "A thin, straight crack runs diagonally from one corner to the other."
+          }
+        ]
+      }
+    },
+    {
+      "id": "can-hai-khoi-bang",
+      "title": "Hai khối lên cân",
+      "goTo": "Đẩy hai khối băng tới trạm nhiệm vụ, ở đó có chiếc cân đĩa lớn của làng",
+      "kind": "riddle",
+      "target": "st-cao-tuyet-tuong-bay-mau-can-dia",
+      "skill": "khoi-luong",
+      "question": "Cáo đặt từng khối lên cân. Khối trong vắt nặng 46 kg, khối có vết nứt nặng 38 kg. Cả hai khối nặng tất cả bao nhiêu ki-lô-gam?",
+      "answer": {
+        "value": 84
+      },
+      "support": {
+        "guide": [
+          "Muốn biết cả hai khối nặng bao nhiêu thì làm phép cộng.",
+          "Cộng hàng đơn vị trước: 6 + 8 được bao nhiêu, nhớ sang hàng chục."
+        ],
+        "hint": "46 kg + 38 kg = ? kg. Hàng đơn vị: 6 + 8 = 14, viết 4 nhớ 1.",
+        "answer": {
+          "text": "84 kg",
+          "explanation": "46 + 38: 6 + 8 = 14, viết 4 nhớ 1; 4 + 3 = 7, thêm 1 là 8. Vậy hai khối nặng 84 kg."
+        },
+        "en": {
+          "guide": [
+            "To find how heavy both blocks are together, add.",
+            "Add the ones first: 6 + 8 makes how many? Carry to the tens."
+          ],
+          "hint": "46 kg + 38 kg = ? kg. Ones: 6 + 8 = 14, write 4 and carry 1.",
+          "answer": {
+            "text": "84 kg",
+            "explanation": "46 + 38: 6 + 8 = 14, write 4 carry 1; 4 + 3 = 7, plus 1 is 8. So the two blocks weigh 84 kg."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tám mươi tư ki-lô-gam. Cáo gật đầu một cái, gọn như một nét thước kẻ.",
+          "{name} nhớ sang hàng chục rất đều tay, đúng kiểu thợ gọt băng.",
+          "Chiếc xe trượt chở được chín mươi ki-lô-gam, vậy cả hai khối cùng lên xe được."
+        ],
+        "wrong": [
+          "Sáu cộng tám là mười bốn, {name} đừng quên nhớ một sang hàng chục nhé.",
+          "Gần đúng rồi, cộng lại hàng chục: bốn với ba, rồi thêm số đã nhớ.",
+          "Hai khối cùng lên cân thì nặng hơn từng khối, phải lấy cả hai số cộng lại."
+        ],
+        "en": {
+          "right": [
+            "Eighty-four kilograms. Cáo nods once, neat as a line drawn with a ruler.",
+            "{name} carried to the tens as steadily as an ice carver's hand.",
+            "The sled can carry ninety kilograms, so both blocks can ride together."
+          ],
+          "wrong": [
+            "Six plus eight is fourteen, {name}; don't forget to carry one to the tens.",
+            "Nearly there; add the tens again: four and three, then the one you carried.",
+            "Both blocks together weigh more than either alone, so add both numbers."
+          ]
+        }
+      },
+      "en": {
+        "title": "Two blocks on the scale",
+        "goTo": "Push the two blocks to the quest post, where the village's big pan scale stands",
+        "question": "Cáo puts each block on the scale. The clear block weighs 46 kg and the cracked block weighs 38 kg. How many kilograms do the two blocks weigh altogether?"
+      }
+    },
+    {
+      "id": "xep-canh-dai-ngan",
+      "title": "Cạnh nào dài nhất?",
+      "goTo": "Ra hiên cửa hàng đồ ấm, Cáo treo sợi thước dây trên hàng rào ở đó",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-cao-tuyet-tuong-bay-mau-thuoc-day",
+      "skill": "so-sanh-so",
+      "prompt": "Cáo đo cạnh dài nhất của bốn khối băng còn lại. Thân tượng cần khối có cạnh dài nhất. Xếp các khối theo cạnh từ ngắn đến dài (nhớ: 1 dm = 10 cm):",
+      "items": [
+        {
+          "id": "vuong-vuc",
+          "label": "Khối vuông vức: 4 dm"
+        },
+        {
+          "id": "mat-guong",
+          "label": "Khối mặt gương: 35 cm"
+        },
+        {
+          "id": "dang-thap",
+          "label": "Khối dáng tháp: 5 dm"
+        },
+        {
+          "id": "van-may",
+          "label": "Khối vân mây: 42 cm"
+        }
+      ],
+      "answer": {
+        "order": [
+          "mat-guong",
+          "vuong-vuc",
+          "van-may",
+          "dang-thap"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Đổi hết về xăng-ti-mét cho dễ so: 1 dm = 10 cm.",
+          "4 dm = 40 cm, 5 dm = 50 cm. Rồi so bốn số xăng-ti-mét với nhau."
+        ],
+        "hint": "Bốn số cần so là 40 cm, 35 cm, 50 cm và 42 cm.",
+        "answer": {
+          "text": "Mặt gương, vuông vức, vân mây, dáng tháp",
+          "explanation": "35 cm < 40 cm (4 dm) < 42 cm < 50 cm (5 dm). Khối dáng tháp có cạnh dài nhất nên làm thân tượng."
+        },
+        "en": {
+          "guide": [
+            "Change everything to centimetres so it's easy to compare: 1 dm = 10 cm.",
+            "4 dm = 40 cm and 5 dm = 50 cm. Then compare the four centimetre numbers."
+          ],
+          "hint": "The four numbers to compare are 40 cm, 35 cm, 50 cm and 42 cm.",
+          "answer": {
+            "text": "Mirror-face, square, cloud-vein, tower",
+            "explanation": "35 cm < 40 cm (4 dm) < 42 cm < 50 cm (5 dm). The tower block has the longest edge, so it becomes the statue's body."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Khối dáng tháp đứng cuối hàng, thẳng như một cây nến. Cáo khẽ vẫy đuôi.",
+          "{name} đổi đề-xi-mét ra xăng-ti-mét nhanh hơn cả tớ vẽ một hình vuông.",
+          "Ngắn tới dài, không lệch một xăng-ti-mét nào. Tớ thích sự ngay ngắn này."
+        ],
+        "wrong": [
+          "4 dm là 40 cm đấy, {name}, dài hơn 35 cm một chút.",
+          "Khối 42 cm chưa phải dài nhất đâu, 5 dm còn dài hơn.",
+          "Đổi hết sang xăng-ti-mét rồi mới so, đừng so số 4 với số 35."
+        ],
+        "en": {
+          "right": [
+            "The tower block stands at the end of the row, straight as a candle. Cáo gives a small tail wag.",
+            "{name} turned decimetres into centimetres faster than I can draw a square.",
+            "Short to long, not a centimetre out of place. I love this neatness."
+          ],
+          "wrong": [
+            "4 dm is 40 cm, {name}, a little longer than 35 cm.",
+            "The 42 cm block isn't the longest; 5 dm is longer still.",
+            "Change everything to centimetres first; don't compare 4 with 35."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which edge is longest?",
+        "goTo": "Go to the porch of the warm-clothes shop, where Cáo has hung his tape measure on the fence",
+        "prompt": "Cáo measures the longest edge of the four remaining blocks. The statue's body needs the block with the longest edge. Sort the blocks by edge, from shortest to longest (remember: 1 dm = 10 cm):",
+        "items": [
+          "Square block: 4 dm",
+          "Mirror-face block: 35 cm",
+          "Tower block: 5 dm",
+          "Cloud-vein block: 42 cm"
+        ]
+      }
+    },
+    {
+      "id": "cho-bang-ve-quang-truong",
+      "title": "Chở băng thế nào?",
+      "goTo": "Tới cổng làng tuyết, chiếc xe trượt gỗ đang đợi sẵn",
+      "kind": "decision",
+      "target": "st-cao-tuyet-tuong-bay-mau-xe-truot-go",
+      "speaker": "Cáo Tuyết Điêu Khắc",
+      "prompt": "Khối trong vắt và khối dáng tháp đã nằm trên xe trượt. Cáo nhìn đường dốc về quảng trường: «Một vết xước nhỏ thôi là nắng sẽ lạc đường bên trong. Mình chở thế nào đây, {name}?»",
+      "choices": [
+        {
+          "id": "lot-chan-len",
+          "text": "Lót chăn len dưới đáy xe cho băng khỏi xước",
+          "consequence": "Cáo gấp chăn thành hình chữ nhật vừa khít lòng xe. Hai khối băng nằm êm như hai chiếc bánh trong hộp."
+        },
+        {
+          "id": "dem-nhip-buoc",
+          "text": "Kéo thật chậm, mỗi bước đếm một nhịp",
+          "consequence": "Một, hai, ba, bốn... Cả hai kéo đều chân như đang múa. Xe trượt không lắc lấy một lần."
+        },
+        {
+          "id": "buoc-day-doi",
+          "text": "Buộc thêm sợi dây thứ hai cho chắc",
+          "consequence": "{name} thắt nút, Cáo kiểm tra lại. Hai sợi dây bắt chéo thành hình chữ X ngay ngắn trên mặt băng."
+        }
+      ],
+      "en": {
+        "title": "How to carry the ice?",
+        "goTo": "Go to the snow village gate, where the wooden sled is waiting",
+        "prompt": "The clear block and the tower block are on the sled. Cáo looks at the sloping road to the square: \"One tiny scratch and the sunlight will lose its way inside. How shall we carry them, {name}?\"",
+        "choices": [
+          {
+            "text": "Lay a wool blanket in the sled so the ice won't scratch",
+            "consequence": "Cáo folds the blanket into a rectangle that fits the sled exactly. The two blocks rest as snugly as two cakes in a box."
+          },
+          {
+            "text": "Pull very slowly, counting a beat for each step",
+            "consequence": "One, two, three, four... The two of you pull in step as if dancing. The sled doesn't wobble even once."
+          },
+          {
+            "text": "Tie a second rope to be safe",
+            "consequence": "{name} ties the knot and Cáo checks it. The two ropes cross in a tidy X over the ice."
+          }
+        ]
+      }
+    },
+    {
+      "id": "can-lai-cho-chac",
+      "title": "Hai bên bệ bằng nhau",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Về tới quảng trường, Cáo muốn chia các mẩu băng thừa cho thật đều hai bên bệ tượng. Làm cho cân thăng bằng năm lần nhé!",
+      "game": "balance-scale",
+      "goal": 5,
+      "en": {
+        "title": "Both sides of the plinth even",
+        "prompt": "Back at the square, Cáo wants to share the leftover ice pieces evenly on both sides of the plinth. Make the scale level five times!"
+      }
+    },
+    {
+      "id": "khoi-bang-da-ve",
+      "title": "Khối băng đã về",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khối dáng tháp đứng giữa quảng trường, trong tới mức {name} nhìn thấy cả chóp đuôi Cáo ở phía bên kia. Cáo vẽ một hình vuông nhỏ lên tuyết, rồi vẽ thêm một hình vuông nữa ngay cạnh: «Cái này là tớ, cái này là cậu.»",
+      "en": {
+        "title": "The ice is home",
+        "text": "The tower block stands in the middle of the square, so clear that {name} can see the tip of Cáo's tail on the other side. Cáo draws a small square in the snow, then another right beside it: \"This one is me, and this one is you.\""
+      }
+    },
+    {
+      "id": "phac-hinh-mai-sau",
+      "title": "Phác hình mai sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Có khối băng rồi, giờ phải biết tượng sẽ mang hình gì. Sáng mai Cáo sẽ phác những hình đầu tiên lên tuyết, và cậu ấy muốn {name} đứng cạnh để góp ý.",
+      "en": {
+        "title": "Sketches to come",
+        "text": "The ice is here; now the statue needs a shape. Tomorrow morning Cáo will sketch the first shapes in the snow, and he wants {name} beside him to give advice."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": {
+      "khoi-luong": 1,
+      "so-sanh-so": 1
+    }
+  },
+  "en": {
+    "title": "Cáo Tuyết Điêu Khắc's story, chapter 1: The clearest block of ice",
+    "summary": "Cáo Tuyết Điêu Khắc wants to carve a statue so clear that sunlight inside splits into seven colours. {name} finds the freshly cut ice blocks, weighs and measures them, then helps Cáo carry the best one back to the square."
+  }
+}

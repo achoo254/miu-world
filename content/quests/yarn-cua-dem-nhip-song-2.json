@@ -1,0 +1,425 @@
+{
+  "id": "yarn-cua-dem-nhip-song-2",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Chuyện của Cua Lướt Sóng, chương 2: Đếm buồm, đếm sóng",
+  "status": "active",
+  "category": "story",
+  "summary": "Cua và Thuyền Trưởng Vẹt Biển thi đếm buổi sáng, và {name} làm trọng tài. {name} đọc luật thi, chọn từ tả con sóng cho sổ, tính xem ai đếm nhiều hơn rồi nghĩ cách cho người thua cũng vui.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cua Lướt Sóng",
+    "where": "Bãi lướt sóng, hiên lều Vẹt Biển, cầu gỗ nhỏ, bảng điểm đầu cầu, mũi cát cong",
+    "goal": "Làm trọng tài công bằng cho cuộc thi đếm buồm và đếm sóng",
+    "play": "Đọc luật thi; chọn từ chỉ đặc điểm; tính hơn kém; chọn cách an ủi; lái thuyền buồm vòng phao",
+    "learn": "Đọc hiểu, từ chỉ đặc điểm, bài toán nhiều hơn",
+    "reward": "70 XP, 18 Xu, Skill XP Hơn kém, Từ ngữ",
+    "next": "Phong thư từ Núi tuyết"
+  },
+  "phases": {
+    "hook": "hen-thi-dem",
+    "explore": "doc-luat-thi",
+    "learn": "tu-ta-con-song",
+    "challenge": "hon-bao-nhieu",
+    "decision": "an-ui-thuyen-truong",
+    "finale": "lai-thuyen-vong-phao",
+    "reward": "so-co-hai-chu-ky",
+    "next": "thu-tem-bong-tuyet"
+  },
+  "places": {
+    "cua-luot-song": "Bãi lướt sóng",
+    "st-cua-dem-nhip-song-to-luat-thi": "Hiên lều Vẹt Biển",
+    "st-cua-dem-nhip-song-so-trong-tai": "Cầu gỗ nhỏ",
+    "st-cua-dem-nhip-song-bang-diem-dau-cau": "Bảng điểm đầu cầu",
+    "st-cua-dem-nhip-song-co-dich": "Mũi cát cong"
+  },
+  "steps": [
+    {
+      "id": "hen-thi-dem",
+      "title": "Trọng tài cho cuộc thi",
+      "goTo": "Ra bãi lướt sóng lúc trời vừa hửng, Cua đang ngáp dài chờ cuộc thi",
+      "kind": "dialogue",
+      "target": "cua-luot-song",
+      "lines": [
+        {
+          "speaker": "Cua Lướt Sóng",
+          "text": "Ầu ơ, bồ tới rồi! Sáng nay tớ thi đếm với Thuyền Trưởng Vẹt Biển: ông ấy đếm buồm ngoài khơi, tớ đếm sóng vào bờ."
+        },
+        {
+          "speaker": "Cua Lướt Sóng",
+          "text": "Năm nào hai đứa cũng cãi nhau vì chẳng ai nhớ luật. Lần này ông ấy dán luật ở lều rồi, bồ làm trọng tài giúp tớ nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ làm trọng tài, công bằng tuyệt đối!",
+          "reply": "Êm ru. Trọng tài công bằng thì ai thua cũng chẳng giận."
+        },
+        {
+          "text": "Thế còn cuộc đua với Khỉ Hái Dừa thì sao?",
+          "reply": "À, Khỉ thách tớ đua tới cây dừa nghiêng vào chiều nay. Chuyện đó để sau, sáng nay đếm cái đã bồ."
+        }
+      ],
+      "en": {
+        "title": "A referee for the contest",
+        "goTo": "Go to the surf beach at first light, where Cua is yawning as he waits for the contest",
+        "lines": [
+          "Ahoy-oh, you made it! This morning I have a counting contest with Captain Vẹt Biển: he counts sails out at sea, I count waves rolling in.",
+          "Every year we argue because nobody remembers the rules. This time he’s stuck the rules up at his tent; be our referee, buddy."
+        ],
+        "choices": [
+          {
+            "text": "I'll referee, perfectly fair!",
+            "reply": "Smooth as butter. With a fair referee, whoever loses won’t sulk."
+          },
+          {
+            "text": "What about the race with Khỉ Hái Dừa?",
+            "reply": "Oh, Khỉ dared me to race him to the leaning palm this afternoon. That can wait; this morning we count, buddy."
+          }
+        ]
+      }
+    },
+    {
+      "id": "doc-luat-thi",
+      "title": "Luật thi dán trên cột lều",
+      "goTo": "Tới hiên lều Vẹt Biển đọc tờ luật thi dán trên cột lều",
+      "kind": "read",
+      "target": "st-cua-dem-nhip-song-to-luat-thi",
+      "skill": "doc-hieu",
+      "text": "LUẬT THI ĐẾM BUỔI SÁNG\n1. Thi từ lúc mặt trời nhô khỏi mặt biển tới khi chuông bến tàu đánh.\n2. Thuyền trưởng đếm những cánh buồm đi ngang mũi đảo. Cua đếm những con sóng bạc đầu vỗ vào bờ.\n3. Sóng lăn tăn không tính. Buồm của thuyền đang neo cũng không tính.\n4. Ai đếm được nhiều hơn thì thắng. Trọng tài ghi số vào sổ.\nKý tên: Thuyền Trưởng Vẹt Biển, Cua Lướt Sóng",
+      "question": "Theo luật, Cua được đếm những gì?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Những con sóng bạc đầu vỗ vào bờ"
+        },
+        {
+          "id": "b",
+          "text": "Những gợn sóng lăn tăn quanh chân cầu"
+        },
+        {
+          "id": "c",
+          "text": "Những cánh buồm đi ngang mũi đảo"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Tìm dòng luật nói Cua đếm gì.",
+          "Đọc thêm dòng nói điều gì không được tính."
+        ],
+        "hint": "Dòng số 2 và dòng số 3 có câu trả lời.",
+        "answer": {
+          "text": "Sóng bạc đầu vỗ vào bờ (luật số 2)",
+          "explanation": "Luật số 2 ghi: Cua đếm những con sóng bạc đầu vỗ vào bờ. Luật số 3 nói sóng lăn tăn không tính, còn cánh buồm là phần của thuyền trưởng."
+        },
+        "en": {
+          "guide": [
+            "Find the rule that says what Cua counts.",
+            "Also read the rule about what does not count."
+          ],
+          "hint": "Rules 2 and 3 hold the answer.",
+          "answer": {
+            "text": "White caps hitting the shore (rule 2)",
+            "explanation": "Rule 2 says Cua counts the white-capped waves that hit the shore. Rule 3 says ripples don’t count, and the sails belong to the captain."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng luật! Cua gật gù: «Có trọng tài đọc kỹ, năm nay hết cãi nhau rồi.»",
+          "{name} tìm ra đúng dòng luật nhanh như sóng vỗ.",
+          "Sóng bạc đầu mới tính, ầu ơ, bồ nhớ kỹ hơn cả tớ."
+        ],
+        "wrong": [
+          "Gợn lăn tăn bị luật số 3 gạch tên rồi bồ ơi.",
+          "Cánh buồm là phần đếm của thuyền trưởng, đọc lại luật số 2 xem.",
+          "Tìm chữ «Cua đếm» trong tờ luật, câu đó có câu trả lời đấy {name}."
+        ],
+        "en": {
+          "right": [
+            "By the rules! Cua nods: “With a referee who reads closely, no arguing this year.”",
+            "{name} found the right rule as quick as a breaking wave.",
+            "Only white caps count, ahoy-oh; you remember better than I do, buddy."
+          ],
+          "wrong": [
+            "Rule 3 crossed the ripples off, buddy.",
+            "The sails are the captain’s to count; read rule 2 again.",
+            "Find the words “Cua counts” in the rules; that sentence has the answer, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "The rules on the tent pole",
+        "goTo": "Go to the porch of Vẹt Biển's tent and read the contest rules pinned to the tent pole",
+        "text": "MORNING COUNTING CONTEST RULES\n1. The contest runs from when the sun rises out of the sea until the pier bell rings.\n2. The captain counts the sails passing the point of the island. Cua counts the white-capped waves hitting the shore.\n3. Ripples do not count. Sails of anchored boats do not count either.\n4. Whoever counts more wins. The referee writes the numbers in the book.\nSigned: Captain Vẹt Biển, Cua Lướt Sóng",
+        "question": "By the rules, what may Cua count?",
+        "choices": [
+          "The white-capped waves hitting the shore",
+          "The little ripples round the pier legs",
+          "The sails passing the point of the island"
+        ]
+      }
+    },
+    {
+      "id": "tu-ta-con-song",
+      "title": "Cột «Tả con sóng»",
+      "goTo": "Ra cầu gỗ nhỏ, mở cuốn sổ đếm của trọng tài",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-cua-dem-nhip-song-so-trong-tai",
+      "skill": "tu-ngu",
+      "prompt": "Sổ trọng tài có một cột «Tả con sóng». Chọn những từ chỉ đặc điểm để ghi vào cột ấy:",
+      "choices": [
+        {
+          "id": "cao-vut",
+          "text": "cao vút"
+        },
+        {
+          "id": "trang-xoa",
+          "text": "trắng xóa"
+        },
+        {
+          "id": "em-a",
+          "text": "êm ả"
+        },
+        {
+          "id": "luot",
+          "text": "lướt"
+        },
+        {
+          "id": "vo",
+          "text": "vỗ"
+        },
+        {
+          "id": "canh-buom",
+          "text": "cánh buồm"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "cao-vut",
+          "trang-xoa",
+          "em-a"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Từ chỉ đặc điểm cho biết con sóng trông thế nào: cao hay thấp, màu gì, êm hay dữ.",
+          "Từ chỉ hoạt động nói con sóng làm gì; từ chỉ sự vật là tên một đồ vật."
+        ],
+        "hint": "Thử ghép «con sóng …» với từng từ: «con sóng cao vút» nghe ra dáng con sóng.",
+        "answer": {
+          "text": "cao vút, trắng xóa, êm ả",
+          "explanation": "«Cao vút», «trắng xóa», «êm ả» tả con sóng trông thế nào, nên là từ chỉ đặc điểm. «Lướt», «vỗ» là từ chỉ hoạt động; «cánh buồm» là từ chỉ sự vật."
+        },
+        "en": {
+          "guide": [
+            "A describing word tells what the wave is like: tall or low, what colour, calm or rough.",
+            "An action word says what the wave does; a thing word names an object."
+          ],
+          "hint": "Try “a … wave” with each word: “a towering wave” shows what the wave looks like.",
+          "answer": {
+            "text": "towering, foaming white, gentle",
+            "explanation": "“Towering”, “foaming white” and “gentle” describe what the wave is like, so they are describing words. “Glide” and “slap” are action words; “sail” is a thing word."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cột «Tả con sóng» đầy chữ đẹp, Cua đọc mà muốn ra lướt ngay.",
+          "{name} chọn từ tả sóng tinh như mắt chim biển.",
+          "Ba từ, ba con sóng hiện lên trong sổ, ầu ơ!"
+        ],
+        "wrong": [
+          "«Lướt» là việc tớ làm trên sóng chứ chưa tả con sóng đâu bồ.",
+          "«Cánh buồm» là tên một vật, để dành cho cột của thuyền trưởng nhé.",
+          "Ghép thử «con sóng» với từng từ, từ nào cho biết con sóng ra sao thì chọn {name} ơi."
+        ],
+        "en": {
+          "right": [
+            "The “Describe the wave” column is full of lovely words; reading it makes Cua want to surf right now.",
+            "{name} picks wave words as sharp-eyed as a seabird.",
+            "Three words, and three waves rise up out of the book, ahoy-oh!"
+          ],
+          "wrong": [
+            "“Glide” is what I do on a wave, buddy; it doesn’t describe the wave.",
+            "“Sail” is the name of a thing; save it for the captain’s column.",
+            "Try “wave” with each word, {name}; pick the ones that tell what the wave is like."
+          ]
+        }
+      },
+      "en": {
+        "title": "The “Describe the wave” column",
+        "goTo": "Go to the little wooden jetty and open the referee’s counting book",
+        "prompt": "The referee’s book has a column called “Describe the wave”. Pick the describing words to write in it:",
+        "choices": [
+          "towering",
+          "foaming white",
+          "gentle",
+          "glide",
+          "slap",
+          "sail"
+        ]
+      }
+    },
+    {
+      "id": "hon-bao-nhieu",
+      "title": "Ai đếm nhiều hơn?",
+      "goTo": "Chuông bến tàu đánh, chạy ra bảng điểm đầu cầu xem kết quả",
+      "kind": "riddle",
+      "target": "st-cua-dem-nhip-song-bang-diem-dau-cau",
+      "skill": "hon-kem",
+      "question": "Hết giờ thi! Sổ trọng tài ghi: Cua đếm được 34 con sóng bạc đầu, Thuyền Trưởng Vẹt Biển đếm được 27 cánh buồm. Số Cua đếm được nhiều hơn số thuyền trưởng đếm được là bao nhiêu?",
+      "answer": {
+        "value": 7
+      },
+      "support": {
+        "guide": [
+          "So hai số đếm: lấy 34 trừ đi 27 để biết phần hơn.",
+          "Tính 34 − 27: 4 không trừ được 7, mượn một chục."
+        ],
+        "hint": "34 − 27: lấy 14 − 7 trước, rồi 3 chục bớt 1 chục mượn và 2 chục.",
+        "answer": {
+          "text": "Nhiều hơn 7",
+          "explanation": "34 − 27 = 7. Số Cua đếm được nhiều hơn số thuyền trưởng đếm được là 7."
+        },
+        "en": {
+          "guide": [
+            "Compare the two counts: take 27 away from 34 to find the difference.",
+            "Work out 34 − 27: you can’t take 7 from 4, so borrow a ten."
+          ],
+          "hint": "34 − 27: do 14 − 7 first, then take the borrowed ten and 2 tens from 3 tens.",
+          "answer": {
+            "text": "7 more",
+            "explanation": "34 − 27 = 7. Cua counted 7 more than the captain."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảy! Bảng điểm sáng choang, Cua giơ hai càng mà chẳng dám reo to.",
+          "{name} trừ có nhớ chắc tay như trọng tài lâu năm.",
+          "Chuẩn rồi bồ, hơn đúng bảy, sổ không sai một nét."
+        ],
+        "wrong": [
+          "Đây là bài «nhiều hơn», phải trừ chứ không cộng đâu bồ.",
+          "Hàng đơn vị 4 không trừ được 7, nhớ mượn một chục nhé.",
+          "Lấy 27 đếm thêm tới 34 xem phải đếm thêm mấy bước {name} ạ."
+        ],
+        "en": {
+          "right": [
+            "Seven! The scoreboard gleams; Cua raises both claws but doesn’t dare cheer too loudly.",
+            "{name} subtracts with borrowing as steadily as a veteran referee.",
+            "Spot on, buddy: exactly seven more, not a stroke wrong in the book."
+          ],
+          "wrong": [
+            "This is a “how many more” problem, buddy, so subtract, don’t add.",
+            "In the ones you can’t take 7 from 4; remember to borrow a ten.",
+            "Count on from 27 up to 34 and see how many steps it takes, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "Who counted more?",
+        "goTo": "The pier bell rings; run to the scoreboard at the end of the jetty for the result",
+        "question": "Time’s up! The referee’s book says: Cua counted 34 white-capped waves and Captain Vẹt Biển counted 27 sails. How many more did Cua count than the captain?"
+      }
+    },
+    {
+      "id": "an-ui-thuyen-truong",
+      "title": "Thắng mà chẳng vui",
+      "goTo": "Ra mũi cát cong, nơi lá cờ đích cắm cạnh mép nước",
+      "kind": "decision",
+      "target": "st-cua-dem-nhip-song-co-dich",
+      "speaker": "Cua Lướt Sóng",
+      "prompt": "Thuyền trưởng thua bảy, cụp cả mào, lặng lẽ lau ống nhòm. Cua gãi mai: «Ầu ơ, tớ thắng mà sao chẳng vui mấy. Bồ nghĩ cách gì đi.»",
+      "choices": [
+        {
+          "id": "dem-chung",
+          "text": "Từ mai đếm chung: buồm nào cưỡi trên sóng thì tính cho cả hai",
+          "consequence": "Thuyền trưởng sáng mắt: «Đếm chung, đếm chung!» Cua gật gù, bảo đếm chung thì chẳng ai phải ôm mào buồn nữa."
+        },
+        {
+          "id": "trao-co",
+          "text": "Trao lá cờ đích cho thuyền trưởng vì ông đếm buồm kỹ nhất bến",
+          "consequence": "Thuyền trưởng cắm lá cờ lên mũ, đi một vòng quanh cầu khoe với cả đàn cá dưới chân cầu."
+        },
+        {
+          "id": "thi-chieu",
+          "text": "Hẹn thi lại vào buổi chiều, lúc gió đổi chiều",
+          "consequence": "Chiều đó gió lộng, buồm ra khơi nườm nượp. Thuyền trưởng thắng ba con, hai bên hòa nhau, ai cũng cười nghiêng ngả."
+        }
+      ],
+      "en": {
+        "title": "Winning without the fun",
+        "goTo": "Go to the curved sand spit, where the finish flag stands by the water",
+        "prompt": "Losing by seven, the captain droops his crest and quietly polishes his spyglass. Cua scratches his shell: “Ahoy-oh, I won, so why don’t I feel happy? Think of something, buddy.”",
+        "choices": [
+          {
+            "text": "From tomorrow, count together: a sail riding a wave counts for both",
+            "consequence": "The captain’s eyes light up: “Together, together!” Cua nods and says that counting together means nobody has to droop his crest any more."
+          },
+          {
+            "text": "Give the finish flag to the captain, the most careful sail-counter on the pier",
+            "consequence": "The captain sticks the flag in his hat and parades round the jetty, showing it off to the fish under the boards."
+          },
+          {
+            "text": "Agree to a rematch in the afternoon, when the wind turns",
+            "consequence": "That afternoon the wind is strong and sails stream out to sea. The captain wins by three, the two of them call it even, and everyone laughs till they wobble."
+          }
+        ]
+      }
+    },
+    {
+      "id": "lai-thuyen-vong-phao",
+      "title": "Trọng tài cầm lái",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Thuyền trưởng mời trọng tài {name} lái chiếc thuyền buồm nhỏ vòng qua các phao. Xoay buồm đón gió, chạm đủ năm phao nhé!",
+      "game": "sail-wind",
+      "goal": 5,
+      "en": {
+        "title": "The referee takes the helm",
+        "prompt": "The captain invites referee {name} to sail the little boat round the buoys. Turn the sail into the wind and reach five buoys!"
+      }
+    },
+    {
+      "id": "so-co-hai-chu-ky",
+      "title": "Cuốn sổ có hai chữ ký",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cuốn sổ trọng tài có chữ ký của cả hai bên. Cua dặn {name} giữ thật kỹ: «Lần đầu tiên tụi tớ thi xong mà không cãi nhau về luật, êm ru.»",
+      "en": {
+        "title": "A book with two signatures",
+        "text": "The referee’s book is signed by both sides. Cua tells {name} to keep it safe: “The first contest ever where we didn’t argue about the rules, smooth as butter.”"
+      }
+    },
+    {
+      "id": "thu-tem-bong-tuyet",
+      "title": "Phong thư lạnh buốt",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chiều ấy bưu tá ghé bến với một phong thư lạnh buốt, dán tem hình bông tuyết. Thư của bác Gấu Bắc Cực ở Núi tuyết! Cua ôm thư chạy ngang khắp bãi đi tìm {name}.",
+      "en": {
+        "title": "An ice-cold envelope",
+        "text": "That afternoon the postman stops at the pier with an ice-cold envelope bearing a snowflake stamp. A letter from Uncle Polar Bear on the Snow Mountain! Cua hugs it and scuttles sideways across the beach looking for {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "hon-kem": 1,
+      "tu-ngu": 1
+    }
+  },
+  "en": {
+    "title": "Cua Lướt Sóng's story, chapter 2: Counting sails, counting waves",
+    "summary": "Cua and Captain Vẹt Biển hold their morning counting contest, with {name} as referee. {name} reads the rules, picks describing words for the book, works out who counted more and finds a way for the loser to smile too."
+  }
+}

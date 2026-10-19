@@ -1,0 +1,407 @@
+{
+  "id": "yarn-cao-mui-ten-mang-thu-2",
+  "region": "lau-dai",
+  "chapter": 3,
+  "title": "Chuyện của Cáo Cung Thủ, chương 2: Mũi tên buộc thư",
+  "status": "active",
+  "category": "story",
+  "summary": "Cáo kể ước mơ bắn một mũi tên mang thư sang tận bờ biển xa, và hôm nay tập trước: buộc thư bay qua hào. {name} gom đồ buộc thư, chọn sợi dây vừa cỡ, đọc mẹo đoán gió của Bác Quăng Lưới Biển và quyết định viết gì trong lá thư đầu tiên.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cáo Cung Thủ",
+    "where": "Khu luyện tập, lều cung thủ, gốc cây buộc ngựa, chòi canh gió, mép hào phía đông",
+    "goal": "Tập cho mũi tên buộc thư bay qua hào",
+    "play": "Tìm đồ buộc thư theo lời tả; chọn những sợi dây vừa cỡ; đọc thư mẹo đoán gió; chọn lời viết trong thư; thả diều thử gió",
+    "learn": "So sánh độ dài (cm, dm), đọc hiểu",
+    "reward": "70 XP, 18 Xu, Skill XP Đọc hiểu, So sánh số",
+    "next": "Ngày giải đấu"
+  },
+  "phases": {
+    "hook": "cao-ke-uoc-mo",
+    "explore": "gom-do-buoc-thu",
+    "learn": "chon-soi-day",
+    "challenge": "doc-meo-doan-gio",
+    "decision": "viet-gi-trong-thu",
+    "finale": "tha-dieu-thu-gio",
+    "reward": "thu-bay-qua-hao",
+    "next": "ngay-giai-dau"
+  },
+  "places": {
+    "cao-cung-thu": "Khu luyện tập",
+    "gom-do-buoc-thu": "Lều cung thủ",
+    "st-cao-mui-ten-mang-thu-giay-viet-thu": "Lều cung thủ",
+    "st-cao-mui-ten-mang-thu-chi-gai": "Lều cung thủ",
+    "st-cao-mui-ten-mang-thu-tui-ten-da": "Lều cung thủ",
+    "st-cao-mui-ten-mang-thu-ban-buoc-day": "Gốc cây buộc ngựa",
+    "st-cao-mui-ten-mang-thu-thu-meo-gio": "Chòi canh gió",
+    "st-cao-mui-ten-mang-thu-coc-moc-hao": "Mép hào phía đông"
+  },
+  "steps": [
+    {
+      "id": "cao-ke-uoc-mo",
+      "title": "Ước mơ của Cáo",
+      "goTo": "Về khu luyện tập, Cáo Cung Thủ đang ngồi trên chồng bia cũ nhìn về phía xa",
+      "kind": "dialogue",
+      "target": "cao-cung-thu",
+      "lines": [
+        {
+          "speaker": "Cáo Cung Thủ",
+          "text": "{name}, Cáo kể cái này. Chưa kể ai. Cáo muốn một ngày bắn một mũi tên mang thư sang tận bờ biển xa."
+        },
+        {
+          "speaker": "Cáo Cung Thủ",
+          "text": "Biển thì xa quá. Hôm nay tập trước: buộc thư vào tên, bắn qua hào. Qua được hào là qua được bước một."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Bước một hôm nay, bờ biển để sau!",
+          "reply": "Đúng. Từng bước. Mà bước nào cũng phải trúng phóc."
+        },
+        {
+          "text": "Thư bay bằng tên thì gửi cho ai ạ?",
+          "reply": "Cho người dạy Cáo đọc gió. Lát nữa {name} sẽ biết."
+        }
+      ],
+      "en": {
+        "title": "Cáo's dream",
+        "goTo": "Go back to the training ground, where Cáo Cung Thủ sits on a pile of old targets gazing into the distance",
+        "lines": [
+          "{name}, I'll tell you something. Haven't told anyone. One day I want to shoot an arrow carrying a letter all the way to the far shore.",
+          "The sea is too far for now. Today we practise: tie a letter to an arrow, shoot it over the moat. Over the moat is step one."
+        ],
+        "choices": [
+          {
+            "text": "Step one today, the shore can wait!",
+            "reply": "Right. One step at a time. And every step dead centre."
+          },
+          {
+            "text": "Who do you send a letter to by arrow?",
+            "reply": "To the one who taught me to read the wind. You'll find out soon, {name}."
+          }
+        ]
+      }
+    },
+    {
+      "id": "gom-do-buoc-thu",
+      "title": "Đồ buộc thư",
+      "goTo": "Vào lều cung thủ dựng tạm trước cổng thành, đồ buộc thư để lẫn trong đó",
+      "kind": "find-object",
+      "prompt": "Lều cung thủ bừa bộn quá. Đọc lời Cáo tả rồi tìm từng món:",
+      "items": [
+        {
+          "id": "giay",
+          "name": "Tờ giấy viết thư",
+          "clue": "Mỏng, cuộn tròn được, một mép hơi quăn vì Cáo hay cầm.",
+          "target": "st-cao-mui-ten-mang-thu-giay-viet-thu"
+        },
+        {
+          "id": "chi",
+          "name": "Cuộn chỉ gai",
+          "clue": "Sợi se chặt, thắt sẵn một nút ở đầu cho khỏi tuột.",
+          "target": "st-cao-mui-ten-mang-thu-chi-gai"
+        },
+        {
+          "id": "tui",
+          "name": "Túi tên bằng da",
+          "clue": "Màu nâu sẫm, có quai đeo vai, bên trong còn đúng một mũi tên thân thẳng.",
+          "target": "st-cao-mui-ten-mang-thu-tui-ten-da"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Letter-tying kit",
+        "goTo": "Go into the archers' tent set up before the castle gate, where the letter-tying things are muddled together",
+        "prompt": "The archers' tent is a mess. Read how Cáo describes each thing and find it:",
+        "items": [
+          {
+            "name": "Sheet of letter paper",
+            "clue": "Thin enough to roll up, with one edge a little curled from Cáo handling it."
+          },
+          {
+            "name": "Spool of hemp thread",
+            "clue": "Tightly twisted, with a knot already tied at the end so it won't slip."
+          },
+          {
+            "name": "Leather quiver",
+            "clue": "Dark brown, with a shoulder strap, and exactly one straight arrow left inside."
+          }
+        ]
+      }
+    },
+    {
+      "id": "chon-soi-day",
+      "title": "Sợi dây vừa cỡ",
+      "goTo": "Ra gốc cây buộc ngựa, Cáo bày mấy sợi dây lên bàn gỗ",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-cao-mui-ten-mang-thu-ban-buoc-day",
+      "skill": "so-sanh-so",
+      "prompt": "Dây buộc thư vào thân tên phải ngắn hơn 3 dm, dài quá thì dây lòa xòa làm tên bay lệch. Chọn tất cả những sợi dây dùng được:",
+      "choices": [
+        {
+          "id": "day-25",
+          "text": "Sợi dây đỏ: 25 cm"
+        },
+        {
+          "id": "day-4dm",
+          "text": "Sợi dây xanh: 4 dm"
+        },
+        {
+          "id": "day-2dm",
+          "text": "Sợi dây vàng: 2 dm"
+        },
+        {
+          "id": "day-33",
+          "text": "Sợi dây nâu: 33 cm"
+        },
+        {
+          "id": "day-28",
+          "text": "Sợi dây trắng: 28 cm"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "day-25",
+          "day-2dm",
+          "day-28"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Đổi 3 dm ra xăng-ti-mét: 3 dm = 30 cm.",
+          "Sợi nào ghi đề-xi-mét thì cũng đổi ra xăng-ti-mét rồi so với 30 cm."
+        ],
+        "hint": "2 dm = 20 cm, 4 dm = 40 cm. Chọn những sợi bé hơn 30 cm.",
+        "answer": {
+          "text": "Sợi đỏ 25 cm, sợi vàng 2 dm, sợi trắng 28 cm",
+          "explanation": "3 dm = 30 cm. Ta có 25 cm < 30 cm, 2 dm = 20 cm < 30 cm, 28 cm < 30 cm nên dùng được. Còn 4 dm = 40 cm và 33 cm đều dài hơn 30 cm."
+        },
+        "en": {
+          "guide": [
+            "Change 3 dm into centimetres: 3 dm = 30 cm.",
+            "Change any length in decimetres into centimetres too, then compare it with 30 cm."
+          ],
+          "hint": "2 dm = 20 cm, 4 dm = 40 cm. Pick the ones shorter than 30 cm.",
+          "answer": {
+            "text": "The red 25 cm, the yellow 2 dm and the white 28 cm",
+            "explanation": "3 dm = 30 cm. 25 cm < 30 cm, 2 dm = 20 cm < 30 cm and 28 cm < 30 cm, so those work. 4 dm = 40 cm and 33 cm are both longer than 30 cm."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba sợi vừa khít! Cáo quấn thử sợi trắng, gọn gàng như vòng nhẫn.",
+          "{name} không để sợi 33 cm lọt vào, mắt tinh như mắt cung thủ.",
+          "Vút! Dây ngắn gọn thì tên bay thẳng. Chọn chuẩn rồi."
+        ],
+        "wrong": [
+          "Sợi xanh 4 dm là 40 cm đấy {name}, dài hơn 30 cm mất rồi.",
+          "33 cm nhỉnh hơn 30 cm một chút, vẫn là quá dài.",
+          "Còn sót một sợi ghi đề-xi-mét ngắn hơn 3 dm, tìm lại xem."
+        ],
+        "en": {
+          "right": [
+            "Three that fit! Cáo winds the white one round the shaft, neat as a ring.",
+            "{name} didn't let the 33 cm one sneak in; eyes as sharp as an archer's.",
+            "Whoosh! Short, tidy thread means a straight arrow. Spot on."
+          ],
+          "wrong": [
+            "The blue one is 4 dm, that's 40 cm, {name}: longer than 30 cm.",
+            "33 cm is just a little over 30 cm, so it's still too long.",
+            "One thread marked in decimetres is shorter than 3 dm; look again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Thread of the right size",
+        "goTo": "Go to the horse-hitching tree, where Cáo has laid some threads on a wooden bench",
+        "prompt": "The thread that ties the letter to the shaft must be shorter than 3 dm; too long and it flaps about and pulls the arrow off course. Pick every thread that will do:",
+        "choices": [
+          "Red thread: 25 cm",
+          "Blue thread: 4 dm",
+          "Yellow thread: 2 dm",
+          "Brown thread: 33 cm",
+          "White thread: 28 cm"
+        ]
+      }
+    },
+    {
+      "id": "doc-meo-doan-gio",
+      "title": "Mẹo đoán gió",
+      "goTo": "Leo lên chòi canh gió, lá thư cũ của Bác Quăng Lưới Biển cài trên cột",
+      "kind": "read",
+      "target": "st-cao-mui-ten-mang-thu-thu-meo-gio",
+      "skill": "doc-hieu",
+      "text": "Cáo à,\nNgoài biển, bác không nhìn trời mà nhìn ngọn cờ trên cột buồm.\nCờ bay về phía nào là gió đi về phía ấy.\nGió đẩy lưới đi đâu thì nó cũng đẩy mũi tên đi đó.\nNên khi gió thổi từ bên trái sang bên phải, cháu ngắm lệch sang trái một chút.\nĐừng lệch nhiều. Gió nhẹ thì lệch nhẹ.\nBác Quăng Lưới Biển",
+      "question": "Theo thư, khi gió thổi từ trái sang phải, Cáo nên ngắm thế nào?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Ngắm lệch sang trái một chút"
+        },
+        {
+          "id": "b",
+          "text": "Ngắm lệch sang phải thật nhiều"
+        },
+        {
+          "id": "c",
+          "text": "Nhìn trời rồi ngắm thẳng giữa bia"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Tìm câu trong thư có chữ «từ bên trái sang bên phải».",
+          "Đọc phần sau dấu phẩy của câu ấy."
+        ],
+        "hint": "Gió đẩy tên sang phải, nên phải ngắm bù về phía ngược lại.",
+        "answer": {
+          "text": "Lệch về bên trái, chỉ một chút thôi",
+          "explanation": "Thư viết: «khi gió thổi từ bên trái sang bên phải, cháu ngắm lệch sang trái một chút». Câu sau còn dặn đừng lệch nhiều."
+        },
+        "en": {
+          "guide": [
+            "Find the sentence with \"from the left to the right\".",
+            "Read the part after the comma."
+          ],
+          "hint": "The wind pushes the arrow right, so you aim a little the other way.",
+          "answer": {
+            "text": "Just a touch to the left",
+            "explanation": "The letter says: \"when the wind blows from the left to the right, aim a little to the left\". The next line adds: don't aim too far off."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng mẹo của bác! Cáo liếm ngón tay, giơ lên, rồi gật đầu cái rụp.",
+          "{name} đọc thư kỹ như bác đọc mặt sóng.",
+          "Lệch trái một chút thôi. Cáo ghi vào lòng bàn tay cho khỏi quên."
+        ],
+        "wrong": [
+          "Bác dặn «đừng lệch nhiều» mà {name}, đọc lại dòng gần cuối nhé.",
+          "Bác bảo ngoài biển không nhìn trời, mà nhìn ngọn cờ.",
+          "Gió đẩy tên sang phải, vậy ngắm bù về bên nào?"
+        ],
+        "en": {
+          "right": [
+            "That's his trick! Cáo licks a finger, holds it up, and gives one firm nod.",
+            "{name} read the letter as carefully as he reads the waves.",
+            "Just a little to the left. Cáo writes it on his palm so he won't forget."
+          ],
+          "wrong": [
+            "He wrote \"don't aim too far off\", {name}; read the line near the end again.",
+            "He says that at sea he doesn't look at the sky, he looks at the flag.",
+            "The wind pushes the arrow right, so which way do you aim to make up for it?"
+          ]
+        }
+      },
+      "en": {
+        "title": "How to read the wind",
+        "goTo": "Climb up the wind-watch hut, where an old letter from Bác Quăng Lưới Biển is tucked on a post",
+        "text": "Dear Cáo,\nOut at sea I don't look at the sky; I look at the flag on the mast.\nWhichever way the flag flies, that is the way the wind is going.\nWherever the wind pushes a net, it pushes an arrow too.\nSo when the wind blows from the left to the right, aim a little to the left.\nDon't aim too far off. A light wind needs only a light correction.\nBác Quăng Lưới Biển",
+        "question": "According to the letter, how should Cáo aim when the wind blows from left to right?",
+        "choices": [
+          "Aim a little to the left",
+          "Aim far over to the right",
+          "Look at the sky and aim straight at the centre"
+        ]
+      }
+    },
+    {
+      "id": "viet-gi-trong-thu",
+      "title": "Viết gì trong thư?",
+      "goTo": "Tới mép hào phía đông, Cáo cắm cọc mốc ở chỗ sẽ đứng bắn",
+      "kind": "decision",
+      "target": "st-cao-mui-ten-mang-thu-coc-moc-hao",
+      "speaker": "Cáo Cung Thủ",
+      "prompt": "Giấy đã sẵn, dây đã chọn. Cáo cầm bút, gãi tai: «Thư ngắn thôi, tên chở không nổi thư dài. Viết gì đây {name}?»",
+      "choices": [
+        {
+          "id": "chao-bac",
+          "text": "Một lời chào gửi Bác Quăng Lưới Biển",
+          "consequence": "Cáo viết: «Chào bác. Cháu đọc gió theo mẹo của bác rồi.» Viết xong, cáo đọc to ba lần cho thuộc."
+        },
+        {
+          "id": "ve-bia",
+          "text": "Vẽ một tấm bia có mũi tên trúng giữa",
+          "consequence": "Cáo vẽ một vòng tròn, chấm một chấm giữa tâm. «Không cần chữ. Bác nhìn là biết.»"
+        },
+        {
+          "id": "thach-dau",
+          "text": "Rủ bác thi đoán gió: tên với lưới",
+          "consequence": "Cáo viết: «Thi đoán gió không bác? Cháu đoán bằng tên, bác đoán bằng lưới.» Rồi cáo cười khúc khích một mình."
+        }
+      ],
+      "en": {
+        "title": "What goes in the letter?",
+        "goTo": "Go to the east edge of the moat, where Cáo has driven a marker post at the spot he'll shoot from",
+        "prompt": "Paper ready, thread chosen. Cáo holds the pen and scratches an ear: \"Keep it short; an arrow can't carry a long letter. What shall I write, {name}?\"",
+        "choices": [
+          {
+            "text": "A greeting for Bác Quăng Lưới Biển",
+            "consequence": "Cáo writes: \"Hello, uncle. I'm reading the wind your way now.\" Then he reads it aloud three times to learn it by heart."
+          },
+          {
+            "text": "Draw a target with an arrow right in the middle",
+            "consequence": "Cáo draws a circle and puts one dot in the centre. \"No words needed. He'll know at a glance.\""
+          },
+          {
+            "text": "Challenge him to a wind-reading contest: arrow against net",
+            "consequence": "Cáo writes: \"Fancy a wind-reading contest, uncle? I'll guess with arrows, you guess with nets.\" Then he giggles to himself."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tha-dieu-thu-gio",
+      "title": "Thả diều thử gió",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Trước khi bắn tên mang thư, Cáo muốn biết gió trên hào mạnh cỡ nào. Thả diều bay cao, đủ sáu mươi điểm là biết gió đi đường nào!",
+      "game": "kite-fly",
+      "goal": 60,
+      "en": {
+        "title": "A kite to test the wind",
+        "prompt": "Before shooting the letter-arrow, Cáo wants to know how strong the wind over the moat is. Fly the kite high; sixty points and we'll know which way the wind is going!"
+      }
+    },
+    {
+      "id": "thu-bay-qua-hao",
+      "title": "Thư bay qua hào",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cáo liếm ngón tay, ngắm lệch trái một chút, thở ra rồi buông. Vút! Mũi tên mang thư bay vèo qua mặt hào, cắm phập vào bãi cỏ bờ bên kia. Cáo nhảy cẫng lên, ôm chầm lấy {name}.",
+      "en": {
+        "title": "The letter flies over the moat",
+        "text": "Cáo licks a finger, aims a touch to the left, breathes out and lets go. Whoosh! The letter-arrow zips across the moat and thuds into the grass on the far bank. Cáo leaps in the air and throws his arms round {name}."
+      }
+    },
+    {
+      "id": "ngay-giai-dau",
+      "title": "Ngày giải đấu",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tin mũi tên mang thư lan khắp lâu đài. Sáng mai, cung thủ từ núi, từ biển, từ làng ven sông kéo tới trước cổng thành dự giải.",
+      "en": {
+        "title": "Contest day",
+        "text": "News of the letter-arrow spreads all over the castle. Tomorrow morning, archers from the mountains, the sea and the riverside villages arrive at the castle gate for the contest."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "doc-hieu": 1,
+      "so-sanh-so": 1
+    }
+  },
+  "en": {
+    "title": "Cáo Cung Thủ's story, chapter 2: The letter-arrow",
+    "summary": "Cáo shares his dream of shooting an arrow with a letter all the way to the far shore, and today he practises the first step: a letter over the moat. {name} gathers the letter-tying kit, picks threads of the right length, reads Bác Quăng Lưới Biển's tip for reading the wind and decides what goes in the very first letter."
+  }
+}

@@ -1,0 +1,350 @@
+{
+  "id": "yarn-cao-mui-ten-mang-thu-1",
+  "region": "lau-dai",
+  "chapter": 3,
+  "title": "Chuyện của Cáo Cung Thủ, chương 1: Giải bắn trước cổng thành",
+  "status": "active",
+  "category": "story",
+  "summary": "Cáo Cung Thủ mở một giải bắn giao hữu ngay trước cổng thành, nhưng cờ gió đổ, bảng điểm trống và tên còn lẫn lộn. {name} cắm lại cờ gió, cộng điểm bắn thử, xếp tên theo độ dài và chọn người bắn mũi khai mạc.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cáo Cung Thủ",
+    "where": "Khu luyện tập, hàng cờ gió, bãi tập bắn tạm, nhà gác cổng, bãi dựng bia",
+    "goal": "Dựng xong sân cho giải bắn giao hữu",
+    "play": "Tìm cờ gió bị đổ; cộng điểm bắn thử; xếp tên từ ngắn đến dài; chọn người bắn khai mạc; phóng phi tiêu khởi động",
+    "learn": "Cộng có nhớ trong phạm vi 100, so sánh độ dài (cm, dm)",
+    "reward": "55 XP, 14 Xu, Skill XP Phép cộng, So sánh số",
+    "next": "Mũi tên buộc thư"
+  },
+  "phases": {
+    "hook": "cao-mo-giai",
+    "explore": "dung-co-gio",
+    "learn": "cong-diem-ban-thu",
+    "challenge": "xep-ten-theo-do-dai",
+    "decision": "ai-ban-khai-mac",
+    "finale": "phi-tieu-khoi-dong",
+    "reward": "san-da-san-sang",
+    "next": "mui-ten-buoc-thu"
+  },
+  "places": {
+    "cao-cung-thu": "Khu luyện tập",
+    "dung-co-gio": "Hàng cờ gió",
+    "st-cao-mui-ten-mang-thu-co-gio-do": "Hàng cờ gió",
+    "st-cao-mui-ten-mang-thu-co-gio-vang": "Hàng cờ gió",
+    "st-cao-mui-ten-mang-thu-co-gio-xanh": "Hàng cờ gió",
+    "st-cao-mui-ten-mang-thu-bang-diem-thu": "Bãi tập bắn tạm",
+    "st-cao-mui-ten-mang-thu-thuoc-do-ten": "Nhà gác cổng",
+    "st-cao-mui-ten-mang-thu-bia-vong": "Bãi dựng bia"
+  },
+  "steps": [
+    {
+      "id": "cao-mo-giai",
+      "title": "Cáo mở giải",
+      "goTo": "Tới khu luyện tập, Cáo Cung Thủ đang liếm ngón tay giơ lên trời thử gió",
+      "kind": "dialogue",
+      "target": "cao-cung-thu",
+      "lines": [
+        {
+          "speaker": "Cáo Cung Thủ",
+          "text": "Vút! {name} tới đúng lúc. Cáo mở giải bắn giao hữu. Ngay trước cổng thành. Cung thủ khắp nơi được mời."
+        },
+        {
+          "speaker": "Cáo Cung Thủ",
+          "text": "Chỉ có điều: cờ gió đổ hết, bảng điểm trống trơn, tên trong ống lẫn lộn dài ngắn. Còn bia thì chưa ai dựng."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu dựng sân với Cáo!",
+          "reply": "Trúng phóc! Hai đứa làm thì nhanh gấp đôi."
+        },
+        {
+          "text": "Giải bắn mà chưa có bia thì bắn vào đâu ạ?",
+          "reply": "Vào không khí. Đùa đấy. Bia dựng sau cùng, đẹp nhất."
+        }
+      ],
+      "en": {
+        "title": "Cáo opens a contest",
+        "goTo": "Go to the training ground, where Cáo Cung Thủ is licking a finger and holding it up to test the wind",
+        "lines": [
+          "Whoosh! {name}, perfect timing. I'm holding a friendly archery contest. Right in front of the castle gate. Archers from everywhere are invited.",
+          "One small problem: the wind flags are all down, the scoreboard is blank, and the arrows in the quiver are muddled long and short. And nobody has put up the target yet."
+        ],
+        "choices": [
+          {
+            "text": "I'll set up the ground with you!",
+            "reply": "Dead centre! Two of us means twice as fast."
+          },
+          {
+            "text": "An archery contest with no target? What do you shoot at?",
+            "reply": "Thin air. Joking. The target goes up last, the best bit."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dung-co-gio",
+      "title": "Dựng lại cờ gió",
+      "goTo": "Ra hàng cờ gió trước cổng thành, ba lá cờ bị gió đêm quật đổ nằm rải rác",
+      "kind": "search",
+      "targets": [
+        "st-cao-mui-ten-mang-thu-co-gio-do",
+        "st-cao-mui-ten-mang-thu-co-gio-vang",
+        "st-cao-mui-ten-mang-thu-co-gio-xanh"
+      ],
+      "en": {
+        "title": "Raising the wind flags",
+        "goTo": "Go to the row of wind flags before the castle gate, where the night wind knocked three flags flat"
+      }
+    },
+    {
+      "id": "cong-diem-ban-thu",
+      "title": "Cộng điểm bắn thử",
+      "goTo": "Sang bãi tập bắn tạm, nơi bảng điểm bắn thử vừa được treo lên",
+      "kind": "riddle",
+      "target": "st-cao-mui-ten-mang-thu-bang-diem-thu",
+      "skill": "phep-cong",
+      "question": "Để thử bảng điểm, Cáo bắn hai lượt. Lượt sáng Cáo được 36 điểm, lượt chiều được 47 điểm. Cả hai lượt Cáo được bao nhiêu điểm?",
+      "answer": {
+        "value": 83
+      },
+      "support": {
+        "guide": [
+          "Muốn biết cả hai lượt, ta làm phép cộng: 36 + 47.",
+          "Cộng hàng đơn vị trước: 6 + 7 bằng bao nhiêu? Có cần nhớ không?"
+        ],
+        "hint": "6 + 7 = 13, viết 3 nhớ 1 sang hàng chục.",
+        "answer": {
+          "text": "83 điểm",
+          "explanation": "Hàng đơn vị: 6 + 7 = 13, viết 3 nhớ 1. Hàng chục: 3 + 4 = 7, thêm 1 là 8. Vậy 36 + 47 = 83 điểm."
+        },
+        "en": {
+          "guide": [
+            "To find both rounds together, add: 36 + 47.",
+            "Add the ones first: what is 6 + 7? Do you need to carry?"
+          ],
+          "hint": "6 + 7 = 13: write 3 and carry 1 to the tens.",
+          "answer": {
+            "text": "83 points",
+            "explanation": "Ones: 6 + 7 = 13, write 3 and carry 1. Tens: 3 + 4 = 7, plus the 1 carried makes 8. So 36 + 47 = 83 points."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tám mươi ba! Cáo viết số lên bảng, nét phấn thẳng như đường tên bay.",
+          "{name} nhớ một sang hàng chục gọn gàng, trúng phóc luôn.",
+          "Vút! Bảng điểm chạy rồi. Giờ chỉ thiếu cung thủ thôi."
+        ],
+        "wrong": [
+          "Sáu cộng bảy được mười ba, {name} đừng quên nhớ một nhé.",
+          "Hàng đơn vị cộng xong rồi mới sang hàng chục nhé.",
+          "Số chục là 3 và 4, cộng thêm số nhớ nữa mới đủ."
+        ],
+        "en": {
+          "right": [
+            "Eighty-three! Cáo chalks it on the board, the line as straight as an arrow's flight.",
+            "{name} carried the one into the tens neatly; dead centre.",
+            "Whoosh! The scoreboard works. Now all we need is archers."
+          ],
+          "wrong": [
+            "Six plus seven is thirteen, {name}; remember to carry the one.",
+            "Finish the ones before you move on to the tens.",
+            "The tens are 3 and 4, and the carried one goes on top of that."
+          ]
+        }
+      },
+      "en": {
+        "title": "Adding the practice score",
+        "goTo": "Go to the makeshift practice range, where the practice scoreboard has just gone up",
+        "question": "To test the scoreboard, Cáo shoots two rounds. In the morning round he scores 36 points, in the afternoon round 47 points. How many points does he score in both rounds together?"
+      }
+    },
+    {
+      "id": "xep-ten-theo-do-dai",
+      "title": "Tên dài, tên ngắn",
+      "goTo": "Ghé nhà gác cổng, ống tên của Cáo dựng cạnh cây thước gỗ",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-cao-mui-ten-mang-thu-thuoc-do-ten",
+      "skill": "so-sanh-so",
+      "prompt": "Cáo đo bốn mũi tên bằng thước gỗ, có mũi ghi xăng-ti-mét, có mũi ghi đề-xi-mét. Xếp các mũi tên từ ngắn nhất đến dài nhất:",
+      "items": [
+        {
+          "id": "ten-gio",
+          "label": "Tên Gió: 65 cm"
+        },
+        {
+          "id": "ten-nhi",
+          "label": "Tên Nhí: 4 dm"
+        },
+        {
+          "id": "ten-sam",
+          "label": "Tên Sấm: 7 dm"
+        },
+        {
+          "id": "ten-may",
+          "label": "Tên Mây: 58 cm"
+        }
+      ],
+      "answer": {
+        "order": [
+          "ten-nhi",
+          "ten-may",
+          "ten-gio",
+          "ten-sam"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Đổi hết về cùng một đơn vị: 1 dm = 10 cm.",
+          "4 dm là bao nhiêu xăng-ti-mét? 7 dm là bao nhiêu xăng-ti-mét?"
+        ],
+        "hint": "4 dm = 40 cm và 7 dm = 70 cm. Giờ so bốn số đo xăng-ti-mét.",
+        "answer": {
+          "text": "Tên Nhí, Tên Mây, Tên Gió, Tên Sấm",
+          "explanation": "4 dm = 40 cm, 7 dm = 70 cm. Vì 40 cm < 58 cm < 65 cm < 70 cm nên thứ tự là Tên Nhí, Tên Mây, Tên Gió, Tên Sấm."
+        },
+        "en": {
+          "guide": [
+            "Change everything to the same unit: 1 dm = 10 cm.",
+            "How many centimetres is 4 dm? And 7 dm?"
+          ],
+          "hint": "4 dm = 40 cm and 7 dm = 70 cm. Now compare four lengths in centimetres.",
+          "answer": {
+            "text": "Little, Cloud, Wind, Thunder",
+            "explanation": "4 dm = 40 cm, 7 dm = 70 cm. Since 40 cm < 58 cm < 65 cm < 70 cm, the order is Little, Cloud, Wind, Thunder."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ống tên ngay hàng rồi! Cáo rút thử Tên Sấm, dài nhất, oai nhất.",
+          "{name} đổi đề-xi-mét ra xăng-ti-mét nhanh như tên rời dây.",
+          "Ngắn trước, dài sau. Trúng phóc từng mũi."
+        ],
+        "wrong": [
+          "Bốn đề-xi-mét là bốn mươi xăng-ti-mét đấy {name}, ngắn hơn 58 cm.",
+          "Tên Sấm 7 dm, tức 70 cm, mới là mũi dài nhất.",
+          "Đổi về cùng một đơn vị rồi hẵng so nhé."
+        ],
+        "en": {
+          "right": [
+            "The quiver is in order! Cáo draws out Thunder, the longest and grandest.",
+            "{name} turned decimetres into centimetres as fast as an arrow off the string.",
+            "Short first, long last. Every single one dead centre."
+          ],
+          "wrong": [
+            "Four decimetres is forty centimetres, {name}, shorter than 58 cm.",
+            "Thunder is 7 dm, that's 70 cm, so it's the longest one.",
+            "Change them to the same unit before you compare."
+          ]
+        }
+      },
+      "en": {
+        "title": "Long arrows, short arrows",
+        "goTo": "Stop at the gatehouse, where Cáo's quiver stands beside a wooden ruler",
+        "prompt": "Cáo measured four arrows with the wooden ruler; some are marked in centimetres, some in decimetres. Sort the arrows from shortest to longest:",
+        "items": [
+          "Wind arrow: 65 cm",
+          "Little arrow: 4 dm",
+          "Thunder arrow: 7 dm",
+          "Cloud arrow: 58 cm"
+        ]
+      }
+    },
+    {
+      "id": "ai-ban-khai-mac",
+      "title": "Mũi tên khai mạc",
+      "goTo": "Ra bãi dựng bia trước cổng thành, tấm bia vòng đã đứng thẳng",
+      "kind": "decision",
+      "target": "st-cao-mui-ten-mang-thu-bia-vong",
+      "speaker": "Cáo Cung Thủ",
+      "prompt": "Bia đứng thẳng, cờ gió bay phần phật. Cáo vuốt dây cung: «Giải nào cũng cần mũi tên khai mạc. Ai bắn đây?»",
+      "choices": [
+        {
+          "id": "cao-ban",
+          "text": "Cáo bắn, vì Cáo là người mở giải",
+          "consequence": "Cáo ưỡn ngực, kéo dây, buông. Vút! Mũi tên cắm vòng tám. «Khai mạc thì vòng tám là vừa đẹp», cáo nháy mắt."
+        },
+        {
+          "id": "ten-ban",
+          "text": "Mời {name} bắn mũi đầu tiên",
+          "consequence": "Cáo chỉnh tay cho {name}, đếm một, hai, ba. Mũi tên lượn hơi xa nhưng vẫn cắm vào bia. Cáo vỗ tay to nhất bãi."
+        },
+        {
+          "id": "nho-nhat-ban",
+          "text": "Để dành cho cung thủ nhỏ tuổi nhất tới dự",
+          "consequence": "Cáo gật gù: «Ý hay. Người nhỏ nhất bắn trước, người lớn nhất nhặt tên.» Rồi cáo tự nhận phần nhặt tên."
+        }
+      ],
+      "en": {
+        "title": "The opening arrow",
+        "goTo": "Go to the grass field before the castle gate, where the ringed target is finally up",
+        "prompt": "The target stands straight and the wind flags flap. Cáo strokes his bowstring: \"Every contest needs an opening arrow. Who shoots it?\"",
+        "choices": [
+          {
+            "text": "Cáo shoots, since he's the one holding the contest",
+            "consequence": "Cáo puffs out his chest, draws, lets go. Whoosh! The arrow lands in the eight ring. \"An eight is just right for an opening,\" he winks."
+          },
+          {
+            "text": "Invite {name} to shoot the first arrow",
+            "consequence": "Cáo straightens {name}'s arm and counts one, two, three. The arrow drifts a little wide but still sticks in the target. Cáo claps loudest of all."
+          },
+          {
+            "text": "Save it for the youngest archer who comes",
+            "consequence": "Cáo nods: \"Good idea. Youngest shoots first, oldest picks up the arrows.\" And then he volunteers to pick up the arrows."
+          }
+        ]
+      }
+    },
+    {
+      "id": "phi-tieu-khoi-dong",
+      "title": "Phi tiêu khởi động",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Trước giờ giải, Cáo bày trò phi tiêu cho nóng tay. Phóng đủ một trăm điểm là tay {name} sẵn sàng như tay cung thủ!",
+      "game": "dart-wobble",
+      "goal": 100,
+      "en": {
+        "title": "Warm-up darts",
+        "prompt": "Before the contest, Cáo sets up a game of darts to warm the hands. Score a hundred points and {name}'s hands are as ready as an archer's!"
+      }
+    },
+    {
+      "id": "san-da-san-sang",
+      "title": "Sân đã sẵn sàng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cờ gió bay, bảng điểm sạch, ống tên thẳng hàng. Cáo đứng giữa bãi cỏ, chống nạnh ngắm một lượt rồi tuyên bố: «Sân đẹp nhất mọi miền. Có công của {name}.»",
+      "en": {
+        "title": "The ground is ready",
+        "text": "Wind flags flying, scoreboard clean, quiver in order. Cáo stands in the middle of the field, hands on hips, looks it all over and declares: \"The finest range in any land. {name} helped build it.\""
+      }
+    },
+    {
+      "id": "mui-ten-buoc-thu",
+      "title": "Mũi tên buộc thư",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đêm ấy Cáo không ngủ được. Cáo có một ý mới: trước khi giải bắt đầu, phải tập cho được một mũi tên buộc thư bay qua hào.",
+      "en": {
+        "title": "An arrow with a letter",
+        "text": "That night Cáo can't sleep. He has a new idea: before the contest begins, he must learn to send an arrow with a letter tied to it across the moat."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": {
+      "phep-cong": 1,
+      "so-sanh-so": 1
+    }
+  },
+  "en": {
+    "title": "Cáo Cung Thủ's story, chapter 1: A contest before the gate",
+    "summary": "Cáo Cung Thủ is holding a friendly archery contest right in front of the castle gate, but the wind flags are down, the scoreboard is blank and the arrows are muddled. {name} raises the wind flags, adds up the practice score, sorts the arrows by length and picks who shoots the opening arrow."
+  }
+}

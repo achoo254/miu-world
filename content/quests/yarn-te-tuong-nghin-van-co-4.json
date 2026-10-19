@@ -1,0 +1,444 @@
+{
+  "id": "yarn-te-tuong-nghin-van-co-4",
+  "region": "lau-dai",
+  "chapter": 2,
+  "title": "Chuyện của Tể Tướng Cờ Vua, chương 4: Bữa tiệc không chịu theo luật",
+  "status": "active",
+  "category": "story",
+  "summary": "Đại tiệc của lâu đài lệch hết lịch: khách tới sớm, mèo nhảy lên bàn cờ, bánh mì rơi úp mặt bơ. Tể Tướng Cờ Vua kể nỗi sợ của mình, còn {name} đón chú mèo, cộng cân nặng hai bao, tính nước chanh còn lại và giúp ngài bình tĩnh.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Tể Tướng Cờ Vua",
+    "where": "Lâu đài: bàn cờ đại sảnh, khán phòng, gian cân đong, góc bánh, cửa đại sảnh",
+    "goal": "Giữ cho bữa tiệc vui dù mọi thứ chạy lệch luật",
+    "play": "Tìm đường qua dãy ghế đón chú mèo; cộng cân nặng hai bao; chọn cách giúp tể tướng khi bánh mì rơi; tính số lít nước chanh còn lại; hứng bánh xếp tầng",
+    "learn": "Ki-lô-gam, lít, phép cộng và phép trừ có nhớ trong phạm vi 100, tìm đường",
+    "reward": "76 XP, 21 Xu, Skill XP Khối lượng, Dung tích, một ổ bánh mì sữa",
+    "next": "Ván cờ thứ Bảy và một bí mật giữ kín"
+  },
+  "phases": {
+    "hook": "tiec-lech-tung-phut",
+    "explore": "duoi-meo-muop",
+    "learn": "hai-bao-cua-bep",
+    "challenge": "nuoc-chanh-cho-khach-som",
+    "decision": "banh-mi-up-mat-bo",
+    "finale": "hung-banh-chong-tang",
+    "reward": "tiec-van-vui",
+    "next": "van-co-thu-bay"
+  },
+  "places": {
+    "te-tuong-co-the": "Bàn cờ đại sảnh",
+    "st-te-tuong-nghin-van-co-meo-muop-tren-ban-co": "Khán phòng",
+    "st-te-tuong-nghin-van-co-can-bao-bot-tiec": "Gian cân đong",
+    "st-te-tuong-nghin-van-co-lat-banh-mi-up-bo": "Góc bánh",
+    "st-te-tuong-nghin-van-co-thung-nuoc-chanh": "Cửa đại sảnh"
+  },
+  "steps": [
+    {
+      "id": "tiec-lech-tung-phut",
+      "title": "Bữa tiệc lệch từng phút",
+      "goTo": "Chạy tới bàn cờ đại sảnh, Tể Tướng Cờ Vua đang cầm tờ lịch tiệc mà tay run run",
+      "kind": "dialogue",
+      "target": "te-tuong-co-the",
+      "lines": [
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "{name}! Lịch tiệc ghi khách tới lúc sáu giờ. Bây giờ mới năm giờ rưỡi mà cửa đại sảnh đã đông nghịt khách tới sớm!"
+        },
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "Rồi một chú mèo mướp ở đâu nhảy phốc lên bàn cờ, quân đổ lăn lóc. Ta… ta phải ngồi xuống một chút."
+        },
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "Ta nói thật với ngươi điều ít ai biết: ta sợ những thứ không theo luật. Mèo nhảy lên bàn cờ, khách tới sớm, lát bánh mì rơi úp mặt bơ… gặp chúng là tim ta đập loạn như bàn cờ bị lật."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Ngài cứ thở đều, cháu ở đây giúp ngài!",
+          "reply": "Một… hai… ba. Ừ, chính bài học của Cáo lại cứu ta. Ta đứng dậy được rồi."
+        },
+        {
+          "text": "Mấy chuyện lệch luật cũng có khi vui mà ngài.",
+          "reply": "Vui ư? Ta chưa từng nghĩ thế. Nhưng nếu ngươi đi cùng, có lẽ ta dám thử nhìn chúng theo cách ấy."
+        }
+      ],
+      "en": {
+        "title": "A banquet off by the minute",
+        "goTo": "Hurry to the chessboard in the great hall, where Tể Tướng Cờ Vua holds the banquet schedule with trembling hands",
+        "lines": [
+          "{name}! The schedule says guests arrive at six. It is only half past five, and the hall door is already crowded with early guests!",
+          "Then a tabby cat from nowhere leapt onto the chessboard and the pieces went tumbling. I… I must sit down a moment.",
+          "I will tell you something few people know: I am afraid of things that break the rules. Cats on the chessboard, guests arriving early, toast landing butter-side down… they make my heart race like an overturned board."
+        ],
+        "choices": [
+          {
+            "text": "Just breathe slowly, sir; I'm right here to help!",
+            "reply": "One… two… three. Yes, Cáo's own lesson rescues me. I can stand again."
+          },
+          {
+            "text": "Things off the rules can be fun sometimes, sir.",
+            "reply": "Fun? I had never thought so. But with you beside me, perhaps I dare look at them that way."
+          }
+        ]
+      }
+    },
+    {
+      "id": "duoi-meo-muop",
+      "title": "Đón chú mèo mướp",
+      "goTo": "Vào khán phòng, chú mèo mướp vừa ngậm quân vua chạy vào giữa các dãy ghế",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "maze",
+      "target": "st-te-tuong-nghin-van-co-meo-muop-tren-ban-co",
+      "skill": "logic",
+      "prompt": "Chú mèo mướp ngậm quân vua trốn trong khán phòng. Ô chữ S là chỗ {name} đứng, ô chữ G là chú mèo, ô # là dãy ghế chắn lối. Dãy bước nào đưa {name} tới chỗ chú mèo? (→ sang phải, ↓ đi xuống)",
+      "grid": [
+        [
+          "S",
+          ".",
+          "#",
+          ".",
+          "."
+        ],
+        [
+          "#",
+          ".",
+          "#",
+          ".",
+          "#"
+        ],
+        [
+          ".",
+          ".",
+          ".",
+          ".",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "#",
+          ".",
+          "G"
+        ]
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "→ ↓ ↓ → → ↓ →"
+        },
+        {
+          "id": "b",
+          "text": "→ ↓ ↓ → → → ↓"
+        },
+        {
+          "id": "c",
+          "text": "→ → ↓ ↓ → ↓ →"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Đặt ngón tay lên ô S, đi theo từng mũi tên một.",
+          "Gặp ô # là dãy bước ấy sai, thử dãy khác."
+        ],
+        "hint": "Bước thứ hai phải đi xuống, vì ô bên phải ở hàng trên cùng bị chắn.",
+        "answer": {
+          "text": "→ ↓ ↓ → → ↓ →",
+          "explanation": "Sang phải một ô, xuống hai ô, sang phải hai ô, xuống một ô, rồi sang phải một ô là tới chỗ chú mèo. Hai dãy kia đều đâm vào dãy ghế."
+        },
+        "en": {
+          "guide": [
+            "Put your finger on square S and follow the arrows one by one.",
+            "If you hit a # square, that path is wrong; try another."
+          ],
+          "hint": "The second step must go down, because the next square right on the top row is blocked.",
+          "answer": {
+            "text": "→ ↓ ↓ → → ↓ →",
+            "explanation": "Right one, down two, right two, down one, then right one reaches the cat. The other two paths both run into a row of seats."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chú mèo bị đón gọn, quân vua được trả về bàn. Chiếu tướng!",
+          "Ngươi lách qua các dãy ghế khéo như quân mã lách qua hàng tốt.",
+          "Mèo mướp kêu «meo» một tiếng rồi nằm cuộn tròn trong tay ngươi."
+        ],
+        "wrong": [
+          "Ối, dãy bước ấy húc vào dãy ghế mất rồi.",
+          "Thử đi lại từ ô S, đếm từng ô cho kỹ trước khi bước.",
+          "Ở hàng thứ ba, đừng đi quá xa sang phải kẻo gặp ô chắn."
+        ],
+        "en": {
+          "right": [
+            "The cat is caught gently and the king goes back to the board. Check!",
+            "You slipped between the rows of seats like a knight through a line of pawns.",
+            "The tabby lets out a «meow» and curls up in your arms."
+          ],
+          "wrong": [
+            "Oops, that path bumps into a row of seats.",
+            "Start again from S, and count each square carefully before you step.",
+            "On the third row, do not go too far right or you will hit a blocked square."
+          ]
+        }
+      },
+      "en": {
+        "title": "Catching the tabby cat",
+        "goTo": "Go into the auditorium; the tabby has just run off between the rows of seats with the king in its mouth",
+        "prompt": "The tabby cat is hiding in the auditorium with the king in its mouth. Square S is where {name} stands, square G is the cat, and # squares are rows of seats in the way. Which steps take {name} to the cat? (→ right, ↓ down)",
+        "choices": [
+          "→ ↓ ↓ → → ↓ →",
+          "→ ↓ ↓ → → → ↓",
+          "→ → ↓ ↓ → ↓ →"
+        ]
+      }
+    },
+    {
+      "id": "hai-bao-cua-bep",
+      "title": "Hai bao của bếp tiệc",
+      "goTo": "Ghé gian cân đong, bác bếp đang đặt hai bao hàng lên chiếc cân",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "st-te-tuong-nghin-van-co-can-bao-bot-tiec",
+      "skill": "khoi-luong",
+      "prompt": "Khách tới sớm nên bếp phải làm bánh sớm. Bao bột cân được 26 kg, bao đường cân được 18 kg. Cả hai bao nặng bao nhiêu ki-lô-gam?",
+      "choices": [
+        {
+          "id": "kg34",
+          "text": "34 kg"
+        },
+        {
+          "id": "kg44",
+          "text": "44 kg"
+        },
+        {
+          "id": "kg42",
+          "text": "42 kg"
+        }
+      ],
+      "answer": {
+        "choice": "kg44"
+      },
+      "support": {
+        "guide": [
+          "Muốn biết cả hai bao nặng bao nhiêu, ta làm phép cộng.",
+          "Đặt tính 26 + 18, cộng hàng đơn vị trước, nhớ đừng quên ghi kg."
+        ],
+        "hint": "6 cộng 8 bằng 14, viết 4 nhớ 1.",
+        "answer": {
+          "text": "44 kg",
+          "explanation": "26 kg + 18 kg = 44 kg: 6 + 8 = 14, viết 4 nhớ 1; 2 + 1 = 3, thêm 1 là 4."
+        },
+        "en": {
+          "guide": [
+            "To find what both sacks weigh together, we add.",
+            "Set out 26 + 18, add the ones first, and remember to write kg."
+          ],
+          "hint": "6 plus 8 is 14: write 4, carry 1.",
+          "answer": {
+            "text": "44 kg",
+            "explanation": "26 kg + 18 kg = 44 kg: 6 + 8 = 14, write 4 and carry 1; 2 + 1 = 3, plus 1 makes 4."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn mươi bốn ki-lô-gam, bếp tiệc đủ bột đủ đường rồi!",
+          "Ngươi nhớ một sang hàng chục mà chẳng cần ai nhắc.",
+          "Bác bếp xắn tay áo, bánh sẽ ra lò kịp đón khách sớm."
+        ],
+        "wrong": [
+          "Hình như số nhớ ở hàng đơn vị bị bỏ quên rồi.",
+          "Cộng lại hàng đơn vị: sáu với tám được bao nhiêu nhỉ?",
+          "Hai bao gộp lại phải nặng hơn mỗi bao, nhưng đừng cộng nhầm hàng chục."
+        ],
+        "en": {
+          "right": [
+            "Forty-four kilograms; the banquet kitchen has flour and sugar enough!",
+            "You carried the one to the tens without anyone reminding you.",
+            "The cook rolls up his sleeves; the cakes will be out in time for the early guests."
+          ],
+          "wrong": [
+            "It looks like the carried number in the ones was forgotten.",
+            "Add the ones again: what do six and eight make?",
+            "Together they must weigh more than either sack, but do not slip up in the tens."
+          ]
+        }
+      },
+      "en": {
+        "title": "The banquet kitchen's two sacks",
+        "goTo": "Stop at the weighing gallery, where the cook is putting two sacks on the scale",
+        "prompt": "The guests are early, so the kitchen must bake early. The flour sack weighs 26 kg and the sugar sack weighs 18 kg. How many kilograms do both sacks weigh?",
+        "choices": [
+          "34 kg",
+          "44 kg",
+          "42 kg"
+        ]
+      }
+    },
+    {
+      "id": "nuoc-chanh-cho-khach-som",
+      "title": "Nước chanh cho khách tới sớm",
+      "goTo": "Ra cửa đại sảnh, khách tới sớm đang xếp hàng bên thùng nước chanh",
+      "kind": "riddle",
+      "target": "st-te-tuong-nghin-van-co-thung-nuoc-chanh",
+      "skill": "dung-tich",
+      "question": "Thùng nước chanh đón khách có 35 lít. Khách tới sớm đã uống hết 17 lít. Trong thùng còn lại bao nhiêu lít nước chanh?",
+      "answer": {
+        "value": 18
+      },
+      "support": {
+        "guide": [
+          "Lấy số lít lúc đầu trừ đi số lít khách đã uống.",
+          "Đặt tính 35 − 17: hàng đơn vị 5 không trừ được 7, phải mượn một chục."
+        ],
+        "hint": "15 trừ 7 được 8; hàng chục còn 2 trừ 1 bằng 1.",
+        "answer": {
+          "text": "18 lít",
+          "explanation": "35 l − 17 l = 18 l. Thùng còn 18 lít, đủ mời thêm khách tới đúng giờ."
+        },
+        "en": {
+          "guide": [
+            "Take the litres the guests drank away from the litres at the start.",
+            "Set out 35 − 17: in the ones, 5 take away 7 will not go, so borrow a ten."
+          ],
+          "hint": "15 take away 7 is 8; the tens have 2 left, and 2 take away 1 is 1.",
+          "answer": {
+            "text": "18 litres",
+            "explanation": "35 l − 17 l = 18 l. The barrel still holds 18 litres, enough for the guests who come on time."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười tám lít! Khách tới đúng giờ vẫn có nước chanh mát.",
+          "Mượn một chục mà không hề lúng túng. Ngươi bình tĩnh hơn ta tối nay.",
+          "Tể tướng gõ nhẹ vào thùng, nghe tiếng «bõm» và gật gù hài lòng."
+        ],
+        "wrong": [
+          "Hàng đơn vị năm không trừ được bảy, nhớ mượn một chục nhé.",
+          "Sau khi mượn, hàng chục chỉ còn hai thôi đấy.",
+          "Thử đếm thêm từ mười bảy lên ba mươi lăm xem được mấy lít."
+        ],
+        "en": {
+          "right": [
+            "Eighteen litres! Guests who come on time will still get cool lemonade.",
+            "You borrowed a ten without a stumble. You are calmer than I am tonight.",
+            "The chancellor taps the barrel, hears a «slosh» and nods, satisfied."
+          ],
+          "wrong": [
+            "Five take away seven will not go in the ones; remember to borrow a ten.",
+            "After borrowing, the tens only have two left.",
+            "Try counting on from seventeen up to thirty-five and see how many litres that is."
+          ]
+        }
+      },
+      "en": {
+        "title": "Lemonade for the early guests",
+        "goTo": "Go to the great hall door, where the early guests are queueing by the lemonade barrel",
+        "question": "The welcome barrel holds 35 litres of lemonade. The early guests have drunk 17 litres. How many litres of lemonade are left in the barrel?"
+      }
+    },
+    {
+      "id": "banh-mi-up-mat-bo",
+      "title": "Lát bánh mì úp mặt bơ",
+      "goTo": "Ra góc bánh, một lát bánh mì vừa trượt khỏi khay và rơi úp xuống sàn",
+      "kind": "decision",
+      "target": "st-te-tuong-nghin-van-co-lat-banh-mi-up-bo",
+      "speaker": "Tể Tướng Cờ Vua",
+      "prompt": "Tể tướng đứng sững nhìn lát bánh mì úp mặt bơ, râu rung rung. Ngài vuốt râu một, hai… mãi không tới được lần thứ ba. Ngươi làm gì?",
+      "choices": [
+        {
+          "id": "dem-giup",
+          "text": "Đếm giúp ngài: «Ba!» rồi cùng nhặt bánh lên",
+          "consequence": "Nghe tiếng «ba», tể tướng thở ra một hơi dài, cúi nhặt lát bánh bỏ vào giỏ. «Hóa ra lần thứ ba có thể mượn của bạn,» ngài nói."
+        },
+        {
+          "id": "luat-moi",
+          "text": "Đề nghị một luật mới: bánh rơi thì cho chim sẻ ăn",
+          "consequence": "Tể tướng mở to mắt: «Một luật cho cả chuyện lệch luật!» Ngài ghi ngay vào sổ, và lũ chim sẻ ngoài sân được một bữa no."
+        },
+        {
+          "id": "ke-chuyen-vui",
+          "text": "Kể ngài nghe lần cháu làm rơi cả bát chè",
+          "consequence": "Tể tướng bật cười thành tiếng, lần đầu tiên trong tối nay. «Một bát chè! Vậy lát bánh của ta còn nhỏ chán,» ngài nói."
+        }
+      ],
+      "en": {
+        "title": "Toast, butter-side down",
+        "goTo": "Go to the cake corner, where a slice of toast has just slid off a tray and landed face down",
+        "prompt": "The chancellor freezes, staring at the toast lying butter-side down, his beard quivering. He strokes it once, twice… and cannot reach the third time. What do you do?",
+        "choices": [
+          {
+            "text": "Count for him: «Three!» and pick up the toast together",
+            "consequence": "Hearing «three», the chancellor lets out a long breath and drops the toast into the basket. «So the third time can be borrowed from a friend,» he says."
+          },
+          {
+            "text": "Suggest a new rule: fallen toast goes to the sparrows",
+            "consequence": "The chancellor's eyes widen: «A rule for things that break the rules!» He writes it down at once, and the sparrows outside get a fine meal."
+          },
+          {
+            "text": "Tell him about the time you dropped a whole bowl of sweet soup",
+            "consequence": "The chancellor laughs out loud for the first time tonight. «A whole bowl! Then my slice of toast is a small matter,» he says."
+          }
+        ]
+      }
+    },
+    {
+      "id": "hung-banh-chong-tang",
+      "title": "Hứng bánh xếp tầng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Khay bánh bị chú mèo hích một cái, bánh bay lả tả! Hứng cho chồng bánh thật cao, đạt mười điểm nhé!",
+      "game": "stack-catch",
+      "goal": 10,
+      "en": {
+        "title": "Catching the stacked cakes",
+        "prompt": "The cat nudged the cake tray and the cakes went flying! Catch them into a tall stack; score ten points!"
+      }
+    },
+    {
+      "id": "tiec-van-vui",
+      "title": "Tiệc vẫn vui",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo được ôm, bánh được hứng, khách tới sớm có nước chanh. Bữa tiệc lệch hết luật mà ai cũng cười. Tể tướng tặng {name} một ổ bánh mì sữa còn ấm.",
+      "en": {
+        "title": "The banquet is still a joy",
+        "text": "The cat is cuddled, the cakes are caught, the early guests have lemonade. The banquet broke every rule and yet everyone laughed. The chancellor gives {name} a warm milk loaf."
+      }
+    },
+    {
+      "id": "van-co-thu-bay",
+      "title": "Ván cờ thứ Bảy",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Thứ Bảy này lại tới ván cờ tuần với Bác Thợ Khóa Thành. Tể tướng bảo trước ván ấy, ngài có một chuyện giữ kín đã lâu muốn nói ra.",
+      "en": {
+        "title": "The Saturday game",
+        "text": "This Saturday brings the weekly game with Bác Thợ Khóa Thành again. The chancellor says that before it, he has a long-kept secret he wants to speak aloud."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 76,
+    "coin": 21,
+    "skillXp": {
+      "khoi-luong": 1,
+      "dung-tich": 1
+    },
+    "items": {
+      "banh-mi-sua": 1
+    }
+  },
+  "en": {
+    "title": "Tể Tướng Cờ Vua's story, chapter 4: A banquet that broke the rules",
+    "summary": "The castle banquet goes off schedule: early guests, a cat on the chessboard, toast landing butter-side down. Tể Tướng Cờ Vua admits his fear, while {name} catches the cat, adds up two sacks' weight, works out the lemonade left and helps him stay calm."
+  }
+}

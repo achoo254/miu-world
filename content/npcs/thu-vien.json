@@ -794,6 +794,108 @@
           }
         }
       ]
+    },
+    {
+      "id": "koala-nghin-manh",
+      "npc": "koala-ghep-tranh",
+      "title": { "vi": "Nghìn mảnh thư viện", "en": "A Thousand Pieces of the Library" },
+      "teaser": { "vi": "Ưm… {name}. Tớ có một giấc mơ to bằng một nghìn mảnh ghép: cả thư viện, đủ từng ô cửa sổ. Nhưng sáng nay gió vừa thổi bay hộp tranh tập của tớ… cậu giúp tớ bắt đầu từ phần viền nhé?", "en": "Mm… {name}. I have a dream as big as a thousand puzzle pieces: the whole library, every window included. But this morning the wind blew my practice puzzle away… will you help me start with the edges?" },
+      "chapters": [
+        {
+          "quest": "yarn-koala-nghin-manh-1",
+          "hearts": 0,
+          "letter": {
+            "from": "koala-ghep-tranh",
+            "title": { "vi": "Khung viền đầu tiên", "en": "The first frame" },
+            "body": { "vi": "{name} ơi… tớ viết thư này lúc vừa ngủ dậy. Khung viền tranh tập vẫn nằm yên dưới bốn viên sỏi, không mảnh nào bỏ đi chơi nữa. Tớ ghép thêm được một dải mây ở giữa, để phần đẹp nhất chờ cậu quay lại. Koala.", "en": "{name}… I'm writing this just after waking up. The practice frame is still lying quietly under its four pebbles, and not one piece has run off to play. I've added a strip of cloud in the middle and saved the nicest part for when you come back. Koala." },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-koala-nghin-manh-2",
+          "hearts": 1,
+          "letter": {
+            "from": "nai-leo-vach",
+            "title": { "vi": "Lên! Thư từ vách băng", "en": "Up! A letter from the ice cliff" },
+            "body": { "vi": "Lên! {name}. Nai Leo Vách đây. Koala viết cho tôi: có người dò lối giữa các kệ sách giỏi như leo vách. Dò lối là phần khó nhất của leo núi. Tôi gửi một cành thông tuyết. Đặt cạnh bàn vẽ. Thơm. Tỉnh ngủ. Hết thư.", "en": "Up! {name}. Nai Leo Vách here. Koala wrote to me: someone found a way between the bookshelves as well as climbing a cliff. Finding the route is the hardest part of climbing. I'm sending a snowy pine sprig. Put it by the drawing table. Fresh. Keeps you awake. End of letter." },
+            "reward": {
+              "coins": 20,
+              "xp": 15,
+              "items": { "canh-thong-tuyet": 1 }
+            }
+          }
+        },
+        {
+          "quest": "yarn-koala-nghin-manh-3",
+          "hearts": 2,
+          "letter": {
+            "from": "meo-hop-nhac",
+            "title": { "vi": "Tinh tang, ván bài tối qua", "en": "Tinh tang, last night's game" },
+            "body": { "vi": "Tinh tang, {name} ơi! Ván lật bài tối qua đội Koala thắng, tớ thua mà vẫn muốn ngân nga cả đêm. Koala nhớ chỗ từng hình như nhớ chỗ từng mảnh ghép, tinh tang, ai mà theo kịp. Tớ gửi cậu ít xu, hẹn ván sau tớ phục thù nhé.", "en": "Tinh tang, {name}! Team Koala won last night's card game; I lost, and still felt like humming all night. Koala remembers where each picture is the way he remembers where each piece goes, tinh tang, nobody can keep up. Here are some coins; next time I'm having my revenge." },
+            "reward": { "coins": 20, "xp": 20, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-koala-nghin-manh-4",
+          "hearts": 3,
+          "letter": {
+            "from": "gau-truc",
+            "title": { "vi": "Tranh treo phòng đọc", "en": "A picture for the reading room" },
+            "body": { "vi": "Bác Gấu Trúc Tròn… chờ bác nhai mẩu măng… gửi {name}. Tranh nghìn mảnh treo lên, phòng đọc sáng bừng lên. Ô cửa tròn trên mái, nhìn mãi chẳng thấy chán. Bác gửi cháu khung gỗ nhỏ, để tranh nào cháu ghép cũng có chỗ mà ở.", "en": "Old Gấu Trúc Tròn… wait while I chew this bamboo… writes to {name}. The thousand-piece picture's on the wall, and it brightens the reading room for all. The round window up on the roof, I could gaze at it all day long. Here's a little wooden frame, so every puzzle you make has a place to belong." },
+            "reward": {
+              "coins": 25,
+              "xp": 25,
+              "items": { "khung-tranh-go": 1 }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "meo-hop-nhac-tang-ban",
+      "npc": "meo-hop-nhac",
+      "title": { "vi": "Hộp nhạc tặng bạn đọc", "en": "A Music Box for Every Reader" },
+      "teaser": { "vi": "Tinh tang… {name} ơi, hộp nhạc lớn của tớ đang hát dở thì im bặt. Tớ còn mơ nó chơi được bài yêu thích của từng bạn đọc nữa cơ. Cậu giúp tớ nhé?", "en": "Ting-a-ling… {name}, my big music box went quiet halfway through a song. And I still dream of it playing every reader's favourite tune. Will you help me?" },
+      "chapters": [
+        {
+          "quest": "yarn-meo-hop-nhac-tang-ban-1",
+          "hearts": 0,
+          "letter": {
+            "from": "meo-hop-nhac",
+            "title": { "vi": "Hai mươi lăm nốt cuối cùng", "en": "The last twenty-five notes" },
+            "body": { "vi": "Tinh tang, {name}! Tối nay tớ cho hộp nhạc hát lại bài «Lá vàng rơi» ba lần liền, lần nào cũng trọn vẹn tới nốt cuối. Chốt số hai mươi lăm bóng loáng nhất hàng, tớ gọi nó là chốt của {name}. Mai ghé sân lễ hội nghe tiếp nhé.", "en": "Ting-a-ling, {name}! Tonight I let the music box play «Falling Gold Leaves» three times in a row, every time right to the last note. Pin twenty-five is the shiniest in the row, and I call it {name}'s pin. Drop by the festival yard tomorrow to hear more." },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-meo-hop-nhac-tang-ban-2",
+          "hearts": 1,
+          "letter": {
+            "from": "khi-chuyen-canh",
+            "title": { "vi": "Cuộn nhạc đu tới rừng", "en": "A music roll swings into the forest" },
+            "body": { "vi": "Ú òa, {name}! Mèo Hộp Nhạc vừa gửi tớ một cuộn nhạc đục lỗ, kèm lời dặn «cuộn này {name} cắm chốt giúp đấy». Hấp! Tớ treo nó lên cành cao nhất, gió rừng thổi qua lỗ nghe vui tai lắm. Tớ gửi Mèo một giỏ quả rừng, còn đây là nải chuối chín cây dành riêng cho cậu.", "en": "Peekaboo, {name}! Mèo Hộp Nhạc just sent me a punched music roll with a note saying «{name} helped pin this one». Hup! I hung it on the highest branch, and the forest wind whistles merrily through the holes. I've sent Mèo a basket of forest fruit, and here's a bunch of tree-ripened bananas just for you." },
+            "reward": {
+              "coins": 20,
+              "xp": 20,
+              "items": { "chuoi-chin-cay": 1 }
+            }
+          }
+        },
+        {
+          "quest": "yarn-meo-hop-nhac-tang-ban-3",
+          "hearts": 2,
+          "letter": {
+            "from": "tho-ngam-sao",
+            "title": { "vi": "Bài ru dưới vì sao bánh flan", "en": "A lullaby under the custard-pudding star" },
+            "body": { "vi": "{name} ơi… buổi hòa nhạc chiều nay, tớ ngồi hàng sau… ngáp mất hai lần mà vẫn nghe trọn… Đêm xuống, Mèo mang hộp nhạc ra bãi cỏ, chơi lại bài ru tớ ghi trên phiếu… Ngay lúc ấy sao Bánh Flan sáng lên… Tớ gửi cậu tấm bản đồ sao, có đánh dấu chỗ ngôi sao ấy…", "en": "{name}… at this afternoon's concert I sat in the back row… yawned twice but still heard it all… When night came, Mèo carried the music box to the lawn and played the lullaby I wrote on my slip… Right then the Custard Pudding star lit up… I'm sending you my star map, with that star marked on it…" },
+            "reward": {
+              "coins": 25,
+              "xp": 25,
+              "items": { "ban-do-sao-dem": 1 }
+            }
+          }
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,399 @@
+{
+  "id": "yarn-khi-mua-dua-lon-4",
+  "region": "dao-bi-an",
+  "chapter": 2,
+  "title": "Chuyện của Khỉ Hái Dừa, chương 4: Tổ ong dưới ngọn dừa cao nhất",
+  "status": "active",
+  "category": "story",
+  "summary": "Sáng ngày hội, Khỉ Hái Dừa tụt vội khỏi cây dừa cao nhất vì một tổ ong rừng, rồi kể cho {name} nghe nỗi sợ của mình. {name} mang đồ hội sang chỗ mới, viết biển nhắc mọi người đi nhẹ, tính số ghế còn thiếu và chọn một cách tử tế cho tổ ong để hội vẫn diễn ra.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Khỉ Hái Dừa",
+    "where": "Rừng nhiệt đới: ngọn dừa Khỉ, thảm hoa dại, chòi làm biển, sân hội mới, gốc dừa cao nhất",
+    "goal": "Giúp Khỉ vượt nỗi sợ ong để hội dừa vẫn mở, mà không làm hại tổ ong",
+    "play": "Tìm đồ hội theo lời tả; chọn chữ viết đúng cho biển; tính số ghế còn thiếu; quyết định chuyện tổ ong; cắt bánh dừa chia đều",
+    "learn": "Chính tả s/x, ch/tr; bài toán có lời văn với phép trừ có nhớ",
+    "reward": "85 XP, 25 Xu, Skill XP Chính tả, Bài toán có lời văn, Quả dừa xiêm",
+    "next": "Lá thư mùa dừa"
+  },
+  "phases": {
+    "hook": "tut-khoi-ngon-dua",
+    "explore": "do-hoi-bia-rung",
+    "learn": "bien-di-nhe",
+    "challenge": "ghe-san-hoi-moi",
+    "decision": "to-ong-dua-cao",
+    "finale": "chia-banh-dua",
+    "reward": "hoi-dua-mo-man",
+    "next": "la-thu-mua-dua"
+  },
+  "places": {
+    "khi-hai-dua": "Ngọn dừa Khỉ",
+    "do-hoi-bia-rung": "Thảm hoa dại",
+    "st-khi-mua-dua-lon-trong-da-nho": "Thảm hoa dại",
+    "st-khi-mua-dua-lon-day-co-duoi-nheo": "Thảm hoa dại",
+    "st-khi-mua-dua-lon-gio-dua-khai-hoi": "Thảm hoa dại",
+    "st-khi-mua-dua-lon-bien-di-nhe": "Chòi làm biển",
+    "st-khi-mua-dua-lon-chong-ghe-go": "Sân hội mới",
+    "st-khi-mua-dua-lon-to-ong-rung": "Gốc dừa cao nhất"
+  },
+  "steps": [
+    {
+      "id": "tut-khoi-ngon-dua",
+      "title": "Tiếng vo ve trên ngọn dừa",
+      "goTo": "Về ngọn dừa Khỉ, cậu đang ngồi thu lu, lông dựng đứng cả lên",
+      "kind": "dialogue",
+      "target": "khi-hai-dua",
+      "lines": [
+        {
+          "speaker": "Khỉ Hái Dừa",
+          "text": "{name}… sáng nay tớ trèo cây dừa cao nhất để hái quả đỉnh mùa. Mới lên tới lưng chừng thì nghe «vo ve, vo ve»…"
+        },
+        {
+          "speaker": "Khỉ Hái Dừa",
+          "text": "Thế là tớ tụt một mạch xuống đất, nhanh hơn cả quả dừa rơi. Có một tổ ong rừng to tướng ngay dưới tàu lá."
+        },
+        {
+          "speaker": "Khỉ Hái Dừa",
+          "text": "Tớ kể thật nhé, đừng cười: cây cao mấy tớ cũng dám trèo, nhưng hễ nghe tiếng ong là chân tay bủn rủn. Mà hội lại định mở ngay dưới gốc cây ấy…"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Ai cũng có điều mình sợ mà, tớ không cười đâu.",
+          "reply": "Thật hả? Nghe cậu nói thế, tớ thấy chân tay cứng cáp lại được một nửa rồi. Úp… úp."
+        },
+        {
+          "text": "Mình dời hội sang chỗ khác, để ong yên là được!",
+          "reply": "Dời hội à? Ừ nhỉ! Ong có lỗi gì đâu, chúng chỉ làm tổ đúng chỗ chúng thích thôi."
+        }
+      ],
+      "en": {
+        "title": "A buzz up the palm",
+        "goTo": "Go back to Khỉ's palm top, where he sits hunched up, every hair on end",
+        "lines": [
+          "{name}… this morning I climbed the tallest palm to pick the season's crowning coconut. I was only halfway up when I heard «bzz, bzz»…",
+          "So I slid all the way down in one go, faster than a falling coconut. There's a huge wild bees' nest right under the fronds.",
+          "I'll tell you the truth, don't laugh: I'll climb any tree, however tall, but the moment I hear bees my arms and legs go wobbly. And the festival was meant to be right under that tree…"
+        ],
+        "choices": [
+          {
+            "text": "Everyone is scared of something; I won't laugh.",
+            "reply": "Really? Hearing you say that, my arms and legs feel half steady again. Oop… oop."
+          },
+          {
+            "text": "Let's move the festival and leave the bees in peace!",
+            "reply": "Move the festival? Oh, of course! The bees haven't done anything wrong; they just built their nest where they like it."
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-hoi-bia-rung",
+      "title": "Đồ hội để ở bìa rừng",
+      "goTo": "Sang thảm hoa dại ở bìa rừng, tìm những món đồ hội Khỉ để sẵn từ hôm qua",
+      "kind": "find-object",
+      "prompt": "Hội dời sang sân mới, xa gốc dừa có tổ ong. Đọc lời Khỉ tả rồi tìm từng món đồ hội ở thảm hoa dại:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "trong-da-nho",
+          "name": "Chiếc trống da nhỏ",
+          "clue": "Tròn như cái thùng con, mặt căng da, gõ một cái là sóc ba cây quanh đó giật mình.",
+          "target": "st-khi-mua-dua-lon-trong-da-nho"
+        },
+        {
+          "id": "day-co-duoi-nheo",
+          "name": "Dây cờ đuôi nheo",
+          "clue": "Một sợi dây dài nối những lá cờ nhỏ đủ màu, mỗi lá có cái đuôi nhọn như đuôi cá.",
+          "target": "st-khi-mua-dua-lon-day-co-duoi-nheo"
+        },
+        {
+          "id": "gio-dua-khai-hoi",
+          "name": "Giỏ dừa khai hội",
+          "clue": "Chiếc giỏ đan có nắp, bên trong lót lá chuối, đựng những quả dừa ngọt nhất để mời khách.",
+          "target": "st-khi-mua-dua-lon-gio-dua-khai-hoi"
+        }
+      ],
+      "en": {
+        "title": "Festival things at the forest edge",
+        "goTo": "Go to the wildflower carpet at the forest edge and find the festival things Khỉ left there yesterday",
+        "prompt": "The festival is moving to a new yard, away from the palm with the bees' nest. Read Khỉ's descriptions and find each festival thing on the wildflower carpet:",
+        "items": [
+          {
+            "name": "The little skin drum",
+            "clue": "Round like a small barrel with skin stretched tight; one beat and the squirrels three trees away jump."
+          },
+          {
+            "name": "The string of pennants",
+            "clue": "A long cord threaded with little flags of every colour, each with a pointed tail like a fish's."
+          },
+          {
+            "name": "The opening coconut basket",
+            "clue": "A woven basket with a lid, lined with banana leaves, holding the sweetest coconuts for the guests."
+          }
+        ]
+      }
+    },
+    {
+      "id": "bien-di-nhe",
+      "title": "Tấm biển «đi nhẹ»",
+      "goTo": "Tới chòi làm biển, Khỉ đang loay hoay viết biển nhắc mọi người",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-khi-mua-dua-lon-bien-di-nhe",
+      "skill": "chinh-ta",
+      "prompt": "Khỉ muốn cắm biển ở lối vào: mời khách tới sân hội mới, đi nhẹ, tránh xa tổ ong. Chọn tất cả các cụm từ viết đúng chính tả để đưa lên biển:",
+      "choices": [
+        {
+          "id": "xa-to-ong",
+          "text": "xa tổ ong"
+        },
+        {
+          "id": "sa-to-ong",
+          "text": "sa tổ ong"
+        },
+        {
+          "id": "san-hoi",
+          "text": "sân hội"
+        },
+        {
+          "id": "xan-hoi",
+          "text": "xân hội"
+        },
+        {
+          "id": "chau-hoa",
+          "text": "chậu hoa"
+        },
+        {
+          "id": "trau-hoa",
+          "text": "trậu hoa"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "xa-to-ong",
+          "san-hoi",
+          "chau-hoa"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Đọc từng cụm từ và nghĩ xem nó nghĩa là gì trên tấm biển.",
+          "«Xa» là không gần; «sân» là khoảng đất rộng để chơi; «chậu» là đồ đựng đất trồng cây."
+        ],
+        "hint": "Mỗi cặp chỉ khác nhau một chữ cái đầu: s hay x, ch hay tr.",
+        "answer": {
+          "text": "xa tổ ong, sân hội, chậu hoa",
+          "explanation": "Muốn nói «không ở gần» ta viết «xa»; khoảng đất làm hội là «sân»; đồ trồng hoa là «chậu». «Sa tổ ong», «xân hội», «trậu hoa» viết sai chữ cái đầu."
+        },
+        "en": {
+          "guide": [
+            "Read each phrase and think what it means on the sign.",
+            "«Xa» means far away; «sân» is an open yard for playing; «chậu» is a pot for planting."
+          ],
+          "hint": "Each pair differs only in its first letters: s or x, ch or tr.",
+          "answer": {
+            "text": "The three right ones: xa tổ ong, sân hội, chậu hoa",
+            "explanation": "To say «not near» we write «xa»; the festival ground is a «sân»; a flower pot is a «chậu». «Sa tổ ong», «xân hội» and «trậu hoa» have the wrong first letters."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Biển viết chuẩn từng chữ! Khách đọc là biết đường đi nhẹ ngay.",
+          "{name} phân biệt s với x, ch với tr vững như rễ dừa bám đất.",
+          "Úp úp, tớ cắm biển ở lối vào liền đây, ong chắc cũng thấy dễ chịu."
+        ],
+        "wrong": [
+          "Muốn nói không ở gần thì phải viết bằng x cơ, {name} ạ.",
+          "Khoảng đất rộng để chơi hội viết bằng s, nhìn lại cặp ấy nhé.",
+          "Cái chậu trồng hoa bắt đầu bằng ch, không phải tr đâu."
+        ],
+        "en": {
+          "right": [
+            "Every word on the sign is right! Guests will know to tread softly at once.",
+            "{name} tells s from x and ch from tr as firmly as palm roots grip the earth.",
+            "Oop oop, I'll plant the sign at the entrance now; the bees will feel easier too."
+          ],
+          "wrong": [
+            "To say «not near», you write it with x, {name}.",
+            "The wide yard for the festival is written with s; look at that pair again.",
+            "The flower pot starts with ch, not tr."
+          ]
+        }
+      },
+      "en": {
+        "title": "The «tread softly» sign",
+        "goTo": "Go to the sign-making hut, where Khỉ is fumbling with a sign for the guests",
+        "prompt": "Khỉ wants a sign at the entrance: welcome guests to the new festival yard, ask them to tread softly and keep away from the bees' nest. Pick every phrase that is spelled correctly for the sign:",
+        "choices": [
+          "xa tổ ong (far from the nest)",
+          "sa tổ ong",
+          "sân hội (festival yard)",
+          "xân hội",
+          "chậu hoa (flower pot)",
+          "trậu hoa"
+        ]
+      }
+    },
+    {
+      "id": "ghe-san-hoi-moi",
+      "title": "Ghế cho sân hội mới",
+      "goTo": "Ra sân hội mới, chồng khúc gỗ làm ghế đang kê dở",
+      "kind": "riddle",
+      "target": "st-khi-mua-dua-lon-chong-ghe-go",
+      "skill": "bai-toan-loi-van",
+      "question": "Hội dừa có 64 bạn đăng kí tới dự. Khỉ và {name} đã kê được 38 khúc gỗ làm ghế, mỗi khúc gỗ một bạn ngồi. Hỏi cần kê thêm bao nhiêu khúc gỗ nữa để bạn nào cũng có chỗ ngồi?",
+      "answer": {
+        "value": 26
+      },
+      "support": {
+        "guide": [
+          "Bài toán hỏi số ghế còn thiếu: lấy số bạn tới dự trừ số ghế đã kê.",
+          "Đặt tính 64 − 38 rồi trừ từ hàng đơn vị."
+        ],
+        "hint": "4 không trừ được 8, mượn 1 chục: 14 trừ 8 bằng 6.",
+        "answer": {
+          "text": "26 khúc gỗ",
+          "explanation": "Số khúc gỗ cần kê thêm là: 64 − 38 = 26 (khúc gỗ). Đáp số: 26 khúc gỗ."
+        },
+        "en": {
+          "guide": [
+            "The problem asks how many seats are missing: take the seats already set out from the number of guests.",
+            "Write 64 − 38 in columns and subtract from the ones."
+          ],
+          "hint": "You can't take 8 from 4, so borrow a ten: 14 take away 8 is 6.",
+          "answer": {
+            "text": "26 logs",
+            "explanation": "Logs still needed: 64 − 38 = 26 (logs). Answer: 26 logs."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai mươi sáu khúc nữa là đủ! Úp úp, không bạn nào phải đứng xem hội.",
+          "{name} giải bài toán gọn như tớ bóc một quả chuối.",
+          "Đúng rồi! Tớ vác gỗ, cậu đếm, sân hội đầy chỗ ngồi ngay."
+        ],
+        "wrong": [
+          "Mình cần tìm phần còn thiếu, {name} lấy số bạn trừ số ghế đã kê nhé.",
+          "Bốn không trừ được tám, phải mượn một chục từ hàng chục đấy.",
+          "Mượn một chục rồi thì hàng chục chỉ còn năm thôi, trừ lại xem."
+        ],
+        "en": {
+          "right": [
+            "Twenty-six more logs and we're set! Oop oop, nobody has to stand to watch.",
+            "{name} solved that as neatly as I peel a banana.",
+            "Right! I'll carry logs, you count, and the yard will be full of seats in no time."
+          ],
+          "wrong": [
+            "We need the part that's missing, {name}: take the seats already set out from the number of guests.",
+            "You can't take eight from four; borrow a ten from the tens.",
+            "After borrowing a ten, only five tens are left; subtract again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Seats for the new festival yard",
+        "goTo": "Go to the new festival yard, where the stack of seating logs is only half set out",
+        "question": "64 friends have signed up for the coconut festival. Khỉ and {name} have set out 38 logs as seats, one friend per log. How many more logs are needed so that every friend has a seat?"
+      }
+    },
+    {
+      "id": "to-ong-dua-cao",
+      "title": "Tổ ong và quả dừa đỉnh mùa",
+      "goTo": "Đi nhẹ tới gốc dừa cao nhất, tổ ong rừng vẫn ngân nga dưới tàu lá",
+      "kind": "decision",
+      "target": "st-khi-mua-dua-lon-to-ong-rung",
+      "speaker": "Khỉ Hái Dừa",
+      "prompt": "Đứng xa xa nhìn lên, Khỉ nắm chặt tay {name}. Tổ ong vẫn ngân nga, quả dừa đỉnh mùa vẫn treo trên cao. «Tớ không muốn làm hại tổ ong, mà cũng không muốn hội thiếu quả dừa ấy. Mình chọn cách nào đây?»",
+      "choices": [
+        {
+          "id": "de-dua-cho-ong",
+          "text": "Để yên cả tổ ong lẫn quả dừa, chọn quả khác dâng bàn hội",
+          "consequence": "Khỉ thở phào thật dài. «Quả ấy để làm nhà che nắng cho ong vậy.» Cậu chọn một quả dừa tròn trịa ở hàng dừa bên suối, gõ ba cái, nghe tiếng trầm ấm như tiếng trống."
+        },
+        {
+          "id": "nho-bac-nuoi-ong",
+          "text": "Nhờ bác nuôi ong ở làng đến chuyển tổ đi lúc chạng vạng",
+          "consequence": "Chạng vạng, bác nuôi ong đội mũ lưới, nhẹ tay đưa cả tổ vào thùng gỗ mang về vườn hoa. Sáng hôm sau, Khỉ trèo lên hái quả dừa đỉnh mùa mà không nghe tiếng vo ve nào."
+        },
+        {
+          "id": "trong-hoa-cho-ong",
+          "text": "Trồng một vòng hoa dại thật xa cho ong có vườn riêng",
+          "consequence": "{name} và Khỉ trồng một vòng hoa dại ở bìa rừng. Đàn ong bay sang đó hút mật cả buổi, và Khỉ nhanh tay hái được quả dừa đỉnh mùa trong lúc ong bận rộn."
+        }
+      ],
+      "en": {
+        "title": "The bees' nest and the crowning coconut",
+        "goTo": "Walk softly to the tallest palm, where the wild bees' nest still hums under the fronds",
+        "prompt": "Looking up from a distance, Khỉ squeezes {name}'s hand. The nest still hums and the crowning coconut still hangs high above. \"I don't want to hurt the bees, but I don't want the festival without that coconut either. Which way shall we choose?\"",
+        "choices": [
+          {
+            "text": "Leave both the nest and the coconut; pick another for the festival table",
+            "consequence": "Khỉ lets out a long sigh of relief. \"Then that one can shade the bees' home.\" He picks a nice round coconut from the palms by the stream, knocks three times and hears a warm deep note like a drum."
+          },
+          {
+            "text": "Ask the village beekeeper to move the nest at dusk",
+            "consequence": "At dusk the beekeeper puts on a net hat and gently moves the whole nest into a wooden box to take to the flower garden. Next morning Khỉ climbs up for the crowning coconut without hearing a single buzz."
+          },
+          {
+            "text": "Plant a ring of wildflowers far away so the bees have their own garden",
+            "consequence": "{name} and Khỉ plant a ring of wildflowers at the forest edge. The bees spend the whole morning there gathering nectar, and Khỉ quickly picks the crowning coconut while they're busy."
+          }
+        ]
+      }
+    },
+    {
+      "id": "chia-banh-dua",
+      "title": "Chia bánh dừa ngày hội",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Trống khai hội vang lên rồi! Bánh dừa nướng thơm phức đã ra lò, {name} cắt giúp Khỉ sao cho bạn nào cũng được phần bằng nhau, đủ sáu điểm là cả sân hội cùng ăn!",
+      "game": "fair-share",
+      "goal": 6,
+      "en": {
+        "title": "Sharing the festival coconut cake",
+        "prompt": "The opening drum has sounded! The fragrant baked coconut cake is out of the oven; {name}, cut it for Khỉ so everyone gets an equal piece; six points and the whole yard eats together!"
+      }
+    },
+    {
+      "id": "hoi-dua-mo-man",
+      "title": "Hội dừa mở màn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hội dừa đông vui chưa từng thấy: sóc, kỳ đà, chim rừng, cả làng chài cũng lên dự. Ba tiếng gõ khai hội vang lên, Khỉ đứng trên khúc gỗ cao nhất reo «úp úp» rồi quay sang {name}: «Hôm nay tớ không sợ nữa, vì có cậu đứng cạnh.»",
+      "en": {
+        "title": "The festival begins",
+        "text": "The coconut festival is busier than ever: squirrels, monitor lizards, jungle birds, even the fishing village has come up. The three opening knocks ring out; Khỉ, standing on the tallest log, cheers «oop oop» and turns to {name}: \"I'm not scared today, because you're standing beside me.\""
+      }
+    },
+    {
+      "id": "la-thu-mua-dua",
+      "title": "Lá thư mùa dừa",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối hôm ấy, Khỉ gói ít hoa dại ép khô và một tấm ảnh chụp sân hội, gửi cho người bạn thư ở Trường học. Cậu bảo {name}: «Mùa dừa năm sau, mình lại mở hội to hơn nữa nhé!»",
+      "en": {
+        "title": "A coconut-season letter",
+        "text": "That evening Khỉ wraps some pressed wildflowers and a photo of the festival yard for his pen-pal at the School. He tells {name}: \"Next coconut season, let's throw an even bigger festival!\""
+      }
+    }
+  ],
+  "reward": {
+    "xp": 85,
+    "coin": 25,
+    "skillXp": {
+      "chinh-ta": 1,
+      "bai-toan-loi-van": 1
+    },
+    "items": {
+      "qua-dua-xiem": 1
+    }
+  },
+  "en": {
+    "title": "Khỉ Hái Dừa's story, chapter 4: The bees' nest under the tallest palm",
+    "summary": "On festival morning Khỉ Hái Dừa slides hastily down the tallest palm because of a wild bees' nest, then tells {name} about his fear. {name} carries the festival things to a new spot, writes a sign asking everyone to tread softly, works out how many seats are missing and chooses a kind way to deal with the nest so the festival still happens."
+  }
+}

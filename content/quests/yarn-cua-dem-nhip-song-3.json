@@ -1,0 +1,385 @@
+{
+  "id": "yarn-cua-dem-nhip-song-3",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Chuyện của Cua Lướt Sóng, chương 3: Gửi một con sóng lên núi",
+  "status": "active",
+  "category": "story",
+  "summary": "Bác Gấu Bắc Cực kể hồ băng biết hát, và Cua muốn gửi lên núi băng phương bắc một con sóng. {name} tìm vỏ ốc biết hát, cân gói quà, xếp túi thư theo bảng chữ cái rồi cùng Cua viết lời nhắn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cua Lướt Sóng",
+    "where": "Bãi lướt sóng, bãi vỏ ốc, trạm thư ven biển, thuyền đưa thư, đá ngồi ngắm sóng",
+    "goal": "Gói vỏ ốc biết hát gửi lên núi băng phương bắc cho bác Gấu",
+    "play": "Tìm đồ gói quà theo lời tả; cân gói quà; xếp túi thư; chọn lời nhắn; thả chai thư theo dòng nước",
+    "learn": "Đọc hiểu lời tả, cộng số đo ki-lô-gam, thứ tự bảng chữ cái",
+    "reward": "85 XP, 25 Xu, Skill XP Khối lượng, Bảng chữ cái, Vỏ ốc xà cừ",
+    "next": "Chờ thư hồi âm từ núi băng phương bắc"
+  },
+  "phases": {
+    "hook": "thu-bac-gau",
+    "explore": "goi-mot-con-song",
+    "learn": "can-goi-qua",
+    "challenge": "xep-tui-thu",
+    "decision": "loi-nhan-kem",
+    "finale": "chai-thu-theo-dong",
+    "reward": "con-song-len-duong",
+    "next": "mo-song-dong-cung"
+  },
+  "places": {
+    "cua-luot-song": "Bãi lướt sóng",
+    "goi-mot-con-song": "Bãi vỏ ốc",
+    "st-cua-dem-nhip-song-vo-oc-biet-hat": "Bãi vỏ ốc",
+    "st-cua-dem-nhip-song-giay-goi-xanh": "Bãi vỏ ốc",
+    "st-cua-dem-nhip-song-soi-day-gai": "Bãi vỏ ốc",
+    "st-cua-dem-nhip-song-can-tram-thu": "Trạm thư ven biển",
+    "st-cua-dem-nhip-song-gio-thu": "Thuyền đưa thư",
+    "st-cua-dem-nhip-song-da-ngam-song": "Đá ngồi ngắm sóng"
+  },
+  "steps": [
+    {
+      "id": "thu-bac-gau",
+      "title": "Hồ băng biết hát",
+      "goTo": "Về bãi lướt sóng, Cua đang giơ lá thư lạnh buốt lên nắng",
+      "kind": "dialogue",
+      "target": "cua-luot-song",
+      "lines": [
+        {
+          "speaker": "Cua Lướt Sóng",
+          "text": "Bồ ơi, bác Gấu viết thư! Bác kể hồ băng trên núi biết hát, tiếng nó ngân «ung… ung…» suốt đêm dài."
+        },
+        {
+          "speaker": "Cua Lướt Sóng",
+          "text": "Bác chưa nghe sóng biển bao giờ. Tớ muốn gửi lên núi một con sóng. Nghe hơi lạ hả bồ? Nhưng tớ có cách rồi, êm ru."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Gửi sóng bằng cách nào vậy?",
+          "reply": "Bằng vỏ ốc! Áp vỏ ốc vào tai là nghe biển rì rào. Đi tìm một cái thật hay nào bồ."
+        },
+        {
+          "text": "Hồ băng mà cũng biết hát à?",
+          "reply": "Bác Gấu bảo thế. Băng ngân, sóng hát, chắc hai bên học chung một thầy dạy nhạc đấy bồ."
+        }
+      ],
+      "en": {
+        "title": "The singing ice lake",
+        "goTo": "Go back to the surf beach, where Cua is holding the ice-cold letter up to the sun",
+        "lines": [
+          "Buddy, Uncle Bear wrote! He says the frozen lake on the mountain sings, humming “oong… oong…” all night long.",
+          "He’s never heard the sea. I want to send a wave up the mountain. Sounds a bit odd, buddy? But I’ve got a plan, smooth as butter."
+        ],
+        "choices": [
+          {
+            "text": "How do you post a wave?",
+            "reply": "In a shell! Hold a shell to your ear and you hear the sea whispering. Let’s find a really good one, buddy."
+          },
+          {
+            "text": "A frozen lake that sings?",
+            "reply": "That’s what Uncle Bear says. Ice hums, waves sing; they must have had the same music teacher, buddy."
+          }
+        ]
+      }
+    },
+    {
+      "id": "goi-mot-con-song",
+      "title": "Danh sách gói quà",
+      "goTo": "Ra bãi vỏ ốc tìm những thứ cần để gói quà gửi bác Gấu",
+      "kind": "find-object",
+      "prompt": "Cua đọc to danh sách gói quà. Đọc kỹ từng lời tả rồi nhặt đúng thứ:",
+      "items": [
+        {
+          "id": "vo-oc",
+          "name": "Vỏ ốc biết hát",
+          "clue": "Xoắn ba vòng như cầu trượt, miệng ốc màu hồng nhạt, áp vào tai nghe rì rào như có sóng bên trong.",
+          "target": "st-cua-dem-nhip-song-vo-oc-biet-hat"
+        },
+        {
+          "id": "giay-goi",
+          "name": "Giấy gói màu xanh biển",
+          "clue": "Mềm, gấp làm tư, in đầy những con sóng nhỏ cuộn tròn như móc câu.",
+          "target": "st-cua-dem-nhip-song-giay-goi-xanh"
+        },
+        {
+          "id": "day-gai",
+          "name": "Sợi dây gai buộc quà",
+          "clue": "Cuộn tròn như một con ốc nhỏ, màu nâu nhạt, sờ vào thấy ram ráp.",
+          "target": "st-cua-dem-nhip-song-soi-day-gai"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "The parcel list",
+        "goTo": "Go to the shell beach and find what you need to wrap the parcel for Uncle Bear",
+        "prompt": "Cua reads the parcel list aloud. Read each description carefully and pick up the right thing:",
+        "items": [
+          {
+            "name": "The singing shell",
+            "clue": "Twisted round three times like a slide, with a pale pink mouth; hold it to your ear and it whispers as if there were waves inside."
+          },
+          {
+            "name": "Sea-blue wrapping paper",
+            "clue": "Soft, folded in four, printed all over with little waves curled like fish-hooks."
+          },
+          {
+            "name": "The jute string for tying",
+            "clue": "Wound round like a little snail, light brown and a bit scratchy to touch."
+          }
+        ]
+      }
+    },
+    {
+      "id": "can-goi-qua",
+      "title": "Gói quà nặng bao nhiêu?",
+      "goTo": "Mang gói quà tới trạm thư ven biển đặt lên bàn cân",
+      "kind": "riddle",
+      "target": "st-cua-dem-nhip-song-can-tram-thu",
+      "skill": "khoi-luong",
+      "question": "Ngoài vỏ ốc, Cua còn gửi bác Gấu ít rong biển khô và một hũ cát trắng. Vỏ ốc nặng 2 kg, túi rong biển nặng 3 kg, hũ cát nặng 4 kg. Cả gói quà nặng bao nhiêu ki-lô-gam?",
+      "answer": {
+        "value": 9
+      },
+      "support": {
+        "guide": [
+          "Cộng cân nặng của cả ba thứ trong gói.",
+          "Cộng hai số đầu trước, rồi cộng tiếp số thứ ba."
+        ],
+        "hint": "2 kg + 3 kg = 5 kg, rồi thêm 4 kg nữa.",
+        "answer": {
+          "text": "9 kg",
+          "explanation": "2 kg + 3 kg + 4 kg = 9 kg. Cả gói quà nặng 9 ki-lô-gam."
+        },
+        "en": {
+          "guide": [
+            "Add the weights of all three things in the parcel.",
+            "Add the first two, then add the third."
+          ],
+          "hint": "2 kg + 3 kg = 5 kg, then add 4 kg more.",
+          "answer": {
+            "text": "9 kg",
+            "explanation": "2 kg + 3 kg + 4 kg = 9 kg. The whole parcel weighs 9 kilograms."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chín ki-lô-gam, kim cân chỉ đúng y như bồ nói!",
+          "{name} cộng ba món gọn như buộc một cái nơ.",
+          "Ầu ơ, gói quà vừa cân, bưu tá đóng dấu cái cộp."
+        ],
+        "wrong": [
+          "Nhớ cộng cả hũ cát nữa bồ, nó nặng nhất đấy.",
+          "Cộng 2 với 3 trước, được bao nhiêu rồi hẵng thêm 4.",
+          "Đừng quên viết «kg» sau con số, nhưng trước hết đếm lại cho đủ ba món nhé {name}."
+        ],
+        "en": {
+          "right": [
+            "Nine kilograms; the needle points exactly where you said, buddy!",
+            "{name} adds three things as neatly as tying a bow.",
+            "Ahoy-oh, the parcel is weighed and the postman stamps it with a thump."
+          ],
+          "wrong": [
+            "Remember to add the jar of sand too, buddy; it’s the heaviest.",
+            "Add 2 and 3 first, then add the 4.",
+            "Count all three things again first, {name}, then put “kg” after the number."
+          ]
+        }
+      },
+      "en": {
+        "title": "What does the parcel weigh?",
+        "goTo": "Take the parcel to the seaside post office and put it on the scales",
+        "question": "As well as the shell, Cua is sending Uncle Bear some dried seaweed and a jar of white sand. The shell weighs 2 kg, the seaweed 3 kg and the jar of sand 4 kg. How many kilograms does the whole parcel weigh?"
+      }
+    },
+    {
+      "id": "xep-tui-thu",
+      "title": "Xếp túi thư theo chữ cái",
+      "goTo": "Lên thuyền đưa thư, giúp bưu tá xếp các gói quà trong túi thư",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-cua-dem-nhip-song-gio-thu",
+      "skill": "bang-chu-cai",
+      "prompt": "Bưu tá xếp gói quà theo thứ tự trong bảng chữ cái của chữ cái đầu tên người nhận. Xếp lại giúp bác nhé:",
+      "items": [
+        {
+          "id": "gau",
+          "label": "Gói gửi Gấu Bắc Cực"
+        },
+        {
+          "id": "ca-heo",
+          "label": "Gói gửi Cá Heo Xám"
+        },
+        {
+          "id": "oc",
+          "label": "Gói gửi Ốc Mượn Hồn"
+        },
+        {
+          "id": "ech",
+          "label": "Gói gửi Ếch Xanh"
+        }
+      ],
+      "answer": {
+        "order": [
+          "ca-heo",
+          "ech",
+          "gau",
+          "oc"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Nhìn chữ cái đầu của mỗi tên: G, C, Ô, Ê.",
+          "Đọc thầm bảng chữ cái: a, ă, â, b, c, d, đ, e, ê, g, h, i, k, l, m, n, o, ô, ơ…"
+        ],
+        "hint": "Chữ Ê đứng ngay sau chữ E và trước chữ G.",
+        "answer": {
+          "text": "Cá Heo Xám, Ếch Xanh, Gấu Bắc Cực, Ốc Mượn Hồn",
+          "explanation": "Trong bảng chữ cái, C đứng trước Ê, Ê đứng trước G, G đứng trước Ô. Vì vậy gói của Cá Heo Xám đi đầu, rồi tới Ếch Xanh, Gấu Bắc Cực, cuối cùng là Ốc Mượn Hồn."
+        },
+        "en": {
+          "guide": [
+            "Look at the first letter of each name: G, C, Ô, Ê.",
+            "Say the Vietnamese alphabet quietly: a, ă, â, b, c, d, đ, e, ê, g, h, i, k, l, m, n, o, ô, ơ…"
+          ],
+          "hint": "Ê comes right after E and before G.",
+          "answer": {
+            "text": "Dolphin, frog, Uncle Bear, hermit crab",
+            "explanation": "In the Vietnamese alphabet C comes before Ê, Ê before G, and G before Ô. So the dolphin’s parcel goes first, then the frog’s, then Uncle Bear’s, and the hermit crab’s goes last."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Túi thư ngay ngắn, bưu tá khen cả bãi biển chưa ai xếp nhanh bằng.",
+          "{name} thuộc bảng chữ cái làu làu như Cua thuộc nhịp sóng.",
+          "Gói của bác Gấu nằm đúng chỗ thứ ba, êm ru!"
+        ],
+        "wrong": [
+          "Chữ Ô còn đứng sau cả chữ O, nên gói của Ốc phải xuống cuối bồ ạ.",
+          "Ê đi sau E nhưng vẫn đứng trước G đấy, đổi lại chỗ gói Ếch Xanh xem.",
+          "Đọc lại bảng chữ cái từ chữ a, tới chữ nào thì đặt gói ấy vào nhé {name}."
+        ],
+        "en": {
+          "right": [
+            "The mailbag is neat; the postman says nobody on the whole beach has sorted it so fast.",
+            "{name} knows the alphabet as well as Cua knows the beat of the waves.",
+            "Uncle Bear’s parcel sits right in third place, smooth as butter!"
+          ],
+          "wrong": [
+            "Ô comes even after O, so the hermit crab’s parcel goes last, buddy.",
+            "Ê comes after E but still before G; move the frog’s parcel.",
+            "Say the alphabet again from a, and put each parcel in as you reach its letter, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "Sorting the mailbag by letter",
+        "goTo": "Board the mail boat and help the postman sort the parcels in the mailbag",
+        "prompt": "The postman orders the parcels by the alphabet, using the first letter of each name. Help him sort them:",
+        "items": [
+          "Parcel for Gấu Bắc Cực",
+          "Parcel for Cá Heo Xám",
+          "Parcel for Ốc Mượn Hồn",
+          "Parcel for Ếch Xanh"
+        ]
+      }
+    },
+    {
+      "id": "loi-nhan-kem",
+      "title": "Lời nhắn kèm vỏ ốc",
+      "goTo": "Ngồi lên đá ngồi ngắm sóng, viết lời nhắn gửi kèm gói quà",
+      "kind": "decision",
+      "target": "st-cua-dem-nhip-song-da-ngam-song",
+      "speaker": "Cua Lướt Sóng",
+      "prompt": "Cua kẹp bút giữa hai càng, nét chữ run run: «Viết gì kèm vỏ ốc bây giờ hả bồ? Tớ muốn bác Gấu đọc xong là thấy cả biển.»",
+      "choices": [
+        {
+          "id": "day-dem",
+          "text": "Dạy bác cách đếm sóng: một, hai, ba, lướt!",
+          "consequence": "Cua vẽ hai cái càng giơ cao cạnh dòng chữ. «Bác áp vỏ ốc vào tai rồi đếm theo, kiểu gì cũng bắt được nhịp,» cậu cười."
+        },
+        {
+          "id": "hen-mua-dong",
+          "text": "Hẹn mùa đông lên núi băng phương bắc xem «sóng đông cứng»",
+          "consequence": "Viết xong dòng ấy, Cua ngồi ngẩn ra nhìn biển hồi lâu. «Sóng đông cứng chắc lướt êm ru lắm nhỉ bồ,» cậu thì thầm."
+        },
+        {
+          "id": "ve-song",
+          "text": "Vẽ một con sóng thật to, ký tên {name} và Cua",
+          "consequence": "{name} vẽ con sóng, Cua chấm thêm một chấm nhỏ trên đỉnh: «Chấm này là tớ đang lướt đấy.» Lá thư bỗng vui hẳn lên."
+        }
+      ],
+      "en": {
+        "title": "A note to go with the shell",
+        "goTo": "Sit on the wave-watching rock and write a note to go with the parcel",
+        "prompt": "Cua holds the pen between his claws, his writing all wobbly: “What should go with the shell, buddy? I want Uncle Bear to read it and see the whole sea.”",
+        "choices": [
+          {
+            "text": "Teach him to count waves: one, two, three, ride!",
+            "consequence": "Cua draws two raised claws beside the words. “If he holds the shell to his ear and counts along, he’ll catch the beat for sure,” he grins."
+          },
+          {
+            "text": "Promise to visit the northern ice mountain in winter to see the “frozen waves”",
+            "consequence": "After writing that line, Cua sits gazing at the sea for a long while. “Frozen waves must be smooth as butter to ride, buddy,” he whispers."
+          },
+          {
+            "text": "Draw one enormous wave, signed by {name} and Cua",
+            "consequence": "{name} draws the wave, and Cua adds a tiny dot on top: “That dot is me surfing.” Suddenly the letter looks much happier."
+          }
+        ]
+      }
+    },
+    {
+      "id": "chai-thu-theo-dong",
+      "title": "Chai thư theo dòng nước",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Thuyền đưa thư sắp nhổ neo! Cua muốn gửi thêm mấy chai thư nhỏ theo dòng nước ra thuyền. Thả đá lái dòng nước, đưa đủ ba chai tới nơi nhé bồ!",
+      "game": "current-drift",
+      "goal": 3,
+      "en": {
+        "title": "Bottles on the current",
+        "prompt": "The mail boat is about to weigh anchor! Cua wants to send a few little message bottles out to it on the current. Drop stones to steer the water and get three bottles there, buddy!"
+      }
+    },
+    {
+      "id": "con-song-len-duong",
+      "title": "Con sóng lên đường",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Còi thuyền vang lên. Gói quà có vỏ ốc biết hát đã lên đường tới núi băng phương bắc. Cua giơ hai càng vẫy mãi, tới khi cánh buồm chỉ còn là một chấm trắng nơi chân trời.",
+      "en": {
+        "title": "A wave on its way",
+        "text": "The boat’s horn sounds. The parcel with the singing shell is on its way to the northern ice mountain. Cua waves both claws until the sail is just a white dot on the horizon."
+      }
+    },
+    {
+      "id": "mo-song-dong-cung",
+      "title": "Giấc mơ sóng đông cứng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối đó Cua nằm trên cát kể cho {name} nghe giấc mơ của mình: một ngày được lướt trên «sóng đông cứng» của bác Gấu. Còn bây giờ, cả hai ngồi chờ thư hồi âm từ trên núi.",
+      "en": {
+        "title": "Dreaming of frozen waves",
+        "text": "That evening Cua lies on the sand and tells {name} his dream: one day to surf Uncle Bear’s “frozen waves”. For now, the two of them wait for a reply from the mountain."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 85,
+    "coin": 25,
+    "skillXp": {
+      "khoi-luong": 1,
+      "bang-chu-cai": 1
+    },
+    "items": {
+      "vo-oc-xa-cu": 1
+    }
+  },
+  "en": {
+    "title": "Cua Lướt Sóng's story, chapter 3: Posting a wave up the mountain",
+    "summary": "Uncle Polar Bear writes that his frozen lake sings, and Cua wants to send a wave up to the northern ice mountain. {name} finds the singing shell, weighs the parcel, sorts the mailbag by the alphabet and writes a note with Cua."
+  }
+}

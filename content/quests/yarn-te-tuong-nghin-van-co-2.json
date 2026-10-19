@@ -1,0 +1,397 @@
+{
+  "id": "yarn-te-tuong-nghin-van-co-2",
+  "region": "lau-dai",
+  "chapter": 2,
+  "title": "Chuyện của Tể Tướng Cờ Vua, chương 2: Sơ đồ tiệc viết bằng mật mã",
+  "status": "active",
+  "category": "story",
+  "summary": "Tể Tướng Cờ Vua viết sơ đồ chỗ ngồi của bữa tiệc bằng mật mã rồi tự quên cách giải. {name} gom ba thẻ tên, giải phép cộng để tìm số ghế, suy luận chỗ cho ba vị khách và chọn chỗ ngồi cho chính tể tướng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Tể Tướng Cờ Vua",
+    "where": "Lâu đài: bàn cờ đại sảnh, phòng ăn, gian bài toán, giá ghim tranh, lối đi kết hoa",
+    "goal": "Giải mật mã sơ đồ chỗ ngồi trước giờ tiệc",
+    "play": "Gom ba thẻ tên; tính phép cộng có nhớ ra số ghế; suy luận chỗ ngồi theo hai dòng mật mã; chọn ghế cho tể tướng; xếp chỗ cả bàn tiệc",
+    "learn": "Phép cộng có nhớ trong phạm vi 100, suy luận lô-gic",
+    "reward": "62 XP, 16 Xu, Skill XP Phép cộng, Tư duy lô-gic",
+    "next": "Bài học đếm tới ba cho Cáo Cung Thủ"
+  },
+  "phases": {
+    "hook": "mat-ma-cua-chinh-ta",
+    "explore": "gom-the-ten",
+    "learn": "giai-the-huou-cao",
+    "challenge": "ba-ghe-dau-ban",
+    "decision": "ghe-cua-te-tuong",
+    "finale": "xep-cho-tiec-vua",
+    "reward": "mat-ma-dau-hang",
+    "next": "cung-thu-voi-va"
+  },
+  "places": {
+    "te-tuong-co-the": "Bàn cờ đại sảnh",
+    "gom-the-ten": "Phòng ăn",
+    "st-te-tuong-nghin-van-co-the-ten-hai-ba": "Phòng ăn",
+    "st-te-tuong-nghin-van-co-the-ten-bon-sau": "Phòng ăn",
+    "st-te-tuong-nghin-van-co-the-ten-vuong-mien": "Phòng ăn",
+    "st-te-tuong-nghin-van-co-cuon-mat-ma-tiec": "Gian bài toán",
+    "st-te-tuong-nghin-van-co-so-do-ban-tiec": "Giá ghim tranh",
+    "st-te-tuong-nghin-van-co-binh-hoa-loi-tiec": "Lối đi kết hoa"
+  },
+  "steps": [
+    {
+      "id": "mat-ma-cua-chinh-ta",
+      "title": "Mật mã của chính ta",
+      "goTo": "Về bàn cờ đại sảnh, Tể Tướng Cờ Vua đang xoay ngược xoay xuôi một tờ giấy kín chữ số",
+      "kind": "dialogue",
+      "target": "te-tuong-co-the",
+      "lines": [
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "{name}, ta thú nhận một nước đi dại dột. Để không ai đọc trộm sơ đồ chỗ ngồi của bữa tiệc tối nay, ta đã viết nó bằng mật mã."
+        },
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "Mật mã tài tình đến mức… sáng nay chính ta cũng không giải nổi. Ba tấm thẻ tên lại bị gió đưa vào phòng ăn từ hôm qua."
+        },
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "Trên bàn cờ, khi rối, ta luôn lùi lại một bước để nhìn toàn cục. Hôm nay ta lùi lại… và nhờ đến ngươi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu thích giải mật mã lắm! Ta bắt đầu đi ạ.",
+          "reply": "Hăng hái như quân tốt vừa qua sông. Tốt lắm, tốt lắm."
+        },
+        {
+          "text": "Sao ngài không viết tên khách cho dễ đọc?",
+          "reply": "Vì như thế thì… dễ đọc quá. Ta vuốt râu ba lần mà vẫn thấy lý do ấy hơi yếu, ngươi nói phải."
+        }
+      ],
+      "en": {
+        "title": "My very own code",
+        "goTo": "Go back to the chessboard in the great hall, where Tể Tướng Cờ Vua keeps turning a sheet full of numbers this way and that",
+        "lines": [
+          "{name}, I confess a foolish move. So that nobody could peek at the seating plan for tonight's banquet, I wrote it in code.",
+          "A code so ingenious that… this morning even I could not crack it. And yesterday's wind carried three name cards into the dining room.",
+          "On the board, when things tangle, I always step back to see the whole position. Today I step back… and call on you."
+        ],
+        "choices": [
+          {
+            "text": "I love cracking codes! Let us begin.",
+            "reply": "As eager as a pawn that has just crossed the board. Very good, very good."
+          },
+          {
+            "text": "Why not just write the guests' names so they are easy to read?",
+            "reply": "Because then it would be… too easy to read. I stroke my beard three times and still find that reason rather weak; you have a point."
+          }
+        ]
+      }
+    },
+    {
+      "id": "gom-the-ten",
+      "title": "Gom ba tấm thẻ tên",
+      "goTo": "Vào phòng ăn, ba tấm thẻ tên nằm rải rác quanh bàn tiệc dài",
+      "kind": "search",
+      "targets": [
+        "st-te-tuong-nghin-van-co-the-ten-hai-ba",
+        "st-te-tuong-nghin-van-co-the-ten-bon-sau",
+        "st-te-tuong-nghin-van-co-the-ten-vuong-mien"
+      ],
+      "en": {
+        "title": "Collecting the three name cards",
+        "goTo": "Go into the dining room, where three name cards lie scattered round the long banquet table"
+      }
+    },
+    {
+      "id": "giai-the-huou-cao",
+      "title": "Giải thẻ của Hươu Cao",
+      "goTo": "Mang thẻ tên sang gian bài toán, nơi tể tướng cất cuộn giấy giải mật mã",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "st-te-tuong-nghin-van-co-cuon-mat-ma-tiec",
+      "skill": "phep-cong",
+      "prompt": "Cuộn giấy ghi luật mật mã: «Số ghế của mỗi khách là kết quả phép cộng trên thẻ.» Thẻ của Hươu Cao ghi 46 + 27. Hươu Cao ngồi ghế số mấy?",
+      "choices": [
+        {
+          "id": "ghe-63",
+          "text": "Ghế số 63"
+        },
+        {
+          "id": "ghe-73",
+          "text": "Ghế số 73"
+        },
+        {
+          "id": "ghe-71",
+          "text": "Ghế số 71"
+        }
+      ],
+      "answer": {
+        "choice": "ghe-73"
+      },
+      "support": {
+        "guide": [
+          "Đặt tính dọc: 46 ở trên, 27 ở dưới, các hàng thẳng cột.",
+          "Cộng hàng đơn vị trước, nếu được từ 10 trở lên thì nhớ 1 sang hàng chục."
+        ],
+        "hint": "6 cộng 7 bằng 13, viết 3 nhớ 1.",
+        "answer": {
+          "text": "Ghế số 73",
+          "explanation": "46 + 27: 6 + 7 = 13, viết 3 nhớ 1; 4 + 2 = 6, thêm 1 là 7. Vậy 46 + 27 = 73."
+        },
+        "en": {
+          "guide": [
+            "Set it out in columns: 46 on top, 27 underneath, digits lined up.",
+            "Add the ones first; if you reach 10 or more, carry 1 to the tens."
+          ],
+          "hint": "6 plus 7 is 13: write 3, carry 1.",
+          "answer": {
+            "text": "Seat 73",
+            "explanation": "46 + 27: 6 + 7 = 13, write 3 and carry 1; 4 + 2 = 6, plus 1 makes 7. So 46 + 27 = 73."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ghế bảy mươi ba! Mật mã đầu tiên đã đầu hàng ngươi.",
+          "Ngươi nhớ một sang hàng chục, đúng như một kỳ thủ nhớ nước đi cũ.",
+          "Hươu Cao sẽ ngồi đó mà không phải cúi cổ hỏi ai. Hay lắm."
+        ],
+        "wrong": [
+          "Chưa đúng. Hãy xem lại hàng đơn vị: 6 cộng 7 có vượt quá 10 không?",
+          "Hình như ngươi quên số 1 nhớ sang hàng chục rồi.",
+          "Đặt tính cho thẳng cột rồi cộng lại từ phải sang trái nhé."
+        ],
+        "en": {
+          "right": [
+            "Seat seventy-three! The first code has surrendered to you.",
+            "You carried the one to the tens, just as a player remembers an earlier move.",
+            "Hươu Cao can sit there without bending down to ask anyone. Splendid."
+          ],
+          "wrong": [
+            "Not quite. Look again at the ones: does 6 plus 7 go past 10?",
+            "It seems you forgot the 1 carried over to the tens.",
+            "Line the columns up straight and add again from right to left."
+          ]
+        }
+      },
+      "en": {
+        "title": "Cracking Hươu Cao's card",
+        "goTo": "Take the name cards over to the word-problem gallery, where the chancellor keeps his code-breaking scroll",
+        "prompt": "The scroll gives the code rule: «Each guest's seat number is the answer to the sum on their card.» Hươu Cao's card says 46 + 27. Which seat does Hươu Cao sit in?",
+        "choices": [
+          "Seat 63",
+          "Seat 73",
+          "Seat 71"
+        ]
+      }
+    },
+    {
+      "id": "ba-ghe-dau-ban",
+      "title": "Ba ghế đầu bàn",
+      "goTo": "Ra giá ghim tranh, nơi ghim sơ đồ ba ghế đầu bàn tiệc",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-te-tuong-nghin-van-co-so-do-ban-tiec",
+      "skill": "logic",
+      "prompt": "Hai dòng mật mã cuối cùng nói về ba ghế đầu bàn. Cách xếp nào đúng với cả hai dòng?",
+      "elements": [
+        {
+          "id": "ghe-mot",
+          "label": "Ghế 1 kê sát cây nến to"
+        },
+        {
+          "id": "ghe-hai",
+          "label": "Ghế 2 ở giữa"
+        },
+        {
+          "id": "ghe-ba",
+          "label": "Ghế 3 kê sát cửa sổ"
+        },
+        {
+          "id": "loi-mot",
+          "label": "Mật mã một: «Gấu Gác Hầm ngồi kề cây nến to»"
+        },
+        {
+          "id": "loi-hai",
+          "label": "Mật mã hai: «Hươu Cao không ngồi kề Gấu Gác Hầm»"
+        }
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "Ghế 1: Gấu Gác Hầm · Ghế 2: Bác Thợ Khóa Thành · Ghế 3: Hươu Cao"
+        },
+        {
+          "id": "b",
+          "text": "Ghế 1: Gấu Gác Hầm · Ghế 2: Hươu Cao · Ghế 3: Bác Thợ Khóa Thành"
+        },
+        {
+          "id": "c",
+          "text": "Ghế 1: Hươu Cao · Ghế 2: Bác Thợ Khóa Thành · Ghế 3: Gấu Gác Hầm"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Dòng mật mã một chỉ đúng một chỗ cho Gấu Gác Hầm.",
+          "Khi Gấu đã ngồi, xem ghế nào không kề Gấu để dành cho Hươu Cao.",
+          "Ghế còn trống thuộc về Bác Thợ Khóa Thành."
+        ],
+        "hint": "Ghế kề cây nến to là ghế 1. Ghế nào ở xa ghế 1 nhất?",
+        "answer": {
+          "text": "Gấu Gác Hầm ngồi ghế 1, Bác Thợ Khóa Thành ghế 2, Hươu Cao ghế 3",
+          "explanation": "Gấu kề cây nến nên ngồi ghế 1. Ghế 2 kề ghế 1, nên Hươu Cao phải ngồi ghế 3. Bác Thợ Khóa Thành ngồi ghế 2 còn lại."
+        },
+        "en": {
+          "guide": [
+            "Code one gives Gấu Gác Hầm exactly one place.",
+            "Once Gấu is seated, find the seat not beside him for Hươu Cao.",
+            "The seat left over belongs to Bác Thợ Khóa Thành."
+          ],
+          "hint": "The seat by the big candle is seat 1. Which seat is furthest from seat 1?",
+          "answer": {
+            "text": "Gấu Gác Hầm in seat 1, Bác Thợ Khóa Thành in seat 2, Hươu Cao in seat 3",
+            "explanation": "Gấu sits by the candle, so seat 1. Seat 2 is beside seat 1, so Hươu Cao must take seat 3. Bác Thợ Khóa Thành takes the remaining seat 2."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cả hai dòng mật mã đều gật đầu. Ba ghế đầu bàn đã có chủ.",
+          "Ngươi suy từng bước như dồn vua vào góc bàn cờ. Tuyệt diệu!",
+          "Sơ đồ này ta sẽ chép lại, lần này bằng chữ thường cho ai cũng đọc được."
+        ],
+        "wrong": [
+          "Xem lại dòng hai: Hươu Cao có đang ngồi kề Gấu Gác Hầm không?",
+          "Dòng một bảo Gấu ngồi kề cây nến. Cây nến ở bên ghế nào nhỉ?",
+          "Hãy đặt Gấu vào ghế trước, rồi mới xếp hai vị khách còn lại."
+        ],
+        "en": {
+          "right": [
+            "Both lines of code nod in agreement. The three top seats have their guests.",
+            "You reasoned step by step, like driving a king into a corner. Superb!",
+            "I shall copy this plan out again, this time in plain words anyone can read."
+          ],
+          "wrong": [
+            "Check code two: is Hươu Cao sitting next to Gấu Gác Hầm?",
+            "Code one says Gấu sits by the candle. Which seat is the candle beside?",
+            "Seat Gấu first, then arrange the other two guests."
+          ]
+        }
+      },
+      "en": {
+        "title": "The three top seats",
+        "goTo": "Go to the picture pin-board, where the plan of the three top seats is pinned",
+        "prompt": "The last two lines of code are about the three seats at the head of the table. Which arrangement fits both lines?",
+        "elements": [
+          "Seat 1 stands right by the big candle",
+          "Seat 2 is in the middle",
+          "Seat 3 stands right by the window",
+          "Code one: «Gấu Gác Hầm sits beside the big candle»",
+          "Code two: «Hươu Cao does not sit beside Gấu Gác Hầm»"
+        ],
+        "choices": [
+          "Seat 1: Gấu Gác Hầm · Seat 2: Bác Thợ Khóa Thành · Seat 3: Hươu Cao",
+          "Seat 1: Gấu Gác Hầm · Seat 2: Hươu Cao · Seat 3: Bác Thợ Khóa Thành",
+          "Seat 1: Hươu Cao · Seat 2: Bác Thợ Khóa Thành · Seat 3: Gấu Gác Hầm"
+        ]
+      }
+    },
+    {
+      "id": "ghe-cua-te-tuong",
+      "title": "Ghế của chính tể tướng",
+      "goTo": "Đi dọc lối đi kết hoa, tể tướng dừng bên bình hoa giữa lối vào tiệc",
+      "kind": "decision",
+      "target": "st-te-tuong-nghin-van-co-binh-hoa-loi-tiec",
+      "speaker": "Tể Tướng Cờ Vua",
+      "prompt": "Tể tướng vuốt râu ba lần, nhìn ra cuối lối: «Sơ đồ đã xong cho khách, còn ta thì ngồi đâu cho phải phép?»",
+      "choices": [
+        {
+          "id": "dau-ban",
+          "text": "Ngồi đầu bàn, đúng ghế của tể tướng",
+          "consequence": "«Phép tắc là phép tắc,» ngài nói, rồi kê ghế đầu bàn cho thật thẳng. Từ đó, ngài nhìn thấy mọi vị khách như nhìn cả bàn cờ."
+        },
+        {
+          "id": "canh-tho-khoa",
+          "text": "Ngồi cạnh Bác Thợ Khóa Thành để bàn chuyện cờ",
+          "consequence": "Tể tướng đặt một bàn cờ bỏ túi bên đĩa ăn. «Giữa món canh và món bánh, hai ta đi vài nước cũng chẳng sao,» ngài nháy mắt."
+        },
+        {
+          "id": "gan-cua",
+          "text": "Ngồi gần cửa để đón từng vị khách",
+          "consequence": "Tể tướng kê ghế gần cửa và tập cúi chào ba kiểu: chào khách quý, chào bạn cờ, chào người tới muộn."
+        }
+      ],
+      "en": {
+        "title": "The chancellor's own seat",
+        "goTo": "Walk along the flower-lined aisle; the chancellor stops by the vase in the middle of the way to the banquet",
+        "prompt": "The chancellor strokes his beard three times and gazes down the aisle: «The plan is done for the guests, but where should I sit, properly speaking?»",
+        "choices": [
+          {
+            "text": "At the head of the table, the chancellor's seat",
+            "consequence": "«Rules are rules,» he says, and sets the head chair perfectly straight. From there he can see every guest, like seeing the whole board."
+          },
+          {
+            "text": "Beside Bác Thợ Khóa Thành, to talk chess",
+            "consequence": "The chancellor tucks a pocket chessboard beside his plate. «Between the soup and the cake, a few moves will do no harm,» he winks."
+          },
+          {
+            "text": "Near the door, to greet each guest",
+            "consequence": "The chancellor moves his chair by the door and practises three bows: one for honoured guests, one for chess friends, one for latecomers."
+          }
+        ]
+      }
+    },
+    {
+      "id": "xep-cho-tiec-vua",
+      "title": "Xếp chỗ cho cả bàn tiệc",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Còn bao nhiêu vị khách nữa chờ chỗ ngồi! Đọc lời dặn của từng vị rồi xếp cho đúng, qua ba bàn tiệc nhé!",
+      "game": "seat-logic",
+      "goal": 3,
+      "en": {
+        "title": "Seating the whole banquet",
+        "prompt": "So many more guests waiting for seats! Read what each one asks for and seat them correctly; clear three tables!"
+      }
+    },
+    {
+      "id": "mat-ma-dau-hang",
+      "title": "Mật mã đầu hàng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Sơ đồ tiệc giờ viết bằng chữ ai cũng đọc được. Tể tướng trịnh trọng xé bản mật mã cũ làm tư, rồi thưởng {name} một nắm xu sáng loáng.",
+      "en": {
+        "title": "The code surrenders",
+        "text": "The seating plan is now written so anyone can read it. The chancellor solemnly tears the old coded copy into four and rewards {name} with a handful of shiny coins."
+      }
+    },
+    {
+      "id": "cung-thu-voi-va",
+      "title": "Cung thủ vội vàng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tể tướng thở dài: Cáo Cung Thủ vừa thua một ván cờ chỉ sau năm nước vì đi quá vội. Ngài muốn soạn một bài học đặc biệt cho cậu học trò ấy.",
+      "en": {
+        "title": "A hasty archer",
+        "text": "The chancellor sighs: Cáo Cung Thủ has just lost a game after only five moves by rushing. He wants to prepare a special lesson for his young pupil."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 62,
+    "coin": 16,
+    "skillXp": {
+      "phep-cong": 1,
+      "logic": 1
+    }
+  },
+  "en": {
+    "title": "Tể Tướng Cờ Vua's story, chapter 2: A seating plan in code",
+    "summary": "Tể Tướng Cờ Vua wrote the banquet seating plan in code and then forgot how to read it. {name} gathers three name cards, solves an addition to find a seat number, reasons out three guests' places and chooses where the chancellor himself should sit."
+  }
+}

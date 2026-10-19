@@ -1,0 +1,380 @@
+{
+  "id": "yarn-cao-tuyet-tuong-bay-mau-2",
+  "region": "nui-tuyet",
+  "chapter": 1,
+  "title": "Chuyện của Cáo Tuyết Điêu Khắc, chương 2: Thiên nga vẽ bằng hình",
+  "status": "active",
+  "category": "story",
+  "summary": "Cáo Tuyết đã nghĩ ra dáng tượng: một con thiên nga dang cánh. {name} gom đồ phác hình trên phố làng, nhận ra các hình tứ giác trong bản phác, đọc sổ ghi chép của Cáo và chọn hướng cho tượng trước khi những nhát đục đầu tiên rơi xuống.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cáo Tuyết Điêu Khắc",
+    "where": "Làng núi tuyết: quảng trường, phố làng, tháp đồng hồ, xưởng gọt băng sau quảng trường, bãi người tuyết",
+    "goal": "Phác xong dáng thiên nga và gọt những nhát đầu tiên",
+    "play": "Tìm đồ phác hình; chọn các hình tứ giác trong bản phác; đọc sổ ghi chép; chọn hướng đặt tượng; gọt băng theo hình",
+    "learn": "Hình tứ giác, hình tam giác, hình tròn; đọc hiểu câu nêu đặc điểm",
+    "reward": "70 XP, 18 Xu, Skill XP Hình phẳng, Đọc hiểu",
+    "next": "Buổi sáng nắng đầu tiên"
+  },
+  "phases": {
+    "hook": "dang-tuong-thien-nga",
+    "explore": "gom-do-phac-hinh",
+    "learn": "tim-hinh-tu-giac",
+    "challenge": "doc-so-ghi-chep",
+    "decision": "huong-mat-tuong",
+    "finale": "nhat-duc-dau-tien",
+    "reward": "thien-nga-thanh-hinh",
+    "next": "cho-mot-ngay-nang"
+  },
+  "places": {
+    "cao-tuyet-dieu-khac": "Sân tượng băng",
+    "gom-do-phac-hinh": "Phố làng",
+    "st-cao-tuyet-tuong-bay-mau-duc-nho": "Phố làng",
+    "st-cao-tuyet-tuong-bay-mau-thuoc-e-ke": "Phố làng",
+    "st-cao-tuyet-tuong-bay-mau-but-than": "Phố làng",
+    "st-cao-tuyet-tuong-bay-mau-bang-phac": "Tháp đồng hồ",
+    "st-cao-tuyet-tuong-bay-mau-so-ghi-chep": "Xưởng gọt băng sau quảng trường",
+    "st-cao-tuyet-tuong-bay-mau-coc-danh-dau": "Bãi người tuyết"
+  },
+  "steps": [
+    {
+      "id": "dang-tuong-thien-nga",
+      "title": "Dáng tượng đã có",
+      "goTo": "Về sân tượng băng giữa quảng trường, Cáo đang đứng ngắm khối băng dáng tháp",
+      "kind": "dialogue",
+      "target": "cao-tuyet-dieu-khac",
+      "lines": [
+        {
+          "speaker": "Cáo Tuyết Điêu Khắc",
+          "text": "Cả đêm tớ nghĩ. Khối băng cao và thẳng, vậy tượng phải là thứ gì vươn lên. Tớ chọn một con thiên nga đang dang cánh."
+        },
+        {
+          "speaker": "Cáo Tuyết Điêu Khắc",
+          "text": "Thiên nga trong mắt tớ là những hình ghép lại: đế vuông, cánh tam giác, đầu tròn. Nhưng đồ phác hình của tớ lại để quên khắp phố."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Thiên nga dang cánh, nghe đẹp quá!",
+          "reply": "Ừ. Cổ nó cong như nửa vòng tròn. Tớ đã tập vẽ nét ấy hai mươi lần."
+        },
+        {
+          "text": "Cáo để quên đồ ở những chỗ nào?",
+          "reply": "Đâu đó dọc phố làng. Tớ hay đặt xuống để đo một thứ gì rồi quên nhặt lên."
+        }
+      ],
+      "en": {
+        "title": "The statue has a shape",
+        "goTo": "Go back to the ice statue yard in the middle of the square, where Cáo is gazing at the tower block of ice",
+        "lines": [
+          "I thought all night. The block is tall and straight, so the statue should be something reaching upward. I've chosen a swan spreading its wings.",
+          "To me a swan is shapes put together: a square base, triangle wings, a round head. But I've left my sketching tools all over the street."
+        ],
+        "choices": [
+          {
+            "text": "A swan spreading its wings sounds lovely!",
+            "reply": "Yes. Its neck curves like half a circle. I've practised that line twenty times."
+          },
+          {
+            "text": "Where did you leave your tools?",
+            "reply": "Somewhere along the village street. I put things down to measure something and forget to pick them up."
+          }
+        ]
+      }
+    },
+    {
+      "id": "gom-do-phac-hinh",
+      "title": "Đồ phác hình để quên",
+      "goTo": "Đi dọc phố làng tìm cái đục nhỏ, thước ê-ke và cây bút than của Cáo",
+      "kind": "search",
+      "targets": [
+        "st-cao-tuyet-tuong-bay-mau-duc-nho",
+        "st-cao-tuyet-tuong-bay-mau-thuoc-e-ke",
+        "st-cao-tuyet-tuong-bay-mau-but-than"
+      ],
+      "en": {
+        "title": "Forgotten sketching tools",
+        "goTo": "Walk along the village street and find Cáo's little chisel, set square and charcoal pencil"
+      }
+    },
+    {
+      "id": "tim-hinh-tu-giac",
+      "title": "Hình nào có bốn cạnh?",
+      "goTo": "Sang tháp đồng hồ, Cáo dựng tấm bảng phác hình thiên nga ở chân tháp",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-cao-tuyet-tuong-bay-mau-bang-phac",
+      "skill": "hinh-phang",
+      "prompt": "Bản phác thiên nga được ghép từ nhiều hình. Cáo muốn gọt các hình tứ giác trước vì chúng dễ đặt thước nhất. Chọn tất cả các hình tứ giác:",
+      "choices": [
+        {
+          "id": "de-tuong",
+          "text": "Đế tượng: 4 cạnh thẳng, 4 góc vuông"
+        },
+        {
+          "id": "canh-trai",
+          "text": "Cánh trái: 3 cạnh thẳng, 3 góc"
+        },
+        {
+          "id": "dau-thien-nga",
+          "text": "Đầu thiên nga: một đường cong khép kín, không có góc"
+        },
+        {
+          "id": "than-chim",
+          "text": "Thân chim: 4 cạnh thẳng, hai cạnh dài, hai cạnh ngắn"
+        },
+        {
+          "id": "mo-chim",
+          "text": "Mỏ chim: 3 cạnh thẳng, nhọn ở đầu"
+        },
+        {
+          "id": "o-duoi",
+          "text": "Chóp đuôi: 4 cạnh thẳng, các góc không vuông"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "de-tuong",
+          "than-chim",
+          "o-duoi"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Hình tứ giác là hình có 4 cạnh thẳng và 4 góc.",
+          "Đếm số cạnh thẳng của từng phần. Đường cong khép kín không có cạnh thẳng nào."
+        ],
+        "hint": "Có ba phần ghi «4 cạnh». Góc vuông hay không vuông thì vẫn là tứ giác.",
+        "answer": {
+          "text": "Đế tượng, thân chim và chóp đuôi",
+          "explanation": "Ba phần này đều có 4 cạnh thẳng nên là hình tứ giác. Cánh trái và mỏ chim có 3 cạnh là hình tam giác; đầu thiên nga là hình tròn."
+        },
+        "en": {
+          "guide": [
+            "A quadrilateral is a shape with 4 straight sides and 4 corners.",
+            "Count the straight sides of each part. A closed curve has no straight sides at all."
+          ],
+          "hint": "Three parts say \"4 sides\". Square corners or not, it is still a quadrilateral.",
+          "answer": {
+            "text": "The base, the body and the tail tip",
+            "explanation": "These three parts each have 4 straight sides, so they are quadrilaterals. The left wing and the beak have 3 sides and are triangles; the swan's head is a circle."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba hình tứ giác, không sót hình nào. Cáo chấm ba chấm than nhỏ lên bảng.",
+          "{name} nhìn hình tinh như người đã gọt băng mười mùa đông.",
+          "Chóp đuôi lệch góc mà {name} vẫn nhận ra, tớ phục đấy."
+        ],
+        "wrong": [
+          "Cánh và mỏ chỉ có ba cạnh thôi, đó là hình tam giác rồi {name}.",
+          "Còn sót một hình bốn cạnh đấy, hình có góc không vuông vẫn được tính.",
+          "Đầu thiên nga là một đường cong, không có cạnh thẳng nào để đếm."
+        ],
+        "en": {
+          "right": [
+            "Three quadrilaterals, none missed. Cáo dots three little charcoal marks on the board.",
+            "{name} sees shapes as sharply as someone who has carved ice for ten winters.",
+            "The tail tip has slanted corners and {name} still spotted it; I'm impressed."
+          ],
+          "wrong": [
+            "The wing and the beak have only three sides; those are triangles, {name}.",
+            "One four-sided shape is still missing; a shape without square corners counts too.",
+            "The swan's head is a curve, with no straight sides to count."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which shapes have four sides?",
+        "goTo": "Go over to the clock tower, where Cáo has set up the swan sketch board at the foot of the tower",
+        "prompt": "The swan sketch is made of many shapes. Cáo wants to carve the quadrilaterals first because they are easiest to lay a ruler on. Choose all the quadrilaterals:",
+        "choices": [
+          "Base: 4 straight sides, 4 square corners",
+          "Left wing: 3 straight sides, 3 corners",
+          "Swan's head: one closed curve, no corners",
+          "Body: 4 straight sides, two long and two short",
+          "Beak: 3 straight sides, pointed at the tip",
+          "Tail tip: 4 straight sides, corners not square"
+        ]
+      }
+    },
+    {
+      "id": "doc-so-ghi-chep",
+      "title": "Trang sổ của Cáo",
+      "goTo": "Vào xưởng gọt băng sau quảng trường, cuốn sổ ghi chép của Cáo mở sẵn trên bàn",
+      "kind": "read",
+      "target": "st-cao-tuyet-tuong-bay-mau-so-ghi-chep",
+      "skill": "doc-hieu",
+      "text": "Ghi chép về tượng thiên nga.\nĐế tượng vuông vức và vững chãi.\nĐôi cánh mỏng, xòe rộng như hai chiếc quạt.\nCổ thiên nga dài và cong mềm.\nPhần ngực phải trong nhất, vì nắng sẽ đi qua chỗ ấy rồi tách thành bảy màu.\nNhớ: gọt chậm, mỗi nhát chỉ bằng một hạt gạo.",
+      "question": "Theo trang sổ, vì sao phần ngực thiên nga phải trong nhất?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Vì nắng sẽ đi qua phần ngực rồi tách thành bảy màu"
+        },
+        {
+          "id": "b",
+          "text": "Vì phần ngực là chỗ to nhất của tượng"
+        },
+        {
+          "id": "c",
+          "text": "Vì đôi cánh xòe rộng như hai chiếc quạt"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Tìm dòng có chữ «phần ngực».",
+          "Đọc phần đứng sau chữ «vì» trong dòng ấy."
+        ],
+        "hint": "Chữ «vì» thường mở ra lí do.",
+        "answer": {
+          "text": "Nắng sẽ đi qua phần ngực và tách thành bảy màu",
+          "explanation": "Sổ viết: «Phần ngực phải trong nhất, vì nắng sẽ đi qua chỗ ấy rồi tách thành bảy màu.» Lí do nằm ngay sau chữ «vì»."
+        },
+        "en": {
+          "guide": [
+            "Find the line with \"the chest\".",
+            "Look at the words that follow \"because\" on that line."
+          ],
+          "hint": "The word \"because\" usually opens a reason.",
+          "answer": {
+            "text": "The sunlight passes through the chest and splits into seven colours",
+            "explanation": "The notebook says: \"The chest must be the clearest, because the sunlight will pass through it and split into seven colours.\" The reason comes right after \"because\"."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng thế. Chỗ nắng đi qua phải không vướng một hạt bụi nào.",
+          "{name} tìm ra lí do nhanh như tia nắng xuyên qua băng.",
+          "Cáo gạch chân dòng ấy bằng một nét than thẳng tắp."
+        ],
+        "wrong": [
+          "Sổ không nói phần ngực to nhất đâu, {name} tìm lại chữ «vì» nhé.",
+          "Hai chiếc quạt là để tả đôi cánh, không phải lí do của phần ngực.",
+          "Đọc lại dòng thứ năm, câu trả lời nằm sau một chữ rất ngắn."
+        ],
+        "en": {
+          "right": [
+            "Exactly. Where the light passes, there mustn't be a single speck of dust.",
+            "{name} found the reason as quickly as a sunbeam goes through ice.",
+            "Cáo underlines that line with one perfectly straight charcoal stroke."
+          ],
+          "wrong": [
+            "The notebook doesn't say the chest is the biggest part, {name}; look for \"because\" again.",
+            "The two fans describe the wings, not the reason about the chest.",
+            "Read the fifth line again; the answer sits after one very short word."
+          ]
+        }
+      },
+      "en": {
+        "title": "A page from Cáo's notebook",
+        "goTo": "Go into the ice workshop behind the square, where Cáo's notebook lies open on the bench",
+        "text": "Notes on the swan statue.\nThe base is square and steady.\nThe wings are thin, spread wide like two fans.\nThe swan's neck is long and softly curved.\nThe chest must be the clearest, because the sunlight will pass through it and split into seven colours.\nRemember: carve slowly, each cut no bigger than a grain of rice.",
+        "question": "According to the notebook page, why must the swan's chest be the clearest part?",
+        "choices": [
+          "Because the sunlight will pass through the chest and split into seven colours",
+          "Because the chest is the biggest part of the statue",
+          "Because the wings spread wide like two fans"
+        ]
+      }
+    },
+    {
+      "id": "huong-mat-tuong",
+      "title": "Thiên nga nhìn về đâu?",
+      "goTo": "Ra bãi người tuyết, Cáo cắm một cọc đánh dấu để chọn hướng cho tượng",
+      "kind": "decision",
+      "target": "st-cao-tuyet-tuong-bay-mau-coc-danh-dau",
+      "speaker": "Cáo Tuyết Điêu Khắc",
+      "prompt": "Cáo xoay chiếc cọc một vòng: «Một bức tượng phải có hướng nhìn, như mũi tên trên la bàn. Thiên nga của mình nên nhìn về đâu, {name}?»",
+      "choices": [
+        {
+          "id": "huong-dong",
+          "text": "Về phía đông, nơi mặt trời mọc",
+          "consequence": "Cáo kẻ một mũi tên về phía đông: «Để thiên nga là đứa chào nắng sớm nhất làng.»"
+        },
+        {
+          "id": "huong-cong",
+          "text": "Về phía cổng làng, để khách vừa tới đã thấy",
+          "consequence": "Cáo gật gù: «Như một lời chào bằng hình.» Cậu vẽ một hình tròn nhỏ ở đầu mũi tên, coi như cái gật đầu của thiên nga."
+        },
+        {
+          "id": "huong-thap",
+          "text": "Về phía tháp đồng hồ, để biết giờ ngắm tượng",
+          "consequence": "Cáo bật cười khẽ, tiếng cười tròn và nhỏ như bọt khí: «Thiên nga biết xem giờ. Hay đấy.»"
+        }
+      ],
+      "en": {
+        "title": "Which way will the swan look?",
+        "goTo": "Go to the snowman field, where Cáo has planted a marker post to choose the statue's direction",
+        "prompt": "Cáo turns the post a full circle: \"A statue must look somewhere, like the needle on a compass. Which way should our swan face, {name}?\"",
+        "choices": [
+          {
+            "text": "East, where the sun rises",
+            "consequence": "Cáo draws an arrow pointing east: \"So the swan is the first in the village to greet the morning sun.\""
+          },
+          {
+            "text": "Towards the village gate, so visitors see it as they arrive",
+            "consequence": "Cáo nods: \"Like a greeting made of shapes.\" He draws a little circle at the arrow's tip, the swan's nod."
+          },
+          {
+            "text": "Towards the clock tower, so it knows when to be admired",
+            "consequence": "Cáo laughs softly, a laugh as small and round as an air bubble: \"A swan that can tell the time. I like it.\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "nhat-duc-dau-tien",
+      "title": "Những nhát đục đầu tiên",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bản phác đã in lên băng. Gõ bỏ phần băng thừa quanh dáng thiên nga, giữ nguyên hình xanh đậm bên trong, tạc đẹp ba bức là Cáo gật đầu!",
+      "game": "ice-sculpt",
+      "goal": 3,
+      "en": {
+        "title": "The first chisel strokes",
+        "prompt": "The sketch is marked on the ice. Chip away the spare ice around the swan and keep the dark blue shape inside whole; carve three good ones and Cáo will nod!"
+      }
+    },
+    {
+      "id": "thien-nga-thanh-hinh",
+      "title": "Thiên nga thành hình",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Đế vuông, thân tứ giác, đôi cánh tam giác đã hiện lên trong khối băng. Cáo lùi ba bước, nghiêng đầu nhìn rồi bảo {name}: «Nét cổ chưa thật cong. Nhưng nét bạn bè giữa hai đứa mình thì thẳng rồi.»",
+      "en": {
+        "title": "The swan takes shape",
+        "text": "A square base, a four-sided body and triangle wings have appeared in the ice. Cáo steps back three paces, tilts his head and tells {name}: \"The neck isn't curved enough yet. But the line between us two is perfectly straight.\""
+      }
+    },
+    {
+      "id": "cho-mot-ngay-nang",
+      "title": "Chờ một ngày nắng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tượng đã gọt xong, chỉ còn chờ một buổi sáng trời quang để xem nắng có chịu vào chơi không. Người làng bảo sáng mai mây sẽ tan hết.",
+      "en": {
+        "title": "Waiting for a sunny day",
+        "text": "The statue is carved; now it only needs a clear morning to see whether the sunlight will come in to play. The villagers say the clouds will be gone by tomorrow morning."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "hinh-phang": 1,
+      "doc-hieu": 1
+    }
+  },
+  "en": {
+    "title": "Cáo Tuyết Điêu Khắc's story, chapter 2: A swan drawn in shapes",
+    "summary": "Cáo Tuyết has found the statue's shape: a swan spreading its wings. {name} gathers his sketching tools along the village street, picks out the quadrilaterals in the sketch, reads Cáo's notebook and chooses the statue's direction before the first chisel strokes fall."
+  }
+}

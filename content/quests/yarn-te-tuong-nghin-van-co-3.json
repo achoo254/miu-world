@@ -1,0 +1,353 @@
+{
+  "id": "yarn-te-tuong-nghin-van-co-3",
+  "region": "lau-dai",
+  "chapter": 2,
+  "title": "Chuyện của Tể Tướng Cờ Vua, chương 3: Đếm tới ba rồi hãy buông",
+  "status": "active",
+  "category": "story",
+  "summary": "Cáo Cung Thủ thua cờ chỉ sau năm nước vì quá vội. Tể Tướng Cờ Vua cùng {name} soạn bài học ba nhịp: tìm ba chiếc chuông, chọn cặp mũi tên vừa năm mươi điểm, tính giờ ra bãi bắn và viết câu dặn lên thẻ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Tể Tướng Cờ Vua",
+    "where": "Lâu đài: bàn cờ đại sảnh, hậu trường, bục huy hiệu, góc giờ học cờ, gian hình phẳng",
+    "goal": "Soạn bài học «đếm tới ba» cho Cáo Cung Thủ",
+    "play": "Tìm ba chiếc chuông nhịp; chọn các cặp mũi tên cộng vừa 50; tính giờ ra bãi bắn; chọn câu viết lên thẻ bài học; chơi «Một hai ba, đứng im»",
+    "learn": "Phép cộng có nhớ trong phạm vi 100, xem đồng hồ và tính giờ",
+    "reward": "68 XP, 18 Xu, Skill XP Phép cộng, Xem đồng hồ",
+    "next": "Đại tiệc của lâu đài được lên lịch tới từng phút"
+  },
+  "phases": {
+    "hook": "hoc-tro-nhanh-tay",
+    "explore": "ba-chiec-chuong-nhip",
+    "learn": "cap-ten-nam-muoi",
+    "challenge": "gio-ra-bai-ban",
+    "decision": "viet-the-bai-hoc",
+    "finale": "mot-hai-ba-dung-im",
+    "reward": "bai-hoc-da-xong",
+    "next": "tiec-dung-tung-phut"
+  },
+  "places": {
+    "te-tuong-co-the": "Bàn cờ đại sảnh",
+    "ba-chiec-chuong-nhip": "Hậu trường",
+    "st-te-tuong-nghin-van-co-chuong-nhip-mot": "Hậu trường",
+    "st-te-tuong-nghin-van-co-chuong-nhip-hai": "Hậu trường",
+    "st-te-tuong-nghin-van-co-chuong-nhip-ba": "Hậu trường",
+    "st-te-tuong-nghin-van-co-bia-tap-cua-cao": "Bục huy hiệu",
+    "st-te-tuong-nghin-van-co-dong-ho-gio-hoc": "Góc giờ học cờ",
+    "st-te-tuong-nghin-van-co-the-bai-hoc-ba-nhip": "Gian hình phẳng"
+  },
+  "steps": [
+    {
+      "id": "hoc-tro-nhanh-tay",
+      "title": "Cậu học trò nhanh tay",
+      "goTo": "Tới bàn cờ đại sảnh, Tể Tướng Cờ Vua đang bày lại năm nước cờ của một ván thua chóng vánh",
+      "kind": "dialogue",
+      "target": "te-tuong-co-the",
+      "lines": [
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "Ngươi xem này, {name}: nước một, nước hai, nước ba, nước bốn… nước năm, chiếu hết. Cáo Cung Thủ đi quân nhanh y như cậu ấy buông dây cung."
+        },
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "Ta muốn dạy cậu ấy một phép nhỏ: trước mỗi nước, đếm một, hai, ba. Một để nhìn, hai để nghĩ, ba để chắc tay."
+        },
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "Nói nhỏ với ngươi: hồi trẻ ta cũng từng vội, có ván sắp thua ta còn lén nhấc một quân tốt ra khỏi bàn. Ta đã trả nó về chỗ… sáng hôm sau. Vì thế ta hiểu cậu ấy."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu sẽ giúp ngài soạn bài học ba nhịp!",
+          "reply": "Vậy ta có hai thầy cho một trò. Cáo Cung Thủ hẳn sẽ phải đếm tới ba mất thôi."
+        },
+        {
+          "text": "Ngài trả lại quân tốt là tốt rồi mà.",
+          "reply": "Trả muộn một đêm vẫn là trả muộn. Nhưng ngươi nói đúng: thà muộn còn hơn không bao giờ."
+        }
+      ],
+      "en": {
+        "title": "The quick-handed pupil",
+        "goTo": "Go to the chessboard in the great hall, where Tể Tướng Cờ Vua is replaying the five moves of a very short lost game",
+        "lines": [
+          "Look here, {name}: move one, two, three, four… move five, checkmate. Cáo Cung Thủ moves his pieces exactly as fast as he lets go of his bowstring.",
+          "I want to teach him one small rule: before every move, count one, two, three. One to look, two to think, three to steady the hand.",
+          "Between us: when I was young I rushed too; once, about to lose, I quietly lifted a pawn off the board. I put it back… the next morning. That is why I understand him."
+        ],
+        "choices": [
+          {
+            "text": "I'll help you prepare the three-beat lesson!",
+            "reply": "Then we have two teachers for one pupil. Cáo Cung Thủ will surely have to count to three now."
+          },
+          {
+            "text": "Giving the pawn back was a good thing, sir.",
+            "reply": "Returned a night late is still late. But you are right: better late than never."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ba-chiec-chuong-nhip",
+      "title": "Ba chiếc chuông nhịp",
+      "goTo": "Ra hậu trường, ba chiếc chuông nhỏ treo lẫn giữa phông màn",
+      "kind": "search",
+      "targets": [
+        "st-te-tuong-nghin-van-co-chuong-nhip-mot",
+        "st-te-tuong-nghin-van-co-chuong-nhip-hai",
+        "st-te-tuong-nghin-van-co-chuong-nhip-ba"
+      ],
+      "en": {
+        "title": "Three beat bells",
+        "goTo": "Go backstage, where three little bells hang among the stage curtains"
+      }
+    },
+    {
+      "id": "cap-ten-nam-muoi",
+      "title": "Cặp tên vừa năm mươi",
+      "goTo": "Tới bục huy hiệu, nơi dựng tấm bia tập ghi điểm của Cáo",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-te-tuong-nghin-van-co-bia-tap-cua-cao",
+      "skill": "phep-cong",
+      "prompt": "Tể tướng ra đề cho Cáo: «Trước khi bắn, hãy đếm tới ba và tính xem cặp mũi tên nào cộng lại vừa đúng 50 điểm.» Chọn tất cả các cặp đúng:",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Mũi 27 điểm và mũi 23 điểm"
+        },
+        {
+          "id": "b",
+          "text": "Mũi 45 điểm và mũi 15 điểm"
+        },
+        {
+          "id": "c",
+          "text": "Mũi 38 điểm và mũi 12 điểm"
+        },
+        {
+          "id": "d",
+          "text": "Mũi 29 điểm và mũi 11 điểm"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "a",
+          "c"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Cộng từng cặp: hàng đơn vị trước, nhớ 1 nếu được 10.",
+          "Cặp nào ra đúng 50 thì chọn, ra số khác thì bỏ qua."
+        ],
+        "hint": "7 + 3 = 10 và 8 + 2 = 10: hai cặp này tròn chục ở hàng đơn vị.",
+        "answer": {
+          "text": "27 + 23 và 38 + 12",
+          "explanation": "27 + 23 = 50, 38 + 12 = 50. Còn 45 + 15 = 60 và 29 + 11 = 40 nên không vừa."
+        },
+        "en": {
+          "guide": [
+            "Add each pair: ones first, carry 1 if you make 10.",
+            "Pick the pairs that make exactly 50, skip the rest."
+          ],
+          "hint": "7 + 3 = 10 and 8 + 2 = 10: these two pairs make a full ten in the ones.",
+          "answer": {
+            "text": "27 + 23 and 38 + 12",
+            "explanation": "27 + 23 = 50 and 38 + 12 = 50. But 45 + 15 = 60 and 29 + 11 = 40, so they do not fit."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai cặp, đúng cả hai. Một, hai, ba… trúng hồng tâm!",
+          "Ngươi tính trước rồi mới chọn, đúng bài học ta muốn dạy.",
+          "Cáo mà thấy bài giải này chắc phải tròn mắt mất."
+        ],
+        "wrong": [
+          "Có một cặp ra sáu mươi, nhiều hơn năm mươi rồi.",
+          "Còn một cặp chỉ được bốn mươi thôi, ngươi cộng lại thử.",
+          "Hình như còn sót một cặp vừa năm mươi chưa được chọn."
+        ],
+        "en": {
+          "right": [
+            "Two pairs, both right. One, two, three… bullseye!",
+            "You worked it out before choosing, exactly the lesson I want to teach.",
+            "If Cáo saw this solution, his eyes would go round."
+          ],
+          "wrong": [
+            "One pair makes sixty, which is more than fifty.",
+            "Another pair only makes forty; try adding it again.",
+            "It seems one pair that makes fifty has not been picked yet."
+          ]
+        }
+      },
+      "en": {
+        "title": "Arrow pairs that make fifty",
+        "goTo": "Go to the badge stand, where Cáo's scoring target is set up",
+        "prompt": "The chancellor sets Cáo a task: «Before you shoot, count to three and work out which pairs of arrows add up to exactly 50 points.» Pick every right pair:",
+        "choices": [
+          "An arrow of 27 points and one of 23",
+          "An arrow of 45 points and one of 15",
+          "An arrow of 38 points and one of 12",
+          "An arrow of 29 points and one of 11"
+        ]
+      }
+    },
+    {
+      "id": "gio-ra-bai-ban",
+      "title": "Mấy giờ được ra bãi bắn?",
+      "goTo": "Sang góc giờ học cờ, nơi chiếc đồng hồ quả lắc đang tích tắc",
+      "kind": "riddle",
+      "target": "st-te-tuong-nghin-van-co-dong-ho-gio-hoc",
+      "skill": "xem-dong-ho",
+      "question": "Buổi học bắt đầu lúc 8 giờ sáng: Cáo học cờ 2 giờ, rồi tập đếm nhịp thở thêm 1 giờ nữa. Học xong cậu mới được ra bãi bắn. Cáo ra bãi bắn lúc mấy giờ?",
+      "answer": {
+        "value": 11
+      },
+      "support": {
+        "guide": [
+          "Bắt đầu từ 8 giờ, cộng thêm thời gian học cờ.",
+          "Sau đó cộng tiếp thời gian tập đếm nhịp thở."
+        ],
+        "hint": "8 giờ thêm 2 giờ là 10 giờ.",
+        "answer": {
+          "text": "11 giờ",
+          "explanation": "8 + 2 = 10, rồi 10 + 1 = 11. Cáo ra bãi bắn lúc 11 giờ trưa."
+        },
+        "en": {
+          "guide": [
+            "Start at 8 o'clock and add the chess time.",
+            "Then add the breathing-count practice too."
+          ],
+          "hint": "8 o'clock plus 2 hours is 10 o'clock.",
+          "answer": {
+            "text": "11 o'clock",
+            "explanation": "8 + 2 = 10, then 10 + 1 = 11. Cáo goes to the range at 11 o'clock."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười một giờ! Kim ngắn chỉ số 11, kim dài chỉ số 12.",
+          "Ngươi cộng từng khoảng giờ một, chẳng bỏ sót bước nào.",
+          "Đúng giờ ấy, Cáo sẽ đứng ở bãi bắn với cái đầu đã nguội."
+        ],
+        "wrong": [
+          "Đừng quên một giờ tập đếm nhịp thở sau giờ học cờ nhé.",
+          "Buổi học bắt đầu lúc tám giờ, không phải lúc chín giờ đâu.",
+          "Thử đếm trên mặt đồng hồ: từ số 8, nhảy thêm từng giờ một."
+        ],
+        "en": {
+          "right": [
+            "Eleven o'clock! The short hand on 11, the long hand on 12.",
+            "You added each stretch of time one by one, missing nothing.",
+            "At that hour Cáo will stand at the range with a cool head."
+          ],
+          "wrong": [
+            "Do not forget the hour of breathing practice after the chess lesson.",
+            "The lesson starts at eight, not at nine.",
+            "Try counting on the clock face: from 8, jump one hour at a time."
+          ]
+        }
+      },
+      "en": {
+        "title": "When can he go to the range?",
+        "goTo": "Go over to the chess-lesson corner, where the pendulum clock is ticking",
+        "question": "The lesson starts at 8 in the morning: Cáo studies chess for 2 hours, then practises counting his breaths for 1 more hour. Only then may he go to the range. What time does Cáo go to the range?"
+      }
+    },
+    {
+      "id": "viet-the-bai-hoc",
+      "title": "Viết thẻ bài học",
+      "goTo": "Đến gian hình phẳng, tể tướng trải tấm thẻ bài học còn để trống lên bàn",
+      "kind": "decision",
+      "target": "st-te-tuong-nghin-van-co-the-bai-hoc-ba-nhip",
+      "speaker": "Tể Tướng Cờ Vua",
+      "prompt": "Tể tướng chấm bút, vuốt râu ba lần: «Thẻ chỉ đủ chỗ cho một câu. Cáo Cung Thủ sẽ mang nó theo mỗi ngày. Ta nên viết câu nào?»",
+      "choices": [
+        {
+          "id": "dem-ba-nhip",
+          "text": "«Một nhìn, hai nghĩ, ba mới đi.»",
+          "consequence": "Tể tướng viết nắn nót từng chữ, rồi treo chiếc chuông nhịp thứ nhất lên góc thẻ để Cáo nhớ phải đếm."
+        },
+        {
+          "id": "nhin-ca-ban",
+          "text": "«Nhìn cả bàn cờ, đừng chỉ nhìn quân mình.»",
+          "consequence": "Tể tướng gật đầu: «Cung thủ giỏi nhìn cả gió lẫn bia.» Ngài vẽ thêm một bàn cờ tí hon dưới câu chữ."
+        },
+        {
+          "id": "thua-thi-bat-tay",
+          "text": "«Thắng hay thua cũng đứng dậy bắt tay.»",
+          "consequence": "Tể tướng lặng đi một lúc rồi mỉm cười: «Câu này ta cũng nên đọc mỗi sáng.» Ngài viết nó bằng mực vàng."
+        }
+      ],
+      "en": {
+        "title": "Writing the lesson card",
+        "goTo": "Reach the flat-shapes gallery, where the chancellor spreads the blank lesson card on the table",
+        "prompt": "The chancellor dips his pen and strokes his beard three times: «The card only has room for one sentence. Cáo Cung Thủ will carry it every day. Which should I write?»",
+        "choices": [
+          {
+            "text": "«One to look, two to think, then three to move.»",
+            "consequence": "The chancellor writes each word with care, then hangs the first beat bell from the corner of the card so Cáo will remember to count."
+          },
+          {
+            "text": "«Look at the whole board, not just your own pieces.»",
+            "consequence": "The chancellor nods: «A good archer watches both the wind and the target.» He draws a tiny chessboard beneath the words."
+          },
+          {
+            "text": "«Win or lose, stand up and shake hands.»",
+            "consequence": "The chancellor falls quiet for a moment, then smiles: «I ought to read this one every morning myself.» He writes it in gold ink."
+          }
+        ]
+      }
+    },
+    {
+      "id": "mot-hai-ba-dung-im",
+      "title": "Một, hai, ba, đứng im!",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bài tập đầu tiên cho người hay vội: tiến lên thật khéo, nghe hô «ba» là đứng im phăng phắc. Đạt mười lăm điểm nhé!",
+      "game": "red-light",
+      "goal": 15,
+      "en": {
+        "title": "One, two, three, freeze!",
+        "prompt": "The first exercise for anyone who rushes: creep forward carefully and freeze stock-still on «three». Score fifteen points!"
+      }
+    },
+    {
+      "id": "bai-hoc-da-xong",
+      "title": "Bài học đã sẵn sàng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ba chiếc chuông, một tấm thẻ, một chiếc đồng hồ: bài học ba nhịp đã sẵn sàng. Tể tướng rung chuông một, hai, ba rồi mới trao cho {name} phần thưởng.",
+      "en": {
+        "title": "The lesson is ready",
+        "text": "Three bells, one card, one clock: the three-beat lesson is ready. The chancellor rings one, two, three before handing {name} the reward."
+      }
+    },
+    {
+      "id": "tiec-dung-tung-phut",
+      "title": "Bữa tiệc đúng từng phút",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tối mai là đại tiệc của lâu đài. Tể tướng đã lên lịch tới từng phút: khách tới lúc nào, bánh ra lúc nào, ai nâng ly trước. Ngài bảo không thể có gì sai lệch được.",
+      "en": {
+        "title": "A banquet to the minute",
+        "text": "Tomorrow night is the castle's grand banquet. The chancellor has planned it to the minute: when guests arrive, when the cake comes out, who raises a glass first. Nothing, he says, can possibly go wrong."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 68,
+    "coin": 18,
+    "skillXp": {
+      "phep-cong": 1,
+      "xem-dong-ho": 1
+    }
+  },
+  "en": {
+    "title": "Tể Tướng Cờ Vua's story, chapter 3: Count to three, then let go",
+    "summary": "Cáo Cung Thủ lost a game after five moves by rushing. Tể Tướng Cờ Vua and {name} prepare a three-beat lesson: finding three bells, picking arrow pairs that make fifty, working out when he may go to the range and writing a motto on a card."
+  }
+}

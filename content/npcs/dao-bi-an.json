@@ -822,6 +822,112 @@
           }
         }
       ]
+    },
+    {
+      "id": "khi-mua-dua-lon",
+      "npc": "khi-hai-dua",
+      "title": { "vi": "Mùa dừa lớn của Khỉ Hái Dừa", "en": "Khỉ Hái Dừa's Big Coconut Season" },
+      "teaser": { "vi": "Úp úp! {name} ơi, mùa dừa lớn về rồi, cây nào cũng trĩu quả mà tớ chỉ có hai tay! Nhặt dừa, đưa dừa đi xa, mở hội cho cả đảo… cậu giúp tớ nhé? Nhanh lên nào!", "en": "Oop oop! {name}, the big coconut season is here, every palm is loaded and I've only got two hands! Gathering coconuts, sending them far away, a festival for the whole island… will you help? Quick, come on!" },
+      "chapters": [
+        {
+          "quest": "yarn-khi-mua-dua-lon-1",
+          "hearts": 0,
+          "letter": {
+            "from": "khi-hai-dua",
+            "title": { "vi": "Vạch khắc trên cột lán", "en": "A notch on the hut post" },
+            "body": { "vi": "Úp úp! {name}! Lán đầy dừa rồi. Tớ khắc thêm một vạch thật to trên cột lán, vạch ấy là của cậu. Mai lại sang nhé, rừng còn nhiều dừa lắm!", "en": "Oop oop! {name}! The hut is full of coconuts. I carved one extra big notch on the hut post, and that notch is yours. Come again tomorrow; the jungle still has loads of coconuts!" },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-khi-mua-dua-lon-2",
+          "hearts": 1,
+          "letter": {
+            "from": "gau-truc-tham-hiem",
+            "title": { "vi": "Ghi chép về lối vòng qua cây đổ", "en": "Notes on the detour round the fallen tree" },
+            "body": { "vi": "Chào {name}, tớ là Gấu Trúc Thám Hiểm. Theo tớ suy luận thì giỏ dừa đã tới làng chài an toàn, vì sáng nay cả lối mòn thơm mùi cá khô. Hắt xì! Xin lỗi, phấn hoa rừng nhiều quá. Tớ đã vẽ con đường vòng qua cây đổ vào sổ thám hiểm và ghi rõ bên cạnh: «Lối do {name} tìm ra». Tặng {name} chiếc kính lúp bạc, để lần sau dò đường còn tinh mắt hơn.", "en": "Hello {name}, I'm Gấu Trúc Thám Hiểm. By my reasoning the coconut baskets reached the fishing village safely, because this morning the whole trail smells of dried fish. Atchoo! Sorry, there's so much jungle pollen. I've drawn the detour round the fallen tree in my exploring notebook and written beside it: «Route found by {name}». Here is a silver magnifying glass, so next time you find the way with even sharper eyes." },
+            "reward": {
+              "coins": 20,
+              "xp": 15,
+              "items": { "kinh-lup-bac": 1 }
+            }
+          }
+        },
+        {
+          "quest": "yarn-khi-mua-dua-lon-3",
+          "hearts": 2,
+          "letter": {
+            "from": "cua-luot-song",
+            "title": { "vi": "Lời mời ra tận bãi biển", "en": "An invitation all the way to the beach" },
+            "body": { "vi": "Ầu ơ, bồ {name} ơi! Cua Lướt Sóng đây, viết từ bãi biển êm ru. Khỉ gửi lời mời ra tận bãi, rủ tớ cùng tới hội dừa. Bồ biết không, tớ với Khỉ thi xem ai tới gốc dừa nghiêng trước chẳng biết bao nhiêu lần rồi, lần nào cũng hòa. Hội lần này tớ sẽ lướt con sóng sớm nhất để tới trước, ầu ơ, mà chắc lại hòa thôi. Gửi bồ chiếc vỏ ốc xà cừ, áp tai vào là nghe sóng hát.", "en": "Ầu ơ, my pal {name}! It's Cua Lướt Sóng, writing from the lazy beach. Khỉ sent an invitation all the way down to the sand, asking me to the coconut festival. You know, Khỉ and I have raced to the leaning palm more times than I can count, and every single time it's a draw. This time I'll ride the earliest wave to get there first, ầu ơ, though it'll probably be a draw again. Here's a mother-of-pearl shell; hold it to your ear and hear the waves sing." },
+            "reward": {
+              "coins": 20,
+              "xp": 20,
+              "items": { "vo-oc-xa-cu": 1 }
+            }
+          }
+        },
+        {
+          "quest": "yarn-khi-mua-dua-lon-4",
+          "hearts": 3,
+          "letter": {
+            "from": "tho-mang-non",
+            "title": { "vi": "Chữ mới của tuần này", "en": "This week's new word" },
+            "body": { "vi": "Ba, hai, một! Thư tới rồi! {name} ơi, tớ là Thỏ Măng Non ở Trường học, bạn thư của Khỉ Hái Dừa đây. Khỉ gửi cho tớ tấm ảnh sân hội với mấy bông hoa dại ép khô, và tớ biết {name} đã cùng Khỉ giữ cho hội dừa vui mà đàn ong vẫn yên. Tuần này tớ gửi Khỉ chữ mới là «dũng cảm», và tớ thấy chữ ấy hợp với cả {name} nữa. Tặng {name} cây bút mực tím, giống hệt cây tớ đã tặng Khỉ.", "en": "Three, two, one! Post's here! {name}, I'm Thỏ Măng Non from the School, Khỉ Hái Dừa's pen-pal. Khỉ sent me a photo of the festival yard and some pressed wildflowers, and I know {name} helped Khỉ keep the festival happy while the bees stayed in peace. This week the new word I'm sending Khỉ is «brave», and I think it suits {name} too. Here's a purple ink pen for you, just like the one I gave Khỉ." },
+            "reward": {
+              "coins": 25,
+              "xp": 25,
+              "items": { "but-muc-tim": 1 }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cua-dem-nhip-song",
+      "npc": "cua-luot-song",
+      "title": { "vi": "Đếm nhịp sóng cùng Cua", "en": "Counting the Waves with Cua" },
+      "teaser": { "vi": "Ầu ơ, bồ {name} có biết sóng đến theo nhịp không? Ra bãi đây, tớ giơ càng đếm cho bồ xem. Rồi tụi mình gửi hẳn một con sóng lên Núi tuyết, êm ru.", "en": "Ahoy-oh, buddy {name}, did you know waves come in a rhythm? Come down to the beach and I’ll count them for you with my claws. Then we’ll post a whole wave up to the Snow Mountain, smooth as butter." },
+      "chapters": [
+        {
+          "quest": "yarn-cua-dem-nhip-song-1",
+          "hearts": 0,
+          "letter": {
+            "from": "cua-luot-song",
+            "title": { "vi": "Tấm ván vẫn còn ướt", "en": "The board is still wet" },
+            "body": { "vi": "Bồ {name} ơi, ầu ơ! Tấm ván bồ tập hôm qua tớ dựng trên giá, nó vẫn còn ướt mà trông như đang cười. Tối qua tớ ngồi đếm sóng một mình, đếm tới đâu cũng nhớ lúc bồ đứng lên ván lần đầu. Gửi bồ ít xu mua nước dừa, lướt xong mà uống thì êm ru.", "en": "Buddy {name}, ahoy-oh! The board you practised on yesterday is standing on the rack, still wet and looking like it’s smiling. Last night I counted waves on my own, and with every one I remembered you standing up for the first time. Here are a few coins for coconut water; after a ride it’s smooth as butter." },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-cua-dem-nhip-song-2",
+          "hearts": 1,
+          "letter": {
+            "from": "thuyen-truong-vet-bien",
+            "title": { "vi": "Gửi trọng tài công bằng", "en": "To the fair referee" },
+            "body": { "vi": "Trọng tài {name}! Ta thua bảy, bảy hẳn hoi, nhưng ta không buồn đâu, không buồn! Sổ trọng tài ghi rành mạch, chữ đẹp, ta đọc mà nể. Đêm qua ta đã nghĩ ra một luật mới cho mùa sau: cánh buồm nào cưỡi trên ngọn sóng thì tính cho cả hai bên. Ta gửi trọng tài một con tem, để dán lên lá thư nào thật quan trọng.", "en": "Referee {name}! I lost by seven, seven whole ones, but I’m not sad, not sad! The referee’s book is clear and neatly written, and I admire it. Last night I thought up a new rule for next season: any sail riding the crest of a wave counts for both sides. Here is a stamp for you, referee, to put on a truly important letter." },
+            "reward": {
+              "coins": 15,
+              "xp": 20,
+              "items": { "tem-buu-dien": 1 }
+            }
+          }
+        },
+        {
+          "quest": "yarn-cua-dem-nhip-song-3",
+          "hearts": 2,
+          "letter": {
+            "from": "gau-bac-cuc-cau-ca",
+            "title": { "vi": "Vỏ ốc đã tới núi", "en": "The shell reached the mountain" },
+            "body": { "vi": "Cháu {name} à… gói quà tới rồi. Bác áp vỏ ốc vào tai… và nghe thấy biển, thật đấy. Đêm qua hồ băng ngân nga, vỏ ốc cũng rì rào, bác ngồi giữa nghe hai bài hát cùng một lúc. Cảm ơn cháu đã giúp Cua gói con sóng ấy. Bác gửi cháu một bông tuyết pha lê, nhờ cháu nhắn Cua rằng trên này băng vẫn đang đợi cậu ấy.", "en": "Dear {name}… the parcel has arrived. I held the shell to my ear… and heard the sea, truly. Last night the frozen lake was humming and the shell was whispering, and I sat between them listening to two songs at once. Thank you for helping Cua wrap up that wave. Here is a crystal snowflake for you; please tell Cua that up here the ice is still waiting for him." },
+            "reward": {
+              "coins": 20,
+              "xp": 25,
+              "items": { "bong-tuyet-pha-le": 1 }
+            }
+          }
+        }
+      ]
     }
   ]
 }

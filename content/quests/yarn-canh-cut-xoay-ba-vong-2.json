@@ -1,0 +1,431 @@
+{
+  "id": "yarn-canh-cut-xoay-ba-vong-2",
+  "region": "nui-tuyet",
+  "chapter": 3,
+  "title": "Chuyện của Cánh Cụt Trượt Băng, chương 2: Mê cung một lối ra",
+  "status": "active",
+  "category": "story",
+  "summary": "Tuyết phủ kín mốc chỉ đường của mê cung băng đúng hôm Cánh Cụt dắt đàn con đi tập. {name} tìm lại ba mốc theo lời tả, đọc nội quy mê cung, dò ra lối đi duy nhất và giải cứu một chú cánh cụt con bị kẹt.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cánh Cụt Trượt Băng",
+    "where": "Hồ băng: cổng mê cung băng, lối vào mê cung, chòi gác mê cung, mê cung băng, bờ hồ băng",
+    "goal": "Dẫn đàn cánh cụt con đi qua mê cung băng mà không ai bị lạc",
+    "play": "Tìm mốc chỉ đường theo lời tả; đọc nội quy; dò lối duy nhất trong mê cung; giúp chú cánh cụt bị kẹt; trượt cánh cụt về nhà",
+    "learn": "Đọc hiểu, suy luận tìm đường",
+    "reward": "65 XP, 17 Xu, Skill XP Đọc hiểu, Suy luận",
+    "next": "Tập cú xoay trên sân tập"
+  },
+  "phases": {
+    "hook": "moc-chi-duong-bien-mat",
+    "explore": "tim-ba-moc",
+    "learn": "noi-quy-me-cung",
+    "challenge": "lo-duy-nhat",
+    "decision": "chu-cut-bi-ket",
+    "finale": "truot-ve-nha",
+    "reward": "ca-dan-ra-cua",
+    "next": "san-tap-xoay"
+  },
+  "places": {
+    "canh-cut-truot-bang": "Cổng mê cung băng",
+    "tim-ba-moc": "Lối vào mê cung",
+    "st-canh-cut-xoay-ba-vong-da-mui-ten": "Lối vào mê cung",
+    "st-canh-cut-xoay-ba-vong-bien-go-cong": "Lối vào mê cung",
+    "st-canh-cut-xoay-ba-vong-thung-danh-dau": "Lối vào mê cung",
+    "st-canh-cut-xoay-ba-vong-bang-noi-quy": "Chòi gác mê cung",
+    "st-canh-cut-xoay-ba-vong-khoi-bang-giua": "Mê cung băng",
+    "st-canh-cut-xoay-ba-vong-cut-con-ket": "Bờ hồ băng"
+  },
+  "steps": [
+    {
+      "id": "moc-chi-duong-bien-mat",
+      "title": "Mốc chỉ đường biến mất",
+      "goTo": "Tới cổng mê cung băng, Cánh Cụt đang đếm đầu đàn con lần thứ năm",
+      "kind": "dialogue",
+      "target": "canh-cut-truot-bang",
+      "lines": [
+        {
+          "speaker": "Cánh Cụt Trượt Băng",
+          "text": "{name}! Vèèèo, phanh, xoẹt! Cậu tới đúng lúc ghê, tớ vừa tạo dáng chào xong là có chuyện ngay."
+        },
+        {
+          "speaker": "Cánh Cụt Trượt Băng",
+          "text": "Đêm qua tuyết rơi dày, ba cái mốc chỉ đường ở lối vào bị vùi mất tăm. Không có mốc, bọn nhỏ vào mê cung là đi vòng vòng như con quay."
+        },
+        {
+          "speaker": "Cánh Cụt Trượt Băng",
+          "text": "Mê cung này chỉ có đúng một lối ra thôi, tớ nhớ mà cũng không dám chắc. Cậu tìm mốc giúp tớ, tớ đứng giữ hàng, dáng nghiêm như lính gác!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mốc chỉ đường trông thế nào?",
+          "reply": "Ba cái khác nhau hoàn toàn! Tớ tả cho cậu nghe từng cái, cậu cứ thế mà tìm, vèèèo!"
+        },
+        {
+          "text": "Sao cậu không vẽ bản đồ mê cung?",
+          "reply": "Vẽ rồi, mà tớ vẽ đường nào cũng ngoằn ngoèo như con rắn, nhìn xong càng lạc. Tớ tạo dáng xấu hổ một chút nhé."
+        }
+      ],
+      "en": {
+        "title": "The markers have vanished",
+        "goTo": "Go to the ice maze gate, where Cánh Cụt is counting the chicks for the fifth time",
+        "lines": [
+          "{name}! Wheeee, brake, swoosh! Perfect timing; I'd only just finished my hello pose when trouble arrived.",
+          "Heavy snow last night buried the three markers at the entrance. Without them, the chicks will go round and round in there like spinning tops.",
+          "The maze has exactly one way out; I think I remember it, but I'm not sure. Find the markers for me and I'll guard the line, standing as stiff as a sentry!"
+        ],
+        "choices": [
+          {
+            "text": "What do the markers look like?",
+            "reply": "All three are totally different! I'll describe each one and you go and find them, wheeee!"
+          },
+          {
+            "text": "Why not draw a map of the maze?",
+            "reply": "I did, but every path I draw wiggles like a snake, so looking at it gets you even more lost. Allow me a small embarrassed pose."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-ba-moc",
+      "title": "Ba cái mốc dưới tuyết",
+      "goTo": "Men theo lối vào mê cung, tìm ba cái mốc theo lời Cánh Cụt tả",
+      "kind": "find-object",
+      "prompt": "Nghe Cánh Cụt tả rồi tìm từng cái mốc chỉ đường bị tuyết vùi:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "da-mui-ten",
+          "name": "Viên đá khắc mũi tên",
+          "clue": "Dẹt như cái bánh quy khổng lồ, mặt trên khắc một mũi tên chỉ vào trong, chỉ ló ra một mép xám.",
+          "target": "st-canh-cut-xoay-ba-vong-da-mui-ten"
+        },
+        {
+          "id": "bien-go-cong",
+          "name": "Tấm biển gỗ cong",
+          "clue": "Cắm nghiêng như người đang cúi chào, tuyết đóng một lớp mũ trắng trên đầu biển.",
+          "target": "st-canh-cut-xoay-ba-vong-bien-go-cong"
+        },
+        {
+          "id": "thung-danh-dau",
+          "name": "Thùng gỗ đánh dấu",
+          "clue": "Tròn trịa, có đai sắt quanh bụng, gõ vào kêu bộp bộp như trống nhỏ.",
+          "target": "st-canh-cut-xoay-ba-vong-thung-danh-dau"
+        }
+      ],
+      "en": {
+        "title": "Three markers under the snow",
+        "goTo": "Walk along the way into the maze and find the three markers Cánh Cụt described",
+        "prompt": "Listen to Cánh Cụt's descriptions and find each snow-buried marker:",
+        "items": [
+          {
+            "name": "The arrow stone",
+            "clue": "Flat as a giant biscuit, with an arrow carved on top pointing inwards; only a grey edge pokes out."
+          },
+          {
+            "name": "The curved wooden sign",
+            "clue": "Stuck in at a slant like someone bowing, with a white cap of snow on top."
+          },
+          {
+            "name": "The marker barrel",
+            "clue": "Round and plump with an iron band round its middle; knock on it and it goes bop-bop like a little drum."
+          }
+        ]
+      }
+    },
+    {
+      "id": "noi-quy-me-cung",
+      "title": "Nội quy mê cung",
+      "goTo": "Ghé chòi gác mê cung, nơi treo tấm bảng nội quy bị phủ sương",
+      "kind": "read",
+      "target": "st-canh-cut-xoay-ba-vong-bang-noi-quy",
+      "skill": "doc-hieu",
+      "text": "Nội quy Mê cung băng\n1. Vào mê cung theo hàng một, bạn nhỏ nhất đi ở giữa hàng.\n2. Gặp tường băng thì quay lại, không trèo, không húc.\n3. Lỡ lạc đường thì đứng yên một chỗ và huýt sáo ba tiếng.\n4. Ra tới cửa, người dẫn đường đếm lại cho đủ bạn.",
+      "question": "Theo nội quy, bạn nào lỡ lạc đường thì phải làm gì?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Đứng yên một chỗ và huýt sáo ba tiếng"
+        },
+        {
+          "id": "b",
+          "text": "Trèo qua tường băng cho nhanh"
+        },
+        {
+          "id": "c",
+          "text": "Chạy thật nhanh ra cửa mê cung"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Tìm dòng nội quy có chữ «lạc đường».",
+          "Đọc kỹ dòng ấy xem phải làm hai việc gì."
+        ],
+        "hint": "Dòng số 3 nói về chuyện lạc đường.",
+        "answer": {
+          "text": "Đứng yên và huýt sáo ba tiếng",
+          "explanation": "Dòng 3 ghi: lỡ lạc đường thì đứng yên một chỗ và huýt sáo ba tiếng. Dòng 2 còn dặn không được trèo qua tường băng."
+        },
+        "en": {
+          "guide": [
+            "Find the rule that mentions getting lost.",
+            "Read that rule carefully: which two things must you do?"
+          ],
+          "hint": "Rule number 3 is about getting lost.",
+          "answer": {
+            "text": "Stand still and whistle three times",
+            "explanation": "Rule 3 says: if you get lost, stand still in one place and whistle three times. Rule 2 also says never climb over the ice walls."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Huýt, huýt, huýt! Đúng ba tiếng, tớ nghe là trượt tới liền.",
+          "{name} đọc nội quy kỹ hơn cả tớ, người viết ra nó đấy.",
+          "Chính xác! Đứng yên thì người khác mới tìm thấy mình."
+        ],
+        "wrong": [
+          "Trèo tường bị cấm ở dòng 2 rồi, {name} đọc lại nhé.",
+          "Chạy lung tung là càng lạc sâu, nội quy dặn khác cơ.",
+          "Tìm chữ «lạc đường» trong bảng, câu trả lời ở ngay dòng đó."
+        ],
+        "en": {
+          "right": [
+            "Whee, whee, whee! Exactly three whistles, and I'll skate straight over.",
+            "{name} read the rules more carefully than me, and I wrote them.",
+            "Exactly! Standing still is how others find you."
+          ],
+          "wrong": [
+            "Climbing the walls is banned in rule 2, {name}; read it again.",
+            "Running about only gets you more lost; the rules say something else.",
+            "Find the words about getting lost on the board; the answer is on that line."
+          ]
+        }
+      },
+      "en": {
+        "title": "The maze rules",
+        "goTo": "Stop at the maze watch hut, where the frosted rule board hangs",
+        "text": "Ice Maze Rules\n1. Enter the maze in single file, with the smallest friend in the middle.\n2. If you meet an ice wall, turn back; no climbing, no bumping.\n3. If you get lost, stand still in one place and whistle three times.\n4. At the exit, the leader counts everyone to make sure nobody is missing.",
+        "question": "According to the rules, what must you do if you get lost?",
+        "choices": [
+          "Stand still in one place and whistle three times",
+          "Climb over the ice wall to be quick",
+          "Run as fast as you can to the maze exit"
+        ]
+      }
+    },
+    {
+      "id": "lo-duy-nhat",
+      "title": "Lối đi duy nhất",
+      "goTo": "Vào mê cung băng, đứng trước khối băng ở ngã rẽ đầu tiên",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "maze",
+      "target": "st-canh-cut-xoay-ba-vong-khoi-bang-giua",
+      "skill": "logic",
+      "prompt": "Ô chú mèo là chỗ đàn con đứng, ô ngôi sao là cửa ra, ô gạch là tường băng. Mê cung chỉ có một lối đi tới cửa ra. Dãy bước nào đúng? (→ sang phải, ↓ đi xuống)",
+      "grid": [
+        [
+          "S",
+          ".",
+          ".",
+          "#",
+          "."
+        ],
+        [
+          "#",
+          "#",
+          ".",
+          "#",
+          "."
+        ],
+        [
+          ".",
+          "#",
+          ".",
+          ".",
+          "."
+        ],
+        [
+          ".",
+          "#",
+          "#",
+          "#",
+          "G"
+        ]
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "→ → → ↓ ↓ → ↓"
+        },
+        {
+          "id": "b",
+          "text": "→ → ↓ ↓ → → ↓"
+        },
+        {
+          "id": "c",
+          "text": "→ ↓ → ↓ → → ↓"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Bắt đầu từ ô chú mèo, nơi đàn con đang đứng chờ.",
+          "Đi thử từng dãy, chạm ô gạch là dãy đó vướng tường.",
+          "Dãy đúng đưa đàn con tới ô ngôi sao."
+        ],
+        "hint": "Ở hàng trên cùng, ô thứ tư là tường băng, nên phải rẽ xuống trước đó.",
+        "answer": {
+          "text": "Hai bước sang phải, hai bước xuống, hai bước sang phải, một bước xuống",
+          "explanation": "Dãy → → ↓ ↓ → → ↓ đi tới ô thứ ba hàng trên, xuống hai ô, sang phải hai ô rồi xuống một ô là tới cửa ra, không chạm tường nào. Dãy a húc vào tường ở hàng trên, dãy c húc tường ngay bước thứ hai."
+        },
+        "en": {
+          "guide": [
+            "Start from the cat square, where the chicks stand waiting.",
+            "Try each sequence; touch a brick and that route hits a wall.",
+            "The right one brings the chicks to the star square."
+          ],
+          "hint": "On the top row the fourth square is an ice wall, so you must turn down before it.",
+          "answer": {
+            "text": "Two right, two down, two right, one down",
+            "explanation": "→ → ↓ ↓ → → ↓ goes to the third square of the top row, down two, right two, then down one to the exit without touching a wall. Sequence a hits a wall on the top row, and c hits one on its second step."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Vèèèo, ra tới cửa rồi! Đàn con lạch bạch theo sau không sót một bạn.",
+          "{name} dò đường thẳng thớm, còn đường của tớ thì toàn hình con rắn.",
+          "Đúng lối duy nhất! Tớ tạo dáng mũi tên chỉ về phía cửa ra để mừng."
+        ],
+        "wrong": [
+          "Bộp, húc vào tường băng rồi! {name} dò lại từng ô nhé.",
+          "Ô thứ tư hàng trên là tường đấy, phải rẽ xuống sớm hơn.",
+          "Bước xuống ngay sau bước đầu tiên là vướng tường, thử dãy khác xem."
+        ],
+        "en": {
+          "right": [
+            "Wheeee, we've reached the exit! The chicks waddle after us, not one left behind.",
+            "{name} traced a tidy route, while mine always come out snake-shaped.",
+            "The one and only way! I strike an arrow pose pointing at the exit to celebrate."
+          ],
+          "wrong": [
+            "Bonk, straight into an ice wall! Trace each square again, {name}.",
+            "The fourth square on the top row is a wall; turn down sooner.",
+            "Going down right after the first step hits a wall; try another sequence."
+          ]
+        }
+      },
+      "en": {
+        "title": "The only way through",
+        "goTo": "Go into the ice maze and stand in front of the ice block at the first turning",
+        "prompt": "The cat square is where the chicks stand, the star square is the exit, and brick squares are ice walls. The maze has only one way to the exit. Which steps are right? (→ right, ↓ down)",
+        "choices": [
+          "→ → → ↓ ↓ → ↓",
+          "→ → ↓ ↓ → → ↓",
+          "→ ↓ → ↓ → → ↓"
+        ]
+      }
+    },
+    {
+      "id": "chu-cut-bi-ket",
+      "title": "Chú cánh cụt bị kẹt",
+      "goTo": "Nghe tiếng huýt sáo ba lần từ bờ hồ băng, một chú cánh cụt con bị kẹt giữa hai đống tuyết",
+      "kind": "decision",
+      "target": "st-canh-cut-xoay-ba-vong-cut-con-ket",
+      "speaker": "Cánh Cụt Trượt Băng",
+      "prompt": "Ra tới cửa, đếm lại thì thiếu một bạn. Tiếng huýt sáo vọng từ bờ hồ: chú cánh cụt mập nhất mải nhìn bông tuyết, đi lạc ra ngoài rồi kẹt giữa hai đống tuyết. Cánh Cụt vỗ trán: «Bé làm đúng nội quy rồi, giờ tới lượt mình!»",
+      "choices": [
+        {
+          "id": "xuc-tuyet",
+          "text": "Lấy tay bới tuyết hai bên cho rộng ra",
+          "consequence": "Hai đống tuyết vơi dần. Chú cánh cụt mập trồi ra, phủi bụng, rồi ôm chầm lấy chân {name} như ôm cột mốc."
+        },
+        {
+          "id": "keo-canh",
+          "text": "Cùng Cánh Cụt nắm hai cánh bé kéo nhẹ ra",
+          "consequence": "Một, hai, ba, phốc! Bé bật ra, cả ba ngã ngồi trên tuyết. Cánh Cụt cười trước tiên, rồi cả đàn cười theo."
+        },
+        {
+          "id": "ca-dan-hat",
+          "text": "Cho cả đàn đứng quanh hát cổ vũ để bé tự lách ra",
+          "consequence": "Đàn con hát bài «trượt cho êm». Chú cánh cụt mập lắc mông theo nhịp, lắc một hồi thì tự trượt ra được, mặt rạng rỡ như vừa biểu diễn."
+        }
+      ],
+      "en": {
+        "title": "The stuck penguin chick",
+        "goTo": "Hear three whistles from the ice lake shore, where a penguin chick is stuck between two snowdrifts",
+        "prompt": "At the exit the count comes up one short. Whistles drift over from the shore: the chubbiest chick got busy watching snowflakes, wandered out and is now stuck between two snowdrifts. Cánh Cụt slaps his forehead: \"The little one followed the rules; now it's our turn!\"",
+        "choices": [
+          {
+            "text": "Dig the snow away on both sides with your hands",
+            "consequence": "The drifts shrink. The chubby chick pops out, brushes off its belly and hugs {name}'s leg as if hugging a marker post."
+          },
+          {
+            "text": "Take one wing each with Cánh Cụt and pull gently",
+            "consequence": "One, two, three, pop! Out it comes, and all three of you land on your bottoms in the snow. Cánh Cụt laughs first, then the whole flock joins in."
+          },
+          {
+            "text": "Gather the flock round to sing so the chick can wriggle free",
+            "consequence": "The chicks sing the \"slide so smooth\" song. The chubby chick wiggles its tail to the beat and, after a good wiggle, slides out by itself, beaming as if it had just performed."
+          }
+        ]
+      }
+    },
+    {
+      "id": "truot-ve-nha",
+      "title": "Trượt về nhà",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Trời sắp tối, đưa các bạn cánh cụt trượt về nhà nào! Cánh cụt trượt mãi tới khi đụng đá, {name} đưa ba bạn về tới cửa là xong.",
+      "game": "ice-slide",
+      "goal": 3,
+      "en": {
+        "title": "Sliding home",
+        "prompt": "It's nearly dark, so let's slide the penguins home! A penguin slides until it bumps a rock; get three of them to their door, {name}, and you're done."
+      }
+    },
+    {
+      "id": "ca-dan-ra-cua",
+      "title": "Cả đàn ra tới cửa",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Lần này Cánh Cụt đếm một lượt là đủ đàn. Cậu trượt một vòng quanh {name}, phanh bằng bụng, rồi tạo dáng người dẫn đường oai vệ: «Mai tớ dựng lại mốc cho chắc, còn hôm nay cậu chính là cái mốc giỏi nhất!»",
+      "en": {
+        "title": "The whole flock reaches the exit",
+        "text": "This time one count is enough for Cánh Cụt. He skates a lap round {name}, brakes on his belly and strikes a grand guide pose: \"Tomorrow I'll put the markers back properly, but today you were the best marker of all!\""
+      }
+    },
+    {
+      "id": "san-tap-xoay",
+      "title": "Sân tập xoay",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Hội tuyết sắp tới rồi. Cánh Cụt muốn biểu diễn cú xoay ba vòng giữa hồ, và cậu cần một người đếm vòng thật tinh mắt.",
+      "en": {
+        "title": "The spinning rink",
+        "text": "The snow festival is coming soon. Cánh Cụt wants to perform a triple spin in the middle of the lake, and he needs someone with sharp eyes to count his turns."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 17,
+    "skillXp": {
+      "doc-hieu": 1,
+      "logic": 1
+    }
+  },
+  "en": {
+    "title": "Cánh Cụt Trượt Băng's story, chapter 2: The maze with one way out",
+    "summary": "Snow buries the ice maze markers on the very day Cánh Cụt takes the chicks to practise. {name} finds the three markers from his descriptions, reads the maze rules, traces the only way through and rescues a stuck penguin chick."
+  }
+}

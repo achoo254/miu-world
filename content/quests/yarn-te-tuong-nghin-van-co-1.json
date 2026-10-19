@@ -1,0 +1,387 @@
+{
+  "id": "yarn-te-tuong-nghin-van-co-1",
+  "region": "lau-dai",
+  "chapter": 2,
+  "title": "Chuyện của Tể Tướng Cờ Vua, chương 1: Ba quân cờ trốn khỏi hộp",
+  "status": "active",
+  "category": "story",
+  "summary": "Một cơn gió vô phép hất tung quân cờ và trang sách của Tể Tướng Cờ Vua ngay trước ván cờ tuần. {name} tính xem hộp thiếu mấy quân, tìm ba quân đi lạc, xếp lại trang sách và chọn nước mở đầu cho ván cờ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Tể Tướng Cờ Vua",
+    "where": "Lâu đài: bàn cờ đại sảnh, gian đặt tính, ngai vàng, phòng sách lâu đài, hàng ghế",
+    "goal": "Gom đủ quân cờ và trang sách trước ván cờ tuần với Bác Thợ Khóa Thành",
+    "play": "Tính số quân thiếu; tìm ba quân cờ theo lời tả; xếp trang sách theo số; chọn nước mở đầu ván cờ; giúp quân mã nhảy nhặt sao",
+    "learn": "Phép trừ có nhớ trong phạm vi 100, so sánh số có hai chữ số, đọc hiểu lời tả",
+    "reward": "55 XP, 14 Xu, Skill XP Phép trừ, So sánh số",
+    "next": "Sơ đồ chỗ ngồi của bữa tiệc viết bằng mật mã"
+  },
+  "phases": {
+    "hook": "gio-lua-qua-dai-sanh",
+    "explore": "dem-quan-trong-hop",
+    "learn": "ba-quan-co-tron",
+    "challenge": "xep-trang-sach-co",
+    "decision": "nuoc-dau-don-khach",
+    "finale": "ma-nhay-ve-o",
+    "reward": "du-ba-muoi-hai-quan",
+    "next": "so-do-tiec-bi-an"
+  },
+  "places": {
+    "te-tuong-co-the": "Bàn cờ đại sảnh",
+    "st-te-tuong-nghin-van-co-hop-co-go-mun": "Gian đặt tính",
+    "ba-quan-co-tron": "Ngai vàng",
+    "st-te-tuong-nghin-van-co-quan-hau-trang": "Ngai vàng",
+    "st-te-tuong-nghin-van-co-quan-ma-den": "Ngai vàng",
+    "st-te-tuong-nghin-van-co-quan-xe-den": "Ngai vàng",
+    "st-te-tuong-nghin-van-co-trang-sach-tung-bay": "Phòng sách lâu đài",
+    "st-te-tuong-nghin-van-co-ban-tra-don-khach": "Hàng ghế"
+  },
+  "steps": [
+    {
+      "id": "gio-lua-qua-dai-sanh",
+      "title": "Cơn gió lùa qua đại sảnh",
+      "goTo": "Tới bàn cờ đại sảnh, Tể Tướng Cờ Vua đang đứng nhìn chiếc hộp cờ mở toang",
+      "kind": "dialogue",
+      "target": "te-tuong-co-the",
+      "lines": [
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "Mười hai… mười ba… mười bốn bậc. À, {name}! Ngươi tới đúng vào lúc bàn cờ của ta lâm thế bí."
+        },
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "Chiều nay, như mọi thứ Bảy, ta đánh ván cờ tuần với Bác Thợ Khóa Thành. Ta còn định chép ván ấy vào cuốn «Một nghìn ván cờ không ai thua»."
+        },
+        {
+          "speaker": "Tể Tướng Cờ Vua",
+          "text": "Thế mà một cơn gió vô phép lùa qua cửa sổ, hất tung mấy quân cờ và mấy trang sách. Một nước đi không có trong luật nào cả!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu giúp ngài gom quân cờ trước giờ khách tới!",
+          "reply": "Một nước khai cuộc rất đúng phép. Ta vuốt râu ba lần… phải, ta nhận lời giúp của ngươi."
+        },
+        {
+          "text": "Cuốn sách ấy là sách gì vậy, thưa ngài?",
+          "reply": "Là sách chép những ván cờ mà khi hết ván, hai bên đứng dậy bắt tay nhau. Ta sẽ kể kỹ hơn khi bàn cờ đủ quân."
+        }
+      ],
+      "en": {
+        "title": "A draught through the great hall",
+        "goTo": "Go to the chessboard in the great hall, where Tể Tướng Cờ Vua stands staring at an open chess box",
+        "lines": [
+          "Twelve… thirteen… fourteen steps. Ah, {name}! You arrive just as my board finds itself in a tight corner.",
+          "This afternoon, as every Saturday, I play my weekly game with Bác Thợ Khóa Thành. I also meant to copy it into my book «A Thousand Games Nobody Loses».",
+          "Yet an ill-mannered gust swept through the window and scattered some pieces and some pages. A move found in no rulebook whatsoever!"
+        ],
+        "choices": [
+          {
+            "text": "I'll help you gather the pieces before your guest arrives!",
+            "reply": "A most proper opening move. I stroke my beard three times… yes, I accept your help."
+          },
+          {
+            "text": "What kind of book is that, sir?",
+            "reply": "A book of games where, at the end, both players stand and shake hands. I shall tell you more once the board has all its pieces."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dem-quan-trong-hop",
+      "title": "Hộp cờ thiếu mấy quân?",
+      "goTo": "Ôm hộp cờ sang gian đặt tính, nơi có bảng để tính cho ngay ngắn",
+      "kind": "riddle",
+      "target": "st-te-tuong-nghin-van-co-hop-co-go-mun",
+      "skill": "phep-tru",
+      "question": "Một bộ cờ vua đủ phải có 32 quân. Ta đếm trên bàn và trong hộp chỉ còn 29 quân. Hỏi bộ cờ đang thiếu mấy quân?",
+      "answer": {
+        "value": 3
+      },
+      "support": {
+        "guide": [
+          "Lấy số quân của một bộ cờ đủ trừ đi số quân đang còn.",
+          "Đặt tính 32 − 29: hàng đơn vị 2 không trừ được 9, mượn 1 chục ở hàng chục."
+        ],
+        "hint": "12 trừ 9 được 3; hàng chục còn 2 trừ 2 bằng 0.",
+        "answer": {
+          "text": "Thiếu 3 quân",
+          "explanation": "32 − 29 = 3. Bộ cờ đang thiếu đúng 3 quân, và ta sẽ đi tìm từng quân một."
+        },
+        "en": {
+          "guide": [
+            "Take the number still here away from the number in a full set.",
+            "Set out 32 − 29: in the ones, 2 take away 9 will not go, so borrow one ten."
+          ],
+          "hint": "12 take away 9 is 3; the tens have 2 left, and 2 take away 2 is 0.",
+          "answer": {
+            "text": "3 pieces are missing",
+            "explanation": "32 − 29 = 3. The set is missing exactly 3 pieces, and we shall look for them one at a time."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba quân! Ngươi tính gọn như một nước chiếu tướng đẹp.",
+          "Mượn một chục, trừ hàng đơn vị, rồi trừ hàng chục. Đúng phép tắc lắm, {name}.",
+          "Hộp cờ của ta xin cảm ơn ngươi đã đếm hộ nó."
+        ],
+        "wrong": [
+          "Chưa đúng. Hãy nhớ hàng đơn vị 2 phải mượn một chục mới trừ được 9.",
+          "Nhiều thế thì cả một đạo quân đã bỏ trốn mất rồi. Tính lại xem nào.",
+          "Ngươi thử đếm thêm từ 29 lên tới 32, xem phải đếm mấy bước."
+        ],
+        "en": {
+          "right": [
+            "Three pieces! You worked that out as neatly as a fine checkmate.",
+            "Borrow a ten, subtract the ones, then the tens. Very proper indeed, {name}.",
+            "My chess box thanks you for counting on its behalf."
+          ],
+          "wrong": [
+            "Not yet. Remember the 2 in the ones must borrow a ten before it can lose 9.",
+            "That many would mean an entire army had deserted. Work it out again.",
+            "Try counting on from 29 up to 32, and see how many steps it takes."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many pieces are missing?",
+        "goTo": "Carry the chess box over to the column-sums gallery, where there is a board to work things out properly",
+        "question": "A full chess set has 32 pieces. Counting the board and the box, I find only 29. How many pieces is the set missing?"
+      }
+    },
+    {
+      "id": "ba-quan-co-tron",
+      "title": "Ba quân cờ trốn quanh ngai",
+      "goTo": "Tới ngai vàng, gió đã cuốn mấy quân cờ lăn về phía ấy",
+      "kind": "find-object",
+      "skill": "doc-hieu",
+      "prompt": "Ta nhớ rõ dáng từng quân đi lạc. Ngươi đọc kỹ lời tả rồi tìm cho đủ ba quân:",
+      "items": [
+        {
+          "id": "hau-trang",
+          "name": "Quân hậu trắng",
+          "clue": "Quân cao nhất bộ, đội chiếc mũ có nhiều răng cưa nhỏ, đang đứng nép bên chân ngai như một bà hoàng đi dạo.",
+          "target": "st-te-tuong-nghin-van-co-quan-hau-trang"
+        },
+        {
+          "id": "ma-den",
+          "name": "Quân mã đen",
+          "clue": "Có cái đầu ngựa ngoảnh sang một bên, nằm nghiêng trên tấm thảm như đang ngủ trưa.",
+          "target": "st-te-tuong-nghin-van-co-quan-ma-den"
+        },
+        {
+          "id": "xe-den",
+          "name": "Quân xe đen",
+          "clue": "Trông như một ngọn tháp nhỏ có răng thành trên đỉnh, đứng thẳng thớm sau bậc ngai.",
+          "target": "st-te-tuong-nghin-van-co-quan-xe-den"
+        }
+      ],
+      "en": {
+        "title": "Three pieces hiding round the throne",
+        "goTo": "Go to the golden throne; the wind sent some pieces rolling that way",
+        "prompt": "I remember the shape of every runaway piece. Read the descriptions carefully and find all three:",
+        "items": [
+          {
+            "name": "The white queen",
+            "clue": "The tallest piece of the set, wearing a crown of tiny points, tucked beside the throne leg like a royal lady out for a stroll."
+          },
+          {
+            "name": "The black knight",
+            "clue": "It has a horse's head turned to one side and lies tipped over on the rug as if taking a nap."
+          },
+          {
+            "name": "The black rook",
+            "clue": "It looks like a little tower with battlements on top, standing bolt upright behind the throne step."
+          }
+        ]
+      }
+    },
+    {
+      "id": "xep-trang-sach-co",
+      "title": "Xếp lại trang sách cờ",
+      "goTo": "Sang phòng sách lâu đài, mấy trang sách cờ bay đậu trên giá sách",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-te-tuong-nghin-van-co-trang-sach-tung-bay",
+      "skill": "so-sanh-so",
+      "prompt": "Bốn trang của cuốn «Một nghìn ván cờ không ai thua» đã rơi khỏi gáy sách. Xếp chúng theo số trang từ bé đến lớn để ta khâu lại:",
+      "items": [
+        {
+          "id": "trang-83",
+          "label": "Trang 83: ván «Hai con mã làm lành»"
+        },
+        {
+          "id": "trang-38",
+          "label": "Trang 38: ván «Tốt nhỏ đi đường xa»"
+        },
+        {
+          "id": "trang-92",
+          "label": "Trang 92: ván «Vua nhường chỗ ngồi»"
+        },
+        {
+          "id": "trang-29",
+          "label": "Trang 29: ván «Hậu đi dạo buổi sáng»"
+        }
+      ],
+      "answer": {
+        "order": [
+          "trang-29",
+          "trang-38",
+          "trang-83",
+          "trang-92"
+        ]
+      },
+      "support": {
+        "guide": [
+          "So hàng chục trước: số nào có chữ số hàng chục bé hơn thì bé hơn.",
+          "38 và 83 có cùng hai chữ số nhưng đổi chỗ, đừng để bị lừa."
+        ],
+        "hint": "29 có 2 chục, ít chục nhất, nên đứng đầu.",
+        "answer": {
+          "text": "Trang 29, trang 38, trang 83, trang 92",
+          "explanation": "29 < 38 < 83 < 92: so 2 chục, 3 chục, 8 chục rồi 9 chục."
+        },
+        "en": {
+          "guide": [
+            "Compare the tens first: the number with fewer tens is smaller.",
+            "38 and 83 use the same two digits swapped round, so do not be fooled."
+          ],
+          "hint": "29 has 2 tens, the fewest, so it goes first.",
+          "answer": {
+            "text": "Page 29, page 38, page 83, page 92",
+            "explanation": "29 < 38 < 83 < 92: compare 2 tens, 3 tens, 8 tens, then 9 tens."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Các trang đã về đúng hàng ngũ, như quân cờ trước giờ khai cuộc.",
+          "Ngươi không bị cặp 38 và 83 đánh lừa. Ta rất hài lòng.",
+          "Ta sẽ khâu gáy sách tối nay, từng trang đúng chỗ của nó."
+        ],
+        "wrong": [
+          "Khoan đã, hãy so chữ số hàng chục của từng trang trước.",
+          "Trang 83 với trang 38 trông giống nhau, nhưng một trang ở gần cuối sách đấy.",
+          "Trang bé nhất phải đứng đầu tiên, rồi mới tới trang lớn hơn."
+        ],
+        "en": {
+          "right": [
+            "The pages are back in rank, like pieces before the opening move.",
+            "You were not tricked by 38 and 83. I am most pleased.",
+            "I shall stitch the spine tonight, every page in its place."
+          ],
+          "wrong": [
+            "Wait a moment; compare the tens digit of each page first.",
+            "Page 83 and page 38 look alike, but one of them sits near the back of the book.",
+            "The smallest page number goes first, then the bigger ones."
+          ]
+        }
+      },
+      "en": {
+        "title": "Putting the chess pages back in order",
+        "goTo": "Go across to the castle library; some chess pages have fluttered onto the shelves",
+        "prompt": "Four pages of «A Thousand Games Nobody Loses» have fallen out of the spine. Put them in order of page number, smallest first, so I can sew them back:",
+        "items": [
+          "Page 83: the game «Two knights make friends»",
+          "Page 38: the game «A little pawn travels far»",
+          "Page 92: the game «The king gives up his seat»",
+          "Page 29: the game «The queen takes a morning walk»"
+        ]
+      }
+    },
+    {
+      "id": "nuoc-dau-don-khach",
+      "title": "Nước đầu tiên khi khách tới",
+      "goTo": "Ra hàng ghế, nơi tể tướng bày bàn trà chờ Bác Thợ Khóa Thành",
+      "kind": "decision",
+      "target": "st-te-tuong-nghin-van-co-ban-tra-don-khach",
+      "speaker": "Tể Tướng Cờ Vua",
+      "prompt": "Ta vuốt râu một, hai, ba lần rồi hỏi: «Ván hôm nay sẽ là trang mới của sách. Theo ngươi, ta nên mở đầu ván cờ bằng việc gì?»",
+      "choices": [
+        {
+          "id": "bat-tay-truoc",
+          "text": "Bắt tay khách trước khi đi nước đầu",
+          "consequence": "Tể tướng gật gù: «Bắt tay ở đầu ván, bắt tay ở cuối ván. Hai cái bắt tay kẹp một ván cờ, đẹp như hai quân xe giữ hai góc.»"
+        },
+        {
+          "id": "moi-tra",
+          "text": "Mời khách một tách trà nóng đã",
+          "consequence": "Tể tướng rót sẵn hai tách trà, đặt mỗi tách cách bàn cờ đúng một gang tay, kẻo trà đổ lên quân."
+        },
+        {
+          "id": "khach-di-truoc",
+          "text": "Mời khách cầm quân trắng, đi trước",
+          "consequence": "«Nhường khách đi trước là phép lịch sự của người chủ nhà,» tể tướng nói, rồi xoay bàn cờ cho quân trắng về phía ghế khách."
+        }
+      ],
+      "en": {
+        "title": "The first move when the guest arrives",
+        "goTo": "Go to the rows of seats, where the chancellor has laid a tea table for Bác Thợ Khóa Thành",
+        "prompt": "He strokes his beard once, twice, three times and asks: «Today's game will be a new page of the book. In your view, how should I begin it?»",
+        "choices": [
+          {
+            "text": "Shake the guest's hand before the first move",
+            "consequence": "The chancellor nods: «A handshake at the start, a handshake at the end. Two handshakes holding a game between them, as fine as two rooks guarding two corners.»"
+          },
+          {
+            "text": "Offer the guest a hot cup of tea first",
+            "consequence": "The chancellor pours two cups and sets each exactly one hand-span from the board, so no tea spills on the pieces."
+          },
+          {
+            "text": "Invite the guest to take white and move first",
+            "consequence": "«Letting the guest move first is a host's courtesy,» says the chancellor, turning the board so white faces the guest's chair."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ma-nhay-ve-o",
+      "title": "Quân mã về ô cũ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Quân mã đen vừa tìm về còn ngơ ngác. Giúp nó nhảy hình chữ L qua các ô để nhặt sao, đạt mười hai điểm nhé!",
+      "game": "knight-hop",
+      "goal": 12,
+      "en": {
+        "title": "The knight finds its square",
+        "prompt": "The black knight is back but still in a daze. Help it hop in L-shapes across the squares to collect stars; score twelve points!"
+      }
+    },
+    {
+      "id": "du-ba-muoi-hai-quan",
+      "title": "Đủ ba mươi hai quân",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ba mươi hai quân đứng ngay hàng, bốn trang sách về đúng chỗ. Tể tướng nghiêng mình chào {name} như chào một kỳ thủ, rồi đặt vào tay ngươi một túi xu nhỏ.",
+      "en": {
+        "title": "All thirty-two pieces",
+        "text": "Thirty-two pieces stand in rank and four pages are back in place. The chancellor bows to {name} as to a fellow player, then places a small purse of coins in your hand."
+      }
+    },
+    {
+      "id": "so-do-tiec-bi-an",
+      "title": "Sơ đồ tiệc bí ẩn",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Tể tướng khẽ nói: tối mai lâu đài mở tiệc, mà ta lỡ viết sơ đồ chỗ ngồi bằng mật mã của riêng ta. Giờ chính ta cũng đọc không ra.",
+      "en": {
+        "title": "A mysterious seating plan",
+        "text": "The chancellor murmurs: tomorrow evening the castle holds a banquet, and I wrote the seating plan in my own private code. Now even I cannot read it."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": {
+      "phep-tru": 1,
+      "so-sanh-so": 1
+    }
+  },
+  "en": {
+    "title": "Tể Tướng Cờ Vua's story, chapter 1: Three pieces escape the box",
+    "summary": "An ill-mannered gust scatters Tể Tướng Cờ Vua's chess pieces and book pages just before his weekly game. {name} works out how many pieces are missing, finds the three runaways, puts the pages back in order and chooses how the game should begin."
+  }
+}

@@ -1,0 +1,412 @@
+{
+  "id": "yarn-meo-hop-nhac-tang-ban-1",
+  "region": "thu-vien",
+  "chapter": 2,
+  "title": "Chuyện của Mèo Hộp Nhạc, chương 1: Bài hát dừng giữa chừng",
+  "status": "active",
+  "category": "story",
+  "summary": "Hộp nhạc lớn trên sân khấu lá vàng đang hát thì im bặt. {name} tìm răng lược, bánh răng và chốt nhạc bị rơi, đếm số nốt còn thiếu, đoán dãy số trên chốt nhạc rồi lắp hộp nhạc lại cho Mèo.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Hộp Nhạc",
+    "where": "Sân lễ hội lá vàng: chân sân khấu, quầy kẹo lá, bể nước tròn, cây treo mây",
+    "goal": "Tìm đủ linh kiện và lắp lại hộp nhạc lớn",
+    "play": "Tìm linh kiện rơi; đếm nốt còn thiếu; đoán dãy số chốt nhạc; chọn người nghe bài đầu; lắp bánh răng",
+    "learn": "Phép trừ có nhớ trong phạm vi 100, quy luật dãy số",
+    "reward": "55 XP, 14 Xu, Skill XP Phép trừ, Logic",
+    "next": "Phiếu bài hát của bạn đọc"
+  },
+  "phases": {
+    "hook": "hop-nhac-im-bat",
+    "explore": "nhat-linh-kien",
+    "learn": "dem-not-con-thieu",
+    "challenge": "day-so-chot-nhac",
+    "decision": "bai-dau-cho-ai",
+    "finale": "lap-banh-rang",
+    "reward": "tieng-nhac-tro-lai",
+    "next": "phieu-bai-hat"
+  },
+  "places": {
+    "meo-hop-nhac": "Giữa sân lễ hội",
+    "nhat-linh-kien": "Chân sân khấu",
+    "st-meo-hop-nhac-tang-ban-banh-rang": "Chân sân khấu",
+    "st-meo-hop-nhac-tang-ban-rang-luoc": "Chân sân khấu",
+    "st-meo-hop-nhac-tang-ban-chot-nhac": "Chân sân khấu",
+    "st-meo-hop-nhac-tang-ban-ban-nhac-la-vang": "Quầy kẹo lá",
+    "st-meo-hop-nhac-tang-ban-khan-phoi-chot": "Bể nước tròn",
+    "st-meo-hop-nhac-tang-ban-chuong-gio": "Cây treo mây"
+  },
+  "steps": [
+    {
+      "id": "hop-nhac-im-bat",
+      "title": "Hộp nhạc im bặt",
+      "goTo": "Tới giữa sân lễ hội, Mèo Hộp Nhạc đang ngồi ôm đuôi nhìn về phía sân khấu",
+      "kind": "dialogue",
+      "target": "meo-hop-nhac",
+      "lines": [
+        {
+          "speaker": "Mèo Hộp Nhạc",
+          "text": "Tinh tang… {name} ơi, hộp nhạc lớn đang hát bài «Lá vàng rơi» thì tinh tang… im bặt, như ai bịt miệng nó lại."
+        },
+        {
+          "speaker": "Mèo Hộp Nhạc",
+          "text": "Lúc nãy gió lùa qua sân khấu, tớ nghe lách cách mấy tiếng. Chắc vài linh kiện nhỏ đã rơi ra ngoài rồi."
+        },
+        {
+          "speaker": "Mèo Hộp Nhạc",
+          "text": "Bạn đọc đang chờ nghe nốt bài hát. Cậu giúp tớ tìm lại từng món được không?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình tìm ngay! Linh kiện trông thế nào?",
+          "reply": "Nhỏ xíu và sáng lấp lánh. Tinh tang, mắt cậu tinh hơn mắt tớ nhiều."
+        },
+        {
+          "text": "Hộp nhạc cũng biết dỗi hả Mèo?",
+          "reply": "Hì, nó chỉ thiếu răng thôi, như cậu bé mới thay răng cửa vậy."
+        }
+      ],
+      "en": {
+        "title": "The music box falls silent",
+        "goTo": "Go to the middle of the festival yard, where Mèo Hộp Nhạc sits hugging his tail and staring at the stage",
+        "lines": [
+          "Ting-a-ling… {name}, the big music box was playing «Falling Gold Leaves» and then, ting-a-ling… silence, as if someone had covered its mouth.",
+          "A gust swept over the stage a moment ago and I heard a few little clinks. Some tiny parts must have dropped out.",
+          "The readers are waiting to hear the rest of the song. Could you help me find each piece?"
+        ],
+        "choices": [
+          {
+            "text": "I'll look right away! What do the parts look like?",
+            "reply": "Tiny and shiny. Ting-a-ling, your eyes are much sharper than mine."
+          },
+          {
+            "text": "Can a music box sulk, Mèo?",
+            "reply": "Heh, it's only missing a tooth, like a child whose front tooth just fell out."
+          }
+        ]
+      }
+    },
+    {
+      "id": "nhat-linh-kien",
+      "title": "Ba linh kiện lấp lánh",
+      "goTo": "Tới chân sân khấu lá vàng, đọc lời Mèo tả rồi tìm những linh kiện bị rơi",
+      "kind": "find-object",
+      "prompt": "Mèo tả từng linh kiện cho {name}. Đọc kỹ rồi tìm trên sân khấu:",
+      "items": [
+        {
+          "id": "banh-rang",
+          "name": "Bánh răng nhỏ",
+          "clue": "Tròn như đồng xu, mép có răng cưa đều tăm tắp, lăn vào sát chân cột sân khấu.",
+          "target": "st-meo-hop-nhac-tang-ban-banh-rang"
+        },
+        {
+          "id": "rang-luoc",
+          "name": "Răng lược thép",
+          "clue": "Mảnh, dài bằng ngón tay, màu bạc, gõ khẽ vào thì ngân lên một nốt cao.",
+          "target": "st-meo-hop-nhac-tang-ban-rang-luoc"
+        },
+        {
+          "id": "chot-nhac",
+          "name": "Chốt nhạc đầu tròn",
+          "clue": "Bé như hạt đậu, đầu tròn màu đỏ, nằm lẫn giữa mấy chiếc lá vàng.",
+          "target": "st-meo-hop-nhac-tang-ban-chot-nhac"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Three shiny parts",
+        "goTo": "Climb onto the golden-leaf stage, read Mèo's descriptions and find the parts that fell out",
+        "prompt": "Mèo describes each part for {name}. Read carefully, then search the stage:",
+        "items": [
+          {
+            "name": "Little cog",
+            "clue": "Round like a coin with perfectly even teeth round the edge; it rolled right up to the foot of a stage post."
+          },
+          {
+            "name": "Steel comb tooth",
+            "clue": "Thin, silver and as long as a finger; tap it gently and it rings a high note."
+          },
+          {
+            "name": "Round-headed music pin",
+            "clue": "As small as a bean with a round red head, hiding among a few gold leaves."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dem-not-con-thieu",
+      "title": "Còn bao nhiêu nốt?",
+      "goTo": "Sang quầy kẹo lá, nơi Mèo để quên bản nhạc lúc mua kẹo",
+      "kind": "riddle",
+      "target": "st-meo-hop-nhac-tang-ban-ban-nhac-la-vang",
+      "skill": "phep-tru",
+      "question": "Bản nhạc «Lá vàng rơi» có tất cả 52 nốt. Hộp nhạc đã hát được 27 nốt thì im bặt. Còn bao nhiêu nốt hộp nhạc chưa hát?",
+      "answer": {
+        "value": 25
+      },
+      "support": {
+        "guide": [
+          "Muốn biết phần còn lại, lấy số nốt cả bài trừ đi số nốt đã hát.",
+          "Đặt tính 52 − 27: hàng đơn vị 2 không trừ được 7, phải mượn một chục."
+        ],
+        "hint": "12 − 7 = 5, viết 5 nhớ 1. Rồi 2 thêm 1 là 3, 5 − 3 = 2.",
+        "answer": {
+          "text": "25 nốt",
+          "explanation": "52 − 27 = 25. Hộp nhạc còn 25 nốt chưa hát."
+        },
+        "en": {
+          "guide": [
+            "To find what is left, take the notes already played away from the whole song.",
+            "Set out 52 − 27: in the ones, 2 cannot take away 7, so borrow one ten."
+          ],
+          "hint": "12 − 7 = 5, write 5 and carry 1. Then 2 plus 1 is 3, and 5 − 3 = 2.",
+          "answer": {
+            "text": "25 notes",
+            "explanation": "52 − 27 = 25. The music box still has 25 notes left to play."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai mươi lăm nốt! Tinh tang, tớ khoanh tròn chỗ hộp nhạc dừng trên bản nhạc rồi.",
+          "{name} mượn một chục nhẹ như rút một tờ kẹo lá khỏi quầy.",
+          "Đúng rồi! Phần còn lại của bài hát đang chờ được vang lên."
+        ],
+        "wrong": [
+          "Hàng đơn vị nhớ mượn một chục nhé {name}, 2 không trừ nổi 7 đâu.",
+          "Đã mượn thì hàng chục phải trả lại một, cậu xem lại nào.",
+          "Lấy cả bài trừ phần đã hát, đừng cộng hai số với nhau."
+        ],
+        "en": {
+          "right": [
+            "Twenty-five notes! Ting-a-ling, I've circled the spot where the music box stopped.",
+            "{name} borrowed a ten as lightly as taking a leaf sweet from the stall.",
+            "Right! The rest of the song is waiting to ring out."
+          ],
+          "wrong": [
+            "Remember to borrow a ten in the ones, {name}; 2 can't take away 7.",
+            "Once you borrow, the tens must pay one back; have another look.",
+            "Take what was played away from the whole song; don't add the two numbers."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many notes are left?",
+        "goTo": "Go to the leaf-sweet stall, where Mèo forgot his sheet music while buying sweets",
+        "question": "The tune «Falling Gold Leaves» has 52 notes in all. The music box played 27 notes and then went silent. How many notes has it not played yet?"
+      }
+    },
+    {
+      "id": "day-so-chot-nhac",
+      "title": "Dãy số trên chốt nhạc",
+      "goTo": "Ra bên bể nước tròn, nơi Mèo trải khăn phơi những chốt nhạc vừa rửa",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "st-meo-hop-nhac-tang-ban-khan-phoi-chot",
+      "skill": "logic",
+      "prompt": "Mỗi chốt nhạc khắc một con số, xếp thành hàng trên khăn. Một chốt bị gió thổi lăn đi mất. Chốt còn thiếu khắc số mấy?",
+      "elements": [
+        {
+          "id": "c1",
+          "label": "5"
+        },
+        {
+          "id": "c2",
+          "label": "10"
+        },
+        {
+          "id": "c3",
+          "label": "15"
+        },
+        {
+          "id": "c4",
+          "label": "20"
+        },
+        {
+          "id": "c5",
+          "label": "?"
+        },
+        {
+          "id": "c6",
+          "label": "30"
+        }
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "21"
+        },
+        {
+          "id": "b",
+          "text": "25"
+        },
+        {
+          "id": "c",
+          "text": "35"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Xem từ chốt này sang chốt kế bên, con số tăng thêm bao nhiêu.",
+          "Cứ thế cộng tiếp cho chốt có dấu hỏi."
+        ],
+        "hint": "Mỗi chốt hơn chốt trước 5 đơn vị.",
+        "answer": {
+          "text": "25",
+          "explanation": "Dãy số đếm thêm 5: 5, 10, 15, 20, 25, 30. Chốt còn thiếu khắc số 25."
+        },
+        "en": {
+          "guide": [
+            "Look from one pin to the next: how much does the number grow?",
+            "Keep adding the same amount for the pin with the question mark."
+          ],
+          "hint": "Each pin is 5 more than the one before.",
+          "answer": {
+            "text": "25",
+            "explanation": "The numbers count on in fives: 5, 10, 15, 20, 25, 30. The missing pin is number 25."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chốt số hai mươi lăm! Tớ nghe nó kêu «tinh» một tiếng khi về đúng chỗ.",
+          "{name} đếm cách năm nhanh như mưa gõ lên bục gỗ.",
+          "Hàng chốt lại liền mạch, đẹp như một khuông nhạc."
+        ],
+        "wrong": [
+          "Thử cộng thêm 5 vào số 20 xem nào {name}.",
+          "Số 35 còn lớn hơn cả chốt cuối hàng rồi.",
+          "Các chốt không tăng từng một đâu, chúng nhảy đều từng bước bằng nhau."
+        ],
+        "en": {
+          "right": [
+            "Pin twenty-five! I heard it go «ting» as it slid into place.",
+            "{name} counts in fives as fast as rain tapping on the wooden stage.",
+            "The row of pins is whole again, as pretty as a music stave."
+          ],
+          "wrong": [
+            "Try adding 5 to 20, {name}.",
+            "35 is even bigger than the last pin in the row.",
+            "The pins don't go up one by one; they jump in equal steps."
+          ]
+        }
+      },
+      "en": {
+        "title": "Numbers on the music pins",
+        "goTo": "Go to the edge of the round pool, where Mèo spread a cloth to dry the pins he just washed",
+        "prompt": "Each music pin is engraved with a number, laid in a row on the cloth. The wind rolled one pin away. What number is on the missing pin?",
+        "choices": [
+          "21",
+          "25",
+          "35"
+        ],
+        "elements": [
+          "5",
+          "10",
+          "15",
+          "20",
+          "?",
+          "30"
+        ]
+      }
+    },
+    {
+      "id": "bai-dau-cho-ai",
+      "title": "Bài đầu tiên dành cho ai?",
+      "goTo": "Đi tới cây treo mây, nơi chiếc chuông gió đang leng keng chờ tin",
+      "kind": "decision",
+      "target": "st-meo-hop-nhac-tang-ban-chuong-gio",
+      "speaker": "Mèo Hộp Nhạc",
+      "prompt": "Mèo xoay đuôi một vòng, ngẫm nghĩ: «Tinh tang… lắp xong rồi, hộp nhạc nên hát lại cho ai nghe trước đây {name}?»",
+      "choices": [
+        {
+          "id": "ban-doc-cho",
+          "text": "Cho các bạn đọc đang ngồi chờ quanh sân",
+          "consequence": "Mèo dặn mọi người đừng về vội. Ai cũng ôm sách ngồi xích lại gần sân khấu, mắt sáng rỡ."
+        },
+        {
+          "id": "chim-se",
+          "text": "Cho chú chim sẻ hôm qua đã nghe trọn bài",
+          "consequence": "Mèo rắc ít hạt kê lên bục gỗ. Chẳng bao lâu, chú chim sẻ đáp xuống, nghiêng đầu chờ nghe."
+        },
+        {
+          "id": "la-vang",
+          "text": "Cho những chiếc lá vàng còn đang rơi",
+          "consequence": "Mèo bảo lá vàng rơi theo nhịp ba, nghe nhạc chắc sẽ múa đẹp hơn. Cả hai ngửa mặt nhìn lá xoay tròn."
+        }
+      ],
+      "en": {
+        "title": "Who gets the first song?",
+        "goTo": "Walk to the cloud-hung tree, where the wind chime jingles as it waits for news",
+        "prompt": "Mèo twirls his tail once and ponders: \"Ting-a-ling… once it's mended, who should the music box play for first, {name}?\"",
+        "choices": [
+          {
+            "text": "For the readers waiting round the yard",
+            "consequence": "Mèo asks everyone not to leave just yet. They all hug their books and shuffle closer to the stage, eyes shining."
+          },
+          {
+            "text": "For the sparrow who listened to a whole song yesterday",
+            "consequence": "Mèo scatters a little millet on the wooden stage. Soon the sparrow lands and tilts its head, ready to listen."
+          },
+          {
+            "text": "For the gold leaves still falling",
+            "consequence": "Mèo says the leaves fall in three-four time and will dance even better with music. The two of them look up at the leaves spinning down."
+          }
+        ]
+      }
+    },
+    {
+      "id": "lap-banh-rang",
+      "title": "Lắp bánh răng cho hộp nhạc",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Linh kiện đủ cả rồi! Ghép các bánh răng to nhỏ cho khớp nhau để trống nhạc quay trở lại nhé.",
+      "game": "gear-train",
+      "goal": 3,
+      "en": {
+        "title": "Fitting the music box cogs",
+        "prompt": "Every part is here! Fit the big and small cogs together so they mesh and the music drum turns again."
+      }
+    },
+    {
+      "id": "tieng-nhac-tro-lai",
+      "title": "Tiếng nhạc trở lại",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Trống nhạc quay, răng lược ngân, hai mươi lăm nốt còn lại vang khắp sân lễ hội. Mèo nhắm mắt lắc lư theo nhịp, khẽ bảo {name}: «Tinh tang… cảm ơn cậu, hộp nhạc của tớ lại có giọng rồi.»",
+      "en": {
+        "title": "The music returns",
+        "text": "The drum turns, the comb teeth ring, and the last twenty-five notes float across the festival yard. Mèo sways to the beat with his eyes shut and whispers to {name}: \"Ting-a-ling… thank you, my music box has found its voice again.\""
+      }
+    },
+    {
+      "id": "phieu-bai-hat",
+      "title": "Phiếu bài hát",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Nghe xong, một bạn đọc nhỏ hỏi: «Hộp nhạc có chơi được bài em thích không?» Mèo dỏng tai lên. Có lẽ đã tới lúc đi hỏi bài hát yêu thích của từng bạn đọc.",
+      "en": {
+        "title": "Song slips",
+        "text": "When the tune ends, a little reader asks: \"Can the music box play my favourite song?\" Mèo's ears prick up. Perhaps it's time to ask every reader for their favourite song."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": {
+      "phep-tru": 1,
+      "logic": 1
+    }
+  },
+  "en": {
+    "title": "Mèo Hộp Nhạc's story, chapter 1: The song that stopped halfway",
+    "summary": "The big music box on the golden-leaf stage fell silent mid-song. {name} finds the comb tooth, cog and music pin that fell out, works out how many notes are left, cracks the number pattern on the pins and helps Mèo put the music box back together."
+  }
+}

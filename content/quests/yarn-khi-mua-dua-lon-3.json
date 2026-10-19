@@ -1,0 +1,355 @@
+{
+  "id": "yarn-khi-mua-dua-lon-3",
+  "region": "dao-bi-an",
+  "chapter": 2,
+  "title": "Chuyện của Khỉ Hái Dừa, chương 3: Lịch hội dừa như thời khóa biểu",
+  "status": "active",
+  "category": "story",
+  "summary": "Khỉ Hái Dừa rủ {name} chuẩn bị hội dừa cho cả đảo. {name} xếp các trò của hội theo giờ, đi tìm những chiếc đèn đố treo trong rặng chuối, tính điểm buổi tập ném vòng và chọn người gõ quả dừa khai hội.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Khỉ Hái Dừa",
+    "where": "Rừng nhiệt đới: ngọn dừa Khỉ, bảng lịch hội dừa, rặng chuối rừng, sân chơi hội dừa, khoảng rừng thưa",
+    "goal": "Chuẩn bị lịch, câu đố và trò chơi cho hội dừa",
+    "play": "Xếp lịch hội theo giờ; tìm đèn đố; tính điểm ném vòng; chọn người khai hội; tập trống khai hội",
+    "learn": "Xem giờ trong ngày (sáng, chiều, tối), bài toán nhiều hơn",
+    "reward": "75 XP, 21 Xu, Skill XP Xem đồng hồ, Hơn kém",
+    "next": "Ngọn dừa cao nhất"
+  },
+  "phases": {
+    "hook": "len-ke-hoach-hoi",
+    "explore": "lich-hoi-theo-gio",
+    "learn": "den-do-trong-rang-chuoi",
+    "challenge": "diem-tap-nem-vong",
+    "decision": "ai-go-dua-khai-hoi",
+    "finale": "tap-trong-khai-hoi",
+    "reward": "dem-truoc-ngay-hoi",
+    "next": "ngon-dua-cao-nhat"
+  },
+  "places": {
+    "khi-hai-dua": "Ngọn dừa Khỉ",
+    "st-khi-mua-dua-lon-bang-lich-hoi": "Bảng lịch hội dừa",
+    "den-do-trong-rang-chuoi": "Rặng chuối rừng",
+    "st-khi-mua-dua-lon-den-do-qua-dua": "Rặng chuối rừng",
+    "st-khi-mua-dua-lon-den-do-buong-chuoi": "Rặng chuối rừng",
+    "st-khi-mua-dua-lon-den-do-trai-thom": "Rặng chuối rừng",
+    "st-khi-mua-dua-lon-bang-diem-nem-vong": "Sân chơi hội dừa",
+    "st-khi-mua-dua-lon-qua-dua-khai-hoi": "Khoảng rừng thưa"
+  },
+  "steps": [
+    {
+      "id": "len-ke-hoach-hoi",
+      "title": "Lên kế hoạch mở hội",
+      "goTo": "Tới ngọn dừa Khỉ, cậu đang treo đầy lá chuối viết nguệch ngoạc",
+      "kind": "dialogue",
+      "target": "khi-hai-dua",
+      "lines": [
+        {
+          "speaker": "Khỉ Hái Dừa",
+          "text": "Úp úp úp! {name}, tớ quyết rồi: cuối tuần này mở hội dừa cho cả đảo! Có thi gõ dừa đoán tiếng, đua chuyền giỏ, đố vui dưới đèn, đủ cả!"
+        },
+        {
+          "speaker": "Khỉ Hái Dừa",
+          "text": "Nghe nói ở trường học thật, ngày nào cũng có thời khóa biểu, giờ nào làm việc nấy. Tớ muốn lịch hội cũng gọn gàng như thế."
+        },
+        {
+          "speaker": "Khỉ Hái Dừa",
+          "text": "Ước gì có ngày tớ được ngồi bàn đầu một lớp học thật nhỉ. Thôi, mơ để sau, giờ mình làm hội trước đã!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Lịch hội để tớ xếp cho!",
+          "reply": "Tuyệt! Bảng lịch tớ dựng ở bìa rừng rồi, chỉ có điều các tấm thẻ bị tớ treo lộn xộn hết cả."
+        },
+        {
+          "text": "Cậu mà đi học chắc ngồi yên được một phút là cùng!",
+          "reply": "Úp úp, bị cậu đoán trúng rồi! Nhưng nếu được học thật, tớ hứa sẽ cố ngồi yên hai phút."
+        }
+      ],
+      "en": {
+        "title": "Planning the festival",
+        "goTo": "Go to Khỉ's palm top, hung all over with scribbled banana leaves",
+        "lines": [
+          "Oop oop oop! {name}, I've decided: this weekend we hold a coconut festival for the whole island! Coconut-knock guessing, basket relays, riddles under lanterns, the lot!",
+          "I hear that in a real school there's a timetable every day, with each thing at its own time. I want the festival schedule just as tidy.",
+          "I wish one day I could sit in the front row of a real class. Anyway, dreams can wait; festival first!"
+        ],
+        "choices": [
+          {
+            "text": "Leave the schedule to me!",
+            "reply": "Brilliant! I've put the board up at the forest edge; the only trouble is I hung all the cards in a muddle."
+          },
+          {
+            "text": "You at school? You'd sit still for one minute at most!",
+            "reply": "Oop oop, you've got me! But if I ever really went, I promise I'd try for two minutes."
+          }
+        ]
+      }
+    },
+    {
+      "id": "lich-hoi-theo-gio",
+      "title": "Lịch hội theo giờ",
+      "goTo": "Ra bảng lịch hội dừa, các tấm thẻ trò chơi đang treo lộn xộn",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-khi-mua-dua-lon-bang-lich-hoi",
+      "skill": "xem-dong-ho",
+      "prompt": "Ngày hội có bốn trò. Xếp các tấm thẻ theo thứ tự diễn ra trong ngày, từ sớm nhất đến muộn nhất:",
+      "items": [
+        {
+          "id": "chuyen-gio",
+          "label": "Đua chuyền giỏ dừa: 3 giờ chiều"
+        },
+        {
+          "id": "do-vui",
+          "label": "Đố vui dưới đèn: 7 giờ tối"
+        },
+        {
+          "id": "khai-hoi",
+          "label": "Đánh trống khai hội: 7 giờ sáng"
+        },
+        {
+          "id": "go-dua",
+          "label": "Thi gõ dừa đoán tiếng: 9 giờ rưỡi sáng"
+        }
+      ],
+      "answer": {
+        "order": [
+          "khai-hoi",
+          "go-dua",
+          "chuyen-gio",
+          "do-vui"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Trong một ngày, buổi sáng đến trước, rồi buổi chiều, rồi buổi tối.",
+          "Cùng buổi sáng thì giờ nào nhỏ hơn diễn ra trước."
+        ],
+        "hint": "7 giờ sáng và 7 giờ tối cách nhau cả một ngày dài; 3 giờ chiều còn gọi là 15 giờ.",
+        "answer": {
+          "text": "Khai hội, gõ dừa, chuyền giỏ, đố vui",
+          "explanation": "7 giờ sáng sớm nhất, rồi 9 giờ rưỡi sáng, sau đó 3 giờ chiều (15 giờ), muộn nhất là 7 giờ tối (19 giờ)."
+        },
+        "en": {
+          "guide": [
+            "In a day, morning comes first, then afternoon, then evening.",
+            "Within the morning, the smaller hour comes first."
+          ],
+          "hint": "7 in the morning and 7 in the evening are a whole long day apart; 3 in the afternoon is also called 15:00.",
+          "answer": {
+            "text": "Opening, coconut knocking, basket relay, riddles",
+            "explanation": "7 in the morning is earliest, then half past 9 in the morning, then 3 in the afternoon (15:00), and latest is 7 in the evening (19:00)."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Úp úp! Lịch hội ngay ngắn y như thời khóa biểu thật!",
+          "{name} phân biệt bảy giờ sáng với bảy giờ tối không sai chút nào.",
+          "Có lịch rồi, tớ hết sợ cả đảo tới mà chẳng biết chơi trò gì trước."
+        ],
+        "wrong": [
+          "Bảy giờ tối thì trời tối om rồi, đâu thể khai hội lúc ấy, {name}.",
+          "Ba giờ chiều đến sau mọi giờ buổi sáng đấy.",
+          "Xếp buổi trước rồi mới so giờ trong cùng một buổi nhé."
+        ],
+        "en": {
+          "right": [
+            "Oop oop! The schedule is as neat as a real timetable!",
+            "{name} told seven in the morning from seven at night without a slip.",
+            "With a schedule, I'm not worried about the whole island turning up and not knowing what's first."
+          ],
+          "wrong": [
+            "At seven in the evening it's pitch dark; we can't open the festival then, {name}.",
+            "Three in the afternoon comes after every morning hour.",
+            "Sort by part of the day first, then compare hours within the same part."
+          ]
+        }
+      },
+      "en": {
+        "title": "The festival by the clock",
+        "goTo": "Go to the festival schedule board, where the game cards hang in a muddle",
+        "prompt": "The festival has four events. Put the cards in the order they happen during the day, from earliest to latest:",
+        "items": [
+          "Coconut basket relay: 3 in the afternoon",
+          "Riddles under the lanterns: 7 in the evening",
+          "Opening drums: 7 in the morning",
+          "Coconut-knock guessing: half past 9 in the morning"
+        ]
+      }
+    },
+    {
+      "id": "den-do-trong-rang-chuoi",
+      "title": "Đèn đố trong rặng chuối",
+      "goTo": "Vào rặng chuối rừng, tìm ba chiếc đèn đố Khỉ treo từ tối qua",
+      "kind": "search",
+      "targets": [
+        "st-khi-mua-dua-lon-den-do-qua-dua",
+        "st-khi-mua-dua-lon-den-do-buong-chuoi",
+        "st-khi-mua-dua-lon-den-do-trai-thom"
+      ],
+      "en": {
+        "title": "Riddle lanterns in the banana grove",
+        "goTo": "Go into the wild banana grove and find the three riddle lanterns Khỉ hung last night"
+      }
+    },
+    {
+      "id": "diem-tap-nem-vong",
+      "title": "Điểm buổi tập ném vòng",
+      "goTo": "Ra sân chơi hội dừa, bảng điểm buổi tập ném vòng còn ghi dở",
+      "kind": "riddle",
+      "target": "st-khi-mua-dua-lon-bang-diem-nem-vong",
+      "skill": "hon-kem",
+      "question": "Buổi tập ném vòng vào quả dừa, đội Sóc Nâu được 45 điểm, đội Kỳ Đà được 29 điểm. Đội Sóc Nâu được nhiều hơn đội Kỳ Đà bao nhiêu điểm?",
+      "answer": {
+        "value": 16
+      },
+      "support": {
+        "guide": [
+          "Muốn biết nhiều hơn bao nhiêu thì lấy số lớn trừ số bé.",
+          "Đặt tính 45 − 29, bắt đầu từ hàng đơn vị."
+        ],
+        "hint": "5 không trừ được 9, mượn 1 chục: 15 trừ 9 bằng 6.",
+        "answer": {
+          "text": "16 điểm",
+          "explanation": "45 − 29: 15 − 9 = 6, viết 6 nhớ 1; 2 thêm 1 là 3, 4 − 3 = 1. Vậy đội Sóc Nâu nhiều hơn 16 điểm."
+        },
+        "en": {
+          "guide": [
+            "To find how many points more, subtract the smaller score from the bigger score.",
+            "Write 45 − 29 in columns, starting with the ones."
+          ],
+          "hint": "You can't take 9 from 5, so borrow a ten: 15 take away 9 is 6.",
+          "answer": {
+            "text": "16 points",
+            "explanation": "45 − 29: 15 − 9 = 6, write 6 and carry 1; 2 plus 1 is 3, and 4 − 3 = 1. So the Brown Squirrels scored 16 points more."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười sáu điểm! Sóc Nâu nhảy tưng tưng, Kỳ Đà thì hẹn tập thêm.",
+          "{name} mượn một chục khéo như tớ mượn tạm lá chuối che mưa.",
+          "Đúng rồi! Bảng điểm sạch sẽ, không ai cãi nhau câu nào."
+        ],
+        "wrong": [
+          "Năm không trừ được chín đâu, {name} nhớ mượn một chục nhé.",
+          "Lấy điểm đội nhiều trừ điểm đội ít, đừng cộng vào.",
+          "Mượn rồi thì nhớ trả ở hàng chục, kẻo thừa mất mười điểm."
+        ],
+        "en": {
+          "right": [
+            "Sixteen points! The Brown Squirrels bounce about, and the Monitor Lizards plan extra practice.",
+            "{name} borrowed a ten as neatly as I borrow a banana leaf in the rain.",
+            "Right! The scoreboard is clean, and nobody argues at all."
+          ],
+          "wrong": [
+            "You can't take nine from five, {name}; remember to borrow a ten.",
+            "Take the smaller team's score from the bigger one; don't add them.",
+            "Once you borrow, pay it back in the tens, or you'll be ten points out."
+          ]
+        }
+      },
+      "en": {
+        "title": "Ring-toss practice scores",
+        "goTo": "Go to the festival playground, where the ring-toss practice scoreboard is half filled in",
+        "question": "At ring-toss practice onto coconuts, the Brown Squirrels scored 45 points and the Monitor Lizards scored 29. How many more points did the Brown Squirrels score than the Monitor Lizards?"
+      }
+    },
+    {
+      "id": "ai-go-dua-khai-hoi",
+      "title": "Ai gõ quả dừa khai hội?",
+      "goTo": "Tới khoảng rừng thưa, quả dừa khai hội được đặt trên bệ gỗ",
+      "kind": "decision",
+      "target": "st-khi-mua-dua-lon-qua-dua-khai-hoi",
+      "speaker": "Khỉ Hái Dừa",
+      "prompt": "Theo lệ của Khỉ, hội dừa mở màn bằng ba tiếng gõ vào quả dừa to nhất mùa. Khỉ xoay quả dừa mãi không yên: «Ai gõ ba tiếng đầu tiên đây, {name}?»",
+      "choices": [
+        {
+          "id": "go-cung-nhau",
+          "text": "Khỉ và Cua Lướt Sóng cùng gõ một lúc",
+          "consequence": "Khỉ cười phá lên: «Thi chạy lần nào cũng hòa, gõ dừa mà hòa nữa thì vui phải biết!» Cậu viết ngay một lời mời gửi ra bãi biển."
+        },
+        {
+          "id": "soc-nho",
+          "text": "Để bạn sóc nhỏ nhất rừng gõ",
+          "consequence": "Bạn sóc nhỏ nhất rừng đỏ mặt, ôm cái dùi gỗ tập gõ suốt buổi chiều. Cả đàn sóc kéo nhau tới xem."
+        },
+        {
+          "id": "ten-name",
+          "text": "Mời {name} gõ, vì đã giúp suốt cả mùa dừa",
+          "consequence": "Khỉ treo lên bệ gỗ một chiếc lá chuối ghi tên {name}, rồi đu một vòng quanh khoảng rừng thưa để báo tin cho cả rừng."
+        }
+      ],
+      "en": {
+        "title": "Who knocks the opening coconut?",
+        "goTo": "Go to the forest clearing, where the opening coconut sits on a wooden stand",
+        "prompt": "By Khỉ's custom, the festival opens with three knocks on the biggest coconut of the season. Khỉ keeps turning it round and round: \"Who gives the first three knocks, {name}?\"",
+        "choices": [
+          {
+            "text": "Khỉ and Cua Lướt Sóng knock together",
+            "consequence": "Khỉ bursts out laughing: \"Every race is a draw, so a draw at knocking coconuts too would be perfect!\" He writes an invitation to the beach straight away."
+          },
+          {
+            "text": "Let the tiniest squirrel in the forest knock",
+            "consequence": "The tiniest squirrel blushes, hugs the wooden mallet and practises knocking all afternoon. The whole squirrel family comes to watch."
+          },
+          {
+            "text": "Ask {name}, who has helped all season long",
+            "consequence": "Khỉ hangs a banana leaf with {name}'s name on the stand, then swings once round the clearing to tell the whole jungle."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tap-trong-khai-hoi",
+      "title": "Tập trống khai hội",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bảy giờ sáng mai trống phải vang khắp rừng! Gõ trống theo nhịp cùng Khỉ, gõ giữa mặt hay gõ viền cho đúng, được ba mươi điểm là trống đã thuộc bài!",
+      "game": "drum-beat",
+      "goal": 30,
+      "en": {
+        "title": "Practising the opening drum",
+        "prompt": "At seven tomorrow morning the drum must ring through the jungle! Drum in time with Khỉ, hitting the middle or the rim just right; thirty points and the drum knows its part!"
+      }
+    },
+    {
+      "id": "dem-truoc-ngay-hoi",
+      "title": "Đêm trước ngày hội",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Đêm trước ngày hội, đèn đố sáng lung linh trong rặng chuối. Khỉ nằm trên ngọn dừa, đếm đi đếm lại các tấm thẻ trên bảng lịch rồi khẽ nói: «Gọn như thời khóa biểu thật. Cảm ơn {name} nha.»",
+      "en": {
+        "title": "The night before the festival",
+        "text": "On the night before the festival, the riddle lanterns glow in the banana grove. Khỉ lies on his palm top, counting the cards on the schedule over and over, then whispers: \"Tidy as a real timetable. Thank you, {name}.\""
+      }
+    },
+    {
+      "id": "ngon-dua-cao-nhat",
+      "title": "Ngọn dừa cao nhất",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Còn một việc cuối: hái quả dừa đỉnh mùa trên cây dừa cao nhất rừng để dâng lên bàn hội. Khỉ bảo việc ấy phải để dành cho buổi sáng đẹp trời nhất, khi cả rừng còn đang ngái ngủ.",
+      "en": {
+        "title": "The tallest palm",
+        "text": "One last job: picking the season's crowning coconut from the tallest palm in the jungle for the festival table. Khỉ says that job must wait for the finest morning, while the whole jungle is still sleepy."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 75,
+    "coin": 21,
+    "skillXp": {
+      "xem-dong-ho": 1,
+      "hon-kem": 1
+    }
+  },
+  "en": {
+    "title": "Khỉ Hái Dừa's story, chapter 3: A festival schedule like a timetable",
+    "summary": "Khỉ Hái Dừa asks {name} to help prepare a coconut festival for the whole island. {name} orders the festival events by the clock, finds the riddle lanterns hung in the banana grove, works out the ring-toss practice scores and chooses who knocks the opening coconut."
+  }
+}

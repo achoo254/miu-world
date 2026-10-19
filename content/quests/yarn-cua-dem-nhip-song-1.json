@@ -1,0 +1,380 @@
+{
+  "id": "yarn-cua-dem-nhip-song-1",
+  "region": "dao-bi-an",
+  "chapter": 1,
+  "title": "Chuyện của Cua Lướt Sóng, chương 1: Ba nhịp đợi một con sóng",
+  "status": "active",
+  "category": "story",
+  "summary": "Cua Lướt Sóng muốn dạy {name} lướt sóng, nhưng trước hết phải biết đọc sóng. {name} tìm dấu sóng trên doi cát, đoán nhịp sóng theo dải cờ, tính đường bơi ra phao đỏ rồi chọn tấm ván đầu tiên.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cua Lướt Sóng",
+    "where": "Bãi lướt sóng, doi cát trắng, cột cờ báo sóng, mỏm đá ngắm phao, giá phơi ván lướt",
+    "goal": "Học đọc nhịp sóng trước buổi lướt đầu tiên",
+    "play": "Tìm dấu sóng; đoán con sóng tiếp theo; tính đường bơi ra phao; chọn ván; lướt sóng",
+    "learn": "Quy luật dãy hình, phép cộng qua 10",
+    "reward": "55 XP, 14 Xu, Skill XP Logic, Phép cộng",
+    "next": "Cuộc thi đếm buổi sáng"
+  },
+  "phases": {
+    "hook": "dem-nhip-dau-tien",
+    "explore": "tim-dau-song",
+    "learn": "nhip-song-tiep-theo",
+    "challenge": "boi-toi-phao-do",
+    "decision": "chon-van-tap",
+    "finale": "luot-con-song-dau",
+    "reward": "dap-cang-dap-tay",
+    "next": "sang-mai-dem-thi"
+  },
+  "places": {
+    "cua-luot-song": "Bãi lướt sóng",
+    "tim-dau-song": "Doi cát trắng",
+    "st-cua-dem-nhip-song-que-vach-nuoc": "Doi cát trắng",
+    "st-cua-dem-nhip-song-vet-rong-bien": "Doi cát trắng",
+    "st-cua-dem-nhip-song-hang-vo-so": "Doi cát trắng",
+    "st-cua-dem-nhip-song-cot-co-bao-song": "Cột cờ báo sóng",
+    "st-cua-dem-nhip-song-mom-da-ngam-phao": "Mỏm đá ngắm phao",
+    "st-cua-dem-nhip-song-gia-phoi-van": "Giá phơi ván lướt"
+  },
+  "steps": [
+    {
+      "id": "dem-nhip-dau-tien",
+      "title": "Sóng đến theo nhịp",
+      "goTo": "Ra bãi lướt sóng cạnh bến tàu, Cua Lướt Sóng đang giơ hai càng lên trời",
+      "kind": "dialogue",
+      "target": "cua-luot-song",
+      "lines": [
+        {
+          "speaker": "Cua Lướt Sóng",
+          "text": "Ầu ơ, chào bồ {name}! Bồ muốn học lướt sóng hả? Thế thì phải học đọc sóng trước đã, êm ru."
+        },
+        {
+          "speaker": "Cua Lướt Sóng",
+          "text": "Sóng chẳng đến lung tung đâu bồ. Nó đến theo nhịp, như có ai đang đếm. Tớ giơ càng lên đếm cùng: một, hai, ba, lướt!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Dạy tớ đếm nhịp sóng với!",
+          "reply": "Được luôn bồ. Nhưng trước hết ra doi cát xem biển vừa để lại dấu gì đã."
+        },
+        {
+          "text": "Sóng mà cũng biết đếm sao?",
+          "reply": "Biết chứ. Biển là tay trống to nhất thế gian, bồ chỉ cần lắng tai thôi."
+        }
+      ],
+      "en": {
+        "title": "Waves come in a rhythm",
+        "goTo": "Go to the surf beach by the pier, where Cua Lướt Sóng is raising both claws to the sky",
+        "lines": [
+          "Ahoy-oh, hi there, buddy {name}! Want to learn to surf? Then you learn to read the waves first, smooth as butter.",
+          "Waves don't just turn up any old way, buddy. They come in a rhythm, as if somebody's counting. I raise my claws and count along: one, two, three, ride!"
+        ],
+        "choices": [
+          {
+            "text": "Teach me to count the waves!",
+            "reply": "Sure thing, buddy. But first, go to the sandbar and see what marks the sea just left."
+          },
+          {
+            "text": "Waves can count?",
+            "reply": "Of course. The sea is the biggest drummer in the world; you just have to listen."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-dau-song",
+      "title": "Biển để lại dấu gì?",
+      "goTo": "Ra doi cát trắng tìm những dấu vết con sóng vừa để lại",
+      "kind": "search",
+      "targets": [
+        "st-cua-dem-nhip-song-que-vach-nuoc",
+        "st-cua-dem-nhip-song-vet-rong-bien",
+        "st-cua-dem-nhip-song-hang-vo-so"
+      ],
+      "en": {
+        "title": "What did the sea leave behind?",
+        "goTo": "Go to the white sandbar and find the marks the last waves left"
+      }
+    },
+    {
+      "id": "nhip-song-tiep-theo",
+      "title": "Dải cờ ghi nhịp sóng",
+      "goTo": "Tới cột cờ báo sóng, nơi Cua treo dải cờ ghi lại từng con sóng",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "st-cua-dem-nhip-song-cot-co-bao-song",
+      "skill": "logic",
+      "prompt": "Mỗi con sóng vừa vỗ vào bờ, Cua treo một lá cờ. Con sóng tiếp theo sẽ là loại nào?",
+      "elements": [
+        {
+          "id": "c1",
+          "label": "Sóng lăn tăn"
+        },
+        {
+          "id": "c2",
+          "label": "Sóng vừa"
+        },
+        {
+          "id": "c3",
+          "label": "Sóng to"
+        },
+        {
+          "id": "c4",
+          "label": "Sóng lăn tăn"
+        },
+        {
+          "id": "c5",
+          "label": "Sóng vừa"
+        },
+        {
+          "id": "c6",
+          "label": "Sóng to"
+        },
+        {
+          "id": "c7",
+          "label": "Sóng lăn tăn"
+        }
+      ],
+      "choices": [
+        {
+          "id": "lan-tan",
+          "text": "Sóng lăn tăn"
+        },
+        {
+          "id": "vua",
+          "text": "Sóng vừa"
+        },
+        {
+          "id": "to",
+          "text": "Sóng to"
+        }
+      ],
+      "answer": {
+        "choice": "vua"
+      },
+      "support": {
+        "guide": [
+          "Tìm nhóm sóng cứ thế lặp đi lặp lại.",
+          "Nhóm ấy có mấy con sóng, con nào đứng đầu?"
+        ],
+        "hint": "Lăn tăn, vừa, to, rồi quay về lăn tăn.",
+        "answer": {
+          "text": "Sóng vừa",
+          "explanation": "Dải cờ lặp lại nhóm «lăn tăn, vừa, to». Nhóm thứ ba mới có con sóng lăn tăn, nên con tiếp theo là sóng vừa."
+        },
+        "en": {
+          "guide": [
+            "Find the group of waves that keeps repeating.",
+            "How many waves are in that group, and which one comes first?"
+          ],
+          "hint": "Ripple, medium, big, then back to ripple.",
+          "answer": {
+            "text": "A medium wave",
+            "explanation": "The flags repeat the group “ripple, medium, big”. The third group has only its ripple so far, so the next wave is a medium one."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ầu ơ, bồ nghe ra nhịp của biển rồi đấy, êm ru!",
+          "Con sóng vừa vỗ vào bờ đúng như {name} đoán, lá cờ xanh phấp phới.",
+          "Đúng nhịp! Cua gõ càng vào cột cờ ba cái cho vui."
+        ],
+        "wrong": [
+          "Con sóng to vừa qua ở nhóm trước rồi bồ, đếm lại nhóm cuối xem.",
+          "Nhóm cuối mới có một con lăn tăn thôi, còn thiếu hai con nữa cơ.",
+          "Đặt ngón tay lên từng lá cờ, đếm một, hai, ba rồi lại từ đầu nhé {name}."
+        ],
+        "en": {
+          "right": [
+            "Ahoy-oh, you can hear the sea’s rhythm now, buddy, smooth as butter!",
+            "The medium wave rolls in just as {name} guessed, and the blue flag flutters.",
+            "Right on the beat! Cua taps the flagpole three times with a claw, just for fun."
+          ],
+          "wrong": [
+            "The big wave already went by in the last group, buddy; count the final group again.",
+            "The last group only has its ripple so far; two more waves are missing.",
+            "Put a finger on each flag and count one, two, three, then start over, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "The flag line of waves",
+        "goTo": "Go to the wave-signal flagpole, where Cua hangs a flag for every wave",
+        "prompt": "Each time a wave hits the shore, Cua hangs up a flag. What kind of wave comes next?",
+        "elements": [
+          "Ripple",
+          "Medium wave",
+          "Big wave",
+          "Ripple",
+          "Medium wave",
+          "Big wave",
+          "Ripple"
+        ],
+        "choices": [
+          "Ripple",
+          "Medium wave",
+          "Big wave"
+        ]
+      }
+    },
+    {
+      "id": "boi-toi-phao-do",
+      "title": "Bao nhiêu sải tới phao đỏ?",
+      "goTo": "Ra mỏm đá ngắm phao, nhìn thẳng ra quả phao đỏ ngoài khơi",
+      "kind": "riddle",
+      "target": "st-cua-dem-nhip-song-mom-da-ngam-phao",
+      "skill": "phep-cong",
+      "question": "Cua chia đường bơi ra phao đỏ làm hai chặng. Từ mép nước tới bãi đá ngầm là 8 sải tay, từ bãi đá ngầm tới phao đỏ là 7 sải tay nữa. Cả đường bơi ra phao đỏ dài bao nhiêu sải tay?",
+      "answer": {
+        "value": 15
+      },
+      "support": {
+        "guide": [
+          "Cộng số sải tay của hai chặng.",
+          "Tách 7 thành 2 và 5 để 8 cộng 2 được tròn 10."
+        ],
+        "hint": "8 + 7 = 8 + 2 + 5.",
+        "answer": {
+          "text": "15 sải tay",
+          "explanation": "8 + 7 = 15 (8 + 2 = 10, 10 + 5 = 15). Cả đường bơi ra phao đỏ dài 15 sải tay."
+        },
+        "en": {
+          "guide": [
+            "Add the strokes of the two stretches.",
+            "Split 7 into 2 and 5 so that 8 plus 2 makes a round 10."
+          ],
+          "hint": "Break 8 + 7 into 8 + 2 + 5.",
+          "answer": {
+            "text": "15 strokes",
+            "explanation": "8 + 7 = 15 (8 + 2 = 10, 10 + 5 = 15). The swim out to the red buoy is 15 strokes long."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười lăm sải, chuẩn luôn bồ! Sáng nào tớ cũng bơi đúng bằng ấy.",
+          "{name} cộng qua mười gọn như con sóng trườn qua đá.",
+          "Ầu ơ, quả phao đỏ ngoài kia gật gù như đang khen bồ đấy."
+        ],
+        "wrong": [
+          "Chặng hai còn 7 sải nữa cơ bồ, đừng để rơi mất chặng nào.",
+          "Gộp 8 với 2 cho tròn mười trước, rồi thêm phần còn lại vào.",
+          "Thử đếm tiếp từ 8 thêm bảy lần xem dừng ở số nào nhé {name}."
+        ],
+        "en": {
+          "right": [
+            "Fifteen strokes, spot on, buddy! I swim exactly that every morning.",
+            "{name} adds across ten as smoothly as a wave sliding over a rock.",
+            "Ahoy-oh, the red buoy out there is bobbing as if it’s praising you."
+          ],
+          "wrong": [
+            "The second stretch has 7 more strokes, buddy; don’t drop either stretch.",
+            "Put 8 and 2 together to make ten first, then add what is left.",
+            "Try counting on seven times from 8 and see where you stop, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many strokes to the red buoy?",
+        "goTo": "Go to the buoy-watch rock and look straight out at the red buoy",
+        "question": "Cua splits the swim to the red buoy into two stretches. From the water’s edge to the reef rocks is 8 strokes, and from the reef rocks to the red buoy is 7 more. How many strokes is the whole swim out to the red buoy?"
+      }
+    },
+    {
+      "id": "chon-van-tap",
+      "title": "Tấm ván đầu tiên",
+      "goTo": "Tới giá phơi ván lướt chọn một tấm ván để tập",
+      "kind": "decision",
+      "target": "st-cua-dem-nhip-song-gia-phoi-van",
+      "speaker": "Cua Lướt Sóng",
+      "prompt": "Trên giá có ba tấm ván. Cua ngả lưng phơi nắng bên cạnh: «Bồ chọn tấm nào cũng được, tấm nào cũng êm ru cả.»",
+      "choices": [
+        {
+          "id": "van-dai",
+          "text": "Tấm ván dài màu xanh, rộng và vững",
+          "consequence": "Ván dài nổi êm như chiếc bè. {name} đứng lên được ngay lần thử thứ hai, Cua vỗ càng lách cách."
+        },
+        {
+          "id": "van-ngan",
+          "text": "Tấm ván ngắn màu cam, nhẹ và nhanh",
+          "consequence": "Ván ngắn chòng chành, {name} ngã ùm xuống nước ba lần. Lần thứ tư thì đứng vững, cười to hơn cả tiếng sóng."
+        },
+        {
+          "id": "van-xop",
+          "text": "Tấm xốp nhỏ để nằm sấp lướt trước",
+          "consequence": "Nằm sấp trên tấm xốp, {name} trượt vào bờ nhẹ tênh. Cua bảo: «Học nằm trước, học đứng sau, chẳng ai giục bồ cả.»"
+        }
+      ],
+      "en": {
+        "title": "The first board",
+        "goTo": "Go to the surfboard rack and pick a board to practise on",
+        "prompt": "There are three boards on the rack. Cua is stretched out sunbathing beside it: “Pick any one, buddy; they’re all smooth as butter.”",
+        "choices": [
+          {
+            "text": "The long blue board, wide and steady",
+            "consequence": "The long board floats as calmly as a raft. {name} stands up on only the second try, and Cua clicks his claws together."
+          },
+          {
+            "text": "The short orange board, light and fast",
+            "consequence": "The short board wobbles and {name} splashes into the water three times. On the fourth try it holds steady, and {name} laughs louder than the waves."
+          },
+          {
+            "text": "The little foam board, to ride lying down first",
+            "consequence": "Lying on the foam board, {name} glides in to shore as light as a feather. Cua says: “Learn lying down first, standing later; nobody’s rushing you.”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "luot-con-song-dau",
+      "title": "Lướt con sóng đầu tiên",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tới lượt bồ rồi! Đợi đúng nhịp rồi lao xuống sóng, lướt qua bốn hòn đảo nhỏ là bồ thành tay lướt sóng của bãi này!",
+      "game": "wave-surf",
+      "goal": 4,
+      "en": {
+        "title": "Riding the first wave",
+        "prompt": "Your turn, buddy! Wait for the beat, then drop down the wave; surf past four little islands and you’re a surfer of this beach!"
+      }
+    },
+    {
+      "id": "dap-cang-dap-tay",
+      "title": "Một cái đập càng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cua giơ một càng đập nhẹ vào tay {name}: «Bồ đọc sóng được rồi đấy!» Rồi cậu nằm dài trên cát ấm, quay sang đếm mây thay cho đếm sóng.",
+      "en": {
+        "title": "A claw high-five",
+        "text": "Cua raises a claw and taps it gently against {name}’s hand: “You can read the waves now, buddy!” Then he stretches out on the warm sand and counts clouds instead of waves."
+      }
+    },
+    {
+      "id": "sang-mai-dem-thi",
+      "title": "Hẹn sáng mai",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sáng mai Thuyền Trưởng Vẹt Biển hẹn Cua thi đếm: ông đếm buồm, Cua đếm sóng. Cua cần một trọng tài thật tinh mắt, và cậu nhìn {name} cười tủm tỉm.",
+      "en": {
+        "title": "See you tomorrow morning",
+        "text": "Tomorrow morning Captain Vẹt Biển and Cua hold a counting contest: he counts sails, Cua counts waves. Cua needs a sharp-eyed referee, and he looks at {name} with a sly little smile."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": {
+      "logic": 1,
+      "phep-cong": 1
+    }
+  },
+  "en": {
+    "title": "Cua Lướt Sóng's story, chapter 1: Three beats before a wave",
+    "summary": "Cua Lướt Sóng wants to teach {name} to surf, but first you have to read the waves. {name} finds wave marks on the sandbar, guesses the next wave from a line of flags, works out the swim to the red buoy and picks a first board."
+  }
+}

@@ -1,0 +1,362 @@
+{
+  "id": "yarn-koala-nghin-manh-3",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Chuyện của Koala Ghép Tranh, chương 3: Chia nghìn mảnh theo màu",
+  "status": "active",
+  "category": "story",
+  "summary": "Một nghìn mảnh đổ ra lẫn lộn như nồi chè thập cẩm. {name} giúp Koala dán nhãn khay theo màu, tìm mảnh trốn dưới gối, so khay trời với khay mái ngói và quyết định chuyện ván lật bài buổi tối với Mèo Hộp Nhạc.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Koala Ghép Tranh",
+    "where": "Vườn đọc sách, góc đọc có gối, phòng học nhóm, hiên đọc sách phía đông, phiến đá rêu bên lối mòn",
+    "goal": "Chia một nghìn mảnh ghép thành từng khay theo màu và theo vùng tranh",
+    "play": "Tìm mảnh trốn dưới gối; chọn nhãn màu; so hai khay; quyết định chuyện ván lật bài; lật thẻ tìm cặp",
+    "learn": "Từ ngữ chỉ màu sắc, bài toán nhiều hơn",
+    "reward": "75 XP, 20 Xu, Skill XP Từ ngữ, Hơn kém bao nhiêu",
+    "next": "Chỉ còn một mảnh cuối"
+  },
+  "phases": {
+    "hook": "thung-do-ra-ban",
+    "explore": "manh-tron-duoi-goi",
+    "learn": "nhan-mau-cho-khay",
+    "challenge": "khay-troi-hon-khay-ngoi",
+    "decision": "van-lat-bai-buoi-toi",
+    "finale": "lat-the-cung-meo",
+    "reward": "khay-nao-ra-khay-nay",
+    "next": "con-mot-manh-cuoi"
+  },
+  "places": {
+    "koala-ghep-tranh": "Vườn đọc sách",
+    "manh-tron-duoi-goi": "Góc đọc có gối",
+    "st-koala-nghin-manh-manh-ngoi-do": "Góc đọc có gối",
+    "st-koala-nghin-manh-manh-troi-xanh": "Góc đọc có gối",
+    "st-koala-nghin-manh-manh-la-cay": "Góc đọc có gối",
+    "st-koala-nghin-manh-khay-dan-nhan": "Phòng học nhóm",
+    "st-koala-nghin-manh-hai-khay-so-sanh": "Hiên đọc sách phía đông",
+    "st-koala-nghin-manh-bo-bai-tren-da": "Phiến đá rêu bên lối mòn"
+  },
+  "steps": [
+    {
+      "id": "thung-do-ra-ban",
+      "title": "Nghìn mảnh đổ ra bàn",
+      "goTo": "Tới vườn đọc sách, chiếc thùng nghìn mảnh đã mở nắp, mảnh tràn cả ra bàn",
+      "kind": "dialogue",
+      "target": "koala-ghep-tranh",
+      "lines": [
+        {
+          "speaker": "Koala Ghép Tranh",
+          "text": "{name} ơi… nhìn này. Một nghìn mảnh. Tớ đổ ra bàn xong thì… đứng ngắm mãi, chẳng dám chạm vào mảnh nào."
+        },
+        {
+          "speaker": "Koala Ghép Tranh",
+          "text": "Lẫn lộn thế này thì ghép cả năm cũng chưa xong. Phải chia khay: trời một khay, mái ngói một khay, cây lá một khay…"
+        },
+        {
+          "speaker": "Koala Ghép Tranh",
+          "text": "Tối nay Mèo Hộp Nhạc còn hẹn tớ thi lật bài. Chia xong sớm thì… tớ mới dám đi chơi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Chia khay thì tớ làm được, cậu chỉ việc gọi tên màu!",
+          "reply": "Gọi tên màu thì tớ thuộc lắm… chỉ sợ gọi xong lại ngủ quên giữa chừng."
+        },
+        {
+          "text": "Một nghìn mảnh… cậu có thấy sợ không?",
+          "reply": "Hơi hơi… nhưng nghìn mảnh cũng chỉ là nhiều lần một mảnh. Mình làm từng mảnh thôi."
+        }
+      ],
+      "en": {
+        "title": "A thousand pieces on the table",
+        "goTo": "Go to the reading garden, where the thousand-piece box is open and pieces spill across the table",
+        "lines": [
+          "{name}… look. A thousand pieces. Once I'd tipped them out… I just stood and stared, too scared to touch a single one.",
+          "Jumbled like this, it'd take a whole year. We need trays: one for sky, one for roof tiles, one for leaves…",
+          "And tonight Mèo Hộp Nhạc has challenged me to a card-flip game. Only if we sort them early… will I dare go and play."
+        ],
+        "choices": [
+          {
+            "text": "I can sort the trays; you just call out the colours!",
+            "reply": "I know all my colours… I just worry I'll call them out and then doze off halfway."
+          },
+          {
+            "text": "A thousand pieces… aren't you scared?",
+            "reply": "A tiny bit… but a thousand pieces is just one piece lots of times. We'll do them one at a time."
+          }
+        ]
+      }
+    },
+    {
+      "id": "manh-tron-duoi-goi",
+      "title": "Mảnh trốn dưới gối",
+      "goTo": "Ghé góc đọc có gối, chỗ Koala ngủ trưa hôm qua, chắc vài mảnh đã lăn vào đó",
+      "kind": "search",
+      "targets": [
+        "st-koala-nghin-manh-manh-ngoi-do",
+        "st-koala-nghin-manh-manh-troi-xanh",
+        "st-koala-nghin-manh-manh-la-cay"
+      ],
+      "en": {
+        "title": "Pieces hiding under cushions",
+        "goTo": "Stop by the cushioned reading corner, where Koala napped yesterday; a few pieces must have rolled in there"
+      }
+    },
+    {
+      "id": "nhan-mau-cho-khay",
+      "title": "Nhãn màu cho từng khay",
+      "goTo": "Sang phòng học nhóm, chỗ có chiếc bàn dài đủ bày hết các khay",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-koala-nghin-manh-khay-dan-nhan",
+      "skill": "tu-ngu",
+      "prompt": "Koala viết sẵn năm tấm nhãn, nhưng chỉ dán lên khay những nhãn là từ chỉ màu sắc. Chọn đúng các nhãn đó:",
+      "choices": [
+        {
+          "id": "xanh-lam",
+          "text": "xanh lam"
+        },
+        {
+          "id": "cua-so",
+          "text": "cửa sổ"
+        },
+        {
+          "id": "vang-oi",
+          "text": "vàng ối"
+        },
+        {
+          "id": "do-tham",
+          "text": "đỏ thẫm"
+        },
+        {
+          "id": "lap-ghep",
+          "text": "lắp ghép"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "xanh-lam",
+          "vang-oi",
+          "do-tham"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Từ chỉ màu sắc cho biết sự vật có màu gì.",
+          "Thử hỏi: «Mảnh này màu gì?» Từ nào trả lời được câu đó thì chọn."
+        ],
+        "hint": "«cửa sổ» là tên một sự vật, «lắp ghép» là một hoạt động.",
+        "answer": {
+          "text": "xanh lam, vàng ối, đỏ thẫm",
+          "explanation": "Ba từ này đều cho biết màu: xanh lam như trời, vàng ối như nắng chiều, đỏ thẫm như mái ngói. «cửa sổ» là từ chỉ sự vật, «lắp ghép» là từ chỉ hoạt động."
+        },
+        "en": {
+          "guide": [
+            "A colour word tells us what colour something is.",
+            "Ask: \"What colour is this piece?\" Pick each word that can answer that."
+          ],
+          "hint": "\"window\" names a thing, and \"fitting together\" is an action.",
+          "answer": {
+            "text": "sky blue, deep yellow, dark red",
+            "explanation": "All three tell us a colour: sky blue like the sky, deep yellow like late sunshine, dark red like roof tiles. \"window\" is a word for a thing, and \"fitting together\" is a word for an action."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba khay, ba nhãn màu, thẳng hàng trên bàn dài. Koala vỗ tay rất khẽ, sợ mảnh giật mình.",
+          "{name} chọn nhãn nhanh như người đã chia cả nghìn khay rồi.",
+          "Xanh lam, vàng ối, đỏ thẫm… nghe đã thấy bức tranh hiện ra."
+        ],
+        "wrong": [
+          "«Cửa sổ» là tên đồ vật, đâu phải tên màu, {name} xem lại nhé.",
+          "Hỏi thử «màu gì?» với từng nhãn, nhãn nào trả lời được mới dán.",
+          "Còn sót một nhãn màu chưa chọn kìa, nhìn kỹ lại năm tấm nhãn."
+        ],
+        "en": {
+          "right": [
+            "Three trays, three colour labels, lined up on the long table. Koala claps very softly so as not to startle the pieces.",
+            "{name} picked the labels as fast as someone who has sorted a thousand trays already.",
+            "Sky blue, deep yellow, dark red… you can almost see the picture appear."
+          ],
+          "wrong": [
+            "\"Window\" names a thing, not a colour, {name}; have another look.",
+            "Ask \"what colour?\" of each label; only the ones that answer it go on a tray.",
+            "One colour label is still unpicked; look carefully at all five."
+          ]
+        }
+      },
+      "en": {
+        "title": "Colour labels for the trays",
+        "goTo": "Go over to the group study room, where there's a table long enough for all the trays",
+        "prompt": "Koala wrote five labels, but only the ones that are colour words go on the trays. Pick those labels:",
+        "choices": [
+          "sky blue",
+          "window",
+          "deep yellow",
+          "dark red",
+          "fitting together"
+        ]
+      }
+    },
+    {
+      "id": "khay-troi-hon-khay-ngoi",
+      "title": "Khay trời và khay mái ngói",
+      "goTo": "Bưng hai khay ra hiên đọc sách phía đông, chỗ nắng đủ sáng để soi màu",
+      "kind": "riddle",
+      "target": "st-koala-nghin-manh-hai-khay-so-sanh",
+      "skill": "hon-kem",
+      "question": "Khay trời xanh có 52 mảnh. Khay mái ngói đỏ có 35 mảnh. Khay trời xanh nhiều hơn khay mái ngói bao nhiêu mảnh?",
+      "answer": {
+        "value": 17
+      },
+      "support": {
+        "guide": [
+          "Tìm phần hơn thì lấy khay nhiều mảnh trừ đi khay ít mảnh.",
+          "Đặt tính 52 − 35: hàng đơn vị 2 không trừ được 5, mượn một chục."
+        ],
+        "hint": "12 − 5 = 7; hàng chục: 5 − 1 − 3 = 1.",
+        "answer": {
+          "text": "17 mảnh",
+          "explanation": "52 − 35 = 17. Hàng đơn vị: 12 − 5 = 7, nhớ 1. Hàng chục: 5 − 1 − 3 = 1. Khay trời xanh nhiều hơn khay mái ngói 17 mảnh."
+        },
+        "en": {
+          "guide": [
+            "To find the difference, take the smaller tray's count away from the bigger tray's.",
+            "Work out 52 − 35: in the ones, 2 can't take away 5, so borrow a ten."
+          ],
+          "hint": "12 − 5 = 7; tens: 5 − 1 − 3 = 1.",
+          "answer": {
+            "text": "17 pieces",
+            "explanation": "52 − 35 = 17. Ones: 12 − 5 = 7, carry 1. Tens: 5 − 1 − 3 = 1. The sky tray has 17 more pieces than the roof-tile tray."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười bảy mảnh! Koala bảo trời bao giờ cũng rộng hơn mái, tranh nào cũng thế.",
+          "{name} trừ có nhớ mà không vấp một chữ số nào.",
+          "Đúng rồi… thảo nào khay trời xanh đầy ắp thế."
+        ],
+        "wrong": [
+          "Hàng đơn vị 2 bé hơn 5, {name} phải mượn một chục đấy.",
+          "Nhiều hơn bao nhiêu thì làm tính trừ, đừng cộng hai khay lại nhé.",
+          "Thử kiểm tra: lấy kết quả cộng với 35 xem có ra 52 không."
+        ],
+        "en": {
+          "right": [
+            "Seventeen pieces! Koala says the sky is always bigger than the roof, in every picture.",
+            "{name} subtracted with borrowing without tripping on a single digit.",
+            "That's it… no wonder the sky tray is so full."
+          ],
+          "wrong": [
+            "In the ones, 2 is smaller than 5, {name}; you have to borrow a ten.",
+            "How many more means subtract; don't add the two trays together.",
+            "Check it: add your answer to 35 and see if you get 52."
+          ]
+        }
+      },
+      "en": {
+        "title": "The sky tray and the roof tray",
+        "goTo": "Carry the two trays out to the east reading porch, where the light is bright enough to check colours",
+        "question": "The blue sky tray has 52 pieces. The red roof-tile tray has 35 pieces. How many more pieces does the sky tray have than the roof-tile tray?"
+      }
+    },
+    {
+      "id": "van-lat-bai-buoi-toi",
+      "title": "Ván lật bài buổi tối",
+      "goTo": "Ra phiến đá rêu bên lối mòn, bộ bài của Mèo Hộp Nhạc để sẵn ở đó",
+      "kind": "decision",
+      "target": "st-koala-nghin-manh-bo-bai-tren-da",
+      "speaker": "Koala Ghép Tranh",
+      "prompt": "Trên phiến đá rêu có bộ bài lật hình và mẩu giấy của Mèo Hộp Nhạc: «Tinh tang, tối nay lật bài nhé!». Koala nhìn các khay còn dang dở, rồi nhìn bộ bài: «Làm sao bây giờ, {name}?»",
+      "choices": [
+        {
+          "id": "choi-mot-van",
+          "text": "Chơi một ván cho vui rồi quay về chia tiếp",
+          "consequence": "Koala chơi một ván, thua sát nút, cười khúc khích. Về tới bàn, tay chia mảnh nhanh hẳn lên."
+        },
+        {
+          "id": "mang-bai-sang",
+          "text": "Mời Mèo mang bài sang bàn ghép tranh chơi luôn",
+          "consequence": "Mèo Hộp Nhạc ôm bộ bài sang, vừa lật vừa ngân nga. Bàn dài chật kín: bên này khay mảnh, bên kia bài lật."
+        },
+        {
+          "id": "nhan-hen-mai",
+          "text": "Viết giấy hẹn Mèo một ván thật dài vào tối mai",
+          "consequence": "Koala viết mẩu giấy thật nắn nót, đặt dưới bộ bài. Gió thổi qua mà mẩu giấy vẫn nằm yên dưới chồng bài."
+        }
+      ],
+      "en": {
+        "title": "An evening card game",
+        "goTo": "Go to the mossy stone by the footpath, where Mèo Hộp Nhạc's cards are waiting",
+        "prompt": "On the mossy stone there's a deck of picture cards and a note from Mèo Hộp Nhạc: \"Tinh tang, card flip tonight!\". Koala looks at the half-sorted trays, then at the cards: \"What do we do, {name}?\"",
+        "choices": [
+          {
+            "text": "Play one game for fun, then go back to sorting",
+            "consequence": "Koala plays one game, loses by a whisker and giggles. Back at the table, his paws sort much faster."
+          },
+          {
+            "text": "Invite Mèo to bring the cards over to the puzzle table",
+            "consequence": "Mèo Hộp Nhạc carries the cards over, humming as he flips them. The long table is packed: piece trays on one side, cards on the other."
+          },
+          {
+            "text": "Write a note asking Mèo for a really long game tomorrow night",
+            "consequence": "Koala writes the note very neatly and tucks it under the deck. The wind blows past, but the note stays put beneath the cards."
+          }
+        ]
+      }
+    },
+    {
+      "id": "lat-the-cung-meo",
+      "title": "Lật thẻ cùng Mèo",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Tối rồi, ván lật bài bắt đầu! Mèo Hộp Nhạc lật nhanh như gió, Koala thì nhớ chỗ từng hình rất giỏi. {name} vào đội Koala, tìm đủ sáu cặp nhé!",
+      "game": "memory-pairs",
+      "goal": 6,
+      "params": {
+        "pairs": 6
+      },
+      "en": {
+        "title": "Flipping cards with Mèo",
+        "prompt": "Evening, and the card-flip game begins! Mèo Hộp Nhạc flips as quick as the wind, while Koala is great at remembering where each picture is. {name} joins Team Koala; find all six pairs!"
+      }
+    },
+    {
+      "id": "khay-nao-ra-khay-nay",
+      "title": "Khay nào ra khay nấy",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ván bài xong thì các khay cũng đầy: trời xanh, mái đỏ, lá cây, cửa sổ. Koala xếp chúng thành một hàng dọc mép bàn và bảo {name}: «Chia khay xong là tranh đã ghép được một nửa… trong đầu.»",
+      "en": {
+        "title": "Every piece in its tray",
+        "text": "By the end of the game the trays are full too: blue sky, red roof, leaves, windows. Koala lines them up along the edge of the table and tells {name}: \"Once the trays are sorted, the puzzle's half done… in your head.\""
+      }
+    },
+    {
+      "id": "con-mot-manh-cuoi",
+      "title": "Còn một mảnh cuối",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mấy hôm sau, bức tranh nghìn mảnh gần kín. Chín trăm chín mươi chín mảnh đã nằm đúng chỗ, chỉ còn chờ mảnh cuối cùng ở góc trên mái.",
+      "en": {
+        "title": "One piece left",
+        "text": "A few days later the thousand-piece puzzle is nearly full. Nine hundred and ninety-nine pieces are in their places, and only the very last one, up in the roof corner, is still to come."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 75,
+    "coin": 20,
+    "skillXp": {
+      "tu-ngu": 1,
+      "hon-kem": 1
+    }
+  },
+  "en": {
+    "title": "Koala Ghép Tranh's story, chapter 3: Sorting a thousand pieces by colour",
+    "summary": "A thousand pieces tumble out, jumbled like a bowl of mixed sweet soup. {name} helps Koala label the trays by colour, finds pieces hiding under cushions, compares the sky tray with the roof tray and decides what to do about the evening card game with Mèo Hộp Nhạc."
+  }
+}

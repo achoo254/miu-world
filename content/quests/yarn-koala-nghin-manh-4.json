@@ -1,0 +1,348 @@
+{
+  "id": "yarn-koala-nghin-manh-4",
+  "region": "thu-vien",
+  "chapter": 1,
+  "title": "Chuyện của Koala Ghép Tranh, chương 4: Mảnh cuối cùng ở đâu?",
+  "status": "active",
+  "category": "story",
+  "summary": "Bức tranh nghìn mảnh chỉ còn thiếu đúng mảnh ô cửa sổ tròn trên mái, và Koala kể cho {name} nỗi sợ lớn nhất của mình. {name} viết thông báo tìm mảnh, lục góc ngủ trưa của Koala, đếm bộ bài của Mèo Hộp Nhạc và tìm ra mảnh ghép đã lạc đi đâu.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Koala Ghép Tranh",
+    "where": "Vườn đọc sách, bảng tin hành lang, góc đọc riêng, băng ghế bên giàn hoa giấy, bàn ghép tranh lớn",
+    "goal": "Tìm mảnh ghép cuối cùng để bức tranh nghìn mảnh hoàn thành",
+    "play": "Viết thông báo tìm mảnh; lục góc ngủ trưa; đếm bộ bài; chọn người đặt mảnh cuối; ghép tranh tặng bạn",
+    "learn": "Dấu chấm hỏi cuối câu hỏi, phép cộng có nhớ và phép trừ trong phạm vi 100",
+    "reward": "85 XP, 25 Xu, Skill XP Dấu câu, Phép cộng, Kính lúp bạc",
+    "next": "Ảnh vách băng mới của Nai Leo Vách"
+  },
+  "phases": {
+    "hook": "chi-thieu-mot-manh",
+    "explore": "thong-bao-tim-manh",
+    "learn": "luc-goc-ngu-trua",
+    "challenge": "dem-bo-bai-cua-meo",
+    "decision": "ai-dat-manh-cuoi",
+    "finale": "ghep-tranh-tang-meo",
+    "reward": "du-tung-o-cua-so",
+    "next": "anh-vach-bang-moi"
+  },
+  "places": {
+    "koala-ghep-tranh": "Vườn đọc sách",
+    "st-koala-nghin-manh-bang-tin-tim-manh": "Bảng tin hành lang",
+    "luc-goc-ngu-trua": "Góc đọc riêng",
+    "st-koala-nghin-manh-goi-om-bach-dan": "Góc đọc riêng",
+    "st-koala-nghin-manh-tui-banh-mi": "Góc đọc riêng",
+    "st-koala-nghin-manh-khay-troi-rong": "Góc đọc riêng",
+    "st-koala-nghin-manh-hop-bai-lat-hinh": "Băng ghế bên giàn hoa giấy",
+    "st-koala-nghin-manh-tranh-nghin-manh": "Bàn ghép tranh lớn"
+  },
+  "steps": [
+    {
+      "id": "chi-thieu-mot-manh",
+      "title": "Chỉ thiếu một mảnh",
+      "goTo": "Tới vườn đọc sách, Koala ngồi lặng trước bức tranh gần xong, tay cầm chiếc thùng rỗng",
+      "kind": "dialogue",
+      "target": "koala-ghep-tranh",
+      "lines": [
+        {
+          "speaker": "Koala Ghép Tranh",
+          "text": "{name}… chín trăm chín mươi chín mảnh rồi. Chỉ còn ô cửa sổ tròn trên mái. Mà thùng thì… trống trơn."
+        },
+        {
+          "speaker": "Koala Ghép Tranh",
+          "text": "Tớ chưa kể với ai bao giờ… Tớ sợ nhất đúng chuyện này. Ghép tới tận mảnh cuối, rồi mới biết mảnh ấy không còn ở đâu nữa."
+        },
+        {
+          "speaker": "Koala Ghép Tranh",
+          "text": "Giống như kể chuyện tới câu cuối… thì quên mất cái kết. Cậu tìm giúp tớ… tớ không dám nhắm mắt nữa đâu."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mảnh ấy chỉ lạc thôi, không mất đâu. Mình đi tìm!",
+          "reply": "Cậu nói chắc thế… tim tớ bớt đập thình thịch rồi. Mình đi."
+        },
+        {
+          "text": "Cảm ơn cậu đã kể cho tớ nghe nỗi sợ ấy.",
+          "reply": "Kể ra rồi… thấy nó nhỏ đi một chút. Như mảnh ghép lật đúng mặt thì hết đáng sợ."
+        }
+      ],
+      "en": {
+        "title": "Just one piece missing",
+        "goTo": "Go to the reading garden, where Koala sits quietly before the almost-finished puzzle, holding the empty box",
+        "lines": [
+          "{name}… nine hundred and ninety-nine pieces. Only the round window on the roof is left. And the box is… completely empty.",
+          "I've never told anyone… This is exactly what I'm most afraid of. Getting all the way to the last piece, and only then finding it isn't anywhere any more.",
+          "Like telling a story right up to the last line… and forgetting the ending. Help me look… I don't dare close my eyes now."
+        ],
+        "choices": [
+          {
+            "text": "It's only strayed, not lost. Let's go and find it!",
+            "reply": "You sound so sure… my heart's thumping less already. Let's go."
+          },
+          {
+            "text": "Thank you for telling me about that fear.",
+            "reply": "Now I've said it… it feels a bit smaller. Like a piece turned the right way up, it isn't scary any more."
+          }
+        ]
+      }
+    },
+    {
+      "id": "thong-bao-tim-manh",
+      "title": "Thông báo tìm mảnh ghép",
+      "goTo": "Ra bảng tin hành lang dán thông báo, ai đi qua thư viện cũng đọc được",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "st-koala-nghin-manh-bang-tin-tim-manh",
+      "skill": "dau-cau",
+      "prompt": "Koala viết thông báo nhưng còn bỏ trống dấu cuối câu: «Ai nhặt được mảnh ghép có ô cửa sổ tròn không__» Điền dấu nào vào chỗ trống?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Dấu chấm (.)"
+        },
+        {
+          "id": "b",
+          "text": "Dấu chấm hỏi (?)"
+        },
+        {
+          "id": "c",
+          "text": "Dấu phẩy (,)"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Đọc câu lên: Koala đang kể một việc hay đang hỏi mọi người?",
+          "Câu dùng để hỏi thì cuối câu đặt dấu chấm hỏi."
+        ],
+        "hint": "Câu có «Ai…» và «…không» ở cuối là câu hỏi.",
+        "answer": {
+          "text": "Đặt dấu chấm hỏi ở cuối câu",
+          "explanation": "Koala muốn hỏi xem ai đã nhặt được mảnh ghép, nên đây là câu hỏi. Cuối câu hỏi ta đặt dấu chấm hỏi: «Ai nhặt được mảnh ghép có ô cửa sổ tròn không?»"
+        },
+        "en": {
+          "guide": [
+            "Read the sentence aloud: is Koala telling something, or asking everyone?",
+            "A sentence that asks something ends with a question mark."
+          ],
+          "hint": "A sentence with \"Ai…\" (who) and \"…không\" at the end is a question.",
+          "answer": {
+            "text": "Put a question mark at the end",
+            "explanation": "Koala wants to ask whether anyone has picked up the piece, so it is a question. A question ends with a question mark: \"Has anyone found a puzzle piece with a round window?\""
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Dấu chấm hỏi cong cong như chiếc móc, móc được cả mắt người đi ngang.",
+          "{name} đặt dấu đúng, thông báo đọc lên là ai cũng muốn trả lời ngay.",
+          "Hỏi đúng cách thì sẽ có người đáp… Koala ghim thông báo thật chặt."
+        ],
+        "wrong": [
+          "Dấu chấm dành cho câu kể, mà Koala đang hỏi mọi người cơ, {name}.",
+          "Dấu phẩy để ngắt giữa câu, đặt ở cuối thì câu chưa xong.",
+          "Đọc lên thử: «Ai… không» nghe như đang hỏi hay đang kể?"
+        ],
+        "en": {
+          "right": [
+            "The question mark curls like a little hook, catching the eye of everyone who passes.",
+            "{name} chose the right mark; anyone who reads the notice will want to answer straight away.",
+            "Ask the right way and someone will answer… Koala pins the notice up tight."
+          ],
+          "wrong": [
+            "A full stop is for telling sentences, but Koala is asking everyone, {name}.",
+            "A comma breaks up the middle of a sentence; put at the end, the sentence isn't finished.",
+            "Read it aloud: does \"Has anyone… found\" sound like asking or telling?"
+          ]
+        }
+      },
+      "en": {
+        "title": "A notice for the missing piece",
+        "goTo": "Go to the hallway notice board and put up the notice, so everyone passing through the library can read it",
+        "prompt": "Koala wrote a notice but left the end mark blank: \"Ai nhặt được mảnh ghép có ô cửa sổ tròn không__\" (Has anyone found a puzzle piece with a round window__) Which mark goes in the gap?",
+        "choices": [
+          "Full stop (.)",
+          "Question mark (?)",
+          "Comma (,)"
+        ]
+      }
+    },
+    {
+      "id": "luc-goc-ngu-trua",
+      "title": "Lục góc ngủ trưa",
+      "goTo": "Sang góc đọc riêng, nơi Koala hay ôm gối ngủ trưa giữa hai lần ghép tranh",
+      "kind": "search",
+      "targets": [
+        "st-koala-nghin-manh-goi-om-bach-dan",
+        "st-koala-nghin-manh-tui-banh-mi",
+        "st-koala-nghin-manh-khay-troi-rong"
+      ],
+      "en": {
+        "title": "Searching the nap corner",
+        "goTo": "Go over to the private reading nook, where Koala likes to hug a cushion and nap between puzzle sessions"
+      }
+    },
+    {
+      "id": "dem-bo-bai-cua-meo",
+      "title": "Đếm bộ bài của Mèo",
+      "goTo": "Trong khay trời rỗng chỉ có một lá bài lưng xanh. Mang nó ra băng ghế bên giàn hoa giấy, chỗ hộp bài của Mèo Hộp Nhạc",
+      "kind": "riddle",
+      "target": "st-koala-nghin-manh-hop-bai-lat-hinh",
+      "skill": "phep-cong",
+      "question": "Bộ bài lật hình của Mèo Hộp Nhạc đủ bộ có 16 cặp, mỗi cặp 2 lá giống nhau. Trong hộp bây giờ có 31 lá bài và một mảnh ghép xanh lạc vào. Hộp bài đang thiếu mấy lá?",
+      "answer": {
+        "value": 1
+      },
+      "support": {
+        "guide": [
+          "Trước hết tìm số lá của cả bộ: 16 cặp là 16 lá cộng thêm 16 lá nữa.",
+          "Rồi lấy số lá cả bộ trừ đi số lá đang có trong hộp. Mảnh ghép không phải lá bài nên không đếm."
+        ],
+        "hint": "16 + 16 = 32. Còn 32 − 31 = ?",
+        "answer": {
+          "text": "Thiếu 1 lá",
+          "explanation": "Cả bộ có 16 + 16 = 32 lá. Trong hộp có 31 lá, nên thiếu 32 − 31 = 1 lá. Lá bài lưng xanh tìm thấy trong khay trời của Koala chính là lá còn thiếu, còn mảnh ghép xanh trong hộp bài chính là mảnh cuối của Koala."
+        },
+        "en": {
+          "guide": [
+            "First find how many cards a full deck has: 16 pairs is 16 cards plus another 16.",
+            "Then take the cards in the box away from the full deck. The puzzle piece isn't a card, so don't count it."
+          ],
+          "hint": "16 + 16 = 32. And 32 − 31 = ?",
+          "answer": {
+            "text": "1 card missing",
+            "explanation": "A full deck has 16 + 16 = 32 cards. The box holds 31, so 32 − 31 = 1 card is missing. The blue-backed card found in Koala's sky tray is the missing one, and the blue piece in the card box is Koala's last piece."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thiếu đúng một lá! Lá bài lưng xanh về hộp, mảnh ô cửa tròn về tay Koala.",
+          "{name} cộng rồi trừ gọn gàng, hai thứ bị tráo chỗ trả về đúng nhà.",
+          "Hóa ra mảnh ghép đi chơi lật bài… Koala bật cười, cười tới ứa nước mắt."
+        ],
+        "wrong": [
+          "16 cặp là 16 lá cộng 16 lá, {name} tính số lá cả bộ trước nhé.",
+          "Mảnh ghép xanh không phải lá bài đâu, đừng đếm nó vào.",
+          "Cả bộ trừ số lá đang có là ra số lá còn thiếu."
+        ],
+        "en": {
+          "right": [
+            "Exactly one card missing! The blue-backed card goes home to the box, and the round window piece goes home to Koala.",
+            "{name} added, then subtracted, neatly, and the two swapped things went back where they belong.",
+            "So the puzzle piece went off to play cards… Koala laughs until his eyes water."
+          ],
+          "wrong": [
+            "16 pairs is 16 cards plus 16 cards, {name}; work out the whole deck first.",
+            "The blue puzzle piece isn't a card; don't count it.",
+            "The whole deck minus the cards in the box gives the cards that are missing."
+          ]
+        }
+      },
+      "en": {
+        "title": "Counting Mèo's cards",
+        "goTo": "In the empty sky tray there's just one blue-backed card. Take it to the bench by the bougainvillea, where Mèo Hộp Nhạc's card box is",
+        "question": "Mèo Hộp Nhạc's full deck of picture cards has 16 pairs, with 2 matching cards in each pair. Right now the box holds 31 cards and one stray blue puzzle piece. How many cards is the box missing?"
+      }
+    },
+    {
+      "id": "ai-dat-manh-cuoi",
+      "title": "Ai đặt mảnh cuối?",
+      "goTo": "Ôm mảnh ô cửa tròn về bàn ghép tranh lớn, cả bức tranh đang chờ",
+      "kind": "decision",
+      "target": "st-koala-nghin-manh-tranh-nghin-manh",
+      "speaker": "Koala Ghép Tranh",
+      "prompt": "Hôm Mèo Hộp Nhạc ghé rủ đi lật bài, bộ bài đặt ngay cạnh khay trời xanh: một lá bài trượt vào khay, mảnh ô cửa tròn thì lọt vào hộp bài. Giờ mảnh ấy đã về. Koala nâng nó lên: «Ai đặt mảnh cuối đây, {name}?»",
+      "choices": [
+        {
+          "id": "name-dat",
+          "text": "{name} đặt, vì {name} tìm ra nó",
+          "consequence": "{name} ấn mảnh ô cửa tròn vào góc mái. Tách. Koala nín thở một giây rồi thở ra một hơi dài thật nhẹ nhõm."
+        },
+        {
+          "id": "koala-dat",
+          "text": "Koala đặt, vì đây là giấc mơ của Koala",
+          "consequence": "Tay Koala hơi run, nhưng mảnh ghép vào khít ngay lần đầu. «Ô cửa tròn… về nhà rồi,» Koala thì thầm."
+        },
+        {
+          "id": "cung-dat",
+          "text": "Hai đứa cùng đặt, mỗi đứa giữ một bên mảnh",
+          "consequence": "Hai bàn tay cùng ấn xuống một lúc. Koala bảo mảnh cuối của bức tranh này có hai chủ, thế mới tròn."
+        }
+      ],
+      "en": {
+        "title": "Who puts in the last piece?",
+        "goTo": "Carry the round window piece back to the big puzzle table, where the whole picture is waiting",
+        "prompt": "The day Mèo Hộp Nhạc dropped by to fetch Koala for cards, the deck sat right beside the blue sky tray: one card slid into the tray, and the round window piece slipped into the card box. Now the piece is back. Koala holds it up: \"Who puts in the last piece, {name}?\"",
+        "choices": [
+          {
+            "text": "{name} does, because {name} found it",
+            "consequence": "{name} presses the round window piece into the roof corner. Click. Koala holds his breath for a second, then lets out a long, relieved sigh."
+          },
+          {
+            "text": "Koala does, because it's Koala's dream",
+            "consequence": "Koala's paw trembles a little, but the piece fits snugly first time. \"The round window… is home,\" Koala whispers."
+          },
+          {
+            "text": "Both together, each holding one side of the piece",
+            "consequence": "Two hands press down at the same moment. Koala says the last piece of this puzzle has two owners, and that makes it whole."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ghep-tranh-tang-meo",
+      "title": "Ghép tranh tặng Mèo",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Koala vui quá, rủ {name} ghép một bức tranh nhỏ tặng Mèo Hộp Nhạc, cảm ơn bộ bài đã giữ hộ mảnh cuối. Ghép đủ mười lăm mảnh nhé!",
+      "game": "jigsaw",
+      "goal": 15,
+      "en": {
+        "title": "A puzzle for Mèo",
+        "prompt": "Koala is so happy he asks {name} to build a little puzzle as a present for Mèo Hộp Nhạc, to thank his deck for looking after the last piece. Fit all fifteen pieces!"
+      }
+    },
+    {
+      "id": "du-tung-o-cua-so",
+      "title": "Đủ từng ô cửa sổ",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bức tranh nghìn mảnh nằm trọn trên bàn: mái ngói đỏ, dãy cửa vòm, ô kính màu, và ô cửa sổ tròn trên đỉnh mái. Koala ngắm rất lâu mà không ngáp lần nào, rồi tặng {name} chiếc kính lúp bạc để soi thật kỹ từng ô cửa.",
+      "en": {
+        "title": "Every window in place",
+        "text": "The thousand-piece puzzle lies whole on the table: red roof tiles, the arched windows, the coloured glass, and the round window at the very top. Koala gazes at it for ages without a single yawn, then gives {name} his silver magnifying glass to look closely at every window."
+      }
+    },
+    {
+      "id": "anh-vach-bang-moi",
+      "title": "Ảnh vách băng mới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đúng lúc ấy bưu tá mang tới một phong bì từ Núi tuyết. Nai Leo Vách gửi ảnh một vách băng mới leo được. Koala lật đi lật lại tấm ảnh: lần này cậu muốn tận mắt thấy vách băng trước khi cắt thành tranh ghép.",
+      "en": {
+        "title": "A new ice-cliff photo",
+        "text": "Just then the postman brings an envelope from Snowy Mountain. Nai Leo Vách has sent a photo of a newly climbed ice cliff. Koala turns the photo over and over: this time he wants to see the cliff with his own eyes before he cuts it into a puzzle."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 85,
+    "coin": 25,
+    "skillXp": {
+      "dau-cau": 1,
+      "phep-cong": 1
+    },
+    "items": {
+      "kinh-lup-bac": 1
+    }
+  },
+  "en": {
+    "title": "Koala Ghép Tranh's story, chapter 4: Where is the last piece?",
+    "summary": "The thousand-piece puzzle is missing only the round window piece on the roof, and Koala tells {name} his greatest fear. {name} writes a notice for the missing piece, searches Koala's nap corner, counts Mèo Hộp Nhạc's deck of cards and works out where the piece strayed to."
+  }
+}

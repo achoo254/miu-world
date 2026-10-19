@@ -1,0 +1,396 @@
+{
+  "id": "yarn-cao-mui-ten-mang-thu-3",
+  "region": "lau-dai",
+  "chapter": 3,
+  "title": "Chuyện của Cáo Cung Thủ, chương 3: Thua một vòng, thắng một lá thư",
+  "status": "active",
+  "category": "story",
+  "summary": "Ngày giải đấu, Cáo thua vòng một trước cung thủ Sơn Dương miền núi và nhận thua ngay. {name} gom thư của các cung thủ, tính điểm chênh, tìm lối ra bục bắn, giúp Cáo chọn cách mời đấu lại, rồi một lá thư thật sự bay đi.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cáo Cung Thủ",
+    "where": "Khu luyện tập, lều trọng tài, hòm thư giải, lối ra bục bắn, bục bắn đấu lại",
+    "goal": "Giúp Cáo đấu lại và bắn đi mũi tên mang thư của mọi cung thủ",
+    "play": "Tìm thư của các cung thủ; tính điểm hơn kém; dò lối qua các thùng tên; chọn cách mời đấu lại; bắn cung trong gió",
+    "learn": "Bài toán về hơn kém (phép trừ có nhớ), suy luận đường đi",
+    "reward": "85 XP, 22 Xu, Skill XP Hơn kém, Logic, Huy hiệu hiệp sĩ",
+    "next": "Thư hồi âm từ biển"
+  },
+  "phases": {
+    "hook": "cao-vao-giai",
+    "explore": "gom-thu-cung-thu",
+    "learn": "diem-chenh-vong-mot",
+    "challenge": "loi-ra-buc-ban",
+    "decision": "moi-dau-lai",
+    "finale": "vong-dau-lai",
+    "reward": "la-thu-bay-di",
+    "next": "cho-thu-hoi-am"
+  },
+  "places": {
+    "cao-cung-thu": "Khu luyện tập",
+    "st-cao-mui-ten-mang-thu-bang-xep-hang": "Lều trọng tài",
+    "gom-thu-cung-thu": "Hòm thư giải",
+    "st-cao-mui-ten-mang-thu-thu-mien-nui": "Hòm thư giải",
+    "st-cao-mui-ten-mang-thu-thu-mien-bien": "Hòm thư giải",
+    "st-cao-mui-ten-mang-thu-thu-ven-song": "Hòm thư giải",
+    "st-cao-mui-ten-mang-thu-thung-ten-chan": "Lối ra bục bắn",
+    "st-cao-mui-ten-mang-thu-buc-ban": "Bục bắn đấu lại"
+  },
+  "steps": [
+    {
+      "id": "cao-vao-giai",
+      "title": "Sáng ngày giải",
+      "goTo": "Tới khu luyện tập, Cáo Cung Thủ đang lau cây cung «Sấm Sét» lần cuối",
+      "kind": "dialogue",
+      "target": "cao-cung-thu",
+      "lines": [
+        {
+          "speaker": "Cáo Cung Thủ",
+          "text": "Hôm nay là hôm nay, {name}. Cung thủ miền núi, miền biển, làng ven sông tới đủ cả. Vút! Cáo háo hức tới mức vểnh cả hai tai."
+        },
+        {
+          "speaker": "Cáo Cung Thủ",
+          "text": "Mỗi người mang theo một lá thư nhỏ. Cuối giải, Cáo buộc hết lên một mũi tên, bắn qua hào cho phà chở ra biển."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Một mũi tên chở thư của cả giải, oai quá!",
+          "reply": "Oai nhất từ trước tới giờ. Nhưng phải đấu xong đã."
+        },
+        {
+          "text": "Cáo có chắc thắng không ạ?",
+          "reply": "Không ai chắc thắng. Cáo chỉ chắc một điều: bắn hết sức."
+        }
+      ],
+      "en": {
+        "title": "Contest morning",
+        "goTo": "Go to the training ground, where Cáo Cung Thủ is giving his bow «Thunderbolt» one last polish",
+        "lines": [
+          "Today is the day, {name}. Archers from the mountains, the sea and the riverside villages have all come. Whoosh! I'm so excited both my ears are standing straight up.",
+          "Each of them brought a little letter. At the end, I'll tie them all to one arrow and shoot it over the moat for the ferry to carry out to sea."
+        ],
+        "choices": [
+          {
+            "text": "One arrow carrying the whole contest's letters, how grand!",
+            "reply": "Grandest ever. But the contest comes first."
+          },
+          {
+            "text": "Are you sure you'll win?",
+            "reply": "Nobody's sure of winning. I'm only sure of one thing: I'll shoot my very best."
+          }
+        ]
+      }
+    },
+    {
+      "id": "gom-thu-cung-thu",
+      "title": "Thư của các cung thủ",
+      "goTo": "Ra hòm thư giải đặt cạnh khán đài, các cung thủ để thư của mình quanh đó",
+      "kind": "search",
+      "targets": [
+        "st-cao-mui-ten-mang-thu-thu-mien-nui",
+        "st-cao-mui-ten-mang-thu-thu-mien-bien",
+        "st-cao-mui-ten-mang-thu-thu-ven-song"
+      ],
+      "en": {
+        "title": "The archers' letters",
+        "goTo": "Go to the stand's letterbox, where the archers have left their letters round about"
+      }
+    },
+    {
+      "id": "diem-chenh-vong-mot",
+      "title": "Điểm chênh vòng một",
+      "goTo": "Sang lều trọng tài xem bảng xếp hạng vòng một vừa dán lên",
+      "kind": "challenge",
+      "mechanic": "quiz",
+      "target": "st-cao-mui-ten-mang-thu-bang-xep-hang",
+      "skill": "hon-kem",
+      "prompt": "Bảng xếp hạng ghi: sau vòng một, cung thủ Sơn Dương miền núi được 72 điểm, Cáo được 64 điểm. Cáo gãi tai: «Thua rồi. Thua sòng phẳng. Mà thua bao nhiêu?» Cáo kém Sơn Dương bao nhiêu điểm?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "8 điểm"
+        },
+        {
+          "id": "b",
+          "text": "12 điểm"
+        },
+        {
+          "id": "c",
+          "text": "18 điểm"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Muốn biết kém bao nhiêu, lấy số lớn trừ số bé.",
+          "Làm phép tính 72 − 64, nhớ cẩn thận hàng đơn vị."
+        ],
+        "hint": "2 không trừ được 4, mượn 1 chục: 12 − 4 = 8.",
+        "answer": {
+          "text": "8 điểm",
+          "explanation": "72 − 64: hàng đơn vị 2 không trừ được 4, lấy 12 − 4 = 8, viết 8 nhớ 1. Hàng chục: 6 thêm 1 là 7, 7 − 7 = 0. Vậy Cáo kém Sơn Dương 8 điểm."
+        },
+        "en": {
+          "guide": [
+            "To find how many fewer, take the smaller number from the bigger one.",
+            "Work out 72 − 64, taking care with the ones."
+          ],
+          "hint": "You can't take 4 from 2, so borrow a ten: 12 − 4 = 8.",
+          "answer": {
+            "text": "8 points",
+            "explanation": "72 − 64: in the ones, 2 is less than 4, so 12 − 4 = 8, write 8 and carry 1. Tens: 6 plus 1 is 7, and 7 − 7 = 0. So Cáo is 8 points behind Sơn Dương."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tám điểm. Cáo gật đầu: «Ít thôi. Đấu lại là gỡ được.»",
+          "{name} trừ có nhớ chuẩn như trọng tài lâu năm.",
+          "Đúng tám điểm! Cáo xắn tay áo, mắt sáng rỡ."
+        ],
+        "wrong": [
+          "Hàng đơn vị 2 bé hơn 4, phải mượn một chục đấy {name}.",
+          "Mười hai điểm là nhiều quá, thử trừ lại từ hàng đơn vị nhé.",
+          "Lấy số điểm của Sơn Dương trừ đi số điểm của Cáo."
+        ],
+        "en": {
+          "right": [
+            "Eight points. Cáo nods: \"Not many. A rematch can win them back.\"",
+            "{name} subtracted with borrowing like a veteran judge.",
+            "Exactly eight! Cáo rolls up his sleeves, eyes shining."
+          ],
+          "wrong": [
+            "In the ones, 2 is less than 4, so you need to borrow a ten, {name}.",
+            "Twelve is too many; try subtracting again from the ones column.",
+            "Take Cáo's score away from Sơn Dương's score."
+          ]
+        }
+      },
+      "en": {
+        "title": "The gap after round one",
+        "goTo": "Go to the judges' tent to see the round-one scoreboard just pinned up",
+        "prompt": "The scoreboard says: after round one, the mountain archer Sơn Dương has 72 points and Cáo has 64. Cáo scratches an ear: \"Lost. Fair and square. But by how much?\" How many points is Cáo behind Sơn Dương?",
+        "choices": [
+          "8 points",
+          "12 points",
+          "18 points"
+        ]
+      }
+    },
+    {
+      "id": "loi-ra-buc-ban",
+      "title": "Lối ra bục bắn",
+      "goTo": "Tới lối ra bục bắn, mấy thùng tên xếp chắn ngang lối đi",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "maze",
+      "target": "st-cao-mui-ten-mang-thu-thung-ten-chan",
+      "skill": "logic",
+      "prompt": "Ô chú cáo là chỗ Cáo đứng, ô ngôi sao là bục bắn, ô gạch là thùng tên. Dãy bước nào đưa Cáo tới bục bắn mà không vấp thùng nào? (→ sang phải, ↓ đi xuống)",
+      "grid": [
+        [
+          "S",
+          ".",
+          "#",
+          ".",
+          "."
+        ],
+        [
+          "#",
+          ".",
+          "#",
+          ".",
+          "#"
+        ],
+        [
+          ".",
+          ".",
+          ".",
+          ".",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          "#",
+          ".",
+          "G"
+        ]
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "→ ↓ → → ↓ ↓ →"
+        },
+        {
+          "id": "b",
+          "text": "→ ↓ ↓ → → ↓ →"
+        },
+        {
+          "id": "c",
+          "text": "↓ → ↓ → → ↓ →"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Đặt ngón tay lên ô chú cáo.",
+          "Đi thử từng dãy; gặp ô gạch là dãy ấy hỏng.",
+          "Dãy đúng dừng ở ô ngôi sao."
+        ],
+        "hint": "Cột thứ hai có ba ô trống liền nhau từ trên xuống.",
+        "answer": {
+          "text": "Sang phải, xuống hai ô, sang phải hai ô, xuống, sang phải",
+          "explanation": "Dãy → ↓ ↓ → → ↓ → đi sang ô thứ hai, xuống hai lần tới hàng thứ ba, sang phải hai ô, xuống một ô rồi sang phải tới bục bắn mà không chạm thùng tên nào."
+        },
+        "en": {
+          "guide": [
+            "Put your finger on the fox square.",
+            "Try each sequence; land on a brick and that one fails.",
+            "The right one stops on the star square."
+          ],
+          "hint": "The second column has three open squares in a row from the top.",
+          "answer": {
+            "text": "Right, down twice, right twice, down, right",
+            "explanation": "→ ↓ ↓ → → ↓ → moves to the second square, goes down twice to the third row, right twice, down once, then right onto the shooting platform without touching a single arrow crate."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Không vấp thùng nào! Cáo nhảy lên bục, phủi tay đánh phủi.",
+          "{name} dò lối khéo như tên lách qua kẽ lá.",
+          "Lối gọn, bước chắc. Bục bắn đây rồi!"
+        ],
+        "wrong": [
+          "Rẽ phải ngay ở hàng thứ hai là đụng thùng tên đấy {name}.",
+          "Bước đầu đi xuống là vấp thùng liền, thử dãy khác nhé.",
+          "Xuống tới hàng thứ ba rồi mới rẽ phải."
+        ],
+        "en": {
+          "right": [
+            "Not a single crate bumped! Cáo hops onto the platform and dusts off his paws.",
+            "{name} found the way as neatly as an arrow slipping through leaves.",
+            "Clean route, steady steps. Here's the platform!"
+          ],
+          "wrong": [
+            "Turning right on the second row runs into a crate, {name}.",
+            "Going down first trips over a crate at once; try another sequence.",
+            "Go down to the third row before turning right."
+          ]
+        }
+      },
+      "en": {
+        "title": "The way to the platform",
+        "goTo": "Go to the path out to the shooting platform, where arrow crates are stacked across the way",
+        "prompt": "The fox square is where Cáo stands, the star square is the shooting platform, and brick squares are arrow crates. Which steps get Cáo to the platform without tripping over a crate? (→ right, ↓ down)",
+        "choices": [
+          "→ ↓ → → ↓ ↓ →",
+          "→ ↓ ↓ → → ↓ →",
+          "↓ → ↓ → → ↓ →"
+        ]
+      }
+    },
+    {
+      "id": "moi-dau-lai",
+      "title": "Mời đấu lại",
+      "goTo": "Lên bục bắn đấu lại, Cáo đứng chờ bên cạnh bia mới",
+      "kind": "decision",
+      "target": "st-cao-mui-ten-mang-thu-buc-ban",
+      "speaker": "Cáo Cung Thủ",
+      "prompt": "Cáo chìa tay về phía Sơn Dương: «Cậu bắn hay hơn. Cáo nhận thua vòng một.» Rồi quay sang {name}, cáo thì thầm: «Nhưng Cáo muốn đấu lại. Mời thế nào cho đẹp?»",
+      "choices": [
+        {
+          "id": "chuc-mung-truoc",
+          "text": "Chúc mừng Sơn Dương thật to trước đã",
+          "consequence": "Cáo hô to: «Chúc mừng Sơn Dương!» Cả bãi vỗ tay. Sơn Dương cười, tự đề nghị: «Đấu lại đi, cho vui.»"
+        },
+        {
+          "id": "dat-cuoc-thu",
+          "text": "Ai thắng vòng lại thì được buộc lá thư đầu tiên",
+          "consequence": "Sơn Dương gật ngay. Hai cung thủ bắt tay, mỗi người cầm một lá thư, mắt nhìn chằm chằm vào bia."
+        },
+        {
+          "id": "ban-chung",
+          "text": "Đấu lại xong, hai người cùng bắn mũi tên mang thư",
+          "consequence": "Sơn Dương đồng ý: «Thắng thua gì cũng bắn chung.» Cáo nhảy tưng tưng: «Một mũi tên, hai cung thủ. Chưa ai làm bao giờ!»"
+        }
+      ],
+      "en": {
+        "title": "Asking for a rematch",
+        "goTo": "Step up onto the rematch platform, where Cáo waits beside a fresh target",
+        "prompt": "Cáo holds out a paw to Sơn Dương: \"You shot better. I lost round one.\" Then he turns to {name} and whispers: \"But I want a rematch. What's a nice way to ask?\"",
+        "choices": [
+          {
+            "text": "Congratulate Sơn Dương loudly first",
+            "consequence": "Cáo shouts: \"Well done, Sơn Dương!\" The whole field claps. Sơn Dương grins and offers: \"Let's go again, just for fun.\""
+          },
+          {
+            "text": "Whoever wins the rematch ties on the first letter",
+            "consequence": "Sơn Dương agrees at once. The two archers shake hands, each holding a letter, eyes fixed on the target."
+          },
+          {
+            "text": "After the rematch, both shoot the letter-arrow together",
+            "consequence": "Sơn Dương agrees: \"Win or lose, we shoot it together.\" Cáo bounces up and down: \"One arrow, two archers. Nobody's ever done that!\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "vong-dau-lai",
+      "title": "Vòng đấu lại",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Vòng đấu lại bắt đầu, gió thổi nhè nhẹ qua hào. Nhìn mũi tên gió, ngắm lệch ngược lại như mẹo của Bác Quăng Lưới Biển, đủ ba mươi điểm nhé {name}!",
+      "game": "archery-wind",
+      "goal": 30,
+      "en": {
+        "title": "The rematch",
+        "prompt": "The rematch begins, with a soft breeze over the moat. Watch the wind arrow and aim the other way, just like Bác Quăng Lưới Biển's trick: thirty points, {name}!"
+      }
+    },
+    {
+      "id": "la-thu-bay-di",
+      "title": "Lá thư bay đi",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Vòng lại hòa sát nút. Cáo cười khanh khách, buộc thư của cả giải lên một mũi tên. Vút! Mũi tên bay qua hào, rơi đúng bên bến phà. Bác lái phà vẫy tay, nhận thư mang ra biển. Cáo quay sang {name}: «Bước một xong rồi. Trúng phóc.»",
+      "en": {
+        "title": "The letter flies away",
+        "text": "The rematch ends neck and neck. Cáo laughs out loud and ties the whole contest's letters onto one arrow. Whoosh! It flies over the moat and lands right by the ferry landing. The ferryman waves and takes the letters out to sea. Cáo turns to {name}: \"Step one done. Dead centre.\""
+      }
+    },
+    {
+      "id": "cho-thu-hoi-am",
+      "title": "Chờ thư hồi âm",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Từ hôm ấy, chiều nào Cáo cũng ra mép hào ngóng phà về. Cáo bảo thư bay đi được thì thư cũng sẽ bay về, chỉ cần đợi đúng chiều gió.",
+      "en": {
+        "title": "Waiting for a reply",
+        "text": "From that day on, every evening Cáo goes to the edge of the moat to watch for the ferry. A letter that can fly out, he says, can fly back, if you wait for the right wind."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 85,
+    "coin": 22,
+    "skillXp": {
+      "hon-kem": 1,
+      "logic": 1
+    },
+    "items": {
+      "huy-hieu-hiep-si": 1
+    }
+  },
+  "en": {
+    "title": "Cáo Cung Thủ's story, chapter 3: Lose a round, win a letter",
+    "summary": "On contest day, Cáo loses round one to the mountain archer Sơn Dương and owns up straight away. {name} gathers the archers' letters, works out the score gap, finds the way to the shooting platform, helps Cáo choose how to ask for a rematch, and then a letter really flies."
+  }
+}

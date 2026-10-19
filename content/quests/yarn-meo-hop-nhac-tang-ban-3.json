@@ -1,0 +1,445 @@
+{
+  "id": "yarn-meo-hop-nhac-tang-ban-3",
+  "region": "thu-vien",
+  "chapter": 2,
+  "title": "Chuyện của Mèo Hộp Nhạc, chương 3: Hòa nhạc dưới cây lá vàng",
+  "status": "active",
+  "category": "story",
+  "summary": "Mèo mở một buổi hòa nhạc hộp nhạc cho bạn đọc dưới cây lá vàng. {name} đọc giấy mời để biết giờ bắt đầu, tìm lối đẩy xe hộp nhạc qua sân, đếm ghế cho khán giả, chọn cách mở màn rồi cùng Mèo đàn trọn buổi hòa nhạc.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Hộp Nhạc",
+    "where": "Sân lễ hội lá vàng: bảng tin lễ hội, lối sỏi sau sân khấu, kho ghế gỗ, cây lá vàng",
+    "goal": "Chuẩn bị và tổ chức buổi hòa nhạc hộp nhạc cho bạn đọc",
+    "play": "Đọc giấy mời; tìm lối đẩy xe hộp nhạc; đếm ghế; chọn cách mở màn; đàn theo phím rơi",
+    "learn": "Xem giờ (giờ buổi chiều), phép cộng có nhớ trong phạm vi 100",
+    "reward": "85 XP, 25 Xu, Skill XP Xem đồng hồ, Phép cộng, Chuông gió ống trúc",
+    "next": "Những cuộn nhạc còn lại trong hòm phiếu"
+  },
+  "phases": {
+    "hook": "loi-moi-hoa-nhac",
+    "explore": "doc-giay-moi",
+    "learn": "day-xe-hop-nhac",
+    "challenge": "dem-ghe-khan-gia",
+    "decision": "mo-man-the-nao",
+    "finale": "dan-buoi-hoa-nhac",
+    "reward": "la-vang-vo-tay",
+    "next": "con-ca-xap-phieu"
+  },
+  "places": {
+    "meo-hop-nhac": "Giữa sân lễ hội",
+    "st-meo-hop-nhac-tang-ban-giay-moi": "Bảng tin lễ hội",
+    "st-meo-hop-nhac-tang-ban-xe-hop-nhac": "Lối sỏi sau sân khấu",
+    "st-meo-hop-nhac-tang-ban-chong-ghe": "Kho ghế gỗ",
+    "st-meo-hop-nhac-tang-ban-la-vang-lon": "Cây lá vàng"
+  },
+  "steps": [
+    {
+      "id": "loi-moi-hoa-nhac",
+      "title": "Lời mời của Mèo",
+      "goTo": "Ghé giữa sân lễ hội, Mèo đang buộc nơ cho chiếc hộp nhạc lớn",
+      "kind": "dialogue",
+      "target": "meo-hop-nhac",
+      "lines": [
+        {
+          "speaker": "Mèo Hộp Nhạc",
+          "text": "Tinh tang! {name}, chiều nay tớ mở buổi hòa nhạc hộp nhạc đầu tiên, ngay dưới cây lá vàng."
+        },
+        {
+          "speaker": "Mèo Hộp Nhạc",
+          "text": "Mỗi cuộn nhạc là bài yêu thích của một bạn đọc. Tớ đã dán giấy mời lên bảng tin rồi, cậu ghé xem giúp tớ có chỗ nào viết sai không."
+        },
+        {
+          "speaker": "Mèo Hộp Nhạc",
+          "text": "Còn phải đẩy hộp nhạc tới gốc cây, kê ghế cho khán giả nữa. Tinh tang, việc nhiều mà tim tớ đập nhanh như nhịp hành khúc."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Có mình đây, việc gì cũng xong!",
+          "reply": "Tinh tang, nghe cậu nói thế tim tớ chuyển sang nhịp ru êm rồi."
+        },
+        {
+          "text": "Mình được ngồi hàng ghế đầu không?",
+          "reply": "Ghế đầu tiên, sát hộp nhạc nhất, tớ để dành cho cậu từ hôm qua."
+        }
+      ],
+      "en": {
+        "title": "Mèo's invitation",
+        "goTo": "Drop by the middle of the festival yard, where Mèo is tying a bow on the big music box",
+        "lines": [
+          "Ting-a-ling! {name}, this afternoon I'm holding the very first music-box concert, right under the golden-leaf tree.",
+          "Every roll is one reader's favourite song. I've pinned the invitation on the notice board; could you check it for mistakes?",
+          "I still have to push the music box to the tree and set out chairs for the audience. Ting-a-ling, so much to do, and my heart's racing like a marching tune."
+        ],
+        "choices": [
+          {
+            "text": "I'm here, we'll get it all done!",
+            "reply": "Ting-a-ling, hearing that, my heart has slowed to a gentle lullaby."
+          },
+          {
+            "text": "Can I sit in the front row?",
+            "reply": "The very first seat, closest to the music box, has been saved for you since yesterday."
+          }
+        ]
+      }
+    },
+    {
+      "id": "doc-giay-moi",
+      "title": "Giấy mời trên bảng tin",
+      "goTo": "Tới bảng tin lễ hội đọc tờ giấy mời Mèo vừa dán",
+      "kind": "read",
+      "target": "st-meo-hop-nhac-tang-ban-giay-moi",
+      "skill": "xem-dong-ho",
+      "text": "Kính mời các bạn đọc thân mến,\nChiều thứ Bảy này, hộp nhạc lá vàng sẽ hát dưới tán cây lá vàng.\nCổng sân mở lúc 14 giờ để các bạn chọn chỗ ngồi.\nĐúng 15 giờ, cuộn nhạc đầu tiên bắt đầu quay.\nMỗi bạn nhớ mang theo một chiếc lá vàng làm vé vào cửa nhé.\nTinh tang, Mèo Hộp Nhạc",
+      "question": "Theo giấy mời, cuộn nhạc đầu tiên bắt đầu quay lúc mấy giờ chiều?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "2 giờ chiều"
+        },
+        {
+          "id": "b",
+          "text": "3 giờ chiều"
+        },
+        {
+          "id": "c",
+          "text": "5 giờ chiều"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Tìm dòng có chữ «cuộn nhạc đầu tiên».",
+          "Đổi giờ ở dòng đó sang cách gọi buổi chiều: 13 giờ là 1 giờ chiều, 14 giờ là 2 giờ chiều…"
+        ],
+        "hint": "14 giờ là lúc mở cổng. Cuộn nhạc quay sau đó một giờ.",
+        "answer": {
+          "text": "3 giờ chiều",
+          "explanation": "Giấy mời viết «Đúng 15 giờ, cuộn nhạc đầu tiên bắt đầu quay». 15 giờ còn gọi là 3 giờ chiều."
+        },
+        "en": {
+          "guide": [
+            "Find the line with \"the first roll\".",
+            "Change that time into afternoon time: 13:00 is 1 p.m., 14:00 is 2 p.m.…"
+          ],
+          "hint": "14:00 is when the gate opens. The roll starts an hour later.",
+          "answer": {
+            "text": "3 p.m.",
+            "explanation": "The invitation says \"At 15:00 sharp the first roll starts to turn\". 15:00 is also called 3 p.m."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba giờ chiều! Tinh tang, tớ sẽ đặt đồng hồ báo thức kêu đúng lúc ấy.",
+          "{name} đổi mười lăm giờ sang giờ chiều nhanh như lật một trang sách.",
+          "Đúng rồi, giấy mời không sai chữ nào, tớ yên tâm hẳn."
+        ],
+        "wrong": [
+          "Hai giờ chiều mới chỉ mở cổng thôi {name}, nhạc chưa quay đâu.",
+          "Muốn đổi sang giờ chiều thì bớt đi mười hai, cậu thử lại nhé.",
+          "Đọc lại dòng thứ tư của giấy mời, giờ cần tìm nằm ở đó."
+        ],
+        "en": {
+          "right": [
+            "Three in the afternoon! Ting-a-ling, I'll set my alarm clock to ring right then.",
+            "{name} turned fifteen o'clock into afternoon time as fast as turning a page.",
+            "Right, the invitation has no mistakes; what a relief."
+          ],
+          "wrong": [
+            "At 2 p.m. the gate only opens, {name}; the music hasn't started yet.",
+            "To get afternoon time, take away twelve; try again.",
+            "Read the fourth line of the invitation again; the time you need is there."
+          ]
+        }
+      },
+      "en": {
+        "title": "The invitation on the notice board",
+        "goTo": "Go to the festival notice board and read the invitation Mèo just pinned up",
+        "text": "Dear readers, you are warmly invited:\nThis Saturday afternoon, the golden-leaf music box will play under the golden-leaf tree.\nThe yard gate opens at 14:00 so you can choose your seats.\nAt 15:00 sharp, the first roll starts to turn.\nPlease bring one gold leaf each as your entry ticket.\nTing-a-ling, Mèo Hộp Nhạc",
+        "question": "According to the invitation, what time in the afternoon does the first roll start?",
+        "choices": [
+          "2 p.m.",
+          "3 p.m.",
+          "5 p.m."
+        ]
+      }
+    },
+    {
+      "id": "day-xe-hop-nhac",
+      "title": "Đẩy xe hộp nhạc qua sân",
+      "goTo": "Ra lối sỏi sau sân khấu, chiếc xe chở hộp nhạc đang đợi ở đó",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "maze",
+      "target": "st-meo-hop-nhac-tang-ban-xe-hop-nhac",
+      "skill": "logic",
+      "prompt": "Sân còn mấy vũng nước mưa và đống lá chưa quét. Ô có chú mèo là xe hộp nhạc, ô ngôi sao là gốc cây lá vàng, ô gạch là chỗ không đi được. Dãy bước nào đưa xe tới gốc cây? (→ sang phải, ↓ đi xuống)",
+      "grid": [
+        [
+          "S",
+          ".",
+          "#",
+          ".",
+          "."
+        ],
+        [
+          "#",
+          ".",
+          ".",
+          ".",
+          "#"
+        ],
+        [
+          ".",
+          "#",
+          "#",
+          ".",
+          "#"
+        ],
+        [
+          ".",
+          ".",
+          "#",
+          ".",
+          "G"
+        ]
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "→ → ↓ → ↓ ↓ →"
+        },
+        {
+          "id": "b",
+          "text": "→ ↓ → → ↓ ↓ →"
+        },
+        {
+          "id": "c",
+          "text": "↓ → → → ↓ ↓ →"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Đặt ngón tay lên ô chú mèo, đi thử từng bước của mỗi dãy.",
+          "Dãy nào chạm ô gạch thì loại ngay."
+        ],
+        "hint": "Ngay bên phải ô thứ hai của hàng trên cùng là ô gạch, nên phải đi xuống sớm.",
+        "answer": {
+          "text": "→ ↓ → → ↓ ↓ →",
+          "explanation": "Sang phải một ô, xuống một ô, sang phải hai ô, xuống hai ô rồi sang phải một ô là tới ngôi sao mà không chạm ô gạch nào. Hai dãy kia đều đâm vào ô gạch."
+        },
+        "en": {
+          "guide": [
+            "Put your finger on the cat square and try each line step by step.",
+            "Cross out any line that hits a brick square."
+          ],
+          "hint": "Right after the second square of the top row comes a brick square, so you must go down early.",
+          "answer": {
+            "text": "→ ↓ → → ↓ ↓ →",
+            "explanation": "One right, one down, two right, two down, then one right reaches the star without touching a brick. The other two lines both bump into a brick."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Xe lăn êm ru tới gốc cây, hộp nhạc không ướt một giọt nào!",
+          "{name} lái xe khéo hơn cả bác bưu tá chở thư mùa mưa.",
+          "Tinh tang, bánh xe kêu lọc cọc mà vẫn đúng đường, hay thật."
+        ],
+        "wrong": [
+          "Ối, xe sa vào vũng nước rồi {name}, thử dãy khác nhé.",
+          "Đi xuống ngay bước đầu là đâm vào đống lá đấy.",
+          "Hai bước sang phải liền nhau ở hàng trên cùng sẽ gặp ô gạch."
+        ],
+        "en": {
+          "right": [
+            "The cart rolls smoothly to the tree, and the music box stays perfectly dry!",
+            "{name} steers better than the postman with his letters in the rainy season.",
+            "Ting-a-ling, the wheels rattle but stay on the right track; wonderful."
+          ],
+          "wrong": [
+            "Oops, the cart ran into a puddle, {name}; try another line.",
+            "Going down on the very first step runs into the leaf pile.",
+            "Two steps right in a row on the top row hits a brick square."
+          ]
+        }
+      },
+      "en": {
+        "title": "Pushing the music box across the yard",
+        "goTo": "Go to the gravel lane behind the stage, where the cart carrying the music box is waiting",
+        "prompt": "The yard still has rain puddles and unswept leaf piles. The cat square is the music-box cart, the star square is the foot of the golden-leaf tree, and brick squares can't be crossed. Which steps get the cart to the tree? (→ right, ↓ down)",
+        "choices": [
+          "→ → ↓ → ↓ ↓ →",
+          "→ ↓ → → ↓ ↓ →",
+          "↓ → → → ↓ ↓ →"
+        ]
+      }
+    },
+    {
+      "id": "dem-ghe-khan-gia",
+      "title": "Đủ ghế cho khán giả",
+      "goTo": "Vào kho ghế gỗ, Mèo đang chỉ hai chồng ghế xếp",
+      "kind": "riddle",
+      "target": "st-meo-hop-nhac-tang-ban-chong-ghe",
+      "skill": "phep-cong",
+      "question": "Mèo kê hàng ghế trước có 26 chiếc, hàng ghế sau có 18 chiếc. Dưới gốc cây lá vàng có tất cả bao nhiêu chiếc ghế?",
+      "answer": {
+        "value": 44
+      },
+      "support": {
+        "guide": [
+          "Muốn biết tất cả, cộng số ghế hai hàng lại.",
+          "Đặt tính 26 + 18: cộng hàng đơn vị trước, 6 + 8 được hơn mười thì nhớ sang hàng chục."
+        ],
+        "hint": "6 + 8 = 14, viết 4 nhớ 1. 2 + 1 = 3, thêm 1 nhớ là 4.",
+        "answer": {
+          "text": "44 chiếc ghế",
+          "explanation": "26 + 18 = 44. Dưới gốc cây có tất cả 44 chiếc ghế."
+        },
+        "en": {
+          "guide": [
+            "To find how many in all, add the chairs in the two rows.",
+            "Set out 26 + 18: add the ones first; 6 + 8 is more than ten, so carry to the tens."
+          ],
+          "hint": "6 + 8 = 14, write 4 and carry 1. 2 + 1 = 3, plus the carried 1 makes 4.",
+          "answer": {
+            "text": "44 chairs",
+            "explanation": "26 + 18 = 44. There are 44 chairs in all under the tree."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn mươi bốn ghế! Tinh tang, bạn đọc nào tới cũng có chỗ ngồi.",
+          "{name} nhớ một sang hàng chục khéo như gảy một nốt luyến.",
+          "Đúng rồi, hai hàng ghế cong cong ôm lấy gốc cây như vầng trăng khuyết."
+        ],
+        "wrong": [
+          "Sáu cộng tám được mười bốn, nhớ đừng bỏ quên số 1 nhé {name}.",
+          "Đếm cả hai hàng cộng lại chứ không phải lấy hàng này trừ hàng kia.",
+          "Hàng chục còn phải thêm phần nhớ từ hàng đơn vị đấy."
+        ],
+        "en": {
+          "right": [
+            "Forty-four chairs! Ting-a-ling, every reader who comes will have a seat.",
+            "{name} carried the one to the tens as neatly as playing a slurred note.",
+            "Right, two curved rows of chairs hug the tree like a crescent moon."
+          ],
+          "wrong": [
+            "Six plus eight is fourteen; don't forget to carry the 1, {name}.",
+            "Add both rows together; don't take one row away from the other.",
+            "The tens still need the carry from the ones."
+          ]
+        }
+      },
+      "en": {
+        "title": "Enough chairs for the audience",
+        "goTo": "Go into the wooden chair store, where Mèo is pointing at two stacks of folding chairs",
+        "question": "Mèo sets 26 chairs in the front row and 18 chairs in the back row. How many chairs are there in all under the golden-leaf tree?"
+      }
+    },
+    {
+      "id": "mo-man-the-nao",
+      "title": "Mở màn thế nào?",
+      "goTo": "Đến cây lá vàng, khán giả đã ngồi kín ghế, ai cũng cầm một chiếc lá vàng",
+      "kind": "decision",
+      "target": "st-meo-hop-nhac-tang-ban-la-vang-lon",
+      "speaker": "Mèo Hộp Nhạc",
+      "prompt": "Mèo đứng cạnh hộp nhạc, đuôi khẽ run: «Tinh tang… sắp tới giờ rồi. Mình mở màn thế nào đây {name}?»",
+      "choices": [
+        {
+          "id": "thu-la-ve",
+          "text": "Thu vé lá vàng, gom lại rắc lên sân khấu",
+          "consequence": "Cả trăm chiếc lá vàng phủ quanh hộp nhạc như một tấm thảm. Mèo bảo đây là sân khấu đẹp nhất tớ từng thấy."
+        },
+        {
+          "id": "loi-chao",
+          "text": "Để Mèo nói lời cảm ơn bạn đọc trước",
+          "consequence": "Mèo cúi chào, kể chuyện hộp nhạc từng im bặt rồi được sửa lại. Khán giả vỗ tay rào rào cho cả Mèo lẫn {name}."
+        },
+        {
+          "id": "chuong-gio",
+          "text": "Rung chuông gió ba tiếng làm hiệu",
+          "consequence": "Ba tiếng leng keng vang lên, cả sân im phăng phắc. Đến chú chim sẻ trên cành cũng thôi ríu rít."
+        }
+      ],
+      "en": {
+        "title": "How shall we open?",
+        "goTo": "Go to the golden-leaf tree, where every seat is taken and everyone holds a gold leaf",
+        "prompt": "Mèo stands beside the music box, his tail trembling a little: \"Ting-a-ling… it's almost time. How shall we open, {name}?\"",
+        "choices": [
+          {
+            "text": "Collect the gold-leaf tickets and scatter them on the stage",
+            "consequence": "A hundred gold leaves spread round the music box like a carpet. Mèo says it's the most beautiful stage he has ever seen."
+          },
+          {
+            "text": "Let Mèo thank the readers first",
+            "consequence": "Mèo bows and tells how the music box once fell silent and was mended. The audience claps loudly for both Mèo and {name}."
+          },
+          {
+            "text": "Ring the wind chime three times as a signal",
+            "consequence": "Three jingles ring out and the whole yard falls quiet. Even the sparrow on the branch stops chirping."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dan-buoi-hoa-nhac",
+      "title": "Đàn trọn buổi hòa nhạc",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Cuộn nhạc đầu tiên bắt đầu quay! Chạm phím đàn rơi cho đúng nhịp để từng bài yêu thích của bạn đọc vang trọn dưới cây lá vàng.",
+      "game": "piano-tiles",
+      "goal": 60,
+      "en": {
+        "title": "Playing the whole concert",
+        "prompt": "The first roll starts to turn! Tap the falling keys in time so every reader's favourite song rings out in full under the golden-leaf tree."
+      }
+    },
+    {
+      "id": "la-vang-vo-tay",
+      "title": "Lá vàng vỗ tay",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bài cuối khép lại, gió thổi qua tán cây, lá vàng rơi lả tả như cũng vỗ tay. Mèo tặng {name} một chiếc chuông gió ống trúc: «Tinh tang, mỗi lần nó reo là tớ nhớ buổi chiều hôm nay.»",
+      "en": {
+        "title": "The gold leaves applaud",
+        "text": "The last song ends, a breeze runs through the branches, and gold leaves flutter down as if they are clapping too. Mèo gives {name} a bamboo wind chime: \"Ting-a-ling, whenever it rings I'll remember this afternoon.\""
+      }
+    },
+    {
+      "id": "con-ca-xap-phieu",
+      "title": "Còn cả xấp phiếu",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Khán giả về rồi, Mèo vẫn ngồi đếm những tờ phiếu chưa khắc. Còn bao nhiêu bài hát đang chờ thành cuộn nhạc, và Mèo biết lần sau nên rủ ai cùng làm.",
+      "en": {
+        "title": "A whole stack of slips left",
+        "text": "The audience has gone home, but Mèo sits counting the slips not yet carved. So many songs are waiting to become rolls, and Mèo knows exactly who to ask to help next time."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 85,
+    "coin": 25,
+    "skillXp": {
+      "xem-dong-ho": 1,
+      "phep-cong": 1
+    },
+    "items": {
+      "chuong-gio-truc": 1
+    }
+  },
+  "en": {
+    "title": "Mèo Hộp Nhạc's story, chapter 3: A concert under the golden-leaf tree",
+    "summary": "Mèo holds a music-box concert for the readers under the golden-leaf tree. {name} reads the invitation to find the start time, finds a way to push the music-box cart across the yard, counts the chairs, chooses how to open the show and plays the whole concert with Mèo."
+  }
+}
