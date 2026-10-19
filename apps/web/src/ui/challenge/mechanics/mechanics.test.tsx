@@ -249,6 +249,8 @@ describe('textbook mechanic screens send the answer the server grades', () => {
     const clues = byId('logic-challenge-clues');
     expect(clues?.textContent).toContain('Ghế 1 kê sát cây nến to');
     expect(clues?.textContent).toContain('Gấu ngồi kề cây nến to');
+    // Headed as clues, so they never read as a second list of the answers.
+    expect(screen.getByRole('region', { name: /Manh mối/ }).contains(clues ?? null)).toBe(true);
     expect(screen.queryByLabelText('unknown next element')).toBeNull();
   });
 

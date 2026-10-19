@@ -3,7 +3,8 @@
 // elements as a row ending in the unknown cell; a puzzle or maze shows them as its clues.
 import { LOGIC_SHOWS, isUnknownElement, type QuestStepPublic } from '@miu/schema/content';
 import type { StepAnswer } from '@miu/schema/game';
-import { Bi, useT } from '../../i18n/use-t';
+import { useId } from 'react';
+import { Bi, T, useT } from '../../i18n/use-t';
 import { ChallengeFrame, type ChallengeContext } from '../challenge-frame';
 import { ChoiceList } from '../choice-list';
 import { Illustration } from '../illustrations/illustration';
@@ -24,6 +25,7 @@ export function LogicChallenge({
   const [choice, setChoice] = useDraftState<string | null>('choice', null, isStringOrNull);
   const { t } = useT();
   const shows = LOGIC_SHOWS[step.logicType];
+  const cluesTitleId = useId();
 
   return (
     <ChallengeFrame
@@ -61,16 +63,22 @@ export function LogicChallenge({
         )}
 
         {shows.elements && step.elements.length > 0 && step.logicType !== 'pattern' && (
-          <ul className="logic-clue-list" aria-label="clues" data-id="logic-challenge-clues">
-            {step.elements.map((elem, idx) => (
-              <li key={elem.id} className="logic-clue">
-                {elem.image && <Illustration picture={elem.image} />}
-                <span className="logic-clue-label">
-                  <Bi {...context.say(elem.label, step.en?.elements?.[idx])} />
-                </span>
-              </li>
-            ))}
-          </ul>
+          // Headed, so the box reads as clues to work from, not as a second list of the answers.
+          <section className="logic-clue-box" aria-labelledby={cluesTitleId}>
+            <h3 className="logic-clue-title" id={cluesTitleId}>
+              🔎 <T k="challenge.clues" />
+            </h3>
+            <ul className="logic-clue-list" data-id="logic-challenge-clues">
+              {step.elements.map((elem, idx) => (
+                <li key={elem.id} className="logic-clue">
+                  {elem.image && <Illustration picture={elem.image} />}
+                  <span className="logic-clue-label">
+                    <Bi {...context.say(elem.label, step.en?.elements?.[idx])} />
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </section>
         )}
 
         {shows.grid && step.grid && (

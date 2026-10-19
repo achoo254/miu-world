@@ -43,7 +43,7 @@ const BY_NAME: ReadonlyArray<[RegExp, UiIcon]> = [
   [/^hải cẩu/i, 'seal'],
   [/^khỉ/i, 'monkey'],
   [/^cua/i, 'crab'],
-  [/^(họa mi|chim)/i, 'bird'],
+  [/^(họa mi|chim|bồ câu)/i, 'bird'],
   [/^dơi/i, 'bat'],
   [/^rô bốt/i, 'robot'],
   [/^người tuyết/i, 'snowman'],

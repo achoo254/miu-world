@@ -86,5 +86,7 @@ button.calendar-cell, .calendar-weekday { cursor: pointer; }
 .logic-maze-cell--wall { background: var(--color-field-edge); }
 .logic-maze-cell--start { background: var(--color-tile-1); }
 .logic-maze-cell--goal { background: var(--color-tile-3); }
-.logic-clue-list { list-style: none; margin: 0; padding: var(--space-sm); display: flex; flex-direction: column; gap: var(--space-xs); background: var(--color-surface-faint); border-radius: var(--radius-field); }
+.logic-clue-box { display: grid; gap: var(--space-xs); padding: var(--space-sm); background: var(--color-surface-faint); border-radius: var(--radius-field); }
+.logic-clue-title { margin: 0; font-size: var(--text-body); font-weight: 800; color: var(--color-ink-soft); }
+.logic-clue-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-xs); }
 .logic-clue { display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-xs) var(--space-sm); border-radius: var(--radius-key); background: var(--color-surface); box-shadow: var(--shadow-tile); font-weight: 700; font-size: var(--text-md); color: var(--color-ink); }

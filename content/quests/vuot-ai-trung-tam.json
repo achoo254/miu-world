@@ -127,11 +127,11 @@
       "logicType": "puzzle",
       "target": "trum-tt-koala",
       "skill": "logic",
-      "prompt": "Koala úp ba chiếc cốc thành hàng: đỏ, xanh, vàng, rồi giấu một viên bi. Bi không ở dưới chiếc cốc đứng giữa. Cốc có bi cũng không cùng màu với quả chuối chín. Bi nằm dưới cốc nào?",
+      "prompt": "Koala úp ba chiếc cốc rồi giấu một viên bi dưới một chiếc. Đọc ba manh mối của Koala: bi nằm dưới cốc nào?",
       "elements": [
-        { "id": "coc-do", "label": "Cốc đỏ" },
-        { "id": "coc-xanh", "label": "Cốc xanh" },
-        { "id": "coc-vang", "label": "Cốc vàng" }
+        { "id": "hang-coc", "label": "Ba chiếc cốc úp thành hàng: đỏ, xanh, vàng." },
+        { "id": "khong-o-giua", "label": "Bi không ở dưới chiếc cốc đứng giữa." },
+        { "id": "khong-mau-chuoi", "label": "Cốc có bi không cùng màu với quả chuối chín." }
       ],
       "choices": [
         { "id": "do", "text": "Cốc đỏ" },
