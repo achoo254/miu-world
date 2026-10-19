@@ -44,7 +44,8 @@
 @media (prefers-reduced-motion: reduce) {
   .species-card { transition: none; }
 }
-.creator-species-back { align-self: flex-start; }
+/* The way back Home on the white card: a full-size button with the house and an edge that shows on white. */
+.creator-species-back { align-self: flex-start; border-color: var(--color-field-edge); }
 
 .creator-layout {
   width: 100%;

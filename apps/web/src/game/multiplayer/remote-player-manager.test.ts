@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { Group, Sprite } from 'three';
+import { Group, PerspectiveCamera, Sprite, Vector3 } from 'three';
 import type { PlayerPresence } from '@miu/schema/multiplayer';
 import type { GuardedGltfLoader } from '../asset-loader';
 import { setLangMode } from '../../ui/i18n/i18n';
-import { RemotePlayerManager } from './remote-player-manager';
+import { BUBBLE_HEIGHT, NAMETAG_HEIGHT, RemotePlayerManager } from './remote-player-manager';
 
 // No model loads here: the character is an empty group, and the name tags and bubbles are recorded, not painted.
 const tags: Array<{ name: string; isBot: boolean; partyMate: boolean; busy: boolean }> = [];
@@ -18,6 +18,7 @@ vi.mock('../ambient/speech-bubble', () => ({
 }));
 
 vi.mock('./multiplayer-nametag', () => ({
+  NAMETAG_TOP: 0.46,
   createNametag: (name: string, isBot: boolean, partyMate = false, busy = false) => {
     tags.push({ name, isBot, partyMate, busy });
     return new Sprite();
@@ -102,5 +103,23 @@ describe('a bot’s own line', () => {
     remote.sayLine('bot-not-here', line);
     expect(shown).toHaveLength(3);
     remote.dispose();
+  });
+});
+
+describe('what shows over another player', () => {
+  it('puts the Interact label over her name tag and under her speech bubble, touching neither', async () => {
+    const remote = manager();
+    await remote.spawn(bot('bot-label'));
+    // Level with her head, a few blocks back: higher in the world is higher on the screen.
+    const camera = new PerspectiveCamera(60, 820 / 1180, 0.1, 100);
+    camera.position.set(1, 4.5, 9);
+    camera.lookAt(1, 4.5, 3);
+    camera.updateMatrixWorld();
+    const viewport = { width: 820, height: 1180 };
+    const screenY = (height: number): number => ((1 - new Vector3(1, 2 + height, 3).project(camera).y) / 2) * viewport.height;
+    const label = remote.screenAnchor('bot-label', camera, viewport);
+    if (!label) throw new Error('no anchor');
+    expect(label.y).toBeLessThan(screenY(NAMETAG_HEIGHT + 0.46));
+    expect(label.y).toBeGreaterThan(screenY(BUBBLE_HEIGHT));
   });
 });

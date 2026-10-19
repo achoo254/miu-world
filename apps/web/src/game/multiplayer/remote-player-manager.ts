@@ -14,7 +14,7 @@ import { loadPlayerCharacter, type PlayerCharacter } from '../entities/player-ch
 import { createVehicleMesh, equippedVehicle, rideLift, seatedPose, type EquippedVehicle } from '../player/vehicle-ride';
 import { createSpeechBubble, type SpeechBubble } from '../ambient/speech-bubble';
 import { cannedLine } from './canned-lines';
-import { createNametag, createSpeakingMark } from './multiplayer-nametag';
+import { NAMETAG_TOP, createNametag, createSpeakingMark } from './multiplayer-nametag';
 
 /** Her feet this far over the ground count as a jump (a step or a slope stays on the ground). */
 const AIRBORNE_ABOVE = 0.3;
@@ -30,9 +30,14 @@ export const REMOTE_SNAP_DISTANCE = 12;
 
 /** Close enough to the child for the interaction button (blocks); the server allows a little more for lag. */
 export const PLAYER_PROMPT_RADIUS = 2.6;
-/** Heights over her feet in the model's own units (the character root is scaled). */
-const NAMETAG_HEIGHT = 2.4;
-const BUBBLE_HEIGHT = 2.9;
+/**
+ * Heights over her feet in the model's own units (the character root is scaled), one above the other so none touches
+ * the next: her name tag, then the Interact label's foot just over the tag, then her speech bubble with room for the
+ * label under its tail (the bubble's canvas starts a little under the tip of its tail).
+ */
+export const NAMETAG_HEIGHT = 2.4;
+export const PROMPT_HEIGHT = NAMETAG_HEIGHT + NAMETAG_TOP + 0.1;
+export const BUBBLE_HEIGHT = PROMPT_HEIGHT + 0.35;
 
 const EMOTE_LINE: Record<SafeEmote, TextKey> = {
   wave: 'online.emote.wave',
@@ -373,9 +378,10 @@ export class RemotePlayerManager {
 
   /** Where the interaction label goes over a player, in screen pixels. */
   screenAnchor(id: string, camera: Camera, viewport: { width: number; height: number }): { x: number; y: number } | null {
-    const p = this.position(id);
-    if (!p) return null;
-    const v = new Vector3(p.x, p.y + 1.9, p.z).project(camera);
+    const root = this.entities.get(id)?.character.root;
+    if (!root) return null;
+    // Over her name tag, which the root's scale shrinks with the rest of her.
+    const v = new Vector3(root.position.x, root.position.y + PROMPT_HEIGHT * root.scale.y, root.position.z).project(camera);
     return { x: ((v.x + 1) / 2) * viewport.width, y: ((1 - v.y) / 2) * viewport.height };
   }
 

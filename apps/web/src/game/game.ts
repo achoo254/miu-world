@@ -45,11 +45,12 @@ import { createTargetArrow } from './entities/target-arrow';
 import { createMinimap } from './hud/minimap';
 import { bossMarkers, minimapMarkers, sideGiverMarkers, type MapBoss } from './hud/minimap-model';
 import { fetchSideGivers } from './hud/side-givers';
+import { promptClearOf, type ScreenBox } from './hud/prompt-placement';
 import { fetchStoryTellers } from './hud/story-tellers';
 import { fillPlayerName } from '@miu/quest/player-name';
 import { HOME_REGION } from '../ui/region/regions';
 import { DEFAULT_SPECIES } from './content/characters';
-import { loadPlayerCharacter, type ExtraPlayerAction } from './entities/player-character';
+import { PLAYER_TOP, loadPlayerCharacter, type ExtraPlayerAction } from './entities/player-character';
 import { loadPetCompanion } from './entities/pet-companion';
 import { createPetLife, type PetLife, type PetPlayer } from './pet/pet-life';
 import { gearLooks } from './pet/pet-gear-catalog';
@@ -772,6 +773,20 @@ export class Game {
         return b.width === 0 || left > b.right || left + width < b.left || top > b.bottom || top + height < b.top;
       });
     };
+    const herFeet = new Vector3();
+    const herHead = new Vector3();
+    /** Her figure on screen this frame, feet to the tips of her ears: the Interact label keeps off her head. */
+    const herOnScreen = (): ScreenBox => {
+      const feet = character.root.position;
+      herFeet.copy(feet).project(camera);
+      herHead.set(feet.x, feet.y + PLAYER_TOP, feet.z).project(camera);
+      const top = ((1 - herHead.y) / 2) * window.innerHeight;
+      const bottom = ((1 - herFeet.y) / 2) * window.innerHeight;
+      const x = ((herHead.x + 1) / 2) * window.innerWidth;
+      // About half as wide as she is tall.
+      const half = (bottom - top) / 4;
+      return { left: x - half, right: x + half, top, bottom };
+    };
     /** A villager or animal in reach when no quest target is: the child may chat with it or pet it. */
     let promptAmbient: AmbientTarget | null = null;
     /** An interactive furniture or prop object in reach (bed, chair, toilet, sink, stove, etc.). */
@@ -1310,10 +1325,12 @@ export class Game {
       if (anchorAt) {
         const anchor = store.getPromptAnchor();
         if (anchor) {
-          anchor.style.transform = `translate(-50%, -100%) translate(${anchorAt.x}px, ${anchorAt.y}px)`;
+          const size = { width: anchor.offsetWidth, height: anchor.offsetHeight };
+          const at = character.root.visible ? promptClearOf(anchorAt, size, herOnScreen()) : anchorAt;
+          anchor.style.transform = `translate(-50%, -100%) translate(${at.x}px, ${at.y}px)`;
           // Hidden until first positioned (no flash at 0,0), and while it would sit under a HUD panel: the
           // Interact button does the same, so the label never covers a panel's buttons nor hides under them.
-          anchor.style.visibility = labelClearOfHud(anchorAt, anchor.offsetWidth, anchor.offsetHeight) ? 'visible' : 'hidden';
+          anchor.style.visibility = labelClearOfHud(at, size.width, size.height) ? 'visible' : 'hidden';
         }
       }
       if (interact && promptTarget?.def.ride) {

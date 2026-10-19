@@ -275,7 +275,7 @@ export function PetCarePanel({ onClose, onPetGear, onRename }: PetCarePanelProps
 
   const title = state === 'ready' ? <T k="petCare.title" params={{ pet: name }} /> : <T k="petCare.tab.care" />;
   return (
-    <Modal title={title} onClose={onClose} dataId="play-pet-care" variant="scene" className="pet-care-modal">
+    <Modal title={title} onClose={onClose} dataId="play-pet-care" variant="scene" placement="top" className="pet-care-modal">
       <button type="button" className="scene-close" data-id="play-pet-care-close" aria-label={t('petCare.close')} onClick={onClose}>
         ✕
       </button>

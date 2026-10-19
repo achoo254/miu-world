@@ -78,7 +78,8 @@ function SpeciesStep({ current, switching, onPick }: { current: string; switchin
             <T k="creator.keepsProgress" />
           </p>
           {/* Changing her animal is a choice, not a step she must finish: the way back Home stays in sight. */}
-          <Link to="/home" className={`${buttonClass('ghost', { small: true })} creator-species-back`} data-id="creator-species-home">
+          <Link to="/home" className={`${buttonClass('ghost')} creator-species-back`} data-id="creator-species-home">
+            <Icon name="house" size={28} />
             <T k="common.backHome" />
           </Link>
         </>

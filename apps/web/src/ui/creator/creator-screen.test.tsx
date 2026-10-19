@@ -106,6 +106,9 @@ describe('Character Creator', () => {
     renderCreator();
     const home = await screen.findByRole('link', { name: 'Về trang chủ' });
     expect(home.getAttribute('href')).toBe('/home');
+    // A full-size button (not the small one), with the house: easy to find and to tap on a phone.
+    expect(home.className).not.toContain('btn--sm');
+    expect(home.querySelector('.icon')).not.toBeNull();
     cleanup();
     stubApi();
     renderCreator();

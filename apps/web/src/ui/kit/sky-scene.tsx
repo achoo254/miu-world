@@ -18,7 +18,8 @@ const CLOUDS = [
 const FAR_CLOUDS = [
   { left: '48%', top: '14%', w: '6rem', t: '90s', delay: '-20s' },
   { left: '12%', top: '38%', w: '5rem', t: '80s', delay: '-50s' },
-  { left: '62%', top: '70%', w: '7rem', t: '100s', delay: '-70s' },
+  // Low in the corner, not in the middle where the screens put their buttons: there it read as a shadow under them.
+  { left: '6%', top: '82%', w: '7rem', t: '100s', delay: '-70s' },
 ];
 
 /** Treasures floating at the edges of the sky, clear of the content in the middle. */

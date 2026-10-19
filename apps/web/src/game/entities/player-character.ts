@@ -26,6 +26,8 @@ type Locomotion = (typeof LOCOMOTION)[number] | SeatedPose;
  * walks, steps, climbs and jumps by her collision body (player-controller.ts), whatever this is.
  */
 export const PLAYER_SCALE = 0.68;
+/** Her height from her feet to the tips of her ears at that scale (blocks, the tallest of the animals). */
+export const PLAYER_TOP = 2;
 
 /** The everyday gesture she makes over her clip (interact/player-actions.ts), or none. */
 export type ExtraPlayerAction = PlayerAction | null;

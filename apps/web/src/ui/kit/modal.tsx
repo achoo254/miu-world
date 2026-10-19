@@ -26,8 +26,9 @@ export function Modal({
   onClose?: () => void;
   children: ReactNode;
   dataId?: string;
-  /** `bottom` docks the panel at the bottom edge (NPC dialogue over the game). */
-  placement?: 'center' | 'bottom';
+  /** `bottom` docks the panel at the bottom edge (NPC dialogue over the game); `top` at the top edge, so the middle and
+   *  bottom of the game show under it (her pet beside her while its care board is open). */
+  placement?: 'center' | 'bottom' | 'top';
   /** `wide` fits a challenge close-up. */
   size?: 'normal' | 'wide';
   /** `scene`: themed materials over the paused game instead of a white panel. */

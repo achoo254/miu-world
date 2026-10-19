@@ -87,6 +87,8 @@ describe('pet care board', () => {
     expect(document.querySelector('[data-id="pet-care-line"]')?.textContent).toMatch(/Bông/);
     // The game shows the name over the pet.
     expect(sent).toContainEqual({ type: 'pet-name', name: 'Bông' });
+    // Docked at the top, so the pet beside her in the middle of the view shows under the board.
+    expect(document.querySelector('[data-id="play-pet-care-backdrop"]')?.classList.contains('modal-backdrop--top')).toBe(true);
   });
 
   it('plays a scene in the world for a care button, folds while it plays, then tells what it brought', async () => {

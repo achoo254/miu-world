@@ -308,12 +308,27 @@
   .pet-care-stone, .pet-care-portrait > img, .pet-care-portrait::after, .pet-care-news li, .pet-scene-caption, .pet-scene-caption-art, .pet-hud-sniff { animation: none !important; }
 }
 
-/* Phones: a smaller picture, two stones a row. */
+/*
+ * Phones: the board (docked at the top) stays short enough for her pet, by her in the middle of the view, to show
+ * under it: a smaller picture, the three needs side by side, the tabs in one row without their pictures, and the care
+ * stones in one row. Touch targets stay 44px and more.
+ */
 @media (max-width: 40rem) {
-  .pet-care-portrait { width: 5rem; height: 5rem; }
-  .pet-care-actions { grid-template-columns: repeat(auto-fit, minmax(5.5rem, 1fr)); }
-  .pet-care-stone { min-height: 4.25rem; padding: var(--space-xs); font-size: var(--text-sm); }
+  .pet-care-modal { gap: var(--space-sm); }
+  .pet-care-modal > .ribbon { padding-inline: var(--space-md); font-size: var(--text-body); }
+  .pet-care-portrait { width: 4rem; height: 4rem; border-width: 3px; }
+  .pet-care-gear-badge { width: 1.5rem; height: 1.5rem; }
+  .pet-care-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-sm); padding: var(--space-xs) var(--space-sm); }
+  .pet-care-stat { flex-wrap: wrap; gap: 2px var(--space-xs); }
+  .pet-care-stat .icon { width: 1.25rem; height: 1.25rem; }
+  /* The word stays the meter's name for a screen reader; on a phone its picture and number say it. */
+  .pet-care-stat-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .pet-care-stat-value { width: auto; margin-left: auto; font-size: var(--text-sm); }
+  .pet-care-stat-track { flex: 1 0 100%; order: 1; height: 0.6rem; }
   .pet-care-tab { min-height: 2.75rem; padding: 0 var(--space-sm); font-size: var(--text-sm); }
-  .pet-care-stats { gap: var(--space-xs); }
-  .pet-care-stat-label { width: auto; }
+  .pet-care-tab .icon { display: none; }
+  .pet-care-panel { padding: var(--space-sm); }
+  .pet-care-actions { grid-template-columns: repeat(auto-fit, minmax(2.75rem, 1fr)); gap: var(--space-xs); }
+  .pet-care-stone { min-height: 4.25rem; padding: var(--space-xs) 2px; font-size: 0.75rem; }
+  .pet-care-stone .icon { width: 2rem; height: 2rem; }
 }

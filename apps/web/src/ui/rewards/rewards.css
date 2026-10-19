@@ -5,6 +5,8 @@
 .reward-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-xs); align-items: flex-start; font-weight: 700; font-size: var(--text-lg); }
 .reward-list li { display: flex; align-items: center; gap: var(--space-xs); flex-wrap: wrap; }
 .reward-cheer { display: flex; align-items: flex-end; justify-content: center; gap: var(--space-md); }
+/* Her portrait keeps its own height here (its usual pull-down onto an island would rest it on the quest's name). */
+.reward-cheer .miu-portrait { margin-bottom: 0; }
 /* The earned stars light one by one (--star-gap, matching the star sound); the other rewards slide in once the counters stop. */
 @media (prefers-reduced-motion: no-preference) {
   .reward-star:not(.reward-star--off) { animation: reward-star-pop 480ms cubic-bezier(0.3, 1.6, 0.5, 1) backwards; animation-delay: calc(var(--star, 1) * var(--star-gap)); }

@@ -9,9 +9,10 @@
   align-items: center;
 }
 .modal-backdrop--scene.modal-backdrop--bottom { place-items: end center; }
+.modal-backdrop--scene.modal-backdrop--top { place-items: start center; }
 /* A centred scene (a question, an event, a shop) blurs what is behind it: the game or Home still shows, but no text or
-   button of the page underneath reads through the scene's own. A dialogue at the bottom keeps the world sharp. */
-.modal-backdrop--scene:not(.modal-backdrop--bottom) { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+   button of the page underneath reads through the scene's own. A board docked at an edge keeps the world sharp. */
+.modal-backdrop--scene:not(.modal-backdrop--bottom, .modal-backdrop--top) { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 
 .scene-modal {
   position: relative;
@@ -177,6 +178,8 @@
   box-shadow: var(--shadow-panel);
 }
 .scene-sheet > .ribbon { max-width: calc(100% - 7rem); }
+/* A sheet as tall as the screen runs to its bottom edge: a strip left under it showed Home's lines through. */
+.modal-backdrop--scene:has(> .scene-sheet) { padding-bottom: env(safe-area-inset-bottom, 0px); }
 .scene-sheet > .scene-close {
   order: -1;
   position: sticky;

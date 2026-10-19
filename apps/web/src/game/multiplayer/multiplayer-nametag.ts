@@ -7,6 +7,11 @@ import { t } from '../../ui/i18n/i18n';
 const WIDTH = 384;
 const HEIGHT = 96;
 const WORLD_WIDTH = 2.2;
+/** The name's pill on the canvas: its top edge and its height (px). */
+const PILL_Y = 16;
+const PILL_HEIGHT = 60;
+/** How far the pill reaches above the tag's foot (in the units of the tag's parent). */
+export const NAMETAG_TOP = (WORLD_WIDTH * (HEIGHT - PILL_Y)) / WIDTH;
 
 /** The words on a name tag: the party star, the quest scroll, the bot badge, then the name. */
 export function nametagText(name: string, isBot: boolean, partyMate = false, busy = false): string {
@@ -28,9 +33,9 @@ export function createNametag(name: string, isBot: boolean, partyMate = false, b
     ctx.font = '700 36px "Baloo 2", "Nunito", sans-serif';
     const textWidth = Math.min(WIDTH - 40, ctx.measureText(text).width);
     const cardWidth = textWidth + 40;
-    const cardHeight = 60;
+    const cardHeight = PILL_HEIGHT;
     const x = (WIDTH - cardWidth) / 2;
-    const y = 16;
+    const y = PILL_Y;
 
     // Drop shadow
     ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
