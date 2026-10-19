@@ -30,7 +30,7 @@ Sửa `deploy.sh setup` giữ dòng env (0,94); lỗi giao diện chính (0,92);
 
 | # | Pha | Nội dung | Trạng thái |
 |---|---|---|---|
-| 1 | Vận hành | `tools/deploy/production/deploy.sh setup` giữ các dòng `MODERATOR_ACCOUNTS`, `TIMETABLE_DEFAULT_ACCOUNTS` (và các dòng tùy chọn khác do người đặt) thay vì xóa | pending |
+| 1 | Vận hành | `tools/deploy/production/deploy.sh setup` giữ các dòng `MODERATOR_ACCOUNTS`, `TIMETABLE_DEFAULT_ACCOUNTS` (và các dòng tùy chọn khác do người đặt) thay vì xóa | completed (`4bdcc756`) |
 | 2 | Giao diện chính | Hàng tiêu đề gọn ở màn luyện Olympic trên điện thoại (nút quay lại luôn thấy, không che câu hỏi, "1/10" vẫn hiện); tên chương trên thẻ nhiệm vụ điện thoại không bị cắt giữa chừng; phép tính không xuống dòng giữa biểu thức; bong bóng thoại và nhãn ở cảnh tổ đội không chồng; biểu tượng riêng cho "Rêu xanh cổ thụ" | completed |
 | 3 | Ghi chú nhỏ | Thú cưng bị bảng che (điện thoại), mũi tên vàng ló ra ở màn chăm sóc, ảnh đại diện chạm dòng tên chương, vệt mờ dưới "Đăng xuất", link "Về trang chủ" nhỏ, chữ màn sau lộ dưới bảng sự kiện, nhãn Vẹt đè đầu nhân vật | completed |
 | 4 | Bộ chụp ảnh | Thêm thông báo khi tắt online, màn `/kiem-duyet`, và một bước câu đố có manh mối vào `apps/web/e2e/screens.spec.ts` | completed ([report](../reports/screens-coverage-261019.md)) |
