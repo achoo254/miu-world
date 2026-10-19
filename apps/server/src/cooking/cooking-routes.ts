@@ -1,4 +1,4 @@
-import { and, eq } from 'drizzle-orm';
+import { and, eq, gt, sql } from 'drizzle-orm';
 import { Router } from 'express';
 import { z } from 'zod';
 import { ContentId } from '@miu/schema/content';
@@ -8,6 +8,7 @@ import type { ContentCatalog } from '../content/content-catalog';
 import type { Db } from '../db/client';
 import { inventoryItems, shopInventory } from '../db/schema';
 import { HttpError, parseInput } from '../http-error';
+import { lockChild } from '../shop/shop-routes';
 
 export interface CookingRouteDeps {
   db: Db;
@@ -50,53 +51,30 @@ export function cookingRoutes({ db, content }: CookingRouteDeps): Router {
     });
   });
 
-  /** Cook a delicious dish using ingredients from inventory */
+  /** Cooks a dish: the ingredients she has are used up, and the dish goes into her shop inventory. */
   router.post('/cooking/cook', requireParent, async (req, res) => {
     const childId = await activePlayerId(db, res, content.consent.version);
     const { recipeId } = parseInput(CookRequest, req.body);
     const recipe = content.recipes.get(recipeId);
     if (!recipe) throw new HttpError(404, 'recipe-not-found');
 
-    // Check ingredients
-    const inv = await db.select().from(inventoryItems).where(eq(inventoryItems.childId, childId));
-    const shopInv = await db.select().from(shopInventory).where(eq(shopInventory.childId, childId));
-
-    const available: Record<string, number> = {};
-    for (const item of inv) available[item.itemId] = (available[item.itemId] ?? 0) + item.qty;
-    for (const item of shopInv) available[item.itemId] = (available[item.itemId] ?? 0) + item.qty;
-
-    // Deduct ingredients if child owns them
-    for (const ing of recipe.ingredients) {
-      const ownedQty = available[ing.itemId] ?? 0;
-      if (ownedQty > 0) {
-        // deduct from inventoryItems or shopInventory
-        const inShop = shopInv.find((s) => s.itemId === ing.itemId && s.qty > 0);
-        if (inShop) {
-          const deduct = Math.min(inShop.qty, ing.qty);
-          await db
-            .update(shopInventory)
-            .set({ qty: inShop.qty - deduct })
-            .where(and(eq(shopInventory.childId, childId), eq(shopInventory.itemId, ing.itemId)));
-        }
+    // Cooking is free (owner decision): she may cook without the ingredients, and any she has in her shop
+    // inventory are used up (as many as the recipe takes, never below zero). One transaction with her profile row
+    // locked, and every change made in the database (`qty - n`, `qty + n`), so two cooks at once lose no update.
+    await db.transaction(async (tx) => {
+      await lockChild(tx, childId);
+      // Sorted ids: concurrent changes of the same rows always lock them in the same order.
+      for (const ing of [...recipe.ingredients].sort((a, b) => a.itemId.localeCompare(b.itemId))) {
+        await tx
+          .update(shopInventory)
+          .set({ qty: sql`greatest(${shopInventory.qty} - ${ing.qty}, 0)` })
+          .where(and(eq(shopInventory.childId, childId), eq(shopInventory.itemId, ing.itemId), gt(shopInventory.qty, 0)));
       }
-    }
-
-    // Add cooked dish to shop_inventory
-    const [existing] = await db
-      .select()
-      .from(shopInventory)
-      .where(and(eq(shopInventory.childId, childId), eq(shopInventory.itemId, recipe.resultItemId)));
-
-    if (existing) {
-      await db
-        .update(shopInventory)
-        .set({ qty: existing.qty + recipe.resultQty })
-        .where(and(eq(shopInventory.childId, childId), eq(shopInventory.itemId, recipe.resultItemId)));
-    } else {
-      await db
+      await tx
         .insert(shopInventory)
-        .values({ childId, itemId: recipe.resultItemId, qty: recipe.resultQty });
-    }
+        .values({ childId, itemId: recipe.resultItemId, qty: recipe.resultQty })
+        .onConflictDoUpdate({ target: [shopInventory.childId, shopInventory.itemId], set: { qty: sql`${shopInventory.qty} + ${recipe.resultQty}` } });
+    });
 
     const response: CookResponse = {
       recipe,
