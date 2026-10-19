@@ -1,148 +1,113 @@
 {
-  "capturedFrom": "4a7382ac8a27b72aaed8af7255ceeaf983773c65",
-  "capturedAt": "2026-10-13T10:39:30+07:00",
-  "reviewedAt": "2026-10-13T10:47:00+07:00",
-  "reviewer": "agent:general-purpose (sonnet) ×4 duyệt đủ 48 ảnh chụp từ cây sạch của 4a7382ac; phiên chính đối chiếu các ghi chú dời bố cục với 0b595602",
+  "capturedFrom": "c47a2d4fbf08076a56605fb588ea899b2558b3ab",
+  "capturedAt": "2026-10-19T08:06:05+07:00",
+  "reviewedAt": "2026-10-19T08:08:00+07:00",
+  "reviewer": "agent:claude (4 subagent, mỗi agent 12 ảnh)",
   "verdict": "pass",
   "findings": [
     {
       "shot": "360x740/07-play-hud.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Tên chương trên thẻ nhiệm vụ cắt bằng \"…\" (như các lần trước).",
+      "text": "Tên nhiệm vụ trong thẻ \"Nhiệm vụ hiện tại\" bị cắt thành \"Khu rừng bí mật – Chương 1: Lá...\", người chơi không đọc được tên chương. Lỗi này đã có từ bản trước, không phải lỗi mới.",
       "fixedIn": null
     },
     {
       "shot": "360x740/08-play-prompt.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Tên chương trên thẻ nhiệm vụ cắt bằng \"…\" (như các lần trước).",
-      "fixedIn": null
-    },
-    {
-      "shot": "360x740/09-dialogue.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Hội thoại NPC nay có nút ✕ ở góc (khoảng 48 px), không che lời thoại hay nút Nghe lại/Tiếp.",
+      "text": "Thẻ nhiệm vụ cắt tên chương thành \"Chương 1: Lá...\", giống ảnh 07. Thẻ đè lên mép trên của nút Tương tác nhưng không che chữ hay vùng chạm.",
       "fixedIn": null
     },
     {
       "shot": "360x740/10-question.png",
-      "kind": "overlap",
+      "kind": "clipped",
       "severity": "note",
-      "text": "Nút \"Nghe\" chen giữa phép tính, tách \"(8\" và \"+ 5 = ?)\" thành hai dòng (như lần trước).",
+      "text": "Phép tính trong đề bị xuống dòng giữa chừng: \"(8\" nằm cuối dòng trên, \"+ 5 = ?)\" sang dòng dưới cạnh nút Nghe, khiến bé khó đọc trọn phép tính. Nên giữ cả biểu thức trên một dòng. Lỗi đã có từ bản trước.",
       "fixedIn": null
     },
     {
-      "shot": "360x740/11-reward.png",
-      "kind": "clipped",
+      "shot": "360x740/03-creator.png",
+      "kind": "other",
       "severity": "note",
-      "text": "Ảnh chụp lúc bảng thưởng đã cuộn; ô tích \"Kèm lời mời kết bạn\" vẽ nhỏ, cả dòng nhãn là vùng chạm 44 px (như lần trước).",
+      "text": "\"Về trang chủ\" chỉ là dòng chữ nhỏ, không có khung nút, nên khó thấy đây là nút quay lại và vùng chạm có vẻ nhỏ hơn 44px. Bản trước cũng vậy.",
       "fixedIn": null
     },
     {
       "shot": "360x740/13-olympiad-practice.png",
-      "kind": "missing-close",
+      "kind": "off-screen",
       "severity": "note",
-      "text": "Ảnh chụp lúc bảng thi thử đã cuộn, nút đóng ở phần cuộn khuất (như lần trước).",
+      "text": "Ảnh đang cuộn xuống giữa bài: dòng đầu câu hỏi bị cắt ở mép trên, và trong khung hình không thấy nút đóng hay quay lại. Bản trước cũng y hệt; cần kiểm lại xem nút đóng có còn ở phía trên khi cuộn lên không.",
       "fixedIn": null
     },
     {
-      "shot": "360x740/16-backpack.png",
-      "kind": "shifted",
+      "shot": "360x740/14-boss.png",
+      "kind": "clipped",
       "severity": "note",
-      "text": "Trang Ba lô lên khoảng 40 px vì tên một vật phẩm xuống ba dòng và trang chừa chỗ dưới nút Quay lại game; nút vẫn hiện đủ.",
+      "text": "Ở thanh máu của boss, tên «Chó Bạc Canh Hào» bị xuống dòng, còn chữ «HP» rơi xuống dòng dưới, tách khỏi «100 / 500». Đọc vẫn hiểu nhưng trông lệch.",
       "fixedIn": null
     },
     {
       "shot": "360x740/18-party.png",
       "kind": "clipped",
       "severity": "note",
-      "text": "Tên chương trên thẻ nhiệm vụ cắt bằng \"…\" (như lần trước).",
+      "text": "Tên nhiệm vụ trên thẻ «Nhiệm vụ hiện tại» bị cắt bằng dấu ba chấm giữa câu («Chương 1: Lá...»). Bản trước cũng vậy.",
       "fixedIn": null
     },
     {
-      "shot": "360x740/22-friends-invite.png",
-      "kind": "clipped",
-      "severity": "note",
-      "text": "Ô link mời cắt cuối link; nút Chia sẻ và Thu hồi nằm ngoài nút nổi Quay lại game (như lần trước).",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/02-players.png",
+      "shot": "360x740/17-pet-care.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Một đám mây trang trí mờ sau mép dưới nút Đăng xuất, không che chữ hay vùng chạm (như lần trước).",
+      "text": "Con mèo 3D bị các bảng chỉ số và hàng nút Chăm sóc/Làm trò che gần hết, chỉ còn lộ phần chân. Không che chữ hay vùng chạm nào.",
       "fixedIn": null
     },
     {
       "shot": "820x1180/03-creator.png",
       "kind": "other",
       "severity": "note",
-      "text": "Lối \"Về trang chủ\" là chữ đậm nhỏ, vùng chạm thấp hơn 44 px (như lần trước).",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/09-dialogue.png",
-      "kind": "other",
-      "severity": "note",
-      "text": "Hội thoại NPC nay có nút ✕ ở góc (khoảng 48 px), không che lời thoại hay nút Nghe lại/Tiếp.",
+      "text": "Nút \"Về trang chủ\" chỉ là dòng chữ nhỏ, không có khung nút, vùng chạm trông thấp hơn 44px nên bé khó bấm trúng trên iPad. Lỗi này đã có từ bản trước.",
       "fixedIn": null
     },
     {
       "shot": "820x1180/11-reward.png",
-      "kind": "other",
+      "kind": "overlap",
       "severity": "note",
-      "text": "Ô tích \"Kèm lời mời kết bạn\" vẽ khoảng 28 px, cả dòng nhãn là vùng chạm 44 px (như lần trước).",
+      "text": "Vòng tròn ảnh nhân vật đè nhẹ lên dòng \"Khu rừng bí mật – Chương 1: Lá thần\" ngay bên dưới, mép trên chữ \"Chương\" bị che một phần. Chữ vẫn đọc được.",
       "fixedIn": null
     },
     {
-      "shot": "820x1180/14-boss.png",
+      "shot": "820x1180/08-play-prompt.png",
       "kind": "other",
       "severity": "note",
-      "text": "Dòng gợi ý dưới câu hỏi khác lần trước (lời gợi ý xoay vòng); không có chữ thô hay tiếng Anh lọt vào.",
+      "text": "Nhãn \"Vẹt · Nói chuyện\" nằm ngay trên đầu nhân vật của bé, còn chính bạn Vẹt bị thân nhân vật che gần hết. Người chơi khó thấy mình đang tương tác với ai.",
       "fixedIn": null
     },
     {
-      "shot": "820x1180/16-backpack.png",
-      "kind": "shifted",
+      "shot": "820x1180/02-players.png",
+      "kind": "other",
       "severity": "note",
-      "text": "Hồ sơ và bảng Ba lô lên khoảng 38 px: trang chừa chỗ dưới nút Quay lại game từ 0b595602 nên ảnh chụp lúc cuộn lệch; cỡ bảng không đổi.",
+      "text": "Ngay dưới nút \"Đăng xuất\" có một mảng trắng mờ như bóng nút thừa, trông giống một nút thứ hai bị lệch. Lỗi này đã có từ bản trước.",
+      "fixedIn": null
+    },
+    {
+      "shot": "820x1180/12-event-panel.png",
+      "kind": "other",
+      "severity": "note",
+      "text": "Ở mép dưới bảng sự kiện vẫn lộ chữ của màn phía sau, trông như chữ bị cắt. Nút đóng (X) vẫn rõ và bấm được.",
       "fixedIn": null
     },
     {
       "shot": "820x1180/17-pet-care.png",
-      "kind": "other",
+      "kind": "overlap",
       "severity": "note",
-      "text": "Một mảnh nhọn như đuôi bong bóng thoại thò ra giữa hàng tab và khay hành động, không che chữ hay vùng chạm (như lần trước).",
+      "text": "Mũi tên chỉ đường màu vàng của cảnh 3D vẫn ló ra ở góc trái, giữa hàng tab và khay nút Cho ăn. Không che chữ hay nút, nhưng trông như một mảnh giao diện bị lạc khi bảng chăm sóc thú cưng đang mở.",
       "fixedIn": null
     },
     {
       "shot": "820x1180/18-party.png",
       "kind": "overlap",
       "severity": "note",
-      "text": "Bóng thoại \"Chào cậu!\" của Bông bị nhãn \"Bông · Tương tác\" che gần hết; chỉ che chữ phụ, không che nút.",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/20-landing.png",
-      "kind": "shifted",
-      "severity": "note",
-      "text": "Khối nội dung xuống khoảng 28 px vì thẻ bài nay nằm trên nền sáng phía trên các đảo (thay đổi của 0b595602).",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/21-lesson-page.png",
-      "kind": "shifted",
-      "severity": "note",
-      "text": "Trang bài nay nằm giữa màn cao theo chiều dọc, đúng ý 0b595602 (\"short lesson page is centred on tall screens\").",
-      "fixedIn": null
-    },
-    {
-      "shot": "820x1180/22-friends-invite.png",
-      "kind": "shifted",
-      "severity": "note",
-      "text": "Tiêu đề Bạn bè, nút Quay lại và bảng lên khoảng 38 px, cùng lý do với Ba lô.",
+      "text": "Nhãn tương tác \"Bông · Tương tác\" chạm sát mép trên của bảng tên \"Bông\" trên đầu nhân vật, hai nhãn gần như dính vào nhau. Vẫn đọc được, nhưng nên tăng khoảng cách cho thoáng.",
       "fixedIn": null
     }
   ]
