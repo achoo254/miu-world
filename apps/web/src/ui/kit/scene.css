@@ -178,13 +178,14 @@
   box-shadow: var(--shadow-panel);
 }
 .scene-sheet > .ribbon { max-width: calc(100% - 7rem); }
-/* Around a sheet (the rim the backdrop's padding leaves, a strip under it on an iPad) Home's lines read through the
-   light scene blur: a sheet's backdrop dims and blurs Home until no text of it reads. */
+/* Around a sheet (the rim the backdrop's padding leaves, a strip under it on an iPad) Home's lines read through: a blur
+   is not drawn everywhere (the iPad pictures showed them sharp). Nothing behind a sheet is worth seeing, so its
+   backdrop is the sky, dimmed and opaque. */
 .modal-backdrop--scene:has(> .scene-sheet) {
   padding-bottom: env(safe-area-inset-bottom, 0px);
-  background: var(--color-backdrop);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background:
+    linear-gradient(var(--color-backdrop), var(--color-backdrop)),
+    linear-gradient(180deg, var(--color-sky-top), var(--color-sky-mid) 55%, var(--color-sky-bottom));
 }
 .scene-sheet > .scene-close {
   order: -1;
