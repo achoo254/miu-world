@@ -1,8 +1,8 @@
 {
   "viewport": "360x740",
-  "capturedFrom": "462d9f012a24354a0c8fe15a44358f1062ac7adb",
+  "capturedFrom": "601d07ea56fd33d7af94805172ab6dd230ca7d13",
   "uncommitted": [],
-  "capturedAt": "2026-10-19T13:59:51+07:00",
+  "capturedAt": "2026-10-19T15:23:52+07:00",
   "shots": [
     {
       "shot": "360x740/01-login.png",
@@ -81,7 +81,7 @@
       "status": "ok",
       "facts": {
         "offScreen": [
-          "[data-id=\"creator-species-rabbit\"] at 54,629–306,871"
+          "[data-id=\"creator-species-rabbit\"] at 54,637–306,879"
         ],
         "overlaps": [],
         "missingClose": [],
@@ -144,7 +144,6 @@
         "overlaps": [],
         "missingClose": [],
         "clipped": [
-          "[data-id=\"hud-tracker-quest\"] shows 224×23 of 245×23",
           "span.hud-btn-label \"Bạn bè\" shows 1×1 of 56×23",
           "span.hud-btn-label \"Nhiệm vụ\" shows 1×1 of 64×20",
           "span.hud-btn-label \"Bản đồ\" shows 1×1 of 47×20",
@@ -164,7 +163,6 @@
         "overlaps": [],
         "missingClose": [],
         "clipped": [
-          "[data-id=\"hud-tracker-quest\"] shows 224×23 of 245×23",
           "span.hud-btn-label \"Bạn bè\" shows 1×1 of 56×23",
           "span.hud-btn-label \"Nhiệm vụ\" shows 1×1 of 64×20",
           "span.hud-btn-label \"Bản đồ\" shows 1×1 of 47×20",
@@ -300,7 +298,11 @@
         "offScreen": [],
         "overlaps": [],
         "missingClose": [],
-        "clipped": [],
+        "clipped": [
+          "span.pet-care-stat-label \"Vui vẻ\" shows 1×1 of 51×27",
+          "span.pet-care-stat-label \"No bụng\" shows 1×1 of 71×27",
+          "span.pet-care-stat-label \"Sạch sẽ\" shows 1×1 of 64×27"
+        ],
         "rawText": [],
         "small": []
       }
@@ -314,7 +316,6 @@
         "overlaps": [],
         "missingClose": [],
         "clipped": [
-          "[data-id=\"hud-tracker-quest\"] shows 224×23 of 245×23",
           "span.hud-btn-label \"Bạn bè\" shows 1×1 of 56×23",
           "span.hud-btn-label \"Mèo xám\" shows 1×1 of 73×23",
           "span.hud-btn-label \"Nhiệm vụ\" shows 1×1 of 64×20",
@@ -365,6 +366,54 @@
         "clipped": [
           "span.visually-hidden \"Bước 1, đã xong:\" shows 1×1 of 206×39",
           "span.visually-hidden \"Bước 2:\" shows 1×1 of 97×39"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/25-online-off.png",
+      "screen": "25-online-off",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [
+          "span.hud-btn-label \"Bạn bè\" shows 1×1 of 56×23",
+          "span.hud-btn-label \"Mèo xám\" shows 1×1 of 73×23",
+          "span.hud-btn-label \"Nhiệm vụ\" shows 1×1 of 64×20",
+          "span.hud-btn-label \"Bản đồ\" shows 1×1 of 47×20",
+          "span.hud-btn-label \"Ba lô\" shows 1×1 of 34×20",
+          "span.hud-btn-label \"Menu\" shows 1×1 of 38×20"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/26-moderation.png",
+      "screen": "26-moderation",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "360x740/27-puzzle-clues.png",
+      "screen": "27-puzzle-clues",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [
+          "[data-id=\"challenge-position\"] shows 1×1 of 72×27"
         ],
         "rawText": [],
         "small": []

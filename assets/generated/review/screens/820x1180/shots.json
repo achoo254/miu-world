@@ -1,8 +1,8 @@
 {
   "viewport": "820x1180",
-  "capturedFrom": "462d9f012a24354a0c8fe15a44358f1062ac7adb",
+  "capturedFrom": "601d07ea56fd33d7af94805172ab6dd230ca7d13",
   "uncommitted": [],
-  "capturedAt": "2026-10-19T14:00:26+07:00",
+  "capturedAt": "2026-10-19T15:24:30+07:00",
   "shots": [
     {
       "shot": "820x1180/01-login.png",
@@ -344,6 +344,47 @@
         "clipped": [
           "span.visually-hidden \"Bước 1, đã xong:\" shows 1×1 of 206×39",
           "span.visually-hidden \"Bước 2:\" shows 1×1 of 97×39"
+        ],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "820x1180/25-online-off.png",
+      "screen": "25-online-off",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "820x1180/26-moderation.png",
+      "screen": "26-moderation",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [],
+        "rawText": [],
+        "small": []
+      }
+    },
+    {
+      "shot": "820x1180/27-puzzle-clues.png",
+      "screen": "27-puzzle-clues",
+      "status": "ok",
+      "facts": {
+        "offScreen": [],
+        "overlaps": [],
+        "missingClose": [],
+        "clipped": [
+          "[data-id=\"challenge-position\"] shows 1×1 of 72×27"
         ],
         "rawText": [],
         "small": []
