@@ -20,7 +20,7 @@ import { BOT_MAP_CONFIGS } from './bot-profiles';
 import { memoryBotStore } from './bot-store';
 import { PartyService } from './party-service';
 import { Brain } from './bot-brain/brain';
-import { contentQuestBook, type BotQuest } from './bot-brain/quest-plan';
+import type { BotQuest } from './bot-brain/quest-plan';
 import { WalkStore } from './bot-brain/walk-store';
 
 const SCHOOL = 'truong-hoc';
@@ -29,18 +29,15 @@ const CONTENT = { ...FIXTURE_CONTENT, quests: new Map([...FIXTURE_CONTENT.quests
 const SCHOOL_BOTS = (BOT_MAP_CONFIGS[SCHOOL] ?? []).slice(0, 4);
 const walk = new WalkStore();
 const schoolGrid = walk.get(SCHOOL);
-/** A day the school's quests are what they are every day (no event on). */
-const DAY = new Date(Date.UTC(2026, 9, 7, 3));
 /**
- * What the school's bots play: the test content's party quest by its id (the quest they ask a party to play, which
- * the party quest service knows), over the steps of a real quest of the school, so that on their own they walk to
- * real places of its grid as they do in the game.
+ * The quest the school's bots know: the test content's party quest by its id (the one they ask a party to play, which
+ * the party quest service knows), with no step of their own to chase. A bot chasing its own quest's place keeps to it
+ * (that place, or looking for it, is worth 2 more than anything else; meeting a player is worth 0.6), so it walks over
+ * to a player it sees about once in a thousand choices: which seed brings that about then shifts with every place a
+ * content change adds or moves on the map. Free of a quest of their own, they walk the school's real grid among its
+ * real places and meet her as their minds choose.
  */
-function schoolQuest(): BotQuest {
-  const real = contentQuestBook().questsOn(SCHOOL, DAY).find((q) => q.steps.some((s) => s.targets.length > 0));
-  if (!real) throw new Error(`no quest with places on ${SCHOOL}`);
-  return { id: QUEST.id, steps: real.steps };
-}
+const BOTS_QUEST: BotQuest = { id: QUEST.id, steps: [] };
 
 let app: TestApp;
 let service: PartyQuestService | null = null;
@@ -125,8 +122,8 @@ async function until(what: string, holds: () => boolean, withinMs: number): Prom
   throw new Error(`not within ${withinMs} ms: ${what}`);
 }
 
-const spotNear = (x: number, z: number): [number, number, number] => {
-  const spot = schoolGrid?.snap({ x, y: 13, z }, 8);
+const spotNear = (x: number, z: number, y = 13): [number, number, number] => {
+  const spot = schoolGrid?.snap({ x, y, z }, 8);
   if (!spot) throw new Error(`no standing spot near ${x}, ${z} on ${SCHOOL}`);
   return [spot.x + 0.5, spot.y, spot.z + 0.5];
 };
@@ -146,11 +143,10 @@ describe('a companion bot from meeting a player to a party quest played together
     service = new PartyQuestService({ db: app.db, content: CONTENT, host: h.hub.coopHost() });
     h.hub.setPartyQuests(service);
     const store = memoryBotStore();
-    // Seeded dice: with these, one of the four bots that sees her chooses to walk over and meet her.
+    // Seeded dice, for a run that is the same every time (any seed brings a bot over within a minute or so).
     let seed = 2;
     const random = (): number => ((seed = (seed * 16_807) % 2_147_483_647) - 1) / 2_147_483_646;
-    const quest = schoolQuest();
-    runner = new BotRunner(h.hub, { random, store, walk: { get: (mapId) => (mapId === SCHOOL ? schoolGrid : null) }, quests: { questsOn: (mapId) => (mapId === SCHOOL ? [quest] : []) }, profiles: { [SCHOOL]: SCHOOL_BOTS } });
+    runner = new BotRunner(h.hub, { random, store, walk: { get: (mapId) => (mapId === SCHOOL ? schoolGrid : null) }, quests: { questsOn: (mapId) => (mapId === SCHOOL ? [BOTS_QUEST] : []) }, profiles: { [SCHOOL]: SCHOOL_BOTS } });
     const approaching = vi.spyOn(Brain.prototype, 'approaching', 'get');
     runner.start();
     const room = h.hub.getOrCreateRoom(SCHOOL);
@@ -163,8 +159,11 @@ describe('a companion bot from meeting a player to a party quest played together
       return Math.hypot(x - (at[0] ?? 0), y - (at[1] ?? 0), z - (at[2] ?? 0));
     };
 
-    // 1. She stands among the bots' homes, out of every bot's reach: one sees her and chooses to walk over to meet her.
-    const here = spotNear(400, 328);
+    // 1. She stands amid the bots' homes (the standing spot nearest their middle), in the bots' sight (16 blocks at
+    // least) and out of every bot's reach: one sees her and chooses to walk over to meet her.
+    const homes = SCHOOL_BOTS.map((b) => b.home);
+    const mid = (k: 'x' | 'y' | 'z'): number => homes.reduce((sum, h) => sum + h[k], 0) / homes.length;
+    const here = spotNear(mid('x'), mid('z'), Math.round(mid('y')));
     const a: Client = await h.joined(childId, here, SCHOOL);
     expect(Math.min(...SCHOOL_BOTS.map((b) => away(b.id, here)))).toBeGreaterThan(INTERACT_RANGE);
     const toHer = (): Array<Extract<ServerWsMessage, { type: 'bot-say' }>> => a.all('bot-say').filter((l) => l.to === a.id);
