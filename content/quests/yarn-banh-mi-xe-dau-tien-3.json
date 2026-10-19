@@ -1,0 +1,410 @@
+{
+  "id": "yarn-banh-mi-xe-dau-tien-3",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Chuyện của Cô bánh mì Hạnh, chương 3: Tấm biển của chiếc xe",
+  "status": "active",
+  "category": "story",
+  "summary": "Chiếc xe bánh mì cần một tấm biển. {name} tìm sơn, cọ và ván, chọn những từ chỉ đặc điểm cho biển, đọc mẩu giấy của một vị khách nhỏ, đặt tên xe rồi chạy giao bánh khắp chợ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cô bánh mì Hạnh",
+    "where": "Chợ phiên: gian hàng đồ ăn, nhà lồng chợ, lối giữa chợ, đài phun nước, sân chợ",
+    "goal": "Làm tấm biển và đặt tên cho chiếc xe bánh mì đầu tiên",
+    "play": "Tìm đồ làm biển theo lời tả; chọn từ chỉ đặc điểm; đọc mẩu giấy của khách; đặt tên xe; giao bánh",
+    "learn": "Từ chỉ sự vật, hoạt động, đặc điểm; đọc hiểu",
+    "reward": "70 XP, 18 Xu, Skill XP Từ ngữ, Đọc hiểu, Bánh mì sữa",
+    "next": "Phiên chợ sau, xe sẽ lăn sang những phiên chợ khác"
+  },
+  "phases": {
+    "hook": "xe-chua-ten",
+    "explore": "do-lam-bien",
+    "learn": "tu-tren-bien",
+    "challenge": "giay-cua-khach",
+    "decision": "dat-ten-xe",
+    "finale": "giao-banh-khap-cho",
+    "reward": "bien-treo-len",
+    "next": "phien-cho-xa"
+  },
+  "places": {
+    "co-banh-mi-hanh": "Gian hàng đồ ăn",
+    "do-lam-bien": "Nhà lồng chợ",
+    "st-banh-mi-xe-dau-tien-hop-son-vang": "Nhà lồng chợ",
+    "st-banh-mi-xe-dau-tien-co-viet-bien": "Nhà lồng chợ",
+    "st-banh-mi-xe-dau-tien-tam-van-bien": "Nhà lồng chợ",
+    "st-banh-mi-xe-dau-tien-bang-nhap-chu": "Lối giữa chợ",
+    "st-banh-mi-xe-dau-tien-mau-giay-khach": "Đài phun nước",
+    "st-banh-mi-xe-dau-tien-xe-banh-mi-son-vang": "Sân chợ"
+  },
+  "steps": [
+    {
+      "id": "xe-chua-ten",
+      "title": "Chiếc xe chưa có tên",
+      "goTo": "Tới gian hàng đồ ăn, cô Hạnh đang lau chiếc xe bằng khăn ướt",
+      "kind": "dialogue",
+      "target": "co-banh-mi-hanh",
+      "lines": [
+        {
+          "speaker": "Cô bánh mì Hạnh",
+          "text": "{name} ơi, hôm qua có bé hỏi cô: «Xe này tên gì ạ?» Cô đứng đực ra, chẳng biết trả lời sao!"
+        },
+        {
+          "speaker": "Cô bánh mì Hạnh",
+          "text": "Xe thì phải có biển. Biển thì phải có chữ. Chữ thì phải ngon như bánh. Giòn chưa? Chưa! Phải làm cho giòn."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình làm tấm biển đẹp nhất chợ!",
+          "reply": "Đẹp và dễ đọc, để bé con đứng xa cũng đánh vần được."
+        },
+        {
+          "text": "Cô định viết chữ gì lên biển?",
+          "reply": "Cô chưa nghĩ ra, nên mới cần {name} đấy."
+        }
+      ],
+      "en": {
+        "title": "A cart with no name",
+        "goTo": "Come to the food stalls, where Cô Hạnh is wiping the cart down with a damp cloth",
+        "lines": [
+          "{name}, yesterday a little one asked me: “What’s this cart called?” I just stood there with no answer!",
+          "A cart needs a sign. A sign needs words. And the words must be as tasty as the bread. Crunchy yet? Not yet! We have to make them crunchy."
+        ],
+        "choices": [
+          {
+            "text": "Let's make the best sign in the market!",
+            "reply": "Pretty and easy to read, so even a little one far away can spell it out."
+          },
+          {
+            "text": "What will you write on it?",
+            "reply": "I haven't a clue yet; that's why I need you, {name}."
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-lam-bien",
+      "title": "Đồ làm tấm biển",
+      "goTo": "Vào nhà lồng chợ tìm sơn, cọ và tấm ván cô Hạnh cất trong góc",
+      "kind": "find-object",
+      "prompt": "Đồ làm biển cất lẫn trong góc nhà lồng. Đọc lời tả rồi tìm cho đủ:",
+      "items": [
+        {
+          "id": "son",
+          "name": "Hộp sơn vàng",
+          "clue": "Nắp tròn dính sơn, màu vàng như vỏ bánh vừa nướng tới.",
+          "target": "st-banh-mi-xe-dau-tien-hop-son-vang"
+        },
+        {
+          "id": "co",
+          "name": "Cây cọ nhỏ",
+          "clue": "Cán gỗ mảnh, đầu lông mềm vuốt nhọn, viết được nét chữ thật thanh.",
+          "target": "st-banh-mi-xe-dau-tien-co-viet-bien"
+        },
+        {
+          "id": "van",
+          "name": "Tấm ván phẳng",
+          "clue": "Dài bằng hai gang tay, đã bào nhẵn, không một cái dằm.",
+          "target": "st-banh-mi-xe-dau-tien-tam-van-bien"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Things for the sign",
+        "goTo": "Go into the covered market and find the paint, brush and board Cô Hạnh stored in the corner",
+        "prompt": "The sign-making things are mixed up in a corner of the covered market. Read each description and find them all:",
+        "items": [
+          {
+            "name": "The yellow paint",
+            "clue": "A round lid smeared with paint, yellow as a crust baked just right."
+          },
+          {
+            "name": "The small brush",
+            "clue": "A slim wooden handle and soft bristles drawn to a point, for fine thin letters."
+          },
+          {
+            "name": "The flat board",
+            "clue": "Two hand-spans long, planed smooth, without a single splinter."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tu-tren-bien",
+      "title": "Từ nào tả chiếc bánh?",
+      "goTo": "Ra lối giữa chợ, cô Hạnh dựng bảng nháp chữ ở đó",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-banh-mi-xe-dau-tien-bang-nhap-chu",
+      "skill": "tu-ngu",
+      "prompt": "Cô Hạnh muốn biển xe chỉ có những từ chỉ đặc điểm của chiếc bánh. Chọn tất cả các từ chỉ đặc điểm:",
+      "choices": [
+        {
+          "id": "gion",
+          "text": "giòn"
+        },
+        {
+          "id": "thom",
+          "text": "thơm"
+        },
+        {
+          "id": "nong-hoi",
+          "text": "nóng hổi"
+        },
+        {
+          "id": "banh-mi",
+          "text": "bánh mì"
+        },
+        {
+          "id": "nuong",
+          "text": "nướng"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "gion",
+          "thom",
+          "nong-hoi"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Từ chỉ đặc điểm cho biết chiếc bánh thế nào.",
+          "Thử đặt từ vào câu «Chiếc bánh rất …»."
+        ],
+        "hint": "Một từ là tên đồ vật, một từ là việc làm: bỏ hai từ ấy ra.",
+        "answer": {
+          "text": "giòn, thơm, nóng hổi",
+          "explanation": "«Giòn», «thơm», «nóng hổi» nói chiếc bánh thế nào nên là từ chỉ đặc điểm. «Bánh mì» là từ chỉ sự vật, «nướng» là từ chỉ hoạt động."
+        },
+        "en": {
+          "guide": [
+            "A describing word tells you what the bread is like.",
+            "Try each word in “The bread is very …”."
+          ],
+          "hint": "One word names a thing and one names an action: leave those two out.",
+          "answer": {
+            "text": "crisp, fragrant, piping hot",
+            "explanation": "“Crisp”, “fragrant” and “piping hot” tell you what the bread is like, so they describe it. “Bread” names a thing and “bake” is an action."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Giòn, thơm, nóng hổi: đọc thôi đã đói bụng rồi!",
+          "{name} chọn từ trúng như cô chọn bột.",
+          "Ba từ ấy mà sơn lên biển thì đứng xa cũng thèm."
+        ],
+        "wrong": [
+          "«Nướng» là việc cô làm, chưa phải nét của chiếc bánh đâu.",
+          "«Bánh mì» là tên món rồi, mình đang tìm từ tả món cơ.",
+          "Còn một từ tả bánh chưa chọn, thử đặt từng từ sau «rất» xem."
+        ],
+        "en": {
+          "right": [
+            "Crisp, fragrant, piping hot: reading them makes you hungry already!",
+            "You picked the words as surely as I pick flour, {name}.",
+            "Paint those three on the sign and people will be hungry from across the square."
+          ],
+          "wrong": [
+            "“Bake” is something I do, not what the bread is like.",
+            "“Bread” is the name of the food; we’re looking for words about it.",
+            "One describing word is still unpicked; try putting each one after “very”."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which words describe the bread?",
+        "goTo": "Go out to the walkway through the market, where Cô Hạnh set up her draft board",
+        "prompt": "Cô Hạnh wants the sign to carry only words that describe the bread. Pick every describing word:",
+        "choices": [
+          "crisp",
+          "fragrant",
+          "piping hot",
+          "bread",
+          "bake"
+        ]
+      }
+    },
+    {
+      "id": "giay-cua-khach",
+      "title": "Mẩu giấy của vị khách nhỏ",
+      "goTo": "Sang đài phun nước, có mẩu giấy ai đó kẹp ở thành bể",
+      "kind": "read",
+      "target": "st-banh-mi-xe-dau-tien-mau-giay-khach",
+      "skill": "doc-hieu",
+      "text": "Gửi cô bán bánh mì,\nSáng nào con cũng đi ngang sạp của cô. Bánh của cô giòn tới mức con nghe tiếng rộp từ ngoài cổng.\nNhà con ở cuối xóm chài, xa chợ lắm. Nếu xe của cô chạy qua xóm con, con sẽ đứng đợi ở gốc bàng.\nCon là bạn nhỏ hay mặc áo kẻ sọc.",
+      "question": "Bạn nhỏ muốn xe bánh mì làm gì?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Chạy qua xóm chài, nơi bạn đứng đợi ở gốc bàng"
+        },
+        {
+          "id": "b",
+          "text": "Đỗ lại cả ngày ở cổng chợ"
+        },
+        {
+          "id": "c",
+          "text": "Bán bánh không giòn cho đỡ ồn"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Tìm câu có chữ «nếu».",
+          "Câu ấy nói xe chạy qua đâu và bạn đợi ở đâu."
+        ],
+        "hint": "Nhà bạn ở xa chợ nên bạn mong xe tới gần nhà mình.",
+        "answer": {
+          "text": "Chạy qua xóm chài, bạn đợi ở gốc bàng",
+          "explanation": "Mẩu giấy viết: nếu xe chạy qua xóm, bạn sẽ đứng đợi ở gốc bàng. Bạn mong xe tới gần nhà vì nhà xa chợ."
+        },
+        "en": {
+          "guide": [
+            "Find the sentence with “if”.",
+            "It says where the cart could pass and where the child would wait."
+          ],
+          "hint": "The child lives far from the market, so they hope the cart comes closer.",
+          "answer": {
+            "text": "Pass through the hamlet; the child waits by the almond tree",
+            "explanation": "The note says: if the cart passes through the hamlet, the child will wait by the almond tree. They live far from the market, so they hope the cart comes near."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi! Cô Hạnh vẽ ngay một cây bàng nhỏ lên bản đồ đường xe.",
+          "{name} đọc ra cả nỗi mong của bạn nhỏ áo sọc.",
+          "Xóm chài xa thật, nhưng xe có bánh mà, lăn tới được hết."
+        ],
+        "wrong": [
+          "Bạn nhỏ khen bánh giòn mà, đâu có chê ồn.",
+          "Bạn ở xa cổng chợ lắm, đỗ ở cổng thì bạn chẳng tới được.",
+          "Đọc lại câu bắt đầu bằng «Nếu» nhé, {name}."
+        ],
+        "en": {
+          "right": [
+            "That’s it! Cô Hạnh draws a little almond tree on the cart’s route map right away.",
+            "You read the striped-shirt child’s wish right out of the note, {name}.",
+            "The hamlet is far, but the cart has wheels; it can roll anywhere."
+          ],
+          "wrong": [
+            "The child loves the crunch; they never said it was too noisy.",
+            "The child lives far from the gate, so parking there won’t help.",
+            "Read the sentence that starts with “If” again, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "A note from a young customer",
+        "goTo": "Go over to the fountain; someone has tucked a note under its rim",
+        "text": "Dear bread lady,\nI walk past your stall every morning. Your bread is so crispy I can hear the crunch from the gate.\nI live at the far end of the fishing hamlet, a long way from the market. If your cart comes through our hamlet, I will wait by the almond tree.\nI’m the child who always wears a striped shirt.",
+        "question": "What does the child want the bread cart to do?",
+        "choices": [
+          "Pass through the fishing hamlet, where the child waits by the almond tree",
+          "Park at the market gate all day",
+          "Sell softer bread so it is less noisy"
+        ]
+      }
+    },
+    {
+      "id": "dat-ten-xe",
+      "title": "Xe tên là gì?",
+      "goTo": "Đẩy xe ra sân chợ, nơi chiếc xe bánh mì sơn vàng đang đợi",
+      "kind": "decision",
+      "target": "st-banh-mi-xe-dau-tien-xe-banh-mi-son-vang",
+      "speaker": "Cô bánh mì Hạnh",
+      "prompt": "Biển đã sơn chữ «giòn, thơm, nóng hổi», chỉ còn chỗ trống cho cái tên. Cô Hạnh đưa cây cọ cho {name}: «Cháu đặt đi.»",
+      "choices": [
+        {
+          "id": "gion-roi",
+          "text": "Xe «Giòn Rồi»",
+          "consequence": "Cả chợ đọc to rồi cười. Từ đó hễ thấy xe là ai cũng hỏi «Giòn chưa?» để nghe cô đáp."
+        },
+        {
+          "id": "an-sang",
+          "text": "Xe «Ăn Sáng Chưa»",
+          "consequence": "Cái tên hỏi thay cô. Người đi chợ nhìn biển là nhớ ra mình chưa ăn sáng."
+        },
+        {
+          "id": "nho-ten",
+          "text": "Xe «Nhớ Tên Khách»",
+          "consequence": "Cô Hạnh dán dưới biển một tờ giấy ghi món quen của từng người, ai đọc cũng thấy mình được nhớ."
+        }
+      ],
+      "en": {
+        "title": "What is the cart called?",
+        "goTo": "Push the cart out to the market square, where the yellow bánh mì cart is waiting",
+        "prompt": "The sign already says “crisp, fragrant, piping hot”, with a gap left for a name. Cô Hạnh hands {name} the brush: “You name it.”",
+        "choices": [
+          {
+            "text": "The “Crunchy!” cart",
+            "consequence": "The whole market reads it aloud and laughs. Ever after, anyone who sees the cart asks “Crunchy yet?” just to hear her answer."
+          },
+          {
+            "text": "The “Had Breakfast?” cart",
+            "consequence": "The name asks the question for her. Shoppers read the sign and remember they skipped breakfast."
+          },
+          {
+            "text": "The “We Know Your Name” cart",
+            "consequence": "Under the sign Cô Hạnh pins a list of everyone’s usual order, and whoever reads it feels remembered."
+          }
+        ]
+      }
+    },
+    {
+      "id": "giao-banh-khap-cho",
+      "title": "Giao bánh khắp chợ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Xe đã có tên! Đạp theo đường xe, ném bánh vào đúng sạp đã đặt trước. Tám điểm là cả chợ có bánh nóng.",
+      "game": "paper-route",
+      "goal": 8,
+      "en": {
+        "title": "Delivering round the market",
+        "prompt": "The cart has a name! Ride the route and toss each loaf to the stall that ordered it. Eight points and the whole market has hot bread."
+      }
+    },
+    {
+      "id": "bien-treo-len",
+      "title": "Tấm biển treo lên",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tấm biển vàng treo lên đầu xe, chữ sơn bóng loáng. Cô Hạnh dúi cho {name} một ổ bánh mì sữa: «Ổ này không bán, ổ này để cảm ơn.»",
+      "en": {
+        "title": "The sign goes up",
+        "text": "The yellow sign goes up on the front of the cart, the paint still glossy. Cô Hạnh presses a milk loaf into {name}’s hands: “This one’s not for sale. This one says thank you.”"
+      }
+    },
+    {
+      "id": "phien-cho-xa",
+      "title": "Những phiên chợ xa",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cô Hạnh đã vẽ đường xe qua xóm chài, qua gốc bàng. Phiên sau, xe sẽ lăn sang những phiên chợ khác, và cô vẫn sẽ hỏi từng người «ăn sáng chưa?».",
+      "en": {
+        "title": "Far-off fairs",
+        "text": "Cô Hạnh has drawn the route through the fishing hamlet and past the almond tree. Next market day the cart rolls on to other fairs, and she will still ask everyone “had breakfast yet?”."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "tu-ngu": 1,
+      "doc-hieu": 1
+    },
+    "items": {
+      "banh-mi-sua": 1
+    }
+  },
+  "en": {
+    "title": "Cô bánh mì Hạnh's story, chapter 3: A sign for the cart",
+    "summary": "The bánh mì cart needs a sign. {name} finds the paint, brush and board, picks describing words for the sign, reads a note from a young customer, names the cart and delivers bread all round the market."
+  }
+}

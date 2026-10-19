@@ -1,0 +1,359 @@
+{
+  "id": "yarn-ong-bay-giai-co-4",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Chuyện của Ông Bảy Cờ Gánh, chương 4: Chiều Chủ nhật dưới giàn mướp",
+  "status": "active",
+  "category": "story",
+  "summary": "Đã quá giờ mà chưa ai tới, Ông Bảy kể với {name} nỗi sợ của mình. {name} lần theo dấu vết, so số người hai tổ, kiểm quân cờ trên các bàn rồi cùng ông mở ván đầu tiên.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Ông Bảy Cờ Gánh",
+    "where": "Xóm: cổng vườn hoa, gốc sung, ghế mây bên ngõ, vách tổ ong, giàn mướp",
+    "goal": "Tìm xem cả xóm đi đâu và mở giải cờ gánh đầu tiên",
+    "play": "Lần theo dấu vết; so sánh hơn kém; chọn các bàn thiếu quân; chọn cách khai mạc; đánh cờ gánh",
+    "learn": "Bài toán hơn kém, phép cộng trong phạm vi 100",
+    "reward": "78 XP, 21 Xu, Skill XP Hơn kém, Phép cộng, Khung tranh gỗ",
+    "next": "Giải cờ thành lệ của xóm"
+  },
+  "phases": {
+    "hook": "chua-ai-toi",
+    "explore": "lan-dau-vet",
+    "learn": "to-nao-dong-hon",
+    "challenge": "ban-thieu-quan",
+    "decision": "khai-mac-the-nao",
+    "finale": "van-co-dau-tien",
+    "reward": "giai-co-tron-ven",
+    "next": "giai-co-thanh-le"
+  },
+  "places": {
+    "ong-bay-co-ganh": "Cổng vườn hoa",
+    "lan-dau-vet": "Gốc sung",
+    "st-ong-bay-giai-co-non-bo-quen": "Gốc sung",
+    "st-ong-bay-giai-co-bat-che-con-am": "Gốc sung",
+    "st-ong-bay-giai-co-giay-nhan-gap-doi": "Gốc sung",
+    "st-ong-bay-giai-co-bang-chia-to": "Ghế mây bên ngõ",
+    "st-ong-bay-giai-co-bon-ban-co-cho": "Vách tổ ong",
+    "st-ong-bay-giai-co-noi-che-dau-den": "Giàn mướp",
+    "st-ong-bay-giai-co-ban-co-giua-gian": "Giàn mướp"
+  },
+  "steps": [
+    {
+      "id": "chua-ai-toi",
+      "title": "Chưa ai tới cả",
+      "goTo": "Ra cổng vườn hoa, Ông Bảy Cờ Gánh ngồi một mình nhìn ra ngõ",
+      "kind": "dialogue",
+      "target": "ong-bay-co-ganh",
+      "lines": [
+        {
+          "speaker": "Ông Bảy Cờ Gánh",
+          "text": "{name}… quá giờ rồi. Bốn bàn cờ, chưa ai ngồi."
+        },
+        {
+          "speaker": "Ông Bảy Cờ Gánh",
+          "text": "Ông kể cháu nghe… ông sợ nhất là ngồi một mình cả buổi dưới giàn mướp, chẳng ai ghé đánh một ván."
+        },
+        {
+          "speaker": "Ông Bảy Cờ Gánh",
+          "text": "Hôm nay… ông lại thấy cái sợ ấy ngồi cạnh ông."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Có cháu ngồi đây rồi, ông không một mình đâu.",
+          "reply": "Ừ… cháu ngồi đây thì ông thấy ấm hơn. Cộc. Cảm ơn cháu."
+        },
+        {
+          "text": "Để cháu đi xem mọi người đâu cả!",
+          "reply": "Đi đi cháu. Ông ngồi đây, giữ bàn cờ cho xóm."
+        }
+      ],
+      "en": {
+        "title": "Nobody has come",
+        "goTo": "Go to the garden gate, where Ông Bảy Cờ Gánh sits alone looking down the lane",
+        "lines": [
+          "{name}… it is past the time. Four boards, and nobody sitting at them.",
+          "I'll tell you… what I fear most is sitting alone under the trellis all afternoon, with nobody stopping by for a game.",
+          "Today… I feel that fear sitting right next to me again."
+        ],
+        "choices": [
+          {
+            "text": "I'm sitting here, so you're not alone.",
+            "reply": "Yes… with you here I feel warmer. Tock. Thank you."
+          },
+          {
+            "text": "Let me go and see where everyone is!",
+            "reply": "Go on. I'll sit here and keep the boards for the lane."
+          }
+        ]
+      }
+    },
+    {
+      "id": "lan-dau-vet",
+      "title": "Mọi người đi đâu?",
+      "goTo": "Ra gốc sung, ở đó có mấy thứ ai đó bỏ lại",
+      "kind": "search",
+      "targets": [
+        "st-ong-bay-giai-co-non-bo-quen",
+        "st-ong-bay-giai-co-bat-che-con-am",
+        "st-ong-bay-giai-co-giay-nhan-gap-doi"
+      ],
+      "en": {
+        "title": "Where is everyone?",
+        "goTo": "Go to the fig tree, where someone has left a few things behind"
+      }
+    },
+    {
+      "id": "to-nao-dong-hon",
+      "title": "Tổ nào đông hơn?",
+      "goTo": "Sang ghế mây bên ngõ, mẩu giấy nhắn dẫn tới bảng chia tổ ở đó",
+      "kind": "riddle",
+      "target": "st-ong-bay-giai-co-bang-chia-to",
+      "skill": "hon-kem",
+      "question": "Hóa ra cả xóm đang tập cổ vũ để làm ông bất ngờ! Bảng ghi: tổ cổ vũ áo đỏ có 17 người, tổ áo xanh có 9 người. Tổ áo đỏ đông hơn tổ áo xanh bao nhiêu người?",
+      "answer": {
+        "value": 8
+      },
+      "support": {
+        "guide": [
+          "Muốn biết nhiều hơn bao nhiêu, lấy số lớn trừ số bé.",
+          "Tính 17 − 9."
+        ],
+        "hint": "Đếm thêm từ 9 tới 17 xem được mấy bước.",
+        "answer": {
+          "text": "8 người",
+          "explanation": "17 − 9 = 8, nên tổ áo đỏ đông hơn tổ áo xanh 8 người."
+        },
+        "en": {
+          "guide": [
+            "To find how many more, take the smaller number from the bigger one.",
+            "Work out 17 − 9."
+          ],
+          "hint": "Count on from 9 up to 17 and see how many steps that is.",
+          "answer": {
+            "text": "8 people",
+            "explanation": "17 − 9 = 8, so the red-shirt group has 8 more people than the blue-shirt group."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tám người! Tổ xanh phải hô to gấp đôi mới bằng tổ đỏ.",
+          "{name} so hơn kém nhanh như chớp, ông mà biết chắc ông khen mãi.",
+          "Đúng rồi, 17 bớt 9 còn 8. Bảng chia tổ xếp lại cho đều."
+        ],
+        "wrong": [
+          "Lấy số người tổ đông trừ đi số người tổ ít cháu nhé.",
+          "Cộng hai tổ lại là tính cả xóm rồi, không phải phần hơn đâu.",
+          "Thử đếm ngón tay từ 10 tới 17, rồi thêm một bước từ 9."
+        ],
+        "en": {
+          "right": [
+            "Eight people! The blue group must cheer twice as loud.",
+            "You compared them in a flash, {name}; Grandpa would praise you for days.",
+            "Right: 17 take away 9 leaves 8. The groups get evened out."
+          ],
+          "wrong": [
+            "Take the smaller group away from the bigger group.",
+            "Adding both groups counts everyone, not how many more.",
+            "Count on your fingers from 10 to 17, then one more step from 9."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which group is bigger?",
+        "goTo": "Go over to the wicker chair by the lane; the note leads to the cheering groups board there",
+        "question": "So the whole lane is secretly practising cheers to surprise Grandpa! The board says the red-shirt cheering group has 17 people and the blue-shirt group has 9. How many more people are in the red group?"
+      }
+    },
+    {
+      "id": "ban-thieu-quan",
+      "title": "Bàn nào còn thiếu quân?",
+      "goTo": "Sang vách tổ ong, bốn bàn cờ đã kê sẵn ở đó",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-ong-bay-giai-co-bon-ban-co-cho",
+      "skill": "phep-cong",
+      "prompt": "Mỗi bàn cờ gánh cần đủ 16 quân. Ông đếm quân trên bốn bàn theo hai màu. Chọn tất cả những bàn còn thiếu quân:",
+      "choices": [
+        {
+          "id": "ban-1",
+          "text": "Bàn 1: 8 quân đen và 8 quân trắng"
+        },
+        {
+          "id": "ban-2",
+          "text": "Bàn 2: 8 quân đen và 6 quân trắng"
+        },
+        {
+          "id": "ban-3",
+          "text": "Bàn 3: 9 quân đen và 7 quân trắng"
+        },
+        {
+          "id": "ban-4",
+          "text": "Bàn 4: 7 quân đen và 8 quân trắng"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "ban-2",
+          "ban-4"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Cộng số quân hai màu của từng bàn.",
+          "Bàn nào được ít hơn 16 là bàn còn thiếu."
+        ],
+        "hint": "Bàn 3 có 9 + 7, thử tính xem có đủ 16 không.",
+        "answer": {
+          "text": "Bàn 2 và bàn 4",
+          "explanation": "Bàn 1: 8 + 8 = 16, bàn 3: 9 + 7 = 16 là đủ. Bàn 2: 8 + 6 = 14 và bàn 4: 7 + 8 = 15 còn thiếu quân."
+        },
+        "en": {
+          "guide": [
+            "Add the two colours on each board.",
+            "Any board with fewer than 16 is short."
+          ],
+          "hint": "Board 3 has 9 + 7; check whether that makes 16.",
+          "answer": {
+            "text": "Boards 2 and 4",
+            "explanation": "Board 1: 8 + 8 = 16 and board 3: 9 + 7 = 16 are complete. Board 2: 8 + 6 = 14 and board 4: 7 + 8 = 15 are short."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cộc cộc! Bàn 2 thêm hai quân, bàn 4 thêm một quân là đủ.",
+          "{name} cộng từng bàn, không để ván nào thiếu quân.",
+          "Hai bàn thiếu, hai bàn đủ. Ông lấy quân dự phòng trong túi áo ra ngay."
+        ],
+        "wrong": [
+          "Bàn 3 tuy lệch màu nhưng cộng lại vẫn đủ mười sáu đấy.",
+          "Còn một bàn có mười lăm quân chưa chọn, cháu cộng lại xem.",
+          "Bàn 1 đủ cả hai màu rồi, không thiếu quân nào đâu."
+        ],
+        "en": {
+          "right": [
+            "Tock tock! Board 2 needs two more pieces, board 4 one more.",
+            "You added up every board, {name}; no game will be short.",
+            "Two short, two complete. Grandpa pulls the spares from his shirt pocket."
+          ],
+          "wrong": [
+            "Board 3 has uneven colours but still adds up to sixteen.",
+            "One more board has fifteen pieces; add it again.",
+            "Board 1 has both colours complete; nothing is missing."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which boards are short?",
+        "goTo": "Go to the beehive wall, where the four boards are already set out",
+        "prompt": "Every cờ gánh board needs 16 pieces. Grandpa counts the pieces on four boards by colour. Pick every board that is short:",
+        "choices": [
+          "Board 1: 8 black and 8 white pieces",
+          "Board 2: 8 black and 6 white pieces",
+          "Board 3: 9 black and 7 white pieces",
+          "Board 4: 7 black and 8 white pieces"
+        ]
+      }
+    },
+    {
+      "id": "khai-mac-the-nao",
+      "title": "Khai mạc thế nào?",
+      "goTo": "Vào giàn mướp, nồi chè đậu đen đã đặt sẵn và cả xóm đang ùa tới",
+      "kind": "decision",
+      "target": "st-ong-bay-giai-co-noi-che-dau-den",
+      "speaker": "Ông Bảy Cờ Gánh",
+      "prompt": "Cả xóm kéo tới, tổ đỏ tổ xanh hô vang tên ông. Ông Bảy đứng lặng một lúc rồi hỏi nhỏ: «Mình… mở giải thế nào đây, cháu?»",
+      "choices": [
+        {
+          "id": "van-dau-nho-nhat",
+          "text": "Ông đánh ván đầu với bạn nhỏ tuổi nhất xóm",
+          "consequence": "Bạn nhỏ nhất run tay, ông đi chậm từng nước cho bạn kịp nghĩ. Cả xóm vỗ tay mỗi lần nghe tiếng cộc."
+        },
+        {
+          "id": "ong-lam-trong-tai",
+          "text": "Ông làm trọng tài, đi giữa các bàn nhắc luật",
+          "consequence": "Ông chắp tay sau lưng đi quanh bốn bàn, chỗ nào hỏi luật là có ông. Mắt ông sáng như hồi trẻ."
+        },
+        {
+          "id": "moi-che-truoc",
+          "text": "Mời mọi người ăn chè trước rồi mới thi",
+          "consequence": "Bát chè đậu đen chuyền tay khắp giàn mướp. Ai cũng ngồi xuống, chẳng còn chỗ trống nào cạnh ông."
+        }
+      ],
+      "en": {
+        "title": "How to open the tournament?",
+        "goTo": "Go in under the gourd trellis; the pot of black-bean soup is ready and the whole lane is pouring in",
+        "prompt": "The whole lane arrives, red and blue groups chanting Grandpa’s name. Ông Bảy stands still for a moment, then asks softly: \"How… shall we open it?\"",
+        "choices": [
+          {
+            "text": "Grandpa plays the first game with the youngest child",
+            "consequence": "The youngest child’s hand shakes, so Grandpa moves slowly to give time to think. The lane claps at every tock."
+          },
+          {
+            "text": "Grandpa referees, walking between the boards to explain the rules",
+            "consequence": "Hands behind his back, Grandpa circles the four boards, there whenever someone asks a rule. His eyes shine as in his youth."
+          },
+          {
+            "text": "Serve everyone sweet soup first, then play",
+            "consequence": "Bowls of black-bean soup pass from hand to hand. Everyone sits down, and there is no empty seat beside Grandpa now."
+          }
+        ]
+      }
+    },
+    {
+      "id": "van-co-dau-tien",
+      "title": "Ván cờ gánh đầu tiên",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "goTo": "Ngồi vào bàn cờ lớn ngay dưới giàn mướp, cả xóm đứng quanh xem",
+      "target": "st-ong-bay-giai-co-ban-co-giua-gian",
+      "prompt": "Bàn cờ lớn đã bày giữa giàn mướp. Ông mời {name} đánh một ván cờ gánh cho cả xóm xem. Gánh được chín quân là thắng!",
+      "game": "co-ganh",
+      "goal": 9,
+      "en": {
+        "title": "The first game of cờ gánh",
+        "prompt": "The big board sits under the trellis. Grandpa invites {name} to play a game of cờ gánh while the lane watches. Capture nine pieces to win!",
+        "goTo": "Sit at the big board right under the gourd trellis, with the whole lane gathered round"
+      }
+    },
+    {
+      "id": "giai-co-tron-ven",
+      "title": "Giải cờ trọn vẹn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chiều tối, thắng thua gì cũng ngồi chung ăn chè. Ông Bảy tặng {name} một khung tranh gỗ: «Để cháu lồng ảnh cả xóm hôm nay.»",
+      "en": {
+        "title": "A tournament to remember",
+        "text": "By evening, winners and losers sit together over sweet soup. Ông Bảy gives {name} a wooden picture frame: \"For a picture of the whole lane today.\""
+      }
+    },
+    {
+      "id": "giai-co-thanh-le",
+      "title": "Thành lệ của xóm",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cả xóm hẹn nhau: tháng nào cũng có một chiều Chủ nhật dưới giàn mướp. Ông Bảy bảo từ nay ông chẳng sợ ngồi một mình nữa.",
+      "en": {
+        "title": "A lane tradition",
+        "text": "The lane agrees: one Sunday afternoon every month under the gourd trellis. Ông Bảy says from now on he is not afraid of sitting alone."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 78,
+    "coin": 21,
+    "skillXp": {
+      "hon-kem": 1,
+      "phep-cong": 1
+    },
+    "items": {
+      "khung-tranh-go": 1
+    }
+  },
+  "en": {
+    "title": "Ông Bảy Cờ Gánh's story, chapter 4: Sunday under the gourd trellis",
+    "summary": "It is past the time and nobody has come, so Ông Bảy tells {name} his fear. {name} follows the clues, compares the two cheering groups, checks the pieces on every board and opens the first game with him."
+  }
+}

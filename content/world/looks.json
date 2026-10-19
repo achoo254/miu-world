@@ -7091,6 +7091,1022 @@
    "kind": "object",
    "label": "Xem",
    "tint": "#b08860"
+  },
+  "st-banh-mi-xe-dau-tien-tui-bot-mi": {
+   "model": "packs/kenney-food-kit/2.0/bag.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#efe6d2"
+  },
+  "st-banh-mi-xe-dau-tien-hu-men-no": {
+   "model": "packs/kenney-food-kit/2.0/honey.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#d9c07a"
+  },
+  "st-banh-mi-xe-dau-tien-bo-ngo-tuoi": {
+   "model": "generated/props/leafy-green.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-banh-mi-xe-dau-tien-to-gio-nuong": {
+   "model": "generated/props/placard.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-banh-mi-xe-dau-tien-bang-cac-buoc": {
+   "model": "generated/props/placard-blue.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-banh-mi-xe-dau-tien-khoang-dat-thu-xe": {
+   "model": "packs/kenney-survival-kit/2.0/rock-flat.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-banh-mi-xe-dau-tien-banh-xe-go": {
+   "model": "generated/props/wheel.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#9a6b3c"
+  },
+  "st-banh-mi-xe-dau-tien-tam-bat-mai-xe": {
+   "model": "packs/kenney-survival-kit/2.0/bedroll-packed.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#e0b040"
+  },
+  "st-banh-mi-xe-dau-tien-tay-day-tre": {
+   "model": "packs/kenney-nature-kit/2.1/crops_bambooStageA.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-banh-mi-xe-dau-tien-coc-cho-do-xe": {
+   "model": "packs/kenney-nature-kit/2.1/stone_smallFlatA.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-banh-mi-xe-dau-tien-xap-ve-dat-banh": {
+   "model": "generated/props/ticket-yellow.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-banh-mi-xe-dau-tien-goc-cay-buoc-xe": {
+   "model": "packs/kenney-nature-kit/2.1/stump_round.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-banh-mi-xe-dau-tien-hop-son-vang": {
+   "model": "generated/props/artist-palette.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#f2c230"
+  },
+  "st-banh-mi-xe-dau-tien-co-viet-bien": {
+   "model": "generated/props/paintbrush.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-banh-mi-xe-dau-tien-tam-van-bien": {
+   "model": "packs/kenney-survival-kit/2.0/resource-planks.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-banh-mi-xe-dau-tien-bang-nhap-chu": {
+   "model": "generated/props/placard-blue.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng",
+   "tint": "#c0d8f0"
+  },
+  "st-banh-mi-xe-dau-tien-mau-giay-khach": {
+   "model": "generated/props/memo.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "st-banh-mi-xe-dau-tien-xe-banh-mi-son-vang": {
+   "model": "packs/kenney-survival-kit/2.0/box-large.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#f2c230"
+  },
+  "st-den-sen-ngan-ha-den-be-hong": {
+   "model": "generated/props/balloon.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#f08ab0"
+  },
+  "st-den-sen-ngan-ha-den-chu-com": {
+   "model": "generated/props/glowing-star.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#9ccf6a"
+  },
+  "st-den-sen-ngan-ha-den-chi-nga": {
+   "model": "generated/props/balloon-yellow.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#f3e6c0"
+  },
+  "st-den-sen-ngan-ha-so-dem-den": {
+   "model": "generated/props/notebook.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "st-den-sen-ngan-ha-bang-xep-den": {
+   "model": "generated/props/placard.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-den-sen-ngan-ha-den-chua-ten": {
+   "model": "generated/props/balloon-blue.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#cfe4f2"
+  },
+  "st-den-sen-ngan-ha-nan-tre": {
+   "model": "packs/kenney-survival-kit/2.0/resource-planks.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#d9c08a"
+  },
+  "st-den-sen-ngan-ha-giay-do-hong": {
+   "model": "generated/props/page-pink.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-den-sen-ngan-ha-canh-sen-kho": {
+   "model": "generated/props/basket.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#d89aa0"
+  },
+  "st-den-sen-ngan-ha-nen-sap": {
+   "model": "packs/kenney-survival-kit/2.0/box.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#f5e6b0"
+  },
+  "st-den-sen-ngan-ha-ban-lam-den": {
+   "model": "packs/kenney-survival-kit/2.0/workbench.glb",
+   "height": 1.1,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c89a6a"
+  },
+  "st-den-sen-ngan-ha-giay-nhan-meo": {
+   "model": "generated/props/memo.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "st-den-sen-ngan-ha-bac-da-ao": {
+   "model": "packs/kenney-nature-kit/2.1/rock_smallFlatA.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-den-sen-ngan-ha-dong-ho-ban": {
+   "model": "generated/props/mantelpiece-clock.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-den-sen-ngan-ha-bao-diem": {
+   "model": "packs/kenney-survival-kit/2.0/box.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#b8463a"
+  },
+  "st-den-sen-ngan-ha-sao-gat-beo": {
+   "model": "packs/kenney-survival-kit/2.0/tool-hoe.glb",
+   "height": 0.9,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-den-sen-ngan-ha-bang-gio-tha": {
+   "model": "generated/props/placard-blue.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-den-sen-ngan-ha-dam-beo-tay": {
+   "model": "packs/kenney-nature-kit/2.1/lily_large.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-den-sen-ngan-ha-den-mac-beo": {
+   "model": "generated/props/lotus.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#f7c6d6"
+  },
+  "st-den-sen-ngan-ha-manh-chan-gio": {
+   "model": "packs/kenney-survival-kit/2.0/bedroll-packed.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#c9a86a"
+  },
+  "st-den-sen-ngan-ha-ong-chup-nen": {
+   "model": "packs/kenney-food-kit/2.0/glass.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-den-sen-ngan-ha-tui-soi": {
+   "model": "packs/kenney-food-kit/2.0/bag.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#9a8f80"
+  },
+  "st-den-sen-ngan-ha-so-dem-hoi": {
+   "model": "generated/props/green-book.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "st-den-sen-ngan-ha-gio-do-che": {
+   "model": "generated/props/basket.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#a07848"
+  },
+  "st-den-sen-ngan-ha-coc-ben-tha": {
+   "model": "packs/kenney-nature-kit/2.1/stump_round.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-heo-dan-dong-ca-to-tuyen-chuong-bo": {
+   "model": "generated/props/page-red.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-heo-dan-dong-ca-to-tuyen-chuong-ga": {
+   "model": "generated/props/page-blue.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-heo-dan-dong-ca-to-tuyen-ao-ca": {
+   "model": "generated/props/page-pink.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-heo-dan-dong-ca-bang-xep-cho-hat": {
+   "model": "generated/props/placard.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-heo-dan-dong-ca-so-ten-ca-si": {
+   "model": "generated/props/notebook.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "st-heo-dan-dong-ca-bien-ten-dan-hat": {
+   "model": "packs/kenney-nature-kit/2.1/sign.glb",
+   "height": 1.4,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-heo-dan-dong-ca-tam-van-san-khau": {
+   "model": "packs/kenney-survival-kit/2.0/resource-planks.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-heo-dan-dong-ca-bao-gao-nhan-xanh": {
+   "model": "packs/kenney-survival-kit/2.0/bedroll-packed.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#d8c8a0"
+  },
+  "st-heo-dan-dong-ca-trong-da-nho": {
+   "model": "packs/kenney-survival-kit/2.0/barrel.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#b04030"
+  },
+  "st-heo-dan-dong-ca-chong-bao-ke-san-khau": {
+   "model": "packs/kenney-survival-kit/2.0/box.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#d8c8a0"
+  },
+  "st-heo-dan-dong-ca-ba-hang-ghe-rom": {
+   "model": "packs/kenney-survival-kit/2.0/bedroll.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#e0c070"
+  },
+  "st-heo-dan-dong-ca-hop-ve-buoi-tap": {
+   "model": "generated/props/package-yellow.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Mở hộp"
+  },
+  "st-heo-dan-dong-ca-cap-phach-tre": {
+   "model": "packs/kenney-nature-kit/2.1/log.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#c8a060"
+  },
+  "st-heo-dan-dong-ca-chuong-gio-dan-hat": {
+   "model": "generated/props/wind-chime.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-heo-dan-dong-ca-ken-la-chuoi": {
+   "model": "generated/props/leafy-green.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-heo-dan-dong-ca-to-loi-bai-hat": {
+   "model": "generated/props/scroll.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "st-heo-dan-dong-ca-bang-chep-nhip": {
+   "model": "generated/props/placard-blue.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng",
+   "tint": "#a0c8a0"
+  },
+  "st-heo-dan-dong-ca-ghe-tap-hat-hien": {
+   "model": "packs/kenney-nature-kit/2.1/stump_round.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-heo-dan-dong-ca-den-bao-quai-dong": {
+   "model": "packs/kenney-survival-kit/2.0/bottle.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#d8a040"
+  },
+  "st-heo-dan-dong-ca-den-long-giay-kho": {
+   "model": "generated/props/balloon-yellow.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-heo-dan-dong-ca-nen-sap-ong-to": {
+   "model": "packs/kenney-food-kit/2.0/honey.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#f0d070"
+  },
+  "st-heo-dan-dong-ca-to-lich-cua-kho": {
+   "model": "generated/props/tear-off-calendar.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem lịch"
+  },
+  "st-heo-dan-dong-ca-dong-ho-hien-chuong-bo": {
+   "model": "generated/props/mantelpiece-clock.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem đồng hồ"
+  },
+  "st-heo-dan-dong-ca-san-khau-rom": {
+   "model": "packs/kenney-nature-kit/2.1/log_stack.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-meo-sen-dem-vit-vit-la-sen": {
+   "model": "packs/kenney-cube-pets/2.0/animal-chick.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-meo-sen-dem-vit-vit-bui-lau": {
+   "model": "packs/kenney-cube-pets/2.0/animal-chick.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#e8d27a"
+  },
+  "st-meo-sen-dem-vit-vit-vong-xanh": {
+   "model": "packs/kenney-cube-pets/2.0/animal-chick.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#a8d8f0"
+  },
+  "st-meo-sen-dem-vit-khay-trung": {
+   "model": "packs/kenney-food-kit/2.0/egg.glb",
+   "height": 0.3,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#f2ead8"
+  },
+  "st-meo-sen-dem-vit-bang-o-ngu": {
+   "model": "generated/props/placard-blue.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-meo-sen-dem-vit-o-rom": {
+   "model": "packs/kenney-survival-kit/2.0/bedroll-packed.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#e0c070"
+  },
+  "st-meo-sen-dem-vit-trang-dau-sap": {
+   "model": "generated/props/envelope-red.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-meo-sen-dem-vit-trang-ban-co": {
+   "model": "generated/props/page-blue.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-meo-sen-dem-vit-phong-bi-ngua": {
+   "model": "generated/props/envelope-yellow.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-meo-sen-dem-vit-thu-ghep": {
+   "model": "generated/props/envelope.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc thư"
+  },
+  "st-meo-sen-dem-vit-ban-co-go": {
+   "model": "packs/kenney-survival-kit/2.0/workbench.glb",
+   "height": 1.1,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#8a6440"
+  },
+  "st-meo-sen-dem-vit-hom-thu": {
+   "model": "packs/kenney-survival-kit/2.0/box.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c0392b"
+  },
+  "st-meo-sen-dem-vit-can-vach-lit": {
+   "model": "packs/kenney-survival-kit/2.0/bottle-large.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-meo-sen-dem-vit-day-va-ong": {
+   "model": "generated/props/knot.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-meo-sen-dem-vit-xo-ton": {
+   "model": "packs/kenney-survival-kit/2.0/bucket.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#b8c0c8"
+  },
+  "st-meo-sen-dem-vit-ban-ve-ong": {
+   "model": "generated/props/scroll.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-meo-sen-dem-vit-bang-ba-thua": {
+   "model": "packs/kenney-survival-kit/2.0/signpost-single.glb",
+   "height": 1.6,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-meo-sen-dem-vit-chum-nuoc-thua": {
+   "model": "packs/kenney-nature-kit/2.1/pot_small.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#9a6a48"
+  },
+  "st-ong-bay-giai-co-ban-co-van": {
+   "model": "packs/kenney-survival-kit/2.0/resource-planks.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#a07850"
+  },
+  "st-ong-bay-giai-co-hop-quan-co": {
+   "model": "packs/kenney-survival-kit/2.0/box.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#8a5a30"
+  },
+  "st-ong-bay-giai-co-chieu-coi": {
+   "model": "packs/kenney-survival-kit/2.0/bedroll-packed.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#d8c088"
+  },
+  "st-ong-bay-giai-co-to-lich-ghe-may": {
+   "model": "generated/props/tear-off-calendar.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem lịch"
+  },
+  "st-ong-bay-giai-co-bang-ghep-cap": {
+   "model": "generated/props/placard.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-ong-bay-giai-co-ban-da-giai-thuong": {
+   "model": "packs/kenney-nature-kit/2.1/rock_largeB.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-ong-bay-giai-co-phieu-xanh": {
+   "model": "generated/props/page-blue.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-ong-bay-giai-co-phieu-do": {
+   "model": "generated/props/page-red.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-ong-bay-giai-co-phieu-vang": {
+   "model": "generated/props/page-curl.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#f0d060"
+  },
+  "st-ong-bay-giai-co-so-dem-nguoi": {
+   "model": "generated/props/notebook.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "st-ong-bay-giai-co-bang-ten-du-giai": {
+   "model": "packs/kenney-nature-kit/2.1/sign.glb",
+   "height": 1.4,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-ong-bay-giai-co-tam-bat-che-nang": {
+   "model": "packs/kenney-survival-kit/2.0/bedroll.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#6a9ac8"
+  },
+  "st-ong-bay-giai-co-lo-muc-tim": {
+   "model": "packs/kenney-survival-kit/2.0/bottle.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#6a3a9a"
+  },
+  "st-ong-bay-giai-co-xap-giay-hong": {
+   "model": "generated/props/page-pink.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-ong-bay-giai-co-but-long-nhon": {
+   "model": "generated/props/paintbrush.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-ong-bay-giai-co-giay-moi-nhap": {
+   "model": "generated/props/memo.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "st-ong-bay-giai-co-giay-chua-dau-cau": {
+   "model": "generated/props/page-curl.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "st-ong-bay-giai-co-hom-gom-giay-moi": {
+   "model": "packs/kenney-survival-kit/2.0/box-open.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Mở hộp"
+  },
+  "st-ong-bay-giai-co-non-bo-quen": {
+   "model": "generated/props/womans-hat.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-ong-bay-giai-co-bat-che-con-am": {
+   "model": "packs/kenney-food-kit/2.0/bowl.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#5a3a3a"
+  },
+  "st-ong-bay-giai-co-giay-nhan-gap-doi": {
+   "model": "generated/props/envelope.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "st-ong-bay-giai-co-bang-chia-to": {
+   "model": "generated/props/placard-blue.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-ong-bay-giai-co-bon-ban-co-cho": {
+   "model": "packs/kenney-nature-kit/2.1/stump_round.glb",
+   "height": 0.8,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-ong-bay-giai-co-noi-che-dau-den": {
+   "model": "packs/kenney-nature-kit/2.1/pot_small.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-ong-bay-giai-co-ban-co-giua-gian": {
+   "model": "packs/kenney-survival-kit/2.0/workbench.glb",
+   "height": 1.1,
+   "kind": "object",
+   "label": "Thách đấu"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-to-mot-nghin": {
+   "model": "generated/props/page-red.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-to-hai-nghin": {
+   "model": "generated/props/page-blue.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-to-nam-nghin": {
+   "model": "generated/props/page-pink.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-khay-tien-le": {
+   "model": "packs/kenney-survival-kit/2.0/box-open.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#b08458"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-gio-ca-kho": {
+   "model": "generated/props/basket.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#c89858"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-ghe-da-viet-chuyen": {
+   "model": "packs/kenney-nature-kit/2.1/rock_largeB.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-qua-can-canh-bao-gao": {
+   "model": "generated/props/medal-bronze.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-qua-can-duoi-man-thuyen": {
+   "model": "generated/props/nut-and-bolt.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#6a6a72"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-qua-can-mac-luoi": {
+   "model": "packs/kenney-nature-kit/2.1/rock_smallA.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#8a7a5a"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-ban-can-dia": {
+   "model": "generated/props/balance-scale.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-bon-kien-hang": {
+   "model": "packs/kenney-survival-kit/2.0/box.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#a07848"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-chau-lau-dia-can": {
+   "model": "packs/kenney-survival-kit/2.0/bucket.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-trang-so-vay-ca": {
+   "model": "generated/props/page-curl.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-trang-so-kep-la-sen": {
+   "model": "generated/props/memo.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#9ac07a"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-trang-so-but-do": {
+   "model": "generated/props/open-book.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-so-ban-ca-kho": {
+   "model": "generated/props/notebook.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc",
+   "tint": "#7a8aa0"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-to-chuyen-cuoi-so-ba": {
+   "model": "generated/props/scroll.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-man-thuyen-cho-rau": {
+   "model": "packs/kenney-nature-kit/2.1/canoe.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-to-ghi-tien-bon-ngay": {
+   "model": "generated/props/card-index.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-so-ban-hang-bia-nau": {
+   "model": "generated/props/orange-book.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-to-hai-muoi-nghin": {
+   "model": "generated/props/envelope-yellow.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-to-nam-nghin-gio-hanh": {
+   "model": "generated/props/envelope-blue.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-to-hai-nghin-gam-can": {
+   "model": "generated/props/envelope-red.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-ket-go-dem-xong": {
+   "model": "packs/kenney-survival-kit/2.0/chest.glb",
+   "height": 0.9,
+   "kind": "object",
+   "label": "Mở hộp"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-am-nuoc-voi": {
+   "model": "packs/kenney-survival-kit/2.0/bottle.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#8a6a3a"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-ghe-dau-hoi-be": {
+   "model": "packs/kenney-nature-kit/2.1/stump_round.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-bien-nuoc-voi": {
+   "model": "packs/kenney-nature-kit/2.1/sign.glb",
+   "height": 1.4,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-nhat-ky-nam-tam-tuoi": {
+   "model": "generated/props/page-red.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-bon-tranh-dong-xu": {
+   "model": "generated/props/framed-picture.glb",
+   "height": 0.7,
+   "kind": "object",
+   "label": "Xem tranh"
+  },
+  "st-thu-ngan-tram-chuyen-cuoi-sach-tram-chuyen-cuoi": {
+   "model": "generated/props/green-book.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc",
+   "tint": "#c8a040"
+  },
+  "st-meo-tra-da-quan-moi-mien-can-nhua-nam-lit": {
+   "model": "packs/kenney-survival-kit/2.0/bottle-large.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#e0e8f0"
+  },
+  "st-meo-tra-da-quan-moi-mien-binh-hai-lit-quai-do": {
+   "model": "packs/kenney-survival-kit/2.0/bottle.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#c84040"
+  },
+  "st-meo-tra-da-quan-moi-mien-ca-nhom-mot-lit": {
+   "model": "packs/kenney-food-kit/2.0/mug.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#b8bcc4"
+  },
+  "st-meo-tra-da-quan-moi-mien-bang-ghi-don-tra": {
+   "model": "generated/props/placard-blue.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-meo-tra-da-quan-moi-mien-khay-ca-va-binh": {
+   "model": "packs/kenney-food-kit/2.0/bowl.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#8a6040"
+  },
+  "st-meo-tra-da-quan-moi-mien-ba-lo-huong-tra": {
+   "model": "packs/kenney-nature-kit/2.1/pot_small.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#70a060"
+  },
+  "st-meo-tra-da-quan-moi-mien-bien-gio-mo-quan": {
+   "model": "packs/kenney-survival-kit/2.0/signpost-single.glb",
+   "height": 1.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-meo-tra-da-quan-moi-mien-chuong-goi-khach": {
+   "model": "generated/props/wind-chime.glb",
+   "height": 1.0,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#d8b040"
+  },
+  "st-meo-tra-da-quan-moi-mien-thung-da-uop-lanh": {
+   "model": "packs/kenney-survival-kit/2.0/bucket.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#80b0d8"
+  },
+  "st-meo-tra-da-quan-moi-mien-hang-ghe-cho-goc-khe": {
+   "model": "packs/kenney-nature-kit/2.1/log.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-meo-tra-da-quan-moi-mien-so-hen-khach-cua-meo": {
+   "model": "generated/props/orange-book.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "st-meo-tra-da-quan-moi-mien-quay-go-tam": {
+   "model": "packs/kenney-survival-kit/2.0/workbench.glb",
+   "height": 1.1,
+   "kind": "object",
+   "label": "Xem",
+   "tint": "#b08860"
+  },
+  "st-meo-tra-da-quan-moi-mien-chum-la-dua-thom": {
+   "model": "generated/props/leafy-green.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Nhặt lên"
+  },
+  "st-meo-tra-da-quan-moi-mien-qua-chanh-vo-mong": {
+   "model": "packs/kenney-food-kit/2.0/apple.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#9ac840"
+  },
+  "st-meo-tra-da-quan-moi-mien-hu-duong-phen": {
+   "model": "packs/kenney-food-kit/2.0/honey.glb",
+   "height": 0.5,
+   "kind": "object",
+   "label": "Nhặt lên",
+   "tint": "#f0e8d0"
+  },
+  "st-meo-tra-da-quan-moi-mien-bang-thuc-don-viet-do": {
+   "model": "generated/props/placard.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Đọc bảng"
+  },
+  "st-meo-tra-da-quan-moi-mien-the-cong-thuc-la-dua": {
+   "model": "generated/props/card-index.glb",
+   "height": 0.6,
+   "kind": "object",
+   "label": "Đọc"
+  },
+  "st-meo-tra-da-quan-moi-mien-ong-tre-dat-ten": {
+   "model": "packs/kenney-nature-kit/2.1/crops_bambooStageA.glb",
+   "height": 1.2,
+   "kind": "object",
+   "label": "Xem"
+  },
+  "st-meo-tra-da-quan-moi-mien-khay-tra-moi-ca-hang": {
+   "model": "packs/kenney-food-kit/2.0/glass.glb",
+   "height": 0.4,
+   "kind": "object",
+   "label": "Xem"
   }
  }
 }

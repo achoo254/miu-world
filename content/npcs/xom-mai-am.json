@@ -719,6 +719,92 @@
           }
         }
       ]
+    },
+    {
+      "id": "ong-bay-giai-co",
+      "npc": "ong-bay-co-ganh",
+      "title": { "vi": "Giải cờ gánh đầu tiên của xóm", "en": "The Lane's First Cờ Gánh Tournament" },
+      "teaser": { "vi": "Cháu… ngồi xuống đây. Hồi ông bằng tuổi cháu, cả xóm đánh cờ tới tối. Ông muốn mở lại một giải như thế. Cháu phụ ông chứ? Cộc.", "en": "Sit… down here. When I was your age, the whole lane played until dark. I want to hold a tournament like that again. Will you help me? Tock." },
+      "chapters": [
+        {
+          "quest": "yarn-ong-bay-giai-co-1",
+          "hearts": 0,
+          "letter": {
+            "from": "ong-bay-co-ganh",
+            "title": { "vi": "Quân cờ lau lá mướp", "en": "Pieces polished with gourd leaves" },
+            "body": { "vi": "{name}. Tối nay ông lau từng quân cờ bằng lá mướp, xếp vào hộp đúng từng hàng. Ông để dành một quân cho cháu tập. Mai ra cổng vườn hoa sớm, mình đi gom phiếu.", "en": "{name}. Tonight I polished every piece with a gourd leaf and put them back in the box, row by row. I kept one aside for you to practise with. Come to the garden gate early tomorrow; we'll gather the slips." },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-ong-bay-giai-co-2",
+          "hearts": 1,
+          "letter": {
+            "from": "cun-dom-don-nha",
+            "title": { "vi": "Gâu! Thư từ nhà bé", "en": "Woof! A letter from home" },
+            "body": { "vi": "Gâu! {name} ơi, Ông Bảy dạy Cún đếm quân cờ mà! Một: Cún nghe tin xóm có giải cờ. Hai: Cún xếp sẵn dép cho người đi thi. Ba: Cún gửi {name} ít xu mua phấn kẻ bảng. Nhớ xếp bàn cờ thẳng hàng nhé!", "en": "Woof! {name}, Ông Bảy taught me to count cờ gánh pieces! One: I heard the lane is having a tournament. Two: I lined up sandals for the players. Three: here are some coins for chalk. Keep those boards in a straight row!" },
+            "reward": { "coins": 20, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-ong-bay-giai-co-3",
+          "hearts": 2,
+          "letter": {
+            "from": "meo-tra-da",
+            "title": { "vi": "Tin nóng từ quán trà đá", "en": "Hot news from the iced-tea stall" },
+            "body": { "vi": "Kính gửi quý khách {name}, meo! Tin nóng nhất xóm: giấy mời hồng điều dán khắp các cửa, ai đọc cũng khen câu viết đúng dấu. Mèo xin lỗi vụ làm rách tờ nháp nhé. Hôm thi cờ, trà đá của Mèo mời không lấy tiền!", "en": "Dear honoured guest {name}, meow! The hottest news in the lane: rosy invitations on every door, and everyone praises the punctuation. Sorry about tearing the draft. On match day, my iced tea is free!" },
+            "reward": { "coins": 20, "xp": 20, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-ong-bay-giai-co-4",
+          "hearts": 3,
+          "letter": {
+            "from": "ba-nam-ke-chuyen",
+            "title": { "vi": "Thư của bà chị cả", "en": "From the eldest sister" },
+            "body": { "vi": "Cháu ơi, Bà Năm đây. Ngày xửa ngày xưa… mà cũng chẳng xưa lắm, có một ông em út ngồi một mình dưới giàn mướp. Chiều nay giàn mướp chật kín người, chuyện ấy bà phải chép vào sổ bìa xanh. Cảm ơn cháu đã ngồi cạnh em bà.", "en": "Dear, it's Bà Năm. Once upon a time… not so long ago, mind, a little brother sat alone under a gourd trellis. This afternoon the trellis was packed with people, and that story is going in my blue notebook. Thank you for sitting beside my brother." },
+            "reward": { "coins": 25, "xp": 25, "items": {"den-dau-co": 1} }
+          }
+        }
+      ]
+    },
+    {
+      "id": "meo-tra-da-quan-moi-mien",
+      "npc": "meo-tra-da",
+      "title": { "vi": "Quán trà mọi miền", "en": "Tea Stalls Everywhere" },
+      "teaser": { "vi": "Quý khách ơi, tin nóng đây: Mèo sắp có đơn trà to nhất từ ngày mở quán! Meo meo, quý khách phụ Mèo một tay chứ?", "en": "Honoured guest, hot news: Mèo is about to get the biggest tea order since the stall opened! Meow meow, will you lend a hand?" },
+      "chapters": [
+        {
+          "quest": "yarn-meo-tra-da-quan-moi-mien-1",
+          "hearts": 0,
+          "letter": {
+            "from": "meo-tra-da",
+            "title": { "vi": "Thư kèm một viên đá", "en": "A letter with an ice cube" },
+            "body": { "vi": "Kính gửi quý khách {name}, meo! Sáng nay Mèo đếm đủ một trăm viên đá rồi mới viết thư này. Tin nóng: cả hang khen trà mát tới tận chiều. Mèo gửi quý khách mấy xu, mai nhớ ra ngõ sớm phụ quán tạm nhé.", "en": "Dear honoured guest {name}, meow! This morning I counted exactly one hundred ice cubes before writing this. Hot news: the whole cave said the tea stayed cold till evening. Here are a few coins; come to the lane early tomorrow to help at the pop-up stall." },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-meo-tra-da-quan-moi-mien-2",
+          "hearts": 1,
+          "letter": {
+            "from": "nai-dom-dom",
+            "title": { "vi": "Thư từ khoảng rừng đom đóm", "en": "A letter from the firefly clearing" },
+            "body": { "vi": "{name} ơi… ừm… Nai đây. Mèo Trà Đá viết thư kể quán tạm buổi sáng đông vui, ừm… sáng rực như một đêm đom đóm bay dày nhất. Nai gửi {name} ít xu, nhờ {name} mua giúp Nai một cốc trà, uống thay Nai nhé.", "en": "{name}… um… it's Nai. Mèo Trà Đá wrote to tell me how busy and merry the morning stall was, um… as bright as the thickest night of fireflies. Here are some coins; please buy a glass of tea and drink it for me." },
+            "reward": { "coins": 20, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-meo-tra-da-quan-moi-mien-3",
+          "hearts": 2,
+          "letter": {
+            "from": "ong-bay-co-ganh",
+            "title": { "vi": "Một ly trà, một nước cờ", "en": "A glass of tea for a move" },
+            "body": { "vi": "Cháu {name}. Ông uống… vị trà mới rồi. Ngon. Ông với Mèo vẫn đổi nhau: một ly trà, một nước cờ. Hôm nay ông thua ván ấy, nhưng được ly trà ngon nhất xóm. Cộc. Lời rồi.", "en": "Young {name}. I have tasted… the new tea. Good. Mèo and I still trade: a glass of tea for a move. Today I lost the game, but I got the best glass of tea in the lane. Tock. A fine bargain." },
+            "reward": { "coins": 20, "xp": 20, "items": {} }
+          }
+        }
+      ]
     }
   ]
 }

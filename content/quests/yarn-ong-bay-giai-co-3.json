@@ -1,0 +1,416 @@
+{
+  "id": "yarn-ong-bay-giai-co-3",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Chuyện của Ông Bảy Cờ Gánh, chương 3: Giấy mời viết tay",
+  "status": "active",
+  "category": "story",
+  "summary": "Ông Bảy viết chậm từng chữ, mà xóm thì đông. {name} tìm mực, giấy, bút, chọn câu cần dấu chấm hỏi, sắp các từ thành câu mời rồi quyết định mời nhà nào trước.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Ông Bảy Cờ Gánh",
+    "where": "Xóm: cổng vườn hoa, hiên nhà Mẩy, khóm cúc, bụi tre đầu ngõ, tổ rơm nhà Mẩy",
+    "goal": "Viết xong giấy mời dự giải cờ gánh cho cả xóm",
+    "play": "Tìm đồ viết theo lời tả; chọn câu hỏi cần dấu chấm hỏi; sắp từ thành câu; chọn nhà mời trước; chơi nối từ",
+    "learn": "Dấu câu (dấu chấm, dấu chấm hỏi), câu kiểu Ai làm gì?",
+    "reward": "70 XP, 18 Xu, Skill XP Dấu câu, Câu",
+    "next": "Ngày thi cờ đã tới"
+  },
+  "phases": {
+    "hook": "ong-viet-cham",
+    "explore": "tim-do-viet",
+    "learn": "chon-dau-hoi",
+    "challenge": "sap-cau-moi",
+    "decision": "moi-nha-nao-truoc",
+    "finale": "noi-tu-cung-ong",
+    "reward": "giay-moi-da-gui",
+    "next": "chieu-chu-nhat"
+  },
+  "places": {
+    "ong-bay-co-ganh": "Cổng vườn hoa",
+    "tim-do-viet": "Hiên nhà Mẩy",
+    "st-ong-bay-giai-co-lo-muc-tim": "Hiên nhà Mẩy",
+    "st-ong-bay-giai-co-xap-giay-hong": "Hiên nhà Mẩy",
+    "st-ong-bay-giai-co-but-long-nhon": "Hiên nhà Mẩy",
+    "st-ong-bay-giai-co-giay-chua-dau-cau": "Khóm cúc",
+    "st-ong-bay-giai-co-giay-moi-nhap": "Bụi tre đầu ngõ",
+    "st-ong-bay-giai-co-hom-gom-giay-moi": "Tổ rơm nhà Mẩy"
+  },
+  "steps": [
+    {
+      "id": "ong-viet-cham",
+      "title": "Ông viết chậm lắm",
+      "goTo": "Ghé cổng vườn hoa, Ông Bảy Cờ Gánh đang nheo mắt nhìn tờ giấy trắng",
+      "kind": "dialogue",
+      "target": "ong-bay-co-ganh",
+      "lines": [
+        {
+          "speaker": "Ông Bảy Cờ Gánh",
+          "text": "Ông viết… chậm lắm. Một chữ… bằng một nước cờ. Mà xóm mình có ba mươi người."
+        },
+        {
+          "speaker": "Ông Bảy Cờ Gánh",
+          "text": "Mời người ta thì phải viết tay, viết cho đúng câu, đúng dấu. Cháu giúp ông được không?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu viết, ông đọc soát giúp cháu nhé.",
+          "reply": "Được. Ông soát chậm, mà soát kỹ. Cộc."
+        },
+        {
+          "text": "Mình viết thật đẹp để ai cũng muốn tới!",
+          "reply": "Chữ đẹp thì tốt. Nhưng câu đúng còn quý hơn chữ đẹp, cháu ạ."
+        }
+      ],
+      "en": {
+        "title": "Grandpa writes slowly",
+        "goTo": "Stop at the garden gate, where Ông Bảy Cờ Gánh is squinting at a blank sheet",
+        "lines": [
+          "I write… very slowly. One word… takes as long as one move. And our lane has thirty players.",
+          "An invitation must be handwritten, with proper sentences and proper punctuation. Can you help me?"
+        ],
+        "choices": [
+          {
+            "text": "I'll write and you check it for me.",
+            "reply": "Agreed. I check slowly, but thoroughly. Tock."
+          },
+          {
+            "text": "Let's write so beautifully that everyone wants to come!",
+            "reply": "Fine handwriting is good. But a correct sentence is worth even more."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-do-viet",
+      "title": "Mực, giấy và bút",
+      "goTo": "Lên hiên nhà Mẩy, ông để đồ viết trên bậc hiên",
+      "kind": "find-object",
+      "prompt": "Ông bày đồ viết trên hiên rồi quên mất. Đọc lời tả, tìm đủ ba món:",
+      "items": [
+        {
+          "id": "muc",
+          "name": "Lọ mực tím",
+          "clue": "Lọ thủy tinh nhỏ, nút gỗ, lắc nhẹ thấy sóng màu hoa cà sóng sánh.",
+          "target": "st-ong-bay-giai-co-lo-muc-tim"
+        },
+        {
+          "id": "giay",
+          "name": "Xấp giấy hồng điều",
+          "clue": "Mỏng, đỏ hồng như má trẻ con mùa rét, xếp thẳng mép từng tờ.",
+          "target": "st-ong-bay-giai-co-xap-giay-hong"
+        },
+        {
+          "id": "but",
+          "name": "Bút lông đầu nhọn",
+          "clue": "Cán tre trơn bóng, đầu lông chụm lại nhọn như chiếc lá tre non.",
+          "target": "st-ong-bay-giai-co-but-long-nhon"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Ink, paper and brush",
+        "goTo": "Go up onto Mẩy's porch, where Grandpa left the writing things on the step",
+        "prompt": "Grandpa laid the writing things out on the porch and then forgot them. Read each description and find all three:",
+        "items": [
+          {
+            "name": "Bottle of purple ink",
+            "clue": "A small glass bottle with a wooden stopper; shake it gently and a lilac wave sloshes inside."
+          },
+          {
+            "name": "Stack of rosy paper",
+            "clue": "Thin and rosy as a child's cheek in winter, every sheet squared to the edge."
+          },
+          {
+            "name": "Pointed brush",
+            "clue": "A smooth, shiny bamboo handle; the bristles meet in a point like a young bamboo leaf."
+          }
+        ]
+      }
+    },
+    {
+      "id": "chon-dau-hoi",
+      "title": "Câu nào cần dấu chấm hỏi?",
+      "goTo": "Ra khóm cúc, một mẩu giấy nháp mắc vào cành hoa",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-ong-bay-giai-co-giay-chua-dau-cau",
+      "skill": "dau-cau",
+      "prompt": "Trên mẩu giấy ông chép năm câu nhưng chưa đặt dấu ở cuối. Chọn tất cả những câu cần dấu chấm hỏi:",
+      "choices": [
+        {
+          "id": "ai-choi",
+          "text": "Ai muốn chơi cờ gánh chiều Chủ nhật"
+        },
+        {
+          "id": "xom-vui",
+          "text": "Cả xóm sẽ ăn chè sau giải"
+        },
+        {
+          "id": "may-gio",
+          "text": "Mấy giờ thì giải cờ bắt đầu"
+        },
+        {
+          "id": "ong-ke",
+          "text": "Ông Bảy kê bàn dưới giàn mướp"
+        },
+        {
+          "id": "o-dau",
+          "text": "Bàn cờ của tổ đỏ đặt ở đâu"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "ai-choi",
+          "may-gio",
+          "o-dau"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Câu hỏi thường có các từ ai, gì, mấy, đâu, nào…",
+          "Câu kể một việc thì cuối câu đặt dấu chấm."
+        ],
+        "hint": "Tìm những câu có từ «ai», «mấy giờ», «ở đâu».",
+        "answer": {
+          "text": "Ba câu: Ai muốn chơi…, Mấy giờ thì…, Bàn cờ… ở đâu",
+          "explanation": "Ba câu ấy dùng để hỏi nên cuối câu đặt dấu chấm hỏi. Hai câu còn lại kể một việc nên đặt dấu chấm."
+        },
+        "en": {
+          "guide": [
+            "Questions often use words like who, what, how many, where, which…",
+            "A sentence that tells something ends with a full stop."
+          ],
+          "hint": "Look for the sentences with \"who\", \"what time\" and \"where\".",
+          "answer": {
+            "text": "Three: Who wants to play…, What time do…, Where is…",
+            "explanation": "Those three ask something, so they end with a question mark. The other two tell something, so they end with a full stop."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng ba câu hỏi! Ông chấm ba cái móc câu tím thật đều tay.",
+          "{name} nghe câu là biết câu nào đang hỏi, câu nào đang kể.",
+          "Giấy mời có câu hỏi rõ ràng thì ai đọc cũng muốn trả lời ngay."
+        ],
+        "wrong": [
+          "Câu ấy đang kể một việc thôi, cuối câu chỉ cần dấu chấm.",
+          "Còn một câu có từ để hỏi chưa chọn, cháu đọc lại từng câu.",
+          "Thử đọc to lên: câu nào giọng cao lên ở cuối là câu hỏi đấy."
+        ],
+        "en": {
+          "right": [
+            "Exactly three questions! Grandpa adds three neat purple hooks.",
+            "You can hear at once which sentence asks and which one tells, {name}.",
+            "With clear questions, everyone who reads the invitation wants to answer."
+          ],
+          "wrong": [
+            "That one only tells something; it needs a full stop.",
+            "One more sentence has a question word; read each one again.",
+            "Read them aloud: the ones whose voice rises at the end are questions."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which ones need a question mark?",
+        "goTo": "Go to the chrysanthemum clump, where a scrap of draft paper is caught on a stem",
+        "prompt": "Grandpa copied five sentences onto the scrap but left off the end marks. Pick every sentence that needs a question mark:",
+        "choices": [
+          "Who wants to play cờ gánh on Sunday afternoon",
+          "The whole lane will eat sweet soup after the matches",
+          "What time do the matches start",
+          "Ông Bảy sets the tables under the trellis",
+          "Where is the red group's board"
+        ]
+      }
+    },
+    {
+      "id": "sap-cau-moi",
+      "title": "Sắp từ thành câu mời",
+      "goTo": "Lên bụi tre đầu ngõ, tờ giấy mời nháp bị cắt rời từng chữ",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-ong-bay-giai-co-giay-moi-nhap",
+      "skill": "cau",
+      "prompt": "Mèo Trà Đá lỡ tay làm rách tờ nháp thành bốn mảnh. Sắp lại cho thành một câu kể ai làm gì:",
+      "items": [
+        {
+          "id": "ca-xom",
+          "label": "cả xóm"
+        },
+        {
+          "id": "ong-bay",
+          "label": "Ông Bảy"
+        },
+        {
+          "id": "choi-co",
+          "label": "chơi cờ gánh."
+        },
+        {
+          "id": "moi",
+          "label": "mời"
+        }
+      ],
+      "answer": {
+        "order": [
+          "ong-bay",
+          "moi",
+          "ca-xom",
+          "choi-co"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Câu bắt đầu bằng người làm việc: ai?",
+          "Sau đó là việc người ấy làm, rồi tới người được mời và trò chơi."
+        ],
+        "hint": "Mảnh có chữ viết hoa đứng đầu, mảnh có dấu chấm đứng cuối.",
+        "answer": {
+          "text": "Ông Bảy mời cả xóm chơi cờ gánh.",
+          "explanation": "Câu trả lời câu hỏi Ai làm gì?: Ai là Ông Bảy, làm gì là mời cả xóm chơi cờ gánh."
+        },
+        "en": {
+          "guide": [
+            "The sentence starts with who does it.",
+            "Then what they do, then who is invited and to what."
+          ],
+          "hint": "The piece with a capital goes first, the piece with a full stop goes last.",
+          "answer": {
+            "text": "Ông Bảy invites the whole lane to play cờ gánh.",
+            "explanation": "It answers \"Who does what?\": who is Ông Bảy, and what he does is invite the whole lane to play cờ gánh."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cộc! Câu mời liền mạch rồi, ông dán bốn mảnh lại bằng cơm nguội.",
+          "Ai làm gì, {name} sắp đúng như ông xếp quân vào hàng.",
+          "Đọc lên nghe xuôi tai lắm, ông chép câu này vào cả ba mươi tờ."
+        ],
+        "wrong": [
+          "Mảnh viết hoa phải đứng đầu câu chứ cháu.",
+          "Dấu chấm là chỗ câu dừng lại, mảnh ấy để cuối nhé.",
+          "Đọc to thử xem, câu nghe có xuôi không? Ai, rồi làm gì."
+        ],
+        "en": {
+          "right": [
+            "Tock! The invitation reads smoothly; Grandpa sticks the pieces with a dab of rice.",
+            "Who does what: you lined them up just as I line up pieces.",
+            "It sounds right aloud; Grandpa will copy it onto all thirty sheets."
+          ],
+          "wrong": [
+            "The piece with a capital letter starts the sentence.",
+            "The full stop is where the sentence ends; put that piece last.",
+            "Read it aloud: does it flow? Who first, then what they do."
+          ]
+        }
+      },
+      "en": {
+        "title": "Building the invitation",
+        "goTo": "Go up to the bamboo clump at the head of the lane, where the draft has been torn into words",
+        "prompt": "Mèo Trà Đá tore the draft into four pieces by accident. Put them back into a sentence that says who does what:",
+        "items": [
+          "the whole lane",
+          "Ông Bảy",
+          "to play cờ gánh.",
+          "invites"
+        ]
+      }
+    },
+    {
+      "id": "moi-nha-nao-truoc",
+      "title": "Mời nhà nào trước?",
+      "goTo": "Về tổ rơm nhà Mẩy, ông đặt hòm gom giấy mời bên đống rơm",
+      "kind": "decision",
+      "target": "st-ong-bay-giai-co-hom-gom-giay-moi",
+      "speaker": "Ông Bảy Cờ Gánh",
+      "prompt": "Ba mươi tờ giấy mời đã xong. Ông xếp cả vào hòm: «Mình… đưa nhà nào trước, cháu?»",
+      "choices": [
+        {
+          "id": "nha-xa-nhat",
+          "text": "Nhà ở xa nhất trước, để họ có thời gian chuẩn bị",
+          "consequence": "Ông gật gù: «Đường xa thì báo sớm. Cháu nghĩ cho người khác, tốt lắm.»"
+        },
+        {
+          "id": "nha-nguoi-gia",
+          "text": "Nhà có người già trước, đưa tận tay",
+          "consequence": "Hai ông cháu gõ cửa từng nhà có ông bà. Ai cầm giấy cũng cười móm mém, hẹn Chủ nhật tới sớm."
+        },
+        {
+          "id": "tung-nha-mot",
+          "text": "Đi lần lượt từng nhà trong ngõ, không bỏ sót ai",
+          "consequence": "Hai ông cháu đi hết đầu ngõ tới cuối ngõ. Ông đếm từng nhà, cộc một tiếng mỗi lần đưa xong."
+        }
+      ],
+      "en": {
+        "title": "Which house first?",
+        "goTo": "Go back to Mẩy's straw nest, where Grandpa put the invitation box beside the hay",
+        "prompt": "All thirty invitations are done. Grandpa puts them in the box: \"Which house… shall we take them to first?\"",
+        "choices": [
+          {
+            "text": "The farthest house first, so they have time to get ready",
+            "consequence": "Grandpa nods: \"Far away means tell them early. You think of others; that is good.\""
+          },
+          {
+            "text": "Houses with old folk first, delivered by hand",
+            "consequence": "The two of you knock at every house with grandparents. Each one grins toothlessly and promises to come early on Sunday."
+          },
+          {
+            "text": "House by house down the lane, missing nobody",
+            "consequence": "You walk from one end of the lane to the other. Grandpa counts each house with a tock as each invitation goes in."
+          }
+        ]
+      }
+    },
+    {
+      "id": "noi-tu-cung-ong",
+      "title": "Nối từ với ông",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đi đưa giấy mời mỏi chân, ông rủ {name} chơi nối từ cho vui. Nối đủ sáu từ nhé!",
+      "game": "word-chain",
+      "goal": 6,
+      "en": {
+        "title": "Word chain with Grandpa",
+        "prompt": "Tired feet after the deliveries, so Grandpa suggests a word-chain game. Link six words!"
+      }
+    },
+    {
+      "id": "giay-moi-da-gui",
+      "title": "Giấy mời đã tới từng nhà",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Nhà nào trong xóm cũng có một tờ giấy hồng dán cửa. Ông Bảy lau lọ mực tím, đưa {name} chiếc bút lông làm quà.",
+      "en": {
+        "title": "Every house is invited",
+        "text": "Every house in the lane has a rosy sheet on its door. Ông Bảy wipes the ink bottle and gives {name} the brush as a present."
+      }
+    },
+    {
+      "id": "chieu-chu-nhat",
+      "title": "Chiều Chủ nhật",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chủ nhật ngày 18 sắp tới. Ông bảo đêm nay chắc ông không ngủ được, cứ nghe gió là tưởng tiếng dép người tới.",
+      "en": {
+        "title": "Sunday afternoon",
+        "text": "Sunday the 18th is nearly here. Grandpa says he probably won’t sleep tonight; every breeze sounds like footsteps coming."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "dau-cau": 1,
+      "cau": 1
+    }
+  },
+  "en": {
+    "title": "Ông Bảy Cờ Gánh's story, chapter 3: Handwritten invitations",
+    "summary": "Ông Bảy writes one slow word at a time, and the lane is big. {name} finds ink, paper and a brush, picks the sentences that need question marks, rebuilds the invitation sentence and decides which house to invite first."
+  }
+}

@@ -1,0 +1,381 @@
+{
+  "id": "yarn-heo-dan-dong-ca-4",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Chuyện của Heo Kho Hàng, chương 4: Mục số bốn, đêm diễn",
+  "status": "active",
+  "category": "story",
+  "summary": "Đêm diễn sắp tới mà đồ diễn lại nằm ở góc tối nhất kho, nơi Heo sợ nhất. {name} tìm đèn soi góc tối, tính ngày diễn trên lịch, tính giờ tập, chọn cách giúp Heo rồi cùng dàn đồng ca hát trước cả nông trại.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Heo Kho Hàng",
+    "where": "Nông trại: cửa nhà kho, góc tối nhà kho, sân nông trại, chuồng bò đỏ, chợ nông sản",
+    "goal": "Lấy đồ diễn ở góc tối và tổ chức đêm diễn đầu tiên của dàn đồng ca",
+    "play": "Tìm ba chiếc đèn theo lời tả; tính ngày trên lịch; tính giờ tập trên đồng hồ; chọn cách giúp Heo; hát cùng dàn đồng ca",
+    "learn": "Xem lịch (thứ, ngày), xem đồng hồ",
+    "reward": "78 XP, 21 Xu, Skill XP Xem lịch, Xem đồng hồ, Bắp ngô vàng",
+    "next": "Dàn đồng ca sẽ mang bài hát của trại ra phiên chợ trong vùng"
+  },
+  "phases": {
+    "hook": "muc-so-bon",
+    "explore": "tim-den",
+    "learn": "ngay-dien",
+    "challenge": "gio-tap",
+    "decision": "goc-toi",
+    "finale": "dem-dien-dau-tien",
+    "reward": "ca-trai-vo-tay",
+    "next": "ra-cho-phien"
+  },
+  "places": {
+    "heo-kho-hang": "Cửa nhà kho",
+    "tim-den": "Góc tối nhà kho",
+    "st-heo-dan-dong-ca-den-bao-quai-dong": "Góc tối nhà kho",
+    "st-heo-dan-dong-ca-den-long-giay-kho": "Góc tối nhà kho",
+    "st-heo-dan-dong-ca-nen-sap-ong-to": "Góc tối nhà kho",
+    "st-heo-dan-dong-ca-to-lich-cua-kho": "Sân nông trại",
+    "st-heo-dan-dong-ca-dong-ho-hien-chuong-bo": "Chuồng bò đỏ",
+    "st-heo-dan-dong-ca-san-khau-rom": "Chợ nông sản"
+  },
+  "steps": [
+    {
+      "id": "muc-so-bon",
+      "title": "Góc kho Heo không dám tới",
+      "goTo": "Về cửa nhà kho, Heo Kho Hàng đang đứng nép sau ba ngọn đèn",
+      "kind": "dialogue",
+      "target": "heo-kho-hang",
+      "lines": [
+        {
+          "speaker": "Heo Kho Hàng",
+          "text": "{name}… Mục số bốn hơi khó nói. Tớ kể nhỏ thôi nhé, đừng dán nhãn chuyện này."
+        },
+        {
+          "speaker": "Heo Kho Hàng",
+          "text": "Tớ sợ góc tối nhất trong kho. Lúc nào tớ cũng bật ba ngọn đèn, đi ngang góc ấy thì nhắm tịt mắt."
+        },
+        {
+          "speaker": "Heo Kho Hàng",
+          "text": "Mà đồ diễn của cả dàn lại cất đúng ở đó. Đêm diễn sắp tới rồi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình đi cùng Heo, mang thật nhiều đèn!",
+          "reply": "Thật nhé? Có {name} đi bên cạnh thì góc ấy bớt tối một nửa rồi."
+        },
+        {
+          "text": "Ai cũng có một góc tối, Heo ạ.",
+          "reply": "Ừ… Nhưng góc của tớ to lắm. Thôi, mình đi tìm đèn trước đã."
+        }
+      ],
+      "en": {
+        "title": "The corner Heo dares not go to",
+        "goTo": "Go back to the barn door, where Heo Kho Hàng is hiding behind three lamps",
+        "lines": [
+          "{name}… item four is a bit hard to say. I’ll whisper it; please don’t put a label on this one.",
+          "I’m scared of the darkest corner of the barn. I always keep three lamps lit, and I walk past that corner with my eyes shut.",
+          "And the whole choir’s costumes are stored right there. The show is nearly here."
+        ],
+        "choices": [
+          {
+            "text": "I'll come with you and bring lots of lamps!",
+            "reply": "Really? With you beside me, {name}, that corner is half as dark already."
+          },
+          {
+            "text": "Everyone has a dark corner, Heo.",
+            "reply": "Yes… but mine is a big one. Well, let’s find the lamps first."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-den",
+      "title": "Ba ngọn đèn soi góc tối",
+      "goTo": "Bước vào góc tối nhà kho, tìm ba thứ thắp sáng theo lời tả",
+      "kind": "find-object",
+      "prompt": "Heo đứng ngoài đọc to lời tả. {name} vào trong tìm cho đủ ba ngọn đèn:",
+      "items": [
+        {
+          "id": "den-bao",
+          "name": "Đèn bão",
+          "clue": "Có quai cầm bằng đồng, bụng thủy tinh, lắc nhẹ nghe dầu óc ách.",
+          "target": "st-heo-dan-dong-ca-den-bao-quai-dong"
+        },
+        {
+          "id": "den-long",
+          "name": "Đèn lồng giấy",
+          "clue": "Tròn như quả bưởi, màu vàng nghệ, treo trên một cái móc gỗ.",
+          "target": "st-heo-dan-dong-ca-den-long-giay-kho"
+        },
+        {
+          "id": "nen",
+          "name": "Cây nến sáp ong",
+          "clue": "To bằng cổ tay, thơm mùi mật, đứng trong một cái đĩa nhỏ.",
+          "target": "st-heo-dan-dong-ca-nen-sap-ong-to"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Three lights for the dark corner",
+        "goTo": "Step into the dark corner of the barn and find three lights from the descriptions",
+        "prompt": "Heo stands outside and reads the descriptions aloud. {name} goes in and finds all three lights:",
+        "items": [
+          {
+            "name": "The storm lantern",
+            "clue": "A brass carrying handle and a glass belly; shake it gently and the oil sloshes."
+          },
+          {
+            "name": "The paper lantern",
+            "clue": "Round as a pomelo, turmeric yellow, hanging from a wooden hook."
+          },
+          {
+            "name": "The beeswax candle",
+            "clue": "As thick as a wrist, smelling of honey, standing in a little dish."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ngay-dien",
+      "title": "Đêm diễn ngày bao nhiêu?",
+      "goTo": "Ra sân nông trại, tờ lịch treo cửa kho đã được mang ra đó",
+      "kind": "riddle",
+      "target": "st-heo-dan-dong-ca-to-lich-cua-kho",
+      "skill": "xem-lich",
+      "question": "Tờ lịch ghi hôm nay là thứ Tư, ngày 14. Đêm diễn vào thứ Bảy của tuần này. Đêm diễn là ngày bao nhiêu?",
+      "answer": {
+        "value": 17
+      },
+      "support": {
+        "guide": [
+          "Đếm các thứ từ thứ Tư tới thứ Bảy.",
+          "Mỗi ngày sau thêm 1 vào số ngày."
+        ],
+        "hint": "Thứ Năm ngày 15, thứ Sáu ngày 16, thứ Bảy ngày…?",
+        "answer": {
+          "text": "Ngày 17",
+          "explanation": "Từ thứ Tư tới thứ Bảy là thêm 3 ngày: 14 + 3 = 17. Đêm diễn vào thứ Bảy, ngày 17."
+        },
+        "en": {
+          "guide": [
+            "Count the days from Wednesday to Saturday.",
+            "Each day after adds 1 to the date."
+          ],
+          "hint": "Thursday the 15th, Friday the 16th, Saturday the…?",
+          "answer": {
+            "text": "The 17th",
+            "explanation": "From Wednesday to Saturday is 3 more days: 14 + 3 = 17. The show is on Saturday the 17th."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Thứ Bảy, ngày 17! Heo khoanh đỏ ngày ấy, khoanh tới ba vòng.",
+          "{name} đếm lịch trôi như băng chuyền của tớ.",
+          "Còn ba ngày nữa thôi, kịp tập thêm ba buổi."
+        ],
+        "wrong": [
+          "Thứ Bảy còn sau thứ Sáu một ngày nữa đấy.",
+          "Đếm từ thứ Năm chứ, hôm nay thứ Tư đã là ngày 14 rồi.",
+          "Mỗi ngày qua thì số ngày tăng thêm một, đếm lại nhé, {name}."
+        ],
+        "en": {
+          "right": [
+            "Saturday the 17th! Heo circles it in red, three times round.",
+            "You counted the calendar as smoothly as my conveyor belt, {name}.",
+            "Only three days to go; time for three more rehearsals."
+          ],
+          "wrong": [
+            "Saturday still comes one day after Friday.",
+            "Start counting from Thursday; today, Wednesday, is already the 14th.",
+            "Each day that passes adds one to the date; count again, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "What date is the show?",
+        "goTo": "Go out to the farmyard, where the barn-door calendar has been brought out",
+        "question": "The calendar says today is Wednesday the 14th. The show is on Saturday this week. What date is the show?"
+      }
+    },
+    {
+      "id": "gio-tap",
+      "title": "Mấy giờ bắt đầu tập?",
+      "goTo": "Sang chuồng bò đỏ, xem đồng hồ treo ở hiên chuồng",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-heo-dan-dong-ca-dong-ho-hien-chuong-bo",
+      "skill": "xem-dong-ho",
+      "prompt": "Đêm diễn bắt đầu lúc 7 giờ tối. Heo muốn cả dàn tập lại đúng 1 giờ trước khi diễn. Cả dàn bắt đầu tập lúc mấy giờ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "5 giờ chiều"
+        },
+        {
+          "id": "b",
+          "text": "6 giờ tối"
+        },
+        {
+          "id": "c",
+          "text": "8 giờ tối"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Tập trước khi diễn, nên giờ tập phải sớm hơn 7 giờ.",
+          "Lùi kim ngắn lại một số."
+        ],
+        "hint": "Sớm hơn 7 giờ đúng một giờ.",
+        "answer": {
+          "text": "6 giờ tối",
+          "explanation": "7 giờ lùi lại 1 giờ là 6 giờ. Cả dàn bắt đầu tập lúc 6 giờ tối, tập xong vừa kịp diễn lúc 7 giờ."
+        },
+        "en": {
+          "guide": [
+            "Rehearsal comes before the show, so it must be earlier than 7.",
+            "Move the short hand back one number."
+          ],
+          "hint": "Exactly one hour earlier than 7.",
+          "answer": {
+            "text": "Six o’clock in the evening",
+            "explanation": "One hour before 7 o’clock is 6 o’clock. The choir starts rehearsing at 6 in the evening and finishes just in time for the 7 o’clock show."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sáu giờ tối! Bò gật đầu, chuông đồng kêu leng keng đồng ý.",
+          "{name} lùi kim đồng hồ khéo như tớ xếp bao.",
+          "Tập một giờ rồi diễn, vừa khít như nắp hũ."
+        ],
+        "wrong": [
+          "Tám giờ thì đêm diễn bắt đầu mất rồi, còn tập gì nữa.",
+          "Năm giờ thì sớm hơn hai tiếng, Heo chỉ cần một tiếng thôi.",
+          "Đặt kim ngắn ở số 7 rồi lùi lại một số, {name} thử xem."
+        ],
+        "en": {
+          "right": [
+            "Six in the evening! The cow nods and her bell rings ting-a-ling in agreement.",
+            "You turned the clock back as neatly as I stack sacks, {name}.",
+            "An hour of practice, then the show: a perfect fit, like a lid on a jar."
+          ],
+          "wrong": [
+            "By eight the show has already started; too late to rehearse.",
+            "Five is two hours early, and Heo only needs one.",
+            "Put the short hand on 7 and move it back one number, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "When does rehearsal start?",
+        "goTo": "Go over to the red cowshed and look at the clock on its porch",
+        "prompt": "The show starts at 7 o’clock in the evening. Heo wants the choir to rehearse for exactly 1 hour before it. What time does rehearsal start?",
+        "choices": [
+          "5 in the afternoon",
+          "6 in the evening",
+          "8 in the evening"
+        ]
+      }
+    },
+    {
+      "id": "goc-toi",
+      "title": "Góc tối thì làm sao?",
+      "goTo": "Mang đồ diễn ra chợ nông sản, nơi dựng sân khấu rơm đêm diễn",
+      "kind": "decision",
+      "target": "st-heo-dan-dong-ca-san-khau-rom",
+      "speaker": "Heo Kho Hàng",
+      "prompt": "Đồ diễn đã lấy ra, Heo vẫn run run. Heo nói nhỏ: «Lần sau vào góc ấy, tớ có nên tự đi không?»",
+      "choices": [
+        {
+          "id": "them-den",
+          "text": "Treo hẳn một ngọn đèn ở góc tối",
+          "consequence": "Góc tối thành góc sáng nhất kho. Heo dán nhãn «Góc này không tối nữa»."
+        },
+        {
+          "id": "di-cung",
+          "text": "Lần nào cũng rủ một bạn đi cùng",
+          "consequence": "Heo rủ bò, rủ gà, rủ cả {name}. Đi cùng nhau, góc tối chỉ còn là một góc kho."
+        },
+        {
+          "id": "mo-mat",
+          "text": "Mở mắt đi qua, đếm từng bước",
+          "consequence": "Heo đếm tới mười hai bước là qua. Lần đầu tiên Heo nhìn thấy góc kho ấy chỉ toàn bao rơm."
+        }
+      ],
+      "en": {
+        "title": "What about the dark corner?",
+        "goTo": "Carry the costumes to the produce market, where the straw stage for the show stands",
+        "prompt": "The costumes are out, but Heo is still trembling. He whispers: “Next time I go into that corner, should I go alone?”",
+        "choices": [
+          {
+            "text": "Hang a lamp in the dark corner for good",
+            "consequence": "The dark corner becomes the brightest spot in the barn. Heo labels it “Not dark any more”."
+          },
+          {
+            "text": "Always take a friend along",
+            "consequence": "Heo takes the cow, the hens, and {name} too. Together, the dark corner is just a corner."
+          },
+          {
+            "text": "Walk past with eyes open, counting the steps",
+            "consequence": "Twelve steps and Heo is past. For the first time he sees the corner holds nothing but straw sacks."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dem-dien-dau-tien",
+      "title": "Đêm diễn đầu tiên",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đèn sáng, khán giả ngồi kín! Dẫn dàn đồng ca hát đúng từng câu. Mười điểm là đêm diễn trọn vẹn.",
+      "game": "bird-choir",
+      "goal": 10,
+      "en": {
+        "title": "The first show",
+        "prompt": "Lights on and every seat taken! Lead the choir through every line. Ten points and the show is perfect."
+      }
+    },
+    {
+      "id": "ca-trai-vo-tay",
+      "title": "Cả trại vỗ tay",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bài hát của trại vang khắp nông trại, ai cũng đứng dậy vỗ tay. Heo đưa {name} một bắp ngô vàng có dán nhãn: «Mục số bốn: cảm ơn vì đã đi cùng tớ».",
+      "en": {
+        "title": "The whole farm claps",
+        "text": "The farm’s song rings across the farm and everyone stands to clap. Heo hands {name} a golden ear of corn with a label: “Item four: thank you for coming with me”."
+      }
+    },
+    {
+      "id": "ra-cho-phien",
+      "title": "Ra phiên chợ",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Heo đã viết mục số năm vào sổ: đưa dàn đồng ca ra phiên chợ trong vùng. Lần này Heo chẳng cần bật ba ngọn đèn mới dám đi ngang kho nữa.",
+      "en": {
+        "title": "Off to the fair",
+        "text": "Heo has written item five in his book: take the choir to the market fair. This time he doesn’t need three lamps to walk past the barn."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 78,
+    "coin": 21,
+    "skillXp": {
+      "xem-lich": 1,
+      "xem-dong-ho": 1
+    },
+    "items": {
+      "bap-ngo-vang": 1
+    }
+  },
+  "en": {
+    "title": "Heo Kho Hàng's story, chapter 4: Item four, the show",
+    "summary": "The show is coming, but the costumes are in the darkest corner of the barn, the place Heo fears most. {name} finds lights for the corner, works out the show’s date and rehearsal time, decides how to help Heo and sings with the choir in front of the whole farm."
+  }
+}

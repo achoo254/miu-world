@@ -1,0 +1,377 @@
+{
+  "id": "yarn-meo-tra-da-quan-moi-mien-2",
+  "region": "xom-mai-am",
+  "chapter": 2,
+  "title": "Chuyện của Mèo Trà Đá, chương 2: Buổi sáng đông khách",
+  "status": "active",
+  "category": "story",
+  "summary": "Quán tạm của Mèo Trà Đá vừa mở đã đông khách. {name} tìm biển, chuông và thùng đá, đoán ai tới trước, xếp lịch hẹn khách theo giờ trong ngày rồi giúp Mèo giữ quán khỏi rối.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Trà Đá",
+    "where": "Xóm: giếng xóm, hiên nhà, gốc khế đầu ngõ, võng dưới hiên, hang đá ấm",
+    "goal": "Giúp quán tạm của Mèo chạy êm suốt buổi sáng đông khách",
+    "play": "Tìm đồ mở quán; suy luận thứ tự khách tới; xếp lịch hẹn theo giờ; chọn cách đón khách đông; đẩy cốc trà",
+    "learn": "Xem đồng hồ (giờ trong ngày, cách gọi 17 giờ, 19 giờ), suy luận",
+    "reward": "65 XP, 16 Xu, Skill XP Logic, Xem đồng hồ",
+    "next": "Một vị trà mới có tên riêng"
+  },
+  "phases": {
+    "hook": "quan-tam-mo",
+    "explore": "tim-do-mo-quan",
+    "learn": "ai-toi-truoc",
+    "challenge": "lich-hen-khach",
+    "decision": "khach-dong-qua",
+    "finale": "day-coc-tra",
+    "reward": "quan-chay-em",
+    "next": "vi-tra-moi"
+  },
+  "places": {
+    "meo-tra-da": "Giếng xóm",
+    "tim-do-mo-quan": "Hiên nhà",
+    "st-meo-tra-da-quan-moi-mien-bien-gio-mo-quan": "Hiên nhà",
+    "st-meo-tra-da-quan-moi-mien-chuong-goi-khach": "Hiên nhà",
+    "st-meo-tra-da-quan-moi-mien-thung-da-uop-lanh": "Hiên nhà",
+    "st-meo-tra-da-quan-moi-mien-hang-ghe-cho-goc-khe": "Gốc khế đầu ngõ",
+    "st-meo-tra-da-quan-moi-mien-so-hen-khach-cua-meo": "Võng dưới hiên",
+    "st-meo-tra-da-quan-moi-mien-quay-go-tam": "Hang đá ấm"
+  },
+  "steps": [
+    {
+      "id": "quan-tam-mo",
+      "title": "Quán tạm mở cửa",
+      "goTo": "Ghé giếng xóm từ sớm, Mèo Trà Đá đã chất đá vào thúng chờ sẵn",
+      "kind": "dialogue",
+      "target": "meo-tra-da",
+      "lines": [
+        {
+          "speaker": "Mèo Trà Đá",
+          "text": "Quý khách {name} dậy sớm ghê! Mèo vừa nghe tin: cả ngõ rủ nhau ra quán tạm uống trà trước khi đi làm. Meo!"
+        },
+        {
+          "speaker": "Mèo Trà Đá",
+          "text": "Đồ mở quán Mèo đã mang sang hiên nhà từ tối qua, mà sáng nay vội quá chưa bày ra được."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình bày quán thật nhanh nào!",
+          "reply": "Thế mới là phụ quán chứ! Đi thôi, khách sắp tới rồi."
+        },
+        {
+          "text": "Sáng nay có tin gì nữa không ạ?",
+          "reply": "Có chứ: nghe đồn gà nhà đầu ngõ đẻ quả trứng hai lòng đỏ. Meo meo, tin nóng hổi!"
+        }
+      ],
+      "en": {
+        "title": "The pop-up stall opens",
+        "goTo": "Stop at the lane well early, where Mèo Trà Đá has a basket of ice ready",
+        "lines": [
+          "Up early, honoured guest {name}! I just heard: the whole lane plans to stop at the pop-up stall for tea before work. Meow!",
+          "I carried the stall things over to the porch last night, but this morning I've been too rushed to set them out."
+        ],
+        "choices": [
+          {
+            "text": "Let's set up the stall quickly!",
+            "reply": "That's a real stall hand! Off we go, the customers are nearly here."
+          },
+          {
+            "text": "Any more news this morning?",
+            "reply": "Oh yes: rumour says a hen at the top of the lane laid a double-yolk egg. Meow meow, piping-hot news!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-do-mo-quan",
+      "title": "Bày đồ mở quán",
+      "goTo": "Sang hiên nhà, đồ mở quán để lẫn trong góc hiên",
+      "kind": "search",
+      "targets": [
+        "st-meo-tra-da-quan-moi-mien-bien-gio-mo-quan",
+        "st-meo-tra-da-quan-moi-mien-chuong-goi-khach",
+        "st-meo-tra-da-quan-moi-mien-thung-da-uop-lanh"
+      ],
+      "en": {
+        "title": "Setting up the stall",
+        "goTo": "Go over to the porch, where the stall things are mixed up in a corner"
+      }
+    },
+    {
+      "id": "ai-toi-truoc",
+      "title": "Ai tới quán trước?",
+      "goTo": "Ra gốc khế đầu ngõ, ba vị khách đã ngồi trên hàng ghế chờ",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-meo-tra-da-quan-moi-mien-hang-ghe-cho-goc-khe",
+      "skill": "logic",
+      "prompt": "Ba khách ngồi chờ dưới gốc khế: bác đội nón lá, chú áo đỏ và cô đeo kính. Chú áo đỏ tới trước bác đội nón lá. Cô đeo kính tới sau bác đội nón lá. Ai tới đầu tiên?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Bác đội nón lá"
+        },
+        {
+          "id": "b",
+          "text": "Chú áo đỏ"
+        },
+        {
+          "id": "c",
+          "text": "Cô đeo kính"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Đặt chú áo đỏ và bác đội nón lá trước: ai đứng trước ai?",
+          "Rồi đặt cô đeo kính vào sau bác đội nón lá."
+        ],
+        "hint": "Cô đeo kính tới sau bác đội nón lá, mà bác lại tới sau chú áo đỏ.",
+        "answer": {
+          "text": "Chú áo đỏ",
+          "explanation": "Thứ tự là chú áo đỏ, bác đội nón lá, rồi cô đeo kính, nên chú áo đỏ tới đầu tiên."
+        },
+        "en": {
+          "guide": [
+            "Place the red shirt and the conical hat first: who comes before whom?",
+            "Then put the woman with glasses after the conical hat."
+          ],
+          "hint": "The glasses come after the hat, and the hat comes after the red shirt.",
+          "answer": {
+            "text": "The red shirt was first",
+            "explanation": "The order is red shirt, conical hat, then glasses, so the man in the red shirt came first."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chú áo đỏ! Mèo rót cốc đầu tiên cho chú, đúng lượt chẳng ai phàn nàn.",
+          "{name} xếp ba khách trong đầu gọn như Mèo xếp cốc trên khay.",
+          "Meo! Quý khách đoán đúng như thám tử của ngõ."
+        ],
+        "wrong": [
+          "Bác đội nón lá tới sau một người đấy, quý khách đọc lại nhé.",
+          "Cô đeo kính tới sau cùng, sau cả bác đội nón lá.",
+          "Thử xếp ba cái tên thành hàng dọc theo từng câu một."
+        ],
+        "en": {
+          "right": [
+            "The man in the red shirt! Mèo pours him the first glass, fair and square, nobody grumbles.",
+            "You lined up three customers in your head as neatly as I line glasses on a tray, {name}.",
+            "Meow! You guessed it like the lane’s own detective."
+          ],
+          "wrong": [
+            "The conical hat came after someone; read it again.",
+            "The woman with glasses came last, after the conical hat.",
+            "Try writing the three in a column, one clue at a time."
+          ]
+        }
+      },
+      "en": {
+        "title": "Who came first?",
+        "goTo": "Go to the starfruit tree at the head of the lane, where three customers sit on the waiting bench",
+        "prompt": "Three customers wait under the starfruit tree: a man in a conical hat, a man in a red shirt and a woman with glasses. The red shirt arrived before the conical hat. The woman with glasses arrived after the conical hat. Who arrived first?",
+        "choices": [
+          "The man in the conical hat",
+          "The man in the red shirt",
+          "The woman with glasses"
+        ]
+      }
+    },
+    {
+      "id": "lich-hen-khach",
+      "title": "Lịch hẹn theo giờ",
+      "goTo": "Lại võng dưới hiên, Mèo kẹp sổ hẹn khách ở mép võng",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-meo-tra-da-quan-moi-mien-so-hen-khach-cua-meo",
+      "skill": "xem-dong-ho",
+      "prompt": "Sổ hẹn ghi giờ từng khách xin mang trà về. Xếp các khách từ sớm nhất đến muộn nhất trong ngày:",
+      "items": [
+        {
+          "id": "bac-cho",
+          "label": "Bác đi chợ: 6 giờ sáng"
+        },
+        {
+          "id": "ba-dao",
+          "label": "Bà đi dạo: 19 giờ"
+        },
+        {
+          "id": "chu-tho",
+          "label": "Chú thợ mộc: 11 giờ trưa"
+        },
+        {
+          "id": "ban-nho",
+          "label": "Bạn nhỏ tan học: 17 giờ"
+        },
+        {
+          "id": "co-giao",
+          "label": "Cô giáo: 2 giờ chiều"
+        }
+      ],
+      "answer": {
+        "order": [
+          "bac-cho",
+          "chu-tho",
+          "co-giao",
+          "ban-nho",
+          "ba-dao"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Đổi giờ buổi chiều, buổi tối ra cách gọi cả ngày: 2 giờ chiều là 14 giờ.",
+          "17 giờ là 5 giờ chiều, 19 giờ là 7 giờ tối."
+        ],
+        "hint": "So các số giờ: 6, 11, 14, 17, 19.",
+        "answer": {
+          "text": "Bác đi chợ, chú thợ mộc, cô giáo, bạn nhỏ, bà đi dạo",
+          "explanation": "6 giờ sáng, 11 giờ trưa, 2 giờ chiều (14 giờ), 17 giờ, rồi 19 giờ: giờ càng lớn thì càng muộn trong ngày."
+        },
+        "en": {
+          "guide": [
+            "Change afternoon and evening times to the 24-hour way: 2 in the afternoon is 14:00.",
+            "17:00 is 5 in the afternoon, 19:00 is 7 in the evening."
+          ],
+          "hint": "Compare the hours: 6, 11, 14, 17, 19.",
+          "answer": {
+            "text": "Market-goer, carpenter, teacher, child, grandma",
+            "explanation": "6 in the morning, 11 at midday, 2 in the afternoon (14:00), 17:00, then 19:00: the bigger the hour, the later in the day."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng lịch rồi! Mèo dán tờ lịch lên cột, cứ tới giờ là chuông reo.",
+          "{name} đọc giờ theo cả ngày giỏi hơn chiếc đồng hồ ở giếng.",
+          "Sáng, trưa, chiều, tối, không vị khách nào phải chờ. Meo meo!"
+        ],
+        "wrong": [
+          "17 giờ là 5 giờ chiều đấy, muộn hơn 2 giờ chiều nhiều.",
+          "Bà đi dạo lúc 19 giờ, tức 7 giờ tối, phải đứng cuối hàng chứ.",
+          "Khách buổi sáng xếp lên đầu, rồi mới tới trưa và chiều."
+        ],
+        "en": {
+          "right": [
+            "The schedule is right! Mèo pins it on the post and rings the bell at each time.",
+            "You read the 24-hour times better than the clock by the well, {name}.",
+            "Morning, midday, afternoon, evening: no customer waits. Meow meow!"
+          ],
+          "wrong": [
+            "17:00 is 5 in the afternoon, much later than 2 in the afternoon.",
+            "The grandma walks at 19:00, which is 7 in the evening, so she goes last.",
+            "Morning customers go first, then midday and afternoon."
+          ]
+        }
+      },
+      "en": {
+        "title": "Appointments by the clock",
+        "goTo": "Go back to the hammock under the porch, where Mèo clipped the appointment book to its edge",
+        "prompt": "The book lists when each customer will collect tea. Order them from earliest to latest in the day:",
+        "items": [
+          "The market-goer: 6 in the morning",
+          "The grandma out walking: 19:00",
+          "The carpenter: 11 at midday",
+          "The child after school: 17:00",
+          "The teacher: 2 in the afternoon"
+        ]
+      }
+    },
+    {
+      "id": "khach-dong-qua",
+      "title": "Khách đông quá!",
+      "goTo": "Vào hang đá ấm, khách xếp hàng dài trước chiếc quầy gỗ tạm",
+      "kind": "decision",
+      "target": "st-meo-tra-da-quan-moi-mien-quay-go-tam",
+      "speaker": "Mèo Trà Đá",
+      "prompt": "Khách kéo tới đông nghịt, ai cũng gọi một lúc. Mèo luống cuống: «Meo… quý khách {name} ơi, làm sao bây giờ?»",
+      "choices": [
+        {
+          "id": "phat-so",
+          "text": "Phát số thứ tự bằng nắp chai, gọi lần lượt",
+          "consequence": "Mỗi khách cầm một nắp chai có số. Mèo gọi to từng số, quầy bỗng ngăn nắp hẳn."
+        },
+        {
+          "id": "nguoi-gia-truoc",
+          "text": "Mời người già và em nhỏ vào trước",
+          "consequence": "Mọi người tự lùi lại nhường chỗ. Bà cụ đầu ngõ cảm ơn rối rít, cả hàng cười vui."
+        },
+        {
+          "id": "rot-san-khay",
+          "text": "Rót sẵn một khay đầy cốc, ai cần thì tự lấy",
+          "consequence": "Khay cốc vơi rồi lại đầy. Mèo chỉ việc rót, {name} chỉ việc bê, khách tự lấy chẳng ai phải chờ."
+        }
+      ],
+      "en": {
+        "title": "So many customers!",
+        "goTo": "Go into the warm cave, where a long queue waits at the makeshift wooden counter",
+        "prompt": "Customers pour in and everyone orders at once. Mèo is flustered: \"Meow… honoured guest {name}, what do we do?\"",
+        "choices": [
+          {
+            "text": "Hand out numbers on bottle caps and call them in turn",
+            "consequence": "Each customer holds a numbered bottle cap. Mèo calls out each number, and the counter is suddenly orderly."
+          },
+          {
+            "text": "Serve the elderly and little children first",
+            "consequence": "Everyone steps back to make room. The old lady from the top of the lane thanks them over and over, and the whole queue smiles."
+          },
+          {
+            "text": "Pour a full tray of glasses for people to help themselves",
+            "consequence": "The tray empties and fills again. Mèo pours, {name} carries, and nobody has to wait."
+          }
+        ]
+      }
+    },
+    {
+      "id": "day-coc-tra",
+      "title": "Đẩy cốc trà dọc bàn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Khách ngồi kín bàn dài trong hang. Đẩy cốc trà trượt dọc mặt bàn cho trúng chỗ từng khách, mười hai cốc nhé!",
+      "game": "tea-slide",
+      "goal": 12,
+      "en": {
+        "title": "Sliding glasses down the table",
+        "prompt": "The long table in the cave is full. Slide each glass of tea along the table to the right customer: twelve glasses!"
+      }
+    },
+    {
+      "id": "quan-chay-em",
+      "title": "Quán chạy êm",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tới trưa, thùng đá vơi một nửa mà chẳng ai phải chờ lâu. Mèo đếm xu, chia cho {name} một phần, vừa đếm vừa kể chuyện cả ngõ.",
+      "en": {
+        "title": "A smooth morning",
+        "text": "By noon the ice bucket is half empty and nobody waited long. Mèo counts the coins, gives {name} a share, and gossips about the whole lane while counting."
+      }
+    },
+    {
+      "id": "vi-tra-moi",
+      "title": "Một vị trà mới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Khách hỏi mãi: quán có vị trà nào riêng không? Mèo quyết định nghĩ ra một vị mới, có tên riêng, uống một lần là nhớ.",
+      "en": {
+        "title": "A brand-new flavour",
+        "text": "Customers keep asking: does the stall have its own special tea? Mèo decides to invent a new flavour with its own name, one sip and you never forget."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "logic": 1,
+      "xem-dong-ho": 1
+    }
+  },
+  "en": {
+    "title": "Mèo Trà Đá's story, chapter 2: The morning rush",
+    "summary": "Mèo Trà Đá's pop-up stall is packed the moment it opens. {name} finds the sign, bell and ice bucket, works out who came first, orders the appointments by the time of day and helps keep the stall from chaos."
+  }
+}

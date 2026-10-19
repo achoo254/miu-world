@@ -1,0 +1,411 @@
+{
+  "id": "yarn-thu-ngan-tram-chuyen-cuoi-5",
+  "region": "cho-phien",
+  "chapter": 2,
+  "title": "Chuyện của Bác Thu Ngân Vui Vẻ, chương 5: Đồng xu nước vối",
+  "status": "active",
+  "category": "story",
+  "summary": "Bác Thu Ngân Vui Vẻ cho {name} xem đồng xu cổ chưa rời túi áo, kiếm được từ hồi bán nước vối. {name} tìm đồ cũ trong kho, đọc trang nhật ký, xếp tranh kể chuyện rồi cùng bác viết dòng cuối cho chuyện thứ một trăm.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bác Thu Ngân Vui Vẻ",
+    "where": "Chợ phiên: quầy thu ngân, kho hàng nhỏ, chân hải đăng, gốc cây đầu bến, quầy cân đong",
+    "goal": "Viết xong chuyện thứ một trăm từ câu chuyện đồng xu của bác",
+    "play": "Tìm đồ cũ theo lời tả; đọc trang nhật ký; xếp tranh theo trình tự; chọn cách kết chuyện; nhớ món khách gọi",
+    "learn": "Đọc hiểu, kể chuyện theo trình tự",
+    "reward": "85 XP, 25 Xu, Skill XP Đọc hiểu, Kể chuyện, Đồng tiền cổ",
+    "next": "Tập hai: một trăm câu đố nhẩm"
+  },
+  "phases": {
+    "hook": "dong-xu-trong-tui",
+    "explore": "do-cu-cua-bac",
+    "learn": "doc-nhat-ky",
+    "challenge": "xep-tranh-dong-xu",
+    "decision": "ket-chuyen-mot-tram",
+    "finale": "phien-ra-mat-sach",
+    "reward": "mot-tram-chuyen-cuoi",
+    "next": "tap-hai"
+  },
+  "places": {
+    "bac-thu-ngan-vui-ve": "Quầy thu ngân",
+    "do-cu-cua-bac": "Kho hàng nhỏ",
+    "st-thu-ngan-tram-chuyen-cuoi-am-nuoc-voi": "Kho hàng nhỏ",
+    "st-thu-ngan-tram-chuyen-cuoi-ghe-dau-hoi-be": "Kho hàng nhỏ",
+    "st-thu-ngan-tram-chuyen-cuoi-bien-nuoc-voi": "Kho hàng nhỏ",
+    "st-thu-ngan-tram-chuyen-cuoi-nhat-ky-nam-tam-tuoi": "Chân hải đăng",
+    "st-thu-ngan-tram-chuyen-cuoi-bon-tranh-dong-xu": "Gốc cây đầu bến",
+    "st-thu-ngan-tram-chuyen-cuoi-sach-tram-chuyen-cuoi": "Quầy cân đong"
+  },
+  "steps": [
+    {
+      "id": "dong-xu-trong-tui",
+      "title": "Đồng xu trong túi áo",
+      "goTo": "Tới quầy thu ngân, bác đang mân mê vật gì trong túi áo",
+      "kind": "dialogue",
+      "target": "bac-thu-ngan-vui-ve",
+      "lines": [
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "{name}, bác chưa từng cho ai xem cái này. Đây, đồng xu cổ, mòn nhẵn cả hai mặt."
+        },
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "Hồi tám tuổi, bác bán nước vối ngay ở chợ này. Đồng xu đầu tiên bác kiếm được là nó. Từ hôm ấy nó chưa rời túi áo bác ngày nào."
+        },
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "Chuyện thứ một trăm, bác muốn kể chuyện đồng xu. Nhưng bác quên mất vài đoạn rồi. Đồ cũ của bác còn trong kho, cháu tìm giúp nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu giữ bí mật này như giữ đồng xu ấy.",
+          "reply": "Bác tin cháu. Chuyện thật thì kể chậm thôi, cho người nghe kịp thương."
+        },
+        {
+          "text": "Một đồng xu mà giữ được lâu thế ạ!",
+          "reply": "Đồng xu nhỏ mà giữ được cả một buổi sáng hồi bé đấy cháu. Hô hô… bác lại hơi rưng rưng."
+        }
+      ],
+      "en": {
+        "title": "The coin in his pocket",
+        "goTo": "Go to the cashier's counter, where he is turning something over in his shirt pocket",
+        "lines": [
+          "{name}, I've never shown anyone this. Here: an old coin, worn smooth on both sides.",
+          "When I was eight, I sold herbal tea right here in this market. This was the first coin I ever earned. Since that day it has never left my pocket.",
+          "For joke number one hundred I want to tell the story of this coin. But I've forgotten bits of it. My old things are still in the storeroom; will you find them?"
+        ],
+        "choices": [
+          {
+            "text": "I'll keep this secret as carefully as you keep that coin.",
+            "reply": "I trust you. A true story should be told slowly, so the listener has time to care."
+          },
+          {
+            "text": "One coin, kept all those years!",
+            "reply": "A tiny coin that holds a whole morning of my childhood. Ho ho… I'm a little teary again."
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-cu-cua-bac",
+      "title": "Đồ cũ trong kho",
+      "goTo": "Vào kho hàng nhỏ tìm ba món đồ hồi bé của bác",
+      "kind": "find-object",
+      "prompt": "Bác nhớ mang máng từng món. Đọc lời tả rồi tìm cho đủ:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "am",
+          "name": "Chiếc ấm nước vối",
+          "clue": "Bụng tròn, sứt mất một bên quai, vẫn còn thoang thoảng mùi lá vối.",
+          "target": "st-thu-ngan-tram-chuyen-cuoi-am-nuoc-voi"
+        },
+        {
+          "id": "ghe",
+          "name": "Chiếc ghế đẩu nhỏ",
+          "clue": "Thấp tới đầu gối người lớn, mặt ghế có vết dao khắc chữ «Bé».",
+          "target": "st-thu-ngan-tram-chuyen-cuoi-ghe-dau-hoi-be"
+        },
+        {
+          "id": "bien",
+          "name": "Tấm biển bán hàng",
+          "clue": "Gỗ bạc màu, chữ nguệch ngoạc viết tay: «Nước vối, mát ơi là mát».",
+          "target": "st-thu-ngan-tram-chuyen-cuoi-bien-nuoc-voi"
+        }
+      ],
+      "en": {
+        "title": "Old things in the storeroom",
+        "goTo": "Go into the little storeroom and find three things from his childhood",
+        "prompt": "He half remembers each one. Read the descriptions and find them all:",
+        "items": [
+          {
+            "name": "The herbal-tea kettle",
+            "clue": "Round-bellied, one handle broken off, still faintly smelling of vối leaves."
+          },
+          {
+            "name": "The little stool",
+            "clue": "As low as a grown-up's knee, with «Bé» carved into the seat with a knife."
+          },
+          {
+            "name": "The stall sign",
+            "clue": "Faded wood, scrawled by hand: «Herbal tea, ever so cool»."
+          }
+        ]
+      }
+    },
+    {
+      "id": "doc-nhat-ky",
+      "title": "Trang nhật ký năm ấy",
+      "goTo": "Ra chân hải đăng, nơi bác dán trang nhật ký cũ cho khỏi mất",
+      "kind": "read",
+      "target": "st-thu-ngan-tram-chuyen-cuoi-nhat-ky-nam-tam-tuoi",
+      "skill": "doc-hieu",
+      "text": "Hôm nay bà cho mình ra chợ bán nước vối.\nCả buổi sáng chẳng ai mua. Mình ngồi trên ghế đẩu, buồn thiu.\nMình nghĩ ra một trò: ai mua một cốc thì được nghe một câu đố nhẩm, đoán đúng được thêm nửa cốc.\nKhách xúm lại, ai cũng muốn đoán. Trưa, mình hết sạch ấm nước.\nBà đưa mình đồng xu đầu tiên. Mình cất nó vào túi áo, sát bên ngực.",
+      "question": "Nhờ đâu cậu bé bán hết ấm nước vối?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Nhờ bà ra ngồi bán cùng"
+        },
+        {
+          "id": "b",
+          "text": "Nhờ tặng kèm câu đố nhẩm cho khách"
+        },
+        {
+          "id": "c",
+          "text": "Nhờ hôm ấy trời nắng to"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Tìm câu kể cậu bé «nghĩ ra một trò».",
+          "Đọc tiếp câu sau: khách làm gì khi nghe trò ấy?"
+        ],
+        "hint": "Thói quen tặng câu đố khi thối tiền của bác có từ hồi ấy.",
+        "answer": {
+          "text": "Câu đố nhẩm tặng kèm mỗi cốc nước",
+          "explanation": "Cậu bé nghĩ ra trò mua một cốc được nghe một câu đố nhẩm, khách xúm lại đoán, nên tới trưa bán hết ấm nước."
+        },
+        "en": {
+          "guide": [
+            "Find the sentence where the boy «thought up a game».",
+            "Read the next one: what did customers do when they heard it?"
+          ],
+          "hint": "His habit of giving a riddle with the change started back then.",
+          "answer": {
+            "text": "By giving customers a mental-maths riddle with each cup",
+            "explanation": "The boy offered a riddle with every cup, customers crowded round to guess, and by noon the kettle was empty."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng thế! Câu đố từ hồi tám tuổi tới giờ bác vẫn tặng khách mỗi ngày.",
+          "{name} đọc ra cả cái gốc của thói quen tặng câu đố.",
+          "Bác gật đầu lia lịa, mắt cười mà hơi đỏ."
+        ],
+        "wrong": [
+          "Bà chỉ đưa đồng xu thôi, người ngồi bán là cậu bé.",
+          "Trang nhật ký không nhắc tới nắng nôi gì cả, {name} đọc lại câu «nghĩ ra một trò» nhé.",
+          "Gần rồi! Khách xúm lại vì muốn làm gì?"
+        ],
+        "en": {
+          "right": [
+            "Exactly! The riddles from when he was eight he still gives customers every day.",
+            "{name} found the very root of his riddle habit.",
+            "He nods hard, eyes smiling and a little red."
+          ],
+          "wrong": [
+            "Grandma only gave him the coin; it was the boy who sat selling.",
+            "The diary says nothing about the weather, {name}; reread the part about thinking up a game.",
+            "Nearly! Why did the customers crowd round?"
+          ]
+        }
+      },
+      "en": {
+        "title": "That diary page",
+        "goTo": "Go to the foot of the lighthouse, where he pinned the old diary page so it would not get lost",
+        "text": "Today Grandma let me sell herbal tea at the market.\nAll morning nobody bought any. I sat on my stool feeling glum.\nThen I thought up a game: buy a cup and hear a mental-maths riddle; guess right and get half a cup more.\nCustomers crowded round; everyone wanted to guess. By noon my kettle was empty.\nGrandma gave me my first coin. I put it in my shirt pocket, close to my heart.",
+        "question": "How did the boy sell the whole kettle of tea?",
+        "choices": [
+          "Grandma sat and sold it with him",
+          "He gave customers a mental-maths riddle with their tea",
+          "It was a very sunny day"
+        ]
+      }
+    },
+    {
+      "id": "xep-tranh-dong-xu",
+      "title": "Kể lại chuyện đồng xu",
+      "goTo": "Ra gốc cây đầu bến, bốn bức tranh đang dựng thành hàng",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-thu-ngan-tram-chuyen-cuoi-bon-tranh-dong-xu",
+      "skill": "ke-chuyen",
+      "prompt": "Bác vẽ bốn tranh để in vào chuyện thứ một trăm, nhưng xếp lộn xộn. Xếp lại theo đúng trình tự câu chuyện:",
+      "items": [
+        {
+          "id": "xum-lai",
+          "label": "Khách xúm lại đoán câu đố"
+        },
+        {
+          "id": "ra-cho",
+          "label": "Cậu bé theo bà ra chợ với ấm nước vối"
+        },
+        {
+          "id": "cat-xu",
+          "label": "Cậu bé cất đồng xu vào túi áo"
+        },
+        {
+          "id": "ngoi-buon",
+          "label": "Cả buổi sáng không ai mua, cậu ngồi buồn"
+        }
+      ],
+      "answer": {
+        "order": [
+          "ra-cho",
+          "ngoi-buon",
+          "xum-lai",
+          "cat-xu"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Chuyện bắt đầu khi cậu bé tới chợ.",
+          "Có buồn trước thì mới nghĩ ra trò vui sau."
+        ],
+        "hint": "Tranh cuối là lúc đồng xu vào túi áo.",
+        "answer": {
+          "text": "Ra chợ, ngồi buồn, khách xúm lại, cất đồng xu",
+          "explanation": "Cậu bé ra chợ, cả sáng không ai mua, cậu nghĩ ra câu đố nên khách xúm lại, cuối cùng cậu cất đồng xu đầu tiên vào túi."
+        },
+        "en": {
+          "guide": [
+            "The story begins when the boy arrives at the market.",
+            "He was glum first, and only then thought of a fun game."
+          ],
+          "hint": "The last picture is the coin going into his pocket.",
+          "answer": {
+            "text": "Off to market, sitting glum, customers crowding round, pocketing the coin",
+            "explanation": "The boy goes to market, nobody buys all morning, his riddle game draws a crowd, and at last he pockets his first coin."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng trình tự! Bác đọc lại một lượt, giọng chậm như hồi bà kể.",
+          "Có đầu, có giữa, có kết, {name} kể chuyện mạch lạc lắm.",
+          "Bốn tranh nối nhau như bốn bậc thang về tuổi thơ của bác."
+        ],
+        "wrong": [
+          "Khách chưa thể xúm lại khi cậu bé còn chưa nghĩ ra trò đố.",
+          "Đồng xu cất vào túi là chuyện cuối ngày, để nó ở cuối nhé.",
+          "Thử hỏi: chuyện gì xảy ra đầu tiên khi bà cháu tới chợ?"
+        ],
+        "en": {
+          "right": [
+            "Right order! He reads it through once, slowly, the way his grandmother used to tell stories.",
+            "A beginning, a middle and an end: {name} tells a story very clearly.",
+            "Four pictures in a row, like four steps back to his childhood."
+          ],
+          "wrong": [
+            "Customers can't crowd round before the boy has thought of the riddle game.",
+            "Pocketing the coin happens at the end of the day; put it last.",
+            "Ask yourself: what happens first when grandmother and boy reach the market?"
+          ]
+        }
+      },
+      "en": {
+        "title": "Retelling the coin story",
+        "goTo": "Go to the tree at the head of the wharf, where four pictures stand in a row",
+        "prompt": "He drew four pictures for joke number one hundred, but they are muddled. Put them back in story order:",
+        "items": [
+          "Customers crowd round to guess the riddles",
+          "The boy goes to market with Grandma and the tea kettle",
+          "The boy puts the coin in his shirt pocket",
+          "Nobody buys all morning and he sits feeling glum"
+        ]
+      }
+    },
+    {
+      "id": "ket-chuyen-mot-tram",
+      "title": "Kết chuyện thứ một trăm",
+      "goTo": "Mang tranh về quầy cân đong, cuốn sách đang chờ trang cuối",
+      "kind": "decision",
+      "target": "st-thu-ngan-tram-chuyen-cuoi-sach-tram-chuyen-cuoi",
+      "speaker": "Bác Thu Ngân Vui Vẻ",
+      "prompt": "Cuốn sách chỉ còn thiếu dòng cuối của chuyện thứ một trăm. Bác đặt tay lên túi áo có đồng xu và hỏi: «Cháu thấy nên kết thế nào?»",
+      "choices": [
+        {
+          "id": "cau-do",
+          "text": "Kết bằng một câu đố nhẩm cho người đọc",
+          "consequence": "Bác viết: «Đố bạn: một đồng xu giữ năm mươi năm thì đáng bao nhiêu?» Bên dưới in ngược: «Đáng cả một nụ cười»."
+        },
+        {
+          "id": "ho-ho",
+          "text": "Kết bằng tiếng cười «hô hô» thật to",
+          "consequence": "Bác viết ba chữ «hô hô hô» to kín trang. Ai lật tới đó cũng bật cười theo."
+        },
+        {
+          "id": "moi-ra-cho",
+          "text": "Kết bằng lời mời người đọc ra chợ nghe kể",
+          "consequence": "Bác viết: «Muốn nghe chuyện thứ một trăm lẻ một, mời bạn ra quầy thu ngân.» Đồng xu vẫn nằm yên trong túi áo."
+        }
+      ],
+      "en": {
+        "title": "Ending joke number one hundred",
+        "goTo": "Bring the pictures back to the weighing counter, where the book waits for its last page",
+        "prompt": "The book only lacks the last line of story one hundred. He lays a hand on the pocket with the coin and asks: «How do you think it should end?»",
+        "choices": [
+          {
+            "text": "End with a mental-maths riddle for the reader",
+            "consequence": "He writes: «Riddle: what is one coin worth after fifty years?» Below, upside down: «A whole smile»."
+          },
+          {
+            "text": "End with a great big «ho ho»",
+            "consequence": "He writes «ho ho ho» big enough to fill the page. Everyone who turns to it laughs along."
+          },
+          {
+            "text": "End by inviting readers to the market to hear him tell it",
+            "consequence": "He writes: «For story one hundred and one, come to the cashier's counter.» The coin stays snug in his pocket."
+          }
+        ]
+      }
+    },
+    {
+      "id": "phien-ra-mat-sach",
+      "title": "Phiên chợ ra mắt sách",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Cả chợ kéo tới quầy nghe bác đọc sách, ai cũng gọi thêm món. Nhớ đúng món từng khách gọi, đạt mười điểm nhé!",
+      "game": "customer-memory",
+      "goal": 10,
+      "en": {
+        "title": "The book launch market",
+        "prompt": "The whole market crowds round the counter to hear him read, and everyone orders something. Remember what each customer asked for and score ten points!"
+      }
+    },
+    {
+      "id": "mot-tram-chuyen-cuoi",
+      "title": "Đủ một trăm chuyện cười",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cuốn sách đủ một trăm chuyện, và lần này khách cười thật. Bác tặng {name} một đồng tiền cổ giống hệt đồng xu của bác: «Của bác thì vẫn ở trong túi áo, còn cái này để cháu nhớ phiên chợ hôm nay.»",
+      "en": {
+        "title": "A hundred jokes at last",
+        "text": "The book has its hundred jokes, and this time the customers really laugh. He gives {name} an old coin just like his own: «Mine stays in my pocket; this one is for you to remember today's market.»"
+      }
+    },
+    {
+      "id": "tap-hai",
+      "title": "Tập hai đang chờ",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bác bảo tập hai sẽ tên «Một trăm câu đố nhẩm», và trang đầu tiên để dành cho câu đố của {name}.",
+      "en": {
+        "title": "Volume two awaits",
+        "text": "He says volume two will be called «A Hundred Mental-Maths Riddles», and the first page is saved for a riddle by {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 85,
+    "coin": 25,
+    "skillXp": {
+      "doc-hieu": 1,
+      "ke-chuyen": 1
+    },
+    "items": {
+      "dong-tien-co": 1
+    }
+  },
+  "en": {
+    "title": "Bác Thu Ngân Vui Vẻ's story, chapter 5: The herbal-tea coin",
+    "summary": "Bác Thu Ngân Vui Vẻ shows {name} the old coin that has never left his pocket, earned selling herbal tea as a boy. {name} finds his old things in the storeroom, reads a diary page, orders the story pictures and helps write the last line of story one hundred."
+  }
+}

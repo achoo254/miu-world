@@ -1,0 +1,350 @@
+{
+  "id": "yarn-ong-bay-giai-co-2",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Chuyện của Ông Bảy Cờ Gánh, chương 2: Phiếu đăng ký bay khắp ngõ",
+  "status": "active",
+  "category": "story",
+  "summary": "Phiếu đăng ký giải cờ gánh bị gió thổi tung khắp xóm. {name} gom phiếu, xếp tên người chơi theo bảng chữ cái, cộng số người của ba màu phiếu rồi chọn chỗ thi cho mát.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Ông Bảy Cờ Gánh",
+    "where": "Xóm: cổng vườn hoa, vách tổ ong, nhà Mẩy, ghế mây bên ngõ, gốc sung",
+    "goal": "Gom phiếu và lập danh sách người dự giải cờ gánh",
+    "play": "Gom phiếu bị gió thổi; xếp tên theo thứ tự chữ cái; giải bài toán đếm người; chọn chỗ thi; giành ghế",
+    "learn": "Bảng chữ cái, bài toán có lời văn (cộng ba số)",
+    "reward": "65 XP, 16 Xu, Skill XP Bảng chữ cái, Bài toán lời văn",
+    "next": "Viết giấy mời gửi từng nhà"
+  },
+  "phases": {
+    "hook": "gio-thoi-phieu",
+    "explore": "gom-phieu-bay",
+    "learn": "xep-ten-chu-cai",
+    "challenge": "dem-nguoi-du-giai",
+    "decision": "cho-thi-mat",
+    "finale": "gianh-ghe-thi",
+    "reward": "danh-sach-du",
+    "next": "giay-moi-tung-nha"
+  },
+  "places": {
+    "ong-bay-co-ganh": "Cổng vườn hoa",
+    "gom-phieu-bay": "Vách tổ ong",
+    "st-ong-bay-giai-co-phieu-xanh": "Vách tổ ong",
+    "st-ong-bay-giai-co-phieu-do": "Vách tổ ong",
+    "st-ong-bay-giai-co-phieu-vang": "Vách tổ ong",
+    "st-ong-bay-giai-co-bang-ten-du-giai": "Nhà Mẩy",
+    "st-ong-bay-giai-co-so-dem-nguoi": "Ghế mây bên ngõ",
+    "st-ong-bay-giai-co-tam-bat-che-nang": "Gốc sung"
+  },
+  "steps": [
+    {
+      "id": "gio-thoi-phieu",
+      "title": "Gió thổi bay phiếu",
+      "goTo": "Về cổng vườn hoa, Ông Bảy Cờ Gánh đang cầm cái hũ rỗng",
+      "kind": "dialogue",
+      "target": "ong-bay-co-ganh",
+      "lines": [
+        {
+          "speaker": "Ông Bảy Cờ Gánh",
+          "text": "Cháu… tới rồi. Phiếu đăng ký ông bỏ vào hũ… gió lùa một cái… bay hết ra ngõ."
+        },
+        {
+          "speaker": "Ông Bảy Cờ Gánh",
+          "text": "Có phiếu xanh, phiếu đỏ, phiếu vàng. Mỗi màu là một tổ trong xóm. Cháu nhặt giúp ông."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu chạy nhanh lắm, ông chờ một chút!",
+          "reply": "Chạy thì nhìn đường, cháu. Phiếu chẳng chạy mất đâu."
+        },
+        {
+          "text": "Lần sau mình đậy nắp hũ ông nhé.",
+          "reply": "Ừ… ông già rồi, hay quên nắp. Cộc. Ghi nhớ."
+        }
+      ],
+      "en": {
+        "title": "The wind took the slips",
+        "goTo": "Go back to the garden gate, where Ông Bảy Cờ Gánh is holding an empty jar",
+        "lines": [
+          "You… came. The entry slips I put in the jar… one gust of wind… and they all flew into the lane.",
+          "There are blue slips, red slips and yellow slips. Each colour is one group of the lane. Pick them up for me."
+        ],
+        "choices": [
+          {
+            "text": "I'm a fast runner, wait just a moment!",
+            "reply": "Watch the path as you run. Paper slips do not run away."
+          },
+          {
+            "text": "Next time let's put a lid on the jar.",
+            "reply": "Yes… I'm old, I forget lids. Tock. Noted."
+          }
+        ]
+      }
+    },
+    {
+      "id": "gom-phieu-bay",
+      "title": "Gom phiếu bị gió thổi",
+      "goTo": "Ra vách tổ ong, gió dồn phiếu vào chân vách",
+      "kind": "search",
+      "targets": [
+        "st-ong-bay-giai-co-phieu-xanh",
+        "st-ong-bay-giai-co-phieu-do",
+        "st-ong-bay-giai-co-phieu-vang"
+      ],
+      "en": {
+        "title": "Gathering the blown slips",
+        "goTo": "Go to the beehive wall, where the wind has piled the slips at its foot"
+      }
+    },
+    {
+      "id": "xep-ten-chu-cai",
+      "title": "Xếp tên theo chữ cái",
+      "goTo": "Sang nhà Mẩy, chép tên lên bảng gỗ trước nhà",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-ong-bay-giai-co-bang-ten-du-giai",
+      "skill": "bang-chu-cai",
+      "prompt": "Ông muốn bảng tên người dự giải xếp theo thứ tự bảng chữ cái, ai tìm tên mình cũng dễ. Xếp bốn cái tên này:",
+      "items": [
+        {
+          "id": "ha",
+          "label": "Hà"
+        },
+        {
+          "id": "an",
+          "label": "An"
+        },
+        {
+          "id": "duc",
+          "label": "Đức"
+        },
+        {
+          "id": "bong",
+          "label": "Bống"
+        }
+      ],
+      "answer": {
+        "order": [
+          "an",
+          "bong",
+          "duc",
+          "ha"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Nhìn chữ cái đầu tiên của mỗi tên.",
+          "Nhớ thứ tự: a, ă, â, b, c, d, đ, e, ê, g, h…"
+        ],
+        "hint": "Chữ đ đứng ngay sau chữ d, trước chữ e.",
+        "answer": {
+          "text": "An, Bống, Đức, Hà",
+          "explanation": "Chữ cái đầu là a, b, đ, h; theo bảng chữ cái thì a đứng trước b, b trước đ, đ trước h."
+        },
+        "en": {
+          "guide": [
+            "Look at the first letter of each name.",
+            "Remember the Vietnamese order: a, ă, â, b, c, d, đ, e, ê, g, h…"
+          ],
+          "hint": "The letter đ comes right after d and before e.",
+          "answer": {
+            "text": "An, Bống, Đức, then Hà",
+            "explanation": "The first letters are a, b, đ and h; in the alphabet a comes before b, b before đ, and đ before h."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cộc! An, Bống, Đức, Hà, đẹp như hàng quân cờ.",
+          "{name} thuộc bảng chữ cái làu làu, ông chép theo là xong.",
+          "Ai đến cũng tìm thấy tên mình ngay, không phải dò."
+        ],
+        "wrong": [
+          "Chữ h đứng gần cuối hàng này đấy, cháu đọc lại nhé.",
+          "Đ có cái gạch ngang, nó đứng sau d chứ không đứng đầu.",
+          "Thử nhẩm a, b, c, d, đ… rồi đặt từng tên vào chỗ của nó."
+        ],
+        "en": {
+          "right": [
+            "Tock! An, Bống, Đức, Hà, as neat as a row of pieces.",
+            "You know your alphabet by heart, {name}; I only have to copy it.",
+            "Everyone who comes will find their name at once."
+          ],
+          "wrong": [
+            "The letter h comes near the end of this row; read it again.",
+            "Đ has a little bar; it comes after d, not at the front.",
+            "Say a, b, c, d, đ… and put each name in its place."
+          ]
+        }
+      },
+      "en": {
+        "title": "Names in ABC order",
+        "goTo": "Go over to Mẩy's house and copy the names onto the board in front",
+        "prompt": "Grandpa wants the list of players in alphabetical order so everyone finds their name easily. Put these four names in order:",
+        "items": [
+          "Hà",
+          "An",
+          "Đức",
+          "Bống"
+        ]
+      }
+    },
+    {
+      "id": "dem-nguoi-du-giai",
+      "title": "Bao nhiêu người dự giải?",
+      "goTo": "Ra ghế mây bên ngõ, ông để cuốn sổ đếm người ở đó",
+      "kind": "riddle",
+      "target": "st-ong-bay-giai-co-so-dem-nguoi",
+      "skill": "bai-toan-loi-van",
+      "question": "Tổ phiếu xanh có 14 người đăng ký, tổ phiếu đỏ có 9 người, tổ phiếu vàng có 7 người. Cả xóm có bao nhiêu người dự giải cờ gánh?",
+      "answer": {
+        "value": 30
+      },
+      "support": {
+        "guide": [
+          "Cộng số người của hai tổ trước, rồi cộng thêm tổ thứ ba.",
+          "Có thể gộp 9 với 7 trước cho dễ tính."
+        ],
+        "hint": "9 + 7 = 16, rồi 14 + 16 = ?",
+        "answer": {
+          "text": "30 người",
+          "explanation": "14 + 9 + 7 = 30: lấy 9 + 7 = 16, rồi 14 + 16 = 30. Cả xóm có 30 người dự giải."
+        },
+        "en": {
+          "guide": [
+            "Add two groups first, then add the third.",
+            "You can join 9 and 7 first to make it easier."
+          ],
+          "hint": "9 + 7 = 16, then 14 + 16 = ?",
+          "answer": {
+            "text": "30 people",
+            "explanation": "14 + 9 + 7 = 30: 9 + 7 = 16, then 14 + 16 = 30. Thirty people from the lane have signed up."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba mươi người! Ông chưa bao giờ thấy xóm đông người chơi cờ thế.",
+          "Cộng ba số mà {name} không sót ai, giỏi lắm.",
+          "Ba mươi, tròn chục. Ông ghi to vào sổ rồi gạch chân hai lần."
+        ],
+        "wrong": [
+          "Cháu đã cộng đủ cả ba màu phiếu chưa?",
+          "Hàng đơn vị 4, 9 và 7 gộp lại là bao nhiêu, nhớ sang hàng chục nhé.",
+          "Số ấy ít hơn tổ xanh với tổ đỏ cộng lại rồi, tính lại nào."
+        ],
+        "en": {
+          "right": [
+            "Thirty! Grandpa has never seen so many players in the lane.",
+            "You added three numbers without missing anyone, {name}. Well done.",
+            "Thirty, a round ten. Grandpa writes it large and underlines it twice."
+          ],
+          "wrong": [
+            "Did you add all three colours of slips?",
+            "What do the ones 4, 9 and 7 make together? Remember to carry.",
+            "That is fewer than blue and red together; try again."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many players?",
+        "goTo": "Go to the wicker chair by the lane, where Grandpa left the counting book",
+        "question": "The blue group has 14 people signed up, the red group 9 and the yellow group 7. How many people in the lane are entering the cờ gánh tournament?"
+      }
+    },
+    {
+      "id": "cho-thi-mat",
+      "title": "Thi ở đâu cho mát?",
+      "goTo": "Ra gốc sung, ông để tấm bạt che nắng gấp sẵn ở đó",
+      "kind": "decision",
+      "target": "st-ong-bay-giai-co-tam-bat-che-nang",
+      "speaker": "Ông Bảy Cờ Gánh",
+      "prompt": "Ông lau mồ hôi: «Ba mươi người… ngồi giữa nắng thì mệt lắm. Mình thi ở đâu, cháu?»",
+      "choices": [
+        {
+          "id": "duoi-gian-muop",
+          "text": "Kê bàn dưới giàn mướp, bóng lá che kín",
+          "consequence": "Lá mướp đan dày như mái nhà. Ông bảo ngồi đó quân cờ mát tay, ai cũng thích."
+        },
+        {
+          "id": "cang-bat",
+          "text": "Căng tấm bạt giữa hai gốc cây",
+          "consequence": "Tấm bạt xanh căng phồng như cánh buồm. Dưới bạt mát rượi, gió lùa nhè nhẹ."
+        },
+        {
+          "id": "thi-buoi-chieu",
+          "text": "Dời giờ thi sang buổi chiều mát",
+          "consequence": "Ông gật đầu: «Nắng chiều dịu hơn. Sáng thì xóm còn đi chợ.» Ông sửa giờ trên bảng."
+        }
+      ],
+      "en": {
+        "title": "Where is it cool?",
+        "goTo": "Go to the fig tree, where Grandpa left the folded sunshade",
+        "prompt": "Grandpa wipes his brow: \"Thirty people… sitting in the sun will wilt. Where shall we play?\"",
+        "choices": [
+          {
+            "text": "Set the tables under the gourd trellis, in full leafy shade",
+            "consequence": "The gourd leaves are thick as a roof. Grandpa says the pieces stay cool there and everyone will love it."
+          },
+          {
+            "text": "Stretch the tarp between two trees",
+            "consequence": "The blue tarp bellies like a sail. Underneath it is cool, with a gentle breeze."
+          },
+          {
+            "text": "Move the matches to the cool of the afternoon",
+            "consequence": "Grandpa nods: \"The afternoon sun is gentler, and mornings are for the market.\" He changes the time on the board."
+          }
+        ]
+      }
+    },
+    {
+      "id": "gianh-ghe-thi",
+      "title": "Thử giành ghế",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ông muốn thử xem ghế có đủ cho người chơi không. Chơi giành ghế với các bạn, giữ ghế được ba lượt nhé!",
+      "game": "musical-chairs",
+      "goal": 3,
+      "en": {
+        "title": "Testing the chairs",
+        "prompt": "Grandpa wants to know if there are enough chairs for the players. Play musical chairs with the children and keep a seat for three rounds!"
+      }
+    },
+    {
+      "id": "danh-sach-du",
+      "title": "Danh sách đã đủ",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bảng tên dán trước nhà Mẩy đã kín chữ. Ông Bảy đọc chậm từng tên, đọc tới tên {name} thì gõ một tiếng cộc rõ to.",
+      "en": {
+        "title": "The list is complete",
+        "text": "The name board in front of Mẩy's house is full. Ông Bảy reads every name slowly, and at {name}'s name he gives a loud tock."
+      }
+    },
+    {
+      "id": "giay-moi-tung-nha",
+      "title": "Giấy mời từng nhà",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Có người đăng ký rồi, giờ phải mời cho đàng hoàng. Ông muốn viết giấy mời tay gửi từng nhà, và cần {name} giúp viết câu.",
+      "en": {
+        "title": "An invitation for every house",
+        "text": "Now there are players, they must be invited properly. Grandpa wants handwritten invitations for every house, and needs {name} to help with the sentences."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "bang-chu-cai": 1,
+      "bai-toan-loi-van": 1
+    }
+  },
+  "en": {
+    "title": "Ông Bảy Cờ Gánh's story, chapter 2: Slips all over the lane",
+    "summary": "The wind has scattered the tournament entry slips all over the lane. {name} gathers them, sorts the players' names alphabetically, adds up the three colours of slips and chooses a cool place to play."
+  }
+}

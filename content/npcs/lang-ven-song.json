@@ -240,6 +240,92 @@
           }
         }
       ]
+    },
+    {
+      "id": "den-sen-ngan-ha",
+      "npc": "co-den-long-sen",
+      "title": { "vi": "Dòng sông thành dải ngân hà", "en": "When the River Became the Milky Way" },
+      "teaser": { "vi": "Cháu {name} ơi, cô có một ước mơ nhỏ: một đêm thôi, dòng sông nhà mình sáng như dải ngân hà. Mà đèn thì cô chưa làm đủ. Cháu phụ cô một tay, cháu thấy sao?", "en": "{name}, I have a small dream: just for one night, our river shining like the Milky Way. But I haven't made nearly enough lanterns. Will you lend me a hand, what do you think?" },
+      "chapters": [
+        {
+          "quest": "yarn-den-sen-ngan-ha-1",
+          "hearts": 0,
+          "letter": {
+            "from": "co-den-long-sen",
+            "title": { "vi": "Ba chiếc đèn về nhà", "en": "Three lanterns home again" },
+            "body": { "vi": "Cháu {name}, tối nay cô thắp thử Bé Hồng, Chú Cốm và Chị Ngà. Đứa nào cũng sáng, chỉ hơi run vì gió. Cô gửi cháu ít xu mua giấy màu. Mai mình làm hoa đăng nhé, cháu thấy sao?", "en": "{name}, tonight I lit Bé Hồng, Chú Cốm and Chị Ngà. They all shine, only trembling a little in the breeze. Here are a few coins for coloured paper. Shall we make a lantern-flower tomorrow, what do you think?" },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-den-sen-ngan-ha-2",
+          "hearts": 1,
+          "letter": {
+            "from": "meo-gap-thu",
+            "title": { "vi": "Thư từ chân cầu rồng", "en": "A letter from the dragon bridge" },
+            "body": { "vi": "{name} ơi, Cô Đèn Lồng Sen kể cậu vừa làm xong chiếc hoa đăng đầu tay, meo! Tớ đố cậu: thứ gì càng thắp càng ngắn lại? Nghĩ không ra thì nhìn vào giữa đế đèn nhé. Tớ gửi kèm mấy xu, mua giấy làm chiếc thứ hai đi, meo!", "en": "{name}, Cô Đèn Lồng Sen says you've just made your first lantern-flower, meow! Here's a riddle: what gets shorter the longer it burns? If you're stuck, look in the middle of the base. A few coins enclosed; buy paper for a second one, meow!" },
+            "reward": { "coins": 20, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-den-sen-ngan-ha-3",
+          "hearts": 2,
+          "letter": {
+            "from": "nghe-nhan-mua-roi",
+            "title": { "vi": "Tễu tôi xin thưa", "en": "Tễu here begs to say" },
+            "body": { "vi": "Tễu tôi xin thưa với cháu {name}: hì hì, đêm qua mặt ao sáng như sân khấu, rối của tôi ghen tị mất rồi! Đèn trôi đúng giờ, rối ra đúng nhịp, cả làng chẳng ai phải chờ. Tôi gửi cháu ít xu, mua kẹo nhớ chia cô Đèn một nửa nhé.", "en": "Tễu here begs to say to young {name}: hee hee, last night the pond shone like a stage and my puppets are jealous! The lanterns ran on time, the puppets came on cue, and nobody had to wait. A few coins for sweets; remember to share half with Cô Đèn." },
+            "reward": { "coins": 20, "xp": 20, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-den-sen-ngan-ha-4",
+          "hearts": 3,
+          "letter": {
+            "from": "tho-ngam-sao",
+            "title": { "vi": "Hai dải ngân hà", "en": "Two Milky Ways" },
+            "body": { "vi": "{name}…\nĐêm qua Thỏ ngồi trên mái nhìn về phía con sông… Thấy một dải sáng trôi trên mặt nước, giống hệt dải ngân hà trên trời… Thỏ đặt tên nó là «Dải Chè Hạt Sen»… Gửi {name} một tấm bản đồ sao, để so hai dải ngân hà nhé…", "en": "{name}…\nLast night I sat on the roof looking towards the river… I saw a band of light drifting on the water, just like the Milky Way in the sky… I named it \"the Lotus-Seed Pudding Band\"… Here is a star map for you, so you can compare the two Milky Ways…" },
+            "reward": { "coins": 25, "xp": 25, "items": {"ban-do-sao-dem": 1} }
+          }
+        }
+      ]
+    },
+    {
+      "id": "meo-sen-dem-vit",
+      "npc": "meo-dam-sen",
+      "title": { "vi": "Ngăn nắp như Mèo Đầm Sen", "en": "As Tidy as Mèo Đầm Sen" },
+      "teaser": { "vi": "Meo. {name}. Mèo thích mọi thứ ngăn nắp: vịt đếm đủ, cờ đi đúng, nước đong vừa. Sáng nay chẳng thứ gì ngăn nắp cả. Giúp Mèo không?", "en": "Meow. {name}. I like everything tidy: ducks counted, moves right, water measured. This morning nothing is tidy at all. Will you help?" },
+      "chapters": [
+        {
+          "quest": "yarn-meo-sen-dem-vit-1",
+          "hearts": 0,
+          "letter": {
+            "from": "meo-dam-sen",
+            "title": { "vi": "Sổ vịt, trang mới", "en": "Duck book, new page" },
+            "body": { "vi": "Meo. {name}. Tối nay Mèo đếm một lần. Đúng số. Mèo kẻ một trang sổ mới, thêm một cột ghi tên người đếm giúp. Cột ấy có tên {name}. Mai qua sớm.", "en": "Meow. {name}. Tonight I counted once. Right number. I ruled a new page with a column for whoever helps count. That column says {name}. Come early tomorrow." },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-meo-sen-dem-vit-2",
+          "hearts": 1,
+          "letter": {
+            "from": "te-tuong-co-the",
+            "title": { "vi": "Thư của người bạn cờ", "en": "From the chess friend" },
+            "body": { "vi": "Ta là Tể Tướng Cờ Vua, gửi người bạn nhỏ tên {name}. Mèo Đầm Sen viết rằng nước cờ lần này có phần của {name}. Nước ấy khiến ta vuốt râu đủ ba lần mà vẫn chưa nghĩ xong. Ta gửi {name} ít xu, coi như lời khen của một kẻ suýt bị chiếu tướng.", "en": "I, Tể Tướng Cờ Vua, write to the young friend called {name}. Mèo Đầm Sen tells me this move was partly yours. It made me stroke my beard three full times and I still have not finished thinking. Accept these coins as praise from one who was very nearly checkmated." },
+            "reward": { "coins": 20, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-meo-sen-dem-vit-3",
+          "hearts": 2,
+          "letter": {
+            "from": "cun-lua",
+            "title": { "vi": "Mũi tớ bảo hôm nay vui", "en": "My nose says today was happy" },
+            "body": { "vi": "Gâu! {name} ơi, mũi tớ bảo ruộng ven đầm hôm nay thơm mùi bùn mới. Tớ chạy ngang chuồng vịt mà Mèo không mắng câu nào, lạ chưa! Chắc tại Mèo đang vui. Tớ gửi cậu viên đá cuội trơn nhất bến.", "en": "Woof! {name}, my nose says the fields by the pond smell of fresh mud today. I ran right past the duck house and Mèo didn't scold me once, how strange! She must be happy. Here's the smoothest pebble on the landing for you." },
+            "reward": { "coins": 20, "xp": 20, "items": {"da-cuoi-song": 1} }
+          }
+        }
+      ]
     }
   ]
 }

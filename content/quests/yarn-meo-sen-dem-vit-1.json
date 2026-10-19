@@ -1,0 +1,350 @@
+{
+  "id": "yarn-meo-sen-dem-vit-1",
+  "region": "lang-ven-song",
+  "chapter": 4,
+  "title": "Chuyện của Mèo Đầm Sen, chương 1: Con vịt thứ mười ba",
+  "status": "active",
+  "category": "story",
+  "summary": "Sáng nay Mèo Đầm Sen đếm vịt ba lần ra ba số khác nhau. {name} tìm những chú vịt nấp quanh đầm, đếm trứng theo chục, xếp ô ngủ theo số thóc và quyết định chuyện chú vịt lạ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Đầm Sen",
+    "where": "Đầm sen: bờ đầm phía tây, chuồng vịt, bãi phơi sen",
+    "goal": "Đếm cho đúng đàn vịt của Mèo",
+    "play": "Tìm vịt nấp; đếm trứng theo chục; xếp ô ngủ; quyết định chuyện vịt lạ; lùa vịt về chuồng",
+    "learn": "Số có hai chữ số (chục và đơn vị), so sánh số",
+    "reward": "55 XP, 14 Xu, Skill XP Số đến 100, So sánh số",
+    "next": "Ván cờ gửi qua thư"
+  },
+  "phases": {
+    "hook": "dem-ba-lan",
+    "explore": "tim-vit-tron",
+    "learn": "dem-trung-theo-chuc",
+    "challenge": "xep-o-ngu",
+    "decision": "vit-la-o-dau",
+    "finale": "lua-vit-ve-chuong",
+    "reward": "dem-mot-lan-la-du",
+    "next": "van-co-qua-thu"
+  },
+  "places": {
+    "meo-dam-sen": "Đầm sen",
+    "tim-vit-tron": "Bờ đầm phía tây",
+    "st-meo-sen-dem-vit-vit-la-sen": "Bờ đầm phía tây",
+    "st-meo-sen-dem-vit-vit-bui-lau": "Bờ đầm phía tây",
+    "st-meo-sen-dem-vit-vit-vong-xanh": "Bờ đầm phía tây",
+    "st-meo-sen-dem-vit-khay-trung": "Chuồng vịt",
+    "st-meo-sen-dem-vit-bang-o-ngu": "Bãi phơi sen",
+    "st-meo-sen-dem-vit-o-rom": "Chuồng vịt"
+  },
+  "steps": [
+    {
+      "id": "dem-ba-lan",
+      "title": "Ba lần đếm, ba con số",
+      "goTo": "Ra bờ đầm sen, Mèo Đầm Sen đang đứng nhíu mày đếm vịt",
+      "kind": "dialogue",
+      "target": "meo-dam-sen",
+      "lines": [
+        {
+          "speaker": "Mèo Đầm Sen",
+          "text": "Meo. {name}, đếm giúp Mèo. Sáng nay Mèo đếm ba lần, ra ba số khác nhau."
+        },
+        {
+          "speaker": "Mèo Đầm Sen",
+          "text": "Lần một: mười hai. Lần hai: mười một. Lần ba: mười ba. Đàn vịt của Mèo chỉ có đúng mười hai con."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để cháu đếm lần thứ tư!",
+          "reply": "Được. Đếm chậm. Chỉ tay vào từng con."
+        },
+        {
+          "text": "Có khi vịt bơi lung tung nên Mèo đếm nhầm?",
+          "reply": "Meo. Vịt nghịch thật. Nhưng số thì không được nghịch."
+        }
+      ],
+      "en": {
+        "title": "Three counts, three numbers",
+        "goTo": "Go to the lotus pond, where Mèo Đầm Sen is frowning and counting ducks",
+        "lines": [
+          "Meow. {name}, count for me. This morning I counted three times and got three different numbers.",
+          "First: twelve. Second: eleven. Third: thirteen. My flock has exactly twelve ducks."
+        ],
+        "choices": [
+          {
+            "text": "Let me do the fourth count!",
+            "reply": "Fine. Count slowly. Point at each one."
+          },
+          {
+            "text": "Maybe the ducks swam about and you miscounted?",
+            "reply": "Meow. The ducks are naughty, yes. But numbers are not allowed to be."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-vit-tron",
+      "title": "Vịt trốn ở đâu?",
+      "goTo": "Men theo bờ đầm phía tây tìm những chú vịt đang nấp",
+      "kind": "search",
+      "targets": [
+        "st-meo-sen-dem-vit-vit-la-sen",
+        "st-meo-sen-dem-vit-vit-bui-lau",
+        "st-meo-sen-dem-vit-vit-vong-xanh"
+      ],
+      "en": {
+        "title": "Where are the ducks hiding?",
+        "goTo": "Walk along the west bank of the pond and find the ducks in hiding"
+      }
+    },
+    {
+      "id": "dem-trung-theo-chuc",
+      "title": "Đếm trứng theo chục",
+      "goTo": "Vào chuồng vịt xem khay trứng Mèo vừa nhặt",
+      "kind": "riddle",
+      "target": "st-meo-sen-dem-vit-khay-trung",
+      "skill": "so-den-100",
+      "question": "Mèo xếp trứng vịt vào khay, mỗi khay đủ 10 quả. Sáng nay Mèo xếp được 4 khay đầy và còn 7 quả lẻ. Mèo nhặt được tất cả bao nhiêu quả trứng?",
+      "answer": {
+        "value": 47
+      },
+      "support": {
+        "guide": [
+          "Mỗi khay đầy là một chục quả.",
+          "4 khay là 4 chục, thêm 7 quả lẻ là 7 đơn vị."
+        ],
+        "hint": "4 chục và 7 đơn vị viết thành số nào?",
+        "answer": {
+          "text": "47 quả trứng",
+          "explanation": "4 khay đầy là 4 chục = 40 quả, thêm 7 quả lẻ: 40 + 7 = 47. Mèo nhặt được 47 quả trứng."
+        },
+        "en": {
+          "guide": [
+            "Each full tray is one ten.",
+            "4 trays are 4 tens, and the 7 loose eggs are 7 ones."
+          ],
+          "hint": "What number is 4 tens and 7 ones?",
+          "answer": {
+            "text": "47 eggs",
+            "explanation": "4 full trays are 4 tens = 40 eggs, plus 7 loose ones: 40 + 7 = 47. Mèo collected 47 eggs."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn mươi bảy quả! Mèo ghi vào sổ, chữ số thẳng như hàng cọc tre.",
+          "{name} gom chục với đơn vị gọn như Mèo xếp trứng.",
+          "Meo. Đúng. Không thừa quả nào, không thiếu quả nào."
+        ],
+        "wrong": [
+          "Bốn khay là bốn chục cơ, {name} đếm lại số chục nhé.",
+          "Đừng quên bảy quả lẻ nằm ngoài khay.",
+          "Chữ số hàng chục là số khay, chữ số hàng đơn vị là số quả lẻ."
+        ],
+        "en": {
+          "right": [
+            "Forty-seven! Mèo writes it down, the digits straight as bamboo stakes.",
+            "{name} put tens and ones together as neatly as Mèo stacks eggs.",
+            "Meow. Correct. Not one egg too many, not one too few."
+          ],
+          "wrong": [
+            "Four trays make four tens, {name}; count the tens again.",
+            "Don't forget the seven loose eggs outside the trays.",
+            "The tens digit is the number of trays, the ones digit is the loose eggs."
+          ]
+        }
+      },
+      "en": {
+        "title": "Counting eggs in tens",
+        "goTo": "Go into the duck house and look at the tray of eggs Mèo just collected",
+        "question": "Mèo puts duck eggs in trays of exactly 10. This morning she filled 4 trays and had 7 eggs left over. How many eggs did she collect in all?"
+      }
+    },
+    {
+      "id": "xep-o-ngu",
+      "title": "Xếp ô ngủ theo thóc",
+      "goTo": "Ra bãi phơi sen, nơi Mèo dựng bảng tên ô ngủ của vịt",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-meo-sen-dem-vit-bang-o-ngu",
+      "skill": "so-sanh-so",
+      "prompt": "Mèo muốn xếp ô ngủ theo số hạt thóc mỗi chú vịt ăn sáng nay, từ ít đến nhiều. Xếp lại bảng tên:",
+      "items": [
+        {
+          "id": "mo-cam",
+          "label": "Vịt Mỏ Cam: 53 hạt"
+        },
+        {
+          "id": "long-xam",
+          "label": "Vịt Lông Xám: 35 hạt"
+        },
+        {
+          "id": "vit-map",
+          "label": "Vịt Mập: 61 hạt"
+        },
+        {
+          "id": "vit-ut",
+          "label": "Vịt Út: 48 hạt"
+        }
+      ],
+      "answer": {
+        "order": [
+          "long-xam",
+          "vit-ut",
+          "mo-cam",
+          "vit-map"
+        ]
+      },
+      "support": {
+        "guide": [
+          "So chữ số hàng chục trước: 3, 4, 5, 6.",
+          "Số nào có ít chục hơn thì bé hơn."
+        ],
+        "hint": "35 và 53 có cùng hai chữ số, nhưng số chục khác nhau.",
+        "answer": {
+          "text": "Lông Xám, Út, Mỏ Cam, Mập",
+          "explanation": "35 < 48 < 53 < 61, nên Vịt Lông Xám ăn ít nhất, rồi tới Vịt Út, Vịt Mỏ Cam, cuối cùng là Vịt Mập."
+        },
+        "en": {
+          "guide": [
+            "Compare the tens digits first: 3, 4, 5, 6.",
+            "The number with fewer tens is the smaller one."
+          ],
+          "hint": "35 and 53 use the same digits, but their tens are different.",
+          "answer": {
+            "text": "Grey Feather, Littlest, Orange Bill, Chubby",
+            "explanation": "35 < 48 < 53 < 61, so Grey Feather ate least, then Littlest, then Orange Bill, and Chubby ate most."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Meo! Bảng tên ngay hàng thẳng lối, Mèo thích lắm.",
+          "{name} không bị 35 với 53 đánh lừa chút nào.",
+          "Vịt Mập ngủ ô cuối, gần máng thóc nhất, chắc nó vui lắm."
+        ],
+        "wrong": [
+          "53 có năm chục, nhiều hơn 35 nhiều đấy {name}.",
+          "Vịt Mập ăn nhiều nhất, phải đứng cuối hàng chứ.",
+          "So hàng chục trước rồi hẵng nhìn hàng đơn vị."
+        ],
+        "en": {
+          "right": [
+            "Meow! The name board is perfectly in line; Mèo loves it.",
+            "{name} wasn't fooled by 35 and 53 for a second.",
+            "Chubby sleeps in the last box, nearest the grain trough; he'll be delighted."
+          ],
+          "wrong": [
+            "53 has five tens, a lot more than 35, {name}.",
+            "Chubby ate the most, so he goes at the end.",
+            "Compare the tens first, then look at the ones."
+          ]
+        }
+      },
+      "en": {
+        "title": "Sleeping boxes by grain",
+        "goTo": "Go to the lotus-drying yard, where Mèo set up the board of sleeping boxes",
+        "prompt": "Mèo wants to arrange the sleeping boxes by how many grains each duck ate this morning, from fewest to most. Sort the name board:",
+        "items": [
+          "Orange Bill: 53 grains",
+          "Grey Feather: 35 grains",
+          "Chubby: 61 grains",
+          "Littlest: 48 grains"
+        ]
+      }
+    },
+    {
+      "id": "vit-la-o-dau",
+      "title": "Chú vịt thứ mười ba",
+      "goTo": "Quay lại chuồng vịt, chú vịt lạ đang đứng cạnh ổ rơm",
+      "kind": "decision",
+      "target": "st-meo-sen-dem-vit-o-rom",
+      "speaker": "Mèo Đầm Sen",
+      "prompt": "Chú vịt lạ đeo vòng chân xanh cứ bám theo đàn. Mèo vuốt râu: «Meo. Số mười ba làm Mèo khó chịu. Làm sao đây?»",
+      "choices": [
+        {
+          "id": "hoi-lang",
+          "text": "Hỏi khắp làng xem vịt nhà ai lạc",
+          "consequence": "Chiều đó một bác nông dân đi tìm, nhận ra chiếc vòng chân xanh. Bác cảm ơn bằng một rổ rau muống."
+        },
+        {
+          "id": "o-tam",
+          "text": "Cho vịt lạ ở tạm, ghi thêm một dòng trong sổ",
+          "consequence": "Mèo kẻ thêm một ô trong sổ, ghi chữ «khách». Số mười ba bỗng trông ngăn nắp hẳn."
+        },
+        {
+          "id": "dat-ten",
+          "text": "Đặt cho vịt lạ một cái tên",
+          "consequence": "{name} gọi nó là «Vòng Xanh». Mèo lẩm bẩm «tên cũng được», nhưng đuôi khẽ ve vẩy."
+        }
+      ],
+      "en": {
+        "title": "Duck number thirteen",
+        "goTo": "Go back to the duck house, where the stray duck stands by the straw nest",
+        "prompt": "The stray duck with the blue leg ring keeps following the flock. Mèo strokes her whiskers: \"Meow. Thirteen bothers me. What now?\"",
+        "choices": [
+          {
+            "text": "Ask round the village whose duck is lost",
+            "consequence": "That afternoon a farmer comes looking and recognises the blue leg ring. He thanks you with a basket of water spinach."
+          },
+          {
+            "text": "Let it stay for now and add a line in the book",
+            "consequence": "Mèo rules one more box in the book and writes \"guest\". Suddenly thirteen looks perfectly tidy."
+          },
+          {
+            "text": "Give the stray duck a name",
+            "consequence": "{name} calls it \"Blue Ring\". Mèo mutters \"a name will do\", but her tail gives a little flick."
+          }
+        ]
+      }
+    },
+    {
+      "id": "lua-vit-ve-chuong",
+      "title": "Đưa đàn vịt về ngủ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chiều rồi! Lùa đàn vịt về chuồng cho gọn, đủ mười điểm là tối nay Mèo chỉ cần đếm một lần thôi!",
+      "game": "sheepdog-herd",
+      "goal": 10,
+      "en": {
+        "title": "Herding the ducks home",
+        "prompt": "Evening already! Herd the flock neatly back to the duck house; ten points and tonight Mèo only needs to count once!"
+      }
+    },
+    {
+      "id": "dem-mot-lan-la-du",
+      "title": "Đếm một lần là đủ",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tối nay Mèo chỉ đếm một lần mà ra đúng số. Mèo không nói gì, chỉ gạch một gạch thật thẳng trong sổ rồi giơ cho {name} xem.",
+      "en": {
+        "title": "One count is enough",
+        "text": "Tonight Mèo counts just once and gets it right. She says nothing; she just rules one perfectly straight line in her book and holds it up for {name} to see."
+      }
+    },
+    {
+      "id": "van-co-qua-thu",
+      "title": "Ván cờ qua thư",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bưu tá vừa mang tới một lá thư cờ. Ván cờ ba năm của Mèo đã tới nước quan trọng, và Mèo cần một người ngồi nghĩ cùng.",
+      "en": {
+        "title": "Chess by post",
+        "text": "The postman has just brought a chess letter. Mèo's three-year game has reached an important move, and she needs someone to think it through with her."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": {
+      "so-den-100": 1,
+      "so-sanh-so": 1
+    }
+  },
+  "en": {
+    "title": "Mèo Đầm Sen's story, chapter 1: Duck number thirteen",
+    "summary": "This morning Mèo Đầm Sen counted her ducks three times and got three different numbers. {name} finds the ducks hiding round the pond, counts eggs in tens, orders the sleeping boxes by grain and decides what to do about the stray duck."
+  }
+}

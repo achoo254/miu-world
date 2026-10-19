@@ -1,0 +1,378 @@
+{
+  "id": "yarn-thu-ngan-tram-chuyen-cuoi-3",
+  "region": "cho-phien",
+  "chapter": 2,
+  "title": "Chuyện của Bác Thu Ngân Vui Vẻ, chương 3: Thám tử con số",
+  "status": "active",
+  "category": "story",
+  "summary": "Mưa làm ướt sổ bán hàng của Bác Thu Ngân Vui Vẻ. {name} nhặt trang sổ dạt bờ kênh, tìm số bị trừ bị nhòe, đọc chuyện cười về số chín rồi chọn cách điền nốt những dòng nhòe.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bác Thu Ngân Vui Vẻ",
+    "where": "Chợ phiên: quầy thu ngân, mép kênh, sạp cá khô, chân hải đăng, thuyền chở rau",
+    "goal": "Lấy lại các con số bị nhòe để sổ khớp với két",
+    "play": "Tìm trang sổ theo lời tả; tìm số bị trừ; đọc chuyện cười; chọn cách điền số; ghép đôi tròn chục",
+    "learn": "Tìm số bị trừ, phép cộng có nhớ trong phạm vi 100, đọc hiểu",
+    "reward": "70 XP, 18 Xu, Skill XP Thành phần phép tính, Đọc hiểu",
+    "next": "Bác hẹn kể chuyện về cái két gỗ"
+  },
+  "phases": {
+    "hook": "so-uot-mem",
+    "explore": "nhat-trang-so",
+    "learn": "so-goi-luc-dau",
+    "challenge": "chuyen-cuoi-so-chin",
+    "decision": "dien-so-nhoe",
+    "finale": "ghep-tron-chuc",
+    "reward": "so-khop-ket",
+    "next": "dem-ket-ba-lan"
+  },
+  "places": {
+    "bac-thu-ngan-vui-ve": "Quầy thu ngân",
+    "nhat-trang-so": "Mép kênh",
+    "st-thu-ngan-tram-chuyen-cuoi-trang-so-vay-ca": "Mép kênh",
+    "st-thu-ngan-tram-chuyen-cuoi-trang-so-kep-la-sen": "Mép kênh",
+    "st-thu-ngan-tram-chuyen-cuoi-trang-so-but-do": "Mép kênh",
+    "st-thu-ngan-tram-chuyen-cuoi-so-ban-ca-kho": "Sạp cá khô",
+    "st-thu-ngan-tram-chuyen-cuoi-to-chuyen-cuoi-so-ba": "Chân hải đăng",
+    "st-thu-ngan-tram-chuyen-cuoi-man-thuyen-cho-rau": "Thuyền chở rau"
+  },
+  "steps": [
+    {
+      "id": "so-uot-mem",
+      "title": "Cuốn sổ ướt mèm",
+      "goTo": "Tới quầy thu ngân, bác đang hong cuốn sổ bên lò than",
+      "kind": "dialogue",
+      "target": "bac-thu-ngan-vui-ve",
+      "lines": [
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "{name} ơi, mưa đêm qua tạt vào quầy. Cuốn sổ bán hàng ướt mèm, ba trang bị gió cuốn ra phía kênh."
+        },
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "Trang còn lại thì nhòe hết số. Bác nhìn mà tưởng chữ số đang bơi. Hô hô… mà không vui lắm."
+        },
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "Thiếu một con số là cuối ngày két với sổ cãi nhau. Bác cần {name} làm thám tử con số."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Có thám tử {name} đây, bác yên tâm!",
+          "reply": "Hô hô! Thám tử nhớ đem theo phép trừ, đó là kính lúp của nghề tính tiền."
+        },
+        {
+          "text": "Sao bác không ghi sổ bằng bút mực?",
+          "reply": "Bút mực nhòe còn nhanh hơn. Bác đang tính chuyển sang khắc lên đá… đùa đấy."
+        }
+      ],
+      "en": {
+        "title": "The soggy ledger",
+        "goTo": "Go to the cashier's counter, where he is drying the ledger beside the charcoal stove",
+        "lines": [
+          "{name}, last night the rain blew into the stall. The sales ledger is soaked, and three pages blew out towards the canal.",
+          "The page that is left has all its numbers smudged. They look like they are swimming. Ho ho… not much fun, though.",
+          "One missing number and by evening the till and the book start arguing. I need {name} as a number detective."
+        ],
+        "choices": [
+          {
+            "text": "Detective {name} reporting for duty!",
+            "reply": "Ho ho! Bring subtraction with you, detective; it is the magnifying glass of my trade."
+          },
+          {
+            "text": "Why don't you write in ink?",
+            "reply": "Ink smudges even faster. I am thinking of carving numbers in stone instead… only joking."
+          }
+        ]
+      }
+    },
+    {
+      "id": "nhat-trang-so",
+      "title": "Ba trang sổ dạt bờ kênh",
+      "goTo": "Ra mép kênh nhặt ba trang sổ gió cuốn đi",
+      "kind": "find-object",
+      "prompt": "Bác tả từng trang sổ bị bay mất. Đọc lời tả rồi nhặt cho đúng:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "vay-ca",
+          "name": "Trang ghi hàng cá",
+          "clue": "Lấp lánh mấy chiếc vảy cá bạc, chữ «cá khô» viết to ở dòng đầu.",
+          "target": "st-thu-ngan-tram-chuyen-cuoi-trang-so-vay-ca"
+        },
+        {
+          "id": "la-sen",
+          "name": "Trang ghi hàng rau",
+          "clue": "Có chiếc lá sen nhỏ kẹp giữa như cái kẹp sách, mép giấy xanh vì nhựa lá.",
+          "target": "st-thu-ngan-tram-chuyen-cuoi-trang-so-kep-la-sen"
+        },
+        {
+          "id": "but-do",
+          "name": "Trang ghi tiền nợ",
+          "clue": "Đầy những gạch bút chì đỏ, góc trang có hình một chú voi vẽ vội.",
+          "target": "st-thu-ngan-tram-chuyen-cuoi-trang-so-but-do"
+        }
+      ],
+      "en": {
+        "title": "Three pages on the canal bank",
+        "goTo": "Go to the edge of the canal and pick up the three pages the wind took",
+        "prompt": "He describes each lost page. Read the descriptions and pick up the right ones:",
+        "items": [
+          {
+            "name": "The fish page",
+            "clue": "A few silver fish scales glitter on it, and «dried fish» is written big on the first line."
+          },
+          {
+            "name": "The vegetable page",
+            "clue": "A small lotus leaf is tucked inside like a bookmark, and the edge is green from the sap."
+          },
+          {
+            "name": "The money-owed page",
+            "clue": "Full of red pencil strokes, with a quickly drawn elephant in the corner."
+          }
+        ]
+      }
+    },
+    {
+      "id": "so-goi-luc-dau",
+      "title": "Lúc đầu có bao nhiêu gói?",
+      "goTo": "Mang sổ sang sạp cá khô, dò lại dòng số bị nhòe",
+      "kind": "riddle",
+      "target": "st-thu-ngan-tram-chuyen-cuoi-so-ban-ca-kho",
+      "skill": "thanh-phan-phep-tinh",
+      "question": "Trang sổ nhòe mất số gói cá khô lúc sáng. Bác chỉ còn đọc được: bán đi 27 gói, còn lại 45 gói. Lúc đầu sạp có bao nhiêu gói cá khô?",
+      "answer": {
+        "value": 72
+      },
+      "support": {
+        "guide": [
+          "Số gói lúc đầu là số bị trừ; 27 là số trừ, 45 là hiệu.",
+          "Muốn tìm số bị trừ, lấy hiệu cộng với số trừ."
+        ],
+        "hint": "Tính 45 + 27, nhớ 1 sang hàng chục.",
+        "answer": {
+          "text": "72 gói",
+          "explanation": "Lúc đầu − 27 = 45, nên lúc đầu = 45 + 27 = 72. Thử lại: 72 − 27 = 45, đúng với sổ."
+        },
+        "en": {
+          "guide": [
+            "The number of packets at the start is what we subtract from; 27 is taken away and 45 is left.",
+            "To find the starting number, add what is left to what was taken."
+          ],
+          "hint": "Work out 45 + 27 and carry 1 to the tens.",
+          "answer": {
+            "text": "72 packets",
+            "explanation": "Start − 27 = 45, so start = 45 + 27 = 72. Check: 72 − 27 = 45, which matches the ledger."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảy mươi hai gói! Bác chép số ấy lại bằng bút chì, nét đậm như đóng dấu.",
+          "Lấy còn lại cộng đã bán, {name} tìm số bị trừ gọn như bác tìm kính.",
+          "Thử lại bằng phép trừ cũng khớp, sổ hết cãi két rồi!"
+        ],
+        "wrong": [
+          "Mười tám là lấy bốn lăm trừ hai bảy rồi, mà ta đang tìm số lúc đầu cơ.",
+          "Lúc đầu phải nhiều hơn số còn lại chứ, {name} cộng thêm số đã bán nhé.",
+          "Năm cộng bảy được mười hai, đừng quên nhớ một sang hàng chục."
+        ],
+        "en": {
+          "right": [
+            "Seventy-two packets! He writes it back in pencil, bold as a rubber stamp.",
+            "Left plus sold: you found the starting number as quickly as I find my glasses, {name}.",
+            "Checked with subtraction and it fits; the book and the till stop arguing!"
+          ],
+          "wrong": [
+            "Eighteen is forty-five take away twenty-seven, but we're looking for the starting number.",
+            "The start must be more than what was left, {name}; add the ones that were sold.",
+            "Five plus seven is twelve; don't forget to carry one to the tens."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many packets at the start?",
+        "goTo": "Take the ledger to the dried-fish stall and trace the smudged line",
+        "question": "The ledger has smudged the number of dried-fish packets in the morning. He can only read: 27 packets sold, 45 packets left. How many packets did the stall have at the start?"
+      }
+    },
+    {
+      "id": "chuyen-cuoi-so-chin",
+      "title": "Số chín soi bóng nước",
+      "goTo": "Ra chân hải đăng đọc tờ chuyện cười bác dán ở đó",
+      "kind": "read",
+      "target": "st-thu-ngan-tram-chuyen-cuoi-to-chuyen-cuoi-so-ba",
+      "skill": "doc-hieu",
+      "text": "Chuyện cười số chín mươi chín (bản nháp)\nSố 9 đi dạo bờ kênh, cúi xuống soi mặt nước. Dưới nước hiện ra số 6.\nSố 9 hốt hoảng: «Ôi thôi, ai trừ mất của mình ba rồi!»\nCon cá rô ngoi lên cười: «Có ai trừ đâu. Bóng cậu chỉ đứng lộn đầu thôi.»",
+      "question": "Vì sao số 9 tưởng mình bị trừ mất ba?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Vì bóng của nó dưới nước trông như số 6"
+        },
+        {
+          "id": "b",
+          "text": "Vì con cá rô ăn mất ba chấm của nó"
+        },
+        {
+          "id": "c",
+          "text": "Vì nó đánh rơi ba đồng xu xuống kênh"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Đọc lại câu số 9 soi mặt nước: dưới nước hiện ra số mấy?",
+          "Chín trừ đi mấy thì còn sáu?"
+        ],
+        "hint": "Lời con cá rô nói rõ lý do: bóng đứng lộn đầu.",
+        "answer": {
+          "text": "Vì bóng lộn ngược của nó trông như số 6",
+          "explanation": "Số 9 lộn ngược trông giống số 6, mà 9 − 3 = 6, nên số 9 tưởng mình bị trừ mất ba."
+        },
+        "en": {
+          "guide": [
+            "Reread the sentence where 9 looks into the water: which number appears?",
+            "Nine take away what leaves six?"
+          ],
+          "hint": "The perch says the reason: the reflection is upside down.",
+          "answer": {
+            "text": "Because its upside-down reflection looks like a 6",
+            "explanation": "An upside-down 9 looks like a 6, and 9 − 3 = 6, so the 9 thinks it has lost three."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi! Chín lộn đầu thành sáu, hô hô hô!",
+          "{name} đọc ra cái mẹo, giờ đến lượt {name} kể lại cho bạn cười.",
+          "Bác hỏi thử mười người, {name} là người đầu tiên hiểu ngay."
+        ],
+        "wrong": [
+          "Con cá rô chỉ ngoi lên cười thôi, nó có ăn gì đâu.",
+          "Chuyện không nhắc đồng xu nào cả, {name} đọc lại câu soi mặt nước nhé.",
+          "Gần ra rồi! Thử quay ngược số 9 trên giấy xem nó thành số mấy."
+        ],
+        "en": {
+          "right": [
+            "Exactly! A nine upside down becomes a six, ho ho ho!",
+            "{name} saw the trick; now it's {name}'s turn to tell it to a friend.",
+            "I tried it on ten people, and {name} is the first to get it straight away."
+          ],
+          "wrong": [
+            "The perch only pops up to laugh; it doesn't eat anything.",
+            "The joke mentions no coins at all, {name}; reread the part about the water.",
+            "Nearly! Turn a 9 upside down on paper and see what it becomes."
+          ]
+        }
+      },
+      "en": {
+        "title": "Nine looks in the water",
+        "goTo": "Go to the foot of the lighthouse and read the joke he pinned there",
+        "text": "Joke number ninety-nine (draft)\nNumber 9 goes for a stroll along the canal and leans over to look in the water. A 6 looks back.\nNumber 9 panics: «Oh no, someone has taken three away from me!»\nA perch pops up laughing: «Nobody took anything. Your reflection is just standing on its head.»",
+        "question": "Why does number 9 think it has lost three?",
+        "choices": [
+          "Because its reflection in the water looks like a 6",
+          "Because the perch ate three of its dots",
+          "Because it dropped three coins in the canal"
+        ]
+      }
+    },
+    {
+      "id": "dien-so-nhoe",
+      "title": "Điền số nhòe bằng cách nào?",
+      "goTo": "Ra thuyền chở rau, chủ thuyền đang đợi bác ghi sổ",
+      "kind": "decision",
+      "target": "st-thu-ngan-tram-chuyen-cuoi-man-thuyen-cho-rau",
+      "speaker": "Bác Thu Ngân Vui Vẻ",
+      "prompt": "Trang sổ hàng rau còn hai dòng nhòe. Bác hỏi {name}: «Ta lấy lại số bằng cách nào cho chắc?»",
+      "choices": [
+        {
+          "id": "tinh-lai",
+          "text": "Tính lại bằng phép trừ như vừa làm",
+          "consequence": "Hai dòng số hiện ra trong mười phút. Bác bảo phép trừ là thám tử giỏi nhất chợ."
+        },
+        {
+          "id": "hoi-khach",
+          "text": "Hỏi lại chủ thuyền rau đã giao bao nhiêu",
+          "consequence": "Chủ thuyền nhớ rõ từng bó, còn kể thêm một chuyện cười về con cá bơi ngửa. Bác chép luôn vào sổ."
+        },
+        {
+          "id": "dem-hang",
+          "text": "Đếm lại rau còn trên thuyền rồi suy ra",
+          "consequence": "Đếm xong còn ba mươi bó. Bác gật gù: đếm tận tay thì chẳng sợ nhòe."
+        }
+      ],
+      "en": {
+        "title": "How to fill in the smudges?",
+        "goTo": "Go to the vegetable boat; the boat owner is waiting for him to write in the ledger",
+        "prompt": "Two lines on the vegetable page are still smudged. He asks {name}: «How do we get the numbers back for sure?»",
+        "choices": [
+          {
+            "text": "Work them out with subtraction, like before",
+            "consequence": "Both lines come back within ten minutes. He says subtraction is the best detective in the market."
+          },
+          {
+            "text": "Ask the boat owner how much he delivered",
+            "consequence": "The boat owner remembers every bunch and even tells a joke about a fish swimming on its back. He writes that down too."
+          },
+          {
+            "text": "Count the greens still on the boat and work it out",
+            "consequence": "Thirty bunches are left. He nods: count it yourself and smudges hold no fear."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ghep-tron-chuc",
+      "title": "Soát sổ bằng số tròn chục",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Sổ đã đủ số, giờ kiểm cho nhanh! Ghép từng đôi số cộng lại tròn chục, đạt mười lăm điểm nhé.",
+      "game": "make-ten",
+      "goal": 15,
+      "en": {
+        "title": "Checking the ledger in tens",
+        "prompt": "The ledger is complete; now check it fast! Match pairs of numbers that add up to a whole ten and score fifteen points."
+      }
+    },
+    {
+      "id": "so-khop-ket",
+      "title": "Sổ và két làm lành",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cuối ngày bác cộng sổ, đếm két: khớp từng đồng. Bác dán chuyện số chín vào sổ chuyện cười và đưa {name} phần thưởng kèm một câu «hô hô» dài nhất từ đầu phiên chợ.",
+      "en": {
+        "title": "The ledger and the till make up",
+        "text": "At closing time he adds up the ledger and counts the till: they match to the last đồng. He sticks the nine joke into the joke book and gives {name} a reward with the longest «ho ho» of the whole market day."
+      }
+    },
+    {
+      "id": "dem-ket-ba-lan",
+      "title": "Tối nay đếm két",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bác hẹn {name} ở lại tối mai lúc chợ vãn. Bác bảo có một chuyện chưa kể, liên quan tới cái két gỗ.",
+      "en": {
+        "title": "Counting the till tonight",
+        "text": "He asks {name} to stay tomorrow evening when the market empties. He says there is something he has not told anyone, about the wooden till."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "thanh-phan-phep-tinh": 1,
+      "doc-hieu": 1
+    }
+  },
+  "en": {
+    "title": "Bác Thu Ngân Vui Vẻ's story, chapter 3: The number detective",
+    "summary": "Rain has soaked Bác Thu Ngân Vui Vẻ's sales ledger. {name} picks up the pages from the canal bank, finds a smudged starting number, reads a joke about the number nine and chooses how to fill in the last smudged lines."
+  }
+}

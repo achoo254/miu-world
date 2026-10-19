@@ -1,0 +1,414 @@
+{
+  "id": "yarn-banh-mi-xe-dau-tien-1",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Chuyện của Cô bánh mì Hạnh, chương 1: Giờ nào lò nóng?",
+  "status": "active",
+  "category": "story",
+  "summary": "Cô bánh mì Hạnh ấp ủ một chiếc xe bánh mì nhỏ đi khắp các phiên chợ. Trước hết cô phải nướng kịp hai mẻ mỗi sáng: {name} tìm đồ làm bánh, tính giờ lò nóng, xếp các bước làm bánh và chọn chỗ bán thử.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cô bánh mì Hạnh",
+    "where": "Chợ phiên: gian hàng đồ ăn, chợ rau hoa, cột giờ lò bánh, nhà lồng chợ, lối giữa chợ",
+    "goal": "Giúp cô Hạnh nướng kịp mẻ bánh thứ hai để bán thử bằng xe",
+    "play": "Tìm đồ làm bánh theo lời tả; tính giờ lò nóng; xếp các bước làm bánh; chọn chỗ bán thử; làm bánh theo đơn",
+    "learn": "Xem đồng hồ (giờ đúng, giờ rưỡi), kể lại các bước theo thứ tự",
+    "reward": "58 XP, 15 Xu, Skill XP Xem đồng hồ, Kể chuyện",
+    "next": "Đi tìm một chiếc xe đẩy cũ"
+  },
+  "phases": {
+    "hook": "hai-me-banh",
+    "explore": "do-lam-banh",
+    "learn": "lo-nong-luc-nao",
+    "challenge": "cac-buoc-lam-banh",
+    "decision": "cho-ban-thu",
+    "finale": "lam-banh-theo-don",
+    "reward": "me-thu-hai",
+    "next": "xe-day-cu"
+  },
+  "places": {
+    "co-banh-mi-hanh": "Gian hàng đồ ăn",
+    "do-lam-banh": "Chợ rau hoa",
+    "st-banh-mi-xe-dau-tien-tui-bot-mi": "Chợ rau hoa",
+    "st-banh-mi-xe-dau-tien-hu-men-no": "Chợ rau hoa",
+    "st-banh-mi-xe-dau-tien-bo-ngo-tuoi": "Chợ rau hoa",
+    "st-banh-mi-xe-dau-tien-to-gio-nuong": "Cột giờ lò bánh",
+    "st-banh-mi-xe-dau-tien-bang-cac-buoc": "Nhà lồng chợ",
+    "st-banh-mi-xe-dau-tien-khoang-dat-thu-xe": "Lối giữa chợ"
+  },
+  "steps": [
+    {
+      "id": "hai-me-banh",
+      "title": "Hai mẻ bánh một buổi sáng",
+      "goTo": "Ghé gian hàng đồ ăn, cô bánh mì Hạnh đang phủi bột trên tạp dề",
+      "kind": "dialogue",
+      "target": "co-banh-mi-hanh",
+      "lines": [
+        {
+          "speaker": "Cô bánh mì Hạnh",
+          "text": "Ăn sáng chưa {name}? Chưa à? Cầm ổ này đã. Giòn chưa? Giòn rồi! Giờ nghe cô nói chuyện lớn đây."
+        },
+        {
+          "speaker": "Cô bánh mì Hạnh",
+          "text": "Cô muốn có một chiếc xe bánh mì nhỏ, phiên chợ nào cũng lăn tới, đến đâu thơm tới đó."
+        },
+        {
+          "speaker": "Cô bánh mì Hạnh",
+          "text": "Muốn vậy thì mỗi sáng phải nướng hai mẻ: một mẻ cho sạp, một mẻ cho xe. Cô làm một mình không kịp."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu phụ cô mẻ thứ hai nhé!",
+          "reply": "Tốt! Rửa tay, xắn tay áo, đi lấy đồ với cô."
+        },
+        {
+          "text": "Xe bánh mì sẽ chạy tới tận đâu ạ?",
+          "reply": "Tới mọi phiên chợ trong vùng. Nhưng phải có mẻ bánh thứ hai trước đã."
+        }
+      ],
+      "en": {
+        "title": "Two batches in one morning",
+        "goTo": "Stop by the food stalls, where Cô bánh mì Hạnh is brushing flour off her apron",
+        "lines": [
+          "Had breakfast yet, {name}? No? Take this loaf first. Crunchy? Crunchy! Now listen, I've got big news.",
+          "I want a little bánh mì cart that rolls to every fair and leaves a lovely smell wherever it goes.",
+          "For that I must bake two batches each morning: one for the stall, one for the cart. Alone, I can't keep up."
+        ],
+        "choices": [
+          {
+            "text": "I'll help with the second batch!",
+            "reply": "Good! Wash your hands, roll up your sleeves, come and fetch things with me."
+          },
+          {
+            "text": "How far will the cart go?",
+            "reply": "To every fair in the area. But first we need that second batch."
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-lam-banh",
+      "title": "Đồ làm mẻ bánh thứ hai",
+      "goTo": "Sang chợ rau hoa tìm ba thứ cô Hạnh gửi bạn hàng giữ hộ",
+      "kind": "find-object",
+      "prompt": "Sáng nay cô gửi đồ ở mấy sạp quen bên chợ rau hoa. Đọc lời tả rồi mang về đủ ba thứ:",
+      "items": [
+        {
+          "id": "bot",
+          "name": "Túi bột mì",
+          "clue": "Trắng như mây, nặng trĩu tay, miệng túi buộc sợi lạt đỏ.",
+          "target": "st-banh-mi-xe-dau-tien-tui-bot-mi"
+        },
+        {
+          "id": "men",
+          "name": "Hũ men nở",
+          "clue": "Một hũ nhỏ màu vàng nhạt, mở nắp ra thơm mùi chua chua như cơm rượu.",
+          "target": "st-banh-mi-xe-dau-tien-hu-men-no"
+        },
+        {
+          "id": "ngo",
+          "name": "Bó ngò rí",
+          "clue": "Lá xanh non, thân mảnh, sương sớm còn đọng trên ngọn.",
+          "target": "st-banh-mi-xe-dau-tien-bo-ngo-tuoi"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Things for the second batch",
+        "goTo": "Go over to the flower and vegetable market to find three things Cô Hạnh left with her friends",
+        "prompt": "This morning she left her things at a few friendly stalls in the flower and vegetable market. Read each description and bring all three back:",
+        "items": [
+          {
+            "name": "The flour sack",
+            "clue": "White as a cloud, heavy in your arms, its neck tied with a red string."
+          },
+          {
+            "name": "The jar of yeast",
+            "clue": "A small pale-yellow jar; lift the lid and it smells sour-sweet, like fermented rice."
+          },
+          {
+            "name": "The bunch of coriander",
+            "clue": "Tender green leaves on thin stems, morning dew still on the tips."
+          }
+        ]
+      }
+    },
+    {
+      "id": "lo-nong-luc-nao",
+      "title": "Lò nóng lúc mấy giờ?",
+      "goTo": "Ra cột giờ lò bánh, chỗ cô Hạnh dán tờ giờ nướng bánh",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-banh-mi-xe-dau-tien-to-gio-nuong",
+      "skill": "xem-dong-ho",
+      "prompt": "Tờ giờ nướng bánh ghi: «Nhóm lò lúc 5 giờ. Lò cần nửa giờ mới đủ nóng.» Lò đủ nóng lúc mấy giờ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "5 giờ, kim dài chỉ số 12"
+        },
+        {
+          "id": "b",
+          "text": "5 giờ rưỡi, kim dài chỉ số 6"
+        },
+        {
+          "id": "c",
+          "text": "6 giờ, kim dài chỉ số 12"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Nửa giờ là 30 phút.",
+          "Từ 5 giờ, kim dài quay nửa vòng mặt đồng hồ."
+        ],
+        "hint": "Kim dài quay nửa vòng thì dừng ở số 6.",
+        "answer": {
+          "text": "5 giờ rưỡi",
+          "explanation": "5 giờ thêm nửa giờ là 5 giờ 30 phút, tức 5 giờ rưỡi: kim ngắn nằm giữa số 5 và số 6, kim dài chỉ số 6."
+        },
+        "en": {
+          "guide": [
+            "Half an hour is 30 minutes.",
+            "From 5 o’clock, the long hand turns half way round the clock face."
+          ],
+          "hint": "Half a turn stops the long hand on the 6.",
+          "answer": {
+            "text": "Half past 5",
+            "explanation": "5 o’clock plus half an hour is 5:30, half past 5: the short hand sits between 5 and 6 and the long hand points to 6."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Giòn chưa? Giòn rồi! Năm giờ rưỡi lò nóng, cô cho bánh vào luôn.",
+          "Nửa vòng kim dài, {name} tính gọn như cô cắt bánh.",
+          "Đúng giờ rưỡi! Cô ghi lại bằng phấn lên cửa lò."
+        ],
+        "wrong": [
+          "Sáu giờ thì lò nóng quá lâu rồi, bánh đợi mỏi cả ruột.",
+          "Năm giờ là lúc vừa mới nhóm lò thôi, {name} ạ.",
+          "Nửa giờ chứ không phải một giờ, thử quay kim dài nửa vòng xem."
+        ],
+        "en": {
+          "right": [
+            "Crunchy? Crunchy! The oven is hot at half past five and the loaves go straight in.",
+            "Half a turn of the long hand: you worked it out as neatly as I slice bread, {name}.",
+            "Half past exactly! I chalk it on the oven door."
+          ],
+          "wrong": [
+            "By six the oven has been hot for ages; the dough would get bored waiting.",
+            "Five o’clock is when the fire is only just lit, {name}.",
+            "Half an hour, not a whole one; try turning the long hand halfway."
+          ]
+        }
+      },
+      "en": {
+        "title": "When is the oven hot?",
+        "goTo": "Go to the baking-times post, where Cô Hạnh has pinned up the oven times",
+        "prompt": "The baking times say: “Light the oven at 5 o’clock. It takes half an hour to get hot enough.” What time is the oven ready?",
+        "choices": [
+          "5 o’clock, long hand on 12",
+          "Half past 5, long hand on 6",
+          "6 o’clock, long hand on 12"
+        ]
+      }
+    },
+    {
+      "id": "cac-buoc-lam-banh",
+      "title": "Làm bánh bước nào trước?",
+      "goTo": "Vào nhà lồng chợ, cô Hạnh treo bảng các bước làm bánh cạnh cột",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-banh-mi-xe-dau-tien-bang-cac-buoc",
+      "skill": "ke-chuyen",
+      "prompt": "Gió thổi bay mấy mảnh giấy trên bảng. Xếp lại các bước làm bánh mì từ đầu đến cuối:",
+      "items": [
+        {
+          "id": "u-bot",
+          "label": "Để bột nghỉ cho nở phồng"
+        },
+        {
+          "id": "nhao",
+          "label": "Trộn bột với men rồi nhào thật dẻo"
+        },
+        {
+          "id": "kep",
+          "label": "Xẻ bánh, kẹp nhân, rắc ngò"
+        },
+        {
+          "id": "nuong",
+          "label": "Cho vào lò nướng tới khi vàng giòn"
+        },
+        {
+          "id": "nan",
+          "label": "Chia bột, nặn thành từng ổ thon dài"
+        }
+      ],
+      "answer": {
+        "order": [
+          "nhao",
+          "u-bot",
+          "nan",
+          "nuong",
+          "kep"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Bước đầu tiên làm ra cục bột.",
+          "Bánh phải chín rồi mới kẹp nhân được."
+        ],
+        "hint": "Bột nở xong mới nặn thành ổ.",
+        "answer": {
+          "text": "Nhào bột, ủ bột, nặn ổ, nướng, kẹp nhân",
+          "explanation": "Có bột rồi mới ủ cho nở, nở rồi mới nặn ổ, nặn xong mới nướng, bánh chín giòn mới xẻ ra kẹp nhân."
+        },
+        "en": {
+          "guide": [
+            "The first step makes the lump of dough.",
+            "The bread has to be baked before you can fill it."
+          ],
+          "hint": "Shape the loaves only after the dough has risen.",
+          "answer": {
+            "text": "Knead, rest, shape, bake, fill",
+            "explanation": "First you need dough, then it rests and rises, then you shape it, then you bake it, and only crisp bread gets split and filled."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Từng bước một, chẳng sót bước nào. Cô dán lại bảng ngay!",
+          "{name} kể việc làm bánh trôi chảy như người đứng lò lâu năm.",
+          "Nhào, ủ, nặn, nướng, kẹp: thứ tự này nhớ rồi thì ra bánh ngon."
+        ],
+        "wrong": [
+          "Bánh còn sống mà kẹp nhân thì nhão hết, {name} ơi.",
+          "Bột chưa nở đã nặn ổ thì bánh lép như bánh tráng.",
+          "Thử nghĩ xem: chưa có cục bột thì lấy gì mà ủ?"
+        ],
+        "en": {
+          "right": [
+            "Step by step, nothing missed. I’m pinning the board back up right now!",
+            "You told the baking steps as smoothly as someone who has worked an oven for years, {name}.",
+            "Knead, rest, shape, bake, fill: remember that order and the bread comes out lovely."
+          ],
+          "wrong": [
+            "Fill a loaf before it’s baked and it all goes soggy, {name}.",
+            "Shape the dough before it rises and the bread comes out flat as rice paper.",
+            "Think about it: with no dough yet, what would you leave to rise?"
+          ]
+        }
+      },
+      "en": {
+        "title": "Which baking step comes first?",
+        "goTo": "Go into the covered market, where Cô Hạnh hangs the baking steps by a pillar",
+        "prompt": "The wind blew a few slips off the board. Put the bread-making steps back in order, first to last:",
+        "items": [
+          "Let the dough rest and rise",
+          "Mix the flour and yeast, knead it smooth",
+          "Split the loaf, add the filling, sprinkle coriander",
+          "Bake until golden and crisp",
+          "Divide the dough and shape long loaves"
+        ]
+      }
+    },
+    {
+      "id": "cho-ban-thu",
+      "title": "Bán thử ở đâu?",
+      "goTo": "Ra lối giữa chợ, chỗ có khoảng sân trống",
+      "kind": "decision",
+      "target": "st-banh-mi-xe-dau-tien-khoang-dat-thu-xe",
+      "speaker": "Cô bánh mì Hạnh",
+      "prompt": "Mẻ thứ hai sắp ra lò. Cô Hạnh chống nạnh nhìn quanh: «Chưa có xe thì bán thử bằng cái mẹt. Đặt mẹt ở đâu đây?»",
+      "choices": [
+        {
+          "id": "loi-di",
+          "text": "Ngay giữa khoảng trống cạnh lối đi",
+          "consequence": "Ai đi qua cũng ngửi thấy mùi bánh. Mười ổ bay sạch trước khi chuông tháp điểm bảy giờ."
+        },
+        {
+          "id": "gan-cong",
+          "text": "Gần cổng chợ, đón người vừa tới",
+          "consequence": "Người đi chợ sớm mua bánh ăn đường. Cô nhớ tên từng người, hẹn mai để phần."
+        },
+        {
+          "id": "mang-di",
+          "text": "{name} bưng mẹt đi mời từng sạp",
+          "consequence": "Các cô chú bán hàng chưa kịp ăn sáng ai cũng mừng. Cô Hạnh bảo: «Thế mới là xe bánh mì chạy bằng chân!»"
+        }
+      ],
+      "en": {
+        "title": "Where to try selling?",
+        "goTo": "Go out to the walkway through the market, where there is an open space",
+        "prompt": "The second batch is nearly done. Cô Hạnh puts her hands on her hips: “No cart yet, so we test-sell from a tray. Where shall we put it?”",
+        "choices": [
+          {
+            "text": "Right in the open space beside the walkway",
+            "consequence": "Everyone passing smells the bread. Ten loaves vanish before the tower bell rings seven."
+          },
+          {
+            "text": "Near the market gate, to meet people as they arrive",
+            "consequence": "Early shoppers buy bread for the road. Cô learns every name and promises to save them one tomorrow."
+          },
+          {
+            "text": "{name} carries the tray round to each stall",
+            "consequence": "The stallholders who skipped breakfast are delighted. Cô Hạnh says: “That’s a bánh mì cart running on legs!”"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lam-banh-theo-don",
+      "title": "Làm bánh theo đơn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Khách xếp hàng gọi món! Kẹp bánh đúng đơn của từng người, sáu ổ đúng là mẻ bán thử thành công.",
+      "game": "recipe-assembly",
+      "goal": 6,
+      "en": {
+        "title": "Filling the orders",
+        "prompt": "Customers are queueing with their orders! Fill each loaf exactly as asked; six right and the test sale is a success."
+      }
+    },
+    {
+      "id": "me-thu-hai",
+      "title": "Mẻ thứ hai bán hết",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mẻ bánh thứ hai bán sạch. Cô Hạnh bẻ đôi ổ cuối cùng: nửa cho chim sẻ đầu chợ, nửa cho {name}.",
+      "en": {
+        "title": "The second batch sells out",
+        "text": "The second batch sells out. Cô Hạnh breaks the last loaf in two: half for the sparrows at the gate, half for {name}."
+      }
+    },
+    {
+      "id": "xe-day-cu",
+      "title": "Chiếc xe đẩy cũ",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Voi Bốc Hàng kể dưới lán gỗ bên kênh có một chiếc xe đẩy cũ chẳng ai dùng. Mai cô với {name} ra xem nó còn lăn được không.",
+      "en": {
+        "title": "The old handcart",
+        "text": "Voi Bốc Hàng says there is an old handcart nobody uses in the wooden shed by the canal. Tomorrow you and Cô will see if it still rolls."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 58,
+    "coin": 15,
+    "skillXp": {
+      "xem-dong-ho": 1,
+      "ke-chuyen": 1
+    }
+  },
+  "en": {
+    "title": "Cô bánh mì Hạnh's story, chapter 1: When is the oven hot?",
+    "summary": "Cô bánh mì Hạnh dreams of a little bánh mì cart that visits every fair. First she must bake two batches each morning: {name} fetches the ingredients, works out when the oven is hot, orders the baking steps and picks a spot for a test sale."
+  }
+}

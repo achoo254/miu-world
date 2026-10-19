@@ -1,0 +1,362 @@
+{
+  "id": "yarn-heo-dan-dong-ca-3",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Chuyện của Heo Kho Hàng, chương 3: Mục số ba, bài hát của trại",
+  "status": "active",
+  "category": "story",
+  "summary": "Heo Kho Hàng viết xong lời bài hát của nông trại. {name} tìm nhạc cụ quanh khu trồng trọt, đọc lời bài hát, đoán nhịp tiếp theo, chọn cách tập cho cả dàn rồi nhại nhịp vỗ tay.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Heo Kho Hàng",
+    "where": "Nông trại: cửa nhà kho, khu trồng trọt, vườn cây ăn quả, ao cá, nhà nông trại",
+    "goal": "Tập bài hát riêng của nông trại cho dàn đồng ca",
+    "play": "Tìm nhạc cụ; đọc lời bài hát; tìm quy luật nhịp; chọn cách tập; nhại nhịp vỗ tay",
+    "learn": "Đọc hiểu, quy luật dãy hình",
+    "reward": "70 XP, 18 Xu, Skill XP Đọc hiểu, Logic",
+    "next": "Đêm diễn ở nông trại sắp tới"
+  },
+  "phases": {
+    "hook": "muc-so-ba",
+    "explore": "tim-nhac-cu",
+    "learn": "doc-loi-bai-hat",
+    "challenge": "nhip-tiep-theo",
+    "decision": "cach-tap-hat",
+    "finale": "nhai-nhip",
+    "reward": "bai-hat-cua-trai",
+    "next": "dem-dien"
+  },
+  "places": {
+    "heo-kho-hang": "Cửa nhà kho",
+    "tim-nhac-cu": "Khu trồng trọt",
+    "st-heo-dan-dong-ca-cap-phach-tre": "Khu trồng trọt",
+    "st-heo-dan-dong-ca-chuong-gio-dan-hat": "Khu trồng trọt",
+    "st-heo-dan-dong-ca-ken-la-chuoi": "Khu trồng trọt",
+    "st-heo-dan-dong-ca-to-loi-bai-hat": "Vườn cây ăn quả",
+    "st-heo-dan-dong-ca-bang-chep-nhip": "Ao cá",
+    "st-heo-dan-dong-ca-ghe-tap-hat-hien": "Nhà nông trại"
+  },
+  "steps": [
+    {
+      "id": "muc-so-ba",
+      "title": "Lời bài hát đã viết xong",
+      "goTo": "Tới cửa nhà kho, Heo Kho Hàng đang ôm một cuộn giấy dài",
+      "kind": "dialogue",
+      "target": "heo-kho-hang",
+      "lines": [
+        {
+          "speaker": "Heo Kho Hàng",
+          "text": "Ủn ỉn! Mục số ba: bài hát của trại. Tớ viết xong lời rồi, viết cả đêm, mũi vẫn còn dính mực đây."
+        },
+        {
+          "speaker": "Heo Kho Hàng",
+          "text": "Nhưng hát không thì buồn. Phải có phách, có chuông, có kèn. Nhạc cụ tớ để quanh khu trồng trọt, có dán nhãn hẳn hoi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình đi lấy nhạc cụ nhé!",
+          "reply": "Mục số ba phẩy một: nhạc cụ. {name} đi trước, tớ ôm lời theo sau."
+        },
+        {
+          "text": "Cho mình đọc lời trước được không?",
+          "reply": "Được, nhưng đọc ở vườn cây ăn quả cho mát. Lấy nhạc cụ trên đường đi luôn."
+        }
+      ],
+      "en": {
+        "title": "The song is written",
+        "goTo": "Go to the barn door, where Heo Kho Hàng is hugging a long roll of paper",
+        "lines": [
+          "Oink oink! Item three: the farm’s song. I’ve finished the words; I wrote all night and there’s still ink on my snout.",
+          "But singing alone is dull. We need clappers, a bell, a horn. I left the instruments round the crop fields, properly labelled."
+        ],
+        "choices": [
+          {
+            "text": "I’ll go and get the instruments!",
+            "reply": "Item three point one: instruments. You go first, {name}; I’ll follow with the words."
+          },
+          {
+            "text": "Can I read the words first?",
+            "reply": "Yes, but read them in the orchard where it’s cool. Pick up the instruments on the way."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-nhac-cu",
+      "title": "Nhạc cụ quanh ruộng",
+      "goTo": "Ra khu trồng trọt tìm cặp phách, chuông gió và chiếc kèn lá",
+      "kind": "search",
+      "targets": [
+        "st-heo-dan-dong-ca-cap-phach-tre",
+        "st-heo-dan-dong-ca-chuong-gio-dan-hat",
+        "st-heo-dan-dong-ca-ken-la-chuoi"
+      ],
+      "en": {
+        "title": "Instruments round the fields",
+        "goTo": "Go out to the crop fields and find the clappers, the wind chime and the leaf horn"
+      }
+    },
+    {
+      "id": "doc-loi-bai-hat",
+      "title": "Đọc lời bài hát của trại",
+      "goTo": "Vào vườn cây ăn quả, tờ lời bài hát mới treo trên cành",
+      "kind": "read",
+      "target": "st-heo-dan-dong-ca-to-loi-bai-hat",
+      "skill": "doc-hieu",
+      "text": "Bài hát của nông trại\nÔng mặt trời thức dậy,\nGà trống gáy ò ó o.\nBò lắc chuông leng keng,\nVịt bơi kêu cạp cạp.\nĐêm về sao lấp lánh,\nCả trại ngủ thật ngoan.",
+      "question": "Trong bài hát, con vật nào lắc chuông?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Con bò"
+        },
+        {
+          "id": "b",
+          "text": "Con vịt"
+        },
+        {
+          "id": "c",
+          "text": "Con gà trống"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Tìm dòng có chữ «chuông».",
+          "Đọc tên con vật đứng đầu dòng ấy."
+        ],
+        "hint": "Chuông kêu «leng keng» ở dòng thứ tư.",
+        "answer": {
+          "text": "Con bò",
+          "explanation": "Dòng thứ tư viết «Bò lắc chuông leng keng», nên con bò là con vật lắc chuông."
+        },
+        "en": {
+          "guide": [
+            "Find the line with the word “bell”.",
+            "Read the animal at the start of that line."
+          ],
+          "hint": "The bell goes “ting-a-ling” in the fourth line.",
+          "answer": {
+            "text": "The cow",
+            "explanation": "The fourth line says “The cow shakes her bell, ting-a-ling”, so the cow is the one with the bell."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Leng keng! Đúng là bò rồi, nghe như bò đang đứng ngay sau lưng.",
+          "{name} đọc trúng dòng có chuông, tớ dán nhãn «bò, chuông» ngay.",
+          "Đọc kỹ thế này thì hát không sai lời nào."
+        ],
+        "wrong": [
+          "Vịt thì bơi và kêu cạp cạp, đâu có cầm chuông.",
+          "Gà trống lo gáy rồi, việc lắc chuông là của bạn khác.",
+          "Tìm lại chữ «chuông» trong bài nhé, {name}."
+        ],
+        "en": {
+          "right": [
+            "Ting-a-ling! The cow, of course; it sounds as if she’s standing right behind us.",
+            "You found the bell line, {name}; I’m labelling it “cow, bell” at once.",
+            "Read that carefully and we’ll never sing a wrong word."
+          ],
+          "wrong": [
+            "The duck swims and quacks; it doesn’t hold a bell.",
+            "The rooster is busy crowing; shaking the bell is someone else’s job.",
+            "Look for the word “bell” in the song again, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "Reading the farm’s song",
+        "goTo": "Go into the orchard, where the new song sheet hangs from a branch",
+        "text": "The Farm Song\nMister Sun wakes up,\nThe rooster crows cock-a-doodle-doo.\nThe cow shakes her bell, ting-a-ling,\nThe duck swims and quacks, quack quack.\nAt night the stars twinkle,\nAnd the whole farm sleeps soundly.",
+        "question": "In the song, which animal shakes a bell?",
+        "choices": [
+          "The cow",
+          "The duck",
+          "The rooster"
+        ]
+      }
+    },
+    {
+      "id": "nhip-tiep-theo",
+      "title": "Tiếng nào tiếp theo?",
+      "goTo": "Ra ao cá, Heo chép nhịp bài hát lên tấm bảng bên bờ",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "st-heo-dan-dong-ca-bang-chep-nhip",
+      "skill": "logic",
+      "prompt": "Nhịp bài hát chép trên bảng: tùng – cắc – cắc – tùng – cắc – cắc – tùng – … Tiếng tiếp theo là gì?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "tùng"
+        },
+        {
+          "id": "b",
+          "text": "cắc"
+        },
+        {
+          "id": "c",
+          "text": "nghỉ"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Chia nhịp thành từng nhóm ba tiếng.",
+          "Mỗi nhóm bắt đầu bằng tiếng gì?"
+        ],
+        "hint": "Mỗi nhóm là một tiếng tùng rồi hai tiếng cắc.",
+        "answer": {
+          "text": "cắc",
+          "explanation": "Nhịp lặp lại nhóm «tùng – cắc – cắc». Nhóm thứ ba vừa có tiếng tùng, nên tiếp theo là tiếng cắc."
+        },
+        "en": {
+          "guide": [
+            "Split the rhythm into groups of three.",
+            "What does each group start with?"
+          ],
+          "hint": "Each group is one boom and then two clacks.",
+          "answer": {
+            "text": "clack",
+            "explanation": "The rhythm repeats “boom – clack – clack”. The third group has just had its boom, so a clack comes next."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cắc! Phách tre gõ đúng chỗ, cá dưới ao cũng quẫy theo.",
+          "{name} nghe ra nhóm ba tiếng nhanh hơn cả tớ.",
+          "Một tùng hai cắc, nhịp này cả trại hát theo được."
+        ],
+        "wrong": [
+          "Vừa tùng xong lại tùng nữa thì nhịp vấp chân mất.",
+          "Bài này chưa có chỗ nghỉ ở đó đâu, đếm lại nhóm nhé.",
+          "Khoanh từng nhóm ba tiếng xem nhóm nào còn thiếu, {name}."
+        ],
+        "en": {
+          "right": [
+            "Clack! The bamboo clappers hit just right, and even the fish in the pond flip along.",
+            "You heard the groups of three faster than I did, {name}.",
+            "One boom, two clacks: the whole farm can sing to that."
+          ],
+          "wrong": [
+            "A boom straight after a boom would trip the rhythm up.",
+            "There’s no rest at that spot in this song; count the groups again.",
+            "Circle each group of three and see which one is unfinished, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which sound comes next?",
+        "goTo": "Go out to the fishpond, where Heo copied the song’s rhythm onto a board by the bank",
+        "prompt": "The rhythm on the board goes: boom – clack – clack – boom – clack – clack – boom – … What comes next?",
+        "choices": [
+          "boom",
+          "clack",
+          "rest"
+        ]
+      }
+    },
+    {
+      "id": "cach-tap-hat",
+      "title": "Tập hát thế nào cho đều?",
+      "goTo": "Sang nhà nông trại, ghế tập hát đã kê bên hiên",
+      "kind": "decision",
+      "target": "st-heo-dan-dong-ca-ghe-tap-hat-hien",
+      "speaker": "Heo Kho Hàng",
+      "prompt": "Cả dàn đã thuộc lời, nhưng mỗi bạn hát một kiểu. Heo hỏi: «Mục số ba phẩy ba: tập cho đều. {name} tính sao?»",
+      "choices": [
+        {
+          "id": "tung-be",
+          "text": "Tập riêng từng bè rồi mới ghép",
+          "consequence": "Bè trầm của bò, bè cao của gà, bè vịt tập riêng. Ghép lại nghe tròn như quả bí."
+        },
+        {
+          "id": "theo-trong",
+          "text": "Ai cũng hát theo tiếng trống",
+          "consequence": "Heo gõ trống thật chậm, cả dàn bước theo nhịp, không ai chạy trước."
+        },
+        {
+          "id": "nghe-nhau",
+          "text": "Nhắm mắt lắng nghe nhau",
+          "consequence": "Ai hát to quá tự hạ giọng, ai hát nhỏ quá tự cất lên. Cả dàn thành một giọng."
+        }
+      ],
+      "en": {
+        "title": "How to sing together?",
+        "goTo": "Go over to the farmhouse, where the rehearsal stools are set out on the porch",
+        "prompt": "The choir knows the words, but everyone sings in their own way. Heo asks: “Item three point three: singing together. What do you think, {name}?”",
+        "choices": [
+          {
+            "text": "Practise each part alone, then join them",
+            "consequence": "The cows’ low part, the hens’ high part and the ducks practise apart. Put together, it sounds as round as a pumpkin."
+          },
+          {
+            "text": "Everyone sings along to the drum",
+            "consequence": "Heo beats the drum slowly, the whole choir keeps step, and nobody rushes ahead."
+          },
+          {
+            "text": "Close your eyes and listen to each other",
+            "consequence": "Whoever is too loud softens, whoever is too quiet sings up. The choir becomes one voice."
+          }
+        ]
+      }
+    },
+    {
+      "id": "nhai-nhip",
+      "title": "Vỗ tay theo nhịp của Heo",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Heo vỗ một nhịp, {name} vỗ lại cho đúng. Sáu nhịp đúng là cả dàn bắt nhịp được bài hát của trại.",
+      "game": "call-response",
+      "goal": 6,
+      "en": {
+        "title": "Clap it back",
+        "prompt": "Heo claps a rhythm and {name} claps it back. Six right and the whole choir has the beat of the farm’s song."
+      }
+    },
+    {
+      "id": "bai-hat-cua-trai",
+      "title": "Bài hát của trại",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Lần đầu tiên dàn đồng ca hát trọn bài của nông trại. Bác Nông Dân Thành đứng ngoài hàng rào vỗ tay mãi, còn Heo dán cho {name} nhãn «Mục số ba: xong!».",
+      "en": {
+        "title": "The farm’s own song",
+        "text": "For the first time the choir sings the farm’s song from start to finish. Bác Nông Dân Thành claps for ages by the fence, and Heo gives {name} a label: “Item three: done!”"
+      }
+    },
+    {
+      "id": "dem-dien",
+      "title": "Đêm diễn sắp tới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Heo đã chọn ngày cho đêm diễn đầu tiên ngay tại nông trại. Có điều đồ diễn lại cất ở một góc kho mà Heo chẳng muốn nhắc tới.",
+      "en": {
+        "title": "The show is coming",
+        "text": "Heo has picked a date for the first show right here on the farm. Only the costumes are stored in a corner of the barn Heo would rather not mention."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "doc-hieu": 1,
+      "logic": 1
+    }
+  },
+  "en": {
+    "title": "Heo Kho Hàng's story, chapter 3: Item three, the farm’s song",
+    "summary": "Heo Kho Hàng has written the farm’s song. {name} finds instruments round the crop fields, reads the words, works out the next beat, chooses how the choir should practise and claps the rhythm back."
+  }
+}

@@ -1,0 +1,378 @@
+{
+  "id": "yarn-heo-dan-dong-ca-2",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Chuyện của Heo Kho Hàng, chương 2: Mục số hai, sân khấu bao gạo",
+  "status": "active",
+  "category": "story",
+  "summary": "Dàn hát cần một sân khấu. {name} tìm ván, bao gạo và chiếc trống nhỏ, tính số bao gạo còn phải khiêng, xếp chỗ ngồi cho khán giả rồi chọn cách chia vé buổi tập.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Heo Kho Hàng",
+    "where": "Nông trại: cửa nhà kho, chợ nông sản, sân nông trại, chuồng lợn, cối xay gió",
+    "goal": "Dựng sân khấu bằng bao gạo và mời khán giả tới buổi tập",
+    "play": "Tìm đồ dựng sân khấu theo lời tả; tính số bao còn thiếu; suy luận chỗ ngồi; chia vé; phân loại hàng trên băng chuyền",
+    "learn": "Bài toán có lời văn (phép trừ có nhớ), suy luận",
+    "reward": "65 XP, 16 Xu, Skill XP Bài toán có lời văn, Logic",
+    "next": "Dàn hát cần một bài hát của riêng mình"
+  },
+  "phases": {
+    "hook": "muc-so-hai",
+    "explore": "do-dung-san-khau",
+    "learn": "con-bao-nhieu-bao",
+    "challenge": "ai-ngoi-dau",
+    "decision": "chia-ve",
+    "finale": "bang-chuyen-don-kho",
+    "reward": "san-khau-dung-xong",
+    "next": "bai-hat-rieng"
+  },
+  "places": {
+    "heo-kho-hang": "Cửa nhà kho",
+    "do-dung-san-khau": "Chợ nông sản",
+    "st-heo-dan-dong-ca-tam-van-san-khau": "Chợ nông sản",
+    "st-heo-dan-dong-ca-bao-gao-nhan-xanh": "Chợ nông sản",
+    "st-heo-dan-dong-ca-trong-da-nho": "Chợ nông sản",
+    "st-heo-dan-dong-ca-chong-bao-ke-san-khau": "Sân nông trại",
+    "st-heo-dan-dong-ca-ba-hang-ghe-rom": "Chuồng lợn",
+    "st-heo-dan-dong-ca-hop-ve-buoi-tap": "Cối xay gió"
+  },
+  "steps": [
+    {
+      "id": "muc-so-hai",
+      "title": "Sân khấu bằng bao gạo",
+      "goTo": "Về cửa nhà kho, Heo Kho Hàng đang đếm bao gạo trên đầu ngón tay",
+      "kind": "dialogue",
+      "target": "heo-kho-hang",
+      "lines": [
+        {
+          "speaker": "Heo Kho Hàng",
+          "text": "Ủn ỉn, {name}! Mục số hai trong sổ của tớ: sân khấu. Hôm qua bò đứng hát lún bùn tới đầu gối."
+        },
+        {
+          "speaker": "Heo Kho Hàng",
+          "text": "Tớ sẽ kê bao gạo thành sân khấu, lót ván lên trên. Bao nào cũng dán nhãn rồi, yên tâm!"
+        },
+        {
+          "speaker": "Heo Kho Hàng",
+          "text": "Có điều đồ dựng sân khấu nằm rải rác ở chợ nông sản. Tớ nhớ nhãn nhưng quên chỗ."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Nhớ nhãn là đủ, mình đi tìm!",
+          "reply": "Mục số hai phẩy một: đi tìm cùng {name}. Ghi rồi!"
+        },
+        {
+          "text": "Bao gạo có chịu được bò không?",
+          "reply": "Bao gạo nhà tớ chắc lắm, bò nhảy cũng không sao. Nhưng đừng cho bò nhảy."
+        }
+      ],
+      "en": {
+        "title": "A stage made of rice sacks",
+        "goTo": "Go back to the barn door, where Heo Kho Hàng is counting rice sacks on his trotters",
+        "lines": [
+          "Oink oink, {name}! Item two in my book: a stage. Yesterday the cow sank into the mud up to her knees while singing.",
+          "I’ll stack rice sacks into a stage and lay planks on top. Every sack is labelled, don’t worry!",
+          "Only the stage things are scattered round the produce market. I remember the labels but not the places."
+        ],
+        "choices": [
+          {
+            "text": "Labels are enough, let’s go and look!",
+            "reply": "Item two point one: search with {name}. Noted!"
+          },
+          {
+            "text": "Can rice sacks hold a cow?",
+            "reply": "My rice sacks are tough; even a jumping cow is fine. But let’s not let her jump."
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-dung-san-khau",
+      "title": "Đồ dựng sân khấu",
+      "goTo": "Sang chợ nông sản tìm ván, bao gạo và chiếc trống nhỏ",
+      "kind": "find-object",
+      "prompt": "Đọc từng tấm nhãn Heo tả rồi tìm cho đủ ba món:",
+      "items": [
+        {
+          "id": "van",
+          "name": "Tấm ván lót",
+          "clue": "Dài và phẳng, có ba chiếc đinh tre, nhãn ghi «Mục 2.2: ván».",
+          "target": "st-heo-dan-dong-ca-tam-van-san-khau"
+        },
+        {
+          "id": "bao",
+          "name": "Bao gạo nhãn xanh",
+          "clue": "Căng tròn, nặng trịch, dán một cái nhãn xanh lá ở giữa.",
+          "target": "st-heo-dan-dong-ca-bao-gao-nhan-xanh"
+        },
+        {
+          "id": "trong",
+          "name": "Chiếc trống nhỏ",
+          "clue": "Mặt da căng, thân sơn đỏ, gõ nhẹ đã kêu «tùng».",
+          "target": "st-heo-dan-dong-ca-trong-da-nho"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Things for the stage",
+        "goTo": "Go over to the produce market and find the plank, the rice sack and the little drum",
+        "prompt": "Read each label Heo describes and find all three things:",
+        "items": [
+          {
+            "name": "The plank",
+            "clue": "Long and flat with three bamboo pegs; its label says “Item 2.2: plank”."
+          },
+          {
+            "name": "The green-labelled sack",
+            "clue": "Round, stuffed and heavy, with a leaf-green label stuck in the middle."
+          },
+          {
+            "name": "The little drum",
+            "clue": "A tight hide top and a red-painted body; tap it gently and it goes “boom”."
+          }
+        ]
+      }
+    },
+    {
+      "id": "con-bao-nhieu-bao",
+      "title": "Còn bao nhiêu bao nữa?",
+      "goTo": "Ra sân nông trại, chồng bao gạo kê sân khấu đã cao ngang đầu gối",
+      "kind": "riddle",
+      "target": "st-heo-dan-dong-ca-chong-bao-ke-san-khau",
+      "skill": "bai-toan-loi-van",
+      "question": "Sân khấu cần 52 bao gạo. Heo và {name} đã khiêng ra sân 27 bao. Còn phải khiêng thêm bao nhiêu bao nữa?",
+      "answer": {
+        "value": 25
+      },
+      "support": {
+        "guide": [
+          "Lấy số bao cần có trừ đi số bao đã khiêng.",
+          "Đặt tính 52 − 27, trừ từ hàng đơn vị."
+        ],
+        "hint": "2 không trừ được 7, mượn 1 chục: 12 trừ 7 bằng 5.",
+        "answer": {
+          "text": "25 bao gạo",
+          "explanation": "52 − 27 = 25: 12 trừ 7 bằng 5, viết 5 nhớ 1; 2 thêm 1 là 3, 5 trừ 3 bằng 2. Còn phải khiêng 25 bao."
+        },
+        "en": {
+          "guide": [
+            "Take the sacks already carried away from the sacks needed.",
+            "Write 52 − 27 in columns and start with the ones."
+          ],
+          "hint": "2 take away 7 won’t go, so borrow a ten: 12 take away 7 is 5.",
+          "answer": {
+            "text": "25 sacks of rice",
+            "explanation": "52 − 27 = 25: 12 minus 7 is 5, write 5 and carry 1; 2 plus 1 is 3, and 5 minus 3 is 2. There are 25 sacks left to carry."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai mươi lăm bao! Tớ dán nhãn «còn 25» lên cửa kho ngay.",
+          "{name} trừ có nhớ chắc như bao gạo nhà tớ.",
+          "Thêm hai mươi lăm bao nữa là bò đứng hát khô chân."
+        ],
+        "wrong": [
+          "Số bao còn lại phải ít hơn 52 chứ, {name}.",
+          "Nhớ mượn một chục ở hàng đơn vị nhé, 2 không trừ được 7 đâu.",
+          "Mình đang tìm số bao còn thiếu, không phải cộng gộp lại."
+        ],
+        "en": {
+          "right": [
+            "Twenty-five sacks! I’m labelling the barn door “25 to go” right now.",
+            "Your take-away with borrowing is as solid as my rice sacks, {name}.",
+            "Twenty-five more and the cow can sing with dry feet."
+          ],
+          "wrong": [
+            "The sacks left must be fewer than 52, {name}.",
+            "Remember to borrow a ten in the ones: 2 take away 7 won’t go.",
+            "We want the sacks still missing, not everything added together."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many sacks left?",
+        "goTo": "Go out to the farmyard, where the stack of stage sacks is already knee-high",
+        "question": "The stage needs 52 rice sacks. Heo and {name} have carried 27 out to the yard. How many more sacks must they carry?"
+      }
+    },
+    {
+      "id": "ai-ngoi-dau",
+      "title": "Khán giả ngồi hàng nào?",
+      "goTo": "Ghé chuồng lợn, Heo đã trải ba hàng ghế rơm trước cửa",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-heo-dan-dong-ca-ba-hang-ghe-rom",
+      "skill": "logic",
+      "prompt": "Ba khán giả xin ngồi ba hàng ghế rơm. Gà Mái ngồi trước Dê Con. Thỏ Trắng ngồi sau Dê Con. Ai ngồi hàng đầu tiên?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Gà Mái"
+        },
+        {
+          "id": "b",
+          "text": "Dê Con"
+        },
+        {
+          "id": "c",
+          "text": "Thỏ Trắng"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Đặt Dê Con vào giữa trước.",
+          "Ai ngồi trước Dê Con? Ai ngồi sau?"
+        ],
+        "hint": "Thỏ Trắng ngồi sau Dê Con nên không thể ở hàng đầu.",
+        "answer": {
+          "text": "Gà Mái",
+          "explanation": "Gà Mái ngồi trước Dê Con, Thỏ Trắng ngồi sau Dê Con, nên thứ tự là Gà Mái, Dê Con, Thỏ Trắng. Gà Mái ngồi hàng đầu."
+        },
+        "en": {
+          "guide": [
+            "Put the kid goat in the middle first.",
+            "Who sits in front of the goat? Who sits behind?"
+          ],
+          "hint": "The rabbit sits behind the goat, so it can’t be in the front row.",
+          "answer": {
+            "text": "Hen",
+            "explanation": "Hen sits in front of the goat and the rabbit sits behind it, so the order is Hen, goat, rabbit. Hen is in the front row."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Gà Mái hàng đầu, mỏ ngẩng cao như được giải.",
+          "{name} suy luận gọn gàng như kho của tớ.",
+          "Ba hàng ba bạn, chẳng ai tranh ghế. Tuyệt!"
+        ],
+        "wrong": [
+          "Dê Con còn có người ngồi trước mặt kia mà.",
+          "Thỏ Trắng ngồi sau Dê Con, vậy là hàng cuối rồi.",
+          "Thử xếp ba bạn bằng ba hạt ngô xem, {name}."
+        ],
+        "en": {
+          "right": [
+            "Hen in the front row, beak held high like a prize-winner.",
+            "Your reasoning is as tidy as my barn, {name}.",
+            "Three rows, three friends, nobody fighting over a seat. Wonderful!"
+          ],
+          "wrong": [
+            "Someone sits in front of the kid goat, though.",
+            "The rabbit sits behind the goat, so that’s the back row.",
+            "Try lining the three up with three corn kernels, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "Who sits in the front row?",
+        "goTo": "Stop by the pigsty, where Heo has laid three rows of straw seats",
+        "prompt": "Three guests want seats in the three straw rows. Hen sits in front of the kid goat. White Rabbit sits behind the kid goat. Who sits in the very first row?",
+        "choices": [
+          "Hen",
+          "Kid goat",
+          "White Rabbit"
+        ]
+      }
+    },
+    {
+      "id": "chia-ve",
+      "title": "Chia vé buổi tập thế nào?",
+      "goTo": "Mang hộp vé ra cối xay gió, nơi khán giả hay đứng hóng mát",
+      "kind": "decision",
+      "target": "st-heo-dan-dong-ca-hop-ve-buoi-tap",
+      "speaker": "Heo Kho Hàng",
+      "prompt": "Hộp vé buổi tập hát có đúng ba mươi chiếc vé. Heo xoa mũi: «Mục số hai phẩy năm: chia vé. Chia sao cho công bằng?»",
+      "choices": [
+        {
+          "id": "ai-toi-truoc",
+          "text": "Ai tới trước nhận vé trước",
+          "consequence": "Khán giả xếp một hàng dài thẳng tắp. Heo cảm động tới mức dán nhãn cho cả hàng."
+        },
+        {
+          "id": "moi-chuong",
+          "text": "Mỗi chuồng một ít vé",
+          "consequence": "Chuồng nào cũng có người đi xem, chẳng ai bị bỏ quên."
+        },
+        {
+          "id": "khong-ve",
+          "text": "Bỏ vé, ai thích thì tới",
+          "consequence": "Sân đông nghịt người, Heo phải kê thêm ba hàng ghế rơm nữa."
+        }
+      ],
+      "en": {
+        "title": "How to hand out the tickets?",
+        "goTo": "Take the ticket box to the windmill, where the audience likes to stand in the breeze",
+        "prompt": "The rehearsal ticket box holds exactly thirty tickets. Heo rubs his snout: “Item two point five: tickets. How do we share them fairly?”",
+        "choices": [
+          {
+            "text": "First come, first served",
+            "consequence": "The audience forms one long, straight queue. Heo is so moved he labels the whole line."
+          },
+          {
+            "text": "A few tickets for every pen",
+            "consequence": "Every pen sends someone to watch, and nobody is left out."
+          },
+          {
+            "text": "No tickets: anyone who likes can come",
+            "consequence": "The yard is packed, and Heo has to lay three more rows of straw seats."
+          }
+        ]
+      }
+    },
+    {
+      "id": "bang-chuyen-don-kho",
+      "title": "Băng chuyền dọn kho",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Trước buổi tập phải dọn kho cho gọn! Đẩy từng món trên băng chuyền vào đúng thùng. Hai mươi điểm là kho sạch bong.",
+      "game": "conveyor-sort",
+      "goal": 20,
+      "en": {
+        "title": "Clearing the barn",
+        "prompt": "The barn must be tidy before rehearsal! Push each item on the conveyor into the right bin. Twenty points and the barn is spotless."
+      }
+    },
+    {
+      "id": "san-khau-dung-xong",
+      "title": "Sân khấu dựng xong",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Sân khấu bao gạo đứng vững, ván lót phẳng lì. Bò bước lên thử, không lún tí nào. Heo gõ chiếc trống nhỏ ba tiếng mừng {name}.",
+      "en": {
+        "title": "The stage is built",
+        "text": "The rice-sack stage stands firm and the planks lie flat. The cow steps up to test it and doesn’t sink at all. Heo beats the little drum three times for {name}."
+      }
+    },
+    {
+      "id": "bai-hat-rieng",
+      "title": "Một bài hát của riêng mình",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Dàn hát cứ hát mượn bài của người khác. Heo bảo nông trại phải có bài hát của riêng mình, và Heo đã viết nháp lời rồi.",
+      "en": {
+        "title": "A song of our own",
+        "text": "The choir keeps borrowing other people’s songs. Heo says the farm needs a song of its own, and he has already drafted the words."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "bai-toan-loi-van": 1,
+      "logic": 1
+    }
+  },
+  "en": {
+    "title": "Heo Kho Hàng's story, chapter 2: Item two, a rice-sack stage",
+    "summary": "The choir needs a stage. {name} finds a plank, a rice sack and a little drum, works out how many sacks are left to carry, seats the audience and decides how to share the rehearsal tickets."
+  }
+}

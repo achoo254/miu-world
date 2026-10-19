@@ -1,0 +1,394 @@
+{
+  "id": "yarn-meo-sen-dem-vit-2",
+  "region": "lang-ven-song",
+  "chapter": 4,
+  "title": "Chuyện của Mèo Đầm Sen, chương 2: Nước cờ gửi qua thư",
+  "status": "active",
+  "category": "story",
+  "summary": "Lá thư cờ của người bạn phương xa bị gió thổi tung. {name} nhặt lại từng trang, đọc thư, tính nước đi cho quân Xe rồi cùng Mèo chọn nước cờ gửi đi.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Đầm Sen",
+    "where": "Đầm sen, sân bóng làng, bãi phơi sen, hiên nhà Mèo, đầu bờ đầm",
+    "goal": "Giúp Mèo đọc thư cờ và gửi nước đi tiếp theo",
+    "play": "Nhặt các trang thư; đọc thư; tính nước đi; chọn nước cờ; bắt vịt nghịch",
+    "learn": "Đọc hiểu, suy luận",
+    "reward": "65 XP, 16 Xu, Skill XP Đọc hiểu, Logic",
+    "next": "Nước cho ruộng ven đầm"
+  },
+  "phases": {
+    "hook": "thu-co-toi",
+    "explore": "nhat-thu-co",
+    "learn": "doc-thu-co",
+    "challenge": "xe-may-nuoc",
+    "decision": "gui-nuoc-nao",
+    "finale": "bat-vit-nghich",
+    "reward": "thu-da-gui",
+    "next": "nuoc-cho-ruong"
+  },
+  "places": {
+    "meo-dam-sen": "Đầm sen",
+    "nhat-thu-co": "Sân bóng làng",
+    "st-meo-sen-dem-vit-trang-dau-sap": "Sân bóng làng",
+    "st-meo-sen-dem-vit-trang-ban-co": "Sân bóng làng",
+    "st-meo-sen-dem-vit-phong-bi-ngua": "Sân bóng làng",
+    "st-meo-sen-dem-vit-thu-ghep": "Bãi phơi sen",
+    "st-meo-sen-dem-vit-ban-co-go": "Hiên nhà Mèo",
+    "st-meo-sen-dem-vit-hom-thu": "Đầu bờ đầm"
+  },
+  "steps": [
+    {
+      "id": "thu-co-toi",
+      "title": "Thư cờ tới rồi",
+      "goTo": "Ra đầm sen, Mèo đang cầm chiếc phong bì rỗng",
+      "kind": "dialogue",
+      "target": "meo-dam-sen",
+      "lines": [
+        {
+          "speaker": "Mèo Đầm Sen",
+          "text": "Meo. Thư cờ tới rồi. Ba năm, mỗi lá thư một nước đi. Mèo chưa thắng ván nào."
+        },
+        {
+          "speaker": "Mèo Đầm Sen",
+          "text": "Lần này Mèo muốn đọc thật kỹ, nghĩ thật chậm. Nhưng vừa bóc thư thì gió thổi tung, trang bay mỗi nơi một tờ."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đi nhặt thư về ngay!",
+          "reply": "Nhặt cẩn thận. Đừng làm nhàu. Mèo ghét giấy nhàu."
+        },
+        {
+          "text": "Ba năm chưa thắng mà Mèo vẫn chơi ạ?",
+          "reply": "Thua thì học. Chưa thắng không có nghĩa là không bao giờ thắng."
+        }
+      ],
+      "en": {
+        "title": "The chess letter arrives",
+        "goTo": "Go to the lotus pond, where Mèo is holding an empty envelope",
+        "lines": [
+          "Meow. The chess letter came. Three years, one move per letter. I have not won a single game.",
+          "This time I want to read carefully and think slowly. But the moment I opened it, the wind blew the pages everywhere."
+        ],
+        "choices": [
+          {
+            "text": "I'll go and pick up the pages now!",
+            "reply": "Carefully. No creases. I hate creased paper."
+          },
+          {
+            "text": "Three years without a win and you still play?",
+            "reply": "Losing teaches. Not winning yet doesn't mean never winning."
+          }
+        ]
+      }
+    },
+    {
+      "id": "nhat-thu-co",
+      "title": "Những trang thư bay",
+      "goTo": "Chạy ra sân bóng làng, gió thổi các trang thư bay tới đó",
+      "kind": "find-object",
+      "prompt": "Gió cuốn thư cờ ra tận sân bóng. Đọc lời Mèo tả rồi nhặt từng thứ:",
+      "items": [
+        {
+          "id": "dau-sap",
+          "name": "Trang thư dấu sáp đỏ",
+          "clue": "Gấp đôi, ở góc có một dấu sáp đỏ hình chiếc vương miện nhỏ.",
+          "target": "st-meo-sen-dem-vit-trang-dau-sap"
+        },
+        {
+          "id": "ban-co",
+          "name": "Trang vẽ bàn cờ",
+          "clue": "Kẻ ô vuông đen trắng, có mấy hình quân cờ vẽ bằng bút chì.",
+          "target": "st-meo-sen-dem-vit-trang-ban-co"
+        },
+        {
+          "id": "phong-bi",
+          "name": "Phong bì dán tem con ngựa",
+          "clue": "Rỗng ruột, góc phải dán con tem hình chú ngựa đang phi.",
+          "target": "st-meo-sen-dem-vit-phong-bi-ngua"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Pages on the wind",
+        "goTo": "Run to the village football pitch, where the wind blew the pages",
+        "prompt": "The wind carried the chess letter all the way to the pitch. Read how Mèo describes each thing and pick it up:",
+        "items": [
+          {
+            "name": "Page with the red seal",
+            "clue": "Folded in half, with a small red wax seal shaped like a crown in one corner."
+          },
+          {
+            "name": "Page with the chessboard",
+            "clue": "Ruled in black and white squares, with a few chess pieces drawn in pencil."
+          },
+          {
+            "name": "Envelope with the horse stamp",
+            "clue": "Empty inside, with a stamp of a galloping horse in the right-hand corner."
+          }
+        ]
+      }
+    },
+    {
+      "id": "doc-thu-co",
+      "title": "Đọc thư cờ",
+      "goTo": "Mang các trang ra bãi phơi sen, ghép lại rồi đọc",
+      "kind": "read",
+      "target": "st-meo-sen-dem-vit-thu-ghep",
+      "skill": "doc-hieu",
+      "text": "Mèo Đầm Sen thân mến,\nTa đi nước thứ một trăm: Mã nhảy lên ô số 7.\nNước này nghe thì to tát, nhưng ta thú thật: ta đã tính trước ba nước.\nNếu Mèo đưa Xe vào ô số 7, ta sẽ phải nghĩ rất lâu.\nBên ta trời đã sang thu. Bên Mèo sen còn nở không?\nBạn cờ phương xa",
+      "question": "Theo thư, nước đi nào khiến bạn cờ «phải nghĩ rất lâu»?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Mèo đưa Xe vào ô số 7"
+        },
+        {
+          "id": "b",
+          "text": "Mèo cho Mã nhảy lên ô số 7"
+        },
+        {
+          "id": "c",
+          "text": "Mèo viết thư kể chuyện sen"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Tìm câu có chữ «nghĩ rất lâu».",
+          "Đọc phần đứng trước dấu phẩy của câu ấy."
+        ],
+        "hint": "Mã nhảy lên ô số 7 là nước của bạn cờ, không phải của Mèo.",
+        "answer": {
+          "text": "Nước Xe vào ô số 7",
+          "explanation": "Thư viết: «Nếu Mèo đưa Xe vào ô số 7, ta sẽ phải nghĩ rất lâu.» Vậy nước Xe vào ô số 7 làm bạn cờ khó nghĩ nhất."
+        },
+        "en": {
+          "guide": [
+            "Find the sentence with \"think for a long time\".",
+            "Read the part before the comma."
+          ],
+          "hint": "The Knight to square 7 is the friend's own move, not Mèo's.",
+          "answer": {
+            "text": "The Rook to square 7",
+            "explanation": "The letter says: \"If Mèo moves her Rook to square 7, I will have to think for a long time.\" So that move is the hardest for the friend."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng! Mèo dựng đứng đuôi: lần đầu tiên bạn cờ tự lộ chỗ yếu.",
+          "{name} đọc ra điều bạn cờ giấu giữa hai dòng chữ.",
+          "Meo. Đọc kỹ thì thấy. Mèo thích người đọc kỹ."
+        ],
+        "wrong": [
+          "Mã nhảy là nước bạn cờ vừa đi rồi, {name} đọc lại dòng hai nhé.",
+          "Chuyện sen nở là lời hỏi thăm thôi, không phải nước cờ.",
+          "Tìm chữ «nếu» trong thư, câu ấy có câu trả lời."
+        ],
+        "en": {
+          "right": [
+            "Right! Mèo's tail shoots up: for the first time her friend has given away a weak spot.",
+            "{name} read what the friend hid between the lines.",
+            "Meow. Read closely and you see it. Mèo likes close readers."
+          ],
+          "wrong": [
+            "The Knight jump is the move the friend just made; read the second line again, {name}.",
+            "The lotus question is just friendly news, not a move.",
+            "Find the word \"if\" in the letter; that sentence holds the answer."
+          ]
+        }
+      },
+      "en": {
+        "title": "Reading the chess letter",
+        "goTo": "Take the pages to the lotus-drying yard, put them together and read",
+        "text": "Dear Mèo Đầm Sen,\nI make move one hundred: Knight to square 7.\nIt sounds grand, but I confess I have planned three moves ahead.\nIf you move your Rook to square 7, I will have to think for a long time.\nAutumn has come where I live. Are your lotuses still in bloom?\nYour faraway chess friend",
+        "question": "According to the letter, which move would make the friend \"think for a long time\"?",
+        "choices": [
+          "Mèo moves her Rook to square 7",
+          "Mèo jumps her Knight to square 7",
+          "Mèo writes about the lotus flowers"
+        ]
+      }
+    },
+    {
+      "id": "xe-may-nuoc",
+      "title": "Xe đi mấy nước?",
+      "goTo": "Sang hiên nhà Mèo, bàn cờ gỗ kê sát mép hiên",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-meo-sen-dem-vit-ban-co-go",
+      "skill": "logic",
+      "prompt": "Trên bàn cờ của Mèo, quân Xe đứng ở ô số 1. Mỗi nước, Xe chỉ tiến 2 ô hoặc 4 ô. Muốn tới đúng ô số 7 trong ít nước nhất, Xe cần mấy nước?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "2 nước"
+        },
+        {
+          "id": "b",
+          "text": "3 nước"
+        },
+        {
+          "id": "c",
+          "text": "6 nước"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Từ ô 1 tới ô 7, Xe phải đi tất cả bao nhiêu ô?",
+          "Chọn những bước dài nhất có thể mà không vượt quá."
+        ],
+        "hint": "Đi 6 ô: một bước 4 ô cộng một bước 2 ô.",
+        "answer": {
+          "text": "2 nước",
+          "explanation": "7 − 1 = 6 ô. Bước dài nhất là 4 ô, còn lại 2 ô là một bước nữa: 4 + 2 = 6. Vậy Xe cần 2 nước."
+        },
+        "en": {
+          "guide": [
+            "From square 1 to square 7, how many squares must the Rook travel?",
+            "Take the longest steps you can without going too far."
+          ],
+          "hint": "6 squares: one step of 4 plus one step of 2.",
+          "answer": {
+            "text": "2 moves",
+            "explanation": "7 − 1 = 6 squares. The longest step is 4, leaving 2 for one more step: 4 + 2 = 6. So the Rook needs 2 moves."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai nước: bốn ô rồi hai ô. Mèo gõ quân Xe xuống bàn cộc một tiếng.",
+          "{name} tính gọn hơn cả bạn cờ ba năm của Mèo.",
+          "Ít nước nhất, đúng kiểu Mèo thích: không thừa bước nào."
+        ],
+        "wrong": [
+          "Ba nước cũng tới, nhưng chưa phải ít nhất đâu {name}.",
+          "Sáu nước là đi từng ô một rồi, Xe chỉ đi 2 hoặc 4 ô thôi.",
+          "Tính số ô phải đi trước: từ 1 tới 7 là mấy ô?"
+        ],
+        "en": {
+          "right": [
+            "Two moves: four squares, then two. Mèo taps the Rook down with a firm tock.",
+            "{name} worked it out more neatly than Mèo's friend of three years.",
+            "Fewest moves, just how Mèo likes it: not one step wasted."
+          ],
+          "wrong": [
+            "Three moves gets there too, but it isn't the fewest, {name}.",
+            "Six moves is going square by square; the Rook only moves 2 or 4.",
+            "Work out the distance first: how many squares from 1 to 7?"
+          ]
+        }
+      },
+      "en": {
+        "title": "How many moves for the Rook?",
+        "goTo": "Go to Mèo's veranda, where the wooden chessboard sits at the edge",
+        "prompt": "On Mèo's board the Rook stands on square 1. Each move it goes forward exactly 2 or 4 squares. To land on square 7 in as few moves as possible, how many moves does it need?",
+        "choices": [
+          "2 moves",
+          "3 moves",
+          "6 moves"
+        ]
+      }
+    },
+    {
+      "id": "gui-nuoc-nao",
+      "title": "Gửi nước nào?",
+      "goTo": "Ra đầu bờ đầm, cạnh hòm thư sơn đỏ",
+      "kind": "decision",
+      "target": "st-meo-sen-dem-vit-hom-thu",
+      "speaker": "Mèo Đầm Sen",
+      "prompt": "Mèo cầm bút, lưỡng lự trước tờ thư trả lời: «Meo. Gửi nước nào đây?»",
+      "choices": [
+        {
+          "id": "xe-o-7",
+          "text": "Đưa Xe vào ô số 7, đúng nước bạn cờ ngại nhất",
+          "consequence": "Mèo viết thật nắn nót: «Xe vào ô 7.» Rồi Mèo cười, lần đầu tiên cười trong một lá thư cờ."
+        },
+        {
+          "id": "nuoc-la",
+          "text": "Đi một nước thật lạ cho bạn cờ bất ngờ",
+          "consequence": "Mèo chọn một nước chưa ai đi bao giờ: «Thua cũng được. Nhưng phải thua kiểu mới.»"
+        },
+        {
+          "id": "ke-sen",
+          "text": "Viết thêm một dòng kể chuyện sen nở",
+          "consequence": "Dưới nước cờ, Mèo kể sen hồng đã nở kín đầm. Mèo bảo bạn cờ nào cũng cần một tin vui."
+        }
+      ],
+      "en": {
+        "title": "Which move to send?",
+        "goTo": "Go to the head of the pond bank, beside the red postbox",
+        "prompt": "Mèo holds her pen, hesitating over the reply: \"Meow. Which move do I send?\"",
+        "choices": [
+          {
+            "text": "Rook to square 7, the move the friend fears most",
+            "consequence": "Mèo writes very neatly: \"Rook to 7.\" Then she smiles, the first smile ever in a chess letter."
+          },
+          {
+            "text": "Play a strange move to surprise the friend",
+            "consequence": "Mèo picks a move nobody has ever tried: \"Losing is fine. But it has to be a new way of losing.\""
+          },
+          {
+            "text": "Add a line about the lotuses in bloom",
+            "consequence": "Under the move, Mèo writes that pink lotuses cover the pond. Every chess friend, she says, needs some good news."
+          }
+        ]
+      }
+    },
+    {
+      "id": "bat-vit-nghich",
+      "title": "Bắt vịt nghịch",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Đúng lúc dán tem, đàn vịt nhảy ùm xuống ao làm nước bắn tung tóe! Bắt đủ tám chú vịt nghịch lên bờ trước khi chúng phá lá thư nhé.",
+      "game": "duck-catch",
+      "goal": 8,
+      "en": {
+        "title": "Catching the rascals",
+        "prompt": "Just as the stamp goes on, the ducks splash into the pond and spray water everywhere! Catch eight rascal ducks before they ruin the letter."
+      }
+    },
+    {
+      "id": "thu-da-gui",
+      "title": "Thư đã gửi",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Lá thư khô ráo đã nằm gọn trong hòm. Mèo dán tem thẳng góc, miết ba lần, rồi bảo {name}: «Nước này có phần của cháu.»",
+      "en": {
+        "title": "The letter is posted",
+        "text": "The letter lies dry and safe in the box. Mèo sets the stamp perfectly square, presses it three times and tells {name}: \"Part of this move is yours.\""
+      }
+    },
+    {
+      "id": "nuoc-cho-ruong",
+      "title": "Nước cho ruộng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chưa kịp chờ thư hồi âm, đường ống ra ruộng ven đầm lại rò nước. Mèo cần đong nước cho từng thửa ruộng.",
+      "en": {
+        "title": "Water for the fields",
+        "text": "Before any reply can come, the pipe out to the fields by the pond starts leaking. Mèo needs to measure water for every field."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "doc-hieu": 1,
+      "logic": 1
+    }
+  },
+  "en": {
+    "title": "Mèo Đầm Sen's story, chapter 2: A move by post",
+    "summary": "The letter from Mèo's faraway chess friend has blown away. {name} gathers the pages, reads the letter, works out the Rook's moves and helps Mèo choose which move to post."
+  }
+}

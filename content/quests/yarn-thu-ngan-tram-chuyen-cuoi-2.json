@@ -1,0 +1,376 @@
+{
+  "id": "yarn-thu-ngan-tram-chuyen-cuoi-2",
+  "region": "cho-phien",
+  "chapter": 2,
+  "title": "Chuyện của Bác Thu Ngân Vui Vẻ, chương 2: Quả cân đi trốn",
+  "status": "active",
+  "category": "story",
+  "summary": "Cái cân của dãy hàng cân đong chỉ sai vì thiếu ba quả cân. {name} tìm quả cân ở bến hàng, tính bao gạo nặng bao nhiêu, xếp kiện hàng từ nhẹ đến nặng rồi cùng bác chữa cân.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bác Thu Ngân Vui Vẻ",
+    "where": "Chợ phiên: quầy thu ngân, bến hàng, bàn cân lớn, kho hàng nhỏ, chậu rửa rau",
+    "goal": "Tìm đủ quả cân và làm cho cân chỉ đúng",
+    "play": "Tìm ba quả cân; tính khối lượng bao gạo trên cân đĩa; xếp kiện hàng; chọn cách chữa cân; đặt quả cân cho thăng bằng",
+    "learn": "Ki-lô-gam, cân đĩa thăng bằng, so sánh số trong phạm vi 100",
+    "reward": "65 XP, 16 Xu, Skill XP Khối lượng, So sánh số",
+    "next": "Sổ bán hàng gặp mưa"
+  },
+  "phases": {
+    "hook": "can-chi-sai",
+    "explore": "tim-qua-can",
+    "learn": "bao-gao-nang-bao-nhieu",
+    "challenge": "xep-kien-nhe-nang",
+    "decision": "chua-can",
+    "finale": "thu-can-thang-bang",
+    "reward": "cuoi-can-nhac",
+    "next": "so-nhoe-mua"
+  },
+  "places": {
+    "bac-thu-ngan-vui-ve": "Quầy thu ngân",
+    "tim-qua-can": "Bến hàng",
+    "st-thu-ngan-tram-chuyen-cuoi-qua-can-canh-bao-gao": "Bến hàng",
+    "st-thu-ngan-tram-chuyen-cuoi-qua-can-duoi-man-thuyen": "Bến hàng",
+    "st-thu-ngan-tram-chuyen-cuoi-qua-can-mac-luoi": "Bến hàng",
+    "st-thu-ngan-tram-chuyen-cuoi-ban-can-dia": "Bàn cân lớn",
+    "st-thu-ngan-tram-chuyen-cuoi-bon-kien-hang": "Kho hàng nhỏ",
+    "st-thu-ngan-tram-chuyen-cuoi-chau-lau-dia-can": "Chậu rửa rau"
+  },
+  "steps": [
+    {
+      "id": "can-chi-sai",
+      "title": "Cái cân chỉ sai",
+      "goTo": "Về quầy thu ngân, bác đang gãi đầu nhìn cái cân",
+      "kind": "dialogue",
+      "target": "bac-thu-ngan-vui-ve",
+      "lines": [
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "Hô hô… hôm nay bác cười hơi méo. {name} ơi, cái cân của bác chỉ sai bét!"
+        },
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "Voi Bốc Hàng đặt lên một bao gạo, cân bảo nặng bằng… con mèo. Voi cười, bác thì không."
+        },
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "Bác đếm lại hộp quả cân, thiếu ba quả. Chắc chúng lăn xuống bến hàng lúc dỡ thuyền."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu xuống bến tìm ba quả cân về!",
+          "reply": "Nhớ nhìn kỹ chỗ có lưới cá nhé. Quả cân cũng thích… mắc lưới. Hô hô!"
+        },
+        {
+          "text": "Cân sai thì khách thiệt mất bác ơi.",
+          "reply": "Đúng thế, bác lo nhất chuyện ấy. Cân phải đúng từng lạng, như tiền phải đúng từng đồng."
+        }
+      ],
+      "en": {
+        "title": "The scale reads wrong",
+        "goTo": "Go back to the cashier's counter, where he is scratching his head at the scale",
+        "lines": [
+          "Ho ho… my laugh is a bit wonky today. {name}, my scale is reading completely wrong!",
+          "Voi Bốc Hàng put a sack of rice on it, and the scale said it weighed as much as… a cat. Voi laughed; I didn't.",
+          "I counted the box of weights and three are missing. They must have rolled down to the wharf while the boat was being unloaded."
+        ],
+        "choices": [
+          {
+            "text": "I'll go down to the wharf and bring them back!",
+            "reply": "Look closely where the fishing nets are. Weights like to get… caught up too. Ho ho!"
+          },
+          {
+            "text": "A wrong scale cheats the customers.",
+            "reply": "Exactly, that's what worries me most. A scale must be right to the last gram, like change to the last đồng."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-qua-can",
+      "title": "Ba quả cân đi trốn",
+      "goTo": "Xuống bến hàng tìm ba quả cân bị lạc",
+      "kind": "search",
+      "targets": [
+        "st-thu-ngan-tram-chuyen-cuoi-qua-can-canh-bao-gao",
+        "st-thu-ngan-tram-chuyen-cuoi-qua-can-duoi-man-thuyen",
+        "st-thu-ngan-tram-chuyen-cuoi-qua-can-mac-luoi"
+      ],
+      "en": {
+        "title": "Three weights in hiding",
+        "goTo": "Go down to the wharf and find the three lost weights"
+      }
+    },
+    {
+      "id": "bao-gao-nang-bao-nhieu",
+      "title": "Bao gạo nặng bao nhiêu?",
+      "goTo": "Mang quả cân lên bàn cân lớn, đặt từng quả lên đĩa",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-thu-ngan-tram-chuyen-cuoi-ban-can-dia",
+      "skill": "khoi-luong",
+      "prompt": "Đĩa bên trái có một bao gạo. Đĩa bên phải có quả cân 5 kg và quả cân 2 kg. Hai đĩa nằm ngang bằng nhau. Bao gạo nặng bao nhiêu ki-lô-gam?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "3 kg"
+        },
+        {
+          "id": "b",
+          "text": "7 kg"
+        },
+        {
+          "id": "c",
+          "text": "10 kg"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Cân thăng bằng nghĩa là hai đĩa nặng bằng nhau.",
+          "Cộng hai quả cân ở đĩa bên phải."
+        ],
+        "hint": "Năm ki-lô-gam thêm hai ki-lô-gam.",
+        "answer": {
+          "text": "7 kg",
+          "explanation": "Hai đĩa thăng bằng nên bao gạo nặng bằng 5 kg + 2 kg = 7 kg."
+        },
+        "en": {
+          "guide": [
+            "A balanced scale means both pans weigh the same.",
+            "Add the two weights on the right-hand pan."
+          ],
+          "hint": "Five kilograms and two more kilograms.",
+          "answer": {
+            "text": "7 kg",
+            "explanation": "The pans balance, so the rice sack weighs as much as 5 kg + 2 kg = 7 kg."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bảy ki-lô-gam! Kim cân đứng im chỉ đúng vạch, bác vỗ tay đen đét.",
+          "{name} nhìn hai đĩa cân như nhìn hai bên dấu bằng.",
+          "Thăng bằng thì bằng nhau, {name} nhớ đúng bài rồi."
+        ],
+        "wrong": [
+          "Ba ki-lô-gam là lấy năm trừ hai rồi, ở đây hai quả cân nằm cùng một đĩa mà.",
+          "Không có quả cân mười ki-lô-gam nào trên đĩa đâu, {name} cộng lại nhé.",
+          "Đĩa bên phải có hai quả, phải gộp cả hai mới ra bao gạo."
+        ],
+        "en": {
+          "right": [
+            "Seven kilograms! The needle settles right on the mark and he claps loudly.",
+            "{name} reads the two pans like the two sides of an equals sign.",
+            "Balanced means equal; you remembered the lesson, {name}."
+          ],
+          "wrong": [
+            "Three kilograms is five take away two, but both weights sit on the same pan.",
+            "There's no ten-kilogram weight on the pan, {name}; add them again.",
+            "The right-hand pan holds two weights; put both together to get the sack."
+          ]
+        }
+      },
+      "en": {
+        "title": "How heavy is the rice sack?",
+        "goTo": "Carry the weights up to the big scale table and set each one on a pan",
+        "prompt": "The left pan holds a sack of rice. The right pan holds a 5 kg weight and a 2 kg weight. The two pans hang level. How many kilograms does the rice sack weigh?",
+        "choices": [
+          "3 kg",
+          "7 kg",
+          "10 kg"
+        ]
+      }
+    },
+    {
+      "id": "xep-kien-nhe-nang",
+      "title": "Kiện nhẹ cân trước",
+      "goTo": "Vào kho hàng nhỏ, bốn kiện hàng đang chờ lên cân",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-thu-ngan-tram-chuyen-cuoi-bon-kien-hang",
+      "skill": "so-sanh-so",
+      "prompt": "Bác muốn cân kiện nhẹ trước cho cân khỏi giật. Xếp các kiện từ nhẹ nhất đến nặng nhất:",
+      "items": [
+        {
+          "id": "khoai",
+          "label": "Bao khoai: 25 kg"
+        },
+        {
+          "id": "ca",
+          "label": "Rổ cá tươi: 8 kg"
+        },
+        {
+          "id": "gao",
+          "label": "Bao gạo nếp: 50 kg"
+        },
+        {
+          "id": "cam",
+          "label": "Thùng cam: 12 kg"
+        }
+      ],
+      "answer": {
+        "order": [
+          "ca",
+          "cam",
+          "khoai",
+          "gao"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Số có một chữ số bé hơn số có hai chữ số.",
+          "Với số có hai chữ số, so hàng chục trước."
+        ],
+        "hint": "Nhẹ nhất là rổ cá 8 kg.",
+        "answer": {
+          "text": "Rổ cá, thùng cam, bao khoai, bao gạo nếp",
+          "explanation": "8 kg < 12 kg < 25 kg < 50 kg, nên cân rổ cá trước, rồi thùng cam, bao khoai, cuối cùng là bao gạo nếp."
+        },
+        "en": {
+          "guide": [
+            "A one-digit number is smaller than a two-digit number.",
+            "For two-digit numbers, compare the tens first."
+          ],
+          "hint": "The lightest is the 8 kg basket of fish.",
+          "answer": {
+            "text": "Fish basket, crate of oranges, sack of potatoes, sack of sticky rice",
+            "explanation": "8 kg < 12 kg < 25 kg < 50 kg, so the fish go first, then the oranges, the potatoes and last the sticky rice."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Nhẹ trước nặng sau, cái cân thở phào chẳng giật lần nào.",
+          "Tám, mười hai, hai mươi lăm, năm mươi… bác hát số mà {name} xếp trước cả bác!",
+          "Hô hô! Kho hàng gọn như hàng khách xếp trước quầy."
+        ],
+        "wrong": [
+          "Bao gạo năm mươi ki-lô-gam nặng nhất kho đấy, để nó cuối hàng nhé.",
+          "Rổ cá chỉ có một chữ số thôi, nhẹ hơn mọi kiện còn lại.",
+          "So hàng chục của hai mươi lăm với mười hai xem số nào bé hơn."
+        ],
+        "en": {
+          "right": [
+            "Light first, heavy last: the scale sighs with relief and never jolts once.",
+            "Eight, twelve, twenty-five, fifty… I sing the numbers and {name} sorted them before me!",
+            "Ho ho! The store is as neat as the queue at my counter."
+          ],
+          "wrong": [
+            "The fifty-kilogram rice sack is the heaviest thing here; put it at the end.",
+            "The fish basket has just one digit; it is lighter than all the rest.",
+            "Compare the tens of twenty-five and twelve to see which is smaller."
+          ]
+        }
+      },
+      "en": {
+        "title": "Lightest crates first",
+        "goTo": "Go into the little storeroom, where four loads are waiting to be weighed",
+        "prompt": "He wants to weigh the light loads first so the scale does not jolt. Order them from lightest to heaviest:",
+        "items": [
+          "Sack of potatoes: 25 kg",
+          "Basket of fresh fish: 8 kg",
+          "Sack of sticky rice: 50 kg",
+          "Crate of oranges: 12 kg"
+        ]
+      }
+    },
+    {
+      "id": "chua-can",
+      "title": "Chữa cân thế nào?",
+      "goTo": "Ra chậu rửa rau, nơi bác để chậu nước lau đĩa cân",
+      "kind": "decision",
+      "target": "st-thu-ngan-tram-chuyen-cuoi-chau-lau-dia-can",
+      "speaker": "Bác Thu Ngân Vui Vẻ",
+      "prompt": "Đủ quả cân rồi mà kim vẫn hơi lệch. Bác hỏi: «Ta làm gì để cân đúng mãi, không chỉ đúng hôm nay?»",
+      "choices": [
+        {
+          "id": "lau-dia",
+          "text": "Lau sạch bùn dính dưới đĩa cân",
+          "consequence": "Dưới đĩa bám một mảng bùn khô to bằng đồng xu. Lau xong, kim về đúng số 0 ngay."
+        },
+        {
+          "id": "vang-kim",
+          "text": "Mỗi sáng vặn kim về số 0 rồi mới cân",
+          "consequence": "Bác dán tờ giấy nhắc lên cân: «Kim về 0, khách vui mãi». Bác bảo đó là chuyện cười nghiêm túc nhất của bác."
+        },
+        {
+          "id": "ke-chan",
+          "text": "Nhờ Voi Bốc Hàng kê lại chân cân cho phẳng",
+          "consequence": "Voi nâng cả cái cân lên nhẹ như nâng bó rau, kê viên gạch phẳng. Cân đứng vững, kim đứng yên."
+        }
+      ],
+      "en": {
+        "title": "How to mend the scale?",
+        "goTo": "Go to the vegetable-washing tub, where he keeps a basin for wiping the pans",
+        "prompt": "All the weights are back, but the needle still leans a little. He asks: «What can we do so it stays right for good, not just today?»",
+        "choices": [
+          {
+            "text": "Wipe the mud off the underside of the pan",
+            "consequence": "A lump of dried mud the size of a coin is stuck under the pan. Once wiped, the needle snaps back to 0."
+          },
+          {
+            "text": "Set the needle to 0 every morning before weighing",
+            "consequence": "He sticks a reminder on the scale: «Needle at 0, customers happy». He says it is his most serious joke."
+          },
+          {
+            "text": "Ask Voi Bốc Hàng to level the scale's feet",
+            "consequence": "Voi lifts the whole scale as lightly as a bunch of greens and slips a flat brick under it. Steady scale, steady needle."
+          }
+        ]
+      }
+    },
+    {
+      "id": "thu-can-thang-bang",
+      "title": "Cân cho thăng bằng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Cân chữa xong rồi, thử lại cho chắc nào! Đặt quả cân cho hai đĩa thăng bằng bốn lần.",
+      "game": "balance-scale",
+      "goal": 4,
+      "en": {
+        "title": "Testing the mended scale",
+        "prompt": "The scale is mended; let's test it to be sure! Place weights so the pans balance four times."
+      }
+    },
+    {
+      "id": "cuoi-can-nhac",
+      "title": "Quả cân biết cân nhắc",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác nghĩ ra chuyện thứ chín mươi tám: «Vì sao quả cân chẳng bao giờ nói bừa? Vì nó luôn… cân nhắc!» Lần này cả dãy hàng cân đong cười theo, và bác thưởng {name} một nắm xu.",
+      "en": {
+        "title": "A weight that weighs its words",
+        "text": "He comes up with joke ninety-eight: «Why does a weight never blurt things out? Because it always weighs its words!» This time the whole weighing row laughs along, and he rewards {name} with a handful of coins."
+      }
+    },
+    {
+      "id": "so-nhoe-mua",
+      "title": "Cuốn sổ gặp mưa",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đêm nay trời dọa mưa. Bác lo cho cuốn sổ bán hàng để ở quầy, mấy trang ghi số còn chưa kịp chép lại.",
+      "en": {
+        "title": "The ledger and the rain",
+        "text": "Rain threatens tonight. He is worried about the sales ledger left at the counter; a few pages of figures have not been copied out yet."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "khoi-luong": 1,
+      "so-sanh-so": 1
+    }
+  },
+  "en": {
+    "title": "Bác Thu Ngân Vui Vẻ's story, chapter 2: The weights in hiding",
+    "summary": "The weighing row's scale reads wrong because three weights are missing. {name} finds them at the wharf, works out how heavy a rice sack is, orders the loads from lightest to heaviest and helps mend the scale."
+  }
+}

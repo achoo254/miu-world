@@ -1,0 +1,386 @@
+{
+  "id": "yarn-meo-tra-da-quan-moi-mien-1",
+  "region": "xom-mai-am",
+  "chapter": 2,
+  "title": "Chuyện của Mèo Trà Đá, chương 1: Đơn hàng mười lít",
+  "status": "active",
+  "category": "story",
+  "summary": "Mèo Trà Đá nhận đơn mười lít trà cho buổi họp mặt trong hang đá ấm. {name} tìm can, bình và ca, tính số lít còn thiếu, chọn cách đong cho đủ rồi giúp Mèo chọn hương trà.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Trà Đá",
+    "where": "Xóm: giếng xóm, gốc khế đầu ngõ, hiên nhà, chõng tre, mỏm đá cửa hang",
+    "goal": "Đong đủ mười lít trà đá cho buổi họp mặt của xóm",
+    "play": "Tìm đồ đong theo lời tả; tính số lít còn thiếu; chọn các cách đong đủ; chọn hương trà; rót trà đúng vạch",
+    "learn": "Lít (dung tích), phép trừ",
+    "reward": "57 XP, 14 Xu, Skill XP Phép trừ, Dung tích",
+    "next": "Sáng mai mở quán tạm trong ngõ"
+  },
+  "phases": {
+    "hook": "don-hang-lon",
+    "explore": "tim-do-dong",
+    "learn": "con-thieu-may-lit",
+    "challenge": "dong-du-bon-lit",
+    "decision": "chon-huong-tra",
+    "finale": "rot-dung-vach",
+    "reward": "muoi-lit-du",
+    "next": "quan-tam-trong-ngo"
+  },
+  "places": {
+    "meo-tra-da": "Giếng xóm",
+    "tim-do-dong": "Gốc khế đầu ngõ",
+    "st-meo-tra-da-quan-moi-mien-can-nhua-nam-lit": "Gốc khế đầu ngõ",
+    "st-meo-tra-da-quan-moi-mien-binh-hai-lit-quai-do": "Gốc khế đầu ngõ",
+    "st-meo-tra-da-quan-moi-mien-ca-nhom-mot-lit": "Gốc khế đầu ngõ",
+    "st-meo-tra-da-quan-moi-mien-bang-ghi-don-tra": "Hiên nhà",
+    "st-meo-tra-da-quan-moi-mien-khay-ca-va-binh": "Chõng tre",
+    "st-meo-tra-da-quan-moi-mien-ba-lo-huong-tra": "Mỏm đá cửa hang"
+  },
+  "steps": [
+    {
+      "id": "don-hang-lon",
+      "title": "Một đơn hàng to",
+      "goTo": "Ra giếng xóm, Mèo Trà Đá đang lau quầy bên thành giếng",
+      "kind": "dialogue",
+      "target": "meo-tra-da",
+      "lines": [
+        {
+          "speaker": "Mèo Trà Đá",
+          "text": "Quý khách {name}! Tin nóng nhất sáng nay đây: cả xóm hẹn họp mặt trong hang đá ấm, và họ đặt trà của Mèo! Meo meo!"
+        },
+        {
+          "speaker": "Mèo Trà Đá",
+          "text": "Mười lít trà đá liền một lúc. Mà đồ đong của Mèo, hôm qua cho hàng xóm mượn, giờ nằm rải rác ở gốc khế đầu ngõ."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mười lít cơ à? Nhiều quá!",
+          "reply": "Nhiều mới vui, quý khách ơi! Quán lớn phải bắt đầu từ đơn to. Meo!"
+        },
+        {
+          "text": "Cháu đi lấy đồ đong về cho Mèo.",
+          "reply": "Nhanh chân thế thì Mèo mời quý khách cốc đầu tiên, không lấy xu nào."
+        }
+      ],
+      "en": {
+        "title": "A big order",
+        "goTo": "Go to the lane well, where Mèo Trà Đá is wiping the counter by the well wall",
+        "lines": [
+          "Honoured guest {name}! The hottest news this morning: the whole lane is meeting in the warm cave, and they've ordered Mèo's tea! Meow meow!",
+          "Ten litres of iced tea all at once. But I lent my measuring things to the neighbours yesterday, and now they're scattered by the starfruit tree at the head of the lane."
+        ],
+        "choices": [
+          {
+            "text": "Ten whole litres? That’s a lot!",
+            "reply": "The more the merrier, honoured guest! A big stall starts with a big order. Meow!"
+          },
+          {
+            "text": "I'll go and fetch the measuring things for you.",
+            "reply": "With feet that quick, the first glass is on the house."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-do-dong",
+      "title": "Can, bình và ca",
+      "goTo": "Tới gốc khế đầu ngõ tìm ba món đồ đong của Mèo",
+      "kind": "find-object",
+      "prompt": "Hàng xóm trả đồ mà để lẫn dưới gốc khế. Đọc lời tả rồi tìm đúng ba món:",
+      "items": [
+        {
+          "id": "can",
+          "name": "Can nhựa năm lít",
+          "clue": "Trắng đục, to nhất trong ba món, quai xách ở trên, thân in số 5 thật to.",
+          "target": "st-meo-tra-da-quan-moi-mien-can-nhua-nam-lit"
+        },
+        {
+          "id": "binh",
+          "name": "Bình hai lít quai đỏ",
+          "clue": "Thân thủy tinh có vạch chia, quai màu đỏ như quả ớt chín.",
+          "target": "st-meo-tra-da-quan-moi-mien-binh-hai-lit-quai-do"
+        },
+        {
+          "id": "ca",
+          "name": "Ca nhôm một lít",
+          "clue": "Nhỏ, sáng loáng, miệng có cái mỏ nhọn để rót cho khỏi đổ.",
+          "target": "st-meo-tra-da-quan-moi-mien-ca-nhom-mot-lit"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Can, jug and mug",
+        "goTo": "Go to the starfruit tree at the head of the lane and find Mèo’s three measuring things",
+        "prompt": "The neighbours returned everything but left it mixed up under the starfruit tree. Read the descriptions and find the right three:",
+        "items": [
+          {
+            "name": "Five-litre plastic can",
+            "clue": "Milky white, the biggest of the three, a carrying handle on top and a big 5 printed on its side."
+          },
+          {
+            "name": "Two-litre jug with a red handle",
+            "clue": "A glass body marked with lines, and a handle red as a ripe chilli."
+          },
+          {
+            "name": "One-litre aluminium mug",
+            "clue": "Small and shiny, with a pointed spout so nothing spills when you pour."
+          }
+        ]
+      }
+    },
+    {
+      "id": "con-thieu-may-lit",
+      "title": "Còn thiếu mấy lít?",
+      "goTo": "Vào hiên nhà, Mèo dán bảng ghi đơn trà trên cột hiên",
+      "kind": "riddle",
+      "target": "st-meo-tra-da-quan-moi-mien-bang-ghi-don-tra",
+      "skill": "phep-tru",
+      "question": "Đơn ghi: 10 lít trà đá. Mèo đã rót đầy can 5 lít và bình 2 lít. Hỏi còn phải pha thêm mấy lít nữa mới đủ đơn?",
+      "answer": {
+        "value": 3
+      },
+      "support": {
+        "guide": [
+          "Tính xem Mèo đã có bao nhiêu lít: 5 l và 2 l.",
+          "Lấy 10 l trừ đi số lít đã có."
+        ],
+        "hint": "5 l + 2 l = 7 l, rồi 10 l − 7 l = ?",
+        "answer": {
+          "text": "3 lít",
+          "explanation": "Mèo đã có 5 + 2 = 7 lít. Đơn cần 10 lít nên còn thiếu 10 − 7 = 3 lít."
+        },
+        "en": {
+          "guide": [
+            "Work out how many litres Mèo already has: 5 l and 2 l.",
+            "Take that away from 10 l."
+          ],
+          "hint": "5 l + 2 l = 7 l, then 10 l − 7 l = ?",
+          "answer": {
+            "text": "3 litres",
+            "explanation": "Mèo already has 5 + 2 = 7 litres. The order is 10 litres, so 10 − 7 = 3 litres are still missing."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba lít! Meo meo, quý khách tính nhanh hơn Mèo rót trà.",
+          "{name} trừ gọn gàng, Mèo ghi ngay số ba vào góc bảng.",
+          "Còn đúng ba ca một lít nữa thôi, Mèo đi pha liền đây."
+        ],
+        "wrong": [
+          "Quý khách nhớ tính cả can lẫn bình rồi mới trừ nhé.",
+          "Số ấy là phần đã có rồi, Mèo hỏi phần còn thiếu cơ.",
+          "Thử đếm thêm từ bảy lên mười xem được mấy bước."
+        ],
+        "en": {
+          "right": [
+            "Three litres! Meow meow, you count faster than I pour, honoured guest.",
+            "A tidy subtraction, {name}; Mèo writes a 3 in the corner of the board.",
+            "Just three one-litre mugs to go; Mèo is off to brew them."
+          ],
+          "wrong": [
+            "Remember to count both the can and the jug before you subtract.",
+            "That is what Mèo already has; the question is what is missing.",
+            "Try counting on from seven to ten and see how many steps."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many litres short?",
+        "goTo": "Go to the porch, where Mèo pinned the tea order on a post",
+        "question": "The order says 10 litres of iced tea. Mèo has filled the 5-litre can and the 2-litre jug. How many more litres must be made to complete the order?"
+      }
+    },
+    {
+      "id": "dong-du-bon-lit",
+      "title": "Đong cho đủ bốn lít",
+      "goTo": "Ra chõng tre, Mèo bày sẵn khay ca và bình rót trà",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-meo-tra-da-quan-moi-mien-khay-ca-va-binh",
+      "skill": "dung-tich",
+      "prompt": "Hàng xóm xin thêm 4 lít mang về. Trên chõng chỉ có ca 1 lít và bình 2 lít. Chọn tất cả các cách đong được đúng 4 lít:",
+      "choices": [
+        {
+          "id": "hai-binh",
+          "text": "Rót đầy bình 2 lít hai lần"
+        },
+        {
+          "id": "bon-ca",
+          "text": "Rót đầy ca 1 lít bốn lần"
+        },
+        {
+          "id": "binh-hai-ca",
+          "text": "Một bình 2 lít và hai ca 1 lít"
+        },
+        {
+          "id": "binh-mot-ca",
+          "text": "Một bình 2 lít và một ca 1 lít"
+        },
+        {
+          "id": "ba-ca",
+          "text": "Rót đầy ca 1 lít ba lần"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "hai-binh",
+          "bon-ca",
+          "binh-hai-ca"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Cộng số lít của từng cách xem có bằng 4 không.",
+          "Bình là 2 lít, ca là 1 lít."
+        ],
+        "hint": "Hai bình là 2 + 2, bốn ca là 1 + 1 + 1 + 1.",
+        "answer": {
+          "text": "Hai bình 2 lít; bốn ca 1 lít; một bình và hai ca",
+          "explanation": "2 + 2 = 4, 1 + 1 + 1 + 1 = 4 và 2 + 1 + 1 = 4 đều đủ. Một bình một ca chỉ được 3 lít, ba ca cũng chỉ 3 lít."
+        },
+        "en": {
+          "guide": [
+            "Add up the litres in each way and see if it makes 4.",
+            "The jug holds 2 litres, the mug 1 litre."
+          ],
+          "hint": "Two jugs make 2 + 2, four mugs make 1 + 1 + 1 + 1.",
+          "answer": {
+            "text": "Two jugs; four mugs; one jug and two mugs",
+            "explanation": "2 + 2 = 4, 1 + 1 + 1 + 1 = 4 and 2 + 1 + 1 = 4 all work. One jug and one mug is only 3 litres, and so are three mugs."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng cả ba cách! Mèo vỗ tay meo một tiếng thật giòn.",
+          "Quý khách {name} đong bằng đầu nhanh hơn Mèo đong bằng tay.",
+          "Ba cách đều ra bốn lít, hàng xóm muốn cách nào cũng được."
+        ],
+        "wrong": [
+          "Một bình với một ca mới được ba lít thôi, thiếu một lít đấy.",
+          "Còn một cách dùng toàn ca nhỏ chưa chọn, quý khách đếm lại nhé.",
+          "Ba ca là ba lít, Mèo rót ra thì hàng xóm lại phải quay lại xin."
+        ],
+        "en": {
+          "right": [
+            "All three ways! Mèo claps with a crisp little meow.",
+            "You measure in your head faster than Mèo measures by hand, {name}.",
+            "All three make four litres; the neighbours can pick any of them."
+          ],
+          "wrong": [
+            "One jug and one mug is only three litres, one short.",
+            "One more way using only small mugs is still unpicked; count again.",
+            "Three mugs is three litres; the neighbours would have to come back for more."
+          ]
+        }
+      },
+      "en": {
+        "title": "Measuring four litres",
+        "goTo": "Go to the bamboo daybed, where Mèo set out the tray of mugs and jugs",
+        "prompt": "The neighbours want 4 more litres to take home. The daybed has only a 1-litre mug and a 2-litre jug. Pick every way that measures exactly 4 litres:",
+        "choices": [
+          "Fill the 2-litre jug twice",
+          "Fill the 1-litre mug four times",
+          "One 2-litre jug and two 1-litre mugs",
+          "One 2-litre jug and one 1-litre mug",
+          "Fill the 1-litre mug three times"
+        ]
+      }
+    },
+    {
+      "id": "chon-huong-tra",
+      "title": "Trà hương gì?",
+      "goTo": "Ra mỏm đá cửa hang, Mèo để ba lọ hương trà trên đó cho thoáng gió",
+      "kind": "decision",
+      "target": "st-meo-tra-da-quan-moi-mien-ba-lo-huong-tra",
+      "speaker": "Mèo Trà Đá",
+      "prompt": "Mèo mở nắp từng lọ cho {name} ngửi: «Mười lít trà cho buổi họp mặt, quý khách chọn hương nào? Meo, khó chọn quá!»",
+      "choices": [
+        {
+          "id": "la-dua",
+          "text": "Hương lá dứa, xanh và thơm dịu",
+          "consequence": "Mùi lá dứa bay khắp cửa hang. Mèo bảo người già trong xóm thích nhất vị này."
+        },
+        {
+          "id": "chanh-sa",
+          "text": "Hương chanh sả, mát và tỉnh người",
+          "consequence": "Mèo thả mấy lát chanh vào bình, sả đập dập bỏ kèm. Uống một ngụm là mắt sáng như sao."
+        },
+        {
+          "id": "hoa-nhai",
+          "text": "Hương hoa nhài, ngọt nhẹ như chiều hè",
+          "consequence": "Mèo rắc một nhúm hoa nhài khô. Trà vàng nhạt, thơm như vườn ai mới tưới."
+        }
+      ],
+      "en": {
+        "title": "Which flavour?",
+        "goTo": "Go out to the rock at the cave mouth, where Mèo left three jars of tea flavours in the breeze",
+        "prompt": "Mèo opens each jar for {name} to sniff: \"Ten litres for the gathering. Which flavour, honoured guest? Meow, it’s so hard to choose!\"",
+        "choices": [
+          {
+            "text": "Pandan, green and gently fragrant",
+            "consequence": "The scent of pandan drifts all through the cave mouth. Mèo says the old folk of the lane love it best."
+          },
+          {
+            "text": "Lemon and lemongrass, cool and refreshing",
+            "consequence": "Mèo drops lemon slices and crushed lemongrass into the jug. One sip and your eyes sparkle."
+          },
+          {
+            "text": "Jasmine, sweet and light as a summer evening",
+            "consequence": "Mèo scatters a pinch of dried jasmine. The tea turns pale gold and smells like a freshly watered garden."
+          }
+        ]
+      }
+    },
+    {
+      "id": "rot-dung-vach",
+      "title": "Sáu cốc không tràn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Khách trong hang đã ngồi chờ. Rót trà vào cốc cho đúng vạch, sáu cốc không tràn giọt nào nhé!",
+      "game": "water-pour",
+      "goal": 6,
+      "en": {
+        "title": "Pouring to the line",
+        "prompt": "The guests in the cave are waiting. Pour tea right up to the line: six glasses without spilling a drop!"
+      }
+    },
+    {
+      "id": "muoi-lit-du",
+      "title": "Đủ mười lít",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mười lít trà đá xếp hàng trong hang đá ấm, cốc nào cũng mát rượi. Mèo cười meo meo, dúi cho {name} một nắm xu lẻ trong túi tạp dề.",
+      "en": {
+        "title": "Ten litres, done",
+        "text": "Ten litres of iced tea stand in a row in the warm cave, every glass ice-cold. Mèo laughs meow meow and presses a handful of coins from her apron into {name}’s hand."
+      }
+    },
+    {
+      "id": "quan-tam-trong-ngo",
+      "title": "Quán tạm trong ngõ",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Khách khen trà ngon quá nên Mèo định sáng mai mở thêm một quán tạm ngay trong ngõ. Sáng sớm thì đông khách lắm, Mèo cần {name} phụ một tay.",
+      "en": {
+        "title": "A pop-up stall in the lane",
+        "text": "The guests loved the tea, so tomorrow morning Mèo will open a pop-up stall right in the lane. Mornings are busy, and Mèo needs {name}’s help."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 57,
+    "coin": 14,
+    "skillXp": {
+      "phep-tru": 1,
+      "dung-tich": 1
+    }
+  },
+  "en": {
+    "title": "Mèo Trà Đá's story, chapter 1: The ten-litre order",
+    "summary": "Mèo Trà Đá has an order for ten litres of tea for a gathering in the warm cave. {name} finds the can, jug and mug, works out how many litres are missing, picks the ways to measure the rest and helps Mèo choose a flavour."
+  }
+}

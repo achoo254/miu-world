@@ -36,7 +36,7 @@ Mỗi map trong mười hai map có 4 mạch chuyện riêng của nhân vật (
 | # | Pha | Map | Mạch mới | Trạng thái |
 |---|---|---|---|---|
 | 1 | Nhóm A | Nhà của bé, Trung tâm, Khu rừng bí mật, Trường học | 2 + 1 + 2 + 2 = 7 | completed (25 chương, report `plans/dattqh/reports/npc-stories-batch2a-group-a-261019.md`) |
-| 2 | Nhóm B | Làng ven sông, Xóm mái ấm, Chợ phiên, Nông trại | 2 + 2 + 2 + 1 = 7 | pending |
+| 2 | Nhóm B | Làng ven sông, Xóm mái ấm, Chợ phiên, Nông trại | 2 + 2 + 2 + 1 = 7 | completed (26 chương, report `plans/dattqh/reports/npc-stories-batch2a-group-b-261019.md`) |
 | 3 | Nhóm C | Thư viện, Lâu đài, Núi tuyết, Đảo bí ẩn | 2 + 2 + 2 + 2 = 8 | pending |
 | 4 | Gộp, review, trang review, CI, ảnh màn hình | — | — | pending |
 

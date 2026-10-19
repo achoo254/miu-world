@@ -830,6 +830,102 @@
           }
         }
       ]
+    },
+    {
+      "id": "banh-mi-xe-dau-tien",
+      "npc": "co-banh-mi-hanh",
+      "title": { "vi": "Chiếc xe bánh mì đầu tiên", "en": "The First Bánh Mì Cart" },
+      "teaser": { "vi": "Ăn sáng chưa {name}? Cô có một ước mơ giòn rụm: một chiếc xe bánh mì nhỏ lăn khắp các phiên chợ. Phụ cô một tay chứ?", "en": "Had breakfast yet, {name}? I have a crunchy little dream: a bánh mì cart rolling from fair to fair. Will you lend me a hand?" },
+      "chapters": [
+        {
+          "quest": "yarn-banh-mi-xe-dau-tien-1",
+          "hearts": 0,
+          "letter": {
+            "from": "co-banh-mi-hanh",
+            "title": { "vi": "Nửa ổ bánh để dành", "en": "Half a loaf saved for you" },
+            "body": { "vi": "{name} ơi, mẻ thứ hai hôm nay chẳng còn vụn nào. Cô ghi tên cháu vào sổ khách quen rồi, món quen: bánh mì ngò. Mai ra sớm, lán gỗ bên kênh đang chờ mình.", "en": "{name}, not a crumb was left of today’s second batch. I’ve written you into my regulars’ book; your usual: bread with coriander. Come early tomorrow, the canal shed is waiting for us." },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-banh-mi-xe-dau-tien-2",
+          "hearts": 1,
+          "letter": {
+            "from": "ba-nam-ke-chuyen",
+            "title": { "vi": "Thư từ trước ngõ nhà Mẩy", "en": "A letter from the mouth of Mẩy's lane" },
+            "body": { "vi": "Cháu {name} ơi, Hạnh viết thư khoe có chiếc xe bánh mì. Ngày xửa ngày xưa, mà cũng chẳng xưa lắm, Hạnh ngồi trước ngõ nghe bà kể chuyện, tay cầm khúc bánh mì. Giờ Hạnh có xe rồi, bà vui lắm. Bà gửi cháu một câu đố: «Ruột trắng, vỏ vàng, sáng nào cũng sang» là cái gì?", "en": "Dear {name}, Hạnh wrote to boast about her bánh mì cart. Once upon a time, not so long ago, mind, Hạnh sat at the mouth of my lane listening to my stories with a piece of bread in her hand. Now she has a cart, and I couldn't be happier. Here's a riddle for you: “White inside, golden outside, it calls on you every morning.” What is it?" },
+            "reward": { "coins": 20, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-banh-mi-xe-dau-tien-3",
+          "hearts": 2,
+          "letter": {
+            "from": "co-nan-to-he",
+            "title": { "vi": "Thư từ dãy sạp hoa", "en": "A letter from the flower stalls" },
+            "body": { "vi": "Xoay, vuốt, xong! {name} ơi, sáng nay cô đổi cho cô Hạnh một con tò he hình chiếc xe vàng, có cả tấm biển bé xíu. Cô Hạnh treo nó ở tay đẩy, đi đâu cũng lắc lư. Cô gửi {name} một con rồng tò he, cầm chơi cho vui.", "en": "Roll, smooth, done! {name}, this morning I swapped Cô Hạnh a tò he shaped like her yellow cart, tiny sign and all. She hung it from the handle and it bobs wherever she goes. Here’s a tò he dragon for you to play with." },
+            "reward": { "coins": 20, "xp": 20, "items": {"to-he-rong": 1} }
+          }
+        }
+      ]
+    },
+    {
+      "id": "thu-ngan-tram-chuyen-cuoi",
+      "npc": "bac-thu-ngan-vui-ve",
+      "title": { "vi": "Một trăm chuyện cười về con số", "en": "A Hundred Jokes About Numbers" },
+      "teaser": { "vi": "Hô hô! Bác đang viết một quyển sách trăm chuyện cười về con số, mà khách nghe xong toàn ngáp. {name} giúp bác cho chuyện nào cũng buồn cười thật nhé, tính tiền nàooo!", "en": "Ho ho! I'm writing a book of a hundred jokes about numbers, but everyone who hears them yawns. Help me make every one really funny, {name}; there you go-o-o!" },
+      "chapters": [
+        {
+          "quest": "yarn-thu-ngan-tram-chuyen-cuoi-1",
+          "hearts": 0,
+          "letter": {
+            "from": "bac-thu-ngan-vui-ve",
+            "title": { "vi": "Chín mươi bảy chuyện cười", "en": "Ninety-seven jokes" },
+            "body": { "vi": "{name} ơi, tối nay bác đọc chuyện số 0 với số 8 cho bà bán chè nghe, bà cười rung cả nồi chè! Chín mươi bảy chuyện rồi, tính tiền nàooo! Mai cháu ghé, cái cân to đang có chuyện lạ.", "en": "{name}, tonight I read the zero-and-eight joke to the sweet-soup lady and she laughed so hard her pot rattled! Ninety-seven jokes now; there you go-o-o! Drop by tomorrow; the big scale is up to something odd." },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-thu-ngan-tram-chuyen-cuoi-2",
+          "hearts": 1,
+          "letter": {
+            "from": "cho-canh-sat-coi",
+            "title": { "vi": "Thư từ ngã tư", "en": "A letter from the crossroads" },
+            "body": { "vi": "Chào {name}! Chủ nhật nào Chó cũng ra chợ giúp Bác Thu Ngân xếp hàng người mua. Tuần này bác kể chuyện quả cân biết cân nhắc, cả hàng người cười tới mức quên chen lấn. Chó gửi {name} chiếc vé xe buýt, rảnh thì ghé ngã tư chơi.", "en": "Hello {name}! Every Sunday I go to the market to help Bác Thu Ngân keep the queue in line. This week he told the one about the weight that weighs its words, and the whole queue laughed so much they forgot to push. Here's a bus ticket; come and visit the crossroads when you can." },
+            "reward": { "coins": 20, "xp": 15, "items": {"ve-xe-buyt-sao": 1} }
+          }
+        },
+        {
+          "quest": "yarn-thu-ngan-tram-chuyen-cuoi-3",
+          "hearts": 2,
+          "letter": {
+            "from": "voi-boc-hang",
+            "title": { "vi": "Thư từ bến hàng", "en": "A letter from the wharf" },
+            "body": { "vi": "Cháu {name}, Voi đây. Voi đếm lại sổ hai lần, lần nào cũng khớp, nhẹ cả vòi. Bác thu ngân dán chuyện số chín ngay cạnh cân, khách nào cân hàng cũng đọc rồi cười. Voi gửi cháu ít xu, nhẹ tay mà cầm nhé.", "en": "Little {name}, it's Voi. I checked the ledger twice and it matched both times; what a weight off my trunk. The cashier pinned the nine joke right by the scale, and every customer who weighs something reads it and laughs. Here are a few coins; hold them gently." },
+            "reward": { "coins": 20, "xp": 20, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-thu-ngan-tram-chuyen-cuoi-4",
+          "hearts": 3,
+          "letter": {
+            "from": "co-banh-mi-hanh",
+            "title": { "vi": "Thư từ sạp bánh mì", "en": "A letter from the bánh mì stall" },
+            "body": { "vi": "{name}, ăn sáng chưa? Tối qua cô thấy bác thu ngân về nhà sớm, vừa đi vừa huýt sáo, chuyện hiếm như bánh không giòn ấy. Cô biết là nhờ cháu. Cô gửi cháu một ổ bánh mì sữa, còn nóng hôi hổi.", "en": "{name}, had breakfast yet? Last night I saw the cashier head home early, whistling as he went, which is as rare as a loaf that isn't crunchy. I know it's thanks to you. Here's a milk bread roll, still piping hot." },
+            "reward": { "coins": 20, "xp": 20, "items": {"banh-mi-sua": 1} }
+          }
+        },
+        {
+          "quest": "yarn-thu-ngan-tram-chuyen-cuoi-5",
+          "hearts": 4,
+          "letter": {
+            "from": "bac-thu-ngan-vui-ve",
+            "title": { "vi": "Trang đầu của tập hai", "en": "The first page of volume two" },
+            "body": { "vi": "{name}, sách in xong rồi. Trang cuối có tên cháu, viết nhỏ thôi mà bác đọc đi đọc lại. Đồng xu vẫn nằm trong túi áo bác, giờ nó có thêm một người bạn biết chuyện. Trang đầu tập hai vẫn để trống, chờ câu đố của cháu đấy. Hô hô!", "en": "{name}, the book is printed. Your name is on the last page, written small, but I read it over and over. The coin is still in my pocket, and now it has a friend who knows its story. The first page of volume two is still blank, waiting for your riddle. Ho ho!" },
+            "reward": { "coins": 25, "xp": 25, "items": {"dong-tien-co": 1} }
+          }
+        }
+      ]
     }
   ]
 }

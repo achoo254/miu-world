@@ -1,0 +1,394 @@
+{
+  "id": "yarn-den-sen-ngan-ha-4",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Chuyện của Cô Đèn Lồng Sen, chương 4: Đêm hội gió to",
+  "status": "active",
+  "category": "story",
+  "summary": "Đêm hội tới cùng một cơn gió lớn, đúng điều Cô Đèn Lồng Sen sợ nhất. {name} tìm đồ chắn gió, đếm đèn cho hai khúc sông, chọn cách giữ lửa rồi cùng cô thả hoa đăng cho dòng sông sáng như dải ngân hà.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cô Đèn Lồng Sen",
+    "where": "Đầu làng, cối xay gió, đường làng, bờ ao làng, bến thả đèn",
+    "goal": "Giữ cho hàng đèn không tắt trong đêm hội gió to",
+    "play": "Tìm đồ chắn gió; cộng số đèn hai khúc sông; chọn cách giữ lửa; quyết định khi gió nổi; thả hoa đăng",
+    "learn": "Phép cộng có nhớ trong phạm vi 100, suy luận",
+    "reward": "78 XP, 21 Xu, Skill XP Phép cộng, Logic, Hoa đăng sen",
+    "next": "Năm sau thả đủ một nghìn chiếc đèn"
+  },
+  "phases": {
+    "hook": "noi-so-cua-co",
+    "explore": "tim-chan-gio",
+    "learn": "dem-den-hai-khuc",
+    "challenge": "cach-giu-lua",
+    "decision": "khi-gio-noi",
+    "finale": "tha-hoa-dang",
+    "reward": "song-ngan-ha",
+    "next": "nghin-chiec-nam-sau"
+  },
+  "places": {
+    "co-den-long-sen": "Đầu làng",
+    "tim-chan-gio": "Cối xay gió",
+    "st-den-sen-ngan-ha-manh-chan-gio": "Cối xay gió",
+    "st-den-sen-ngan-ha-ong-chup-nen": "Cối xay gió",
+    "st-den-sen-ngan-ha-tui-soi": "Cối xay gió",
+    "st-den-sen-ngan-ha-so-dem-hoi": "Đường làng",
+    "st-den-sen-ngan-ha-gio-do-che": "Bờ ao làng",
+    "st-den-sen-ngan-ha-coc-ben-tha": "Bến thả đèn"
+  },
+  "steps": [
+    {
+      "id": "noi-so-cua-co",
+      "title": "Điều cô chưa kể",
+      "goTo": "Ra đầu làng, cô ngồi một mình bên giàn đèn đã treo kín",
+      "kind": "dialogue",
+      "target": "co-den-long-sen",
+      "lines": [
+        {
+          "speaker": "Cô Đèn Lồng Sen",
+          "text": "{name}, ngồi xuống đây với cô một lát. Cô có chuyện chưa kể với ai."
+        },
+        {
+          "speaker": "Cô Đèn Lồng Sen",
+          "text": "Cô sợ gió lớn. Cô sợ đúng đêm hội, gió thổi tắt cả hàng đèn, đường làng tối om lúc đông người nhất."
+        },
+        {
+          "speaker": "Cô Đèn Lồng Sen",
+          "text": "Chiều nay trời nổi gió. Tay cô run, dán hồ mãi không dính."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình cùng che gió cho đèn, cô không một mình đâu!",
+          "reply": "Ừ. Có cháu đứng cạnh, tay cô bớt run rồi đây."
+        },
+        {
+          "text": "Gió lớn thì mình nghĩ cách khác mà cô.",
+          "reply": "Cháu nói đúng. Sợ thì vẫn sợ, nhưng mình vẫn nghĩ được cách."
+        }
+      ],
+      "en": {
+        "title": "What Cô hadn't told",
+        "goTo": "Go to the village gate, where Cô sits alone by the full lantern rack",
+        "lines": [
+          "{name}, sit with me a moment. There is something I have told no one.",
+          "I am afraid of strong wind. I am afraid that on festival night it will blow out every lantern and leave the road dark just when it is busiest.",
+          "This afternoon the wind got up. My hands are shaking; the glue just won't stick."
+        ],
+        "choices": [
+          {
+            "text": "We'll shield the lanterns together; you're not alone!",
+            "reply": "Yes. With you beside me my hands are already steadier."
+          },
+          {
+            "text": "If the wind is strong, we'll find another way.",
+            "reply": "You're right. I'm still afraid, but we can still think of a way."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-chan-gio",
+      "title": "Đồ chắn gió",
+      "goTo": "Chạy ra cối xay gió, nơi làng cất đồ chắn gió mùa hội",
+      "kind": "find-object",
+      "prompt": "Cánh cối xay quay tít, gió càng lúc càng mạnh. Đọc lời tả rồi tìm đồ chắn gió cho đèn:",
+      "items": [
+        {
+          "id": "manh",
+          "name": "Cuộn mành tre chắn gió",
+          "clue": "Cuộn tròn như chiếc chiếu nhỏ, đan bằng nan tre khít, hai đầu buộc lạt.",
+          "target": "st-den-sen-ngan-ha-manh-chan-gio"
+        },
+        {
+          "id": "ong",
+          "name": "Ống chụp nến thủy tinh",
+          "clue": "Trong suốt, hở hai đầu, úp lên mẩu nến thì gió chỉ lướt qua.",
+          "target": "st-den-sen-ngan-ha-ong-chup-nen"
+        },
+        {
+          "id": "soi",
+          "name": "Túi sỏi giằng đế đèn",
+          "clue": "Nặng trĩu trong tay, buộc dưới đế đèn để gió không lật được.",
+          "target": "st-den-sen-ngan-ha-tui-soi"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Windbreaks",
+        "goTo": "Run to the windmill, where the village keeps its festival windbreaks",
+        "prompt": "The windmill sails are spinning fast and the wind keeps rising. Read each description and find the windbreaks:",
+        "items": [
+          {
+            "name": "Rolled bamboo windbreak",
+            "clue": "Rolled up like a small mat, tightly woven from bamboo, tied at both ends."
+          },
+          {
+            "name": "Glass candle chimney",
+            "clue": "Clear and open at both ends; set it over a candle and the wind just slides past."
+          },
+          {
+            "name": "Bag of pebbles for the base",
+            "clue": "Heavy in your hand, tied under a lantern so the wind cannot tip it."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dem-den-hai-khuc",
+      "title": "Đèn cho hai khúc sông",
+      "goTo": "Ra đường làng, cô ghi số đèn vào sổ đêm hội",
+      "kind": "riddle",
+      "target": "st-den-sen-ngan-ha-so-dem-hoi",
+      "skill": "phep-cong",
+      "question": "Đêm hội, cô thả 45 chiếc đèn ở khúc sông trên và 38 chiếc ở khúc sông dưới. Cả hai khúc sông có bao nhiêu chiếc đèn?",
+      "answer": {
+        "value": 83
+      },
+      "support": {
+        "guide": [
+          "Cộng số đèn khúc sông trên với số đèn khúc sông dưới.",
+          "Đặt tính 45 + 38, cộng từ hàng đơn vị."
+        ],
+        "hint": "5 cộng 8 bằng 13, viết 3 nhớ 1.",
+        "answer": {
+          "text": "83 chiếc đèn",
+          "explanation": "45 + 38 = 83: 5 cộng 8 bằng 13, viết 3 nhớ 1; 4 cộng 3 bằng 7, thêm 1 là 8. Hai khúc sông có 83 chiếc đèn."
+        },
+        "en": {
+          "guide": [
+            "Add the upper stretch's lanterns to the lower stretch's.",
+            "Write 45 + 38 in columns and start with the ones."
+          ],
+          "hint": "5 plus 8 is 13: write 3 and carry 1.",
+          "answer": {
+            "text": "83 lanterns",
+            "explanation": "45 + 38 = 83: 5 plus 8 is 13, write 3 carry 1; 4 plus 3 is 7, plus 1 is 8. The two stretches have 83 lanterns."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tám mươi ba chiếc! Cô khẽ cười, tay đã bớt run.",
+          "{name} nhớ sang hàng chục chẳng sót chút nào.",
+          "Đủ để hai khúc sông cùng sáng, cô gạch một dòng thật đậm."
+        ],
+        "wrong": [
+          "Đừng quên số nhớ sang hàng chục nhé {name}.",
+          "Gộp hai khúc sông lại thì phải nhiều hơn 45 chứ.",
+          "Hàng đơn vị 5 với 8 được mười mấy? Tính lại từ đó."
+        ],
+        "en": {
+          "right": [
+            "Eighty-three! Cô smiles a little; her hands are steadier.",
+            "{name} carried to the tens without missing a thing.",
+            "Enough for both stretches to shine; Cô underlines it boldly."
+          ],
+          "wrong": [
+            "Keep the carried ten in mind, {name}.",
+            "Both stretches together must be more than 45.",
+            "5 and 8 in the ones make ten-something; work it out from there."
+          ]
+        }
+      },
+      "en": {
+        "title": "Lanterns for two stretches",
+        "goTo": "Go to the village road, where Cô writes the numbers in the festival notebook",
+        "question": "On festival night Cô floats 45 lanterns on the upper stretch of the river and 38 on the lower stretch. How many lanterns are there on both stretches?"
+      }
+    },
+    {
+      "id": "cach-giu-lua",
+      "title": "Giữ lửa cho đèn",
+      "goTo": "Mang giỏ đồ ra bờ ao làng, gió đang thổi mạnh nhất ở đó",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-den-sen-ngan-ha-gio-do-che",
+      "skill": "logic",
+      "prompt": "Gió đã nổi. Chọn tất cả những cách giữ cho nến trong đèn không tắt:",
+      "choices": [
+        {
+          "id": "chup",
+          "text": "Úp ống thủy tinh lên mẩu nến"
+        },
+        {
+          "id": "quat",
+          "text": "Mở quạt thật to cho đèn mát"
+        },
+        {
+          "id": "manh",
+          "text": "Dựng mành tre chắn phía gió thổi tới"
+        },
+        {
+          "id": "soi",
+          "text": "Buộc túi sỏi dưới đế cho đèn khỏi lật"
+        },
+        {
+          "id": "cao",
+          "text": "Treo đèn lên ngọn tre cao nhất"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "chup",
+          "manh",
+          "soi"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Lửa tắt khi gió thổi thẳng vào ngọn nến.",
+          "Chọn những thứ chặn gió hoặc giữ đèn đứng vững."
+        ],
+        "hint": "Loại những cách làm gió thổi mạnh thêm hoặc đưa đèn lên chỗ gió to.",
+        "answer": {
+          "text": "Ống thủy tinh, mành tre chắn gió và túi sỏi dưới đế",
+          "explanation": "Ống thủy tinh che ngọn nến, mành tre chặn hướng gió, túi sỏi giữ đèn khỏi lật. Quạt thì thêm gió, còn ngọn tre cao là chỗ gió mạnh nhất."
+        },
+        "en": {
+          "guide": [
+            "A flame goes out when wind blows straight at it.",
+            "Pick the things that block the wind or keep the lantern steady."
+          ],
+          "hint": "Leave out anything that adds wind or puts the lantern where the wind is strongest.",
+          "answer": {
+            "text": "The glass chimney, the bamboo screen and the pebble bag",
+            "explanation": "The chimney shields the flame, the screen blocks the wind, the pebbles stop it tipping. A fan only adds wind, and the top of a bamboo is the windiest spot."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ống che, mành chắn, sỏi giằng: ngọn nến đứng thẳng giữa trời gió.",
+          "{name} chọn đủ cả ba, cô thở phào một hơi thật dài.",
+          "Gió vẫn thổi, nhưng đèn của làng mình không tắt nữa."
+        ],
+        "wrong": [
+          "Quạt thêm thì gió càng to, đèn tắt nhanh hơn đấy {name}.",
+          "Ngọn tre cao là chỗ gió lộng nhất, đèn treo đó chẳng giữ được lửa.",
+          "Còn một thứ giữ đèn khỏi lật, nhìn lại dưới đáy giỏ xem."
+        ],
+        "en": {
+          "right": [
+            "Chimney, screen and pebbles: the flame stands straight in the wind.",
+            "{name} picked all three, and Cô lets out a long breath.",
+            "The wind still blows, but our village lanterns stay lit."
+          ],
+          "wrong": [
+            "A fan only makes more wind, {name}; the flame would go out faster.",
+            "The top of a tall bamboo is the windiest place of all.",
+            "One more thing keeps a lantern from tipping; look at the bottom of the basket."
+          ]
+        }
+      },
+      "en": {
+        "title": "Keeping the flame",
+        "goTo": "Carry the basket to the village pond, where the wind is strongest",
+        "prompt": "The wind is up. Pick every way to keep the candle in a lantern from going out:",
+        "choices": [
+          "Set a glass chimney over the candle",
+          "Turn a fan on high to cool the lantern",
+          "Stand the bamboo screen where the wind comes from",
+          "Tie the pebble bag under the base so it can't tip",
+          "Hang the lanterns from the tallest bamboo"
+        ]
+      }
+    },
+    {
+      "id": "khi-gio-noi",
+      "title": "Khi gió thổi tắt đèn",
+      "goTo": "Xuống bến thả đèn, cả làng đã đứng chờ dọc bờ sông",
+      "kind": "decision",
+      "target": "st-den-sen-ngan-ha-coc-ben-tha",
+      "speaker": "Cô Đèn Lồng Sen",
+      "prompt": "Một cơn gió mạnh thổi qua, ba chiếc đèn tắt phụt. Cô nắm chặt tay {name}: «Cô… cô làm gì bây giờ?»",
+      "choices": [
+        {
+          "id": "thap-lai",
+          "text": "Cùng cô thắp lại từng chiếc, chậm rãi thôi",
+          "consequence": "Cô thắp từng ngọn, tay run rồi vững dần. Ba chiếc đèn sáng lại, cô thở ra một hơi thật dài."
+        },
+        {
+          "id": "hang-nguoi",
+          "text": "Rủ cả làng đứng thành hàng che gió",
+          "consequence": "Mọi người đứng sát vai nhau dọc bờ. Gió va vào hàng người rồi lặng, không chiếc đèn nào tắt thêm."
+        },
+        {
+          "id": "doi-gio",
+          "text": "Đợi gió qua rồi mới thả tiếp",
+          "consequence": "Hai cô cháu ngồi đếm tới một trăm. Gió lặng thật, mặt sông phẳng như tấm gương chờ đèn."
+        }
+      ],
+      "en": {
+        "title": "When the wind blows them out",
+        "goTo": "Go down to the lantern landing, where the whole village waits along the bank",
+        "prompt": "A strong gust sweeps past and three lanterns go out. Cô grips {name}'s hand: \"What… what do I do now?\"",
+        "choices": [
+          {
+            "text": "Relight them one by one with her, slowly",
+            "consequence": "Cô lights each flame, her hand shaking and then steadying. The three lanterns glow again and she breathes out at last."
+          },
+          {
+            "text": "Ask the whole village to stand in a line against the wind",
+            "consequence": "Everyone stands shoulder to shoulder along the bank. The wind hits the line and dies, and not one more lantern goes out."
+          },
+          {
+            "text": "Wait for the gust to pass before floating more",
+            "consequence": "The two of you count to a hundred. The wind really does drop, and the river lies flat as a mirror waiting for its lanterns."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tha-hoa-dang",
+      "title": "Thả hoa đăng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Gió đã dịu. Thả hoa đăng xuống sông cho thẳng hàng, đủ mười hai chiếc là dòng sông bắt đầu sáng!",
+      "game": "hoa-dang",
+      "goal": 12,
+      "en": {
+        "title": "Floating the lantern-flowers",
+        "prompt": "The wind has eased. Float the lantern-flowers in a straight line; twelve of them and the river begins to glow!"
+      }
+    },
+    {
+      "id": "song-ngan-ha",
+      "title": "Dòng sông ngân hà",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hàng trăm ngọn đèn trôi xuôi, dòng sông sáng như dải ngân hà chảy qua làng. Cô không run nữa. Cô tặng {name} một chiếc hoa đăng sen nhỏ, chiếc đầu tiên cô làm riêng cho một người bạn.",
+      "en": {
+        "title": "A river like the Milky Way",
+        "text": "Hundreds of lights drift downstream and the river glows like the Milky Way flowing through the village. Cô has stopped shaking. She gives {name} a small lotus lantern, the first she has ever made just for a friend."
+      }
+    },
+    {
+      "id": "nghin-chiec-nam-sau",
+      "title": "Một nghìn chiếc năm sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Năm nay chưa đủ một nghìn chiếc. Cô bảo không sao: năm sau mỗi đứa trẻ trong làng tự làm một chiếc, và {name} sẽ là người dạy các bạn.",
+      "en": {
+        "title": "A thousand next year",
+        "text": "This year wasn't quite a thousand. Cô says that's fine: next year every child in the village will make one, and {name} will teach them."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 78,
+    "coin": 21,
+    "skillXp": {
+      "phep-cong": 1,
+      "logic": 1
+    },
+    "items": {
+      "hoa-dang-sen": 1
+    }
+  },
+  "en": {
+    "title": "Cô Đèn Lồng Sen's story, chapter 4: The windy festival night",
+    "summary": "Festival night arrives with a strong wind, the very thing Cô Đèn Lồng Sen fears most. {name} finds windbreaks, adds up the lanterns for two stretches of river, chooses how to keep the flames alight, then floats the lantern-flowers with Cô until the river shines like the Milky Way."
+  }
+}

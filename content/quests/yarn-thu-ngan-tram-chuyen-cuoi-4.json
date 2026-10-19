@@ -1,0 +1,358 @@
+{
+  "id": "yarn-thu-ngan-tram-chuyen-cuoi-4",
+  "region": "cho-phien",
+  "chapter": 2,
+  "title": "Chuyện của Bác Thu Ngân Vui Vẻ, chương 4: Ba lần đếm két",
+  "status": "active",
+  "category": "story",
+  "summary": "Bác Thu Ngân Vui Vẻ kể cho {name} nỗi sợ thối nhầm tiền: tối nay két ít hơn sổ. {name} xếp tiền thu bốn ngày, tính két thiếu bao nhiêu, tìm số tiền đi lạc rồi chọn cách giúp bác đếm mà không sợ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bác Thu Ngân Vui Vẻ",
+    "where": "Chợ phiên: quầy thu ngân, quầy cân đong, ghế chờ khách, dãy sạp có cân, mép kênh",
+    "goal": "Tìm ra vì sao két ít hơn sổ và giúp bác bớt sợ",
+    "play": "Xếp tiền thu bốn ngày; tính số tiền thiếu; tìm ba tờ tiền đi lạc; chọn cách đếm két; đoán hũ kẹo",
+    "learn": "So sánh số trong phạm vi 100, nhiều hơn bao nhiêu, phép trừ có nhớ",
+    "reward": "78 XP, 21 Xu, Skill XP So sánh số, Hơn kém, Kẹo mạch nha",
+    "next": "Chuyện thứ một trăm phải là chuyện thật"
+  },
+  "phases": {
+    "hook": "noi-so-cua-bac",
+    "explore": "xep-tien-bon-ngay",
+    "learn": "ket-thieu-bao-nhieu",
+    "challenge": "tim-tien-lac",
+    "decision": "dem-cho-do-so",
+    "finale": "doan-hu-keo",
+    "reward": "tien-khoc-vi-hanh",
+    "next": "chuyen-thu-mot-tram"
+  },
+  "places": {
+    "bac-thu-ngan-vui-ve": "Quầy thu ngân",
+    "st-thu-ngan-tram-chuyen-cuoi-to-ghi-tien-bon-ngay": "Quầy cân đong",
+    "st-thu-ngan-tram-chuyen-cuoi-so-ban-hang-bia-nau": "Ghế chờ khách",
+    "tim-tien-lac": "Dãy sạp có cân",
+    "st-thu-ngan-tram-chuyen-cuoi-to-hai-muoi-nghin": "Dãy sạp có cân",
+    "st-thu-ngan-tram-chuyen-cuoi-to-nam-nghin-gio-hanh": "Dãy sạp có cân",
+    "st-thu-ngan-tram-chuyen-cuoi-to-hai-nghin-gam-can": "Dãy sạp có cân",
+    "st-thu-ngan-tram-chuyen-cuoi-ket-go-dem-xong": "Mép kênh"
+  },
+  "steps": [
+    {
+      "id": "noi-so-cua-bac",
+      "title": "Nỗi sợ của bác thu ngân",
+      "goTo": "Tới quầy thu ngân lúc chợ vãn, bác ngồi một mình bên cái két",
+      "kind": "dialogue",
+      "target": "bac-thu-ngan-vui-ve",
+      "lines": [
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "{name}… bác không «hô hô» nổi tối nay. Bác kể cháu nghe chuyện này, đừng cười bác nhé."
+        },
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "Bác sợ nhất là thối nhầm tiền cho khách. Tối nào bác cũng đếm két ba lần mới dám về, ba lần phải khớp nhau."
+        },
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "Tối nay két đếm ra ít hơn sổ. Bác đếm lần thứ hai, tay run tới mức đánh rơi cả bàn tính."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu ngồi đếm cùng bác, hai người chắc hơn một.",
+          "reply": "Ừ… có người ngồi cạnh, bác thấy bớt run rồi. Mình bắt đầu từ sổ nhé."
+        },
+        {
+          "text": "Ai đếm tiền cũng có lúc sai mà bác.",
+          "reply": "Cháu nói thế bác nhẹ lòng hẳn. Nhưng sai thì phải tìm cho ra chỗ sai."
+        }
+      ],
+      "en": {
+        "title": "The cashier's fear",
+        "goTo": "Go to the cashier's counter as the market empties; he sits alone beside the till",
+        "lines": [
+          "{name}… I can't manage a «ho ho» tonight. I'll tell you something; please don't laugh at me.",
+          "What I fear most is giving a customer the wrong change. Every night I count the till three times before I dare go home, and all three must match.",
+          "Tonight the till comes out short of the book. I counted a second time and my hands shook so much I dropped the abacus."
+        ],
+        "choices": [
+          {
+            "text": "I'll count with you; two are surer than one.",
+            "reply": "Yes… with someone beside me I'm already shaking less. Let's start with the book."
+          },
+          {
+            "text": "Everyone who counts money gets it wrong sometimes.",
+            "reply": "Hearing that eases my heart. But if it is wrong, we must find where."
+          }
+        ]
+      }
+    },
+    {
+      "id": "xep-tien-bon-ngay",
+      "title": "Tiền thu bốn ngày",
+      "goTo": "Sang quầy cân đong xem tờ ghi tiền thu bốn ngày",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-thu-ngan-tram-chuyen-cuoi-to-ghi-tien-bon-ngay",
+      "skill": "so-sanh-so",
+      "prompt": "Bác muốn biết ngày nào bán chậm để nhớ xem có thối nhầm không. Xếp bốn ngày từ ít tiền thu nhất đến nhiều nhất:",
+      "items": [
+        {
+          "id": "hai",
+          "label": "Thứ Hai: 76 nghìn đồng"
+        },
+        {
+          "id": "ba",
+          "label": "Thứ Ba: 67 nghìn đồng"
+        },
+        {
+          "id": "tu",
+          "label": "Thứ Tư: 70 nghìn đồng"
+        },
+        {
+          "id": "nam",
+          "label": "Thứ Năm: 59 nghìn đồng"
+        }
+      ],
+      "answer": {
+        "order": [
+          "nam",
+          "ba",
+          "tu",
+          "hai"
+        ]
+      },
+      "support": {
+        "guide": [
+          "So chữ số hàng chục trước: 5, 6, 7, 7.",
+          "Hai số cùng 7 chục thì so tiếp hàng đơn vị."
+        ],
+        "hint": "70 và 76 cùng bảy chục; 0 bé hơn 6.",
+        "answer": {
+          "text": "Thứ Năm, Thứ Ba, Thứ Tư, Thứ Hai",
+          "explanation": "59 < 67 < 70 < 76, nên ít nhất là Thứ Năm, rồi Thứ Ba, Thứ Tư, nhiều nhất là Thứ Hai."
+        },
+        "en": {
+          "guide": [
+            "Compare the tens digits first: 5, 6, 7, 7.",
+            "When two numbers both have 7 tens, compare the ones."
+          ],
+          "hint": "70 and 76 both have seven tens; 0 is less than 6.",
+          "answer": {
+            "text": "Thursday, Tuesday, Wednesday, Monday",
+            "explanation": "59 < 67 < 70 < 76, so Thursday took the least, then Tuesday, Wednesday, and Monday took the most."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng thứ tự! Bác nhớ ra Thứ Năm mưa to, chợ vắng hoe.",
+          "{name} so hàng chục rồi hàng đơn vị, chẳng sót bước nào.",
+          "Thấy chưa, xếp gọn số liệu là bớt lo một nửa."
+        ],
+        "wrong": [
+          "Sáu mươi bảy và bảy mươi khác hàng chục đấy, {name} so lại nhé.",
+          "Năm mươi chín là số bé nhất, nó phải đứng đầu hàng.",
+          "Bảy mươi với bảy mươi sáu cùng hàng chục, nhìn sang hàng đơn vị xem."
+        ],
+        "en": {
+          "right": [
+            "Right order! He remembers Thursday poured with rain and the market was empty.",
+            "{name} compared tens, then ones, and skipped no step.",
+            "See? Tidy numbers mean half the worry."
+          ],
+          "wrong": [
+            "Sixty-seven and seventy have different tens, {name}; compare again.",
+            "Fifty-nine is the smallest; it goes at the front.",
+            "Seventy and seventy-six share their tens; look at the ones."
+          ]
+        }
+      },
+      "en": {
+        "title": "Four days of takings",
+        "goTo": "Go over to the weighing counter and look at the note of four days' takings",
+        "prompt": "He wants to know which days were slow, to remember whether he gave wrong change. Order the four days from the least taken to the most:",
+        "items": [
+          "Monday: 76 thousand đồng",
+          "Tuesday: 67 thousand đồng",
+          "Wednesday: 70 thousand đồng",
+          "Thursday: 59 thousand đồng"
+        ]
+      }
+    },
+    {
+      "id": "ket-thieu-bao-nhieu",
+      "title": "Két thiếu bao nhiêu?",
+      "goTo": "Ra ghế chờ khách, bác để sổ bán hàng hôm nay ở đó",
+      "kind": "riddle",
+      "target": "st-thu-ngan-tram-chuyen-cuoi-so-ban-hang-bia-nau",
+      "skill": "hon-kem",
+      "question": "Sổ ghi hôm nay thu 85 nghìn đồng, nhưng trong két chỉ đếm được 58 nghìn đồng. Số tiền trong sổ nhiều hơn số tiền trong két bao nhiêu nghìn đồng?",
+      "answer": {
+        "value": 27
+      },
+      "support": {
+        "guide": [
+          "Sổ nhiều hơn két bao nhiêu thì lấy tiền trong sổ trừ tiền trong két.",
+          "Đặt tính 85 − 58, bắt đầu từ hàng đơn vị."
+        ],
+        "hint": "5 không trừ được 8, mượn 1 chục: 15 trừ 8 bằng 7.",
+        "answer": {
+          "text": "27 nghìn đồng",
+          "explanation": "85 − 58 = 27: 15 trừ 8 bằng 7, viết 7 nhớ 1; 5 thêm 1 là 6, 8 trừ 6 bằng 2. Két thiếu 27 nghìn đồng."
+        },
+        "en": {
+          "guide": [
+            "To find how much more the book shows, take the till money from the book money.",
+            "Set out 85 − 58 in columns and start with the ones."
+          ],
+          "hint": "5 can't take 8, so borrow a ten: 15 take 8 is 7.",
+          "answer": {
+            "text": "27 thousand đồng",
+            "explanation": "85 − 58 = 27: 15 take 8 is 7, write 7 and carry 1; 5 plus 1 is 6, and 8 take 6 is 2. The till is 27 thousand short."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai mươi bảy nghìn! Bác thở ra một hơi dài: biết thiếu bao nhiêu là biết đường tìm.",
+          "Trừ có nhớ mà {name} làm vững như cột hải đăng.",
+          "Tám lăm trừ năm tám, {name} đọc hai số đảo nhau mà không bị lừa."
+        ],
+        "wrong": [
+          "Hai số chỉ đổi chỗ chữ số thôi, đâu có bằng nhau, {name} trừ lại nhé.",
+          "Đừng quên mượn một chục ở hàng đơn vị đấy.",
+          "Ba mươi ba là quên trả số nhớ rồi, thử lại hàng chục xem."
+        ],
+        "en": {
+          "right": [
+            "Twenty-seven thousand! He lets out a long breath: knowing how much is missing shows where to look.",
+            "Subtraction with borrowing, and {name} stays as steady as the lighthouse.",
+            "Eighty-five minus fifty-eight: {name} saw the swapped digits and was not fooled."
+          ],
+          "wrong": [
+            "The two numbers just swap their digits; they aren't equal, {name}; subtract again.",
+            "Don't forget to borrow a ten in the ones.",
+            "Thirty-three means the carried one was forgotten; try the tens again."
+          ]
+        }
+      },
+      "en": {
+        "title": "How much is the till short?",
+        "goTo": "Go to the customers' bench, where he left today's sales book",
+        "question": "The book says 85 thousand đồng came in today, but only 58 thousand đồng is counted in the till. How many thousand đồng more is in the book than in the till?"
+      }
+    },
+    {
+      "id": "tim-tien-lac",
+      "title": "Hai mươi bảy nghìn đi lạc",
+      "goTo": "Lần theo dãy sạp có cân, tìm số tiền lạc khỏi két",
+      "kind": "search",
+      "targets": [
+        "st-thu-ngan-tram-chuyen-cuoi-to-hai-muoi-nghin",
+        "st-thu-ngan-tram-chuyen-cuoi-to-nam-nghin-gio-hanh",
+        "st-thu-ngan-tram-chuyen-cuoi-to-hai-nghin-gam-can"
+      ],
+      "en": {
+        "title": "Twenty-seven thousand gone astray",
+        "goTo": "Follow the row of stalls with scales and look for the money that strayed from the till"
+      }
+    },
+    {
+      "id": "dem-cho-do-so",
+      "title": "Đếm thế nào cho đỡ sợ?",
+      "goTo": "Mang tiền ra mép kênh, bác đặt cái két gỗ lên ghế",
+      "kind": "decision",
+      "target": "st-thu-ngan-tram-chuyen-cuoi-ket-go-dem-xong",
+      "speaker": "Bác Thu Ngân Vui Vẻ",
+      "prompt": "Đủ hai mươi bảy nghìn rồi, két khớp với sổ. Bác hỏi khẽ: «Từ mai làm sao để bác không phải run mỗi tối nữa?»",
+      "choices": [
+        {
+          "id": "dem-cung-ban",
+          "text": "Mỗi tối đếm cùng một người bạn",
+          "consequence": "Voi Bốc Hàng nhận đếm cùng bác. Hai người đếm hai lần là khớp, bác về nhà sớm hơn hẳn."
+        },
+        {
+          "id": "xep-theo-to",
+          "text": "Xếp tiền theo từng loại tờ rồi mới đếm",
+          "consequence": "Tờ to một ngăn, tờ nhỏ một ngăn. Bác đếm một lần là xong, cười «hô hô» lại được rồi."
+        },
+        {
+          "id": "ghi-ngay",
+          "text": "Ghi sổ ngay sau mỗi lần bán",
+          "consequence": "Bác buộc cây bút chì vào sổ bằng sợi dây đỏ. Bán xong là ghi, tối chẳng còn gì để lo."
+        }
+      ],
+      "en": {
+        "title": "Counting without fear",
+        "goTo": "Take the money to the edge of the canal; he sets the wooden till on the bench",
+        "prompt": "All twenty-seven thousand is back and the till matches the book. He asks softly: «From tomorrow, how can I stop shaking every evening?»",
+        "choices": [
+          {
+            "text": "Count with a friend every evening",
+            "consequence": "Voi Bốc Hàng offers to count with him. Two people counting twice always match, and he gets home much earlier."
+          },
+          {
+            "text": "Sort the money by note before counting",
+            "consequence": "Big notes in one compartment, small notes in another. One count and he is done, «ho ho» back in his voice."
+          },
+          {
+            "text": "Write in the book straight after each sale",
+            "consequence": "He ties a pencil to the book with a red string. Sell, write, and nothing is left to worry about at night."
+          }
+        ]
+      }
+    },
+    {
+      "id": "doan-hu-keo",
+      "title": "Đoán hũ kẹo thưởng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Bác bày hũ kẹo thưởng ra, đố {name} đoán mỗi hũ có bao nhiêu viên. Đoán sát năm lần là thắng!",
+      "game": "jar-estimate",
+      "goal": 5,
+      "en": {
+        "title": "Guess the sweet jars",
+        "prompt": "He sets out his jars of reward sweets and challenges {name} to guess how many are in each. Five close guesses wins!"
+      }
+    },
+    {
+      "id": "tien-khoc-vi-hanh",
+      "title": "Tờ tiền khóc vì hành",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Bác cười lại rồi, và nghĩ ngay chuyện thứ chín mươi chín: «Tờ hai nghìn hỏi tờ năm nghìn: Cậu đi đâu cả buổi? Tớ trốn trong giỏ hành, cay mắt khóc suốt!» Bác thưởng {name} một gói kẹo mạch nha.",
+      "en": {
+        "title": "The note that cried over onions",
+        "text": "He is laughing again, and comes up with joke ninety-nine at once: «The two-thousand note asks the five-thousand note: Where have you been all day? Hiding in the onion basket, crying my eyes out!» He gives {name} a packet of malt sweets."
+      }
+    },
+    {
+      "id": "chuyen-thu-mot-tram",
+      "title": "Chuyện thứ một trăm",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sổ chỉ còn thiếu một chuyện nữa là đủ một trăm. Bác bảo chuyện cuối phải là chuyện thật, và bác biết đó là chuyện gì rồi.",
+      "en": {
+        "title": "Joke number one hundred",
+        "text": "The book needs just one more to reach a hundred. He says the last one must be a true story, and he knows which."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 78,
+    "coin": 21,
+    "skillXp": {
+      "so-sanh-so": 1,
+      "hon-kem": 1
+    },
+    "items": {
+      "keo-mach-nha": 1
+    }
+  },
+  "en": {
+    "title": "Bác Thu Ngân Vui Vẻ's story, chapter 4: Three counts of the till",
+    "summary": "Bác Thu Ngân Vui Vẻ tells {name} his fear of giving wrong change: tonight the till is short of the book. {name} orders four days of takings, works out how much is missing, finds the stray money and chooses a way for him to count without fear."
+  }
+}

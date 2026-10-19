@@ -1,0 +1,389 @@
+{
+  "id": "yarn-heo-dan-dong-ca-1",
+  "region": "nong-trai",
+  "chapter": 1,
+  "title": "Chuyện của Heo Kho Hàng, chương 1: Mục số một, tuyển ca sĩ",
+  "status": "active",
+  "category": "story",
+  "summary": "Heo Kho Hàng muốn lập một dàn đồng ca của nông trại. {name} gom lại các tờ tuyển ca sĩ bị gió thổi bay, xếp chỗ đứng theo chiều cao, chọn những từ chỉ hoạt động cho bài hát rồi đặt tên cho dàn hát.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Heo Kho Hàng",
+    "where": "Nông trại: cửa nhà kho, sân nông trại, chuồng bò đỏ, chuồng gà, ao cá, bảng nhiệm vụ, nhà kính, khu chăn nuôi",
+    "goal": "Tuyển đủ ca sĩ và xếp chỗ đứng cho dàn đồng ca nông trại",
+    "play": "Gom tờ tuyển ca sĩ; xếp ca sĩ theo chiều cao; chọn từ chỉ hoạt động; đặt tên dàn hát; hát theo thứ tự",
+    "learn": "So sánh các số trong phạm vi 100, từ chỉ hoạt động",
+    "reward": "58 XP, 15 Xu, Skill XP So sánh số, Từ ngữ",
+    "next": "Dàn hát cần một sân khấu"
+  },
+  "phases": {
+    "hook": "muc-so-mot",
+    "explore": "gom-to-tuyen",
+    "learn": "xep-cho-dung",
+    "challenge": "tu-chi-hoat-dong",
+    "decision": "ten-dan-hat",
+    "finale": "hat-theo-thu-tu",
+    "reward": "dan-hat-ra-doi",
+    "next": "can-san-khau"
+  },
+  "places": {
+    "heo-kho-hang": "Cửa nhà kho",
+    "gom-to-tuyen": "Sân nông trại",
+    "st-heo-dan-dong-ca-to-tuyen-chuong-bo": "Chuồng bò đỏ",
+    "st-heo-dan-dong-ca-to-tuyen-chuong-ga": "Chuồng gà",
+    "st-heo-dan-dong-ca-to-tuyen-ao-ca": "Ao cá",
+    "st-heo-dan-dong-ca-bang-xep-cho-hat": "Bảng nhiệm vụ",
+    "st-heo-dan-dong-ca-so-ten-ca-si": "Nhà kính",
+    "st-heo-dan-dong-ca-bien-ten-dan-hat": "Khu chăn nuôi"
+  },
+  "steps": [
+    {
+      "id": "muc-so-mot",
+      "title": "Danh sách việc của Heo",
+      "goTo": "Tới cửa nhà kho, Heo Kho Hàng đang dán nhãn lên một tờ danh sách",
+      "kind": "dialogue",
+      "target": "heo-kho-hang",
+      "lines": [
+        {
+          "speaker": "Heo Kho Hàng",
+          "text": "Ủn ỉn! Mục số một: chào {name}. Mục số hai: báo tin lớn. Mục số ba: nhờ {name} giúp!"
+        },
+        {
+          "speaker": "Heo Kho Hàng",
+          "text": "Tin lớn là đây: nông trại sắp có dàn đồng ca! Bò hát trầm, gà hát cao, vịt hát… cũng hát."
+        },
+        {
+          "speaker": "Heo Kho Hàng",
+          "text": "Tớ đã dán tờ tuyển ca sĩ khắp nơi. Có điều gió sáng nay thổi tung hết, chẳng còn tờ nào đúng chỗ."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình đi gom lại cho Heo ngay!",
+          "reply": "Mục số bốn: cảm ơn {name}! Tớ dán nhãn mục ấy luôn đây."
+        },
+        {
+          "text": "Dàn đồng ca sẽ hát ở đâu vậy?",
+          "reply": "Ở phiên chợ trong vùng, trước đông người! Nhưng phải có ca sĩ đã."
+        }
+      ],
+      "en": {
+        "title": "Heo’s list of jobs",
+        "goTo": "Go to the barn door, where Heo Kho Hàng is labelling a list",
+        "lines": [
+          "Oink oink! Item one: hello, {name}. Item two: big news. Item three: ask {name} for help!",
+          "Here’s the big news: the farm is getting a choir! Cows sing low, hens sing high, ducks sing… they sing too.",
+          "I stuck audition notices everywhere. Only this morning’s wind blew them all away; not one is where I put it."
+        ],
+        "choices": [
+          {
+            "text": "I'll go and gather them right now!",
+            "reply": "Item four: thank you, {name}! I’m labelling that one straight away."
+          },
+          {
+            "text": "Where will the choir sing?",
+            "reply": "At the market fair, in front of a big crowd! But first we need singers."
+          }
+        ]
+      }
+    },
+    {
+      "id": "gom-to-tuyen",
+      "title": "Gom tờ tuyển ca sĩ",
+      "goTo": "Đi một vòng sân nông trại, gió đã thổi các tờ tuyển ca sĩ tới chuồng bò, chuồng gà và ao cá",
+      "kind": "search",
+      "targets": [
+        "st-heo-dan-dong-ca-to-tuyen-chuong-bo",
+        "st-heo-dan-dong-ca-to-tuyen-chuong-ga",
+        "st-heo-dan-dong-ca-to-tuyen-ao-ca"
+      ],
+      "en": {
+        "title": "Gathering the notices",
+        "goTo": "Walk round the farmyard; the wind has blown the audition notices to the cowshed, the henhouse and the fishpond"
+      }
+    },
+    {
+      "id": "xep-cho-dung",
+      "title": "Ai đứng hàng đầu?",
+      "goTo": "Ra bảng nhiệm vụ, Heo treo bảng xếp chỗ đứng hát cạnh đó",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-heo-dan-dong-ca-bang-xep-cho-hat",
+      "skill": "so-sanh-so",
+      "prompt": "Bạn thấp đứng trước, bạn cao đứng sau thì ai cũng thấy mặt nhau. Xếp các ca sĩ từ thấp nhất đến cao nhất:",
+      "items": [
+        {
+          "id": "bo",
+          "label": "Bò sữa Đốm: 95 cm"
+        },
+        {
+          "id": "ga",
+          "label": "Gà trống Mào Đỏ: 48 cm"
+        },
+        {
+          "id": "vit",
+          "label": "Vịt Bầu: 37 cm"
+        },
+        {
+          "id": "ngong",
+          "label": "Ngỗng Xám: 62 cm"
+        }
+      ],
+      "answer": {
+        "order": [
+          "vit",
+          "ga",
+          "ngong",
+          "bo"
+        ]
+      },
+      "support": {
+        "guide": [
+          "So hàng chục trước: 3 chục, 4 chục, 6 chục, 9 chục.",
+          "Số nào ít chục hơn thì bạn ấy thấp hơn."
+        ],
+        "hint": "Thấp nhất là 37 cm, cao nhất là 95 cm.",
+        "answer": {
+          "text": "Vịt Bầu, Gà trống Mào Đỏ, Ngỗng Xám, Bò sữa Đốm",
+          "explanation": "37 < 48 < 62 < 95, nên Vịt Bầu đứng đầu, rồi Gà trống, Ngỗng Xám, Bò sữa Đốm đứng cuối."
+        },
+        "en": {
+          "guide": [
+            "Compare the tens first: 3 tens, 4 tens, 6 tens, 9 tens.",
+            "Fewer tens means a shorter singer."
+          ],
+          "hint": "The shortest is 37 cm, the tallest is 95 cm.",
+          "answer": {
+            "text": "Plump the duck, Red Comb, Grey the goose, Spotty the cow",
+            "explanation": "37 < 48 < 62 < 95, so the duck stands in front, then the rooster, the goose, and the cow at the back."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mục số năm: xếp hàng xong! Ai cũng thấy mặt người chỉ huy rồi.",
+          "So hàng chục trước, {name} xếp nhanh hơn tớ dán nhãn.",
+          "Vịt đứng đầu mà hãnh diện ra mặt kìa."
+        ],
+        "wrong": [
+          "Bò sữa mà đứng trước thì cả dàn chỉ thấy cái lưng bò thôi.",
+          "Bạn ấy nhiều chục hơn đấy, {name} so lại hàng chục nhé.",
+          "Tìm số bé nhất đặt lên đầu, rồi cứ thế lớn dần."
+        ],
+        "en": {
+          "right": [
+            "Item five: lined up! Everyone can see the conductor now.",
+            "Tens first: you sorted faster than I label, {name}.",
+            "Look how proud the duck is to be at the front."
+          ],
+          "wrong": [
+            "Put the cow in front and the whole choir sees nothing but her back.",
+            "That singer has more tens, {name}; compare the tens again.",
+            "Find the smallest number for the front, then go bigger and bigger."
+          ]
+        }
+      },
+      "en": {
+        "title": "Who stands at the front?",
+        "goTo": "Go to the task board, where Heo has hung the singers’ places beside it",
+        "prompt": "Short singers in front and tall ones behind, so everyone can see. Order the singers from shortest to tallest:",
+        "items": [
+          "Spotty the dairy cow: 95 cm",
+          "Red Comb the rooster: 48 cm",
+          "Plump the duck: 37 cm",
+          "Grey the goose: 62 cm"
+        ]
+      }
+    },
+    {
+      "id": "tu-chi-hoat-dong",
+      "title": "Những từ để hát lên",
+      "goTo": "Vào nhà kính, Heo để quên sổ ghi tên ca sĩ trên kệ",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-heo-dan-dong-ca-so-ten-ca-si",
+      "skill": "tu-ngu",
+      "prompt": "Heo muốn mỗi ca sĩ góp một từ chỉ hoạt động cho bài hát. Chọn tất cả các từ chỉ hoạt động:",
+      "choices": [
+        {
+          "id": "hat",
+          "text": "hát"
+        },
+        {
+          "id": "vo-tay",
+          "text": "vỗ tay"
+        },
+        {
+          "id": "chuong",
+          "text": "chuồng"
+        },
+        {
+          "id": "gay",
+          "text": "gáy"
+        },
+        {
+          "id": "trong",
+          "text": "cái trống"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "hat",
+          "vo-tay",
+          "gay"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Từ chỉ hoạt động là việc ai đó đang làm.",
+          "Thử đặt từ sau «Các bạn đang …»."
+        ],
+        "hint": "Hai từ là tên đồ vật, nơi chốn: bỏ ra.",
+        "answer": {
+          "text": "hát, vỗ tay, gáy",
+          "explanation": "«Hát», «vỗ tay», «gáy» là việc các ca sĩ làm, nên là từ chỉ hoạt động. «Chuồng» và «cái trống» là từ chỉ sự vật."
+        },
+        "en": {
+          "guide": [
+            "An action word is something someone is doing.",
+            "Try each word after “The friends are …”."
+          ],
+          "hint": "Two words name a thing or a place: leave them out.",
+          "answer": {
+            "text": "sing, clap, crow",
+            "explanation": "“Sing”, “clap” and “crow” are things the singers do, so they are action words. “Coop” and “the drum” name things."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hát, vỗ tay, gáy: nghe thôi đã thấy rộn ràng cả sân!",
+          "{name} chọn đủ ba việc, tớ dán ngay ba cái nhãn xanh.",
+          "Mỗi từ một việc, cả dàn có việc để làm rồi."
+        ],
+        "wrong": [
+          "«Chuồng» là nơi ở của gà, ai mà «đang chuồng» được.",
+          "Cái trống là đồ vật, phải có người gõ thì mới thành việc làm.",
+          "Còn một việc mà gà trống làm mỗi sáng, {name} tìm thêm nhé."
+        ],
+        "en": {
+          "right": [
+            "Sing, clap, crow: just hearing them livens up the whole yard!",
+            "You picked all three actions, {name}; I’m sticking on three green labels.",
+            "One word, one action: now the whole choir has something to do."
+          ],
+          "wrong": [
+            "A “coop” is where hens live; nobody can be “coop-ing”.",
+            "The drum is a thing; someone has to beat it before there’s any action.",
+            "There’s one more thing the rooster does every morning, {name}; find it."
+          ]
+        }
+      },
+      "en": {
+        "title": "Words to sing",
+        "goTo": "Go into the greenhouse, where Heo left the singers’ book on a shelf",
+        "prompt": "Heo wants each singer to bring an action word to the song. Pick every action word:",
+        "choices": [
+          "sing",
+          "clap",
+          "coop",
+          "crow",
+          "the drum"
+        ]
+      }
+    },
+    {
+      "id": "ten-dan-hat",
+      "title": "Dàn hát tên là gì?",
+      "goTo": "Sang khu chăn nuôi, tấm biển tên dàn hát đang chờ chữ",
+      "kind": "decision",
+      "target": "st-heo-dan-dong-ca-bien-ten-dan-hat",
+      "speaker": "Heo Kho Hàng",
+      "prompt": "Heo đã sơn xong tấm biển, chỉ còn thiếu tên. «Mục số sáu: đặt tên. Tớ nghĩ mãi không ra. {name} chọn giúp tớ?»",
+      "choices": [
+        {
+          "id": "ca-trai",
+          "text": "Dàn đồng ca «Cả Trại Cùng Hát»",
+          "consequence": "Bò gật gù, gà vỗ cánh, vịt kêu «cạp» một tiếng thật to như đồng ý."
+        },
+        {
+          "id": "nhan-xanh",
+          "text": "Dàn đồng ca «Nhãn Xanh»",
+          "consequence": "Heo sướng run, dán cho mỗi ca sĩ một cái nhãn xanh lên ngực."
+        },
+        {
+          "id": "sang-som",
+          "text": "Dàn đồng ca «Sáng Sớm»",
+          "consequence": "Gà trống ưỡn ngực vì tên này hợp với mình nhất, và hứa sẽ gáy mở màn."
+        }
+      ],
+      "en": {
+        "title": "What is the choir called?",
+        "goTo": "Go over to the livestock pens, where the choir’s name sign is waiting for letters",
+        "prompt": "Heo has painted the sign; only the name is missing. “Item six: a name. I can’t think of one. Will you choose, {name}?”",
+        "choices": [
+          {
+            "text": "The “Whole Farm Sings” choir",
+            "consequence": "The cow nods, the hens flap and the duck quacks one big quack, as if to agree."
+          },
+          {
+            "text": "The “Green Label” choir",
+            "consequence": "Heo shivers with joy and sticks a green label on every singer’s chest."
+          },
+          {
+            "text": "The “Early Morning” choir",
+            "consequence": "The rooster puffs out his chest because the name suits him best, and promises to crow the opening note."
+          }
+        ]
+      }
+    },
+    {
+      "id": "hat-theo-thu-tu",
+      "title": "Hát theo thứ tự",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Buổi tập đầu tiên! Nghe các con vật cất tiếng rồi bấm lại đúng thứ tự. Đủ năm lượt là dàn hát vào nhịp.",
+      "game": "simon-says",
+      "goal": 5,
+      "en": {
+        "title": "Singing in order",
+        "prompt": "The first rehearsal! Listen to the animals sing, then tap them back in the same order. Five rounds and the choir is in time."
+      }
+    },
+    {
+      "id": "dan-hat-ra-doi",
+      "title": "Dàn hát ra đời",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Dàn đồng ca nông trại hát bài đầu tiên, hơi lạc nhưng rất to. Heo dán lên áo {name} một cái nhãn: «Mục số một: bạn thân».",
+      "en": {
+        "title": "A choir is born",
+        "text": "The farm choir sings its first song, a little off but very loud. Heo sticks a label on {name}: “Item one: best friend”."
+      }
+    },
+    {
+      "id": "can-san-khau",
+      "title": "Cần một sân khấu",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ca sĩ có rồi, nhưng chỗ đứng hát còn lầy lội. Heo định kê bao gạo thành một cái sân khấu, và tất nhiên phải đếm từng bao.",
+      "en": {
+        "title": "A stage is needed",
+        "text": "The singers are ready, but where they stand is muddy. Heo plans to stack rice sacks into a stage, and of course he must count every sack."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 58,
+    "coin": 15,
+    "skillXp": {
+      "so-sanh-so": 1,
+      "tu-ngu": 1
+    }
+  },
+  "en": {
+    "title": "Heo Kho Hàng's story, chapter 1: Item one, auditions",
+    "summary": "Heo Kho Hàng wants to start a farm choir. {name} gathers the audition notices the wind blew away, lines the singers up by height, picks action words for the song and names the choir."
+  }
+}

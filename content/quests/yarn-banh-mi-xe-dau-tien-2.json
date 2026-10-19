@@ -1,0 +1,359 @@
+{
+  "id": "yarn-banh-mi-xe-dau-tien-2",
+  "region": "cho-phien",
+  "chapter": 1,
+  "title": "Chuyện của Cô bánh mì Hạnh, chương 2: Chiếc xe đẩy dưới lán",
+  "status": "active",
+  "category": "story",
+  "summary": "Dưới lán gỗ bên kênh có một chiếc xe đẩy cũ. {name} tìm đủ bánh xe, mái bạt và tay đẩy, tìm chỗ đỗ theo cọc số, chọn vé đặt bánh rồi xếp khay lên xe cho chuyến chạy thử.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cô bánh mì Hạnh",
+    "where": "Chợ phiên: gian hàng đồ ăn, lán gỗ bên kênh, bãi đỗ ven kênh, đầu dãy sạp, ao vịt",
+    "goal": "Sửa chiếc xe đẩy cũ thành xe bánh mì và cho nó chạy chuyến đầu",
+    "play": "Tìm ba bộ phận của xe; tìm chỗ đỗ trên dãy cọc số; chọn vé ghi số tròn chục; chọn đường chạy thử; xếp khay lên xe",
+    "learn": "Số tròn chục, tia số, các số trong phạm vi 100",
+    "reward": "65 XP, 16 Xu, Skill XP Tia số, Số đến 100",
+    "next": "Chiếc xe cần một tấm biển và một cái tên"
+  },
+  "phases": {
+    "hook": "xe-duoi-lan",
+    "explore": "lap-xe",
+    "learn": "cho-do-so-may",
+    "challenge": "ve-so-tron-chuc",
+    "decision": "duong-chay-thu",
+    "finale": "xep-khay-len-xe",
+    "reward": "xe-lan-banh",
+    "next": "tam-bien-trang"
+  },
+  "places": {
+    "co-banh-mi-hanh": "Gian hàng đồ ăn",
+    "lap-xe": "Lán gỗ bên kênh",
+    "st-banh-mi-xe-dau-tien-banh-xe-go": "Lán gỗ bên kênh",
+    "st-banh-mi-xe-dau-tien-tam-bat-mai-xe": "Lán gỗ bên kênh",
+    "st-banh-mi-xe-dau-tien-tay-day-tre": "Lán gỗ bên kênh",
+    "st-banh-mi-xe-dau-tien-coc-cho-do-xe": "Bãi đỗ ven kênh",
+    "st-banh-mi-xe-dau-tien-xap-ve-dat-banh": "Đầu dãy sạp",
+    "st-banh-mi-xe-dau-tien-goc-cay-buoc-xe": "Ao vịt"
+  },
+  "steps": [
+    {
+      "id": "xe-duoi-lan",
+      "title": "Chiếc xe chẳng ai dùng",
+      "goTo": "Về gian hàng đồ ăn, cô Hạnh đã cầm sẵn chìa khóa lán",
+      "kind": "dialogue",
+      "target": "co-banh-mi-hanh",
+      "lines": [
+        {
+          "speaker": "Cô bánh mì Hạnh",
+          "text": "{name} tới rồi! Ăn sáng chưa? Ăn rồi thì tốt, hôm nay phải khỏe tay đấy."
+        },
+        {
+          "speaker": "Cô bánh mì Hạnh",
+          "text": "Voi Bốc Hàng cho cô mượn chiếc xe đẩy cũ dưới lán. Có điều nó rời ra từng mảnh, mỗi mảnh một góc."
+        },
+        {
+          "speaker": "Cô bánh mì Hạnh",
+          "text": "Lắp lại xong là có xe bánh mì đầu tiên. Nghe thôi đã thấy giòn!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu giỏi tìm đồ lắm, đi thôi cô!",
+          "reply": "Giỏi tìm thì tìm cho cô cả cái bánh xe lăn đi đâu mất nhé."
+        },
+        {
+          "text": "Xe cũ có chạy nổi không cô?",
+          "reply": "Cũ nhưng chắc. Lau sạch, tra dầu là chạy phăm phăm."
+        }
+      ],
+      "en": {
+        "title": "The cart nobody uses",
+        "goTo": "Go back to the food stalls, where Cô Hạnh already has the shed key in hand",
+        "lines": [
+          "{name}, you’re here! Had breakfast? Good, because today needs strong arms.",
+          "Voi Bốc Hàng is lending me the old handcart in the shed. Only it has come apart, a piece in every corner.",
+          "Put it back together and we have our very first bánh mì cart. Just hearing it sounds crunchy!"
+        ],
+        "choices": [
+          {
+            "text": "I'm great at finding things, let's go!",
+            "reply": "Then find me the wheel too, wherever it rolled off to."
+          },
+          {
+            "text": "Will an old cart really run?",
+            "reply": "Old but solid. Clean it, oil it, and off it goes."
+          }
+        ]
+      }
+    },
+    {
+      "id": "lap-xe",
+      "title": "Gom đủ bộ phận xe",
+      "goTo": "Xuống lán gỗ bên kênh tìm bánh xe, mái bạt và tay đẩy của chiếc xe cũ",
+      "kind": "search",
+      "targets": [
+        "st-banh-mi-xe-dau-tien-banh-xe-go",
+        "st-banh-mi-xe-dau-tien-tam-bat-mai-xe",
+        "st-banh-mi-xe-dau-tien-tay-day-tre"
+      ],
+      "en": {
+        "title": "Gathering the cart’s parts",
+        "goTo": "Go down to the wooden shed by the canal and find the old cart’s wheel, canvas roof and handle"
+      }
+    },
+    {
+      "id": "cho-do-so-may",
+      "title": "Chỗ đỗ số mấy?",
+      "goTo": "Ra bãi đỗ ven kênh, dãy cọc đánh số chạy dọc bờ",
+      "kind": "riddle",
+      "target": "st-banh-mi-xe-dau-tien-coc-cho-do-xe",
+      "skill": "tia-so",
+      "question": "Dọc bãi đỗ ven kênh, các cọc đánh số như một tia số: 0, 10, 20, 30… Chỗ của xe bánh mì ở ngay sau cọc 70. Chỗ ấy mang số mấy?",
+      "answer": {
+        "value": 80
+      },
+      "support": {
+        "guide": [
+          "Các cọc đánh số cách nhau 10.",
+          "Đếm thêm 10 từ cọc 70."
+        ],
+        "hint": "Bảy chục thêm một chục là mấy chục?",
+        "answer": {
+          "text": "Cọc số 80",
+          "explanation": "Các số trên dãy cọc là số tròn chục, mỗi cọc hơn cọc trước 10. Sau 70 là 70 + 10 = 80."
+        },
+        "en": {
+          "guide": [
+            "The posts go up in tens.",
+            "Count on 10 from post 70."
+          ],
+          "hint": "Seven tens and one more ten make how many tens?",
+          "answer": {
+            "text": "Post number 80",
+            "explanation": "The posts carry round tens, each 10 more than the last. After 70 comes 70 + 10 = 80."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tám mươi! Cô buộc ngay dải vải vàng lên cọc ấy.",
+          "Đếm theo chục mà {name} nhảy cọc nhanh như sóc.",
+          "Chỗ số tám mươi, vừa gần kênh vừa mát. Chuẩn!"
+        ],
+        "wrong": [
+          "Cọc ấy đứng trước 70 rồi, mình cần cọc ngay sau cơ.",
+          "Mỗi cọc cách nhau một chục chứ không phải một đơn vị đâu.",
+          "Thử đọc to: sáu mươi, bảy mươi, rồi tới…?"
+        ],
+        "en": {
+          "right": [
+            "Eighty! Cô ties a yellow ribbon on that post straight away.",
+            "Counting in tens, you hopped the posts as fast as a squirrel, {name}.",
+            "Spot eighty, near the canal and nice and cool. Perfect!"
+          ],
+          "wrong": [
+            "That post comes before 70; we need the one just after.",
+            "The posts are a ten apart, not one apart.",
+            "Try saying it aloud: sixty, seventy, then…?"
+          ]
+        }
+      },
+      "en": {
+        "title": "Which parking spot?",
+        "goTo": "Go out to the canal-side parking strip, where numbered posts run along the bank",
+        "question": "Along the canal-side parking strip the posts are numbered like a number line: 0, 10, 20, 30… The bánh mì cart’s spot is just after post 70. What number is it?"
+      }
+    },
+    {
+      "id": "ve-so-tron-chuc",
+      "title": "Vé nào ghi số tròn chục?",
+      "goTo": "Sang đầu dãy sạp, cô Hạnh để xấp vé đặt bánh trước ở đó",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-banh-mi-xe-dau-tien-xap-ve-dat-banh",
+      "skill": "so-den-100",
+      "prompt": "Hôm nay xe chỉ chạy qua những sạp có số tròn chục. Chọn tất cả các vé ghi số tròn chục:",
+      "choices": [
+        {
+          "id": "v20",
+          "text": "Vé số 20"
+        },
+        {
+          "id": "v35",
+          "text": "Vé số 35"
+        },
+        {
+          "id": "v60",
+          "text": "Vé số 60"
+        },
+        {
+          "id": "v90",
+          "text": "Vé số 90"
+        },
+        {
+          "id": "v18",
+          "text": "Vé số 18"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "v20",
+          "v60",
+          "v90"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Số tròn chục có chữ số hàng đơn vị là 0.",
+          "Nhìn chữ số cuối của từng vé."
+        ],
+        "hint": "Có ba vé kết thúc bằng số 0.",
+        "answer": {
+          "text": "Vé 20, vé 60 và vé 90",
+          "explanation": "20, 60, 90 có hàng đơn vị là 0 nên là số tròn chục. 35 và 18 còn lẻ đơn vị nên không phải."
+        },
+        "en": {
+          "guide": [
+            "Every round ten ends with a 0 in the ones place.",
+            "Look at the last digit on each ticket."
+          ],
+          "hint": "Three tickets end in 0.",
+          "answer": {
+            "text": "Tickets 20, 60 and 90",
+            "explanation": "20, 60 and 90 have 0 ones, so they are round tens. 35 and 18 have leftover ones, so they are not."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba vé tròn chục, ba sạp có bánh nóng. Lên đường!",
+          "Chữ số cuối là 0, {name} nhìn một lượt là ra.",
+          "Cô đục lỗ ba vé ấy, kẹp lên tay đẩy xe cho khỏi quên."
+        ],
+        "wrong": [
+          "Vé ấy còn lẻ mấy đơn vị, chưa tròn chục đâu.",
+          "Còn sót một vé tròn chục, xem lại số lớn nhất xem.",
+          "Mười tám có tám đơn vị lẻ, không phải số tròn chục, {name} ạ."
+        ],
+        "en": {
+          "right": [
+            "Three round-ten tickets, three stalls getting hot bread. Off we go!",
+            "Last digit zero: one look and you had it, {name}.",
+            "Cô punches those three tickets and clips them to the handle so she won’t forget."
+          ],
+          "wrong": [
+            "That ticket still has some ones left over; it isn’t a round ten.",
+            "One round-ten ticket is missing; check the biggest number again.",
+            "Eighteen has eight ones left over, so it isn’t a round ten, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which tickets are round tens?",
+        "goTo": "Go to the head of the stall row, where Cô Hạnh left the pile of pre-order tickets",
+        "prompt": "Today the cart only stops at stalls with round-ten numbers. Pick every ticket with a round ten on it:",
+        "choices": [
+          "Ticket 20",
+          "Ticket 35",
+          "Ticket 60",
+          "Ticket 90",
+          "Ticket 18"
+        ]
+      }
+    },
+    {
+      "id": "duong-chay-thu",
+      "title": "Chuyến chạy thử đi đường nào?",
+      "goTo": "Đẩy xe ra ao vịt, buộc tạm xe vào gốc cây bên bờ",
+      "kind": "decision",
+      "target": "st-banh-mi-xe-dau-tien-goc-cay-buoc-xe",
+      "speaker": "Cô bánh mì Hạnh",
+      "prompt": "Xe đã lắp xong, bánh xe kêu cót két. Cô Hạnh hỏi: «Chuyến đầu tiên, mình cho nó đi đường nào?»",
+      "choices": [
+        {
+          "id": "bo-ao",
+          "text": "Vòng quanh bờ ao cho êm",
+          "consequence": "Đường đất phẳng, xe lăn êm ru. Đàn vịt chạy theo xin vụn bánh cả quãng."
+        },
+        {
+          "id": "vao-cho",
+          "text": "Thẳng vào giữa chợ cho đông vui",
+          "consequence": "Xe hơi chòng chành qua mấy chỗ gồ, nhưng người ta vẫy gọi khắp nơi."
+        },
+        {
+          "id": "tra-dau",
+          "text": "Tra dầu bánh xe trước rồi mới đi",
+          "consequence": "Hết kêu cót két! Cô Hạnh bảo xe giờ đi êm như ổ bánh vừa ra lò."
+        }
+      ],
+      "en": {
+        "title": "Which way for the test run?",
+        "goTo": "Push the cart to the duck pond and tie it to the tree stump on the bank",
+        "prompt": "The cart is together, its wheel squeaking. Cô Hạnh asks: “For its very first trip, which way shall it go?”",
+        "choices": [
+          {
+            "text": "Round the pond, where it’s smooth",
+            "consequence": "The dirt path is flat and the cart glides along. The ducks chase it the whole way, begging for crumbs."
+          },
+          {
+            "text": "Straight into the middle of the market",
+            "consequence": "The cart wobbles over a few bumps, but people wave it over from every side."
+          },
+          {
+            "text": "Oil the wheel first, then go",
+            "consequence": "No more squeaking! Cô Hạnh says the cart now rolls as softly as a fresh loaf."
+          }
+        ]
+      }
+    },
+    {
+      "id": "xep-khay-len-xe",
+      "title": "Xếp khay bánh lên xe",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ngăn xe nhỏ lắm! Xếp các khay bánh vừa khít, không để hở chỗ nào. Sáu điểm là xe đủ hàng.",
+      "game": "block-fit",
+      "goal": 6,
+      "en": {
+        "title": "Loading the trays",
+        "prompt": "The cart’s shelf is small! Fit the bread trays in snugly with no gaps. Six points and the cart is full."
+      }
+    },
+    {
+      "id": "xe-lan-banh",
+      "title": "Xe lăn bánh",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chiếc xe đẩy cũ chở đầy khay bánh nóng, chạy một vòng quanh chợ. Cô Hạnh rung chiếc chuông nhỏ treo ở tay đẩy và cười to nhất chợ.",
+      "en": {
+        "title": "The cart rolls",
+        "text": "The old handcart, loaded with hot trays, makes a full loop of the market. Cô Hạnh rings the little bell on the handle and laughs louder than anyone."
+      }
+    },
+    {
+      "id": "tam-bien-trang",
+      "title": "Tấm biển còn trắng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Khách cứ hỏi «xe của ai thế?». Cô Hạnh bảo xe cần một tấm biển và một cái tên, và {name} phải giúp cô nghĩ.",
+      "en": {
+        "title": "A blank sign",
+        "text": "Customers keep asking “whose cart is that?”. Cô Hạnh says the cart needs a sign and a name, and {name} has to help her think of one."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "tia-so": 1,
+      "so-den-100": 1
+    }
+  },
+  "en": {
+    "title": "Cô bánh mì Hạnh's story, chapter 2: The handcart in the shed",
+    "summary": "An old handcart lies in pieces in the canal-side shed. {name} gathers its wheel, canvas roof and handle, finds its spot on the numbered posts, picks the pre-order tickets and packs the trays for the test run."
+  }
+}

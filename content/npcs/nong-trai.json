@@ -914,6 +914,54 @@
           }
         }
       ]
+    },
+    {
+      "id": "heo-dan-dong-ca",
+      "npc": "heo-kho-hang",
+      "title": { "vi": "Dàn đồng ca nông trại", "en": "The Farm Choir" },
+      "teaser": { "vi": "Ủn ỉn! Mục số một của mùa này: lập một dàn đồng ca, bò hát trầm, gà hát cao, vịt hát… cũng hát. {name} vào dàn với tớ chứ?", "en": "Oink oink! Item one this season: start a choir. Cows sing low, hens sing high, ducks sing… they sing too. Will you join with me, {name}?" },
+      "chapters": [
+        {
+          "quest": "yarn-heo-dan-dong-ca-1",
+          "hearts": 0,
+          "letter": {
+            "from": "heo-kho-hang",
+            "title": { "vi": "Mục số một: thư cảm ơn", "en": "Item one: a thank-you letter" },
+            "body": { "vi": "Ủn ỉn, {name}! Mục số một: cảm ơn. Mục số hai: tối nay tớ dán thêm mười hai cái nhãn xanh cho ca sĩ mới. Mục số ba: mai mình dựng sân khấu nhé, nhớ mang tay khỏe.", "en": "Oink oink, {name}! Item one: thank you. Item two: tonight I stuck twelve more green labels on new singers. Item three: tomorrow we build the stage, so bring strong arms." },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-heo-dan-dong-ca-2",
+          "hearts": 1,
+          "letter": {
+            "from": "co-nan-to-he",
+            "title": { "vi": "Thư từ chợ phiên", "en": "A letter from the market fair" },
+            "body": { "vi": "Xoay, vuốt, xong! {name} ơi, Heo gửi cho cô một bao nếp có dán nhãn «Mục số hai: nếp ngon», kèm tin có sân khấu bao gạo. Cô nặn tặng dàn hát một con heo tò he cầm micro, phiên tới gửi lên. Cô gửi {name} vài xu mua kẹo nhé.", "en": "Roll, smooth, done! {name}, Heo sent me a sack of sticky rice labelled “Item two: good rice”, with news of the rice-sack stage. I’m making the choir a tò he pig holding a microphone, coming up next fair. Here are a few coins for sweets." },
+            "reward": { "coins": 20, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-heo-dan-dong-ca-3",
+          "hearts": 2,
+          "letter": {
+            "from": "be-chan-ga-con",
+            "title": { "vi": "Thư từ chuồng gà", "en": "A letter from the henhouse" },
+            "body": { "vi": "Cậu biết không? Đàn gà con nhà tớ học thuộc bài hát của trại rồi, tối nào cũng chiêm chiếp đúng nhịp tùng cắc cắc! Tớ gửi {name} một quả trứng gà ta, luộc lên ăn cho có sức hát nhé.", "en": "You know what? My chicks have learned the farm’s song, and every evening they cheep in time, boom clack clack! Here’s a farm egg for you, {name}; boil it and you’ll have the strength to sing." },
+            "reward": { "coins": 20, "xp": 20, "items": {"trung-ga-ta": 1} }
+          }
+        },
+        {
+          "quest": "yarn-heo-dan-dong-ca-4",
+          "hearts": 3,
+          "letter": {
+            "from": "heo-kho-hang",
+            "title": { "vi": "Mục cuối cùng", "en": "The last item" },
+            "body": { "vi": "{name}. Tớ viết thư này trong kho, chỉ bật một ngọn đèn thôi. Một! Tớ chưa dán nhãn nào cho đêm qua, vì có những điều không cần nhãn cũng nhớ mãi. Cảm ơn {name} đã đi cùng tớ vào góc tối.", "en": "{name}. I’m writing this in the barn with only one lamp lit. One! I haven’t labelled last night, because some things you remember for ever without a label. Thank you for walking into the dark corner with me." },
+            "reward": { "coins": 25, "xp": 25, "items": {} }
+          }
+        }
+      ]
     }
   ]
 }

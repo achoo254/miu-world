@@ -1,0 +1,420 @@
+{
+  "id": "yarn-den-sen-ngan-ha-3",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Chuyện của Cô Đèn Lồng Sen, chương 3: Hàng đèn thả thử",
+  "status": "active",
+  "category": "story",
+  "summary": "Tối nay cô thả thử một hàng đèn trên ao. {name} gom đồ ở tháp chuông, xem đồng hồ tính giờ đèn cập bờ, tìm lối cho đèn đi qua đám bèo và quyết định giúp chiếc đèn mắc lại.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cô Đèn Lồng Sen",
+    "where": "Đầu làng, tháp chuông, bờ ao làng, bến nước nhỏ, gốc sung bờ ao",
+    "goal": "Thả thử một hàng đèn và đo xem đèn trôi mất bao lâu",
+    "play": "Tìm đồ thả đèn; xem đồng hồ; dò lối qua đám bèo; gỡ chiếc đèn mắc bèo; lựa dòng nước đưa đèn",
+    "learn": "Xem đồng hồ (giờ đúng, giờ rưỡi), tìm đường",
+    "reward": "70 XP, 18 Xu, Skill XP Xem đồng hồ, Logic",
+    "next": "Đêm hội sắp tới"
+  },
+  "phases": {
+    "hook": "ao-dem-thu",
+    "explore": "chuan-bi-tha-thu",
+    "learn": "gio-den-cap-bo",
+    "challenge": "loi-qua-beo",
+    "decision": "den-ket-beo",
+    "finale": "dong-nuoc-dua-den",
+    "reward": "ao-sang-den",
+    "next": "dem-hoi-sap-toi"
+  },
+  "places": {
+    "co-den-long-sen": "Đầu làng",
+    "chuan-bi-tha-thu": "Tháp chuông",
+    "st-den-sen-ngan-ha-dong-ho-ban": "Tháp chuông",
+    "st-den-sen-ngan-ha-bao-diem": "Tháp chuông",
+    "st-den-sen-ngan-ha-sao-gat-beo": "Tháp chuông",
+    "st-den-sen-ngan-ha-bang-gio-tha": "Bờ ao làng",
+    "st-den-sen-ngan-ha-dam-beo-tay": "Bến nước nhỏ",
+    "st-den-sen-ngan-ha-den-mac-beo": "Gốc sung bờ ao"
+  },
+  "steps": [
+    {
+      "id": "ao-dem-thu",
+      "title": "Thả thử trên ao",
+      "goTo": "Ra đầu làng, cô đang xâu mười chiếc đèn vào một sợi lạt dài",
+      "kind": "dialogue",
+      "target": "co-den-long-sen",
+      "lines": [
+        {
+          "speaker": "Cô Đèn Lồng Sen",
+          "text": "Tối nay mình thả thử mười chiếc đèn trên ao. Cô muốn biết đèn trôi từ bờ này sang bờ kia mất bao lâu."
+        },
+        {
+          "speaker": "Cô Đèn Lồng Sen",
+          "text": "Năm ngoái cô đoán giờ sai, cả làng đứng chờ ở bờ bên kia mà đèn mãi chưa tới. Năm nay mình đo cho chắc, cháu thấy sao?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu sẽ canh đồng hồ thật kỹ!",
+          "reply": "Tốt quá. Có người canh giờ thì cô yên tâm canh đèn."
+        },
+        {
+          "text": "Sao không thả hết luôn hả cô?",
+          "reply": "Thả thử trước thì đêm hội không bị bất ngờ. Đèn cũng cần tập dượt như người."
+        }
+      ],
+      "en": {
+        "title": "A trial on the pond",
+        "goTo": "Go to the village gate, where Cô is threading ten lanterns onto a long bamboo tie",
+        "lines": [
+          "Tonight we float ten trial lanterns on the pond. I want to know how long they take to cross from one bank to the other.",
+          "Last year I guessed the time wrong and the whole village waited on the far bank for lanterns that never came. This year we measure properly, what do you think?"
+        ],
+        "choices": [
+          {
+            "text": "I'll watch the clock really carefully!",
+            "reply": "Wonderful. With someone keeping time, I can keep my eyes on the lanterns."
+          },
+          {
+            "text": "Why not float them all at once?",
+            "reply": "A trial run means no surprises on the night. Lanterns need a rehearsal too, just like people."
+          }
+        ]
+      }
+    },
+    {
+      "id": "chuan-bi-tha-thu",
+      "title": "Đồ nghề thả thử",
+      "goTo": "Lên tháp chuông lấy đồ thả đèn cô cất ở đó",
+      "kind": "find-object",
+      "prompt": "Cô cất đồ thả đèn ở chân tháp chuông cho khỏi ướt. Đọc lời tả rồi tìm từng món:",
+      "items": [
+        {
+          "id": "dong-ho",
+          "name": "Đồng hồ để bàn của cô",
+          "clue": "Mặt tròn viền đồng, một kim dài một kim ngắn, tích tắc như tiếng mưa rơi trên lá.",
+          "target": "st-den-sen-ngan-ha-dong-ho-ban"
+        },
+        {
+          "id": "diem",
+          "name": "Bao diêm gói giấy sáp",
+          "clue": "Bọc trong giấy sáp cho khỏi ẩm, lắc lên nghe lạch xạch.",
+          "target": "st-den-sen-ngan-ha-bao-diem"
+        },
+        {
+          "id": "sao",
+          "name": "Cây sào gạt bèo",
+          "clue": "Dài hơn cả cô, đầu buộc một chiếc móc tre để gạt bèo ra xa.",
+          "target": "st-den-sen-ngan-ha-sao-gat-beo"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Kit for the trial",
+        "goTo": "Climb to the bell tower for the things Cô keeps there",
+        "prompt": "Cô keeps her lantern kit at the foot of the bell tower to keep it dry. Read each description and find it:",
+        "items": [
+          {
+            "name": "Cô's little desk clock",
+            "clue": "A round face rimmed with brass, one long hand and one short, ticking like rain on leaves."
+          },
+          {
+            "name": "Matches in waxed paper",
+            "clue": "Wrapped in waxed paper to keep dry; shake it and it rattles."
+          },
+          {
+            "name": "The weed-clearing pole",
+            "clue": "Longer than Cô is tall, with a bamboo hook tied at the end for pushing water weeds away."
+          }
+        ]
+      }
+    },
+    {
+      "id": "gio-den-cap-bo",
+      "title": "Đèn cập bờ lúc mấy giờ?",
+      "goTo": "Ra bờ ao làng xem bảng ghi giờ thả đèn",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-den-sen-ngan-ha-bang-gio-tha",
+      "skill": "xem-dong-ho",
+      "prompt": "Chiếc đèn đầu tiên rời bờ lúc 7 giờ tối. Khi nó cập bờ bên kia, kim dài chỉ số 6, kim ngắn nằm giữa số 7 và số 8. Đèn cập bờ lúc mấy giờ?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "8 giờ"
+        },
+        {
+          "id": "b",
+          "text": "7 giờ rưỡi"
+        },
+        {
+          "id": "c",
+          "text": "6 giờ rưỡi"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Kim dài chỉ số 6 nghĩa là đã qua nửa giờ.",
+          "Kim ngắn nằm giữa 7 và 8 thì đã qua 7 giờ mà chưa tới 8 giờ."
+        ],
+        "hint": "Qua 7 giờ được nửa giờ thì gọi là gì?",
+        "answer": {
+          "text": "7 giờ rưỡi",
+          "explanation": "Kim ngắn giữa số 7 và số 8, kim dài chỉ số 6: đó là 7 giờ 30 phút, tức 7 giờ rưỡi. Đèn trôi qua ao mất nửa giờ."
+        },
+        "en": {
+          "guide": [
+            "The long hand on 6 means half an hour has passed.",
+            "The short hand between 7 and 8 means it's past 7 but not yet 8."
+          ],
+          "hint": "Half an hour past 7 is called what?",
+          "answer": {
+            "text": "Half past 7",
+            "explanation": "Short hand between 7 and 8, long hand on 6: that is 7:30, half past seven. The lantern took half an hour to cross."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "7 giờ rưỡi! Cô ghi vào bảng: «Qua ao mất nửa giờ.»",
+          "{name} đọc đồng hồ nhanh như chuông tháp điểm giờ.",
+          "Vậy đêm hội cả làng chỉ cần ra bờ bên kia lúc 7 giờ rưỡi là kịp."
+        ],
+        "wrong": [
+          "Kim ngắn chưa chạm số 8 đâu, chưa tới 8 giờ đâu {name}.",
+          "Đèn rời bờ lúc 7 giờ, sao cập bờ sớm hơn được?",
+          "Kim dài ở số 6 là «rưỡi», còn kim ngắn cho biết mấy giờ."
+        ],
+        "en": {
+          "right": [
+            "Half past seven! Cô writes on the board: \"Crossing takes half an hour.\"",
+            "{name} reads a clock as quickly as the tower bell strikes.",
+            "So on the night, the village only needs to be on the far bank by half past seven."
+          ],
+          "wrong": [
+            "The short hand hasn't reached 8, so it isn't 8 o'clock yet, {name}.",
+            "The lantern left at 7; it can't arrive any earlier than that.",
+            "Long hand on 6 means \"half past\"; the short hand tells you which hour."
+          ]
+        }
+      },
+      "en": {
+        "title": "When does the lantern land?",
+        "goTo": "Go to the village pond and look at the board of floating times",
+        "prompt": "The first lantern leaves the bank at 7 in the evening. When it reaches the far bank, the long hand points to 6 and the short hand sits between 7 and 8. What time does it land?",
+        "choices": [
+          "8 o'clock",
+          "Half past 7",
+          "Half past 6"
+        ]
+      }
+    },
+    {
+      "id": "loi-qua-beo",
+      "title": "Lối đi giữa đám bèo",
+      "goTo": "Sang bến nước nhỏ, đám bèo tây đang lấp gần kín lối đèn",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "maze",
+      "target": "st-den-sen-ngan-ha-dam-beo-tay",
+      "skill": "logic",
+      "prompt": "Ô gạch là chỗ bèo tây kết dày, đèn đi vào là mắc. Đưa đèn từ ô xuất phát tới ô đích mà không chạm ô bèo nào. Dãy bước nào đúng? (→ sang phải, ↓ đi xuống)",
+      "grid": [
+        [
+          "S",
+          ".",
+          "#",
+          "."
+        ],
+        [
+          "#",
+          ".",
+          ".",
+          "#"
+        ],
+        [
+          ".",
+          "#",
+          ".",
+          "."
+        ],
+        [
+          ".",
+          ".",
+          "#",
+          "G"
+        ]
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "→ ↓ ↓ → → ↓"
+        },
+        {
+          "id": "b",
+          "text": "→ ↓ → ↓ → ↓"
+        },
+        {
+          "id": "c",
+          "text": "→ → ↓ ↓ → ↓"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Đặt ngón tay ở ô xuất phát rồi đi thử từng dãy.",
+          "Gặp ô gạch là dãy đó hỏng, thử dãy khác."
+        ],
+        "hint": "Lối đúng cứ sang một ô lại xuống một ô, như bậc thang.",
+        "answer": {
+          "text": "→ ↓ → ↓ → ↓",
+          "explanation": "Sang phải, xuống, sang phải, xuống, sang phải, xuống: đèn đi chéo như bậc thang, len giữa các đám bèo tới ô đích."
+        },
+        "en": {
+          "guide": [
+            "Put your finger on the start square and try each set of moves.",
+            "Touch a brick square and that set fails; try another."
+          ],
+          "hint": "The right way goes one across, one down, like a staircase.",
+          "answer": {
+            "text": "→ ↓ → ↓ → ↓",
+            "explanation": "Right, down, right, down, right, down: the lantern zigzags like a staircase between the weeds to the goal."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đèn lách qua giữa bèo như cá lội, không mắc cánh nào!",
+          "Một ngang một dọc, {name} tìm ra lối bậc thang rồi.",
+          "Cô cắm cọc tre đánh dấu lối này cho đêm hội."
+        ],
+        "wrong": [
+          "Đi sang hai ô liền là đụng bèo ngay đấy.",
+          "Xuống hai lần liền thì đèn mắc vào đám bèo giữa ao rồi.",
+          "Dò lại bằng ngón tay, mỗi ô gạch là một đám bèo."
+        ],
+        "en": {
+          "right": [
+            "The lantern slips through the weeds like a fish, not a petal caught!",
+            "One across, one down: {name} found the staircase path.",
+            "Cô marks this path with bamboo stakes for the festival."
+          ],
+          "wrong": [
+            "Two squares right in a row runs straight into the weeds.",
+            "Two steps down in a row catches the lantern in the middle clump.",
+            "Trace it again with your finger; every brick square is a clump of weed."
+          ]
+        }
+      },
+      "en": {
+        "title": "A path through the weeds",
+        "goTo": "Go to the little landing, where water hyacinth almost blocks the lanterns' way",
+        "prompt": "Brick squares are thick clumps of water hyacinth; a lantern that goes in gets stuck. Take the lantern from the start square to the goal without touching a weed square. Which moves work? (→ right, ↓ down)",
+        "choices": [
+          "→ ↓ ↓ → → ↓",
+          "→ ↓ → ↓ → ↓",
+          "→ → ↓ ↓ → ↓"
+        ]
+      }
+    },
+    {
+      "id": "den-ket-beo",
+      "title": "Chiếc đèn mắc lại",
+      "goTo": "Đi vòng ra gốc sung bờ ao, một chiếc đèn vẫn còn mắc bèo",
+      "kind": "decision",
+      "target": "st-den-sen-ngan-ha-den-mac-beo",
+      "speaker": "Cô Đèn Lồng Sen",
+      "prompt": "Một chiếc đèn vẫn mắc trong bèo, nến sắp tàn. Cô hỏi nhỏ: «Mình làm gì với bạn ấy đây, cháu thấy sao?»",
+      "choices": [
+        {
+          "id": "gat-beo",
+          "text": "Dùng sào gạt nhẹ đám bèo cho đèn trôi tiếp",
+          "consequence": "Đám bèo dạt ra, đèn lắc lư rồi trôi tiếp như vừa tỉnh ngủ. Cô khẽ vỗ tay."
+        },
+        {
+          "id": "canh-bo",
+          "text": "Để bạn ấy ở lại làm đèn canh bờ",
+          "consequence": "Chiếc đèn đứng yên giữa bèo, soi sáng cả góc ao. Cô bảo: «Đêm hội cũng cần một bạn đứng gác.»"
+        },
+        {
+          "id": "ghi-so",
+          "text": "Ghi lại chỗ bèo dày để mai vớt bớt",
+          "consequence": "{name} vẽ đám bèo vào sổ. Sáng hôm sau cả làng ra vớt, lối đèn đi rộng thênh thang."
+        }
+      ],
+      "en": {
+        "title": "The stuck lantern",
+        "goTo": "Walk round to the fig tree on the bank, where one lantern is still caught",
+        "prompt": "One lantern is still caught in the weeds and its candle is burning low. Cô asks quietly: \"What shall we do for it, what do you think?\"",
+        "choices": [
+          {
+            "text": "Push the weeds aside gently with the pole",
+            "consequence": "The weeds part, the lantern wobbles and drifts on as if waking up. Cô claps softly."
+          },
+          {
+            "text": "Let it stay and guard the bank",
+            "consequence": "The lantern stays put among the weeds, lighting the whole corner. Cô says: \"A festival needs a guard too.\""
+          },
+          {
+            "text": "Note where the weeds are thick and clear them tomorrow",
+            "consequence": "{name} sketches the clump in the notebook. Next morning the village clears it, and the lantern path is wide open."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dong-nuoc-dua-den",
+      "title": "Dòng nước đưa đèn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Gió nhẹ đổi chiều trên mặt ao. Lựa dòng nước đưa ba chiếc đèn cập bờ bên kia giúp cô nhé!",
+      "game": "current-drift",
+      "goal": 3,
+      "en": {
+        "title": "Riding the current",
+        "prompt": "A light breeze turns on the pond. Steer the current and carry three lanterns to the far bank for Cô!"
+      }
+    },
+    {
+      "id": "ao-sang-den",
+      "title": "Mặt ao sáng đèn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chiếc đèn đầu tiên cập bờ đúng 7 giờ rưỡi, chín chiếc sau nối đuôi nhau tới. Cô ghi vào sổ, ngay dưới dòng «người canh giờ: {name}».",
+      "en": {
+        "title": "The pond full of light",
+        "text": "The first lantern lands at exactly half past seven and the other nine follow in a line. Cô writes it down, just under the line \"timekeeper: {name}\"."
+      }
+    },
+    {
+      "id": "dem-hoi-sap-toi",
+      "title": "Đêm hội sắp tới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Còn ba hôm nữa là đêm hội. Cô đếm lại đèn, rồi ngước nhìn ngọn tre ngả nghiêng trên đê, lặng đi một lúc lâu.",
+      "en": {
+        "title": "The festival is near",
+        "text": "Three days to the festival. Cô counts the lanterns again, then looks up at the bamboo bending on the dyke and falls quiet for a long while."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "xem-dong-ho": 1,
+      "logic": 1
+    }
+  },
+  "en": {
+    "title": "Cô Đèn Lồng Sen's story, chapter 3: The trial row",
+    "summary": "Tonight Cô floats a trial row of lanterns on the pond. {name} fetches the kit from the bell tower, reads the clock to time the crossing, finds a path through the water weeds and decides how to help a stuck lantern."
+  }
+}

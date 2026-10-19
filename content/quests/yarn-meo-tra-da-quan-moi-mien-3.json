@@ -1,0 +1,418 @@
+{
+  "id": "yarn-meo-tra-da-quan-moi-mien-3",
+  "region": "xom-mai-am",
+  "chapter": 2,
+  "title": "Chuyện của Mèo Trà Đá, chương 3: Vị trà ai uống cũng nhớ",
+  "status": "active",
+  "category": "story",
+  "summary": "Mèo Trà Đá muốn có một vị trà riêng mà ai uống cũng nhớ. {name} tìm lá dứa, chanh và đường phèn, chọn từ hay cho bảng thực đơn, đọc thẻ công thức, đặt tên cho vị trà mới rồi mời trà cả hang.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Trà Đá",
+    "where": "Xóm: giếng xóm, sân trước hiên, mỏm đá cửa hang, hiên nhà, gốc khế đầu ngõ, hang đá ấm",
+    "goal": "Pha và đặt tên cho vị trà riêng đầu tiên của quán Mèo",
+    "play": "Tìm nguyên liệu theo lời tả; chọn từ chỉ đặc điểm cho bảng thực đơn; đọc thẻ công thức; đặt tên vị trà; nhớ món khách gọi",
+    "learn": "Từ chỉ đặc điểm và từ chỉ hoạt động, đọc hiểu",
+    "reward": "70 XP, 18 Xu, Skill XP Từ ngữ, Đọc hiểu, Hoa chuông tím",
+    "next": "Quán trà mang vị riêng của xóm"
+  },
+  "phases": {
+    "hook": "mot-vi-rieng",
+    "explore": "tim-nguyen-lieu",
+    "learn": "tu-cho-thuc-don",
+    "challenge": "the-cong-thuc",
+    "decision": "dat-ten-vi-tra",
+    "finale": "nho-mon-khach-goi",
+    "reward": "vi-tra-co-ten",
+    "next": "quan-mang-vi-xom"
+  },
+  "places": {
+    "meo-tra-da": "Giếng xóm",
+    "tim-nguyen-lieu": "Sân trước hiên",
+    "st-meo-tra-da-quan-moi-mien-chum-la-dua-thom": "Sân trước hiên",
+    "st-meo-tra-da-quan-moi-mien-qua-chanh-vo-mong": "Sân trước hiên",
+    "st-meo-tra-da-quan-moi-mien-hu-duong-phen": "Sân trước hiên",
+    "st-meo-tra-da-quan-moi-mien-bang-thuc-don-viet-do": "Mỏm đá cửa hang",
+    "st-meo-tra-da-quan-moi-mien-the-cong-thuc-la-dua": "Hiên nhà",
+    "st-meo-tra-da-quan-moi-mien-ong-tre-dat-ten": "Gốc khế đầu ngõ",
+    "st-meo-tra-da-quan-moi-mien-khay-tra-moi-ca-hang": "Hang đá ấm"
+  },
+  "steps": [
+    {
+      "id": "mot-vi-rieng",
+      "title": "Một vị trà của riêng quán",
+      "goTo": "Về giếng xóm, Mèo Trà Đá đang nhấp thử từng thìa trà mát",
+      "kind": "dialogue",
+      "target": "meo-tra-da",
+      "lines": [
+        {
+          "speaker": "Mèo Trà Đá",
+          "text": "Quý khách {name}, Mèo có một ước mơ to lắm: mở quán trà khắp mọi miền, mỗi nơi một vị trà riêng mà ai uống cũng nhớ. Meo!"
+        },
+        {
+          "speaker": "Mèo Trà Đá",
+          "text": "Mà muốn đi khắp nơi thì phải có vị đầu tiên ngay ở xóm mình đã. Nguyên liệu Mèo phơi ở sân trước hiên rồi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Vị trà của xóm mình, nghe thích quá!",
+          "reply": "Thích chưa! Vị nào ra đời ở đây thì phải mang tên của ngõ này."
+        },
+        {
+          "text": "Mèo định đi bao nhiêu miền hả Mèo?",
+          "reply": "Bao nhiêu miền có người khát nước, meo meo! Nhưng đi từng bước một đã."
+        }
+      ],
+      "en": {
+        "title": "A flavour of the stall’s own",
+        "goTo": "Go back to the lane well, where Mèo Trà Đá is tasting spoonfuls of cool tea",
+        "lines": [
+          "Honoured guest {name}, Mèo has a very big dream: tea stalls everywhere, each with a flavour of its own that nobody ever forgets. Meow!",
+          "But to go everywhere, first I need a flavour right here in our lane. I've put the ingredients out on the yard in front of the porch."
+        ],
+        "choices": [
+          {
+            "text": "A tea of our very own lane, how exciting!",
+            "reply": "Isn’t it! A flavour born here has to carry the name of this lane."
+          },
+          {
+            "text": "How many places do you want to go?",
+            "reply": "As many as have thirsty people, meow meow! But one step at a time."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-nguyen-lieu",
+      "title": "Lá dứa, chanh và đường phèn",
+      "goTo": "Ra sân trước hiên tìm ba thứ Mèo phơi làm trà",
+      "kind": "find-object",
+      "prompt": "Sân phơi đủ thứ lá, thứ quả. Đọc lời tả rồi chọn đúng ba nguyên liệu Mèo cần:",
+      "items": [
+        {
+          "id": "dua",
+          "name": "Chùm lá dứa thơm",
+          "clue": "Lá dài, xanh bóng như dải lụa, vò nhẹ là thơm như cơm mới.",
+          "target": "st-meo-tra-da-quan-moi-mien-chum-la-dua-thom"
+        },
+        {
+          "id": "chanh",
+          "name": "Quả chanh vỏ mỏng",
+          "clue": "Tròn nhỏ, vỏ xanh mỏng tang, bóp nhẹ đã thấy mọng nước.",
+          "target": "st-meo-tra-da-quan-moi-mien-qua-chanh-vo-mong"
+        },
+        {
+          "id": "duong",
+          "name": "Hũ đường phèn",
+          "clue": "Hũ nhỏ nắp gỗ, bên trong toàn viên trong suốt như những mẩu băng.",
+          "target": "st-meo-tra-da-quan-moi-mien-hu-duong-phen"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Pandan, lime and rock sugar",
+        "goTo": "Go out to the yard in front of the porch and find the three things Mèo is drying for tea",
+        "prompt": "The yard is full of leaves and fruit. Read the descriptions and pick the three ingredients Mèo needs:",
+        "items": [
+          {
+            "name": "Bunch of fragrant pandan",
+            "clue": "Long glossy leaves like green silk ribbons; crush one gently and it smells like fresh rice."
+          },
+          {
+            "name": "Thin-skinned lime",
+            "clue": "Small and round with a paper-thin green skin; a gentle squeeze and it feels juicy."
+          },
+          {
+            "name": "Jar of rock sugar",
+            "clue": "A small jar with a wooden lid, full of clear lumps like little pieces of ice."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tu-cho-thuc-don",
+      "title": "Từ hay cho bảng thực đơn",
+      "goTo": "Ra mỏm đá cửa hang, bảng thực đơn viết dở dựng ở đó",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-meo-tra-da-quan-moi-mien-bang-thuc-don-viet-do",
+      "skill": "tu-ngu",
+      "prompt": "Mèo muốn tả vị trà mới trên bảng thực đơn bằng những từ chỉ đặc điểm. Chọn tất cả các từ chỉ đặc điểm:",
+      "choices": [
+        {
+          "id": "mat-lanh",
+          "text": "mát lạnh"
+        },
+        {
+          "id": "rot",
+          "text": "rót"
+        },
+        {
+          "id": "thom-ngat",
+          "text": "thơm ngát"
+        },
+        {
+          "id": "khuay",
+          "text": "khuấy"
+        },
+        {
+          "id": "ngot-diu",
+          "text": "ngọt dịu"
+        },
+        {
+          "id": "uong",
+          "text": "uống"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "mat-lanh",
+          "thom-ngat",
+          "ngot-diu"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Từ chỉ đặc điểm cho biết trà thế nào: mát hay nóng, thơm hay nhạt…",
+          "Từ chỉ hoạt động là việc mình làm với cốc trà."
+        ],
+        "hint": "Thử đặt sau chữ «trà…»: trà thế nào?",
+        "answer": {
+          "text": "mát lạnh, thơm ngát, ngọt dịu",
+          "explanation": "Ba từ ấy tả trà thế nào. «Rót», «khuấy», «uống» là từ chỉ hoạt động, là việc làm chứ không tả vị trà."
+        },
+        "en": {
+          "guide": [
+            "A describing word tells what the tea is like: cool or warm, fragrant or plain…",
+            "An action word is something you do with the glass."
+          ],
+          "hint": "Put it after \"the tea is…\": what is the tea like?",
+          "answer": {
+            "text": "ice-cool, fragrant, gently sweet",
+            "explanation": "Those three describe the tea. \"Pour\", \"stir\" and \"drink\" are action words: things you do, not what the tea is like."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mát lạnh, thơm ngát, ngọt dịu! Đọc lên đã thấy khát, meo meo.",
+          "{name} chọn từ khéo như Mèo chọn lá trà non.",
+          "Bảng thực đơn có ba từ ấy là khách đứng lại đọc ngay."
+        ],
+        "wrong": [
+          "«Rót» là việc Mèo làm với ấm, chưa nói trà thế nào đâu quý khách.",
+          "Khuấy là hoạt động, cầm thìa làm chứ không nếm ra được.",
+          "Còn một từ tả vị ngọt chưa chọn, quý khách tìm lại nhé."
+        ],
+        "en": {
+          "right": [
+            "Ice-cool, fragrant, gently sweet! Reading it makes you thirsty, meow meow.",
+            "You pick words as carefully as Mèo picks young tea leaves, {name}.",
+            "With those three words on the board, customers will stop to read."
+          ],
+          "wrong": [
+            "\"Pour\" is what Mèo does with the jug; it doesn’t say what the tea is like.",
+            "Stirring is an action, done with a spoon, not something you taste.",
+            "One word about sweetness is still unpicked; look again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Words for the menu board",
+        "goTo": "Go out to the rock at the cave mouth, where the half-written menu board stands",
+        "prompt": "Mèo wants to describe the new tea on the menu with describing words. Pick every describing word:",
+        "choices": [
+          "ice-cool",
+          "pour",
+          "fragrant",
+          "stir",
+          "gently sweet",
+          "drink"
+        ]
+      }
+    },
+    {
+      "id": "the-cong-thuc",
+      "title": "Thẻ công thức trà lá dứa",
+      "goTo": "Sang hiên nhà, Mèo cắm thẻ công thức vào khe cột hiên",
+      "kind": "read",
+      "target": "st-meo-tra-da-quan-moi-mien-the-cong-thuc-la-dua",
+      "skill": "doc-hieu",
+      "text": "Trà lá dứa chanh của ngõ\nBước 1: Rửa sạch chùm lá dứa, buộc lại thành nút.\nBước 2: Đun lá dứa với nước cho thơm, rồi để thật nguội.\nBước 3: Thả đường phèn, khuấy tới khi tan hết.\nBước 4: Vắt nửa quả chanh, thêm đá, rót ra cốc.\nLưu ý: để nước lá dứa nguội hẳn rồi mới thả đá, đá sẽ không tan vội.",
+      "question": "Theo thẻ công thức, vì sao phải để nước lá dứa nguội hẳn rồi mới thả đá?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Để đá không tan vội"
+        },
+        {
+          "id": "b",
+          "text": "Để lá dứa xanh hơn"
+        },
+        {
+          "id": "c",
+          "text": "Để đường phèn ngọt hơn"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Tìm dòng «Lưu ý» ở cuối thẻ.",
+          "Đọc phần sau chữ «đá sẽ…»."
+        ],
+        "hint": "Câu trả lời nằm ngay cuối dòng lưu ý.",
+        "answer": {
+          "text": "Vì để nguội thì đá không tan vội",
+          "explanation": "Dòng lưu ý ghi: để nước lá dứa nguội hẳn rồi mới thả đá, đá sẽ không tan vội, nên trà mát lâu."
+        },
+        "en": {
+          "guide": [
+            "Find the \"Note\" line at the bottom of the card.",
+            "Read what comes after \"the ice will…\"."
+          ],
+          "hint": "The answer is right at the end of the note.",
+          "answer": {
+            "text": "Because once cool, the ice won’t melt so fast",
+            "explanation": "The note says to let the pandan water cool completely before adding ice, so the ice won’t melt quickly and the tea stays cold longer."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chuẩn rồi! Đá tan chậm thì trà mát lâu, khách ngồi buôn chuyện cả buổi.",
+          "{name} đọc tới tận dòng lưu ý, đúng là người phụ quán cẩn thận.",
+          "Meo! Quý khách đọc thẻ một lần là pha được như Mèo."
+        ],
+        "wrong": [
+          "Thẻ không nói lá dứa đổi màu, quý khách đọc dòng lưu ý xem.",
+          "Đường phèn ngọt nhờ bước 3, chẳng liên quan tới đá đâu.",
+          "Nhìn xuống dòng cuối thẻ, chữ «đá sẽ…» ấy."
+        ],
+        "en": {
+          "right": [
+            "Exactly! Slow-melting ice keeps the tea cold, and customers can gossip all afternoon.",
+            "You read right down to the note, {name}: a careful stall hand indeed.",
+            "Meow! You read the card once and can brew it just like Mèo."
+          ],
+          "wrong": [
+            "The card never says the pandan changes colour; read the note.",
+            "The sugar sweetens in step 3; it has nothing to do with the ice.",
+            "Look at the last line of the card, the words \"the ice will…\"."
+          ]
+        }
+      },
+      "en": {
+        "title": "The pandan tea recipe card",
+        "goTo": "Go over to the porch, where Mèo tucked the recipe card into a crack in the post",
+        "text": "The lane’s pandan and lime tea\nStep 1: Wash the pandan leaves and tie them in a knot.\nStep 2: Simmer the pandan with water until fragrant, then let it cool completely.\nStep 3: Add the rock sugar and stir until it dissolves.\nStep 4: Squeeze in half a lime, add ice and pour into glasses.\nNote: let the pandan water cool completely before adding ice, and the ice will not melt quickly.",
+        "question": "According to the card, why must the pandan water cool completely before the ice goes in?",
+        "choices": [
+          "So the ice does not melt too fast",
+          "So the pandan turns greener",
+          "So the rock sugar is sweeter"
+        ]
+      }
+    },
+    {
+      "id": "dat-ten-vi-tra",
+      "title": "Đặt tên cho vị trà",
+      "goTo": "Ra gốc khế đầu ngõ, Mèo treo ống tre đựng thẻ đặt tên trên cành",
+      "kind": "decision",
+      "target": "st-meo-tra-da-quan-moi-mien-ong-tre-dat-ten",
+      "speaker": "Mèo Trà Đá",
+      "prompt": "Trà đã pha xong, thơm khắp ngõ. Mèo lắc ống tre: «Vị này phải có cái tên ai nghe cũng nhớ. Quý khách đặt đi, meo!»",
+      "choices": [
+        {
+          "id": "gio-ngo",
+          "text": "«Trà Gió Ngõ», mát như gió đầu ngõ",
+          "consequence": "Mèo viết tên lên bảng bằng phấn trắng. Đi ngang ai cũng đọc to «Trà Gió Ngõ» rồi cười."
+        },
+        {
+          "id": "trang-khuya",
+          "text": "«Trà Trăng Ngõ», vàng nhạt như ánh trăng",
+          "consequence": "Mèo gật gù: «Ngõ mình có ánh trăng đẹp nhất vùng.» Tên mới nghe mà đã thấy mát."
+        },
+        {
+          "id": "ten-khach",
+          "text": "Để khách đầu tiên uống thử đặt tên",
+          "consequence": "Bà cụ đầu ngõ nhấp một ngụm, nhắm mắt rồi bảo: «Trà Nhớ Nhà.» Mèo lặng đi một lúc, rồi viết ngay lên bảng."
+        }
+      ],
+      "en": {
+        "title": "Naming the tea",
+        "goTo": "Go to the starfruit tree at the head of the lane, where Mèo hung the bamboo tube of name slips on a branch",
+        "prompt": "The tea is ready and the whole lane smells of it. Mèo shakes the bamboo tube: \"This flavour needs a name nobody forgets. You choose, honoured guest, meow!\"",
+        "choices": [
+          {
+            "text": "\"Lane Breeze Tea\", cool as the breeze at the lane’s head",
+            "consequence": "Mèo chalks the name on the board. Everyone passing reads \"Lane Breeze Tea\" aloud and smiles."
+          },
+          {
+            "text": "\"Lane Moon Tea\", pale gold like moonlight",
+            "consequence": "Mèo nods: \"Our lane has the loveliest moonlight around.\" The name alone feels cool."
+          },
+          {
+            "text": "Let the first customer to taste it choose the name",
+            "consequence": "The old lady from the top of the lane takes a sip, closes her eyes and says: \"Homesick Tea.\" Mèo goes quiet a moment, then writes it straight on the board."
+          }
+        ]
+      }
+    },
+    {
+      "id": "nho-mon-khach-goi",
+      "title": "Mười món, không nhầm món nào",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "goTo": "Bưng khay trà vào hang đá ấm, cả xóm đang chờ uống thử",
+      "target": "st-meo-tra-da-quan-moi-mien-khay-tra-moi-ca-hang",
+      "prompt": "Cả xóm kéo vào hang đá ấm uống thử vị trà mới, mỗi người gọi một kiểu. Nhớ món từng khách rồi mang ra cho đúng, mười món nhé!",
+      "game": "customer-memory",
+      "goal": 10,
+      "en": {
+        "title": "Remembering the orders",
+        "prompt": "The whole lane crowds into the warm cave to try the new tea, each with a different order. Remember every order and serve it right: ten orders!",
+        "goTo": "Carry the tray of tea into the warm cave, where the whole lane is waiting to taste it"
+      }
+    },
+    {
+      "id": "vi-tra-co-ten",
+      "title": "Vị trà đã có tên",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ai uống cũng xin thêm cốc nữa. Mèo cười meo meo không ngớt, cài lên áo {name} một bông hoa chuông tím: «Huy hiệu phụ quán số một!»",
+      "en": {
+        "title": "The tea has a name",
+        "text": "Everyone asks for a second glass. Mèo laughs meow meow without stopping and pins a purple bellflower on {name}: \"Badge of stall hand number one!\""
+      }
+    },
+    {
+      "id": "quan-mang-vi-xom",
+      "title": "Quán mang vị của xóm",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mèo chép công thức vào sổ, đánh số một. Mèo bảo vị thứ hai sẽ pha ở một miền khác, và hẹn {name} cùng đi nếm thử.",
+      "en": {
+        "title": "A stall with the lane’s flavour",
+        "text": "Mèo copies the recipe into a notebook as number one. The second flavour will be brewed somewhere else, and Mèo asks {name} to come along and taste it."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "tu-ngu": 1,
+      "doc-hieu": 1
+    },
+    "items": {
+      "hoa-chuong-tim": 1
+    }
+  },
+  "en": {
+    "title": "Mèo Trà Đá's story, chapter 3: A tea nobody forgets",
+    "summary": "Mèo Trà Đá wants a tea of the stall's own that nobody forgets. {name} finds pandan, lime and rock sugar, chooses describing words for the menu board, reads the recipe card, names the new flavour and serves the whole cave."
+  }
+}

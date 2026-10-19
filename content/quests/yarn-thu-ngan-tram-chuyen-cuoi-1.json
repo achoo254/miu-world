@@ -1,0 +1,386 @@
+{
+  "id": "yarn-thu-ngan-tram-chuyen-cuoi-1",
+  "region": "cho-phien",
+  "chapter": 2,
+  "title": "Chuyện của Bác Thu Ngân Vui Vẻ, chương 1: Sổ chuyện cười ngáp dài",
+  "status": "active",
+  "category": "story",
+  "summary": "Bác Thu Ngân Vui Vẻ muốn viết một trăm chuyện cười về con số, nhưng két lại hết tiền lẻ. {name} tìm ba tờ tiền bay mất, ghép tiền đủ tám nghìn, thối tiền cá khô và chọn chuyện cười cho sổ.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Bác Thu Ngân Vui Vẻ",
+    "where": "Chợ phiên: quầy thu ngân, dãy sạp có cân, quầy cân đong, sạp cá khô, mép kênh",
+    "goal": "Tìm lại tiền lẻ cho két và thêm một chuyện cười vào sổ",
+    "play": "Tìm ba tờ tiền theo lời tả; chọn tờ tiền ghép đủ 8 000 đồng; tính tiền thối; chọn chuyện cười; trả tiền vừa đủ",
+    "learn": "Tiền Việt Nam, phép cộng và phép trừ trong phạm vi 10 nghìn đồng, đọc hiểu lời tả",
+    "reward": "58 XP, 14 Xu, Skill XP Phép cộng, Phép trừ",
+    "next": "Cái cân to chỉ sai, có quả cân đi trốn"
+  },
+  "phases": {
+    "hook": "so-chuyen-cuoi-trong",
+    "explore": "tim-tien-le",
+    "learn": "ghep-tam-nghin",
+    "challenge": "thoi-tien-ca-kho",
+    "decision": "chuyen-cuoi-dau-so",
+    "finale": "khach-tra-tien",
+    "reward": "ket-leng-keng",
+    "next": "qua-can-noi-doi"
+  },
+  "places": {
+    "bac-thu-ngan-vui-ve": "Quầy thu ngân",
+    "tim-tien-le": "Dãy sạp có cân",
+    "st-thu-ngan-tram-chuyen-cuoi-to-mot-nghin": "Dãy sạp có cân",
+    "st-thu-ngan-tram-chuyen-cuoi-to-hai-nghin": "Dãy sạp có cân",
+    "st-thu-ngan-tram-chuyen-cuoi-to-nam-nghin": "Dãy sạp có cân",
+    "st-thu-ngan-tram-chuyen-cuoi-khay-tien-le": "Quầy cân đong",
+    "st-thu-ngan-tram-chuyen-cuoi-gio-ca-kho": "Sạp cá khô",
+    "st-thu-ngan-tram-chuyen-cuoi-ghe-da-viet-chuyen": "Mép kênh"
+  },
+  "steps": [
+    {
+      "id": "so-chuyen-cuoi-trong",
+      "title": "Sổ chuyện cười ngáp dài",
+      "goTo": "Tới quầy thu ngân, Bác Thu Ngân Vui Vẻ đang lật cuốn sổ chuyện cười",
+      "kind": "dialogue",
+      "target": "bac-thu-ngan-vui-ve",
+      "lines": [
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "Hô hô! {name} tới đúng lúc! Bác đang viết quyển «Một trăm chuyện cười về con số», được chín mươi sáu chuyện rồi."
+        },
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "Có điều bác kể chuyện nào khách cũng… ngáp. Chỉ mỗi bác cười. Hô hô… hô."
+        },
+        {
+          "speaker": "Bác Thu Ngân Vui Vẻ",
+          "text": "Mà khổ nữa: sáng nay két hết tiền lẻ, bác chẳng thối được cho ai. Gió thổi bay mấy tờ đi đâu mất!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu tìm tiền lẻ trước, chuyện cười tính sau!",
+          "reply": "Chuẩn! Tiền về két, chuyện về sổ. Tính tiền nàooo!"
+        },
+        {
+          "text": "Bác kể thử cháu nghe một chuyện xem nào.",
+          "reply": "Số 1 đi chợ gặp số 11. Hết rồi. Hô hô! Thôi, cháu đi tìm tiền giúp bác đã."
+        }
+      ],
+      "en": {
+        "title": "A joke book full of yawns",
+        "goTo": "Go to the cashier's counter, where Bác Thu Ngân Vui Vẻ is leafing through his joke book",
+        "lines": [
+          "Ho ho! Perfect timing, {name}! I'm writing a book called «A Hundred Jokes About Numbers», and I've got ninety-six so far.",
+          "The trouble is, every joke I tell makes the customers… yawn. Only I laugh. Ho ho… ho.",
+          "And worse: this morning the till ran out of small notes, so I can't give anyone change. The wind blew a few away!"
+        ],
+        "choices": [
+          {
+            "text": "I'll find the small notes first, jokes later!",
+            "reply": "Exactly! Money back in the till, jokes back in the book. There you go-o-o!"
+          },
+          {
+            "text": "Go on, tell me one of your jokes.",
+            "reply": "Number 1 goes to market and meets number 11. The end. Ho ho! Never mind, go and find my money first."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-tien-le",
+      "title": "Ba tờ tiền bay mất",
+      "goTo": "Ra dãy sạp có cân tìm ba tờ tiền lẻ gió thổi bay",
+      "kind": "find-object",
+      "prompt": "Bác nhớ rõ từng tờ đã bay đi. Đọc lời tả rồi tìm cho đủ ba tờ:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "mot-nghin",
+          "name": "Tờ một nghìn đồng",
+          "clue": "Chữ số 1 000 in to ở góc, tờ tiền nằm bẹp dưới một quả cân nặng.",
+          "target": "st-thu-ngan-tram-chuyen-cuoi-to-mot-nghin"
+        },
+        {
+          "id": "hai-nghin",
+          "name": "Tờ hai nghìn đồng",
+          "clue": "Bị ai gấp đôi thành hình chiếc vé nhỏ, mở ra thấy số 2 000.",
+          "target": "st-thu-ngan-tram-chuyen-cuoi-to-hai-nghin"
+        },
+        {
+          "id": "nam-nghin",
+          "name": "Tờ năm nghìn đồng",
+          "clue": "Có số 5 000, vài hạt thóc vàng còn dính trên mặt, chắc lăn qua bao gạo.",
+          "target": "st-thu-ngan-tram-chuyen-cuoi-to-nam-nghin"
+        }
+      ],
+      "en": {
+        "title": "Three runaway notes",
+        "goTo": "Go to the row of stalls with scales and find the three small notes the wind blew away",
+        "prompt": "He remembers every note that flew off. Read the descriptions and find all three:",
+        "items": [
+          {
+            "name": "The one-thousand-đồng note",
+            "clue": "1 000 printed big in the corner, lying flat under a heavy weight."
+          },
+          {
+            "name": "The two-thousand-đồng note",
+            "clue": "Someone folded it in half like a little ticket; open it and you'll see 2 000."
+          },
+          {
+            "name": "The five-thousand-đồng note",
+            "clue": "It says 5 000 and has a few golden rice grains stuck to it; it must have rolled past a rice sack."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ghep-tam-nghin",
+      "title": "Ghép đủ tám nghìn",
+      "goTo": "Mang tiền về quầy cân đong, nơi có khay tiền lẻ",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-thu-ngan-tram-chuyen-cuoi-khay-tien-le",
+      "skill": "phep-cong",
+      "prompt": "Một bác khách trả bó rau 8 000 đồng bằng tiền lẻ. Chọn các tờ tiền ghép lại vừa đúng 8 000 đồng:",
+      "choices": [
+        {
+          "id": "nam",
+          "text": "Tờ 5 000 đồng"
+        },
+        {
+          "id": "muoi",
+          "text": "Tờ 10 000 đồng"
+        },
+        {
+          "id": "hai",
+          "text": "Tờ 2 000 đồng"
+        },
+        {
+          "id": "mot",
+          "text": "Tờ 1 000 đồng"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "nam",
+          "hai",
+          "mot"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Tờ 10 000 đồng đã nhiều hơn 8 000 đồng rồi, để riêng ra.",
+          "Cộng các tờ còn lại: 5 nghìn, 2 nghìn, 1 nghìn."
+        ],
+        "hint": "5 nghìn cộng 2 nghìn được 7 nghìn, thêm mấy nghìn nữa là đủ 8?",
+        "answer": {
+          "text": "Tờ 5 000, tờ 2 000 và tờ 1 000 đồng",
+          "explanation": "5 000 + 2 000 + 1 000 = 8 000 đồng. Tờ 10 000 đồng thì nhiều hơn số tiền bó rau."
+        },
+        "en": {
+          "guide": [
+            "A 10 000 note is already more than 8 000, so set it aside.",
+            "Add the others: 5 thousand, 2 thousand, 1 thousand."
+          ],
+          "hint": "5 thousand plus 2 thousand is 7 thousand; how many more make 8?",
+          "answer": {
+            "text": "The 5 000, 2 000 and 1 000 notes",
+            "explanation": "5 000 + 2 000 + 1 000 = 8 000 đồng. The 10 000 note is more than the bunch of greens costs."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Năm nghìn, hai nghìn, một nghìn… tám nghìn tròn trĩnh! Tính tiền nàooo!",
+          "Vừa khít! {name} ghép tiền nhanh như bác gảy bàn tính.",
+          "Bác khách gật gù, bó rau về nhà, két của bác lại lẻng xẻng."
+        ],
+        "wrong": [
+          "Tờ mười nghìn to quá, bó rau chỉ có tám nghìn thôi mà.",
+          "Cộng lại chưa đủ tám nghìn đâu, {name} đếm thêm một tờ nữa xem.",
+          "Hô hô, gần đúng rồi! Thử cộng từng tờ một từ tờ lớn nhất."
+        ],
+        "en": {
+          "right": [
+            "Five thousand, two thousand, one thousand… a perfect eight thousand! There you go-o-o!",
+            "Spot on! You put notes together as fast as I flick an abacus, {name}.",
+            "The customer nods, the greens go home and the till jingles again."
+          ],
+          "wrong": [
+            "The ten-thousand note is too much; the greens only cost eight thousand.",
+            "That doesn't add up to eight thousand yet, {name}; count one more note.",
+            "Ho ho, nearly there! Try adding the notes one at a time, biggest first."
+          ]
+        }
+      },
+      "en": {
+        "title": "Making eight thousand",
+        "goTo": "Take the money back to the weighing counter, where the tray of small notes sits",
+        "prompt": "A customer is paying 8 000 đồng for a bunch of greens in small notes. Pick the notes that add up to exactly 8 000 đồng:",
+        "choices": [
+          "A 5 000 đồng note",
+          "A 10 000 đồng note",
+          "A 2 000 đồng note",
+          "A 1 000 đồng note"
+        ]
+      }
+    },
+    {
+      "id": "thoi-tien-ca-kho",
+      "title": "Thối tiền cho giỏ cá khô",
+      "goTo": "Sang sạp cá khô, có người đang đợi tiền thối",
+      "kind": "riddle",
+      "target": "st-thu-ngan-tram-chuyen-cuoi-gio-ca-kho",
+      "skill": "phep-tru",
+      "question": "Cô bánh mì Hạnh mua cá khô hết 7 nghìn đồng và một bó hành hết 2 nghìn đồng. Cô đưa tờ 10 nghìn đồng. Bác phải thối lại cho cô mấy nghìn đồng?",
+      "answer": {
+        "value": 1
+      },
+      "support": {
+        "guide": [
+          "Trước hết cộng số tiền cô phải trả: cá khô và bó hành.",
+          "Lấy 10 nghìn trừ đi số tiền ấy."
+        ],
+        "hint": "7 nghìn cộng 2 nghìn là 9 nghìn đồng.",
+        "answer": {
+          "text": "1 nghìn đồng",
+          "explanation": "Cô phải trả 7 + 2 = 9 nghìn đồng. Cô đưa 10 nghìn đồng nên bác thối lại 10 − 9 = 1 nghìn đồng."
+        },
+        "en": {
+          "guide": [
+            "First add what she has to pay: the dried fish and the spring onions.",
+            "Take that away from 10 thousand."
+          ],
+          "hint": "7 thousand plus 2 thousand is 9 thousand đồng.",
+          "answer": {
+            "text": "1 thousand đồng",
+            "explanation": "She owes 7 + 2 = 9 thousand đồng. She hands over 10 thousand, so he gives back 10 − 9 = 1 thousand đồng."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Một nghìn đồng, thối đúng phóc! Cô Hạnh còn khen bác nhanh tay.",
+          "Hai bước tính mà {name} chẳng vấp bước nào.",
+          "Hô hô! Thối đúng tiền là bác ngủ ngon cả đêm."
+        ],
+        "wrong": [
+          "Đừng quên bó hành, cô Hạnh mua hai thứ cơ.",
+          "Thối nhiều thế thì két của bác thủng mất, {name} tính lại nhé.",
+          "Cộng tiền hai món trước, rồi mới lấy mười nghìn trừ đi."
+        ],
+        "en": {
+          "right": [
+            "One thousand đồng, exactly right! Cô Hạnh even praises his quick hands.",
+            "Two steps of sums and you tripped on neither, {name}.",
+            "Ho ho! Correct change means a good night's sleep."
+          ],
+          "wrong": [
+            "Don't forget the spring onions; she bought two things.",
+            "Give that much back and my till would spring a leak, {name}; work it out again.",
+            "Add up the two things first, then take that from ten thousand."
+          ]
+        }
+      },
+      "en": {
+        "title": "Change for the dried fish",
+        "goTo": "Go over to the dried-fish stall, where someone is waiting for change",
+        "question": "Cô bánh mì Hạnh buys dried fish for 7 thousand đồng and a bunch of spring onions for 2 thousand đồng. She pays with a 10-thousand note. How many thousand đồng change does he give her?"
+      }
+    },
+    {
+      "id": "chuyen-cuoi-dau-so",
+      "title": "Chuyện nào được vào sổ?",
+      "goTo": "Ra mép kênh, bác ngồi trên ghế đá đọc chuyện cho {name} nghe",
+      "kind": "decision",
+      "target": "st-thu-ngan-tram-chuyen-cuoi-ghe-da-viet-chuyen",
+      "speaker": "Bác Thu Ngân Vui Vẻ",
+      "prompt": "Bác đọc ba chuyện mới nghĩ ra và hỏi: «Chuyện nào khách nghe sẽ cười thật, không phải cười cho bác vui?»",
+      "choices": [
+        {
+          "id": "so-khong",
+          "text": "Số 0 gặp số 8: «Ơ, thắt lưng đẹp thế!»",
+          "consequence": "Bác ôm bụng cười, rồi ngạc nhiên vì {name} cũng cười. Chuyện thứ chín mươi bảy vào sổ!"
+        },
+        {
+          "id": "vo-toan",
+          "text": "Vì sao cuốn vở Toán buồn? Vì nó đầy bài toán khó",
+          "consequence": "Bác chép chuyện vào sổ, gạch chân chữ «bài toán» hai lần cho người đọc khỏi bỏ sót."
+        },
+        {
+          "id": "bon-chuyen",
+          "text": "Bác kể cả hai, ai cười to hơn thì giữ",
+          "consequence": "Hai bác bán cá nghe xong cười to cả hai chuyện. Bác chép cả hai vào sổ, mừng rơn."
+        }
+      ],
+      "en": {
+        "title": "Which joke goes in the book?",
+        "goTo": "Go to the edge of the canal; he reads jokes to {name} from the stone bench",
+        "prompt": "He reads three new jokes and asks: «Which one will make a customer really laugh, not just laugh to please me?»",
+        "choices": [
+          {
+            "text": "Zero meets eight: «Oh, what a lovely belt!»",
+            "consequence": "He clutches his belly laughing, then is amazed that {name} laughs too. Joke ninety-seven goes in the book!"
+          },
+          {
+            "text": "Why is the maths exercise book sad? It is full of hard problems",
+            "consequence": "He copies it into the book and underlines «problems» twice so no reader misses it."
+          },
+          {
+            "text": "Tell both, keep whichever gets the bigger laugh",
+            "consequence": "Two fish sellers laugh loudly at both. He writes them both in, delighted."
+          }
+        ]
+      }
+    },
+    {
+      "id": "khach-tra-tien",
+      "title": "Trả tiền vừa đủ",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Hàng khách xếp dài trước quầy! Giúp bác nhận tiền vừa đủ từng món, đạt tám điểm nhé!",
+      "game": "pay-exact",
+      "goal": 8,
+      "en": {
+        "title": "Exact money",
+        "prompt": "The queue at the counter is long! Help him take exactly the right money for each item; score eight points!"
+      }
+    },
+    {
+      "id": "ket-leng-keng",
+      "title": "Két leng keng trở lại",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Két đủ tiền lẻ, sổ có thêm chuyện mới. Bác hát vang «tám nghìn… tính tiền nàooo!» rồi dúi cho {name} một nắm xu và một tràng «hô hô».",
+      "en": {
+        "title": "The till jingles again",
+        "text": "The till has its small notes and the book has a new joke. He sings out «eight thousand… there you go-o-o!» and presses a handful of coins and a burst of «ho ho» on {name}."
+      }
+    },
+    {
+      "id": "qua-can-noi-doi",
+      "title": "Cái cân lạ lùng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bác bảo sáng mai có việc lạ: cái cân to của dãy hàng cân đong cứ chỉ sai, mà bác nghi có quả cân nào đi trốn.",
+      "en": {
+        "title": "The strange scale",
+        "text": "He says something odd is happening tomorrow: the big scale on the weighing row keeps reading wrong, and he suspects a weight has gone into hiding."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 58,
+    "coin": 14,
+    "skillXp": {
+      "phep-cong": 1,
+      "phep-tru": 1
+    }
+  },
+  "en": {
+    "title": "Bác Thu Ngân Vui Vẻ's story, chapter 1: A joke book full of yawns",
+    "summary": "Bác Thu Ngân Vui Vẻ wants to write a hundred jokes about numbers, but the till has run out of small notes. {name} finds three runaway notes, makes eight thousand, works out change for dried fish and picks a joke for the book."
+  }
+}

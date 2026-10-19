@@ -1,0 +1,378 @@
+{
+  "id": "yarn-ong-bay-giai-co-1",
+  "region": "xom-mai-am",
+  "chapter": 1,
+  "title": "Chuyện của Ông Bảy Cờ Gánh, chương 1: Bàn cờ ra ngõ",
+  "status": "active",
+  "category": "story",
+  "summary": "Ông Bảy muốn mở một giải cờ gánh cho cả xóm. {name} tìm lại bàn cờ, hộp quân và chiếu ngồi, xem lịch chọn ngày thi, ghép cặp người chơi rồi cùng ông chọn phần thưởng.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Ông Bảy Cờ Gánh",
+    "where": "Xóm: cổng vườn hoa, tổ rơm nhà Mẩy, ghế mây bên ngõ, bụi tre đầu ngõ, giàn mướp",
+    "goal": "Chuẩn bị đồ chơi và chọn ngày cho giải cờ gánh đầu tiên của xóm",
+    "play": "Tìm đồ theo lời tả; tính ngày trên tờ lịch; ghép cặp người chơi; chọn phần thưởng; giải đố cùng ông",
+    "learn": "Xem lịch (thứ, ngày trong tuần), suy luận",
+    "reward": "58 XP, 15 Xu, Skill XP Xem lịch, Logic",
+    "next": "Đi khắp xóm gom phiếu đăng ký"
+  },
+  "phases": {
+    "hook": "ong-muon-mo-giai",
+    "explore": "tim-do-choi-co",
+    "learn": "chon-ngay-thi",
+    "challenge": "ghep-cap-dau",
+    "decision": "phan-thuong-giai",
+    "finale": "do-vui-cua-ong",
+    "reward": "giai-co-co-ngay",
+    "next": "gom-phieu"
+  },
+  "places": {
+    "ong-bay-co-ganh": "Cổng vườn hoa",
+    "tim-do-choi-co": "Tổ rơm nhà Mẩy",
+    "st-ong-bay-giai-co-ban-co-van": "Tổ rơm nhà Mẩy",
+    "st-ong-bay-giai-co-hop-quan-co": "Tổ rơm nhà Mẩy",
+    "st-ong-bay-giai-co-chieu-coi": "Tổ rơm nhà Mẩy",
+    "st-ong-bay-giai-co-to-lich-ghe-may": "Ghế mây bên ngõ",
+    "st-ong-bay-giai-co-bang-ghep-cap": "Bụi tre đầu ngõ",
+    "st-ong-bay-giai-co-ban-da-giai-thuong": "Giàn mướp"
+  },
+  "steps": [
+    {
+      "id": "ong-muon-mo-giai",
+      "title": "Ông muốn mở giải",
+      "goTo": "Ra cổng vườn hoa, Ông Bảy Cờ Gánh đang ngồi gõ quân cờ xuống bậc đá",
+      "kind": "dialogue",
+      "target": "ong-bay-co-ganh",
+      "lines": [
+        {
+          "speaker": "Ông Bảy Cờ Gánh",
+          "text": "Cháu… {name}. Ngồi đây. Ông… có một việc… nghĩ mãi rồi. Cộc."
+        },
+        {
+          "speaker": "Ông Bảy Cờ Gánh",
+          "text": "Hồi ông bằng tuổi cháu, cả xóm hay ngồi đánh cờ gánh tới tối mịt. Giờ ông muốn mở một giải, ai cũng được vào chơi."
+        },
+        {
+          "speaker": "Ông Bảy Cờ Gánh",
+          "text": "Nhưng bàn cờ của ông, hộp quân với cái chiếu… cất đâu mất rồi. Cháu đi tìm giúp ông nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Một giải cờ cho cả xóm ạ? Hay quá!",
+          "reply": "Hay thật. Thắng thua gì, cuối giải cũng ngồi ăn chè với nhau."
+        },
+        {
+          "text": "Cháu chưa biết chơi cờ gánh ông ạ.",
+          "reply": "Không sao. Đi một nước, ông chỉ một nước. Cộc, là biết."
+        }
+      ],
+      "en": {
+        "title": "Grandpa wants a tournament",
+        "goTo": "Go to the garden gate, where Ông Bảy Cờ Gánh is tapping a piece on the stone step",
+        "lines": [
+          "Little… {name}. Sit here. I have… a plan… I have thought about it a long while. Tock.",
+          "When I was your age, the whole lane played cờ gánh until it was pitch dark. Now I want to hold a tournament that anyone may join.",
+          "But my board, the box of pieces and the mat… I have put them away somewhere. Will you find them for me?"
+        ],
+        "choices": [
+          {
+            "text": "A tournament for the whole lane? Brilliant!",
+            "reply": "It is. Win or lose, at the end we all sit down to sweet soup together."
+          },
+          {
+            "text": "I don't know how to play cờ gánh yet.",
+            "reply": "Never mind. You make a move, I show you a move. Tock, and you have it."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-do-choi-co",
+      "title": "Đồ chơi cờ đi đâu?",
+      "goTo": "Sang tổ rơm nhà Mẩy, ông nhớ mang máng đã để đồ ở đó",
+      "kind": "find-object",
+      "prompt": "Ông cất đồ lâu quá nên quên mất chỗ. Đọc lời tả rồi tìm cho đủ ba món:",
+      "items": [
+        {
+          "id": "ban",
+          "name": "Bàn cờ kẻ trên ván",
+          "clue": "Tấm ván gỗ phẳng, mặt kẻ những đường thẳng và đường chéo cắt nhau như mắt lưới.",
+          "target": "st-ong-bay-giai-co-ban-co-van"
+        },
+        {
+          "id": "hop",
+          "name": "Hộp quân cờ gánh",
+          "clue": "Hộp gỗ nhỏ, lắc lên kêu lạch cạch, mùi lá mướp còn thơm trong nắp.",
+          "target": "st-ong-bay-giai-co-hop-quan-co"
+        },
+        {
+          "id": "chieu",
+          "name": "Tấm chiếu cói",
+          "clue": "Cuộn tròn, buộc dây chuối khô, trải ra thì đủ cho hai người ngồi đối mặt.",
+          "target": "st-ong-bay-giai-co-chieu-coi"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Where did the game go?",
+        "goTo": "Go over to Mẩy's straw nest; Grandpa vaguely remembers leaving things there",
+        "prompt": "Grandpa stored them so long ago he has forgotten where. Read each description and find all three:",
+        "items": [
+          {
+            "name": "Board drawn on a plank",
+            "clue": "A flat wooden plank, its face ruled with straight and slanting lines that cross like a net."
+          },
+          {
+            "name": "Box of cờ gánh pieces",
+            "clue": "A small wooden box that rattles when shaken; the lid still smells of gourd leaves."
+          },
+          {
+            "name": "Rush mat",
+            "clue": "Rolled up and tied with dry banana string; spread out, it seats two players face to face."
+          }
+        ]
+      }
+    },
+    {
+      "id": "chon-ngay-thi",
+      "title": "Ngày nào thi cờ?",
+      "goTo": "Ra ghế mây bên ngõ xem tờ lịch ông treo ở đó",
+      "kind": "riddle",
+      "target": "st-ong-bay-giai-co-to-lich-ghe-may",
+      "skill": "xem-lich",
+      "question": "Tờ lịch trên ghế mây ghi: hôm nay là thứ Hai, ngày 12. Ông muốn thi vào Chủ nhật của chính tuần này. Chủ nhật ấy là ngày bao nhiêu?",
+      "answer": {
+        "value": 18
+      },
+      "support": {
+        "guide": [
+          "Đếm lần lượt các ngày sau thứ Hai: thứ Ba, thứ Tư, thứ Năm, thứ Sáu, thứ Bảy, Chủ nhật.",
+          "Mỗi lần sang thứ mới thì ngày tăng thêm 1."
+        ],
+        "hint": "Thứ Ba là ngày 13, thứ Tư là ngày 14…",
+        "answer": {
+          "text": "Ngày 18",
+          "explanation": "Thứ Hai 12, thứ Ba 13, thứ Tư 14, thứ Năm 15, thứ Sáu 16, thứ Bảy 17, Chủ nhật 18."
+        },
+        "en": {
+          "guide": [
+            "Count the days after Monday one by one: Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.",
+            "Each new day adds 1 to the date."
+          ],
+          "hint": "Tuesday is the 13th, Wednesday the 14th…",
+          "answer": {
+            "text": "The 18th",
+            "explanation": "Monday 12, Tuesday 13, Wednesday 14, Thursday 15, Friday 16, Saturday 17, Sunday 18."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ngày 18, Chủ nhật. Cộc! Ông khoanh tròn ngày ấy bằng bút chì đỏ.",
+          "{name} đếm ngày trên lịch nhanh hơn ông đếm quân cờ.",
+          "Chủ nhật ngày 18, ai cũng được nghỉ, cả xóm tới đủ."
+        ],
+        "wrong": [
+          "Chủ nhật là ngày cuối tuần, còn xa hơn một chút đấy cháu.",
+          "Cháu thử chỉ tay đếm từng ô ngày, bắt đầu từ ô thứ Hai.",
+          "Gần đúng rồi, nhưng ngày ấy mới là thứ Bảy thôi."
+        ],
+        "en": {
+          "right": [
+            "The 18th, a Sunday. Tock! Grandpa circles it with a red pencil.",
+            "You count dates faster than I count pieces, {name}.",
+            "Sunday the 18th: everyone is off, the whole lane can come."
+          ],
+          "wrong": [
+            "Sunday is the end of the week, a little further on.",
+            "Point at each date square in turn, starting from Monday.",
+            "Nearly, but that day is only Saturday."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which day is the match?",
+        "goTo": "Go to the wicker chair by the lane and look at the calendar Grandpa hung there",
+        "question": "The calendar on the wicker chair says today is Monday the 12th. Grandpa wants the matches on the Sunday of this same week. What is that Sunday's date?"
+      }
+    },
+    {
+      "id": "ghep-cap-dau",
+      "title": "Ai đấu với ai?",
+      "goTo": "Lên bụi tre đầu ngõ, ông kẻ bảng ghép cặp bằng phấn trên tấm gỗ",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-ong-bay-giai-co-bang-ghep-cap",
+      "skill": "logic",
+      "prompt": "Bốn bạn nhỏ đăng ký trước: Tí, Na, Bống và Cò. Ông dặn: Tí với Na là anh em, không đấu với nhau. Bống đã hẹn đấu với Na. Vậy Tí đấu với ai?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Tí đấu với Na"
+        },
+        {
+          "id": "b",
+          "text": "Tí đấu với Bống"
+        },
+        {
+          "id": "c",
+          "text": "Tí đấu với Cò"
+        }
+      ],
+      "answer": {
+        "choice": "c"
+      },
+      "support": {
+        "guide": [
+          "Gạch bỏ người Tí không được gặp.",
+          "Gạch tiếp người đã có cặp rồi."
+        ],
+        "hint": "Na là em Tí, Bống đã bắt cặp với Na.",
+        "answer": {
+          "text": "Tí đấu với Cò",
+          "explanation": "Tí không đấu với Na (anh em), Bống đã đấu với Na, nên người còn lại cho Tí là Cò."
+        },
+        "en": {
+          "guide": [
+            "Cross out the person Tí must not meet.",
+            "Then cross out anyone who already has a partner."
+          ],
+          "hint": "Na is Tí's sister, and Bống is already paired with Na.",
+          "answer": {
+            "text": "Tí plays Cò",
+            "explanation": "Tí cannot play Na (they are family) and Bống is playing Na, so the one left for Tí is Cò."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Cộc! Tí gặp Cò, Na gặp Bống. Bảng ghép cặp xong gọn.",
+          "Cháu gạch từng người một, đúng là cách của người đánh cờ.",
+          "Hai cặp, bốn bạn, không ai bị bỏ lại. Ông ghi ngay lên bảng."
+        ],
+        "wrong": [
+          "Anh em với nhau thì ông đã dặn không xếp cùng cặp rồi.",
+          "Bống hẹn với người khác mất rồi, cháu đọc lại lời ông dặn nhé.",
+          "Thử viết bốn cái tên ra rồi nối từng đôi xem còn ai."
+        ],
+        "en": {
+          "right": [
+            "Tock! Tí meets Cò, Na meets Bống. The pairing board is done.",
+            "You crossed them off one by one, just as a real player would.",
+            "Two pairs, four children, nobody left out. Grandpa chalks it up at once."
+          ],
+          "wrong": [
+            "Grandpa said brother and sister do not play each other.",
+            "Bống has already promised someone else; read the rules again.",
+            "Write the four names and join them in twos to see who is left."
+          ]
+        }
+      },
+      "en": {
+        "title": "Who plays whom?",
+        "goTo": "Go up to the bamboo clump at the head of the lane, where Grandpa chalks the pairing board on a plank",
+        "prompt": "Four children signed up first: Tí, Na, Bống and Cò. Grandpa says Tí and Na are brother and sister, so they do not play each other. Bống has already agreed to play Na. So who does Tí play?",
+        "choices": [
+          "Tí plays Na",
+          "Tí plays Bống",
+          "Tí plays Cò"
+        ]
+      }
+    },
+    {
+      "id": "phan-thuong-giai",
+      "title": "Thưởng gì cho giải?",
+      "goTo": "Vào giàn mướp, ông đặt bàn đá chờ phần thưởng ở dưới đó",
+      "kind": "decision",
+      "target": "st-ong-bay-giai-co-ban-da-giai-thuong",
+      "speaker": "Ông Bảy Cờ Gánh",
+      "prompt": "Ông xoa cằm bên bàn đá: «Giải nào… cũng phải có phần thưởng. Cháu nghĩ… nên thưởng gì?»",
+      "choices": [
+        {
+          "id": "che-ca-xom",
+          "text": "Một nồi chè đậu đen cho cả người thắng lẫn người thua",
+          "consequence": "Ông cười khà khà: «Đúng ý ông. Ai cũng có bát chè thì chẳng ai buồn.»"
+        },
+        {
+          "id": "quan-co-khac",
+          "text": "Một quân cờ ông tự khắc tên người thắng",
+          "consequence": "Ông gật gù, lấy dao nhỏ ra thử khắc một chữ lên mẩu gỗ thừa. Nét chữ run run nhưng rõ."
+        },
+        {
+          "id": "chon-tro-choi",
+          "text": "Người thắng được chọn trò chơi cho buổi sau",
+          "consequence": "Ông vỗ đùi: «Hay! Thế thì tuần nào xóm mình cũng có một trò mới.»"
+        }
+      ],
+      "en": {
+        "title": "What is the prize?",
+        "goTo": "Go in under the gourd trellis, where Grandpa set out a stone table for the prize",
+        "prompt": "Grandpa rubs his chin by the stone table: \"Every tournament… needs a prize. What do you think… we should give?\"",
+        "choices": [
+          {
+            "text": "A pot of black-bean sweet soup for winners and losers alike",
+            "consequence": "Grandpa chuckles: \"Just what I wanted. If everyone gets soup, nobody is sad.\""
+          },
+          {
+            "text": "A piece Grandpa carves with the winner’s name",
+            "consequence": "Grandpa nods and tries carving a letter on a scrap of wood. The stroke wobbles but it is clear."
+          },
+          {
+            "text": "The winner picks the game for next time",
+            "consequence": "Grandpa slaps his knee: \"Good! Then the lane gets a new game every week.\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-vui-cua-ong",
+      "title": "Ông đố, cháu giải",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ngồi nghỉ dưới giàn mướp, ông ra câu đố dân gian để thử trí nhanh của người dự giải. Giải đúng năm câu nhé!",
+      "game": "folk-riddle",
+      "goal": 5,
+      "en": {
+        "title": "Grandpa’s riddles",
+        "prompt": "Resting under the trellis, Grandpa tests the quick wits of his first player with folk riddles. Solve five!"
+      }
+    },
+    {
+      "id": "giai-co-co-ngay",
+      "title": "Giải cờ đã có ngày",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ông Bảy viết chữ «Chủ nhật, ngày 18» lên tấm bảng, gõ một tiếng cộc thật kêu rồi chia cho {name} một nửa quả ổi chín.",
+      "en": {
+        "title": "The match has a date",
+        "text": "Ông Bảy writes \"Sunday the 18th\" on the board, gives it a ringing tock and shares half a ripe guava with {name}."
+      }
+    },
+    {
+      "id": "gom-phieu",
+      "title": "Gom phiếu đăng ký",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ông sẽ phát phiếu đăng ký khắp xóm. Mai {name} tới sớm, đi gom phiếu với ông nhé.",
+      "en": {
+        "title": "Collecting entry slips",
+        "text": "Grandpa will hand out entry slips all round the lane. Come early tomorrow, {name}, and help him gather them in."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 58,
+    "coin": 15,
+    "skillXp": {
+      "xem-lich": 1,
+      "logic": 1
+    }
+  },
+  "en": {
+    "title": "Ông Bảy Cờ Gánh's story, chapter 1: The board comes out",
+    "summary": "Ông Bảy wants a cờ gánh tournament for the whole lane. {name} finds the board, the pieces and the mat, reads the calendar to pick the day, pairs up the players and helps choose the prize."
+  }
+}

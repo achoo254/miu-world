@@ -1,0 +1,373 @@
+{
+  "id": "yarn-den-sen-ngan-ha-1",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Chuyện của Cô Đèn Lồng Sen, chương 1: Những chiếc đèn có tên",
+  "status": "active",
+  "category": "story",
+  "summary": "Gió đêm làm đổ giàn phơi đèn, ba chiếc đèn có tên lăn đi mất. {name} tìm đèn theo lời tả, tính số đèn còn phải làm, đoán màu đèn theo mẫu và đặt tên cho chiếc đèn mới.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cô Đèn Lồng Sen",
+    "where": "Đầu làng: gốc cây đa, giếng làng, bảng tin, lớp học nhỏ",
+    "goal": "Tìm lại ba chiếc đèn lạc và chuẩn bị đủ đèn cho đêm hội",
+    "play": "Tìm đèn theo lời tả; tính số đèn còn thiếu; đoán màu đèn theo mẫu; đặt tên đèn mới; cắt hoa giấy",
+    "learn": "Phép trừ có nhớ từ số tròn trăm, tìm quy luật",
+    "reward": "55 XP, 14 Xu, Skill XP Phép trừ, Logic",
+    "next": "Làm chiếc hoa đăng đầu tay"
+  },
+  "phases": {
+    "hook": "gio-dem-qua",
+    "explore": "tim-den-lac",
+    "learn": "den-con-thieu",
+    "challenge": "hang-den-mau",
+    "decision": "dat-ten-den-moi",
+    "finale": "cat-canh-sen",
+    "reward": "den-ve-gian",
+    "next": "hoa-dang-tu-tay"
+  },
+  "places": {
+    "co-den-long-sen": "Đầu làng",
+    "tim-den-lac": "Cây đa đầu làng",
+    "st-den-sen-ngan-ha-den-be-hong": "Cây đa đầu làng",
+    "st-den-sen-ngan-ha-den-chu-com": "Cây đa đầu làng",
+    "st-den-sen-ngan-ha-den-chi-nga": "Cây đa đầu làng",
+    "st-den-sen-ngan-ha-so-dem-den": "Giếng làng",
+    "st-den-sen-ngan-ha-bang-xep-den": "Bảng tin làng",
+    "st-den-sen-ngan-ha-den-chua-ten": "Lớp học nhỏ"
+  },
+  "steps": [
+    {
+      "id": "gio-dem-qua",
+      "title": "Gió đêm qua",
+      "goTo": "Ra đầu làng, Cô Đèn Lồng Sen đang ngồi dưới hiên dán giấy",
+      "kind": "dialogue",
+      "target": "co-den-long-sen",
+      "lines": [
+        {
+          "speaker": "Cô Đèn Lồng Sen",
+          "text": "Cháu {name} đấy à? Đêm qua gió lùa qua đầu làng, giàn phơi đèn của cô đổ nghiêng cả."
+        },
+        {
+          "speaker": "Cô Đèn Lồng Sen",
+          "text": "Ba chiếc đèn lăn đi mất. Đứa nào cô cũng đặt tên rồi, thiếu đứa nào cô cũng nhớ. Cháu thấy sao, mình đi tìm chứ?"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đi tìm ngay, cô tả giúp cháu nhé!",
+          "reply": "Cô tả từng đứa một, cháu nghe kỹ là nhận ra liền."
+        },
+        {
+          "text": "Đèn mà cũng có tên hả cô?",
+          "reply": "Có chứ. Đèn nào thắp lên cũng soi đường cho một người, nên phải có tên."
+        }
+      ],
+      "en": {
+        "title": "Last night's wind",
+        "goTo": "Go to the village gate, where Cô Đèn Lồng Sen sits under the eaves gluing paper",
+        "lines": [
+          "Is that you, {name}? Last night the wind swept through the village gate and knocked my lantern rack sideways.",
+          "Three lanterns rolled away. Each one has a name, and I miss every one of them. What do you think, shall we go and look?"
+        ],
+        "choices": [
+          {
+            "text": "I'll go now; tell me what they look like!",
+            "reply": "I'll describe them one by one; listen closely and you'll know them at once."
+          },
+          {
+            "text": "Lanterns have names?",
+            "reply": "Of course. Every lantern lights the way for someone, so it deserves a name."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-den-lac",
+      "title": "Ba chiếc đèn đi lạc",
+      "goTo": "Ra gốc cây đa đầu làng tìm ba chiếc đèn bị gió cuốn",
+      "kind": "find-object",
+      "prompt": "Gió cuốn ba chiếc đèn ra quanh gốc cây đa. Đọc lời cô tả rồi tìm từng chiếc:",
+      "items": [
+        {
+          "id": "be-hong",
+          "name": "Đèn sen Bé Hồng",
+          "clue": "Tám cánh hồng nhạt, chóp có tua chỉ đỏ, nằm nghiêng như đang ngủ say.",
+          "target": "st-den-sen-ngan-ha-den-be-hong"
+        },
+        {
+          "id": "chu-com",
+          "name": "Đèn sen Chú Cốm",
+          "clue": "Xanh như cốm non, cánh nhỏ xíu, đáy có dán một chiếc lá tre khô.",
+          "target": "st-den-sen-ngan-ha-den-chu-com"
+        },
+        {
+          "id": "chi-nga",
+          "name": "Đèn sen Chị Ngà",
+          "clue": "Trắng ngà như hạt gạo mới, to nhất trong ba chiếc, quai cầm bằng sợi mây.",
+          "target": "st-den-sen-ngan-ha-den-chi-nga"
+        }
+      ],
+      "skill": "doc-hieu",
+      "en": {
+        "title": "Three lost lanterns",
+        "goTo": "Go to the banyan at the village gate and find the three lanterns the wind blew away",
+        "prompt": "The wind blew three lanterns round the foot of the banyan. Read how Cô describes them and find each one:",
+        "items": [
+          {
+            "name": "Bé Hồng the lotus lantern",
+            "clue": "Eight pale pink petals and a red thread tassel on top, lying on its side as if fast asleep."
+          },
+          {
+            "name": "Chú Cốm the lotus lantern",
+            "clue": "Green as young rice flakes, with tiny petals and a dry bamboo leaf glued underneath."
+          },
+          {
+            "name": "Chị Ngà the lotus lantern",
+            "clue": "Ivory white like new rice, the biggest of the three, with a handle of rattan."
+          }
+        ]
+      }
+    },
+    {
+      "id": "den-con-thieu",
+      "title": "Còn thiếu bao nhiêu đèn?",
+      "goTo": "Ra giếng làng, cô để quyển sổ đếm đèn trên thành giếng",
+      "kind": "riddle",
+      "target": "st-den-sen-ngan-ha-so-dem-den",
+      "skill": "phep-tru",
+      "question": "Đêm hội cô muốn thả đủ 100 chiếc đèn sen. Sổ ghi cô đã làm xong 58 chiếc. Cô còn phải làm thêm bao nhiêu chiếc đèn nữa?",
+      "answer": {
+        "value": 42
+      },
+      "support": {
+        "guide": [
+          "Lấy số đèn cần có trừ đi số đèn đã làm xong.",
+          "Đặt tính 100 − 58, trừ từ hàng đơn vị, nhớ mượn một chục."
+        ],
+        "hint": "58 thêm 2 là 60, 60 thêm 40 là 100.",
+        "answer": {
+          "text": "42 chiếc đèn",
+          "explanation": "100 − 58 = 42. Thử lại: 58 + 42 = 100, vậy cô còn phải làm 42 chiếc đèn."
+        },
+        "en": {
+          "guide": [
+            "Take the lanterns already made away from the lanterns needed.",
+            "Write 100 − 58 in columns and start with the ones, borrowing a ten."
+          ],
+          "hint": "58 and 2 make 60, and 60 and 40 make 100.",
+          "answer": {
+            "text": "42 lanterns",
+            "explanation": "100 − 58 = 42. Check: 58 + 42 = 100, so Cô still has 42 lanterns to make."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn mươi hai chiếc! Cô ghi ngay con số vào sổ, chữ tròn như cánh sen.",
+          "{name} trừ từ một trăm mà không vấp chỗ nào.",
+          "Đúng rồi, vậy mỗi tối cô làm sáu chiếc là kịp đêm hội."
+        ],
+        "wrong": [
+          "Còn thiếu thì phải ít hơn một trăm chứ, {name} xem lại nhé.",
+          "Thử cộng ngược số vừa tìm với 58 xem có ra 100 không.",
+          "Hàng đơn vị 0 không trừ được 8, mượn một chục ở hàng chục nào."
+        ],
+        "en": {
+          "right": [
+            "Forty-two! Cô writes it in the notebook straight away, in letters round as lotus petals.",
+            "You took away from a hundred without a single stumble, {name}.",
+            "Right, so six lanterns an evening will be ready in time for the festival."
+          ],
+          "wrong": [
+            "What is missing must be less than a hundred, {name}; take another look.",
+            "Try adding your answer back to 58 and see if you get 100.",
+            "0 in the ones can't lose 8; borrow a ten from the tens."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many lanterns are missing?",
+        "goTo": "Go to the village well, where Cô left her lantern notebook on the rim",
+        "question": "For the festival night Cô wants to float exactly 100 lotus lanterns. Her notebook says 58 are finished. How many more must she make?"
+      }
+    },
+    {
+      "id": "hang-den-mau",
+      "title": "Chiếc đèn thứ mười",
+      "goTo": "Sang bảng tin làng, cô đã ghim tờ mẫu xếp đèn ở đó",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "st-den-sen-ngan-ha-bang-xep-den",
+      "skill": "logic",
+      "prompt": "Đêm hội, đèn treo dọc đường theo mẫu: trắng, hồng, hồng, trắng, hồng, hồng, trắng… Chiếc đèn thứ mười màu gì?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Màu trắng"
+        },
+        {
+          "id": "b",
+          "text": "Màu hồng"
+        },
+        {
+          "id": "c",
+          "text": "Màu vàng"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Mẫu lặp lại theo từng nhóm ba chiếc: trắng, hồng, hồng.",
+          "Đếm tiếp từng chiếc tới chiếc thứ mười."
+        ],
+        "hint": "Chiếc thứ 1, thứ 4, thứ 7 đều màu trắng. Chiếc nào trắng tiếp theo?",
+        "answer": {
+          "text": "Màu trắng",
+          "explanation": "Cứ ba chiếc lại bắt đầu bằng một chiếc trắng: chiếc 1, 4, 7, 10. Vậy chiếc thứ mười màu trắng."
+        },
+        "en": {
+          "guide": [
+            "The pattern repeats in groups of three: white, pink, pink.",
+            "Count on, lantern by lantern, up to the tenth."
+          ],
+          "hint": "Lanterns 1, 4 and 7 are white. Which is the next white one?",
+          "answer": {
+            "text": "White",
+            "explanation": "Every group of three starts with a white one: lanterns 1, 4, 7, 10. So the tenth lantern is white."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Trắng! Cô treo chiếc đèn ngà vào đúng chỗ thứ mười.",
+          "Nhóm ba chiếc cứ thế lặp lại, {name} nhìn ra ngay.",
+          "Hàng đèn sẽ đều tăm tắp như hàng cau trước ngõ."
+        ],
+        "wrong": [
+          "Mẫu này chẳng có chiếc vàng nào đâu, {name}.",
+          "Chiếc thứ chín mới là hồng, đếm thêm một chiếc nữa xem.",
+          "Thử chia hàng đèn thành từng nhóm ba rồi đếm lại."
+        ],
+        "en": {
+          "right": [
+            "White! Cô hangs an ivory lantern in the tenth spot.",
+            "Groups of three, over and over: {name} saw it at once.",
+            "The row of lanterns will be as neat as the areca palms by the gate."
+          ],
+          "wrong": [
+            "There are no yellow lanterns in this pattern, {name}.",
+            "The ninth one is pink; count one more.",
+            "Try splitting the row into groups of three and count again."
+          ]
+        }
+      },
+      "en": {
+        "title": "The tenth lantern",
+        "goTo": "Go to the village notice board, where Cô pinned the lantern pattern",
+        "prompt": "On festival night the lanterns hang along the road in a pattern: white, pink, pink, white, pink, pink, white… What colour is the tenth lantern?",
+        "choices": [
+          "White",
+          "Pink",
+          "Yellow"
+        ]
+      }
+    },
+    {
+      "id": "dat-ten-den-moi",
+      "title": "Tên cho chiếc đèn mới",
+      "goTo": "Mang chiếc đèn mới làm sang lớp học nhỏ, các bạn đang chờ đặt tên",
+      "kind": "decision",
+      "target": "st-den-sen-ngan-ha-den-chua-ten",
+      "speaker": "Cô Đèn Lồng Sen",
+      "prompt": "Chiếc đèn mới nhất còn chưa có tên. Cô hỏi: «Cháu thấy sao, mình gọi bạn ấy là gì?»",
+      "choices": [
+        {
+          "id": "sao-mai",
+          "text": "Gọi là Sao Mai, vì bạn ấy sáng nhất",
+          "consequence": "Cô viết «Sao Mai» lên đáy đèn bằng mực tím. Chiếc đèn như sáng thêm một chút."
+        },
+        {
+          "id": "ten-minh",
+          "text": "Đặt theo tên {name}, để nhớ hôm nay",
+          "consequence": "Cô nắn nót viết tên {name}: «Từ nay đêm hội nào, đèn này cũng soi đường cho cháu.»"
+        },
+        {
+          "id": "bo-phieu",
+          "text": "Để các bạn trong lớp bỏ phiếu chọn tên",
+          "consequence": "Cả lớp viết tên vào mẩu giấy. Tên «Bánh Trôi» thắng, ai cũng cười vì đèn tròn xoe thật."
+        }
+      ],
+      "en": {
+        "title": "A name for the new lantern",
+        "goTo": "Take the newest lantern to the little classroom, where the children are waiting to name it",
+        "prompt": "The newest lantern has no name yet. Cô asks: \"What do you think, what shall we call it?\"",
+        "choices": [
+          {
+            "text": "Call it Morning Star, because it shines the brightest",
+            "consequence": "Cô writes \"Morning Star\" on its base in purple ink. The lantern seems to glow a little more."
+          },
+          {
+            "text": "Name it after {name}, to remember today",
+            "consequence": "Cô writes {name} carefully: \"From now on, every festival night, this lantern lights your way.\""
+          },
+          {
+            "text": "Let the class vote for a name",
+            "consequence": "Everyone writes a name on a slip. \"Sweet Dumpling\" wins, and they all laugh because it really is round."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cat-canh-sen",
+      "title": "Cắt hoa vá đèn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Cô đưa {name} một xấp giấy dó hồng. Gấp rồi cắt cho đủ bốn bông hoa để vá những cánh đèn bị gió làm rách nhé!",
+      "game": "paper-fold-cut",
+      "goal": 4,
+      "en": {
+        "title": "Cutting paper flowers",
+        "prompt": "Cô hands {name} a stack of pink paper. Fold and cut four flowers to patch the petals the wind tore!"
+      }
+    },
+    {
+      "id": "den-ve-gian",
+      "title": "Đèn về giàn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ba chiếc đèn lạc đã về giàn, cánh rách được vá bằng hoa giấy {name} cắt. Cô gọi tên từng chiếc như điểm danh, và gọi cả tên {name} ở cuối.",
+      "en": {
+        "title": "Lanterns back on the rack",
+        "text": "The three lost lanterns are back on the rack, their torn petals patched with {name}'s paper flowers. Cô calls each name like a register, and calls {name} last of all."
+      }
+    },
+    {
+      "id": "hoa-dang-tu-tay",
+      "title": "Hoa đăng tự tay làm",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Còn bốn mươi hai chiếc đèn chưa làm. Mai cô dạy {name} làm một chiếc hoa đăng từ đầu tới cuối, bằng chính đôi tay mình.",
+      "en": {
+        "title": "A lantern made by hand",
+        "text": "Forty-two lanterns still to make. Tomorrow Cô will teach {name} to make a lantern-flower from start to finish, with their own hands."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": {
+      "phep-tru": 1,
+      "logic": 1
+    }
+  },
+  "en": {
+    "title": "Cô Đèn Lồng Sen's story, chapter 1: Lanterns with names",
+    "summary": "A night wind toppled the lantern rack and three named lanterns rolled away. {name} finds them from Cô's descriptions, works out how many lanterns are still to make, spots the colour pattern and names the newest lantern."
+  }
+}

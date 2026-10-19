@@ -1,0 +1,367 @@
+{
+  "id": "yarn-meo-sen-dem-vit-3",
+  "region": "lang-ven-song",
+  "chapter": 4,
+  "title": "Chuyện của Mèo Đầm Sen, chương 3: Nước cho ruộng ven đầm",
+  "status": "active",
+  "category": "story",
+  "summary": "Đường ống ra ruộng bị rò. {name} gom đồ nghề ở cống, vẽ đường ống mới tránh bờ ruộng đang cấy, đong số lít nước cho từng thửa và quyết định dùng nước thừa thế nào.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Đầm Sen",
+    "where": "Đầm sen, cống ra ruộng, lều giữ ống, ruộng ven đầm, luống rau muống",
+    "goal": "Dẫn đủ nước cho ba thửa ruộng ven đầm",
+    "play": "Gom đồ nghề; vẽ đường ống; đong lít nước; dùng nước thừa; mở cống ruộng",
+    "learn": "Đơn vị lít, bài toán nhiều hơn, tìm đường",
+    "reward": "70 XP, 18 Xu, Skill XP Dung tích, Logic",
+    "next": "Một lá thư cờ mới"
+  },
+  "phases": {
+    "hook": "ong-ro-nuoc",
+    "explore": "lay-do-nghe",
+    "learn": "duong-ong-moi",
+    "challenge": "dong-nuoc-thua-hai",
+    "decision": "nuoc-con-thua",
+    "finale": "mo-cong-ruong",
+    "reward": "ruong-no-nuoc",
+    "next": "thu-co-moi"
+  },
+  "places": {
+    "meo-dam-sen": "Đầm sen",
+    "lay-do-nghe": "Cống ra ruộng",
+    "st-meo-sen-dem-vit-can-vach-lit": "Cống ra ruộng",
+    "st-meo-sen-dem-vit-day-va-ong": "Cống ra ruộng",
+    "st-meo-sen-dem-vit-xo-ton": "Cống ra ruộng",
+    "st-meo-sen-dem-vit-ban-ve-ong": "Lều giữ ống",
+    "st-meo-sen-dem-vit-bang-ba-thua": "Ruộng ven đầm",
+    "st-meo-sen-dem-vit-chum-nuoc-thua": "Luống rau muống"
+  },
+  "steps": [
+    {
+      "id": "ong-ro-nuoc",
+      "title": "Ống rò nước",
+      "goTo": "Ra đầm sen, Mèo đang nhìn vũng nước loang trên bờ",
+      "kind": "dialogue",
+      "target": "meo-dam-sen",
+      "lines": [
+        {
+          "speaker": "Mèo Đầm Sen",
+          "text": "Meo. Đường ống ra ruộng bị rò. Nước chảy lung tung. Mèo ghét lung tung."
+        },
+        {
+          "speaker": "Mèo Đầm Sen",
+          "text": "Ba thửa ruộng ven đầm cần nước, mỗi thửa một lượng khác nhau. Mèo ghi cả rồi, giờ cần người đong và người dẫn nước."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu vừa đong vừa dẫn được!",
+          "reply": "Tốt. Nhớ: đong đủ, không thừa. Nước thừa là nước phí."
+        },
+        {
+          "text": "Ống rò ở chỗ nào hả Mèo?",
+          "reply": "Chỗ nào ướt là chỗ đó. Nhưng trước hết, đi lấy đồ nghề đã."
+        }
+      ],
+      "en": {
+        "title": "A leaking pipe",
+        "goTo": "Go to the lotus pond, where Mèo is staring at a puddle spreading over the bank",
+        "lines": [
+          "Meow. The pipe to the fields is leaking. Water everywhere. I hate everywhere.",
+          "Three fields by the pond need water, each a different amount. I have written it all down; now I need someone to measure and someone to lead the water."
+        ],
+        "choices": [
+          {
+            "text": "I can measure and lead the water!",
+            "reply": "Good. Remember: enough, not extra. Extra water is wasted water."
+          },
+          {
+            "text": "Where's the leak, Mèo?",
+            "reply": "Wherever it's wet. But first, go and get the tools."
+          }
+        ]
+      }
+    },
+    {
+      "id": "lay-do-nghe",
+      "title": "Đồ nghề ở cống",
+      "goTo": "Ra cống ra ruộng lấy can đong, dây vá ống và xô tôn",
+      "kind": "search",
+      "targets": [
+        "st-meo-sen-dem-vit-can-vach-lit",
+        "st-meo-sen-dem-vit-day-va-ong",
+        "st-meo-sen-dem-vit-xo-ton"
+      ],
+      "en": {
+        "title": "Tools at the sluice",
+        "goTo": "Go to the field sluice for the measuring can, the pipe tape and the tin bucket"
+      }
+    },
+    {
+      "id": "duong-ong-moi",
+      "title": "Đường ống mới",
+      "goTo": "Vào lều giữ ống, Mèo trải bản vẽ đường ống trên chiếu",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "maze",
+      "target": "st-meo-sen-dem-vit-ban-ve-ong",
+      "skill": "logic",
+      "prompt": "Ô gạch là bờ ruộng đang cấy, không đào ống qua được. Dẫn ống từ ô xuất phát tới ô đích. Dãy bước nào đúng? (→ sang phải, ↓ đi xuống)",
+      "grid": [
+        [
+          "S",
+          "#",
+          ".",
+          "."
+        ],
+        [
+          ".",
+          ".",
+          ".",
+          "#"
+        ],
+        [
+          "#",
+          "#",
+          ".",
+          "."
+        ],
+        [
+          ".",
+          ".",
+          "#",
+          "G"
+        ]
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "↓ → → → ↓ ↓"
+        },
+        {
+          "id": "b",
+          "text": "↓ → ↓ → → ↓"
+        },
+        {
+          "id": "c",
+          "text": "↓ → → ↓ → ↓"
+        }
+      ],
+      "answer": {
+        "choice": "c"
+      },
+      "support": {
+        "guide": [
+          "Ô ngay bên phải ô xuất phát là bờ ruộng, nên bước đầu phải đi xuống.",
+          "Dò từng dãy bằng ngón tay, chạm ô gạch là bỏ."
+        ],
+        "hint": "Sau khi xuống một ô, đi sang phải hai ô rồi mới xuống tiếp.",
+        "answer": {
+          "text": "↓ → → ↓ → ↓",
+          "explanation": "Xuống một ô, sang phải hai ô, xuống một ô, sang phải một ô, xuống một ô là tới đích mà không cắt qua bờ ruộng nào."
+        },
+        "en": {
+          "guide": [
+            "The square right of the start is a field bank, so the first step must go down.",
+            "Trace each set with your finger; drop it if it touches brick."
+          ],
+          "hint": "After one step down, go right two squares before going down again.",
+          "answer": {
+            "text": "↓ → → ↓ → ↓",
+            "explanation": "Down one, right two, down one, right one, down one: the pipe reaches the goal without crossing a single field bank."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đường ống đi gọn như nét kẻ của Mèo, chẳng cắt qua bờ nào.",
+          "{name} dò đường còn khéo hơn nước tự tìm đường.",
+          "Meo. Đẹp. Mèo dán bản vẽ này lên vách lều."
+        ],
+        "wrong": [
+          "Đi sang ba ô liền là đâm vào bờ ruộng ở mép phải rồi {name}.",
+          "Xuống hai lần liền là gặp bờ ruộng đang cấy ngay đấy.",
+          "Bắt đầu lại từ ô xuất phát, nhìn kỹ ô gạch quanh mỗi bước."
+        ],
+        "en": {
+          "right": [
+            "The pipe runs as neatly as one of Mèo's ruled lines, crossing no bank.",
+            "{name} finds a path better than water finds its own.",
+            "Meow. Lovely. Mèo pins this drawing to the shed wall."
+          ],
+          "wrong": [
+            "Three steps right in a row hits the bank on the right edge, {name}.",
+            "Two steps down in a row runs straight into a planted bank.",
+            "Start again from the start square and watch the brick squares round each step."
+          ]
+        }
+      },
+      "en": {
+        "title": "The new pipe",
+        "goTo": "Go into the pipe shed, where Mèo has spread the pipe drawing on a mat",
+        "prompt": "Brick squares are field banks being planted; no pipe can be dug through them. Lead the pipe from the start square to the goal. Which moves work? (→ right, ↓ down)",
+        "choices": [
+          "↓ → → → ↓ ↓",
+          "↓ → ↓ → → ↓",
+          "↓ → → ↓ → ↓"
+        ]
+      }
+    },
+    {
+      "id": "dong-nuoc-thua-hai",
+      "title": "Đong nước thửa thứ hai",
+      "goTo": "Ra ruộng ven đầm đọc bảng ghi nước ba thửa",
+      "kind": "riddle",
+      "target": "st-meo-sen-dem-vit-bang-ba-thua",
+      "skill": "dung-tich",
+      "question": "Thửa ruộng thứ nhất cần 35 lít nước. Thửa thứ hai cần nhiều hơn thửa thứ nhất 18 lít. Thửa thứ hai cần bao nhiêu lít nước?",
+      "answer": {
+        "value": 53
+      },
+      "support": {
+        "guide": [
+          "«Nhiều hơn» thì lấy số lít thửa thứ nhất cộng thêm.",
+          "Đặt tính 35 + 18, cộng từ hàng đơn vị."
+        ],
+        "hint": "5 cộng 8 bằng 13, viết 3 nhớ 1 sang hàng chục.",
+        "answer": {
+          "text": "53 lít nước",
+          "explanation": "35 + 18 = 53: 5 cộng 8 bằng 13, viết 3 nhớ 1; 3 cộng 1 bằng 4, thêm 1 là 5. Thửa thứ hai cần 53 lít nước."
+        },
+        "en": {
+          "guide": [
+            "\"More than\" means adding to the first field's litres.",
+            "Write 35 + 18 in columns and start with the ones."
+          ],
+          "hint": "5 plus 8 is 13: write 3, carry 1 to the tens.",
+          "answer": {
+            "text": "53 litres",
+            "explanation": "35 + 18 = 53: 5 plus 8 is 13, write 3 carry 1; 3 plus 1 is 4, plus 1 is 5. The second field needs 53 litres."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Năm mươi ba lít! Mèo đổ đúng mười lần can năm lít rồi thêm ba lít, không sai giọt nào.",
+          "{name} thấy chữ «nhiều hơn» là biết phải cộng.",
+          "Thửa thứ hai uống no nước, mạ xanh mơn mởn ngay."
+        ],
+        "wrong": [
+          "Nhiều hơn thì phải lớn hơn 35 lít chứ {name}.",
+          "Bài này cộng thêm, đừng trừ đi nhé.",
+          "Nhớ số nhớ từ hàng đơn vị sang hàng chục."
+        ],
+        "en": {
+          "right": [
+            "Fifty-three litres! Mèo pours ten five-litre cans plus three litres, not a drop wrong.",
+            "{name} saw \"more than\" and knew it meant adding.",
+            "The second field drinks its fill and the rice shoots turn bright green."
+          ],
+          "wrong": [
+            "More than means bigger than 35 litres, {name}.",
+            "This one is adding on, not taking away.",
+            "Remember to carry from the ones to the tens."
+          ]
+        }
+      },
+      "en": {
+        "title": "Water for the second field",
+        "goTo": "Go out to the fields by the pond and read the board of water for three fields",
+        "question": "The first field needs 35 litres of water. The second field needs 18 litres more than the first. How many litres does the second field need?"
+      }
+    },
+    {
+      "id": "nuoc-con-thua",
+      "title": "Nước còn thừa",
+      "goTo": "Sang luống rau muống, chum nước thừa đặt ở đầu luống",
+      "kind": "decision",
+      "target": "st-meo-sen-dem-vit-chum-nuoc-thua",
+      "speaker": "Mèo Đầm Sen",
+      "prompt": "Đong xong ba thửa, chum vẫn còn ít nước. Mèo hỏi: «Meo. Nước thừa. Làm gì cho khỏi phí?»",
+      "choices": [
+        {
+          "id": "tuoi-rau",
+          "text": "Tưới cho luống rau muống cạnh chuồng vịt",
+          "consequence": "Rau muống xanh mướt lên trông thấy. Mèo ghi vào sổ: «nước thừa: không phí»."
+        },
+        {
+          "id": "mang-vit",
+          "text": "Đổ vào máng cho đàn vịt uống",
+          "consequence": "Đàn vịt xúm lại uống ừng ực. Mèo đếm luôn một lượt: đủ mười hai, không thiếu, không thừa."
+        },
+        {
+          "id": "du-phong",
+          "text": "Giữ lại trong chum, phòng hôm nắng gắt",
+          "consequence": "Mèo đậy nắp chum thật kín, dán nhãn «dự phòng». Ngăn nắp tới mức chum cũng trông nghiêm túc."
+        }
+      ],
+      "en": {
+        "title": "Water left over",
+        "goTo": "Go to the water-spinach bed, where the jar of extra water stands at the end",
+        "prompt": "With all three fields measured, there is still a little water in the jar. Mèo asks: \"Meow. Extra water. How do we not waste it?\"",
+        "choices": [
+          {
+            "text": "Water the water spinach by the duck house",
+            "consequence": "The water spinach turns lush and green before your eyes. Mèo writes: \"extra water: not wasted\"."
+          },
+          {
+            "text": "Pour it into the ducks' trough",
+            "consequence": "The ducks crowd round and gulp it down. Mèo counts while they drink: twelve exactly, none missing, none extra."
+          },
+          {
+            "text": "Keep it in the jar for a scorching day",
+            "consequence": "Mèo seals the lid tight and labels it \"spare\". So tidy that even the jar looks serious."
+          }
+        ]
+      }
+    },
+    {
+      "id": "mo-cong-ruong",
+      "title": "Mở cống ruộng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Ống đã thông! Mở cống cho nước chảy xuống từng thửa ruộng, đủ mười điểm là cả ba thửa no nước.",
+      "game": "paddy-water",
+      "goal": 10,
+      "en": {
+        "title": "Opening the sluices",
+        "prompt": "The pipe is clear! Open the sluices so water runs down to each field; ten points and all three fields have their fill."
+      }
+    },
+    {
+      "id": "ruong-no-nuoc",
+      "title": "Ruộng no nước",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ba thửa ruộng ven đầm no nước, mặt ruộng phẳng như tấm gương. Mèo trao cho {name} một cành sen hồng, buộc nơ ngay ngắn đúng giữa cuống.",
+      "en": {
+        "title": "Fields full of water",
+        "text": "The three fields by the pond are full, their surfaces flat as mirrors. Mèo gives {name} a pink lotus stem, with a bow tied exactly in the middle."
+      }
+    },
+    {
+      "id": "thu-co-moi",
+      "title": "Lá thư cờ mới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Bưu tá đạp xe qua đầm, vẫy một lá thư cờ mới. Mèo chưa bóc, chỉ bảo: «Lần này Mèo không đọc một mình.»",
+      "en": {
+        "title": "A new chess letter",
+        "text": "The postman cycles past the pond, waving a new chess letter. Mèo doesn't open it yet; she only says: \"This time I won't read it alone.\""
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "dung-tich": 1,
+      "logic": 1
+    }
+  },
+  "en": {
+    "title": "Mèo Đầm Sen's story, chapter 3: Water for the pond fields",
+    "summary": "The pipe to the fields is leaking. {name} gathers tools at the sluice, draws a new pipe route round the planted banks, measures the litres for each field and decides what to do with the water left over."
+  }
+}

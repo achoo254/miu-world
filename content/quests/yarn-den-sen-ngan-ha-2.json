@@ -1,0 +1,379 @@
+{
+  "id": "yarn-den-sen-ngan-ha-2",
+  "region": "lang-ven-song",
+  "chapter": 1,
+  "title": "Chuyện của Cô Đèn Lồng Sen, chương 2: Hoa đăng đầu tay",
+  "status": "active",
+  "category": "story",
+  "summary": "Hôm nay {name} tự làm chiếc hoa đăng đầu tiên. Gom đồ nghề ở xưởng, xếp lại các bước làm đèn, đọc mẩu giấy dặn cách dùng cánh sen rồi thả thử chiếc đèn xuống ao.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cô Đèn Lồng Sen",
+    "where": "Đầu làng, xưởng thủ công, sân phơi đèn, đường làng, bờ ao làng",
+    "goal": "Tự tay làm và thả thử chiếc hoa đăng đầu tiên",
+    "play": "Gom đồ nghề; xếp các bước làm đèn; đọc mẩu giấy dặn; chọn cách thả đèn; cắt viền giấy",
+    "learn": "Kể theo trình tự, đọc hiểu",
+    "reward": "65 XP, 16 Xu, Skill XP Kể chuyện, Đọc hiểu",
+    "next": "Thả thử cả một hàng đèn trên ao"
+  },
+  "phases": {
+    "hook": "lam-tu-dau",
+    "explore": "gom-do-nghe",
+    "learn": "cac-buoc-lam-den",
+    "challenge": "mau-giay-dan",
+    "decision": "tha-thu-dau-tay",
+    "finale": "cat-vien-den",
+    "reward": "den-dau-tay",
+    "next": "hang-den-tha-thu"
+  },
+  "places": {
+    "co-den-long-sen": "Đầu làng",
+    "gom-do-nghe": "Xưởng thủ công",
+    "st-den-sen-ngan-ha-nan-tre": "Xưởng thủ công",
+    "st-den-sen-ngan-ha-giay-do-hong": "Xưởng thủ công",
+    "st-den-sen-ngan-ha-canh-sen-kho": "Xưởng thủ công",
+    "st-den-sen-ngan-ha-nen-sap": "Xưởng thủ công",
+    "st-den-sen-ngan-ha-ban-lam-den": "Sân phơi đèn",
+    "st-den-sen-ngan-ha-giay-nhan-meo": "Đường làng",
+    "st-den-sen-ngan-ha-bac-da-ao": "Bờ ao làng"
+  },
+  "steps": [
+    {
+      "id": "lam-tu-dau",
+      "title": "Làm từ đầu tới cuối",
+      "goTo": "Ra đầu làng, cô đã bày sẵn chiếc chiếu nhỏ chờ {name}",
+      "kind": "dialogue",
+      "target": "co-den-long-sen",
+      "lines": [
+        {
+          "speaker": "Cô Đèn Lồng Sen",
+          "text": "Hôm nay cô không làm đèn đâu. Hôm nay cháu làm, cô chỉ ngồi cạnh thôi."
+        },
+        {
+          "speaker": "Cô Đèn Lồng Sen",
+          "text": "Một chiếc hoa đăng cần nan tre, giấy dó, cánh sen khô và một mẩu nến. Đồ nghề cô để cả ở xưởng thủ công."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu sợ làm hỏng mất…",
+          "reply": "Chiếc đầu tiên của cô cũng méo xệch. Hỏng thì mình làm lại, đèn không giận đâu."
+        },
+        {
+          "text": "Cháu đi gom đồ nghề đây!",
+          "reply": "Nhớ cầm nan tre nhẹ tay, nan mà gãy là đèn lệch hẳn."
+        }
+      ],
+      "en": {
+        "title": "From start to finish",
+        "goTo": "Go to the village gate, where Cô has spread a little mat ready for {name}",
+        "lines": [
+          "I'm not making lanterns today. Today you make one, and I just sit beside you.",
+          "A lantern-flower needs bamboo strips, paper, dried lotus petals and a stub of candle. My things are all at the craft workshop."
+        ],
+        "choices": [
+          {
+            "text": "I'm scared I'll ruin it…",
+            "reply": "My first one was lopsided too. If it goes wrong we make it again; lanterns don't sulk."
+          },
+          {
+            "text": "I'll go and fetch the things!",
+            "reply": "Hold the bamboo strips gently; one broken strip and the lantern leans."
+          }
+        ]
+      }
+    },
+    {
+      "id": "gom-do-nghe",
+      "title": "Gom đồ nghề",
+      "goTo": "Vào xưởng thủ công lấy nan tre, giấy dó, cánh sen khô và hộp nến",
+      "kind": "search",
+      "targets": [
+        "st-den-sen-ngan-ha-nan-tre",
+        "st-den-sen-ngan-ha-giay-do-hong",
+        "st-den-sen-ngan-ha-canh-sen-kho",
+        "st-den-sen-ngan-ha-nen-sap"
+      ],
+      "en": {
+        "title": "Gathering the tools",
+        "goTo": "Go into the craft workshop for the bamboo strips, the paper, the dried petals and the candles"
+      }
+    },
+    {
+      "id": "cac-buoc-lam-den",
+      "title": "Các bước làm hoa đăng",
+      "goTo": "Mang đồ ra sân phơi đèn, nơi kê bàn làm hoa đăng",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-den-sen-ngan-ha-ban-lam-den",
+      "skill": "ke-chuyen",
+      "prompt": "Cô kể cách làm hoa đăng, nhưng gió thổi xáo các tấm thẻ ghi bước. Xếp lại cho đúng thứ tự:",
+      "items": [
+        {
+          "id": "dan",
+          "label": "Dán giấy dó và cánh sen quanh khung"
+        },
+        {
+          "id": "tha",
+          "label": "Thắp nến rồi thả đèn xuống nước"
+        },
+        {
+          "id": "khung",
+          "label": "Uốn nan tre thành chiếc khung tròn"
+        },
+        {
+          "id": "nen",
+          "label": "Gắn mẩu nến vào giữa đế đèn"
+        },
+        {
+          "id": "phoi",
+          "label": "Phơi đèn trong bóng râm cho khô hồ"
+        }
+      ],
+      "answer": {
+        "order": [
+          "khung",
+          "dan",
+          "phoi",
+          "nen",
+          "tha"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Phải có khung rồi mới có chỗ để dán giấy.",
+          "Hồ còn ướt thì chưa gắn nến, chưa thả được."
+        ],
+        "hint": "Bước đầu là uốn nan, bước cuối là thả đèn.",
+        "answer": {
+          "text": "Uốn khung, dán giấy, phơi khô, gắn nến, thả đèn",
+          "explanation": "Có khung mới dán được giấy; dán xong phơi cho khô hồ; khô rồi mới gắn nến; cuối cùng thắp nến và thả đèn."
+        },
+        "en": {
+          "guide": [
+            "There must be a frame before there is anything to glue paper to.",
+            "While the glue is wet you can't fix the candle or float it."
+          ],
+          "hint": "First bend the strips, last float the lantern.",
+          "answer": {
+            "text": "Frame, paper, drying, candle, floating",
+            "explanation": "A frame comes before the paper; once glued it dries in the shade; dry, it gets its candle; last of all you light it and float it."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng từng bước! Cô gật gù: «Tay cháu nhớ nhanh hơn tay cô hồi nhỏ.»",
+          "Khung trước, nến sau, {name} xếp chẳng sai bước nào.",
+          "Làm theo đúng thứ tự này, đèn nào cũng đứng thẳng trên nước."
+        ],
+        "wrong": [
+          "Chưa có khung thì dán giấy vào đâu hả {name}?",
+          "Hồ còn ướt mà gắn nến là giấy rách đấy, đổi chỗ hai bước xem.",
+          "Thả đèn là bước cuối cùng, đèn phải xong hẳn đã."
+        ],
+        "en": {
+          "right": [
+            "Every step in place! Cô nods: \"Your hands remember faster than mine did when I was little.\"",
+            "Frame first, candle later: {name} put every step in order.",
+            "Follow this order and every lantern stands straight on the water."
+          ],
+          "wrong": [
+            "With no frame yet, where would the paper go, {name}?",
+            "Fix the candle while the glue is wet and the paper tears; swap those two steps.",
+            "Floating is the very last step; the lantern has to be finished first."
+          ]
+        }
+      },
+      "en": {
+        "title": "The steps of a lantern-flower",
+        "goTo": "Carry everything out to the lantern-drying yard, where the lantern table stands",
+        "prompt": "Cô explains how to make a lantern-flower, but the wind has shuffled the step cards. Put them back in order:",
+        "items": [
+          "Glue the paper and lotus petals round the frame",
+          "Light the candle and set the lantern on the water",
+          "Bend the bamboo strips into a round frame",
+          "Fix the candle stub in the middle of the base",
+          "Dry the lantern in the shade until the glue sets"
+        ]
+      }
+    },
+    {
+      "id": "mau-giay-dan",
+      "title": "Mẩu giấy gói lá chuối",
+      "goTo": "Ra đường làng nhặt mẩu giấy nhắn gói trong lá chuối",
+      "kind": "read",
+      "target": "st-den-sen-ngan-ha-giay-nhan-meo",
+      "skill": "doc-hieu",
+      "text": "Cô Đèn Lồng Sen ơi,\nMeo. Cánh sen khô cháu để trong gói lá chuối.\nCánh to và phẳng thì dán thân đèn. Cánh nhỏ và cong thì dán quanh miệng đèn.\nĐừng dùng cánh còn ẩm: chưa đủ ba nắng thì giấy sẽ mốc.\nMèo Đầm Sen",
+      "question": "Theo mẩu giấy, cánh sen nhỏ và cong dùng để làm gì?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Dán quanh miệng đèn"
+        },
+        {
+          "id": "b",
+          "text": "Dán kín thân đèn"
+        },
+        {
+          "id": "c",
+          "text": "Đem phơi thêm ba nắng"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Tìm dòng có chữ «nhỏ và cong».",
+          "Đọc nốt nửa câu sau dấu phẩy."
+        ],
+        "hint": "Cánh to dán một chỗ, cánh nhỏ dán chỗ khác.",
+        "answer": {
+          "text": "Cánh nhỏ, cong ôm quanh miệng đèn",
+          "explanation": "Mẩu giấy viết: cánh nhỏ và cong thì dán quanh miệng đèn; cánh to và phẳng mới dán thân đèn."
+        },
+        "en": {
+          "guide": [
+            "Find the line with the words \"small and curved\".",
+            "Read the half of the sentence after the comma."
+          ],
+          "hint": "The big petals go in one place, the small ones somewhere else.",
+          "answer": {
+            "text": "Small, curved petals circle the rim",
+            "explanation": "The note says small, curved petals go round the rim; big, flat ones go on the body."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng rồi, cánh cong ôm miệng đèn như đóa sen vừa hé.",
+          "{name} đọc kỹ từng nửa câu, chẳng lẫn cánh to với cánh nhỏ.",
+          "Cô bật cười: «Mèo Đầm Sen dặn dò kỹ thật, mà cháu đọc còn kỹ hơn.»"
+        ],
+        "wrong": [
+          "Thân đèn là chỗ của cánh to và phẳng cơ.",
+          "Ba nắng là nói về cánh còn ẩm, đâu phải cánh nhỏ.",
+          "Đọc lại dòng thứ ba, chỗ có chữ «cong» nhé {name}."
+        ],
+        "en": {
+          "right": [
+            "That's it: curved petals hug the rim like a lotus just opening.",
+            "{name} read every half-sentence and never mixed up big and small petals.",
+            "Cô laughs: \"Mèo Đầm Sen writes careful notes, and you read them even more carefully.\""
+          ],
+          "wrong": [
+            "The body is for the big, flat petals.",
+            "The three sunny days are about damp petals, not small ones.",
+            "Read the third line again, where it says \"curved\", {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "The note in the banana leaf",
+        "goTo": "Go to the village road and pick up the note wrapped in a banana leaf",
+        "text": "Dear Cô Đèn Lồng Sen,\nMeow. The dried lotus petals are in the banana-leaf parcel.\nBig, flat petals go on the body of the lantern. Small, curved petals go round the rim.\nDon't use petals that are still damp: without three sunny days the paper goes mouldy.\nMèo Đầm Sen",
+        "question": "According to the note, what are the small, curved petals for?",
+        "choices": [
+          "Glue round the lantern's rim",
+          "Cover the body of the lantern",
+          "Dry them for three more sunny days"
+        ]
+      }
+    },
+    {
+      "id": "tha-thu-dau-tay",
+      "title": "Lần thả thử đầu tiên",
+      "goTo": "Bưng chiếc đèn đã khô ra bờ ao làng, xuống bậc đá sát mặt nước",
+      "kind": "decision",
+      "target": "st-den-sen-ngan-ha-bac-da-ao",
+      "speaker": "Cô Đèn Lồng Sen",
+      "prompt": "Chiếc hoa đăng đầu tay đã khô hồ. Cô hỏi: «Lần thả thử đầu tiên, cháu muốn làm thế nào?»",
+      "choices": [
+        {
+          "id": "mot-minh",
+          "text": "Thả một mình nó trước, xem nó nổi ra sao",
+          "consequence": "Đèn xoay một vòng trên mặt ao rồi đứng yên, ánh nến lung linh. Cô gật đầu: «Đèn biết đứng rồi đấy.»"
+        },
+        {
+          "id": "co-ban",
+          "text": "Thả cùng Bé Hồng cho đèn mới có bạn",
+          "consequence": "Hai chiếc đèn trôi sát nhau như hai bạn nắm tay. Cô bảo: «Đèn có bạn thì không sợ tối.»"
+        },
+        {
+          "id": "dieu-uoc",
+          "text": "Viết một điều ước lên đáy đèn rồi mới thả",
+          "consequence": "{name} viết điều ước bằng bút chì. Cô không hỏi ước gì, chỉ bảo: «Đèn giữ hộ cháu rồi.»"
+        }
+      ],
+      "en": {
+        "title": "The very first float",
+        "goTo": "Carry the dry lantern to the village pond and step down onto the stone by the water",
+        "prompt": "The first lantern-flower is dry. Cô asks: \"For its very first float, how would you like to do it?\"",
+        "choices": [
+          {
+            "text": "Float it alone first and see how it sits",
+            "consequence": "The lantern turns once on the pond and settles, its flame trembling. Cô nods: \"It knows how to stand now.\""
+          },
+          {
+            "text": "Float it with Bé Hồng so it has a friend",
+            "consequence": "The two lanterns drift side by side like friends holding hands. Cô says: \"A lantern with a friend isn't afraid of the dark.\""
+          },
+          {
+            "text": "Write a wish under the base before floating it",
+            "consequence": "{name} writes a wish in pencil. Cô doesn't ask what it is; she only says: \"The lantern will keep it for you.\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "cat-vien-den",
+      "title": "Cắt viền chiếc đèn thứ hai",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "trigger": "auto",
+      "prompt": "Chiếc đèn thứ hai cần viền giấy thật khéo. Cắt đúng theo đường chấm bốn lần, lần này cô chỉ đứng xem thôi!",
+      "game": "scissor-trace",
+      "goal": 4,
+      "en": {
+        "title": "Trimming the second lantern",
+        "prompt": "The second lantern needs a neat paper trim. Cut along the dotted line four times; this time Cô only watches!"
+      }
+    },
+    {
+      "id": "den-dau-tay",
+      "title": "Chiếc đèn Đầu Tay",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chiếc hoa đăng của {name} hơi lệch một cánh, nhưng nổi rất ngay ngắn. Cô đặt tên nó là «Đầu Tay» và treo lên giàn, ngay cạnh Bé Hồng.",
+      "en": {
+        "title": "The lantern called First",
+        "text": "{name}'s lantern-flower leans a little on one petal, but it floats beautifully straight. Cô names it \"First\" and hangs it on the rack, right beside Bé Hồng."
+      }
+    },
+    {
+      "id": "hang-den-tha-thu",
+      "title": "Một hàng đèn thả thử",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đêm hội gần tới. Cô muốn thả thử cả một hàng đèn trên ao để biết đèn trôi mất bao lâu, và cô cần một người giỏi xem đồng hồ.",
+      "en": {
+        "title": "A trial row of lanterns",
+        "text": "The festival is close. Cô wants to float a whole row of lanterns on the pond to see how long they take, and she needs someone good at reading a clock."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "ke-chuyen": 1,
+      "doc-hieu": 1
+    }
+  },
+  "en": {
+    "title": "Cô Đèn Lồng Sen's story, chapter 2: A lantern of my own",
+    "summary": "Today {name} makes a first lantern-flower. Gather the tools at the workshop, put the steps in order, read the note about the lotus petals, then float the lantern on the pond."
+  }
+}
