@@ -1,6 +1,6 @@
 # Nghiệm thu MVP và sẵn sàng phát hành: hiệu năng, tài liệu, hồ sơ cho người duyệt
 
-**Trạng thái:** đã duyệt (04/10/2026), chạy xuyên suốt và chốt cuối · **Tier:** L · **Nhánh:** `main` · **Ngày:** 04/10/2026
+**Trạng thái:** phần tự động xong 19/10/2026: pha 1 (đo 12 map, `reports/map-budget-261019.md`; mức Cao còn vượt, cách xử lý chờ số đo iPad), 2 (gói đo DEVICE-01 trên trang review), 3 (`reports/docs-sync-261019.md`), 4 (trang review hợp nhất có mục lục), 5 (`reports/security-sweep-261019.md`; lộ thời khóa biểu đã chặn ở production), 6 (mục "Việc cần người"), 7 (checklist Master Plan §16 theo bằng chứng). Còn 3 ô §16 chờ người · **Tier:** L · **Nhánh:** `main` · **Ngày:** 04/10/2026
 **Nguồn:** Master Plan §12 (hiệu năng mobile, máy chuẩn iPad Gen 10), §13 (gate), §15 (rủi ro), §16 (tiêu chí nghiệm thu: còn 3 ô chưa đạt), `docs/project-roadmap.md` mục "Nợ đã biết".
 
 ## Kết quả mong muốn
@@ -45,5 +45,5 @@ Ba ô §16 còn trống: khung hình trên iPad Gen 10 (DEVICE-01), giao diện 
 
 ## Câu hỏi mở (cần người sở hữu)
 
-1. Khi nào định mở cho người ngoài gia đình (số bé, ngày)? Quyết định thứ tự pháp lý/OAuth/kiểm duyệt phụ thuộc điều này.
-2. Có cho chạy project `perf` (30 phút, ghi đè `perf.json`) trong phiên này không, hay chỉ đo trên iPad thật?
+1. ~~Khi nào định mở cho người ngoài gia đình?~~ Đã mở 12/10/2026 (plan `261012-1116-auto-marketing`).
+2. Project `perf` không chạy (chưa được yêu cầu); pha 1 đo bằng project `budget` mới (17 phút, chỉ ghi `map-budget.json`), FPS đo trên iPad thật.
