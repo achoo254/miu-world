@@ -1,5 +1,5 @@
 // In-process news about a player that the multiplayer hub acts on at once: her online or companion bot switch
-// changed, a friendship was made or ended, a block was lifted. Routes emit, the hub listens; a listener that
+// changed, a friendship was made or ended, a block was lifted, a moderator locked her online play. Routes emit, the hub listens; a listener that
 // throws never breaks the request that emitted.
 import type { PlayerSettings } from '@miu/schema/account';
 
@@ -14,7 +14,9 @@ export type PlayerEvent =
   /** A friendship ended (removed by either side, or by the account owner). */
   | { type: 'unfriended'; childId: string; otherChildId: string | null; botId: string | null }
   /** `childId` lifted her block of `otherChildId`. */
-  | { type: 'unblocked'; childId: string; otherChildId: string };
+  | { type: 'unblocked'; childId: string; otherChildId: string }
+  /** A moderator locked her online play: out of every room at once. */
+  | { type: 'restricted'; childId: string };
 
 export class PlayerEvents {
   private readonly listeners = new Set<(event: PlayerEvent) => void>();

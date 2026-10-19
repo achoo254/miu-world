@@ -67,6 +67,20 @@ describe('endpoint table', () => {
     expect(open).toEqual([]);
   });
 
+  it('answers 404 on every moderation route to a signed-in player who is not a moderator', async () => {
+    const { agent } = await parentWithChild(t);
+    const moderation = routes(t).filter((r) => r.split(' ')[1]?.startsWith('/moderation/'));
+    expect(moderation.sort()).toEqual(['GET /moderation/me', 'GET /moderation/reports', 'POST /moderation/reports/:id/action', 'PUT /moderation/online-mode']);
+    const reached: string[] = [];
+    for (const route of moderation) {
+      const [method = 'GET', path = ''] = route.split(' ');
+      const call = agent[method.toLowerCase() as 'get' | 'post' | 'put'](fill(path));
+      const res = method === 'GET' ? await call : await call.send({ action: 'dismiss', mode: 'off' });
+      if (res.status !== 404) reached.push(`${route} → ${res.status}`);
+    }
+    expect(reached).toEqual([]);
+  });
+
   it('keeps a family\'s child out of reach of another parent on every route that names a child (IDOR)', async () => {
     const a = await parentWithChild(t);
     const b = await parentWithChild(t);

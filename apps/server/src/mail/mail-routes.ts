@@ -9,6 +9,7 @@ import type { Db } from '../db/client';
 import { characters, childProfiles, mail, rewardLedger } from '../db/schema';
 import { HttpError } from '../http-error';
 import { grantReward } from '../reward/reward-ledger';
+import { fillParams, moderationTemplate } from '../moderation/moderation-mail';
 import { loadMailCatalog, resolveLocalizedText } from './mail-catalog';
 
 export interface MailRouteDeps {
@@ -93,9 +94,10 @@ export function mailRoutes({
     const tmplMap = known;
 
     const mailDtos: MailDto[] = rows.map((row) => {
-      const tmpl = tmplMap.get(row.templateId);
-      const title = tmpl ? resolveLocalizedText(tmpl.title, lang, childName) : 'Thư mới';
-      const body = tmpl ? resolveLocalizedText(tmpl.body, lang, childName) : '';
+      // Moderation letters (a digest, a decision) are one row per day or report on a shared template.
+      const tmpl = tmplMap.get(row.templateId) ?? moderationTemplate(row.templateId);
+      const title = tmpl ? fillParams(resolveLocalizedText(tmpl.title, lang, childName), row.params) : 'Thư mới';
+      const body = tmpl ? fillParams(resolveLocalizedText(tmpl.body, lang, childName), row.params) : '';
       const sender = tmpl ? tmpl.sender : 'Người gửi';
       const icon = tmpl?.icon ?? (row.category === 'gift' ? 'gift' : 'package');
 

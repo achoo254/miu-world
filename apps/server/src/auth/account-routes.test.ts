@@ -159,7 +159,11 @@ describe('account deletion', () => {
     const second = (await agent.post('/api/players').send({ displayName: 'Thỏ Bông' }).expect(201)).body as { id: string };
     // Online: one player of the family blocked and reported the other (the rows go with either of them).
     await app.db.insert(t.playerBlocks).values({ childId, blockedChildId: second.id });
-    await app.db.insert(t.playerReports).values({ id: randomUUID(), childId, reportedChildId: second.id, reason: 'spam', mapId: 'trung-tam' });
+    const reportId = randomUUID();
+    await app.db.insert(t.playerReports).values({ id: reportId, childId, reportedChildId: second.id, reason: 'spam', mapId: 'trung-tam', incidentLines: [{ by: 'reported', text: 'Cố lên nào!', secondsBefore: 4 }] });
+    // Moderation: who else was in the room, and an online lock on the reported player.
+    await app.db.insert(t.reportWitnesses).values({ reportId, childId });
+    await app.db.insert(t.playerRestrictions).values({ childId: second.id, kind: 'hidden' });
     // Friends: with each other and with a companion bot, a request waiting, and the weekly play time.
     await app.db.insert(t.friendships).values([
       { id: randomUUID(), childId, friendChildId: second.id },

@@ -74,9 +74,14 @@ export class MultiplayerSession {
     this.stopVoiceView = this.watchVoice();
     this.client = new MultiplayerClient(visit ? { ...options.start, host: visit } : options.start, {
       onMessage: (message) => this.handle(message),
-      onStatus: (_connected, final) => {
-        // Another tab plays as her now, or she has no player: this one sees no one and is out of the party view.
-        if (!final) return;
+      onStatus: (connected, final, pause) => {
+        // Why online play is not there (the emergency switch, a lock on her): a friendly line, never an error.
+        // Connected again, the line goes (until the server says interaction is still off).
+        if (connected) this.social?.update({ onlinePause: null });
+        else if (pause) this.social?.update({ onlinePause: pause });
+        // Another tab plays as her now, she has no player, or her online play is locked: this one sees no one and is
+        // out of the party view. The switch turning everything off clears the view too while it lasts.
+        if (!final && pause !== 'off') return;
         this.remote.dispose();
         this.roster.clear();
         this.social?.update({ party: null, invites: [], travel: null, room: [], coopLobby: null, coopState: null, coopHelp: null, partyQuest: null });
@@ -199,6 +204,9 @@ export class MultiplayerSession {
       }
       case 'bot-doing':
         remote.setBusy(message.id, message.quest !== null);
+        return;
+      case 'online-mode':
+        social?.update({ onlinePause: message.mode === 'on' ? null : message.mode === 'off' ? 'off' : 'interaction' });
         return;
       case 'appearance': {
         remote.applyAppearance(message.id, message.appearance);

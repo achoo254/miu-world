@@ -1,5 +1,6 @@
-// The multiplayer connection over a real socket: who may open one (session cookie + allowed origin), and that what
-// others see of a player is her saved character, kept up to date when she saves new clothes.
+// The multiplayer connection over a real socket: who may open one (a one-use ticket issued to the session whose
+// cookie comes with it, from an allowed origin), and that what others see of a player is her saved character, kept
+// up to date when she saves new clothes.
 import { createServer, type Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { and, eq } from 'drizzle-orm';
@@ -8,24 +9,32 @@ import { WebSocket } from 'ws';
 import type { ServerWsMessage } from '@miu/schema/multiplayer';
 import { FIXTURE_CONTENT, ORIGIN, createTestApp, fakeParent, type TestApp } from '../../test/test-app';
 import { CharacterEvents } from '../character/character-events';
-import { playerBlocks } from '../db/schema';
-import { MultiplayerHub } from './multiplayer-hub';
-import { dbMultiplayerStore, sessionAuthenticator } from './multiplayer-store';
+import { playerBlocks, playerRestrictions } from '../db/schema';
+import { MultiplayerHub, WS_CLOSE } from './multiplayer-hub';
+import { dbMultiplayerStore, sessionAuthenticator, ticketAuthenticator } from './multiplayer-store';
+import { OnlineSwitch } from './online-switch';
+import { TICKET_TTL_MS, WsTickets } from './online-tickets';
 
 let t: TestApp;
 let server: Server;
 let hub: MultiplayerHub;
 let url: string;
 const sockets: WebSocket[] = [];
+let clock = Date.now();
+const tickets = new WsTickets(() => clock);
+const online = new OnlineSwitch();
 
 beforeAll(async () => {
   const events = new CharacterEvents();
-  t = await createTestApp(undefined, undefined, undefined, FIXTURE_CONTENT, { characterEvents: events });
+  t = await createTestApp(undefined, undefined, undefined, FIXTURE_CONTENT, { characterEvents: events, wsTickets: tickets, onlineSwitch: online });
   server = createServer(t.app);
+  const session = sessionAuthenticator(t.db, t.config, FIXTURE_CONTENT.consent.version, () => new Date());
   hub = new MultiplayerHub(server, {
     store: dbMultiplayerStore(t.db),
-    authenticate: sessionAuthenticator(t.db, t.config, FIXTURE_CONTENT.consent.version, () => new Date()),
+    authenticate: ticketAuthenticator(tickets, session, t.config),
+    revalidate: session,
     allowedOrigins: t.config.allowedOrigins,
+    onlineSwitch: online,
   });
   events.on((childId, character) => hub.characterSaved(childId, character));
   await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
@@ -52,21 +61,28 @@ async function player(consent = true): Promise<{ cookie: string; childId: string
 
 const dress = (cookie: string, body: object) => t.request().put('/api/character').set('Origin', ORIGIN).set('Cookie', cookie).send(body).expect(200);
 
+/** A ticket for this session's player (the call the web app makes right before it connects). */
+async function ticketFor(cookie: string): Promise<string> {
+  const res = await t.request().post('/api/online-ticket').set('Origin', ORIGIN).set('Cookie', cookie).expect(200);
+  return (res.body as { ticket: string }).ticket;
+}
+
 /** Opens a socket; resolves with it once open, or with the HTTP status the upgrade was refused with. */
-function open(headers: Record<string, string>): Promise<{ ws: WebSocket; inbox: ServerWsMessage[] } | { status: number }> {
+function open(headers: Record<string, string>, ticket?: string): Promise<{ ws: WebSocket; inbox: ServerWsMessage[]; closed: Promise<number> } | { status: number }> {
   return new Promise((resolve, reject) => {
-    const ws = new WebSocket(url, { headers });
+    const ws = new WebSocket(ticket ? `${url}?ticket=${encodeURIComponent(ticket)}` : url, { headers });
+    const closed = new Promise<number>((done) => ws.on('close', (code) => done(code)));
     sockets.push(ws);
     const inbox: ServerWsMessage[] = [];
     ws.on('message', (raw: Buffer) => inbox.push(JSON.parse(raw.toString()) as ServerWsMessage));
-    ws.on('open', () => resolve({ ws, inbox }));
+    ws.on('open', () => resolve({ ws, inbox, closed }));
     ws.on('unexpected-response', (_req, res) => resolve({ status: res.statusCode ?? 0 }));
     ws.on('error', reject);
   });
 }
 
 async function connected(cookie: string) {
-  const opened = await open({ Cookie: cookie, Origin: ORIGIN });
+  const opened = await open({ Cookie: cookie, Origin: ORIGIN }, await ticketFor(cookie));
   if (!('ws' in opened)) throw new Error(`refused with ${opened.status}`);
   return opened;
 }
@@ -90,12 +106,48 @@ const join = (ws: WebSocket, mapId = 'trung-tam') => ws.send(JSON.stringify({ ty
 describe('opening a multiplayer connection', () => {
   it('refuses without a session, from another origin, and without a player (no consent yet)', async () => {
     const { cookie } = await player();
-    expect(await open({ Origin: ORIGIN })).toEqual({ status: 401 });
-    expect(await open({ Cookie: cookie, Origin: 'https://evil.example' })).toEqual({ status: 403 });
-    expect(await open({ Cookie: cookie })).toEqual({ status: 403 });
-    expect(await open({ Cookie: 'miu_session=forgedforgedforgedforged', Origin: ORIGIN })).toEqual({ status: 401 });
+    expect(await open({ Origin: ORIGIN }, await ticketFor(cookie))).toEqual({ status: 401 });
+    expect(await open({ Cookie: cookie, Origin: 'https://evil.example' }, await ticketFor(cookie))).toEqual({ status: 403 });
+    expect(await open({ Cookie: cookie }, await ticketFor(cookie))).toEqual({ status: 403 });
+    expect(await open({ Cookie: 'miu_session=forgedforgedforgedforged', Origin: ORIGIN }, await ticketFor(cookie))).toEqual({ status: 401 });
     const noConsent = await player(false);
-    expect(await open({ Cookie: noConsent.cookie, Origin: ORIGIN })).toEqual({ status: 401 });
+    await t.request().post('/api/online-ticket').set('Origin', ORIGIN).set('Cookie', noConsent.cookie).expect(401);
+    await t.request().post('/api/online-ticket').set('Origin', ORIGIN).expect(401);
+    await t.request().post('/api/online-ticket').set('Origin', 'https://evil.example').set('Cookie', cookie).expect(403);
+  });
+
+  it('needs a ticket: none, a made-up one, a spent one, a stale one or one issued to another session is refused', async () => {
+    const a = await player();
+    const b = await player();
+    const headers = { Cookie: a.cookie, Origin: ORIGIN };
+    expect(await open(headers)).toEqual({ status: 401 });
+    expect(await open(headers, 'A'.repeat(43))).toEqual({ status: 401 });
+    const ticket = await ticketFor(a.cookie);
+    const first = await open(headers, ticket);
+    expect('ws' in first).toBe(true);
+    expect(await open(headers, ticket)).toEqual({ status: 401 });
+    expect(await open(headers, await ticketFor(b.cookie))).toEqual({ status: 401 });
+    const stale = await ticketFor(a.cookie);
+    clock += TICKET_TTL_MS + 1;
+    expect(await open(headers, stale)).toEqual({ status: 401 });
+    clock = Date.now();
+  });
+
+  it('gives no ticket while the emergency switch is off or her online play is locked, and closes her connection', async () => {
+    const a = await player();
+    const sa = await connected(a.cookie);
+    join(sa.ws);
+    await first(sa.inbox, 'welcome');
+    online.set('off');
+    expect(await sa.closed).toBe(WS_CLOSE.paused);
+    const paused = await t.request().post('/api/online-ticket').set('Origin', ORIGIN).set('Cookie', a.cookie).expect(503);
+    expect(paused.body).toEqual({ error: 'online-paused' });
+    online.set('on');
+    await t.db.insert(playerRestrictions).values({ childId: a.childId, kind: 'locked', until: null });
+    const refused = await t.request().post('/api/online-ticket').set('Origin', ORIGIN).set('Cookie', a.cookie).expect(403);
+    expect(refused.body).toEqual({ error: 'online-restricted' });
+    await t.db.delete(playerRestrictions).where(eq(playerRestrictions.childId, a.childId));
+    await ticketFor(a.cookie);
   });
 
   it('shows the others her saved character, and her new clothes as soon as she saves them', async () => {

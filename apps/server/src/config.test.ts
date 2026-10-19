@@ -31,6 +31,15 @@ describe('loadConfig', () => {
     expect(() => loadConfig({ ...production, REGISTER_LIMIT_PER_HOUR: '1000' })).toThrow(/REGISTER_LIMIT_PER_HOUR is test-only/);
   });
 
+  it('names moderators by sign-in email only when listed, and starts online play as the switch says', () => {
+    expect(loadConfig({}).moderatorAccounts.size).toBe(0);
+    expect([...loadConfig({ MODERATOR_ACCOUNTS: ' Owner@Example.vn, ,second@example.vn' }).moderatorAccounts]).toEqual(['owner@example.vn', 'second@example.vn']);
+    expect(loadConfig({}).onlineMode).toBe('on');
+    expect(loadConfig({ ONLINE_MODE: '' }).onlineMode).toBe('on');
+    expect(loadConfig({ ONLINE_MODE: 'interaction-off' }).onlineMode).toBe('interaction-off');
+    expect(() => loadConfig({ ONLINE_MODE: 'paused' })).toThrow(/ONLINE_MODE/);
+  });
+
   it('lets a school share one address for analytics but caps one browser', () => {
     const config = loadConfig({});
     expect(config.analyticsLimitPerMinute).toBe(600);

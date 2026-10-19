@@ -353,6 +353,28 @@ function TravelCard({ social, fill }: { social: SocialStore; fill: Fill }) {
   );
 }
 
+/**
+ * Why online play is not all there (the emergency switch, or her online play locked): a friendly line she can put
+ * away; it comes back only when the reason changes.
+ */
+function OnlinePauseCard({ social }: { social: SocialStore }) {
+  const pause = useSocial(social, (s) => s.onlinePause);
+  const [seen, setSeen] = useState<typeof pause>(null);
+  if (!pause || seen === pause) return null;
+  return (
+    <section className="online-card parchment" data-id="online-pause" role="status" aria-live="polite">
+      <p className="online-card-text">
+        🌙 <T k={`online.pause.${pause}`} />
+      </p>
+      <div className="online-card-actions">
+        <button type="button" className={buttonClass('ghost', { small: true })} data-id="online-pause-ok" onClick={() => setSeen(pause)}>
+          <T k="online.pause.ok" />
+        </button>
+      </div>
+    </section>
+  );
+}
+
 function OnlineToastLine({ social }: { social: SocialStore }) {
   const toast = useSocial(social, (s) => s.toast);
   if (!toast) return null;
@@ -374,6 +396,7 @@ export function SocialLayer({ social, covered, fill, voice = null }: { social: S
           <TravelCard social={social} fill={fill} />
           <FriendAskCard social={social} />
           {voice ? <CallInviteCard voice={voice} /> : null}
+          <OnlinePauseCard social={social} />
         </div>
       )}
       <OnlineToastLine social={social} />

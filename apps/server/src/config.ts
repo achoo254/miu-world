@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { OnlineMode } from '@miu/schema/multiplayer';
 import { DEFAULT_SCRYPT, type ScryptParams } from './auth/secret-hashing';
 
 const DEV_ORIGINS = [5173, 5174, 4173, 4174].flatMap((port) => [`http://localhost:${port}`, `http://127.0.0.1:${port}`]);
@@ -42,6 +43,16 @@ const Env = z.object({
    * outside production, none in production, so a stranger never reads a real class.
    */
   TIMETABLE_DEFAULT_ACCOUNTS: z.string().optional(),
+  /**
+   * Comma-separated sign-in emails of the moderators (the owner): they see the report queue and the emergency
+   * switch, and get the daily digest of new reports in their mailbox. Unset: nobody moderates.
+   */
+  MODERATOR_ACCOUNTS: z.string().optional(),
+  /**
+   * The emergency switch the server starts with (`on`, `interaction-off`, `off`); a moderator can flip it while the
+   * server runs, and a restart goes back to this. Unset: `on`.
+   */
+  ONLINE_MODE: z.preprocess(emptyIsUnset, OnlineMode.optional()),
   /** Test-only cap on password sign-ups per IP per hour (E2E creates a parent per spec); refused in production. */
   REGISTER_LIMIT_PER_HOUR: z.coerce.number().int().min(1).optional(),
   /**
@@ -102,6 +113,10 @@ export interface ServerConfig {
   timetableDefaultFile: string | null;
   /** Lower-case emails that get the default timetable; null: every account (never in production). */
   timetableDefaultAccounts: ReadonlySet<string> | null;
+  /** Lower-case sign-in emails of the moderators; empty: nobody moderates. */
+  moderatorAccounts: ReadonlySet<string>;
+  /** Online play as the server starts: on, interaction off (players still see each other), or off. */
+  onlineMode: OnlineMode;
   /** Voice relay credentials come from this key; null: STUN only. */
   turn: TurnConfig | null;
   /** Usage events go to this GA4 property; null: none is sent. */
@@ -112,13 +127,16 @@ export interface ServerConfig {
   analyticsClientLimitPerMinute: number;
 }
 
-/** Validates env once at startup; throws with the offending key so the process fails fast. */
+/** A comma-separated email list, lower-cased (sign-in emails are stored lower-case). */
+const emailSet = (list: string): Set<string> => new Set(list.split(',').map((email) => email.trim().toLowerCase()).filter(Boolean));
+
 /** The accounts that see the default timetable: the listed emails; unset, everyone in dev and test, nobody in production. */
 function timetableAccounts(list: string | undefined, production: boolean): ReadonlySet<string> | null {
   if (list === undefined) return production ? new Set() : null;
-  return new Set(list.split(',').map((email) => email.trim().toLowerCase()).filter(Boolean));
+  return emailSet(list);
 }
 
+/** Validates env once at startup; throws with the offending key so the process fails fast. */
 export function loadConfig(env: Record<string, string | undefined> = process.env): ServerConfig {
   const parsed = Env.safeParse(env);
   if (!parsed.success) {
@@ -184,6 +202,8 @@ export function loadConfig(env: Record<string, string | undefined> = process.env
     extraQuestDir: production ? null : (e.EXTRA_QUEST_DIR ?? null),
     timetableDefaultFile: e.TIMETABLE_DEFAULT_FILE ?? null,
     timetableDefaultAccounts: timetableAccounts(e.TIMETABLE_DEFAULT_ACCOUNTS, production),
+    moderatorAccounts: emailSet(e.MODERATOR_ACCOUNTS ?? ''),
+    onlineMode: e.ONLINE_MODE ?? 'on',
     turn: e.CF_TURN_KEY_ID && e.CF_TURN_API_TOKEN ? { keyId: e.CF_TURN_KEY_ID, apiToken: e.CF_TURN_API_TOKEN } : null,
     ga4: e.GA4_MEASUREMENT_ID && e.GA4_API_SECRET ? { measurementId: e.GA4_MEASUREMENT_ID, apiSecret: e.GA4_API_SECRET } : null,
     analyticsLimitPerMinute: 600,

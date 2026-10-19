@@ -35,6 +35,19 @@ export type SafeEmote = (typeof SAFE_EMOTES)[number];
 export const PLAYER_ACTIONS = ['idle', 'walk', 'sit', 'wave'] as const;
 export const PlayerAction = z.enum(PLAYER_ACTIONS);
 
+/**
+ * The emergency switch (server env `ONLINE_MODE`, or the moderator's toggle): `on`; `interaction-off` keeps players
+ * seeing each other move but drops every message between them (lines, waves, invites, voice, co-op);
+ * `off` closes every connection until it is switched back on.
+ */
+export const ONLINE_MODES = ['on', 'interaction-off', 'off'] as const;
+export const OnlineMode = z.enum(ONLINE_MODES);
+export type OnlineMode = z.infer<typeof OnlineMode>;
+
+/** A one-use ticket the web app asks for (`POST /api/online-ticket`) just before it opens `/api/ws?ticket=…`. */
+export const WsTicketResponse = z.strictObject({ ticket: z.string().regex(/^[A-Za-z0-9_-]{43}$/) });
+export type WsTicketResponse = z.infer<typeof WsTicketResponse>;
+
 /** Why a player is reported (a pick, never typed). */
 export const REPORT_REASONS = ['harassment', 'spam', 'name', 'other'] as const;
 export const ReportReason = z.enum(REPORT_REASONS);
@@ -214,6 +227,8 @@ export const ServerWsMessage = z.discriminatedUnion('type', [
    * Sent when it changes, and to a player who joins the room.
    */
   z.strictObject({ type: z.literal('bot-doing'), id: BotId, quest: ContentId.nullable() }),
+  /** The emergency switch as it is now: sent when she joins while it is not `on`, and to everyone when it changes. */
+  z.strictObject({ type: z.literal('online-mode'), mode: OnlineMode }),
   ...CoopServerMessages,
   ...PartyQuestServerMessages,
   ...VoiceServerMessages,

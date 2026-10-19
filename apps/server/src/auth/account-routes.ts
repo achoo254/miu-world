@@ -16,6 +16,7 @@ import {
   botMemories,
   playerPositions,
   playerReports,
+  playerRestrictions,
   playTime,
   parents,
   questProgress,
@@ -46,11 +47,17 @@ function byChild<T extends { childId: string }>(rows: T[]): Map<string, T[]> {
   return out;
 }
 
+/** Her online lock as the export shows it: none, or one that has not run out. */
+function lockOf(row: typeof playerRestrictions.$inferSelect | undefined, now: Date): AccountExport['players'][number]['onlineLock'] {
+  if (!row || (row.until !== null && row.until.getTime() <= now.getTime())) return null;
+  return { kind: row.kind === 'locked' ? 'locked' : 'hidden', until: row.until ? iso(row.until) : null };
+}
+
 async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Date): Promise<AccountExport> {
   const profiles = await db.select().from(childProfiles).where(eq(childProfiles.parentId, parent.id)).orderBy(childProfiles.createdAt);
   const ids = profiles.map((p) => p.id);
   const ofChildren = <T extends { childId: string }>(rows: Promise<T[]>) => (ids.length ? rows : Promise.resolve([] as T[]));
-  const [consentRows, sessionRows, characterRows, questRows, counterRows, rewardRows, itemRows, skillRows, positionRows, timetableRows, decorRows, objectRows, shopRows, playRows, mailRows, reportRows, bondRows, memoryRows, petRows] = await Promise.all([
+  const [consentRows, sessionRows, characterRows, questRows, counterRows, rewardRows, itemRows, skillRows, positionRows, timetableRows, decorRows, objectRows, shopRows, playRows, mailRows, reportRows, bondRows, memoryRows, petRows, lockRows] = await Promise.all([
     db.select().from(consents).where(eq(consents.parentId, parent.id)).orderBy(consents.acceptedAt),
     db.select().from(sessions).where(eq(sessions.parentId, parent.id)).orderBy(sessions.createdAt),
     ofChildren(db.select().from(characters).where(inArray(characters.childId, ids))),
@@ -77,6 +84,7 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
     ofChildren(db.select().from(npcFriendships).where(inArray(npcFriendships.childId, ids)).orderBy(npcFriendships.npcId)),
     ofChildren(db.select().from(botMemories).where(inArray(botMemories.childId, ids)).orderBy(botMemories.botId)),
     ofChildren(db.select().from(petBonds).where(inArray(petBonds.childId, ids)).orderBy(petBonds.petId)),
+    ofChildren(db.select().from(playerRestrictions).where(inArray(playerRestrictions.childId, ids))),
   ]);
   // Friends, requests and blocks as each player's own lists show them (others by character name only).
   const social = new Map(await Promise.all(ids.map(async (id) => [id, await socialView(db, id, NOBODY_ONLINE)] as const)));
@@ -154,6 +162,7 @@ async function buildExport(db: Db, parent: typeof parents.$inferSelect, now: Dat
         },
         blocks: (social.get(p.id)?.blocks ?? []).map(({ displayName, since }) => ({ displayName, since })),
         reports: (reported.get(p.id) ?? []).map((r) => ({ displayName: r.name ?? DEFAULT_CHARACTER_NAME, reason: r.reason, map: r.mapId, createdAt: iso(r.createdAt) })),
+        onlineLock: lockOf(lockRows.find((r) => r.childId === p.id), now),
       };
     }),
   };

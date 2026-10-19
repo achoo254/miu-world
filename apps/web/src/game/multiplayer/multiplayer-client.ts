@@ -1,14 +1,20 @@
-// Multiplayer WebSocket client (Master Plan §8 & §8b): connects to /api/ws with the session cookie, joins the
-// map's room where the child stands and passes server messages on. Who she is (name, clothes, pet) the server
+// Multiplayer WebSocket client (Master Plan §8 & §8b): asks the API for a one-use ticket, connects to
+// /api/ws?ticket=… (the session cookie goes along), joins the map's room where the child stands and passes server
+// messages on. Who she is (name, clothes, pet) the server
 // reads from her saved character; she only says where she is and what she does. Single-player goes on as if
 // nothing happened when the server cannot be reached.
-import { ClientWsMessage, ServerWsMessage, type SafeEmote } from '@miu/schema/multiplayer';
+import { ClientWsMessage, ServerWsMessage, WsTicketResponse, type SafeEmote } from '@miu/schema/multiplayer';
 
 /**
- * Close codes after which reconnecting is pointless: another tab took over, or there is no player to play as.
- * Online play has no off switch (owner, 05/10/2026): any other close is followed by a reconnect.
+ * Close codes after which reconnecting is pointless: another tab took over, there is no player to play as, or her
+ * online play is locked. Online play has no off switch for players (owner, 05/10/2026): any other close is
+ * followed by a reconnect.
  */
-const FINAL_CLOSE_CODES = new Set([4001, 4401]);
+const FINAL_CLOSE_CODES = new Set([4001, 4401, 4403]);
+const CLOSE_RESTRICTED = 4403;
+/** The emergency switch closed online play: try again every so often, quietly, until it is back on. */
+const CLOSE_PAUSED = 4503;
+export const PAUSED_RETRY_MS = 15_000;
 /**
  * Waits before reconnecting: 3 s, doubling while the server keeps refusing (no session, another origin: the
  * browser only sees the socket fail), up to a minute.
@@ -29,10 +35,34 @@ export interface MultiplayerStart {
   host?: string;
 }
 
+/** Why online play is not there now, for a friendly line (null: it is, or a plain network hiccup). */
+export type OnlinePause = 'off' | 'restricted' | null;
+
 export interface MultiplayerClientHandlers {
   onMessage(message: ServerWsMessage): void;
-  /** Connected (joined the room) or not; `final` once it will not try again. */
-  onStatus?(connected: boolean, final: boolean): void;
+  /** Connected (joined the room) or not; `final` once it will not try again; `pause` when the server said why. */
+  onStatus?(connected: boolean, final: boolean, pause: OnlinePause): void;
+}
+
+/** What the ticket call says: a ticket, online play paused or locked for her, or a failure (retried later). */
+type TicketAnswer = { ticket: string } | { pause: 'off' | 'restricted' } | { failed: true };
+
+async function askTicket(): Promise<TicketAnswer> {
+  let res: Response;
+  try {
+    res = await fetch('/api/online-ticket', { method: 'POST', credentials: 'same-origin', cache: 'no-store' });
+  } catch {
+    return { failed: true };
+  }
+  if (res.status === 503) return { pause: 'off' };
+  if (res.status === 403) {
+    const body: unknown = await res.json().catch(() => null);
+    if (typeof body === 'object' && body !== null && 'error' in body && body.error === 'online-restricted') return { pause: 'restricted' };
+    return { failed: true };
+  }
+  if (!res.ok) return { failed: true };
+  const parsed = WsTicketResponse.safeParse(await res.json().catch(() => null));
+  return parsed.success ? { ticket: parsed.data.ticket } : { failed: true };
 }
 
 export class MultiplayerClient {
@@ -59,10 +89,26 @@ export class MultiplayerClient {
 
   private connect(): void {
     if (this.disposed || typeof window === 'undefined') return;
+    void askTicket().then((answer) => {
+      if (this.disposed) return;
+      if ('ticket' in answer) return this.open(answer.ticket);
+      if ('pause' in answer) {
+        const final = answer.pause === 'restricted';
+        this.handlers.onStatus?.(false, final, answer.pause);
+        if (!final) this.retry = window.setTimeout(() => this.connect(), PAUSED_RETRY_MS);
+        return;
+      }
+      this.failures += 1;
+      this.handlers.onStatus?.(false, false, null);
+      this.retry = window.setTimeout(() => this.connect(), reconnectDelay(this.failures));
+    });
+  }
+
+  private open(ticket: string): void {
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
     let ws: WebSocket;
     try {
-      ws = new WebSocket(`${protocol}//${window.location.host}/api/ws`);
+      ws = new WebSocket(`${protocol}//${window.location.host}/api/ws?ticket=${encodeURIComponent(ticket)}`);
     } catch {
       return; // no WebSocket here: play goes on alone
     }
@@ -76,7 +122,7 @@ export class MultiplayerClient {
       }
       this.failures = 0;
       this.sendJoin();
-      this.handlers.onStatus?.(true, false);
+      this.handlers.onStatus?.(true, false, null);
     };
     ws.onmessage = (event: MessageEvent<unknown>) => {
       if (this.disposed || typeof event.data !== 'string') return;
@@ -94,9 +140,10 @@ export class MultiplayerClient {
       if (this.ws === ws) this.ws = null;
       if (this.disposed) return;
       const final = FINAL_CLOSE_CODES.has(event.code);
-      this.handlers.onStatus?.(false, final);
+      const pause: OnlinePause = event.code === CLOSE_PAUSED ? 'off' : event.code === CLOSE_RESTRICTED ? 'restricted' : null;
+      this.handlers.onStatus?.(false, final, pause);
       if (!opened) this.failures += 1;
-      if (!final) this.retry = window.setTimeout(() => this.connect(), reconnectDelay(this.failures));
+      if (!final) this.retry = window.setTimeout(() => this.connect(), pause === 'off' ? PAUSED_RETRY_MS : reconnectDelay(this.failures));
     };
   }
 

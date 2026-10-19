@@ -199,3 +199,21 @@ describe('toasts', () => {
     expect(toastText({ kind: 'bot-said', name: 'Bé Bông', line: { vi: 'Chào bạn!', en: 'Hi there!' }, seq: 1 })).toEqual({ vi: '🤖 Bé Bông: Chào bạn!', en: '🤖 Bé Bông: Hi there!' });
   });
 });
+
+describe('when online play is paused or locked', () => {
+  it('shows a friendly line (never an error) that she can put away, and a new reason shows again', () => {
+    const { social } = setup();
+    render(<SocialLayer social={social} covered={false} fill={fill} />);
+    expect(document.querySelector('[data-id="online-pause"]')).toBeNull();
+    act(() => social.update({ onlinePause: 'interaction' }));
+    const card = screen.getByRole('status');
+    expect(card.textContent).toContain('vẫn thấy mọi người');
+    expect(screen.queryByRole('alert')).toBeNull();
+    fireEvent.click(within(card).getByRole('button', { name: 'Đã hiểu' }));
+    expect(document.querySelector('[data-id="online-pause"]')).toBeNull();
+    act(() => social.update({ onlinePause: 'off' }));
+    expect(screen.getByRole('status').textContent).toContain('tự nối lại');
+    act(() => social.update({ onlinePause: null }));
+    expect(document.querySelector('[data-id="online-pause"]')).toBeNull();
+  });
+});

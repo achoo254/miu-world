@@ -42,6 +42,10 @@ import { cookingRoutes } from './cooking/cooking-routes';
 import { olympiadRoutes } from './olympiad/olympiad-routes';
 import { eventRoutes } from './event/event-routes';
 import { mailRoutes } from './mail/mail-routes';
+import { moderationRoutes } from './moderation/moderation-routes';
+import { OnlineSwitch } from './multiplayer/online-switch';
+import { wsTicketRoutes } from './multiplayer/online-ticket-routes';
+import { WsTickets } from './multiplayer/online-tickets';
 import { npcRoutes } from './npc/npc-routes';
 import { achievementRoutes } from './progression/achievement-routes';
 import { trophyRoomRoutes } from './progression/trophy-room-routes';
@@ -76,6 +80,10 @@ export interface AppDeps {
    * with the server's own events). Default: events are dropped.
    */
   analytics?: { sink: EventSink; sessions: AnalyticsSessions };
+  /** One-use tickets of the multiplayer connection, shared with the hub that takes them back. */
+  wsTickets?: WsTickets;
+  /** The emergency switch, shared with the hub (starts as `config.onlineMode`). */
+  onlineSwitch?: OnlineSwitch;
 }
 
 const DROP_EVENTS: EventSink = { send: () => undefined };
@@ -105,7 +113,7 @@ const errorHandler: ErrorRequestHandler = (err: unknown, _req, res, _next) => {
 };
 
 /** Builds the Express app without listening, so tests can drive it through supertest. */
-export function createApp({ config, db, content = loadContentCatalog(), worksheets = loadWorksheets(), clock = () => new Date(), fetchImpl, turnFetch, characterEvents, playerEvents, online, partyQuests, analytics = { sink: DROP_EVENTS, sessions: new AnalyticsSessions() } }: AppDeps): express.Express {
+export function createApp({ config, db, content = loadContentCatalog(), worksheets = loadWorksheets(), clock = () => new Date(), fetchImpl, turnFetch, characterEvents, playerEvents, online, partyQuests, analytics = { sink: DROP_EVENTS, sessions: new AnalyticsSessions() }, wsTickets, onlineSwitch = new OnlineSwitch(config.onlineMode) }: AppDeps): express.Express {
   const app = express();
   app.disable('x-powered-by');
   // The API listens on loopback only and is reached through the web dev/preview proxy (or a reverse
@@ -157,6 +165,8 @@ export function createApp({ config, db, content = loadContentCatalog(), workshee
   api.use(worksheetRoutes({ worksheets, clock }));
   const now = (): number => clock().getTime();
   api.use(voiceRoutes({ db, content, ice: new IceServerSource({ turn: config.turn, fetchImpl: turnFetch, now }), now }));
+  api.use(wsTicketRoutes({ db, content, clock, tickets: wsTickets ?? new WsTickets(now), onlineSwitch }));
+  api.use(moderationRoutes({ db, content, clock, moderators: config.moderatorAccounts, onlineSwitch, events: playerEvents, characterEvents }));
   app.use('/api', api);
 
   app.use((_req, res) => {

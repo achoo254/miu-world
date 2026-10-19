@@ -1,7 +1,15 @@
 # Kiểm duyệt, an toàn kết nối và tắt khẩn cấp cho chơi online (không chống cheat)
 
-**Trạng thái:** **hoãn, không làm đợt này** (người sở hữu 04/10/2026: bỏ qua vấn đề báo cáo vi phạm vì game chỉ có người sở hữu và bé chơi; chống cheat cũng đã bỏ). Mở lại trước khi có người chơi ngoài gia đình · **Tier:** M · **Nhánh:** `main` · **Ngày:** 04/10/2026
+**Trạng thái:** **đang thi công** từ 19/10/2026; pha 1–5 xong phần tự động 19/10/2026 (report `plans/dattqh/reports/moderation-safety-261019.md`), pha 6 chưa làm (người sở hữu duyệt mở lại theo tư vấn của Jev 0,87, vì người ngoài gia đình chơi được từ 12/10/2026); hoãn trước đó từ 04/10/2026 · **Tier:** M · **Nhánh:** `main` · **Ngày:** 04/10/2026
 **Nguồn:** Master Plan §8 (điều kiện mở bậc 2: "có kiểm duyệt và quy trình xử lý báo cáo"; "Khuyến nghị: chưa có đội kiểm duyệt thì dừng ở bậc 1"), §9 (dòng Multiplayer: bắt nạt, kết nối giả mạo), §8b ("công tắc tắt khẩn cấp, giới hạn tải server").
+
+## Quyết định mở lại (19/10/2026, Jev qua `tools/decisions/jev-decide.py`, người sở hữu duyệt mở plan)
+
+- Người xử lý báo cáo: người sở hữu, trong màn kiểm duyệt, kèm bản tóm tắt báo cáo mới mỗi ngày (thư trong Hộp thư của tài khoản người sở hữu); ca gấp dùng công tắc khẩn cấp (Jev 0,94). Câu hỏi mở 1 đã chốt (a).
+- Nhật ký quanh báo cáo giữ 14 ngày, đúng như trang `/privacy` đang hứa cho log; không đổi chính sách (Jev 0,99). Câu hỏi mở 2 đã chốt.
+- Tự động bảo vệ: một người chơi bị báo cáo bởi 3 tài khoản khác nhau trong 24 giờ thì bị ẩn khỏi người khác (khóa online tạm) tới khi người kiểm duyệt quyết (Jev 0,90).
+- Đo tải (pha 6): trên máy dev với server local, một job một lúc, kiểm tải máy trước, ghi giới hạn người mỗi room (Jev 0,97); không đo trên production.
+- Câu hỏi mở 3: giữ thưởng do server tính, như các quyết định trước.
 
 ## Quyết định của người sở hữu (04/10/2026)
 
@@ -36,14 +44,14 @@ Trước khi mở bất kỳ tương tác nào ngoài "thấy nhau" (bạn bè, 
 
 ## Pha
 
-| Pha | Tier | Nội dung | File sở hữu |
-| --- | --- | --- | --- |
-| 1 | S | **Giới hạn message WS**: kích thước tối đa, số message mỗi giây theo kết nối, loại bỏ chữ ngoài danh sách câu có sẵn; vượt thì bỏ message (đá kết nối chỉ khi dội liên tục). Vị trí `move` chấp nhận như client gửi | `apps/server/src/multiplayer/**` |
-| 2 | S | **Vé ngắn hạn cho WS** theo phiên và hồ sơ (đổi từ cookie ở `261004-1540` P1 sang vé một lần có hạn vài chục giây), kiểm `Origin`, kiểm quyền ở mỗi message | `apps/server/src/multiplayer`, `apps/server/src/auth` |
-| 3 | M | **Hàng đợi báo cáo**: mở rộng `player_reports` (loại: quấy rối, tên/đồ không hợp, khác; trạng thái; ghi chú xử lý), nhật ký ngắn hạn quanh sự việc (ai ở room, câu có sẵn đã gửi) | `apps/server/src/moderation/**` (mới), migration |
-| 4 | M | **Màn kiểm duyệt cho người xử lý**: đăng nhập quản trị (vai riêng, không dùng tài khoản phụ huynh thường), danh sách báo cáo, hành động (bỏ qua, cảnh cáo, đổi tên nhân vật về tên sinh tự động, khóa online tạm/lâu dài một hồ sơ), thông báo kết quả tới phụ huynh bên bị báo cáo | `apps/web/src/ui/moderation/**` (mới), `apps/server/src/moderation` |
-| 5 | S | **Công tắc khẩn cấp**: biến môi trường/cờ ở server tắt toàn bộ WS hoặc chỉ tương tác (giữ "thấy nhau"), client hiện thông báo thân thiện, không đẩy lỗi cho bé; tài liệu vận hành ở `docs/deployment-guide.md` | `apps/server/src/config.ts`, `apps/server/src/multiplayer`, `docs/` |
-| 6 | M | **Đo tải**: kịch bản 100 bot + N kết nối giả cùng room, đo CPU/băng thông/độ trễ tick, chốt giới hạn người mỗi room và tổng; kết quả ghi vào report (chạy trên máy chủ review, không chạy song song bộ test khác) | `tools/loadtest/**` (mới), `plans/dattqh/reports/` |
+| Pha | Tier | Nội dung | File sở hữu | Trạng thái |
+| --- | --- | --- | --- | --- |
+| 1 | S | **Giới hạn message WS**: kích thước tối đa, số message mỗi giây theo kết nối, loại bỏ chữ ngoài danh sách câu có sẵn; vượt thì bỏ message (đá kết nối chỉ khi dội liên tục). Vị trí `move` chấp nhận như client gửi | `apps/server/src/multiplayer/**` | Xong 19/10/2026 (phần tự động): đã có 4 KB, 20 tin/giây, chỉ câu có sẵn; thêm đóng kết nối khi 200 tin bị bỏ trong 10 giây (`4429`) |
+| 2 | S | **Vé ngắn hạn cho WS** theo phiên và hồ sơ (đổi từ cookie ở `261004-1540` P1 sang vé một lần có hạn vài chục giây), kiểm `Origin`, kiểm quyền ở mỗi message | `apps/server/src/multiplayer`, `apps/server/src/auth` | Xong 19/10/2026: `POST /api/online-ticket`, vé một lần 30 giây gắn cookie phiên; vẫn kiểm `Origin`, phiên kiểm lại mỗi 2 phút, khóa/công tắc kiểm ở mỗi tin |
+| 3 | M | **Hàng đợi báo cáo**: mở rộng `player_reports` (loại: quấy rối, tên/đồ không hợp, khác; trạng thái; ghi chú xử lý), nhật ký ngắn hạn quanh sự việc (ai ở room, câu có sẵn đã gửi) | `apps/server/src/moderation/**` (mới), migration | Xong 19/10/2026: migration `0023_moderation` (chỉ thêm); nhật ký 14 ngày; ẩn tự động 3 người/24 giờ |
+| 4 | M | **Màn kiểm duyệt cho người xử lý**: đăng nhập quản trị (vai riêng, không dùng tài khoản phụ huynh thường), danh sách báo cáo, hành động (bỏ qua, cảnh cáo, đổi tên nhân vật về tên sinh tự động, khóa online tạm/lâu dài một hồ sơ), thông báo kết quả tới phụ huynh bên bị báo cáo | `apps/web/src/ui/moderation/**` (mới), `apps/server/src/moderation` | Xong 19/10/2026: `/kiem-duyet`, người kiểm duyệt theo email `MODERATOR_ACCOUNTS` (không làm vai đăng nhập riêng, theo quyết định 19/10); thư tóm tắt mỗi ngày |
+| 5 | S | **Công tắc khẩn cấp**: biến môi trường/cờ ở server tắt toàn bộ WS hoặc chỉ tương tác (giữ "thấy nhau"), client hiện thông báo thân thiện, không đẩy lỗi cho bé; tài liệu vận hành ở `docs/deployment-guide.md` | `apps/server/src/config.ts`, `apps/server/src/multiplayer`, `docs/` | Xong 19/10/2026: `ONLINE_MODE` + `PUT /api/moderation/online-mode`; `docs/deployment-guide.md` §7 |
+| 6 | M | **Đo tải**: kịch bản 100 bot + N kết nối giả cùng room, đo CPU/băng thông/độ trễ tick, chốt giới hạn người mỗi room và tổng; kết quả ghi vào report (chạy trên máy chủ review, không chạy song song bộ test khác) | `tools/loadtest/**` (mới), `plans/dattqh/reports/` | Chưa làm (không thuộc đợt này) |
 
 ## Phụ thuộc và file dùng chung
 

@@ -32,6 +32,7 @@ const VillageFriendsScreen = lazy(() => import('./npc/village-friends').then((m)
 const JourneyScreen = lazy(() => import('./journey/journey-screen').then((m) => ({ default: m.JourneyScreen })));
 const AchievementsScreen = lazy(() => import('./journey/achievements-screen').then((m) => ({ default: m.AchievementsScreen })));
 const WorksheetListScreen = lazy(() => import('./parent/worksheets/worksheets-screen').then((m) => ({ default: m.WorksheetListScreen })));
+const ModerationScreen = lazy(() => import('./moderation/moderation-screen').then((m) => ({ default: m.ModerationScreen })));
 const WorksheetSheetScreen = lazy(() => import('./parent/worksheets/worksheets-screen').then((m) => ({ default: m.WorksheetSheetScreen })));
 
 /** Plays `mood` while its screen is up (screens outside the child's area: sign-in, profile picker). */
@@ -182,6 +183,7 @@ export function AppRoutes() {
         <Route path="/profiles" element={<WithMusic mood="home"><RequireParent><ProfilePickerScreen /></RequireParent></WithMusic>} />
         <Route path="/parent" element={<RequireParent><ParentAreaScreen /></RequireParent>} />
         <Route path="/parent/worksheets" element={<RequireParent><Suspense fallback={<Loading />}><WorksheetListScreen /></Suspense></RequireParent>} />
+        <Route path="/kiem-duyet" element={<RequireParent><Suspense fallback={<Loading />}><ModerationScreen /></Suspense></RequireParent>} />
         <Route path="/parent/worksheets/:lessonId" element={<RequireParent><Suspense fallback={<Loading />}><WorksheetSheetScreen /></Suspense></RequireParent>} />
         <Route path="/create" element={<ChildScreen music="home"><CreatorScreen /></ChildScreen>} />
         <Route path="/home" element={<ChildScreen music="home"><HomeScreen /></ChildScreen>} />

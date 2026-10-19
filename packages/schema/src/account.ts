@@ -181,6 +181,8 @@ export const AccountExport = z.object({
       blocks: z.array(z.object({ displayName: z.string(), since: Instant })),
       /** Players she reported online: the picked reason and the map, nothing typed. */
       reports: z.array(z.object({ displayName: z.string(), reason: z.string(), map: z.string().nullable(), createdAt: Instant })),
+      /** Her online play kept off: hidden by the reports safeguard, or locked by a moderator (`until` null: no end). */
+      onlineLock: z.object({ kind: z.enum(['hidden', 'locked']), until: Instant.nullable() }).nullable().default(null),
     }),
   ),
 });

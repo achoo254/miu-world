@@ -75,6 +75,11 @@ export interface SocialSnapshot {
   speaking: readonly string[];
   /** A companion bot's line in her voice, shown over it as it speaks. */
   voiceLine: { id: string; text: string; seq: number } | null;
+  /**
+   * Why online play is (partly) not there: the emergency switch turned it `off` or turned `interaction` off (she still
+   * sees the others), or her online play is `restricted`. Null: online as usual. Shown as a friendly line.
+   */
+  onlinePause: 'off' | 'interaction' | 'restricted' | null;
 }
 
 /** Voice messages from the server, for the voice (it outlives a map's online session). */
@@ -145,6 +150,7 @@ export const INITIAL_SOCIAL: SocialSnapshot = {
   partyProgress: null,
   speaking: [],
   voiceLine: null,
+  onlinePause: null,
 };
 
 export function createSocialStore(): SocialStore {

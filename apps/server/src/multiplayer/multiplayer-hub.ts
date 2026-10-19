@@ -5,6 +5,11 @@
 // come from an allowed origin with a live session cookie, and her name, species, outfit and pet are read from the
 // database (and re-sent to the others when she saves new ones). Others know her by a public id that is not her
 // profile id. Blocked pairs never see each other, nor meet in a party.
+//
+// Safety limits (Master Plan §8b, §9): every word on the wire is a canned line (the schema refuses anything else),
+// a message over 4 KB or beyond the flood bucket is dropped, and a connection that keeps flooding is closed. A
+// player locked out of online play (by a moderator, or hidden by the reports safeguard) is closed and kept out; the
+// emergency switch (`OnlineSwitch`) closes every connection, or only drops what players send each other.
 import type { IncomingMessage, Server as HttpServer } from 'node:http';
 import type { Duplex } from 'node:stream';
 import { randomUUID } from 'node:crypto';
@@ -15,6 +20,7 @@ import {
   INTERACT_RANGE,
   PARTY_INVITE_TTL_MS,
   type MpNotice,
+  type OnlineMode,
   type PartyMember,
   type PartyView,
   type PlayerAppearance,
@@ -29,6 +35,8 @@ import type { FriendPerson } from '@miu/schema/friends';
 import type { PlayerEvent } from '../player/player-events';
 import type { CharacterDto } from '@miu/schema/game';
 import type { Authenticate, MultiplayerStore } from './multiplayer-store';
+import type { IncidentLineInput } from '../moderation/moderation-store';
+import { OnlineSwitch } from './online-switch';
 import { PartyService, type PartyError } from './party-service';
 import { FriendRequestLimiter } from '../friend/friend-limiter';
 import type { CoopService } from '../coop/coop-service';
@@ -205,8 +213,12 @@ export interface Connection {
 export interface HubOptions {
   store?: MultiplayerStore;
   authenticate?: Authenticate;
+  /** Who keeps playing on an open connection, from its cookie (every RECHECK_MS); defaults to `authenticate`. */
+  revalidate?: Authenticate;
   /** Origins allowed to open a connection (the same list as the API's CSRF check). */
   allowedOrigins?: readonly string[];
+  /** The emergency switch (on when left out). */
+  onlineSwitch?: OnlineSwitch;
   now?: () => number;
   /** A member who drops out (a new map loads, a short network loss) keeps her party place this long. */
   partyGraceMs?: number;
@@ -234,10 +246,16 @@ interface OnlinePlayer {
   /** Voice setup messages have their own bucket (network candidates come in bursts). */
   signalTokens: number;
   signalRefilledAt: number;
+  /** Messages dropped since `dropsSince` (oversized or beyond a bucket): too many and the connection is closed. */
+  drops: number;
+  dropsSince: number;
 }
 
-/** Codes a WebSocket is closed with, so the client knows not to reconnect. */
-export const WS_CLOSE = { replaced: 4001, noPlayer: 4401 } as const;
+/**
+ * Codes a WebSocket is closed with: the client does not reconnect after `replaced`, `noPlayer` or `restricted` (her
+ * online play is locked), reconnects later after `paused` (the emergency switch) and soon after `flood`.
+ */
+export const WS_CLOSE = { replaced: 4001, restricted: 4403, noPlayer: 4401, flood: 4429, paused: 4503 } as const;
 
 const BUCKET_SIZE = 40;
 const BUCKET_REFILL_PER_S = 20;
@@ -245,6 +263,14 @@ const SIGNAL_BUCKET_SIZE = 80;
 const SIGNAL_REFILL_PER_S = 20;
 /** How a voice setup message starts on the wire (the client sends `type` first); anything else is an ordinary one. */
 const SIGNAL_PREFIX = '{"type":"voice-signal"';
+/** A connection that has this many messages dropped within FLOOD_WINDOW_MS keeps flooding: it is closed. */
+export const FLOOD_CLOSE_DROPS = 200;
+const FLOOD_WINDOW_MS = 10_000;
+/** The canned lines a player sent within this long are kept (in memory) for a report about her or by her. */
+const LINE_MEMORY_MS = 10 * 60_000;
+const LINE_MEMORY_MAX = 20;
+/** While interaction is off, only these still pass: being in a room, moving, leaving, and blocking or reporting. */
+const ALWAYS_ALLOWED = new Set<ClientWsMessage['type']>(['join', 'update', 'leave', 'block', 'report']);
 const REPORT_COOLDOWN_MS = 10 * 60_000;
 /** How often open connections re-check their session (sign-out, expiry, a deleted player, a new policy). */
 const RECHECK_MS = 2 * 60_000;
@@ -289,10 +315,15 @@ export class MultiplayerHub {
   private readonly hidden = new Map<string, Set<string>>();
   /** Last report per reporter and reported player: a repeat within the cooldown files nothing new. */
   private readonly reports = new Map<string, number>();
+  /** Canned lines each player sent lately (public id), for the incident log of a report. */
+  private readonly lines = new Map<string, Array<{ text: SafeCannedChat; at: number }>>();
+  /** The emergency switch (on unless the server was given one). */
+  readonly onlineSwitch: OnlineSwitch;
   /** The newest connection attempt per player: an older one finishing later does not take her place. */
   private readonly attempts = new Map<string, number>();
   private attemptSeq = 0;
   private readonly recheck: NodeJS.Timeout;
+  private readonly stopSwitch: () => void;
   private readonly partyTimers = new Map<string, NodeJS.Timeout>();
   /** Friend requests on their way to a companion bot: request id → who asked which bot. */
   private readonly botAsks = new Map<string, { publicId: string; botId: string; at: number }>();
@@ -309,6 +340,7 @@ export class MultiplayerHub {
   private partyQuestBots: PartyQuestBotDriver | null = null;
   private readonly store: MultiplayerStore | null;
   private readonly authenticate: Authenticate | null;
+  private readonly revalidate: Authenticate | null;
   private readonly allowedOrigins: ReadonlySet<string>;
   private readonly now: () => number;
   private readonly partyGraceMs: number;
@@ -319,6 +351,9 @@ export class MultiplayerHub {
   constructor(server?: HttpServer, options: HubOptions = {}) {
     this.store = options.store ?? null;
     this.authenticate = options.authenticate ?? null;
+    this.revalidate = options.revalidate ?? this.authenticate;
+    this.onlineSwitch = options.onlineSwitch ?? new OnlineSwitch();
+    this.stopSwitch = this.onlineSwitch.on((mode) => this.switched(mode));
     this.allowedOrigins = new Set(options.allowedOrigins ?? []);
     this.now = options.now ?? Date.now;
     this.partyGraceMs = options.partyGraceMs ?? 30_000;
@@ -428,17 +463,27 @@ export class MultiplayerHub {
    */
   async connect(childId: string, transport: Transport): Promise<Connection | null> {
     if (!this.store) return null;
+    if (this.paused()) {
+      transport.close(WS_CLOSE.paused, 'paused');
+      return null;
+    }
     const attempt = ++this.attemptSeq;
     this.attempts.set(childId, attempt);
-    const [stored, blocked, settings, botFriends] = await Promise.all([
+    const [stored, blocked, settings, botFriends, restricted] = await Promise.all([
       this.store.appearance(childId),
       this.store.blockedWith(childId),
       this.store.settings?.(childId) ?? { botsEnabled: true },
       this.friends?.botFriends(childId) ?? new Set<string>(),
+      this.store.restricted?.(childId) ?? false,
     ]);
     const latest = this.attempts.get(childId) === attempt;
     if (latest) this.attempts.delete(childId);
     if (!stored) return null;
+    // Locked out of online play, or the switch went off meanwhile: she plays on alone.
+    if (restricted || this.paused()) {
+      transport.close(restricted ? WS_CLOSE.restricted : WS_CLOSE.paused, restricted ? 'restricted' : 'paused');
+      return null;
+    }
     const appearance: PlayerAppearance = { ...stored, outfit: stored.outfit ?? [], species: stored.species ?? 'cat', pet: stored.pet ?? null, petGear: stored.petGear ?? [] };
     // A newer tab is on its way in, or this one already left: it takes no one's place.
     if (!latest || transport.alive?.() === false) {
@@ -459,7 +504,7 @@ export class MultiplayerHub {
     const timer = this.partyTimers.get(publicId);
     if (timer) clearTimeout(timer);
     this.partyTimers.delete(publicId);
-    const player: OnlinePlayer = { publicId, childId, transport, appearance, room: null, bots: settings.botsEnabled, botFriends, joins: 0, tokens: BUCKET_SIZE, refilledAt: this.now(), signalTokens: SIGNAL_BUCKET_SIZE, signalRefilledAt: this.now() };
+    const player: OnlinePlayer = { publicId, childId, transport, appearance, room: null, bots: settings.botsEnabled, botFriends, joins: 0, tokens: BUCKET_SIZE, refilledAt: this.now(), signalTokens: SIGNAL_BUCKET_SIZE, signalRefilledAt: this.now(), drops: 0, dropsSince: this.now() };
     this.players.set(publicId, player);
     this.peakPlayers = Math.max(this.peakPlayers, this.playersOnline());
     return {
@@ -516,7 +561,56 @@ export class MultiplayerHub {
       case 'unblocked':
         void this.unblocked(event.childId, event.otherChildId);
         return;
+      case 'restricted': {
+        const player = this.onlinePlayer(event.childId);
+        if (player) this.shutOut(player, WS_CLOSE.restricted, 'restricted');
+        return;
+      }
     }
+  }
+
+  /**
+   * Out of online play now (locked, or hidden by the reports safeguard): out of her party, her voice and her room,
+   * and her connection closed so it does not come back.
+   */
+  private shutOut(player: OnlinePlayer, code: number, reason: string): void {
+    if (this.players.get(player.publicId) !== player) return;
+    const id = player.publicId;
+    this.parties.dropInvites(id);
+    if (this.parties.partyOf(id)) this.leaveParty(id);
+    this.voice.forget(id);
+    this.disconnect(player);
+    player.transport.close(code, reason);
+  }
+
+  /**
+   * The emergency switch moved. `off`: every connection closes (clients try again later). `interaction-off`: parties,
+   * invites and voice end and everyone is told; players still see each other move. `on`: everyone is told.
+   */
+  private switched(mode: OnlineMode): void {
+    for (const player of [...this.players.values()]) {
+      if (mode === 'off') {
+        this.disconnect(player);
+        player.transport.close(WS_CLOSE.paused, 'paused');
+        continue;
+      }
+      if (mode === 'interaction-off') {
+        this.parties.dropInvites(player.publicId);
+        if (this.parties.partyOf(player.publicId)) this.leaveParty(player.publicId);
+        this.voice.forget(player.publicId);
+      }
+      player.transport.send({ type: 'online-mode', mode });
+    }
+  }
+
+  /** Whether the emergency switch has online play off (read afresh: it may move while a connection is let in). */
+  private paused(): boolean {
+    return this.onlineSwitch.mode === 'off';
+  }
+
+  /** Whether players may interact now (the emergency switch is fully on). */
+  private interacting(): boolean {
+    return this.onlineSwitch.mode === 'on';
   }
 
   private onlinePlayer(childId: string): OnlinePlayer | undefined {
@@ -601,6 +695,7 @@ export class MultiplayerHub {
 
   close(): Promise<void> {
     clearInterval(this.recheck);
+    this.stopSwitch();
     this.coop?.close();
     this.voice.close();
     for (const timer of this.partyTimers.values()) clearTimeout(timer);
@@ -649,7 +744,7 @@ export class MultiplayerHub {
     ws.on('error', () => ws.terminate());
     // Only the cookie is kept for the re-checks, not the whole request.
     const cookie = { headers: { cookie: req.headers.cookie } };
-    const authenticate = this.authenticate;
+    const authenticate = this.revalidate;
     const transport: Transport = {
       send: (message) => {
         if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(message));
@@ -709,12 +804,43 @@ export class MultiplayerHub {
     return true;
   }
 
+  /** A message dropped by the limits; a connection that keeps flooding is closed (the client reconnects later). */
+  private dropped(player: OnlinePlayer): void {
+    const now = this.now();
+    if (now - player.dropsSince > FLOOD_WINDOW_MS) {
+      player.drops = 0;
+      player.dropsSince = now;
+    }
+    player.drops += 1;
+    if (player.drops < FLOOD_CLOSE_DROPS) return;
+    this.disconnect(player);
+    player.transport.close(WS_CLOSE.flood, 'flood');
+  }
+
+  /** A canned line she sent, kept LINE_MEMORY_MS for a report (only the line and when; never where she stood). */
+  private remember(id: string, text: SafeCannedChat): void {
+    const now = this.now();
+    const kept = (this.lines.get(id) ?? []).filter((l) => now - l.at < LINE_MEMORY_MS);
+    kept.push({ text, at: now });
+    this.lines.set(id, kept.slice(-LINE_MEMORY_MAX));
+  }
+
+  /** Lines older than LINE_MEMORY_MS are forgotten (swept with the session re-checks). */
+  private forgetOldLines(): void {
+    const now = this.now();
+    for (const [id, kept] of this.lines) {
+      const fresh = kept.filter((l) => now - l.at < LINE_MEMORY_MS);
+      if (fresh.length === 0) this.lines.delete(id);
+      else this.lines.set(id, fresh);
+    }
+  }
+
   private receive(player: OnlinePlayer, raw: string): void {
     if (this.players.get(player.publicId) !== player) return;
     // Limits first, before anything is read: voice setup messages (bursts of network candidates, up to 16 KB) in their
     // own bucket, everything else in the flood bucket and the usual 4 KB.
     const signal = raw.startsWith(SIGNAL_PREFIX);
-    if (signal ? !this.allowSignal(player) : Buffer.byteLength(raw) > MAX_PAYLOAD_BYTES || !this.allow(player)) return;
+    if (signal ? !this.allowSignal(player) : Buffer.byteLength(raw) > MAX_PAYLOAD_BYTES || !this.allow(player)) return this.dropped(player);
     let data: unknown;
     try {
       data = JSON.parse(raw);
@@ -726,6 +852,8 @@ export class MultiplayerHub {
     if (!parsed.success || signal !== (parsed.data.type === 'voice-signal')) return;
     const message = parsed.data;
     const self = player.publicId;
+    // Interaction off (the emergency switch): she still moves among the others, and can block or report.
+    if (!this.interacting() && !ALWAYS_ALLOWED.has(message.type)) return;
     switch (message.type) {
       case 'join':
         return this.join(player, message);
@@ -739,6 +867,7 @@ export class MultiplayerHub {
       case 'chat':
         if (message.to && !this.reachable(player, message.to)) return this.notice(self, 'not-here', message.to);
         player.room?.broadcastChat(self, message.text, message.to);
+        this.remember(self, message.text);
         return;
       case 'block':
         void this.block(player, message.id);
@@ -768,6 +897,7 @@ export class MultiplayerHub {
         const party = this.parties.partyOf(self);
         if (!party) return;
         for (const member of party.members) this.deliver(member, { type: 'party-chat', from: self, displayName: player.appearance.displayName, text: message.text });
+        this.remember(self, message.text);
         return;
       }
       case 'party-goto':
@@ -888,6 +1018,7 @@ export class MultiplayerHub {
         bubble: null,
       },
     });
+    if (this.onlineSwitch.mode !== 'on') player.transport.send({ type: 'online-mode', mode: this.onlineSwitch.mode });
     // Her party learns her new map; she gets her party (null too: a fresh page knows nothing yet).
     const party = this.parties.partyOf(player.publicId);
     if (party) this.pushParty(party.members);
@@ -948,6 +1079,7 @@ export class MultiplayerHub {
 
   /** Closes the connections whose session no longer plays as their player (signed out, expired, deleted). */
   private async recheckSessions(): Promise<void> {
+    this.forgetOldLines();
     for (const player of [...this.players.values()]) {
       const check = player.transport.stillValid;
       if (!check) continue;
@@ -1085,7 +1217,7 @@ export class MultiplayerHub {
     const player = this.players.get(publicId);
     const room = player?.room;
     const bot = room?.members.get(botId);
-    if (!player || !room || !bot?.isBot || !this.friends || player.botFriends.has(botProfileId(botId)) || !this.roomSees(publicId, botId)) return;
+    if (!player || !room || !bot?.isBot || !this.friends || !this.interacting() || player.botFriends.has(botProfileId(botId)) || !this.roomSees(publicId, botId)) return;
     try {
       const outcome = await this.friends.botRequest(botProfileId(botId), player.childId);
       if (outcome.kind !== 'sent') return;
@@ -1105,7 +1237,7 @@ export class MultiplayerHub {
     const room = player?.room;
     const self = room?.members.get(publicId);
     const bot = room?.members.get(botId);
-    if (!player?.bots || !self || !bot?.isBot || !this.roomSees(publicId, botId)) return false;
+    if (!player?.bots || !self || !bot?.isBot || !this.interacting() || !this.roomSees(publicId, botId)) return false;
     if (self.presence.riding || !near(self.presence, bot.presence)) return false;
     return !this.parties.partyOf(publicId) && !this.parties.partyOf(botId) && !this.parties.invitedTo(publicId);
   }
@@ -1207,14 +1339,36 @@ export class MultiplayerHub {
     // Taken before the write, so a burst of the same report files one row.
     this.reports.set(key, now);
     for (const [k, at] of this.reports) if (now - at >= REPORT_COOLDOWN_MS) this.reports.delete(k);
+    let hidden: boolean;
     try {
-      await this.store.report(player.childId, target, reason, player.room?.mapId ?? null);
+      const filed = await this.store.report(player.childId, target, reason, player.room?.mapId ?? null, this.incident(player, id, now));
+      hidden = filed?.hidden ?? false;
     } catch (err) {
       console.error('report failed', err instanceof Error ? err.name : typeof err);
       this.reports.delete(key);
       return this.notice(self, 'failed', id);
     }
     this.notice(self, 'reported', id);
+    // The safeguard: reported by several players at once, she is out of online play until a moderator decides.
+    const reported = hidden ? this.players.get(id) : undefined;
+    if (reported) this.shutOut(reported, WS_CLOSE.restricted, 'restricted');
+  }
+
+  /**
+   * What is kept around a report: the other players in the reporter's room (profile ids, never positions) and the
+   * canned lines the two sent within LINE_MEMORY_MS.
+   */
+  private incident(reporter: OnlinePlayer, reportedId: string, now: number): { witnesses: string[]; lines: IncidentLineInput[] } {
+    const witnesses = [...(reporter.room?.people.keys() ?? [])].flatMap((id) => {
+      const childId = this.childIds.get(id);
+      return childId && id !== reporter.publicId && id !== reportedId ? [childId] : [];
+    });
+    const sent = (id: string, by: IncidentLineInput['by']) =>
+      (this.lines.get(id) ?? []).filter((l) => now - l.at < LINE_MEMORY_MS).map((l) => ({ by, text: l.text, at: l.at }));
+    const lines = [...sent(reportedId, 'reported'), ...sent(reporter.publicId, 'reporter')]
+      .sort((a, b) => a.at - b.at)
+      .map(({ by, text, at }) => ({ by, text, secondsBefore: Math.max(0, Math.round((now - at) / 1000)) }));
+    return { witnesses, lines };
   }
 
   /** A member leaves her party: everyone in it is told, and visitors of their homes who may no longer stay go home. */

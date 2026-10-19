@@ -15,7 +15,10 @@ import { dbFriendStore, type OnlineLookup } from './friend/friend-store';
 import { BotRunner } from './multiplayer/bot-runner';
 import { WalkStore } from './multiplayer/bot-brain/walk-store';
 import { MultiplayerHub } from './multiplayer/multiplayer-hub';
-import { dbMultiplayerStore, sessionAuthenticator } from './multiplayer/multiplayer-store';
+import { dbMultiplayerStore, sessionAuthenticator, ticketAuthenticator } from './multiplayer/multiplayer-store';
+import { OnlineSwitch } from './multiplayer/online-switch';
+import { WsTickets } from './multiplayer/online-tickets';
+import { startModerationJobs } from './moderation/moderation-jobs';
 import { CoopService } from './coop/coop-service';
 import { dbCoopRewards } from './reward/coop-reward';
 import { dbBotStore } from './multiplayer/bot-store';
@@ -47,7 +50,10 @@ const analyticsSink = new Ga4Forwarder({ config: config.ga4 });
 const analyticsSessions = new AnalyticsSessions();
 const usage = config.ga4 ? new ServerEvents({ sink: analyticsSink, sessions: analyticsSessions, labels: questLabels(content) }) : null;
 installServerEvents(usage);
-const app = createApp({ config, db, content, characterEvents, playerEvents, online, partyQuests, analytics: { sink: analyticsSink, sessions: analyticsSessions } });
+// The multiplayer connection opens with a one-use ticket the API hands out; the emergency switch is shared too.
+const wsTickets = new WsTickets();
+const onlineSwitch = new OnlineSwitch(config.onlineMode);
+const app = createApp({ config, db, content, characterEvents, playerEvents, online, partyQuests, analytics: { sink: analyticsSink, sessions: analyticsSessions }, wsTickets, onlineSwitch });
 
 /** Which database this run uses, so a dev who suddenly sees no accounts knows whether it is a new one. */
 async function describeDatabase(database: Db): Promise<string> {
@@ -65,11 +71,14 @@ const server = app.listen(config.port, '127.0.0.1', () => {
   console.log(`miu server listening on :${config.port} (${config.nodeEnv})`);
 });
 
+const sessionAuth = sessionAuthenticator(db, config, content.consent.version, () => new Date());
 const multiplayer = new MultiplayerHub(server, {
   store: dbMultiplayerStore(db),
   friends: dbFriendStore(db),
-  authenticate: sessionAuthenticator(db, config, content.consent.version, () => new Date()),
+  authenticate: ticketAuthenticator(wsTickets, sessionAuth, config),
+  revalidate: sessionAuth,
   allowedOrigins: config.allowedOrigins,
+  onlineSwitch,
 });
 hub = multiplayer;
 characterEvents.on((childId, character) => multiplayer.characterSaved(childId, character));
@@ -96,6 +105,9 @@ multiplayer.setCoop(coop);
 partyQuestService = new PartyQuestService({ db, content, host: multiplayer.coopHost() });
 multiplayer.setPartyQuests(partyQuestService);
 console.log('multiplayer hub and companion bot runner active');
+console.log(`online mode: ${onlineSwitch.mode}; moderators: ${config.moderatorAccounts.size}`);
+// Incident logs kept 14 days, run-out locks, and the moderators' daily digest of new reports.
+const stopModerationJobs = startModerationJobs({ db, moderators: config.moderatorAccounts });
 console.log(`usage analytics: ${config.ga4 ? 'sent to Google Analytics' : 'off (GA4_MEASUREMENT_ID unset)'}`);
 
 /** Every hour the most people online at once in it (companion bots never count) goes to the usage numbers. */
@@ -112,6 +124,7 @@ async function shutdown(signal: NodeJS.Signals): Promise<void> {
   stopping = true;
   console.log(`${signal}: writing out what the companion bots learnt`);
   botRunner.stop();
+  stopModerationJobs();
   const timeout = new Promise<false>((resolve) => setTimeout(() => resolve(false), SHUTDOWN_WRITE_MS).unref());
   const written = (async (): Promise<true> => {
     // The usage events still queued leave too, within their own shorter deadline (`CLOSE_DEADLINE_MS`), so a slow

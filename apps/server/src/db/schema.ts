@@ -275,6 +275,8 @@ export const mail = pgTable(
     claimed: integer('claimed').notNull().default(0),
     claimedAt: timestamp('claimed_at', { withTimezone: true }),
     createdAt: createdAt(),
+    /** Values a system letter fills into its template (a report count, a new name, a date); never typed by players. */
+    params: jsonb('params').$type<Record<string, string>>(),
   },
   (t) => [
     index('mail_child_idx').on(t.childId),
@@ -354,8 +356,9 @@ export const playerBlocks = pgTable(
 );
 
 /**
- * A report of another player, queued for a person to handle (no moderation screen yet). Only ids, a picked
- * reason and the map: no free text, no record of what anyone said.
+ * A report of another player, queued for a moderator (the moderation screen). Only ids, a picked reason and the
+ * map: no free text from players. What was around it (the canned lines sent, and who was in the room in
+ * `report_witnesses`) is kept for 14 days; the moderator's decision and own note are kept here.
  */
 export const playerReports = pgTable(
   'player_reports',
@@ -369,12 +372,57 @@ export const playerReports = pgTable(
     reason: text('reason').notNull(),
     mapId: text('map_id'),
     createdAt: createdAt(),
+    /** `open` until a moderator decides (`dismissed`, `warned`, `renamed`, `locked`). */
+    status: text('status').notNull().default('open'),
+    handledAt: timestamp('handled_at', { withTimezone: true }),
+    /** The moderator's account (null once it is gone). */
+    handledBy: uuid('handled_by').references(() => parents.id, { onDelete: 'set null' }),
+    /** The moderator's own note on the decision; never shown to players. */
+    note: text('note'),
+    /**
+     * The canned lines the reported player and the reporter sent in the minutes before (only lines of the fixed
+     * list, by role, and how long before; no positions, no paths). Emptied 14 days after the report.
+     */
+    incidentLines: jsonb('incident_lines').$type<Array<{ by: 'reported' | 'reporter'; text: string; secondsBefore: number }>>(),
   },
   (t) => [
     index('player_reports_reported_idx').on(t.reportedChildId),
     index('player_reports_child_idx').on(t.childId),
+    index('player_reports_status_idx').on(t.status, t.createdAt),
     check('player_reports_reason_valid', sql`${t.reason} in ('harassment', 'spam', 'name', 'other')`),
+    check('player_reports_status_valid', sql`${t.status} in ('open', 'dismissed', 'warned', 'renamed', 'locked')`),
+    check('player_reports_note_length', sql`char_length(${t.note}) <= 300`),
   ],
+);
+
+/** The other players in the room when a report was made; deleted 14 days after it, and with either player. */
+export const reportWitnesses = pgTable(
+  'report_witnesses',
+  {
+    reportId: uuid('report_id')
+      .notNull()
+      .references(() => playerReports.id, { onDelete: 'cascade' }),
+    childId: childRef(),
+    createdAt: createdAt(),
+  },
+  (t) => [primaryKey({ columns: [t.reportId, t.childId] }), index('report_witnesses_child_idx').on(t.childId), index('report_witnesses_created_idx').on(t.createdAt)],
+);
+
+/**
+ * A player kept out of online play: `hidden` when three players reported her within a day (until a moderator
+ * decides), `locked` by a moderator for some days (`until`) or for good (null). One row per player at most.
+ */
+export const playerRestrictions = pgTable(
+  'player_restrictions',
+  {
+    childId: uuid('child_id')
+      .primaryKey()
+      .references(() => childProfiles.id, { onDelete: 'cascade' }),
+    kind: text('kind').notNull(),
+    until: timestamp('until', { withTimezone: true }),
+    createdAt: createdAt(),
+  },
+  (t) => [check('player_restrictions_kind_valid', sql`${t.kind} in ('hidden', 'locked')`)],
 );
 
 /**

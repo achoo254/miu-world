@@ -5,7 +5,7 @@ import { createSocialStore } from '../../game-bridge/social-store';
 import { linesOf, setLangMode } from '../../ui/i18n/i18n';
 import type { GuardedGltfLoader } from '../asset-loader';
 import { cannedLine } from './canned-lines';
-import { reconnectDelay } from './multiplayer-client';
+import { PAUSED_RETRY_MS, reconnectDelay } from './multiplayer-client';
 import { MultiplayerSession, arrowTurn } from './multiplayer-session';
 
 /** A socket that never touches the network: the test reads what was sent and plays the server. */
@@ -35,6 +35,15 @@ class FakeSocket {
   }
 }
 
+const TICKET = 'A'.repeat(43);
+/** What the ticket call answers next (a ticket, or the server's refusal). */
+let ticketAnswer: { status: number; body: unknown } = { status: 200, body: { ticket: TICKET } };
+
+/** Lets the ticket call (a stubbed fetch) settle, so the socket it opens is there. */
+async function flush(): Promise<void> {
+  for (let i = 0; i < 10; i++) await Promise.resolve();
+}
+
 function socket(): FakeSocket {
   const ws = FakeSocket.last;
   if (!ws) throw new Error('no socket');
@@ -43,6 +52,11 @@ function socket(): FakeSocket {
 
 beforeEach(() => {
   vi.stubGlobal('WebSocket', FakeSocket);
+  ticketAnswer = { status: 200, body: { ticket: TICKET } };
+  vi.stubGlobal(
+    'fetch',
+    vi.fn(async () => ({ ok: ticketAnswer.status < 300, status: ticketAnswer.status, json: async () => ticketAnswer.body })),
+  );
 });
 
 afterEach(() => {
@@ -50,7 +64,7 @@ afterEach(() => {
   setLangMode('vi', false);
 });
 
-function session(mapId = 'trung-tam', social = createSocialStore()) {
+async function session(mapId = 'trung-tam', social = createSocialStore()) {
   const store = createGameStore();
   const commands: GameCommand[] = [];
   store.onCommand((c) => commands.push(c));
@@ -68,6 +82,7 @@ function session(mapId = 'trung-tam', social = createSocialStore()) {
     regionOfMap: (id) => (id === 'cho-phien' || id === 'nha-cua-be' ? id : null),
     say: (text) => said.push(text),
   });
+  await flush();
   const ws = socket();
   ws.open();
   ws.receive({ type: 'welcome', selfId: 'p-me', players: [] });
@@ -75,15 +90,15 @@ function session(mapId = 'trung-tam', social = createSocialStore()) {
 }
 
 describe('the online session', () => {
-  it('joins with a place only: who she is, the server says', () => {
-    const { ws, online } = session();
-    expect(ws.url).toMatch(/\/api\/ws$/);
+  it('joins with a place only: who she is, the server says', async () => {
+    const { ws, online } = await session();
+    expect(ws.url).toMatch(/\/api\/ws\?ticket=A{43}$/);
     expect(ws.sent[0]).toEqual({ type: 'join', mapId: 'trung-tam', x: 10, y: 5, z: 10, yaw: 0, riding: false });
     online.dispose();
   });
 
-  it('passes the menu actions on as wire messages and closes the menu', () => {
-    const { ws, social, online, said } = session();
+  it('passes the menu actions on as wire messages and closes the menu', async () => {
+    const { ws, social, online, said } = await session();
     online.openMenu({ id: 'p-b', name: 'Bông', isBot: false });
     expect(social.getSnapshot().menu).toEqual({ id: 'p-b', name: 'Bông', isBot: false });
     social.send({ type: 'wave', to: 'p-b' });
@@ -103,8 +118,8 @@ describe('the online session', () => {
     online.dispose();
   });
 
-  it('shows invites, answers them, and keeps the party frame in step with the server', () => {
-    const { ws, social, online } = session();
+  it('shows invites, answers them, and keeps the party frame in step with the server', async () => {
+    const { ws, social, online } = await session();
     ws.receive({ type: 'party-invite', from: { id: 'bot-tt-1', displayName: 'Bé Bông', isBot: true }, expiresInMs: 60_000 });
     expect(social.getSnapshot().invites.map((i) => i.from)).toEqual([{ id: 'bot-tt-1', name: 'Bé Bông', isBot: true }]);
     social.send({ type: 'reply', from: 'bot-tt-1', accept: true });
@@ -123,8 +138,8 @@ describe('the online session', () => {
     online.dispose();
   });
 
-  it('asks the party along when the leader goes through a gate, and only then', () => {
-    const { ws, social, online } = session();
+  it('asks the party along when the leader goes through a gate, and only then', async () => {
+    const { ws, social, online } = await session();
     online.travelled('cho-phien');
     expect(ws.sent.filter((m) => (m as { type: string }).type === 'party-travel')).toEqual([]);
     ws.receive({ type: 'party-state', party: { id: 'party-1', leader: 'p-me', members: [{ id: 'p-me', displayName: 'Miu', isBot: false, species: 'cat', pet: null, mapId: 'trung-tam' }] } });
@@ -134,8 +149,8 @@ describe('the online session', () => {
     online.dispose();
   });
 
-  it('follows the leader through the gate when the child says yes', () => {
-    const { ws, social, online, travelledTo } = session();
+  it('follows the leader through the gate when the child says yes', async () => {
+    const { ws, social, online, travelledTo } = await session();
     ws.receive({ type: 'party-travel', from: 'p-lead', displayName: 'Tôm', region: 'cho-phien' });
     expect(social.getSnapshot().travel).toEqual({ from: { id: 'p-lead', name: 'Tôm', isBot: false }, region: 'cho-phien' });
     social.send({ type: 'travel-answer', accept: true });
@@ -144,8 +159,8 @@ describe('the online session', () => {
     online.dispose();
   });
 
-  it('"đến chỗ bạn" walks to a member on this map, or goes through the gate to hers', () => {
-    const { ws, online, commands, travelledTo } = session();
+  it('"đến chỗ bạn" walks to a member on this map, or goes through the gate to hers', async () => {
+    const { ws, online, commands, travelledTo } = await session();
     ws.receive({ type: 'party-goto', id: 'p-b', mapId: 'trung-tam', x: 40, y: 6, z: 50 });
     expect(commands).toContainEqual({ type: 'autowalk-to', to: { position: [40, 6, 50] } });
     expect(travelledTo()).toBeNull();
@@ -154,8 +169,8 @@ describe('the online session', () => {
     online.dispose();
   });
 
-  it('turns notices and lines aimed at her into toasts', () => {
-    const { ws, social, online } = session();
+  it('turns notices and lines aimed at her into toasts', async () => {
+    const { ws, social, online } = await session();
     ws.receive({ type: 'notice', code: 'party-full' });
     expect(social.getSnapshot().toast).toMatchObject({ kind: 'notice', code: 'party-full', name: null });
     ws.receive({ type: 'party-chat', from: 'p-b', displayName: 'Bông', text: 'Cố lên nào!' });
@@ -163,10 +178,10 @@ describe('the online session', () => {
     online.dispose();
   });
 
-  it('does not reconnect after another tab took over, and leaves the party view', () => {
+  it('does not reconnect after another tab took over, and leaves the party view', async () => {
     vi.useFakeTimers();
     try {
-      const { ws, social, online } = session();
+      const { ws, social, online } = await session();
       ws.receive({ type: 'party-state', party: { id: 'party-1', leader: 'p-me', members: [{ id: 'p-me', displayName: 'Miu', isBot: false, species: 'cat', pet: null, mapId: 'trung-tam' }] } });
       ws.onclose?.({ code: 4001 });
       vi.advanceTimersByTime(10_000);
@@ -180,8 +195,8 @@ describe('the online session', () => {
 });
 
 describe('friends in the online session', () => {
-  it('asks a player to be friends, shows requests for her, and the answers to hers', () => {
-    const { ws, social, online } = session();
+  it('asks a player to be friends, shows requests for her, and the answers to hers', async () => {
+    const { ws, social, online } = await session();
     social.send({ type: 'befriend', to: 'p-b' });
     expect(ws.sent.at(-1)).toEqual({ type: 'friend-request', to: 'p-b' });
     const id = '00000000-0000-4000-8000-000000000001';
@@ -192,8 +207,8 @@ describe('friends in the online session', () => {
     online.dispose();
   });
 
-  it('keeps the list of who else is in the room', () => {
-    const { ws, social, online } = session();
+  it('keeps the list of who else is in the room', async () => {
+    const { ws, social, online } = await session();
     const presence = { displayName: 'Tôm', isBot: false, species: 'fox', outfit: [], pet: null, petGear: [], x: 1, y: 1, z: 1, yaw: 0, speed: 0, action: 'idle' as const, riding: false, bubble: null };
     ws.receive({ type: 'spawn', player: { id: 'p-b', ...presence } });
     expect(social.getSnapshot().room).toEqual([{ id: 'p-b', name: 'Tôm', isBot: false, species: 'fox' }]);
@@ -204,20 +219,20 @@ describe('friends in the online session', () => {
 });
 
 describe('homes', () => {
-  it('goes to a friend at home on another map: the home map then joins her home', () => {
-    const first = session();
+  it('goes to a friend at home on another map: the home map then joins her home', async () => {
+    const first = await session();
     first.ws.receive({ type: 'party-goto', id: 'p-b', mapId: 'nha-cua-be', x: 75, y: 13, z: 25, host: 'p-b' });
     expect(first.travelledTo()).toBe('nha-cua-be');
     expect(first.social.getSnapshot().visit?.host).toBe('p-b');
     first.online.dispose();
-    const next = session('nha-cua-be', first.social);
+    const next = await session('nha-cua-be', first.social);
     expect(next.ws.sent[0]).toMatchObject({ type: 'join', mapId: 'nha-cua-be', host: 'p-b' });
     expect(next.social.getSnapshot().visit).toBeNull();
     next.online.dispose();
   });
 
-  it('moves into another home of the home map where she stands, then walks to her friend', () => {
-    const { ws, online, commands } = session('nha-cua-be');
+  it('moves into another home of the home map where she stands, then walks to her friend', async () => {
+    const { ws, online, commands } = await session('nha-cua-be');
     expect(ws.sent[0]).not.toHaveProperty('host');
     ws.receive({ type: 'party-goto', id: 'p-b', mapId: 'nha-cua-be', x: 70, y: 13, z: 20, host: 'p-b' });
     expect(ws.sent.at(-1)).toMatchObject({ type: 'join', mapId: 'nha-cua-be', host: 'p-b' });
@@ -225,8 +240,8 @@ describe('homes', () => {
     online.dispose();
   });
 
-  it('follows the party leader into the leader’s home', () => {
-    const { ws, social, online, travelledTo } = session();
+  it('follows the party leader into the leader’s home', async () => {
+    const { ws, social, online, travelledTo } = await session();
     ws.receive({ type: 'party-travel', from: 'p-lead', displayName: 'Tôm', region: 'nha-cua-be' });
     social.send({ type: 'travel-answer', accept: true });
     expect(travelledTo()).toBe('nha-cua-be');
@@ -236,12 +251,13 @@ describe('homes', () => {
 });
 
 describe('always online', () => {
-  it('connects again after any close but another tab taking over or no player (there is no offline switch)', () => {
+  it('connects again after any close but another tab taking over, no player or a lock (there is no offline switch)', async () => {
     vi.useFakeTimers();
     try {
-      const { ws, online } = session();
-      ws.onclose?.({ code: 4403 });
+      const { ws, online } = await session();
+      ws.onclose?.({ code: 1011 });
       vi.advanceTimersByTime(4_000);
+      await flush();
       expect(FakeSocket.last).not.toBe(ws);
       online.dispose();
     } finally {
@@ -250,12 +266,58 @@ describe('always online', () => {
   });
 });
 
+describe('when online play is paused or locked', () => {
+  it('the emergency switch: a friendly line, the room view cleared, and quiet retries until it is back', async () => {
+    vi.useFakeTimers();
+    try {
+      const { ws, social, online } = await session();
+      ws.receive({ type: 'online-mode', mode: 'interaction-off' });
+      expect(social.getSnapshot().onlinePause).toBe('interaction');
+      ws.receive({ type: 'online-mode', mode: 'on' });
+      expect(social.getSnapshot().onlinePause).toBeNull();
+      ticketAnswer = { status: 503, body: { error: 'online-paused' } };
+      ws.onclose?.({ code: 4503 });
+      expect(social.getSnapshot().onlinePause).toBe('off');
+      vi.advanceTimersByTime(PAUSED_RETRY_MS);
+      await flush();
+      // Still off: no socket is opened, and it asks again later.
+      expect(FakeSocket.last).toBe(ws);
+      ticketAnswer = { status: 200, body: { ticket: TICKET } };
+      vi.advanceTimersByTime(PAUSED_RETRY_MS);
+      await flush();
+      const back = socket();
+      expect(back).not.toBe(ws);
+      back.open();
+      expect(social.getSnapshot().onlinePause).toBeNull();
+      online.dispose();
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it('a lock on her online play: a friendly line and no more tries on this page', async () => {
+    vi.useFakeTimers();
+    try {
+      const { ws, social, online } = await session();
+      ticketAnswer = { status: 403, body: { error: 'online-restricted' } };
+      ws.onclose?.({ code: 4403 });
+      expect(social.getSnapshot().onlinePause).toBe('restricted');
+      vi.advanceTimersByTime(120_000);
+      await flush();
+      expect(FakeSocket.last).toBe(ws);
+      online.dispose();
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+});
+
 describe('reconnecting', () => {
-  it('waits longer while the server keeps refusing, up to a minute', () => {
+  it('waits longer while the server keeps refusing, up to a minute', async () => {
     expect([0, 1, 2, 3, 6, 20].map(reconnectDelay)).toEqual([3_000, 3_000, 6_000, 12_000, 60_000, 60_000]);
   });
 
-  it('backs off after sockets that never open, and starts over once one does', () => {
+  it('backs off after sockets that never open, and starts over once one does', async () => {
     vi.useFakeTimers();
     try {
       const store = createGameStore();
@@ -270,17 +332,22 @@ describe('reconnecting', () => {
         regionOfMap: () => null,
         say: () => {},
       });
+      await flush();
       const first = socket();
       first.onclose?.({ code: 1006 });
       vi.advanceTimersByTime(2_999);
+      await flush();
       expect(FakeSocket.last).toBe(first);
       vi.advanceTimersByTime(1);
+      await flush();
       const second = socket();
       expect(second).not.toBe(first);
       second.onclose?.({ code: 1006 });
       vi.advanceTimersByTime(5_999);
+      await flush();
       expect(FakeSocket.last).toBe(second);
       vi.advanceTimersByTime(1);
+      await flush();
       expect(FakeSocket.last).not.toBe(second);
       online.dispose();
     } finally {
@@ -290,7 +357,7 @@ describe('reconnecting', () => {
 });
 
 describe('canned lines', () => {
-  it('the locale list is the wire list, line for line (each player reads them in her own language)', () => {
+  it('the locale list is the wire list, line for line (each player reads them in her own language)', async () => {
     expect(linesOf('online.cannedChats').map((l) => l.vi)).toEqual([...SAFE_CANNED_CHATS]);
     setLangMode('en', false);
     expect(cannedLine('Xin chào bạn!')).toBe('Hello there!');
@@ -307,8 +374,8 @@ describe('companion bots in the online session', () => {
     ],
   };
 
-  it('shows a bot’s line over it, and tells her when it was said to her', () => {
-    const { ws, social, online } = session();
+  it('shows a bot’s line over it, and tells her when it was said to her', async () => {
+    const { ws, social, online } = await session();
     const sayLine = vi.spyOn(online.remote, 'sayLine');
     ws.receive({ type: 'party-state', party });
     ws.receive({ type: 'bot-say', id: 'bot-tt-1', key: 'hello', variant: 4 });
@@ -321,8 +388,8 @@ describe('companion bots in the online session', () => {
     online.dispose();
   });
 
-  it('marks a bot busy with a quest, and unmarks it when it has none', () => {
-    const { ws, online } = session();
+  it('marks a bot busy with a quest, and unmarks it when it has none', async () => {
+    const { ws, online } = await session();
     const setBusy = vi.spyOn(online.remote, 'setBusy');
     ws.receive({ type: 'bot-doing', id: 'bot-tt-1', quest: 'tv-bai-1-ngay-hom-qua' });
     ws.receive({ type: 'bot-doing', id: 'bot-tt-1', quest: null });
@@ -335,7 +402,7 @@ describe('companion bots in the online session', () => {
 });
 
 describe('arrows to party members', () => {
-  it('points up for ahead, right for the right, down for behind (camera looking along −z)', () => {
+  it('points up for ahead, right for the right, down for behind (camera looking along −z)', async () => {
     const forward = { x: 0, z: -1 };
     const at = { x: 0, z: 0 };
     expect(arrowTurn(forward, at, { x: 0, z: -5 })).toBeCloseTo(0);
@@ -346,8 +413,8 @@ describe('arrows to party members', () => {
 });
 
 describe('voice through the online session', () => {
-  it('passes the voice messages on both ways, and none once another tab plays as her', () => {
-    const { ws, social, online } = session();
+  it('passes the voice messages on both ways, and none once another tab plays as her', async () => {
+    const { ws, social, online } = await session();
     const heard: string[] = [];
     social.onVoiceIn((m) => heard.push(m.type));
     ws.receive({ type: 'voice-state', channel: null });
