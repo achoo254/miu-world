@@ -2,6 +2,8 @@
 .moderation { max-width: 56rem; }
 .moderation .panel { padding: var(--space-lg); }
 .moderation-actions { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+/* A ghost button (Bỏ qua, Thôi, Thử lại) on a white panel: its white rim would vanish, so it gets the field's edge. */
+.moderation .panel .btn--ghost { border-color: var(--color-field-edge); }
 .moderation-confirm {
   display: grid;
   gap: var(--space-sm);

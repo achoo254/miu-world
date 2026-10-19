@@ -3,7 +3,7 @@
 // Reached at /kiem-duyet; the server decides who is a moderator (404 for anyone else), and this screen sends
 // anyone else home. Works from phone width up: cards stack, actions wrap.
 import { useEffect, useState } from 'react';
-import { Navigate } from 'react-router';
+import { Link, Navigate } from 'react-router';
 import {
   LOCK_DAYS,
   ModerationActionResponse,
@@ -14,6 +14,7 @@ import {
   type ReportView,
 } from '@miu/schema/moderation';
 import type { OnlineMode } from '@miu/schema/multiplayer';
+import { SPECIES } from '../../game/content/characters';
 import { ApiError, api, errorMessage } from '../api-client';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
@@ -32,6 +33,9 @@ const STATUS_KEY: Record<ReportView['status'], TextKey> = {
   renamed: 'moderation.status.renamed',
   locked: 'moderation.status.locked',
 };
+
+/** A species by its Vietnamese name ("Mèo"), not its id; an id the content no longer has shows as it is. */
+const speciesName = (id: string): string => SPECIES.find((s) => s.id === id)?.name ?? id;
 
 /** A time as the moderator reads it (her device's time zone). */
 const when = (iso: string): string => new Date(iso).toLocaleString('vi-VN', { dateStyle: 'short', timeStyle: 'short' });
@@ -142,7 +146,7 @@ function ReportCard({ report, onDecided }: { report: ReportView; onDecided(): vo
           <T k="moderation.reported" />
         </dt>
         <dd>
-          <strong>{reported.displayName}</strong> ({reported.species}) · <T k="moderation.openReports" params={{ count: reported.openReports }} />
+          <strong>{reported.displayName}</strong> ({speciesName(reported.species)}) · <T k="moderation.openReports" params={{ count: reported.openReports }} />
           {reported.restriction ? (
             <span className="badge badge--warn moderation-lock">
               <T k={reported.restriction.kind === 'hidden' ? 'moderation.lock.hidden' : 'moderation.lock.locked'} />
@@ -160,7 +164,7 @@ function ReportCard({ report, onDecided }: { report: ReportView; onDecided(): vo
           <T k="moderation.reporter" />
         </dt>
         <dd>
-          {report.reporter.displayName} ({report.reporter.species})
+          {report.reporter.displayName} ({speciesName(report.reporter.species)})
         </dd>
         <dt>
           <T k="moderation.map" />
@@ -279,6 +283,10 @@ export function ModerationScreen() {
           <h1>
             <T k="moderation.title" />
           </h1>
+          <span className="spacer" />
+          <Link to="/" className={buttonClass('ghost')} data-id="moderation-back">
+            <T k="common.back" />
+          </Link>
         </header>
         {access.kind === 'loading' ? <PageLoading /> : null}
         {access.kind === 'error' ? (

@@ -84,12 +84,25 @@ describe('the moderation screen', () => {
     expect(card.textContent).toContain('Tôm');
     expect(card.textContent).toContain('Hẹn gặp lại nhé!');
     expect(card.textContent).toContain('Đang ẩn tự động');
+    // Species read in Vietnamese, never as their ids.
+    expect(card.textContent).toContain('Bông (Cáo)');
+    expect(card.textContent).toContain('Mây (Mèo)');
+    expect(card.textContent).not.toMatch(/\((fox|cat)\)/);
+    // The setting is named in plain words, not by its variable.
+    expect(document.querySelector('[data-id="moderation-switch"]')?.textContent).not.toContain('ONLINE_MODE');
     fireEvent.change(within(card).getByRole('textbox'), { target: { value: 'lần đầu' } });
     fireEvent.click(within(card).getByRole('button', { name: 'Cảnh cáo' }));
     expect(calls.some((c) => c.method === 'POST')).toBe(false);
     fireEvent.click(within(card).getByRole('button', { name: 'Đồng ý' }));
     await waitFor(() => expect(document.querySelector('[data-id="moderation-empty"]')).toBeTruthy());
     expect(calls.find((c) => c.method === 'POST')).toEqual({ method: 'POST', url: `/api/moderation/reports/${REPORT.id}/action`, body: { action: 'warn', note: 'lần đầu' } });
+  });
+
+  it('has a way back out of the screen', async () => {
+    stubServer();
+    renderScreen();
+    fireEvent.click(await screen.findByRole('link', { name: 'Quay lại' }));
+    await waitFor(() => expect(screen.getByText('home')).toBeTruthy());
   });
 
   it('asks for a temporary lock with its days', async () => {
