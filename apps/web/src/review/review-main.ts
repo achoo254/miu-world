@@ -5,6 +5,7 @@ import { ASSET_PREFIX } from '../game/asset-loader';
 import { ACCESSORIES } from '../game/content/accessories';
 import palette from '../../../../content/palette.json';
 import '../ui/fonts.css';
+import { renderBudget, renderToc, wireDeviceForm, type BudgetReport } from './review-launch';
 import './review.css';
 
 interface ManifestJson {
@@ -611,6 +612,8 @@ async function renderScreens(generated: readonly string[]): Promise<void> {
 }
 
 async function main(): Promise<void> {
+  renderToc();
+  wireDeviceForm();
   renderDecisions();
   const manifest = (await (await fetch(versioned(`${ASSET_PREFIX}manifest.json`, MANIFEST_VERSION))).json()) as ManifestJson;
   versions = manifestVersions([...manifest.files, ...manifest.generated]);
@@ -624,6 +627,8 @@ async function main(): Promise<void> {
   const perfPath = generated.find((p) => p === 'generated/review/perf.json');
   const perf = perfPath ? ((await (await fetch(assetHref(perfPath))).json()) as PerfReport) : null;
   renderPerf(perf);
+  const budgetPath = generated.find((p) => p === 'generated/review/map-budget.json');
+  renderBudget(budgetPath ? ((await (await fetch(assetHref(budgetPath))).json()) as BudgetReport) : null);
 }
 
 main().catch((err: unknown) => {

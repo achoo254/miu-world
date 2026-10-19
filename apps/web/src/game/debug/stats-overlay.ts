@@ -11,6 +11,9 @@ export interface MiuStats {
   fpsP5: number;
   calls: number;
   triangles: number;
+  /** Textures and geometries the renderer holds on the GPU now. */
+  textures: number;
+  geometries: number;
   frames: number;
   loadMs: number;
   /** Milliseconds from the start of this game's boot to each of its milestones (the first frame is `ready`). */
@@ -111,7 +114,7 @@ export class StatsOverlay {
   readonly stats: MiuStats;
 
   constructor(private readonly el: HTMLElement, quality: string) {
-    this.stats = { quality, fpsAvg: 0, fpsP5: 0, calls: 0, triangles: 0, frames: 0, loadMs: 0, boot: {}, meshMs: 0, worker: true, firstAreaBytes: 0, ready: false, player: [0, 0, 0], onGround: false, speed: 0, riding: false, journey: null, patches: 0, portals: 0, nearTarget: null, lastInteraction: null, hintTarget: null, autowalk: 'idle', castHidden: [], cameraInsideBlock: false, cameraYaw: 0, outfit: [], ambientVisible: 0, ambientReactions: 0, ambientCelebrations: 0, confetti: false, worldEvent: null, worldEvents: 0, pet: null, petClip: null, petScene: null, petMood: null, petMotion: null, petGear: [], petAt: null, petScenes: [], ambientLine: null, remotePlayers: [], lastObject: null, nearObject: null, objects: null, pose: null, embedded: false, duel: null, duelView: 0 };
+    this.stats = { quality, fpsAvg: 0, fpsP5: 0, calls: 0, triangles: 0, textures: 0, geometries: 0, frames: 0, loadMs: 0, boot: {}, meshMs: 0, worker: true, firstAreaBytes: 0, ready: false, player: [0, 0, 0], onGround: false, speed: 0, riding: false, journey: null, patches: 0, portals: 0, nearTarget: null, lastInteraction: null, hintTarget: null, autowalk: 'idle', castHidden: [], cameraInsideBlock: false, cameraYaw: 0, outfit: [], ambientVisible: 0, ambientReactions: 0, ambientCelebrations: 0, confetti: false, worldEvent: null, worldEvents: 0, pet: null, petClip: null, petScene: null, petMood: null, petMotion: null, petGear: [], petAt: null, petScenes: [], ambientLine: null, remotePlayers: [], lastObject: null, nearObject: null, objects: null, pose: null, embedded: false, duel: null, duelView: 0 };
     window.__miuStats = this.stats;
   }
 
@@ -124,6 +127,8 @@ export class StatsOverlay {
     this.stats.frames++;
     this.stats.calls = renderer.info.render.calls;
     this.stats.triangles = renderer.info.render.triangles;
+    this.stats.textures = renderer.info.memory.textures;
+    this.stats.geometries = renderer.info.memory.geometries;
     this.frameTimes.push(dt);
     this.acc += dt;
     if (this.acc < WINDOW_SECONDS) return;

@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Miu World · Duyệt vertical slice MVP</title>
+    <title>Miu World · Trang duyệt</title>
   </head>
   <body>
     <main id="review" data-id="review">
       <header class="hero" data-id="review-hero">
-        <h1>Duyệt vertical slice MVP · Miu World</h1>
-        <p>Một vòng chơi trọn vẹn ở Khu rừng bí mật chương 1: tạo nhân vật, Home, khám phá, hội thoại NPC, nhận nhiệm vụ, 3 thử thách Toán có hỗ trợ học, thưởng, lên cấp và mở khóa do server tính, ba lô và bộ sưu tập. Kèm hiệu năng, báo cáo bảo mật, bảng license và các việc cần người.</p>
+        <h1>Trang duyệt · Miu World</h1>
+        <p>Một trang cho mọi đợt giao hàng, mới nhất ở trên: ảnh các map và màn chính, bản chơi thử, số liệu hiệu năng, báo cáo bảo mật, dependency mới, bảng license và các việc cần người. Mục lục bên dưới dẫn tới từng đợt; mục "Việc cần người" gom mọi việc AI không làm thay được, mỗi việc ghi cách làm và nơi gửi kết quả.</p>
         <ol class="steps" data-id="review-steps">
           <li>Đăng nhập, đặt PIN, đồng ý, tạo một hồ sơ và chọn hồ sơ đó. Trên iPad qua mạng LAN, bản duyệt bật đăng nhập mật khẩu thử (<code>PASSWORD_LOGIN=1</code>, dữ liệu giả) vì Google chỉ nhận https hoặc <code>localhost</code>.</li>
           <li>Hồ sơ mới vào <b>Tạo nhân vật</b>: đổi mũ, chọn tên, <b>Vào thế giới</b>. Từ <b>Home</b> chạm Khu rừng bí mật → Chương 1 → <b>Khám phá ngay</b>, chơi hết chương (đi theo mũi tên vàng, nút <b>Tương tác</b> khi đứng gần).</li>
-          <li>Trên iPad Gen 10 chơi ở mức <b>Vừa</b> 15 phút rồi điền mục DEVICE-01. Cho ý kiến từng mục, bấm <b>Sao chép kết quả duyệt</b> và gửi lại.</li>
+          <li>Trên iPad Gen 10 làm theo mục <b>DEVICE-01</b> (15 phút ở mức Vừa), điền số đo rồi bấm <b>Sao chép kết quả đo</b> và gửi lại.</li>
         </ol>
         <nav class="play" data-id="review-play">
           <a data-id="review-home" href="./home">Vào Home</a>
@@ -22,7 +22,25 @@
           <a data-id="review-play-high" href="./play?quality=high&amp;stats=1">Chơi thử · Cao (hiện FPS)</a>
         </nav>
         <p class="hint">Trên máy tính bảng: joystick trái để đi, <b>Chạy</b>/<b>Nhảy</b>/<b>Tương tác</b> bên phải, vuốt để xoay camera, <b>Menu</b> để tạm dừng. Thêm <code>&amp;stats=1</code> vào địa chỉ <code>/play</code> để hiện FPS, draw call, tam giác.</p>
+        <nav class="toc" id="toc" data-id="review-toc" aria-label="Mục lục"></nav>
       </header>
+
+      <section data-id="review-people">
+        <h2>Việc cần người</h2>
+        <p class="sub">AI không tự khai "đạt" các việc dưới đây; mỗi việc có cách làm và nơi gửi kết quả. Gửi kết quả cho phiên AI (dán vào chat) là đủ: AI ghi vào plan, roadmap và checklist nghiệm thu.</p>
+        <div class="table-wrap"><table id="people" class="prose-table">
+          <thead><tr><th>Việc</th><th>Ai</th><th>Cách làm</th><th>Gửi kết quả</th></tr></thead>
+          <tbody>
+            <tr data-id="people-device"><td>Đo trên iPad Gen 10 (DEVICE-01)</td><td>Người sở hữu</td><td>Làm theo mục DEVICE-01 bên dưới: 15 phút ở mức Vừa trên lộ trình định sẵn, ghi FPS, nhiệt, pin.</td><td>Nút <b>Sao chép kết quả đo</b> ở mục DEVICE-01, dán vào chat.</td></tr>
+            <tr data-id="people-child"><td>Bé chơi trọn một nhiệm vụ (#24)</td><td>Người sở hữu, cùng bé</td><td>Bé đã chơi từ 01/10/2026. Chỉ cần xác nhận bé tự làm xong một nhiệm vụ từ đầu tới lúc nhận thưởng, và chỗ nào bé phải hỏi người lớn.</td><td>Một câu trong chat: tên nhiệm vụ, chỗ bé vấp (nếu có).</td></tr>
+            <tr data-id="people-teacher"><td>Giáo viên duyệt nội dung SGK</td><td>Giáo viên lớp 2</td><td>Đọc các câu đã đánh dấu trong <code>plans/dattqh/reports/sgk-toan2-teacher-flags.md</code> và <code>plans/dattqh/reports/sgk-tv2-teacher-flags.md</code> (đề, đáp án, ba lớp Hướng dẫn · Gợi ý · Đáp án).</td><td>Ghi chú theo mã quest; AI sửa nội dung và bỏ đánh dấu <code>teacher-pending</code>.</td></tr>
+            <tr data-id="people-designer"><td>Designer duyệt giao diện so với mock</td><td>Designer</td><td>Xem mục "Màn hình trước deploy" và ảnh đối chiếu mock từng map trên trang này; đánh dấu màn lệch mock.</td><td>Tên màn và chỗ lệch; AI sửa rồi chụp lại.</td></tr>
+            <tr data-id="people-legal"><td>Pháp chế duyệt lời đồng ý và trang quyền riêng tư</td><td>Luật sư</td><td>Đọc lời đồng ý <code>v4</code> (<code>content/legal/consent-vi.json</code>) và <code>/privacy</code> (<code>content/legal/privacy-vi.json</code>); câu hỏi kèm theo: game có thuộc diện cấp phép G1 theo Nghị định 147/2024 không.</td><td>Văn bản sửa hoặc ý kiến; AI nâng phiên bản đồng ý.</td></tr>
+            <tr data-id="people-channels"><td>Tạo kênh YouTube và Fanpage "Miu World"</td><td>Người sở hữu</td><td>Theo <code>docs/marketing-channels.md</code> (ảnh bìa, tên, mô tả đã có sẵn); cấp quyền đăng một lần.</td><td>Báo đã tạo; AI tắt chế độ chạy khô.</td></tr>
+            <tr data-id="people-moderation"><td>Người xử lý báo cáo vi phạm</td><td>Người sở hữu chọn</td><td>Từ 12/10/2026 người ngoài gia đình đăng nhập được; báo cáo vào hàng đợi nhưng chưa có màn kiểm duyệt (người sở hữu chọn để sau). Khi muốn mở: chọn người xử lý, AI làm plan <code>261004-1617-moderation-safety</code>.</td><td>Tên vai trò người xử lý và lúc muốn mở.</td></tr>
+          </tbody>
+        </table></div>
+      </section>
 
       <section data-id="review-decision">
         <h2>Quyết định</h2>
@@ -185,14 +203,38 @@
 
       <section data-id="review-device">
         <h2>DEVICE-01: đo trên iPad Gen 10 (việc của người)</h2>
-        <p class="sub">Số trên trang này là giả lập trên máy tính. Trước nghiệm thu MVP cần đo trên máy thật.</p>
-        <ul class="debts">
-          <li>FPS sau 15 phút ở mức Thấp, Vừa, Cao (thêm <code>&amp;stats=1</code>); ngân sách ≥ 30 FPS ở mức Vừa.</li>
-          <li>Nhiệt độ máy và % pin tụt sau 15 phút chơi mức Vừa.</li>
-          <li>Safari: kéo quả táo vào giỏ và kéo đá bằng ngón tay, trang không cuộn/phóng to; chạm-chọn thay thế hoạt động.</li>
-          <li>"Nghe lại": chỉ hiện khi máy có giọng tiếng Việt cục bộ.</li>
-          <li>Tạm dừng làm game đứng yên; mở lại tab sau khi để nền vài phút không vỡ (mất đồ họa thì có nút Tải lại).</li>
-        </ul>
+        <p class="sub">Số ở mục hiệu năng là giả lập trên máy tính; nghiệm thu MVP cần số trên máy thật. Ngân sách: ≥ 30 FPS ở mức Vừa, ≤ 150 draw call. Cần khoảng 25 phút, pin từ 80% trở lên, sạc rút ra, độ sáng màn hình để mặc định. Số FPS, draw call (<i>calls</i>) hiện ở góc màn hình khi địa chỉ có <code>stats=1</code> (các nút dưới đây đã có sẵn).</p>
+        <ol class="steps" data-id="device-steps">
+          <li>Ghi % pin lúc bắt đầu vào ô bên dưới. Mở trang này trên iPad bằng Safari, đăng nhập như thường.</li>
+          <li><b>Thấp, 2 phút:</b> mở <a data-id="device-low" href="./play?quality=low&amp;region=khu-rung-bi-mat&amp;autopilot=1&amp;stats=1">Khu rừng · Thấp · tự đi</a>. Bé tự đi một vòng cố định (cầu, Vẹt, cây cổ thụ); không chạm màn hình. Sau 2 phút ghi FPS thấp nhất thấy được và số <i>calls</i> cao nhất. Quay lại trang này bằng nút lùi của Safari.</li>
+          <li><b>Cao, 2 phút:</b> làm lại với <a data-id="device-high" href="./play?quality=high&amp;region=khu-rung-bi-mat&amp;autopilot=1&amp;stats=1">Khu rừng · Cao · tự đi</a>.</li>
+          <li><b>Vừa, 15 phút:</b> mở <a data-id="device-mid" href="./play?quality=mid&amp;region=khu-rung-bi-mat&amp;autopilot=1&amp;stats=1">Khu rừng · Vừa · tự đi</a> 5 phút; rồi tự chơi 10 phút: qua cổng sang <a data-id="device-hub" href="./play?quality=mid&amp;region=trung-tam&amp;stats=1">Trung tâm</a>, sang <a data-id="device-school" href="./play?quality=mid&amp;region=truong-hoc&amp;stats=1">Trường học</a> đứng ở đường trước trường chờ xe buýt chạy qua (chỗ nặng nhất đo trên máy tính), làm một thử thách kéo thả. Ghi FPS thấp nhất, <i>calls</i> cao nhất, % pin lúc xong, máy mát, ấm hay nóng khi cầm.</li>
+          <li>Trả lời các câu có/không bên dưới, bấm <b>Sao chép kết quả đo</b> rồi dán vào chat. Ô đã điền được nhớ trên máy này nếu lỡ tải lại trang.</li>
+        </ol>
+        <form id="device-form" class="device-form" data-id="device-form">
+          <fieldset>
+            <legend>Số đo</legend>
+            <label>Pin lúc bắt đầu (%) <input name="batteryStart" inputmode="numeric" /></label>
+            <label>Thấp: FPS thấp nhất <input name="lowFps" inputmode="decimal" /></label>
+            <label>Thấp: calls cao nhất <input name="lowCalls" inputmode="numeric" /></label>
+            <label>Cao: FPS thấp nhất <input name="highFps" inputmode="decimal" /></label>
+            <label>Cao: calls cao nhất <input name="highCalls" inputmode="numeric" /></label>
+            <label>Vừa (15 phút): FPS thấp nhất <input name="midFps" inputmode="decimal" /></label>
+            <label>Vừa (15 phút): calls cao nhất <input name="midCalls" inputmode="numeric" /></label>
+            <label>Pin sau 15 phút mức Vừa (%) <input name="batteryEnd" inputmode="numeric" /></label>
+            <label>Máy khi cầm <select name="heat"><option value="">chọn</option><option>mát</option><option>ấm</option><option>nóng</option></select></label>
+          </fieldset>
+          <fieldset>
+            <legend>Có/không</legend>
+            <label><select name="dragOk"><option value="">chọn</option><option>có</option><option>không</option></select> Kéo quả táo, kéo đá bằng ngón tay được; trang không cuộn hay phóng to</label>
+            <label><select name="tapOk"><option value="">chọn</option><option>có</option><option>không</option></select> Chạm để chọn rồi chạm chỗ đặt cũng được</label>
+            <label><select name="pauseOk"><option value="">chọn</option><option>có</option><option>không</option></select> Bấm Menu làm game đứng yên; để Safari ở nền vài phút rồi mở lại không vỡ hình</label>
+            <label><select name="voiceOk"><option value="">chọn</option><option>có</option><option>không</option></select> Nút "Nghe lại" đọc được tiếng Việt</label>
+            <label>Ghi chú khác <textarea name="notes" rows="3"></textarea></label>
+          </fieldset>
+          <button type="button" id="device-copy" data-id="device-copy">Sao chép kết quả đo</button>
+          <p id="device-status" class="sub" role="status"></p>
+        </form>
       </section>
 
       <section data-id="review-account">
@@ -234,11 +276,24 @@
         <div class="table-wrap"><table id="perf"></table></div>
       </section>
 
+      <section data-id="review-budget">
+        <h2>Ngân sách vẽ của mười hai map</h2>
+        <p id="budget-env" class="sub"></p>
+        <div class="table-wrap"><table id="budget"></table></div>
+      </section>
+
       <section data-id="review-security">
         <h2>Báo cáo bảo mật</h2>
-        <p class="sub">Chi tiết: <code>plans/dattqh/reports/code-reviewer-260929-auth-review.md</code> (review độc lập, mọi phát hiện High/Medium đã sửa kèm test) và báo cáo review cả đợt.</p>
+        <p class="sub">Lần quét gần nhất: 19/10/2026, toàn bộ endpoint HTTP và WebSocket, coi mọi endpoint là người lạ gọi tới được (đăng nhập mở cho mọi người từ 12/10/2026). Chi tiết và bảng endpoint: <code>plans/dattqh/reports/security-sweep-261019.md</code>; lần đầu: <code>plans/dattqh/reports/code-reviewer-260929-auth-review.md</code>.</p>
+        <h3>Kết quả quét 19/10/2026</h3>
+        <ul class="debts">
+          <li><b>Đã chặn, nghiêm trọng:</b> thời khóa biểu mặc định (lớp thật của bé nhà người sở hữu, có tên trường, tên và số điện thoại cô giáo) trả cho mọi tài khoản chưa tự lưu lịch, nên từ 12/10 người lạ đọc được. Ngày 19/10 đã gỡ khỏi production (người sở hữu duyệt); code mới chỉ trả bản này cho email trong <code>TIMETABLE_DEFAULT_ACCOUNTS</code>, chờ release.</li>
+          <li><b>Không có IDOR:</b> mọi route game lấy người chơi từ phiên và kiểm theo tài khoản; id của tài khoản khác trả 404. Thưởng, XP, xu đều tính ở server.</li>
+          <li><b>Đã sửa:</b> id thư sai định dạng trả 404 thay vì lỗi 500.</li>
+          <li><b>Chờ quyết định:</b> nấu ăn không trừ nguyên liệu; font HP001 (không có license mở) tải được bởi mọi tài khoản; lượt luyện Olympic dùng chung một trần cho cả server; nhiều endpoint ghi chưa có rate limit.</li>
+        </ul>
         <div class="security">
-          <article><h3>Tài khoản và phiên</h3><p>Phụ huynh đăng nhập bằng Google (OAuth code + PKCE + state + nonce phía server, không tải script Google; chỉ scope <code>openid email</code>). Đăng nhập mật khẩu chỉ còn cho dev/test, tắt ở production. Phụ huynh là chủ tài khoản; trẻ là hồ sơ con, chỉ có tên hiển thị chọn từ danh sách, không đăng nhập riêng. Session phía server: token ngẫu nhiên 32 byte, cơ sở dữ liệu chỉ lưu sha256; hết hạn tuyệt đối 30 ngày, nhàn rỗi 7 ngày; đổi token mỗi lần đăng nhập. Cookie httpOnly, SameSite=Lax; production dùng <code>__Host-</code> + Secure (có test).</p></article>
+          <article><h3>Tài khoản và phiên</h3><p>Phụ huynh đăng nhập bằng Google (OAuth code + PKCE + state + nonce phía server, không tải script Google; chỉ scope <code>openid email</code>). Đăng nhập mật khẩu chỉ còn cho dev/test, tắt ở production. Người đăng nhập Google là người chơi chính; tối đa 2 người chơi phụ cho máy dùng chung, không đăng nhập riêng (mô hình tài khoản 05/10/2026). Session phía server: token ngẫu nhiên 32 byte, cơ sở dữ liệu chỉ lưu sha256; hết hạn tuyệt đối 30 ngày, nhàn rỗi 7 ngày; đổi token mỗi lần đăng nhập. Cookie httpOnly, SameSite=Lax; production dùng <code>__Host-</code> + Secure (có test).</p></article>
           <article><h3>Chống CSRF, rate limit</h3><p>Mọi request đổi trạng thái phải có <code>Origin</code> trong danh sách cho phép (thiếu cũng bị chặn). Rate limit đăng ký theo IP, đăng nhập theo IP + email và theo IP; PIN theo phiên. Hàng đợi băm mật khẩu có trần (quá tải trả 503).</p></article>
           <article><h3>Phân quyền (IDOR)</h3><p>Mọi truy vấn lọc theo phụ huynh và hồ sơ đang chọn; tài nguyên nhà khác trả 404 như không tồn tại. Có test IDOR cho mọi endpoint hồ sơ, nhân vật, tiến độ, túi đồ, hoàn thành bước quest.</p></article>
           <article><h3>Cổng phụ huynh</h3><p>Tạo, đổi tên, xóa hồ sơ và đồng ý cần PIN 4–6 số (scrypt), mở 15 phút; chọn hồ sơ cho trẻ chơi thì khóa lại. Sai 5 lần thì khóa PIN (chống đoán song song), mở lại bằng mật khẩu.</p></article>
@@ -246,16 +301,15 @@
           <article><h3>Dữ liệu trẻ</h3><p>Không thu tên thật, tuổi, lớp, trường, email của trẻ. Xóa hồ sơ là xóa hẳn mọi dữ liệu (có test đếm từng bảng). Log chỉ id; lỗi trả client chỉ mã lỗi.</p></article>
           <article><h3>Quyền với dữ liệu</h3><p>Trang công khai <code>/privacy</code> (tự soạn, nội dung ở <code>content/legal/privacy-vi.json</code>, <code>content:check</code> giữ cùng phiên bản với lời đồng ý <code>v1</code>). Trong khu phụ huynh, sau PIN: "Tải dữ liệu của tôi" (JSON mọi dòng của tài khoản, không có hash) và "Xóa tài khoản" (xóa cứng, cascade mọi bảng, hết mọi phiên; test đếm từng bảng về 0). Production: bản sao lưu và nhật ký máy chủ tự xóa sau tối đa 14 ngày.</p></article>
           <article><h3>Vertical slice</h3><p>Bảng endpoint đọc từ app: mọi route ngoài danh sách công khai (có lý do) trả 401 khi không đăng nhập; route có <code>:id</code> trả 404 cho phụ huynh khác. Đáp án và ba lớp hỗ trợ chỉ ở server; <code>pnpm security:dist</code> (CI) quét bundle web không có văn bản lớp Đáp án; E2E <code>mvp-loop</code> kiểm mọi response API trừ <code>…/support</code>, CSP trên <code>/</code>, <code>/create</code>, <code>/play</code>, <code>/review.html</code> và không request ngoài origin. Đồ khóa theo level/quest do server kiểm (403). Dữ liệu chơi của trẻ chỉ là bộ đếm theo bước (test schema). "Nghe lại" chỉ dùng giọng trên máy, không gửi văn bản ra ngoài.</p></article>
-          <article><h3>Chơi online</h3><p>Kết nối WebSocket <code>/api/ws</code> cần cookie phiên còn hạn, người chơi đang chọn đã đồng ý chính sách, và <code>Origin</code> trong danh sách cho phép (thiếu hay sai là 401/403). Tên, loài, trang phục, thú cưng do server đọc từ nhân vật đã lưu, client không khai được; người khác thấy một mã công khai, không phải mã hồ sơ. Mọi chữ trên đường truyền thuộc danh sách câu có sẵn (schema từ chối chữ khác); không gõ chữ, không giọng nói. Chặn: hai bên không thấy nhau ở mọi map, không chung đội. Báo cáo chỉ gồm lý do chọn sẵn và map. Bạn máy luôn gắn nhãn. Có giới hạn tần suất message và mời đội.</p></article>
-          <article><h3>Quét tự động</h3><p id="security-scans">Chạy ngày 29/09/2026 trên máy dev: <code>pnpm audit --prod --audit-level=high</code> không có lỗ hổng; Semgrep CE 1.178.0 (<code>p/typescript</code> + <code>p/nodejs</code>, 98 file trong <code>apps/</code>, <code>packages/</code>) 0 phát hiện — bằng chứng: <code>plans/dattqh/reports/semgrep-260929-local-scan.md</code>. CI chạy lại cả hai trên mỗi push.</p></article>
+          <article><h3>Chơi online</h3><p>Kết nối WebSocket <code>/api/ws</code> cần cookie phiên còn hạn, người chơi đang chọn đã đồng ý chính sách, và <code>Origin</code> trong danh sách cho phép (thiếu hay sai là 401/403). Tên, loài, trang phục, thú cưng do server đọc từ nhân vật đã lưu, client không khai được; người khác thấy một mã công khai, không phải mã hồ sơ. Mọi chữ trên đường truyền thuộc danh sách câu có sẵn (schema từ chối chữ khác); không gõ chữ. Giọng nói chỉ giữa bạn bè hoặc thành viên cùng đội đã nhận lời, có kiểm chặn; kênh nối thẳng nên người cùng đội biết IP công khai của nhau (đi qua TURN chỉ khi bật <code>?voiceRelay</code>), việc này nằm trong plan kiểm duyệt. Chặn: hai bên không thấy nhau ở mọi map, không chung đội. Báo cáo chỉ gồm lý do chọn sẵn và map. Bạn máy luôn gắn nhãn. Có giới hạn tần suất message và mời đội.</p></article>
+          <article><h3>Quét tự động</h3><p id="security-scans">Ngày 19/10/2026 trên máy dev: <code>pnpm audit --prod --audit-level=high</code> không có lỗ hổng. Ngày 29/09/2026: Semgrep CE 1.178.0 (<code>p/typescript</code> + <code>p/nodejs</code>, 98 file trong <code>apps/</code>, <code>packages/</code>) 0 phát hiện — bằng chứng: <code>plans/dattqh/reports/semgrep-260929-local-scan.md</code>. CI chạy lại cả hai trên mỗi push.</p></article>
         </div>
         <h3>Nợ trước khi có người dùng thật</h3>
         <ul class="debts">
           <li>Lời đồng ý <code>v1</code> và trang <code>/privacy</code> do dự án tự soạn, chưa qua luật sư (dự án miễn phí, không có pháp chế); trang ghi rõ điều đó. NĐ 13/2023 Điều 20 còn yêu cầu hỏi ý trẻ từ 7 tuổi: hiện lời đồng ý nhắc phụ huynh hỏi bé, chưa có bước bé tự xác nhận.</li>
-          <li>Google OAuth client đang ở chế độ thử nghiệm: cần xác minh ứng dụng với Google trước khi mở cho người dùng thật.</li>
+          <li>Google OAuth đã ở "In production" và thương hiệu đã xác minh (12/10/2026).</li>
           <li>Triển khai: đặt <code>trust proxy</code> theo reverse proxy thật; rate limit đang lưu trong bộ nhớ (một instance); server đang chạy bằng <code>tsx</code>, chưa có bước đóng gói production.</li>
-          <li>Test trên PostgreSQL thật và Semgrep chạy ở CI; chưa có lần push nào nên chưa có kết quả CI.</li>
-          <li>Báo cáo người chơi (<code>player_reports</code>) vào hàng đợi nhưng <b>chưa có màn kiểm duyệt</b>; danh sách chặn và bỏ chặn làm ở plan bạn bè. Mở cho người ngoài gia đình chơi cần làm plan kiểm duyệt trước.</li>
+          <li>Báo cáo người chơi (<code>player_reports</code>) vào hàng đợi nhưng <b>chưa có màn kiểm duyệt</b>, và người ngoài gia đình đã chơi được từ 12/10/2026 (người sở hữu chọn để kiểm duyệt sau). Plan: <code>261004-1617-moderation-safety</code>.</li>
         </ul>
       </section>
 

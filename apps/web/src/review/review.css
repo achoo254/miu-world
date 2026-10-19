@@ -72,7 +72,7 @@ output { margin-left: var(--space-sm); color: var(--ok); }
 .security p { margin: 0; }
 .debts { line-height: 1.6; }
 .decisions { display: grid; gap: var(--space-xs); padding-left: var(--space-lg); }
-.coverage { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+.coverage { width: 100%; border-collapse: collapse; font-size: var(--text-sm); display: block; overflow-x: auto; }
 .coverage th, .coverage td { padding: var(--space-xs) var(--space-sm); border-bottom: 1px solid var(--line); text-align: right; }
 .coverage th:first-child, .coverage td:first-child { text-align: left; }
 .coverage tr:last-child td { font-weight: 700; }
@@ -94,3 +94,16 @@ output { margin-left: var(--space-sm); color: var(--ok); }
 .findings .block { background: #fbe6e4; color: var(--bad); }
 .findings .note { background: #fff1d6; color: var(--warn); }
 .findings .fixed { background: #e3f6ea; color: var(--ok); }
+
+/* Table of contents: one link per section, newest batch first. */
+.toc { display: flex; flex-wrap: wrap; gap: var(--space-xs) var(--space-sm); font-size: 0.9rem; }
+.toc a { color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: var(--space-xs) var(--space-sm); text-decoration: none; }
+/* Tables of prose (the human tasks): cells wrap instead of scrolling sideways. */
+.prose-table td { white-space: normal; min-width: 10rem; vertical-align: top; }
+
+/* DEVICE-01 measurement form. */
+.device-form { display: grid; gap: var(--space-md); }
+.device-form fieldset { border: 1px solid var(--line); border-radius: var(--radius); display: grid; gap: var(--space-sm); grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); }
+.device-form legend { font-weight: 700; padding: 0 var(--space-xs); }
+.device-form label { display: grid; gap: var(--space-xs); }
+.device-form input, .device-form select, .device-form textarea { font: inherit; min-height: 44px; padding: var(--space-xs) var(--space-sm); border: 1px solid var(--line); border-radius: 0.5rem; background: var(--card); color: var(--ink); }

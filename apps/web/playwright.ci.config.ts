@@ -1,14 +1,15 @@
 import { defineConfig } from '@playwright/test';
 import base from './playwright.config';
 
-// CI runs the smoke suite: every project except `perf` (up to ~30 min, rewrites the committed perf report) and
-// `screens` (pictures before a release, taken on the dev machine). The CI job splits the run over two GitHub
+// CI runs the smoke suite: every project except `perf` (up to ~30 min, rewrites the committed perf report), `budget`
+// (the render budget of every map, rewrites map-budget.json) and `screens` (pictures before a release, taken on the
+// dev machine). The CI job splits the run over two GitHub
 // runners (`--shard=i/n`, see .github/workflows/ci.yml); each runner still uses one worker.
 /** One shard's budget (docs/code-standards.md "Ngân sách thời gian test"): over it, the shard fails. */
 export const E2E_SUITE_BUDGET_SECONDS = 240;
 
 /** Projects run by hand, never on CI. */
-const MANUAL_PROJECTS = new Set(['perf', 'screens']);
+const MANUAL_PROJECTS = new Set(['perf', 'budget', 'screens']);
 
 export default defineConfig({
   ...base,

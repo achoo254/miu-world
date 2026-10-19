@@ -285,6 +285,12 @@
     "license": "CC0-1.0"
   },
   {
+    "glob": "generated/review/map-budget.json",
+    "generator": "apps/web/e2e/map-budget.spec.ts",
+    "derivedFrom": [],
+    "license": "CC0-1.0"
+  },
+  {
     "glob": "generated/sounds/*.m4a",
     "generator": "tools/assets/build-sounds.ts",
     "derivedFrom": [

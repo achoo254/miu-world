@@ -1,0 +1,1170 @@
+{
+  "generatedAt": "2026-10-18T23:49:01.040Z",
+  "environment": {
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+    "viewport": "ipad-gen10 820x1180 @2, mouse",
+    "note": "A dev machine GPU counts some 25 more draw calls than CI software GL at the same view; FPS is measured on the iPad (DEVICE-01), not here.",
+    "route": "spawn and every chapter start; 8 turns of 45°, 4 samples every 250 ms after each"
+  },
+  "budget": {
+    "maxDrawCalls": 150,
+    "maxTriangles": 150000
+  },
+  "over": [
+    "khu-rung-bi-mat/spawn/high",
+    "khu-rung-bi-mat/chapter-2/high",
+    "lang-ven-song/spawn/mid",
+    "lang-ven-song/spawn/high",
+    "nha-cua-be/spawn/high",
+    "nha-cua-be/chapter-1/high",
+    "trung-tam/spawn/high",
+    "trung-tam/chapter-1/high",
+    "trung-tam/chapter-3/high",
+    "xom-mai-am/spawn/high",
+    "xom-mai-am/chapter-1/high",
+    "nong-trai/chapter-1/high",
+    "dao-bi-an/spawn/high"
+  ],
+  "runs": [
+    {
+      "region": "khu-rung-bi-mat",
+      "point": "spawn",
+      "position": [
+        16.5,
+        13,
+        16.5
+      ],
+      "quality": "low",
+      "calls": 83,
+      "triangles": 52554,
+      "textures": 63,
+      "geometries": 94,
+      "worstYaw": 225
+    },
+    {
+      "region": "khu-rung-bi-mat",
+      "point": "spawn",
+      "position": [
+        16.5,
+        13,
+        16.5
+      ],
+      "quality": "mid",
+      "calls": 113,
+      "triangles": 114307,
+      "textures": 101,
+      "geometries": 137,
+      "worstYaw": 225
+    },
+    {
+      "region": "khu-rung-bi-mat",
+      "point": "spawn",
+      "position": [
+        16.5,
+        13,
+        16.5
+      ],
+      "quality": "high",
+      "calls": 186,
+      "triangles": 180878,
+      "textures": 106,
+      "geometries": 200,
+      "worstYaw": 225
+    },
+    {
+      "region": "khu-rung-bi-mat",
+      "point": "chapter-2",
+      "position": [
+        218.5,
+        13,
+        274.5
+      ],
+      "quality": "high",
+      "calls": 131,
+      "triangles": 156759,
+      "textures": 87,
+      "geometries": 203,
+      "worstYaw": 45
+    },
+    {
+      "region": "khu-rung-bi-mat",
+      "point": "chapter-3",
+      "position": [
+        498.5,
+        13,
+        292.5
+      ],
+      "quality": "high",
+      "calls": 139,
+      "triangles": 138147,
+      "textures": 92,
+      "geometries": 180,
+      "worstYaw": 45
+    },
+    {
+      "region": "khu-rung-bi-mat",
+      "point": "chapter-4",
+      "position": [
+        238.5,
+        13,
+        572.5
+      ],
+      "quality": "high",
+      "calls": 137,
+      "triangles": 137335,
+      "textures": 76,
+      "geometries": 170,
+      "worstYaw": 0
+    },
+    {
+      "region": "khu-rung-bi-mat",
+      "point": "chapter-5",
+      "position": [
+        536.5,
+        13,
+        590.5
+      ],
+      "quality": "high",
+      "calls": 138,
+      "triangles": 140966,
+      "textures": 81,
+      "geometries": 186,
+      "worstYaw": 45
+    },
+    {
+      "region": "lang-ven-song",
+      "point": "spawn",
+      "position": [
+        60.5,
+        13,
+        70.5
+      ],
+      "quality": "low",
+      "calls": 76,
+      "triangles": 55578,
+      "textures": 60,
+      "geometries": 98,
+      "worstYaw": 45
+    },
+    {
+      "region": "lang-ven-song",
+      "point": "spawn",
+      "position": [
+        60.5,
+        13,
+        70.5
+      ],
+      "quality": "mid",
+      "calls": 96,
+      "triangles": 152957,
+      "textures": 82,
+      "geometries": 160,
+      "worstYaw": 225
+    },
+    {
+      "region": "lang-ven-song",
+      "point": "spawn",
+      "position": [
+        60.5,
+        13,
+        70.5
+      ],
+      "quality": "high",
+      "calls": 159,
+      "triangles": 190230,
+      "textures": 88,
+      "geometries": 195,
+      "worstYaw": 270
+    },
+    {
+      "region": "lang-ven-song",
+      "point": "chapter-1",
+      "position": [
+        190.5,
+        13,
+        235.5
+      ],
+      "quality": "high",
+      "calls": 134,
+      "triangles": 149884,
+      "textures": 85,
+      "geometries": 206,
+      "worstYaw": 45
+    },
+    {
+      "region": "lang-ven-song",
+      "point": "chapter-2",
+      "position": [
+        520.5,
+        13,
+        275.5
+      ],
+      "quality": "high",
+      "calls": 137,
+      "triangles": 135383,
+      "textures": 93,
+      "geometries": 184,
+      "worstYaw": 45
+    },
+    {
+      "region": "lang-ven-song",
+      "point": "chapter-3",
+      "position": [
+        200.5,
+        13,
+        585.5
+      ],
+      "quality": "high",
+      "calls": 116,
+      "triangles": 130203,
+      "textures": 63,
+      "geometries": 176,
+      "worstYaw": 0
+    },
+    {
+      "region": "lang-ven-song",
+      "point": "chapter-4",
+      "position": [
+        520.5,
+        13,
+        627.5
+      ],
+      "quality": "high",
+      "calls": 114,
+      "triangles": 136948,
+      "textures": 69,
+      "geometries": 156,
+      "worstYaw": 45
+    },
+    {
+      "region": "nha-cua-be",
+      "point": "spawn",
+      "position": [
+        80.5,
+        13,
+        24.5
+      ],
+      "quality": "low",
+      "calls": 75,
+      "triangles": 58012,
+      "textures": 61,
+      "geometries": 98,
+      "worstYaw": 90
+    },
+    {
+      "region": "nha-cua-be",
+      "point": "spawn",
+      "position": [
+        80.5,
+        13,
+        24.5
+      ],
+      "quality": "mid",
+      "calls": 104,
+      "triangles": 142683,
+      "textures": 87,
+      "geometries": 151,
+      "worstYaw": 225
+    },
+    {
+      "region": "nha-cua-be",
+      "point": "spawn",
+      "position": [
+        80.5,
+        13,
+        24.5
+      ],
+      "quality": "high",
+      "calls": 166,
+      "triangles": 196324,
+      "textures": 88,
+      "geometries": 211,
+      "worstYaw": 225
+    },
+    {
+      "region": "nha-cua-be",
+      "point": "chapter-1",
+      "position": [
+        80.5,
+        13,
+        24.5
+      ],
+      "quality": "high",
+      "calls": 168,
+      "triangles": 196412,
+      "textures": 89,
+      "geometries": 211,
+      "worstYaw": 225
+    },
+    {
+      "region": "trung-tam",
+      "point": "spawn",
+      "position": [
+        400.5,
+        13,
+        526.5
+      ],
+      "quality": "low",
+      "calls": 51,
+      "triangles": 69006,
+      "textures": 31,
+      "geometries": 60,
+      "worstYaw": 90
+    },
+    {
+      "region": "trung-tam",
+      "point": "spawn",
+      "position": [
+        400.5,
+        13,
+        526.5
+      ],
+      "quality": "mid",
+      "calls": 86,
+      "triangles": 120808,
+      "textures": 70,
+      "geometries": 116,
+      "worstYaw": 45
+    },
+    {
+      "region": "trung-tam",
+      "point": "spawn",
+      "position": [
+        400.5,
+        13,
+        526.5
+      ],
+      "quality": "high",
+      "calls": 122,
+      "triangles": 159431,
+      "textures": 74,
+      "geometries": 188,
+      "worstYaw": 270
+    },
+    {
+      "region": "trung-tam",
+      "point": "chapter-1",
+      "position": [
+        400.5,
+        13,
+        481.5
+      ],
+      "quality": "high",
+      "calls": 107,
+      "triangles": 156002,
+      "textures": 64,
+      "geometries": 184,
+      "worstYaw": 45
+    },
+    {
+      "region": "trung-tam",
+      "point": "chapter-2",
+      "position": [
+        260.5,
+        13,
+        477.5
+      ],
+      "quality": "high",
+      "calls": 107,
+      "triangles": 137884,
+      "textures": 69,
+      "geometries": 177,
+      "worstYaw": 45
+    },
+    {
+      "region": "trung-tam",
+      "point": "chapter-3",
+      "position": [
+        548.5,
+        13,
+        477.5
+      ],
+      "quality": "high",
+      "calls": 127,
+      "triangles": 151270,
+      "textures": 64,
+      "geometries": 184,
+      "worstYaw": 45
+    },
+    {
+      "region": "trung-tam",
+      "point": "chapter-4",
+      "position": [
+        400.5,
+        13,
+        384.5
+      ],
+      "quality": "high",
+      "calls": 103,
+      "triangles": 139568,
+      "textures": 69,
+      "geometries": 162,
+      "worstYaw": 45
+    },
+    {
+      "region": "truong-hoc",
+      "point": "spawn",
+      "position": [
+        400.5,
+        13,
+        320.5
+      ],
+      "quality": "low",
+      "calls": 44,
+      "triangles": 48102,
+      "textures": 18,
+      "geometries": 47,
+      "worstYaw": 135
+    },
+    {
+      "region": "truong-hoc",
+      "point": "spawn",
+      "position": [
+        400.5,
+        13,
+        320.5
+      ],
+      "quality": "mid",
+      "calls": 78,
+      "triangles": 112370,
+      "textures": 56,
+      "geometries": 108,
+      "worstYaw": 45
+    },
+    {
+      "region": "truong-hoc",
+      "point": "spawn",
+      "position": [
+        400.5,
+        13,
+        320.5
+      ],
+      "quality": "high",
+      "calls": 114,
+      "triangles": 135073,
+      "textures": 60,
+      "geometries": 163,
+      "worstYaw": 45
+    },
+    {
+      "region": "truong-hoc",
+      "point": "chapter-1",
+      "position": [
+        400.5,
+        13,
+        358.5
+      ],
+      "quality": "high",
+      "calls": 112,
+      "triangles": 148684,
+      "textures": 68,
+      "geometries": 177,
+      "worstYaw": 45
+    },
+    {
+      "region": "truong-hoc",
+      "point": "chapter-2",
+      "position": [
+        400.5,
+        13,
+        403.5
+      ],
+      "quality": "high",
+      "calls": 112,
+      "triangles": 146072,
+      "textures": 65,
+      "geometries": 182,
+      "worstYaw": 45
+    },
+    {
+      "region": "truong-hoc",
+      "point": "chapter-3",
+      "position": [
+        346.5,
+        13,
+        444.5
+      ],
+      "quality": "high",
+      "calls": 122,
+      "triangles": 148192,
+      "textures": 60,
+      "geometries": 190,
+      "worstYaw": 45
+    },
+    {
+      "region": "truong-hoc",
+      "point": "chapter-4",
+      "position": [
+        346.5,
+        13,
+        358.5
+      ],
+      "quality": "high",
+      "calls": 125,
+      "triangles": 145487,
+      "textures": 67,
+      "geometries": 180,
+      "worstYaw": 45
+    },
+    {
+      "region": "thu-vien",
+      "point": "spawn",
+      "position": [
+        186.5,
+        13,
+        430.5
+      ],
+      "quality": "low",
+      "calls": 47,
+      "triangles": 50396,
+      "textures": 16,
+      "geometries": 48,
+      "worstYaw": 315
+    },
+    {
+      "region": "thu-vien",
+      "point": "spawn",
+      "position": [
+        186.5,
+        13,
+        430.5
+      ],
+      "quality": "mid",
+      "calls": 77,
+      "triangles": 111376,
+      "textures": 56,
+      "geometries": 113,
+      "worstYaw": 0
+    },
+    {
+      "region": "thu-vien",
+      "point": "spawn",
+      "position": [
+        186.5,
+        13,
+        430.5
+      ],
+      "quality": "high",
+      "calls": 114,
+      "triangles": 143088,
+      "textures": 64,
+      "geometries": 188,
+      "worstYaw": 0
+    },
+    {
+      "region": "thu-vien",
+      "point": "chapter-1",
+      "position": [
+        230.5,
+        13,
+        581.5
+      ],
+      "quality": "high",
+      "calls": 130,
+      "triangles": 133266,
+      "textures": 69,
+      "geometries": 169,
+      "worstYaw": 0
+    },
+    {
+      "region": "thu-vien",
+      "point": "chapter-2",
+      "position": [
+        595.5,
+        13,
+        295.5
+      ],
+      "quality": "high",
+      "calls": 113,
+      "triangles": 140866,
+      "textures": 60,
+      "geometries": 172,
+      "worstYaw": 90
+    },
+    {
+      "region": "thu-vien",
+      "point": "chapter-3",
+      "position": [
+        595.5,
+        13,
+        647.5
+      ],
+      "quality": "high",
+      "calls": 130,
+      "triangles": 134948,
+      "textures": 67,
+      "geometries": 173,
+      "worstYaw": 45
+    },
+    {
+      "region": "lau-dai",
+      "point": "spawn",
+      "position": [
+        60.5,
+        17,
+        345.5
+      ],
+      "quality": "low",
+      "calls": 42,
+      "triangles": 40070,
+      "textures": 18,
+      "geometries": 44,
+      "worstYaw": 225
+    },
+    {
+      "region": "lau-dai",
+      "point": "spawn",
+      "position": [
+        60.5,
+        17,
+        345.5
+      ],
+      "quality": "mid",
+      "calls": 69,
+      "triangles": 102994,
+      "textures": 57,
+      "geometries": 106,
+      "worstYaw": 0
+    },
+    {
+      "region": "lau-dai",
+      "point": "spawn",
+      "position": [
+        60.5,
+        17,
+        345.5
+      ],
+      "quality": "high",
+      "calls": 109,
+      "triangles": 146405,
+      "textures": 61,
+      "geometries": 167,
+      "worstYaw": 315
+    },
+    {
+      "region": "lau-dai",
+      "point": "chapter-1",
+      "position": [
+        160.5,
+        17,
+        309.5
+      ],
+      "quality": "high",
+      "calls": 114,
+      "triangles": 147097,
+      "textures": 66,
+      "geometries": 186,
+      "worstYaw": 315
+    },
+    {
+      "region": "lau-dai",
+      "point": "chapter-2",
+      "position": [
+        436.5,
+        17,
+        266.5
+      ],
+      "quality": "high",
+      "calls": 108,
+      "triangles": 134378,
+      "textures": 64,
+      "geometries": 168,
+      "worstYaw": 270
+    },
+    {
+      "region": "lau-dai",
+      "point": "chapter-3",
+      "position": [
+        440.5,
+        17,
+        433.5
+      ],
+      "quality": "high",
+      "calls": 113,
+      "triangles": 144808,
+      "textures": 60,
+      "geometries": 195,
+      "worstYaw": 45
+    },
+    {
+      "region": "xom-mai-am",
+      "point": "spawn",
+      "position": [
+        110.5,
+        13,
+        108.5
+      ],
+      "quality": "low",
+      "calls": 76,
+      "triangles": 95797,
+      "textures": 49,
+      "geometries": 106,
+      "worstYaw": 0
+    },
+    {
+      "region": "xom-mai-am",
+      "point": "spawn",
+      "position": [
+        110.5,
+        13,
+        108.5
+      ],
+      "quality": "mid",
+      "calls": 93,
+      "triangles": 141179,
+      "textures": 84,
+      "geometries": 172,
+      "worstYaw": 0
+    },
+    {
+      "region": "xom-mai-am",
+      "point": "spawn",
+      "position": [
+        110.5,
+        13,
+        108.5
+      ],
+      "quality": "high",
+      "calls": 137,
+      "triangles": 167504,
+      "textures": 94,
+      "geometries": 217,
+      "worstYaw": 0
+    },
+    {
+      "region": "xom-mai-am",
+      "point": "chapter-1",
+      "position": [
+        210.5,
+        13,
+        181.5
+      ],
+      "quality": "high",
+      "calls": 154,
+      "triangles": 174748,
+      "textures": 78,
+      "geometries": 233,
+      "worstYaw": 45
+    },
+    {
+      "region": "xom-mai-am",
+      "point": "chapter-2",
+      "position": [
+        560.5,
+        13,
+        191.5
+      ],
+      "quality": "high",
+      "calls": 113,
+      "triangles": 139314,
+      "textures": 60,
+      "geometries": 165,
+      "worstYaw": 90
+    },
+    {
+      "region": "xom-mai-am",
+      "point": "chapter-3",
+      "position": [
+        215.5,
+        13,
+        613.5
+      ],
+      "quality": "high",
+      "calls": 125,
+      "triangles": 142590,
+      "textures": 60,
+      "geometries": 167,
+      "worstYaw": 0
+    },
+    {
+      "region": "xom-mai-am",
+      "point": "chapter-4",
+      "position": [
+        600.5,
+        13,
+        613.5
+      ],
+      "quality": "high",
+      "calls": 140,
+      "triangles": 144610,
+      "textures": 68,
+      "geometries": 187,
+      "worstYaw": 45
+    },
+    {
+      "region": "cho-phien",
+      "point": "spawn",
+      "position": [
+        220.5,
+        13,
+        262.5
+      ],
+      "quality": "low",
+      "calls": 67,
+      "triangles": 70125,
+      "textures": 41,
+      "geometries": 91,
+      "worstYaw": 270
+    },
+    {
+      "region": "cho-phien",
+      "point": "spawn",
+      "position": [
+        220.5,
+        13,
+        262.5
+      ],
+      "quality": "mid",
+      "calls": 83,
+      "triangles": 120049,
+      "textures": 84,
+      "geometries": 144,
+      "worstYaw": 45
+    },
+    {
+      "region": "cho-phien",
+      "point": "spawn",
+      "position": [
+        220.5,
+        13,
+        262.5
+      ],
+      "quality": "high",
+      "calls": 136,
+      "triangles": 141125,
+      "textures": 90,
+      "geometries": 193,
+      "worstYaw": 45
+    },
+    {
+      "region": "cho-phien",
+      "point": "chapter-1",
+      "position": [
+        220.5,
+        13,
+        437.5
+      ],
+      "quality": "high",
+      "calls": 107,
+      "triangles": 137188,
+      "textures": 70,
+      "geometries": 192,
+      "worstYaw": 0
+    },
+    {
+      "region": "cho-phien",
+      "point": "chapter-2",
+      "position": [
+        590.5,
+        13,
+        429.5
+      ],
+      "quality": "high",
+      "calls": 130,
+      "triangles": 144600,
+      "textures": 60,
+      "geometries": 190,
+      "worstYaw": 45
+    },
+    {
+      "region": "nong-trai",
+      "point": "spawn",
+      "position": [
+        402.5,
+        13,
+        328.5
+      ],
+      "quality": "low",
+      "calls": 44,
+      "triangles": 48048,
+      "textures": 18,
+      "geometries": 46,
+      "worstYaw": 315
+    },
+    {
+      "region": "nong-trai",
+      "point": "spawn",
+      "position": [
+        402.5,
+        13,
+        328.5
+      ],
+      "quality": "mid",
+      "calls": 69,
+      "triangles": 110214,
+      "textures": 56,
+      "geometries": 99,
+      "worstYaw": 45
+    },
+    {
+      "region": "nong-trai",
+      "point": "spawn",
+      "position": [
+        402.5,
+        13,
+        328.5
+      ],
+      "quality": "high",
+      "calls": 107,
+      "triangles": 134378,
+      "textures": 60,
+      "geometries": 163,
+      "worstYaw": 45
+    },
+    {
+      "region": "nong-trai",
+      "point": "chapter-1",
+      "position": [
+        400.5,
+        13,
+        505.5
+      ],
+      "quality": "high",
+      "calls": 112,
+      "triangles": 158147,
+      "textures": 66,
+      "geometries": 173,
+      "worstYaw": 270
+    },
+    {
+      "region": "nui-tuyet",
+      "point": "spawn",
+      "position": [
+        400.5,
+        17,
+        726.5
+      ],
+      "quality": "low",
+      "calls": 46,
+      "triangles": 48086,
+      "textures": 29,
+      "geometries": 55,
+      "worstYaw": 45
+    },
+    {
+      "region": "nui-tuyet",
+      "point": "spawn",
+      "position": [
+        400.5,
+        17,
+        726.5
+      ],
+      "quality": "mid",
+      "calls": 91,
+      "triangles": 103769,
+      "textures": 65,
+      "geometries": 101,
+      "worstYaw": 45
+    },
+    {
+      "region": "nui-tuyet",
+      "point": "spawn",
+      "position": [
+        400.5,
+        17,
+        726.5
+      ],
+      "quality": "high",
+      "calls": 131,
+      "triangles": 146174,
+      "textures": 68,
+      "geometries": 165,
+      "worstYaw": 45
+    },
+    {
+      "region": "nui-tuyet",
+      "point": "chapter-1",
+      "position": [
+        400.5,
+        17,
+        649.5
+      ],
+      "quality": "high",
+      "calls": 124,
+      "triangles": 145648,
+      "textures": 60,
+      "geometries": 172,
+      "worstYaw": 45
+    },
+    {
+      "region": "nui-tuyet",
+      "point": "chapter-2",
+      "position": [
+        170.5,
+        17,
+        517.5
+      ],
+      "quality": "high",
+      "calls": 108,
+      "triangles": 131877,
+      "textures": 60,
+      "geometries": 159,
+      "worstYaw": 0
+    },
+    {
+      "region": "nui-tuyet",
+      "point": "chapter-3",
+      "position": [
+        400.5,
+        17,
+        453.5
+      ],
+      "quality": "high",
+      "calls": 109,
+      "triangles": 138820,
+      "textures": 59,
+      "geometries": 165,
+      "worstYaw": 45
+    },
+    {
+      "region": "nui-tuyet",
+      "point": "chapter-4",
+      "position": [
+        650.5,
+        17,
+        561.5
+      ],
+      "quality": "high",
+      "calls": 119,
+      "triangles": 131474,
+      "textures": 62,
+      "geometries": 169,
+      "worstYaw": 45
+    },
+    {
+      "region": "nui-tuyet",
+      "point": "chapter-5",
+      "position": [
+        180.5,
+        17,
+        225.5
+      ],
+      "quality": "high",
+      "calls": 130,
+      "triangles": 146396,
+      "textures": 78,
+      "geometries": 196,
+      "worstYaw": 225
+    },
+    {
+      "region": "dao-bi-an",
+      "point": "spawn",
+      "position": [
+        392.5,
+        13,
+        610.5
+      ],
+      "quality": "low",
+      "calls": 47,
+      "triangles": 66704,
+      "textures": 16,
+      "geometries": 55,
+      "worstYaw": 0
+    },
+    {
+      "region": "dao-bi-an",
+      "point": "spawn",
+      "position": [
+        392.5,
+        13,
+        610.5
+      ],
+      "quality": "mid",
+      "calls": 83,
+      "triangles": 115670,
+      "textures": 57,
+      "geometries": 115,
+      "worstYaw": 45
+    },
+    {
+      "region": "dao-bi-an",
+      "point": "spawn",
+      "position": [
+        392.5,
+        13,
+        610.5
+      ],
+      "quality": "high",
+      "calls": 113,
+      "triangles": 150340,
+      "textures": 59,
+      "geometries": 153,
+      "worstYaw": 45
+    },
+    {
+      "region": "dao-bi-an",
+      "point": "chapter-1",
+      "position": [
+        380.5,
+        13,
+        623.5
+      ],
+      "quality": "high",
+      "calls": 106,
+      "triangles": 140358,
+      "textures": 59,
+      "geometries": 149,
+      "worstYaw": 45
+    },
+    {
+      "region": "dao-bi-an",
+      "point": "chapter-2",
+      "position": [
+        220.5,
+        13,
+        446.5
+      ],
+      "quality": "high",
+      "calls": 111,
+      "triangles": 135776,
+      "textures": 66,
+      "geometries": 183,
+      "worstYaw": 0
+    },
+    {
+      "region": "dao-bi-an",
+      "point": "chapter-3",
+      "position": [
+        592.5,
+        13,
+        451.5
+      ],
+      "quality": "high",
+      "calls": 133,
+      "triangles": 144321,
+      "textures": 60,
+      "geometries": 188,
+      "worstYaw": 45
+    },
+    {
+      "region": "dao-bi-an",
+      "point": "chapter-4",
+      "position": [
+        400.5,
+        13,
+        219.5
+      ],
+      "quality": "high",
+      "calls": 101,
+      "triangles": 138696,
+      "textures": 60,
+      "geometries": 157,
+      "worstYaw": 225
+    },
+    {
+      "region": "dao-bi-an",
+      "point": "chapter-5",
+      "position": [
+        650.5,
+        13,
+        699.5
+      ],
+      "quality": "high",
+      "calls": 125,
+      "triangles": 129364,
+      "textures": 66,
+      "geometries": 158,
+      "worstYaw": 45
+    }
+  ]
+}
