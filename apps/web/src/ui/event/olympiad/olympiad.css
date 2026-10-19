@@ -18,7 +18,8 @@
 
 /* A run: the title row, the question, the picture and the stones. */
 .olympiad-run, .olympiad-exam, .olympiad-result, .olympiad-review, .olympiad-done { display: grid; gap: var(--space-sm); }
-.olympiad-run-top { display: flex; align-items: center; gap: var(--space-sm); flex-wrap: wrap; }
+/* The title row stays on top while a long question scrolls on a phone, so the way back is always in reach. */
+.olympiad-run-top { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; gap: var(--space-sm); flex-wrap: wrap; padding-block: var(--space-xs); background: var(--color-parchment); }
 .olympiad-run-title { flex: 1; min-width: 12rem; font-size: var(--text-lg); }
 .olympiad-run-progress { display: flex; align-items: center; gap: var(--space-xs); min-width: 10rem; }
 .olympiad-run-progress .progress { flex: 1; }
