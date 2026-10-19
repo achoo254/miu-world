@@ -9,6 +9,7 @@ import { mapBoth } from '../../i18n/i18n';
 import { Bi, T, useT } from '../../i18n/use-t';
 import { Icon } from '../../kit/art';
 import { buttonClass } from '../../kit/button';
+import { keepMathTogether } from '../../kit/math-text';
 import { playCue } from '../../sound/sfx';
 import { newRunId, submitExam } from './olympiad-api';
 import { choiceText } from './practice-run';
@@ -78,10 +79,11 @@ export function MockExam({
 
   return (
     <div className="olympiad-exam" data-id="olympiad-exam">
+      {/* Outside the title row: only this round button stays on top while a long question scrolls (olympiad.css). */}
+      <button type="button" className="scene-close olympiad-back" data-id="olympiad-exam-back" aria-label={t('olympiad.backToTopics')} onClick={onBack}>
+        ←
+      </button>
       <div className="olympiad-run-top">
-        <button type="button" className="scene-close" data-id="olympiad-exam-back" aria-label={t('olympiad.backToTopics')} onClick={onBack}>
-          ←
-        </button>
         <h3 className="ribbon olympiad-run-title">
           <T k="olympiad.examTitle" />
         </h3>
@@ -121,7 +123,7 @@ export function MockExam({
         <span className="npc-name">
           {index + 1}/{questions.length}
         </span>
-        <Bi {...say(question.prompt)} />
+        <Bi {...mapBoth(say(question.prompt), keepMathTogether)} />
       </p>
       <div className="challenge-area olympiad-area">
         {question.visual ? <QuestionVisual visual={question.visual} filled={picked ? choiceText(picked) : null} fill={fill} /> : null}

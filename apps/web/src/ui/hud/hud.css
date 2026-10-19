@@ -143,8 +143,8 @@
   }
   .hud-tracker { max-width: min(14rem, calc(100vw - 8.5rem)); padding: var(--space-xs) var(--space-sm); font-size: var(--text-sm); }
   .hud-tracker-kicker { font-size: 0.75rem; }
-  .hud-tracker-quest { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .hud-tracker-step { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  /* Two lines each: the map and the chapter's name both read ("Khu rừng bí mật – Chương 1: Lá thần"), not cut at "Lá…". */
+  .hud-tracker-quest, .hud-tracker-step { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   /* Between the stick and Run / Jump there is no room on a phone: it sits above them instead. */
   .hud-rescue { bottom: calc(8.25rem + env(safe-area-inset-bottom, 0px)); min-height: 3.25rem; font-size: var(--text-body); }
   .hud-interact { min-height: 3.25rem; padding: var(--space-xs) var(--space-md); font-size: var(--text-body); bottom: calc(8.25rem + env(safe-area-inset-bottom, 0px)); right: calc(0.75rem + env(safe-area-inset-right, 0px)); }

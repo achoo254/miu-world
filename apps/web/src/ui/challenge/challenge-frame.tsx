@@ -11,6 +11,7 @@ import type { Bilingual } from '../i18n/i18n';
 import { Bi, T, useT } from '../i18n/use-t';
 import { Icon } from '../kit/art';
 import { buttonClass } from '../kit/button';
+import { keepMathTogether } from '../kit/math-text';
 import { Modal } from '../kit/modal';
 import { playCue } from '../sound/sfx';
 import { watchLandings } from './object-reactions';
@@ -106,7 +107,7 @@ export function ChallengeFrame({
         ) : null}
         <p className="parchment npc-bubble challenge-prompt" data-id="challenge-prompt">
           {presenter ? <span className="npc-name">{context.fill(presenter.name)}</span> : null}
-          <Bi vi={prompt.vi} en={prompt.en} />
+          <Bi vi={keepMathTogether(prompt.vi)} en={keepMathTogether(prompt.en)} />
           {/* A lesson's question is the book's Vietnamese: without an English twin it is read in Vietnamese in every mode. */}
           <ListenButton text={prompt.en === prompt.vi ? { vi: prompt.vi } : prompt} dataId="challenge-listen" />
         </p>

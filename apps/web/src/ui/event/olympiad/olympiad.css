@@ -18,8 +18,25 @@
 
 /* A run: the title row, the question, the picture and the stones. */
 .olympiad-run, .olympiad-exam, .olympiad-result, .olympiad-review, .olympiad-done { display: grid; gap: var(--space-sm); }
-.olympiad-run-top { display: flex; align-items: center; gap: var(--space-sm); flex-wrap: wrap; }
+/*
+ * The way back to the topics: a round button in the corner that stays there while a long question scrolls on a phone.
+ * Only the button is sticky (not the title row), so it hides neither the question nor the "1/10" counter; it takes no
+ * row of its own (the negative margin) and the title row keeps clear of it.
+ */
+:is(.olympiad-run, .olympiad-exam) > .olympiad-back {
+  position: sticky;
+  top: 0;
+  right: auto;
+  z-index: 2;
+  justify-self: end;
+  margin-bottom: calc(-3rem - var(--space-sm));
+}
+.olympiad-run-top { display: flex; align-items: center; gap: var(--space-sm); flex-wrap: wrap; padding-inline-end: calc(3rem + var(--space-sm)); }
 .olympiad-run-title { flex: 1; min-width: 12rem; font-size: var(--text-lg); }
+/* Phones: a smaller title, so the row takes less of the screen before the question. */
+@media (max-width: 40rem) {
+  .olympiad-run-top > .olympiad-run-title { padding-inline: var(--space-md); font-size: var(--text-body); }
+}
 .olympiad-run-progress { display: flex; align-items: center; gap: var(--space-xs); min-width: 10rem; }
 .olympiad-run-progress .progress { flex: 1; }
 .olympiad-prompt { margin: 0; font-size: var(--text-lg); font-weight: 700; }

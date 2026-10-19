@@ -12,6 +12,7 @@ import { linesOf, mapBoth, type Bilingual } from '../../i18n/i18n';
 import { Bi, T, useT } from '../../i18n/use-t';
 import { Icon } from '../../kit/art';
 import { buttonClass } from '../../kit/button';
+import { keepMathTogether } from '../../kit/math-text';
 import { ProgressBar } from '../../kit/progress-bar';
 import { Tabs } from '../../kit/tabs';
 import { playCue } from '../../sound/sfx';
@@ -134,10 +135,11 @@ export function PracticeRun({
   const shownChoice = shown?.layer === 'answer' ? question.choices.find((c) => c.id === shown.choice) : undefined;
   return (
     <div className="olympiad-run" data-id={`olympiad-run-${topic.id}`}>
+      {/* Outside the title row: only this round button stays on top while a long question scrolls (olympiad.css). */}
+      <button type="button" className="scene-close olympiad-back" data-id="olympiad-run-back" aria-label={t('olympiad.backToTopics')} onClick={onBack}>
+        ←
+      </button>
       <div className="olympiad-run-top">
-        <button type="button" className="scene-close" data-id="olympiad-run-back" aria-label={t('olympiad.backToTopics')} onClick={onBack}>
-          ←
-        </button>
         <h3 className="ribbon olympiad-run-title">
           <Bi {...say(question.title)} />
         </h3>
@@ -152,7 +154,7 @@ export function PracticeRun({
         <span className="npc-name">
           <Bi {...topic.name} />
         </span>
-        <Bi {...say(question.prompt)} />
+        <Bi {...mapBoth(say(question.prompt), keepMathTogether)} />
       </p>
       <div ref={area} className="challenge-area olympiad-area" data-wrong={wrong}>
         {question.visual ? <QuestionVisual visual={question.visual} filled={pickedChoice ? choiceText(pickedChoice) : null} fill={fill} /> : null}

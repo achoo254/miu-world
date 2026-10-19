@@ -105,6 +105,32 @@ describe('a practice run', () => {
   });
 });
 
+describe('the way back to the topics', () => {
+  // Only the round button stays on top while a long question scrolls on a phone (olympiad.css): it sits outside the
+  // title row, so the question and the "1/10" counter never slide under a sticky row.
+  it('is a corner button of its own in a practice run and in the mock exam, outside the title row', () => {
+    serve({});
+    const back = vi.fn();
+    render(<PracticeRun topic={{ id: 'logic', name: { vi: 'Tư duy', en: 'Logic' } }} questions={QUESTIONS} fill={fill} onBack={back} onFinished={() => undefined} />);
+    const run = document.querySelector('[data-id="olympiad-run-back"]');
+    expect(run?.parentElement?.getAttribute('data-id')).toBe('olympiad-run-logic');
+    expect(document.querySelector('.olympiad-run-top [data-id="olympiad-run-back"]')).toBeNull();
+    expect(document.querySelector('.olympiad-run-top')?.textContent).toContain('1/2');
+    click('olympiad-run-back');
+    expect(back).toHaveBeenCalledOnce();
+    cleanup();
+    render(<MockExam questions={QUESTIONS} fill={fill} onBack={() => undefined} onSubmitted={() => undefined} />);
+    expect(document.querySelector('[data-id="olympiad-exam-back"]')?.parentElement?.getAttribute('data-id')).toBe('olympiad-exam');
+  });
+
+  it('keeps a sum in a question on one line', () => {
+    serve({});
+    const sum = [{ ...QUESTIONS[0], id: 'q-sum', prompt: { vi: 'Tính nhé (8 + 5 = ?)', en: 'Work it out (8 + 5 = ?)' } }] as OlympiadQuestionPublic[];
+    render(<PracticeRun topic={{ id: 'logic', name: { vi: 'Tư duy', en: 'Logic' } }} questions={sum} fill={fill} onBack={() => undefined} onFinished={() => undefined} />);
+    expect(document.querySelector('[data-id="olympiad-prompt"]')?.textContent).toContain('(8\u00a0+\u00a05\u00a0=\u00a0?)');
+  });
+});
+
 describe('the mock exam', () => {
   it('starts with the clock off and hands in what was answered', async () => {
     const sent = serve({ 'POST /api/olympiad/submit': () => ({ status: 500, body: { error: 'internal' } }) });
