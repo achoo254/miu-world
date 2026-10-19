@@ -5,6 +5,7 @@
 // says yes and leads it; it asks the party to play a quest and leads that run; she joins and plays every step
 // through the server's routes while the bot plays its own part; she is paid exactly what one run alone pays, nothing
 // is written for the bot, and it remembers her, waves goodbye and leaves the party.
+import { setTimeout as realSleep } from 'node:timers/promises';
 import { and, asc, eq, sql } from 'drizzle-orm';
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
 import { INTERACT_RANGE, type ServerWsMessage } from '@miu/schema/multiplayer';
@@ -102,15 +103,24 @@ async function rowCounts(): Promise<{ progress: number; ledger: number }> {
   return { progress: progress?.n ?? 0, ledger: ledger?.n ?? 0 };
 }
 
+/** Real time a wait gives the database once the test's clock has run its course (Postgres on CI answers in ms). */
+const DB_GRACE_MS = 2_000;
+
 /**
  * Moves the test's clock on a tenth of a second at a time (the bots' ticks run) until `holds`, letting the
- * database's and the routes' own work through between steps; fails after `withinMs`.
+ * database's and the routes' own work through between steps; fails after `withinMs` on the test's clock and then a
+ * moment of real time: the database's answers take real time, which the test's clock does not move, so what only
+ * waits on them still comes in, while nothing the bots do on their clock gets any longer.
  */
 async function until(what: string, holds: () => boolean, withinMs: number): Promise<void> {
   for (let waited = 0; waited <= withinMs; waited += 100) {
     if (holds()) return;
     await vi.advanceTimersByTimeAsync(100);
     await new Promise((resolve) => setImmediate(resolve));
+  }
+  for (const end = performance.now() + DB_GRACE_MS; performance.now() < end; ) {
+    if (holds()) return;
+    await realSleep(10);
   }
   throw new Error(`not within ${withinMs} ms: ${what}`);
 }

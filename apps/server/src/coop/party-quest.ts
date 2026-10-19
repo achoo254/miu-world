@@ -368,6 +368,9 @@ export class PartyQuestService implements PartyQuestHooks {
     if (!found) this.playedAlone(childId, false);
     if (!found || found.run.members.size < 2) return 'ok';
     const { run, member } = found;
+    // Her earlier steps move the party on after their answers went out (the bots following her, the boss the party
+    // beat): that is in before her next step is weighed, or a bot already through would still hold her back.
+    await run.queue;
     const index = quest.steps.findIndex((s) => s.id === stepId);
     const step = quest.steps[index];
     if (!step) return 'ok';
