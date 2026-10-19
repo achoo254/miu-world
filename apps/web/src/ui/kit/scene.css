@@ -178,8 +178,14 @@
   box-shadow: var(--shadow-panel);
 }
 .scene-sheet > .ribbon { max-width: calc(100% - 7rem); }
-/* A sheet as tall as the screen runs to its bottom edge: a strip left under it showed Home's lines through. */
-.modal-backdrop--scene:has(> .scene-sheet) { padding-bottom: env(safe-area-inset-bottom, 0px); }
+/* Around a sheet (the rim the backdrop's padding leaves, a strip under it on an iPad) Home's lines read through the
+   light scene blur: a sheet's backdrop dims and blurs Home until no text of it reads. */
+.modal-backdrop--scene:has(> .scene-sheet) {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: var(--color-backdrop);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
 .scene-sheet > .scene-close {
   order: -1;
   position: sticky;
