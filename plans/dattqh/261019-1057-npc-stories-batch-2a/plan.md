@@ -38,7 +38,7 @@ Mỗi map trong mười hai map có 4 mạch chuyện riêng của nhân vật (
 | 1 | Nhóm A | Nhà của bé, Trung tâm, Khu rừng bí mật, Trường học | 2 + 1 + 2 + 2 = 7 | completed (25 chương, report `plans/dattqh/reports/npc-stories-batch2a-group-a-261019.md`) |
 | 2 | Nhóm B | Làng ven sông, Xóm mái ấm, Chợ phiên, Nông trại | 2 + 2 + 2 + 1 = 7 | completed (26 chương, report `plans/dattqh/reports/npc-stories-batch2a-group-b-261019.md`) |
 | 3 | Nhóm C | Thư viện, Lâu đài, Núi tuyết, Đảo bí ẩn | 2 + 2 + 2 + 2 = 8 | completed (29 chương, report `plans/dattqh/reports/npc-stories-batch2a-group-c-261019.md`) |
-| 4 | Gộp, review, trang review, CI, ảnh màn hình | — | — | completed phần trước release (review và sửa, CI xanh; report `plans/dattqh/reports/npc-stories-batch2a-261019.md`); ảnh màn hình và release chờ người sở hữu duyệt |
+| 4 | Gộp, review, trang review, CI, ảnh màn hình | — | — | completed phần trước release (review và sửa, CI xanh; report `plans/dattqh/reports/npc-stories-batch2a-261019.md`); ảnh màn hình đã duyệt ở `462d9f01`, đã lên production cùng ngày theo yêu cầu người sở hữu |
 
 Các pha chạy nối tiếp (mỗi pha sửa `content/world/targets.json` và sinh lại map; không chạy song song). Mỗi pha commit riêng khi `assets:check`, `content:check`, `typecheck`, `lint` và các file test liên quan xanh; bộ test đầy đủ, build web và E2E chạy trên CI sau push (luật `CLAUDE.md` mới).
 
