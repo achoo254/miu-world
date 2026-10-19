@@ -1,7 +1,7 @@
 ---
 title: "Sửa nốt và đóng gói nghiệm thu giai đoạn"
 description: "Dừng tính năng mới; sửa các lỗi còn tồn, release, rồi gom nghiệm thu giai đoạn 29/09–19/10/2026 để chuyển sang marketing."
-status: in-progress
+status: completed
 priority: P1
 effort: M
 branch: main
@@ -34,8 +34,8 @@ Sửa `deploy.sh setup` giữ dòng env (0,94); lỗi giao diện chính (0,92);
 | 2 | Giao diện chính | Hàng tiêu đề gọn ở màn luyện Olympic trên điện thoại (nút quay lại luôn thấy, không che câu hỏi, "1/10" vẫn hiện); tên chương trên thẻ nhiệm vụ điện thoại không bị cắt giữa chừng; phép tính không xuống dòng giữa biểu thức; bong bóng thoại và nhãn ở cảnh tổ đội không chồng; biểu tượng riêng cho "Rêu xanh cổ thụ" | completed |
 | 3 | Ghi chú nhỏ | Thú cưng bị bảng che (điện thoại), mũi tên vàng ló ra ở màn chăm sóc, ảnh đại diện chạm dòng tên chương, vệt mờ dưới "Đăng xuất", link "Về trang chủ" nhỏ, chữ màn sau lộ dưới bảng sự kiện, nhãn Vẹt đè đầu nhân vật | completed |
 | 4 | Bộ chụp ảnh | Thêm thông báo khi tắt online, màn `/kiem-duyet`, và một bước câu đố có manh mối vào `apps/web/e2e/screens.spec.ts` | completed ([report](../reports/screens-coverage-261019.md)) |
-| 5 | Release | CI xanh, chụp và duyệt ảnh, người sở hữu duyệt release | pending |
-| 6 | Nghiệm thu giai đoạn | Report tổng giai đoạn 29/09–19/10/2026 và mục "Nghiệm thu giai đoạn" trên trang review: đã giao gì, bằng chứng (CI, ảnh, audit, bảo mật, hiệu năng), việc còn chờ người, đề xuất marketing kế tiếp | pending |
+| 5 | Release | CI xanh, chụp và duyệt ảnh, người sở hữu duyệt release | completed (`601d07ea` trên production 19/10/2026) |
+| 6 | Nghiệm thu giai đoạn | Report tổng giai đoạn 29/09–19/10/2026 và mục "Nghiệm thu giai đoạn" trên trang review: đã giao gì, bằng chứng (CI, ảnh, audit, bảo mật, hiệu năng), việc còn chờ người, đề xuất marketing kế tiếp | completed ([report](../reports/nghiem-thu-giai-doan-261019.md)) |
 
 Pha 2 và 3 sửa cùng vùng UI nên một người làm; pha 4 chỉ sửa spec chụp ảnh. Trên máy dev chỉ chạy `assets:check`, `content:check`, `typecheck`, `lint` và đúng file test liên quan; bộ đầy đủ, build web, E2E chạy trên CI.
 

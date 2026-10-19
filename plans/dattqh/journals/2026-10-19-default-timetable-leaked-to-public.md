@@ -1,7 +1,7 @@
 ---
 title: Thời khóa biểu mặc định lộ ra cho người lạ
 date: 2026-10-19
-summary: "Mở đăng nhập cho mọi người biến thời khóa biểu mặc định của lớp thật thành rò rỉ; đã gỡ ở production, sửa code chờ release"
+summary: "Mở đăng nhập cho mọi người biến thời khóa biểu mặc định của lớp thật thành rò rỉ; đã gỡ ở production, sửa code đã release"
 ---
 
 # Thời khóa biểu mặc định lộ ra cho người lạ
@@ -11,7 +11,7 @@ summary: "Mở đăng nhập cho mọi người biến thời khóa biểu mặc
 **Date**: 2026-10-19 07:53
 **Severity**: High
 **Component**: `apps/server/src/timetable` (`GET /api/timetable`), cấu hình production
-**Status**: Resolved ở production (gỡ cấu hình); sửa code chưa release
+**Status**: Resolved ở production (gỡ cấu hình; sửa code đã release trong `462d9f01`)
 
 ## Chuyện gì xảy ra
 Đợt cook plan `plans/dattqh/261004-1617-mvp-gate-launch-readiness/`, quét bảo mật (`plans/dattqh/reports/security-sweep-261019.md`) phát hiện `GET /api/timetable` trả thời khóa biểu mặc định của một lớp có thật (tên trường, tên và số điện thoại giáo viên) cho **mọi** tài khoản chưa tự nhập thời khóa biểu. Từ 12/10/2026 đăng nhập mở cho tất cả mọi người, nên một người lạ bất kỳ đăng nhập Google là đọc được.
