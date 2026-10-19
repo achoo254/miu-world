@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { and, desc, eq, inArray, sql } from 'drizzle-orm';
 import { Router } from 'express';
+import { Id } from '@miu/schema/account';
 import type { MailDto, MailTemplate } from '@miu/schema/mail';
 import { activePlayerId, requireParent } from '../auth/auth-context';
 import type { ContentCatalog } from '../content/content-catalog';
@@ -15,6 +16,13 @@ export interface MailRouteDeps {
   content: ContentCatalog;
   templates?: MailTemplate[];
   clock?: () => Date;
+}
+
+/** A mail id from the path: anything that is not an id is a mail she does not have (the column is a uuid). */
+function mailIdParam(raw: unknown): string {
+  const parsed = Id.safeParse(raw);
+  if (!parsed.success) throw new HttpError(404, 'mail-not-found');
+  return parsed.data;
 }
 
 export function mailRoutes({
@@ -117,7 +125,7 @@ export function mailRoutes({
   // POST /api/mail/:id/read - Mark mail as read
   router.post('/mail/:id/read', requireParent, async (req, res) => {
     const childId = await activePlayerId(db, res, content.consent.version);
-    const id = String(req.params.id);
+    const id = mailIdParam(req.params.id);
 
     const [row] = await db
       .select({ id: mail.id, read: mail.read })
@@ -141,7 +149,7 @@ export function mailRoutes({
   // POST /api/mail/:id/claim - Claim reward from mail (idempotent)
   router.post('/mail/:id/claim', requireParent, async (req, res) => {
     const childId = await activePlayerId(db, res, content.consent.version);
-    const id = String(req.params.id);
+    const id = mailIdParam(req.params.id);
 
     const [row] = await db
       .select()

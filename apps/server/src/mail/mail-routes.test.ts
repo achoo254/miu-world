@@ -76,6 +76,12 @@ describe('mail routes', () => {
     await agent.post('/api/mail/00000000-0000-4000-8000-000000000000/claim').expect(404);
   });
 
+  it('answers 404, not a server error, for a mail id that is not an id', async () => {
+    const { agent } = await playingChild();
+    await agent.post('/api/mail/not-a-mail-id/read').expect(404, { error: 'mail-not-found' });
+    await agent.post('/api/mail/not-a-mail-id/claim').expect(404, { error: 'mail-not-found' });
+  });
+
   it('prevents IDOR: child cannot read or claim another child mail', async () => {
     const childA = await playingChild();
     const childB = await playingChild();
