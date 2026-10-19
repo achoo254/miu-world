@@ -115,7 +115,7 @@ jobs:
         run: pnpm --filter @miu/web e2e:ci --shard=${{ matrix.shard }}/${{ matrix.total }}
       - name: Keep Playwright traces of failed runs
         if: failure()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: playwright-traces-${{ matrix.shard }}
           path: apps/web/test-results/
