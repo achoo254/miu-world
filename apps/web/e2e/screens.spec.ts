@@ -175,7 +175,10 @@ for (const viewport of VIEWPORTS) {
     const { context, page } = await newPlayer(browser, base, viewport);
     await capture(page, '02-players', async () => {
       await page.goto('/profiles');
-      await expect(page.locator('[data-id="profiles"], [data-id="play-start"]').first()).toBeVisible();
+      // The page shows before its players are read: the picture waits for her card and "Thêm người chơi".
+      await expect(page.locator('[data-id^="profiles-pick-"]').first()).toBeVisible();
+      await expect(page.locator('[data-id="profiles-add"]')).toBeVisible();
+      await expect.poll(() => page.locator('[data-id^="profiles-pick-"] img').first().evaluate((img) => (img as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
     });
     await capture(page, '03-creator', async () => {
       await page.goto('/create');
