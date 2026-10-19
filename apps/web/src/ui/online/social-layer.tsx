@@ -355,14 +355,15 @@ function TravelCard({ social, fill }: { social: SocialStore; fill: Fill }) {
 
 /**
  * Why online play is not all there (the emergency switch, or her online play locked): a friendly line she can put
- * away; it comes back only when the reason changes.
+ * away; it comes back only when the reason changes. It stays out of the top row (the HUD's buttons and quest card are
+ * there) and does not wait for an answer: a compact notice above the touch controls.
  */
 function OnlinePauseCard({ social }: { social: SocialStore }) {
   const pause = useSocial(social, (s) => s.onlinePause);
   const [seen, setSeen] = useState<typeof pause>(null);
   if (!pause || seen === pause) return null;
   return (
-    <section className="online-card parchment" data-id="online-pause" role="status" aria-live="polite">
+    <section className="online-card online-pause parchment" data-id="online-pause" role="status" aria-live="polite">
       <p className="online-card-text">
         🌙 <T k={`online.pause.${pause}`} />
       </p>
@@ -396,9 +397,9 @@ export function SocialLayer({ social, covered, fill, voice = null }: { social: S
           <TravelCard social={social} fill={fill} />
           <FriendAskCard social={social} />
           {voice ? <CallInviteCard voice={voice} /> : null}
-          <OnlinePauseCard social={social} />
         </div>
       )}
+      {covered ? null : <OnlinePauseCard social={social} />}
       <OnlineToastLine social={social} />
     </>
   );

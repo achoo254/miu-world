@@ -109,3 +109,12 @@
 }
 @keyframes online-card-timer { from { transform: scaleX(1); } to { transform: scaleX(0); } }
 @media (prefers-reduced-motion: reduce) { .online-card-timer { animation: none; } }
+/* "Online is resting": not a question, so not in the top row over the HUD's buttons and quest card. A compact notice in
+   the open middle, above the Ride pill (left), Interact (right) and the line toasts (centre) over the touch controls. */
+.online-pause {
+  position: fixed; z-index: var(--z-hud);
+  left: 50%; bottom: calc(16rem + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%);
+  width: min(26rem, calc(100vw - 2 * var(--space-md)));
+  gap: var(--space-xs); padding: var(--space-xs) var(--space-md);
+}
+.online-pause .online-card-text { font-size: var(--text-sm); }

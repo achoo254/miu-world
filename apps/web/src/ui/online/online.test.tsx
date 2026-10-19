@@ -208,6 +208,8 @@ describe('when online play is paused or locked', () => {
     act(() => social.update({ onlinePause: 'interaction' }));
     const card = screen.getByRole('status');
     expect(card.textContent).toContain('vẫn thấy mọi người');
+    // Not a question: it stays out of the top row of cards, which sits over the HUD's buttons and quest card.
+    expect(card.closest('.online-cards')).toBeNull();
     expect(screen.queryByRole('alert')).toBeNull();
     fireEvent.click(within(card).getByRole('button', { name: 'Đã hiểu' }));
     expect(document.querySelector('[data-id="online-pause"]')).toBeNull();
