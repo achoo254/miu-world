@@ -1,0 +1,388 @@
+{
+  "id": "yarn-nai-nghin-dom-dom-1",
+  "region": "khu-rung-bi-mat",
+  "chapter": 4,
+  "title": "Chuyện của Nai Đom Đóm, chương 1: Đếm sao trước, đếm đom đóm sau",
+  "status": "active",
+  "category": "story",
+  "summary": "Nai Đom Đóm mơ một đêm đếm đủ một nghìn con đom đóm. {name} tìm sổ đếm và que tính, đọc số theo chục, xếp các đêm từ ít đến nhiều đom đóm, chọn cách đếm không làm đom đóm sợ rồi cùng đom đóm nháy đèn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Nai Đom Đóm",
+    "where": "Rừng sâu: trảng cỏ đêm, gốc thông, phiến đá rêu, bụi dương xỉ, bìa trảng",
+    "goal": "Bắt đầu đếm đom đóm mà không làm chúng sợ",
+    "play": "Tìm đồ theo lời tả; đọc số theo chục; xếp các đêm theo số đom đóm; chọn cách đếm; nháy đèn cùng đom đóm",
+    "learn": "Số trong phạm vi 100: chục và đơn vị, so sánh số",
+    "reward": "55 XP, 14 Xu, Skill XP Số đến 100, So sánh số",
+    "next": "Đặt tên cho những đốm sáng"
+  },
+  "phases": {
+    "hook": "dem-sao-truoc",
+    "explore": "tim-so-dem",
+    "learn": "dem-theo-chuc",
+    "challenge": "cac-dem-dem",
+    "decision": "dem-nhe-nhang",
+    "finale": "nhay-cung-nhip",
+    "reward": "dem-dau-tien",
+    "next": "dat-ten-dom-dom"
+  },
+  "places": {
+    "nai-dom-dom": "Trảng cỏ đêm",
+    "tim-so-dem": "Gốc thông",
+    "st-nai-nghin-dom-dom-so-dem-dom-dom": "Gốc thông",
+    "st-nai-nghin-dom-dom-que-tinh-co-lau": "Gốc thông",
+    "st-nai-nghin-dom-dom-la-danh-dau": "Gốc thông",
+    "st-nai-nghin-dom-dom-phien-da-reu": "Phiến đá rêu",
+    "st-nai-nghin-dom-dom-bang-dem-dem": "Bụi dương xỉ",
+    "st-nai-nghin-dom-dom-tham-co-nam-dem": "Bìa trảng",
+    "st-nai-nghin-dom-dom-bia-trang-dem": "Bìa trảng"
+  },
+  "steps": [
+    {
+      "id": "dem-sao-truoc",
+      "title": "Đếm sao trước",
+      "goTo": "Tới trảng cỏ đêm, Nai Đom Đóm đang nằm ngắm sao",
+      "kind": "dialogue",
+      "target": "nai-dom-dom",
+      "lines": [
+        {
+          "speaker": "Nai Đom Đóm",
+          "text": "Ừm… chào {name}. Tớ vừa đếm xong sao. Tối nào cũng thế, đếm sao trước rồi mới đếm đom đóm."
+        },
+        {
+          "speaker": "Nai Đom Đóm",
+          "text": "Tớ có một ước mơ, sáng như trăng rằm: một đêm đếm đủ một nghìn con đom đóm, và đặt tên cho từng con."
+        },
+        {
+          "speaker": "Nai Đom Đóm",
+          "text": "Mà sổ đếm và que tính của tớ… ừm… để quên ở gốc thông rồi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ đi lấy giúp cậu!",
+          "reply": "Đi nhẹ thôi nhé, đom đóm đang ngủ dưới cỏ."
+        },
+        {
+          "text": "Một nghìn là nhiều lắm đấy!",
+          "reply": "Ừm… nhiều như sao trên trời. Nhưng mình đếm từng chục một."
+        }
+      ],
+      "en": {
+        "title": "Stars first",
+        "goTo": "Go to the night meadow, where Nai Đom Đóm lies gazing at the stars",
+        "lines": [
+          "Mm… hello, {name}. I've just finished counting the stars. Every night it's the same: stars first, then fireflies.",
+          "I have a dream, bright as a full moon: to count a thousand fireflies in one night, and name every one.",
+          "But my counting book and sticks… mm… I left them by the pine."
+        ],
+        "choices": [
+          {
+            "text": "I'll fetch them for you!",
+            "reply": "Walk softly; the fireflies are sleeping in the grass."
+          },
+          {
+            "text": "A thousand is a lot!",
+            "reply": "Mm… as many as the stars. But we count ten at a time."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-so-dem",
+      "title": "Tìm sổ đếm và que tính",
+      "goTo": "Tới gốc thông tìm sổ đếm, que tính và chiếc lá đánh dấu",
+      "kind": "find-object",
+      "prompt": "Ba món nằm lẫn trong lá kim dưới gốc thông. Đọc lời tả rồi tìm từng món:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "so",
+          "name": "Sổ đếm",
+          "clue": "Bìa xanh rêu, mỗi trang vẽ một ngôi sao nhỏ ở góc.",
+          "target": "st-nai-nghin-dom-dom-so-dem-dom-dom"
+        },
+        {
+          "id": "que",
+          "name": "Bó que tính",
+          "clue": "Mười cọng cỏ lau buộc thành một bó, nhẹ như lông chim.",
+          "target": "st-nai-nghin-dom-dom-que-tinh-co-lau"
+        },
+        {
+          "id": "la",
+          "name": "Chiếc lá đánh dấu",
+          "clue": "Lá phong màu cam kẹp giữa hai trang, đánh dấu đêm đếm gần nhất.",
+          "target": "st-nai-nghin-dom-dom-la-danh-dau"
+        }
+      ],
+      "en": {
+        "title": "Finding the book and sticks",
+        "goTo": "Go to the pine tree to find the counting book, the sticks and the leaf bookmark",
+        "prompt": "Three things lie among the pine needles. Read each description and find them:",
+        "items": [
+          {
+            "name": "The counting book",
+            "clue": "A moss-green cover with a little star drawn in the corner of every page."
+          },
+          {
+            "name": "The bundle of sticks",
+            "clue": "Ten reed stems tied into a bundle, light as a feather."
+          },
+          {
+            "name": "The leaf bookmark",
+            "clue": "An orange maple leaf between two pages, marking the latest counting night."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dem-theo-chuc",
+      "title": "Đếm theo chục",
+      "goTo": "Tới phiến đá rêu, nơi Nai khắc số đom đóm mỗi đêm",
+      "kind": "riddle",
+      "target": "st-nai-nghin-dom-dom-phien-da-reu",
+      "skill": "so-den-100",
+      "question": "Đêm qua Nai đếm được 4 chục con đom đóm và thêm 7 con nữa. Đêm qua có tất cả bao nhiêu con đom đóm?",
+      "answer": {
+        "value": 47
+      },
+      "support": {
+        "guide": [
+          "4 chục là 40.",
+          "Thêm 7 đơn vị vào 40."
+        ],
+        "hint": "40 và 7 ghép lại thành số nào?",
+        "answer": {
+          "text": "47 con đom đóm",
+          "explanation": "4 chục và 7 đơn vị là 47, nên đêm qua có 47 con đom đóm."
+        },
+        "en": {
+          "guide": [
+            "4 tens is 40.",
+            "Add 7 ones to 40."
+          ],
+          "hint": "40 and 7 together make which number?",
+          "answer": {
+            "text": "47 fireflies",
+            "explanation": "4 tens and 7 ones make 47, so there were 47 fireflies last night."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn mươi bảy… ừm, đẹp như bốn mươi bảy ngọn nến nhỏ.",
+          "{name} ghép chục với đơn vị khéo như ghép que tính thành bó.",
+          "Đúng rồi. Nai khắc số ấy lên phiến đá cho khỏi quên."
+        ],
+        "wrong": [
+          "Ừm… 4 chục là bốn bó, mỗi bó mười que đấy.",
+          "Chữ số 4 đứng hàng chục, chữ số 7 đứng hàng đơn vị nhé.",
+          "Đom đóm nháy mắt như bảo «chưa đúng». Thử lại nhé {name}."
+        ],
+        "en": {
+          "right": [
+            "Forty-seven… mm, lovely as forty-seven tiny candles.",
+            "You put tens and ones together as neatly as bundling sticks, {name}.",
+            "Right. Nai carves the number on the stone so it won't be forgotten."
+          ],
+          "wrong": [
+            "Mm… 4 tens is four bundles of ten sticks each.",
+            "The 4 goes in the tens place and the 7 in the ones place.",
+            "The fireflies blink as if to say \"not quite\". Try again, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "Counting in tens",
+        "goTo": "Go to the mossy stone where Nai carves each night's count",
+        "question": "Last night Nai counted 4 tens of fireflies and 7 more. How many fireflies were there in all last night?"
+      }
+    },
+    {
+      "id": "cac-dem-dem",
+      "title": "Đêm nào nhiều đom đóm?",
+      "goTo": "Tới bụi dương xỉ xem tấm vỏ cây ghi số các đêm",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-nai-nghin-dom-dom-bang-dem-dem",
+      "skill": "so-sanh-so",
+      "prompt": "Tấm vỏ cây cạnh bụi dương xỉ ghi số đom đóm bốn đêm. Xếp các đêm từ ít đom đóm nhất đến nhiều nhất:",
+      "items": [
+        {
+          "id": "hai",
+          "label": "Thứ Hai: 47 con"
+        },
+        {
+          "id": "ba",
+          "label": "Thứ Ba: 74 con"
+        },
+        {
+          "id": "tu",
+          "label": "Thứ Tư: 39 con"
+        },
+        {
+          "id": "nam",
+          "label": "Thứ Năm: 70 con"
+        }
+      ],
+      "answer": {
+        "order": [
+          "tu",
+          "hai",
+          "nam",
+          "ba"
+        ]
+      },
+      "support": {
+        "guide": [
+          "So hàng chục trước: 3 chục, 4 chục, 7 chục.",
+          "70 và 74 cùng 7 chục thì so hàng đơn vị."
+        ],
+        "hint": "39 ít nhất; giữa 70 và 74, số nào bé hơn?",
+        "answer": {
+          "text": "Thứ Tư, thứ Hai, thứ Năm, thứ Ba",
+          "explanation": "39 < 47 < 70 < 74, nên thứ tự là thứ Tư, thứ Hai, thứ Năm, thứ Ba."
+        },
+        "en": {
+          "guide": [
+            "Compare tens first: 3 tens, 4 tens, 7 tens.",
+            "70 and 74 both have 7 tens, so compare the ones."
+          ],
+          "hint": "39 is fewest; between 70 and 74, which is smaller?",
+          "answer": {
+            "text": "Wednesday, Monday, Thursday, Tuesday",
+            "explanation": "39 < 47 < 70 < 74, so the order is Wednesday, Monday, Thursday, Tuesday."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ừm… thứ Ba sáng nhất, sáng như cả dải ngân hà rơi xuống cỏ.",
+          "{name} xếp số êm như đom đóm xếp hàng bay.",
+          "Đúng thứ tự rồi. Nai gật đầu chậm rãi, mắt lấp lánh."
+        ],
+        "wrong": [
+          "47 với 74 khác nhau lắm đấy, nhìn kỹ chữ số hàng chục nhé.",
+          "Đêm ít nhất là đêm chỉ có ba chục mấy con thôi.",
+          "Thử xếp lại thật chậm, như cách Nai đếm sao."
+        ],
+        "en": {
+          "right": [
+            "Mm… Tuesday was brightest, as if the Milky Way had fallen into the grass.",
+            "You order numbers as smoothly as fireflies flying in a line, {name}.",
+            "The right order. Nai nods slowly, eyes twinkling."
+          ],
+          "wrong": [
+            "47 and 74 are very different; look closely at the tens.",
+            "The quietest night had only thirty-something.",
+            "Try again slowly, the way Nai counts stars."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which night had most?",
+        "goTo": "Go to the ferns to read the bark with each night's count",
+        "prompt": "The bark beside the ferns lists four nights of fireflies. Order the nights from fewest fireflies to most:",
+        "items": [
+          "Monday: 47",
+          "Tuesday: 74",
+          "Wednesday: 39",
+          "Thursday: 70"
+        ]
+      }
+    },
+    {
+      "id": "dem-nhe-nhang",
+      "title": "Đếm sao cho nhẹ nhàng?",
+      "goTo": "Ra bìa trảng cỏ, chỗ lặng gió nhất",
+      "kind": "decision",
+      "target": "st-nai-nghin-dom-dom-tham-co-nam-dem",
+      "speaker": "Nai Đom Đóm",
+      "prompt": "Đom đóm bắt đầu bay lên. Nai thì thầm: «Ừm… mình đếm thế nào để chúng khỏi giật mình?»",
+      "choices": [
+        {
+          "id": "nam-im",
+          "text": "Nằm im trên cỏ, đếm từng nhóm mười con",
+          "consequence": "Hai bạn nằm im, mỗi lần đủ mười con lại gập một ngón tay. Đom đóm bay quanh như không có ai."
+        },
+        {
+          "id": "de-trong-lo",
+          "text": "Hứng vào lọ để đếm cho dễ",
+          "consequence": "Nai lắc đầu nhẹ: «Đom đóm trong lọ buồn lắm.» Hai bạn mở nắp, đom đóm bay ra, rồi đếm khi chúng bay tự do."
+        },
+        {
+          "id": "nho-doi",
+          "text": "Nhờ Dơi Đêm Tai To nghe tiếng cánh giúp",
+          "consequence": "Dơi nghiêng tai: «Suỵt… nghe này.» Tiếng cánh nhỏ xíu như mưa phùn. Nai cười: «Đếm bằng tai cũng ấm áp.»"
+        }
+      ],
+      "en": {
+        "title": "How to count gently?",
+        "goTo": "Go to the edge of the meadow, where the wind is stillest",
+        "prompt": "The fireflies begin to rise. Nai whispers: \"Mm… how do we count without startling them?\"",
+        "choices": [
+          {
+            "text": "Lie still in the grass and count in groups of ten",
+            "consequence": "You lie still, folding one finger for every ten. The fireflies drift around as if no one is there."
+          },
+          {
+            "text": "Catch them in a jar to count easily",
+            "consequence": "Nai gently shakes her head: \"Fireflies in a jar are sad.\" You lift the lid, they fly out, and you count them flying free."
+          },
+          {
+            "text": "Ask Dơi Đêm Tai To to listen for their wings",
+            "consequence": "Dơi tilts an ear: \"Shh… listen.\" Wings as faint as drizzle. Nai smiles: \"Counting by ear is warm too.\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "nhay-cung-nhip",
+      "title": "Nháy cùng đom đóm",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-nai-nghin-dom-dom-bia-trang-dem",
+      "prompt": "Đom đóm đang nháy đèn cùng nhịp. Nháy theo thật khéo để chúng tụ lại, ghi mười lăm điểm nhé!",
+      "game": "firefly-sync",
+      "goal": 15,
+      "en": {
+        "title": "Blinking with the fireflies",
+        "prompt": "The fireflies are blinking in rhythm. Blink along so they gather close, and score fifteen points!"
+      }
+    },
+    {
+      "id": "dem-dau-tien",
+      "title": "Đêm đếm đầu tiên",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Nai ghi tên {name} vào sổ, cạnh ngôi sao nhỏ: «Người bạn cùng đếm. Ấm như ánh đèn bếp.»",
+      "en": {
+        "title": "The first counting night",
+        "text": "Nai writes {name} in the book beside a little star: \"Counting friend. Warm as a kitchen light.\""
+      }
+    },
+    {
+      "id": "dat-ten-dom-dom",
+      "title": "Đặt tên cho đom đóm",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đêm mai Nai muốn bắt đầu đặt tên cho những đốm sáng, mà Nai lại hay ngượng khi chọn chữ. Mai {name} ghé nhé.",
+      "en": {
+        "title": "Naming the fireflies",
+        "text": "Tomorrow night Nai wants to start naming the little lights, but she gets shy choosing words. Drop by tomorrow, {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": {
+      "so-den-100": 1,
+      "so-sanh-so": 1
+    }
+  },
+  "en": {
+    "title": "Nai Đom Đóm's story, chapter 1: Stars first, then fireflies",
+    "summary": "Nai Đom Đóm dreams of counting a thousand fireflies in one night. {name} finds the counting book and sticks, reads numbers in tens, orders the nights from fewest fireflies to most, chooses a gentle way to count and blinks in time with the fireflies."
+  }
+}

@@ -1,0 +1,351 @@
+{
+  "id": "yarn-meo-bep-mam-com-3",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Chuyện của Mèo Bếp Trưởng, chương 3: Chiếc radio im tiếng",
+  "status": "active",
+  "category": "story",
+  "summary": "Chiếc radio cũ của gian bếp im bặt, tay Mèo Bếp Trưởng cứ lóng ngóng. {name} tìm đồ sửa trong nhà kho, đếm giờ tới chương trình nấu ăn, dò đúng sóng và chọn chỗ đặt radio mới.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Bếp Trưởng",
+    "where": "Nhà của {name}: sau gian bếp, nhà kho, phòng truyền thống, phòng khách",
+    "goal": "Sửa chiếc radio cũ kịp giờ chương trình nấu ăn",
+    "play": "Tìm pin, dây và ốc vít; tính thời gian tới chương trình; dò sóng theo mẫu số; chọn chỗ đặt radio",
+    "learn": "Xem đồng hồ, tìm quy luật dãy số",
+    "reward": "70 XP, 18 Xu, Skill XP Xem đồng hồ, Logic",
+    "next": "Chủ nhật đã tới, còn một nỗi sợ hành tây"
+  },
+  "phases": {
+    "hook": "tay-long-ngong",
+    "explore": "tim-do-sua",
+    "learn": "gio-phat-song",
+    "challenge": "do-song",
+    "decision": "dat-radio",
+    "finale": "dat-radio",
+    "reward": "nhac-trong-bep",
+    "next": "chu-nhat-toi"
+  },
+  "places": {
+    "meo-bep-truong": "Sau gian bếp",
+    "tim-do-sua": "Nhà kho",
+    "st-meo-bep-mam-com-pin-moi": "Nhà kho",
+    "st-meo-bep-mam-com-day-ang-ten": "Nhà kho",
+    "st-meo-bep-mam-com-hop-oc-vit": "Nhà kho",
+    "st-meo-bep-mam-com-lich-phat-song": "Phòng truyền thống",
+    "st-meo-bep-mam-com-radio-cu": "Phòng khách",
+    "st-meo-bep-mam-com-ghe-nghe-dai": "Phòng khách"
+  },
+  "steps": [
+    {
+      "id": "tay-long-ngong",
+      "title": "Tay Mèo lóng ngóng",
+      "goTo": "Ra sau gian bếp, Mèo Bếp Trưởng đang nhặt mảnh bát vỡ",
+      "kind": "dialogue",
+      "target": "meo-bep-truong",
+      "lines": [
+        {
+          "speaker": "Mèo Bếp Trưởng",
+          "text": "Mèo nấu bếp ba mươi năm chưa làm vỡ cái bát nào. Sáng nay vỡ hai. Vì cái radio."
+        },
+        {
+          "speaker": "Mèo Bếp Trưởng",
+          "text": "Nó im rồi. Không tiếng nhạc, không tiếng người dẫn chương trình. Mèo quen vừa nghe vừa thái, im thế này dao cứ lạc nhịp."
+        },
+        {
+          "speaker": "Mèo Bếp Trưởng",
+          "text": "Đồ sửa ở nhà kho. Mèo không rành máy móc. Mèo chỉ rành nước mắm."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để cháu thử sửa xem!",
+          "reply": "Cẩn thận. Radio này già hơn cả Mèo."
+        },
+        {
+          "text": "Mèo thích nghe chương trình gì nhất?",
+          "reply": "Ờ… chương trình nấu ăn buổi trưa. Chỉ để… so tài thôi."
+        }
+      ],
+      "en": {
+        "title": "Fumbling paws",
+        "goTo": "Go behind the kitchen, where Mèo Bếp Trưởng is picking up pieces of a broken bowl",
+        "lines": [
+          "Thirty years in the kitchen and I never broke a bowl. This morning, two. Because of the radio.",
+          "It has gone quiet. No music, no presenter. I'm used to chopping while it talks; in this silence my knife loses the beat.",
+          "The tools are in the storeroom. I don't understand machines. I understand fish sauce."
+        ],
+        "choices": [
+          {
+            "text": "Let me try to fix it!",
+            "reply": "Careful. That radio is older than I am."
+          },
+          {
+            "text": "Which programme do you like best?",
+            "reply": "Er… the lunchtime cooking show. Just to… compare notes."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-do-sua",
+      "title": "Tìm đồ sửa radio",
+      "goTo": "Vào nhà kho tìm pin, dây ăng-ten và hộp ốc vít",
+      "kind": "search",
+      "targets": [
+        "st-meo-bep-mam-com-pin-moi",
+        "st-meo-bep-mam-com-day-ang-ten",
+        "st-meo-bep-mam-com-hop-oc-vit"
+      ],
+      "en": {
+        "title": "Finding the repair kit",
+        "goTo": "Go into the storeroom to find batteries, an aerial wire and a box of screws"
+      }
+    },
+    {
+      "id": "gio-phat-song",
+      "title": "Còn bao lâu tới giờ phát sóng?",
+      "goTo": "Lên phòng truyền thống xem tờ lịch phát sóng treo cạnh đồng hồ",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-meo-bep-mam-com-lich-phat-song",
+      "skill": "xem-dong-ho",
+      "prompt": "Tờ lịch phát sóng ghi chương trình nấu ăn bắt đầu lúc 11 giờ. Đồng hồ trong phòng truyền thống chỉ 10 giờ 30. Còn bao lâu nữa thì tới chương trình?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "30 phút"
+        },
+        {
+          "id": "b",
+          "text": "1 giờ"
+        },
+        {
+          "id": "c",
+          "text": "15 phút"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "10 giờ 30 là mười giờ rưỡi, kim dài chỉ số 6.",
+          "Từ số 6 kim dài quay tới số 12 là thêm nửa giờ."
+        ],
+        "hint": "Nửa giờ là bao nhiêu phút?",
+        "answer": {
+          "text": "30 phút",
+          "explanation": "Từ 10 giờ 30 đến 11 giờ là nửa giờ, tức là 30 phút."
+        },
+        "en": {
+          "guide": [
+            "Half past ten: the long hand points at 6.",
+            "From 6 to 12 the long hand adds half an hour."
+          ],
+          "hint": "How many minutes are in half an hour?",
+          "answer": {
+            "text": "30 minutes",
+            "explanation": "From half past ten to eleven is half an hour, which is 30 minutes."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba mươi phút! Đủ để thay pin, buộc dây và vặn thêm hai con ốc.",
+          "Kim dài chạy nửa vòng là nửa giờ, {name} nhìn đồng hồ tinh thật.",
+          "Mèo vặn chuông hẹn giờ: còn nửa tiếng, bắt tay vào việc thôi."
+        ],
+        "wrong": [
+          "Một giờ thì kim ngắn phải chạy hẳn một số cơ. Nhìn lại kim dài nhé.",
+          "Mười lăm phút là kim dài mới đi ba số thôi, còn xa mới tới số 12.",
+          "Mười giờ rưỡi tới mười một giờ, đếm từng vạch phút xem nào."
+        ],
+        "en": {
+          "right": [
+            "Thirty minutes! Enough to change batteries, tie the wire and tighten two screws.",
+            "Half a turn of the long hand is half an hour; you read clocks sharply, {name}.",
+            "Mèo sets the kitchen timer: half an hour left, let's get to work."
+          ],
+          "wrong": [
+            "A whole hour would move the short hand a full number. Look at the long hand again.",
+            "Fifteen minutes moves the long hand only three numbers, still far from 12.",
+            "From half past ten to eleven: count the minute marks one by one."
+          ]
+        }
+      },
+      "en": {
+        "title": "How long until the show?",
+        "goTo": "Go to the family room to check the broadcast schedule hanging by the clock",
+        "prompt": "The schedule says the cooking show starts at 11 o'clock. The clock in the family room shows half past 10. How long until the show begins?",
+        "choices": [
+          "30 minutes",
+          "1 hour",
+          "15 minutes"
+        ]
+      }
+    },
+    {
+      "id": "do-song",
+      "title": "Dò đúng sóng",
+      "goTo": "Mang radio vào phòng khách, đặt lên bàn để dò sóng",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-meo-bep-mam-com-radio-cu",
+      "skill": "logic",
+      "prompt": "{name} lắp pin, buộc dây rồi vặn núm dò sóng. Các vạch số trên mặt radio theo một quy luật: 82, 85, 88, 91, … Vạch tiếp theo là số mấy?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "92"
+        },
+        {
+          "id": "b",
+          "text": "94"
+        },
+        {
+          "id": "c",
+          "text": "95"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "So hai vạch liền nhau: 85 hơn 82 bao nhiêu?",
+          "Mỗi vạch đều thêm cùng một số."
+        ],
+        "hint": "91 + 3 = ?",
+        "answer": {
+          "text": "94",
+          "explanation": "Mỗi vạch hơn vạch trước 3 đơn vị: 82, 85, 88, 91, nên vạch tiếp theo là 91 + 3 = 94."
+        },
+        "en": {
+          "guide": [
+            "Compare neighbouring numbers: how much more is 85 than 82?",
+            "Each number adds the same amount."
+          ],
+          "hint": "91 + 3 = ?",
+          "answer": {
+            "text": "94",
+            "explanation": "Each number is 3 more than the last: 82, 85, 88, 91, so the next is 91 + 3 = 94."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Rè rè… rồi một giọng hát vang lên! Radio sống lại rồi!",
+          "Thêm ba, thêm ba, thêm ba: {name} bắt được nhịp của mặt số ngay.",
+          "Mèo áp tai vào loa, mắt nhắm lại, đuôi khẽ ve vẩy."
+        ],
+        "wrong": [
+          "Chỉ toàn tiếng rè. Thử xem mỗi vạch thêm bao nhiêu nhé.",
+          "Vạch ấy lệch nhịp rồi, đếm thêm từ 91 lên xem.",
+          "Gần lắm, chỉ cần cộng đúng bước nhảy của mặt số."
+        ],
+        "en": {
+          "right": [
+            "Crackle crackle… then a voice sings out! The radio is alive again!",
+            "Plus three, plus three, plus three: you caught the dial's rhythm at once, {name}.",
+            "Mèo presses an ear to the speaker, eyes closed, tail gently swishing."
+          ],
+          "wrong": [
+            "Nothing but static. Check how much each number adds.",
+            "That number is off the rhythm; count on from 91.",
+            "Very close; just add the dial's exact step."
+          ]
+        }
+      },
+      "en": {
+        "title": "Tuning in",
+        "goTo": "Bring the radio into the living room and set it on the table to tune it",
+        "prompt": "You fit the batteries, tie the wire and turn the tuning knob. The numbers on the dial follow a rule: 82, 85, 88, 91, … What is the next number?",
+        "choices": [
+          "92",
+          "94",
+          "95"
+        ]
+      }
+    },
+    {
+      "id": "dat-radio",
+      "title": "Đặt radio ở đâu?",
+      "kind": "decision",
+      "target": "st-meo-bep-mam-com-ghe-nghe-dai",
+      "speaker": "Mèo Bếp Trưởng",
+      "prompt": "Radio đã hát. Mèo ôm nó như ôm mèo con: «Đặt lại trên nóc tủ thì nó lại rơi. Đặt đâu bây giờ?»",
+      "choices": [
+        {
+          "id": "cua-so",
+          "text": "Đặt cạnh cửa sổ bếp, chỗ dây ăng-ten bắt sóng tốt",
+          "consequence": "Sóng trong vắt. Mèo vừa thái hành… à không, thái cà vừa ngân nga theo nhạc."
+        },
+        {
+          "id": "phong-khach",
+          "text": "Để ở phòng khách cho cả nhà cùng nghe",
+          "consequence": "Cún Đốm nghe nhạc thì dọn nhanh gấp đôi. Mèo đành chạy qua lại giữa bếp và phòng khách."
+        },
+        {
+          "id": "ke-rieng",
+          "text": "Nhờ Ông Cụ Trông Vườn đóng một cái kệ riêng",
+          "consequence": "Ông Cụ đẽo cái kệ nhỏ có rào chắn. Mèo bảo radio bây giờ có nhà riêng, đàng hoàng hơn cả Mèo."
+        }
+      ],
+      "en": {
+        "title": "Where should the radio go?",
+        "prompt": "The radio sings again. Mèo hugs it like a kitten: \"Back on the cupboard it will fall again. Where now?\"",
+        "choices": [
+          {
+            "text": "By the kitchen window, where the aerial picks up well",
+            "consequence": "The signal is crystal clear. Mèo chops tomatoes and hums along to the music."
+          },
+          {
+            "text": "Leave it in the living room for everyone",
+            "consequence": "Cún Đốm tidies twice as fast with music on. Mèo has to run between the kitchen and the living room."
+          },
+          {
+            "text": "Ask Ông Cụ Trông Vườn to build it its own shelf",
+            "consequence": "Ông Cụ carves a little shelf with a rail. Mèo says the radio now has a home of its own, grander than his."
+          }
+        ]
+      }
+    },
+    {
+      "id": "nhac-trong-bep",
+      "title": "Nhạc lại vang trong bếp",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo chỉnh đúng chương trình nấu ăn buổi trưa, rót cho {name} cốc trà gừng: «Nghe cùng. Ghi chép cùng.»",
+      "en": {
+        "title": "Music in the kitchen again",
+        "text": "Mèo tunes in the lunchtime cooking show and pours {name} a cup of ginger tea: \"Listen together. Take notes together.\""
+      }
+    },
+    {
+      "id": "chu-nhat-toi",
+      "title": "Chủ nhật sắp tới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chủ nhật đã đến gần. Món nào cũng sẵn sàng, chỉ còn một rổ hành tây chưa thái, và Mèo cứ nhìn nó như nhìn kẻ thù. Mai {name} ghé sớm nhé.",
+      "en": {
+        "title": "Sunday is coming",
+        "text": "Sunday is almost here. Every dish is ready except a basket of onions still to chop, and Mèo keeps glaring at it like an enemy. Come early tomorrow, {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "xem-dong-ho": 1,
+      "logic": 1
+    }
+  },
+  "en": {
+    "title": "Mèo Bếp Trưởng's story, chapter 3: The silent radio",
+    "summary": "The kitchen's old radio has gone silent and Mèo Bếp Trưởng's paws keep fumbling. {name} finds tools in the storeroom, counts the time until the cooking show, tunes it in and chooses a new spot for the radio."
+  }
+}

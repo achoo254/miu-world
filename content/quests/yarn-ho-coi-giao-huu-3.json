@@ -1,0 +1,295 @@
+{
+  "id": "yarn-ho-coi-giao-huu-3",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Chuyện của Hổ Còi Vàng, chương 3: Trận đấu dưới mưa",
+  "status": "active",
+  "category": "story",
+  "summary": "Ngày thi đấu, trời đổ mưa phùn. {name} cắm cờ góc sân, chạy khởi động cùng đội, đọc bảng tỉ số chọn những câu đúng rồi cùng Hổ Còi Vàng chọn cách đón kết quả trận đấu.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Hổ Còi Vàng",
+    "where": "Sân trường: mép sân bóng, đường chạy, vạch xuất phát, khán đài nhỏ, giữa sân bóng",
+    "goal": "Đá trọn trận giao hữu đầu tiên và giữ tinh thần thể thao",
+    "play": "Cắm cờ góc; chạy khởi động; đọc bảng tỉ số; chọn cách đón kết quả",
+    "learn": "Phép cộng trong phạm vi 10, so sánh hơn kém",
+    "reward": "75 XP, 20 Xu, Skill XP Phép cộng, Hơn kém, Khăn quàng đỏ",
+    "next": "Trận giao hữu kế tiếp ở một vùng đất mới"
+  },
+  "phases": {
+    "hook": "ngay-thi-dau-dlg",
+    "explore": "cam-co-goc",
+    "learn": "chay-khoi-dong",
+    "challenge": "doc-ti-so",
+    "decision": "don-ket-qua",
+    "finale": "don-ket-qua",
+    "reward": "tran-dau-dau-tien",
+    "next": "tran-giao-huu-moi"
+  },
+  "places": {
+    "ho-coi-vang": "Mép sân bóng",
+    "cam-co-goc": "Đường chạy",
+    "st-ho-coi-giao-huu-co-goc-mot": "Đường chạy",
+    "st-ho-coi-giao-huu-co-goc-hai": "Đường chạy",
+    "st-ho-coi-giao-huu-co-goc-ba": "Đường chạy",
+    "st-ho-coi-giao-huu-vach-xuat-phat": "Vạch xuất phát",
+    "st-ho-coi-giao-huu-bang-ti-so": "Khán đài nhỏ",
+    "st-ho-coi-giao-huu-qua-bong-tran-dau": "Giữa sân bóng"
+  },
+  "steps": [
+    {
+      "id": "ngay-thi-dau-dlg",
+      "title": "Ngày thi đấu",
+      "goTo": "Ra mép sân bóng, Hổ Còi Vàng đứng dưới mưa, cười tươi",
+      "kind": "dialogue",
+      "target": "ho-coi-vang",
+      "lines": [
+        {
+          "speaker": "Hổ Còi Vàng",
+          "text": "Tuýt! Mưa phùn rồi, {name}! Mưa thì bóng lăn nhanh hơn, cả đội chạy cũng mát hơn. Một, hai, chạy!"
+        },
+        {
+          "speaker": "Hổ Còi Vàng",
+          "text": "Đội bạn tới rồi. Họ cao hơn đội mình cả cái đầu. Nhưng thắng thua không quan trọng bằng đá cho đẹp."
+        },
+        {
+          "speaker": "Hổ Còi Vàng",
+          "text": "Việc đầu tiên: cắm cờ góc sân. Không có cờ góc, trọng tài cũng lạc đường!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu cắm cờ ngay!",
+          "reply": "Tuýt! Cắm thẳng, cắm chắc, mưa to cũng không đổ."
+        },
+        {
+          "text": "Anh có hồi hộp không?",
+          "reply": "Hồi hộp như sắp thổi còi khai cuộc lần đầu. Mà vui!"
+        }
+      ],
+      "en": {
+        "title": "Match day",
+        "goTo": "Go to the edge of the pitch, where Hổ Còi Vàng stands smiling in the rain",
+        "lines": [
+          "Whistle! A drizzle, {name}! Rain makes the ball roll faster and keeps the team cool. One, two, run!",
+          "The visitors are here. They're a whole head taller than us. But winning matters less than playing well.",
+          "First job: plant the corner flags. Without them, even the referee gets lost!"
+        ],
+        "choices": [
+          {
+            "text": "I'll plant the flags now!",
+            "reply": "Whistle! Straight and firm, so even heavy rain won't knock them down."
+          },
+          {
+            "text": "Butterflies in your tummy?",
+            "reply": "As nervous as blowing my first kick-off whistle. But happy!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cam-co-goc",
+      "title": "Cắm cờ góc sân",
+      "goTo": "Đi dọc đường chạy cắm ba cờ góc sân",
+      "kind": "search",
+      "targets": [
+        "st-ho-coi-giao-huu-co-goc-mot",
+        "st-ho-coi-giao-huu-co-goc-hai",
+        "st-ho-coi-giao-huu-co-goc-ba"
+      ],
+      "en": {
+        "title": "Planting the corner flags",
+        "goTo": "Walk along the running track and plant three corner flags"
+      }
+    },
+    {
+      "id": "chay-khoi-dong",
+      "title": "Chạy khởi động dưới mưa",
+      "goTo": "Tới vạch xuất phát chạy khởi động cùng cả đội",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-ho-coi-giao-huu-vach-xuat-phat",
+      "prompt": "Chạy khởi động cùng cả đội, nhảy qua vũng nước, né chướng ngại. Ghi hai mươi điểm nhé!",
+      "game": "runner",
+      "goal": 20,
+      "en": {
+        "title": "A warm-up run in the rain",
+        "goTo": "Go to the starting line for a warm-up run with the team",
+        "prompt": "Warm up with the team: leap the puddles and dodge the obstacles. Score twenty points!"
+      }
+    },
+    {
+      "id": "doc-ti-so",
+      "title": "Đọc bảng tỉ số",
+      "goTo": "Lên khán đài nhỏ xem bảng tỉ số",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-ho-coi-giao-huu-bang-ti-so",
+      "skill": "phep-cong",
+      "prompt": "Hết trận! Bảng tỉ số ghi: đội trường ghi 3 bàn ở hiệp một và 2 bàn ở hiệp hai; đội bạn ghi 4 bàn ở hiệp một và 2 bàn ở hiệp hai. Chọn những câu đúng:",
+      "choices": [
+        {
+          "id": "truong-5",
+          "text": "Đội trường ghi được 5 bàn"
+        },
+        {
+          "id": "hoa",
+          "text": "Hai đội hòa nhau"
+        },
+        {
+          "id": "ban-hon-1",
+          "text": "Đội bạn ghi nhiều hơn đội trường 1 bàn"
+        },
+        {
+          "id": "truong-thang",
+          "text": "Đội trường thắng trận"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "truong-5",
+          "ban-hon-1"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Cộng bàn của từng đội qua hai hiệp.",
+          "Đội trường: 3 + 2. Đội bạn: 4 + 2."
+        ],
+        "hint": "5 bàn và 6 bàn: ai nhiều hơn, nhiều hơn mấy bàn?",
+        "answer": {
+          "text": "Đội trường 5 bàn, đội bạn hơn 1 bàn",
+          "explanation": "Đội trường ghi 3 + 2 = 5 bàn, đội bạn ghi 4 + 2 = 6 bàn. 6 hơn 5 là 1, nên đội bạn thắng sát nút."
+        },
+        "en": {
+          "guide": [
+            "Add each team's goals over both halves.",
+            "Our school: 3 + 2. Visitors: 4 + 2."
+          ],
+          "hint": "5 goals and 6 goals: who has more, and by how many?",
+          "answer": {
+            "text": "We scored 5; they scored 1 more",
+            "explanation": "Our school scored 3 + 2 = 5 and the visitors 4 + 2 = 6. 6 is 1 more than 5, so the visitors won narrowly."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tuýt! Đọc tỉ số chuẩn như trọng tài chính.",
+          "{name} cộng nhanh, so đúng, không bỏ sót bàn nào.",
+          "Thua một bàn thôi! Hổ cười to hơn cả lúc đội ghi bàn."
+        ],
+        "wrong": [
+          "Năm bàn với sáu bàn đâu phải hòa, đếm lại nhé.",
+          "Đội trường ghi ít hơn một bàn, chưa thắng được đâu.",
+          "Cộng từng hiệp của mỗi đội trước, rồi mới so."
+        ],
+        "en": {
+          "right": [
+            "Whistle! You read the score like a head referee.",
+            "Quick adding, right comparing, no goal missed, {name}.",
+            "Only one goal behind! Hổ laughs louder than when we scored."
+          ],
+          "wrong": [
+            "Five and six isn't a draw; count again.",
+            "Our school scored one fewer, so we didn't win.",
+            "Add up each team's halves first, then compare."
+          ]
+        }
+      },
+      "en": {
+        "title": "Reading the scoreboard",
+        "goTo": "Go up to the little stand to read the scoreboard",
+        "prompt": "Full time! The scoreboard says: our school scored 3 goals in the first half and 2 in the second; the visitors scored 4 in the first half and 2 in the second. Pick the true statements:",
+        "choices": [
+          "Our school scored 5 goals",
+          "The match was a draw",
+          "The visitors scored 1 more goal than us",
+          "Our school won the match"
+        ]
+      }
+    },
+    {
+      "id": "don-ket-qua",
+      "title": "Đón kết quả thế nào?",
+      "goTo": "Ra giữa sân bóng, nơi hai đội đang đứng chờ",
+      "kind": "decision",
+      "target": "st-ho-coi-giao-huu-qua-bong-tran-dau",
+      "speaker": "Hổ Còi Vàng",
+      "prompt": "Hai đội đứng giữa sân, ướt sũng mà ai cũng thở hổn hển vì vui. Hổ ôm quả bóng, quay sang {name}: «Tuýt… mình làm gì bây giờ?»",
+      "choices": [
+        {
+          "id": "cuoi-bat-tay",
+          "text": "Cười thật to, bắt tay từng bạn đội bạn",
+          "consequence": "Hổ cười vang cả sân, bắt tay từng người. Đội bạn bảo chưa thấy đội thua nào vui như thế."
+        },
+        {
+          "id": "hen-tran-sau",
+          "text": "Hẹn đội bạn một trận nữa ở sân của họ",
+          "consequence": "Hai đội trưởng ngoéo tay hẹn trận sau. Hổ bảo đó là bước đầu của ước mơ đá giao hữu khắp nơi."
+        },
+        {
+          "id": "moi-an-kem",
+          "text": "Mời đội bạn sang căng tin ăn kem",
+          "consequence": "Cả hai đội ngồi chung bàn, ăn kem dưới mái hiên nghe mưa rơi. Ai cũng quên mất tỉ số."
+        }
+      ],
+      "en": {
+        "title": "How to greet the result?",
+        "goTo": "Go to the middle of the pitch, where both teams are waiting",
+        "prompt": "Both teams stand in the middle of the pitch, soaked and breathless with fun. Hổ hugs the ball and turns to {name}: \"Whistle… what now?\"",
+        "choices": [
+          {
+            "text": "Laugh out loud and shake every visitor's hand",
+            "consequence": "Hổ's laugh fills the pitch as he shakes every hand. The visitors say they've never seen such a cheerful losing team."
+          },
+          {
+            "text": "Arrange a return match on their pitch",
+            "consequence": "The two captains pinky-promise a return match. Hổ says it's the first step of his dream to play friendlies everywhere."
+          },
+          {
+            "text": "Invite the visitors to the canteen for ice cream",
+            "consequence": "Both teams share a table, eating ice cream under the eaves while the rain falls. Everyone forgets the score."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tran-dau-dau-tien",
+      "title": "Trận đấu đầu tiên",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hổ quàng cho {name} chiếc khăn quàng đỏ của đội: «Thua một bàn, thắng cả trăm nụ cười. Tuýt!»",
+      "en": {
+        "title": "The first match",
+        "text": "Hổ ties the team's red scarf round {name}'s neck: \"Lost by one goal, won a hundred smiles. Whistle!\""
+      }
+    },
+    {
+      "id": "tran-giao-huu-moi",
+      "title": "Trận giao hữu mới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đội bạn hẹn trận lượt về ở sân của họ, bên kia đồi. Hổ đã bắt đầu đánh dấu bản đồ: mỗi vùng đất một trận giao hữu, đúng như anh mơ.",
+      "en": {
+        "title": "A new friendly",
+        "text": "The visitors have arranged a return match on their pitch over the hill. Hổ has started marking a map: one friendly in every land, just as he dreamed."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 75,
+    "coin": 20,
+    "skillXp": {
+      "phep-cong": 1,
+      "hon-kem": 1
+    },
+    "items": {
+      "khan-quang-do": 1
+    }
+  },
+  "en": {
+    "title": "Hổ Còi Vàng's story, chapter 3: The match in the rain",
+    "summary": "On match day, a light rain falls. {name} plants the corner flags, warms up with the team, reads the scoreboard to pick the true statements, then helps Hổ Còi Vàng decide how to greet the result."
+  }
+}

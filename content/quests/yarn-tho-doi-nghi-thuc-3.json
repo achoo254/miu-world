@@ -1,0 +1,329 @@
+{
+  "id": "yarn-tho-doi-nghi-thuc-3",
+  "region": "truong-hoc",
+  "chapter": 2,
+  "title": "Chuyện của Thỏ Măng Non, chương 3: Lễ khai giảng",
+  "status": "active",
+  "category": "story",
+  "summary": "Lễ khai giảng đã tới, Thỏ Măng Non được đi đầu đội nghi thức. {name} xếp thứ tự buổi lễ, tìm dùi trống và cờ hiệu ở cánh gà, gõ trống hội giữa sân rồi chọn cách giúp một bạn mới đứng lẻ loi.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Thỏ Măng Non",
+    "where": "Trường: hiên hội trường, cột cờ, cánh gà, giữa sân, hàng ghế đầu",
+    "goal": "Giúp Thỏ dẫn đầu đội nghi thức trong lễ khai giảng",
+    "play": "Xếp thứ tự buổi lễ; tìm đồ theo lời tả; gõ trống hội; chọn cách giúp bạn mới",
+    "learn": "Kể theo trình tự, đọc hiểu lời tả",
+    "reward": "75 XP, 20 Xu, Skill XP Kể chuyện, Đọc hiểu, Tàu bay giấy",
+    "next": "Đội nghi thức có thêm thành viên mới"
+  },
+  "phases": {
+    "hook": "sang-khai-giang",
+    "explore": "thu-tu-buoi-le",
+    "learn": "do-chi-huy",
+    "challenge": "go-trong-hoi",
+    "decision": "ban-moi-le-loi",
+    "finale": "ban-moi-le-loi",
+    "reward": "chi-huy-doi-nghi-thuc",
+    "next": "thanh-vien-moi"
+  },
+  "places": {
+    "tho-mang-non": "Hiên hội trường",
+    "st-tho-doi-nghi-thuc-bang-thu-tu-le": "Cột cờ",
+    "do-chi-huy": "Cánh gà",
+    "st-tho-doi-nghi-thuc-doi-dui-trong": "Cánh gà",
+    "st-tho-doi-nghi-thuc-co-hieu-chi-huy": "Cánh gà",
+    "st-tho-doi-nghi-thuc-khan-quang-thu-sau": "Cánh gà",
+    "st-tho-doi-nghi-thuc-trong-giua-san": "Giữa sân",
+    "st-tho-doi-nghi-thuc-hang-ghe-dau": "Hàng ghế đầu"
+  },
+  "steps": [
+    {
+      "id": "sang-khai-giang",
+      "title": "Sáng khai giảng",
+      "goTo": "Tới hiên hội trường, Thỏ Măng Non đang thắt khăn quàng lần thứ sáu",
+      "kind": "dialogue",
+      "target": "tho-mang-non",
+      "lines": [
+        {
+          "speaker": "Thỏ Măng Non",
+          "text": "Ba… hai… một… Tớ đếm ngược từ năm giờ sáng tới giờ! {name}, tớ là chỉ huy đội nghi thức rồi!"
+        },
+        {
+          "speaker": "Thỏ Măng Non",
+          "text": "Mà tớ run quá. Lỡ quên thứ tự buổi lễ thì sao? Lỡ đánh rơi dùi trống thì sao?"
+        },
+        {
+          "speaker": "Thỏ Măng Non",
+          "text": "Cậu đi cùng tớ nhé. Có bạn bên cạnh, tớ chẳng sợ gì hết."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ ở ngay đây, cùng làm nhé!",
+          "reply": "Ba, hai, một… đi thôi!"
+        },
+        {
+          "text": "Cậu đã tập rất chăm rồi mà.",
+          "reply": "Ừ nhỉ! Một trăm bước không lệch nhịp nào!"
+        }
+      ],
+      "en": {
+        "title": "Opening morning",
+        "goTo": "Go to the hall porch, where Thỏ Măng Non is tying her scarf for the sixth time",
+        "lines": [
+          "Three… two… one… I've been counting down since five this morning! {name}, I'm the honour guard leader!",
+          "But I'm shaking. What if I forget the order of the ceremony? What if I drop the drumsticks?",
+          "Come with me? With a friend beside me, I'm not afraid of anything."
+        ],
+        "choices": [
+          {
+            "text": "I'm right here; let's do it together!",
+            "reply": "Three, two, one… let's go!"
+          },
+          {
+            "text": "You've practised so hard.",
+            "reply": "That's true! A hundred steps without missing a beat!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "thu-tu-buoi-le",
+      "title": "Thứ tự buổi lễ",
+      "goTo": "Ra cột cờ xếp lại bảng thứ tự buổi lễ",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-tho-doi-nghi-thuc-bang-thu-tu-le",
+      "skill": "ke-chuyen",
+      "prompt": "Bảng ở cột cờ bị gió thổi lộn xộn. Xếp lại các phần của lễ khai giảng theo đúng thứ tự:",
+      "items": [
+        {
+          "id": "chao-co",
+          "label": "Chào cờ"
+        },
+        {
+          "id": "danh-trong",
+          "label": "Đánh trống khai giảng"
+        },
+        {
+          "id": "tien-vao",
+          "label": "Đội nghi thức tiến vào sân"
+        },
+        {
+          "id": "doc-thu",
+          "label": "Thầy hiệu trưởng đọc thư chúc mừng"
+        }
+      ],
+      "answer": {
+        "order": [
+          "tien-vao",
+          "chao-co",
+          "doc-thu",
+          "danh-trong"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Đội nghi thức phải vào sân trước thì buổi lễ mới bắt đầu.",
+          "Tiếng trống khai giảng là phần cuối."
+        ],
+        "hint": "Tiến vào → chào cờ → đọc thư → đánh trống.",
+        "answer": {
+          "text": "Tiến vào, chào cờ, đọc thư, đánh trống",
+          "explanation": "Đội nghi thức tiến vào mở đầu, rồi cả trường chào cờ, thầy hiệu trưởng đọc thư chúc mừng, cuối cùng đánh trống khai giảng năm học mới."
+        },
+        "en": {
+          "guide": [
+            "The honour guard must march in before the ceremony can begin.",
+            "The opening drum is the final part."
+          ],
+          "hint": "March in → salute → letter → drum.",
+          "answer": {
+            "text": "March in, salute, the letter, the drum",
+            "explanation": "The honour guard opens by marching in, then everyone salutes the flag, the head teacher reads his letter, and finally the drum opens the new school year."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng thứ tự! Thỏ thì thầm đọc lại một lượt cho thuộc.",
+          "{name} nhớ buổi lễ rõ như đã dự cả trăm lần.",
+          "Bảng thứ tự xong rồi. Thỏ hết run một nửa!"
+        ],
+        "wrong": [
+          "Chưa có đội nghi thức vào sân thì chưa chào cờ được đâu.",
+          "Tiếng trống khai giảng là để kết thúc phần lễ, để cuối nhé.",
+          "Ba, hai, một… nghĩ xem phần nào mở đầu buổi lễ."
+        ],
+        "en": {
+          "right": [
+            "Right order! Thỏ whispers it through once to remember.",
+            "You know the ceremony as if you'd been to a hundred, {name}.",
+            "The programme is fixed. Thỏ's shaking is half gone!"
+          ],
+          "wrong": [
+            "You can't salute before the guard has marched in.",
+            "The opening drum closes the ceremony; put it last.",
+            "Three, two, one… think which part opens the ceremony."
+          ]
+        }
+      },
+      "en": {
+        "title": "The ceremony programme",
+        "goTo": "Go to the flagpole to fix the ceremony board",
+        "prompt": "The board at the flagpole got jumbled by the wind. Put the parts of the opening ceremony back in order:",
+        "items": [
+          "Salute the flag",
+          "Beat the opening drum",
+          "The honour guard marches in",
+          "The head teacher reads a letter of good wishes"
+        ]
+      }
+    },
+    {
+      "id": "do-chi-huy",
+      "title": "Đồ của chỉ huy",
+      "goTo": "Vào cánh gà sân khấu tìm dùi trống, cờ hiệu và khăn quàng",
+      "kind": "find-object",
+      "prompt": "Đồ của chỉ huy để lẫn sau cánh gà. Đọc lời tả rồi tìm từng món:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "dui",
+          "name": "Đôi dùi trống",
+          "clue": "Hai thanh gỗ nâu bóng, đầu bọc vải đỏ, cầm vừa tay một bạn nhỏ.",
+          "target": "st-tho-doi-nghi-thuc-doi-dui-trong"
+        },
+        {
+          "id": "cohieu",
+          "name": "Cờ hiệu chỉ huy",
+          "clue": "Nền xanh, viền vàng, giữa thêu ngôi sao, cán dài hơn cờ thường.",
+          "target": "st-tho-doi-nghi-thuc-co-hieu-chi-huy"
+        },
+        {
+          "id": "khan3",
+          "name": "Chiếc khăn quàng thứ sáu",
+          "clue": "Đỏ thắm, còn nếp gấp mới tinh vì Thỏ vừa thắt đi thắt lại.",
+          "target": "st-tho-doi-nghi-thuc-khan-quang-thu-sau"
+        }
+      ],
+      "en": {
+        "title": "The leader's kit",
+        "goTo": "Go backstage to find the drumsticks, the leader's flag and the scarf",
+        "prompt": "The leader's things are mixed up backstage. Read each description and find them:",
+        "items": [
+          {
+            "name": "The drumsticks",
+            "clue": "Two polished brown sticks with red cloth tips, just right for small hands."
+          },
+          {
+            "name": "The leader's flag",
+            "clue": "Blue with a gold border and a star in the middle, on a longer stick than usual."
+          },
+          {
+            "name": "The sixth scarf",
+            "clue": "Bright red with fresh creases, because Thỏ kept retying it."
+          }
+        ]
+      }
+    },
+    {
+      "id": "go-trong-hoi",
+      "title": "Tiếng trống khai giảng",
+      "goTo": "Ra giữa sân, nơi đặt chiếc trống khai giảng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-tho-doi-nghi-thuc-trong-giua-san",
+      "prompt": "Tới phần đánh trống rồi! Gõ đúng nhịp cùng Thỏ, ghi hai mươi bốn điểm nhé!",
+      "game": "drum-beat",
+      "goal": 24,
+      "en": {
+        "title": "The opening drumbeat",
+        "goTo": "Go to the middle of the yard, where the opening drum stands",
+        "prompt": "It's drum time! Beat in time with Thỏ and score twenty-four points!"
+      }
+    },
+    {
+      "id": "ban-moi-le-loi",
+      "title": "Bạn mới lẻ loi",
+      "goTo": "Ra hàng ghế đầu, nơi một bạn mới đang đứng một mình",
+      "kind": "decision",
+      "target": "st-tho-doi-nghi-thuc-hang-ghe-dau",
+      "speaker": "Thỏ Măng Non",
+      "prompt": "Lễ xong, cả trường ùa đi chơi. Một bạn mới chuyển trường đứng một mình cạnh hàng ghế đầu, mắt nhìn theo các bạn. Thỏ khựng lại, nhìn {name}.",
+      "choices": [
+        {
+          "id": "moi-vao-doi",
+          "text": "Mời bạn vào đội nghi thức tập cùng",
+          "consequence": "Thỏ chìa tay: «Ba, hai, một… vào đội nhé!» Bạn mới cười tươi, bước theo nhịp trống."
+        },
+        {
+          "id": "tang-co",
+          "text": "Tặng bạn lá cờ đội nhỏ làm quà làm quen",
+          "consequence": "Bạn mới cầm cờ, phất thật cao. Từ hôm ấy, giờ ra chơi nào bạn cũng chạy tới tìm Thỏ."
+        },
+        {
+          "id": "choi-cung",
+          "text": "Rủ bạn chơi trò mà cả nhóm đang chơi",
+          "consequence": "Thỏ nắm tay bạn kéo vào vòng chơi. Không ai bị bỏ lại, Thỏ thấy lòng ấm hẳn."
+        }
+      ],
+      "en": {
+        "title": "The new pupil alone",
+        "goTo": "Go to the front row, where a new pupil is standing alone",
+        "prompt": "After the ceremony, everyone rushes off to play. A new pupil stands alone by the front row, watching the others leave. Thỏ stops and looks at {name}.",
+        "choices": [
+          {
+            "text": "Invite them to practise with the honour guard",
+            "consequence": "Thỏ holds out a hand: \"Three, two, one… join the guard!\" The new pupil beams and steps to the drum."
+          },
+          {
+            "text": "Give them the little team flag as a welcome gift",
+            "consequence": "The new pupil waves the flag high. From then on, they run to find Thỏ every break time."
+          },
+          {
+            "text": "Invite them into the game everyone is playing",
+            "consequence": "Thỏ takes their hand and pulls them into the circle. Nobody is left out, and Thỏ feels warm inside."
+          }
+        ]
+      }
+    },
+    {
+      "id": "chi-huy-doi-nghi-thuc",
+      "title": "Chỉ huy đội nghi thức",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thỏ tặng {name} chiếc tàu bay giấy gấp từ tờ chương trình lễ khai giảng: «Bay cao như ước mơ của tụi mình!»",
+      "en": {
+        "title": "Honour guard leader",
+        "text": "Thỏ gives {name} a paper plane folded from the ceremony programme: \"Fly as high as our dreams!\""
+      }
+    },
+    {
+      "id": "thanh-vien-moi",
+      "title": "Thành viên mới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đội nghi thức có thêm một bạn mới. Thỏ bảo đội phải tập thêm một bài đi đều cho đủ mười sáu bạn, và Thỏ cần {name} đếm nhịp.",
+      "en": {
+        "title": "A new member",
+        "text": "The honour guard has a new member. Thỏ says they need a new marching drill for sixteen, and she needs {name} to count the beat."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 75,
+    "coin": 20,
+    "skillXp": {
+      "ke-chuyen": 1,
+      "doc-hieu": 1
+    },
+    "items": {
+      "tau-bay-giay": 1
+    }
+  },
+  "en": {
+    "title": "Thỏ Măng Non's story, chapter 3: The opening ceremony",
+    "summary": "The opening ceremony has arrived and Thỏ Măng Non leads the honour guard. {name} orders the ceremony programme, finds the drumsticks and the leader's flag backstage, plays the festival drum in the middle of the yard and decides how to help a new pupil standing alone."
+  }
+}

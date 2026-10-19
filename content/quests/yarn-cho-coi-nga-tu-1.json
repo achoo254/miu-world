@@ -1,0 +1,385 @@
+{
+  "id": "yarn-cho-coi-nga-tu-1",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Chuyện của Chó Cảnh Sát Còi, chương 1: Đếm xe buổi sáng",
+  "status": "active",
+  "category": "story",
+  "summary": "Chó Cảnh Sát Còi muốn có một ngày không kẹt xe. {name} nhặt đồ Chó đánh rơi, đọc bảng đếm xe, tính số xe buýt và ô tô, chọn chỗ dựng biển «Đi chậm» rồi tập qua đường an toàn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Chó Cảnh Sát Còi",
+    "where": "Quảng trường: ngã tư, bồn hoa, bảng nhiệm vụ, cầu, trước cửa hàng",
+    "goal": "Tìm hiểu giờ nào ngã tư đông xe nhất",
+    "play": "Tìm đồ theo lời tả; chọn giờ đông xe; tính số xe; chọn chỗ dựng biển; chơi qua đường",
+    "learn": "So sánh số, phép trừ có nhớ trong phạm vi 100",
+    "reward": "60 XP, 15 Xu, Skill XP So sánh số, Phép trừ",
+    "next": "Đàn vịt cứ qua đường sai chỗ"
+  },
+  "phases": {
+    "hook": "ke-hoach-cua-cho",
+    "explore": "nhat-do-roi",
+    "learn": "gio-dong-xe",
+    "challenge": "dem-xe-buyt",
+    "decision": "cho-dat-bien",
+    "finale": "tap-qua-duong",
+    "reward": "so-dau-tien",
+    "next": "dan-vit-qua-duong"
+  },
+  "places": {
+    "cho-canh-sat-coi": "Ngã tư",
+    "nhat-do-roi": "Bồn hoa",
+    "st-cho-coi-nga-tu-coi-du-phong": "Bồn hoa",
+    "st-cho-coi-nga-tu-so-ghi-xe": "Bồn hoa",
+    "st-cho-coi-nga-tu-gang-tay-trang": "Bồn hoa",
+    "st-cho-coi-nga-tu-bang-dem-xe": "Bảng nhiệm vụ",
+    "st-cho-coi-nga-tu-tram-dem-cau": "Cầu trung tâm",
+    "st-cho-coi-nga-tu-bien-di-cham": "Trước cửa hàng"
+  },
+  "steps": [
+    {
+      "id": "ke-hoach-cua-cho",
+      "title": "Kế hoạch của Chó",
+      "goTo": "Tới ngã tư dưới tháp đồng hồ, Chó Cảnh Sát Còi đang thổi còi",
+      "kind": "dialogue",
+      "target": "cho-canh-sat-coi",
+      "lines": [
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "Dừng! Nhìn! Đi! À, chào {name}. Sáng nay ngã tư kẹt ba lần. Ba lần! Bữa trưa của Chó lại nguội ngắt."
+        },
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "Chó muốn có một ngày không kẹt xe nào. Muốn thế thì phải biết giờ nào đông xe nhất."
+        },
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "Mà lúc chạy theo xe buýt, Chó làm rơi đồ ở bồn hoa. Leng keng mất một tiếng. Nhặt giúp Chó nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đi nhặt ngay!",
+          "reply": "Nhớ đi trên vỉa hè. Luật là luật."
+        },
+        {
+          "text": "Leng keng là tiếng gì vậy chú?",
+          "reply": "Còi dự phòng trong túi áo. Cẩn thận chẳng thừa đâu."
+        }
+      ],
+      "en": {
+        "title": "Chó's plan",
+        "goTo": "Go to the crossroads below the clock tower, where Chó Cảnh Sát Còi is blowing his whistle",
+        "lines": [
+          "Stop! Look! Go! Oh, hello {name}. The crossroads jammed three times this morning. Three! My lunch went stone cold again.",
+          "I want one day with no jams at all. For that, we need to know which hours are busiest.",
+          "And while chasing a bus I dropped some things by the flowerbed. One jingle went missing. Pick them up for me?"
+        ],
+        "choices": [
+          {
+            "text": "On it, I'll gather them!",
+            "reply": "Stay on the pavement. Rules are rules."
+          },
+          {
+            "text": "What makes the jingle?",
+            "reply": "Spare whistles in my pocket. You can never be too careful."
+          }
+        ]
+      }
+    },
+    {
+      "id": "nhat-do-roi",
+      "title": "Nhặt đồ Chó đánh rơi",
+      "goTo": "Ra bồn hoa tìm đồ Chó đánh rơi",
+      "kind": "find-object",
+      "prompt": "Ba món rơi lẫn trong bồn hoa. Đọc lời tả rồi tìm từng món:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "coi",
+          "name": "Chiếc còi bạc",
+          "clue": "Sáng bóng, nhỏ bằng ngón tay, đầu có sợi dây đỏ thắt nơ.",
+          "target": "st-cho-coi-nga-tu-coi-du-phong"
+        },
+        {
+          "id": "so",
+          "name": "Sổ ghi số xe",
+          "clue": "Bìa xanh dương, trang nào cũng kẻ ô vuông và đầy những vạch đếm.",
+          "target": "st-cho-coi-nga-tu-so-ghi-xe"
+        },
+        {
+          "id": "gang",
+          "name": "Đôi găng tay trắng",
+          "clue": "Trắng tinh, gấp đôi gọn gàng, ngón trỏ hơi sờn vì chỉ đường nhiều.",
+          "target": "st-cho-coi-nga-tu-gang-tay-trang"
+        }
+      ],
+      "en": {
+        "title": "Picking up Chó's things",
+        "goTo": "Go to the flowerbed to find what Chó dropped",
+        "prompt": "Three things fell among the flowers. Read each description and find them:",
+        "items": [
+          {
+            "name": "The silver whistle",
+            "clue": "Shiny and finger-sized, with a red cord tied in a bow at one end."
+          },
+          {
+            "name": "The traffic notebook",
+            "clue": "A navy cover; every page is squared and full of tally marks."
+          },
+          {
+            "name": "The white gloves",
+            "clue": "Snow white, folded neatly, the pointing fingers a little worn from directing traffic."
+          }
+        ]
+      }
+    },
+    {
+      "id": "gio-dong-xe",
+      "title": "Giờ nào đông xe?",
+      "goTo": "Tới bảng nhiệm vụ, nơi Chó dán bảng đếm xe",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-cho-coi-nga-tu-bang-dem-xe",
+      "skill": "so-sanh-so",
+      "prompt": "Bảng đếm xe ghi: 7 giờ có 45 xe, 8 giờ có 28 xe, 9 giờ có 33 xe, 10 giờ có 19 xe. Chọn những khung giờ có hơn 30 xe qua ngã tư:",
+      "choices": [
+        {
+          "id": "bay",
+          "text": "7 giờ: 45 xe"
+        },
+        {
+          "id": "tam",
+          "text": "8 giờ: 28 xe"
+        },
+        {
+          "id": "chin",
+          "text": "9 giờ: 33 xe"
+        },
+        {
+          "id": "muoi",
+          "text": "10 giờ: 19 xe"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "bay",
+          "chin"
+        ]
+      },
+      "support": {
+        "guide": [
+          "So từng số với 30: số nào lớn hơn 30?",
+          "Nhìn chữ số hàng chục trước: 4 chục và 3 chục ba đơn vị đều hơn 3 chục."
+        ],
+        "hint": "45 > 30, 33 > 30, còn 28 và 19 thì sao?",
+        "answer": {
+          "text": "Lúc 7 giờ và 9 giờ",
+          "explanation": "45 > 30 và 33 > 30, còn 28 < 30 và 19 < 30, nên chỉ 7 giờ và 9 giờ có hơn 30 xe."
+        },
+        "en": {
+          "guide": [
+            "Compare each number with 30: which are bigger?",
+            "Look at the tens first: 4 tens, and 3 tens with 3 ones, are both more than 3 tens."
+          ],
+          "hint": "45 > 30 and 33 > 30; what about 28 and 19?",
+          "answer": {
+            "text": "At 7 and at 9 o'clock",
+            "explanation": "45 > 30 and 33 > 30, while 28 < 30 and 19 < 30, so only 7 and 9 o'clock have more than 30 vehicles."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tuýt! Đúng hai giờ cao điểm. Chó khoanh tròn vào sổ.",
+          "{name} so số nhanh như đèn chuyển màu.",
+          "Biết giờ đông là biết lúc nào phải đứng vững. Giỏi lắm."
+        ],
+        "wrong": [
+          "Hai mươi tám chưa tới ba mươi đâu. Bỏ ra nhé.",
+          "Còn một giờ đông nữa chưa chọn. Nhìn lại bảng.",
+          "Dừng! Nhìn chữ số hàng chục trước, rồi mới tới hàng đơn vị."
+        ],
+        "en": {
+          "right": [
+            "Whistle! Exactly the two rush hours. Chó circles them in the notebook.",
+            "You compare numbers as fast as a light changes, {name}.",
+            "Know the busy hours, know when to stand firm. Well done."
+          ],
+          "wrong": [
+            "Twenty-eight hasn't reached thirty. Leave it out.",
+            "There's another busy hour you haven't picked. Check the board again.",
+            "Stop! Look at the tens first, then the ones."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which hours are busy?",
+        "goTo": "Go to the quest board, where Chó posted the traffic count",
+        "prompt": "The traffic board says: 7 o'clock, 45 vehicles; 8 o'clock, 28; 9 o'clock, 33; 10 o'clock, 19. Pick the hours with more than 30 vehicles at the crossroads:",
+        "choices": [
+          "7 o'clock: 45",
+          "8 o'clock: 28",
+          "9 o'clock: 33",
+          "10 o'clock: 19"
+        ]
+      }
+    },
+    {
+      "id": "dem-xe-buyt",
+      "title": "Bao nhiêu xe buýt và ô tô?",
+      "goTo": "Ra chòi đếm xe ở đầu cầu trung tâm",
+      "kind": "riddle",
+      "target": "st-cho-coi-nga-tu-tram-dem-cau",
+      "skill": "phep-tru",
+      "question": "Từ 7 giờ đến 8 giờ có 45 xe qua ngã tư. Trong đó có 27 xe đạp, còn lại là xe buýt và ô tô. Có bao nhiêu xe buýt và ô tô?",
+      "answer": {
+        "value": 18
+      },
+      "support": {
+        "guide": [
+          "Lấy tất cả số xe trừ đi số xe đạp: 45 − 27.",
+          "5 không trừ được 7: mượn một chục, 15 − 7 = 8."
+        ],
+        "hint": "Còn 3 chục bớt 2 chục là mấy chục?",
+        "answer": {
+          "text": "18 xe buýt và ô tô",
+          "explanation": "45 − 27 = 18: 15 − 7 = 8, rồi 3 chục − 2 chục = 1 chục, vậy là 18 chiếc."
+        },
+        "en": {
+          "guide": [
+            "Take all the vehicles minus the bicycles: 45 − 27.",
+            "5 take away 7 won't go: borrow a ten, 15 − 7 = 8."
+          ],
+          "hint": "Then 3 tens minus 2 tens is how many tens?",
+          "answer": {
+            "text": "18 buses and cars",
+            "explanation": "45 − 27 = 18: 15 − 7 = 8, then 3 tens − 2 tens = 1 ten, so 18 vehicles."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười tám! Chó ghi vào sổ, nét chữ thẳng như vạch kẻ đường.",
+          "Trừ có nhớ gọn gàng, {name} làm cảnh sát số học được rồi.",
+          "Đúng rồi. Ít xe to hơn xe đạp nhiều, Chó yên tâm phần nào."
+        ],
+        "wrong": [
+          "Hàng đơn vị không đủ trừ, nhớ mượn một chục nhé.",
+          "Thử cộng ngược lại: số ấy cộng 27 có ra 45 không?",
+          "Chưa khớp sổ. Tuýt nhẹ một tiếng, mời {name} tính lại."
+        ],
+        "en": {
+          "right": [
+            "Eighteen! Chó writes it down in letters straight as road markings.",
+            "Neat borrowing, {name}; you could be a maths officer.",
+            "Right. Far fewer big vehicles than bikes; that eases my mind a little."
+          ],
+          "wrong": [
+            "The ones won't subtract alone; remember to borrow a ten.",
+            "Check it backwards: does that number plus 27 make 45?",
+            "That doesn't match the notebook. A soft whistle: try again, {name}."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many buses and cars?",
+        "goTo": "Go to the counting post at the end of the central bridge",
+        "question": "Between 7 and 8 o'clock, 45 vehicles passed the crossroads. 27 of them were bicycles and the rest were buses and cars. How many buses and cars were there?"
+      }
+    },
+    {
+      "id": "cho-dat-bien",
+      "title": "Dựng biển ở đâu?",
+      "goTo": "Vác biển ra trước cửa hàng",
+      "kind": "decision",
+      "target": "st-cho-coi-nga-tu-bien-di-cham",
+      "speaker": "Chó Cảnh Sát Còi",
+      "prompt": "Chó vác tấm biển «Đi chậm» ra trước cửa hàng: «Một biển thôi. Chỗ nào cần nhất?»",
+      "choices": [
+        {
+          "id": "truoc-cua-hang",
+          "text": "Ngay trước cửa hàng, chỗ người đi bộ đông",
+          "consequence": "Xe tới gần cửa hàng đều chậm lại. Các bạn nhỏ xách túi quà đi qua thong thả."
+        },
+        {
+          "id": "dau-cau",
+          "text": "Ở đầu cầu, trước khi xe vào quảng trường",
+          "consequence": "Xe từ cầu xuống chậm hẳn. Chó gật đầu: «Chặn từ đầu nguồn. Hay.»"
+        },
+        {
+          "id": "ca-hai",
+          "text": "Xin thêm một biển nữa để dựng cả hai nơi",
+          "consequence": "Chó viết đơn xin thêm biển, chữ to và thẳng. Hôm sau có hai tấm biển mới tinh."
+        }
+      ],
+      "en": {
+        "title": "Where should the sign go?",
+        "goTo": "Carry the sign to the front of the shops",
+        "prompt": "Chó carries the \"Slow down\" sign to the shopfront: \"Just one sign. Where is it needed most?\"",
+        "choices": [
+          {
+            "text": "Right in front of the shops, where walkers crowd",
+            "consequence": "Every vehicle slows near the shops. Children with gift bags stroll across at ease."
+          },
+          {
+            "text": "At the bridge end, before traffic enters the square",
+            "consequence": "Traffic off the bridge slows right down. Chó nods: \"Stop it at the source. Smart.\""
+          },
+          {
+            "text": "Ask for a second sign and put one in each place",
+            "consequence": "Chó writes a request for another sign in big straight letters. The next day there are two brand-new signs."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tap-qua-duong",
+      "title": "Tập qua đường an toàn",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-cho-coi-nga-tu-bien-di-cham",
+      "prompt": "Dừng, nhìn, rồi mới đi! Đưa bạn nhỏ qua đường và qua sông an toàn hai lượt nhé.",
+      "game": "road-cross",
+      "goal": 2,
+      "en": {
+        "title": "Practising safe crossing",
+        "prompt": "Stop, look, then go! Get the little one safely across the road and the river twice."
+      }
+    },
+    {
+      "id": "so-dau-tien",
+      "title": "Trang sổ đầu tiên",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chó xé tặng {name} một tấm thẻ vẽ chiếc còi: «Trợ lý giao thông. Có hiệu lực mãi mãi.»",
+      "en": {
+        "title": "The first notebook page",
+        "text": "Chó gives {name} a card with a whistle drawn on it: \"Traffic assistant. Valid forever.\""
+      }
+    },
+    {
+      "id": "dan-vit-qua-duong",
+      "title": "Đàn vịt qua đường",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ngày mai có một đàn vịt hay đi tắt qua quảng trường, xe nào cũng phải phanh gấp. Chó cần {name} giúp dẫn chúng đi đúng lối.",
+      "en": {
+        "title": "The duck crossing",
+        "text": "Tomorrow a family of ducks will take its usual shortcut across the square, making every driver brake hard. Chó needs {name} to help guide them the right way."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": {
+      "so-sanh-so": 1,
+      "phep-tru": 1
+    }
+  },
+  "en": {
+    "title": "Chó Cảnh Sát Còi's story, chapter 1: Counting the morning traffic",
+    "summary": "Chó Cảnh Sát Còi wants a day without traffic jams. {name} gathers what Chó dropped, reads the traffic count, works out the buses and cars, chooses where to put a \"Slow down\" sign and practises crossing safely."
+  }
+}

@@ -1,0 +1,323 @@
+{
+  "id": "yarn-cho-coi-nga-tu-5",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Chuyện của Chó Cảnh Sát Còi, chương 5: Đèn trên cùng là dừng",
+  "status": "active",
+  "category": "story",
+  "summary": "Cột đèn giao thông mới lắp ngược, và Chó Cảnh Sát Còi kể cho {name} bí mật của mình. {name} tìm ba nắp đèn, lắp lại đúng thứ tự, chơi trò đứng im giữa quảng trường rồi cùng Chó đón ngày không kẹt xe.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Chó Cảnh Sát Còi",
+    "where": "Quảng trường: ngã tư, kho dụng cụ, cột đèn, giữa quảng trường, ghế đá",
+    "goal": "Lắp lại đèn giao thông cho đúng và có một ngày không kẹt xe",
+    "play": "Tìm nắp đèn theo lời tả; xếp đèn từ trên xuống; chơi một hai ba đứng im; chọn cách ăn bữa trưa",
+    "learn": "Đọc hiểu lời tả vị trí, sắp xếp theo thứ tự",
+    "reward": "85 XP, 25 Xu, Skill XP Đọc hiểu, Logic, Chuông xe đạp",
+    "next": "Chó muốn dạy các bạn nhỏ luật đi đường"
+  },
+  "phases": {
+    "hook": "bi-mat-cua-cho",
+    "explore": "tim-nap-den",
+    "learn": "lap-den",
+    "challenge": "dung-im",
+    "decision": "bua-trua-cuoi",
+    "finale": "bua-trua-cuoi",
+    "reward": "mot-ngay-khong-ket-xe",
+    "next": "lop-hoc-luat-duong"
+  },
+  "places": {
+    "cho-canh-sat-coi": "Ngã tư",
+    "tim-nap-den": "Kho dụng cụ",
+    "st-cho-coi-nga-tu-nap-den-do": "Kho dụng cụ",
+    "st-cho-coi-nga-tu-nap-den-vang": "Kho dụng cụ",
+    "st-cho-coi-nga-tu-nap-den-xanh": "Kho dụng cụ",
+    "st-cho-coi-nga-tu-cot-den-moi": "Cột đèn",
+    "st-cho-coi-nga-tu-vach-dung-quang-truong": "Quảng trường",
+    "st-cho-coi-nga-tu-ghe-da-an-trua": "Ghế đá"
+  },
+  "steps": [
+    {
+      "id": "bi-mat-cua-cho",
+      "title": "Bí mật của Chó",
+      "goTo": "Tới ngã tư, Chó Cảnh Sát Còi đang nhìn cột đèn mới, mặt nhăn lại",
+      "kind": "dialogue",
+      "target": "cho-canh-sat-coi",
+      "lines": [
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "{name}, lại đây. Chuyện này Chó chưa kể với ai, kể cả Bác Hải."
+        },
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "Chó không phân biệt được màu đỏ với màu xanh lá. Trong mắt Chó, hai màu ấy giống hệt nhau."
+        },
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "Chó nhớ đèn theo vị trí: đèn trên cùng là dừng, dưới cùng là đi. Mà sáng nay thợ lắp đèn mới… lắp ngược. Chó rối hết cả lên."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu giữ bí mật. Mình lắp lại đèn nhé!",
+          "reply": "Cảm ơn {name}. Có bạn hiểu mình, Chó thấy nhẹ cả người."
+        },
+        {
+          "text": "Nhớ theo vị trí thông minh thật đấy chú!",
+          "reply": "Hề hề, Chó cũng nghĩ thế. Nhưng đèn phải đúng chỗ đã."
+        }
+      ],
+      "en": {
+        "title": "Chó's secret",
+        "goTo": "Go to the crossroads, where Chó Cảnh Sát Còi is frowning at the new traffic light",
+        "lines": [
+          "{name}, come here. I've never told anyone this, not even Bác Hải.",
+          "I can't tell red from green. To my eyes, they look exactly the same.",
+          "I remember the lights by position: top means stop, bottom means go. But this morning the workers installed the new light… upside down. I'm all muddled."
+        ],
+        "choices": [
+          {
+            "text": "Your secret's safe. Let's fix the light!",
+            "reply": "Thank you, {name}. Being understood makes me feel so much lighter."
+          },
+          {
+            "text": "Remembering by position is really clever!",
+            "reply": "Heh, I think so too. But the lights must be in the right places first."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-nap-den",
+      "title": "Tìm ba nắp đèn",
+      "goTo": "Vào kho dụng cụ tìm ba nắp đèn",
+      "kind": "find-object",
+      "prompt": "Thợ tháo nắp đèn để lắp lại, để lẫn trong kho dụng cụ. Đọc lời tả rồi tìm từng nắp:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "do",
+          "name": "Nắp đèn đỏ",
+          "clue": "Đỏ như quả ớt chín, có dán mẩu giấy ghi chữ «trên cùng».",
+          "target": "st-cho-coi-nga-tu-nap-den-do"
+        },
+        {
+          "id": "vang",
+          "name": "Nắp đèn vàng",
+          "clue": "Vàng như lòng trứng, mẩu giấy dán trên đó ghi «ở giữa».",
+          "target": "st-cho-coi-nga-tu-nap-den-vang"
+        },
+        {
+          "id": "xanh",
+          "name": "Nắp đèn xanh lá",
+          "clue": "Xanh như lá chuối non, mẩu giấy ghi «dưới cùng».",
+          "target": "st-cho-coi-nga-tu-nap-den-xanh"
+        }
+      ],
+      "en": {
+        "title": "Finding the three lamp covers",
+        "goTo": "Go into the tool store to find the three lamp covers",
+        "prompt": "The workers took off the lamp covers to refit them and left them in the tool store. Read each description and find them:",
+        "items": [
+          {
+            "name": "The red cover",
+            "clue": "Red as a ripe chilli, with a note stuck on it saying \"top\"."
+          },
+          {
+            "name": "The yellow cover",
+            "clue": "Yellow as an egg yolk, labelled \"middle\"."
+          },
+          {
+            "name": "The green cover",
+            "clue": "Green as a young banana leaf, labelled \"bottom\"."
+          }
+        ]
+      }
+    },
+    {
+      "id": "lap-den",
+      "title": "Lắp đèn từ trên xuống",
+      "goTo": "Mang ba nắp đèn ra cột đèn ở góc ngã tư",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-cho-coi-nga-tu-cot-den-moi",
+      "skill": "logic",
+      "prompt": "Lắp ba nắp đèn vào cột theo thứ tự từ trên cùng xuống dưới cùng, đúng như mẩu giấy ghi:",
+      "items": [
+        {
+          "id": "vang",
+          "label": "Nắp vàng: ở giữa"
+        },
+        {
+          "id": "xanh",
+          "label": "Nắp xanh lá: dưới cùng"
+        },
+        {
+          "id": "do",
+          "label": "Nắp đỏ: trên cùng"
+        }
+      ],
+      "answer": {
+        "order": [
+          "do",
+          "vang",
+          "xanh"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Đọc chữ trên mẩu giấy của từng nắp.",
+          "Trên cùng, ở giữa, dưới cùng."
+        ],
+        "hint": "Đèn dừng ở trên, đèn đi ở dưới.",
+        "answer": {
+          "text": "Đỏ, vàng, xanh lá",
+          "explanation": "Nắp đỏ ghi «trên cùng», nắp vàng ghi «ở giữa», nắp xanh lá ghi «dưới cùng», nên lắp đỏ, vàng, xanh lá từ trên xuống."
+        },
+        "en": {
+          "guide": [
+            "Read the note on each cover.",
+            "Top, middle, bottom."
+          ],
+          "hint": "Stop is at the top, go is at the bottom.",
+          "answer": {
+            "text": "Red, yellow, green",
+            "explanation": "The red cover says \"top\", yellow \"middle\" and green \"bottom\", so from top to bottom: red, yellow, green."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đèn đỏ trên cùng! Chó nhìn lên, thở phào: «Trên cùng là dừng. Đúng rồi.»",
+          "{name} lắp đèn chuẩn từng nấc, thợ lắp đèn cũng phải khen.",
+          "Cột đèn đứng thẳng, ba màu đúng chỗ. Ngã tư lại bình yên."
+        ],
+        "wrong": [
+          "Nắp ấy ghi «dưới cùng» mà, đâu thể lắp trên cùng.",
+          "Vàng luôn nằm giữa hai đèn kia, {name} xếp lại nhé.",
+          "Đọc lại mẩu giấy trên nắp đỏ xem nó muốn ở đâu."
+        ],
+        "en": {
+          "right": [
+            "Red at the top! Chó looks up and sighs with relief: \"Top means stop. Right.\"",
+            "You fitted every light exactly; even the workers would approve, {name}.",
+            "The pole stands tall with three colours in place. The crossroads is calm again."
+          ],
+          "wrong": [
+            "That cover says \"bottom\"; it can't go on top.",
+            "Yellow always sits between the other two, {name}; try again.",
+            "Read the note on the red cover again: where does it want to be?"
+          ]
+        }
+      },
+      "en": {
+        "title": "Fitting the lights top to bottom",
+        "goTo": "Carry the three covers to the light pole at the corner of the crossroads",
+        "prompt": "Fit the three covers onto the pole from top to bottom, just as the notes say:",
+        "items": [
+          "Yellow cover: middle",
+          "Green cover: bottom",
+          "Red cover: top"
+        ]
+      }
+    },
+    {
+      "id": "dung-im",
+      "title": "Trò đứng im giữa quảng trường",
+      "goTo": "Ra vạch dừng giữa quảng trường chơi trò đứng im",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-cho-coi-nga-tu-vach-dung-quang-truong",
+      "prompt": "Đèn mới đã sáng! Chó mời cả quảng trường chơi trò đứng im để tập dừng đúng lúc. Ghi hai mươi điểm nhé!",
+      "game": "red-light",
+      "goal": 20,
+      "en": {
+        "title": "Freeze in the square",
+        "goTo": "Go to the stop line in the middle of the square to play freeze",
+        "prompt": "The new light is on! Chó invites the whole square to play freeze and practise stopping on time. Score twenty points!"
+      }
+    },
+    {
+      "id": "bua-trua-cuoi",
+      "title": "Ngày không kẹt xe",
+      "goTo": "Ra ghế đá ăn trưa, tháp đồng hồ sắp điểm mười hai tiếng",
+      "kind": "decision",
+      "target": "st-cho-coi-nga-tu-ghe-da-an-trua",
+      "speaker": "Chó Cảnh Sát Còi",
+      "prompt": "Cả buổi sáng không một vụ kẹt xe. Tháp đồng hồ điểm mười hai tiếng. Chó ngồi xuống ghế đá, mở hộp cơm, nhìn {name}: «Bữa trưa đầu tiên trọn vẹn. Mình làm gì đây?»",
+      "choices": [
+        {
+          "id": "an-tron",
+          "text": "Ngồi ăn thật chậm, nhai thật kỹ",
+          "consequence": "Chó ăn chậm tới mức tháp đồng hồ điểm thêm một tiếng. Lần này Chó không đứng dậy, chỉ thổi còi đáp lại từ ghế."
+        },
+        {
+          "id": "moi-an-cung",
+          "text": "Mời {name} ăn cùng, chia đôi quả chuối",
+          "consequence": "Hai đứa ngồi ghế đá, mỗi người nửa quả chuối. Chó bảo bữa ăn có bạn thì ngon gấp đôi."
+        },
+        {
+          "id": "chia-vit",
+          "text": "Chia ít cơm cho đàn vịt đi ngang",
+          "consequence": "Đàn vịt xếp một hàng thẳng trước ghế, đúng luật. Chó cười lăn: «Đến vịt cũng biết xếp hàng rồi!»"
+        }
+      ],
+      "en": {
+        "title": "The jam-free day",
+        "goTo": "Go to the stone bench for lunch; the clock tower is about to strike twelve",
+        "prompt": "Not a single jam all morning. The clock tower strikes twelve. Chó sits on the stone bench, opens his lunch box and looks at {name}: \"My first whole lunch. What shall we do?\"",
+        "choices": [
+          {
+            "text": "Eat slowly and savour every bite",
+            "consequence": "Chó eats so slowly the tower strikes again. This time he stays seated and whistles back from the bench."
+          },
+          {
+            "text": "Invite {name} to eat together and share the banana",
+            "consequence": "You sit side by side, half a banana each. Chó says a meal with a friend tastes twice as good."
+          },
+          {
+            "text": "Share some rice with the passing ducks",
+            "consequence": "The ducks line up neatly before the bench, by the rules. Chó roars with laughter: \"Even the ducks queue now!\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "mot-ngay-khong-ket-xe",
+      "title": "Một ngày không kẹt xe",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ước mơ của Chó thành thật. Chó tặng {name} chiếc chuông xe đạp sáng loáng: «Đi đâu cũng bấm một tiếng, cho Chó biết {name} đi an toàn.»",
+      "en": {
+        "title": "A day without a jam",
+        "text": "Chó's dream has come true. He gives {name} a shiny bicycle bell: \"Ring it wherever you go, so I know you're riding safely.\""
+      }
+    },
+    {
+      "id": "lop-hoc-luat-duong",
+      "title": "Lớp học luật đi đường",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chó muốn mở một lớp học luật đi đường cho các bạn nhỏ ở quảng trường, và Chó muốn {name} làm trợ giảng đầu tiên.",
+      "en": {
+        "title": "A road-safety class",
+        "text": "Chó wants to start a road-safety class for the little ones on the square, and he wants {name} to be his first assistant teacher."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 85,
+    "coin": 25,
+    "skillXp": {
+      "doc-hieu": 1,
+      "logic": 1
+    },
+    "items": {
+      "chuong-xe-dap": 1
+    }
+  },
+  "en": {
+    "title": "Chó Cảnh Sát Còi's story, chapter 5: Top light means stop",
+    "summary": "The new traffic light was installed upside down, and Chó Cảnh Sát Còi tells {name} his secret. {name} finds the three lamp covers, fits them in the right order, plays freeze in the square and welcomes Chó's jam-free day."
+  }
+}

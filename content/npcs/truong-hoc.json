@@ -793,6 +793,82 @@
           }
         }
       ]
+    },
+    {
+      "id": "ho-coi-giao-huu",
+      "npc": "ho-coi-vang",
+      "title": { "vi": "Trận giao hữu đầu tiên", "en": "The First Friendly Match" },
+      "teaser": { "vi": "Tuýt! Thứ Bảy này đội bóng trường đá trận giao hữu đầu tiên với đội bạn bên kia đồi. Thiếu người, thiếu còi, thiếu cả may mắn. {name} vào đội chứ? Một, hai, chạy!", "en": "Whistle! This Saturday the school team plays its first friendly against the team from over the hill. We're short of players, short of a whistle, short of luck. Join us, {name}? One, two, run!" },
+      "chapters": [
+        {
+          "quest": "yarn-ho-coi-giao-huu-1",
+          "hearts": 0,
+          "letter": {
+            "from": "ho-coi-vang",
+            "title": { "vi": "Tuýt! Đủ mười một!", "en": "Whistle! Eleven!" },
+            "body": { "vi": "{name}! Tối nay anh chạy mười vòng quanh sân vì vui, kẻ đủ mười vạch phấn. Đội có tên rồi, có người rồi. Mai tập. Một, hai, chạy! Anh gửi {name} mấy xu mua nước uống.", "en": "{name}! I ran ten laps of the pitch tonight for joy and chalked all ten lines. We have a name and we have players. Training tomorrow. One, two, run! Here are a few coins for a drink." },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-ho-coi-giao-huu-2",
+          "hearts": 1,
+          "letter": {
+            "from": "be-chan-ga-con",
+            "title": { "vi": "Thư kèm rổ trứng", "en": "A letter with a basket of eggs" },
+            "body": { "vi": "Cậu biết không, {name}? Anh Hổ viết thư kể còi kêu lại rồi, mình mừng tới mức đàn gà kêu cục tác theo! Mình gửi cậu một quả trứng gà ta, ăn cho chân khỏe mà chạy. Cậu biết không, gà nhà mình cũng thích xem bóng đá đấy!", "en": "Guess what, {name}? Hổ wrote that his whistle works again, and I was so happy the hens clucked along! Here's a farm egg for strong running legs. And guess what: my chickens love watching football too!" },
+            "reward": { "coins": 20, "xp": 15, "items": {"trung-ga-ta": 1} }
+          }
+        },
+        {
+          "quest": "yarn-ho-coi-giao-huu-3",
+          "hearts": 2,
+          "letter": {
+            "from": "su-tu-vang",
+            "title": { "vi": "Thư của thầy hiệu trưởng", "en": "From the head teacher" },
+            "body": { "vi": "Hừm, hừm. {name} thân mến, thầy đứng dưới mái hiên xem trọn trận đấu. Thầy chưa thấy đội nào thua mà cười tươi như đội mình. Hổ ngày xưa hay quên giờ ra sân, giờ đã thành huấn luyện viên rồi. Thầy gửi em ít xu, gầm một tiếng khen!", "en": "Hmm, hmm. Dear {name}, I watched the whole match from under the eaves. I've never seen a team lose with such big smiles. Hổ used to forget training times; now he's a coach. Here are a few coins for you, with a little roar of praise!" },
+            "reward": { "coins": 25, "xp": 25, "items": {} }
+          }
+        }
+      ]
+    },
+    {
+      "id": "tho-doi-nghi-thuc",
+      "npc": "tho-mang-non",
+      "title": { "vi": "Ba, hai, một… đội nghi thức!", "en": "Three, Two, One… Honour Guard!" },
+      "teaser": { "vi": "Ba, hai, một! {name} ơi, trường sắp chọn chỉ huy đội nghi thức cho lễ khai giảng. Tớ muốn được đi đầu hàng trống lắm! Giúp tớ chuẩn bị nhé?", "en": "Three, two, one! {name}, the school is about to choose the honour guard leader for the opening ceremony. I so want to lead the drum line! Will you help me get ready?" },
+      "chapters": [
+        {
+          "quest": "yarn-tho-doi-nghi-thuc-1",
+          "hearts": 0,
+          "letter": {
+            "from": "tho-mang-non",
+            "title": { "vi": "Thư viết lúc đếm ngược", "en": "Written during a countdown" },
+            "body": { "vi": "Ba, hai, một! {name} ơi, tối nay tớ tập đi đều trong sân nhà, đếm tới bước thứ một trăm mà không lệch nhịp nào. Cảm ơn cậu đã tìm giúp huy hiệu. Mai thầy ra bài đố, cậu tới sớm nhé!", "en": "Three, two, one! {name}, tonight I practised marching in my yard and reached step one hundred without missing a beat. Thanks for finding my badge. The head teacher sets the riddles tomorrow; come early!" },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-tho-doi-nghi-thuc-2",
+          "hearts": 1,
+          "letter": {
+            "from": "khi-hai-dua",
+            "title": { "vi": "Thư kèm hoa ép", "en": "A letter with a pressed flower" },
+            "body": { "vi": "Úp úp! {name} ơi, Thỏ viết thư báo được chọn làm chỉ huy, tớ nhảy từ ngọn dừa này sang ngọn dừa kia vì mừng. Tớ đố cậu: cái gì càng đếm ngược càng hồi hộp? Là lễ khai giảng của Thỏ đấy! Gửi cậu ít xu, úp úp!", "en": "Oop oop! {name}, Thỏ wrote that she was chosen as leader, and I leapt from one coconut palm to the next for joy. Riddle for you: what gets more exciting the more you count down? Thỏ's opening ceremony! Here are a few coins, oop oop!" },
+            "reward": { "coins": 20, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-tho-doi-nghi-thuc-3",
+          "hearts": 2,
+          "letter": {
+            "from": "ho-coi-vang",
+            "title": { "vi": "Tuýt! Chỉ huy giỏi!", "en": "Whistle! Great leader!" },
+            "body": { "vi": "{name}! Anh đứng ở mép sân bóng xem cả buổi lễ. Thỏ đi đầu, bước thẳng tắp, trống vang rền. Anh thổi còi khen ba tiếng mà quên mất đang giữa lễ. Gửi {name} mấy xu, mai ra sân chạy cùng anh!", "en": "{name}! I watched the whole ceremony from the edge of the pitch. Thỏ led, stepping dead straight, drums rolling. I blew three whistles of praise and forgot it was the middle of a ceremony. Here are a few coins; come and run with me tomorrow!" },
+            "reward": { "coins": 25, "xp": 25, "items": {} }
+          }
+        }
+      ]
     }
   ]
 }

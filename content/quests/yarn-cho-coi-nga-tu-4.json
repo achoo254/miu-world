@@ -1,0 +1,332 @@
+{
+  "id": "yarn-cho-coi-nga-tu-4",
+  "region": "trung-tam",
+  "chapter": 4,
+  "title": "Chuyện của Chó Cảnh Sát Còi, chương 4: Đường rước đèn",
+  "status": "active",
+  "category": "story",
+  "summary": "Chủ nhật có đoàn rước đèn đi qua sân trước cổng thành. {name} giúp Chó Cảnh Sát Còi đặt cọc tiêu, đếm cọc, xếp thứ tự các đoàn và giữ chiếc còi lỡ rơi bên đài phun.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Chó Cảnh Sát Còi",
+    "where": "Ngã tư dưới tháp đồng hồ, sân lát đá, đài phun nhỏ, cổng thành, hàng cột cờ",
+    "goal": "Chuẩn bị đường đi an toàn cho đoàn rước đèn",
+    "play": "Đặt cọc tiêu; đếm cọc; suy luận thứ tự đoàn rước; chọn cách giữ còi",
+    "learn": "Phép cộng trong phạm vi 20, suy luận",
+    "reward": "75 XP, 20 Xu, Skill XP Phép cộng, Logic",
+    "next": "Đèn giao thông mới lắp có gì đó không ổn"
+  },
+  "phases": {
+    "hook": "noi-so-cua-cho",
+    "explore": "dat-coc-tieu",
+    "learn": "dem-coc-tieu",
+    "challenge": "thu-tu-doan-ruoc",
+    "decision": "chiec-coi-roi",
+    "finale": "chiec-coi-roi",
+    "reward": "duong-ruoc-san-sang",
+    "next": "den-giao-thong-moi"
+  },
+  "places": {
+    "cho-canh-sat-coi": "Ngã tư",
+    "dat-coc-tieu": "Sân lát đá",
+    "st-cho-coi-nga-tu-coc-tieu-mot": "Sân lát đá",
+    "st-cho-coi-nga-tu-coc-tieu-hai": "Sân lát đá",
+    "st-cho-coi-nga-tu-coc-tieu-ba": "Sân lát đá",
+    "st-cho-coi-nga-tu-dai-phun-nho": "Đài phun nhỏ",
+    "st-cho-coi-nga-tu-so-do-doan-ruoc": "Cổng thành",
+    "st-cho-coi-nga-tu-cot-co-ruoc": "Hàng cột cờ"
+  },
+  "steps": [
+    {
+      "id": "noi-so-cua-cho",
+      "title": "Nỗi sợ của Chó",
+      "goTo": "Ghé ngã tư, Chó Cảnh Sát Còi đang lau từng chiếc còi",
+      "kind": "dialogue",
+      "target": "cho-canh-sat-coi",
+      "lines": [
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "{name}, Chó kể cái này thôi nhé. Chó đeo ba chiếc còi dự phòng vì Chó sợ đánh rơi còi lắm."
+        },
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "Không có còi, giữa đường đông, Chó chẳng biết ra hiệu bằng gì. Nghĩ tới thôi đuôi đã cụp."
+        },
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "Thôi, việc chính đã. Chủ nhật có đoàn rước đèn. Mình ra sân trước cổng thành đặt cọc tiêu."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Có cháu ở đây, chú không lo đâu!",
+          "reply": "Ừ. Có bạn đi cùng thì còi cũng đỡ sợ rơi."
+        },
+        {
+          "text": "Ai cũng có điều mình sợ mà chú.",
+          "reply": "Đúng. Chó sợ rơi còi, còn đàn vịt thì sợ… Chó. Hề hề."
+        }
+      ],
+      "en": {
+        "title": "Chó's fear",
+        "goTo": "Stop by the crossroads, where Chó Cảnh Sát Còi is polishing each whistle",
+        "lines": [
+          "{name}, just between us: I carry three spare whistles because I'm terribly afraid of dropping mine.",
+          "Without a whistle, in the middle of traffic, I wouldn't know how to signal. Just thinking about it makes my tail droop.",
+          "Right, work first. Sunday is the lantern parade. Let's go and set cones in the yard before the castle gate."
+        ],
+        "choices": [
+          {
+            "text": "I'm here, so don't worry!",
+            "reply": "Yes. With a friend along, even the whistle feels safer."
+          },
+          {
+            "text": "Everyone is afraid of something.",
+            "reply": "True. I fear dropping whistles, and the ducks fear… me. Heh."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dat-coc-tieu",
+      "title": "Đặt cọc tiêu",
+      "goTo": "Ra sân lát đá trước cổng thành đặt ba cọc tiêu",
+      "kind": "search",
+      "targets": [
+        "st-cho-coi-nga-tu-coc-tieu-mot",
+        "st-cho-coi-nga-tu-coc-tieu-hai",
+        "st-cho-coi-nga-tu-coc-tieu-ba"
+      ],
+      "en": {
+        "title": "Placing the cones",
+        "goTo": "Go to the paved yard before the castle gate and place three cones"
+      }
+    },
+    {
+      "id": "dem-coc-tieu",
+      "title": "Đếm cọc tiêu",
+      "goTo": "Tới đài phun nhỏ giữa sân, nơi Chó để hộp cọc dự phòng",
+      "kind": "riddle",
+      "target": "st-cho-coi-nga-tu-dai-phun-nho",
+      "skill": "phep-cong",
+      "question": "Mỗi bên đường rước đặt 8 cọc tiêu, ở cổng thành đặt thêm 3 cọc nữa. Có tất cả bao nhiêu cọc tiêu?",
+      "answer": {
+        "value": 19
+      },
+      "support": {
+        "guide": [
+          "Hai bên đường, mỗi bên 8 cọc: 8 + 8.",
+          "Rồi cộng thêm 3 cọc ở cổng."
+        ],
+        "hint": "8 + 8 = 16, thêm 3 nữa là…?",
+        "answer": {
+          "text": "19 cọc tiêu",
+          "explanation": "8 + 8 = 16, rồi 16 + 3 = 19, nên có tất cả 19 cọc tiêu."
+        },
+        "en": {
+          "guide": [
+            "Two sides with 8 cones each: 8 + 8.",
+            "Then add the 3 cones at the gate."
+          ],
+          "hint": "8 + 8 = 16, plus 3 more is…?",
+          "answer": {
+            "text": "19 cones",
+            "explanation": "8 + 8 = 16, then 16 + 3 = 19, so there are 19 cones in all."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười chín cọc! Chó đếm lại bằng còi: tuýt mười chín tiếng ngắn.",
+          "{name} cộng hai bước gọn gàng như xếp cọc thẳng hàng.",
+          "Đủ cọc cho cả đường rước. Đoàn đèn đi sẽ thẳng tắp."
+        ],
+        "wrong": [
+          "Đừng quên ba cọc ở cổng thành nhé.",
+          "Có hai bên đường cơ, mỗi bên tám cọc.",
+          "Tuýt nhẹ: chưa đúng. Đếm từng bên rồi cộng lại xem."
+        ],
+        "en": {
+          "right": [
+            "Nineteen! Chó recounts by whistle: nineteen short toots.",
+            "Two steps of adding, as tidy as a straight row of cones, {name}.",
+            "Enough cones for the whole route. The lanterns will march in a perfect line."
+          ],
+          "wrong": [
+            "Don't forget the three cones at the gate.",
+            "There are two sides, eight cones each.",
+            "A soft whistle: not yet. Count each side, then add."
+          ]
+        }
+      },
+      "en": {
+        "title": "Counting cones",
+        "goTo": "Go to the little fountain in the middle of the yard, where Chó keeps spare cones",
+        "question": "Each side of the parade route gets 8 cones, and 3 more go at the castle gate. How many cones are there in all?"
+      }
+    },
+    {
+      "id": "thu-tu-doan-ruoc",
+      "title": "Đoàn nào đi cuối?",
+      "goTo": "Mang sơ đồ đoàn rước tới cổng thành",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-cho-coi-nga-tu-so-do-doan-ruoc",
+      "skill": "logic",
+      "prompt": "Ba đoàn đi rước: đoàn xe đạp, đoàn đi bộ và đoàn múa lân. Đoàn múa lân đi đầu. Đoàn xe đạp không đi ngay sau đoàn múa lân. Đoàn nào đi cuối?",
+      "choices": [
+        {
+          "id": "xe-dap",
+          "text": "Đoàn xe đạp"
+        },
+        {
+          "id": "di-bo",
+          "text": "Đoàn đi bộ"
+        },
+        {
+          "id": "mua-lan",
+          "text": "Đoàn múa lân"
+        }
+      ],
+      "answer": {
+        "choice": "xe-dap"
+      },
+      "support": {
+        "guide": [
+          "Đoàn múa lân đứng thứ nhất.",
+          "Vị trí thứ hai không phải đoàn xe đạp, vậy là đoàn nào?"
+        ],
+        "hint": "Múa lân, rồi đi bộ, rồi…?",
+        "answer": {
+          "text": "Đoàn xe đạp",
+          "explanation": "Múa lân đi đầu; xe đạp không đi thứ hai nên đoàn đi bộ đi thứ hai, còn đoàn xe đạp đi cuối."
+        },
+        "en": {
+          "guide": [
+            "The lion dancers are first.",
+            "Second place is not the bicycles, so who is it?"
+          ],
+          "hint": "Lion dancers, then walkers, then…?",
+          "answer": {
+            "text": "The bicycles",
+            "explanation": "The lion dancers lead; the bicycles can't be second, so the walkers are second and the bicycles go last."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Xe đạp đi cuối! Thế là đoàn đi bộ không bị xe đạp đuổi sau gót.",
+          "{name} suy luận từng bước, chắc như đèn đỏ.",
+          "Sơ đồ đoàn rước xong rồi. Tuýt dài một tiếng!"
+        ],
+        "wrong": [
+          "Múa lân đi đầu rồi, đâu đi cuối được nữa.",
+          "Nếu đoàn đi bộ đi cuối thì xe đạp phải đi ngay sau lân, trái luật đấy.",
+          "Đọc lại hai điều Chó ghi, xếp từng đoàn một nhé."
+        ],
+        "en": {
+          "right": [
+            "Bicycles last! Now the walkers won't have wheels at their heels.",
+            "You reasoned step by step, solid as a red light, {name}.",
+            "The parade plan is done. One long whistle!"
+          ],
+          "wrong": [
+            "The lion dancers lead, so they can't also be last.",
+            "If the walkers were last, the bicycles would follow the lions directly, which breaks the rule.",
+            "Read Chó's two rules again and place the groups one at a time."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which group goes last?",
+        "goTo": "Take the parade plan to the castle gate",
+        "prompt": "Three groups march: the bicycles, the walkers and the lion dancers. The lion dancers lead. The bicycles do not go right behind the lion dancers. Which group goes last?",
+        "choices": [
+          "The bicycles",
+          "The walkers",
+          "The lion dancers"
+        ]
+      }
+    },
+    {
+      "id": "chiec-coi-roi",
+      "title": "Chiếc còi lỡ rơi",
+      "goTo": "Ra hàng cột cờ đầu đường rước cắm cờ",
+      "kind": "decision",
+      "target": "st-cho-coi-nga-tu-cot-co-ruoc",
+      "speaker": "Chó Cảnh Sát Còi",
+      "prompt": "Đang cắm cờ, chiếc còi chính tuột khỏi cổ Chó, rơi xuống chân cột cờ. Chó đứng sững, tai cụp xuống. {name} làm gì?",
+      "choices": [
+        {
+          "id": "nhat-dua",
+          "text": "Nhặt còi, lau sạch rồi đưa lại cho Chó",
+          "consequence": "Chó cầm còi, thổi thử một tiếng: vẫn kêu! Chó cười: «Rơi rồi mà vẫn ổn. Hóa ra cũng không đáng sợ lắm.»"
+        },
+        {
+          "id": "day-deo",
+          "text": "Buộc còi vào dây đeo thật chắc",
+          "consequence": "{name} thắt nút ba vòng. Chó giật thử mấy lần, còi vẫn nằm yên: «Giờ có rơi cũng không xa.»"
+        },
+        {
+          "id": "ra-hieu-tay",
+          "text": "Tập ra hiệu bằng tay, phòng khi không có còi",
+          "consequence": "Hai bạn tập: tay giơ cao là dừng, vẫy ngang là đi. Chó bảo giờ có mất còi cũng còn đôi tay."
+        }
+      ],
+      "en": {
+        "title": "The slipped whistle",
+        "goTo": "Go to the row of flagpoles at the head of the route to plant the flags",
+        "prompt": "While planting flags, Chó's main whistle slips off his neck and falls at the foot of the flagpole. He freezes, ears flat. What do you do?",
+        "choices": [
+          {
+            "text": "Pick it up, wipe it and hand it back",
+            "consequence": "Chó blows a test note: it still works! He laughs: \"It fell and it's fine. Not so scary after all.\""
+          },
+          {
+            "text": "Tie the whistle to a strong lanyard",
+            "consequence": "You tie a triple knot. Chó tugs it a few times and it holds: \"Now even if it slips, it won't go far.\""
+          },
+          {
+            "text": "Practise hand signals in case there's no whistle",
+            "consequence": "You practise: hand up means stop, a sideways wave means go. Chó says even without a whistle he has his paws."
+          }
+        ]
+      }
+    },
+    {
+      "id": "duong-ruoc-san-sang",
+      "title": "Đường rước sẵn sàng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cọc tiêu thẳng hàng, cờ bay phấp phới. Chó tặng {name} một sợi dây đeo còi màu đỏ, «cho chiếc còi nào sợ rơi».",
+      "en": {
+        "title": "The route is ready",
+        "text": "The cones stand in line and the flags flutter. Chó gives {name} a red whistle lanyard, \"for any whistle that's afraid of falling.\""
+      }
+    },
+    {
+      "id": "den-giao-thong-moi",
+      "title": "Đèn giao thông mới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Sáng mai thợ lắp một cột đèn giao thông mới ở ngã tư. Chó bảo có điều muốn kể riêng với {name} trước khi đèn bật.",
+      "en": {
+        "title": "The new traffic light",
+        "text": "Tomorrow morning workers install a new traffic light at the crossroads. Chó says he has something to tell {name} privately before it switches on."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 75,
+    "coin": 20,
+    "skillXp": {
+      "phep-cong": 1,
+      "logic": 1
+    }
+  },
+  "en": {
+    "title": "Chó Cảnh Sát Còi's story, chapter 4: The lantern parade route",
+    "summary": "On Sunday a lantern parade crosses the yard before the castle gate. {name} helps Chó Cảnh Sát Còi place the cones, count them, order the groups, and deal with a whistle that slipped by the fountain."
+  }
+}

@@ -1,0 +1,356 @@
+{
+  "id": "yarn-ho-coi-giao-huu-1",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Chuyện của Hổ Còi Vàng, chương 1: Đội bóng thiếu người",
+  "status": "active",
+  "category": "story",
+  "summary": "Đội bóng trường sắp đá trận giao hữu đầu tiên mà còn thiếu người. {name} dán thông báo, tính số bạn còn thiếu, chọn bạn đủ điều kiện, đặt tên cho đội rồi tập sút phạt đền.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Hổ Còi Vàng",
+    "where": "Sân trường: mép sân bóng, sân trường, căng tin, bốt bảo vệ, lối vào trường, khung thành",
+    "goal": "Gọi đủ người cho đội bóng trường",
+    "play": "Dán thông báo; tính số bạn còn thiếu; chọn bạn theo điều kiện; đặt tên đội; sút phạt đền",
+    "learn": "Phép cộng, phép trừ trong phạm vi 20, đọc hiểu điều kiện",
+    "reward": "60 XP, 15 Xu, Skill XP Phép trừ, Đọc hiểu",
+    "next": "Chiếc còi vàng bỗng không kêu"
+  },
+  "phases": {
+    "hook": "thieu-nguoi",
+    "explore": "dan-thong-bao",
+    "learn": "con-thieu-may-ban",
+    "challenge": "ban-du-dieu-kien",
+    "decision": "ten-doi",
+    "finale": "sut-phat-den",
+    "reward": "doi-du-nguoi",
+    "next": "coi-khong-keu"
+  },
+  "places": {
+    "ho-coi-vang": "Mép sân bóng",
+    "dan-thong-bao": "Sân trường",
+    "st-ho-coi-giao-huu-thong-bao-mot": "Sân trường",
+    "st-ho-coi-giao-huu-thong-bao-hai": "Sân trường",
+    "st-ho-coi-giao-huu-thong-bao-ba": "Sân trường",
+    "st-ho-coi-giao-huu-danh-sach-ghi-ten": "Căng tin",
+    "st-ho-coi-giao-huu-ho-so-ung-vien": "Bốt bảo vệ",
+    "st-ho-coi-giao-huu-la-co-doi": "Lối vào trường",
+    "st-ho-coi-giao-huu-khung-thanh-tap": "Khung thành"
+  },
+  "steps": [
+    {
+      "id": "thieu-nguoi",
+      "title": "Thiếu người!",
+      "goTo": "Ra mép sân bóng, Hổ Còi Vàng đang chạy tại chỗ",
+      "kind": "dialogue",
+      "target": "ho-coi-vang",
+      "lines": [
+        {
+          "speaker": "Hổ Còi Vàng",
+          "text": "Tuýt! {name}! Tin lớn: thứ Bảy đội mình đá giao hữu với đội bạn bên kia đồi. Trận đầu tiên!"
+        },
+        {
+          "speaker": "Hổ Còi Vàng",
+          "text": "Tin xấu: đội mới có vài bạn. Phải đủ mười một bạn: bảy đá chính, bốn dự bị."
+        },
+        {
+          "speaker": "Hổ Còi Vàng",
+          "text": "Một, hai, chạy! Đi dán thông báo tuyển cầu thủ trước đã."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu chạy đi dán ngay!",
+          "reply": "Tuýt! Chạy trên vỉa hè, không chạy qua bồn hoa."
+        },
+        {
+          "text": "Đội bạn có mạnh không anh?",
+          "reply": "Mạnh lắm. Mà thua thì mình cười to hơn, có sao đâu!"
+        }
+      ],
+      "en": {
+        "title": "Short of players!",
+        "goTo": "Go to the edge of the football pitch, where Hổ Còi Vàng is jogging on the spot",
+        "lines": [
+          "Whistle! {name}! Big news: on Saturday we play a friendly against the team from over the hill. Our first ever!",
+          "Bad news: we only have a few players. We need eleven: seven to start and four on the bench.",
+          "One, two, run! Let's put up the recruitment notices first."
+        ],
+        "choices": [
+          {
+            "text": "I'll run and put them up!",
+            "reply": "Whistle! Run on the path, not through the flowerbeds."
+          },
+          {
+            "text": "Is the other team strong?",
+            "reply": "Very. But if we lose, we laugh louder. No problem!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dan-thong-bao",
+      "title": "Dán thông báo tuyển cầu thủ",
+      "goTo": "Đi quanh sân trường dán ba tờ thông báo",
+      "kind": "search",
+      "targets": [
+        "st-ho-coi-giao-huu-thong-bao-mot",
+        "st-ho-coi-giao-huu-thong-bao-hai",
+        "st-ho-coi-giao-huu-thong-bao-ba"
+      ],
+      "en": {
+        "title": "Posting the recruitment notices",
+        "goTo": "Walk around the schoolyard and put up three notices"
+      }
+    },
+    {
+      "id": "con-thieu-may-ban",
+      "title": "Còn thiếu mấy bạn?",
+      "goTo": "Tới căng tin xem danh sách các bạn vừa ghi tên",
+      "kind": "riddle",
+      "target": "st-ho-coi-giao-huu-danh-sach-ghi-ten",
+      "skill": "phep-tru",
+      "question": "Đội cần đủ 11 bạn. Lúc đầu đội có 6 bạn, sáng nay thêm 3 bạn ghi tên ở căng tin. Đội còn thiếu mấy bạn?",
+      "answer": {
+        "value": 2
+      },
+      "support": {
+        "guide": [
+          "Trước hết tính đội đang có bao nhiêu bạn: 6 + 3.",
+          "Rồi lấy 11 trừ đi số bạn đang có."
+        ],
+        "hint": "6 + 3 = 9, vậy 11 − 9 = ?",
+        "answer": {
+          "text": "Thiếu 2 bạn",
+          "explanation": "Đội có 6 + 3 = 9 bạn, cần 11 bạn, nên còn thiếu 11 − 9 = 2 bạn."
+        },
+        "en": {
+          "guide": [
+            "First work out how many the team has now: 6 + 3.",
+            "Then take that away from 11."
+          ],
+          "hint": "6 + 3 = 9, so 11 − 9 = ?",
+          "answer": {
+            "text": "2 players short",
+            "explanation": "The team has 6 + 3 = 9 players and needs 11, so it is 11 − 9 = 2 short."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tuýt! Hai bạn nữa thôi! Hổ chạy một vòng quanh căng tin vì mừng.",
+          "Hai bước tính gọn gàng, {name} đúng là chiến thuật gia.",
+          "Đúng! Hổ ghi số hai to tướng lên bảng chiến thuật."
+        ],
+        "wrong": [
+          "Đừng quên ba bạn mới ghi tên sáng nay nhé.",
+          "Tính số bạn đang có trước, rồi mới so với mười một.",
+          "Gừ gừ… à nhầm. Tuýt! Chưa đúng, tính lại nào!"
+        ],
+        "en": {
+          "right": [
+            "Whistle! Just two more! Hổ runs a lap round the canteen for joy.",
+            "Two neat steps of maths, {name}; a real tactician.",
+            "Right! Hổ writes a huge 2 on the tactics board."
+          ],
+          "wrong": [
+            "Don't forget the three who signed up this morning.",
+            "Work out how many there are first, then compare with eleven.",
+            "Grr grr… oops. Whistle! Not yet; try again!"
+          ]
+        }
+      },
+      "en": {
+        "title": "How many are missing?",
+        "goTo": "Go to the canteen to see the list of new sign-ups",
+        "question": "The team needs 11 players. It had 6 to begin with, and 3 more signed up at the canteen this morning. How many players are still missing?"
+      }
+    },
+    {
+      "id": "ban-du-dieu-kien",
+      "title": "Bạn nào đủ điều kiện?",
+      "goTo": "Ra bốt bảo vệ lấy tập phiếu ứng tuyển",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-ho-coi-giao-huu-ho-so-ung-vien",
+      "skill": "doc-hieu",
+      "prompt": "Bác bảo vệ giữ giúp tập phiếu ứng tuyển. Đội cần bạn học lớp Hai và có giày thể thao. Chọn những bạn đủ cả hai điều kiện:",
+      "choices": [
+        {
+          "id": "ga-con",
+          "text": "Gà Con: học lớp Hai, có giày thể thao"
+        },
+        {
+          "id": "voi-con",
+          "text": "Voi Con: học lớp Ba, có giày thể thao"
+        },
+        {
+          "id": "meo-muop",
+          "text": "Mèo Mướp: học lớp Hai, có giày thể thao"
+        },
+        {
+          "id": "tho-xam",
+          "text": "Thỏ Xám: học lớp Hai, chỉ có dép lê"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "ga-con",
+          "meo-muop"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Mỗi bạn phải đủ hai điều: lớp Hai, và có giày thể thao.",
+          "Thiếu một điều là chưa vào đội được."
+        ],
+        "hint": "Voi Con học lớp mấy? Thỏ Xám đi giày gì?",
+        "answer": {
+          "text": "Gà Con và Mèo Mướp",
+          "explanation": "Gà Con và Mèo Mướp đủ cả hai điều kiện. Voi Con học lớp Ba, còn Thỏ Xám chưa có giày thể thao."
+        },
+        "en": {
+          "guide": [
+            "Each player needs both things: second grade, and sports shoes.",
+            "Missing either one means not yet."
+          ],
+          "hint": "Which grade is Voi Con in? What is Thỏ Xám wearing?",
+          "answer": {
+            "text": "Gà Con and Mèo Mướp",
+            "explanation": "Gà Con and Mèo Mướp meet both conditions. Voi Con is in third grade, and Thỏ Xám has no sports shoes yet."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tuýt tuýt! Mười một bạn đủ rồi! Một, hai, chạy!",
+          "{name} đọc điều kiện kỹ như trọng tài đọc luật.",
+          "Đúng hai bạn. Đội đã đủ người ra sân!"
+        ],
+        "wrong": [
+          "Voi Con học lớp Ba rồi, chưa đúng điều kiện đâu.",
+          "Đi dép lê đá bóng là trượt ngã đấy, Thỏ Xám chờ có giày nhé.",
+          "Còn một bạn đủ điều kiện nữa, đọc lại từng phiếu."
+        ],
+        "en": {
+          "right": [
+            "Whistle whistle! Eleven players at last! One, two, run!",
+            "You read the conditions as carefully as a referee reads the rules, {name}.",
+            "Exactly two. The team has enough to take the field!"
+          ],
+          "wrong": [
+            "Voi Con is in third grade, so not eligible.",
+            "Football in slippers means slipping over; Thỏ Xám waits for shoes.",
+            "One more player qualifies; read each card again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Who can join?",
+        "goTo": "Go to the guard's booth to collect the application cards",
+        "prompt": "The guard kept the application cards. The team needs players who are in second grade and own sports shoes. Pick everyone who meets both conditions:",
+        "choices": [
+          "Gà Con: second grade, has sports shoes",
+          "Voi Con: third grade, has sports shoes",
+          "Mèo Mướp: second grade, has sports shoes",
+          "Thỏ Xám: second grade, only has slippers"
+        ]
+      }
+    },
+    {
+      "id": "ten-doi",
+      "title": "Đặt tên cho đội",
+      "goTo": "Ra lối vào trường, nơi treo lá cờ đội còn trống tên",
+      "kind": "decision",
+      "target": "st-ho-coi-giao-huu-la-co-doi",
+      "speaker": "Hổ Còi Vàng",
+      "prompt": "Lá cờ đội treo ở lối vào trường còn trống tên. Hổ hỏi: «Tuýt! Đội mình tên gì?»",
+      "choices": [
+        {
+          "id": "ho-vang",
+          "text": "Đội Hổ Vàng, theo màu chiếc còi của anh Hổ",
+          "consequence": "Hổ đỏ mặt, cười to: «Tên oai quá! Thua cũng phải thua thật oai!»"
+        },
+        {
+          "id": "mang-non",
+          "text": "Đội Măng Non, vì cả đội đều đang lớn",
+          "consequence": "Cả đội hô «Măng Non, lớn nhanh!» Tiếng hô vang tới tận cột cờ."
+        },
+        {
+          "id": "gio-san-truong",
+          "text": "Đội Gió Sân Trường, chạy nhanh như gió",
+          "consequence": "Hổ thổi một hồi còi dài: «Gió thổi là bóng lăn! Hay!»"
+        }
+      ],
+      "en": {
+        "title": "Naming the team",
+        "goTo": "Go to the school entrance, where the nameless team flag hangs",
+        "prompt": "The team flag at the school entrance has no name yet. Hổ asks: \"Whistle! What's our team called?\"",
+        "choices": [
+          {
+            "text": "The Golden Tigers, after Hổ's whistle",
+            "consequence": "Hổ blushes and laughs: \"What a grand name! Even if we lose, we lose grandly!\""
+          },
+          {
+            "text": "The Bamboo Shoots, because we're all still growing",
+            "consequence": "The team chants \"Bamboo Shoots, grow fast!\" and it echoes all the way to the flagpole."
+          },
+          {
+            "text": "The Schoolyard Wind, fast as a breeze",
+            "consequence": "Hổ blows a long blast: \"When the wind blows, the ball rolls! Love it!\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "sut-phat-den",
+      "title": "Buổi sút bóng đầu tiên",
+      "goTo": "Ra khung thành sân tập, Hổ đặt sẵn quả bóng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-ho-coi-giao-huu-khung-thanh-tap",
+      "prompt": "Đủ người rồi, tập thôi! Sút vào khung thành thật chuẩn, ghi sáu bàn nhé!",
+      "game": "penalty-kick",
+      "goal": 6,
+      "en": {
+        "title": "The first shooting drill",
+        "goTo": "Go to the practice goal, where Hổ has set out a ball",
+        "prompt": "The squad is complete, so let's train! Aim carefully at the goal and score six!"
+      }
+    },
+    {
+      "id": "doi-du-nguoi",
+      "title": "Đội đủ người",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hổ dúi vào tay {name} chiếc băng đội trưởng dự bị: «Hôm nào anh khản giọng, {name} hô thay.»",
+      "en": {
+        "title": "A full squad",
+        "text": "Hổ presses a reserve captain's armband into {name}'s hand: \"Whenever I lose my voice, you shout for me.\""
+      }
+    },
+    {
+      "id": "coi-khong-keu",
+      "title": "Chiếc còi không kêu",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Ngày mai là buổi tập đầu tiên của cả đội. Hổ hứa sẽ thổi còi thật to. Chỉ mong chiếc còi vàng chịu kêu.",
+      "en": {
+        "title": "The silent whistle",
+        "text": "Tomorrow is the team's first training session. Hổ promises to blow his whistle loud. He just hopes the golden whistle cooperates."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": {
+      "phep-tru": 1,
+      "doc-hieu": 1
+    }
+  },
+  "en": {
+    "title": "Hổ Còi Vàng's story, chapter 1: A team short of players",
+    "summary": "The school team is about to play its first friendly but is still short of players. {name} puts up notices, works out how many are missing, picks the eligible players, names the team and practises penalty kicks."
+  }
+}

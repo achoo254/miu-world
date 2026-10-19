@@ -1,0 +1,383 @@
+{
+  "id": "yarn-cun-dom-ro-bot-2",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Chuyện của Cún Đốm Dọn Nhà, chương 2: Ngày tổng vệ sinh",
+  "status": "active",
+  "category": "story",
+  "summary": "Cả nhà tổng vệ sinh. {name} đếm gối phơi nắng, tìm ra tiếng vù vù làm rô bốt không dám vào nhà vệ sinh, chọn từ khen căn phòng sạch rồi quét lá ngoài sân.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cún Đốm Dọn Nhà",
+    "where": "Nhà của {name}: thềm nhà, phòng ngủ, nhà vệ sinh, phòng khách, sân trước nhà",
+    "goal": "Dọn sạch cả nhà để rô bốt bớt việc",
+    "play": "Đếm gối; tìm vật theo lời tả; chọn từ chỉ đặc điểm; chọn cách xử lý chiếc quạt; thổi lá vào đống",
+    "learn": "Phép cộng có nhớ trong phạm vi 100, từ ngữ chỉ đặc điểm, đọc hiểu",
+    "reward": "65 XP, 16 Xu, Skill XP Phép cộng, Từ ngữ",
+    "next": "Rô bốt sắp được nghỉ phép"
+  },
+  "phases": {
+    "hook": "chia-viec",
+    "explore": "dem-goi",
+    "learn": "tieng-vu-vu",
+    "challenge": "khen-can-phong",
+    "decision": "chiec-quat",
+    "finale": "thoi-la",
+    "reward": "nha-sach-bong",
+    "next": "ro-bot-sap-nghi"
+  },
+  "places": {
+    "cun-dom-don-nha": "Thềm nhà",
+    "st-cun-dom-ro-bot-chong-goi": "Phòng ngủ",
+    "tieng-vu-vu": "Nhà vệ sinh",
+    "st-cun-dom-ro-bot-quat-nho": "Nhà vệ sinh",
+    "st-cun-dom-ro-bot-khan-tam": "Nhà vệ sinh",
+    "st-cun-dom-ro-bot-chai-nuoc-giat": "Nhà vệ sinh",
+    "st-cun-dom-ro-bot-ghe-sofa": "Phòng khách",
+    "st-cun-dom-ro-bot-dong-la-san": "Sân trước nhà"
+  },
+  "steps": [
+    {
+      "id": "chia-viec",
+      "title": "Cún chia việc",
+      "goTo": "Ra thềm nhà, Cún Đốm Dọn Nhà đang cầm bảng phân công",
+      "kind": "dialogue",
+      "target": "cun-dom-don-nha",
+      "lines": [
+        {
+          "speaker": "Cún Đốm Dọn Nhà",
+          "text": "Gâu! Bảng phân công đây. Một: phơi gối. Hai: lau nhà vệ sinh. Ba: lau ghế. Bốn: quét lá. Cún làm hết thì mệt, {name} làm cùng thì vui!"
+        },
+        {
+          "speaker": "Cún Đốm Dọn Nhà",
+          "text": "À, có chuyện lạ: sáng nay rô bốt chạy tới cửa nhà vệ sinh thì quay đầu chạy mất. Nó nghe thấy gì đó."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình bắt đầu từ phòng ngủ nhé!",
+          "reply": "Gâu! Gối nhiều lắm, đếm cẩn thận nha."
+        }
+      ],
+      "en": {
+        "title": "Cún hands out jobs",
+        "goTo": "Go to the front step, where Cún Đốm Dọn Nhà is holding the job list",
+        "lines": [
+          "Woof! Here's the job list. One: air the pillows. Two: clean the bathroom. Three: wipe the sofa. Four: sweep the leaves. Alone I'd be tired; with you it's fun!",
+          "Oh, and something odd: this morning the robot reached the bathroom door, then spun round and fled. It heard something."
+        ],
+        "choices": [
+          {
+            "text": "Let's start with the bedroom!",
+            "reply": "Woof! Lots of pillows; count carefully."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dem-goi",
+      "title": "Đếm gối phơi nắng",
+      "goTo": "Lên phòng ngủ, gối đang chất thành chồng cạnh cửa sổ",
+      "kind": "riddle",
+      "target": "st-cun-dom-ro-bot-chong-goi",
+      "skill": "phep-cong",
+      "question": "Phòng ngủ có 16 chiếc gối nhỏ. Cún mang thêm 9 chiếc gối ở phòng khách lên phơi cùng. Có tất cả bao nhiêu chiếc gối?",
+      "answer": {
+        "value": 25
+      },
+      "support": {
+        "guide": [
+          "Cộng số gối hai phòng: 16 + 9.",
+          "6 cộng 9 bằng 15, viết 5 nhớ 1 sang hàng chục."
+        ],
+        "hint": "1 chục thêm 1 chục nhớ là mấy chục?",
+        "answer": {
+          "text": "25 chiếc gối",
+          "explanation": "16 + 9 = 25: 6 + 9 = 15, viết 5 nhớ 1; 1 thêm 1 bằng 2 chục, vậy là 25 chiếc."
+        },
+        "en": {
+          "guide": [
+            "Add the pillows from both rooms: 16 + 9.",
+            "6 plus 9 is 15: write 5 and carry 1 to the tens."
+          ],
+          "hint": "1 ten plus the carried 1 ten makes how many tens?",
+          "answer": {
+            "text": "25 pillows",
+            "explanation": "16 + 9 = 25: 6 + 9 = 15, write 5 carry 1; 1 ten plus 1 makes 2 tens, so 25 pillows."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai mươi lăm chiếc, Cún đếm lại bằng mũi cũng ra đúng thế!",
+          "Cộng có nhớ mà {name} không quên nhớ một lần nào.",
+          "Gối xếp thẳng hàng phơi nắng, thơm mùi nắng sớm."
+        ],
+        "wrong": [
+          "Gâu? Hình như {name} quên phần nhớ sang hàng chục rồi.",
+          "Thử đếm thêm chín chiếc từ mười sáu xem nào.",
+          "Cún xếp gối thành hai chồng rồi, {name} đếm lại cả hai nhé."
+        ],
+        "en": {
+          "right": [
+            "Twenty-five! Cún recounts with his nose and gets the same!",
+            "Carrying, and you never once forgot the carry, {name}.",
+            "The pillows line up in the sun and smell of morning light."
+          ],
+          "wrong": [
+            "Woof? I think you forgot to carry to the tens, {name}.",
+            "Try counting nine more on from sixteen.",
+            "Cún has made two piles; count both again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Counting the pillows",
+        "goTo": "Go up to the bedroom, where the pillows are piled by the window",
+        "question": "The bedroom has 16 small pillows. Cún brings 9 more up from the living room to air with them. How many pillows are there in all?"
+      }
+    },
+    {
+      "id": "tieng-vu-vu",
+      "title": "Tiếng vù vù ở đâu?",
+      "goTo": "Vào nhà vệ sinh tìm thứ phát ra tiếng vù vù",
+      "kind": "find-object",
+      "prompt": "Có tiếng vù vù sau tấm rèm. Đọc lời tả rồi tìm từng thứ:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "quat",
+          "name": "Chiếc quạt nhỏ",
+          "clue": "Cánh mỏng quay tít, kêu vù vù không nghỉ, ai đó quên tắt từ đêm qua.",
+          "target": "st-cun-dom-ro-bot-quat-nho"
+        },
+        {
+          "id": "khan",
+          "name": "Khăn tắm rơi",
+          "clue": "Mềm như mây, rơi xuống sàn, bị gió quạt thổi phồng lên như cánh buồm.",
+          "target": "st-cun-dom-ro-bot-khan-tam"
+        },
+        {
+          "id": "chai",
+          "name": "Chai nước giặt",
+          "clue": "Màu xanh da trời, nắp vặn chặt, mở ra thơm mùi hoa nhài.",
+          "target": "st-cun-dom-ro-bot-chai-nuoc-giat"
+        }
+      ],
+      "en": {
+        "title": "Where is the whirring?",
+        "goTo": "Go into the bathroom to find what is making the whirring sound",
+        "prompt": "There's a whirring sound behind the curtain. Read each description and find them:",
+        "items": [
+          {
+            "name": "The little fan",
+            "clue": "Thin blades spinning nonstop with a steady whirr; someone forgot to switch it off last night."
+          },
+          {
+            "name": "The fallen towel",
+            "clue": "Soft as a cloud, fallen on the floor and puffed up by the fan like a sail."
+          },
+          {
+            "name": "The detergent bottle",
+            "clue": "Sky blue with a tight cap; open it and it smells of jasmine."
+          }
+        ]
+      }
+    },
+    {
+      "id": "khen-can-phong",
+      "title": "Khen căn phòng sạch",
+      "goTo": "Xuống phòng khách xem bộ ghế sofa vừa lau",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-cun-dom-ro-bot-ghe-sofa",
+      "skill": "tu-ngu",
+      "prompt": "Phòng khách đã lau xong. Cún muốn viết một câu khen thật kêu. Chọn những từ chỉ đặc điểm của căn phòng:",
+      "choices": [
+        {
+          "id": "sach-se",
+          "text": "sạch sẽ"
+        },
+        {
+          "id": "cai-choi",
+          "text": "cái chổi"
+        },
+        {
+          "id": "gon-gang",
+          "text": "gọn gàng"
+        },
+        {
+          "id": "lau",
+          "text": "lau"
+        },
+        {
+          "id": "thom-tho",
+          "text": "thơm tho"
+        },
+        {
+          "id": "cua-so",
+          "text": "cửa sổ"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "sach-se",
+          "gon-gang",
+          "thom-tho"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Từ chỉ đặc điểm trả lời câu hỏi: căn phòng thế nào?",
+          "Cái chổi, cửa sổ là đồ vật; lau là việc làm."
+        ],
+        "hint": "Căn phòng… sạch sẽ? Căn phòng… cái chổi?",
+        "answer": {
+          "text": "sạch sẽ, gọn gàng, thơm tho",
+          "explanation": "Sạch sẽ, gọn gàng, thơm tho cho biết căn phòng thế nào. Cái chổi và cửa sổ là sự vật, lau là hoạt động."
+        },
+        "en": {
+          "guide": [
+            "A describing word answers: what is the room like?",
+            "Broom and window are things; wipe is an action."
+          ],
+          "hint": "The room is… spotless? The room is… broom?",
+          "answer": {
+            "text": "spotless, neat, fresh-smelling",
+            "explanation": "Spotless, neat and fresh-smelling tell what the room is like. Broom and window are things; wipe is an action."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Căn phòng sạch sẽ, gọn gàng, thơm tho! Cún đọc to ba lần cho rô bốt nghe.",
+          "{name} chọn từ khen đúng y như Cún muốn nói. Gâu!",
+          "Rô bốt nhấp nháy đèn xanh, chắc nó cũng thích được khen."
+        ],
+        "wrong": [
+          "«Căn phòng cái chổi» nghe kỳ ghê, bỏ từ ấy ra nhé.",
+          "Lau là việc mình làm, chưa phải căn phòng thế nào đâu.",
+          "Còn sót một từ khen nữa đấy, đọc lại cả hàng xem."
+        ],
+        "en": {
+          "right": [
+            "A spotless, neat, fresh-smelling room! Cún reads it aloud three times for the robot.",
+            "You picked exactly the words I wanted to say, {name}. Woof!",
+            "The robot blinks green; it seems to like compliments too."
+          ],
+          "wrong": [
+            "\"The room is broom\" sounds silly; leave that one out.",
+            "Wipe is what we do, not what the room is like.",
+            "One describing word is still missing; read the row again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Praising the clean room",
+        "goTo": "Go down to the living room to see the freshly wiped sofa",
+        "prompt": "The living room is done. Cún wants to write a really grand compliment. Pick the words that describe how the room is:",
+        "choices": [
+          "spotless",
+          "broom",
+          "neat",
+          "wipe",
+          "fresh-smelling",
+          "window"
+        ]
+      }
+    },
+    {
+      "id": "chiec-quat",
+      "title": "Làm gì với chiếc quạt?",
+      "goTo": "Mang chiếc quạt ra sân trước nhà, nơi lá rụng đầy",
+      "kind": "decision",
+      "target": "st-cun-dom-ro-bot-dong-la-san",
+      "speaker": "Cún Đốm Dọn Nhà",
+      "prompt": "Cún cầm chiếc quạt nhỏ ra sân: «Rô bốt sợ tiếng vù vù của nó. Làm sao đây?»",
+      "choices": [
+        {
+          "id": "tat-cat",
+          "text": "Tắt quạt, cất lên giá cho gọn",
+          "consequence": "Nhà vệ sinh im ắng. Rô bốt chạy vào hút sạch, còn hát thêm một đoạn."
+        },
+        {
+          "id": "tap-quen",
+          "text": "Bật quạt nhỏ dần cho rô bốt quen tiếng",
+          "consequence": "Lúc đầu rô bốt lùi lại, sau tiến từng chút. Cún vỗ tay: «Can đảm lắm, Tròn Xoe!»"
+        },
+        {
+          "id": "quat-nan",
+          "text": "Dùng quạt nan, không kêu chút nào",
+          "consequence": "Cún phe phẩy quạt nan, mát rượi mà êm ru. Rô bốt chạy theo Cún như cún con."
+        }
+      ],
+      "en": {
+        "title": "What about the fan?",
+        "goTo": "Take the fan out to the front yard, where the leaves have piled up",
+        "prompt": "Cún carries the little fan out to the yard: \"The robot is scared of its whirring. What now?\"",
+        "choices": [
+          {
+            "text": "Switch it off and put it on the shelf",
+            "consequence": "The bathroom falls quiet. The robot rolls in, cleans it all and sings an extra verse."
+          },
+          {
+            "text": "Run the fan softly so the robot gets used to it",
+            "consequence": "At first the robot backs off, then inches forward. Cún claps: \"Very brave, Tròn Xoe!\""
+          },
+          {
+            "text": "Use a bamboo hand fan; it makes no noise",
+            "consequence": "Cún waves a bamboo fan, cool and silent. The robot follows him around like a puppy."
+          }
+        ]
+      }
+    },
+    {
+      "id": "thoi-la",
+      "title": "Gom lá vào đống",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-cun-dom-ro-bot-dong-la-san",
+      "prompt": "Gió thổi lá vương khắp sân. Thổi lá vào đống giúp Cún, ghi mười lăm điểm nhé!",
+      "game": "leaf-blow",
+      "goal": 15,
+      "en": {
+        "title": "Gathering the leaves",
+        "prompt": "The wind has scattered leaves all over the yard. Blow them into the pile for Cún and score fifteen points!"
+      }
+    },
+    {
+      "id": "nha-sach-bong",
+      "title": "Nhà sạch bóng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cún tặng {name} một chiếc khăn lau gấp làm tư, thẳng tắp: «Khăn của người dọn nhà giỏi nhất, sau Cún.»",
+      "en": {
+        "title": "A sparkling house",
+        "text": "Cún gives {name} a duster folded into four, perfectly straight: \"For the best cleaner in the house, after me.\""
+      }
+    },
+    {
+      "id": "ro-bot-sap-nghi",
+      "title": "Rô bốt sắp được nghỉ",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Nhà sạch tới mức rô bốt chạy một vòng chẳng hút được hạt bụi nào. Cún bảo đã đến lúc cho nó nghỉ phép. Mai {name} giúp Cún chuẩn bị nhé.",
+      "en": {
+        "title": "The robot's break is near",
+        "text": "The house is so clean the robot found not a speck of dust on its round. Cún says it's time for its holiday. Help him get ready tomorrow, {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "phep-cong": 1,
+      "tu-ngu": 1
+    }
+  },
+  "en": {
+    "title": "Cún Đốm Dọn Nhà's story, chapter 2: Spring-cleaning day",
+    "summary": "The whole house is spring-cleaning. {name} counts the pillows put out to air, finds the whirring noise that scares the robot out of the bathroom, picks words to praise the clean room and sweeps the yard."
+  }
+}

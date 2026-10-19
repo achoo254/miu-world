@@ -1,0 +1,401 @@
+{
+  "id": "yarn-cho-coi-nga-tu-3",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Chuyện của Chó Cảnh Sát Còi, chương 3: Bữa trưa dang dở",
+  "status": "active",
+  "category": "story",
+  "summary": "Bữa trưa của Chó Cảnh Sát Còi chưa bao giờ trọn vẹn. {name} đếm tiếng chuông tháp, tìm hộp cơm, chọn bạn rảnh để đứng thay, quyết định ai trực ngã tư rồi tự mình điều khiển xe một lúc.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Chó Cảnh Sát Còi",
+    "where": "Quảng trường: ngã tư, tháp đồng hồ, ghế đá, bảng nhiệm vụ, cổng về nhà, bục giao thông",
+    "goal": "Cho Chó một giờ ăn trưa không bị gọi đi",
+    "play": "Đếm tiếng chuông; tìm đồ ăn trưa; chọn bạn rảnh; chọn người trực; điều khiển ngã tư",
+    "learn": "Xem đồng hồ, đọc hiểu",
+    "reward": "70 XP, 18 Xu, Skill XP Xem đồng hồ, Đọc hiểu",
+    "next": "Chuẩn bị đường rước đèn trước cổng thành"
+  },
+  "phases": {
+    "hook": "com-nguoi",
+    "explore": "chuong-thap",
+    "learn": "tim-hop-com",
+    "challenge": "ban-ranh",
+    "decision": "ai-truc",
+    "finale": "dieu-khien-nga-tu",
+    "reward": "bua-trua-tron-ven",
+    "next": "duong-ruoc-den"
+  },
+  "places": {
+    "cho-canh-sat-coi": "Ngã tư",
+    "st-cho-coi-nga-tu-mat-dong-ho-thap": "Tháp đồng hồ",
+    "tim-hop-com": "Ghế đá",
+    "st-cho-coi-nga-tu-hop-com": "Ghế đá",
+    "st-cho-coi-nga-tu-binh-nuoc": "Ghế đá",
+    "st-cho-coi-nga-tu-qua-chuoi": "Ghế đá",
+    "st-cho-coi-nga-tu-lich-truc": "Bảng nhiệm vụ",
+    "st-cho-coi-nga-tu-ghe-cho-cong": "Cổng về nhà",
+    "st-cho-coi-nga-tu-buc-chi-huy": "Bục giao thông"
+  },
+  "steps": [
+    {
+      "id": "com-nguoi",
+      "title": "Cơm nguội",
+      "goTo": "Tới ngã tư, Chó Cảnh Sát Còi đang cầm hộp cơm đã nguội",
+      "kind": "dialogue",
+      "target": "cho-canh-sat-coi",
+      "lines": [
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "Mười hai năm đứng ngã tư, Chó chưa ăn trọn một bữa trưa nào. Mở hộp cơm ra là có tiếng kèn, có tiếng gọi."
+        },
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "Ước mơ của Chó nhỏ thôi: một giờ ngồi ghế đá, ăn hết cơm, uống hết nước, không ai gọi."
+        },
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "Hôm nay mình thử nhé. Trước hết phải biết giờ ăn trưa bắt đầu lúc nào."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu sẽ giúp chú có một giờ trọn vẹn!",
+          "reply": "Tuýt! Câu đó Chó ghi vào sổ rồi đấy."
+        }
+      ],
+      "en": {
+        "title": "Cold rice",
+        "goTo": "Go to the crossroads, where Chó Cảnh Sát Còi is holding a cold lunch box",
+        "lines": [
+          "Twelve years at this crossroads and I've never finished a lunch. Open the box and there's a horn, or someone calling.",
+          "My dream is small: one hour on the stone bench, all my rice eaten, all my water drunk, no one calling.",
+          "Let's try today. First we need to know when lunchtime starts."
+        ],
+        "choices": [
+          {
+            "text": "I'll get you one whole hour!",
+            "reply": "Whistle! I've written that promise in my notebook."
+          }
+        ]
+      }
+    },
+    {
+      "id": "chuong-thap",
+      "title": "Tháp điểm mấy lần?",
+      "goTo": "Tới chân tháp đồng hồ xem mặt đồng hồ",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-cho-coi-nga-tu-mat-dong-ho-thap",
+      "skill": "xem-dong-ho",
+      "prompt": "Tháp đồng hồ điểm chuông vào mỗi giờ đúng. Từ 11 giờ trưa đến 1 giờ chiều, tính cả lúc 11 giờ và lúc 1 giờ, tháp điểm chuông mấy lần?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "2 lần"
+        },
+        {
+          "id": "b",
+          "text": "3 lần"
+        },
+        {
+          "id": "c",
+          "text": "4 lần"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Kể tên các giờ đúng từ 11 giờ đến 1 giờ chiều.",
+          "Sau 12 giờ trưa là 1 giờ chiều."
+        ],
+        "hint": "11 giờ, 12 giờ, rồi…?",
+        "answer": {
+          "text": "3 lần",
+          "explanation": "Tháp điểm lúc 11 giờ, 12 giờ và 1 giờ chiều, tất cả là 3 lần."
+        },
+        "en": {
+          "guide": [
+            "List the whole hours from 11 to 1 in the afternoon.",
+            "After 12 noon comes 1 in the afternoon."
+          ],
+          "hint": "11 o'clock, 12 o'clock, then…?",
+          "answer": {
+            "text": "3 times",
+            "explanation": "The tower chimes at 11, at 12 and at 1 in the afternoon: 3 times in all."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba lần! Mỗi lần tháp điểm, Chó lại thổi một tiếng còi dài đáp lại.",
+          "{name} đếm giờ chuẩn như kim đồng hồ.",
+          "Đúng. Giờ ăn trưa của Chó nằm gọn giữa hai tiếng chuông."
+        ],
+        "wrong": [
+          "Còn sót tiếng chuông lúc 1 giờ chiều đấy.",
+          "Từ 11 giờ tới 1 giờ chỉ có ba giờ đúng thôi, đếm lại nhé.",
+          "Dừng! Nhìn mặt đồng hồ, đặt ngón tay lên từng số rồi đếm."
+        ],
+        "en": {
+          "right": [
+            "Three! Every time the tower chimes, Chó answers with one long whistle.",
+            "You count hours as precisely as the clock itself, {name}.",
+            "Right. My lunch fits neatly between two chimes."
+          ],
+          "wrong": [
+            "You've missed the 1 o'clock chime.",
+            "There are only three whole hours from 11 to 1; count again.",
+            "Stop! Look at the clock face, put a finger on each number and count."
+          ]
+        }
+      },
+      "en": {
+        "title": "How many chimes?",
+        "goTo": "Go to the foot of the clock tower to look at the clock face",
+        "prompt": "The clock tower chimes on every hour. From 11 in the morning to 1 in the afternoon, counting both 11 o'clock and 1 o'clock, how many times does it chime the hour?",
+        "choices": [
+          "2 times",
+          "3 times",
+          "4 times"
+        ]
+      }
+    },
+    {
+      "id": "tim-hop-com",
+      "title": "Tìm bữa trưa của Chó",
+      "goTo": "Ra ghế đá tìm hộp cơm, bình nước và quả chuối",
+      "kind": "find-object",
+      "prompt": "Chó để đồ ăn trưa ở ghế đá rồi bị gọi đi mất. Đọc lời tả rồi tìm từng món:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "hop",
+          "name": "Hộp cơm",
+          "clue": "Màu đỏ gạch, nắp có hình chiếc còi, bên trong còn thoang thoảng mùi trứng rán.",
+          "target": "st-cho-coi-nga-tu-hop-com"
+        },
+        {
+          "id": "binh",
+          "name": "Bình nước",
+          "clue": "Màu xanh nước biển, có quai xách, còn đầy tới cổ bình.",
+          "target": "st-cho-coi-nga-tu-binh-nuoc"
+        },
+        {
+          "id": "chuoi",
+          "name": "Quả chuối",
+          "clue": "Vàng ươm, vỏ lấm tấm chấm nâu, cong như vầng trăng.",
+          "target": "st-cho-coi-nga-tu-qua-chuoi"
+        }
+      ],
+      "en": {
+        "title": "Finding Chó's lunch",
+        "goTo": "Go to the stone bench to find the lunch box, the water bottle and the banana",
+        "prompt": "Chó left his lunch on the stone bench before being called away. Read each description and find them:",
+        "items": [
+          {
+            "name": "The lunch box",
+            "clue": "Brick red with a whistle on the lid, still smelling faintly of fried egg."
+          },
+          {
+            "name": "The water bottle",
+            "clue": "Sea blue with a handle, still full to the neck."
+          },
+          {
+            "name": "The banana",
+            "clue": "Bright yellow, freckled with brown, curved like the moon."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ban-ranh",
+      "title": "Ai rảnh đúng lúc?",
+      "goTo": "Tới bảng nhiệm vụ đọc tờ lịch rảnh của các bạn",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-cho-coi-nga-tu-lich-truc",
+      "skill": "xem-dong-ho",
+      "prompt": "Chó cần một bạn đứng thay từ 11 giờ 30 đến 12 giờ. Chọn những bạn rảnh trọn khoảng thời gian ấy:",
+      "choices": [
+        {
+          "id": "bac-hai",
+          "text": "Bác Lái Xe Hải: rảnh từ 11 giờ đến 12 giờ"
+        },
+        {
+          "id": "voi",
+          "text": "Voi Kẹo Bông: rảnh từ 12 giờ đến 1 giờ"
+        },
+        {
+          "id": "meo",
+          "text": "Mèo Xếp Khối: rảnh từ 11 giờ 15 đến 12 giờ 15"
+        },
+        {
+          "id": "lan",
+          "text": "Lân Con Rộn Ràng: rảnh từ 10 giờ đến 11 giờ"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "bac-hai",
+          "meo"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Bạn rảnh phải bắt đầu rảnh từ 11 giờ 30 hoặc sớm hơn.",
+          "Và phải rảnh tới 12 giờ hoặc muộn hơn."
+        ],
+        "hint": "Ai rảnh bao trùm cả nửa giờ từ 11 giờ 30 đến 12 giờ?",
+        "answer": {
+          "text": "Bác Hải và Mèo Xếp Khối",
+          "explanation": "Bác Hải rảnh 11 giờ đến 12 giờ, Mèo rảnh 11 giờ 15 đến 12 giờ 15: cả hai đều phủ trọn 11 giờ 30 đến 12 giờ. Voi bắt đầu muộn quá, Lân xong sớm quá."
+        },
+        "en": {
+          "guide": [
+            "The helper must be free from half past 11 or earlier.",
+            "And free until 12 or later."
+          ],
+          "hint": "Whose free time covers the whole half hour from 11:30 to 12?",
+          "answer": {
+            "text": "Bác Hải and Mèo Xếp Khối",
+            "explanation": "Bác Hải is free 11 to 12 and Mèo 11:15 to 12:15, so both cover 11:30 to 12. Voi starts too late and Lân finishes too early."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai bạn đứng thay! Chó gạch tên vào lịch trực, nét thẳng tắp.",
+          "{name} xem giờ giỏi thật, không ai bị xếp nhầm ca.",
+          "Tuýt! Có người thay ca, cơm của Chó sẽ còn nóng."
+        ],
+        "wrong": [
+          "Voi bắt đầu rảnh lúc 12 giờ, lúc ấy Chó ăn xong rồi.",
+          "Lân bận từ 11 giờ, không đứng thay kịp đâu.",
+          "Còn một bạn rảnh nữa đấy, nhìn kỹ giờ bắt đầu và giờ kết thúc."
+        ],
+        "en": {
+          "right": [
+            "Two stand-ins! Chó writes them on the duty list in perfectly straight strokes.",
+            "You read times really well, {name}; nobody is on the wrong shift.",
+            "Whistle! With a stand-in, my rice will still be hot."
+          ],
+          "wrong": [
+            "Voi is only free from 12, when Chó would already be done.",
+            "Lân is busy from 11, too early to help.",
+            "There's one more free friend; check the start and end times."
+          ]
+        }
+      },
+      "en": {
+        "title": "Who is free in time?",
+        "goTo": "Go to the quest board to read everyone's free times",
+        "prompt": "Chó needs someone to stand in from half past 11 to 12. Pick everyone who is free for that whole time:",
+        "choices": [
+          "Bác Lái Xe Hải: free from 11 to 12",
+          "Voi Kẹo Bông: free from 12 to 1",
+          "Mèo Xếp Khối: free from quarter past 11 to quarter past 12",
+          "Lân Con Rộn Ràng: free from 10 to 11"
+        ]
+      }
+    },
+    {
+      "id": "ai-truc",
+      "title": "Ai trực ngã tư?",
+      "goTo": "Mang đồ ăn ra chiếc ghế chờ cạnh cổng về nhà",
+      "kind": "decision",
+      "target": "st-cho-coi-nga-tu-ghe-cho-cong",
+      "speaker": "Chó Cảnh Sát Còi",
+      "prompt": "Chó ngồi xuống chiếc ghế chờ cạnh cổng, mở hộp cơm, rồi ngập ngừng: «Ai trực thay Chó bây giờ?»",
+      "choices": [
+        {
+          "id": "bac-hai-truc",
+          "text": "Nhờ Bác Hải đứng trực, bóp kèn khi cần",
+          "consequence": "Bác Hải đứng ngã tư, bóp kèn hai tiếng cho xe dừng. Chó ăn được tới miếng cuối."
+        },
+        {
+          "id": "meo-truc",
+          "text": "Nhờ Mèo Xếp Khối xếp một hàng nón giao thông",
+          "consequence": "Mèo xếp nón thẳng như domino. Xe tự đi theo hàng, Chó ăn xong còn kịp gọt táo."
+        },
+        {
+          "id": "ten-truc",
+          "text": "{name} đứng bục chỉ huy mười lăm phút",
+          "consequence": "Chó đưa {name} chiếc còi dự phòng: «Dừng, nhìn, đi. Nhớ chưa?» rồi ngồi ăn, mắt vẫn liếc theo."
+        }
+      ],
+      "en": {
+        "title": "Who minds the crossroads?",
+        "goTo": "Carry the lunch to the waiting bench by the gateway home",
+        "prompt": "Chó sits on the waiting bench by the gate, opens his lunch box, then hesitates: \"Who minds the crossroads now?\"",
+        "choices": [
+          {
+            "text": "Ask Bác Hải to stand in and honk when needed",
+            "consequence": "Bác Hải takes the crossroads and honks twice to stop traffic. Chó eats to the very last bite."
+          },
+          {
+            "text": "Ask Mèo Xếp Khối to set out a row of traffic cones",
+            "consequence": "Mèo lines up cones like dominoes. Traffic follows them on its own, and Chó even peels an apple."
+          },
+          {
+            "text": "{name} takes the traffic stand for fifteen minutes",
+            "consequence": "Chó hands {name} a spare whistle: \"Stop, look, go. Got it?\" then eats, still glancing over."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dieu-khien-nga-tu",
+      "title": "Giữ nhịp ngã tư",
+      "goTo": "Lên bục giao thông điều khiển xe giúp Chó",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-cho-coi-nga-tu-buc-chi-huy",
+      "prompt": "Chó đang ăn, {name} lên bục điều khiển xe cho êm. Ghi hai mươi điểm nhé!",
+      "game": "traffic-cop",
+      "goal": 20,
+      "en": {
+        "title": "Keeping the crossroads moving",
+        "goTo": "Step up on the traffic stand and direct the vehicles for Chó",
+        "prompt": "While Chó eats, step up to the stand and keep the traffic flowing. Score twenty points!"
+      }
+    },
+    {
+      "id": "bua-trua-tron-ven",
+      "title": "Bữa trưa trọn vẹn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Lần đầu tiên sau mười hai năm, hộp cơm của Chó sạch trơn. Chó tặng {name} chiếc còi dự phòng thứ ba, vì «giờ Chó tin {name} như tin cái còi».",
+      "en": {
+        "title": "A whole lunch",
+        "text": "For the first time in twelve years, Chó's lunch box is empty. He gives {name} his third spare whistle, because \"now I trust you like my whistle.\""
+      }
+    },
+    {
+      "id": "duong-ruoc-den",
+      "title": "Đường rước đèn",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chủ nhật này có đoàn rước đèn đi qua sân trước cổng thành. Chó phải lo đường đi cho cả đoàn, mai {name} sang giúp nhé.",
+      "en": {
+        "title": "The lantern parade route",
+        "text": "This Sunday a lantern parade will pass the yard before the castle gate. Chó must plan its route, so come and help tomorrow, {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "xem-dong-ho": 1,
+      "doc-hieu": 1
+    }
+  },
+  "en": {
+    "title": "Chó Cảnh Sát Còi's story, chapter 3: The unfinished lunch",
+    "summary": "Chó Cảnh Sát Còi has never finished a lunch. {name} counts the tower's chimes, finds his lunch box, picks friends free to stand in, decides who minds the crossroads and directs the traffic for a while."
+  }
+}

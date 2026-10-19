@@ -284,6 +284,64 @@
           }
         }
       ]
+    },
+    {
+      "id": "cho-coi-nga-tu",
+      "npc": "cho-canh-sat-coi",
+      "title": { "vi": "Một ngày không kẹt xe", "en": "A Day Without a Jam" },
+      "teaser": { "vi": "Dừng! Nhìn! Nghe này, {name}: Chó muốn quảng trường có một ngày không kẹt xe nào, để Chó được ăn trọn một bữa trưa. Giúp Chó chứ?", "en": "Stop! Look! Listen, {name}: I want one day on the square without a single traffic jam, so I can finish a whole lunch. Will you help?" },
+      "chapters": [
+        {
+          "quest": "yarn-cho-coi-nga-tu-1",
+          "hearts": 0,
+          "letter": {
+            "from": "cho-canh-sat-coi",
+            "title": { "vi": "Tuýt một tiếng chúc ngủ ngon", "en": "One whistle for good night" },
+            "body": { "vi": "{name}. Chiều nay có biển «Đi chậm», ngã tư chỉ kẹt một lần. Một lần thôi! Chó ăn được nửa bữa trưa còn ấm. Mai mình lo chuyện đàn vịt. Tuýt!", "en": "{name}. With the \"Slow down\" sign up, the crossroads jammed only once this afternoon. Just once! I ate half my lunch while it was warm. Tomorrow, the ducks. Whistle!" },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-cho-coi-nga-tu-2",
+          "hearts": 1,
+          "letter": {
+            "from": "bac-thu-ngan-vui-ve",
+            "title": { "vi": "Thư từ quầy tính tiền", "en": "A letter from the till" },
+            "body": { "vi": "Hô hô, {name} ơi! Bác là Bác Thu Ngân Vui Vẻ đây. Chó viết thư kể chuyện dẫn đàn vịt, bác cười tới mức tính nhầm cả tiền thừa. Ba vịt con, một vịt mẹ, cộng lại là bốn niềm vui! Bác gửi {name} mấy đồng xu, tính tiền nàooo!", "en": "Ho ho, {name}! It's Bác Thu Ngân Vui Vẻ. Chó wrote to tell me about guiding the ducks, and I laughed so hard I gave the wrong change. Three ducklings and one mother make four joys! Here are a few coins for you. Ring it up!" },
+            "reward": { "coins": 20, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-cho-coi-nga-tu-3",
+          "hearts": 2,
+          "letter": {
+            "from": "bac-lai-xe-hai",
+            "title": { "vi": "Kính coong từ xe Vàng Ươm", "en": "Ding-dong from Vàng Ươm" },
+            "body": { "vi": "Hành khách {name} thân mến, trưa nay bác đứng ngã tư thay Chó, bóp kèn hai tiếng mà xe nào cũng ngoan. Chó ăn xong còn chạy sang bắt tay bác ba lần. Bác gửi cháu tấm vé xe buýt có ngôi sao, đi chuyến nào cũng được.", "en": "Dear passenger {name}, at lunch today I stood in for Chó at the crossroads; two honks and every driver behaved. After eating, Chó ran over and shook my hand three times. Here's a star bus ticket for you, good on any route." },
+            "reward": { "coins": 20, "xp": 20, "items": {"ve-xe-buyt-sao": 1} }
+          }
+        },
+        {
+          "quest": "yarn-cho-coi-nga-tu-4",
+          "hearts": 3,
+          "letter": {
+            "from": "cho-canh-sat-coi",
+            "title": { "vi": "Còi có dây đeo", "en": "A whistle on a lanyard" },
+            "body": { "vi": "{name}. Hôm nay còi rơi mà Chó không sợ nữa. Vì có {name}. Đoàn rước đèn đi thẳng như vạch kẻ, không ai lạc. Chó gửi {name} mấy xu, mua kẹo kéo xem rước đèn nhé.", "en": "{name}. My whistle fell today and I wasn't afraid. Because you were there. The lantern parade marched straight as a road line and nobody got lost. Here are a few coins; buy some taffy and watch the lanterns." },
+            "reward": { "coins": 20, "xp": 20, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-cho-coi-nga-tu-5",
+          "hearts": 4,
+          "letter": {
+            "from": "cho-canh-sat-coi",
+            "title": { "vi": "Thư của người bạn giữ bí mật", "en": "To the friend who keeps my secret" },
+            "body": { "vi": "{name}. Hôm nay Chó ăn trọn bữa trưa, ngồi nghe tháp đồng hồ điểm chuông mà không phải đứng dậy. Cảm ơn {name} đã giữ bí mật và đã hiểu Chó. Chó gửi kèm đồng xu cổ Chó quý nhất. Tuýt, tuýt, tuýt!", "en": "{name}. Today I finished my whole lunch and listened to the clock tower chime without getting up. Thank you for keeping my secret and understanding me. Here is my most treasured old coin. Whistle, whistle, whistle!" },
+            "reward": { "coins": 30, "xp": 25, "items": {"dong-tien-co": 1} }
+          }
+        }
+      ]
     }
   ]
 }

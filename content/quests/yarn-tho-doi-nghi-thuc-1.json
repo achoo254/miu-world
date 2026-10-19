@@ -1,0 +1,393 @@
+{
+  "id": "yarn-tho-doi-nghi-thuc-1",
+  "region": "truong-hoc",
+  "chapter": 2,
+  "title": "Chuyện của Thỏ Măng Non, chương 1: Chiếc khăn thắt ba lần",
+  "status": "active",
+  "category": "story",
+  "summary": "Thỏ Măng Non mơ được chọn làm chỉ huy đội nghi thức. {name} tìm đồ đội viên ở hành lang, tìm quy luật bước đi đều, đếm số bạn trong đội rồi chọn cách giúp một bạn vấp ngã khi tập.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Thỏ Măng Non",
+    "where": "Trường: hiên hội trường, hành lang, sân sau dãy lớp, cầu thang, lớp 2A",
+    "goal": "Chuẩn bị cho buổi tập đầu tiên của đội nghi thức",
+    "play": "Tìm đồ theo lời tả; tìm quy luật bước đi; tính số bạn trong đội; chọn cách giúp bạn",
+    "learn": "Tìm quy luật, phép cộng các số bằng nhau",
+    "reward": "55 XP, 14 Xu, Skill XP Logic, Phép cộng",
+    "next": "Thầy hiệu trưởng ra bài đố chọn chỉ huy"
+  },
+  "phases": {
+    "hook": "ba-hai-mot",
+    "explore": "do-doi-vien",
+    "learn": "buoc-di-deu",
+    "challenge": "dem-doi-nghi-thuc",
+    "decision": "ban-vap-nga",
+    "finale": "ban-vap-nga",
+    "reward": "khan-thang-tap",
+    "next": "bai-do-chon-chi-huy"
+  },
+  "places": {
+    "tho-mang-non": "Hiên hội trường",
+    "do-doi-vien": "Hành lang",
+    "st-tho-doi-nghi-thuc-khan-quang-du-phong": "Hành lang",
+    "st-tho-doi-nghi-thuc-huy-hieu-doi": "Hành lang",
+    "st-tho-doi-nghi-thuc-co-doi-nho": "Hành lang",
+    "st-tho-doi-nghi-thuc-vach-tap-di-deu": "Sân sau dãy lớp",
+    "st-tho-doi-nghi-thuc-so-do-xep-hang": "Cầu thang",
+    "st-tho-doi-nghi-thuc-ban-hoc-lop": "Lớp 2A"
+  },
+  "steps": [
+    {
+      "id": "ba-hai-mot",
+      "title": "Ba, hai, một!",
+      "goTo": "Tới hiên hội trường, Thỏ Măng Non đang thắt lại khăn quàng",
+      "kind": "dialogue",
+      "target": "tho-mang-non",
+      "lines": [
+        {
+          "speaker": "Thỏ Măng Non",
+          "text": "Ba, hai, một! Chào {name}! Tớ thắt khăn quàng ba lần rồi mà vẫn hồi hộp quá."
+        },
+        {
+          "speaker": "Thỏ Măng Non",
+          "text": "Trường sắp chọn chỉ huy đội nghi thức. Ai được chọn sẽ đi đầu hàng trống trong lễ khai giảng. Tớ mơ chuyện ấy từ hồi lớp Một!"
+        },
+        {
+          "speaker": "Thỏ Măng Non",
+          "text": "Mà đồ đội viên của tớ rơi đâu mất ở hành lang rồi. Tìm giúp tớ nhé, nhanh lên, ba, hai, một!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ đi tìm ngay!",
+          "reply": "Cảm ơn! Cậu nhanh như tớ luôn ấy!"
+        },
+        {
+          "text": "Cậu chắc chắn sẽ được chọn!",
+          "reply": "Thật không? Ba, hai, một… tớ tin cậu!"
+        }
+      ],
+      "en": {
+        "title": "Three, two, one!",
+        "goTo": "Go to the hall porch, where Thỏ Măng Non is retying her scarf",
+        "lines": [
+          "Three, two, one! Hi {name}! I've tied my scarf three times and I'm still so nervous.",
+          "The school is choosing the honour guard leader. Whoever is chosen leads the drum line at the opening ceremony. I've dreamed of it since first grade!",
+          "But I dropped my team kit somewhere in the corridor. Help me find it, quick, three, two, one!"
+        ],
+        "choices": [
+          {
+            "text": "I'm on it!",
+            "reply": "Thanks! You're as quick as me!"
+          },
+          {
+            "text": "You'll definitely be chosen!",
+            "reply": "Really? Three, two, one… I believe you!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-doi-vien",
+      "title": "Tìm đồ đội viên",
+      "goTo": "Ra hành lang tìm khăn quàng, huy hiệu và lá cờ đội",
+      "kind": "find-object",
+      "prompt": "Ba món rơi dọc hành lang. Đọc lời tả rồi tìm từng món:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "khan",
+          "name": "Khăn quàng dự phòng",
+          "clue": "Đỏ thắm, gấp thành hình tam giác, góc thêu tên Thỏ bằng chỉ vàng.",
+          "target": "st-tho-doi-nghi-thuc-khan-quang-du-phong"
+        },
+        {
+          "id": "huy",
+          "name": "Huy hiệu đội viên",
+          "clue": "Tròn, sáng lấp lánh, ghim ở mặt sau hơi cong.",
+          "target": "st-tho-doi-nghi-thuc-huy-hieu-doi"
+        },
+        {
+          "id": "co",
+          "name": "Lá cờ đội nhỏ",
+          "clue": "Nhỏ bằng bàn tay, cán tre, phấp phới khi có gió lùa qua hành lang.",
+          "target": "st-tho-doi-nghi-thuc-co-doi-nho"
+        }
+      ],
+      "en": {
+        "title": "Finding the team kit",
+        "goTo": "Go to the corridor to find the scarf, the badge and the team flag",
+        "prompt": "Three things fell along the corridor. Read each description and find them:",
+        "items": [
+          {
+            "name": "The spare scarf",
+            "clue": "Bright red, folded into a triangle, with Thỏ's name stitched in gold in one corner."
+          },
+          {
+            "name": "The member's badge",
+            "clue": "Round and gleaming, with a slightly bent pin on the back."
+          },
+          {
+            "name": "The little team flag",
+            "clue": "Hand-sized on a bamboo stick, fluttering whenever a draught runs down the corridor."
+          }
+        ]
+      }
+    },
+    {
+      "id": "buoc-di-deu",
+      "title": "Bước đi đều",
+      "goTo": "Ra sân sau dãy lớp tập bước đi đều",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "st-tho-doi-nghi-thuc-vach-tap-di-deu",
+      "skill": "logic",
+      "prompt": "Đội nghi thức tập đi theo nhịp: trái, phải, trái, phải, dừng; trái, phải, trái, phải, dừng; … Bước thứ mười là bước gì?",
+      "elements": [
+        {
+          "id": "b1",
+          "label": "trái"
+        },
+        {
+          "id": "b2",
+          "label": "phải"
+        },
+        {
+          "id": "b3",
+          "label": "trái"
+        },
+        {
+          "id": "b4",
+          "label": "phải"
+        },
+        {
+          "id": "b5",
+          "label": "dừng"
+        }
+      ],
+      "choices": [
+        {
+          "id": "trai",
+          "text": "Bước chân trái"
+        },
+        {
+          "id": "phai",
+          "text": "Bước chân phải"
+        },
+        {
+          "id": "dung",
+          "text": "Dừng lại"
+        }
+      ],
+      "answer": {
+        "choice": "dung"
+      },
+      "support": {
+        "guide": [
+          "Nhịp lặp lại sau mỗi năm bước.",
+          "Bước thứ năm là dừng."
+        ],
+        "hint": "Bước 5 dừng, vậy bước 10 thì sao?",
+        "answer": {
+          "text": "Dừng lại",
+          "explanation": "Cứ năm bước lại dừng một lần: bước 5, bước 10. Vậy bước thứ mười là dừng lại."
+        },
+        "en": {
+          "guide": [
+            "The beat repeats every five steps.",
+            "The fifth step is a halt."
+          ],
+          "hint": "Step 5 is a halt, so what about step 10?",
+          "answer": {
+            "text": "Halt",
+            "explanation": "Every fifth step is a halt: step 5, step 10. So the tenth step is a halt."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Dừng! Cả đội đứng nghiêm đúng nhịp. Ba, hai, một, đẹp quá!",
+          "{name} bắt nhịp nhanh hơn cả tiếng trống.",
+          "Năm bước một lần dừng, cậu nhìn ra ngay. Giỏi ghê!"
+        ],
+        "wrong": [
+          "Đếm lại theo nhóm năm bước nhé, bước cuối nhóm là gì?",
+          "Bước chân ấy làm cả đội lệch nhịp mất rồi.",
+          "Ba, hai, một… thử đếm lại từ bước đầu tiên xem."
+        ],
+        "en": {
+          "right": [
+            "Halt! The whole guard stands to attention on the beat. Three, two, one, beautiful!",
+            "You caught the beat faster than the drum, {name}.",
+            "A halt every five steps, and you spotted it at once. Brilliant!"
+          ],
+          "wrong": [
+            "Count in groups of five; what's the last step of each group?",
+            "That step would put the whole guard out of time.",
+            "Three, two, one… count again from the very first step."
+          ]
+        }
+      },
+      "en": {
+        "title": "Marching in step",
+        "goTo": "Go to the yard behind the classrooms to practise marching",
+        "prompt": "The honour guard marches to a beat: left, right, left, right, halt; left, right, left, right, halt; … What is the tenth step?",
+        "elements": [
+          "left",
+          "right",
+          "left",
+          "right",
+          "halt"
+        ],
+        "choices": [
+          "Left foot",
+          "Right foot",
+          "Halt"
+        ]
+      }
+    },
+    {
+      "id": "dem-doi-nghi-thuc",
+      "title": "Đội có bao nhiêu bạn?",
+      "goTo": "Tới cầu thang, nơi treo sơ đồ xếp hàng",
+      "kind": "riddle",
+      "target": "st-tho-doi-nghi-thuc-so-do-xep-hang",
+      "skill": "phep-cong",
+      "question": "Sơ đồ ghi: đội nghi thức xếp thành 3 hàng, mỗi hàng 5 bạn. Đội nghi thức có tất cả bao nhiêu bạn?",
+      "answer": {
+        "value": 15
+      },
+      "support": {
+        "guide": [
+          "Ba hàng, mỗi hàng năm bạn.",
+          "Cộng 5 ba lần."
+        ],
+        "hint": "5 + 5 + 5 = ?",
+        "answer": {
+          "text": "15 bạn",
+          "explanation": "Mỗi hàng 5 bạn, có 3 hàng: 5 + 5 + 5 = 15 bạn."
+        },
+        "en": {
+          "guide": [
+            "Three rows of five.",
+            "Add 5 three times."
+          ],
+          "hint": "5 + 5 + 5 = ?",
+          "answer": {
+            "text": "15 members",
+            "explanation": "Five in each of 3 rows: 5 + 5 + 5 = 15 members."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười lăm bạn! Thỏ dán sơ đồ lên tường cầu thang ngay.",
+          "{name} đếm hàng nhanh như tớ đếm ngược.",
+          "Ba hàng thẳng tắp, mười lăm chiếc khăn đỏ. Đẹp lắm!"
+        ],
+        "wrong": [
+          "Có ba hàng cơ, đừng quên hàng nào nhé.",
+          "Mỗi hàng năm bạn, thử đếm năm, mười, …",
+          "Ối, số ấy chưa khớp sơ đồ. Đếm lại nào!"
+        ],
+        "en": {
+          "right": [
+            "Fifteen! Thỏ sticks the plan on the stairway wall at once.",
+            "You count rows as fast as I count down, {name}.",
+            "Three straight rows, fifteen red scarves. Gorgeous!"
+          ],
+          "wrong": [
+            "There are three rows; don't leave one out.",
+            "Five per row; try counting five, ten, …",
+            "Oops, that doesn't match the plan. Count again!"
+          ]
+        }
+      },
+      "en": {
+        "title": "How many in the guard?",
+        "goTo": "Go to the stairs, where the line-up plan hangs",
+        "question": "The plan says the honour guard stands in 3 rows of 5. How many members does the guard have in all?"
+      }
+    },
+    {
+      "id": "ban-vap-nga",
+      "title": "Bạn vấp ngã",
+      "goTo": "Vào lớp 2A, cả đội đang tập trong lớp",
+      "kind": "decision",
+      "target": "st-tho-doi-nghi-thuc-ban-hoc-lop",
+      "speaker": "Thỏ Măng Non",
+      "prompt": "Tập trong lớp 2A, Hươu Con vấp ngã, cả lớp cười ồ. Hươu đỏ mặt cúi đầu. Thỏ nhìn {name}: «Mình làm gì đây?»",
+      "choices": [
+        {
+          "id": "do-ban",
+          "text": "Đỡ bạn dậy, cùng tập lại thật chậm",
+          "consequence": "Thỏ nắm tay Hươu, đếm thật chậm: «Ba… hai… một… bước!» Lần này Hươu đi đều tăm tắp."
+        },
+        {
+          "id": "cam-co",
+          "text": "Mời bạn cầm cờ đi đầu cho tự tin",
+          "consequence": "Hươu cầm cờ, ngẩng cao đầu. Cả lớp vỗ tay, không ai cười nữa."
+        },
+        {
+          "id": "ai-cung-vap",
+          "text": "Nhắc cả lớp: ai mới tập cũng từng vấp",
+          "consequence": "Cả lớp im lặng, rồi từng bạn kể lần mình vấp khi mới tập. Hươu bật cười, đứng dậy tập tiếp."
+        }
+      ],
+      "en": {
+        "title": "A friend trips",
+        "goTo": "Go into class 2A, where the guard is practising",
+        "prompt": "Practising in class 2A, Hươu Con trips and the class laughs. Hươu blushes and looks down. Thỏ turns to {name}: \"What do we do?\"",
+        "choices": [
+          {
+            "text": "Help them up and practise again slowly",
+            "consequence": "Thỏ takes Hươu's hand and counts slowly: \"Three… two… one… step!\" This time Hươu marches perfectly."
+          },
+          {
+            "text": "Ask them to carry the flag at the front to feel confident",
+            "consequence": "Hươu carries the flag with head held high. The class claps and nobody laughs anymore."
+          },
+          {
+            "text": "Remind the class that every beginner stumbles",
+            "consequence": "The class goes quiet, then one by one they tell of stumbling as beginners. Hươu laughs and gets up to practise again."
+          }
+        ]
+      }
+    },
+    {
+      "id": "khan-thang-tap",
+      "title": "Khăn thẳng tắp",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thỏ thắt lại khăn quàng cho {name}, đúng ba lần: «Khăn thẳng thì bước cũng thẳng!»",
+      "en": {
+        "title": "A perfect scarf",
+        "text": "Thỏ reties {name}'s scarf, exactly three times: \"A straight scarf makes a straight step!\""
+      }
+    },
+    {
+      "id": "bai-do-chon-chi-huy",
+      "title": "Bài đố chọn chỉ huy",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Thầy hiệu trưởng thông báo: muốn làm chỉ huy phải giải được bài đố mẹo của thầy. Thỏ mê đố mẹo, nhưng lại hay trả lời trước khi nghĩ.",
+      "en": {
+        "title": "The leader's riddle test",
+        "text": "The head teacher announces that the leader must solve his trick riddles. Thỏ loves riddles, but she often answers before thinking."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": {
+      "logic": 1,
+      "phep-cong": 1
+    }
+  },
+  "en": {
+    "title": "Thỏ Măng Non's story, chapter 1: A scarf tied three times",
+    "summary": "Thỏ Măng Non dreams of being chosen to lead the honour guard. {name} finds the team kit in the corridor, works out the marching pattern, counts the guard and decides how to help a friend who trips during practice."
+  }
+}

@@ -1,0 +1,365 @@
+{
+  "id": "yarn-cun-dom-ro-bot-3",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Chuyện của Cún Đốm Dọn Nhà, chương 3: Rô bốt nghỉ phép",
+  "status": "active",
+  "category": "story",
+  "summary": "Nhà sạch tới mức rô bốt hết việc. {name} cất đồ chơi về chỗ, tính ngày rô bốt đi làm lại, xếp tranh kể lại chuyện của Tròn Xoe và chọn nơi nó nghỉ phép.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cún Đốm Dọn Nhà",
+    "where": "Nhà của {name}: thềm nhà, góc đồ chơi, góc học tập, phòng khách, cổng trước nhà",
+    "goal": "Cho rô bốt hút bụi một kỳ nghỉ phép thật vui",
+    "play": "Cất đồ chơi; xem lịch tính ngày nghỉ; xếp tranh theo thứ tự; chọn nơi rô bốt nghỉ",
+    "learn": "Xem lịch, các ngày trong tuần, kể chuyện theo tranh",
+    "reward": "70 XP, 18 Xu, Skill XP Xem lịch, Kể chuyện, Gấu bông ôm",
+    "next": "Cún muốn dạy rô bốt một trò mới"
+  },
+  "phases": {
+    "hook": "giay-nghi-phep",
+    "explore": "cat-do-choi",
+    "learn": "ngay-di-lam",
+    "challenge": "xep-tranh",
+    "decision": "noi-nghi-phep",
+    "finale": "noi-nghi-phep",
+    "reward": "ky-nghi-dau-tien",
+    "next": "tro-moi-cho-ro-bot"
+  },
+  "places": {
+    "cun-dom-don-nha": "Thềm nhà",
+    "cat-do-choi": "Góc đồ chơi",
+    "st-cun-dom-ro-bot-gau-bong": "Góc đồ chơi",
+    "st-cun-dom-ro-bot-khoi-go": "Góc đồ chơi",
+    "st-cun-dom-ro-bot-dieu-giay": "Góc đồ chơi",
+    "st-cun-dom-ro-bot-lich-ban": "Góc học tập",
+    "st-cun-dom-ro-bot-tranh-ke-chuyen": "Phòng khách",
+    "st-cun-dom-ro-bot-ro-bot-nghi-phep": "Cổng trước nhà"
+  },
+  "steps": [
+    {
+      "id": "giay-nghi-phep",
+      "title": "Tờ giấy nghỉ phép",
+      "goTo": "Ra thềm nhà, Cún Đốm Dọn Nhà đang vẫy tờ giấy nghỉ phép",
+      "kind": "dialogue",
+      "target": "cun-dom-don-nha",
+      "lines": [
+        {
+          "speaker": "Cún Đốm Dọn Nhà",
+          "text": "Gâu gâu gâu! Ba tiếng gâu là tin rất vui: Cún vừa viết xong giấy nghỉ phép cho rô bốt!"
+        },
+        {
+          "speaker": "Cún Đốm Dọn Nhà",
+          "text": "Ước mơ của Cún là dọn nhà sạch tới mức rô bốt phải xin nghỉ vì hết việc. Hôm nay ước mơ ấy thành thật rồi."
+        },
+        {
+          "speaker": "Cún Đốm Dọn Nhà",
+          "text": "Còn góc đồ chơi hơi bừa thôi. Dọn nốt là rô bốt được đi chơi!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình dọn góc đồ chơi ngay!",
+          "reply": "Gâu! Gấu bông lên ghế, khối gỗ vào hộp, diều treo lên giá."
+        },
+        {
+          "text": "Rô bốt nghỉ phép thì đi đâu nhỉ?",
+          "reply": "Cún chưa biết. Mình cùng nghĩ nhé!"
+        }
+      ],
+      "en": {
+        "title": "The holiday note",
+        "goTo": "Go to the front step, where Cún Đốm Dọn Nhà is waving the holiday note",
+        "lines": [
+          "Woof woof woof! Three woofs means very good news: I've just written the robot's holiday note!",
+          "My dream was a house so clean the robot would ask for leave because there's nothing left to do. Today it came true.",
+          "Only the toy corner is a bit messy. Tidy that and the robot can go on holiday!"
+        ],
+        "choices": [
+          {
+            "text": "Let's tidy the toy corner now!",
+            "reply": "Woof! Teddy on the chair, blocks in the box, kite on the shelf."
+          },
+          {
+            "text": "Where does a robot go on holiday?",
+            "reply": "I don't know yet. Let's think together!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cat-do-choi",
+      "title": "Cất đồ chơi về chỗ",
+      "goTo": "Lên góc đồ chơi cất gấu bông, khối gỗ và cánh diều",
+      "kind": "search",
+      "targets": [
+        "st-cun-dom-ro-bot-gau-bong",
+        "st-cun-dom-ro-bot-khoi-go",
+        "st-cun-dom-ro-bot-dieu-giay"
+      ],
+      "en": {
+        "title": "Putting the toys away",
+        "goTo": "Go up to the toy corner and put away the teddy, the blocks and the kite"
+      }
+    },
+    {
+      "id": "ngay-di-lam",
+      "title": "Ngày nghỉ cuối là thứ mấy?",
+      "goTo": "Xuống góc học tập xem cuốn lịch để bàn",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-cun-dom-ro-bot-lich-ban",
+      "skill": "xem-lich",
+      "prompt": "Giấy nghỉ phép ghi: rô bốt được nghỉ 7 ngày liền, bắt đầu từ thứ Hai. Ngày nghỉ cuối cùng của rô bốt là thứ mấy?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Thứ Bảy"
+        },
+        {
+          "id": "b",
+          "text": "Chủ nhật"
+        },
+        {
+          "id": "c",
+          "text": "Thứ Hai tuần sau"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Một tuần có 7 ngày: thứ Hai, thứ Ba, thứ Tư, thứ Năm, thứ Sáu, thứ Bảy, Chủ nhật.",
+          "Bắt đầu từ thứ Hai, đếm đủ 7 ngày."
+        ],
+        "hint": "Ngày thứ bảy kể từ thứ Hai là ngày cuối tuần.",
+        "answer": {
+          "text": "Chủ nhật",
+          "explanation": "Đếm từ thứ Hai là ngày 1 thì Chủ nhật là ngày 7, nên rô bốt nghỉ tới hết Chủ nhật và thứ Hai tuần sau đi làm lại."
+        },
+        "en": {
+          "guide": [
+            "A week has 7 days: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.",
+            "Start on Monday and count 7 days."
+          ],
+          "hint": "The seventh day from Monday is the end of the week.",
+          "answer": {
+            "text": "Sunday",
+            "explanation": "Counting Monday as day 1, Sunday is day 7, so the robot rests until the end of Sunday and is back on the next Monday."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Chủ nhật! Cún khoanh tròn ngày ấy bằng bút đỏ.",
+          "{name} đếm ngày trong tuần không sót ngày nào. Gâu!",
+          "Bảy ngày tròn một tuần, rô bốt nghỉ đúng một tuần lễ."
+        ],
+        "wrong": [
+          "Thứ Bảy mới là ngày thứ sáu thôi, đếm thêm một ngày nữa nhé.",
+          "Thứ Hai tuần sau là ngày rô bốt đi làm lại rồi, không còn nghỉ nữa.",
+          "Cún giơ bảy ngón… à, bảy cái móng. Đếm lại theo móng Cún xem."
+        ],
+        "en": {
+          "right": [
+            "Sunday! Cún circles it in red pen.",
+            "You counted the days of the week without missing one, {name}. Woof!",
+            "Seven days is one whole week; the robot gets exactly a week off."
+          ],
+          "wrong": [
+            "Saturday is only the sixth day; count one more.",
+            "The next Monday is when it goes back to work, not a day off.",
+            "Cún holds up seven fingers… well, seven claws. Count along again."
+          ]
+        }
+      },
+      "en": {
+        "title": "What day is the last day off?",
+        "goTo": "Go down to the study corner to look at the desk calendar",
+        "prompt": "The holiday note says the robot gets 7 days off in a row, starting on Monday. On what day is the robot's last day off?",
+        "choices": [
+          "Saturday",
+          "Sunday",
+          "The next Monday"
+        ]
+      }
+    },
+    {
+      "id": "xep-tranh",
+      "title": "Bốn bức tranh của Cún",
+      "goTo": "Vào phòng khách, Cún dựng bốn bức tranh dựa vào tường",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-cun-dom-ro-bot-tranh-ke-chuyen",
+      "skill": "ke-chuyen",
+      "prompt": "Cún vẽ bốn bức tranh tặng rô bốt. Xếp tranh theo đúng thứ tự câu chuyện:",
+      "items": [
+        {
+          "id": "tong-ve-sinh",
+          "label": "Cả nhà tổng vệ sinh, rô bốt hát bíp bíp"
+        },
+        {
+          "id": "nghi-phep",
+          "label": "Rô bốt đeo nơ đi nghỉ phép"
+        },
+        {
+          "id": "dung-im",
+          "label": "Rô bốt dỗi, đứng im giữa phòng khách"
+        },
+        {
+          "id": "go-ket",
+          "label": "Cún và bạn gỡ đồ kẹt dưới bánh xe"
+        }
+      ],
+      "answer": {
+        "order": [
+          "dung-im",
+          "go-ket",
+          "tong-ve-sinh",
+          "nghi-phep"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Chuyện bắt đầu khi rô bốt gặp rắc rối.",
+          "Kết thúc là phần thưởng cho rô bốt."
+        ],
+        "hint": "Dỗi → gỡ kẹt → tổng vệ sinh → nghỉ phép.",
+        "answer": {
+          "text": "Rô bốt dỗi, gỡ đồ kẹt, tổng vệ sinh, đi nghỉ phép",
+          "explanation": "Rô bốt dỗi trước nên phải gỡ kẹt cho nó; sau đó cả nhà tổng vệ sinh, nhà sạch rồi rô bốt mới được nghỉ phép."
+        },
+        "en": {
+          "guide": [
+            "The story begins when the robot has trouble.",
+            "It ends with the robot's reward."
+          ],
+          "hint": "Sulks → unjammed → cleaning day → holiday.",
+          "answer": {
+            "text": "It sulks, gets unjammed, the cleaning day, the holiday",
+            "explanation": "The robot sulked first so its wheels were cleared; then the family cleaned, and once the house was spotless the robot got its holiday."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng thứ tự! Cún treo bốn bức tranh thành một hàng thẳng tắp.",
+          "{name} kể chuyện bằng tranh hay như kể bằng miệng.",
+          "Rô bốt đứng trước tranh, đèn nhấp nháy như đang xúc động."
+        ],
+        "wrong": [
+          "Rô bốt chưa dỗi thì sao lại gỡ kẹt được nhỉ?",
+          "Nghỉ phép là phần thưởng, phải để cuối cùng chứ.",
+          "Thử nhớ lại hôm đầu tiên {name} tới giúp Cún xem chuyện gì xảy ra."
+        ],
+        "en": {
+          "right": [
+            "Right order! Cún hangs the four pictures in a perfectly straight row.",
+            "You tell a story with pictures as well as with words, {name}.",
+            "The robot stands before the pictures, its light blinking as if moved."
+          ],
+          "wrong": [
+            "How could we clear its wheels before it even sulked?",
+            "The holiday is the reward; it goes last.",
+            "Think back to the first day you came to help: what happened?"
+          ]
+        }
+      },
+      "en": {
+        "title": "Cún's four pictures",
+        "goTo": "Go into the living room, where Cún has leaned four pictures against the wall",
+        "prompt": "Cún painted four pictures for the robot. Put them in the order the story happened:",
+        "items": [
+          "The whole house cleans and the robot beeps a song",
+          "The robot goes on holiday wearing a bow",
+          "The robot sulks, standing still in the living room",
+          "Cún and a friend clear its jammed wheels"
+        ]
+      }
+    },
+    {
+      "id": "noi-nghi-phep",
+      "title": "Rô bốt nghỉ ở đâu?",
+      "goTo": "Đưa rô bốt ra cổng trước nhà, nơi kỳ nghỉ bắt đầu",
+      "kind": "decision",
+      "target": "st-cun-dom-ro-bot-ro-bot-nghi-phep",
+      "speaker": "Cún Đốm Dọn Nhà",
+      "prompt": "Cún buộc nơ cho rô bốt rồi đưa nó ra cổng: «Một tuần nghỉ phép. Tròn Xoe đi đâu bây giờ?»",
+      "choices": [
+        {
+          "id": "phoi-nang",
+          "text": "Nằm phơi nắng cạnh cổng, ngắm người qua lại",
+          "consequence": "Rô bốt nằm ấm áp dưới nắng. Ai đi qua cũng vẫy, nó nhấp nháy đèn chào lại."
+        },
+        {
+          "id": "ngam-ao",
+          "text": "Ra cầu tàu ngắm ao và đàn cá",
+          "consequence": "Rô bốt ngồi mép cầu tàu, đèn phản chiếu xuống mặt ao lấp lánh như một con cá sáng."
+        },
+        {
+          "id": "ngu-canh-cun",
+          "text": "Ngủ trong ổ cạnh Cún, đọc truyện cho nhau nghe",
+          "consequence": "Cún kể truyện, rô bốt kêu bíp bíp đúng chỗ. Cún bảo đó là cách nó cười."
+        }
+      ],
+      "en": {
+        "title": "Where will the robot rest?",
+        "goTo": "Take the robot out to the front gate, where its holiday begins",
+        "prompt": "Cún ties a bow on the robot and takes it to the gate: \"A week's holiday. Where should Tròn Xoe go?\"",
+        "choices": [
+          {
+            "text": "Sunbathe by the gate and watch people pass",
+            "consequence": "The robot basks in the sun. Everyone who passes waves, and it blinks back."
+          },
+          {
+            "text": "Go to the jetty to watch the pond and the fish",
+            "consequence": "The robot sits at the jetty's edge, its light shimmering on the pond like a glowing fish."
+          },
+          {
+            "text": "Sleep in Cún's bed and tell each other stories",
+            "consequence": "Cún tells stories and the robot beeps at all the right moments. Cún says that's how it laughs."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ky-nghi-dau-tien",
+      "title": "Kỳ nghỉ đầu tiên",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Cún tặng {name} chú gấu bông ngoan nhất góc đồ chơi: «Gấu này ôm ngủ là mơ thấy nhà sạch.»",
+      "en": {
+        "title": "The first holiday",
+        "text": "Cún gives {name} the best-behaved teddy from the toy corner: \"Hug him to sleep and you'll dream of a clean house.\""
+      }
+    },
+    {
+      "id": "tro-moi-cho-ro-bot",
+      "title": "Trò mới cho rô bốt",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Khi rô bốt đi làm lại, Cún định dạy nó một trò mới: nhặt tất về đúng giỏ. Cún bảo trò này khó lắm, vì tất trong nhà cứ biến đâu mất.",
+      "en": {
+        "title": "A new trick for the robot",
+        "text": "When the robot comes back, Cún plans to teach it a new trick: putting socks in the right basket. He says it's hard, because socks in this house keep vanishing."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "xem-lich": 1,
+      "ke-chuyen": 1
+    },
+    "items": {
+      "gau-bong-om": 1
+    }
+  },
+  "en": {
+    "title": "Cún Đốm Dọn Nhà's story, chapter 3: The robot's holiday",
+    "summary": "The house is so clean the robot has nothing to do. {name} puts the toys away, works out when the robot goes back to work, orders pictures that retell Tròn Xoe's story and chooses where it spends its holiday."
+  }
+}

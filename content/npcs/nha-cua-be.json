@@ -246,6 +246,92 @@
           }
         }
       ]
+    },
+    {
+      "id": "meo-bep-mam-com",
+      "npc": "meo-bep-truong",
+      "title": { "vi": "Mâm cơm đủ mọi miền", "en": "A Table for Every Homeland" },
+      "teaser": { "vi": "Rửa tay. Ngồi. Nghe. Chủ nhật này nhà mình mời khách từ khắp nơi, Mèo muốn ai ngồi vào mâm cũng gặp món quê mình. {name} phụ bếp chứ?", "en": "Wash hands. Sit. Listen. This Sunday we have guests from all over, and I want everyone at the table to find a dish from home. Will you help in the kitchen, {name}?" },
+      "chapters": [
+        {
+          "quest": "yarn-meo-bep-mam-com-1",
+          "hearts": 0,
+          "letter": {
+            "from": "meo-bep-truong",
+            "title": { "vi": "Bát canh để phần", "en": "A bowl kept for you" },
+            "body": { "vi": "{name}, tối nay Mèo nấu lại nồi canh lần thứ ba, chua vừa tới. Mèo để phần một bát trong chạn, đậy kỹ. Mai ra cổng sớm, thiệp khách mời sắp về.", "en": "{name}, tonight I cooked the soup a third time and it is just sour enough. A bowl is waiting for you in the cupboard, lid on tight. Come to the gate early tomorrow; the guests' replies are arriving." },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-meo-bep-mam-com-2",
+          "hearts": 1,
+          "letter": {
+            "from": "chu-lai-do-ba",
+            "title": { "vi": "Thư từ bến sông", "en": "A letter from the river landing" },
+            "body": { "vi": "Này cháu {name}, Mèo viết thư khoe có phó bếp mới, chữ nắn nót như lần đầu đi học. Chú gửi kèm ít vảy cá bạc, treo ở cửa bếp cho may. Chủ nhật chú tới, cháu ngồi cạnh chú nghe chuyện sông nhé.", "en": "Young {name}, Mèo wrote to boast about his new assistant, in handwriting as careful as a first day at school. I'm sending a silver fish scale for luck; hang it by the kitchen door. When I come on Sunday, sit by me and hear the river stories." },
+            "reward": { "coins": 20, "xp": 15, "items": {"vay-ca-bac": 1} }
+          }
+        },
+        {
+          "quest": "yarn-meo-bep-mam-com-3",
+          "hearts": 2,
+          "letter": {
+            "from": "gau-banh-ngot",
+            "title": { "vi": "Thư từ lò nướng ngoài sân", "en": "A letter from the yard oven" },
+            "body": { "vi": "{name} ơi, Gấu nghe radio trong bếp hát lại mà suýt làm rơi khay bánh! Mèo giả vờ không vui nhưng đuôi ngoe nguẩy cả buổi chiều. Gấu gửi {name} mấy xu mua kẹo, đừng kể với Mèo là Gấu khen nhé.", "en": "{name}, I heard the kitchen radio singing again and nearly dropped my tray of cakes! Mèo pretends not to be pleased, but his tail swished all afternoon. Here are a few coins for sweets; don't tell Mèo I said something nice." },
+            "reward": { "coins": 15, "xp": 20, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-meo-bep-mam-com-4",
+          "hearts": 3,
+          "letter": {
+            "from": "meo-bep-truong",
+            "title": { "vi": "Thư của tướng nhà bếp", "en": "From the general of the kitchen" },
+            "body": { "vi": "{name}. Mâm cơm hôm nay là mâm ngon nhất đời Mèo. Không phải vì Mèo nấu giỏi. Vì có người đứng cạnh lúc Mèo sợ. Mèo gửi {name} chiếc vảy cá chú Ba tặng, treo cạnh giường cho may.", "en": "{name}. Today's meal was the best of my life. Not because I cook well. Because someone stood beside me when I was afraid. I'm sending you the fish scale Chú Ba gave me; hang it by your bed for luck." },
+            "reward": { "coins": 25, "xp": 25, "items": {"vay-ca-bac": 1} }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cun-dom-ro-bot",
+      "npc": "cun-dom-don-nha",
+      "title": { "vi": "Ngày rô bốt được nghỉ phép", "en": "The Day the Robot Took a Holiday" },
+      "teaser": { "vi": "Gâu! Một, hai, ba: rô bốt hút bụi của nhà mình đang dỗi, đứng im giữa phòng khách. {name} giúp Cún dỗ nó chứ?", "en": "Woof! One, two, three: our robot vacuum is sulking, standing still in the middle of the living room. Will you help me cheer it up, {name}?" },
+      "chapters": [
+        {
+          "quest": "yarn-cun-dom-ro-bot-1",
+          "hearts": 0,
+          "letter": {
+            "from": "cun-dom-don-nha",
+            "title": { "vi": "Bíp bíp chúc ngủ ngon", "en": "Beep beep, good night" },
+            "body": { "vi": "Gâu! {name} ơi, tối nay rô bốt Tròn Xoe hút sạch phòng khách mà không kẹt lần nào. Một: Cún xếp dép xong. Hai: Cún đếm gối xong. Ba: Cún viết thư cho {name} đây. Mai tổng vệ sinh nhé!", "en": "Woof! {name}, tonight Tròn Xoe vacuumed the whole living room without jamming once. One: sandals lined up. Two: pillows counted. Three: writing to you. Cleaning day tomorrow!" },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-cun-dom-ro-bot-2",
+          "hearts": 1,
+          "letter": {
+            "from": "ong-bay-co-ganh",
+            "title": { "vi": "Thư từ dưới xóm", "en": "A letter from the neighbourhood" },
+            "body": { "vi": "Cháu {name}, ông là Ông Bảy. Hồi ông bằng tuổi cháu, nhà ông làm gì có rô bốt, cả nhà cầm chổi quét chung, vừa quét vừa hát. Cún viết thư khoe ngày tổng vệ sinh, ông đọc mà nhớ quá. Ông gửi cháu ít xu, mua kẹo chia cho Cún nữa nhé.", "en": "Young {name}, it's Ông Bảy. When I was your age there were no robots; the whole family swept together and sang while they swept. Cún wrote to tell me about the cleaning day and it made me nostalgic. Here are a few coins; buy some sweets and share them with Cún." },
+            "reward": { "coins": 20, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-cun-dom-ro-bot-3",
+          "hearts": 2,
+          "letter": {
+            "from": "tho-lam-vuon",
+            "title": { "vi": "Thư từ vườn rau", "en": "A letter from the vegetable garden" },
+            "body": { "vi": "Đoán xem! Thỏ thấy rô bốt Tròn Xoe đeo nơ ra cổng phơi nắng đấy! Nhà sạch thì vườn cũng phải sạch, Thỏ đã nhổ hết cỏ dại rồi. Thỏ gửi {name} một củ cà rốt ngọt, ăn xong nhớ khen vườn của Thỏ nhé.", "en": "Guess what! I saw Tròn Xoe wearing a bow, sunbathing by the gate! A clean house deserves a clean garden, so I pulled every weed. Here's a sweet carrot for you, {name}; when you eat it, remember to praise my garden." },
+            "reward": { "coins": 20, "xp": 20, "items": {"cu-ca-rot-ngot": 1} }
+          }
+        }
+      ]
     }
   ]
 }

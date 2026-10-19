@@ -1,0 +1,320 @@
+{
+  "id": "yarn-nai-nghin-dom-dom-3",
+  "region": "khu-rung-bi-mat",
+  "chapter": 4,
+  "title": "Chuyện của Nai Đom Đóm, chương 3: Đêm rừng tắt đèn",
+  "status": "active",
+  "category": "story",
+  "summary": "Khách cắm trại thắp đèn sáng trưng, đom đóm không về trảng cỏ. {name} tìm đồ che bớt ánh đèn, tính số đom đóm của cả trảng, chọn cách nói chuyện với khách rồi cùng Nai nối các chòm sao trong đêm rừng tắt đèn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Nai Đom Đóm",
+    "where": "Rừng sâu: trảng cỏ đêm, khu lều trại, đồi cỏ thấp, lối mòn đêm",
+    "goal": "Mời đom đóm trở về trảng cỏ và đếm đủ một nghìn con",
+    "play": "Tìm đồ che đèn theo lời tả; tính số đom đóm theo trăm; chọn cách nói với khách; nối chòm sao",
+    "learn": "Đọc hiểu, số tròn trăm và số 1000",
+    "reward": "75 XP, 20 Xu, Skill XP Số đến 100, Đọc hiểu, Bướm lam rừng",
+    "next": "Mỗi tháng một đêm rừng tắt đèn"
+  },
+  "phases": {
+    "hook": "dom-dom-khong-ve",
+    "explore": "do-che-den",
+    "learn": "nghin-dom-dom",
+    "challenge": "noi-voi-khach",
+    "decision": "noi-voi-khach",
+    "finale": "noi-chom-sao",
+    "reward": "dem-mot-nghin",
+    "next": "dem-tat-den-hang-thang"
+  },
+  "places": {
+    "nai-dom-dom": "Trảng cỏ đêm",
+    "do-che-den": "Khu lều trại",
+    "st-nai-nghin-dom-dom-tam-vai-che-den": "Khu lều trại",
+    "st-nai-nghin-dom-dom-chup-den-la": "Khu lều trại",
+    "st-nai-nghin-dom-dom-den-long-mo": "Khu lều trại",
+    "st-nai-nghin-dom-dom-doi-co-thap": "Đồi cỏ thấp",
+    "st-nai-nghin-dom-dom-loi-mon-khach": "Lối mòn đêm",
+    "st-nai-nghin-dom-dom-tam-da-ngam-sao": "Đồi cỏ thấp"
+  },
+  "steps": [
+    {
+      "id": "dom-dom-khong-ve",
+      "title": "Đom đóm không về",
+      "goTo": "Tới trảng cỏ đêm, Nai Đom Đóm đang nhìn về phía lều trại sáng trưng",
+      "kind": "dialogue",
+      "target": "nai-dom-dom",
+      "lines": [
+        {
+          "speaker": "Nai Đom Đóm",
+          "text": "Ừm… {name}. Đêm qua trảng cỏ tối om mà chẳng có đốm sáng nào. Khách cắm trại thắp đèn sáng như ban ngày."
+        },
+        {
+          "speaker": "Nai Đom Đóm",
+          "text": "Đom đóm thích chỗ tối. Đèn sáng quá, chúng không tìm thấy nhau nữa. Tớ chỉ mong đêm nay chúng về."
+        },
+        {
+          "speaker": "Nai Đom Đóm",
+          "text": "Mình không đuổi khách đâu. Mình chỉ cần ánh đèn dịu lại một chút thôi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình đi tìm đồ che đèn!",
+          "reply": "Ừm… cậu tốt bụng như ánh trăng."
+        },
+        {
+          "text": "Khách chắc không biết đâu Nai ạ.",
+          "reply": "Ừ, chắc vậy. Biết rồi chắc họ cũng thương đom đóm."
+        }
+      ],
+      "en": {
+        "title": "The fireflies stayed away",
+        "goTo": "Go to the night meadow, where Nai Đom Đóm is watching the brightly lit tents",
+        "lines": [
+          "Mm… {name}. Last night the meadow was dark, but not one little light. The campers lit lamps as bright as day.",
+          "Fireflies love the dark. With lamps that bright, they can't find each other. I just hope they come back tonight.",
+          "We won't chase the campers away. We just need the lamps a little softer."
+        ],
+        "choices": [
+          {
+            "text": "Let's find things to cover the lamps!",
+            "reply": "Mm… you're as kind as moonlight."
+          },
+          {
+            "text": "The campers probably just don't know.",
+            "reply": "Yes, probably. Once they know, they'll care for the fireflies too."
+          }
+        ]
+      }
+    },
+    {
+      "id": "do-che-den",
+      "title": "Tìm đồ che bớt ánh đèn",
+      "goTo": "Tới khu lều trại tìm đồ che bớt ánh đèn",
+      "kind": "find-object",
+      "prompt": "Những thứ này giúp đèn dịu đi mà khách vẫn đủ sáng. Đọc lời tả rồi tìm từng món:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "vai",
+          "name": "Tấm vải che đèn",
+          "clue": "Màu xanh đêm, mỏng như cánh chuồn, phủ lên đèn thì ánh sáng mờ như trăng non.",
+          "target": "st-nai-nghin-dom-dom-tam-vai-che-den"
+        },
+        {
+          "id": "chup",
+          "name": "Chụp đèn bằng lá",
+          "clue": "Đan bằng lá cọ, có nhiều lỗ nhỏ, ánh đèn lọt qua lấm tấm như sao.",
+          "target": "st-nai-nghin-dom-dom-chup-den-la"
+        },
+        {
+          "id": "denmo",
+          "name": "Đèn lồng giấy mờ",
+          "clue": "Tròn như quả bưởi, giấy vàng nhạt, sáng vừa đủ thấy đường đi.",
+          "target": "st-nai-nghin-dom-dom-den-long-mo"
+        }
+      ],
+      "en": {
+        "title": "Finding ways to soften the light",
+        "goTo": "Go to the campsite to find things that soften the lamplight",
+        "prompt": "These soften a lamp but leave the campers enough light. Read each description and find them:",
+        "items": [
+          {
+            "name": "The lamp cloth",
+            "clue": "Night blue and thin as a dragonfly wing; draped over a lamp, the light turns faint as a new moon."
+          },
+          {
+            "name": "The leaf lampshade",
+            "clue": "Woven from palm leaves with many small holes; the light speckles through like stars."
+          },
+          {
+            "name": "The dim paper lantern",
+            "clue": "Round as a pomelo, pale yellow paper, just bright enough to see the path."
+          }
+        ]
+      }
+    },
+    {
+      "id": "nghin-dom-dom",
+      "title": "Một nghìn đốm sáng",
+      "goTo": "Lên đồi cỏ thấp nhìn ra cả trảng cỏ",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-nai-nghin-dom-dom-doi-co-thap",
+      "skill": "so-den-100",
+      "prompt": "Đèn đã dịu, đom đóm bay về đông nghịt. Nai chia trảng cỏ thành 10 bãi nhỏ, bãi nào cũng có đúng 100 con. Cả trảng cỏ có bao nhiêu con đom đóm?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "110 con"
+        },
+        {
+          "id": "b",
+          "text": "1000 con"
+        },
+        {
+          "id": "c",
+          "text": "100 con"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Mười bãi, mỗi bãi một trăm.",
+          "Đếm theo trăm: một trăm, hai trăm, ba trăm… tới mười trăm."
+        ],
+        "hint": "Mười trăm còn gọi là gì?",
+        "answer": {
+          "text": "1000 con đom đóm",
+          "explanation": "Mười trăm là một nghìn, nên cả trảng cỏ có 1000 con đom đóm."
+        },
+        "en": {
+          "guide": [
+            "Ten patches, a hundred in each.",
+            "Count in hundreds: one hundred, two hundred, three hundred… up to ten hundred."
+          ],
+          "hint": "What is ten hundreds also called?",
+          "answer": {
+            "text": "1000 fireflies",
+            "explanation": "Ten hundreds is one thousand, so the whole meadow holds 1000 fireflies."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Một nghìn! Ừm… ước mơ của Nai sáng rực cả trảng cỏ rồi.",
+          "{name} đếm theo trăm giỏi như đếm sao theo chòm.",
+          "Mười trăm là một nghìn. Nai ghi số ấy thật to vào sổ."
+        ],
+        "wrong": [
+          "Một trăm chỉ là một bãi thôi, mà có tới mười bãi cơ.",
+          "Mười bãi mỗi bãi một trăm, không phải một trăm cộng mười đâu.",
+          "Ừm… đếm từng trăm một, chậm thôi, như đếm sao ấy."
+        ],
+        "en": {
+          "right": [
+            "A thousand! Mm… Nai's dream is lighting up the whole meadow.",
+            "You count in hundreds as well as counting stars by constellation, {name}.",
+            "Ten hundreds make a thousand. Nai writes it big in the book."
+          ],
+          "wrong": [
+            "A hundred is just one patch, and there are ten.",
+            "Ten patches of a hundred each, not a hundred plus ten.",
+            "Mm… count one hundred at a time, slowly, like counting stars."
+          ]
+        }
+      },
+      "en": {
+        "title": "A thousand lights",
+        "goTo": "Climb the low grassy hill to look over the whole meadow",
+        "prompt": "With the lamps softened, fireflies pour back. Nai divides the meadow into 10 small patches, each with exactly 100 fireflies. How many fireflies are in the whole meadow?",
+        "choices": [
+          "110",
+          "1000",
+          "100"
+        ]
+      }
+    },
+    {
+      "id": "noi-voi-khach",
+      "title": "Nói gì với khách?",
+      "goTo": "Ra lối mòn đêm, nơi một bạn khách cắm trại đang đi tới",
+      "kind": "decision",
+      "target": "st-nai-nghin-dom-dom-loi-mon-khach",
+      "speaker": "Nai Đom Đóm",
+      "prompt": "Một bạn khách cầm đèn pin đi trên lối mòn, tò mò nhìn đàn đom đóm. Nai ngượng, nép sau lưng {name}. {name} nói gì?",
+      "choices": [
+        {
+          "id": "moi-ngam",
+          "text": "Mời khách cùng tắt đèn ngắm đom đóm",
+          "consequence": "Bạn khách tắt đèn pin, há hốc miệng nhìn cả nghìn đốm sáng. Bạn ấy hứa sẽ kể cho cả đoàn."
+        },
+        {
+          "id": "treo-bien",
+          "text": "Treo biển «Xin dịu đèn, đom đóm đang về»",
+          "consequence": "Tấm biển nhỏ treo ở cổng trại. Đêm ấy lều nào cũng thắp đèn mờ, như những quả cam ấm."
+        },
+        {
+          "id": "tang-den-mo",
+          "text": "Tặng khách chiếc đèn lồng giấy mờ",
+          "consequence": "Bạn khách cầm đèn lồng, mỉm cười: «Đẹp hơn đèn pin nhiều.» Nai thì thầm cảm ơn, má ửng hồng."
+        }
+      ],
+      "en": {
+        "title": "What to tell the campers?",
+        "goTo": "Go to the night trail, where a camper is walking towards you",
+        "prompt": "A camper with a torch walks along the trail, curious about the fireflies. Nai, shy, hides behind {name}. What do you say?",
+        "choices": [
+          {
+            "text": "Invite the camper to switch off and watch the fireflies",
+            "consequence": "The camper switches off the torch and gasps at a thousand lights. They promise to tell the whole group."
+          },
+          {
+            "text": "Hang a sign: \"Please dim your lights, fireflies coming home\"",
+            "consequence": "The little sign hangs at the camp gate. That night every tent glows dimly, like warm oranges."
+          },
+          {
+            "text": "Give the camper the dim paper lantern",
+            "consequence": "The camper holds the lantern and smiles: \"Much prettier than a torch.\" Nai whispers thanks, cheeks turning pink."
+          }
+        ]
+      }
+    },
+    {
+      "id": "noi-chom-sao",
+      "title": "Nối chòm sao",
+      "goTo": "Quay lại đồi cỏ thấp, nằm trên tảng đá ngắm sao",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-nai-nghin-dom-dom-tam-da-ngam-sao",
+      "prompt": "Rừng đã tắt đèn, sao hiện rõ từng ngôi. Nằm cạnh Nai nối các chòm sao, ghi hai điểm nhé!",
+      "game": "star-connect",
+      "goal": 2,
+      "en": {
+        "title": "Joining the constellations",
+        "goTo": "Go back to the low hill and lie on the stargazing rock",
+        "prompt": "With the forest dark, every star shows clearly. Lie beside Nai and join the constellations: score two points!"
+      }
+    },
+    {
+      "id": "dem-mot-nghin",
+      "title": "Đêm một nghìn đốm sáng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Nai vui tới mức nhảy một vòng thật nhẹ trên cỏ, rồi ngượng ngùng tặng {name} chú bướm lam đậu trên sừng mình.",
+      "en": {
+        "title": "The night of a thousand lights",
+        "text": "Nai is so happy she gives one soft little leap in the grass, then shyly offers {name} the blue butterfly resting on her antlers."
+      }
+    },
+    {
+      "id": "dem-tat-den-hang-thang",
+      "title": "Mỗi tháng một đêm tắt đèn",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Khách cắm trại xin mỗi tháng tổ chức một đêm rừng tắt đèn để ngắm đom đóm. Nai bảo đêm đầu tiên nhất định phải có {name}.",
+      "en": {
+        "title": "A dark night every month",
+        "text": "The campers ask to hold a lights-out night in the forest every month to watch the fireflies. Nai says the first one must have {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 75,
+    "coin": 20,
+    "skillXp": {
+      "so-den-100": 1,
+      "doc-hieu": 1
+    },
+    "items": {
+      "buom-lam-rung": 1
+    }
+  },
+  "en": {
+    "title": "Nai Đom Đóm's story, chapter 3: Lights out in the forest",
+    "summary": "Campers' bright lamps have kept the fireflies away from the meadow. {name} finds ways to soften the light, works out the fireflies of the whole meadow, chooses how to talk to the campers and joins the constellations with Nai on a night with the lights out."
+  }
+}

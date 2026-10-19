@@ -1,0 +1,394 @@
+{
+  "id": "yarn-khi-day-leo-nhac-3",
+  "region": "khu-rung-bi-mat",
+  "chapter": 2,
+  "title": "Chuyện của Khỉ Chuyền Cành, chương 3: Cuộn nhạc đục lỗ",
+  "status": "active",
+  "category": "story",
+  "summary": "Gói quà của Mèo Hộp Nhạc bung ra trong hốc cây. {name} nhặt lại cuộn giấy nhạc, hộp nhạc và chìa vặn, tìm quy luật các lỗ trên giấy, tính thời gian hộp nhạc chạy, chọn chỗ treo hộp nhạc rồi chơi bản nhạc đầu tiên.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Khỉ Chuyền Cành",
+    "where": "Rừng sâu: cây đu dây, hốc cây rỗng, tảng đá phẳng, rễ cây si, ngọn cây cao",
+    "goal": "Làm hộp nhạc hát ở cuối đường dây",
+    "play": "Tìm đồ theo lời tả; tìm quy luật lỗ nhạc; tính phút hộp nhạc chạy; chọn chỗ treo; chơi hộp nhạc",
+    "learn": "Tìm quy luật, phép cộng các số bằng nhau",
+    "reward": "70 XP, 18 Xu, Skill XP Logic, Phép cộng",
+    "next": "Đường dây sắp hoàn thành"
+  },
+  "phases": {
+    "hook": "goi-qua-bung",
+    "explore": "nhat-goi-qua",
+    "learn": "quy-luat-lo",
+    "challenge": "phut-hop-nhac",
+    "decision": "treo-hop-nhac",
+    "finale": "ban-nhac-dau",
+    "reward": "rung-co-nhac",
+    "next": "duong-day-sap-xong"
+  },
+  "places": {
+    "khi-chuyen-canh": "Cây đu dây",
+    "nhat-goi-qua": "Hốc cây rỗng",
+    "st-khi-day-leo-nhac-cuon-giay-duc-lo": "Hốc cây rỗng",
+    "st-khi-day-leo-nhac-hop-nhac-go": "Hốc cây rỗng",
+    "st-khi-day-leo-nhac-chia-vat-cot": "Hốc cây rỗng",
+    "st-khi-day-leo-nhac-tang-da-phang": "Tảng đá phẳng",
+    "st-khi-day-leo-nhac-re-cay-si": "Rễ cây si",
+    "st-khi-day-leo-nhac-ngon-cay-cao": "Ngọn cây cao"
+  },
+  "steps": [
+    {
+      "id": "goi-qua-bung",
+      "title": "Gói quà bung ra",
+      "goTo": "Tới cây đu dây, Khỉ Chuyền Cành đang ngồi buồn thiu",
+      "kind": "dialogue",
+      "target": "khi-chuyen-canh",
+      "lines": [
+        {
+          "speaker": "Khỉ Chuyền Cành",
+          "text": "Ú òa… à không, hôm nay tớ không ú òa nổi. Mèo Hộp Nhạc gửi tớ một gói quà, mà tớ đu nhanh quá làm rơi vào hốc cây."
+        },
+        {
+          "speaker": "Khỉ Chuyền Cành",
+          "text": "Trong đó có hộp nhạc, cuộn giấy nhạc và cái chìa vặn. Lắp đủ thì cuối đường dây sẽ có nhạc, đúng như tớ mơ!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình nhặt lại hết nhé!",
+          "reply": "Hấp! Nhẹ tay thôi, giấy nhạc dễ rách lắm."
+        }
+      ],
+      "en": {
+        "title": "The burst parcel",
+        "goTo": "Go to the swinging tree, where Khỉ Chuyền Cành sits looking glum",
+        "lines": [
+          "Peekaboo… no, I can't manage a peekaboo today. Mèo Hộp Nhạc sent me a parcel, and I swung so fast I dropped it into a hollow tree.",
+          "There's a music box, a music roll and a winding key. Put them together and the end of our vine line will have music, just like I dreamed!"
+        ],
+        "choices": [
+          {
+            "text": "Let's pick everything up!",
+            "reply": "Hup! Gently: the music paper tears easily."
+          }
+        ]
+      }
+    },
+    {
+      "id": "nhat-goi-qua",
+      "title": "Nhặt lại gói quà",
+      "goTo": "Vào hốc cây rỗng nhặt lại đồ trong gói quà",
+      "kind": "find-object",
+      "prompt": "Đồ trong gói quà rơi lẫn vào lá khô. Đọc lời tả rồi tìm từng món:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "cuon",
+          "name": "Cuộn giấy nhạc",
+          "clue": "Dài như dải lụa, cuộn tròn, chi chít những lỗ nhỏ xếp thành hàng.",
+          "target": "st-khi-day-leo-nhac-cuon-giay-duc-lo"
+        },
+        {
+          "id": "hop",
+          "name": "Hộp nhạc gỗ",
+          "clue": "Nhỏ vừa lòng bàn tay, nắp khắc hình nốt nhạc, lắc nhẹ nghe leng keng.",
+          "target": "st-khi-day-leo-nhac-hop-nhac-go"
+        },
+        {
+          "id": "chia",
+          "name": "Chìa vặn dây cót",
+          "clue": "Bằng đồng, cán cong như tai mèo.",
+          "target": "st-khi-day-leo-nhac-chia-vat-cot"
+        }
+      ],
+      "en": {
+        "title": "Gathering the parcel",
+        "goTo": "Go to the hollow tree and pick up what fell out of the parcel",
+        "prompt": "The parcel's contents are mixed in with dry leaves. Read each description and find them:",
+        "items": [
+          {
+            "name": "The music roll",
+            "clue": "Long as a ribbon, rolled up, dotted with rows of tiny holes."
+          },
+          {
+            "name": "The wooden music box",
+            "clue": "Small enough for a palm, a note carved on the lid, jingling when gently shaken."
+          },
+          {
+            "name": "The winding key",
+            "clue": "Made of brass, its handle curved like a cat's ear."
+          }
+        ]
+      }
+    },
+    {
+      "id": "quy-luat-lo",
+      "title": "Quy luật lỗ nhạc",
+      "goTo": "Trải cuộn giấy nhạc lên tảng đá phẳng",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "st-khi-day-leo-nhac-tang-da-phang",
+      "skill": "logic",
+      "prompt": "Trải cuộn giấy trên tảng đá, {name} thấy các nhóm lỗ tròn: nhóm đầu 1 lỗ, nhóm hai 2 lỗ, nhóm ba 3 lỗ, nhóm bốn bị rách mất, nhóm năm 5 lỗ. Nhóm bốn có mấy lỗ?",
+      "elements": [
+        {
+          "id": "n1",
+          "label": "1 lỗ"
+        },
+        {
+          "id": "n2",
+          "label": "2 lỗ"
+        },
+        {
+          "id": "n3",
+          "label": "3 lỗ"
+        },
+        {
+          "id": "n4",
+          "label": "nhóm bị rách"
+        },
+        {
+          "id": "n5",
+          "label": "5 lỗ"
+        }
+      ],
+      "choices": [
+        {
+          "id": "a",
+          "text": "3 lỗ"
+        },
+        {
+          "id": "b",
+          "text": "4 lỗ"
+        },
+        {
+          "id": "c",
+          "text": "6 lỗ"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Mỗi nhóm hơn nhóm trước mấy lỗ?",
+          "Nhóm bốn nằm giữa nhóm ba và nhóm năm."
+        ],
+        "hint": "3 rồi …, rồi 5.",
+        "answer": {
+          "text": "4 lỗ",
+          "explanation": "Mỗi nhóm thêm 1 lỗ: 1, 2, 3, 4, 5. Vậy nhóm bốn có 4 lỗ."
+        },
+        "en": {
+          "guide": [
+            "How many more holes does each group have than the one before?",
+            "The fourth group sits between the third and the fifth."
+          ],
+          "hint": "3, then …, then 5.",
+          "answer": {
+            "text": "4 holes",
+            "explanation": "Each group adds one hole: 1, 2, 3, 4, 5. So the fourth group had 4 holes."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn lỗ! Khỉ dùng gai cây đục lại bốn lỗ thật tròn.",
+          "{name} nhìn ra nhịp của bản nhạc chỉ bằng mấy cái lỗ.",
+          "Một, hai, ba, bốn, năm. Nghe như đếm bước đu dây! Hấp!"
+        ],
+        "wrong": [
+          "Ba lỗ là nhóm trước rồi, nhóm bốn phải thêm một lỗ.",
+          "Sáu lỗ thì còn nhiều hơn cả nhóm năm đấy.",
+          "Đếm lần lượt từ nhóm đầu, mỗi nhóm thêm bao nhiêu nhỉ?"
+        ],
+        "en": {
+          "right": [
+            "Four holes! Khỉ pokes four neat round holes with a thorn.",
+            "You found the tune's rhythm just from the holes, {name}.",
+            "One, two, three, four, five. Like counting swings! Hup!"
+          ],
+          "wrong": [
+            "Three holes was the group before; the fourth adds one.",
+            "Six holes would be more than even the fifth group.",
+            "Count from the first group: how many does each add?"
+          ]
+        }
+      },
+      "en": {
+        "title": "The pattern of holes",
+        "goTo": "Spread the music roll on the flat rock",
+        "prompt": "Spreading the roll on the flat rock, you see groups of round holes: the first group has 1 hole, the second 2, the third 3, the fourth is torn, and the fifth has 5. How many holes were in the fourth group?",
+        "elements": [
+          "1 hole",
+          "2 holes",
+          "3 holes",
+          "torn group",
+          "5 holes"
+        ],
+        "choices": [
+          "3 holes",
+          "4 holes",
+          "6 holes"
+        ]
+      }
+    },
+    {
+      "id": "phut-hop-nhac",
+      "title": "Hộp nhạc hát bao lâu?",
+      "goTo": "Mang hộp nhạc xuống rễ cây si để lên dây cót",
+      "kind": "riddle",
+      "target": "st-khi-day-leo-nhac-re-cay-si",
+      "skill": "phep-cong",
+      "question": "Mỗi lần lên dây cót, hộp nhạc hát được 15 phút. Khỉ lên dây 3 lần liền. Hộp nhạc hát tất cả bao nhiêu phút?",
+      "answer": {
+        "value": 45
+      },
+      "support": {
+        "guide": [
+          "Ba lần, mỗi lần 15 phút.",
+          "Cộng 15 ba lần."
+        ],
+        "hint": "15 + 15 = 30, thêm 15 nữa là…",
+        "answer": {
+          "text": "45 phút",
+          "explanation": "15 + 15 + 15 = 45, nên hộp nhạc hát 45 phút."
+        },
+        "en": {
+          "guide": [
+            "Three windings of 15 minutes each.",
+            "Add 15 three times."
+          ],
+          "hint": "15 + 15 = 30, plus another 15 is…",
+          "answer": {
+            "text": "45 minutes",
+            "explanation": "15 + 15 + 15 = 45, so the music box plays for 45 minutes."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn mươi lăm phút nhạc, đủ cho cả rừng đu một buổi chiều!",
+          "{name} cộng ba lần mười lăm nhanh hơn tớ ăn ba quả chuối.",
+          "Đúng rồi! Tớ sẽ lên dây đúng ba lần, không thêm không bớt."
+        ],
+        "wrong": [
+          "Khỉ lên dây ba lần cơ, không phải hai lần.",
+          "Thử cộng mười lăm với mười lăm trước, rồi thêm lần nữa.",
+          "Hộp nhạc lắc đầu leng keng: số ấy chưa đúng đâu."
+        ],
+        "en": {
+          "right": [
+            "Forty-five minutes of music, enough for the whole forest to swing all afternoon!",
+            "You added three fifteens faster than I eat three bananas, {name}.",
+            "Right! I'll wind it exactly three times, no more, no less."
+          ],
+          "wrong": [
+            "Khỉ winds it three times, not two.",
+            "Try fifteen plus fifteen first, then add one more.",
+            "The music box jingles no: that number isn't right."
+          ]
+        }
+      },
+      "en": {
+        "title": "How long does the box play?",
+        "goTo": "Take the music box down to the hanging fig roots to wind it",
+        "question": "Each winding makes the music box play for 15 minutes. Khỉ winds it 3 times in a row. How many minutes does it play in all?"
+      }
+    },
+    {
+      "id": "treo-hop-nhac",
+      "title": "Treo hộp nhạc ở đâu?",
+      "goTo": "Leo lên gần ngọn cây cao nhất bãi, nơi gió mang tiếng nhạc đi xa",
+      "kind": "decision",
+      "target": "st-khi-day-leo-nhac-ngon-cay-cao",
+      "speaker": "Khỉ Chuyền Cành",
+      "prompt": "Hộp nhạc đã sẵn sàng. Khỉ nhìn lên ngọn cây cao nhất rồi nuốt nước bọt: «Treo ở đâu cho cả rừng cùng nghe?»",
+      "choices": [
+        {
+          "id": "ngon-cay",
+          "text": "Treo trên ngọn cây cao nhất",
+          "consequence": "Khỉ đu vèo lên, treo xong rồi tụt xuống ngay. Tiếng nhạc bay xa khắp rừng."
+        },
+        {
+          "id": "cuoi-day",
+          "text": "Treo ở cuối đường dây, ai đu tới cũng được nghe",
+          "consequence": "Ai đu tới cuối dây cũng được thưởng một đoạn nhạc. Khỉ bảo đó là «trạm nhạc»."
+        },
+        {
+          "id": "canh-hoa-mi",
+          "text": "Đặt cạnh chỗ dàn chim của Họa Mi tập hát",
+          "consequence": "Họa Mi nghe hộp nhạc, gật gù hát theo. Lần đầu Họa Mi không giận Khỉ chút nào."
+        }
+      ],
+      "en": {
+        "title": "Where to hang the music box?",
+        "goTo": "Climb up near the tallest treetop, where the wind carries music far",
+        "prompt": "The music box is ready. Khỉ looks up at the tallest treetop and gulps: \"Where can the whole forest hear it?\"",
+        "choices": [
+          {
+            "text": "On the very top of the tallest tree",
+            "consequence": "Khỉ whooshes up, hangs it and slides straight back down. The music floats across the forest."
+          },
+          {
+            "text": "At the end of the vine line, for everyone who swings there",
+            "consequence": "Whoever swings to the end gets a burst of music. Khỉ calls it the \"music stop\"."
+          },
+          {
+            "text": "Next to where Họa Mi's bird choir rehearses",
+            "consequence": "Họa Mi hears the box and sings along. For once she isn't cross with Khỉ at all."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ban-nhac-dau",
+      "title": "Bản nhạc đầu tiên",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-khi-day-leo-nhac-ngon-cay-cao",
+      "prompt": "Lên dây cót xong rồi! Chơi hộp nhạc theo đúng giai điệu, ghi ba điểm nhé!",
+      "game": "music-box",
+      "goal": 3,
+      "en": {
+        "title": "The first tune",
+        "prompt": "It's wound up! Play the music box to the right tune and score three points!"
+      }
+    },
+    {
+      "id": "rung-co-nhac",
+      "title": "Rừng có nhạc",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tiếng hộp nhạc tinh tang khắp bãi rừng. Khỉ treo ngược trên cành, nhắm mắt nghe, đuôi đung đưa theo nhịp.",
+      "en": {
+        "title": "Music in the forest",
+        "text": "The music box tinkles all over the glade. Khỉ hangs upside down with his eyes closed, tail swaying to the beat."
+      }
+    },
+    {
+      "id": "duong-day-sap-xong",
+      "title": "Đường dây sắp xong",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chỉ còn kiểm tra các nút buộc nữa là cả rừng được đu tới trạm nhạc. Khỉ bảo có chuyện muốn nói với {name} trước buổi đu đầu tiên.",
+      "en": {
+        "title": "The line is nearly done",
+        "text": "All that's left is checking the knots, and then the whole forest can swing to the music stop. Khỉ says he has something to tell {name} before the first ride."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 70,
+    "coin": 18,
+    "skillXp": {
+      "logic": 1,
+      "phep-cong": 1
+    }
+  },
+  "en": {
+    "title": "Khỉ Chuyền Cành's story, chapter 3: The punched music roll",
+    "summary": "Mèo Hộp Nhạc's parcel burst open in a hollow tree. {name} gathers the music roll, the music box and its key, finds the pattern in the punched holes, works out how long the box plays, chooses where to hang it and plays the first tune."
+  }
+}

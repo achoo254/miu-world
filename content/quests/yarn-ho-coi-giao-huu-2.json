@@ -1,0 +1,394 @@
+{
+  "id": "yarn-ho-coi-giao-huu-2",
+  "region": "truong-hoc",
+  "chapter": 1,
+  "title": "Chuyện của Hổ Còi Vàng, chương 2: Tiếng còi không kêu",
+  "status": "active",
+  "category": "story",
+  "summary": "Buổi tập đầu tiên mà chiếc còi vàng của Hổ Còi Vàng chỉ kêu phì phì. {name} tìm hạt bấc rơi mất, tính giờ tan tập, xếp các bài khởi động rồi chọn cách đón một bạn tới muộn.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Hổ Còi Vàng",
+    "where": "Sân trường: mép sân bóng, đài phun nước, cột cờ, khung thành, đường chạy",
+    "goal": "Sửa còi và tổ chức buổi tập đầu tiên",
+    "play": "Tìm đồ theo lời tả; tính giờ tan tập; xếp bài khởi động; chọn cách đón bạn tới muộn",
+    "learn": "Xem đồng hồ (giờ rưỡi), sắp xếp theo trình tự",
+    "reward": "65 XP, 16 Xu, Skill XP Xem đồng hồ, Logic",
+    "next": "Ngày thi đấu đã tới"
+  },
+  "phases": {
+    "hook": "coi-phi-phi",
+    "explore": "tim-hat-coi",
+    "learn": "gio-tan-tap",
+    "challenge": "bai-khoi-dong",
+    "decision": "ban-toi-muon",
+    "finale": "ban-toi-muon",
+    "reward": "coi-keu-lai",
+    "next": "ngay-thi-dau"
+  },
+  "places": {
+    "ho-coi-vang": "Mép sân bóng",
+    "tim-hat-coi": "Đài phun nước",
+    "st-ho-coi-giao-huu-hat-bac-coi": "Đài phun nước",
+    "st-ho-coi-giao-huu-day-deo-coi": "Đài phun nước",
+    "st-ho-coi-giao-huu-khan-lau-coi": "Đài phun nước",
+    "st-ho-coi-giao-huu-lich-tap-luyen": "Cột cờ",
+    "st-ho-coi-giao-huu-bang-khoi-dong": "Khung thành",
+    "st-ho-coi-giao-huu-vach-duong-chay": "Đường chạy"
+  },
+  "steps": [
+    {
+      "id": "coi-phi-phi",
+      "title": "Còi kêu phì phì",
+      "goTo": "Ra mép sân bóng, Hổ Còi Vàng đang thổi chiếc còi không kêu",
+      "kind": "dialogue",
+      "target": "ho-coi-vang",
+      "lines": [
+        {
+          "speaker": "Hổ Còi Vàng",
+          "text": "Phì… phì… Gừ gừ! Gừ gừ gừ!"
+        },
+        {
+          "speaker": "Hổ Còi Vàng",
+          "text": "{name}, anh nói «tập hợp» mà cả đội tưởng anh đói bụng. Hạt bấc trong còi rơi đâu mất rồi, còi không kêu nữa."
+        },
+        {
+          "speaker": "Hổ Còi Vàng",
+          "text": "Sáng nay anh rửa còi ở đài phun nước. Chắc rơi ở đó. Một, hai… đi tìm!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đi tìm ngay!",
+          "reply": "Tuýt… à, phì. Cảm ơn {name}!"
+        },
+        {
+          "text": "Anh hô bằng miệng cũng được mà!",
+          "reply": "Anh hô mà toàn ra gừ gừ. Cổ họng hổ là thế đấy."
+        }
+      ],
+      "en": {
+        "title": "Pfff goes the whistle",
+        "goTo": "Go to the edge of the pitch, where Hổ Còi Vàng is blowing a silent whistle",
+        "lines": [
+          "Pfff… pfff… Grr grr! Grr grr grr!",
+          "{name}, I said \"line up\" and the whole team thought I was hungry. The pea in my whistle has fallen out and it won't blow.",
+          "I rinsed it at the fountain this morning. It must be there. One, two… go and look!"
+        ],
+        "choices": [
+          {
+            "text": "Leave it to me, I'll search!",
+            "reply": "Whistle… er, pfff. Thanks, {name}!"
+          },
+          {
+            "text": "You could just shout!",
+            "reply": "When I shout it comes out as grr. That's a tiger's throat for you."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-hat-coi",
+      "title": "Tìm hạt bấc của còi",
+      "goTo": "Ra đài phun nước tìm hạt bấc và đồ của chiếc còi",
+      "kind": "find-object",
+      "prompt": "Ba món rơi quanh đài phun nước. Đọc lời tả rồi tìm từng món:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "hat",
+          "name": "Hạt bấc",
+          "clue": "Tròn xoe, nhỏ bằng hạt đậu, nhẹ tới mức nổi lềnh bềnh trên nước.",
+          "target": "st-ho-coi-giao-huu-hat-bac-coi"
+        },
+        {
+          "id": "day",
+          "name": "Dây đeo còi",
+          "clue": "Sợi dây đỏ tết ba sợi, có móc nhỏ ở đầu.",
+          "target": "st-ho-coi-giao-huu-day-deo-coi"
+        },
+        {
+          "id": "khan",
+          "name": "Khăn lau còi",
+          "clue": "Vuông nhỏ, màu vàng như chiếc còi, thêu chữ «Tuýt».",
+          "target": "st-ho-coi-giao-huu-khan-lau-coi"
+        }
+      ],
+      "en": {
+        "title": "Finding the whistle's pea",
+        "goTo": "Go to the fountain to find the pea and the whistle's things",
+        "prompt": "Three things fell around the fountain. Read each description and find them:",
+        "items": [
+          {
+            "name": "The pea",
+            "clue": "Perfectly round, small as a bean, so light it floats on the water."
+          },
+          {
+            "name": "The lanyard",
+            "clue": "A red three-strand braid with a little hook at one end."
+          },
+          {
+            "name": "The polishing cloth",
+            "clue": "Small and square, yellow like the whistle, embroidered with \"Tweet\"."
+          }
+        ]
+      }
+    },
+    {
+      "id": "gio-tan-tap",
+      "title": "Mấy giờ tan tập?",
+      "goTo": "Tới cột cờ đọc tờ lịch tập",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-ho-coi-giao-huu-lich-tap-luyen",
+      "skill": "xem-dong-ho",
+      "prompt": "Tờ lịch dán ở cột cờ ghi: buổi tập bắt đầu lúc 4 giờ chiều và kéo dài 30 phút. Mấy giờ thì tan tập?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "4 giờ 30 phút"
+        },
+        {
+          "id": "b",
+          "text": "5 giờ"
+        },
+        {
+          "id": "c",
+          "text": "3 giờ 30 phút"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "30 phút là nửa giờ.",
+          "Từ 4 giờ thêm nửa giờ thì kim dài chỉ số 6."
+        ],
+        "hint": "4 giờ thêm 30 phút là 4 giờ…",
+        "answer": {
+          "text": "Bốn giờ rưỡi",
+          "explanation": "Bắt đầu 4 giờ, tập 30 phút, tức nửa giờ, nên tan tập lúc 4 giờ 30 phút, còn gọi là 4 giờ rưỡi."
+        },
+        "en": {
+          "guide": [
+            "30 minutes is half an hour.",
+            "From 4 o'clock, half an hour later the long hand points to 6."
+          ],
+          "hint": "4 o'clock plus 30 minutes is…",
+          "answer": {
+            "text": "Half past four",
+            "explanation": "Starting at 4 and training for 30 minutes, half an hour, it ends at 4:30, which is half past four."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn giờ rưỡi! Hổ kẻ một vạch phấn đánh dấu giờ tan tập.",
+          "{name} xem giờ chuẩn như đồng hồ trọng tài.",
+          "Đúng! Nửa giờ là vừa sức cả đội."
+        ],
+        "wrong": [
+          "5 giờ là thêm cả một giờ rồi, nhiều quá.",
+          "3 giờ rưỡi thì còn chưa bắt đầu tập mà.",
+          "Nửa giờ là ba mươi phút đấy, thêm vào bốn giờ xem."
+        ],
+        "en": {
+          "right": [
+            "Half past four! Hổ chalks a line marking the end of training.",
+            "Your timekeeping is as precise as a referee's watch, {name}.",
+            "Right! Half an hour is just enough for the team."
+          ],
+          "wrong": [
+            "5 o'clock would be a whole hour later; too long.",
+            "Half past 3 is before training even starts.",
+            "Half an hour is thirty minutes; add it to four o'clock."
+          ]
+        }
+      },
+      "en": {
+        "title": "When does training end?",
+        "goTo": "Go to the flagpole to read the training schedule",
+        "prompt": "The schedule on the flagpole says: training starts at 4 in the afternoon and lasts 30 minutes. What time does it end?",
+        "choices": [
+          "Half past 4",
+          "5 o'clock",
+          "Half past 3"
+        ]
+      }
+    },
+    {
+      "id": "bai-khoi-dong",
+      "title": "Xếp bài khởi động",
+      "goTo": "Ra khung thành, nơi dựng bảng các bài khởi động",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-ho-coi-giao-huu-bang-khoi-dong",
+      "skill": "logic",
+      "prompt": "Khởi động đúng cách thì không ai bị đau. Xếp các bài tập theo thứ tự hợp lý của một buổi tập:",
+      "items": [
+        {
+          "id": "chuyen-bong",
+          "label": "Tập chuyền bóng theo cặp"
+        },
+        {
+          "id": "di-bo",
+          "label": "Đi bộ chậm quanh sân"
+        },
+        {
+          "id": "tha-long",
+          "label": "Đi bộ thả lỏng, hít thở sâu"
+        },
+        {
+          "id": "chay-nhe",
+          "label": "Chạy nhẹ một vòng"
+        }
+      ],
+      "answer": {
+        "order": [
+          "di-bo",
+          "chay-nhe",
+          "chuyen-bong",
+          "tha-long"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Bắt đầu nhẹ nhất rồi tăng dần.",
+          "Thả lỏng luôn để cuối buổi."
+        ],
+        "hint": "Đi bộ → chạy nhẹ → chuyền bóng → thả lỏng.",
+        "answer": {
+          "text": "Đi bộ, chạy nhẹ, chuyền bóng, thả lỏng",
+          "explanation": "Cơ thể cần nóng lên từ từ: đi bộ, rồi chạy nhẹ, rồi mới tập bóng; xong buổi thì thả lỏng cho khỏi mỏi."
+        },
+        "en": {
+          "guide": [
+            "Start gentlest and build up.",
+            "Cooling down always comes last."
+          ],
+          "hint": "Walk → jog → pass → cool down.",
+          "answer": {
+            "text": "Walk, jog, pass, cool down",
+            "explanation": "The body needs to warm up gradually: walk, then jog, then ball practice; afterwards, cool down so nothing aches."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tuýt! Đúng bài bản! Không ai bị chuột rút.",
+          "{name} xếp bài tập như một huấn luyện viên thật.",
+          "Một, hai, chạy… từ từ thôi! Đúng thứ tự rồi."
+        ],
+        "wrong": [
+          "Chưa khởi động mà chuyền bóng ngay là dễ đau chân lắm.",
+          "Thả lỏng là để kết thúc buổi tập, đừng làm đầu tiên.",
+          "Thử bắt đầu bằng việc nhẹ nhàng nhất xem."
+        ],
+        "en": {
+          "right": [
+            "Whistle! By the book! Nobody gets a cramp.",
+            "You plan a session like a real coach, {name}.",
+            "One, two, run… gently! That's the right order."
+          ],
+          "wrong": [
+            "Passing before warming up is how legs get hurt.",
+            "Cooling down ends the session; don't do it first.",
+            "Try starting with the gentlest thing."
+          ]
+        }
+      },
+      "en": {
+        "title": "Ordering the warm-up",
+        "goTo": "Go to the goal, where the warm-up board stands",
+        "prompt": "A proper warm-up keeps everyone safe. Put the exercises in a sensible order for a training session:",
+        "items": [
+          "Pass the ball in pairs",
+          "Walk slowly round the pitch",
+          "Cool down with a walk and deep breaths",
+          "Jog one gentle lap"
+        ]
+      }
+    },
+    {
+      "id": "ban-toi-muon",
+      "title": "Bạn tới muộn",
+      "goTo": "Ra đường chạy, nơi cả đội đang chạy khởi động",
+      "kind": "decision",
+      "target": "st-ho-coi-giao-huu-vach-duong-chay",
+      "speaker": "Hổ Còi Vàng",
+      "prompt": "Đang khởi động thì Mèo Mướp chạy hộc tốc tới, muộn mười phút. Hổ thổi chiếc còi đã sửa: «Tuýt! {name}, xử lý sao đây?»",
+      "choices": [
+        {
+          "id": "vao-luon",
+          "text": "Cho bạn vào tập luôn, hỏi han vì sao muộn",
+          "consequence": "Mèo Mướp kể phải giúp em bé tìm cặp sách. Hổ gật đầu: «Muộn vì việc tốt thì không phạt.»"
+        },
+        {
+          "id": "khoi-dong-truoc",
+          "text": "Nhắc bạn tự khởi động bù rồi mới vào tập",
+          "consequence": "Mèo Mướp chạy nhẹ hai vòng rồi mới vào đội. Hổ khen: «Biết giữ chân mình. Giỏi!»"
+        },
+        {
+          "id": "bam-gio",
+          "text": "Giao bạn bấm giờ cho cả đội hôm nay",
+          "consequence": "Mèo Mướp cầm đồng hồ, hô «còn năm phút!» rõ to. Từ hôm ấy bạn ấy không bao giờ đến muộn."
+        }
+      ],
+      "en": {
+        "title": "The latecomer",
+        "goTo": "Go to the running track, where the team is warming up",
+        "prompt": "Mid warm-up, Mèo Mướp dashes in ten minutes late. Hổ blows his mended whistle: \"Whistle! {name}, how do we handle this?\"",
+        "choices": [
+          {
+            "text": "Let them join right away and ask why they're late",
+            "consequence": "Mèo Mướp explains they helped a little one find a school bag. Hổ nods: \"Late for a good deed: no penalty.\""
+          },
+          {
+            "text": "Remind them to warm up first, then join",
+            "consequence": "Mèo Mướp jogs two laps before joining. Hổ praises: \"Looking after your legs. Good!\""
+          },
+          {
+            "text": "Make them the team's timekeeper today",
+            "consequence": "Mèo Mướp holds the watch and calls \"five minutes left!\" loudly. From that day, never late again."
+          }
+        ]
+      }
+    },
+    {
+      "id": "coi-keu-lai",
+      "title": "Còi kêu lại rồi",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Hổ thổi một tiếng «tuýt» vang tới tận cổng trường rồi tặng {name} chiếc khăn lau còi thêu chữ vàng.",
+      "en": {
+        "title": "The whistle sings again",
+        "text": "Hổ blows a \"tweet\" that carries all the way to the school gate, then gives {name} the whistle cloth with golden stitching."
+      }
+    },
+    {
+      "id": "ngay-thi-dau",
+      "title": "Ngày thi đấu",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Thứ Bảy đã tới. Trời có vẻ sắp mưa, nhưng Hổ bảo mưa thì càng vui. Đội bạn đang trên đường sang.",
+      "en": {
+        "title": "Match day",
+        "text": "Saturday is here. It looks like rain, but Hổ says rain makes it more fun. The visiting team is on its way."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "xem-dong-ho": 1,
+      "logic": 1
+    }
+  },
+  "en": {
+    "title": "Hổ Còi Vàng's story, chapter 2: The whistle that wouldn't blow",
+    "summary": "At the first training session, Hổ Còi Vàng's golden whistle only goes pfff. {name} finds the lost pea, works out when training ends, orders the warm-up exercises and decides how to welcome a latecomer."
+  }
+}

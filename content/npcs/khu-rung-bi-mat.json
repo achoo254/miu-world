@@ -243,6 +243,92 @@
           }
         }
       ]
+    },
+    {
+      "id": "khi-day-leo-nhac",
+      "npc": "khi-chuyen-canh",
+      "title": { "vi": "Sợi dây leo tới tiếng nhạc", "en": "A Vine to the Music" },
+      "teaser": { "vi": "Ú òa! {name} ơi, tớ muốn mắc một sợi dây leo dài thật dài, chiều nào cũng đu tới chỗ có tiếng nhạc hay nhất. Đu cùng tớ không? Hấp!", "en": "Peekaboo! {name}, I want to string a vine so long I can swing to the best music every evening. Swing with me? Hup!" },
+      "chapters": [
+        {
+          "quest": "yarn-khi-day-leo-nhac-1",
+          "hearts": 0,
+          "letter": {
+            "from": "khi-chuyen-canh",
+            "title": { "vi": "Thư viết lúc treo ngược", "en": "Written upside down" },
+            "body": { "vi": "Ú òa {name}! Tớ viết thư này lúc treo ngược trên cành, nên chữ hơi lộn xộn. Đoạn dây mới chắc lắm, tớ đu mười vòng không kêu rắc lần nào. Gửi cậu ít xu, mai mình mắc tiếp nhé. Hấp!", "en": "Peekaboo, {name}! I'm writing this hanging upside down, so the letters are a bit jumbled. The new vine is so strong I swung ten times without a single crack. Here are a few coins; tomorrow we keep stringing. Hup!" },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-khi-day-leo-nhac-2",
+          "hearts": 1,
+          "letter": {
+            "from": "vet-xanh",
+            "title": { "vi": "Tin nóng, tin nóng!", "en": "Hot news, hot news!" },
+            "body": { "vi": "{name} ơi, {name} ơi! Tin nóng hai lần: Khỉ mắc xong dây qua ao mà không ướt sợi nào! Tớ học được từ mới hôm nay: «tuyến». Tuyến dây, tuyến dây! Gửi cậu chiếc lông tớ rụng sáng nay.", "en": "{name}, {name}! Hot news, twice: Khỉ strung the vine past the pond without a drop of rain on it! My new word today: \"route\". Vine route, vine route! Here's a feather I dropped this morning." },
+            "reward": { "coins": 15, "xp": 20, "items": {"long-vu-chim-rung": 1} }
+          }
+        },
+        {
+          "quest": "yarn-khi-day-leo-nhac-3",
+          "hearts": 2,
+          "letter": {
+            "from": "meo-hop-nhac",
+            "title": { "vi": "Thư kèm giai điệu", "en": "A letter with a tune" },
+            "body": { "vi": "Tinh tang, chào {name}! Mèo là Mèo Hộp Nhạc đây. Khỉ viết thư kể hộp nhạc đã hát trên ngọn cây, Mèo mừng tới mức lên dây cót cho cả chục hộp nhạc trong phòng. Mèo gửi {name} ít xu, nhớ thay Mèo lên dây cho hộp nhạc trong rừng nhé, tinh tang!", "en": "Ting-tang, hello {name}! It's Mèo Hộp Nhạc. Khỉ wrote that the music box sang from the treetop, and I was so happy I wound every music box in my room. Here are a few coins; wind the forest's music box for me, ting-tang!" },
+            "reward": { "coins": 20, "xp": 20, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-khi-day-leo-nhac-4",
+          "hearts": 3,
+          "letter": {
+            "from": "khi-chuyen-canh",
+            "title": { "vi": "Thư của khỉ can đảm", "en": "From a brave monkey" },
+            "body": { "vi": "{name} ơi! Hôm nay tớ đu trọn đường dây mà không run chút nào. Hóa ra nói ra nỗi sợ với bạn thân là cách hay nhất để bớt sợ. Gửi cậu nắm hạt dẻ rừng, ăn từ từ thôi. Hấp! Ú òa!", "en": "{name}! Today I swung the whole line without shaking once. Turns out telling a close friend your fear is the best way to fear it less. Here's a handful of forest chestnuts; eat them slowly. Hup! Peekaboo!" },
+            "reward": { "coins": 25, "xp": 25, "items": {"hat-de-rung": 1} }
+          }
+        }
+      ]
+    },
+    {
+      "id": "nai-nghin-dom-dom",
+      "npc": "nai-dom-dom",
+      "title": { "vi": "Một nghìn đốm sáng", "en": "A Thousand Little Lights" },
+      "teaser": { "vi": "Ừm… {name} ơi, tớ ước một đêm đếm đủ một nghìn con đom đóm, rồi đặt tên cho từng con. Cậu thức cùng tớ được không? Ấm như ngồi cạnh bếp lửa ấy.", "en": "Mm… {name}, I wish to count a thousand fireflies in one night and give each one a name. Will you stay up with me? It's as warm as sitting by a fire." },
+      "chapters": [
+        {
+          "quest": "yarn-nai-nghin-dom-dom-1",
+          "hearts": 0,
+          "letter": {
+            "from": "nai-dom-dom",
+            "title": { "vi": "Bốn mươi bảy ngọn đèn", "en": "Forty-seven little lamps" },
+            "body": { "vi": "{name} thân mến, ừm… sau khi cậu về, tớ đếm thêm được hai chục con nữa. Tớ để dành một chiếc lá phong trong sổ cho cậu, kẹp ở trang có ngôi sao to nhất. Mai mình đặt tên cho đom đóm nhé.", "en": "Dear {name}, mm… after you left I counted two more tens. I saved a maple leaf for you in the book, at the page with the biggest star. Tomorrow, let's name the fireflies." },
+            "reward": { "coins": 15, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-nai-nghin-dom-dom-2",
+          "hearts": 1,
+          "letter": {
+            "from": "meo-tra-da",
+            "title": { "vi": "Thư từ quán trà", "en": "A letter from the tea stall" },
+            "body": { "vi": "Quý khách {name} thân mến, meo! Nai viết thư kể có một con đom đóm được đặt tên. Mèo đọc xong cười cả buổi, khách nào ghé quán cũng được nghe kể. Mèo gửi kèm ít xu, quý khách mua trà hoa cúc uống cho tỉnh mà thức đếm đom đóm nhé.", "en": "Dear valued guest {name}, meow! Nai wrote that a firefly got its very own name. I laughed all day and told every customer. Here are a few coins; buy some chamomile tea and stay awake to count fireflies." },
+            "reward": { "coins": 20, "xp": 15, "items": {} }
+          }
+        },
+        {
+          "quest": "yarn-nai-nghin-dom-dom-3",
+          "hearts": 2,
+          "letter": {
+            "from": "doi-hang-sau",
+            "title": { "vi": "Thư từ cửa hang", "en": "A letter from the cave mouth" },
+            "body": { "vi": "Suỵt… nghe này, {name}. Đêm qua tớ nghe thấy một nghìn đôi cánh nhỏ cùng lúc. Chưa bao giờ trảng cỏ ồn ào dịu dàng như thế. Nai bảo nhờ có cậu. Tớ gửi cậu ít rêu xanh cổ thụ, đặt cạnh gối cho mát.", "en": "Shh… listen, {name}. Last night I heard a thousand little wings at once. The meadow has never been so gently noisy. Nai says it was thanks to you. Here is some ancient green moss; put it by your pillow to keep cool." },
+            "reward": { "coins": 25, "xp": 25, "items": {"reu-xanh-co-thu": 1} }
+          }
+        }
+      ]
     }
   ]
 }

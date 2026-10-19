@@ -1,0 +1,373 @@
+{
+  "id": "yarn-meo-bep-mam-com-1",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Chuyện của Mèo Bếp Trưởng, chương 1: Nồi canh nhạt vị",
+  "status": "active",
+  "category": "story",
+  "summary": "Chủ nhật này nhà mời khách, mà nồi canh chua thử của Mèo Bếp Trưởng nhạt thếch. {name} tìm đồ nấu, đếm trứng, xếp lại các bước nấu và chọn cách cứu nồi canh.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Bếp Trưởng",
+    "where": "Nhà của {name}: sau gian bếp, bếp và bàn ăn, chuồng gà, nhà kho, sân trước nhà",
+    "goal": "Tìm lại vị chua cho nồi canh mời khách",
+    "play": "Tìm đồ nấu theo lời tả; đếm trứng; xếp các bước nấu canh chua; chọn cách cứu nồi canh",
+    "learn": "Đọc hiểu lời tả, phép cộng có nhớ trong phạm vi 20, kể theo trình tự",
+    "reward": "60 XP, 15 Xu, Skill XP Đọc hiểu, Phép cộng",
+    "next": "Đọc thiệp hồi âm của khách mời"
+  },
+  "phases": {
+    "hook": "noi-canh-nhat",
+    "explore": "tim-do-nau",
+    "learn": "dem-trung",
+    "challenge": "cac-buoc-nau",
+    "decision": "cuu-noi-canh",
+    "finale": "cuu-noi-canh",
+    "reward": "canh-du-vi",
+    "next": "thiep-hoi-am"
+  },
+  "places": {
+    "meo-bep-truong": "Sau gian bếp",
+    "tim-do-nau": "Bếp và bàn ăn",
+    "st-meo-bep-mam-com-tui-me": "Bếp và bàn ăn",
+    "st-meo-bep-mam-com-ca-chua": "Bếp và bàn ăn",
+    "st-meo-bep-mam-com-rau-thom": "Bếp và bàn ăn",
+    "st-meo-bep-mam-com-o-trung": "Chuồng gà",
+    "st-meo-bep-mam-com-to-cong-thuc": "Nhà kho",
+    "st-meo-bep-mam-com-ban-an-san": "Sân trước nhà"
+  },
+  "steps": [
+    {
+      "id": "noi-canh-nhat",
+      "title": "Nồi canh nhạt thếch",
+      "goTo": "Ra chỗ sau gian bếp, Mèo Bếp Trưởng đang gõ đũa vào nồi",
+      "kind": "dialogue",
+      "target": "meo-bep-truong",
+      "lines": [
+        {
+          "speaker": "Mèo Bếp Trưởng",
+          "text": "Rửa tay. Lại đây. Nếm. {name} thấy gì không?"
+        },
+        {
+          "speaker": "Mèo Bếp Trưởng",
+          "text": "Nhạt. Nhạt như nước giếng. Chủ nhật này nhà mình mời khách từ khắp nơi tới ăn cơm, mà nồi canh chua thử của Mèo lại hỏng."
+        },
+        {
+          "speaker": "Mèo Bếp Trưởng",
+          "text": "Mèo muốn ai ngồi vào mâm cũng gặp một món của quê mình. Mà món đầu tiên đã hỏng thì sao làm tướng được nữa!"
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để cháu tìm đồ nấu cho Mèo!",
+          "reply": "Tốt. Đi nhanh, nhặt đúng, về ngay."
+        },
+        {
+          "text": "Hay Mèo quên cho me vào nồi?",
+          "reply": "Mèo không bao giờ… ờ… có thể lắm. Đi tìm túi me xem."
+        }
+      ],
+      "en": {
+        "title": "A soup with no taste",
+        "goTo": "Go round behind the kitchen, where Mèo Bếp Trưởng is tapping his chopsticks on a pot",
+        "lines": [
+          "Wash hands. Come here. Taste. What do you notice, {name}?",
+          "Bland. Bland as well water. This Sunday we have guests from all over coming to eat, and my trial pot of sour soup has failed.",
+          "I want everyone at the table to find a dish from home. If the very first dish fails, how can I call myself the general of this kitchen!"
+        ],
+        "choices": [
+          {
+            "text": "I'll find the ingredients for you!",
+            "reply": "Good. Go fast, pick right, come straight back."
+          },
+          {
+            "text": "Maybe you forgot the tamarind?",
+            "reply": "I never… well… it is possible. Go and find the tamarind bag."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-do-nau",
+      "title": "Tìm đồ nấu canh chua",
+      "goTo": "Vào bếp và bàn ăn tìm ba thứ nồi canh còn thiếu",
+      "kind": "find-object",
+      "prompt": "Mèo đọc to danh sách, còn {name} đọc lời tả rồi tìm từng món:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "tui-me",
+          "name": "Túi me chua",
+          "clue": "Túi vải màu nâu, sờ vào lổn nhổn những quả cong cong như lưỡi liềm nhỏ.",
+          "target": "st-meo-bep-mam-com-tui-me"
+        },
+        {
+          "id": "ca-chua",
+          "name": "Quả cà chua chín",
+          "clue": "Tròn, đỏ mọng, cuống còn xanh, lăn ra tận mép bàn.",
+          "target": "st-meo-bep-mam-com-ca-chua"
+        },
+        {
+          "id": "rau-thom",
+          "name": "Bó rau ngổ",
+          "clue": "Một bó lá nhỏ xanh mướt, vò nhẹ là thơm nức cả gian bếp.",
+          "target": "st-meo-bep-mam-com-rau-thom"
+        }
+      ],
+      "en": {
+        "title": "Finding the soup ingredients",
+        "goTo": "Go into the kitchen and dining table area to find the three things the soup is missing",
+        "prompt": "Mèo reads the list aloud; read each description and find every item:",
+        "items": [
+          {
+            "name": "The tamarind bag",
+            "clue": "A brown cloth bag, lumpy with pods curved like tiny sickles."
+          },
+          {
+            "name": "The ripe tomato",
+            "clue": "Round and juicy red with a green stalk, rolled all the way to the table edge."
+          },
+          {
+            "name": "The bunch of herbs",
+            "clue": "A bunch of small bright leaves; rub them gently and the whole kitchen smells of them."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dem-trung",
+      "title": "Đếm trứng cho món trứng đúc",
+      "goTo": "Ra chuồng gà sau nhà xem hai ổ trứng sáng nay",
+      "kind": "riddle",
+      "target": "st-meo-bep-mam-com-o-trung",
+      "skill": "phep-cong",
+      "question": "Mèo còn muốn làm món trứng đúc. Ổ thứ nhất có 8 quả trứng, ổ thứ hai có 7 quả. Có tất cả bao nhiêu quả trứng?",
+      "answer": {
+        "value": 15
+      },
+      "support": {
+        "guide": [
+          "Cộng số trứng của hai ổ: 8 + 7.",
+          "Tách 7 thành 2 và 5 để 8 thêm 2 cho tròn 10."
+        ],
+        "hint": "8 + 2 = 10, rồi 10 + 5 = ?",
+        "answer": {
+          "text": "15 quả trứng",
+          "explanation": "8 + 7 = 15: lấy 2 từ 7 bù cho 8 thành 10, còn 5, vậy 10 + 5 = 15."
+        },
+        "en": {
+          "guide": [
+            "Add the eggs of both nests: 8 + 7.",
+            "Split 7 into 2 and 5 so that 8 plus 2 makes 10."
+          ],
+          "hint": "8 + 2 = 10, then 10 + 5 = ?",
+          "answer": {
+            "text": "15 eggs",
+            "explanation": "8 + 7 = 15: take 2 from the 7 to make 8 up to 10, leaving 5, so 10 + 5 = 15."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Mười lăm quả! Mèo gật đầu một cái, đúng kiểu tướng duyệt binh.",
+          "Gom cho tròn chục rồi cộng tiếp, {name} tính nhanh như dao thái hành.",
+          "Đủ trứng cho cả mâm, gà mái kêu cục tác khen {name} kìa."
+        ],
+        "wrong": [
+          "Chưa đúng. Mèo bày lại hai ổ, {name} đếm từng quả nhé.",
+          "Thử bù cho 8 thành 10 trước, rồi cộng phần còn lại xem.",
+          "Gà mái nghiêng đầu nhìn {name}: số ấy chưa khớp với ổ của nó đâu."
+        ],
+        "en": {
+          "right": [
+            "Fifteen! Mèo gives one nod, like a general inspecting troops.",
+            "Make ten, then keep adding: you count as fast as a knife through spring onions, {name}.",
+            "Eggs enough for the whole table, and the hens are clucking their praise."
+          ],
+          "wrong": [
+            "Not yet. Mèo lays out both nests again; count every egg.",
+            "Try making 8 up to 10 first, then add what is left.",
+            "The hen tilts her head at you, {name}: that number does not match her nest."
+          ]
+        }
+      },
+      "en": {
+        "title": "Counting eggs for the omelette",
+        "goTo": "Go out to the chicken coop behind the house to check this morning's two nests",
+        "question": "Mèo also wants to make an omelette. The first nest has 8 eggs and the second has 7. How many eggs are there in all?"
+      }
+    },
+    {
+      "id": "cac-buoc-nau",
+      "title": "Các bước nấu canh chua",
+      "goTo": "Vào nhà kho, nơi Mèo dán tờ công thức trên cánh tủ",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-meo-bep-mam-com-to-cong-thuc",
+      "skill": "ke-chuyen",
+      "prompt": "Tờ công thức dán trên tủ trong nhà kho bị gió thổi lộn xộn. Xếp lại các bước nấu canh chua cho đúng thứ tự:",
+      "items": [
+        {
+          "id": "nem",
+          "label": "Nêm nếm, rắc rau ngổ rồi tắt bếp"
+        },
+        {
+          "id": "dun",
+          "label": "Đun sôi nồi nước"
+        },
+        {
+          "id": "ca",
+          "label": "Thả cà chua vào nồi"
+        },
+        {
+          "id": "me",
+          "label": "Dầm me lấy nước chua"
+        }
+      ],
+      "answer": {
+        "order": [
+          "dun",
+          "me",
+          "ca",
+          "nem"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Việc nào phải làm đầu tiên để có nước nấu?",
+          "Rau thơm và nêm nếm luôn để cuối cùng."
+        ],
+        "hint": "Đun nước → lấy nước me → thả cà chua → nêm và tắt bếp.",
+        "answer": {
+          "text": "Đun sôi nước, dầm me, thả cà chua, nêm nếm rồi tắt bếp",
+          "explanation": "Có nước sôi mới nấu được; nước me cho vị chua, cà chua cho màu đỏ, rau thơm cho vào cuối để không bị nhũn."
+        },
+        "en": {
+          "guide": [
+            "What must happen first so there is water to cook in?",
+            "Herbs and seasoning always come last."
+          ],
+          "hint": "Boil water → tamarind juice → tomato → season and turn off.",
+          "answer": {
+            "text": "Boil the water, mash the tamarind, add the tomato, season and turn off",
+            "explanation": "You need boiling water before anything cooks; tamarind gives the sourness, tomato the red colour, and herbs go in last so they stay fresh."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng thứ tự! Mèo dán lại tờ công thức bằng hạt cơm cho chắc.",
+          "{name} nấu ăn trong đầu giỏi thế, mai làm phó tướng nhà bếp nhé.",
+          "Nồi canh mà nghe được chắc cũng gật gù: đúng bài bản rồi."
+        ],
+        "wrong": [
+          "Chưa có nước sôi mà đã nêm thì nêm vào đâu, {name}?",
+          "Rau thơm cho vào sớm là nhũn hết. Xếp lại nhé.",
+          "Gần rồi. Nhớ là me phải có trước cà chua cho nước kịp chua."
+        ],
+        "en": {
+          "right": [
+            "Right order! Mèo sticks the recipe back up with a grain of rice.",
+            "You cook so well in your head, {name}; tomorrow you can be my lieutenant.",
+            "If the pot could hear, it would nod along: textbook order."
+          ],
+          "wrong": [
+            "If the water isn't boiling yet, what would you season, {name}?",
+            "Herbs put in early go limp. Try the order again.",
+            "Close. Remember the tamarind goes in before the tomato so the broth turns sour in time."
+          ]
+        }
+      },
+      "en": {
+        "title": "The steps of sour soup",
+        "goTo": "Go into the storeroom, where Mèo keeps the recipe stuck on the cupboard door",
+        "prompt": "The recipe sheet on the cupboard in the storeroom got jumbled by the wind. Put the steps of making sour soup back in order:",
+        "items": [
+          "Season, sprinkle the herbs and turn off the stove",
+          "Bring a pot of water to the boil",
+          "Drop the tomato into the pot",
+          "Mash the tamarind for its sour juice"
+        ]
+      }
+    },
+    {
+      "id": "cuu-noi-canh",
+      "title": "Cứu nồi canh thế nào?",
+      "goTo": "Mang nồi canh ra bàn ăn kê ở sân trước nhà",
+      "kind": "decision",
+      "target": "st-meo-bep-mam-com-ban-an-san",
+      "speaker": "Mèo Bếp Trưởng",
+      "prompt": "Mèo bưng nồi canh ra bàn ăn ngoài sân, khoanh tay: «Nồi này nhạt. Còn ba ngày. Ta làm gì?»",
+      "choices": [
+        {
+          "id": "nem-them-me",
+          "text": "Dầm thêm me cho nồi canh đậm vị",
+          "consequence": "Mèo dầm me, nếm, gật đầu đúng một lần: «Được. Chua vừa tới.»"
+        },
+        {
+          "id": "moi-gau-nem",
+          "text": "Mời Gấu Bánh Ngọt ra nếm thử",
+          "consequence": "Gấu nếm một thìa, nhăn mũi: «Thiếu chua!» Mèo hừ một tiếng nhưng vẫn ghi vào sổ."
+        },
+        {
+          "id": "nau-noi-moi",
+          "text": "Đổ đi, nấu nồi mới theo đúng tờ công thức",
+          "consequence": "Nồi mới sôi lăn tăn, thơm mùi me và rau ngổ. Mèo lỡ kêu «meo» một tiếng rất khẽ."
+        }
+      ],
+      "en": {
+        "title": "How to rescue the soup?",
+        "goTo": "Carry the soup out to the table set up in the front yard",
+        "prompt": "Mèo carries the soup out to the table in the yard and folds his arms: \"This pot is bland. Three days left. What do we do?\"",
+        "choices": [
+          {
+            "text": "Mash in more tamarind for a stronger taste",
+            "consequence": "Mèo mashes, tastes and nods exactly once: \"Good. Sour enough.\""
+          },
+          {
+            "text": "Ask Gấu Bánh Ngọt to come and taste",
+            "consequence": "Gấu tastes a spoonful and wrinkles her nose: \"Not sour enough!\" Mèo huffs, but writes it down anyway."
+          },
+          {
+            "text": "Start a fresh pot by the recipe sheet",
+            "consequence": "The fresh pot simmers, smelling of tamarind and herbs. Mèo lets slip a very quiet \"meow\"."
+          }
+        ]
+      }
+    },
+    {
+      "id": "canh-du-vi",
+      "title": "Canh đủ vị",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo múc cho {name} bát canh đầu tiên của nồi mới. «Phó bếp ăn trước. Luật nhà bếp.»",
+      "en": {
+        "title": "The soup tastes right",
+        "text": "Mèo ladles {name} the first bowl from the new pot. \"The assistant eats first. Kitchen law.\""
+      }
+    },
+    {
+      "id": "thiep-hoi-am",
+      "title": "Thiệp hồi âm đang về",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Các khách mời bắt đầu gửi thiệp hồi âm. Mai {name} ra cổng nhận thiệp giúp Mèo, xem ai tới và họ nhớ món gì của quê nhà.",
+      "en": {
+        "title": "Replies are on their way",
+        "text": "The guests are starting to send their replies. Tomorrow {name} will collect them at the gate for Mèo, to see who is coming and which dish from home they miss."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": {
+      "doc-hieu": 1,
+      "phep-cong": 1
+    }
+  },
+  "en": {
+    "title": "Mèo Bếp Trưởng's story, chapter 1: The bland soup",
+    "summary": "Guests are coming on Sunday, but Mèo Bếp Trưởng's trial pot of sour soup tastes of nothing. {name} finds the ingredients, counts the eggs, puts the cooking steps in order and decides how to rescue the soup."
+  }
+}

@@ -1,0 +1,353 @@
+{
+  "id": "yarn-khi-day-leo-nhac-1",
+  "region": "khu-rung-bi-mat",
+  "chapter": 2,
+  "title": "Chuyện của Khỉ Chuyền Cành, chương 1: Cành kêu rắc",
+  "status": "active",
+  "category": "story",
+  "summary": "Sợi dây đu quen thuộc của Khỉ Chuyền Cành vừa đứt cái rắc. {name} gom dây leo mới, tính chiều dài khi nối dây, chọn những cành đủ chắc, chọn cách thử dây rồi bắc cầu tre qua khe suối.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Khỉ Chuyền Cành",
+    "where": "Rừng sâu: cây đu dây, lùm cây dại, gốc đa, bờ suối đá, khe suối",
+    "goal": "Mắc lại đường dây đu chắc chắn hơn",
+    "play": "Gom dây leo; tính chiều dài dây; chọn cành chắc theo lời tả; chọn cách thử dây; bắc cầu tre",
+    "learn": "Phép cộng có nhớ với đơn vị đề-xi-mét, đọc hiểu",
+    "reward": "60 XP, 15 Xu, Skill XP Phép cộng, Đọc hiểu",
+    "next": "Mắc dây qua ao chuồn chuồn"
+  },
+  "phases": {
+    "hook": "day-dut",
+    "explore": "gom-day-leo",
+    "learn": "noi-day",
+    "challenge": "chon-canh-chac",
+    "decision": "thu-day",
+    "finale": "bac-cau-tre",
+    "reward": "doan-day-dau",
+    "next": "ao-chuon-chuon"
+  },
+  "places": {
+    "khi-chuyen-canh": "Cây đu dây",
+    "gom-day-leo": "Lùm cây dại",
+    "st-khi-day-leo-nhac-day-leo-mot": "Lùm cây dại",
+    "st-khi-day-leo-nhac-day-leo-hai": "Lùm cây dại",
+    "st-khi-day-leo-nhac-day-leo-ba": "Lùm cây dại",
+    "st-khi-day-leo-nhac-goc-da-do-day": "Gốc đa",
+    "st-khi-day-leo-nhac-dong-canh-thu": "Bờ suối đá",
+    "st-khi-day-leo-nhac-khe-suoi-bac-cau": "Khe suối"
+  },
+  "steps": [
+    {
+      "id": "day-dut",
+      "title": "Dây đứt rồi!",
+      "goTo": "Tới cây đu dây, Khỉ Chuyền Cành đang ngồi phủi lá trên lưng",
+      "kind": "dialogue",
+      "target": "khi-chuyen-canh",
+      "lines": [
+        {
+          "speaker": "Khỉ Chuyền Cành",
+          "text": "Hấp! Ú òa! {name} tới đúng lúc tớ vừa… rơi xuống bụi cỏ. Sợi dây đu của tớ kêu «rắc» rồi đứt phựt!"
+        },
+        {
+          "speaker": "Khỉ Chuyền Cành",
+          "text": "Không sao, không sao, tớ đâu có sợ. Chỉ là… tim tớ đập hơi nhanh thôi."
+        },
+        {
+          "speaker": "Khỉ Chuyền Cành",
+          "text": "Tớ muốn mắc một đường dây mới, chắc hơn, dài hơn, dài tới tận chỗ có tiếng nhạc hay nhất! Trước hết phải gom dây leo đã."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình đi gom dây ngay!",
+          "reply": "Hấp! Theo tớ, nhưng đi dưới đất thôi nhé, cậu chưa có dây đâu."
+        },
+        {
+          "text": "Cậu có đau không?",
+          "reply": "Chỉ xước tí ở đuôi. Ăn quả chuối là lành ngay!"
+        }
+      ],
+      "en": {
+        "title": "The vine snapped!",
+        "goTo": "Go to the swinging tree, where Khỉ Chuyền Cành is brushing leaves off his back",
+        "lines": [
+          "Hup! Peekaboo! You came just as I… fell into the grass. My swinging vine went crack and snapped!",
+          "It's fine, it's fine, I'm not scared. My heart is just… beating a little fast.",
+          "I want a new line: stronger, longer, all the way to where the best music is! First we need to gather vines."
+        ],
+        "choices": [
+          {
+            "text": "Let's gather vines right now!",
+            "reply": "Hup! Follow me, but stay on the ground; you don't have a vine yet."
+          },
+          {
+            "text": "Are you hurt?",
+            "reply": "Just a scratch on my tail. One banana and it's healed!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gom-day-leo",
+      "title": "Gom dây leo",
+      "goTo": "Vào lùm cây dại gom ba cuộn dây leo",
+      "kind": "search",
+      "targets": [
+        "st-khi-day-leo-nhac-day-leo-mot",
+        "st-khi-day-leo-nhac-day-leo-hai",
+        "st-khi-day-leo-nhac-day-leo-ba"
+      ],
+      "en": {
+        "title": "Gathering vines",
+        "goTo": "Go into the wild thicket and gather three coils of vine"
+      }
+    },
+    {
+      "id": "noi-day",
+      "title": "Nối hai đoạn dây",
+      "goTo": "Kéo dây tới gốc đa để đo và nối",
+      "kind": "riddle",
+      "target": "st-khi-day-leo-nhac-goc-da-do-day",
+      "skill": "phep-cong",
+      "question": "Đoạn dây leo thứ nhất dài 25 dm, đoạn thứ hai dài 18 dm. Khỉ nối hai đoạn lại (không tính chỗ buộc). Sợi dây mới dài bao nhiêu đề-xi-mét?",
+      "answer": {
+        "value": 43
+      },
+      "support": {
+        "guide": [
+          "Cộng hai đoạn: 25 dm + 18 dm.",
+          "5 + 8 = 13, viết 3 nhớ 1 sang hàng chục."
+        ],
+        "hint": "2 chục cộng 1 chục, thêm 1 chục nhớ là mấy chục?",
+        "answer": {
+          "text": "43 dm",
+          "explanation": "25 + 18 = 43: 5 + 8 = 13, viết 3 nhớ 1; 2 + 1 = 3, thêm 1 là 4 chục. Sợi dây dài 43 dm."
+        },
+        "en": {
+          "guide": [
+            "Add the two pieces: 25 dm + 18 dm.",
+            "5 + 8 = 13: write 3 and carry 1 to the tens."
+          ],
+          "hint": "2 tens plus 1 ten, plus the carried ten, makes how many tens?",
+          "answer": {
+            "text": "43 dm",
+            "explanation": "25 + 18 = 43: 5 + 8 = 13, write 3 carry 1; 2 + 1 = 3, plus 1 is 4 tens. The vine is 43 dm long."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bốn mươi ba đề-xi-mét! Khỉ quấn dây quanh gốc đa đo lại, vừa khít.",
+          "Cộng có nhớ mà {name} làm nhanh như tớ đu cành. Hấp!",
+          "Dây dài thế này đu được qua hai cây liền. Ú òa!"
+        ],
+        "wrong": [
+          "Ối, hình như {name} quên nhớ một chục rồi.",
+          "Dây nối lại phải dài hơn cả hai đoạn chứ, thử cộng lại xem.",
+          "Tớ treo ngược nhìn cũng thấy chưa đúng. Cộng hàng đơn vị trước nhé."
+        ],
+        "en": {
+          "right": [
+            "Forty-three decimetres! Khỉ wraps it round the banyan to check: a perfect fit.",
+            "Carrying as fast as I swing, {name}. Hup!",
+            "A vine this long can swing past two trees at once. Peekaboo!"
+          ],
+          "wrong": [
+            "Oops, I think you forgot to carry a ten, {name}.",
+            "The joined vine must be longer than either piece; add again.",
+            "Even hanging upside down I can see that's not it. Add the ones first."
+          ]
+        }
+      },
+      "en": {
+        "title": "Joining two vines",
+        "goTo": "Drag the vines to the banyan to measure and join them",
+        "question": "The first vine is 25 dm long and the second is 18 dm. Khỉ joins them (not counting the knot). How many decimetres long is the new vine?"
+      }
+    },
+    {
+      "id": "chon-canh-chac",
+      "title": "Cành nào đủ chắc?",
+      "goTo": "Ra bờ suối đá xem đống cành Khỉ vừa bẻ về",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-khi-day-leo-nhac-dong-canh-thu",
+      "skill": "doc-hieu",
+      "prompt": "Dây phải buộc vào cành thật chắc. Đọc lời tả từng cành rồi chọn những cành buộc dây được:",
+      "choices": [
+        {
+          "id": "tuoi",
+          "text": "Cành tươi, uốn cong rồi bật lại ngay"
+        },
+        {
+          "id": "kho",
+          "text": "Cành khô, gõ vào nghe lốp cốp, vỏ bong từng mảng"
+        },
+        {
+          "id": "to",
+          "text": "Cành to bằng cổ tay, lá xanh mọc dày"
+        },
+        {
+          "id": "muc",
+          "text": "Cành mục, có nấm trắng mọc dọc thân"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "tuoi",
+          "to"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Cành chắc là cành còn sống: tươi, dẻo, có lá xanh.",
+          "Cành khô, cành mục dễ gãy cái rắc."
+        ],
+        "hint": "Tìm những lời tả có chữ «tươi» và «lá xanh».",
+        "answer": {
+          "text": "Cành tươi bật lại và cành to có lá xanh",
+          "explanation": "Cành tươi uốn cong rồi bật lại là cành dẻo, cành to có lá xanh là cành khỏe. Cành khô và cành mục đều dễ gãy."
+        },
+        "en": {
+          "guide": [
+            "A strong branch is alive: fresh, springy and leafy.",
+            "Dry or rotten branches snap with a crack."
+          ],
+          "hint": "Look for descriptions with \"fresh\" and \"green leaves\".",
+          "answer": {
+            "text": "The springy fresh one and the thick leafy one",
+            "explanation": "A fresh branch that springs back is supple, and a thick leafy one is healthy. Dry and rotten branches both break easily."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hấp! Hai cành này tớ đu cả trăm lần cũng không kêu rắc.",
+          "{name} đọc lời tả kỹ như Vẹt Xanh đọc tin, hai lần cũng đúng.",
+          "Cành sống thì dẻo, cành dẻo thì an toàn. Ú òa!"
+        ],
+        "wrong": [
+          "Cành ấy gõ nghe lốp cốp là rỗng ruột rồi, bỏ ra nhé.",
+          "Có nấm mọc là cành đang mục đấy, tớ không dám đu đâu.",
+          "Còn một cành chắc nữa chưa chọn, đọc lại xem."
+        ],
+        "en": {
+          "right": [
+            "Hup! I could swing on these two a hundred times without a crack.",
+            "You read the descriptions as carefully as Vẹt Xanh reads the news: right both times.",
+            "Living branches bend, and bending branches are safe. Peekaboo!"
+          ],
+          "wrong": [
+            "A branch that sounds hollow is empty inside; leave it out.",
+            "Mushrooms mean it's rotting; I wouldn't dare swing on it.",
+            "There's another strong branch you haven't picked; read again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which branches are strong?",
+        "goTo": "Go to the rocky stream bank to look at the branches Khỉ brought",
+        "prompt": "The vine must be tied to really strong branches. Read about each branch and pick the ones safe to tie to:",
+        "choices": [
+          "A fresh branch that bends and springs straight back",
+          "A dry branch that sounds hollow when tapped, its bark peeling off",
+          "A branch thick as a wrist, covered in green leaves",
+          "A rotten branch with white mushrooms along it"
+        ]
+      }
+    },
+    {
+      "id": "thu-day",
+      "title": "Thử dây thế nào?",
+      "kind": "decision",
+      "target": "st-khi-day-leo-nhac-dong-canh-thu",
+      "speaker": "Khỉ Chuyền Cành",
+      "prompt": "Dây đã buộc vào cành. Khỉ xoa tay: «Đu luôn nhé?» rồi lại ngập ngừng nhìn cành cây.",
+      "choices": [
+        {
+          "id": "bao-cat",
+          "text": "Treo thử một bao cát nặng trước",
+          "consequence": "Bao cát đung đưa mà cành không suy suyển. Khỉ thở phào: «Bao cát can đảm thật.»"
+        },
+        {
+          "id": "keo-thu",
+          "text": "Hai bạn cùng kéo mạnh xuống ba lần",
+          "consequence": "Một, hai, ba! Dây căng mà không đứt. Khỉ reo «hấp!» rồi đu một vòng ngắn."
+        },
+        {
+          "id": "vet-kiem-tra",
+          "text": "Nhờ Vẹt Xanh bay lên xem chỗ buộc",
+          "consequence": "Vẹt bay vòng quanh nút buộc: «Chắc rồi, chắc rồi!» Nói hai lần là chắc thật."
+        }
+      ],
+      "en": {
+        "title": "How to test the vine?",
+        "prompt": "The vine is tied to the branch. Khỉ rubs his hands: \"Swing right away?\" then hesitates, eyeing the branch.",
+        "choices": [
+          {
+            "text": "Hang a heavy sandbag on it first",
+            "consequence": "The sandbag swings and the branch doesn't budge. Khỉ sighs with relief: \"Brave sandbag.\""
+          },
+          {
+            "text": "Both of you tug down hard three times",
+            "consequence": "One, two, three! The vine pulls taut but holds. Khỉ shouts \"hup!\" and takes a short swing."
+          },
+          {
+            "text": "Ask Vẹt Xanh to fly up and check the knot",
+            "consequence": "Vẹt circles the knot: \"It's firm, it's firm!\" Said twice, so it's truly firm."
+          }
+        ]
+      }
+    },
+    {
+      "id": "bac-cau-tre",
+      "title": "Bắc cầu qua khe suối",
+      "goTo": "Ra khe suối, chỗ đường dây phải vượt qua",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-khi-day-leo-nhac-khe-suoi-bac-cau",
+      "prompt": "Đường dây phải vượt qua khe suối. Bắc cầu tre cho vừa khe, ghi tám điểm nhé!",
+      "game": "stick-bridge",
+      "goal": 8,
+      "en": {
+        "title": "Bridging the stream",
+        "goTo": "Go to the narrow stream the vine line has to cross",
+        "prompt": "The vine line has to cross the stream. Build bamboo bridges that fit the gap and score eight points!"
+      }
+    },
+    {
+      "id": "doan-day-dau",
+      "title": "Đoạn dây đầu tiên",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khỉ đu một vòng qua khe suối rồi đáp xuống cạnh {name}, dúi vào tay một nắm hạt dẻ: «Phần thưởng của thợ mắc dây!»",
+      "en": {
+        "title": "The first stretch",
+        "text": "Khỉ swings once across the stream and lands beside {name}, pressing a handful of chestnuts into your hand: \"Pay for the vine crew!\""
+      }
+    },
+    {
+      "id": "ao-chuon-chuon",
+      "title": "Qua ao chuồn chuồn",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Đoạn dây tiếp theo phải đi qua ao chuồn chuồn. Khỉ bảo không sao, nhưng cứ gãi đầu mãi. Mai {name} đi cùng nhé.",
+      "en": {
+        "title": "Across the dragonfly pond",
+        "text": "The next stretch must cross the dragonfly pond. Khỉ says it's fine, but keeps scratching his head. Come along tomorrow, {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 60,
+    "coin": 15,
+    "skillXp": {
+      "phep-cong": 1,
+      "doc-hieu": 1
+    }
+  },
+  "en": {
+    "title": "Khỉ Chuyền Cành's story, chapter 1: The branch went crack",
+    "summary": "Khỉ Chuyền Cành's favourite swinging vine just snapped with a crack. {name} gathers new vines, works out their length when joined, picks branches strong enough, chooses how to test the vine and builds a bamboo bridge over the stream."
+  }
+}

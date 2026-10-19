@@ -1,0 +1,373 @@
+{
+  "id": "yarn-meo-bep-mam-com-2",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Chuyện của Mèo Bếp Trưởng, chương 2: Thiệp hồi âm",
+  "status": "active",
+  "category": "story",
+  "summary": "Thiệp hồi âm của khách mời đã về. {name} nhặt thiệp ở cổng, đọc thiệp của Chú Lái Đò Ba, tìm từ chỉ việc nấu ăn, nhớ món khách gọi và chọn cách xếp chỗ ngồi.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Bếp Trưởng",
+    "where": "Nhà của {name}: sau gian bếp, cổng trước nhà, phòng khách, bếp và bàn ăn",
+    "goal": "Biết ai sẽ tới và mỗi khách nhớ món gì của quê mình",
+    "play": "Nhặt thiệp; đọc thiệp; chọn từ chỉ hoạt động; nhớ món khách gọi; chọn cách xếp chỗ",
+    "learn": "Đọc hiểu, từ ngữ chỉ hoạt động",
+    "reward": "65 XP, 16 Xu, Skill XP Đọc hiểu, Từ ngữ",
+    "next": "Chiếc radio của gian bếp im tiếng"
+  },
+  "phases": {
+    "hook": "thiep-ve",
+    "explore": "nhat-thiep",
+    "learn": "doc-thiep-chu-ba",
+    "challenge": "tu-viec-bep",
+    "decision": "xep-cho-ngoi",
+    "finale": "xep-cho-ngoi",
+    "reward": "so-thuc-don-day",
+    "next": "radio-im-tieng"
+  },
+  "places": {
+    "meo-bep-truong": "Sau gian bếp",
+    "nhat-thiep": "Cổng trước nhà",
+    "st-meo-bep-mam-com-thiep-chu-ba": "Cổng trước nhà",
+    "st-meo-bep-mam-com-thiep-vang": "Cổng trước nhà",
+    "st-meo-bep-mam-com-thiep-do": "Cổng trước nhà",
+    "st-meo-bep-mam-com-ban-doc-thiep": "Phòng khách",
+    "st-meo-bep-mam-com-so-thuc-don": "Bếp và bàn ăn",
+    "st-meo-bep-mam-com-mam-ghi-mon": "Bếp và bàn ăn",
+    "st-meo-bep-mam-com-ban-ghe-khach": "Phòng khách"
+  },
+  "steps": [
+    {
+      "id": "thiep-ve",
+      "title": "Thiệp đã về",
+      "goTo": "Quay lại sau gian bếp, Mèo Bếp Trưởng đang canh ba nồi một lúc",
+      "kind": "dialogue",
+      "target": "meo-bep-truong",
+      "lines": [
+        {
+          "speaker": "Mèo Bếp Trưởng",
+          "text": "Sáng nay người đưa thư bấm chuông ba lần. Ba lần là có ba tấm thiệp. Mèo bận canh nồi, {name} ra cổng nhận giúp."
+        },
+        {
+          "speaker": "Mèo Bếp Trưởng",
+          "text": "Thiệp nào cũng ghi món khách nhớ nhất. Đọc kỹ. Một chữ sai là một món hỏng."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu chạy ra cổng ngay!",
+          "reply": "Đừng chạy qua bếp. Sàn trơn. Đi vòng sân."
+        }
+      ],
+      "en": {
+        "title": "The cards are here",
+        "goTo": "Head back behind the kitchen, where Mèo Bếp Trưởng is minding three pots at once",
+        "lines": [
+          "The postman rang three times this morning. Three rings, three cards. I'm minding the pots, so collect them for me, {name}.",
+          "Every card names the dish that guest misses most. Read carefully. One wrong word is one ruined dish."
+        ],
+        "choices": [
+          {
+            "text": "I'll run to the gate!",
+            "reply": "Don't run through the kitchen. The floor is slippery. Go round by the yard."
+          }
+        ]
+      }
+    },
+    {
+      "id": "nhat-thiep",
+      "title": "Nhặt ba tấm thiệp",
+      "goTo": "Ra cổng trước nhà nhặt ba tấm thiệp hồi âm",
+      "kind": "search",
+      "targets": [
+        "st-meo-bep-mam-com-thiep-chu-ba",
+        "st-meo-bep-mam-com-thiep-vang",
+        "st-meo-bep-mam-com-thiep-do"
+      ],
+      "en": {
+        "title": "Collecting three cards",
+        "goTo": "Go to the front gate and pick up the three reply cards"
+      }
+    },
+    {
+      "id": "doc-thiep-chu-ba",
+      "title": "Thiệp của Chú Lái Đò Ba",
+      "goTo": "Mang thiệp vào phòng khách, ngồi xuống đọc cho kỹ",
+      "kind": "read",
+      "target": "st-meo-bep-mam-com-ban-doc-thiep",
+      "skill": "doc-hieu",
+      "text": "Gửi Mèo Bếp Trưởng,\nChủ nhật chú sẽ chèo đò lên sớm, mang theo một giỏ cá tươi. Ở bến sông nhà chú, bữa cơm nào cũng có bát canh cá nấu với me và bông điên điển. Mèo nấu món ấy, chú sẽ kể chuyện sông cho cả mâm nghe.\nChú Ba",
+      "question": "Món Chú Ba nhớ nhất là món gì?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Canh cá nấu me và bông điên điển"
+        },
+        {
+          "id": "b",
+          "text": "Cá kho trong nồi đất"
+        },
+        {
+          "id": "c",
+          "text": "Bánh rán nóng cho chuyến đò chiều"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Tìm câu nói về bữa cơm ở bến sông nhà chú.",
+          "Món ấy nấu với những gì?"
+        ],
+        "hint": "Bữa cơm nào cũng có bát canh…",
+        "answer": {
+          "text": "Chú Ba nhớ bát canh cá me có bông điên điển",
+          "explanation": "Thiệp viết: bữa cơm nào cũng có bát canh cá nấu với me và bông điên điển, và chú dặn Mèo nấu món ấy."
+        },
+        "en": {
+          "guide": [
+            "Find the sentence about meals at his river landing.",
+            "What is that dish cooked with?"
+          ],
+          "hint": "Every meal has a bowl of…",
+          "answer": {
+            "text": "Chú Ba misses fish and tamarind soup with sesbania",
+            "explanation": "The card says every meal there has fish soup with tamarind and sesbania flowers, and asks Mèo to cook it."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Canh cá me! Mèo ghi ngay vào sổ, gạch chân hai lần.",
+          "{name} đọc thiệp chậm mà chắc, chẳng bỏ sót bông điên điển nào.",
+          "Đúng món chú Ba thèm. Mèo đã nghe thấy tiếng mái chèo rồi."
+        ],
+        "wrong": [
+          "Cá kho thì ngon thật, nhưng thiệp không nhắc tới nồi đất đâu.",
+          "Bánh rán là quà Mèo gửi chú, không phải món chú nhớ. Đọc lại câu giữa nhé.",
+          "Tìm chữ «bát canh» trong thiệp rồi đọc tiếp xem nấu với gì."
+        ],
+        "en": {
+          "right": [
+            "Fish and tamarind soup! Mèo writes it down at once and underlines it twice.",
+            "You read slowly and surely, {name}, and didn't miss a single sesbania flower.",
+            "Exactly what Chú Ba craves. Mèo can already hear the oars."
+          ],
+          "wrong": [
+            "Braised fish is lovely, but the card never mentions a clay pot.",
+            "Doughnuts are what Mèo sends him, not what he misses. Read the middle sentence again.",
+            "Find \"bowl of\" in the card and read on to see what goes in it."
+          ]
+        }
+      },
+      "en": {
+        "title": "Chú Lái Đò Ba's card",
+        "goTo": "Take the cards into the living room and sit down to read them properly",
+        "text": "Dear Mèo Bếp Trưởng,\nOn Sunday I'll row up early with a basket of fresh fish. At my river landing, every meal has a bowl of fish soup cooked with tamarind and sesbania flowers. Cook that, and I'll tell the whole table river stories.\nChú Ba",
+        "question": "Which dish does Chú Ba miss most?",
+        "choices": [
+          "Fish soup with tamarind and sesbania flowers",
+          "Fish braised in a clay pot",
+          "Hot doughnuts for the afternoon ferry"
+        ]
+      }
+    },
+    {
+      "id": "tu-viec-bep",
+      "title": "Chữ nào là việc nhà bếp?",
+      "goTo": "Vào bếp và bàn ăn, nơi Mèo để sổ thực đơn cạnh nồi cơm",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-meo-bep-mam-com-so-thuc-don",
+      "skill": "tu-ngu",
+      "prompt": "Mèo chép các món vào sổ thực đơn, tiện tay viết lẫn mấy chữ. Chọn những từ chỉ hoạt động nấu ăn:",
+      "choices": [
+        {
+          "id": "luoc",
+          "text": "luộc"
+        },
+        {
+          "id": "noi",
+          "text": "nồi"
+        },
+        {
+          "id": "xao",
+          "text": "xào"
+        },
+        {
+          "id": "kho",
+          "text": "kho"
+        },
+        {
+          "id": "dua",
+          "text": "đôi đũa"
+        },
+        {
+          "id": "thom",
+          "text": "thơm phức"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "luoc",
+          "xao",
+          "kho"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Từ chỉ hoạt động cho biết người nấu đang làm gì.",
+          "Thử đặt «Mèo đang…» trước từ đó xem có thành việc làm không."
+        ],
+        "hint": "Mèo đang luộc, Mèo đang… nồi? Nghe lạ chưa?",
+        "answer": {
+          "text": "luộc, xào, kho",
+          "explanation": "Luộc, xào, kho là việc người nấu làm. Nồi và đôi đũa là đồ vật; thơm phức là đặc điểm của món ăn."
+        },
+        "en": {
+          "guide": [
+            "An action word tells what the cook is doing.",
+            "Try putting \"Mèo is…\" in front and see whether it makes an action."
+          ],
+          "hint": "Mèo is boiling, Mèo is… pot? Sounds odd, doesn't it?",
+          "answer": {
+            "text": "boil, stir-fry, braise",
+            "explanation": "Boil, stir-fry and braise are things a cook does. Pot and chopsticks are things; fragrant describes the food."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba việc, ba chữ, không thừa không thiếu. Mèo gõ đũa ba nhịp khen.",
+          "{name} tách việc làm khỏi đồ vật gọn như tách lòng trắng khỏi lòng đỏ.",
+          "Sổ thực đơn sạch sẽ rồi. Đúng chất phó tướng nhà bếp!"
+        ],
+        "wrong": [
+          "«Mèo đang nồi» nghe có lạ không? Bỏ chữ ấy ra nhé.",
+          "Thơm phức là món ăn thế nào, chứ chưa phải việc ai làm.",
+          "Còn sót một việc bếp nữa đấy, thử đọc lại cả hàng chữ."
+        ],
+        "en": {
+          "right": [
+            "Three jobs, three words, nothing extra. Mèo taps his chopsticks three times in praise.",
+            "You separate actions from things as neatly as separating egg whites from yolks, {name}.",
+            "The menu book is tidy now. A true kitchen lieutenant!"
+          ],
+          "wrong": [
+            "Does \"Mèo is pot-ing\" sound right? Leave that word out.",
+            "Fragrant tells how food is, not what anyone does.",
+            "One kitchen job is still missing; read the whole row again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which words are kitchen jobs?",
+        "goTo": "Go to the kitchen and dining table, where Mèo keeps his menu book by the rice pot",
+        "prompt": "Mèo copies the dishes into his menu book and scribbles a few words in between. Pick the words for cooking actions:",
+        "choices": [
+          "boil",
+          "pot",
+          "stir-fry",
+          "braise",
+          "chopsticks",
+          "fragrant"
+        ]
+      }
+    },
+    {
+      "id": "nho-mon-khach",
+      "title": "Ai gọi món nào?",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-meo-bep-mam-com-mam-ghi-mon",
+      "prompt": "Mèo đọc món từng vị khách, {name} nhớ thật kỹ rồi bày đúng món. Ghi mười hai điểm nhé!",
+      "game": "customer-memory",
+      "goal": 12,
+      "en": {
+        "title": "Who ordered what?",
+        "prompt": "Mèo reads out each guest's dish; remember carefully and serve the right one. Score twelve points!"
+      }
+    },
+    {
+      "id": "xep-cho-ngoi",
+      "title": "Xếp chỗ ngồi",
+      "goTo": "Ra phòng khách đếm lại bàn ghế tiếp khách",
+      "kind": "decision",
+      "target": "st-meo-bep-mam-com-ban-ghe-khach",
+      "speaker": "Mèo Bếp Trưởng",
+      "prompt": "Mèo đếm ghế, đếm khách, rồi nhíu mày: «Thiếu hai ghế. Xử lý thế nào?»",
+      "choices": [
+        {
+          "id": "trai-chieu",
+          "text": "Trải chiếu ngồi bệt quanh mâm như ngày xưa",
+          "consequence": "Mèo gật gù: «Ngồi chiếu thì ai cũng ngang hàng. Hay.» Chiếu hoa được lôi ra từ nhà kho."
+        },
+        {
+          "id": "muon-ghe",
+          "text": "Mượn hai ghế ở góc học tập",
+          "consequence": "Hai chiếc ghế nhỏ được khiêng xuống cầu thang. Mèo dán giấy ghi «ghế khách» lên lưng ghế."
+        },
+        {
+          "id": "an-hai-luot",
+          "text": "Nhà mình ăn lượt sau, mời khách ăn trước",
+          "consequence": "Mèo khoanh tay: «Chủ nhà nhường khách. Đúng phép.» Nhưng Mèo vẫn lén để phần {name} một chiếc đùi gà."
+        }
+      ],
+      "en": {
+        "title": "Seating the guests",
+        "goTo": "Go to the living room and count the guest chairs again",
+        "prompt": "Mèo counts the chairs, counts the guests and frowns: \"Two chairs short. How do we handle it?\"",
+        "choices": [
+          {
+            "text": "Lay out mats and sit around the tray the old way",
+            "consequence": "Mèo nods: \"On mats everyone sits level. Good.\" The flowered mats come out of the storeroom."
+          },
+          {
+            "text": "Borrow two chairs from the study corner",
+            "consequence": "Two small chairs are carried down the stairs. Mèo sticks a \"guest chair\" label on each back."
+          },
+          {
+            "text": "Our family eats second; the guests eat first",
+            "consequence": "Mèo folds his arms: \"Hosts give way to guests. Proper manners.\" He still secretly saves {name} a chicken leg."
+          }
+        ]
+      }
+    },
+    {
+      "id": "so-thuc-don-day",
+      "title": "Sổ thực đơn đã đầy",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Mèo xé một trang sổ, viết tên {name} vào ô «phó bếp» rồi dán lên cửa bếp.",
+      "en": {
+        "title": "The menu book is full",
+        "text": "Mèo tears out a page, writes {name} in the \"assistant cook\" box and sticks it on the kitchen door."
+      }
+    },
+    {
+      "id": "radio-im-tieng",
+      "title": "Chiếc radio im tiếng",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Chiếc radio cũ trên nóc tủ bếp bỗng im bặt giữa buổi nấu. Mèo bảo không có nó thì tay Mèo cứ lóng ngóng. Mai {name} giúp Mèo xem nó bị làm sao.",
+      "en": {
+        "title": "The silent radio",
+        "text": "The old radio on top of the kitchen cupboard went silent in the middle of cooking. Mèo says without it his paws feel clumsy. Tomorrow {name} will help find out what is wrong."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "doc-hieu": 1,
+      "tu-ngu": 1
+    }
+  },
+  "en": {
+    "title": "Mèo Bếp Trưởng's story, chapter 2: The replies",
+    "summary": "The guests' replies have arrived. {name} gathers them at the gate, reads Chú Lái Đò Ba's card, finds the cooking words, remembers each guest's order and decides how to seat everyone."
+  }
+}

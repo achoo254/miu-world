@@ -1,0 +1,387 @@
+{
+  "id": "yarn-khi-day-leo-nhac-4",
+  "region": "khu-rung-bi-mat",
+  "chapter": 2,
+  "title": "Chuyện của Khỉ Chuyền Cành, chương 4: Đường bay của cả rừng",
+  "status": "active",
+  "category": "story",
+  "summary": "Đường dây đã tới trạm nhạc. Khỉ Chuyền Cành kể {name} nghe nỗi sợ tiếng cành kêu rắc. {name} kiểm tra nút buộc, chọn các bạn đu cùng lượt cho vừa sức dây, xếp lá kể lại chuyện đường dây rồi cùng cả rừng đu chuyến đầu tiên.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Khỉ Chuyền Cành",
+    "where": "Rừng sâu: cây đu dây, rặng tre, bãi cỏ, gốc đa",
+    "goal": "Mở đường dây cho cả rừng đu tới trạm nhạc",
+    "play": "Kiểm tra nút buộc; chọn bạn theo cân nặng; xếp lá kể chuyện; chọn ai đu trước; đu dây",
+    "learn": "Phép cộng với đơn vị ki-lô-gam, kể chuyện theo trình tự",
+    "reward": "80 XP, 22 Xu, Skill XP Khối lượng, Kể chuyện, Chuối chín cây",
+    "next": "Khỉ muốn mắc thêm một đường dây nữa"
+  },
+  "phases": {
+    "hook": "noi-so-cua-khi",
+    "explore": "kiem-tra-nut",
+    "learn": "luot-du",
+    "challenge": "xep-la-ke-chuyen",
+    "decision": "ai-du-truoc",
+    "finale": "chuyen-du-dau",
+    "reward": "duong-bay-ca-rung",
+    "next": "duong-day-moi"
+  },
+  "places": {
+    "khi-chuyen-canh": "Cây đu dây",
+    "kiem-tra-nut": "Rặng tre",
+    "st-khi-day-leo-nhac-nut-buoc-mot": "Rặng tre",
+    "st-khi-day-leo-nhac-nut-buoc-hai": "Rặng tre",
+    "st-khi-day-leo-nhac-nut-buoc-ba": "Rặng tre",
+    "st-khi-day-leo-nhac-bang-luot-du": "Bãi cỏ",
+    "st-khi-day-leo-nhac-bon-la-ke-chuyen": "Gốc đa",
+    "st-khi-day-leo-nhac-diem-xuat-phat": "Bãi cỏ"
+  },
+  "steps": [
+    {
+      "id": "noi-so-cua-khi",
+      "title": "Nỗi sợ của Khỉ",
+      "goTo": "Tới cây đu dây, Khỉ Chuyền Cành đang ngồi im, không đu chút nào",
+      "kind": "dialogue",
+      "target": "khi-chuyen-canh",
+      "lines": [
+        {
+          "speaker": "Khỉ Chuyền Cành",
+          "text": "{name}… tớ kể cậu nghe một chuyện, đừng cười nhé. Tớ sợ tiếng cành kêu «rắc». Từ hôm dây đứt, nghe tiếng ấy là chân tớ run."
+        },
+        {
+          "speaker": "Khỉ Chuyền Cành",
+          "text": "Cả chuồn chuồn nữa. Có lần một con đậu lên mũi tớ. Từ đó tớ… ừ thì tớ tránh chúng."
+        },
+        {
+          "speaker": "Khỉ Chuyền Cành",
+          "text": "Nhưng hôm nay cả rừng chờ đu chuyến đầu. Cậu kiểm tra nút buộc cùng tớ nhé, có cậu tớ đỡ run."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ không cười đâu. Mình kiểm tra thật kỹ!",
+          "reply": "Hấp… cảm ơn cậu. Nói ra rồi thấy nhẹ cả đuôi."
+        },
+        {
+          "text": "Sợ mà vẫn đu là can đảm đấy!",
+          "reply": "Thật hả? Vậy tớ là khỉ can đảm nhất rừng! Ú òa!"
+        }
+      ],
+      "en": {
+        "title": "Khỉ's fear",
+        "goTo": "Go to the swinging tree, where Khỉ Chuyền Cành sits still, not swinging at all",
+        "lines": [
+          "{name}… I'll tell you something, don't laugh. I'm scared of the crack of a branch. Since the vine snapped, that sound makes my legs shake.",
+          "Dragonflies too. One landed on my nose once. Since then I… well, I avoid them.",
+          "But today the whole forest is waiting for the first ride. Check the knots with me? With you here, I shake less."
+        ],
+        "choices": [
+          {
+            "text": "I won't laugh. We'll check really carefully!",
+            "reply": "Hup… thank you. Saying it makes even my tail feel lighter."
+          },
+          {
+            "text": "Being scared and still swinging is brave!",
+            "reply": "Really? Then I'm the bravest monkey in the forest! Peekaboo!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kiem-tra-nut",
+      "title": "Kiểm tra nút buộc",
+      "goTo": "Đi dọc rặng tre kiểm tra ba nút buộc",
+      "kind": "search",
+      "targets": [
+        "st-khi-day-leo-nhac-nut-buoc-mot",
+        "st-khi-day-leo-nhac-nut-buoc-hai",
+        "st-khi-day-leo-nhac-nut-buoc-ba"
+      ],
+      "en": {
+        "title": "Checking the knots",
+        "goTo": "Walk along the bamboo row and check the three knots"
+      }
+    },
+    {
+      "id": "luot-du",
+      "title": "Ai đu cùng lượt?",
+      "goTo": "Ra bãi cỏ xem tấm bảng lượt đu",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-khi-day-leo-nhac-bang-luot-du",
+      "skill": "khoi-luong",
+      "prompt": "Mỗi lượt, sợi dây chịu được đúng 30 kg. Chọn các bạn đu cùng một lượt sao cho cộng lại vừa đúng 30 kg:",
+      "choices": [
+        {
+          "id": "khi",
+          "text": "Khỉ Chuyền Cành: 12 kg"
+        },
+        {
+          "id": "huou",
+          "text": "Hươu Bông Rắm: 16 kg"
+        },
+        {
+          "id": "vet",
+          "text": "Vẹt Xanh: 2 kg"
+        },
+        {
+          "id": "gau",
+          "text": "Gấu Bắp Cày: 45 kg"
+        }
+      ],
+      "answer": {
+        "choices": [
+          "khi",
+          "huou",
+          "vet"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Gấu đã nặng hơn 30 kg rồi, không đu chung được.",
+          "Thử cộng ba bạn còn lại."
+        ],
+        "hint": "12 kg + 16 kg = 28 kg, thêm ai cho tròn 30 kg?",
+        "answer": {
+          "text": "Khỉ, Hươu và Vẹt",
+          "explanation": "12 + 16 + 2 = 30, vừa đúng 30 kg. Gấu nặng 45 kg nên phải đu một mình bằng dây to hơn."
+        },
+        "en": {
+          "guide": [
+            "Gấu alone weighs more than 30 kg, so he can't share a ride.",
+            "Try adding the other three."
+          ],
+          "hint": "12 kg + 16 kg = 28 kg; who makes it 30 kg?",
+          "answer": {
+            "text": "Khỉ, Hươu and Vẹt",
+            "explanation": "12 + 16 + 2 = 30, exactly 30 kg. Gấu weighs 45 kg, so he rides alone on a thicker vine."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ba mươi ki-lô-gam tròn! Dây căng vừa đẹp, không kêu một tiếng.",
+          "{name} cân bằng mắt giỏi hơn cả cái cân chợ.",
+          "Đủ cân, đủ bạn, đủ vui. Hấp!"
+        ],
+        "wrong": [
+          "Gấu Bắp Cày nặng quá ba mươi rồi, cho Gấu đu riêng nhé.",
+          "Còn thiếu một chút cho tròn ba mươi, thêm bạn nhỏ nhất xem.",
+          "Cộng thử từng bạn một, đừng để dây phải gồng nhé."
+        ],
+        "en": {
+          "right": [
+            "Thirty kilos exactly! The vine is perfectly taut and silent.",
+            "You weigh by eye better than a market scale, {name}.",
+            "Right weight, right friends, right fun. Hup!"
+          ],
+          "wrong": [
+            "Gấu Bắp Cày is over thirty by himself; let him ride alone.",
+            "A little short of thirty; add the smallest friend.",
+            "Add them one by one; don't make the vine strain."
+          ]
+        }
+      },
+      "en": {
+        "title": "Who swings together?",
+        "goTo": "Go to the grassy clearing to see the ride board",
+        "prompt": "Each ride, the vine holds exactly 30 kg. Pick friends to swing together so their weights add up to exactly 30 kg:",
+        "choices": [
+          "Khỉ Chuyền Cành weighs 12 kg",
+          "Hươu Bông Rắm weighs 16 kg",
+          "Vẹt Xanh weighs 2 kg",
+          "Gấu Bắp Cày weighs 45 kg"
+        ]
+      }
+    },
+    {
+      "id": "xep-la-ke-chuyen",
+      "title": "Bốn chiếc lá khắc hình",
+      "goTo": "Mang bốn chiếc lá khắc hình tới gốc đa",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-khi-day-leo-nhac-bon-la-ke-chuyen",
+      "skill": "ke-chuyen",
+      "prompt": "Khỉ khắc chuyện đường dây lên bốn chiếc lá để treo ở gốc đa. Xếp lá theo đúng thứ tự câu chuyện:",
+      "items": [
+        {
+          "id": "hop-nhac",
+          "label": "Hộp nhạc hát trên ngọn cây"
+        },
+        {
+          "id": "day-dut",
+          "label": "Sợi dây cũ đứt cái rắc"
+        },
+        {
+          "id": "ca-rung-du",
+          "label": "Cả rừng đu tới trạm nhạc"
+        },
+        {
+          "id": "qua-ao",
+          "label": "Mắc dây kịp trước cơn mưa"
+        }
+      ],
+      "answer": {
+        "order": [
+          "day-dut",
+          "qua-ao",
+          "hop-nhac",
+          "ca-rung-du"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Chuyện bắt đầu từ lúc dây cũ gặp nạn.",
+          "Cả rừng đu là đoạn kết."
+        ],
+        "hint": "Dây đứt → qua ao → hộp nhạc → cả rừng đu.",
+        "answer": {
+          "text": "Dây đứt, qua ao, hộp nhạc hát, cả rừng đu",
+          "explanation": "Dây cũ đứt nên phải mắc dây mới; dây qua ao trước mưa, rồi hộp nhạc được treo, cuối cùng cả rừng cùng đu."
+        },
+        "en": {
+          "guide": [
+            "The story starts when the old vine fails.",
+            "The whole forest swinging is the ending."
+          ],
+          "hint": "Snap → past the pond → music box → everyone swings.",
+          "answer": {
+            "text": "Snap, the pond, the music box, everyone swings",
+            "explanation": "The old vine snapped so a new one was needed; it crossed the pond before the rain, then the music box went up, and finally the whole forest swung."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng thứ tự! Khỉ treo bốn chiếc lá thành một hàng đung đưa.",
+          "{name} nhớ chuyện của tụi mình còn rõ hơn tớ.",
+          "Ai đi ngang gốc đa cũng đọc được chuyện đường dây rồi. Ú òa!"
+        ],
+        "wrong": [
+          "Dây chưa đứt thì đâu cần mắc dây mới, xếp lại nhé.",
+          "Cả rừng đu là phần kết, để cuối cùng chứ.",
+          "Nhớ lại xem: hộp nhạc tới trước hay mắc dây qua ao trước?"
+        ],
+        "en": {
+          "right": [
+            "Right order! Khỉ hangs the four leaves in a swaying row.",
+            "You remember our story even better than I do, {name}.",
+            "Anyone passing the banyan can read the vine story now. Peekaboo!"
+          ],
+          "wrong": [
+            "If the vine hadn't snapped, we wouldn't need a new one; try again.",
+            "Everyone swinging is the ending; it goes last.",
+            "Think back: did the music box come before or after the pond?"
+          ]
+        }
+      },
+      "en": {
+        "title": "Four carved leaves",
+        "goTo": "Take the four carved leaves to the banyan tree",
+        "prompt": "Khỉ carved the story of the vine line on four leaves to hang on the banyan. Put them in story order:",
+        "items": [
+          "The music box sings in the treetop",
+          "The old vine snaps with a crack",
+          "The whole forest swings to the music stop",
+          "The vine goes up just before the rain"
+        ]
+      }
+    },
+    {
+      "id": "ai-du-truoc",
+      "title": "Ai đu chuyến đầu?",
+      "goTo": "Quay ra bãi cỏ, cả rừng đang xếp hàng ở điểm xuất phát",
+      "kind": "decision",
+      "target": "st-khi-day-leo-nhac-diem-xuat-phat",
+      "speaker": "Khỉ Chuyền Cành",
+      "prompt": "Cả rừng xếp hàng ở điểm xuất phát. Khỉ cầm đầu dây, tay hơi run: «Ai đu chuyến đầu tiên đây?»",
+      "choices": [
+        {
+          "id": "khi-du",
+          "text": "Khỉ đu trước, vì đây là ước mơ của Khỉ",
+          "consequence": "Khỉ hít sâu, «hấp!», bay vèo qua rặng tre. Không một tiếng rắc nào, chỉ có tiếng nhạc và tiếng reo."
+        },
+        {
+          "id": "du-cung",
+          "text": "{name} và Khỉ đu cùng nhau",
+          "consequence": "Hai bạn nắm chung một sợi dây, bay qua bãi cỏ. Khỉ cười to tới mức quên cả run."
+        },
+        {
+          "id": "ban-nho",
+          "text": "Nhường bạn nhỏ nhất rừng đu trước",
+          "consequence": "Sóc Bông Bay đu đầu tiên, hét «ú òa!» y như Khỉ. Khỉ đỏ mặt vì sung sướng."
+        }
+      ],
+      "en": {
+        "title": "Who rides first?",
+        "goTo": "Head back to the clearing, where the whole forest is lining up at the start",
+        "prompt": "The whole forest lines up at the start. Khỉ holds the vine, hands trembling a little: \"Who takes the very first ride?\"",
+        "choices": [
+          {
+            "text": "Khỉ goes first, because it's his dream",
+            "consequence": "Khỉ takes a deep breath, \"hup!\", and flies over the bamboo. Not a single crack: only music and cheering."
+          },
+          {
+            "text": "{name} and Khỉ swing together",
+            "consequence": "You share one vine and soar over the clearing. Khỉ laughs so hard he forgets to tremble."
+          },
+          {
+            "text": "Let the forest's smallest friend go first",
+            "consequence": "Sóc Bông Bay swings first, shouting \"peekaboo!\" just like Khỉ. Khỉ blushes with joy."
+          }
+        ]
+      }
+    },
+    {
+      "id": "chuyen-du-dau",
+      "title": "Chuyến đu đầu tiên",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-khi-day-leo-nhac-diem-xuat-phat",
+      "prompt": "Đu theo đường dây mới tới trạm nhạc! Ghi năm điểm nhé!",
+      "game": "rope-swing",
+      "goal": 5,
+      "en": {
+        "title": "The first ride",
+        "prompt": "Swing along the new vine line to the music stop! Score five points!"
+      }
+    },
+    {
+      "id": "duong-bay-ca-rung",
+      "title": "Đường bay của cả rừng",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khỉ tặng {name} buồng chuối chín cây ngọt nhất: «Ăn treo ngược mới ngọt, tớ nói thật đấy!»",
+      "en": {
+        "title": "A flyway for the whole forest",
+        "text": "Khỉ gives {name} his sweetest tree-ripened bananas: \"They taste sweetest upside down, honestly!\""
+      }
+    },
+    {
+      "id": "duong-day-moi",
+      "title": "Một đường dây nữa",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Khỉ đang nghĩ tới một đường dây nữa, dài hơn, cao hơn, và lần này Khỉ muốn tự mình kiểm tra từng cành trước khi đu.",
+      "en": {
+        "title": "One more vine line",
+        "text": "Khỉ is already dreaming of another vine line, longer and higher, and this time he wants to check every branch himself before swinging."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 22,
+    "skillXp": {
+      "khoi-luong": 1,
+      "ke-chuyen": 1
+    },
+    "items": {
+      "chuoi-chin-cay": 1
+    }
+  },
+  "en": {
+    "title": "Khỉ Chuyền Cành's story, chapter 4: A flyway for the whole forest",
+    "summary": "The vine line reaches the music stop. Khỉ Chuyền Cành tells {name} about his fear of cracking branches. {name} checks the knots, picks friends to swing together within the vine's limit, orders leaves that retell the story and joins the whole forest for the first ride."
+  }
+}

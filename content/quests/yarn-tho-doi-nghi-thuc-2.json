@@ -1,0 +1,347 @@
+{
+  "id": "yarn-tho-doi-nghi-thuc-2",
+  "region": "truong-hoc",
+  "chapter": 2,
+  "title": "Chuyện của Thỏ Măng Non, chương 2: Đố mẹo cả đội",
+  "status": "active",
+  "category": "story",
+  "summary": "Muốn làm chỉ huy đội nghi thức, phải giải bài đố của thầy hiệu trưởng. {name} tìm ba phong bì đố, suy luận ai đứng đầu hàng, chọn câu giới thiệu rồi giúp Thỏ Măng Non tập nghĩ trước khi trả lời.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Thỏ Măng Non",
+    "where": "Trường: hiên hội trường, nhà đa năng, phòng mĩ thuật, sân sau dãy lớp, bồn nhài",
+    "goal": "Vượt qua bài đố chọn chỉ huy đội nghi thức",
+    "play": "Tìm phong bì đố; suy luận thứ tự xếp hàng; chọn câu giới thiệu; chọn cách giúp Thỏ bình tĩnh",
+    "learn": "Suy luận, câu giới thiệu (Ai là gì?)",
+    "reward": "65 XP, 16 Xu, Skill XP Logic, Câu",
+    "next": "Lễ khai giảng đã tới"
+  },
+  "phases": {
+    "hook": "bai-do-cua-thay",
+    "explore": "tim-phong-bi",
+    "learn": "ai-dung-dau",
+    "challenge": "cau-gioi-thieu",
+    "decision": "nghi-truoc-noi",
+    "finale": "nghi-truoc-noi",
+    "reward": "vuot-qua-bai-do",
+    "next": "le-khai-giang-toi"
+  },
+  "places": {
+    "tho-mang-non": "Hiên hội trường",
+    "tim-phong-bi": "Nhà đa năng",
+    "st-tho-doi-nghi-thuc-phong-bi-do-mot": "Nhà đa năng",
+    "st-tho-doi-nghi-thuc-phong-bi-do-hai": "Nhà đa năng",
+    "st-tho-doi-nghi-thuc-phong-bi-do-ba": "Nhà đa năng",
+    "st-tho-doi-nghi-thuc-tranh-ba-ban": "Phòng mĩ thuật",
+    "st-tho-doi-nghi-thuc-bang-cau-gioi-thieu": "Sân sau dãy lớp",
+    "st-tho-doi-nghi-thuc-bon-nhai-hanh-lang": "Bồn nhài"
+  },
+  "steps": [
+    {
+      "id": "bai-do-cua-thay",
+      "title": "Bài đố của thầy",
+      "goTo": "Quay lại hiên hội trường, Thỏ Măng Non đang nhảy tại chỗ",
+      "kind": "dialogue",
+      "target": "tho-mang-non",
+      "lines": [
+        {
+          "speaker": "Thỏ Măng Non",
+          "text": "Ba, hai, một… tớ biết rồi! À không, tớ chưa biết gì cả. Thầy giấu ba phong bì đố ở nhà đa năng."
+        },
+        {
+          "speaker": "Thỏ Măng Non",
+          "text": "Tớ mê đố mẹo lắm, nhưng tớ hay nói trước nghĩ sau. Lần trước tớ trả lời sai chỉ vì nói nhanh quá."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Lần này mình nghĩ kỹ cùng nhau!",
+          "reply": "Ừ! Tớ sẽ đếm ngược trước khi nói. Ba, hai, một… rồi mới nói."
+        }
+      ],
+      "en": {
+        "title": "The head teacher's riddles",
+        "goTo": "Go back to the hall porch, where Thỏ Măng Non is hopping on the spot",
+        "lines": [
+          "Three, two, one… I know! Er, no, I don't know anything yet. The head teacher hid three riddle envelopes in the activity hall.",
+          "I love trick riddles, but I tend to speak before I think. Last time I got it wrong just from answering too fast."
+        ],
+        "choices": [
+          {
+            "text": "This time we'll think it through together!",
+            "reply": "Yes! I'll count down before speaking. Three, two, one… then talk."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-phong-bi",
+      "title": "Tìm ba phong bì đố",
+      "goTo": "Vào nhà đa năng tìm ba phong bì đố",
+      "kind": "search",
+      "targets": [
+        "st-tho-doi-nghi-thuc-phong-bi-do-mot",
+        "st-tho-doi-nghi-thuc-phong-bi-do-hai",
+        "st-tho-doi-nghi-thuc-phong-bi-do-ba"
+      ],
+      "en": {
+        "title": "Finding three riddle envelopes",
+        "goTo": "Go into the activity hall to find three riddle envelopes"
+      }
+    },
+    {
+      "id": "ai-dung-dau",
+      "title": "Ai đứng đầu hàng?",
+      "goTo": "Mang phong bì số một vào phòng mĩ thuật, nơi treo bức tranh ba bạn",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-tho-doi-nghi-thuc-tranh-ba-ban",
+      "skill": "logic",
+      "prompt": "Phong bì số một: Ba bạn Thỏ, Hươu, Chó đứng thành một hàng. Thỏ không đứng đầu. Chó đứng ngay sau Thỏ. Ai đứng đầu hàng?",
+      "choices": [
+        {
+          "id": "tho",
+          "text": "Thỏ"
+        },
+        {
+          "id": "huou",
+          "text": "Hươu"
+        },
+        {
+          "id": "cho",
+          "text": "Chó"
+        }
+      ],
+      "answer": {
+        "choice": "huou"
+      },
+      "support": {
+        "guide": [
+          "Thỏ không đứng đầu, vậy Thỏ đứng thứ hai hoặc thứ ba.",
+          "Chó đứng ngay sau Thỏ, nên Thỏ không thể đứng cuối."
+        ],
+        "hint": "Thỏ thứ hai, Chó thứ ba, vậy ai thứ nhất?",
+        "answer": {
+          "text": "Hươu",
+          "explanation": "Thỏ không đứng đầu và có Chó đứng sau nên Thỏ đứng thứ hai, Chó thứ ba. Người đứng đầu là Hươu."
+        },
+        "en": {
+          "guide": [
+            "Thỏ isn't first, so Thỏ is second or third.",
+            "Chó is right behind Thỏ, so Thỏ can't be last."
+          ],
+          "hint": "Thỏ second, Chó third, so who is first?",
+          "answer": {
+            "text": "Hươu",
+            "explanation": "Thỏ isn't first and has Chó behind her, so Thỏ is second and Chó third. Hươu is first."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hươu! Thỏ đếm ngược ba giây rồi mới gật đầu: đúng thật!",
+          "{name} suy từng điều một, chẳng vội chút nào.",
+          "Phong bì số một xong rồi! Còn hai phong bì nữa."
+        ],
+        "wrong": [
+          "Đề bảo Thỏ không đứng đầu mà, đọc lại nhé.",
+          "Chó đứng ngay sau Thỏ, nên Chó chẳng thể đứng đầu.",
+          "Ba, hai, một… nghĩ chậm thôi. Xếp Thỏ và Chó trước xem."
+        ],
+        "en": {
+          "right": [
+            "Hươu! Thỏ counts down three seconds before nodding: right!",
+            "You reasoned one clue at a time, never rushing, {name}.",
+            "Envelope one solved! Two to go."
+          ],
+          "wrong": [
+            "The riddle says Thỏ isn't first; read it again.",
+            "Chó is right behind Thỏ, so Chó can't be first.",
+            "Three, two, one… think slowly. Place Thỏ and Chó first."
+          ]
+        }
+      },
+      "en": {
+        "title": "Who stands first?",
+        "goTo": "Take envelope one into the art room, where the picture of three friends hangs",
+        "prompt": "Envelope one: Thỏ, Hươu and Chó stand in a line. Thỏ is not first. Chó stands right behind Thỏ. Who is first in line?",
+        "choices": [
+          "Thỏ",
+          "Hươu",
+          "Chó"
+        ]
+      }
+    },
+    {
+      "id": "cau-gioi-thieu",
+      "title": "Phong bì thứ hai: câu giới thiệu",
+      "goTo": "Ra sân sau dãy lớp đọc tấm bảng của phong bì số hai",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-tho-doi-nghi-thuc-bang-cau-gioi-thieu",
+      "skill": "cau",
+      "prompt": "Phong bì số hai: Chọn những câu giới thiệu (trả lời câu hỏi: Ai là gì?):",
+      "choices": [
+        {
+          "id": "tho-la",
+          "text": "Thỏ là đội viên lớp 2A."
+        },
+        {
+          "id": "tho-that",
+          "text": "Thỏ thắt khăn quàng."
+        },
+        {
+          "id": "thay-la",
+          "text": "Thầy Sư Tử Vàng là thầy hiệu trưởng."
+        },
+        {
+          "id": "khan-do",
+          "text": "Khăn quàng đỏ thắm."
+        }
+      ],
+      "answer": {
+        "choices": [
+          "tho-la",
+          "thay-la"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Câu giới thiệu thường có chữ «là».",
+          "Nó cho biết ai đó là ai, là gì."
+        ],
+        "hint": "Tìm hai câu có «… là …».",
+        "answer": {
+          "text": "Câu nói Thỏ là đội viên và câu nói thầy là hiệu trưởng",
+          "explanation": "«Thỏ là đội viên lớp 2A» và «Thầy Sư Tử Vàng là thầy hiệu trưởng» trả lời câu hỏi Ai là gì. Câu còn lại kể việc làm hoặc tả đặc điểm."
+        },
+        "en": {
+          "guide": [
+            "An introducing sentence usually has \"is\" joining a person to what they are.",
+            "It tells who or what someone is."
+          ],
+          "hint": "Find the two sentences built as \"… is a/the …\".",
+          "answer": {
+            "text": "The team-member sentence and the head-teacher sentence",
+            "explanation": "\"Thỏ is a team member in class 2A\" and \"Sư Tử Vàng is the head teacher\" answer Who is what. The others tell an action or describe."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai câu giới thiệu! Thỏ đếm ngược xong mới reo lên. Tiến bộ quá!",
+          "{name} nhìn chữ «là» tinh như mắt thầy hiệu trưởng.",
+          "Phong bì số hai xong rồi. Chỉ còn một bài nữa thôi!"
+        ],
+        "wrong": [
+          "«Thỏ thắt khăn quàng» kể việc Thỏ làm, chưa phải câu giới thiệu.",
+          "«Khăn quàng đỏ thắm» là câu tả khăn quàng thế nào.",
+          "Còn một câu có chữ «là» nữa đấy, tìm lại xem."
+        ],
+        "en": {
+          "right": [
+            "Two introducing sentences! Thỏ counts down before cheering. Such progress!",
+            "You spot \"is a\" as sharply as the head teacher, {name}.",
+            "Envelope two done. Just one more!"
+          ],
+          "wrong": [
+            "\"Thỏ ties her scarf\" tells an action, not an introduction.",
+            "\"The scarf is bright red\" describes what the scarf is like.",
+            "There's one more sentence with \"is a/the\"; look again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Envelope two: introductions",
+        "goTo": "Go to the yard behind the classrooms to read the board for envelope two",
+        "prompt": "Envelope two: Pick the sentences that introduce someone (answering: Who is what?):",
+        "choices": [
+          "Thỏ is a team member in class 2A.",
+          "Thỏ ties her scarf.",
+          "Sư Tử Vàng is the head teacher.",
+          "The scarf is bright red."
+        ]
+      }
+    },
+    {
+      "id": "nghi-truoc-noi",
+      "title": "Nghĩ trước, nói sau",
+      "goTo": "Ra bồn nhài ngoài hành lang mở phong bì số ba",
+      "kind": "decision",
+      "target": "st-tho-doi-nghi-thuc-bon-nhai-hanh-lang",
+      "speaker": "Thỏ Măng Non",
+      "prompt": "Phong bì số ba là câu đố khó nhất. Thỏ đã há miệng định trả lời ngay. {name} giúp Thỏ thế nào?",
+      "choices": [
+        {
+          "id": "dem-nguoc",
+          "text": "Nhắc Thỏ đếm ngược ba, hai, một rồi mới nói",
+          "consequence": "Thỏ nhắm mắt: «Ba… hai… một.» Mở mắt ra, Thỏ trả lời chậm rãi, và đúng!"
+        },
+        {
+          "id": "viet-ra",
+          "text": "Cùng viết lời giải ra giấy trước",
+          "consequence": "Viết ra rồi đọc lại, Thỏ phát hiện mình suýt nhầm. Thỏ thở phào: «May có tờ giấy!»"
+        },
+        {
+          "id": "ngui-hoa",
+          "text": "Rủ Thỏ hít một hơi hương hoa nhài cho bình tĩnh",
+          "consequence": "Thỏ hít một hơi thật sâu, hương nhài mát rượi. Thỏ cười: «Bình tĩnh rồi, giờ mới nghĩ.»"
+        }
+      ],
+      "en": {
+        "title": "Think first, speak second",
+        "goTo": "Go to the jasmine planter outside the corridor to open envelope three",
+        "prompt": "Envelope three is the hardest riddle. Thỏ's mouth is already open to blurt an answer. How do you help her?",
+        "choices": [
+          {
+            "text": "Remind Thỏ to count down three, two, one before speaking",
+            "consequence": "Thỏ shuts her eyes: \"Three… two… one.\" She opens them and answers slowly, and correctly!"
+          },
+          {
+            "text": "Write the answer on paper first together",
+            "consequence": "Writing it down and reading it back, Thỏ spots her near-mistake. She sighs: \"Thank goodness for paper!\""
+          },
+          {
+            "text": "Invite Thỏ to breathe in the jasmine and calm down",
+            "consequence": "Thỏ takes a deep breath of cool jasmine scent and smiles: \"Calm now. Now I think.\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "vuot-qua-bai-do",
+      "title": "Vượt qua bài đố",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Thầy hiệu trưởng gầm một tiếng nhỏ khen Thỏ. Thỏ chạy ra ôm {name}, quên cả đếm ngược.",
+      "en": {
+        "title": "Riddles solved",
+        "text": "The head teacher gives a small roar of praise. Thỏ runs over to hug {name}, forgetting even to count down."
+      }
+    },
+    {
+      "id": "le-khai-giang-toi",
+      "title": "Lễ khai giảng sắp tới",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Thỏ đã được chọn làm chỉ huy đội nghi thức! Lễ khai giảng sẽ diễn ra sáng mai. Thỏ hồi hộp tới mức thắt khăn quàng tới lần thứ sáu.",
+      "en": {
+        "title": "The opening ceremony is near",
+        "text": "Thỏ has been chosen to lead the honour guard! The opening ceremony is tomorrow morning. She's so nervous she has tied her scarf six times."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "logic": 1,
+      "cau": 1
+    }
+  },
+  "en": {
+    "title": "Thỏ Măng Non's story, chapter 2: Riddles for the guard",
+    "summary": "To lead the honour guard, you must solve the head teacher's riddles. {name} finds three riddle envelopes, works out who stands first in line, picks the introducing sentences and helps Thỏ Măng Non practise thinking before answering."
+  }
+}

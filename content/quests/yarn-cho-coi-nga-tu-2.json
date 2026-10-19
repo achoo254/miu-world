@@ -1,0 +1,396 @@
+{
+  "id": "yarn-cho-coi-nga-tu-2",
+  "region": "trung-tam",
+  "chapter": 1,
+  "title": "Chuyện của Chó Cảnh Sát Còi, chương 2: Đàn vịt qua đường",
+  "status": "active",
+  "category": "story",
+  "summary": "Một đàn vịt cứ đi tắt qua quảng trường làm xe phanh gấp. {name} tìm ba chú vịt con lạc, kẻ vạch qua đường theo quy luật, đọc bảng luật của đàn vịt rồi dẫn cả đàn đi đúng lối.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Chó Cảnh Sát Còi",
+    "where": "Quảng trường: ngã tư, đài phun nước, chòi chờ tổ đội, bảng nhiệm vụ, cầu",
+    "goal": "Dẫn đàn vịt qua đường an toàn mà không làm kẹt xe",
+    "play": "Tìm vịt con; tìm quy luật vạch kẻ; đọc bảng luật; chọn cách dẫn vịt; vẽ đường cho vịt",
+    "learn": "Tìm quy luật, đọc hiểu",
+    "reward": "65 XP, 16 Xu, Skill XP Logic, Đọc hiểu",
+    "next": "Bữa trưa của Chó lúc nào cũng dang dở"
+  },
+  "phases": {
+    "hook": "vit-di-tat",
+    "explore": "tim-vit-con",
+    "learn": "vach-qua-duong",
+    "challenge": "luat-cua-dan-vit",
+    "decision": "dan-vit-di",
+    "finale": "ve-duong-vit",
+    "reward": "vit-quac-cam-on",
+    "next": "bua-trua-dang-do"
+  },
+  "places": {
+    "cho-canh-sat-coi": "Ngã tư",
+    "tim-vit-con": "Đài phun nước",
+    "st-cho-coi-nga-tu-vit-con-mot": "Đài phun nước",
+    "st-cho-coi-nga-tu-vit-con-hai": "Đài phun nước",
+    "st-cho-coi-nga-tu-vit-con-ba": "Đài phun nước",
+    "st-cho-coi-nga-tu-hop-son-vach": "Chòi chờ tổ đội",
+    "st-cho-coi-nga-tu-bang-luat-vit": "Bảng nhiệm vụ",
+    "st-cho-coi-nga-tu-loi-cho-vit": "Cầu trung tâm"
+  },
+  "steps": [
+    {
+      "id": "vit-di-tat",
+      "title": "Đàn vịt đi tắt",
+      "goTo": "Quay lại ngã tư, Chó Cảnh Sát Còi đang giơ tay chặn xe",
+      "kind": "dialogue",
+      "target": "cho-canh-sat-coi",
+      "lines": [
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "Dừng! Dừng! Dừng! Không phải xe đâu {name}, là vịt. Một vịt mẹ, ba vịt con, đi tắt ngang quảng trường."
+        },
+        {
+          "speaker": "Chó Cảnh Sát Còi",
+          "text": "Xe nào cũng phanh kít lại. Ba vịt con còn lạc mẹ, chạy loanh quanh đài phun nước."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu đi tìm vịt con!",
+          "reply": "Đi chậm thôi. Vịt con sợ người chạy."
+        },
+        {
+          "text": "Sao vịt không đi vạch qua đường hả chú?",
+          "reply": "Vì chưa có vạch nào cho vịt. Mình sẽ kẻ một cái."
+        }
+      ],
+      "en": {
+        "title": "The ducks' shortcut",
+        "goTo": "Go back to the crossroads, where Chó Cảnh Sát Còi is holding up the traffic",
+        "lines": [
+          "Stop! Stop! Stop! Not cars, {name}: ducks. One mother duck and three ducklings cutting across the square.",
+          "Every driver slams on the brakes. And the three ducklings lost their mother; they're running round the fountain."
+        ],
+        "choices": [
+          {
+            "text": "I'll find the ducklings!",
+            "reply": "Walk slowly. Ducklings are scared of running people."
+          },
+          {
+            "text": "Why don't the ducks use the crossing?",
+            "reply": "Because there isn't one for ducks yet. We'll paint one."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-vit-con",
+      "title": "Tìm ba vịt con",
+      "goTo": "Ra đài phun nước tìm ba vịt con lạc mẹ",
+      "kind": "search",
+      "targets": [
+        "st-cho-coi-nga-tu-vit-con-mot",
+        "st-cho-coi-nga-tu-vit-con-hai",
+        "st-cho-coi-nga-tu-vit-con-ba"
+      ],
+      "en": {
+        "title": "Finding three ducklings",
+        "goTo": "Go to the fountain to find the three lost ducklings"
+      }
+    },
+    {
+      "id": "vach-qua-duong",
+      "title": "Kẻ vạch qua đường",
+      "goTo": "Tới chòi chờ tổ đội lấy hộp sơn kẻ vạch",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "pattern",
+      "target": "st-cho-coi-nga-tu-hop-son-vach",
+      "skill": "logic",
+      "prompt": "Chó kẻ vạch qua đường cho đàn vịt theo mẫu: trắng, trắng, vàng, trắng, trắng, vàng, … Vạch thứ chín màu gì?",
+      "elements": [
+        {
+          "id": "v1",
+          "label": "trắng"
+        },
+        {
+          "id": "v2",
+          "label": "trắng"
+        },
+        {
+          "id": "v3",
+          "label": "vàng"
+        },
+        {
+          "id": "v4",
+          "label": "trắng"
+        },
+        {
+          "id": "v5",
+          "label": "trắng"
+        },
+        {
+          "id": "v6",
+          "label": "vàng"
+        }
+      ],
+      "choices": [
+        {
+          "id": "trang",
+          "text": "Màu trắng"
+        },
+        {
+          "id": "vang",
+          "text": "Màu vàng"
+        },
+        {
+          "id": "xanh",
+          "text": "Màu xanh"
+        }
+      ],
+      "answer": {
+        "choice": "vang"
+      },
+      "support": {
+        "guide": [
+          "Mẫu lặp lại sau mỗi ba vạch: trắng, trắng, vàng.",
+          "Vạch thứ ba, thứ sáu đều màu vàng."
+        ],
+        "hint": "Đếm tiếp ba vạch nữa từ vạch thứ sáu.",
+        "answer": {
+          "text": "Màu vàng",
+          "explanation": "Cứ ba vạch lại có một vạch vàng: vạch 3, 6, 9. Vậy vạch thứ chín màu vàng."
+        },
+        "en": {
+          "guide": [
+            "The pattern repeats every three stripes: white, white, yellow.",
+            "The third and sixth stripes are yellow."
+          ],
+          "hint": "Count three more stripes on from the sixth.",
+          "answer": {
+            "text": "Yellow",
+            "explanation": "Every third stripe is yellow: 3, 6, 9. So the ninth stripe is yellow."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Vàng! Chó quét một nét sơn vàng thẳng tắp.",
+          "Cứ ba vạch một lần, {name} nhìn ra nhịp ngay.",
+          "Vạch kẻ đẹp tới mức vịt mẹ đứng ngắm mãi."
+        ],
+        "wrong": [
+          "Vạch ấy lệch mẫu rồi. Đếm từng nhóm ba vạch nhé.",
+          "Trong mẫu này làm gì có màu xanh, {name}.",
+          "Vạch thứ sáu màu vàng, thử đếm thêm ba vạch xem."
+        ],
+        "en": {
+          "right": [
+            "Yellow! Chó sweeps on a dead-straight yellow stripe.",
+            "Every three stripes: you spotted the rhythm at once, {name}.",
+            "The crossing is so pretty the mother duck stops to admire it."
+          ],
+          "wrong": [
+            "That breaks the pattern. Count the stripes in threes.",
+            "There's no green in this pattern, {name}.",
+            "The sixth stripe is yellow; count three more."
+          ]
+        }
+      },
+      "en": {
+        "title": "Painting the crossing",
+        "goTo": "Go to the team shelter to fetch the line paint",
+        "prompt": "Chó paints the duck crossing in a pattern: white, white, yellow, white, white, yellow, … What colour is the ninth stripe?",
+        "elements": [
+          "white",
+          "white",
+          "yellow",
+          "white",
+          "white",
+          "yellow"
+        ],
+        "choices": [
+          "White",
+          "Yellow",
+          "Green"
+        ]
+      }
+    },
+    {
+      "id": "luat-cua-dan-vit",
+      "title": "Bảng luật của đàn vịt",
+      "goTo": "Ra bảng nhiệm vụ đọc tấm bảng luật Chó vừa viết",
+      "kind": "read",
+      "target": "st-cho-coi-nga-tu-bang-luat-vit",
+      "skill": "doc-hieu",
+      "text": "Luật qua đường của đàn vịt\nMột: vịt mẹ đi đầu, vịt con theo sau.\nHai: cả đàn đi thành một hàng, không chạy ngang.\nBa: chỉ bước xuống vạch khi chú Chó giơ tay trái lên.",
+      "question": "Theo bảng luật, khi nào đàn vịt được bước xuống vạch?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Khi chú Chó giơ tay trái lên"
+        },
+        {
+          "id": "b",
+          "text": "Khi vịt con chạy lên trước"
+        },
+        {
+          "id": "c",
+          "text": "Khi không có xe nào"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Tìm luật số ba.",
+          "Luật nói «chỉ bước xuống vạch khi…»."
+        ],
+        "hint": "Chú Chó làm gì bằng tay trái?",
+        "answer": {
+          "text": "Lúc chú Chó giơ tay trái",
+          "explanation": "Luật ba ghi: chỉ bước xuống vạch khi chú Chó giơ tay trái lên, nên đàn vịt phải đợi hiệu lệnh ấy."
+        },
+        "en": {
+          "guide": [
+            "Find rule number three.",
+            "The rule says \"step onto the crossing only when…\"."
+          ],
+          "hint": "What does Chó do with his left paw?",
+          "answer": {
+            "text": "The moment Chó lifts his left paw",
+            "explanation": "Rule three says to step onto the crossing only when Chó raises his left paw, so the ducks must wait for that signal."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Đúng! Chó giơ tay trái thử, vịt mẹ bước xuống vạch ngay.",
+          "{name} đọc luật kỹ như cảnh sát thật.",
+          "Có hiệu lệnh là có trật tự. Tuýt!"
+        ],
+        "wrong": [
+          "Vịt con chạy lên trước là phạm luật số một rồi.",
+          "Không có xe vẫn phải chờ hiệu lệnh. Đọc lại luật ba nhé.",
+          "Gần rồi, tìm câu bắt đầu bằng chữ «Ba»."
+        ],
+        "en": {
+          "right": [
+            "Right! Chó tries raising his left paw and the mother duck steps straight onto the crossing.",
+            "You read the rules as carefully as a real officer, {name}.",
+            "A clear signal means good order. Whistle!"
+          ],
+          "wrong": [
+            "A duckling running ahead breaks rule number one.",
+            "Even with no cars, they wait for the signal. Read rule three again.",
+            "Close; find the line that begins with \"Three\"."
+          ]
+        }
+      },
+      "en": {
+        "title": "The ducks' rules",
+        "goTo": "Go to the quest board to read the rules Chó has just written",
+        "text": "The ducks' crossing rules\nOne: mother duck goes first, ducklings follow.\nTwo: the family walks in one line, no running sideways.\nThree: step onto the crossing only when Chó raises his left paw.",
+        "question": "According to the rules, when may the ducks step onto the crossing?",
+        "choices": [
+          "When Chó raises his left paw",
+          "When a duckling runs ahead",
+          "When there are no cars"
+        ]
+      }
+    },
+    {
+      "id": "dan-vit-di",
+      "title": "Dẫn đàn vịt thế nào?",
+      "goTo": "Dẫn đàn vịt ra cầu trung tâm, chỗ gần nước nhất",
+      "kind": "decision",
+      "target": "st-cho-coi-nga-tu-loi-cho-vit",
+      "speaker": "Chó Cảnh Sát Còi",
+      "prompt": "Đàn vịt đã đứng sau vạch. Chó hỏi: «Từ nay làm sao để chúng không đi tắt nữa?»",
+      "choices": [
+        {
+          "id": "loi-rieng",
+          "text": "Vẽ một lối riêng cho vịt dẫn ra bờ nước",
+          "consequence": "Lối vàng chạy thẳng ra bờ nước. Đàn vịt đi một hàng, xe không phải phanh nữa."
+        },
+        {
+          "id": "doi-gio",
+          "text": "Hẹn đàn vịt qua đường lúc vắng xe",
+          "consequence": "Chó ghi vào sổ: «10 giờ: giờ của vịt.» Vịt mẹ quạc một tiếng như đồng ý."
+        },
+        {
+          "id": "dan-duong",
+          "text": "Mỗi sáng {name} hoặc Chó đi trước dẫn đường",
+          "consequence": "Ba vịt con lạch bạch theo sau {name}. Người đi đường dừng lại vỗ tay."
+        }
+      ],
+      "en": {
+        "title": "How to guide the ducks?",
+        "goTo": "Lead the ducks to the central bridge, nearest the water",
+        "prompt": "The ducks wait behind the line. Chó asks: \"How do we stop them taking shortcuts from now on?\"",
+        "choices": [
+          {
+            "text": "Paint a duck path leading down to the water",
+            "consequence": "The yellow path runs straight to the water. The ducks waddle in a line and no one brakes."
+          },
+          {
+            "text": "Arrange for the ducks to cross when traffic is light",
+            "consequence": "Chó writes: \"10 o'clock: duck hour.\" The mother duck quacks as if she agrees."
+          },
+          {
+            "text": "Each morning {name} or Chó walks ahead to lead",
+            "consequence": "Three ducklings waddle after {name}. Passers-by stop and clap."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ve-duong-vit",
+      "title": "Lối về cho vịt con",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-cho-coi-nga-tu-loi-cho-vit",
+      "prompt": "Vẽ đường cho vịt con về với mẹ, tránh xa dòng xe. Ghi mười điểm nhé!",
+      "game": "path-guide",
+      "goal": 10,
+      "en": {
+        "title": "A way home for the ducklings",
+        "prompt": "Draw paths so the ducklings reach their mother, away from the traffic. Score ten points!"
+      }
+    },
+    {
+      "id": "vit-quac-cam-on",
+      "title": "Vịt quạc cảm ơn",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Vịt mẹ quạc ba tiếng. Chó dịch: «Cảm ơn, cảm ơn, mai gặp.» Chó tặng {name} một chiếc huy hiệu vẽ con vịt.",
+      "en": {
+        "title": "A thank-you quack",
+        "text": "The mother duck quacks three times. Chó translates: \"Thanks, thanks, see you tomorrow.\" He gives {name} a badge with a duck on it."
+      }
+    },
+    {
+      "id": "bua-trua-dang-do",
+      "title": "Bữa trưa dang dở",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Xe đã bớt kẹt, nhưng cứ tới giờ ăn trưa là lại có việc gọi Chó đi. Mai {name} giúp Chó tìm người đứng thay một lúc nhé.",
+      "en": {
+        "title": "The unfinished lunch",
+        "text": "There are fewer jams now, but every lunchtime something calls Chó away. Tomorrow help him find someone to stand in for a while."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "logic": 1,
+      "doc-hieu": 1
+    }
+  },
+  "en": {
+    "title": "Chó Cảnh Sát Còi's story, chapter 2: The duck crossing",
+    "summary": "A family of ducks keeps cutting across the square, making drivers brake hard. {name} finds three lost ducklings, paints a crossing by its pattern, reads the ducks' crossing rules and guides the family along the right path."
+  }
+}

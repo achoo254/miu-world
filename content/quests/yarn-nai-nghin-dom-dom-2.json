@@ -1,0 +1,347 @@
+{
+  "id": "yarn-nai-nghin-dom-dom-2",
+  "region": "khu-rung-bi-mat",
+  "chapter": 4,
+  "title": "Chuyện của Nai Đom Đóm, chương 2: Tên cho từng đốm sáng",
+  "status": "active",
+  "category": "story",
+  "summary": "Nai Đom Đóm muốn đặt tên cho đom đóm nhưng ngượng khi chọn chữ. {name} đọc trang văn Nai viết, chọn câu nêu đặc điểm, cắm biển tên quanh bìa trảng rồi chọn tên cho con đom đóm sáng nhất.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Nai Đom Đóm",
+    "where": "Rừng sâu: trảng cỏ đêm, gốc sồi già, suối nhỏ, bìa trảng, lối mòn đêm",
+    "goal": "Đặt những cái tên đầu tiên cho đom đóm",
+    "play": "Đọc trang văn; chọn câu nêu đặc điểm; cắm biển tên; chọn tên cho con sáng nhất",
+    "learn": "Đọc hiểu, câu nêu đặc điểm (Ai thế nào?)",
+    "reward": "65 XP, 16 Xu, Skill XP Đọc hiểu, Câu",
+    "next": "Khách cắm trại thắp đèn sáng quá"
+  },
+  "phases": {
+    "hook": "nai-ngai-chu",
+    "explore": "trang-van",
+    "learn": "cau-dac-diem",
+    "challenge": "cam-bien-ten",
+    "decision": "ten-con-sang-nhat",
+    "finale": "ten-con-sang-nhat",
+    "reward": "ten-dau-tien",
+    "next": "den-trai-qua-sang"
+  },
+  "places": {
+    "nai-dom-dom": "Trảng cỏ đêm",
+    "st-nai-nghin-dom-dom-trang-van-cua-nai": "Gốc sồi già",
+    "st-nai-nghin-dom-dom-da-ghi-cau": "Suối nhỏ",
+    "cam-bien-ten": "Bìa trảng",
+    "st-nai-nghin-dom-dom-bien-ten-mot": "Bìa trảng",
+    "st-nai-nghin-dom-dom-bien-ten-hai": "Bìa trảng",
+    "st-nai-nghin-dom-dom-bien-ten-ba": "Bìa trảng",
+    "st-nai-nghin-dom-dom-loi-mon-dom-dom": "Lối mòn đêm"
+  },
+  "steps": [
+    {
+      "id": "nai-ngai-chu",
+      "title": "Nai ngại chọn chữ",
+      "goTo": "Quay lại trảng cỏ đêm, Nai Đom Đóm đang cúi đầu ngượng ngùng",
+      "kind": "dialogue",
+      "target": "nai-dom-dom",
+      "lines": [
+        {
+          "speaker": "Nai Đom Đóm",
+          "text": "Ừm… {name}, tớ viết một trang về đom đóm, mà viết xong lại ngượng, giấu ở gốc sồi già rồi."
+        },
+        {
+          "speaker": "Nai Đom Đóm",
+          "text": "Đặt tên thì phải biết chúng thế nào đã: sáng ra sao, ấm ra sao. Cậu đọc giúp tớ nhé, đọc nhỏ thôi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Tớ đọc ngay đây!",
+          "reply": "Ừm… đừng cười nếu có câu nào vụng nhé."
+        }
+      ],
+      "en": {
+        "title": "Nai is shy of words",
+        "goTo": "Go back to the night meadow, where Nai Đom Đóm is bowing her head shyly",
+        "lines": [
+          "Mm… {name}, I wrote a page about fireflies, then felt shy and hid it by the old oak.",
+          "To name them, we must know what they're like: how bright, how warm. Read it for me? Softly."
+        ],
+        "choices": [
+          {
+            "text": "I'll read it now!",
+            "reply": "Mm… don't laugh if a sentence is clumsy."
+          }
+        ]
+      }
+    },
+    {
+      "id": "trang-van",
+      "title": "Trang văn của Nai",
+      "goTo": "Tới gốc sồi già, nơi Nai giấu trang văn trong hốc vỏ cây",
+      "kind": "read",
+      "target": "st-nai-nghin-dom-dom-trang-van-cua-nai",
+      "skill": "doc-hieu",
+      "text": "Đêm ở trảng cỏ\nKhi sao đã lên đủ, đom đóm mới rủ nhau thức dậy. Chúng bay thấp trên cỏ ướt, thích nhất là khoảng tối bên suối nhỏ. Đốm sáng của chúng không nóng như lửa mà ấm như bàn tay mẹ.",
+      "question": "Theo trang văn, đom đóm thích bay ở đâu nhất?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Khoảng tối bên suối nhỏ"
+        },
+        {
+          "id": "b",
+          "text": "Trên ngọn cây cao"
+        },
+        {
+          "id": "c",
+          "text": "Quanh đống lửa trại"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Tìm câu có chữ «thích nhất».",
+          "Đom đóm bay thấp trên cỏ, rồi thích nhất là chỗ nào?"
+        ],
+        "hint": "Một chỗ tối, cạnh dòng nước.",
+        "answer": {
+          "text": "Chỗ tối cạnh suối nhỏ",
+          "explanation": "Trang văn viết: chúng thích nhất là khoảng tối bên suối nhỏ."
+        },
+        "en": {
+          "guide": [
+            "Find the sentence with \"love… best\".",
+            "They fly low over the grass, and like which place best?"
+          ],
+          "hint": "A dark place beside water.",
+          "answer": {
+            "text": "The dark spot beside the little stream",
+            "explanation": "The page says they love the dark patch by the little stream best."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Ừm… đúng rồi. Bên suối tối và mát, đom đóm thấy mình sáng hơn.",
+          "{name} đọc nhẹ như gió, mà hiểu sâu như suối.",
+          "Nai mỉm cười: trang văn vụng về cũng có người hiểu rồi."
+        ],
+        "wrong": [
+          "Đom đóm bay thấp trên cỏ ướt, chẳng lên ngọn cây đâu.",
+          "Lửa trại sáng quá, đom đóm tránh xa lắm. Đọc lại câu thứ hai nhé.",
+          "Ừm… tìm chữ «thích nhất» trong trang xem."
+        ],
+        "en": {
+          "right": [
+            "Mm… yes. By the stream it's dark and cool, and the fireflies feel brighter.",
+            "You read gently as the breeze and understood deep as the stream, {name}.",
+            "Nai smiles: someone understood her clumsy page."
+          ],
+          "wrong": [
+            "They fly low over wet grass, not up in the trees.",
+            "A campfire is far too bright; fireflies keep away. Read the second sentence again.",
+            "Mm… look for \"love… best\" on the page."
+          ]
+        }
+      },
+      "en": {
+        "title": "Nai's page",
+        "goTo": "Go to the old oak, where Nai hid her page in a crack in the bark",
+        "text": "Night in the meadow\nOnly when all the stars are out do the fireflies wake up together. They fly low over the wet grass and love the dark patch by the little stream best. Their light is not hot like fire, but warm like a mother's hand.",
+        "question": "According to the page, where do the fireflies most like to fly?",
+        "choices": [
+          "The dark patch by the little stream",
+          "Up in the tall treetops",
+          "Around the campfire"
+        ]
+      }
+    },
+    {
+      "id": "cau-dac-diem",
+      "title": "Câu nào nêu đặc điểm?",
+      "goTo": "Ra suối nhỏ, nơi Nai khắc câu lên hòn đá",
+      "kind": "challenge",
+      "mechanic": "multi-select",
+      "target": "st-nai-nghin-dom-dom-da-ghi-cau",
+      "skill": "cau",
+      "prompt": "Nai muốn đặt tên theo câu tả đom đóm thế nào. Chọn những câu nêu đặc điểm (trả lời câu hỏi: Ai thế nào?):",
+      "choices": [
+        {
+          "id": "nho-xiu",
+          "text": "Đom đóm nhỏ xíu."
+        },
+        {
+          "id": "bay-qua",
+          "text": "Đom đóm bay qua suối."
+        },
+        {
+          "id": "am-ap",
+          "text": "Ánh sáng đom đóm ấm áp."
+        },
+        {
+          "id": "nai-dem",
+          "text": "Nai đếm đom đóm."
+        }
+      ],
+      "answer": {
+        "choices": [
+          "nho-xiu",
+          "am-ap"
+        ]
+      },
+      "support": {
+        "guide": [
+          "Câu nêu đặc điểm cho biết sự vật thế nào: to, nhỏ, ấm, sáng…",
+          "Câu có từ chỉ việc làm như bay, đếm là câu nêu hoạt động."
+        ],
+        "hint": "Đom đóm thế nào? Nhỏ xíu. Ánh sáng thế nào? Ấm áp.",
+        "answer": {
+          "text": "Câu nói đom đóm nhỏ xíu và câu nói ánh sáng ấm áp",
+          "explanation": "«Đom đóm nhỏ xíu» và «Ánh sáng đom đóm ấm áp» trả lời câu hỏi thế nào. Hai câu còn lại kể việc làm: bay, đếm."
+        },
+        "en": {
+          "guide": [
+            "A describing sentence tells what something is like: big, small, warm, bright…",
+            "Sentences with action words like fly or count tell what someone does."
+          ],
+          "hint": "What are fireflies like? Tiny. What is their light like? Warm.",
+          "answer": {
+            "text": "The tiny-fireflies sentence and the warm-light sentence",
+            "explanation": "\"Fireflies are tiny\" and \"Firefly light is warm\" answer what they are like. The other two tell actions: flying, counting."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Nhỏ xíu, ấm áp… ừm, hai chữ ấy hợp làm tên lắm.",
+          "{name} tách câu tả với câu kể việc rõ như sao với trăng.",
+          "Nai khắc hai câu ấy lên hòn đá bên suối."
+        ],
+        "wrong": [
+          "«Bay qua suối» là đom đóm làm gì, chưa phải đom đóm thế nào.",
+          "Câu «Nai đếm đom đóm» kể việc của Nai đấy.",
+          "Còn một câu tả nữa, ừm… đọc chậm lại xem."
+        ],
+        "en": {
+          "right": [
+            "Tiny, warm… mm, those two would make lovely names.",
+            "You told describing sentences from action ones as clearly as stars from the moon, {name}.",
+            "Nai carves those two sentences on the stone by the stream."
+          ],
+          "wrong": [
+            "\"Fly over the stream\" is what they do, not what they're like.",
+            "\"Nai counts the fireflies\" tells what Nai does.",
+            "There's one more describing sentence, mm… read slowly."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which sentences describe?",
+        "goTo": "Go to the little stream, where Nai carves sentences on a stone",
+        "prompt": "Nai wants names that come from sentences about what fireflies are like. Pick the sentences that describe (answering: What is it like?):",
+        "choices": [
+          "Fireflies are tiny.",
+          "Fireflies fly over the stream.",
+          "Firefly light is warm.",
+          "Nai counts the fireflies."
+        ]
+      }
+    },
+    {
+      "id": "cam-bien-ten",
+      "title": "Cắm biển tên",
+      "goTo": "Ra bìa trảng cắm ba tấm biển tên nhỏ",
+      "kind": "search",
+      "targets": [
+        "st-nai-nghin-dom-dom-bien-ten-mot",
+        "st-nai-nghin-dom-dom-bien-ten-hai",
+        "st-nai-nghin-dom-dom-bien-ten-ba"
+      ],
+      "en": {
+        "title": "Planting the name signs",
+        "goTo": "Go to the edge of the meadow and plant three little name signs"
+      }
+    },
+    {
+      "id": "ten-con-sang-nhat",
+      "title": "Tên cho con sáng nhất",
+      "goTo": "Đi theo lối mòn đêm, nơi con đom đóm sáng nhất vừa đậu xuống",
+      "kind": "decision",
+      "target": "st-nai-nghin-dom-dom-loi-mon-dom-dom",
+      "speaker": "Nai Đom Đóm",
+      "prompt": "Một con đom đóm sáng hơn hẳn cả đàn bay tới đậu trên lối mòn. Nai thì thầm: «Ừm… gọi nó là gì nhỉ?»",
+      "choices": [
+        {
+          "id": "den-bep",
+          "text": "«Đèn Bếp», ấm như ánh đèn bếp nhà ai",
+          "consequence": "Nai cười khúc khích: «Mèo Trà Đá nghe chắc thích lắm.» Đèn Bếp nháy hai lần như đồng ý."
+        },
+        {
+          "id": "sao-roi",
+          "text": "«Sao Rơi», như ngôi sao rơi xuống cỏ",
+          "consequence": "Nai ngước lên trời rồi nhìn xuống cỏ: «Một ngôi sao ở lại với mình.» Mắt Nai long lanh."
+        },
+        {
+          "id": "be-nho-xiu",
+          "text": "«Bé Nhỏ Xíu», theo câu Nai vừa khắc",
+          "consequence": "Bé Nhỏ Xíu bay một vòng quanh sừng Nai. Nai bảo cái tên vừa vặn như chiếc áo mới."
+        }
+      ],
+      "en": {
+        "title": "A name for the brightest",
+        "goTo": "Follow the night trail to where the brightest firefly has landed",
+        "prompt": "A firefly far brighter than the rest lands on the trail. Nai whispers: \"Mm… what shall we call it?\"",
+        "choices": [
+          {
+            "text": "\"Kitchen Lamp\", warm as a kitchen light",
+            "consequence": "Nai giggles: \"Mèo Trà Đá would love that.\" Kitchen Lamp blinks twice as if agreeing."
+          },
+          {
+            "text": "\"Fallen Star\", like a star dropped into the grass",
+            "consequence": "Nai looks up at the sky, then down at the grass: \"A star that stayed with us.\" Her eyes shine."
+          },
+          {
+            "text": "\"Tiny One\", from the sentence Nai just carved",
+            "consequence": "Tiny One circles Nai's antlers. Nai says the name fits like a new coat."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ten-dau-tien",
+      "title": "Những cái tên đầu tiên",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Ba tấm biển tên đã cắm quanh bìa trảng. Nai ghi tên thứ tư vào sổ: tên của {name}, «để đom đóm nhớ người bạn này».",
+      "en": {
+        "title": "The first names",
+        "text": "Three name signs stand around the meadow. Nai writes a fourth name in the book: {name}'s, \"so the fireflies remember this friend.\""
+      }
+    },
+    {
+      "id": "den-trai-qua-sang",
+      "title": "Đèn trại sáng quá",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Có một đoàn khách tới cắm trại cạnh trảng cỏ, thắp đèn sáng trưng. Đêm qua đom đóm chẳng thấy về. Nai lo lắm, mai {name} tới sớm nhé.",
+      "en": {
+        "title": "Campfires too bright",
+        "text": "A group of campers has pitched tents by the meadow with blazing lamps. Last night the fireflies didn't come. Nai is very worried; come early tomorrow, {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "doc-hieu": 1,
+      "cau": 1
+    }
+  },
+  "en": {
+    "title": "Nai Đom Đóm's story, chapter 2: A name for every light",
+    "summary": "Nai Đom Đóm wants to name the fireflies but feels shy choosing words. {name} reads the page Nai wrote, picks the sentences that describe, plants name signs around the meadow and chooses a name for the brightest firefly."
+  }
+}

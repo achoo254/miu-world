@@ -1,0 +1,384 @@
+{
+  "id": "yarn-khi-day-leo-nhac-2",
+  "region": "khu-rung-bi-mat",
+  "chapter": 2,
+  "title": "Chuyện của Khỉ Chuyền Cành, chương 2: Chuồn chuồn bay thấp",
+  "status": "active",
+  "category": "story",
+  "summary": "Đoạn dây thứ hai phải qua ao chuồn chuồn, mà chuồn chuồn đang bay sát mặt nước. {name} đọc lá tin của Vẹt Xanh, xếp các tuyến dây từ ngắn tới dài, tìm đồ đánh dấu đường rồi chọn cách mắc dây trước cơn mưa.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Khỉ Chuyền Cành",
+    "where": "Rừng sâu: cây đu dây, ao chuồn chuồn, gò mối, gốc sung",
+    "goal": "Chọn tuyến dây an toàn qua ao trước khi trời mưa",
+    "play": "Đọc lá tin; xếp tuyến theo độ dài; tìm đồ đánh dấu theo lời tả; chọn cách mắc dây",
+    "learn": "Đọc hiểu câu ca dao về thời tiết, so sánh số đo độ dài",
+    "reward": "65 XP, 16 Xu, Skill XP Đọc hiểu, So sánh số",
+    "next": "Một gói quà âm nhạc gửi tới rừng"
+  },
+  "phases": {
+    "hook": "ao-chuon-chuon-dlg",
+    "explore": "la-tin",
+    "learn": "tuyen-ngan-dai",
+    "challenge": "danh-dau-tuyen",
+    "decision": "mac-truoc-mua",
+    "finale": "mac-truoc-mua",
+    "reward": "qua-ao-roi",
+    "next": "goi-qua-am-nhac"
+  },
+  "places": {
+    "khi-chuyen-canh": "Cây đu dây",
+    "st-khi-day-leo-nhac-la-tin-cua-vet": "Ao chuồn chuồn",
+    "st-khi-day-leo-nhac-ban-do-tuyen-day": "Gò mối",
+    "danh-dau-tuyen": "Gốc sung",
+    "st-khi-day-leo-nhac-khan-do-danh-dau": "Gốc sung",
+    "st-khi-day-leo-nhac-long-vu-danh-dau": "Gốc sung",
+    "st-khi-day-leo-nhac-chuong-gio-tre": "Gốc sung",
+    "st-khi-day-leo-nhac-bo-ao-chuon-chuon": "Ao chuồn chuồn"
+  },
+  "steps": [
+    {
+      "id": "ao-chuon-chuon-dlg",
+      "title": "Ao chuồn chuồn",
+      "goTo": "Quay lại cây đu dây, Khỉ Chuyền Cành đang treo ngược ăn chuối",
+      "kind": "dialogue",
+      "target": "khi-chuyen-canh",
+      "lines": [
+        {
+          "speaker": "Khỉ Chuyền Cành",
+          "text": "Hấp! Đoạn dây hôm nay phải bay qua ao chuồn chuồn. Ao ấy… ờ… nhiều chuồn chuồn lắm."
+        },
+        {
+          "speaker": "Khỉ Chuyền Cành",
+          "text": "Vẹt Xanh để lại cho tớ một lá tin, bảo đọc trước khi mắc dây. Tớ đọc chữ chậm lắm, cậu đọc giùm nhé."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Để tớ đọc cho!",
+          "reply": "Ú òa, cậu là nhất! Tớ treo ngược nghe nhé."
+        }
+      ],
+      "en": {
+        "title": "The dragonfly pond",
+        "goTo": "Go back to the swinging tree, where Khỉ Chuyền Cành is eating a banana upside down",
+        "lines": [
+          "Hup! Today's stretch has to fly over the dragonfly pond. That pond is… er… full of dragonflies.",
+          "Vẹt Xanh left me a leaf note and said to read it before stringing the vine. I read slowly, so read it for me?"
+        ],
+        "choices": [
+          {
+            "text": "I'll read it for you!",
+            "reply": "Peekaboo, you're the best! I'll listen upside down."
+          }
+        ]
+      }
+    },
+    {
+      "id": "la-tin",
+      "title": "Lá tin của Vẹt Xanh",
+      "goTo": "Ra ao chuồn chuồn đọc lá tin Vẹt Xanh ghim trên cọc",
+      "kind": "read",
+      "target": "st-khi-day-leo-nhac-la-tin-cua-vet",
+      "skill": "doc-hieu",
+      "text": "Gửi Khỉ, gửi Khỉ!\nÔng bà mình có câu: «Chuồn chuồn bay thấp thì mưa, bay cao thì nắng, bay vừa thì râm.» Sáng nay chuồn chuồn bay sát mặt ao. Mắc dây cẩn thận nhé, cẩn thận nhé!\nVẹt Xanh",
+      "question": "Theo lá tin, sáng nay chuồn chuồn bay thấp báo hiệu điều gì?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Trời sắp mưa"
+        },
+        {
+          "id": "b",
+          "text": "Trời sắp nắng to"
+        },
+        {
+          "id": "c",
+          "text": "Trời sẽ râm mát"
+        }
+      ],
+      "answer": {
+        "choice": "a"
+      },
+      "support": {
+        "guide": [
+          "Tìm câu ông bà nói về chuồn chuồn bay thấp.",
+          "Sáng nay chuồn chuồn bay thế nào?"
+        ],
+        "hint": "Bay thấp thì…",
+        "answer": {
+          "text": "Sắp có mưa",
+          "explanation": "Câu ca dao nói chuồn chuồn bay thấp thì mưa, mà sáng nay chuồn chuồn bay sát mặt ao, nên trời sắp mưa."
+        },
+        "en": {
+          "guide": [
+            "Find the elders' words about dragonflies flying low.",
+            "How are the dragonflies flying this morning?"
+          ],
+          "hint": "Flying low means…",
+          "answer": {
+            "text": "Rain is on its way",
+            "explanation": "The saying goes that low-flying dragonflies mean rain, and this morning they are skimming the pond, so rain is coming."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Sắp mưa! Khỉ ngó lên trời, mây xám đang kéo tới thật.",
+          "{name} đọc ca dao mà hiểu luôn thời tiết, giỏi hơn cả Vẹt.",
+          "Ông bà mình nói đúng ghê. Phải mắc dây nhanh thôi, hấp!"
+        ],
+        "wrong": [
+          "Bay cao mới là nắng, còn chuồn chuồn đang bay sát mặt ao kìa.",
+          "Bay vừa thì râm, mà sáng nay chuồn chuồn đâu có bay vừa.",
+          "Đọc lại câu đầu của ông bà, chữ «thấp» đi với chữ gì?"
+        ],
+        "en": {
+          "right": [
+            "Rain! Khỉ looks up: grey clouds really are rolling in.",
+            "You read the old saying and understood the weather; better than Vẹt, {name}.",
+            "The elders were right. We'd better string the vine fast, hup!"
+          ],
+          "wrong": [
+            "High flying means sun, but they're skimming the pond.",
+            "In-between means cloud, but they aren't flying in between today.",
+            "Read the elders' first words again: what goes with \"low\"?"
+          ]
+        }
+      },
+      "en": {
+        "title": "Vẹt Xanh's leaf note",
+        "goTo": "Go to the dragonfly pond to read the leaf note Vẹt Xanh pinned to a post",
+        "text": "To Khỉ, to Khỉ!\nOur elders have a saying: \"Dragonflies flying low mean rain, flying high mean sun, flying in between mean cloud.\" This morning the dragonflies are skimming the pond. String the vine carefully, carefully!\nVẹt Xanh",
+        "question": "According to the note, what do this morning's low-flying dragonflies tell us?",
+        "choices": [
+          "Rain is coming",
+          "Strong sun is coming",
+          "It will be cloudy and cool"
+        ]
+      }
+    },
+    {
+      "id": "tuyen-ngan-dai",
+      "title": "Tuyến ngắn, tuyến dài",
+      "goTo": "Lên gò mối trải bản đồ các tuyến dây",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-khi-day-leo-nhac-ban-do-tuyen-day",
+      "skill": "so-sanh-so",
+      "prompt": "Mưa sắp tới, phải chọn tuyến ngắn nhất. Xếp các tuyến dây từ ngắn nhất đến dài nhất:",
+      "items": [
+        {
+          "id": "qua-ao",
+          "label": "Tuyến bay qua ao: 46 m"
+        },
+        {
+          "id": "vong-doi",
+          "label": "Tuyến vòng qua đồi: 52 m"
+        },
+        {
+          "id": "goc-sung",
+          "label": "Tuyến qua gốc sung: 38 m"
+        },
+        {
+          "id": "doc-suoi",
+          "label": "Tuyến dọc bờ suối: 41 m"
+        }
+      ],
+      "answer": {
+        "order": [
+          "goc-sung",
+          "doc-suoi",
+          "qua-ao",
+          "vong-doi"
+        ]
+      },
+      "support": {
+        "guide": [
+          "So hàng chục trước: 3 chục, 4 chục, 5 chục.",
+          "Hai tuyến cùng 4 chục thì so hàng đơn vị."
+        ],
+        "hint": "38 m ngắn nhất; giữa 41 m và 46 m, tuyến nào ngắn hơn?",
+        "answer": {
+          "text": "Gốc sung, bờ suối, qua ao, vòng đồi",
+          "explanation": "38 < 41 < 46 < 52, nên thứ tự là tuyến qua gốc sung, dọc bờ suối, bay qua ao, vòng qua đồi."
+        },
+        "en": {
+          "guide": [
+            "Compare the tens first: 3 tens, 4 tens, 5 tens.",
+            "For the two routes with 4 tens, compare the ones."
+          ],
+          "hint": "38 m is shortest; between 41 m and 46 m, which is shorter?",
+          "answer": {
+            "text": "Fig tree, stream, pond, hill",
+            "explanation": "38 < 41 < 46 < 52, so the order is the fig tree, the stream, the pond and the hill."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Tuyến gốc sung ngắn nhất! Khỉ vỗ tay bộp bộp.",
+          "{name} so mét giỏi như đo bằng mắt.",
+          "Ngắn nhất lại tránh được ao. Hấp, may quá!"
+        ],
+        "wrong": [
+          "Tuyến vòng đồi những năm chục mét, dài nhất đấy.",
+          "41 với 46 cùng bốn chục, nhìn hàng đơn vị nhé.",
+          "Tớ đu thử thì thấy chưa đúng. Xếp số bé nhất lên đầu xem."
+        ],
+        "en": {
+          "right": [
+            "The fig tree route is shortest! Khỉ claps his hands.",
+            "You compare metres as if measuring by eye, {name}.",
+            "The shortest one even avoids the pond. Hup, lucky!"
+          ],
+          "wrong": [
+            "The hill route is over fifty metres, the longest.",
+            "41 and 46 both have four tens; look at the ones.",
+            "I tried swinging it and it's not right. Put the smallest number first."
+          ]
+        }
+      },
+      "en": {
+        "title": "Short routes, long routes",
+        "goTo": "Climb the termite mound and spread out the map of vine routes",
+        "prompt": "Rain is coming, so the shortest route wins. Order the vine routes from shortest to longest:",
+        "items": [
+          "Over the pond: 46 m",
+          "Round the hill: 52 m",
+          "Past the fig tree: 38 m",
+          "Along the stream: 41 m"
+        ]
+      }
+    },
+    {
+      "id": "danh-dau-tuyen",
+      "title": "Đánh dấu tuyến dây",
+      "goTo": "Tới gốc sung tìm đồ đánh dấu tuyến dây",
+      "kind": "find-object",
+      "prompt": "Phải buộc dấu lên những cành sẽ mắc dây. Đọc lời tả rồi tìm từng thứ:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "khan",
+          "name": "Khăn đỏ",
+          "clue": "Đỏ như quả ớt, đủ dài để buộc hai vòng quanh cành.",
+          "target": "st-khi-day-leo-nhac-khan-do-danh-dau"
+        },
+        {
+          "id": "long",
+          "name": "Lông vũ",
+          "clue": "Xanh biếc pha vàng, rụng từ cánh một bạn chim hay hót.",
+          "target": "st-khi-day-leo-nhac-long-vu-danh-dau"
+        },
+        {
+          "id": "chuong",
+          "name": "Chuông gió tre",
+          "clue": "Mấy ống tre nhỏ buộc chung, gió lay là kêu lách cách.",
+          "target": "st-khi-day-leo-nhac-chuong-gio-tre"
+        }
+      ],
+      "en": {
+        "title": "Marking the route",
+        "goTo": "Go to the fig tree to find markers for the vine route",
+        "prompt": "Markers must be tied on the branches the vine will use. Read each description and find them:",
+        "items": [
+          {
+            "name": "The red scarf",
+            "clue": "Red as a chilli and long enough to wrap twice round a branch."
+          },
+          {
+            "name": "The feather",
+            "clue": "Bright blue streaked with yellow, dropped from a songbird's wing."
+          },
+          {
+            "name": "The bamboo wind chime",
+            "clue": "A few little bamboo tubes tied together that clack when the wind stirs."
+          }
+        ]
+      }
+    },
+    {
+      "id": "mac-truoc-mua",
+      "title": "Mắc dây trước cơn mưa",
+      "goTo": "Quay lại bờ ao chuồn chuồn, mây đen đang kéo tới",
+      "kind": "decision",
+      "target": "st-khi-day-leo-nhac-bo-ao-chuon-chuon",
+      "speaker": "Khỉ Chuyền Cành",
+      "prompt": "Mây đen đã tới bờ ao. Một chú chuồn chuồn bay vụt qua mũi Khỉ, Khỉ giật bắn mình. «Giờ… làm gì đây?»",
+      "choices": [
+        {
+          "id": "doi-tanh",
+          "text": "Trú mưa dưới gốc sung, tạnh rồi mắc tiếp",
+          "consequence": "Hai bạn ngồi dưới tán sung nghe mưa rơi lộp độp. Mưa tạnh, dây khô, mắc một mạch là xong."
+        },
+        {
+          "id": "mac-ngay",
+          "text": "Mắc ngay tuyến gốc sung, ngắn và tránh xa ao",
+          "consequence": "Tuyến ngắn mắc nhanh, kịp trước khi giọt mưa đầu tiên rơi. Khỉ đu thử, cười toe."
+        },
+        {
+          "id": "la-chuoi",
+          "text": "Lấy lá chuối che chỗ buộc cho khỏi ướt",
+          "consequence": "Mỗi nút buộc đội một chiếc mũ lá chuối. Khỉ bảo nút nào cũng trông như đang đi hội."
+        }
+      ],
+      "en": {
+        "title": "Stringing before the rain",
+        "goTo": "Go back to the dragonfly pond as dark clouds roll in",
+        "prompt": "Dark clouds reach the pond. A dragonfly zips past Khỉ's nose and he jumps. \"Now… what do we do?\"",
+        "choices": [
+          {
+            "text": "Shelter under the fig tree and finish after the rain",
+            "consequence": "You sit under the fig leaves listening to the rain. When it stops and the vine is dry, you string it in one go."
+          },
+          {
+            "text": "String the fig tree route now: short and away from the pond",
+            "consequence": "The short route goes up fast, just before the first raindrop. Khỉ tries it and grins."
+          },
+          {
+            "text": "Cover the knots with banana leaves to keep them dry",
+            "consequence": "Every knot wears a banana-leaf hat. Khỉ says they all look dressed for a festival."
+          }
+        ]
+      }
+    },
+    {
+      "id": "qua-ao-roi",
+      "title": "Đã qua được ao",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Khỉ tặng {name} chiếc chuông gió tre: «Treo ở cửa sổ, gió thổi là nhớ tới đường dây của tụi mình.»",
+      "en": {
+        "title": "Past the pond",
+        "text": "Khỉ gives {name} the bamboo wind chime: \"Hang it by your window; when the wind blows, think of our vine line.\""
+      }
+    },
+    {
+      "id": "goi-qua-am-nhac",
+      "title": "Gói quà âm nhạc",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Một gói quà từ người bạn qua thư của Khỉ vừa tới rừng, nhưng rơi vào hốc cây và bung ra mất. Mai {name} giúp Khỉ nhặt lại nhé.",
+      "en": {
+        "title": "A musical parcel",
+        "text": "A parcel from Khỉ's pen pal has arrived in the forest, but it fell into a hollow tree and burst open. Help Khỉ pick it up tomorrow, {name}."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 65,
+    "coin": 16,
+    "skillXp": {
+      "doc-hieu": 1,
+      "so-sanh-so": 1
+    },
+    "items": {
+      "chuong-gio-truc": 1
+    }
+  },
+  "en": {
+    "title": "Khỉ Chuyền Cành's story, chapter 2: Dragonflies flying low",
+    "summary": "The second stretch must cross the dragonfly pond, and the dragonflies are skimming the water. {name} reads Vẹt Xanh's leaf note, orders the vine routes from shortest to longest, finds markers for the route and decides how to string the vine before the rain."
+  }
+}

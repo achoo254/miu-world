@@ -1,0 +1,299 @@
+{
+  "id": "yarn-meo-bep-mam-com-4",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Chuyện của Mèo Bếp Trưởng, chương 4: Mâm cơm chủ nhật",
+  "status": "active",
+  "category": "story",
+  "summary": "Chủ nhật đã tới. Mèo Bếp Trưởng còn một rổ hành tây chưa thái và một nỗi sợ chưa kể. {name} tìm kính bơi, tính số hành, chọn cách thái hành đỡ cay mắt rồi bày mâm cơm đủ chất cho cả nhà và khách.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Mèo Bếp Trưởng",
+    "where": "Nhà của {name}: sau gian bếp, phòng ngủ, bếp và bàn ăn, cầu tàu bên ao, sân trước nhà",
+    "goal": "Thái xong hành tây và dọn mâm cơm mời khách",
+    "play": "Tìm kính bơi và đồ nghề; tính số hành còn lại; chọn cách thái hành; bày mâm cơm đủ chất",
+    "learn": "Đọc hiểu lời tả, phép trừ có nhớ trong phạm vi 100",
+    "reward": "80 XP, 22 Xu, Skill XP Phép trừ, Đọc hiểu, Bát súp nóng",
+    "next": "Khách khen món, Mèo muốn học thêm món mới"
+  },
+  "phases": {
+    "hook": "ke-thu-hanh-tay",
+    "explore": "tim-kinh-boi",
+    "learn": "dem-hanh-tay",
+    "challenge": "cach-thai-hanh",
+    "decision": "cach-thai-hanh",
+    "finale": "bay-mam-com",
+    "reward": "mam-com-moi-mien",
+    "next": "mon-moi-tuan-sau"
+  },
+  "places": {
+    "meo-bep-truong": "Sau gian bếp",
+    "tim-kinh-boi": "Phòng ngủ",
+    "st-meo-bep-mam-com-kinh-boi": "Phòng ngủ",
+    "st-meo-bep-mam-com-khan-mat": "Phòng ngủ",
+    "st-meo-bep-mam-com-mu-dau-bep": "Phòng ngủ",
+    "st-meo-bep-mam-com-ro-hanh-tay": "Bếp và bàn ăn",
+    "st-meo-bep-mam-com-chau-nuoc-lanh": "Cầu tàu bên ao",
+    "st-meo-bep-mam-com-mam-com-chu-nhat": "Sân trước nhà"
+  },
+  "steps": [
+    {
+      "id": "ke-thu-hanh-tay",
+      "title": "Kẻ thù hành tây",
+      "goTo": "Ra sau gian bếp, Mèo Bếp Trưởng đang đứng nhìn rổ hành tây",
+      "kind": "dialogue",
+      "target": "meo-bep-truong",
+      "lines": [
+        {
+          "speaker": "Mèo Bếp Trưởng",
+          "text": "{name}. Lại gần. Nói nhỏ thôi. Mèo có một chuyện chưa kể với ai."
+        },
+        {
+          "speaker": "Mèo Bếp Trưởng",
+          "text": "Mèo sợ hành tây. Thái một củ là nước mắt chảy như mưa rào, chẳng còn thấy dao đâu nữa."
+        },
+        {
+          "speaker": "Mèo Bếp Trưởng",
+          "text": "Mọi khi Mèo đeo kính bơi. Hôm nay kính biến mất. Mà khách sắp tới rồi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Cháu giữ bí mật, và cháu tìm kính ngay!",
+          "reply": "Cảm ơn. Đừng kể với Gấu. Gấu sẽ cười cả tuần."
+        },
+        {
+          "text": "Ai cũng sợ một thứ gì đó mà Mèo.",
+          "reply": "Ừ. Nhưng tướng mà sợ củ hành thì… thôi, đi tìm kính đã."
+        }
+      ],
+      "en": {
+        "title": "The onion enemy",
+        "goTo": "Go behind the kitchen, where Mèo Bếp Trưởng is staring at a basket of onions",
+        "lines": [
+          "{name}. Come closer. Speak softly. There is something I have told no one.",
+          "I am afraid of onions. One onion and my tears pour like a rain shower; I can't even see the knife.",
+          "Usually I wear swimming goggles. Today they have vanished. And the guests are nearly here."
+        ],
+        "choices": [
+          {
+            "text": "Your secret is safe, and I'll find the goggles now!",
+            "reply": "Thank you. Don't tell Gấu. She'd laugh for a week."
+          },
+          {
+            "text": "Everyone is afraid of something, Mèo.",
+            "reply": "Yes. But a general afraid of an onion… never mind, find the goggles first."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tim-kinh-boi",
+      "title": "Tìm kính bơi và đồ nghề",
+      "goTo": "Lên phòng ngủ tìm kính bơi, khăn mặt và mũ đầu bếp",
+      "kind": "find-object",
+      "prompt": "Cún Đốm dọn nhà hăng quá, cất đồ của Mèo lên phòng ngủ. Đọc lời tả rồi tìm từng món:",
+      "skill": "doc-hieu",
+      "items": [
+        {
+          "id": "kinh",
+          "name": "Cặp kính bơi",
+          "clue": "Hai mắt kính xanh nước biển, dây đeo co giãn, nằm trên gối như đang chờ đi bơi.",
+          "target": "st-meo-bep-mam-com-kinh-boi"
+        },
+        {
+          "id": "khan",
+          "name": "Khăn mặt kẻ ô",
+          "clue": "Vuông vức, kẻ ô xanh trắng, gấp làm tư thẳng tắp đúng kiểu Cún.",
+          "target": "st-meo-bep-mam-com-khan-mat"
+        },
+        {
+          "id": "mu",
+          "name": "Mũ đầu bếp",
+          "clue": "Trắng tinh, cao như ống khói, phía trong có thêu chữ «Tướng».",
+          "target": "st-meo-bep-mam-com-mu-dau-bep"
+        }
+      ],
+      "en": {
+        "title": "Finding the goggles and gear",
+        "goTo": "Go up to the bedroom to find the goggles, the face cloth and the chef's hat",
+        "prompt": "Cún Đốm tidied a little too eagerly and put Mèo's things away in the bedroom. Read each description and find them:",
+        "items": [
+          {
+            "name": "The swimming goggles",
+            "clue": "Two sea-blue lenses on a stretchy strap, lying on a pillow as if waiting for a swim."
+          },
+          {
+            "name": "The checked face cloth",
+            "clue": "Square, blue and white checks, folded into four perfectly straight, Cún-style."
+          },
+          {
+            "name": "The chef's hat",
+            "clue": "Snow white and tall as a chimney, with \"General\" embroidered inside."
+          }
+        ]
+      }
+    },
+    {
+      "id": "dem-hanh-tay",
+      "title": "Còn bao nhiêu củ hành?",
+      "goTo": "Mang kính xuống bếp và bàn ăn, nơi rổ hành tây đang chờ",
+      "kind": "riddle",
+      "target": "st-meo-bep-mam-com-ro-hanh-tay",
+      "skill": "phep-tru",
+      "question": "Rổ có 42 củ hành tây. Mèo đã thái được 17 củ thì chảy nước mắt phải dừng. Còn bao nhiêu củ chưa thái?",
+      "answer": {
+        "value": 25
+      },
+      "support": {
+        "guide": [
+          "Lấy số hành cả rổ trừ đi số đã thái: 42 − 17.",
+          "2 không trừ được 7, mượn 1 chục: 12 − 7 = 5."
+        ],
+        "hint": "Còn 3 chục trừ 1 chục bằng mấy chục?",
+        "answer": {
+          "text": "25 củ",
+          "explanation": "42 − 17 = 25: mượn một chục để 12 − 7 = 5, còn 3 chục − 1 chục = 2 chục, vậy là 25."
+        },
+        "en": {
+          "guide": [
+            "Take the whole basket minus what is chopped: 42 − 17.",
+            "2 take away 7 won't go, so borrow a ten: 12 − 7 = 5."
+          ],
+          "hint": "Then 3 tens take away 1 ten is how many tens?",
+          "answer": {
+            "text": "25 onions",
+            "explanation": "42 − 17 = 25: borrow a ten so 12 − 7 = 5, then 3 tens − 1 ten = 2 tens, making 25."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Hai mươi lăm củ. Mèo hít một hơi dài, chỉnh kính bơi cho chặt.",
+          "Trừ có nhớ mà {name} làm gọn gàng như thái lát mỏng.",
+          "Đúng rồi! Còn hơn nửa rổ, nhưng có phó tướng thì chẳng sợ."
+        ],
+        "wrong": [
+          "Hàng đơn vị không đủ để trừ, nhớ mượn một chục nhé.",
+          "Thử đếm lùi từ 42 đi mười bảy bước xem.",
+          "Mèo lau kính, chờ {name} tính lại. Còn bao nhiêu củ thật nhỉ?"
+        ],
+        "en": {
+          "right": [
+            "Twenty-five. Mèo takes a long breath and straightens his goggles.",
+            "Subtraction with borrowing, and you did it as cleanly as a thin slice, {name}.",
+            "Right! More than half a basket left, but with a lieutenant there's nothing to fear."
+          ],
+          "wrong": [
+            "The ones won't subtract on their own; remember to borrow a ten.",
+            "Try counting back seventeen steps from 42.",
+            "Mèo wipes his goggles and waits for you to try again. How many really remain?"
+          ]
+        }
+      },
+      "en": {
+        "title": "How many onions are left?",
+        "goTo": "Bring the goggles down to the kitchen and dining table, where the onions are waiting",
+        "question": "The basket holds 42 onions. Mèo chopped 17 before the tears made him stop. How many are still to be chopped?"
+      }
+    },
+    {
+      "id": "cach-thai-hanh",
+      "title": "Thái hành sao cho đỡ cay?",
+      "goTo": "Ra cầu tàu bên ao, nơi có chậu nước mát",
+      "kind": "decision",
+      "target": "st-meo-bep-mam-com-chau-nuoc-lanh",
+      "speaker": "Mèo Bếp Trưởng",
+      "prompt": "Bên cầu tàu có chậu nước mát. Mèo hỏi nhỏ: «Còn hai mươi lăm củ. Làm cách nào để Mèo khỏi khóc?»",
+      "choices": [
+        {
+          "id": "ngam-nuoc",
+          "text": "Ngâm hành vào nước lạnh một lúc rồi mới thái",
+          "consequence": "Hành ngâm xong thái đỡ cay hẳn. Mèo thái liền một mạch, kính bơi chỉ hơi mờ."
+        },
+        {
+          "id": "thai-giup",
+          "text": "{name} thái giúp, Mèo lo phần xào",
+          "consequence": "Hai đứa đổi việc. Mèo đứng xa đảo chảo, thỉnh thoảng ngoái lại hỏi «Cay không?»"
+        },
+        {
+          "id": "dao-sac",
+          "text": "Mài dao thật sắc, thái thật nhanh gần quạt",
+          "consequence": "Dao sắc ngọt, gió quạt thổi bớt hơi cay. Mèo thở phào: «Có mẹo là không sợ.»"
+        }
+      ],
+      "en": {
+        "title": "How to cut onions without tears?",
+        "goTo": "Go out to the jetty by the pond, where there is a basin of cool water",
+        "prompt": "There is a basin of cool water by the jetty. Mèo asks quietly: \"Twenty-five to go. How do I keep from crying?\"",
+        "choices": [
+          {
+            "text": "Soak the onions in cold water for a while before cutting",
+            "consequence": "Soaked onions sting much less. Mèo chops straight through, goggles only a little misty."
+          },
+          {
+            "text": "{name} cuts, Mèo does the frying",
+            "consequence": "You swap jobs. Mèo stirs the pan from a safe distance, now and then calling \"Stinging?\""
+          },
+          {
+            "text": "Sharpen the knife and chop fast near a fan",
+            "consequence": "A sharp knife and a breeze blow the sting away. Mèo sighs with relief: \"With a trick, no fear.\""
+          }
+        ]
+      }
+    },
+    {
+      "id": "bay-mam-com",
+      "title": "Bày mâm cơm đủ chất",
+      "goTo": "Bưng thức ăn ra sân trước nhà, khách đã tới cổng",
+      "kind": "challenge",
+      "mechanic": "minigame",
+      "target": "st-meo-bep-mam-com-mam-com-chu-nhat",
+      "prompt": "Khách đã tới cổng! Bày mâm cho đủ chất, đúng món từng người. Ghi sáu điểm nhé!",
+      "game": "lunchbox-pack",
+      "goal": 6,
+      "en": {
+        "title": "A balanced table",
+        "goTo": "Carry the food out to the front yard; the guests are at the gate",
+        "prompt": "The guests are at the gate! Lay a balanced tray with the right dish for each person. Score six points!"
+      }
+    },
+    {
+      "id": "mam-com-moi-mien",
+      "title": "Mâm cơm của mọi miền",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Chú Ba khen canh cá me, Gấu khen món trứng đúc, cả mâm ăn sạch đĩa. Mèo kêu «meo» to tới mức chính Mèo cũng giật mình, rồi dúi cho {name} một bát súp nóng.",
+      "en": {
+        "title": "A table for every homeland",
+        "text": "Chú Ba praises the fish soup, Gấu praises the omelette, and every plate is wiped clean. Mèo meows so loudly he startles himself, then hands {name} a bowl of hot soup."
+      }
+    },
+    {
+      "id": "mon-moi-tuan-sau",
+      "title": "Món mới tuần sau",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Mỗi vị khách để lại cho Mèo một công thức quê mình. Tuần sau Mèo định học từng món một, và dĩ nhiên cần một phó tướng nếm thử.",
+      "en": {
+        "title": "A new dish next week",
+        "text": "Each guest left Mèo a recipe from home. Next week he plans to learn them one by one, and of course he needs a lieutenant to taste them."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 80,
+    "coin": 22,
+    "skillXp": {
+      "phep-tru": 1,
+      "doc-hieu": 1
+    },
+    "items": {
+      "bat-sup-nong": 1
+    }
+  },
+  "en": {
+    "title": "Mèo Bếp Trưởng's story, chapter 4: The Sunday table",
+    "summary": "Sunday is here. Mèo Bếp Trưởng still has a basket of onions to chop and a fear he hasn't told anyone. {name} finds his swimming goggles, works out the onions, chooses a gentler way to cut them, then lays a balanced table for the family and guests."
+  }
+}

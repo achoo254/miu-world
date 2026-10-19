@@ -1,0 +1,357 @@
+{
+  "id": "yarn-cun-dom-ro-bot-1",
+  "region": "nha-cua-be",
+  "chapter": 1,
+  "title": "Chuyện của Cún Đốm Dọn Nhà, chương 1: Rô bốt dỗi",
+  "status": "active",
+  "category": "story",
+  "summary": "Rô bốt hút bụi Tròn Xoe đứng im giữa phòng khách. {name} gỡ đồ kẹt dưới bánh xe, xếp các phòng theo số ô gạch, tính đường đi của rô bốt rồi chọn cách dỗ nó chạy lại.",
+  "review": "teacher-pending",
+  "sevenQuestions": {
+    "who": "{name}, Cún Đốm Dọn Nhà",
+    "where": "Nhà của {name}: thềm nhà, phòng khách, cầu thang, góc học tập",
+    "goal": "Tìm hiểu vì sao rô bốt hút bụi đứng im và giúp nó chạy lại",
+    "play": "Gỡ đồ kẹt; xếp phòng theo số ô gạch; tính ô rô bốt tới; chọn cách dỗ rô bốt",
+    "learn": "So sánh số trong phạm vi 100, phép cộng",
+    "reward": "55 XP, 14 Xu, Skill XP So sánh số, Phép cộng",
+    "next": "Ngày tổng vệ sinh cả nhà"
+  },
+  "phases": {
+    "hook": "ro-bot-dung-im",
+    "explore": "go-do-ket",
+    "learn": "phong-to-nho",
+    "challenge": "o-ro-bot-toi",
+    "decision": "do-ro-bot",
+    "finale": "do-ro-bot",
+    "reward": "ro-bot-hat",
+    "next": "tong-ve-sinh"
+  },
+  "places": {
+    "cun-dom-don-nha": "Thềm nhà",
+    "go-do-ket": "Phòng khách",
+    "st-cun-dom-ro-bot-cuon-len": "Phòng khách",
+    "st-cun-dom-ro-bot-vien-bi": "Phòng khách",
+    "st-cun-dom-ro-bot-giay-goi-keo": "Phòng khách",
+    "st-cun-dom-ro-bot-ban-do-don-nha": "Cầu thang",
+    "st-cun-dom-ro-bot-tham-danh-so": "Góc học tập",
+    "st-cun-dom-ro-bot-ro-bot-doi": "Phòng khách"
+  },
+  "steps": [
+    {
+      "id": "ro-bot-dung-im",
+      "title": "Rô bốt đứng im",
+      "goTo": "Ra thềm nhà, Cún Đốm Dọn Nhà đang đứng đợi cạnh hàng dép",
+      "kind": "dialogue",
+      "target": "cun-dom-don-nha",
+      "lines": [
+        {
+          "speaker": "Cún Đốm Dọn Nhà",
+          "text": "Gâu! {name} đây rồi! Một: rô bốt Tròn Xoe đứng im. Hai: nó kêu bíp bíp rồi tắt đèn. Ba: Cún hết cách rồi!"
+        },
+        {
+          "speaker": "Cún Đốm Dọn Nhà",
+          "text": "Cún nghĩ nó dỗi vì phòng khách nhiều đồ quá. Bánh xe của nó kẹt cứng cả rồi."
+        }
+      ],
+      "choices": [
+        {
+          "text": "Mình vào gỡ bánh xe cho nó nhé!",
+          "reply": "Gâu! Đi nào! Nhớ xếp dép thẳng hàng trước khi vào."
+        },
+        {
+          "text": "Rô bốt cũng biết dỗi à?",
+          "reply": "Tròn Xoe biết đấy. Nó còn biết hát khi phòng sạch nữa."
+        }
+      ],
+      "en": {
+        "title": "The robot stands still",
+        "goTo": "Go to the front step, where Cún Đốm Dọn Nhà waits beside the row of sandals",
+        "lines": [
+          "Woof! There you are, {name}! One: Tròn Xoe has stopped. Two: it beeped and its light went out. Three: I'm out of ideas!",
+          "I think it's sulking because the living room is too messy. Its wheels are completely jammed."
+        ],
+        "choices": [
+          {
+            "text": "Let's go and free its wheels!",
+            "reply": "Woof! Let's go! Line up your sandals before you come in."
+          },
+          {
+            "text": "Can robots really sulk?",
+            "reply": "Tròn Xoe can. It even sings when a room is clean."
+          }
+        ]
+      }
+    },
+    {
+      "id": "go-do-ket",
+      "title": "Gỡ đồ kẹt",
+      "goTo": "Vào phòng khách nhặt ba thứ làm kẹt bánh xe rô bốt",
+      "kind": "search",
+      "targets": [
+        "st-cun-dom-ro-bot-cuon-len",
+        "st-cun-dom-ro-bot-vien-bi",
+        "st-cun-dom-ro-bot-giay-goi-keo"
+      ],
+      "en": {
+        "title": "Clearing the jam",
+        "goTo": "Go into the living room and pick up the three things jamming the robot's wheels"
+      }
+    },
+    {
+      "id": "phong-to-nho",
+      "title": "Phòng nhỏ dọn trước",
+      "goTo": "Ra chân cầu thang, nơi Cún treo bản đồ dọn nhà",
+      "kind": "challenge",
+      "mechanic": "sort",
+      "target": "st-cun-dom-ro-bot-ban-do-don-nha",
+      "skill": "so-sanh-so",
+      "prompt": "Cún muốn rô bốt dọn phòng nhỏ trước cho đỡ mệt. Bản đồ ghi số ô gạch của từng phòng. Xếp các phòng từ ít ô gạch đến nhiều ô gạch nhất:",
+      "items": [
+        {
+          "id": "phong-ngu",
+          "label": "Phòng ngủ: 36 ô"
+        },
+        {
+          "id": "phong-khach",
+          "label": "Phòng khách: 64 ô"
+        },
+        {
+          "id": "goc-hoc",
+          "label": "Góc học tập: 25 ô"
+        },
+        {
+          "id": "nha-kho",
+          "label": "Nhà kho: 40 ô"
+        }
+      ],
+      "answer": {
+        "order": [
+          "goc-hoc",
+          "phong-ngu",
+          "nha-kho",
+          "phong-khach"
+        ]
+      },
+      "support": {
+        "guide": [
+          "So chữ số hàng chục trước: 2 chục, 3 chục, 4 chục, 6 chục.",
+          "Phòng nào ít chục ô hơn thì nhỏ hơn."
+        ],
+        "hint": "Bé nhất là 25, lớn nhất là 64.",
+        "answer": {
+          "text": "Góc học tập, phòng ngủ, nhà kho, phòng khách",
+          "explanation": "25 < 36 < 40 < 64, nên rô bốt dọn góc học tập trước, rồi phòng ngủ, nhà kho, cuối cùng là phòng khách."
+        },
+        "en": {
+          "guide": [
+            "Compare the tens first: 2 tens, 3 tens, 4 tens, 6 tens.",
+            "The room with fewer tens of tiles is smaller."
+          ],
+          "hint": "The smallest is 25, the biggest is 64.",
+          "answer": {
+            "text": "Study corner, bedroom, storeroom, living room",
+            "explanation": "25 < 36 < 40 < 64, so the robot does the study corner first, then the bedroom, the storeroom and finally the living room."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Gâu gâu! Đúng lộ trình! Cún dán bản đồ lên lưng rô bốt ngay.",
+          "So hàng chục trước, {name} xếp nhanh hơn Cún xếp gối.",
+          "Phòng nhỏ trước, phòng to sau. Tròn Xoe sẽ không mệt nữa."
+        ],
+        "wrong": [
+          "Phòng ấy nhiều ô hơn đấy, {name} so hàng chục lại nhé.",
+          "Sáu chục ô là to nhất nhà mình, phải để cuối chứ.",
+          "Cún đếm lại từng phòng rồi, thử xếp số bé nhất lên đầu xem."
+        ],
+        "en": {
+          "right": [
+            "Woof woof! Perfect route! Cún sticks the map on the robot's back.",
+            "Tens first: you sort faster than I stack pillows, {name}.",
+            "Small rooms first, big rooms last. Tròn Xoe won't get tired now."
+          ],
+          "wrong": [
+            "That room has more tiles, {name}; compare the tens again.",
+            "Sixty-odd tiles is the biggest room; it goes last.",
+            "I recounted every room; try putting the smallest number first."
+          ]
+        }
+      },
+      "en": {
+        "title": "Small rooms first",
+        "goTo": "Go to the foot of the stairs, where Cún hangs the cleaning map",
+        "prompt": "Cún wants the robot to clean the small rooms first so it doesn't tire. The map shows each room's floor tiles. Order the rooms from fewest tiles to most:",
+        "items": [
+          "Bedroom: 36 tiles",
+          "Living room: 64 tiles",
+          "Study corner: 25 tiles",
+          "Storeroom: 40 tiles"
+        ]
+      }
+    },
+    {
+      "id": "o-ro-bot-toi",
+      "title": "Rô bốt tới ô nào?",
+      "goTo": "Lên góc học tập, nơi trải tấm thảm đánh số ô",
+      "kind": "challenge",
+      "mechanic": "logic",
+      "logicType": "puzzle",
+      "target": "st-cun-dom-ro-bot-tham-danh-so",
+      "skill": "phep-cong",
+      "prompt": "Trên tấm thảm đánh số ở góc học tập, rô bốt đang đứng ở ô số 12. Mỗi lần Cún bấm nút, nó tiến thêm 5 ô. Cún bấm 3 lần thì rô bốt tới ô số mấy?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Ô số 22"
+        },
+        {
+          "id": "b",
+          "text": "Ô số 27"
+        },
+        {
+          "id": "c",
+          "text": "Ô số 17"
+        }
+      ],
+      "answer": {
+        "choice": "b"
+      },
+      "support": {
+        "guide": [
+          "Mỗi lần bấm là thêm 5 ô.",
+          "Bắt đầu từ 12, cộng 5 ba lần."
+        ],
+        "hint": "Ô 12, rồi 17, rồi 22, rồi…?",
+        "answer": {
+          "text": "Ô số 27",
+          "explanation": "12 + 5 = 17, 17 + 5 = 22, 22 + 5 = 27, nên sau ba lần bấm rô bốt tới ô số 27."
+        },
+        "en": {
+          "guide": [
+            "Each press adds 5 squares.",
+            "Start at 12 and add 5 three times."
+          ],
+          "hint": "Square 12, then 17, then 22, then…?",
+          "answer": {
+            "text": "Square 27",
+            "explanation": "12 + 5 = 17, 17 + 5 = 22, 22 + 5 = 27, so after three presses it reaches square 27."
+          }
+        }
+      },
+      "feedback": {
+        "right": [
+          "Bíp bíp! Rô bốt dừng đúng ô 27, đèn xanh nhấp nháy vui vẻ.",
+          "Cộng năm, cộng năm, cộng năm, {name} đếm bước rô bốt chuẩn từng ô.",
+          "Gâu! Rô bốt chạy lại rồi, nó còn quay một vòng cảm ơn kìa."
+        ],
+        "wrong": [
+          "Rô bốt mới đi hai lần thôi đấy, còn một lần bấm nữa.",
+          "Mỗi lần bấm là năm ô, thử đếm thêm năm từ 12 xem.",
+          "Bíp… bíp… Rô bốt lắc đầu: ô ấy chưa đúng, {name} tính lại nhé."
+        ],
+        "en": {
+          "right": [
+            "Beep beep! The robot stops right on 27, its green light blinking happily.",
+            "Plus five, plus five, plus five: you tracked every square, {name}.",
+            "Woof! It's moving again, and it spun round once to say thank you."
+          ],
+          "wrong": [
+            "That's only two presses; there's one more to go.",
+            "Each press is five squares; try counting on five from 12.",
+            "Beep… beep… The robot shakes its head: not that square, {name}; try again."
+          ]
+        }
+      },
+      "en": {
+        "title": "Which square will it reach?",
+        "goTo": "Go up to the study corner, where the numbered rug is laid out",
+        "prompt": "On the numbered rug in the study corner, the robot stands on square 12. Each time Cún presses the button it moves 5 squares forward. After 3 presses, which square does it reach?",
+        "choices": [
+          "Square 22",
+          "Square 27",
+          "Square 17"
+        ]
+      }
+    },
+    {
+      "id": "do-ro-bot",
+      "title": "Dỗ rô bốt thế nào?",
+      "goTo": "Quay về phòng khách, rô bốt đang đợi ở giữa phòng",
+      "kind": "decision",
+      "target": "st-cun-dom-ro-bot-ro-bot-doi",
+      "speaker": "Cún Đốm Dọn Nhà",
+      "prompt": "Rô bốt đã chạy, nhưng vẫn kêu bíp bíp như còn giận. Cún vẫy đuôi hỏi: «Mình làm gì cho nó vui hẳn đây?»",
+      "choices": [
+        {
+          "id": "lau-mat",
+          "text": "Lau sạch mắt cảm biến cho rô bốt",
+          "consequence": "Mắt cảm biến sáng trong. Rô bốt chạy thẳng một mạch, không đụng chân ghế nào."
+        },
+        {
+          "id": "nghi-sac",
+          "text": "Cho nó nghỉ sạc pin một lúc",
+          "consequence": "Rô bốt nằm trên đế sạc, đèn chớp chậm như đang ngủ trưa. Cún nằm cạnh canh cho nó."
+        },
+        {
+          "id": "don-cung",
+          "text": "Cún và {name} nhặt đồ trước, để rô bốt chỉ việc hút",
+          "consequence": "Ba đứa chia việc: hai bạn nhặt, rô bốt hút. Nó hát một bài bíp bíp vui tai."
+        }
+      ],
+      "en": {
+        "title": "How to cheer up the robot?",
+        "goTo": "Go back to the living room, where the robot waits in the middle",
+        "prompt": "The robot is moving, but still beeping as if cross. Cún wags his tail: \"What can we do to really cheer it up?\"",
+        "choices": [
+          {
+            "text": "Wipe the robot's sensor clean",
+            "consequence": "Its sensor shines clear. The robot zooms straight ahead without bumping a single chair leg."
+          },
+          {
+            "text": "Let it rest and recharge for a while",
+            "consequence": "The robot lies on its charger, light blinking slowly like an afternoon nap. Cún lies beside it on guard."
+          },
+          {
+            "text": "Cún and {name} pick things up first, so the robot only has to vacuum",
+            "consequence": "Three-way teamwork: you two pick up, the robot vacuums. It beeps a cheerful little song."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ro-bot-hat",
+      "title": "Rô bốt hát bíp bíp",
+      "kind": "reward",
+      "trigger": "auto",
+      "text": "Tròn Xoe chạy một vòng quanh chân {name} rồi hát bíp bíp. Cún bảo đó là lời cảm ơn, Cún dịch được.",
+      "en": {
+        "title": "The robot sings",
+        "text": "Tròn Xoe circles {name}'s feet and beeps a song. Cún says it's a thank-you; he can translate."
+      }
+    },
+    {
+      "id": "tong-ve-sinh",
+      "title": "Ngày tổng vệ sinh",
+      "kind": "next",
+      "trigger": "auto",
+      "text": "Cún đã lên kế hoạch một ngày tổng vệ sinh cả nhà, để rô bốt bớt việc. Mai {name} tới sớm, Cún chia việc cho.",
+      "en": {
+        "title": "Spring-cleaning day",
+        "text": "Cún has planned a whole-house cleaning day so the robot has less to do. Come early tomorrow, {name}, and he'll hand out the jobs."
+      }
+    }
+  ],
+  "reward": {
+    "xp": 55,
+    "coin": 14,
+    "skillXp": {
+      "so-sanh-so": 1,
+      "phep-cong": 1
+    }
+  },
+  "en": {
+    "title": "Cún Đốm Dọn Nhà's story, chapter 1: The sulking robot",
+    "summary": "Tròn Xoe the robot vacuum has stopped dead in the living room. {name} clears what is stuck in its wheels, orders the rooms by floor tiles, works out the robot's route and decides how to coax it back to work."
+  }
+}
