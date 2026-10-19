@@ -94,3 +94,9 @@ Ghi chú: "Trễ vòng lặp tệ nhất" là giá trị lớn nhất trong các
 Status: DONE_WITH_CONCERNS
 Summary: Công cụ đo tải và số liệu đã hoàn tất: một room chịu tốt tới 100 người cùng 24 bạn máy, toàn server chịu tốt tới 300 người với 108 bạn máy; đề xuất 80 mỗi room và 200 tổng, chưa cài giới hạn nào vào code.
 Concerns/Blockers: Server chưa có giới hạn room hay tổng; số đo là trên máy dev M4, chưa đo trên production; tôi đã chạy typecheck và lint khi có tiến trình vitest của phiên khác đang chạy.
+
+## Quyết định sau đo (Jev qua `tools/decisions/jev-decide.py`, 19/10/2026)
+
+- Ngưỡng dùng làm chuẩn: **60 người chơi mỗi phòng, 150 tổng** (Jev 0,81; nhận lựa chọn của Jev theo cách làm đã chốt). Chừa thêm biên so với 80/200 vì CPU của máy production chưa đo và máy đó chạy chung nhiều dự án.
+- Không đo tải trên máy production dùng chung; dùng số đo máy dev cộng biên, theo dõi số liệu production khi người chơi tăng (Jev 0,97).
+- Chưa cài giới hạn vào code; làm khi số người chơi cùng lúc tiến gần ngưỡng (Jev 0,91). Khi làm: giới hạn phòng và tổng ở hub, thông báo thân thiện "phòng đầy, thử map khác" (mã thông báo mới trong `packages/schema`), có test.
